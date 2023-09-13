@@ -1,0 +1,141 @@
+baseURL: https://nsddd.top
+languageCode: en-us
+title: cubxxw is blog
+theme: PaperMod
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+googleAnalytics: UA-123-45
+pygmentsUseClasses: true
+minify:
+  disableXML: true
+  minifyOutput: true
+params:
+  env: production
+  title: ExampleSite
+  description: ExampleSite description
+  keywords:
+    - Blog
+    - Portfolio
+    - PaperMod
+  author: Me
+  images:
+    - <link or path of image for opengraph, twitter-cards>
+  DateFormat: January 2, 2006
+  # defaultTheme: light
+  # defaultTheme: dark
+  defaultTheme: auto # to switch between dark or light according to browser theme
+  disableThemeToggle: false
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: true
+  assets:
+    favicon: <link / abs url>
+    favicon16x16: <link / abs url>
+    favicon32x32: <link / abs url>
+    apple_touch_icon: <link / abs url>
+    safari_pinned_tab: <link / abs url>
+  label:
+    text: Home
+    icon: /apple-touch-icon.png
+    iconHeight: 35
+  profileMode:
+    # Enabled or not
+    enabled: true
+    title: Hi there 👋
+    subtitle: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
+    imageUrl: http://sm.nsddd.top/sm202309132257991.jpg
+    imageWidth: 120
+    imageHeight: 120
+    # imageTitle: My name is bear
+    buttons:
+      - name: Posts
+        url: posts
+      - name: Tags
+        url: tags
+  homeInfoParams:
+    Title: Hi there 👋
+    Content: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
+  socialIcons:
+    - name: twitter
+      url: https://twitter.com/xxw3293172751
+    - name: stackoverflow
+      url: https://stackoverflow.com/users/17393425/xinwei-xiong
+    - name: github
+      url: https://github.com/cubxxw
+    - name: zhihu
+      url: https://www.zhihu.com/people/3293172751
+    - name: linkedin
+      url: https://www.linkedin.com/in/cubxxw
+    - name: bilibili
+      url: https://space.bilibili.com/1233089591
+    - name: youtube
+      url: https://https//www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
+    - name: liberapay
+      url: https://liberapay.com/xiongxinwei/donate
+    - name: email
+      url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com
+    - name: weibo
+      url: https://weibo.com/u/6248930985
+  analytics:
+    google:
+      SiteVerificationTag: XYZabc
+    bing:
+      SiteVerificationTag: XYZabc
+    yandex:
+      SiteVerificationTag: XYZabc
+  cover:
+    hidden: true
+    hiddenInList: true
+    hiddenInSingle: true
+  editPost:
+    URL: https://github.com/<path_to_repo>/content
+    Text: Suggest Changes
+    appendFilePath: true
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys:
+      - title
+      - permalink
+      - summary
+      - content
+menu:
+  main:
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: example
+      name: example.org
+      url: https://example.org
+      weight: 30
+markup:
+  highlight:
+    noClasses: false
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
