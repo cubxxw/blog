@@ -1,0 +1,87 @@
+.nh
+.TH "HUGO-NEW-SITE" "1" "Sep 2023" "Hugo 0.119.0-DEV" "Hugo Manual"
+
+.SH NAME
+.PP
+hugo-new-site - Create a new site (skeleton)
+
+
+.SH SYNOPSIS
+.PP
+\fBhugo new site [path] [flags]\fP
+
+
+.SH DESCRIPTION
+.PP
+Create a new site in the provided directory.
+The new site will have the correct structure, but no content or theme yet.
+Use \fB\fChugo new [contentPath]\fR to create new content.
+
+
+.SH OPTIONS
+.PP
+\fB-f\fP, \fB--force\fP[=false]
+	init inside non-empty directory
+
+.PP
+\fB--format\fP="toml"
+	preferred file format (toml, yaml or json)
+
+.PP
+\fB-h\fP, \fB--help\fP[=false]
+	help for site
+
+
+.SH OPTIONS INHERITED FROM PARENT COMMANDS
+.PP
+\fB--clock\fP=""
+	set the clock used by Hugo, e.g. --clock 2021-11-06T22:30:00.00+09:00
+
+.PP
+\fB--config\fP=""
+	config file (default is hugo.yaml|json|toml)
+
+.PP
+\fB--configDir\fP="config"
+	config dir
+
+.PP
+\fB--debug\fP[=false]
+	debug output
+
+.PP
+\fB-d\fP, \fB--destination\fP=""
+	filesystem path to write files to
+
+.PP
+\fB-e\fP, \fB--environment\fP=""
+	build environment
+
+.PP
+\fB--ignoreVendorPaths\fP=""
+	ignores any _vendor for module paths matching the given Glob pattern
+
+.PP
+\fB--logLevel\fP=""
+	log level (debug|info|warn|error)
+
+.PP
+\fB--quiet\fP[=false]
+	build in quiet mode
+
+.PP
+\fB-s\fP, \fB--source\fP=""
+	filesystem path to read files relative from
+
+.PP
+\fB--themesDir\fP=""
+	filesystem path to themes directory
+
+.PP
+\fB-v\fP, \fB--verbose\fP[=false]
+	verbose output
+
+
+.SH SEE ALSO
+.PP
+\fBhugo-new(1)\fP

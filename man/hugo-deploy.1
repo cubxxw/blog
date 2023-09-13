@@ -1,0 +1,109 @@
+.nh
+.TH "HUGO-DEPLOY" "1" "Sep 2023" "Hugo 0.119.0-DEV" "Hugo Manual"
+
+.SH NAME
+.PP
+hugo-deploy - Deploy your site to a Cloud provider.
+
+
+.SH SYNOPSIS
+.PP
+\fBhugo deploy [flags] [args]\fP
+
+
+.SH DESCRIPTION
+.PP
+Deploy your site to a Cloud provider.
+
+.PP
+See https://gohugo.io/hosting-and-deployment/hugo-deploy/ for detailed
+documentation.
+
+
+.SH OPTIONS
+.PP
+\fB--confirm\fP[=false]
+	ask for confirmation before making changes to the target
+
+.PP
+\fB--dryRun\fP[=false]
+	dry run
+
+.PP
+\fB--force\fP[=false]
+	force upload of all files
+
+.PP
+\fB-h\fP, \fB--help\fP[=false]
+	help for deploy
+
+.PP
+\fB--invalidateCDN\fP[=true]
+	invalidate the CDN cache listed in the deployment target
+
+.PP
+\fB--maxDeletes\fP=256
+	maximum # of files to delete, or -1 to disable
+
+.PP
+\fB--target\fP=""
+	target deployment from deployments section in config file; defaults to the first one
+
+.PP
+\fB--workers\fP=10
+	number of workers to transfer files. defaults to 10
+
+
+.SH OPTIONS INHERITED FROM PARENT COMMANDS
+.PP
+\fB--clock\fP=""
+	set the clock used by Hugo, e.g. --clock 2021-11-06T22:30:00.00+09:00
+
+.PP
+\fB--config\fP=""
+	config file (default is hugo.yaml|json|toml)
+
+.PP
+\fB--configDir\fP="config"
+	config dir
+
+.PP
+\fB--debug\fP[=false]
+	debug output
+
+.PP
+\fB-d\fP, \fB--destination\fP=""
+	filesystem path to write files to
+
+.PP
+\fB-e\fP, \fB--environment\fP=""
+	build environment
+
+.PP
+\fB--ignoreVendorPaths\fP=""
+	ignores any _vendor for module paths matching the given Glob pattern
+
+.PP
+\fB--logLevel\fP=""
+	log level (debug|info|warn|error)
+
+.PP
+\fB--quiet\fP[=false]
+	build in quiet mode
+
+.PP
+\fB-s\fP, \fB--source\fP=""
+	filesystem path to read files relative from
+
+.PP
+\fB--themesDir\fP=""
+	filesystem path to themes directory
+
+.PP
+\fB-v\fP, \fB--verbose\fP[=false]
+	verbose output
+
+
+.SH SEE ALSO
+.PP
+\fBhugo(1)\fP
