@@ -34,7 +34,7 @@ params:
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: true
+  ShowCodeCopyButtons: flase
   ShowFullTextinRSS: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
@@ -98,7 +98,7 @@ params:
       url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com
     - name: weibo
       url: https://weibo.com/u/6248930985
-  ShareButtons: ["linkedin", "twitter",] # To customize which share buttons to be enabled on page
+  ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook"] # To customize which share buttons to be enabled on page
   analytics:
     google:
       SiteVerificationTag: XYZabc
