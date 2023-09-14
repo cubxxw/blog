@@ -10,7 +10,26 @@
       <link>https://nsddd.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://nsddd.top/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://nsddd.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>https://nsddd.top/custom-path/to-my-first-post/</link>
+      <pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://nsddd.top/custom-path/to-my-first-post/</guid>
+      <description>my frist</description>
+    </item>
+    
+    <item>
+      <title>重新搭建我的博客（静态）</title>
+      <link>https://nsddd.top/archetypes/smail/</link>
+      <pubDate>Wed, 13 Sep 2023 21:53:16 +0800</pubDate>
+      
+      <guid>https://nsddd.top/archetypes/smail/</guid>
+      <description>这个是一个正式的测试版本</description>
+    </item>
+    
     
     
   </channel>

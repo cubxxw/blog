@@ -1,5 +1,6 @@
 baseURL: https://nsddd.top
 languageCode: en-us
+DefaultContentLanguage: en-us
 title: cubxxw is blog
 theme: PaperMod
 
@@ -34,8 +35,8 @@ params:
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: flase
-  ShowFullTextinRSS: true
+  ShowCodeCopyButtons: false
+  ShowFullTextinRSS: false
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
@@ -76,6 +77,8 @@ params:
     Title: Hi there 👋
     Content: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
   socialIcons:
+    - name: rss
+      url: https://nsddd.top/index.xml
     - name: twitter
       url: https://twitter.com/xxw3293172751
     - name: stackoverflow
@@ -129,22 +132,22 @@ params:
 menu:
   main:
     - identifier: categories
-      name: categories
+      name: 🗂️categories
       url: /categories/
       weight: 10
     - identifier: tags
-      name: tags
+      name: 🏷️tags
       url: /tags/
       weight: 20
-    - identifier: example
-      name: example.org
-      url: https://example.org
+    - identifier: 
+      name: Ⓜ️Code
+      url: https://github.com/cubxxw/blog
       weight: 30
 markup:
   highlight:
     noClasses: false
 outputs:
     home:
-        - HTML
-        - RSS
-        - JSON # is necessary
+      - HTML
+      - RSS
+      - JSON # is necessary

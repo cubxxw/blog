@@ -19,3 +19,11 @@
 
 # Go workspace file
 go.work
+
+.env
+.env.build
+/.idea/
+/.hugo_build.lock
+/public/
+
+.vscode
