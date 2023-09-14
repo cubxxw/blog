@@ -62,7 +62,7 @@ params:
     enabled: true
     title: Hi there 👋
     subtitle: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
-    imageUrl: http://sm.nsddd.top/sm202309132257991.jpg
+    imageUrl: ../assets/cubxxw-image.jpg
     imageWidth: 120
     imageHeight: 120
     # imageTitle: My name is bear
