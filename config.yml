@@ -30,7 +30,7 @@ params:
   # defaultTheme: light
   # defaultTheme: dark
   defaultTheme: auto # to switch between dark or light according to browser theme
-  disableThemeToggle: true
+  disableThemeToggle: false
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
@@ -139,18 +139,22 @@ menu:
     - identifier: lint
       name: 🤸About me
       url: https://nsddd.top
+      pageRef: /lint
       weight: 10
     - identifier: categories
       name: 🗂️Categories
       url: /categories/
+      pageRef: /categories
       weight: 20
     - identifier: tags
       name: 🏷️Tags
       url: /tags/
+      pageRef: /tags
       weight: 30
     - identifier:
       name: 🔍Search
       url: /search/
+      pageRef: /search
       weight: 40
     - identifier: 
       name: Ⓜ️Github
@@ -164,3 +168,12 @@ outputs:
       - HTML
       - RSS
       - JSON # is necessary
+
+# languages:
+#   en:
+#     disabled: false
+#     languageCode: ""
+#     languageDirection: ""
+#     languageName: ""
+#     title: ""
+#     weight: 0
