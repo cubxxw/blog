@@ -25,5 +25,5 @@ go.work
 /.idea/
 /.hugo_build.lock
 /public/
-
+_output/
 .vscode

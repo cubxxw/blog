@@ -2,7 +2,7 @@
 title = '重新搭建我的博客（静态）'
 date = 2023-09-13T21:53:16+08:00
 description = "这个是一个正式的页面"
-draft = true
+draft = false
 +++
 
 # 重新搭建我的博客（静态）

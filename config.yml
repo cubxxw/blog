@@ -61,7 +61,9 @@ params:
     # Enabled or not
     enabled: true
     title: Hi there 👋
-    subtitle: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
+    subtitle: |
+      My name is Xinwei(bear) Xiong 🤖. My loyalty is to adventure ☀️,
+      I'm a big open source fan Ⓜ️. I have a big dream and will realize it next year.
     imageUrl: ../assets/cubxxw-image.jpg
     imageWidth: 120
     imageHeight: 120
@@ -97,6 +99,8 @@ params:
       url: https://https//www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
     - name: liberapay
       url: https://liberapay.com/xiongxinwei/donate
+    - name: kofi
+      url: https://ko-fi.com/cubxxw
     - name: email
       url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com
     - name: weibo
@@ -131,18 +135,26 @@ params:
       - content
 menu:
   main:
-    - identifier: categories
-      name: 🗂️categories
-      url: /categories/
+    - identifier: lint
+      name: 🤸About me
+      url: https://nsddd.top
       weight: 10
-    - identifier: tags
-      name: 🏷️tags
-      url: /tags/
+    - identifier: categories
+      name: 🗂️Categories
+      url: /categories/
       weight: 20
-    - identifier: 
-      name: Ⓜ️Code
-      url: https://github.com/cubxxw/blog
+    - identifier: tags
+      name: 🏷️Tags
+      url: /tags/
       weight: 30
+    - identifier:
+      name: 🔍Search
+      url: /search/
+      weight: 40
+    - identifier: 
+      name: Ⓜ️Github
+      url: https://github.com/cubxxw/blog
+      weight: 50
 markup:
   highlight:
     noClasses: false
