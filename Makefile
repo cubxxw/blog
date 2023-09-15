@@ -62,16 +62,16 @@ SPACE +=
 
 ## run-default: Run hugo server with default mode.
 run-default:
-	cd exampleSite && hugo server -D --gc -p 13131 --config config.default.yml
+	@$(TOOLS_DIR)/hugo server -D --gc -p 13132 --config config.default.yml
 
 ## run-profile-mode: Run hugo server with profile mode.
 run-profile-mode:
-	cd exampleSite && hugo server -D --gc -p 13131 --config config.profileMode.yml
+	@$(TOOLS_DIR)/hugo server -D --gc -p 13133 --config config.profileMode.yml
 
 ## chroma-css: Generate chroma css.
 chroma-css:
-	hugo gen chromastyles --style=dracula > assets/css/lib/chroma-dark.css
-	hugo gen chromastyles --style=github > assets/css/lib/chroma-light.css
+	@$(TOOLS_DIR)/hugo gen chromastyles --style=dracula > assets/css/lib/chroma-dark.css
+	@$(TOOLS_DIR)/hugo gen chromastyles --style=github > assets/css/lib/chroma-light.css
 
 ## run: Run hugo server.
 .PHONY: run

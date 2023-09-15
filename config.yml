@@ -118,10 +118,11 @@ params:
     hiddenInList: true
     hiddenInSingle: true
   editPost:
-    URL: https://github.com/<path_to_repo>/content
-    Text: Suggest Changes
-    appendFilePath: true
+      URL: "https://github.com/cubxxw/blog/tree/main/content"
+      Text: "Suggest Changes" # edit text
+      appendFilePath: true # to append file path to Edit link
   fuseOpts:
+    # https://www.fusejs.io/api/options.html#ignorefieldnorm
     isCaseSensitive: false
     shouldSort: true
     location: 0
