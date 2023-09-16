@@ -5,9 +5,11 @@ draft : false
 tags:
   - blog
   - zh
+  - openim
 categories:
   - Development
   - Blog
+  - OpenIM
 ---
 
 ## 自动化构建`openkf`的多架构镜像并推送到多个镜像仓库

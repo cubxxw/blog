@@ -14,10 +14,12 @@ keywords: []
 tags:
   - blog
   - zh
+  - openim
 categories:
   - Development
   - Blog
   - Deployment
+  - OpenIM
 ---
 
 ## 1. 基础镜像
