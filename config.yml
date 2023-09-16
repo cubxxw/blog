@@ -1,6 +1,4 @@
 baseURL: https://nsddd.top
-languageCode: en-us
-DefaultContentLanguage: en-us
 title: cubxxw is blog
 theme: PaperMod
 
@@ -57,24 +55,6 @@ params:
     text: Home
     icon: /apple-touch-icon.png
     iconHeight: 35
-  profileMode:
-    # Enabled or not
-    enabled: true
-    title: Hi there 👋
-    subtitle: |
-      My name is Xinwei(bear) Xiong 🤖. My loyalty is to adventure ☀️,
-      I'm a big open source fan Ⓜ️. I have a big dream and will realize it next year.
-    imageUrl: ../assets/cubxxw-image.jpg
-    imageWidth: 120
-    imageHeight: 120
-    # imageTitle: My name is bear
-    buttons:
-      - name: Posts
-        url: posts
-      - name: archives
-        url: archives
-      - name: Tags
-        url: tags
   homeInfoParams:
     Title: Hi there 👋
     Content: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
@@ -134,32 +114,7 @@ params:
       - permalink
       - summary
       - content
-menu:
-  main:
-    - identifier: lint
-      name: 🤸About me
-      url: https://nsddd.top
-      pageRef: /lint
-      weight: 10
-    - identifier: categories
-      name: 🗂️Categories
-      url: /categories/
-      pageRef: /categories
-      weight: 20
-    - identifier: tags
-      name: 🏷️Tags
-      url: /tags/
-      pageRef: /tags
-      weight: 30
-    - identifier:
-      name: 🔍Search
-      url: /search/
-      pageRef: /search
-      weight: 40
-    - identifier: 
-      name: Ⓜ️Github
-      url: https://github.com/cubxxw/blog
-      weight: 50
+
 markup:
   highlight:
     noClasses: false
@@ -169,11 +124,265 @@ outputs:
       - RSS
       - JSON # is necessary
 
-# languages:
-#   en:
-#     disabled: false
-#     languageCode: ""
-#     languageDirection: ""
-#     languageName: ""
-#     title: ""
-#     weight: 0
+# languageCode: en-us
+DefaultContentLanguage: en
+languages:
+  en:
+    disabled: false
+    languageCode: "en-us"
+    languageDirection: "English Blog"
+    title: "This Englist"
+    languageName: English
+    weight: 1
+    menu:
+      main:
+        - identifier: lint
+          name: 🤸About me
+          url: https://nsddd.top
+          pageRef: /lint
+          weight: 10
+        - identifier: categories
+          name: 🗂️Categories
+          url: /categories/
+          pageRef: /categories
+          weight: 20
+        - identifier: tags
+          name: 🏷️Tags
+          url: /tags/
+          pageRef: /tags
+          weight: 30
+        - identifier:
+          name: 🔍Search
+          url: /search/
+          pageRef: /search
+          weight: 40
+        - identifier: 
+          name: Ⓜ️Github
+          url: https://github.com/cubxxw/blog
+          weight: 50
+    params:
+      profileMode:
+        # Enabled or not
+        enabled: true
+        title: Hi there 👋
+        subtitle: |
+          My name is Xinwei(bear) Xiong 🤖. My loyalty is to adventure ☀️,
+          I'm a big open source fan Ⓜ️. I have a big dream and will realize it next year.
+        imageUrl: ../assets/cubxxw-image.jpg
+        imageWidth: 120
+        imageHeight: 120
+        # imageTitle: My name is bear
+        buttons:
+          - name: Posts
+            url: posts
+          - name: archives
+            url: archives
+          - name: Tags
+            url: tags
+
+  fr:
+    disabled: false
+    languageCode: "fr-fr"
+    languageDirection: "ltr" # Left to Right for French as well
+    title: "Blog Français"
+    languageName: Français
+    weight: 2
+    menu:
+      main:
+        - identifier: lint
+          name: 🤸À propos de moi
+          url: https://nsddd.top
+          pageRef: /lint
+          weight: 10
+        - identifier: categories
+          name: 🗂️Catégories
+          url: ../categories/
+          pageRef: /categories
+          weight: 20
+        - identifier: tags
+          name: 🏷️Étiquettes
+          url: ../tags/
+          pageRef: /tags
+          weight: 30
+        - identifier: search
+          name: 🔍Recherche
+          url: ../search/
+          pageRef: /search
+          weight: 40
+        - identifier: github
+          name: Ⓜ️Github
+          url: https://github.com/cubxxw/blog
+          weight: 50
+    params:
+      profileMode:
+        # Activé ou non
+        enabled: true
+        title: Salut 👋
+        subtitle: |
+          Je m'appelle Xinwei(bear) Xiong 🤖. Ma loyauté est à l'aventure ☀️.
+          Je suis un grand fan de l'open source Ⓜ️. J'ai un grand rêve et je le réaliserai l'année prochaine.
+        imageUrl: ../assets/cubxxw-image.jpg
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: Articles
+            url: ../posts
+          - name: Archives
+            url: ../archives
+          - name: Étiquettes
+            url: ../tags
+  es:
+    disabled: false
+    languageCode: "es-es"
+    languageDirection: "ltr" # Left to Right for Spanish as well
+    title: "Blog en Español"
+    languageName: Español
+    weight: 3
+    menu:
+      main:
+        - identifier: lint
+          name: 🤸Acerca de mí
+          url: https://nsddd.top
+          pageRef: /lint
+          weight: 10
+        - identifier: categories
+          name: 🗂️Categorías
+          url: ../categories/
+          pageRef: /categories
+          weight: 20
+        - identifier: tags
+          name: 🏷️Etiquetas
+          url: ../tags/
+          pageRef: /tags
+          weight: 30
+        - identifier: search
+          name: 🔍Buscar
+          url: ../search/
+          pageRef: /search
+          weight: 40
+        - identifier: github
+          name: Ⓜ️Github
+          url: https://github.com/cubxxw/blog
+          weight: 50
+    params:
+      profileMode:
+        # Habilitado o no
+        enabled: true
+        title: Hola 👋
+        subtitle: |
+          Mi nombre es Xinwei(bear) Xiong 🤖. Mi lealtad es a la aventura ☀️.
+          Soy un gran fanático del código abierto Ⓜ️. Tengo un gran sueño y lo haré realidad el próximo año.
+        imageUrl: ../assets/cubxxw-image.jpg
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: Publicaciones
+            url: ../posts
+          - name: Archivos
+            url: ../archives
+          - name: Etiquetas
+            url: ../tags
+
+  zh:
+    disabled: false
+    languageCode: "zh-cn"
+    languageDirection: "ltr" # Left to Right for Chinese as well
+    title: "简体中文博客"
+    languageName: 简体中文
+    weight: 4
+    menu:
+      main:
+        - identifier: lint
+          name: 🤸关于我
+          url: https://nsddd.top
+          pageRef: /lint
+          weight: 10
+        - identifier: categories
+          name: 🗂️分类
+          url: /categories/
+          pageRef: /categories
+          weight: 20
+        - identifier: tags
+          name: 🏷️标签
+          url: /tags/
+          pageRef: /tags
+          weight: 30
+        - identifier: search
+          name: 🔍搜索
+          url: /search/
+          pageRef: /search
+          weight: 40
+        - identifier: github
+          name: Ⓜ️Github
+          url: https://github.com/cubxxw/blog
+          weight: 50
+    params:
+      profileMode:
+        # 启用或禁用
+        enabled: true
+        title: 你好 👋
+        subtitle: |
+          我叫 Xinwei(bear) Xiong 🤖。我的忠诚是对冒险的忠诚☀️。
+          我是一个开源的极度爱好者Ⓜ️。我有一个大梦想，并会在明年实现它。
+        imageUrl: ../assets/cubxxw-image.jpg
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: 文章
+            url: posts
+          - name: 归档
+            url: archives
+          - name: 标签
+            url: tags
+
+  zh-tw:
+    disabled: false
+    languageCode: "zh-tw"
+    languageDirection: "ltr"
+    title: "繁體中文博客"
+    languageName: 繁體中文
+    weight: 5
+    menu:
+      main:
+        - identifier: lint
+          name: 🤸關於我
+          url: https://nsddd.top
+          pageRef: /lint
+          weight: 10
+        - identifier: categories
+          name: 🗂️分類
+          url: ../categories/
+          pageRef: /categories
+          weight: 20
+        - identifier: tags
+          name: 🏷️標籤
+          url: ../tags/
+          pageRef: /tags
+          weight: 30
+        - identifier: search
+          name: 🔍搜索
+          url: ../search/
+          pageRef: /search
+          weight: 40
+        - identifier: github
+          name: Ⓜ️Github
+          url: https://github.com/cubxxw/blog
+          weight: 50
+    params:
+      profileMode:
+        # 啟用或禁用
+        enabled: true
+        title: 你好 👋
+        subtitle: |
+          我叫 Xinwei(bear) Xiong 🤖。我的忠誠是對冒險的忠誠☀️。
+          我是一個開源的極度愛好者Ⓜ️。我有一個大夢想，並會在明年實現它。
+        imageUrl: ../assets/cubxxw-image.jpg
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: 文章
+            url: ../posts
+          - name: 歸檔
+            url: ../archives
+          - name: 標籤
+            url: ../tags
