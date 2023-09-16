@@ -23,68 +23,40 @@ jobs:
           comment_tag_name: "My-Blog-EN"
           feed_list: "https://rss.starerror.com/https://nsddd.top/posts/index.xml"
           token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
-          BOT_GITHUB_TOKEN: ${{ secrets.REDBOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from EN"
           committer_username: "openimbot"
           disable_html_encoding: true
 
-  update-readme-with-blog2:
-    name: Update this repo's README with latest blog posts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Pull in Chinese posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-ZH"
           feed_list: "https://rss.starerror.com/https://nsddd.top/zh/posts/index.xml"
+          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ZH"
           committer_username: "openimbot"
           disable_html_encoding: true
 
-  update-readme-with-blog3:
-    name: Update this repo's README with latest blog posts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Git
-        run: |
-          git config --global user.name "kubbot"
-          git config --global user.email "2464372560ysy@gmail.com"
       - name: Pull in Spanish posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-ES"
           feed_list: "https://rss.starerror.com/https://nsddd.top/es/posts/index.xml"
-          token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
-          committer_username: "kubbot"
+          committer_username: "openimbot"
           disable_html_encoding: true
 
-  update-readme-with-blog4:
-    name: Update this repo's README with latest blog posts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Git
-        run: |
-          git config --global user.name "kubbot"
-          git config --global user.email "2464372560ysy@gmail.com"
       - name: Pull in French posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-FR"
           feed_list: "https://rss.starerror.com/https://nsddd.top/fr/posts/index.xml"
-          token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
-          committer_username: "kubbot"
+          committer_username: "openimbot"
           disable_html_encoding: true
