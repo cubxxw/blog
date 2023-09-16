@@ -15,6 +15,13 @@ This is my third generation blog, the first two generations are dynamic blog, th
 make run
 ```
 
+## Create a new article
+
+```bash
+make new-post POST_NAME="openim-offline-deployment-design"
+```
+
+
 ## Reference
 
 Uer netlify to deploy the blog, and use the [hexo-theme-next](ttps://cubxxw.netlify.app) theme.

@@ -4,6 +4,10 @@ date : 2023-09-16T14:15:15+08:00
 draft : false
 tags:
   - blog
+  - zh
+categories:
+  - Development
+  - Blog
 ---
 
 ## 自动化构建`openkf`的多架构镜像并推送到多个镜像仓库

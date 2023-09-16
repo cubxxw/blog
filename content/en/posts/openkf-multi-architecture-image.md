@@ -4,6 +4,10 @@ date : 2023-09-16T14:15:14+08:00
 draft : false
 tags:
   - blog
+  - en
+categories:
+  - Development
+  - Blog
 ---
 
 ## Automate Multi-Architecture Image Build for `openkf` and Push to Multiple Image Repositories

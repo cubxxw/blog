@@ -4,8 +4,11 @@ date: 2023-09-14
 author: ["熊鑫伟", "Me"]
 description: "这是我的第一个博客，关于我的介绍"
 tags:
-  - introduction
   - blog
+  - zh
+categories:
+  - Development
+  - Blog
 ---
 
 ## 你好，我是熊鑫伟

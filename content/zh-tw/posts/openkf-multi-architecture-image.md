@@ -4,6 +4,9 @@ date : 2023-09-16T14:15:15+08:00
 draft : false
 tags:
   - blog
+categories:
+  - Development
+  - Blog
 ---
 
 ## 自動化構建`openkf`的多架構鏡像並推送到多個鏡像倉庫

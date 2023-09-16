@@ -1,9 +1,13 @@
 ---
-title: 'My Hugo'
-date : 2023-09-16T14:26:20+08:00
+title: 'About My Hugo teaching'
+date : 2023-09-12T14:26:20+08:00
 draft: true
 tags:
    - blog
+   - en
+categories:
+  - Development
+  - Blog
 ---
 
 # Rebuild my blog (static)

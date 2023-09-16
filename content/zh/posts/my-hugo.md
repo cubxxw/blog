@@ -1,9 +1,12 @@
 ---
-title : 'My Hugo'
-date : 2023-09-16T14:26:20+08:00
-draft : false
+title : '关于我的 Hugo (教程)'
+date : 2023-09-12T14:26:20+08:00
 tags:
   - blog
+categories:
+  - Development
+  - Blog
+  - zh
 ---
 
 # 重新搭建我的博客（静态）
