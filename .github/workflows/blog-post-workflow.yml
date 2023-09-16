@@ -1,0 +1,61 @@
+name: Update README with latest blog posts
+
+on:
+  push:
+
+jobs:
+  update-readme:
+    name: Update this repo's README with latest blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "openimbot"
+          git config --global user.email "openimsdk@qq.com"
+
+      - name: Pull in English posts
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          comment_tag_name: "My-Blog-EN"
+          feed_list: "https://rss.starerror.com/https://nsddd.top/posts/index.xml"
+          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          max_post_count: 100
+          commit_message: "🔥docs(main): update with latest RadioGeek feed from EN"
+          committer_username: "openimbot"
+          disable_html_encoding: true
+
+      - name: Pull in Chinese posts
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          comment_tag_name: "My-Blog-ZH"
+          feed_list: "https://rss.starerror.com/https://nsddd.top/zh/posts/index.xml"
+          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          max_post_count: 100
+          commit_message: "🔥docs(main): update with latest RadioGeek feed from ZH"
+          committer_username: "openimbot"
+          disable_html_encoding: true
+
+      - name: Pull in Spanish posts
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          comment_tag_name: "My-Blog-ES"
+          feed_list: "https://rss.starerror.com/https://nsddd.top/es/posts/index.xml"
+          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          max_post_count: 100
+          commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
+          committer_username: "openimbot"
+          disable_html_encoding: true
+
+      - name: Pull in French posts
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          comment_tag_name: "My-Blog-FR"
+          feed_list: "https://rss.starerror.com/https://nsddd.top/fr/posts/index.xml"
+          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          max_post_count: 100
+          commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
+          committer_username: "openimbot"
+          disable_html_encoding: true
