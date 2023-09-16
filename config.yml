@@ -132,6 +132,7 @@ languages:
     languageCode: "en-us"
     languageDirection: "English Blog"
     title: "This Englist"
+    contentDir: "content/en"
     languageName: English
     weight: 1
     menu:
@@ -185,6 +186,7 @@ languages:
     languageCode: "fr-fr"
     languageDirection: "ltr" # Left to Right for French as well
     title: "Blog Français"
+    contentDir: "content/fr"
     languageName: Français
     weight: 2
     menu:
@@ -236,6 +238,7 @@ languages:
     languageCode: "es-es"
     languageDirection: "ltr" # Left to Right for Spanish as well
     title: "Blog en Español"
+    contentDir: "content/es"
     languageName: Español
     weight: 3
     menu:
@@ -289,6 +292,7 @@ languages:
     languageDirection: "ltr" # Left to Right for Chinese as well
     title: "简体中文博客"
     languageName: 简体中文
+    contentDir: "content/zh"
     weight: 4
     menu:
       main:

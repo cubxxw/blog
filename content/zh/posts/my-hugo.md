@@ -1,9 +1,10 @@
-+++
-title = '重新搭建我的博客（静态）'
-date = 2023-09-13T21:53:16+08:00
-description = "这个是一个正式的页面"
-draft = false
-+++
+---
+title : 'My Hugo'
+date : 2023-09-16T14:26:20+08:00
+draft : false
+tags:
+  - blog
+---
 
 # 重新搭建我的博客（静态）
 
@@ -47,8 +48,6 @@ draft = false
 ❯ cd themes/PaperMod
 ❯ git pull
 ```
-
-
 
 **使用 git [submodule](https://www.atlassian.com/git/tutorials/git-submodule) with**
 
@@ -511,3 +510,366 @@ editPost:
 ### 配置文件变量
 
 + https://github.com/adityatelange/hugo-PaperMod/wiki/Variables
+
+
+
+## 部署
+
+使用 GitHub actions 进行部署，在 Makefile 中集成一些高级的命令
+
+下面是 Makefile 的配置：
+
+```makefile
+###################################=> common commands <=#############################################
+# ========================== Capture Environment ===============================
+# get the repo root and output path
+ROOT_PACKAGE=github.com/cubxxw/blog
+OUT_DIR=$(REPO_ROOT)/_output
+# ==============================================================================
+
+# define the default goal
+#
+
+SHELL := /bin/bash
+DIRS=$(shell ls)
+GO=go
+
+.DEFAULT_GOAL := help
+
+# include the common makefile
+COMMON_SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
+# ROOT_DIR: root directory of the code base
+ifeq ($(origin ROOT_DIR),undefined)
+ROOT_DIR := $(abspath $(shell cd $(COMMON_SELF_DIR)/. && pwd -P))
+endif
+# OUTPUT_DIR: The directory where the build output is stored.
+ifeq ($(origin OUTPUT_DIR),undefined)
+OUTPUT_DIR := $(ROOT_DIR)/_output
+$(shell mkdir -p $(OUTPUT_DIR))
+endif
+
+# BIN_DIR: The directory where the build output is stored.
+ifeq ($(origin BIN_DIR),undefined)
+BIN_DIR := $(OUTPUT_DIR)/bin
+$(shell mkdir -p $(BIN_DIR))
+endif
+
+ifeq ($(origin TOOLS_DIR),undefined)
+TOOLS_DIR := $(OUTPUT_DIR)/tools
+$(shell mkdir -p $(TOOLS_DIR))
+endif
+
+ifeq ($(origin TMP_DIR),undefined)
+TMP_DIR := $(OUTPUT_DIR)/tmp
+$(shell mkdir -p $(TMP_DIR))
+endif
+
+ifeq ($(origin VERSION), undefined)
+VERSION := $(shell git describe --tags --always --match="v*" --dirty | sed 's/-/./g')	#v2.3.3.631.g00abdc9b.dirty
+endif
+
+# Check if the tree is dirty. default to dirty(maybe u should commit?)
+GIT_TREE_STATE:="dirty"
+ifeq (, $(shell git status --porcelain 2>/dev/null))
+	GIT_TREE_STATE="clean"
+endif
+GIT_COMMIT:=$(shell git rev-parse HEAD)
+
+# COMMA: Concatenate multiple strings to form a list of strings
+COMMA := ,
+# SPACE: Used to separate strings
+SPACE :=
+# SPACE: Replace multiple consecutive Spaces with a single space
+SPACE +=
+
+## run-default: Run hugo server with default mode.
+run-default:
+	@$(TOOLS_DIR)/hugo server -D --gc -p 13132 --config config.default.yml
+
+## run-profile-mode: Run hugo server with profile mode.
+run-profile-mode:
+	@$(TOOLS_DIR)/hugo server -D --gc -p 13133 --config config.profileMode.yml
+
+## chroma-css: Generate chroma css.
+chroma-css:
+	@$(TOOLS_DIR)/hugo gen chromastyles --style=dracula > assets/css/lib/chroma-dark.css
+	@$(TOOLS_DIR)/hugo gen chromastyles --style=github > assets/css/lib/chroma-light.css
+
+## run: Run hugo server.
+.PHONY: run
+run: tools.verify.hugo
+	@$(TOOLS_DIR)/hugo
+	@$(TOOLS_DIR)/hugo server -D --gc -p 13131 --config config.yml
+
+## build: Build site with non-production settings and put deliverables in ./public
+.PHONY: build
+build: tools.verify.hugo module-check
+	@$(TOOLS_DIR)/hugo --cleanDestinationDir --minify --environment development
+
+## module-check: Check if all of the required submodules are correctly initialized.
+.PHONY: module-check
+module-check:
+	@git submodule status --recursive | awk '/^[+-]/ {err = 1; printf "\033[31mWARNING\033[0m Submodule not initialized: \033[34m%s\033[0m\n",$$2} END { if (err != 0) print "You need to run \033[32mmake module-init\033[0m to initialize missing modules first"; exit err }' 1>&2
+
+## module-update: Updating themes
+module-update: tools.verify.hugo
+	@git submodule update --remote --merge
+
+## clean: Clean all builds.
+.PHONY: clean
+clean:
+	@echo "===========> Cleaning all builds TMP_DIR($(TMP_DIR)) AND BIN_DIR($(BIN_DIR))"
+	@-rm -vrf $(TMP_DIR) $(BIN_DIR)
+	@echo "===========> End clean..."
+
+## help: Show this help info.
+.PHONY: help
+help: Makefile
+	@printf "\n\033[1mUsage: make <TARGETS> ...\033[0m\n\n\\033[1mTargets:\\033[0m\n\n"
+	@sed -n 's/^##//p' $< | awk -F':' '{printf "\033[36m%-28s\033[0m %s\n", $$1, $$2}' | sed -e 's/^/ /'
+
+################################### Tools #####################################
+
+BUILD_TOOLS ?= hugo
+
+## tools.verify.%: Check if a tool is installed and install it
+.PHONY: tools.verify.%
+tools.verify.%:
+	@echo "===========> Verifying $* is installed"
+	@if [ ! -f $(TOOLS_DIR)/$* ]; then GOBIN=$(TOOLS_DIR) $(MAKE) tools.install.$*; fi
+	@echo "===========> $* is install in $(TOOLS_DIR)/$*"
+
+## tools: Install a must tools
+.PHONY: tools
+tools: $(addprefix tools.verify., $(BUILD_TOOLS))
+
+## tools.install.%: Install a single tool in $GOBIN/
+.PHONY: tools.install.%
+tools.install.%:
+	@echo "===========> Installing $,The default installation path is $(GOBIN)/$*"
+	@$(MAKE) install.$*
+
+.PHONY: install.addlicense
+install.addlicense:
+	@$(GO) install github.com/google/addlicense@latest
+
+.PHONY: install.hugo
+install.hugo:
+	@$(GO) install github.com/gohugoio/hugo@latest
+```
+
+当然 Makefile 是针对本地的，如果是远程服务器就需要依靠 github actions:
+
+``` bash
+# Sample workflow for building and deploying a Hugo site to GitHub Pages
+name: Deploy Hugo site to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.114.0
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build with Hugo
+        env:
+          # For maximum backward compatibility with Hugo modules
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+```
+
+
+
+## 评论插件
+
+要添加评论，请创建一个 html 文件
+
+```bash
+layouts/partials/comments.html
+```
+
+并粘贴您的评论提供商提供的代码
+
+也在配置中添加这个
+
+```yaml
+params:
+    comments: true
+```
+
+我使用 ：https://utteranc.es/ 这是一个基于 GitHub 的评论的插件
+
+
+
+## 多语言
+
++ https://gohugo.io/content-management/multilingual/#menus
+
+Hugo 支持同时创建多种语言的网站。
+
+`languages`应该在站点配置的一个部分中定义可用的语言。
+
+**按文件名翻译**
+
+1. `/content/about.en.md`
+2. `/content/about.fr.md`
+
+第一个文件被指定为英语，并链接到第二个文件。第二个文件被指定为法语并链接到第一个文件。
+
+它们的语言是根据作为后缀添加到文件名的语言代码指定的。
+
+通过具有相同的路径和基本文件名，内容片段被链接在一起作为翻译的页面。
+
+> 如果文件没有语言代码，则将为其分配默认语言。
+
+
+
+**按内容目录翻译**
+
+当然也可以根据文件目录去翻译，该系统对每种语言使用不同的内容目录。每种语言的内容目录都使用 `contentDir` 参数设置。
+
+```yaml
+languages:
+  en:
+    contentDir: content/english
+    languageName: English
+    weight: 10
+  fr:
+    contentDir: content/french
+    languageName: Français
+    weight: 20
+```
+
+`contentDir` 的值可以是任何有效路径-甚至是绝对路径引用。唯一的限制是内容目录不能重叠。
+
+最后的示例如下：
+
+1. `/content/english/about.md`
+2. `/content/french/about.md`
+
+第一个文件被指定为英语，并链接到第二个文件。第二个文件被指定为法语并链接到第一个文件。
+
+它们的语言是根据它们所在的内容目录指定的。
+
+通过具有相同的路径和基本名称（相对于其语言内容目录），内容片段被链接在一起作为翻译页面。
+
+
+
+**绕过默认链接**
+
+任何页面共享相同的 `translationKey` 集在封面将被链接为翻译的网页，无论基地名称或位置。
+
+考虑以下示例：
+
+1. `/content/about-us.en.md`
+2. `/content/om.nn.md`
+3. `/content/presentation/a-propos.fr.md`
+
+```yaml
+translationKey: about
+```
+
+通过在所有三个页面中将 `translationKey` front matter参数设置为 `about` ，它们将被链接为翻译页面。
+
+
+
+### 使用 `hugo new content` 生成多语言内容 
+
+**下面给定的是翻译的文件**：
+
+针对同一目录：
+
+```bash
+hugo new content posts/my-hugo.en.md
+hugo new content posts/my-hugo.de.md
+```
+
+针对不同目录：
+
+```bash
+hugo new content content/en/posts/test.md
+hugo new content content/de/posts/test.md
+hugo new content content/zh/posts/test.md
+hugo new content content/fr/posts/test.md
+hugo new content content/es/posts/test.md
+hugo new content content/zh-tw/posts/test.md
+```
+
+我们将以下参数添加到我们的配置文件中:
+
+```yaml
+# config.yaml
+languages:
+  en:
+    languageName: English
+    weight: 1
+  fr:
+    languageName: Français
+    weight: 2
+  es:
+    languageName: Spanish
+    weight: 3
+```
+
+现在，我们的语言将可以使用`site.Languages`并按 排序`Weight`。越低……越优先。正如我们稍后将介绍的，强烈建议将默认语言放在第一位。
