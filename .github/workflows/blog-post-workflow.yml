@@ -28,6 +28,17 @@ jobs:
           committer_username: "openimbot"
           disable_html_encoding: true
 
+  update-readme-with-blog-zh:
+    name: Update this repo's README with latest blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Git
+        run: |
+          git config --global user.name "openimbot"
+          git config --global user.email "openimsdk@qq.com"
+
       - name: Pull in Chinese posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
@@ -39,6 +50,17 @@ jobs:
           committer_username: "openimbot"
           disable_html_encoding: true
 
+  update-readme-with-blog-es:
+    name: Update this repo's README with latest blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Git
+        run: |
+          git config --global user.name "openimbot"
+          git config --global user.email "openimsdk@qq.com"
+
       - name: Pull in Spanish posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
@@ -49,6 +71,17 @@ jobs:
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
           committer_username: "openimbot"
           disable_html_encoding: true
+
+  update-readme-with-blog-fr:
+    name: Update this repo's README with latest blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Git
+        run: |
+          git config --global user.name "openimbot"
+          git config --global user.email "openimsdk@qq.com"
 
       - name: Pull in French posts
         uses: gautamkrishnar/blog-post-workflow@v1
