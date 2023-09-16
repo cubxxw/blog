@@ -97,10 +97,6 @@ params:
     hidden: true
     hiddenInList: true
     hiddenInSingle: true
-  editPost:
-      URL: "https://github.com/cubxxw/blog/tree/main/content"
-      Text: "Suggest Changes" # edit text
-      appendFilePath: true # to append file path to Edit link
   fuseOpts:
     # https://www.fusejs.io/api/options.html#ignorefieldnorm
     isCaseSensitive: false
@@ -180,6 +176,10 @@ languages:
             url: archives
           - name: Tags
             url: tags
+      editPost:
+          URL: "https://github.com/cubxxw/blog/edit/main/content/en"
+          Text: "Suggest Changes" # edit text
+          appendFilePath: true # to append file path to Edit link
 
   fr:
     disabled: false
@@ -233,6 +233,11 @@ languages:
             url: ../archives
           - name: Étiquettes
             url: ../tags
+      editPost:
+          URL: "https://github.com/cubxxw/blog/edit/main/content/fr"
+          Text: "Suggest Changes" # edit text
+          appendFilePath: true # to append file path to Edit link
+
   es:
     disabled: false
     languageCode: "es-es"
@@ -285,6 +290,10 @@ languages:
             url: ../archives
           - name: Etiquetas
             url: ../tags
+      editPost:
+          URL: "https://github.com/cubxxw/blog/edit/main/content/es"
+          Text: "Suggest Changes" # edit text
+          appendFilePath: true # to append file path to Edit link
 
   zh:
     disabled: false
@@ -338,6 +347,10 @@ languages:
             url: archives
           - name: 标签
             url: tags
+      editPost:
+          URL: "https://github.com/cubxxw/blog/edit/main/content/zh"
+          Text: "Suggest Changes" # edit text
+          appendFilePath: true # to append file path to Edit link'
 
   zh-tw:
     disabled: false
@@ -390,3 +403,7 @@ languages:
             url: ../archives
           - name: 標籤
             url: ../tags
+      editPost:
+          URL: "https://github.com/cubxxw/blog/edit/main/content/zh-tw"
+          Text: "Suggest Changes" # edit text
+          appendFilePath: true # to append file path to Edit link

@@ -1,6 +1,6 @@
 ---
-title : 'Prow Ecological Learning'
-description:
+title : 'Prow 是什么？kubernetes 为什么需要它'
+description: 'Prow 是一个基于 Kubernetes 的 CI/CD 系统，它可以在 Kubernetes 集群中运行，用于管理和执行 CI/CD 流程。'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date : 2023-09-16T16:46:15+08:00
