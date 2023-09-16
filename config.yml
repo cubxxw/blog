@@ -45,15 +45,15 @@ params:
   hideSummary: false
   showtoc: true
   tocopen: true
-  # assets:
-  #   favicon: <link / abs url>
-  #   favicon16x16: <link / abs url>
-  #   favicon32x32: <link / abs url>
-  #   apple_touch_icon: <link / abs url>
-  #   safari_pinned_tab: <link / abs url>
+  assets:
+    favicon: http://sm.nsddd.top/sm202309161723148.ico
+    favicon16x16: http://sm.nsddd.top/sm202309161727506.png
+    favicon32x32: http://sm.nsddd.top/sm202309161727236.png
+    apple_touch_icon: http://sm.nsddd.top/sm202309161727814.png
+    # safari_pinned_tab: <link / abs url>
   label:
     text: Home
-    icon: /apple-touch-icon.png
+    icon: http://sm.nsddd.top/sm202309161719007.png
     iconHeight: 35
   homeInfoParams:
     Title: Hi there 👋
