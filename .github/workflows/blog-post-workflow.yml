@@ -59,18 +59,18 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up Git
         run: |
-          git config --global user.name "openimbot"
-          git config --global user.email "openimsdk@qq.com"
+          git config --global user.name "kubbot"
+          git config --global user.email "2464372560ysy@gmail.com"
       - name: Pull in Spanish posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-ES"
           feed_list: "https://rss.starerror.com/https://nsddd.top/es/posts/index.xml"
-          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
-          BOT_GITHUB_TOKEN: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
-          committer_username: "openimbot"
+          committer_username: "kubbot"
           disable_html_encoding: true
 
   update-readme-with-blog4:
@@ -81,16 +81,16 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up Git
         run: |
-          git config --global user.name "openimbot"
-          git config --global user.email "openimsdk@qq.com"
+          git config --global user.name "kubbot"
+          git config --global user.email "2464372560ysy@gmail.com"
       - name: Pull in French posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-FR"
           feed_list: "https://rss.starerror.com/https://nsddd.top/fr/posts/index.xml"
-          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
-          BOT_GITHUB_TOKEN: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
-          committer_username: "openimbot"
+          committer_username: "kubbot"
           disable_html_encoding: true
