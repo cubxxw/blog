@@ -52,7 +52,23 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
-
+- [Open Source Contribution Guidelines](https://nsddd.top/posts/open-source-contribution-guidelines/)
+- [Cross Platform Compilation](https://nsddd.top/posts/cross-platform-compilation/)
+- [Github Actions Advanced Techniques](https://nsddd.top/posts/github-actions-advanced-techniques/)
+- [Openim Devops Design](https://nsddd.top/posts/openim-devops-design/)
+- [GoReleaser: Automate your software releases](https://nsddd.top/posts/go-release-tools/)
+- [Openim Multi Process Management](https://nsddd.top/posts/openim-multi-process-management/)
+- [About My Blog](https://nsddd.top/posts/my-first-blog/)
+- [About My Hugo teaching](https://nsddd.top/posts/my-hugo/)
+- [Openkf Multi Architecture Image](https://nsddd.top/posts/openkf-multi-architecture-image/)
+- [Prow Ecological Learning](https://nsddd.top/posts/prow-ecological-learning/)
+- [Openim Remote Work Culture](https://nsddd.top/posts/openim-remote-work-culture/)
+- [Advanced Githook Design](https://nsddd.top/posts/advanced-githook-design/)
+- [Openim Offline Deployment Design](https://nsddd.top/posts/openim-offline-deployment-design/)
+- [Read Openim Project Sealos Openim Source Code](https://nsddd.top/posts/read-openim-project-sealos-openim-source-code/)
+- [Stage Growth of Open Source](https://nsddd.top/posts/stage-growth-of-open-source/)
+- [Use Auto Gpt](https://nsddd.top/posts/use-auto-gpt/)
+- [Use Go Tools Dlv](https://nsddd.top/posts/use-go-tools-dlv/)
 <!-- My-Blog-EN:END -->
 
 
