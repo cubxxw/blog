@@ -2,7 +2,7 @@
 title : 'Openim离线部署设计'
 description: "OpenIM community offline deployment design scheme, and implementation scheme"
 ShowRssButtonInSectionTermList: true
-date : 2023-09-16T15:20:59+08:00
+date : 2023-5-19T15:20:59+08:00
 draft: false
 cover:
   image: "http://sm.nsddd.top/sm202309161529285.jpg"

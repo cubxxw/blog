@@ -1,10 +1,11 @@
 ---
 title: 'About My Hugo teaching'
 date : 2023-09-12T14:26:20+08:00
-draft: true
+draft: false
 tags:
    - blog
    - en
+   - hugo
 categories:
   - Development
   - Blog
@@ -327,7 +328,7 @@ The default access URL for this post will usually be:
 Note the following points:
 
 1. **Ending Slash**: Hugo generates "pretty URLs" by default, which means they will end with a slash. You can modify this behavior in Hugo's configuration file.
-2. **Draft and Publish**: Newly created posts are in draft status by default (`draft: true` in the header information of the post). If you use `hugo server` to preview your site without adding the `-D` parameter, you will not see the draft. In order to preview draft content, you need to use `hugo server -D`.
+2. **Draft and Publish**: Newly created posts are in draft status by default (`draft: false` in the header information of the post). If you use `hugo server` to preview your site without adding the `-D` parameter, you will not see the draft. In order to preview draft content, you need to use `hugo server -D`.
 3. **Custom path**: If you want to define a custom path for a specific post, you can specify it using the `url` attribute in the front matter of the post.
 
 

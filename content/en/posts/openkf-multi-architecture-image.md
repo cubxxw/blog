@@ -1,10 +1,11 @@
 ---
 title : 'Openkf Multi Architecture Image'
-date : 2023-09-16T14:15:14+08:00
+date : 2023-09-01T14:56:14+08:00
 draft : false
 tags:
   - blog
   - en
+  - openkf
 categories:
   - Development
   - Blog

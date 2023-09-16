@@ -3,17 +3,21 @@ title : 'Stage Growth of Open Source'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:36:14+08:00
+date : 2023-04-15T16:36:14+08:00
 draft : false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog
+  - open-source
+  - kubernetes
+  - github
 categories:
   - Development
   - Blog
+  - Github
 ---
 
 ✨ Anyone who is familiar with me knows that I am an out-and-out open source enthusiast. After I came into contact with GitHub in my freshman year, I gradually became addicted to the open source world~ Today’s article is very special, I can refer to it and summarize it. The open source stage, as well as the steps and experience of learning open source projects. In the future, I will also grow according to my own plan.

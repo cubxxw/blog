@@ -3,11 +3,11 @@ title : 'Read Openim Project Sealos Openim Source Code'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:33:09+08:00
+date : 2023-05-11T16:33:09+08:00
 draft : false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog

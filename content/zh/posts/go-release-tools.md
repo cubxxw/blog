@@ -2285,7 +2285,7 @@ release:
   # Available only for GitHub and Gitea.
   #
   # Default: false
-  draft: true
+  draft: false
 
   # Whether to remove existing draft releases with the same name before creating
   # a new one.
@@ -2294,7 +2294,7 @@ release:
   #
   # Default: false
   # Since: v1.11
-  replace_existing_draft: true
+  replace_existing_draft: false
 
   # Useful if you want to delay the creation of the tag in the remote.
   # You can create the tag locally, but not push it, and run GoReleaser.

@@ -3,11 +3,11 @@ title : 'Advanced Githook Design'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:24:59+08:00
+date : 2023-06-16T16:24:59+08:00
 draft : false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog

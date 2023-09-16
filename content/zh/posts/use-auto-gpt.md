@@ -3,7 +3,7 @@ title : '如何安装和使用自主人工智能工具Auto-GPT'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:28:31+08:00
+date : 2023-07-16T16:28:31+08:00
 draft : false
 showtoc: true
 tocopen: true

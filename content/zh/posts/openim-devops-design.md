@@ -3,7 +3,7 @@ title : 'DevOps OpenIM 的标准设计'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:13:37+08:00
+date : 2023-09-02T16:13:37+08:00
 draft : false
 showtoc: true
 tocopen: true

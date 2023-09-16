@@ -7,7 +7,7 @@ date : 2023-09-16T16:40:53+08:00
 draft : false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog
