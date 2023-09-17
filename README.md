@@ -52,6 +52,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [The Art of Asking Questions in Open Source Communities](https://nsddd.top/posts/the-art-of-asking-questions-in-open-source-communities/)
 - [Open Source Contribution Guidelines](https://nsddd.top/posts/open-source-contribution-guidelines/)
 - [Cross Platform Compilation](https://nsddd.top/posts/cross-platform-compilation/)
 - [Github Actions Advanced Techniques](https://nsddd.top/posts/github-actions-advanced-techniques/)
