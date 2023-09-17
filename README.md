@@ -77,6 +77,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [在开源社区中学会如何提问](https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/)
 - [Prow Ecological Learning](https://nsddd.top/zh/posts/prow-ecological-learning/)
 - [一份完整的开源贡献指南（第一次踏入开源）](https://nsddd.top/zh/posts/open-source-contribution-guidelines/)
 - [开源社区的规范设计思路](https://nsddd.top/zh/posts/advanced-githook-design/)
