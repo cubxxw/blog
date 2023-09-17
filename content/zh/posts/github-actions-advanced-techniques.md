@@ -1,5 +1,5 @@
 ---
-title : 'Github Actions 的高级使用技巧'
+title: 'Github Actions 的高级使用技巧'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

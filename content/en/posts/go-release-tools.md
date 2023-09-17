@@ -1,5 +1,5 @@
 ---
-title : 'GoReleaser: Automate your software releases'
+title: 'GoReleaser: Automate your software releases'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

@@ -1,5 +1,5 @@
 ---
-title : '关于我的 Hugo (教程)'
+title: '关于我的 Hugo (教程)'
 date : 2023-09-12T14:26:20+08:00
 tags:
   - blog

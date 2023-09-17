@@ -1,5 +1,5 @@
 ---
-title : 'Advanced Githook Design'
+title: 'Advanced Githook Design'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

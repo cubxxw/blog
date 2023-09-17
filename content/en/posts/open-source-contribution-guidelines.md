@@ -1,5 +1,5 @@
 ---
-title : 'Open Source Contribution Guidelines'
+title: 'Open Source Contribution Guidelines'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

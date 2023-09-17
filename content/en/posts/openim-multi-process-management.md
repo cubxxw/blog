@@ -1,5 +1,5 @@
 ---
-title : 'Openim Multi Process Management'
+title: 'Openim Multi Process Management'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

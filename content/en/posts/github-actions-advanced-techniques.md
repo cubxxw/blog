@@ -1,5 +1,5 @@
 ---
-title : 'Github Actions Advanced Techniques'
+title: 'Github Actions Advanced Techniques'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

@@ -1,5 +1,5 @@
 ---
-title : 'Cross Platform Compilation'
+title: 'Cross Platform Compilation'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

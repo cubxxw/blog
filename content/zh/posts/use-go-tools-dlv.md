@@ -1,5 +1,5 @@
 ---
-title : 'go 调试 测试 以及调试工具 dlv 学习'
+title: 'go 调试 测试 以及调试工具 dlv 学习'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

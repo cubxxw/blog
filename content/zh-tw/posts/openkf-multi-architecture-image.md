@@ -1,5 +1,5 @@
 ---
-title : 'Openkf 多架構鏡像的構建策略設計'
+title: 'Openkf 多架構鏡像的構建策略設計'
 date : 2023-09-16T14:15:15+08:00
 draft : false
 tags:

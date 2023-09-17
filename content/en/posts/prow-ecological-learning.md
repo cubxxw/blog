@@ -1,5 +1,5 @@
 ---
-title : 'Prow Ecological Learning'
+title: 'Prow Ecological Learning'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

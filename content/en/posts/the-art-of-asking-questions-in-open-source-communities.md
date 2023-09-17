@@ -1,5 +1,5 @@
 ---
-title : 'The Art of Asking Questions in Open Source Communities'
+title: 'The Art of Asking Questions in Open Source Communities'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

@@ -1,5 +1,5 @@
 ---
-title : '开源的阶段性成长指南'
+title: '开源的阶段性成长指南'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

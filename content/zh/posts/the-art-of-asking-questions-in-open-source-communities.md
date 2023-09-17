@@ -1,5 +1,5 @@
 ---
-title : '在开源社区中学会如何提问'
+title: '在开源社区中学会如何提问'
 description: "在开源社区中，提问的艺术"
 ShowRssButtonInSectionTermList: true
 cover.image:

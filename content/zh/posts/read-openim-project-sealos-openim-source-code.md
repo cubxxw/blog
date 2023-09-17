@@ -1,5 +1,5 @@
 ---
-title : '速读开源项目 Sealos 的源码'
+title: '速读开源项目 Sealos 的源码'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

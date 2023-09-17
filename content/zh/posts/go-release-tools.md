@@ -1,5 +1,5 @@
 ---
-title : 'GoReleaser：自动化你的软件发布'
+title: 'GoReleaser：自动化你的软件发布'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

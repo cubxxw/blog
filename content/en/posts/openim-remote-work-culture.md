@@ -1,5 +1,5 @@
 ---
-title : 'Openim Remote Work Culture'
+title: 'Openim Remote Work Culture'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

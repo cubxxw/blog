@@ -1,5 +1,5 @@
 ---
-title : 'Openim Offline Deployment Design'
+title: 'Openim Offline Deployment Design'
 description: "OpenIM community offline deployment design scheme, and implementation scheme"
 ShowRssButtonInSectionTermList: true
 cover.image:

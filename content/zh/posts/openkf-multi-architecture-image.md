@@ -1,5 +1,5 @@
 ---
-title : 'Openkf 多架构镜像的构建策略设计'
+title: 'Openkf 多架构镜像的构建策略设计'
 date : 2023-04-23T14:15:15+08:00
 draft : false
 tags:

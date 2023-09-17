@@ -1,5 +1,5 @@
 ---
-title : 'Use Auto Gpt'
+title: 'Use Auto Gpt'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

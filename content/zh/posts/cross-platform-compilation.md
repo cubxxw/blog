@@ -1,5 +1,5 @@
 ---
-title : '跨平台以及多架构编译设计'
+title: '跨平台以及多架构编译设计'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

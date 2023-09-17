@@ -1,5 +1,5 @@
 ---
-title : 'OpenIM 多进程管理'
+title: 'OpenIM 多进程管理'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

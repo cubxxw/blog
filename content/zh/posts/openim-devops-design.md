@@ -1,5 +1,5 @@
 ---
-title : 'DevOps OpenIM 的标准设计'
+title: 'DevOps OpenIM 的标准设计'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

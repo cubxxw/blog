@@ -1,5 +1,5 @@
 ---
-title : 'Stage Growth of Open Source'
+title: 'Stage Growth of Open Source'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

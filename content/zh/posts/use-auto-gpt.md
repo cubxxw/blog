@@ -1,5 +1,5 @@
 ---
-title : '如何安装和使用自主人工智能工具Auto-GPT'
+title: '如何安装和使用自主人工智能工具Auto-GPT'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

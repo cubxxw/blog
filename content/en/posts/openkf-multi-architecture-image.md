@@ -1,5 +1,5 @@
 ---
-title : 'Openkf Multi Architecture Image'
+title: 'Openkf Multi Architecture Image'
 date : 2023-09-01T14:56:14+08:00
 draft : false
 tags:

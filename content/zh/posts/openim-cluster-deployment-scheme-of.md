@@ -1,5 +1,5 @@
 ---
-title : 'OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 总结'
+title: 'OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 总结'
 description: "这是一篇关于 OpenIM 集群化部署方案的讨论会总结。"
 ShowRssButtonInSectionTermList: true
 cover.image:

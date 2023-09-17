@@ -1,5 +1,5 @@
 ---
-title : 'OpenIM 远程工作团队协作协议 v1.3'
+title: 'OpenIM 远程工作团队协作协议 v1.3'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

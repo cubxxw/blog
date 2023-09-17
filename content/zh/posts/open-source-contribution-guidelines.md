@@ -1,5 +1,5 @@
 ---
-title : '一份完整的开源贡献指南（第一次踏入开源）'
+title: '一份完整的开源贡献指南（第一次踏入开源）'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

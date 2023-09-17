@@ -1,5 +1,5 @@
 ---
-title : 'Read Openim Project Sealos Openim Source Code'
+title: 'Read Openim Project Sealos Openim Source Code'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

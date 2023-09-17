@@ -1,5 +1,5 @@
 ---
-title : 'Openim Devops Design'
+title: 'Openim Devops Design'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

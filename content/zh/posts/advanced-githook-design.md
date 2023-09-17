@@ -1,5 +1,5 @@
 ---
-title : '开源社区的规范设计思路'
+title: '开源社区的规范设计思路'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:

@@ -1,5 +1,5 @@
 ---
-title : 'Openim离线部署设计'
+title: 'Openim离线部署设计'
 description: "OpenIM community offline deployment design scheme, and implementation scheme"
 ShowRssButtonInSectionTermList: true
 date : 2023-5-19T15:20:59+08:00

@@ -1,5 +1,5 @@
 ---
-title : 'Use Go Tools Dlv'
+title: 'Use Go Tools Dlv'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
