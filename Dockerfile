@@ -4,7 +4,7 @@
 # change is that the Hugo version is now an overridable argument rather than a fixed
 # environment variable.
 
-FROM golang:1.20
+FROM golang:1.21
 
 ARG GO111MODULE=on
 ARG GOPROXY=https://goproxy.cn,direct
@@ -29,7 +29,7 @@ RUN mkdir $HOME/src && \
     cd "hugo-${HUGO_VERSION}" && \
     go install --tags extended
 
-FROM golang:1.20
+FROM golang:1.21
 
 ARG GO111MODULE=on
 ARG GOPROXY=https://goproxy.cn,direct
