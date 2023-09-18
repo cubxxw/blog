@@ -117,17 +117,50 @@ Ici, vous trouverez les derniers articles de blog les plus intéressants en fran
 <!-- My-Blog-FR:END -->
 
 
+## Running the website locally
+
+Clone the minikube project fork with option `--recurse-submodules --depth 1` to download and update submodule dependencies.
+
+```bash
+❯ git clone --recurse-submodules --depth 1 https://github.com/cubxxw/blog.git  # replace path with your github fork of minikube 
+❯ cd blog
+```
+
+
 
 ## Use
 
 ```bash
-make run
+❯ make run
 ```
 
 ## Create a new article
 
 ```bash
-make new-post POST_NAME="openim-offline-deployment-design"
+❯ make new-post POST_NAME="openim-offline-deployment-design"
+```
+
+**Named by an environment variable:**
+
+```bash
+❯ POST_NAME="openim-k8s-deployment" make new-post  # penim-k8s-deployment.md
+❯ export POST_NAME="my-hugo"
+❯ make new-post    # my-hugo.md
+```
+
+## Common Issues
+
+```bash
+Start building sites …
+hugo v0.86.0+extended darwin/amd64 BuildDate=unknown
+Error: Error building site: "/minikube/site/content/en/docs/contrib/releasing/binaries.md:64:1": failed to extract shortcode: template for shortcode "alert" not found
+Built in 667 ms
+```
+
+This indicates the submodules are not updated. Please run the following command to fix.
+
+```bash
+❯ git submodule update --init --recursive
 ```
 
 

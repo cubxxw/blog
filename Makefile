@@ -12,7 +12,17 @@ SHELL := /bin/bash
 DIRS=$(shell ls)
 GO=go
 
+HUGO_VERSION      = $(shell grep ^HUGO_VERSION netlify.toml | tail -n 1 | cut -d '=' -f 2 | tr -d " \"\n")
+NODE_BIN          = node_modules/.bin
+NETLIFY_FUNC      = $(NODE_BIN)/netlify-lambda
+
 .DEFAULT_GOAL := help
+
+CCRED=\033[0;31m
+CCEND=\033[0m
+
+# Docker buildx related settings for multi-arch images
+DOCKER_BUILDX ?= docker buildx
 
 # include the common makefile
 COMMON_SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
@@ -99,14 +109,107 @@ endif
 build: tools.verify.hugo module-check
 	@$(TOOLS_DIR)/hugo --cleanDestinationDir --minify --environment development
 
+## build-preview: Build site with drafts and future posts enabled
+.PHONY: build-preview
+build-preview: module-check
+	@$(TOOLS_DIR)/hugo --cleanDestinationDir --buildDrafts --buildFuture --environment preview
+
+## deploy-preview: Deploy preview site via netlify
+.PHONY: deploy-preview
+deploy-preview:
+	GOMAXPROCS=1 $(TOOLS_DIR)/hugo --cleanDestinationDir --enableGitInfo --buildFuture --environment preview -b $(DEPLOY_PRIME_URL)
+
 ## module-check: Check if all of the required submodules are correctly initialized.
 .PHONY: module-check
 module-check:
 	@git submodule status --recursive | awk '/^[+-]/ {err = 1; printf "\033[31mWARNING\033[0m Submodule not initialized: \033[34m%s\033[0m\n",$$2} END { if (err != 0) print "You need to run \033[32mmake module-init\033[0m to initialize missing modules first"; exit err }' 1>&2
 
+## module-init: Initialize required submodules.
+.PHONY: module-init
+module-init:
+	@echo "Initializing submodules..." 1>&2
+	@git submodule update --init --recursive --depth 1
+
 ## module-update: Updating themes
+.PHONY: module-update
 module-update: tools.verify.hugo
 	@git submodule update --remote --merge
+
+## production-build: Build the production site and ensure that noindex headers aren't added
+.PHONY: production-build
+production-build: module-check
+	GOMAXPROCS=1 hugo --cleanDestinationDir --minify --environment production
+	HUGO_ENV=production $(MAKE) check-headers-file
+
+## non-production-build: Build the non-production site, which adds noindex headers to prevent indexing
+.PHONY: non-production-build
+non-production-build: module-check
+	GOMAXPROCS=1 $(TOOLS_DIR)/hugo --cleanDestinationDir --enableGitInfo --environment nonprod
+
+## serve: Boot the development server.
+.PHONY: serve
+serve: module-check
+	$(TOOLS_DIR)/hugo server --buildFuture --environment development
+
+## container-image: Build a container image for the preview of the website
+container-image:
+	$(CONTAINER_ENGINE) build . \
+		--network=host \
+		--tag $(CONTAINER_IMAGE) \
+		--build-arg HUGO_VERSION=$(HUGO_VERSION)
+
+## container-push: Push container image for the preview of the website
+container-push: container-image ## Push container image for the preview of the website
+	$(CONTAINER_ENGINE) push $(CONTAINER_IMAGE)
+
+## docker-push: Build a multi-architecture image and push that into the registry
+PLATFORMS ?= linux/arm64,linux/amd64
+.PHONY: docker-push
+docker-push:
+	docker run --rm --privileged tonistiigi/binfmt:qemu-v6.2.0-26@sha256:5bf63a53ad6222538112b5ced0f1afb8509132773ea6dd3991a197464962854e --install all
+	docker version
+	$(DOCKER_BUILDX) version
+	$(DOCKER_BUILDX) inspect image-builder > /dev/null 2>&1 || $(DOCKER_BUILDX) create --name image-builder --use
+	# copy existing Dockerfile and insert --platform=${TARGETPLATFORM} into Dockerfile.cross, and preserve the original Dockerfile
+	sed -e 's/\(^FROM\)/FROM --platform=\$$\{TARGETPLATFORM\}/' Dockerfile > Dockerfile.cross
+	$(DOCKER_BUILDX) build \
+		--push \
+		--platform=$(PLATFORMS) \
+		--build-arg HUGO_VERSION=$(HUGO_VERSION) \
+		--tag $(CONTAINER_IMAGE) \
+		-f Dockerfile.cross .
+	$(DOCKER_BUILDX) stop image-builder
+	rm Dockerfile.cross
+
+container-build: module-check
+	$(CONTAINER_RUN) --read-only --mount type=tmpfs,destination=/tmp,tmpfs-mode=01777 $(CONTAINER_IMAGE) sh -c "npm ci && hugo --minify --environment development"
+
+## container-serve: Boot the development server using container.
+# no build lock to allow for read-only mounts
+.PHONY: container-serve
+container-serve: module-check
+	$(CONTAINER_RUN) --cap-drop=ALL --cap-add=AUDIT_WRITE --read-only --mount type=tmpfs,destination=/tmp,tmpfs-mode=01777 -p 1313:1313 $(CONTAINER_IMAGE) hugo server --buildFuture --environment development --bind 0.0.0.0 --destination /tmp/hugo --cleanDestinationDir --noBuildLock
+
+test-examples:
+	scripts/test_examples.sh install
+	scripts/test_examples.sh run
+
+.PHONY: link-checker-setup
+link-checker-image-pull:
+	$(CONTAINER_ENGINE) pull wjdp/htmltest
+
+container-internal-linkcheck: link-checker-image-pull
+	$(CONTAINER_RUN) $(CONTAINER_IMAGE) hugo --config config.toml,linkcheck-config.toml --buildFuture --environment test
+	$(CONTAINER_ENGINE) run --mount "type=bind,source=$(CURDIR),target=/test" --rm wjdp/htmltest htmltest
+
+## clean-api-reference: Clean all directories in API reference directory, preserve _index.md
+clean-api-reference:
+	rm -rf content/en/docs/reference/kubernetes-api/*/
+
+## api-reference: Build the API reference pages. go needed
+api-reference: clean-api-reference
+	cd api-ref-generator/gen-resourcesdocs && \
+		go run cmd/main.go kwebsite --config-dir ../../api-ref-assets/config/ --file ../../api-ref-assets/api/swagger.json --output-dir ../../content/en/docs/reference/kubernetes-api --templates ../../api-ref-assets/templates
 
 ## clean: Clean all builds.
 .PHONY: clean
