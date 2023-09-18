@@ -259,4 +259,4 @@ install.addlicense:
 
 .PHONY: install.hugo
 install.hugo:
-	@$(GO) install github.com/gohugoio/hugo@latest
+	@$(GO) install  --tags extended github.com/gohugoio/hugo@latest

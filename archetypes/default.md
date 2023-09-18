@@ -1,17 +1,19 @@
 ---
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
-description:
 ShowRssButtonInSectionTermList: true
 cover.image:
 date : {{ .Date }}
 draft : false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
+type: posts
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog
 categories:
   - Development
   - Blog
+description: >
+    <You can switch to the specified language>
 ---
