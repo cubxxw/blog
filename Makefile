@@ -12,6 +12,14 @@ SHELL := /bin/bash
 DIRS=$(shell ls)
 GO=go
 
+CONTAINER_ENGINE ?= docker
+IMAGE_REGISTRY ?= oepnim/openim-hugo
+IMAGE_VERSION=$(shell scripts/hash-files.sh Dockerfile Makefile | cut -c 1-12)
+CONTAINER_IMAGE   = docker pull oepnim/openim-hugo
+# Mount read-only to allow use with tools like Podman in SELinux mode
+# Container targets don't need to write into /src
+CONTAINER_RUN     = "$(CONTAINER_ENGINE)" run --rm --interactive --tty --volume "$(CURDIR):/src:ro,Z"
+
 HUGO_VERSION      = $(shell grep ^HUGO_VERSION netlify.toml | tail -n 1 | cut -d '=' -f 2 | tr -d " \"\n")
 NODE_BIN          = node_modules/.bin
 NETLIFY_FUNC      = $(NODE_BIN)/netlify-lambda
