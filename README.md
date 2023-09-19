@@ -80,6 +80,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [设计建议:通过配置文件简化Kubernetes部署的端口配置](https://nsddd.top/zh/posts/openim-cluster-deployment-parameter-passing-policy/)
 - [OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 总结](https://nsddd.top/zh/posts/openim-cluster-deployment-scheme-of/)
 - [在开源社区中学会如何提问](https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/)
 - [Prow 是什么？kubernetes 为什么需要它](https://nsddd.top/zh/posts/prow-ecological-learning/)
