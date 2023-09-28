@@ -173,14 +173,15 @@ For communication between components in K8s, certificate verification is complet
 
 When two components perform mutual TLS authentication, the relevant files in the following table will be involved:
 
-| Name | Function | Example |
-| :------------- | :--------------------------------- ----------------------- | :----------------------- ---------------------------------- |
-| Server certificate | Contains server public key and server identity information | API Server server certificate file apiserver.crt generated manually through root certificate or automatically by kubeadm |
-| Server private key | Mainly used for digital signature during TLS authentication to prove that you are the owner of the server certificate | API Server private key file apiserver.key generated manually or by kubeadm through the root certificate |
-| Client certificate | Contains client public key and client identity information | .crt file signed by the same CA root certificate |
-| Client private key | Mainly used for digital signature during TLS authentication to prove that you are the owner of the client certificate | .key file signed by the same CA root certificate |
-| Server CA root certificate | CA root certificate that issues the server certificate | ca.crt file generated through openssl and other tools, and specified when the server starts |
-| Client CA root certificate | CA root certificate that issues the client certificate | The ca.crt file generated through openssl and other tools, and specified when the client starts (usually one is used with the server) |
+| 📜 Name                      | 🎯 Function                                                                 | 🌟 Example |
+|-----------------------------|----------------------------------------------------------------------------|------------|
+| 🖧 Server certificate       | Contains server public key and server identity information                  | API Server certificate file (`apiserver.crt`) either generated manually through root certificate or by `kubeadm` 🛠️ |
+| 🔐 Server private key       | Used for digital signature during TLS authentication to prove the server's identity | API Server private key file (`apiserver.key`) either manually generated or by `kubeadm` through the root certificate |
+| 🖥️ Client certificate      | Contains client public key and client identity information                  | `.crt` file signed by the same CA root certificate 📝 |
+| 🔑 Client private key       | Used for digital signature during TLS authentication to prove the client's identity | `.key` file signed by the same CA root certificate 📝 |
+| 🏛️ Server CA root certificate | CA root certificate that issues the server certificate                      | `ca.crt` file generated through tools like `openssl`, specified during server startup 🚀 |
+| 🌍 Client CA root certificate | CA root certificate that issues the client certificate                      | `ca.crt` file generated using tools like `openssl`, specified when the client starts (commonly shared with the server) 🔄 |
+
 
 
 

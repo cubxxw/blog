@@ -8,7 +8,6 @@ showtoc: true
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: []
 tags:
   - blog
   - etcd
