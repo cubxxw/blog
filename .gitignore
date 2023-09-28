@@ -8,6 +8,14 @@
 *.so
 *.dylib
 
+**/.DS_Store
+**/desktop.ini
+_site/**
+CNAME
+.travis.yml
+.idea/
+.vscode/
+
 # Test binary, built with `go test -c`
 *.test
 
@@ -28,14 +36,6 @@ go.work
 _output/
 .vscode
 
-
-**/.DS_Store
-**/desktop.ini
-_site/**
-CNAME
-.travis.yml
-.idea/
-
 # Vim ignore
 # source: https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
 
@@ -49,10 +49,10 @@ Session.vim
 # temporary
 .netrwhist
 *~
-# auto-generated tag files
+
 tags
 
-kubernetes.github.io.iml
+openim.github.io.iml
 
 nohup.out
 
