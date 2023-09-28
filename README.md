@@ -121,6 +121,12 @@ Ici, vous trouverez les derniers articles de blog les plus intéressants en fran
 <!-- My-Blog-FR:END -->
 
 
+
+## Content style
+
+We don’t mandate any particular style for your page contents. However, if you’d like some guidance on how to write and format clear, concise technical documentation, we recommend the [Google Developer Documentation Style Guide](https://developers.google.com/style/), particularly the [Style Guide Highlights](https://developers.google.com/style/highlights).
+
+
 ## Running the website locally
 
 Clone the minikube project fork with option `--recurse-submodules --depth 1` to download and update submodule dependencies.
@@ -129,8 +135,6 @@ Clone the minikube project fork with option `--recurse-submodules --depth 1` to 
 ❯ git clone --recurse-submodules --depth 1 https://github.com/cubxxw/blog.git  # replace path with your github fork of minikube 
 ❯ cd blog
 ```
-
-
 
 ## Use
 
