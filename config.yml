@@ -46,10 +46,10 @@ params:
   showtoc: true
   tocopen: true
   assets:
-    favicon: http://sm.nsddd.top/sm202309161723148.ico
-    favicon16x16: http://sm.nsddd.top/sm202309161727506.png
-    favicon32x32: http://sm.nsddd.top/sm202309161727236.png
-    apple_touch_icon: http://sm.nsddd.top/sm202309161727814.png
+    favicon: ./favicon.ico
+    favicon16x16: ./favicon-16x16.png
+    favicon32x32: ./favicon-32x32.png
+    apple_touch_icon: ./apple-touch-icon.png
     # safari_pinned_tab: <link / abs url>
   label:
     text: Home
