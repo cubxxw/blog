@@ -198,17 +198,17 @@ languages:
           weight: 10
         - identifier: categories
           name: 🗂️Catégories
-          url: ../categories/
+          url: categories/
           pageRef: /categories
           weight: 20
         - identifier: tags
           name: 🏷️Étiquettes
-          url: ../tags/
+          url: tags/
           pageRef: /tags
           weight: 30
         - identifier: search
           name: 🔍Recherche
-          url: ../search/
+          url: search/
           pageRef: /search
           weight: 40
         - identifier: github
@@ -228,11 +228,11 @@ languages:
         imageHeight: 120
         buttons:
           - name: Articles
-            url: ../posts
+            url: posts
           - name: Archives
-            url: ../archives
+            url: archives
           - name: Étiquettes
-            url: ../tags
+            url: tags
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/fr"
           Text: "Suggest Changes" # edit text
@@ -260,12 +260,12 @@ languages:
           weight: 20
         - identifier: tags
           name: 🏷️Etiquetas
-          url: ../tags/
+          url: tags/
           pageRef: /tags
           weight: 30
         - identifier: search
           name: 🔍Buscar
-          url: ../search/
+          url: search/
           pageRef: /search
           weight: 40
         - identifier: github
@@ -285,11 +285,11 @@ languages:
         imageHeight: 120
         buttons:
           - name: Publicaciones
-            url: ../posts
+            url: posts
           - name: Archivos
-            url: ../archives
+            url: archives
           - name: Etiquetas
-            url: ../tags
+            url: tags
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/es"
           Text: "Suggest Changes" # edit text
@@ -358,6 +358,7 @@ languages:
     languageDirection: "ltr"
     title: "繁體中文博客"
     languageName: 繁體中文
+    contentDir: "content/zh-tw"
     weight: 5
     menu:
       main:
@@ -368,17 +369,17 @@ languages:
           weight: 10
         - identifier: categories
           name: 🗂️分類
-          url: ../categories/
+          url: categories/
           pageRef: /categories
           weight: 20
         - identifier: tags
           name: 🏷️標籤
-          url: ../tags/
+          url: tags/
           pageRef: /tags
           weight: 30
         - identifier: search
           name: 🔍搜索
-          url: ../search/
+          url: search/
           pageRef: /search
           weight: 40
         - identifier: github
@@ -398,11 +399,11 @@ languages:
         imageHeight: 120
         buttons:
           - name: 文章
-            url: ../posts
+            url: posts
           - name: 歸檔
-            url: ../archives
+            url: archives
           - name: 標籤
-            url: ../tags
+            url: tags
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/zh-tw"
           Text: "Suggest Changes" # edit text
