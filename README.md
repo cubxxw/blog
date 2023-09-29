@@ -52,6 +52,8 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [In-depth understanding of the components of Kubernetes Kube apisserver](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
+- [Deep Dive Into the Components of Kubernetes Etcd](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [Design Proposal: Simplified Port Configuration via Config Files for Kubernetes Deployment](https://nsddd.top/posts/openim-cluster-deployment-parameter-passing-policy/)
 - [OpenIM clustering design Kubernetes deploy concludes](https://nsddd.top/posts/openim-cluster-deployment-scheme-of/)
 - [The Art of Asking Questions in Open Source Communities](https://nsddd.top/posts/the-art-of-asking-questions-in-open-source-communities/)
@@ -72,6 +74,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Stage Growth of Open Source](https://nsddd.top/posts/stage-growth-of-open-source/)
 - [Use Auto Gpt](https://nsddd.top/posts/use-auto-gpt/)
 - [Use Go Tools Dlv](https://nsddd.top/posts/use-go-tools-dlv/)
+- [Kubernetes an Article to Get Started Quickly](https://nsddd.top/posts/kubernetes-an-article-to-get-started-quickly/)
 <!-- My-Blog-EN:END -->
 
 
