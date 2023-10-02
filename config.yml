@@ -43,6 +43,7 @@ params:
   comments: true
   hidemeta: false
   hideSummary: false
+  
   showtoc: true
   tocopen: true
   assets:
@@ -140,17 +141,17 @@ languages:
           weight: 10
         - identifier: categories
           name: 🗂️Categories
-          url: /categories/
+          url: categories/
           pageRef: /categories
           weight: 20
         - identifier: tags
           name: 🏷️Tags
-          url: /tags/
+          url: tags/
           pageRef: /tags
           weight: 30
         - identifier:
           name: 🔍Search
-          url: /search/
+          url: search/
           pageRef: /search
           weight: 40
         - identifier: 
@@ -255,7 +256,7 @@ languages:
           weight: 10
         - identifier: categories
           name: 🗂️Categorías
-          url: ../categories/
+          url: categories/
           pageRef: /categories
           weight: 20
         - identifier: tags
