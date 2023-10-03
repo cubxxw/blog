@@ -70,7 +70,7 @@ jobs:
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
           committer_username: "kubbbot"
-          disable_html_encoding: true
+        #   disable_html_encoding: true
 
   update-readme-with-blog-fr:
     name: Update this repo's README with latest blog posts
@@ -92,7 +92,7 @@ jobs:
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
           committer_username: "kubbbot"
-          disable_html_encoding: true
+        #   disable_html_encoding: true
 
 # https://nsddd.top/zh-tw/index.xml
   update-readme-with-blog-zh-tw:
