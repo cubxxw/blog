@@ -14,18 +14,18 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Git
         run: |
-          git config --global user.name "openimbot"
-          git config --global user.email "openimsdk@qq.com"
+          git config --global user.name "kubbbot"
+          git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in dev.to posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-EN"
-          feed_list: "https://rss.starerror.com/https://nsddd.top/posts/index.xml"
-          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          feed_list: "https://nsddd.top/index.xml"
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from EN"
-          committer_username: "openimbot"
+          committer_username: "kubbbot"
           disable_html_encoding: true
 
   update-readme-with-blog-zh:
@@ -36,18 +36,18 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Git
         run: |
-          git config --global user.name "openimbot"
-          git config --global user.email "openimsdk@qq.com"
+          git config --global user.name "kubbbot"
+          git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in Chinese posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-ZH"
-          feed_list: "https://rss.starerror.com/https://nsddd.top/zh/posts/index.xml"
-          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          feed_list: "https://nsddd.top/zh/index.xml"
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ZH"
-          committer_username: "openimbot"
+          committer_username: "kubbbot"
           disable_html_encoding: true
 
   update-readme-with-blog-es:
@@ -58,18 +58,18 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Git
         run: |
-          git config --global user.name "openimbot"
-          git config --global user.email "openimsdk@qq.com"
+          git config --global user.name "kubbbot"
+          git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in Spanish posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-ES"
-          feed_list: "https://rss.starerror.com/https://nsddd.top/es/posts/index.xml"
-          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          feed_list: "https://nsddd.top/es/index.xml"
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
-          committer_username: "openimbot"
+          committer_username: "kubbbot"
           disable_html_encoding: true
 
   update-readme-with-blog-fr:
@@ -80,16 +80,39 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Git
         run: |
-          git config --global user.name "openimbot"
-          git config --global user.email "openimsdk@qq.com"
+          git config --global user.name "kubbbot"
+          git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in French posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: "My-Blog-FR"
-          feed_list: "https://rss.starerror.com/https://nsddd.top/fr/posts/index.xml"
-          token: ${{ secrets.REDBOT_GITHUB_TOKEN }}
+          feed_list: "https://nsddd.top/fr/index.xml"
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
-          committer_username: "openimbot"
+          committer_username: "kubbbot"
           disable_html_encoding: true
+
+# https://nsddd.top/zh-tw/index.xml
+  update-readme-with-blog-zh-tw:
+        name: Update this repo's README with latest blog posts
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Set up Git
+          run: |
+            git config --global user.name "kubbbot"
+            git config --global user.email "3293172751ysy@gmail.com"
+        
+        - name: Pull in Chinese posts
+          uses: gautamkrishnar/blog-post-workflow@v1
+          with:
+            comment_tag_name: "My-Blog-TW"
+            feed_list: "https://nsddd.top/zh-tw/index.xml"
+            token: ${{ secrets.BOT_GITHUB_TOKEN }}
+            max_post_count: 100
+            commit_message: "🔥docs(main): update with latest RadioGeek feed from TW"
+            committer_username: "kubbbot"
+            disable_html_encoding: true
