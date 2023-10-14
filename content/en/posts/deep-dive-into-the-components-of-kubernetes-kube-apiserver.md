@@ -46,19 +46,17 @@ kube-apiserver is one of the most important core components of Kubernetes and ma
 
 ## Access control
 
-**API Server is the intermediate hub for all component interactions. **
+**API Server is the intermediate hub for all component interactions.**
 
 Each request to the Kubernetes API will go through multi-stage access control before it is accepted, including authentication, authorization and admission control (Admission Control), etc.
 
 > The previous one is Mutating Webhook, which can change the value of an object, but Validating Webhook cannot modify the value of an object and will not take effect.
 
-![img](http://sm.nsddd.top/sm202303051431637.png)
+<p><img src="http://sm.nsddd.top/sm202310142043549.png" referrerpolicy="no-referrer" alt="openim-img"></p>
+<p><strong>More detailed request processing process:</strong></p>
+<p><img src="http://sm.nsddd.top/sm202310142043692.jpeg" referrerpolicy="no-referrer" alt="openim-ximg"> </p>
 
-**More detailed request processing process:**
-
-![img](http://sm.nsddd.top/sm202303051430312.jpeg)
-
-> **📜 Explanation of the above: **
+> **📜 Explanation of the above:**
 >
 > How to handle API requests: The API source code exists in the kubernetes/pkg/api path and will handle requests from clients within the cluster and outside the cluster.
 >
@@ -78,7 +76,7 @@ Each request to the Kubernetes API will go through multi-stage access control be
 >
 > Now we will further introduce the filters established in DefaultBuildHandlerChain() mentioned earlier:
 >
-> **WithRequestInfo(): **Defined in requestinfo.go, attaches RequestInfo to the context.
+> **WithRequestInfo():**Defined in requestinfo.go, attaches RequestInfo to the context.
 >
 > **WithMaxInFlightLimit():** Defined in maxinflight.go, limits the current number of requests.
 >
@@ -88,19 +86,19 @@ Each request to the Kubernetes API will go through multi-stage access control be
 >
 > **WithCORS():** Defined in cors.go, providing a CORS implementation; CORS stands for Cross-Origin Resource Sharing, which is a method that allows JavaScript embedded in HTML pages to generate XMLHttpRequests requests Mechanism to a domain that is different from JavaScript's original origins.
 >
-> **WithAuthentication(): ** Defined in authentication.go, attempts to authenticate the given request as the user and stores the user information in the provided context. Upon success, the Authorization HTTP header will be removed from the request.
+> **WithAuthentication():** Defined in authentication.go, attempts to authenticate the given request as the user and stores the user information in the provided context. Upon success, the Authorization HTTP header will be removed from the request.
 >
 > **WithAudit(): **Defined in audit.go, enriches the handler with audit log information from all incoming requests. Audit log entries contain a lot of information, such as the source IP of the request, the user information that called the operation, and the namespace of the request.
 >
 > **WithImpersonation():** defined in impersonation.go, handles fake users by checking requests that attempt to modify the user (similar to sudo);
 >
-> **WithAuthorization(): **Defined in authorization.go, passes all authorized requests to the multiplexer that has distributed the requests to the correct handler, otherwise a forbidden error is returned.
+> **WithAuthorization():**Defined in authorization.go, passes all authorized requests to the multiplexer that has distributed the requests to the correct handler, otherwise a forbidden error is returned.
 
 
 
 ## Certification
 
-When TLS is turned on, **all requests need to be authenticated first. ** Kubernetes supports multiple authentication mechanisms and supports opening multiple authentication plug-ins at the same time (as long as one authentication passes). If the authentication is successful, the user's username will be passed to the authorization module for further authorization verification; for requests that fail authentication, HTTP 401 will be returned.
+When TLS is turned on, **all requests need to be authenticated first.** Kubernetes supports multiple authentication mechanisms and supports opening multiple authentication plug-ins at the same time (as long as one authentication passes). If the authentication is successful, the user's username will be passed to the authorization module for further authorization verification; for requests that fail authentication, HTTP 401 will be returned.
 
 
 
@@ -453,7 +451,7 @@ Error from server (Forbidden): namespaces is forbidden: User "cncamp" cannot lis
 
 ### ServiceAccount
 
-**ServiceAccount is a system account that comes with Kubernetes. **
+**ServiceAccount is a system account that comes with Kubernetes.**
 
 ```bash
 ❯ k get sa
@@ -613,7 +611,7 @@ return
 
 #### Configure apiserver
 
-How does **apiserver know which webhook to request for verification? **
+How does **apiserver know which webhook to request for verification?**
 
 > **Question**: Will apiserver send webhook when encountering unrecognized users?
 
@@ -826,7 +824,7 @@ ClusterRole has no namespace and can be binded in any namespace.
 
 roleBinding can reference Role and ClusterRole, but the final permissions will be limited to the namespace.
 
-**clusterRoleBinding can only reference ClusterRole, but the final permission is in the entire cluster. **
+**clusterRoleBinding can only reference ClusterRole, but the final permission is in the entire cluster.**
 
 
 
