@@ -83,6 +83,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [自动化测试的学习(一)](https://nsddd.top/zh/posts/learn-about-automated-testing/)
 - [Kubernetes 控制平面 - Kubectl](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Kubernetes 控制平面 - 调度器](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
 - [Kubernetes 的 CNI，CRI，CSI 详解](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
