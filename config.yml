@@ -72,6 +72,8 @@ params:
       url: https://www.zhihu.com/people/3293172751
     - name: linkedin
       url: https://www.linkedin.com/in/cubxxw
+    - name: keybase
+      url: https://calendly.com/cubxxw
     - name: facebook
       url: https://www.facebook.com/profile.php?id=100034435372354
     - name: bilibili
