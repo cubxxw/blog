@@ -6,6 +6,8 @@
 
 ## introduce
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/10e9c8fc-0201-4d41-9240-5c35f10ee952/deploy-status)](https://app.netlify.com/sites/cubxxw/deploys)
+
 This is my third generation blog, the first two generations are dynamic blog, the server used in the background, admittedly, too unstable, no accident, this blog will always be maintained.
 
 ## Subscribe
