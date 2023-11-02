@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Git
         run: |
-          git config --global user.name "kubbbot"
+          git config --global user.name "kubbot"
           git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in dev.to posts
@@ -25,7 +25,7 @@ jobs:
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from EN"
-          committer_username: "kubbbot"
+          committer_username: "kubbot"
           disable_html_encoding: true
 
   update-readme-with-blog-zh:
@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Git
         run: |
-          git config --global user.name "kubbbot"
+          git config --global user.name "kubbot"
           git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in Chinese posts
@@ -47,7 +47,7 @@ jobs:
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ZH"
-          committer_username: "kubbbot"
+          committer_username: "kubbot"
           disable_html_encoding: true
 
   update-readme-with-blog-es:
@@ -58,7 +58,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Git
         run: |
-          git config --global user.name "kubbbot"
+          git config --global user.name "kubbot"
           git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in Spanish posts
@@ -69,7 +69,7 @@ jobs:
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
-          committer_username: "kubbbot"
+          committer_username: "kubbot"
         #   disable_html_encoding: true
 
   update-readme-with-blog-fr:
@@ -80,7 +80,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Git
         run: |
-          git config --global user.name "kubbbot"
+          git config --global user.name "kubbot"
           git config --global user.email "3293172751ysy@gmail.com"
 
       - name: Pull in French posts
@@ -91,7 +91,7 @@ jobs:
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
-          committer_username: "kubbbot"
+          committer_username: "kubbot"
         #   disable_html_encoding: true
 
 # https://nsddd.top/zh-tw/index.xml
@@ -103,7 +103,7 @@ jobs:
           uses: actions/checkout@v4
         - name: Set up Git
           run: |
-            git config --global user.name "kubbbot"
+            git config --global user.name "kubbot"
             git config --global user.email "3293172751ysy@gmail.com"
         
         - name: Pull in Chinese posts
@@ -114,5 +114,5 @@ jobs:
             token: ${{ secrets.BOT_GITHUB_TOKEN }}
             max_post_count: 100
             commit_message: "🔥docs(main): update with latest RadioGeek feed from TW"
-            committer_username: "kubbbot"
+            committer_username: "kubbot"
             disable_html_encoding: true
