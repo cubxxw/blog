@@ -54,6 +54,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Deployment and Design of Management Backend and Monitoring](https://nsddd.top/posts/deployment-and-design-of-management-backend-and-monitoring/)
 - [Hugo Advanced Tutorial](https://nsddd.top/posts/hugo-advanced-tutorial/)
 - [Kubernetes for Kustomize Learning](https://nsddd.top/posts/kubernetes-for-kustomize-learning/)
 - [OpenIM Use Harbor Build Enterprise Mirror Repositories](https://nsddd.top/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
