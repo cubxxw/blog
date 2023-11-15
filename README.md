@@ -90,6 +90,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [管理后台和监控的部署与设计](https://nsddd.top/zh/posts/deployment-and-design-of-management-backend-and-monitoring/)
 - [Hugo 的高级教程](https://nsddd.top/zh/posts/hugo-advanced-tutorial/)
 - [Kubernetes Kustomize 学习指南](https://nsddd.top/zh/posts/kubernetes-for-kustomize-learning/)
 - [OpenIM 使用 Harbor 构建企业镜像仓库](https://nsddd.top/zh/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
