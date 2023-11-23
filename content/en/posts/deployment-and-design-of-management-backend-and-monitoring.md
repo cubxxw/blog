@@ -24,10 +24,6 @@ description: >
     detailed steps for beginners and insights for more advanced users.
 ---
 
-
-
-# Deployment and Design of OpenIM's Management Backend and Monitoring
-
 OpenIM offers various flexible deployment options to suit different environments and requirements. Here is a simplified and optimized description of these deployment options:
 
 1. Source Code Deployment:
