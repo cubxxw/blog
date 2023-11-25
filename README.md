@@ -2,13 +2,21 @@
     <a href="https://nsddd.top">
       ⭐️  Welcome to my blog ⭐️ <br>
     </a>
-<h3>
+</h3>
 
-## introduce
+## Introduction
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/10e9c8fc-0201-4d41-9240-5c35f10ee952/deploy-status)](https://app.netlify.com/sites/cubxxw/deploys)
 
-This is my third generation blog, the first two generations are dynamic blog, the server used in the background, admittedly, too unstable, no accident, this blog will always be maintained.
+This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
+
+## Readme Poster
+
+<div align="center">
+    <img src="assets/cubxxw-blog.png" alt="Blog Poster" width="400"/>
+    <img src="assets/cubxxw-github.png" alt="GitHub Poster" width="400"/>
+</div>
+
 
 ## Subscribe
 
