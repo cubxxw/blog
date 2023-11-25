@@ -13,8 +13,24 @@ This is my third generation blog. The first two generations were dynamic blogs w
 ## Readme Poster
 
 <div align="center">
-    <img src="assets/cubxxw-blog.png" alt="Blog Poster" width="400"/>
-    <img src="assets/cubxxw-github.png" alt="GitHub Poster" width="400"/>
+    <table>
+        <tr>
+            <td align="center" valign="top">
+                <a href="https://github.com/cubxxw">
+                    <img src="assets/cubxxw-github.png" alt="GitHub Poster" width="200"/>
+                </a>
+                <br>
+                😎 Check out my GitHub!
+            </td>
+            <td align="center" valign="top">
+                <a href="https://nsddd.top">
+                    <img src="assets/cubxxw-blog.png" alt="Blog Poster" width="200"/>
+                </a>
+                <br>
+                🚀 Visit my Blog!
+            </td>
+        </tr>
+    </table>
 </div>
 
 
