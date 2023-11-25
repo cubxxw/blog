@@ -8,23 +8,24 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/10e9c8fc-0201-4d41-9240-5c35f10ee952/deploy-status)](https://app.netlify.com/sites/cubxxw/deploys)
 
-This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
+> [!TIP]
+> This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
 
 ## Readme Poster
 
 <div align="center">
     <table>
         <tr>
-            <td align="center" valign="top">
+            <td align="center" valign="top" width="50%">
                 <a href="https://github.com/cubxxw">
-                    <img src="assets/cubxxw-github.png" alt="GitHub Poster" width="200"/>
+                    <img src="assets/cubxxw-github.png" alt="GitHub Poster" width="100%"/>
                 </a>
                 <br>
                 😎 Check out my GitHub!
             </td>
-            <td align="center" valign="top">
+            <td align="center" valign="top" width="50%">
                 <a href="https://nsddd.top">
-                    <img src="assets/cubxxw-blog.png" alt="Blog Poster" width="200"/>
+                    <img src="assets/cubxxw-blog.png" alt="Blog Poster" width="100%"/>
                 </a>
                 <br>
                 🚀 Visit my Blog!
@@ -32,7 +33,6 @@ This is my third generation blog. The first two generations were dynamic blogs w
         </tr>
     </table>
 </div>
-
 
 ## Subscribe
 
