@@ -88,6 +88,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Deep Dive Into the Components of Kubernetes Etcd](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [Design Proposal: Simplified Port Configuration via Config Files for Kubernetes Deployment](https://nsddd.top/posts/openim-cluster-deployment-parameter-passing-policy/)
 - [OpenIM clustering design Kubernetes deploy concludes](https://nsddd.top/posts/openim-cluster-deployment-scheme-of/)
+- [Reflection on Open Source Commercialization & Learning and Summary of Global Traffic Conference (GTC)](https://nsddd.top/posts/openim-open-source-business-journey/)
 - [The Art of Asking Questions in Open Source Communities](https://nsddd.top/posts/the-art-of-asking-questions-in-open-source-communities/)
 - [Open Source Contribution Guidelines](https://nsddd.top/posts/open-source-contribution-guidelines/)
 - [Cross Platform Compilation](https://nsddd.top/posts/cross-platform-compilation/)
