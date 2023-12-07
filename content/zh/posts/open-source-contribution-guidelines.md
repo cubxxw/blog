@@ -8,12 +8,18 @@ draft : false
 showtoc: true
 tocopen: true
 author: ["熊鑫伟", "Me"]
-keywords: []
+keywords:
+  - Open Source
+  - Business
 tags:
   - blog
+  - openim
 categories:
   - Development
   - Blog
+  - OpenIM
+description: >
+  Explore the intersection of open source technology and business development through the journey of OpenIM, a vibrant open-source project. Learn how OpenIM achieved success, navigated challenges, and balanced community contributions with commercialization.
 ---
 
 
