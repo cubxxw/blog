@@ -22,11 +22,6 @@ description: >
 ---
 
 
-
-
-
-
-
 # My 2023 Annual Summary
 
 As 2023 swiftly draws to a close, my university life is nearing its end with just half a year remaining. A friend once said, "***What's frightening is not losing your passion for work, but never being able to find it again.***"
@@ -67,7 +62,7 @@ Badges:
 
 ![You Never Lose](http://sm.nsddd.top/20231230190256.png)
 
-### I. Open Source Project Contributions
+## I. Open Source Project Contributions
 
 Represented by GitHub, this year's [ossinsight](https://ossinsight.io/analyze/cubxxw) performance:
 
@@ -80,7 +75,7 @@ Represented by GitHub, this year's [ossinsight](https://ossinsight.io/analyze/cu
     - Related training or seminars attended: Attended many offline meetups in Shenzhen, which were very beneficial. They included, but were not limited to, learning cutting-edge technology, meeting outstanding people, and learning replicable methods.
     - Helping more people: My knowledge-based projects gained recognition, with many people joining my kubecub Slack community. I'm glad to have made many friends and helped others. Releasing my work as open source also gained nearly a thousand stars, adding a significant highlight to my resume.
 
-### II. Reading and Learning
+## II. Reading and Learning
 
 1. Book Reading:
     - Primarily professional books, including programming languages, cloud, and infrastructure. Titles like "GitOps", "In-depth Analysis of Kubernetes", "Distributed Object Storage", "Cloud-Native Operating Systems"… Even some books on open-source philosophy and commercialization, which might be less mainstream, such as "The Cathedral & the Bazaar", "Hackers and Painters", and even "Sapiens: A Brief History of Humankind". These books require thoughtful reading and contemplation. I have briefly mentioned them in my personal blog: [Link to blog](https://nsddd.top/posts/my-hugo).
@@ -91,14 +86,14 @@ Represented by GitHub, this year's [ossinsight](https://ossinsight.io/analyze/cu
 2. Knowledge Expansion:
     - Beyond reading: I enjoy attending various classes. Sometimes, after watching a legal drama, I might delve into legal knowledge, plots, and speeches based on my interests at the time. Never underestimate short-lived passions; they are an efficient way to broaden knowledge.
 
-### III. Challenges and Achievements
+## III. Challenges and Achievements
 
 - I've grown a lot in open-source community operations this year. More importantly, I've learned to summarize and learn from others, like joining and reviewing the Kubernetes open-source community. As a student, I've participated in many domestic open-source communities and projects, gaining valuable knowledge in community management and operations.
 - Internship at OpenIM: As my first internship, I was fortunate to realize many of my ideas at OpenIM. Currently, I'm proud to be at the top of the OpenIM contributors list. Going forward, I hope to learn and implement more excellent ideas within OpenIM.
 - This year, I lost some weight and started focusing on health. Loving the outdoors, I follow my heart more. I now seek a better physique and photogenic presence. This positive feedback loop helps me identify good and bad habits and use self-encouragement to maintain exercise routines.
 - Facing my thoughts fearlessly: When I decided to travel to Western Sichuan, many friends opposed it, especially climbing a snow mountain without prior high-altitude experience. Embarking on a self-driving tour through Sichuan Highway 318 was a leap of faith. This adventurous spirit, combined with proper preparation and learning, is crucial for growth and self-fulfillment. Facing fears and uncertainties is an essential part of personal development. Don't be afraid to record your thoughts and dreams, even if they seem unattainable now. Every great entrepreneur or explorer's journey starts with a simple idea. Document your thoughts, keep learning and preparing, and when the opportunity arises, you'll be ready to embrace the challenge.
 
-### IV. Outdoor Activities and Leisure
+## IV. Outdoor Activities and Leisure
 
 I participated in many activities this year, marking my first year in the outdoors. Initially drawn to photography, I saved up for a Sony camera, which later collected dust in the dorm. My first trip was to Mount Huangshan with classmates. Unprepared, we summited late in the evening. Tired but fortunate, we witnessed a magnificent sea of clouds right after a rain, instantly relieving our fatigue and sparking my love for the outdoors.
 
