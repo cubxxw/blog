@@ -1,7 +1,9 @@
 ---
 title: '2023 Annual Summary Reflections and Aspirations'
 ShowRssButtonInSectionTermList: true
-cover.image: "https://example.com/path-to-your-cover-image.jpg"  # Replace with your image URL
+cover:
+    image: images/blog/sm202309161719007.png
+    caption: 'about 2023 year'
 date: 2023-12-30T20:56:20+08:00
 draft: false
 showtoc: true

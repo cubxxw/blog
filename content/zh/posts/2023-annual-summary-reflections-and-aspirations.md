@@ -1,7 +1,9 @@
 ---
 title: '2023年度总结：反思与展望'
 ShowRssButtonInSectionTermList: true
-cover.image: https://sm.nsddd.top/sm202309161719007.png
+cover:
+    image: https://sm.nsddd.top/sm202309161719007.png
+    caption: 'about 2023 year'
 date: 2023-12-30T20:56:20+08:00
 draft: false
 showtoc: true
