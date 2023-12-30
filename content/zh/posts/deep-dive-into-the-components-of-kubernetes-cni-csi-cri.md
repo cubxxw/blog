@@ -2,8 +2,8 @@
 title: 'Kubernetes 的 CNI，CRI，CSI 详解'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-28T20:29:30+08:00
-draft : false
+date: 2023-09-28T20:29:30+08:00
+draft: false
 showtoc: true
 tocopen: true
 type: posts

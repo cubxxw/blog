@@ -1,7 +1,7 @@
 ---
 title: '2023年度总结：反思与展望'
 ShowRssButtonInSectionTermList: true
-cover.image: "https://example.com/path-to-your-cover-image.jpg"  # 请替换为您的封面图片链接
+cover.image: https://sm.nsddd.top/sm202309161719007.png
 date: 2023-12-30T20:56:20+08:00
 draft: false
 showtoc: true
