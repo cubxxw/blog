@@ -689,7 +689,7 @@ This section briefly introduces some of the advanced features of GitHub Actions 
 
 *If your workflow uses sensitive data (such as passwords or certificates), you can save this data as secrets* in GitHub and then use them as environment variables in your workflow. This means you'll be able to create and share workflows without embedding sensitive values directly into the workflow's YAML source.
 
-This sample job demonstrates how to reference an existing key as an environment variable and send it as an argument to a sample command.
+This sample job demonstrates how to reference an existing key as an environmentironment variable and send it as an argument to a sample command.
 
 ```yaml
 jobs:
