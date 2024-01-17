@@ -8,7 +8,12 @@ draft : false
 showtoc: true
 tocopen: true
 author: ["熊鑫伟", "Me"]
-keywords: []
+keywords:
+  - GitHub Actions
+  - GitHub Apps
+  - troubleshooting
+  - error logs
+  - debugging
 tags:
   - blog
   - zh
