@@ -18,7 +18,7 @@ on:
   pull_request:
     # types:
     #   - closed
-  issue_comment:
+  pull_request_target:
     types: [created]
   pull_request_review_comment:
     types: [created]
@@ -54,6 +54,8 @@ jobs:
             # gh pr create --base main --head feat/auto-release-pr-624  --title "The bug is fixed" --body "$x" --repo openimsdk/open-im-server --reviewer "cubxxw"
           continue-on-error: true
           env:
+              RELEASE_BRANCH: release
+              BASE_BRANCH: main
               GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
               GH_TOKEN: ${{ github.token }}
               ISSUE: ${{ github.event.issue.html_url }}
