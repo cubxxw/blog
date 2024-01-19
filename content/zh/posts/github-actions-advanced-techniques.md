@@ -133,7 +133,9 @@ steps:
 
 
 
-##  GitHub Actions vs GitHub Apps - A Comparison
+##  Choosing a Runner for GitHub Actions Deployment Workflows
+
+GitHub Actions offer several options for choosing a runner to execute deployment workflows. Each option has its own implications depending on the specific requirements of the workflow. Here's a detailed look at the available options:
 
 虽然GitHub Actions和GitHub Apps都提供了构建自动化和工作流工具的方法，但它们各自都有优势，使它们在不同的方面发挥作用。
 
