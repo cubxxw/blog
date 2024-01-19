@@ -361,7 +361,13 @@ You can view actions referenced in a GitHub Actions workflow as dependencies in 
 
 
 
-### Add actions from GitHub Marketplace
+### Browse GitHub Marketplace actions in the workflow editor
+
+You can search and browse actions directly in the repository's workflow editor. The GitHub Marketplace page allows you to filter actions by category. From the sidebar, you can search for specific actions, view featured actions, and browse featured categories. You can also view the number of stars an action has received from the GitHub community.
+
+1. In the repository, browse to the workflow file that you want to edit.
+2. In the upper right corner of the file view, to open the workflow editor, click
+3. On the right side of the editor, use the GitHub Marketplace sidebar to browse operations. The badge indicates that GitHub has verified the creator of the action as a partner organization.
 
 The action's list page includes the action's version and the workflow syntax required to use the action.
 To keep your workflow stable even if updates are made to the operation, you can reference the version of the operation you want to use by specifying a Git or Docker tag number in the workflow file.
