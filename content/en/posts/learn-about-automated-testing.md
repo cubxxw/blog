@@ -24,7 +24,7 @@ description: >
 
 ## introduce
 
-As OpenIM, a popular project on Github, how to create value in the cloud native era is very important. OpenIM is a small and high-quality team, and we do not have particularly in-depth insights in automation.
+Automated testing is a critical component of cloud native development. It ensures the reliability and functionality of applications in cloud environments. This article explores automated testing practices and strategies specifically tailored for cloud native projects.
 
 1. **Continuous Integration and Continuous Delivery (CI/CD) using GitHub Actions**:
     + GitHub Actions provides a platform to automatically build and test Go language projects. By configuring GitHub Actions workflows, you can automatically run tests when your code changes, ensuring the quality and functionality of your code (https://docs.github.com/en/actions/automating-builds-and-tests).
