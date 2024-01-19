@@ -133,7 +133,7 @@ steps:
 
 
 
-##  GitHub actions 和 GitHub apps 的对比
+##  GitHub Actions vs GitHub Apps - A Comparison
 
 虽然GitHub Actions和GitHub Apps都提供了构建自动化和工作流工具的方法，但它们各自都有优势，使它们在不同的方面发挥作用。
 
