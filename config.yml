@@ -97,8 +97,8 @@ params:
     yandex:
       SiteVerificationTag: XYZabc
   cover:
-    hidden: false
-    hiddenInList: true
+    hidden: true
+    hiddenInList: false
     hiddenInSingle: false
   fuseOpts:
     # https://www.fusejs.io/api/options.html#ignorefieldnorm
