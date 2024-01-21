@@ -27,7 +27,7 @@ updates:
     labels:
       - "dependencies"
     commit-message:
-      prefix: "feat"
+      prefix: "fix"
       include: "scope"
     groups:
       gomod-deps:
@@ -41,7 +41,7 @@ updates:
     labels:
       - "dependencies"
     commit-message:
-      prefix: "chore"
+      prefix: "fix"
       include: "scope"
     groups:
       github-actions:
@@ -55,5 +55,5 @@ updates:
     labels:
       - "dependencies"
     commit-message:
-      prefix: "feat"
+      prefix: "fix"
       include: "scope"
