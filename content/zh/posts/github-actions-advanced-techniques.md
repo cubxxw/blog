@@ -463,6 +463,14 @@ jobs:
   example-job:
       steps:
         - name: Connect to PostgreSQL
+        run: node client.js
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
+        run: node client.js
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
           run: node client.js
           env:
             POSTGRES_HOST: postgres
