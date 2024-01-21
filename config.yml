@@ -97,9 +97,9 @@ params:
     yandex:
       SiteVerificationTag: XYZabc
   cover:
-    hidden: true
-    hiddenInList: true
-    hiddenInSingle: true
+    hidden: true            # The cover is hidden.
+    hiddenInList: true      # The cover is hidden in list views.
+    hiddenInSingle: true    # The cover is hidden in single item views.
   fuseOpts:
     # https://www.fusejs.io/api/options.html#ignorefieldnorm
     isCaseSensitive: false

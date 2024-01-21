@@ -1,0 +1,13 @@
+# netlify.toml
+[build]
+  command = "make build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18"
+  HUGO_VERSION = "0.122.0-DEV-e40b9fbbcf28c07ad90ae1048e144888414074d7"
+
+[context.production.environment]
+  HUGO_BASEURL = "https://nsddd.top"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
