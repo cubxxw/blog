@@ -88,7 +88,7 @@ description: >
 
 "causal decoder"和"prefix decoder"是两种不同的解码器结构，它们在处理序列数据，尤其是在文本生成任务中扮演着重要角色。下面是这两种解码器的对比：
 
-### **Causal Decoder (因果解码器)**
+### Causal Decoder (因果解码器)
 
 1. **定义和应用**:
     - 因果解码器，如在GPT系列模型中所使用的，是一种单向解码器。
@@ -102,7 +102,7 @@ description: >
     - 保证了生成的文本是连贯的，并且在逻辑上遵循了之前的上下文。
     - 不能回看或考虑未来的词汇或句子结构。
 
-### **Prefix Decoder (前缀解码器)**
+### Prefix Decoder (前缀解码器)
 
 1. **定义和应用**:
     - 前缀解码器是一种可以同时考虑前文和后文的解码器，类似于BERT中的masked language model（MLM）。

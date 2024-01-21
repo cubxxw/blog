@@ -730,7 +730,7 @@ func (bs *realBootstrap) Apply(hosts ...string) error {
 
 Init：初始化 k8s 集群。在这步中，其实也是执行了一系列的子操作。首先，将集群状态写入集群文件中。
 
-### **initCluster**
+### initCluster
 
 `initCluster` 负责从零开始创建一个集群。函数中会通过 `CreateProcessor` 去部署期望状态的集群。
 

@@ -80,7 +80,7 @@ In Docker 19.03+, you can use the `$ docker buildx build` command to build the i
 
 For detailed usage of buildx, please refer to: [Docker official document-Reference-buildx](https://docs.docker.com/engine/reference/commandline/buildx/?fileGuid=0l3NVKX0BgflYN3R)
 
-### **Create buildx builder**
+### Create buildx builder
 
 Use the docker buildx ls command to view existing builders
 
@@ -168,7 +168,7 @@ Construct:
 docker buildx build --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x -t kubecub/hello . --push
 ```
 
-### **Modify Dockerfile**
+### Modify Dockerfile
 
 To modify the Dockerfile, you generally need to perform the following operations:
 
@@ -217,14 +217,14 @@ docker buildx build --platform=linux/arm64,linux/amd64 -t xxxx:tag . --push
 
 > Tip: When specifying multiple architectures, you can only use --push to push to the remote warehouse, and cannot use `--load`. After the push is successful, you can use `docker pull --platform` to pull the image of the specified architecture.
 
-### **Check build results**
+### Check build results
 
 1. Check the image information through the `docker buildx imagetools inspect` command to see if there is corresponding arm architecture information;
 2. Actually run the image and confirm that it runs normally; (executed on the arm machine)
 
 > Tip: If an error similar to `exec format error` is output during runtime, it means that the architecture of some executable files in the image does not match.
 
-## **Run arm image on x86**
+## Run arm image on x86
 
 You can refer to [github/qemu-user-static](https://github.com/multiarch/qemu-user-static), a brief description is as follows:
 
@@ -238,7 +238,7 @@ You can refer to [github/qemu-user-static](https://github.com/multiarch/qemu-use
    docker run --rm -t arm64v8/fedora uname -m
    ```
 
-## **Use Buildx to build cross-platform images and run arm applications under the x86 platform**
+## Use Buildx to build cross-platform images and run arm applications under the x86 platform
 
 We demonstrated a simple construction method,
 
@@ -252,7 +252,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 This container will install qemu multi-platform support for your device, which will also be used if you need to run cross-platform containers.
 
-### **Create a new builder instance and set it as default**
+### Create a new builder instance and set it as default
 
 ```
 docker buildx create --use --name mybuilder
@@ -260,7 +260,7 @@ docker buildx create --use --name mybuilder
 
 Seeing the output `mybuilder` means the creation is successful. Using the `--use` command will automatically set it as the default when the builder instance is created. Otherwise, you need to manually use `docker buildx use mybuilder` to set the created instance as the default.
 
-### **Use Buildx to build multi-platform images**
+### Use Buildx to build multi-platform images
 
 The use of Buildx is very similar to docker build. Basically, you only need to replace `docker build` in the command with `docker buildx build`. If you use `docker buildx install` to replace the default docker build with Buildx, then use `docker build` directly.
 
@@ -422,7 +422,7 @@ If you want to save the built image locally, you can specify `type` as `docker`,
 → docker buildx build -t cubxxw/hello-arch --platform=linux/amd64 -o type=docker .
 ```
 
-### **Testing multi-platform images**
+### Testing multi-platform images
 
 Since `binfmt_misc` has been enabled before, we can now run the Docker image of any CPU architecture, so we can test the 3 previously generated images on the local system for problems.
 
@@ -462,7 +462,7 @@ Hello, arm64!
 Hello amd64!
 ```
 
-## **[buildx’s cross-platform build strategy](https://waynerv.com/posts/building-multi-architecture-images-with-docker-buildx/#contents:buildx-’s cross-platform build strategy)**
+## [buildx’s cross-platform build strategy](https://waynerv.com/posts/building-multi-architecture-images-with-docker-buildx/#contents:buildx-’s cross-platform build strategy)
 
 Depending on the build node and target program language, `buildx` supports the following three cross-platform build strategies:
 

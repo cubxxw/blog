@@ -207,7 +207,7 @@ Es el nodo de trabajo de Kubernetes, responsable de recibir instrucciones de tra
 | **Pod (Docker o cohete)** | Motor de contenedor, ejecutando contenedores. |
 | **kube-proxy** | Implemente el proxy de red Pod en el nodo Node para mantener las reglas de red y el equilibrio de carga de cuatro capas. |
 
-### **etcd** almacenamiento de datos
+### etcd almacenamiento de datos
 
 Sistema distribuido de almacenamiento de valores clave. Se utiliza para guardar datos de estado del clúster, como pod, servicio, red y otra información de objetos.
 

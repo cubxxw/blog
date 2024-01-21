@@ -205,7 +205,7 @@ Es ist der Arbeitsknoten von Kubernetes, der dafür verantwortlich ist, Arbeitsa
 | **Pod (Docker oder Rakete)** | Container-Engine, die Container ausführt. |
 | **kube-proxy** | Implementieren Sie den Pod-Netzwerk-Proxy auf dem Node-Knoten, um Netzwerkregeln und vierschichtigen Lastausgleich aufrechtzuerhalten. |
 
-### **etcd** Datenspeicherung
+### etcd Datenspeicherung
 
 Verteiltes Schlüsselwertspeichersystem. Wird zum Speichern von Cluster-Statusdaten wie Pod-, Dienst-, Netzwerk- und anderen Objektinformationen verwendet.
 

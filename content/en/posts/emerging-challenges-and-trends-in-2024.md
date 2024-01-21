@@ -88,7 +88,7 @@ When processing and preparing data for machine learning model training, it is im
 
 "causal decoder" and "prefix decoder" are two different decoder structures that play an important role in processing sequence data, especially in text generation tasks. Here's a comparison of the two decoders:
 
-### **Causal Decoder**
+### Causal Decoder
 
 1. **Definition and Application**:
      - The causal decoder, as used in the GPT family of models, is a one-way decoder.
@@ -102,7 +102,7 @@ When processing and preparing data for machine learning model training, it is im
      - Ensures that the generated text is coherent and logically follows the previous context.
      - Unable to look back or consider future vocabulary or sentence structure.
 
-### **Prefix Decoder (prefix decoder)**
+### Prefix Decoder (prefix decoder)
 
 1. **Definition and Application**:
      - The prefix decoder is a decoder that can consider both the preceding and following contexts, similar to the masked language model (MLM) in BERT.

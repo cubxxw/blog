@@ -205,7 +205,7 @@ Il s'agit du nœud de travail de Kubernetes, chargé de recevoir les instruction
 | **Pod (Docker ou rocket)** | Moteur de conteneur, exécution de conteneurs. |
 | **kube-proxy** | Implémentez le proxy réseau Pod sur le nœud Node pour maintenir les règles réseau et l'équilibrage de charge à quatre couches. |
 
-### **etcd** stockage de données
+### etcd stockage de données
 
 Système de stockage clé-valeur distribué. Utilisé pour enregistrer les données d'état du cluster, telles que les informations sur le pod, le service, le réseau et d'autres objets.
 

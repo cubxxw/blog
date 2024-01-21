@@ -79,7 +79,7 @@ https://github.com/OpenIMSDK/Open-IM-Server/issues/432
 
 buildx 的详细使用可参考：[Docker官方文档-Reference-buildx](https://docs.docker.com/engine/reference/commandline/buildx/?fileGuid=0l3NVKX0BgflYN3R)
 
-### **创建 buildx 构建器**
+### 创建 buildx 构建器
 
 使用 docker buildx ls 命令查看现有的构建器
 
@@ -167,7 +167,7 @@ mybuilder *  docker-container
 docker buildx build --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x -t kubecub/hello . --push
 ```
 
-### **修改Dockerfile**
+### 修改Dockerfile
 
 对 Dockerfile 的修改，大致需要进行如下操作：
 
@@ -216,14 +216,14 @@ docker buildx build --platform=linux/arm64,linux/amd64 -t xxxx:tag . --push
 
 > 提示：当指定多个架构时，只能使用 --push 推送到远程仓库，无法 `--load`，推送成功后再通过 `docker pull --platform` 来拉取指定架构的镜像
 
-### **检查构建成果**
+### 检查构建成果
 
 1. 通过 `docker buildx imagetools inspect` 命令查看镜像信息，看是否有对应的arm架构信息；
 2. 实际运行镜像，确认运行正常；（在arm机器上执行）
 
 > 提示：如运行时输出 `exec format error` 类似错误，则表示镜像中部分可执行文件架构不匹配。
 
-## **在x86上运行arm镜像**
+## 在x86上运行arm镜像
 
 可参考 [github/qemu-user-static](https://github.com/multiarch/qemu-user-static) ,简要描述如下：
 
@@ -237,7 +237,7 @@ docker buildx build --platform=linux/arm64,linux/amd64 -t xxxx:tag . --push
   docker run --rm -t arm64v8/fedora uname -m
   ```
 
-## **在x86平台下使用Buildx构建跨平台镜像并运行arm应用**
+## 在x86平台下使用Buildx构建跨平台镜像并运行arm应用
 
 我们演示了一下简单的构建方法，
 
@@ -251,7 +251,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 该容器会为你的设备安装 qemu 多平台支持，如果你需要运行跨平台容器，也会用到它。
 
-### **创建新的 builder 实例并设为默认**
+### 创建新的 builder 实例并设为默认
 
 ```
 docker buildx create --use --name mybuilder
@@ -259,7 +259,7 @@ docker buildx create --use --name mybuilder
 
 看到输出 `mybuilder` 即表示创建成功，使用 `--use` 指令将在 builder 实例创建完成时自动将其设为默认，否则需要手动使用 `docker buildx use mybuilder` 将创建的实例设为默认。
 
-### **使用 Buildx 构建多平台镜像**
+### 使用 Buildx 构建多平台镜像
 
 Buildx 的使用与 docker build 十分相似，基本上只需要将命令中的 `docker build` 替换成 `docker buildx build` 即可。如果使用 `docker buildx install` 将默认的 docker build 替换为 Buildx，那么直接使用 `docker build` 即可。
 
@@ -421,7 +421,7 @@ CMD ["./hello"]
 → docker buildx build -t cubxxw/hello-arch --platform=linux/amd64 -o type=docker .
 ```
 
-### **测试多平台镜像**
+### 测试多平台镜像
 
 由于之前已经启用了 `binfmt_misc`，现在我们就可以运行任何 CPU 架构的 Docker 镜像了，因此可以在本地系统上测试之前生成的 3 个镜像是否有问题。
 
@@ -461,7 +461,7 @@ Hello, arm64!
 Hello, amd64!
 ```
 
-## **[buildx 的跨平台构建策略](https://waynerv.com/posts/building-multi-architecture-images-with-docker-buildx/#contents:buildx-的跨平台构建策略)**
+## [buildx 的跨平台构建策略](https://waynerv.com/posts/building-multi-architecture-images-with-docker-buildx/#contents:buildx-的跨平台构建策略)
 
 根据构建节点和目标程序语言不同，`buildx` 支持以下三种跨平台构建策略：
 

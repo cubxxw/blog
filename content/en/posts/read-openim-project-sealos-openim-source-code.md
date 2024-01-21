@@ -726,7 +726,7 @@ By analyzing the `Bootstrap` stage code of `Sealos`, we understand its calling p
 
 Init: Initialize the k8s cluster. In this step, a series of sub-operations are actually performed. First, the cluster status is written to the cluster file.
 
-### **initCluster**
+### initCluster
 
 `initCluster` is responsible for creating a cluster from scratch. The function will use `CreateProcessor` to deploy the cluster in the desired state.
 

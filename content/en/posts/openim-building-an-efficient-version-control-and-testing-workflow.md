@@ -24,7 +24,7 @@ description: >
 
 The success of an open-source project largely depends on its quality management and collaborative processes. In the OpenIM open-source community, the standardization of project management and testing processes is crucial to ensure the quality and stability of the codebase. This document provides a brief overview of our testing strategy, branch management, quality control policies, and how they are applied to the main branch, PR testing branches, and stable release branches to meet the needs of developers, testers, and community managers. Additionally, we will introduce the standards, testing schemes, and project management strategies of the OpenIM open-source community, aiming to provide clear guidance to ensure project stability and sustainability.
 
-## **Branch Management and Version Control**
+## Branch Management and Version Control
 
 For OpenIM, branch versioning strategies are especially important, involving deployment branch strategies and image versioning strategies. These two aspects are detailed in the following articles:
 
@@ -37,7 +37,7 @@ In the OpenIM community, the **`main`** branch is considered the representative 
 
 The **`release`** branch is used for releasing stable versions. The image versions used in `openim-docker` and `openim-k8s` are also named `release-v3.*`. Any changes on the **`release`** branch should be well-planned additions of features or fixes for known issues. Testing efforts should focus on the **`release`** branch to ensure the reliability of the release versions.
 
-## **Testing Strategy**
+## Testing Strategy
 
 ### Testing on the Main Branch
 
@@ -97,17 +97,17 @@ fix(release-v3.5): fix user search page issue
 > For more documentation, refer to: https://github.com/cubxxw/awesome-cs-course/blob/master/Git/README.md
 > 
 
-### **Pull Request (PR) Testing Branches**
+### Pull Request (PR) Testing Branches
 
 Every submitted PR should have corresponding testing branches. These branches can be for feature testing or bug testing, and the specific testing criteria are determined by the branch owner. However, when testing branches are merged into the `main` or `release-v3.5` branches, they must adhere to the requirements of the respective main branches.
 
-## **Project Management**
+## Project Management
 
 The OpenIM community adopts a transparent project management approach to facilitate better collaboration and project monitoring.
 
 Based on OpenIM's branch design specifications, different strategies are applied to `main`, `release-v3.*`, and other branches for project management:
 
-### **PR Workflow**
+### PR Workflow
 
 - After submitting a PR, it must pass review by at least two core developers.
 - The PR must pass all automated tests and should not introduce new issues.
@@ -118,7 +118,7 @@ Based on OpenIM's branch design specifications, different strategies are applied
     - After automated testing passes for this PR, manual testing is required (manual testing documentation should be defined).
     - Provide screenshots of manual testing in the **`🎯 Describe how to verify it`** section of the PR description.
 
-### **Review Guidelines**
+### Review Guidelines
 
 - Reviews should focus on code quality, performance, security, and documentation.
 - Reviewers should provide specific feedback and suggestions for improvement.
@@ -161,7 +161,7 @@ In addition to local or server testing, you can also use GitHub's `codespaces`.
 
 In `codespaces`, use port forwarding to access the openim-web for testing.
 
-### **Future Automation Testing Design**
+### Future Automation Testing Design
 
 The OpenIM community plans to continually improve automation test coverage to reduce manual testing efforts. More automation test scripts will be developed to ensure code quality and stability.
 

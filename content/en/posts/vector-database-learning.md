@@ -25,7 +25,7 @@ categories:
 
 I learned rust today and found that rust is a very suitable language for writing databases. I found a treasure project tikv. Its github project address is https://github.com/tikv/tikv. It is a very active project, but today I The topic is vector database in the field of AI. Without further ado, let’s get started right away.
 
-## **prerequisites**
+## prerequisites
 
 0.1 Introduction to basic knowledge: Understand the basic definition of vector database and its difference from traditional database.
 0.2 Data Structure Basics: Learn vectors and other basic data structures, and how to represent and manipulate these structures in databases.
@@ -35,7 +35,7 @@ I learned rust today and found that rust is a very suitable language for writing
 0.6 Preliminary Search Algorithms: Learn basic search algorithms and understand how to perform effective searches in large data sets.
 0.7 Application case studies: Study the application of vector databases in different fields (such as recommendation systems, image recognition).
 
-## **Main courses**
+## Main courses
 
 1.1 Vector Database Deep Dive: Explore the advanced features and benefits of vector databases.
 1.2 Algorithm Exploration: Gain an in-depth understanding of the key algorithms used in vector databases, including indexing and search algorithms.
@@ -95,7 +95,7 @@ Vector databases are a special type of database that use mathematical vectors to
          4. **Machine Learning and Artificial Intelligence** 🤖
              - The integration of vector databases with the fields of machine learning and artificial intelligence, making them excellent at processing data from these fields.
 
-3. **Vector Database & AI**
+3. Vector Database & AI
 
      - Why are vector databases important for AI?
 
@@ -134,21 +134,21 @@ Vector databases are a special type of database that use mathematical vectors to
      - **Non-relational database**: In a non-relational database, the data structure can be more flexible, such as document storage, key-value pairs, or graph structures.
      - **Vector Database**: In a vector database, data is typically represented as vectors, which are indexed and retrieved in the database for efficient similarity searches.
 
-## **0.3 Introduction to Linear Algebra: Vector Operations**
+### 0.3 Introduction to Linear Algebra: Vector Operations
 
-### **Vector addition 🔄**
+### Vector addition 🔄
 
 - **Concept**: Vector addition is adding the corresponding elements of two vectors.
 - **Example**: If v1 = [1, 2, 3] and v2 = [4, 5, 6], then their sum is [1+4, 2+5, 3+6] = [5, 7, 9].
 - **Geometry Meaning**: Geometrically, vector addition can be viewed as placing the tail of one vector at the head of another vector, and then forming a new vector.
 
-### **Vector subtraction ➖**
+### Vector subtraction ➖
 
 - **Concept**: Vector subtraction is subtracting the corresponding elements of one vector from another vector.
 - **Example**: If v1 = [4, 5, 6] and v2 = [1, 2, 3], then their difference is [4-1, 5-2, 6-3] = [3, 3, 3].
 - **Geometry Meaning**: Geometrically, vector subtraction can be viewed as going from the head of one vector to the head of another vector.
 
-### **Dot product (inner product) ⚫**
+### Dot product (inner product) ⚫
 
 - **Concept**: Dot multiplication is to multiply the corresponding elements of two vectors and then add the results.
 
@@ -191,14 +191,14 @@ Vector databases are a special type of database that use mathematical vectors to
      - **Projection**: The dot product can be used to calculate the length of the projection of one vector onto another vector.
      - **Angle calculation**: Through dot product and vector length, the angle between two vectors can be calculated.
 
-## **0.4 similarity measure: cosine similarity**
+## 0.4 similarity measure: cosine similarity
 
-### **What is cosine similarity? **
+### What is cosine similarity? 
 
 - **Definition**: Cosine similarity is a measure of how similar two vectors are in direction, regardless of their size.
 - **Calculation method**: Calculated by measuring the cosine of the angle between two vectors. The closer the cosine value is to 1, the more similar the two vectors are.
 
-### **How to calculate cosine similarity? **
+### How to calculate cosine similarity? 
 
 1. **Formula**:
 
@@ -225,37 +225,37 @@ Vector databases are a special type of database that use mathematical vectors to
     
      ```
 
-### **Application of cosine similarity**
+### Application of cosine similarity
 
 - **Text Analysis**: In natural language processing, cosine similarity is often used to compare the similarity of document or word vectors.
 - **Recommendation System**: Used to compare feature vectors of users or items to find similar users or recommend similar items.
 - **Image recognition**: In image processing, it can be used to compare the similarity of image feature vectors.
 
-## **0.5 Database Index Basics**
+## 0.5 Database Index Basics
 
-### **What is a database index? **
+### What is a database index? 
 
 - **Definition**: A database index is a data structure that helps quickly locate specific data in a database table without having to search the entire table.
 - **Function**: Improve the speed of database query, similar to the table of contents of a book.
 
-### **Type of index**
+### Type of index
 
 - **Primary key index**: used to maintain the uniqueness of records in the table. Each table can have a primary key index.
 - **Auxiliary Index**: Non-primary key index used to speed up data access.
 - **Compound Index**: An index built on multiple columns.
 
-### **How indexes work**
+### How indexes work
 
 - **Storage Structure**: Most database indexes, such as B-trees (especially B+ trees), optimize data retrieval through specific data structures.
 - **Query Optimization**: When performing query operations, the database can use indexes to quickly locate data instead of scanning the entire table row by row.
 
-### **Index in vector database**
+### Index in vector database
 
 - **Speciality**: In vector databases, the establishment and use of indexes are different from traditional databases because they deal with high-dimensional vector data.
 - **Approximate Search**: Indexes in vector databases are typically designed for fast approximate nearest neighbor (ANN) searches. This means they can quickly find the data points that are most similar to the query vector.
 - **Indexing technology**: For example, use techniques such as KD trees, ball trees, or product quantification to effectively organize and retrieve high-dimensional data.
 
-### **Index optimization and challenges**
+### Index optimization and challenges
 
 - **Balance**: When implementing indexes, a balance needs to be found between query performance and index maintenance costs.
 - **Update**: When the database table is updated, the index needs to be updated accordingly, which can be a time-consuming operation.
@@ -280,9 +280,9 @@ Vector databases are a special type of database that use mathematical vectors to
      - Vector databases utilize ANN search to efficiently handle similarity queries, especially in high-dimensional data environments.
      - This is critical for applications such as recommender systems, image retrieval and language processing.
 
-## **0.6 Preliminary search algorithm**
+### 0.6 Preliminary search algorithm
 
-### **Classification of basic search algorithms**
+### Classification of basic search algorithms
 
 1. **Linear Search**
      - **Definition**: Check each element in the data set one by one until the required element is found.
@@ -297,7 +297,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - **Definition**: A search algorithm for trees or graphs that searches hierarchically, visiting neighboring nodes first.
      - **Applicable scenarios**: Find the shortest path or a solution close to the root.
 
-### **How to perform efficient searches in large data sets? **
+### How to perform efficient searches in large data sets? 
 
 1. **Selection of data structure**
      - Select appropriate data structures based on data type and search requirements, such as hash tables, tree structures, etc.
@@ -308,14 +308,14 @@ Vector databases are a special type of database that use mathematical vectors to
 4. **Approximate method**
      - For some applications, approximation algorithms can be used to speed up searches, sacrificing some accuracy.
 
-### **Practical Case**
+### Practical Case
 
 - Design a simple search algorithm to find specific elements in an array.
 - Find elements in a sorted array using binary search algorithm.
 
-## **0.7 Application Case Study: Practical Application of Vector Database**
+### 0.7 Application Case Study: Practical Application of Vector Database
 
-### **1. Recommendation system**
+### 1. Recommendation system
 
 - **Overview**: Recommender systems are designed to recommend items or content to users that may be of interest to them.
 - **The role of vector database**:
@@ -323,7 +323,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Conduct similarity searches using vector databases to discover similar items that users may like.
 - **Example**: An online shopping website recommends similar products, or a music streaming service recommends similar songs.
 
-### **2. Image recognition**
+### 2. Image recognition
 
 - **Overview**: Image recognition refers to recognizing and processing information in images, such as identifying objects, faces, or scenes.
 - **The role of vector database**:
@@ -331,7 +331,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Vector databases are used to store and quickly retrieve these image feature vectors to identify similar images or patterns.
 - **Example**: Facial recognition or medical image analysis in security surveillance systems.
 
-### **3. Language processing**
+### 3. Language processing
 
 - **Overview**: Natural language processing involves understanding and interpreting human language.
 - **The role of vector database**:
@@ -339,7 +339,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Vector databases are used to perform text similarity analysis, such as searches for related documents or sentiment analysis.
 - **Example**: Chatbot understanding user queries or social media trend analysis.
 
-### **4. Data analysis and scientific research**
+### 4. Data analysis and scientific research
 
 - **Overview**: Large data sets are increasingly common in scientific research and data analysis.
 - **The role of vector database**:
@@ -353,9 +353,9 @@ Vector databases are a special type of database that use mathematical vectors to
 
 </aside>
 
-## **1.1 Vector database in-depth**
+### 1.1 Vector database in-depth
 
-### **Advanced Features**
+### Advanced Features
 
 1. **High-dimensional data processing capabilities**
      - Vector databases are designed to efficiently manage and query high-dimensional data, which is challenging in traditional databases.
@@ -367,7 +367,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Many vector databases can automatically index stored data to optimize query performance.
      - Indexing strategies are usually optimized for specific types of queries and data patterns.
 
-### **Advantage**
+### Advantage
 
 1. **Query efficiency**
      - For queries involving complex pattern matching and similarity searches, vector databases provide significant performance advantages.
@@ -379,15 +379,15 @@ Vector databases are a special type of database that use mathematical vectors to
      - The integration of vector databases with machine learning models provides data scientists and developers with powerful tools for building intelligent applications.
      - They enable complex data analysis and processing to be performed directly at the database level.
 
-### **Application scenario examples**
+### Application scenario examples
 
 - **Personalized Recommendation System**: Use the feature vectors of users and products to quickly find the most matching recommendations.
 - **Image and Video Search**: Quickly find visually similar images or videos in large image libraries.
 - **Bioinformatics**: Processing and analyzing large amounts of gene and protein sequence data.
 
-## **1.2 Algorithm Exploration**
+### 1.2 Algorithm Exploration
 
-### **Index algorithm**
+### Index algorithm
 
 1. **KD tree (K-dimensional tree)**
      - A data structure used to organize points in K-dimensional space.
@@ -402,7 +402,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - A probabilistic algorithm for fast approximate similarity searches.
      - GeneralSimilar items are mapped into the same "bucket" for quick retrieval.
 
-### **Search algorithm**
+### Search algorithm
 
 1. **Approximate Nearest Neighbor (ANN) Search**
      - Designed for efficient processing of similarity searches in high-dimensional data.
@@ -414,7 +414,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Such as HNSW (Hierarchical Navigation Small World), used to organize data points for efficient nearest neighbor search.
      - Suitable for large-scale, dynamically changing data sets.
 
-### **Considerations for Algorithm Selection**
+### Considerations for Algorithm Selection
 
 - **Data Dimension**: Different algorithms are suitable for data of different dimensions.
 - **Data volume**: The size of the data volume directly affects the selection and performance of the algorithm.
@@ -503,9 +503,9 @@ Vector databases are a special type of database that use mathematical vectors to
      4. **Use specific algorithm**
          - On high-dimensional data, use those algorithms designed specifically for high dimensions, such as tree-based methods or locality-sensitive hashing.
 
-## **1.3 Database design: vector database architecture**
+### 1.3 Database design: vector database architecture
 
-### **Understand the core requirements of vector database**
+### Understand the core requirements of vector database
 
 1. **Efficient data storage**:
      - Design storage structures to efficiently store and retrieve high-dimensional data.
@@ -517,7 +517,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - The architecture should be able to scale horizontally as data volume increases.
      - Consider using distributed systems and load balancing.
 
-### **Key steps in vector database design**
+### Key steps in vector database design
 
 1. **Data model definition**:
      - Determine how to represent and store vector data.
@@ -535,14 +535,14 @@ Vector databases are a special type of database that use mathematical vectors to
      - Ensure the database is fault-tolerant, such as through data replication and backup mechanisms.
      - Design redundant systems to cope with hardware failure or data loss.
 
-### **Performance and Security Considerations**
+### Performance and Security Considerations
 
 - **Performance Optimization**:
      - Continuously monitor and optimize performance, including query optimization, hardware resource management, etc.
 - **Security and Privacy**:
      - Implement appropriate security measures to protect data from unauthorized access and attacks.
 
-## **1.4 Integrated Machine Learning**
+### 1.4 Integrated Machine Learning
 
 ### What is machine learning?
 
@@ -557,7 +557,7 @@ Machine learning is a technology that enables computers to learn from data and m
 3. **Forecasting and Decision Making**:
      - Based on historical data, models can make predictions or make decisions, such as recommendation systems, stock price predictions, etc.
 
-### **What is a machine learning model? **
+### What is a machine learning model? 
 
 A machine learning model is the result of learning from data through a machine learning algorithm. It is a mathematical representation of the data pattern. Simply put, a model is an abstraction of data used for prediction or decision-making.
 
@@ -579,7 +579,7 @@ A machine learning model is the result of learning from data through a machine l
 
 Feature vectors generated by machine learning models are a very important concept, especially in the fields of deep learning and natural language processing. These feature vectors are able to capture and represent complex patterns and characteristics of the data, allowing us to conduct deeper analysis and more efficient data processing. 🔍🤖
 
-### **Concept of feature vector**
+### Concept of feature vector
 
 1. **Definition**:
      - In machine learning, a feature vector is a numerical representation of raw data, usually a set of numbers converted by some algorithm.
@@ -588,7 +588,7 @@ Feature vectors generated by machine learning models are a very important concep
      - Deep learning models, such as convolutional neural networks (CNN) or recurrent neural networks (RNN), are often used to generate feature vectors.
      - These models are able to extract complex patterns and features from raw data (such as images, text or sounds) and convert them into dense numerical vectors.
 
-### **Application of feature vectors**
+### Application of feature vectors
 
 1. **Natural Language Processing (NLP)**:
      - In NLP, word embedding models (such as Word2Vec or BERT) convert words or phrases into feature vectors that capture the semantic and syntactic information of the language.
@@ -599,13 +599,13 @@ Feature vectors generated by machine learning models are a very important concep
 4. **Data clustering and classification**:
      - With feature vectors, data can be clustered and classified more efficiently because they provide a rich and information-dense representation of the data.
 
-### **Advantages of eigenvectors**
+### Advantages of eigenvectors
 
 - **Information dense**: Feature vectors condense the key information of the original data, making it suitable for various machine learning and data analysis tasks.
 - **Flexibility**: Can be used with various types of data such as text, images and sounds.
 - **Comparability**: Feature vectors make comparisons between different data points possible, especially when performing similarity searches.
 
-### **challenge**
+### challenge
 
 - **Dimension Selection**: Determining the appropriate size of feature vectors is a challenge as it requires a balance between information richness and computational efficiency.
 - **Interpretability**: Feature vectors generated by deep learning models may lack intuitive interpretability.
@@ -633,7 +633,7 @@ Collection methods can be divided into two categories:
 - Sequential ensemble methods, where the base learners involved in training are generated sequentially (e.g. AdaBoost). The principle of the sequence method is to exploit the dependencies between basic learners. By assigning higher weights to incorrectly labeled samples in previous training, the overall prediction effect can be improved.
 - Parallel ensemble methods, where the base learners involved in training are generated in parallel (e.g. Random Forest). The principle of parallel methods is to exploit the independence between basic learners, which can significantly reduce errors through averaging.
 
-### **Integration of machine learning and vector database**
+### Integration of machine learning and vector database
 
 - Why we need the integration of machine learning and vector databases
      1. **Processing high-dimensional data**:
@@ -660,7 +660,7 @@ Collection methods can be divided into two categories:
 3. **Intelligent query processing**
      - Leverage machine learning models to optimize query processing, for example by predicting query patterns or automatically adjusting indexing strategies.
 
-### **Improve performance and functionality**
+### Improve performance and functionality
 
 1. **Speed up search and retrieval**
      - Use machine learning models to improve the organization and indexing of data to speed up the search and retrieval process.
@@ -672,7 +672,7 @@ Collection methods can be divided into two categories:
      - Automated and optimized query processing reduces waiting time and improves user experience.
      - Provide users with more relevant and personalized results.
 
-### **Integration Challenge**
+### Integration Challenge
 
 1. **Model Management**
      - Requires effective management and maintenance of integrated machine learning models, including regular training and updates.
@@ -681,9 +681,9 @@ Collection methods can be divided into two categories:
 3. **Resource Optimization**
      - Ensure that the integration of databases and machine learning models does not excessively consume computing and storage resources.
 
-## **1.5 Actual case analysis**
+### 1.5 Actual case analysis
 
-### **Case 1: Recommendation system**
+### Case 1: Recommendation system
 
 - **background**:
      - Online retailers want to recommend products to customers to increase sales and improve customer satisfaction.
@@ -694,7 +694,7 @@ Collection methods can be divided into two categories:
      - Improved product exposure and increased sales.
      - Improve customers' shopping experience and enhance customer loyalty.
 
-### **Case 2: Image Search Engine**
+### Case 2: Image Search Engine
 
 - **background**:
      - An image search engine that allows users to upload an image and find similar images.
@@ -705,7 +705,7 @@ Collection methods can be divided into two categories:
      - Users can quickly find relevant images based on visual content.
      - A valuable resource for visual artists and designers.
 
-### **Case 3: Financial Fraud Detection**
+### Case 3: Financial Fraud Detection
 
 - **background**:
      - Financial institutions need to identify and prevent fraudulent activity to protect their customers and their own interests.
@@ -716,9 +716,9 @@ Collection methods can be divided into two categories:
      - Identify and block fraudulent transactions promptly, reducing financial losses.
      - Improved the overall security and reliability of the system.
 
-## **1.6 Advanced Mathematics Concepts**
+### 1.6 Advanced Mathematics Concepts
 
-### **Vector representation of high-dimensional space**
+### Vector representation of high-dimensional space
 
 1. **Definition**:
      - Vector representation in high-dimensional space contains multiple dimensions beyond the three-dimensional space, and each dimension represents a characteristic or characteristic of the data.
@@ -727,7 +727,7 @@ Collection methods can be divided into two categories:
 3. **Geometric explanation**:
      - Although it is geometrically impossible to visualize space higher than three dimensions, high-dimensional vectors still follow the rules of vector operations in linear algebra.
 
-### **Vector Operation**
+### Vector Operation
 
 1. **Dot product (inner product)**:
      - Used to measure the similarity of two vectors, calculated as **`A·B = Σ ai * bi`**, where **`ai`** and **`bi`** are the components of the vector.
@@ -736,7 +736,7 @@ Collection methods can be divided into two categories:
 3. **Vector addition, subtraction and scalar multiplication**:
      - These basic operations operate component-by-component in high-dimensional space just as they do in two- or three-dimensional space.
 
-### **Challenges in high-dimensional space**
+### Challenges in high-dimensional space
 
 1. **The Curse of Dimension**:
      - As the dimensionality increases, the data becomes increasingly sparse, which poses challenges to data analysis and machine learning model training.
@@ -745,20 +745,20 @@ Collection methods can be divided into two categories:
 3. **Computational complexity**:
      - Operations and processing of high-dimensional vectors generally involve higher computational complexity.
 
-### **Applications**
+### Applications
 
 - **Feature space in machine learning**:
      - In machine learning, the input to a model is often represented as a high-dimensional feature vector to capture complex data characteristics.
 - **Data Visualization in Data Science**:
      - Use dimensionality reduction techniques (such as PCA) to project high-dimensional data into a low-dimensional space for visualization.
 
-## **1.7 Project Practice: Vector Database Application**
+### 1.7 Project Practice: Vector Database Application
 
-### **Project Concept: Personalized Recommendation System**
+### Project Concept: Personalized Recommendation System
 
 - **Goal**: Build a simple personalized recommendation system that uses a vector database to store and query feature vectors of users and items (such as movies, books).
 
-### **Step 1: Data preparation and feature extraction**
+### Step 1: Data preparation and feature extraction
 
 1. **Select data source**:
      - Use public datasets, such as movie ratings or product review datasets.
@@ -766,28 +766,28 @@ Collection methods can be divided into two categories:
      - Convert user behavior and preferences into feature vectors.
      - For items (such as movies or products), extract key features and generate vector representations.
 
-### **Step 2: Vector database construction**
+### Step 2: Vector database construction
 
 1. **Select vector database**:
      - Choose a suitable vector database platform, such as Milvus, Faiss or Elasticsearch's vector search plug-in.
 2. **Database Design**:
      - Design database architecture, including data storage, indexing and query processing mechanisms.
 
-### **Step 3: Recommendation algorithm implementation**
+### Step 3: Recommendation algorithm implementation
 
 1. **similarity calculation**:
      - Implement an algorithm that uses a vector database for fast similarity calculations, such as user-item matching based on cosine similarity.
 2. **Recommendation logic**:
      - Based on the user's feature vector, retrieve the most similar items from the database for recommendation.
 
-### **Step 4: System Integration and Testing**
+### Step 4: System Integration and Testing
 
 1. **Integration**:
      - Integrate the recommendation system into a simple application or web page.
 2. **Test**:
      - Test the system to ensure the accuracy of recommendations and the responsiveness of the system.
 
-### **Step Five: Evaluate and Optimize**
+### Step Five: Evaluate and Optimize
 
 1. **Performance Evaluation**:
      - Evaluate the recommendation quality and query efficiency of the system.
@@ -795,9 +795,9 @@ Collection methods can be divided into two categories:
 
 ---
 
-## **1.8 Review and Evaluation**
+### 1.8 Review and Evaluation
 
-### **Review what you learned**
+### Review what you learned
 
 1. **Vector Database Basics**:
      - Understand the definition, function and difference between vector database and traditional database.
@@ -811,7 +811,7 @@ Collection methods can be divided into two categories:
 5. **Mathematical concepts**:
      - In-depth understanding of mathematical concepts of vector representation and operations in high-dimensional spaces.
 
-### **Evaluation method**
+### Evaluation method
 
 1. **Comprehension Questions**:
      - Answer questions about vector databases and related concepts to test understanding.
@@ -822,7 +822,7 @@ Collection methods can be divided into two categories:
 4. **Self-Assessment**:
      - Reflect on your experience during the learning process, assessing your mastery of the concepts and any areas that require further study.
 
-### **Suggested Assessment Questions**
+### Suggested Assessment Questions
 
 1. Explain what are the main differences in data processing between vector databases and traditional databases?
 2. Describe the role of approximate nearest neighbor search in vector databases.

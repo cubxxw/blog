@@ -206,7 +206,7 @@ It is the working node of Kubernetes, responsible for receiving work instruction
 | **Pod (Docker or rocket)** | Container engine, running containers. |
 | **kube-proxy** | Implement the Pod network proxy on the Node node to maintain network rules and four-layer load balancing. |
 
-### **etcd** data storage
+### etcd data storage
 
 Distributed key-value storage system. Used to save cluster status data, such as Pod, Service, network and other object information.
 
