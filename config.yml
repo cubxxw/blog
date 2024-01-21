@@ -98,8 +98,8 @@ params:
       SiteVerificationTag: XYZabc
   cover:
     hidden: false
-    hiddenInList: false
-    hiddenInSingle: false
+    hiddenInList: true
+    hiddenInSingle: true
   fuseOpts:
     # https://www.fusejs.io/api/options.html#ignorefieldnorm
     isCaseSensitive: false
