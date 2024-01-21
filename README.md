@@ -6,7 +6,7 @@
 
 ## Introduction
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/10e9c8fc-0201-4d41-9240-5c35f10ee952/deploy-status)](https://app.netlify.com/sites/cubxxw/deploys)
+[![GitHub Actions Status](https://github.com/cubxxw/blog/workflows/CI/badge.svg)](https://github.com/cubxxw/blog/actions)
 
 > [!TIP]
 > This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
