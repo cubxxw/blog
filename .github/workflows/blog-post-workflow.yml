@@ -1,7 +1,8 @@
 name: Update README with latest blog posts
 
 on:
-  schedule: # Run workflow automatically
+  schedule:
+    - cron: '*/15 8-11 * * *' # Runs every hour, 4 times a day
     - cron: '15 8-11 */2  *  *' # Runs every hour, on the hour
   workflow_dispatch: # Run workflow manually (without waiting for the cron to be called), through the GitHub Actions Workflow page directly
   push:
@@ -24,7 +25,7 @@ jobs:
           feed_list: "https://nsddd.top/index.xml"
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
-          commit_message: "🔥docs(main): update with latest RadioGeek feed from EN"
+          commit_message: "🔥docs(main): update with latest blog posts from EN"
           committer_username: "kubbot"
           disable_html_encoding: true
 
@@ -42,7 +43,7 @@ jobs:
       - name: Pull in Chinese posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          comment_tag_name: "My-Blog-ZH"
+          comment_tag_name: "My-Blog-ZH-TW"
           feed_list: "https://nsddd.top/zh/index.xml"
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
@@ -64,7 +65,7 @@ jobs:
       - name: Pull in Spanish posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          comment_tag_name: "My-Blog-ES"
+          comment_tag_name: "My-Blog-SP"
           feed_list: "https://nsddd.top/es/index.xml"
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
@@ -89,7 +90,7 @@ jobs:
           comment_tag_name: "My-Blog-FR"
           feed_list: "https://nsddd.top/fr/index.xml"
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          max_post_count: 100
+          max_post_count: 50
           commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
           committer_username: "kubbot"
         #   disable_html_encoding: true
