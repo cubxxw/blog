@@ -97,7 +97,7 @@ params:
     yandex:
       SiteVerificationTag: XYZabc
   cover:
-    hidden: false
+    hidden: true
     hiddenInList: true
     hiddenInSingle: true
   fuseOpts:
