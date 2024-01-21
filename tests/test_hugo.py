@@ -32,7 +32,8 @@ class TestHugo(unittest.TestCase):
         # Call the build_site function with the custom options
         result_custom = build_site(site_data_custom)
         
-        # Assert the expected output based on the man page description
+                # Assert the expected output based on the man page description
+        self.assertEqual(result_custom, "Custom site successfully built.")
         self.assertEqual(result_custom, "Custom site successfully built.")
         
         # Add more test cases to cover different scenarios and options
