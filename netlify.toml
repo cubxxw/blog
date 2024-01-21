@@ -3,6 +3,10 @@
   command = "make envbuild"
   publish = "public"
 
+[build.environment]
+  NODE_VERSION = "18"
+  HUGO_VERSION = "0.121.2"
+
 [context.production.environment]
   HUGO_BASEURL = "https://nsddd.top"
   HUGO_ENV = "production"
