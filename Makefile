@@ -117,6 +117,11 @@ endif
 build: tools.verify.hugo module-check
 	@$(TOOLS_DIR)/hugo --cleanDestinationDir --minify --environment development
 
+## envbuild: Build site with non-production settings using system's Hugo and put deliverables in ./public
+.PHONY: envbuild
+envbuild: module-check
+	@hugo --cleanDestinationDir --minify --environment development
+
 ## build-preview: Build site with drafts and future posts enabled
 .PHONY: build-preview
 build-preview: module-check

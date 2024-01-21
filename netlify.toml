@@ -1,6 +1,6 @@
 # netlify.toml
 [build]
-  command = "make build"
+  command = "make envbuild"
   publish = "public"
 
 [context.production.environment]
