@@ -13,6 +13,8 @@ on:
 permissions:
   contents: read
   pages: write
+  repository-contents: read
+  workflow: read
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
