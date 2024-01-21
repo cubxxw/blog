@@ -72,7 +72,6 @@ The articles published on the blog are independent, which is what I have seen an
 https://rss.starerror.com/${RSS_ADDRESS}
 ```
 
-
 ### Featured blog subscriptions in English (default)
 
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
