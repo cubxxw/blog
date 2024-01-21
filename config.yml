@@ -99,7 +99,7 @@ params:
   cover:
     hidden: false
     hiddenInList: false
-    hiddenInSingle: false
+    hiddenInSingle: true
   fuseOpts:
     # https://www.fusejs.io/api/options.html#ignorefieldnorm
     isCaseSensitive: false
