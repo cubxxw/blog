@@ -419,7 +419,7 @@ The `action.yml` file is used to provide metadata for actions. In "[Metadata syn
 
 If an action is defined in a different repository than the workflow file, the action can be referenced in the workflow file using the `{owner}/{repo}@{ref}` syntax.
 
-Operations must be stored in a public repository.
+Operations must be defined in a public repository.
 
 ```yaml
 jobs:
