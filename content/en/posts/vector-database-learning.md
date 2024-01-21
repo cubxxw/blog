@@ -1,7 +1,7 @@
 ---
 title: 'Vector Database Learning'
 ShowRssButtonInSectionTermList: true
-cover.image: 'https://img-blog.csdnimg.cn/b37cafc66d9244f39b7fe8ab61fdb32a.png#pic_center'
+cover.image: 'images/blog/vector--database.png'
 date : 2024-01-20T12:57:15+08:00
 draft : false
 showtoc: true
