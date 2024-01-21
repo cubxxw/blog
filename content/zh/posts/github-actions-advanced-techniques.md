@@ -1,6 +1,6 @@
 ---
-title: 'Github Actions 的高级使用技巧'
-description:
+title: 'GitHub Actions 的高级技巧'
+description: 一些示例涵盖了 GitHub Actions 的高级功能。
 ShowRssButtonInSectionTermList: true
 cover.image:
 date : 2023-06-14T16:17:02+08:00
