@@ -553,7 +553,7 @@ GitHub Actions contains a variable collection called context and a similar varia
 The following example demonstrates how to use these different types of variables together in a job:
 
 ```yaml
-name: CI
+name: GitHub Workflow
 on: push
 jobs:
    prod-check:
