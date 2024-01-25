@@ -78,6 +78,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Concurrent Type Checking and Cross-Platform Development in Go](https://nsddd.top/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
 - [Vector Database Learning](https://nsddd.top/posts/vector-database-learning/)
 - [OpenIM: Building an Efficient Version Control and Testing Workflow](https://nsddd.top/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
 - [Emerging Challenges and Trends in 2024](https://nsddd.top/posts/emerging-challenges-and-trends-in-2024/)
