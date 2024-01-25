@@ -121,6 +121,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [Go 语言中的并发类型检查与跨平台开发](https://nsddd.top/zh/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
 - [Vector Database Learning](https://nsddd.top/zh/posts/vector-database-learning/)
 - [OpenIM：构建高效的版本控制和测试工作流程](https://nsddd.top/zh/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
 - [2024年的新兴挑战与趋势](https://nsddd.top/zh/posts/emerging-challenges-and-trends-in-2024/)
