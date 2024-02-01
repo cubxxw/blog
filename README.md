@@ -113,6 +113,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Stage Growth of Open Source](https://nsddd.top/posts/stage-growth-of-open-source/)
 - [Use Auto Gpt](https://nsddd.top/posts/use-auto-gpt/)
 - [Use Go Tools Dlv](https://nsddd.top/posts/use-go-tools-dlv/)
+- [Participating in This Project](https://nsddd.top/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/posts/kubernetes-an-article-to-get-started-quickly/)
 <!-- My-Blog-EN:END -->
 
