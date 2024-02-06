@@ -110,6 +110,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Advanced Githook Design](https://nsddd.top/posts/advanced-githook-design/)
 - [Openim Offline Deployment Design](https://nsddd.top/posts/openim-offline-deployment-design/)
 - [Read Openim Project Sealos Openim Source Code](https://nsddd.top/posts/read-openim-project-sealos-openim-source-code/)
+- [Project Management From Theory to Practice](https://nsddd.top/posts/project-management-from-theory-to-practice/)
 - [Stage Growth of Open Source](https://nsddd.top/posts/stage-growth-of-open-source/)
 - [Use Auto Gpt](https://nsddd.top/posts/use-auto-gpt/)
 - [Use Go Tools Dlv](https://nsddd.top/posts/use-go-tools-dlv/)
