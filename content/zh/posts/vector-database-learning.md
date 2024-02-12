@@ -1,5 +1,5 @@
 ---
-title: 'Vector Database Learning'
+title: '向量数据库的学习'
 ShowRssButtonInSectionTermList: true
 cover:
     image: 'images/blog/vector-database.png'
