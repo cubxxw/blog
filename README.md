@@ -78,6 +78,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [GTD and the Quadrant Method Practice](https://nsddd.top/posts/gtd-and-the-four-quadrant-rule-practice/)
 - [Decoding Go Language Source Code: A Deep Dive into go: Directives and the Use of Automation Tools](https://nsddd.top/posts/directives-and-the-use-of-automation-tools/)
 - [Concurrent Type Checking and Cross-Platform Development in Go](https://nsddd.top/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
 - [Vector Database Learning](https://nsddd.top/posts/vector-database-learning/)
