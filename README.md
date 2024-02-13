@@ -125,6 +125,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [GTD与四象限法则实践](https://nsddd.top/zh/posts/gtd-and-the-four-quadrant-rule-practice/)
 - [参与这个项目](https://nsddd.top/zh/posts/participating-in-this-project/)
 - [Go 源码里的这些 go: 指令 && go 自动化工具](https://nsddd.top/zh/posts/directives-and-the-use-of-automation-tools/)
 - [Go 语言中的并发类型检查与跨平台开发](https://nsddd.top/zh/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
