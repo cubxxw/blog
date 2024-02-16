@@ -11,11 +11,15 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog
+  - github
+  - automated
 categories:
   - Development
   - Blog
+  - Github
+  - Automated
 description: >
-    <You can switch to the specified language>
+    Automated testing practices and strategies for GitHub open source Go projects in the cloud native field
 ---
 
 # Automated testing practices and strategies for GitHub open source Go projects in the cloud native field
