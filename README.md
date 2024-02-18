@@ -257,4 +257,4 @@ This indicates the submodules are not updated. Please run the following command 
 
 ## Reference
 
-Uer netlify to deploy the blog, and use the [hexo-theme-next](ttps://cubxxw.netlify.app) theme.
+Uer netlify to deploy the blog, and use the [hexo-theme-next](ttps://cubxxw.netlify.app) theme. 🚀 Shanghai time of last status update by the bot <a href='https://github.com/kubbot'>@kubbot</a>: 2024-02-18 12:05:35
