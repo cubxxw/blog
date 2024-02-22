@@ -11,10 +11,8 @@ keywords: ['GitHub', 'Google Workspace', 'Project Management', 'Development Stra
 tags:
   - 'github'
   - 'google'
-  - 'workspace'
   - 'project'
   - 'management'
-  - 'notion'
 categories:
   - 'Development'
   - 'Project Management'
@@ -49,25 +47,25 @@ For example, some important document records, some important forms, as well as P
 
 I hope to use GitHub Projects and Google Projects (or related tools of Google Workspace) in combination for project management, and I can develop a best practice plan based on their respective advantages. Doing so takes full advantage of both platforms and enables more efficient and comprehensive project management:
 
-### **1. Use GitHub Projects to manage development activities**
+### 1. Use GitHub Projects to manage development activities
 
 - **Code Management and Tracking**: Leverage the core advantages of GitHub to keep all code management tasks (including version control, branch management, etc.) and activities directly related to the code (such as Bug tracking, feature requests, etc.) in GitHub.
 - **Automated Workflows**: Automate things like automated testing, builds, and deployments with GitHub Actions, as well as automated issue and pull request management.
 - **Project Kanban Board**: Use GitHub Projects’ Kanban board feature to track development progress, such as to-do items, in-progress, and completed tasks.
 
-### **2. Use Google Workspace to manage other aspects of the project**
+### 2. Use Google Workspace to manage other aspects of the project
 
 - **Documents and File Sharing**: Use Google Docs, Sheets, and Slides to create and share project documents, plans, and reports, taking advantage of their powerful real-time collaboration capabilities.
 - **COMMUNICATIONS & MEETINGS**: Keep team members connected with project meetings, communications and updates via Google Meet and Gmail.
 - **Task and Schedule Management**: Use Google Tasks and Calendar to manage non-development tasks (such as marketing campaigns, HR planning, etc.) as well as important project milestones and meeting schedules.
 
-### **Best Practices**
+### Best Practices
 
 - **Integrated Tool Usage**: Explore and use third-party tools or scripts to synchronize data between GitHub and Google Workspace. For example, you can automatically sync GitHub Issues to Google Sheets as a task list, or automatically update Google Calendar when GitHub milestones change.
 - **Clear division of labor and specifications**: Clearly define at the beginning of the project which tasks and activities should be managed on GitHub and which should use Google Workspace tools. Establish clear team collaboration and communication protocols to ensure all project members know which tools to use and how to use them.
 - **Regular inspection and adjustment**: The selection of project management methods and tools should be adjusted according to the actual situation of the project. Regularly review the team's workflow and tool usage and make necessary adjustments based on feedback and project needs.
 
-## **Google Project Management Tools: All You Need to Know**
+## Google Project Management Tools: All You Need to Know
 
 For Github project management, you can read [Project management from theory to practice](https://nsddd.top/zh/posts/project-management-from-theory-to-practice/), and the official website of Github Projects https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
 
@@ -89,7 +87,7 @@ Google Docs, Sheets, and Slides are just some of the project management tools av
 
 There are many project management tools on the market, but which one is the best? Google Apps is a great choice for people who want familiar and easy-to-use tools. In this article, we’ll take a look at some of the best project management tools Google Apps.
 
-### **#1. Google Chrome**
+### #1. Google Chrome
 
 Google Chrome is a project management tool that helps you keep track of your projects and deadlines. Using Chrome, you can create and manage project tasks, set deadlines, and track progress.
 
@@ -97,7 +95,7 @@ Chrome also offers features that make it easy to collaborate with team members o
 
 If you're looking for a project management tool that can help you stay organized and on track, Google Chrome is a great choice.
 
-### **#2. Google Drive**
+### #2. Google Drive
 
 Google Drive is a great project management tool because it allows you to create and store documents, spreadsheets, and presentations online. You can share these documents with others and work on them together in real time.
 
@@ -107,13 +105,13 @@ Another great thing about Google Drive is that it integrates with other Google a
 
 Overall, Google Drive is a great project management tool because it's convenient, easy to use, and integrated with other Google apps.
 
-### **#3. Mail**
+### #3. Mail
 
 Google Apps is a set of tools that help you manage projects more efficiently.
 
 One of the most useful tools in Google Apps is Gmail. Gmail allows you to track your emails and project-related communications in one place. You can also use Gmail to set up automatic replies to project-related emails, so you can stay on top of your projects even when you're away from your desk.
 
-### **#4. Google Calendar**
+### #4. Google Calendar
 
 Another useful tool in Google Apps is Google Calendar. A calendar helps you keep track of important dates and deadlines for your projects. You can also use the calendar to share project-related information with team members and clients.
 
@@ -123,11 +121,11 @@ Overall, Google Apps is a useful tool for managing projects more efficiently.
 
 See also: [Project Milestone Management: Detailed Guide with Examples](https://businessyield.com/zh-CN/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/ %E9%A1%B9%E7%9B%AE%E9%87%8C%E7%A8%8B%E7%A2%91/)
 
-### **#5. Google Pay**
+### #5. Google Pay
 
 Google Pay is a great project management tool. Using this tool, you can track your project deadlines, budget, and progress. You can also share files and collaborate with other team members. Google Pay is a free tool that works with your Gmail account.
 
-### **#6. Google Docs**
+### #6. Google Docs
 
 When it comes to project management, Google Docs is a powerful tool that can help you track projects and collaborate with your team. Google Docs offers a variety of features that make it ideal for project management, such as:
 
@@ -139,13 +137,13 @@ When it comes to project management, Google Docs is a powerful tool that can hel
 
 With these features, Google Docs can help you manage your projects more efficiently.
 
-### **#7. Reserved by Google**
+### #7. Reserved by Google
 
 This is a project management tool that helps you keep track of your tasks and to-do lists. You can create notes, set reminders, and add tags to organize your tasks. Google Keep is available on Android, iOS, and the web.
 
 Google Keep is a great tool for managing small projects. It's easy to use and easily accessible from anywhere. You can create notes, set reminders, and add tags to help you stay organized. Google Keep is also available on Android and iOS, so you can access your tasks from your mobile device.
 
-### **#8. Google Sheets**
+### #8. Google Sheets
 
 Use Google Sheets to manage multiple projects at once.
 
@@ -155,7 +153,7 @@ This Google app also has a built-in chat feature to easily communicate with team
 
 Overall, Google Sheets is a great project management tool. It's versatile and easy to use, and has some features to help manage your projects.
 
-### **#9. Google Map**
+### #9. Google Map
 
 Google Maps is a web map service developed by Google. It provides satellite imagery, street maps, 360-degree panoramic views of streets, real-time traffic conditions and route planning by foot, car, bike or public transport.
 
@@ -165,11 +163,11 @@ Google Maps launched in September 2005 after additional acquisitions of a geospa
 
 Google Maps is extremely successful and is one of the most popular mapping services on the web. As of September 2019, it had over 200 million monthly active users.
 
-### **What project management methods does Google use? **
+### What project management methods does Google use? 
 
 There is no one-size-fits-all answer to this question, as the project management methods used by Google vary depending on the specific project they are working on. However, some of the methodologies they have been known to use in the past include Agile, Scrum, and Kanban.
 
-### **Google Sheets Project Management**
+### Google Sheets Project Management
 
 There are several project management tools available online, but one that is often overlooked is Google Sheets. This free spreadsheet app can be used to track projects, create timelines, and manage tasks.
 
@@ -180,7 +178,7 @@ While Google Sheets may not have all the bells and whistles of some more expensi
 3. Communicate with team members. Use Google Forms to communicate with your team members. This will help everyone stay on the same page and avoid misunderstandings.
 4. Stay organized. Stay organized with Google Sheets. This will help you keep track of your project and ensure everything is running smoothly.
 
-### **Are there project management tools in Gsuite? **
+### Are there project management tools in Gsuite? 
 
 If you're using Gsuite, you're most likely looking for a way to better manage your projects. While Gsuite doesn’t have a dedicated project management tool, there are many ways to use its various features to organize your projects and keep them on track. Here are some tips:
 
@@ -191,11 +189,11 @@ If you're using Gsuite, you're most likely looking for a way to better manage yo
 
 With a little creativity, you can use Gsuite to manage your projects as effectively as any dedicated project management tool. Give it a try today!
 
-### **Is there a Google version of MS Project? **
+### Is there a Google version of MS Project? 
 
 No, there is currently no Google version of MS Project. However, Google offers a variety of project management tools that can be used to manage projects. Google Sheets and Google Docs are two such tools that can be used to track project tasks and progress.
 
-### **Does Google have a Gantt chart? **
+### Does Google have a Gantt chart? 
 
 Yes, Google has a Gantt chart tool for project management. It's part of the Google Docs suite, so you need a Google account to access it. The tool is very basic but helpful for simple projects.
 
@@ -244,31 +242,31 @@ You should also discuss with your client any [intermediate deliverables](https:/
 
 When it comes to project milestones, there are a few things to keep in mind. You have to pay attention to each of these things to stay on track and on target. If you don't take all of these factors into consideration when creating diagrams and timelines, you could run into serious trouble when it comes to executing your final project. You may find that you don't meet deadlines, which is unacceptable to your management or clients.
 
-### **#1. Dependencies**
+### #1. Dependencies
 
 Dependencies are one of the first things to consider when setting timelines and project milestones. Anywhere one of your team members or a smaller team depends on another is a potential source of trouble. This is a position where handoffs can be delayed, leaving the team or individuals behind unable to perform the tasks assigned to them. Keep this in mind when creating milestones.
 
-### **#2. Delays beyond your control**
+### #2. Delays beyond your control
 
 When we talk about delays outside of your control, we're talking about problems getting supplies or getting items from outside merchants. These problems can occur for a variety of reasons and can occur at any time during project setup and execution. You might get something that is incorrect or doesn't arrive at all. The supplier may have trouble even shipping the item to your location. You must consider each of these factors when developing milestones.
 
-### **#3. Team delays**
+### #3. Team delays
 
 Team delays are things that happen within your team. Such as someone getting sick or your team going on strike. There are many ways people on your team can slow down the process, intentionally or unintentionally, and you want to be prepared for any possibility. There will always be things in a team that are beyond your control, or slowdowns that you can't explain, but for the most part, you can build buffers to deal with them.
 
-### **#4. Client changes**
+### #4. Client changes
 
 When you're working on a project, your client will most likely make some changes along the way. You must make sure you are prepared for any type of modifications they may require and that your milestones are updated to reflect this. If a customer makes a change to one of the milestones, let them know how it affects other milestones and the overall timeframe. It's best to try to stay on track, but this isn't always possible. Be clear with the client on the impact of their adjustments on the project.
 
-### **#5. Longer than expected timeline**
+### #5. Longer than expected timeline
 
 Your team will provide you with timelines and estimates of how long each aspect of the project will take. The most important thing you can do is include a buffer in these areas to ensure you are prepared for any further delays. What you think will take a week may take two weeks, and what you think will take a day may take a few days or longer. Allow some extra time for each task so you don't fall behind if anything doesn't go as planned.
 
-### **#6. Unexpected demand**
+### #6. Unexpected demand
 
 You might start working on your project only to learn about additional requirements that you didn't anticipate. Maybe you thought you could use an existing blueprint, only to find that it doesn't work. Or you might expect the client to provide a specific item for the project, but they don't. All of these unexpected demands can impact your ability to meet the milestones you have set, which means making more space.
 
-## **What are some examples of project milestones? **
+## What are some examples of project milestones? 
 
 Now that you know what project management milestones are, let’s look at some examples of events that are commonly used as project milestones:
 
@@ -282,19 +280,19 @@ Here are five typical examples of project milestones:
 
 Let’s look at each project milestone example in more detail:
 
-### **Example of Project Milestone #1: Project Approval**
+### Example of Project Milestone #1: Project Approval
 
 This is usually the first major milestone in the project life cycle.
 
 When a key project stakeholder or senior executive approves the project, it gives the project team the green light to begin work.
 
-### **Example of Project Milestone #2: RequirementsReview**
+### Example of Project Milestone #2: RequirementsReview
 
 For this important milestone, you must review the project plan with your client and determine what the project requires.
 
 Once all of this is accepted, you can start working on the project.
 
-### **Project Milestone Example #3: Design Approval**
+### Project Milestone Example #3: Design Approval
 
 You have now completed all project requirements. Excellent work.
 
@@ -304,7 +302,7 @@ Unfortunately, they will probably give you a lot of input and scream these three
 
 When they finally like it and approve it (after a million tries!), you've accomplished another important milestone.
 
-### **Project Milestone Example #4: Project Phase Milestones**
+### Project Milestone Example #4: Project Phase Milestones
 
 Your project is now well underway and your team is hard at work developing and implementing the proposed solution.
 
@@ -316,7 +314,7 @@ We use milestones at the "start" and "end" dates of each phase to clearly differ
 
 Wouldn't that be convenient?
 
-### **Project Milestone Example #5: Final Approval**
+### Project Milestone Example #5: Final Approval
 
 think about it:
 
@@ -328,7 +326,7 @@ I combined the project management method of OpenIM, optimized the project manage
 
 Suppose our team is developing an open source software project with team members located around the world and needs a flexible and efficient way to collaborate and manage the project.
 
-### **GitHub Projects for development task management**
+### GitHub Projects for development task management
 
 1. **Project Kanban (Kanban)**: Create a project Kanban in GitHub Projects and divide the development work into several stages: To Do, In Progress, and Review), completed (Done).
      - **To-do items**: new feature requirements, bugs to be fixed, etc.
@@ -341,7 +339,7 @@ Suppose our team is developing an open source software project with team members
      - Automatically close related issues when PR is merged.
      - Automatically run tests and deployments.
 
-### **Google Workspace for document management and team communication**
+### Google Workspace for document management and team communication
 
 1. **Documents and Reports (Google Docs and Sheets)**:
      - Create project documents, such as design documents, user manuals, etc., share and collaborate in the form of Google Docs.
@@ -353,7 +351,7 @@ Suppose our team is developing an open source software project with team members
      - Use Google Calendar to schedule and share all project-related meetings and important dates.
      - Use Google Tasks (of course I use tick lists) to assign and track non-development tasks to team members.
 
-### **Best Practices**
+### Best Practices
 
 - **Two-way synchronization**: Sync GitHub Issues to Google Sheets by using API or existing integration tools on the market, so that non-technical team members can also track project status.
 - **Standardized Communication**: Ensure all team members understand when and how to use various tools in GitHub and Google Workspace for communication and task management.

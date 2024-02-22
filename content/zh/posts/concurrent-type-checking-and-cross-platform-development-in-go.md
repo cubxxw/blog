@@ -34,7 +34,7 @@ description: >
 
 恰好在 64 位机器上正常运行，但是在 32 位机器上会出现溢出的问题，于是想着去做一套检测的工具，来解决各个平台的类型检测。
 
-## **第一部分：Go 语言基础回顾**
+## 第一部分：Go 语言基础回顾
 
 在深入探讨代码之前，让我们回顾一下 Go 语言的一些基本概念，特别是包管理、并发编程和类型系统。这些概念是理解和使用 Go 语言进行有效编程的基础。
 
@@ -460,7 +460,7 @@ func newConfig(platform string) *packages.Config {
 
 ### 4. `collector` 结构体和相关方法
 
-### **`collector` 结构体**
+### `collector` 结构体
 
 ```go
 type collector struct {
@@ -473,7 +473,7 @@ type collector struct {
 - **`dirs`** 用于存储收集到的目录路径。
 - **`ignoreDirs`** 是一组需要忽略的目录路径。
 
-### **`newCollector` 函数**
+### `newCollector` 函数
 
 ```go
 func newCollector(ignoreDirs string) collector {
@@ -492,7 +492,7 @@ func newCollector(ignoreDirs string) collector {
 - 如果提供了额外的 **`ignoreDirs`** 字符串（通过参数传递），则通过逗号分割这个字符串并将结果添加到 **`ignoreDirs`** 切片中。
 - 函数返回配置好的 **`collector`** 实例。
 
-### **`walk` 方法**
+### `walk` 方法
 
 ```go
 func (c *collector) walk(roots []string) error {
@@ -1363,4 +1363,3 @@ func main() {
 }
 
 ```
-

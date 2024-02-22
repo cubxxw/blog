@@ -108,7 +108,7 @@ This also applies to building modules; go generate will not run generators that 
 
          - The generated **`mock_myinterface.go`** file will contain the mock implementation of **`MyInterface`**. You can use this mock in your tests instead of the actual interface implementation.
 
-     ## **Example Demo**
+     ## Example Demo
 
      Let's look at a simple example to demonstrate this process:
 
@@ -148,7 +148,7 @@ This also applies to building modules; go generate will not run generators that 
 
 When we run the **`go generate`** command, it will automatically call the **`mockgen`** tool and generate mock implementation code for our interface.
 
-### **Challenges and Skills in Practice**
+### Challenges and Skills in Practice
 
 1. **Handle complex generation scenarios**:
      - In complex projects, the "Go Generate" command may need to handle multiple files and different generation rules. In these cases, it is important to maintain clear and organized build instructions.
@@ -453,7 +453,7 @@ If you use the **`//go:embed`** directive and want to process multiple files or 
      - When using **`embed.FS`**, the file path is relative to the directory where the Go source file is located. Make sure you take this into account when using file paths.
      - **`embed.FS`** is read-only, you cannot use it to modify files.
 
-## **`go:linkname`**
+## `go:linkname`
 
 `go:linkname` is a compiler directive in the Go language that allows you to link to a private function or variable of another package in Go code. This technique is typically used for advanced use cases, such as when working with low-level operations or linking to internal implementations of the standard library. Using `go:linkname` can bypass Go's type safety and encapsulation mechanisms, so use it with caution.
 
@@ -565,7 +565,7 @@ Normally, write barriers are managed automatically, but in some special cases, d
 
 This instruction reflects the Go language's flexible control over the underlying memory management and garbage collection mechanisms, but it also requires developers to have a deep understanding of memory management and garbage collection principles.
 
-## **`go:nowritebarrierrec`**
+## `go:nowritebarrierrec`
 
 ```
 //go:nowritebarrierrec
@@ -576,7 +576,7 @@ This directive indicates that the compiler will generate an error when it encoun
 
 To put it simply, it is to deal with write barriers and prevent them from endless loops.
 
-### **Case**
+### Case
 
 ```go
 //go:nowritebarrierrec

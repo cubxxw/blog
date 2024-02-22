@@ -108,7 +108,7 @@ categories:
 
         - 生成的 **`mock_myinterface.go`** 文件将包含 **`MyInterface`** 的 mock 实现。你可以在测试中使用这个 mock 来代替实际的接口实现。
 
-    ## **示例 Demo**
+    ## 示例 Demo
 
     让我们看一个简单的示例来展示这个过程：
 
@@ -148,7 +148,7 @@ categories:
 
 当我们运行 **`go generate`** 命令时，它将自动调用 **`mockgen`** 工具，并为我们的接口生成模拟实现代码。
 
-### **实践中的挑战与技巧**
+### 实践中的挑战与技巧
 
 1. **处理复杂的生成场景**：
     - 在复杂的项目中，"Go Generate" 命令可能需要处理多个文件和不同的生成规则。在这些情况下，维护清晰和有组织的生成指令非常重要。
@@ -455,7 +455,7 @@ var Version string
     - 使用 **`embed.FS`** 时，文件路径是相对于 Go 源文件所在的目录。确保在使用文件路径时考虑到这一点。
     - **`embed.FS`** 是只读的，您不能使用它来修改文件。
 
-## **`go:linkname`**
+## `go:linkname`
 
 `go:linkname` 是 Go 语言的一个编译器指令，它允许你在 Go 代码中链接到另一个包的私有函数或变量。这种技术通常被用于高级用例，例如在进行底层操作或链接到标准库的内部实现时。使用 `go:linkname` 可以绕过 Go 的类型安全和封装机制，因此需要谨慎使用。
 
@@ -567,7 +567,7 @@ func myFunction() {
 
 这个指令体现了 Go 语言对底层内存管理和垃圾回收机制的灵活控制能力，但也需要开发者具有较深的内存管理和垃圾回收原理的理解。
 
-## **`go:nowritebarrierrec`**
+## `go:nowritebarrierrec`
 
 ```
 //go:nowritebarrierrec
@@ -578,7 +578,7 @@ func myFunction() {
 
 简单来讲，就是针对写屏障的处理，防止其死循环。
 
-### **案例**
+### 案例
 
 ```
 //go:nowritebarrierrec

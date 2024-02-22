@@ -35,7 +35,7 @@ Our Go code encountered an integer overflow issue when running on a 32-bit syste
 
 It happened to run normally on 64-bit machines, but overflow problems would occur on 32-bit machines, so I thought about making a set of detection tools to solve the type detection of each platform.
 
-## **Part 1: Review of Go language basics**
+## Part 1: Review of Go language basics
 
 Before we dive into the code, let’s review some basic concepts of the Go language, specifically package management, concurrent programming, and the type system. These concepts are fundamental to understanding and programming effectively with the Go language.
 
@@ -461,7 +461,7 @@ func newConfig(platform string) *packages.Config {
 
 ### 4. `collector` structure and related methods
 
-### **`collector` structure**
+### `collector` structure
 
 ```go
 type collector struct {
@@ -474,7 +474,7 @@ type collector struct {
 - **`dirs`** is used to store the collected directory paths.
 - **`ignoreDirs`** is a set of directory paths that need to be ignored.
 
-### **`newCollector` function**
+### `newCollector` function
 
 ```go
 func newCollector(ignoreDirs string) collector {
@@ -493,7 +493,7 @@ func newCollector(ignoreDirs string) collector {
 - If an additional **`ignoreDirs`** string is provided (passed as a parameter), this string is comma-split and the result is added to the **`ignoreDirs`** slice.
 - The function returns the configured **`collector`** instance.
 
-### **`walk` method**
+### `walk` method
 
 ```go
 func (c *collector) walk(roots []string) error {

@@ -32,7 +32,7 @@ I continue to study through the Internet, and pursue the entire process of the h
 
 The article involves as few professional terminology as possible. From my perspective, a lot of the knowledge learned in high school biology is posted directly. I will explain some complex terms in detail. If you encounter something you don’t understand, you can go to [google.com ](https://google.com) found.
 
-## **Brain and Learning**
+## Brain and Learning
 
 First, it is crucial to understand how the brain processes and remembers information. When we learn new words, the hippocampus region of the brain becomes active, helping us convert short-term memory into long-term memory. Repetition and practice strengthen these memory traces, making learning stronger.
 
