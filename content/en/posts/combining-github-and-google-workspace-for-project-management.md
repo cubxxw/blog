@@ -9,13 +9,12 @@ type: 'posts'
 authors: ['Xinwei Xiong', 'Me'] 
 keywords: ['GitHub', 'Google Workspace', 'Project Management', 'Development Strategies', 'Collaboration Tools']
 tags:
-  - 'github'
   - 'google'
   - 'project'
   - 'management'
 categories:
   - 'Development'
-  - 'Project Management'
+  - 'ProjectManagement'
 description: >
     Explore the synergies between GitHub and Google Workspace to streamline your project management process. This guide offers insights into leveraging the best of both platforms for collaborative development and project tracking.
 ---

@@ -9,7 +9,6 @@ type: 'posts'
 authors: ['Xinwei Xiong', 'Me'] 
 keywords: ['GitHub', 'Google Workspace', 'Project Management', 'Development Strategies', 'Collaboration Tools']
 tags:
-  - 'github'
   - 'google'
   - 'project'
   - 'management'

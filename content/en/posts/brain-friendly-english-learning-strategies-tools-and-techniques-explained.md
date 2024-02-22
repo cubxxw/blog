@@ -7,7 +7,6 @@ showtoc: true
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["English Learning", "Brain-Friendly Strategies", "Learning Tools", "Language Acquisition Techniques"]
 tags:
   - english-learning
   - brain-efficiency
