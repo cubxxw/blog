@@ -78,6 +78,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Exploring Sora Technology for Enthusiasts and Developers](https://nsddd.top/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
 - [Combining GitHub and Google Workspace for Effective Project Management](https://nsddd.top/posts/combining-github-and-google-workspace-for-project-management/)
 - [Brain-Friendly English Learning Strategies: Tools and Techniques Explained](https://nsddd.top/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/)
 - [Unlocking the Magic of Flow State: A Guide to Enhanced Focus and Happiness](https://nsddd.top/posts/flow-state/)
