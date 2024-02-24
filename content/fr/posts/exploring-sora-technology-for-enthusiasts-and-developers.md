@@ -7,19 +7,19 @@ brouillon : faux
 showtoc : vrai
 tocopen : vrai
 type : messages
-auteur : ["Xiong Xinwei", "Je"]
-mots-clés : ["Technologie Sora", "Génération vidéo IA", "développement logiciel", "passionnés de technologie"]
-Mots clés:
-   - Blog
-   - sora
-   -ai
-   - chatgpt
-catégories:
-   - Développement
-   - Blog
-   -Sora
-   -OpenAI
-   -IA
+author: ["Xinwei Xiong", "Me"]
+keywords: ["Sora Technology", "AI Video Generation", "Software Development", "Tech Enthusiasts"]
+tags:
+  - blog
+  - sora
+  - ai
+  - chatgpt
+categories:
+  - Development
+  - Blog
+  - Sora
+  - OpenAI
+  - AI
 descriptif : >
      Plongez dans le monde de Sora Technology, une plateforme révolutionnaire de génération de vidéos basée sur l'IA. Cet article vise à fournir aux passionnés de technologie et aux développeurs un point d’entrée pour comprendre et utiliser le potentiel de Sora. Découvrez comment créer facilement de superbes vidéos générées par l'IA avec Sora et rejoignez une communauté d'innovateurs qui changent le paysage numérique.
 ---

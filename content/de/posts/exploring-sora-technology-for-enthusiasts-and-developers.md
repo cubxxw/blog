@@ -7,19 +7,19 @@ Entwurf: falsch
 showtoc: wahr
 tocopen: wahr
 Typ: Beiträge
-Autor: [„Xiong Xinwei“, „I“]
-Schlüsselwörter: [„Sora-Technologie“, „KI-Videogenerierung“, „Softwareentwicklung“, „Technikbegeisterte“]
-Stichworte:
-   - Blog
-   - sora
-   -ai
-   - chatgpt
-Kategorien:
-   - Entwicklung
-   - Blog
-   -Sora
-   -OpenAI
-   -KI
+author: ["Xinwei Xiong", "Me"]
+keywords: ["Sora Technology", "AI Video Generation", "Software Development", "Tech Enthusiasts"]
+tags:
+  - blog
+  - sora
+  - ai
+  - chatgpt
+categories:
+  - Development
+  - Blog
+  - Sora
+  - OpenAI
+  - AI
 Beschreibung: >
      Tauchen Sie ein in die Welt von Sora Technology, einer bahnbrechenden KI-gesteuerten Videogenerierungsplattform. Dieser Artikel soll Technologiebegeisterten und Entwicklern einen Einstiegspunkt bieten, um das Potenzial von Sora zu verstehen und zu nutzen. Entdecken Sie, wie Sie mit Sora ganz einfach beeindruckende KI-generierte Videos erstellen und einer Community von Innovatoren beitreten, die die digitale Landschaft verändern.
 ---
