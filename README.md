@@ -200,6 +200,7 @@ Ici, vous trouverez les derniers articles de blog les plus intéressants en fran
 這裡您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的繁體中文博客文章。
 
 <!-- My-Blog-TW:START -->
+- [Sora 技術討論以及普通人和開發者如何利用 Sora 改變世界](https://nsddd.top/zh-tw/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
 - [深入了解Kubernetes Kube apisserver的组件](https://nsddd.top/zh-tw/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [深入了解Kubernetes等组件之ETCD](https://nsddd.top/zh-tw/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [Openkf 多架構鏡像的構建策略設計](https://nsddd.top/zh-tw/posts/openkf-multi-architecture-image/)
