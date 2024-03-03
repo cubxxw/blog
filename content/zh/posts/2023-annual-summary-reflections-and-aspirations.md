@@ -6,6 +6,7 @@ cover:
     caption: 'about 2023 year'
 date: 2023-12-31T22:26:20+08:00
 draft: false
+weight: 1
 showtoc: true
 tocopen: true
 type: posts
