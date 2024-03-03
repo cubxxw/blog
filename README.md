@@ -130,6 +130,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2023年，我的旅行起点 - 2023年的我漫步在世界边缘](https://nsddd.top/zh/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
 - [Sora 技术讨论以及普通人和开发者如何利用 Sora 改变世界](https://nsddd.top/zh/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
 - [双剑合璧：结合GitHub与Google Workspace的项目管理艺术](https://nsddd.top/zh/posts/combining-github-and-google-workspace-for-project-management/)
 - [脑友好型英语学习策略：工具与技巧解析](https://nsddd.top/zh/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/)
