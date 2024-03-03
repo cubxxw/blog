@@ -78,6 +78,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [In 2023, I Was Wandering at the Edge of the World](https://nsddd.top/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
 - [Exploring Sora Technology for Enthusiasts and Developers](https://nsddd.top/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
 - [Combining GitHub and Google Workspace for Effective Project Management](https://nsddd.top/posts/combining-github-and-google-workspace-for-project-management/)
 - [Brain-Friendly English Learning Strategies: Tools and Techniques Explained](https://nsddd.top/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/)
