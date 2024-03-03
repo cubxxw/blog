@@ -201,6 +201,7 @@ Ici, vous trouverez les derniers articles de blog les plus intéressants en fran
 這裡您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的繁體中文博客文章。
 
 <!-- My-Blog-TW:START -->
+- [2023年，我的旅行起点 - 2023年的我漫步在世界边缘](https://nsddd.top/zh-tw/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
 - [Sora 技術討論以及普通人和開發者如何利用 Sora 改變世界](https://nsddd.top/zh-tw/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
 - [深入了解Kubernetes Kube apisserver的组件](https://nsddd.top/zh-tw/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [深入了解Kubernetes等组件之ETCD](https://nsddd.top/zh-tw/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
