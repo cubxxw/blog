@@ -105,11 +105,11 @@ ifndef POST_NAME
 	$(error POST_NAME is not set. Please provide a name for the post. example: make new-post POST_NAME="hello-world")
 endif
 	@$(TOOLS_DIR)/hugo new content content/en/posts/$(POST_NAME).md
-	# @$(TOOLS_DIR)/hugo new content content/de/posts/$(POST_NAME).md
+	@$(TOOLS_DIR)/hugo new content content/de/posts/$(POST_NAME).md
 	@$(TOOLS_DIR)/hugo new content content/zh/posts/$(POST_NAME).md
-	# @$(TOOLS_DIR)/hugo new content content/fr/posts/$(POST_NAME).md
-	# @$(TOOLS_DIR)/hugo new content content/es/posts/$(POST_NAME).md
-	# @$(TOOLS_DIR)/hugo new content content/zh-tw/posts/$(POST_NAME).md
+	@$(TOOLS_DIR)/hugo new content content/fr/posts/$(POST_NAME).md
+	@$(TOOLS_DIR)/hugo new content content/es/posts/$(POST_NAME).md
+	@$(TOOLS_DIR)/hugo new content content/zh-tw/posts/$(POST_NAME).md
 	@$(TOOLS_DIR)/hugo
 
 ## build: Build site with non-production settings and put deliverables in ./public
