@@ -130,7 +130,7 @@ languages:
     disabled: false
     languageCode: "en-us"
     languageDirection: "English Blog"
-    title: "This Englist"
+    title: "Xinwei Xiong(cubxxw)'s English blog"
     contentDir: "content/en"
     languageName: English
     weight: 1
@@ -188,10 +188,10 @@ languages:
     disabled: false
     languageCode: "fr-fr"
     languageDirection: "ltr" # Left to Right for French as well
-    title: "Blog Français"
+    title: "Blog en français de Xinwei Xiong (cubxxw) 🇫🇷"
     contentDir: "content/fr"
     languageName: Français
-    weight: 2
+    weight: 4
     menu:
       main:
         - identifier: lint
@@ -245,7 +245,7 @@ languages:
     disabled: false
     languageCode: "es-es"
     languageDirection: "ltr" # Left to Right for Spanish as well
-    title: "Blog en Español"
+    title: "Blog en español de Xinwei Xiong (cubxxw) 🇪🇸"
     contentDir: "content/es"
     languageName: Español
     weight: 3
@@ -298,14 +298,71 @@ languages:
           Text: "Suggest Changes" # edit text
           appendFilePath: true # to append file path to Edit link
 
+  de:
+    disabled: false
+    languageCode: "de-DE"
+    languageDirection: "ltr"
+    title: "Deutscher Blog von Xinwei Xiong (cubxxw) 🇩🇪"
+    contentDir: "content/de"
+    languageName: "Deutsch"
+    weight: 6
+    menu:
+      main:
+        - identifier: lint
+          name: 🤸Über mich
+          url: https://nsddd.top
+          pageRef: /lint
+          weight: 10
+        - identifier: categories
+          name: 🗂️Kategorien
+          url: categories/
+          pageRef: /categories
+          weight: 20
+        - identifier: tags
+          name: 🏷️Tags
+          url: tags/
+          pageRef: /tags
+          weight: 30
+        - identifier: search
+          name: 🔍Suche
+          url: search/
+          pageRef: /search
+          weight: 40
+        - identifier: github
+          name: Ⓜ️Github
+          url: https://github.com/cubxxw/blog
+          weight: 50
+    params:
+      profileMode:
+        # Habilitado o no
+        enabled: true
+        title: Hallo 👋
+        subtitle: |
+          Mein Name ist Xinwei (Bär) Xiong 🤖. Meine Loyalität gilt dem Abenteuer ☀️.
+          Ich bin ein großer Fan von Open Source Ⓜ️. Ich habe einen großen Traum und werde ihn im nächsten Jahr wahr machen.
+        imageUrl: ../assets/cubxxw-image.jpg
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: Beiträge
+            url: posts
+          - name: Archive
+            url: archives
+          - name: Tags
+            url: tags
+      editPost:
+        URL: "https://github.com/cubxxw/blog/edit/main/content/de"
+        Text: "Änderungen vorschlagen" # edit text
+        appendFilePath: true # to append file path to Edit link
+
   zh:
     disabled: false
     languageCode: "zh-cn"
     languageDirection: "ltr" # Left to Right for Chinese as well
-    title: "简体中文博客"
+    title: "熊鑫伟（cubxxw）的简体中文博客 🇨🇳"
     languageName: 简体中文
     contentDir: "content/zh"
-    weight: 4
+    weight: 2
     menu:
       main:
         - identifier: lint
@@ -359,7 +416,7 @@ languages:
     disabled: false
     languageCode: "zh-tw"
     languageDirection: "ltr"
-    title: "繁體中文博客"
+    title: "熊鑫伟（cubxxw）的繁体中文博客"
     languageName: 繁體中文
     contentDir: "content/zh-tw"
     weight: 5
