@@ -25,7 +25,6 @@ description: >
 
 ## Acerca de mí
 
-{{< calendly >}}
 
 ---
 

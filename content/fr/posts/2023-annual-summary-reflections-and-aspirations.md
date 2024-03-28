@@ -5,5 +5,3 @@ _build:
   list: never
   publishResources: false
 ---
-
-{{< calendly >}}

@@ -27,7 +27,6 @@ description: >
 
 # My 2023 Annual Summary
 
-{{< calendly >}}
 
 As 2023 swiftly draws to a close, my university life is nearing its end with just half a year remaining. A friend once said, "***What's frightening is not losing your passion for work, but never being able to find it again.***"
 

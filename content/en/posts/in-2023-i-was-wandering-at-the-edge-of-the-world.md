@@ -25,7 +25,6 @@ description: >
 
 ## about me
 
-{{< calendly >}}
 
 ---
 
