@@ -60,14 +60,14 @@ params:
     Title: Hi there 👋
     Content: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
   socialIcons:
+    - name: github
+      url: https://github.com/cubxxw
     - name: rss
       url: https://nsddd.top/index.xml
     - name: twitter
       url: https://twitter.com/xxw3293172751
     - name: stackoverflow
       url: https://stackoverflow.com/users/17393425/xinwei-xiong
-    - name: github
-      url: https://github.com/cubxxw
     - name: zhihu
       url: https://www.zhihu.com/people/3293172751
     - name: linkedin
@@ -76,19 +76,21 @@ params:
       url: https://calendly.com/cubxxw
     - name: facebook
       url: https://www.facebook.com/profile.php?id=100034435372354
+    - name: wechat
+      url: https://sm.nsddd.top/sm0d220ad72063197b9875379403f6c88.jpg
     - name: bilibili
       url: https://space.bilibili.com/1233089591
     - name: youtube
       url: https://https//www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
     - name: liberapay
       url: https://liberapay.com/xiongxinwei/donate
-    - name: kofi
-      url: https://ko-fi.com/cubxxw
+    - name: buymeacoffee
+      url: https://www.buymeacoffee.com/cubxxw
     - name: email
       url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com
     - name: weibo
       url: https://weibo.com/u/6248930985
-  ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook"] # To customize which share buttons to be enabled on page
+  ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "webo", "xiaohongshu"] # To customize which share buttons to be enabled on page
   analytics:
     google:
       SiteVerificationTag: XYZabc

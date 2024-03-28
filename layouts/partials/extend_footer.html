@@ -14,4 +14,12 @@ here */ -}}
 <!-- Calendly badge widget end -->
 {{- end }}
 
+<script>
+    let sp = document.createElement('span');
+    sp.id = 'busuanzi_container_site_pv';
+    sp.innerHTML = 'Visits: <span id="busuanzi_value_site_pv"></span> times';
+    document.body.querySelector("footer.footer").appendChild(sp);
+</script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 {{- /* Footer custom content area end */ -}}
