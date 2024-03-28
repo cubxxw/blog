@@ -1,10 +1,17 @@
 {{- /* Footer custom content area start */ -}}
-{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. 
+here */ -}}
 
+{{- if eq .Type "posts" }}
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="cubxxw" data-description="Support me on Buy me a coffee!" data-message="Would you mind getting me a cup of coffee, please?" data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+{{- end }}
+
+{{- if eq .Kind "home" }}
 <!-- Calendly badge widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/cubxxw/30min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: undefined }); }</script>
 <!-- Calendly badge widget end -->
+{{- end }}
 
 {{- /* Footer custom content area end */ -}}
