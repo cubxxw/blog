@@ -27,6 +27,8 @@ description: >
 
 # My 2023 Annual Summary
 
+{{< calendly >}}
+
 As 2023 swiftly draws to a close, my university life is nearing its end with just half a year remaining. A friend once said, "***What's frightening is not losing your passion for work, but never being able to find it again.***"
 
 This year, I encountered many people and experienced numerous events, gradually shaping my world view. I'm fond of **Maslow's hierarchy of needs** and often reflect on my own state through it. I enjoy challenges, both in my work and hobbies (like hiking, cycling…). It seems I've successfully fulfilled the first four levels of Maslow’s theory: physiological needs, safety needs, social needs, and esteem needs. I'm probably at the stage of **self-actualization needs**. However, it's worth mentioning that while Maslow's theory is hierarchical, human needs aren't always linear or fixed. For instance, someone at the self-actualization stage might still encounter needs from other levels at different times. If a person loses their job or faces financial difficulties, they may refocus on safety needs like financial security and stability. Similarly, the end of a close relationship or changes in one's social network might reignite a desire for social needs. Even in everyday life, when we fall ill or feel hungry, our focus might temporarily shift from higher-level needs like self-actualization to physiological needs.
@@ -130,3 +132,9 @@ Sometimes we all feel lost, unsure of what kind of life we desire or what we tru
 
 - **Reflections on the Annual Summary**: Looking back over the past year, I've made significant progress in both my career and personal growth. In 2023, I am proud of the achievements I have made. I've come to realize that continuous learning and constantly challenging myself are key to achieving my goals. I have also learned how to find relaxation and enjoyment amidst a busy schedule of work and study, which is crucial for my overall well-being.
 - **Expectations and Outlook for the Future**: Looking ahead, I am filled with anticipation and confidence. I aspire to achieve more in my professional journey while maintaining my curiosity and passion for learning, continuously exploring new areas. Additionally, I look forward to enhancing my personal interests and quality of life, aiming for a richer and more balanced existence.
+
+---
+
+> If you are interested in communicating with me, please book one of my meetings below.
+
+{{< calendly-date >}}
