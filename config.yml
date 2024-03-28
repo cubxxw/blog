@@ -81,7 +81,7 @@ params:
     - name: bilibili
       url: https://space.bilibili.com/1233089591
     - name: youtube
-      url: https://https//www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
+      url: https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
     - name: liberapay
       url: https://liberapay.com/xiongxinwei/donate
     - name: buymeacoffee
