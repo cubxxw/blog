@@ -14,12 +14,30 @@ here */ -}}
 <!-- Calendly badge widget end -->
 {{- end }}
 
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script>
-    let sp = document.createElement('span');
-    sp.id = 'busuanzi_container_site_pv';
-    sp.innerHTML = 'Visits: <span id="busuanzi_value_site_pv"></span> times';
-    document.body.querySelector("footer.footer").appendChild(sp);
+    document.addEventListener('DOMContentLoaded', function () {
+        let sp = document.createElement('span');
+        sp.id = 'busuanzi_container_site_pv';
+        sp.style.display = 'none';
+        sp.innerHTML = '🎉Visits: <span id="busuanzi_value_site_pv"></span> times';
+
+        let loadingIcon = document.createElement('span');
+        loadingIcon.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading...';
+
+        let footer = document.body.querySelector("footer.footer");
+        footer.appendChild(loadingIcon);
+        footer.appendChild(sp);
+
+        let script = document.createElement('script');
+        script.async = true;
+        script.src = "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+        script.onload = function () {
+            sp.style.display = '';
+            footer.removeChild(loadingIcon);
+        };
+        document.body.appendChild(script);
+    });
 </script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 {{- /* Footer custom content area end */ -}}
