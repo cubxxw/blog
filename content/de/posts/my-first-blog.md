@@ -1,11 +1,24 @@
 ---
-Titel: „Mein erster Blog“
-Datum: 14.09.2023
-Autor: [„Xiong Xinwei“, „Ich“]
-Beschreibung: „Dies ist mein erster Blog, über mich“
-Stichworte:
-   - Einführung
-   - Blog
+Title: "Mein erster Blog: Eine Reise zu mir selbst"
+Date: 14.09.2023
+Authors: ["Xiong Xinwei", "Ich"]
+Description: "Entdecken Sie meine persönliche und berufliche Reise in meinem ersten Blogbeitrag. Erfahren Sie, wie Leidenschaft für Technologie und Liebe zur Natur mein Leben prägen."
+Keywords:
+   - Introduction
+   - Personal Journey
+   - Technology
+   - Open Source
+   - Nature Adventures
+Categories:
+   - Personal Development
+   - Technology Insights
+   - Open Source Contributions
+   - Nature and Exploration
+Tags:
+   - life journey
+   - tech passion
+   - open source community
+   - nature adventures
 ---
 
 ## Hallo, ich bin Xiong Xinwei
