@@ -1,9 +1,30 @@
 ---
-Titel: „Building Strategy Design of Openkf Multi-Architecture Image“
-Datum: 2023-09-16T14:15:15+08:00
-Entwurf: falsch
-Stichworte:
-   - Blog
+Title: "Building Strategy Design of Openkf Multi-Architecture Image"
+Date: 2023-09-16T14:15:15+08:00
+Draft: false
+Keywords:
+   - OpenKF
+   - Docker Images
+   - Multi-Architecture
+   - CI/CD
+   - GitHub Actions
+   - Docker Hub
+   - Alibaba Cloud
+   - GitHub Container Registry
+Description: "A comprehensive guide to creating and distributing OpenKF Docker images for multiple architectures. Learn how to automate the process using GitHub Actions, push to various image registries, and ensure your images are up-to-date and secure."
+Categories:
+   - Technology
+   - DevOps
+   - Containerization
+   - Continuous Integration
+Tags:
+   - openkf
+   - docker
+   - multi-architecture
+   - automation
+   - GitHub Actions
+   - CI/CD
+   - security
 ---
 
 ## Erstellen Sie automatisch Multi-Architektur-Images von „openkf“ und übertragen Sie sie an mehrere Image-Warehouses
