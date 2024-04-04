@@ -1,12 +1,12 @@
 ---
-Titel: „Sora-Technologiediskussion und wie normale Menschen und Entwickler Sora nutzen, um die Welt zu verändern“
+Title: "Sora Technology Discussion and How Ordinary People and Developers Use Sora to Change the World"
 ShowRssButtonInSectionTermList: true
-Titelbild:
-Datum: 24.02.2024T13:30:15+08:00
-Entwurf: falsch
-showtoc: wahr
-tocopen: wahr
-Typ: Beiträge
+CoverImage:
+Date: 24.02.2024T13:30:15+08:00
+Draft: false
+showtoc: true
+tocopen: true
+Type: Posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Sora Technology", "AI Video Generation", "Software Development", "Tech Enthusiasts"]
 tags:
@@ -20,8 +20,8 @@ categories:
   - Sora
   - OpenAI
   - AI
-Beschreibung: >
-     Tauchen Sie ein in die Welt von Sora Technology, einer bahnbrechenden KI-gesteuerten Videogenerierungsplattform. Dieser Artikel soll Technologiebegeisterten und Entwicklern einen Einstiegspunkt bieten, um das Potenzial von Sora zu verstehen und zu nutzen. Entdecken Sie, wie Sie mit Sora ganz einfach beeindruckende KI-generierte Videos erstellen und einer Community von Innovatoren beitreten, die die digitale Landschaft verändern.
+Description: >
+     Dive into the world of Sora Technology, a groundbreaking AI-powered video generation platform. This article aims to provide technology enthusiasts and developers an entry point to understand and utilize Sora's potential. Discover how you can easily create impressive AI-generated videos with Sora and join a community of innovators changing the digital landscape.
 ---
 
 ## Sora! ! !
