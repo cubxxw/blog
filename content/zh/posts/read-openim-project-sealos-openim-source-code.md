@@ -1,6 +1,6 @@
 ---
 title: '速读开源项目 Sealos 的源码'
-description:
+description: 一篇文章从头开始教会如何快速优雅的阅读学习一个顶级的开源项目 sealos。
 ShowRssButtonInSectionTermList: true
 cover.image:
 date : 2023-09-11T16:33:09+08:00
