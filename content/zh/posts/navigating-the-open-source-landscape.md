@@ -39,7 +39,7 @@ description: >
 > “罗马不是一天建成的”。没有人天生就是“大牛”，“大牛”们也是在参与中不断成长的，不要被虚无的 title 所困扰，只有不断的坚持和探索才能让自己不断成长！
 > 
 
-在开源社区中，我慢慢学习到了非常多的技巧，比如这里我总结出一篇开源社区的提问技巧：https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/
+在开源社区中，我慢慢学习到了非常多的技巧，比如这里我总结出一篇开源社区的提问技巧：[https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/](https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/)
 
 我对整个的开源成长也有自己的思考总结，写了这篇关于开源的成长性指南阶段，从我们第一次加入开源项目开始，到最后开源和维护自己的项目，以及商业化成长，可以参考： [https://nsddd.top/zh/posts/stage-growth-of-open-source/https://nsddd.top/zh/posts/stage-growth-of-open-source/](https://nsddd.top/zh/posts/stage-growth-of-open-source/) 非常推荐阅读 ~
 
@@ -49,7 +49,7 @@ description: >
 
 开源除了给个人以及公司带来技术影响力之外，更为重要的是通过开源实现商业化价值，而这部分才是很多开源项目成功的实际驱动力。本文会介绍我对开源的理解，以及着重介绍自己对开源以及开源商业模式做了一个系统的研究，为决策项目是否应该开源、采用何种开源策略以及开源商业化路径提供参考意见。
 
-如果你对我有兴趣，可以关注我的开源的 github 账户： https://github.com/cubxxw
+如果你对我有兴趣，可以关注我的开源的 github 账户： [https://github.com/cubxxw](https://github.com/cubxxw)
 
 ## 什么是开源
 
@@ -661,7 +661,7 @@ Awesome GitHub Repo 会收集整理 GitHub 上高质量、有趣的开源项目�
 - 提交方式: 通过[issue](https://zhuanlan.zhihu.com/p/546129741/Issues%20%C2%B7%20polaris1119/golangweekly)提交自己的开源项目。
 - 其他同步平台: [go语言中文网](https://link.zhihu.com/?target=https%3A//studygolang.com/go/weekly)  |  [公众号](https://zhuanlan.zhihu.com/p/546129741/Go%E8%AF%AD%E8%A8%80%E7%88%B1%E5%A5%BD%E8%80%85%E5%91%A8%E5%88%8A%EF%BC%9A%E7%AC%AC%20151%20%E6%9C%9F%20%E2%80%94%E2%80%94%20%E5%B0%8F%E5%B7%A7%E7%9A%84%20ID%20%E7%94%9F%E6%88%90%E5%99%A8)
 
-### **论坛**
+### 论坛
 
 有一些[技术论坛](https://www.zhihu.com/search?q=%E6%8A%80%E6%9C%AF%E8%AE%BA%E5%9D%9B&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2592833778%7D)，其中的[垂直映射](https://www.zhihu.com/search?q=%E5%9E%82%E7%9B%B4%E6%98%A0%E5%B0%84&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2592833778%7D)影响非常直观，这里也作为一个个人项目推介的渠道。论坛的提交方式全部都是通过个人账号发帖。
 
