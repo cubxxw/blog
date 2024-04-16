@@ -7,7 +7,7 @@ theme: PaperMod
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
-buildExpired: false
+buildExpired: true
 googleAnalytics: UA-123-45
 pygmentsUseClasses: true
 minify:
@@ -131,7 +131,7 @@ languages:
   en:
     disabled: false
     languageCode: "en-us"
-    languageDirection: "English Blog"
+    languageDirection: "ltr"
     title: "Xinwei Xiong(cubxxw)'s English blog"
     contentDir: "content/en"
     languageName: English
@@ -140,7 +140,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸About me
-          url: https://nsddd.top
+          url: https://nsddd.top/en
           pageRef: /lint
           weight: 10
         - identifier: categories
@@ -198,7 +198,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸À propos de moi
-          url: https://nsddd.top
+          url: https://nsddd.top/fr
           pageRef: /lint
           weight: 10
         - identifier: categories
@@ -255,7 +255,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸Acerca de mí
-          url: https://nsddd.top
+          url: https://nsddd.top/es
           pageRef: /lint
           weight: 10
         - identifier: categories
@@ -312,7 +312,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸Über mich
-          url: https://nsddd.top
+          url: https://nsddd.top/de
           pageRef: /lint
           weight: 10
         - identifier: categories
@@ -369,7 +369,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸关于我
-          url: https://nsddd.top
+          url: https://nsddd.top/zh
           pageRef: /lint
           weight: 10
         - identifier: categories
@@ -426,7 +426,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸關於我
-          url: https://nsddd.top
+          url: https://nsddd.top/zh-tw
           pageRef: /lint
           weight: 10
         - identifier: categories
