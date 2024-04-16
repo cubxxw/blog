@@ -126,7 +126,7 @@ outputs:
       - JSON # is necessary
 
 # languageCode: en-us
-DefaultContentLanguage: zh
+DefaultContentLanguage: en
 languages:
   en:
     disabled: false
