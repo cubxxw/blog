@@ -136,6 +136,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [OpenIM 故障排查指南](https://nsddd.top/zh/posts/troubleshooting-guide-for-openim/)
 - [探索开源以及商业模式研究](https://nsddd.top/zh/posts/navigating-the-open-source-landscape/)
 - [Sora Ease 指南：开发者掌握 Sora AI 的全面指南](https://nsddd.top/zh/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
 - [2023年，我的旅行起点 - 2023年的我漫步在世界边缘](https://nsddd.top/zh/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
