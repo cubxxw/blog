@@ -134,6 +134,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [塑造职业道路：开源简历生成器与专业简历技巧指南](https://nsddd.top/zh/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
 - [OpenIM 故障排查指南](https://nsddd.top/zh/posts/troubleshooting-guide-for-openim/)
 - [探索开源以及商业模式研究](https://nsddd.top/zh/posts/navigating-the-open-source-landscape/)
 - [Sora Ease 指南：开发者掌握 Sora AI 的全面指南](https://nsddd.top/zh/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
