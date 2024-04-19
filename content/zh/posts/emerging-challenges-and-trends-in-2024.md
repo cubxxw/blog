@@ -1,5 +1,5 @@
 ---
-title: '2024年的新兴挑战与趋势'
+title: 'AI元年: 2024年的新兴挑战与趋势'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2024-01-14T22:52:24+08:00
@@ -14,8 +14,7 @@ keywords: []
 tags:
   - blog
 categories:
-  - Development
-  - Blog
+  - '开发 (Development)'
 description: >
   探索2024年技术和开发领域的最新趋势和挑战。
 ---

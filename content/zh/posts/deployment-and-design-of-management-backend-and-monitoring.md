@@ -16,8 +16,7 @@ tags:
   - 后台管理
   - 监控
 categories:
-  - 开发
-  - 博客
+  - '开发 (Development)'
 description: >
     本文指导您如何使用 Docker 部署 OpenIM，设置管理后台，并对应用进行监控。它为初学者提供了详细的步骤，并为更高级的用户提供了洞见。
 ---

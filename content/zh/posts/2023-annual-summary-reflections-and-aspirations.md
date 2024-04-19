@@ -1,27 +1,20 @@
 ---
-title: '2023年度总结：反思与展望'
+title: '回顾与前瞻：我的2023年度总结报告'
 ShowRssButtonInSectionTermList: true
 cover:
     image: https://sm.nsddd.top/sm202309161719007.png
-    caption: 'about 2023 year'
-date: 2023-12-31T22:26:20+08:00
+    caption: '关于2023年'
+date: '2023-12-31T22:26:20+08:00'
 draft: false
 weight: 2
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊新伟", "我"]
-keywords: ["2023", "年度总结", "个人成长", "职业发展"]
-tags:
-  - 博客
-  - 个人发展
-  - 职业
-  - 反思
-categories:
-  - 发展
-  - 博客
-description: >
-    我的2023年旅程：个人和职业成长的反思，面临的挑战，以及未来的志向。深入了解我在开源贡献、阅读、学习、户外探险和战略职业规划方面的经历和学到的教训。
+author: '熊鑫伟，我'
+keywords: ['2023', '年度总结', '个人成长', '职业发展', '开源贡献', '学习', '户外探险', '战略职业规划']
+tags: ['博客', '个人发展', '职业', '反思', '开源项目', '读书']
+categories: ['个人成长 (Personal Development)', '职业发展 (Career Development)']
+description: '我的2023年旅程：个人和职业成长的反思，面临的挑战，以及未来的志向。深入了解我在开源贡献、阅读、学习、户外探险和战略职业规划方面的经历和学到的教训。'
 ---
 
 # 我的 2023 年度总结

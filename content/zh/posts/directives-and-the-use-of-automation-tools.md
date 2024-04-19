@@ -14,10 +14,7 @@ tags:
   - golang
   - go
 categories:
-  - Development
-  - Blog
-  - OpenIM
-  - Go
+  - '开发 (Development)'
 ---
 
 # Go 源码里的这些 go: 指令 && go 自动化工具

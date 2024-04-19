@@ -1,26 +1,27 @@
 ---
 title: 'Kubernetes 的 CNI，CRI，CSI 详解'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date: 2023-09-28T20:29:30+08:00
+cover:
+  image: ""
+date: '2023-09-28T20:29:30+08:00'
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: ["kubernetes", "etcd", "cni", "csi", "cri", "go"]
+author: '熊鑫伟，我'
+keywords: ["Kubernetes", "CNI", "CSI", "CRI", "云原生", "微服务", "服务网格", "Go"]
 tags:
-  - blog
-  - go
-  - kubernetes
-  - k8s
+  - 'Go'
+  - 'Kubernetes'
+  - 'OpenIM'
+  - '云原生 (Cloud Native)'
+  - '微服务 (Microservices)'
+  - '服务网格 (Service Mesh)'
 categories:
-  - Development
-  - Blog
-  - Kubernetes
+  - '开发 (Development)'
+description: >
+  深入探讨Kubernetes中的CNI（容器网络接口）、CRI（容器运行时接口）和CSI（容器存储接口）。本文将详细解释这些关键组件的作用，以及它们在云原生环境中的重要性和应用场景。
 ---
-
-
 
 ## 容器运行时
 

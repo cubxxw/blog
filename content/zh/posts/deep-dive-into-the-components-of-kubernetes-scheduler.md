@@ -15,13 +15,10 @@ tags:
   - kubernetes
   - k8s
 categories:
-  - Development
-  - Blog
-  - Kubernetes
+  - '开发 (Development)'
 description: >
     k8s 的调度器是如何工作的？
 ---
-
 
 
 ## 调度器

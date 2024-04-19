@@ -1,27 +1,18 @@
 ---
-title: 'Kubernetes 控制平面 - Kubectl'
+title: 'Kubernetes 控制平面 - Kubectl 详细讲解'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-28T20:29:30+08:00
-draft : false
+date: '2023-09-28T20:29:30+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: []
-tags:
-  - blog
-  - go
-  - kubernetes
-  - k8s
+author: 'Xinwei Xiong, Me'
+keywords: ['Kubernetes', 'Kubectl', '控制平面', 'kubelet', 'Pod 管理']
+tags: ['Development', 'Go', 'Kubernetes', 'K8s']
 categories:
-  - Development
-  - Blog
-  - Kubernetes
-description: >
-    kubelet 架构kubelet 管理 Pod 的核心流程kubelet 节点管理Pod 管理Pod 
+  - '开发 (Development)'
+description: 'kubelet 架构kubelet 管理 Pod 的核心流程kubelet 节点管理Pod 管理Pod'
 ---
-
 
 [Kubelet组件解析](https://blog.csdn.net/jettery/article/details/78891733)
 

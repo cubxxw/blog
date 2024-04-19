@@ -1,23 +1,16 @@
 ---
 title: '深入了解Kubernetes Kube apisserver的组件'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-28T20:12:51+08:00
-draft : false
+date: '2023-09-28T20:12:51+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-tags:
-  - blog
-  - etcd
-  - k8s
-  - kubernetes
-  - kube-apiserver
+author: '熊鑫伟，我'
+keywords: ['kubernetes', 'kube-apiserver', '认证', '授权', '准入控制', '容器编排']
+tags: ['blog', 'etcd', 'k8s', 'kubernetes', 'kube-apiserver']
 categories:
-  - Development
-  - Blog
-  - Kubernetes
+  - '开发 (Development)'
 description: >
     Kubernetes API的每个请求都会经过多阶段的访问控制之后才会被接受，这包括认证、授权以及准入控制（Admission Control）等。
 ---

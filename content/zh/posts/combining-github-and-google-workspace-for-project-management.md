@@ -1,22 +1,22 @@
 ---
 title: '双剑合璧：结合GitHub与Google Workspace的项目管理艺术'
 ShowRssButtonInSectionTermList: true
-date: 2024-02-22T14:22:21+08:00
+date: '2024-02-22T14:22:21+08:00'
 draft: false
-showToc: true
-tocOpen: true
-type: 'posts'
-authors: ['Xinwei Xiong', 'Me'] 
-keywords: ['GitHub', 'Google Workspace', 'Project Management', 'Development Strategies', 'Collaboration Tools']
+showtoc: true
+tocopen: true
+type: posts
+author: '熊鑫伟，我'
+keywords: ['GitHub', 'Google Workspace', '项目管理', '开发策略', '协作工具', 'GitHub与Google Workspace', 'GitHub与Google Workspace项目管理', 'GitHub与Google Workspace协作', 'GitHub与Google Workspace优化', 'GitHub与Google Workspace使用技巧']
 tags:
-  - 'google'
-  - 'project'
-  - 'management'
+  - 'google (谷歌)'
+  - 'project (项目)'
+  - 'management (管理)'
 categories:
-  - 'Development'
-  - 'Project Management'
+  - '开发 (Development)'
+  - '项目管理 (Project Management)'
 description: >
-    Explore the synergies between GitHub and Google Workspace to streamline your project management process. This guide offers insights into leveraging the best of both platforms for collaborative development and project tracking.
+  探索GitHub与Google Workspace之间的协同效应，优化项目管理流程。本指南提供了利用两个平台的优势进行协作开发和项目跟踪的见解。
 ---
 
 # 双剑合璧：结合GitHub与Google Workspace的项目管理艺术

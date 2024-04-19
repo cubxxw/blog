@@ -1,29 +1,19 @@
 ---
 title: '深入了解Kubernetes等组件之ETCD'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-26T12:03:38+08:00
-draft : false
+date: '2023-09-26T12:03:38+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: ["kubernetes", "etcd", "raft", "go"]
-tags:
-  - blog
-  - kubernetes
-  - etcd
-  - raft
-  - go
+author: '熊鑫伟，我'
+keywords: ['kubernetes', 'etcd', 'raft', 'go', '容器编排', '分布式系统']
+tags: ['blog', 'kubernetes', 'etcd', 'raft', 'go']
 categories:
-  - Development
-  - Blog
-  - Kubernetes
+  - '开发 (Development)'
 description: >
-    这一篇来深入并且贯穿的讲解 ETCD 和 Raft。并且站在 Kubernetes 的角度来深入 剖析 ETCD。
+    这一篇来深入并且贯穿的讲解 ETCD 和 Raft。并且站在 Kubernetes 的角度来深入剖析 ETCD。
 ---
-
-
 
 ## 开始前
 
@@ -936,4 +926,3 @@ List行为
 * List对象时，如果不加resourceVersion，意味着需要Most Recent数据，请求会击穿APIServer 缓存，直接发送至etcd
 
 * APIServer 通过Label过滤对象查询时，过滤动作是在APIServer端，APIServer需要向etcd发起全量查询请求
-

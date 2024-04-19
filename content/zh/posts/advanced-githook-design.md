@@ -1,27 +1,17 @@
 ---
-title: '开源社区的规范设计思路'
-description:
+title: '我的实践总结：开源社区的规范设计思路'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-16T16:25:00+08:00
-draft : false
+date: '2023-09-16T16:25:00+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: []
-tags:
-  - blog
-  - openim
-  - management
-  - zh
-  - git
-categories:
-  - Development
-  - Blog
-  - OpenIM
-  - Github
+type: posts
+author: '熊鑫伟，我'
+keywords: ['开源社区', '规范设计', '社区管理', 'Git', 'OpenIM']
+tags: ['OpenIM', '管理 (Management)', 'Git']
+categories: ['开发 (Development)']
+description: '探讨如何在开源社区中实施规范设计，分享我的实践经验与思路，包括如何利用Git和OpenIM工具进行高效管理。'
 ---
-
 
 ## 社区不规范怎么办
 
@@ -181,7 +171,29 @@ fi
 
 echo "Downloading the hook to $PRECOMMIT_HOOK"
 curl -L https://gist.github.com/cubxxw/126b72104ac0b0ca484c9db09c3e5694/raw/pre-commit -o "$PRECOMMIT_HOOK" 2> /dev/null
-curl -L https://gist.github.com/cubxxw/126b72104ac0b0ca484c9db09c3e5694/raw/commit-msg -o "$PRECOMMIT_HOOK" 2> /dev/null
+curl -L https://gist.github.com/cubxxw/126b72104ac0b0ca484c9db09c3e5694/raw/commit-msg -o "$PRECO---
+title: '开源社区的规范设计思路'
+description:
+ShowRssButtonInSectionTermList: true
+cover.image:
+date : 2023-09-16T16:25:00+08:00
+draft : false
+showtoc: true
+tocopen: true
+author: ["熊鑫伟", "Me"]
+keywords: []
+tags:
+  - blog
+  - openim
+  - management
+  - zh
+  - git
+categories:
+  - Development
+  - Blog
+  - OpenIM
+  - Github
+---MMIT_HOOK" 2> /dev/null
 curl -L https://gist.github.com/cubxxw/126b72104ac0b0ca484c9db09c3e5694/raw/pre-push -o "$PRECOMMIT_HOOK" 2> /dev/null
 
 echo "Making it executable"
