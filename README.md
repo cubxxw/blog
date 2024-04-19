@@ -48,16 +48,6 @@ Based on your professional skills, technical expertise, and personal interests, 
 | 个人兴趣   | `户外探险 (Outdoor Adventures)`, `环球旅行 (World Travel)`, `自行车骑行 (Cycling)`, `摄影 (Photography)` | `个人成长 (Personal Development)`|
 | 生活方式   | `个人效率 (Personal Productivity)`, `健康生活 (Healthy Living)`, `生活方式 (Lifestyle)`, `远程工作 (Remote Work)` | `生活与教育 (Living & Education)`|
 
-### Tags and categories for English blogs
-
-| Category            | Tags                                                         | Classification                  |
-|---------------------|--------------------------------------------------------------|---------------------------------|
-| Technology          | `Go`, `Kubernetes`, `OpenIM`, `Cloud Native`, `Microservices`, `Service Mesh`, `Docker`, `CI/CD`, `Prometheus` | `Development`                   |
-| Security            | `Security`, `Code Review`                                     | `Security`                      |
-| Agile & Processes   | `Agile Software Development`, `Reactive Programming`, `Functional Programming` | `Project Management`            |
-| Personal Interests  | `Outdoor Adventures`, `World Travel`, `Cycling`, `Photography`| `Personal Development`          |
-| Lifestyle           | `Personal Productivity`, `Healthy Living`, `Lifestyle`, `Remote Work` | `Learning & Education`           |
-
 ### Tags and Categories for English Blogs
 
 | Category            | Tags                                                         | Classification                  |
