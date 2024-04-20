@@ -19,19 +19,18 @@ categories:
 
 ## Debugging Go project
 
-::: tip
+```bash
 prepare:
 
 + vscode
 + golang 1.92
 
-:::
-
+```
 
 
 ### demo
 
-```
+```bash
 go mod init test
 ```
 

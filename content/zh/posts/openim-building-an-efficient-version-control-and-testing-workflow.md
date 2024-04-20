@@ -146,8 +146,10 @@ OpenIM 社区采用透明的项目管理方法，以便更好地协作和监督�
         - `ps -ef |grep openim` and use `kill -9 ${pid}`
 - 使用 `gh` 或者是 `git` 获取对应的代码：
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/75a5484a-0cd7-4657-9986-f815c6264948/c901955c-6450-487d-8f68-8f9c8e3fd9b7/Untitled.png)
-    
+    ```bash
+    gh pr checkout 1750
+    ```
+
 - 进入测试目录，打开 `docker-compose.yml` 文件，然后将后面的 `openim-chat` ， `openim-admin` ， `prometheus` ， `alertmanager` ， `node-exporter`,  `grafana` 的注释
 
 除了用本地或者服务器测试，还可以使用 github 的 `codespaces`

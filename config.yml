@@ -33,7 +33,7 @@ params:
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowFullTextinRSS: false
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
