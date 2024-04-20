@@ -1223,7 +1223,7 @@ Learn more about the [name template engine](https://goreleaser.com/customizatio
 
 ## Checksums 校验
 
-GoReleaser 会生成一个文件并将其与版本一起上传，以便您的用户可以验证下载的文件是否正确。
+GoReleaser 会生成一个文件并将其与版本一起上传，以便你的用户可以验证下载的文件是否正确。
 
 该部分允许自定义文件名：
 
@@ -1279,9 +1279,9 @@ checksum:
 
 ## Snapcraft Packages (snaps) Snapcraft Packages
 
-GoReleaser也可以生成软件包。Snaps 是一种新的打包格式，可让您将项目直接发布到 Ubuntu 商店。从那里，它可以安装在所有受支持的Linux发行版中，并进行自动和事务性更新。
+GoReleaser也可以生成软件包。Snaps 是一种新的打包格式，可让你将项目直接发布到 Ubuntu 商店。从那里，它可以安装在所有受支持的Linux发行版中，并进行自动和事务性更新。
 
-您可以在 snapcraft 文档中阅读更多相关信息。
+你可以在 snapcraft 文档中阅读更多相关信息。
 
 **Snaps是适用于桌面**、**云**和**物联网**的 Linux 应用程序包，易于安装、安全、跨平台且无依赖性。
 
@@ -1591,11 +1591,11 @@ dockers:
         mode: 0644
 ```
 
-请注意，您必须手动登录到要推送到的Docker注册表 - GoReleaser不会自行登录。
+请注意，你必须手动登录到要推送到的Docker注册表 - GoReleaser不会自行登录。
 
-> 请注意，您必须手动登录到要推送到的Docker注册表 - GoReleaser不会自行登录。
+> 请注意，你必须手动登录到要推送到的Docker注册表 - GoReleaser不会自行登录。
 
-这些设置应该允许您生成多个 Docker 映像，例如，使用多个语句，以及为项目中的每个二进制文件生成一个映像或一个具有多个二进制文件的映像，以及安装生成的包而不是手动复制二进制文件和配置。
+这些设置应该允许你生成多个 Docker 映像，例如，使用多个语句，以及为项目中的每个二进制文件生成一个映像或一个具有多个二进制文件的映像，以及安装生成的包而不是手动复制二进制文件和配置。
 
 ### 通用映像名称
 
@@ -1634,7 +1634,7 @@ dockers:
 - `myuser/myimage:v1.6`
 - `myuser/myimage:latest`
 
-通过这些设置，您可以希望推送多个具有多个标签的 Docker 映像。
+通过这些设置，你可以希望推送多个具有多个标签的 Docker 映像。
 
 ### 发布到多个 docker 注册表
 
@@ -2184,7 +2184,7 @@ signs:
   artifacts: all
 ```
 
-然后，您的用户可以通过以下方式验证签名：
+然后，你的用户可以通过以下方式验证签名：
 
 `cosign verify-blob -key cosign.pub -signature file.tar.gz.sig file.tar.gz`
 
@@ -2417,11 +2417,11 @@ release:
 
 ## GPG 认证
 
-GitHub 支持多种 GPG 关键算法。如果您尝试添加使用不受支持的算法生成的密钥，则可能会遇到错误。
+GitHub 支持多种 GPG 关键算法。如果你尝试添加使用不受支持的算法生成的密钥，则可能会遇到错误。
 
 ### 检查现有 GPG 密钥
 
-使用该`gpg --list-secret-keys --keyid-format=long`命令列出您拥有公钥和私钥的 GPG 密钥的长格式。签署提交或标签需要私钥。
+使用该`gpg --list-secret-keys --keyid-format=long`命令列出你拥有公钥和私钥的 GPG 密钥的长格式。签署提交或标签需要私钥。
 
 ```jsx
 gpg --list-secret-keys --keyid-format=long
@@ -2447,7 +2447,7 @@ gpg --full-generate-key
 gpg --list-secret-keys --keyid-format=long
 ```
 
-从 GPG 密钥列表中，复制您要使用的 GPG 密钥 ID 的完整形式。
+从 GPG 密钥列表中，复制你要使用的 GPG 密钥 ID 的完整形式。
 
 1. 在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
 
@@ -2460,14 +2460,14 @@ gpg --list-secret-keys --keyid-format=long
    ssb   4096R/4BB6D45482678BE3 2016-03-10
    ```
 
-2. 粘贴下面的文本，并将其替换为您要使用的 GPG 密钥 ID。在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
+2. 粘贴下面的文本，并将其替换为你要使用的 GPG 密钥 ID。在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
 
    ```
    gpg --armor --export 3AA5C34371567BD2
    # Prints the GPG key ID, in ASCII armor format
    ```
 
-3. 复制您的 GPG 密钥，以 开头`----BEGIN PGP PUBLIC KEY BLOCK-----`和结尾`----END PGP PUBLIC KEY BLOCK-----`。
+3. 复制你的 GPG 密钥，以 开头`----BEGIN PGP PUBLIC KEY BLOCK-----`和结尾`----END PGP PUBLIC KEY BLOCK-----`。
 
 ```jsx
 cat /root/.gnupg/openpgp-revocs.d/4DDA37AE0F3AEA3044B33F1B1BAD6F395338EFDE.rev
@@ -2477,21 +2477,21 @@ cat /root/.gnupg/openpgp-revocs.d/4DDA37AE0F3AEA3044B33F1B1BAD6F395338EFDE.rev
 
 **告诉 Git 你的签名密钥：**
 
-你还需要告诉 Git 关于你的 签名 密钥，因为 如果您有多个 GPG 密钥，则需要告诉 Git 使用哪一个。
+你还需要告诉 Git 关于你的 签名 密钥，因为 如果你有多个 GPG 密钥，则需要告诉 Git 使用哪一个。
 
-1. 如果您之前已将 Git 配置为在使用 进行签名时使用不同的密钥格式，请取消设置此配置，以便使用`-gpg-sign`默认格式。`openpgp`
+1. 如果你之前已将 Git 配置为在使用 进行签名时使用不同的密钥格式，请取消设置此配置，以便使用`-gpg-sign`默认格式。`openpgp`
 
    ```
    git config --global --unset gpg.format
    ```
 
-使用该`gpg --list-secret-keys --keyid-format=long`命令列出您拥有公钥和私钥的 GPG 密钥的长格式。签署提交或标签需要私钥。
+使用该`gpg --list-secret-keys --keyid-format=long`命令列出你拥有公钥和私钥的 GPG 密钥的长格式。签署提交或标签需要私钥。
 
 ```jsx
 gpg --list-secret-keys --keyid-format=long
 ```
 
-从 GPG 密钥列表中，复制您要使用的 GPG 密钥 ID 的完整形式。在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
+从 GPG 密钥列表中，复制你要使用的 GPG 密钥 ID 的完整形式。在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
 
 ```jsx
 $ gpg --list-secret-keys --keyid-format=long

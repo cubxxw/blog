@@ -1,25 +1,17 @@
 ---
 title: 'Github Actions 的高级使用技巧'
-description:
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-06-14T16:17:02+08:00
-draft : false
+date: '2023-06-14T16:17:02+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: []
-tags:
-  - blog
-  - zh
-  - actions
-  - cicd
-categories:
-  - Development
-  - Blog
-  - Github
+type: posts
+author: '熊鑫伟，我'
+keywords: ['Github Actions', 'CI/CD', '自动化', '软件开发', 'DevOps', '技术自动化', '代码集成', '代码部署']
+tags: ['博客 (Blog)', 'CI/CD', '自动化 (Automation)']
+categories: ['开发 (Development)']
+description: '本文深入探讨了 Github Actions 的高级使用技巧，旨在帮助开发者更好地理解和利用这一强大的自动化工具来优化软件开发流程。通过实际案例和详细的步骤说明，您将学习到如何设置高效的 CI/CD 管道，以及如何通过 Github Actions 自动化常见的开发任务。'
 ---
-
 
 ## 创建 actions
 
@@ -32,7 +24,6 @@ categories:
 操作可以直接在机器上或Docker容器中运行。您可以定义操作的输入、输出和环境变量。
 
 可以构建Docker容器、JavaScript和复合操作。操作需要一个元数据文件来定义操作的输入、输出和主入口点。元数据文件名必须为 `action.yml` 或 `action.yaml` 。有关更多信息，请参阅“GitHub操作的元数据语法。“
-
 
 
 ## docker 容器操作

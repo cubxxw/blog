@@ -11,8 +11,7 @@ author:
   - "Xinwei Xiong"
   - "Me"
 keywords: []
-tags:
-  - blog
+tags: ['博客 (Blog)', 'AI', '技术 (Technology)']
 categories:
   - '开发 (Development)'
 description: >

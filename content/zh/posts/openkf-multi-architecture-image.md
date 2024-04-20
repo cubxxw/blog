@@ -1,15 +1,15 @@
 ---
 title: 'Openkf 多架构镜像的构建策略设计'
-date : 2023-04-23T14:15:15+08:00
-draft : false
+date: 2023-04-23T14:15:15+08:00
+draft: false
 tags:
-  - blog
-  - zh
-  - openim
-categories:
-  - Development
-  - Blog
+  - Golang (GO语言)
+  - Kubernetes
   - OpenIM
+  - 云原生 (Cloud Native)
+categories:
+  - 开发 (Development)
+description: '本文探讨了针对 Openkf 的多架构镜像构建策略的设计，涵盖了在不同环境下的构建和部署方案，旨在提高应用的可移植性和效率。'
 ---
 
 ## 自动化构建`openkf`的多架构镜像并推送到多个镜像仓库

@@ -1,26 +1,17 @@
 ---
 title: 'Kubernetes一篇快速入门的文章'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2022-04-28T23:38:11+08:00
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: ["Kubernetes", "k8s", "Docker", Cloud Native", "CNCF"]
-tags:
-  - blog
-  - kubernetes
-  - k8s
-categories:
-  - Development
-  - Blog
-  - Kubernetes
-description: >
-    Kubernetes是一个开源的容器编排引擎，用于自动化部署、扩展和管理容器化应用程序。该项目由云原生计算基金会管理，该基金会由Linux基金会托管。这篇文章将会带你快速入门Kubernetes。
+author: '熊鑫伟，我'
+keywords: ['Kubernetes', '容器编排', 'Docker', '云原生', 'CNCF']
+tags: ['博客', 'Kubernetes (GO语言)', '云原生 (Cloud Native)', 'Docker']
+categories: ['开发 (Development)']
+description: 'Kubernetes是一个开源的容器编排引擎，用于自动化部署、扩展和管理容器化应用程序。该项目由云原生计算基金会管理，该基金会由Linux基金会托管。这篇文章将会带你快速入门Kubernetes。'
 ---
-
 
 ## 正片开始~
 

@@ -1,12 +1,15 @@
 ---
-title: '关于我的 Hugo (教程)'
-date : 2023-09-12T14:26:20+08:00
-tags:
-  - blog
-categories:
-  - Development
-  - Blog
-  - zh
+title: '关于我的 Hugo 博客 (教程)'
+date: 2023-09-12T14:26:20+08:00
+draft: false
+showtoc: true
+tocopen: true
+type: posts
+author: '熊鑫伟，我'
+keywords: ['Hugo', '博客搭建', '静态网站生成器', '教程']
+tags: ['博客', 'Hugo (静态网站生成器)', '教程 (Tutorial)']
+categories: ['开发 (Development)']
+description: '本教程将指导你如何使用 Hugo —— 一款流行的静态网站生成器 —— 来搭建和管理个人博客。详细介绍从安装到配置的各个步骤。'
 ---
 
 # 重新搭建我的博客（静态）
@@ -753,7 +756,7 @@ jobs:
 layouts/partials/comments.html
 ```
 
-并粘贴您的评论提供商提供的代码
+并粘贴你的评论提供商提供的代码
 
 也在配置中添加这个
 

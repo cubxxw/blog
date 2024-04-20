@@ -1,29 +1,3 @@
-我希望你参考下面的模版，以及下面的规则，给出对应修改后的元数据代码
-
-```yaml
----
-title: '请填写文章标题'
-ShowRssButtonInSectionTermList: true
-date: '请保持原有日期或添加新日期'
-draft: false
-showtoc: true
-tocopen: true
-type: posts
-author: '请根据语言选择 "熊鑫伟，我" 或 "Xinwei Xiong, Me"'
-keywords: ['请根据文章内容选择合适的关键词']
-tags: ['参考规则表格(如果是中文的话，必须要带上双语)']
-categories: ['参考规则表格']
-description: '请简洁明了地描述文章主要内容和吸引点'
----
-```
-
-### 要求如下
-
-你需要更具语境分析到底是中文博客还是英文博客，然后选择使用中文的格式还是英文的格式（一般来说标题出现了中文就是中文，除此之外是英文）
-
-注意，描述的语言要和标题想匹配，如果标题是中文，必须要翻译为中文描述，以及中文的关键字，和中文的规则
-
-```yaml
 metadata_rules:
   - language: "中文"
     tags:
@@ -142,11 +116,3 @@ metadata_rules:
       validate_name: true
       minimum_articles: 1
       author_list: ["Xinwei Xiong", "Me"]
-```
-
-除了输出上序基础的元数据，我希望你额外的补充一句话，关于你还推荐增强搜索的 Keywords 建议
-推荐以 keywords: [''] 的形式给出建议
-
-注意，中文文章一定要用 yaml 规则中的中文的规则，英文文章一定要用 yaml 规则中的英文规则，如果表格不满足你的要求，你需要提醒我在上序的 yaml 规则中添加对应的中英文标签和分类。
-
-我将会不断地给你原料，请你输出专业的内容，并且你每一次都需要保证幂等，请问你准备好了吗？

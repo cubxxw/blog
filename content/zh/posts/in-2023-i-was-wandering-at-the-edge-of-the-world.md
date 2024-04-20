@@ -8,19 +8,11 @@ draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: ["Travel", "Self Discovery", "Adventure", "2023 Journey", "World Exploration"]
-tags:
-  - travel
-  - self-discovery
-  - adventure
-  - exploration
-categories:
-  - Development
-  - Blog
-  - 旅行
-description: >
-    在2023年，我的旅程带我走到了世界的边缘，我不仅发现了新的景观，更深入地了解了自己。从古城繁忙的街道到山顶的宁静孤独，每一步都是一个故事，一个教训，一个记忆。这个博客记录了我的冒险，我遇到的人，我经历的文化，以及随之而来的个人成长。随我一起回顾我的漫游故事，以及它们在我灵魂上留下的不可磨灭的印记。你可以切换到指定语言，更紧密地跟随我的旅程。
+author: '熊鑫伟，我'
+keywords: ['旅行', '自我发现', '冒险', '2023年旅程', '世界探索']
+tags: ['旅行 (Travel)', '自我发现 (Self Discovery)', '冒险 (Adventure)', '探索 (Exploration)','旅行 (Travel)']
+categories: ['个人成长 (Personal Development)']
+description: '在2023年，我的旅程带我走到了世界的边缘，我不仅发现了新的景观，更深入地了解了自己。从古城繁忙的街道到山顶的宁静孤独，每一步都是一个故事，一个教训，一个记忆。这个博客记录了我的冒险，我遇到的人，我经历的文化，以及随之而来的个人成长。随我一起回顾我的漫游故事，以及它们在我灵魂上留下的不可磨灭的印记。你可以切换到指定语言，更紧密地跟随我的旅程。'
 ---
 
 ## 关于我

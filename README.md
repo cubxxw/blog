@@ -42,20 +42,20 @@ Based on your professional skills, technical expertise, and personal interests, 
 
 | 类别       | 标签                                                             | 分类                             |
 |------------|------------------------------------------------------------------|----------------------------------|
-| 技术       | `Go`, `Kubernetes`, `OpenIM`, `云原生 (Cloud Native)`, `微服务 (Microservices)`, `服务网格 (Service Mesh)`, `Docker`, `CI/CD`, `Prometheus` | `开发 (Development)`             |
+| 技术       | `Golang (GO语言)`, `Kubernetes`, `OpenIM`, `云原生 (Cloud Native)`, `微服务 (Microservices)`, `服务网格 (Service Mesh)`, `Docker`, `CI/CD`, `Prometheus` | `开发 (Development)`             |
 | 安全       | `安全性 (Security)`, `代码审查 (Code Review)`                     | `安全 (Security)`                |
 | 敏捷与流程 | `敏捷软件开发 (Agile Software Development)`, `响应式编程 (Reactive Programming)`, `函数式编程 (Functional Programming)` | `项目管理 (Project Management)`   |
-| 个人兴趣   | `户外探险 (Outdoor Adventures)`, `环球旅行 (World Travel)`, `自行车骑行 (Cycling)`, `摄影 (Photography)` | `个人成长 (Personal Development)`|
+| 个人兴趣   | `户外探险 (Outdoor Adventures)`, `环球旅行 (World Travel)`, `自行车骑行 (Cycling)`, `摄影 (Photography)`, `旅行 (Travel)`, `自我发现 (Self Discovery)`, `冒险 (Adventure)`, `探索 (Exploration)` | `个人成长 (Personal Development)`|
 | 生活方式   | `个人效率 (Personal Productivity)`, `健康生活 (Healthy Living)`, `生活方式 (Lifestyle)`, `远程工作 (Remote Work)` | `生活与教育 (Living & Education)`|
 
 ### Tags and Categories for English Blogs
 
 | Category            | Tags                                                         | Classification                  |
 |---------------------|--------------------------------------------------------------|---------------------------------|
-| Technology          | `Go`, `Kubernetes`, `OpenIM`, `Cloud Native`, `Microservices`, `Service Mesh`, `Docker`, `CI/CD`, `Prometheus` | `Development`                   |
+| Technology          | `Golang`, `Kubernetes`, `OpenIM`, `Cloud Native`, `Microservices`, `Service Mesh`, `Docker`, `CI/CD`, `Prometheus` | `Development`                   |
 | Security            | `Security`, `Code Review`                                     | `Security`                      |
 | Agile & Processes   | `Agile Software Development`, `Reactive Programming`, `Functional Programming` | `Project Management`            |
-| Personal Interests  | `Outdoor Adventures`, `World Travel`, `Cycling`, `Photography`| `Personal Development`          |
+| Personal Interests  | `Outdoor Adventures`, `World Travel`, `Cycling`, `Photography`, `Travel`, `Self Discovery`, `Adventure`, `Exploration` | `Personal Development`          |
 | Lifestyle           | `Personal Productivity`, `Healthy Living`, `Lifestyle`, `Remote Work` | `Learning & Education`           |
 
 ### Keywords
@@ -169,7 +169,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 
 ### 中文博客精选订阅
 
-这里您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
+这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
 - [塑造职业道路：开源简历生成器与专业简历技巧指南](https://nsddd.top/zh/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
@@ -246,7 +246,7 @@ Ici, vous trouverez les derniers articles de blog les plus intéressants en fran
 
 ### 繁體中文博客精選訂閱
 
-這裡您可以看到Xinwei Xiong(cubxxw)的最新和最有趣的繁體中文博客文章。
+這裡你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的繁體中文博客文章。
 
 <!-- My-Blog-TW:START -->
 - [2023年，我的旅行起点 - 2023年的我漫步在世界边缘](https://nsddd.top/zh-tw/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)

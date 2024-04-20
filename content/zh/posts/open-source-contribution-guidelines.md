@@ -1,28 +1,17 @@
 ---
-title: '一份完整的开源贡献指南（第一次踏入开源）'
-description:
+title: '一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-16T16:40:54+08:00
-draft : false
+date: 2023-09-16T16:40:54+08:00
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords:
-  - Open Source
-  - Business
-tags:
-  - blog
-  - openim
-categories:
-  - Development
-  - Blog
-  - OpenIM
-description: >
-  Explore the intersection of open source technology and business development through the journey of OpenIM, a vibrant open-source project. Learn how OpenIM achieved success, navigated challenges, and balanced community contributions with commercialization.
+type: posts
+author: '熊鑫伟，我'
+keywords: ['开源', '商业', 'OpenIM', '开源项目', '技术社区', '商业模式']
+tags: ['博客 (Blog)', 'OpenIM', '开发 (Development)']
+categories: ['开发 (Development)', '个人成长 (Personal Development)']
+description: '探索OpenIM这一活跃的开源项目如何实现其商业发展目标。了解OpenIM如何取得成功，应对挑战，并在社区贡献与商业化之间找到平衡。'
 ---
-
-
 
 ## 任务分配
 
@@ -74,15 +63,15 @@ description: >
 
 ⚡ 显然，相比较`issues`，我更喜欢`pr` ，你可以发现下面的问题并且改进
 
-+ 如果您发现拼写错误，请尝试修复它！
-+ 如果您发现错误，请尝试修复它！
-+ 如果您发现一些多余的代码，请尝试删除它们！
++ 如果你发现拼写错误，请尝试修复它！
++ 如果你发现错误，请尝试修复它！
++ 如果你发现一些多余的代码，请尝试删除它们！
 + 如果发现缺少一些测试用例，请尝试添加它们！
-+ 如果您可以增强功能，**请不要犹豫**！
-+ 如果您发现代码是隐式的，请尝试添加注释以使其清晰！
++ 如果你可以增强功能，**请不要犹豫**！
++ 如果你发现代码是隐式的，请尝试添加注释以使其清晰！
 + 如果你觉得代码很丑陋，试着重构它！
 + 如果你能帮助改进文档，那就再好不过了！
-+ 如果您发现文档不正确，请直接进行修复！
++ 如果你发现文档不正确，请直接进行修复！
 + .…..
 
 
@@ -120,7 +109,7 @@ description: >
 5. 请使用正确的技术术语大小写，例如使用 HTTP 而不是 http，使用 MySQL 而不是 mysql，使用 Kubernetes 而不是 kubernetes 等。
 6. 请在提交 PR 之前检查文档中是否有任何拼写错误。
 
-您还可以查看[docusaurus](https://docusaurus.io/docs/markdown-features)，以编写具有更丰富功能的文档。
+你还可以查看[docusaurus](https://docusaurus.io/docs/markdown-features)，以编写具有更丰富功能的文档。
 
 
 
@@ -135,7 +124,7 @@ git remote set-url --push upstream no-pushing
 
 ![image-20221109173951312](http://sm.nsddd.top/smimage-20221109173951312.png)
 
-使用此远程设置，您可以像这样检查 git 远程配置：
+使用此远程设置，你可以像这样检查 git 远程配置：
 
 ```bash
 $ git remote -v
@@ -251,7 +240,7 @@ git commit -m -s "init infra"
 
 `sealos`现在只支持`linux`，需要`linux`服务器来测试。
 
-一些工具可以非常方便地帮助您启动虚拟机，例如[multipass](https://multipass.run/)
+一些工具可以非常方便地帮助你启动虚拟机，例如[multipass](https://multipass.run/)
 
 
 
@@ -261,7 +250,7 @@ git commit -m -s "init infra"
 mkdir /sealos && cd /sealos ; git clone https://ghproxy.com/https://github.com/labring/sealos && cd sealos && ls ; make build  # 大概可能因为网络原因需要等一段时间~
 ```
 
-您可以将 `bin` 文件 `scp` 到您的 `linux` 主机。
+你可以将 `bin` 文件 `scp` 到你的 `linux` 主机。
 
 如果你使用 `multipaas`，你可以将 `bin` 目录挂载到 `vm`：
 
@@ -332,7 +321,7 @@ export PATH=$PATH:$GO_PATH/bin
 
 1. 克隆代码慢，你可以使用 ghproxy：`git clone https://ghproxy.com/https://github.com/labring/sealos`
 2. 构建下载包慢，可以使用 **goproxy** ：`go env -w GOPROXY=https://goproxy.cn,direct && make build`
-3. `cgo: C compiler "x86_64-linux-gnu-gcc" not found: exec: "x86_64-linux-gnu-gcc": executable file not found in $PATH`您需要安装 gnu-gcc，例如：`apt-get install build-essential`或`yum -y install gcc-c++-x86_64-linux-gnu`
+3. `cgo: C compiler "x86_64-linux-gnu-gcc" not found: exec: "x86_64-linux-gnu-gcc": executable file not found in $PATH`你需要安装 gnu-gcc，例如：`apt-get install build-essential`或`yum -y install gcc-c++-x86_64-linux-gnu`
 
 :::
 
@@ -564,7 +553,7 @@ kubectl create configmap <映射名称> <数据源>
 
 sealos现在只支持linux，需要linux服务器来测试。
 
-一些工具可以非常方便地帮助您启动虚拟机，例如[multipass](https://multipass.run/)
+一些工具可以非常方便地帮助你启动虚拟机，例如[multipass](https://multipass.run/)
 
 ### 构建项目
 
@@ -572,7 +561,7 @@ sealos现在只支持linux，需要linux服务器来测试。
 mkdir /sealos && cd /sealos && git clone https://github.com/labring/sealos && cd sealos && ls && make build  # 大概可能因为网络原因需要等一段时间~
 ```
 
-您可以将 `bin` 文件 `scp` 到您的 `linux` 主机。
+你可以将 `bin` 文件 `scp` 到你的 `linux` 主机。
 
 如果你使用 `multipaas`，你可以将 `bin` 目录挂载到 `vm`：
 

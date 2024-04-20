@@ -1,25 +1,17 @@
 ---
-title: 'OpenIM 使用 Harbor 构建企业镜像仓库'
+title: '设计 OpenIM 使用 Harbor 构建企业镜像仓库'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-10-25T10:45:38+08:00
-draft : false
+date: '2023-10-25T10:45:38+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
-keywords: [openim, harbor, docker, kubernetes, helm, cert-manager]
-tags:
-  - blog
-  - openim
-  - docker
-categories:
-  - Development
-  - Blog
-  - OpenIM
-  - Kubernetes
+author: '熊鑫伟，我'
+keywords: ['OpenIM', 'Harbor', 'Docker', 'Kubernetes', 'Helm', 'Cert-manager']
+tags: ['博客', 'OpenIM', 'Docker']
+categories: ['开发 (Development)']
 description: >
-    探索如何使用 Harbor 构建强大的开源容器镜像仓库，用于设置稳健的镜像存储解决方案。这一步步指南涵盖了 Harbor 的安装和配置，包括使用 Helm 图表和 Cert-manager 来确保安全的 HTTPS 连接。了解如何将 Docker 镜像推送到您的 Harbor 仓库，配置 DNS 解析，并探索使用 AWS S3 作为可伸缩的镜像存储选项。充分发挥 Harbor 的潜力，优化容器镜像管理，降低存储成本，同时确保安全性和可靠性。
+    探索如何使用 Harbor 构建强大的开源容器镜像仓库，用于设置稳健的镜像存储解决方案。这一步步指南涵盖了 Harbor 的安装和配置，包括使用 Helm 图表和 Cert-manager 来确保安全的 HTTPS 连接。了解如何将 Docker 镜像推送到你的 Harbor 仓库，配置 DNS 解析，并探索使用 AWS S3 作为可伸缩的镜像存储选项。充分发挥 Harbor 的潜力，优化容器镜像管理，降低存储成本，同时确保安全性和可靠性。
 ---
 
 

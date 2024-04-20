@@ -7,19 +7,11 @@ draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: ["GitOps", "Kubernetes", "Argo Rollouts", "金丝雀部署", "蓝绿部署", "Deployment Strategies"]
-tags:
-  - GitOps
-  - Kubernetes
-  - Argo Rollouts
-  - Canary Deployment
-  - Blue-Green Deployment
-categories:
-  - Development
-  - Blog
-description: >
-    探索 GitOps 在 Kubernetes 中的实践，详细解析使用 Argo Rollouts 实现金丝雀和蓝绿部署策略。本文将为开发者提供深入的理论和实践指导，帮助优化持续部署流程。
+author: '熊鑫伟，我'
+keywords: ['GitOps', 'Kubernetes', 'Argo Rollouts', '金丝雀部署 (Canary Deployment)', '蓝绿部署 (Blue-Green Deployment)', '部署策略 (Deployment Strategies)', 'DevOps', '云原生 (Cloud Native)', '服务网格 (Service Mesh)', '容器编排 (Container Orchestration)']
+tags: ['GitOps', 'Kubernetes', 'Argo Rollouts', '金丝雀部署 (Canary Deployment)', '蓝绿部署 (Blue-Green Deployment)']
+categories: ['开发 (Development)']
+description: '探索 GitOps 在 Kubernetes 中的实践，详细解析使用 Argo Rollouts 实现金丝雀和蓝绿部署策略。本文将为开发者提供深入的理论和实践指导，帮助优化持续部署流程。'
 ---
 
 

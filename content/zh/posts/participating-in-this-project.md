@@ -1,29 +1,29 @@
 ---
-title: '参与这个项目'
+title: '参与我们的区块链学习平台项目'
 ShowRssButtonInSectionTermList: true
 cover:
-  image: '/path/to/your/cover/image.jpg'  # 替换为您封面图片的路径
-date: 2024-02-01T10:26:53+08:00
+  image: '/path/to/your/cover/image.jpg'  # 替换为你封面图片的路径
+date: 2022-02-01T10:26:53+08:00
 draft: false
 showtoc: true
 tocopen: true
 type: posts
 author:
-  - "熊新伟"
+  - "熊鑫伟"
   - "我"
-keywords: ["blockchain", "learning platform", "community contribution", "software development"] # Add relevant keywords
+keywords: ["区块链", "学习平台", "社区贡献", "软件开发"] # Add relevant keywords
 tags:
   - "blog"
-  - "blockchain"
-  - "open source"
-  - "community"
+  - "区块链"
+  - "开源"
+  - "社区"
 categories:
-  - "Development"
-  - "Blog"
+  - "开发"
+  - "博客"
 description: >
-    欢迎来到我们关于建立基于区块链的学习平台的项目。在这里，我们分享关于我们进展的见解和更新。您可以切换到指定的语言了解更多详细信息。
+    欢迎来到我们的项目，一个基于区块链技术的学习平台。在这里，我们将分享项目进展的最新动态和见解。您可以切换到指定的语言了解更多详细信息。
 aliases:
-  - "/zh/archives/contributors" # 这个别名允许通过指定的 URL 访问页面
+  - "/zh/archives/contributors"
 ---
 
 
@@ -31,7 +31,7 @@ aliases:
 
 ## ⚡ 前言
 
-欢迎来到我们的项目！本项目旨在建立一个基于区块链的全民学习平台，通过集体的智慧和努力，推动技术和知识的普及。无论您是初学者还是经验丰富的开发者，您的贡献都将对项目产生积极影响。
+欢迎来到我们的项目！本项目旨在建立一个基于区块链的全民学习平台，通过集体的智慧和努力，推动技术和知识的普及。无论你是初学者还是经验丰富的开发者，你的贡献都将对项目产生积极影响。
 
 ## 💡 关于本项目（先看❗）
 
@@ -58,7 +58,7 @@ aliases:
 
 ### 🌟 如何参与
 
-不论您的技能水平如何，都有多种方式可以参与本项目：
+不论你的技能水平如何，都有多种方式可以参与本项目：
 
 - 提交问题和功能建议。
 - 参与代码编写和文档撰写。

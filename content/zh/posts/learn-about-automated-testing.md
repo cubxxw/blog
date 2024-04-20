@@ -858,7 +858,7 @@ YAML 文件里定义接口所用到的关键字，像 get、description、parame
 3. **oapi-codegen**：
    + oapi-codegen 是一个从 OpenAPI 规范生成 Go 应用程序服务器代码的工具。此工具提供了生成类型和服务器代码的命令，使得基于给定的 OpenAPI 规范轻松构建 Go 服务器变得更容易。
 4. **APIMatic 为 Go SDKs 提供的代码生成器**：
-   + APIMatic 提供了一个为 Go SDKs 的代码生成器，该生成器从 OpenAPI 定义生成强类型的 SDK 以及完整的 API 引用。如果您想为您的 REST API 创建一个 SDK，这个工具会特别有用。
+   + APIMatic 提供了一个为 Go SDKs 的代码生成器，该生成器从 OpenAPI 定义生成强类型的 SDK 以及完整的 API 引用。如果你想为你的 REST API 创建一个 SDK，这个工具会特别有用。
 
 另外，有了一份定义完备详细的接口设计文档，Auto Gen Auto 解决方案才可能实现。它不仅能够生成 API test，还可以生成 performance test 等等。
 
@@ -2043,4 +2043,3 @@ $ go test -benchmem -bench .
 ...
 BenchmarkParallel-16   3325430     375 ns/op   272 B/op   8 allocs/op
 ```
-

@@ -1,27 +1,16 @@
 ---
 title: 'Sora 技术讨论以及普通人和开发者如何利用 Sora 改变世界'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2024-02-24T13:30:15+08:00
-draft : false
+date: '2024-02-24T13:30:15+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊新伟", "我"]
-keywords: ["Sora技术", "AI视频生成", "软件开发", "技术爱好者"]
-tags:
-  - 博客
-  - sora
-  - ai
-  - chatgpt
-categories:
-  - 开发
-  - 博客
-  - Sora
-  - OpenAI
-  - AI
-description: >
-    深入Sora技术的世界，这是一个开创性的AI驱动视频生成平台。本文旨在为技术爱好者和开发者提供一个了解和利用Sora潜能的入口。探索如何轻松利用Sora创造令人惊叹的AI生成视频，并加入一个正在改变数字景观的创新者社区。
+author: '熊鑫伟，我'
+keywords: ['Sora技术', 'AI视频生成', '软件开发', '技术爱好者']
+tags: ['博客 (Blog)', 'AI', '技术 (Technology)', '开发 (Development)', Git]
+categories: ['开发 (Development)']
+description: '深入Sora技术的世界，这是一个开创性的AI驱动视频生成平台。本文旨在为技术爱好者和开发者提供一个了解和利用Sora潜能的入口。探索如何轻松利用Sora创造令人惊叹的AI生成视频，并加入一个正在改变数字景观的创新者社区。'
 ---
 
 ## Sora ！！！

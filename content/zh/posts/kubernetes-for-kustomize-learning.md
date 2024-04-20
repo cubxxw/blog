@@ -1,27 +1,17 @@
 ---
 title: 'Kubernetes Kustomize 学习指南'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-10-31T21:30:19+08:00
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: []
-tags:
-  - 博客
-  - Kubernetes
-  - Kustomize
-categories:
-  - 开发
-  - 博客
-description: >
-  探索 Kustomize 的强大功能，这是专为 Kubernetes 设计的开源配置管理工具。
-  学习如何使用 Kustomize 以声明式的方式自定义 Kubernetes 对象并管理配置。
-  了解与 kubectl 和 Helm 的集成，发现 Kubernetes 配置管理的最佳实践。
+author: '熊鑫伟，我'
+keywords: ['Kubernetes', 'Kustomize', '配置管理', 'kubectl', 'Helm']
+tags: ['博客', 'Kubernetes (GO语言)', 'Kustomize', '配置管理 (Configuration Management)']
+categories: ['开发 (Development)', '博客']
+description: '探索 Kustomize 的强大功能，这是专为 Kubernetes 设计的开源配置管理工具。学习如何使用 Kustomize 以声明式的方式自定义 Kubernetes 对象并管理配置。了解与 kubectl 和 Helm 的集成，发现 Kubernetes 配置管理的最佳实践。'
 ---
-
 
 ## 介绍
 
@@ -106,7 +96,7 @@ Annotation（注解）是一种将非标识性元数据附加到对象的方式�
 
 **使用 `kubectl` 添加和修改注解**
 
-要使用 `kubectl` 为资源添加注解，您可以使用 `annotate` 命令。例如：
+要使用 `kubectl` 为资源添加注解，你可以使用 `annotate` 命令。例如：
 
 ```bash
 kubectl annotate pods my-pod example.com/some-annotation="some value"
@@ -118,7 +108,7 @@ kubectl annotate pods my-pod example.com/some-annotation="some value"
 
 **更新和删除注解**
 
-使用同样的 `annotate` 命令，您可以修改或删除注解。例如，要更改上面示例中的注解值，只需再次运行相同的命令，并为其提供一个新值。如果要删除注解，可以使用 `-` 符号：
+使用同样的 `annotate` 命令，你可以修改或删除注解。例如，要更改上面示例中的注解值，只需再次运行相同的命令，并为其提供一个新值。如果要删除注解，可以使用 `-` 符号：
 
 ```
 kubectl annotate pods my-pod example.com/some-annotation-
@@ -128,7 +118,7 @@ kubectl annotate pods my-pod example.com/some-annotation-
 
 **查询使用注解的资源**
 
-尽管您不能直接使用 `kubectl` 查询特定的注解值，但您可以使用 `kubectl get` 命令和 `-o json` 或 `-o yaml` 输出格式选项查看资源的所有注解。
+尽管你不能直接使用 `kubectl` 查询特定的注解值，但你可以使用 `kubectl get` 命令和 `-o json` 或 `-o yaml` 输出格式选项查看资源的所有注解。
 
 ```
 kubectl get pods my-pod -o=jsonpath='{.metadata.annotations}'
@@ -162,7 +152,7 @@ File structure: 文件结构：
 > └── service.yaml
 > ```
 >
-> 此目录中的资源可能是其他人配置的分支。如果是这样的话，您可以很容易地从源材料中进行改基以获得改进，因为您并不直接修改资源。
+> 此目录中的资源可能是其他人配置的分支。如果是这样的话，你可以很容易地从源材料中进行改基以获得改进，因为你并不直接修改资源。
 
 生成自定义的YAML：
 
@@ -357,9 +347,9 @@ commonAnnotations:
 
 ### 通过 `transformers` 字段使用
 
-在 Kustomize 中，`transformers` 字段允许您指定一系列转换器，这些转换器可以对原始的资源清单进行修改和调整。
+在 Kustomize 中，`transformers` 字段允许你指定一系列转换器，这些转换器可以对原始的资源清单进行修改和调整。
 
-要在 Kustomize 中使用 `transformers`，您需要在 `kustomization.yaml` 文件中指定它，并列出您要使用的转换器配置文件的路径。
+要在 Kustomize 中使用 `transformers`，你需要在 `kustomization.yaml` 文件中指定它，并列出你要使用的转换器配置文件的路径。
 
 例如：
 

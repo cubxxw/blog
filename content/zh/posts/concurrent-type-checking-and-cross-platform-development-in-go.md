@@ -7,8 +7,8 @@ showtoc: true
 tocopen: true
 type: posts
 author: '熊鑫伟，我'
-keywords: ['Go', '并发', '类型检查', '跨平台开发', '编程最佳实践', 'Go 语言', '并发编程', '静态类型检查', '跨操作系统编程', '软件开发技巧', '程序性能优化']
-tags: ['Go', '类型检查 (Type Checking)', '并发 (Concurrency)', '跨平台 (Cross-Platform)']
+keywords: ['Golang (GO语言)', '并发', '类型检查', '跨平台开发', '编程最佳实践', 'Go 语言', '并发编程', '静态类型检查', '跨操作系统编程', '软件开发技巧', '程序性能优化']
+tags: ['Golang (GO语言)', '类型检查 (Type Checking)', '并发 (Concurrency)', '跨平台 (Cross-Platform)']
 categories: ['开发 (Development)']
 description: '探索 Go 语言中并发类型检查和高效跨平台开发技术，阐述最佳实践和高级概念，以构建健壮的应用程序。'
 ---

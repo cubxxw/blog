@@ -1,21 +1,17 @@
 ---
-title: '设计建议:通过配置文件简化Kubernetes部署的端口配置'
+title: '通过配置文件简化 Kubernetes 部署的参数端口配置'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-18T22:49:14+08:00
-draft : false
+date: 2023-09-18T22:49:14+08:00
+draft: false
 showtoc: true
 tocopen: true
-type: partials
-author: ["Xinwei Xiong", "Me"]
-keywords: []
-tags:
-  - blog
-categories:
-  - Development
-  - Blog
-description: >
-    <You can switch to the specified language>
+type: posts
+author: '熊鑫伟，我'
+keywords: ['Kubernetes', '配置', '端口', '简化部署', '容器化']
+tags: ['Kubernetes', '云原生 (Cloud Native)', '微服务 (Microservices)', '部署 (Deployment)']
+categories: ['开发 (Development)']
+description: '本文介绍了如何通过配置文件简化 Kubernetes 部署的端口配置，提升了配置的灵活性和部署的便捷性。'
 ---
 
 ## 介绍

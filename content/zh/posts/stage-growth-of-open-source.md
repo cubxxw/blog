@@ -1,19 +1,26 @@
 ---
 title: '开源的阶段性成长指南'
-description:
+description: '本文将为您呈现一份开源项目的阶段性成长指南，帮助您了解如何在开源项目中不断进步和成长。'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-05-16T16:36:15+08:00
-draft : false
+cover.image: 
+date: 2023-05-16T16:36:15+08:00
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: []
+author: 
+  - 熊鑫伟
+  - 我
+keywords:
+  - 开源
+  - 成长
+  - 指南
 tags:
-  - blog
+  - Golang (GO语言)
+  - Kubernetes
+  - OpenIM
+  - 云原生 (Cloud Native)
 categories:
-  - Development
-  - Blog
+  - 开发 (Development)
 ---
 
 ✨ 熟悉我的人都知道，我是一名不折不扣的开源爱好者，从大一开始接触到 GitHub 后，逐渐的沉迷于 开源世界 ~ 今天这篇文章很特别，算是自己参考并且总结出来的开源阶段，以及学习开源项目的步骤和心得。未来自己也是按照自己的规划来进行成长。

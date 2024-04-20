@@ -7,17 +7,11 @@ draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊新伟", "我"]
-keywords: ["GTD", "四象限法则", "时间管理", "生产力"]
-tags:
-  - blog
-  - manage
-  - gtd
-categories:
-  - Development
-  - Blog
-description: >
-    本文探索了GTD（完成任务的艺术）方法论和四象限法则用于任务优先级排序的整合。旨在通过结构化的任务管理和反思实践提供提高生产力和效率的见解。通过采纳这些策略，个人可以优化他们的工作流程，减少压力，并更加专注于实现他们的长期目标。本文还包括了使用像TickTick这样的工具实施这些方法的实用技巧和逐步指南，为任何希望提升时间管理技能的人提供了宝贵的资源。
+author: '熊鑫伟，我'
+keywords: ['GTD', '四象限法则', '时间管理', '生产力']
+tags: ['GTD', '时间管理 (Time Management)', '生产力提升 (Productivity Enhancement)']
+categories: ['生活与教育 (Living & Education)']
+description: '本文探索了GTD（完成任务的艺术）方法论和四象限法则用于任务优先级排序的整合。旨在通过结构化的任务管理和反思实践提供提高生产力和效率的见解。通过采纳这些策略，个人可以优化他们的工作流程，减少压力，并更加专注于实现他们的长期目标。本文还包括了使用像TickTick这样的工具实施这些方法的实用技巧和逐步指南，为任何希望提升时间管理技能的人提供了宝贵的资源。'
 ---
 
 

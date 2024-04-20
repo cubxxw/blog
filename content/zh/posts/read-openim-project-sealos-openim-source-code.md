@@ -1,21 +1,24 @@
 ---
 title: '速读开源项目 Sealos 的源码'
-description: 一篇文章从头开始教会如何快速优雅的阅读学习一个顶级的开源项目 sealos。
+description: '一篇文章从头开始教会如何快速优雅地阅读学习一个顶级的开源项目 Sealos。'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-11T16:33:09+08:00
-draft : false
+cover.image: 
+date: 2023-09-11T16:33:09+08:00
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
+author: 
+  - 熊鑫伟
+  - 我
 keywords: []
 tags:
-  - blog
+  - Golang (GO语言)
+  - Kubernetes
+  - OpenIM
+  - 云原生 (Cloud Native)
 categories:
-  - Development
-  - Blog
+  - 开发 (Development)
 ---
-
 
 
 ## 准备

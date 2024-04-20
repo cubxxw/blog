@@ -42,7 +42,7 @@ Prow是基于Kubernetes的CI/CD系统。作业可以由各种类型的事件触�
 
 提出一个拉取请求（以下简称PR）。在PR正文中，可以随意添加区域标签（如果合适），例如 `/area <AREA>` 。标签列表[在这里](https://github.com/kubernetes/test-infra/labels)。也可以随意推荐一位评论者 `/assign @theirname` 。
 
-一旦您的审阅者满意，他们会说 `/lgtm` ，这将应用 `lgtm` 标签，如果他们是OWNER，将应用 `approved` 标签。 `approved` 标签也将自动应用于所有者打开的PR。如果您和您的审阅者都不是OWNER，请 `/assign` 某个所有者。如果您的PR有 `lgtm` 和 `approved` 标签，没有任何 `do-not-merge/*` 标签，并且所有测试均通过，则PR将自动合并。
+一旦你的审阅者满意，他们会说 `/lgtm` ，这将应用 `lgtm` 标签，如果他们是OWNER，将应用 `approved` 标签。 `approved` 标签也将自动应用于所有者打开的PR。如果你和你的审阅者都不是OWNER，请 `/assign` 某个所有者。如果你的PR有 `lgtm` 和 `approved` 标签，没有任何 `do-not-merge/*` 标签，并且所有测试均通过，则PR将自动合并。
 
 
 
@@ -133,7 +133,7 @@ k8s有自己的服务，prew 需要单独搭建出来。
 
 ### GitHub APP
 
-首先，您需要 [创建一个GitHub应用程序](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/creating-a-github-app)。GitHub本身也记录了这一点。 最初，为Webhook设置一个虚拟URL就足够了。所需的确切权限集因您使用的功能而异。下面是所需的最低权限集。
+首先，你需要 [创建一个GitHub应用程序](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/creating-a-github-app)。GitHub本身也记录了这一点。 最初，为Webhook设置一个虚拟URL就足够了。所需的确切权限集因你使用的功能而异。下面是所需的最低权限集。
 
 > ⚠️ 一个用户或者组织最多只能有 100 个 robot
 
@@ -316,7 +316,7 @@ Lighthouse是一个轻量级的基于 ChatOps 的 webhook 处理程序，可以�
 
  Lighthouse 最开始的时候也是基于 prow 的，并且是从他们的基础代码的副本开始。
 
-目前，Lighthouse支持标准的Prow插件，并处理将webhook推送到分支，然后在您选择的代理上触发管道执行。
+目前，Lighthouse支持标准的Prow插件，并处理将webhook推送到分支，然后在你选择的代理上触发管道执行。
 
 Lighthouse使用与Prow相同的 `config.yaml` 和 `plugins.yaml` 进行配置。
 

@@ -1,30 +1,24 @@
 ---
-title: 'Openim离线部署设计'
-description: "OpenIM community offline deployment design scheme, and implementation scheme"
+title: 'OpenIM离线部署设计'
+description: '本文详细介绍了 OpenIM 社区版的离线部署设计方案及其实施策略，旨在帮助读者理解和应用于实际部署过程中。'
 ShowRssButtonInSectionTermList: true
-date : 2023-5-19T15:20:59+08:00
+date: 2023-05-19T15:20:59+08:00
 draft: false
 cover:
   image: "http://sm.nsddd.top/sm202309161529285.jpg"
   relative: true
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: []
-tags:
-  - blog
-  - zh
-  - openim
-categories:
-  - Development
-  - Blog
-  - Deployment
-  - OpenIM
+type: posts
+author: '熊鑫伟，我'
+keywords: ['OpenIM', '离线部署', '设计方案', '实施策略', '社区版']
+tags: ['OpenIM', '离线部署 (Offline Deployment)', '设计 (Design)', '实施策略 (Implementation Strategy)', '部署 (Deployment)']
+categories: ['开发 (Development)']
 ---
 
 ## 1. 基础镜像
 
-以下是您需要的基础镜像及其版本：
+以下是你需要的基础镜像及其版本：
 
 - wurstmeister/kafka
 - redis:7.0.0
@@ -82,7 +76,7 @@ docker pull ghcr.io/openimsdk/openim-server:<version-name>
 
 ## 4. 版本选择
 
-您可以选择以下版本：
+你可以选择以下版本：
 
 - 稳定版：如 release-v3.2
 - 最新版：latest
@@ -130,7 +124,7 @@ docker-compose up -d
 docker-compose ps
 ```
 
-> **备注**: 若您使用的是 Docker 的版本 20 之前，需确保已经安装了 `docker-compose`。
+> **备注**: 若你使用的是 Docker 的版本 20 之前，需确保已经安装了 `docker-compose`。
 
 ## 6. 参考链接
 

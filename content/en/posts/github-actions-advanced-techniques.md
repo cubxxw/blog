@@ -614,13 +614,13 @@ Additionally, some features may only be available in certain locations. For exam
 
 ### GitHub context
 
-`github` 上下文包含有关工作流运行和触发运行的事件的信息。您还可以在环境变量中读取大部分 `github` 上下文数据。有关环境变量的详细信息，请参阅“变量。“
+`github` 上下文包含有关工作流运行和触发运行的事件的信息。你还可以在环境变量中读取大部分 `github` 上下文数据。有关环境变量的详细信息，请参阅“变量。“
 
 | 物业名称                     | 类型      | 描述                                                         |
 | :--------------------------- | :-------- | :----------------------------------------------------------- |
 | `github`                     | `object`  | 工作流中任何作业或步骤期间可用的顶级上下文。该对象包含下面列出的所有属性。 |
-| `github.action`              | `string`  | 当前正在运行的操作的名称或[`id`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsid)步骤的名称。GitHub 会删除特殊字符，并`__run`在当前步骤运行不带`id`. 如果您在同一个作业中多次使用相同的操作，则名称将包含一个后缀，其序列号前面带有下划线。例如，您运行的第一个脚本的名称为`__run`，第二个脚本的名称为`__run_2`。同样，第二次调用`actions/checkout`will 是`actionscheckout2`。 |
-| `github.action_path`         | `string`  | 动作所在的路径。此属性仅在复合操作中受支持。您可以使用此路径访问与操作位于同一存储库中的文件，例如通过将目录更改为路径： `cd ${{ github.action_path }}`。 |
+| `github.action`              | `string`  | 当前正在运行的操作的名称或[`id`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsid)步骤的名称。GitHub 会删除特殊字符，并`__run`在当前步骤运行不带`id`. 如果你在同一个作业中多次使用相同的操作，则名称将包含一个后缀，其序列号前面带有下划线。例如，你运行的第一个脚本的名称为`__run`，第二个脚本的名称为`__run_2`。同样，第二次调用`actions/checkout`will 是`actionscheckout2`。 |
+| `github.action_path`         | `string`  | 动作所在的路径。此属性仅在复合操作中受支持。你可以使用此路径访问与操作位于同一存储库中的文件，例如通过将目录更改为路径： `cd ${{ github.action_path }}`。 |
 | `github.action_ref`          | `string`  | 对于执行操作的步骤，这是正在执行的操作的引用。例如，`v2`.    |
 | `github.action_repository`   | `string`  | 对于执行操作的步骤，这是操作的所有者和存储库名称。例如，`actions/checkout`. |
 | `github.action_status`       | `string`  | 对于复合操作，复合操作的当前结果。                           |
@@ -629,7 +629,7 @@ Additionally, some features may only be available in certain locations. For exam
 | `github.api_url`             | `string`  | GitHub REST API 的 URL。                                     |
 | `github.base_ref`            | `string`  | `base_ref`工作流运行中拉取请求的或目标分支。仅当触发工作流运行的事件为 或 时，此属性才可`pull_request`用。`pull_request_target` |
 | `github.env`                 | `string`  | 运行器上从工作流命令设置环境变量的文件的路径。该文件对于当前步骤是唯一的，并且是作业中每个步骤的不同文件。有关更多信息，请参阅“ [GitHub Actions 的工作流程命令](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)”。 |
-| `github.event`               | `object`  | 完整的事件 Webhook 负载。您可以使用此上下文访问事件的各个属性。该对象与触发工作流运行的事件的 Webhook 负载相同，并且对于每个事件都不同。 每个 GitHub Actions 事件的 Webhook 都链接在“[触发工作流的事件](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)”中。例如，对于由事件触发的工作流运行[`push`，该对象包含](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push)[推送 webhook 负载](https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads#push)的内容。 |
+| `github.event`               | `object`  | 完整的事件 Webhook 负载。你可以使用此上下文访问事件的各个属性。该对象与触发工作流运行的事件的 Webhook 负载相同，并且对于每个事件都不同。 每个 GitHub Actions 事件的 Webhook 都链接在“[触发工作流的事件](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)”中。例如，对于由事件触发的工作流运行[`push`，该对象包含](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push)[推送 webhook 负载](https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads#push)的内容。 |
 | `github.event_name`          | `string`  | 触发工作流运行的事件的名称。                                 |
 | `github.event_path`          | `string`  | 运行器上包含完整事件 Webhook 负载的文件的路径。              |
 | `github.graphql_url`         | `string`  | GitHub GraphQL API 的 URL。                                  |
