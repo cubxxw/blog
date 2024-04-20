@@ -5,7 +5,7 @@ cover.image:
 date : 2023-09-26T12:03:38+08:00
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["kubernetes", "etcd", "raft", "go"]

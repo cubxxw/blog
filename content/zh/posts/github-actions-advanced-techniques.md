@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-06-14T16:17:02+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Github Actions', 'CI/CD', '自动化', '软件开发', 'DevOps', '技术自动化', '代码集成', '代码部署']

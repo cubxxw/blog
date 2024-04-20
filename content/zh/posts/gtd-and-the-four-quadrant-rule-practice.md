@@ -5,7 +5,7 @@ cover.image:
 date: 2024-02-12T23:34:11+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['GTD', '四象限法则', '时间管理', '生产力']

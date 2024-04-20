@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-10-25T10:45:38+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', 'Harbor', 'Docker', 'Kubernetes', 'Helm', 'Cert-manager']

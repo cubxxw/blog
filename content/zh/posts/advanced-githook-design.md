@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:25:00+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源社区', '规范设计', '社区管理', 'Git', 'OpenIM']
@@ -179,7 +179,7 @@ cover.image:
 date : 2023-09-16T16:25:00+08:00
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 author: ["熊鑫伟", "Me"]
 keywords: []
 tags:

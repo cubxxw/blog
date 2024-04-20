@@ -5,7 +5,7 @@ cover.image:
 date : 2024-02-24T13:30:15+08:00
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["熊新偉", "我"]
 keywords: ["Sora技術", "AI影片生成", "軟體開發", "技術愛好者"]

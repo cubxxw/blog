@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2024-02-24T13:30:15+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Sora技术', 'AI视频生成', '软件开发', '技术爱好者']

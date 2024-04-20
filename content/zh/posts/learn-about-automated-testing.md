@@ -7,7 +7,7 @@ cover:
 date: '2023-10-14T10:27:43+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['自动化测试', '测试框架', 'Selenium', '测试自动化', '软件测试']

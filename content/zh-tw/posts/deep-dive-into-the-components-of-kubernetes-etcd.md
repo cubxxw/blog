@@ -5,7 +5,7 @@ cover.image:
 date : 2023-09-26T12:03:38+08:00
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["kubernetes", "etcd", "raft", "go"]
@@ -936,4 +936,3 @@ List行为
 * List对象时，如果不加resourceVersion，意味着需要Most Recent数据，请求会击穿APIServer 缓存，直接发送至etcd
 
 * APIServer 通过Label过滤对象查询时，过滤动作是在APIServer端，APIServer需要向etcd发起全量查询请求
-

@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-09-28T20:29:30+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: 'Xinwei Xiong, Me'
 keywords: ['Kubernetes', 'Kubectl', '控制平面', 'kubelet', 'Pod 管理']

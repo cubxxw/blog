@@ -7,7 +7,7 @@ cover:
 date: '2024-01-20T12:57:15+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['向量数据库', '人工智能', '数据库性能', '大数据', '数据索引', '数据管理']

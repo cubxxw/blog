@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-02-13T16:21:53+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['跨平台编译', '多架构编译', '编译设计', '跨平台开发', '多架构开发', '软件灵活性', '软件可移植性', '跨平台编程', '多架构支持']

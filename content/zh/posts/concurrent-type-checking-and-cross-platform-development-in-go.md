@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2024-01-24T22:40:15+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Golang (GO语言)', '并发', '类型检查', '跨平台开发', '编程最佳实践', 'Go 语言', '并发编程', '静态类型检查', '跨操作系统编程', '软件开发技巧', '程序性能优化']

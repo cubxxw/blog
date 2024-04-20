@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2022-02-01T10:26:53+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['区块链', '学习平台', '社区贡献', '软件开发', '开源项目', '技术教育']

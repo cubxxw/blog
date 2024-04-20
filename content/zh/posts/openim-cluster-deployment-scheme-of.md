@@ -5,7 +5,7 @@ cover.image:
 date: 2023-09-17T09:51:54+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', 'Kubernetes', '集群化', '设计', '部署', '方案']

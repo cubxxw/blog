@@ -5,7 +5,7 @@ cover.image:
 date: 2023-09-16T16:07:39+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['GoReleaser', 'CI/CD', '自动化发布', 'Golang (GO语言)', '软件开发']

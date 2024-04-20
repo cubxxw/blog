@@ -3,7 +3,7 @@ title: '关于我的 Hugo 博客 (教程)'
 date: 2023-09-12T14:26:20+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Hugo', '博客搭建', '静态网站生成器', '教程']

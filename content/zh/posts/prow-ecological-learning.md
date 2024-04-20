@@ -5,7 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:46:15+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Prow', 'Kubernetes', 'CI/CD', '自动化', 'DevOps', '云原生']

@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2024-04-16T01:21:13+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '故障排查', '调试', '技术支持', '软件开发']

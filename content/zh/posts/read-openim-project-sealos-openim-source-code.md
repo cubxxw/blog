@@ -6,7 +6,7 @@ cover.image:
 date: 2023-09-11T16:33:09+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 author: 
   - 熊鑫伟
   - 我

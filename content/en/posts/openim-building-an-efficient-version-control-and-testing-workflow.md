@@ -5,7 +5,7 @@ cover.image:
 date: 2024-01-15T21:13:07+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

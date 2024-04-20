@@ -8,7 +8,7 @@ cover:
 date: '2023-03-29T16:02:31+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '远程工作', '团队协作', '协议版本', '工作效率', '远程协作工具', 'OpenIM 协作', '远程工作最佳实践', '团队沟通策略', '协作协议更新', '高效团队管理', '远程办公工具']

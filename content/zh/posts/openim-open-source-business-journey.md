@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-12-07T11:33:15+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'  # 注意，您的原始作者字段缺少中文标准格式，这里我做了适当调整
 keywords: ['开源商业化', 'OpenIM', '全球流量大会', '技术总结', '社区贡献', '业务发展']

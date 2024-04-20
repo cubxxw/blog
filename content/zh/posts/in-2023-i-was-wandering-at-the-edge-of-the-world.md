@@ -6,7 +6,7 @@ date: 2024-03-03T20:00:46+08:00
 weight: 1
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['旅行', '自我发现', '冒险', '2023年旅程', '世界探索']

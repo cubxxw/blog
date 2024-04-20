@@ -5,7 +5,7 @@ cover.image:
 date: 2023-09-18T22:49:14+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Kubernetes', '配置', '端口', '简化部署', '容器化']

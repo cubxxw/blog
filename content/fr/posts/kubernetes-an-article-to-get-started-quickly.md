@@ -5,7 +5,7 @@ cover.image:
 date: 2022-04-28T23:38:11+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Kubernetes", "k8s", "Docker", Cloud Native", "CNCF"]

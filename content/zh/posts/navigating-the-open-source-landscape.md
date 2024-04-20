@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2024-04-13T20:29:22+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源', '商业模式', '开发者指南']

@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-09-28T20:12:51+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['kubernetes', 'kube-apiserver', '认证', '授权', '准入控制', '容器编排']

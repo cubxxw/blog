@@ -6,7 +6,7 @@ cover:
 date: 2023-02-01T10:26:53+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author:
   - "Xinwei Xiong"

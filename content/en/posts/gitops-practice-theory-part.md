@@ -5,7 +5,7 @@ cover.image: /images/gitops-kubernetes-deployment.jpg
 date: 2023-11-25T18:00:31+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["GitOps", "Kubernetes", "Argo Rollouts", "Canary Deployment", "Blue-Green Deployment", "Deployment Strategies"]

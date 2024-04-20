@@ -8,7 +8,7 @@ date: '2023-12-31T22:26:20+08:00'
 draft: false
 weight: 2
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['2023', '年度总结', '个人成长', '职业发展', '开源贡献', '学习', '户外探险', '战略职业规划']

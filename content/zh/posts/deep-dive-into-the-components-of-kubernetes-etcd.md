@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-09-26T12:03:38+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['kubernetes', 'etcd', 'raft', 'go', '容器编排', '分布式系统']

@@ -6,7 +6,7 @@ date: 2024-03-03T20:00:46+08:00
 weight: 1
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Travel", "Self Discovery", "Adventure", "2023 Journey", "World Exploration"]

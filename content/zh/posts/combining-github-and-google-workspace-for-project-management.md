@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2024-02-22T14:22:21+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['GitHub', 'Google Workspace', '项目管理', '开发策略', '协作工具', 'GitHub与Google Workspace', 'GitHub与Google Workspace项目管理', 'GitHub与Google Workspace协作', 'GitHub与Google Workspace优化', 'GitHub与Google Workspace使用技巧']

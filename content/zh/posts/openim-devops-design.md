@@ -6,7 +6,7 @@ cover.image:
 date: 2023-09-02T16:13:37+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', 'DevOps', '标准设计', '自动化', '部署', '维护']

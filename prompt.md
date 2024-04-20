@@ -7,7 +7,7 @@ ShowRssButtonInSectionTermList: true
 date: '请保持原有日期或添加新日期'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '请根据语言选择 "熊鑫伟，我" 或 "Xinwei Xiong, Me"'
 keywords: ['请根据文章内容选择合适的关键词']

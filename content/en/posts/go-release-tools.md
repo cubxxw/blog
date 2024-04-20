@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:07:39+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 author: "Xiong Xinwei, Me"
 keywords: ['GoReleaser', 'Software Releases', 'Release Automation', 'Go Programming Language', 'Continuous Integration', 'Continuous Deployment']
 tags: ['blog', 'en', 'golang', 'release']

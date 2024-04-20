@@ -7,7 +7,7 @@ cover:
 date: '2024-01-15T21:13:07+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '版本控制', '测试工作流', '代码质量', '项目管理', '开源社区', 'OpenIM 版本控制', '高效测试流程', '开源项目管理', '质量保证方法', '代码稳定性', '社区参与']

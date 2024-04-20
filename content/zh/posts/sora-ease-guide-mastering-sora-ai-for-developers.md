@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2024-03-14T08:44:13+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Sora AI', '开发指南', 'AI 建模', 'OpenAI', '开发者工具', 'AI 技术']

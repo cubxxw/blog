@@ -5,7 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-08-16T15:55:39+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '多进程管理', '系统稳定性', '资源控制', '系统扩展']

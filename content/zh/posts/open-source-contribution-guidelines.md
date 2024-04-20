@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:40:54+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源', '商业', 'OpenIM', '开源项目', '技术社区', '商业模式']

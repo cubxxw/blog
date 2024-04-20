@@ -8,7 +8,7 @@ cover:
   image: "http://sm.nsddd.top/sm202309161529285.jpg"
   relative: true
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '离线部署', '设计方案', '实施策略', '社区版']

@@ -5,7 +5,7 @@ cover.image:
 date : 2024-03-14T08:44:13+08:00
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Sora AI", "Development Guide", "AI Modeling", "OpenAI", "Developer Tools"]

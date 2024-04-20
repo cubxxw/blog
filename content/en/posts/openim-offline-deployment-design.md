@@ -8,7 +8,7 @@ draft: false
 cover:
   image: "http://sm.nsddd.top/sm202309161529285.jpg"
 showtoc: true
-tocopen: true
+tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:

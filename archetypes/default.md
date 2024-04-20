@@ -5,7 +5,7 @@ cover.image:
 date : {{ .Date }}
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

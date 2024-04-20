@@ -5,7 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-07-16T16:28:31+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Auto-GPT', '人工智能', '安装教程', '自主AI工具', '技术指南', '智能自动化']

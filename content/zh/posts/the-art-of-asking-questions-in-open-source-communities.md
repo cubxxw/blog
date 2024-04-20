@@ -8,7 +8,7 @@ cover:
 date: '2023-09-17T03:35:18+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源', '社区', '提问技巧', '有效沟通', 'GitHub', '问题解决']

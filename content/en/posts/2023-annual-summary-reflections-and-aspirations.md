@@ -8,7 +8,7 @@ date: 2023-12-30T20:56:20+08:00
 draft: false
 showtoc: true
 weight: 2
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["2023", "Annual Summary", "Personal Growth", "Professional Development"]

@@ -5,7 +5,7 @@ cover.image:
 date : 2023-11-15T11:25:54+08:00
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["OpenIM", "Docker", "Instant Messaging", "Backend Management", "Monitoring"]

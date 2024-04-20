@@ -8,7 +8,7 @@ cover:
 date: '2023-06-19T16:38:39+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Go', '调试', '测试', 'dlv', '性能优化', '代码质量']

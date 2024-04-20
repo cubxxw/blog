@@ -5,7 +5,7 @@ cover.image:
 date: 2024-02-12T23:34:11+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["GTD", "Quadrant Method", "Time Management", "Productivity"]

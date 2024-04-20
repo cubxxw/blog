@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2024-01-25T15:22:36+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Go 语言', 'go 指令', '源码分析', '自动化工具', 'Go 开发']

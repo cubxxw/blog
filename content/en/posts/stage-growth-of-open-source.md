@@ -6,7 +6,7 @@ cover.image:
 date : 2023-04-15T16:36:14+08:00
 draft : false
 showtoc: true
-tocopen: true
+tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:

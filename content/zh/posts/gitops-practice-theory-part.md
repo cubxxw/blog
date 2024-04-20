@@ -5,7 +5,7 @@ cover.image: /images/gitops-kubernetes-deployment.jpg
 date: 2023-11-25T18:00:31+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['GitOps', 'Kubernetes', 'Argo Rollouts', '金丝雀部署 (Canary Deployment)', '蓝绿部署 (Blue-Green Deployment)', '部署策略 (Deployment Strategies)', 'DevOps', '云原生 (Cloud Native)', '服务网格 (Service Mesh)', '容器编排 (Container Orchestration)']

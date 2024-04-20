@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-11-15T11:25:54+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊新伟，我'
 keywords: ['OpenIM', 'Docker', '即时通讯', '后台管理', '监控', '系统部署']

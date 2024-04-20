@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2024-02-16T13:34:36+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 tags:

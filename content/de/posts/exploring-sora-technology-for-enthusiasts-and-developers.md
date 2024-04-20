@@ -5,7 +5,7 @@ CoverImage:
 Date: 24.02.2024T13:30:15+08:00
 Draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 Type: Posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Sora Technology", "AI Video Generation", "Software Development", "Tech Enthusiasts"]

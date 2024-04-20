@@ -5,7 +5,7 @@ cover.image:
 date: 2023-11-06T13:44:09+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Hugo', '静态网站生成器', '网站开发', '博客搭建', 'GitHub']

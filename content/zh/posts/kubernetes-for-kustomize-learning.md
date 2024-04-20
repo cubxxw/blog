@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-10-31T21:30:19+08:00
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Kubernetes', 'Kustomize', '配置管理', 'kubectl', 'Helm']

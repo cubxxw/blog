@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2024-02-13T11:19:38+08:00'
 draft: false
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['心流状态', '生产力', '幸福', '专注', '心理学', '效率提升', '工作满意度', '情绪管理']
