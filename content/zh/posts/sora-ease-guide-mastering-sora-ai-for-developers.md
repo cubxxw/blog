@@ -1,26 +1,16 @@
 ---
 title: 'Sora Ease 指南：开发者掌握 Sora AI 的全面指南'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2024-03-14T08:44:13+08:00
-draft : false
+date: '2024-03-14T08:44:13+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊新伟", "我"]
-keywords: ["Sora AI", "开发指南", "AI 建模", "OpenAI", "开发者工具"]
-tags:
-  - blog
-  - 博客
-  - sora
-  - ai
-categories:
-  - 开发
-  - AI
-  - Sora
-  - 博客
-description: >
-    本综合指南介绍了 Sora AI，为开发者提供了一个易于访问、自动化且迅速的途径来挖掘其潜力。深入不同的场景，掌握指挥 Sora 的技巧，并探索这个 AI 模型的多面应用，该模型被训练用以理解和模拟运动中的物理世界。无论你是寻求最新的 Sora 新闻、开发项目还是开源贡献，本文都是你进入 Sora AI 开发广阔世界的入口。
+author: '熊鑫伟，我'
+keywords: ['Sora AI', '开发指南', 'AI 建模', 'OpenAI', '开发者工具', 'AI 技术']
+tags: ['博客 (Blog)', 'Sora', '人工智能 (AI)', '开发指南 (Developer Guide)']
+categories: ['开发 (Development)']
+description: '本综合指南介绍了 Sora AI，为开发者提供了一个易于访问、自动化且迅速的途径来挖掘其潜力。深入不同的场景，掌握指挥 Sora 的技巧，并探索这个 AI 模型的多面应用，该模型被训练用以理解和模拟运动中的物理世界。无论你是寻求最新的 Sora 新闻、开发项目还是开源贡献，本文都是你进入 Sora AI 开发广阔世界的入口。'
 ---
 
 Sora 中文的提示词 | 调教指南。各种场景使用指南。学习怎么让它听你的话。兼顾了 Sora 的多场景应用。

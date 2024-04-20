@@ -15,8 +15,6 @@ tags:
   - github
 categories:
   - Development
-  - Blog
-  - OpenIM
 description: >
     The success of an open-source project largely depends on its quality management and collaborative processes. In the OpenIM open-source community, the standardization of project management and testing processes is crucial to ensure the quality and stability of the codebase. This document provides a brief overview of our testing strategy, branch management, quality control policies, and how they are applied to the main branch, PR testing branches, and stable release branches to meet the needs of developers, testers, and community managers. Additionally, we will introduce the standards, testing schemes, and project management strategies of the OpenIM open-source community, aiming to provide clear guidance to ensure project stability and sustainability.
 

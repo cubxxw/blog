@@ -17,7 +17,6 @@ tags:
   - Monitoring
 categories:
   - Development
-  - Blog
 description: >
     This post guides you through the process of deploying OpenIM using Docker, 
     setting up the management backend, and monitoring the application. It provides 

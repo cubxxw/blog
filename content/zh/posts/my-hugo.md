@@ -8,7 +8,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Hugo', '博客搭建', '静态网站生成器', '教程']
 tags: ['博客', 'Hugo (静态网站生成器)', '教程 (Tutorial)']
-categories: ['开发 (Development)']
+categories: ['开发 (Development)', '项目管理 (Project Management)']
 description: '本教程将指导你如何使用 Hugo —— 一款流行的静态网站生成器 —— 来搭建和管理个人博客。详细介绍从安装到配置的各个步骤。'
 ---
 

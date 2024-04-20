@@ -8,7 +8,6 @@ tags:
   - openkf
 categories:
   - Development
-  - Blog
 ---
 
 ## Automate Multi-Architecture Image Build for `openkf` and Push to Multiple Image Repositories

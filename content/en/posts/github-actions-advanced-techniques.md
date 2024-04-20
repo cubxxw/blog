@@ -16,8 +16,6 @@ tags:
   - en
 categories:
   - Development
-  - Blog
-  - Github
 ---
 
 ## Create actions

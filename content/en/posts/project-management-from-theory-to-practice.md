@@ -17,7 +17,6 @@ tags:
   - Planning
 categories:
   - Development
-  - Blog
 description: >
     This post delves into the essence of project management, from foundational theories to practical applications. It covers various methodologies including the Waterfall Model, Agile, and Scrum, and emphasizes the importance of adapting management practices to the dynamic nature of projects. With a focus on the differences between traditional and agile project management, the ten knowledge areas, and the five process groups, this guide aims to equip readers with a comprehensive understanding of project management principles. Additionally, it explores efficient project startup, planning, execution, monitoring, and closure processes, supplemented by practical tools and templates for effective project management. Join us as we navigate the journey of project management from theory to practice.
 ---

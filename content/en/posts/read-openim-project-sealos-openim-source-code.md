@@ -13,7 +13,6 @@ tags:
   - blog
 categories:
   - Development
-  - Blog
 ---
 
 ## Prepare

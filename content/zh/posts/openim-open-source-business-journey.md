@@ -1,22 +1,16 @@
 ---
 title: "对开源商业化的思考 & 全球流量大会（GTC）学习以及总结"
 ShowRssButtonInSectionTermList: true
-date: 2023-12-07T11:33:15+08:00
+date: '2023-12-07T11:33:15+08:00'
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author:
-  - Xinwei Xiong
-tags:
-  - openim
-  - blog
-categories:
-  - 开发
-  - 博客
-  - OpenIM
-description: >
-  通过OpenIM这个充满活力的开源项目的旅程，探索开源技术与业务发展的交汇点。了解OpenIM如何取得成功，应对挑战，并在商业化中平衡社区贡献。
+author: '熊鑫伟，我'  # 注意，您的原始作者字段缺少中文标准格式，这里我做了适当调整
+keywords: ['开源商业化', 'OpenIM', '全球流量大会', '技术总结', '社区贡献', '业务发展']
+tags: ['OpenIM', '博客 (Blog)', '开源商业化 (Open Source Commercialization)', '全球流量大会 (Global Traffic Conference)']
+categories: ['开发 (Development)','个人成长 (Personal Development)']
+description: '通过 OpenIM 这个充满活力的开源项目的旅程，探索开源技术与业务发展的交汇点。了解 OpenIM 如何取得成功，应对挑战，并在商业化中平衡社区贡献。'
 ---
 
 ## 引言：深圳福田会展中心的全球视野

@@ -1,24 +1,16 @@
 ---
 title: '管理后台和监控的部署与设计'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-11-15T11:25:54+08:00
-draft : false
+date: '2023-11-15T11:25:54+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊新伟", "我"]
-keywords: ["OpenIM", "Docker", "即时通讯", "后台管理", "监控"]
-tags:
-  - OpenIM
-  - Docker
-  - 即时通讯
-  - 后台管理
-  - 监控
-categories:
-  - '开发 (Development)'
-description: >
-    本文指导您如何使用 Docker 部署 OpenIM，设置管理后台，并对应用进行监控。它为初学者提供了详细的步骤，并为更高级的用户提供了洞见。
+author: '熊新伟，我'
+keywords: ['OpenIM', 'Docker', '即时通讯', '后台管理', '监控', '系统部署']
+tags: ['OpenIM', 'Docker', '即时通讯 (Instant Messaging)', '后台管理 (Backend Management)', '监控 (Monitoring)']
+categories: ['开发 (Development)']
+description: '本文指导您如何使用 Docker 部署 OpenIM，设置管理后台，并对应用进行监控。它为初学者提供了详细的步骤，并为更高级的用户提供了洞见。'
 ---
 
 

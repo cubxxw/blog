@@ -17,8 +17,6 @@ tags:
   - database
 categories:
   - Development
-  - Blog
-  - AI
 ---
 
 # Vector database learning

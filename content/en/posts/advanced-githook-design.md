@@ -1,24 +1,15 @@
 ---
 title: 'Advanced Githook Design'
-description:
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-06-16T16:24:59+08:00
-draft : false
+date: '2023-06-16T16:24:59+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["Xinwei Xiong", "Me"]
+author: "Xinwei Xiong, Me"
 keywords: []
-tags:
-  - blog
-  - en
-  - git
-  - openim
-categories:
-  - Development
-  - Blog
-  - OpenIM
-  - Github
+tags: ['blog', 'en', 'git', 'openim']
+categories: ['Development']
+description: 'Explore advanced techniques and best practices for designing Git hooks to enhance your development workflow.'
 ---
 
 ## What to do if the community is not standardized

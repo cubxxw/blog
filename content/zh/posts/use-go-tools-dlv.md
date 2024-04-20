@@ -1,21 +1,20 @@
 ---
-title: 'go 调试 测试 以及调试工具 dlv 学习'
-description:
+title: 'Go 调试测试以及调试工具 dlv 学习'
+description: '本文深入介绍 Go 语言的调试过程，测试方法以及如何使用调试工具 dlv 来优化代码。'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-06-19T16:38:39+08:00
-draft : false
+cover:
+    image: 'images/blog/go-debugging.png'  # 假设您有这张图片，如无请更换
+    caption: 'Go 调试和 dlv 工具学习'
+date: '2023-06-19T16:38:39+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: []
-tags:
-  - blog
-categories:
-  - Development
-  - Blog
+type: posts
+author: '熊鑫伟，我'
+keywords: ['Go', '调试', '测试', 'dlv', '性能优化', '代码质量']
+tags: ['博客 (Blog)', '开发 (Development)', '调试工具 (Debugging Tools)']
+categories: ['开发 (Development)']
 ---
-
 
 
 ## 调试Go工程

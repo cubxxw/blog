@@ -15,9 +15,6 @@ tags:
   - automated
 categories:
   - Development
-  - Blog
-  - Github
-  - Automated
 description: >
     Automated testing practices and strategies for GitHub open source Go projects in the cloud native field
 ---

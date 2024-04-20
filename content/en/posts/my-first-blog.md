@@ -8,7 +8,6 @@ tags:
   - en
 categories:
   - Development
-  - Blog
 ---
 
 

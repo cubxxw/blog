@@ -1,25 +1,21 @@
 ---
 title: '在开源社区中学会如何提问'
-description: "在开源社区中，提问的艺术"
+description: '在开源社区中，提问的艺术'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-17T03:35:18+08:00
-draft : false
+cover:
+    image: 'images/blog/opensource-questions.png'  # 假设您有这张图片，如无请更换
+    caption: '在开源社区提问的艺术'
+date: '2023-09-17T03:35:18+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: ["Open Source", "Community", "Questions"]
-tags:
-  - blog
-  - open-source
-  - community
-  - zh
-categories:
-  - Development
-  - Blog
-  - Github
-  - OpenIM
+type: posts
+author: '熊鑫伟，我'
+keywords: ['开源', '社区', '提问技巧', '有效沟通', 'GitHub', '问题解决']
+tags: ['博客 (Blog)', '开源 (Open Source)', '社区 (Community)', '提问 (Questions)']
+categories: ['开发 (Development)']
 ---
+
 
 + [author(Github)](https://github.com/cubxxw)
 

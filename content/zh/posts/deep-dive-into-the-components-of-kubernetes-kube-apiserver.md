@@ -15,7 +15,6 @@ description: >
     Kubernetes API的每个请求都会经过多阶段的访问控制之后才会被接受，这包括认证、授权以及准入控制（Admission Control）等。
 ---
 
-
 ## 深入理解Kube-APIServer
 
 kube-apiserver是Kubernetes最重要的核心组件之一，主要提供以下的功能

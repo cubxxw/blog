@@ -15,7 +15,6 @@ tags:
   - dlv
 categories:
   - Development
-  - Blog
 ---
 
 ## Debugging Go project

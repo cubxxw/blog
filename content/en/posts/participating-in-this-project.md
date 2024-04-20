@@ -19,7 +19,6 @@ tags:
   - "community"
 categories:
   - "Development"
-  - "Blog"
 description: >
     Welcome to our project about building a blockchain-based learning platform. Here, we share insights and updates on our progress. You can switch to the specified language for more detailed information.
 aliases:

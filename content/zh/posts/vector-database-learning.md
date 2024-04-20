@@ -3,25 +3,19 @@ title: '向量数据库的学习'
 ShowRssButtonInSectionTermList: true
 cover:
     image: 'images/blog/vector-database.png'
-    caption: 'Vector database learning'
-date : 2024-01-20T12:57:15+08:00
-draft : false
+    caption: '向量数据库学习'
+date: '2024-01-20T12:57:15+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
-keywords: []
-tags:
-  - blog
-  - 人工智能
-  - 数据库
-categories:
-  - Development
-  - Blog
-  - AI
+author: '熊鑫伟，我'
+keywords: ['向量数据库', '人工智能', '数据库性能', '大数据', '数据索引', '数据管理']
+tags: ['博客 (Blog)', '人工智能 (Artificial Intelligence)', '数据库 (Database)']
+categories: ['开发 (Development)']
+description: '本文介绍了向量数据库的基础知识，使用场景，以及它在现代大数据和人工智能领域中的应用。'
 ---
 
-# 向量数据库学习
 
 今天学习 rust ，发现 rust 是非常适合编写数据库的语言，找到了一个宝藏的项目 tikv，它的 github 项目地址是 https://github.com/tikv/tikv，是一个非常活跃的项目，但是我今天的主题是 AI 领域的向量数据库，话不多说，我们马上开始吧。
 

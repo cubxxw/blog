@@ -1,22 +1,15 @@
 ---
 title: 'Cross Platform Compilation'
-description:
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-16T16:21:52+08:00
-draft : false
+date: '2023-09-16T16:21:52+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["Xinwei Xiong", "Me"]
-keywords: []
-tags:
-  - blog
-  - en
-  - golang
-categories:
-  - Development
-  - Blog
-  - Github
+author: "Xinwei Xiong, Me"
+keywords: ['Cross Platform Compilation', 'Go Programming Language', 'Build Process', 'Compatibility', 'Distribution']
+tags: ['blog', 'en', 'golang']
+categories: ['Development']
+description: 'Learn how to efficiently compile Go programs for multiple platforms, ensuring compatibility and ease of distribution.'
 ---
 
 ## Preface

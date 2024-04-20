@@ -1,24 +1,16 @@
 ---
-title: 'OpenIM 故障排查指南'
+title: '这是一篇我职业生涯总结的 OpenIM 故障排查指南'
 ShowRssButtonInSectionTermList: true
-date: 2024-04-16T01:21:13+08:00
+date: '2024-04-16T01:21:13+08:00'
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊新伟", "我"]
+author: '熊鑫伟，我'
 keywords: ['OpenIM', '故障排查', '调试', '技术支持', '软件开发']
-tags:
-  - 博客
-  - OpenIM
-  - 故障排查
-  - 调试
-  - 技术支持
-categories:
-  - 开发
-  - 博客
-description: >
-    本指南提供了一个全面的OpenIM故障排查方法和调试技术概览，基于真实的开发和操作经验。非常适合希望在OpenIM环境中提升问题解决能力的开发人员。
+tags: ['博客 (Blog)', 'OpenIM', '故障排查 (Troubleshooting)', '调试 (Debugging)', '技术支持 (Technical Support)']
+categories: ['开发 (Development)']
+description: '本指南提供了一个全面的 OpenIM 故障排查方法和调试技术概览，基于真实的开发和操作经验。非常适合希望在 OpenIM 环境中提升问题解决能力的开发人员。'
 ---
 
 如果你想在寻找一篇针对 OpenIM 并且准备好具体的问题想来这里找到答案的话。那么很遗憾的告诉你，这篇并不是记录问题和编写答案的，这篇是读者经过开发和业务实战中以 OpenIM 为例总结出来的故障排查的方法，以及调试的技巧。如果你想从我这里学习到故障的排查以及问题定位的经验，那么请你继续读下去。

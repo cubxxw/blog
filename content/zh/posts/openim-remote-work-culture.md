@@ -1,20 +1,19 @@
 ---
-title: 'OpenIM 远程工作团队协作协议 v1.3'
-description:
+title: '一篇适用远程工作的约定指南： OpenIM 远程工作团队协作协议 v1.3'
+description: '详细介绍 OpenIM 远程工作团队协作协议的最新版本 v1.3，探讨其如何促进团队协作和提高工作效率。'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-03-29T16:02:31+08:00
-draft : false
+cover:
+  image: 'images/blog/openim-remote-work.jpg'  # 假设您有这张图片，如无请更换
+  caption: 'OpenIM 远程工作协议'
+date: '2023-03-29T16:02:31+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["Xinwei Xiong", "Me"]
-keywords: []
-tags:
-  - blog
-  - en
-categories:
-  - Development
-  - Blog
+type: posts
+author: '熊鑫伟，我'
+keywords: ['OpenIM', '远程工作', '团队协作', '协议版本', '工作效率', '远程协作工具', 'OpenIM 协作', '远程工作最佳实践', '团队沟通策略', '协作协议更新', '高效团队管理', '远程办公工具']
+tags: ['博客 (Blog)', '远程工作 (Remote Work)', '团队协作 (Team Collaboration)', 'OpenIM']
+categories: ['开发 (Development)']
 ---
 
 

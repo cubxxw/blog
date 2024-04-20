@@ -15,8 +15,6 @@ tags:
   - autogpt
 categories:
   - Development
-  - Blog
-  - AI
 ---
 
 ## Preface

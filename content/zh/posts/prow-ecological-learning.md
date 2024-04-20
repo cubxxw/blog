@@ -1,19 +1,16 @@
 ---
-title: 'Prow 是什么？kubernetes 为什么需要它'
+title: '自动化的高级追求： Prow 是什么？Kubernetes 为什么需要它'
 description: 'Prow 是一个基于 Kubernetes 的 CI/CD 系统，它可以在 Kubernetes 集群中运行，用于管理和执行 CI/CD 流程。'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-16T16:46:15+08:00
-draft : false
+date: '2023-09-16T16:46:15+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: []
-tags:
-  - blog
-categories:
-  - Development
-  - Blog
+type: posts
+author: '熊鑫伟，我'
+keywords: ['Prow', 'Kubernetes', 'CI/CD', '自动化', 'DevOps', '云原生']
+tags: ['博客 (Blog)', 'Prow', 'Kubernetes', 'CI/CD', 'DevOps']
+categories: ['开发 (Development)']
 ---
 
 ## why?

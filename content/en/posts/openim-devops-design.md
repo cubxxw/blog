@@ -15,8 +15,6 @@ tags:
   - en
 categories:
   - Development
-  - Blog
-  - OpenIM
 ---
 
 ## DevOps

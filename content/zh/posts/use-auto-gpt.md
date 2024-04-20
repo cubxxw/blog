@@ -1,26 +1,17 @@
 ---
 title: '如何安装和使用自主人工智能工具Auto-GPT'
-description:
+description: '本文详细解释了如何安装和配置 Auto-GPT，一个先进的自主人工智能工具，以及如何有效地利用它来改善业务流程和用户体验。'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-07-16T16:28:31+08:00
-draft : false
+date: '2023-07-16T16:28:31+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["熊鑫伟", "Me"]
-keywords: []
-tags:
-  - blog
-  - zh
-  - ai
-  - autogpt
-categories:
-  - Development
-  - Blog
-  - AI
+type: posts
+author: '熊鑫伟，我'
+keywords: ['Auto-GPT', '人工智能', '安装教程', '自主AI工具', '技术指南', '智能自动化']
+tags: ['博客 (Blog)', '人工智能 (AI)', '自主人工智能 (Auto-GPT)']
+categories: ['开发 (Development)']
 ---
-
-
 
 ## 前言
 

@@ -16,9 +16,6 @@ tags:
   - en
 categories:
   - Development
-  - Blog
-  - Deployment
-  - OpenIM
 ---
 
 

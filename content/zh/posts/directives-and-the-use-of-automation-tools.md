@@ -1,20 +1,16 @@
 ---
 title: 'Go 源码里的这些 go: 指令 && go 自动化工具'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2024-01-25T15:22:36+08:00
-draft : false
+date: '2024-01-25T15:22:36+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: []
-tags:
-  - 博客 (Blog)
-  - golang
-  - go
-categories:
-  - '开发 (Development)'
+author: '熊鑫伟，我'
+keywords: ['Go 语言', 'go 指令', '源码分析', '自动化工具', 'Go 开发']
+tags: ['博客 (Blog)', 'Go语言 (Golang)', '自动化工具 (Automation Tools)']
+categories: ['开发 (Development)']
+description: '本文探讨了 Go 源码中的特殊指令（go: 指令）以及这些指令如何在 Go 项目中应用。同时，文章还介绍了几种常用的 Go 自动化工具，它们如何帮助开发者优化工作流程。'
 ---
 
 # Go 源码里的这些 go: 指令 && go 自动化工具

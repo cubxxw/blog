@@ -14,8 +14,6 @@ tags:
   - en
 categories:
   - Development
-  - Blog
-  - OpenIM
 ---
 
 ## 111: OpenIM multi-process management strategy

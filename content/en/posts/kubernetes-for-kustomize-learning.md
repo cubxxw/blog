@@ -15,7 +15,6 @@ tags:
   - Kustomize
 categories:
   - Development
-  - Blog
 description: >
   Explore the power of Kustomize, an open-source configuration management tool for Kubernetes.
   Learn how to customize Kubernetes objects and manage configurations declaratively using Kustomize.

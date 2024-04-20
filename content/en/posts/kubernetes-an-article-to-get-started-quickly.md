@@ -15,8 +15,6 @@ tags:
   - k8s
 categories:
   - Development
-  - Blog
-  - Kubernetes
 description: >
     Kubernetes is an open source container orchestration engine for automating deployment, scaling, and management of containerized applications. The project is governed by the Cloud Native Computing Foundation, which is hosted by The Linux Foundation.
 ---

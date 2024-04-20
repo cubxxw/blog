@@ -17,7 +17,6 @@ tags:
   - Blue-Green Deployment
 categories:
   - Development
-  - Blog
 description: >
     Explore the practice of GitOps in Kubernetes, with a detailed analysis of implementing Canary and Blue-Green deployment strategies using Argo Rollouts. This article provides in-depth theoretical and practical guidance for developers to optimize their continuous deployment processes.
 ---

@@ -17,7 +17,6 @@ tags:
   - exploration
 categories:
   - Development
-  - Blog
 description: >
     In 2023, my journey took me to the edges of the world, where I discovered not just new landscapes, but deeper insights into myself. From the bustling streets of ancient cities to the tranquil solitude of mountaintops, every step was a story, a lesson, and a memory. This blog captures my adventures, the people I met, the cultures I experienced, and the personal growth that ensued. Join me as I recount the tales of my wanderings and the indelible marks they left on my soul. You can switch to the specified language to follow my journey more closely.
 ---

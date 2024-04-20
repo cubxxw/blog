@@ -1,11 +1,16 @@
 ---
 title: "Reflection on Open Source Commercialization & Learning and Summary of Global Traffic Conference (GTC)"
 ShowRssButtonInSectionTermList: true
-date : 2023-09-17T09:51:54+08:00
-draft : false
+date: '2023-09-17T09:51:54+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["Xinwei Xiong", "Me"]
+author: "Xinwei Xiong, Me"
+keywords: ['Open Source Commercialization', 'Global Traffic Conference', 'GTC', 'Open Source Software', 'Commercialization Strategies', 'Conference Summary']
+tags: ['blog']
+categories: ['Development']
+description: >
+    Reflect on the commercialization of open source software and share insights from attending the Global Traffic Conference (GTC), focusing on key takeaways and learnings.
 ---
 
 ## Introduction: Global Perspective at the Shenzhen Futian Convention and Exhibition Center

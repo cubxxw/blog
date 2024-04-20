@@ -1,27 +1,16 @@
 ---
 title: '参与我们的区块链学习平台项目'
 ShowRssButtonInSectionTermList: true
-cover:
-  image: '/path/to/your/cover/image.jpg'  # 替换为你封面图片的路径
-date: 2022-02-01T10:26:53+08:00
+date: '2022-02-01T10:26:53+08:00'
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author:
-  - "熊鑫伟"
-  - "我"
-keywords: ["区块链", "学习平台", "社区贡献", "软件开发"] # Add relevant keywords
-tags:
-  - "blog"
-  - "区块链"
-  - "开源"
-  - "社区"
-categories:
-  - "开发"
-  - "博客"
-description: >
-    欢迎来到我们的项目，一个基于区块链技术的学习平台。在这里，我们将分享项目进展的最新动态和见解。您可以切换到指定的语言了解更多详细信息。
+author: '熊鑫伟，我'
+keywords: ['区块链', '学习平台', '社区贡献', '软件开发', '开源项目', '技术教育']
+tags: ['博客 (Blog)', '区块链 (Blockchain)', '开源 (Open Source)', '社区 (Community)']
+categories: ['开发 (Development)']
+description: '欢迎来到我们的项目，一个基于区块链技术的学习平台。在这里，我们将分享项目进展的最新动态和见解。您可以切换到指定的语言了解更多详细信息。'
 aliases:
   - "/zh/archives/contributors"
 ---

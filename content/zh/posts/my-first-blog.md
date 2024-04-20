@@ -1,14 +1,10 @@
 ---
 title: "我的第一个博客"
-date: 2023-09-14
-author: ["熊鑫伟", "Me"]
-description: "这是我的第一个博客，关于我的介绍"
-tags:
-  - blog
-  - zh
-categories:
-  - Development
-  - Blog
+date: '2023-09-14'
+author: '熊鑫伟，我'
+description: "这是我的第一个博客，关于我的介绍。在这篇文章中，我将分享我的个人背景、兴趣以及我为什么开始写博客。"
+tags: ['博客 (Blog)']
+categories: ['开发 (Development)']
 ---
 
 ## 你好，我是熊鑫伟

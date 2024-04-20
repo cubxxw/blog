@@ -8,7 +8,6 @@ tags:
    - hugo
 categories:
   - Development
-  - Blog
 ---
 
 # Rebuild my blog (static)

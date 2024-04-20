@@ -1,22 +1,16 @@
 ---
 title: 'GoReleaser: Automate your software releases'
-description:
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-16T16:07:39+08:00
-draft : false
+date: '2023-09-16T16:07:39+08:00'
+draft: false
 showtoc: true
 tocopen: true
-author: ["Xiong Xinwei", "Me"]
-keywords: []
-tags:
-   - blog
-   - en
-   - golang
-   - release
-categories:
-   - Development
-   - Blog
+author: "Xiong Xinwei, Me"
+keywords: ['GoReleaser', 'Software Releases', 'Release Automation', 'Go Programming Language', 'Continuous Integration', 'Continuous Deployment']
+tags: ['blog', 'en', 'golang', 'release']
+categories: ['Development']
+description: >
+    Learn how to streamline and automate your software release process using GoReleaser, a powerful tool for Go projects.
 ---
 
 The goal of GoReleaser is to automate much of the tedious work when releasing software, by using sensible defaults and making it simple for the most common use cases.

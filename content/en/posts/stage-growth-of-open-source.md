@@ -16,8 +16,6 @@ tags:
   - github
 categories:
   - Development
-  - Blog
-  - Github
 ---
 
 ✨ Anyone who is familiar with me knows that I am an out-and-out open source enthusiast. After I came into contact with GitHub in my freshman year, I gradually became addicted to the open source world~ Today’s article is very special, I can refer to it and summarize it. The open source stage, as well as the steps and experience of learning open source projects. In the future, I will also grow according to my own plan.

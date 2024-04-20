@@ -15,9 +15,6 @@ tags:
   - docker
 categories:
   - Development
-  - Blog
-  - OpenIM
-  - Kubernetes
 description: >
     Discover how to set up a robust image repository using Harbor, a powerful open-source container image registry. This step-by-step guide covers the installation and configuration of Harbor, including the use of Helm charts and Cert-manager for secure HTTPS connections. Learn how to push Docker images to your Harbor repository, configure DNS resolution, and even explore the option of using AWS S3 for scalable image storage. Harness the full potential of Harbor to streamline your container image management and reduce storage costs while ensuring security and reliability.
 ---

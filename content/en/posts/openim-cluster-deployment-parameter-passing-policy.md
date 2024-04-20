@@ -13,7 +13,6 @@ tags:
   - blog
 categories:
   - Development
-  - Blog
 description: >
     <You can switch to the specified language>
 ---

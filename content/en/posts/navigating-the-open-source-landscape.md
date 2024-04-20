@@ -15,7 +15,6 @@ tags:
   - innovation
 categories:
   - Development
-  - Open Source
 description: >
     This article explores the various facets of engaging with open source, from understanding its impact to navigating its challenges and opportunities, providing a comprehensive guide for developers and enthusiasts interested in contributing to and benefiting from the open source community.
 ---

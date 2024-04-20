@@ -15,9 +15,6 @@ tags:
   - go
 categories:
   - Development
-  - Blog
-  - OpenIM
-  - Go
 ---
 
 # These go: instructions in the Go source code && go automation tools

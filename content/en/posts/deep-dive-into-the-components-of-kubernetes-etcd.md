@@ -1,21 +1,17 @@
 ---
 title: 'Deep Dive Into the Components of Kubernetes Etcd'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-28T20:03:35+08:00
-draft : false
+date: '2023-09-28T20:03:35+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
+author: "Xinwei Xiong, Me"
 keywords: []
-tags:
-  - blog
-categories:
-  - Development
-  - Blog
+tags: ['blog']
+categories: ['Development']
 description: >
-    <You can switch to the specified language>
+    Explore the inner workings and components of Kubernetes Etcd in-depth, understanding its role and significance in the Kubernetes ecosystem.
 ---
 
 ---

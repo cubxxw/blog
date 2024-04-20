@@ -1,25 +1,17 @@
 ---
 title: 'Kubernetes 控制平面 - 调度器'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2023-09-28T20:29:30+08:00
-draft : false
+date: '2023-09-28T20:29:30+08:00'
+draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "Me"]
-keywords: []
-tags:
-  - blog
-  - go
-  - kubernetes
-  - k8s
-categories:
-  - '开发 (Development)'
-description: >
-    k8s 的调度器是如何工作的？
+author: '熊鑫伟，我'
+keywords: ['Kubernetes', '调度器', '容器编排', 'K8s 架构', '集群管理']
+tags: ['博客 (Blog)', 'Go', 'Kubernetes', 'K8s']
+categories: ['开发 (Development)']
+description: '探讨 Kubernetes 的调度器组件如何工作，它是如何决定将容器放置在哪个节点上的，以及这对集群管理和容器编排有何重要意义。'
 ---
-
 
 ## 调度器
 
