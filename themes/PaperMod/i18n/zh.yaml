@@ -21,13 +21,13 @@
   translation: "语言"
 
 - id: home
-  translation: "主页"
+  translation: "主页(Home)"
 
 - id: edit_post
-  translation: "编辑"
+  translation: "编辑(Edit)"
 
 - id: code_copy
-  translation: "复制"
+  translation: "复制(Copy)"
 
 - id: code_copied
   translation: "已复制！"
