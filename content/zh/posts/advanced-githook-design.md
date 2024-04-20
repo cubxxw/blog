@@ -8,7 +8,7 @@ tocopen: true
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源社区', '规范设计', '社区管理', 'Git', 'OpenIM']
-tags: ['OpenIM', '管理 (Management)', 'Git']
+tags: ['OpenIM', '管理 (Management)', 'Git', '开源 (Open Source)']
 categories: ['开发 (Development)']
 description: '探讨如何在开源社区中实施规范设计，分享我的实践经验与思路，包括如何利用Git和OpenIM工具进行高效管理。'
 ---
