@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 cover:
   image: /path/to/your/cover/image.jpg
 date: 2024-05-07T22:22:59+08:00
-draft: false
+draft: true
 showtoc: true
 tocopen: false
 type: posts
