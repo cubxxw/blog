@@ -116,6 +116,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [探索底层思维：通过核心原理快速掌握新学科](https://nsddd.top/posts/exploring-foundational-thinking-learning-across-disciplines/)
 - [Crafting Your Career Pathway: A Guide to Open Source Resume Builders and Expert Resume Tips](https://nsddd.top/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
 - [Troubleshooting Guide for OpenIM](https://nsddd.top/posts/troubleshooting-guide-for-openim/)
 - [Navigating the Open Source Landscape](https://nsddd.top/posts/navigating-the-open-source-landscape/)
