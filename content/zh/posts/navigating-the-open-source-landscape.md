@@ -7,15 +7,18 @@ showtoc: true
 tocopen: false
 type: posts
 author: '熊鑫伟，我'
-keywords: ['开源', '商业模式', '开发者指南']
-tags: ['开源 (Open Source)', '商业模式 (Business Model)', '开发者指南 (Developer Guide)', '创新 (Innovation)', '技术趋势 (Tech Trends)']
+keywords: ['开源', '商业模式', '开发者指南', '开源商业化']
+tags: ['开源 (Open Source)', '商业模式 (Business Model)','开源商业化 (Open Source Commercialization)', '开发者指南 (Developer Guide)', '创新 (Innovation)', '技术趋势 (Tech Trends)']
 categories: ['开发 (Development)']
 description: '本文深入探讨了开源和商业模式的结合，分析了开源项目的经济潜力与挑战，为开发者提供了如何在开源项目中找到商业机会的实用指南。'
 ---
 
 *开源为我带来了很多的成长，很多的成长经验和学习途径都是通过开源获取到并且学习到的。*
 
-这里有一篇我的第一次开源的成长指南：https://nsddd.top/zh/posts/open-source-contribution-guidelines/
+这里有一篇我的第一次开源的成长指南：[https://nsddd.top/zh/posts/open-source-contribution-guidelines/](https://nsddd.top/zh/posts/open-source-contribution-guidelines/)
+
+之前，在深圳的 **全球流量大会（GTC）** 一些来自我对开源商业化的思考： [https://github.com/cubxxw/blog/blob/main/content/zh/posts/openim-open-source-business-journey.md?plain=1#L2](https://github.com/cubxxw/blog/blob/main/content/zh/posts/openim-open-source-business-journey.md?plain=1#L2)
+
 
 > 第一次参与开源还是一个刚刚接触大学没多久 ~ ，调研了解到很多优秀的开源项目都会有很多业界大佬坐镇，因此会让大家以为只有“大牛”才能参与开源。实际上，开源社区经常会听到 “我是小白，我可以参与开源吗？” 这种声音，发出这种声音的同学往往是对开源感兴趣，但并不知道如何入手的小伙伴。
 > 
@@ -25,6 +28,7 @@ description: '本文深入探讨了开源和商业模式的结合，分析了开
 > 从参与要求来看，我们需要具备一定的知识积累才能参与开源。开源社区不是学校，社区会解答你的疑问，但首先你要有一定了解，才能准确提出你的疑问。对开源项目一无所知是无法参与开源的。当然，这与你是否成为“大牛”也并没有什么关系。因此，**只要具备一定的技术积累，就可以参与相应的开源项目**。
 > 
 > “罗马不是一天建成的”。没有人天生就是“大牛”，“大牛”们也是在参与中不断成长的，不要被虚无的 title 所困扰，只有不断的坚持和探索才能让自己不断成长！
+> 其实旅游中也有过一些自己的思考，在旅游中我喜欢摄影，带着相机走走拍拍。或许和女生不一样 ，我开始的时候其实是更倾向于发现风景的，就像是在香港的麦理浩径的第一段和第二段的中间破边洲部分，我更多的是以人物在破边洲的悬崖边上，然后衬托后面的悬崖的美丽壮观。我们在工作中也是一样的， 在我们摄影的时候，我们面临对焦，开始在远方我们或许更多的是把焦点放在人物后面的背景上，或者说是 title，比如说某个人是某个大学、某某大厂的光环，反而忽略了他的本身。后面当你关注在人物身上，你会发现人物的美，你会想办法如何把漂亮的小姐姐这一瞬间记录下来。这个时候其实你更专注的是某一个人，这个转变很重要，你慢慢的发现自己专注自己了，而不是专注后面虚无缥缈的光环和头衔。
 > 
 
 在开源社区中，我慢慢学习到了非常多的技巧，比如这里我总结出一篇开源社区的提问技巧：[https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/](https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/)
@@ -38,6 +42,32 @@ description: '本文深入探讨了开源和商业模式的结合，分析了开
 开源除了给个人以及公司带来技术影响力之外，更为重要的是通过开源实现商业化价值，而这部分才是很多开源项目成功的实际驱动力。本文会介绍我对开源的理解，以及着重介绍自己对开源以及开源商业模式做了一个系统的研究，为决策项目是否应该开源、采用何种开源策略以及开源商业化路径提供参考意见。
 
 如果你对我有兴趣，可以关注我的开源的 github 账户： [https://github.com/cubxxw](https://github.com/cubxxw)
+
+## 开源商业模式
+
+越是用户付费意愿强的功能，越是要闭源。越是用户觉得好玩的功能，能吸引到大家的功能，越是要开源。
+
+**我认为的开源商业模式是什么样的？**  
+开源商业化模式文章后面会总结目前的所有的商业化模式，但是我觉得最主要的商业模式是 **open-core** 和 **open-standard**，还有一些非主流的，比如说开源软件免费，但结合硬件组合销售。
+
+**开源也有自己的护城河吗？**  
+担心开源后自己的产品被抄袭，开源，作为一个推动技术创新和社区合作的新力量，其商业模式多样，从提供专业支持和服务，到构建围绕核心开源项目的企业级产品。我认为在开源的护城河上面，关键在于如何利用产品开源的独特价值和社区力量，创建难以复制的竞争优势。所以基本上就是你要不是有开源 core 产品，作为线索漏斗去吸引你的用户，然后用这来做你整个公司的品牌，然后再做差异化功能的落地实践，然后另一种可能就是类似 MySQL 做咨询顾问的工作。那么开源产品本身的护城河我理解其实抛开和普通产品护城河区别外，**Open standard**是今天开源软件商业化更好的一个形态，它对这个公司的技术能力提出了更高的要求。 **open core** 其实在云时代很难发展，即使是目前 OpenIM 那种做好传统的 open core 模式在云时代下会比较难，可能难就难在构建好护城河，比如说跟那些云厂商比。各大云厂商，从各方面看，都有巨大优势：它本身就是一个大的流量资源，客户的流量在这里，推广的流量在这里，如果你很不幸，刚好跟这个云厂商贴在同一个赛道，你怎样去获得一个这个优势？这很困难，也是 MongoDB、Elastic、Redis 等开源厂商被逼的修改开源 License 背后的深层次原因。但是，一旦你的开源项目成为业界事实标准之后，这时候标准就是你的护城河。所以，在这方面，如果盯紧一个 open standard，然后聚焦你的技术和产品能力，专注在商业产品上做到业界最优，才有可能成功。很多开源软件公司死掉了或者是不成功，并不是死在商业模式上。其实说白了还是用户基础不够大，没有真正成为业界的事实标准，这是比较令人担心的。开源企业想以开源模式来成功，一定要把开源项目做成事实上标准，例如 Hadoop、Spark，或者是流计算里的 Flink 等，以及 AI 框架 PyTorch 等。就是在细分领域里，一定要拥有业界No.1的的用户基数。
+
+### 如何判断开源软件企业成功与否
+
+在目前大家对开源商业化的态度是双面的，甚至最开始加入开源的
+
+我眼中，商业化的开源软件其实是不够纯粹的，这是典型的开源原教旨主义者，甚至一定程度上是反商业化的，说开源是一个非常纯粹的东西，它不应该和任何商业化相结合。另外一派是实用派，20年前的话就是说这个原教旨主义派跟实用派的边界就在使用 GPL 还是使用 BSD 上面， GPL 说你要用开源，就必须跟商业化完全切割，然后 BSD 说没关系，你用吧。今天我觉得开源之争其实变成了用 BSD、Apache，还是用新的这些，比如像 Elastic license 等这些许可证变体上。我现在的观点可能偏后者一些，我个人的看法是要能把商业做出来，然后在一个大家普遍接受的状态和准则上反哺社区，让社区能够活得下去，这是很重要的事。在之前，有讨论过，《黑客与画家》书中，Graham 在书中提到了开源软件的几个关键点，他认为开源可以与商业化共存，甚至能促进创新和商业成功。尽管开源软件通常是免费提供的，但企业和个人开发者可以通过多种方式对其进行商业化，以创造收入。Graham 提到了几种可能的商业模式，如提供专业服务（支持和咨询）、自定义开发、培训和教育服务，以及通过增加专有功能或组件来销售产品版本。书中提到了开源的几种商业优势： 1. 信任和透明性：开源软件因其源代码的可见性而被视为更可信。这对于安全敏感的应用尤其重要，用户或公司更倾向于使用那些能够被审查和验证的解决方案。 2. 快速迭代和创新：开放源代码可以吸引全球的开发者参与，这种广泛的参与促进了快速的创新和问题解决。 3. 成本效益：使用开源软件可以减少初期的软件成本，尤其是对于创业公司和开发新产品的企业来说，这一点非常有吸引力。成功的定义有很多，但对企业而言，成功的定义只有一个，就是商业成功。开源背后的企业也不例外，开源的公司要赢得商业成功，有几个阶段：第一个阶段，是用户社区的成功，就是你开源的软件要受到用户的欢迎；第二个阶段，就是从社区成功转化为业务的成功，就是你要有规模化的营收进来；第三个阶段，就是你的损益达到平衡点之后，能盈利（profitable），才能到达商业的成功。开源企业要想赢得商业成功，其实这三个环节，步步都不能踏错，所以要一步一步拆开来分析。
+
+大部分所谓的开源公司都死在社区不够壮大。是的，90%的开源软件公司都死在这一点。其实第一个阶段的门槛是很高的，开源软件成千上万，真正能被大家熟悉和使用的，只有1%，其他99%都做了分母。为什么我们觉得好像开源很容
+
+易，但赚钱很困难？这其实是因为幸存者偏差，我们根本没有关注过没有人使用的那 99%的开源项目。不要看很多开源项目 star 数很多，宣传也很广，我关注的永远只有两个：一是用户数，真正在生产业务中有部署的，另一个是活跃贡献者数量。脱离这两个，一切运营手段都只是空中楼阁，项目也无法真正成为 Open Standard。
+
+分析 OpenIM 所面对的商业化问题，OpenIM 其实是一个典型的开源商业化产品，它的背后是有一家商业化支持的，OpenIM 为什么会成功？ 我认为是两点，第一个，有一个 PMF（差异化是私有化部署 IM， 解决了中小企业以及政务企业 IM 私有化部署问题）。还有一个就是后台的商业化公司合理的开源引流，把开源做的很好，并且有合理的商业化判断，比如知道 core 是开源所需要的，边缘的特殊场景是商业化所需要的。以至于适当的高级版是企业所额外需要的。并且 OpenIM 想的很清楚，它不想去陷入为客户线下部署与现场支持（on-prem）的模式，而只去解决云上标准化产品的问题，基于标准化的硬件和标准化的设置，这大大简化了技术复杂度并降低了成本。不管是 PLG(Product-Led Growth) 还是Sales-Led, 我认为商业模式要上规模，规模化之后还能盈利是最重要的，OpenIM 提供了一个很好的参考案例。
+除了用户，对开源社区，开发者或者说贡献者也很重要。刚才我们没有太细聊开发者社区，这个并不是每一个开源项目都一样：有的项目不欢迎外部开发者，只关注用户，我认为这完全没问题。我们看到在很多场景里，社区的外部开发者会把你的开源软件带到一些之前没考虑到的应用场景，从而拓展了开源项目的原先场景，这也是开源项目和社区充满创新活力的原因之一。
+包括 OpenIM 在之前有贡献者为我们贡献了一套高级版已经有的一套加密模块 ~ 当然是我们当前不需要的地方。不过其实这也意味着做开源对开发和产品的要求更高的，意味着你的高级版加密一定要做到优质、顶级。
+这一点类似的是，同样商业化产品，如何做到可信任，尤其是中大一点的客户，其实很关心你的商业模式。我希望用你的东西，也希望你的东西是能长治久安的。不管是我付钱还是别人付钱， 你怎么去让客户对你的商业模式有信心。每个客户都希望少付钱，你需要条理分明地说服用户。在真正的大客户合作中，这点很重要。
+
 
 ## 什么是开源
 
@@ -699,22 +729,23 @@ learnku也是一个不错的推介个人开源项目的论坛，不过貌似发�
 
 **腾讯会议 - 社区会议：** 社区**双周会**使用腾讯会议。
 
-## 参考
+## 参考资料
 
 - Chatgpt
 - [开源指南](https://oschina.gitee.io/opensource-guide/guide/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%88%9D%E8%AF%86%E5%BC%80%E6%BA%90/%E7%AC%AC%201%20%E5%B0%8F%E8%8A%82%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%80%E6%BA%90/#%E5%BC%80%E6%BA%90%E7%9A%84%E6%A6%82%E5%BF%B5)
 - [开源商业化的思考](https://github.com/duyanghao/kubernetes-reading-notes/blob/master/core/others/open-source.md)
-- **[The Open Source Definition(opens new window)](https://opensource.org/osd)**
-- **[Open Source Summit Trip Report (opens new window)](https://linuxgazette.net/issue28/rossum.html)**by Guido van Rossum
-- **[Why Open Source misses the point of Free Software (opens new window)](https://www.gnu.org/philosophy/open-source-misses-the-point.en.html)**by Richard Stallman
+- [The Open Source Definition](https://opensource.org/osd)
+- [Open Source Summit Trip Report by Guido van Rossum](https://linuxgazette.net/issue28/rossum.html)
+- [Why Open Source misses the point of Free Software by Richard Stallman](https://www.gnu.org/philosophy/open-source-misses-the-point.en.html)
 - 《大教堂与集市》Eric S·Raymond，卫剑钒（译）
-- **[《若为自由故》Sam Williams，邓楠 / 李凡希（译）(opens new window)](https://github.com/lifanxi/free-as-in-freedom-zh-cn/tree/v1)**
+- [《若为自由故》by Sam Williams，邓楠 / 李凡希（译）](https://github.com/lifanxi/free-as-in-freedom-zh-cn/tree/v1)
 - 《只是为了好玩》Linus Torvalds / David Diamond
 - 《黑客与画家》Paul Graham，阮一峰（译）
 - 《Git 权威指南》蒋鑫
 - 《GitHub 入门与实践》大塚弘记，支鹏浩 / 刘斌（译）
-- **[Open Source Hardware Association(opens new window)](http://www.oshwa.org/)**
-- **[Open-source hardware(opens new window)](https://en.wikipedia.org/wiki/Open-source_hardware)**
-- **[FOSS 的历史(opens new window)](https://itsfoss.com/history-of-foss)**
-- **[Richard Stallman之 GNU/Linux 问答(opens new window)](https://www.gnu.org/gnu/gnu-linux-faq.html)**
+- [Open Source Hardware Association](http://www.oshwa.org/)
+- [Open-source hardware](https://en.wikipedia.org/wiki/Open-source_hardware)
+- [FOSS 的历史](https://itsfoss.com/history-of-foss)
+- [Richard Stallman之 GNU/Linux 问答](https://www.gnu.org/gnu/gnu-linux-faq.html)
 - [Vue 出版如何宣传的](https://blog.evanyou.me/2014/02/11/first-week-of-launching-an-oss-project/)
+- [硅谷揭秘：开源如何选择商业模式并构建护城河？](https://blog.csdn.net/kaiyuanshe/article/details/138830273)
