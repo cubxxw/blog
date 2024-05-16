@@ -40,23 +40,25 @@ Based on your professional skills, technical expertise, and personal interests, 
 
 ### 中文博客的标签和分类
 
-| 类别       | 标签                                                             | 分类                             |
-|------------|------------------------------------------------------------------|----------------------------------|
+| 类别       | 标签                                                                                               | 分类                             |
+|------------|----------------------------------------------------------------------------------------------------|----------------------------------|
 | 技术       | `Golang (GO语言)`, `Kubernetes`, `OpenIM`, `云原生 (Cloud Native)`, `微服务 (Microservices)`, `服务网格 (Service Mesh)`, `Docker`, `CI/CD`, `Prometheus` | `开发 (Development)`             |
-| 安全       | `安全性 (Security)`, `代码审查 (Code Review)`                     | `安全 (Security)`                |
+| 安全       | `安全性 (Security)`, `代码审查 (Code Review)`                                                       | `安全 (Security)`                |
 | 敏捷与流程 | `敏捷软件开发 (Agile Software Development)`, `响应式编程 (Reactive Programming)`, `函数式编程 (Functional Programming)` | `项目管理 (Project Management)`   |
 | 个人兴趣   | `户外探险 (Outdoor Adventures)`, `环球旅行 (World Travel)`, `自行车骑行 (Cycling)`, `摄影 (Photography)`, `旅行 (Travel)`, `自我发现 (Self Discovery)`, `冒险 (Adventure)`, `探索 (Exploration)` | `个人成长 (Personal Development)`|
 | 生活方式   | `个人效率 (Personal Productivity)`, `健康生活 (Healthy Living)`, `生活方式 (Lifestyle)`, `远程工作 (Remote Work)` | `生活与教育 (Living & Education)`|
+| 人工智能   | `深度学习 (Deep Learning)`, `自然语言处理 (NLP, Natural Language Processing)`, `计算机视觉 (Computer Vision)`, `强化学习 (Reinforcement Learning)`, `转移学习 (Transfer Learning)`, `LLM` | `人工智能 (AI)`                  |
 
 ### Tags and Categories for English Blogs
 
-| Category            | Tags                                                         | Classification                  |
-|---------------------|--------------------------------------------------------------|---------------------------------|
+| Category            | Tags                                                                                       | Classification                  |
+|---------------------|--------------------------------------------------------------------------------------------|---------------------------------|
 | Technology          | `Golang`, `Kubernetes`, `OpenIM`, `Cloud Native`, `Microservices`, `Service Mesh`, `Docker`, `CI/CD`, `Prometheus` | `Development`                   |
-| Security            | `Security`, `Code Review`                                     | `Security`                      |
-| Agile & Processes   | `Agile Software Development`, `Reactive Programming`, `Functional Programming` | `Project Management`            |
+| Security            | `Security`, `Code Review`                                                                   | `Security`                      |
+| Agile & Processes   | `Agile Software Development`, `Reactive Programming`, `Functional Programming`             | `Project Management`            |
 | Personal Interests  | `Outdoor Adventures`, `World Travel`, `Cycling`, `Photography`, `Travel`, `Self Discovery`, `Adventure`, `Exploration` | `Personal Development`          |
-| Lifestyle           | `Personal Productivity`, `Healthy Living`, `Lifestyle`, `Remote Work` | `Learning & Education`           |
+| Lifestyle           | `Personal Productivity`, `Healthy Living`, `Lifestyle`, `Remote Work`                      | `Learning & Education`          |
+| Artificial Intelligence | `Deep Learning`, `Natural Language Processing`, `Computer Vision`, `Reinforcement Learning`, `Transfer Learning`， `LLM` | `AI`       |
 
 ### Keywords
 
