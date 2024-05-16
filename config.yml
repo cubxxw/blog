@@ -140,7 +140,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸About me
-          url: https://nsddd.top/en
+          url: https://resume.nsddd.top
           pageRef: /lint
           weight: 10
         - identifier: categories
@@ -198,7 +198,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸关于我
-          url: https://nsddd.top/zh
+          url: https://resume.nsddd.top
           pageRef: /lint
           weight: 10
         - identifier: categories
@@ -255,7 +255,7 @@ languages:
   #     main:
   #       - identifier: lint
   #         name: 🤸À propos de moi
-  #         url: https://nsddd.top/fr
+  #         url: https://resume.nsddd.top
   #         pageRef: /lint
   #         weight: 10
   #       - identifier: categories
@@ -312,7 +312,7 @@ languages:
   #     main:
   #       - identifier: lint
   #         name: 🤸Acerca de mí
-  #         url: https://nsddd.top/es
+  #         url: https://resume.nsddd.top
   #         pageRef: /lint
   #         weight: 10
   #       - identifier: categories
@@ -369,7 +369,7 @@ languages:
   #     main:
   #       - identifier: lint
   #         name: 🤸Über mich
-  #         url: https://nsddd.top/de
+  #         url: https://resume.nsddd.top
   #         pageRef: /lint
   #         weight: 10
   #       - identifier: categories
@@ -426,7 +426,7 @@ languages:
       main:
         - identifier: lint
           name: 🤸關於我
-          url: https://nsddd.top/zh-tw
+          url: https://resume.nsddd.top
           pageRef: /lint
           weight: 10
         - identifier: categories
