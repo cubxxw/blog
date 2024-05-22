@@ -17,7 +17,7 @@ description: '本文深入探讨了开源和商业模式的结合，分析了开
 
 这里有一篇我的第一次开源的成长指南：[https://nsddd.top/zh/posts/open-source-contribution-guidelines/](https://nsddd.top/zh/posts/open-source-contribution-guidelines/)
 
-之前，在深圳的 **全球流量大会（GTC）** 一些来自我对开源商业化的思考： [https://github.com/cubxxw/blog/blob/main/content/zh/posts/openim-open-source-business-journey.md?plain=1#L2](https://github.com/cubxxw/blog/blob/main/content/zh/posts/openim-open-source-business-journey.md?plain=1#L2)
+之前，在深圳的 **全球流量大会（GTC）** 一些来自我对开源商业化的思考，感兴趣可以阅读先阅读这篇思考文章： [https://nsddd.top/zh/posts/openim-open-source-business-journey/](https://nsddd.top/zh/posts/openim-open-source-business-journey/)
 
 
 > 第一次参与开源还是一个刚刚接触大学没多久 ~ ，调研了解到很多优秀的开源项目都会有很多业界大佬坐镇，因此会让大家以为只有“大牛”才能参与开源。实际上，开源社区经常会听到 “我是小白，我可以参与开源吗？” 这种声音，发出这种声音的同学往往是对开源感兴趣，但并不知道如何入手的小伙伴。
