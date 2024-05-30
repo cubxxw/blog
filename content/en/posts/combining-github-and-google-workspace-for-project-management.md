@@ -118,7 +118,7 @@ Google Docs is another useful project management tool. Docs allows you to create
 
 Overall, Google Apps is a useful tool for managing projects more efficiently.
 
-See also: [Project Milestone Management: Detailed Guide with Examples](https://businessyield.com/zh-CN/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/ %E9%A1%B9%E7%9B%AE%E9%87%8C%E7%A8%8B%E7%A2%91/)
+See also: [Project Milestone Management: Detailed Guide with Examples](https://businessyield.com/zh-CN/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E9%A1%B9%E7%9B%AE%E9%87%8C%E7%A8%8B%E7%A2%91/)
 
 ### #5. Google Pay
 
@@ -196,7 +196,7 @@ No, there is currently no Google version of MS Project. However, Google offers a
 
 Yes, Google has a Gantt chart tool for project management. It's part of the Google Docs suite, so you need a Google account to access it. The tool is very basic but helpful for simple projects.
 
-See also: [Project Milestone Management: Detailed Guide with Examples](https://businessyield.com/zh-CN/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/ %E9%A1%B9%E7%9B%AE%E9%87%8C%E7%A8%8B%E7%A2%91/)
+See also: [Project Milestone Management: Detailed Guide with Examples](https://businessyield.com/zh-CN/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E9%A1%B9%E7%9B%AE%E9%87%8C%E7%A8%8B%E7%A2%91/)
 
 ## Google **Project Milestone Management: Detailed Guide with Examples**
 
@@ -204,7 +204,7 @@ When completing any project, you must know how to do it from start to finish. Wh
 
 **What are project milestones? **
 
-Project milestones are specific tasks that must be completed for the project within a certain period of time [approximate time](https://businessyield.com/zh-CN/%E9%A1%B9%E7%9B%AE%E7%AE%A1% E7%90%86/%E9%A1%B9%E7%9B%AE%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/). These are the timelines At the point you want to accomplish some measurable work that can be handed off to a project manager or even a client. Milestones should be more important than the little things you accomplish every day. This is because their purpose is to inform you whether the project will be completed on time.
+Project milestones are specific tasks that must be completed for the project within a certain period of time [approximate time](https://businessyield.com/zh-CN/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E9%A1%B9%E7%9B%AE%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/). These are the timelines At the point you want to accomplish some measurable work that can be handed off to a project manager or even a client. Milestones should be more important than the little things you accomplish every day. This is because their purpose is to inform you whether the project will be completed on time.
 
 **What are project management milestones? **
 

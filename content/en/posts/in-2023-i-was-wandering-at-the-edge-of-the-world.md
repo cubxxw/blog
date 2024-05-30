@@ -187,7 +187,6 @@ But no matter where I have been, no matter how many times I have participated, t
 
 Of course, when I arrived at the campsite later, I realized that I had really overthought it: the campsite was already filled with many colorful tents, and I discovered that we are not the only ones who like a different life in the world. After camping, I also discovered: It turns out that this The world can still play like this! The most important thing is that when you lie down in the tent, you can see the stars in the sky that cannot be seen in the city, and you can watch the sunrise and sunset while lying down. It is really a very good feeling.
 
-The best thing is camping in Hong Kong, where you can meet people from various cultures and countries, and spend the night together around [the tribute fire](https://www.douyin.com/search/%E6%97%BA% Chat, singing and dancing…
 
 Slowly, I learned how to cook the first meal in my life while camping. I learned how to barbecue, learn to stir-fry, learn to fry rice, learn to fry fruits, and learn to make tea. A table and a chair, sit on the grass, facing the sea or the sunset, and drink to freedom!
 
