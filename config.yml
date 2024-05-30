@@ -93,7 +93,7 @@ params:
     - name: jike
       url: https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4
     - name: xhs
-      url: https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4
+      url: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "webo", "xiaohongshu"] # To customize which share buttons to be enabled on page
   analytics:
     google:
