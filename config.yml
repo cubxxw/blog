@@ -72,8 +72,6 @@ params:
       url: https://www.zhihu.com/people/3293172751
     - name: linkedin
       url: https://www.linkedin.com/in/cubxxw
-    - name: calendar
-      url: https://calendly.com/cubxxw
     - name: facebook
       url: https://www.facebook.com/profile.php?id=100034435372354
     - name: wechat
@@ -94,6 +92,8 @@ params:
       url: https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4
     - name: xhs
       url: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3
+    - name: discord
+      url: https://discordapp.com/users/1028126805300875295
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "webo", "xiaohongshu"] # To customize which share buttons to be enabled on page
   analytics:
     google:
