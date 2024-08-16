@@ -3,7 +3,7 @@ title: 'Kubernetes 资源与学习路径总结'
 ShowRssButtonInSectionTermList: true
 cover:
   image: ""
-date: '2023-10-05T20:29:30+08:00'
+date: '2024-8-06T20:29:30+08:00'
 draft: false
 showtoc: true
 tocopen: false
