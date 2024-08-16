@@ -1,14 +1,12 @@
 ---
 title: 'Kubernetes 资源与学习路径总结'
 ShowRssButtonInSectionTermList: true
-cover:
-  image: ""
-date: '2024-8-06T20:29:30+08:00'
+date: '2024-08-06T20:29:30+08:00'
 draft: false
 showtoc: true
-tocopen: false
+tocopen: true
 type: posts
-author: '熊鑫伟'
+author: '熊鑫伟，我'
 keywords: ["Kubernetes", "CNI", "CSI", "CRI", "云原生", "微服务", "服务网格", "Go", "学习路径", "源码"]
 tags:
   - 'Golang (GO语言)'
@@ -16,7 +14,6 @@ tags:
   - '云原生 (Cloud Native)'
   - '微服务 (Microservices)'
   - '服务网格 (Service Mesh)'
-  - '源码'
 categories:
   - '开发 (Development)'
 description: >
