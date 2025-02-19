@@ -1,5 +1,5 @@
 ---
-title: '2025 年度回顾'
+title: '2024 年度回顾'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date : 2025-02-12T16:18:31+05:45
