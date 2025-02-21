@@ -121,7 +121,6 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
-- [2025 Annual Review](https://nsddd.top/posts/2025-annual-review/)
 - [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
 - [Crafting Your Career Pathway: A Guide to Open Source Resume Builders and Expert Resume Tips](https://nsddd.top/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
