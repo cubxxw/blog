@@ -70,8 +70,8 @@ jobs:
         with:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf # v2
-      - uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v3
+      - uses: docker/setup-qemu-action@4574d27a4764455b42196d70a065bc6853246a25 # v2
+      - uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f # v3
         with:
           path: |
             ./_output/dist/*.deb
