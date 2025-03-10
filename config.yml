@@ -166,6 +166,10 @@ languages:
           name: Ⓜ️Github
           url: https://github.com/cubxxw/blog
           weight: 50
+        - identifier: diary
+          name: 📔Diary
+          url: https://diary.nsddd.top/flomo/cubxxw
+          weight: 60
     params:
       profileMode:
         # Enabled or not
@@ -224,6 +228,10 @@ languages:
           name: Ⓜ️Github
           url: https://github.com/cubxxw/blog
           weight: 50
+        - identifier: diary
+          name: 📔日记
+          url: https://diary.nsddd.top/flomo/cubxxw
+          weight: 60
     params:
       profileMode:
         # 启用或禁用
