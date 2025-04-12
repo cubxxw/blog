@@ -156,6 +156,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Jina](https://nsddd.top/posts/ai-projects/jina/)
 - [2024 Annual Recap](https://nsddd.top/posts/2024-annual-review/)
 - [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
