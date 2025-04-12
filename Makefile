@@ -108,6 +108,21 @@ endif
 	@$(TOOLS_DIR)/hugo new content content/zh/posts/$(POST_NAME).md
 	@$(TOOLS_DIR)/hugo
 
+## new-ai-project: Create a new AI project learning content file.
+PROJECT_NAME ?=
+.PHONY: new-ai-project
+new-ai-project: tools.verify.hugo module-check
+ifndef PROJECT_NAME
+	$(error PROJECT_NAME is not set. Please provide a name for the AI project. example: make new-ai-project PROJECT_NAME="llama")
+endif
+	@echo "Creating new AI project learning content for $(PROJECT_NAME)..."
+	@$(TOOLS_DIR)/hugo new content content/en/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
+	@$(TOOLS_DIR)/hugo new content content/zh/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
+	@echo "✅ AI project files created successfully!"
+	@echo "📂 English version: content/en/posts/ai-projects/$(PROJECT_NAME).md"
+	@echo "📂 Chinese version: content/zh/posts/ai-projects/$(PROJECT_NAME).md"
+	@$(TOOLS_DIR)/hugo
+
 ## build: Build site with non-production settings and put deliverables in ./public
 .PHONY: build
 build: tools.verify.hugo module-check

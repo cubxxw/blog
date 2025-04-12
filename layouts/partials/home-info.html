@@ -1,0 +1,9 @@
+<div class="home-info">
+    <div class="home-info-title">{{ .Site.Title }}</div>
+    <div class="home-info-content">{{ .Site.Params.homeInfoContent | markdownify }}</div>
+    <div class="home-info-ai-projects">
+        <a href="{{ "/categories/ai-open-source/" | relLangURL }}" class="ai-project-button">
+            🚀 探索我的AI开源项目学习笔记
+        </a>
+    </div>
+</div> 

@@ -12,10 +12,12 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - Blog
+  - blog
+  - Annual Recap
+  - Travel
+  - Product Development
 categories:
-  - Development
-  - Blog
+  - 个人成长 (Personal Development)
 description: >
   This article is a retrospective look back on 2024, covering my experiences and reflections on travel, product development, personal growth, and more. By sharing my journey and insights, I hope to inspire both myself and my readers to explore new ideas and perspectives.
 ---

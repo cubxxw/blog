@@ -11,10 +11,12 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - 博客
+  - blog
+  - 年度回顾 (Annual Recap)
+  - 旅行 (Travel)
+  - 产品开发 (Product Development)
 categories:
-  - 开发
-  - 博客
+  - 个人成长 (Personal Development)
 description: >
     这篇文章是对2025年的年度回顾，涵盖了我在旅居、产品开发、个人成长等方面的经验与反思。通过分享我的经历和思考，希望能为自己和读者带来启发和思考的空间。
 ---
