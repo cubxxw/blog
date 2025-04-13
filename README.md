@@ -266,7 +266,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Github Actions 的高级使用技巧](https://nsddd.top/zh/posts/github-actions-advanced-techniques/)
 - [OpenIM离线部署设计](https://nsddd.top/zh/posts/openim-offline-deployment-design/)
 - [开源的阶段性成长指南](https://nsddd.top/zh/posts/stage-growth-of-open-source/)
-- [测试标题样式](https://nsddd.top/zh/posts/test-headers/)
 - [从理论到实践的项目管理打通](https://nsddd.top/zh/posts/project-management-from-theory-to-practice/)
 - [Openkf 多架构镜像的构建策略设计](https://nsddd.top/zh/posts/openkf-multi-architecture-image/)
 - [在AI时代 - 精益团队的企业文化和远程工作指南 v2.0](https://nsddd.top/zh/posts/openim-remote-work-culture/)
