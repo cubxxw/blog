@@ -161,13 +161,6 @@ languages:
           url: /posts/
           pageRef: /posts
           weight: 15
-        - identifier: ai-projects
-          name: 🤖 AI Projects
-          url: /categories/ai-open-source/
-          pageRef: /categories/ai-open-source
-          weight: 20
-          params:
-            class: nav-ai-project
         - identifier: categories
           name: 🗂️Categories
           url: categories/
@@ -237,13 +230,6 @@ languages:
           url: /posts/
           pageRef: /posts
           weight: 15
-        - identifier: ai-projects
-          name: 🤖 AI开源项目
-          url: /categories/ai-open-source/
-          pageRef: /categories/ai-open-source
-          weight: 20
-          params:
-            class: nav-ai-project
         - identifier: categories
           name: 🗂️分类
           url: /categories/
@@ -265,7 +251,7 @@ languages:
           weight: 60
         - identifier: diary
           name: 📔日记
-          url: https://diary.nsddd.top/flomo/cubxxw
+          url: https://diary.nsddd.top/flomo-enhanced
           weight: 70
     params:
       profileMode:
@@ -312,13 +298,6 @@ languages:
           url: /posts/
           pageRef: /posts
           weight: 15
-        - identifier: ai-projects
-          name: 🤖 AI開源項目
-          url: /categories/ai-open-source/
-          pageRef: /categories/ai-open-source
-          weight: 20
-          params:
-            class: nav-ai-project
         - identifier: categories
           name: 🗂️分類
           url: categories/
