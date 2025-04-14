@@ -1,6 +1,6 @@
 ---
-title: "{{ replace .Name "-" " " | title }} 开源项目深度学习"
-date: {{ .Date }}
+title: "Gpt Researcher 开源项目深度学习"
+date: 2025-04-14T16:17:27+08:00
 draft: false
 tocopen: true
 tags: ["AI开源", "项目学习"]
@@ -13,7 +13,10 @@ description: >
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。
 > [notion List](https://traveling-thistle-a0c.notion.site/Open-Source-Project-Learn-1d2a444a6c008030a24efaa0e3bf5f5c?pvs=4)
 
-**基本信息：**
+
+## 项目概览
+
+### 基本信息
 - 项目名称：
 - GitHub 地址：
 - 主要技术栈：
