@@ -189,7 +189,7 @@ languages:
           weight: 60
         - identifier: diary
           name: 📔Diary
-          url: https://diary.nsddd.top/flomo/cubxxw
+          url: https://diary.nsddd.top/flomo-enhanced
           weight: 70
     params:
       profileMode:
