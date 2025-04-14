@@ -283,6 +283,22 @@ Executor 的生命周期由其容器（通常是 Deployment）和更高层的编
 Executor 的生命周期管理是确保 Jina 应用稳定性和可靠性的关键。框架通过 Deployment 和 Flow 提供了大部分管理功能，但开发者仍需在 __init__ 和可能的清理逻辑（如 __del__ 或信号处理）中正确处理资源和状态。对 <sup>53</sup> 中提到的关闭问题的修复过程（涉及非守护进程和 join()) 表明，在分布式环境中确保优雅关闭和状态一致性是一个复杂但核心的工程挑战，框架在这方面持续进行优化。timeout_ready <sup>17</sup> 和就绪检查 <sup>29</sup> 的存在进一步凸显了管理分布式组件状态的重要性。
 
 
+### **6.3. Jina Research**
+
+Jina AI 开源生态系统中的三个特定项目：jina-ai/reader、jina-ai/node-DeepResearch 和 jina-ai/clip-as-service。
+
+1. `jina-ai/reader`：主要目标是将任意网页 URL 转换为适合大型语言模型（LLM）处理的干净输入格式，并提供集成了内容抓取的网页搜索功能 。   
+2. `jina-ai/node-DeepResearch`：旨在通过迭代式的搜索、阅读和推理过程，为复杂问题找到准确答案，尤其适用于需要深度研究和最新信息的场景 。   
+3. `jina-ai/clip-as-service`：作为一个可扩展、低延迟的服务，专门用于提供 CLIP（Contrastive Language-Image Pre-training）模型的文本和图像嵌入能力 。   
+
+
+#### Jina Reader
+
+jina-ai/reader 项目的核心目标非常明确：解决将原始、混乱的网页内容输入给大型语言模型（LLM）或检索增强生成（RAG）系统时遇到的挑战 。直接使用原始 HTML 不仅效率低下，且因包含大量无关标记和脚本而成本高昂 。reader 通过提供简单的 API 端点，致力于将任意 URL 的内容转换为干净、结构化的、LLM 友好的格式（主要是 Markdown）。   
+
+
+
+
 ## **7. Jina 生态系统与社区**
 
 Jina 不仅仅是一个单一的框架，它围绕着一个不断发展的生态系统，包括核心库、相关工具、集成和社区资源。
