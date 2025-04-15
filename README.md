@@ -216,6 +216,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [Gpt Researcher 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/gpt-researcher/)
 - [Jina 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/jina/)
 - [2024 年度回顾](https://nsddd.top/zh/posts/2024-annual-review/)
 - [Kubernetes 资源与学习路径总结](https://nsddd.top/zh/posts/kubernetes-learning/)
