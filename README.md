@@ -156,6 +156,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Independent Developer 开源项目深度学习](https://nsddd.top/posts/ai-projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://nsddd.top/posts/ai-projects/gpt-researcher/)
 - [Jina](https://nsddd.top/posts/ai-projects/jina/)
 - [2024 Annual Recap](https://nsddd.top/posts/2024-annual-review/)
