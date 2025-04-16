@@ -1,0 +1,98 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+{
+  "version": "1.0",
+  "post_metadata_rules": {
+    "required_fields": {
+      "title": {
+        "type": "string",
+        "min_length": 5,
+        "max_length": 100,
+        "description": "文章标题，应该简洁明了且具有描述性"
+      },
+      "date": {
+        "type": "string",
+        "format": "YYYY-MM-DD",
+        "description": "文章发布日期"
+      },
+      "categories": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "开发",
+            "AI开源",
+            "安全",
+            "项目管理",
+            "个人成长",
+            "生活与教育",
+            "人工智能"
+          ]
+        },
+        "min_items": 1,
+        "max_items": 3,
+        "description": "文章分类，至少选择一个，最多三个"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "min_items": 1,
+        "max_items": 5,
+        "description": "文章标签，建议选择README中已定义的标签"
+      }
+    },
+    "optional_fields": {
+      "description": {
+        "type": "string",
+        "max_length": 200,
+        "description": "文章简短描述"
+      },
+      "author": {
+        "type": "string",
+        "default": "cubxxw",
+        "description": "文章作者"
+      },
+      "cover_image": {
+        "type": "string",
+        "pattern": "^(https?:\\/\\/|\\/).+\\.(jpg|jpeg|png|gif|webp)$",
+        "description": "文章封面图片URL"
+      },
+      "draft": {
+        "type": "boolean",
+        "default": false,
+        "description": "是否为草稿状态"
+      },
+      "weight": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 50,
+        "description": "文章权重，用于排序，数值越大越靠前"
+      }
+    },
+    "content_rules": {
+      "min_length": 500,
+      "recommended_image_width": 800,
+      "recommended_image_height": 400,
+      "code_block_language_required": true,
+      "heading_hierarchy_required": true
+    },
+    "file_naming": {
+      "pattern": "YYYY-MM-DD-{slug}",
+      "allowed_chars": "a-z0-9-",
+      "max_length": 100
+    }
+  },
+  "validation_hooks": {
+    "pre_commit": [
+      "check_metadata_format",
+      "validate_required_fields",
+      "check_image_sizes",
+      "verify_links"
+    ]
+  }
+} 
