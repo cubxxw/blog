@@ -156,6 +156,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Langgraph 开源项目深度学习](https://nsddd.top/posts/ai-projects/langgraph/)
 - [Langchain 开源项目深度学习](https://nsddd.top/posts/ai-projects/langchain/)
 - [LLM/AI API 网关市场分析 & 创业团队选型推荐](https://nsddd.top/posts/ai-projects/ai-getway/)
 - [Independent Developer 开源项目深度学习](https://nsddd.top/posts/ai-projects/independent-developer/)
