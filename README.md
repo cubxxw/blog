@@ -223,6 +223,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [AI 时代初创企业的测试驱动开发（TDD）实践方案](https://nsddd.top/zh/posts/ai-projects/tdd/)
+- [MarkItdown 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/markitdown/)
 - [LangGraph 深度解析：设计、架构、原理与应用](https://nsddd.top/zh/posts/ai-projects/langgraph/)
 - [Langchain 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/langchain/)
 - [Ai Getway 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/ai-getway/)
