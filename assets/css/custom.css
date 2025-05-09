@@ -158,4 +158,58 @@ details summary,
 .post-content strong,
 strong {
   font-weight: normal !important;
+}
+
+/* 自定义页脚样式 */
+.footer {
+  padding: 30px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+
+.footer a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s;
+  border-bottom: 1px dotted transparent;
+}
+
+.footer a:hover {
+  border-bottom: 1px dotted var(--primary);
+}
+
+.dark .footer a {
+  color: var(--primary);
+}
+
+/* 回到顶部按钮美化 */
+.top-link {
+  bottom: 60px;
+  right: 30px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.top-link:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.20), 0 6px 12px rgba(0,0,0,0.24);
+  transform: translateY(-2px);
+  background: var(--primary);
+}
+
+.dark .top-link {
+  background: var(--primary);
+}
+
+.top-link svg {
+  transform: scale(1.2);
 } 
