@@ -1,21 +1,26 @@
 ---
-title: 'Argo Cd'
+title: 'Argo CD: Declarative GitOps for Kubernetes Continuous Delivery'
 ShowRssButtonInSectionTermList: true
-cover.image:
-date : 2025-05-09T20:45:39+08:00
-draft : false
+cover.image: # Consider adding a relevant image path, e.g., /images/argo-cd-gitops.png
+date: 2025-05-09T20:45:39+08:00
+draft: false
 showtoc: true
-tocopen: false
+tocopen: false # Users typically prefer the TOC closed by default, can be set to true if desired
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: []
+keywords: ["Argo CD", "GitOps", "Kubernetes", "Continuous Delivery", "CD", "CNCF", "Declarative Configuration", "Cloud Native", "DevOps"]
 tags:
-  - blog
-categories:
-  - Development
-  - Blog
+  - ArgoCD
+  - GitOps
+  - Kubernetes
+  - Continuous Delivery
+  - DevOps
+  - CNCF
+categories: "AI Open Source"
 description: >
-    <You can switch to the specified language>
+  An introduction to Argo CD, a declarative, GitOps-based continuous delivery (CD) tool for Kubernetes.
+  Learn how it automates application deployment by synchronizing the desired state defined in Git
+  with the live state in a Kubernetes cluster.
 ---
 
 
