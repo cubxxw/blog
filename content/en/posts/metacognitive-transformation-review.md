@@ -1,15 +1,9 @@
 ---
-
 title: 'Metacognitive Transformation Review'
-
 date: 2025-06-02 # Conforms to YYYY-MM-DD format
-
 author: "Xinwei Xiong" # Schema expects a single string, "cubxxw" is the default
-
 description: "An in-depth review of metacognitive transformation, exploring its processes, impact on learning, and strategies for personal development." # Max 200 characters
-
 categories:
-
 - Personal Development
 
 tags:
@@ -25,8 +19,6 @@ draft: false
 type: posts # Standard Hugo field
 
 weight: 50 # Optional: Default 50, higher means more prominent
-
-# Theme-specific settings (kept from your original)
 
 ShowRssButtonInSectionTermList: true
 
@@ -48,7 +40,9 @@ keywords:
 
 ---
 
-## Two different experiences brought by fineness
+## LIST
+
+### Two different experiences brought by fineness
 
 > ｜ 2025-06-02 14:16:04
 
@@ -66,7 +60,7 @@ The former is more about inward self-demanding, while the latter is about outwar
 
 #culture
 
-## Prompt Design Philosophy
+### Prompt Design Philosophy
 
 > ｜ 2025-06-02 12:56:14
 
@@ -92,7 +86,7 @@ I personally think that the progress of LLM does not compress the space of human
 
 #AI
 
-## The Korean culture I felt was a little different
+### The Korean culture I felt was a little different
 
 > ｜ 2025-06-02 12:42:06
 
@@ -120,7 +114,7 @@ This “fakeness” isn’t a deception, it’s more of an aesthetic choice — 
 
     #culture
 
-## Simple and Complex
+### Simple and Complex
 
 > ｜ 2025-06-02 11:27:09
 
@@ -144,7 +138,7 @@ This is still a philosophy of life, an aesthetic that contains depth in simplici
 
 #Life/Growth
 
-## Realistic feeling during hiking
+### Realistic feeling during hiking
 
 > ｜ 2025-06-02 10:51:22
 
@@ -164,7 +158,7 @@ I especially like the "truth" that people show when hiking: some people fall sil
 
 #on foot
 
-## Refusing to exchange money
+### Refusing to exchange money
 
 > ｜ 2025-06-02 08:28:12
 
@@ -184,7 +178,7 @@ People’s embarrassment often does not come from the indifference of others, bu
 
 #Life
 
-## Do you believe that all good food is the same, or do you believe that everyone has their own taste?
+### Do you believe that all good food is the same, or do you believe that everyone has their own taste?
 
 > ｜ 2025-05-31 23:04:32
 
@@ -200,7 +194,7 @@ At that moment, I was more inclined to believe that the best food is universal. 
 
 #culture
 
-## Writes and Write-Nots: Writers in the AI ​​Era
+### Writes and Write-Nots: Writers in the AI ​​Era
 
 > ｜ 2025-05-31 22:32:03
 
@@ -218,7 +212,7 @@ The key to judging whether a person is a "writer" lies in whether he or she has 
 
 #AI
 
-## Understanding the essence of growth
+### Understanding the essence of growth
 
 > ｜ 2025-05-31 22:19:45
 
@@ -244,7 +238,7 @@ Perhaps, growth ≈ (awareness × action) × time.
 
 #旅居 (This tag seems to be irrelevant to the content. The original text is #旅居. Please let me know if it needs to be adjusted)
 
-## Indian young people
+### Indian young people
 
 > ｜ 2025-05-31 19:42:09
 
@@ -260,7 +254,7 @@ It is estimated that by 2025, the number of young people under the age of 25 in 
 
 #culture
 
-## Why are young people in South Korea so introverted, while young people in Japan are "lying flat"
+### Why are young people in South Korea so introverted, while young people in Japan are "lying flat"
 
 > ｜ 2025-05-31 18:39:11
 
@@ -278,7 +272,7 @@ Behind this, perhaps, is a deep fear of failure, the drive of cultural inertia, 
 
 #culture
 
-## The Curse of Constant Worry
+### The Curse of Constant Worry
 
 > ｜ 2025-05-31 18:32:22
 
@@ -288,7 +282,7 @@ She seemed to believe that by constantly worrying she could somehow avoid the mi
 
 #Life
 
-## History of Olle Road
+### History of Olle Road
 
 > ｜ 2025-05-30 23:32:38
 
@@ -310,7 +304,7 @@ This sentence was like a seed that took root in Seo Myeong-sook's heart. After r
 
 #Travel
 
-## Kindness and freedom during the journey
+### Kindness and freedom during the journey
 
 > ｜ 2025-05-30 21:10:43
 
@@ -332,7 +326,7 @@ You have to be yourself. And what you admire are those who embrace the present a
 
 #Travel
 
-## The neural circuit trap of Hedonian pleasure
+### The neural circuit trap of Hedonian pleasure
 
 > ｜ 2025-05-29 17:17:37
 
@@ -376,7 +370,7 @@ What we should really think about and reflect on is how to make those beautiful 
 
 #field
 
-## Kindness from a chance encounter
+### Kindness from a chance encounter
 
 > ｜ 2025-05-28 20:16:27
 
@@ -396,7 +390,7 @@ This kindness of a chance encounter, like the afterglow of sunset, remains warm 
 
 #Life
 
-## In the era of short videos, what are the essential changes in pleasure?
+### In the era of short videos, what are the essential changes in pleasure?
 
 > ｜ 2025-05-28 15:21:15
 
@@ -416,7 +410,7 @@ I once thought that even in the AI ​​era, individuals do not necessarily nee
 
 #field
 
-## The best AI products are not planned, but grow spontaneously from the bottom up
+### The best AI products are not planned, but grow spontaneously from the bottom up
 
 > ｜ 2025-05-27 19:26:59
 
@@ -434,7 +428,7 @@ Only companies that apply real technology to solve real and valuable problems ca
 
 #AI/product
 
-## Claude's Projects Design Thinking
+### Claude's Projects Design Thinking
 
 > ｜ 2025-05-27 14:16:21
 
@@ -462,7 +456,7 @@ Pursuing better output quality is not just about making the model smarter, but a
 
 #AI/product
 
-## Focus and simplicity of expression
+### Focus and simplicity of expression
 
 > ｜ 2025-05-26 20:51:31
 
@@ -478,7 +472,7 @@ Let the expression focus on the value of the content itself rather than indulgin
 
 #field
 
-## Get along with small animals
+### Get along with small animals
 
 > ｜ 2025-05-26 09:21:11
 
@@ -500,7 +494,7 @@ Just like treating an intimate relationship, learn more about it and understand 
 
 #Life
 
-## Emotional amplification and self-observation after being slightly drunk
+### Emotional amplification and self-observation after being slightly drunk
 
 > ｜ 2025-05-26 09:41:56
 
@@ -550,7 +544,7 @@ I can clearly feel that my emotional regulation and self-observation abilities a
 
 #Emotional changes
 
-## Thoughts on self-media creation
+### Thoughts on self-media creation
 
 > ｜ 2025-05-26 07:02:18
 
@@ -568,7 +562,7 @@ Frankly speaking, I do have limited time to invest in running social media accou
 
 #field
 
-## Self-awareness in a slightly tipsy or intoxicated state
+### Self-awareness in a slightly tipsy or intoxicated state
 
 > ｜ 2025-05-25 23:40:52
 
@@ -602,7 +596,7 @@ If I really love you, I wish I could be with you forever.
 
 #Life
 
-## Some practical suggestions for engineering
+### Some practical suggestions for engineering
 
 > 2025-05-25 8:37:14 PM
 
@@ -622,7 +616,7 @@ Even the review and design requirements themselves are often obtained through in
 
 #field
 
-## Lessons in tool selection
+### Lessons in tool selection
 
 > 2025-05-24 11:51:52 PM
 
@@ -632,7 +626,7 @@ After all, people should not easily use tools that they are not familiar with an
 
 This time I fell into a trap... It's a lesson learned through blood and tears.
 
-## AI and Flow: Current Disruption and Future Expectations
+### AI and Flow: Current Disruption and Future Expectations
 
 > 2025-05-24 3:38:02 PM
 
@@ -662,7 +656,7 @@ Here are some insights:
 
 #field
 
-## Observe the process of researching travel strategies
+### Observe the process of researching travel strategies
 
 > 2025-05-24 1:05:25 PM
 
@@ -682,7 +676,7 @@ I don’t demand that I strictly follow the plan list, but I will have a deep un
 
 #Life
 
-## NotebookLM product design thinking
+### NotebookLM product design thinking
 
 > 2025-05-24 12:34:48 PM
 
@@ -696,7 +690,7 @@ The biggest surprise that NotebookLM gave me was indeed its audio transcription 
 
 #field
 
-## NotebookLM product usage thoughts
+### NotebookLM product usage thoughts
 
 > 2025-05-24 10:44:55 AM
 
@@ -734,7 +728,7 @@ It is hard to imagine that in the past, organizing documents and absorbing infor
 
 #field
 
-## The issue of data sovereignty
+### The issue of data sovereignty
 
 > 2025-05-24 10:26:33 AM
 
@@ -752,7 +746,7 @@ Depending on the user's geographic location and Google's infrastructure layout, 
 
 #field
 
-## The nature of game theory and self-strengthening
+### The nature of game theory and self-strengthening
 
 > 2025-05-23 4:06:30 PM
 
@@ -766,7 +760,7 @@ What is truly valuable is to enhance one's own voice, increase one's own scarcit
 
 Ultimately, the core is to make yourself stronger.
 
-## The era of short text and AI empowerment
+### The era of short text and AI empowerment
 
 > 2025-05-23 2:32:00 PM
 
@@ -794,7 +788,7 @@ Some fragments of words keep emerging as my experience grows, and occasionally c
 
 #field
 
-## The future of LLM and the transformation of engineers
+### The future of LLM and the transformation of engineers
 
 > 2025-05-23 11:56:28 AM
 
@@ -822,7 +816,7 @@ Competitiveness has undergone a profound shift.
 
 #field
 
-## Thinking about pension insurance
+### Thinking about pension insurance
 
 > 2025-05-23 11:32:44 AM
 
@@ -842,7 +836,7 @@ A few observations:
 
 #predict
 
-## The value of Group push
+### The value of Group push
 
 > 2025-05-22 5:23:12 PM
 
@@ -852,7 +846,7 @@ Thoughts on LLM push: This is similar to the recommendation algorithm, and the p
 
 Questions themselves contain value. Therefore, for those questions that are collected by users, they must be content that is particularly worth recommending by the recommendation algorithm.
 
-## Subscribe to information collection on a specific issue
+### Subscribe to information collection on a specific issue
 
 > 2025-05-21 9:30:45 PM
 
@@ -870,7 +864,7 @@ Subscription trigger (timing/event) → Query builder → Multi-source informati
 
 #field
 
-## The beauty of minimalism in products
+### The beauty of minimalism in products
 
 > 2025-05-21 8:34:48 PM
 
@@ -880,7 +874,7 @@ Recently I have become less and less fond of complex colors. I feel that colors 
 
 Starting with black and white as the base color scheme, it is really important to start defining the rules using `cursor rules`.
 
-## Information Processing and Collection
+### Information Processing and Collection
 
 > 2025-05-21 8:04:20 PM
 
@@ -894,7 +888,7 @@ For an efficient information processing tool, the density of its information is 
 
 #Field/Tool Usage Tips
 
-## Travel Preference: Intuitive vs. Feeling
+### Travel Preference: Intuitive vs. Feeling
 
 > 2025-05-20 8:25:15 PM
 
@@ -908,7 +902,7 @@ B. Focus on specific travel arrangements and practical details (e.g., booking ho
 
 If you choose A, you are more of an intuitive type; if you choose B, you are more of a sensing type.
 
-## The Law of Ten Times Better Products
+### The Law of Ten Times Better Products
 
 > 2025-05-20 3:41:48 PM
 
@@ -918,7 +912,7 @@ We’ve all heard the saying: To build something valuable, you have to be 10x be
 
 This rule is so strong that even Google+, with billions of dollars in funding, cannot become a competitor to Facebook, even though Google+ may be better than Facebook in some features.
 
-## Interview with the founder of Lovart who has no product manager
+### Interview with the founder of Lovart who has no product manager
 
 > 2025-05-20 11:51:50 AM
 
@@ -938,7 +932,7 @@ AI has indeed greatly liberated productivity, and it may also make the thinking 
 
 #AI/product
 
-## Scott Scheper's Card Reference Method
+### Scott Scheper's Card Reference Method
 
 > 2025-05-20 9:58:52 AM
 
@@ -960,7 +954,7 @@ In the digital age, we still hope to retain these core features of reference car
 
 #Field/Tool Usage Tips
 
-## FOLO efficient information entry methods
+### FOLO efficient information entry methods
 
 > 2025-05-20 9:40:27 AM
 
@@ -982,7 +976,7 @@ When considering information acquisition tools, in addition to supporting inform
 
 #Field/Tool Usage Tips
 
-## Epiphany of Beauty
+### Epiphany of Beauty
 
 > 2025-05-19 11:20:36 PM
 
@@ -1000,7 +994,7 @@ A large amount of aesthetic input and one's own creative practice is still a pro
 
 #Aesthetics
 
-## Understanding of beauty, essence
+### Understanding of beauty, essence
 
 > | 2025-05-19 11:15 pm
 
@@ -1010,7 +1004,7 @@ Beauty has a universal basis, such as people's natural affinity for melody and s
 
 #Aesthetics
 
-## Reflections on the development of Japanese aesthetics
+### Reflections on the development of Japanese aesthetics
 
 > | 2025-05-19 10:51 PM
 
@@ -1020,7 +1014,7 @@ The roots of Japanese aesthetics are deeply rooted in a closeness to nature, a b
 
 #Aesthetics
 
-## Art is real
+### Art is real
 
 > | 2025-05-19 9:57 pm
 
@@ -1032,7 +1026,7 @@ The roots of Japanese aesthetics are deeply rooted in a closeness to nature, a b
 
 #read
 
-## It’s not the appearance that’s beautiful, it’s the feeling
+### It’s not the appearance that’s beautiful, it’s the feeling
 
 > | 2025-05-18 2:34 PM
 
@@ -1042,7 +1036,7 @@ After visiting many exquisite cafes, Artisan Cafe impressed me not because of it
 
 #Life
 
-## RAG and Long Context Thinking Analysis
+### RAG and Long Context Thinking Analysis
 
 > | 2025-05-18 2:18 PM
 
@@ -1056,7 +1050,7 @@ In the long run, the boundary between Long Context and RAG may gradually blur, a
 
 #field
 
-## Thoughts on the Marketing of Elmo Chat
+### Thoughts on the Marketing of Elmo Chat
 
 > | 2025-05-18 1:50 PM
 
@@ -1066,7 +1060,7 @@ Elmo Chat has a similar concept to DeepWiki - no login is required to use it, wh
 
 #field
 
-## Emotion conversion mechanism
+### Emotion conversion mechanism
 
 > | 2025-05-17 5:56 PM
 
@@ -1082,7 +1076,7 @@ Human nature is so complex and fragile. We are all afraid of being hurt, but we 
 
 #Life
 
-## The rise of Japanese anime
+### The rise of Japanese anime
 
 > | 2025-05-16 9:37 pm
 
@@ -1096,7 +1090,7 @@ Cultural factors are also key. The cultural background of Confucianism, Buddhism
 
 #Life
 
-## Fear of Granular Amplification
+### Fear of Granular Amplification
 
 > | 2025-05-16 9:35 pm
 
@@ -1114,7 +1108,7 @@ Intimacy is full of contradictions. The closer you get, the easier it is for a s
 
 #Life
 
-## The essence behind the relationship is value exchange
+### The essence behind the relationship is value exchange
 
 > | 2025-05-14 7:23 PM
 
@@ -1126,7 +1120,7 @@ Therefore, it may be wiser to maintain clarity and thoroughness in relationships
 
 #Life
 
-## Buffett's last battle
+### Buffett's last battle
 
 > | 2025-05-12 7:46 PM
 
@@ -1158,7 +1152,7 @@ The Japanese market still holds many opportunities. Its investment and philosoph
 
 #predict
 
-## Reality
+### Reality
 
 > | 2025-05-12 11:47 AM
 
@@ -1178,7 +1172,7 @@ The key is to break away from the "histrionic personality", make choices that ar
 
 #Life
 
-## Self-consistent without relying on any identity
+### Self-consistent without relying on any identity
 
 > | 2025-05-12 11:28 AM
 
@@ -1192,7 +1186,7 @@ Ask yourself: Would you rather be seen as the whole you, or just as your label? 
 
 #Life
 
-## After a child dies, he or she will grow up in the hearts of his or her parents
+### After a child dies, he or she will grow up in the hearts of his or her parents
 
 > | 2025-05-11 9:34 PM
 
@@ -1206,7 +1200,7 @@ The year I was born, I thought of a relative of mine...
 
 #Life
 
-## Nothing is real, only things we think are real
+### Nothing is real, only things we think are real
 
 > | 2025-05-11 12:01 p.m.
 
@@ -1220,7 +1214,7 @@ True freedom is not to do whatever you want, but to have the power to not be dri
 
 #Life
 
-## War and Suffering
+### War and Suffering
 
 > | 2025-05-11 11:39 AM
 
@@ -1236,7 +1230,7 @@ And love, perhaps, is to see and practice your own dedication to the deepest nee
 
 #Life
 
-## Hometown memories
+### Hometown memories
 
 > | 2025-05-11 10:50 AM
 
@@ -1252,7 +1246,7 @@ I once heard a saying: If we are destined to be apart, what is the meaning of me
 
 #Life
 
-## Breaking the traditional social concept
+### Breaking the traditional social concept
 
 > | 2025-05-11 10:43 AM
 
@@ -1274,7 +1268,7 @@ The parents’ generation was unable to break free from the shackles of fate. In
 
 #Life
 
-## Intergenerational conflict
+### Intergenerational conflict
 
 > | 2025-05-11 10:33 AM
 
@@ -1298,7 +1292,7 @@ The connotation of happiness is evolving: from "being alive" -> to "being succes
 
 #Life
 
-## Heritage
+### Heritage
 
 > | 2025-05-11 10:13 AM
 
@@ -1328,7 +1322,7 @@ Each generation has its own troubles. People living in a particular era often fi
 
 #Life
 
-## People who have experienced pain can better understand how difficult it is to be happy
+### People who have experienced pain can better understand how difficult it is to be happy
 
 > | 2025-05-10 9:31 PM
 
@@ -1342,7 +1336,7 @@ That's good.
 
 #Life
 
-## Smart hiding
+### Smart hiding
 
 > | 2025-05-10 2:49 PM
 
@@ -1354,7 +1348,7 @@ Users should not be burdened by too much learning cost. If a function requires a
 
 #Field/AI Product
 
-## The future of programming
+### The future of programming
 
 > | 2025-05-09 2:30 PM
 
@@ -1366,7 +1360,7 @@ This means that AI is increasingly becoming a qualified "engineer", and its engi
 
 #predict
 
-## Shift the Scaling Law curve to the left, lower training cost
+### Shift the Scaling Law curve to the left, lower training cost
 
 > | 2025-05-09 2:26 PM
 
@@ -1386,7 +1380,7 @@ Therefore, for computing infrastructure companies, competition remains fierce, a
 
 #predict
 
-## WeChat MCP Thoughts
+### WeChat MCP Thoughts
 
 > | 2025-05-09 11:30 AM
 
@@ -1398,7 +1392,7 @@ Integrating this filtered information into a structured knowledge framework or k
 
 #AI/product
 
-## Thoughts on the evolution of reform and opening up
+### Thoughts on the evolution of reform and opening up
 
 > | 2025-05-08 9:20 pm
 
@@ -1412,7 +1406,7 @@ From the ideological fanaticism and repressive socioeconomic environment of the 
 
 #culture
 
-## Human nature before and after reform and opening up
+### Human nature before and after reform and opening up
 
 > | 2025-05-08 6:55 PM
 
@@ -1434,7 +1428,7 @@ In extreme living environments, the "evil" of human nature is more likely to be 
 
 #Life
 
-## Is Yujing mapping done through the attention mechanism?
+### Is Yujing mapping done through the attention mechanism?
 
 > | 2025-05-08 4:42 PM
 
@@ -1448,7 +1442,7 @@ This makes us wonder, at the application level, can we achieve high-quality summ
 
 #AI/open-source
 
-## In-depth analysis of Yujing
+### In-depth analysis of Yujing
 
 > | 2025-05-08 3:38 PM
 
@@ -1464,7 +1458,7 @@ For example, many pre-trained models in the Hugging Face Transformers library (s
 
 #AI/open-source
 
-## Product Design
+### Product Design
 
 > | 2025-05-07 3:32 PM
 
@@ -1510,7 +1504,7 @@ Value Proposition
 
 #field
 
-## The power of tracing back
+### The power of tracing back
 
 > | 2025-05-07 10:45 AM
 
@@ -1520,7 +1514,7 @@ When exploring the source of other people's opinions, you will often find that t
 
 #Life
 
-## Technology serves product experience
+### Technology serves product experience
 
 > | 2025-05-07 10:44 AM
 
@@ -1538,7 +1532,7 @@ The Bad Approach: Develop a cool technology (e.g. an AI API) and then expect oth
 
 #AI/product
 
-## Value mining of public account articles
+### Value mining of public account articles
 
 > | 2025-05-07 10:37 AM
 
@@ -1548,7 +1542,7 @@ The ultimate pursuit of user experience is crucial. For example, how to allow us
 
 #Field/project
 
-## Simplifying design in the AI ​​era
+### Simplifying design in the AI ​​era
 
 > | 2025-05-06 11:51 AM
 
@@ -1584,7 +1578,7 @@ In this way, a streamlined and efficient project initiation and management proce
 
 #Field/Software Engineering
 
-## Respond to each sentence and think again
+### Respond to each sentence and think again
 
 > | 2025-05-06 11:07 AM
 
@@ -1608,7 +1602,7 @@ What is the crux of this? Is it a misunderstanding in communication or a misalig
 
 #Emotional changes
 
-## Trust your instincts
+### Trust your instincts
 
 > | 2025-05-04 10:26 AM
 
@@ -1628,9 +1622,9 @@ If you want to see scenery you have never seen, you must first bravely venture i
 
 #Life
 
-```
 
-## Achieve your goals in inspiration or desperation
+
+### Achieve your goals in inspiration or desperation
 
 > | 2025-05-04 10:08:47
 
@@ -1652,7 +1646,7 @@ What do you really want?
 
 If I had endless money, had been to every corner of the world, had nothing to worry about, and no one would criticize me for what I did, then what would I want to do and what new things would I want to create?
 
-## Some new thoughts on flow
+### Some new thoughts on flow
 
 > | 2025-05-03 19:07:50
 
@@ -1682,7 +1676,7 @@ Usually early morning is the golden time when it is easier to enter a true "high
 
 This may explain why artists sometimes need a specific environment, music or even a little alcohol to stimulate their artistic cells.
 
-## The Nature of Experience
+### The Nature of Experience
 
 > | 2025-05-03 18:39:11
 
@@ -1698,7 +1692,7 @@ There is another kind of fear, which is the fear of facing oneself. Afraid of ad
 
 Don’t always shrink back. Dare to try and dare to feel. Only then will life be interesting.
 
-## Thoughts and ideas
+### Thoughts and ideas
 
 > | 2025-05-03 18:20:11
 
@@ -1726,7 +1720,7 @@ Growth is inseparable from thinking. You have to rely on it to go beyond those i
 
 Therefore, "stop thinking" and "active thinking" are themselves a kind of balance.
 
-## Thoughts on brain evolution
+### Thoughts on brain evolution
 
 > | 2025-05-03 17:56:10
 
@@ -1736,7 +1730,7 @@ The brain's job is to maintain survival, and the mind's job is to create a sense
 
 If you want to achieve freedom, happiness, peace and abundant love, you cannot just follow the instructions of your brain and be content with physical health; you must break this limitation and pursue higher spiritual health.
 
-## He who knows others is wise; he who knows himself is enlightened
+### He who knows others is wise; he who knows himself is enlightened
 
 > | 2025-05-03 17:51:34
 
@@ -1750,7 +1744,7 @@ Many people have not thought about understanding the existence of emotions as me
 
 When you are angry, think about the reasons for your anger and the nature of your anger, and write it down objectively, which often helps with understanding and relief.
 
-## He who knows others is wise; he who knows himself is enlightened
+### He who knows others is wise; he who knows himself is enlightened
 
 > | 2025-05-03 17:45:22
 
@@ -1764,7 +1758,7 @@ Many people have not thought about understanding the existence of emotions as me
 
 When you are angry, think about the reasons for your anger and the nature of your anger, and write it down objectively, which often helps with understanding and relief.
 
-## I would rather endure suffering than leave the comfort zone that makes me miserable
+### I would rather endure suffering than leave the comfort zone that makes me miserable
 
 > | 2025-05-03 17:35:33
 
@@ -1774,7 +1768,7 @@ There is an inherent "familiarity preference" in human nature, even if those pre
 
 Known pain seems easier to anticipate and deal with.
 
-## Independent development in the AI ​​era, front-end is the main battlefield
+### Independent development in the AI ​​era, front-end is the main battlefield
 
 > | 2025-05-01 11:22:06
 
@@ -1788,7 +1782,7 @@ Databases, permissions, storage, and model calls are all moving towards platform
 
 AI decouples the "intelligence" part from the backend, and the frontend is the battlefield that is closest to users, has the greatest changes, and has the most concentrated value.
 
-## User stories drive development
+### User stories drive development
 
 > | 2025-04-30 10:42:40
 
@@ -1804,7 +1798,7 @@ Use Kanban boards to record task progress.
 
 Summarize, count, and reflect after each iteration, as well as review the tasks within a cycle.
 
-## Thoughts on using DeepWiki
+### Thoughts on using DeepWiki
 
 > | 2025-04-30 10:30:26
 
@@ -1816,7 +1810,7 @@ In fact, this operation is very familiar to developers. This is also a bit of in
 
 Another point is that there are still many applicable scenarios for `Deep Research`, and it is generally important to enter a popular and vertical scenario.
 
-## Stop thinking
+### Stop thinking
 
 > | 2025-04-29 22:29:17
 
@@ -1826,7 +1820,7 @@ This is what is called "metacognition", observing our thinking from a God's pers
 
 That is to say, for some problems, if you realize that thinking will be painful, and realize that stopping thinking can let time solve the problem, then you don’t have to worry about it. Stop thinking and let the answer come naturally.
 
-## The ultimate rationality is the new thinking of sensibility
+### The ultimate rationality is the new thinking of sensibility
 
 > | 2025-04-28 20:20:04
 
@@ -1838,7 +1832,7 @@ In this process, I found that "having myself" is very important. Thinking is not
 
 Therefore, the cycle of `sensibility -> rationality -> sensibility` is actually a natural process. Rationality is a tool, and sensibility is the starting point and the end point. Any rational weighing of pros and cons cannot be separated from facing one's own emotional needs sincerely. Just like what my friends discussed recently, no matter how we use rationality to analyze, we must eventually return to sensibility itself, to feel and experience. This thinking made me feel suddenly enlightened. When I discussed it on the mountain before, I only grasped the conclusion, but now I understand the logic behind it: sensibility and rationality are not opposites, but interdependent and mutually transformed. Extreme rationality will touch the deep level of sensibility, and extreme sensibility also contains rational logic. The essence of thinking is to continuously deepen the understanding of the world and oneself in this cycle. This makes me feel that those seemingly contradictory things in life are actually connected. As long as you feel and think with your heart, you can find your own answer.
 
-## Why China's e-commerce opportunities are huge
+### Why China's e-commerce opportunities are huge
 
 > | 2025-04-28 12:15:13
 
@@ -1862,7 +1856,7 @@ China is one of the countries with the greatest potential for e-commerce.
 
 The development of e-commerce in the United States is partly due to its vast logistics radius. As a supplement to improving coverage, e-commerce has digitized small towns and suburban markets that were originally difficult to cover.
 
-## Human Courage
+### Human Courage
 
 > | 2025-04-27 18:50:11
 
@@ -1888,7 +1882,7 @@ In fact, it is also a balance between the courage systems of Eastern and Western
 
 It is easy to talk about virtue, but it is hard to have the courage to act. `Actions speak louder than words.'
 
-## Human curiosity drives us forward to explore
+### Human curiosity drives us forward to explore
 
 > | 2025-04-27 18:30:30
 
@@ -1912,7 +1906,7 @@ Our biological instinct tells us that we should be afraid and that we should sur
 
 And courage may be the reward that the world gives to human beings.
 
-## The concept of software engineering starting from the end and TDD
+### The concept of software engineering starting from the end and TDD
 
 > | 2025-04-27 17:34:52
 
@@ -1934,7 +1928,7 @@ Some examples:
 
 3. **Amazon’s “backward working method”:** When developing new products, first write a press release and FAQ, clarify user value, and then develop.
 
-## Some difficult and easy discussions, metacognition
+### Some difficult and easy discussions, metacognition
 
 > | 2025-04-27 15:55:30
 
@@ -1956,7 +1950,7 @@ I just saw the cat and thought of this topic. I deliberately asked my partner ab
 
 What is the bottom of human nature? Fear, pride, laziness, and the desire for truth. Each of these can be a shining light or a weapon to destroy people.
 
-## Listened to Chen Leiyi's singing
+### Listened to Chen Leiyi's singing
 
 > | 2025-04-27 11:33:16
 
@@ -1984,13 +1978,13 @@ These tend to be:
 
 ps. We even got in a group photo in the end.
 
-## Rationality is a tool
+### Rationality is a tool
 
 > | 2025-04-27 11:12:46
 
 Rationality is, to put it bluntly, a tool. It is used to achieve a purpose, such as making money or solving problems, so it is often utilitarian. But it has a characteristic: dry language and logic sometimes make it difficult to fully grasp people's emotions and intuition. If you like someone, rationality can only say "because he has a good personality", but how can it fully explain the inexplicable heartbeat? Language itself is also a tool, after all, it is limited. There may not be so many reasons for true love, and sensibility is the protagonist. Sensibility and subconsciousness are sometimes closer to certain levels of reality than rationality, such as artistic creation and interpersonal relationships, which often rely on it to support the scene. As for rationality, it is good to review it afterwards, but don't expect it to take care of everything. Friends remind us to "handle the boundaries well", that is, don't be stubborn - don't analyze coldly when you should be emotional, and don't blindly bump into it when you should calculate. Simply put, rationality is a knife, and sensibility is the fire in the heart. Smart people know when to use which one. Think more about this balance in life, don't let the tools ride on your head, and don't let impulse ruin big things.
 
-## Continue reading Some thoughts on WeChat product concept
+### Continue reading Some thoughts on WeChat product concept
 
 > | 2025-04-27 11:11:45
 
@@ -2014,7 +2008,7 @@ Rationality is, to put it bluntly, a tool. It is used to achieve a purpose, such
 
 10. Treat your product as a work of art, not just a product.
 
-## Tolerance, understanding and forgiveness
+### Tolerance, understanding and forgiveness
 
 > | 2025-04-26 16:12:52
 
@@ -2044,7 +2038,7 @@ Being aware of one's own behavior, there is also passive metacognition and activ
 
 From passive to active, this is a turning point. When a person can actively open up the third perspective and begin to continuously reflect on his own thoughts and behaviors, it means that he has truly begun to awaken and has the possibility of rapid growth.
 
-## Sensibility is paramount
+### Sensibility is paramount
 
 > | 2025-04-26 15:38:06
 
@@ -2088,7 +2082,7 @@ How to capture other people's sensibility? Sensibility is the best way to unders
 
 6. Intuition.
 
-## The power of the subconscious mind
+### The power of the subconscious mind
 
 > | 2025-04-26 14:42:36
 
@@ -2116,7 +2110,7 @@ It is easier to suffer than to solve problems, and it is simpler to endure misfo
 
 So perhaps it can be said that cognitive fuzziness comes from within, while emotional fluctuations often come from external stimuli.
 
-## Impatience
+### Impatience
 
 > | 2025-04-26 13:12:32
 
@@ -2140,7 +2134,7 @@ When reading, you don't need to remember all the knowledge in the book. It is en
 
 But why do some people focus so much on a thing? On the one hand, it may be because they have been trained or are good at exploring the underlying principles. But a more advanced method may be to use the instinctive brain and emotional brain to solve the problem, to feel the difficult things and find fun in them, or even become addicted. This is really amazing. Extremely rational people should be people who understand themselves extremely well.
 
-## The Nature of Anxiety
+### The Nature of Anxiety
 
 > | 2025-04-26 11:50:52
 
@@ -2158,7 +2152,7 @@ For example, modern people have experienced bonuses or sudden wealth. Once they 
 
 But eventually we have to return to reality and face the rules: if we want to achieve something, we must remain patient and delay gratification.
 
-## Analysis of non-marriage & older single men and women
+### Analysis of non-marriage & older single men and women
 
 > | 2025-04-26 09:52:50
 
@@ -2178,7 +2172,7 @@ Its essence may be the desire to continue power inequality, cognitive laziness l
 
 I feel that discrimination is an invisible deprivation that happens regardless of what the other person has done, just because of who they are.
 
-## Respond to every sentence
+### Respond to every sentence
 
 > | 2025-04-25 21:57:04
 
@@ -2190,7 +2184,7 @@ Chinese people are particularly concerned about responses, which may be related 
 
 The art of communication lies in the delicate balance between sincerity and propriety. Responding to every word seems professional and polite in formal occasions, but it may make people feel deliberate and alienated in intimate relationships. I think the real communication is not the literal coming and going, but the resonance of heart and heart. Saying the right words at the right time, without having to reply to every word, can make people feel warm and natural. Appreciating a person is not about how diligent he is in replying, but whether he can switch flexibly in different scenes, which is both sincere and comfortable. Living in the present, listening and speaking with your heart, is the warmth and meaning of the conversation.
 
-## Some thoughts on open source commercialization
+### Some thoughts on open source commercialization
 
 > | 2025-04-25 12:25:59
 
@@ -2208,13 +2202,13 @@ In fact, the product can take many forms:
 
 In fact, it is aimed at a group of professional users. Although these users are not enterprises, they have a certain budget, rigid demand scenarios and strong skill background. They can understand and are willing to pay for high-quality tools or participate in contributions.
 
-## Self-explanatory animals
+### Self-explanatory animals
 
 > | 2025-04-25 00:44:57
 
 Humans seem to be animals that can explain themselves. Most of what we think of as thinking is actually rational explanations for some of our own behaviors.
 
-## Where exactly is curiosity?
+### Where exactly is curiosity?
 
 > | 2025-04-24 23:32:41
 
@@ -2226,7 +2220,7 @@ But often the simplest truths are ignored by many people.
 
 The core is whether a person can face his true self.
 
-## Why do we think more during our journey?
+### Why do we think more during our journey?
 
 > | 2025-04-24 23:16:14
 
@@ -2234,7 +2228,7 @@ Everyone is doing similar things because everyone may face the same problems. So
 
 Why follow the same path as others? Maybe it's not worth it.
 
-## Deep Research Saving important information is also a very important function
+### Deep Research Saving important information is also a very important function
 
 > | 2025-04-24 16:49:40
 
@@ -2246,7 +2240,7 @@ In addition, the note module also provides an MCP entrance, where users can quic
 
 For the caller, how to flexibly integrate the `MCP` module is also very important. It seems that most businesses will build their own `MCP` gateway.
 
-## Recommended Best Practices
+### Recommended Best Practices
 
 > | 2025-04-23 11:36:40
 
@@ -2260,7 +2254,7 @@ Capturing users' short-term interests and intention changes, the Sequential Reco
 
 What may be more important later is that AI plays the role of "explainer" (explaining the reasons for the recommendation), "conversation partner" (discussing needs with users), "demand miner" (helping users clarify vague intentions) and even "content creator" (generating narratives or summaries related to the recommendation).
 
-## I love reading from the bottom of my heart
+### I love reading from the bottom of my heart
 
 > | 2025-04-22 21:55:58
 
@@ -2268,7 +2262,7 @@ Reading is a process of self-discovery. It is more about talking to one's heart 
 
 However, this society sometimes does not allow us to enjoy reading purely.
 
-## Rendering ideas
+### Rendering ideas
 
 > | 2025-04-22 21:55:45
 
@@ -2290,7 +2284,7 @@ Give AI imagination within a certain space and let it play freely!
 
 Another point that may be important is that it is also important to present the data elegantly like `https://quizlet.com/`.
 
-## Sharing & Emotions & Expression
+### Sharing & Emotions & Expression
 
 > | 2025-04-21 22:32:01
 
@@ -2316,7 +2310,7 @@ Sense of ritual + weekly summary -> circle of friends, showing off yourself, sim
 
 This is my favorite quote today, what about you?
 
-## Analysis of the applicability of GraphQL and REST in AI product development
+### Analysis of the applicability of GraphQL and REST in AI product development
 
 > | 2025-04-21 21:30:06
 
@@ -2336,13 +2330,13 @@ The schema of `GraphQL` is very flexible. Adding a new field does not affect old
 
 **Client choice:** `Altair` (excellent GraphQL client)
 
-## Necessity of enabling browser notifications
+### Necessity of enabling browser notifications
 
 > | 2025-04-21 18:05:34
 
 Many web pages, LLM systems, take a long time to process. For long processing times, users don't know when the corresponding tab will complete the task, so it is particularly meaningful to enable the completion reminder function at this time.
 
-## Gender differences in behavior patterns
+### Gender differences in behavior patterns
 
 > | 2025-04-21 12:03:24
 
@@ -2360,13 +2354,13 @@ It feels like society has a net that circles us and constrains everyone. Society
 
 But is this kind of competition really innate? Or is it more of a product of social expectations? It seems that combined with Western culture, it may not be innate.
 
-## What is missing on xhs is the emotional value
+### What is missing on xhs is the emotional value
 
 > | 2025-04-21 11:30:35
 
 Maybe there is a point where AI can help me quickly generate valuable paragraphs or fragments, and Xiaohongshu (xhs) can quickly publish these paragraphs or fragments. Some emotional value, emotional stories or fragments may be scarce on xhs.
 
-## CrewAI vs. LangGraph
+### CrewAI vs. LangGraph
 
 > | 2025-04-20 15:34:11
 
@@ -2378,7 +2372,7 @@ In terms of choice, for lightweight and prototype development, `crewAI` may be a
 
 Reference: `https://github.com/crewAIInc/crewAI`
 
-## Team & Personal Knowledge Assistant: Anything-LLM
+### Team & Personal Knowledge Assistant: Anything-LLM
 
 > | 2025-04-20 15:14:18
 
@@ -2392,7 +2386,7 @@ Reference: `https://github.com/crewAIInc/crewAI`
 
 * Supports multiple large model backends: supports OpenAI, Ollama (local LLM), Groq, etc., and can be switched freely.
 
-## LLM inference model, and subsequent predictions
+### LLM inference model, and subsequent predictions
 
 > | 2025-04-20 14:51:02
 
@@ -2402,7 +2396,7 @@ Users can participate in the AI's thinking process and guide or correct the dire
 
 And it seems that the "multimodal" reasoning ability is the trend later.
 
-## Structured output can significantly reduce hallucinations in the model
+### Structured output can significantly reduce hallucinations in the model
 
 > | 2025-04-20 14:44:16
 
@@ -2412,11 +2406,9 @@ When you ask a model to output a specific format (such as JSON, XML, CSV, or a c
 
 And the essence of structured output is to guide the model's thinking process. When certain techniques (such as the thought chain prompt `Chain-of-Thought`) are used in conjunction with structured output, the model can be required to list its reasoning steps or extracted key information in a specific field before giving the final answer. This makes the model's "thinking" process more transparent and helps identify potential logical jumps or factual errors.
 
-```
 
-```
 
-## UI Testing of Current Mature Agent Methods
+### UI Testing of Current Mature Agent Methods
 
 > 2025-04-20 14:18:51
 
@@ -2424,7 +2416,7 @@ A multimodal LLM fine-tuned for UI snapshots, allowing test scripts to be writte
 
 The other type, such as `Browser Use`, combines the multimodal basic model with the `Playwright` testing framework, and relies on a deep understanding of the structure of the web page for testing. This method does not rely on a specific fine-tuning model.
 
-## Design Patterns for AI
+### Design Patterns for AI
 
 > 2025-04-20 14:12:50
 
@@ -2436,7 +2428,7 @@ With the evolution of AI, more design patterns for AI may emerge in the future.
 
 #Field/Software Engineering
 
-## Reasoning Model & Prompt Thinking Practice in the Context of Reinforcement Learning
+### Reasoning Model & Prompt Thinking Practice in the Context of Reinforcement Learning
 
 > 2025-04-20 12:47:25
 
@@ -2466,7 +2458,7 @@ Design a series of coherent prompts, each of which handles a part of the overall
 
 #Field/Software Engineering
 
-## Decentralized, conversation-based architecture practice
+### Decentralized, conversation-based architecture practice
 
 > 2025-04-20 11:34:05
 
@@ -2486,7 +2478,7 @@ Four key elements: Architectural Decision Records (ADR), Architecture Advisory F
 
 #Field/Software Engineering
 
-## API is no longer a technology, but a product
+### API is no longer a technology, but a product
 
 > 2025-04-20 11:26:00
 
@@ -2506,7 +2498,7 @@ These should be delivered and managed as part of the API product, just like API 
 
 #Field/Software Engineering
 
-## Sages & Philosophers
+### Sages & Philosophers
 
 > 2025-04-19 12:39:19
 
@@ -2516,7 +2508,7 @@ Sophists teach people the truth and charge tuition fees. Such people are common 
 
 Philosophers, on the other hand, are well aware of the limitations of their own knowledge, which is why they are constantly seeking insights. "The only thing I know is that I know nothing."
 
-## Do people have a sense of shame from birth?
+### Do people have a sense of shame from birth?
 
 > 2025-04-19 09:51:53
 
@@ -2532,7 +2524,7 @@ Many times, shame should not be an excuse to escape. Feeling ashamed for saying 
 
 #Life/Growth
 
-## Thoughts on AI-generated code
+### Thoughts on AI-generated code
 
 > 2025-04-18 16:46:25
 
@@ -2558,7 +2550,7 @@ What are your concerns?
 
 `Yao` seemed to have worked on this, but the results were clearly not satisfactory.
 
-## When should you use i18n
+### When should you use i18n
 
 > 2025-04-18 12:31:45
 
@@ -2570,7 +2562,7 @@ At this stage, the core is "minimum" and "feasible".
 
 However, if the verification is passed, it is necessary to consider `i18n`. The cost of fixing an `i18n Bug` after release may be more than 14 times the cost of fixing it during the coding stage. If the system needs to support multiple languages, it must be cautious.
 
-## Stripe's fees are really high! But it's really a must-have for overseas expansion
+### Stripe's fees are really high! But it's really a must-have for overseas expansion
 
 > 2025-04-17 16:32:23
 
@@ -2584,7 +2576,7 @@ And there is no need to register the company in the United States.
 
 #AI/product
 
-## Thinking about time
+### Thinking about time
 
 > 2025-04-17 13:44:40
 
@@ -2620,7 +2612,7 @@ Take on a creative project.
 
 It’s okay to say “no”, to be silent and to find your own focus.
 
-## Is PostHog suitable for startups or MVP stages?
+### Is PostHog suitable for startups or MVP stages?
 
 > 2025-04-17 11:11:40
 
@@ -2646,7 +2638,7 @@ The core functions provided by `PostHog` are:
 
 #AI/product
 
-## Key Value Capabilities for Large Models
+### Key Value Capabilities for Large Models
 
 > 2025-04-16 16:16:47
 
@@ -2684,7 +2676,7 @@ Its essence lies in the flexible storage of `K` (Key) and `V` (Value) states whe
 
 #AI
 
-## The service layer does not need Kong to call the AI ​​platform
+### The service layer does not need Kong to call the AI ​​platform
 
 > 2025-04-16 12:48:50
 
@@ -2702,7 +2694,7 @@ If internal services need to be used both internally and externally, consider ex
 
 #Field/Software Engineering
 
-## Browser Use Less than 10,000 lines of code raised $1,700, why!!
+### Browser Use Less than 10,000 lines of code raised $1,700, why!!
 
 > 2025-04-15 12:57:34
 
@@ -2722,7 +2714,7 @@ Reference link: https://github.com/browser-use/browser-use
 
 #AI/product
 
-## Cursor How to quickly learn a project
+### Cursor How to quickly learn a project
 
 > 2025-04-15 12:22:20
 
@@ -2738,7 +2730,7 @@ Reference link: https://github.com/browser-use/browser-use
 
 #AI/open-source
 
-## Testing Tips
+### Testing Tips
 
 > 2025-04-15 11:01:48
 
@@ -2758,7 +2750,7 @@ In fact, UI testing has its own routines, and often distinguishes page processin
 
 #Field/Software Engineering
 
-## CLI calls the service or API
+### CLI calls the service or API
 
 > 2025-04-15 10:57:25
 
@@ -2778,7 +2770,7 @@ The API design of `Kubernetes` can be used as a reference. The core of it is to 
 
 #Field/Software Engineering
 
-## A series of reactions to network problems
+### A series of reactions to network problems
 
 > 2025-04-15 09:56:39
 
@@ -2814,7 +2806,7 @@ From this we can see that procrastination varies from person to person, and it i
 
 In most cases, procrastination does not solve the problem, but instead causes more stress and anxiety, which is really a last resort.
 
-## The concept of making progress day by day
+### The concept of making progress day by day
 
 > 2025-04-14 20:01:27
 
@@ -2822,7 +2814,7 @@ In most cases, procrastination does not solve the problem, but instead causes mo
 
 * "One step forward every day" means that you must do the things that you must do every day. Even if you delay for one or two days, you must try your best to practice them every day. It only requires you to move forward a small step every day. The daily requirement is not high, and it only requires you to do this one step forward. The key is persistence.
 
-## Key management in the project
+### Key management in the project
 
 > 2025-04-14 17:20:39
 
@@ -2832,7 +2824,7 @@ Compared to tools like `HashiCorp Vault` that are more suitable for production-l
 
 参考: [HashiCorp Vault GitHub](https://github.com/hashicorp/vault)
 
-## Smart proxy solution
+### Smart proxy solution
 
 > 2025-04-14 14:52:16
 
@@ -2850,7 +2842,7 @@ But, what will the agent do?
 
 The advantage of LangGraph over Agent is that it can manipulate each node like a graph.
 
-## Vercel AI SDK Development Tool
+### Vercel AI SDK Development Tool
 
 > 2025-04-14 09:58:25
 
@@ -2874,7 +2866,7 @@ A clever way is to use the hooks of the Vercel AI SDK to centrally manage and di
 
 #AI
 
-## Chinese and Western Culture
+### Chinese and Western Culture
 
 > 2025-04-13 20:52:22
 
@@ -2894,7 +2886,7 @@ The tendency of Western culture is to fill in details and pursue the ultimate "e
 
 #Aesthetics
 
-## Creating something out of nothing
+### Creating something out of nothing
 
 > 2025-04-13 19:32:23
 
@@ -2916,7 +2908,7 @@ This can also be called "living in the present moment". There is no need to worr
 
 #Life/Growth
 
-## Deep Research Value Chain Distribution
+### Deep Research Value Chain Distribution
 
 > 2025-04-13 15:22:29
 
@@ -2934,7 +2926,7 @@ In addition, with the development of open source libraries, more and more open s
 
 #AI
 
-## Subconscious proof that I am important
+### Subconscious proof that I am important
 
 > 2025-04-13 14:41:25
 
@@ -2956,7 +2948,7 @@ It is important to understand the motivation behind the other party's words and 
 
 #Life/Growth
 
-## Meaningful investments are those forces that are not optimistic about themselves
+### Meaningful investments are those forces that are not optimistic about themselves
 
 > 2025-04-12 20:29:46
 
@@ -2964,7 +2956,7 @@ Many people already have many platforms and resources, and even without your hel
 
 The real socially valuable investment lies in seeing those who were not optimistic about the future and firmly supporting their growth in their early stages. The starting point of these people may not be important, but their growth potential outside the **structure** and their **growth slope** are important.
 
-## The future of modern product documentation
+### The future of modern product documentation
 
 > 2025-04-12 19:03:03
 
@@ -2980,7 +2972,7 @@ The documents themselves should have the ability to access AI and knowledge base
 
 #AI/product
 
-## Product Recording Method
+### Product Recording Method
 
 > 2025-04-12 17:51:52
 
@@ -2994,7 +2986,7 @@ It is also easier to accumulate the first batch of users through Xiaohongshu.
 
 We can even think about what form of card content is more suitable for the structure of platforms like Xiaohongshu. Perhaps the carrier form of Xiaohongshu will undergo a complete change in the future.
 
-## The most important ability for engineers in the AI ​​era
+### The most important ability for engineers in the AI ​​era
 
 > 2025-04-12 11:39:26
 
@@ -3008,7 +3000,7 @@ After deep reflection, I think that project-driven learning is the most effectiv
 
 #field
 
-## "Black Mirror" Season 7 Episode 3 "Daydream Hotel"
+### "Black Mirror" Season 7 Episode 3 "Daydream Hotel"
 
 > 2025-04-12 11:19:52
 
@@ -3026,7 +3018,7 @@ And, it will always be there!
 
 #Movie
 
-## "Black Mirror" Season 7 Episode 2 "Black Beast"
+### "Black Mirror" Season 7 Episode 2 "Black Beast"
 
 > 2025-04-12 11:06:25
 
@@ -3040,7 +3032,7 @@ This world seems to have always been a world where power is king, and it has nev
 
 #Movie
 
-## Black Mirror Season 7 Episode 1 “Normal People”
+### Black Mirror Season 7 Episode 1 “Normal People”
 
 > 2025-04-11 20:19:39
 
@@ -3064,7 +3056,7 @@ The ending is tragic, tragedy triggers thinking, and reality, sometimes, has to 
 
 #Movie
 
-## WeChat Product View
+### WeChat Product View
 
 > 2025-04-11 15:10:36
 
@@ -3094,7 +3086,7 @@ The ending is tragic, tragedy triggers thinking, and reality, sometimes, has to 
 
 Reference link: [Lu Qi's speech transcript: WeChat product observation](https://miracleplus.feishu.cn/file/JkvwbJK4XoC7yAxJXUrc2YA2nAb)
 
-## Thinking about fragmented information
+### Thinking about fragmented information
 
 > 2025-04-11 11:45:21
 
@@ -3112,9 +3104,9 @@ AI is good at connecting scattered points into lines and then weaving them into 
 
 From disordered fragments to an ordered whole, from superficial fragments to deep insights.
 
-```
 
-## Use Notion
+
+### Use Notion
 
 > ｜ 2025-04-11 11:32 AM
 
@@ -3122,7 +3114,7 @@ From disordered fragments to an ordered whole, from superficial fragments to dee
 
 Notion, I mainly use it to record notes that require long-term maintenance and management, or to plan schedules and project management.
 
-## Tools for performance analysis of web pages
+### Tools for performance analysis of web pages
 
 > ｜ 2025-04-11 10:30 AM
 
@@ -3160,7 +3152,7 @@ I feel that this is quite suitable for prototype development. Compared with Curs
 
 #AI/product
 
-## Model Intelligent Scheduling
+### Model Intelligent Scheduling
 
 > ｜ 2025-04-10 11:40 PM
 
@@ -3170,7 +3162,7 @@ By averaging or fusing the weights of multiple models, a single model with bette
 
 For example, `TinyLlama` is an LLM model with only 1.1B parameters.
 
-## Claude Code Overview Differences compared to Cursor
+### Claude Code Overview Differences compared to Cursor
 
 > ｜ 2025-04-10 11:24 PM
 
@@ -3184,7 +3176,7 @@ Refer: https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview#
 
 #AI/product
 
-## Reinforcement Learning & Application Layer Thinking
+### Reinforcement Learning & Application Layer Thinking
 
 > ｜ 2025-04-10 10:49 PM
 
@@ -3200,7 +3192,7 @@ Some scenarios still require some good method collection. For example, to predic
 
 For specific vertical scenarios, fine-tuning of large models may be a better direction, but the premise is that it is very vertical. For example, in the PDF to Markdown scenario, fine-tuning of large models has a very good effect on the one hand.
 
-## Model functions ensure compliance with the first citizen positioning
+### Model functions ensure compliance with the first citizen positioning
 
 > ｜ 2025-04-10 9:37 PM
 
@@ -3210,7 +3202,7 @@ Many models have some special features, such as multimodal capabilities, tool ca
 
 Some scenarios are beyond the reach of LLM vendors, such as short-term and long-term business memory. These cannot be completely done by relying on the context of the model, but require the business layer to pass on short-term or long-term memory to achieve them.
 
-## Information conversion
+### Information conversion
 
 > ｜ 2025-04-10 7:55 pm
 
@@ -3226,7 +3218,7 @@ We are not producers of data, we are "organizers" or "interpreters" of data.
 
 Data can only be transformed into information through business support. Data is objective, while information is subjective. The purpose of creating information is to reach a consensus.
 
-## Agno Multimodal Agent Framework
+### Agno Multimodal Agent Framework
 
 > ｜ 2025-04-10 6:11 PM
 
@@ -3236,7 +3228,7 @@ The core value of Agno is to provide a framework that can build fast and efficie
 
 #AI/product #AI/open-source
 
-## Possession and loss
+### Possession and loss
 
 > ｜ 2025-04-10 12:06 noon
 
@@ -3260,7 +3252,7 @@ Everyone's reaction is like a mirror, reflecting their own experience and growth
 
 #Life/Growth
 
-## Information Workflow
+### Information Workflow
 
 > ｜ 2025-04-10 11:48 AM
 
@@ -3314,7 +3306,7 @@ In fact, each has its own characteristics:
 
 #Field/Tool Usage Tips
 
-## Complete the task with extreme ease and perfection
+### Complete the task with extreme ease and perfection
 
 > ｜ 2025-04-09 11:07 PM
 
@@ -3332,7 +3324,7 @@ https://gamma.app/
 
 #AI/product
 
-## Emotional Value AI
+### Emotional Value AI
 
 > ｜ 2025-04-09 8:18 PM
 
@@ -3354,7 +3346,7 @@ Refer： https://www.duxiangai.com/
 
 #AI/product
 
-## Front-end cross-platform selection
+### Front-end cross-platform selection
 
 > ｜ 2025-04-09 2:34 PM
 
@@ -3392,7 +3384,7 @@ Zustand is actually quite suitable for most projects.
 
 Code structure is very important. For React, it is recommended to separate UI components, business logic (Hooks), state management, API requests, and utility functions. Write business logic as pure JavaScript/TypeScript functions or Hooks that are platform-independent as much as possible.
 
-## Is social hostility getting worse?
+### Is social hostility getting worse?
 
 > ｜ 2025-04-09 12:41 p.m.
 
@@ -3412,7 +3404,7 @@ Good and evil are not innate, but are more often sculpted and influenced by the 
 
 Society seems to have not changed fundamentally, it is just that we are influenced by the environment we grow up in. The world will not automatically become more peaceful, the form of conflict may have changed, but the nature of the struggle seems to have not changed.
 
-## Thinking about consistency
+### Thinking about consistency
 
 > ｜ 2025-04-09 11:40 AM
 
@@ -3428,7 +3420,7 @@ In daily life, consistency usually refers to the coherence of behavior, thought 
 
 True consistency may not be about requiring the external world to completely meet my expectations, but about reaching a certain reconciliation between my inner self and external reality.
 
-## Your own limitations & the limitations of others
+### Your own limitations & the limitations of others
 
 > ｜ 2025-04-09 11:28 AM
 
@@ -3436,7 +3428,7 @@ True consistency may not be about requiring the external world to completely mee
 
 There are two aspects worth thinking about: one is that your own perspective is limited, and the other is that the other person's perspective is also limited. Furthermore, the perspective that you can see may not be seen by the other person. So many times, you have to learn to reconcile with this "limitation". Respecting the rules and respecting the other person is also respecting yourself to a certain extent.
 
-## Cycling Accident Thoughts
+### Cycling Accident Thoughts
 
 > ｜ 2025-04-08 4:15 PM
 
@@ -3464,7 +3456,7 @@ Reason and preparation are sometimes more important than emotions. They teach yo
 
 The essence of growth seems to be to find one's own rhythm and temperature in the midst of impermanence.
 
-## Su Shi found his life direction
+### Su Shi found his life direction
 
 > ｜ 2025-04-08 10:05 AM
 
@@ -3486,7 +3478,7 @@ Su Shi once wrote to his son: "If you really want to learn poetry, the effort li
 
 This sentence seems to be about poetry, but it actually talks about being a human being. Real "knowledge" often comes from life, character, and family tradition.
 
-## Thoughts on Digital RMB
+### Thoughts on Digital RMB
 
 > ｜ 2025-04-07 12:13 p.m.
 
@@ -3502,7 +3494,7 @@ M1 may increase in importance, but M2 still provides information on the total mo
 
 In the economic downturn, interest rate cuts may continue, but housing prices will be affected by multiple factors (such as policy intervention, demographic changes, etc.). China's real estate market may enter a period of adjustment, but it may not be a complete collapse.
 
-## Ideology
+### Ideology
 
 > ｜ 2025-04-07 9:29 AM
 
@@ -3516,7 +3508,7 @@ Establishing a thinking system refers to the process of observing, analyzing, an
 
 Essentially, thinking is the process of processing information - from receiving input (observation), to breaking it down and analyzing it (understanding its components), to integrating it into the output (forming a judgment or conclusion). In this process, it is very important to remain open-minded, look at things from multiple perspectives, and combine existing knowledge and experience.
 
-## Forget the Beginner's Intentions
+### Forget the Beginner's Intentions
 
 > ｜ 2025-04-07 9:17 AM
 
@@ -3526,7 +3518,7 @@ Don't forget why you started just because you have gone too far.
 
 If you don't keep your original intention carefully, it's easy to lose it in the chaos...
 
-## casual
+### casual
 
 > ｜ 2025-04-06 10:27 PM
 
@@ -3546,7 +3538,7 @@ The phrase "whatever" may put pressure on others to make choices and may not nec
 
 Sometimes, "casual" may be a kind of irresponsible to one's own wishes.
 
-## More real people
+### More real people
 
 > ｜ 2025-04-06 9:23 PM
 
@@ -3566,7 +3558,7 @@ It’s not that I don’t like material things, but I value inner freedom more.
 
 They live thoroughly and without hypocrisy, but this may make them seem incompatible with some of the inherent patterns of this society.
 
-## Good and Evil
+### Good and Evil
 
 > ｜ 2025-04-06 7:03 PM
 
@@ -3576,7 +3568,7 @@ How to understand "non-good"? I saw Spinoza said in "Ethics": "Scorn, contempt, 
 
 This leads us to think about what is the essence of goodness? If these strong emotions are not goodness, then is goodness more of a peaceful, rational and constructive force?
 
-## precise
+### precise
 
 > ｜ 2025-04-06 5:05 PM
 
@@ -3590,7 +3582,7 @@ Accuracy is the most important skill in the field of truth-seeking. Self-motivat
 
 Accuracy is very important. Behind accuracy is logic and reasoning, which is the cornerstone of decision-making and judgment.
 
-## I just hate giving in
+### I just hate giving in
 
 > ｜ 2025-04-06 4:14 PM
 
@@ -3606,7 +3598,7 @@ A person who can express his or her opinions independently without being arrogan
 
 Rights are meant to be enforced, otherwise they may just be a piece of paper.
 
-## How to understand homosexuality
+### How to understand homosexuality
 
 > ｜ 2025-04-06 3:59 PM
 
@@ -3618,7 +3610,7 @@ The education and social environment we receive generally convey a traditional c
 
 The rejection we may have in our subconscious mind is often because we don’t really understand. We may choose to be tolerant and respectful, but we may not understand this group and this phenomenon. This emotion is not derived from objective facts, but is more the result of cultural traditions and social environment.
 
-## When facing death, there are stronger emotions than this that control people
+### When facing death, there are stronger emotions than this that control people
 
 > ｜ 2025-04-06 10:49 AM
 
@@ -3636,7 +3628,7 @@ Life precedes meaning, existence precedes essence.
 
 Heartbeat needs no explanation; it is a fact in itself, a state that requires no proof, without any philosophical embellishment or emotional attachment.
 
-## Forget Me
+### Forget Me
 
 > ｜ 2025-04-06 10:42 AM
 
@@ -3652,7 +3644,7 @@ When we engage in deep reflection or meditation, we begin to question and transc
 
 If you look at a problem with a preset answer, then it may not be so important what the answer is.
 
-## Tennis ball and racket
+### Tennis ball and racket
 
 > ｜ 2025-04-05 10:01 PM
 
@@ -3668,7 +3660,7 @@ Our transition from “passively being hit by the racket” to “actively culti
 
 From being supported by others, to learning to grow oneself, and then to giving back to others or the next generation when one is able to do so - this is an inheritance of love and a continuation of life wisdom.
 
-## Thoughts on the RCEP Agreement
+### Thoughts on the RCEP Agreement
 
 > ｜ 2025-04-05 3:51 PM
 
@@ -3682,7 +3674,7 @@ RCEP provides China with a more stable trade environment and a broader market, w
 
 As globalization develops, global trade competition is also intensifying. In the short and medium term, the trend may still revolve around the two major countries of China and the United States, and the trade relationship between them will become the focus. On the contrary, there may be certain development opportunities in these small countries with regional cooperation.
 
-## Thoughts on the Global Trade War
+### Thoughts on the Global Trade War
 
 > ｜ 2025-04-05 3:44 PM
 
@@ -3702,7 +3694,7 @@ In the medium term, the world economic structure may show a trend of coexistence
 
 Generally speaking, in international trade conflicts, physical assets such as gold often have a certain role in preserving and increasing value, and ordinary investors can make appropriate allocations. In addition, asset diversification is also very important, that is, to spread assets into multiple baskets. Purchasing foreign exchange assets such as the US dollar is sometimes used to hedge against fluctuations in the exchange rate of the domestic currency and domestic market risks.
 
-## Thinking about Serverless in the AI ​​Era
+### Thinking about Serverless in the AI ​​Era
 
 > ｜ 2025-04-05 10:20 AM
 
@@ -3720,7 +3712,7 @@ Serverless can also be used to perform background tasks, including scheduled tas
 
 However, it should be noted that Serverless is usually stateless, so it may not be suitable for operations that require maintaining connections for a long time.
 
-## MCP Thoughts in ApiFox
+### MCP Thoughts in ApiFox
 
 > ｜ 2025-04-04 7:49 PM
 
@@ -3732,7 +3724,7 @@ For some prompts tagged with the `production` tag, such as the "Order Status Que
 
 In addition, for MCP in ApiFox, we can use MCP to access various API documents, let AI interpret the interface, and assist in implementation.
 
-## Code Value
+### Code Value
 
 > ｜ 2025-04-04 10:08 AM
 
@@ -3744,7 +3736,7 @@ Software also has a life cycle, which is normal.
 
 Maintaining software will continue until the end of its life cycle, or until the maintenance cost is too high and refactoring is chosen.
 
-## Ukrainian and Russian mercenaries thoughts
+### Ukrainian and Russian mercenaries thoughts
 
 > ｜ 2025-04-03 3:19 PM
 
@@ -3762,7 +3754,7 @@ Good and evil are not absolute, and neither are right and wrong. The scales neve
 
 Peace is truly precious. Without the mirror of war, would we forget the possible evil in human nature, as well as the good that may shine?
 
-## Learn to forgive and know how to love
+### Learn to forgive and know how to love
 
 > ｜ 2025-04-02 3:47 PM
 
@@ -3772,7 +3764,7 @@ If your heart has no place to rest, it will feel like you are wandering wherever
 
 But perhaps only by learning to forgive can we truly understand how to love.
 
-## Discussion with Archer on the last night
+### Discussion with Archer on the last night
 
 > ｜ 2025-04-02 11:41 AM
 
@@ -3780,7 +3772,7 @@ But perhaps only by learning to forgive can we truly understand how to love.
 
 We stayed in Shenzhen for ten days, and also stayed in Archer's home for ten days. Archer often treated us to meals and took us to taste some authentic local food. Xiaomei also treated us to meals, and Sun also treated us to meals. This trip in Shenzhen really touched me, and their friendship deeply touched me.
 
-## Thoughts on the Nepal Unrest
+### Thoughts on the Nepal Unrest
 
 > ｜ 2025-03-30 10:43 AM
 
@@ -3808,7 +3800,7 @@ The key lies in whether true political stability and efficient governance can be
 
 Ref: https://news.cctv.com/2025/03/21/ARTIT8r5j2i9WWruRsLiTuD2250321.shtml (Note: This link is a hypothetical reference)
 
-## The essence behind the pursuit behavior
+### The essence behind the pursuit behavior
 
 > ｜ 2025-03-29 11:20 AM
 
@@ -3824,7 +3816,7 @@ People who follow literary writers are often attracted by the depth of stories, 
 
 There is no distinction between high and low in human nature. What everyone pursues is just a projection of their inner needs. What is important is whether the pursuit is sincere and whether one can gain something and grow from it.
 
-## Parents’ experience and children’s choices
+### Parents’ experience and children’s choices
 
 > ｜ 2025-03-29 11:09 AM
 
@@ -3838,7 +3830,7 @@ Ultimately, the path depends on the child's own choice.
 
 What parents can do is to provide a warm "safety net" rather than setting insurmountable "limits".
 
-## Design considerations for event bus and message event pipeline
+### Design considerations for event bus and message event pipeline
 
 > ｜ 2025-03-29 11:08 AM
 
@@ -3850,7 +3842,7 @@ The event bus acts as an intermediary, allowing each module to be developed, tes
 
 When you need to add new modules and functions, you only need to register them in the event pipeline.
 
-## The most painful lessons in AI development
+### The most painful lessons in AI development
 
 > 2025-03-25 17:45:12
 
@@ -3858,7 +3850,7 @@ When you need to add new modules and functions, you only need to register them i
 
 The most painful lesson in AI development is to neglect `commit`. Be sure to: **Commit frequently, record frequently; describe well, and make your meaning clear. **
 
-## Web RTC Thoughts
+### Web RTC Thoughts
 
 > 2025-03-23 21:38:00
 
@@ -3874,7 +3866,7 @@ Currently, some RTC policy practices are supported:
 
 2. **Hugging Face**: Launched Fast RTC, an open source WebRTC library that also supports Websockets and integrates STT (speech to text) and TTS (text to speech) functions.
 
-## What is the most important thing in family education?
+### What is the most important thing in family education?
 
 > 2025-03-22 17:19:31
 
@@ -3906,7 +3898,7 @@ It is different from metaphysics, and is more inclined to systematic and abstrac
 
 For most people, metaphysics may be more helpful in daily life because it is closer to emotions and intuition. The difficulty of metaphysics lies in its requirements for intuition, understanding, and spirituality. It is more like a kind of "Tao" practice, full of mystery, and enlightenment seems to require fate.
 
-## The ultimate of sensibility and rationality
+### The ultimate of sensibility and rationality
 
 > 2025-03-22 13:18:46
 
@@ -3928,7 +3920,7 @@ Intuitive thinking is more efficient and consumes less energy. In daily life, ma
 
 The Taoist pursuit of transcending the constraints of concepts to achieve a peaceful state is precisely the holistic thinking that hopes to return to the origin of all things. The core of this thinking is "letting go" - letting go of obsessions, letting go of the self, and finally becoming one with the "Tao".
 
-## Borrowing and plagiarism
+### Borrowing and plagiarism
 
 > 2025-03-22 00:11:10
 
@@ -3952,7 +3944,7 @@ Creativity is often the accumulation of collective wisdom. The key is how you di
 
 For example, if you read a poem, write it down, and repeatedly savor and ponder it, it will gradually integrate into your thought system and become a part of your unique philosophy. What touches you is not the poem itself, but the inner feelings and thoughts it awakens.
 
-## It’s better not to meet each other
+### It’s better not to meet each other
 
 > 2025-03-22 00:10:21
 
@@ -3960,7 +3952,7 @@ For example, if you read a poem, write it down, and repeatedly savor and ponder 
 
 If meeting each other only brings embarrassment, burden or even pain, then what is the meaning of deliberately maintaining a relationship? Is it to satisfy one's own emotional needs, or to cater to the expectations of others (such as the expectations of the mother)? Behind this, perhaps there is a deeper question: Is the true meaning of a relationship something that is actively sought, or does it flow naturally?
 
-## Dog's way of thinking
+### Dog's way of thinking
 
 > 2025-03-21 23:29:55
 
@@ -3994,7 +3986,7 @@ Dogs are also a product of the environment. Most of the dogs in Nepal are free-r
 
 Existence is always intertwined with the world, and there are different ways to adapt to the world: one is accepted freedom, and the other is limited protection.
 
-## Contextual Thinking
+### Contextual Thinking
 
 > 2025-03-20 18:42:32
 
@@ -4004,7 +3996,7 @@ Existence is always intertwined with the world, and there are different ways to 
 
 Take `Cursor` as an example. It controls the scope of code documents through `context`, such as specifying a website, a specific file, an external web page address, or even the context of `git`. It is worth noting that these rules are configurable and can even be controlled more finely by setting `MCP` (Model Context Protocol).
 
-## Cursor MCP
+### Cursor MCP
 
 > 2025-03-20 01:48:17
 
@@ -4018,7 +4010,7 @@ We can imagine that the MCP of the future AI platform is also a pluggable client
 
 MCP supports multiple transport protocols (such as `stdio` and `SSE`), which can meet diverse needs. Its ability to connect to various data sources is particularly noteworthy.
 
-## Fireworks and Silicon Mobility / OpenRouter
+### Fireworks and Silicon Mobility / OpenRouter
 
 > 2025-03-19 16:15:11
 
@@ -4028,7 +4020,7 @@ If we compare `Fireworks AI` with the domestic `Silicon Flow` or the overseas `O
 
 A notable feature of `Fireworks AI` is its emphasis on allowing end users to intuitively see the model's reasoning process, parameter settings, and various options, making operations more transparent and flexible. In addition, it is committed to bringing together various models and services into a unified interface to facilitate direct calls and combinations by business-level users.
 
-## Understanding Personality
+### Understanding Personality
 
 > 2025-03-19 14:56:03
 
@@ -4036,7 +4028,7 @@ A notable feature of `Fireworks AI` is its emphasis on allowing end users to int
 
 The word "personality" has a wide range of connotations, perhaps including "personal charm". Personality usually refers to the unique patterns of individual thinking, emotions and behaviors, as well as the psychological mechanisms behind these patterns, which may be hidden or obvious. "Character" is a more popular and everyday expression.
 
-## Some thoughts on human nature
+### Some thoughts on human nature
 
 > 2025-03-18 16:04:59
 
@@ -4082,7 +4074,7 @@ It is easy to get angry, but it takes tremendous effort to forgive, understand a
 
 "If you understand everything, you can forgive everything."
 
-## Understanding suggestions
+### Understanding suggestions
 
 > 2025-03-18 02:59:29
 
@@ -4134,7 +4126,7 @@ Ask more questions around some core topics, as discussed in previous blogs:
 
 The world is so wonderful about advice. It is essentially the product of our more realistic understanding of the world. A more accurate understanding of a specific group of people can help us judge whether they are willing to listen to advice; a more accurate understanding of things can help us provide more accurate advice. The value of advice may not lie in what you say, but in what the other person listens to and what positive changes are made as a result.
 
-## Humanity and Communication
+### Humanity and Communication
 
 > 2025-03-17 02:11:36
 
@@ -4152,7 +4144,7 @@ Everyone has their own unique growth trajectory and cognitive limitations. Not e
 
 Some people really have trouble thinking deeply, so you can only talk about surface things and phenomena that are easy to understand. Try to simplify your expression, avoid abstract concepts, and communicate in a way that they can understand.
 
-## Second Thoughts on the Corpse Burning Temple
+### Second Thoughts on the Corpse Burning Temple
 
 > 2025-03-16 16:13:45
 
@@ -4160,7 +4152,7 @@ Some people really have trouble thinking deeply, so you can only talk about surf
 
 I visited the cremation temple again. What exactly are those "round platforms"? I wondered. From a distance, those round stone platforms were scattered on both sides of the river, some hidden in the bushes on the west bank, and some close to the cremation area on the east bank. At first, I thought they were some kind of altars. Later I learned that these might be places for sadhus to practice meditation, or small platforms for believers to hold special ceremonies. They are not as eye-catching as the cremation platforms, but they always attract my attention - especially when someone lies prone on them or makes strange dance-like movements.
 
-## Claude Artifacts
+### Claude Artifacts
 
 > 2025-03-16 14:13:45
 
@@ -4168,7 +4160,7 @@ I visited the cremation temple again. What exactly are those "round platforms"? 
 
 Claude Artifacts is a feature of Anthropic's Claude model, which allows the model to generate and display structured content output during the conversation. These outputs are not just text, but can also be code blocks, design prototypes, and even interactive UI components. This marks the evolution of AI from simple text generation to richer, actionable "product" generation.
 
-## Some thoughts from a Chinese boss in Nepal
+### Some thoughts from a Chinese boss in Nepal
 
 > 2025-03-16 12:51:52
 
@@ -4198,7 +4190,7 @@ Culture and behavior are a system, and its internal parts are interrelated. Anal
 
 The world is changing, and cognition and behavior must also be updated accordingly. Continuous learning is a necessary condition for adapting to this uncertain world.
 
-## Design and thinking about multimodal Chat mode
+### Design and thinking about multimodal Chat mode
 
 > 2025-03-16 12:23:19
 
@@ -4222,7 +4214,7 @@ The design logic of Claude Artifacts seems to be unique. Artifacts can not only 
 
 It is expected that the types of artifacts that Artifacts will support will become increasingly diverse. Products with similar Artifacts concepts, such as Google's NotebookLM, also show similar forms, allowing users to manipulate code and design interactive interfaces.
 
-## Always on the road of pursuing meaning
+### Always on the road of pursuing meaning
 
 > 2025-03-15 12:44:05
 
@@ -4242,7 +4234,7 @@ When someone I like gets jealous of me, I have learned a good way to deal with i
 
 It is human nature to feel jealous when meeting someone you like. Looking back, there have been many such phenomena in the past, but I have never reflected on the essence of them. Now it seems that if we can understand and manage this emotion, think about why we are jealous, and explore the possible reasons for the other person's behavior, then this experience can be transformed into nutrients for growth and help both ourselves and the other person mature. Of course, excessive jealousy may evolve into a strong possessive desire, so we need to be vigilant.
 
-## Some thoughts on Agent development
+### Some thoughts on Agent development
 
 > 2025-03-14 20:05:56
 
@@ -4274,7 +4266,7 @@ For example, Claude's `Computer Use` is essentially also a `Tool use`.
 
 `Planning skills` include: breaking down large tasks into executable small tasks; reflecting and refining - self-examining based on the actions that have been performed, learning from mistakes and optimizing subsequent actions. In addition, some research papers have proposed more novel classifications of planning skills, such as: task decomposition, multiple plan selection, external module assisted planning, reflection and refinement, memory enhanced planning, etc. Among them, "multiple plan selection" refers to allowing the AI ​​Agent to generate multiple alternative plans, and then select the best one to execute; "external module assisted planning" refers to using an external planner (similar to the "referee" role in reinforcement learning) to improve the quality of planning; "memory enhanced planning" is like equipping the Agent with "memory bread" so that it can remember past experiences and provide reference for future planning. These methods are not isolated from each other, but are often intertwined to jointly improve the planning and execution capabilities of AI Agents.
 
-## Thinking about the trends of the front end
+### Thinking about the trends of the front end
 
 > 2025-03-14 17:25:14
 
@@ -4290,7 +4282,7 @@ In addition, some minimalist AI search tools (such as `https://github.com/zaidmu
 
 In the early stages of a project, if problems can be solved with existing services, try to use services as much as possible. This will make it easier for us to quickly verify core ideas and functions.
 
-## Nepal Holi Festival
+### Nepal Holi Festival
 
 > 2025-03-14 11:55:51
 
@@ -4314,7 +4306,7 @@ The premise is how we can comprehend our understanding of life and form our own 
 
 Knowing oneself is so difficult; facing oneself calmly is even more challenging. When we have a good understanding of ourselves and face our emotions with a sincere attitude, we can clearly see the growth and value that each relationship brings us. Regardless of the outcome, what is important is whether we can improve ourselves in the process and whether we can find resonance with each other in respect, understanding and equality. Only in this way can emotions truly become a part of our life's nutrients, rather than a simple goal to pursue or an external criterion for judgment.
 
-## How to quickly learn an open source project in the AI ​​era
+### How to quickly learn an open source project in the AI ​​era
 
 > 2025-03-13 11:13:11
 
@@ -4350,7 +4342,7 @@ To quickly learn and understand an open source project with the help of AI, you 
 
 In this process, AI plays the role of "intelligent mentor" and "efficient assistant", which can greatly accelerate the process of information acquisition, code understanding and problem location.
 
-## Walking on the same road, meeting your own scenery
+### Walking on the same road, meeting your own scenery
 
 > 2025-03-11 14:29:35
 
@@ -4360,7 +4352,7 @@ During the hike, my partner and I focused on different things. He preferred to l
 
 He enjoys walking itself, and I enjoy the flowing scenery. The same road, but due to different moods and perspectives, reflects each unique scenery.
 
-## Service deployment logic
+### Service deployment logic
 
 > 2025-03-11 02:37:34
 
@@ -4384,7 +4376,7 @@ He enjoys walking itself, and I enjoy the flowing scenery. The same road, but du
 
 8. **Data management framework**: `LlamaIndex` is an excellent data management framework, especially suitable for building LLM-based applications to process and index external data.
 
-## Analysis of AI editing tools
+### Analysis of AI editing tools
 
 > 2025-03-10 13:33:21
 
@@ -4406,7 +4398,7 @@ Currently, we mainly experience and focus on two AI video editing tools:
 
 These two tools represent different application directions of AI in the field of video editing: Opus Clip focuses more on intelligent repurpose of content, while CapCut is committed to enhancing various aspects of the traditional editing process through AI.
 
-## Some tips for using Cursor
+### Some tips for using Cursor
 
 > 2025-03-10 13:07:24
 
@@ -4436,7 +4428,7 @@ These two tools represent different application directions of AI in the field of
 
 12. **Record and collect commonly used effective prompts**: Record those `prompts` that can efficiently guide AI to complete specific tasks and form your own `prompt` library.
 
-## Reactions caused by alcohol
+### Reactions caused by alcohol
 
 > 2025-03-10 10:03:56
 
@@ -4444,7 +4436,7 @@ These two tools represent different application directions of AI in the field of
 
 Alcohol's inhibitory effect on brain function is most sensitive in the prefrontal cortex (PFC). The prefrontal cortex is responsible for our higher cognitive functions, such as judgment, decision-making, impulse control, and self-monitoring. When alcohol inhibits the activity of this area, the individual's rational judgment and self-control abilities will decline, and they may unconsciously express thoughts and emotions that are usually suppressed or hidden due to various concerns or when the inhibition is weakened. This is one of the physiological bases of the so-called "truth after drinking".
 
-## China's development should be viewed from an intergenerational perspective
+### China's development should be viewed from an intergenerational perspective
 
 > 2025-03-09 23:09:47
 
@@ -4458,7 +4450,7 @@ The formation of any mechanism and phenomenon of the times has its cause and eff
 
 The current leadership grew up in a special historical period (such as the Cultural Revolution), and its governing philosophy and behavior inevitably bear the imprint of that era. People and institutions are the products of a specific era. Even if we may observe a "reversal" or adjustment at the institutional level, we should believe that the next generation of leaders, with their different growth backgrounds and the talents endowed by the times, will eventually lead the country to a new stage of development.
 
-## Observer's Perspective
+### Observer's Perspective
 
 > 2025-03-10 01:10:15
 
@@ -4490,7 +4482,7 @@ Most relationships remain at a superficial level of communication, a few relatio
 
 Whether it is the profound resonance of one or two stages, or the deep connection brought by soul mates, it is worth our careful experience. At the same time, we must also face its possible changes and impermanence calmly.
 
-## MCP protocol mode integration
+### MCP protocol mode integration
 
 > 2025-03-08 17:55:51
 
@@ -4522,7 +4514,7 @@ Why do we need MCP (Model Context Protocol)? It is mainly due to the following t
 
 Anthropic and the community have provided MCP Server implementation libraries based on multiple mainstream programming languages ​​​​such as Python, TypeScript, Golang, etc., to facilitate developers to quickly build and deploy their own MCP services.
 
-## Claude Computer Use Ability
+### Claude Computer Use Ability
 
 > 2025-03-08 12:27:00
 
@@ -4532,7 +4524,7 @@ The core architecture of Manus (or similar AI Agent projects) is highly similar 
 
 The core idea of ​​this model is to enable AI Agent to "operate" the computer like a human, interacting with the graphical user interface (GUI) by observing the screen, moving the mouse, clicking buttons, entering text, etc., to perform tasks.
 
-## My life experience: Focus on what you love
+### My life experience: Focus on what you love
 
 > 2025-03-08 14:26:58
 
@@ -4540,7 +4532,7 @@ The core idea of ​​this model is to enable AI Agent to "operate" the compute
 
 People must do what they truly love. This is the experience I have written down in my life and it is also an unswerving creed.
 
-## Manus's thoughts
+### Manus's thoughts
 
 > 2025-03-06 14:37:04
 
@@ -4572,7 +4564,7 @@ Compared to operating the entire computer operating system, the **browser enviro
 
 4. **Suspicion of hype**: Some self-media conduct large-scale testing and evaluation at the early stage of product release. The pace is sometimes too consistent, which may be due to the manufacturer's public relations (PR) factor. The ability of Agent still depends to a large extent on the progress of the basic large model.
 
-## Agent OS Present and Future
+### Agent OS Present and Future
 
 > 2025-03-05 09:53:46
 
@@ -4622,7 +4614,7 @@ Compared to operating the entire computer operating system, the **browser enviro
 
 - OpenHands (`https://github.com/All-Hands-AI/OpenHands`)
 
-## Some predictions
+### Some predictions
 
 > 2025-03-04 09:42:32
 
@@ -4646,7 +4638,7 @@ Compared to operating the entire computer operating system, the **browser enviro
 
 9. **AI tool integration trend**: From the early `Jasper` (AI writing tool) to `ChatGPT`, and then to products such as `Monica` (browser assistant) or `Console` (AI-driven development tool), AI tools will continue to integrate stronger tool calling capabilities, cloud execution capabilities and more natural interaction methods.
 
-## Future scenarios for inference models
+### Future scenarios for inference models
 
 > 2025-03-03 16:56:46
 
@@ -4666,7 +4658,7 @@ Combining the human cognitive mode of "thinking fast and thinking slow", the pro
 
 6. **Code quality review, improvement and debugging**: For code analysis tasks that are not particularly sensitive to execution speed requirements, such as code review, logic vulnerability discovery, improvement suggestions, and auxiliary debugging, reasoning models can provide valuable insights.
 
-## Everyone has opinions, experience is valuable
+### Everyone has opinions, experience is valuable
 
 > 2025-03-03 17:22:47
 
@@ -4680,7 +4672,7 @@ Parents’ experiences are also limited by their time, and their views cannot be
 
 Therefore, there is no need to worry that my growth will deviate from your experience, and there is no need to set too many rules for your child's growth. Life has its own trajectory, and exploration and experience itself is the meaning.
 
-## RFT Thoughts
+### RFT Thoughts
 
 > 2025-03-03 14:55:15
 
@@ -4700,7 +4692,7 @@ The core idea of ​​RFT (Reinforcement Fine-Tuning, or more broadly, optimiza
 
 Introducing diverse reasoning paths actually improves the model's "problem-solving ability" and "creativity", not just its "pattern matching ability".
 
-## Universal thinking on AI application scenarios
+### Universal thinking on AI application scenarios
 
 > 2025-03-02 21:29:16
 
@@ -4716,7 +4708,7 @@ Data is undoubtedly the lifeline for enterprises to survive in the AI ​​era.
 
 2025 may be the year of the Agent explosion. We can't help but think about how Agent will develop? What key role will reinforcement learning (RL) play in the Agent ecosystem in 2025?
 
-## Hallucination Processing
+### Hallucination Processing
 
 > | 2025-03-02 8:59 PM
 
@@ -4752,7 +4744,7 @@ Currently, model hallucinations can be controlled within an acceptable range at 
 
 ref: https://lilianweng.github.io/posts/2024-07-07-hallucination/#:~:text=balanced%20results%2C%20especially%20in%20terms,metrics%2C%20compared%20to%20two%20baselines
 
-## Agent form
+### Agent form
 
 > | 2025-03-02 8:28 PM
 
@@ -4766,7 +4758,7 @@ ref: auto-gpt: https://github.com/Significant-Gravitas/AutoGPT
 
 agent list: https://github.com/e2b-dev/awesome-ai-agents
 
-## How to understand RFT strategy
+### How to understand RFT strategy
 
 > | 2025-03-02 7:38 PM
 
@@ -4782,7 +4774,7 @@ In comparison, enhanced model fine-tuning is more suitable for inference models.
 
 Compared with the simple scoring logic of `deepseek`, an AI scorer can also be introduced here for a more sophisticated evaluation.
 
-## Deep understanding of Web3
+### Deep understanding of Web3
 
 > | 2025-03-01 9:55 PM
 
@@ -4796,7 +4788,7 @@ The price of currency is completely determined by the market, and both new and o
 
 The "stupider theory" in economics also reveals a market phenomenon: as long as one can find a buyer willing to pay a higher price, even if the asset price is unreasonable, there will be people willing to buy it, and the bubble will burst only when the market can no longer find "stupider people".
 
-## Multimodal & cross-domain thinking
+### Multimodal & cross-domain thinking
 
 > | 2025-03-01 3:15 PM
 
@@ -4812,7 +4804,7 @@ The modularization trend may refer to the architecture such as `Mixture-of-Exper
 
 In terms of the effect of small models, distillation is better than direct reinforcement learning and more cost-effective. Distillation technology can effectively transfer the capabilities of large models to small models with smaller structures and higher computational efficiency, so that small models can also achieve higher performance levels in practical applications.
 
-## Design paper thoughts on DeepSeek R1
+### Design paper thoughts on DeepSeek R1
 
 > | 2025-03-01 11:56 AM
 
@@ -4840,7 +4832,7 @@ Simple and direct reward method: accuracy reward (for math problem answers) + fo
 
 `R1` also released six small models based on `R1` distillation. These small models also have certain reasoning capabilities, and in some scenarios they even surpass the small models that are not distilled and directly trained through reinforcement learning. This provides some inspiration for the application scenarios of future models: knowledge distillation + reinforcement model, small models may show unexpected results in many application scenarios.
 
-## ChatGPT Deep Research and ChatGPT4.5 Analysis
+### ChatGPT Deep Research and ChatGPT4.5 Analysis
 
 > | 2025-02-28 9:02 AM
 
@@ -4884,7 +4876,7 @@ Engineering practice is becoming increasingly important. In the AI ​​era, op
 
 In addition, the importance of rare qualities such as interdisciplinary learning ability, multi-field integration ability and understanding of basic disciplines is becoming increasingly prominent.
 
-## Cognitive Dissonance
+### Cognitive Dissonance
 
 > | 2025-02-27 7:11 PM
 
@@ -4900,7 +4892,7 @@ For example:
 
 People also tend to avoid information that conflicts with their own views - a phenomenon particularly amplified by recommendation algorithms - and are instead more willing to seek out information that supports their existing views.
 
-## Some design considerations for long-term memory
+### Some design considerations for long-term memory
 
 > | 2025-02-27 6:58 PM
 
@@ -4912,7 +4904,7 @@ Long-term memory is actually often implemented through the `Agent + RAG` approac
 
 refer： [https://www.tanka.ai/?ref=producthunt&amp;shortlink=g032wcsy&amp;utm_source=producthunt&amp;c=218+producthunt&amp;pid=producthunt&amp;af_xp=custom&amp;source_caller=ui](https://www.tanka.ai/?ref=producthunt&shortlink=g032wcsy&utm_source=producthunt&c=218+producthunt&pid=producthunt&af_xp=custom&source_caller=ui)
 
-## Quickly learn a new field
+### Quickly learn a new field
 
 > | 2025-02-27 10:10 AM
 
@@ -4942,7 +4934,7 @@ For questions that are more humanistic, you can analyze the context along a time
 
 In what situations is result orientation particularly useful? There is a lot of news information, but the impact of events needs data or objective things to prove it. For example, in stock market analysis, you can find free data sources as support.
 
-## Programming Languages ​​in the AI ​​Era
+### Programming Languages ​​in the AI ​​Era
 
 > | 2025-02-27 9:33 AM
 
@@ -4956,7 +4948,7 @@ Judging from the current trends, the three most popular programming language com
 
 As the era of `Software 2.0` approaches, we can't help but wonder: Will the code itself become smarter to better adapt to the AI ​​era?
 
-## Software 2.0 Form
+### Software 2.0 Form
 
 > | 2025-02-26 11:05 AM
 
@@ -4992,7 +4984,7 @@ We are smart and we think about what and how to make software smarter.
 
 refer: https://karpathy.medium.com/software-2-0-a64152b37c35
 
-## General Robot Industry
+### General Robot Industry
 
 > | 2025-02-26 10:02 AM
 
@@ -5012,7 +5004,7 @@ Yushu Technology also uses a similar end-to-end AI training approach. End-to-end
 
 **Other Robotics Companies** Globally, other leading companies in the field of robotics, such as Nvidia (AI chips), Intuitive Surgical (medical robots), ABB (industrial automation) and Serve Robotics (service robots), will also benefit from the rapid development of the industry. The stocks of these companies are worthy of investors' attention due to their technological advantages and market share in their respective fields.
 
-## AI independence
+### AI independence
 
 > | 2025-02-25 11:11 PM
 
@@ -5032,7 +5024,7 @@ It is itself, existing in its own unique way, and this existence itself is very 
 
 refer: https://mp.weixin.qq.com/s/PVpNZVDBq61qyWyjSnmdOQ
 
-## Qiong Yao would never commit suicide if she lived in mainland China
+### Qiong Yao would never commit suicide if she lived in mainland China
 
 > | 2025-02-25 9:25 PM
 
@@ -5050,7 +5042,7 @@ Don't avoid death, but find the true meaning of life by thinking about death.
 
 Talk to your loved ones, and more importantly, talk to yourself. Don't worry about taboos or other people's opinions, but rely on your own feelings and make honest judgments.
 
-## What do you think of Tesla's FSD system?
+### What do you think of Tesla's FSD system?
 
 > | 2025-02-25 7:40 PM
 
@@ -5072,7 +5064,7 @@ Talk to your loved ones, and more importantly, talk to yourself. Don't worry abo
 
 8. **Future Outlook**: `Robotaxi + AI = future`.
 
-## Agent OS
+### Agent OS
 
 > | 2025-02-25 7:27 PM
 
@@ -5114,7 +5106,7 @@ This method is applied to a specific project engineering plan to drive the proje
 
 - **Action phase**: If problems are found during the inspection, this phase is the time to fix and optimize. Just like problems found in construction projects need to be remedied in time, we need to fix the `bugs` in the code to ensure it runs perfectly.
 
-## Programming used to be a tool, but it will become a way of thinking in the future
+### Programming used to be a tool, but it will become a way of thinking in the future
 
 > | 2025-02-25 3:46 PM
 
@@ -5130,7 +5122,7 @@ For example, understand the world from the perspective of programming and engine
 
 Therefore, those who can integrate information, think about problems across boundaries, and quickly use information to organize knowledge models to solve problems can be called "supermen."
 
-## How to brush AI products
+### How to brush AI products
 
 > | 2025-02-24 9:58 PM
 
@@ -5156,7 +5148,7 @@ In the era of AI with complex information, how should we learn the numerous AI t
 
 - **High-quality content channels**: Some well-known public accounts, articles or blogs will also recommend interesting and well-known AI products and provide in-depth introductions.
 
-## Reduce the pain in software development
+### Reduce the pain in software development
 
 > | 2025-02-24 5:43 PM
 
@@ -5168,7 +5160,7 @@ This is not referring to the pain caused by continuous integration or continuous
 
 Automation is a great way to focus more on what we want to do instead of spending a lot of energy memorizing or repeating operations to complete releases.
 
-## Mother Teresa's Story
+### Mother Teresa's Story
 
 > | 2025-02-23 9:48 AM
 
@@ -5186,7 +5178,7 @@ She devoted her life to helping the poor, the sick and the marginalized, becomin
 
 In fact, this is to sublimate the relationship between people into the relationship between people and God (or higher beliefs, inner principles), thereby downplaying the troubles and entanglements of the earthly world.
 
-## Paying attention to details often makes people more moved
+### Paying attention to details often makes people more moved
 
 > | 2025-02-22 10:14 PM
 
@@ -5200,7 +5192,7 @@ Before leaving, I left a small tip as usual - I always do this in Pokhara. The w
 
 After that, I went there several more times. They seemed to have found a "trick" to avoid tips and stopped handing me the bill clip. I felt a little "helpless", but my heart was warm. The waiters were very cute and sent me some desserts one after another. Before leaving Pokhara, I asked my friends to bring dolls from China and gave them to them. They were so moved that they almost cried, and I really didn't want to leave Pokhara. They taught me a lesson in life: **True connection comes from attentive attention and the transmission of kindness. Every position and role has its soul. **
 
-## What if I'm dying?
+### What if I'm dying?
 
 > | 2025-02-22 5:15 PM
 
@@ -5210,7 +5202,7 @@ I would become a storm chaser, hahahaha, specializing in chasing lightning and s
 
 Accepting death and choosing death means accepting the last bit of self-awareness that still exists.
 
-## Exploring human motivation
+### Exploring human motivation
 
 > | 2025-02-22 10:17 AM
 
@@ -5226,7 +5218,7 @@ The driving force is not limited to this, people are complex. It includes the pu
 
 The above are internal driving forces, which come from within the individual. In addition, there are also external driving forces, such as company incentives and rewards, social pressure, environmental choices, age pressure and competition.
 
-## The diversity of emotions
+### The diversity of emotions
 
 > | 2025-02-22 8:24 AM
 
@@ -5240,7 +5232,7 @@ As Jaspers said, "facing extreme situations forces us to make choices." This way
 
 Human desires are endless. Once they are satisfied, boredom will follow. Therefore, it is important to find a balance and find the meaning of life in the endless desires. There is a cycle between desire and satisfaction. What is more important is to live in the present moment.
 
-## How to describe a product in one sentence
+### How to describe a product in one sentence
 
 > | 2025-02-21 9:56 PM
 
@@ -5260,7 +5252,7 @@ Its advantages are "unique value point 1, for example: better understanding of y
 
 and "Unique value point 2, for example: greatly improve content creation efficiency / let your thinking form a network and continue to grow"
 
-## Quick research and product design tips
+### Quick research and product design tips
 
 > | 2025-02-21 7:40 PM
 
@@ -5280,7 +5272,7 @@ and "Unique value point 2, for example: greatly improve content creation efficie
 
 7. **Share/Demo**: Show the MVP to potential users or team members to collect feedback and verify the direction.
 
-## Thoughts on DeepSeek & Predictions for ChatGPT4.5 and Understanding of Future AGI
+### Thoughts on DeepSeek & Predictions for ChatGPT4.5 and Understanding of Future AGI
 
 > | 2025-02-21 6:02 PM
 
@@ -5326,7 +5318,7 @@ High-quality data is almost exhausted - the total amount of data on the Internet
 
 Recently, both Google and OpenAI seem to have released related tools and agents. Typical scenarios include AI operating computers. If this scenario works, can OpenAI "claim" to have achieved preliminary AGI in 2-3 years? Code, mathematics and other fields are relatively easy to describe and define (current state, target state, action, strategy planning, information, and reward mechanism are all relatively clear). With enough basic data, AI can be allowed to "self-play".
 
-## Thoughts on future career transition and unemployment
+### Thoughts on future career transition and unemployment
 
 > | 2025-02-20 9:00 PM
 
@@ -5374,7 +5366,7 @@ We should really think about the value we want to create and how we can truly ma
 
 The unemployed are largely a target of my thinking. I have discussed this with my partner before. In my opinion, unemployment is actually an opportunity to re-examine and reconstruct self-worth. In the face of fluctuations in economic cycles and waves of technological innovation, unemployment should not only be seen as external pressure, but also as the potential hidden in it - this is an opportunity to become a "superman" (borrowing Nietzsche's philosophical concept). My thinking is that when individuals have sufficient capabilities and resources, through the empowerment of tools such as AI and the improvement of interactive systems, we can completely improve our user experience from 20 points to 60 points or even 80 points. What is reflected behind this is not only the improvement of technology, but also a reconstruction of value. Unemployment is not the end, but the starting point of transformation. It prompts me to continuously improve the interactive experience, optimize the way of working, and then achieve self-breakthrough and comprehensive upgrade of value. Such a transformation is like transforming from an ordinary person into a "superman" with extraordinary abilities, using more efficient and sophisticated tools and ways of thinking to create a new, larger and better cake.
 
-## Common sense understanding
+### Common sense understanding
 
 > | 2025-02-20 10:12 AM
 
@@ -5402,7 +5394,7 @@ C) Learn to give up on things that cannot be changed or conquered.
 
 Experience provides the initial material, common sense is the summary of these materials after the test of time, and intuition is the manifestation of this summary that quickly takes effect in actual situations.
 
-## Some thoughts on future AI products
+### Some thoughts on future AI products
 
 > | 2025-02-20 9:54 AM
 
@@ -5426,7 +5418,7 @@ The effectiveness of new models cannot be fully verified by information research
 
 The real breakthrough lies in building a system or interaction mode that allows users to experience the full potential of AI. This is similar to the development from the original operating system kernel (OS kernel) to the later Windows and Linux. The release of these OS actually formulated unified specifications and promoted personal growth and economic structure upgrades through more suitable interaction methods (not just terminal command lines), surpassing the simple substitution effect of large companies and achieving more creative value reconstruction.
 
-## ACT My first highland hike
+### ACT My first highland hike
 
 > | 2025-02-20 8:34 AM
 
@@ -5448,7 +5440,7 @@ I have never regretted my decisions easily, but at this moment, I regret my prev
 
 #on foot
 
-## Act within human nature
+### Act within human nature
 
 > | 2025-02-19 6:01 PM
 
@@ -5476,7 +5468,7 @@ refer： https://www.youtube.com/watch?v=dGA16idg4lg&amp;lc=UgwTRAuGl4zVN01PhtZ4
 
 https://www.youtube.com/watch?v=X4otYJGByic&amp;list=PL_PjwQXfPuE4SpqtVIY1OB60hVZSavd2n
 
-## Why is there such a huge gap between the rich and the poor in the United States
+### Why is there such a huge gap between the rich and the poor in the United States
 
 > | 2025-02-19 3:58 PM
 
@@ -5498,7 +5490,7 @@ To a certain extent, certain centralized systems may promote superficial egalita
 
 Of course, from the perspective of Sapiens: A Brief History of Humankind, productivity has been changing from ancient times to the present. When technology, productivity and artificial intelligence fully liberate the pressure of human survival, and an efficient and fair government guarantees basic well-being, the essence of happiness will shift from the accumulation of wealth to everyone's pursuit of spiritual freedom, inner satisfaction and social symbiosis - this may be a certain ideal picture of communism.
 
-## What is the foundation
+### What is the foundation
 
 > | 2025-02-19 3:25 PM
 
@@ -5528,7 +5520,7 @@ In the AI ​​era, the following basic capabilities are particularly important
 
 6. **Decision-making ability**: In the early stages of the AI ​​era, we may still rely heavily on human decision-making, which places very high demands on people's decision-making ability.
 
-## Pitfalls and experiences in product development
+### Pitfalls and experiences in product development
 
 > | 2025-02-19 12:35 PM
 
@@ -5576,7 +5568,7 @@ Only with standardization can there be consistency; only with consistency can th
 
 Therefore, some founders may not have sufficient technical capabilities and framework to do 1 to N, and some founders may not have enough willingness to do standardization.
 
-## What will the private entrepreneurs’ symposium bring?
+### What will the private entrepreneurs’ symposium bring?
 
 > | 2025-02-19 9:00 AM
 
@@ -5588,7 +5580,7 @@ Therefore, some founders may not have sufficient technical capabilities and fram
 
 3. **Attention from emerging forces**: Idealists or emerging entrepreneurs such as Liang Wenfeng and Wang Xing may receive more attention, representing new business forces and concepts.
 
-## How to model a complete human system
+### How to model a complete human system
 
 > | 2025-02-18 11:39 PM
 
@@ -5604,7 +5596,7 @@ Systematic modeling also requires a lot of experience, methods and theoretical s
 
 3. **Multidisciplinary cross-analysis and mapping**: Use the perspectives of multiple disciplines (such as sociology, economics, history, etc.), combine model diagrams, causal loop diagrams and other tools for comprehensive analysis to form a relatively complete character model.
 
-## What questions will I think about when reading biographies?
+### What questions will I think about when reading biographies?
 
 > | 2025-02-18 11:13 PM
 
@@ -5620,7 +5612,7 @@ Systematic modeling also requires a lot of experience, methods and theoretical s
 
 5. **Quality Review**: What excellent qualities do they have that are worth learning from? And what unsatisfactory qualities can we learn from or criticize?
 
-## Thinking about how to handle decisions
+### Thinking about how to handle decisions
 
 > | 2025-02-18 4:42 PM
 
@@ -5636,7 +5628,7 @@ However, in reality, it is impossible to achieve complete rationality. I underst
 
 Rational decision-making ability can be trained by accumulating a lot of thinking, applying logical thinking, statistical methods, and various deduction and analysis skills. At the same time, reflecting and summarizing every decision is actually a way to understand yourself.
 
-## How to understand collections, and whether collections are really valuable?
+### How to understand collections, and whether collections are really valuable?
 
 > | 2025-02-18 2:54 PM
 
@@ -5656,7 +5648,7 @@ The core is to "**record your own voice**", because your own ideas cannot be rep
 
 What is recorded is one's own `thoughts`.
 
-## How to classify knowledge
+### How to classify knowledge
 
 > | 2025-02-18 11:28 AM
 
@@ -5676,7 +5668,7 @@ They can be separated or they can intersect. The core is that we should carry ou
 
 refer to https://help.flomoapp.com/thinking/area.html
 
-## Reflect on your own approach
+### Reflect on your own approach
 
 > | 2025-02-18 12:56 PM
 
@@ -5688,7 +5680,7 @@ This is a great opportunity. We just need to observe ourselves and our thoughts.
 
 This method also helps us understand the other person. We can use the other person's name or code name as a label, and then record each of the other person's emotional expressions for observation and understanding.
 
-## Some thoughts on current note-taking software
+### Some thoughts on current note-taking software
 
 > | 2025-02-18 10:06 AM
 
@@ -5716,7 +5708,7 @@ When inspiration strikes, the records may be very fragmented. You can leave them
 
 出自 flomo: &lt;u>https://help.flomoapp.com/thinking/write-card.html&lt;/u>
 
-## Unique aesthetics brought by imperfection
+### Unique aesthetics brought by imperfection
 
 > | 2025-02-17 1:06 PM
 
@@ -5731,7 +5723,7 @@ Moreover, the imperfections and flaws in some people may make them more real and
 The cracks on an old teacup may reveal a greater sense of age and history.
 
 
-## More ...
+### More ...
 
 1. 2024 https://nsddd.top/zh/posts/2024-annual-review/
 
