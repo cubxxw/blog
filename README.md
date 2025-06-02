@@ -156,6 +156,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Metacognitive Transformation Review](https://nsddd.top/posts/metacognitive-transformation-review/)
 - [Mem0](https://nsddd.top/posts/mem0/)
 - [UFO](https://nsddd.top/posts/ufo/)
 - [Argo Cd](https://nsddd.top/posts/argo-cd/)
@@ -169,7 +170,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Independent Developer 开源项目深度学习](https://nsddd.top/posts/ai-projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://nsddd.top/posts/ai-projects/gpt-researcher/)
 - [Jina](https://nsddd.top/posts/ai-projects/jina/)
-- [2024 Annual Recap](https://nsddd.top/posts/2024-annual-review/)
+- [2024 Annual Review](https://nsddd.top/posts/2024-annual-review/)
 - [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
 - [Crafting Your Career Pathway: A Guide to Open Source Resume Builders and Expert Resume Tips](https://nsddd.top/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
