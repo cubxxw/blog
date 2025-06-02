@@ -229,7 +229,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
-- [Metacognitive Transformation Review](https://nsddd.top/zh/posts/metacognitive-transformation-review/)
+- [四个月的一些思考片段整理](https://nsddd.top/zh/posts/metacognitive-transformation-review/)
 - [Mem0 开源项目：AI记忆层的技术分析与实践](https://nsddd.top/zh/posts/mem0/)
 - [微软UFO项目深度解析：设计、实现、原理与架构](https://nsddd.top/zh/posts/ufo/)
 - [Argo CD: Declarative GitOps for Kubernetes Continuous Delivery](https://nsddd.top/zh/posts/argo-cd/)
