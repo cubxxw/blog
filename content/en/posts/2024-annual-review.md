@@ -12,14 +12,14 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
  - blog
-- Annual Recap
-- Travel
-- Product Development
-- Philosophy
+  - Annual Recap
+  - Travel
+  - Product Development
+  - Philosophy
 categories:
-- Personal Development
+  - Personal Development
 description: >
-This article is my annual review of 2024, covering my experiences and reflections on travel, product development, personal growth, etc. By sharing my experiences and thoughts, I hope to bring inspiration and space for reflection to myself and my readers.
+  This article is my annual review of 2024, covering my experiences and reflections on travel, product development, personal growth, etc. By sharing my experiences and thoughts, I hope to bring inspiration and space for reflection to myself and my readers.
 ---
 
 ## Introduction and self-positioning
