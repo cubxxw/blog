@@ -5730,9 +5730,8 @@ Moreover, the imperfections and flaws in some people may make them more real and
 
 The cracks on an old teacup may reveal a greater sense of age and history.
 
-#Perfect
 
-More: 
+## More ...
 
 1. 2024 https://nsddd.top/zh/posts/2024-annual-review/
 
