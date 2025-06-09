@@ -508,6 +508,8 @@ cover:
 
 </div>
 
+{{< calendly-date >}}
+
 ---
 
 <div class="philosophy-quote">

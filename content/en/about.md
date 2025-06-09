@@ -309,28 +309,28 @@ This trajectory began with farewell to the past, traversed through deep explorat
 <div class="usage-section compatible">
 <h3>✅ Compatible Mode</h3>
 <ul>
-<li><strong>People who face their true selves</strong>: No pretense, no hypocrisy, dare to expose inner contradictions</li>
-<li><strong>People who believe in "ichigo ichie"</strong>: Treasure every encounter, accept every farewell</li>
-<li><strong>People willing to think deeply</strong>: Not satisfied with surface answers, pursuing essence</li>
+<li><strong>People who face their true selves</strong>: No pretense, no facade, brave enough to expose inner contradictions and struggles.</li>
+<li><strong>People who believe in "ichigo ichie"</strong>: Treasure the uniqueness of every encounter, and accept the impermanence of every farewell with equanimity.</li>
+<li><strong>People willing to think deeply</strong>: Not satisfied with surface answers, having a persistent desire to explore the essence of things.</li>
 </ul>
 </div>
 
 <div class="usage-section bugs">
 <h3>⚠️ Known Bugs</h3>
 <ul>
-<li><strong>Allergic to "whatever"</strong>: Reject perfunctory attitudes, every choice is respect for life</li>
-<li><strong>Allergic to mediocrity</strong>: Desire to create, fear repetition</li>
-<li><strong>Easily moved to tears by beauty</strong>: Nepalese waiter's memory, friends' kindness, sunset's brilliance</li>
-<li><strong>Touched by small things</strong>: Like restaurant owners remembering my preferences</li>
+<li><strong>Severely allergic to "whatever"</strong>: Believe every choice should be respect for life, rejecting vagueness and perfunctoriness.</li>
+<li><strong>Allergic to mediocrity</strong>: Extremely desire creation and experience, fear of unchanging repetition.</li>
+<li><strong>Extremely low tear threshold</strong>: Can be moved to tears by a Nepalese waiter remembering my order from two weeks ago, or by friends' casual kindness.</li>
+<li><strong>Obsessed with details</strong>: Will appreciate a barista's dedication to latte art, and remember someone for the sincerity shown in small gestures.</li>
 </ul>
 </div>
 
 <div class="usage-section modes">
 <h3>🔄 Special Modes</h3>
 <ul>
-<li><strong>Flow State</strong>: Automatically activated after 20 minutes of hiking, focus on present, forget everything</li>
-<li><strong>Tipsy State</strong>: Creativity×2, but amplified emotions, possible tears</li>
-<li><strong>Dawn Sage</strong>: Clearest thinking at 4-6am, suitable for deep reflection</li>
+<li><strong>Flow State</strong>: Easily auto-activated after 20 minutes of hiking, manifested as extreme focus on the present, amplified senses, forgetting time and self.</li>
+<li><strong>Tipsy Mode</strong>: Creativity and emotional connection abilities significantly enhanced, but emotions are also amplified, potentially leading to unexpected honesty or tears.</li>
+<li><strong>Dawn Sage</strong>: Exceptionally clear thinking from 4-6 AM, the optimal time for deep reflection and self-analysis.</li>
 </ul>
 </div>
 </div>
@@ -342,24 +342,24 @@ This trajectory began with farewell to the past, traversed through deep explorat
 <div class="tech-icon">🌐</div>
 <h3>Open Source World</h3>
 <p><strong>OpenIM, OpenKF, Sealos</strong> - Core contributor</p>
-<p><strong>Believe in open source spirit</strong>: Share knowledge, connect hearts</p>
-<p><strong>Technology is a tool, humanity is the purpose</strong></p>
+<p><strong>Open source is a belief</strong>: Firmly believe that sharing knowledge and connecting thoughts is the cornerstone of advancing the world.</p>
+<p><strong>Technology is a tool, humanity is the purpose</strong>: The endpoint of code is to serve more authentic and beautiful experiences.</p>
 </div>
 
 <div class="tech-card">
 <div class="tech-icon">🤖</div>
 <h3>AI Era Thinking</h3>
-<p><strong>Not using AI to replace humans, but AI+Human=Superhuman</strong></p>
-<p><strong>Focus on diminishing marginal effects</strong>: Seeking new architectural breakthroughs</p>
-<p><strong>Software 2.0</strong>: The era when programs have brains</p>
+<p><strong>AI + Human = Superhuman</strong>: Not pursuing replacement, but dedicated to empowering individuals through AI, creating new value paradigms.</p>
+<p><strong>Software 2.0</strong>: Firmly believe software is evolving; future programs will have brains, and humans will become higher-level designers.</p>
+<p><strong>Beware of diminishing returns</strong>: Focus on disruptive innovations in algorithms and architecture, not simple computational power stacking.</p>
 </div>
 
 <div class="tech-card">
 <div class="tech-icon">💡</div>
 <h3>Product Philosophy</h3>
-<p><strong>MVP Stage</strong>: Pursue simplicity, rapid validation, user feedback is nourishment</p>
-<p><strong>Growth Stage</strong>: Standardization, scalability, but not losing soul</p>
-<p><strong>Design Principles</strong>: Three-dimensional thinking from user + product + technology perspectives</p>
+<p><strong>MVP is the art of trial and error</strong>: Pursue ultimate simplicity, embrace rapid failure, user feedback is the only nourishment for growth.</p>
+<p><strong>1 to N is the science of replication</strong>: Build systems in scaling, seek standardization in replication, but never lose the soul.</p>
+<p><strong>Three-dimensional thinking</strong>: Always stand at the intersection of user, product, and technology, seeking the most elegant balance.</p>
 </div>
 </div>
 
@@ -386,6 +386,40 @@ I believe in:
 - 🤝 **Open Source Spirit**: Sharing knowledge and giving back to the community
 - 🚀 **Bold Exploration**: Whether in technology or the world
 - 💪 **Self-Growth**: Constantly challenging my own boundaries
+
+## 🔄 Charging Methods
+
+<div class="charging-modes">
+<div class="charging-mode fast">
+<div class="mode-icon">⚡</div>
+<h3>Fast Charging Mode</h3>
+<ul>
+<li><strong>Highland trekking</strong>: In the extreme state of the body, seeking the infinite boundaries of the spirit.</li>
+<li><strong>Deep conversations</strong>: Intellectual collisions with interesting souls, exchanging each other's worlds.</li>
+<li><strong>Creating products</strong>: From 0 to 1, witnessing the process of an idea coming from nothing to something, most fulfilling.</li>
+</ul>
+</div>
+
+<div class="charging-mode slow">
+<div class="mode-icon">🧘</div>
+<h3>Slow Charging Mode</h3>
+<ul>
+<li><strong>A cup of Pokhara milk tea</strong>: Enjoying that small but lasting warmth of being thoughtfully remembered by a stranger.</li>
+<li><strong>A complete sunset</strong>: In Nepal's golden dusk, feeling the flow of time and the tranquility of life.</li>
+<li><strong>A coding flow session</strong>: In the pure logical world, finding harmony and order like poetry.</li>
+</ul>
+</div>
+
+<div class="charging-mode perpetual">
+<div class="mode-icon">♾️</div>
+<h3>Perpetual Motion Mode</h3>
+<ul>
+<li><strong>Creating happiness and value for the world</strong>: Whether it's products, stories, or thoughts.</li>
+<li><strong>Recording and sharing</strong>: Transforming first-hand experiences into words, leaving traces of thinking.</li>
+<li><strong>Maintaining curiosity about the world</strong>: This is the ultimate driving force for exploring oneself and understanding the world.</li>
+</ul>
+</div>
+</div>
 
 ## 📞 Contact Me
 

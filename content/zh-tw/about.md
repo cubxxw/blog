@@ -402,6 +402,102 @@ cover:
 <p>感謝你的關注，期待與你的交流與合作！</p>
 </div>
 
+## 🎯 使用須知
+
+<div class="usage-grid">
+<div class="usage-section compatible">
+<h3>✅ 相容模式</h3>
+<ul>
+<li><strong>面對真實自己的人</strong>：不偽裝，不虛飾，敢於暴露內心的矛盾與掙扎。</li>
+<li><strong>相信「一期一會」的人</strong>：珍惜每一次相遇的獨特，也坦然接受每一次離別的無常。</li>
+<li><strong>願意深度思考的人</strong>：不滿足於表面的答案，對事物本質有執著的探求慾。</li>
+</ul>
+</div>
+
+<div class="usage-section bugs">
+<h3>⚠️ 已知Bug</h3>
+<ul>
+<li><strong>對「隨便」嚴重過敏</strong>：認為每個選擇都應是對生活的尊重，拒絕含糊與敷衍。</li>
+<li><strong>對平庸過敏</strong>：極度渴望創造與體驗，對一成不變的重複感到恐懼。</li>
+<li><strong>淚點極低</strong>：會被尼泊爾服務員記住兩週前的點餐而感動，也會因朋友不經意的善意而落淚。</li>
+<li><strong>沉迷細節</strong>：會因咖啡師對拉花的執著而欣賞，也會因微小處體現的真誠而記住一個人。</li>
+</ul>
+</div>
+
+<div class="usage-section modes">
+<h3>🔄 特殊模式</h3>
+<ul>
+<li><strong>心流態 (Flow State)</strong>：徒步20分鐘後易自動激活，表現為極度專注當下，感官放大，忘記時間與自我。</li>
+<li><strong>微醺態 (Tipsy Mode)</strong>：創造力與感性連接能力顯著增強，但情緒也會被放大，可能導致意外的坦誠或哭泣。</li>
+<li><strong>凌晨賢者 (Dawn Sage)</strong>：清晨4-6點思維異常清晰，是深度思考和自我剖析的最佳時機。</li>
+</ul>
+</div>
+</div>
+
+## 🚀 技術棧 & 創造力
+
+<div class="tech-cards">
+<div class="tech-card">
+<div class="tech-icon">🌐</div>
+<h3>開源世界</h3>
+<p><strong>OpenIM, OpenKF, Sealos</strong> - 核心貢獻者</p>
+<p><strong>開源是一種信念</strong>：堅信分享知識、連接思想是推動世界進步的基石。</p>
+<p><strong>技術是工具，人性是目的</strong>：程式碼的終點是服務於更真實、更美好的體驗。</p>
+</div>
+
+<div class="tech-card">
+<div class="tech-icon">🤖</div>
+<h3>AI時代思考</h3>
+<p><strong>AI + 人 = 超人</strong>：不追求替代，而致力於通過AI賦能個體，創造新的價值範式。</p>
+<p><strong>Software 2.0</strong>：堅信軟體正在進化，未來的程式將擁有大腦，人將成為更高層次的設計師。</p>
+<p><strong>警惕邊際效應</strong>：關注演算法和架構的顛覆性創新，而非簡單的算力堆砌。</p>
+</div>
+
+<div class="tech-card">
+<div class="tech-icon">💡</div>
+<h3>產品哲學</h3>
+<p><strong>MVP是試錯的藝術</strong>：追求極致簡單，擁抱快速失敗，使用者回饋是成長的唯一養分。</p>
+<p><strong>1到N是複製的科學</strong>：在規模化中建立體系，在複製中尋求標準化，但不失靈魂。</p>
+<p><strong>三維思考</strong>：永遠站在使用者、產品、技術的交叉點上，尋找最優雅的平衡。</p>
+</div>
+</div>
+
+## 🔄 充電方式
+
+<div class="charging-modes">
+<div class="charging-mode fast">
+<div class="mode-icon">⚡</div>
+<h3>快充模式</h3>
+<ul>
+<li><strong>高原徒步</strong>：在身體的極限狀態中，尋找精神的無限邊界。</li>
+<li><strong>深度對話</strong>：與有趣的靈魂進行思想碰撞，交換彼此的世界。</li>
+<li><strong>創造產品</strong>：從0到1，見證一個想法從無到有的過程，最具成就感。</li>
+</ul>
+</div>
+
+<div class="charging-mode slow">
+<div class="mode-icon">🧘</div>
+<h3>慢充模式</h3>
+<ul>
+<li><strong>一杯博卡拉奶茶</strong>：享受那種被陌生人用心記住的、微小而持久的溫暖。</li>
+<li><strong>一次完整的日落</strong>：在尼泊爾的金色黃昏中，感受時間的流動與生命的靜謐。</li>
+<li><strong>一段程式碼心流</strong>：在純粹的邏輯世界裡，找到如同詩歌般的和諧與秩序。</li>
+</ul>
+</div>
+
+<div class="charging-mode perpetual">
+<div class="mode-icon">♾️</div>
+<h3>永動機模式</h3>
+<ul>
+<li><strong>為世界創造一些幸福和價值</strong>：無論是產品、故事還是思考。</li>
+<li><strong>記錄與分享</strong>：將一手經驗轉化為文字，留下思考的痕跡。</li>
+<li><strong>保持對世界的好奇心</strong>：這是探索自我、理解世界的終極驅動力。</li>
+</ul>
+</div>
+</div>
+
+</div>
+
 </div>
 
 <style>
