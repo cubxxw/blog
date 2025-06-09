@@ -1,0 +1,29 @@
+{{/*
+PolarSteps 嵌入 shortcode
+用法: {{< polarsteps id="18698850-korea-jeju-island" title="韩国偶来小路徒步" height="400" >}}
+参数:
+- id: PolarSteps 旅行的 ID (必需)
+- title: iframe 的标题 (可选)
+- height: iframe 的高度，默认400px (可选)
+*/}}
+
+{{ $id := .Get "id" }}
+{{ $title := .Get "title" | default "PolarSteps Travel" }}
+{{ $height := .Get "height" | default "400" }}
+
+{{ if $id }}
+<div class="polarsteps-container" style="margin: 20px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+  <iframe 
+    src="https://www.polarsteps.com/cubxxw/{{ $id }}/embed" 
+    title="{{ $title }}"
+    width="100%" 
+    height="{{ $height }}px" 
+    style="border: none; display: block;"
+    loading="lazy">
+  </iframe>
+</div>
+{{ else }}
+<div style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin: 20px 0;">
+  <strong>错误:</strong> PolarSteps shortcode 需要提供 'id' 参数
+</div>
+{{ end }} 

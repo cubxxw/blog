@@ -166,6 +166,11 @@ languages:
           url: /posts/
           pageRef: /posts
           weight: 15
+        - identifier: travel
+          name: 🌍Travel
+          url: /travel/
+          pageRef: /travel
+          weight: 20
         - identifier: categories
           name: 🗂️Categories
           url: categories/
@@ -235,6 +240,11 @@ languages:
           url: /posts/
           pageRef: /posts
           weight: 15
+        - identifier: travel
+          name: 🌍旅行足迹
+          url: /travel/
+          pageRef: /travel
+          weight: 20
         - identifier: categories
           name: 🗂️分类
           url: /categories/

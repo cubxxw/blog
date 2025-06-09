@@ -96,6 +96,11 @@ cover:
 <span class="toggle-text">展开详细轨迹</span>
 <span class="toggle-icon">📍</span>
 </button>
+<div style="text-align: center; margin-top: 15px;">
+<a href="/travel/" class="travel-page-link" style="display: inline-block; background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); color: #2d3436; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+🌍 查看完整旅行足迹页面 →
+</a>
+</div>
 </div>
 
 <div class="journey-summary">
