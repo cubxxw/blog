@@ -331,6 +331,7 @@ Ici, vous trouverez les derniers articles de blog les plus intéressants en fran
 - [Openkf 多架構鏡像的構建策略設計](https://nsddd.top/zh-tw/posts/openkf-multi-architecture-image/)
 - [我的第一個博客](https://nsddd.top/zh-tw/posts/my-first-blog/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/zh-tw/posts/kubernetes-an-article-to-get-started-quickly/)
+- [關於我](https://nsddd.top/zh-tw/about/)
 <!-- My-Blog-TW:END -->
 
 
