@@ -1,4 +1,34 @@
 {{- /* Head custom content area start */ -}}
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
+
+{{- /* Language Auto-Detection Script */ -}}
+<script src="{{ "/js/lang-redirect.js" | relURL }}" defer></script>
+
+{{- /* Add some inline styles for language selector if needed */ -}}
+<style>
+.lang-selector {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.lang-selector a {
+    text-decoration: none;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.lang-selector a:hover {
+    background-color: var(--theme);
+    color: var(--primary);
+}
+
+.lang-selector.active a {
+    background-color: var(--theme);
+    color: var(--primary);
+    font-weight: bold;
+}
+</style>
+
 {{- /* Head custom content area end */ -}}

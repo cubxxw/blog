@@ -76,7 +76,7 @@ params:
     - name: facebook
       url: https://www.facebook.com/profile.php?id=100034435372354
     - name: wechat
-      url: https://sm.nsddd.top/sm0d220ad72063197b9875379403f6c88.jpg
+      url: /wechat.jpg
     - name: bilibili
       url: https://space.bilibili.com/1233089591
     - name: youtube
@@ -140,6 +140,11 @@ outputs:
 
 # languageCode: en-us
 DefaultContentLanguage: en
+# 启用多语言模式
+defaultContentLanguageInSubdir: false
+# 禁用语言前缀移除（确保URL结构正确）
+disableLanguages: []
+
 languages:
   en:
     disabled: false
@@ -153,8 +158,8 @@ languages:
       main:
         - identifier: lint
           name: 🤸About me
-          url: https://resume.nsddd.top
-          pageRef: /lint
+          url: /about/
+          pageRef: /about
           weight: 10
         - identifier: posts
           name: 📝Posts
@@ -222,8 +227,8 @@ languages:
       main:
         - identifier: lint
           name: 🤸关于我
-          url: https://resume.nsddd.top
-          pageRef: /lint
+          url: /about/
+          pageRef: /about
           weight: 10
         - identifier: posts
           name: 📝文章
@@ -290,8 +295,8 @@ languages:
       main:
         - identifier: lint
           name: 🤸關於我
-          url: https://resume.nsddd.top
-          pageRef: /lint
+          url: /about/
+          pageRef: /about
           weight: 10
         - identifier: posts
           name: 📝文章

@@ -1,0 +1,25 @@
+{{- /* Language Switcher Component */ -}}
+<div class="language-switcher" style="text-align: center; margin: 10px 0;">
+    {{- $currentLang := .Language.Lang -}}
+    {{- range .Site.Languages -}}
+        {{- $langCode := .Lang -}}
+        {{- $langName := .LanguageName -}}
+        
+        <span class="lang-selector{{ if eq $langCode $currentLang }} active{{ end }}">
+            {{- if eq $langCode $currentLang -}}
+                <span>{{ $langName }}</span>
+            {{- else -}}
+                {{- $baseURL := $.Site.BaseURL -}}
+                {{- if eq $langCode $.Site.DefaultContentLanguage -}}
+                    <a href="{{ $baseURL }}" onclick="setLanguagePreference('{{ $langCode }}')">{{ $langName }}</a>
+                {{- else -}}
+                    <a href="{{ $baseURL }}{{ $langCode }}/" onclick="setLanguagePreference('{{ $langCode }}')">{{ $langName }}</a>
+                {{- end -}}
+            {{- end -}}
+        </span>
+        
+        {{- if not (eq . (index $.Site.Languages (sub (len $.Site.Languages) 1))) -}}
+            <span style="margin: 0 5px;">|</span>
+        {{- end -}}
+    {{- end -}}
+</div> 
