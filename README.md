@@ -298,6 +298,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [跨平台以及多架构编译设计](https://nsddd.top/zh/posts/cross-platform-compilation/)
 - [Kubernetes一篇快速入门的文章](https://nsddd.top/zh/posts/kubernetes-an-article-to-get-started-quickly/)
 - [参与我们的区块链学习平台项目](https://nsddd.top/zh/posts/participating-in-this-project/)
+- [关于我](https://nsddd.top/zh/about/)
 <!-- My-Blog-ZH:END -->
 
 
