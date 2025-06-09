@@ -188,6 +188,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Vector Database Learning](https://nsddd.top/posts/vector-database-learning/)
 - [OpenIM: Building an Efficient Version Control and Testing Workflow](https://nsddd.top/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
 - [Emerging Challenges and Trends in 2024](https://nsddd.top/posts/emerging-challenges-and-trends-in-2024/)
+- [🌍 Travel Footprints | 旅行足迹](https://nsddd.top/travel/)
 - [2023 Annual Summary Reflections and Aspirations](https://nsddd.top/posts/2023-annual-summary-reflections-and-aspirations/)
 - [GitOps Practice Theory: In-Depth Analysis of Kubernetes Deployment Strategies](https://nsddd.top/posts/gitops-practice-theory-part/)
 - [Deployment and Design of Management Backend and Monitoring](https://nsddd.top/posts/deployment-and-design-of-management-backend-and-monitoring/)
@@ -221,6 +222,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/posts/kubernetes-an-article-to-get-started-quickly/)
+- [About Me](https://nsddd.top/about/)
 <!-- My-Blog-EN:END -->
 
 
