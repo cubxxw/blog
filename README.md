@@ -221,6 +221,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/posts/kubernetes-an-article-to-get-started-quickly/)
+- [About Me](https://nsddd.top/about/)
 <!-- My-Blog-EN:END -->
 
 
