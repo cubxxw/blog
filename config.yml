@@ -55,7 +55,7 @@ params:
     customCSS: ["css/custom.css"]
   label:
     text: Home
-    icon: http://sm.nsddd.top/sm202309161719007.png
+    icon: ./assets/cubxxw-image.jpg
     iconHeight: 35
   homeInfoParams:
     Title: Hi there 👋

@@ -83,7 +83,7 @@ The articles published on the blog are independent, which is what I have seen an
 [zhihu]: https://www.zhihu.com/people/3293172751
 
 <a href="https://www.zhihu.com/people/3293172751" target="_blank"><img src="https://img.shields.io/badge/%E7%9F%A5%E4%B9%8E-%E9%93%BE%E5%AD%A6%E8%80%85%E7%A4%BE%E5%8C%BA-blue?logo=zhihu&style=flat-square"></a>
-<a href="http://sm.nsddd.top/sm0d220ad72063197b9875379403f6c88.jpg" target="_blank"><img src="https://img.shields.io/badge/%E5%BE%AE%E4%BF%A1-smile-brightgreen?logo=wechat&style=flat-square"></a>
+<a href="assets/wechat.jpg" target="_blank"><img src="https://img.shields.io/badge/%E5%BE%AE%E4%BF%A1-smile-brightgreen?logo=wechat&style=flat-square"></a>
 
 
 **Default English blog subscription：**
