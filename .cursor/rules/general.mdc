@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+1. 启动博客使用 make 命令： 编译使用 `make build`
