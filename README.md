@@ -15,33 +15,8 @@
 > 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企到现在创业，现在正在环游世界，在思考，在记录，在创造 ..
 > + [关于我](https://nsddd.top/zh/about/)
 > + [一些碎片的思考笔记](https://diary.nsddd.top/flomo-original/)
+> + [跟着我看我环游世界旅居的笔记](https://www.polarsteps.com/cubxxw)
 
-## AI 开源项目学习
-
-在 AI 时代，我们需要更好地理解和利用 AI 技术。这个栏目专注于 AI 相关开源项目的深度学习和实践。
-
-### 🎯 栏目目标
-
-- 深入解读优秀的 AI 开源项目
-- 分享 AI 辅助编程的实践经验
-- 探讨 AI 项目的工程化最佳实践
-- 记录项目学习的思考与收获
-
-### 📚 内容组织
-
-- **项目选择**：优先关注 LLM、向量数据库、AI 框架等热门领域
-- **学习方法**：结合 AI 工具辅助源码阅读和理解
-- **实践导向**：强调动手实践和实际应用
-- **经验分享**：包含部署、优化、改进建议等
-
-### 🚀 快速开始
-
-1. 访问 [AI Projects](/categories/ai-open-source/) 查看所有项目学习笔记
-2. 使用模板创建新的项目学习笔记：
-   ```bash
-   hugo new content/posts/ai-projects/项目名称.md
-   ```
-3. 按照模板结构记录学习过程和心得
 
 ### 🔍 项目导航
 
