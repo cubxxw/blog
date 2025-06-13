@@ -12,7 +12,9 @@
 > This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
 
 > [!NOTE]
-> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企到现在创业，完全的旅居和远程工作过程中，在生活、工作、旅游过程中的记录在个人博客新开的 DN 主题中，地址是： [nsddd.top/dn](https://nsddd.top/dn), 记录了个人经历、成长与个人的感想。希望可以帮助到更多的国人同胞、技术从业者、远程工作者，AI 创业者找到方向与幸福。
+> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企到现在创业，现在正在环游世界，在思考，在记录，在创造 ..
+> + [关于我](https://nsddd.top/zh/about/)
+> + [一些碎片的思考笔记](https://diary.nsddd.top/flomo-original/)
 
 ## AI 开源项目学习
 
