@@ -16,7 +16,7 @@ tags:
   - polarsteps
   - tutorial
 categories:
-  - 个人成长 (Personal Development)
+  - '个人成长 (Personal Development)'
 description: >
     介绍如何将 PolarSteps 的旅行记录优雅地集成到个人博客中，提升旅行内容的展示效果和用户体验。从基础嵌入到高级定制，让你的旅行故事更加生动精彩。
 ---
