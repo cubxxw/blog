@@ -18,7 +18,7 @@ tags:
   - exploration
   - hiking
 categories:
-  - 个人成长 (Personal Development)
+  - '个人成长 (Personal Development)'
 description: >
     记录我的旅行足迹，从韩国偶来小路的徒步到尼泊尔ACT的高原挑战，从东南亚的文化探索到中国各地的深度体验。每一段旅程都是成长的印记，每一个足迹都诉说着故事。
 ---
