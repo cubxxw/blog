@@ -208,6 +208,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [🌍 旅行足迹 | Travel Footprints](https://nsddd.top/zh/travel/)
 - [四个月的一些思考片段整理](https://nsddd.top/zh/posts/metacognitive-transformation-review/)
 - [Mem0 开源项目：AI记忆层的技术分析与实践](https://nsddd.top/zh/posts/mem0/)
 - [微软UFO项目深度解析：设计、实现、原理与架构](https://nsddd.top/zh/posts/ufo/)
@@ -242,7 +243,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [向量数据库的学习](https://nsddd.top/zh/posts/vector-database-learning/)
 - [OpenIM：构建高效的版本控制和测试工作流程](https://nsddd.top/zh/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
 - [AI元年: 2024年的新兴挑战与趋势](https://nsddd.top/zh/posts/emerging-challenges-and-trends-in-2024/)
-- [🌍 旅行足迹 | Travel Footprints](https://nsddd.top/zh/travel/)
 - [回顾与前瞻：我的2023年度总结报告](https://nsddd.top/zh/posts/2023-annual-summary-reflections-and-aspirations/)
 - [对开源商业化的思考 & 全球流量大会（GTC）学习以及总结](https://nsddd.top/zh/posts/openim-open-source-business-journey/)
 - [GitOps 实践理论：Kubernetes 部署策略深入解析](https://nsddd.top/zh/posts/gitops-practice-theory-part/)
