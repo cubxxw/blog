@@ -266,7 +266,7 @@ languages:
           weight: 60
         - identifier: diary
           name: 📔日记
-          url: https://diary.nsddd.top/flomo-enhanced
+          url: https://diary.nsddd.top/flomo-original
           weight: 70
     params:
       profileMode:
