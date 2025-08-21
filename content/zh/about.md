@@ -57,8 +57,10 @@ cover:
 <h3>徒步哲学家</h3>
 <ul>
 <li><strong>用脚步丈量世界，用心跳感受存在</strong></li>
+<li><strong>🇯🇵 富士山登顶</strong>：3,776m，从日本圣山之巅看日出，天地交汇之处</li>
 <li><strong>🇳🇵 ACT高原徒步</strong>：100 km，Tilicho Lake，那些眼泪是成长的勋章</li>
-<li><strong>🇰🇷 偶来小路</strong>：100km 每一步都是当下，每一景都是心流</li>
+<li><strong>🇰🇷 济州偶来小路</strong>：100km 海岸朝圣之路，每一步都是当下，每一景都是心流</li>
+<li><strong>🇻🇳 越南山地徒步</strong>：沙坝梯田和下龙湾喀斯特，稻田与大海的交汇</li>
 </ul>
 </div>
 </div>
@@ -107,22 +109,27 @@ cover:
 <div class="journey-stats">
 <div class="stat-item">
 <span class="stat-icon">🌏</span>
-<span class="stat-number">6</span>
+<span class="stat-number">9</span>
 <span class="stat-label">个国家</span>
 </div>
 <div class="stat-item">
 <span class="stat-icon">🏙️</span>
-<span class="stat-number">20+</span>
+<span class="stat-number">35+</span>
 <span class="stat-label">座城市</span>
 </div>
 <div class="stat-item">
 <span class="stat-icon">🥾</span>
-<span class="stat-number">200+</span>
+<span class="stat-number">400+</span>
 <span class="stat-label">km 徒步</span>
 </div>
 <div class="stat-item">
+<span class="stat-icon">⛰️</span>
+<span class="stat-number">3,776</span>
+<span class="stat-label">m 富士山</span>
+</div>
+<div class="stat-item">
 <span class="stat-icon">⏰</span>
-<span class="stat-number">8</span>
+<span class="stat-number">12</span>
 <span class="stat-label">个月</span>
 </div>
 </div>
@@ -131,6 +138,9 @@ cover:
 <div class="route-line"></div>
 <div class="route-point start" data-location="香港">🇭🇰</div>
 <div class="route-point china" data-location="中国漫游">🇨🇳</div>
+<div class="route-point vietnam" data-location="越南">🇻🇳</div>
+<div class="route-point japan" data-location="日本+富士山">🇯🇵</div>
+<div class="route-point korea" data-location="韩国+济州">🇰🇷</div>
 <div class="route-point malaysia" data-location="马来西亚">🇲🇾</div>
 <div class="route-point singapore" data-location="新加坡">🇸🇬</div>
 <div class="route-point thailand" data-location="泰国">🇹🇭</div>

@@ -57,8 +57,10 @@ I'm **Xinwei Xiong (bear)** 🐻. Open source enthusiast, digital nomad, AI entr
 <h3>Hiking Philosopher</h3>
 <ul>
 <li><strong>Measuring the world with footsteps, feeling existence with heartbeats</strong></li>
+<li><strong>🇯🇵 Mount Fuji Summit</strong>: 3,776m, sunrise from Japan's sacred peak, where earth meets sky</li>
 <li><strong>🇳🇵 ACT Highland Trekking</strong>: 100 km, Tilicho Lake, those tears were badges of growth</li>
-<li><strong>🇰🇷 Jeju Olle Trail</strong>: 100km, every step is present, every view is flow</li>
+<li><strong>🇰🇷 Jeju Olle Trail</strong>: 100km coastal pilgrimage, every step is present, every view is flow</li>
+<li><strong>🇻🇳 Vietnam Mountain Trails</strong>: Sapa terraces and Ha Long Bay karsts, where rice meets sea</li>
 </ul>
 </div>
 </div>
@@ -91,7 +93,7 @@ I'm **Xinwei Xiong (bear)** 🐻. Open source enthusiast, digital nomad, AI entr
 ## 🌍 Digital Nomad Footprints
 
 <div class="journey-intro">
-This trajectory began with farewell to the past, traversed through deep exploration of homeland, extended to cultural immersion in Southeast Asia, and culminated in spiritual transformation amidst the magnificent Himalayas.
+This trajectory began with farewell to the past, traversed through deep exploration of homeland, extended to cultural immersion in East and Southeast Asia, and culminated in spiritual transformation amidst the magnificent Himalayas. From Vietnam's vibrant street food to Japan's sacred Mount Fuji, from Korea's Jeju trails to the ultimate challenge of Nepal's ACT.
 <button class="journey-toggle" onclick="toggleJourney()">
 <span class="toggle-text">Expand Detailed Journey</span>
 <span class="toggle-icon">📍</span>
@@ -102,22 +104,27 @@ This trajectory began with farewell to the past, traversed through deep explorat
 <div class="journey-stats">
 <div class="stat-item">
 <span class="stat-icon">🌏</span>
-<span class="stat-number">6</span>
+<span class="stat-number">9</span>
 <span class="stat-label">Countries</span>
 </div>
 <div class="stat-item">
 <span class="stat-icon">🏙️</span>
-<span class="stat-number">20+</span>
+<span class="stat-number">35+</span>
 <span class="stat-label">Cities</span>
 </div>
 <div class="stat-item">
 <span class="stat-icon">🥾</span>
-<span class="stat-number">200+</span>
+<span class="stat-number">400+</span>
 <span class="stat-label">km Hiking</span>
 </div>
 <div class="stat-item">
+<span class="stat-icon">⛰️</span>
+<span class="stat-number">3,776</span>
+<span class="stat-label">m Mt. Fuji</span>
+</div>
+<div class="stat-item">
 <span class="stat-icon">⏰</span>
-<span class="stat-number">8</span>
+<span class="stat-number">12</span>
 <span class="stat-label">Months</span>
 </div>
 </div>
@@ -126,6 +133,9 @@ This trajectory began with farewell to the past, traversed through deep explorat
 <div class="route-line"></div>
 <div class="route-point start" data-location="Hong Kong">🇭🇰</div>
 <div class="route-point china" data-location="China Journey">🇨🇳</div>
+<div class="route-point vietnam" data-location="Vietnam">🇻🇳</div>
+<div class="route-point japan" data-location="Japan + Mt. Fuji">🇯🇵</div>
+<div class="route-point korea" data-location="South Korea + Jeju">🇰🇷</div>
 <div class="route-point malaysia" data-location="Malaysia">🇲🇾</div>
 <div class="route-point singapore" data-location="Singapore">🇸🇬</div>
 <div class="route-point thailand" data-location="Thailand">🇹🇭</div>

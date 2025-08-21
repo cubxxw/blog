@@ -251,18 +251,23 @@ description: >
 <div class="travel-stats">
   <div class="stat-card">
     <span class="stat-icon">🌏</span>
-    <span class="stat-number">6</span>
+    <span class="stat-number">9</span>
     <span class="stat-label">个国家</span>
   </div>
   <div class="stat-card">
     <span class="stat-icon">🏙️</span>
-    <span class="stat-number">25+</span>
+    <span class="stat-number">35+</span>
     <span class="stat-label">座城市</span>
   </div>
   <div class="stat-card">
     <span class="stat-icon">🥾</span>
-    <span class="stat-number">300+</span>
+    <span class="stat-number">400+</span>
     <span class="stat-label">km 徒步</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-icon">⛰️</span>
+    <span class="stat-number">3,776</span>
+    <span class="stat-label">m 富士山</span>
   </div>
   <div class="stat-card">
     <span class="stat-icon">⏰</span>
@@ -364,6 +369,57 @@ description: >
       <iframe class="polarsteps-embed" src="https://www.polarsteps.com/cubxxw/18711877-malaysia-singapore-maca/embed" title="马来西亚新加坡"></iframe>
       <div class="journey-description">
         探索马来半岛的多元文化，从吉隆坡的现代都市到新加坡的花园城市，体验不同文化背景下华人社区的独特魅力。
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-card highlight-card">
+    <div class="journey-header">
+      <h3>🇯🇵 日本富士山登顶</h3>
+      <div class="journey-meta">
+        <span>📍 静冈县 • 富士山</span>
+        <span>⛰️ 3,776m 日本最高峰</span>
+        <span>🗾 圣山朝圣</span>
+      </div>
+    </div>
+    <div class="journey-content">
+      <iframe class="polarsteps-embed" src="https://www.polarsteps.com/cubxxw/18712078-japan-mount-fuji/embed" title="日本富士山登顶"></iframe>
+      <div class="journey-description">
+        <strong>从日本圣山之巅看日出，天地交汇之处。</strong> 攀登富士山不仅是一次身体的挑战，更是一场心灵的朝圣。在3,776米的山顶迎接日本的第一缕阳光，感受"一生一次"的震撼体验。
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-header">
+      <h3>🇻🇳 越南文化探索</h3>
+      <div class="journey-meta">
+        <span>📍 沙坝 • 下龙湾 • 河内</span>
+        <span>🌾 梯田与海景</span>
+        <span>🍜 美食文化</span>
+      </div>
+    </div>
+    <div class="journey-content">
+      <iframe class="polarsteps-embed" src="https://www.polarsteps.com/cubxxw/18712077-vietnam-cultural-journey/embed" title="越南文化探索"></iframe>
+      <div class="journey-description">
+        从沙坝的壮丽梯田到下龙湾的喀斯特奇观，越南展现了东南亚独特的文化魅力。在这里，稻田与大海交汇，传统与现代融合，每一刻都是文化的深度浸润。
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-card">
+    <div class="journey-header">
+      <h3>🇰🇷 韩国首尔-济州深度游</h3>
+      <div class="journey-meta">
+        <span>📍 首尔 • 济州岛 • 釜山</span>
+        <span>🏙️ 现代都市</span>
+        <span>🏝️ 海岛风情</span>
+      </div>
+    </div>
+    <div class="journey-content">
+      <iframe class="polarsteps-embed" src="https://www.polarsteps.com/cubxxw/18712076-korea-seoul-jeju/embed" title="韩国首尔济州深度游"></iframe>
+      <div class="journey-description">
+        探索韩国的现代与传统：从首尔的繁华都市到济州岛的自然风光，再到釜山的海港魅力。体验韩流文化的同时，感受韩国独特的自然与人文景观。
       </div>
     </div>
   </div>
