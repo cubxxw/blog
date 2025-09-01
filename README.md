@@ -208,11 +208,16 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2025年8月思考笔记](https://nsddd.top/zh/posts/2025-08-thought-notes/)
+- [2025年7月思考笔记](https://nsddd.top/zh/posts/2025-07-thought-notes/)
+- [2025年6月思考笔记](https://nsddd.top/zh/posts/2025-06-thought-notes/)
 - [🌍 旅行足迹 | Travel Footprints](https://nsddd.top/zh/travel/)
 - [四个月的一些思考片段整理](https://nsddd.top/zh/posts/metacognitive-transformation-review/)
+- [2025年5月思考笔记](https://nsddd.top/zh/posts/2025-05-thought-notes/)
 - [Mem0 开源项目：AI记忆层的技术分析与实践](https://nsddd.top/zh/posts/mem0/)
 - [微软UFO项目深度解析：设计、实现、原理与架构](https://nsddd.top/zh/posts/ufo/)
 - [Argo CD: Declarative GitOps for Kubernetes Continuous Delivery](https://nsddd.top/zh/posts/argo-cd/)
+- [2025年4月思考笔记](https://nsddd.top/zh/posts/2025-04-thought-notes/)
 - [Ai Recommend 技术、实践和深度学习](https://nsddd.top/zh/posts/ai-projects/ai-recommend/)
 - [Google NotebookLM 的 RAG 深度调研思考](https://nsddd.top/zh/posts/ai-projects/notebooklm/)
 - [AI 时代初创企业的测试驱动开发（TDD）实践方案](https://nsddd.top/zh/posts/ai-projects/tdd/)
@@ -223,6 +228,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [独立开发者必备技能及现代工具 & 分别的上手指导](https://nsddd.top/zh/posts/ai-projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/gpt-researcher/)
 - [Jina 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/jina/)
+- [2025年3月思考笔记](https://nsddd.top/zh/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://nsddd.top/zh/posts/2024-annual-review/)
 - [Kubernetes 资源与学习路径总结](https://nsddd.top/zh/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://nsddd.top/zh/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
