@@ -133,10 +133,15 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [2025 August Thought Notes](https://nsddd.top/posts/2025-08-thought-notes/)
+- [2025 July Thought Notes](https://nsddd.top/posts/2025-07-thought-notes/)
+- [2025 June Thought Notes](https://nsddd.top/posts/2025-06-thought-notes/)
 - [Metacognitive Transformation Review](https://nsddd.top/posts/metacognitive-transformation-review/)
+- [2025 May Thought Notes](https://nsddd.top/posts/2025-05-thought-notes/)
 - [Mem0](https://nsddd.top/posts/mem0/)
 - [UFO](https://nsddd.top/posts/ufo/)
 - [Argo Cd](https://nsddd.top/posts/argo-cd/)
+- [2025 April Thought Notes](https://nsddd.top/posts/2025-04-thought-notes/)
 - [Ai Recommend 开源项目深度学习](https://nsddd.top/posts/ai-projects/ai-recommend/)
 - [Notebooklm 开源项目深度学习](https://nsddd.top/posts/ai-projects/notebooklm/)
 - [Tdd 开源项目深度学习](https://nsddd.top/posts/ai-projects/tdd/)
@@ -147,6 +152,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Independent Developer 开源项目深度学习](https://nsddd.top/posts/ai-projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://nsddd.top/posts/ai-projects/gpt-researcher/)
 - [Jina](https://nsddd.top/posts/ai-projects/jina/)
+- [2025 March Thought Notes](https://nsddd.top/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://nsddd.top/posts/2024-annual-review/)
 - [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
