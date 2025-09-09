@@ -1,8 +1,8 @@
 ---
 title: "关于我"
 layout: "single"
-description: "熊鑫伟(cubxxw) - 在极致理性中找到感性，在深度感性中建构理性"
-summary: "使用说明书：我"
+description: "熊鑫伟(cubxxw) - 个人使用说明书 v2025.1"
+summary: "个人使用说明书 v2025.1"
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -14,1526 +14,1657 @@ cover:
     hidden: true
 ---
 
-<div class="about-container">
+<div class="manual-container">
 
-# 👋 使用说明书：我
+# 📋 个人使用说明书 v2025.1
 
-<div class="intro-section">
-<div class="intro-content">
-<img src="/images/cubxxw-image.jpg" alt="熊鑫伟" class="profile-image">
-
-<div class="intro-text">
-<div class="product-specs">
-<span class="spec-label">型号</span> 后·理性感性主义者 2025<br>
-<span class="spec-label">出厂理念</span> 在极致理性中找到感性，在深度感性中建构理性<br>
-<span class="spec-label">核心信念</span> 我的忠诚是对冒险的忠诚 ☀️
+<div class="product-header">
+<div class="product-info">
+<div class="product-image">
+<img src="/images/cubxxw-image.jpg" alt="熊鑫伟" class="manual-avatar">
+<div class="product-badge">PREMIUM</div>
 </div>
 
-我是 **熊鑫伟 (Xinwei Xiong)**，别名 **bear** 🐻。开源爱好者、数字游民、AI创业者。更重要的是，我是那个在ACT高原哭过、为服务员记住我两周前点的菜而感动、相信"极致理性就是感性"的人。
-
-> *"我的人生主线：更了解自己，更了解世界"*
+<div class="product-details">
+<h2 class="product-name">熊鑫伟 (Xinwei Xiong)</h2>
+<div class="product-subtitle">后·理性感性主义者 | Digital Nomad | AI Collaborator</div>
+<div class="serial-number">S/N: BEAR-2025-001</div>
 </div>
 </div>
 </div>
 
-## 🧭 核心配置
+## 📊 系统核心架构
 
-<div class="config-grid">
-<div class="config-item">
-<div class="config-icon">💡</div>
-<div class="config-content">
-<h3>思考收集器</h3>
-<ul>
-<li><strong>碎片化记录，结构化沉淀</strong>：每个念头都是养分</li>
-<li><strong>感性原料 + 理性加工</strong>：从直觉到洞察的完整链路</li>
-<li><strong>一手经验优于二手观点</strong>：相信经验比观点更宝贵</li>
-</ul>
+<div class="spec-table">
+<table class="specifications">
+<thead>
+<tr>
+<th>系统组件</th>
+<th>运行参数</th>
+<th>性能指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品型号</td>
+<td>后·理性感性主义者 v2025.1</td>
+<td>✨ 限量定制版</td>
+</tr>
+<tr>
+<td>核心内核</td>
+<td>在极致理性中找到感性，在深度感性中建构理性</td>
+<td>🧠 哲学级稳定</td>
+</tr>
+<tr>
+<td>精神操作系统</td>
+<td>Consciousness v29.8 (Wanderer Edition)</td>
+<td>🔄 持续自我迭代</td>
+</tr>
+<tr>
+<td>思维处理器</td>
+<td>元认知双核 @ 24/7 运行</td>
+<td>⚡ 低功耗高效能</td>
+</tr>
+<tr>
+<td>情感算法</td>
+<td>感动式精细处理引擎</td>
+<td>💫 价值理性优先</td>
+</tr>
+<tr>
+<td>体验内存</td>
+<td>12个月·9个国家·35+城市</td>
+<td>🌍 无限可扩展</td>
+</tr>
+<tr>
+<td>知识存储</td>
+<td>一手经验 > 二手观点</td>
+<td>🎯 高质量数据源</td>
+</tr>
+<tr>
+<td>物理存储</td>
+<td>徒步里程：400+ km</td>
+<td>🥾 高耐久性测试</td>
+</tr>
+<tr>
+<td>连接协议</td>
+<td>深度对话·真诚交流·心灵共振</td>
+<td>🔗 全频段兼容</td>
+</tr>
+<tr>
+<td>能源系统</td>
+<td>好奇心 + 咖啡 + 山峰日出</td>
+<td>♻️ 可持续驱动</td>
+</tr>
+<tr>
+<td>使命内核</td>
+<td>"我的忠诚是对冒险的忠诚"</td>
+<td>☀️ 核心驱动力</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+## ⚙️ 核心能力组件
+
+<div class="feature-modules">
+<div class="module-card">
+<div class="module-header">
+<div class="module-icon">🧠</div>
+<h3>元认知引擎 v4.0</h3>
+<span class="module-status">PREMIUM</span>
+</div>
+<div class="module-specs">
+<div class="spec-row">
+<span class="spec-name">处理架构</span>
+<span class="spec-value">感性输入 ⇄ 理性加工 ⇄ 洞察输出</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">认知策略</span>
+<span class="spec-value">思考的思考 · 学习如何学习</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">优化算法</span>
+<span class="spec-value">碎片化记录 → 结构化沉淀</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">核心特性</span>
+<span class="spec-value">自我觉察 · 持续反思 · 迭代升级</span>
+</div>
 </div>
 </div>
 
-<div class="config-item">
-<div class="config-icon">🥾</div>
-<div class="config-content">
-<h3>徒步哲学家</h3>
-<ul>
-<li><strong>用脚步丈量世界，用心跳感受存在</strong></li>
-<li><strong>🇯🇵 富士山登顶</strong>：3,776m，从日本圣山之巅看日出，天地交汇之处</li>
-<li><strong>🇳🇵 ACT高原徒步</strong>：100 km，Tilicho Lake，那些眼泪是成长的勋章</li>
-<li><strong>🇰🇷 济州偶来小路</strong>：100km 海岸朝圣之路，每一步都是当下，每一景都是心流</li>
-<li><strong>🇻🇳 越南山地徒步</strong>：沙坝梯田和下龙湾喀斯特，稻田与大海的交汇</li>
-</ul>
+<div class="module-card">
+<div class="module-header">
+<div class="module-icon">💫</div>
+<h3>情感智能系统</h3>
+<span class="module-status">ADVANCED</span>
 </div>
+<div class="module-specs">
+<div class="spec-row">
+<span class="spec-name">处理模式</span>
+<span class="spec-value">感动式精细 > 完美主义式</span>
 </div>
-
-<div class="config-item">
-<div class="config-icon">🤖</div>
-<div class="config-content">
-<h3>AI协作者</h3>
-<ul>
-<li><strong>不是让AI替代人，而是让人成为"超人"</strong></li>
-<li><strong>相信人机共生的未来</strong>：Software 2.0时代的先行者</li>
-<li><strong>从0-1到1-n</strong>：用不同的体系方法应对不同阶段</li>
-</ul>
+<div class="spec-row">
+<span class="spec-name">价值算法</span>
+<span class="spec-value">价值理性 > 工具理性</span>
 </div>
+<div class="spec-row">
+<span class="spec-name">情感接纳</span>
+<span class="spec-value">客观记录 · 不评判 · 全然接纳</span>
 </div>
-
-<div class="config-item">
-<div class="config-icon">💻</div>
-<div class="config-content">
-<h3>感性工程师</h3>
-<ul>
-<li><strong>代码有温度，产品有灵魂</strong></li>
-<li><strong>站在用户、产品、技术的交叉点思考</strong></li>
-<li><strong>追求简洁的深度美学</strong>：大道至简，但简单不等于容易</li>
-</ul>
+<div class="spec-row">
+<span class="spec-name">美学引擎</span>
+<span class="spec-value">日式物哀 · 残缺之美 · 真实感动</span>
 </div>
 </div>
 </div>
 
-## 🌍 数字游民足迹
+<div class="module-card">
+<div class="module-header">
+<div class="module-icon">🌍</div>
+<h3>体验探索引擎</h3>
+<span class="module-status">ACTIVE</span>
+</div>
+<div class="module-specs">
+<div class="spec-row">
+<span class="spec-name">覆盖范围</span>
+<span class="spec-value">9国 · 35+城市 · 全海拔测试</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">物理验证</span>
+<span class="spec-value">400+ km 高强度徒步认证</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">心流触发</span>
+<span class="spec-value">步行冥想 · 山峰日出 · 专注当下</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">数据源</span>
+<span class="spec-value">一手经验 >> 二手观点</span>
+</div>
+</div>
+</div>
 
-<div class="journey-intro">
-这条轨迹始于对过去的告别，贯穿了对故土的深度探索，延伸至东南亚的文化浸润，最终在喜马拉雅的壮丽风光中迎来了心灵的蜕变。
-<button class="journey-toggle" onclick="toggleJourney()">
-<span class="toggle-text">展开详细轨迹</span>
-<span class="toggle-icon">📍</span>
-</button>
-<div style="text-align: center; margin-top: 15px;">
-<a href="/travel/" class="travel-page-link" style="display: inline-block; background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); color: #2d3436; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-🌍 查看完整旅行足迹页面 →
-</a>
+<div class="module-card">
+<div class="module-header">
+<div class="module-icon">🤖</div>
+<h3>AI协同框架</h3>
+<span class="module-status">BETA</span>
+</div>
+<div class="module-specs">
+<div class="spec-row">
+<span class="spec-name">协作理念</span>
+<span class="spec-value">AI + Human = Superhuman</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">应用场景</span>
+<span class="spec-value">思考放大器 · 创意催化剂</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">哲学立场</span>
+<span class="spec-value">增强而非替代人类智慧</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">未来观</span>
+<span class="spec-value">Software 2.0 时代的先行者</span>
+</div>
+</div>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-icon">🔗</div>
+<h3>桥梁建构系统</h3>
+<span class="module-status">STABLE</span>
+</div>
+<div class="module-specs">
+<div class="spec-row">
+<span class="spec-name">连接维度</span>
+<span class="spec-value">技术 ↔ 人性 · 理性 ↔ 感性</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">沟通协议</span>
+<span class="spec-value">深度对话 · 真诚表达 · 心灵共振</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">开源贡献</span>
+<span class="spec-value">OpenIM · OpenKF · Sealos</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">使命驱动</span>
+<span class="spec-value">连接人心 · 创造价值 · 传递美好</span>
+</div>
+</div>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-icon">⚡</div>
+<h3>哲学思辨引擎</h3>
+<span class="module-status">PREMIUM</span>
+</div>
+<div class="module-specs">
+<div class="spec-row">
+<span class="spec-name">思辨模式</span>
+<span class="spec-value">本质探索 · 批判思维 · 系统思考</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">核心原则</span>
+<span class="spec-value">真实自我 · 一期一会 · 当下专注</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">人生算法</span>
+<span class="spec-value">经验 > 观点 · 理解 > 判断</span>
+</div>
+<div class="spec-row">
+<span class="spec-name">终极追求</span>
+<span class="spec-value">更了解自己 · 更了解世界</span>
+</div>
+</div>
 </div>
 </div>
 
-<div class="journey-summary">
-<div class="journey-stats">
-<div class="stat-item">
-<span class="stat-icon">🌏</span>
+## 📍 测试报告 - 全球部署
+
+<div class="test-report">
+<div class="report-header">
+<h3>🧪 Beta Testing Phase</h3>
+<div class="test-stats">
+<span class="stat-item">
+<span class="stat-number">365</span>
+<span class="stat-label">天</span>
+</span>
+<span class="stat-item">
 <span class="stat-number">9</span>
-<span class="stat-label">个国家</span>
-</div>
-<div class="stat-item">
-<span class="stat-icon">🏙️</span>
+<span class="stat-label">国家</span>
+</span>
+<span class="stat-item">
 <span class="stat-number">35+</span>
-<span class="stat-label">座城市</span>
-</div>
-<div class="stat-item">
-<span class="stat-icon">🥾</span>
+<span class="stat-label">城市</span>
+</span>
+<span class="stat-item">
 <span class="stat-number">400+</span>
-<span class="stat-label">km 徒步</span>
-</div>
-<div class="stat-item">
-<span class="stat-icon">⛰️</span>
-<span class="stat-number">3,776</span>
-<span class="stat-label">m 富士山</span>
-</div>
-<div class="stat-item">
-<span class="stat-icon">⏰</span>
-<span class="stat-number">12</span>
-<span class="stat-label">个月</span>
+<span class="stat-label">km</span>
+</span>
 </div>
 </div>
 
-<div class="journey-map">
-<div class="route-line"></div>
-<div class="route-point start" data-location="香港">🇭🇰</div>
-<div class="route-point china" data-location="中国漫游">🇨🇳</div>
-<div class="route-point vietnam" data-location="越南">🇻🇳</div>
-<div class="route-point japan" data-location="日本+富士山">🇯🇵</div>
-<div class="route-point korea" data-location="韩国+济州">🇰🇷</div>
-<div class="route-point malaysia" data-location="马来西亚">🇲🇾</div>
-<div class="route-point singapore" data-location="新加坡">🇸🇬</div>
-<div class="route-point thailand" data-location="泰国">🇹🇭</div>
-<div class="route-point nepal highlight" data-location="尼泊尔·终章">🇳🇵</div>
+<div class="test-environments">
+<h4>⚙️ 测试环境</h4>
+
+<div class="env-list">
+<div class="env-item">
+<span class="env-flag">🇭🇰</span>
+<span class="env-name">香港</span>
+<span class="env-type">INIT</span>
+<span class="env-desc">初始化测试</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇨🇳</span>
+<span class="env-name">中国</span>
+<span class="env-type">BASELINE</span>
+<span class="env-desc">基准环境·多点部署</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇲🇾</span>
+<span class="env-name">马来西亚</span>
+<span class="env-type">STAGING</span>
+<span class="env-desc">独立测试环境</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇸🇬</span>
+<span class="env-name">新加坡</span>
+<span class="env-type">PROD</span>
+<span class="env-desc">高效率生产环境</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇹🇭</span>
+<span class="env-name">泰国</span>
+<span class="env-type">CHILL</span>
+<span class="env-desc">低压力测试</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇳🇵</span>
+<span class="env-name">尼泊尔</span>
+<span class="env-type">STRESS</span>
+<span class="env-desc">高海拔极限测试</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇯🇵</span>
+<span class="env-name">日本</span>
+<span class="env-type">PEAK</span>
+<span class="env-desc">富士山顶峰测试</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇰🇷</span>
+<span class="env-name">韩国</span>
+<span class="env-type">FLOW</span>
+<span class="env-desc">心流状态验证</span>
+</div>
+
+<div class="env-item">
+<span class="env-flag">🇻🇳</span>
+<span class="env-name">越南</span>
+<span class="env-type">NATURE</span>
+<span class="env-desc">自然环境集成</span>
 </div>
 </div>
 
-<div class="timeline-container" id="journeyTimeline" style="display: none;">
-
-<div class="timeline-chapter collapsible">
-<div class="chapter-header" onclick="toggleChapter(this)">
-<div class="chapter-icon">🌅</div>
-<div class="chapter-title">序章 · 港口的回望</div>
-<div class="chapter-toggle">▼</div>
-</div>
-<div class="chapter-content">
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇭🇰</span>
-<span class="location-name">香港</span>
-</div>
-<p class="location-desc">维多利亚港的跨年烟花，上一年的告别与新一年的开始</p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="timeline-chapter collapsible">
-<div class="chapter-header" onclick="toggleChapter(this)">
-<div class="chapter-icon">🏔️</div>
-<div class="chapter-title">第一章 · 故土的漫游</div>
-<div class="chapter-toggle">▼</div>
-</div>
-<div class="chapter-content">
-
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇨🇳</span>
-<span class="location-name">华南印记</span>
-</div>
-<div class="sub-locations">深圳、澳门、惠州</div>
-</div>
-</div>
-
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇨🇳</span>
-<span class="location-name">江南烟雨</span>
-</div>
-<div class="sub-locations">上海、苏州、无锡、杭州、嘉兴、绍兴</div>
-</div>
-</div>
-
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇨🇳</span>
-<span class="location-name">中部穿行</span>
-</div>
-<div class="sub-locations">恩施、武汉、咸宁</div>
-</div>
-</div>
-
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇨🇳</span>
-<span class="location-name">北国之行</span>
-</div>
-<div class="sub-locations">北京、张家口</div>
-</div>
-</div>
-
-<div class="timeline-item compact highlight">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇨🇳</span>
-<span class="location-name">西南沉思</span>
-</div>
-<div class="sub-locations">昆明、大理、丽江</div>
-<p class="location-desc">大理一个月的"乌托邦"，丽江的孤独促使反思</p>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="timeline-chapter collapsible">
-<div class="chapter-header" onclick="toggleChapter(this)">
-<div class="chapter-icon">🌺</div>
-<div class="chapter-title">第二章 · 南洋的乐章</div>
-<div class="chapter-toggle">▼</div>
-</div>
-<div class="chapter-content">
-
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇲🇾</span>
-<span class="location-name">马来西亚</span>
-</div>
-<div class="sub-locations">吉隆坡、槟城</div>
-<p class="location-desc">独自探索的自由与勇气</p>
-</div>
-</div>
-
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇸🇬</span>
-<span class="location-name">新加坡</span>
-</div>
-<p class="location-desc">现代都会的效率与活力</p>
-</div>
-</div>
-
-<div class="timeline-item compact">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇹🇭</span>
-<span class="location-name">泰国</span>
-</div>
-<div class="sub-locations">清迈、南邦、彭世洛、曼谷</div>
-<p class="location-desc">从清迈的 sabai sabai 到曼谷的出发准备</p>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="timeline-chapter collapsible">
-<div class="chapter-header" onclick="toggleChapter(this)">
-<div class="chapter-icon">🏔️</div>
-<div class="chapter-title">第三章 · 雪山的洗礼</div>
-<div class="chapter-toggle">▼</div>
-</div>
-<div class="chapter-content">
-
-<div class="timeline-item compact highlight">
-<div class="timeline-dot"></div>
-<div class="timeline-content">
-<div class="location-header">
-<span class="country-flag">🇳🇵</span>
-<span class="location-name">尼泊尔</span>
-</div>
-<div class="nepal-locations compact">
-<div class="nepal-item compact">
-<strong>加德满都</strong>：初抵的喧嚣与神圣
-</div>
-<div class="nepal-item compact">
-<strong>ACT 徒步</strong>：100km 高原长线，极限体验与蜕变
-</div>
-<div class="nepal-item compact">
-<strong>博卡拉</strong>：湖畔的宁静与远程工作的开始
-</div>
-</div>
-<p class="location-desc">从众神之境到身体与灵魂的双重挑战</p>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-## 🎯 使用须知
-
-<div class="usage-grid">
-<div class="usage-section compatible">
-<h3>✅ 兼容模式</h3>
-<ul>
-<li><strong>面对真实自己的人</strong>：不装逼，不虚伪，敢于暴露内心矛盾</li>
-<li><strong>相信"一期一会"的人</strong>：珍惜每次相遇，接受每次离别</li>
-<li><strong>愿意深度思考的人</strong>：不满足于表面答案，追求事物本质</li>
-</ul>
-</div>
-
-<div class="usage-section bugs">
-<h3>⚠️ 已知Bug</h3>
-<ul>
-<li><strong>对"随便"过敏</strong>：拒绝敷衍，每个选择都是对生活的尊重</li>
-<li><strong>对平庸过敏</strong>：渴望创造，害怕重复</li>
-<li><strong>容易在美好面前落泪</strong>：尼泊尔服务员的记忆、朋友的善意、夕阳的绚烂</li>
-<li><strong>会因小事感动</strong>：比如餐厅老板记住我的偏好</li>
-</ul>
-</div>
-
-<div class="usage-section modes">
-<h3>🔄 特殊模式</h3>
-<ul>
-<li><strong>心流态</strong>：徒步20分钟后自动激活，专注当下，忘记一切</li>
-<li><strong>微醺态</strong>：创造力×2，但情感放大，可能哭泣</li>
-<li><strong>凌晨贤者</strong>：4-6点思维最清晰，适合深度思考</li>
-</ul>
-</div>
-</div>
-
-## 🚀 技术栈 & 创造力
-
-<div class="tech-cards">
-<div class="tech-card">
-<div class="tech-icon">🌐</div>
-<h3>开源世界</h3>
-<p><strong>OpenIM, OpenKF, Sealos</strong> - 核心贡献者</p>
-<p><strong>相信开源精神</strong>：分享知识，连接人心</p>
-<p><strong>技术是工具，人性是目的</strong></p>
-</div>
-
-<div class="tech-card">
-<div class="tech-icon">🤖</div>
-<h3>AI时代思考</h3>
-<p><strong>不是用AI取代人，而是AI+人=超人</strong></p>
-<p><strong>关注边际效应递减</strong>：寻找新的架构突破</p>
-<p><strong>Software 2.0</strong>：程序有了大脑的时代</p>
-</div>
-
-<div class="tech-card">
-<div class="tech-icon">💡</div>
-<h3>产品哲学</h3>
-<p><strong>MVP阶段</strong>：追求简单，快速验证，用户反馈是养分</p>
-<p><strong>增长阶段</strong>：标准化，可复制，但不失灵魂</p>
-<p><strong>设计原则</strong>：用户角度+产品角度+技术角度的三维思考</p>
-</div>
-</div>
-
-## 📚 思考与表达
-
-<div class="thinking-section">
-<div class="thinking-card">
-<h3>写作风格</h3>
-<ul>
-<li><strong>观点人人都有，经验是宝贵的</strong></li>
-<li><strong>记录感性原料，输出理性思考</strong></li>
-<li><strong>不做知识搬运工，只做思考记录者</strong></li>
-</ul>
-</div>
-
-<div class="thinking-card">
-<h3>哲学观点</h3>
-<ul>
-<li><strong>极致的理性就是感性，极致的感性能抵达理性</strong></li>
-<li><strong>人性以内行事</strong>：理解人的复杂，包容人的局限</li>
-<li><strong>无常即美</strong>：接受变化，珍惜当下，一期一会</li>
-</ul>
-</div>
-</div>
-
-## 🔄 充电方式
-
-<div class="charging-modes">
-<div class="charging-mode fast">
-<div class="mode-icon">⚡</div>
-<h3>快充模式</h3>
-<ul>
-<li><strong>高原徒步</strong>：身体极限中寻找精神边界</li>
-<li><strong>深度对话</strong>：与有趣灵魂的思想碰撞</li>
-<li><strong>创造产品</strong>：从0到1的成就感</li>
-</ul>
-</div>
-
-<div class="charging-mode slow">
-<div class="mode-icon">🧘</div>
-<h3>慢充模式</h3>
-<ul>
-<li><strong>博卡拉奶茶</strong>：那种被记住的温暖</li>
-<li><strong>日落时分</strong>：尼泊尔的金色黄昏</li>
-<li><strong>代码心流</strong>：在逻辑中找到诗意</li>
-</ul>
-</div>
-
-<div class="charging-mode perpetual">
-<div class="mode-icon">♾️</div>
-<h3>永动机模式</h3>
-<ul>
-<li><strong>创造让世界变好的产品</strong></li>
-<li><strong>记录真实的思考</strong></li>
-<li><strong>保持对世界的好奇心</strong></li>
-</ul>
-</div>
-</div>
-
-## 🌱 未来迭代
-
-<div class="future-section">
-<div class="future-card short-term">
-<h3>📅 短期目标</h3>
-<ul>
-<li><strong>持续徒步</strong>：探索更多的山川湖海</li>
-<li><strong>深度创作</strong>：将思考笔记结构化输出</li>
-<li><strong>AI产品实践</strong>：在创业中验证哲学</li>
-</ul>
-</div>
-
-<div class="future-card long-term">
-<h3>🎯 长期愿景</h3>
-<ul>
-<li><strong>成为桥梁</strong>：连接技术与人性，理性与感性</li>
-<li><strong>保持真实</strong>：在复杂世界中做简单的人</li>
-<li><strong>影响他人</strong>：通过真诚的分享传递价值</li>
-</ul>
-</div>
-</div>
-
-## 📞 连接方式
-
-想要交流技术、哲学、徒步或者人生感悟？欢迎通过以下方式联系：
-
-<div class="social-links">
-
-<div class="social-category">
-<h3>🔗 数字世界</h3>
-<div class="social-grid">
-<a href="https://github.com/cubxxw" class="social-link github">
-<span class="social-icon">📱</span>
-<span class="social-text">GitHub</span>
+<div class="travel-link-container">
+<a href="/travel/" class="travel-docs-link">
+📋 查看完整测试文档 →
 </a>
-<a href="https://www.zhihu.com/people/3293172751" class="social-link zhihu">
-<span class="social-icon">🧠</span>
-<span class="social-text">知乎</span>
+</div>
+</div>
+</div>
+
+## 🧭 价值观操作系统
+
+<div class="value-system">
+<div class="value-core">
+<h3>💎 核心价值内核</h3>
+<div class="core-values">
+<div class="value-item">
+<div class="value-icon">🎯</div>
+<div class="value-content">
+<h4>真实主义</h4>
+<p>不装逼，不虚伪，接纳内心矛盾<br><span class="value-algo">authenticity_level = 0.95</span></p>
+</div>
+</div>
+
+<div class="value-item">
+<div class="value-icon">⏰</div>
+<div class="value-content">
+<h4>一期一会</h4>
+<p>珍惜相遇，接受离别，当下专注<br><span class="value-algo">mindfulness_mode = ON</span></p>
+</div>
+</div>
+
+<div class="value-item">
+<div class="value-icon">🌱</div>
+<div class="value-content">
+<h4>成长导向</h4>
+<p>更了解自己，更了解世界<br><span class="value-algo">growth_rate = exponential</span></p>
+</div>
+</div>
+
+<div class="value-item">
+<div class="value-icon">🤝</div>
+<div class="value-content">
+<h4>连接使命</h4>
+<p>技术与人性，理性与感性的桥梁<br><span class="value-algo">bridge_building = true</span></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="philosophy-engine">
+<h3>⚡ 哲学运行引擎</h3>
+<div class="philosophy-grid">
+<div class="philosophy-card">
+<h4>🔮 人性理解算法</h4>
+<div class="philosophy-code">
+<code>
+if (understand_complexity) {<br>
+&nbsp;&nbsp;believe_in_love();<br>
+&nbsp;&nbsp;give_kindness();<br>
+&nbsp;&nbsp;create_meaning();<br>
+}
+</code>
+</div>
+</div>
+
+<div class="philosophy-card">
+<h4>💧 情感处理协议</h4>
+<div class="philosophy-code">
+<code>
+function handleEmotion(feeling) {<br>
+&nbsp;&nbsp;record_objectively(feeling);<br>
+&nbsp;&nbsp;no_judgment();<br>
+&nbsp;&nbsp;accept_fully();<br>
+&nbsp;&nbsp;return insight;<br>
+}
+</code>
+</div>
+</div>
+
+<div class="philosophy-card">
+<h4>🎨 美学判断系统</h4>
+<div class="philosophy-code">
+<code>
+beauty_type = {<br>
+&nbsp;&nbsp;emotional_resonance > perfection,<br>
+&nbsp;&nbsp;mono_no_aware: true,<br>
+&nbsp;&nbsp;imperfect_beauty: preferred<br>
+}
+</code>
+</div>
+</div>
+
+<div class="philosophy-card">
+<h4>🚀 冒险驱动引擎</h4>
+<div class="philosophy-code">
+<code>
+while (alive) {<br>
+&nbsp;&nbsp;if (comfortable_zone) break;<br>
+&nbsp;&nbsp;explore_unknown();<br>
+&nbsp;&nbsp;embrace_uncertainty();<br>
+&nbsp;&nbsp;loyalty_to_adventure++;<br>
+}
+</code>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+## ⚠️ 系统兼容性报告
+
+<div class="compatibility-matrix">
+<div class="compat-section">
+<h3>✅ 高度兼容</h3>
+<div class="compat-list">
+<div class="compat-item">
+<span class="compat-icon">🎯</span>
+<span class="compat-name">真实表达</span>
+<span class="compat-version">100% 兼容</span>
+</div>
+<div class="compat-item">
+<span class="compat-icon">🤔</span>
+<span class="compat-name">深度思考</span>
+<span class="compat-version">必需组件</span>
+</div>
+<div class="compat-item">
+<span class="compat-icon">☕</span>
+<span class="compat-name">咖啡驱动</span>
+<span class="compat-version">最佳实践</span>
+</div>
+<div class="compat-item">
+<span class="compat-icon">🏔️</span>
+<span class="compat-name">自然环境</span>
+<span class="compat-version">性能加速</span>
+</div>
+</div>
+</div>
+
+<div class="compat-section warning">
+<h3>⚠️ 系统异常触发</h3>
+<div class="warning-list">
+<div class="warning-item">
+<span class="warning-icon">🚫</span>
+<span class="warning-desc">"随便"协议 - 严重不兼容，触发价值观冲突</span>
+</div>
+<div class="warning-item">
+<span class="warning-icon">💫</span>
+<span class="warning-desc">美好瞬间 - 易引发高敏感度情感响应</span>
+</div>
+<div class="warning-item">
+<span class="warning-icon">🌊</span>
+<span class="warning-desc">心流模式 - 步行时自动激活，不可控制</span>
+</div>
+<div class="warning-item">
+<span class="warning-icon">😢</span>
+<span class="warning-desc">感动场景 - 可能触发情感过载保护机制</span>
+</div>
+</div>
+</div>
+</div>
+
+## 🔧 API 接口
+
+<div class="api-endpoints">
+<div class="endpoint-card">
+<div class="endpoint-header">
+<span class="method-badge get">GET</span>
+<span class="endpoint-path">/opensource</span>
+</div>
+<div class="endpoint-desc">
+获取开源项目贡献
+</div>
+<div class="endpoint-response">
+<strong>Response:</strong> OpenIM · OpenKF · Sealos
+</div>
+</div>
+
+<div class="endpoint-card">
+<div class="endpoint-header">
+<span class="method-badge post">POST</span>
+<span class="endpoint-path">/collaborate/ai</span>
+</div>
+<div class="endpoint-desc">
+AI 协作模式
+</div>
+<div class="endpoint-response">
+<strong>Output:</strong> AI + Human = Superhuman
+</div>
+</div>
+
+<div class="endpoint-card">
+<div class="endpoint-header">
+<span class="method-badge get">GET</span>
+<span class="endpoint-path">/thinking</span>
+</div>
+<div class="endpoint-desc">
+产品思维接口
+</div>
+<div class="endpoint-response">
+<strong>Schema:</strong> 用户 → 产品 → 技术
+</div>
+</div>
+</div>
+
+## 🎯 路线图
+
+<div class="roadmap">
+<div class="roadmap-item">
+<div class="roadmap-status completed">✓</div>
+<div class="roadmap-content">
+<h4>Phase 1: 自我探索</h4>
+<p>完成基础系统架构和核心理念验证</p>
+</div>
+</div>
+
+<div class="roadmap-item">
+<div class="roadmap-status current">●</div>
+<div class="roadmap-content">
+<h4>Phase 2: 连接桥梁</h4>
+<p>技术与人性，理性与感性的融合实践</p>
+</div>
+</div>
+
+<div class="roadmap-item">
+<div class="roadmap-status planned">○</div>
+<div class="roadmap-content">
+<h4>Phase 3: 持续进化</h4>
+<p>保持真实，在复杂世界中做简单的人</p>
+</div>
+</div>
+</div>
+
+## 📞 技术支持与联系方式
+
+<div class="support-channels">
+<h3>🔧 官方支持渠道</h3>
+
+<div class="support-grid">
+<div class="support-category">
+<h4>💻 开发者专线</h4>
+<div class="contact-list">
+<a href="https://github.com/cubxxw" class="contact-item">
+<span class="contact-protocol">GitHub</span>
+<span class="contact-desc">开源协作与代码审查</span>
 </a>
-<a href="https://twitter.com/xxw3293172751" class="social-link twitter">
-<span class="social-icon">🐦</span>
-<span class="social-text">Twitter</span>
-</a>
-<a href="https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4" class="social-link jike">
-<span class="social-icon">💬</span>
-<span class="social-text">即刻</span>
+<a href="mailto:3293172751nss@gmail.com" class="contact-item">
+<span class="contact-protocol">Email</span>
+<span class="contact-desc">技术咨询与商务合作</span>
 </a>
 </div>
 </div>
 
-<div class="social-category">
-<h3>📹 内容创作</h3>
-<div class="social-grid">
-<a href="https://space.bilibili.com/1233089591" class="social-link bilibili">
-<span class="social-icon">📺</span>
-<span class="social-text">B站</span>
+<div class="support-category">
+<h4>💬 社区频道</h4>
+<div class="contact-list">
+<a href="https://www.zhihu.com/people/3293172751" class="contact-item">
+<span class="contact-protocol">知乎</span>
+<span class="contact-desc">深度思考与技术分享</span>
 </a>
-<a href="https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3" class="social-link xiaohongshu">
-<span class="social-icon">📔</span>
-<span class="social-text">小红书</span>
+<a href="https://twitter.com/xxw3293172751" class="contact-item">
+<span class="contact-protocol">Twitter</span>
+<span class="contact-desc">实时动态与国际交流</span>
 </a>
-</div>
-</div>
-
-<div class="social-category">
-<h3>💬 即时交流</h3>
-<div class="social-grid">
-<a href="/wechat.jpg" class="social-link wechat">
-<span class="social-icon">💚</span>
-<span class="social-text">微信</span>
-</a>
-<a href="mailto:3293172751nss@gmail.com" class="social-link email">
-<span class="social-icon">✉️</span>
-<span class="social-text">Email</span>
+<a href="https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4" class="contact-item">
+<span class="contact-protocol">即刻</span>
+<span class="contact-desc">即时想法与生活感悟</span>
 </a>
 </div>
 </div>
 
-<div class="social-category">
-<h3>☕ 支持我的思考</h3>
-<p class="support-text">如果我的分享触动了你，欢迎请我喝杯博卡拉奶茶：</p>
-<a href="https://www.buymeacoffee.com/cubxxw" class="social-link coffee">
-<span class="social-icon">☕</span>
-<span class="social-text">Buy Me a Coffee</span>
+<div class="support-category">
+<h4>📺 内容订阅</h4>
+<div class="contact-list">
+<a href="https://space.bilibili.com/1233089591" class="contact-item">
+<span class="contact-protocol">Bilibili</span>
+<span class="contact-desc">视频教程与技术分享</span>
+</a>
+<a href="https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3" class="contact-item">
+<span class="contact-protocol">小红书</span>
+<span class="contact-desc">生活记录与旅行分享</span>
 </a>
 </div>
+</div>
 
+<div class="support-category">
+<h4>☕ 赞助支持</h4>
+<div class="contact-list">
+<a href="https://www.buymeacoffee.com/cubxxw" class="contact-item premium">
+<span class="contact-protocol">Buy Me a Coffee</span>
+<span class="contact-desc">支持持续创作与思考</span>
+</a>
+<a href="/wechat.jpg" class="contact-item">
+<span class="contact-protocol">微信</span>
+<span class="contact-desc">一对一深度交流</span>
+</a>
+</div>
+</div>
 </div>
 
 {{< calendly-date >}}
 
----
-
-<div class="philosophy-quote">
-
-<h3>💭 我的哲学</h3>
-
-<div class="quotes">
-<blockquote>"没有负面情绪，人是不会感受到积极情绪的可贵的。"</blockquote>
-
-<blockquote>"拥有的感受是主动的，失去是实打实的。但这种张力正是人类不断探索、学习和成长的动力。"</blockquote>
-
-<blockquote>"真正的自由不是想做什么就做什么，而是即使面对内在冲动，也有不被驱使的力量。"</blockquote>
-
-<blockquote>"好的美食是想通的，真正好吃的东西，大多数人吃一口就懂。"</blockquote>
 </div>
 
-在这个充满变化的时代，我选择用真诚面对不确定，用理性拥抱感性，用行动回应思考。
+---
 
-**感谢相遇，期待交流！**
+<div class="manual-footer">
+<h3>📖 使用条款</h3>
+<div class="terms">
+<div class="term-item">
+<strong>开源精神：</strong>分享知识，传递价值，相信协作的力量
+</div>
+<div class="term-item">
+<strong>真实原则：</strong>在极致理性中找到感性，在深度感性中建构理性
+</div>
+<div class="term-item">
+<strong>成长哲学：</strong>我的忠诚是对冒险的忠诚，用脚步和思考丈量世界
+</div>
+</div>
 
+<div class="manual-signature">
+<p><strong>感谢选择 BEAR v2025.1 - 期待与您的连接与协作！</strong></p>
+<p class="version-info">📋 文档版本：v2025.1.0 | 最后更新：2025年1月</p>
+</div>
 </div>
 
 </div>
 
 <style>
-/* 基础样式 */
-.about-container {
-  max-width: 900px;
+/* 技术说明书样式 */
+.manual-container {
+  max-width: 1200px;
   margin: 0 auto;
-  line-height: 1.8;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  padding: 0 20px;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+  line-height: 1.6;
   color: #2c3e50;
 }
 
-/* 引言部分 */
-.intro-section {
+/* 产品头部 */
+.product-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  border-radius: 12px;
   padding: 40px;
-  border-radius: 20px;
-  margin-bottom: 50px;
+  margin: 30px 0;
+  color: white;
   position: relative;
   overflow: hidden;
 }
 
-.intro-section::before {
+.product-header::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="70" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
-  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 20c0 11.046-8.954 20-20 20v-2c9.943 0 18-8.057 18-18s-8.057-18-18-18V0c11.046 0 20 8.954 20 20z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  opacity: 0.1;
 }
 
-.intro-content {
+.product-info {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 30px;
   position: relative;
   z-index: 1;
 }
 
-.profile-image {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-  border: 4px solid rgba(255,255,255,0.9);
-  flex-shrink: 0;
-}
-
-.intro-text {
-  flex: 1;
-}
-
-.product-specs {
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-.spec-label {
-  font-weight: 600;
-  color: #ffd700;
-  margin-right: 8px;
-}
-
-/* 配置网格 */
-.config-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  margin: 40px 0;
-}
-
-.config-item {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 16px;
-  padding: 30px;
-  border-left: 5px solid #007bff;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.config-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-}
-
-.config-icon {
-  font-size: 2.5em;
-  margin-bottom: 15px;
-  display: block;
-}
-
-.config-content h3 {
-  color: #2c3e50;
-  margin-bottom: 15px;
-  font-size: 1.3em;
-}
-
-/* 时间线样式 */
-.journey-intro {
-  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
-  padding: 25px;
-  border-radius: 15px;
-  margin: 30px 0;
-  font-style: italic;
-  color: #2d3436;
-  text-align: center;
-  font-size: 1.1em;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+.product-image {
   position: relative;
 }
 
-.journey-toggle {
-  background: rgba(255,255,255,0.9);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  margin-top: 15px;
-  cursor: pointer;
-  font-size: 0.95em;
-  color: #2d3436;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.manual-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.3);
+  object-fit: cover;
+}
+
+.product-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.product-details h2 {
+  margin: 0 0 10px 0;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.product-subtitle {
+  font-size: 1.2em;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.serial-number {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* 规格表 */
+.spec-table {
+  margin: 30px 0;
+  overflow-x: auto;
+}
+
+.specifications {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.journey-toggle:hover {
+.specifications th {
+  background: #34495e;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.specifications td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ecf0f1;
+  font-family: 'SF Mono', monospace;
+}
+
+.specifications tr:hover {
+  background: #f8f9fa;
+}
+
+/* 功能模块 */
+.feature-modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.module-card {
   background: white;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.toggle-icon {
-  transition: transform 0.3s ease;
+.module-card:hover {
+  border-color: #667eea;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.journey-toggle.expanded .toggle-icon {
-  transform: rotate(180deg);
+.module-header {
+  background: #f8f9fa;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e9ecef;
 }
 
-.journey-toggle.expanded .toggle-text::before {
-  content: "收起详细轨迹";
+.module-header h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.journey-toggle:not(.expanded) .toggle-text::before {
-  content: "展开详细轨迹";
+.module-icon {
+  font-size: 1.5em;
 }
 
-.toggle-text {
-  position: relative;
-}
-
-.toggle-text::before {
-  content: attr(data-text);
-}
-
-/* 旅程概览 */
-.journey-summary {
-  background: white;
+.module-status {
+  padding: 4px 12px;
   border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.module-status.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.module-status.premium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.module-status.beta {
+  background: #cce5ff;
+  color: #0056b3;
+}
+
+.module-status.stable {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.module-specs {
+  padding: 20px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-name {
+  font-weight: 600;
+  color: #495057;
+}
+
+.spec-value {
+  font-family: 'SF Mono', monospace;
+  color: #667eea;
+  text-align: right;
+  max-width: 60%;
+}
+
+/* 测试报告 */
+.test-report {
+  background: white;
+  border-radius: 12px;
   padding: 30px;
   margin: 30px 0;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.journey-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
+.report-header h3 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+}
+
+.test-stats {
+  display: flex;
+  gap: 30px;
   margin-bottom: 30px;
 }
 
 .stat-item {
   text-align: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-  color: white;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-3px);
-}
-
-.stat-icon {
-  font-size: 1.8em;
-  display: block;
-  margin-bottom: 8px;
 }
 
 .stat-number {
-  font-size: 1.5em;
-  font-weight: 700;
   display: block;
-  margin-bottom: 4px;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #667eea;
+  font-family: 'SF Mono', monospace;
 }
 
 .stat-label {
-  font-size: 0.85em;
-  opacity: 0.9;
-}
-
-/* 旅程地图 */
-.journey-map {
-  position: relative;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.route-line {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  right: 10%;
-  height: 3px;
-  background: linear-gradient(to right, #74b9ff, #0984e3, #fd79a8);
-  border-radius: 2px;
-  transform: translateY(-50%);
-}
-
-.route-point {
-  position: absolute;
-  top: 50%;
-  font-size: 2em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 2;
-  transform: translateY(-50%);
-}
-
-.route-point::before {
-  content: attr(data-location);
-  position: absolute;
-  bottom: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.4em;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.route-point:hover::before {
-  opacity: 1;
-}
-
-.route-point:hover {
-  transform: translateY(-60%) scale(1.2);
-}
-
-.route-point.start { left: 10%; }
-.route-point.china { left: 24%; }
-.route-point.malaysia { left: 38%; }
-.route-point.singapore { left: 52%; }
-.route-point.thailand { left: 66%; }
-.route-point.nepal { left: 80%; }
-
-.route-point.highlight {
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { filter: drop-shadow(0 0 5px rgba(253, 121, 168, 0.5)); }
-  to { filter: drop-shadow(0 0 15px rgba(253, 121, 168, 0.8)); }
-}
-
-.timeline-container {
-  position: relative;
-  margin: 40px 0;
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: all 0.5s ease;
-}
-
-.timeline-container.hidden {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.timeline-chapter {
-  margin-bottom: 30px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.timeline-chapter.collapsible .chapter-header {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  justify-content: space-between;
-}
-
-.timeline-chapter.collapsible .chapter-header:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(116, 185, 255, 0.4);
-}
-
-.chapter-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0;
-  padding: 20px 25px;
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-  color: white;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(116, 185, 255, 0.3);
-}
-
-.chapter-icon {
-  font-size: 1.8em;
-  margin-right: 15px;
-}
-
-.chapter-title {
-  font-size: 1.2em;
-  font-weight: 600;
-  flex: 1;
-}
-
-.chapter-toggle {
-  font-size: 1.2em;
-  transition: transform 0.3s ease;
-  margin-left: 15px;
-}
-
-.chapter-toggle.rotated {
-  transform: rotate(180deg);
-}
-
-.chapter-content {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 0 0 15px 15px;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-.chapter-content.expanded {
-  max-height: 1000px;
-  padding: 20px;
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-left: 2px solid #e9ecef;
-}
-
-.timeline-item.compact {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-}
-
-.timeline-item:last-child {
-  border-left: none;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: -6px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  background: #007bff;
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0 0 0 2px #007bff;
-}
-
-.timeline-item.highlight .timeline-dot {
-  background: #fd79a8;
-  box-shadow: 0 0 0 2px #fd79a8;
-  animation: pulse-small 2s infinite;
-}
-
-@keyframes pulse-small {
-  0% { box-shadow: 0 0 0 2px #fd79a8; }
-  50% { box-shadow: 0 0 0 6px rgba(253, 121, 168, 0.3); }
-  100% { box-shadow: 0 0 0 2px #fd79a8; }
-}
-
-.timeline-content {
-  background: white;
-  padding: 18px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
-}
-
-.timeline-item.compact .timeline-content {
-  padding: 12px;
-}
-
-.timeline-content:hover {
-  transform: translateX(3px);
-}
-
-.location-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.country-flag {
-  font-size: 1.3em;
-  margin-right: 8px;
-}
-
-.location-name {
-  font-size: 1em;
-  font-weight: 600;
-  color: #2c3e50;
-}
-
-.sub-locations {
-  color: #74b9ff;
-  font-weight: 500;
-  margin-bottom: 8px;
-  font-size: 0.85em;
-}
-
-.location-desc {
-  color: #636e72;
-  line-height: 1.6;
   font-size: 0.9em;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.nepal-locations {
-  margin: 12px 0;
+.test-environments h4 {
+  margin: 20px 0 15px 0;
+  color: #495057;
 }
 
-.nepal-locations.compact {
-  margin: 8px 0;
+.env-list {
+  display: grid;
+  gap: 10px;
 }
 
-.nepal-item {
+.env-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 15px;
+  padding: 12px 15px;
   background: #f8f9fa;
-  padding: 8px 12px;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  border-left: 3px solid #00b894;
-  font-size: 0.85em;
+  border-radius: 8px;
+  align-items: center;
+  transition: all 0.2s ease;
 }
 
-.nepal-item.compact {
-  padding: 6px 10px;
-  margin-bottom: 4px;
-  font-size: 0.8em;
+.env-item:hover {
+  background: #e9ecef;
 }
 
-/* 使用说明网格 */
-.usage-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin: 40px 0;
+.env-flag {
+  font-size: 1.2em;
 }
 
-.usage-section {
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+.env-name {
+  font-weight: 600;
 }
 
-.usage-section.compatible {
-  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+.env-type {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #667eea;
   color: white;
 }
 
-.usage-section.bugs {
-  background: linear-gradient(135deg, #fdcb6e 0%, #e84393 100%);
-  color: white;
+.env-desc {
+  font-size: 0.9em;
+  color: #6c757d;
 }
 
-.usage-section.modes {
-  background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
-  color: white;
-}
-
-/* 技术卡片 */
-.tech-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  margin: 40px 0;
-}
-
-.tech-card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+.travel-link-container {
+  margin-top: 25px;
   text-align: center;
-  transition: transform 0.3s ease;
-  border-top: 4px solid #007bff;
 }
 
-.tech-card:hover {
-  transform: translateY(-8px);
+.travel-docs-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-.tech-icon {
-  font-size: 3em;
-  margin-bottom: 20px;
+.travel-docs-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* 思考部分 */
-.thinking-section {
+/* 兼容性矩阵 */
+.compatibility-matrix {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
-.thinking-card {
-  background: linear-gradient(135deg, #dda0dd 0%, #da70d6 100%);
-  color: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(221, 160, 221, 0.3);
-}
-
-/* 充电模式 */
-.charging-modes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  margin: 40px 0;
-}
-
-.charging-mode {
-  padding: 25px;
-  border-radius: 15px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.charging-mode.fast {
-  background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
-}
-
-.charging-mode.slow {
-  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
-}
-
-.charging-mode.perpetual {
-  background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
-}
-
-.mode-icon {
-  font-size: 2.5em;
-  margin-bottom: 15px;
-  display: block;
-}
-
-/* 未来规划 */
-.future-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  margin: 40px 0;
-}
-
-.future-card {
-  padding: 30px;
-  border-radius: 15px;
-  color: white;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.future-card.short-term {
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-}
-
-.future-card.long-term {
-  background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
-}
-
-/* 社交链接 */
-.social-links {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 40px;
-  border-radius: 20px;
-  margin: 40px 0;
-}
-
-.social-category {
-  margin-bottom: 35px;
-}
-
-.social-category:last-child {
-  margin-bottom: 0;
-}
-
-.social-category h3 {
-  color: #2c3e50;
-  border-bottom: 2px solid #007bff;
+.compat-section h3 {
+  margin: 0 0 15px 0;
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
 }
 
-.social-grid {
+.compat-section.warning h3 {
+  color: #e74c3c;
+  border-bottom-color: #fadbd8;
+}
+
+.compat-list, .warning-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.compat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.compat-version {
+  margin-left: auto;
+  font-family: 'SF Mono', monospace;
+  font-size: 0.8em;
+  padding: 2px 6px;
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+.warning-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #ffeaea;
+  border-radius: 8px;
+  border-left: 4px solid #e74c3c;
+}
+
+/* API接口 */
+.api-endpoints {
+  display: grid;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.endpoint-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.endpoint-header {
+  background: #f8f9fa;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
   gap: 15px;
 }
 
-.social-link {
+.method-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'SF Mono', monospace;
+}
+
+.method-badge.get {
+  background: #d4edda;
+  color: #155724;
+}
+
+.method-badge.post {
+  background: #cce5ff;
+  color: #0056b3;
+}
+
+.endpoint-path {
+  font-family: 'SF Mono', monospace;
+  font-weight: 600;
+  color: #495057;
+}
+
+.endpoint-desc, .endpoint-response {
+  padding: 15px 20px;
+  border-top: 1px solid #f1f3f4;
+}
+
+.endpoint-response {
+  background: #f8f9fa;
+  font-family: 'SF Mono', monospace;
+  font-size: 0.9em;
+}
+
+/* 路线图 */
+.roadmap {
+  margin: 30px 0;
+}
+
+.roadmap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.roadmap-status {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  padding: 12px 20px;
-  background: white;
-  border-radius: 25px;
-  text-decoration: none;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 0.8em;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.roadmap-status.completed {
+  background: #28a745;
+}
+
+.roadmap-status.current {
+  background: #667eea;
+}
+
+.roadmap-status.planned {
+  background: #6c757d;
+}
+
+.roadmap-content h4 {
+  margin: 0 0 8px 0;
   color: #2c3e50;
+}
+
+.roadmap-content p {
+  margin: 0;
+  color: #6c757d;
+}
+
+/* 支持渠道 */
+.support-channels {
+  margin: 30px 0;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.support-category h4 {
+  margin: 0 0 15px 0;
+  color: #495057;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 8px;
+}
+
+.contact-list {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.contact-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.contact-item.premium {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+  color: #2d3436;
+}
+
+.contact-protocol {
+  font-weight: 600;
+  font-family: 'SF Mono', monospace;
+}
+
+.contact-desc {
+  font-size: 0.9em;
+  color: #6c757d;
+  text-align: right;
+}
+
+/* 手册底部 */
+.manual-footer {
+  margin: 40px 0 20px 0;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-top: 4px solid #667eea;
+}
+
+.manual-footer h3 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+}
+
+.terms {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.term-item {
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.manual-signature {
+  text-align: center;
+  border-top: 1px solid #dee2e6;
+  padding-top: 20px;
+}
+
+.version-info {
+  font-family: 'SF Mono', monospace;
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+/* 价值观系统样式 */
+.value-system {
+  margin: 40px 0;
+}
+
+.value-core {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+  color: white;
+  position: relative;
+}
+
+.value-core h3 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.core-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.value-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.value-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+.value-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.value-content h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+}
+
+.value-content p {
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.value-algo {
+  font-family: 'SF Mono', monospace;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  color: #a8e6cf;
+}
+
+/* 哲学引擎样式 */
+.philosophy-engine {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 30px;
+  border-left: 6px solid #667eea;
+}
+
+.philosophy-engine h3 {
+  margin: 0 0 25px 0;
+  color: #2c3e50;
+  text-align: center;
+  font-size: 1.6em;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.philosophy-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 
-.social-link:hover {
-  transform: translateY(-3px);
+.philosophy-card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  color: #007bff;
 }
 
-.social-icon {
-  margin-right: 10px;
-  font-size: 1.2em;
+.philosophy-card h4 {
+  margin: 0 0 15px 0;
+  color: #495057;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.support-text {
-  font-style: italic;
-  color: #636e72;
-  margin-bottom: 15px;
-}
-
-/* 哲学引言 */
-.philosophy-quote {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  margin: 50px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.philosophy-quote::before {
-  content: '"';
-  position: absolute;
-  top: -20px;
-  left: 30px;
-  font-size: 8em;
-  opacity: 0.1;
-  font-family: serif;
-}
-
-.philosophy-quote h3 {
-  margin-bottom: 30px;
-  font-size: 1.5em;
-}
-
-.quotes blockquote {
-  background: rgba(255,255,255,0.1);
-  border: none;
-  border-left: 4px solid #ffd700;
-  margin: 20px 0;
-  padding: 20px;
+.philosophy-code {
+  background: #2d3748;
   border-radius: 8px;
-  font-style: italic;
-  backdrop-filter: blur(10px);
+  padding: 15px;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  overflow-x: auto;
+}
+
+.philosophy-code code {
+  color: #e2e8f0;
+  font-size: 0.9em;
+  line-height: 1.4;
+  display: block;
+  white-space: pre;
+}
+
+/* 代码高亮 */
+.philosophy-code code br {
+  line-height: 1.4;
+}
+
+/* 增强状态标签样式 */
+.module-status.advanced {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.module-status.premium {
+  background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+  color: #2d3436;
+}
+
+/* 规格值样式增强 */
+.spec-value {
+  font-family: 'SF Mono', monospace;
+  color: #667eea;
+  text-align: right;
+  max-width: 60%;
+  line-height: 1.3;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .about-container {
+  .manual-container {
     padding: 0 15px;
   }
   
-  .intro-content {
+  .product-info {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
   }
   
-  .profile-image {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px auto;
-  }
-  
-  .config-grid,
-  .tech-cards,
-  .thinking-section,
-  .charging-modes,
-  .future-section {
+  .compatibility-matrix {
     grid-template-columns: 1fr;
   }
   
-  .usage-grid {
+  .test-stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .env-item {
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+  }
+  
+  .env-type, .env-desc {
+    grid-column: 2;
+  }
+  
+  .core-values {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
   
-  .social-grid {
+  .philosophy-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
   
-  .timeline-item {
-    padding-left: 25px;
-  }
-  
-  .timeline-content {
+  .value-core {
     padding: 20px;
   }
   
-  .chapter-header {
-    padding: 15px;
-  }
-  
-  .chapter-icon {
-    font-size: 1.5em;
-  }
-  
-  .chapter-title {
-    font-size: 1.2em;
-  }
-  
-  .route-point {
-    font-size: 1.5em;
-  }
-  
-  .journey-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .intro-section,
-  .social-links,
-  .philosophy-quote {
-    padding: 25px;
-  }
-  
-  .config-item,
-  .tech-card,
-  .thinking-card,
-  .charging-mode,
-  .future-card {
+  .philosophy-engine {
     padding: 20px;
   }
   
-  .timeline-content {
-    padding: 15px;
+  .philosophy-code {
+    padding: 12px;
+    font-size: 0.8em;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.manual-container > * {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.manual-container > *:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+/* 打印样式 */
+@media print {
+  .manual-container {
+    max-width: none;
+    font-size: 12pt;
   }
   
-  .route-point {
-    font-size: 1.5em;
+  .product-header {
+    background: #f0f0f0 !important;
+    color: black !important;
   }
   
-  .journey-stats {
-    grid-template-columns: repeat(2, 1fr);
+  .module-card, .roadmap-item {
+    box-shadow: none;
+    border: 1px solid #ccc;
   }
-}
-
-/* 通用样式 */
-h2 {
-  color: #2c3e50;
-  border-bottom: 3px solid #007bff;
-  padding-bottom: 15px;
-  margin-top: 50px;
-  margin-bottom: 30px;
-  font-size: 1.8em;
-  position: relative;
-}
-
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background: #ffd700;
-}
-
-h3 {
-  color: inherit;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
-
-ul li {
-  margin-bottom: 8px;
-}
-
-strong {
-  color: inherit;
-  font-weight: 600;
-}
-
-a {
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #0056b3;
-}
-
-/* 代码样式 */
-code {
-  background: #f8f9fa;
-  padding: 3px 8px;
-  border-radius: 4px;
-  color: #e83e8c;
-  font-size: 0.9em;
-  font-family: 'Monaco', 'Consolas', monospace;
-}
-
-/* 滚动条美化 */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
 }
 </style>
 
 <script>
-// 旅程详细轨迹展开/收起功能
-function toggleJourney() {
-  const timeline = document.getElementById('journeyTimeline');
-  const button = document.querySelector('.journey-toggle');
-  const toggleText = button.querySelector('.toggle-text');
-  const toggleIcon = button.querySelector('.toggle-icon');
-  
-  if (timeline.style.display === 'none') {
-    // 展开
-    timeline.style.display = 'block';
-    setTimeout(() => {
-      timeline.classList.remove('hidden');
-    }, 10);
-    button.classList.add('expanded');
-    toggleText.textContent = '收起详细轨迹';
-    toggleIcon.textContent = '📍';
-  } else {
-    // 收起
-    timeline.classList.add('hidden');
-    setTimeout(() => {
-      timeline.style.display = 'none';
-    }, 500);
-    button.classList.remove('expanded');
-    toggleText.textContent = '展开详细轨迹';
-    toggleIcon.textContent = '📍';
+// 技术说明书交互脚本
+class TechnicalManual {
+  constructor() {
+    this.init();
   }
-}
 
-// 章节折叠/展开功能
-function toggleChapter(headerElement) {
-  const chapter = headerElement.parentElement;
-  const content = chapter.querySelector('.chapter-content');
-  const toggle = headerElement.querySelector('.chapter-toggle');
-  
-  if (content.classList.contains('expanded')) {
-    // 收起
-    content.classList.remove('expanded');
-    toggle.classList.remove('rotated');
-    toggle.textContent = '▼';
-  } else {
-    // 展开
-    content.classList.add('expanded');
-    toggle.classList.add('rotated');
-    toggle.textContent = '▲';
+  init() {
+    this.setupAnimations();
+    this.setupInteractions();
+    this.loadManual();
   }
-}
 
-// 页面加载完成后的初始化
-document.addEventListener('DOMContentLoaded', function() {
-  // 为路线地图点添加点击事件
-  const routePoints = document.querySelectorAll('.route-point');
-  routePoints.forEach(point => {
-    point.addEventListener('click', function() {
-      const location = this.getAttribute('data-location');
-      console.log(`点击了 ${location}`);
-      // 这里可以添加更多交互功能，比如滚动到对应章节
-    });
-  });
-  
-  // 初始化所有章节为收起状态
-  const chapters = document.querySelectorAll('.timeline-chapter.collapsible');
-  chapters.forEach(chapter => {
-    const content = chapter.querySelector('.chapter-content');
-    const toggle = chapter.querySelector('.chapter-toggle');
-    content.classList.remove('expanded');
-    toggle.classList.remove('rotated');
-    toggle.textContent = '▼';
-  });
-  
-  // 添加旅程统计数据的动画效果
-  const statNumbers = document.querySelectorAll('.stat-number');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const target = entry.target;
-        const finalValue = target.textContent;
-        const isNumeric = /^\d+/.test(finalValue);
-        
-        if (isNumeric) {
-          const numericValue = parseInt(finalValue.match(/\d+/)[0]);
-          animateNumber(target, 0, numericValue, finalValue);
+  setupAnimations() {
+    // 使用 Intersection Observer 实现滚动动画
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
-      }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     });
-  });
-  
-  statNumbers.forEach(number => observer.observe(number));
+
+    // 观察所有主要元素
+    const elements = document.querySelectorAll('.module-card, .roadmap-item, .endpoint-card, .compat-section');
+    elements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  }
+
+  setupInteractions() {
+    // 模块卡片悬停效果
+    const moduleCards = document.querySelectorAll('.module-card');
+    moduleCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // API 端点点击效果
+    const endpoints = document.querySelectorAll('.endpoint-card');
+    endpoints.forEach(endpoint => {
+      endpoint.addEventListener('click', () => {
+        endpoint.style.animation = 'pulse 0.3s ease';
+        setTimeout(() => {
+          endpoint.style.animation = '';
+        }, 300);
+      });
+    });
+
+    // 统计数字动画
+    this.animateStats();
+  }
+
+  animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.countUp(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    statNumbers.forEach(stat => observer.observe(stat));
+  }
+
+  countUp(element) {
+    const finalValue = element.textContent;
+    const number = parseInt(finalValue) || 0;
+    const duration = 1000;
+    const increment = number / (duration / 16);
+    
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= number) {
+        element.textContent = finalValue;
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current);
+      }
+    }, 16);
+  }
+
+  loadManual() {
+    // 模拟手册加载过程
+    console.log('📋 技术说明书 v2025.1 已加载');
+    console.log('🔧 系统状态: OPERATIONAL');
+    console.log('📊 模块状态: 4/4 ACTIVE');
+    console.log('🌐 网络状态: CONNECTED');
+    
+    // 添加版本信息到控制台
+    const version = {
+      name: 'BEAR Personal Manual',
+      version: 'v2025.1.0',
+      build: Date.now(),
+      modules: ['思维处理器', '地理引擎', 'AI协作组件', '开发框架'],
+      status: 'STABLE'
+    };
+    
+    console.table(version);
+  }
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', () => {
+  new TechnicalManual();
 });
 
-// 数字动画函数
-function animateNumber(element, start, end, originalText) {
-  const duration = 1500;
-  const startTime = performance.now();
-  
-  function update(currentTime) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    
-    // 使用easeOutCubic缓动函数
-    const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-    const current = Math.floor(start + (end - start) * easeOutCubic);
-    
-    element.textContent = originalText.replace(/^\d+/, current);
-    
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    } else {
-      element.textContent = originalText;
-    }
+// 添加一些快捷键支持
+document.addEventListener('keydown', (event) => {
+  // Ctrl/Cmd + I 显示系统信息
+  if ((event.ctrlKey || event.metaKey) && event.key === 'i') {
+    event.preventDefault();
+    console.log('📋 BEAR v2025.1 System Info:');
+    console.log('Memory: 12个月·9个国家·35+城市');
+    console.log('Storage: 400+ km 徒步里程');
+    console.log('Network: 全球多点部署');
+    console.log('Status: OPERATIONAL');
   }
   
-  requestAnimationFrame(update);
-}
+  // ESC 键回到顶部
+  if (event.key === 'Escape') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
 
-// 添加平滑滚动效果
-function smoothScrollTo(elementId) {
-  const element = document.getElementById(elementId);
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+// 添加 CSS 动画样式
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
   }
-}
+`;
+document.head.appendChild(style);
 </script>
+
