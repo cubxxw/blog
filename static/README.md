@@ -133,10 +133,15 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [2025 August Thought Notes](https://nsddd.top/posts/2025-08-thought-notes/)
+- [2025 July Thought Notes](https://nsddd.top/posts/2025-07-thought-notes/)
+- [2025 June Thought Notes](https://nsddd.top/posts/2025-06-thought-notes/)
 - [Metacognitive Transformation Review](https://nsddd.top/posts/metacognitive-transformation-review/)
+- [2025 May Thought Notes](https://nsddd.top/posts/2025-05-thought-notes/)
 - [Mem0](https://nsddd.top/posts/mem0/)
 - [UFO](https://nsddd.top/posts/ufo/)
 - [Argo Cd](https://nsddd.top/posts/argo-cd/)
+- [2025 April Thought Notes](https://nsddd.top/posts/2025-04-thought-notes/)
 - [Ai Recommend 开源项目深度学习](https://nsddd.top/posts/ai-projects/ai-recommend/)
 - [Notebooklm 开源项目深度学习](https://nsddd.top/posts/ai-projects/notebooklm/)
 - [Tdd 开源项目深度学习](https://nsddd.top/posts/ai-projects/tdd/)
@@ -147,12 +152,15 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Independent Developer 开源项目深度学习](https://nsddd.top/posts/ai-projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://nsddd.top/posts/ai-projects/gpt-researcher/)
 - [Jina](https://nsddd.top/posts/ai-projects/jina/)
+- [2025 March Thought Notes](https://nsddd.top/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://nsddd.top/posts/2024-annual-review/)
+- [Kubernetes Resources and Learning Path Summary](https://nsddd.top/posts/kubernetes-learning/)
 - [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
 - [Crafting Your Career Pathway: A Guide to Open Source Resume Builders and Expert Resume Tips](https://nsddd.top/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
 - [Troubleshooting Guide for OpenIM](https://nsddd.top/posts/troubleshooting-guide-for-openim/)
 - [Navigating the Open Source Landscape](https://nsddd.top/posts/navigating-the-open-source-landscape/)
+- [How to Elegantly Display Travel Footprints in Your Blog - PolarSteps Integration Guide](https://nsddd.top/posts/travel-with-polarsteps/)
 - [Sora Ease Guide: Mastering Sora AI for Developers](https://nsddd.top/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
 - [In 2023, I Was Wandering at the Edge of the World](https://nsddd.top/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
 - [Exploring Sora Technology for Enthusiasts and Developers](https://nsddd.top/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
@@ -173,6 +181,9 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes for Kustomize Learning](https://nsddd.top/posts/kubernetes-for-kustomize-learning/)
 - [OpenIM Use Harbor Build Enterprise Mirror Repositories](https://nsddd.top/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
 - [Learn About Automated Testing](https://nsddd.top/posts/learn-about-automated-testing/)
+- [Deep Dive into Kubernetes CNI, CRI, CSI Components](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
+- [Kubernetes Control Plane - Detailed Analysis of Kubelet](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
+- [Kubernetes Control Plane - Scheduler](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
 - [In-depth understanding of the components of Kubernetes Kube apisserver](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [Deep Dive Into the Components of Kubernetes Etcd](https://nsddd.top/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [Design Proposal: Simplified Port Configuration via Config Files for Kubernetes Deployment](https://nsddd.top/posts/openim-cluster-deployment-parameter-passing-policy/)
@@ -199,7 +210,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/posts/kubernetes-an-article-to-get-started-quickly/)
-- [About Me](https://nsddd.top/about/)
+- [Personal User Manual](https://nsddd.top/about/)
 <!-- My-Blog-EN:END -->
 
 
@@ -208,11 +219,16 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2025年8月思考笔记](https://nsddd.top/zh/posts/2025-08-thought-notes/)
+- [2025年7月思考笔记](https://nsddd.top/zh/posts/2025-07-thought-notes/)
+- [2025年6月思考笔记](https://nsddd.top/zh/posts/2025-06-thought-notes/)
 - [🌍 旅行足迹 | Travel Footprints](https://nsddd.top/zh/travel/)
 - [四个月的一些思考片段整理](https://nsddd.top/zh/posts/metacognitive-transformation-review/)
+- [2025年5月思考笔记](https://nsddd.top/zh/posts/2025-05-thought-notes/)
 - [Mem0 开源项目：AI记忆层的技术分析与实践](https://nsddd.top/zh/posts/mem0/)
 - [微软UFO项目深度解析：设计、实现、原理与架构](https://nsddd.top/zh/posts/ufo/)
 - [Argo CD: Declarative GitOps for Kubernetes Continuous Delivery](https://nsddd.top/zh/posts/argo-cd/)
+- [2025年4月思考笔记](https://nsddd.top/zh/posts/2025-04-thought-notes/)
 - [Ai Recommend 技术、实践和深度学习](https://nsddd.top/zh/posts/ai-projects/ai-recommend/)
 - [Google NotebookLM 的 RAG 深度调研思考](https://nsddd.top/zh/posts/ai-projects/notebooklm/)
 - [AI 时代初创企业的测试驱动开发（TDD）实践方案](https://nsddd.top/zh/posts/ai-projects/tdd/)
@@ -223,6 +239,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [独立开发者必备技能及现代工具 & 分别的上手指导](https://nsddd.top/zh/posts/ai-projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/gpt-researcher/)
 - [Jina 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/jina/)
+- [2025年3月思考笔记](https://nsddd.top/zh/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://nsddd.top/zh/posts/2024-annual-review/)
 - [Kubernetes 资源与学习路径总结](https://nsddd.top/zh/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://nsddd.top/zh/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
