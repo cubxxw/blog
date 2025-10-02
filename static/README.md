@@ -133,6 +133,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [2025 September Thought Notes](https://nsddd.top/posts/2025-09-thought-notes/)
 - [2025 August Thought Notes](https://nsddd.top/posts/2025-08-thought-notes/)
 - [2025 July Thought Notes](https://nsddd.top/posts/2025-07-thought-notes/)
 - [2025 June Thought Notes](https://nsddd.top/posts/2025-06-thought-notes/)
