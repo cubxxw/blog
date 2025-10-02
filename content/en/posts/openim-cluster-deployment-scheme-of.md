@@ -3,7 +3,7 @@ title: 'OpenIM clustering design Kubernetes deploy concludes'
 description: "This article mainly introduces the clustering design of OpenIM, including infrastructure design, CI/CD, containerization, microservice optimization, monitoring and alarm, security, etc."
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-17T09:51:54+08:00
+date: 2023-09-17T09:51:54+08:00
 draft : false
 showtoc: true
 tocopen: false

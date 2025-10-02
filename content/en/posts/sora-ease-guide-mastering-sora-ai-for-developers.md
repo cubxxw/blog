@@ -2,7 +2,7 @@
 title: 'Sora Ease Guide: Mastering Sora AI for Developers'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2024-03-14T08:44:13+08:00
+date: 2024-03-14T08:44:13+08:00
 draft : false
 showtoc: true
 tocopen: false

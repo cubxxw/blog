@@ -3,7 +3,7 @@ title: 'Use Auto Gpt'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-03-18T16:28:30+08:00
+date: 2023-03-18T16:28:30+08:00
 draft : false
 showtoc: true
 tocopen: false

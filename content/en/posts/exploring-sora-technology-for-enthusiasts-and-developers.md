@@ -2,7 +2,7 @@
 title: 'Exploring Sora Technology for Enthusiasts and Developers'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2024-02-24T13:30:15+08:00
+date: 2024-02-24T13:30:15+08:00
 draft : false
 showtoc: true
 tocopen: false

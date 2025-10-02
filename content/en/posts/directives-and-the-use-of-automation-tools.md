@@ -2,7 +2,7 @@
 title: 'Decoding Go Language Source Code: A Deep Dive into go: Directives and the Use of Automation Tools'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2024-01-25T15:22:36+08:00
+date: 2024-01-25T15:22:36+08:00
 draft : false
 showtoc: true
 tocopen: false

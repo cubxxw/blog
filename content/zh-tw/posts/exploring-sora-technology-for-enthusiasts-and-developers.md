@@ -2,7 +2,7 @@
 title: 'Sora 技術討論以及普通人和開發者如何利用 Sora 改變世界'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2024-02-24T13:30:15+08:00
+date: 2024-02-24T13:30:15+08:00
 draft : false
 showtoc: true
 tocopen: false

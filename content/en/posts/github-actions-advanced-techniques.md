@@ -3,7 +3,7 @@ title: 'Github Actions Advanced Techniques'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:17:02+08:00
+date: 2023-09-16T16:17:02+08:00
 draft : false
 showtoc: true
 tocopen: false

@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 cover:
     image: 'images/blog/vector-database.png'
     caption: 'Vector database learning'
-date : 2024-01-20T12:57:15+08:00
+date: 2024-01-20T12:57:15+08:00
 draft : false
 showtoc: true
 tocopen: false

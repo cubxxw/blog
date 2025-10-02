@@ -2,7 +2,7 @@
 title: '2025年7月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2025-07-31T23:59:59+07:00
+date: 2025-07-31T23:59:59+07:00
 draft : false
 showtoc: true
 weight: 1

@@ -176,7 +176,7 @@ title: '开源社区的规范设计思路'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:25:00+08:00
+date: 2023-09-16T16:25:00+08:00
 draft : false
 showtoc: true
 tocopen: false

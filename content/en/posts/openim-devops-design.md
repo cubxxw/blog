@@ -3,7 +3,7 @@ title: 'Openim Devops Design'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:13:36+08:00
+date: 2023-09-16T16:13:36+08:00
 draft : false
 showtoc: true
 tocopen: false

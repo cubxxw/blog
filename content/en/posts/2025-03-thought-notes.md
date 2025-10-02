@@ -2,7 +2,7 @@
 title: '2025 March Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2025-03-31T23:59:59+07:00
+date: 2025-03-31T23:59:59+07:00
 draft : false
 showtoc: true
 weight: 1

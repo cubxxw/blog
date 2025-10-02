@@ -2,7 +2,7 @@
 title: '2025 June Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2025-06-30T23:59:59+07:00
+date: 2025-06-30T23:59:59+07:00
 draft : false
 showtoc: true
 weight: 1

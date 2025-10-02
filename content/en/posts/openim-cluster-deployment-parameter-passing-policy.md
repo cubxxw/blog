@@ -2,7 +2,7 @@
 title: 'Design Proposal: Simplified Port Configuration via Config Files for Kubernetes Deployment'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-18T22:49:14+08:00
+date: 2023-09-18T22:49:14+08:00
 draft : false
 showtoc: true
 tocopen: false

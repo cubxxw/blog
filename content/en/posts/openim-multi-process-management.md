@@ -3,7 +3,7 @@ title: 'Openim Multi Process Management'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T15:55:38+08:00
+date: 2023-09-16T15:55:38+08:00
 draft : false
 showtoc: true
 tocopen: false

@@ -2,7 +2,7 @@
 title: '深入了解Kubernetes Kube apisserver的组件'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-28T20:12:51+08:00
+date: 2023-09-28T20:12:51+08:00
 draft : false
 showtoc: true
 tocopen: false

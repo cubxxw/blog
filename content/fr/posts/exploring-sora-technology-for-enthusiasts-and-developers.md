@@ -2,7 +2,7 @@
 titre : « Discussion sur la technologie Sora et comment les gens ordinaires et les développeurs utilisent Sora pour changer le monde »
 ShowRssButtonInSectionTermList : vrai
 Image de couverture:
-date : 2024-02-24T13:30:15+08:00
+date: 2024-02-24T13:30:15+08:00
 brouillon : faux
 showtoc : vrai
 tocopen : vrai

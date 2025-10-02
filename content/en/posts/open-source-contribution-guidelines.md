@@ -3,7 +3,7 @@ title: 'Open Source Contribution Guidelines'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-09-16T16:40:53+08:00
+date: 2023-09-16T16:40:53+08:00
 draft : false
 showtoc: true
 tocopen: false

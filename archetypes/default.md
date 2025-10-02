@@ -2,7 +2,7 @@
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : {{ .Date }}
+date: {{ .Date }}
 draft : false
 showtoc: true
 tocopen: false

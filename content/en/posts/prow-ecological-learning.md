@@ -3,7 +3,7 @@ title: 'Prow Ecological Learning'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-08-12T16:41:15+08:00
+date: 2023-08-12T16:41:15+08:00
 draft : false
 showtoc: true
 tocopen: false

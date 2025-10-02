@@ -3,7 +3,7 @@ title: 'Stage Growth of Open Source'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-04-15T16:36:14+08:00
+date: 2023-04-15T16:36:14+08:00
 draft : false
 showtoc: true
 tocopen: false

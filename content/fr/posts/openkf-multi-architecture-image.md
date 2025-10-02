@@ -1,6 +1,6 @@
 ---
 titre : « Conception stratégique de l'image multi-architecture d'Openkf »
-date : 2023-09-16T14:15:15+08:00
+date: 2023-09-16T14:15:15+08:00
 brouillon : faux
 Mots clés:
    - Blog

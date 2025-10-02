@@ -3,7 +3,7 @@ title: 'Use Go Tools Dlv'
 description:
 ShowRssButtonInSectionTermList: true
 cover.image:
-date : 2023-02-24T16:38:39+08:00
+date: 2023-02-24T16:38:39+08:00
 draft : false
 showtoc: true
 tocopen: false
