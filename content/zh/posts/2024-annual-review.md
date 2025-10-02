@@ -2175,4 +2175,4 @@ AI 时代带来的新的职业范式，我朋友离职后思考的是，下一�
 
 ### 参考
 
-1. 上一年 2023 年度总结: https://github.blog/news-insights/octoverse/octoverse-2024/
+1. 上一年 2023 年度总结: [https://nsddd.top/zh/posts/2023-annual-summary-reflections-and-aspirations/](https://nsddd.top/zh/posts/2023-annual-summary-reflections-and-aspirations/)

@@ -55,7 +55,7 @@ params:
     customCSS: ["css/custom.css"]
   label:
     text: Home
-    icon: http://sm.nsddd.top/sm202309161719007.png
+    icon: ./assets/cubxxw-image.jpg
     iconHeight: 35
   homeInfoParams:
     Title: Hi there 👋
@@ -166,6 +166,11 @@ languages:
           url: /posts/
           pageRef: /posts
           weight: 15
+        - identifier: travel
+          name: 🌍Travel
+          url: /travel/
+          pageRef: /travel
+          weight: 20
         - identifier: categories
           name: 🗂️Categories
           url: categories/
@@ -187,7 +192,7 @@ languages:
           weight: 60
         - identifier: diary
           name: 📔Diary
-          url: https://diary.nsddd.top/flomo-enhanced
+          url: https://diary.nsddd.top/flomo-original
           weight: 70
     params:
       profileMode:
@@ -235,6 +240,11 @@ languages:
           url: /posts/
           pageRef: /posts
           weight: 15
+        - identifier: travel
+          name: 🌍旅行足迹
+          url: /travel/
+          pageRef: /travel
+          weight: 20
         - identifier: categories
           name: 🗂️分类
           url: /categories/
@@ -256,7 +266,7 @@ languages:
           weight: 60
         - identifier: diary
           name: 📔日记
-          url: https://diary.nsddd.top/flomo-enhanced
+          url: https://diary.nsddd.top/flomo-original
           weight: 70
     params:
       profileMode:
