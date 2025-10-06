@@ -133,7 +133,6 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
-- [2025 September Thought Notes](https://nsddd.top/posts/2025-09-thought-notes/)
 - [2025 August Thought Notes](https://nsddd.top/posts/2025-08-thought-notes/)
 - [2025 July Thought Notes](https://nsddd.top/posts/2025-07-thought-notes/)
 - [2025 June Thought Notes](https://nsddd.top/posts/2025-06-thought-notes/)
@@ -155,13 +154,13 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina](https://nsddd.top/posts/ai-projects/jina/)
 - [2025 March Thought Notes](https://nsddd.top/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://nsddd.top/posts/2024-annual-review/)
+- [🌍 Travel Footprints | 旅行足迹](https://nsddd.top/travel/)
 - [Kubernetes Resources and Learning Path Summary](https://nsddd.top/posts/kubernetes-learning/)
 - [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
 - [Crafting Your Career Pathway: A Guide to Open Source Resume Builders and Expert Resume Tips](https://nsddd.top/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
 - [Troubleshooting Guide for OpenIM](https://nsddd.top/posts/troubleshooting-guide-for-openim/)
 - [Navigating the Open Source Landscape](https://nsddd.top/posts/navigating-the-open-source-landscape/)
-- [How to Elegantly Display Travel Footprints in Your Blog - PolarSteps Integration Guide](https://nsddd.top/posts/travel-with-polarsteps/)
 - [Sora Ease Guide: Mastering Sora AI for Developers](https://nsddd.top/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
 - [In 2023, I Was Wandering at the Edge of the World](https://nsddd.top/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
 - [Exploring Sora Technology for Enthusiasts and Developers](https://nsddd.top/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
@@ -174,7 +173,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Vector Database Learning](https://nsddd.top/posts/vector-database-learning/)
 - [OpenIM: Building an Efficient Version Control and Testing Workflow](https://nsddd.top/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
 - [Emerging Challenges and Trends in 2024](https://nsddd.top/posts/emerging-challenges-and-trends-in-2024/)
-- [🌍 Travel Footprints | 旅行足迹](https://nsddd.top/travel/)
 - [2023 Annual Summary Reflections and Aspirations](https://nsddd.top/posts/2023-annual-summary-reflections-and-aspirations/)
 - [GitOps Practice Theory: In-Depth Analysis of Kubernetes Deployment Strategies](https://nsddd.top/posts/gitops-practice-theory-part/)
 - [Deployment and Design of Management Backend and Monitoring](https://nsddd.top/posts/deployment-and-design-of-management-backend-and-monitoring/)
@@ -220,6 +218,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2025年9月思考笔记](https://nsddd.top/zh/posts/2025-09-thought-notes/)
 - [2025年8月思考笔记](https://nsddd.top/zh/posts/2025-08-thought-notes/)
 - [2025年7月思考笔记](https://nsddd.top/zh/posts/2025-07-thought-notes/)
 - [2025年6月思考笔记](https://nsddd.top/zh/posts/2025-06-thought-notes/)
