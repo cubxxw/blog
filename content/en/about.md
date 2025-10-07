@@ -56,6 +56,11 @@ cover:
 <td>Factory Setting</td>
 </tr>
 <tr>
+<td>Birth Date</td>
+<td id="birth-info-en">April 30, 2001</td>
+<td id="age-display-en">Loading...</td>
+</tr>
+<tr>
 <td>Operating System</td>
 <td>Human OS v29.x</td>
 <td>Continuous Updates</td>
@@ -617,6 +622,19 @@ Product Thinking Interface
   background: #f8f9fa;
 }
 
+#birth-info-en, #age-display-en {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(102, 126, 234, 0.8), 0 0 20px rgba(118, 75, 162, 0.4);
+  }
+}
+
 /* Feature Modules */
 .feature-modules {
   display: grid;
@@ -1160,6 +1178,7 @@ Product Thinking Interface
 // Technical Manual Interactive Script
 class TechnicalManual {
   constructor() {
+    this.birthDate = new Date('2001-04-30T00:00:00');
     this.init();
   }
 
@@ -1167,6 +1186,28 @@ class TechnicalManual {
     this.setupAnimations();
     this.setupInteractions();
     this.loadManual();
+    this.startAgeCounter();
+  }
+
+  startAgeCounter() {
+    this.updateAge();
+    setInterval(() => this.updateAge(), 1000);
+  }
+
+  updateAge() {
+    const now = new Date();
+    const diff = now - this.birthDate;
+
+    const years = Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000));
+    const days = Math.floor((diff % (365.25 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+    const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+    const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+    const seconds = Math.floor((diff % (60 * 1000)) / 1000);
+
+    const ageElement = document.getElementById('age-display-en');
+    if (ageElement) {
+      ageElement.innerHTML = `<span style="color: #667eea; font-weight: bold;">${years}y ${days}d ${hours}h ${minutes}m ${seconds}s</span>`;
+    }
   }
 
   setupAnimations() {
