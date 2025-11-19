@@ -34,6 +34,7 @@ cover:
 <span class="tag-pill">🚀 认知宇航员</span>
 <span class="tag-pill">🤖 AI 共生体</span>
 <span class="tag-pill">🌍 数字游民</span>
+<span class="tag-pill">🎂 2001, 04, 30</span>
 </div>
 
 <div class="narrative-box">
