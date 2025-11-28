@@ -218,6 +218,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2025年10月思考笔记](https://nsddd.top/zh/posts/2025-10-thought-notes/)
 - [2025年9月思考笔记](https://nsddd.top/zh/posts/2025-09-thought-notes/)
 - [2025年8月思考笔记](https://nsddd.top/zh/posts/2025-08-thought-notes/)
 - [2025年7月思考笔记](https://nsddd.top/zh/posts/2025-07-thought-notes/)
@@ -295,7 +296,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [跨平台以及多架构编译设计](https://nsddd.top/zh/posts/cross-platform-compilation/)
 - [Kubernetes一篇快速入门的文章](https://nsddd.top/zh/posts/kubernetes-an-article-to-get-started-quickly/)
 - [参与我们的区块链学习平台项目](https://nsddd.top/zh/posts/participating-in-this-project/)
-- [关于我](https://nsddd.top/zh/about/)
+- [System.Self()](https://nsddd.top/zh/about/)
 <!-- My-Blog-ZH:END -->
 
 
