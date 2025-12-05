@@ -219,6 +219,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2025年11月思考笔记](https://nsddd.top/zh/posts/2025-11-thought-notes/)
 - [2025年10月思考笔记](https://nsddd.top/zh/posts/2025-10-thought-notes/)
 - [2025年9月思考笔记](https://nsddd.top/zh/posts/2025-09-thought-notes/)
 - [2025年8月思考笔记](https://nsddd.top/zh/posts/2025-08-thought-notes/)
