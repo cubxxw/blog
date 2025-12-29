@@ -5,7 +5,6 @@
 本功能会根据用户浏览器的语言设置，自动跳转到对应的语言版本：
 
 - 中文用户 → `/zh/`（简体中文）
-- 繁体中文用户 → `/zh-tw/`（繁体中文）
 - 英文用户 → `/`（英文，默认）
 
 ## 支持的语言检测
@@ -14,8 +13,6 @@
 - `zh`
 - `zh-CN`
 - `zh-Hans`
-
-### 繁体中文 (`/zh-tw/`)
 - `zh-TW`
 - `zh-HK`
 - `zh-MO`
@@ -50,7 +47,6 @@
 ```javascript
 // 设置语言偏好
 setLanguagePreference('zh');     // 切换到简体中文
-setLanguagePreference('zh-tw');  // 切换到繁体中文
 setLanguagePreference('en');     // 切换到英文
 
 // 清除语言偏好（下次访问将重新检测）
@@ -110,10 +106,6 @@ languages:
     weight: 2
     languageName: 简体中文
     contentDir: "content/zh"
-  zh-tw:
-    weight: 3
-    languageName: 繁體中文
-    contentDir: "content/zh-tw"
 ```
 
 ## 注意事项

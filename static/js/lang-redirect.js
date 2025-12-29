@@ -41,15 +41,14 @@
         'zh-cn': 'zh',
         'zh-Hans': 'zh',
         'zh-hans': 'zh',
-        // 繁体中文
-        'zh-TW': 'zh-tw',
-        'zh-tw': 'zh-tw',
-        'zh-Hant': 'zh-tw',
-        'zh-hant': 'zh-tw',
-        'zh-HK': 'zh-tw',
-        'zh-hk': 'zh-tw',
-        'zh-MO': 'zh-tw',
-        'zh-mo': 'zh-tw',
+        'zh-TW': 'zh',
+        'zh-tw': 'zh',
+        'zh-Hant': 'zh',
+        'zh-hant': 'zh',
+        'zh-HK': 'zh',
+        'zh-hk': 'zh',
+        'zh-MO': 'zh',
+        'zh-mo': 'zh',
         // 英文系列（默认）
         'en': 'en',
         'en-US': 'en',
@@ -75,16 +74,9 @@
         log('Language prefix:', langPrefix);
         
         if (langPrefix === 'zh') {
-            // 中文用户，根据地区细分
-            const region = browserLang.split('-')[1];
-            log('Chinese region:', region);
-            if (region && ['TW', 'tw', 'HK', 'hk', 'MO', 'mo', 'Hant', 'hant'].includes(region)) {
-                targetLang = 'zh-tw';
-                log('Traditional Chinese detected');
-            } else {
-                targetLang = 'zh';
-                log('Simplified Chinese detected');
-            }
+            // 所有中文用户都使用简体中文
+            targetLang = 'zh';
+            log('Chinese detected, using simplified Chinese');
         } else if (langPrefix === 'en') {
             targetLang = 'en';
             log('English detected');

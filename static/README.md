@@ -317,22 +317,6 @@ Ici, vous trouverez les derniers articles de blog les plus intéressants en fran
 <!-- My-Blog-FR:END -->
 
 
-### 繁體中文博客精選訂閱
-
-這裡你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的繁體中文博客文章。
-
-<!-- My-Blog-TW:START -->
-- [2023年，我的旅行起点 - 2023年的我漫步在世界边缘](https://nsddd.top/zh-tw/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
-- [Sora 技術討論以及普通人和開發者如何利用 Sora 改變世界](https://nsddd.top/zh-tw/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
-- [深入了解Kubernetes Kube apisserver的组件](https://nsddd.top/zh-tw/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
-- [深入了解Kubernetes等组件之ETCD](https://nsddd.top/zh-tw/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
-- [Openkf 多架構鏡像的構建策略設計](https://nsddd.top/zh-tw/posts/openkf-multi-architecture-image/)
-- [我的第一個博客](https://nsddd.top/zh-tw/posts/my-first-blog/)
-- [Kubernetes an Article to Get Started Quickly](https://nsddd.top/zh-tw/posts/kubernetes-an-article-to-get-started-quickly/)
-- [關於我](https://nsddd.top/zh-tw/about/)
-<!-- My-Blog-TW:END -->
-
-
 ## Content style
 
 We don't mandate any particular style for your page contents. However, if you'd like some guidance on how to write and format clear, concise technical documentation, we recommend the [Google Developer Documentation Style Guide](https://developers.google.com/style/), particularly the [Style Guide Highlights](https://developers.google.com/style/highlights).
