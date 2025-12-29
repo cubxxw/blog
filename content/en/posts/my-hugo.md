@@ -857,7 +857,6 @@ hugo new content content/de/posts/test.md
 hugo new content content/zh/posts/test.md
 hugo new content content/fr/posts/test.md
 hugo new content content/es/posts/test.md
-hugo new content content/zh-tw/posts/test.md
 ```
 
 We add the following parameters to our configuration file:

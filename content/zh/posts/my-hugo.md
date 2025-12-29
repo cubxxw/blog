@@ -860,7 +860,6 @@ hugo new content content/de/posts/test.md
 hugo new content content/zh/posts/test.md
 hugo new content content/fr/posts/test.md
 hugo new content content/es/posts/test.md
-hugo new content content/zh-tw/posts/test.md
 ```
 
 我们将以下参数添加到我们的配置文件中:
