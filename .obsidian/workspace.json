@@ -1,33 +1,35 @@
 {
   "main": {
-    "id": "376f14a0449860dd",
+    "id": "ff3b20a31d013eb3",
     "type": "split",
     "children": [
       {
-        "id": "20e06fed845bf1fc",
+        "id": "ddc784674dfb5c3b",
         "type": "tabs",
         "children": [
           {
-            "id": "405f6c5f66a8be97",
+            "id": "5a33079376897c35",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "欢迎.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "欢迎"
+              "title": "新标签页"
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "37214e90a5944d9c",
+        "type": "tabs",
+        "children": [
           {
-            "id": "946a5f1a79483dd3",
+            "id": "cc89d34e42980f5e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "欢迎.md",
+                "file": "prompt.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -42,25 +44,24 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "欢迎"
+              "title": "prompt"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "befc4f0d63759680",
+    "id": "3ab37b9a015de37a",
     "type": "split",
     "children": [
       {
-        "id": "0c8a92712fe31398",
+        "id": "1b32b256df1dba78",
         "type": "tabs",
         "children": [
           {
-            "id": "ee12c41ab4dee476",
+            "id": "2af2a17cc06e03d8",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -73,7 +74,7 @@
             }
           },
           {
-            "id": "353e35c128334da6",
+            "id": "6b391d33eeaad5d9",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -90,7 +91,7 @@
             }
           },
           {
-            "id": "708269b53cd260fb",
+            "id": "ee63e09d3a08c0a6",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -103,23 +104,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 281.5
+    "width": 300
   },
   "right": {
-    "id": "48e23813ff4aaeeb",
+    "id": "6e50b19d8b4c5fc5",
     "type": "split",
     "children": [
       {
-        "id": "0d063c37c7315f36",
+        "id": "fe25b678d24395dc",
         "type": "tabs",
         "children": [
           {
-            "id": "f3205e7ad43968ee",
+            "id": "34cd411f9ba95095",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "欢迎.md",
+                "file": "prompt.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,24 +130,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "欢迎 的反向链接列表"
+              "title": "prompt 的反向链接列表"
             }
           },
           {
-            "id": "00881b238997a4c3",
+            "id": "d2c1cd4e29b734fb",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "prompt.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "出链"
+              "title": "prompt 的出链列表"
             }
           },
           {
-            "id": "37520a33b5af7fa3",
+            "id": "dd26201c19ec35f2",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -161,7 +163,7 @@
             }
           },
           {
-            "id": "e619893c3d32f6b1",
+            "id": "2e8d98645d6cf7c2",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -175,46 +177,26 @@
             }
           },
           {
-            "id": "58a62ab725952ab5",
+            "id": "910d9485e7526cc0",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "欢迎.md",
+                "file": "prompt.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "欢迎 的大纲"
-            }
-          },
-          {
-            "id": "7d6546d8d7f85819",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
-            }
-          },
-          {
-            "id": "5baf257cab505895",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "title": "prompt 的大纲"
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 408.5
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -224,22 +206,11 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false,
-      "workspaces:管理工作区布局": false,
-      "publish:发布更改": false,
-      "obsidian-git:Open Git source control": false,
-      "terminal:Open terminal": false
+      "bases:新建数据库": false
     }
   },
-  "active": "946a5f1a79483dd3",
+  "active": "cc89d34e42980f5e",
   "lastOpenFiles": [
-    "2026-02-26.md",
-    "未命名.md",
-    "欢迎.md",
-    "未命名 1.base",
-    "未命名 1.md",
-    "未命名.base",
-    "未命名 2.md",
-    "Reality-Sandbox"
+    "prompt.md"
   ]
 }
