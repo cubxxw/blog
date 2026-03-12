@@ -1,0 +1,97 @@
+{
+  "resultsCount": 15,
+  "khojUrl": "https://app.khoj.dev",
+  "khojApiKey": "kk-GNBgyfKt2kLbs1860XtQ0hF4E5x19Rc2cYyxvj-vFZc",
+  "connectedToBackend": true,
+  "autoConfigure": true,
+  "lastSync": {},
+  "syncFileType": {
+    "markdown": true,
+    "images": true,
+    "pdf": true
+  },
+  "userInfo": {
+    "email": "3293172751nss@gmail.com",
+    "username": "3293172751nss@gmail.com",
+    "photo": "https://lh3.googleusercontent.com/a/ACg8ocJ0p8IcCGaEL_4sqNpOr8pEf2gWFskU37NhQbdJg5oXKiA9lLoT=s96-c",
+    "is_active": false,
+    "has_documents": false,
+    "khoj_version": "2.0.0b25"
+  },
+  "syncFolders": [],
+  "excludeFolders": [],
+  "syncInterval": 60,
+  "autoVoiceResponse": true,
+  "fileAccessMode": "read",
+  "selectedChatModelId": "27",
+  "availableChatModels": [
+    {
+      "id": "24",
+      "name": "Gemini 2.5 Flash Lite"
+    },
+    {
+      "id": "39",
+      "name": "GPT OSS 120B"
+    },
+    {
+      "id": "26",
+      "name": "Gemini Pro 3"
+    },
+    {
+      "id": "41",
+      "name": "Kimi K2 Think"
+    },
+    {
+      "id": "38",
+      "name": "Kimi K2"
+    },
+    {
+      "id": "19",
+      "name": "Claude Haiku 4.5"
+    },
+    {
+      "id": "22",
+      "name": "Qwen 3 32B"
+    },
+    {
+      "id": "27",
+      "name": "Gemini Flash 3"
+    },
+    {
+      "id": "40",
+      "name": "GLM 4.7"
+    },
+    {
+      "id": "23",
+      "name": "Deepseek 3.2"
+    },
+    {
+      "id": "32",
+      "name": "Grok 4"
+    },
+    {
+      "id": "28",
+      "name": "GPT 5.2"
+    },
+    {
+      "id": "20",
+      "name": "Llama 3.3 70B"
+    },
+    {
+      "id": "31",
+      "name": "GPT 5 Nano"
+    },
+    {
+      "id": "30",
+      "name": "GPT 5 Mini"
+    },
+    {
+      "id": "10",
+      "name": "Claude Sonnet 4.5"
+    },
+    {
+      "id": "33",
+      "name": "Grok 4.1 Fast"
+    }
+  ]
+}

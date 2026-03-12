@@ -1,0 +1,7 @@
+{
+  "confirmBeforeEmbed": true,
+  "showFilePath": false,
+  "attachmentFolder": "assets",
+  "filenameFormat": "{name}-{timestamp}",
+  "useTimestamp": true
+}

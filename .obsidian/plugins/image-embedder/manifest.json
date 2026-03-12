@@ -1,0 +1,10 @@
+{
+	"id": "image-embedder",
+	"name": "Image Embedder",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Automatically downloads and embeds images from URLs when pasting",
+	"author": "Natalie Sumbo",
+	"authorUrl": "https://github.com/sky150",
+	"isDesktopOnly": false
+}

@@ -4,5 +4,14 @@
   "obsidian-git",
   "dataview",
   "obsidian-tasks-plugin",
-  "terminal"
+  "terminal",
+  "obsidian-image-auto-upload-plugin",
+  "obsidian-local-images-plus",
+  "image-embedder",
+  "templater-obsidian",
+  "obsidian-kanban",
+  "obsidian-excalidraw-plugin",
+  "obsidian-outliner",
+  "obsidian-icon-folder",
+  "khoj"
 ]

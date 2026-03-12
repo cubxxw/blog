@@ -1,11 +1,14 @@
 ---
-title: "Jina 开源项目深度学习"
+title: Jina 开源项目深度学习
 date: 2025-04-12T13:01:59+08:00
 draft: false
-description: "AI开源项目学习笔记"
-tags: ["AI开源", "项目学习"]
-categories: ["AI Open Source"]
-author: "cubxxw"
+description: AI开源项目学习笔记
+tags:
+  - AI开源
+  - 项目学习
+categories:
+  - AI Open Source
+author: cubxxw
 ---
 
 ## 项目概览

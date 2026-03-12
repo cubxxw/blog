@@ -1,5 +1,6 @@
 {
   "promptDelete": false,
   "showLineNumber": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "assets"
 }
