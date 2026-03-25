@@ -226,9 +226,9 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 <!-- My-Blog-ZH:START -->
 - [我在游荡，但我没有迷路 — 2025-2026 年度总结](https://nsddd.top/zh/posts/2025-annual-review/)
 - [AI 越来越聪明，我却越来越不知道自己是谁](https://nsddd.top/zh/posts/ai-and-self-identity/)
-- [2026 年 2 月思考笔记](https://nsddd.top/zh/posts/2026-02-thought-notes/)
-- [2026 年 1 月思考笔记](https://nsddd.top/zh/posts/2026-01-thought-notes/)
-- [2025 年 12 月思考笔记](https://nsddd.top/zh/posts/2025-12-thought-notes/)
+- [2026 年 2 月思考笔记 | February 2026 Thought Notes](https://nsddd.top/zh/posts/2026-02-thought-notes/)
+- [2026 年 1 月思考笔记 | January 2026 Thought Notes](https://nsddd.top/zh/posts/2026-01-thought-notes/)
+- [2025 年 12 月思考笔记 | December 2025 Thought Notes](https://nsddd.top/zh/posts/2025-12-thought-notes/)
 - [2025年11月思考笔记](https://nsddd.top/zh/posts/2025-11-thought-notes/)
 - [2025年10月思考笔记](https://nsddd.top/zh/posts/2025-10-thought-notes/)
 - [2025年9月思考笔记](https://nsddd.top/zh/posts/2025-09-thought-notes/)
