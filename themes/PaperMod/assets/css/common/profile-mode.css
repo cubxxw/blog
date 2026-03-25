@@ -1,42 +1,482 @@
-.buttons,
 .main .profile {
+    position: relative;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - (var(--gap) * 2));
+    overflow: hidden;
+}
+
+.main .profile-home {
+    width: min(calc(var(--nav-width) + var(--gap) * 2), calc(100vw - var(--gap) * 2));
+    max-width: none;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.profile {
+    --profile-accent: #2dd4bf;
+    --profile-accent-strong: #2563eb;
+    --profile-surface: rgba(255, 255, 255, 0.78);
+    --profile-surface-strong: rgba(255, 255, 255, 0.92);
+    --profile-grid: rgba(15, 23, 42, 0.06);
+    --profile-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+    padding: 12px 0 36px;
+}
+
+.dark .profile {
+    --profile-accent: #22d3ee;
+    --profile-accent-strong: #8b5cf6;
+    --profile-surface: rgba(16, 18, 24, 0.72);
+    --profile-surface-strong: rgba(20, 24, 31, 0.92);
+    --profile-grid: rgba(255, 255, 255, 0.06);
+    --profile-shadow: 0 30px 80px rgba(2, 6, 23, 0.36);
+}
+
+.profile_fx {
+    position: absolute;
+    pointer-events: none;
+}
+
+.profile_fx--grid {
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--profile-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--profile-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at center, #000 50%, transparent 88%);
+}
+
+.profile_fx--glow {
+    width: 34rem;
+    height: 34rem;
+    filter: blur(100px);
+    opacity: 0.38;
+    border-radius: 999px;
+}
+
+.profile_fx--left {
+    top: -10%;
+    left: -6%;
+    background: rgba(45, 212, 191, 0.16);
+}
+
+.profile_fx--right {
+    right: -8%;
+    bottom: -12%;
+    background: rgba(99, 102, 241, 0.16);
+}
+
+.profile_shell {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 28px;
+}
+
+.profile_hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+    gap: 28px;
+    align-items: stretch;
+}
+
+.profile_copy,
+.profile_sidecard,
+.profile_panel {
+    border: 1px solid var(--border);
+    background: var(--profile-surface);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--profile-shadow);
+}
+
+.profile_copy {
+    border-radius: 32px;
+    padding: 42px;
+    text-align: left;
+}
+
+.profile_status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 14px;
+    border: 1px solid color-mix(in srgb, var(--profile-accent) 26%, transparent);
+    background: color-mix(in srgb, var(--profile-accent) 10%, transparent);
+    border-radius: 999px;
+    color: var(--profile-accent);
+    font: 600 12px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    letter-spacing: 0.08em;
+}
+
+.profile_status__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 16px currentColor;
+}
+
+.profile_title {
+    margin: 0 0 16px;
+    display: grid;
+    gap: 4px;
+    font-size: clamp(3rem, 8vw, 5.6rem);
+    line-height: 0.94;
+    letter-spacing: -0.06em;
+}
+
+.profile_title__name {
+    color: var(--primary);
+}
+
+.profile_title__accent {
+    color: transparent;
+    background: linear-gradient(90deg, var(--profile-accent), var(--profile-accent-strong));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.profile_terminal {
+    min-height: 34px;
+    margin-bottom: 22px;
+    color: var(--secondary);
+    font: 500 clamp(1rem, 2.2vw, 1.35rem)/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.profile_terminal__prompt {
+    color: var(--profile-accent);
+}
+
+.profile_terminal__cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.15em;
+    margin-left: 6px;
+    transform: translateY(3px);
+    background: var(--profile-accent);
+    animation: profile-blink 1s steps(1) infinite;
+}
+
+.profile_summary {
+    max-width: 720px;
+    margin: 0 0 18px;
+    color: var(--content);
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+
+.profile_intro {
+    max-width: 760px;
+    margin-bottom: 28px;
+    color: var(--secondary);
+    line-height: 1.9;
+}
+
+.profile_intro p {
+    margin: 0;
+}
+
+.profile .social-icons {
+    padding: 6px 0 18px;
+}
+
+.profile .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--theme) 80%, transparent);
+    transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.profile .social-icons a:hover {
+    color: var(--profile-accent);
+    border-color: color-mix(in srgb, var(--profile-accent) 38%, var(--border));
+    transform: translateY(-2px);
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 720px;
+}
+
+.button {
+    margin: 0;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--profile-surface-strong);
+    transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--profile-accent) 36%, var(--border));
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+.button-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    color: var(--primary);
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+.profile_sidecard {
+    border-radius: 28px;
+    padding: 28px;
+    display: grid;
+    gap: 22px;
+    align-content: start;
+}
+
+.profile_avatar {
     display: flex;
     justify-content: center;
 }
 
-.main .profile {
-    align-items: center;
-    min-height: calc(100vh - var(--header-height) - var(--footer-height) - (var(--gap) * 2));
-    text-align: center;
-}
-
-.profile .profile_inner h1 {
-    padding: 12px 0;
-}
-
 .profile img {
-    display: inline-table;
-    border-radius: 50%;
+    display: block;
+    border-radius: 28px;
+    width: min(100%, 240px);
+    height: auto;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
 }
 
-.buttons {
-    flex-wrap: wrap;
-    max-width: 400px;
-    margin: 0 auto;
+.profile_metrics {
+    display: grid;
+    gap: 12px;
 }
 
-.button {
-    background: var(--tertiary);
-    border-radius: var(--radius);
-    margin: 8px;
-    padding: 6px;
-    transition: transform 0.1s;
+.profile_metric {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--theme) 80%, transparent);
 }
 
-.button-inner {
-    padding: 0 8px;
+.profile_metric span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--secondary);
+    font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
-.button:active {
-    transform: scale(0.96);
+.profile_metric strong {
+    color: var(--primary);
+    font-size: 0.98rem;
+}
+
+.profile_bento {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.profile_panel {
+    border-radius: 28px;
+    padding: 28px;
+    overflow: hidden;
+}
+
+.profile_panel--feature {
+    grid-column: span 8;
+}
+
+.profile_panel--travel {
+    grid-column: span 4;
+}
+
+.profile_panel--knowledge {
+    grid-column: 1 / -1;
+}
+
+.profile_panel__header,
+.profile_panel__topline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.profile_panel__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    height: 52px;
+    border-radius: 18px;
+    border: 1px solid color-mix(in srgb, var(--profile-accent) 26%, var(--border));
+    background: color-mix(in srgb, var(--profile-accent) 10%, transparent);
+    color: var(--profile-accent);
+    font: 600 13px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.profile_panel__arrow {
+    color: var(--secondary);
+    font-size: 1.25rem;
+}
+
+.profile_panel h3 {
+    margin: 22px 0 10px;
+    color: var(--primary);
+    font-size: clamp(1.45rem, 2.6vw, 2rem);
+}
+
+.profile_panel p {
+    margin: 0;
+    color: var(--secondary);
+    line-height: 1.8;
+}
+
+.profile_code {
+    margin-top: 26px;
+    display: grid;
+    gap: 8px;
+    padding: 18px 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--theme) 70%, transparent);
+    color: var(--secondary);
+    font: 500 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.profile_code span:last-child {
+    color: var(--profile-accent);
+}
+
+.profile_meta_list {
+    margin-top: 24px;
+    display: grid;
+    gap: 10px;
+}
+
+.profile_meta_list div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    font: 500 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.profile_meta_list div:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.profile_meta_list span {
+    color: var(--secondary);
+}
+
+.profile_meta_list strong {
+    color: var(--primary);
+    text-align: right;
+}
+
+.profile_panel__topline h3 {
+    margin: 0 0 6px;
+    font-size: 1.45rem;
+}
+
+.profile_panel__topline p {
+    font: 500 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.profile_view_all {
+    color: var(--profile-accent);
+    font: 600 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    letter-spacing: 0.05em;
+}
+
+.profile_posts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.profile_post {
+    display: grid;
+    gap: 10px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: color-mix(in srgb, var(--theme) 72%, transparent);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.profile_post:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--profile-accent) 26%, var(--border));
+}
+
+.profile_post__date,
+.profile_post__tag {
+    color: var(--secondary);
+    font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.profile_post strong {
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+@keyframes profile-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 960px) {
+    .profile_hero,
+    .profile_posts {
+        grid-template-columns: 1fr;
+    }
+
+    .profile_panel--feature,
+    .profile_panel--travel,
+    .profile_panel--knowledge {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile {
+        padding-bottom: 20px;
+    }
+
+    .profile_copy,
+    .profile_sidecard,
+    .profile_panel {
+        padding: 22px;
+        border-radius: 24px;
+    }
+
+    .profile_title {
+        font-size: 2.8rem;
+    }
+
+    .profile_panel__topline,
+    .profile_meta_list div {
+        flex-direction: column;
+    }
+
+    .profile_meta_list strong {
+        text-align: left;
+    }
 }

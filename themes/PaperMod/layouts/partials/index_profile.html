@@ -1,58 +1,189 @@
-<div class="profile">
+<div class="profile profile-home">
     {{- with site.Params.profileMode }}
-    <div class="profile_inner">
-        {{- if .imageUrl -}}
-        {{- $img := "" }}
-        {{- if not (urls.Parse .imageUrl).IsAbs }}
-            {{- $img = resources.Get .imageUrl }}
-        {{- end }}
-        {{- if $img }}
-            {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
-            {{- if hugo.IsExtended -}}
-                {{- $processableFormats = $processableFormats | append "webp" -}}
-            {{- end -}}
-            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-            {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
-                {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
-                    {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
-                {{- else if .imageHeight }}
-                    {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
-                {{ else if .imageWidth }}
-                    {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
-                {{ else }}
-                    {{- $img = $img.Resize "150x150" }}
-                {{- end }}
-            {{- end }}
-            <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
-        {{- else }}
-        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
-        {{- end }}
-        {{- end }}
-        <h1>{{ .title | default site.Title | markdownify }}</h1>
-        <span>{{ .subtitle | markdownify }}</span>
-        {{- partial "social_icons.html" site.Params.socialIcons -}}
+    {{- $heroLine := cond (eq site.Language.Lang "zh") "构建下一代 AI Agents 与开源系统。" "Building the next generation of AI Agents and open systems." -}}
+    {{- $statusText := cond (eq site.Language.Lang "zh") "状态：在线探索中" "STATUS: ONLINE & EXPLORING" -}}
+    {{- $roleText := cond (eq site.Language.Lang "zh") "AI 创业者 / 开源贡献者 / 数字游民。把智能系统、工程实践与真实世界的冒险连接起来。" "AI Entrepreneur / Open Source Contributor / Digital Nomad. Bridging intelligent systems, engineering rigor, and real-world adventure." -}}
+    {{- $focusTitle := cond (eq site.Language.Lang "zh") "Neural Architectures" "Neural Architectures" -}}
+    {{- $focusBody := cond (eq site.Language.Lang "zh") "持续构建 AI 工具、自动化系统与开源基础设施，把想法变成长期可复用的工程资产。" "Building AI tooling, automation systems, and open-source infrastructure that turns ideas into durable engineering assets." -}}
+    {{- $travelTitle := cond (eq site.Language.Lang "zh") "Nomad Protocol" "Nomad Protocol" -}}
+    {{- $travelBody := cond (eq site.Language.Lang "zh") "忠于冒险，持续在不同城市与语境中工作、学习与迁移。" "Loyalty to adventure. Working, learning, and shipping across different cities and contexts." -}}
+    {{- $knowledgeTitle := cond (eq site.Language.Lang "zh") "Knowledge Base" "Knowledge Base" -}}
+    {{- $knowledgeHint := cond (eq site.Language.Lang "zh") "读取最近写作..." "Querying recent writing..." -}}
+    {{- $viewAllText := cond (eq site.Language.Lang "zh") "[查看全部]" "[VIEW_ALL]" -}}
+    {{- $readingLabel := cond (eq site.Language.Lang "zh") "最近写作" "Recent Writing" -}}
+    {{- $localeLabel := cond (eq site.Language.Lang "zh") "所在地" "Locale" -}}
+    {{- $statusLabel := cond (eq site.Language.Lang "zh") "状态" "Status" -}}
+    {{- $roamingText := cond (eq site.Language.Lang "zh") "ROAMING" "ROAMING" -}}
+    {{- $locationText := cond (eq site.Language.Lang "zh") "中国 / Remote" "China / Remote" -}}
+    {{- $mainPages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+    {{- $recentPages := first 3 ($mainPages.ByDate.Reverse) -}}
+    <div class="profile_fx profile_fx--grid" aria-hidden="true"></div>
+    <div class="profile_fx profile_fx--glow profile_fx--left" aria-hidden="true"></div>
+    <div class="profile_fx profile_fx--glow profile_fx--right" aria-hidden="true"></div>
+    <div class="profile_shell">
+        <section class="profile_hero">
+            <div class="profile_copy">
+                <div class="profile_status">
+                    <span class="profile_status__dot"></span>
+                    <span>{{ $statusText }}</span>
+                </div>
 
-        {{- with .buttons }}
-        <div class="buttons">
-            {{- range . }}
-            <a class="button" href="{{ trim .url " " }}" rel="noopener" title="{{ .name }}">
-                <span class="button-inner">
-                    {{ .name }}
-                    {{- if (findRE "://" .url) }}&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="14" width="14">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
+                <h1 class="profile_title">
+                    <span class="profile_title__name">Xinwei Xiong</span>
+                    <span class="profile_title__accent">(Bear).</span>
+                </h1>
+
+                <div class="profile_terminal" aria-live="polite">
+                    <span class="profile_terminal__prompt">&gt;</span>
+                    <span id="profile-typing-text" data-text="{{ $heroLine }}"></span>
+                    <span class="profile_terminal__cursor"></span>
+                </div>
+
+                <p class="profile_summary">{{ $roleText }}</p>
+
+                <div class="profile_intro">
+                    {{ .subtitle | markdownify }}
+                </div>
+
+                {{- partial "social_icons.html" site.Params.socialIcons -}}
+
+                {{- with .buttons }}
+                <div class="buttons">
+                    {{- range . }}
+                    <a class="button" href="{{ trim .url " " }}" rel="noopener" title="{{ .name }}">
+                        <span class="button-inner">
+                            {{ .name }}
+                            {{- if (findRE "://" .url) }}&nbsp;
+                            <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="14" width="14">
+                                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                                <path d="M15 3h6v6"></path>
+                                <path d="M10 14L21 3"></path>
+                            </svg>
+                            {{- end }}
+                        </span>
+                    </a>
                     {{- end }}
-                </span>
-            </a>
-            {{- end }}
-        </div>
-        {{- end }}
+                </div>
+                {{- end }}
+            </div>
+
+            <aside class="profile_sidecard">
+                <div class="profile_avatar">
+                    {{- if .imageUrl -}}
+                    {{- $img := "" }}
+                    {{- if not (urls.Parse .imageUrl).IsAbs }}
+                        {{- $img = resources.Get .imageUrl }}
+                    {{- end }}
+                    {{- if $img }}
+                        {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+                        {{- if hugo.IsExtended -}}
+                            {{- $processableFormats = $processableFormats | append "webp" -}}
+                        {{- end -}}
+                        {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+                        {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
+                            {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
+                                {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
+                            {{- else if .imageHeight }}
+                                {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
+                            {{ else if .imageWidth }}
+                                {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
+                            {{ else }}
+                                {{- $img = $img.Resize "150x150" }}
+                            {{- end }}
+                        {{- end }}
+                        <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+                    {{- else }}
+                        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+                    {{- end }}
+                    {{- end }}
+                </div>
+
+                <div class="profile_metrics">
+                    <div class="profile_metric">
+                        <span>{{ $localeLabel }}</span>
+                        <strong>{{ $locationText }}</strong>
+                    </div>
+                    <div class="profile_metric">
+                        <span>{{ $statusLabel }}</span>
+                        <strong>{{ $roamingText }}</strong>
+                    </div>
+                    <div class="profile_metric">
+                        <span>{{ cond (eq site.Language.Lang "zh") "Reading" "Reading" }}</span>
+                        <strong>{{ $readingLabel }}</strong>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section class="profile_bento">
+            <article class="profile_panel profile_panel--feature">
+                <div class="profile_panel__header">
+                    <span class="profile_panel__icon">AI</span>
+                    <span class="profile_panel__arrow">↗</span>
+                </div>
+                <h3>{{ $focusTitle }}</h3>
+                <p>{{ $focusBody }}</p>
+                <div class="profile_code">
+                    <span>$ import ideas</span>
+                    <span>&gt; design(open_source=True)</span>
+                    <span>&gt; train(dream_big=True)</span>
+                </div>
+            </article>
+
+            <article class="profile_panel profile_panel--travel">
+                <div class="profile_panel__header">
+                    <span class="profile_panel__icon">MAP</span>
+                </div>
+                <h3>{{ $travelTitle }}</h3>
+                <p>{{ $travelBody }}</p>
+                <div class="profile_meta_list">
+                    <div><span>LAT/LONG</span><strong>23.1291° N, 113.2644° E</strong></div>
+                    <div><span>{{ $localeLabel }}</span><strong>{{ $locationText }}</strong></div>
+                    <div><span>{{ $statusLabel }}</span><strong>{{ $roamingText }}</strong></div>
+                </div>
+            </article>
+
+            <article class="profile_panel profile_panel--knowledge">
+                <div class="profile_panel__topline">
+                    <div>
+                        <h3>{{ $knowledgeTitle }}</h3>
+                        <p>{{ $knowledgeHint }}</p>
+                    </div>
+                    <a href="{{ "posts/" | relLangURL }}" class="profile_view_all">{{ $viewAllText }}</a>
+                </div>
+
+                <div class="profile_posts">
+                    {{- range $recentPages }}
+                    <a class="profile_post" href="{{ .RelPermalink }}">
+                        <span class="profile_post__date">{{ .Date.Format "2006-01-02" }}</span>
+                        <strong>{{ .Title }}</strong>
+                        <span class="profile_post__tag">{{ delimit (.Params.tags | default (slice (cond (eq site.Language.Lang "zh") "文章" "POST"))) " / " }}</span>
+                    </a>
+                    {{- end }}
+                </div>
+            </article>
+        </section>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var target = document.getElementById('profile-typing-text');
+            if (!target) return;
+
+            var fullText = target.dataset.text || '';
+            var current = 0;
+            target.textContent = '';
+
+            var timer = window.setInterval(function () {
+                target.textContent = fullText.slice(0, current);
+                current += 1;
+                if (current > fullText.length) {
+                    window.clearInterval(timer);
+                }
+            }, 42);
+        });
+    </script>
     {{- end}}
 </div>
