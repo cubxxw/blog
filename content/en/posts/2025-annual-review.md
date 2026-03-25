@@ -52,7 +52,9 @@ From "surge" to "shedding" — not getting older, but becoming real. I spent a y
 
 ## II. ACT: Crying on the Mountain for the First Time
 
-February 2025, Nepal Annapurna Circuit. This was my first high-altitude trek.
+Late January to early February 2025, Nepal Annapurna Circuit (ACT). This was my first high-altitude trek.
+
+Starting from Kathmandu, passing through Upper Pisang, Manang, climbing to Tilicho Lake, crossing the highest pass, and descending to Pokhara. The full route took about thirteen days, with the highest point approaching 5,000 meters.
 
 During the trek, I cried twice.
 
@@ -78,7 +80,7 @@ After the trek ended, I walked away with something. I realized that **only when 
 
 My travel trajectory drawn out is a strange line:
 
-**Pokhara, Nepal → Chiang Mai, Thailand → Ho Chi Minh / Hanoi / Da Lat, Vietnam → Kyoto / Nara, Japan → Chengdu / Chongqing / Xi'an / Luoyang / Handan, China → Shenzhen → Shanghai → Lhasa, Tibet → Siem Reap, Cambodia**
+**Pokhara, Nepal (2 months) → Kathmandu, Nepal (Holi Festival) → Shenzhen → Jeju Island, South Korea (Olle Trails + Hallasan) → Qingdao, China (1 month) → Shandong coast: Yantai—Weihai—Rizhao → Hakone—Mt. Fuji—Tokyo, Japan → Vietnam: Ho Chi Minh City / Da Lat / Nha Trang / Hoi An / Da Nang / Hue / Hanoi (2 months) → Guangdong: Shenzhen / Guangzhou / Zhanjiang (with mom) → China cross-country: Nanjing—Shanghai—Shaoxing—Jiaxing—Hangzhou—Handan—Shijiazhuang—Xinxiang—South Taihang—Zhengzhou—Shaolin—Luoyang—Huashan—Xi'an → Japan Kansai autumn leaves: Wakayama—Kumano Kodo—Nara—Kyoto → Hong Kong Palace Museum + Fung Shui Hiking Trail → Guangdong: Shenzhen—Dongguan—Chaoshan—Nan'ao Island—Chaozhou—Guangzhou—Wuhan—Suizhou → Sichuan self-drive to Tibet: Chengdu—Jiuzhaigou—Garze—Litang—Sichuan-Tibet Highway—Changdu—Bomi—Linzhi—Lhasa (nearly 1 month)—Shannan—Namtso Lake → Phnom Penh—Siem Reap, Cambodia**
 
 Each stop had a reason, and each stop also had another function — when something inside began to accumulate to a certain weight, changing cities could temporarily "suspend" that weight.
 
@@ -122,23 +124,51 @@ This was the simplest and most important sentence I spoke that year.
 
 ## V. Vietnam to Japan: The World's Narrative, and My Own
 
-Summer 2025, I stayed in Vietnam for a long time.
+Summer 2025, I stayed in Vietnam for nearly two months.
+
+The motorbike currents of Ho Chi Minh City, the cafes in the mountains of Da Lat, the sea in Nha Trang, Aunt Ly's restaurant in Hoi An's ancient town, Da Nang's My Khe Beach, the ruins of the Nguyen dynasty palace in Hue, Hanoi's National Day — Vietnam is a place I can't summarize in one sentence.
 
 Vietnam showed me a kind of national narrative I had never seen before — bottom-up, grown from people's suffering and resistance. National Day wasn't a grand ceremony displaying national power, but a real sense of pride on every street corner, on every person. That pride was because they had survived, because they had won.
 
 At the same time, I was also thinking about how trust is formed. One time in Vietnam, I received 100,000 Vietnamese dong less in change (about 30 RMB). A big brother advised me to focus on more important things and not haggle over small money. Of course I agreed, but I wanted to figure out more: **Social trust is not a product of virtue, but of repeated games.** The reason mobile payment flourishes in China is not because everyone has become more honest, but because the cost of deception has been redefined.
 
-This idea found another validation in Japan. Around July in Japan, I chose to stay there around the time of the "great prophecy" circulating online, not to verify the apocalypse, but to observe how a civilization coexists with "impermanence." Japan's "kuuki wo yomu" (reading the air), that collective emotion of understanding the atmosphere, that tragic sense of pride of "being chosen to bear suffering" — it showed me a very mature way of coexisting with fear: **Not solving it, but weaving it into aesthetics.**
+This idea found another validation in Japan. In July, I flew from Hanoi to Haneda Airport, first going to Nagoya and Shizuoka, then saw Miho no Matsubara and Mt. Fuji. Then Hakone's Lake Ashi, Owakudani, and finally formally climbing Mt. Fuji — departing from Gotemba Fifth Station, ascending at night, watching sunrise at the summit.
+
+That sunrise was the quietest spectacle I've ever witnessed. No cheering, just dozens of climbers from various countries standing in silence, each in their own solitude.
+
+I chose to stay in Japan around the time of the "great prophecy" circulating online, not to verify the apocalypse, but to observe how a civilization coexists with "impermanence." Japan's "kuuki wo yomu" (reading the air), that collective emotion of understanding the atmosphere, that tragic sense of pride of "being chosen to bear suffering" — it showed me a very mature way of coexisting with fear: **Not solving it, but weaving it into aesthetics.**
 
 Ichigo ichie (one time, one meeting), mono no aware (the pathos of things), wabi-sabi — these aren't escaping death; this is living with death.
 
-Nanzen-ji in Nara, Tang Dynasty wooden structure, those buildings discovered by Liang Sicheng and Lin Huiyin. Lin Huiyin wrote a sentence: **"The beauty of our country's architecture lies in its subtlety and structure."** Freedom after constraint — this was the most beautiful thing I felt during that period.
+In late November, I specifically returned to Japan's Kansai region to see the autumn leaves. Starting from Wakayama, walking the Kumano Kodo trail for two days, entering Nara — Nara Park's deer, Todai-ji, Horyuji — then Kyoto's Kiyomizudera, Fushimi Inari, Ryoanji, Sanjusangendo. That season, all of Kyoto was orange-red, and every tree was counting down.
+
+Horyuji in Nara, Tang Dynasty wooden structure, those buildings discovered by Liang Sicheng and Lin Huiyin. Lin Huiyin wrote a sentence: **"The beauty of our country's architecture lies in its subtlety and structure."** Freedom after constraint — this was the most beautiful thing I felt during that period.
 
 ---
 
-## VI. Prejudice, Subjectivity, and the Self You Can't Escape
+## VI. Shandong Coast, Jeju Island, Qingdao: Another Rhythm of Urban Living
+
+From May to early July 2025, I spent a long time along the Shandong Peninsula and the coastal area facing the Korea Strait.
+
+First was Jeju Island in South Korea. Olle Trail routes 1, 2, 6+7, Udo Island, and finally climbing Hallasan. Hallasan is a very different hiking experience — the trail is long, vegetation changes noticeably with altitude, the summit is cold and misty, and you can't see the majestic view you imagined. But the process itself is clean. No other thoughts, just walking.
+
+Then came a month-long stay in Qingdao. Reef Coffee at Badaguan, chao coffee on Fushan, the solitary cliff cafe at First Beach, Tsutaya Books at Haitian Mall, and the light show on the last day. Qingdao is one of the few cities that made me feel "I could stop here" — sea breeze, German architecture, beer, churches, old and new coexisting in a strange but harmonious way.
+
+Then continuing along the coast: Yantai's Jinsha Beach and Yangma Island, Weihai, and Rizhao. At Rizhao's "sea sea coffee," a single table, the sea right outside the window — I sat there all afternoon.
+
+This stretch of time was the slowest-paced of the entire year. No grand goals, no trying to "get" anything from anywhere. Just watching the sea, drinking coffee, walking, occasionally jotting down a note or two.
+
+I wasn't sure if this was relaxation or some kind of transition. But it let me know that when you're still, time looks different.
+
+---
+
+## VII. Prejudice, Subjectivity, and the Self You Can't Escape
 
 September to November 2025, I intensively observed my own "prejudices."
+
+During that time, I started from Suizhou, passed through Nanjing and Shanghai, then went to Shaoxing's Yangming Sacred Place, Hangzhou's West Lake, then north to Handan and Shijiazhuang, south to Xinxiang, visited South Taihang in Jincheng, then Zhengzhou, Shaolin Temple, Luoyang's Longmen Grottoes, and finally Huashan and Xi'an.
+
+I stayed in Xi'an for more than ten days: Terracotta Warriors, Xi'an City Wall, Big Wild Goose Pagoda, Qujiang Ruins Park, Xi'an Jiaotong University. That cafe run by deaf and mute people — I visited twice, and each time felt something quietly held in place by that space.
 
 This topic originated very concretely: I wrote a note about a death penalty research experiment — in that experiment, people who strongly supported the death penalty would more seriously criticize "anti-death penalty" research, thinking it was full of loopholes; those opposed to the death penalty did the opposite. The same data read out as two completely different realities for both sides.
 
@@ -160,9 +190,37 @@ This is a good thing. But it's also a warning signal of "the system being too se
 
 ---
 
-## VII. That Night in Shenzhen: Both Happy and Miserable
+## VIII. Tibet: The People Who Were Never in a Hurry to Arrive
+
+February 2026, I started from Wuhan, passed through Chengdu and Jiuzhaigou, and began a self-driving journey through western Sichuan.
+
+From Garze to Litang, then along the Sichuan-Tibet Highway: Mangkang, Zuogong, Bomi, the peach blossom season in Linzhi, and finally Lhasa.
+
+I stayed in Lhasa for nearly a month.
+
+The Tibet Museum, Jokhang Temple, Sera Monastery (twice), the Potala Palace on Lantern Festival, Drepung Monastery, Nanshan Park, Dalong Monastery, Shishilin Monastery, and a solo drive to Namtso Lake — when I arrived at the lake, the sun was just beginning to set, the water was that deep blue, the distant snow mountains were still, and I just stood there for a long time, not taking many photos.
+
+Lhasa showed me a rhythm of life I hadn't seen before.
+
+People spinning prayer wheels never rush. They walk, stop, some chat by the roadside, some just sit watching the distant mountains. This isn't slowness, nor laziness, but a kind of ease that comes from knowing what you're doing and not needing to prove it to anyone.
+
+I stood nearby watching, and suddenly felt a bit envious of that feeling of having somewhere to pray. Not the content of faith, but that clarity of "I know who I'm responsible to."
+
+> Faith is close to what a person finally places their life upon. When you peel away layer after layer — money, relationships, achievements, face, desire, emotions — what remains, that which you believe is absolutely worth relying on, worth obeying, worth living for, that approaches true faith.
+
+I value love, I also value freedom, I also want success, I also speak of conscience, I also care about family, I also hope for dignity.
+
+But when values face conflict, which one is on top?
+
+This question, I carried with me out of Lhasa, and I'm still carrying it.
+
+---
+
+## IX. That Night in Shenzhen: Both Happy and Miserable
 
 December 2025, I was in Shenzhen.
+
+During that stretch I also visited Dongguan, Shantou, Nan'ao Island, Chaozhou, Puning, Jiedong, Guangzhou, and spent a day on Lamma Island in Hong Kong.
 
 Shenzhen's architecture gives people a sense of insignificance. Standing in front of DJI's Future City and Tencent's Penguin Island, I felt like I hadn't even reached the starting line. Those campuses are so large, so beautiful, so "complete," creating an illusion in one's heart: It seems the future has already been occupied by them; there's no room for me.
 
@@ -180,19 +238,25 @@ Both of these things hold true simultaneously. I believe in both of them.
 
 ---
 
-## VIII. S-21 and Angkor Wat: Two Weights of Time
+## X. S-21 and Angkor Wat: Two Weights of Time
 
 March 2026, Cambodia.
 
-I visited S-21 (Tuol Sleng Genocide Museum) in Phnom Penh. Building D, a large collective room, severely rusted chains with bloodstains, hanging long, used to frame an entire classroom of people. Single rooms less than a meter wide; people inside couldn't scream when tortured, because making sounds would be considered conspiracy, leading to greater punishment.
+Flying from Chongqing to Kunming, then to Phnom Penh. On my first day in Phnom Penh, I wandered around the Royal Palace and Currency Museum. The second day I went to S-21.
+
+S-21 is called the Tuol Sleng Genocide Museum — originally a school. Building B, a large collective room, severely rusted chains with bloodstains, hanging long, used to frame an entire classroom of people. Single rooms less than a meter wide; people inside couldn't scream when tortured, because making sounds would be considered conspiracy, leading to greater punishment.
 
 This was a design against biological instinct. When humans suffer severe trauma, the instinct is to scream. This design was meant to destroy human instinct from the root.
 
-In that moment, I felt a very concrete weight. Not compassion, but the silence of "this thing really happened." This place was about a two-hour drive from Angkor Wat, where I was going to ride a motorcycle three days later.
+In that moment, I felt a very concrete weight. Not compassion, but the silence of "this thing really happened." This place was about a two-hour drive from Siem Reap's Angkor Wat, where I would be riding a motorcycle a few days later.
 
-Angkor Wat was another kind of weight.
+After arriving in Siem Reap, I began riding intensively to visit temples.
 
-I rode a motorcycle for three consecutive days around the outer circle, with a splitting headache, yet didn't stop. Looking at those massive stones weathered by time, I suddenly understood why this place makes so many people feel shocked, and at the same time understood my own confusion about disenchantment:
+Day one, the small circuit: Angkor Wat main temple, Bayon, Preah Khan, Neak Pean, Ta Som, East Mebon, Pre Rup. Day two, sunrise at Angkor Wat again, then Banteay Kdei, Ta Prohm (the one with tree roots), Ta Keo, Thommanon, Chau Say Tevoda, Bayon a second time, Baphuon. Day three, outer circuit: Banteay Srei (the Women's Fortress), then Beng Mealea — the one I liked most. Unrestored, jungle having pushed apart half the stones; walking through it felt like real archaeology. On the way back, I passed the Roluos Group and stopped at Prasat Bakong.
+
+Three days of splitting headache. Still didn't stop.
+
+What Angkor Wat gave me wasn't the "wow, so big" kind of awe, but a deeper confusion followed by a certain reconciliation:
 
 > When you understand how a magic trick works, it's hard to experience the pure wonder that magic brings. Standing in front of Angkor Wat, if it's merely disenchantment, what you see is a pile of weathered stones, a ruined project built by ancient feudal kings enslaving slaves... But you can also feel the tragic vitality of humanity trying to leave a mark of existence when facing an impermanent universe.
 
@@ -204,7 +268,7 @@ I try to keep walking on this path.
 
 ---
 
-## IX. OpenClaw and That "Individual Sitting in the Corner"
+## XI. OpenClaw and That "Individual Sitting in the Corner"
 
 This year I'm building something called OpenClaw.
 
@@ -232,7 +296,7 @@ This isn't motivational rhetoric. This is a kind of reality I can accept.
 
 ---
 
-## X. #ObserveMe: The Dissection I Did on Myself
+## XII. #ObserveMe: The Dissection I Did on Myself
 
 The content that made me most uncomfortable this year, yet also most valuable, was the #ObserveMe series.
 
@@ -280,7 +344,7 @@ To this day, this question mark remains. But it no longer makes me so anxious. P
 
 ---
 
-## XI. Not "Game" Enough, and That Sense of Scarcity
+## XIII. Not "Game" Enough, and That Sense of Scarcity
 
 For a while, I felt I wasn't "game" enough.
 
@@ -298,27 +362,7 @@ The sense of scarcity itself is a signal, not a problem. It's saying: Here's a p
 
 ---
 
-## XII. Faith: What Remains After Peeling Everything Away
-
-March 2026, around Lhasa, I seriously thought about the matter of faith.
-
-> Faith is close to what a person finally places their life upon. When you peel away layer after layer — money, relationships, achievements, face, desire, emotions — what remains, that which you believe is absolutely worth relying on, worth obeying, worth living for, that approaches true faith.
-
-I value love, I also value freedom, I also want success, I also speak of conscience, I also care about family, I also hope for dignity.
-
-But when values face conflict, which one is on top?
-
-I asked AI once; AI gave the answer "Authentic Subjectivity." I put a question mark.
-
-Then I remembered this journey from Cambodia to Lhasa; I've been observing various faiths — Tibetan Buddhism, Hinduism, Theravada Buddhism, the American individualist version of Christianity... What I'm observing isn't which one is more "right"; what I'm observing is: **Different people place themselves upon different things, and thus live out different forms of life.**
-
-People in Lhasa pray with prayer wheels every day; they also pray when they have nothing else to do. Watching from the side, I suddenly felt a bit envious of that feeling of having somewhere to pray. Not the content of faith, but that clarity of "I know who I'm responsible to."
-
-I haven't found my prayer wheel yet. But I know which direction it's in.
-
----
-
-## XIII. Death: The Perspective That Makes the Present Clear
+## XIV. Death: The Perspective That Makes the Present Clear
 
 March 24, 2026, on a certain night in Siem Reap, I wrote the clearest passage about the question of meaning this entire year:
 
@@ -332,7 +376,7 @@ The answer isn't always clear every time. But the questioning itself is already 
 
 ---
 
-## XIV. What's Left for the Next Year
+## XV. What's Left for the Next Year
 
 This year has ended, but some things haven't ended. They're hanging, left for the next stage to touch.
 
@@ -376,6 +420,6 @@ This year, I was honest.
 
 ---
 
-*@cubxxw · flomo notes 3,614 entries*  
-*2025.02 — 2026.03*  
+*@cubxxw · flomo notes 3,614 entries*
+*2025.01 — 2026.03*
 *Written in Siem Reap, Cambodia, March 25, 2026*
