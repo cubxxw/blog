@@ -133,6 +133,11 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [I'm Wandering, But I'm Not Lost — 2025-2026 Annual Review](https://nsddd.top/posts/2025-annual-review/)
+- [AI Is Getting Smarter, But I'm Losing Myself](https://nsddd.top/posts/ai-and-self-identity/)
+- [2026 February Thought Notes](https://nsddd.top/posts/2026-02-thought-notes/)
+- [2026 January Thought Notes](https://nsddd.top/posts/2026-01-thought-notes/)
+- [2025 December Thought Notes](https://nsddd.top/posts/2025-12-thought-notes/)
 - [2025 November Thought Notes](https://nsddd.top/posts/2025-11-thought-notes/)
 - [2025 August Thought Notes](https://nsddd.top/posts/2025-08-thought-notes/)
 - [2025 July Thought Notes](https://nsddd.top/posts/2025-07-thought-notes/)
