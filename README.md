@@ -224,6 +224,11 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [我在游荡，但我没有迷路 — 2025-2026 年度总结](https://nsddd.top/zh/posts/2025-annual-review/)
+- [AI 越来越聪明，我却越来越不知道自己是谁](https://nsddd.top/zh/posts/ai-and-self-identity/)
+- [2026 年 2 月思考笔记](https://nsddd.top/zh/posts/2026-02-thought-notes/)
+- [2026 年 1 月思考笔记](https://nsddd.top/zh/posts/2026-01-thought-notes/)
+- [2025 年 12 月思考笔记](https://nsddd.top/zh/posts/2025-12-thought-notes/)
 - [2025年11月思考笔记](https://nsddd.top/zh/posts/2025-11-thought-notes/)
 - [2025年10月思考笔记](https://nsddd.top/zh/posts/2025-10-thought-notes/)
 - [2025年9月思考笔记](https://nsddd.top/zh/posts/2025-09-thought-notes/)
@@ -275,9 +280,9 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes Kustomize 学习指南](https://nsddd.top/zh/posts/kubernetes-for-kustomize-learning/)
 - [设计 OpenIM 使用 Harbor 构建企业镜像仓库](https://nsddd.top/zh/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
 - [自动化测试的学习(一)](https://nsddd.top/zh/posts/learn-about-automated-testing/)
+- [Kubernetes 的 CNI，CRI，CSI 详解](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 - [Kubernetes 控制平面 - Kubectl 详细讲解](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Kubernetes 控制平面 - 调度器](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
-- [Kubernetes 的 CNI，CRI，CSI 详解](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 - [深入了解Kubernetes Kube apisserver的组件](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [深入了解Kubernetes等组件之ETCD](https://nsddd.top/zh/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [通过配置文件简化 Kubernetes 部署的参数端口配置](https://nsddd.top/zh/posts/openim-cluster-deployment-parameter-passing-policy/)
