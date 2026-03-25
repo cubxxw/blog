@@ -97,7 +97,7 @@
                 {{- end }}
 
                 {{/* LANGUAGE SELECTOR */}}
-                {{ if hugo.IsMultilingual }}
+                {{ if .Site.IsMultilingual }}
                     {{/* set vars with page data */}}
                     {{ $currentLang := .Lang }}
                     {{ $allTranslations := .Translations }}
