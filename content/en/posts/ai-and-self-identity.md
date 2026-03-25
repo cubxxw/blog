@@ -1,5 +1,5 @@
 ---
-title: 'AI Is Getting Smarter, But I'm Losing Myself'
+title: 'AI Is Getting Smarter, But I''m Losing Myself'
 ShowRssButtonInSectionTermList: true
 cover.image: /assets/ai-self-identity-cover.jpg
 date: 2026-03-01T20:15:00+07:00
