@@ -151,29 +151,14 @@ languages:
           url: /travel/
           pageRef: /travel
           weight: 20
-        - identifier: categories
-          name: 🗂️Categories
-          url: categories/
-          pageRef: /categories
-          weight: 30
-        - identifier: tags
-          name: 🏷️Tags
-          url: tags/
-          pageRef: /tags
-          weight: 40
-        - identifier:
-          name: 🔍Search
-          url: search/
-          pageRef: /search
-          weight: 50
         - identifier: 
           name: Ⓜ️Github
           url: https://github.com/cubxxw/blog
-          weight: 60
+          weight: 30
         - identifier: diary
           name: 📔Diary
           url: https://diary.nsddd.top/flomo-original
-          weight: 70
+          weight: 40
     params:
       profileMode:
         # Enabled or not
@@ -193,8 +178,8 @@ languages:
             url: categories/ai-open-source
           - name: archives
             url: archives
-          - name: Tags
-            url: tags
+          - name: Categories
+            url: categories
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/en"
           Text: "Suggest Changes" # edit text
@@ -225,29 +210,14 @@ languages:
           url: /travel/
           pageRef: /travel
           weight: 20
-        - identifier: categories
-          name: 🗂️分类
-          url: /categories/
-          pageRef: /categories
-          weight: 30
-        - identifier: tags
-          name: 🏷️标签
-          url: /tags/
-          pageRef: /tags
-          weight: 40
-        - identifier: search
-          name: 🔍搜索
-          url: /search/
-          pageRef: /search
-          weight: 50
         - identifier: github
           name: Ⓜ️Github
           url: https://github.com/cubxxw/blog
-          weight: 60
+          weight: 30
         - identifier: diary
           name: 📔日记
           url: https://diary.nsddd.top/flomo-original
-          weight: 70
+          weight: 40
     params:
       profileMode:
         # 启用或禁用
@@ -266,11 +236,9 @@ languages:
             url: categories/ai-open-source
           - name: 归档
             url: archives
-          - name: 标签
-            url: tags
+          - name: 分类
+            url: categories
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/zh"
           Text: "Suggest Changes" # edit text
           appendFilePath: true # to append file path to Edit link'
-
-

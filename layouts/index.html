@@ -28,9 +28,6 @@
 </article>
 {{- end }}
 
-{{- /* Add language switcher */ -}}
-{{- partial "language-switcher.html" . -}}
-
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $paginator := .Paginate $pages }}
 {{- range $paginator.Pages }}
