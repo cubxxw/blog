@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="lhasaSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e1a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a2340;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d3560;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="fullMoon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#f5f5f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e0d0;stop-opacity:1" />
+    </radialGradient>
+    <filter id="moonGlow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="1200" height="675" fill="url(#lhasaSky)"/>
+  
+  <!-- Stars (clear high-altitude atmosphere) -->
+  <g fill="#ffffff" opacity="0.9">
+    <circle cx="80" cy="60" r="2"/>
+    <circle cx="150" cy="100" r="1.5"/>
+    <circle cx="250" cy="70" r="2"/>
+    <circle cx="350" cy="110" r="1.5"/>
+    <circle cx="450" cy="80" r="2"/>
+    <circle cx="550" cy="120" r="1.5"/>
+    <circle cx="650" cy="90" r="2"/>
+    <circle cx="750" cy="130" r="1.5"/>
+    <circle cx="850" cy="75" r="2"/>
+    <circle cx="950" cy="115" r="1.5"/>
+    <circle cx="1050" cy="85" r="2"/>
+    <circle cx="1150" cy="125" r="1.5"/>
+    <circle cx="100" cy="180" r="1.5"/>
+    <circle cx="300" cy="200" r="2"/>
+    <circle cx="500" cy="190" r="1.5"/>
+    <circle cx="700" cy="210" r="2"/>
+    <circle cx="900" cy="185" r="1.5"/>
+    <circle cx="1100" cy="205" r="2"/>
+  </g>
+  
+  <!-- Full Moon -->
+  <circle cx="600" cy="280" r="130" fill="url(#fullMoon)" filter="url(#moonGlow)"/>
+  
+  <!-- Tibetan architecture silhouette -->
+  <g transform="translate(600, 500)" fill="#0f1419" opacity="0.9">
+    <!-- Main building -->
+    <rect x="-200" y="0" width="400" height="150" fill="#0f1419"/>
+    <!-- Roof tiers -->
+    <rect x="-180" y="-30" width="360" height="40" fill="#0f1419"/>
+    <rect x="-160" y="-60" width="320" height="40" fill="#0f1419"/>
+    <rect x="-140" y="-90" width="280" height="40" fill="#0f1419"/>
+    <!-- Prayer flags on sides -->
+    <line x1="-250" y1="-50" x2="-250" y2="150" stroke="#8b4513" stroke-width="3"/>
+    <line x1="250" y1="-50" x2="250" y2="150" stroke="#8b4513" stroke-width="3"/>
+    <!-- Flag strings -->
+    <line x1="-250" y1="-50" x2="-200" y2="-30" stroke="#cd853f" stroke-width="2" opacity="0.6"/>
+    <line x1="250" y1="-50" x2="200" y2="-30" stroke="#cd853f" stroke-width="2" opacity="0.6"/>
+  </g>
+  
+  <!-- Ground -->
+  <ellipse cx="600" cy="650" rx="600" ry="100" fill="#0a0e1a"/>
+  
+  <!-- Caption -->
+  <text x="600" y="630" text-anchor="middle" fill="#607080" font-family="Georgia, serif" font-size="22" font-style="italic">
+    月色仍然真美，去看看吧
+  </text>
+  
+  <!-- Location marker -->
+  <text x="600" y="660" text-anchor="middle" fill="#405060" font-family="Arial, sans-serif" font-size="16">
+    🌙 写于拉萨
+  </text>
+</svg>
