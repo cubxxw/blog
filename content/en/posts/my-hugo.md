@@ -404,26 +404,16 @@ Use the 1st entry as some information:
      Title: Hi there 👋
      Content: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
    socialIcons:
-     - name: twitter
-       url: https://twitter.com/xxw3293172751
-     - name: stackoverflow
-       url: https://stackoverflow.com/users/17393425/xinwei-xiong
      - name: github
        url: https://github.com/cubxxw
      - name: zhihu
        url: https://www.zhihu.com/people/3293172751
-     - name: linkedin
-       url: https://www.linkedin.com/in/cubxxw
      - name: bilibili
        url: https://space.bilibili.com/1233089591
      - name: youtube
-       url: https://https//www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
-     - name: liberapay
-       url: https://liberapay.com/xiongxinwei/donate
+       url: https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
      - name: email
        url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com
-     - name: weibo
-       url: https://weibo.com/u/6248930985
 ```
 
  

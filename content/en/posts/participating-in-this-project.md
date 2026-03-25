@@ -38,13 +38,9 @@ This project is initiated by a team passionate about blockchain and software dev
 
 ### 🌐 Contact Information
 
-- [Facebook](https://www.facebook.com/profile.php?id=100034435372354)
 - [Website](https://telsacoin.io/)
 - [Blog](http://nsddd.top)
 - [Telegram](https://t.me/smile3293172751)
-- [Twitter](https://twitter.com/xxw3293172751)
-- [Linkedin](https://www.linkedin.cn/injobs/in/xiongxinwei-xiong-7606a0227)
-- [Donate](https://liberapay.com/xiongxinwei/donate)
 
 <p align='center'>
   <!-- Social media and contact badges -->
