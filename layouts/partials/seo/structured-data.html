@@ -23,7 +23,7 @@
   "headline": {{ .Title }},
   "name": {{ .Title }},
   "description": {{ cond (ne .Description "") .Description .Summary | plainify | truncate 200 }},
-  "image": {{ cond (and .Params.cover .Params.cover.image (ne .Params.cover.image "")) .Params.cover.image (index site.Params.images 0 | default "/assets/og-image.png") | absURL }},
+  "image": {{ with .Params.cover.image }}{{ . | absURL }}{{ else }}{{ index site.Params.images 0 | default "/assets/og-image.png" | absURL }}{{ end }},
   "url": {{ .Permalink }},
   "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }},
   "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }},
