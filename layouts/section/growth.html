@@ -30,23 +30,25 @@
 {{- end }}
 
 {{/* 按分类筛选文章列表 */}}
-{{- $section := .Section }}
-{{- $categoryTitle := .Title }}
+{{- $lang := .Lang }}
+{{- $filteredPages := slice }}
 
-{{- $filteredPages := where .Site.RegularPages "Params.categories" "intersect" (slice $categoryTitle) }}
-{{- if eq $section "zh/technology" }}
-  {{- $filteredPages = where .Site.RegularPages "Params.categories" "intersect" (slice "技术 (Technology)" "技术") }}
-{{- else if eq $section "zh/growth" }}
-  {{- $filteredPages = where .Site.RegularPages "Params.categories" "intersect" (slice "成长 (Growth)" "成长") }}
+{{- if eq $lang "zh" }}
+  {{- /* Chinese growth section - filter by section path */}}
+  {{- $filteredPages = where .Site.RegularPages "Lang" "zh" }}
+  {{- $filteredPages = where $filteredPages "Params.categories" "intersect" (slice "成长 (Growth)" "成长") }}
+{{- else }}
+  {{- /* English growth section - filter by section path */}}
+  {{- $filteredPages = where .Site.RegularPages "Lang" "en" }}
+  {{- $filteredPages = where $filteredPages "Params.categories" "intersect" (slice "Personal Development" "Growth" "成长 (Growth)" "成长") }}
 {{- end }}
 
 {{- if $filteredPages }}
 <section class="section">
   <div class="container">
     <h2 class="section-title">
-      {{- if eq $section "zh/technology" }}🔧 技术文章
-      {{- else if eq $section "zh/growth" }}🌱 成长文章
-      {{- else }}所有文章{{- end }}
+      {{- if eq $lang "zh" }}🌱 成长文章
+      {{- else }}🌱 Growth Articles{{- end }}
     </h2>
 
     <div class="posts-group">
@@ -84,7 +86,26 @@
     </div>
 
     {{- if gt $paginator.TotalPages 1 }}
-    {{- partial "pagination.html" . }}
+    <footer class="page-footer">
+      <nav class="pagination">
+        {{- if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+          «&nbsp;{{ i18n "prev_page" }}&nbsp;
+          {{- if (.Param "ShowPageNums") }}
+          {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+          {{- end }}
+        </a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+          {{- i18n "next_page" }}&nbsp;
+          {{- if (.Param "ShowPageNums") }}
+          {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+          {{- end }}&nbsp;»
+        </a>
+        {{- end }}
+      </nav>
+    </footer>
     {{- end }}
   </div>
 </section>
