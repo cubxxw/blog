@@ -22,8 +22,13 @@
         loading: "思考中...",
         empty: "请输入问题",
         error: "请求失败",
-        errorNetlify: "无法连接到 AI 服务。本地开发请运行 'netlify dev'，或检查部署状态。",
+        errorNetlify: "无法连接到 AI 服务",
+        errorNetlifyHint: "💡 本地开发请运行：netlify dev",
+        errorProd: "请检查 Netlify 部署和 OPENAI_API_KEY 配置",
         clear: "清空",
+        welcome: "👋 你好！我可以回答关于博客内容的问题。",
+        statusOffline: "离线",
+        statusOnline: "在线",
       },
       en: {
         title: "AI Chat",
@@ -33,8 +38,13 @@
         loading: "Thinking...",
         empty: "Please enter a question",
         error: "Request failed",
-        errorNetlify: "Cannot connect to AI service. Run 'netlify dev' locally or check deployment status.",
+        errorNetlify: "Cannot connect to AI service",
+        errorNetlifyHint: "💡 Run locally: netlify dev",
+        errorProd: "Check Netlify deployment and OPENAI_API_KEY",
         clear: "Clear",
+        welcome: "👋 Hi! I can answer questions about blog content.",
+        statusOffline: "Offline",
+        statusOnline: "Online",
       },
     };
     const pack = dict[language] || dict.en;
@@ -89,12 +99,20 @@
         <div class="blog-ai-title">
           <span class="blog-ai-icon">🤖</span>
           <div>
-            <h3>${t(language, "title")}</h3>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <h3>${t(language, "title")}</h3>
+              <span class="blog-ai-status blog-ai-status--offline" title="${t(language, "statusOffline")}">
+                <span class="blog-ai-status__dot"></span>
+                <span class="blog-ai-status__text">${t(language, "statusOffline")}</span>
+              </span>
+            </div>
             <p>${t(language, "subtitle")}</p>
           </div>
         </div>
       </div>
-      <div class="blog-ai-messages" aria-live="polite"></div>
+      <div class="blog-ai-messages" aria-live="polite">
+        <div class="blog-ai-welcome">${t(language, "welcome")}</div>
+      </div>
       <form class="blog-ai-form">
         <textarea class="blog-ai-input" rows="3" placeholder="${t(language, "placeholder")}" aria-label="Question"></textarea>
         <div class="blog-ai-actions">
@@ -109,6 +127,32 @@
     const submit = root.querySelector(".blog-ai-submit");
     const clear = root.querySelector(".blog-ai-clear");
     const messages = root.querySelector(".blog-ai-messages");
+    const statusEl = root.querySelector(".blog-ai-status");
+
+    // Check connection status
+    async function checkConnection() {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 3000);
+        const response = await fetch(endpoint, {
+          method: "OPTIONS",
+          signal: controller.signal,
+        }).catch(() => ({ ok: false, status: 0 }));
+        clearTimeout(timeout);
+
+        if (response.ok || response.status === 405) {
+          // 405 is expected for OPTIONS on POST-only endpoint
+          statusEl.className = "blog-ai-status blog-ai-status--online";
+          statusEl.title = t(language, "statusOnline");
+          statusEl.querySelector(".blog-ai-status__text").textContent = t(language, "statusOnline");
+        }
+      } catch (e) {
+        // Keep offline status
+      }
+    }
+
+    // Check connection after a short delay
+    setTimeout(checkConnection, 500);
 
     function addMessage(content, isUser) {
       const msg = document.createElement("div");
@@ -116,13 +160,15 @@
       if (isUser) {
         msg.textContent = content;
       } else {
-        // Only parse as markdown for AI responses, escape errors properly
-        const isError = content.includes("请求失败") || content.includes("Request failed") || content.includes("error");
+        // Check if this is an error message (contains HTML or error keywords)
+        const isError = content.includes("<br>") || content.includes("<code>") ||
+                        content.includes("请求失败") || content.includes("Request failed") ||
+                        content.includes("无法连接") || content.includes("Cannot connect");
         if (isError) {
-          // For error messages, just escape HTML and show as plain text
+          // For error messages, render HTML for formatting
           const errorDiv = document.createElement("div");
           errorDiv.className = "blog-ai-error";
-          errorDiv.textContent = content;
+          errorDiv.innerHTML = content;
           msg.innerHTML = "";
           msg.appendChild(errorDiv);
         } else {
@@ -190,7 +236,10 @@
         removeLoading();
         // Show specific error message for 404
         if (error.message === "NETLIFY_404") {
-          addMessage(t(language, "errorNetlify"), false);
+          const errorMsg = isLocalhost
+            ? `${t(language, "errorNetlify")}<br><br><code style="background:rgba(148,163,184,0.15);padding:8px 12px;border-radius:6px;display:block;margin:8px 0;">${t(language, "errorNetlifyHint")}</code>`
+            : `${t(language, "errorNetlify")}<br><br><small>${t(language, "errorProd")}</small>`;
+          addMessage(errorMsg, false);
         } else {
           addMessage(`${t(language, "error")}: ${error.message}`, false);
         }
