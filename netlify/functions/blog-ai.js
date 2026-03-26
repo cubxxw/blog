@@ -21,6 +21,9 @@ function json(statusCode, payload) {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
     },
     body: JSON.stringify(payload),
   };
@@ -117,6 +120,17 @@ function buildContext(index, question, requestedLanguage) {
 }
 
 exports.handler = async function handler(event) {
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 204,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+    };
+  }
+
   if (event.httpMethod !== "POST") {
     return json(405, { error: "Method not allowed" });
   }
