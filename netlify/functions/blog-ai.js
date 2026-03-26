@@ -136,14 +136,14 @@ exports.handler = async function handler(event) {
 
   const question = String(payload.question || "").trim();
   const language = String(payload.language || "").trim();
-  const context = payload.context || []; // Conversation history context
+  const conversationHistory = payload.context || []; // Conversation history context
 
   if (!question) {
     return json(400, { error: "Question is required" });
   }
 
   const index = loadIndex();
-  const context = buildContext(index, question, language);
+  const docContext = buildContext(index, question, language);
   const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
   const baseUrl = process.env.OPENAI_BASE_URL || "https://api.openai.com/v1";
 
@@ -166,9 +166,9 @@ exports.handler = async function handler(event) {
   ];
 
   // Add conversation history (context) if provided
-  if (Array.isArray(context) && context.length > 0) {
+  if (Array.isArray(conversationHistory) && conversationHistory.length > 0) {
     // Limit context to last 10 messages to avoid token overflow
-    const limitedContext = context.slice(-10);
+    const limitedContext = conversationHistory.slice(-10);
     for (const msg of limitedContext) {
       if (msg.role && msg.content) {
         messages.push({
@@ -185,8 +185,8 @@ exports.handler = async function handler(event) {
     content: [
       `User question:\n${question}`,
       `Preferred language hint: ${language || "auto"}`,
-      `\nDirectory summary:\n${context.directorySummary}`,
-      `\nCandidate documents:\n${JSON.stringify(context.candidates, null, 2)}`,
+      `\nDirectory summary:\n${docContext.directorySummary}`,
+      `\nCandidate documents:\n${JSON.stringify(docContext.candidates, null, 2)}`,
     ].join("\n"),
   });
 
@@ -223,7 +223,7 @@ exports.handler = async function handler(event) {
   return json(200, {
     answer,
     model,
-    candidates: context.candidates,
+    candidates: docContext.candidates,
     generatedAt: index.generatedAt,
   });
 };
