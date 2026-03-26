@@ -158,7 +158,7 @@ exports.handler = async function handler(event) {
 
   const index = loadIndex();
   const docContext = buildContext(index, question, language);
-  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+  const model = process.env.OPENAI_MODEL || "gpt-5.4-mini";
   const baseUrl = process.env.OPENAI_BASE_URL || "https://api.openai.com/v1";
 
   const systemPrompt = [
