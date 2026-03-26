@@ -1,4 +1,105 @@
 /* ===================================
+   Category Section Pages (Technology & Growth)
+   =================================== */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--entry);
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+}
+
+.post-entry {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.post-entry:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.post-entry-header {
+  margin-bottom: 0.75rem;
+}
+
+.post-entry-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.post-entry-title a {
+  color: var(--entry);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.post-entry-title a:hover {
+  color: var(--primary);
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--secondary);
+  margin-top: 0.5rem;
+}
+
+.post-entry-description {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  line-height: 1.6;
+  margin: 0.75rem 0;
+}
+
+.post-entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.post-tag,
+.post-category {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.post-tag {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--secondary);
+}
+
+.post-tag:hover {
+  background: rgba(148, 163, 184, 0.2);
+  color: var(--entry);
+}
+
+.post-category {
+  background: var(--primary);
+  color: #fff;
+}
+
+.dark .post-category {
+  color: #000;
+}
+
+/* ===================================
    Blog AI Inline Chat - Modern Design
    =================================== */
 

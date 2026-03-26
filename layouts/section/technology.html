@@ -1,0 +1,93 @@
+{{- define "main" }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+    {{- end }}
+    {{- end }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content">
+  {{ .Content | safeHTML }}
+</div>
+{{- end }}
+
+{{/* 按分类筛选文章列表 */}}
+{{- $section := .Section }}
+{{- $categoryTitle := .Title }}
+
+{{- $filteredPages := where .Site.RegularPages "Params.categories" "intersect" (slice $categoryTitle) }}
+{{- if eq $section "zh/technology" }}
+  {{- $filteredPages = where .Site.RegularPages "Params.categories" "intersect" (slice "技术 (Technology)" "技术") }}
+{{- else if eq $section "zh/growth" }}
+  {{- $filteredPages = where .Site.RegularPages "Params.categories" "intersect" (slice "成长 (Growth)" "成长") }}
+{{- end }}
+
+{{- if $filteredPages }}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">
+      {{- if eq $section "zh/technology" }}🔧 技术文章
+      {{- else if eq $section "zh/growth" }}🌱 成长文章
+      {{- else }}所有文章{{- end }}
+    </h2>
+
+    <div class="posts-group">
+      {{- $paginator := .Paginate $filteredPages.ByDate.Reverse 20 }}
+      {{- range $paginator.Pages }}
+      <article class="post-entry">
+        <header class="post-entry-header">
+          <h2 class="post-entry-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+          <div class="post-meta">
+            <span>{{ .Date.Format "2006-01-02" }}</span>
+            {{- if .Params.tags }}
+            <span>· {{ delimit (first 3 .Params.tags) " · " }}</span>
+            {{- end }}
+          </div>
+        </header>
+        {{- if .Params.description }}
+        <p class="post-entry-description">{{ .Params.description | plainify | truncate 150 }}</p>
+        {{- end }}
+        {{- if or .Params.tags .Params.categories }}
+        <footer class="post-entry-tags">
+          {{- with .Params.categories }}
+          <span class="post-category">{{ index . 0 }}</span>
+          {{- end }}
+          {{- with .Params.tags }}
+          {{- range first 5 . }}
+          <span class="post-tag">{{ . }}</span>
+          {{- end }}
+          {{- end }}
+        </footer>
+        {{- end }}
+      </article>
+      {{- end }}
+    </div>
+
+    {{- if gt $paginator.TotalPages 1 }}
+    {{- partial "pagination.html" . }}
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+{{- end }}
