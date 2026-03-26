@@ -2,7 +2,7 @@
 title: '日本旅居笔记 - 用木头、火与缺口和时间共处'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2026-03-26T00:00:00+08:00
+date: 2025-12-15T00:00:00+08:00
 draft: false
 showtoc: true
 tocopen: false
