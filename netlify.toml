@@ -3,6 +3,16 @@
   command = "make envbuild"
   publish = "public"
 
+[functions]
+  included_files = ["netlify/functions/_generated/**"]
+
+[dev]
+  framework = "#custom"
+  command = "hugo server --environment development --bind 0.0.0.0 --port 1313"
+  targetPort = 1313
+  publish = "public"
+  functions = "netlify/functions"
+
 [build.environment]
   HUGO_VERSION = "0.114.0"
   HUGO_EXTENDED = "true"

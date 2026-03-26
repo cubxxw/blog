@@ -52,7 +52,7 @@ params:
     favicon32x32: ./favicon-32x32.png
     apple_touch_icon: ./apple-touch-icon.png
     # safari_pinned_tab: <link / abs url>
-    customCSS: ["css/custom.css"]
+    customCSS: ["css/custom.css", "css/nav-elegant.css"]
   label:
     text: Home
     icon: ./assets/cubxxw-image.jpg
@@ -136,29 +136,29 @@ languages:
     weight: 1
     menu:
       main:
-        - identifier: lint
-          name: 🤸About me
+        - identifier: about
+          name: About
           url: /about/
           pageRef: /about
           weight: 10
         - identifier: posts
-          name: 📝Posts
+          name: Posts
           url: /posts/
           pageRef: /posts
           weight: 15
         - identifier: travel
-          name: 🌍Travel
+          name: Travel
           url: /travel/
           pageRef: /travel
           weight: 20
-        - identifier: 
-          name: Ⓜ️Github
-          url: https://github.com/cubxxw/blog
-          weight: 30
+        - identifier: github
+          name: GitHub
+          url: https://github.com/cubxxw
+          weight: 25
         - identifier: diary
-          name: 📔Diary
+          name: Diary
           url: https://diary.nsddd.top/flomo-original
-          weight: 40
+          weight: 30
     params:
       profileMode:
         # Enabled or not
@@ -195,29 +195,29 @@ languages:
     weight: 2
     menu:
       main:
-        - identifier: lint
-          name: 🤸关于我
+        - identifier: about
+          name: 关于
           url: /about/
           pageRef: /about
           weight: 10
         - identifier: posts
-          name: 📝文章
+          name: 文章
           url: /posts/
           pageRef: /posts
           weight: 15
         - identifier: travel
-          name: 🌍旅行足迹
+          name: 旅行
           url: /travel/
           pageRef: /travel
           weight: 20
         - identifier: github
-          name: Ⓜ️Github
-          url: https://github.com/cubxxw/blog
-          weight: 30
+          name: GitHub
+          url: https://github.com/cubxxw
+          weight: 25
         - identifier: diary
-          name: 📔日记
+          name: 日记
           url: https://diary.nsddd.top/flomo-original
-          weight: 40
+          weight: 30
     params:
       profileMode:
         # 启用或禁用

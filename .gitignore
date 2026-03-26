@@ -65,8 +65,13 @@ nohup.out
 package-lock.json
 /functions/
 /node_modules/
+/netlify/functions/_generated/
+/static/data/content-index.json
 
 # Generated files when building with make container-build
 .config/
 .npm/
 .qodo
+
+# Local Netlify folder
+.netlify

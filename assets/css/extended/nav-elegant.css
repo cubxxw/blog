@@ -1,0 +1,170 @@
+/* ===================================
+   Elegant Navigation Menu Styles
+   =================================== */
+
+/* Main Navigation Container */
+.nav {
+    gap: 16px;
+}
+
+/* Menu List */
+#menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#menu li {
+    margin-inline-start: 0;
+}
+
+/* Navigation Links - Pill Button Style */
+#menu > li > a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--secondary);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+/* Hover State */
+#menu > li > a:hover {
+    background: rgba(148, 163, 184, 0.08);
+    color: var(--primary);
+    border-color: rgba(148, 163, 184, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Active State */
+#menu > li > a.active {
+    background: linear-gradient(135deg, rgba(14, 116, 144, 0.08), rgba(20, 184, 166, 0.08));
+    color: var(--primary);
+    border-color: rgba(20, 184, 166, 0.3);
+    font-weight: 600;
+}
+
+/* Emoji Icons in Menu */
+#menu > li > a::before {
+    content: '';
+    display: none;
+}
+
+/* External Link Indicator */
+#menu > li > a[target="_blank"]::after {
+    content: '↗';
+    font-size: 10px;
+    opacity: 0.6;
+    margin-left: 2px;
+    transition: opacity 0.2s;
+}
+
+#menu > li > a[target="_blank"]:hover::after {
+    opacity: 1;
+}
+
+/* Separator between items (optional) */
+#menu > li:not(:last-child) {
+    margin-inline-end: 2px;
+}
+
+/* Dark Mode */
+.dark #menu > li > a:hover {
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.3);
+}
+
+.dark #menu > li > a.active {
+    background: linear-gradient(135deg, rgba(14, 116, 144, 0.15), rgba(20, 184, 166, 0.12));
+    border-color: rgba(34, 211, 238, 0.35);
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    #menu {
+        gap: 4px;
+    }
+
+    #menu > li > a {
+        padding: 6px 12px;
+        font-size: 13px;
+        gap: 6px;
+    }
+}
+
+/* ===================================
+   Alternative: Icon-Only Navigation (Compact)
+   =================================== */
+
+/* Uncomment to enable icon-only mode on desktop */
+/*
+@media (min-width: 1024px) {
+    #menu > li > a {
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    #menu > li > a span:first-child {
+        font-size: 20px;
+    }
+
+    #menu > li > a span:nth-child(n+2) {
+        display: none;
+    }
+}
+*/
+
+/* ===================================
+   Glow Effect on Hover (Optional)
+   =================================== */
+
+#menu > li > a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(40% 60% at 50% 0%,
+        rgba(20, 184, 166, 0.15),
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#menu > li > a:hover::before {
+    opacity: 1;
+}
+
+#menu > li > a.active::before {
+    opacity: 0.6;
+}
+
+/* ===================================
+   Smooth Scroll Margin for Anchors
+   =================================== */
+
+html {
+    scroll-padding-top: 80px;
+}
+
+/* ===================================
+   Search Button Enhancement
+   =================================== */
+
+.nav-search-trigger {
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
+.nav-search-trigger kbd {
+    min-width: 20px;
+    padding: 2px 5px;
+    font-size: 10px;
+}

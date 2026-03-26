@@ -23,6 +23,8 @@ CONTAINER_RUN     = "$(CONTAINER_ENGINE)" run --rm --interactive --tty --volume 
 HUGO_VERSION      = $(shell grep ^HUGO_VERSION netlify.toml | tail -n 1 | cut -d '=' -f 2 | tr -d " \"\n")
 NODE_BIN          = node_modules/.bin
 NETLIFY_FUNC      = $(NODE_BIN)/netlify-lambda
+HUGO_DEV_PORT     ?= 1313
+NETLIFY_DEV_PORT  ?= 8888
 
 .DEFAULT_GOAL := help
 
@@ -131,7 +133,32 @@ build: tools.verify.hugo module-check
 ## envbuild: Build site with non-production settings using system's Hugo and put deliverables in ./public
 .PHONY: envbuild
 envbuild: module-check
+	@node scripts/generate-content-index.mjs
 	@hugo --cleanDestinationDir --minify --environment development
+
+## netlify-dev: Run local Netlify dev server with Hugo site and Functions.
+.PHONY: netlify-dev
+netlify-dev: module-check
+	@if [ -z "$$OPENAI_API_KEY" ]; then \
+		echo "OPENAI_API_KEY is not set. Export it before running make netlify-dev." 1>&2; \
+		exit 1; \
+	fi
+	@node scripts/generate-content-index.mjs
+	@OPENAI_MODEL=$${OPENAI_MODEL:-gpt-5.4-mini} npx netlify dev \
+		--framework "#custom" \
+		--command "hugo server --environment development --bind 0.0.0.0 --port $(HUGO_DEV_PORT)" \
+		--target-port $(HUGO_DEV_PORT) \
+		--port $(NETLIFY_DEV_PORT) \
+		--functions netlify/functions \
+		--no-open
+
+## netlify-dev-stop: Stop local Netlify/Hugo dev processes for this repo.
+.PHONY: netlify-dev-stop
+netlify-dev-stop:
+	@pkill -f "npm exec netlify dev" 2>/dev/null || true
+	@pkill -f "npxnetlify dev" 2>/dev/null || true
+	@pkill -f "hugo server --environment development" 2>/dev/null || true
+	@echo "Stopped matching local Netlify/Hugo dev processes."
 
 ## build-preview: Build site with drafts and future posts enabled
 .PHONY: build-preview

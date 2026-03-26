@@ -54,7 +54,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -165,12 +165,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "content/zh/posts/2025-annual-review.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "Outline of 2025-annual-review"
             }
           },
           {
@@ -192,9 +193,19 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "a1d1c86e0d989c23",
+            "type": "leaf",
+            "state": {
+              "type": "khoj-chat-view",
+              "state": {},
+              "icon": "message-circle",
+              "title": "Khoj Chat"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -202,28 +213,39 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "bases:新建数据库": false,
-      "workspaces:管理工作区布局": false,
-      "publish:发布更改": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "workspaces:Manage workspace layouts": false,
+      "publish:Publish changes...": false,
+      "bases:Create new base": false,
+      "obsidian-kanban:Create new board": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
       "obsidian-git:Open Git source control": false,
       "terminal:Open terminal": false,
       "obsidian-local-images-plus:Local Images Plus  0.16.4\r\nLocalize attachments (plugin folder)": false,
       "templater-obsidian:Templater": false,
-      "obsidian-kanban:创建新看板": false,
-      "obsidian-excalidraw-plugin:新建绘图文件": false,
       "khoj:Khoj": false
     }
   },
-  "active": "405f6c5f66a8be97",
+  "active": "a1d1c86e0d989c23",
   "lastOpenFiles": [
+    "public/assets/css/stylesheet.869fc5705a0b0a98ee5a91f436fb3c7f3537f999742a0d82a1f98c22d2375d4d.css",
+    "assets/css/extended/nav-elegant.css",
+    "public/assets/css/stylesheet.204c3f28a731e6ea5ec0f4782577f16c524ea91f32682dda19d2433d8462914b.css",
+    "public/assets/css/stylesheet.08551ba85e4a656c709c507c621f09733109bc888ddce353795f62a9ccb0c43b.css",
+    "public/assets/css/stylesheet.754faf398e52f821647276cecb00141a11c8adc22c589ce6dd2420ac94dd7b7b.css",
+    "layouts/partials/index_profile.html",
+    "public/js/blog-ai-inline.js",
+    "static/js/blog-ai-inline.js",
+    "public/zh/tags/self-discovery/page/1/index.html",
+    "public/zh/tags/self-discovery/page/1",
+    "public/zh/tags/self-discovery/page",
+    "Untitled Kanban.md",
     "content/zh/posts/2025-annual-review.md",
-    "~",
     "content/zh/posts/2026-02-thought-notes.md",
     "content/zh/posts/2026-01-thought-notes.md",
     "content/zh/posts/ai-projects/jina.md",
@@ -233,17 +255,12 @@
     "content/en/posts/2026-02-thought-notes.md",
     "content/en/posts/2026-01-thought-notes.md",
     "content/en/posts/2025-12-thought-notes.md",
-    "未命名.base",
     "未命名 4.md",
     "欢迎.md",
     "未命名 3.md",
     "未命名 1.md",
     "2026-02-26.md",
-    "assets/7.12-7.13-东京.pdf",
-    "未命名 1.base",
     "未命名 2.md",
-    "未命名.md",
-    "assets",
-    "Reality-Sandbox"
+    "未命名.md"
   ]
 }
