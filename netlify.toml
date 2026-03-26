@@ -17,6 +17,7 @@
   HUGO_VERSION = "0.114.0"
   HUGO_EXTENDED = "true"
   SECRETS_SCAN_OMIT_PATHS = ".obsidian/**"
+  SECRETS_SCAN_OMIT_KEYS = "OPENAI_BASE_URL"
 
 [context.production.environment]
   HUGO_BASEURL = "https://nsddd.top"
