@@ -17,7 +17,7 @@ tags:
   - 产品开发 (Product Development)
   - 哲理（Philosophy）
 categories:
-  - 个人成长 (Personal Development)
+  - 成长 (Growth)
 description: >
     这篇文章是我对2024年的年度回顾，涵盖了我在旅居、产品开发、个人成长等方面的经验与反思。通过分享我的经历和思考，希望能为自己和读者带来启发和思考的空间。
 ---

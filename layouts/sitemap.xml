@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  {{- $baseUrl := site.BaseURL -}}
+  {{- range .Site.AllPages -}}
+    {{- if and (not .Params.private) (in (slice "page" "home" "section" "taxonomy" "term") .Kind) -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- if not .Lastmod.IsZero }}
+    <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05+07:00" ) }}</lastmod>
+    {{- else if not .PublishDate.IsZero }}
+    <lastmod>{{ safeHTML ( .PublishDate.Format "2006-01-02T15:04:05+07:00" ) }}</lastmod>
+    {{- end }}
+    {{- if .Params.changefreq }}
+    <changefreq>{{ .Params.changefreq }}</changefreq>
+    {{- else }}
+    <changefreq>monthly</changefreq>
+    {{- end }}
+    {{- if gt .Weight 0 }}
+    <priority>{{ mul (div .Weight 100) 0.8 | printf "%.1f" }}</priority>
+    {{- else }}
+    <priority>0.5</priority>
+    {{- end }}
+    {{- if .Params.cover.image }}
+    <image:image>
+      <image:loc>{{ .Params.cover.image | absURL }}</image:loc>
+    </image:image>
+    {{- end }}
+  </url>
+    {{- end -}}
+  {{- end }}
+</urlset>

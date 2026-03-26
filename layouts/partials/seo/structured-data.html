@@ -1,0 +1,129 @@
+{{- /* Structured Data for SEO */ -}}
+
+{{- $isPost := and (eq .Type "posts") (eq .Kind "page") -}}
+{{- $authorName := "Xinwei Xiong" -}}
+{{- with site.Params.author -}}
+  {{- if reflect.IsMap . -}}
+    {{- $authorName = .name | default "Xinwei Xiong" -}}
+  {{- else if reflect.IsSlice . -}}
+    {{- $authorName = index . 0 | default "Xinwei Xiong" -}}
+  {{- else -}}
+    {{- $authorName = . -}}
+  {{- end -}}
+{{- end -}}
+{{- $siteName := site.Title -}}
+{{- $logo := site.Params.assets.favicon | default "/favicon.ico" | absURL -}}
+
+{{- /* Article Schema */ -}}
+{{- if $isPost -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title }},
+  "name": {{ .Title }},
+  "description": {{ cond .Description .Description .Summary | plainify | truncate 200 }},
+  "image": {{ cond .Params.cover.image .Params.cover.image (index site.Params.images 0 | default "/assets/og-image.png") | absURL }},
+  "url": {{ .Permalink }},
+  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }},
+  {{- with .Params.author -}}
+  {{- $postAuthor := "" -}}
+  {{- if reflect.IsSlice . -}}
+    {{- $postAuthor = index . 0 | string -}}
+  {{- else if reflect.IsMap . -}}
+    {{- $postAuthor = .name | default "Xinwei Xiong" -}}
+  {{- else -}}
+    {{- $postAuthor = . | string -}}
+  {{- end -}}
+  "author": {
+    "@type": "Person",
+    "name": {{ $postAuthor | plainify | default "Xinwei Xiong" }}
+  },
+  {{- end -}}
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ $siteName }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ $logo }}
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink }}
+  },
+  {{- with .Params.tags -}}
+  "keywords": [{{ delimit . ", " | plainify }}],
+  {{- end -}}
+  "articleSection": {{ cond (gt (len .Params.categories) 0) (index .Params.categories 0) "Blog" }},
+  "wordCount": {{ .WordCount }}
+}
+</script>
+{{- end -}}
+
+{{- /* WebSite Schema */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ $siteName }},
+  "url": {{ site.BaseURL }},
+  "description": {{ site.Params.description }},
+  "inLanguage": "zh-CN",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.BaseURL }}search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+{{- /* Person/Author Schema */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ $authorName | default "Xinwei Xiong" }},
+  "url": {{ site.BaseURL }},
+  "sameAs": [
+    "https://github.com/cubxxw",
+    "https://www.zhihu.com/people/3293172751",
+    "https://space.bilibili.com/1233089591",
+    "https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w"
+  ],
+  "jobTitle": "AI Entrepreneur",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "OpenClaw"
+  }
+}
+</script>
+
+{{- /* BreadcrumbList Schema */ -}}
+{{- if .Parent -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{- $ancestors := .Ancestors.Reverse -}}
+    {{- range $index, $ancestor := $ancestors -}}
+    {
+      "@type": "ListItem",
+      "position": {{ add $index 1 }},
+      "name": {{ $ancestor.Title }},
+      "item": {{ $ancestor.Permalink }}
+    }{{- if lt $index (sub (len $ancestors) 1) -}},{{- end -}}
+    {{- end -}}
+    {{- if gt (len $ancestors) 0 -}},{{- end -}}
+    {
+      "@type": "ListItem",
+      "position": {{ add (len $ancestors) 1 }},
+      "name": {{ .Title }},
+      "item": {{ .Permalink }}
+    }
+  ]
+}
+</script>
+{{- end -}}

@@ -136,6 +136,7 @@ exports.handler = async function handler(event) {
 
   const question = String(payload.question || "").trim();
   const language = String(payload.language || "").trim();
+  const context = payload.context || []; // Conversation history context
 
   if (!question) {
     return json(400, { error: "Question is required" });
@@ -153,14 +154,41 @@ exports.handler = async function handler(event) {
     "Prefer the user's language. If the user writes Chinese, answer in Chinese. If the user writes English, answer in English.",
     "Do not invent files or directories that are not present in the provided context.",
     "When useful, cite candidate documents by title and permalink.",
+    "If conversation history is provided, use it to maintain context and provide more personalized responses.",
   ].join(" ");
 
-  const userPrompt = [
-    `User question:\n${question}`,
-    `Preferred language hint: ${language || "auto"}`,
-    `\nDirectory summary:\n${context.directorySummary}`,
-    `\nCandidate documents:\n${JSON.stringify(context.candidates, null, 2)}`,
-  ].join("\n");
+  // Build messages array with conversation history if available
+  const messages = [
+    {
+      role: "system",
+      content: systemPrompt,
+    },
+  ];
+
+  // Add conversation history (context) if provided
+  if (Array.isArray(context) && context.length > 0) {
+    // Limit context to last 10 messages to avoid token overflow
+    const limitedContext = context.slice(-10);
+    for (const msg of limitedContext) {
+      if (msg.role && msg.content) {
+        messages.push({
+          role: msg.role === "user" ? "user" : "assistant",
+          content: msg.content,
+        });
+      }
+    }
+  }
+
+  // Add current question
+  messages.push({
+    role: "user",
+    content: [
+      `User question:\n${question}`,
+      `Preferred language hint: ${language || "auto"}`,
+      `\nDirectory summary:\n${context.directorySummary}`,
+      `\nCandidate documents:\n${JSON.stringify(context.candidates, null, 2)}`,
+    ].join("\n"),
+  });
 
   let response;
   try {
@@ -172,16 +200,7 @@ exports.handler = async function handler(event) {
       },
       body: JSON.stringify({
         model,
-        messages: [
-          {
-            role: "system",
-            content: systemPrompt,
-          },
-          {
-            role: "user",
-            content: userPrompt,
-          },
-        ],
+        messages,
         max_completion_tokens: 900,
       }),
     });

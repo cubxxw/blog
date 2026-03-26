@@ -17,7 +17,7 @@ tags:
   - 晚夏时光 (Late Summer)
   - 动力积蓄 (Momentum Building)
 categories:
-  - 个人成长 (Personal Development)
+  - 成长 (Growth)
 description: >
     2025年8月思考笔记 - 作者将佛道智慧与AI工具深度融合，在越南的旅居生活中进行了一场关于自我、文化与科技的深刻探索，旨在构建一个通往内心自由的个人精神操作系统
 ---

@@ -3,6 +3,11 @@
   const endpoint = window.BLOG_AI_ENDPOINT || "/.netlify/functions/blog-ai";
   const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 
+  // Context storage key and max length
+  const CONTEXT_STORAGE_KEY = "blog-ai-conversation-context";
+  const MAX_CONTEXT_LENGTH = 10; // Max conversation pairs to keep
+  const MAX_CONTEXT_TOKENS_ESTIMATE = 8000; // Rough token limit for context
+
   function inferLanguage() {
     const lang = document.documentElement.getAttribute("lang") || "";
     if (lang.startsWith("zh")) return "zh";
@@ -29,6 +34,8 @@
         welcome: "👋 你好！我可以回答关于博客内容的问题。",
         statusOffline: "离线",
         statusOnline: "在线",
+        contextCleared: "对话历史已清空",
+        contextLoaded: "已加载之前的对话上下文",
       },
       en: {
         title: "AI Chat",
@@ -45,6 +52,8 @@
         welcome: "👋 Hi! I can answer questions about blog content.",
         statusOffline: "Offline",
         statusOnline: "Online",
+        contextCleared: "Conversation history cleared",
+        contextLoaded: "Loaded previous conversation context",
       },
     };
     const pack = dict[language] || dict.en;
@@ -55,7 +64,6 @@
   function parseMarkdown(text) {
     if (!text) return "";
 
-    // Create a temporary element to safely escape HTML
     const escapeHtml = (str) => {
       const div = document.createElement("div");
       div.textContent = str;
@@ -63,31 +71,73 @@
     };
 
     let html = escapeHtml(text)
-      // Headers
       .replace(/^### (.*$)/gim, "<h3>$1</h3>")
       .replace(/^## (.*$)/gim, "<h2>$1</h2>")
       .replace(/^# (.*$)/gim, "<h1>$1</h1>")
-      // Bold
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      // Italic
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
-      // Code blocks
       .replace(/```(\w*)\n([\s\S]*?)```/g, "<pre><code class='language-$1'>$2</code></pre>")
-      // Inline code
       .replace(/`([^`]+)`/g, "<code>$1</code>")
-      // Links
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline'>$1</a>")
-      // Unordered lists
       .replace(/^\s*[-*+]\s+(.*$)/gim, "<li>$1</li>")
-      // Line breaks
       .replace(/\n/gim, "<br>");
 
-    // Wrap consecutive <li> in <ul>
     html = html.replace(/(<li>.*<\/li>(<br>)?)+/g, function(match) {
       return "<ul>" + match.replace(/<\/li><br>/g, "</li>") + "</ul>";
     });
 
     return html;
+  }
+
+  // Context Management Functions
+  function loadContext() {
+    try {
+      const stored = localStorage.getItem(CONTEXT_STORAGE_KEY);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (e) {
+      console.warn("Failed to load context from localStorage:", e);
+    }
+    return [];
+  }
+
+  function saveContext(context) {
+    try {
+      localStorage.setItem(CONTEXT_STORAGE_KEY, JSON.stringify(context));
+    } catch (e) {
+      console.warn("Failed to save context to localStorage:", e);
+      // If storage is full, try to compress and save
+      if (e.name === "QuotaExceededError") {
+        const compressed = compressContext(context);
+        try {
+          localStorage.setItem(CONTEXT_STORAGE_KEY, JSON.stringify(compressed));
+        } catch (e2) {
+          console.error("Still failed after compression:", e2);
+        }
+      }
+    }
+  }
+
+  function compressContext(context) {
+    // Keep only the most recent conversations
+    if (context.length <= MAX_CONTEXT_LENGTH) {
+      return context;
+    }
+    // Keep the last MAX_CONTEXT_LENGTH pairs
+    return context.slice(-MAX_CONTEXT_LENGTH);
+  }
+
+  function addToContext(context, question, answer) {
+    const newContext = [...context, { role: "user", content: question, timestamp: Date.now() }];
+    if (answer) {
+      newContext.push({ role: "assistant", content: answer, timestamp: Date.now() });
+    }
+    return compressContext(newContext);
+  }
+
+  function clearContext() {
+    localStorage.removeItem(CONTEXT_STORAGE_KEY);
   }
 
   function createWidget(container) {
@@ -129,6 +179,19 @@
     const messages = root.querySelector(".blog-ai-messages");
     const statusEl = root.querySelector(".blog-ai-status");
 
+    // Load context from localStorage
+    let conversationContext = loadContext();
+    if (conversationContext.length > 0) {
+      console.log("Loaded conversation context:", conversationContext.length, "messages");
+      // Optionally show a subtle indicator that context was loaded
+      const contextIndicator = document.createElement("div");
+      contextIndicator.className = "blog-ai-context-indicator";
+      contextIndicator.textContent = `${t(language, "contextLoaded")} (${conversationContext.length} ${t(language, "messages")})`;
+      contextIndicator.style.cssText = "font-size: 0.75rem; color: #94a3b8; text-align: center; padding: 8px; background: rgba(148, 163, 184, 0.1); border-radius: 8px; margin: 8px 0;";
+      messages.insertBefore(contextIndicator, messages.firstChild);
+      setTimeout(() => contextIndicator.remove(), 3000);
+    }
+
     // Check connection status
     async function checkConnection() {
       try {
@@ -141,7 +204,6 @@
         clearTimeout(timeout);
 
         if (response.ok || response.status === 405) {
-          // 405 is expected for OPTIONS on POST-only endpoint
           statusEl.className = "blog-ai-status blog-ai-status--online";
           statusEl.title = t(language, "statusOnline");
           statusEl.querySelector(".blog-ai-status__text").textContent = t(language, "statusOnline");
@@ -151,7 +213,6 @@
       }
     }
 
-    // Check connection after a short delay
     setTimeout(checkConnection, 500);
 
     function addMessage(content, isUser) {
@@ -160,12 +221,10 @@
       if (isUser) {
         msg.textContent = content;
       } else {
-        // Check if this is an error message (contains HTML or error keywords)
         const isError = content.includes("<br>") || content.includes("<code>") ||
                         content.includes("请求失败") || content.includes("Request failed") ||
                         content.includes("无法连接") || content.includes("Cannot connect");
         if (isError) {
-          // For error messages, render HTML for formatting
           const errorDiv = document.createElement("div");
           errorDiv.className = "blog-ai-error";
           errorDiv.innerHTML = content;
@@ -207,10 +266,13 @@
         const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question, language }),
+          body: JSON.stringify({
+            question,
+            language,
+            context: conversationContext // Send conversation context
+          }),
         });
 
-        // Handle non-JSON responses
         const contentType = response.headers.get("content-type");
         let data;
 
@@ -224,17 +286,20 @@
         removeLoading();
 
         if (!response.ok) {
-          // Check for 404 - Netlify function not available
           if (response.status === 404) {
             throw new Error("NETLIFY_404");
           }
           throw new Error(data.error || t(language, "error"));
         }
 
-        addMessage(data.answer || "", false);
+        const answer = data.answer || "";
+        addMessage(answer, false);
+
+        // Save to context
+        conversationContext = addToContext(conversationContext, question, answer);
+        saveContext(conversationContext);
       } catch (error) {
         removeLoading();
-        // Show specific error message for 404
         if (error.message === "NETLIFY_404") {
           const errorMsg = isLocalhost
             ? `${t(language, "errorNetlify")}<br><br><code style="background:rgba(148,163,184,0.15);padding:8px 12px;border-radius:6px;display:block;margin:8px 0;">${t(language, "errorNetlifyHint")}</code>`
@@ -250,8 +315,19 @@
     });
 
     clear.addEventListener("click", function () {
+      clearContext();
+      conversationContext = [];
       messages.innerHTML = "";
       input.value = "";
+
+      // Show cleared indicator
+      const clearedIndicator = document.createElement("div");
+      clearedIndicator.className = "blog-ai-context-indicator";
+      clearedIndicator.textContent = t(language, "contextCleared");
+      clearedIndicator.style.cssText = "font-size: 0.75rem; color: #22c55e; text-align: center; padding: 8px; background: rgba(34, 197, 94, 0.1); border-radius: 8px; margin: 8px 0;";
+      messages.appendChild(clearedIndicator);
+      setTimeout(() => clearedIndicator.remove(), 2000);
+
       input.focus();
     });
 
@@ -264,7 +340,6 @@
     container.appendChild(root);
   }
 
-  // Initialize when DOM is ready
   function init() {
     const containers = document.querySelectorAll(".blog-ai-container");
     containers.forEach(function (container) {

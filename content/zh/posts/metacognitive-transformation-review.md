@@ -5,7 +5,7 @@ author: "Xinwei Xiong"
 description: "记录距离 2024 年度总结到现在的四个月，一些思考想法。"
 
 categories:
-  - 个人成长 (Personal Development)
+  - 成长 (Growth)
 
 tags:
   - 元认知

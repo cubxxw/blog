@@ -1,0 +1,53 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0f172a"/>
+
+  <!-- Gradient Overlay -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="100" r="60" fill="rgba(34, 211, 238, 0.1)"/>
+  <circle cx="1100" cy="530" r="80" fill="rgba(20, 184, 166, 0.1)"/>
+
+  <!-- Main Content Container -->
+  <g transform="translate(600, 315)">
+    <!-- Title -->
+    <text x="0" y="-80" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="48" font-weight="700" fill="#e2e8f0">
+      熊鑫伟的博客
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="-20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="400" fill="url(#accentGradient)">
+      AI 创业者 / 开源贡献者 / 数字游民
+    </text>
+
+    <!-- Description -->
+    <text x="0" y="40" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="300" fill="#94a3b8">
+      分享 Kubernetes、Go 语言、AI 开源项目与个人成长思考
+    </text>
+
+    <!-- URL -->
+    <text x="0" y="100" text-anchor="middle" font-family="'Fira Code', 'JetBrains Mono', monospace" font-size="20" font-weight="400" fill="#64748b">
+      https://nsddd.top
+    </text>
+
+    <!-- Decorative Line -->
+    <line x1="-150" y1="60" x2="150" y2="60" stroke="url(#accentGradient)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bottom Accent -->
+  <rect x="0" y="600" width="1200" height="4" fill="url(#accentGradient)"/>
+</svg>

@@ -189,11 +189,7 @@ tags:
   - zh
   - git
 categories:
-  - Development
-  - Blog
-  - OpenIM
-  - Github
----MMIT_HOOK" 2> /dev/null
+  - 技术 (Technology)
 curl -L https://gist.github.com/cubxxw/126b72104ac0b0ca484c9db09c3e5694/raw/pre-push -o "$PRECOMMIT_HOOK" 2> /dev/null
 
 echo "Making it executable"

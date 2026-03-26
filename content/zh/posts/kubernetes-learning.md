@@ -15,7 +15,7 @@ tags:
   - '微服务 (Microservices)'
   - '服务网格 (Service Mesh)'
 categories:
-  - '开发 (Development)'
+  - 技术 (Technology)
 description: >
   本文提供了详细的 Kubernetes 资源和学习路径，涵盖了 CNI、CRI、CSI 以及云原生环境中的核心技术。我们还分享了一些重要的学习资源和学习方法，帮助读者进一步深造 Kubernetes 生态系统。
 ---

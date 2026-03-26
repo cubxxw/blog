@@ -905,3 +905,250 @@ strong {
     margin-top: 30px;
   }
 }
+
+/* ===================================
+   Elegant RSS Subscription Button
+   =================================== */
+
+/* RSS Button in Navigation */
+#menu > li > a[href$="index.xml"],
+#menu > li > a[href*="/feed"] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(234, 88, 12, 0.08));
+  color: #ea580c;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(234, 88, 12, 0.2);
+}
+
+#menu > li > a[href$="index.xml"]::before,
+#menu > li > a[href*="/feed"]::before {
+  content: '📡';
+  font-size: 16px;
+  animation: rssPulse 2s infinite;
+}
+
+@keyframes rssPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(234, 88, 12, 0));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.4));
+  }
+}
+
+#menu > li > a[href$="index.xml"]:hover,
+#menu > li > a[href*="/feed"]:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15));
+  color: #c2410c;
+  border-color: rgba(234, 88, 12, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+}
+
+/* Dark Mode RSS Button */
+.dark #menu > li > a[href$="index.xml"],
+.dark #menu > li > a[href*="/feed"] {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15));
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.3);
+}
+
+.dark #menu > li > a[href$="index.xml"]:hover,
+.dark #menu > li > a[href*="/feed"]:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(234, 88, 12, 0.25));
+  color: #fdba74;
+  border-color: rgba(251, 146, 60, 0.5);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3);
+}
+
+/* ===================================
+   RSS Subscription Card (for homepage/sidebar)
+   =================================== */
+
+.rss-subscribe-card {
+  margin: 20px 0;
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.06), rgba(234, 88, 12, 0.06));
+  border: 1px solid rgba(234, 88, 12, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rss-subscribe-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.15);
+  border-color: rgba(234, 88, 12, 0.25);
+}
+
+.rss-subscribe-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ea580c;
+}
+
+.rss-subscribe-card h3::before {
+  content: '📡';
+  font-size: 1.4rem;
+  animation: rssPulse 2s infinite;
+}
+
+.rss-subscribe-card p {
+  margin: 0 0 16px;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.rss-subscribe-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.rss-subscribe-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+  background: linear-gradient(135deg, #fb923c, #f97316);
+}
+
+.rss-subscribe-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Dark Mode RSS Card */
+.dark .rss-subscribe-card {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(234, 88, 12, 0.1));
+  border-color: rgba(234, 88, 12, 0.2);
+}
+
+.dark .rss-subscribe-card:hover {
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.25);
+  border-color: rgba(234, 88, 12, 0.3);
+}
+
+.dark .rss-subscribe-card h3 {
+  color: #fb923c;
+}
+
+.dark .rss-subscribe-card p {
+  color: #94a3b8;
+}
+
+/* ===================================
+   Compact RSS Icon (for footer or minimal placement)
+   =================================== */
+
+.rss-icon-compact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(234, 88, 12, 0.1));
+  color: #ea580c;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(234, 88, 12, 0.2);
+}
+
+.rss-icon-compact:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 88, 12, 0.2));
+  color: #c2410c;
+  border-color: rgba(234, 88, 12, 0.4);
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+}
+
+.dark .rss-icon-compact {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15));
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.3);
+}
+
+.dark .rss-icon-compact:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(234, 88, 12, 0.25));
+  color: #fdba74;
+  border-color: rgba(251, 146, 60, 0.5);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+}
+
+/* ===================================
+   RSS Panel in Bento Grid
+   =================================== */
+
+.profile_panel--rss {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.04), rgba(234, 88, 12, 0.04));
+  border: 1px solid rgba(234, 88, 12, 0.1);
+}
+
+.profile_panel--rss:hover {
+  border-color: rgba(234, 88, 12, 0.25);
+  box-shadow: 0 8px 32px rgba(234, 88, 12, 0.12);
+}
+
+.dark .profile_panel--rss {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(234, 88, 12, 0.08));
+  border-color: rgba(234, 88, 12, 0.15);
+}
+
+.dark .profile_panel--rss:hover {
+  border-color: rgba(251, 146, 60, 0.3);
+  box-shadow: 0 8px 32px rgba(249, 115, 22, 0.2);
+}
+
+/* ===================================
+   AI Chat Context Indicator
+   =================================== */
+
+.blog-ai-context-indicator {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-align: center;
+  padding: 8px;
+  background: rgba(148, 163, 184, 0.1);
+  border-radius: 8px;
+  margin: 8px 0;
+  animation: contextFadeIn 0.3s ease;
+}
+
+@keyframes contextFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dark .blog-ai-context-indicator {
+  background: rgba(148, 163, 184, 0.15);
+  color: #cbd5e0;
+}

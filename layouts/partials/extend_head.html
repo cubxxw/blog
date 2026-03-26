@@ -2,6 +2,11 @@
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 
+{{- /* SEO Structured Data (JSON-LD) */ -}}
+{{- if hugo.IsProduction | or (eq site.Params.env "production") -}}
+{{- partial "seo/structured-data.html" . -}}
+{{- end -}}
+
 {{- /* Language Auto-Detection Script */ -}}
 <script src="{{ "/js/lang-redirect.js" | relURL }}" defer></script>
 

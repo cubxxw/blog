@@ -17,7 +17,7 @@ tags:
   - 春天成长 (Spring Growth)
   - 创新思维 (Innovation Mindset)
 categories:
-  - 个人成长 (Personal Development)
+  - 成长 (Growth)
 description: >
     2025年4月思考笔记 - 捕捉春天成长的精髓，新的开始与持续学习和自我改进的旅程记录。
 ---

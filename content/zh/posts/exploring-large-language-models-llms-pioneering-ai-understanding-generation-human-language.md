@@ -28,8 +28,10 @@ tags:
   - "AI法律与合规 (AI Law & Compliance)"
   - "深度学习 (Deep Learning)"
 categories:
-  - "开发 (Development)"
-  - "人工智能 (AI)"
+  - 技术 (Technology)
+---
+
+  - 技术 (Technology)
 description: >
     本文探讨了大型语言模型（LLM）的变革能力，这些模型旨在理解和生成人类语言，展示了人工智能技术的先锋角色。通过利用大量数据和复杂的机器学习架构，这些模型展现了远超前任的涌现能力。
 ---

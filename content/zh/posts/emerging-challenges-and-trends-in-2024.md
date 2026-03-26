@@ -13,7 +13,7 @@ author:
 keywords: []
 tags: ['博客 (Blog)', 'AI', '技术 (Technology)']
 categories:
-  - '开发 (Development)'
+  - 成长 (Growth)
 description: >
   探索2024年技术和开发领域的最新趋势和挑战。
 ---

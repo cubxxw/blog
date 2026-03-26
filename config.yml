@@ -1,5 +1,5 @@
 baseURL: https://nsddd.top
-title: cubxxw is blog
+title: 熊鑫伟 (cubxxw) 的博客 - AI 创业者 / 开源贡献者 / 数字游民
 theme: PaperMod
 
 # Config WIKI
@@ -15,15 +15,23 @@ minify:
   minifyOutput: true
 params:
   env: production
-  title: ExampleSite
-  description: ExampleSite description
+  title: 熊鑫伟 (cubxxw) 的博客
+  description: AI 创业者、开源贡献者、数字游民的技术与成长博客。分享 Kubernetes、Go 语言、AI 开源项目、个人成长思考、旅行见闻。
   keywords:
-    - Blog
-    - CloudNative
     - cubxxw
-  author: Me
+    - 熊鑫伟
+    - AI 创业
+    - 开源项目
+    - Kubernetes
+    - Go 语言
+    - 云原生
+    - 个人成长
+    - 数字游民
+    - 技术博客
+  author: 熊鑫伟 (Xinwei Xiong)
   images:
-    - <link or path of image for opengraph, twitter-cards>
+    - /assets/og-image.png
+    - /assets/cubxxw-image.jpg
   DateFormat: January 2, 2006
   # defaultTheme: light
   # defaultTheme: dark
@@ -43,7 +51,7 @@ params:
   comments: true
   hidemeta: false
   hideSummary: false
-  
+
   showtoc: true
   tocopen: true
   assets:
@@ -103,7 +111,7 @@ params:
   sidebar:
     widgets:
       - type: "custom"
-        title: "AI项目导航"
+        title: "AI 项目导航"
         template: "sidebar-ai-projects"
 
 markup:
@@ -122,7 +130,7 @@ outputs:
 DefaultContentLanguage: en
 # 启用多语言模式
 defaultContentLanguageInSubdir: false
-# 禁用语言前缀移除（确保URL结构正确）
+# 禁用语言前缀移除（确保 URL 结构正确）
 disableLanguages: []
 
 languages:
@@ -141,11 +149,21 @@ languages:
           url: /about/
           pageRef: /about
           weight: 10
+        - identifier: technology
+          name: Technology
+          url: /technology/
+          pageRef: /technology
+          weight: 15
+        - identifier: growth
+          name: Growth
+          url: /growth/
+          pageRef: /growth
+          weight: 16
         - identifier: posts
           name: Posts
           url: /posts/
           pageRef: /posts
-          weight: 15
+          weight: 17
         - identifier: travel
           name: Travel
           url: /travel/
@@ -159,6 +177,10 @@ languages:
           name: Diary
           url: https://diary.nsddd.top/flomo-original
           weight: 30
+        - identifier: rss
+          name: RSS
+          url: /index.xml
+          weight: 35
     params:
       profileMode:
         # Enabled or not
@@ -172,8 +194,10 @@ languages:
         imageHeight: 120
         # imageTitle: My name is bear
         buttons:
-          - name: Posts
-            url: posts
+          - name: Technology
+            url: technology
+          - name: Growth
+            url: growth
           - name: AI Projects
             url: categories/ai-open-source
           - name: archives
@@ -200,11 +224,21 @@ languages:
           url: /about/
           pageRef: /about
           weight: 10
+        - identifier: technology
+          name: 技术
+          url: /technology/
+          pageRef: /technology
+          weight: 15
+        - identifier: growth
+          name: 成长
+          url: /growth/
+          pageRef: /growth
+          weight: 16
         - identifier: posts
           name: 文章
           url: /posts/
           pageRef: /posts
-          weight: 15
+          weight: 17
         - identifier: travel
           name: 旅行
           url: /travel/
@@ -218,6 +252,10 @@ languages:
           name: 日记
           url: https://diary.nsddd.top/flomo-original
           weight: 30
+        - identifier: rss
+          name: RSS
+          url: /index.xml
+          weight: 35
     params:
       profileMode:
         # 启用或禁用
@@ -230,9 +268,11 @@ languages:
         imageWidth: 120
         imageHeight: 120
         buttons:
-          - name: 文章
-            url: posts
-          - name: AI开源项目
+          - name: 技术文章
+            url: technology
+          - name: 成长文章
+            url: growth
+          - name: AI 开源项目
             url: categories/ai-open-source
           - name: 归档
             url: archives

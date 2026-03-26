@@ -17,7 +17,7 @@ tags:
   - 夏至传递 (Summer Solstice)
   - 战略规划 (Strategic Planning)
 categories:
-  - 个人成长 (Personal Development)
+  - 成长 (Growth)
 description: >
     2025年6月思考笔记 - 拥抱夏至能量，下半年的战略规划，以及对既往进步的庆祝与总结。
 ---

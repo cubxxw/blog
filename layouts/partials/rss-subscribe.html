@@ -1,0 +1,16 @@
+{{- $rssTitle := cond (eq site.Language.Lang "zh") "订阅更新" "Subscribe Updates" -}}
+{{- $rssDescription := cond (eq site.Language.Lang "zh") "第一时间获取最新文章通知，支持所有 RSS 阅读器。" "Get the latest posts delivered right to your RSS reader." -}}
+{{- $rssButtonText := cond (eq site.Language.Lang "zh") "立即订阅" "Subscribe Now" -}}
+
+<div class="rss-subscribe-card">
+  <h3>{{ $rssTitle }}</h3>
+  <p>{{ $rssDescription }}</p>
+  <a href="{{ "/index.xml" | relLangURL }}" class="rss-subscribe-button" target="_blank" rel="noopener">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    {{ $rssButtonText }}
+  </a>
+</div>

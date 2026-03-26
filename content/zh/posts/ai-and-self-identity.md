@@ -17,8 +17,7 @@ tags:
   - 自我认知 (Self Awareness)
   - 人类价值 (Human Value)
 categories:
-  - 人工智能 (AI)
-  - 个人成长 (Personal Development)
+  - 成长 (Growth)
 description: >
     当 AI 能替代我们思考和执行，"我"在哪里？探索 AI 时代人类的主体性、感受与意义的本质。
 ---
