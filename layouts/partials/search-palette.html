@@ -1,0 +1,60 @@
+<div class="search-palette" id="search-command-palette" role="dialog" 
+     aria-modal="true" aria-label="搜索" hidden>
+  <div class="search-palette__backdrop" aria-hidden="true"></div>
+  <div class="search-palette__panel">
+    <div class="search-palette__header">
+      <div>
+        <p class="search-palette__eyebrow">Search</p>
+        <h2>Site Search</h2>
+      </div>
+      <button class="search-palette__close" aria-label="Close search">
+        <kbd>Esc</kbd>
+      </button>
+    </div>
+    <div class="search-palette__input-wrap">
+      <span class="search-palette__input-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span>
+      <input class="search-palette__input" type="search" 
+             placeholder="Search for articles..." autocomplete="off" />
+      <div class="search-palette__input-actions">
+        <button class="search-palette__ai-trigger" id="search-ai-btn" title="Ask AI">
+          <span class="search-palette__ai-trigger-icon">🤖</span>
+          <span class="search-palette__ai-trigger-text">Ask bear AI</span>
+        </button>
+        <div class="search-palette__shortcut">
+          <kbd>⌘</kbd><kbd>K</kbd>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AI Answer Section -->
+    <div class="search-palette__ai-box" id="search-ai-box" hidden>
+      <div class="search-palette__ai-header">
+        <div class="search-palette__ai-title">
+          <span class="search-palette__ai-icon">✨</span>
+          <span>AI Answer</span>
+        </div>
+        <button class="search-palette__ai-close" id="search-ai-close">&times;</button>
+      </div>
+      <div class="search-palette__ai-content" id="search-ai-content">
+        <div class="search-palette__ai-loading">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+      <div class="search-palette__ai-footer">
+        Based on blog content &bull; Powered by DeepSeek
+      </div>
+    </div>
+
+    <div class="search-palette__meta">
+      <span>Found <span id="search-result-count">0</span> results</span>
+      <a class="search-palette__full-link" href="{{ "search/" | absLangURL }}">Full Search →</a>
+    </div>
+    <ul class="search-palette__results" id="search-results-list" role="listbox"></ul>
+    <p class="search-palette__empty" id="search-empty" hidden>No results found</p>
+  </div>
+</div>

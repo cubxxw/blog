@@ -151,6 +151,7 @@ exports.handler = async function handler(event) {
   const question = String(payload.question || "").trim();
   const language = String(payload.language || "").trim();
   const conversationHistory = payload.context || []; // Conversation history context
+  const searchContext = payload.searchContext || []; // Search results context
 
   if (!question) {
     return json(400, { error: "Question is required" });
@@ -169,6 +170,7 @@ exports.handler = async function handler(event) {
     "Do not invent files or directories that are not present in the provided context.",
     "When useful, cite candidate documents by title and permalink.",
     "If conversation history is provided, use it to maintain context and provide more personalized responses.",
+    "For follow-up questions, consider them in the context of the conversation history and provide coherent, connected responses.",
   ].join(" ");
 
   // Build messages array with conversation history if available
@@ -193,7 +195,11 @@ exports.handler = async function handler(event) {
     }
   }
 
-  // Add current question
+  // Add current question with search context
+  const searchContextStr = searchContext.length > 0
+    ? `\n\nSearch results context:\n${JSON.stringify(searchContext, null, 2)}`
+    : '';
+
   messages.push({
     role: "user",
     content: [
@@ -201,6 +207,7 @@ exports.handler = async function handler(event) {
       `Preferred language hint: ${language || "auto"}`,
       `\nDirectory summary:\n${docContext.directorySummary}`,
       `\nCandidate documents:\n${JSON.stringify(docContext.candidates, null, 2)}`,
+      searchContextStr,
     ].join("\n"),
   });
 
@@ -227,8 +234,9 @@ exports.handler = async function handler(event) {
 
   const responseJson = await response.json();
   if (!response.ok) {
+    const errorMsg = responseJson.error?.message || responseJson.error || "OpenAI API returned an error";
     return json(response.status, {
-      error: "OpenAI API returned an error",
+      error: errorMsg,
       detail: responseJson,
     });
   }
