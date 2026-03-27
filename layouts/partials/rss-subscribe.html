@@ -1,16 +1,95 @@
 {{- $rssTitle := cond (eq site.Language.Lang "zh") "订阅更新" "Subscribe Updates" -}}
 {{- $rssDescription := cond (eq site.Language.Lang "zh") "第一时间获取最新文章通知，支持所有 RSS 阅读器。" "Get the latest posts delivered right to your RSS reader." -}}
 {{- $rssButtonText := cond (eq site.Language.Lang "zh") "立即订阅" "Subscribe Now" -}}
+{{- $emailTitle := cond (eq site.Language.Lang "zh") "邮件订阅" "Email Newsletter" -}}
+{{- $emailDescription := cond (eq site.Language.Lang "zh") "新文章和月度思考将通过邮件发送给你。默认双重确认，可随时退订。" "Get new posts and monthly notes by email. Double opt-in by default, unsubscribe anytime." -}}
+{{- $emailPlaceholder := cond (eq site.Language.Lang "zh") "you@example.com" "you@example.com" -}}
+{{- $emailButtonText := cond (eq site.Language.Lang "zh") "邮件订阅" "Subscribe by Email" -}}
+{{- $emailConsent := cond (eq site.Language.Lang "zh") "我同意接收博客更新邮件，并理解可随时取消订阅。" "I agree to receive blog update emails and understand I can unsubscribe anytime." -}}
+{{- $emailTopicsLabel := cond (eq site.Language.Lang "zh") "内容偏好" "Topics" -}}
+{{- $emailStatusIdle := cond (eq site.Language.Lang "zh") "输入邮箱后即可订阅。" "Enter your email to subscribe." -}}
+{{- $subscribeChoice := cond (eq site.Language.Lang "zh") "选择订阅方式" "Choose how to subscribe" -}}
+{{- $subscribeCompact := cond (eq site.Language.Lang "zh") "默认只展示简要入口，点击后展开完整订阅选项。" "A compact entry by default. Expand the full options when you are ready." -}}
+{{- $emailOpenText := cond (eq site.Language.Lang "zh") "打开邮件订阅" "Open email signup" -}}
+{{- $backText := cond (eq site.Language.Lang "zh") "返回" "Back" -}}
 
-<div class="rss-subscribe-card">
-  <h3>{{ $rssTitle }}</h3>
-  <p>{{ $rssDescription }}</p>
-  <a href="{{ "/index.xml" | relLangURL }}" class="rss-subscribe-button" target="_blank" rel="noopener">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 11a9 9 0 0 1 9 9"></path>
-      <path d="M4 4a16 16 0 0 1 16 16"></path>
-      <circle cx="5" cy="19" r="1"></circle>
-    </svg>
-    {{ $rssButtonText }}
-  </a>
+<div class="rss-subscribe-card" data-subscribe-card>
+  <div class="rss-subscribe-card__teaser" data-subscribe-teaser>
+    <h3>{{ $rssTitle }}</h3>
+    <p>{{ $rssDescription }}</p>
+    <p class="rss-subscribe-card__compact-note">{{ $subscribeCompact }}</p>
+    <div class="rss-subscribe-card__actions">
+      <button type="button" class="rss-subscribe-button rss-subscribe-button--ghost" data-subscribe-open="rss">
+        RSS
+      </button>
+      <button type="button" class="rss-subscribe-button" data-subscribe-open="email">
+        {{ $emailButtonText }}
+      </button>
+    </div>
+    <span class="rss-subscribe-card__choice">{{ $subscribeChoice }}</span>
+  </div>
+
+  <div class="rss-subscribe-card__panel" data-subscribe-panel="rss" hidden>
+    <div class="rss-subscribe-card__section">
+      <div class="rss-subscribe-card__panel-head">
+        <h3>{{ $rssTitle }}</h3>
+        <button type="button" class="rss-subscribe-card__back" data-subscribe-back>{{ $backText }}</button>
+      </div>
+      <p>{{ $rssDescription }}</p>
+      <a href="{{ "/index.xml" | relLangURL }}" class="rss-subscribe-button" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 11a9 9 0 0 1 9 9"></path>
+          <path d="M4 4a16 16 0 0 1 16 16"></path>
+          <circle cx="5" cy="19" r="1"></circle>
+        </svg>
+        {{ $rssButtonText }}
+      </a>
+    </div>
+  </div>
+
+  <div class="rss-subscribe-card__panel" data-subscribe-panel="email" hidden>
+    <div class="rss-subscribe-card__section">
+      <div class="rss-subscribe-card__panel-head">
+        <h3>{{ $emailTitle }}</h3>
+        <button type="button" class="rss-subscribe-card__back" data-subscribe-back>{{ $backText }}</button>
+      </div>
+      <p>{{ $emailDescription }}</p>
+      <form class="newsletter-form" data-newsletter-form data-language="{{ site.Language.Lang }}" data-source-type="{{ .Kind }}">
+        <label class="newsletter-form__field">
+          <span class="newsletter-form__label">Email</span>
+          <input
+            class="newsletter-form__input"
+            type="email"
+            name="email"
+            placeholder="{{ $emailPlaceholder }}"
+            autocomplete="email"
+            required
+          >
+        </label>
+
+        <label class="newsletter-form__field">
+          <span class="newsletter-form__label">{{ $emailTopicsLabel }}</span>
+          <select class="newsletter-form__select" name="topic">
+            <option value="general">{{ cond (eq site.Language.Lang "zh") "全部更新" "All updates" }}</option>
+            <option value="technology">{{ cond (eq site.Language.Lang "zh") "技术" "Technology" }}</option>
+            <option value="growth">{{ cond (eq site.Language.Lang "zh") "成长" "Growth" }}</option>
+            <option value="travel">{{ cond (eq site.Language.Lang "zh") "旅行" "Travel" }}</option>
+          </select>
+        </label>
+
+        <label class="newsletter-form__checkbox">
+          <input type="checkbox" name="consent" value="yes" required>
+          <span>{{ $emailConsent }}</span>
+        </label>
+
+        <input type="text" name="company" class="newsletter-form__honeypot" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="rss-subscribe-button newsletter-form__submit">
+          {{ $emailOpenText }}
+        </button>
+
+        <p class="newsletter-form__status" data-newsletter-status aria-live="polite">{{ $emailStatusIdle }}</p>
+      </form>
+    </div>
+  </div>
 </div>

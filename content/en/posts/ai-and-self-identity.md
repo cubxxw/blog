@@ -25,7 +25,7 @@ description: >
 
 > **Preface**: This article was written on a night in Lhasa. At an altitude of over 3,000 meters, the air is thin and the stars are very close. One evening I stood in the courtyard, alone, and watched the moon in the sky for a long time. That moon doesn't lose a bit of its light because of AI's existence.
 
-![Reflection under the moonlight](/assets/ai-moon-reflection.jpg)
+![Lhasa Moonlight](/images/posts/2026/ai-self-identity/lhasa-night.jpg)
 *The moonlight is still truly beautiful — What do humans still possess in the AI era?*
 
 ## Introduction: The Room for the Unsayable
@@ -158,8 +158,8 @@ Those thoughts were essentially "thinking" — analysis of the current situation
 
 The mechanical repetition of the six-character mantra was forcibly pulling myself from "analysis mode" back to "existence mode" — **I was not calculating how many kilometers were left, I was this step, this breath, this moment.**
 
-![Mountain path in Nepal](/assets/nepal-mountain-path.jpg)
-*On a mountain path in Nepal, I understood what "presence" means*
+![Plateau Mountain Path](/images/posts/2026/ai-self-identity/mountain-path.jpg)
+*On a plateau mountain path in Lhasa, I understood what "presence" means*
 
 This thing made me figure something out.
 
@@ -383,7 +383,7 @@ Not thinking about anything, just watching.
 
 That moon doesn't lose a bit of its light because of AI's existence, and the quietness under that moonlight is not something any algorithm can generate.
 
-![Moon in Lhasa](/assets/lhasa-moon.jpg)
+![Lhasa Moonlight](/images/posts/2026/ai-self-identity/lhasa-night.jpg)
 *The moonlight is still truly beautiful, go take a look*
 
 I suddenly understood why Natsume Soseki translated it that way.

@@ -198,7 +198,11 @@ From Garze to Litang, then along the Sichuan-Tibet Highway: Mangkang, Zuogong, B
 
 I stayed in Lhasa for nearly a month.
 
+![Self-driving on the 318 Highway to Lhasa](/images/posts/2025/annual-review/tibet-drive.jpg)
+
 The Tibet Museum, Jokhang Temple, Sera Monastery (twice), the Potala Palace on Lantern Festival, Drepung Monastery, Nanshan Park, Dalong Monastery, Shishilin Monastery, and a solo drive to Namtso Lake — when I arrived at the lake, the sun was just beginning to set, the water was that deep blue, the distant snow mountains were still, and I just stood there for a long time, not taking many photos.
+
+![Pilgrims in front of Jokhang Temple](/images/posts/2025/annual-review/lhasa-life.jpg)
 
 Lhasa showed me a rhythm of life I hadn't seen before.
 

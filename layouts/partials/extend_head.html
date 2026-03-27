@@ -36,4 +36,9 @@
 }
 </style>
 
+{{- /* Search Command Palette dependencies */ -}}
+<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+{{- $searchPaletteJS := resources.Get "js/search-palette.js" | minify | fingerprint }}
+<script defer src="{{ $searchPaletteJS.RelPermalink }}" integrity="{{ $searchPaletteJS.Data.Integrity }}"></script>
+
 {{- /* Head custom content area end */ -}}

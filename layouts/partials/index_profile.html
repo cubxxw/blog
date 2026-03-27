@@ -118,20 +118,6 @@
             </aside>
         </section>
 
-        <!-- AI Chat Section -->
-        <section class="profile_bento">
-            <article class="profile_panel" style="grid-column: 1 / -1;">
-                <div class="blog-ai-container"></div>
-            </article>
-        </section>
-
-        <!-- RSS Subscribe Section -->
-        <section class="profile_bento" style="margin-top: 24px;">
-            <article class="profile_panel profile_panel--rss" style="grid-column: 1 / -1;">
-                {{- partial "rss-subscribe.html" . }}
-            </article>
-        </section>
-
         <section class="profile_bento" style="margin-top: 24px;">
             <article class="profile_panel profile_panel--feature">
                 <div class="profile_panel__header">
@@ -178,6 +164,20 @@
                     </a>
                     {{- end }}
                 </div>
+            </article>
+        </section>
+
+        <!-- AI Chat Section -->
+        <section class="profile_bento" style="margin-top: 24px;">
+            <article class="profile_panel" style="grid-column: 1 / -1;">
+                <div class="blog-ai-container"></div>
+            </article>
+        </section>
+
+        <!-- RSS Subscribe Section -->
+        <section class="profile_bento" style="margin-top: 24px;">
+            <article class="profile_panel profile_panel--rss" style="grid-column: 1 / -1;">
+                {{- partial "rss-subscribe.html" . }}
             </article>
         </section>
     </div>
