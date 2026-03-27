@@ -149,16 +149,6 @@ languages:
           url: /about/
           pageRef: /about
           weight: 10
-        - identifier: technology
-          name: Technology
-          url: /technology/
-          pageRef: /technology
-          weight: 15
-        - identifier: growth
-          name: Growth
-          url: /growth/
-          pageRef: /growth
-          weight: 16
         - identifier: posts
           name: Posts
           url: /posts/
@@ -194,9 +184,9 @@ languages:
         imageHeight: 120
         # imageTitle: My name is bear
         buttons:
-          - name: Technology
-            url: technology
-          - name: Growth
+          - name: AI Technology
+            url: ai-technology
+          - name: Growth & Life
             url: growth
           - name: AI Projects
             url: categories/ai-open-source
@@ -224,16 +214,6 @@ languages:
           url: /about/
           pageRef: /about
           weight: 10
-        - identifier: technology
-          name: 技术
-          url: /technology/
-          pageRef: /technology
-          weight: 15
-        - identifier: growth
-          name: 成长
-          url: /growth/
-          pageRef: /growth
-          weight: 16
         - identifier: posts
           name: 文章
           url: /posts/
@@ -268,9 +248,9 @@ languages:
         imageWidth: 120
         imageHeight: 120
         buttons:
-          - name: 技术文章
-            url: technology
-          - name: 成长文章
+          - name: AI 技术
+            url: ai-technology
+          - name: 成长与生活
             url: growth
           - name: AI 开源项目
             url: categories/ai-open-source

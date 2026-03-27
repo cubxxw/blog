@@ -146,25 +146,47 @@
                 </div>
             </article>
 
-            <article class="profile_panel profile_panel--knowledge">
+        <section class="profile_knowledge_grid" style="margin-top: 24px;">
+            <article class="profile_panel profile_panel--knowledge profile_panel--ai-tech">
                 <div class="profile_panel__topline">
                     <div>
-                        <h3>{{ $knowledgeTitle }}</h3>
-                        <p>{{ $knowledgeHint }}</p>
+                        <h3>{{ if eq site.Language.Lang "zh" }}AI Technology{{ else }}AI Technology{{ end }}</h3>
+                        <p>{{ if eq site.Language.Lang "zh" }}探索 AI Agents 与系统工程{{ else }}Exploring AI Agents & Engineering{{ end }}</p>
                     </div>
-                    <a href="{{ "posts/" | relLangURL }}" class="profile_view_all">{{ $viewAllText }}</a>
                 </div>
-
+                {{- $aiPages := where (where site.RegularPages "Section" "ai-technology") "Lang" site.Language.Lang -}}
+                {{- $recentAi := first 3 ($aiPages.ByDate.Reverse) -}}
                 <div class="profile_posts">
-                    {{- range $recentPages }}
+                    {{- range $recentAi }}
                     <a class="profile_post" href="{{ .RelPermalink }}">
                         <span class="profile_post__date">{{ .Date.Format "2006-01-02" }}</span>
                         <strong>{{ .Title }}</strong>
-                        <span class="profile_post__tag">{{ delimit (.Params.tags | default (slice (cond (eq site.Language.Lang "zh") "文章" "POST"))) " / " }}</span>
                     </a>
                     {{- end }}
+                    <a href="{{ "ai-technology/" | relLangURL }}" class="profile_view_more">{{ $viewAllText }}</a>
                 </div>
             </article>
+
+            <article class="profile_panel profile_panel--knowledge profile_panel--growth-life">
+                <div class="profile_panel__topline">
+                    <div>
+                        <h3>{{ if eq site.Language.Lang "zh" }}Growth & Life{{ else }}Growth & Life{{ end }}</h3>
+                        <p>{{ if eq site.Language.Lang "zh" }}成长复盘与数字游民见闻{{ else }}Personal Growth & Nomad Life{{ end }}</p>
+                    </div>
+                </div>
+                {{- $growthPages := where (where site.RegularPages "Section" "growth") "Lang" site.Language.Lang -}}
+                {{- $recentGrowth := first 3 ($growthPages.ByDate.Reverse) -}}
+                <div class="profile_posts">
+                    {{- range $recentGrowth }}
+                    <a class="profile_post" href="{{ .RelPermalink }}">
+                        <span class="profile_post__date">{{ .Date.Format "2006-01-02" }}</span>
+                        <strong>{{ .Title }}</strong>
+                    </a>
+                    {{- end }}
+                    <a href="{{ "growth/" | relLangURL }}" class="profile_view_more">{{ $viewAllText }}</a>
+                </div>
+            </article>
+        </section>
         </section>
 
         <!-- AI Chat Section -->

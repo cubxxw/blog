@@ -1,6 +1,6 @@
 ---
-title: "技术文章"
-description: "Kubernetes、Go 语言、AI 开源项目、云原生技术栈的深度分析与实践"
+title: "AI Technology"
+description: "AI Agents, Large Language Models, and Next-Gen Engineering Infrastructure"
 keywords: ["Kubernetes", "Go 语言", "AI 开源", "云原生", "DevOps", "微服务", "源码分析"]
 cascade:
   - type: "posts"
@@ -26,25 +26,25 @@ cascade:
 
 从入门到源码级理解，系统性掌握 Kubernetes：
 
-- [快速入门](/zh/posts/kubernetes-an-article-to-get-started-quickly/)
+- [快速入门](/zh/ai-technology/kubernetes-an-article-to-get-started-quickly/)
 - [核心组件分析](/zh/categories/kubernetes/)
-- [学习路径总结](/zh/posts/kubernetes-learning/)
+- [学习路径总结](/zh/ai-technology/kubernetes-learning/)
 
 ### Go 语言与工程化
 
 实战驱动的 Go 语言学习与工具建设：
 
-- [跨平台编译](/zh/posts/cross-platform-compilation/)
-- [并发类型检查](/zh/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
-- [开发工具链](/zh/posts/use-go-tools-dlv/)
+- [跨平台编译](/zh/ai-technology/cross-platform-compilation/)
+- [并发类型检查](/zh/ai-technology/concurrent-type-checking-and-cross-platform-development-in-go/)
+- [开发工具链](/zh/ai-technology/use-go-tools-dlv/)
 
 ### AI 与开源项目
 
 探索 AI 开源生态与大模型应用：
 
-- [LangChain 开发者指南](/zh/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [AutoGPT 实践](/zh/posts/use-auto-gpt/)
-- [UFO AI Agent](/zh/posts/UFO/)
+- [LangChain 开发者指南](/zh/ai-technology/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
+- [AutoGPT 实践](/zh/ai-technology/use-auto-gpt/)
+- [UFO AI Agent](/zh/ai-technology/UFO/)
 
 ---
 
