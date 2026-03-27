@@ -1,6 +1,6 @@
 ---
-title: "Technology"
-description: "Deep analysis and practice of Kubernetes, Go, AI open-source projects, and cloud-native technologies"
+title: "AI Technology"
+description: "AI Agents, Large Language Models, and Next-Gen Engineering Infrastructure"
 keywords: ["Kubernetes", "Go", "AI Open Source", "Cloud Native", "DevOps", "Microservices", "Source Code Analysis"]
 cascade:
   - type: "posts"
@@ -8,45 +8,45 @@ cascade:
     tocopen: true
 ---
 
-## 🔧 Technology Areas
+## 🤖 AI Technology
 
-A collection of technical deep-dive content, covering:
+Explore cutting-edge technologies in the AI and LLM era, covering:
 
-- **Kubernetes Source Code Analysis** - Deep dive into K8s core components design and implementation
-- **Go Language Practice** - Cross-platform development, concurrent programming, toolchain building
-- **AI Open Source Projects** - LLM applications, Agent frameworks, LangChain practice
-- **Cloud Native Stack** - CNI/CSI/CRI, Service Mesh, GitOps
-- **DevOps Engineering** - CI/CD, automated testing, release tools
+- **AI/LLM Applications** - LLM app development, Agent frameworks, LangChain practice
+- **Kubernetes & Cloud Native** - K8s source analysis, CNI/CSI/CRI, Service Mesh
+- **Go Engineering** - Cross-platform development, concurrent programming, toolchain
+- **DevOps Practices** - CI/CD, GitOps, automated testing, release tools
 
 ---
 
 ## Core Topics
 
-### Kubernetes Deep Practice
+### AI & Large Language Models
 
-From beginner to source-level understanding, systematically master Kubernetes:
-
-- [Quick Start](/posts/kubernetes-an-article-to-get-started-quickly/)
-- [Learning Path Summary](/posts/kubernetes-learning/)
-
-### Go Language & Engineering
-
-Practical-driven Go language learning and tool building:
-
-- [Cross-platform Compilation](/posts/cross-platform-compilation/)
-- [Concurrent Type Checking](/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
-- [Development Toolchain](/posts/use-go-tools-dlv/)
-
-### AI & Open Source Projects
-
-Explore AI open-source ecosystem and large model applications:
+Explore AI open-source ecosystem and LLM applications:
 
 - [LangChain Developer Guide](/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [AutoGPT Practice](/posts/use-auto-gpt/)
 - [UFO AI Agent](/posts/UFO/)
 
+### Kubernetes Deep Practice
+
+From beginner to source-level understanding:
+
+- [Quick Start](/posts/kubernetes-an-article-to-get-started-quickly/)
+- [Core Components Analysis](/categories/kubernetes/)
+- [Learning Path](/posts/kubernetes-learning/)
+
+### Go Language & Engineering
+
+Practical-driven Go development and tooling:
+
+- [Cross-platform Compilation](/posts/cross-platform-compilation/)
+- [Concurrent Type Checking](/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
+- [Development Toolchain](/posts/use-go-tools-dlv/)
+
 ---
 
 ## Recent Posts
 
-Browse technology articles via navigation or [categories page](/categories/).
+Browse technology articles below.

@@ -1,22 +1,22 @@
 ---
-title: "Growth"
-description: "Deep records and reflections on personal growth, annual summaries, flow state, cognitive upgrades, and travel experiences"
-keywords: ["Personal Growth", "Annual Review", "Flow State", "Cognitive Upgrade", "Travel", "Entrepreneurship", "Efficiency Improvement"]
+title: "Growth & Life"
+description: "Personal Evolution, Nomad Life, and Strategic Thinking"
+keywords: ["Personal Growth", "Annual Review", "Flow State", "Cognitive Upgrade", "Travel", "Life Insights"]
 cascade:
   - type: "posts"
     showtoc: true
     tocopen: true
 ---
 
-## 🌱 Growth Areas
+## 🌱 Growth & Life
 
-Records of personal growth and life reflections, covering:
+Records of personal growth and life reflections, covering two main areas:
 
-- **Annual Summaries & Reflections** - Year-end deep reviews and future planning
-- **Flow & Efficiency Improvement** - Focus training, GTD practice, Four Quadrants Rule
-- **Cognitive & Mental Models** - Metacognition upgrade, interdisciplinary learning
-- **Travel & Life Insights** - Travel experiences, digital nomad life
-- **Entrepreneurship Thoughts** - AI startup reflections, open-source project operations
+### 📚 Personal Growth
+Annual reviews, cognitive upgrades, flow state, efficiency improvement, metacognition and more
+
+### ✈️ Travel & Life
+Travel experiences, digital nomad life, cultural exploration, life insights
 
 ---
 
@@ -43,16 +43,11 @@ Practical methods to improve focus and work efficiency:
 Travel experiences and life insights of a digital nomad:
 
 - [Travel Category](/travel/)
-
-### Entrepreneurship & Open Source
-
-Reflections on AI entrepreneurship and open-source project operations:
-
-- [Open Source Contribution Guide](/posts/open-source-contribution-guidelines/)
-- [The Art of Asking Questions in Open Source](/posts/the-art-of-asking-questions-in-open-source-communities/)
+- [Wandering at the Edge of the World](/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
+- [Japan Travel 2025](/posts/japan-travel-2025/)
 
 ---
 
 ## Recent Posts
 
-Browse growth articles via navigation or [categories page](/categories/).
+Browse growth articles below.

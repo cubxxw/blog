@@ -1,0 +1,132 @@
+{{- define "main" }}
+<header class="page-header ai-tech-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+    {{- end }}
+    {{- end }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content">
+  {{ .Content | safeHTML }}
+</div>
+{{- end }}
+
+{{/* AI Technology Section - Dual Column Layout */}}
+{{- $lang := .Lang }}
+{{- $allPages := where .Site.RegularPages "Lang" $lang }}
+
+{{/* Filter AI Technology articles by categories */}}
+{{- $aiTechPages := where $allPages "Params.categories" "intersect" (slice "AI Technology" "技术 (Technology)" "技术" "AI Open Source" "开发 (Development)") }}
+{{- $aiPages := where $aiTechPages "Params.categories" "intersect" (slice "AI Open Source") }}
+{{- $k8sPages := where $aiTechPages "Params.categories" "intersect" (slice "Kubernetes" "技术 (Technology)") }}
+{{- $goPages := where $aiTechPages "Params.title" "intersect" (slice "Go") }}
+
+{{/* Get latest articles for each category */}}
+{{- $latestAI := first 4 ($aiPages.ByDate.Reverse) }}
+{{- $latestK8s := first 4 ($k8sPages.ByDate.Reverse) }}
+{{- $latestAll := first 8 ($aiTechPages.ByDate.Reverse) }}
+
+{{- if or $latestAI $latestK8s $latestAll }}
+<div class="ai-tech-container">
+  {{/* Recommended Articles - Dual Column */}}
+  <section class="ai-tech-recommended">
+    <h2 class="ai-tech-section-title">
+      <span class="ai-tech-icon">✨</span>
+      {{- if eq $lang "zh" }}推荐文章{{ else }}Recommended{{ end }}
+    </h2>
+
+    <div class="ai-tech-grid">
+      {{- range $latestAll }}
+      <article class="ai-tech-card">
+        <div class="ai-tech-card-content">
+          <div class="ai-tech-card-header">
+            <span class="ai-tech-badge">
+              {{- with .Params.categories }}{{ index . 0 }}{{ end }}
+            </span>
+          </div>
+          <h3 class="ai-tech-card-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          {{- if .Params.description }}
+          <p class="ai-tech-card-desc">{{ .Params.description | plainify | truncate 100 }}</p>
+          {{- end }}
+          <div class="ai-tech-card-meta">
+            <span class="ai-tech-date">{{ .Date.Format "2006-01-02" }}</span>
+            {{- if .Params.readingTime }}
+            <span class="ai-tech-reading-time">· {{ .Params.readingTime }} min</span>
+            {{- end }}
+          </div>
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+
+  {{/* Latest Articles List */}}
+  <section class="ai-tech-latest">
+    <h2 class="ai-tech-section-title">
+      <span class="ai-tech-icon">📰</span>
+      {{- if eq $lang "zh" }}最新文章{{ else }}Latest Articles{{ end }}
+    </h2>
+
+    <div class="ai-tech-list">
+      {{- $paginator := .Paginate $aiTechPages.ByDate.Reverse 20 }}
+      {{- range $paginator.Pages }}
+      <article class="ai-tech-list-item">
+        <div class="ai-tech-list-content">
+          <h3 class="ai-tech-list-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <div class="ai-tech-list-meta">
+            <span class="ai-tech-list-date">{{ .Date.Format "2006-01-02" }}</span>
+            {{- with .Params.categories }}
+            <span class="ai-tech-list-category">{{ index . 0 }}</span>
+            {{- end }}
+            {{- if .Params.tags }}
+            <span class="ai-tech-list-tags">{{ delimit (first 3 .Params.tags) " · " }}</span>
+            {{- end }}
+          </div>
+        </div>
+      </article>
+      {{- end }}
+    </div>
+
+    {{- if gt $paginator.TotalPages 1 }}
+    <footer class="page-footer">
+      <nav class="pagination">
+        {{- if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+          «&nbsp;{{ i18n "prev_page" }}&nbsp;
+        </a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+          {{- i18n "next_page" }}&nbsp;»
+        </a>
+        {{- end }}
+      </nav>
+    </footer>
+    {{- end }}
+  </section>
+</div>
+{{- end }}
+
+{{- end }}

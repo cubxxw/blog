@@ -1,5 +1,5 @@
 {{- define "main" }}
-<header class="page-header">
+<header class="page-header growth-header">
   {{- partial "breadcrumbs.html" . }}
   <h1>
     {{ .Title }}
@@ -29,58 +29,134 @@
 </div>
 {{- end }}
 
-{{/* 按分类筛选文章列表 */}}
+{{/* Growth Section - Dual Column Layout with Subcategories */}}
 {{- $lang := .Lang }}
-{{- $filteredPages := slice }}
+{{- $allPages := where .Site.RegularPages "Lang" $lang }}
 
-{{- if eq $lang "zh" }}
-  {{- /* Chinese growth section - filter by section path */}}
-  {{- $filteredPages = where .Site.RegularPages "Lang" "zh" }}
-  {{- $filteredPages = where $filteredPages "Params.categories" "intersect" (slice "成长 (Growth)" "成长") }}
-{{- else }}
-  {{- /* English growth section - filter by section path */}}
-  {{- $filteredPages = where .Site.RegularPages "Lang" "en" }}
-  {{- $filteredPages = where $filteredPages "Params.categories" "intersect" (slice "Personal Development" "Growth" "成长 (Growth)" "成长") }}
-{{- end }}
+{{/* Filter Growth articles by categories */}}
+{{- $growthPages := where $allPages "Params.categories" "intersect" (slice "Growth" "成长 (Growth)" "成长" "个人成长 (Personal Development)" "旅行 (Travel)") }}
 
-{{- if $filteredPages }}
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">
-      {{- if eq $lang "zh" }}🌱 成长文章
-      {{- else }}🌱 Growth Articles{{- end }}
+{{/* Subcategory: Personal Growth */}}
+{{- $personalGrowthPages := where $growthPages "Params.categories" "intersect" (slice "成长 (Growth)" "成长" "个人成长 (Personal Development)" "Growth") }}
+{{- $latestPersonalGrowth := first 4 ($personalGrowthPages.ByDate.Reverse) }}
+
+{{/* Subcategory: Travel & Life */}}
+{{- $travelPages := where $growthPages "Params.categories" "intersect" (slice "旅行 (Travel)" "Travel") }}
+{{- $latestTravel := first 4 ($travelPages.ByDate.Reverse) }}
+
+{{/* All latest growth articles */}}
+{{- $latestAll := first 8 ($growthPages.ByDate.Reverse) }}
+
+{{- if or $latestPersonalGrowth $latestTravel $latestAll }}
+<div class="growth-container">
+  {{/* Recommended Articles - Dual Column */}}
+  <section class="growth-recommended">
+    <h2 class="growth-section-title">
+      <span class="growth-icon">✨</span>
+      {{- if eq $lang "zh" }}精选推荐{{ else }}Featured{{ end }}
     </h2>
 
-    <div class="posts-group">
-      {{- $paginator := .Paginate $filteredPages.ByDate.Reverse 20 }}
-      {{- range $paginator.Pages }}
-      <article class="post-entry">
-        <header class="post-entry-header">
-          <h2 class="post-entry-title">
+    <div class="growth-grid">
+      {{- range $latestAll }}
+      <article class="growth-card">
+        <div class="growth-card-content">
+          <div class="growth-card-header">
+            <span class="growth-badge growth-badge--{{ if in .Params.categories "旅行" }}travel{{ else }}growth{{ end }}">
+              {{- with .Params.categories }}{{ index . 0 }}{{ end }}
+            </span>
+          </div>
+          <h3 class="growth-card-title">
             <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </h2>
-          <div class="post-meta">
-            <span>{{ .Date.Format "2006-01-02" }}</span>
-            {{- if .Params.tags }}
-            <span>· {{ delimit (first 3 .Params.tags) " · " }}</span>
+          </h3>
+          {{- if .Params.description }}
+          <p class="growth-card-desc">{{ .Params.description | plainify | truncate 100 }}</p>
+          {{- end }}
+          <div class="growth-card-meta">
+            <span class="growth-date">{{ .Date.Format "2006-01-02" }}</span>
+          </div>
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+
+  {{/* Personal Growth Section */}}
+  <section class="growth-subcategory">
+    <h2 class="growth-subcategory-title">
+      <span class="growth-icon">📚</span>
+      {{- if eq $lang "zh" }}个人成长{{ else }}Personal Growth{{ end }}
+    </h2>
+
+    <div class="growth-list">
+      {{- range $latestPersonalGrowth }}
+      <article class="growth-list-item">
+        <div class="growth-list-content">
+          <h3 class="growth-list-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <div class="growth-list-meta">
+            <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
+            {{- with .Params.categories }}
+            <span class="growth-list-category">{{ index . 0 }}</span>
             {{- end }}
           </div>
-        </header>
-        {{- if .Params.description }}
-        <p class="post-entry-description">{{ .Params.description | plainify | truncate 150 }}</p>
-        {{- end }}
-        {{- if or .Params.tags .Params.categories }}
-        <footer class="post-entry-tags">
-          {{- with .Params.categories }}
-          <span class="post-category">{{ index . 0 }}</span>
-          {{- end }}
-          {{- with .Params.tags }}
-          {{- range first 5 . }}
-          <span class="post-tag">{{ . }}</span>
-          {{- end }}
-          {{- end }}
-        </footer>
-        {{- end }}
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+
+  {{/* Travel & Life Section */}}
+  <section class="growth-subcategory">
+    <h2 class="growth-subcategory-title">
+      <span class="growth-icon">✈️</span>
+      {{- if eq $lang "zh" }}旅行与生活{{ else }}Travel & Life{{ end }}
+    </h2>
+
+    <div class="growth-list">
+      {{- range $latestTravel }}
+      <article class="growth-list-item">
+        <div class="growth-list-content">
+          <h3 class="growth-list-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <div class="growth-list-meta">
+            <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
+            {{- with .Params.categories }}
+            <span class="growth-list-category">{{ index . 0 }}</span>
+            {{- end }}
+          </div>
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+
+  {{/* All Articles with Pagination */}}
+  <section class="growth-all">
+    <h2 class="growth-section-title">
+      <span class="growth-icon">📰</span>
+      {{- if eq $lang "zh" }}全部文章{{ else }}All Articles{{ end }}
+    </h2>
+
+    <div class="growth-list">
+      {{- $paginator := .Paginate $growthPages.ByDate.Reverse 20 }}
+      {{- range $paginator.Pages }}
+      <article class="growth-list-item">
+        <div class="growth-list-content">
+          <h3 class="growth-list-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <div class="growth-list-meta">
+            <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
+            {{- with .Params.categories }}
+            <span class="growth-list-category">{{ index . 0 }}</span>
+            {{- end }}
+            {{- if .Params.tags }}
+            <span class="growth-list-tags">{{ delimit (first 3 .Params.tags) " · " }}</span>
+            {{- end }}
+          </div>
+        </div>
       </article>
       {{- end }}
     </div>
@@ -91,24 +167,18 @@
         {{- if $paginator.HasPrev }}
         <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
           «&nbsp;{{ i18n "prev_page" }}&nbsp;
-          {{- if (.Param "ShowPageNums") }}
-          {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
-          {{- end }}
         </a>
         {{- end }}
         {{- if $paginator.HasNext }}
         <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-          {{- i18n "next_page" }}&nbsp;
-          {{- if (.Param "ShowPageNums") }}
-          {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
-          {{- end }}&nbsp;»
+          {{- i18n "next_page" }}&nbsp;»
         </a>
         {{- end }}
       </nav>
     </footer>
     {{- end }}
-  </div>
-</section>
+  </section>
+</div>
 {{- end }}
 
 {{- end }}
