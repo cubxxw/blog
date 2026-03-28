@@ -23,9 +23,43 @@
     <div class="profile_shell">
         <section class="profile_hero">
             <div class="profile_copy">
-                <div class="profile_status">
-                    <span class="profile_status__dot"></span>
-                    <span>{{ $statusText }}</span>
+                <div class="profile_status_bar">
+                    <div class="profile_status">
+                        <span class="profile_status__dot"></span>
+                        <span>{{ $statusText }}</span>
+                    </div>
+                    <button class="profile_chat_trigger" id="chatTrigger" onclick="toggleChatPanel()" type="button">
+                        <span class="profile_chat_trigger__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </span>
+                        <span class="profile_chat_trigger__label">Ask AI</span>
+                        <svg class="profile_chat_trigger__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="profile_chat_panel" id="chatPanel">
+                    <div class="profile_chat_inner">
+                        <p class="profile_chat_greeting">// what do you want to know?</p>
+                        <div class="profile_chat_hints" id="chatHints">
+                            <span class="profile_chat_hint" onclick="fillChatHint(this)">recent posts</span>
+                            <span class="profile_chat_hint" onclick="fillChatHint(this)">ai topics</span>
+                            <span class="profile_chat_hint" onclick="fillChatHint(this)">summarize</span>
+                        </div>
+                        <div class="profile_chat_input_row">
+                            <textarea class="profile_chat_input" id="chatInput" rows="1" placeholder="ask anything..."></textarea>
+                            <button class="profile_chat_send" id="chatSendBtn" onclick="handleChatSend()">send →</button>
+                        </div>
+                        <div class="profile_chat_thinking" id="chatThinking">
+                            <span class="profile_chat_dot"></span>
+                            <span class="profile_chat_dot"></span>
+                            <span class="profile_chat_dot"></span>
+                        </div>
+                        <div class="profile_chat_response" id="chatResponse"></div>
+                    </div>
                 </div>
 
                 <h1 class="profile_title">
@@ -158,12 +192,7 @@
             </article>
         </section>
 
-        <!-- AI Chat Section - Moved higher for visibility -->
-        <section class="profile_bento" style="margin-top: 24px;">
-            <article class="profile_panel profile_panel--chat" style="grid-column: 1 / -1;">
-                <div class="blog-ai-container"></div>
-            </article>
-        </section>
+        <!-- AI Chat Section - Integrated into status bar above -->
 
         <section class="profile_knowledge_grid" style="margin-top: 24px;">
             <article class="profile_panel profile_panel--knowledge profile_panel--ai-tech">
@@ -236,6 +265,83 @@
                     window.clearInterval(timer);
                 }
             }, 42);
+
+            // Chat Panel Toggle Function
+            window.toggleChatPanel = function() {
+                var panel = document.getElementById('chatPanel');
+                var chevron = document.querySelector('.profile_chat_trigger__chevron');
+                panel.classList.toggle('open');
+                chevron.classList.toggle('open');
+                if (panel.classList.contains('open')) {
+                    setTimeout(function() {
+                        document.getElementById('chatInput').focus();
+                    }, 300);
+                }
+            };
+
+            // Auto-resize textarea
+            var chatTextarea = document.getElementById('chatInput');
+            if (chatTextarea) {
+                chatTextarea.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+                });
+                chatTextarea.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleChatSend();
+                    }
+                });
+            }
+
+            // Fill hint text
+            window.fillChatHint = function(el) {
+                var input = document.getElementById('chatInput');
+                if (input) {
+                    input.value = el.textContent;
+                    input.focus();
+                }
+            };
+
+            // Mock replies for demo
+            var mockReplies = {
+                'recent posts': 'The most recent entry is from August 2024 — a deep-dive into Kubernetes resource management and learning paths for platform engineers.',
+                'ai topics': 'The blog covers AI agents, LLM engineering, and open-source infrastructure. There are several posts on agent architecture and tool-use patterns.',
+                'summarize': 'This blog documents the intersection of systems thinking and AI tooling — written by someone building in the open, thinking through architecture while traveling.',
+            };
+
+            // Handle chat send
+            window.handleChatSend = function() {
+                var input = document.getElementById('chatInput');
+                var btn = document.getElementById('chatSendBtn');
+                var thinking = document.getElementById('chatThinking');
+                var response = document.getElementById('chatResponse');
+                var hints = document.getElementById('chatHints');
+
+                if (!input || !input.value.trim()) return;
+
+                var question = input.value.trim();
+
+                btn.disabled = true;
+                if (hints) hints.classList.remove('visible');
+                if (response) response.innerHTML = '';
+                if (thinking) thinking.classList.add('active');
+                input.value = '';
+                input.style.height = 'auto';
+
+                var reply = mockReplies[question] || 'That\'s an interesting question about the blog. The content spans engineering depth and philosophical tangents — both seem intentional.';
+
+                setTimeout(function() {
+                    if (thinking) thinking.classList.remove('active');
+                    if (response) {
+                        var responseText = document.createElement('p');
+                        responseText.className = 'profile_chat_response_text visible';
+                        responseText.textContent = reply;
+                        response.appendChild(responseText);
+                    }
+                    btn.disabled = false;
+                }, 1200 + Math.random() * 600);
+            };
         });
     </script>
     {{- end}}

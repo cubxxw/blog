@@ -94,8 +94,11 @@
   // Load index.json and initialize Fuse.js
   function loadSearchData() {
     const lang = document.documentElement.lang || 'en';
-    const baseUrl = document.querySelector('base')?.href || '/';
-    const indexPath = (baseUrl.endsWith('/') ? baseUrl : baseUrl + '/') + 'index.json';
+    // Load language-specific search index based on current page URL
+    const currentPath = window.location.pathname;
+    const langMatch = currentPath.match(/^\/(zh|en)/);
+    const searchLang = langMatch ? langMatch[1] : 'en';
+    const indexPath = searchLang !== 'en' ? `/${searchLang}/index.json` : '/index.json';
     
     fetch(indexPath)
       .then(response => response.json())

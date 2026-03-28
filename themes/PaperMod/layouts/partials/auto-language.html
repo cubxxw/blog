@@ -1,0 +1,64 @@
+{{- /* Auto Language Detection and Redirection */}}
+{{- if gt (len .Site.Languages) 1 }}
+<script>
+(function() {
+    // Only redirect on homepage
+    const currentPath = window.location.pathname;
+    // Check if we're on root or already in a language subdir
+    const isRoot = currentPath === '/' || currentPath === '' || currentPath === '/index.html';
+    const isLangSubdir = /^\/(en|zh)\/?$/.test(currentPath);
+
+    if (!isRoot && !isLangSubdir) {
+        return;
+    }
+
+    // Check if user has manually selected a language before
+    if (localStorage.getItem('lang-manual')) {
+        return;
+    }
+
+    // Get browser language
+    const browserLang = navigator.language || navigator.userLanguage;
+    const langs = {{ .Site.Languages | jsonify | safeJS }};
+
+    // Extract primary language code (e.g., 'zh-CN' -> 'zh')
+    const primaryLang = browserLang.split('-')[0].toLowerCase();
+
+    // Map of language codes to Hugo language keys
+    const langMap = {
+        'zh': 'zh',
+        'en': 'en',
+        'zh-hans': 'zh',
+        'zh-hant': 'zh',
+        'zh-cn': 'zh',
+        'zh-tw': 'zh',
+        'zh-hk': 'zh',
+        'en-us': 'en',
+        'en-gb': 'en',
+        'en-au': 'en',
+        'en-ca': 'en'
+    };
+
+    // Default language from config
+    const defaultLang = 'en';
+
+    // Determine target language
+    let targetLang = langMap[primaryLang] || langMap[browserLang.toLowerCase()] || defaultLang;
+
+    // Check if target language is available
+    const availableLangs = langs.map(l => l.lang);
+    if (!availableLangs.includes(targetLang)) {
+        targetLang = defaultLang;
+    }
+
+    // Get current language from URL or page context
+    const currentLang = '{{ .Lang }}';
+
+    // Redirect if different from current language
+    if (targetLang !== currentLang && targetLang !== 'en') {
+        const targetUrl = '/' + targetLang + '/';
+        window.location.replace(targetUrl);
+    }
+})();
+</script>
+{{- end }}

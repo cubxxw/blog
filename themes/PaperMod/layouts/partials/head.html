@@ -161,6 +161,9 @@
 
 {{- partial "extend_head.html" . -}}
 
+{{- /* Auto Language Detection */}}
+{{- partial "auto-language.html" . }}
+
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 {{- template "_internal/google_analytics.html" . }}
