@@ -12,8 +12,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '远程工作', '团队协作', '协议版本', '工作效率', '远程协作工具', 'OpenIM 协作', '远程工作最佳实践', '团队沟通策略', '协作协议更新', '高效团队管理', '远程办公工具']
-tags: ['博客 (Blog)', '远程工作 (Remote Work)', '团队协作 (Team Collaboration)', 'OpenIM']
-categories: ['开发 (Development)']
+tags: ["Blog", "远程工作 (Remote Work)", "团队协作 (Team Collaboration)", "OpenIM"]
+categories: ["Technology"]
 ---
 
 〉 笔者之前在参与 OpenIM 前，去过一些开源的社区和公司学习协作过，发现了一些好的文化，于是记录在这里，最开始的标题是 "一篇适用远程工作的约定指南： OpenIM 远程工作团队协作协议 v1.3"，后面我从 OpenIM 离职了，去了一家日企，学习到了外企的新的文化精髓，再到毕业后创业，开始组件和打磨团队，有了一些新的思考。团队以及领导人的决策力是最重要的两个因素，所以我把标题改为了："在AI时代 - 精益团队的企业文化和远程工作指南 v2.0"

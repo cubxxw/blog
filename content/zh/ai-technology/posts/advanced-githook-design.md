@@ -8,8 +8,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源社区', '规范设计', '社区管理', 'Git', 'OpenIM']
-tags: ['OpenIM', '管理 (Management)', 'Git', '开源 (Open Source)']
-categories: ['开发 (Development)']
+tags: ["OpenIM", "管理 (Management)", "Git", "Open Source"]
+categories: ["Technology"]
 description: '探讨如何在开源社区中实施规范设计，分享我的实践经验与思路，包括如何利用Git和OpenIM工具进行高效管理。'
 ---
 
@@ -182,13 +182,13 @@ showtoc: true
 tocopen: false
 author: ["熊鑫伟", "Me"]
 keywords: []
-tags:
+tags: ["OpenIM", "管理 (Management)", "Git", "Open Source"]
   - blog
   - openim
   - management
   - zh
   - git
-categories:
+categories: ["Technology"]
   - 技术 (Technology)
 curl -L https://gist.github.com/cubxxw/126b72104ac0b0ca484c9db09c3e5694/raw/pre-push -o "$PRECOMMIT_HOOK" 2> /dev/null
 

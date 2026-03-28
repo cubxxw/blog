@@ -9,8 +9,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['GoReleaser', 'CI/CD', '自动化发布', 'Golang (GO语言)', '软件开发']
-tags: ['GoReleaser', '自动化发布 (Automated Release)', 'Golang (GO语言)']
-categories: ['开发 (Development)']
+tags: ["GoReleaser", "自动化发布 (Automated Release)", "Golang (GO语言)"]
+categories: ["Technology"]
 description: '本文介绍 GoReleaser 工具，一个帮助开发者自动化软件发布流程的强大工具。通过使用 GoReleaser，你可以简化构建、打包和发布软件的步骤，提高开发效率。'
 ---
 

@@ -8,8 +8,8 @@ tocopen: false
 type: posts
 author: 'Xinwei Xiong, Me'
 keywords: ['Kubernetes', 'Scheduler', 'Container Orchestration', 'K8s Architecture', 'Cluster Management']
-tags: ['Blog', 'Go', 'Kubernetes', 'K8s']
-categories: ['Development']
+tags: ["Blog", "Go", "Kubernetes"]
+categories: ["Technology"]
 description: 'Explore how Kubernetes scheduler component works, how it decides which node to place containers on, and its importance for cluster management and container orchestration.'
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: "Personal User Manual"
+title: "About"
+menuTitle: "Personal User Manual"
 layout: "single"
 description: "Xinwei Xiong (cubxxw) - Personal User Manual v2025.1"
 summary: "Personal User Manual v2025.1"

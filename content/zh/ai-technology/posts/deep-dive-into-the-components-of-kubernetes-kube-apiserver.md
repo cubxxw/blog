@@ -8,9 +8,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['kubernetes', 'kube-apiserver', '认证', '授权', '准入控制', '容器编排']
-tags: ['blog', 'etcd', 'k8s', 'kubernetes', 'kube-apiserver']
-categories:
-  - 技术 (Technology)
+tags: ["Blog", "etcd", "Kubernetes", "kube-apiserver"]
+categories: ["Technology"]
 description: >
     Kubernetes API的每个请求都会经过多阶段的访问控制之后才会被接受，这包括认证、授权以及准入控制（Admission Control）等。
 ---

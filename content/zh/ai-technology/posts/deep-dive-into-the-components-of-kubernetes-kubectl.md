@@ -8,9 +8,8 @@ tocopen: false
 type: posts
 author: 'Xinwei Xiong, Me'
 keywords: ['Kubernetes', 'Kubectl', '控制平面', 'kubelet', 'Pod 管理']
-tags: ['Development', 'Golang (GO语言)', 'Kubernetes', 'K8s']
-categories:
-  - 技术 (Technology)
+tags: ["Development", "Golang (GO语言)", "Kubernetes"]
+categories: ["Technology"]
 description: 'kubelet 架构kubelet 管理 Pod 的核心流程kubelet 节点管理Pod 管理Pod'
 ---
 

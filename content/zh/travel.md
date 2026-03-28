@@ -1,5 +1,6 @@
 ---
-title: '🌍 旅行足迹 | Travel Footprints'
+title: '旅行'
+menuTitle: '🌍 旅行足迹'
 ShowRssButtonInSectionTermList: false
 ShowBreadCrumbs: false
 ShowPostNavLinks: false
@@ -41,7 +42,7 @@ description: "跟随我的脚步探索世界，记录旅行足迹、冒险经历
   <p class="embed-description">在 Polarsteps 上探索我的实时旅行路线和冒险经历</p>
   <div class="polarsteps-widget">
     <iframe
-      src="https://www.polarsteps.com/cubxxw/widget"
+      src="https://www.polarsteps.com/cubxxw"
       frameborder="0"
       scrolling="no"
       width="100%"

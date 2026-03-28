@@ -9,8 +9,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Prow', 'Kubernetes', 'CI/CD', '自动化', 'DevOps', '云原生']
-tags: ['博客 (Blog)', 'Prow', 'Kubernetes', 'CI/CD', 'DevOps']
-categories: ['开发 (Development)']
+tags: ["Blog", "Prow", "Kubernetes", "CI/CD", "DevOps"]
+categories: ["Technology"]
 ---
 
 ## why?

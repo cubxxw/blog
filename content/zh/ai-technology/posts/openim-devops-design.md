@@ -10,8 +10,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', 'DevOps', '标准设计', '自动化', '部署', '维护']
-tags: ['OpenIM', 'DevOps', '云原生 (Cloud Native)', '自动化 (Automation)', '微服务 (Microservices)','部署 (Deployment)']
-categories: ['开发 (Development)', '项目管理 (Project Management)']
+tags: ["OpenIM", "DevOps", "Cloud Native", "Automation", "Microservices", "Deployment"]
+categories: ["Technology"]
 ---
 
 ## DevOps

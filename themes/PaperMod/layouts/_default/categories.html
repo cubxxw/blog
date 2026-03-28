@@ -1,0 +1,361 @@
+{{- define "main" }}
+
+<header class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+
+{{- /* 5 大分类配置 */ -}}
+{{- $categories := slice
+    (dict "name" "Technology" "nameCN" "技术" "color" "#10b981" "icon" "gear"
+          "description" "技术教程和开发实践"
+          "tags" (slice "Go" "Kubernetes" "Docker" "Cloud Native" "DevOps" "AI" "LLM" "Microservices" "Git" "GitHub"))
+    (dict "name" "Projects" "nameCN" "项目" "color" "#f43f5e" "icon" "heart"
+          "description" "开源项目和 AI 实践"
+          "tags" (slice "OpenIM" "Open Source" "LangChain" "AI Projects"))
+    (dict "name" "Growth" "nameCN" "成长" "color" "#14b8a6" "icon" "leaf"
+          "description" "个人成长和方法论"
+          "tags" (slice "Annual Review" "Personal Growth" "Thinking" "Flow State" "GTD" "Metacognition"))
+    (dict "name" "Travel" "nameCN" "旅行" "color" "#3b82f6" "icon" "cloud"
+          "description" "旅行记录和见闻"
+          "tags" (slice "Japan" "Lhasa" "Southeast Asia" "Cambodia" "Nepal" "Travel"))
+    (dict "name" "Life" "nameCN" "生活" "color" "#8b5cf6" "icon" "users"
+          "description" "生活感悟和兴趣爱好"
+          "tags" (slice "English Learning" "Reading" "Self-Discovery" "Blog"))
+-}}
+
+<div class="categories-list">
+    {{- range $categories }}
+    {{- $categoryName := .name }}
+    {{- $categoryNameCN := .nameCN }}
+    {{- $color := .color }}
+    {{- $icon := .icon }}
+    {{- $description := .description }}
+    {{- $tags := .tags }}
+    {{- $categoryTotal := 0 }}
+
+    <div class="category-row">
+        <div class="category-info">
+            <span class="category-dot" style="background-color: {{ $color }};"></span>
+            <div class="category-names">
+                <span class="category-name">{{ $categoryName }}</span>
+                <span class="category-name-cn">{{ $categoryNameCN }}</span>
+            </div>
+            {{- /* 计算该分类下所有 tags 的文章总数 */ -}}
+            {{- range $tags }}
+            {{- $tagName := . }}
+            {{- $tagPath := printf "/tags/%s/" ($tagName | urlize) }}
+            {{- with $.Site.GetPage $tagPath }}
+            {{- $categoryTotal = add $categoryTotal (len .Pages) }}
+            {{- end }}
+            {{- end }}
+            <span class="category-count">{{ $categoryTotal }} 篇</span>
+        </div>
+
+        <div class="tags-list">
+            {{- range $tags }}
+            {{- $tagName := . }}
+            {{- $tagPath := printf "/tags/%s/" ($tagName | urlize) }}
+            {{- with $.Site.GetPage $tagPath }}
+            <a href="{{ .Permalink }}" class="tag-pill">
+                <span>{{ .Title }}</span>
+                {{- $count := len .Pages }}
+                {{- if gt $count 0 }}
+                <span class="tag-count">{{ $count }}</span>
+                {{- end }}
+            </a>
+            {{- else }}
+            <a href="/tags/{{ $tagName | urlize }}/" class="tag-pill">
+                <span>{{ $tagName }}</span>
+            </a>
+            {{- end }}
+            {{- end }}
+        </div>
+    </div>
+    {{- end }}
+</div>
+
+<div class="categories-footer">
+    <span class="footer-total">共 {{ len $categories }} 个分类</span>
+    <span class="footer-copy">@cubxxw</span>
+</div>
+
+<style>
+/* 页面头部 */
+.page-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .page-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0 0 8px 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.post-description {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.dark .page-title,
+.dark .post-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* 分类列表 */
+.categories-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.category-row {
+    display: flex;
+    align-items: flex-start;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background-color 0.2s ease;
+}
+
+.dark .category-row {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.category-row:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dark .category-row:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.category-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 200px;
+    flex-shrink: 0;
+}
+
+.category-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.category-names {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.category-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.02em;
+}
+
+.category-name-cn {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.dark .category-name {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .category-name-cn {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.category-count {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.4);
+    min-width: 50px;
+    margin-left: 8px;
+}
+
+.dark .category-count {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* 标签列表 */
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.7);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.dark .tag-pill {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.tag-pill:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.03);
+    transform: translateY(-1px);
+}
+
+.dark .tag-pill:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tag-pill span:first-child {
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.tag-count {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.04);
+    padding: 2px 6px;
+    border-radius: 8px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+}
+
+.dark .tag-count {
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* 底部信息 */
+.categories-footer {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.dark .categories-footer {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-total {
+    font-weight: 500;
+}
+
+.footer-copy {
+    font-family: monospace;
+    letter-spacing: 0.05em;
+}
+
+/* 移动端响应式 */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 30px 16px 16px;
+    }
+
+    .page-title {
+        font-size: 1.25rem;
+    }
+
+    .categories-list {
+        padding: 0 16px;
+    }
+
+    .category-row {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 0;
+    }
+
+    .category-row:hover {
+        margin: 0 -16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .category-info {
+        min-width: auto;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .category-names {
+        flex-wrap: wrap;
+    }
+
+    .category-name {
+        font-size: 0.95rem;
+    }
+
+    .category-name-cn {
+        font-size: 0.85rem;
+    }
+
+    .tags-list {
+        width: 100%;
+    }
+
+    .tag-pill {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+
+    .categories-footer {
+        padding: 16px;
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+/* 深色模式优化 */
+@media (prefers-color-scheme: dark) {
+    .category-row:hover {
+        background-color: rgba(255, 255, 255, 0.02);
+    }
+}
+</style>
+
+{{- end }}

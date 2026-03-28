@@ -12,8 +12,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Go', '调试', '测试', 'dlv', '性能优化', '代码质量']
-tags: ['博客 (Blog)', '开发 (Development)', '调试工具 (Debugging Tools)']
-categories: ['开发 (Development)']
+tags: ["Blog", "开发 (Development)", "调试工具 (Debugging Tools)"]
+categories: ["Technology"]
 ---
 
 

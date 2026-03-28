@@ -1,16 +1,18 @@
 ---
-title: "System.Self()"
-layout: "single"
-description: "熊鑫伟 (Xinwei Xiong) - 认知宇航员 | 演进中的世界观 v2025.11"
-summary: "Identity Protocol v2025.11: Cognitive Astronaut"
-ShowReadingTime: false
-ShowShareButtons: false
+title: '关于我'
+menuTitle: 'System.Self()'
+ShowRssButtonInSectionTermList: false
+ShowBreadCrumbs: false
 ShowPostNavLinks: false
-ShowBreadCrumbs: true
-ShowCodeCopyButtons: false
-ShowWordCount: false
-cover:
-    hidden: true
+date: 2025-01-09T00:00:00+08:00
+weight: 1
+draft: false
+showtoc: false
+tocopen: false
+type: page
+author: ["Xinwei Xiong"]
+keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
+description: "熊鑫伟 (Xinwei Xiong) - 认知宇航员 | 演进中的世界观 v2025.11"
 ---
 
 <div class="neuro-dashboard">

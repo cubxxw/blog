@@ -11,8 +11,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['自动化测试', '测试框架', 'Selenium', '测试自动化', '软件测试']
-tags: ['博客 (Blog)', '测试 (Test)', '自动化 (Automation)', 'Selenium']
-categories: ['开发 (Development)']
+tags: ["Blog", "Testing", "Automation", "Selenium"]
+categories: ["Technology"]
 description: '在这篇文章中，我将分享我学习自动化测试的过程，特别是使用Selenium框架。这是自动化测试系列文章的第一部分，旨在为初学者提供基础知识和操作指南。'
 ---
 

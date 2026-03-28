@@ -9,8 +9,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '多进程管理', '系统稳定性', '资源控制', '系统扩展']
-tags: ['OpenIM', '多进程 (Multi-Processing)', '性能优化 (Performance Optimization)', '系统稳定性 (System Stability)', '资源管理 (Resource Management)']
-categories: ['开发 (Development)']
+tags: ["OpenIM", "多进程 (Multi-Processing)", "Performance", "系统稳定性 (System Stability)", "资源管理 (Resource Management)"]
+categories: ["Technology"]
 ---
 
 ## 主要模块

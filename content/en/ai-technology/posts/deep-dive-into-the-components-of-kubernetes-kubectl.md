@@ -8,9 +8,8 @@ tocopen: false
 type: posts
 author: 'Xinwei Xiong, Me'
 keywords: ['Kubernetes', 'Kubelet', 'Control Plane', 'kubelet', 'Pod Management']
-tags: ['Development', 'Golang (GO Language)', 'Kubernetes', 'K8s']
-categories:
-  - 'Development'
+tags: ["Development", "Go", "Kubernetes"]
+categories: ["Technology"]
 description: 'kubelet architecture, kubelet core processes for Pod management, kubelet node management, Pod management'
 ---
 

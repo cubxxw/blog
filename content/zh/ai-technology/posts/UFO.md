@@ -15,13 +15,9 @@ keywords:
   - 桌面自动化
   - 多智能体系统
   - Windows自动化
-  - 微软AI
-tags:
-  - AI
-  - 自动化
-  - Windows开发
-  - 微软技术
-categories: ["AI Open Source"]
+tags: ["AI", "自动化", "Windows 开发", "微软技术"]
+categories: ["Projects"]
+description: >
 description: >
   本文深入解析微软UFO项目的核心设计、技术实现与系统架构，涵盖其多智能体协作、混合GUI/API操作、持续学习等创新特性，帮助开发者全面理解这一前沿的桌面自动化平台。
 ---

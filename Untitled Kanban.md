@@ -1,6 +1,0 @@
----
-
-kanban-plugin: board
-
----
-

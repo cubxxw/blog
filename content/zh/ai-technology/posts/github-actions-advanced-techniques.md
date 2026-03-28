@@ -8,8 +8,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Github Actions', 'CI/CD', '自动化', '软件开发', 'DevOps', '技术自动化', '代码集成', '代码部署']
-tags: ['博客 (Blog)', 'CI/CD', '自动化 (Automation)']
-categories: ['开发 (Development)']
+tags: ["Blog", "CI/CD", "Automation"]
+categories: ["Technology"]
 description: '本文深入探讨了 Github Actions 的高级使用技巧，旨在帮助开发者更好地理解和利用这一强大的自动化工具来优化软件开发流程。通过实际案例和详细的步骤说明，您将学习到如何设置高效的 CI/CD 管道，以及如何通过 Github Actions 自动化常见的开发任务。'
 ---
 

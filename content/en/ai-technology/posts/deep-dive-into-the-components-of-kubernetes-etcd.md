@@ -8,8 +8,8 @@ tocopen: false
 type: posts
 author: "Xinwei Xiong, Me"
 keywords: []
-tags: ['blog']
-categories: ['Development']
+tags: ["Blog"]
+categories: ["Technology"]
 description: >
     Explore the inner workings and components of Kubernetes Etcd in-depth, understanding its role and significance in the Kubernetes ecosystem.
 ---
@@ -25,13 +25,13 @@ tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["kubernetes", "etcd", "raft", "go"]
-tags:
+tags: ["Blog"]
    - blog
    - kubernetes
    - etcd
    -raft
    -go
-categories:
+categories: ["Technology"]
    - Development
    - Blog
    - Kubernetes

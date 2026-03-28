@@ -7,8 +7,8 @@ showtoc: true
 tocopen: false
 author: "Xinwei Xiong, Me"
 keywords: ['Cross Platform Compilation', 'Go Programming Language', 'Build Process', 'Compatibility', 'Distribution']
-tags: ['blog', 'en', 'golang']
-categories: ['Development']
+tags: ["Blog", "Go"]
+categories: ["Technology"]
 description: 'Learn how to efficiently compile Go programs for multiple platforms, ensuring compatibility and ease of distribution.'
 ---
 

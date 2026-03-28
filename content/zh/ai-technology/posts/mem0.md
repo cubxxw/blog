@@ -15,11 +15,8 @@ keywords:
   - 个性化AI
   - 向量数据库
   - 知识图谱
-tags:
-  - AI
-  - 机器学习
-  - 开源项目
-categories: ["AI Open Source"]
+tags: ["AI", "机器学习", "开源项目"]
+categories: ["Projects"]
 description: >
   本文深入分析Mem0开源项目的技术架构、核心功能和应用场景，探讨如何为AI系统构建智能记忆层，实现个性化交互体验。
 ---

@@ -136,15 +136,50 @@
   ],
 
   "category_groups": {
-    "编程语言": ["Go", "Python", "JavaScript", "TypeScript", "Rust"],
-    "云原生": ["Kubernetes", "Docker", "Cloud Native", "Helm", "Istio"],
-    "AI/ML": ["AI", "Machine Learning", "Deep Learning", "LLM", "NLP"],
-    "技术": ["DevOps", "Automation", "Testing", "Performance", "Security", "Monitoring"],
-    "架构": ["Microservices", "System Design", "Distributed Systems"],
-    "工具": ["Git", "GitHub", "VS Code", "Linux"],
-    "开源": ["Open Source", "OpenIM", "Community"],
-    "生活": ["Blog", "Travel", "Personal Growth", "Self-Discovery", "Reading"],
-    "文化": ["Remote Work", "Team Collaboration", "Management"]
+    "Technology": {
+      "tags": ["Go", "Kubernetes", "Docker", "Cloud Native", "DevOps", "AI", "LLM", "Microservices", "Git", "GitHub"],
+      "icon": "gear",
+      "color": { "from": "#10b981", "to": "#059669" },
+      "description": "技术教程和开发实践"
+    },
+    "Projects": {
+      "tags": ["OpenIM", "Open Source", "LangChain", "AI Projects"],
+      "icon": "heart",
+      "color": { "from": "#f43f5e", "to": "#e11d48" },
+      "description": "开源项目和 AI 实践"
+    },
+    "Growth": {
+      "tags": ["Annual Review", "Personal Growth", "Thinking", "Flow State", "GTD", "Metacognition"],
+      "icon": "leaf",
+      "color": { "from": "#14b8a6", "to": "#0d9488" },
+      "description": "个人成长和方法论"
+    },
+    "Travel": {
+      "tags": ["Japan", "Lhasa", "Southeast Asia", "Cambodia", "Nepal", "Travel"],
+      "icon": "cloud",
+      "color": { "from": "#3b82f6", "to": "#1d4ed8" },
+      "description": "旅行记录和见闻"
+    },
+    "Life": {
+      "tags": ["English Learning", "Reading", "Self-Discovery", "Blog"],
+      "icon": "users",
+      "color": { "from": "#8b5cf6", "to": "#6d28d9" },
+      "description": "生活感悟和兴趣爱好"
+    }
+  },
+
+  "_new_categories": {
+    "description": "新的 5 大分类体系",
+    "categories": ["Technology", "Projects", "Growth", "Travel", "Life"]
+  },
+
+  "category_mapping": {
+    "AI Open Source": "Projects",
+    "开发 (Development)": "Technology",
+    "Development": "Technology",
+    "生活与教育 (Living & Education)": "Life",
+    "AI Technology": "Technology",
+    "Growth & Life": "Growth"
   },
 
   "naming_conventions": {

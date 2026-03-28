@@ -8,8 +8,8 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Kubernetes', '调度器', '容器编排', 'K8s 架构', '集群管理']
-tags: ['博客 (Blog)', 'Go', 'Kubernetes', 'K8s']
-categories: ['开发 (Development)']
+tags: ["Blog", "Go", "Kubernetes"]
+categories: ["Technology"]
 description: '探讨 Kubernetes 的调度器组件如何工作，它是如何决定将容器放置在哪个节点上的，以及这对集群管理和容器编排有何重要意义。'
 ---
 

@@ -617,6 +617,96 @@
 }
 
 /* ===================================
+   P0: Typography & Readability Improvements
+   =================================== */
+
+/* Side TOC - Enhanced Readability */
+.toc-side {
+  font-size: 14px;  /* Increased from ~12px */
+}
+
+.toc-side__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;  /* Darker color */
+}
+
+.dark .toc-side__title {
+  color: #e5e7eb;
+}
+
+.toc-side a {
+  font-size: 13px;  /* Increased from ~12px */
+  color: #555;  /* Darker, more readable */
+  line-height: 1.6;
+}
+
+.dark .toc-side a {
+  color: #9ca3af;
+}
+
+.toc-side a:hover,
+.toc-side a.active {
+  color: #0891b2;
+}
+
+/* Truncate long headings with ellipsis */
+.toc-side li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Post Content - Optimal Line Width */
+.post-single .post-content {
+  max-width: 680px;  /* Reduced from default ~750px */
+  margin: 0 auto;
+}
+
+/* Improve H2/H3 visual distinction */
+.post-content h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  padding-left: 1rem;
+  border-left: 4px solid #0891b2;
+}
+
+.dark .post-content h2 {
+  border-left-color: #14b8a6;
+}
+
+.post-content h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.6em;
+}
+
+/* Breadcrumb - More visible */
+.breadcrumbs {
+  font-size: 0.85rem;
+}
+
+.breadcrumbs a {
+  color: #6b7280;
+}
+
+.dark .breadcrumbs a {
+  color: #9ca3af;
+}
+
+/* Chinese Font Stack Optimization */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", "Liberation Sans", sans-serif,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei";
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+/* ===================================
    Blog AI Inline Chat - Modern Design
    =================================== */
 
@@ -1524,63 +1614,6 @@ strong {
   }
 }
 
-/* ===================================
-   Elegant RSS Subscription Button
-   =================================== */
-
-/* RSS Button in Navigation */
-#menu > li > a[href$="index.xml"],
-#menu > li > a[href*="/feed"] {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(234, 88, 12, 0.08));
-  color: #ea580c;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(234, 88, 12, 0.2);
-}
-
-#menu > li > a[href$="index.xml"]::before,
-#menu > li > a[href*="/feed"]::before {
-  content: '';
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: currentColor;
-  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.12);
-}
-
-#menu > li > a[href$="index.xml"]:hover,
-#menu > li > a[href*="/feed"]:hover {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15));
-  color: #c2410c;
-  border-color: rgba(234, 88, 12, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
-}
-
-/* Dark Mode RSS Button */
-.dark #menu > li > a[href$="index.xml"],
-.dark #menu > li > a[href*="/feed"] {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15));
-  color: #fb923c;
-  border-color: rgba(251, 146, 60, 0.3);
-}
-
-.dark #menu > li > a[href$="index.xml"]:hover,
-.dark #menu > li > a[href*="/feed"]:hover {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(234, 88, 12, 0.25));
-  color: #fdba74;
-  border-color: rgba(251, 146, 60, 0.5);
-  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3);
-}
 
 /* ===================================
    RSS Subscription Card (for homepage/sidebar)
@@ -2047,6 +2080,71 @@ strong {
 }
 
 /* ===================================
+   P1: Navigation - Single Row Optimization
+   =================================== */
+
+/* Compress navigation height for more content space */
+.header-wrapper {
+    min-height: 64px; /* Cap maximum height */
+}
+
+.nav {
+    display: flex;
+    max-height: 64px;
+    align-items: center;
+}
+
+/* Logo area - compact */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Logo switches (theme + language) - inline */
+.logo-switches {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Language switcher inline */
+.ulang-switch {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ulang-switch li {
+    display: inline-flex;
+}
+
+/* Search button compact */
+.nav-search-trigger {
+    padding: 6px 12px !important;
+    height: 36px;
+}
+
+/* Menu items alignment */
+#menu {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+}
+
+#menu > li > a {
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ===================================
    Reading Experience Optimizations
    =================================== */
 
@@ -2501,17 +2599,38 @@ html {
     border: none !important;
 }
 
-/* 6. Navigation Improvements */
+/* 6. Navigation Improvements - Single Row Layout */
+.nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    flex-wrap: nowrap !important;
+}
+
+.logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
 #menu {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex: 1 !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
 }
 
 #menu > li > a {
-    padding: 8px 14px !important;
+    padding: 8px 12px !important;
     transition: all 0.2s ease !important;
     border-radius: 8px;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 14px !important;
+    color: inherit !important;
 }
 
 #menu > li > a:hover {
@@ -2519,24 +2638,79 @@ html {
     background: rgba(14, 116, 144, 0.06);
 }
 
+.logo-switches {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
 /* RSS Button - Toned down, consistent with theme */
 #menu > li > a[href$="index.xml"] {
-    background: linear-gradient(135deg, rgba(234, 88, 12, 0.06), rgba(249, 115, 22, 0.06)) !important;
-    color: #ea580c !important;
-    border: 1.5px solid rgba(234, 88, 12, 0.2) !important;
-    font-weight: 600 !important;
+    background: transparent !important;
+    color: var(--color-primary) !important;
+    border: 1px solid rgba(234, 88, 12, 0.3) !important;
+    font-weight: 500 !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
 }
 
 #menu > li > a[href$="index.xml"]:hover {
-    background: linear-gradient(135deg, rgba(234, 88, 12, 0.12), rgba(249, 115, 22, 0.12)) !important;
-    border-color: rgba(234, 88, 12, 0.4) !important;
-    transform: translateY(-1px);
+    background: rgba(234, 88, 12, 0.08) !important;
+    border-color: rgba(234, 88, 12, 0.5) !important;
+    transform: none !important;
 }
 
 /* External Link Icon Alignment */
 .nav svg, .buttons svg {
     vertical-align: middle !important;
     margin-top: -2px;
+}
+
+/* Responsive Navigation */
+@media (max-width: 1024px) {
+    .nav {
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+    }
+
+    #menu {
+        order: 3;
+        width: 100% !important;
+        justify-content: flex-start !important;
+        overflow-x: visible !important;
+        padding-bottom: 8px !important;
+        scrollbar-width: none !important;
+    }
+
+    #menu::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .logo-switches {
+        margin-left: auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-wrap: nowrap !important;
+    }
+
+    #menu {
+        display: none !important;
+    }
+
+    .hamburger-menu {
+        display: block !important;
+    }
+
+    .logo-switches {
+        gap: 8px !important;
+    }
+
+    .nav-search-trigger__label {
+        display: none !important;
+    }
 }
 
 /* 7. Hero Section Layout - Balance Left/Right */
@@ -2571,4 +2745,183 @@ html {
 .dark .profile_panel--chat {
     background: linear-gradient(135deg, rgba(14, 116, 144, 0.08), rgba(22, 27, 40, 0.9));
     border-color: rgba(14, 116, 144, 0.2) !important;
+}
+
+/* ===================================
+   P1: Color System & Navigation Cleanup
+   =================================== */
+
+/* Unified Color Variables */
+:root {
+    --color-primary: #ea580c;        /* Orange - Primary CTA */
+    --color-primary-hover: #c2410c;
+    --color-accent: #0e7490;         /* Teal - Secondary/Accent */
+    --color-accent-hover: #0891b2;
+}
+
+/* Hide AI Chat when Offline - prevent useless UI element */
+.blog-ai-status--offline + .blog-ai-welcome,
+.blog-ai-inline:has(.blog-ai-status--offline) {
+    display: none !important;
+}
+
+/* Fallback: If offline, show minimal message or hide completely */
+.blog-ai-inline.offline-hidden {
+    display: none !important;
+}
+
+/* ===================================
+   Recent Writing Links in Profile Card
+   =================================== */
+
+.profile_recent-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.profile_recent-post {
+    display: block;
+    font-size: 0.82rem;
+    color: #64748b;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    padding: 6px 0;
+}
+
+.profile_recent-post:hover {
+    color: #0e7490;
+    transform: translateX(4px);
+}
+
+.dark .profile_recent-post {
+    color: #94a3b8;
+}
+
+.dark .profile_recent-post:hover {
+    color: #22d3ee;
+}
+
+/* ===================================
+   P2: Article List Improvements
+   =================================== */
+
+/* Tag Filter Bar (for future implementation) */
+.posts-list-filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.posts-list-filter__tag {
+    padding: 6px 14px;
+    background: rgba(14, 116, 144, 0.08);
+    color: #0e7490;
+    border: 1px solid rgba(14, 116, 144, 0.2);
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.posts-list-filter__tag:hover {
+    background: rgba(14, 116, 144, 0.15);
+    border-color: rgba(14, 116, 144, 0.4);
+    transform: translateY(-1px);
+}
+
+.posts-list-filter__tag.active {
+    background: #0e7490;
+    color: white;
+    border-color: #0e7490;
+}
+
+.dark .posts-list-filter__tag {
+    background: rgba(14, 116, 144, 0.15);
+    color: #22d3ee;
+}
+
+.dark .posts-list-filter__tag:hover {
+    background: rgba(14, 116, 144, 0.25);
+}
+
+.dark .posts-list-filter__tag.active {
+    background: #0891b2;
+    color: white;
+}
+
+/* Entry Footer Tags - More visible */
+.entry-footer {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.entry-footer .post-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(14, 116, 144, 0.08);
+    color: #0e7490;
+    border: 1px solid rgba(14, 116, 144, 0.15);
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.entry-footer .post-tag:hover {
+    background: rgba(14, 116, 144, 0.15);
+    border-color: rgba(14, 116, 144, 0.3);
+    transform: translateY(-1px);
+}
+
+.dark .entry-footer .post-tag {
+    background: rgba(14, 116, 144, 0.15);
+    color: #22d3ee;
+}
+
+.dark .entry-footer .post-tag:hover {
+    background: rgba(14, 116, 144, 0.25);
+}
+
+/* ===================================
+   Navigation Bar Fixes
+   =================================== */
+
+/* Fix 1: Remove gray scrollbar line from #menu */
+#menu {
+    overflow-x: visible !important;
+}
+
+#menu::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Fix 2: Hide the | separator in lang-switch */
+.lang-switch li:first-child:not(:has(a)) {
+    display: none !important;
+}
+
+/* Fix 3: RSS button - subtle style (remove orange border) */
+#menu a[title="RSS"],
+#menu li:last-child > a[href*="index.xml"] {
+    border: none !important;
+    background: transparent !important;
+    color: var(--secondary) !important;
+    padding: 6px 8px !important;
+}
+
+#menu a[title="RSS"]:hover,
+#menu li:last-child > a[href*="index.xml"]:hover {
+    color: #ea580c !important;
+    background: rgba(234, 88, 12, 0.08) !important;
 }

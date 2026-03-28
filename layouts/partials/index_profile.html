@@ -8,8 +8,8 @@
     {{- $travelTitle := cond (eq site.Language.Lang "zh") "Nomad Protocol" "Nomad Protocol" -}}
     {{- $travelBody := cond (eq site.Language.Lang "zh") "忠于冒险，持续在不同城市与语境中工作、学习与迁移。" "Loyalty to adventure. Working, learning, and shipping across different cities and contexts." -}}
     {{- $knowledgeTitle := cond (eq site.Language.Lang "zh") "Knowledge Base" "Knowledge Base" -}}
-    {{- $knowledgeHint := cond (eq site.Language.Lang "zh") "读取最近写作..." "Querying recent writing..." -}}
-    {{- $viewAllText := cond (eq site.Language.Lang "zh") "[查看全部]" "[VIEW_ALL]" -}}
+    {{- $knowledgeHint := cond (eq site.Language.Lang "zh") "最近写作" "Recent Writing" -}}
+    {{- $viewAllText := cond (eq site.Language.Lang "zh") "查看全部 →" "View All →" -}}
     {{- $readingLabel := cond (eq site.Language.Lang "zh") "最近写作" "Recent Writing" -}}
     {{- $localeLabel := cond (eq site.Language.Lang "zh") "所在地" "Locale" -}}
     {{- $statusLabel := cond (eq site.Language.Lang "zh") "状态" "Status" -}}
@@ -115,6 +115,15 @@
                             <span class="profile_metric__dot"></span>
                             <strong class="profile_metric__value">{{ $knowledgeHint }}</strong>
                         </div>
+                        {{- with $recentPages }}
+                        <div class="profile_recent-posts">
+                            {{- range $recentPages }}
+                            <a class="profile_recent-post" href="{{ .RelPermalink }}">
+                                <span class="profile_recent-post__title">{{ .Title }}</span>
+                            </a>
+                            {{- end }}
+                        </div>
+                        {{- end }}
                     </div>
                 </div>
             </aside>
