@@ -253,7 +253,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina 开源项目深度学习](https://nsddd.top/zh/posts/ai-projects/jina/)
 - [2025年3月思考笔记](https://nsddd.top/zh/growth/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://nsddd.top/zh/growth/posts/2024-annual-review/)
-- [🌍 旅行足迹 | Travel Footprints](https://nsddd.top/zh/travel/)
+- [关于我](https://nsddd.top/zh/about/)
+- [旅行](https://nsddd.top/zh/travel/)
 - [Kubernetes 资源与学习路径总结](https://nsddd.top/zh/ai-technology/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://nsddd.top/zh/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [探索大型语言模型（llm）：人工智能在理解与生成人类语言方面的先锋](https://nsddd.top/zh/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
@@ -308,7 +309,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [跨平台以及多架构编译设计](https://nsddd.top/zh/ai-technology/posts/cross-platform-compilation/)
 - [Kubernetes一篇快速入门的文章](https://nsddd.top/zh/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
 - [参与我们的区块链学习平台项目](https://nsddd.top/zh/ai-technology/posts/participating-in-this-project/)
-- [System.Self()](https://nsddd.top/zh/about/)
+- [分类 · CATEGORIES](https://nsddd.top/zh/categories/)
 <!-- My-Blog-ZH:END -->
 
 
