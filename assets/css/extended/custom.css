@@ -645,8 +645,7 @@
   color: #9ca3af;
 }
 
-.toc-side a:hover,
-.toc-side a.active {
+.toc-side a:hover {
   color: #0891b2;
 }
 
@@ -2278,15 +2277,6 @@ strong {
         background: rgba(148, 163, 184, 0.1);
     }
 
-    /* Active section highlighting */
-    .toc-side a.active {
-        color: var(--primary);
-        background: linear-gradient(135deg, rgba(14, 116, 144, 0.1), rgba(20, 184, 166, 0.1));
-        font-weight: 600;
-        border-left: 3px solid var(--primary);
-        padding-left: 8px;
-    }
-
     /* TOC Title */
     .toc-side__title {
         font-size: 12px;
@@ -2316,6 +2306,27 @@ strong {
 html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-height) + 20px);
+}
+
+/* ===================================
+   Reading Progress Bar - Elegant Style
+   =================================== */
+
+.reading-progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #0891b2, #14b8a6, #2dd4bf);
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px rgba(8, 145, 178, 0.5);
+}
+
+.dark .reading-progress-bar {
+    background: linear-gradient(90deg, #14b8a6, #2dd4bf, #5eead4);
+    box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
 }
 
 /* Heading anchor styles */

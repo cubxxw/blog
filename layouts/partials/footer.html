@@ -16,6 +16,11 @@
 </a>
 {{- end }}
 
+{{- /* Reading Progress Bar (only on single pages) */ -}}
+{{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
+<div class="reading-progress-bar" id="reading-progress-bar" aria-label="Reading progress"></div>
+{{- end -}}
+
 {{- partial "extend_footer.html" . }}
 
 <script>
@@ -63,6 +68,39 @@
 
 </script>
 {{- end }}
+
+{{- /* Reading Progress Bar Script */ -}}
+{{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
+<script>
+    (function() {
+        const progressBar = document.getElementById('reading-progress-bar');
+        if (!progressBar) return;
+
+        // Calculate scroll progress
+        function updateProgress() {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / windowHeight) * 100;
+            progressBar.style.width = progress + '%';
+        }
+
+        // Throttle scroll events for better performance
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateProgress();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Initial update
+        updateProgress();
+    })();
+</script>
+{{- end -}}
 
 {{- if (not site.Params.disableThemeToggle) }}
 <script>
