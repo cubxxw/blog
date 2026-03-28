@@ -144,9 +144,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [2025 June Thought Notes](https://nsddd.top/growth/posts/2025-06-thought-notes/)
 - [Metacognitive Transformation Review](https://nsddd.top/growth/posts/metacognitive-transformation-review/)
 - [2025 May Thought Notes](https://nsddd.top/growth/posts/2025-05-thought-notes/)
-- [Mem0](https://nsddd.top/ai-technology/posts/mem0/)
-- [UFO](https://nsddd.top/ai-technology/posts/ufo/)
-- [Argo Cd](https://nsddd.top/ai-technology/posts/argo-cd/)
 - [2025 April Thought Notes](https://nsddd.top/growth/posts/2025-04-thought-notes/)
 - [Ai Recommend 开源项目深度学习](https://nsddd.top/posts/ai-projects/ai-recommend/)
 - [Notebooklm 开源项目深度学习](https://nsddd.top/posts/ai-projects/notebooklm/)
@@ -160,7 +157,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina](https://nsddd.top/posts/ai-projects/jina/)
 - [2025 March Thought Notes](https://nsddd.top/growth/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://nsddd.top/growth/posts/2024-annual-review/)
-- [🌍 Travel Footprints | 旅行足迹](https://nsddd.top/travel/)
+- [Travel](https://nsddd.top/travel/)
 - [Kubernetes Resources and Learning Path Summary](https://nsddd.top/ai-technology/posts/kubernetes-learning/)
 - [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
@@ -215,7 +212,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/ai-technology/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/ai-technology/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
-- [Personal User Manual](https://nsddd.top/about/)
+- [About](https://nsddd.top/about/)
+- [分类 · CATEGORIES](https://nsddd.top/categories/)
 <!-- My-Blog-EN:END -->
 
 
