@@ -3,7 +3,7 @@ title: 'Deep Dive Into the Components of Kubernetes Etcd'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2023-09-28T20:03:35+08:00
-draft : false
+draft: true
 showtoc: true
 tocopen: false
 type: posts
@@ -15,19 +15,8 @@ categories:
   - Development
   - Blog
 description: >
-    <You can switch to the specified language>
+    Pending translation from Chinese version
 ---
-
----
-title: 'In-depth understanding of Kubernetes and other components ETCD'
-ShowRssButtonInSectionTermList: true
-cover.image:
-date: 2023-09-26T12:03:38+08:00
-draft : false
-showtoc: true
-tocopen: false
-type: posts
-author: ["Xinwei Xiong", "Me"]
 keywords: ["kubernetes", "etcd", "raft", "go"]
 tags:
    - blog

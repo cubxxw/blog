@@ -1,15 +1,111 @@
 {{- if not (.Param "hideFooter") }}
-<footer class="footer">
-    {{- if site.Copyright }}
-    <span>{{ site.Copyright | markdownify }}</span>
-    {{- else }}
-    <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ site.Title }}</a></span>
-    {{- end }}
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+<footer class="footer-custom">
+    <div class="footer-content">
+        <!-- Column 1: About -->
+        <div class="footer-column">
+            <h3 class="footer-title">
+                <span class="title-icon">📝</span> About This Blog
+            </h3>
+            <p class="footer-description">
+                A personal blog about AI technology, personal growth, and digital nomad life.
+                Sharing insights, tutorials, and reflections.
+            </p>
+            <div class="footer-social-links">
+                {{- with site.Params.social.twitter }}
+                <a href="https://twitter.com/{{ . }}" target="_blank" rel="noopener" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                </a>
+                {{- end }}
+                {{- with site.Params.social.github }}
+                <a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                {{- end }}
+                {{- with site.Params.social.linkedin }}
+                <a href="https://linkedin.com/in/{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                {{- end }}
+                {{- with site.Params.social.email }}
+                <a href="mailto:{{ . }}" aria-label="Email">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+                {{- end }}
+                {{- with .OutputFormats.Get "RSS" }}
+                <a href="{{ .RelPermalink }}" aria-label="RSS">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9 1 1 0 0 1-2 0 7 7 0 0 0-7-7 1 1 0 0 1 0-2zm0-4a13 13 0 0 1 13 13 1 1 0 0 1-2 0 11 11 0 0 0-11-11 1 1 0 0 1 0-2zm0-4a17 17 0 0 1 17 17 1 1 0 0 1-2 0 15 15 0 0 0-15-15 1 1 0 0 1 0-2z"/></svg>
+                </a>
+                {{- end }}
+            </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-column">
+            <h3 class="footer-title">
+                <span class="title-icon">🔗</span> Quick Links
+            </h3>
+            <ul class="footer-links">
+                <li><a href="{{ "/about" | absLangURL }}">👤 About Me</a></li>
+                <li><a href="{{ "/posts" | absLangURL }}">📄 All Posts</a></li>
+                <li><a href="{{ "/ai-technology" | absLangURL }}">🤖 AI Technology</a></li>
+                <li><a href="{{ "/growth" | absLangURL }}">🌱 Growth & Life</a></li>
+                <li><a href="{{ "/travel" | absLangURL }}">🌍 Travel</a></li>
+                <li><a href="{{ "/archives" | absLangURL }}">📚 Archives</a></li>
+                <li><a href="{{ "/categories" | absLangURL }}">📂 Categories</a></li>
+                <li><a href="{{ "/tags" | absLangURL }}">🏷️ Tags</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="footer-column">
+            <h3 class="footer-title">
+                <span class="title-icon">📚</span> Resources
+            </h3>
+            <ul class="footer-links">
+                <li><a href="{{ "/search" | absLangURL }}">🔍 Search</a></li>
+                <li><a href="https://github.com/cubxxw" target="_blank" rel="noopener">💼 GitHub Profile</a></li>
+                <li><a href="https://www.polarsteps.com/cubxxw" target="_blank" rel="noopener">🧳 Polarsteps</a></li>
+                <li><a href="https://github.com/adityatelange/hugo-PaperMod" target="_blank" rel="noopener">📝 PaperMod Theme</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 4: Newsletter / Contact -->
+        <div class="footer-column">
+            <h3 class="footer-title">
+                <span class="title-icon">✉️</span> Stay Connected
+            </h3>
+            <p class="footer-description">
+                Want to stay updated? Follow me on social media or subscribe via RSS.
+            </p>
+            <div class="footer-cta">
+                <a href="{{ .OutputFormats.Get "RSS" | default "/index.xml" | absLangURL }}" class="btn-rss">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 11a9 9 0 0 1 9 9 1 1 0 0 1-2 0 7 7 0 0 0-7-7 1 1 0 0 1 0-2zm0-4a13 13 0 0 1 13 13 1 1 0 0 1-2 0 11 11 0 0 0-11-11 1 1 0 0 1 0-2zm0-4a17 17 0 0 1 17 17 1 1 0 0 1-2 0 15 15 0 0 0-15-15 1 1 0 0 1 0-2z"/></svg>
+                    Subscribe RSS
+                </a>
+            </div>
+            <p class="footer-contact">
+                📧 <a href="mailto:contact@cubxxw.com">contact@cubxxw.com</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>
+                {{- if site.Copyright }}
+                    {{ site.Copyright | markdownify }}
+                {{- else }}
+                    &copy; {{ now.Year }} <strong>Xinwei Xiong (cubxxw)</strong>. All rights reserved.
+                {{- end }}
+            </p>
+            <p class="footer-powered">
+                Built with
+                <a href="https://gohugo.io/" target="_blank" rel="noopener">❤ Hugo</a> &
+                <a href="https://github.com/adityatelange/hugo-PaperMod/" target="_blank" rel="noopener">PaperMod</a>
+            </p>
+        </div>
+    </div>
 </footer>
 {{- end }}
 
@@ -23,6 +119,174 @@
 
 {{- partial "extend_footer.html" . }}
 
+<style>
+.footer-custom {
+    background: linear-gradient(180deg, var(--theme) 0%, rgba(31, 41, 55, 0.8) 100%);
+    border-top: 1px solid var(--border);
+    padding: 60px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.footer-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.title-icon {
+    font-size: 1.2rem;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--secondary);
+    margin-bottom: 16px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(148, 163, 184, 0.1);
+    color: var(--secondary);
+    transition: all 0.2s ease;
+}
+
+.footer-social-links a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.btn-rss {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f09433, #e6683c);
+    color: white !important;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-rss:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(240, 148, 51, 0.4);
+}
+
+.footer-cta {
+    margin-bottom: 16px;
+}
+
+.footer-contact {
+    font-size: 0.9rem;
+    color: var(--secondary);
+}
+
+.footer-contact a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-bottom-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--secondary);
+}
+
+.footer-powered {
+    font-size: 0.85rem !important;
+}
+
+.footer-powered a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.footer-powered a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .footer-custom {
+        padding: 40px 16px 16px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+
+<!-- Existing Scripts -->
 <script>
     let menu = document.getElementById('menu')
     if (menu) {
@@ -32,6 +296,64 @@
         }
     }
 
+    // Hamburger Menu Toggle for Mobile
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        const hamburger = document.querySelector('.hamburger-menu');
+        if (menu && hamburger) {
+            menu.classList.toggle('is-open');
+            const isOpen = menu.classList.contains('is-open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.classList.toggle('menu-open');
+        }
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('menu');
+        const hamburger = document.querySelector('.hamburger-menu');
+        if (menu && hamburger && menu.classList.contains('is-open')) {
+            const isClickInsideMenu = menu.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            if (!isClickInsideMenu && !isClickOnHamburger) {
+                toggleMenu();
+            }
+        }
+    });
+
+    // Close menu on route change (for SPA-like behavior)
+    document.querySelectorAll('#menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.querySelector('.hamburger-menu');
+            if (menu && hamburger && menu.classList.contains('is-open')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Show hamburger on mobile via CSS media query detection
+    function checkMobileMenu() {
+        const hamburger = document.querySelector('.hamburger-menu');
+        if (hamburger) {
+            if (window.innerWidth <= 768) {
+                hamburger.style.display = 'flex';
+            } else {
+                hamburger.style.display = 'none';
+                const menu = document.getElementById('menu');
+                if (menu) {
+                    menu.classList.remove('is-open');
+                }
+            }
+        }
+    }
+
+    window.addEventListener('resize', checkMobileMenu);
+    checkMobileMenu();
+
+</script>
+
+<script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();

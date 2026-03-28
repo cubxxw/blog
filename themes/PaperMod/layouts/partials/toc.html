@@ -1,6 +1,7 @@
 {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
 {{- $has_headers := ge (len $headers) 1 -}}
 {{- if $has_headers -}}
+<!-- Inline TOC (for mobile) -->
 <div class="toc">
     <details {{if (.Param "TocOpen") }} open{{ end }}>
         <summary accesskey="c" title="(Alt + C)">
@@ -94,4 +95,79 @@
         </div>
     </details>
 </div>
+
+<!-- Side Floating TOC (for desktop) -->
+<aside class="toc-side" aria-label="Table of Contents">
+    <div class="toc-side__title">{{- i18n "toc" | default "On This Page" }}</div>
+    <nav class="toc-side__nav">
+        <ul>
+            {{- range $headers -}}
+            {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
+            {{- $headerLevel := len (seq $headerLevel) -}}
+            {{- $id := index (findRE "(id=\"(.*?)\")" . 9) 0 }}
+            {{- $cleanedID := replace (replace $id "id=\"" "") "\"" "" }}
+            {{- $headerClean := replaceRE "<h[1-6].*?>((.|\n])+?)</h[1-6]>" "$1" . -}}
+            <li>
+                <a href="#{{- $cleanedID -}}" data-level="{{- $headerLevel -}}">{{- $headerClean | safeHTML -}}</a>
+            </li>
+            {{- end -}}
+        </ul>
+    </nav>
+</aside>
+
+<script>
+/* Active TOC Link Highlighting */
+(function() {
+    const tocLinks = document.querySelectorAll('.toc-side a');
+    const headings = document.querySelectorAll('.post-content h2, .post-content h3, .post-content h4');
+
+    if (!tocLinks.length || !headings.length) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -75% 0px',
+        threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+        entries.forEach((entry) => {
+            const id = entry.target.getAttribute('id');
+            if (!id) return;
+
+            const link = document.querySelector('.toc-side a[href="#' + id + '"]');
+            if (!link) return;
+
+            if (entry.isIntersecting) {
+                tocLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    headings.forEach((heading) => {
+        observer.observe(heading);
+    });
+
+    // Smooth scroll for TOC links
+    tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                const headerOffset = document.querySelector('.header-wrapper')?.offsetHeight || 0;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+})();
+</script>
 {{- end }}

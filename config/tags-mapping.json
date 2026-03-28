@@ -1,0 +1,164 @@
+{
+  "_comment": "Tags 同义词映射表 - 用于合并相同含义的 tags",
+  "_version": "1.0.0",
+  "_created": "2026-03-28",
+
+  "canonical_tags": {
+    "go": {
+      "canonical": "Go",
+      "aliases": ["golang", "Golang (GO 语言)", "Golang (GO Language)", "Go 语言 (Golang)", "GO"],
+      "description": "Go 编程语言相关",
+      "category": "编程语言"
+    },
+    "kubernetes": {
+      "canonical": "Kubernetes",
+      "aliases": ["K8s", "k8s", "Kubernetes (GO 语言)"],
+      "description": "Kubernetes 容器编排",
+      "category": "云原生"
+    },
+    "ai": {
+      "canonical": "AI",
+      "aliases": ["人工智能 (AI)", "人工智能 (Artificial Intelligence)", "AI 开源", "AI 技术"],
+      "description": "人工智能相关",
+      "category": "技术"
+    },
+    "blog": {
+      "canonical": "Blog",
+      "aliases": ["博客", "博客 (Blog)", "博客搭建 (Blog Building)"],
+      "description": "博客相关",
+      "category": "生活"
+    },
+    "devops": {
+      "canonical": "DevOps",
+      "aliases": ["运维开发", "运维"],
+      "description": "开发运维相关",
+      "category": "技术"
+    },
+    "docker": {
+      "canonical": "Docker",
+      "aliases": ["容器化"],
+      "description": "Docker 容器技术",
+      "category": "云原生"
+    },
+    "git": {
+      "canonical": "Git",
+      "aliases": ["版本控制 (Version Control)", "git"],
+      "description": "Git 版本控制",
+      "category": "工具"
+    },
+    "github": {
+      "canonical": "GitHub",
+      "aliases": ["Github"],
+      "description": "GitHub 相关",
+      "category": "工具"
+    },
+    "open-source": {
+      "canonical": "Open Source",
+      "aliases": ["开源", "开源 (Open Source)", "开源（Open Source）", "开源项目"],
+      "description": "开源相关",
+      "category": "文化"
+    },
+    "travel": {
+      "canonical": "Travel",
+      "aliases": ["旅行", "旅行 (Travel)", "冒险 (Adventure)", "旅行记录"],
+      "description": "旅行相关",
+      "category": "生活"
+    },
+    "personal-growth": {
+      "canonical": "Personal Growth",
+      "aliases": ["个人成长", "个人发展", "成长"],
+      "description": "个人成长相关",
+      "category": "生活"
+    },
+    "self-discovery": {
+      "canonical": "Self-Discovery",
+      "aliases": ["自我发现 (Self Discovery)", "自我探索", "self-discovery"],
+      "description": "自我探索相关",
+      "category": "生活"
+    },
+    "deployment": {
+      "canonical": "Deployment",
+      "aliases": ["部署", "部署 (Deployment)", "发布"],
+      "description": "部署相关",
+      "category": "技术"
+    },
+    "microservices": {
+      "canonical": "Microservices",
+      "aliases": ["微服务", "微服务 (Microservices)"],
+      "description": "微服务架构",
+      "category": "架构"
+    },
+    "cloud-native": {
+      "canonical": "Cloud Native",
+      "aliases": ["云原生", "云原生 (Cloud Native)"],
+      "description": "云原生技术",
+      "category": "云原生"
+    },
+    "automation": {
+      "canonical": "Automation",
+      "aliases": ["自动化", "自动化 (Automation)", "自动化工具 (Automation Tools)"],
+      "description": "自动化相关",
+      "category": "技术"
+    },
+    "testing": {
+      "canonical": "Testing",
+      "aliases": ["测试", "测试 (Test)", "单元测试"],
+      "description": "测试相关",
+      "category": "技术"
+    },
+    "performance": {
+      "canonical": "Performance",
+      "aliases": ["性能优化", "性能优化 (Performance Optimization)"],
+      "description": "性能优化",
+      "category": "技术"
+    },
+    "security": {
+      "canonical": "Security",
+      "aliases": ["安全", "安全性"],
+      "description": "安全相关",
+      "category": "技术"
+    },
+    "monitoring": {
+      "canonical": "Monitoring",
+      "aliases": ["监控 (Monitoring)", "可观测性"],
+      "description": "监控相关",
+      "category": "技术"
+    }
+  },
+
+  "tags_to_remove": [
+    "en",
+    "first",
+    "${{ steps.meta.outputs.tags }}",
+    "xxx/abc:${{ env.TAG }}",
+    "your-dockerhub-username/your-app-name:latest",
+    "使用正则表达式或 glob 模式过滤允许考虑的标签。例如，只允许 v1.*.* 格式的稳定版本标签。"
+  ],
+
+  "category_groups": {
+    "编程语言": ["Go", "Python", "JavaScript", "TypeScript", "Rust"],
+    "云原生": ["Kubernetes", "Docker", "Cloud Native", "Helm", "Istio"],
+    "AI/ML": ["AI", "Machine Learning", "Deep Learning", "LLM", "NLP"],
+    "技术": ["DevOps", "Automation", "Testing", "Performance", "Security", "Monitoring"],
+    "架构": ["Microservices", "System Design", "Distributed Systems"],
+    "工具": ["Git", "GitHub", "VS Code", "Linux"],
+    "开源": ["Open Source", "OpenIM", "Community"],
+    "生活": ["Blog", "Travel", "Personal Growth", "Self-Discovery", "Reading"],
+    "文化": ["Remote Work", "Team Collaboration", "Management"]
+  },
+
+  "naming_conventions": {
+    "format": "Title Case (首字母大写)",
+    "examples": ["Personal Growth", "Cloud Native", "Open Source"],
+    "chinese_format": "中文 + (英文)",
+    "chinese_examples": ["部署 (Deployment)", "微服务 (Microservices)"],
+    "rules": [
+      "1. 优先使用英文术语",
+      "2. 中文术语需附带英文翻译",
+      "3. 避免纯中文 tag（不利于国际化）",
+      "4. 避免过长描述性文字作为 tag",
+      "5. 每个 tag 应该是一个独立的概念",
+      "6. 避免 tag 嵌套（如 'blog - Annual Recap'）"
+    ]
+  }
+}

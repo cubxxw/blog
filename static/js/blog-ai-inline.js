@@ -151,9 +151,9 @@
           <div>
             <div style="display: flex; align-items: center; gap: 10px;">
               <h3>${t(language, "title")}</h3>
-              <span class="blog-ai-status blog-ai-status--offline" title="${t(language, "statusOffline")}">
+              <span class="blog-ai-status" title="${t(language, "statusOnline")}" style="display: none;">
                 <span class="blog-ai-status__dot"></span>
-                <span class="blog-ai-status__text">${t(language, "statusOffline")}</span>
+                <span class="blog-ai-status__text">${t(language, "statusOnline")}</span>
               </span>
             </div>
             <p>${t(language, "subtitle")}</p>
@@ -204,12 +204,17 @@
         clearTimeout(timeout);
 
         if (response.ok || response.status === 405) {
+          statusEl.style.display = "inline-flex";
           statusEl.className = "blog-ai-status blog-ai-status--online";
           statusEl.title = t(language, "statusOnline");
           statusEl.querySelector(".blog-ai-status__text").textContent = t(language, "statusOnline");
+        } else {
+          // Hide status indicator completely when offline
+          statusEl.style.display = "none";
         }
       } catch (e) {
-        // Keep offline status
+        // Hide status indicator on error
+        statusEl.style.display = "none";
       }
     }
 

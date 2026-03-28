@@ -88,14 +88,85 @@
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
+    .nav {
+        position: relative;
+    }
+
+    /* Hamburger Button */
+    .hamburger-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--primary);
+    }
+
+    .hamburger-menu svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Mobile Menu */
     #menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
         gap: 4px;
+        padding: 12px;
+        margin-top: 8px;
+        background: var(--theme);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        min-width: 200px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.2s ease;
+        z-index: 1000;
+    }
+
+    #menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    #menu > li {
+        width: 100%;
     }
 
     #menu > li > a {
-        padding: 6px 12px;
-        font-size: 13px;
-        gap: 6px;
+        display: flex;
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 14px;
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    #menu > li > a:hover {
+        background: rgba(148, 163, 184, 0.08);
+    }
+
+    /* Hide menu when clicking outside */
+    body.menu-open .nav #menu::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: transparent;
+        z-index: -1;
+    }
+}
+
+/* Desktop - hide hamburger */
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none;
     }
 }
 

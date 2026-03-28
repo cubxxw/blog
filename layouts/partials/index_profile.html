@@ -29,8 +29,7 @@
                 </div>
 
                 <h1 class="profile_title">
-                    <span class="profile_title__name">Xinwei Xiong</span>
-                    <span class="profile_title__accent">(Bear).</span>
+                    <span class="profile_title__name">Xinwei Xiong</span> <span class="profile_title__accent">(Bear).</span>
                 </h1>
 
                 <div class="profile_terminal" aria-live="polite">
@@ -101,18 +100,21 @@
                     {{- end }}
                 </div>
 
-                <div class="profile_metrics">
+                <div class="profile_metrics profile_metrics--grid">
                     <div class="profile_metric">
-                        <span>{{ $localeLabel }}</span>
-                        <strong>{{ $locationText }}</strong>
+                        <span class="profile_metric__label">{{ $localeLabel }}</span>
+                        <strong class="profile_metric__value">{{ $locationText }}</strong>
                     </div>
                     <div class="profile_metric">
-                        <span>{{ $statusLabel }}</span>
-                        <strong>{{ $roamingText }}</strong>
+                        <span class="profile_metric__label">{{ $statusLabel }}</span>
+                        <strong class="profile_metric__value">{{ $roamingText }}</strong>
                     </div>
-                    <div class="profile_metric">
-                        <span>{{ cond (eq site.Language.Lang "zh") "Reading" "Reading" }}</span>
-                        <strong>{{ $readingLabel }}</strong>
+                    <div class="profile_metric profile_metric--reading">
+                        <span class="profile_metric__label">{{ $readingLabel }}</span>
+                        <div class="profile_metric__status">
+                            <span class="profile_metric__dot"></span>
+                            <strong class="profile_metric__value">{{ $knowledgeHint }}</strong>
+                        </div>
                     </div>
                 </div>
             </aside>
@@ -145,6 +147,14 @@
                     <div><span>{{ $statusLabel }}</span><strong>{{ $roamingText }}</strong></div>
                 </div>
             </article>
+        </section>
+
+        <!-- AI Chat Section - Moved higher for visibility -->
+        <section class="profile_bento" style="margin-top: 24px;">
+            <article class="profile_panel profile_panel--chat" style="grid-column: 1 / -1;">
+                <div class="blog-ai-container"></div>
+            </article>
+        </section>
 
         <section class="profile_knowledge_grid" style="margin-top: 24px;">
             <article class="profile_panel profile_panel--knowledge profile_panel--ai-tech">
@@ -157,10 +167,13 @@
                 {{- $aiPages := where (where site.RegularPages "Section" "ai-technology") "Lang" site.Language.Lang -}}
                 {{- $recentAi := first 3 ($aiPages.ByDate.Reverse) -}}
                 <div class="profile_posts">
-                    {{- range $recentAi }}
-                    <a class="profile_post" href="{{ .RelPermalink }}">
+                    {{- range $index, $page := $recentAi }}
+                    <a class="profile_post {{ if eq $index 0 }}profile_post--featured{{ end }}" href="{{ .RelPermalink }}">
                         <span class="profile_post__date">{{ .Date.Format "2006-01-02" }}</span>
                         <strong>{{ .Title }}</strong>
+                        {{ if eq $index 0 }}
+                        <p class="profile_post__summary">{{ .Description | default .Summary | truncate 80 }}</p>
+                        {{ end }}
                     </a>
                     {{- end }}
                     <a href="{{ "ai-technology/" | relLangURL }}" class="profile_view_more">{{ $viewAllText }}</a>
@@ -177,10 +190,13 @@
                 {{- $growthPages := where (where site.RegularPages "Section" "growth") "Lang" site.Language.Lang -}}
                 {{- $recentGrowth := first 3 ($growthPages.ByDate.Reverse) -}}
                 <div class="profile_posts">
-                    {{- range $recentGrowth }}
-                    <a class="profile_post" href="{{ .RelPermalink }}">
+                    {{- range $index, $page := $recentGrowth }}
+                    <a class="profile_post {{ if eq $index 0 }}profile_post--featured{{ end }}" href="{{ .RelPermalink }}">
                         <span class="profile_post__date">{{ .Date.Format "2006-01-02" }}</span>
                         <strong>{{ .Title }}</strong>
+                        {{ if eq $index 0 }}
+                        <p class="profile_post__summary">{{ .Description | default .Summary | truncate 80 }}</p>
+                        {{ end }}
                     </a>
                     {{- end }}
                     <a href="{{ "growth/" | relLangURL }}" class="profile_view_more">{{ $viewAllText }}</a>
@@ -189,12 +205,7 @@
         </section>
         </section>
 
-        <!-- AI Chat Section -->
-        <section class="profile_bento" style="margin-top: 24px;">
-            <article class="profile_panel" style="grid-column: 1 / -1;">
-                <div class="blog-ai-container"></div>
-            </article>
-        </section>
+
 
         <!-- RSS Subscribe Section -->
         <section class="profile_bento" style="margin-top: 24px;">
