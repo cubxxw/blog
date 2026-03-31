@@ -159,8 +159,8 @@ exports.handler = async function handler(event) {
 
   const index = loadIndex();
   const docContext = buildContext(index, question, language);
-  const model = process.env.OPENAI_MODEL || "gpt-5.4-mini";
-  const baseUrl = process.env.OPENAI_BASE_URL || "https://api.openai.com/v1";
+  const model = process.env.OPENAI_MODEL || "qwen3.5-plus";
+  const baseUrl = process.env.OPENAI_BASE_URL || "https://coding.dashscope.aliyuncs.com/v1";
 
   const systemPrompt = [
     "You are an assistant for a Hugo blog.",

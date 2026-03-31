@@ -45,22 +45,18 @@
 
                 <div class="profile_chat_panel" id="chatPanel">
                     <div class="profile_chat_inner">
-                        <p class="profile_chat_greeting">// what do you want to know?</p>
-                        <div class="profile_chat_hints" id="chatHints">
-                            <span class="profile_chat_hint" onclick="fillChatHint(this)">recent posts</span>
-                            <span class="profile_chat_hint" onclick="fillChatHint(this)">ai topics</span>
-                            <span class="profile_chat_hint" onclick="fillChatHint(this)">summarize</span>
+                        <div class="profile_chat_messages" id="chatMessages">
+                            <p class="profile_chat_greeting">// {{ if eq site.Language.Lang "zh" }}有什么想问的？{{ else }}what do you want to know?{{ end }}</p>
+                            <div class="profile_chat_hints" id="chatHints">
+                                <span class="profile_chat_hint" onclick="fillChatHint(this)">{{ if eq site.Language.Lang "zh" }}最近文章{{ else }}recent posts{{ end }}</span>
+                                <span class="profile_chat_hint" onclick="fillChatHint(this)">{{ if eq site.Language.Lang "zh" }}AI 话题{{ else }}ai topics{{ end }}</span>
+                                <span class="profile_chat_hint" onclick="fillChatHint(this)">{{ if eq site.Language.Lang "zh" }}总结博客{{ else }}summarize{{ end }}</span>
+                            </div>
                         </div>
                         <div class="profile_chat_input_row">
-                            <textarea class="profile_chat_input" id="chatInput" rows="1" placeholder="ask anything..."></textarea>
-                            <button class="profile_chat_send" id="chatSendBtn" onclick="handleChatSend()">send →</button>
+                            <textarea class="profile_chat_input" id="chatInput" rows="1" placeholder="{{ if eq site.Language.Lang "zh" }}问任何问题...{{ else }}ask anything...{{ end }}"></textarea>
+                            <button class="profile_chat_send" id="chatSendBtn" onclick="handleChatSend()" aria-label="Send">send →</button>
                         </div>
-                        <div class="profile_chat_thinking" id="chatThinking">
-                            <span class="profile_chat_dot"></span>
-                            <span class="profile_chat_dot"></span>
-                            <span class="profile_chat_dot"></span>
-                        </div>
-                        <div class="profile_chat_response" id="chatResponse"></div>
                     </div>
                 </div>
 
@@ -277,7 +273,65 @@
                 }
             }, 42);
 
-            // Chat Panel Toggle Function
+            // --- AI Chat Panel ---
+            var chatEndpoint = '/.netlify/functions/blog-ai';
+            var chatLang = document.documentElement.getAttribute('lang') || 'en';
+            if (chatLang.startsWith('zh')) chatLang = 'zh';
+            var chatContext = [];
+            var CHAT_CTX_KEY = 'profile-chat-context';
+
+            // Load saved context
+            try {
+                var saved = localStorage.getItem(CHAT_CTX_KEY);
+                if (saved) chatContext = JSON.parse(saved);
+            } catch(e) {}
+
+            function saveChatContext() {
+                try {
+                    if (chatContext.length > 20) chatContext = chatContext.slice(-20);
+                    localStorage.setItem(CHAT_CTX_KEY, JSON.stringify(chatContext));
+                } catch(e) {}
+            }
+
+            // Simple markdown to HTML
+            function chatMd(text) {
+                if (!text) return '';
+                var d = document.createElement('div');
+                d.textContent = text;
+                var h = d.innerHTML;
+                h = h.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                     .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                     .replace(/`([^`]+)`/g, '<code>$1</code>')
+                     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+                     .replace(/\n/g, '<br>');
+                return h;
+            }
+
+            var messagesEl = document.getElementById('chatMessages');
+
+            function addChatMsg(content, isUser) {
+                var msg = document.createElement('div');
+                msg.className = 'profile_chat_msg ' + (isUser ? 'profile_chat_msg--user' : 'profile_chat_msg--ai');
+                if (isUser) {
+                    msg.textContent = content;
+                } else {
+                    msg.innerHTML = chatMd(content);
+                }
+                messagesEl.appendChild(msg);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+                return msg;
+            }
+
+            function showThinking() {
+                var el = document.createElement('div');
+                el.className = 'profile_chat_msg profile_chat_msg--ai profile_chat_thinking_msg';
+                el.innerHTML = '<span class="profile_chat_dot"></span><span class="profile_chat_dot"></span><span class="profile_chat_dot"></span>';
+                messagesEl.appendChild(el);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+                return el;
+            }
+
+            // Toggle panel
             window.toggleChatPanel = function() {
                 var panel = document.getElementById('chatPanel');
                 var chevron = document.querySelector('.profile_chat_trigger__chevron');
@@ -305,53 +359,61 @@
                 });
             }
 
-            // Fill hint text
+            // Fill hint text and auto-send
             window.fillChatHint = function(el) {
                 var input = document.getElementById('chatInput');
                 if (input) {
                     input.value = el.textContent;
-                    input.focus();
+                    handleChatSend();
                 }
             };
 
-            // Mock replies for demo
-            var mockReplies = {
-                'recent posts': 'The most recent entry is from August 2024 — a deep-dive into Kubernetes resource management and learning paths for platform engineers.',
-                'ai topics': 'The blog covers AI agents, LLM engineering, and open-source infrastructure. There are several posts on agent architecture and tool-use patterns.',
-                'summarize': 'This blog documents the intersection of systems thinking and AI tooling — written by someone building in the open, thinking through architecture while traveling.',
-            };
-
-            // Handle chat send
-            window.handleChatSend = function() {
+            // Handle chat send — real API call
+            window.handleChatSend = async function() {
                 var input = document.getElementById('chatInput');
                 var btn = document.getElementById('chatSendBtn');
-                var thinking = document.getElementById('chatThinking');
-                var response = document.getElementById('chatResponse');
                 var hints = document.getElementById('chatHints');
 
                 if (!input || !input.value.trim()) return;
 
                 var question = input.value.trim();
-
-                btn.disabled = true;
-                if (hints) hints.classList.remove('visible');
-                if (response) response.innerHTML = '';
-                if (thinking) thinking.classList.add('active');
                 input.value = '';
                 input.style.height = 'auto';
+                btn.disabled = true;
+                if (hints) hints.style.display = 'none';
 
-                var reply = mockReplies[question] || 'That\'s an interesting question about the blog. The content spans engineering depth and philosophical tangents — both seem intentional.';
+                addChatMsg(question, true);
+                var thinkingEl = showThinking();
 
-                setTimeout(function() {
-                    if (thinking) thinking.classList.remove('active');
-                    if (response) {
-                        var responseText = document.createElement('p');
-                        responseText.className = 'profile_chat_response_text visible';
-                        responseText.textContent = reply;
-                        response.appendChild(responseText);
+                try {
+                    var resp = await fetch(chatEndpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            question: question,
+                            language: chatLang,
+                            context: chatContext
+                        })
+                    });
+                    var data = await resp.json();
+
+                    if (thinkingEl) thinkingEl.remove();
+
+                    if (!resp.ok) {
+                        addChatMsg(data.error || 'Request failed', false);
+                    } else {
+                        var answer = data.answer || '';
+                        addChatMsg(answer, false);
+                        chatContext.push({ role: 'user', content: question });
+                        chatContext.push({ role: 'assistant', content: answer });
+                        saveChatContext();
                     }
-                    btn.disabled = false;
-                }, 1200 + Math.random() * 600);
+                } catch(err) {
+                    if (thinkingEl) thinkingEl.remove();
+                    addChatMsg(chatLang === 'zh' ? '网络连接失败，请稍后重试' : 'Connection failed, please try again', false);
+                }
+                btn.disabled = false;
+                input.focus();
             };
         });
     </script>
