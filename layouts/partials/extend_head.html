@@ -43,6 +43,21 @@
 }
 </style>
 
+{{- /* Preload hero/LCP image on homepage */ -}}
+{{- if .IsHome }}
+{{- with site.Params.profileMode.imageUrl }}
+<link rel="preload" href="{{ . | absURL }}" as="image" fetchpriority="high">
+{{- end }}
+{{- end }}
+
+{{- /* Preconnect hints for external resources */ -}}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+{{- end }}
+
 {{- /* Search Command Palette dependencies */ -}}
 <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 {{- $searchPaletteJS := resources.Get "js/search-palette.js" | minify | fingerprint }}

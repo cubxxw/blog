@@ -15,8 +15,10 @@
     {{- $statusLabel := cond (eq site.Language.Lang "zh") "状态" "Status" -}}
     {{- $roamingText := cond (eq site.Language.Lang "zh") "ROAMING" "ROAMING" -}}
     {{- $locationText := cond (eq site.Language.Lang "zh") "中国 / Remote" "China / Remote" -}}
-    {{- $mainPages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
-    {{- $recentPages := first 3 ($mainPages.ByDate.Reverse) -}}
+    {{- /* Get recent pages across all content sections for this language */ -}}
+    {{- $allPages := where site.RegularPages "Lang" site.Language.Lang -}}
+    {{- $allPages = where $allPages "Kind" "page" -}}
+    {{- $recentPages := first 5 ($allPages.ByDate.Reverse) -}}
     <div class="profile_fx profile_fx--grid" aria-hidden="true"></div>
     <div class="profile_fx profile_fx--glow profile_fx--left" aria-hidden="true"></div>
     <div class="profile_fx profile_fx--glow profile_fx--right" aria-hidden="true"></div>
@@ -24,10 +26,10 @@
         <section class="profile_hero">
             <div class="profile_copy">
                 <div class="profile_status_bar">
-                    <div class="profile_status">
+                    <a class="profile_status" href="{{ "/about/" | relLangURL }}" title="{{ if eq site.Language.Lang "zh" }}关于我{{ else }}About me{{ end }}">
                         <span class="profile_status__dot"></span>
                         <span>{{ $statusText }}</span>
-                    </div>
+                    </a>
                     <button class="profile_chat_trigger" id="chatTrigger" onclick="toggleChatPanel()" type="button">
                         <span class="profile_chat_trigger__icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -125,11 +127,13 @@
                                 {{- $img = $img.Resize "150x150" }}
                             {{- end }}
                         {{- end }}
-                        <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+                        <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "Xinwei Xiong profile photo" }}" title="{{ .imageTitle }}"
+                            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}"
+                            loading="eager" fetchpriority="high" decoding="async" />
                     {{- else }}
-                        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+                        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "Xinwei Xiong profile photo" }}" title="{{ .imageTitle }}"
+                            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}"
+                            loading="eager" fetchpriority="high" decoding="async" />
                     {{- end }}
                     {{- end }}
                 </div>
@@ -149,13 +153,20 @@
                             <span class="profile_metric__dot"></span>
                             <strong class="profile_metric__value">{{ $knowledgeHint }}</strong>
                         </div>
-                        {{- with $recentPages }}
+                        {{- if $recentPages }}
                         <div class="profile_recent-posts">
                             {{- range $recentPages }}
                             <a class="profile_recent-post" href="{{ .RelPermalink }}">
-                                <span class="profile_recent-post__title">{{ .Title }}</span>
+                                <span class="profile_recent-post__date">{{ .Date.Format "Jan 2" }}</span>
+                                <span class="profile_recent-post__title">{{ .Title | truncate 48 }}</span>
                             </a>
                             {{- end }}
+                        </div>
+                        {{- else }}
+                        <div class="profile_recent-posts">
+                            <a class="profile_recent-post" href="{{ "/archives/" | relLangURL }}">
+                                <span class="profile_recent-post__title">{{ if eq site.Language.Lang "zh" }}查看所有文章 →{{ else }}View all posts →{{ end }}</span>
+                            </a>
                         </div>
                         {{- end }}
                     </div>
@@ -169,7 +180,7 @@
                     <span class="profile_panel__icon">AI</span>
                     <span class="profile_panel__arrow">↗</span>
                 </div>
-                <h3>{{ $focusTitle }}</h3>
+                <h2>{{ $focusTitle }}</h2>
                 <p>{{ $focusBody }}</p>
                 <div class="profile_code">
                     <span>$ import ideas</span>
@@ -182,7 +193,7 @@
                 <div class="profile_panel__header">
                     <span class="profile_panel__icon">MAP</span>
                 </div>
-                <h3>{{ $travelTitle }}</h3>
+                <h2>{{ $travelTitle }}</h2>
                 <p>{{ $travelBody }}</p>
                 <div class="profile_meta_list">
                     <div><span>LAT/LONG</span><strong>23.1291° N, 113.2644° E</strong></div>
@@ -198,7 +209,7 @@
             <article class="profile_panel profile_panel--knowledge profile_panel--ai-tech">
                 <div class="profile_panel__topline">
                     <div>
-                        <h3>{{ if eq site.Language.Lang "zh" }}AI Technology{{ else }}AI Technology{{ end }}</h3>
+                        <h2>{{ if eq site.Language.Lang "zh" }}AI Technology{{ else }}AI Technology{{ end }}</h2>
                         <p>{{ if eq site.Language.Lang "zh" }}探索 AI Agents 与系统工程{{ else }}Exploring AI Agents & Engineering{{ end }}</p>
                     </div>
                 </div>
@@ -221,7 +232,7 @@
             <article class="profile_panel profile_panel--knowledge profile_panel--growth-life">
                 <div class="profile_panel__topline">
                     <div>
-                        <h3>{{ if eq site.Language.Lang "zh" }}Growth & Life{{ else }}Growth & Life{{ end }}</h3>
+                        <h2>{{ if eq site.Language.Lang "zh" }}Growth & Life{{ else }}Growth & Life{{ end }}</h2>
                         <p>{{ if eq site.Language.Lang "zh" }}成长复盘与数字游民见闻{{ else }}Personal Growth & Nomad Life{{ end }}</p>
                     </div>
                 </div>

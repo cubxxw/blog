@@ -1,5 +1,5 @@
 ---
-title: 'Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language'
+title: 'Exploring Large Language Models (LLMs): Pioneering AI Understanding, Generation & Human Language'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2024-05-15T20:12:29+08:00

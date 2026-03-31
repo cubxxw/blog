@@ -1,0 +1,127 @@
+{{- define "main" }}
+<div class="not-found-page">
+    <div class="not-found-content">
+        <div class="not-found-code">404</div>
+        {{- $isZh := eq site.Language.Lang "zh" }}
+        <h1 class="not-found-title">{{ if $isZh }}页面未找到{{ else }}Page Not Found{{ end }}</h1>
+        <p class="not-found-desc">{{ if $isZh }}这个页面好像去冒险了，找不回来了。让我们重新出发。{{ else }}Looks like this page went exploring without a map. Let's get you back on track.{{ end }}</p>
+        <div class="not-found-actions">
+            <a href="{{ "/" | relLangURL }}" class="not-found-btn not-found-btn--primary">← {{ if $isZh }}返回主页{{ else }}Go Home{{ end }}</a>
+            <a href="{{ "/archives/" | relLangURL }}" class="not-found-btn not-found-btn--secondary">{{ if $isZh }}浏览所有文章{{ else }}Browse All Posts{{ end }}</a>
+        </div>
+        {{- $allPages := where site.RegularPages "Lang" site.Language.Lang }}
+        {{- $recent := first 3 ($allPages.ByDate.Reverse) }}
+        {{- if $recent }}
+        <div class="not-found-recent">
+            <p class="not-found-recent-label">{{ if $isZh }}你可能感兴趣的文章：{{ else }}Recent posts you might like:{{ end }}</p>
+            <ul>
+                {{- range $recent }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{- end }}
+            </ul>
+        </div>
+        {{- end }}
+    </div>
+</div>
+<style>
+.not-found-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+.not-found-content {
+    max-width: 520px;
+}
+.not-found-code {
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #0e7490, #00b4ad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+}
+.not-found-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--primary);
+}
+.not-found-desc {
+    color: var(--secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 32px;
+}
+.not-found-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+.not-found-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.not-found-btn--primary {
+    background: linear-gradient(135deg, #0e7490, #00b4ad);
+    color: #fff;
+}
+.not-found-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(14,116,144,0.35);
+    color: #fff;
+}
+.not-found-btn--secondary {
+    border: 1px solid var(--border);
+    color: var(--primary);
+    background: var(--entry);
+}
+.not-found-btn--secondary:hover {
+    border-color: #0e7490;
+    color: #0e7490;
+}
+.not-found-recent {
+    text-align: left;
+    padding: 20px 24px;
+    background: var(--entry);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+.not-found-recent-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--secondary);
+    margin: 0 0 12px;
+    font-weight: 600;
+}
+.not-found-recent ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.not-found-recent ul a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.not-found-recent ul a:hover {
+    color: #0e7490;
+}
+</style>
+{{- end }}

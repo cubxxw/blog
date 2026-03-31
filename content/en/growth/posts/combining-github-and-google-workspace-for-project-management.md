@@ -5,7 +5,7 @@ date: 2024-02-22T14:22:21+08:00
 draft: false
 showToc: true
 tocopen: false
-type: 'posts'
+type: post
 authors: ['Xinwei Xiong', 'Me'] 
 keywords: ['GitHub', 'Google Workspace', 'Project Management', 'Development Strategies', 'Collaboration Tools']
 tags:

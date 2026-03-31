@@ -1,0 +1,23 @@
+{{- /* Use current section pages for prev/next, fallback to all regular pages */ -}}
+{{- $pages := .CurrentSection.Pages.ByDate.Reverse }}
+{{- if lt (len $pages) 2 }}
+  {{- $pages = where site.RegularPages "Lang" site.Language.Lang }}
+{{- end }}
+{{- if and (gt (len $pages) 1) (in $pages .) }}
+<nav class="paginav">
+  {{- with $pages.Next . }}
+  <a class="prev" href="{{ .Permalink }}">
+    <span class="title">« {{ i18n "prev_page" | default "Prev" }}</span>
+    <br>
+    <span>{{- .Title -}}</span>
+  </a>
+  {{- end }}
+  {{- with $pages.Prev . }}
+  <a class="next" href="{{ .Permalink }}">
+    <span class="title">{{ i18n "next_page" | default "Next" }} »</span>
+    <br>
+    <span>{{- .Title -}}</span>
+  </a>
+  {{- end }}
+</nav>
+{{- end }}

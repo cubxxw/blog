@@ -2092,10 +2092,21 @@ strong {
    =================================== */
 
 .profile_title,
+.profile_panel h2,
 .profile_panel h3,
+.profile_panel__topline h2,
 .profile_panel__topline h3,
+.rss-subscribe-card__section h2,
 .rss-subscribe-card__section h3 {
   font-weight: 600 !important;
+}
+
+/* Normalize H2 size inside profile panels to match original H3 visual size */
+.profile_panel h2,
+.profile_panel__topline h2 {
+  font-size: 1.1rem !important;
+  margin: 0 0 4px !important;
+  line-height: 1.4 !important;
 }
 
 .profile_copy,
@@ -2882,24 +2893,46 @@ html {
 .profile_recent-posts {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     margin-top: 12px;
     padding-top: 12px;
     border-top: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .profile_recent-post {
-    display: block;
-    font-size: 0.82rem;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 0.8rem;
     color: #64748b;
     text-decoration: none;
     transition: all 0.2s ease;
-    padding: 6px 0;
+    padding: 5px 8px;
+    border-radius: 8px;
+    line-height: 1.4;
 }
 
 .profile_recent-post:hover {
     color: #0e7490;
-    transform: translateX(4px);
+    background: rgba(14, 116, 144, 0.05);
+    transform: translateX(3px);
+}
+
+.profile_recent-post__date {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    white-space: nowrap;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    flex-shrink: 0;
+}
+
+.profile_recent-post__title {
+    color: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
 }
 
 .dark .profile_recent-post {
@@ -2908,6 +2941,7 @@ html {
 
 .dark .profile_recent-post:hover {
     color: #22d3ee;
+    background: rgba(14, 116, 144, 0.08);
 }
 
 /* ===================================
@@ -4290,4 +4324,216 @@ html, body {
 
 .posts-grid .post-entry[data-section="growth"]:hover {
     border-left-color: rgba(234, 179, 8, 0.5);
+}
+
+/* ===================================
+   Wide Screen Layout (1440px+)
+   Increase content width on large monitors to reduce excessive whitespace
+   =================================== */
+
+@media (min-width: 1400px) {
+    :root {
+        --nav-width: 1320px;
+        --main-width: 840px;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --nav-width: 1500px;
+        --main-width: 920px;
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --nav-width: 1760px;
+        --main-width: 1060px;
+    }
+}
+
+/* Profile shell: allow wider layout on large screens */
+@media (min-width: 1400px) {
+    .profile_shell {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .profile_hero {
+        grid-template-columns: 60% 37%;
+        gap: 3%;
+    }
+}
+
+@media (min-width: 1920px) {
+    .profile_shell {
+        max-width: 1600px;
+    }
+}
+
+/* ===================================
+   Mobile Text Overflow Fix (375px)
+   Fix intro bio overflow on narrow phones
+   =================================== */
+
+@media (max-width: 400px) {
+    .profile_title__name {
+        font-size: 2.2rem !important;
+    }
+
+    .profile_title__accent {
+        font-size: 1.3rem !important;
+    }
+
+    .profile_summary {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .profile_terminal {
+        font-size: 0.9rem;
+        overflow: hidden;
+        white-space: normal;
+    }
+
+    #profile-typing-text {
+        display: inline;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .profile_copy {
+        padding: 24px 20px !important;
+    }
+
+    .profile_intro {
+        font-size: 0.88rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+/* ===================================
+   Status Badge - Clickable Link
+   =================================== */
+
+.profile_status {
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-decoration: none !important;
+}
+
+.profile_status:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+a.profile_status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ===================================
+   AI Chat Panel Consistency Fixes
+   =================================== */
+
+/* Ensure chat panel hints show on open */
+.profile_chat_panel.open .profile_chat_hints {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+}
+
+/* Consistent send button with site color palette */
+.profile_chat_send {
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #0e7490, #14b8a6);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.profile_chat_send:hover:not(:disabled) {
+    background: linear-gradient(135deg, #0891b2, #0e9f8d);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 116, 144, 0.3);
+}
+
+.profile_chat_send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Chat response text - matches blog font style */
+.profile_chat_response_text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--primary);
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: color-mix(in srgb, var(--profile-accent, #0e7490) 5%, var(--theme, white));
+    border-radius: 12px;
+    border-left: 3px solid var(--profile-accent, #0e7490);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.profile_chat_response_text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Thinking dots - consistent color */
+.profile_chat_thinking {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 8px 0;
+}
+
+.profile_chat_thinking.active {
+    display: flex;
+}
+
+.profile_chat_dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--profile-accent, #0e7490);
+    opacity: 0.4;
+    animation: chat-dot-bounce 1.4s ease-in-out infinite;
+}
+
+.profile_chat_dot:nth-child(1) { animation-delay: 0s; }
+.profile_chat_dot:nth-child(2) { animation-delay: 0.2s; }
+.profile_chat_dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes chat-dot-bounce {
+    0%, 80%, 100% { opacity: 0.4; transform: scale(0.85); }
+    40% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Mobile: compact AI panel */
+@media (max-width: 600px) {
+    .profile_chat_inner {
+        padding: 16px 18px;
+    }
+
+    .profile_chat_send {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
 }

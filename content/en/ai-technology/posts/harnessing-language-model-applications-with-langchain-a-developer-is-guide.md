@@ -1,11 +1,10 @@
 ---
-title: 'Harnessing Language Model Applications with LangChain: A Developer is s Guide'
+title: 'Harnessing Language Model Applications with LangChain: A Developer''s Guide'
 showRssButtonInSectionTermList: true
-date: '2024-05-22T21:37:34+08:00'  # Ensure proper string formatting
+date: '2024-05-22T21:37:34+08:00'
 draft: false
-showToc: true  # Adjusted for consistency in camelCase
+showToc: true
 tocOpen: false
-type: 'posts'
 authors: ['Xinwei Xiong', 'Me']
 keywords:
   - 'LangChain'
