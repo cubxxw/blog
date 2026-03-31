@@ -192,7 +192,6 @@
             class="hamburger-menu"
             aria-label="Toggle menu"
             aria-expanded="false"
-            style="display: none;"
             onclick="toggleMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -209,22 +208,13 @@
 function toggleMenu() {
     const menu = document.getElementById('menu');
     const hamburger = document.querySelector('.hamburger-menu');
-    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+    const isOpen = menu.classList.contains('mobile-open');
 
-    if (isExpanded) {
-        menu.style.display = 'none';
+    if (isOpen) {
+        menu.classList.remove('mobile-open');
         hamburger.setAttribute('aria-expanded', 'false');
     } else {
-        menu.style.display = 'flex';
-        menu.style.flexDirection = 'column';
-        menu.style.position = 'absolute';
-        menu.style.top = '64px';
-        menu.style.right = '0';
-        menu.style.background = 'var(--theme)';
-        menu.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-        menu.style.borderRadius = '8px';
-        menu.style.padding = '12px';
-        menu.style.zIndex = '1000';
+        menu.classList.add('mobile-open');
         hamburger.setAttribute('aria-expanded', 'true');
     }
 }
@@ -234,8 +224,8 @@ document.addEventListener('click', function(event) {
     const menu = document.getElementById('menu');
     const hamburger = document.querySelector('.hamburger-menu');
 
-    if (menu && !menu.contains(event.target) && !hamburger.contains(event.target)) {
-        menu.style.display = '';
+    if (menu && hamburger && !menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.classList.remove('mobile-open');
         hamburger.setAttribute('aria-expanded', 'false');
     }
 });

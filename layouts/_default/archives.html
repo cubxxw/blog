@@ -1,54 +1,105 @@
 {{- define "main" }}
 
-<header class="page-header">
-  <h1>{{ .Title }}</h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description }}
-  </div>
-  {{- end }}
-  <div class="ai-project-link">
-    <a href="{{ "/categories/ai-open-source/" | relLangURL }}" class="ai-project-button">
-      🤖 探索AI开源项目学习笔记
-    </a>
-  </div>
-</header>
-
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-
 {{- if .Site.Params.ShowAllPagesInArchive }}
 {{- $pages = site.RegularPages }}
 {{- end }}
 
-{{- range $pages.GroupByPublishDate "2006" }}
-{{- if ne .Key "0001" }}
-<div class="archive-year">
-  <h2 class="archive-year-header">
-    {{- replace .Key "0001" "" }}<sup class="archive-count">&nbsp;&nbsp;{{ len .Pages }}</sup>
-  </h2>
-  {{- range .Pages.GroupByDate "January" }}
-  <div class="archive-month">
-    <h3 class="archive-month-header">{{- .Key }}<sup class="archive-count">&nbsp;&nbsp;{{ len .Pages }}</sup></h3>
-    <div class="archive-posts">
-      {{- range .Pages }}
-      {{- if eq .Kind "page" }}
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">
-          {{- .Title | markdownify }}
-          {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
-        </h3>
-        <div class="archive-meta">
-          {{- partial "post_meta.html" . -}}
-        </div>
-        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-      </div>
-      {{- end }}
-      {{- end }}
-    </div>
-  </div>
+{{- $totalPosts := len $pages }}
+{{- $groups := $pages.GroupByPublishDate "2006" }}
+{{- $totalYears := 0 }}
+{{- range $groups }}
+  {{- if ne .Key "0001" }}
+    {{- $totalYears = add $totalYears 1 }}
   {{- end }}
-</div>
-{{- end }}
 {{- end }}
 
-{{- end }}{{/* end main */}} 
+{{- $archiveTitle := cond (eq site.Language.Lang "zh") "文章归档" "Article Archives" }}
+{{- $totalLabel := cond (eq site.Language.Lang "zh") "篇文章" "articles" }}
+{{- $yearLabel := cond (eq site.Language.Lang "zh") "年" "years" }}
+{{- $jumpLabel := cond (eq site.Language.Lang "zh") "跳转到" "Jump to" }}
+
+<div class="archives-page">
+  {{/* Hero Banner */}}
+  <header class="archives-hero">
+    <div class="archives-hero__content">
+      <h1 class="archives-hero__title">{{ $archiveTitle }}</h1>
+      {{- if .Description }}
+      <p class="archives-hero__desc">{{ .Description }}</p>
+      {{- end }}
+      <div class="archives-hero__stats">
+        <div class="archives-stat">
+          <span class="archives-stat__number">{{ $totalPosts }}</span>
+          <span class="archives-stat__label">{{ $totalLabel }}</span>
+        </div>
+        <div class="archives-stat__divider"></div>
+        <div class="archives-stat">
+          <span class="archives-stat__number">{{ $totalYears }}</span>
+          <span class="archives-stat__label">{{ $yearLabel }}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{/* Year Quick Navigation */}}
+  <nav class="archives-year-nav" aria-label="{{ $jumpLabel }}">
+    <span class="archives-year-nav__label">{{ $jumpLabel }}</span>
+    {{- range $groups }}
+    {{- if ne .Key "0001" }}
+    <a class="archives-year-nav__link" href="#year-{{ .Key }}">{{ .Key }}</a>
+    {{- end }}
+    {{- end }}
+  </nav>
+
+  {{/* Timeline */}}
+  <div class="archives-timeline">
+    {{- range $groups }}
+    {{- if ne .Key "0001" }}
+    <section class="archives-year" id="year-{{ .Key }}">
+      <div class="archives-year__header">
+        <h2 class="archives-year__title">{{ .Key }}</h2>
+        <span class="archives-year__count">{{ len .Pages }}</span>
+      </div>
+
+      {{- range .Pages.GroupByDate "January" }}
+      <div class="archives-month">
+        <h3 class="archives-month__title">
+          <span class="archives-month__name">{{ .Key }}</span>
+          <span class="archives-month__count">{{ len .Pages }}</span>
+        </h3>
+        <div class="archives-month__posts">
+          {{- range .Pages }}
+          {{- if eq .Kind "page" }}
+          <article class="archives-post">
+            <div class="archives-post__dot"></div>
+            <div class="archives-post__content">
+              <a class="archives-post__link" href="{{ .Permalink }}">
+                <time class="archives-post__date" datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "01-02" }}
+                </time>
+                <span class="archives-post__title">
+                  {{ .Title | markdownify }}
+                  {{- if .Draft }}<span class="archives-post__draft">draft</span>{{- end }}
+                </span>
+                {{- with .Params.tags }}
+                <span class="archives-post__tags">
+                  {{- range first 2 . }}
+                  <span class="archives-post__tag">{{ . }}</span>
+                  {{- end }}
+                </span>
+                {{- end }}
+              </a>
+            </div>
+          </article>
+          {{- end }}
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+    </section>
+    {{- end }}
+    {{- end }}
+  </div>
+</div>
+
+{{- end }}{{/* end main */}}
