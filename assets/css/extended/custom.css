@@ -1618,62 +1618,99 @@ strong {
    RSS Subscription Card (for homepage/sidebar)
    =================================== */
 
+/* ── Subscribe Card ── */
 .rss-subscribe-card {
   display: grid;
   gap: 0;
   margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  border-radius: 16px;
+  border: 1px solid rgba(14, 116, 144, 0.15);
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.03) 0%, rgba(20, 184, 166, 0.02) 100%);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rss-subscribe-card:hover {
+  border-color: rgba(14, 116, 144, 0.28);
+  box-shadow: 0 4px 24px rgba(14, 116, 144, 0.08);
+}
+
+.dark .rss-subscribe-card {
+  border-color: rgba(34, 211, 238, 0.12);
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.06) 0%, rgba(20, 184, 166, 0.03) 100%);
+}
+
+.dark .rss-subscribe-card:hover {
+  border-color: rgba(34, 211, 238, 0.25);
+  box-shadow: 0 4px 24px rgba(14, 116, 144, 0.12);
 }
 
 .rss-subscribe-card__teaser {
-  display: grid;
-  gap: 12px;
-  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 28px;
 }
 
-.rss-subscribe-card__compact-note {
+.rss-subscribe-card__teaser-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0e7490, #0891b2);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(14, 116, 144, 0.25);
+}
+
+.rss-subscribe-card__teaser-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.rss-subscribe-card__teaser-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.rss-subscribe-card__teaser-text h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700 !important;
+  color: #0e7490;
+  letter-spacing: -0.01em;
+}
+
+.dark .rss-subscribe-card__teaser-text h3 {
+  color: #22d3ee;
+}
+
+.rss-subscribe-card__teaser-text p {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--secondary);
-  opacity: 0.88;
+  line-height: 1.5;
 }
 
 .rss-subscribe-card__actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-shrink: 0;
   gap: 10px;
-}
-
-.rss-subscribe-card__choice {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--secondary);
 }
 
 .rss-subscribe-card__panel[hidden] {
   display: none !important;
 }
 
-.rss-subscribe-card__section:first-child {
-  padding: 28px 28px 24px 24px;
-  border-left: 3px solid #0e7490;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
-  background: linear-gradient(135deg, rgba(14, 116, 144, 0.04), rgba(20, 184, 166, 0.02));
+.rss-subscribe-card__section {
+  padding: 28px;
+  border-top: 1px solid rgba(14, 116, 144, 0.1);
 }
 
-.dark .rss-subscribe-card__section:first-child {
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, rgba(14, 116, 144, 0.08), rgba(20, 184, 166, 0.05));
-}
-
-.rss-subscribe-card__section:last-child {
-  padding: 24px 28px 28px 24px;
+.dark .rss-subscribe-card__section {
+  border-top-color: rgba(34, 211, 238, 0.08);
 }
 
 .rss-subscribe-card__section h3 {
@@ -1684,6 +1721,11 @@ strong {
   font-size: 1rem;
   font-weight: 600 !important;
   letter-spacing: -0.01em;
+  color: #0e7490;
+}
+
+.dark .rss-subscribe-card__section h3 {
+  color: #22d3ee;
 }
 
 .rss-subscribe-card__panel-head {
@@ -1693,24 +1735,6 @@ strong {
   gap: 12px;
 }
 
-.rss-subscribe-card__section:first-child h3 {
-  color: #0e7490;
-}
-
-.rss-subscribe-card__section:first-child h3::after {
-  content: '';
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: currentColor;
-  box-shadow: 0 0 8px rgba(14, 116, 144, 0.28);
-}
-
-.rss-subscribe-card__section:last-child h3 {
-  color: var(--primary);
-}
-
 .rss-subscribe-card__section p {
   margin: 0 0 16px;
   color: var(--secondary);
@@ -1718,24 +1742,31 @@ strong {
   line-height: 1.65;
 }
 
-.rss-subscribe-card__divider {
-  display: none;
-}
-
 .rss-subscribe-card__back {
   border: 0;
-  padding: 7px 12px;
+  padding: 7px 14px;
   border-radius: 999px;
-  background: rgba(148, 163, 184, 0.12);
-  color: var(--secondary);
+  background: rgba(14, 116, 144, 0.08);
+  color: #0e7490;
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .rss-subscribe-card__back:hover {
-  background: rgba(148, 163, 184, 0.18);
-  color: var(--primary);
+  background: rgba(14, 116, 144, 0.15);
+  color: #0c5e75;
+}
+
+.dark .rss-subscribe-card__back {
+  background: rgba(34, 211, 238, 0.1);
+  color: #22d3ee;
+}
+
+.dark .rss-subscribe-card__back:hover {
+  background: rgba(34, 211, 238, 0.18);
+  color: #67e8f9;
 }
 
 .rss-subscribe-card h3::before {
@@ -1743,34 +1774,37 @@ strong {
   display: none !important;
 }
 
+/* ── Subscribe Buttons ── */
 .rss-subscribe-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 44px;
-  padding: 10px 20px;
+  min-height: 42px;
+  padding: 9px 20px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #0e7490, #0891b2);
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  box-shadow: 0 4px 16px rgba(14, 116, 144, 0.22);
+  box-shadow: 0 2px 10px rgba(14, 116, 144, 0.2);
+  white-space: nowrap;
 }
 
 .rss-subscribe-button--ghost {
   background: transparent;
   color: #0e7490;
-  border: 1px solid rgba(14, 116, 144, 0.18);
+  border: 1.5px solid rgba(14, 116, 144, 0.22);
   box-shadow: none;
 }
 
 .rss-subscribe-button--ghost:hover {
   background: rgba(14, 116, 144, 0.08);
+  border-color: rgba(14, 116, 144, 0.35);
   color: #0c5e75;
   box-shadow: none;
 }
@@ -1778,7 +1812,7 @@ strong {
 .rss-subscribe-button:hover {
   transform: translateY(-1px);
   background: linear-gradient(135deg, #0891b2, #14b8a6);
-  box-shadow: 0 8px 24px rgba(14, 116, 144, 0.28);
+  box-shadow: 0 6px 20px rgba(14, 116, 144, 0.25);
 }
 
 .rss-subscribe-button svg {
@@ -1787,9 +1821,10 @@ strong {
   flex-shrink: 0;
 }
 
+/* ── Newsletter Form ── */
 .newsletter-form {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .newsletter-form__field {
@@ -1814,6 +1849,8 @@ strong {
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--theme) 94%, white 6%);
   color: var(--primary);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .newsletter-form__input:focus,
@@ -1827,7 +1864,7 @@ strong {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.6;
   color: var(--secondary);
 }
@@ -1855,7 +1892,7 @@ strong {
 
 .newsletter-form__status {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   line-height: 1.6;
   color: var(--secondary);
 }
@@ -1872,17 +1909,14 @@ strong {
   color: #b91c1c;
 }
 
-.dark .rss-subscribe-card__section:first-child h3 {
-  color: #22d3ee;
-}
-
 .dark .rss-subscribe-button--ghost {
   color: #22d3ee;
-  border-color: rgba(34, 211, 238, 0.26);
+  border-color: rgba(34, 211, 238, 0.22);
 }
 
 .dark .rss-subscribe-button--ghost:hover {
   background: rgba(14, 116, 144, 0.14);
+  border-color: rgba(34, 211, 238, 0.38);
   color: #67e8f9;
 }
 
@@ -1900,19 +1934,38 @@ strong {
 }
 
 @media (max-width: 640px) {
-  .rss-subscribe-card__teaser,
-  .rss-subscribe-card__section:first-child,
-  .rss-subscribe-card__section:last-child {
-    padding-left: 18px;
-    padding-right: 18px;
+  .rss-subscribe-card__teaser {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .rss-subscribe-card__teaser-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .rss-subscribe-card__teaser-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .rss-subscribe-card__actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .rss-subscribe-card__actions .rss-subscribe-button {
+    width: 100%;
+  }
+
+  .rss-subscribe-card__section {
+    padding: 20px;
   }
 
   .rss-subscribe-card__panel-head {
     align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .rss-subscribe-card__actions {
     flex-direction: column;
   }
 }

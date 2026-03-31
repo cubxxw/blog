@@ -150,7 +150,7 @@ languages:
           pageRef: /about
           weight: 10
         - identifier: posts
-          name: 文章
+          name: Posts
           url: /posts/
           pageRef: /posts
           weight: 17
