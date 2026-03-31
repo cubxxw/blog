@@ -1,0 +1,168 @@
+{{- define "main" }}
+
+{{- $lang := .Lang }}
+{{- $isZh := eq $lang "zh" }}
+
+{{/* Aggregate ALL articles across all sections */}}
+{{- $allPages := where (where site.RegularPages "Type" "posts") "Lang" $lang }}
+{{- $allPages = $allPages.ByDate.Reverse }}
+{{- $totalCount := len $allPages }}
+
+{{/* Build tag frequency map */}}
+{{- $tagCounts := dict }}
+{{- range $allPages }}
+  {{- range .Params.tags }}
+    {{- $count := index $tagCounts . | default 0 }}
+    {{- $tagCounts = merge $tagCounts (dict . (add $count 1)) }}
+  {{- end }}
+{{- end }}
+
+{{/* Sort tags by frequency — collect top 15 */}}
+{{- $tagPairs := slice }}
+{{- range $tag, $count := $tagCounts }}
+  {{- $tagPairs = $tagPairs | append (dict "tag" $tag "count" $count) }}
+{{- end }}
+{{- $sortedTags := sort $tagPairs "count" "desc" }}
+{{- $topTags := first 15 $sortedTags }}
+
+{{/* Section counts */}}
+{{- $aiTechCount := 0 }}
+{{- $growthCount := 0 }}
+{{- $projectsCount := 0 }}
+{{- range $allPages }}
+  {{- if eq .Section "ai-technology" }}
+    {{- $aiTechCount = add $aiTechCount 1 }}
+  {{- else if eq .Section "growth" }}
+    {{- $growthCount = add $growthCount 1 }}
+  {{- else }}
+    {{- $projectsCount = add $projectsCount 1 }}
+  {{- end }}
+{{- end }}
+
+{{/* i18n labels */}}
+{{- $filterAllLabel := cond $isZh "全部" "All" }}
+{{- $filterCategoryLabel := cond $isZh "分类" "Category" }}
+{{- $filterTagsLabel := cond $isZh "标签" "Tags" }}
+{{- $filterSortLabel := cond $isZh "排序" "Sort" }}
+{{- $filterNewest := cond $isZh "最新优先" "Newest" }}
+{{- $filterOldest := cond $isZh "最早优先" "Oldest" }}
+{{- $filterClear := cond $isZh "清除筛选" "Clear" }}
+{{- $noResults := cond $isZh "没有匹配的文章" "No articles match your filters" }}
+{{- $articlesLabel := cond $isZh "篇文章" "articles" }}
+
+<div class="posts-page">
+
+  {{/* Hero Header */}}
+  <header class="posts-hero">
+    <div class="posts-hero__content">
+      <h1 class="posts-hero__title">{{ .Title }}</h1>
+      {{- if .Description }}
+      <p class="posts-hero__desc">{{ .Description }}</p>
+      {{- end }}
+      <div class="posts-hero__stats">
+        <span class="posts-hero__count" id="posts-visible-count">{{ $totalCount }}</span>
+        <span class="posts-hero__label">{{ $articlesLabel }}</span>
+      </div>
+    </div>
+  </header>
+
+  {{/* Filter Bar */}}
+  <div class="posts-filter" id="posts-filter">
+
+    {{/* Category Chips */}}
+    <div class="posts-filter__section">
+      <span class="posts-filter__label">{{ $filterCategoryLabel }}</span>
+      <div class="posts-filter__chips" id="filter-categories">
+        <button class="posts-filter__chip posts-filter__chip--active" data-category="all" aria-pressed="true">
+          {{ $filterAllLabel }} <span class="posts-filter__chip-count">{{ $totalCount }}</span>
+        </button>
+        <button class="posts-filter__chip" data-category="ai-technology" aria-pressed="false">
+          AI Technology <span class="posts-filter__chip-count">{{ $aiTechCount }}</span>
+        </button>
+        <button class="posts-filter__chip" data-category="growth" aria-pressed="false">
+          Growth & Life <span class="posts-filter__chip-count">{{ $growthCount }}</span>
+        </button>
+        <button class="posts-filter__chip" data-category="posts" aria-pressed="false">
+          AI Projects <span class="posts-filter__chip-count">{{ $projectsCount }}</span>
+        </button>
+      </div>
+    </div>
+
+    {{/* Tags */}}
+    <div class="posts-filter__section">
+      <span class="posts-filter__label">{{ $filterTagsLabel }}</span>
+      <div class="posts-filter__chips posts-filter__chips--tags" id="filter-tags">
+        {{- range $topTags }}
+        <button class="posts-filter__chip posts-filter__chip--tag" data-tag="{{ .tag }}" aria-pressed="false">
+          {{ .tag }}
+        </button>
+        {{- end }}
+      </div>
+    </div>
+
+    {{/* Sort + Active Filter */}}
+    <div class="posts-filter__section posts-filter__section--controls">
+      <div class="posts-filter__sort">
+        <label for="filter-sort" class="posts-filter__label">{{ $filterSortLabel }}</label>
+        <select id="filter-sort" class="posts-filter__select">
+          <option value="newest">{{ $filterNewest }}</option>
+          <option value="oldest">{{ $filterOldest }}</option>
+        </select>
+      </div>
+      <button class="posts-filter__clear" id="filter-clear" style="display:none;" aria-label="{{ $filterClear }}">
+        {{ $filterClear }}
+      </button>
+    </div>
+  </div>
+
+  {{/* Posts Grid */}}
+  <div class="posts-grid" id="posts-grid" data-no-results="{{ $noResults }}">
+    {{- range $allPages }}
+    {{- $section := .Section }}
+    {{- $sectionDisplay := "AI Projects" }}
+    {{- $sectionClass := "posts-badge--projects" }}
+    {{- if eq $section "ai-technology" }}
+      {{- $sectionDisplay = "AI Technology" }}
+      {{- $sectionClass = "posts-badge--ai" }}
+    {{- else if eq $section "growth" }}
+      {{- $sectionDisplay = "Growth & Life" }}
+      {{- $sectionClass = "posts-badge--growth" }}
+    {{- end }}
+    <article class="post-entry"
+      data-section="{{ $section }}"
+      data-tags="{{ delimit .Params.tags "," }}"
+      data-date="{{ .Date.Format "2006-01-02" }}">
+      <header class="entry-header">
+        <div class="post-entry__top">
+          <span class="posts-badge {{ $sectionClass }}">{{ $sectionDisplay }}</span>
+          <time class="post-entry__date">{{ .Date.Format "2006-01-02" }}</time>
+        </div>
+        <h2>
+          {{ .Title }}
+          {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+        </h2>
+      </header>
+      {{- if (ne (.Param "hideSummary") true) }}
+      <div class="entry-content">
+        <p>{{ .Summary | plainify | htmlUnescape | truncate 120 }}</p>
+      </div>
+      {{- end }}
+      <footer class="entry-footer">
+        {{- with .Params.tags }}
+        <div class="post-entry__tags">
+          {{- range first 3 . }}
+          <span class="post-tag">{{ . }}</span>
+          {{- end }}
+        </div>
+        {{- end }}
+      </footer>
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
+    {{- end }}
+  </div>
+
+</div>
+
+<script src="{{ "js/posts-filter.js" | relURL }}" defer></script>
+
+{{- end }}

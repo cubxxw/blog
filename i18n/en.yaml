@@ -31,3 +31,24 @@
 
 - id: code_copied
   translation: "copied!"
+
+- id: filter_all
+  translation: "All"
+
+- id: filter_category
+  translation: "Category"
+
+- id: filter_tags
+  translation: "Tags"
+
+- id: filter_newest
+  translation: "Newest"
+
+- id: filter_oldest
+  translation: "Oldest"
+
+- id: filter_clear
+  translation: "Clear"
+
+- id: filter_no_results
+  translation: "No articles match your filters"

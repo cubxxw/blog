@@ -31,3 +31,24 @@
 
 - id: code_copied
   translation: "已复制！"
+
+- id: filter_all
+  translation: "全部"
+
+- id: filter_category
+  translation: "分类"
+
+- id: filter_tags
+  translation: "标签"
+
+- id: filter_newest
+  translation: "最新优先"
+
+- id: filter_oldest
+  translation: "最早优先"
+
+- id: filter_clear
+  translation: "清除筛选"
+
+- id: filter_no_results
+  translation: "没有匹配的文章"
