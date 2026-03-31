@@ -138,7 +138,7 @@ languages:
     disabled: false
     languageCode: "en-us"
     languageDirection: "ltr"
-    title: "Xinwei Xiong(cubxxw)'s English blog"
+    title: "Xinwei Xiong (cubxxw) - AI, Open Source & Nomad Blog"
     contentDir: "content/en"
     languageName: English
     weight: 1
@@ -172,6 +172,7 @@ languages:
           url: /index.xml
           weight: 35
     params:
+      description: "Tech blog by Xinwei Xiong — AI entrepreneur, open source contributor and digital nomad sharing Kubernetes, Go, AI projects and travel."
       profileMode:
         # Enabled or not
         enabled: true
@@ -182,7 +183,7 @@ languages:
         imageUrl: ../assets/cubxxw-image.jpg
         imageWidth: 120
         imageHeight: 120
-        # imageTitle: My name is bear
+        imageTitle: "Xinwei Xiong profile photo"
         buttons:
           - name: AI Technology
             url: ai-technology

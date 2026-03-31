@@ -2,6 +2,13 @@
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 
+{{- /* Preconnect hints for external resources */ -}}
+<link rel="preconnect" href="https://www.googletagmanager.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+
 {{- /* SEO Structured Data (JSON-LD) */ -}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") -}}
 {{- partial "seo/structured-data.html" . -}}

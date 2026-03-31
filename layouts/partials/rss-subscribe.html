@@ -63,6 +63,7 @@
             name="email"
             placeholder="{{ $emailPlaceholder }}"
             autocomplete="email"
+            aria-label="Email address"
             required
           >
         </label>
@@ -82,7 +83,7 @@
           <span>{{ $emailConsent }}</span>
         </label>
 
-        <input type="text" name="company" class="newsletter-form__honeypot" tabindex="-1" autocomplete="off">
+        <input type="text" name="company" class="newsletter-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Do not fill this field">
 
         <button type="submit" class="rss-subscribe-button newsletter-form__submit">
           {{ $emailOpenText }}

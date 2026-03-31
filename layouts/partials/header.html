@@ -39,6 +39,7 @@
 </script>
 {{- end }}
 
+<a class="skip-link" href="#main-content" aria-label="Skip to main content">Skip to main content</a>
 <div class="header-wrapper">
 <header class="header">
     <nav class="nav">
@@ -61,10 +62,10 @@
                             {{- $img = $img.Resize "x30" }}
                         {{- end }}
                     {{- end }}
-                    <img src="{{ $img.Permalink }}" alt="" aria-label="logo"
+                    <img src="{{ $img.Permalink }}" alt="{{ $label_text }} logo"
                         height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- else }}
-                <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
+                <img src="{{- site.Params.label.icon | absURL -}}" alt="{{ $label_text }} logo"
                     height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- end -}}
                 {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
@@ -127,7 +128,7 @@
             </button>
 
             {{- if (not site.Params.disableThemeToggle) }}
-            <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                 <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">

@@ -2946,3 +2946,197 @@ html {
         white-space: nowrap !important;
     }
 }
+
+/* ===================================
+   Accessibility & Mobile Fixes
+   =================================== */
+
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 8px 16px;
+    background: var(--theme);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 8px;
+}
+
+/* Fix mobile horizontal overflow */
+html, body {
+    overflow-x: hidden;
+}
+
+.profile_shell,
+.profile_hero,
+.profile_bento,
+.profile_knowledge_grid {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .profile_shell {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .profile_bento {
+        grid-template-columns: 1fr !important;
+    }
+
+    .profile_meta_list div {
+        word-break: break-word;
+    }
+
+    /* Improve touch target sizes on mobile */
+    .social-icons a {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buttons .button {
+        min-height: 44px;
+        padding: 10px 16px;
+    }
+
+    #menu li a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .profile_post {
+        padding: 12px;
+        min-height: 44px;
+    }
+
+    .profile_view_more {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Ensure readable font sizes on mobile */
+    .profile_code span,
+    .profile_meta_list span,
+    .profile_metric__label,
+    .profile_status span,
+    .profile_status_bar,
+    .profile_post__date,
+    .profile_terminal__prompt,
+    .profile_panel p,
+    .rss-subscribe-card__compact-note,
+    .rss-subscribe-card__choice {
+        font-size: 14px !important;
+    }
+
+    .profile_summary,
+    .profile_intro,
+    .profile_panel p {
+        font-size: 15px !important;
+        line-height: 1.5;
+    }
+
+    /* Larger touch targets for profile links */
+    .profile_recent-post {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 6px 0;
+    }
+
+    .profile_chat_hint {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+    }
+
+    .rss-subscribe-button,
+    .rss-subscribe-card__back {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .logo-switches button,
+    .lang-switch a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .top-link {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Fix specific small touch targets */
+    .skip-link {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .hamburger-menu {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .profile_chat_trigger {
+        min-height: 44px;
+        padding: 8px 12px !important;
+    }
+
+    .profile_chat_send {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .footer a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Fix small font sizes */
+    .nav-search-trigger__keys {
+        font-size: 14px !important;
+    }
+
+    .profile_chat_trigger__label {
+        font-size: 14px !important;
+    }
+
+    .profile_chat_greeting {
+        font-size: 14px !important;
+    }
+
+    .profile_chat_hint {
+        font-size: 14px !important;
+    }
+
+    .profile_panel__icon {
+        font-size: 14px !important;
+    }
+
+    .profile_view_more {
+        font-size: 14px !important;
+    }
+}
