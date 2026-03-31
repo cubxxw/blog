@@ -39,8 +39,8 @@ I had a deep conversation with a colleague from Apache APISIX before. She mentio
 
 For more information on OpenIM's remote work culture and corporate culture, I highly recommend reading the following blog posts:
 
-+ **[English Version](https://nsddd.top/posts/openim-remote-work-culture/)**
-+ **[Chinese Version](https://nsddd.top/zh/posts/openim-remote-work-culture/)**
++ **[English Version](/ai-technology/posts/openim-remote-work-culture/)**
++ **[Chinese Version](/zh/ai-technology/posts/openim-remote-work-culture/)**
 
 ## Going Global Challenge: The Globalization Journey of Chinese Internet Companies
 

@@ -5725,10 +5725,10 @@ The cracks on an old teacup may reveal a greater sense of age and history.
 
 ### More ...
 
-1. 2024 https://nsddd.top/zh/posts/2024-annual-review/
+1. 2024 /zh/growth/posts/2024-annual-review/
 
 2. 2023:
 
-    1. https://nsddd.top/zh/posts/2023-annual-summary-reflections-and-aspirations/
+    1. /zh/growth/posts/2023-annual-summary-reflections-and-aspirations/
 
-    2. https://nsddd.top/zh/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/
+    2. /zh/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/

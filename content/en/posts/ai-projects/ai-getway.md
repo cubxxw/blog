@@ -562,7 +562,7 @@ LLM/AI API 网关已不再是可选项，而是构建可扩展、安全且经济
 
 ## 补充相关文章
 
-+ [开源的阶段性成长指南](https://nsddd.top/zh/posts/stage-growth-of-open-source/)
-+ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](https://nsddd.top/zh/posts/open-source-contribution-guidelines/)
-+ [我的实践总结：开源社区的规范设计思路](https://nsddd.top/zh/posts/advanced-githook-design/)
-+ [在开源社区中学会如何提问](https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
++ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/ai-technology/posts/open-source-contribution-guidelines/)
++ [我的实践总结：开源社区的规范设计思路](/zh/ai-technology/posts/advanced-githook-design/)
++ [在开源社区中学会如何提问](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)

@@ -25,25 +25,25 @@ cascade:
 
 探索 AI 开源生态与大模型应用实践：
 
-- [LangChain 开发者指南](/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [AutoGPT 实践](/posts/use-auto-gpt/)
-- [UFO AI Agent](/posts/UFO/)
+- [LangChain 开发者指南]({{< relref "/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide.md" >}})
+- [AutoGPT 实践]({{< relref "/ai-technology/posts/use-auto-gpt.md" >}})
+- [UFO AI Agent]({{< relref "/ai-technology/posts/UFO.md" >}})
 
 ### Kubernetes 深度实践
 
 从入门到源码级理解，系统性掌握 Kubernetes：
 
-- [快速入门](/posts/kubernetes-an-article-to-get-started-quickly/)
-- [核心组件分析](/categories/kubernetes/)
-- [学习路径总结](/posts/kubernetes-learning/)
+- [快速入门]({{< relref "/ai-technology/posts/kubernetes-an-article-to-get-started-quickly.md" >}})
+- [核心组件分析](/zh/categories/kubernetes/)
+- [学习路径总结]({{< relref "/ai-technology/posts/kubernetes-learning.md" >}})
 
 ### Go 语言与工程化
 
 实战驱动的 Go 语言学习与工具建设：
 
-- [跨平台编译](/posts/cross-platform-compilation/)
-- [并发类型检查](/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
-- [开发工具链](/posts/use-go-tools-dlv/)
+- [跨平台编译]({{< relref "/ai-technology/posts/cross-platform-compilation.md" >}})
+- [并发类型检查]({{< relref "/ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go.md" >}})
+- [开发工具链]({{< relref "/ai-technology/posts/use-go-tools-dlv.md" >}})
 
 ---
 

@@ -26,25 +26,25 @@ cascade:
 
 每年的深度复盘，记录成长轨迹：
 
-- [2025 年度总结](/posts/2025-annual-review/)
-- [2024 年度总结](/posts/2024-annual-review/)
-- [2023 年度总结](/posts/2023-annual-summary-reflections-and-aspirations/)
+- [2025 年度总结]({{< relref "/growth/posts/2025-annual-review.md" >}})
+- [2024 年度总结]({{< relref "/growth/posts/2024-annual-review.md" >}})
+- [2023 年度总结]({{< relref "/growth/posts/2023-annual-summary-reflections-and-aspirations.md" >}})
 
 ### 心智模式与效率
 
 提升专注力与工作效率的实践方法：
 
-- [心流状态指南](/posts/flow-state/)
-- [GTD 与四象限法则](/posts/gtd-and-the-four-quadrant-rule-practice/)
-- [元认知转化复盘](/posts/metacognitive-transformation-review/)
+- [心流状态指南]({{< relref "/growth/posts/flow-state.md" >}})
+- [GTD 与四象限法则]({{< relref "/growth/posts/gtd-and-the-four-quadrant-rule-practice.md" >}})
+- [元认知转化复盘]({{< relref "/growth/posts/metacognitive-transformation-review.md" >}})
 
 ### 旅行与生活
 
 数字游民的旅行见闻与生活感悟：
 
-- [旅行分类](/travel/)
-- [2023 世界边缘漫步](/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
-- [2025 日本旅行](/posts/japan-travel-2025/)
+- [旅行分类]({{< relref "/travel.md" >}})
+- [2023 世界边缘漫步]({{< relref "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world.md" >}})
+- [2025 日本旅行]({{< relref "/growth/posts/japan-travel-2025.md" >}})
 
 ---
 

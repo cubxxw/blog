@@ -26,25 +26,25 @@ Travel experiences, digital nomad life, cultural exploration, life insights
 
 Year-end deep reviews, recording growth trajectories:
 
-- [2025 Annual Review](/posts/2025-annual-review/)
-- [2024 Annual Review](/posts/2024-annual-review/)
-- [2023 Annual Summary](/posts/2023-annual-summary-reflections-and-aspirations/)
+- [2025 Annual Review]({{< relref "/growth/posts/2025-annual-review.md" >}})
+- [2024 Annual Review]({{< relref "/growth/posts/2024-annual-review.md" >}})
+- [2023 Annual Summary]({{< relref "/growth/posts/2023-annual-summary-reflections-and-aspirations.md" >}})
 
 ### Mindset & Efficiency
 
 Practical methods to improve focus and work efficiency:
 
-- [Flow State Guide](/posts/flow-state/)
-- [GTD & Four Quadrants Rule](/posts/gtd-and-the-four-quadrant-rule-practice/)
-- [Metacognition Transformation](/posts/metacognitive-transformation-review/)
+- [Flow State Guide]({{< relref "/growth/posts/flow-state.md" >}})
+- [GTD & Four Quadrants Rule]({{< relref "/growth/posts/gtd-and-the-four-quadrant-rule-practice.md" >}})
+- [Metacognition Transformation]({{< relref "/growth/posts/metacognitive-transformation-review.md" >}})
 
 ### Travel & Life
 
 Travel experiences and life insights of a digital nomad:
 
-- [Travel Category](/travel/)
-- [Wandering at the Edge of the World](/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
-- [Japan Travel 2025](/posts/japan-travel-2025/)
+- [Travel Category]({{< relref "/travel.md" >}})
+- [In 2023, I Was Wandering at the Edge of the World]({{< relref "/ai-technology/posts/in-2023-i-was-wandering-at-the-edge-of-the-world.md" >}})
+- [February 2026 Thought Notes]({{< relref "/growth/posts/2026-02-thought-notes.md" >}})
 
 ---
 

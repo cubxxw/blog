@@ -15,9 +15,9 @@ description: '本文深入探讨了开源和商业模式的结合，分析了开
 
 *开源为我带来了很多的成长，很多的成长经验和学习途径都是通过开源获取到并且学习到的。*
 
-这里有一篇我的第一次开源的成长指南：[https://nsddd.top/zh/posts/open-source-contribution-guidelines/](https://nsddd.top/zh/posts/open-source-contribution-guidelines/)
+这里有一篇我的第一次开源的成长指南：[/zh/ai-technology/posts/open-source-contribution-guidelines/](/zh/ai-technology/posts/open-source-contribution-guidelines/)
 
-之前，在深圳的 **全球流量大会（GTC）** 一些来自我对开源商业化的思考，感兴趣可以阅读先阅读这篇思考文章： [https://nsddd.top/zh/posts/openim-open-source-business-journey/](https://nsddd.top/zh/posts/openim-open-source-business-journey/)
+之前，在深圳的 **全球流量大会（GTC）** 一些来自我对开源商业化的思考，感兴趣可以阅读先阅读这篇思考文章： [/zh/ai-technology/posts/openim-open-source-business-journey/](/zh/ai-technology/posts/openim-open-source-business-journey/)
 
 
 > 第一次参与开源还是一个刚刚接触大学没多久 ~ ，调研了解到很多优秀的开源项目都会有很多业界大佬坐镇，因此会让大家以为只有“大牛”才能参与开源。实际上，开源社区经常会听到 “我是小白，我可以参与开源吗？” 这种声音，发出这种声音的同学往往是对开源感兴趣，但并不知道如何入手的小伙伴。
@@ -31,9 +31,9 @@ description: '本文深入探讨了开源和商业模式的结合，分析了开
 > 其实旅游中也有过一些自己的思考，在旅游中我喜欢摄影，带着相机走走拍拍。或许和女生不一样 ，我开始的时候其实是更倾向于发现风景的，就像是在香港的麦理浩径的第一段和第二段的中间破边洲部分，我更多的是以人物在破边洲的悬崖边上，然后衬托后面的悬崖的美丽壮观。我们在工作中也是一样的， 在我们摄影的时候，我们面临对焦，开始在远方我们或许更多的是把焦点放在人物后面的背景上，或者说是 title，比如说某个人是某个大学、某某大厂的光环，反而忽略了他的本身。后面当你关注在人物身上，你会发现人物的美，你会想办法如何把漂亮的小姐姐这一瞬间记录下来。这个时候其实你更专注的是某一个人，这个转变很重要，你慢慢的发现自己专注自己了，而不是专注后面虚无缥缈的光环和头衔。
 > 
 
-在开源社区中，我慢慢学习到了非常多的技巧，比如这里我总结出一篇开源社区的提问技巧：[https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/](https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/)
+在开源社区中，我慢慢学习到了非常多的技巧，比如这里我总结出一篇开源社区的提问技巧：[/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
 
-我对整个的开源成长也有自己的思考总结，写了这篇关于开源的成长性指南阶段，从我们第一次加入开源项目开始，到最后开源和维护自己的项目，以及商业化成长，可以参考： [https://nsddd.top/zh/posts/stage-growth-of-open-source/https://nsddd.top/zh/posts/stage-growth-of-open-source/](https://nsddd.top/zh/posts/stage-growth-of-open-source/) 非常推荐阅读 ~
+我对整个的开源成长也有自己的思考总结，写了这篇关于开源的成长性指南阶段，从我们第一次加入开源项目开始，到最后开源和维护自己的项目，以及商业化成长，可以参考： [/zh/growth/posts/stage-growth-of-open-source//zh/growth/posts/stage-growth-of-open-source/](/zh/growth/posts/stage-growth-of-open-source/) 非常推荐阅读 ~
 
 在加入 OpenIM 的社区一年中，我将自己的开源理解和运营技巧都集成在了 OpenIM 的开源布道上，将 OpenIM 社区带入到了一个顶级的开源社区中来。除此之外，我参与过其他的优秀开源项目的贡献和维护，我会从自己的角度上来介绍如何运营一个优秀顶级的开源社区。
 

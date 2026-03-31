@@ -245,7 +245,7 @@ Viewing logs is the simplest way to troubleshoot. By examining logs, we can ofte
 - The program crashes, but there are no error logs.
 - Logs indicate an error, but only provide a general idea of the problem without pinpointing the root cause.
 
-In these situations, we need to further pinpoint the issue. This is when we can use the Delve debugging tool to attempt to locate the problem. You can refer to a detailed guide on using Delve at https://nsddd.top/zh/posts/use-go-tools-dlv/
+In these situations, we need to further pinpoint the issue. This is when we can use the Delve debugging tool to attempt to locate the problem. You can refer to a detailed guide on using Delve at /zh/ai-technology/posts/use-go-tools-dlv/
 
 I've written a chapter on Delve usage in a previous blog, which you can read at the link provided above.
 

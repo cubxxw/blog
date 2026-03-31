@@ -21,7 +21,7 @@ description: >
 
 # Project Management - Google Edition
 
-I wrote an article before [Project management from theory to practice](https://nsddd.top/zh/posts/project-management-from-theory-to-practice/).
+I wrote an article before [Project management from theory to practice](/zh/ai-technology/posts/project-management-from-theory-to-practice/).
 
 It introduces Github's project management method, Github Projects, and cooperates with Github to realize the integration of the entire development and project management. However, some problems may arise. Today, let's talk about the problems that may arise and give the corresponding solutions. Let's summarize by the way. At this stage, I think it is the best practice method for project management of open source projects.
 
@@ -66,7 +66,7 @@ I hope to use GitHub Projects and Google Projects (or related tools of Google Wo
 
 ## Google Project Management Tools: All You Need to Know
 
-For Github project management, you can read [Project management from theory to practice](https://nsddd.top/zh/posts/project-management-from-theory-to-practice/), and the official website of Github Projects https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
+For Github project management, you can read [Project management from theory to practice](/zh/ai-technology/posts/project-management-from-theory-to-practice/), and the official website of Github Projects https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
 
 Let me introduce in detail some of Google's time practice methods for project management.
 

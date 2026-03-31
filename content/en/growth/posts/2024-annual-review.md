@@ -1790,8 +1790,8 @@ On the surface, the gap between China and the United States in AI seems to be hu
 
 #### 2024Thinking about open source
 
-From my own perspective, I think open source has been very helpful to my growth. I even wrote an article about how to learn open source [https://nsddd.top/zh/posts/stage-growth-of-open-source/](https://nsddd.top/zh/posts/stage-growth-of-open-source/)
-In addition, regarding the thoughts on open source and the open source business model, I have also written an article before, Before the outbreak of AI [https://nsddd.top/zh/posts/navigating-the-open-source-landscape/](https://nsddd.top/zh/posts/navigating-the-open-source-landscape/)
+From my own perspective, I think open source has been very helpful to my growth. I even wrote an article about how to learn open source [/zh/growth/posts/stage-growth-of-open-source/](/zh/growth/posts/stage-growth-of-open-source/)
+In addition, regarding the thoughts on open source and the open source business model, I have also written an article before, Before the outbreak of AI [/zh/ai-technology/posts/navigating-the-open-source-landscape/](/zh/ai-technology/posts/navigating-the-open-source-landscape/)
 
 **Thoughts on development trends in the AI ​​era:**
 

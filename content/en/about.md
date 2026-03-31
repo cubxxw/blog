@@ -281,7 +281,7 @@ cover:
 </div>
 
 <div class="travel-link-container">
-<a href="/travel/" class="travel-docs-link">
+<a href="{{< relref "/travel.md" >}}" class="travel-docs-link">
 📋 View Complete Test Documentation →
 </a>
 </div>

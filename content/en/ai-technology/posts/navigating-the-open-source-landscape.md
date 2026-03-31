@@ -24,7 +24,7 @@ description: >
 
 Open source has significantly contributed to my growth, providing numerous experiences and learning opportunities.
 
-For those interested in my journey, here is a guide based on my first open source experience: [Open Source Contribution Guidelines](https://nsddd.top/zh/posts/open-source-contribution-guidelines/).
+For those interested in my journey, here is a guide based on my first open source experience: [Open Source Contribution Guidelines](/zh/ai-technology/posts/open-source-contribution-guidelines/).
 
 When I first got involved in open source shortly after starting university, I discovered that many well-known open source projects are supported by industry experts. This often leads people to believe that only "experts" can contribute to open source. However, the reality is different. It's common to hear questions like, "I'm a beginner, can I contribute to open source?" from those who are interested but unsure where to start.
 
@@ -32,9 +32,9 @@ In fact, open source is about fostering personal growth and advancing the field 
 
 Open source requires a certain level of knowledge. Unlike schools, communities provide answers to questions but you need to have a basic understanding to formulate these questions. Knowing nothing about a project makes it impossible to contribute. That said, becoming an "expert" isn't a prerequisite. Persistence and exploration are key to continuous growth—don't get trapped by empty titles.
 
-In the open source community, I've learned many skills, including effective question-asking techniques within open source communities which I've summarized here: [The Art of Asking Questions in Open Source Communities](https://nsddd.top/zh/posts/the-art-of-asking-questions-in-open-source-communities/).
+In the open source community, I've learned many skills, including effective question-asking techniques within open source communities which I've summarized here: [The Art of Asking Questions in Open Source Communities](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/).
 
-I've also shared my thoughts on growth in open source, documenting the journey from joining a project to eventually managing and commercializing my own projects. Highly recommended reading for anyone interested: [Stage Growth of Open Source](https://nsddd.top/zh/posts/stage-growth-of-open-source/).
+I've also shared my thoughts on growth in open source, documenting the journey from joining a project to eventually managing and commercializing my own projects. Highly recommended reading for anyone interested: [Stage Growth of Open Source](/zh/growth/posts/stage-growth-of-open-source/).
 
 Over the past year within the OpenIM community, I've integrated my understanding of open source and operational strategies, elevating OpenIM to a top-tier open source community. Besides, I've contributed to and maintained several excellent open source projects, sharing from my perspective on how to operate a successful top-level open source community.
 

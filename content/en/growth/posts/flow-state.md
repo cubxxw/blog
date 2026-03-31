@@ -22,7 +22,7 @@ description: >
 
 # Flow State
 
-As I mentioned in my previous post on [GTD and the Four Quadrant Rule Practice](https://nsddd.top/zh/posts/gtd-and-the-four-quadrant-rule-practice/), I have been striving to enhance my focus and efficiency. Reflecting on the moments when I initially experienced the flow state, whether engrossed in a game or a novel, time seemed to stand still.
+As I mentioned in my previous post on [GTD and the Four Quadrant Rule Practice](/zh/growth/posts/gtd-and-the-four-quadrant-rule-practice/), I have been striving to enhance my focus and efficiency. Reflecting on the moments when I initially experienced the flow state, whether engrossed in a game or a novel, time seemed to stand still.
 
 The flow state is not just about the swift passage of time; it has profound effects on our lives, health, productivity, and even our sense of happiness.
 

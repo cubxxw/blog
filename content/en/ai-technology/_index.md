@@ -25,25 +25,25 @@ Explore cutting-edge technologies in the AI and LLM era, covering:
 
 Explore AI open-source ecosystem and LLM applications:
 
-- [LangChain Developer Guide](/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [AutoGPT Practice](/posts/use-auto-gpt/)
-- [UFO AI Agent](/posts/UFO/)
+- [LangChain Developer Guide]({{< relref "/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide.md" >}})
+- [AutoGPT Practice]({{< relref "/ai-technology/posts/use-auto-gpt.md" >}})
+- [UFO AI Agent (Chinese)](/zh/ai-technology/posts/ufo/)
 
 ### Kubernetes Deep Practice
 
 From beginner to source-level understanding:
 
-- [Quick Start](/posts/kubernetes-an-article-to-get-started-quickly/)
+- [Quick Start]({{< relref "/ai-technology/posts/kubernetes-an-article-to-get-started-quickly.md" >}})
 - [Core Components Analysis](/categories/kubernetes/)
-- [Learning Path](/posts/kubernetes-learning/)
+- [Learning Path]({{< relref "/ai-technology/posts/kubernetes-learning.md" >}})
 
 ### Go Language & Engineering
 
 Practical-driven Go development and tooling:
 
-- [Cross-platform Compilation](/posts/cross-platform-compilation/)
-- [Concurrent Type Checking](/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
-- [Development Toolchain](/posts/use-go-tools-dlv/)
+- [Cross-platform Compilation]({{< relref "/ai-technology/posts/cross-platform-compilation.md" >}})
+- [Concurrent Type Checking]({{< relref "/ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go.md" >}})
+- [Development Toolchain]({{< relref "/ai-technology/posts/use-go-tools-dlv.md" >}})
 
 ---
 

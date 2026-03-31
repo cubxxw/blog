@@ -234,7 +234,7 @@ docker logs -f openim-server
 
 遇到上面这两种情况，我们都需要再进一步地定位问题。这时候，我们可以使用 Delve 调试工具来尝试定位问题。Delve 工具的用法你可以参考Delve 使用详解 。
 
-我之前博客写过一章，关于 Delve 的用法可以阅读： https://nsddd.top/zh/posts/use-go-tools-dlv/
+我之前博客写过一章，关于 Delve 的用法可以阅读： /zh/ai-technology/posts/use-go-tools-dlv/
 
 **添加 Debug 日志来分析排查问题：**
 

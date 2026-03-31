@@ -447,6 +447,6 @@ AI can't either.
 
 ## References
 
-- [March 2025 Thought Notes](/posts/2025-03-thought-notes/)
-- [Metacognitive Transformation Review](/posts/metacognitive-transformation-review/)
-- [Flow State: Enhanced Focus and Happiness Guide](/posts/flow-state/)
+- [March 2025 Thought Notes]({{< relref "/growth/posts/2025-03-thought-notes.md" >}})
+- [Metacognitive Transformation Review]({{< relref "/growth/posts/metacognitive-transformation-review.md" >}})
+- [Flow State: Enhanced Focus and Happiness Guide]({{< relref "/growth/posts/flow-state.md" >}})
