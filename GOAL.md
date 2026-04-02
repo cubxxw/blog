@@ -1,29 +1,31 @@
-# Goal: Keep blog content search integrity at 100
+# Goal: Keep the Hugo blog buildable and locally operable
 
-This repo already has a good Hugo structure, bilingual AI project content, and a generated search corpus. The main failure mode was operational drift: content could change without refreshing the generated search index in the common authoring/build targets. The goal is to keep the searchable corpus current, keep the bilingual AI-project set mirrored, and prevent junk files from leaking into `content/`.
+This repo is a bilingual Hugo blog with generated search data and a Netlify function that depends on that data. The immediate operational problem is local build reliability: `make envbuild` works, but `make build` and `make build-preview` fail on this machine because the managed `_output/tools/hugo` binary crashes. The first goal is to restore a trustworthy local workflow and keep the generated search index in sync while doing it.
 
 ## Fitness Function
 
 ```bash
-node scripts/score-content-search-integrity.mjs --json
+node scripts/score-site-build-health.mjs
+node scripts/score-site-build-health.mjs --json
 ```
 
 ### Metric Definition
 
 ```
-score = index_freshness + workflow_coverage + ai_project_parity + content_hygiene
+score = hugo_resolution + envbuild + build + build_preview + index_freshness
 ```
 
 | Component | What it measures |
 |-----------|------------------|
-| **index_freshness** | Whether `netlify/functions/_generated/content-index.json` and `static/data/content-index.json` match the current content corpus, ignoring `generatedAt` timestamp drift |
-| **workflow_coverage** | Whether the main authoring/build targets in `Makefile` refresh the search index before running |
-| **ai_project_parity** | Whether `content/en/posts/ai-projects/` and `content/zh/posts/ai-projects/` have matching markdown slugs |
-| **content_hygiene** | Whether Finder/Explorer junk files are absent from `content/` |
+| **hugo_resolution** | A working `hugo` binary is discoverable and returns a version successfully |
+| **envbuild** | `make envbuild` completes successfully |
+| **build** | `make build` completes successfully |
+| **build_preview** | `make build-preview` completes successfully |
+| **index_freshness** | Generated content-index artifacts match the current markdown corpus |
 
 ### Metric Mutability
 
-- [x] **Locked** — Agent cannot modify the scoring script or the indexing logic used by the scorer
+- [x] **Locked** — Agent cannot modify the scoring code
 
 ## Operating Mode
 
@@ -32,104 +34,96 @@ score = index_freshness + workflow_coverage + ai_project_parity + content_hygien
 ### Stopping Conditions
 
 Stop and report when ANY of:
-- `score >= 100`
-- 5 consecutive iterations produce no score improvement
-- 15 iterations completed
-- `node` or Hugo/module bootstrap becomes unavailable
+- `score >= 95`
+- `build`, `build_preview`, and `envbuild` all pass
+- 8 iterations completed
+- Hugo or Node becomes unavailable in the local environment
 
 ## Bootstrap
 
-1. `make module-init`
+1. `git submodule update --init --recursive --depth 1`
 2. `node scripts/generate-content-index.mjs`
-3. `node scripts/score-content-search-integrity.mjs --json`
-4. Record the baseline: Starting score: 100
+3. `node scripts/score-site-build-health.mjs`
+4. Record the baseline: Starting score: `45/100`
 
 ## Improvement Loop
 
-```
+```text
 repeat:
-  0. Read iterations.jsonl if it exists — note what drift was already fixed
-  1. node scripts/score-content-search-integrity.mjs --json > /tmp/before.json
-  2. Read total score and component breakdowns
-  3. Pick the lowest-scoring component from the Action Catalog
-  4. Make the change
-  5. If verifiable: run the narrowest relevant check
-  6. node scripts/score-content-search-integrity.mjs --json > /tmp/after.json
-  7. Compare: if improved without regression, keep the change
-  8. If unchanged or regressed, revert
-  9. Append to iterations.jsonl: before/after scores, action taken, result, one-sentence note
+  0. Read iterations.jsonl if it exists and avoid repeating failed experiments
+  1. node scripts/score-site-build-health.mjs --json > /tmp/before.json
+  2. Read the failing components
+  3. Pick the highest-impact action from the Action Catalog
+  4. Make one atomic change
+  5. Run the narrowest verification that proves the change
+  6. node scripts/score-site-build-health.mjs --json > /tmp/after.json
+  7. Compare: if score improved and no previously passing component regressed, keep the change
+  8. If score regressed or stayed flat, revert the change
+  9. Append one line to iterations.jsonl with before/after, action, result, and note
   10. Continue
-```
+``` 
 
-Commit messages: `[S:NN→NN] search-integrity: what changed`
+Commit messages: `[S:NN->NN] build: what changed`
 
 ## Iteration Log
 
 File: `iterations.jsonl` (append-only, one JSON object per line)
 
 ```jsonl
-{"iteration":1,"before":65,"after":100,"action":"Add a reusable content-index Make target, wire it into core Hugo workflows, and remove Finder junk","result":"kept","note":"Search corpus refresh is now enforced in the main workflows and content hygiene is clean."}
+{"iteration":1,"before":45,"after":75,"action":"Prefer working system hugo over crashing managed binary","result":"kept","note":"make build recovered without breaking generated search artifacts"}
 ```
 
 ## Action Catalog
 
-### Index Freshness (target: 40/40)
+### Build Command Reliability (target: 75/75)
 
 | Action | Impact | How |
 |--------|--------|-----|
-| Regenerate stale index files | +20-40 pts | Run `node scripts/generate-content-index.mjs`, then rerun the scorer to confirm both generated JSON files match current content |
-| Fix content parsing drift | +5-20 pts | If the scorer says the index is stale immediately after regeneration, inspect recent content changes and update the authoring content so the generator can parse it consistently |
+| Prefer a working system `hugo` for local targets | +30-55 pts | Resolve `hugo` from PATH before falling back to `_output/tools/hugo`, then reuse that binary in `build`, `build-preview`, `run`, and related targets |
+| Make `tools.verify.hugo` validate the chosen binary | +10 pts | Skip reinstalling when a valid system `hugo` exists; install only when no working binary is available |
+| Align all Hugo-invoking targets on one resolver | +5-10 pts | Replace hard-coded `$(TOOLS_DIR)/hugo` and bare `hugo` calls in local build targets with the same resolved binary |
 
-### Workflow Coverage (target: 30/30)
-
-| Action | Impact | How |
-|--------|--------|-----|
-| Wire `content-index` into a missing Make target | +5 pts per target | Add `content-index` as a prerequisite for the missing target, then rerun the scorer to confirm coverage |
-| Refresh authoring commands after content creation | Prevent regressions | For targets that create content, invoke `$(MAKE) content-index` after file creation so generated search data stays current |
-
-### AI Project Parity (target: 15/15)
+### Generated Search Index (target: 15/15)
 
 | Action | Impact | How |
 |--------|--------|-----|
-| Add missing bilingual AI project post | +3 pts per mismatch | Mirror the missing `.md` slug into the other language under `content/*/posts/ai-projects/`, then regenerate the index |
-| Remove accidental one-sided AI project stub | +3 pts per mismatch | Delete or finish the unmatched draft file so both language trees expose the same AI-project slugs |
+| Keep tracked index outputs deterministic | +15 pts | Run the generator, compare both tracked JSON files while ignoring `generatedAt`, and fix generator/output mismatches without hand-editing generated files |
+| Add missing workflow coverage only if a target bypasses generation | +5 pts | If a new local command writes `public/` or serves content, make it depend on `content-index` first |
 
-### Content Hygiene (target: 15/15)
+### Command Hygiene (target: 10/10)
 
 | Action | Impact | How |
 |--------|--------|-----|
-| Remove Finder/Explorer junk files | +5 pts per file | Delete `.DS_Store` or `Thumbs.db` under `content/`, then rerun the scorer |
-| Prevent reintroduction during content moves | Prevent regressions | When reorganizing content directories, check `find content -name '.DS_Store' -o -name 'Thumbs.db'` before keeping changes |
+| Preserve fast failure with actionable output | +5 pts | Ensure the chosen Hugo path fails clearly when neither system nor managed Hugo is usable |
+| Keep local and Netlify workflows coherent | +5 pts | Avoid changes that fix one build mode while silently breaking the other; verify both local make targets and the generated index path assumptions still hold |
 
 ## Constraints
 
-1. **Do not modify `scripts/score-content-search-integrity.mjs`** — the fitness function must stay locked.
-2. **Do not modify `scripts/generate-content-index.mjs` to game freshness scoring** — it defines the corpus used by production search and the Netlify function.
-3. **Do not edit generated JSON files by hand** — refresh them only through `node scripts/generate-content-index.mjs`.
-4. **Do not edit `themes/PaperMod` directly for this goal** — search integrity and content parity should be handled in the repo’s own files.
+1. **Do not edit `themes/PaperMod` directly** — repo guidance says theme changes should go through overrides unless unavoidable.
+2. **Do not hand-edit generated index JSON** — the source of truth is markdown content plus `scripts/generate-content-index.mjs`.
+3. **Do not weaken the fitness function by removing build checks** — the goal is to restore reliability, not hide failures.
+4. **Keep Netlify function behavior intact** — build-flow fixes must not change `netlify/functions/blog-ai.js` inputs or generated file paths.
 
 ## File Map
 
 | File | Role | Editable? |
 |------|------|-----------|
-| `GOAL.md` | Goal specification for future agents | Yes |
-| `iterations.jsonl` | Append-only history of scoring iterations | Yes |
-| `Makefile` | Workflow entrypoints that should refresh the search index | Yes |
-| `content/en/posts/ai-projects/*.md` | English AI project content used by parity checks | Yes |
-| `content/zh/posts/ai-projects/*.md` | Chinese AI project content used by parity checks | Yes |
-| `content/**/.DS_Store` | Junk files to remove if present | Yes |
-| `netlify/functions/_generated/content-index.json` | Generated search corpus for Netlify function | Written by `node scripts/generate-content-index.mjs` only |
-| `static/data/content-index.json` | Generated search corpus for client-side search | Written by `node scripts/generate-content-index.mjs` only |
-| `scripts/score-content-search-integrity.mjs` | Locked fitness function | No |
-| `scripts/generate-content-index.mjs` | Locked indexing logic used by the scorer | No |
+| `GOAL.md` | Optimization contract for future agent runs | Yes |
+| `scripts/score-site-build-health.mjs` | Fitness function | No |
+| `Makefile` | Local workflow orchestration | Yes |
+| `scripts/generate-content-index.mjs` | Search-index generator | Yes |
+| `netlify/functions/_generated/content-index.json` | Generated search index artifact | Written by script only |
+| `static/data/content-index.json` | Generated search index artifact used by the site | Written by script only |
+| `netlify/functions/blog-ai.js` | Consumer of generated index | Yes |
+| `netlify.toml` | Netlify build/runtime configuration | Yes |
 
 ## When to Stop
 
 ```
-Starting score: 100
-Ending score:   100
-Iterations:     0
+Starting score: NN
+Ending score:   NN
+Iterations:     N
 Changes made:   (list)
 Remaining gaps: (list)
-Next actions:   (what a human or future agent should do next)
+Next actions:   (what a future agent should do next)
 ```

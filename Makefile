@@ -11,6 +11,8 @@ OUT_DIR=$(REPO_ROOT)/_output
 SHELL := /bin/bash
 DIRS=$(shell ls)
 GO=go
+SYSTEM_HUGO := $(shell command -v hugo 2>/dev/null)
+HUGO = $(if $(SYSTEM_HUGO),$(SYSTEM_HUGO),$(TOOLS_DIR)/hugo)
 
 CONTAINER_ENGINE ?= docker
 IMAGE_REGISTRY ?= oepnim/openim-hugo
@@ -82,16 +84,16 @@ SPACE +=
 
 ## run-default: Run hugo server with default mode.
 run-default:
-	@$(TOOLS_DIR)/hugo server -D --gc -p 13132 --config config.default.yml
+	@$(HUGO) server -D --gc -p 13132 --config config.default.yml
 
 ## run-profile-mode: Run hugo server with profile mode.
 run-profile-mode:
-	@$(TOOLS_DIR)/hugo server -D --gc -p 13133 --config config.profileMode.yml
+	@$(HUGO) server -D --gc -p 13133 --config config.profileMode.yml
 
 ## chroma-css: Generate chroma css.
 chroma-css:
-	@$(TOOLS_DIR)/hugo gen chromastyles --style=dracula > assets/css/lib/chroma-dark.css
-	@$(TOOLS_DIR)/hugo gen chromastyles --style=github > assets/css/lib/chroma-light.css
+	@$(HUGO) gen chromastyles --style=dracula > assets/css/lib/chroma-dark.css
+	@$(HUGO) gen chromastyles --style=github > assets/css/lib/chroma-light.css
 
 ## run: Run hugo server.
 .PHONY: content-index
@@ -100,8 +102,8 @@ content-index:
 
 .PHONY: run
 run: tools.verify.hugo module-check content-index
-	@$(TOOLS_DIR)/hugo
-	@$(TOOLS_DIR)/hugo server -D --gc -p 13131 --config config.yml
+	@$(HUGO)
+	@$(HUGO) server -D --gc -p 13131 --config config.yml
 
 ## new-post: Create a new content file and automatically add the current date.
 POST_NAME ?=
@@ -110,10 +112,10 @@ new-post: tools.verify.hugo module-check
 ifndef POST_NAME
 	$(error POST_NAME is not set. Please provide a name for the post. example: make new-post POST_NAME="hello-world")
 endif
-	@$(TOOLS_DIR)/hugo new content content/en/posts/$(POST_NAME).md
-	@$(TOOLS_DIR)/hugo new content content/zh/posts/$(POST_NAME).md
+	@$(HUGO) new content content/en/posts/$(POST_NAME).md
+	@$(HUGO) new content content/zh/posts/$(POST_NAME).md
 	@$(MAKE) content-index
-	@$(TOOLS_DIR)/hugo
+	@$(HUGO)
 
 ## new-ai-project: Create a new AI project learning content file.
 PROJECT_NAME ?=
@@ -123,23 +125,23 @@ ifndef PROJECT_NAME
 	$(error PROJECT_NAME is not set. Please provide a name for the AI project. example: make new-ai-project PROJECT_NAME="llama")
 endif
 	@echo "Creating new AI project learning content for $(PROJECT_NAME)..."
-	@$(TOOLS_DIR)/hugo new content content/en/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
-	@$(TOOLS_DIR)/hugo new content content/zh/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
+	@$(HUGO) new content content/en/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
+	@$(HUGO) new content content/zh/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
 	@echo "✅ AI project files created successfully!"
 	@echo "📂 English version: content/en/posts/ai-projects/$(PROJECT_NAME).md"
 	@echo "📂 Chinese version: content/zh/posts/ai-projects/$(PROJECT_NAME).md"
 	@$(MAKE) content-index
-	@$(TOOLS_DIR)/hugo
+	@$(HUGO)
 
 ## build: Build site with non-production settings and put deliverables in ./public
 .PHONY: build
 build: tools.verify.hugo module-check content-index
-	@$(TOOLS_DIR)/hugo --cleanDestinationDir --minify --environment development
+	@$(HUGO) --cleanDestinationDir --minify --environment development
 
 ## envbuild: Build site with non-production settings using system's Hugo and put deliverables in ./public
 .PHONY: envbuild
 envbuild: module-check content-index
-	@hugo --cleanDestinationDir --minify --environment development
+	@$(HUGO) --cleanDestinationDir --minify --environment development
 
 ## netlify-dev: Run local Netlify dev server with Hugo site and Functions.
 .PHONY: netlify-dev
@@ -166,13 +168,13 @@ netlify-dev-stop:
 
 ## build-preview: Build site with drafts and future posts enabled
 .PHONY: build-preview
-build-preview: module-check content-index
-	@$(TOOLS_DIR)/hugo --cleanDestinationDir --buildDrafts --buildFuture --environment preview
+build-preview: tools.verify.hugo module-check content-index
+	@$(HUGO) --cleanDestinationDir --buildDrafts --buildFuture --environment preview
 
 ## deploy-preview: Deploy preview site via netlify
 .PHONY: deploy-preview
-deploy-preview:
-	GOMAXPROCS=1 $(TOOLS_DIR)/hugo --cleanDestinationDir --enableGitInfo --buildFuture --environment preview -b $(DEPLOY_PRIME_URL)
+deploy-preview: tools.verify.hugo
+	GOMAXPROCS=1 $(HUGO) --cleanDestinationDir --enableGitInfo --buildFuture --environment preview -b $(DEPLOY_PRIME_URL)
 
 ## module-check: Check if all of the required submodules are correctly initialized.
 .PHONY: module-check
@@ -192,19 +194,19 @@ module-update: tools.verify.hugo
 
 ## production-build: Build the production site and ensure that noindex headers aren't added
 .PHONY: production-build
-production-build: module-check content-index
-	GOMAXPROCS=1 hugo --cleanDestinationDir --minify --environment production
+production-build: tools.verify.hugo module-check content-index
+	GOMAXPROCS=1 $(HUGO) --cleanDestinationDir --minify --environment production
 	HUGO_ENV=production $(MAKE) check-headers-file
 
 ## non-production-build: Build the non-production site, which adds noindex headers to prevent indexing
 .PHONY: non-production-build
-non-production-build: module-check content-index
-	GOMAXPROCS=1 $(TOOLS_DIR)/hugo --cleanDestinationDir --enableGitInfo --environment nonprod
+non-production-build: tools.verify.hugo module-check content-index
+	GOMAXPROCS=1 $(HUGO) --cleanDestinationDir --enableGitInfo --environment nonprod
 
 ## serve: Boot the development server.
 .PHONY: serve
-serve: module-check content-index
-	$(TOOLS_DIR)/hugo server --buildFuture --environment development
+serve: tools.verify.hugo module-check content-index
+	$(HUGO) server --buildFuture --environment development
 
 ## container-image: Build a container image for the preview of the website
 container-image:
@@ -282,6 +284,18 @@ help: Makefile
 ################################### Tools #####################################
 
 BUILD_TOOLS ?= hugo
+
+.PHONY: tools.verify.hugo
+tools.verify.hugo:
+	@echo "===========> Verifying hugo is installed"
+	@if [ -n "$(SYSTEM_HUGO)" ]; then \
+		echo "===========> using system hugo in $(SYSTEM_HUGO)"; \
+	elif [ -x "$(TOOLS_DIR)/hugo" ] && "$(TOOLS_DIR)/hugo" version >/dev/null 2>&1; then \
+		echo "===========> using managed hugo in $(TOOLS_DIR)/hugo"; \
+	else \
+		GOBIN=$(TOOLS_DIR) $(MAKE) tools.install.hugo; \
+		echo "===========> installed hugo in $(TOOLS_DIR)/hugo"; \
+	fi
 
 ## tools.verify.%: Check if a tool is installed and install it
 .PHONY: tools.verify.%
