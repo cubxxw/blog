@@ -10,7 +10,7 @@
     tocLinks.forEach(function (link) {
       var href = link.getAttribute('href');
       if (href && href.charAt(0) === '#') {
-        var heading = document.getElementById(href.slice(1));
+        var heading = document.getElementById(decodeURIComponent(href.slice(1)));
         if (heading) {
           sections.push({ heading: heading, link: link });
         }
@@ -51,10 +51,11 @@
     updateActive(); // 页面加载时立即执行一次
   }
 
-  // DOM 加载完成后初始化
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTocHighlight);
-  } else {
+  // 等待所有 defer 脚本和 DOM 就绪后初始化
+  // 用 window.load 替代 DOMContentLoaded，确保侧边 TOC 已完整渲染
+  if (document.readyState === 'complete') {
     initTocHighlight();
+  } else {
+    window.addEventListener('load', initTocHighlight);
   }
 })();

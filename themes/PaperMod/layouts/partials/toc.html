@@ -1,7 +1,7 @@
 {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
 {{- $has_headers := ge (len $headers) 1 -}}
 {{- if $has_headers -}}
-<!-- Inline TOC (for mobile) -->
+<!-- Inline TOC (for mobile / small screens) -->
 <div class="toc">
     <details {{if (.Param "TocOpen") }} open{{ end }}>
         <summary accesskey="c" title="(Alt + C)">
@@ -95,23 +95,98 @@
         </div>
     </details>
 </div>
-
-<!-- Side Floating TOC (for desktop) -->
-<aside class="toc-side" aria-label="Table of Contents">
-    <div class="toc-side__title">{{- i18n "toc" | default "On This Page" }}</div>
-    <nav class="toc-side__nav">
-        <ul>
-            {{- range $headers -}}
-            {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
-            {{- $headerLevel := len (seq $headerLevel) -}}
-            {{- $id := index (findRE "(id=\"(.*?)\")" . 9) 0 }}
-            {{- $cleanedID := replace (replace $id "id=\"" "") "\"" "" }}
-            {{- $headerClean := replaceRE "<h[1-6].*?>((.|\n])+?)</h[1-6]>" "$1" . -}}
-            <li>
-                <a href="#{{- $cleanedID -}}" data-level="{{- $headerLevel -}}">{{- $headerClean | safeHTML -}}</a>
-            </li>
-            {{- end -}}
-        </ul>
-    </nav>
-</aside>
 {{- end }}
+
+<!-- Reading Companion Panel (desktop ≥1500px) -->
+<aside class="reading-companion" aria-label="阅读助手">
+
+  <!-- Tab Bar -->
+  <div class="rc-tabs" role="tablist">
+    <button class="rc-tab rc-tab--active" role="tab"
+            aria-selected="true" aria-controls="rc-panel-toc"
+            id="rc-tab-toc" data-tab="toc">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+      <span>大纲</span>
+    </button>
+    <button class="rc-tab" role="tab"
+            aria-selected="false" aria-controls="rc-panel-ai"
+            id="rc-tab-ai" data-tab="ai">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
+        <circle cx="7.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="16.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>AI 伴读</span>
+    </button>
+  </div>
+
+  <!-- Panel 1: TOC -->
+  <div class="rc-panel rc-panel--active" id="rc-panel-toc" role="tabpanel" aria-labelledby="rc-tab-toc">
+    {{- if $has_headers }}
+    <nav class="toc-side__nav" aria-label="文章目录">
+      <ul>
+        {{- range $headers -}}
+        {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
+        {{- $headerLevel := len (seq $headerLevel) -}}
+        {{- $id := index (findRE "(id=\"(.*?)\")" . 9) 0 }}
+        {{- $cleanedID := replace (replace $id "id=\"" "") "\"" "" }}
+        {{- $headerClean := replaceRE "<h[1-6].*?>((.|\n])+?)</h[1-6]>" "$1" . -}}
+        <li class="toc-item toc-item--h{{- $headerLevel -}}">
+            <a href="#{{- $cleanedID -}}" data-level="{{- $headerLevel -}}">{{- $headerClean | safeHTML -}}</a>
+        </li>
+        {{- end -}}
+      </ul>
+    </nav>
+    {{- else }}
+    <p class="rc-empty">本文暂无目录</p>
+    {{- end }}
+  </div>
+
+  <!-- Panel 2: AI Companion -->
+  <div class="rc-panel" id="rc-panel-ai" role="tabpanel" aria-labelledby="rc-tab-ai" hidden>
+    <div class="rc-ai-panel">
+
+      <!-- Quick Action Chips -->
+      <div class="rc-ai-quick" id="rc-quick-actions">
+        <button class="rc-ai-chip" data-prompt="请用3-5句话总结这篇文章的核心观点和主要内容。">
+          📝 文章总结
+        </button>
+        <button class="rc-ai-chip" data-prompt="请列出这篇文章中最精彩的3个句子或论断，并简要说明为什么印象深刻。">
+          ✨ 精彩句子
+        </button>
+        <button class="rc-ai-chip" data-prompt="基于这篇文章的主题和内容，推荐3个延伸阅读方向或相关话题，帮助读者深入了解。">
+          🔗 延伸阅读
+        </button>
+      </div>
+
+      <!-- Message History -->
+      <div class="rc-ai-messages" aria-live="polite" aria-label="对话记录"></div>
+
+      <!-- Loading Indicator -->
+      <div class="rc-ai-loading" hidden aria-label="AI 思考中">
+        <span class="rc-ai-dot"></span>
+        <span class="rc-ai-dot"></span>
+        <span class="rc-ai-dot"></span>
+        <span class="rc-ai-loading-text">AI 思考中…</span>
+      </div>
+
+      <!-- Input Area -->
+      <div class="rc-ai-input-area">
+        <textarea class="rc-ai-textarea" rows="2"
+          placeholder="问我关于这篇文章的任何问题…"
+          aria-label="输入问题"></textarea>
+        <button class="rc-ai-send" aria-label="发送">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</aside>
