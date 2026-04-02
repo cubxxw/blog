@@ -1,0 +1,1 @@
+{"iteration":1,"before":65,"after":100,"action":"Add a reusable content-index Make target, wire it into core Hugo workflows, and remove Finder junk","result":"kept","note":"Search corpus refresh is now enforced in the main workflows and content hygiene is clean."}

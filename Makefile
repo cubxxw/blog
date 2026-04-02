@@ -20,7 +20,7 @@ CONTAINER_IMAGE   = docker pull oepnim/openim-hugo
 # Container targets don't need to write into /src
 CONTAINER_RUN     = "$(CONTAINER_ENGINE)" run --rm --interactive --tty --volume "$(CURDIR):/src:ro,Z"
 
-HUGO_VERSION      = $(shell grep ^HUGO_VERSION netlify.toml | tail -n 1 | cut -d '=' -f 2 | tr -d " \"\n")
+HUGO_VERSION      = $(shell grep -E '^[[:space:]]*HUGO_VERSION[[:space:]]*=' netlify.toml | tail -n 1 | cut -d '=' -f 2 | tr -d " \"\n")
 NODE_BIN          = node_modules/.bin
 NETLIFY_FUNC      = $(NODE_BIN)/netlify-lambda
 HUGO_DEV_PORT     ?= 1313
@@ -94,8 +94,12 @@ chroma-css:
 	@$(TOOLS_DIR)/hugo gen chromastyles --style=github > assets/css/lib/chroma-light.css
 
 ## run: Run hugo server.
+.PHONY: content-index
+content-index:
+	@node scripts/generate-content-index.mjs
+
 .PHONY: run
-run: tools.verify.hugo
+run: tools.verify.hugo module-check content-index
 	@$(TOOLS_DIR)/hugo
 	@$(TOOLS_DIR)/hugo server -D --gc -p 13131 --config config.yml
 
@@ -108,6 +112,7 @@ ifndef POST_NAME
 endif
 	@$(TOOLS_DIR)/hugo new content content/en/posts/$(POST_NAME).md
 	@$(TOOLS_DIR)/hugo new content content/zh/posts/$(POST_NAME).md
+	@$(MAKE) content-index
 	@$(TOOLS_DIR)/hugo
 
 ## new-ai-project: Create a new AI project learning content file.
@@ -123,27 +128,26 @@ endif
 	@echo "✅ AI project files created successfully!"
 	@echo "📂 English version: content/en/posts/ai-projects/$(PROJECT_NAME).md"
 	@echo "📂 Chinese version: content/zh/posts/ai-projects/$(PROJECT_NAME).md"
+	@$(MAKE) content-index
 	@$(TOOLS_DIR)/hugo
 
 ## build: Build site with non-production settings and put deliverables in ./public
 .PHONY: build
-build: tools.verify.hugo module-check
+build: tools.verify.hugo module-check content-index
 	@$(TOOLS_DIR)/hugo --cleanDestinationDir --minify --environment development
 
 ## envbuild: Build site with non-production settings using system's Hugo and put deliverables in ./public
 .PHONY: envbuild
-envbuild: module-check
-	@node scripts/generate-content-index.mjs
+envbuild: module-check content-index
 	@hugo --cleanDestinationDir --minify --environment development
 
 ## netlify-dev: Run local Netlify dev server with Hugo site and Functions.
 .PHONY: netlify-dev
-netlify-dev: module-check
+netlify-dev: module-check content-index
 	@if [ -z "$$OPENAI_API_KEY" ]; then \
 		echo "OPENAI_API_KEY is not set. Export it before running make netlify-dev." 1>&2; \
 		exit 1; \
 	fi
-	@node scripts/generate-content-index.mjs
 	@OPENAI_MODEL=$${OPENAI_MODEL:-gpt-5.4-mini} npx netlify dev \
 		--framework "#custom" \
 		--command "hugo server --environment development --bind 0.0.0.0 --port $(HUGO_DEV_PORT)" \
@@ -162,7 +166,7 @@ netlify-dev-stop:
 
 ## build-preview: Build site with drafts and future posts enabled
 .PHONY: build-preview
-build-preview: module-check
+build-preview: module-check content-index
 	@$(TOOLS_DIR)/hugo --cleanDestinationDir --buildDrafts --buildFuture --environment preview
 
 ## deploy-preview: Deploy preview site via netlify
@@ -188,18 +192,18 @@ module-update: tools.verify.hugo
 
 ## production-build: Build the production site and ensure that noindex headers aren't added
 .PHONY: production-build
-production-build: module-check
+production-build: module-check content-index
 	GOMAXPROCS=1 hugo --cleanDestinationDir --minify --environment production
 	HUGO_ENV=production $(MAKE) check-headers-file
 
 ## non-production-build: Build the non-production site, which adds noindex headers to prevent indexing
 .PHONY: non-production-build
-non-production-build: module-check
+non-production-build: module-check content-index
 	GOMAXPROCS=1 $(TOOLS_DIR)/hugo --cleanDestinationDir --enableGitInfo --environment nonprod
 
 ## serve: Boot the development server.
 .PHONY: serve
-serve: module-check
+serve: module-check content-index
 	$(TOOLS_DIR)/hugo server --buildFuture --environment development
 
 ## container-image: Build a container image for the preview of the website
@@ -302,4 +306,4 @@ install.addlicense:
 
 .PHONY: install.hugo
 install.hugo:
-	@$(GO) install  --tags extended github.com/gohugoio/hugo@latest
+	@$(GO) install --tags extended github.com/gohugoio/hugo@v$(HUGO_VERSION)

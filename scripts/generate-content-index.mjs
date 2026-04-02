@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const repoRoot = process.cwd();
 const contentRoot = path.join(repoRoot, "content");
@@ -190,7 +191,7 @@ function normalizeTree(node) {
   };
 }
 
-function buildIndex() {
+export function buildIndex() {
   const files = walkMarkdownFiles(contentRoot);
   const documents = files
     .map((filePath) => {
@@ -239,16 +240,18 @@ function buildIndex() {
   };
 }
 
-function writeOutput(filePath, payload) {
+export function writeOutput(filePath, payload) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, `${JSON.stringify(payload, null, 2)}\n`);
 }
 
-const index = buildIndex();
-for (const outputPath of outputPaths) {
-  writeOutput(outputPath, index);
-}
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const index = buildIndex();
+  for (const outputPath of outputPaths) {
+    writeOutput(outputPath, index);
+  }
 
-console.log(
-  `Generated content index with ${index.totalDocuments} documents at ${outputPaths.join(", ")}`
-);
+  console.log(
+    `Generated content index with ${index.totalDocuments} documents at ${outputPaths.join(", ")}`
+  );
+}
