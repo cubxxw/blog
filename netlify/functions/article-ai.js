@@ -45,12 +45,13 @@ exports.handler = async function handler(event) {
     return json(400, { error: "question is required" });
   }
 
-  const model = process.env.DASHSCOPE_MODEL || "qwen3.6-plus";
+  const model = process.env.DASHSCOPE_MODEL || "qwen-turbo";
   const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1";
 
   const systemPrompt = [
     "你是一位文章阅读助手，帮助读者深入理解当前正在阅读的文章。",
     "请基于提供的文章标题和正文内容来回答用户的问题。",
+    "不要进行内部推理或思考过程，直接给出简洁答案。",
     "回答请使用中文，语气友好、简洁清晰，适合侧边栏紧凑空间展示。",
     "如果用户问题涉及文章内容，请优先从文章中提炼答案。",
     "如果涉及相关推荐，可以基于文章主题给出延伸阅读方向，标明这是建议而非站内链接。",

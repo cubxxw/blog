@@ -159,11 +159,12 @@ exports.handler = async function handler(event) {
 
   const index = loadIndex();
   const docContext = buildContext(index, question, language);
-  const model = process.env.DASHSCOPE_MODEL || "qwen3.6-plus";
+  const model = process.env.DASHSCOPE_MODEL || "qwen-turbo";
   const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1";
 
   const systemPrompt = [
     "You are an assistant for a Hugo blog.",
+    "Do not perform internal reasoning or thinking steps. Reply directly and concisely.",
     "Use the provided directory summary and candidate documents to answer questions about site structure and article content.",
     "When the user intent is unclear or the available context is insufficient, ask 1 to 3 concise clarification questions before giving a final recommendation.",
     "Prefer the user's language. If the user writes Chinese, answer in Chinese. If the user writes English, answer in English.",
