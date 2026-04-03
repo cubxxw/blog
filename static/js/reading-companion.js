@@ -197,7 +197,12 @@
         try {
           data = await res.json();
         } catch (_) {
-          throw new Error('AI 服务暂不可用（本地开发环境需启动 netlify dev）');
+          var rawText = '';
+          try { rawText = await res.text(); } catch (_2) {}
+          if (res.status === 404) {
+            throw new Error('AI 函数未找到，请确认 netlify dev 正在运行');
+          }
+          throw new Error('AI 服务返回非 JSON 响应 (HTTP ' + res.status + ')' + (rawText ? '：' + rawText.slice(0, 120) : ''));
         }
         setLoading(false);
 

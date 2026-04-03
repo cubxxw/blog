@@ -135,9 +135,9 @@ exports.handler = async function handler(event) {
     return json(405, { error: "Method not allowed" });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.DASHSCOPE_API_KEY) {
     return json(500, {
-      error: "Missing OPENAI_API_KEY environment variable",
+      error: "Missing DASHSCOPE_API_KEY environment variable",
     });
   }
 
@@ -159,8 +159,8 @@ exports.handler = async function handler(event) {
 
   const index = loadIndex();
   const docContext = buildContext(index, question, language);
-  const model = process.env.OPENAI_MODEL || "qwen3.5-plus";
-  const baseUrl = process.env.OPENAI_BASE_URL || "https://coding.dashscope.aliyuncs.com/v1";
+  const model = process.env.DASHSCOPE_MODEL || "qwen3.6-plus";
+  const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1";
 
   const systemPrompt = [
     "You are an assistant for a Hugo blog.",
@@ -216,7 +216,7 @@ exports.handler = async function handler(event) {
     response = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -227,14 +227,14 @@ exports.handler = async function handler(event) {
     });
   } catch (error) {
     return json(502, {
-      error: "Failed to reach OpenAI API",
+      error: "Failed to reach Qwen API",
       detail: error.message,
     });
   }
 
   const responseJson = await response.json();
   if (!response.ok) {
-    const errorMsg = responseJson.error?.message || responseJson.error || "OpenAI API returned an error";
+    const errorMsg = responseJson.error?.message || responseJson.error || "Qwen API returned an error";
     return json(response.status, {
       error: errorMsg,
       detail: responseJson,

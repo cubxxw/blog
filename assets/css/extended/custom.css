@@ -620,7 +620,7 @@
    P0: Typography & Readability Improvements
    =================================== */
 
-/* Post Content - align with TOC and header, let PaperMod layout control width */
+/* Post Content - width controlled by .main and post-single */
 .post-single .post-content {
   max-width: none;
   margin: 0;
@@ -2208,91 +2208,199 @@ details summary,
 }
 
 /* ===================================
-   Reading Companion Panel (AI + TOC)
+   Post Header — Breathing Room & Hierarchy
    =================================== */
 
-/* Hide on small screens, show inline TOC */
-@media (max-width: 1499px) {
-    .reading-companion {
-        display: none;
-    }
-    .post-header .toc {
-        display: block;
+.post-header {
+    padding-bottom: 0;
+    margin-bottom: 40px;
+}
+
+.post-header .breadcrumbs {
+    margin-bottom: 28px;
+    opacity: 0.7;
+}
+
+.post-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+}
+
+.post-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--secondary);
+    margin: 0 0 20px;
+    max-width: 72ch;
+    font-weight: 400;
+}
+
+.post-meta {
+    font-size: 0.82rem;
+    color: var(--secondary);
+    opacity: 0.75;
+    letter-spacing: 0.01em;
+    margin-bottom: 0;
+}
+
+/* Separator line below header */
+.post-header-rule {
+    height: 1px;
+    background: var(--border);
+    margin-top: 28px;
+    opacity: 0.5;
+}
+
+/* ===================================
+   Reading Content Width
+   =================================== */
+
+/* Content width is governed by --main-width on .main.
+   For single posts we cap slightly to enforce readable line-length (~72ch). */
+@media (min-width: 1600px) {
+    .post-single {
+        max-width: 760px;
+        margin: 0 auto;
     }
 }
 
+@media (min-width: 1920px) {
+    .post-single {
+        max-width: 800px;
+    }
+}
+
+/* ===================================
+   Inline TOC — Fine-line Style (mobile / < 1500px)
+   =================================== */
+
+.toc-inline {
+    display: none; /* hidden by default, shown on small screens */
+    margin: 0 0 40px;
+    padding-left: 20px;
+    border-left: 1.5px solid var(--border);
+}
+
+.toc-inline__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--secondary);
+    opacity: 0.6;
+    margin-bottom: 12px;
+}
+
+.toc-inline ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-inline__item {
+    margin: 0;
+}
+
+.toc-inline__item a {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 4px 0;
+    line-height: 1.45;
+    transition: color 0.15s;
+}
+
+.toc-inline__item a:hover {
+    color: var(--primary);
+}
+
+.toc-inline__item--h3 { padding-left: 14px; }
+.toc-inline__item--h4 { padding-left: 28px; }
+.toc-inline__item--h5 { padding-left: 42px; }
+
+/* Show inline TOC only on small screens */
+@media (max-width: 1499px) {
+    .toc-inline {
+        display: block;
+    }
+    .reading-companion {
+        display: none;
+    }
+}
+
+/* ===================================
+   Reading Companion Panel — Typographic Style
+   =================================== */
+
 @media (min-width: 1500px) {
-    /* Hide inline TOC, show side panel */
-    .post-header .toc {
+    /* Hide inline TOC */
+    .toc-inline {
         display: none;
     }
 
-    /* ── Panel Shell ── */
+    /* ── Panel Shell: no box, just typography ── */
     .reading-companion {
         position: fixed;
-        top: calc(var(--header-height) + 36px);
-        right: max(calc((100vw - var(--main-width) - var(--gap) * 2) / 2 - 268px - 16px), 12px);
-        width: 256px;
-        max-height: calc(100vh - var(--header-height) - 72px);
+        top: calc(var(--header-height) + 40px);
+        right: max(calc((100vw - var(--main-width) - var(--gap) * 2) / 2 - 272px - 20px), 16px);
+        width: 248px;
+        max-height: calc(100vh - var(--header-height) - 80px);
         display: flex;
         flex-direction: column;
-        background: var(--theme);
-        border: 1px solid rgba(0, 0, 0, 0.12);
-        border-radius: 10px;
-        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+        /* No border, no shadow, no background — it's part of the page typography */
+        background: transparent;
+        border: none;
+        box-shadow: none;
         z-index: 90;
         overflow: hidden;
-        transition: box-shadow 0.2s ease;
-    }
-    .dark .reading-companion {
-        border-color: rgba(255, 255, 255, 0.12);
-        box-shadow: 0 2px 18px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.25);
     }
 
-    /* ── Tab Bar ── */
+    /* ── Tab Bar: minimal underline style ── */
     .rc-tabs {
         display: flex;
         flex-shrink: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        background: transparent;
-    }
-    .dark .rc-tabs {
-        border-bottom-color: rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid var(--border);
+        opacity: 0.9;
     }
     .rc-tab {
         flex: 1;
-        padding: 11px 6px 10px;
-        font-size: 13px;
-        font-weight: 500;
+        padding: 0 4px 10px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         color: var(--secondary);
         background: none;
         border: none;
-        border-bottom: 2.5px solid transparent;
+        border-bottom: 1.5px solid transparent;
         margin-bottom: -1px;
         cursor: pointer;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 5px;
         transition: color 0.2s, border-color 0.2s;
-        letter-spacing: 0.01em;
     }
     .rc-tab svg {
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
         flex-shrink: 0;
-        stroke-width: 2;
+        stroke-width: 1.75;
+        opacity: 0.7;
     }
     .rc-tab:hover {
         color: var(--primary);
     }
     .rc-tab--active {
         color: var(--primary);
-        font-weight: 600;
         border-bottom-color: var(--primary);
     }
-    .dark .rc-tab--active {
-        border-bottom-color: var(--primary);
+    .rc-tab--active svg {
+        opacity: 1;
     }
 
     /* ── Panels ── */
@@ -2303,26 +2411,27 @@ details summary,
         flex-direction: column;
         min-height: 0;
     }
-    /* hidden attribute overrides flex display */
     .rc-panel[hidden] {
         display: none !important;
     }
-    /* ── TOC Panel ── */
+
+    /* ── TOC Panel: fine-line typographic nav ── */
     #rc-panel-toc {
         overflow-y: auto;
-        padding: 12px 12px 14px;
+        padding: 16px 0 14px;
         scroll-behavior: smooth;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+        scrollbar-width: none; /* hide scrollbar for clean look */
     }
-    .dark #rc-panel-toc {
-        scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+    #rc-panel-toc::-webkit-scrollbar {
+        display: none;
     }
 
     .toc-side__nav ul {
         list-style: none;
         padding: 0;
         margin: 0;
+        border-left: 1.5px solid var(--border);
+        padding-left: 16px;
     }
 
     .toc-item {
@@ -2331,7 +2440,7 @@ details summary,
 
     .toc-item--h3,
     .toc-item--h4 {
-        padding-left: 14px;
+        padding-left: 12px;
     }
 
     .toc-side__nav a {
@@ -2339,44 +2448,32 @@ details summary,
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        padding: 6px 8px;
-        font-size: 13px;
+        padding: 4px 0;
+        font-size: 0.8rem;
         color: var(--secondary);
         text-decoration: none;
-        border-radius: 6px;
         line-height: 1.5;
-        transition: color 0.15s, background 0.15s;
-        border-left: 2px solid transparent;
-        margin-bottom: 2px;
+        transition: color 0.15s;
+        opacity: 0.7;
     }
     .toc-side__nav a:hover {
         color: var(--primary);
-        background: rgba(0, 0, 0, 0.05);
-    }
-    .dark .toc-side__nav a:hover {
-        background: rgba(255, 255, 255, 0.07);
+        opacity: 1;
     }
 
-    /* Active TOC item highlight */
+    /* Active TOC item: vertical line accent */
     .toc-side__nav a.toc-active {
         color: var(--primary);
-        background: rgba(0, 0, 0, 0.06);
-        border-left-color: var(--primary);
+        opacity: 1;
         font-weight: 500;
-        padding-left: 10px;
-    }
-    .dark .toc-side__nav a.toc-active {
-        color: var(--primary);
-        background: rgba(255, 255, 255, 0.08);
-        border-left-color: var(--primary);
     }
 
     .rc-empty {
-        font-size: 12px;
+        font-size: 0.75rem;
         color: var(--secondary);
-        text-align: center;
-        padding: 20px 10px;
+        padding: 16px 0;
         margin: 0;
+        opacity: 0.6;
     }
 
     /* ── AI Panel ── */
@@ -2385,47 +2482,35 @@ details summary,
         flex-direction: column;
         flex: 1;
         min-height: 0;
-        padding: 12px 12px 10px;
+        padding: 14px 0 10px;
         gap: 10px;
     }
 
-    /* Quick chips */
+    /* Quick chips: minimal pill style */
     .rc-ai-quick {
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 5px;
         flex-shrink: 0;
     }
     .rc-ai-chip {
-        font-size: 12px;
-        line-height: 1.35;
-        padding: 5px 10px;
-        border-radius: 20px;
+        font-size: 0.7rem;
+        line-height: 1.3;
+        padding: 4px 9px;
+        border-radius: 3px;
         border: 1px solid var(--border);
         background: transparent;
         color: var(--secondary);
         cursor: pointer;
-        transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s;
+        transition: background 0.15s, border-color 0.15s, color 0.15s;
         font-family: inherit;
+        opacity: 0.8;
     }
     .rc-ai-chip:hover {
-        background: rgba(128, 128, 128, 0.1);
+        background: rgba(128, 128, 128, 0.08);
         border-color: var(--primary);
         color: var(--primary);
-        transform: translateY(-1px);
-    }
-    .rc-ai-chip:active {
-        transform: translateY(0);
-    }
-    .dark .rc-ai-chip {
-        border-color: var(--border);
-        background: transparent;
-        color: var(--secondary);
-    }
-    .dark .rc-ai-chip:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: var(--primary);
-        color: var(--primary);
+        opacity: 1;
     }
 
     /* Messages area */
@@ -2437,36 +2522,35 @@ details summary,
         gap: 8px;
         min-height: 0;
         scrollbar-width: thin;
-        scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
-        padding-right: 2px;
+        scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
     }
 
     .rc-ai-msg {
-        font-size: 13px;
+        font-size: 0.78rem;
         line-height: 1.65;
-        padding: 8px 11px;
-        border-radius: 10px;
+        padding: 7px 10px;
+        border-radius: 4px;
         animation: rc-fade-in 0.22s ease;
         word-break: break-word;
     }
     .rc-ai-msg p {
-        margin: 0 0 6px;
+        margin: 0 0 5px;
     }
     .rc-ai-msg p:last-child {
         margin-bottom: 0;
     }
     .rc-ai-msg code {
-        font-size: 11px;
+        font-size: 0.7rem;
         background: rgba(0,0,0,0.06);
         padding: 1px 4px;
-        border-radius: 3px;
+        border-radius: 2px;
     }
     .dark .rc-ai-msg code {
         background: rgba(255,255,255,0.1);
     }
 
     @keyframes rc-fade-in {
-        from { opacity: 0; transform: translateY(5px); }
+        from { opacity: 0; transform: translateY(4px); }
         to   { opacity: 1; transform: translateY(0); }
     }
 
@@ -2474,36 +2558,35 @@ details summary,
         align-self: flex-end;
         background: var(--primary);
         color: var(--theme);
-        border-bottom-right-radius: 4px;
         max-width: 88%;
     }
     .rc-ai-msg--ai {
         align-self: flex-start;
-        background: var(--code-bg);
+        background: rgba(0, 0, 0, 0.035);
         color: var(--content);
-        border: 1px solid var(--border);
-        border-bottom-left-radius: 4px;
-        max-width: 94%;
+        border-left: 2px solid var(--border);
+        border-radius: 0 4px 4px 0;
+        max-width: 96%;
     }
     .dark .rc-ai-msg--ai {
         background: rgba(255, 255, 255, 0.04);
-        border-color: rgba(255, 255, 255, 0.08);
+        border-left-color: rgba(255, 255, 255, 0.12);
     }
 
     /* Loading dots */
     .rc-ai-loading {
         display: flex;
         align-items: center;
-        gap: 5px;
-        padding: 4px 2px;
+        gap: 4px;
+        padding: 3px 0;
         flex-shrink: 0;
     }
     .rc-ai-loading[hidden] {
         display: none !important;
     }
     .rc-ai-dot {
-        width: 7px;
-        height: 7px;
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
         background: var(--secondary);
         animation: rc-bounce 1.3s ease-in-out infinite;
@@ -2512,9 +2595,10 @@ details summary,
     .rc-ai-dot:nth-child(2) { animation-delay: 0.15s; }
     .rc-ai-dot:nth-child(3) { animation-delay: 0.3s; }
     .rc-ai-loading-text {
-        font-size: 11px;
+        font-size: 0.7rem;
         color: var(--secondary);
-        margin-left: 2px;
+        margin-left: 3px;
+        opacity: 0.7;
     }
     @keyframes rc-bounce {
         0%, 80%, 100% { transform: scale(0.55); opacity: 0.35; }
@@ -2524,66 +2608,61 @@ details summary,
     /* Input area */
     .rc-ai-input-area {
         display: flex;
-        gap: 6px;
+        gap: 5px;
         align-items: flex-end;
         flex-shrink: 0;
+        border-top: 1px solid var(--border);
+        padding-top: 10px;
     }
     .rc-ai-textarea {
         flex: 1;
         resize: none;
-        border: 1.5px solid var(--border);
-        border-radius: 10px;
-        padding: 7px 10px;
-        font-size: 12px;
+        border: none;
+        border-bottom: 1.5px solid var(--border);
+        border-radius: 0;
+        padding: 5px 2px;
+        font-size: 0.78rem;
         font-family: inherit;
-        background: var(--theme);
+        background: transparent;
         color: var(--primary);
         line-height: 1.5;
-        transition: border-color 0.18s, box-shadow 0.18s;
+        transition: border-color 0.18s;
         overflow-y: hidden;
     }
     .rc-ai-textarea::placeholder {
         color: var(--secondary);
-        opacity: 0.7;
+        opacity: 0.5;
     }
     .rc-ai-textarea:focus {
         outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.12);
-    }
-    .dark .rc-ai-textarea:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+        border-bottom-color: var(--primary);
     }
     .rc-ai-send {
-        width: 32px;
-        height: 32px;
+        width: 26px;
+        height: 26px;
         flex-shrink: 0;
-        border-radius: 8px;
-        border: none;
-        background: var(--primary);
-        color: var(--theme);
+        border-radius: 3px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--secondary);
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.15s, filter 0.15s, opacity 0.15s;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
     .rc-ai-send:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.1);
-    }
-    .rc-ai-send:active {
-        transform: translateY(0);
+        background: var(--primary);
+        color: var(--theme);
+        border-color: var(--primary);
     }
     .rc-ai-send:disabled {
-        opacity: 0.4;
+        opacity: 0.35;
         cursor: not-allowed;
-        transform: none;
     }
     .rc-ai-send svg {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         stroke-width: 2;
     }
 }

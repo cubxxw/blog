@@ -1,21 +1,14 @@
-/* TOC 侧边栏滚动高亮 */
+/* TOC 侧边栏滚动高亮 — fine-line typographic style */
 .toc-side__nav a {
-  display: block;
-  border-radius: 4px;
-  padding: 2px 8px;
-  margin: 1px -8px;
-  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
 
 .toc-side__nav a.toc-active {
-  color: var(--primary, #0891b2) !important;
-  font-weight: 600;
-  background: rgba(8, 145, 178, 0.08);
-  box-shadow: inset 3px 0 0 var(--primary, #0891b2);
+  color: var(--primary) !important;
+  opacity: 1 !important;
+  font-weight: 500;
 }
 
 .dark .toc-side__nav a.toc-active {
   color: #38bdf8 !important;
-  background: rgba(56, 189, 248, 0.1);
-  box-shadow: inset 3px 0 0 #38bdf8;
 }

@@ -25,8 +25,8 @@ exports.handler = async function handler(event) {
     return json(405, { error: "Method not allowed" });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
-    return json(500, { error: "Missing OPENAI_API_KEY environment variable" });
+  if (!process.env.DASHSCOPE_API_KEY) {
+    return json(500, { error: "Missing DASHSCOPE_API_KEY environment variable" });
   }
 
   let payload;
@@ -45,8 +45,8 @@ exports.handler = async function handler(event) {
     return json(400, { error: "question is required" });
   }
 
-  const model = process.env.OPENAI_MODEL || "qwen3.5-plus";
-  const baseUrl = process.env.OPENAI_BASE_URL || "https://coding.dashscope.aliyuncs.com/v1";
+  const model = process.env.DASHSCOPE_MODEL || "qwen3.6-plus";
+  const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1";
 
   const systemPrompt = [
     "你是一位文章阅读助手，帮助读者深入理解当前正在阅读的文章。",
@@ -78,7 +78,7 @@ exports.handler = async function handler(event) {
     response = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

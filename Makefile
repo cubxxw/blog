@@ -146,11 +146,11 @@ envbuild: module-check content-index
 ## netlify-dev: Run local Netlify dev server with Hugo site and Functions.
 .PHONY: netlify-dev
 netlify-dev: module-check content-index
-	@if [ -z "$$OPENAI_API_KEY" ]; then \
-		echo "OPENAI_API_KEY is not set. Export it before running make netlify-dev." 1>&2; \
+	@if [ -z "$$DASHSCOPE_API_KEY" ]; then \
+		echo "DASHSCOPE_API_KEY is not set. Export it before running make netlify-dev." 1>&2; \
 		exit 1; \
 	fi
-	@OPENAI_MODEL=$${OPENAI_MODEL:-gpt-5.4-mini} npx netlify dev \
+	@DASHSCOPE_MODEL=$${DASHSCOPE_MODEL:-qwen3.6-plus} npx netlify dev \
 		--framework "#custom" \
 		--command "hugo server --environment development --bind 0.0.0.0 --port $(HUGO_DEV_PORT)" \
 		--target-port $(HUGO_DEV_PORT) \

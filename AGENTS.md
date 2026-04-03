@@ -10,7 +10,7 @@ This repository is a Hugo blog with a customized `PaperMod` theme. Main site con
 - `make run`: start the main Hugo dev server with drafts enabled on port `13131`.
 - `make build`: generate a local development build into `public/`.
 - `make envbuild`: build with the system `hugo` binary and refresh the generated content index first.
-- `make netlify-dev`: run Hugo plus Netlify Functions locally; requires `OPENAI_API_KEY`.
+- `make netlify-dev`: run Hugo plus Netlify Functions locally; requires `DASHSCOPE_API_KEY`.
 - `make new-post POST_NAME="slug"`: scaffold paired English and Chinese posts.
 - `node scripts/generate-content-index.mjs`: refresh the AI search index after content changes affecting search.
 
@@ -28,4 +28,4 @@ Recent history shows a mix of Conventional Commit prefixes (`feat:`, `fix:`) and
 
 ## Configuration & Security Tips
 
-Do not commit secrets. `OPENAI_API_KEY` is required only for local Netlify function work. Treat `public/` as generated output, and avoid editing `themes/PaperMod` directly unless the theme override cannot be handled in `layouts/` or `assets/`.
+Do not commit secrets. `DASHSCOPE_API_KEY` is required only for local Netlify function work. Treat `public/` as generated output, and avoid editing `themes/PaperMod` directly unless the theme override cannot be handled in `layouts/` or `assets/`.

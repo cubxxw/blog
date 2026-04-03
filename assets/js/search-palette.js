@@ -203,7 +203,7 @@
 
       if (err.message === 'LOCAL_DEV_404') {
         errorMsg = `<strong>Local Dev Mode Detected</strong><br>Hugo server does not host AI functions. Please run <code>netlify dev</code> to test AI features locally.`;
-      } else if (err.message.includes('Missing OPENAI_API_KEY')) {
+      } else if (err.message.includes('Missing DASHSCOPE_API_KEY')) {
         errorMsg = `<strong>Configuration Error</strong><br>The AI service is missing an API key. Please check your Netlify environment variables.`;
       } else if (err.message) {
         errorMsg = `<strong>Error</strong>: ${err.message}`;
