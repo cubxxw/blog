@@ -10,6 +10,21 @@
 
 当用户请求博客相关任务时，请遵循以下规范：
 
+### 0. 项目级写作约束
+
+- 本仓库的正式内容目录是 `content/{lang}/{section}/...`
+- 聚合入口使用 `articles`，不是根级 `posts`
+- 普通文章只放在：
+  - `content/zh/ai-technology/posts/`
+  - `content/zh/growth/posts/`
+  - `content/en/ai-technology/posts/`
+  - `content/en/growth/posts/`
+- 项目型文章只放在：
+  - `content/zh/projects/`
+  - `content/en/projects/`
+- 所有发布时间默认以中国上海时区为准，统一使用 `+08:00`
+- 如果发布时间晚于当前上海时间，Hugo 生产构建会把它当作 future content，不会发布
+
 ### 1. 标签使用规范
 
 **必须检查** `config/tags-mapping.json` 使用标准标签名：
@@ -39,20 +54,55 @@ title: '文章标题'
 date: 2026-03-28T12:00:00+08:00
 draft: false
 showtoc: true
+tocopen: false
+type: posts
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - Go
   - Kubernetes
-categories: ["Development"]
+categories:
+  - Development
 description: >
   纯文本描述，不含 Markdown 语法
-keywords: [Go, Kubernetes, Deployment]
 ---
 ```
 
 **注意事项**：
+- `date` 必须显式写上海时区时间，推荐格式：`YYYY-MM-DDTHH:mm:ss+08:00`
+- 不要混用 `+07:00`、UTC、或省略时区的本地时间
 - `description` 必须是纯文本，不含 `**`, `*`, `#` 等 Markdown 符号
-- `keywords` 从 `tags` 自动生成（见 SEO 配置）
+- `keywords` 建议默认保留为空数组 `[]`，只有在确实需要精细 SEO 补充时再填写
 - 双语文章设置 `draft: true` 直到翻译完成
+
+**推荐的文章 meta baseline**：
+
+```yaml
+---
+title: '文章标题'
+date: 2026-03-28T12:00:00+08:00
+draft: false
+showtoc: true
+tocopen: false
+type: posts
+author: ["Xinwei Xiong", "Me"]
+keywords: []
+tags:
+  - AI
+  - Open Source
+categories:
+  - Development
+description: >
+  用 1 到 2 句话说明文章解决什么问题、适合谁读、核心结论是什么。保持纯文本，不写 Markdown，不堆砌标签词。
+---
+```
+
+**为什么这是更好的写法**：
+- 字段顺序稳定，便于批量维护和审查
+- `date` 明确带 `+08:00`，不会因为时区导致“本地能看、线上不发布”
+- `type: posts` 保持和现有文章模板一致
+- `keywords: []` 比伪 SEO 关键词更安全，避免低质量重复
+- `description` 只承担摘要职责，不承担宣传文案职责
 
 ### 3. 文件路径规范
 
@@ -60,13 +110,21 @@ keywords: [Go, Kubernetes, Deployment]
 content/
 ├── en/
 │   ├── ai-technology/posts/   # AI 技术文章
-│   └── growth/posts/          # 成长类文章
+│   ├── growth/posts/          # 成长类文章
+│   ├── projects/              # AI 项目文章
+│   └── articles/_index.md     # 全部文章聚合页
 ├── zh/
 │   ├── ai-technology/posts/
-│   └── growth/posts/
-└── archives.md                 # 归档页面
-└── travel.md                   # 旅行页面
+│   ├── growth/posts/
+│   ├── projects/
+│   └── articles/_index.md
 ```
+
+**不要再使用**：
+- `content/en/posts/`
+- `content/zh/posts/`
+
+它们不再是内容主目录，只保留历史兼容语义。
 
 ### 4. 翻译文章处理
 
@@ -84,7 +142,7 @@ content/
 - 有独特的 `title`（含核心关键词）
 - 有 150-160 字符的 `description`
 - 有 5-8 个相关 `tags`
-- 自动生成 `keywords`（从 tags）
+- `keywords` 默认可为空，不强制堆砌
 
 ---
 
@@ -93,11 +151,39 @@ content/
 ### 创建新文章
 
 ```bash
-# 中文文章
-hugo new content zh/ai-technology/posts/my-article.md
+# 技术文章
+hugo new content content/zh/ai-technology/posts/my-article.md
+hugo new content content/en/ai-technology/posts/my-article.md
 
-# 英文文章
-hugo new content en/growth/posts/my-article.md
+# 成长文章
+hugo new content content/zh/growth/posts/my-article.md
+hugo new content content/en/growth/posts/my-article.md
+
+# AI 项目文章
+hugo new content content/zh/projects/my-project.md --kind ai-project
+hugo new content content/en/projects/my-project.md --kind ai-project
+```
+
+**更推荐的项目内命令**：
+
+```bash
+make new-post SECTION="ai-technology" POST_NAME="my-article"
+make new-post SECTION="growth" POST_NAME="my-article"
+make new-ai-project PROJECT_NAME="my-project"
+```
+
+### 添加文章的推荐流程
+
+1. 先判断文章属于 `ai-technology`、`growth` 还是 `projects`
+2. 用对应命令创建文件，不要手工新建到错误目录
+3. 先补完整 front matter，再写正文
+4. `date` 一律写上海时间 `+08:00`
+5. 如果计划稍后发布，不要把 `date` 写到未来，优先用 `draft: true`
+6. 内容改完后刷新索引并本地验证
+
+```bash
+node scripts/generate-content-index.mjs
+make envbuild
 ```
 
 ### 检查标签
@@ -129,6 +215,8 @@ hugo --minify
 ### 文章发布检查
 
 - [ ] Front matter 格式正确
+- [ ] `date` 使用上海时区 `+08:00`
+- [ ] 发布时间不是未来时间，除非明确要延迟发布
 - [ ] 使用标准标签名（检查 tags-mapping.json）
 - [ ] description 无 Markdown 语法
 - [ ] 有 cover image（可选但推荐）
@@ -157,7 +245,7 @@ hugo --minify
 
 | 文件 | 用途 |
 |------|------|
-| `hugo.yaml` | Hugo 主配置 |
+| `config.yml` | Hugo 主配置 |
 | `config/tags-mapping.json` | 标签同义词映射 |
 | `TAGS.md` | 标签规范文档 |
 | `CLAUDE.md` | 本文档 |
@@ -181,6 +269,13 @@ hugo --minify
 ---
 
 ## 🚨 常见问题
+
+### Q0: 明明文件在 `content/` 里，线上却没有发布
+**常见原因**: `date` 写成了未来时间，且使用了上海时区之外的偏移或错误时间
+**修复**:
+- 优先把 `date` 改成已经到达的 `+08:00` 时间
+- 如果只是暂存文章，改用 `draft: true`
+- 不要依赖“本地机器当前时区”和 Hugo 自己猜测
 
 ### Q1: 文章元信息显示 HTML 代码
 **原因**: `post_meta.html` 未使用 `safeHTML` 过滤器
