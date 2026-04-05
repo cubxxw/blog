@@ -1,6 +1,6 @@
 ---
 title: '在不被需要的时代，如何维持自我的重量'
-date: 2026-04-05T22:00:00+08:00
+date: 2026-04-04T22:00:00+08:00
 draft: false
 showtoc: true
 tocopen: true
