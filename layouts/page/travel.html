@@ -1,0 +1,1093 @@
+{{- define "main" }}
+
+{{- $isZh := eq .Lang "zh" }}
+{{- $polarsteps := .Params.polarsteps_url | default "https://www.polarsteps.com/cubxxw" }}
+
+{{- $travelTags := slice "travel" "Travel" "Adventure" "旅行" "Exploration" "探索" "hiking" "Hiking" }}
+{{- $travelPages := slice }}
+{{- range .Site.RegularPages }}
+  {{- if and (not .Params.Draft) (.Params.tags) }}
+    {{- $pageTags := .Params.tags }}
+    {{- $intersect := intersect $pageTags $travelTags }}
+    {{- if gt (len $intersect) 0 }}
+      {{- $travelPages = $travelPages | append . }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- $travelPages = sort $travelPages "Date" "desc" }}
+{{- $articleCount := len $travelPages }}
+
+<div class="travel-page">
+
+  <!-- ===== HERO ===== -->
+  <section class="tp-hero">
+    <div class="tp-hero__bg">
+      <div class="tp-hero__grid"></div>
+      <div class="tp-hero__orb tp-hero__orb--1"></div>
+      <div class="tp-hero__orb tp-hero__orb--2"></div>
+      <div class="tp-hero__orb tp-hero__orb--3"></div>
+      <!-- Decorative compass rose -->
+      <svg class="tp-hero__compass" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="100" cy="100" r="90" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <circle cx="100" cy="100" r="70" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <circle cx="100" cy="100" r="50" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="10" y1="100" x2="190" y2="100" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="29" y1="29" x2="171" y2="171" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="171" y1="29" x2="29" y2="171" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <polygon points="100,15 106,95 100,105 94,95" fill="rgba(255,255,255,0.5)"/>
+        <polygon points="100,185 106,105 100,95 94,105" fill="rgba(255,255,255,0.2)"/>
+        <polygon points="15,100 95,94 105,100 95,106" fill="rgba(255,255,255,0.2)"/>
+        <polygon points="185,100 105,94 95,100 105,106" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="100" cy="100" r="6" fill="rgba(255,255,255,0.6)"/>
+        <text x="100" y="8" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">N</text>
+        <text x="100" y="198" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="sans-serif">S</text>
+        <text x="196" y="104" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="sans-serif">E</text>
+        <text x="4" y="104" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="sans-serif">W</text>
+      </svg>
+    </div>
+
+    <div class="tp-hero__content">
+      <div class="tp-hero__badge">
+        <span class="tp-hero__badge-dot"></span>
+        {{ if $isZh }}数字游民 · 探险者{{ else }}Digital Nomad · Explorer{{ end }}
+      </div>
+      <h1 class="tp-hero__title">
+        {{ if $isZh }}
+          <span class="tp-hero__title-line1">探索世界</span>
+          <span class="tp-hero__title-line2">记录足迹</span>
+        {{ else }}
+          <span class="tp-hero__title-line1">Explore the World</span>
+          <span class="tp-hero__title-line2">Leave Footprints</span>
+        {{ end }}
+      </h1>
+      <p class="tp-hero__sub">
+        {{ if $isZh }}一步一个脚印，记录旅途中的真实故事与深度感悟{{ else }}One step at a time — real stories and deep reflections from the road{{ end }}
+      </p>
+      <div class="tp-hero__actions">
+        <a href="{{ $polarsteps }}" target="_blank" rel="noopener" class="tp-btn tp-btn--primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          {{ if $isZh }}查看 Polarsteps{{ else }}View Polarsteps{{ end }}
+        </a>
+        <a href="#travel-stories" class="tp-btn tp-btn--ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          {{ if $isZh }}旅行故事{{ else }}Travel Stories{{ end }}
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="tp-hero__scroll">
+      <div class="tp-hero__scroll-line"></div>
+      <span>{{ if $isZh }}向下探索{{ else }}Scroll{{ end }}</span>
+    </div>
+  </section>
+
+  <!-- ===== POLARSTEPS MAP ===== -->
+  <section class="tp-map">
+    <div class="tp-section-header">
+      <div class="tp-section-header__eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        {{ if $isZh }}实时轨迹{{ else }}Live Tracking{{ end }}
+      </div>
+      <h2 class="tp-section-header__title">{{ if $isZh }}我的旅行地图{{ else }}My Travel Map{{ end }}</h2>
+      <p class="tp-section-header__desc">{{ if $isZh }}在 Polarsteps 上追踪我的实时旅行路线{{ else }}Track my real-time travel routes on Polarsteps{{ end }}</p>
+    </div>
+    <div class="tp-map__frame-wrap">
+      <div class="tp-map__frame-deco tp-map__frame-deco--tl"></div>
+      <div class="tp-map__frame-deco tp-map__frame-deco--tr"></div>
+      <div class="tp-map__frame-deco tp-map__frame-deco--bl"></div>
+      <div class="tp-map__frame-deco tp-map__frame-deco--br"></div>
+      <iframe
+        src="{{ $polarsteps }}"
+        frameborder="0"
+        scrolling="no"
+        width="100%"
+        height="520"
+        allowfullscreen
+        loading="lazy"
+        title="{{ if $isZh }}Polarsteps 旅行地图{{ else }}Polarsteps Travel Map{{ end }}">
+      </iframe>
+      <div class="tp-map__fallback">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        {{ if $isZh }}
+          地图加载中… <a href="{{ $polarsteps }}" target="_blank" rel="noopener">直接访问 Polarsteps</a>
+        {{ else }}
+          Map loading… <a href="{{ $polarsteps }}" target="_blank" rel="noopener">Visit Polarsteps directly</a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DYNAMIC STATS from articles ===== -->
+  {{- if gt $articleCount 0 }}
+  <section class="tp-stats">
+    <div class="tp-stats__inner">
+      <div class="tp-stat">
+        <div class="tp-stat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <span class="tp-stat__num">{{ $articleCount }}</span>
+        <span class="tp-stat__label">{{ if $isZh }}旅行故事{{ else }}Travel Stories{{ end }}</span>
+      </div>
+      {{- $allTags := slice }}
+      {{- range $travelPages }}
+        {{- range .Params.tags }}
+          {{- $allTags = $allTags | append . }}
+        {{- end }}
+      {{- end }}
+      {{- $uniqueTags := $allTags | uniq }}
+      <div class="tp-stat">
+        <div class="tp-stat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <span class="tp-stat__num">{{ len $uniqueTags }}</span>
+        <span class="tp-stat__label">{{ if $isZh }}探索主题{{ else }}Topics{{ end }}</span>
+      </div>
+      {{- $firstDate := (index (sort $travelPages "Date" "asc") 0).Date }}
+      {{- $yearsOnRoad := now.Year | int }}
+      {{- $startYear := $firstDate.Year | int }}
+      {{- $years := sub $yearsOnRoad $startYear }}
+      {{- if lt $years 1 }}{{- $years = 1 }}{{- end }}
+      <div class="tp-stat">
+        <div class="tp-stat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span class="tp-stat__num">{{ $years }}+</span>
+        <span class="tp-stat__label">{{ if $isZh }}旅行年数{{ else }}Years Traveling{{ end }}</span>
+      </div>
+      <div class="tp-stat">
+        <div class="tp-stat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        </div>
+        <span class="tp-stat__num">∞</span>
+        <span class="tp-stat__label">{{ if $isZh }}探索可能{{ else }}Possibilities{{ end }}</span>
+      </div>
+    </div>
+  </section>
+  {{- end }}
+
+  <!-- ===== TRAVEL ARTICLES ===== -->
+  <section id="travel-stories" class="tp-articles">
+    <div class="tp-section-header">
+      <div class="tp-section-header__eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        {{ if $isZh }}来自路上{{ else }}From the Road{{ end }}
+      </div>
+      <h2 class="tp-section-header__title">{{ if $isZh }}旅行故事与记录{{ else }}Travel Stories & Journals{{ end }}</h2>
+      <p class="tp-section-header__desc">{{ if $isZh }}深度记录、真实感悟和实用指南{{ else }}Deep dives, honest reflections, and practical guides{{ end }}</p>
+    </div>
+
+    {{- if gt $articleCount 0 }}
+    <div class="tp-articles__grid">
+      {{- range $i, $page := $travelPages }}
+      <article class="tp-card {{ if eq $i 0 }}tp-card--featured{{ end }}">
+        {{- with $page.Params.cover.image }}
+        <div class="tp-card__img-wrap">
+          <img src="{{ . }}" alt="{{ $page.Title }}" loading="lazy" class="tp-card__img">
+          <div class="tp-card__img-overlay"></div>
+        </div>
+        {{- else }}
+        <div class="tp-card__img-wrap tp-card__img-wrap--placeholder">
+          <div class="tp-card__placeholder-pattern"></div>
+          <svg class="tp-card__placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        {{- end }}
+        <div class="tp-card__body">
+          <div class="tp-card__meta">
+            <time class="tp-card__date" datetime="{{ $page.Date.Format "2006-01-02" }}">
+              {{ if $isZh }}{{ $page.Date.Format "2006 年 1 月 2 日" }}{{ else }}{{ $page.Date.Format "Jan 2, 2006" }}{{ end }}
+            </time>
+            {{- with $page.Params.tags }}
+            <div class="tp-card__tags">
+              {{- range first 2 . }}
+              <span class="tp-tag">{{ . }}</span>
+              {{- end }}
+            </div>
+            {{- end }}
+          </div>
+          <h3 class="tp-card__title">
+            <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
+          </h3>
+          {{- if ne $i 0 }}
+          <p class="tp-card__excerpt">{{ $page.Summary | plainify | htmlUnescape | truncate 100 }}</p>
+          {{- else }}
+          <p class="tp-card__excerpt">{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}</p>
+          {{- end }}
+          <a href="{{ $page.Permalink }}" class="tp-card__cta">
+            {{ if $isZh }}阅读全文{{ else }}Read Story{{ end }}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <a class="tp-card__link-cover" href="{{ $page.Permalink }}" aria-label="{{ $page.Title }}"></a>
+      </article>
+      {{- end }}
+    </div>
+    {{- else }}
+    <div class="tp-articles__empty">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <p>{{ if $isZh }}旅行故事即将到来…{{ else }}Travel stories coming soon…{{ end }}</p>
+      <a href="{{ $polarsteps }}" target="_blank" rel="noopener" class="tp-btn tp-btn--primary">
+        {{ if $isZh }}先去 Polarsteps 看看{{ else }}See Polarsteps for now{{ end }}
+      </a>
+    </div>
+    {{- end }}
+  </section>
+
+  <!-- ===== PHILOSOPHY ===== -->
+  <section class="tp-philosophy">
+    <div class="tp-philosophy__inner">
+      <div class="tp-philosophy__quote-mark">"</div>
+      <blockquote class="tp-philosophy__quote">
+        {{ if $isZh }}
+          旅行不是逃离生活，而是让生活不会逃离你
+        {{ else }}
+          Travel is not an escape from life — it's so life doesn't escape from you
+        {{ end }}
+      </blockquote>
+      <div class="tp-philosophy__cards">
+        <div class="tp-philosophy__card">
+          <div class="tp-philosophy__card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>{{ if $isZh }}真实连接{{ else }}Real Connection{{ end }}</h3>
+          <p>{{ if $isZh }}与当地文化深度交流，而非走马观花{{ else }}Deep cultural exchange, not just sightseeing{{ end }}</p>
+        </div>
+        <div class="tp-philosophy__card">
+          <div class="tp-philosophy__card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <h3>{{ if $isZh }}慢旅行{{ else }}Slow Travel{{ end }}</h3>
+          <p>{{ if $isZh }}驻留体验，不赶打卡，感受每个地方的节奏{{ else }}Stay longer, skip checklists, feel the rhythm of each place{{ end }}</p>
+        </div>
+        <div class="tp-philosophy__card">
+          <div class="tp-philosophy__card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>{{ if $isZh }}数字游民{{ else }}Digital Nomad{{ end }}</h3>
+          <p>{{ if $isZh }}代码与旅途并行，世界是我的办公室{{ else }}Code and travel in parallel — the world is my office{{ end }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONNECT ===== -->
+  <section class="tp-connect">
+    <div class="tp-connect__bg-pattern"></div>
+    <div class="tp-connect__content">
+      <h2 class="tp-connect__title">{{ if $isZh }}一起出发？{{ else }}Travel Together?{{ end }}</h2>
+      <p class="tp-connect__desc">
+        {{ if $isZh }}
+          分享旅行技巧、交流冒险故事，或者讨论数字游民生活
+        {{ else }}
+          Share travel tips, exchange adventure stories, or discuss the nomad life
+        {{ end }}
+      </p>
+      <div class="tp-connect__links">
+        {{- with .Site.Params.socialIcons }}
+          {{- range . }}
+            {{- if or (eq .name "twitter") (eq .name "github") (eq .name "email") }}
+            <a href="{{ .url }}" {{ if ne .name "email" }}target="_blank" rel="noopener"{{ end }} class="tp-social-link">
+              {{ .name }}
+            </a>
+            {{- end }}
+          {{- end }}
+        {{- else }}
+        <a href="https://twitter.com/cubxxw" target="_blank" rel="noopener" class="tp-social-link">Twitter / X</a>
+        <a href="https://github.com/cubxxw" target="_blank" rel="noopener" class="tp-social-link">GitHub</a>
+        {{- end }}
+        <a href="{{ $polarsteps }}" target="_blank" rel="noopener" class="tp-social-link tp-social-link--featured">
+          Polarsteps
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<style>
+/* ============================================================
+   TRAVEL PAGE — Premium Travel Blog Design
+   ============================================================ */
+
+/* Tokens */
+.travel-page {
+  --tp-ocean:   #0077b6;
+  --tp-sky:     #48cae4;
+  --tp-sand:    #e9c46a;
+  --tp-jungle:  #2d6a4f;
+  --tp-sunset:  #e76f51;
+  --tp-deep:    #023e8a;
+  --tp-mist:    #ade8f4;
+  --tp-ink:     #03045e;
+
+  --tp-surface: #ffffff;
+  --tp-surface2: #f0f7ff;
+  --tp-border:  #d0e8f4;
+  --tp-text:    #1a2e44;
+  --tp-muted:   #5a7a90;
+  --tp-radius:  20px;
+  --tp-radius-sm: 12px;
+
+  --tp-shadow-sm: 0 2px 12px rgba(0,119,182,0.08);
+  --tp-shadow-md: 0 8px 32px rgba(0,119,182,0.14);
+  --tp-shadow-lg: 0 20px 60px rgba(2,62,138,0.2);
+
+  font-family: inherit;
+  color: var(--tp-text);
+}
+
+.dark .travel-page {
+  --tp-surface:  #0f1d2e;
+  --tp-surface2: #162334;
+  --tp-border:   #1e3650;
+  --tp-text:     #c8dff0;
+  --tp-muted:    #6b8fab;
+  --tp-shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
+  --tp-shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+  --tp-shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ===== HERO ===== */
+.tp-hero {
+  position: relative;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--tp-radius);
+  margin: 32px 0 64px;
+}
+
+.tp-hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, #0077b6 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, #023e8a 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, #2d6a4f 0%, transparent 40%),
+    linear-gradient(135deg, #03045e 0%, #0077b6 50%, #023e8a 100%);
+}
+
+.tp-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.tp-hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: tp-float 8s ease-in-out infinite;
+}
+.tp-hero__orb--1 {
+  width: 320px; height: 320px;
+  top: -80px; right: -60px;
+  background: rgba(72, 202, 228, 0.15);
+  animation-delay: 0s;
+}
+.tp-hero__orb--2 {
+  width: 250px; height: 250px;
+  bottom: -60px; left: -40px;
+  background: rgba(45, 106, 79, 0.2);
+  animation-delay: 3s;
+}
+.tp-hero__orb--3 {
+  width: 180px; height: 180px;
+  top: 40%; left: 40%;
+  background: rgba(233, 196, 106, 0.1);
+  animation-delay: 5s;
+}
+
+@keyframes tp-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+.tp-hero__compass {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  height: 260px;
+  opacity: 0.5;
+  animation: tp-spin-slow 60s linear infinite;
+}
+
+@keyframes tp-spin-slow {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to   { transform: translateY(-50%) rotate(360deg); }
+}
+
+.tp-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 40px;
+  max-width: 700px;
+}
+
+.tp-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+  backdrop-filter: blur(8px);
+}
+
+.tp-hero__badge-dot {
+  width: 7px; height: 7px;
+  background: #48cae4;
+  border-radius: 50%;
+  animation: tp-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tp-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.tp-hero__title {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: white !important;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.tp-hero__title-line1,
+.tp-hero__title-line2 {
+  display: block;
+}
+
+.tp-hero__title-line2 {
+  background: linear-gradient(135deg, #e9c46a, #48cae4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tp-hero__sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.tp-hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tp-hero__scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tp-hero__scroll-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: tp-scroll-line 2s ease-in-out infinite;
+}
+
+@keyframes tp-scroll-line {
+  0%, 100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  50% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
+}
+
+/* ===== BUTTONS ===== */
+.tp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.tp-btn--primary {
+  background: white;
+  color: var(--tp-deep);
+}
+.tp-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255,255,255,0.25);
+  color: var(--tp-deep);
+}
+
+.tp-btn--ghost {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+}
+.tp-btn--ghost:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* ===== SECTION HEADER ===== */
+.tp-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.tp-section-header__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--tp-ocean);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tp-section-header__title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  color: var(--tp-text);
+}
+
+.tp-section-header__desc {
+  font-size: 1rem;
+  color: var(--tp-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ===== MAP ===== */
+.tp-map {
+  margin: 0 0 72px;
+}
+
+.tp-map__frame-wrap {
+  position: relative;
+  border-radius: var(--tp-radius);
+  overflow: hidden;
+  box-shadow: var(--tp-shadow-lg);
+  border: 1px solid var(--tp-border);
+  background: var(--tp-surface2);
+}
+
+.tp-map__frame-deco {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 3;
+  pointer-events: none;
+}
+.tp-map__frame-deco--tl { top: 12px; left: 12px; border-top: 2px solid var(--tp-ocean); border-left: 2px solid var(--tp-ocean); }
+.tp-map__frame-deco--tr { top: 12px; right: 12px; border-top: 2px solid var(--tp-ocean); border-right: 2px solid var(--tp-ocean); }
+.tp-map__frame-deco--bl { bottom: 12px; left: 12px; border-bottom: 2px solid var(--tp-ocean); border-left: 2px solid var(--tp-ocean); }
+.tp-map__frame-deco--br { bottom: 12px; right: 12px; border-bottom: 2px solid var(--tp-ocean); border-right: 2px solid var(--tp-ocean); }
+
+.tp-map__frame-wrap iframe {
+  display: block;
+  width: 100%;
+}
+
+.tp-map__fallback {
+  padding: 16px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--tp-muted);
+  background: var(--tp-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.tp-map__fallback a {
+  color: var(--tp-ocean);
+  font-weight: 500;
+}
+
+/* ===== STATS ===== */
+.tp-stats {
+  margin: 0 0 72px;
+}
+
+.tp-stats__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2px;
+  background: var(--tp-border);
+  border-radius: var(--tp-radius);
+  overflow: hidden;
+  box-shadow: var(--tp-shadow-sm);
+}
+
+.tp-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 24px;
+  background: var(--tp-surface);
+  gap: 10px;
+  transition: background 0.2s;
+}
+.tp-stat:hover {
+  background: var(--tp-surface2);
+}
+
+.tp-stat__icon {
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tp-ocean);
+}
+.tp-stat__icon svg {
+  width: 26px; height: 26px;
+}
+
+.tp-stat__num {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--tp-ocean), var(--tp-sky));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.tp-stat__label {
+  font-size: 13px;
+  color: var(--tp-muted);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ===== ARTICLES ===== */
+.tp-articles {
+  margin: 0 0 72px;
+}
+
+.tp-articles__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+/* First card spans full or 2 columns on wider screens */
+@media (min-width: 900px) {
+  .tp-articles__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tp-card--featured {
+    grid-column: span 2;
+  }
+  .tp-card--featured .tp-card__img-wrap {
+    height: 300px;
+  }
+  .tp-card--featured .tp-card__title {
+    font-size: 1.5rem;
+  }
+}
+
+.tp-card {
+  position: relative;
+  background: var(--tp-surface);
+  border: 1px solid var(--tp-border);
+  border-radius: var(--tp-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  box-shadow: var(--tp-shadow-sm);
+}
+.tp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--tp-shadow-md);
+  border-color: var(--tp-sky);
+}
+
+.tp-card__img-wrap {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+.tp-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.tp-card:hover .tp-card__img {
+  transform: scale(1.04);
+}
+.tp-card__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(2,62,138,0.3));
+}
+
+.tp-card__img-wrap--placeholder {
+  background: linear-gradient(135deg, var(--tp-deep) 0%, var(--tp-ocean) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tp-card__placeholder-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.tp-card__placeholder-icon {
+  width: 64px; height: 64px;
+  color: rgba(255,255,255,0.25);
+  position: relative;
+}
+
+.tp-card__body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tp-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tp-card__date {
+  font-size: 12px;
+  color: var(--tp-muted);
+  font-weight: 500;
+}
+
+.tp-card__tags {
+  display: flex;
+  gap: 6px;
+}
+
+.tp-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(0,119,182,0.08);
+  color: var(--tp-ocean);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.dark .tp-tag {
+  background: rgba(72,202,228,0.12);
+  color: var(--tp-sky);
+}
+
+.tp-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+.tp-card__title a {
+  color: var(--tp-text);
+  text-decoration: none;
+}
+.tp-card:hover .tp-card__title a {
+  color: var(--tp-ocean);
+}
+
+.tp-card__excerpt {
+  font-size: 14px;
+  color: var(--tp-muted);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+
+.tp-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--tp-ocean);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 4px;
+  transition: gap 0.2s;
+}
+.tp-card__cta:hover {
+  gap: 10px;
+}
+
+.tp-card__link-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+/* Lift interactive elements above the cover link */
+.tp-card__cta, .tp-card__tags {
+  position: relative;
+  z-index: 2;
+}
+
+.tp-articles__empty {
+  text-align: center;
+  padding: 80px 40px;
+  color: var(--tp-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.tp-articles__empty p {
+  font-size: 1.1rem;
+}
+
+/* ===== PHILOSOPHY ===== */
+.tp-philosophy {
+  margin: 0 0 72px;
+  background: var(--tp-surface2);
+  border: 1px solid var(--tp-border);
+  border-radius: var(--tp-radius);
+  padding: 64px 48px;
+}
+
+.tp-philosophy__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tp-philosophy__quote-mark {
+  font-size: 80px;
+  line-height: 0.5;
+  color: var(--tp-ocean);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+  margin-bottom: 16px;
+}
+
+.tp-philosophy__quote {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--tp-text);
+  margin: 0 0 48px;
+  border: none;
+  padding: 0;
+}
+
+.tp-philosophy__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.tp-philosophy__card {
+  background: var(--tp-surface);
+  border: 1px solid var(--tp-border);
+  border-radius: var(--tp-radius-sm);
+  padding: 28px 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tp-philosophy__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--tp-shadow-sm);
+}
+
+.tp-philosophy__card-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, rgba(0,119,182,0.1), rgba(72,202,228,0.1));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tp-ocean);
+  margin-bottom: 16px;
+}
+.tp-philosophy__card-icon svg {
+  width: 22px; height: 22px;
+}
+
+.tp-philosophy__card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--tp-text);
+}
+
+.tp-philosophy__card p {
+  font-size: 13px;
+  color: var(--tp-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== CONNECT ===== */
+.tp-connect {
+  position: relative;
+  border-radius: var(--tp-radius);
+  overflow: hidden;
+  margin: 0 0 48px;
+  background: linear-gradient(135deg, var(--tp-deep) 0%, var(--tp-ocean) 60%, var(--tp-jungle) 100%);
+  padding: 72px 48px;
+  text-align: center;
+}
+
+.tp-connect__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 40%),
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: auto, 32px 32px, 32px 32px;
+}
+
+.tp-connect__content {
+  position: relative;
+  z-index: 1;
+}
+
+.tp-connect__title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: white !important;
+  margin-bottom: 16px;
+}
+
+.tp-connect__desc {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  margin-bottom: 36px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tp-connect__links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tp-social-link {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.08);
+}
+.tp-social-link:hover {
+  background: rgba(255,255,255,0.18);
+  color: white;
+  transform: translateY(-2px);
+}
+.tp-social-link--featured {
+  background: white;
+  color: var(--tp-deep) !important;
+  border-color: white;
+}
+.tp-social-link--featured:hover {
+  background: rgba(255,255,255,0.9);
+  color: var(--tp-deep) !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .tp-hero {
+    min-height: 480px;
+    margin: 16px 0 48px;
+  }
+  .tp-hero__content {
+    padding: 48px 24px;
+  }
+  .tp-hero__compass {
+    display: none;
+  }
+  .tp-hero__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .tp-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  .tp-map, .tp-stats, .tp-articles, .tp-philosophy, .tp-connect {
+    margin-bottom: 48px;
+  }
+  .tp-philosophy {
+    padding: 40px 24px;
+  }
+  .tp-connect {
+    padding: 48px 24px;
+  }
+  .tp-articles__grid {
+    grid-template-columns: 1fr;
+  }
+  .tp-stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tp-stats__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tp-section-header {
+    margin-bottom: 32px;
+  }
+}
+</style>
+
+{{- end }}
