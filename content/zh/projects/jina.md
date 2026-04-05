@@ -9,8 +9,6 @@ tags:
 categories:
   - AI Open Source
 author: cubxxw
-aliases:
-  - /zh/posts/ai-projects/jina/
 ---
 
 ## 项目概览

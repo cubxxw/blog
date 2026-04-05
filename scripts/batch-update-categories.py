@@ -3,6 +3,7 @@
 
 import os
 import re
+from pathlib import Path
 
 # 文章分类映射
 GROWTH_ARTICLES = [
@@ -121,25 +122,27 @@ def update_categories(filepath, new_category):
     return True
 
 def main():
-    posts_dir = "/Users/xiongxinwei/data/cubxxw/blog/content/zh/posts"
+    repo_root = Path(__file__).resolve().parents[1]
+    growth_dir = repo_root / "content" / "zh" / "growth" / "posts"
+    ai_tech_dir = repo_root / "content" / "zh" / "ai-technology" / "posts"
 
     updated_growth = 0
     updated_tech = 0
 
     # 更新成长类文章
     for filename in GROWTH_ARTICLES:
-        filepath = os.path.join(posts_dir, filename)
-        if os.path.exists(filepath):
-            if update_categories(filepath, "成长 (Growth)"):
+        filepath = growth_dir / filename
+        if filepath.exists():
+            if update_categories(str(filepath), "成长 (Growth)"):
                 updated_growth += 1
         else:
             print(f"文件不存在：{filename}")
 
     # 更新技术类文章
     for filename in TECH_ARTICLES:
-        filepath = os.path.join(posts_dir, filename)
-        if os.path.exists(filepath):
-            if update_categories(filepath, "技术 (Technology)"):
+        filepath = ai_tech_dir / filename
+        if filepath.exists():
+            if update_categories(str(filepath), "技术 (Technology)"):
                 updated_tech += 1
         else:
             print(f"文件不存在：{filename}")

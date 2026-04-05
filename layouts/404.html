@@ -7,7 +7,7 @@
         <p class="not-found-desc">{{ if $isZh }}这个页面好像去冒险了，找不回来了。让我们重新出发。{{ else }}Looks like this page went exploring without a map. Let's get you back on track.{{ end }}</p>
         <div class="not-found-actions">
             <a href="{{ "/" | relLangURL }}" class="not-found-btn not-found-btn--primary">← {{ if $isZh }}返回主页{{ else }}Go Home{{ end }}</a>
-            <a href="{{ "/archives/" | relLangURL }}" class="not-found-btn not-found-btn--secondary">{{ if $isZh }}浏览所有文章{{ else }}Browse All Posts{{ end }}</a>
+            <a href="{{ "/articles/" | relLangURL }}" class="not-found-btn not-found-btn--secondary">{{ if $isZh }}浏览所有文章{{ else }}Browse All Articles{{ end }}</a>
         </div>
         {{- $allPages := where site.RegularPages "Lang" site.Language.Lang }}
         {{- $recent := first 3 ($allPages.ByDate.Reverse) }}

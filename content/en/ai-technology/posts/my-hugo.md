@@ -281,12 +281,12 @@ Of course, as a cloud-native configuration file, yaml is more loved by me than t
 You can use the `hugo new` command to add new content, for example:
 
 ```bash
-❯ hugo new posts/my-first-post.md
+❯ hugo new growth/posts/my-first-post.md
 ```
 
-This command will generate the `content/posts/my-first-post.md` file,
+This command will generate the `content/growth/posts/my-first-post.md` file,
 
-Then, edit the `content/posts/my-first-post.md` file to add your content.
+Then, edit the `content/growth/posts/my-first-post.md` file to add your content.
 
 
 
@@ -317,12 +317,12 @@ By default, the path is strongly related. For example, in which directory you de
 For example, the above:
 
 ```bash
-❯ hugo new posts/my-first-post.md
+❯ hugo new growth/posts/my-first-post.md
 ```
 
 The default access URL for this post will usually be:
 
-+ http://localhost:1313/posts/my-first-post/
++ http://localhost:1313/growth/posts/my-first-post/
 
 Note the following points:
 
@@ -842,11 +842,11 @@ hugo new content posts/my-hugo.de.md
 For different directories:
 
 ```bash
-hugo new content content/en/posts/test.md
-hugo new content content/de/posts/test.md
-hugo new content content/zh/posts/test.md
-hugo new content content/fr/posts/test.md
-hugo new content content/es/posts/test.md
+hugo new content content/en/ai-technology/posts/test.md
+hugo new content content/zh/ai-technology/posts/test.md
+hugo new content content/en/growth/posts/test.md
+hugo new content content/zh/growth/posts/test.md
+hugo new content content/en/projects/test.md
 ```
 
 We add the following parameters to our configuration file:

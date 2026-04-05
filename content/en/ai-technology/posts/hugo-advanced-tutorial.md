@@ -984,7 +984,7 @@ The following is an example of the contents of a typical Hugo project directory:
 ...
 ```
 
-Using the example above, let's assume you have the following `content/posts/_index.md`:
+Using the example above, let's assume you have the following `content/articles/_index.md`:
 
 ```md
 ---
@@ -1010,7 +1010,7 @@ You can now access this `_index.md` content in the list template:
        <!-- "{{ .Content }}" pulls from the markdown content of the corresponding _index.md -->{{ .Content }}
      </article>
      <ul>
-       <!-- Ranges through content/posts/*.md -->
+       <!-- Ranges through content/articles/*.md -->
        {{ range .Pages }}
          <li>
            <a href="{{ .Permalink }}">{{ .Date.Format "2006-01-02" }} | {{ .Title }}</a>
@@ -1034,8 +1034,8 @@ The above will output the following HTML:
      <p>Follow my journey through this new blog.</p>
    </article>
    <ul>
-     <li><a href="/posts/post-01/">Post 1</a></li>
-     <li><a href="/posts/post-02/">Post 2</a></li>
+     <li><a href="/articles/post-01/">Post 1</a></li>
+     <li><a href="/articles/post-02/">Post 2</a></li>
    </ul>
 </main>
 <!--bottom of your baseof-->
@@ -1083,7 +1083,7 @@ Layout `/section/posts.html`
    <div>
      <h1>{{ .Title }}</h1>
      <ul>
-       <!-- Renders the li.html content view for each content/posts/*.md -->
+       <!-- Renders the li.html content view for each content/articles/*.md -->
        {{ range .Pages }}
          {{ .Render "li" }}
        {{ end }}

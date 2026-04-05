@@ -284,12 +284,12 @@ editPost:
 你可以使用 `hugo new` 命令来添加新的内容，例如：
 
 ```bash
-❯ hugo new posts/my-first-post.md
+❯ hugo new growth/posts/my-first-post.md
 ```
 
-这个命令会在生成 `content/posts/my-first-post.md` 文件，
+这个命令会生成 `content/growth/posts/my-first-post.md` 文件，
 
-然后，编辑 `content/posts/my-first-post.md` 文件，添加你的内容。
+然后，编辑 `content/growth/posts/my-first-post.md` 文件，添加你的内容。
 
 
 
@@ -320,12 +320,12 @@ editPost:
 比如说上面：
 
 ```bash
-❯ hugo new posts/my-first-post.md
+❯ hugo new growth/posts/my-first-post.md
 ```
 
 该帖子的默认访问URL通常会是：
 
-+ http://localhost:1313/posts/my-first-post/
++ http://localhost:1313/growth/posts/my-first-post/
 
 注意以下几点：
 
@@ -845,11 +845,11 @@ hugo new content posts/my-hugo.de.md
 针对不同目录：
 
 ```bash
-hugo new content content/en/posts/test.md
-hugo new content content/de/posts/test.md
-hugo new content content/zh/posts/test.md
-hugo new content content/fr/posts/test.md
-hugo new content content/es/posts/test.md
+hugo new content content/en/ai-technology/posts/test.md
+hugo new content content/zh/ai-technology/posts/test.md
+hugo new content content/en/growth/posts/test.md
+hugo new content content/zh/growth/posts/test.md
+hugo new content content/en/projects/test.md
 ```
 
 我们将以下参数添加到我们的配置文件中:

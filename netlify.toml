@@ -25,3 +25,13 @@
   HUGO_ENABLEGITINFO = "true"
   DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
   DASHSCOPE_MODEL = "qwen-turbo"
+
+[[redirects]]
+  from = "/posts/ai-projects/:slug/"
+  to = "/projects/:slug/"
+  status = 301
+
+[[redirects]]
+  from = "/zh/posts/ai-projects/:slug/"
+  to = "/zh/projects/:slug/"
+  status = 301

@@ -15,14 +15,11 @@
     document.querySelectorAll('#filter-tags .posts-filter__chip--tag')
   );
 
-  // State
   var state = {
     category: 'all',
     tags: [],
     sort: 'newest'
   };
-
-  // --- Core filter logic ---
 
   function applyFilters() {
     var visible = 0;
@@ -32,10 +29,8 @@
       var tagsStr = el.getAttribute('data-tags') || '';
       var articleTags = tagsStr ? tagsStr.split(',') : [];
 
-      // Category match
       var catMatch = state.category === 'all' || section === state.category;
 
-      // Tag match (AND — article must have ALL selected tags)
       var tagMatch = true;
       for (var i = 0; i < state.tags.length; i++) {
         if (articleTags.indexOf(state.tags[i]) === -1) {
@@ -49,13 +44,10 @@
       if (show) visible++;
     });
 
-    // Update count
     if (countEl) countEl.textContent = visible;
 
-    // Toggle empty state
     grid.classList.toggle('posts-grid--empty', visible === 0);
 
-    // Toggle clear button
     var hasFilters = state.category !== 'all' || state.tags.length > 0;
     if (clearBtn) clearBtn.style.display = hasFilters ? '' : 'none';
   }
@@ -72,8 +64,6 @@
     });
   }
 
-  // --- Category chips ---
-
   categoryBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var cat = btn.getAttribute('data-category');
@@ -88,8 +78,6 @@
       applyFilters();
     });
   });
-
-  // --- Tag chips (multi-select toggle) ---
 
   tagBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -110,16 +98,12 @@
     });
   });
 
-  // --- Sort ---
-
   if (sortSelect) {
     sortSelect.addEventListener('change', function () {
       state.sort = sortSelect.value;
       applySorting();
     });
   }
-
-  // --- Clear all filters ---
 
   if (clearBtn) {
     clearBtn.addEventListener('click', function () {

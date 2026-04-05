@@ -160,8 +160,8 @@
                         </div>
                         {{- else }}
                         <div class="profile_recent-posts">
-                            <a class="profile_recent-post" href="{{ "/archives/" | relLangURL }}">
-                                <span class="profile_recent-post__title">{{ if eq site.Language.Lang "zh" }}查看所有文章 →{{ else }}View all posts →{{ end }}</span>
+                            <a class="profile_recent-post" href="{{ "/articles/" | relLangURL }}">
+                                <span class="profile_recent-post__title">{{ if eq site.Language.Lang "zh" }}查看所有文章 →{{ else }}View all articles →{{ end }}</span>
                             </a>
                         </div>
                         {{- end }}

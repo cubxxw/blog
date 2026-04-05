@@ -107,13 +107,20 @@ run: tools.verify.hugo module-check content-index
 
 ## new-post: Create a new content file and automatically add the current date.
 POST_NAME ?=
+SECTION ?=
 .PHONY: new-post
 new-post: tools.verify.hugo module-check
 ifndef POST_NAME
 	$(error POST_NAME is not set. Please provide a name for the post. example: make new-post POST_NAME="hello-world")
 endif
-	@$(HUGO) new content content/en/posts/$(POST_NAME).md
-	@$(HUGO) new content content/zh/posts/$(POST_NAME).md
+ifndef SECTION
+	$(error SECTION is not set. Please provide ai-technology or growth. example: make new-post SECTION="growth" POST_NAME="hello-world")
+endif
+ifneq ($(filter $(SECTION),ai-technology growth),$(SECTION))
+	$(error SECTION must be one of: ai-technology, growth)
+endif
+	@$(HUGO) new content content/en/$(SECTION)/posts/$(POST_NAME).md
+	@$(HUGO) new content content/zh/$(SECTION)/posts/$(POST_NAME).md
 	@$(MAKE) content-index
 	@$(HUGO)
 
@@ -125,11 +132,11 @@ ifndef PROJECT_NAME
 	$(error PROJECT_NAME is not set. Please provide a name for the AI project. example: make new-ai-project PROJECT_NAME="llama")
 endif
 	@echo "Creating new AI project learning content for $(PROJECT_NAME)..."
-	@$(HUGO) new content content/en/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
-	@$(HUGO) new content content/zh/posts/ai-projects/$(PROJECT_NAME).md --kind ai-project
+	@$(HUGO) new content content/en/projects/$(PROJECT_NAME).md --kind ai-project
+	@$(HUGO) new content content/zh/projects/$(PROJECT_NAME).md --kind ai-project
 	@echo "✅ AI project files created successfully!"
-	@echo "📂 English version: content/en/posts/ai-projects/$(PROJECT_NAME).md"
-	@echo "📂 Chinese version: content/zh/posts/ai-projects/$(PROJECT_NAME).md"
+	@echo "📂 English version: content/en/projects/$(PROJECT_NAME).md"
+	@echo "📂 Chinese version: content/zh/projects/$(PROJECT_NAME).md"
 	@$(MAKE) content-index
 	@$(HUGO)
 

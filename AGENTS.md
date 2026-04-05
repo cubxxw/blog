@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is a Hugo blog with a customized `PaperMod` theme. Main site content lives under `content/`, split by language (`content/en/`, `content/zh/`) and section (`ai-technology`, `growth`, `posts`). Use `archetypes/` for new content templates. Custom layouts and overrides live in `layouts/`; shared styling and images live in `assets/` and `static/`. Utility scripts are in `scripts/`, and Netlify Functions are in `netlify/functions/`. The theme itself is tracked as a submodule in `themes/PaperMod`.
+This repository is a Hugo blog with a customized `PaperMod` theme. Main site content lives under `content/`, split by language (`content/en/`, `content/zh/`) and section (`ai-technology`, `growth`, `projects`). The root `articles` section is an aggregate landing page, not a content archive. Use `archetypes/` for new content templates. Custom layouts and overrides live in `layouts/`; shared styling and images live in `assets/` and `static/`. Utility scripts are in `scripts/`, and Netlify Functions are in `netlify/functions/`. The theme itself is tracked as a submodule in `themes/PaperMod`.
 
 ## Build, Test, and Development Commands
 
@@ -11,12 +11,13 @@ This repository is a Hugo blog with a customized `PaperMod` theme. Main site con
 - `make build`: generate a local development build into `public/`.
 - `make envbuild`: build with the system `hugo` binary and refresh the generated content index first.
 - `make netlify-dev`: run Hugo plus Netlify Functions locally; requires `DASHSCOPE_API_KEY`.
-- `make new-post POST_NAME="slug"`: scaffold paired English and Chinese posts.
+- `make new-post SECTION="growth" POST_NAME="slug"`: scaffold paired English and Chinese posts into `ai-technology/posts` or `growth/posts`.
+- `make new-ai-project PROJECT_NAME="slug"`: scaffold paired English and Chinese project pages into `projects/`.
 - `node scripts/generate-content-index.mjs`: refresh the AI search index after content changes affecting search.
 
 ## Coding Style & Naming Conventions
 
-Follow the existing style in each area. JavaScript in `netlify/functions/` uses CommonJS, semicolons, double quotes, and 2-space indentation. Hugo templates and YAML front matter should stay consistent with current files. Prefer lowercase, hyphenated slugs such as `content/en/posts/my-new-post.md`. Keep bilingual content mirrored when a feature or article is intended for both languages.
+Follow the existing style in each area. JavaScript in `netlify/functions/` uses CommonJS, semicolons, double quotes, and 2-space indentation. Hugo templates and YAML front matter should stay consistent with current files. Prefer lowercase, hyphenated slugs such as `content/en/growth/posts/my-new-post.md` or `content/en/projects/my-new-project.md`. Keep bilingual content mirrored when a feature or article is intended for both languages.
 
 ## Testing Guidelines
 

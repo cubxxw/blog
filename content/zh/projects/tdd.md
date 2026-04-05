@@ -8,8 +8,6 @@ categories: ["AI Open Source"]
 author: ["Xinwei Xiong", "Me"]
 description: >
   本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
-aliases:
-  - /zh/posts/ai-projects/tdd/
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。

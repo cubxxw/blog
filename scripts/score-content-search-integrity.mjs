@@ -70,8 +70,8 @@ function listMarkdownSlugs(dir) {
 }
 
 function scoreAiProjectParity() {
-  const enDir = path.join(repoRoot, "content/en/posts/ai-projects");
-  const zhDir = path.join(repoRoot, "content/zh/posts/ai-projects");
+  const enDir = path.join(repoRoot, "content/en/projects");
+  const zhDir = path.join(repoRoot, "content/zh/projects");
   const en = listMarkdownSlugs(enDir);
   const zh = listMarkdownSlugs(zhDir);
   const enOnly = en.filter((name) => !zh.includes(name));

@@ -18,7 +18,7 @@
   {{- end }}
 {{- end }}
 
-{{/* Sort tags by frequency — collect top 15 */}}
+{{/* Sort tags by frequency - collect top 15 */}}
 {{- $tagPairs := slice }}
 {{- range $tag, $count := $tagCounts }}
   {{- $tagPairs = $tagPairs | append (dict "tag" $tag "count" $count) }}
@@ -167,6 +167,6 @@
 
 </div>
 
-<script src="{{ "js/posts-filter.js" | relURL }}" defer></script>
+<script src="{{ "js/articles-filter.js" | relURL }}" defer></script>
 
 {{- end }}
