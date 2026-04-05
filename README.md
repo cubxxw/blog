@@ -222,6 +222,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [在不被需要的时代，如何维持自我的重量](https://nsddd.top/zh/growth/posts/weight-of-self-in-ai-age/)
 - [拉萨——一座城市的慢与重](https://nsddd.top/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy/)
 - [我在游荡，但我没有迷路 — 2025-2026 年度总结](https://nsddd.top/zh/growth/posts/2025-annual-review/)
 - [AI 越来越聪明，我却越来越不知道自己是谁](https://nsddd.top/zh/growth/posts/ai-and-self-identity/)
