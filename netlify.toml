@@ -24,4 +24,4 @@
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
   DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-  DASHSCOPE_MODEL = "qwen3.6-plus"
+  DASHSCOPE_MODEL = "qwen-turbo"
