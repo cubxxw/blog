@@ -1,6 +1,6 @@
 ---
-title: "Ai Recommend 开源项目深度学习"
-date: 2025-04-23T10:39:04+08:00
+title: "Independent Developer 开源项目深度学习"
+date: 2025-04-15T20:53:12+08:00
 draft: false
 tocopen: true
 tags: ["AI开源", "项目学习"]
@@ -8,6 +8,8 @@ categories: ["AI Open Source"]
 author: ["Xinwei Xiong", "Me"]
 description: >
   本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+aliases:
+  - /posts/ai-projects/independent-developer/
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。

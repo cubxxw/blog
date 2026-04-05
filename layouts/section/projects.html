@@ -1,0 +1,54 @@
+{{- define "main" }}
+<header class="page-header ai-tech-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content">
+  {{ .Content | safeHTML }}
+</div>
+{{- end }}
+
+{{- $projectPages := .RegularPages.ByDate.Reverse }}
+{{- if $projectPages }}
+<section class="section">
+  <div class="posts-group">
+    {{- range $projectPages }}
+    <article class="post-entry">
+      <header class="post-entry-header">
+        <div class="post-entry__top">
+          <span class="posts-badge posts-badge--projects">{{ if eq .Lang "zh" }}AI 项目{{ else }}AI Projects{{ end }}</span>
+          <time class="post-entry__date">{{ .Date.Format "2006-01-02" }}</time>
+        </div>
+        <h2 class="post-entry-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+      </header>
+      {{- if (ne (.Param "hideSummary") true) }}
+      <div class="entry-content">
+        <p>{{ .Summary | plainify | htmlUnescape | truncate 140 }}</p>
+      </div>
+      {{- end }}
+      {{- with .Params.tags }}
+      <footer class="entry-footer">
+        <div class="post-entry__tags">
+          {{- range first 4 . }}
+          <span class="post-tag">{{ . }}</span>
+          {{- end }}
+        </div>
+      </footer>
+      {{- end }}
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+{{- end }}

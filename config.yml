@@ -190,7 +190,7 @@ languages:
           - name: Growth & Life
             url: growth
           - name: AI Projects
-            url: categories/ai-open-source
+            url: projects
           - name: archives
             url: archives
           - name: Categories
@@ -254,7 +254,7 @@ languages:
           - name: 成长与生活
             url: growth
           - name: AI 开源项目
-            url: categories/ai-open-source
+            url: projects
           - name: 归档
             url: archives
           - name: 分类

@@ -16,6 +16,8 @@ categories:
   - 成长 (Growth)
 description: >
   探索GitHub与Google Workspace之间的协同效应，优化项目管理流程。本指南提供了利用两个平台的优势进行协作开发和项目跟踪的见解。
+aliases:
+  - /zh/ai-technology/posts/combining-github-and-google-workspace-for-project-management/
 ---
 
 # 双剑合璧：结合GitHub与Google Workspace的项目管理艺术

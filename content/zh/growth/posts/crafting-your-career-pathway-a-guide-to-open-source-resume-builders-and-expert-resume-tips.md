@@ -17,6 +17,8 @@ categories:
   - 成长 (Growth)
 description: >
   探索一系列开源工具，旨在增强你的简历制作体验。本指南提供专业建议，帮助你选择合适的工具并优化简历，使你在竞争激烈的职场市场中脱颖而出。适合任何领域寻求提升专业展示的求职者。
+aliases:
+  - /zh/ai-technology/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/
 ---
 
 在求职的海洋中，一份精心准备的简历就如同一艘设计精良的帆船，能让你在竞争激烈的浪潮中乘风破浪。随着开源社区的蓬勃发展，现如今市面上涌现出许多优秀的简历生成工具，旨在帮助求职者以最低的成本制作出既专业又具有个性化的简历。本文将为你详细介绍几款顶尖的开源简历生成工具，并提供实用的简历制作和优化技巧。

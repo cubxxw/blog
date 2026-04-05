@@ -31,10 +31,10 @@
 
 {{/* Growth Section - Dual Column Layout with Subcategories */}}
 {{- $lang := .Lang }}
-{{- $allPages := where .Site.RegularPages "Lang" $lang }}
+{{- $sectionPages := where .RegularPages "Lang" $lang }}
 
-{{/* Filter Growth articles by categories */}}
-{{- $growthPages := where $allPages "Params.categories" "intersect" (slice "Growth" "成长 (Growth)" "成长" "个人成长 (Personal Development)" "旅行 (Travel)") }}
+{{/* Use this section as the source of truth, then split sub-groups by metadata */}}
+{{- $growthPages := $sectionPages.ByDate.Reverse }}
 
 {{/* Subcategory: Personal Growth */}}
 {{- $personalGrowthPages := where $growthPages "Params.categories" "intersect" (slice "成长 (Growth)" "成长" "个人成长 (Personal Development)" "Growth") }}
@@ -42,6 +42,9 @@
 
 {{/* Subcategory: Travel & Life */}}
 {{- $travelPages := where $growthPages "Params.categories" "intersect" (slice "旅行 (Travel)" "Travel") }}
+{{- if eq (len $travelPages) 0 }}
+  {{- $travelPages = where $growthPages "Params.tags" "intersect" (slice "travel" "Travel" "旅行" "旅行 (Travel)") }}
+{{- end }}
 {{- $latestTravel := first 4 ($travelPages.ByDate.Reverse) }}
 
 {{/* All latest growth articles */}}

@@ -6,6 +6,8 @@ description: "AI开源项目学习笔记"
 tags: ["AI开源", "项目学习"]
 categories: ["AI Open Source"]
 author: "cubxxw"
+aliases:
+  - /posts/ai-projects/jina/
 ---
 
 ## 项目概览

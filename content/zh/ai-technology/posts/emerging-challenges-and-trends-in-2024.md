@@ -13,9 +13,11 @@ author:
 keywords: []
 tags: ['博客 (Blog)', 'AI', '技术 (Technology)']
 categories:
-  - 成长 (Growth)
+  - 技术 (Technology)
 description: >
   探索2024年技术和开发领域的最新趋势和挑战。
+aliases:
+  - /zh/growth/posts/emerging-challenges-and-trends-in-2024/
 ---
 
 # 2024年1月6日大语言模型分享会

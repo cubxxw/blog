@@ -31,13 +31,12 @@
 
 {{/* AI Technology Section - Dual Column Layout */}}
 {{- $lang := .Lang }}
-{{- $allPages := where .Site.RegularPages "Lang" $lang }}
+{{- $sectionPages := where .RegularPages "Lang" $lang }}
 
-{{/* Filter AI Technology articles by categories */}}
-{{- $aiTechPages := where $allPages "Params.categories" "intersect" (slice "AI Technology" "技术 (Technology)" "技术" "AI Open Source" "开发 (Development)") }}
+{{/* Filter AI Technology articles within this section only */}}
+{{- $aiTechPages := $sectionPages.ByDate.Reverse }}
 {{- $aiPages := where $aiTechPages "Params.categories" "intersect" (slice "AI Open Source") }}
 {{- $k8sPages := where $aiTechPages "Params.categories" "intersect" (slice "Kubernetes" "技术 (Technology)") }}
-{{- $goPages := where $aiTechPages "Params.title" "intersect" (slice "Go") }}
 
 {{/* Get latest articles for each category */}}
 {{- $latestAI := first 4 ($aiPages.ByDate.Reverse) }}

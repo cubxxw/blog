@@ -7,7 +7,9 @@ tags:
   - blog
   - en
 categories:
-  - Development
+  - Personal Development
+aliases:
+  - /ai-technology/posts/my-first-blog/
 ---
 
 

@@ -8,6 +8,8 @@ categories: ["AI Open Source"]
 author: ["Xinwei Xiong", "Me"]
 description: >
   介绍一些好用的工具，以及基本的上手的步骤，学习，note
+aliases:
+  - /zh/posts/ai-projects/independent-developer/
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力，并且记录。

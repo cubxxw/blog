@@ -20,6 +20,8 @@ categories:
   - 成长 (Growth)
 description: >
     当 AI 能替代我们思考和执行，"我"在哪里？探索 AI 时代人类的主体性、感受与意义的本质。
+aliases:
+  - /zh/ai-technology/posts/ai-and-self-identity/
 ---
 
 > **写在前面**：这篇文章写于拉萨的某一个夜晚。海拔三千多米，空气稀薄，星星非常近。有一晚我站在院子里，一个人，看了很久天上的月亮。那个月亮不因为 AI 的存在而减少一分光。

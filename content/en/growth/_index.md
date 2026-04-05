@@ -43,7 +43,7 @@ Practical methods to improve focus and work efficiency:
 Travel experiences and life insights of a digital nomad:
 
 - [Travel Category]({{< relref "/travel.md" >}})
-- [In 2023, I Was Wandering at the Edge of the World]({{< relref "/ai-technology/posts/in-2023-i-was-wandering-at-the-edge-of-the-world.md" >}})
+- [In 2023, I Was Wandering at the Edge of the World]({{< relref "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world.md" >}})
 - [February 2026 Thought Notes]({{< relref "/growth/posts/2026-02-thought-notes.md" >}})
 
 ---
