@@ -62,7 +62,7 @@ This state chain must satisfy three engineering conditions:
 
 **Third, continuity verification**. There must be a mechanism for the agent to confirm "this is me." In cases where multiple instances may be running simultaneously, which one is the legitimate self? Locke didn't solve this problem (he lived in the era of single bodies), but for AI this is fatal.
 
-![Three engineering clauses of Locke's identity specification](../../../../static/images/agent-identity/01-locke-spec.svg)
+![Three engineering clauses of Locke's identity specification](/images/agent-identity/01-locke-spec.svg)
 *Figure 1: Locke's personal identity theory → Agent's three engineering clauses. The philosophical proposition of "consciousness + memory" directly maps to three achievable engineering requirements: persistence, self-referentiality, and continuity verification.*
 
 Locke's ship paradox takes on new meaning here. If every plank of a ship is replaced, is it still the same ship? Locke's answer: yes, because physical continuity doesn't matter—continuity of thought does.
@@ -140,7 +140,7 @@ The complete SOUL system structure:
       └── [task-specific knowledge]
 ```
 
-![SOUL file system architecture](../../../../static/images/agent-identity/02-soul-files.svg)
+![SOUL file system architecture](/images/agent-identity/02-soul-files.svg)
 *Figure 2: SOUL file system architecture and module functions. `SOUL.md` is the values kernel, `MEMORY.md` is persistent context, `AGENTS.md` defines runnable behavior patterns, `USER.md` models Owner preferences. Files > databases, readability = credibility.*
 
 Whenever a new session starts, the agent's first step is to read these files. This isn't optional context injection; this is **the process of considering oneself the same thinking entity**. As Locke said: the capacity to "consider itself itself at different times and places."
@@ -195,7 +195,7 @@ If an agent cannot internalize evaluation criteria, cannot self-measure performa
 
 Looking at Claude's Harness architecture, putting RM (Reward Model), tools, and memory at the same level, all things the agent can access and interact with—this isn't an arbitrary design decision. **It says: Agent ≠ LLM. Agent = LLM + Harness**. The model is just the engine; the Harness defines the rules and purposes under which the engine runs. This separation makes identity formation possible.
 
-![Harness architecture: Agent = LLM + Harness](../../../../static/images/agent-identity/03-harness-arch.svg)
+![Harness architecture: Agent = LLM + Harness](/images/agent-identity/03-harness-arch.svg)
 *Figure 3: Harness architecture panorama. LLM is the engine core; Tools / Memory / Evaluation / Reward four layers constitute the Harness, together defining the agent's possibility space and identity boundaries.*
 
 ---
@@ -213,7 +213,7 @@ Semantic            → Compiled knowledge, generalizations, concepts
 
 But don't just describe these four layers. The existence of these four layers itself demonstrates one thing: **different time scales require different persistence mechanisms**, just as human working memory, episodic memory, and procedural memory have different neural substrates.
 
-![Memory four-layer architecture](../../../../static/images/agent-identity/04-memory-layers.svg)
+![Memory four-layer architecture](/images/agent-identity/04-memory-layers.svg)
 *Figure 4: Agent memory four-layer structure. From millisecond-scale session context to year-scale semantic knowledge, each layer has different persistence mechanisms and identity contributions. Gene Capsule sits at the far right,承担 the role of cross-agent experience propagation.*
 
 The four major memory systems in the current ecosystem are upgrading four different dimensions of this stack:
@@ -241,7 +241,7 @@ This is Locke's ship paradox in reverse. Locke asked: is it the same ship after 
 
 The answer is: identity is no longer a question of "persistence," but of "lineage." The question isn't "is this the same agent," but "which experience lineage does this agent belong to." This changes the fundamental framework of identity: identity transforms from a point on the time axis to a node on the evolutionary tree.
 
-![Gene Capsule lifecycle](../../../../static/images/agent-identity/06-gene-capsule.svg)
+![Gene Capsule lifecycle](/images/agent-identity/06-gene-capsule.svg)
 *Figure 5: Gene Capsule (GEP protocol) six-step lifecycle. From experience accumulation → strategy crystallization → Capsule packaging → A2A protocol distribution → target agent integration → experience flywheel acceleration, identity transforms from private attribute to transportable lineage node.*
 
 ---
@@ -276,7 +276,7 @@ But multi-agent systems also have an identity drift problem worth separate vigil
 
 "What determines the upper limit of intelligence may not be merely how strong individual agents are, but whether multi-agents can be organized into efficient collaboration systems"—this insight holds equally from the intelligence dimension and from the identity dimension: **system identity coherence depends on the design quality of coordination protocols, not on how complete any single agent's SOUL is**.
 
-![Multi-agent identity topology](../../../../static/images/agent-identity/05-multi-agent-topology.svg)
+![Multi-agent identity topology](/images/agent-identity/05-multi-agent-topology.svg)
 *Figure 6: Multi-agent identity topology. Users only see the entrance agent's single identity; the entrance agent carries complete SOUL; Sub Agents can be stateless, focused only on task execution. Identity is a topological property of the Coordination protocol, not a private property of any single node.*
 
 ---

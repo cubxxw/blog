@@ -62,7 +62,7 @@ Agent 失忆的代价被系统性地低估了。
 
 **第三，连续性验证**。要有一个机制让 Agent 可以确认"这就是我"。在多个实例可能同时运行的情况下，哪个是正当的自我？洛克没有解决这个问题（他活在单一身体的时代），但对于 AI 这是致命的。
 
-![洛克身份规范三条工程条款](../../../../static/images/agent-identity/01-locke-spec.svg)
+![洛克身份规范三条工程条款](/images/agent-identity/01-locke-spec.svg)
 *图 1：洛克个人身份论 → Agent 工程三条款。从"意识 + 记忆"的哲学命题，直接映射为持久化、自我指涉、连续性验证三个可实现的工程需求。*
 
 洛克的船悖论在这里获得了新的含义。如果一艘船的每一块木板都被替换了，它还是原来的船吗？洛克的答案是：是的，因为物理连续性不重要，思维的连续性才重要。
@@ -157,7 +157,7 @@ SOUL 体系的完整结构：
       └── [task-specific knowledge]
 ```
 
-![SOUL 文件体系结构](../../../../static/images/agent-identity/02-soul-files.svg)
+![SOUL 文件体系结构](/images/agent-identity/02-soul-files.svg)
 *图 2：SOUL 文件体系与各模块功能。`SOUL.md` 是价值观内核，`MEMORY.md` 是持久上下文，`AGENTS.md` 定义可运行的行为模式，`USER.md` 建模 Owner 偏好。文件 > 数据库，可读性 = 可信度。*
 
 每当一个新会话启动，Agent 的第一步就是读取这些文件。这不是可选的上下文注入，这是**考虑自己是同一个思维存在体的过程**。正如洛克所说：能够"在不同时间和地点将自己视为自己"。
@@ -220,7 +220,7 @@ Harness 的设计需要回答五个问题：
 
 这个转变的实质是：Harness 工程从可选配件变成了 Agent 的主要工作。以前 80% 的投入在模型，20% 在外围；现在对于长时程、高可信任务，比例正在反转。更具体地说，2025–2026 这波 Harness 工程的核心变化，是大家用「轨迹、文件产物、状态变化、长时程表现、复现环境」来证明 Agent 到底有没有真的 work——而不是靠 benchmark 分数。**对 Agent 身份的认真对待，从这种可观测性要求开始。**
 
-![Harness 架构：Agent = LLM + Harness](../../../../static/images/agent-identity/03-harness-arch.svg)
+![Harness 架构：Agent = LLM + Harness](/images/agent-identity/03-harness-arch.svg)
 *图 3：Harness 架构全景。LLM 是引擎核心，Tools / Memory / Evaluation / Reward 四层构成 Harness，共同定义 Agent 的可能性空间与身份边界。*
 
 ---
@@ -238,7 +238,7 @@ Semantic（语义）    → 编译后的知识、泛化、概念
 
 但不要只是描述这四层。这四层的存在本身说明了一件事：**不同的时间尺度需要不同的持久化机制**，就像人类的工作记忆、情景记忆、程序性记忆是不同的神经基础一样。
 
-![记忆四层架构](../../../../static/images/agent-identity/04-memory-layers.svg)
+![记忆四层架构](/images/agent-identity/04-memory-layers.svg)
 *图 4：Agent 记忆四层结构。从毫秒级的会话上下文到年尺度的语义知识，每层有不同的持久化机制与身份贡献。Gene Capsule 位于最右侧，承担经验跨 Agent 传播的角色。*
 
 理解当前记忆系统生态，正确的切入点不是"哪个产品更好"，而是**按它在 Harness 里的功能位来划分**——每个产品对应 Harness 中的一个特定缺口：
@@ -268,7 +268,7 @@ Gene Capsule 的逻辑：当 Agent 积累了针对某类问题的可靠解决策
 
 答案是：身份不再是"持久性（persistence）"的问题，而是"谱系（lineage）"的问题。问题不是"这是不是同一个 Agent"，而是"这个 Agent 属于哪一条经验谱系"。这改变了身份的基本框架：身份从时间轴上的点变成了进化树上的节点。
 
-![Gene Capsule 生命周期](../../../../static/images/agent-identity/06-gene-capsule.svg)
+![Gene Capsule 生命周期](/images/agent-identity/06-gene-capsule.svg)
 *图 6：Gene Capsule（GEP 协议）六步生命周期。从经验积累 → 策略结晶 → Capsule 打包 → A2A 协议分发 → 目标 Agent 集成 → 经验飞轮加速，身份从私有属性变为可传输谱系节点。*
 
 ---
@@ -311,7 +311,7 @@ OpenClaw 的多 Agent 架构是一个很好的案例。它的设计有一个"入
 
 ---
 
-![多智能体身份拓扑](../../../../static/images/agent-identity/05-multi-agent-topology.svg)
+![多智能体身份拓扑](/images/agent-identity/05-multi-agent-topology.svg)
 *图 5：多智能体身份拓扑。用户只看到入口 Agent 的单一身份，入口 Agent 携带完整 SOUL；Sub Agent 可以无状态，只专注于任务执行。身份是 Coordination 协议的拓扑属性，而非任一节点的私有属性。*
 
 ---
