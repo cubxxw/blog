@@ -22,7 +22,7 @@
     {{- end -}}
 
     <div class="home-info-cta">
-        <a href="{{ "/posts/" | relLangURL }}" class="cta-button cta-button--primary">
+        <a href="{{ "/articles/" | relLangURL }}" class="cta-button cta-button--primary">
             <span class="cta-button__icon">📝</span>
             <span class="cta-button__text">{{ $latestPostsText }}</span>
         </a>
@@ -44,17 +44,15 @@
 </div>
 
 <script>
+// Home page CTA: Subscribe button triggers the RSS subscribe card email panel
 document.addEventListener('DOMContentLoaded', function() {
     const subscribeTrigger = document.querySelector('[data-subscribe-trigger]');
-    const subscribeCard = document.querySelector('[data-subscribe-teaser]');
+    const emailButton = document.querySelector('[data-subscribe-open="email"]');
 
-    if (subscribeTrigger && subscribeCard) {
+    if (subscribeTrigger && emailButton) {
         subscribeTrigger.addEventListener('click', function() {
-            subscribeCard.classList.add('expanded');
-            const emailButton = document.querySelector('[data-subscribe-open="email"]');
-            if (emailButton) {
-                setTimeout(() => emailButton.click(), 200);
-            }
+            // Trigger the existing email signup flow from newsletter.js
+            emailButton.click();
         });
     }
 });

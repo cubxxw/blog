@@ -4981,8 +4981,8 @@ a.profile_status {
 }
 
 .cta-button--secondary:hover {
-    border-color: color-mix(in srgb, var(--profile-accent) 40%, var(--border));
-    background: color-mix(in srgb, var(--profile-accent) 6%, var(--entry));
+    border-color: color-mix(in srgb, var(--profile-accent, #0e7490) 40%, var(--border));
+    background: color-mix(in srgb, var(--profile-accent, #0e7490) 6%, var(--entry));
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
@@ -4996,9 +4996,9 @@ a.profile_status {
 }
 
 .cta-button--ghost:hover {
-    border-color: color-mix(in srgb, var(--profile-accent) 40%, var(--border));
+    border-color: color-mix(in srgb, var(--profile-accent, #0e7490) 40%, var(--border));
     border-style: solid;
-    background: color-mix(in srgb, var(--profile-accent) 6%, var(--entry));
+    background: color-mix(in srgb, var(--profile-accent, #0e7490) 6%, var(--entry));
     transform: translateY(-2px);
 }
 
