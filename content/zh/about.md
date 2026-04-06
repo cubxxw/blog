@@ -34,7 +34,7 @@ description: "熊鑫伟 (Xinwei Xiong) - 认知宇航员 | 演进中的世界观
 
 <div class="tag-matrix">
 <span class="tag-pill">🚀 认知宇航员</span>
-<span class="tag-pill">🤖 AI 共生体</span>
+<span class="tag-pill">🤖 AI Builder</span>
 <span class="tag-pill">🌍 数字游民</span>
 <span class="tag-pill">🎂 2001, 04, 30</span>
 </div>
