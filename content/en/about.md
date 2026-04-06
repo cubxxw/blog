@@ -28,7 +28,7 @@ cover:
 
 <div class="product-details">
 <h2 class="product-name">Xinwei Xiong (熊鑫伟)</h2>
-<div class="product-subtitle">Post-Rational Sensualist | Digital Nomad | AI Collaborator</div>
+<div class="product-subtitle">AI Builder · Open Source Contributor · Digital Nomad</div>
 <div class="serial-number">S/N: BEAR-2025-001</div>
 </div>
 </div>
@@ -53,7 +53,7 @@ cover:
 </tr>
 <tr>
 <td>Core Philosophy</td>
-<td>Finding sensuality in ultimate rationality, constructing rationality in deep sensuality</td>
+<td>AI Builder, Open Source Contributor, Digital Nomad — building products while exploring the world</td>
 <td>Factory Setting</td>
 </tr>
 <tr>

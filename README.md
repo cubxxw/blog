@@ -12,7 +12,7 @@
 > This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
 
 > [!NOTE]
-> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企到现在创业，现在正在环游世界，在思考，在记录，在创造 ..
+> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企工作，到现在 AI 创业，正在环游世界。在思考，在记录，在创造。
 > + [关于我](https://nsddd.top/zh/about/)
 > + [一些碎片的思考笔记](https://diary.nsddd.top/flomo-original/)
 > + [跟着我看我环游世界旅居的笔记](https://www.polarsteps.com/cubxxw)
