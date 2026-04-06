@@ -255,6 +255,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/ai-technology/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/ai-technology/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
+- [Start Here](https://nsddd.top/start-here/)
 - [[No Title] - Post](https://nsddd.top/claude/)
 - [About](https://nsddd.top/about/)
 - [分类 · CATEGORIES](https://nsddd.top/categories/)
