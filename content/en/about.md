@@ -28,13 +28,19 @@ cover:
 
 <div class="product-details">
 <h2 class="product-name">Xinwei Xiong (熊鑫伟)</h2>
-<div class="product-subtitle">Post-Rational Sensualist | Digital Nomad | AI Collaborator</div>
+<div class="product-subtitle">AI Builder · Open Source Contributor · Digital Nomad</div>
 <div class="serial-number">S/N: BEAR-2025-001</div>
 </div>
 </div>
 </div>
 
 ## 📊 Product Specifications
+
+<details class="collapsible-section">
+<summary class="collapsible-summary">
+<span class="summary-icon">📋</span>
+<span class="summary-text">View Product Specifications (Click to Expand)</span>
+</summary>
 
 <div class="spec-table">
 <table class="specifications">
@@ -53,7 +59,7 @@ cover:
 </tr>
 <tr>
 <td>Core Philosophy</td>
-<td>Finding sensuality in ultimate rationality, constructing rationality in deep sensuality</td>
+<td>AI Builder, Open Source Contributor, Digital Nomad — building products while exploring the world</td>
 <td>Factory Setting</td>
 </tr>
 <tr>
@@ -95,7 +101,15 @@ cover:
 </table>
 </div>
 
+</details>
+
 ## ⚙️ Feature Modules
+
+<details class="collapsible-section">
+<summary class="collapsible-summary">
+<span class="summary-icon">⚙️</span>
+<span class="summary-text">View Feature Modules (Click to Expand)</span>
+</summary>
 
 <div class="feature-modules">
 <div class="module-card">
@@ -187,7 +201,15 @@ cover:
 </div>
 </div>
 
+</details>
+
 ## 📍 Test Report - Global Deployment
+
+<details class="collapsible-section">
+<summary class="collapsible-summary">
+<span class="summary-icon">🧪</span>
+<span class="summary-text">View Test Report (Click to Expand)</span>
+</summary>
 
 <div class="test-report">
 <div class="report-header">
@@ -288,7 +310,15 @@ cover:
 </div>
 </div>
 
+</details>
+
 ## ⚠️ System Requirements & Compatibility
+
+<details class="collapsible-section">
+<summary class="collapsible-summary">
+<span class="summary-icon">⚠️</span>
+<span class="summary-text">View System Requirements (Click to Expand)</span>
+</summary>
 
 <div class="compatibility-matrix">
 <div class="compat-section">
@@ -336,7 +366,15 @@ cover:
 </div>
 </div>
 
+</details>
+
 ## 🔧 API Endpoints
+
+<details class="collapsible-section">
+<summary class="collapsible-summary">
+<span class="summary-icon">🔧</span>
+<span class="summary-text">View API Endpoints (Click to Expand)</span>
+</summary>
 
 <div class="api-endpoints">
 <div class="endpoint-card">
@@ -378,6 +416,8 @@ Product Thinking Interface
 </div>
 </div>
 </div>
+
+</details>
 
 ## 🎯 Roadmap
 
@@ -1171,6 +1211,90 @@ Product Thinking Interface
   .module-card, .roadmap-item {
     box-shadow: none;
     border: 1px solid #ccc;
+  }
+}
+
+/* Collapsible Sections */
+.collapsible-section {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 30px 0;
+  transition: all 0.3s ease;
+}
+
+.collapsible-section:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+}
+
+.collapsible-section[open] {
+  border-color: #667eea;
+}
+
+.collapsible-summary {
+  padding: 20px 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  font-weight: 600;
+  font-size: 1.05em;
+  color: #2c3e50;
+  list-style: none;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.collapsible-summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapsible-summary::marker {
+  display: none;
+}
+
+.collapsible-summary:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+}
+
+.collapsible-section[open] .collapsible-summary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.summary-icon {
+  font-size: 1.3em;
+}
+
+.summary-text {
+  flex: 1;
+}
+
+.collapsible-section > .spec-table,
+.collapsible-section > .feature-modules,
+.collapsible-section > .test-report,
+.collapsible-section > .compatibility-matrix,
+.collapsible-section > .api-endpoints {
+  padding: 25px;
+  margin: 0;
+}
+
+/* Animation for opening */
+.collapsible-section[open] {
+  animation: collapsibleOpen 0.3s ease-out;
+}
+
+@keyframes collapsibleOpen {
+  from {
+    opacity: 0.8;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
