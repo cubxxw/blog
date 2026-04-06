@@ -201,15 +201,15 @@ languages:
         imageTitle: "Xinwei Xiong profile photo"
         buttons:
           - name: AI Technology
-            url: ai-technology
+            url: /ai-technology/
           - name: Growth & Life
-            url: growth
+            url: /growth/
           - name: AI Projects
-            url: projects
-          - name: archives
-            url: archives
+            url: /projects/
+          - name: Archives
+            url: /archives/
           - name: Categories
-            url: categories
+            url: /categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/en"
           Text: "Suggest Changes" # edit text
@@ -280,15 +280,15 @@ languages:
         imageHeight: 120
         buttons:
           - name: AI 技术
-            url: ai-technology
+            url: /ai-technology/
           - name: 成长与生活
-            url: growth
+            url: /growth/
           - name: AI 开源项目
-            url: projects
+            url: /projects/
           - name: 归档
-            url: archives
+            url: /archives/
           - name: 分类
-            url: categories
+            url: /categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/zh"
           Text: "Suggest Changes" # edit text
