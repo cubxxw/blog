@@ -4891,3 +4891,167 @@ a.profile_status {
         font-size: 0.84rem;
     }
 }
+
+/* ===================================
+   Homepage CTA (Call-to-Action) Styles
+   =================================== */
+
+.home-info {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.home-info-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.home-info-content {
+    margin-bottom: 2rem;
+    color: var(--secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.home-info-content p {
+    margin: 0 0 1rem;
+}
+
+.home-info-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* CTA Button Container */
+.home-info-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 2rem 0;
+}
+
+/* CTA Button Base Styles */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    white-space: nowrap;
+}
+
+.cta-button__icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.cta-button__text {
+    color: inherit;
+}
+
+/* Primary CTA Button */
+.cta-button--primary {
+    background: linear-gradient(135deg, #0e7490, #14b8a6);
+    color: white;
+    box-shadow: 0 4px 14px rgba(14, 116, 144, 0.25);
+}
+
+.cta-button--primary:hover {
+    background: linear-gradient(135deg, #0891b2, #0e9f8d);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(14, 116, 144, 0.35);
+}
+
+/* Secondary CTA Button */
+.cta-button--secondary {
+    background: var(--entry);
+    color: var(--primary);
+    border-color: var(--border);
+}
+
+.cta-button--secondary:hover {
+    border-color: color-mix(in srgb, var(--profile-accent) 40%, var(--border));
+    background: color-mix(in srgb, var(--profile-accent) 6%, var(--entry));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Ghost CTA Button */
+.cta-button--ghost {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--border);
+    border-style: dashed;
+}
+
+.cta-button--ghost:hover {
+    border-color: color-mix(in srgb, var(--profile-accent) 40%, var(--border));
+    border-style: solid;
+    background: color-mix(in srgb, var(--profile-accent) 6%, var(--entry));
+    transform: translateY(-2px);
+}
+
+/* RSS Subscribe Card Integration */
+.rss-subscribe-card {
+    margin-top: 2.5rem;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Expanded state for email signup trigger */
+.rss-subscribe-card__teaser.expanded {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.2s ease, max-height 0.3s ease;
+}
+
+/* Dark mode adjustments */
+.dark .cta-button--primary {
+    background: linear-gradient(135deg, #14b8a6, #2dd4bf);
+    box-shadow: 0 4px 14px rgba(45, 212, 191, 0.3);
+}
+
+.dark .cta-button--primary:hover {
+    background: linear-gradient(135deg, #2dd4bf, #5eead4);
+    box-shadow: 0 8px 24px rgba(45, 212, 191, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .home-info {
+        padding: 1.5rem 1rem;
+    }
+
+    .home-info-title {
+        font-size: 1.5rem;
+    }
+
+    .home-info-content {
+        font-size: 0.98rem;
+    }
+
+    .home-info-cta {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cta-button {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}
