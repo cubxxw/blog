@@ -13,6 +13,14 @@ ShowWordCount: false
 ShowRssButtonInSectionTermList: false
 cover:
     hidden: true
+date: 2025-01-09T00:00:00+08:00
+weight: 1
+draft: false
+showtoc: false
+tocopen: false
+type: page
+author: ["Xinwei Xiong"]
+keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
 ---
 
 <div class="about-container">

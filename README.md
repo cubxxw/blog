@@ -12,7 +12,7 @@
 > This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
 
 > [!NOTE]
-> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企到现在创业，现在正在环游世界，在思考，在记录，在创造 ..
+> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企工作，到现在 AI 创业，正在环游世界。在思考，在记录，在创造。
 > + [关于我](https://nsddd.top/zh/about/)
 > + [一些碎片的思考笔记](https://diary.nsddd.top/flomo-original/)
 > + [跟着我看我环游世界旅居的笔记](https://www.polarsteps.com/cubxxw)
@@ -48,7 +48,47 @@
     </table>
 </div>
 
+## Category Architecture (v2.0.0)
+
+This blog uses a **4-category architecture** aligned with the author's identity as **AI Builder, Open Source Contributor, and Digital Nomad**.
+
+| Category | Description | Content Coverage |
+|----------|-------------|------------------|
+| **AI & Technology** | Technical content about AI/LLM, Kubernetes, Go, DevOps | AI/LLM applications, Kubernetes cloud-native, Go engineering, DevOps practices |
+| **Projects** | AI open source project deep-dives and product builds | LangChain, GPT-Researcher, Jina analysis, independent developer products |
+| **Growth** | Personal growth, annual reviews, mindset, efficiency methods | Annual reviews, monthly thoughts, GTD, Flow State, career development |
+| **Travel** | Travel experiences and digital nomad lifestyle | Travel itineraries, digital nomad life, cultural exploration, adventures |
+
+For detailed category documentation, see [`content/CATEGORIES.md`](content/CATEGORIES.md).
+
+---
+
 ## Tagging Standards
+
+For comprehensive governance rules on category vs tag decisions, see [`docs/TAG_GOVERNANCE.md`](docs/TAG_GOVERNANCE.md).
+
+### Core Principles
+
+- **Categories (1 per post)**: Broad content buckets for navigation - choose from 4 core categories
+- **Tags (5-8 per post)**: Specific topics and technologies - flexible and detailed
+- **Tag Naming**: Use Title Case, avoid duplicates (e.g., use `Go` not `golang` or `Golang`)
+- **Language Consistency**: Use English tags for both CN/EN blogs for unified tagging
+
+### Tag Groups (9 Categories)
+
+| Group | Tags |
+|-------|------|
+| **Programming Languages** | Go, Python, JavaScript, TypeScript, Rust, Java |
+| **Cloud Native** | Kubernetes, Docker, Cloud Native, Helm, Istio, Containerd |
+| **AI/ML** | AI, Machine Learning, Deep Learning, LLM, NLP, Computer Vision |
+| **Technology** | DevOps, Automation, Testing, Performance, Security, Monitoring, CI/CD |
+| **Architecture** | Microservices, System Design, Distributed Systems, Event-Driven |
+| **Tools** | Git, GitHub, VS Code, Linux, Vim, Docker Desktop |
+| **Open Source** | Open Source, Community, Contribution, Maintenance |
+| **Life** | Blog, Travel, Personal Growth, Self-Discovery, Reading, Reflection |
+| **Culture** | Remote Work, Team Collaboration, Management, Leadership |
+
+For detailed tagging standards, see [`TAGS.md`](TAGS.md).
 
 Based on your professional skills, technical expertise, and personal interests, I have prepared a more comprehensive list of tags and categories, presented in a table format, distinguishing between Chinese and English blogs.
 
@@ -215,6 +255,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/ai-technology/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/ai-technology/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
+- [Start Here](https://nsddd.top/start-here/)
 - [[No Title] - Post](https://nsddd.top/claude/)
 - [About](https://nsddd.top/about/)
 - [分类 · CATEGORIES](https://nsddd.top/categories/)
@@ -316,6 +357,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [跨平台以及多架构编译设计](https://nsddd.top/zh/ai-technology/posts/cross-platform-compilation/)
 - [Kubernetes一篇快速入门的文章](https://nsddd.top/zh/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
 - [参与我们的区块链学习平台项目](https://nsddd.top/zh/ai-technology/posts/participating-in-this-project/)
+- [从这里开始](https://nsddd.top/zh/start-here/)
 - [分类 · CATEGORIES](https://nsddd.top/zh/categories/)
 <!-- My-Blog-ZH:END -->
 

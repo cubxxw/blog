@@ -1,19 +1,20 @@
 <div class="profile profile-home">
     {{- with site.Params.profileMode }}
-    {{- $heroLine := cond (eq site.Language.Lang "zh") "构建下一代 AI Agents 与开源系统。" "Building the next generation of AI Agents and open systems." -}}
+    {{- $heroLine := cond (eq site.Language.Lang "zh") "在这里阅读我的 AI 技术、成长思考与旅行见闻。" "Read my writing on AI technology, personal growth, and travel adventures." -}}
     {{- $statusText := cond (eq site.Language.Lang "zh") "状态：在线探索中" "STATUS: ONLINE & EXPLORING" -}}
-    {{- $roleText := cond (eq site.Language.Lang "zh") "AI 创业者 / 开源贡献者 / 数字游民。把智能系统、工程实践与真实世界的冒险连接起来。" "AI Entrepreneur / Open Source Contributor / Digital Nomad. Bridging intelligent systems, engineering rigor, and real-world adventure." -}}
-    {{- $focusTitle := cond (eq site.Language.Lang "zh") "Neural Architectures" "Neural Architectures" -}}
-    {{- $focusBody := cond (eq site.Language.Lang "zh") "持续构建 AI 工具、自动化系统与开源基础设施，把想法变成长期可复用的工程资产。" "Building AI tooling, automation systems, and open-source infrastructure that turns ideas into durable engineering assets." -}}
-    {{- $travelTitle := cond (eq site.Language.Lang "zh") "Nomad Protocol" "Nomad Protocol" -}}
-    {{- $travelBody := cond (eq site.Language.Lang "zh") "忠于冒险，持续在不同城市与语境中工作、学习与迁移。" "Loyalty to adventure. Working, learning, and shipping across different cities and contexts." -}}
-    {{- $knowledgeTitle := cond (eq site.Language.Lang "zh") "Knowledge Base" "Knowledge Base" -}}
-    {{- $knowledgeHint := cond (eq site.Language.Lang "zh") "最近写作" "Recent Writing" -}}
+    {{- $roleText := cond (eq site.Language.Lang "zh") "AI 创业者 / 开源贡献者 / 数字游民" "AI Entrepreneur / Open Source Contributor / Digital Nomad" -}}
+    {{- $startHereText := cond (eq site.Language.Lang "zh") "从哪里开始" "Start Here" -}}
+    {{- $aboutMeText := cond (eq site.Language.Lang "zh") "我是谁" "Who I Am" -}}
+    {{- $latestPostsText := cond (eq site.Language.Lang "zh") "最近写了什么" "Latest Posts" -}}
+    {{- $aiTechLabel := cond (eq site.Language.Lang "zh") "AI / 技术" "AI / Technology" -}}
+    {{- $growthLabel := cond (eq site.Language.Lang "zh") "成长 / 生活" "Growth / Life" -}}
+    {{- $travelLabel := cond (eq site.Language.Lang "zh") "旅行 / 见闻" "Travel / Exploration" -}}
+    {{- $projectsLabel := cond (eq site.Language.Lang "zh") "项目 / 开源" "Projects / Open Source" -}}
     {{- $viewAllText := cond (eq site.Language.Lang "zh") "查看全部 →" "View All →" -}}
-    {{- $readingLabel := cond (eq site.Language.Lang "zh") "最近写作" "Recent Writing" -}}
-    {{- $localeLabel := cond (eq site.Language.Lang "zh") "所在地" "Locale" -}}
+    {{- $readingLabel := cond (eq site.Language.Lang "zh") "最近更新" "Recent Updates" -}}
+    {{- $localeLabel := cond (eq site.Language.Lang "zh") "所在地" "Based In" -}}
     {{- $statusLabel := cond (eq site.Language.Lang "zh") "状态" "Status" -}}
-    {{- $roamingText := cond (eq site.Language.Lang "zh") "ROAMING" "ROAMING" -}}
+    {{- $roamingText := cond (eq site.Language.Lang "zh") "漫游中" "ROAMING" -}}
     {{- $locationText := cond (eq site.Language.Lang "zh") "中国 / Remote" "China / Remote" -}}
     {{- /* Get recent pages across all content sections for this language */ -}}
     {{- $allPages := where site.RegularPages "Lang" site.Language.Lang -}}
@@ -30,6 +31,20 @@
                         <span class="profile_status__dot"></span>
                         <span>{{ $statusText }}</span>
                     </a>
+                    <div class="profile_quick_links">
+                        <a class="profile_quick_link" href="{{ "/about/" | relLangURL }}">
+                            <span class="profile_quick_link__icon">👤</span>
+                            <span>{{ $aboutMeText }}</span>
+                        </a>
+                        <a class="profile_quick_link" href="#latest-posts">
+                            <span class="profile_quick_link__icon">📝</span>
+                            <span>{{ $latestPostsText }}</span>
+                        </a>
+                        <a class="profile_quick_link" href="#start-here">
+                            <span class="profile_quick_link__icon">🚀</span>
+                            <span>{{ $startHereText }}</span>
+                        </a>
+                    </div>
                     <button class="profile_chat_trigger" id="chatTrigger" onclick="toggleChatPanel()" type="button">
                         <span class="profile_chat_trigger__icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -147,7 +162,7 @@
                         <span class="profile_metric__label">{{ $readingLabel }}</span>
                         <div class="profile_metric__status">
                             <span class="profile_metric__dot"></span>
-                            <strong class="profile_metric__value">{{ $knowledgeHint }}</strong>
+                            <strong class="profile_metric__value">{{ $readingLabel }}</strong>
                         </div>
                         {{- if $recentPages }}
                         <div class="profile_recent-posts">
@@ -170,42 +185,52 @@
             </aside>
         </section>
 
-        <section class="profile_bento" style="margin-top: 24px;">
-            <article class="profile_panel profile_panel--feature">
+        <section class="profile_bento" id="start-here">
+            <article class="profile_panel profile_panel--category profile_panel--ai-tech">
                 <div class="profile_panel__header">
-                    <span class="profile_panel__icon">AI</span>
-                    <span class="profile_panel__arrow">↗</span>
+                    <span class="profile_panel__icon profile_panel__icon--ai">🤖</span>
+                    <h3>{{ $aiTechLabel }}</h3>
                 </div>
-                <h2>{{ $focusTitle }}</h2>
-                <p>{{ $focusBody }}</p>
-                <div class="profile_code">
-                    <span>$ import ideas</span>
-                    <span>&gt; design(open_source=True)</span>
-                    <span>&gt; train(dream_big=True)</span>
-                </div>
+                <p>{{ if eq site.Language.Lang "zh" }}Kubernetes、Go 语言、AI Agents 与云原生技术实践{{ else }}Kubernetes, Go, AI Agents and Cloud Native engineering{{ end }}</p>
+                <a href="{{ "ai-technology/" | relLangURL }}" class="profile_view_all">{{ $viewAllText }}</a>
             </article>
 
-            <article class="profile_panel profile_panel--travel">
+            <article class="profile_panel profile_panel--category profile_panel--growth">
                 <div class="profile_panel__header">
-                    <span class="profile_panel__icon">MAP</span>
+                    <span class="profile_panel__icon profile_panel__icon--growth">🌱</span>
+                    <h3>{{ $growthLabel }}</h3>
                 </div>
-                <h2>{{ $travelTitle }}</h2>
-                <p>{{ $travelBody }}</p>
-                <div class="profile_meta_list">
-                    <div><span>LAT/LONG</span><strong>23.1291° N, 113.2644° E</strong></div>
-                    <div><span>{{ $localeLabel }}</span><strong>{{ $locationText }}</strong></div>
-                    <div><span>{{ $statusLabel }}</span><strong>{{ $roamingText }}</strong></div>
+                <p>{{ if eq site.Language.Lang "zh" }}年度复盘、认知升级、心流状态与个人成长方法论{{ else }}Annual reviews, cognitive upgrades, flow state and personal growth{{ end }}</p>
+                <a href="{{ "growth/" | relLangURL }}" class="profile_view_all">{{ $viewAllText }}</a>
+            </article>
+
+            <article class="profile_panel profile_panel--category profile_panel--travel">
+                <div class="profile_panel__header">
+                    <span class="profile_panel__icon profile_panel__icon--travel">🌍</span>
+                    <h3>{{ $travelLabel }}</h3>
                 </div>
+                <p>{{ if eq site.Language.Lang "zh" }}数字游民生活、9 国 35+ 城市旅行见闻与文化探索{{ else }}Digital nomad life across 9 countries, 35+ cities and cultural exploration{{ end }}</p>
+                <a href="{{ "travel/" | relLangURL }}" class="profile_view_all">{{ $viewAllText }}</a>
+            </article>
+
+            <article class="profile_panel profile_panel--category profile_panel--projects">
+                <div class="profile_panel__header">
+                    <span class="profile_panel__icon profile_panel__icon--projects">📦</span>
+                    <h3>{{ $projectsLabel }}</h3>
+                </div>
+                <p>{{ if eq site.Language.Lang "zh" }}OpenIM、OpenKF 等开源项目与 AI 工具实践{{ else }}OpenIM, OpenKF and other open source projects and AI tools{{ end }}</p>
+                <a href="{{ "projects/" | relLangURL }}" class="profile_view_all">{{ $viewAllText }}</a>
             </article>
         </section>
 
         <!-- AI Chat Section - Integrated into status bar above -->
 
-        <section class="profile_knowledge_grid" style="margin-top: 24px;">
+        <!-- Latest Posts Section -->
+        <section class="profile_knowledge_grid" id="latest-posts">
             <article class="profile_panel profile_panel--knowledge profile_panel--ai-tech">
                 <div class="profile_panel__topline">
                     <div>
-                        <h2>{{ if eq site.Language.Lang "zh" }}AI Technology{{ else }}AI Technology{{ end }}</h2>
+                        <h2>AI Technology</h2>
                         <p>{{ if eq site.Language.Lang "zh" }}探索 AI Agents 与系统工程{{ else }}Exploring AI Agents & Engineering{{ end }}</p>
                     </div>
                 </div>
@@ -228,7 +253,7 @@
             <article class="profile_panel profile_panel--knowledge profile_panel--growth-life">
                 <div class="profile_panel__topline">
                     <div>
-                        <h2>{{ if eq site.Language.Lang "zh" }}Growth & Life{{ else }}Growth & Life{{ end }}</h2>
+                        <h2>Growth & Life</h2>
                         <p>{{ if eq site.Language.Lang "zh" }}成长复盘与数字游民见闻{{ else }}Personal Growth & Nomad Life{{ end }}</p>
                     </div>
                 </div>

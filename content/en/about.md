@@ -13,6 +13,14 @@ ShowWordCount: false
 ShowRssButtonInSectionTermList: false
 cover:
     hidden: true
+date: 2025-01-09T00:00:00+08:00
+weight: 1
+draft: false
+showtoc: false
+tocopen: false
+type: page
+author: ["Xinwei Xiong"]
+keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me"]
 ---
 
 <div class="about-container">
@@ -89,7 +97,7 @@ This means the content you read from me carries **authentic warmth**.
 
 ### 2. Cross-Cultural Perspective
 
-Long-term living experiences across multiple countries have given me the ability to **step outside单一 narratives**. I can understand China's tech ecosystem, observe Southeast Asian life philosophies, and resonate with the global AI community.
+Long-term living experiences across multiple countries have given me the ability to **step outside single narratives**. I can understand China's tech ecosystem, observe Southeast Asian life philosophies, and resonate with the global AI community.
 
 ### 3. Integration of Rationality and Emotion
 
@@ -107,7 +115,7 @@ I'm not afraid to admit my limitations, nor ashamed to show my confusions. I bel
 
 If I had to summarize my current life theme in one sentence:
 
-> **Understand the world, construct the self, build bridges between technology and humanity**.
+> **Understand the world, construct the self, build bridges between technology and humanity.**
 
 I'm exploring:
 - How to make AI an extension of human cognition, not a replacement
