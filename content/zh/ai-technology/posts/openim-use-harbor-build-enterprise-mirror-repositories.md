@@ -9,7 +9,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', 'Harbor', 'Docker', 'Kubernetes', 'Helm', 'Cert-manager']
 tags: ["Blog", "OpenIM", "Docker"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: >
     探索如何使用 Harbor 构建强大的开源容器镜像仓库，用于设置稳健的镜像存储解决方案。这一步步指南涵盖了 Harbor 的安装和配置，包括使用 Helm 图表和 Cert-manager 来确保安全的 HTTPS 连接。了解如何将 Docker 镜像推送到你的 Harbor 仓库，配置 DNS 解析，并探索使用 AWS S3 作为可伸缩的镜像存储选项。充分发挥 Harbor 的潜力，优化容器镜像管理，降低存储成本，同时确保安全性和可靠性。
 ---

@@ -37,7 +37,7 @@ tags:
   - 'OpenAI'
   - 'Deep Learning'
 categories:
-  - 'Development'
+  - AI & Technology
   - 'AI'
 description: 'This guide provides an in-depth look into the integration and application of language models using the LangChain framework, tailored for developers looking to streamline complex implementations.'
 ---

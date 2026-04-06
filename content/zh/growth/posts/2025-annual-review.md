@@ -13,11 +13,11 @@ keywords: []
 tags:
   - blog
   - 年度回顾 (Annual Recap)
-  - 旅行 (Travel)
+  - Travel
   - 个人成长 (Personal Growth)
   - 哲理 (Philosophy)
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   这是 3614 条笔记，十四个月，一个试图把自己活明白的人的记录。从"澎湃"到"剥落"，不是变老，是变真实。
 ---

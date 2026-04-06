@@ -13,7 +13,7 @@ tags:
   - blog
   - en
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## 111: OpenIM multi-process management strategy

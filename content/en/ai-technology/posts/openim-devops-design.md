@@ -14,7 +14,7 @@ tags:
   - openim
   - en
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## DevOps

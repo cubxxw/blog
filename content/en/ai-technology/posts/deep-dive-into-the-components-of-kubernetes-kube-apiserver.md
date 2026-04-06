@@ -16,7 +16,7 @@ tags:
    - kubernetes
    - kube-apiserver
 categories:
-   - Development
+  - AI & Technology
 description: >
      Each request to the Kubernetes API will go through multi-stage access control before it is accepted, including authentication, authorization and admission control (Admission Control), etc.
 ---

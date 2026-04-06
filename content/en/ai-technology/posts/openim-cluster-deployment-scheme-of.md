@@ -16,7 +16,7 @@ tags:
   - sealos
   - clustering
 categories:
-  - Development
+  - AI & Technology
   - Blog
   - OpenIM
 ---

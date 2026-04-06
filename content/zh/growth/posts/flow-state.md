@@ -9,7 +9,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ['心流状态', '生产力', '幸福', '专注', '心理学', '效率提升', '工作满意度', '情绪管理']
 tags: ['Personal Productivity', 'Focus', 'Happiness', 'Flow']
-categories: ['Growth']
+categories: ["Growth"]
 description: '深入探索心流状态的世界，通过我们的综合指南学习如何利用这一强大的心理状态来提升你的专注力、生产力和整体幸福感。无论你是开发者、艺术家还是任何希望提升工作和生活体验的人，这篇文章都提供了宝贵的见解和实用的技巧，帮助你达成并维持心流状态。加入熊鑫伟和我一起探索心流状态的魔力，发现如何将日常任务转变为成长和满足的机会。'
 ---
 

@@ -14,7 +14,7 @@ tags:
   - ai
   - autogpt
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Preface

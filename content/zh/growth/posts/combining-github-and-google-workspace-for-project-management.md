@@ -13,7 +13,7 @@ tags:
   - 'project (项目)'
   - 'management (管理)'
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   探索GitHub与Google Workspace之间的协同效应，优化项目管理流程。本指南提供了利用两个平台的优势进行协作开发和项目跟踪的见解。
 aliases:

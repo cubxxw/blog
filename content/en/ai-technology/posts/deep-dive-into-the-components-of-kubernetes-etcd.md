@@ -15,8 +15,8 @@ tags:
   - Raft
   - Go
 categories:
-  - Technology
-  - Development
+  - AI & Technology
+  - AI & Technology
 description: >
     Explore the inner workings and components of Kubernetes Etcd in-depth, understanding its role and significance in the Kubernetes ecosystem.
 ---

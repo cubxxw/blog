@@ -9,7 +9,7 @@ type: posts
 author: '熊新伟，我'
 keywords: ['OpenIM', 'Docker', '即时通讯', '后台管理', '监控', '系统部署']
 tags: ["OpenIM", "Docker", "Instant Messaging", "Backend Management", "Monitoring"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: '本文指导您如何使用 Docker 部署 OpenIM，设置管理后台，并对应用进行监控。它为初学者提供了详细的步骤，并为更高级的用户提供了洞见。'
 ---
 

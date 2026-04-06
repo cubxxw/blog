@@ -8,7 +8,7 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: ['GoReleaser', 'Software Releases', 'Release Automation', 'Go Programming Language', 'Continuous Integration', 'Continuous Deployment']
 tags: ["Blog", "Go", "release"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: >
     Learn how to streamline and automate your software release process using GoReleaser, a powerful tool for Go projects.
 ---

@@ -12,7 +12,7 @@ keywords: []
 tags:
   - blog
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Task Assignment

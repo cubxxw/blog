@@ -15,7 +15,7 @@ tags:
   - actions
   - en
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Create actions

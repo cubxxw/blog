@@ -12,7 +12,7 @@ keywords: []
 tags:
   - blog
 categories:
-  - Development
+  - AI & Technology
 description: >
     <You can switch to the specified language>
 ---

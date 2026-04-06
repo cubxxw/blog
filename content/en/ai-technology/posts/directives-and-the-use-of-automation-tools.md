@@ -14,7 +14,7 @@ tags:
   - golang
   - go
 categories:
-  - Development
+  - AI & Technology
 ---
 
 # These go: instructions in the Go source code && go automation tools

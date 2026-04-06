@@ -12,7 +12,7 @@ keywords: []
 tags:
   - blog
 categories:
-  - Development
+  - AI & Technology
 description: >
     hugo advanced tutorial
 ---

@@ -14,7 +14,7 @@ tags:
   - golang
   - dlv
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Debugging Go project

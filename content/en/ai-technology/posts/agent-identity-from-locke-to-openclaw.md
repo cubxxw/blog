@@ -12,7 +12,7 @@ tags:
   - Open Source
   - Monthly Notes
 categories:
-  - Development
+  - AI & Technology
 cover:
   image: /images/agent-identity/01-locke-spec.svg
   alt: "Locke Identity Spec — Agent Identity Engineering Stack"

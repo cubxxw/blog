@@ -9,7 +9,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['开源', '商业', 'OpenIM', '开源项目', '技术社区', '商业模式']
 tags: ["Blog", "OpenIM", "Development"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: '探索OpenIM这一活跃的开源项目如何实现其商业发展目标。了解OpenIM如何取得成功，应对挑战，并在社区贡献与商业化之间找到平衡。'
 ---
 

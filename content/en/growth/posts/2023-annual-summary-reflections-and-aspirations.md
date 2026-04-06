@@ -18,8 +18,7 @@ tags:
   - career
   - reflections
 categories:
-  - Development
-  - Personal Development
+  - Growth
 description: >
     My 2023 journey: A reflection on personal and professional growth, challenges faced, and aspirations for the future. Dive into my experiences and lessons learned in the realms of open-source contributions, reading, learning, outdoor adventures, and strategic career planning.
 ---

@@ -16,7 +16,7 @@ tags:
   - ai
   - database
 categories:
-  - Development
+  - AI & Technology
 ---
 
 # Vector database learning

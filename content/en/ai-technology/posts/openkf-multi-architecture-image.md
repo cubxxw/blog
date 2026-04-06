@@ -7,7 +7,7 @@ tags:
   - en
   - openkf
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Automate Multi-Architecture Image Build for `openkf` and Push to Multiple Image Repositories

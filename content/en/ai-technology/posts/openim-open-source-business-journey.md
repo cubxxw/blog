@@ -8,7 +8,7 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: ['Open Source Commercialization', 'Global Traffic Conference', 'GTC', 'Open Source Software', 'Commercialization Strategies', 'Conference Summary']
 tags: ["Blog"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: >
     Reflect on the commercialization of open source software and share insights from attending the Global Traffic Conference (GTC), focusing on key takeaways and learnings.
 ---

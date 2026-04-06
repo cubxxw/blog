@@ -12,12 +12,12 @@ author: ["Xinwei Xiong", "Me"]
 keywords: ["底层思维", "跨学科学习", "核心原理", "教育策略"]
 tags:
   - 自我发现 (Self Discovery)
-  - 生活与教育 (Living & Education)
+  - Growth
   - 探索 (Exploration)
   - 个人效率 (Personal Productivity)
 categories:
-  - 个人成长 (Personal Development)
-  - 生活与教育 (Living & Education)
+  - Growth
+  - Growth
 description: >
   本博客探讨如何将底层思维应用于不同学科，以加速学习和掌握新领域的过程。我们讨论了利用核心原理来增强理解和在不同专业领域的应用的技巧和策略。
 ---

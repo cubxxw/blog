@@ -17,7 +17,7 @@ tags:
   - OpenIM
   - 云原生 (Cloud Native)
 categories:
-  - 技术 (Technology)
+  - AI & Technology
 ---
 
 ## 准备

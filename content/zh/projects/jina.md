@@ -7,7 +7,7 @@ tags:
   - AI开源
   - 项目学习
 categories:
-  - AI Open Source
+  - Projects
 author: ["Xinwei Xiong", "Me"]
 aliases:
   - /zh/posts/ai-projects/jina/

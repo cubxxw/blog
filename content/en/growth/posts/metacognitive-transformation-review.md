@@ -5,7 +5,7 @@ author: ["Xinwei Xiong"]
 description: "An in-depth review of metacognitive transformation, exploring its processes, impact on learning, and strategies for personal development."
 categories:
   - Growth
-  - Personal Development
+  - Growth
 tags:
   - metacognition
   - learning strategies

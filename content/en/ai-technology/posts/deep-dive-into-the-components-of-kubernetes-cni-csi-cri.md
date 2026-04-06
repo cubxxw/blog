@@ -18,7 +18,7 @@ tags:
   - 'Microservices'
   - 'Service Mesh'
 categories:
-  - 'Development'
+  - AI & Technology
 description: >
   In-depth exploration of CNI (Container Network Interface), CRI (Container Runtime Interface), and CSI (Container Storage Interface) in Kubernetes. This article provides detailed explanations of these key components' functions and their importance in cloud-native environments.
 ---

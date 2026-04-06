@@ -15,7 +15,7 @@ tags:
   - blog
   - en
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Principles

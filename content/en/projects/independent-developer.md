@@ -4,7 +4,7 @@ date: 2025-04-15T20:53:12+08:00
 draft: false
 tocopen: true
 tags: ["AI开源", "项目学习"]
-categories: ["AI Open Source"]
+categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >
   本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。

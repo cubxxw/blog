@@ -13,7 +13,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Go', '调试', '测试', 'dlv', '性能优化', '代码质量']
 tags: ["Blog", "Development", "Debugging"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 ---
 
 

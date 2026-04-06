@@ -7,7 +7,7 @@ tags:
    - en
    - hugo
 categories:
-  - Development
+  - AI & Technology
 ---
 
 # Rebuild my blog (static)

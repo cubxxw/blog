@@ -10,7 +10,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Kubernetes', '配置', '端口', '简化部署', '容器化']
 tags: ["Kubernetes", "Cloud Native", "Microservices", "Deployment"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: '本文介绍了如何通过配置文件简化 Kubernetes 部署的端口配置，提升了配置的灵活性和部署的便捷性。'
 ---
 

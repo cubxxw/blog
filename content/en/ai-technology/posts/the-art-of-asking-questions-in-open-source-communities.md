@@ -12,7 +12,7 @@ keywords: ["openim", "open source", "community", "question"]
 tags:
   - blog
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Before asking a question

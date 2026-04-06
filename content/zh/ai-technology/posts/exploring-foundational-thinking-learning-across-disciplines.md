@@ -16,7 +16,7 @@ tags:
   - Exploration
   - Personal Productivity
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   This blog explores how foundational thinking can be applied across different disciplines
   to accelerate learning and mastery of new fields. We discuss techniques and strategies that leverage
