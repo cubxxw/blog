@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Kubernetes", "k8s", "Docker", Cloud Native", "CNCF"]
 tags:
-  - blog
+  - Blog
   - kubernetes
   - k8s
 categories:

@@ -9,9 +9,9 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["resume building", "career development", "open source", "professional tips"]
 tags:
-  - blog
+  - Blog
   - resume
-  - career
+  - Career
 categories:
   - Growth
 description: >

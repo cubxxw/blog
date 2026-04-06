@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: [openim, harbor, docker, kubernetes, helm, cert-manager]
 tags:
-  - blog
+  - Blog
   - openim
   - docker
 categories:

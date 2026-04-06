@@ -12,7 +12,7 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - en
 categories:
   - AI & Technology

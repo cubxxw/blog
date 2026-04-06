@@ -10,7 +10,7 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: ["openim", "open source", "community", "question"]
 tags:
-  - blog
+  - Blog
 categories:
   - AI & Technology
 ---

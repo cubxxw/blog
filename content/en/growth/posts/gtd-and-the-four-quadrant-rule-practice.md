@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["GTD", "Quadrant Method", "Time Management", "Productivity"]
 tags:
-  - blog
+  - Blog
   - manage
   - gtd
 categories:

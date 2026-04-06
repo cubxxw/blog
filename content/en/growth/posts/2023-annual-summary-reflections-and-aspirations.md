@@ -13,10 +13,10 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["2023", "Annual Summary", "Personal Growth", "Professional Development"]
 tags:
-  - blog
-  - personal development
-  - career
-  - reflections
+  - Blog
+  - Personal Growth
+  - Career
+  - Reflections
 categories:
   - Growth
 description: >

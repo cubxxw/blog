@@ -9,7 +9,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ['OpenIM', 'Troubleshooting', 'Debugging', 'Tech Support', 'Software Development']
 tags:
-  - blog
+  - Blog
   - openim
   - troubleshooting
   - debugging

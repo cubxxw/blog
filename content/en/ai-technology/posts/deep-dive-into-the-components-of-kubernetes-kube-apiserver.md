@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-   - blog
+   - Blog
    - etcd
    - k8s
    - kubernetes

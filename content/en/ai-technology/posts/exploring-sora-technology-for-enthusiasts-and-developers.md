@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Sora Technology", "AI Video Generation", "Software Development", "Tech Enthusiasts"]
 tags:
-  - blog
+  - Blog
   - sora
   - ai
   - chatgpt

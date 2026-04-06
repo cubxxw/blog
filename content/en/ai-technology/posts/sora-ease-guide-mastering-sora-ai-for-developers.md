@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Sora AI", "Development Guide", "AI Modeling", "OpenAI", "Developer Tools"]
 tags:
-  - blog
+  - Blog
   - sora
   - ai
   - github

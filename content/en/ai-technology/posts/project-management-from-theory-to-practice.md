@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Project Management", "Agile", "Scrum", "Risk Management", "Planning"]
 tags:
-  - blog
+  - Blog
   - Project Management
   - Agile
   - Scrum

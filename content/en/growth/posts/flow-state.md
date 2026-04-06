@@ -10,7 +10,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Flow State", "Productivity", "Happiness", "Focus"]
 tags:
-  - blog
+  - Blog
   - productivity
   - focus
   - happiness

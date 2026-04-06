@@ -10,7 +10,7 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: ["OpenIM", "Kubernetes", "Clustering", "Design", "Deployment", "Scheme"]
 tags:
-  - blog
+  - Blog
   - openim
   - kubernetes
   - sealos
