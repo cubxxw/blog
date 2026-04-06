@@ -178,6 +178,15 @@ tags:
 
 ## 参考文件
 
-- [`config/tags-mapping.json`](../config/tags-mapping.json) - 同义词映射配置
-- [`content/`](../content/) - 文章内容目录
-- [`themes/PaperMod/layouts/_default/terms.html`](../themes/PaperMod/layouts/_default/terms.html) - 标签页面模板
+- [`docs/TAG_GOVERNANCE.md`](docs/TAG_GOVERNANCE.md) - Category vs Tag 决策规则（新）
+- [`config/tags-mapping.json`](config/tags-mapping.json) - 同义词映射配置
+- [`content/CATEGORIES.md`](content/CATEGORIES.md) - 分类架构详情
+
+---
+
+## 版本历史
+
+| 版本 | 日期 | 变更 |
+|------|------|------|
+| 1.0.0 | 2026-03-28 | 初始版本，建立标签规范体系 |
+| 1.1.0 | 2026-04-06 | 添加治理文档引用，明确 category 与 tag 的区别 |
