@@ -127,7 +127,7 @@ If you're interested in my content or have collaboration ideas, feel free to rea
 
 ### Deep Thinking & Sharing
 - **Zhihu**: [Zhihu Profile](https://www.zhihu.com/people/3293172751) - Deep thinking and technical sharing
-- **Twitter/X**: [@xxw3293172751](https://twitter.com/xxw3293172751) - Real-time updates and international exchange
+- **X (Twitter)**: [@xxw3293172751](https://x.com/xxw3293172751) - Real-time updates and international exchange
 - **Jike**: [Jike Profile](https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4) - Instant thoughts and life insights
 
 ### Video & Life
@@ -144,9 +144,9 @@ If you're interested in my content or have collaboration ideas, feel free to rea
 
 If this is your first visit, I suggest starting from these entry points:
 
-1. **[Latest Posts](/posts/)** - See my recent thoughts and practices
-2. **[AI & Technology](/categories/ai-technology/)** - If you follow AI and tech trends
-3. **[Growth & Cognition](/categories/growth/)** - If you care about self-iteration and learning methods
+1. **[Latest Posts](/ai-technology/posts/)** - See my recent thoughts and practices
+2. **[AI & Technology](/ai-technology/)** - If you follow AI and tech trends
+3. **[Growth & Cognition](/growth/)** - If you care about self-iteration and learning methods
 4. **[Travel Records](/travel/)** - Follow my footsteps around the world
 5. **[Open Source Projects](https://github.com/cubxxw)** - For developers who want to collaborate
 
