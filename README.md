@@ -48,7 +48,47 @@
     </table>
 </div>
 
+## Category Architecture (v2.0.0)
+
+This blog uses a **4-category architecture** aligned with the author's identity as **AI Builder, Open Source Contributor, and Digital Nomad**.
+
+| Category | Description | Content Coverage |
+|----------|-------------|------------------|
+| **AI & Technology** | Technical content about AI/LLM, Kubernetes, Go, DevOps | AI/LLM applications, Kubernetes cloud-native, Go engineering, DevOps practices |
+| **Projects** | AI open source project deep-dives and product builds | LangChain, GPT-Researcher, Jina analysis, independent developer products |
+| **Growth** | Personal growth, annual reviews, mindset, efficiency methods | Annual reviews, monthly thoughts, GTD, Flow State, career development |
+| **Travel** | Travel experiences and digital nomad lifestyle | Travel itineraries, digital nomad life, cultural exploration, adventures |
+
+For detailed category documentation, see [`content/CATEGORIES.md`](content/CATEGORIES.md).
+
+---
+
 ## Tagging Standards
+
+For comprehensive governance rules on category vs tag decisions, see [`docs/TAG_GOVERNANCE.md`](docs/TAG_GOVERNANCE.md).
+
+### Core Principles
+
+- **Categories (1 per post)**: Broad content buckets for navigation - choose from 4 core categories
+- **Tags (5-8 per post)**: Specific topics and technologies - flexible and detailed
+- **Tag Naming**: Use Title Case, avoid duplicates (e.g., use `Go` not `golang` or `Golang`)
+- **Language Consistency**: Use English tags for both CN/EN blogs for unified tagging
+
+### Tag Groups (9 Categories)
+
+| Group | Tags |
+|-------|------|
+| **Programming Languages** | Go, Python, JavaScript, TypeScript, Rust, Java |
+| **Cloud Native** | Kubernetes, Docker, Cloud Native, Helm, Istio, Containerd |
+| **AI/ML** | AI, Machine Learning, Deep Learning, LLM, NLP, Computer Vision |
+| **Technology** | DevOps, Automation, Testing, Performance, Security, Monitoring, CI/CD |
+| **Architecture** | Microservices, System Design, Distributed Systems, Event-Driven |
+| **Tools** | Git, GitHub, VS Code, Linux, Vim, Docker Desktop |
+| **Open Source** | Open Source, Community, Contribution, Maintenance |
+| **Life** | Blog, Travel, Personal Growth, Self-Discovery, Reading, Reflection |
+| **Culture** | Remote Work, Team Collaboration, Management, Leadership |
+
+For detailed tagging standards, see [`TAGS.md`](TAGS.md).
 
 Based on your professional skills, technical expertise, and personal interests, I have prepared a more comprehensive list of tags and categories, presented in a table format, distinguishing between Chinese and English blogs.
 
