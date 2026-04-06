@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '故障排查', '调试', '技术支持', '软件开发']
-tags: ["Blog", "OpenIM", "故障排查 (Troubleshooting)", "调试 (Debugging)", "技术支持 (Technical Support)"]
+tags: ["Blog", "OpenIM", "Troubleshooting", "Debugging", "Technical Support"]
 categories: ["Technology"]
 description: '本指南提供了一个全面的 OpenIM 故障排查方法和调试技术概览，基于真实的开发和操作经验。非常适合希望在 OpenIM 环境中提升问题解决能力的开发人员。'
 ---

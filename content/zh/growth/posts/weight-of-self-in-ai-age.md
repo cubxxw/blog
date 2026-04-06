@@ -5,7 +5,7 @@ draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊鑫伟", "cubxxw"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["AI时代", "自我认同", "人类价值", "意义", "主体性", "存在"]
 tags:
   - AI

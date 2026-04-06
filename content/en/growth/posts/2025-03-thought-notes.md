@@ -2,8 +2,8 @@
 title: '2025 March Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-03-31T23:59:59+07:00
-draft : false
+date: 2025-03-31T23:59:59+08:00
+draft: false
 showtoc: true
 weight: 1
 tocopen: true
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
   - Learning Journey
   - Growth Mindset
 categories:
-  - Personal Development
+  - Growth
 description: >
     March 2025 monthly reflection - documenting learning, growth, challenges, and insights from my journey of continuous improvement and personal development.
 ---

@@ -11,7 +11,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['向量数据库', '人工智能', '数据库性能', '大数据', '数据索引', '数据管理']
-tags: ["Blog", "AI", "数据库 (Database)"]
+tags: ["Blog", "AI", "Database"]
 categories: ["Technology"]
 description: '本文介绍了向量数据库的基础知识，使用场景，以及它在现代大数据和人工智能领域中的应用。'
 ---

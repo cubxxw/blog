@@ -2,7 +2,7 @@
 title: 'December 2025 Thought Notes | 2025 年 12 月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-12-31T23:59:59+07:00
+date: 2025-12-31T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Thought Notes", "Personal Growth", "Deep Reflection", "Kumano Kodo", "Pilgrimage", "Zen Buddhism", "Self-Discovery", "Year-End Reflection", "Japanese Culture", "Architecture Aesthetics", "December 2025", "AI as Modern Priest"]
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
-  - Pilgrimage Journey
+  -  Pilgrimage Journey
   - Year-End Contemplation
 categories:
-  - Personal Development
+  - Growth
 description: >
   December 2025 deep thought notes with 380 entries documenting pilgrimage experiences, Zen philosophy, and self-discovery journeys.
   

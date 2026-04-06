@@ -1,6 +1,6 @@
 ---
 title: 'Openim Devops Design'
-description:
+description: Explore DevOps culture and agile development in OpenIM project, covering CI/CD, automation, and team collaboration.
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2023-09-16T16:13:36+08:00

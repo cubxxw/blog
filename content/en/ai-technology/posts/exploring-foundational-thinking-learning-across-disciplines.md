@@ -2,13 +2,13 @@
 title: '探索底层思维：通过核心原理快速掌握新学科'
 ShowRssButtonInSectionTermList: true
 cover:
-  image: /path/to/your/cover/image.jpg
+  image:
 date: 2024-05-07T22:22:59+08:00
 draft: true
 showtoc: true
 tocopen: false
 type: posts
-author: ["熊欣伟", "我"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["底层思维", "跨学科学习", "核心原理", "教育策略"]
 tags:
   - 自我发现 (Self Discovery)

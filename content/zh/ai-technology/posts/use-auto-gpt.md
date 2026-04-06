@@ -9,7 +9,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Auto-GPT', '人工智能', '安装教程', '自主AI工具', '技术指南', '智能自动化']
-tags: ["Blog", "AI", "自主人工智能 (Auto-GPT)"]
+tags: ["Blog", "AI", "Auto-GPT"]
 categories: ["Technology"]
 ---
 

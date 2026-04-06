@@ -2,13 +2,13 @@
 title: 'AI Is Getting Smarter, But I''m Losing Myself'
 ShowRssButtonInSectionTermList: true
 cover.image: /assets/ai-self-identity-cover.jpg
-date: 2026-03-01T20:15:00+07:00
+date: 2026-03-01T20:15:00+08:00
 draft: false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "cubxxw"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["AI", "Agency", "Self-awareness", "Human Value", "Technology Philosophy"]
 tags:
   - AI Reflection
@@ -17,8 +17,8 @@ tags:
   - Self Awareness
   - Human Value
 categories:
-  - AI
-  - Personal Development
+  - Growth
+  - Life
 description: >
     When AI can replace our thinking and execution, where is "me"? Exploring human agency, feelings, and the essence of meaning in the AI era.
 ---

@@ -2,7 +2,7 @@
 title: '2024 年度回顾'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-02-12T16:18:31+05:45
+date: 2025-02-12T16:18:31+08:00
 draft : false
 showtoc: true
 weight: 1
@@ -10,14 +10,8 @@ tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
-tags:
-  - blog
-  - 年度回顾 (Annual Recap)
-  - 旅行 (Travel)
-  - 产品开发 (Product Development)
-  - 哲理（Philosophy）
-categories:
-  - 成长 (Growth)
+tags: ["Blog", "Annual Recap", "Travel", "Product Development", "Philosophy"]
+categories: ["Growth"]
 description: >
     这篇文章是我对2024年的年度回顾，涵盖了我在旅居、产品开发、个人成长等方面的经验与反思。通过分享我的经历和思考，希望能为自己和读者带来启发和思考的空间。
 ---

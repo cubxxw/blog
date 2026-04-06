@@ -3,6 +3,16 @@
   const endpoint = window.BLOG_AI_ENDPOINT || "/.netlify/functions/blog-ai";
   const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 
+  // Debug mode - can be enabled via window.blogAiInlineDebug = true
+  const DEBUG = window.blogAiInlineDebug || false;
+
+  function log(...args) {
+    if (DEBUG) {
+      // eslint-disable-next-line no-console
+      console.log('[Blog AI Inline]', ...args);
+    }
+  }
+
   // Context storage key and max length
   const CONTEXT_STORAGE_KEY = "blog-ai-conversation-context";
   const MAX_CONTEXT_LENGTH = 10; // Max conversation pairs to keep
@@ -137,7 +147,11 @@
   }
 
   function clearContext() {
+    try {
     localStorage.removeItem(CONTEXT_STORAGE_KEY);
+    } catch (e) {
+      console.warn("Failed to clear context:", e);
+    }
   }
 
   function createWidget(container) {
@@ -182,7 +196,7 @@
     // Load context from localStorage
     let conversationContext = loadContext();
     if (conversationContext.length > 0) {
-      console.log("Loaded conversation context:", conversationContext.length, "messages");
+      log("Loaded conversation context:", conversationContext.length, "messages");
       // Optionally show a subtle indicator that context was loaded
       const contextIndicator = document.createElement("div");
       contextIndicator.className = "blog-ai-context-indicator";

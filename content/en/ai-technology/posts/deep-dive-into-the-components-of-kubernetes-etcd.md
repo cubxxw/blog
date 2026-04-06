@@ -6,37 +6,19 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: "Xinwei Xiong, Me"
-keywords: []
-tags: ["Blog"]
-categories: ["Technology"]
-description: >
-    Explore the inner workings and components of Kubernetes Etcd in-depth, understanding its role and significance in the Kubernetes ecosystem.
----
-
----
-title: 'In-depth understanding of Kubernetes and other components ETCD'
-ShowRssButtonInSectionTermList: true
-cover.image:
-date: 2023-09-26T12:03:38+08:00
-draft : false
-showtoc: true
-tocopen: false
-type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["kubernetes", "etcd", "raft", "go"]
-tags: ["Blog"]
-   - blog
-   - kubernetes
-   - etcd
-   -raft
-   -go
-categories: ["Technology"]
-   - Development
-   - Blog
-   - Kubernetes
+tags:
+  - Blog
+  - Kubernetes
+  - ETCD
+  - Raft
+  - Go
+categories:
+  - Technology
+  - Development
 description: >
-     This article will explain ETCD and Raft in depth and throughout. And analyze ETCD in depth from the perspective of Kubernetes.
+    Explore the inner workings and components of Kubernetes Etcd in-depth, understanding its role and significance in the Kubernetes ecosystem.
 ---
 
 
@@ -138,7 +120,7 @@ etcd --listen-client-urls 'http://localhost:12379' \
 
 View cluster members:
 
-![image-20230304170809258](http://sm.nsddd.top/sm202303041708430.png)
+![image-20230304170809258](https://sm.nsddd.top/sm202303041708430.png)
 
 
 
@@ -396,7 +378,7 @@ By using watcherGroup, you can better manage Watchers and improve the performanc
 
 ### ETCD request flow chart
 
-![image-20230304194117423](http://sm.nsddd.top/sm202303041941660.png)
+![image-20230304194117423](https://sm.nsddd.top/sm202303041941660.png)
 
 **MVCC module**
 
@@ -623,7 +605,7 @@ https://github.com/bitnami/charts/blob/master/bitnami/etcd
 
 ### Etcd Operator
 
-![img](http://sm.nsddd.top/sm202303051230490.png)
+![img](https://sm.nsddd.top/sm202303051230490.png)
 
 
 
@@ -719,7 +701,7 @@ This topology couples control plane and etcd members on the same node.
 
 The advantage is that it's very easy to set up, and managing copies is easier. However, stacking carries the risk of coupling failure. If a node fails, both etcd members and control plane instances are lost, and cluster redundancy is compromised. This risk can be mitigated by adding more control plane nodes. Therefore, in order to achieve high availability of the cluster, at least three stacked Master nodes should be run.
 
-![img](http://sm.nsddd.top/sm202303051232586.png)
+![img](https://sm.nsddd.top/sm202303051232586.png)
 
 
 
@@ -727,7 +709,7 @@ The advantage is that it's very easy to set up, and managing copies is easier. H
 
 This topology decouples the control plane and etcd members. If a Master node is lost, the impact on etcd members will be small, and it will not have as much impact on cluster redundancy as a stacked topology. However, this topology requires twice as many hosts as a stacked topology. A cluster with this topology requires at least three hosts for the control plane nodes and three hosts for the etcd cluster.
 
-![img](http://sm.nsddd.top/sm202303051232839.png)
+![img](https://sm.nsddd.top/sm202303051232839.png)
 
 
 

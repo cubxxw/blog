@@ -2,13 +2,13 @@
 title: 'AI 越来越聪明，我却越来越不知道自己是谁'
 ShowRssButtonInSectionTermList: true
 cover.image: /assets/ai-self-identity-cover.jpg
-date: 2026-03-01T20:15:00+07:00
+date: 2026-03-01T20:15:00+08:00
 draft: false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "cubxxw"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["AI", "主体性", "自我认知", "人类价值", "技术哲学"]
 tags:
   - AI 思考 (AI Reflection)
@@ -17,7 +17,7 @@ tags:
   - 自我认知 (Self Awareness)
   - 人类价值 (Human Value)
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
     当 AI 能替代我们思考和执行，"我"在哪里？探索 AI 时代人类的主体性、感受与意义的本质。
 aliases:

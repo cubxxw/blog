@@ -2,22 +2,22 @@
 title: '2026 年 1 月思考笔记 | January 2026 Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2026-01-31T23:59:59+07:00
+date: 2026-01-31T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["思考笔记", "个人成长", "深度思考", "AI 产品", "金融投资", "生物学", "佛学", "社会观察", "自我认知", "一月反思", "新年规划"]
 tags:
-  - blog
-  - 月度笔记
-  - 个人反思
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 新年规划
   - 科技思考
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   2026 年 1 月深度思考笔记，本月共 388 条。涵盖 AI 产品设计、金融投资、生物学、佛学、社会观察、自我认知等多个维度。
   

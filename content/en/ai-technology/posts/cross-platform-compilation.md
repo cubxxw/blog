@@ -5,7 +5,7 @@ date: '2023-09-16T16:21:52+08:00'
 draft: false
 showtoc: true
 tocopen: false
-author: "Xinwei Xiong, Me"
+author: ["Xinwei Xiong", "Me"]
 keywords: ['Cross Platform Compilation', 'Go Programming Language', 'Build Process', 'Compatibility', 'Distribution']
 tags: ["Blog", "Go"]
 categories: ["Technology"]

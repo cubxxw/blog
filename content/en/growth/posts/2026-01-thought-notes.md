@@ -2,7 +2,7 @@
 title: 'January 2026 Thought Notes | 2026 年 1 月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2026-01-31T23:59:59+07:00
+date: 2026-01-31T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Thought Notes", "Personal Growth", "Deep Reflection", "AI Products", "Agent Design", "Finance & Investment", "Biology", "Buddhism", "Social Observation", "Self-Discovery", "January 2026", "TOB vs TOC", "Manus AI"]
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
-  - New Year Planning
+  -  New Year Planning
   - Technology & AI
 categories:
-  - Personal Development
+  - Growth
 description: >
   January 2026 deep thought notes with 388 entries covering AI product design, finance, biology, Buddhism, social observation, and self-discovery.
   

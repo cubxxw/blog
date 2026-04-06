@@ -1627,7 +1627,7 @@ RAG has achieved success in multiple fields, including question and answer syste
 
 Using the LangChain framework, we can easily build a RAG application as shown below ([Image source](https://github.com/chatchat-space/Langchain-Chatchat/blob/master/img/langchain+chatglm.png)) . In the figure below, each oval represents a module of LangChain, such as the data collection module or the preprocessing module. `Each rectangle represents a data state`, such as raw data or preprocessed data. Arrows indicate the direction of data flow, from one module to another. At every step, LangChain can provide corresponding solutions to help us handle various tasks.
 
-![Langchain diagram](http://sm.nsddd.top/C1-3-langchain.png)
+![Langchain diagram](https://sm.nsddd.top/C1-3-langchain.png)
 
 
 

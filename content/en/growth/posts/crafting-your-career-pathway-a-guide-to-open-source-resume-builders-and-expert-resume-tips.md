@@ -6,9 +6,7 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: 
-  - Xinwei Xiong
-  - Me
+author: ["Xinwei Xiong", "Me"]
 keywords: ["resume building", "career development", "open source", "professional tips"]
 tags:
   - blog

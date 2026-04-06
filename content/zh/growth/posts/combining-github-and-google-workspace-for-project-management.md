@@ -6,7 +6,7 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: '熊鑫伟，我'
+author: ["Xinwei Xiong", "Me"]
 keywords: ['GitHub', 'Google Workspace', '项目管理', '开发策略', '协作工具', 'GitHub与Google Workspace', 'GitHub与Google Workspace项目管理', 'GitHub与Google Workspace协作', 'GitHub与Google Workspace优化', 'GitHub与Google Workspace使用技巧']
 tags:
   - 'google (谷歌)'

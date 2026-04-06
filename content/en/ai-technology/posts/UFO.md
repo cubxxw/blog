@@ -8,12 +8,18 @@ showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: []
+keywords:
+  - UFO
+  - Desktop Automation
+  - Multi-Agent System
+  - Windows Automation
 tags:
-  - blog
+  - AI
+  - Automation
+  - Windows Development
+  - Microsoft Technology
 categories:
-  - Development
-  - Blog
+  - Technology
 description: >
-    Pending translation from Chinese version
+  In-depth analysis of Microsoft UFO project's core design, technical implementation and system architecture, covering multi-agent collaboration, hybrid GUI/API operations, continuous learning and other innovative features.
 ---

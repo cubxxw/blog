@@ -7,9 +7,7 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author:
-  - "Xinwei Xiong"
-  - "Me"
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog

@@ -5,7 +5,7 @@ date: '2023-09-17T09:51:54+08:00'
 draft: false
 showtoc: true
 tocopen: false
-author: "Xinwei Xiong, Me"
+author: ["Xinwei Xiong", "Me"]
 keywords: ['Open Source Commercialization', 'Global Traffic Conference', 'GTC', 'Open Source Software', 'Commercialization Strategies', 'Conference Summary']
 tags: ["Blog"]
 categories: ["Technology"]

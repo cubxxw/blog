@@ -86,11 +86,11 @@ params:
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "webo", "xiaohongshu"] # To customize which share buttons to be enabled on page
   analytics:
     google:
-      SiteVerificationTag: XYZabc
+      SiteVerificationTag: ""
     bing:
-      SiteVerificationTag: XYZabc
+      SiteVerificationTag: ""
     yandex:
-      SiteVerificationTag: XYZabc
+      SiteVerificationTag: ""
   cover:
     hidden: true
     hiddenInList: true

@@ -2,7 +2,7 @@
 title: '2025 June Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-06-30T23:59:59+07:00
+date: 2025-06-30T23:59:59+08:00
 draft : false
 showtoc: true
 weight: 1
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
-  - Summer Solstice
+  -  Summer Solstice
   - Strategic Planning
 categories:
-  - Personal Development
+  - Growth
 description: >
     June 2025 monthly reflection - embracing the summer solstice energy, strategic planning for the second half of the year, and celebrating progress made.
 ---

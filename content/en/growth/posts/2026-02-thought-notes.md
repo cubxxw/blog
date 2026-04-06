@@ -2,7 +2,7 @@
 title: 'February 2026 Thought Notes | 2026 年 2 月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2026-02-28T23:59:59+07:00
+date: 2026-02-28T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Thought Notes", "Personal Growth", "Deep Reflection", "Travel", "Chiang Mai", "Pokhara", "Ecological Protection", "Urban Governance", "AI Products", "Buddhism", "Self-Discovery", "February 2026", "Desire & Resources"]
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
-  - Travel & Exploration
+  -  Travel & Exploration
   - Self-Discovery Journey
 categories:
-  - Personal Development
+  - Growth
 description: >
   February 2026 deep thought notes with 365 entries covering travel experiences (Chiang Mai, Pokhara), ecological protection, urban governance observation, AI product thinking, Buddhist philosophy, and self-discovery.
   

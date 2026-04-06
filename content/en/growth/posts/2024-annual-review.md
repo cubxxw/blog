@@ -2,7 +2,7 @@
 title: '2024 Annual Review'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-02-12T16:18:31+05:45
+date: 2025-02-12T16:18:31+08:00
 draft : false
 showtoc: true
 weight: 1
@@ -10,14 +10,8 @@ tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
-tags:
- - blog
-  - Annual Recap
-  - Travel
-  - Product Development
-  - Philosophy
-categories:
-  - Personal Development
+tags: ["Blog", "Annual Recap", "Travel", "Product Development", "Philosophy"]
+categories: ["Growth"]
 description: >
   This article is my annual review of 2024, covering my experiences and reflections on travel, product development, personal growth, etc. By sharing my experiences and thoughts, I hope to bring inspiration and space for reflection to myself and my readers.
 ---

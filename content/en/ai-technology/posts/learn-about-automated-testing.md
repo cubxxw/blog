@@ -46,7 +46,7 @@ As OpenIM, a popular project on Github, how to create value in the cloud native 
 
 Automation obviously means that the manual cost in the later period is very low. That is to say, as time goes by and the number of automation runs increases, the value of automation and ROI becomes higher.
 
-![image-20231015101916672](http://sm.nsddd.top/sm202310151019816.png)
+![image-20231015101916672](https://sm.nsddd.top/sm202310151019816.png)
 
 In addition to development costs, there are also maintenance costs. After the automated test is developed, it still needs to maintain version upgrades, diagnose errors, optimize the structure, etc. This cost requires continuous investment.
 
@@ -104,21 +104,21 @@ We know that the different stages, testing time and testing frequency are differ
 
 In the world of test design, an often mentioned approach is layering. Specifically, given a system, the structure is divided into three levels. The unit is in the smallest circle; the service contains multiple units, which is in the middle circle; and the system contains multiple services, which is the outer largest circle. The structure diagram is as follows:
 
-<img src="http://sm.nsddd.top/sm202310151032767.png" alt="image-20231015103231709" style="zoom:50%;" />
+<img src="https://sm.nsddd.top/sm202310151032767.png" alt="image-20231015103231709" style="zoom:50%;" />
 
 In practice, how should these three tests be combined and arranged? Mike Cohen first proposed the testing pyramid model in 2009 in his new book, How to Succeed with Agile. Unit test automation is at the bottom of the pyramid, interface test automation is in the middle, and UI test automation is at the top of the pyramid.
 
-<img src="http://sm.nsddd.top/sm202310151032517.png" alt="image-20231015103245476" style="zoom:50%;" />
+<img src="https://sm.nsddd.top/sm202310151032517.png" alt="image-20231015103245476" style="zoom:50%;" />
 
 Why a pyramid? If you don't understand the "why" behind the law, you won't be able to use the law well. In the previous lecture, we learned that "ROI is actually the implicit lifeblood of automated testing." Now we will use ROI thinking to analyze the testing pyramid law.
 
-<img src="http://sm.nsddd.top/sm202310151033215.png" alt="image-20231015103316990" style="zoom:50%;" />
+<img src="https://sm.nsddd.top/sm202310151033215.png" alt="image-20231015103316990" style="zoom:50%;" />
 
 Below, we look at the ROI of each layer separately. Unit tests can be triggered and run every time the developer commits code, and the regression frequency is high; interface tests are run in every round of integration testing, and the regression frequency is medium; UI automation tests are run in user acceptance testing, and the regression frequency is low.
 
 According to the ROI model, we can get the ROI ranking of 3 types of automated tests, as shown in the following table:
 
-![image-20231015103511548](http://sm.nsddd.top/sm202310151035602.png)
+![image-20231015103511548](https://sm.nsddd.top/sm202310151035602.png)
 
 It is not difficult to find by comparing the testing pyramid. In fact, the ROI of the three types of automated testing is from high to low from bottom to top.
 
@@ -195,7 +195,7 @@ UI testing mainly targets the user interface of the application. We can also use
 
 It can be seen that a request is initiated from the browser page, enters the API gateway, and is then passed to the Login function in the service. It has passed three test sections: UI test, API test and unit test.
 
-![image-20231015110008134](http://sm.nsddd.top/sm202310151100216.png)
+![image-20231015110008134](https://sm.nsddd.top/sm202310151100216.png)
 
 The three test sections measure the form of a request at different levels, so each section can test all cases or part of the cases. Just like three people responsible for a project, if there is no prior coordination and arrangement, the three people may do the same thing, causing waste, or there may be one thing that none of the three people do, forming a testing blind spot.
 
@@ -217,7 +217,7 @@ Let’s first take a look at what the test requirements are and use the FURPS mo
 
 Tool selection is very important, whether you are a reviewer or a solution proposer in a large enterprise. However, a common scenario is that the solution proposer talks about how excellent and powerful the new tool A is, covering everything from problem analysis to solution solutions. But not all experts attending the meeting are familiar with this new tool, and they will ask a lot of questions like "Why don't you use tool B?"
 
-![image-20231015115013681](http://sm.nsddd.top/sm202310151150865.png)
+![image-20231015115013681](https://sm.nsddd.top/sm202310151150865.png)
 
 Through this model, we get an important conclusion: the development workload of an automated test case, under given conditions, how long does it take for an engineer with any experience to use what tools, and how long does it take to complete, this is a fixed value that can be estimated. However, maintenance workload includes a variety of variable factors, which is the risk of automated testing projects.
 
@@ -239,7 +239,7 @@ However, the scripts generated by recording and playback are still process-orien
 
 So, is there any way to enable people without coding experience to edit and maintain scripts? The keyword-driven approach came into being. It adds the concept of page control objects. The method of calling an object is to operate the object. Under this mechanism, the object, object behavior, input data and description information can be Presented in the form of a table. Business personnel only need to edit the table to modify the running logic. This is called keyword drive.
 
-![image-20231015115240280](http://sm.nsddd.top/sm202310151152295.png)
+![image-20231015115240280](https://sm.nsddd.top/sm202310151152295.png)
 
 Compared with recording and playback, the advantage of the keyword-driven framework is that it reduces the technical requirements for test developers. Moreover, test developers have more logical control over the code, such as adding loop structures, wait time, and log output, as long as the framework provides sufficient keywords.
 
@@ -253,15 +253,15 @@ With the development of software technology, the technical level of automated te
 
 Horizontal function expansion refers to the increase in test functions. The automated test code draws on the module design thinking of the software. The test scenario of an application can be divided into multiple functional modules. For example, the food ordering process can be divided into a login module, an order module, and a courier module. The modules are connected through calling relationships to form a test scenario.
 
-![image-20231015120834151](http://sm.nsddd.top/sm202310151208198.png)
+![image-20231015120834151](https://sm.nsddd.top/sm202310151208198.png)
 
 At the technical level, it can be divided vertically into functional case libraries and general libraries. For example, the components of the page can form a reuse library, page object, button object, link object, etc. The technical layer coupled with the development technology is encapsulated in the reuse library, and the business functions related to testing are implemented in the function case library.
 
-![image-20231015120850603](http://sm.nsddd.top/sm202310151208653.png)
+![image-20231015120850603](https://sm.nsddd.top/sm202310151208653.png)
 
 Such a design follows the software design philosophy of high cohesion and low coupling, and will be very convenient when the scale of automated testing is expanded in the future. For example, if you add a payment function, you can write the payment page object into the reuse library, create a new payment test case, connect it to the order module in the front, and connect it to the express module in the back, and then it can run.
 
-![image-20231015121109504](http://sm.nsddd.top/sm202310151211541.png)
+![image-20231015121109504](https://sm.nsddd.top/sm202310151211541.png)
 
 
 
@@ -287,7 +287,7 @@ Compared with AI testing, I am more optimistic about another idea of automated t
 
 Remember, testing work is to prove the success or failure of software functions, and the cornerstone of its methodology is determinism, not agnosticism. To put it simply, the test is weaving a net. Although the net will miss fish, I am confident that as long as we invest manpower and time, we can weave the net to a certain extent and catch all kinds of fish. Instead of catching a fish today and not knowing where the fish is tomorrow. This is why I don’t think AI can completely replace manual testing work.
 
-![image-20231015121227807](http://sm.nsddd.top/sm202310151212869.png)
+![image-20231015121227807](https://sm.nsddd.top/sm202310151212869.png)
 
 
 
@@ -370,7 +370,7 @@ In this Go code:
 
 As you can see, the test case for script running is only on Chrome, but as a web application, it generally needs to support mainstream browsers on the market. Take a look at [Alibaba Cloud website](https://help.aliyun.com/document_detail /211434.html) supports 12 browsers, the list is as follows:
 
-![image-20231015142646429](http://sm.nsddd.top/sm202310151426520.png)
+![image-20231015142646429](https://sm.nsddd.top/sm202310151426520.png)
 
 So, is there a way for our script to test 12 browsers at once? At this point we need to modify the script to support calling multiple browser drivers:
 
@@ -715,17 +715,17 @@ func main() {
 
 这些方法还都是基于常规的自动化测试开发流程，先有测试需求，再设计测试案例，然后做自动化。以登录测试为例：
 
-![image-20231015144845702](http://sm.nsddd.top/sm202310151448753.png)
+![image-20231015144845702](https://sm.nsddd.top/sm202310151448753.png)
 
 自动化测试的开发成本，就是把测试需求转变成自动化测试代码这个过程花费的时间。在我们的图里，它是从左向右，所以我管它叫做水平开发成本。
 
-![image-20231015145252236](http://sm.nsddd.top/sm202310151452286.png)
+![image-20231015145252236](https://sm.nsddd.top/sm202310151452286.png)
 
 
 
 当登录功能测试需求发生变化时，就会重新走一遍这个流程，出现了多个版本的测试需求，也会带来多个版本的自动化测试案例。从下图可见，这个版本是自上向下增加，所以我管它叫做垂直维护成本。
 
-![image-20231015145304785](http://sm.nsddd.top/sm202310151453839.png)
+![image-20231015145304785](https://sm.nsddd.top/sm202310151453839.png)
 
 我们现在可以直观地看到开发成本和维护成本了。好，问题来了，有没有办法从流程上动手术，来降低这两个成本呢？
 
@@ -737,7 +737,7 @@ func main() {
 
 常规的自动化测试，是指用代码实现设计好的 TestCase，而 Auto Gen Auto 的目的是让 Test Case 生成也自动化，如下图所示。
 
-![image-20231015145419121](http://sm.nsddd.top/sm202310151454180.png)
+![image-20231015145419121](https://sm.nsddd.top/sm202310151454180.png)
 
 因为从测试需求到自动化测试案例是完全自动化的，每次需求改变的时候，只需运行一次 Auto Gen Auto 即可生成新的自动化案例，垂直维护成本为零。所以 Auto Gen Auto 技术如果能落地，ROI 就会大大提高。
 
@@ -761,7 +761,7 @@ func main() {
 
 这个实现思路，在开发中是很常用的，比如 Maven Archetype 使用模版自动生成项目代码，Soap 使用 WSDL 来生成调用桩等等，原理图如下。
 
-![image-20231015145823666](http://sm.nsddd.top/sm202310151458728.png)
+![image-20231015145823666](https://sm.nsddd.top/sm202310151458728.png)
 
 所以，要做 Auto Gen Auto，我们的目标是先要找出测试需求里的这些规则，并把它们表达出来，放在一个规则文件里。我们看看下面的例子。
 
@@ -792,7 +792,7 @@ name: user name rules
 
 然后，我们写一段代码，从这个 YAML 文件中直接把规则加载进来，在内存中形成一个分类树。
 
-![image-20231015151026332](http://sm.nsddd.top/sm202310151510385.png)
+![image-20231015151026332](https://sm.nsddd.top/sm202310151510385.png)
 
 
 
@@ -909,17 +909,17 @@ func main() {
 
 这些方法还都是基于常规的自动化测试开发流程，先有测试需求，再设计测试案例，然后做自动化。以登录测试为例：
 
-![image-20231015144845702](http://sm.nsddd.top/sm202310151448753.png)
+![image-20231015144845702](https://sm.nsddd.top/sm202310151448753.png)
 
 自动化测试的开发成本，就是把测试需求转变成自动化测试代码这个过程花费的时间。在我们的图里，它是从左向右，所以我管它叫做水平开发成本。
 
-![image-20231015145252236](http://sm.nsddd.top/sm202310151452286.png)
+![image-20231015145252236](https://sm.nsddd.top/sm202310151452286.png)
 
 
 
 当登录功能测试需求发生变化时，就会重新走一遍这个流程，出现了多个版本的测试需求，也会带来多个版本的自动化测试案例。从下图可见，这个版本是自上向下增加，所以我管它叫做垂直维护成本。
 
-![image-20231015145304785](http://sm.nsddd.top/sm202310151453839.png)
+![image-20231015145304785](https://sm.nsddd.top/sm202310151453839.png)
 
 我们现在可以直观地看到开发成本和维护成本了。好，问题来了，有没有办法从流程上动手术，来降低这两个成本呢？
 
@@ -931,7 +931,7 @@ func main() {
 
 常规的自动化测试，是指用代码实现设计好的 TestCase，而 Auto Gen Auto 的目的是让 Test Case 生成也自动化，如下图所示。
 
-![image-20231015145419121](http://sm.nsddd.top/sm202310151454180.png)
+![image-20231015145419121](https://sm.nsddd.top/sm202310151454180.png)
 
 因为从测试需求到自动化测试案例是完全自动化的，每次需求改变的时候，只需运行一次 Auto Gen Auto 即可生成新的自动化案例，垂直维护成本为零。所以 Auto Gen Auto 技术如果能落地，ROI 就会大大提高。
 
@@ -955,7 +955,7 @@ func main() {
 
 这个实现思路，在开发中是很常用的，比如 Maven Archetype 使用模版自动生成项目代码，Soap 使用 WSDL 来生成调用桩等等，原理图如下。
 
-![image-20231015145823666](http://sm.nsddd.top/sm202310151458728.png)
+![image-20231015145823666](https://sm.nsddd.top/sm202310151458728.png)
 
 所以，要做 Auto Gen Auto，我们的目标是先要找出测试需求里的这些规则，并把它们表达出来，放在一个规则文件里。我们看看下面的例子。
 
@@ -986,7 +986,7 @@ name: user name rules
 
 然后，我们写一段代码，从这个 YAML 文件中直接把规则加载进来，在内存中形成一个分类树。
 
-![image-20231015151026332](http://sm.nsddd.top/sm202310151510385.png)
+![image-20231015151026332](https://sm.nsddd.top/sm202310151510385.png)
 
 
 
@@ -1103,17 +1103,17 @@ func main() {
 
 这些方法还都是基于常规的自动化测试开发流程，先有测试需求，再设计测试案例，然后做自动化。以登录测试为例：
 
-![image-20231015144845702](http://sm.nsddd.top/sm202310151448753.png)
+![image-20231015144845702](https://sm.nsddd.top/sm202310151448753.png)
 
 自动化测试的开发成本，就是把测试需求转变成自动化测试代码这个过程花费的时间。在我们的图里，它是从左向右，所以我管它叫做水平开发成本。
 
-![image-20231015145252236](http://sm.nsddd.top/sm202310151452286.png)
+![image-20231015145252236](https://sm.nsddd.top/sm202310151452286.png)
 
 
 
 当登录功能测试需求发生变化时，就会重新走一遍这个流程，出现了多个版本的测试需求，也会带来多个版本的自动化测试案例。从下图可见，这个版本是自上向下增加，所以我管它叫做垂直维护成本。
 
-![image-20231015145304785](http://sm.nsddd.top/sm202310151453839.png)
+![image-20231015145304785](https://sm.nsddd.top/sm202310151453839.png)
 
 我们现在可以直观地看到开发成本和维护成本了。好，问题来了，有没有办法从流程上动手术，来降低这两个成本呢？
 
@@ -1125,7 +1125,7 @@ func main() {
 
 常规的自动化测试，是指用代码实现设计好的 TestCase，而 Auto Gen Auto 的目的是让 Test Case 生成也自动化，如下图所示。
 
-![image-20231015145419121](http://sm.nsddd.top/sm202310151454180.png)
+![image-20231015145419121](https://sm.nsddd.top/sm202310151454180.png)
 
 因为从测试需求到自动化测试案例是完全自动化的，每次需求改变的时候，只需运行一次 Auto Gen Auto 即可生成新的自动化案例，垂直维护成本为零。所以 Auto Gen Auto 技术如果能落地，ROI 就会大大提高。
 
@@ -1149,7 +1149,7 @@ func main() {
 
 这个实现思路，在开发中是很常用的，比如 Maven Archetype 使用模版自动生成项目代码，Soap 使用 WSDL 来生成调用桩等等，原理图如下。
 
-![image-20231015145823666](http://sm.nsddd.top/sm202310151458728.png)
+![image-20231015145823666](https://sm.nsddd.top/sm202310151458728.png)
 
 所以，要做 Auto Gen Auto，我们的目标是先要找出测试需求里的这些规则，并把它们表达出来，放在一个规则文件里。我们看看下面的例子。
 
@@ -1180,7 +1180,7 @@ name: user name rules
 
 然后，我们写一段代码，从这个 YAML 文件中直接把规则加载进来，在内存中形成一个分类树。
 
-![image-20231015151026332](http://sm.nsddd.top/sm202310151510385.png)
+![image-20231015151026332](https://sm.nsddd.top/sm202310151510385.png)
 
 
 
@@ -1238,7 +1238,7 @@ This FoodCome is a web application that provides users with ordering functions. 
 
 In order to analyze the test requirements, we use the hexagonal architecture diagram method to clarify the interactive interfaces inside and outside the system. The hexagonal architecture method draws services as a nested hexagon. The outermost large hexagon is the adapter layer, which represents all interactions between the system and the outside world. The inner hexagon is the domain business layer. The adapter layer is responsible for external interaction, which has little to do with business. It is generally a common technology, mainly drivers, protocols and infrastructure, while the domain layer is the organization and implementation of business logic. If you are not familiar with the hexagonal architecture, you can also refer to here.
 
-![image-20231015154901026](http://sm.nsddd.top/sm202310151549151.png)
+![image-20231015154901026](https://sm.nsddd.top/sm202310151549151.png)
 
 FoodCome is a single system. After it is run, there are two types of interfaces on the outer hexagon:
 
@@ -1255,7 +1255,7 @@ To define test requirements, you must first clarify functional requirements. Fun
 
 The full name of BDD is Behavior Drive Development, which is the behavior-driven development model. If you want to achieve the level of driven development, the definition of this Behavior must be detailed enough so that developers know how to implement it. Similarly, testers also know how to test.
 
-![image-20231015155648532](http://sm.nsddd.top/sm202310151556758.png)
+![image-20231015155648532](https://sm.nsddd.top/sm202310151556758.png)
 
 How does BDD do it? It refines the User Story into one or more features, and each feature is a testable scenario.
 
@@ -1284,7 +1284,7 @@ As the business scale expanded and the number of developers increased, FoodCome 
 + Account service: manage customer information in orders and connect with external payment systems.
 + Notification service: generate messages to notify users, and connect with external email systems.
 
-![image-20231015155800338](http://sm.nsddd.top/sm202310151558410.png)
+![image-20231015155800338](https://sm.nsddd.top/sm202310151558410.png)
 
 Under this architecture, the external interface of the original single application remains unchanged, but the internal interface of the single application is replaced by five independent microservices. The user's order request first reaches the order service through the API gateway. After completing the payment, the restaurant receives the order and then delivers the order through the logistics system.
 
@@ -1296,17 +1296,17 @@ The question now is, what changes does this bring to testing? After the split, t
 
 To do integration testing, we first need to understand how microservices interact. Under the microservice architecture, interaction can have many styles, such as RPC remote procedure call, REST style, Message Queue message queue, etc. According to the interaction methods and styles, I have organized them into a table for your convenience.
 
-![image-20231015162237793](http://sm.nsddd.top/sm202310151622855.png)
+![image-20231015162237793](https://sm.nsddd.top/sm202310151622855.png)
 
 FoodCome uses two interaction methods, RestAPI and Message Queue.
 
 RestAPI is used to handle real-time interactions between services, such as the front-end calling the order service through the API gateway to place an order.
 
-![image-20231015163956916](http://sm.nsddd.top/sm202310151639976.png)
+![image-20231015163956916](https://sm.nsddd.top/sm202310151639976.png)
 
 Message Queue is used to handle asynchronous interactions. The order service and notification service exchange information through Message Queue.
 
-![image-20231015164011165](http://sm.nsddd.top/sm202310151640438.png)
+![image-20231015164011165](https://sm.nsddd.top/sm202310151640438.png)
 
 Let's take a look at the specific implementation of these two interaction methods, and then find out the test points.
 
@@ -1433,7 +1433,7 @@ Secondly, it also needs to indicate which channel this message is sent to. Chann
 
 Because order messages have strict timing, for example, if the order of the two messages OrderCancelled and OrderCreated is reversed, it will cause confusion in program processing. Therefore, we send all three types of messages to a channel called order.
 
-![image-20231015171958926](http://sm.nsddd.top/sm202310151719011.png)
+![image-20231015171958926](https://sm.nsddd.top/sm202310151719011.png)
 
 
 
@@ -1488,7 +1488,7 @@ How to do it? Asking a developer to write a Word document? A thousand developers
 
 OpenAPI and AsyncAPI are two types of IDL family. Here is a list of common IDLs, so you can see what IDLs are in your field.
 
-![image-20231015183758196](http://sm.nsddd.top/sm202310151837291.png)
+![image-20231015183758196](https://sm.nsddd.top/sm202310151837291.png)
 
 
 
@@ -1496,7 +1496,7 @@ OpenAPI and AsyncAPI are two types of IDL family. Here is a list of common IDLs,
 
 For a food ordering system, we organize the test requirements as follows:
 
-![image-20231015184013038](http://sm.nsddd.top/sm202310151840132.png)
+![image-20231015184013038](https://sm.nsddd.top/sm202310151840132.png)
 
 There are many other testing requirements for the food ordering system, such as compatibility, security, etc. Since the focus of this column is automated testing, I will not list them here.
 
@@ -1514,7 +1514,7 @@ Another dimension is the level of test requirements, that is, are the requiremen
 
 Okay, after understanding the two dimensions of nature and level, we now use these two dimensions to go through the test requirements list and fill them into the quadrants.
 
-![image-20231015184305902](http://sm.nsddd.top/sm202310151843989.png)
+![image-20231015184305902](https://sm.nsddd.top/sm202310151843989.png)
 
 Let’s first look at algorithms, interfaces, and distributed transaction testing. They are highly technical and are key requirements, so they are placed in the first quadrant. WebUI testing is highly business-oriented and a key requirement, so they are placed in the second quadrant. Usability testing is placed in the third quadrant. Of the three quadrants, performance and reliability are placed in the fourth quadrant.
 
@@ -1541,11 +1541,11 @@ In the second lecture of the column, we have studied the 3KU test matrix and 3KU
 
 Excluding the manual test items mentioned in the previous table, we fill in the remaining content into the 3KU test matrix.
 
-![image-20231015190144305](http://sm.nsddd.top/sm202310151901386.png)
+![image-20231015190144305](https://sm.nsddd.top/sm202310151901386.png)
 
 In accordance with the implementation-level principle of seeking maximum ROI in automated testing, we convert the above table into an ROI automated testing pyramid.
 
-<img src="http://sm.nsddd.top/sm202310151901112.png" alt="image-20231015190158033" style="zoom:50%;" />
+<img src="https://sm.nsddd.top/sm202310151901112.png" alt="image-20231015190158033" style="zoom:50%;" />
 
 
 
@@ -1570,13 +1570,13 @@ So how is the Deployment Pipeline designed? Let’s start with the concept. In 2
 
 Why is it called a pipeline? Because the deployment pipeline consists of a series of test stages, each stage is connected end to end, forming a pipeline like an assembly line.
 
-![image-20231015190522787](http://sm.nsddd.top/sm202310151905862.png)
+![image-20231015190522787](https://sm.nsddd.top/sm202310151905862.png)
 
 
 
 We fill FoodCome’s automated testing tasks into each stage of the deployment pipeline, as shown in the following figure:
 
-![image-20231015190551125](http://sm.nsddd.top/sm202310151905204.png)
+![image-20231015190551125](https://sm.nsddd.top/sm202310151905204.png)
 
 Along the release direction of the deployment pipeline, that is, from left to right, the running speed of automated tests changes from fast to slow, and the ROI also goes from high to low. The closer to the code, the more frequent the activities, the higher the ROI. However, there will be failures at every level. In the end, only a small number of people can successfully reach the deployable production environment. Ten code changes can reach the production environment twice.
 
@@ -1598,7 +1598,7 @@ Of course, this method can also achieve the testing goal, but after you have lea
 
 For example, for an order system (Order).
 
-![image-20231015203630443](http://sm.nsddd.top/sm202310152036616.png)
+![image-20231015203630443](https://sm.nsddd.top/sm202310152036616.png)
 
 Let's first look at the blue color block in the picture. The Order service can be implemented through these five classes.
 
@@ -1622,7 +1622,7 @@ The FoodCome system is developed using the Java object-oriented language and con
 
 As shown in the figure below, a Test Class has multiple Test Methods. Each Method will Setup to establish the context of the Production Class, Execute to call the Method of the Production Class, Assert to verify the output, and TearDown to destroy the context.
 
-![image-20231015205031723](http://sm.nsddd.top/sm202310152050814.png)
+![image-20231015205031723](https://sm.nsddd.top/sm202310152050814.png)
 
 
 

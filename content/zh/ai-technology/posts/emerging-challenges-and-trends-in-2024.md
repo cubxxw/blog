@@ -11,9 +11,9 @@ author:
   - "Xinwei Xiong"
   - "Me"
 keywords: []
-tags: ['博客 (Blog)', 'AI', '技术 (Technology)']
+tags: ['Blog', 'AI', 'Technology']
 categories:
-  - 技术 (Technology)
+  - Technology
 description: >
   探索2024年技术和开发领域的最新趋势和挑战。
 aliases:

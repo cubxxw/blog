@@ -2,22 +2,22 @@
 title: '2025 年 12 月思考笔记 | December 2025 Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-12-31T23:59:59+07:00
+date: 2025-12-31T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["思考笔记", "个人成长", "深度思考", "年终总结", "熊野古道", "朝圣体验", "自我认知", "佛学", "禅修", "日本文化", "建筑美学", "十二月反思"]
 tags:
-  - blog
-  - 月度笔记
-  - 个人反思
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 年终总结
   - 朝圣之路
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   2025 年 12 月深度思考笔记，本月共 380 条。记录熊野古道朝圣体验、禅修与佛学思考、自我认知探索、以及对生命意义的深度反思。涵盖徒步体验、禅宗哲学、人格成长、日本文化观察、建筑美学对比（奈良 vs 京都）、以及年末的自我审视。在岁末的静谧中，沉淀一年的智慧与感悟，为 2026 年设定意图。
   

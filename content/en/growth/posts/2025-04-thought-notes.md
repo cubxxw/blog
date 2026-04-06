@@ -2,7 +2,7 @@
 title: '2025 April Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-04-30T23:59:59+07:00
+date: 2025-04-30T23:59:59+08:00
 draft : false
 showtoc: true
 weight: 1
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
-  - Spring Growth
+  -  Spring Growth
   - Innovation Mindset
 categories:
-  - Personal Development
+  - Growth
 description: >
     April 2025 monthly reflection - capturing the essence of spring growth, new beginnings, and the continuous journey of learning and self-improvement.
 ---

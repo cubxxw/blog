@@ -6,7 +6,7 @@ cover.image:
 date: 2023-05-19T15:20:58+08:00
 draft: false
 cover:
-  image: "http://sm.nsddd.top/sm202309161529285.jpg"
+  image: "https://sm.nsddd.top/sm202309161529285.jpg"
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

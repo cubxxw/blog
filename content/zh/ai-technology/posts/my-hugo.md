@@ -7,7 +7,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Hugo', '博客搭建', '静态网站生成器', '教程']
-tags: ["Blog", "Hugo (静态网站生成器)", "教程 (Tutorial)"]
+tags: ["Blog", "Hugo", "Tutorial"]
 categories: ["Technology"]
 description: '本教程将指导你如何使用 Hugo —— 一款流行的静态网站生成器 —— 来搭建和管理个人博客。详细介绍从安装到配置的各个步骤。'
 ---
@@ -229,7 +229,7 @@ title: "My 1st post"
 date: 2020-09-15T11:30:03+00:00
 # weight: 1
 # aliases: ["/first"]
-tags: ["Blog", "Hugo (静态网站生成器)", "教程 (Tutorial)"]
+tags: ["Blog", "Hugo", "Tutorial"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true

@@ -2,22 +2,22 @@
 title: '2026 年 2 月思考笔记 | February 2026 Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2026-02-28T23:59:59+07:00
+date: 2026-02-28T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["思考笔记", "个人成长", "深度思考", "旅行见闻", "清迈", "博卡拉", "生态保护", "城市治理", "AI 产品", "佛学", "自我探索", "二月反思"]
 tags:
-  - blog
-  - 月度笔记
-  - 个人反思
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 旅行记录
   - 自我探索
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   2026 年 2 月深度思考笔记，本月共 365 条。涵盖旅行见闻（清迈、博卡拉）、生态保护思考、城市治理观察、AI 产品思考、佛学感悟、以及自我探索的深度记录。
   

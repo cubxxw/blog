@@ -6,6 +6,7 @@
     
     function log(...args) {
         if (DEBUG) {
+            // eslint-disable-next-line no-console
             console.log('[Lang Redirect]', ...args);
         }
     }
@@ -20,9 +21,15 @@
     }
     
     // 检查是否已经设置了语言偏好
-    const langPreference = localStorage.getItem('lang-preference');
+    let langPreference;
+    try {
+        langPreference = localStorage.getItem('lang-preference');
+    } catch (e) {
+        log('localStorage not available:', e);
+        langPreference = null;
+    }
     log('Stored language preference:', langPreference);
-    
+
     if (langPreference) {
         log('User has language preference, skipping auto-detection');
         return; // 如果用户已经选择过语言，就不再自动跳转
@@ -92,7 +99,11 @@
         log('Redirecting to', targetLang);
         
         // 设置语言偏好（避免无限循环）
-        localStorage.setItem('lang-preference', targetLang);
+        try {
+            localStorage.setItem('lang-preference', targetLang);
+        } catch (e) {
+            log('Failed to save language preference:', e);
+        }
         
         // 构建新的URL
         const baseUrl = window.location.origin;
@@ -101,43 +112,70 @@
         log('Redirect URL:', redirectUrl);
         
         // 使用 replace 而不是 assign，避免在浏览器历史中留下记录
-        window.location.replace(redirectUrl);
+        try {
+            window.location.replace(redirectUrl);
+        } catch (e) {
+            log('Failed to redirect:', e);
+            window.location.href = redirectUrl;
+        }
     } else {
         // 即使是英文，也记录用户偏好
-        localStorage.setItem('lang-preference', 'en');
+        try {
+            localStorage.setItem('lang-preference', 'en');
+        } catch (e) {
+            log('Failed to save language preference:', e);
+        }
         log('Staying on English site');
     }
     
     // 添加语言切换功能
     window.setLanguagePreference = function(lang) {
         log('Setting language preference to:', lang);
-        localStorage.setItem('lang-preference', lang);
+        try {
+            localStorage.setItem('lang-preference', lang);
+        } catch (e) {
+            log('Failed to set language preference:', e);
+        }
     };
     
     // 清除语言偏好的函数（用于调试或重置）
     window.clearLanguagePreference = function() {
         log('Clearing language preference');
-        localStorage.removeItem('lang-preference');
+        try {
+            localStorage.removeItem('lang-preference');
+        } catch (e) {
+            log('Failed to clear language preference:', e);
+        }
     };
     
     // 获取当前语言偏好的函数
     window.getLanguagePreference = function() {
-        return localStorage.getItem('lang-preference');
+        try {
+            return localStorage.getItem('lang-preference');
+        } catch (e) {
+            log('Failed to get language preference:', e);
+            return null;
+        }
     };
     
     // 强制重新检测语言的函数（用于调试）
     window.forceLanguageDetection = function() {
         log('Forcing language detection');
-        localStorage.removeItem('lang-preference');
+        try {
+            localStorage.removeItem('lang-preference');
+        } catch (e) {
+            log('Failed to clear language preference:', e);
+        }
         location.reload();
     };
     
     // 开启调试模式的函数
     window.enableLangRedirectDebug = function() {
         window.langRedirectDebug = true;
+        // eslint-disable-next-line no-console
         console.log('Language redirect debug mode enabled');
     };
-    
+
     log('Language redirect script loaded');
     
 })(); 

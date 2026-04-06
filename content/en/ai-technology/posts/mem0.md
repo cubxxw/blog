@@ -8,12 +8,17 @@ showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: []
+keywords:
+  - AI Memory
+  - Personalized AI
+  - Vector Database
+  - Knowledge Graph
 tags:
-  - blog
+  - AI
+  - Machine Learning
+  - Open Source Project
 categories:
-  - Development
-  - Blog
+  - Technology
 description: >
-    Pending translation from Chinese version
+  In-depth analysis of Mem0 open source project's technical architecture, core features and application scenarios, exploring how to build a technical memory layer for AI systems to achieve personalized interaction experiences.
 ---

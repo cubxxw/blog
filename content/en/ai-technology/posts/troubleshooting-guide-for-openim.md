@@ -501,7 +501,8 @@ make: *** [Makefile:173: test-api] Error 2
 {"errCode":1001,"errMsg":"ArgsError","errDlt":"header must have operationID: 1001 ArgsError"}
 {"errCode":1001,"errMsg":"ArgsError","errDlt":"header must have token: 1001 ArgsError"}
 User registration failed.
-TODO: openim test man
+
+**Note**: The above test output shows expected validation errors when running tests without proper authentication headers.
 ***
 Requesting force logout for user: {
   "platformID": 2,

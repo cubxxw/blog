@@ -8,12 +8,27 @@ showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: []
+keywords:
+  - Argo CD
+  - GitOps
+  - Kubernetes
+  - Continuous Delivery
+  - CD
+  - CNCF
+  - Declarative Configuration
+  - Cloud Native
+  - DevOps
 tags:
-  - blog
+  - ArgoCD
+  - GitOps
+  - Kubernetes
+  - Continuous Delivery
+  - DevOps
+  - CNCF
 categories:
-  - Development
-  - Blog
+  - Technology
 description: >
-    Pending translation from Chinese version
+  An introduction to Argo CD, a declarative, GitOps-based continuous delivery (CD) tool for Kubernetes.
+  Learn how it automates application deployment by synchronizing the desired state defined in Git
+  with the live state in a Kubernetes cluster.
 ---

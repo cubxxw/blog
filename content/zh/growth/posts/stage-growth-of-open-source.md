@@ -7,9 +7,7 @@ date: 2023-05-16T16:36:15+08:00
 draft: false
 showtoc: true
 tocopen: false
-author: 
-  - 熊鑫伟
-  - 我
+author: ["Xinwei Xiong", "Me"]
 keywords:
   - 开源
   - 成长

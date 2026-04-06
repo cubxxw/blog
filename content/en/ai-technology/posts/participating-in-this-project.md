@@ -2,23 +2,21 @@
 title: 'Participating in This Project'
 ShowRssButtonInSectionTermList: true
 cover:
-  image: '/path/to/your/cover/image.jpg'  # Replace with the path to your cover image
+  image:
 date: 2023-02-01T10:26:53+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
-author:
-  - "Xinwei Xiong"
-  - "Me"
-keywords: ["blockchain", "learning platform", "community contribution", "software development"] # Add relevant keywords
+author: ["Xinwei Xiong", "Me"]
+keywords: ["blockchain", "learning platform", "community contribution", "software development"]
 tags:
-  - "blog"
-  - "blockchain"
-  - "open source"
-  - "community"
+  - Blog
+  - Blockchain
+  - Open Source
+  - Community
 categories:
-  - "Development"
+  - Technology
 description: >
     Welcome to our project about building a blockchain-based learning platform. Here, we share insights and updates on our progress. You can switch to the specified language for more detailed information.
 aliases:
@@ -91,7 +89,7 @@ Instead of using `![]()` to reference images, we use `<img>` tags. This is to co
 
 )
 
-<img src="http://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com" style="zoom:200%;"/>
+<img src="https://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com" style="zoom:200%;"/>
 
 ### License
 
@@ -135,11 +133,11 @@ Here you will be asked to write a description of your code changes, then you can
 
 ### Direct Modification and Upload
 
-![Direct modification and upload example image](http://sm.nsddd.top/smimage-20221015232042494.png?xxw@nsddd.top)
+![Direct modification and upload example image](https://sm.nsddd.top/smimage-20221015232042494.png?xxw@nsddd.top)
 
 ⬇️ Continue to modify the `md` file directly in GitHub and then submit:
 
-![GitHub direct modification example image](http://sm.nsddd.top/smimage-20221015232445350.png?xxw@nsddd.top)
+![GitHub direct modification example image](https://sm.nsddd.top/smimage-20221015232445350.png?xxw@nsddd.top)
 
 ### Clone to Local and Modify
 
@@ -155,13 +153,13 @@ Here you will be asked to write a description of your code changes, then you can
 >
 > To contribute your repository to ours, just:
 >
-> ![GitHub pull request example image](http://sm.nsddd.top/smimage-20221015233657581.png?xxw@nsddd.top)
+> ![GitHub pull request example image](https://sm.nsddd.top/smimage-20221015233657581.png?xxw@nsddd.top)
 
 ### What Kind of Request Do We Hope For?
 
 **Optimize existing code or documentation**
 
-![](http://sm.nsddd.top//typora/6rnRNubHeXAp54s.png?mail:3293172751@qq.com)
+![](https://sm.nsddd.top//typora/6rnRNubHeXAp54s.png?mail:3293172751@qq.com)
 
 2. **Supplement and share project notes**
 3. **Correct erroneous code**

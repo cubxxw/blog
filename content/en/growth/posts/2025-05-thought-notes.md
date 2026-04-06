@@ -2,7 +2,7 @@
 title: '2025 May Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-05-31T23:59:59+07:00
+date: 2025-05-31T23:59:59+08:00
 draft : false
 showtoc: true
 weight: 1
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
-  - Mid-year Insights
+  -  Mid-year Insights
   - Creative Thinking
 categories:
-  - Personal Development
+  - Growth
 description: >
     May 2025 monthly reflection - exploring mid-year insights, creative breakthroughs, and the evolving landscape of personal and professional growth in the AI era.
 ---

@@ -570,7 +570,7 @@ Unlike traditional CICD, GitOps Operator is used to monitor changes in the manif
 
 The process will start from "Pull Request" and go through multiple stages such as "Code Review", "Vulnerability Scanning", "Code Analysis", "Build", "Unit Testing", "Code Coverage", "Docker Build", "Docker Push", "Git Clone Configuration Repository", "Update Configuration List", "Git Submit and Push", "Publish CI Metrics", and finally reach "Build Notification".
 
-![544991a1-6499-4de0-acef-bb43af85fdb3](http://sm.nsddd.top/sm202311261925321.webp)
+![544991a1-6499-4de0-acef-bb43af85fdb3](https://sm.nsddd.top/sm202311261925321.webp)
 
 
 
@@ -586,7 +586,7 @@ Integrate Go language and other tools:
 3. **Docker and Go**: During the Docker build phase, you can use the Dockerfile for Go applications to ensure that the application is packaged correctly.
 4. **Configuration Management**: For the "Git clone configuration warehouse" and "update configuration list" stages, you can consider using Go language configuration management tools such as `Viper` or `Consul` to better manage and maintain the configuration. .
 
-![chatp](http://sm.nsddd.top/sm202311261938086.png)
+![chatp](https://sm.nsddd.top/sm202311261938086.png)
 
 
 
@@ -603,7 +603,7 @@ A complete CD pipeline based on GitOps CICD
 5. **Runtime vulnerability scanning**: Use tools suitable for Kubernetes environments to detect runtime security vulnerabilities.
 6. **Publish CD Metrics**: Collect and publish deployment-related metrics, possibly through integrated monitoring tools or custom scripts.
 
-![50629a41-bded-4f36-abfe-b3dfadd7c9d3](http://sm.nsddd.top/sm202311261945127.webp)
+![50629a41-bded-4f36-abfe-b3dfadd7c9d3](https://sm.nsddd.top/sm202311261945127.webp)
 
 
 
@@ -683,7 +683,7 @@ I didn't know that Deployment is a higher level abstraction, and although it is 
 + **Rolling updates**: `Deployment` supports rolling updates, allowing you to gradually replace older versions of Pods with newer versions without causing downtime.
 + **Suitable for GitOps**: Due to its declarative nature, `Deployment` is well suited for GitOps workflows. You declare the desired state of your application in a Git repository, then use automation tools such as Argocd or Flux to monitor the repository and apply changes to the Kubernetes cluster.
 
-![gitops-deployment-replicaset](http://sm.nsddd.top/sm202311262010756.png)
+![gitops-deployment-replicaset](https://sm.nsddd.top/sm202311262010756.png)
 
 
 
@@ -707,7 +707,7 @@ For deployments that require more complex routing logic or custom load balancing
 
 Service routing in Kubernetes is entirely label-based. This means that, for example, a Service tagged "blue" will only route traffic to Pods tagged "blue", while a Service tagged "green" will only route traffic to Pods tagged "green" . This design allows for simple and intuitive traffic distribution and management.
 
-![ingree-istio](http://sm.nsddd.top/sm202311262110507.png)
+![ingree-istio](https://sm.nsddd.top/sm202311262110507.png)
 
 #### NGINX Ingress Controller
 
@@ -727,7 +727,7 @@ Istio Gateway is another key component used to manage traffic at the edge of a K
 + **Port and Protocol Specifications**: Istio Gateway allows you to define a set of ports to be exposed, as well as related protocol types, ensuring that traffic flows according to established rules and protocols.
 + **Integration with Istio Service Mesh**: As part of the Istio ecosystem, it is tightly integrated with Istio's service mesh capabilities, providing advanced traffic management and security features.
 
-![istio-ingress](http://sm.nsddd.top/sm202311262115919.png)
+![istio-ingress](https://sm.nsddd.top/sm202311262115919.png)
 
 > Diagrams illustrating the flow of traffic through the Ingress controller in Kubernetes and the flow of traffic in the Istio service mesh are ready. These diagrams clearly compare how each system handles traffic routing and management in a Kubernetes environment, including the roles of ingress controllers and Istio gateways.
 
@@ -932,7 +932,7 @@ Both deployments will be fully scaled, but at any moment, only one deployment (b
 
 ### Use Deployment to implement blue-green deployment
 
-![deployment-blue-green](http://sm.nsddd.top/sm202311270932090.png)
+![deployment-blue-green](https://sm.nsddd.top/sm202311270932090.png)
 
 > The diagram illustrating the concept of Blue-Green Deployment in a Kubernetes environment using NGINX Ingress and Deployments is ready. It visually explains how traffic is directed to either the Blue or Green Deployments, showcasing the clear separation and traffic management between these two deployments.
 

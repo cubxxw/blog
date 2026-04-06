@@ -1,6 +1,6 @@
 ---
 title: 'Stage Growth of Open Source'
-description:
+description: Explore the eight stages of open source growth, from reading source code to building and commercializing your own open source projects.
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2023-04-15T16:36:14+08:00

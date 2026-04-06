@@ -8,7 +8,7 @@ showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["思考笔记", "个人成长", "深度思考", "旅行见闻", "柬埔寨", "暹粒", "吴哥窟", "AI Agent", "多智能体", "高棉文明", "自我叙事", "三月反思"]
 tags:
   - Blog

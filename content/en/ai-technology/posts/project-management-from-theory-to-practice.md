@@ -26,23 +26,23 @@ description: >
 
 ## Theory introduction
 
-![image-20230113165927930](http://sm.nsddd.top/sm202301131659007.png)
+![image-20230113165927930](https://sm.nsddd.top/sm202301131659007.png)
 
 **Waterfall Model:**
 
-![image-20230113163949341](http://sm.nsddd.top/sm202301131639643.png)
+![image-20230113163949341](https://sm.nsddd.top/sm202301131639643.png)
 
 
 
 **Agile Model:**
 
-![image-20230113164028753](http://sm.nsddd.top/sm202301131640931.png)
+![image-20230113164028753](https://sm.nsddd.top/sm202301131640931.png)
 
 
 
 **Scrum Framework:**
 
-![image-20230113164207851](http://sm.nsddd.top/sm202301131642031.png)
+![image-20230113164207851](https://sm.nsddd.top/sm202301131642031.png)
 
 
 
@@ -50,7 +50,7 @@ description: >
 
 **Traditional project management methods typically follow a linear process, achieving project goals through pre-established planning, supervision, and control. Agile project management methods are more flexible and achieve project goals through iteration and continuous improvement. Agile methods emphasize teamwork, adapting to changes, and delivering value quickly. **
 
-![image-20230113164657052](http://sm.nsddd.top/sm202301131646234.png)
+![image-20230113164657052](https://sm.nsddd.top/sm202301131646234.png)
 
 
 
@@ -71,9 +71,9 @@ The ten knowledge areas of project management include:
 
 
 
-![image-20230113164944948](http://sm.nsddd.top/sm202301131649129.png)
+![image-20230113164944948](https://sm.nsddd.top/sm202301131649129.png)
 
-![image-20230113165053139](http://sm.nsddd.top/sm202301131650304.png)
+![image-20230113165053139](https://sm.nsddd.top/sm202301131650304.png)
 
 
 
@@ -87,7 +87,7 @@ The five process groups of project management are:
 4. Monitoring and Control Process Group: Monitor the progress of the project and respond to changes to ensure that the project is completed as planned.
 5. Close the process group: Complete the project and archive the project files.
 
-![image-20230113165700973](http://sm.nsddd.top/sm202301131657152.png)
+![image-20230113165700973](https://sm.nsddd.top/sm202301131657152.png)
 
 **Monitoring is responsible for the entire life cycle of product projects. **
 
@@ -101,7 +101,7 @@ Above we have seen the five major processes of project management: initiation, p
 
 **First take a look at a table that runs throughout:**
 
-![image-20230113170442055](http://sm.nsddd.top/sm202301131704289.png)
+![image-20230113170442055](https://sm.nsddd.top/sm202301131704289.png)
 
 
 
@@ -110,7 +110,7 @@ Above we have seen the five major processes of project management: initiation, p
 1. Develop a project charter
 2. Identify stakeholders
 
-![image-20230113170604444](http://sm.nsddd.top/sm202301131706623.png)
+![image-20230113170604444](https://sm.nsddd.top/sm202301131706623.png)
 
 
 
@@ -140,7 +140,7 @@ Above we have seen the five major processes of project management: initiation, p
 
 13. Continuously monitor the progress of the project, make adjustments and controls, and ensure that the project proceeds as planned.
 
-![image-20230113171045646](http://sm.nsddd.top/sm202301131710819.png)
+![image-20230113171045646](https://sm.nsddd.top/sm202301131710819.png)
 
 
 
@@ -148,21 +148,21 @@ Above we have seen the five major processes of project management: initiation, p
 
 **💡A simple case is as follows:**
 
-![image-20230113171507576](http://sm.nsddd.top/sm202301131715858.png)
+![image-20230113171507576](https://sm.nsddd.top/sm202301131715858.png)
 
 
 
 ### Make a reservation
 
-![image-20230113171532678](http://sm.nsddd.top/sm202301131715845.png)
+![image-20230113171532678](https://sm.nsddd.top/sm202301131715845.png)
 
-![image-20230113171542944](http://sm.nsddd.top/sm202301131715114.png)
+![image-20230113171542944](https://sm.nsddd.top/sm202301131715114.png)
 
 
 
 **💡A simple case is as follows:**
 
-![image-20230113171700010](http://sm.nsddd.top/sm202301131717378.png)
+![image-20230113171700010](https://sm.nsddd.top/sm202301131717378.png)
 
 
 
@@ -214,7 +214,7 @@ Project planning is an important part of project management and is the key to pr
 
 ### Planning Management
 
-![image-20230113183551538](http://sm.nsddd.top/sm202301131835736.png)
+![image-20230113183551538](https://sm.nsddd.top/sm202301131835736.png)
 
 
 
@@ -228,7 +228,7 @@ The WBS is usually organized in the form of a tree structure, with the overall g
 
 WBS can help project organizers better understand the scope, schedule and risks of the project, and can be used to determine the project's resource requirements and schedule tasks.
 
-![image-20230113183942439](http://sm.nsddd.top/sm202301131839654.png)
+![image-20230113183942439](https://sm.nsddd.top/sm202301131839654.png)
 
 
 
@@ -236,7 +236,7 @@ WBS can help project organizers better understand the scope, schedule and risks 
 
 **The project planning chart can calculate the project development cycle, which is clear at a glance~**
 
-![image-20230113184019004](http://sm.nsddd.top/sm202301131840170.png)
+![image-20230113184019004](https://sm.nsddd.top/sm202301131840170.png)
 
 
 
@@ -248,13 +248,13 @@ On a Gantt chart, each task corresponds to a horizontal bar indicating the task'
 
 Gantt charts can help project organizers better grasp project progress, adjust project plans, and better control project progress and resource allocation. At the same time, it also allows other members of the project to better understand the progress of the project.
 
-![image-20230113184440150](http://sm.nsddd.top/sm202301131844335.png)
+![image-20230113184440150](https://sm.nsddd.top/sm202301131844335.png)
 
 
 
 ### Core steps
 
-![image-20230113192245093](http://sm.nsddd.top/sm202301131922273.png)
+![image-20230113192245093](https://sm.nsddd.top/sm202301131922273.png)
 
 
 
@@ -270,7 +270,7 @@ Gantt charts can help project organizers better grasp project progress, adjust p
 
 **Project Goal:** Complete MVP version APP development in 5 months
 
-![image-20230113192505597](http://sm.nsddd.top/sm202301131925799.png)
+![image-20230113192505597](https://sm.nsddd.top/sm202301131925799.png)
 
 **Some nouns:**
 
@@ -286,13 +286,13 @@ Gantt charts can help project organizers better grasp project progress, adjust p
    + Code review can help ensure code quality, improve code readability, maintainability and scalability, and reduce software maintenance costs and risks.
    + Generally speaking, code reviews can be done by humans or tools. Human reviews are usually done by one or more developers, while tool reviews are done using automated tools that can scan the code and find potential problems.
 
-![image-20230113193720648](http://sm.nsddd.top/sm202301131937868.png)
+![image-20230113193720648](https://sm.nsddd.top/sm202301131937868.png)
 
 
 
 ### Experience summary
 
-![image-20230113193850928](http://sm.nsddd.top/sm202301131938130.png)
+![image-20230113193850928](https://sm.nsddd.top/sm202301131938130.png)
 
 
 
@@ -307,25 +307,25 @@ Gantt charts can help project organizers better grasp project progress, adjust p
 5. Organize team training: Hold regular team training to help team members improve their skills and knowledge, and improve teamwork and collaboration capabilities.
 6. Overall consideration: Overall consideration of all relevant factors in the project, including personnel, funds, technology, etc., to ensure that the project can be successfully completed.
 
-![image-20230113200818551](http://sm.nsddd.top/sm202301132008685.png)
+![image-20230113200818551](https://sm.nsddd.top/sm202301132008685.png)
 
 
 
 ### Conference system promotion and implementation
 
-![image-20230113194611659](http://sm.nsddd.top/sm202301131946827.png)
+![image-20230113194611659](https://sm.nsddd.top/sm202301131946827.png)
 
 **Meeting time is very important, don’t waste other people’s time, there is no need to hold a group meeting if it can be solved in an individual meeting. **
 
 Specify template and plan before meeting:
 
-![image-20230113194829017](http://sm.nsddd.top/sm202301131948197.png)
+![image-20230113194829017](https://sm.nsddd.top/sm202301131948197.png)
 
 
 
 ### Four steps for progress confirmation
 
-![image-20230113194946595](http://sm.nsddd.top/sm202301131949797.png)
+![image-20230113194946595](https://sm.nsddd.top/sm202301131949797.png)
 
 
 
@@ -343,7 +343,7 @@ Specify template and plan before meeting:
 6. Document Decisions: Document the decisions and action plans made during the meeting to ensure that all participants understand and follow them.
 7. Increase participation: Increase participant participation by asking questions, providing opportunities to speak, and encouraging participation.
 
-![image-20230113195016647](http://sm.nsddd.top/sm202301131950843.png)
+![image-20230113195016647](https://sm.nsddd.top/sm202301131950843.png)
 
 
 
@@ -358,7 +358,7 @@ Specify template and plan before meeting:
 5. Responsible person: Assign a responsible person to be responsible for completing the action plan.
 6. Follow-up: Designate a responsible person to follow up on the execution of the action plan.
 
-![image-20230113195514985](http://sm.nsddd.top/sm202301131955209.png)
+![image-20230113195514985](https://sm.nsddd.top/sm202301131955209.png)
 
 
 
@@ -445,7 +445,7 @@ In addition, before the next meeting, ensure that all action plans are completed
 >
 > However, if OKRs are not implemented carefully or properly supported, it can lead to project deviation or failure. Therefore, when implementing OKR, you need to ensure that there is a good management team to organize and supervise the implementation process to ensure that all goals and key results are reasonable and can be effectively tracked and evaluated. In addition, it is also necessary to ensure that all employees and teams can understand and support the goals and methods of OKR to ensure that OKR can be effectively implemented.
 
-![image-20230113195857388](http://sm.nsddd.top/sm202301131958592.png)
+![image-20230113195857388](https://sm.nsddd.top/sm202301131958592.png)
 
 
 
@@ -464,19 +464,19 @@ A gentleman's agreement may include the following:
 
 It is important to ensure that all project members follow gentleman's agreements and that these agreements are valid and can help the project be completed smoothly.
 
-![image-20230113200232448](http://sm.nsddd.top/sm202301132002659.png)
+![image-20230113200232448](https://sm.nsddd.top/sm202301132002659.png)
 
 
 
 ### Collaborate across teams to solve problems
 
-![image-20230113200542993](http://sm.nsddd.top/sm202301132005191.png)
+![image-20230113200542993](https://sm.nsddd.top/sm202301132005191.png)
 
 
 
 **Open borders:**
 
-![image-20230113200707253](http://sm.nsddd.top/sm202301132007446.png)
+![image-20230113200707253](https://sm.nsddd.top/sm202301132007446.png)
 
 
 
@@ -515,25 +515,25 @@ Common types of changes include:
 5. Personnel changes: modifications to project team members, including adding or deleting team members.
 6. Communication changes: Modifications to the project communication plan.
 
-![image-20230113201408887](http://sm.nsddd.top/sm202301132014085.png)
+![image-20230113201408887](https://sm.nsddd.top/sm202301132014085.png)
 
 
 
 ### Accept or reject change methods
 
-![image-20230113202338525](http://sm.nsddd.top/sm202301132023728.png)
+![image-20230113202338525](https://sm.nsddd.top/sm202301132023728.png)
 
 
 
 ### Overall change control
 
-![image-20230113202434337](http://sm.nsddd.top/sm202301132024546.png)
+![image-20230113202434337](https://sm.nsddd.top/sm202301132024546.png)
 
 
 
 ### How to embrace change
 
-![image-20230113202453603](http://sm.nsddd.top/sm202301132024796.png)
+![image-20230113202453603](https://sm.nsddd.top/sm202301132024796.png)
 
 
 
@@ -545,7 +545,7 @@ Common types of changes include:
 2. Establish a risk management plan: The project manager should evaluate the risks that may arise in the project and establish an effective risk management plan.
 3. Frequently monitor project progress: Project managers should frequently monitor project progress, identify problems in a timely manner and take measures.
 
-![image-20230113202516228](http://sm.nsddd.top/sm202301132025225.png)
+![image-20230113202516228](https://sm.nsddd.top/sm202301132025225.png)
 
 
 
@@ -558,13 +558,13 @@ Common types of changes include:
 3. Coordinate the team: The project manager should coordinate the team to ensure that the changes are implemented correctly.
 4. Communication: The project manager should communicate the impact of the change to ensure that all relevant parties understand and support the change.
 
-![image-20230113202535815](http://sm.nsddd.top/sm202301132025013.png)
+![image-20230113202535815](https://sm.nsddd.top/sm202301132025013.png)
 
 
 
 #### Four change tools
 
-![image-20230113202645382](http://sm.nsddd.top/sm202301132026609.png)
+![image-20230113202645382](https://sm.nsddd.top/sm202301132026609.png)
 
 
 
@@ -578,31 +578,31 @@ Common types of changes include:
 
 **We saw above that monitoring occurs throughout the entire project life cycle. **
 
-![image-20230113203524726](http://sm.nsddd.top/sm202301132035903.png)
+![image-20230113203524726](https://sm.nsddd.top/sm202301132035903.png)
 
 
 
 ### Risk Management Method
 
-![image-20230113203555249](http://sm.nsddd.top/sm202301132035484.png)
+![image-20230113203555249](https://sm.nsddd.top/sm202301132035484.png)
 
 
 
 ### Risk Management Approach: Core
 
-![image-20230113203831806](http://sm.nsddd.top/sm202301132038008.png)
+![image-20230113203831806](https://sm.nsddd.top/sm202301132038008.png)
 
-![image-20230113204708941](http://sm.nsddd.top/sm202301132047124.png)
+![image-20230113204708941](https://sm.nsddd.top/sm202301132047124.png)
 
 
 
 ### Risk Management Practice
 
-![image-20230113204736299](http://sm.nsddd.top/sm202301132047501.png)
+![image-20230113204736299](https://sm.nsddd.top/sm202301132047501.png)
 
-![image-20230113204742950](http://sm.nsddd.top/sm202301132047196.png)
+![image-20230113204742950](https://sm.nsddd.top/sm202301132047196.png)
 
-![image-20230113204749131](http://sm.nsddd.top/sm202301132047441.png)
+![image-20230113204749131](https://sm.nsddd.top/sm202301132047441.png)
 
 
 
@@ -618,13 +618,13 @@ Typically, risk monitoring and early warning tools include:
 
 Importantly, risk monitoring and early warning should be a continuous process to ensure that the project management team can take timely action to manage risks.
 
-![image-20230113204815144](http://sm.nsddd.top/sm202301132048339.png)
+![image-20230113204815144](https://sm.nsddd.top/sm202301132048339.png)
 
 
 
 ### Implementation and communication
 
-![image-20230113205211535](http://sm.nsddd.top/sm202301132052764.png)
+![image-20230113205211535](https://sm.nsddd.top/sm202301132052764.png)
 
 
 
@@ -726,23 +726,23 @@ The review process for small projects and large projects is basically similar, b
 + The review of small projects may be simpler and more flexible. A simple summary and evaluation can be carried out after the project is completed, and the review process can be completed in a short time. You don’t need too many participants, just the project manager and project members.
 + The review of large projects is more complex and may take longer to complete. Project managers need to collect large amounts of data and documents and conduct detailed assessments. There are also more participants, and project team members, relevant department managers, project committee members, etc. may be needed.
 
-![image-20230113205356958](http://sm.nsddd.top/sm202301132053316.png)
+![image-20230113205356958](https://sm.nsddd.top/sm202301132053316.png)
 
 
 
 #### Review attitude
 
-![image-20230113205613549](http://sm.nsddd.top/sm202301132056796.png)
+![image-20230113205613549](https://sm.nsddd.top/sm202301132056796.png)
 
 
 
 #### Four steps of review
 
-![image-20230113205657610](http://sm.nsddd.top/sm202301132056832.png)
+![image-20230113205657610](https://sm.nsddd.top/sm202301132056832.png)
 
 **The corresponding💡simple case is as follows:**
 
-![image-20230113210052535](http://sm.nsddd.top/sm202301132100750.png)
+![image-20230113210052535](https://sm.nsddd.top/sm202301132100750.png)
 
 
 
@@ -757,15 +757,15 @@ The review process for small projects and large projects is basically similar, b
 
 Review is a continuous process that continuously summarizes the progress of the project and develops improvement plans to improve the efficiency and success rate of the project.
 
-![image-20230113210134957](http://sm.nsddd.top/sm202301132101163.png)
+![image-20230113210134957](https://sm.nsddd.top/sm202301132101163.png)
 
-![image-20230113210351040](http://sm.nsddd.top/sm202301132103253.png)
+![image-20230113210351040](https://sm.nsddd.top/sm202301132103253.png)
 
 
 
 ### Review case analysis
 
-![image-20230113210403636](http://sm.nsddd.top/sm202301132104845.png)
+![image-20230113210403636](https://sm.nsddd.top/sm202301132104845.png)
 
 
 
@@ -796,33 +796,33 @@ Review is a continuous process that continuously summarizes the progress of the 
 
 **Usage scenario: Project startup planning stage | Project background, goals, and expected revenue specification**
 
-![image-20230113212045484](http://sm.nsddd.top/sm202301132120710.png)
+![image-20230113212045484](https://sm.nsddd.top/sm202301132120710.png)
 
 
 
 ### Onepage template—core member table
 
-![image-20230113212119772](http://sm.nsddd.top/sm202301132121973.png)
+![image-20230113212119772](https://sm.nsddd.top/sm202301132121973.png)
 
 
 
 ### Onepage Template—Milestone Chart
 
-![image-20230113212805254](http://sm.nsddd.top/sm202301132128550.png)
+![image-20230113212805254](https://sm.nsddd.top/sm202301132128550.png)
 
-![image-20230113212812026](http://sm.nsddd.top/sm202301132128258.png)
+![image-20230113212812026](https://sm.nsddd.top/sm202301132128258.png)
 
 
 
 ### Onepage Template—Project Communication Plan
 
-![image-20230113212824316](http://sm.nsddd.top/sm202301132128539.png)
+![image-20230113212824316](https://sm.nsddd.top/sm202301132128539.png)
 
 
 
 ### Tracker Template—WBS/Gantt Chart
 
-![image-20230113212901154](http://sm.nsddd.top/sm202301132129417.png)
+![image-20230113212901154](https://sm.nsddd.top/sm202301132129417.png)
 
 
 
@@ -830,34 +830,34 @@ Review is a continuous process that continuously summarizes the progress of the 
 
 ### Tracker Template—Risk Registration Form
 
-![image-20230113212945701](http://sm.nsddd.top/sm202301132129919.png)
+![image-20230113212945701](https://sm.nsddd.top/sm202301132129919.png)
 
 
 
 ### Tracker Template—Meeting Minutes
 
-![image-20230113212940286](http://sm.nsddd.top/sm202301132129496.png)
+![image-20230113212940286](https://sm.nsddd.top/sm202301132129496.png)
 
 
 
 ### Project Report Form—Phase Report 1
 
-![adsfsadfasfa](http://sm.nsddd.top/sm202301132132778.png)
+![adsfsadfasfa](https://sm.nsddd.top/sm202301132132778.png)
 
 
 
 ### Project Report Form—Phase Report 2
 
-![image-20230113213219972](http://sm.nsddd.top/sm202301132132233.png)
+![image-20230113213219972](https://sm.nsddd.top/sm202301132132233.png)
 
 
 
 ###Project stage report
 
-![image-20230113213226059](http://sm.nsddd.top/sm202301132132286.png)
+![image-20230113213226059](https://sm.nsddd.top/sm202301132132286.png)
 
 
 
 ### Review template
 
-![image-20230113213325094](http://sm.nsddd.top/sm202301132133333.png)
+![image-20230113213325094](https://sm.nsddd.top/sm202301132133333.png)

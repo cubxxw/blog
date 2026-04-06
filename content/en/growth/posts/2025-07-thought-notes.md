@@ -2,7 +2,7 @@
 title: '2025 July Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-07-31T23:59:59+07:00
+date: 2025-07-31T23:59:59+08:00
 draft : false
 showtoc: true
 weight: 1
@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - Monthly Notes
   - Personal Reflection
-  - Summer Adventures
+  -  Summer Adventures
   - Deep Thinking
 categories:
-  - Personal Development
+  - Growth
 description: >
     July 2025 monthly reflection - diving deep into summer adventures, philosophical contemplations, and the art of balancing action with reflection.
 ---

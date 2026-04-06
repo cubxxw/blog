@@ -1,6 +1,6 @@
 ---
 title: 'Read Openim Project Sealos Openim Source Code'
-description:
+description: A deep dive into reading and understanding the OpenIM and Sealos source code architecture and design patterns.
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2023-05-11T16:33:09+08:00
@@ -248,7 +248,7 @@ Logic for creating Applier:
 
 The `buildah mount` command is a tool used to mount container images on the local file system. Through this command, you can easily view and edit files in the container image. For specific usage, please refer to [Official Document](https://buildah.io/commands/mount/).
 
-![Untitled](http://sm.nsddd.top/sm202304152156333.png)
+![Untitled](https://sm.nsddd.top/sm202304152156333.png)
 
 **Creating an `Applier` will go through the following steps:**
 
@@ -780,7 +780,7 @@ return todoList, nil
 
 + To facilitate understanding, the sealer picture is stolen here
 
-   ![sdUntitled](http://sm.nsddd.top/sm202304152338621.png)
+   ![sdUntitled](https://sm.nsddd.top/sm202304152338621.png)
 
 Next, a series of pipelines will be executed to officially enter the actual cluster deployment process:
 

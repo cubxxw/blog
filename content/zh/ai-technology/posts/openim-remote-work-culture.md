@@ -12,7 +12,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '远程工作', '团队协作', '协议版本', '工作效率', '远程协作工具', 'OpenIM 协作', '远程工作最佳实践', '团队沟通策略', '协作协议更新', '高效团队管理', '远程办公工具']
-tags: ["Blog", "远程工作 (Remote Work)", "团队协作 (Team Collaboration)", "OpenIM"]
+tags: ["Blog", "Remote Work", "Team Collaboration", "OpenIM"]
 categories: ["Technology"]
 ---
 

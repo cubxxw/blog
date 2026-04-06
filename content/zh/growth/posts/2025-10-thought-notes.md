@@ -2,22 +2,22 @@
 title: '2025年10月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-10-31T23:59:59+07:00
+date: 2025-10-31T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["思考笔记", "个人成长", "深度思考", "技术洞察", "人生哲学", "十月反思"]
 tags:
-  - blog
-  - 月度笔记 (Monthly Notes)
-  - 个人反思 (Personal Reflection)
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 深秋思索 (Late Autumn Reflection)
   - 智慧沉淀 (Wisdom Precipitation)
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   2025年10月的深度思考笔记，记录本人在城市发展观察、技术产品思考、个人认知成长、社会现象洞察等多维度的思考与反思。涵盖从嘉兴发展潜力、高层建筑问题、K字签证政策，到快速迭代方法论、从知到觉的认知哲学、具身记忆理论，以及AI时代的思考与观察。通过持续的记录与思考，探索个人成长与外部世界的理解。
   

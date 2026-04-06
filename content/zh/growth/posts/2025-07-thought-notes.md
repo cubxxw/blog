@@ -2,22 +2,22 @@
 title: '2025年7月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-07-31T23:59:59+07:00
+date: 2025-07-31T23:59:59+08:00
 draft : false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
-  - 月度笔记 (Monthly Notes)
-  - 个人反思 (Personal Reflection)
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 夏日冒险 (Summer Adventures)
   - 深度思考 (Deep Thinking)
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
     2025年7月思考笔记 - 深入夏日冒险，哲学思辨，以及平衡行动与反思的艺术。
 ---

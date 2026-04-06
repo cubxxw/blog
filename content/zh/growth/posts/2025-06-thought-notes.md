@@ -2,22 +2,22 @@
 title: '2025年6月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-06-30T23:59:59+07:00
+date: 2025-06-30T23:59:59+08:00
 draft : false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
-  - 月度笔记 (Monthly Notes)
-  - 个人反思 (Personal Reflection)
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 夏至传递 (Summer Solstice)
   - 战略规划 (Strategic Planning)
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
     2025年6月思考笔记 - 拥抱夏至能量，下半年的战略规划，以及对既往进步的庆祝与总结。
 ---

@@ -8,7 +8,7 @@ tags:
   - 项目学习
 categories:
   - AI Open Source
-author: cubxxw
+author: ["Xinwei Xiong", "Me"]
 aliases:
   - /zh/posts/ai-projects/jina/
 ---

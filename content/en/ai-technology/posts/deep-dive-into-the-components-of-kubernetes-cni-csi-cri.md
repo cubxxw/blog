@@ -8,7 +8,7 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: 'Xinwei Xiong, Me'
+author: ["Xinwei Xiong", "Me"]
 keywords: ["Kubernetes", "CNI", "CSI", "CRI", "Cloud Native", "Microservices", "Service Mesh", "Go"]
 tags:
   - 'Golang (GO Language)'
@@ -27,7 +27,7 @@ description: >
 
 Container Runtime runs on every node in a Kubernetes (k8s) cluster and is responsible for the entire container lifecycle. Docker is currently the most widely used. With the development of container cloud, more and more container runtimes have emerged. To solve the integration problems between these container runtimes and Kubernetes, the community introduced CRI (Container Runtime Interface) in Kubernetes version 1.5 to support more container runtimes.
 
-![image-20230308203547983](http://sm.nsddd.top/sm202303082036547.png)
+![image-20230308203547983](https://sm.nsddd.top/sm202303082036547.png)
 
 
 
@@ -40,7 +40,7 @@ kubelet acts as a client, **communicating with container runtimes through Socket
 + **Image Service**: Provides remote procedure calls for downloading, checking, and deleting images;
 + **Runtime Service**: Contains remote procedure calls for managing container lifecycle and interacting with containers (exec/attach/port-forward).
 
-![image-20230308203517139](http://sm.nsddd.top/sm202303082035460.png)
+![image-20230308203517139](https://sm.nsddd.top/sm202303082035460.png)
 
 
 
@@ -78,9 +78,9 @@ Low-level runtimes kata and gVisor are still in small-scale deployment or experi
 
 ### CRI Method List
 
-![image-20230308204826501](http://sm.nsddd.top/sm202303082048941.png)
+![image-20230308204826501](https://sm.nsddd.top/sm202303082048941.png)
 
-![image-20230308204850894](http://sm.nsddd.top/sm202303082048989.png)
+![image-20230308204850894](https://sm.nsddd.top/sm202303082048989.png)
 
 
 
@@ -90,7 +90,7 @@ Docker's multi-layer encapsulation and calls lead to slightly inferior maintaina
 
 > Docker can be understood as a superset of containerd. If you use docker as runtime, it's equivalent to starting a heavy dockershim.
 
-![image-20230308204923967](http://sm.nsddd.top/sm202303082049718.png)
+![image-20230308204923967](https://sm.nsddd.top/sm202303082049718.png)
 
 
 
@@ -100,7 +100,7 @@ containerd performs well in all aspects except for container startup. From the t
 
 > So ultimately containerd wins as the optimal solution, though cri-o + runc is also acceptable.
 
-![image-20230308204953887](http://sm.nsddd.top/sm202303082049094.png)
+![image-20230308204953887](https://sm.nsddd.top/sm202303082049094.png)
 
 
 
@@ -134,7 +134,7 @@ Of course, Docker also has many features that containerd doesn't have, such as s
 
 #### Detailed Differences between docker and containerd
 
-<img src="http://sm.nsddd.top/sm202303082050059.png" alt="image-20230308205012033" style="zoom:67%;" />
+<img src="https://sm.nsddd.top/sm202303082050059.png" alt="image-20230308205012033" style="zoom:67%;" />
 
 You can see that docker has many features that k8s doesn't need. k8s only needs the parts in the red box; the rest are redundant. Even if we remove these parts, the remaining call chain is still very long.
 
@@ -196,7 +196,7 @@ Environment="KUBELET_EXTRA_ARGS=--container-runtime=remote --container-runtime-e
 
 >  **Next is to modify Kubernetes startup parameters, telling Kubernetes that my runtime should be changed to containerd.**
 >
->  ![image-20230308210827670](http://sm.nsddd.top/sm202303082108767.png)
+>  ![image-20230308210827670](https://sm.nsddd.top/sm202303082108767.png)
 >
 >  This location is where kubelet gRPC calls.
 
@@ -291,7 +291,7 @@ For container network management, container runtimes generally need to configure
 
 **The specific process is as follows:**
 
-![img](http://sm.nsddd.top/sm202303082216727.png)
+![img](https://sm.nsddd.top/sm202303082216727.png)
 
 **The complete call chain is as follows:**
 
@@ -301,7 +301,7 @@ The process of starting Pod includes **network-related configuration**, which ne
 
 Therefore, the entire call chain is `kubelet --> CRI --> CNI`.
 
-<img src="http://sm.nsddd.top/sm202303082216115.jpeg" alt="img" style="zoom:33%;" />
+<img src="https://sm.nsddd.top/sm202303082216115.jpeg" alt="img" style="zoom:33%;" />
 
 
 
@@ -350,7 +350,7 @@ Each node is assigned a subnet for allocating IP addresses to Pods on that node.
 
 Meanwhile, Flannel doesn't support network policy.
 
-![img](http://sm.nsddd.top/sm202303082217859.png)
+![img](https://sm.nsddd.top/sm202303082217859.png)
 
 Flannel implements through packet encapsulation and decapsulation.
 
@@ -375,7 +375,7 @@ Calico belongs to a completely distributed horizontal scaling architecture, allo
 + Packet encapsulation/decapsulation tunnel mode
 + Dynamic routing mode
 
-![img](http://sm.nsddd.top/sm202303082217415.png)
+![img](https://sm.nsddd.top/sm202303082217415.png)
 
 #### Calico Runtime Process
 
@@ -387,7 +387,7 @@ After plugin deployment, it starts DaemonSet, which mounts directories containin
 
 #### Calico VxLAN
 
-![img](http://sm.nsddd.top/sm202303091558883.png)
+![img](https://sm.nsddd.top/sm202303091558883.png)
 
 Pod1 and Pod2 are on different Nodes and don't belong to the same network segment, so they cannot be directly routed.
 
@@ -633,7 +633,7 @@ Among these, CSI is a standardized storage interface that allows Kubernetes to i
 
 > Note this is runtime storage, a file system used for pulling runtime only. It's not recommended to write anything or logs, as this will affect efficiency.
 
-![img](http://sm.nsddd.top/sm202303082238763.png)
+![img](https://sm.nsddd.top/sm202303082238763.png)
 
 
 
@@ -703,7 +703,7 @@ CSI drivers generally include modules like external-attacher, external-provision
 | node-driver-register | Used to register CSI drivers to Kubernetes nodes             |
 | CSI driver           | Used to implement CSI interface and interact with storage backend |
 
-![img](http://sm.nsddd.top/sm202303082239511.png)
+![img](https://sm.nsddd.top/sm202303082239511.png)
 
 **hostPath volume** is the simplest and most common volume type in Kubernetes, which can mount directories or files on nodes to containers. hostPath volumes are very suitable for **temporary storage**, such as log files. However, since hostPath volume lifecycle is closely related to Pod lifecycle, it's not suitable for persistent storage. If Pod is deleted, data in hostPath volume won't be cleaned and will remain there.
 
@@ -828,7 +828,7 @@ Created in advance by cluster administrators or dynamically created based on PVC
 
 **Users create PVCs to request storage. Controllers create volumes on storage backends and then create PVs through StorageClass and size declarations requested by PVCs. Pods reference storage by specifying PVCs.** 
 
-![img](http://sm.nsddd.top/sm202303082240666.png)
+![img](https://sm.nsddd.top/sm202303082240666.png)
 
 Pod specifies which PVC to use, PVC associates with PV, PV corresponds to backend storage.
 
@@ -916,7 +916,7 @@ Unlike other storage volume types, LocalVolume cannot be shared by multiple Pods
 + **Pod scheduling to node**: If PVC status becomes Bound, scheduling succeeds; if PVC remains in pending state, it will reschedule after timeout.
 + **Mount volume and start container**: kubelet listens to Pod scheduled to node, performs mount operations on local storage, and starts container.
 
-![img](http://sm.nsddd.top/sm202303082240376.png)
+![img](https://sm.nsddd.top/sm202303082240376.png)
 
 
 
@@ -952,7 +952,7 @@ Cluster administrators can make some code modifications to open-source CSI drive
 + **Mount volume**: kubelet listens to Pod scheduled to node and performs mount operations on local storage.
 + **Start container**: Start container.
 
-![img](http://sm.nsddd.top/sm202303082240603.png)
+![img](https://sm.nsddd.top/sm202303082240603.png)
 
 
 

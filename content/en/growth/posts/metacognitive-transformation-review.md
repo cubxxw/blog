@@ -1,31 +1,21 @@
 ---
 title: 'Metacognitive Transformation Review'
-date: 2025-06-02 # Conforms to YYYY-MM-DD format
-author: "Xinwei Xiong" # Schema expects a single string, "cubxxw" is the default
-description: "An in-depth review of metacognitive transformation, exploring its processes, impact on learning, and strategies for personal development." # Max 200 characters
+date: 2025-06-02
+author: ["Xinwei Xiong"]
+description: "An in-depth review of metacognitive transformation, exploring its processes, impact on learning, and strategies for personal development."
 categories:
-- Personal Development
-
+  - Growth
+  - Personal Development
 tags:
-
   - metacognition
-
   - learning strategies
-
   - self-improvement
-
 draft: false
-
-type: posts # Standard Hugo field
-
-weight: 50 # Optional: Default 50, higher means more prominent
-
+type: posts
+weight: 50
 ShowRssButtonInSectionTermList: true
-
 showtoc: true
-
 tocopen: false
-
 keywords:
 
   - "metacognition"

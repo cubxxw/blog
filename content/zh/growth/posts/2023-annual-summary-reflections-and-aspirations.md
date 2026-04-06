@@ -10,7 +10,7 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: '熊鑫伟，我'
+author: ["Xinwei Xiong", "Me"]
 keywords: ['2023', '年度总结', '个人成长', '职业发展', '开源贡献', '学习', '户外探险', '战略职业规划']
 tags: ['博客', '个人发展', '职业', '反思', '开源项目', '读书']
 categories: ['个人成长 (Personal Development)', '生活与教育 (Living & Education)']
@@ -52,11 +52,11 @@ Github 的贡献的小绿点：
 
 - [我的 gihtub 2023](https://github.com/cubxxw?tab=overview&from=2023-12-01&to=2023-12-29)
 
-![2023-github](http://sm.nsddd.top/20231230190154.png)
+![2023-github](https://sm.nsddd.top/20231230190154.png)
 
 徽章：
 
-![you-never-lose](http://sm.nsddd.top/20231230190256.png)
+![you-never-lose](https://sm.nsddd.top/20231230190256.png)
 
 
 
@@ -64,7 +64,7 @@ Github 的贡献的小绿点：
 
 以 github 代表为例，今年的 [ossinsight](https://ossinsight.io/analyze/cubxxw) 表现：
 
-![ossinsight](http://sm.nsddd.top/20231230191146.png)
+![ossinsight](https://sm.nsddd.top/20231230191146.png)
 
 1. 项目参与：
 
@@ -113,19 +113,19 @@ Github 的贡献的小绿点：
 圣诞节前后也完成了很久的愿望，去了一趟川西，去了 318 自驾游，去了人生第一座雪山，也去了第二座雪山。很有意思的是带着电脑去旅行，出去玩随时背着电脑，在他们点菜的时候，利用空闲的时间就拿出来办公。也去过很多城市生活了一段时间，感受到了重庆和成都城市的文化。或许留下烙印了，以后毕业会考虑来享受生活 ~
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="http://sm.nsddd.top/DSC05356.JPG" style="width: 30%;">
-    <img src="http://sm.nsddd.top/DSC05396.JPG" style="width: 30%;">
-    <img src="http://sm.nsddd.top/DSC01627.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC05356.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC05396.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC01627.JPG" style="width: 30%;">
 </div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="http://sm.nsddd.top/DSC05321.JPG" style="width: 30%;">
-    <img src="http://sm.nsddd.top/DSC05289.JPG" style="width: 30%;">
-    <img src="http://sm.nsddd.top/DSC05718.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC05321.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC05289.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC05718.JPG" style="width: 30%;">
 </div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="http://sm.nsddd.top/DSC01681.JPG" style="width: 30%;">
-    <img src="http://sm.nsddd.top/DSC05871.JPG" style="width: 30%;">
-    <img src="http://sm.nsddd.top/DSC05895.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC01681.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC05871.JPG" style="width: 30%;">
+    <img src="https://sm.nsddd.top/DSC05895.JPG" style="width: 30%;">
 </div>
 
 > 我的 [Twitter](https://twitter.com/xxw3293172751)

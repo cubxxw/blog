@@ -5,7 +5,7 @@ draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["熊鑫伟"]
+author: ["Xinwei Xiong"]
 keywords: ["拉萨", "西藏", "旅行见闻", "深度思考", "信仰", "纳木错", "哲蚌寺"]
 tags:
   - 旅行

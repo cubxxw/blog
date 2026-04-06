@@ -5,7 +5,7 @@ date: '2023-09-16T16:07:39+08:00'
 draft: false
 showtoc: true
 tocopen: false
-author: "Xiong Xinwei, Me"
+author: ["Xinwei Xiong", "Me"]
 keywords: ['GoReleaser', 'Software Releases', 'Release Automation', 'Go Programming Language', 'Continuous Integration', 'Continuous Deployment']
 tags: ["Blog", "Go", "release"]
 categories: ["Technology"]

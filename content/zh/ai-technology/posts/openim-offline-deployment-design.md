@@ -12,7 +12,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '离线部署', '设计方案', '实施策略', '社区版']
-tags: ["OpenIM", "离线部署 (Offline Deployment)", "设计 (Design)", "实施策略 (Implementation Strategy)", "Deployment"]
+tags: ["OpenIM", "Offline Deployment", "Design", "Implementation Strategy", "Deployment"]
 categories: ["Technology"]
 ---
 

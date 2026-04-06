@@ -6,7 +6,7 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: 'Xinwei Xiong, Me'
+author: ["Xinwei Xiong", "Me"]
 keywords: ['Kubernetes', 'Scheduler', 'Container Orchestration', 'K8s Architecture', 'Cluster Management']
 tags: ["Blog", "Go", "Kubernetes"]
 categories: ["Technology"]

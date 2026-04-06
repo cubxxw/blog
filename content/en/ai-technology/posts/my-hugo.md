@@ -227,7 +227,7 @@ date: 2020-09-15T11:30:03+00:00
 # weight: 1
 # aliases: ["/first"]
 tags: ["first"]
-author: "Me"
+author: ["Xinwei Xiong", "Me"]
 # author: ["Me", "You"] # multiple authors
 showToc: true
 TocOpen: false
@@ -389,7 +389,7 @@ NOTE: The **Archives** layout does not support multilingual month translations.
 
 Then visit: http://localhost:1313/
 
-![image-20230913222054387](http://sm.nsddd.top/sm202309132220842.png)
+![image-20230913222054387](https://sm.nsddd.top/sm202309132220842.png)
 
 Click **Moon** to support setting **Light and Dark**.
 

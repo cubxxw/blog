@@ -7,10 +7,10 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: ['熊鑫伟']
+author: ["Xinwei Xiong"]
 keywords: ['日本旅行', '富士山', '箱根', '东京', '关西', '枫叶', '和歌山', '熊野古道', '奈良', '京都', '旅行随笔']
-tags: ['旅行 (Travel)', '日本 (Japan)', '自我发现 (Self Discovery)', '冒险 (Adventure)', '探索 (Exploration)']
-categories: ['旅行 (Travel)']
+tags: ['Travel', 'Japan', 'Self-Discovery', 'Adventure', 'Exploration']
+categories: ['Travel']
 description: '2025 年夏秋，两次日本之旅。从箱根富士山到关西枫叶，从熊野古道到京都古寺。一个学会用木头、用火、缺口来和时间共处的地方。'
 ---
 

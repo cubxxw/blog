@@ -8,7 +8,7 @@ showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["Xinwei Xiong", "cubxxw"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - blog

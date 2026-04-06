@@ -6,7 +6,7 @@ draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: 'Xinwei Xiong, Me'
+author: ["Xinwei Xiong", "Me"]
 keywords: ["Kubernetes", "CNI", "CSI", "CRI", "Cloud Native", "Microservices", "Service Mesh", "Go", "Learning Path", "Source Code"]
 tags:
   - 'Golang (GO Language)'
@@ -254,7 +254,7 @@ Simply understand Restful concepts, it's best if you've done Restful Service
     
     `Kubernetes` code is particularly large, using cloc statistics **(⏱️ 2023-03-17)**:
     
-    !http://sm.nsddd.top/sm202303172221221.png
+    !https://sm.nsddd.top/sm202303172221221.png
     
     ### **Other Source Code Statistics**
     

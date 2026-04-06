@@ -2,22 +2,22 @@
 title: '2025年4月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-04-30T23:59:59+07:00
+date: 2025-04-30T23:59:59+08:00
 draft : false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
-  - 月度笔记 (Monthly Notes)
-  - 个人反思 (Personal Reflection)
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 春天成长 (Spring Growth)
   - 创新思维 (Innovation Mindset)
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
     2025年4月思考笔记 - 捕捉春天成长的精髓，新的开始与持续学习和自我改进的旅程记录。
 ---

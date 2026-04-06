@@ -2,22 +2,22 @@
 title: '2025年11月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
-date: 2025-11-30T23:59:59+07:00
+date: 2025-11-30T23:59:59+08:00
 draft: false
 showtoc: true
 weight: 1
 tocopen: true
 type: posts
-author: ["熊鑫伟", "Me"]
+author: ["Xinwei Xiong", "Me"]
 keywords: ["思考笔记", "个人成长", "深度思考", "心理机制", "城市观察", "历史哲学", "AI产品", "宗教哲学", "社会观察", "创作心法", "朝圣之路", "十一月反思"]
 tags:
-  - blog
-  - 月度笔记 (Monthly Notes)
-  - 个人反思 (Personal Reflection)
+  - Blog
+  - Monthly Notes
+  - Personal Reflection
   - 初冬沉思 (Early Winter Reflection)
   - 智慧沉淀 (Wisdom Precipitation)
 categories:
-  - 成长 (Growth)
+  - Growth
 description: >
   2025年11月的深度思考笔记，记录本人在心理机制探索、城市文化观察、历史哲学思辨、AI产品设计、宗教哲学理解、社会现象洞察、个人创作心法、朝圣文化体验等多维度的思考与反思。从马赛人的Laibon到心理填充机制，从杭州西湖的公共性到西安与京都的古都对比，从战争本质到AI作为现代心智牧师，从法家自我管理到系统化思维，从熊野古道的生死哲学到个人生命数据库的构想。通过持续的记录与思考，探索个人成长与外部世界的深层理解。
   

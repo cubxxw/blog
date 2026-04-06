@@ -1,6 +1,6 @@
 ---
 title: 'Use Auto Gpt'
-description:
+description: Learn how to install and use Auto-GPT for autonomous AI task automation, including setup, configuration, and practical use cases.
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2023-03-18T16:28:30+08:00
@@ -25,7 +25,7 @@ We can interact with AI for free and without restrictions through Slack. Everyon
 
 [https://join.slack.com/t/kubecub/shared_invite/zt-1se0k2bae-lkYzz0_T~BYh3rjkvlcUqQ](https://join.slack.com/t/kubecub/shared_invite/zt-1se0k2bae-lkYzz0_T~BYh3rjkvlcUqQ)
 
-![image-20230514215132365](http://sm.nsddd.top/sm202305142151717.png)
+![image-20230514215132365](https://sm.nsddd.top/sm202305142151717.png)
 
 
 
@@ -158,7 +158,7 @@ Here, click on `API Keys` in the left sidebar and click on `Create API Key` in t
 
 Give a name like `autogpt` and click `Create Key`
 
-![image-20230503171039991](http://sm.nsddd.top/sm202305031712718.png)
+![image-20230503171039991](https://sm.nsddd.top/sm202305031712718.png)
 
 Copy the Key Value, open it with `vim` and paste it next to `PINECONE_API_KEY`.
 
@@ -254,13 +254,13 @@ If you don't want to set up Auto-GPT locally and want an easy-to-use solution fo
 
 Here, add your OpenAI API key. You can get the API key from [here](https://www.wbolt.com/go?_=e7e2fef44aaHR0cHM6Ly9wbGF0Zm9ybS5vcGVuYWkuY29tL2FjY291bnQvYXBpLWtleXM%3D)**. If you don't have access to the [GPT-4](https://www.wbolt.com/how-to-use-gpt-4-free.html) API, select `gpt-3.5-turbo` as the model and click ` Save`
 
-![image-20230503174431508](http://sm.nsddd.top/sm202305031744911.png)
+![image-20230503174431508](https://sm.nsddd.top/sm202305031744911.png)
 
 Next, give your AI agent a name and set the goals you want to achieve. Now, click Auto-GPT AI’s `Deploy Agent` to start considering your investment.
 
 I found that I have no money~
 
-![image-20230503175554002](http://sm.nsddd.top/sm202305031755504.png)
+![image-20230503175554002](https://sm.nsddd.top/sm202305031755504.png)
 
 Once the task is completed, you can click "**Save**" or "Copy" to get the final result.
 

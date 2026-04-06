@@ -5,7 +5,7 @@ draft: false
 description: "AI开源项目学习笔记"
 tags: ["AI开源", "项目学习"]
 categories: ["AI Open Source"]
-author: "cubxxw"
+author: ["Xinwei Xiong"]
 aliases:
   - /posts/ai-projects/jina/
 ---

@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['区块链', '学习平台', '社区贡献', '软件开发', '开源项目', '技术教育']
-tags: ["Blog", "区块链 (Blockchain)", "Open Source", "社区 (Community)"]
+tags: ["Blog", "Blockchain", "Open Source", "Community"]
 categories: ["Technology"]
 description: '欢迎来到我们的项目，一个基于区块链技术的学习平台。在这里，我们将分享项目进展的最新动态和见解。您可以切换到指定的语言了解更多详细信息。'
 aliases:

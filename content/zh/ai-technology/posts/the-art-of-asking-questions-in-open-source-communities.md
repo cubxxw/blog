@@ -12,7 +12,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源', '社区', '提问技巧', '有效沟通', 'GitHub', '问题解决']
-tags: ["Blog", "Open Source", "社区 (Community)", "提问 (Questions)"]
+tags: ["Blog", "Open Source", "Community", "Questions"]
 categories: ["Technology"]
 ---
 

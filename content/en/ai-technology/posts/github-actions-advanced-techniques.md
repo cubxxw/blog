@@ -1,6 +1,6 @@
 ---
 title: 'Github Actions Advanced Techniques'
-description:
+description: Master GitHub Actions with advanced workflows, custom commands, automation patterns, and best practices for CI/CD pipelines.
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2023-09-16T16:17:02+08:00
@@ -179,7 +179,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 All operations require a metadata file. The metadata file name must be `action.yml` or `action.yaml`. The data in the metadata file defines the input, output, and run configuration for your action.
 
 + name: **required**. The name of your operation. The `name` GitHub displays in the **Operations** tab to help visually identify the operations within each job.
-+ description: *optional*. Provide a brief description of your action. GitHub will display this description on the action's details page.
++ description: optional. Provide a brief description of your action. GitHub will display this description on the action's details page.
 + author: *optional*. The author or organization name of the action.
 + inputs: *optional*. Define input parameters for the operation. Each input is a key-value pair, where the key is the parameter name and the value is the attribute describing the parameter. Attributes include `description`, `required` and `default`.
 + outputs: *optional*. Define the output parameters of the operation. Each output is a key-value pair, where the key is the parameter name and the value is the attribute describing the parameter. Attributes include `description` and `value`.
