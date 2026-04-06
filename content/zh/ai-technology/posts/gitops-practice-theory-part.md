@@ -10,7 +10,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['GitOps', 'Kubernetes', 'Argo Rollouts', 'Canary Deployment', 'Blue-Green Deployment', 'Deployment Strategies', 'DevOps', 'Cloud Native', 'Service Mesh', 'Container Orchestration']
 tags: ["GitOps", "Kubernetes", "Argo Rollouts", "Canary Deployment", "Blue-Green Deployment"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: '探索 GitOps 在 Kubernetes 中的实践，详细解析使用 Argo Rollouts 实现金丝雀和蓝绿部署策略。本文将为开发者提供深入的理论和实践指导，帮助优化持续部署流程。'
 ---
 

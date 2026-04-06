@@ -10,7 +10,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', 'Kubernetes', '集群化', '设计', '部署', '方案']
 tags: ["OpenIM", "Kubernetes", "Clustering", "Cloud Native", "Microservices", "Deployment"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: '本文详细总结了在 Kubernetes 环境下部署 OpenIM 集群化解决方案的过程，探讨了关键设计考虑、部署策略及其挑战，旨在为同类项目提供实践指南和设计启示。'
 ---
 

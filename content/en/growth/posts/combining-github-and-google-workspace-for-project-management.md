@@ -13,8 +13,7 @@ tags:
   - 'project'
   - 'management'
 categories:
-  - 'Development'
-  - 'Personal Development'
+  - Growth
 description: >
     Explore the synergies between GitHub and Google Workspace to streamline your project management process. This guide offers insights into leveraging the best of both platforms for collaborative development and project tracking.
 ---

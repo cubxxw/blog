@@ -10,7 +10,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '多进程管理', '系统稳定性', '资源控制', '系统扩展']
 tags: ["OpenIM", "Multi-Processing", "Performance", "System Stability", "Resource Management"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 ---
 
 ## 主要模块

@@ -10,11 +10,11 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - golang
   - dlv
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Debugging Go project

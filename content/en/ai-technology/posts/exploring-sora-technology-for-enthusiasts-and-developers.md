@@ -10,12 +10,12 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Sora Technology", "AI Video Generation", "Software Development", "Tech Enthusiasts"]
 tags:
-  - blog
+  - Blog
   - sora
   - ai
   - chatgpt
 categories:
-  - Development
+  - AI & Technology
 description: >
     Dive into the world of Sora Technology, a groundbreaking platform for AI-driven video generation. This post is designed for both tech enthusiasts and developers eager to unlock the potential of Sora. Discover how you can leverage Sora to create stunning, AI-generated videos with ease, and join a community of innovators transforming the digital landscape.
 ---

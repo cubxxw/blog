@@ -11,13 +11,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - Annual Recap
   - Travel
   - Personal Growth
   - Philosophy
 categories:
-  - Personal Development
+  - Growth
 description: >
   3,614 notes, fourteen months, one person's attempt to live authentically. From "surge" to "shedding" — not getting older, but becoming real.
 ---

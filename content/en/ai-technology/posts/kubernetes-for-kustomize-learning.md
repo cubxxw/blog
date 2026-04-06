@@ -10,11 +10,11 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - Kubernetes
   - Kustomize
 categories:
-  - Development
+  - AI & Technology
 description: >
   Explore the power of Kustomize, an open-source configuration management tool for Kubernetes.
   Learn how to customize Kubernetes objects and manage configurations declaratively using Kustomize.

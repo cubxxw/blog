@@ -4,7 +4,7 @@ date: 2025-04-12T13:01:59+08:00
 draft: false
 description: "AI开源项目学习笔记"
 tags: ["AI开源", "项目学习"]
-categories: ["AI Open Source"]
+categories: ["Projects"]
 author: ["Xinwei Xiong"]
 aliases:
   - /posts/ai-projects/jina/

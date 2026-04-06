@@ -39,7 +39,7 @@ tags:
   - 'OpenAI'
   - '深度学习 (Deep Learning)'
 categories:
-  - 技术 (Technology)
+  - AI & Technology
 description: '本指南深入探讨了使用 LangChain 框架集成和应用语言模型的过程，专为希望简化复杂实现的开发者量身定制。'
 ---
 

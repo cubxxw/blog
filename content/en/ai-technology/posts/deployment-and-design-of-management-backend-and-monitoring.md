@@ -16,7 +16,7 @@ tags:
   - Backend Management
   - Monitoring
 categories:
-  - Development
+  - AI & Technology
 description: >
     This post guides you through the process of deploying OpenIM using Docker, 
     setting up the management backend, and monitoring the application. It provides 

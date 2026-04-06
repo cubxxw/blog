@@ -3,11 +3,11 @@ title: 'About My Hugo teaching'
 date: 2023-09-12T14:26:20+08:00
 draft: false
 tags:
-   - blog
+   - Blog
    - en
    - hugo
 categories:
-  - Development
+  - AI & Technology
 ---
 
 # Rebuild my blog (static)

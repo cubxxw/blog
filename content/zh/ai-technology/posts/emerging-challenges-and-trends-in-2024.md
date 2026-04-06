@@ -13,7 +13,7 @@ author:
 keywords: []
 tags: ['Blog', 'AI', 'Technology']
 categories:
-  - Technology
+  - AI & Technology
 description: >
   探索2024年技术和开发领域的最新趋势和挑战。
 aliases:

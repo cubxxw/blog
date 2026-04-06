@@ -12,11 +12,11 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - ai
   - database
 categories:
-  - Development
+  - AI & Technology
 ---
 
 # Vector database learning

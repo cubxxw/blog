@@ -10,11 +10,11 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - ai
   - autogpt
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Preface

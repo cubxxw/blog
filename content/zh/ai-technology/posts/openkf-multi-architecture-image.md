@@ -8,7 +8,7 @@ tags:
   - OpenIM
   - 云原生 (Cloud Native)
 categories:
-  - 技术 (Technology)
+  - AI & Technology
 description: '本文探讨了针对 Openkf 的多架构镜像构建策略的设计，涵盖了在不同环境下的构建和部署方案，旨在提高应用的可移植性和效率。'
 ---
 

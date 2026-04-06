@@ -10,7 +10,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Prow', 'Kubernetes', 'CI/CD', '自动化', 'DevOps', '云原生']
 tags: ["Blog", "Prow", "Kubernetes", "CI/CD", "DevOps"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 ---
 
 ## why?

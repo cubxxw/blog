@@ -4,10 +4,10 @@ date: 2023-09-14
 author: ["Xinwei Xiong", "Me"]
 description: "This is my first blog, about my introduction"
 tags:
-  - blog
+  - Blog
   - en
 categories:
-  - Personal Development
+  - Growth
 aliases:
   - /ai-technology/posts/my-first-blog/
 ---

@@ -9,7 +9,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Kubernetes', '容器编排', 'Docker', '云原生', 'CNCF']
 tags: ["Blog", "Kubernetes", "Cloud Native", "Docker"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: 'Kubernetes是一个开源的容器编排引擎，用于自动化部署、扩展和管理容器化应用程序。该项目由云原生计算基金会管理，该基金会由Linux基金会托管。这篇文章将会带你快速入门Kubernetes。'
 ---
 

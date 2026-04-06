@@ -8,7 +8,7 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags: ["Blog", "Git", "openim"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: 'Explore advanced techniques and best practices for designing Git hooks to enhance your development workflow.'
 ---
 

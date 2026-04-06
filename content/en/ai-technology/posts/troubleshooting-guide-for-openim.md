@@ -9,13 +9,13 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ['OpenIM', 'Troubleshooting', 'Debugging', 'Tech Support', 'Software Development']
 tags:
-  - blog
+  - Blog
   - openim
   - troubleshooting
   - debugging
   - tech support
 categories:
-  - Development
+  - AI & Technology
 description: >
     This guide provides a comprehensive overview of troubleshooting methods and debugging techniques for OpenIM, drawing on real-world development and operational experiences. Ideal for developers looking to enhance their problem-solving skills in OpenIM environments.
 ---

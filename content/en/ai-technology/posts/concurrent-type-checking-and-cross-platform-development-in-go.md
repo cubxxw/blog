@@ -15,7 +15,7 @@ tags:
   - Concurrency
   - Cross-Platform
 categories:
-  - Development
+  - AI & Technology
 description: >
     Explore the intricacies of concurrent type checking and efficient cross-platform development techniques in Go programming, illustrating best practices and advanced concepts for robust application development.
 ---

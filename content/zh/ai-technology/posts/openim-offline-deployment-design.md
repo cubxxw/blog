@@ -13,7 +13,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '离线部署', '设计方案', '实施策略', '社区版']
 tags: ["OpenIM", "Offline Deployment", "Design", "Implementation Strategy", "Deployment"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 ---
 
 ## 1. 基础镜像

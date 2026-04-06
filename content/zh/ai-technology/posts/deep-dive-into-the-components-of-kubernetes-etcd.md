@@ -9,7 +9,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['kubernetes', 'etcd', 'raft', 'go', '容器编排', '分布式系统']
 tags: ["Blog", "Kubernetes", "etcd", "raft", "go"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: >
     这一篇来深入并且贯穿的讲解 ETCD 和 Raft。并且站在 Kubernetes 的角度来深入剖析 ETCD。
 ---

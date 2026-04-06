@@ -10,9 +10,9 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
 categories:
-  - Development
+  - AI & Technology
 description: >
     <You can switch to the specified language>
 ---

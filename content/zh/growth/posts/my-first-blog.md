@@ -4,7 +4,7 @@ date: '2023-09-14'
 author: ["Xinwei Xiong", "Me"]
 description: "这是我的第一个博客，关于我的介绍。在这篇文章中，我将分享我的个人背景、兴趣以及我为什么开始写博客。"
 tags: ['Blog']
-categories: ['Technology']
+categories: ["Growth"]
 ---
 
 ## 你好，我是熊鑫伟

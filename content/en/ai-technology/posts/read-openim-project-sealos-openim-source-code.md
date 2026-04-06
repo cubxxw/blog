@@ -10,9 +10,9 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Prepare

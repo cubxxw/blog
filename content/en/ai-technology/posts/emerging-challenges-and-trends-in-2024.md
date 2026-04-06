@@ -10,9 +10,9 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
 categories:
-  - Development
+  - AI & Technology
 description: >
   Explore the latest trends and challenges in 2024 in the world of technology and development.
 ---

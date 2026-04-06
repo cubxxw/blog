@@ -4,7 +4,7 @@ date: 2025-04-15T20:53:12+08:00
 draft: false
 tocopen: true
 tags: ["AI开源", "项目学习"]
-categories: ["AI Open Source"]
+categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >
   介绍一些好用的工具，以及基本的上手的步骤，学习，note

@@ -9,7 +9,7 @@ type: posts
 author: '熊鑫伟，我'  # 注意，您的原始作者字段缺少中文标准格式，这里我做了适当调整
 keywords: ['开源商业化', 'OpenIM', '全球流量大会', '技术总结', '社区贡献', '业务发展']
 tags: ["OpenIM", "Blog", "Open Source Commercialization", "Open Source", "Global Traffic Conference"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 description: '通过 OpenIM 这个充满活力的开源项目的旅程，探索开源技术与业务发展的交汇点。了解 OpenIM 如何取得成功，应对挑战，并在商业化中平衡社区贡献。'
 ---
 

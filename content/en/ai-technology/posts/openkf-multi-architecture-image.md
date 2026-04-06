@@ -3,11 +3,11 @@ title: 'Openkf Multi Architecture Image'
 date: 2023-09-01T14:56:14+08:00
 draft : false
 tags:
-  - blog
+  - Blog
   - en
   - openkf
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## Automate Multi-Architecture Image Build for `openkf` and Push to Multiple Image Repositories

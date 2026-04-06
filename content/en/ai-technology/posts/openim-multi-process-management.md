@@ -10,10 +10,10 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - en
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## 111: OpenIM multi-process management strategy

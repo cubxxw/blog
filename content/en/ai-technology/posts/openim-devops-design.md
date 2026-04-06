@@ -10,11 +10,11 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - openim
   - en
 categories:
-  - Development
+  - AI & Technology
 ---
 
 ## DevOps

@@ -10,7 +10,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Auto-GPT', '人工智能', '安装教程', '自主AI工具', '技术指南', '智能自动化']
 tags: ["Blog", "AI", "Auto-GPT"]
-categories: ["Technology"]
+categories: ["AI & Technology"]
 ---
 
 ## 前言

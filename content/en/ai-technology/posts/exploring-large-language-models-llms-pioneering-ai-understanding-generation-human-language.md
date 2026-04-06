@@ -14,7 +14,7 @@ tags:
   - "Functional Programming"
   - "LLM"
 categories:
-  - "Development"
+  - AI & Technology
   - "AI"
 description: >
     This article explores the transformative capabilities of Large Language Models (LLMs), which are designed to understand and generate human language, demonstrating a pioneering role in AI technology. These models showcase emergent abilities that significantly surpass those of their predecessors by leveraging vast amounts of data and sophisticated machine learning architectures.

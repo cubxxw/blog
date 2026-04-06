@@ -18,7 +18,7 @@ tags:
   - Machine Learning
   - Open Source Project
 categories:
-  - Technology
+  - AI & Technology
 description: >
   In-depth analysis of Mem0 open source project's technical architecture, core features and application scenarios, exploring how to build a technical memory layer for AI systems to achieve personalized interaction experiences.
 ---
