@@ -157,7 +157,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina](https://nsddd.top/projects/jina/)
 - [2025 March Thought Notes](https://nsddd.top/growth/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://nsddd.top/growth/posts/2024-annual-review/)
-- [Travel](https://nsddd.top/travel/)
+- [Travel Footprints](https://nsddd.top/travel/)
 - [Kubernetes Resources and Learning Path Summary](https://nsddd.top/ai-technology/posts/kubernetes-learning/)
 - [Harnessing Language Model Applications with LangChain: A Developer's Guide](https://nsddd.top/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Exploring Large Language Models (LLMs): Pioneering AI Understanding, Generation & Human Language](https://nsddd.top/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
