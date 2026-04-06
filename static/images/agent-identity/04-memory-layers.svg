@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="400" viewBox="0 0 700 400"
+  style="font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:#fff;border-radius:10px;">
+<defs>
+  <marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#888"/>
+  </marker>
+  <marker id="ab" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#5070c0"/>
+  </marker>
+  <marker id="ag" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#50a070"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="700" height="400" fill="#fff" stroke="#eee" stroke-width="1" rx="10"/>
+<text x="350" y="26" font-size="15" fill="#111" font-weight="600" text-anchor="middle" dominant-baseline="central">Agent 记忆四层架构（2026 Production）</text>
+<text x="350" y="46" font-size="11" fill="#999" font-weight="normal" text-anchor="middle" dominant-baseline="central">Four-Layer Memory Architecture</text>
+<line x1="40" y1="60" x2="660" y2="60" stroke="#eee" stroke-width="1"/>
+<rect x="40" y="76" width="460" height="62" fill="#eef3ff" stroke="#5070c0" stroke-width="1.5" rx="7"/>
+<rect x="40" y="76" width="36" height="62" fill="#5070c0" rx="7"/>
+<text x="58" y="107" font-size="11" fill="#fff" font-weight="700" text-anchor="middle" dominant-baseline="central">L3</text>
+<text x="88" y="98" font-size="13" fill="#5070c0" font-weight="600" text-anchor="start" dominant-baseline="central">Semantic 语义层</text>
+<text x="88" y="116" font-size="11" fill="#666" font-weight="normal" text-anchor="start" dominant-baseline="central">编译后的知识 · 泛化 · 概念</text>
+<text x="450" y="98" font-size="10" fill="#aaa" font-weight="normal" text-anchor="end" dominant-baseline="central">月/年</text>
+<rect x="510" y="76" width="180" height="62" fill="#fff" stroke="#5070c0" stroke-width="1" rx="7"/>
+<text x="600" y="107" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">Gene Capsule 从此产出</text>
+<rect x="40" y="148" width="460" height="62" fill="#edfff4" stroke="#3a9060" stroke-width="1.5" rx="7"/>
+<rect x="40" y="148" width="36" height="62" fill="#3a9060" rx="7"/>
+<text x="58" y="179" font-size="11" fill="#fff" font-weight="700" text-anchor="middle" dominant-baseline="central">L2</text>
+<text x="88" y="170" font-size="13" fill="#3a9060" font-weight="600" text-anchor="start" dominant-baseline="central">Long-term 长期层</text>
+<text x="88" y="188" font-size="11" fill="#666" font-weight="normal" text-anchor="start" dominant-baseline="central">持久模式 · 偏好 · 关系</text>
+<text x="450" y="170" font-size="10" fill="#aaa" font-weight="normal" text-anchor="end" dominant-baseline="central">月/年</text>
+<rect x="510" y="148" width="180" height="62" fill="#fff" stroke="#3a9060" stroke-width="1" rx="7"/>
+<text x="600" y="179" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">Graph Memory 毕业量产</text>
+<line x1="270" y1="138" x2="270" y2="148" stroke="#ddd" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="40" y="220" width="460" height="62" fill="#fff8ec" stroke="#c07030" stroke-width="1.5" rx="7"/>
+<rect x="40" y="220" width="36" height="62" fill="#c07030" rx="7"/>
+<text x="58" y="251" font-size="11" fill="#fff" font-weight="700" text-anchor="middle" dominant-baseline="central">L1</text>
+<text x="88" y="242" font-size="13" fill="#c07030" font-weight="600" text-anchor="start" dominant-baseline="central">Short-term 短期层</text>
+<text x="88" y="260" font-size="11" fill="#666" font-weight="normal" text-anchor="start" dominant-baseline="central">会话状态 · 近期学习</text>
+<text x="450" y="242" font-size="10" fill="#aaa" font-weight="normal" text-anchor="end" dominant-baseline="central">天/周</text>
+<rect x="510" y="220" width="180" height="62" fill="#fff" stroke="#c07030" stroke-width="1" rx="7"/>
+<text x="600" y="251" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">Mem0 自动写入 / 召回</text>
+<line x1="270" y1="210" x2="270" y2="220" stroke="#ddd" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="40" y="292" width="460" height="62" fill="#f5f5f5" stroke="#888" stroke-width="1.5" rx="7"/>
+<rect x="40" y="292" width="36" height="62" fill="#888" rx="7"/>
+<text x="58" y="323" font-size="11" fill="#fff" font-weight="700" text-anchor="middle" dominant-baseline="central">L0</text>
+<text x="88" y="314" font-size="13" fill="#888" font-weight="600" text-anchor="start" dominant-baseline="central">Ephemeral 短暂层</text>
+<text x="88" y="332" font-size="11" fill="#666" font-weight="normal" text-anchor="start" dominant-baseline="central">上下文窗口 · 当前推理</text>
+<text x="450" y="314" font-size="10" fill="#aaa" font-weight="normal" text-anchor="end" dominant-baseline="central">小时</text>
+<rect x="510" y="292" width="180" height="62" fill="#fff" stroke="#888" stroke-width="1" rx="7"/>
+<text x="600" y="323" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">QMD 优化 read path</text>
+<line x1="270" y1="282" x2="270" y2="292" stroke="#ddd" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M500,107 C530,107 550,47 580,37" stroke="#5070c0" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#ab)"/>
+<text x="584" y="37" font-size="10" fill="#5070c0" font-weight="normal" text-anchor="start" dominant-baseline="central">Gene Capsule</text>
+<text x="584" y="52" font-size="10" fill="#5070c0" font-weight="normal" text-anchor="start" dominant-baseline="central">传播到 EvoMap</text>
+<rect x="40" y="372" width="620" height="34" fill="#f8f8f8" stroke="#ddd" stroke-width="1.5" rx="7"/>
+<text x="350" y="389" font-size="11" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">各系统升级不同维度，非冗余，是专业化分工</text>
+</svg>

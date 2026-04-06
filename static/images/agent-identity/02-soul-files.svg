@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="370" viewBox="0 0 700 370"
+  style="font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:#fff;border-radius:10px;">
+<defs>
+  <marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#888"/>
+  </marker>
+  <marker id="ab" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#5070c0"/>
+  </marker>
+  <marker id="ag" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#50a070"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="700" height="370" fill="#fff" stroke="#eee" stroke-width="1" rx="10"/>
+<text x="350" y="26" font-size="15" fill="#111" font-weight="600" text-anchor="middle" dominant-baseline="central">SOUL 体系：最小可行 Lockean 记忆基底</text>
+<text x="350" y="46" font-size="11" fill="#999" font-weight="normal" text-anchor="middle" dominant-baseline="central">Minimum Viable Lockean Identity Stack</text>
+<line x1="40" y1="60" x2="660" y2="60" stroke="#eee" stroke-width="1"/>
+<text x="55" y="78" font-size="13" fill="#555" text-anchor="start" dominant-baseline="central" font-family="monospace">/identity/</text>
+<line x1="63" y1="88" x2="63" y2="104" stroke="#ddd" stroke-width="1"/>
+<line x1="63" y1="106" x2="81" y2="106" stroke="#ddd" stroke-width="1"/>
+<text x="85" y="106" font-size="13" fill="#5070c0" text-anchor="start" dominant-baseline="central" font-family="monospace" font-weight="600">SOUL.md</text>
+<text x="149" y="106" font-size="11" fill="#aaa" text-anchor="start" dominant-baseline="central"># 价值观 · 风格 · 世界观</text>
+<rect x="360" y="89" width="300" height="34" fill="#eef3ff" stroke="#5070c0" stroke-width="1.5" rx="7"/>
+<text x="370" y="106" font-size="10" fill="#555" font-weight="normal" text-anchor="start" dominant-baseline="central">Agent 内部相信和具体化的东西 / 可写</text>
+<path d="M 215,106 C 280,106 330,106 360,106" stroke="#ddd" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+<line x1="63" y1="88" x2="63" y2="146" stroke="#ddd" stroke-width="1"/>
+<line x1="63" y1="148" x2="81" y2="148" stroke="#ddd" stroke-width="1"/>
+<text x="85" y="148" font-size="13" fill="#3a9060" text-anchor="start" dominant-baseline="central" font-family="monospace" font-weight="600">AGENTS.md</text>
+<text x="165" y="148" font-size="11" fill="#aaa" text-anchor="start" dominant-baseline="central"># 工作流 · 操作模式</text>
+<rect x="360" y="131" width="300" height="34" fill="#edfff4" stroke="#3a9060" stroke-width="1.5" rx="7"/>
+<text x="370" y="148" font-size="10" fill="#555" font-weight="normal" text-anchor="start" dominant-baseline="central">可运行的行为规范，随经验迭代</text>
+<path d="M 215,148 C 280,148 330,148 360,148" stroke="#ddd" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+<line x1="63" y1="88" x2="63" y2="188" stroke="#ddd" stroke-width="1"/>
+<line x1="63" y1="190" x2="81" y2="190" stroke="#ddd" stroke-width="1"/>
+<text x="85" y="190" font-size="13" fill="#c07030" text-anchor="start" dominant-baseline="central" font-family="monospace" font-weight="600">MEMORY.md</text>
+<text x="165" y="190" font-size="11" fill="#aaa" text-anchor="start" dominant-baseline="central"># 持久上下文 · 已学到的东西</text>
+<rect x="360" y="173" width="300" height="34" fill="#fff8ec" stroke="#c07030" stroke-width="1.5" rx="7"/>
+<text x="370" y="190" font-size="10" fill="#555" font-weight="normal" text-anchor="start" dominant-baseline="central">跨 session 的经验积累</text>
+<path d="M 215,190 C 280,190 330,190 360,190" stroke="#ddd" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+<line x1="63" y1="88" x2="63" y2="230" stroke="#ddd" stroke-width="1"/>
+<line x1="63" y1="232" x2="81" y2="232" stroke="#ddd" stroke-width="1"/>
+<text x="85" y="232" font-size="13" fill="#9050c0" text-anchor="start" dominant-baseline="central" font-family="monospace" font-weight="600">USER.md</text>
+<text x="149" y="232" font-size="11" fill="#aaa" text-anchor="start" dominant-baseline="central"># Owner 目标 · 偏好 · 红线</text>
+<rect x="360" y="215" width="300" height="34" fill="#fdf0ff" stroke="#9050c0" stroke-width="1.5" rx="7"/>
+<text x="370" y="232" font-size="10" fill="#555" font-weight="normal" text-anchor="start" dominant-baseline="central">理解人类的接口</text>
+<path d="M 215,232 C 280,232 330,232 360,232" stroke="#ddd" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+<line x1="63" y1="88" x2="63" y2="272" stroke="#ddd" stroke-width="1"/>
+<line x1="63" y1="274" x2="81" y2="274" stroke="#ddd" stroke-width="1"/>
+<text x="85" y="274" font-size="13" fill="#888" text-anchor="start" dominant-baseline="central" font-family="monospace" font-weight="600">SKILLS/</text>
+<text x="149" y="274" font-size="11" fill="#aaa" text-anchor="start" dominant-baseline="central"># 任务专项知识模块</text>
+<rect x="360" y="257" width="300" height="34" fill="#f5f5f5" stroke="#888" stroke-width="1.5" rx="7"/>
+<text x="370" y="274" font-size="10" fill="#555" font-weight="normal" text-anchor="start" dominant-baseline="central">可插拔的能力扩展</text>
+<path d="M 215,274 C 280,274 330,274 360,274" stroke="#ddd" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+<rect x="40" y="326" width="620" height="34" fill="#f0f4ff" stroke="#c0d0f0" stroke-width="1.5" rx="7"/>
+<text x="350" y="343" font-size="11" fill="#5070c0" font-weight="normal" text-anchor="middle" dominant-baseline="central">每次 session 启动重新读取 = 实现洛克的「跨时间将自己视为自己」</text>
+</svg>

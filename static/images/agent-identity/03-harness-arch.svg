@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="330" viewBox="0 0 700 330"
+  style="font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:#fff;border-radius:10px;">
+<defs>
+  <marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#888"/>
+  </marker>
+  <marker id="ab" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#5070c0"/>
+  </marker>
+  <marker id="ag" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#50a070"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="700" height="330" fill="#fff" stroke="#eee" stroke-width="1" rx="10"/>
+<text x="350" y="26" font-size="15" fill="#111" font-weight="600" text-anchor="middle" dominant-baseline="central">Harness 架构：Agent ≠ LLM</text>
+<text x="350" y="46" font-size="11" fill="#999" font-weight="normal" text-anchor="middle" dominant-baseline="central">Agent = LLM + Harness  |  Harness defines identity possibility space</text>
+<line x1="40" y1="60" x2="660" y2="60" stroke="#eee" stroke-width="1"/>
+<rect x="45" y="74" width="610" height="196" fill="#f5f8ff" stroke="#7090d0" stroke-width="2" rx="7"/>
+<text x="70" y="92" font-size="11" fill="#7090d0" dominant-baseline="central">Harness（环境 + 边界）</text>
+<rect x="260" y="186" width="180" height="56" fill="#eef3ff" stroke="#5070c0" stroke-width="2" rx="8"/>
+<text x="350" y="204" font-size="15" fill="#5070c0" font-weight="700" text-anchor="middle" dominant-baseline="central">LLM</text>
+<text x="350" y="224" font-size="10" fill="#7090c0" font-weight="normal" text-anchor="middle" dominant-baseline="central">推理引擎 / Inference</text>
+<rect x="62" y="106" width="120" height="56" fill="#fff8ec" stroke="#c07030" stroke-width="1.5" rx="7"/>
+<text x="122" y="126" font-size="12" fill="#c07030" font-weight="600" text-anchor="middle" dominant-baseline="central">Tools</text>
+<text x="122" y="143" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">工具集</text>
+<path d="M122,162 C122,176 350,172 350,186" stroke="#c8d8f0" stroke-width="1" stroke-dasharray="4,2" fill="none"/>
+<rect x="200" y="106" width="120" height="56" fill="#edfff4" stroke="#3a9060" stroke-width="1.5" rx="7"/>
+<text x="260" y="126" font-size="12" fill="#3a9060" font-weight="600" text-anchor="middle" dominant-baseline="central">Memory</text>
+<text x="260" y="143" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">记忆层</text>
+<path d="M260,162 C260,176 350,172 350,186" stroke="#c8d8f0" stroke-width="1" stroke-dasharray="4,2" fill="none"/>
+<rect x="338" y="106" width="120" height="56" fill="#fdf0ff" stroke="#9050c0" stroke-width="1.5" rx="7"/>
+<text x="398" y="126" font-size="12" fill="#9050c0" font-weight="600" text-anchor="middle" dominant-baseline="central">Evaluation</text>
+<text x="398" y="143" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">评估标准</text>
+<path d="M398,162 C398,176 350,172 350,186" stroke="#c8d8f0" stroke-width="1" stroke-dasharray="4,2" fill="none"/>
+<rect x="476" y="106" width="120" height="56" fill="#fff0f0" stroke="#c04040" stroke-width="1.5" rx="7"/>
+<text x="536" y="126" font-size="12" fill="#c04040" font-weight="600" text-anchor="middle" dominant-baseline="central">Reward</text>
+<text x="536" y="143" font-size="10" fill="#666" font-weight="normal" text-anchor="middle" dominant-baseline="central">奖励信号</text>
+<path d="M536,162 C536,176 350,172 350,186" stroke="#c8d8f0" stroke-width="1" stroke-dasharray="4,2" fill="none"/>
+<rect x="50" y="286" width="600" height="32" fill="#f0f0f0" stroke="#ddd" stroke-width="1.5" rx="7"/>
+<text x="350" y="302" font-size="11" fill="#555" font-weight="normal" text-anchor="middle" dominant-baseline="central">LLM（引擎）  +  Harness（规则 + 环境）  =  Agent（具有可持续身份）</text>
+</svg>

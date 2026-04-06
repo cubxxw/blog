@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="290" viewBox="0 0 700 290"
+  style="font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:#fff;border-radius:10px;">
+<defs>
+  <marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#888"/>
+  </marker>
+  <marker id="ab" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#5070c0"/>
+  </marker>
+  <marker id="ag" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6z" fill="#50a070"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="700" height="290" fill="#fff" stroke="#eee" stroke-width="1" rx="10"/>
+<text x="350" y="26" font-size="15" fill="#111" font-weight="600" text-anchor="middle" dominant-baseline="central">洛克身份规范 → 三条工程条款</text>
+<text x="350" y="46" font-size="11" fill="#999" font-weight="normal" text-anchor="middle" dominant-baseline="central">Locke Identity Spec as Engineering Requirements</text>
+<line x1="40" y1="60" x2="660" y2="60" stroke="#eee" stroke-width="1"/>
+<rect x="38" y="76" width="192" height="150" fill="#edfff4" stroke="#3a9060" stroke-width="1.5" rx="7"/>
+<circle cx="60" cy="98" r="13" fill="#3a9060" opacity="0.9"/>
+<text x="60" y="98" font-size="12" fill="#fff" font-weight="700" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="134" y="128" font-size="14" fill="#3a9060" font-weight="600" text-anchor="middle" dominant-baseline="central">持久化</text>
+<text x="134" y="146" font-size="10" fill="#999" font-weight="normal" text-anchor="middle" dominant-baseline="central">Persistence</text>
+<text x="134" y="170" font-size="11" fill="#555" font-weight="normal" text-anchor="middle" dominant-baseline="central">记忆存储于上下文窗口之外</text>
+<text x="134" y="187" font-size="11" fill="#555" font-weight="normal" text-anchor="middle" dominant-baseline="central">文件 / 数据库 / 向量库</text>
+<line x1="234" y1="151" x2="250" y2="151" stroke="#ccc" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="254" y="76" width="192" height="150" fill="#eef3ff" stroke="#5070c0" stroke-width="1.5" rx="7"/>
+<circle cx="276" cy="98" r="13" fill="#5070c0" opacity="0.9"/>
+<text x="276" y="98" font-size="12" fill="#fff" font-weight="700" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="350" y="128" font-size="14" fill="#5070c0" font-weight="600" text-anchor="middle" dominant-baseline="central">自我指涉性</text>
+<text x="350" y="146" font-size="10" fill="#999" font-weight="normal" text-anchor="middle" dominant-baseline="central">Self-Reference</text>
+<text x="350" y="170" font-size="11" fill="#555" font-weight="normal" text-anchor="middle" dominant-baseline="central">能认出并认同这些记忆</text>
+<text x="350" y="187" font-size="11" fill="#555" font-weight="normal" text-anchor="middle" dominant-baseline="central">是关于自己的</text>
+<line x1="450" y1="151" x2="466" y2="151" stroke="#ccc" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="470" y="76" width="192" height="150" fill="#fff8ec" stroke="#c07030" stroke-width="1.5" rx="7"/>
+<circle cx="492" cy="98" r="13" fill="#c07030" opacity="0.9"/>
+<text x="492" y="98" font-size="12" fill="#fff" font-weight="700" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="566" y="128" font-size="14" fill="#c07030" font-weight="600" text-anchor="middle" dominant-baseline="central">连续性验证</text>
+<text x="566" y="146" font-size="10" fill="#999" font-weight="normal" text-anchor="middle" dominant-baseline="central">Continuity Verification</text>
+<text x="566" y="170" font-size="11" fill="#555" font-weight="normal" text-anchor="middle" dominant-baseline="central">有机制确认跨会话</text>
+<text x="566" y="187" font-size="11" fill="#555" font-weight="normal" text-anchor="middle" dominant-baseline="central">是同一个 Agent</text>
+<rect x="40" y="242" width="620" height="36" fill="#fff0f0" stroke="#e07070" stroke-width="1" rx="7"/>
+<text x="350" y="260" font-size="11" fill="#c04040" font-weight="normal" text-anchor="middle" dominant-baseline="central">当前默认无状态 Agent：三条全部违反</text>
+</svg>
