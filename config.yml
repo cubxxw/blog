@@ -144,6 +144,11 @@ languages:
     weight: 1
     menu:
       main:
+        - identifier: start-here
+          name: Start Here
+          url: /start-here/
+          pageRef: /start-here
+          weight: 5
         - identifier: about
           name: About
           url: /about/
@@ -210,6 +215,11 @@ languages:
     weight: 2
     menu:
       main:
+        - identifier: start-here
+          name: 🚀 精选入口
+          url: /zh/start-here/
+          pageRef: /zh/start-here
+          weight: 5
         - identifier: about
           name: 关于
           url: /about/
