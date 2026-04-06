@@ -12,7 +12,7 @@ tocopen: false
 type: page
 author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
-description: "熊鑫伟 (Xinwei Xiong) - 认知宇航员 | 演进中的世界观 v2025.11"
+description: "熊鑫伟 (Xinwei Xiong) - AI Builder · 开源贡献者 · 数字游民"
 ---
 
 <div class="neuro-dashboard">
