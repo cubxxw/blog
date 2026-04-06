@@ -133,6 +133,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Agent Identity: From Locke to OpenClaw](https://nsddd.top/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
 - [I'm Wandering, But I'm Not Lost — 2025-2026 Annual Review](https://nsddd.top/growth/posts/2025-annual-review/)
 - [AI Is Getting Smarter, But I'm Losing Myself](https://nsddd.top/growth/posts/ai-and-self-identity/)
 - [February 2026 Thought Notes | 2026 年 2 月思考笔记](https://nsddd.top/growth/posts/2026-02-thought-notes/)
