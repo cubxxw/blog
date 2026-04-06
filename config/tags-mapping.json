@@ -123,6 +123,12 @@
       "aliases": ["监控 (Monitoring)", "可观测性"],
       "description": "监控相关",
       "category": "技术"
+    },
+    "monthly-notes": {
+      "canonical": "Monthly Notes",
+      "aliases": ["月度笔记", "月度总结", "monthly notes"],
+      "description": "月度思考笔记",
+      "category": "生活"
     }
   },
 

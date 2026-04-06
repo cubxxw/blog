@@ -8,13 +8,14 @@ type: posts
 author: ["熊鑫伟", "cubxxw"]
 keywords: ["AI时代", "自我认同", "人类价值", "意义", "主体性", "存在"]
 tags:
-  - AI 思考 (AI Reflection)
-  - 个人反思 (Personal Reflection)
-  - 技术哲学 (Technology Philosophy)
-  - 自我认知 (Self Awareness)
-  - 哲理 (Philosophy)
+  - AI
+  - Personal Growth
+  - Self-Discovery
 categories:
-  - 成长 (Growth)
+  - Growth
+cover:
+  image: /images/posts/2026/ai-self-identity/mountain-path.jpg
+  alt: "在不被需要的时代，如何维持自我的重量"
 description: >
   当 AI 能替代我们思考、执行、甚至创作时，"我"的重量从哪里来？这不是一篇关于职业危机的文章，是一个人试图搞清楚自己为什么还在这里的轨迹。
 ---

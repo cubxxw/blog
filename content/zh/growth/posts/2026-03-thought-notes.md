@@ -12,10 +12,10 @@ author: ["熊鑫伟", "Me"]
 keywords: ["思考笔记", "个人成长", "深度思考", "旅行见闻", "柬埔寨", "暹粒", "吴哥窟", "AI Agent", "多智能体", "高棉文明", "自我叙事", "三月反思"]
 tags:
   - Blog
-  - 月度笔记
-  - 个人反思
-  - 旅行记录
-  - 自我探索
+  - Monthly Notes
+  - Personal Growth
+  - Travel
+  - Self-Discovery
   - AI
 categories:
   - 成长 (Growth)

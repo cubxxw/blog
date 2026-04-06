@@ -10,9 +10,12 @@ keywords: ["AI Agent", "身份连续性", "记忆架构", "SOUL.md", "Harness", 
 tags:
   - AI
   - Open Source
-  - 月度笔记
+  - Monthly Notes
 categories:
   - Development
+cover:
+  image: /images/agent-identity/01-locke-spec.svg
+  alt: "Locke Identity Spec — Agent Identity Engineering Stack"
 description: >
   AI Agent 的失忆不是功能缺陷，是信任账户的根本缺失。本文从洛克 1689 年的身份理论出发，逐层拆解 2026 年 Agent 身份连续性的完整工程栈：文件即身份（SOUL.md 范式）、Harness 作为环境条件、记忆的四层结构与 Gene Capsule 协议、多智能体拓扑中的自我定位，以及评测作为身份验证的终极难题。
   适合正在构建或设计 AI Agent 系统的从业者，以及对 AI 自主性边界有深度思考需求的研究者。
