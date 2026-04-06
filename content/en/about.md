@@ -1252,6 +1252,10 @@ Product Thinking Interface
   display: none;
 }
 
+.collapsible-summary::marker {
+  display: none;
+}
+
 .collapsible-summary:hover {
   background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
 }
