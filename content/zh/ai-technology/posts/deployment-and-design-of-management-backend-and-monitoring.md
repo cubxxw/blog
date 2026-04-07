@@ -80,7 +80,7 @@ docker compose up -d
 
    + 在配置页面，填写 Prometheus 服务器的详细信息。这通常包括 Prometheus 服务的 URL（例如 OpenIM 默认部署的是 `http://172.28.0.1:19090`，如果 Prometheus 在同一台机器上运行）。
 
-     地址是和 和 `cat .env| grep DOCKER_BRIDGE_GATEWAY`  变量地址一致。OpenIM 和 组件之间通过 getway 链接的。端口 OpenIM 默认使用的 `19090`
+     地址是和 和 `cat .env| grep DOCKER_BRIDGE_GATEWAY`  变量地址一致。OpenIM 和 组件之间通过 gateway 链接的。端口 OpenIM 默认使用的 `19090`
 
    + 根据需要调整其他设置，例如认证、TLS 设置等。
 
