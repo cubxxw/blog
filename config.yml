@@ -1,5 +1,5 @@
 baseURL: https://nsddd.top
-title: 熊鑫伟 (cubxxw) 的博客 - AI 创业者 / 开源贡献者 / 数字游民
+title: 熊鑫伟 (cubxxw) 的博客 - AI Builder · Open Source Contributor · Digital Nomad
 theme: PaperMod
 
 # Config WIKI
@@ -16,7 +16,7 @@ minify:
 params:
   env: production
   title: 熊鑫伟 (cubxxw) 的博客
-  description: AI 创业者、开源贡献者、数字游民的技术与成长博客。分享 Kubernetes、Go 语言、AI 开源项目、个人成长思考、旅行见闻。
+  description: AI Builder、开源贡献者、数字游民的技术与成长博客。分享 Kubernetes、Go 语言、AI 开源项目、个人成长思考、旅行见闻。
   keywords:
     - cubxxw
     - 熊鑫伟
@@ -144,16 +144,36 @@ languages:
     weight: 1
     menu:
       main:
+        - identifier: start-here
+          name: Start Here
+          url: /start-here/
+          pageRef: /start-here
+          weight: 5
         - identifier: about
           name: About
           url: /about/
           pageRef: /about
           weight: 10
+        - identifier: projects
+          name: Projects
+          url: /projects/
+          pageRef: /projects
+          weight: 15
+        - identifier: ai
+          name: AI
+          url: /ai-technology/
+          pageRef: /ai-technology
+          weight: 16
+        - identifier: growth
+          name: Growth
+          url: /growth/
+          pageRef: /growth
+          weight: 17
         - identifier: posts
           name: Posts
           url: /posts/
           pageRef: /posts
-          weight: 17
+          weight: 18
         - identifier: travel
           name: Travel
           url: /travel/
@@ -172,29 +192,29 @@ languages:
           url: /index.xml
           weight: 35
     params:
-      description: "Tech blog by Xinwei Xiong — AI entrepreneur, open source contributor and digital nomad sharing Kubernetes, Go, AI projects and travel."
+      description: "Tech blog by Xinwei Xiong — AI Builder, open source contributor and digital nomad sharing Kubernetes, Go, AI projects and travel."
       profileMode:
         # Enabled or not
         enabled: true
         title: Hi there 👋
         subtitle: |
-          My name is Xinwei(bear) Xiong 🤖. My loyalty is to adventure ☀️,
-          I'm a big open source fan Ⓜ️. I have a big dream and will realize it next year.
+          My name is Xinwei (bear) Xiong 🤖 — AI Builder, Open Source Contributor, Digital Nomad.
+          I'm on a journey building AI products while exploring the world, one adventure at a time ☀️.
         imageUrl: ../assets/cubxxw-image.jpg
         imageWidth: 120
         imageHeight: 120
         imageTitle: "Xinwei Xiong profile photo"
         buttons:
           - name: AI Technology
-            url: ai-technology
+            url: /ai-technology/
           - name: Growth & Life
-            url: growth
+            url: /growth/
           - name: AI Projects
-            url: projects
-          - name: archives
-            url: archives
+            url: /projects/
+          - name: Archives
+            url: /archives/
           - name: Categories
-            url: categories
+            url: /categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/en"
           Text: "Suggest Changes" # edit text
@@ -210,16 +230,36 @@ languages:
     weight: 2
     menu:
       main:
+        - identifier: start-here
+          name: 🚀 精选入口
+          url: /zh/start-here/
+          pageRef: /zh/start-here
+          weight: 5
         - identifier: about
           name: 关于
           url: /about/
           pageRef: /about
           weight: 10
+        - identifier: projects
+          name: 项目
+          url: /projects/
+          pageRef: /projects
+          weight: 15
+        - identifier: ai
+          name: AI
+          url: /ai-technology/
+          pageRef: /ai-technology
+          weight: 16
+        - identifier: growth
+          name: 成长
+          url: /growth/
+          pageRef: /growth
+          weight: 17
         - identifier: posts
           name: 文章
           url: /posts/
           pageRef: /posts
-          weight: 17
+          weight: 18
         - identifier: travel
           name: 旅行
           url: /travel/
@@ -243,22 +283,22 @@ languages:
         enabled: true
         title: 你好 👋
         subtitle: |
-          我叫 Xinwei(bear) Xiong 🤖。我的忠诚是对冒险的忠诚☀️。
-          我是一个开源的极度爱好者Ⓜ️。我有一个大梦想，并会在明年实现它。
+          我叫 Xinwei (bear) Xiong 🤖 — AI Builder、开源贡献者、数字游民。
+          我正在环游世界的路上，用代码和文字记录每一次冒险与思考 ☀️。
         imageUrl: ../assets/cubxxw-image.jpg
         imageWidth: 120
         imageHeight: 120
         buttons:
           - name: AI 技术
-            url: ai-technology
+            url: /ai-technology/
           - name: 成长与生活
-            url: growth
+            url: /growth/
           - name: AI 开源项目
-            url: projects
+            url: /projects/
           - name: 归档
-            url: archives
+            url: /archives/
           - name: 分类
-            url: categories
+            url: /categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/zh"
           Text: "Suggest Changes" # edit text
