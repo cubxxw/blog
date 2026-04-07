@@ -1,10 +1,59 @@
+{{- $isZh := eq site.Language.Lang "zh" -}}
+{{- $latestPostsText := cond $isZh "读最新文章" "Read Latest Posts" -}}
+{{- $aiProjectsText := cond $isZh "看 AI 项目" "View AI Projects" -}}
+{{- $aboutMeText := cond $isZh "了解我" "About Me" -}}
+{{- $subscribeText := cond $isZh "订阅更新" "Subscribe Updates" -}}
+
 <div class="home-info">
     <div class="home-info-title">{{ .Site.Title }}</div>
-    <div class="home-info-content">{{ .Site.Params.homeInfoContent | markdownify }}</div>
-    <div class="home-info-ai-projects">
-        <a href="{{ "/projects/" | relLangURL }}" class="ai-project-button">
-            🚀 探索我的 AI 开源项目学习笔记
-        </a>
+
+    {{- if $isZh -}}
+    <div class="home-info-content">
+        <p>你好！我是鑫伟（cubxxw），一名 AI 创业者、开源贡献者和数字游民。</p>
+        <p>这里分享我在 Kubernetes、Go 语言、AI 开源项目等领域的实践笔记，以及个人成长和旅行见闻。</p>
+        <p>从下面的入口开始探索，找到你感兴趣的内容。</p>
     </div>
+    {{- else -}}
+    <div class="home-info-content">
+        <p>Hi! I'm Xinwei Xiong (cubxxw), an AI entrepreneur, open source contributor, and digital nomad.</p>
+        <p>I share hands-on notes on Kubernetes, Go, AI open source projects, along with personal growth insights and travel stories.</p>
+        <p>Start exploring from the quick links below and find what resonates with you.</p>
+    </div>
+    {{- end -}}
+
+    <div class="home-info-cta">
+        <a href="{{ "/articles/" | relLangURL }}" class="cta-button cta-button--primary">
+            <span class="cta-button__icon">📝</span>
+            <span class="cta-button__text">{{ $latestPostsText }}</span>
+        </a>
+        <a href="{{ "/projects/" | relLangURL }}" class="cta-button cta-button--secondary">
+            <span class="cta-button__icon">🚀</span>
+            <span class="cta-button__text">{{ $aiProjectsText }}</span>
+        </a>
+        <a href="{{ "/about/" | relLangURL }}" class="cta-button cta-button--secondary">
+            <span class="cta-button__icon">👤</span>
+            <span class="cta-button__text">{{ $aboutMeText }}</span>
+        </a>
+        <button type="button" class="cta-button cta-button--ghost" data-subscribe-trigger>
+            <span class="cta-button__icon">📬</span>
+            <span class="cta-button__text">{{ $subscribeText }}</span>
+        </button>
+    </div>
+
     {{- partial "rss-subscribe.html" . }}
 </div>
+
+<script>
+// Home page CTA: Subscribe button triggers the RSS subscribe card email panel
+document.addEventListener('DOMContentLoaded', function() {
+    const subscribeTrigger = document.querySelector('[data-subscribe-trigger]');
+    const emailButton = document.querySelector('[data-subscribe-open="email"]');
+
+    if (subscribeTrigger && emailButton) {
+        subscribeTrigger.addEventListener('click', function() {
+            // Trigger the existing email signup flow from newsletter.js
+            emailButton.click();
+        });
+    }
+});
+</script>
