@@ -1,0 +1,22 @@
+{
+  "months": 13,
+  "chunks": 3580,
+  "chunk_files": [
+    "2025-03.jsonl",
+    "2025-04.jsonl",
+    "2025-05.jsonl",
+    "2025-06.jsonl",
+    "2025-07.jsonl",
+    "2025-08.jsonl",
+    "2025-09.jsonl",
+    "2025-10.jsonl",
+    "2025-11.jsonl",
+    "2025-12.jsonl",
+    "2026-01.jsonl",
+    "2026-02.jsonl",
+    "2026-03.jsonl"
+  ],
+  "concept_pages": 120,
+  "entity_pages": 120,
+  "tension_pages": 0
+}
