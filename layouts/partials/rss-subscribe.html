@@ -1,45 +1,78 @@
-{{- $rssTitle := cond (eq site.Language.Lang "zh") "订阅更新" "Subscribe Updates" -}}
-{{- $rssDescription := cond (eq site.Language.Lang "zh") "第一时间获取最新文章通知，支持所有 RSS 阅读器。" "Get the latest posts delivered right to your RSS reader." -}}
-{{- $rssButtonText := cond (eq site.Language.Lang "zh") "立即订阅" "Subscribe Now" -}}
-{{- $emailTitle := cond (eq site.Language.Lang "zh") "邮件订阅" "Email Newsletter" -}}
-{{- $emailDescription := cond (eq site.Language.Lang "zh") "新文章和月度思考将通过邮件发送给你。默认双重确认，可随时退订。" "Get new posts and monthly notes by email. Double opt-in by default, unsubscribe anytime." -}}
-{{- $emailPlaceholder := cond (eq site.Language.Lang "zh") "you@example.com" "you@example.com" -}}
-{{- $emailButtonText := cond (eq site.Language.Lang "zh") "邮件订阅" "Subscribe by Email" -}}
-{{- $emailConsent := cond (eq site.Language.Lang "zh") "我同意接收博客更新邮件，并理解可随时取消订阅。" "I agree to receive blog update emails and understand I can unsubscribe anytime." -}}
-{{- $emailTopicsLabel := cond (eq site.Language.Lang "zh") "内容偏好" "Topics" -}}
-{{- $emailStatusIdle := cond (eq site.Language.Lang "zh") "输入邮箱后即可订阅。" "Enter your email to subscribe." -}}
-{{- $subscribeChoice := cond (eq site.Language.Lang "zh") "选择订阅方式" "Choose how to subscribe" -}}
-{{- $teaserSubtitle := cond (eq site.Language.Lang "zh") "通过 RSS 或邮件获取最新文章，不错过任何更新。" "Stay in the loop via RSS or email — never miss a post." -}}
-{{- $emailOpenText := cond (eq site.Language.Lang "zh") "打开邮件订阅" "Open email signup" -}}
-{{- $backText := cond (eq site.Language.Lang "zh") "返回" "Back" -}}
+{{- $isZH := eq site.Language.Lang "zh" -}}
+
+{{- $teaserTitle    := cond $isZH "不错过每一个信号" "Never Miss a Signal" -}}
+{{- $teaserSubtitle := cond $isZH "专为技术人构建。最新文章直接送达：AI 探索、开源实践与游民生活。" "Built for builders. Get new posts on AI, open source & nomad life — direct to your inbox." -}}
+{{- $socialProof    := cond $isZH "1,200+ 读者同行" "Join 1,200+ readers" -}}
+{{- $rssTitle       := cond $isZH "RSS 订阅" "Subscribe via RSS" -}}
+{{- $rssDescription := cond $isZH "第一时间获取最新文章通知，支持所有 RSS 阅读器。" "Get the latest posts delivered right to your RSS reader." -}}
+{{- $rssButtonText  := cond $isZH "打开 RSS Feed" "Open RSS Feed" -}}
+{{- $emailTitle     := cond $isZH "邮件订阅" "Email Newsletter" -}}
+{{- $emailDescription := cond $isZH "新文章和月度思考将通过邮件发送给你。默认双重确认，可随时退订。" "Get new posts and monthly notes by email. Double opt-in by default, unsubscribe anytime." -}}
+{{- $emailPlaceholder := "you@example.com" -}}
+{{- $emailConsent   := cond $isZH "我同意接收博客更新邮件，并理解可随时取消订阅。" "I agree to receive blog update emails and understand I can unsubscribe anytime." -}}
+{{- $emailTopicsLabel := cond $isZH "内容偏好" "Topics" -}}
+{{- $emailStatusIdle  := cond $isZH "输入邮箱后即可订阅。" "Enter your email to subscribe." -}}
+{{- $emailOpenText  := cond $isZH "打开邮件订阅" "Open email signup" -}}
+{{- $backText       := cond $isZH "返回" "Back" -}}
+{{- $noSpamText     := cond $isZH "绝不发垃圾邮件，随时退订。" "No spam. Unsubscribe anytime." -}}
+{{- $rssAltText     := cond $isZH "RSS 订阅" "RSS" -}}
 
 <div class="rss-subscribe-card" data-subscribe-card>
+
+  {{/* ── TEASER (default view) ── */}}
   <div class="rss-subscribe-card__teaser" data-subscribe-teaser>
-    <div class="rss-subscribe-card__teaser-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-        <polyline points="22,6 12,13 2,6"></polyline>
-      </svg>
-    </div>
-    <div class="rss-subscribe-card__teaser-text">
-      <h3>{{ $rssTitle }}</h3>
-      <p>{{ $teaserSubtitle }}</p>
-    </div>
-    <div class="rss-subscribe-card__actions">
-      <button type="button" class="rss-subscribe-button rss-subscribe-button--ghost" data-subscribe-open="rss">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+
+    {{/* Decorative background grid */}}
+    <div class="signal-bg" aria-hidden="true"></div>
+
+    {{/* Left column: headline + copy */}}
+    <div class="signal-left">
+      <div class="signal-icon-wrap" aria-hidden="true">
+        <span class="signal-pulse signal-pulse--1"></span>
+        <span class="signal-pulse signal-pulse--2"></span>
+        <span class="signal-pulse signal-pulse--3"></span>
+        <svg class="signal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M4 11a9 9 0 0 1 9 9"></path>
           <path d="M4 4a16 16 0 0 1 16 16"></path>
-          <circle cx="5" cy="19" r="1"></circle>
+          <circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none"></circle>
         </svg>
-        RSS
-      </button>
-      <button type="button" class="rss-subscribe-button" data-subscribe-open="email">
-        {{ $emailButtonText }}
-      </button>
-    </div>
-  </div>
+      </div>
 
+      <div class="signal-copy">
+        <h3 class="signal-headline">{{ $teaserTitle }}</h3>
+        <p class="signal-subtitle">{{ $teaserSubtitle }}</p>
+        <span class="signal-proof">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/><path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
+          {{ $socialProof }}
+        </span>
+      </div>
+    </div>
+
+    {{/* Right column: actions */}}
+    <div class="signal-right">
+      <div class="signal-actions">
+        <button type="button" class="rss-subscribe-button" data-subscribe-open="email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          {{ cond $isZH "邮件订阅" "Subscribe →" }}
+        </button>
+        <button type="button" class="rss-subscribe-button rss-subscribe-button--ghost" data-subscribe-open="rss">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 11a9 9 0 0 1 9 9"></path>
+            <path d="M4 4a16 16 0 0 1 16 16"></path>
+            <circle cx="5" cy="19" r="1"></circle>
+          </svg>
+          {{ $rssAltText }}
+        </button>
+      </div>
+      <p class="signal-no-spam">{{ $noSpamText }}</p>
+    </div>
+
+  </div>{{/* end teaser */}}
+
+  {{/* ── RSS PANEL ── */}}
   <div class="rss-subscribe-card__panel" data-subscribe-panel="rss" hidden>
     <div class="rss-subscribe-card__section">
       <div class="rss-subscribe-card__panel-head">
@@ -48,7 +81,7 @@
       </div>
       <p>{{ $rssDescription }}</p>
       <a href="{{ "/index.xml" | relLangURL }}" class="rss-subscribe-button" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M4 11a9 9 0 0 1 9 9"></path>
           <path d="M4 4a16 16 0 0 1 16 16"></path>
           <circle cx="5" cy="19" r="1"></circle>
@@ -58,6 +91,7 @@
     </div>
   </div>
 
+  {{/* ── EMAIL PANEL ── */}}
   <div class="rss-subscribe-card__panel" data-subscribe-panel="email" hidden>
     <div class="rss-subscribe-card__section">
       <div class="rss-subscribe-card__panel-head">
@@ -66,6 +100,7 @@
       </div>
       <p>{{ $emailDescription }}</p>
       <form class="newsletter-form" data-newsletter-form data-language="{{ site.Language.Lang }}" data-source-type="{{ .Kind }}">
+
         <label class="newsletter-form__field">
           <span class="newsletter-form__label">Email</span>
           <input
@@ -82,10 +117,10 @@
         <label class="newsletter-form__field">
           <span class="newsletter-form__label">{{ $emailTopicsLabel }}</span>
           <select class="newsletter-form__select" name="topic">
-            <option value="general">{{ cond (eq site.Language.Lang "zh") "全部更新" "All updates" }}</option>
-            <option value="technology">{{ cond (eq site.Language.Lang "zh") "技术" "Technology" }}</option>
-            <option value="growth">{{ cond (eq site.Language.Lang "zh") "成长" "Growth" }}</option>
-            <option value="travel">{{ cond (eq site.Language.Lang "zh") "旅行" "Travel" }}</option>
+            <option value="general">{{ cond $isZH "全部更新" "All updates" }}</option>
+            <option value="technology">{{ cond $isZH "技术" "Technology" }}</option>
+            <option value="growth">{{ cond $isZH "成长" "Growth" }}</option>
+            <option value="travel">{{ cond $isZH "旅行" "Travel" }}</option>
           </select>
         </label>
 
@@ -101,7 +136,9 @@
         </button>
 
         <p class="newsletter-form__status" data-newsletter-status aria-live="polite">{{ $emailStatusIdle }}</p>
+
       </form>
     </div>
   </div>
-</div>
+
+</div>{{/* end .rss-subscribe-card */}}
