@@ -263,7 +263,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [MarkItdown 开源项目深度学习](https://nsddd.top/zh/projects/markitdown/)
 - [LangGraph 深度解析：设计、架构、原理与应用](https://nsddd.top/zh/projects/langgraph/)
 - [Langchain 开源项目深度学习](https://nsddd.top/zh/projects/langchain/)
-- [Ai Getway 开源项目深度学习](https://nsddd.top/zh/projects/ai-getway/)
+- [Ai Gateway 开源项目深度学习](https://nsddd.top/zh/projects/ai-gateway/)
 - [独立开发者必备技能及现代工具 & 分别的上手指导](https://nsddd.top/zh/projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://nsddd.top/zh/projects/gpt-researcher/)
 - [Jina 开源项目深度学习](https://nsddd.top/zh/projects/jina/)
