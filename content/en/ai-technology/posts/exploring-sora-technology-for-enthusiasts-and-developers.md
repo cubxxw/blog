@@ -12,7 +12,7 @@ keywords: ["Sora Technology", "AI Video Generation", "Software Development", "Te
 tags:
   - Blog
   - sora
-  - ai
+  - AI
   - chatgpt
 categories:
   - AI & Technology

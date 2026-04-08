@@ -18,13 +18,13 @@
     },
     "ai": {
       "canonical": "AI",
-      "aliases": ["人工智能 (AI)", "人工智能 (Artificial Intelligence)", "AI 开源", "AI 技术"],
+      "aliases": ["ai", "人工智能 (AI)", "人工智能 (Artificial Intelligence)", "AI 开源", "AI 技术"],
       "description": "人工智能相关",
       "category": "技术"
     },
     "blog": {
       "canonical": "Blog",
-      "aliases": ["博客", "博客 (Blog)", "博客搭建 (Blog Building)"],
+      "aliases": ["blog", "博客", "博客 (Blog)", "博客搭建 (Blog Building)"],
       "description": "博客相关",
       "category": "生活"
     },

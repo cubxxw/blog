@@ -13,7 +13,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - ai
+  - AI
   - database
 categories:
   - AI & Technology

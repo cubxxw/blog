@@ -11,7 +11,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - ai
+  - AI
   - autogpt
 categories:
   - AI & Technology

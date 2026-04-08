@@ -101,7 +101,7 @@
         <p class="tp-map__link-card-desc">
           {{ if $isZh }}追踪我的实时旅行路线、照片和故事，全部收录在 Polarsteps 上。{{ else }}Track my real-time travel routes, photos, and stories — all on Polarsteps.{{ end }}
         </p>
-        <a href="{{ $polarsteps }}" target="_blank" rel="noopener" class="tp-btn tp-btn--primary">
+        <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="tp-btn tp-btn--primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           {{ if $isZh }}在 Polarsteps 查看旅行地图 →{{ else }}View Travel Map on Polarsteps →{{ end }}
         </a>
@@ -217,7 +217,7 @@
     <div class="tp-articles__empty">
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <p>{{ if $isZh }}旅行故事即将到来…{{ else }}Travel stories coming soon…{{ end }}</p>
-      <a href="{{ $polarsteps }}" target="_blank" rel="noopener" class="tp-btn tp-btn--primary">
+      <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="tp-btn tp-btn--primary">
         {{ if $isZh }}先去 Polarsteps 看看{{ else }}See Polarsteps for now{{ end }}
       </a>
     </div>
@@ -277,14 +277,14 @@
         {{- with .Site.Params.socialIcons }}
           {{- range . }}
             {{- if or (eq .name "twitter") (eq .name "github") (eq .name "email") }}
-            <a href="{{ .url }}" {{ if ne .name "email" }}target="_blank" rel="noopener"{{ end }} class="tp-social-link">
+            <a href="{{ .url }}" {{ if ne .name "email" }}target="_blank" rel="noopener noreferrer"{{ end }} class="tp-social-link">
               {{ .name }}
             </a>
             {{- end }}
           {{- end }}
         {{- else }}
-        <a href="https://twitter.com/cubxxw" target="_blank" rel="noopener" class="tp-social-link">Twitter / X</a>
-        <a href="https://github.com/cubxxw" target="_blank" rel="noopener" class="tp-social-link">GitHub</a>
+        <a href="https://twitter.com/cubxxw" target="_blank" rel="noopener noreferrer" class="tp-social-link">Twitter / X</a>
+        <a href="https://github.com/cubxxw" target="_blank" rel="noopener noreferrer" class="tp-social-link">GitHub</a>
         {{- end }}
       </div>
     </div>
