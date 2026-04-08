@@ -535,7 +535,7 @@ LangChain plays an important and continuously evolving role in the LLM applicati
 
 ## Related Articles
 
-+ [Staged Growth Guide for Open Source](/en/growth/posts/stage-growth-of-open-source/)
-+ [A Complete Guide to Open Source Contributions (A Beginner's Playbook)](/en/ai-technology/posts/open-source-contribution-guidelines/)
-+ [My Practical Summary: Design Principles for Open Source Community Standards](/en/ai-technology/posts/advanced-githook-design/)
-+ [Learning How to Ask Questions in Open Source Communities](/en/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [Staged Growth Guide for Open Source](/growth/posts/stage-growth-of-open-source/)
++ [A Complete Guide to Open Source Contributions (A Beginner's Playbook)](/ai-technology/posts/open-source-contribution-guidelines/)
++ [My Practical Summary: Design Principles for Open Source Community Standards](/ai-technology/posts/advanced-githook-design/)
++ [Learning How to Ask Questions in Open Source Communities](/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)

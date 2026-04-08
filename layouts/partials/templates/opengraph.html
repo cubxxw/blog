@@ -38,7 +38,7 @@
 {{- end -}}
 
 {{- with .Params.audio }}<meta property="og:audio" content="{{ . }}" />{{ end }}
-{{- with site.Params.title }}<meta property="og:site_name" content="{{ . }}" />{{ end }}
+<meta property="og:site_name" content="{{ site.Title }}" />
 {{- with .Params.videos }}{{- range . }}
 <meta property="og:video" content="{{ . | absURL }}" />
 {{ end }}{{ end }}

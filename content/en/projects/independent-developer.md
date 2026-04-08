@@ -30,7 +30,7 @@ aliases:
 
 ## Related Articles
 
-+ [A Staged Growth Guide for Open Source](/en/growth/posts/stage-growth-of-open-source/)
-+ [A Complete Guide to Open Source Contribution (A Handbook for First-Timers)](/en/ai-technology/posts/open-source-contribution-guidelines/)
-+ [My Practical Summary: Designing Norms in Open Source Communities](/en/ai-technology/posts/advanced-githook-design/)
-+ [How to Ask Questions in Open Source Communities](/en/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [A Staged Growth Guide for Open Source](/growth/posts/stage-growth-of-open-source/)
++ [A Complete Guide to Open Source Contribution (A Handbook for First-Timers)](/ai-technology/posts/open-source-contribution-guidelines/)
++ [My Practical Summary: Designing Norms in Open Source Communities](/ai-technology/posts/advanced-githook-design/)
++ [How to Ask Questions in Open Source Communities](/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
