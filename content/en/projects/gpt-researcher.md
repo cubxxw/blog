@@ -7,7 +7,7 @@ tags: ["AI开源", "项目学习"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+  An analysis of the GPT Researcher open source project — autonomous AI agents for deep research tasks.
 aliases:
   - /posts/ai-projects/gpt-researcher/
 ---
