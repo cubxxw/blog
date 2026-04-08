@@ -121,3 +121,33 @@
 
 - id: sidebar_ai_tag_toolchain
   translation: "AI Toolchain"
+
+- id: share_label
+  translation: "Share this article"
+
+- id: share_copy_link
+  translation: "Copy link"
+
+- id: share_copied
+  translation: "Copied!"
+
+- id: share_copy_link_done
+  translation: "Link copied"
+
+- id: share_copy_fail
+  translation: "Copy failed — please copy from the address bar"
+
+- id: share_platform_copied_opening
+  translation: "Link copied, opening platform…"
+
+- id: share_more
+  translation: "More"
+
+- id: share_collapse
+  translation: "Collapse"
+
+- id: share_system
+  translation: "Share"
+
+- id: share_sheet_title
+  translation: "Share to"

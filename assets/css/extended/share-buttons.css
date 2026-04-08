@@ -5,6 +5,7 @@
 /* ── Section wrapper ── */
 .share-section {
     margin: 32px 0 12px;
+    overflow: visible;
 }
 
 .share-label {
@@ -25,7 +26,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 10px 12px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* ── Primary row ── */
@@ -41,14 +42,16 @@
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
 .share-secondary.is-open {
     grid-template-rows: 1fr;
+    overflow: visible;
 }
 
 .share-secondary-inner {
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;

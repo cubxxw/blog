@@ -121,3 +121,33 @@
 
 - id: sidebar_ai_tag_toolchain
   translation: "AI 工具链"
+
+- id: share_label
+  translation: "分享这篇文章"
+
+- id: share_copy_link
+  translation: "复制链接"
+
+- id: share_copied
+  translation: "已复制！"
+
+- id: share_copy_link_done
+  translation: "已复制链接"
+
+- id: share_copy_fail
+  translation: "复制失败，请手动复制地址栏链接"
+
+- id: share_platform_copied_opening
+  translation: "链接已复制，正在打开平台…"
+
+- id: share_more
+  translation: "更多"
+
+- id: share_collapse
+  translation: "收起"
+
+- id: share_system
+  translation: "分享"
+
+- id: share_sheet_title
+  translation: "分享到"

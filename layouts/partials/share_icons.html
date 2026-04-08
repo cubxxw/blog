@@ -13,7 +13,7 @@
 {{- with $ShareButtons }}{{ $custom = true }}{{ end }}
 
 <div class="share-section">
-    <div class="share-label">分享这篇文章</div>
+    <div class="share-label">{{ i18n "share_label" | default "Share this article" }}</div>
 
     <div class="share-container">
         {{/* ── Primary buttons (always visible) ── */}}
@@ -21,9 +21,9 @@
 
             {{/* Copy Link */}}
             <button
-                aria-label="复制链接"
+                aria-label="{{ i18n "share_copy_link" | default "Copy link" }}"
                 class="share-btn share-btn--copy"
-                data-tooltip="复制链接"
+                data-tooltip="{{ i18n "share_copy_link" | default "Copy link" }}"
                 onclick="shareCopyLink(this)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -76,9 +76,9 @@
             {{/* Web Share API */}}
             <button
                 id="share-webshare-btn"
-                aria-label="系统分享"
+                aria-label="{{ i18n "share_system" | default "Share" }}"
                 class="share-btn share-btn--webshare"
-                data-tooltip="分享"
+                data-tooltip="{{ i18n "share_system" | default "Share" }}"
                 onclick="shareWebShare('{{ $title | safeJS }}', '{{ $pageurl }}')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="18" cy="5" r="3"></circle>
@@ -92,10 +92,10 @@
             {{/* More button */}}
             <button
                 id="share-more-btn"
-                aria-label="更多分享选项"
+                aria-label="{{ i18n "share_more" | default "More" }}"
                 aria-expanded="false"
                 class="share-btn share-btn--more"
-                data-tooltip="更多"
+                data-tooltip="{{ i18n "share_more" | default "More" }}"
                 onclick="toggleShareMore(this)">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="5" r="1.5"></circle>
@@ -237,9 +237,9 @@
 
 {{/* Mobile bottom sheet */}}
 <div class="share-sheet-backdrop" id="share-sheet-backdrop" onclick="closeShareSheet()" aria-hidden="true"></div>
-<div class="share-sheet" id="share-sheet" role="dialog" aria-modal="true" aria-label="更多分享选项" aria-hidden="true">
+<div class="share-sheet" id="share-sheet" role="dialog" aria-modal="true" aria-label="{{ i18n "share_more" | default "More sharing options" }}" aria-hidden="true">
     <div class="share-sheet-handle"></div>
-    <div class="share-sheet-title">分享到</div>
+    <div class="share-sheet-title">{{ i18n "share_sheet_title" | default "Share to" }}</div>
     <div class="share-sheet-grid" id="share-sheet-grid">
         {{/* Sheet buttons are populated by JS from the secondary panel */}}
     </div>
@@ -290,11 +290,11 @@
         var url = window.location.href;
         clipboardCopy(url, function () {
             var orig = btn.dataset.tooltip;
-            btn.dataset.tooltip = '已复制！';
-            showShareToast('已复制链接');
+            btn.dataset.tooltip = '{{ i18n "share_copied" | default "Copied!" }}';
+            showShareToast('{{ i18n "share_copy_link_done" | default "Link copied" }}');
             setTimeout(function () { btn.dataset.tooltip = orig; }, 2000);
         }, function () {
-            showShareToast('复制失败，请手动复制地址栏链接');
+            showShareToast('{{ i18n "share_copy_fail" | default "Copy failed — please copy from the address bar" }}');
         });
     };
 
@@ -302,7 +302,7 @@
         e.preventDefault();
         var url = window.location.href;
         clipboardCopy(url, function () {
-            showShareToast('链接已复制，正在打开平台…');
+            showShareToast('{{ i18n "share_platform_copied_opening" | default "Link copied, opening platform…" }}');
             setTimeout(function () { window.open(platformUrl, '_blank', 'noopener,noreferrer'); }, 400);
         }, function () {
             window.open(platformUrl, '_blank', 'noopener,noreferrer');
@@ -349,8 +349,17 @@
         var secondary = document.getElementById('share-secondary');
         var expanded = secondary.classList.toggle('is-open');
         btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        btn.dataset.tooltip = expanded ? '收起' : '更多';
+        btn.setAttribute('data-tooltip', expanded ? '{{ i18n "share_collapse" | default "收起" }}' : '{{ i18n "share_more" | default "更多" }}');
         secondary.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+        if (expanded) {
+            // After expand animation finishes, allow tooltips to overflow
+            secondary.addEventListener('transitionend', function onEnd() {
+                secondary.style.overflow = 'visible';
+                secondary.removeEventListener('transitionend', onEnd);
+            });
+        } else {
+            secondary.style.overflow = '';
+        }
     };
 
     function openShareSheet() {
