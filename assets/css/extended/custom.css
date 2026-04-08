@@ -1565,102 +1565,205 @@ details summary,
 
 
 /* ===================================
-   RSS Subscription Card (for homepage/sidebar)
+   RSS Subscription Card — "Signal Tower" redesign
    =================================== */
 
-/* ── Subscribe Card ── */
+/* ── Pulse ring animation ── */
+@keyframes signal-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── Decorative background grid ── */
+.signal-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(14, 116, 144, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 116, 144, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.dark .signal-bg {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+}
+
+/* ── Card shell ── */
 .rss-subscribe-card {
-  display: grid;
-  gap: 0;
+  position: relative;
   margin: 0;
-  border-radius: 16px;
-  border: 1px solid rgba(14, 116, 144, 0.15);
-  background: linear-gradient(135deg, rgba(14, 116, 144, 0.03) 0%, rgba(20, 184, 166, 0.02) 100%);
+  border-radius: 18px;
+  border: 1.5px solid rgba(14, 116, 144, 0.32);
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.10) 0%, rgba(20, 184, 166, 0.07) 100%);
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .rss-subscribe-card:hover {
-  border-color: rgba(14, 116, 144, 0.28);
-  box-shadow: 0 4px 24px rgba(14, 116, 144, 0.08);
+  border-color: rgba(14, 116, 144, 0.35);
+  box-shadow: 0 8px 36px rgba(14, 116, 144, 0.12);
 }
 
 .dark .rss-subscribe-card {
-  border-color: rgba(34, 211, 238, 0.12);
-  background: linear-gradient(135deg, rgba(14, 116, 144, 0.06) 0%, rgba(20, 184, 166, 0.03) 100%);
+  border-color: rgba(34, 211, 238, 0.15);
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.09) 0%, rgba(20, 184, 166, 0.05) 100%);
 }
 
 .dark .rss-subscribe-card:hover {
-  border-color: rgba(34, 211, 238, 0.25);
-  box-shadow: 0 4px 24px rgba(14, 116, 144, 0.12);
+  border-color: rgba(34, 211, 238, 0.32);
+  box-shadow: 0 8px 36px rgba(14, 116, 144, 0.18);
 }
 
+/* ── Teaser: two-column layout ── */
 .rss-subscribe-card__teaser {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 24px 28px;
+  gap: 32px;
+  padding: 40px 48px;
+  z-index: 1;
 }
 
-.rss-subscribe-card__teaser-icon {
+/* ── Left column ── */
+.signal-left {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #0e7490, #0891b2);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(14, 116, 144, 0.25);
-}
-
-.rss-subscribe-card__teaser-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.rss-subscribe-card__teaser-text {
+  align-items: flex-start;
+  gap: 20px;
   flex: 1;
   min-width: 0;
 }
 
-.rss-subscribe-card__teaser-text h3 {
-  margin: 0 0 4px;
-  font-size: 1.05rem;
-  font-weight: 700 !important;
-  color: #0e7490;
-  letter-spacing: -0.01em;
-}
-
-.dark .rss-subscribe-card__teaser-text h3 {
-  color: #22d3ee;
-}
-
-.rss-subscribe-card__teaser-text p {
-  margin: 0;
-  font-size: 0.88rem;
-  color: var(--secondary);
-  line-height: 1.5;
-}
-
-.rss-subscribe-card__actions {
+/* ── Pulse icon ── */
+.signal-icon-wrap {
+  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  gap: 10px;
+  width: 56px;
+  height: 56px;
 }
 
+.signal-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #22d3ee;
+  animation: signal-ring 2.4s ease-out infinite;
+}
+
+.signal-pulse--2 { animation-delay: 0.8s; }
+.signal-pulse--3 { animation-delay: 1.6s; }
+
+.signal-icon {
+  position: relative;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  color: #0e7490;
+  filter: drop-shadow(0 0 6px rgba(14, 116, 144, 0.5));
+}
+
+.dark .signal-icon {
+  color: #22d3ee;
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.5));
+}
+
+.dark .signal-pulse {
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+/* ── Copy block ── */
+.signal-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.signal-headline {
+  margin: 0 0 6px !important;
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  color: #0c5e75 !important;
+}
+
+.dark .signal-headline {
+  color: #e0f7ff !important;
+}
+
+.signal-subtitle {
+  margin: 0 0 10px !important;
+  font-size: 0.9rem !important;
+  color: var(--secondary) !important;
+  line-height: 1.6 !important;
+}
+
+.signal-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px 3px 8px;
+  border-radius: 999px;
+  background: rgba(14, 116, 144, 0.08);
+  border: 1px solid rgba(14, 116, 144, 0.15);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0e7490;
+  letter-spacing: 0.01em;
+}
+
+.dark .signal-proof {
+  background: rgba(34, 211, 238, 0.08);
+  border-color: rgba(34, 211, 238, 0.18);
+  color: #67e8f9;
+}
+
+/* ── Right column ── */
+.signal-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+  width: 210px;
+}
+
+.signal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+}
+
+.signal-no-spam {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--secondary);
+  text-align: right;
+  opacity: 0.75;
+}
+
+/* ── Panel hidden state ── */
 .rss-subscribe-card__panel[hidden] {
   display: none !important;
 }
 
+/* ── Panel inner section ── */
 .rss-subscribe-card__section {
-  padding: 28px;
-  border-top: 1px solid rgba(14, 116, 144, 0.1);
+  position: relative;
+  z-index: 1;
+  padding: 28px 30px;
+  border-top: 1px solid rgba(14, 116, 144, 0.12);
 }
 
 .dark .rss-subscribe-card__section {
-  border-top-color: rgba(34, 211, 238, 0.08);
+  border-top-color: rgba(34, 211, 238, 0.1);
 }
 
 .rss-subscribe-card__section h3 {
@@ -1668,8 +1771,8 @@ details summary,
   align-items: center;
   gap: 8px;
   margin: 0 0 8px;
-  font-size: 1rem;
-  font-weight: 600 !important;
+  font-size: 1.05rem;
+  font-weight: 700 !important;
   letter-spacing: -0.01em;
   color: #0e7490;
 }
@@ -1683,10 +1786,11 @@ details summary,
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  margin-bottom: 4px;
 }
 
 .rss-subscribe-card__section p {
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   color: var(--secondary);
   font-size: 0.9rem;
   line-height: 1.65;
@@ -1702,10 +1806,11 @@ details summary,
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
 }
 
 .rss-subscribe-card__back:hover {
-  background: rgba(14, 116, 144, 0.15);
+  background: rgba(14, 116, 144, 0.16);
   color: #0c5e75;
 }
 
@@ -1715,10 +1820,11 @@ details summary,
 }
 
 .dark .rss-subscribe-card__back:hover {
-  background: rgba(34, 211, 238, 0.18);
+  background: rgba(34, 211, 238, 0.2);
   color: #67e8f9;
 }
 
+/* Kill PaperMod h3 decorators inside this card */
 .rss-subscribe-card h3::before {
   content: none !important;
   display: none !important;
@@ -1730,39 +1836,53 @@ details summary,
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 42px;
-  padding: 9px 20px;
+  min-height: 44px;
+  padding: 10px 22px;
   border: 0;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #0e7490, #0891b2);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);
   color: #fff;
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  box-shadow: 0 2px 10px rgba(14, 116, 144, 0.2);
+  box-shadow: 0 3px 14px rgba(14, 116, 144, 0.28);
   white-space: nowrap;
+}
+
+.rss-subscribe-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #0891b2 0%, #14b8a6 100%);
+  box-shadow: 0 8px 24px rgba(14, 116, 144, 0.35);
 }
 
 .rss-subscribe-button--ghost {
   background: transparent;
   color: #0e7490;
-  border: 1.5px solid rgba(14, 116, 144, 0.22);
+  border: 1.5px solid rgba(14, 116, 144, 0.28);
+  border-radius: 999px;
   box-shadow: none;
 }
 
 .rss-subscribe-button--ghost:hover {
   background: rgba(14, 116, 144, 0.08);
-  border-color: rgba(14, 116, 144, 0.35);
+  border-color: rgba(14, 116, 144, 0.45);
   color: #0c5e75;
   box-shadow: none;
+  transform: translateY(-1px);
 }
 
-.rss-subscribe-button:hover {
-  transform: translateY(-1px);
-  background: linear-gradient(135deg, #0891b2, #14b8a6);
-  box-shadow: 0 6px 20px rgba(14, 116, 144, 0.25);
+.dark .rss-subscribe-button--ghost {
+  color: #22d3ee;
+  border-color: rgba(34, 211, 238, 0.25);
+}
+
+.dark .rss-subscribe-button--ghost:hover {
+  background: rgba(34, 211, 238, 0.08);
+  border-color: rgba(34, 211, 238, 0.45);
+  color: #67e8f9;
 }
 
 .rss-subscribe-button svg {
@@ -1807,7 +1927,7 @@ details summary,
 .newsletter-form__select:focus {
   outline: none;
   border-color: #0e7490;
-  box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.12);
+  box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.14);
 }
 
 .newsletter-form__checkbox {
@@ -1847,29 +1967,11 @@ details summary,
   color: var(--secondary);
 }
 
-.newsletter-form__status[data-state="success"] {
-  color: #15803d;
-}
+.newsletter-form__status[data-state="success"] { color: #15803d; }
+.newsletter-form__status[data-state="warning"]  { color: #b45309; }
+.newsletter-form__status[data-state="error"]    { color: #b91c1c; }
 
-.newsletter-form__status[data-state="warning"] {
-  color: #b45309;
-}
-
-.newsletter-form__status[data-state="error"] {
-  color: #b91c1c;
-}
-
-.dark .rss-subscribe-button--ghost {
-  color: #22d3ee;
-  border-color: rgba(34, 211, 238, 0.22);
-}
-
-.dark .rss-subscribe-button--ghost:hover {
-  background: rgba(14, 116, 144, 0.14);
-  border-color: rgba(34, 211, 238, 0.38);
-  color: #67e8f9;
-}
-
+/* ── Desktop: wider newsletter form layout ── */
 @media (min-width: 860px) {
   .newsletter-form {
     grid-template-columns: minmax(0, 1.6fr) minmax(180px, 0.8fr);
@@ -1881,42 +1983,70 @@ details summary,
   .newsletter-form__submit {
     grid-column: 1 / -1;
   }
+
+  /* Two-column teaser on wider panels */
+  .signal-right {
+    min-width: 200px;
+  }
+
+  .signal-actions .rss-subscribe-button {
+    width: 100%;
+  }
 }
 
+/* ── Mobile: stack everything vertically ── */
 @media (max-width: 640px) {
   .rss-subscribe-card__teaser {
     flex-direction: column;
+    padding: 24px 20px;
+    gap: 20px;
+  }
+
+  .signal-left {
+    flex-direction: row;
     align-items: flex-start;
-    padding: 20px;
-  }
-
-  .rss-subscribe-card__teaser-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-  }
-
-  .rss-subscribe-card__teaser-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .rss-subscribe-card__actions {
     width: 100%;
+  }
+
+  .signal-icon-wrap {
+    width: 46px;
+    height: 46px;
+  }
+
+  .signal-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .signal-headline {
+    font-size: 1.3rem !important;
+  }
+
+  .signal-right {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .signal-actions {
     flex-direction: column;
   }
 
-  .rss-subscribe-card__actions .rss-subscribe-button {
+  .signal-actions .rss-subscribe-button {
     width: 100%;
   }
 
+  .signal-no-spam {
+    text-align: center;
+  }
+
   .rss-subscribe-card__section {
-    padding: 20px;
+    padding: 22px 20px;
   }
 
   .rss-subscribe-card__panel-head {
     align-items: flex-start;
     flex-direction: column;
+    gap: 10px;
   }
 }
 
@@ -5084,9 +5214,7 @@ a.profile_status {
 /* RSS Subscribe Card Integration */
 .rss-subscribe-card {
     margin-top: 2.5rem;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: none;
 }
 
 /* Expanded state for email signup trigger */
