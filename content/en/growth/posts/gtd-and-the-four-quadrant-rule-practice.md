@@ -7,6 +7,8 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
+aliases:
+  - /growth/posts/gtd-four-quadrant/
 author: ["Xinwei Xiong", "Me"]
 keywords: ["GTD", "Quadrant Method", "Time Management", "Productivity"]
 tags:

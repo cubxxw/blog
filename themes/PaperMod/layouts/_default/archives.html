@@ -27,7 +27,7 @@
   {{- end }}
 </header>
 
-{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSection }}
+{{- $pages := where site.RegularPages "Section" "in" site.Params.mainSections }}
 {{- if site.Params.ShowAllPagesInArchive }}
 {{- $pages = site.RegularPages }}
 {{- end }}
@@ -81,7 +81,7 @@
     <span class="stat-label">Total Articles</span>
   </div>
   <div class="stat-item">
-    <span class="stat-number">{{ len (where $pages "Type" "in" site.Params.mainSection | groupBy "Section") }}</span>
+    <span class="stat-number">{{ len ($pages.GroupBy "Section") }}</span>
     <span class="stat-label">Sections</span>
   </div>
 </div>

@@ -1,6 +1,6 @@
 {{- define "main" }}
 
-{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages := where site.RegularPages "Section" "in" site.Params.mainSections }}
 {{- if .Site.Params.ShowAllPagesInArchive }}
 {{- $pages = site.RegularPages }}
 {{- end }}

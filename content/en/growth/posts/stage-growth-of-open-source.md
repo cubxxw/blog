@@ -7,6 +7,8 @@ date: 2023-04-15T16:36:14+08:00
 draft : false
 showtoc: true
 tocopen: false
+aliases:
+  - /growth/posts/open-source-stage-growth/
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:

@@ -11,6 +11,8 @@ showtoc: false
 tocopen: false
 layout: travel
 type: page
+aliases:
+  - /travel/posts/travel-footprints/
 author: ["Xinwei Xiong"]
 keywords: ["Travel", "Adventure", "Digital Nomad", "Hiking", "World Travel", "Polarsteps"]
 tags:

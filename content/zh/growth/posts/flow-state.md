@@ -6,6 +6,8 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
+aliases:
+  - /zh/growth/posts/flow-state-guide/
 author: ["Xinwei Xiong", "Me"]
 keywords: ['心流状态', '生产力', '幸福', '专注', '心理学', '效率提升', '工作满意度', '情绪管理']
 tags: ['Personal Productivity', 'Focus', 'Happiness', 'Flow']
