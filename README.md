@@ -134,6 +134,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 
 <!-- My-Blog-EN:START -->
 - [Agent Identity: From Locke to OpenClaw](https://nsddd.top/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
+- [How to Maintain the Weight of Self in an Age When You Are No Longer Needed](https://nsddd.top/growth/posts/weight-of-self-in-ai-age/)
+- [March 2026 Thought Notes](https://nsddd.top/growth/posts/2026-03-thought-notes/)
 - [I'm Wandering, But I'm Not Lost — 2025-2026 Annual Review](https://nsddd.top/growth/posts/2025-annual-review/)
 - [AI Is Getting Smarter, But I'm Losing Myself](https://nsddd.top/growth/posts/ai-and-self-identity/)
 - [February 2026 Thought Notes | 2026 年 2 月思考笔记](https://nsddd.top/growth/posts/2026-02-thought-notes/)
@@ -213,6 +215,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/ai-technology/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/ai-technology/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
+- [Start Here](https://nsddd.top/start-here/)
+- [[No Title] - Post](https://nsddd.top/claude/)
 - [About](https://nsddd.top/about/)
 - [分类 · CATEGORIES](https://nsddd.top/categories/)
 <!-- My-Blog-EN:END -->
