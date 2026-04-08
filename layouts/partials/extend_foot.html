@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('pre code').forEach(function(codeBlock) {
     var pre = codeBlock.parentElement;
+    // Skip if theme already added a copy button
+    if (pre.querySelector('button')) return;
     var button = document.createElement('button');
     button.className = 'copy-code-btn';
     button.textContent = 'Copy';
