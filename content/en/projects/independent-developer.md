@@ -7,7 +7,7 @@ tags: ["AI开源", "项目学习"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+  Reflections on the journey of becoming an independent developer in the AI era.
 aliases:
   - /posts/ai-projects/independent-developer/
 ---
