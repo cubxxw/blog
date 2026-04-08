@@ -52,6 +52,12 @@ params:
   hidemeta: false
   hideSummary: false
 
+  mainSections:
+    - ai-technology
+    - growth
+    - projects
+  ShowAllPagesInArchive: false
+
   showtoc: true
   tocopen: true
   assets:

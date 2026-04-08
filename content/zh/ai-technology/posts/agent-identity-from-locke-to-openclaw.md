@@ -228,7 +228,7 @@ Harness 的设计需要回答五个问题：
 
 ---
 
-## 记忆的层次结构：从 Session 到 Gene Capsule
+记忆的层次结构：从 Session 到 Gene Capsule
 
 2026 年，Agent 记忆架构已经收敛到一个四层模型：
 

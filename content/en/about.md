@@ -2,8 +2,8 @@
 title: "About"
 menuTitle: "Personal User Manual"
 layout: "single"
-description: "Xinwei Xiong (cubxxw) - Personal User Manual v2025.1"
-summary: "Personal User Manual v2025.1"
+description: "Xinwei Xiong (cubxxw) - Personal User Manual v2026.1"
+summary: "Personal User Manual v2026.1"
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -17,7 +17,7 @@ cover:
 
 <div class="manual-container">
 
-# 📋 Personal User Manual v2025.1
+# 📋 Personal User Manual v2026.1
 
 <div class="product-header">
 <div class="product-info">
@@ -495,8 +495,8 @@ Product Thinking Interface
 </div>
 
 <div class="manual-signature">
-<p><strong>Thank you for choosing BEAR v2025.1 - Looking forward to our connection and collaboration!</strong></p>
-<p class="version-info">📋 Document Version: v2025.1.0 | Last Updated: January 2025</p>
+<p><strong>Thank you for choosing BEAR v2026.1 - Looking forward to our connection and collaboration!</strong></p>
+<p class="version-info">📋 Document Version: v2026.1.0 | Last Updated: January 2025</p>
 </div>
 </div>
 
@@ -1299,7 +1299,7 @@ class TechnicalManual {
 
   loadManual() {
     // Simulate manual loading process
-    console.log('📋 Technical Manual v2025.1 Loaded');
+    console.log('📋 Technical Manual v2026.1 Loaded');
     console.log('🔧 System Status: OPERATIONAL');
     console.log('📊 Module Status: 4/4 ACTIVE');
     console.log('🌐 Network Status: CONNECTED');
@@ -1307,7 +1307,7 @@ class TechnicalManual {
     // Add version info to console
     const version = {
       name: 'BEAR Personal Manual',
-      version: 'v2025.1.0',
+      version: 'v2026.1.0',
       build: Date.now(),
       modules: ['Thought Processor', 'Geographic Engine', 'AI Collaboration', 'Development Framework'],
       status: 'STABLE'
@@ -1327,7 +1327,7 @@ document.addEventListener('keydown', (event) => {
   // Ctrl/Cmd + I show system info
   if ((event.ctrlKey || event.metaKey) && event.key === 'i') {
     event.preventDefault();
-    console.log('📋 BEAR v2025.1 System Info:');
+    console.log('📋 BEAR v2026.1 System Info:');
     console.log('Memory: 12 months·9 countries·35+ cities');
     console.log('Storage: 400+ km hiking distance');
     console.log('Network: Global multi-point deployment');

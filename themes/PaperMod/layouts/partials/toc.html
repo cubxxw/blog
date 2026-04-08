@@ -20,7 +20,7 @@
 {{- end }}
 
 <!-- Reading Companion Panel (desktop ≥1500px) -->
-<aside class="reading-companion" aria-label="阅读助手">
+<aside class="reading-companion" aria-label="{{ i18n "reading_assistant_label" | default "Reading Assistant" }}">
 
   <!-- Tab Bar -->
   <div class="rc-tabs" role="tablist">
@@ -31,7 +31,7 @@
         <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
         <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
       </svg>
-      <span>大纲</span>
+      <span>{{ i18n "toc_label" | default "Outline" }}</span>
     </button>
     <button class="rc-tab" role="tab"
             aria-selected="false" aria-controls="rc-panel-ai"
@@ -41,7 +41,7 @@
         <circle cx="7.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
         <circle cx="16.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
       </svg>
-      <span>AI 伴读</span>
+      <span>{{ i18n "ai_companion_label" | default "AI Reading" }}</span>
     </button>
   </div>
 

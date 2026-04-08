@@ -52,3 +52,12 @@
 
 - id: filter_no_results
   translation: "No articles match your filters"
+
+- id: toc_label
+  translation: "Outline"
+
+- id: ai_companion_label
+  translation: "AI Reading"
+
+- id: reading_assistant_label
+  translation: "Reading Assistant"
