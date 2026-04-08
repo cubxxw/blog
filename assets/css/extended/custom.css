@@ -3366,13 +3366,26 @@ html {
     background: rgba(234, 88, 12, 0.08) !important;
 }
 
-/* Fix 4: Prevent navigation text wrapping on mobile (溢出修复) */
-/* 针对手机端导航栏文字被 word-break: break-word 拆分的问题 */
+/* Fix 4: Prevent navigation logo text wrapping on mobile (#149) */
+/* 针对手机端导航栏 Logo 文字竖排问题 */
+.logo a {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
 @media (max-width: 768px) {
     .logo a,
     .lang-switch a,
     .lang-switch li {
         white-space: nowrap !important;
+    }
+
+    .logo {
+        flex-shrink: 0 !important;
+        min-width: 0 !important;
     }
 }
 
@@ -5185,4 +5198,19 @@ a.profile_status {
         padding: 12px 20px;
         font-size: 0.95rem;
     }
+}
+
+/* ===================================
+   Code Block Copy Button (#153)
+   Always visible, not just on hover
+   =================================== */
+.copy-code {
+    display: block !important;
+    opacity: 0.55;
+    transition: opacity 0.15s ease;
+}
+
+div.highlight:hover .copy-code,
+pre:hover .copy-code {
+    opacity: 1;
 }

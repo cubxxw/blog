@@ -65,9 +65,9 @@
         {{ if $isZh }}一步一个脚印，记录旅途中的真实故事与深度感悟{{ else }}One step at a time — real stories and deep reflections from the road{{ end }}
       </p>
       <div class="tp-hero__actions">
-        <a href="{{ $polarsteps }}" target="_blank" rel="noopener" class="tp-btn tp-btn--primary">
+        <a href="#tp-map" class="tp-btn tp-btn--primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          {{ if $isZh }}在 Polarsteps 查看我的旅行地图 →{{ else }}View My Travel Map on Polarsteps →{{ end }}
+          {{ if $isZh }}查看旅行地图{{ else }}View Travel Map{{ end }}
         </a>
         <a href="#travel-stories" class="tp-btn tp-btn--ghost">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
@@ -83,38 +83,28 @@
     </div>
   </section>
 
-  <!-- ===== POLARSTEPS MAP ===== -->
-  <section class="tp-map">
+  <!-- ===== POLARSTEPS LINK (iframe blocked by Polarsteps CSP) ===== -->
+  <section id="tp-map" class="tp-map">
     <div class="tp-section-header">
       <div class="tp-section-header__eyebrow">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-        {{ if $isZh }}实时轨迹{{ else }}Live Tracking{{ end }}
+        {{ if $isZh }}旅行轨迹{{ else }}Travel Tracking{{ end }}
       </div>
       <h2 class="tp-section-header__title">{{ if $isZh }}我的旅行地图{{ else }}My Travel Map{{ end }}</h2>
-      <p class="tp-section-header__desc">{{ if $isZh }}在 Polarsteps 上追踪我的实时旅行路线{{ else }}Track my real-time travel routes on Polarsteps{{ end }}</p>
+      <p class="tp-section-header__desc">{{ if $isZh }}在 Polarsteps 上查看我的完整旅行路线与照片{{ else }}View my full travel routes and photos on Polarsteps{{ end }}</p>
     </div>
-    <div class="tp-map__frame-wrap">
-      <div class="tp-map__frame-deco tp-map__frame-deco--tl"></div>
-      <div class="tp-map__frame-deco tp-map__frame-deco--tr"></div>
-      <div class="tp-map__frame-deco tp-map__frame-deco--bl"></div>
-      <div class="tp-map__frame-deco tp-map__frame-deco--br"></div>
-      <iframe
-        src="{{ $polarsteps }}"
-        frameborder="0"
-        scrolling="no"
-        width="100%"
-        height="520"
-        allowfullscreen
-        loading="lazy"
-        title="{{ if $isZh }}Polarsteps 旅行地图{{ else }}Polarsteps Travel Map{{ end }}">
-      </iframe>
-      <div class="tp-map__fallback">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        {{ if $isZh }}
-          地图加载中… <a href="{{ $polarsteps }}" target="_blank" rel="noopener">直接访问 Polarsteps</a>
-        {{ else }}
-          Map loading… <a href="{{ $polarsteps }}" target="_blank" rel="noopener">Visit Polarsteps directly</a>
-        {{ end }}
+    <div class="tp-map__link-card">
+      <div class="tp-map__link-card-icon" aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="tp-map__link-card-body">
+        <p class="tp-map__link-card-desc">
+          {{ if $isZh }}追踪我的实时旅行路线、照片和故事，全部收录在 Polarsteps 上。{{ else }}Track my real-time travel routes, photos, and stories — all on Polarsteps.{{ end }}
+        </p>
+        <a href="{{ $polarsteps }}" target="_blank" rel="noopener" class="tp-btn tp-btn--primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          {{ if $isZh }}在 Polarsteps 查看旅行地图 →{{ else }}View Travel Map on Polarsteps →{{ end }}
+        </a>
       </div>
     </div>
   </section>
@@ -595,46 +585,40 @@
   margin: 0 0 72px;
 }
 
-.tp-map__frame-wrap {
-  position: relative;
-  border-radius: var(--tp-radius);
-  overflow: hidden;
-  box-shadow: var(--tp-shadow-lg);
-  border: 1px solid var(--tp-border);
-  background: var(--tp-surface2);
-}
-
-.tp-map__frame-deco {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  z-index: 3;
-  pointer-events: none;
-}
-.tp-map__frame-deco--tl { top: 12px; left: 12px; border-top: 2px solid var(--tp-ocean); border-left: 2px solid var(--tp-ocean); }
-.tp-map__frame-deco--tr { top: 12px; right: 12px; border-top: 2px solid var(--tp-ocean); border-right: 2px solid var(--tp-ocean); }
-.tp-map__frame-deco--bl { bottom: 12px; left: 12px; border-bottom: 2px solid var(--tp-ocean); border-left: 2px solid var(--tp-ocean); }
-.tp-map__frame-deco--br { bottom: 12px; right: 12px; border-bottom: 2px solid var(--tp-ocean); border-right: 2px solid var(--tp-ocean); }
-
-.tp-map__frame-wrap iframe {
-  display: block;
-  width: 100%;
-}
-
-.tp-map__fallback {
-  padding: 16px 24px;
-  text-align: center;
-  font-size: 13px;
-  color: var(--tp-muted);
-  background: var(--tp-surface);
+.tp-map__link-card {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  gap: 28px;
+  padding: 36px 40px;
+  border-radius: var(--tp-radius);
+  border: 1px solid var(--tp-border);
+  background: var(--tp-surface2);
+  box-shadow: var(--tp-shadow-md);
 }
-.tp-map__fallback a {
+
+.tp-map__link-card-icon {
+  flex-shrink: 0;
   color: var(--tp-ocean);
-  font-weight: 500;
+  opacity: 0.7;
+}
+
+.tp-map__link-card-body {
+  flex: 1;
+}
+
+.tp-map__link-card-desc {
+  margin: 0 0 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--tp-muted);
+}
+
+@media (max-width: 600px) {
+  .tp-map__link-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 24px;
+  }
 }
 
 /* ===== STATS ===== */
