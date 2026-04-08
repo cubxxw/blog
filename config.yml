@@ -130,6 +130,9 @@ outputs:
       - HTML
       - RSS
       - JSON # is necessary
+    section:
+      - HTML
+      - RSS
 
 # languageCode: en-us
 DefaultContentLanguage: en

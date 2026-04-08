@@ -11,7 +11,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - blog
+  - Blog
   - 年度回顾 (Annual Recap)
   - Travel
   - 个人成长 (Personal Growth)

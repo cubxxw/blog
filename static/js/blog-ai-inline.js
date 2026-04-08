@@ -88,7 +88,7 @@
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
       .replace(/```(\w*)\n([\s\S]*?)```/g, "<pre><code class='language-$1'>$2</code></pre>")
       .replace(/`([^`]+)`/g, "<code>$1</code>")
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline'>$1</a>")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' target='_blank' rel='noopener noreferrer' style='color:inherit;text-decoration:underline'>$1</a>")
       .replace(/^\s*[-*+]\s+(.*$)/gim, "<li>$1</li>")
       .replace(/\n/gim, "<br>");
 
