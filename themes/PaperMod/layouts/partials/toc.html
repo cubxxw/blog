@@ -48,7 +48,7 @@
   <!-- Panel 1: TOC -->
   <div class="rc-panel rc-panel--active" id="rc-panel-toc" role="tabpanel" aria-labelledby="rc-tab-toc">
     {{- if $has_headers }}
-    <nav class="toc-side__nav" aria-label="文章目录">
+    <nav class="toc-side__nav" aria-label="{{ i18n "toc" | default "Table of Contents" | safeHTML }}">
       <ul>
         {{- range $headers -}}
         {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
@@ -63,7 +63,7 @@
       </ul>
     </nav>
     {{- else }}
-    <p class="rc-empty">本文暂无目录</p>
+    <p class="rc-empty">{{ i18n "toc_empty" | default "No headings found" | safeHTML }}</p>
     {{- end }}
   </div>
 
@@ -73,34 +73,34 @@
 
       <!-- Quick Action Chips -->
       <div class="rc-ai-quick" id="rc-quick-actions">
-        <button class="rc-ai-chip" data-prompt="请用3-5句话总结这篇文章的核心观点和主要内容。">
-          📝 文章总结
+        <button class="rc-ai-chip" data-prompt="{{ i18n "ai_chip_summarize_prompt" | default "Summarize the key points of this article in 3–5 sentences." | safeHTML }}">
+          {{ i18n "ai_chip_summarize" | default "📝 Summary" | safeHTML }}
         </button>
-        <button class="rc-ai-chip" data-prompt="请列出这篇文章中最精彩的3个句子或论断，并简要说明为什么印象深刻。">
-          ✨ 精彩句子
+        <button class="rc-ai-chip" data-prompt="{{ i18n "ai_chip_highlights_prompt" | default "List the 3 most memorable sentences or arguments from this article, and briefly explain why they stand out." | safeHTML }}">
+          {{ i18n "ai_chip_highlights" | default "✨ Key Points" | safeHTML }}
         </button>
-        <button class="rc-ai-chip" data-prompt="基于这篇文章的主题和内容，推荐3个延伸阅读方向或相关话题，帮助读者深入了解。">
-          🔗 延伸阅读
+        <button class="rc-ai-chip" data-prompt="{{ i18n "ai_chip_further_reading_prompt" | default "Based on the theme and content of this article, suggest 3 directions for further reading or related topics." | safeHTML }}">
+          {{ i18n "ai_chip_further_reading" | default "🔗 Further Reading" | safeHTML }}
         </button>
       </div>
 
       <!-- Message History -->
-      <div class="rc-ai-messages" aria-live="polite" aria-label="对话记录"></div>
+      <div class="rc-ai-messages" aria-live="polite" aria-label="{{ i18n "ai_conversation_label" | default "Conversation history" | safeHTML }}"></div>
 
       <!-- Loading Indicator -->
-      <div class="rc-ai-loading" hidden aria-label="AI 思考中">
+      <div class="rc-ai-loading" hidden aria-label="{{ i18n "ai_thinking_label" | default "AI is thinking" | safeHTML }}">
         <span class="rc-ai-dot"></span>
         <span class="rc-ai-dot"></span>
         <span class="rc-ai-dot"></span>
-        <span class="rc-ai-loading-text">AI 思考中…</span>
+        <span class="rc-ai-loading-text">{{ i18n "ai_thinking_text" | default "AI is thinking…" | safeHTML }}</span>
       </div>
 
       <!-- Input Area -->
       <div class="rc-ai-input-area">
         <textarea class="rc-ai-textarea" rows="2"
-          placeholder="问我关于这篇文章的任何问题…"
-          aria-label="输入问题"></textarea>
-        <button class="rc-ai-send" aria-label="发送">
+          placeholder="{{ i18n "ai_input_placeholder" | default "Ask me anything about this article…" | safeHTML }}"
+          aria-label="{{ i18n "ai_input_label" | default "Enter your question" | safeHTML }}"></textarea>
+        <button class="rc-ai-send" aria-label="{{ i18n "ai_send_label" | default "Send" | safeHTML }}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"/>
             <polygon points="22 2 15 22 11 13 2 9 22 2"/>

@@ -1,6 +1,30 @@
 (function () {
   'use strict';
 
+  var language = ((document.documentElement.getAttribute('lang') || 'en').toLowerCase().indexOf('zh') === 0) ? 'zh' : 'en';
+  var messages = {
+    zh: {
+      notFound: 'AI 函数未找到，请确认 netlify dev 正在运行',
+      nonJsonPrefix: 'AI 服务返回非 JSON 响应',
+      requestFailed: '请求失败',
+      noAnswer: '（未收到回复）',
+      timeout: '请求超时，请稍后重试。',
+      genericError: '请求失败，请稍后重试。'
+    },
+    en: {
+      notFound: 'AI function not found. Make sure netlify dev is running.',
+      nonJsonPrefix: 'AI service returned a non-JSON response',
+      requestFailed: 'Request failed',
+      noAnswer: '(No answer received)',
+      timeout: 'Request timed out. Please try again.',
+      genericError: 'Request failed. Please try again.'
+    }
+  };
+
+  function t(key) {
+    return (messages[language] && messages[language][key]) || messages.en[key] || key;
+  }
+
   // ─── 1. Tab Switching ──────────────────────────────────────────────────────
   function initTabs() {
     var tabs = document.querySelectorAll('.reading-companion .rc-tab');
@@ -60,7 +84,7 @@
         if (currentActive) currentActive.link.classList.remove('toc-active');
         if (activeSection) {
           activeSection.link.classList.add('toc-active');
-          // 自动将激活项滚动到侧栏可视范围内
+          // Keep the active TOC item in view.
           var panel = document.getElementById('rc-panel-toc');
           if (panel) {
             var linkTop = activeSection.link.offsetTop;
@@ -137,7 +161,7 @@
       chip.addEventListener('click', function () {
         if (busy) return;
         textarea.value = chip.dataset.prompt;
-        quickRow.style.display = 'none'; // 用完后折叠
+        quickRow.style.display = 'none';
         send();
       });
     });
@@ -150,6 +174,16 @@
       }
     });
     sendBtn.addEventListener('click', send);
+
+    function createAbortSignal(ms) {
+      if (typeof AbortController === 'undefined') return { signal: undefined, cancel: function () {} };
+      var controller = new AbortController();
+      var timeoutId = setTimeout(function () { controller.abort(); }, ms);
+      return {
+        signal: controller.signal,
+        cancel: function () { clearTimeout(timeoutId); }
+      };
+    }
 
     function addMessage(text, role) {
       var div = document.createElement('div');
@@ -179,6 +213,7 @@
       textarea.value = '';
       textarea.style.height = 'auto';
       setLoading(true);
+      var request = createAbortSignal(25000);
 
       try {
         var res = await fetch(endpoint, {
@@ -186,12 +221,14 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             question: q,
-            language: 'zh',
+            language: language,
             articleTitle: getArticleTitle(),
             articleContent: getArticleText(),
             context: history,
           }),
+          signal: request.signal,
         });
+        request.cancel();
 
         var data;
         try {
@@ -200,15 +237,15 @@
           var rawText = '';
           try { rawText = await res.text(); } catch (_2) {}
           if (res.status === 404) {
-            throw new Error('AI 函数未找到，请确认 netlify dev 正在运行');
+            throw new Error(t('notFound'));
           }
-          throw new Error('AI 服务返回非 JSON 响应 (HTTP ' + res.status + ')' + (rawText ? '：' + rawText.slice(0, 120) : ''));
+          throw new Error(t('nonJsonPrefix') + ' (HTTP ' + res.status + ')' + (rawText ? ': ' + rawText.slice(0, 120) : ''));
         }
         setLoading(false);
 
-        if (!res.ok) throw new Error(data.error || '请求失败 (' + res.status + ')');
+        if (!res.ok) throw new Error(data.error || (t('requestFailed') + ' (' + res.status + ')'));
 
-        var answer = data.answer || '（未收到回复）';
+        var answer = data.answer || t('noAnswer');
         addMessage(answer, 'ai');
 
         history.push({ role: 'user', content: q });
@@ -216,9 +253,11 @@
         if (history.length > 20) history = history.slice(-20);
 
       } catch (err) {
+        request.cancel();
         var errMsg = addMessage('', 'ai');
+        var message = err && err.name === 'AbortError' ? t('timeout') : ((err && err.message) || t('genericError'));
         errMsg.innerHTML = '<span style="color:#ef4444">⚠ ' +
-          err.message.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
+          message.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
       } finally {
         setLoading(false);
         textarea.focus();

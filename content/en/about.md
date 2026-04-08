@@ -27,6 +27,8 @@ keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me"]
 
 # Hello, I'm Xinwei Xiong
 
+<p class="about-version">Profile Snapshot v2026.1</p>
+
 <div class="intro-lead">
 <p>I'm someone who builds <strong>bridges between technology and humanity</strong>.</p>
 <p>If you remember only three things about me, let them be: <strong>Authentic</strong>, <strong>Curious</strong>, <strong>Connector</strong>.</p>

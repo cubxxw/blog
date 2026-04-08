@@ -61,3 +61,63 @@
 
 - id: reading_assistant_label
   translation: "Reading Assistant"
+
+- id: toc_empty
+  translation: "No headings found"
+
+- id: ai_chip_summarize
+  translation: "📝 Summary"
+
+- id: ai_chip_highlights
+  translation: "✨ Key Points"
+
+- id: ai_chip_further_reading
+  translation: "🔗 Further Reading"
+
+- id: ai_chip_summarize_prompt
+  translation: "Summarize the key points of this article in 3–5 sentences."
+
+- id: ai_chip_highlights_prompt
+  translation: "List the 3 most memorable sentences or arguments from this article, and briefly explain why they stand out."
+
+- id: ai_chip_further_reading_prompt
+  translation: "Based on the theme and content of this article, suggest 3 directions for further reading or related topics to help the reader deepen their understanding."
+
+- id: ai_conversation_label
+  translation: "Conversation history"
+
+- id: ai_thinking_label
+  translation: "AI is thinking"
+
+- id: ai_thinking_text
+  translation: "AI is thinking…"
+
+- id: ai_input_placeholder
+  translation: "Ask me anything about this article…"
+
+- id: ai_input_label
+  translation: "Enter your question"
+
+- id: ai_send_label
+  translation: "Send"
+
+- id: sidebar_ai_projects_title
+  translation: "🤖 AI Open Source Projects"
+
+- id: sidebar_ai_projects_desc
+  translation: "Deep dives into AI open source projects — learning notes and practical experience."
+
+- id: sidebar_ai_projects_explore
+  translation: "🚀 Explore AI Projects"
+
+- id: sidebar_ai_tag_llm
+  translation: "LLM Models"
+
+- id: sidebar_ai_tag_vector_db
+  translation: "Vector Database"
+
+- id: sidebar_ai_tag_framework
+  translation: "AI Framework"
+
+- id: sidebar_ai_tag_toolchain
+  translation: "AI Toolchain"

@@ -1,15 +1,22 @@
 <!-- AI 项目学习导航 -->
 <div class="widget-ai-projects">
-  <h3>🤖 AI 开源项目学习</h3>
-  <p>深入解读 AI 开源项目，分享学习心得与实践经验。</p>
+  <h3>{{ i18n "sidebar_ai_projects_title" | default "🤖 AI Open Source Projects" | safeHTML }}</h3>
+  <p>{{ i18n "sidebar_ai_projects_desc" | default "Deep dives into AI open source projects — learning notes and practical experience." | safeHTML }}</p>
   <a href="{{ "/projects/" | relLangURL }}" class="ai-project-button">
-    🚀 探索 AI 项目
+    {{ i18n "sidebar_ai_projects_explore" | default "🚀 Explore AI Projects" | safeHTML }}
   </a>
+  {{- $isZh := eq site.Language.Lang "zh" -}}
   <ul>
-    <li><a href="{{ "/tags/llm/" | relLangURL }}">LLM 模型</a></li>
-    <li><a href="{{ "/tags/向量数据库/" | relLangURL }}">向量数据库</a></li>
-    <li><a href="{{ "/tags/ai 框架/" | relLangURL }}">AI 框架</a></li>
-    <li><a href="{{ "/tags/ai 工具链/" | relLangURL }}">AI 工具链</a></li>
+    <li><a href="{{ "/tags/llm/" | relLangURL }}">{{ i18n "sidebar_ai_tag_llm" | default "LLM Models" | safeHTML }}</a></li>
+    {{- if $isZh }}
+    <li><a href="{{ "/tags/向量数据库/" | relLangURL }}">{{ i18n "sidebar_ai_tag_vector_db" | default "Vector Database" | safeHTML }}</a></li>
+    <li><a href="{{ "/tags/ai 框架/" | relLangURL }}">{{ i18n "sidebar_ai_tag_framework" | default "AI Framework" | safeHTML }}</a></li>
+    <li><a href="{{ "/tags/ai 工具链/" | relLangURL }}">{{ i18n "sidebar_ai_tag_toolchain" | default "AI Toolchain" | safeHTML }}</a></li>
+    {{- else }}
+    <li><a href="{{ "/tags/open-source/" | relLangURL }}">{{ i18n "sidebar_ai_tag_vector_db" | default "Vector Database" | safeHTML }}</a></li>
+    <li><a href="{{ "/tags/ai/" | relLangURL }}">{{ i18n "sidebar_ai_tag_framework" | default "AI Framework" | safeHTML }}</a></li>
+    <li><a href="{{ "/tags/open-source/" | relLangURL }}">{{ i18n "sidebar_ai_tag_toolchain" | default "AI Toolchain" | safeHTML }}</a></li>
+    {{- end }}
   </ul>
 </div>
 
