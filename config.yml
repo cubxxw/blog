@@ -220,9 +220,9 @@ languages:
           - name: AI Projects
             url: /projects/
           - name: Archives
-            url: /archives/
+            url: /en/archives/
           - name: Categories
-            url: /categories/
+            url: /en/categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/en"
           Text: "Suggest Changes" # edit text
@@ -304,9 +304,9 @@ languages:
           - name: AI 开源项目
             url: /projects/
           - name: 归档
-            url: /archives/
+            url: /zh/archives/
           - name: 分类
-            url: /categories/
+            url: /zh/categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/zh"
           Text: "Suggest Changes" # edit text

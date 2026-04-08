@@ -4991,6 +4991,8 @@ a.profile_status {
     text-decoration: none;
     transition: all 0.18s ease;
     letter-spacing: 0.02em;
+    cursor: pointer;
+    outline: none;
 }
 
 .profile_quick_link:hover {
@@ -5003,6 +5005,35 @@ a.profile_status {
 .profile_quick_link__icon {
     font-size: 14px;
     line-height: 1;
+}
+
+/* Nav Tags (compact button row) */
+.profile_nav_tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.profile_nav_tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--secondary);
+    font: 500 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.profile_nav_tag:hover {
+    color: var(--profile-accent);
+    border-color: color-mix(in srgb, var(--profile-accent) 40%, var(--border));
+    background: color-mix(in srgb, var(--profile-accent) 6%, transparent);
 }
 
 /* Category Panels */

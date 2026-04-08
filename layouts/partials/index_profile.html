@@ -32,18 +32,18 @@
                         <span>{{ $statusText }}</span>
                     </a>
                     <div class="profile_quick_links">
-                        <a class="profile_quick_link" href="{{ "/about/" | relLangURL }}">
+                        <button class="profile_quick_link" type="button" onclick="triggerQuickAsk(this)" data-question="{{ if eq site.Language.Lang "zh" }}你是谁？介绍一下你自己，附上关于页面链接{{ else }}Who are you? Introduce yourself with a link to your about page{{ end }}" data-page="{{ "/about/" | absLangURL }}">
                             <span class="profile_quick_link__icon">👤</span>
                             <span>{{ $aboutMeText }}</span>
-                        </a>
-                        <a class="profile_quick_link" href="#latest-posts">
+                        </button>
+                        <button class="profile_quick_link" type="button" onclick="triggerQuickAsk(this)" data-question="{{ if eq site.Language.Lang "zh" }}你最近写了什么文章？给我推荐几篇，附上链接{{ else }}What have you written recently? Recommend some articles with links{{ end }}" data-page="{{ "#latest-posts" }}">
                             <span class="profile_quick_link__icon">📝</span>
                             <span>{{ $latestPostsText }}</span>
-                        </a>
-                        <a class="profile_quick_link" href="#start-here">
+                        </button>
+                        <button class="profile_quick_link" type="button" onclick="triggerQuickAsk(this)" data-question="{{ if eq site.Language.Lang "zh" }}新来的读者应该从哪里开始读？推荐入门文章，附上链接{{ else }}Where should a new reader start? Recommend entry-point articles with links{{ end }}" data-page="{{ "#start-here" }}">
                             <span class="profile_quick_link__icon">🚀</span>
                             <span>{{ $startHereText }}</span>
-                        </a>
+                        </button>
                     </div>
                     <button class="profile_chat_trigger" id="chatTrigger" onclick="toggleChatPanel()" type="button">
                         <span class="profile_chat_trigger__icon">
@@ -94,21 +94,9 @@
                 {{- partial "social_icons.html" site.Params.socialIcons -}}
 
                 {{- with .buttons }}
-                <div class="buttons">
+                <div class="profile_nav_tags">
                     {{- range . }}
-                    <a class="button" href="{{ trim .url " " }}" rel="noopener noreferrer" title="{{ .name }}">
-                        <span class="button-inner">
-                            {{ .name }}
-                            {{- if (findRE "://" .url) }}&nbsp;
-                            <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="14" width="14">
-                                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                                <path d="M15 3h6v6"></path>
-                                <path d="M10 14L21 3"></path>
-                            </svg>
-                            {{- end }}
-                        </span>
-                    </a>
+                    <a class="profile_nav_tag" href="{{ trim .url " " }}" rel="noopener noreferrer" title="{{ .name }}">{{ .name }}</a>
                     {{- end }}
                 </div>
                 {{- end }}
@@ -367,6 +355,21 @@
                         document.getElementById('chatInput').focus();
                     }, 300);
                 }
+            };
+
+            // Quick ask from nav buttons
+            window.triggerQuickAsk = function(btn) {
+                var question = btn.getAttribute('data-question');
+                if (!question) return;
+                var panel = document.getElementById('chatPanel');
+                var chevron = document.querySelector('.profile_chat_trigger__chevron');
+                if (!panel.classList.contains('open')) {
+                    panel.classList.add('open');
+                    chevron && chevron.classList.add('open');
+                }
+                var input = document.getElementById('chatInput');
+                if (input) input.value = question;
+                setTimeout(function() { handleChatSend(); }, 200);
             };
 
             // Auto-resize textarea
