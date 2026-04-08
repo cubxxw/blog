@@ -46,7 +46,22 @@ keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me"]
 
 ## 📍 Where I Come From
 
-I was born in China in 2001. Like most people, I followed the beaten path for a long time — school, exams, university, learning technology.
+I was born in China in 2001 (currently <span id="age-counter">—</span> years old). Like most people, I followed the beaten path for a long time — school, exams, university, learning technology.
+
+<script>
+(function() {
+  function calcAge() {
+    var birth = new Date(2001, 2, 15); // 2001-03-15 (month is 0-indexed)
+    var now = new Date();
+    var age = now.getFullYear() - birth.getFullYear();
+    var m = now.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+    return age;
+  }
+  var el = document.getElementById('age-counter');
+  if (el) el.textContent = calcAge();
+})();
+</script>
 
 But the real turning point came in **2024**. That year, I made a decision: **step out of my comfort zone and rediscover the world with footsteps and curiosity**.
 

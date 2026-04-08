@@ -83,6 +83,9 @@
       status.textContent = t(language, "loading");
       answer.textContent = "";
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25000);
+
       try {
         const response = await fetch(endpoint, {
           method: "POST",
@@ -93,7 +96,9 @@
             question,
             language,
           }),
+          signal: controller.signal,
         });
+        clearTimeout(timeoutId);
         const data = await response.json();
 
         if (!response.ok) {
@@ -103,7 +108,11 @@
         answer.textContent = data.answer || "";
         status.textContent = data.model ? `Model: ${data.model}` : "";
       } catch (error) {
-        status.textContent = `${t(language, "error")} ${error.message}`;
+        clearTimeout(timeoutId);
+        const msg = error.name === "AbortError"
+          ? (language === "zh" ? "请求超时，请稍后重试。" : "Request timed out. Please try again.")
+          : `${t(language, "error")} ${error.message}`;
+        status.textContent = msg;
       } finally {
         submit.disabled = false;
       }

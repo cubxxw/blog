@@ -46,7 +46,22 @@ keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
 
 ## 📍 我从哪里来
 
-2001 年，我出生于中国。和大多数人一样，我沿着既定的轨道走了很久 —— 读书、考试、进入大学、学习技术。
+2001 年，我出生于中国（今年 <span id="age-counter">—</span> 岁）。和大多数人一样，我沿着既定的轨道走了很久 —— 读书、考试、进入大学、学习技术。
+
+<script>
+(function() {
+  function calcAge() {
+    var birth = new Date(2001, 2, 15); // 2001-03-15 (month is 0-indexed)
+    var now = new Date();
+    var age = now.getFullYear() - birth.getFullYear();
+    var m = now.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+    return age;
+  }
+  var el = document.getElementById('age-counter');
+  if (el) el.textContent = calcAge();
+})();
+</script>
 
 但真正的转折点发生在 **2024 年**。那一年，我做了一个决定：**走出舒适区，用脚步和好奇心重新认识这个世界**。
 

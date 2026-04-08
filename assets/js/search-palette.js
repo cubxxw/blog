@@ -26,7 +26,8 @@
     document.body.classList.add('search-palette-open');
     isOpen = true;
     triggers.forEach(t => t.setAttribute('aria-expanded', 'true'));
-    setTimeout(() => input.focus(), 10);
+    // Delay longer than the 0.18s palette-in animation so focus lands reliably
+    setTimeout(() => input && input.focus(), 100);
     // Lazy load search data
     if (!fuse) loadSearchData();
   }
@@ -164,6 +165,9 @@
     // Add user question to history
     addToHistory('user', query);
 
+    const aiController = new AbortController();
+    const aiTimeoutId = setTimeout(() => aiController.abort(), 25000);
+
     try {
       const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       const lang = document.documentElement.lang || 'en';
@@ -175,8 +179,11 @@
           language: lang,
           context: conversationHistory, // Pass conversation history
           searchContext: context // Pass current search results as context
-        })
+        }),
+        signal: aiController.signal,
       });
+
+      clearTimeout(aiTimeoutId);
 
       if (!response.ok) {
         if (response.status === 404 && isLocalhost) {
@@ -198,10 +205,13 @@
       // Attach event listeners to follow-up elements
       attachFollowUpListeners();
     } catch (err) {
+      clearTimeout(aiTimeoutId);
       console.error('AI Error:', err);
       let errorMsg = 'Sorry, failed to get AI answer. Please try again later.';
 
-      if (err.message === 'LOCAL_DEV_404') {
+      if (err.name === 'AbortError') {
+        errorMsg = 'Request timed out. Please try again.';
+      } else if (err.message === 'LOCAL_DEV_404') {
         errorMsg = `<strong>Local Dev Mode Detected</strong><br>Hugo server does not host AI functions. Please run <code>netlify dev</code> to test AI features locally.`;
       } else if (err.message.includes('Missing DASHSCOPE_API_KEY')) {
         errorMsg = `<strong>Configuration Error</strong><br>The AI service is missing an API key. Please check your Netlify environment variables.`;
