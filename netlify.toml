@@ -26,3 +26,57 @@
   HUGO_ENABLEGITINFO = "true"
   DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
   DASHSCOPE_MODEL = "qwen-turbo"
+
+# ---------------------------------------------------------------------------
+# Cache-Control headers — fixes #146 (CSS payload) and #147 (TTFB via CDN)
+# ---------------------------------------------------------------------------
+# Hugo fingerprints stylesheet + highlight/search JS with a SHA-256 hash in the
+# filename (e.g. stylesheet.f0a0f1c3….css).  These are immutable — 1-year TTL.
+# Static JS in /js/ is NOT fingerprinted, so it gets a shorter TTL.
+# HTML pages get s-maxage=600 so the CDN edge caches them; Netlify auto-purges
+# on every deploy, so stale HTML is never a problem in practice.
+
+# Fingerprinted CSS and JS live under /assets/  (Hugo asset pipeline output).
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Non-fingerprinted static JS (/js/*.js) — 1 hour, revalidate after 24 h.
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+# Static images and favicons.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# HTML pages: CDN edge caches for 10 min (s-maxage) while the browser always
+# revalidates (max-age=0).  stale-while-revalidate lets the edge serve
+# a cached copy and refresh in the background — cuts TTFB for repeat visits.
+# Netlify also purges the CDN cache on every deploy, so there is no stale risk.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, s-maxage=600, stale-while-revalidate=86400"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
