@@ -11,24 +11,10 @@
             "id": "405f6c5f66a8be97",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "content/zh/posts/2025-annual-review.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "2025-annual-review"
+              "title": "New tab"
             }
           }
         ]
@@ -233,17 +219,27 @@
   },
   "active": "a1d1c86e0d989c23",
   "lastOpenFiles": [
-    "public/zh/tags/日本-japan/page/1/index.html",
-    "public/zh/tags/日本-japan/page/1",
-    "public/zh/tags/日本-japan/page",
-    "public/zh/tags/日本-japan/index.xml",
-    "public/zh/tags/日本-japan/index.html",
-    "public/zh/tags/日本-japan",
-    "public/zh/posts/japan-travel-2025/index.html",
-    "public/zh/posts/japan-travel-2025",
-    "public/zh/categories/旅行-travel/page/1/index.html",
-    "public/zh/categories/旅行-travel/page/1",
-    "public/zh/categories/旅行-travel/page",
+    "autofix.sh",
+    "layouts/partials/share_icons.html",
+    "assets/css/extended/share-buttons.css",
+    "public/assets/css/stylesheet.900f404b08fc8d1ff2303002d248af4a4f5aee2d45df9249e1328f3d665614a5.css",
+    "public/assets/css/stylesheet.62c035291e0e5bfc48b4a9e358faadcfeb43c442be21e426f0836161ddbeabfe.css",
+    "public/zh/categories/ai--technology/index.xml",
+    "public/zh/tags/web-development/page/1/index.html",
+    "public/zh/tags/web-development/page/1",
+    "public/zh/tags/web-development/page",
+    "public/zh/tags/web-development/index.xml",
+    "public/zh/tags/web-development/index.html",
+    "docs/url-slug-guidelines.md",
+    "docs/TAG_GOVERNANCE.md",
+    "content/zh/start-here.md",
+    "content/zh/projects/ai-gateway.md",
+    "content/en/start-here.md",
+    "content/en/projects/ai-gateway.md",
+    "content/CATEGORIES.md",
+    "content/zh/projects/ai-getway.md",
+    "content/en/projects/ai-getway.md",
+    "TAGS.md",
     "content/zh/posts/japan-travel-2025.md",
     "content/zh/growth/_index.md",
     "content/zh/technology/_index.md",
@@ -260,13 +256,6 @@
     "content/zh/posts/2025-12-thought-notes.md",
     "content/en/posts/2026-02-thought-notes.md",
     "content/en/posts/2026-01-thought-notes.md",
-    "content/en/posts/2025-12-thought-notes.md",
-    "未命名 4.md",
-    "欢迎.md",
-    "未命名 3.md",
-    "未命名 1.md",
-    "2026-02-26.md",
-    "未命名 2.md",
-    "未命名.md"
+    "content/en/posts/2025-12-thought-notes.md"
   ]
 }
