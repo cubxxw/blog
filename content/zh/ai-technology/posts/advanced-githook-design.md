@@ -183,7 +183,7 @@ tocopen: false
 author: ["熊鑫伟", "Me"]
 keywords: []
 tags: ["OpenIM", "Management", "Git", "Open Source"]
-  - blog
+  - Blog
   - openim
   - management
   - zh

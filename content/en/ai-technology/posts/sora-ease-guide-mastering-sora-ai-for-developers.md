@@ -12,7 +12,7 @@ keywords: ["Sora AI", "Development Guide", "AI Modeling", "OpenAI", "Developer T
 tags:
   - Blog
   - sora
-  - ai
+  - AI
   - github
 categories:
   - AI & Technology
