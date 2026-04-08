@@ -148,7 +148,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [AI Is Getting Smarter, But I'm Losing Myself](https://nsddd.top/growth/posts/ai-and-self-identity/)
 - [February 2026 Thought Notes](https://nsddd.top/growth/posts/2026-02-thought-notes/)
 - [January 2026 Thought Notes](https://nsddd.top/growth/posts/2026-01-thought-notes/)
-- [December 2025 Thought Notes | 2025 年 12 月思考笔记](https://nsddd.top/growth/posts/2025-12-thought-notes/)
+- [December 2025 Thought Notes](https://nsddd.top/growth/posts/2025-12-thought-notes/)
 - [2025 November Thought Notes](https://nsddd.top/growth/posts/2025-11-thought-notes/)
 - [2025 August Thought Notes](https://nsddd.top/growth/posts/2025-08-thought-notes/)
 - [2025 July Thought Notes](https://nsddd.top/growth/posts/2025-07-thought-notes/)
