@@ -7,6 +7,8 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
+aliases:
+  - /zh/growth/posts/gtd-four-quadrant/
 author: ["Xinwei Xiong", "Me"]
 keywords: ['GTD', '四象限法则', '时间管理', '生产力']
 tags: ['GTD', 'Time Management', 'Productivity Enhancement']

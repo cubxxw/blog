@@ -5,6 +5,8 @@ draft: false
 showtoc: true
 tocopen: true
 type: posts
+aliases:
+  - /growth/posts/2026-03-27-lhasa-slow-and-heavy/
 author: ["Xinwei Xiong"]
 keywords: ["拉萨", "西藏", "旅行见闻", "深度思考", "信仰", "纳木错", "哲蚌寺"]
 tags:

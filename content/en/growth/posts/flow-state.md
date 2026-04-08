@@ -7,6 +7,8 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
+aliases:
+  - /growth/posts/flow-state-guide/
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Flow State", "Productivity", "Happiness", "Focus"]
 tags:
