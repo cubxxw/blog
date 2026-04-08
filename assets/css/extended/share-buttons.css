@@ -1,109 +1,139 @@
-/* === Share Buttons === */
+/* ===================================================================
+   Share Buttons — clean, polished, Medium/Substack-inspired
+   =================================================================== */
 
+/* ── Section wrapper ── */
 .share-section {
-    margin: 28px 0 8px;
+    margin: 32px 0 12px;
 }
 
 .share-label {
-    font-size: 13px;
-    color: var(--secondary);
-    margin-bottom: 10px;
-    letter-spacing: 0.03em;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-weight: 500;
+    color: var(--secondary);
+    margin-bottom: 12px;
 }
 
-.share-buttons {
-    padding-inline-start: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-/* Extra buttons hidden until expanded */
-.share-btn--extra {
-    display: none;
-}
-.share-buttons.expanded .share-btn--extra {
+/* ── Container card ── */
+.share-container {
     display: inline-flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    overflow: hidden;
 }
 
+/* ── Primary row ── */
+.share-primary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+/* ── Secondary expand panel ── */
+.share-secondary {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.share-secondary.is-open {
+    grid-template-rows: 1fr;
+}
+
+.share-secondary-inner {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    /* extra padding revealed only when open */
+    padding-top: 0;
+    transition: padding-top 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.share-secondary.is-open .share-secondary-inner {
+    padding-top: 8px;
+}
+
+/* ── Base button ── */
 .share-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-    border-radius: var(--radius);
-    background: var(--code-bg);
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: transparent;
     color: var(--secondary);
-    border: 1px solid var(--border);
+    border: 1px solid transparent;
     cursor: pointer;
-    transition: all 0.2s ease;
     position: relative;
     text-decoration: none;
     padding: 0;
     font-family: inherit;
     font-size: inherit;
+    /* Color-only transition — no lift, no shadow */
+    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
 }
 
 .share-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
+    /* inherit stroke/fill from color */
 }
 
+/* Hover: unified brand-neutral style */
 .share-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    border-color: var(--secondary);
+    color: var(--primary);
+    background-color: var(--entry);
+    border-color: var(--border);
 }
 
-.dark .share-btn:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
+/* Active: slight dim */
 .share-btn:active {
-    transform: translateY(0);
+    opacity: 0.75;
 }
 
-/* Per-platform brand hover colors */
-.share-btn--twitter:hover     { color: #000; }
-.dark .share-btn--twitter:hover { color: #e7e9ea; }
-.share-btn--linkedin:hover    { color: #0a66c2; }
-.share-btn--reddit:hover      { color: #ff4500; }
-.share-btn--facebook:hover    { color: #1877f2; }
-.share-btn--whatsapp:hover    { color: #25d366; }
-.share-btn--telegram:hover    { color: #0088cc; }
-.share-btn--ycombinator:hover { color: #ff6600; }
-.share-btn--bilibili:hover    { color: #00a1d6; }
-.share-btn--zhihu:hover       { color: #0084ff; }
-.share-btn--weibo:hover       { color: #e6162d; }
-.share-btn--xiaohongshu:hover { color: #fe2c55; }
-.share-btn--email:hover       { color: #ea4335; }
-.share-btn--copy:hover        { color: var(--primary); }
-.share-btn--webshare:hover    { color: var(--primary); }
-.share-btn--more:hover        { color: var(--primary); }
+/* More button rotates when open */
+.share-btn--more svg {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#share-secondary.is-open ~ .share-primary .share-btn--more svg,
+.share-btn--more[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
 
-/* CSS tooltips */
+/* Web share hidden until JS enables */
+.share-btn--webshare {
+    display: none;
+}
+
+/* ── CSS Tooltips ── */
 .share-btn::before {
     content: attr(data-tooltip);
     position: absolute;
     bottom: calc(100% + 8px);
     left: 50%;
-    transform: translateX(-50%) scale(0.85);
+    transform: translateX(-50%) translateY(4px);
     background: var(--primary);
     color: var(--theme);
-    padding: 4px 10px;
+    padding: 4px 9px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 500;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.15s ease, transform 0.15s ease;
-    z-index: 100;
+    transition: opacity 150ms ease, transform 150ms ease;
+    z-index: 200;
 }
 
 .share-btn::after {
@@ -115,28 +145,35 @@
     border: 4px solid transparent;
     border-top-color: var(--primary);
     opacity: 0;
-    transition: opacity 0.15s ease;
+    transition: opacity 150ms ease;
     pointer-events: none;
-    z-index: 100;
+    z-index: 200;
 }
 
-.share-btn:hover::before { opacity: 1; transform: translateX(-50%) scale(1); }
-.share-btn:hover::after  { opacity: 1; }
+.share-btn:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.share-btn:hover::after {
+    opacity: 1;
+}
 
-/* Toast */
+/* ── Copy toast ── */
 .share-toast {
     position: fixed;
-    bottom: 28px;
+    bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--primary);
     color: var(--theme);
     padding: 10px 20px;
-    border-radius: var(--radius);
+    border-radius: 8px;
     font-size: 14px;
+    font-weight: 500;
     z-index: 9999;
     pointer-events: none;
-    animation: shareToastIn 0.2s ease, shareToastOut 0.3s ease 2s forwards;
+    animation: shareToastIn 0.2s ease forwards,
+               shareToastOut 0.3s ease 2s forwards;
 }
 
 @keyframes shareToastIn {
@@ -149,14 +186,135 @@
     to   { opacity: 0; }
 }
 
-/* Web share button hidden until JS enables it */
-.share-btn--webshare {
+/* ── Mobile bottom sheet ── */
+.share-sheet-backdrop {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 300ms ease;
 }
 
-/* Mobile */
+.share-sheet-backdrop.is-open {
+    opacity: 1;
+}
+
+.share-sheet {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--theme);
+    border-top: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
+    padding: 12px 20px 32px;
+    z-index: 1001;
+    transform: translateY(100%);
+    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.share-sheet.is-open {
+    transform: translateY(0);
+}
+
+.share-sheet-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 0 auto 16px;
+}
+
+.share-sheet-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.share-sheet-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px 8px;
+}
+
+.share-sheet-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.share-sheet-item .share-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--code-bg);
+    border-color: var(--border);
+    color: var(--secondary);
+}
+
+.share-sheet-item .share-btn:hover {
+    color: var(--primary);
+    background: var(--entry);
+}
+
+.share-sheet-item span {
+    font-size: 10px;
+    color: var(--secondary);
+    text-align: center;
+    line-height: 1.2;
+    max-width: 56px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Responsive ── */
 @media (max-width: 640px) {
-    .share-buttons { gap: 7px; }
-    .share-btn { width: 36px; height: 36px; }
-    .share-btn svg { width: 17px; height: 17px; }
+    .share-container {
+        /* Full width on mobile */
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .share-primary {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .share-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .share-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Tooltips off on mobile (touch has no hover) */
+    .share-btn::before,
+    .share-btn::after {
+        display: none;
+    }
+
+    /* Show bottom sheet elements on mobile */
+    .share-sheet-backdrop,
+    .share-sheet {
+        display: block;
+    }
+
+    /* Hide desktop expand panel on mobile */
+    .share-secondary {
+        display: none;
+    }
 }
