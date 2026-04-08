@@ -11,6 +11,7 @@
   const triggers = document.querySelectorAll('[data-search-trigger], .nav-search-trigger');
   const closeBtn = palette?.querySelector('.search-palette__close');
   const backdrop = palette?.querySelector('.search-palette__backdrop');
+  const fullLink = document.getElementById('search-full-link');
 
   if (!palette) return;
 
@@ -266,8 +267,16 @@
       .replace(/\n/g, '<br>');
   }
 
+  // Update Full Search link with current query
+  function updateFullSearchLink(query) {
+    if (!fullLink) return;
+    const baseHref = fullLink.getAttribute('href').split('?')[0];
+    fullLink.href = query.trim() ? `${baseHref}?q=${encodeURIComponent(query.trim())}` : baseHref;
+  }
+
   // Execute search
   function doSearch(query) {
+    updateFullSearchLink(query);
     if (!fuse || !query.trim()) {
       resultsList.innerHTML = '';
       resultCount.textContent = '0';

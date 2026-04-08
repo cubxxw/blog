@@ -26,8 +26,8 @@
           <span class="search-palette__ai-trigger-icon">🤖</span>
           <span class="search-palette__ai-trigger-text">Ask bear AI</span>
         </button>
-        <div class="search-palette__shortcut">
-          <kbd>⌘</kbd><kbd>K</kbd>
+        <div class="search-palette__shortcut" title="启动 AI 搜索">
+          <kbd>⌘</kbd><kbd>↩</kbd>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
 
     <div class="search-palette__meta">
       <span>Found <span id="search-result-count">0</span> results</span>
-      <a class="search-palette__full-link" href="{{ "search/" | absLangURL }}">Full Search →</a>
+      <a class="search-palette__full-link" id="search-full-link" href="{{ "search/" | absLangURL }}">Full Search →</a>
     </div>
     <ul class="search-palette__results" id="search-results-list" role="listbox"></ul>
     <p class="search-palette__empty" id="search-empty" hidden>No results found</p>
