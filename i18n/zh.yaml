@@ -52,3 +52,12 @@
 
 - id: filter_no_results
   translation: "没有匹配的文章"
+
+- id: toc_label
+  translation: "大纲"
+
+- id: ai_companion_label
+  translation: "AI 伴读"
+
+- id: reading_assistant_label
+  translation: "阅读助手"

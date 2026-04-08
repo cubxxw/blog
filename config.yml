@@ -108,6 +108,11 @@ params:
       - permalink
       - summary
       - content
+  mainSections:
+    - ai-technology
+    - growth
+    - projects
+  ShowAllPagesInArchive: false
   sidebar:
     widgets:
       - type: "custom"
