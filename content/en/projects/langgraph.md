@@ -1,30 +1,36 @@
 ---
-title: "Langgraph 开源项目深度学习"
+title: "LangGraph: Open Source Deep Dive"
 date: 2025-04-19T15:19:20+08:00
 draft: false
-tocopen: true
-tags: ["AI开源", "项目学习"]
-categories: ["Projects"]
+showtoc: true
+tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
+keywords: []
+tags:
+  - AI
+  - Open Source
+categories:
+  - Projects
 description: >
   Deep dive into LangGraph for building stateful, multi-actor LLM workflows and agent orchestration.
 aliases:
   - /posts/ai-projects/langgraph/
 ---
 
-> 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。
-> [notion List](https://traveling-thistle-a0c.notion.site/Open-Source-Project-Learn-1d2a444a6c008030a24efaa0e3bf5f5c?pvs=4)
+> This project is an ongoing journey — learning AI open source projects with steady, daily progress. Through hands-on work with real projects and AI tooling, the goal is to develop the ability to solve complex problems and document the process.
+> [Notion List](https://traveling-thistle-a0c.notion.site/Open-Source-Project-Learn-1d2a444a6c008030a24efaa0e3bf5f5c?pvs=4)
 
-**基本信息：**
-- 项目名称：
-- GitHub 地址：
-- 主要技术栈：
+**Basic Information:**
+- Project Name:
+- GitHub URL:
+- Main Tech Stack:
 
 
 
-## 补充相关文章
+## Related Articles
 
-+ [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
-+ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/ai-technology/posts/open-source-contribution-guidelines/)
-+ [我的实践总结：开源社区的规范设计思路](/zh/ai-technology/posts/advanced-githook-design/)
-+ [在开源社区中学会如何提问](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [A Staged Growth Guide for Open Source](/zh/growth/posts/stage-growth-of-open-source/)
++ [A Complete Guide to Open Source Contributions (A Handbook for First-Time Contributors)](/zh/ai-technology/posts/open-source-contribution-guidelines/)
++ [My Practical Summary: Designing Standards for Open Source Communities](/zh/ai-technology/posts/advanced-githook-design/)
++ [Learning How to Ask Questions in Open Source Communities](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)

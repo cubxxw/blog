@@ -1,62 +1,70 @@
 ---
-title: "Jina"
+title: "Jina AI: Multimodal Embedding and Search Deep Dive"
 date: 2025-04-12T13:01:59+08:00
 draft: false
-description: "Exploring Jina AI's multimodal embedding and search infrastructure for production AI applications."
-tags: ["AI开源", "项目学习"]
-categories: ["Projects"]
-author: ["Xinwei Xiong"]
+showtoc: true
+tocopen: false
+type: posts
+author: ["Xinwei Xiong", "Me"]
+keywords: []
+tags:
+  - AI
+  - Open Source
+categories:
+  - Projects
+description: >
+  Exploring Jina AI's multimodal embedding and search infrastructure for production AI applications.
 aliases:
   - /posts/ai-projects/jina/
 ---
 
-## 项目概览
+## Project Overview
 
-### 基本信息
-- 项目名称：
-- GitHub 地址：
-- 主要技术栈：
-- 开源协议：
-- Star 数量：
-- 最近更新：
+### Basic Information
+- Project Name:
+- GitHub URL:
+- Primary Tech Stack:
+- License:
+- Star Count:
+- Last Updated:
 
-### 项目简介
-[这里描述项目的主要功能和用途]
+### Project Introduction
+[Describe the project's main features and use cases here]
 
-## 技术架构
+## Technical Architecture
 
-### 系统设计
-[这里描述项目的整体架构设计]
+### System Design
+[Describe the overall architectural design of the project here]
 
-### 核心模块
-[列出并说明项目的核心模块]
+### Core Modules
+[List and explain the project's core modules here]
 
-## 源码分析
+## Source Code Analysis
 
-### 关键代码解读
-[分析项目中的关键代码实现]
+### Key Code Walkthrough
+[Analyze the key code implementations in the project here]
 
-### 性能优化点
-[讨论项目中的性能优化方案]
+### Performance Optimization Points
+[Discuss the performance optimization strategies used in the project here]
 
-## AI 辅助学习过程
+## AI-Assisted Learning Process
 
-### 使用的 AI 工具
-[列出学习过程中使用的 AI 工具]
+### AI Tools Used
+[List the AI tools used during the learning process here]
 
-### AI 辅助方法
-[描述如何使用 AI 工具辅助理解代码]
+### AI-Assisted Methods
+[Describe how AI tools were used to aid in understanding the code here]
 
-## 实践与思考
+## Practice and Reflection
 
-### 本地部署经验
-[记录项目的部署过程和注意事项]
+### Local Deployment Experience
+[Document the deployment process and key considerations here]
 
-### 改进建议
-[提出对项目的改进建议]
+### Improvement Suggestions
+[Propose improvement suggestions for the project here]
 
-### 个人总结
-[总结学习该项目的心得体会]
+### Personal Summary
+[Summarize key takeaways from studying this project here]
 
-## 参考资源
-[列出相关的学习资源和参考文档] 
+## Reference Resources
+[List relevant learning resources and reference documentation here]

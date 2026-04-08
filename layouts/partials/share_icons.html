@@ -1,0 +1,291 @@
+{{- $pageurl := .Permalink }}
+{{- $title := .Title }}
+
+{{- $.Scratch.Set "tags" ""}}
+{{- with .Params.Tags }}
+{{- $hashtags := newScratch}}
+{{- range . }}{{ $hashtags.Add "tags" (slice (replaceRE "(\\s)" "" . ))}}{{end}}
+{{- $.Scratch.Set "tags" (delimit ($hashtags.Get "tags") ",") }}
+{{- end -}}
+
+{{- $custom := false }}
+{{- $ShareButtons := (.Param "ShareButtons")}}
+{{- with $ShareButtons }}{{ $custom = true }}{{ end }}
+
+<div class="share-section">
+<div class="share-label">分享这篇文章</div>
+<div class="share-buttons" id="share-buttons">
+
+    {{/* Copy Link — always first, most useful */}}
+    <button
+        aria-label="copy link"
+        class="share-btn share-btn--copy"
+        data-tooltip="复制链接"
+        onclick="shareCopyLink(this)">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+        </svg>
+    </button>
+
+    {{/* Web Share API */}}
+    <button
+        id="share-webshare-btn"
+        aria-label="share"
+        class="share-btn share-btn--webshare"
+        data-tooltip="分享"
+        onclick="shareWebShare('{{ $title | safeJS }}', '{{ $pageurl }}')">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
+        </svg>
+    </button>
+
+    {{/* Twitter / X */}}
+    {{- if (cond ($custom) (in $ShareButtons "twitter") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on X"
+        class="share-btn share-btn--twitter"
+        data-tooltip="X / Twitter"
+        href="https://x.com/intent/tweet/?text={{ $title | urlquery }}&amp;url={{ $pageurl }}&amp;hashtags={{- $.Scratch.Get "tags" -}}">
+        <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Telegram */}}
+    {{- if (cond ($custom) (in $ShareButtons "telegram") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on Telegram"
+        class="share-btn share-btn--telegram"
+        data-tooltip="Telegram"
+        href="https://telegram.me/share/url?text={{ $title | urlquery }}&amp;url={{ $pageurl }}">
+        <svg viewBox="2 2 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Weibo */}}
+    {{- if (cond ($custom) (or (in $ShareButtons "weibo") (in $ShareButtons "webo")) (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on 微博"
+        class="share-btn share-btn--weibo"
+        data-tooltip="微博"
+        href="https://service.weibo.com/share/share.php?url={{ $pageurl }}&amp;title={{ $title | urlquery }}">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.827 16.842c-2.255.222-4.204-.798-4.351-2.28-.148-1.48 1.565-2.862 3.824-3.086 2.258-.224 4.206.797 4.352 2.278.148 1.48-1.565 2.863-3.825 3.088zm-.593-1.766c-.217.35-.685.5-1.037.341-.347-.158-.45-.562-.23-.904.215-.337.667-.489 1.017-.341.354.151.464.551.25.904zm1.536-.56c-.08.135-.254.197-.386.141-.128-.056-.169-.21-.088-.343.08-.13.247-.194.376-.143.131.051.177.202.098.345zm1.256-1.157c-.565-.653-1.607-.788-2.352-.548-.735.238-1.209.935-1.209.935s.365-.834 1.184-1.16c.817-.322 1.85-.06 2.329.509.476.568.341 1.39-.341 1.835-.12.079-.285.043-.337-.075-.014-.032-.011-.068.002-.102.18-.494.1-.993-.408-1.395-.51-.402-1.297-.25-1.617.31-.102.178-.188.415-.131.65-.232-.29-.32-.659-.121-.947.299-.43.915-.528 1.407-.273.491.255.67.855.594 1.361zm6.271-4.94c-.818-.946-2.034-1.3-3.177-1.096.041-.175.065-.358.065-.547 0-1.329-1.085-2.406-2.423-2.406-1.338 0-2.422 1.077-2.422 2.406 0 .293.053.574.149.834C8.272 10.386 6.812 12.24 6.812 14.44c0 2.872 2.361 5.2 5.272 5.2 2.563 0 4.689-1.752 5.168-4.08.123.013.247.02.373.02 1.446 0 2.617-1.152 2.617-2.572 0-.917-.489-1.72-1.224-2.18h.079z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Email */}}
+    {{- if (cond ($custom) (in $ShareButtons "email") (true)) }}
+    <a rel="noopener noreferrer"
+        aria-label="share via email"
+        class="share-btn share-btn--email share-btn--extra"
+        data-tooltip="Email"
+        href="mailto:?subject={{ $title | urlquery }}&amp;body={{ $pageurl }}">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* LinkedIn */}}
+    {{- if (cond ($custom) (in $ShareButtons "linkedin") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on LinkedIn"
+        class="share-btn share-btn--linkedin share-btn--extra"
+        data-tooltip="LinkedIn"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $pageurl }}&amp;title={{ $title | urlquery }}&amp;summary={{ $title | urlquery }}&amp;source={{ $pageurl }}">
+        <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Facebook */}}
+    {{- if (cond ($custom) (in $ShareButtons "facebook") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on Facebook"
+        class="share-btn share-btn--facebook share-btn--extra"
+        data-tooltip="Facebook"
+        href="https://facebook.com/sharer/sharer.php?u={{ $pageurl }}">
+        <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Reddit */}}
+    {{- if (cond ($custom) (in $ShareButtons "reddit") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on Reddit"
+        class="share-btn share-btn--reddit share-btn--extra"
+        data-tooltip="Reddit"
+        href="https://reddit.com/submit?url={{ $pageurl }}&title={{ $title | urlquery }}">
+        <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* WhatsApp */}}
+    {{- if (cond ($custom) (in $ShareButtons "whatsapp") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on WhatsApp"
+        class="share-btn share-btn--whatsapp share-btn--extra"
+        data-tooltip="WhatsApp"
+        href="https://api.whatsapp.com/send?text={{ $title | urlquery }}%20-%20{{ $pageurl }}">
+        <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Y Combinator */}}
+    {{- if (cond ($custom) (in $ShareButtons "ycombinator") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on Hacker News"
+        class="share-btn share-btn--ycombinator share-btn--extra"
+        data-tooltip="Hacker News"
+        href="https://news.ycombinator.com/submitlink?t={{ $title | urlquery }}&u={{ $pageurl }}">
+        <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Bilibili */}}
+    {{- if (cond ($custom) (in $ShareButtons "bilibili") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on Bilibili"
+        class="share-btn share-btn--bilibili share-btn--extra"
+        data-tooltip="Bilibili"
+        href="https://www.bilibili.com/"
+        onclick="copyAndOpen(event, 'https://www.bilibili.com/')">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Zhihu */}}
+    {{- if (cond ($custom) (in $ShareButtons "zhihu") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on 知乎"
+        class="share-btn share-btn--zhihu share-btn--extra"
+        data-tooltip="知乎"
+        href="https://www.zhihu.com/"
+        onclick="copyAndOpen(event, 'https://www.zhihu.com/')">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.721 0C2.251 0 0 2.25 0 5.719V18.28C0 21.751 2.252 24 5.721 24H18.28C21.75 24 24 21.75 24 18.281V5.72C24 2.25 21.75 0 18.281 0zm6.964 6.009l-.379 1.56H8.93c0-.001-.512 1.298.342 1.298h2.853l-.47 1.844H9.272c.598 1.485 1.865 2.755 1.865 2.755s-.555.948-.928 1.562c-.748-1.088-1.29-2.354-1.67-3.549v7.07H6.733v-6.84c-.507 1.823-1.326 3.593-2.42 4.803A9.234 9.234 0 0 1 3 15.98c1.424-1.457 2.454-3.529 2.994-5.269H3.4V8.867h3.333V7.569H5.005V6.009H9.7c-.218-.667-.497-1.358-.804-1.857l1.73-.424c.392.622.729 1.495.97 2.281zm5.268-1.593c.555 1.405 1.15 3.437 1.278 4.745l-1.502.414c-.052-.38-.134-.802-.24-1.248l-.764.045V18.57h-1.74V8.44c-.605.03-1.167.055-1.645.073l-.165-1.777c.24-.001.511-.004.8-.009.251-.323.512-.703.763-1.107-.494-.648-1.311-1.44-2.021-1.994l.976-1.36c.139.105.28.218.42.335.476-.87.927-1.96 1.19-2.787l1.69.612c-.493 1.04-1.079 2.18-1.586 2.99.247.254.47.505.657.735.476-.803.914-1.637 1.225-2.35z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* Xiaohongshu */}}
+    {{- if (cond ($custom) (in $ShareButtons "xiaohongshu") (true)) }}
+    <a target="_blank" rel="noopener noreferrer"
+        aria-label="share on 小红书"
+        class="share-btn share-btn--xiaohongshu share-btn--extra"
+        data-tooltip="小红书"
+        href="https://www.xiaohongshu.com/"
+        onclick="copyAndOpen(event, 'https://www.xiaohongshu.com/')">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.003 0C5.376 0 0 5.376 0 12.003 0 18.625 5.376 24 12.003 24 18.625 24 24 18.625 24 12.003 24 5.376 18.625 0 12.003 0zm5.506 8.59c.193 0 .35.156.35.35v1.18c0 .195-.157.35-.35.35h-1.974v.618h1.974c.193 0 .35.157.35.35v1.18c0 .194-.157.35-.35.35h-1.974v2.637c0 .195-.156.35-.35.35h-1.3c-.195 0-.35-.155-.35-.35v-2.637H11.56c-.195 0-.35-.156-.35-.35v-1.18c0-.193.155-.35.35-.35h1.975v-.618H11.56c-.195 0-.35-.155-.35-.35V8.94c0-.194.155-.35.35-.35h5.949zM7.613 8.59h1.41c.193 0 .35.156.35.35v6.915c0 .194-.157.35-.35.35h-1.41c-.193 0-.35-.156-.35-.35V8.94c0-.194.157-.35.35-.35z"/>
+        </svg>
+    </a>
+    {{- end }}
+
+    {{/* More / collapse toggle */}}
+    <button
+        id="share-more-btn"
+        aria-label="more share options"
+        class="share-btn share-btn--more"
+        data-tooltip="更多"
+        onclick="toggleShareMore(this)">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+    </button>
+
+</div>
+</div>
+
+<script>
+(function () {
+    if (navigator.share) {
+        var btn = document.getElementById('share-webshare-btn');
+        if (btn) btn.style.display = 'inline-flex';
+    }
+
+    function showShareToast(msg) {
+        var existing = document.querySelector('.share-toast');
+        if (existing) existing.remove();
+        var t = document.createElement('div');
+        t.className = 'share-toast';
+        t.textContent = msg;
+        document.body.appendChild(t);
+        setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 2800);
+    }
+
+    function clipboardCopy(text, onSuccess, onFail) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(onSuccess, onFail);
+        } else {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try {
+                document.execCommand('copy');
+                onSuccess();
+            } catch (e) {
+                onFail(e);
+            } finally {
+                document.body.removeChild(ta);
+            }
+        }
+    }
+
+    window.shareCopyLink = function (btn) {
+        var url = window.location.href;
+        clipboardCopy(url, function () {
+            var orig = btn.dataset.tooltip;
+            btn.dataset.tooltip = '已复制！';
+            showShareToast('链接已复制到剪贴板');
+            setTimeout(function () { btn.dataset.tooltip = orig; }, 2000);
+        }, function () {
+            showShareToast('复制失败，请手动复制地址栏链接');
+        });
+    };
+
+    window.copyAndOpen = function (e, platformUrl) {
+        e.preventDefault();
+        var url = window.location.href;
+        clipboardCopy(url, function () {
+            showShareToast('链接已复制，正在打开平台…');
+            setTimeout(function () { window.open(platformUrl, '_blank', 'noopener,noreferrer'); }, 400);
+        }, function () {
+            window.open(platformUrl, '_blank', 'noopener,noreferrer');
+        });
+    };
+
+    window.shareWebShare = function (title, url) {
+        if (navigator.share) {
+            navigator.share({ title: title, url: url }).catch(function () {});
+        }
+    };
+
+    window.toggleShareMore = function (btn) {
+        var container = document.getElementById('share-buttons');
+        var expanded = container.classList.toggle('expanded');
+        btn.dataset.tooltip = expanded ? '收起' : '更多';
+        // Rotate the icon when expanded
+        btn.querySelector('svg').style.transform = expanded ? 'rotate(90deg)' : '';
+    };
+})();
+</script>

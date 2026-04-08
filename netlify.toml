@@ -18,6 +18,7 @@
   HUGO_EXTENDED = "true"
   SECRETS_SCAN_OMIT_PATHS = ".obsidian/**"
   SECRETS_SCAN_OMIT_KEYS = "DASHSCOPE_BASE_URL"
+  GIT_SUBMODULE_STRATEGY = "recursive"
 
 [context.production.environment]
   HUGO_BASEURL = "https://nsddd.top"
