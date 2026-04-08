@@ -1,0 +1,162 @@
+/* === Share Buttons === */
+
+.share-section {
+    margin: 28px 0 8px;
+}
+
+.share-label {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.share-buttons {
+    padding-inline-start: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Extra buttons hidden until expanded */
+.share-btn--extra {
+    display: none;
+}
+.share-buttons.expanded .share-btn--extra {
+    display: inline-flex;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    background: var(--code-bg);
+    color: var(--secondary);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    text-decoration: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.share-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-color: var(--secondary);
+}
+
+.dark .share-btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.share-btn:active {
+    transform: translateY(0);
+}
+
+/* Per-platform brand hover colors */
+.share-btn--twitter:hover     { color: #000; }
+.dark .share-btn--twitter:hover { color: #e7e9ea; }
+.share-btn--linkedin:hover    { color: #0a66c2; }
+.share-btn--reddit:hover      { color: #ff4500; }
+.share-btn--facebook:hover    { color: #1877f2; }
+.share-btn--whatsapp:hover    { color: #25d366; }
+.share-btn--telegram:hover    { color: #0088cc; }
+.share-btn--ycombinator:hover { color: #ff6600; }
+.share-btn--bilibili:hover    { color: #00a1d6; }
+.share-btn--zhihu:hover       { color: #0084ff; }
+.share-btn--weibo:hover       { color: #e6162d; }
+.share-btn--xiaohongshu:hover { color: #fe2c55; }
+.share-btn--email:hover       { color: #ea4335; }
+.share-btn--copy:hover        { color: var(--primary); }
+.share-btn--webshare:hover    { color: var(--primary); }
+.share-btn--more:hover        { color: var(--primary); }
+
+/* CSS tooltips */
+.share-btn::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.85);
+    background: var(--primary);
+    color: var(--theme);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 100;
+}
+
+.share-btn::after {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: var(--primary);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.share-btn:hover::before { opacity: 1; transform: translateX(-50%) scale(1); }
+.share-btn:hover::after  { opacity: 1; }
+
+/* Toast */
+.share-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: var(--theme);
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: shareToastIn 0.2s ease, shareToastOut 0.3s ease 2s forwards;
+}
+
+@keyframes shareToastIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes shareToastOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Web share button hidden until JS enables it */
+.share-btn--webshare {
+    display: none;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .share-buttons { gap: 7px; }
+    .share-btn { width: 36px; height: 36px; }
+    .share-btn svg { width: 17px; height: 17px; }
+}

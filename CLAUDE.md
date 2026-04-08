@@ -7,6 +7,8 @@ This document contains critical information about working with this codebase. Fo
 
 编译不要用 make，用 netlify dev，如果是修改代码，修改完成后必须要验证页面是否正常
 
+执行任务之前确保当前的分支从远程更新了，避免大的冲突，执行一个任务之后尽可能的再验证一下，通过的情况下去 commit
+
 
 
 ### 创建新文章
