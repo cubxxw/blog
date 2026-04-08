@@ -27,6 +27,8 @@ keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
 
 # 你好，我是熊鑫伟
 
+<p class="about-version">个人说明版本 v2026.1</p>
+
 <div class="intro-lead">
 <p>我是一个在<strong>技术与人性</strong>之间寻找桥梁的人。</p>
 <p>如果你只能用三个词记住我，我希望是：<strong>真实</strong>、<strong>好奇</strong>、<strong>连接者</strong>。</p>

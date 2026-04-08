@@ -32,6 +32,16 @@
 {{/* Growth Section - Dual Column Layout with Subcategories */}}
 {{- $lang := .Lang }}
 {{- $sectionPages := where .RegularPages "Lang" $lang }}
+{{- $categoryMapEn := dict
+  "成长 (Growth)" "Growth"
+  "成长" "Growth"
+  "个人成长 (Personal Development)" "Personal Growth"
+  "Growth" "Growth"
+  "旅行 (Travel)" "Travel"
+  "Travel" "Travel"
+  "生活与教育 (Living & Education)" "Life"
+  "Life" "Life"
+}}
 
 {{/* Use this section as the source of truth, then split sub-groups by metadata */}}
 {{- $growthPages := $sectionPages.ByDate.Reverse }}
@@ -64,8 +74,12 @@
       <article class="growth-card">
         <div class="growth-card-content">
           <div class="growth-card-header">
-            <span class="growth-badge growth-badge--{{ if in .Params.categories "旅行" }}travel{{ else }}growth{{ end }}">
-              {{- with .Params.categories }}{{ index . 0 }}{{ end }}
+            {{- $rawCategory := "" }}
+            {{- with .Params.categories }}{{- $rawCategory = index . 0 }}{{- end }}
+            {{- $displayCategory := $rawCategory }}
+            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
+            <span class="growth-badge growth-badge--{{ if or (eq $displayCategory "Travel") (eq $displayCategory "旅行") }}travel{{ else }}growth{{ end }}">
+              {{- $displayCategory }}
             </span>
           </div>
           <h3 class="growth-card-title">
@@ -100,7 +114,10 @@
           <div class="growth-list-meta">
             <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
             {{- with .Params.categories }}
-            <span class="growth-list-category">{{ index . 0 }}</span>
+            {{- $rawCategory := index . 0 }}
+            {{- $displayCategory := $rawCategory }}
+            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
+            <span class="growth-list-category">{{ $displayCategory }}</span>
             {{- end }}
           </div>
         </div>
@@ -126,7 +143,10 @@
           <div class="growth-list-meta">
             <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
             {{- with .Params.categories }}
-            <span class="growth-list-category">{{ index . 0 }}</span>
+            {{- $rawCategory := index . 0 }}
+            {{- $displayCategory := $rawCategory }}
+            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
+            <span class="growth-list-category">{{ $displayCategory }}</span>
             {{- end }}
           </div>
         </div>
@@ -153,7 +173,10 @@
           <div class="growth-list-meta">
             <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
             {{- with .Params.categories }}
-            <span class="growth-list-category">{{ index . 0 }}</span>
+            {{- $rawCategory := index . 0 }}
+            {{- $displayCategory := $rawCategory }}
+            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
+            <span class="growth-list-category">{{ $displayCategory }}</span>
             {{- end }}
             {{- if .Params.tags }}
             <span class="growth-list-tags">{{ delimit (first 3 .Params.tags) " · " }}</span>

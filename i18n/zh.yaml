@@ -61,3 +61,63 @@
 
 - id: reading_assistant_label
   translation: "阅读助手"
+
+- id: toc_empty
+  translation: "本文暂无目录"
+
+- id: ai_chip_summarize
+  translation: "📝 文章总结"
+
+- id: ai_chip_highlights
+  translation: "✨ 精彩句子"
+
+- id: ai_chip_further_reading
+  translation: "🔗 延伸阅读"
+
+- id: ai_chip_summarize_prompt
+  translation: "请用3-5句话总结这篇文章的核心观点和主要内容。"
+
+- id: ai_chip_highlights_prompt
+  translation: "请列出这篇文章中最精彩的3个句子或论断，并简要说明为什么印象深刻。"
+
+- id: ai_chip_further_reading_prompt
+  translation: "基于这篇文章的主题和内容，推荐3个延伸阅读方向或相关话题，帮助读者深入了解。"
+
+- id: ai_conversation_label
+  translation: "对话记录"
+
+- id: ai_thinking_label
+  translation: "AI 思考中"
+
+- id: ai_thinking_text
+  translation: "AI 思考中…"
+
+- id: ai_input_placeholder
+  translation: "问我关于这篇文章的任何问题…"
+
+- id: ai_input_label
+  translation: "输入问题"
+
+- id: ai_send_label
+  translation: "发送"
+
+- id: sidebar_ai_projects_title
+  translation: "🤖 AI 开源项目学习"
+
+- id: sidebar_ai_projects_desc
+  translation: "深入解读 AI 开源项目，分享学习心得与实践经验。"
+
+- id: sidebar_ai_projects_explore
+  translation: "🚀 探索 AI 项目"
+
+- id: sidebar_ai_tag_llm
+  translation: "LLM 模型"
+
+- id: sidebar_ai_tag_vector_db
+  translation: "向量数据库"
+
+- id: sidebar_ai_tag_framework
+  translation: "AI 框架"
+
+- id: sidebar_ai_tag_toolchain
+  translation: "AI 工具链"
