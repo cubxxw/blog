@@ -149,6 +149,7 @@
     var endpoint = '/.netlify/functions/article-ai';
     var history  = [];
     var busy     = false;
+    var lastQuestion = '';
 
     // Auto-resize textarea
     textarea.addEventListener('input', function () {
@@ -208,6 +209,7 @@
     async function send() {
       var q = textarea.value.trim();
       if (!q || busy) return;
+      lastQuestion = q;
 
       addMessage(q, 'user');
       textarea.value = '';
@@ -230,23 +232,84 @@
         });
         request.cancel();
 
-        var data;
-        try {
-          data = await res.json();
-        } catch (_) {
-          var rawText = '';
-          try { rawText = await res.text(); } catch (_2) {}
-          if (res.status === 404) {
-            throw new Error(t('notFound'));
-          }
-          throw new Error(t('nonJsonPrefix') + ' (HTTP ' + res.status + ')' + (rawText ? ': ' + rawText.slice(0, 120) : ''));
+        if (!res.ok) {
+          if (res.status === 404) throw new Error(t('notFound'));
+          var errData;
+          try { errData = await res.json(); } catch (_) { errData = {}; }
+          throw new Error(errData.error || (t('requestFailed') + ' (' + res.status + ')'));
         }
-        setLoading(false);
 
-        if (!res.ok) throw new Error(data.error || (t('requestFailed') + ' (' + res.status + ')'));
+        var contentType = res.headers.get('content-type') || '';
+        var answer = '';
 
-        var answer = data.answer || t('noAnswer');
-        addMessage(answer, 'ai');
+        var rcCandidates = [];
+
+        if (contentType.indexOf('text/event-stream') !== -1) {
+          // Streaming SSE response — true progressive rendering
+          setLoading(false);
+          var streamDiv = addMessage('', 'ai');
+          var reader = res.body.getReader();
+          var decoder = new TextDecoder();
+          var sseBuffer = '';
+
+          sseouter: while (true) {
+            var chunk = await reader.read();
+            if (chunk.done) break;
+            sseBuffer += decoder.decode(chunk.value, { stream: true });
+            var sseLines = sseBuffer.split('\n');
+            sseBuffer = sseLines.pop();
+            for (var li = 0; li < sseLines.length; li++) {
+              var sseLine = sseLines[li];
+              if (sseLine.indexOf('data: ') === 0) {
+                var sseData = sseLine.slice(6).trim();
+                if (sseData === '[DONE]') break sseouter;
+                try {
+                  var sseJson = JSON.parse(sseData);
+                  if (sseJson.meta && sseJson.meta.candidates) {
+                    rcCandidates = sseJson.meta.candidates;
+                  } else {
+                    var delta = sseJson.delta || '';
+                    if (delta) {
+                      answer += delta;
+                      streamDiv.innerHTML = parseMarkdown(answer);
+                      messagesEl.scrollTop = messagesEl.scrollHeight;
+                    }
+                  }
+                } catch (_e) {}
+              }
+            }
+          }
+
+          if (!answer) answer = t('noAnswer');
+        } else {
+          // Non-streaming JSON fallback
+          var data;
+          try {
+            data = await res.json();
+          } catch (_) {
+            var rawText = '';
+            try { rawText = await res.text(); } catch (_2) {}
+            throw new Error(t('nonJsonPrefix') + ' (HTTP ' + res.status + ')' + (rawText ? ': ' + rawText.slice(0, 120) : ''));
+          }
+          setLoading(false);
+
+          answer = data.answer || t('noAnswer');
+          rcCandidates = data.candidates || [];
+          addMessage(answer, 'ai');
+        }
+
+        // Render source link if candidates available
+        if (rcCandidates.length > 0) {
+          var srcDiv = document.createElement('div');
+          srcDiv.className = 'ai-sources';
+          var srcLinks = rcCandidates.slice(0, 3).map(function(c) {
+            var href = c.permalink || window.location.pathname;
+            return '<a href="' + href + '" class="ai-source-link" target="_blank">' + c.title + '</a>';
+          }).join('');
+          srcDiv.innerHTML = '<span class="ai-sources-label">参考 / Source: </span>' + srcLinks;
+          messagesEl.appendChild(srcDiv);
+          messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
 
         history.push({ role: 'user', content: q });
         history.push({ role: 'assistant', content: answer });
@@ -258,6 +321,16 @@
         var message = err && err.name === 'AbortError' ? t('timeout') : ((err && err.message) || t('genericError'));
         errMsg.innerHTML = '<span style="color:#ef4444">⚠ ' +
           message.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
+        var retryBtn = document.createElement('button');
+        retryBtn.className = 'ai-retry-btn';
+        retryBtn.textContent = '↺ 重试';
+        retryBtn.addEventListener('click', function() {
+          if (lastQuestion) {
+            textarea.value = lastQuestion;
+            send();
+          }
+        });
+        errMsg.appendChild(retryBtn);
       } finally {
         setLoading(false);
         textarea.focus();

@@ -5308,3 +5308,22 @@ div.highlight:hover .copy-code,
 pre:hover .copy-code {
     opacity: 1;
 }
+
+/* ===================================
+   AI Sources & Suggestions
+   =================================== */
+.ai-sources { margin-top: 8px; font-size: 0.8em; opacity: 0.8; }
+.ai-source-link { display: inline-block; margin: 2px 4px; padding: 2px 8px; border-radius: 12px; background: rgba(99,102,241,0.15); color: inherit; text-decoration: none; }
+.ai-source-link:hover { background: rgba(99,102,241,0.3); }
+
+.search-palette__ai-suggestions { display: flex; gap: 8px; flex-wrap: wrap; padding: 8px 0; }
+.search-palette__ai-suggestion { padding: 4px 12px; border-radius: 16px; border: 1px solid rgba(99,102,241,0.3); background: transparent; cursor: pointer; font-size: 0.85em; color: inherit; }
+.search-palette__ai-suggestion:hover { background: rgba(99,102,241,0.15); }
+
+.ai-retry-btn { margin-top: 6px; padding: 3px 10px; border-radius: 8px; border: 1px solid currentColor; opacity: 0.7; cursor: pointer; background: transparent; font-size: 0.85em; }
+.ai-retry-btn:hover { opacity: 1; }
+
+/* blog-ai-inline suggestion buttons */
+.blog-ai-suggestions { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px 0 4px; }
+.blog-ai-suggestion { padding: 3px 10px; border-radius: 14px; border: 1px solid rgba(99,102,241,0.3); background: transparent; cursor: pointer; font-size: 0.82em; color: inherit; transition: background 0.15s; }
+.blog-ai-suggestion:hover { background: rgba(99,102,241,0.15); }

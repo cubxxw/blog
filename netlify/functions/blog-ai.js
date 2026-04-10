@@ -7,24 +7,21 @@ const indexPath = path.join(__dirname, "_generated", "content-index.json");
 let cachedIndex = null;
 
 function loadIndex() {
-  if (cachedIndex) {
-    return cachedIndex;
-  }
-
+  if (cachedIndex) return cachedIndex;
   cachedIndex = JSON.parse(fs.readFileSync(indexPath, "utf8"));
   return cachedIndex;
 }
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
 function json(statusCode, payload) {
   return {
     statusCode,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "Cache-Control": "no-store",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
+    headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...CORS_HEADERS },
     body: JSON.stringify(payload),
   };
 }
@@ -40,58 +37,28 @@ function tokenize(text) {
 
 function scoreDocument(doc, questionTokens, requestedLanguage) {
   const haystack = normalize(
-    [
-      doc.title,
-      doc.relativePath,
-      doc.section,
-      doc.tags.join(" "),
-      doc.categories.join(" "),
-      doc.headings.join(" "),
-      doc.excerpt,
-    ].join(" ")
+    [doc.title, doc.relativePath, doc.section, doc.tags.join(" "), doc.categories.join(" "), doc.headings.join(" "), doc.excerpt].join(" ")
   );
-
   let score = 0;
   for (const token of questionTokens) {
-    if (haystack.includes(token)) {
-      score += token.length > 4 ? 6 : 3;
-    }
+    if (haystack.includes(token)) score += token.length > 4 ? 6 : 3;
   }
-
-  if (requestedLanguage && doc.language === requestedLanguage) {
-    score += 4;
-  }
-
-  if (questionTokens.some((token) => doc.relativePath.toLowerCase().includes(token))) {
-    score += 5;
-  }
-
+  if (requestedLanguage && doc.language === requestedLanguage) score += 4;
+  if (questionTokens.some((token) => doc.relativePath.toLowerCase().includes(token))) score += 5;
   return score;
 }
 
 function summarizeTree(node, depth = 0, lines = []) {
-  if (depth > 3) {
-    return lines;
-  }
-
-  if (depth > 0) {
-    lines.push(`${"  ".repeat(depth - 1)}- ${node.name} (${node.count})`);
-  }
-
-  for (const child of node.children || []) {
-    summarizeTree(child, depth + 1, lines);
-  }
-
+  if (depth > 3) return lines;
+  if (depth > 0) lines.push(`${"  ".repeat(depth - 1)}- ${node.name} (${node.count})`);
+  for (const child of node.children || []) summarizeTree(child, depth + 1, lines);
   return lines;
 }
 
 function buildContext(index, question, requestedLanguage) {
   const questionTokens = tokenize(question);
   const ranked = index.documents
-    .map((doc) => ({
-      doc,
-      score: scoreDocument(doc, questionTokens, requestedLanguage),
-    }))
+    .map((doc) => ({ doc, score: scoreDocument(doc, questionTokens, requestedLanguage) }))
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, 8)
@@ -99,9 +66,7 @@ function buildContext(index, question, requestedLanguage) {
 
   const fallback = ranked.length
     ? ranked
-    : index.documents
-        .filter((doc) => !requestedLanguage || doc.language === requestedLanguage)
-        .slice(0, 6);
+    : index.documents.filter((doc) => !requestedLanguage || doc.language === requestedLanguage).slice(0, 6);
 
   return {
     directorySummary: summarizeTree(index.tree).join("\n"),
@@ -121,25 +86,11 @@ function buildContext(index, question, requestedLanguage) {
 
 exports.handler = async function handler(event) {
   if (event.httpMethod === "OPTIONS") {
-    return {
-      statusCode: 204,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
-    };
+    return { statusCode: 204, headers: CORS_HEADERS };
   }
 
-  if (event.httpMethod !== "POST") {
-    return json(405, { error: "Method not allowed" });
-  }
-
-  if (!process.env.DASHSCOPE_API_KEY) {
-    return json(500, {
-      error: "Missing DASHSCOPE_API_KEY environment variable",
-    });
-  }
+  if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed" });
+  if (!process.env.DASHSCOPE_API_KEY) return json(500, { error: "Missing DASHSCOPE_API_KEY environment variable" });
 
   let payload;
   try {
@@ -150,12 +101,10 @@ exports.handler = async function handler(event) {
 
   const question = String(payload.question || "").trim();
   const language = String(payload.language || "").trim();
-  const conversationHistory = payload.context || []; // Conversation history context
-  const searchContext = payload.searchContext || []; // Search results context
+  const conversationHistory = payload.context || [];
+  const searchContext = payload.searchContext || [];
 
-  if (!question) {
-    return json(400, { error: "Question is required" });
-  }
+  if (!question) return json(400, { error: "Question is required" });
 
   const index = loadIndex();
   const docContext = buildContext(index, question, language);
@@ -174,32 +123,19 @@ exports.handler = async function handler(event) {
     "For follow-up questions, consider them in the context of the conversation history and provide coherent, connected responses.",
   ].join(" ");
 
-  // Build messages array with conversation history if available
-  const messages = [
-    {
-      role: "system",
-      content: systemPrompt,
-    },
-  ];
+  const messages = [{ role: "system", content: systemPrompt }];
 
-  // Add conversation history (context) if provided
   if (Array.isArray(conversationHistory) && conversationHistory.length > 0) {
-    // Limit context to last 10 messages to avoid token overflow
-    const limitedContext = conversationHistory.slice(-10);
-    for (const msg of limitedContext) {
+    for (const msg of conversationHistory.slice(-10)) {
       if (msg.role && msg.content) {
-        messages.push({
-          role: msg.role === "user" ? "user" : "assistant",
-          content: msg.content,
-        });
+        messages.push({ role: msg.role === "user" ? "user" : "assistant", content: msg.content });
       }
     }
   }
 
-  // Add current question with search context
   const searchContextStr = searchContext.length > 0
     ? `\n\nSearch results context:\n${JSON.stringify(searchContext, null, 2)}`
-    : '';
+    : "";
 
   messages.push({
     role: "user",
@@ -212,41 +148,85 @@ exports.handler = async function handler(event) {
     ].join("\n"),
   });
 
-  let response;
+  const useStream = String(payload.stream) !== "false";
+
+  let upstreamRes;
   try {
-    response = await fetch(`${baseUrl}/chat/completions`, {
+    upstreamRes = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        model,
-        messages,
-        max_completion_tokens: 900,
-      }),
+      body: JSON.stringify({ model, messages, max_completion_tokens: 1800, stream: useStream }),
     });
   } catch (error) {
-    return json(502, {
-      error: "Failed to reach Qwen API",
-      detail: error.message,
+    return json(502, { error: "Failed to reach Qwen API", detail: error.message });
+  }
+
+  if (!upstreamRes.ok) {
+    let errorDetail;
+    try { errorDetail = await upstreamRes.json(); } catch { errorDetail = {}; }
+    return json(upstreamRes.status, {
+      error: errorDetail.error?.message || errorDetail.error || "Qwen API returned an error",
+      detail: errorDetail,
     });
   }
 
-  const responseJson = await response.json();
-  if (!response.ok) {
-    const errorMsg = responseJson.error?.message || responseJson.error || "Qwen API returned an error";
-    return json(response.status, {
-      error: errorMsg,
-      detail: responseJson,
-    });
+  if (!useStream) {
+    const responseJson = await upstreamRes.json();
+    const answer = responseJson.choices?.[0]?.message?.content || "";
+    return json(200, { answer, model, candidates: docContext.candidates, generatedAt: index.generatedAt });
   }
 
-  const answer = responseJson.choices?.[0]?.message?.content || "";
-  return json(200, {
-    answer,
-    model,
-    candidates: docContext.candidates,
-    generatedAt: index.generatedAt,
+  // True progressive streaming: pipe upstream SSE → client SSE via TransformStream
+  const metaLine = `data: ${JSON.stringify({ meta: { model, candidates: docContext.candidates, generatedAt: index.generatedAt } })}\n\n`;
+
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const encoder = new TextEncoder();
+
+  // Start piping in background — do not await
+  (async () => {
+    try {
+      await writer.write(encoder.encode(metaLine));
+
+      const reader = upstreamRes.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop();
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const raw = line.slice(6).trim();
+          if (raw === "[DONE]") continue;
+          try {
+            const chunk = JSON.parse(raw);
+            const delta = chunk.choices?.[0]?.delta?.content || "";
+            if (delta) {
+              await writer.write(encoder.encode(`data: ${JSON.stringify({ delta })}\n\n`));
+            }
+          } catch {}
+        }
+      }
+      await writer.write(encoder.encode("data: [DONE]\n\n"));
+    } finally {
+      writer.close().catch(() => {});
+    }
+  })();
+
+  return new Response(readable, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Accel-Buffering": "no",
+      ...CORS_HEADERS,
+    },
   });
 };

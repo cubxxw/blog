@@ -46,6 +46,17 @@
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
       </div>
+      <div class="search-palette__ai-suggestions" id="search-ai-suggestions">
+        {{ if eq .Lang "zh" }}
+        <button class="search-palette__ai-suggestion" data-q="推荐几篇适合入门 AI 的文章">📚 入门推荐</button>
+        <button class="search-palette__ai-suggestion" data-q="有哪些关于 AI Agent 的文章">🤖 AI Agent</button>
+        <button class="search-palette__ai-suggestion" data-q="最近更新了哪些新文章">✨ 最新文章</button>
+        {{ else }}
+        <button class="search-palette__ai-suggestion" data-q="Recommend beginner-friendly AI articles">📚 Getting Started</button>
+        <button class="search-palette__ai-suggestion" data-q="What articles are about AI Agents?">🤖 AI Agents</button>
+        <button class="search-palette__ai-suggestion" data-q="What are the latest posts?">✨ Latest Posts</button>
+        {{ end }}
+      </div>
       <div class="search-palette__ai-footer">
         Based on blog content &bull; Powered by Qwen
       </div>

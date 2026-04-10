@@ -1,8 +1,6 @@
 "use strict";
 
 const CORS_HEADERS = {
-  "Content-Type": "application/json; charset=utf-8",
-  "Cache-Control": "no-store",
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
@@ -11,7 +9,7 @@ const CORS_HEADERS = {
 function json(statusCode, payload) {
   return {
     statusCode,
-    headers: CORS_HEADERS,
+    headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...CORS_HEADERS },
     body: JSON.stringify(payload),
   };
 }
@@ -21,13 +19,8 @@ exports.handler = async function handler(event) {
     return { statusCode: 204, headers: CORS_HEADERS };
   }
 
-  if (event.httpMethod !== "POST") {
-    return json(405, { error: "Method not allowed" });
-  }
-
-  if (!process.env.DASHSCOPE_API_KEY) {
-    return json(500, { error: "Missing DASHSCOPE_API_KEY environment variable" });
-  }
+  if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed" });
+  if (!process.env.DASHSCOPE_API_KEY) return json(500, { error: "Missing DASHSCOPE_API_KEY environment variable" });
 
   let payload;
   try {
@@ -41,9 +34,7 @@ exports.handler = async function handler(event) {
   const articleContent = String(payload.articleContent || "").trim();
   const conversationHistory = Array.isArray(payload.context) ? payload.context : [];
 
-  if (!question) {
-    return json(400, { error: "question is required" });
-  }
+  if (!question) return json(400, { error: "question is required" });
 
   const model = process.env.DASHSCOPE_MODEL || "qwen-turbo";
   const baseUrl = process.env.DASHSCOPE_BASE_URL || "https://dashscope.aliyuncs.com/compatible-mode/v1";
@@ -65,7 +56,6 @@ exports.handler = async function handler(event) {
 
   const messages = [{ role: "system", content: systemPrompt }];
 
-  // 注入最近 10 条对话历史
   for (const msg of conversationHistory.slice(-10)) {
     if (msg.role && msg.content) {
       messages.push({ role: msg.role === "user" ? "user" : "assistant", content: msg.content });
@@ -74,35 +64,120 @@ exports.handler = async function handler(event) {
 
   messages.push({ role: "user", content: question });
 
-  let response;
+  const useStream = String(payload.stream) !== "false";
+
+  let upstreamRes;
   try {
-    response = await fetch(`${baseUrl}/chat/completions`, {
+    upstreamRes = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        model,
-        messages,
-        max_completion_tokens: 600,
-      }),
+      body: JSON.stringify({ model, messages, max_completion_tokens: 1800, stream: useStream }),
     });
   } catch (err) {
     return json(502, { error: "AI service unreachable: " + err.message });
   }
 
-  let data;
-  try {
-    data = await response.json();
-  } catch {
-    return json(502, { error: "Invalid response from AI service" });
+  if (!upstreamRes.ok) {
+    let data;
+    try { data = await upstreamRes.json(); } catch { data = {}; }
+    return json(upstreamRes.status, { error: data?.error?.message || "AI API error" });
   }
 
-  if (!response.ok) {
-    return json(response.status, { error: data?.error?.message || "AI API error" });
+  if (!useStream) {
+    let data;
+    try { data = await upstreamRes.json(); } catch { return json(502, { error: "Invalid response from AI service" }); }
+    const answer = data?.choices?.[0]?.message?.content || "";
+    // Build article-level candidate from title so frontend can render a source link
+    const candidates = articleTitle
+      ? [{ title: articleTitle, permalink: typeof window !== "undefined" ? window.location.pathname : "" }]
+      : [];
+    return json(200, { answer, candidates });
   }
 
-  const answer = data?.choices?.[0]?.message?.content || "";
-  return json(200, { answer });
+  // True progressive streaming via TransformStream
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const encoder = new TextEncoder();
+
+  // Send article metadata as first event so frontend can render source
+  if (articleTitle) {
+    const metaLine = `data: ${JSON.stringify({ meta: { candidates: [{ title: articleTitle, permalink: "" }] } })}\n\n`;
+    // will be written inside the async block below
+    (async () => {
+      try {
+        await writer.write(encoder.encode(metaLine));
+
+        const reader = upstreamRes.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop();
+          for (const line of lines) {
+            if (!line.startsWith("data: ")) continue;
+            const raw = line.slice(6).trim();
+            if (raw === "[DONE]") continue;
+            try {
+              const chunk = JSON.parse(raw);
+              const delta = chunk.choices?.[0]?.delta?.content || "";
+              if (delta) {
+                await writer.write(encoder.encode(`data: ${JSON.stringify({ delta })}\n\n`));
+              }
+            } catch {}
+          }
+        }
+        await writer.write(encoder.encode("data: [DONE]\n\n"));
+      } finally {
+        writer.close().catch(() => {});
+      }
+    })();
+  } else {
+    (async () => {
+      try {
+        const reader = upstreamRes.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop();
+          for (const line of lines) {
+            if (!line.startsWith("data: ")) continue;
+            const raw = line.slice(6).trim();
+            if (raw === "[DONE]") continue;
+            try {
+              const chunk = JSON.parse(raw);
+              const delta = chunk.choices?.[0]?.delta?.content || "";
+              if (delta) {
+                await writer.write(encoder.encode(`data: ${JSON.stringify({ delta })}\n\n`));
+              }
+            } catch {}
+          }
+        }
+        await writer.write(encoder.encode("data: [DONE]\n\n"));
+      } finally {
+        writer.close().catch(() => {});
+      }
+    })();
+  }
+
+  return new Response(readable, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Accel-Buffering": "no",
+      ...CORS_HEADERS,
+    },
+  });
 };

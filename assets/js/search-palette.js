@@ -20,6 +20,7 @@
   let isAiThinking = false;
   let conversationHistory = []; // Store conversation history
   let currentQuery = ''; // Store current query for follow-up
+  let lastAiQuery = ''; // Store last query for retry
 
   // Open palette
   function openPalette() {
@@ -132,6 +133,7 @@
 
     isAiThinking = true;
     aiBox.hidden = false;
+    lastAiQuery = query;
 
     // If this is a new conversation (not a follow-up), clear history
     if (!isFollowUp) {
@@ -178,8 +180,8 @@
         body: JSON.stringify({
           question: query,
           language: lang,
-          context: conversationHistory, // Pass conversation history
-          searchContext: context // Pass current search results as context
+          context: conversationHistory,
+          searchContext: context
         }),
         signal: aiController.signal,
       });
@@ -194,14 +196,64 @@
         throw new Error(errData.error || `AI service error (${response.status})`);
       }
 
-      const data = await response.json();
-      const answer = data.answer || 'Sorry, I couldn\'t find an answer.';
+      const contentType = response.headers.get('content-type') || '';
+      let answer = '';
+      let candidates = [];
+
+      if (contentType.includes('text/event-stream')) {
+        // Streaming SSE response
+        const prevHtml = conversationHistory.length > 1 ? renderConversation().replace(/<\/div>\s*$/, '') : '';
+        // Show conversation so far + a streaming message container
+        aiContent.innerHTML = renderConversation() +
+          `<div class="search-palette__conversation-message assistant">
+            <div class="search-palette__conversation-sender">🤖 AI</div>
+            <div class="search-palette__conversation-content" id="ai-streaming-target"></div>
+          </div>`;
+        const streamTarget = document.getElementById('ai-streaming-target');
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop();
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = line.slice(6).trim();
+              if (data === '[DONE]') break;
+              try {
+                const json = JSON.parse(data);
+                if (json.meta) {
+                  candidates = json.meta.candidates || [];
+                } else {
+                  const delta = json.delta || '';
+                  if (delta) {
+                    answer += delta;
+                    streamTarget.innerHTML = formatAiAnswer(answer);
+                  }
+                }
+              } catch(e) {}
+            }
+          }
+        }
+
+        if (!answer) answer = 'Sorry, I couldn\'t find an answer.';
+      } else {
+        // Non-streaming JSON response (fallback)
+        const data = await response.json();
+        answer = data.answer || 'Sorry, I couldn\'t find an answer.';
+        candidates = data.candidates || [];
+      }
 
       // Add AI response to history
       addToHistory('assistant', answer);
 
-      // Render full conversation with follow-up input
-      aiContent.innerHTML = renderConversation() + renderFollowUpInput(query);
+      // Render full conversation with follow-up input and sources
+      aiContent.innerHTML = renderConversation() + renderSources(candidates) + renderFollowUpInput(query);
 
       // Attach event listeners to follow-up elements
       attachFollowUpListeners();
@@ -220,7 +272,17 @@
         errorMsg = `<strong>Error</strong>: ${err.message}`;
       }
 
-      aiContent.innerHTML = `<div style="color: #ef4444; font-size: 0.9rem; line-height: 1.5;">${errorMsg}</div>`;
+      aiContent.innerHTML = `<div class="search-palette__ai-error" style="color: #ef4444; font-size: 0.9rem; line-height: 1.5;">${errorMsg}</div>`;
+      const retryBtn = document.createElement('button');
+      retryBtn.className = 'ai-retry-btn';
+      retryBtn.textContent = '↺ 重试';
+      retryBtn.addEventListener('click', () => {
+        if (lastAiQuery) {
+          input.value = lastAiQuery;
+          askAI(lastAiQuery);
+        }
+      });
+      aiContent.querySelector('.search-palette__ai-error').appendChild(retryBtn);
     } finally {
       isAiThinking = false;
     }
@@ -254,6 +316,14 @@
 
     // Focus the input
     setTimeout(() => followUpInput.focus(), 10);
+  }
+
+  function renderSources(candidates) {
+    if (!candidates || candidates.length === 0) return '';
+    const links = candidates.slice(0, 3).map(c =>
+      `<a href="${c.permalink}" class="ai-source-link" target="_blank">${c.title}</a>`
+    ).join('');
+    return `<div class="ai-sources"><span class="ai-sources-label">参考 / Sources: </span>${links}</div>`;
   }
 
   function formatAiAnswer(text) {
@@ -332,6 +402,17 @@
   backdrop?.addEventListener('click', closePalette);
   aiClose?.addEventListener('click', hideAiBox);
   aiBtn?.addEventListener('click', () => askAI(input.value));
+
+  // Suggested questions
+  document.querySelectorAll('.search-palette__ai-suggestion').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.dataset.q;
+      input.value = q;
+      askAI(q);
+      const suggestions = document.getElementById('search-ai-suggestions');
+      if (suggestions) suggestions.style.display = 'none';
+    });
+  });
 
   // Input search event with debounce
   let debounceTimeout;

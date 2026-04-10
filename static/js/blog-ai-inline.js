@@ -46,6 +46,8 @@
         statusOnline: "在线",
         contextCleared: "对话历史已清空",
         contextLoaded: "已加载之前的对话上下文",
+        suggestions: ["📚 推荐入门文章", "🤖 AI Agent 相关", "✨ 最新文章"],
+        suggestionQueries: ["推荐几篇适合入门 AI 的文章", "有哪些关于 AI Agent 的文章", "最近更新了哪些新文章"],
       },
       en: {
         title: "AI Chat",
@@ -64,6 +66,8 @@
         statusOnline: "Online",
         contextCleared: "Conversation history cleared",
         contextLoaded: "Loaded previous conversation context",
+        suggestions: ["📚 Getting Started", "🤖 AI Agents", "✨ Latest Posts"],
+        suggestionQueries: ["Recommend beginner-friendly AI articles", "What articles are about AI Agents?", "What are the latest posts?"],
       },
     };
     const pack = dict[language] || dict.en;
@@ -176,6 +180,11 @@
       </div>
       <div class="blog-ai-messages" aria-live="polite">
         <div class="blog-ai-welcome">${t(language, "welcome")}</div>
+        <div class="blog-ai-suggestions" id="blog-ai-suggestions">
+          ${(t(language, "suggestions") || []).map((label, i) =>
+            `<button class="blog-ai-suggestion" data-idx="${i}">${label}</button>`
+          ).join("")}
+        </div>
       </div>
       <form class="blog-ai-form">
         <textarea class="blog-ai-input" rows="3" placeholder="${t(language, "placeholder")}" aria-label="Question"></textarea>
@@ -192,6 +201,18 @@
     const clear = root.querySelector(".blog-ai-clear");
     const messages = root.querySelector(".blog-ai-messages");
     const statusEl = root.querySelector(".blog-ai-status");
+
+    // Suggestion buttons — hide after first use
+    const suggestionsEl = root.querySelector("#blog-ai-suggestions");
+    root.querySelectorAll(".blog-ai-suggestion").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const queries = t(language, "suggestionQueries") || [];
+        const q = queries[parseInt(btn.dataset.idx, 10)] || btn.textContent;
+        input.value = q;
+        if (suggestionsEl) suggestionsEl.style.display = "none";
+        form.dispatchEvent(new Event("submit"));
+      });
+    });
 
     // Load context from localStorage
     let conversationContext = loadContext();
@@ -271,10 +292,13 @@
       if (loading) loading.remove();
     }
 
+    let lastQuestion = '';
+
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
       const question = input.value.trim();
       if (!question) return;
+      lastQuestion = question;
 
       addMessage(question, true);
       input.value = "";
@@ -292,27 +316,64 @@
           }),
         });
 
-        const contentType = response.headers.get("content-type");
-        let data;
-
-        if (contentType && contentType.includes("application/json")) {
-          data = await response.json();
-        } else {
-          const text = await response.text();
-          throw new Error("Invalid response: " + text.substring(0, 100));
-        }
-
-        removeLoading();
-
         if (!response.ok) {
-          if (response.status === 404) {
-            throw new Error("NETLIFY_404");
-          }
-          throw new Error(data.error || t(language, "error"));
+          if (response.status === 404) throw new Error("NETLIFY_404");
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || t(language, "error"));
         }
 
-        const answer = data.answer || "";
-        addMessage(answer, false);
+        const contentType = response.headers.get("content-type") || "";
+        let answer = "";
+        let candidates = [];
+
+        if (contentType.includes("text/event-stream")) {
+          // Streaming SSE — typewriter effect
+          removeLoading();
+          const streamMsg = addMessage("", false);
+          const reader = response.body.getReader();
+          const decoder = new TextDecoder();
+          let buf = "";
+          outer: while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buf += decoder.decode(value, { stream: true });
+            const lines = buf.split("\n");
+            buf = lines.pop();
+            for (const line of lines) {
+              if (!line.startsWith("data: ")) continue;
+              const raw = line.slice(6).trim();
+              if (raw === "[DONE]") break outer;
+              try {
+                const chunk = JSON.parse(raw);
+                if (chunk.meta) {
+                  candidates = chunk.meta.candidates || [];
+                } else if (chunk.delta) {
+                  answer += chunk.delta;
+                  streamMsg.innerHTML = parseMarkdown(answer);
+                  messages.scrollTop = messages.scrollHeight;
+                }
+              } catch (_) {}
+            }
+          }
+        } else {
+          const data = await response.json();
+          removeLoading();
+          answer = data.answer || "";
+          candidates = data.candidates || [];
+          addMessage(answer, false);
+        }
+
+        // Render reference sources if available
+        if (candidates.length > 0) {
+          const sourcesDiv = document.createElement("div");
+          sourcesDiv.className = "ai-sources";
+          const links = candidates.slice(0, 3).map(c =>
+            `<a href="${c.permalink}" class="ai-source-link" target="_blank">${c.title}</a>`
+          ).join("");
+          sourcesDiv.innerHTML = `<span class="ai-sources-label">参考 / Sources: </span>${links}`;
+          messages.appendChild(sourcesDiv);
+          messages.scrollTop = messages.scrollHeight;
+        }
 
         // Save to context
         conversationContext = addToContext(conversationContext, question, answer);
@@ -326,6 +387,18 @@
           addMessage(errorMsg, false);
         } else {
           addMessage(`${t(language, "error")}: ${error.message}`, false);
+        }
+        // Add retry button to the last error message
+        const lastMsg = messages.querySelector(".blog-ai-message:last-child");
+        if (lastMsg && lastQuestion) {
+          const retryBtn = document.createElement("button");
+          retryBtn.className = "ai-retry-btn";
+          retryBtn.textContent = "↺ 重试";
+          retryBtn.addEventListener("click", () => {
+            input.value = lastQuestion;
+            form.dispatchEvent(new Event("submit"));
+          });
+          lastMsg.appendChild(retryBtn);
         }
       } finally {
         submit.disabled = false;
