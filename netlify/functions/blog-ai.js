@@ -2,6 +2,8 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const { Readable } = require("node:stream");
+const { stream: netlifyStream } = require("@netlify/functions");
 
 const indexPath = path.join(__dirname, "_generated", "content-index.json");
 let cachedIndex = null;
@@ -84,7 +86,7 @@ function buildContext(index, question, requestedLanguage) {
   };
 }
 
-exports.handler = async function handler(event) {
+async function handler(event) {
   if (event.httpMethod === "OPTIONS") {
     return { statusCode: 204, headers: CORS_HEADERS };
   }
@@ -179,17 +181,15 @@ exports.handler = async function handler(event) {
     return json(200, { answer, model, candidates: docContext.candidates, generatedAt: index.generatedAt });
   }
 
-  // True progressive streaming: pipe upstream SSE → client SSE via TransformStream
+  // True progressive streaming via Node.js Readable stream (compatible with @netlify/functions stream helper)
   const metaLine = `data: ${JSON.stringify({ meta: { model, candidates: docContext.candidates, generatedAt: index.generatedAt } })}\n\n`;
 
-  const { readable, writable } = new TransformStream();
-  const writer = writable.getWriter();
-  const encoder = new TextEncoder();
+  const nodeReadable = new Readable({ read() {} });
 
-  // Start piping in background — do not await
+  // Pipe upstream SSE → nodeReadable in background
   (async () => {
     try {
-      await writer.write(encoder.encode(metaLine));
+      nodeReadable.push(metaLine);
 
       const reader = upstreamRes.body.getReader();
       const decoder = new TextDecoder();
@@ -209,24 +209,29 @@ exports.handler = async function handler(event) {
             const chunk = JSON.parse(raw);
             const delta = chunk.choices?.[0]?.delta?.content || "";
             if (delta) {
-              await writer.write(encoder.encode(`data: ${JSON.stringify({ delta })}\n\n`));
+              nodeReadable.push(`data: ${JSON.stringify({ delta })}\n\n`);
             }
           } catch {}
         }
       }
-      await writer.write(encoder.encode("data: [DONE]\n\n"));
+      nodeReadable.push("data: [DONE]\n\n");
+    } catch (err) {
+      nodeReadable.destroy(err);
     } finally {
-      writer.close().catch(() => {});
+      nodeReadable.push(null); // signal end of stream
     }
   })();
 
-  return new Response(readable, {
-    status: 200,
+  return {
+    statusCode: 200,
     headers: {
       "Content-Type": "text/event-stream; charset=utf-8",
       "Cache-Control": "no-store",
       "X-Accel-Buffering": "no",
       ...CORS_HEADERS,
     },
-  });
-};
+    body: nodeReadable,
+  };
+}
+
+exports.handler = netlifyStream(handler);

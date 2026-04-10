@@ -1,10 +1,11 @@
 # netlify.toml
 [build]
-  command = "make envbuild"
+  command = "npm install --prefix netlify/functions && make envbuild"
   publish = "public"
 
 [functions]
   included_files = ["netlify/functions/_generated/**"]
+  node_bundler = "esbuild"
 
 [dev]
   framework = "#custom"

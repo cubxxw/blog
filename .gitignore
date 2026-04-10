@@ -69,6 +69,7 @@ nohup.out
 package-lock.json
 /functions/
 /node_modules/
+netlify/functions/node_modules/
 /netlify/functions/_generated/
 /static/data/content-index.json
 

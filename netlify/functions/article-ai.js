@@ -1,5 +1,8 @@
 "use strict";
 
+const { Readable } = require("node:stream");
+const { stream: netlifyStream } = require("@netlify/functions");
+
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -14,7 +17,7 @@ function json(statusCode, payload) {
   };
 }
 
-exports.handler = async function handler(event) {
+async function handler(event) {
   if (event.httpMethod === "OPTIONS") {
     return { statusCode: 204, headers: CORS_HEADERS };
   }
@@ -90,94 +93,61 @@ exports.handler = async function handler(event) {
     let data;
     try { data = await upstreamRes.json(); } catch { return json(502, { error: "Invalid response from AI service" }); }
     const answer = data?.choices?.[0]?.message?.content || "";
-    // Build article-level candidate from title so frontend can render a source link
-    const candidates = articleTitle
-      ? [{ title: articleTitle, permalink: typeof window !== "undefined" ? window.location.pathname : "" }]
-      : [];
+    const candidates = articleTitle ? [{ title: articleTitle, permalink: "" }] : [];
     return json(200, { answer, candidates });
   }
 
-  // True progressive streaming via TransformStream
-  const { readable, writable } = new TransformStream();
-  const writer = writable.getWriter();
-  const encoder = new TextEncoder();
+  // True progressive streaming via Node.js Readable stream
+  const nodeReadable = new Readable({ read() {} });
 
-  // Send article metadata as first event so frontend can render source
+  // Emit article metadata first so frontend can render source link immediately
   if (articleTitle) {
-    const metaLine = `data: ${JSON.stringify({ meta: { candidates: [{ title: articleTitle, permalink: "" }] } })}\n\n`;
-    // will be written inside the async block below
-    (async () => {
-      try {
-        await writer.write(encoder.encode(metaLine));
-
-        const reader = upstreamRes.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = "";
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop();
-          for (const line of lines) {
-            if (!line.startsWith("data: ")) continue;
-            const raw = line.slice(6).trim();
-            if (raw === "[DONE]") continue;
-            try {
-              const chunk = JSON.parse(raw);
-              const delta = chunk.choices?.[0]?.delta?.content || "";
-              if (delta) {
-                await writer.write(encoder.encode(`data: ${JSON.stringify({ delta })}\n\n`));
-              }
-            } catch {}
-          }
-        }
-        await writer.write(encoder.encode("data: [DONE]\n\n"));
-      } finally {
-        writer.close().catch(() => {});
-      }
-    })();
-  } else {
-    (async () => {
-      try {
-        const reader = upstreamRes.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = "";
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop();
-          for (const line of lines) {
-            if (!line.startsWith("data: ")) continue;
-            const raw = line.slice(6).trim();
-            if (raw === "[DONE]") continue;
-            try {
-              const chunk = JSON.parse(raw);
-              const delta = chunk.choices?.[0]?.delta?.content || "";
-              if (delta) {
-                await writer.write(encoder.encode(`data: ${JSON.stringify({ delta })}\n\n`));
-              }
-            } catch {}
-          }
-        }
-        await writer.write(encoder.encode("data: [DONE]\n\n"));
-      } finally {
-        writer.close().catch(() => {});
-      }
-    })();
+    nodeReadable.push(`data: ${JSON.stringify({ meta: { candidates: [{ title: articleTitle, permalink: "" }] } })}\n\n`);
   }
 
-  return new Response(readable, {
-    status: 200,
+  (async () => {
+    try {
+      const reader = upstreamRes.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop();
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const raw = line.slice(6).trim();
+          if (raw === "[DONE]") continue;
+          try {
+            const chunk = JSON.parse(raw);
+            const delta = chunk.choices?.[0]?.delta?.content || "";
+            if (delta) {
+              nodeReadable.push(`data: ${JSON.stringify({ delta })}\n\n`);
+            }
+          } catch {}
+        }
+      }
+      nodeReadable.push("data: [DONE]\n\n");
+    } catch (err) {
+      nodeReadable.destroy(err);
+    } finally {
+      nodeReadable.push(null);
+    }
+  })();
+
+  return {
+    statusCode: 200,
     headers: {
       "Content-Type": "text/event-stream; charset=utf-8",
       "Cache-Control": "no-store",
       "X-Accel-Buffering": "no",
       ...CORS_HEADERS,
     },
-  });
-};
+    body: nodeReadable,
+  };
+}
+
+exports.handler = netlifyStream(handler);
