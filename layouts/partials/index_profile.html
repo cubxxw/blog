@@ -423,15 +423,56 @@
                             context: chatContext
                         })
                     });
-                    var data = await resp.json();
-
-                    if (thinkingEl) thinkingEl.remove();
 
                     if (!resp.ok) {
-                        addChatMsg(data.error || 'Request failed', false);
+                        if (thinkingEl) thinkingEl.remove();
+                        var errData = await resp.json().catch(function() { return {}; });
+                        addChatMsg(errData.error || 'Request failed', false);
+                        btn.disabled = false;
+                        input.focus();
+                        return;
+                    }
+
+                    var contentType = resp.headers.get('content-type') || '';
+                    var answer = '';
+
+                    if (contentType.includes('text/event-stream')) {
+                        // Streaming SSE — typewriter effect
+                        if (thinkingEl) thinkingEl.remove();
+                        var streamMsg = addChatMsg('', false);
+                        var reader = resp.body.getReader();
+                        var decoder = new TextDecoder();
+                        var buf = '';
+                        var done = false;
+                        while (!done) {
+                            var chunk = await reader.read();
+                            if (chunk.done) break;
+                            buf += decoder.decode(chunk.value, { stream: true });
+                            var lines = buf.split('\n');
+                            buf = lines.pop();
+                            for (var i = 0; i < lines.length; i++) {
+                                var line = lines[i];
+                                if (!line.startsWith('data: ')) continue;
+                                var raw = line.slice(6).trim();
+                                if (raw === '[DONE]') { done = true; break; }
+                                try {
+                                    var parsed = JSON.parse(raw);
+                                    if (parsed.delta) {
+                                        answer += parsed.delta;
+                                        streamMsg.innerHTML = chatMd(answer);
+                                        messagesEl.scrollTop = messagesEl.scrollHeight;
+                                    }
+                                } catch(e) {}
+                            }
+                        }
                     } else {
-                        var answer = data.answer || '';
+                        var data = await resp.json();
+                        if (thinkingEl) thinkingEl.remove();
+                        answer = data.answer || '';
                         addChatMsg(answer, false);
+                    }
+
+                    if (answer) {
                         chatContext.push({ role: 'user', content: question });
                         chatContext.push({ role: 'assistant', content: answer });
                         saveChatContext();
