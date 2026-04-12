@@ -12,7 +12,7 @@
 > This is my third generation blog. The first two generations were dynamic blogs with unstable servers in the background. Fortunately, this blog is now more stable and will be continuously maintained.
 
 > [!NOTE]
-> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企到现在创业，现在正在环游世界，在思考，在记录，在创造 ..
+> 我从大学开始远程工作，经历了 [OpenIM 开源社区](https://github.com/openimsdk/open-im-server) 实习，外企工作，到现在 AI 创业，正在环游世界。在思考，在记录，在创造。
 > + [关于我](https://nsddd.top/zh/about/)
 > + [一些碎片的思考笔记](https://diary.nsddd.top/flomo-original/)
 > + [跟着我看我环游世界旅居的笔记](https://www.polarsteps.com/cubxxw)
@@ -48,46 +48,54 @@
     </table>
 </div>
 
+## Category Architecture (v2.0.0)
+
+This blog uses a **4-category architecture** aligned with the author's identity as **AI Builder, Open Source Contributor, and Digital Nomad**.
+
+| Category | Description | Content Coverage |
+|----------|-------------|------------------|
+| **AI & Technology** | Technical content about AI/LLM, Kubernetes, Go, DevOps | AI/LLM applications, Kubernetes cloud-native, Go engineering, DevOps practices |
+| **Projects** | AI open source project deep-dives and product builds | LangChain, GPT-Researcher, Jina analysis, independent developer products |
+| **Growth** | Personal growth, annual reviews, mindset, efficiency methods | Annual reviews, monthly thoughts, GTD, Flow State, career development |
+| **Travel** | Travel experiences and digital nomad lifestyle | Travel itineraries, digital nomad life, cultural exploration, adventures |
+
+For detailed category documentation, see [`content/CATEGORIES.md`](content/CATEGORIES.md).
+
+---
+
 ## Tagging Standards
 
-Based on your professional skills, technical expertise, and personal interests, I have prepared a more comprehensive list of tags and categories, presented in a table format, distinguishing between Chinese and English blogs.
+For comprehensive governance rules on category vs tag decisions, see [`docs/TAG_GOVERNANCE.md`](docs/TAG_GOVERNANCE.md).
 
-### 中文博客的标签和分类
+### Core Principles
 
-| 类别       | 标签                                                                                               | 分类                             |
-|------------|----------------------------------------------------------------------------------------------------|----------------------------------|
-| 技术       | `Golang (GO语言)`, `Kubernetes`, `OpenIM`, `云原生 (Cloud Native)`, `微服务 (Microservices)`, `服务网格 (Service Mesh)`, `Docker`, `CI/CD`, `Prometheus` | `开发 (Development)`             |
-| AI开源项目 | `LLM`, `向量数据库`, `AI框架`, `模型训练`, `推理优化`, `AI工具链`, `AI应用`, `AI部署`, `AI性能优化` | `AI开源 (AI Open Source)`        |
-| 安全       | `安全性 (Security)`, `代码审查 (Code Review)`                                                       | `安全 (Security)`                |
-| 敏捷与流程 | `敏捷软件开发 (Agile Software Development)`, `响应式编程 (Reactive Programming)`, `函数式编程 (Functional Programming)` | `项目管理 (Project Management)`   |
-| 个人兴趣   | `户外探险 (Outdoor Adventures)`, `环球旅行 (World Travel)`, `自行车骑行 (Cycling)`, `摄影 (Photography)`, `旅行 (Travel)`, `自我发现 (Self Discovery)`, `冒险 (Adventure)`, `探索 (Exploration)` | `个人成长 (Personal Development)`|
-| 生活方式   | `个人效率 (Personal Productivity)`, `健康生活 (Healthy Living)`, `生活方式 (Lifestyle)`, `远程工作 (Remote Work)` | `生活与教育 (Living & Education)`|
-| 人工智能   | `深度学习 (Deep Learning)`, `自然语言处理 (NLP, Natural Language Processing)`, `计算机视觉 (Computer Vision)`, `强化学习 (Reinforcement Learning)`, `转移学习 (Transfer Learning)`, `LLM` | `人工智能 (AI)`                  |
+- **Categories (1 per post)**: Broad content buckets for navigation - choose from 4 core categories
+- **Tags (5-8 per post)**: Specific topics and technologies - flexible and detailed
+- **Tag Naming**: Use Title Case, avoid duplicates (e.g., use `Go` not `golang` or `Golang`)
+- **Language Consistency**: Use English tags for both CN/EN blogs for unified tagging
 
-### Tags and Categories for English Blogs
+### Tag Groups (9 Categories)
+|-------|------|
+| **Programming Languages** | Go, Python, JavaScript, TypeScript, Rust, Java |
+| **Cloud Native** | Kubernetes, Docker, Cloud Native, Helm, Istio, Containerd |
+| **AI/ML** | AI, Machine Learning, Deep Learning, LLM, NLP, Computer Vision |
+| **Technology** | DevOps, Automation, Testing, Performance, Security, Monitoring, CI/CD |
+| **Architecture** | Microservices, System Design, Distributed Systems, Event-Driven |
+| **Tools** | Git, GitHub, VS Code, Linux, Vim, Docker Desktop |
+| **Open Source** | Open Source, Community, Contribution, Maintenance |
+| **Life** | Blog, Travel, Personal Growth, Self-Discovery, Reading, Reflection |
+| **Culture** | Remote Work, Team Collaboration, Management, Leadership |
 
-| Category            | Tags                                                                                       | Classification                  |
-|---------------------|--------------------------------------------------------------------------------------------|---------------------------------|
-| Technology          | `Golang`, `Kubernetes`, `OpenIM`, `Cloud Native`, `Microservices`, `Service Mesh`, `Docker`, `CI/CD`, `Prometheus` | `Development`                   |
-| Security            | `Security`, `Code Review`                                                                   | `Security`                      |
-| Agile & Processes   | `Agile Software Development`, `Reactive Programming`, `Functional Programming`             | `Project Management`            |
-| Personal Interests  | `Outdoor Adventures`, `World Travel`, `Cycling`, `Photography`, `Travel`, `Self Discovery`, `Adventure`, `Exploration` | `Personal Development`          |
-| Lifestyle           | `Personal Productivity`, `Healthy Living`, `Lifestyle`, `Remote Work`                      | `Learning & Education`          |
-| Artificial Intelligence | `Deep Learning`, `Natural Language Processing`, `Computer Vision`, `Reinforcement Learning`, `Transfer Learning`， `LLM` | `AI`       |
+### Usage Guidelines
 
-### Keywords
+- **Categories (1 per post)**: Broad content buckets for navigation - choose from 4 core categories
+- **Tags (5-8 per post)**: Specific topics and technologies - flexible and detailed
+- **Tag Naming**: Use Title Case, avoid duplicates (e.g., use `Go` not `golang` or `Golang`)
+- **Language Consistency**: Use English tags for both CN/EN blogs for unified tagging
 
-Keywords can generally be generated by AI.
+For detailed tagging standards, see [`TAGS.md`](TAGS.md).
 
-### Usage Standards
-
-- **Tag Naming**: Choose directly related tags, ensuring accuracy and consistency of professional terms in both Chinese and English blogs.
-- **Category Selection**: Select the most relevant 1-2 categories for each article. Avoid over-categorization to maintain focus and efficiency of the content.
-- **Category Coverage**: Each category should cover several articles to avoid creating "empty categories" that have no articles.
-- **Avoid Duplication**: Be mindful not to repeat tags, avoiding situations where the same concept is labeled differently, such as "编程" and "程序设计".
-- **Language Consistency**: For bilingual blogs, ensure that tags and categories are represented in both Chinese and English to accommodate readers of different languages.
-- **Language Neutrality**: Choose category names that are universally understandable across languages, such as industry terms or widely recognized concepts. For example, "Technology" and "科技", "Health" and "健康".
-
+---
 
 ## Subscribe
 
@@ -133,31 +141,38 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Agent Identity: From Locke to OpenClaw](https://nsddd.top/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
+- [How to Maintain the Weight of Self in an Age When You Are No Longer Needed](https://nsddd.top/growth/posts/weight-of-self-in-ai-age/)
+- [March 2026 Thought Notes](https://nsddd.top/growth/posts/2026-03-thought-notes/)
+- [I'm Wandering, But I'm Not Lost — 2025-2026 Annual Review](https://nsddd.top/growth/posts/2025-annual-review/)
+- [AI Is Getting Smarter, But I'm Losing Myself](https://nsddd.top/growth/posts/ai-and-self-identity/)
+- [February 2026 Thought Notes](https://nsddd.top/growth/posts/2026-02-thought-notes/)
+- [January 2026 Thought Notes](https://nsddd.top/growth/posts/2026-01-thought-notes/)
+- [December 2025 Thought Notes](https://nsddd.top/growth/posts/2025-12-thought-notes/)
+- [2025 November Thought Notes](https://nsddd.top/growth/posts/2025-11-thought-notes/)
 - [2025 August Thought Notes](https://nsddd.top/growth/posts/2025-08-thought-notes/)
 - [2025 July Thought Notes](https://nsddd.top/growth/posts/2025-07-thought-notes/)
 - [2025 June Thought Notes](https://nsddd.top/growth/posts/2025-06-thought-notes/)
 - [Metacognitive Transformation Review](https://nsddd.top/growth/posts/metacognitive-transformation-review/)
 - [2025 May Thought Notes](https://nsddd.top/growth/posts/2025-05-thought-notes/)
-- [Mem0](https://nsddd.top/ai-technology/posts/mem0/)
-- [UFO](https://nsddd.top/ai-technology/posts/ufo/)
-- [Argo Cd](https://nsddd.top/ai-technology/posts/argo-cd/)
 - [2025 April Thought Notes](https://nsddd.top/growth/posts/2025-04-thought-notes/)
-- [Ai Recommend 开源项目深度学习](https://nsddd.top/projects/ai-recommend/)
-- [Notebooklm 开源项目深度学习](https://nsddd.top/projects/notebooklm/)
-- [Tdd 开源项目深度学习](https://nsddd.top/projects/tdd/)
-- [MarkItdown 开源项目深度学习](https://nsddd.top/projects/markitdown/)
-- [Langgraph 开源项目深度学习](https://nsddd.top/projects/langgraph/)
-- [Langchain 开源项目深度学习](https://nsddd.top/projects/langchain/)
-- [LLM/AI API 网关市场分析 & 创业团队选型推荐](https://nsddd.top/projects/ai-gateway/)
-- [Independent Developer 开源项目深度学习](https://nsddd.top/projects/independent-developer/)
-- [Gpt Researcher 开源项目深度学习](https://nsddd.top/projects/gpt-researcher/)
-- [Jina](https://nsddd.top/projects/jina/)
+- [AI Recommendation Systems: Open Source Deep Dive](https://nsddd.top/projects/ai-recommend/)
+- [NotebookLM: Google's AI Research Assistant Deep Dive](https://nsddd.top/projects/notebooklm/)
+- [Test-Driven Development for AI Applications: Open Source Deep Dive](https://nsddd.top/projects/tdd/)
+- [MarkItDown: Microsoft's Document-to-Markdown Converter Deep Dive](https://nsddd.top/projects/markitdown/)
+- [LangGraph: Open Source Deep Dive](https://nsddd.top/projects/langgraph/)
+- [LangChain: Open Source Deep Dive](https://nsddd.top/projects/langchain/)
+- [LLM/AI API Gateway Market Analysis & Startup Stack Recommendations](https://nsddd.top/projects/ai-gateway/)
+- [Independent Developer in the AI Era: Open Source Deep Dive](https://nsddd.top/projects/independent-developer/)
+- [GPT Researcher: Open Source Deep Dive](https://nsddd.top/projects/gpt-researcher/)
+- [Jina AI: Multimodal Embedding and Search Deep Dive](https://nsddd.top/projects/jina/)
 - [2025 March Thought Notes](https://nsddd.top/growth/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://nsddd.top/growth/posts/2024-annual-review/)
-- [🌍 Travel Footprints | 旅行足迹](https://nsddd.top/travel/)
+- [About Me](https://nsddd.top/about/)
+- [Travel Footprints](https://nsddd.top/travel/)
 - [Kubernetes Resources and Learning Path Summary](https://nsddd.top/ai-technology/posts/kubernetes-learning/)
-- [Harnessing Language Model Applications with LangChain: A Developer is s Guide](https://nsddd.top/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [Exploring Large Language Models Llms Pioneering Ai Understanding Generation Human Language](https://nsddd.top/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
+- [Harnessing Language Model Applications with LangChain: A Developer's Guide](https://nsddd.top/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
+- [Exploring Large Language Models (LLMs): Pioneering AI Understanding, Generation & Human Language](https://nsddd.top/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
 - [Crafting Your Career Pathway: A Guide to Open Source Resume Builders and Expert Resume Tips](https://nsddd.top/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
 - [Troubleshooting Guide for OpenIM](https://nsddd.top/ai-technology/posts/troubleshooting-guide-for-openim/)
 - [Navigating the Open Source Landscape](https://nsddd.top/ai-technology/posts/navigating-the-open-source-landscape/)
@@ -209,7 +224,9 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Use Go Tools Dlv](https://nsddd.top/ai-technology/posts/use-go-tools-dlv/)
 - [Participating in This Project](https://nsddd.top/ai-technology/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
-- [Personal User Manual](https://nsddd.top/about/)
+- [Start Here](https://nsddd.top/start-here/)
+- [[No Title] - Post](https://nsddd.top/claude/)
+- [分类 · CATEGORIES](https://nsddd.top/categories/)
 <!-- My-Blog-EN:END -->
 
 
@@ -218,6 +235,18 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [Agent 的自我：从洛克到 OpenClaw](https://nsddd.top/zh/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
+- [在不被需要的时代，如何维持自我的重量](https://nsddd.top/zh/growth/posts/weight-of-self-in-ai-age/)
+- [2026 年 3 月思考笔记 | March 2026 Thought Notes](https://nsddd.top/zh/growth/posts/2026-03-thought-notes/)
+- [拉萨——一座城市的慢与重](https://nsddd.top/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy/)
+- [我在游荡，但我没有迷路 — 2025-2026 年度总结](https://nsddd.top/zh/growth/posts/2025-annual-review/)
+- [AI 越来越聪明，我却越来越不知道自己是谁](https://nsddd.top/zh/growth/posts/ai-and-self-identity/)
+- [2026 年 2 月思考笔记 | February 2026 Thought Notes](https://nsddd.top/zh/growth/posts/2026-02-thought-notes/)
+- [2026 年 1 月思考笔记 | January 2026 Thought Notes](https://nsddd.top/zh/growth/posts/2026-01-thought-notes/)
+- [2025 年 12 月思考笔记 | December 2025 Thought Notes](https://nsddd.top/zh/growth/posts/2025-12-thought-notes/)
+- [日本旅居笔记 - 用木头、火与缺口和时间共处](https://nsddd.top/zh/growth/posts/japan-travel-2025/)
+- [2025年11月思考笔记](https://nsddd.top/zh/growth/posts/2025-11-thought-notes/)
+- [2025年10月思考笔记](https://nsddd.top/zh/growth/posts/2025-10-thought-notes/)
 - [2025年9月思考笔记](https://nsddd.top/zh/growth/posts/2025-09-thought-notes/)
 - [2025年8月思考笔记](https://nsddd.top/zh/growth/posts/2025-08-thought-notes/)
 - [2025年7月思考笔记](https://nsddd.top/zh/growth/posts/2025-07-thought-notes/)
@@ -240,7 +269,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina 开源项目深度学习](https://nsddd.top/zh/projects/jina/)
 - [2025年3月思考笔记](https://nsddd.top/zh/growth/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://nsddd.top/zh/growth/posts/2024-annual-review/)
-- [🌍 旅行足迹 | Travel Footprints](https://nsddd.top/zh/travel/)
+- [关于我](https://nsddd.top/zh/about/)
+- [旅行足迹](https://nsddd.top/zh/travel/)
 - [Kubernetes 资源与学习路径总结](https://nsddd.top/zh/ai-technology/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://nsddd.top/zh/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [探索大型语言模型（llm）：人工智能在理解与生成人类语言方面的先锋](https://nsddd.top/zh/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
@@ -295,7 +325,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [跨平台以及多架构编译设计](https://nsddd.top/zh/ai-technology/posts/cross-platform-compilation/)
 - [Kubernetes一篇快速入门的文章](https://nsddd.top/zh/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
 - [参与我们的区块链学习平台项目](https://nsddd.top/zh/ai-technology/posts/participating-in-this-project/)
-- [关于我](https://nsddd.top/zh/about/)
+- [从这里开始](https://nsddd.top/zh/start-here/)
+- [分类 · CATEGORIES](https://nsddd.top/zh/categories/)
 <!-- My-Blog-ZH:END -->
 
 
