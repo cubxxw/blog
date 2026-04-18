@@ -2595,11 +2595,15 @@ details summary,
 .toc-inline__item--h4 { padding-left: 28px; }
 .toc-inline__item--h5 { padding-left: 42px; }
 
-/* Show inline TOC only on small screens */
-@media (max-width: 1499px) {
+/* Show inline TOC only when three-column layout is NOT active (< 1280px) */
+@media (max-width: 1279px) {
     .toc-inline {
         display: block;
     }
+}
+
+/* Between 1280-1499px: hide floating reading-companion (three-col has editorial-tools) */
+@media (max-width: 1499px) {
     /* Hide floating reading-companion, but NOT the one inside .article-tools (three-column layout) */
     .reading-companion:not(.editorial-tools-panel) {
         display: none;
