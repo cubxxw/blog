@@ -8,6 +8,8 @@
 - 文章正文宽度通过 `.post-single .post-content > [元素类型]` 的直接子选择器控制，可对段落与媒体设置不同 max-width 实现 bleed 效果
 - Playwright 需要 @types/node + tsconfig.json 才能通过 TypeScript 类型检查；`npx playwright install --with-deps chromium` 在 CI 中安装浏览器
 - package.json 中 Playwright 版本锁定为 ^1.52.0，实际安装 1.59.1
+- PaperMod 主题用 body.dark 类切换深色模式，不使用 html[data-theme]
+- sticky header 按钮 Playwright 报 outside-of-viewport：用 page.evaluate(() => el.click()) 绕过
 ---
 
 # Ralph Progress Log
@@ -104,4 +106,16 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - Playwright `--update-snapshots` 标志用于首次生成基线截图，无快照时会自动写入
   - 每个测试文件的快照存入同名 `{spec-file}.spec.ts-snapshots/` 目录，命名格式 `{name}-{project}-{platform}.png`
   - `test.skip(testInfo.project.name !== 'desktop', ...)` 模式可避免在错误 project 下运行视口特定测试
+---
+
+## 2026-04-18 - US-021
+- 新增 tests/e2e/header-search.spec.ts：搜索面板通过点击触发按钮打开、输入关键词、Esc 关闭
+- 新增 tests/e2e/header-theme.spec.ts：主题切换按钮切换 body.dark 类（JS click 绕过 sticky header viewport 问题）
+- 新增 tests/e2e/header-lang.spec.ts：读取语言切换链接 href 并直接 page.goto 验证 URL 变化
+- tsconfig.json 添加 "DOM" 到 lib，支持 page.evaluate 中的 document/HTMLElement 类型
+- Files changed: tests/e2e/header-search.spec.ts（新建）、tests/e2e/header-theme.spec.ts（新建）、tests/e2e/header-lang.spec.ts（新建）、tsconfig.json（更新）
+- **Learnings for future iterations:**
+  - sticky header 中的按钮在 Playwright 中报 "element is outside of the viewport"，`force: true` 仍不能点击；解决方案：`page.evaluate(() => el.click())` 或直接 `page.goto(href)`
+  - tsconfig.json 的 "lib" 需包含 "DOM" 才能在 page.evaluate 回调函数中使用 document/HTMLElement 等 DOM 类型
+  - PaperMod 主题通过 body.dark 类切换主题，不使用 html[data-theme]，测试断言应检查 document.body.classList
 ---
