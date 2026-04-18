@@ -345,8 +345,8 @@
         "Tests pass"
       ],
       "priority": 22,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "新增 article-toc.spec.ts：在 desktop 视口打开带 TOC 的文章，点击 TOC 第二项（JS click 绕过 sticky 问题），断言页面滚动到对应标题（headingRect.top < viewportHeight）、URL hash 更新（#headingId）、TOC 链接高亮（toc-sidebar-active 类）。1 个测试通过（1 个 mobile 跳过），TypeCheck 通过。"
     },
     {
       "id": "US-023",

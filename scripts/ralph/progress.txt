@@ -119,3 +119,12 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - tsconfig.json 的 "lib" 需包含 "DOM" 才能在 page.evaluate 回调函数中使用 document/HTMLElement 等 DOM 类型
   - PaperMod 主题通过 body.dark 类切换主题，不使用 html[data-theme]，测试断言应检查 document.body.classList
 ---
+
+## 2026-04-18 - US-022
+- 新增 tests/e2e/article-toc.spec.ts：desktop 视口打开文章，JS click 第二个 TOC 链接，断言标题滚动入视窗 + URL hash 更新 + toc-sidebar-active 高亮类
+- Files changed: tests/e2e/article-toc.spec.ts（新建）
+- **Learnings for future iterations:**
+  - TOC 侧边栏链接的 JS click：`document.querySelector('.toc-sidebar__nav a[href="#id"]').click()` 最可靠
+  - IntersectionObserver 触发需要 waitForTimeout(800) 给足时间让滚动和 observer 回调完成
+  - `page.evaluate` 返回的 getBoundingClientRect 是相对视窗的坐标，top < viewportHeight 即可认为在视窗内
+---
