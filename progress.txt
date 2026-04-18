@@ -1,3 +1,17 @@
+## 2026-04-18 - US-009
+- Travel 页面统计网格从 `repeat(auto-fit, minmax(180px, 1fr))` 改为 `repeat(4, 1fr)`（桌面始终 4 列）
+- 新增 `@media (max-width: 1279px) and (min-width: 768px)` 平板断点，设为 `repeat(2, 1fr)`（2×2 布局）
+- `@media (max-width: 768px)` 改为 `grid-template-columns: 1fr`（单列，原为 2 列）
+- `@media (max-width: 480px)` 同样改为 `1fr`（与 768px 保持一致）
+- 文件变更：layouts/page/travel.html
+- Hugo --minify 构建通过，生成 HTML 确认 `repeat(4,1fr)` 和响应式规则均已应用
+- **Learnings for future iterations:**
+  - Travel 页面 CSS 内联在 travel.html 的 `<style>` 标签中，不在 assets/css/ 目录
+  - travel.html 响应式断点：768px（手机）、900px（文章网格桌面）、1279px（统计网格平板），需分别处理
+  - auto-fit/auto-fill 在项目数量固定时不如显式 repeat(4, 1fr) 可预测
+
+---
+
 ## 2026-04-18 - US-008
 - 根本原因：`body { overflow-x: hidden }` 使 body 成为独立滚动容器，破坏 position:sticky
 - 修复：body 改用 `overflow-x: clip`（clip 不创建滚动容器，sticky 可相对 html 正常工作）

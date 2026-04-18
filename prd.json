@@ -141,8 +141,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "将 .tp-stats__inner 默认列数从 repeat(auto-fit, minmax(180px, 1fr)) 改为 repeat(4, 1fr)。新增 @media (max-width: 1279px) and (min-width: 768px) 媒体查询设置 2×2 布局。768px 以下改为单列 1fr（原为 2 列）。"
     },
     {
       "id": "US-010",
