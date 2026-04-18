@@ -1311,8 +1311,20 @@ details summary,
 }
 
 /* Enhanced About Page Styles */
+
+/* Widen the PaperMod .main container when About page is present.
+   :has() is supported in all modern browsers (Chrome 105+, Firefox 121+, Safari 15.4+). */
+.main:has(.about-container) {
+  max-width: 1000px;
+}
+
+.post-single:has(.about-container) {
+  max-width: 100%;
+}
+
 .about-container {
-  max-width: 900px;
+  max-width: 880px;
+  width: 100%;
   margin: 0 auto;
   line-height: 1.8;
   padding: 20px;
