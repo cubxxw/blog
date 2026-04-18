@@ -32,8 +32,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "将 .post-entry-title a 的 color 从 var(--entry) 修正为 var(--color-text-heading, var(--primary))。hover 改用 var(--color-accent) + underline。"
     },
     {
       "id": "US-003",

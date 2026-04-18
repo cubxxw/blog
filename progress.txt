@@ -6,6 +6,18 @@
 
 ---
 
+## 2026-04-18 - US-002
+- 修复 `.post-entry-title a` 的 `color: var(--entry)` 错误（entry 是白色背景变量，不是文字颜色）
+- 改为 `color: var(--color-text-heading, var(--primary))`，浅色模式深灰色，深色模式浅色
+- hover 状态改用 `var(--color-accent)` + `text-decoration: underline` 提供明确反馈
+- 文件变更：assets/css/extended/custom.css（第 556-564 行）
+- Hugo --minify 构建通过，新版 stylesheet 已包含修正后的规则
+- **Learnings for future iterations:**
+  - `var(--entry)` 是 PaperMod 的卡片背景色（白色），不能用于文字颜色
+  - 文字颜色应使用 `var(--primary)`、`var(--color-text)` 或 `var(--color-text-heading)`
+  - Hugo 构建后 public/assets/css/ 会有多个版本，最新修改的是最近时间戳那个
+---
+
 ## 2026-04-18 - US-001
 - 新增 assets/css/extended/tokens.css，定义语义化颜色 tokens：--color-bg, --color-bg-elevated, --color-text, --color-text-muted, --color-border, --color-accent, --color-text-heading
 - 同时支持 .dark 类（PaperMod 原有机制）和 [data-theme="dark"] 属性选择器
