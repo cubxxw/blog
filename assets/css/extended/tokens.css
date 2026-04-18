@@ -1,0 +1,67 @@
+/* Aesthetic Agent Identity — CSS Design Tokens
+ *
+ * These tokens are independent of PaperMod's --theme / --primary / --secondary.
+ * Language switching via :lang(zh) / :lang(en) selectors.
+ * Dark mode via html.dark (PaperMod convention).
+ */
+
+/* ─── Light / English (default) ───────────────────────────── */
+:root {
+  --color-paper:        #f9f9f7;
+  --color-ink:          #1a1c1b;
+  --color-ink-muted:    #5e5e63;
+  --color-accent:       #2e352e;
+  --color-accent-soft:  #dde5da;
+  --color-rule:         rgba(30, 35, 30, 0.12);
+
+  --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-meta:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --line-height-prose: 1.75;
+  --tracking-prose:    normal;
+  --drop-cap-size:     3.5rem;
+}
+
+/* ─── Light / Chinese override ─────────────────────────────── */
+html:lang(zh) {
+  --color-paper:        #fbf9f4;
+  --color-ink:          #350003;
+  --color-ink-muted:    #6c5b4e;
+  --color-accent:       #862122;
+  --color-accent-soft:  #eae8e3;
+  --color-rule:         rgba(53, 0, 3, 0.10);
+
+  --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC',
+                  'Hiragino Sans GB', 'Microsoft YaHei', 'STSong',
+                  'SimSun', serif;
+  --font-body:    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+                  system-ui, sans-serif;
+  --font-meta:    'PingFang SC', 'Hiragino Sans GB', system-ui, sans-serif;
+
+  --line-height-prose: 2.0;
+  --tracking-prose:    0.02em;
+  --drop-cap-size:     4.5rem;
+}
+
+/* ─── Dark / English ───────────────────────────────────────── */
+html.dark:lang(en),
+html.dark:not(:lang(zh)) {
+  --color-paper:        #121413;
+  --color-ink:          #e2e3e1;
+  --color-ink-muted:    #b4bcb2;
+  --color-accent:       #b4bcb2;
+  --color-accent-soft:  #2a2f2a;
+  --color-rule:         rgba(226, 227, 225, 0.10);
+}
+
+/* ─── Dark / Chinese ───────────────────────────────────────── */
+html.dark:lang(zh) {
+  --color-paper:        #1c1917;
+  --color-ink:          #f5f3ee;
+  --color-ink-muted:    #a8a29e;
+  --color-accent:       #ff3b3b;
+  --color-accent-soft:  #2e1a19;
+  --color-rule:         rgba(245, 243, 238, 0.10);
+}
