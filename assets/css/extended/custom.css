@@ -2540,38 +2540,10 @@ details summary,
     }
 }
 
-@media (min-width: 1600px) {
-    .post-single {
-        max-width: 760px;
-        margin: 0 auto;
-    }
-}
-
-/* ===================================
-   Article Layout — Single-column, centered
-   (Left TOC removed; right-side Reading Companion handles the outline.)
-   =================================== */
-
-.article-layout {
-    display: block;
-}
 
 /* Legacy left TOC fully retired */
 .toc-sidebar {
     display: none !important;
-}
-
-@media (min-width: 1280px) {
-    .article-layout {
-        max-width: 760px;
-        margin: 0 auto;
-    }
-}
-
-@media (min-width: 1920px) {
-    .article-layout {
-        max-width: 780px;
-    }
 }
 
 /* ===================================
@@ -2628,7 +2600,8 @@ details summary,
     .toc-inline {
         display: block;
     }
-    .reading-companion {
+    /* Hide floating reading-companion, but NOT the one inside .article-tools (three-column layout) */
+    .reading-companion:not(.editorial-tools-panel) {
         display: none;
     }
 }
