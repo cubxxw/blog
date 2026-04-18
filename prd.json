@@ -126,8 +126,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "根本原因：body { overflow-x: hidden } 使 body 成为独立滚动容器，导致 position:sticky 失效。修复：body 改用 overflow-x: clip（不创建滚动容器）；html, body { overflow-y: auto } 改为仅 html。.header-wrapper 保留 position:sticky; top:0; z-index:100。Back to Top 按钮 z-index:99，无冲突。"
     },
     {
       "id": "US-009",

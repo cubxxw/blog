@@ -1,3 +1,17 @@
+## 2026-04-18 - US-008
+- 根本原因：`body { overflow-x: hidden }` 使 body 成为独立滚动容器，破坏 position:sticky
+- 修复：body 改用 `overflow-x: clip`（clip 不创建滚动容器，sticky 可相对 html 正常工作）
+- `html, body { overflow-y: auto }` 改为仅 `html { overflow-y: auto }`，避免 body 变成垂直滚动容器
+- .header-wrapper 已有 position:sticky; top:0; z-index:100，Back to Top 按钮 z-index:99，无层级冲突
+- 文件变更：assets/css/extended/custom.css
+- Hugo --minify 构建通过，dev server 验证 body{overflow-x:clip} 在 CSS 中确认
+- **Learnings for future iterations:**
+  - `overflow-x: hidden` 在 body 上会创建滚动容器，导致所有后代的 position:sticky 失效
+  - 修复方案：body 用 `overflow-x: clip`（CSS 新属性，不创建滚动容器）；html 可继续用 hidden/scroll
+  - sticky 生效的关键：祖先链中没有 overflow:hidden/auto/scroll 的元素（clip 除外）
+  - PaperMod 的 html { overflow-y: scroll } 不影响 sticky，因为这正是 sticky 需要的滚动容器
+---
+
 ## 2026-04-18 - US-007
 - 根本原因：PaperMod profile-mode.css 的 .main .profile { overflow: hidden } 导致首页 profile 模式整页滚动阻断
 - 覆盖修复：custom.css 末尾添加 .main .profile { overflow: visible }
@@ -70,6 +84,7 @@
 - Hugo build 命令：`hugo --minify`，验证输出在 public/ 目录。
 - 不要用 make，用 `netlify dev` 启动开发服务器，或 `hugo --minify` 做构建验证。
 - PaperMod 主题的 profile-mode.css 设置了 .profile_title { letter-spacing: -0.06em }，覆盖时需显式 letter-spacing: normal 重置。覆盖主题样式时要用 grep 检查 themes/ 目录是否有未覆盖的负面属性。
+- `body { overflow-x: hidden }` 会使 body 成为滚动容器，破坏 position:sticky。应改用 `body { overflow-x: clip }`（clip 不创建滚动容器）。html 可继续用 overflow-x: hidden。
 
 ---
 
