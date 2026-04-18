@@ -264,8 +264,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 17,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "修复汉堡菜单 CSS 类名冲突（mobile-open vs is-open）。添加表格 display:block+overflow-x:auto 防止溢出。375px 专项修复隐藏 kbd 快捷键并缩减内边距。TOC sidebar 移动端强制 display:none。main/post-single/post-content 添加 overflow-x:clip。"
     },
     {
       "id": "US-018",

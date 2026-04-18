@@ -1,3 +1,21 @@
+## 2026-04-18 - US-017
+- 修复汉堡菜单 CSS 类名冲突：nav-elegant.css 的 `#menu.is-open` 样式也支持 `mobile-open`，与 JS 对齐
+- 添加 `.post-content table { display: block; overflow-x: auto }` 修复表格移动端溢出
+- 代码块/highlight 在 768px 以下限制 `max-width: calc(100vw - 2 * var(--gap, 20px))`
+- 375/390px 专项修复：隐藏 `.nav-search-trigger__keys` kbd 快捷键，缩小 profile 标题字体，减少 panel 内边距
+- Travel 统计 390px 以下强制 2×2 布局（原 4 列会溢出 375px 视口）
+- `.main/.post-single/.post-content` 添加 `overflow-x: clip` 防止横向滚动条
+- 段落/列表/引用块添加 `word-break: break-word` 防止长 URL 溢出
+- TOC sidebar 在 768px 以下添加 `display: none !important`（belt-and-suspenders）
+- 文件变更：assets/css/extended/custom.css（新增 US-017 区块），assets/css/extended/nav-elegant.css（mobile-open 兼容）
+- Hugo --minify 构建通过，860 页面生成成功
+- **Learnings for future iterations:**
+  - `nav-elegant.css` 的 `#menu.is-open` 与 `header.html` JS 用的 `mobile-open` 类名不匹配，导致 nav-elegant.css 菜单动画从未生效
+  - `table { overflow-x: auto }` 在 block-level table 上需要配合 `display: block` 才真正生效；对 inline-block 或 flex table 无效
+  - `overflow-x: clip` 与 `overflow-x: hidden` 的关键区别：clip 不创建新的滚动容器，不破坏 position:sticky
+
+---
+
 ## 2026-04-18 - US-012
 - 使用 CSS :has() 选择器扩宽 About 页面 .main 容器：`.main:has(.about-container) { max-width: 1000px }`
 - `.post-single:has(.about-container) { max-width: 100% }` 消除内部 post-single 的宽度截断
