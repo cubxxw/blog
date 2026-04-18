@@ -1,3 +1,17 @@
+## 2026-04-18 - US-033
+- 新建 tests/e2e/visual/aesthetic-agent.spec.ts：Matrix {en,zh} × {light,dark} × {desktop,mobile} 共 8 视觉测试用例 + 1 HTML 报告生成用例
+- 断言：:lang(zh) .post-title computed font-family 含 noto/serif；:lang(en) 含 fraunces/serif
+- 断言：ZH dark accent 含 ff3b3b；EN dark accent 不含 ff3b3b；0 console error
+- 截图输出到 tests/e2e/visual/snapshots/aesthetic-agent/（8 张）
+- HTML 报告 tests/e2e/visual/aesthetic-agent-report.html：8 张实现截图 + 4 张 Stitch 稿并列展示
+- .gitignore 新增：tests/e2e/visual/aesthetic-agent-report.html 与 tests/e2e/visual/snapshots/
+- Files changed: tests/e2e/visual/aesthetic-agent.spec.ts（新建）、.gitignore（修改）
+- **Learnings for future iterations:**
+  - visual/ 子目录测试文件会被 playwright.config.ts testDir: './tests/e2e' 自动发现，无需额外配置
+  - 报告生成 test 可放在同一 spec 文件末尾，用 fs.writeFileSync 生成 HTML，path.relative 计算截图相对路径
+  - HTML 报告用 grid + img 即可实现并列对比，完全静态，无需运行服务
+---
+
 ## 2026-04-18 - US-032
 - tokens.css：修正暗色 CSS 选择器 html.dark → body.dark（PaperMod 将 .dark 类加在 body 上而非 html，经 footer.html JS 确认）；新增 .article-main background transition
 - article-typography.css：新增 body.dark .post-content h2 规则，覆盖 custom.css 中固定的 .dark .post-content h2 { border-left-color: #14b8a6 }，使 h2 border 颜色引用 var(--color-accent) token
