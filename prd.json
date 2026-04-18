@@ -48,8 +48,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "为 .nav-search-trigger 添加 white-space: nowrap 和 flex-shrink: 0。为 __label 和 __keys 子元素也添加 white-space: nowrap。lang-switch 和 .logo-switches 添加 flex-shrink: 0 防止压缩。< 768px 隐藏 __label 保留图标。"
     },
     {
       "id": "US-004",

@@ -1,3 +1,16 @@
+## 2026-04-18 - US-003
+- 为 .nav-search-trigger 添加 white-space: nowrap 和 flex-shrink: 0，防止 flex 布局压缩按钮
+- 为 .nav-search-trigger__label 和 __keys 也添加 white-space: nowrap
+- lang-switch 和 .logo-switches 添加 flex-shrink: 0
+- < 768px 时 custom.css 已有 .nav-search-trigger__label { display: none } 隐藏文字，保留图标
+- 文件变更：assets/css/extended/nav-elegant.css
+- Hugo --minify 构建通过，white-space:nowrap 在 public/ 中确认存在
+- **Learnings for future iterations:**
+  - PaperMod .nav 在 1024px 以下会 flex-wrap，导致 logo-switches 宽度被压缩
+  - 搜索按钮各子元素都需要 white-space: nowrap，否则文字会在自身内部换行形成竖排
+  - flex-shrink: 0 在 logo-switches 和 nav-search-trigger 上都需要，防止宽度被挤压
+---
+
 ## Codebase Patterns
 - CSS 加载顺序：theme-vars.css → reset.css → common/*.css → hljs → includes → zmedia → extended/*.css。新增 extended/ 目录下的 CSS 文件会自动被 resources.Match 引入，无需修改 head.html。
 - 深色模式用 `.dark` 类（加在 `<body>` 上），而非 `[data-theme="dark"]` 属性。head.html 中的 JS 通过 localStorage 和 prefers-color-scheme 控制。
