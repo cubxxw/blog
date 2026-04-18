@@ -200,9 +200,9 @@
             <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
           </h3>
           {{- if ne $i 0 }}
-          <p class="tp-card__excerpt">{{ $page.Summary | plainify | htmlUnescape | truncate 100 }}</p>
+          <p class="tp-card__excerpt">{{ with $page.Description }}{{ . | plainify | htmlUnescape | truncate 100 }}{{ else }}{{ $page.Summary | plainify | htmlUnescape | truncate 100 }}{{ end }}</p>
           {{- else }}
-          <p class="tp-card__excerpt">{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}</p>
+          <p class="tp-card__excerpt">{{ with $page.Description }}{{ . | plainify | htmlUnescape | truncate 160 }}{{ else }}{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}{{ end }}</p>
           {{- end }}
           <a href="{{ $page.Permalink }}" class="tp-card__cta">
             {{ if $isZh }}阅读全文{{ else }}Read Story{{ end }}
