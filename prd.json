@@ -170,8 +170,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 11,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "创建 layouts/partials/breadcrumbs.html 覆盖主题版本。原因：About 是 type:page 直接在根目录，其 .Parent 是语言根，breadcrumb 模板遍历父级路径段时无中间节点。修复：在 range 循环后，若 kind==page 且未找到任何父级节点（$foundAny==false），则追加当前页面标题为 <span>。英文 'Home » About Me'，中文 '主页(Home) » 关于我'。文章页面的面包屑（如 Home » AI Technology）不受影响。"
     },
     {
       "id": "US-012",

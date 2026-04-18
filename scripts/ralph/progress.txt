@@ -1,0 +1,26 @@
+## Codebase Patterns
+- Hugo 自定义 partial 放在 layouts/partials/ 会自动覆盖主题 themes/PaperMod/layouts/partials/ 中同名文件
+- About 类型 `type: page` 的页面直接在根目录，breadcrumbs 模板通过 .Parent.Permalink 遍历路径段时无中间段
+- CSS 覆盖文件在 assets/css/extended/ 目录，文件名任意，会自动被主入口引入
+- hugo build（无参数）等同于完整构建，用于验证模板渲染结果
+- 深色模式使用 .dark 类（PaperMod 兼容）和 [data-theme="dark"] 双选择器
+- `overflow-x: clip` 而非 `hidden` 不会创建新的滚动容器，不会导致 position:sticky 失效
+---
+
+# Ralph Progress Log
+Started: Sat Apr 18 16:45:49 +07 2026
+---
+
+## 2026-04-18 - US-011
+- 创建 layouts/partials/breadcrumbs.html 覆盖主题版本的 breadcrumbs 模板
+- 在 range 循环中新增 $foundAny 变量追踪是否找到父级节点
+- 若 kind==page 且 $foundAny==false，在 Home 后追加当前页面 <span>{{ .Title }}</span>
+- 英文 About 页面：Home » About Me；中文页面：主页(Home) » 关于我
+- 文章页面 Home » AI Technology 等正常面包屑不受影响
+- Files changed: layouts/partials/breadcrumbs.html（新建）
+- **Learnings for future iterations:**
+  - Hugo partial 覆盖机制：layouts/partials/ 优先于 themes/PaperMod/layouts/partials/
+  - type:page 的独立页面（如 about.md）.Parent 是语言根，breadcrumb 路径段为空
+  - site.GetPage 对 type:page 的独立文件效果不一，依赖路径匹配
+  - Hugo scratch 变量 `$foundAny = false` 后 range 内赋值需用 `$foundAny = true`（标准 Go template 变量赋值语法）
+---
