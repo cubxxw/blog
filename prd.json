@@ -80,8 +80,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "在 tokens.css 定义 --theme-rgb 变量（浅色 255,255,255，深色 29,30,32）。header-wrapper 背景从 rgba(var(--theme-rgb, 15,23,42)) 改为 rgba(var(--theme-rgb, 29,30,32))，确保深色模式使用正确的 RGB 值而非白色回退。"
     },
     {
       "id": "US-006",

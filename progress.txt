@@ -1,3 +1,16 @@
+## 2026-04-18 - US-005
+- 在 tokens.css 添加 --theme-rgb 变量：浅色 255,255,255，深色 29,30,32
+- header-wrapper 深色模式背景回退值从 15,23,42 修正为 29,30,32（与 PaperMod 实际深色背景一致）
+- 根本原因：--theme-rgb 未定义，rgba() 使用了默认回退值白色，导致深色模式背景显示异常
+- 添加 transition: background-color 200ms ease 确保主题切换平滑
+- 文件变更：assets/css/extended/tokens.css, assets/css/extended/custom.css
+- Hugo --minify 构建通过，--theme-rgb 变量在 public/ CSS 中确认
+- **Learnings for future iterations:**
+  - CSS 中用 rgba(var(--rgb-var), 0.9) 的模式要先定义 --rgb-var，否则 rgba() 不生效
+  - .dark class 在 body 上，所以 .dark .header-wrapper 覆盖顺序正确
+  - PaperMod 深色 --theme 为 rgb(29, 30, 32)，对应 RGB 数值是 29, 30, 32
+---
+
 ## 2026-04-18 - US-004
 - 为 .lang-switch 添加 flex-wrap: nowrap，覆盖 PaperMod 原始 flex-wrap: inherit
 - .lang-switch 改为 inline-flex 布局，确保内部不换行
