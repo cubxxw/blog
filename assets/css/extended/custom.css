@@ -2784,6 +2784,7 @@ html {
     gap: 12px;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    letter-spacing: normal;
 }
 
 .profile_title__name {
@@ -2791,6 +2792,7 @@ html {
     font-weight: 700 !important;
     margin: 0 !important;
     line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
 .profile_title__accent {
