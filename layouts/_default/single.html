@@ -3,18 +3,13 @@
 {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
 {{- $has_headers := ge (len $headers) 1 -}}
 
-<div class="article-layout">
-  {{- if (and ($has_headers) (.Param "ShowToc")) }}
-  <aside class="toc-sidebar" aria-label="{{- i18n "toc" | default "Table of Contents" | safeHTML }}">
-    <div class="toc-sidebar__inner">
-      <div class="toc-sidebar__label">{{- i18n "toc" | default "Table of Contents" | safeHTML }}</div>
-      <nav class="toc-sidebar__nav">
-        {{ .TableOfContents }}
-      </nav>
-    </div>
-  </aside>
-  {{- end }}
+{{- /* Strip the first top-level <h1> from .Content so that articles
+       whose markdown starts with a redundant `# Title` line don't render
+       the title twice. Only the first occurrence is removed. */ -}}
+{{- $content := .Content -}}
+{{- $content = replaceRE `(?s)^\s*<h1[^>]*>.*?</h1>\s*` "" $content -}}
 
+<div class="article-layout">
   <article class="post-single">
     <header class="post-header">
       {{ partial "breadcrumbs.html" . }}
@@ -43,11 +38,11 @@
     {{- partial "toc.html" . }}
     {{- end }}
 
-    {{- if .Content }}
+    {{- if $content }}
     <div class="post-content">
       {{- if not (.Param "disableAnchoredHeadings") }}
-      {{- partial "anchored_headings.html" .Content -}}
-      {{- else }}{{ .Content }}{{ end }}
+      {{- partial "anchored_headings.html" $content -}}
+      {{- else }}{{ $content | safeHTML }}{{ end }}
     </div>
     {{- end }}
 

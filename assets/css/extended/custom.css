@@ -639,31 +639,164 @@
    P0: Typography & Readability Improvements
    =================================== */
 
-/* Post Content - width controlled by .main and post-single */
+/* Post Content - editorial serif prose */
 .post-single .post-content {
   max-width: none;
   margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.78;
+  color: var(--color-text);
+  font-variation-settings: "opsz" 14;
 }
 
-/* H2/H3 heading styles - consolidated (removed duplicate at ~2223) */
+.post-content p {
+  margin: 0 0 1.4em;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.post-content p + p {
+  margin-top: 0;
+}
+
+.post-content a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--theme-rgb), 0);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  background-image: linear-gradient(transparent 65%, rgba(20, 184, 166, 0.22) 65%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: background-size 0.2s ease, color 0.2s ease;
+}
+
+.post-content a:hover {
+  background-size: 100% 40%;
+  color: var(--color-accent);
+}
+
+/* Headings use the sans-serif UI face for contrast against serif body */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-family: var(--font-sans);
+  color: var(--color-text-heading);
+  letter-spacing: -0.01em;
+}
+
 .post-content h2 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 600;
-  margin-top: 48px;
-  margin-bottom: 20px;
-  padding-left: 1rem;
-  border-left: 4px solid #0891b2;
+  line-height: 1.3;
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-5);
+  padding-left: 0;
+  border-left: none;
+  position: relative;
+}
+
+.post-content h2::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  margin-bottom: var(--space-4);
+  opacity: 0.85;
 }
 
 .dark .post-content h2 {
-  border-left-color: #14b8a6;
+  border-left-color: transparent;
 }
 
 .post-content h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-top: 36px;
-  margin-bottom: 12px;
+  line-height: 1.35;
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-3);
+}
+
+.post-content h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+/* Emphasis: let italics lean on the serif's cursive variant */
+.post-content em {
+  font-style: italic;
+  font-variation-settings: "opsz" 14;
+}
+
+.post-content strong {
+  font-weight: 600;
+}
+
+/* Blockquote — pull-quote feel */
+.post-content blockquote {
+  margin: var(--space-10) 0;
+  padding: var(--space-2) 0 var(--space-2) var(--space-6);
+  border-left: 2px solid var(--color-accent);
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+/* Lists — tighter vertical rhythm */
+.post-content ul,
+.post-content ol {
+  margin: 0 0 1.4em;
+  padding-left: 1.35em;
+}
+
+.post-content li {
+  margin-bottom: 0.4em;
+}
+
+.post-content li > p {
+  margin-bottom: 0.5em;
+}
+
+/* Inline code — subtle pill */
+.post-content :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  background: rgba(20, 184, 166, 0.08);
+  color: var(--color-text);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+}
+
+.dark .post-content :not(pre) > code {
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(20, 184, 166, 0.2);
+}
+
+/* Horizontal rule — three centered dots */
+.post-content hr {
+  border: none;
+  height: 1.5em;
+  margin: var(--space-12) auto;
+  text-align: center;
+  max-width: 100px;
+}
+
+.post-content hr::before {
+  content: "• • •";
+  color: var(--color-text-muted);
+  letter-spacing: 0.8em;
+  opacity: 0.5;
+  font-size: 0.9rem;
 }
 
 /* Breadcrumb - More visible */
@@ -679,13 +812,21 @@
   color: #9ca3af;
 }
 
-/* Chinese Font Stack Optimization */
+/* ===================================
+   Global Typography — Editorial Baseline
+   =================================== */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Noto Sans", "Liberation Sans", sans-serif,
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei";
-  font-feature-settings: "kern" 1;
+  font-family: var(--font-sans);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, pre, kbd, samp, tt {
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 0; /* keep code literal */
 }
 
 /* ===================================
@@ -2305,50 +2446,68 @@ details summary,
 }
 
 /* ===================================
-   Post Header — Breathing Room & Hierarchy
+   Post Header — Editorial Rhythm
    =================================== */
 
 .post-header {
     padding-bottom: 0;
-    margin-bottom: 40px;
+    margin-bottom: var(--space-12);
 }
 
 .post-header .breadcrumbs {
-    margin-bottom: 28px;
-    opacity: 0.7;
+    margin-bottom: var(--space-6);
+    opacity: 0.65;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
 }
 
 .post-title {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 700;
-    line-height: 1.25;
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 4.2vw, 3rem);
+    font-weight: 600;
+    line-height: 1.12;
     letter-spacing: -0.02em;
-    margin: 0 0 20px;
+    margin: 0 0 var(--space-5);
+    font-variation-settings: "opsz" 96;
+    color: var(--color-text-heading);
 }
 
 .post-description {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    line-height: 1.65;
     color: var(--secondary);
-    margin: 0 0 20px;
-    max-width: 72ch;
+    margin: 0 0 var(--space-6);
+    max-width: 62ch;
     font-weight: 400;
+    font-style: italic;
+    font-variation-settings: "opsz" 14;
 }
 
 .post-meta {
-    font-size: 0.82rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
     color: var(--secondary);
-    opacity: 0.75;
-    letter-spacing: 0.01em;
+    opacity: 0.7;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
     margin-bottom: 0;
 }
 
-/* Separator line below header */
+.post-meta a {
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    opacity: 0.8;
+}
+
+/* Separator line below header — hairline */
 .post-header-rule {
     height: 1px;
     background: var(--border);
-    margin-top: 28px;
-    opacity: 0.5;
+    margin-top: var(--space-8);
+    opacity: 0.4;
 }
 
 /* ===================================
@@ -2389,124 +2548,29 @@ details summary,
 }
 
 /* ===================================
-   Left Sidebar TOC (US-014)
+   Article Layout — Single-column, centered
+   (Left TOC removed; right-side Reading Companion handles the outline.)
    =================================== */
 
-/* Article layout: sidebar + content grid on desktop */
 .article-layout {
-    display: contents; /* transparent wrapper by default */
+    display: block;
 }
 
-/* Left sidebar TOC — hidden on small screens */
+/* Legacy left TOC fully retired */
 .toc-sidebar {
-    display: none;
+    display: none !important;
 }
 
 @media (min-width: 1280px) {
     .article-layout {
-        display: grid;
-        grid-template-columns: 240px 1fr;
-        gap: 0 40px;
-        align-items: start;
-        /* Center the grid within .main */
-        max-width: 1100px;
+        max-width: 760px;
         margin: 0 auto;
-    }
-
-    .toc-sidebar {
-        display: block;
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .post-single {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    /* Sticky inner wrapper */
-    .toc-sidebar__inner {
-        position: sticky;
-        top: calc(var(--header-height, 64px) + 20px);
-        max-height: calc(100vh - var(--header-height, 64px) - 40px);
-        overflow-y: auto;
-        scrollbar-width: none;
-        padding-right: 8px;
-    }
-
-    .toc-sidebar__inner::-webkit-scrollbar {
-        display: none;
-    }
-
-    .toc-sidebar__label {
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--secondary);
-        margin-bottom: 12px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid var(--border);
-    }
-
-    /* TOC nav links */
-    .toc-sidebar__nav #TableOfContents {
-        margin: 0;
-        padding: 0;
-    }
-
-    .toc-sidebar__nav #TableOfContents ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .toc-sidebar__nav #TableOfContents li {
-        margin: 0;
-    }
-
-    .toc-sidebar__nav #TableOfContents a {
-        display: block;
-        font-size: 0.82rem;
-        color: var(--secondary);
-        text-decoration: none;
-        padding: 4px 0;
-        line-height: 1.45;
-        transition: color 0.15s;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .toc-sidebar__nav #TableOfContents a:hover {
-        color: var(--primary);
-    }
-
-    /* Active highlight via JS (US-015 will add IntersectionObserver) */
-    .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
-        color: var(--color-accent, var(--primary));
-        font-weight: 600;
-    }
-
-    /* Nested levels: indent */
-    .toc-sidebar__nav #TableOfContents ul ul {
-        padding-left: 12px;
-    }
-
-    .toc-sidebar__nav #TableOfContents ul ul ul {
-        padding-left: 12px;
-    }
-
-    /* Override US-013 width constraints so post-single fills its grid cell */
-    .article-layout .post-single {
-        max-width: none;
-        margin: 0;
     }
 }
 
 @media (min-width: 1920px) {
-    .post-single {
-        max-width: 800px;
+    .article-layout {
+        max-width: 780px;
     }
 }
 
