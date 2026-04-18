@@ -313,8 +313,8 @@
         "Tests pass"
       ],
       "priority": 20,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "新增 pages-travel.spec.ts、pages-articles.spec.ts、pages-article-detail.spec.ts 三个测试文件，各覆盖 desktop + mobile，full-page 和 above-fold 两个截图。基线截图存入各自 -snapshots/ 目录（命名格式：{page}-{device}-{fold}-{project}-darwin.png）。12 个测试通过（12 个跳过，因 desktop/mobile-only 在不适用的 project 下跳过），TypeCheck 通过。"
     },
     {
       "id": "US-021",

@@ -93,3 +93,15 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - playwright.config.ts 的 maxDiffPixelRatio: 0.01 设置在 expect.toHaveScreenshot 内，而非顶层
   - `npx playwright test --list` 不报错但返回 "Total: 0 tests" 表示配置可被正确读取
 ---
+
+## 2026-04-18 - US-020
+- 新增 tests/e2e/pages-travel.spec.ts：Travel 页（/travel/）desktop + mobile，full-page + above-fold 截图
+- 新增 tests/e2e/pages-articles.spec.ts：Articles 列表（/ai-technology/）desktop + mobile，full-page + above-fold 截图
+- 新增 tests/e2e/pages-article-detail.spec.ts：单篇文章（/ai-technology/posts/agent-identity-from-locke-to-openclaw/）desktop + mobile，full-page + above-fold 截图
+- 生成 12 个基线截图，分别存入 *-snapshots/ 目录
+- Files changed: tests/e2e/pages-travel.spec.ts（新建）、tests/e2e/pages-articles.spec.ts（新建）、tests/e2e/pages-article-detail.spec.ts（新建）及各自 *-snapshots/ 目录
+- **Learnings for future iterations:**
+  - Playwright `--update-snapshots` 标志用于首次生成基线截图，无快照时会自动写入
+  - 每个测试文件的快照存入同名 `{spec-file}.spec.ts-snapshots/` 目录，命名格式 `{name}-{project}-{platform}.png`
+  - `test.skip(testInfo.project.name !== 'desktop', ...)` 模式可避免在错误 project 下运行视口特定测试
+---
