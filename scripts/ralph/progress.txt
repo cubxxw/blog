@@ -36,3 +36,16 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - .post-content 的直接子元素才适用 `>` 选择器；嵌套在 div 内的元素需要额外处理
   - 760px 约等于 72ch（英文平均字符宽约 10.5px），是理想阅读行宽
 ---
+
+## 2026-04-18 - US-014
+- 创建 layouts/_default/single.html 覆盖 PaperMod 主题的文章单页模板
+- 添加 .article-layout 包装器（含左侧 .toc-sidebar + 右侧 .post-single）
+- .toc-sidebar 使用 Hugo .TableOfContents，在 ShowToc 参数为 true 且文章有标题时显示
+- ≥1280px 时 CSS Grid 双列布局（240px + 1fr），gap 40px；<1280px 时隐藏
+- .toc-sidebar__inner position:sticky，top 基于 --header-height 变量
+- Files changed: layouts/_default/single.html（新建）、assets/css/extended/custom.css（添加 TOC sidebar CSS）
+- **Learnings for future iterations:**
+  - Hugo .TableOfContents 生成 id="TableOfContents" 的 nav，内部是嵌套 ul/li/a 结构
+  - 覆盖 PaperMod single.html 时需保留所有原有 partial 调用（cover, post_meta, translation_list, edit_post, post_canonical, share_icons, comments）
+  - display:contents 让包装元素透明于布局（.article-layout 默认值），在不需要 grid 时不影响现有样式
+---

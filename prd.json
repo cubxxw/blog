@@ -216,8 +216,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 14,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "创建 layouts/_default/single.html 覆盖主题，用 .article-layout 包装整个 article。添加 .toc-sidebar（240px）注入 Hugo .TableOfContents。CSS Grid 双列布局仅在 ≥1280px 激活，<1280px 时 .toc-sidebar display:none，保留原 toc.html 的 inline TOC。sticky 内层容器 top 基于 --header-height 变量。"
     },
     {
       "id": "US-015",
