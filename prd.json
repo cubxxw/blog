@@ -64,8 +64,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "为 .lang-switch 添加 flex-wrap: nowrap、display: inline-flex，覆盖 PaperMod 原始 flex-wrap: inherit。.lang-switch li 和 a 添加 flex-shrink: 0 和 min-width: max-content。深色模式继承 --secondary (155,156,157) 颜色，对比度符合要求。"
     },
     {
       "id": "US-005",
