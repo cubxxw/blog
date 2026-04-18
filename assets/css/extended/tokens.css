@@ -15,6 +15,9 @@
     /* Text heading - uses same as primary by default */
     --color-text-heading: var(--primary);
 
+    /* Theme RGB values for rgba() usage */
+    --theme-rgb: 255, 255, 255;
+
     /* Theme transition */
     --theme-transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
@@ -29,6 +32,8 @@
     --color-border: rgb(51, 51, 51);
     --color-accent: #14b8a6;
     --color-text-heading: rgb(218, 218, 219);
+    /* Theme RGB for dark mode rgba() usage */
+    --theme-rgb: 29, 30, 32;
 }
 
 /* Apply transition to key elements for smooth theme switching */

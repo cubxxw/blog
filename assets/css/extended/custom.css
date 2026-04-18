@@ -2232,14 +2232,15 @@ details summary,
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(var(--theme-rgb, 255, 255, 255), 0.85);
+    background: rgba(var(--theme-rgb, 255, 255, 255), 0.92);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    border-bottom: 1px solid var(--color-border, rgba(148, 163, 184, 0.1));
+    transition: background-color 200ms ease, border-color 200ms ease;
 }
 
 .dark .header-wrapper {
-    background: rgba(var(--theme-rgb, 15, 23, 42), 0.75);
+    background: rgba(var(--theme-rgb, 29, 30, 32), 0.92);
     border-bottom-color: rgba(148, 163, 184, 0.08);
 }
 
