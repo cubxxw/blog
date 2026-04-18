@@ -1,0 +1,15 @@
+{
+  "name": "nsddd-blog",
+  "version": "1.0.0",
+  "description": "Blog E2E tests with Playwright",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^25.6.0",
+    "typescript": "^5.4.5"
+  }
+}
