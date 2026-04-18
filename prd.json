@@ -200,8 +200,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 13,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "为文章详情页的 .post-content > 段落/标题类元素设置 max-width:760px，确保约 72ch 行宽。图片/代码块(.highlight, pre, figure)允许 max-width:960px bleed。仅在 ≥900px 桌面视口生效，移动端不受影响。大屏 ≥1600px 的 .post-single 自身仍受 760/800px 约束。"
     },
     {
       "id": "US-014",

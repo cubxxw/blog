@@ -5,6 +5,7 @@
 - hugo build（无参数）等同于完整构建，用于验证模板渲染结果
 - 深色模式使用 .dark 类（PaperMod 兼容）和 [data-theme="dark"] 双选择器
 - `overflow-x: clip` 而非 `hidden` 不会创建新的滚动容器，不会导致 position:sticky 失效
+- 文章正文宽度通过 `.post-single .post-content > [元素类型]` 的直接子选择器控制，可对段落与媒体设置不同 max-width 实现 bleed 效果
 ---
 
 # Ralph Progress Log
@@ -23,4 +24,15 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - type:page 的独立页面（如 about.md）.Parent 是语言根，breadcrumb 路径段为空
   - site.GetPage 对 type:page 的独立文件效果不一，依赖路径匹配
   - Hugo scratch 变量 `$foundAny = false` 后 range 内赋值需用 `$foundAny = true`（标准 Go template 变量赋值语法）
+---
+
+## 2026-04-18 - US-013
+- 为 .post-single .post-content 段落/标题类直接子元素添加 max-width:760px（约 72ch 行宽）
+- 图片(figure)、代码块(.highlight, pre)允许 max-width:960px，实现 bleed 效果
+- 修改范围：@media (min-width:900px) 桌面视口，移动端不受影响
+- Files changed: assets/css/extended/custom.css（替换原有 Reading Content Width 部分）
+- **Learnings for future iterations:**
+  - 文章正文 bleed 布局：用 CSS 直接子选择器（.post-content > p, .post-content > figure）分别限制不同类型元素宽度，不需要 JS 或 Hugo 模板修改
+  - .post-content 的直接子元素才适用 `>` 选择器；嵌套在 div 内的元素需要额外处理
+  - 760px 约等于 72ch（英文平均字符宽约 10.5px），是理想阅读行宽
 ---
