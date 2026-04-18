@@ -9,6 +9,13 @@
 <link rel="dns-prefetch" href="//www.google-analytics.com" />
 <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
+{{- /* Editorial typography: Fraunces (display serif), Inter (UI sans),
+       JetBrains Mono (code). display=swap keeps first paint fast. */ -}}
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
 {{- /* SEO Structured Data (JSON-LD) */ -}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") -}}
 {{- partial "seo/structured-data.html" . -}}

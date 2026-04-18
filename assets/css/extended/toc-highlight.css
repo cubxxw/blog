@@ -1,4 +1,4 @@
-/* TOC 侧边栏滚动高亮 — fine-line typographic style */
+/* TOC highlight — reading companion (.toc-side__nav) */
 .toc-side__nav a {
   transition: color 0.15s ease, opacity 0.15s ease;
 }
@@ -11,4 +11,23 @@
 
 .dark .toc-side__nav a.toc-active {
   color: #38bdf8 !important;
+}
+
+/* TOC highlight — left sidebar (.toc-sidebar__nav, US-015) */
+.toc-sidebar__nav #TableOfContents a {
+  transition: color 0.15s ease;
+}
+
+.toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
+  color: var(--color-accent, var(--primary)) !important;
+  font-weight: 600;
+}
+
+.dark .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
+  color: var(--color-accent, #38bdf8) !important;
+}
+
+/* Smooth scrolling (JS sets scrollBehavior on <html>, CSS provides fallback) */
+html {
+  scroll-behavior: smooth;
 }

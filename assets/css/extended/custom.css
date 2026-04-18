@@ -24,6 +24,15 @@
   margin-top: 0.75rem;
 }
 
+.dark .ai-tech-header {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(168, 85, 247, 0.06) 50%, rgba(124, 58, 237, 0.05) 100%);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+.dark .ai-tech-header .post-description {
+  color: #9ca3af;
+}
+
 /* AI Tech Container */
 .ai-tech-container {
   display: grid;
@@ -271,6 +280,15 @@
   color: #78716c;
   font-size: 1rem;
   margin-top: 0.75rem;
+}
+
+.dark .growth-header {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(245, 158, 11, 0.06) 50%, rgba(251, 191, 36, 0.04) 100%);
+  border-color: rgba(217, 119, 6, 0.25);
+}
+
+.dark .growth-header .post-description {
+  color: #9ca3af;
 }
 
 /* Growth Container */
@@ -554,13 +572,14 @@
 }
 
 .post-entry-title a {
-  color: var(--entry);
+  color: var(--color-text-heading, var(--primary));
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .post-entry-title a:hover {
-  color: var(--primary);
+  color: var(--color-accent, var(--primary));
+  text-decoration: underline;
 }
 
 .post-meta {
@@ -620,31 +639,164 @@
    P0: Typography & Readability Improvements
    =================================== */
 
-/* Post Content - width controlled by .main and post-single */
+/* Post Content - editorial serif prose */
 .post-single .post-content {
   max-width: none;
   margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.78;
+  color: var(--color-text);
+  font-variation-settings: "opsz" 14;
 }
 
-/* H2/H3 heading styles - consolidated (removed duplicate at ~2223) */
+.post-content p {
+  margin: 0 0 1.4em;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.post-content p + p {
+  margin-top: 0;
+}
+
+.post-content a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--theme-rgb), 0);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  background-image: linear-gradient(transparent 65%, rgba(20, 184, 166, 0.22) 65%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: background-size 0.2s ease, color 0.2s ease;
+}
+
+.post-content a:hover {
+  background-size: 100% 40%;
+  color: var(--color-accent);
+}
+
+/* Headings use the sans-serif UI face for contrast against serif body */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-family: var(--font-sans);
+  color: var(--color-text-heading);
+  letter-spacing: -0.01em;
+}
+
 .post-content h2 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 600;
-  margin-top: 48px;
-  margin-bottom: 20px;
-  padding-left: 1rem;
-  border-left: 4px solid #0891b2;
+  line-height: 1.3;
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-5);
+  padding-left: 0;
+  border-left: none;
+  position: relative;
+}
+
+.post-content h2::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  margin-bottom: var(--space-4);
+  opacity: 0.85;
 }
 
 .dark .post-content h2 {
-  border-left-color: #14b8a6;
+  border-left-color: transparent;
 }
 
 .post-content h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-top: 36px;
-  margin-bottom: 12px;
+  line-height: 1.35;
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-3);
+}
+
+.post-content h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+/* Emphasis: let italics lean on the serif's cursive variant */
+.post-content em {
+  font-style: italic;
+  font-variation-settings: "opsz" 14;
+}
+
+.post-content strong {
+  font-weight: 600;
+}
+
+/* Blockquote — pull-quote feel */
+.post-content blockquote {
+  margin: var(--space-10) 0;
+  padding: var(--space-2) 0 var(--space-2) var(--space-6);
+  border-left: 2px solid var(--color-accent);
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+/* Lists — tighter vertical rhythm */
+.post-content ul,
+.post-content ol {
+  margin: 0 0 1.4em;
+  padding-left: 1.35em;
+}
+
+.post-content li {
+  margin-bottom: 0.4em;
+}
+
+.post-content li > p {
+  margin-bottom: 0.5em;
+}
+
+/* Inline code — subtle pill */
+.post-content :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  background: rgba(20, 184, 166, 0.08);
+  color: var(--color-text);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+}
+
+.dark .post-content :not(pre) > code {
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(20, 184, 166, 0.2);
+}
+
+/* Horizontal rule — three centered dots */
+.post-content hr {
+  border: none;
+  height: 1.5em;
+  margin: var(--space-12) auto;
+  text-align: center;
+  max-width: 100px;
+}
+
+.post-content hr::before {
+  content: "• • •";
+  color: var(--color-text-muted);
+  letter-spacing: 0.8em;
+  opacity: 0.5;
+  font-size: 0.9rem;
 }
 
 /* Breadcrumb - More visible */
@@ -660,13 +812,21 @@
   color: #9ca3af;
 }
 
-/* Chinese Font Stack Optimization */
+/* ===================================
+   Global Typography — Editorial Baseline
+   =================================== */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Noto Sans", "Liberation Sans", sans-serif,
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei";
-  font-feature-settings: "kern" 1;
+  font-family: var(--font-sans);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, pre, kbd, samp, tt {
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 0; /* keep code literal */
 }
 
 /* ===================================
@@ -1310,8 +1470,20 @@ details summary,
 }
 
 /* Enhanced About Page Styles */
+
+/* Widen the PaperMod .main container when About page is present.
+   :has() is supported in all modern browsers (Chrome 105+, Firefox 121+, Safari 15.4+). */
+.main:has(.about-container) {
+  max-width: 1000px;
+}
+
+.post-single:has(.about-container) {
+  max-width: 100%;
+}
+
 .about-container {
-  max-width: 900px;
+  max-width: 880px;
+  width: 100%;
   margin: 0 auto;
   line-height: 1.8;
   padding: 20px;
@@ -2231,14 +2403,15 @@ details summary,
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(var(--theme-rgb, 255, 255, 255), 0.85);
+    background: rgba(var(--theme-rgb, 255, 255, 255), 0.92);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    border-bottom: 1px solid var(--color-border, rgba(148, 163, 184, 0.1));
+    transition: background-color 200ms ease, border-color 200ms ease;
 }
 
 .dark .header-wrapper {
-    background: rgba(var(--theme-rgb, 15, 23, 42), 0.75);
+    background: rgba(var(--theme-rgb, 29, 30, 32), 0.92);
     border-bottom-color: rgba(148, 163, 184, 0.08);
 }
 
@@ -2273,58 +2446,100 @@ details summary,
 }
 
 /* ===================================
-   Post Header — Breathing Room & Hierarchy
+   Post Header — Editorial Rhythm
    =================================== */
 
 .post-header {
     padding-bottom: 0;
-    margin-bottom: 40px;
+    margin-bottom: var(--space-12);
 }
 
 .post-header .breadcrumbs {
-    margin-bottom: 28px;
-    opacity: 0.7;
+    margin-bottom: var(--space-6);
+    opacity: 0.65;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
 }
 
 .post-title {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 700;
-    line-height: 1.25;
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 4.2vw, 3rem);
+    font-weight: 600;
+    line-height: 1.12;
     letter-spacing: -0.02em;
-    margin: 0 0 20px;
+    margin: 0 0 var(--space-5);
+    font-variation-settings: "opsz" 96;
+    color: var(--color-text-heading);
 }
 
 .post-description {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    line-height: 1.65;
     color: var(--secondary);
-    margin: 0 0 20px;
-    max-width: 72ch;
+    margin: 0 0 var(--space-6);
+    max-width: 62ch;
     font-weight: 400;
+    font-style: italic;
+    font-variation-settings: "opsz" 14;
 }
 
 .post-meta {
-    font-size: 0.82rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
     color: var(--secondary);
-    opacity: 0.75;
-    letter-spacing: 0.01em;
+    opacity: 0.7;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
     margin-bottom: 0;
 }
 
-/* Separator line below header */
+.post-meta a {
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    opacity: 0.8;
+}
+
+/* Separator line below header — hairline */
 .post-header-rule {
     height: 1px;
     background: var(--border);
-    margin-top: 28px;
-    opacity: 0.5;
+    margin-top: var(--space-8);
+    opacity: 0.4;
 }
 
 /* ===================================
-   Reading Content Width
+   Reading Content Width (US-013)
    =================================== */
 
-/* Content width is governed by --main-width on .main.
-   For single posts we cap slightly to enforce readable line-length (~72ch). */
+/* Article body: 760px for readable ~72ch line length on desktop.
+   Images and code blocks bleed out to a wider column via negative margins. */
+@media (min-width: 900px) {
+    /* Constrain prose elements to readable width */
+    .post-single .post-content > p,
+    .post-single .post-content > ul,
+    .post-single .post-content > ol,
+    .post-single .post-content > blockquote,
+    .post-single .post-content > table,
+    .post-single .post-content > h1,
+    .post-single .post-content > h2,
+    .post-single .post-content > h3,
+    .post-single .post-content > h4,
+    .post-single .post-content > h5,
+    .post-single .post-content > h6 {
+        max-width: 760px;
+    }
+
+    /* Images and code blocks bleed wider for visual impact (up to 960px) */
+    .post-single .post-content > figure,
+    .post-single .post-content > .highlight,
+    .post-single .post-content > pre {
+        max-width: 960px;
+    }
+}
+
 @media (min-width: 1600px) {
     .post-single {
         max-width: 760px;
@@ -2332,9 +2547,30 @@ details summary,
     }
 }
 
+/* ===================================
+   Article Layout — Single-column, centered
+   (Left TOC removed; right-side Reading Companion handles the outline.)
+   =================================== */
+
+.article-layout {
+    display: block;
+}
+
+/* Legacy left TOC fully retired */
+.toc-sidebar {
+    display: none !important;
+}
+
+@media (min-width: 1280px) {
+    .article-layout {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+}
+
 @media (min-width: 1920px) {
-    .post-single {
-        max-width: 800px;
+    .article-layout {
+        max-width: 780px;
     }
 }
 
@@ -2782,6 +3018,7 @@ html {
     gap: 12px;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    letter-spacing: normal;
 }
 
 .profile_title__name {
@@ -2789,6 +3026,7 @@ html {
     font-weight: 700 !important;
     margin: 0 !important;
     line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
 .profile_title__accent {
@@ -3478,9 +3716,14 @@ html {
     top: 8px;
 }
 
-/* Fix mobile horizontal overflow */
-html, body {
+/* Fix mobile horizontal overflow.
+   Use overflow-x:clip on body (not hidden) so body doesn't become a scroll
+   container, which would break position:sticky on .header-wrapper. */
+html {
     overflow-x: hidden;
+}
+body {
+    overflow-x: clip;
 }
 
 .profile_shell,
@@ -5326,4 +5569,164 @@ pre:hover .copy-code {
 /* blog-ai-inline suggestion buttons */
 .blog-ai-suggestions { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px 0 4px; }
 .blog-ai-suggestion { padding: 3px 10px; border-radius: 14px; border: 1px solid rgba(99,102,241,0.3); background: transparent; cursor: pointer; font-size: 0.82em; color: inherit; transition: background 0.15s; }
+
+/* ===================================
+   US-007: Fix body scroll blocked on homepage
+   PaperMod profile-mode.css sets .main .profile { overflow: hidden }
+   which prevents natural scroll. Override to allow vertical scroll.
+   Modal-only body overflow management is handled in share_icons.html
+   and search-palette-open class (PaperMod header.css) — both temporary.
+   =================================== */
+.main .profile {
+    overflow: visible;
+}
+
+/* Ensure html allows vertical scroll; do NOT set overflow-y on body
+   to avoid creating a secondary scroll container that breaks sticky. */
+html {
+    overflow-y: auto;
+}
+
+/* Scrollbar style coordinated with theme */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border, var(--border)) transparent;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border, var(--border));
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted, var(--secondary));
+}
 .blog-ai-suggestion:hover { background: rgba(99,102,241,0.15); }
+
+/* ===================================
+   US-017: Mobile responsive fixes (375px / 414px)
+   Prevents horizontal scroll and overflow across all pages.
+   =================================== */
+
+/* Ensure all top-level page sections don't overflow */
+.main,
+.post-single,
+.post-content,
+.post-header {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* Tables: wrap in scrollable container on mobile */
+@media (max-width: 768px) {
+    /* Make tables scrollable horizontally instead of breaking layout */
+    .post-content table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+    }
+
+    /* Ensure code blocks don't exceed viewport */
+    .post-content .highlight,
+    .post-content pre {
+        max-width: calc(100vw - 2 * var(--gap, 20px));
+        overflow-x: auto;
+    }
+
+    /* Images respect viewport width */
+    .post-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Section headers (AI Tech, Growth) padding on mobile */
+    .ai-tech-header,
+    .growth-header {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+    }
+
+    /* Archive/article grid cards don't overflow */
+    .post-entry {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* About page container on mobile */
+    .main:has(.about-container) {
+        max-width: 100%;
+    }
+}
+
+/* 375px specific: extra-tight viewport fixes */
+@media (max-width: 390px) {
+    /* Header nav: prevent search keys from squeezing layout */
+    .nav-search-trigger__keys {
+        display: none !important;
+    }
+
+    /* Profile title on tiny screens */
+    .profile_title__name {
+        font-size: 1.6rem !important;
+    }
+
+    /* Reduce horizontal padding in main panels */
+    .profile_copy,
+    .profile_panel {
+        padding: 16px 12px !important;
+    }
+
+    /* Reduce newsletter card padding */
+    .rss-subscribe-card__teaser {
+        padding: 20px 16px !important;
+    }
+
+    /* Ensure post entry cards fit */
+    .post-entry {
+        padding: 16px 12px !important;
+    }
+
+    /* Travel stat grid — ensure 4-col doesn't overflow */
+    .tp-stats__inner {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Inline TOC on mobile: ensure it doesn't break layout */
+@media (max-width: 768px) {
+    .toc-inline {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* TOC sidebar must be hidden on mobile (already done, belt-and-suspenders) */
+    .toc-sidebar {
+        display: none !important;
+    }
+}
+
+/* Projects grid: single column on mobile */
+@media (max-width: 600px) {
+    .ai-tech-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Ensure long words/URLs break in post content on mobile */
+@media (max-width: 768px) {
+    .post-content p,
+    .post-content li,
+    .post-content blockquote {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}
