@@ -62,3 +62,17 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - IntersectionObserver rootMargin 的负值可缩小检测区域，避免顶部 header 遮挡导致的误判
   - history.replaceState 更新 hash 不触发页面跳转，是 TOC hash 同步的最佳方案
 ---
+
+## 2026-04-18 - US-016
+- 为 .ai-tech-header 添加 .dark 覆盖（浅紫渐变 → 低不透明度深紫渐变，border 颜色加深）
+- 为 .ai-tech-header .post-description 添加 .dark 文字颜色（#9ca3af）
+- 为 .growth-header 添加 .dark 覆盖（浅黄渐变 → 低不透明度琥珀渐变，border 颜色加深）
+- 为 .growth-header .post-description 添加 .dark 文字颜色（#9ca3af）
+- 其他组件（代码块/表格/引用块/搜索面板/Footer/RSS/Profile等）已有 PaperMod CSS 变量覆盖，无浅色残留
+- Files changed: assets/css/extended/custom.css（新增 18 行 .dark 覆盖规则）
+- **Learnings for future iterations:**
+  - PaperMod 主题通过 CSS 变量（--theme/--entry/--primary/--border/--hljs-bg/--code-bg）自动处理大多数组件的深色模式，无需单独覆盖
+  - 自定义组件（ai-tech-header、growth-header 等）如果用硬编码渐变色，需要单独添加 .dark 覆盖
+  - 深色渐变替代方案：将原浅色渐变的颜色改为低不透明度 rgba() 版本（如 rgba(139, 92, 246, 0.08)）效果最自然
+  - custom.css 文件 5500+ 行，深色覆盖分散在文件各处，通过 grep "\.dark" 可快速定位已覆盖的组件
+---

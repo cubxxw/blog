@@ -248,8 +248,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 16,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "为 .ai-tech-header 和 .growth-header 添加缺失的深色模式覆盖（浅色渐变 → 低不透明度深色渐变，文字颜色 → #9ca3af）。其余组件（代码块/表格/引用块/搜索面板/Footer/RSS/Profile 等）均通过 PaperMod CSS 变量或已有 .dark 覆盖适配深色模式，无浅色残留。Hugo 构建 860 页面全通过。"
     },
     {
       "id": "US-017",
