@@ -92,3 +92,17 @@ Started: 2026-04-18
   - .article-marginalia 在 <1024px 用 display:none 隐藏，Playwright 需用 toBeHidden() 而非 not.toBeVisible()
   - 移动端两行布局用 flex-direction: column + 子 div.row1/row2，避免单行过长
 ---
+
+## 2026-04-18 - US-030
+- 新建 layouts/partials/article/editorial-tools.html：TOC / AI Companion / Share Scroll 三个 tab 面板 + Annotations 空态占位
+- 新建 assets/css/extended/editorial-tools.css：tab 栏 + panel 样式（9px uppercase 标题 + hairline + 28px 圆形 share 按钮）
+- 复用 reading-companion.js 的 .reading-companion 类及 .rc-tab/.rc-panel/.toc-side__nav/.rc-ai-* DOM 结构——JS 不改
+- i18n/en.yaml + zh.yaml 各增 7 个 tools.* key（tools.toc / tools.ai / tools.annotations / tools.share / tools.ai_placeholder / tools.annotations_empty / tools.toc_empty）
+- layouts/_default/single.html：editorial-tools partial 替换 placeholder；新增内联 script 处理 copy link / WeChat 按钮
+- Files changed: layouts/partials/article/editorial-tools.html（新建）、assets/css/extended/editorial-tools.css（新建）、layouts/_default/single.html（修改）、i18n/en.yaml（修改）、i18n/zh.yaml（修改）、tests/e2e/us030-editorial-tools.spec.ts（新建）
+- **Learnings for future iterations:**
+  - reading-companion.js 以 document.querySelector('.reading-companion') 检测是否初始化，editorial-tools.html 直接复用此类名，JS 无需改动即可自动初始化 tab 切换 + TOC 高亮 + AI 对话
+  - Share 按钮 copy link 逻辑可以用 navigator.clipboard.writeText + 降级 execCommand 实现，通过 data-href 传递 URL
+  - CSS .et-section-label 用 border-top hairline 实现组间分隔，与 PaperMod tokens 系统兼容
+  - <1280px 隐藏 .article-tools 已在 article-layout.css 中实现，editorial-tools.css 无需重复
+---

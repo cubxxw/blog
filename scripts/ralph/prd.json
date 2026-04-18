@@ -99,8 +99,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented in assets/css/extended/article-typography.css + layouts/_default/single.html inline script. Hugo build 0 warning, tsc passes, 20 Playwright tests pass."
     },
     {
       "id": "US-030",
@@ -123,8 +123,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented layouts/partials/article/editorial-tools.html with TOC/AI/Share tabs. assets/css/extended/editorial-tools.css for styling. Reuses reading-companion.js DOM structure (.reading-companion + .rc-tab/.rc-panel/.toc-side__nav/.rc-ai-*). i18n keys tools.* added to en.yaml + zh.yaml. single.html updated with partial call + inline share copy/WeChat JS. Hugo 0 warning, tsc passes, 24 Playwright tests pass."
     },
     {
       "id": "US-031",
