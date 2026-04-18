@@ -49,3 +49,16 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - 覆盖 PaperMod single.html 时需保留所有原有 partial 调用（cover, post_meta, translation_list, edit_post, post_canonical, share_icons, comments）
   - display:contents 让包装元素透明于布局（.article-layout 默认值），在不需要 grid 时不影响现有样式
 ---
+
+## 2026-04-18 - US-015
+- 重写 toc-highlight.js：支持同时处理 .toc-sidebar__nav 和 .toc-side__nav 两个 TOC
+- IntersectionObserver rootMargin: -80px 0px -60% 0px，使顶部可见标题高亮
+- 点击 TOC 链接：preventDefault + scrollIntoView(smooth) + history.replaceState 静默更新 hash
+- toc-highlight.css 新增 .toc-sidebar-active 样式（accent 色）、html scroll-behavior:smooth
+- extend_footer.html 在文章页加载 toc-highlight.js（4KB/1.4KB gzip）
+- Files changed: static/js/toc-highlight.js（重写）、assets/css/extended/toc-highlight.css（新增样式）、layouts/partials/extend_footer.html（添加 script 引用）
+- **Learnings for future iterations:**
+  - Hugo .TableOfContents 的链接 id 与 heading 的 id 属性一致，可通过 href.slice(1) 直接对应
+  - IntersectionObserver rootMargin 的负值可缩小检测区域，避免顶部 header 遮挡导致的误判
+  - history.replaceState 更新 hash 不触发页面跳转，是 TOC hash 同步的最佳方案
+---

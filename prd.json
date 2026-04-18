@@ -232,8 +232,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 15,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "重写 toc-highlight.js（4KB 原始，1.4KB gzip）使用 IntersectionObserver（rootMargin -80px 0px -60% 0px）同时支持 .toc-sidebar__nav 和 .toc-side__nav 两个 TOC。点击 TOC 链接：e.preventDefault + scrollIntoView({behavior:smooth}) + history.replaceState 同步 hash。高亮类：.toc-sidebar-active（accent 色）和 .toc-active（primary 色）。extend_footer.html 在 .IsPage 条件下加载脚本。"
     },
     {
       "id": "US-016",
