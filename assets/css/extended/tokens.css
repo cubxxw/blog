@@ -1,82 +1,131 @@
-/* CSS Design Tokens - Light/Dark Theme Baseline
-   This file establishes centralized semantic color tokens that map to
-   PaperMod's existing --theme/--primary/etc variables for compatibility.
-   Use these tokens in all new component styles for consistent theming. */
+/* Aesthetic Agent Identity — CSS Design Tokens
+ *
+ * These tokens are independent of PaperMod's --theme / --primary / --secondary.
+ * Language switching via :lang(zh) / :lang(en) selectors.
+ * Dark mode via body.dark (PaperMod adds .dark to body, not html).
+ * :lang() pseudo-class inherits from html[lang], so body.dark:lang(zh) works correctly.
+ */
 
+/* ─── Light / English (default) ───────────────────────────── */
 :root {
-    /* Semantic color tokens */
-    --color-bg: var(--theme);
-    --color-bg-elevated: var(--entry);
-    --color-text: var(--primary);
-    --color-text-muted: var(--secondary);
-    --color-border: var(--border);
-    --color-accent: #14b8a6;
+  --color-paper:        #f9f9f7;
+  --color-ink:          #1a1c1b;
+  --color-ink-muted:    #5e5e63;
+  --color-accent:       #2e352e;
+  --color-accent-soft:  #dde5da;
+  --color-rule:         rgba(30, 35, 30, 0.12);
 
-    /* Text heading - uses same as primary by default */
-    --color-text-heading: var(--primary);
+  --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-prose:   'Noto Serif', 'Georgia', 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-meta:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
-    /* Theme RGB values for rgba() usage */
-    --theme-rgb: 255, 255, 255;
+  /* Compat aliases for components using font-serif/sans/mono naming */
+  --font-serif: var(--font-display);
+  --font-sans:  var(--font-body);
 
-    /* Theme transition */
-    --theme-transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+  --line-height-prose: 1.75;
+  --tracking-prose:    normal;
+  --drop-cap-size:     5rem;
 
-    /* ---------- Typography ----------
-       Fraunces: editorial display serif with optical sizing for titles + long-form prose.
-       Inter: neutral UI sans for navigation, meta, chrome.
-       JetBrains Mono: code. CJK characters fall back to the system stack. */
-    --font-serif: "Fraunces", "Source Serif Pro", "Noto Serif SC",
-        "Source Han Serif SC", "Songti SC", "STSong", Georgia, Cambria,
-        "Times New Roman", Times, serif;
-    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-        "WenQuanYi Micro Hei";
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
-        Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Semantic aliases for PaperMod compat */
+  --color-bg:           var(--color-paper);
+  --color-text:         var(--color-ink);
+  --color-text-muted:   var(--color-ink-muted);
+  --color-text-heading: var(--color-ink);
+  --color-border:       var(--color-rule);
 
-    /* ---------- Spacing (4px base) ---------- */
-    --space-1: 4px;
-    --space-2: 8px;
-    --space-3: 12px;
-    --space-4: 16px;
-    --space-5: 20px;
-    --space-6: 24px;
-    --space-8: 32px;
-    --space-10: 40px;
-    --space-12: 48px;
-    --space-16: 64px;
-    --space-20: 80px;
+  /* ---------- Spacing (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
 
-    /* ---------- Radius ---------- */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
+  /* ---------- Radius ---------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 
-    /* ---------- Shadow (soft, editorial) ---------- */
-    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-    --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
-    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+  /* ---------- Shadow (soft, editorial) ---------- */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+
+  /* ---------- Theme transition ---------- */
+  --theme-transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 
-/* Dark mode overrides: support both .dark class (PaperMod) and [data-theme="dark"] attribute */
-.dark,
-[data-theme="dark"] {
-    --color-bg: rgb(29, 30, 32);
-    --color-bg-elevated: rgb(46, 46, 51);
-    --color-text: rgb(218, 218, 219);
-    --color-text-muted: rgb(155, 156, 157);
-    --color-border: rgb(51, 51, 51);
-    --color-accent: #14b8a6;
-    --color-text-heading: rgb(218, 218, 219);
-    /* Theme RGB for dark mode rgba() usage */
-    --theme-rgb: 29, 30, 32;
+/* ─── Light / Chinese override ─────────────────────────────── */
+html:lang(zh) {
+  --color-paper:        #fbf9f4;
+  --color-ink:          #350003;
+  --color-ink-muted:    #6c5b4e;
+  --color-accent:       #862122;
+  --color-accent-soft:  #eae8e3;
+  --color-rule:         rgba(53, 0, 3, 0.10);
 
-    /* Softer shadows on dark to avoid harsh halos */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC',
+                  'Hiragino Sans GB', 'Microsoft YaHei', 'STSong',
+                  'SimSun', serif;
+  --font-body:    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+                  system-ui, sans-serif;
+  --font-meta:    'PingFang SC', 'Hiragino Sans GB', system-ui, sans-serif;
+
+  --line-height-prose: 2.0;
+  --tracking-prose:    0.02em;
+  --drop-cap-size:     4.5rem;
+}
+
+/* ─── Dark / English ───────────────────────────────────────── */
+body.dark:lang(en),
+body.dark:not(:lang(zh)),
+[data-theme="dark"]:not(:lang(zh)) {
+  --color-paper:        #121413;
+  --color-ink:          #e2e3e1;
+  --color-ink-muted:    #b4bcb2;
+  --color-accent:       #b4bcb2;
+  --color-accent-soft:  #2a2f2a;
+  --color-rule:         rgba(226, 227, 225, 0.10);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Dark / Chinese ───────────────────────────────────────── */
+body.dark:lang(zh),
+[data-theme="dark"]:lang(zh) {
+  --color-paper:        #1c1917;
+  --color-ink:          #f5f3ee;
+  --color-ink-muted:    #a8a29e;
+  --color-accent:       #ff3b3b;
+  --color-accent-soft:  #2e1a19;
+  --color-rule:         rgba(245, 243, 238, 0.10);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Global background: paper tone from design spec ───────── */
+/* Override PaperMod's pure white with the warm #f9f9f7 surface */
+body:not(.dark) {
+  background-color: var(--color-paper, #f9f9f7) !important;
+}
+
+/* ─── Prose background from token ──────────────────────────── */
+.article-main {
+  background: var(--color-paper);
+  transition: background 0.2s ease;
 }
 
 /* Apply transition to key elements for smooth theme switching */
@@ -85,5 +134,5 @@ header,
 .post-entry,
 nav,
 footer {
-    transition: var(--theme-transition);
+  transition: var(--theme-transition);
 }

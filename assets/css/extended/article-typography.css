@@ -1,0 +1,230 @@
+/* ─── US-029: Editorial-Grade Article Typography ─────────────── */
+
+/* ─── Post Title ─────────────────────────────────────────────── */
+.post-title {
+  font-family: var(--font-display);
+  /* design spec: clamp(2.8rem, 5vw, 4.5rem) at 1440px canvas */
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 20px;
+}
+
+html:lang(zh) .post-title {
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* ─── Post Description ───────────────────────────────────────── */
+.post-description {
+  /* design spec: Noto Serif italic, 1.25rem, line-height 1.6, opacity 0.72 */
+  font-family: var(--font-prose, 'Noto Serif', 'Georgia', serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  opacity: 0.72;
+  max-width: 62ch;
+  margin: 0 0 20px;
+  color: var(--color-ink, #1a1c1b);
+}
+
+html:lang(zh) .post-description {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* ─── Post Content Prose Base ────────────────────────────────── */
+.post-content {
+  line-height: var(--line-height-prose, 1.75);
+  letter-spacing: var(--tracking-prose, normal);
+}
+
+.post-content p {
+  line-height: 1.8;
+  letter-spacing: var(--tracking-prose, normal);
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+}
+
+/* EN prose: use Noto Serif for elegant editorial feel (matches design spec) */
+html:lang(en) .post-content p {
+  font-family: var(--font-prose, 'Noto Serif', 'Georgia', serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+/* ─── Drop Cap (first paragraph only) ───────────────────────── */
+/* Applied via JS in article-typography-init.js OR ::first-letter */
+.post-content .drop-cap::first-letter,
+.post-content p.drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-size: var(--drop-cap-size, 5rem);
+  font-weight: 800;
+  color: var(--color-ink, #1a1c1b);
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.075em;
+  margin-top: 0.5rem;
+  padding-right: 0.05em;
+  /* Ensures at least 3 lines of clearance */
+  padding-bottom: 0.05em;
+}
+
+html:lang(zh) .post-content .drop-cap::first-letter,
+html:lang(zh) .post-content p.drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: normal;
+  font-size: var(--drop-cap-size, 4.5rem);
+  line-height: 0.8;
+}
+
+html:lang(en) .post-content .drop-cap::first-letter,
+html:lang(en) .post-content p.drop-cap::first-letter {
+  font-style: italic;
+}
+
+/* ─── H2 in Post Content — accent hairline ───────────────────── */
+.post-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+/* Override custom.css fixed dark color with token-based accent */
+body.dark .post-content h2 {
+  border-left-color: var(--color-accent);
+}
+
+html:lang(zh) .post-content h2 {
+  letter-spacing: 0.02em;
+}
+
+/* ─── Blockquote — EN large decorative quote mark ───────────── */
+html:lang(en) .post-content blockquote {
+  position: relative;
+  margin: 3rem 0;
+  padding: 1rem 3rem 1rem 2rem;
+  border-left: 2px solid var(--color-accent, #2e352e);
+  background: rgba(238, 238, 236, 0.3);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: rgba(26, 28, 27, 0.8);
+  border-radius: 0 var(--radius-sm, 4px) var(--radius-sm, 4px) 0;
+}
+
+html:lang(en) .post-content blockquote p {
+  font-family: var(--font-display);
+  font-size: inherit;
+  margin-bottom: 0;
+  color: inherit;
+}
+
+html:lang(en) .post-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  left: -0.15em;
+  top: -0.5em;
+  font-size: 8rem;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 800;
+  color: var(--color-accent, #2e352e);
+  opacity: 0.1;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─── Blockquote — ZH 书名号 ─────────────────────────────────── */
+html:lang(zh) .post-content blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 0.5rem 1.5rem;
+  border-left: 2px solid var(--color-accent, #862122);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--color-ink, #350003);
+}
+
+html:lang(zh) .post-content blockquote::before {
+  content: '\300C';
+  color: var(--color-accent, #862122);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-right: 0.1em;
+}
+
+html:lang(zh) .post-content blockquote::after {
+  content: '\300D';
+  color: var(--color-accent, #862122);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-left: 0.1em;
+}
+
+/* ─── Inline Code — pill style ───────────────────────────────── */
+.post-content :not(pre) > code {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  /* design spec: 0.9em, rgba(0,0,0,0.06) bg, 0.25rem radius */
+  font-size: 0.9em;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--color-ink, #1a1c1b);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  border: none;
+  white-space: nowrap;
+}
+
+body.dark .post-content :not(pre) > code {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-ink, #e2e3e1);
+}
+
+/* ─── Inline Links — faint underline → accent on hover ───────── */
+.post-content a:not(.footnote-ref):not(.footnote-backref) {
+  color: var(--color-ink, #1a1c1b);
+  text-decoration: underline;
+  text-decoration-color: rgba(26, 28, 27, 0.28);
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.post-content a:not(.footnote-ref):not(.footnote-backref):hover {
+  text-decoration-color: var(--color-accent, #2e352e);
+}
+
+body.dark .post-content a:not(.footnote-ref):not(.footnote-backref) {
+  color: var(--color-ink, #e2e3e1);
+  text-decoration-color: rgba(226, 227, 225, 0.28);
+}
+
+body.dark .post-content a:not(.footnote-ref):not(.footnote-backref):hover {
+  text-decoration-color: var(--color-accent, #b4bcb2);
+}
+
+/* ─── HR — three dots separator ─────────────────────────────── */
+.post-content hr {
+  border: none;
+  text-align: center;
+  margin: 2.5rem 0;
+  overflow: visible;
+}
+
+.post-content hr::after {
+  content: '• • •';
+  color: var(--color-accent, #2e352e);
+  opacity: 0.45;
+  font-size: 1.1rem;
+  letter-spacing: 0.5em;
+}

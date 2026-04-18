@@ -1,8 +1,10 @@
 {
-  "name": "nsddd-blog",
+  "name": "cubxxw-blog",
   "version": "1.0.0",
+  "private": true,
   "description": "Blog E2E tests with Playwright",
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report"

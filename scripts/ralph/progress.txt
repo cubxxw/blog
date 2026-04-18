@@ -1,3 +1,154 @@
+## 2026-04-18 - US-033
+- 新建 tests/e2e/visual/aesthetic-agent.spec.ts：Matrix {en,zh} × {light,dark} × {desktop,mobile} 共 8 视觉测试用例 + 1 HTML 报告生成用例
+- 断言：:lang(zh) .post-title computed font-family 含 noto/serif；:lang(en) 含 fraunces/serif
+- 断言：ZH dark accent 含 ff3b3b；EN dark accent 不含 ff3b3b；0 console error
+- 截图输出到 tests/e2e/visual/snapshots/aesthetic-agent/（8 张）
+- HTML 报告 tests/e2e/visual/aesthetic-agent-report.html：8 张实现截图 + 4 张 Stitch 稿并列展示
+- .gitignore 新增：tests/e2e/visual/aesthetic-agent-report.html 与 tests/e2e/visual/snapshots/
+- Files changed: tests/e2e/visual/aesthetic-agent.spec.ts（新建）、.gitignore（修改）
+- **Learnings for future iterations:**
+  - visual/ 子目录测试文件会被 playwright.config.ts testDir: './tests/e2e' 自动发现，无需额外配置
+  - 报告生成 test 可放在同一 spec 文件末尾，用 fs.writeFileSync 生成 HTML，path.relative 计算截图相对路径
+  - HTML 报告用 grid + img 即可实现并列对比，完全静态，无需运行服务
+---
+
+## 2026-04-18 - US-032
+- tokens.css：修正暗色 CSS 选择器 html.dark → body.dark（PaperMod 将 .dark 类加在 body 上而非 html，经 footer.html JS 确认）；新增 .article-main background transition
+- article-typography.css：新增 body.dark .post-content h2 规则，覆盖 custom.css 中固定的 .dark .post-content h2 { border-left-color: #14b8a6 }，使 h2 border 颜色引用 var(--color-accent) token
+- tests/e2e/us032-dark-mode.spec.ts（新建）：30 个测试，EN/ZH × light/dark token 值验证（paper、ink、accent）、h2 border color、toggle 可逆、0 console error
+- Files changed: assets/css/extended/tokens.css（修改）、assets/css/extended/article-typography.css（修改）、tests/e2e/us032-dark-mode.spec.ts（新建）
+- **Learnings for future iterations:**
+  - PaperMod 将 .dark 类添加到 body（不是 html）— tokens.css 中的暗色选择器必须用 body.dark，不能用 html.dark
+  - CSS :lang() 伪类是继承的，body.dark:lang(zh) 可以正确匹配 html[lang="zh"] 的 body 子元素
+  - custom.css 中存在 .dark .post-content h2 { border-left-color: #14b8a6 }，会覆盖 article-typography.css 的 token 颜色；需在 article-typography.css 中用 body.dark 更高优先级规则覆盖
+  - Playwright 测试暗色 token 时：通过 page.evaluate 直接 add 'dark' 类到 body 即可，无需操作 localStorage
+---
+
+## 2026-04-18 - US-031
+- 新建 static/js/article-bottom-sheet.js：vanilla JS，FAB click→open sheet、overlay click→close、swipe-to-close（touchstart/touchend delta > 80px）、scroll 监听（scrollY<200 或距底部<300 时 FAB fade out）
+- 新建 assets/css/extended/article-bottom-sheet.css：FAB 48×48px 圆形、bottom sheet 70vh transform translateY、overlay backdrop、tab bar、TOC/AI/share panel 样式
+- layouts/_default/single.html：在 end main 前插入 overlay + FAB + bottom sheet HTML（含 TOC/AI/Share 三个 tab panel），<script defer> 引入 JS
+- 扩展已有 inline copy/wechat script 的选择器加 .abs-share-copy / .abs-share-wechat
+- 新建 tests/e2e/us031-bottom-sheet.spec.ts：24 个测试，375×812 / 414×896 两视口，FAB 存在 / open / close / tab panels / desktop hidden / marginalia mobile 可见 / 0 console error 全部通过
+- Files changed: static/js/article-bottom-sheet.js（新建）、assets/css/extended/article-bottom-sheet.css（新建）、layouts/_default/single.html（修改）、tests/e2e/us031-bottom-sheet.spec.ts（新建）
+- **Learnings for future iterations:**
+  - JS 文件需放 static/js/ 目录，通过 /js/xxx.js 路径在 HTML 中引用（Hugo 不处理 assets/js/）
+  - Playwright force:true click 对于 CSS display:none 的元素不触发 JS 事件；需用 page.evaluate(() => el.click()) 绕过
+  - bottom sheet 设计：display:flex + transform:translateY(100%) 在屏幕外，.abs--open 切换到 translateY(0)，无需切换 display
+  - scroll 监听 FAB hide：scrollY < FAB_HIDE_SCROLL 时隐藏（防止与页头重叠），距底部 < FAB_HIDE_BOTTOM 时隐藏（防止与 footer 重叠）
+---
+
+## Codebase Patterns
+- layouts/partials/article/ 目录用于存放文章详情页专属 partial（marginalia、editorial-tools 等），Hugo 自动查找
+- i18n key 中可用点号分隔命名空间（如 marginalia.principal），YAML 中 id 字段写完整 key 即可
+- Hugo .ReadingTime / .WordCount 在 partial 中直接可用，无需额外计算
+- :lang(zh) / :lang(en) CSS 选择器可用于 partial 中的样式隔离，与 Hugo {{ if eq .Lang "zh" }} 模板条件配合使用
+- CSS 覆盖文件在 assets/css/extended/ 目录，文件名任意，会自动被主入口引入
+- hugo build（无参数）等同于完整构建，用于验证模板渲染结果
+- PaperMod 主题用 body.dark 类切换深色模式（不使用 html[data-theme]），但自定义 CSS token 文件中须用 html.dark 匹配
+- 语言切换通过 :lang(zh) / :lang(en) CSS 伪类实现，Hugo 生成的 html 标签含 lang 属性
+- tsconfig.json 需要 "module": "CommonJS" + "moduleResolution": "node" 才能正确解析 @playwright/test
+- package-lock.json 被 .gitignore 忽略（存在 netlify/functions/package-lock.json），不要尝试 git add package-lock.json
+- layouts/_default/single.html 覆盖 PaperMod 的同名模板，直接放在 layouts/_default/ 即可生效，无需改主题源码
+- EN 文章默认 URL 无语言前缀（/ai-technology/posts/xxx/），ZH 文章 URL 含 /zh/ 前缀
+- CSS Grid 三栏布局：.article-layout 设 display:grid + grid-template-columns:repeat(12,minmax(0,1fr))，子元素用 grid-column 定位
+- JS 静态文件必须放 static/js/ 目录，通过 /js/xxx.js 路径引用；assets/js/ 下的文件 Hugo 不直接 serve
+- Playwright force:true click 不触发隐藏元素的 JS 事件；用 page.evaluate(() => el.click()) 代替
+- PaperMod 暗色类在 body（不是 html）：tokens.css 暗色选择器必须用 body.dark:lang(zh) 等，不能用 html.dark
+- custom.css 有 .dark .post-content h2 固定颜色覆盖，需在 article-typography.css 用 body.dark 高优先级规则覆盖
+---
+
+# Ralph Progress Log
+Started: 2026-04-18
+---
+
+## 2026-04-18 - US-025
+- 新增 assets/css/extended/tokens.css：语义化 CSS token 体系
+- :root（英文）：paper #f9f9f7、ink #1a1c1b、accent #2e352e、font-display Fraunces、line-height-prose 1.75
+- html:lang(zh)：paper #fbf9f4、ink #350003、accent #862122、font-display Noto Serif SC（含完整 CJK fallback）、line-height-prose 2.0、tracking-prose 0.02em
+- html.dark:lang(en) / html.dark:lang(zh) 各自暗色重映射
+- 同时新建 package.json、tsconfig.json、playwright.config.ts（为后续 TS 测试提供基础）
+- Files changed: assets/css/extended/tokens.css（新建）、package.json（新建）、tsconfig.json（新建）、playwright.config.ts（新建）
+- **Learnings for future iterations:**
+  - :lang(zh) 选择器在 Hugo 生成的页面中直接可用，Hugo 会根据内容语言在 html 标签写入正确的 lang 属性
+  - tokens.css 与 PaperMod 的 --theme/--primary/--secondary 完全独立，不会冲突
+  - package-lock.json 在 .gitignore 中，每次 npm install 后无法提交，需确保 package.json 版本号足够宽松
+  - 新分支从 main 创建时，之前在其他分支建立的 package.json/tsconfig.json 不存在，需要重建
+---
+
+## 2026-04-18 - US-026
+- 修改 layouts/partials/extend_head.html：新增单一 Google Fonts link（Fraunces variable opsz + Inter + JetBrains Mono）
+- Noto Serif SC 通过 {{ if eq .Lang "zh" }} 条件注入，仅 ZH 页面加载
+- preconnect fonts.gstatic.com 已在文件中存在，display=swap 确保字体不阻塞渲染
+- 新增 tests/e2e/us026-fonts.spec.ts：验证 EN 无 Noto link、ZH 有 Noto link、computed font-family 含预期字体
+- Files changed: layouts/partials/extend_head.html、tests/e2e/us026-fonts.spec.ts（新建）
+- **Learnings for future iterations:**
+  - Hugo {{ if eq .Lang "zh" }} 条件在 single 页面模板中直接可用，Lang 值为 "zh" 或 "en"（无连字符）
+  - Playwright 测试运行需要 netlify dev 或 hugo server 先行启动（baseURL localhost:1313）
+  - Google Fonts variable font 语法：Fraunces:ital,opsz,wght@0,9..144,300;... 可在单个 URL 中包含所有变体
+---
+
+## 2026-04-18 - US-027
+- 新建 layouts/_default/single.html：12 栅三栏结构，div.article-layout 包裹三个子区：aside.article-marginalia（col 1-2）、article.article-main（col 3-9）、aside.article-tools（col 10-12）
+- 新建 assets/css/extended/article-layout.css：完整断点覆盖（≥1440px gap 64px / ≥1280px gap 40px / 1024-1279px 隐藏 marginalia + article 扩至 col-span-9 / <1024px 单列 block）
+- <1280px 隐藏 article-tools（bottom sheet 由 US-031 接管）
+- 移动端新增 .article-marginalia-mobile 紧凑内联：作者 · 日期，<1024px 显示，≥1024px 隐藏
+- 保留所有原有 partial 调用（breadcrumbs, post_meta, cover, anchored_headings, post_nav_links, share_icons, comments）
+- aside 使用语义标签 + position: sticky
+- Files changed: layouts/_default/single.html（新建）、assets/css/extended/article-layout.css（新建）、tests/e2e/us027-layout.spec.ts（新建）
+- **Learnings for future iterations:**
+  - layouts/_default/single.html 覆盖 PaperMod 主题的同名文件，Hugo 优先加载项目 layouts/ 目录
+  - EN 文章访问 URL 无 /en/ 前缀；ZH 文章 URL 有 /zh/ 前缀——Playwright 测试时注意区分
+  - CSS Grid grid-column 语法：用 `X / span N` 定位列（1-indexed），比 `start / end` 更直观
+  - pkill -f "hugo server" 可终止后台 Hugo 进程
+---
+
+## 2026-04-18 - US-029
+- 新建 assets/css/extended/article-typography.css：editorial 级排版样式
+- .post-title：font-family var(--font-display)；EN clamp(2.5rem,5vw,4.5rem) weight 800 letter-spacing -0.02em line-height 1.08；ZH clamp(2.25rem,4.5vw,3.75rem) weight 900 letter-spacing 0.02em line-height 1.2
+- .post-description：italic Serif，opacity 0.65，max-w 62ch（ZH non-italic）
+- .post-content 正文：line-height/letter-spacing 引用 token；p::first-letter .drop-cap float 首字下沉（EN italic / ZH upright，color var(--color-accent)）
+- blockquote EN：::before 大装饰引号 8rem opacity 0.1；ZH：::before/::after 「」书名号
+- 行内 code pill：background var(--color-accent-soft)，border-radius 0.3em
+- .post-content hr::after：content '• • •'，color var(--color-accent)
+- .post-content h2：border-left 3px solid var(--color-accent)（覆盖 custom.css 固定颜色）
+- layouts/_default/single.html：.post-content 后加内联 script，给第一个 <p> 加 .drop-cap 类
+- 新建 tests/e2e/us029-typography.spec.ts：20 个测试（desktop + mobile 各 10），全部通过
+- Files changed: assets/css/extended/article-typography.css（新建）、layouts/_default/single.html（修改）、tests/e2e/us029-typography.spec.ts（新建）
+- **Learnings for future iterations:**
+  - CSS `::first-letter` 伪元素需要对应的元素有 .drop-cap 类，JS 在 currentScript.closest('.article-main') 中找第一个 <p> 加类，比 extend_footer.html 注入更可靠（inline script 与 DOM 同步执行）
+  - `article-typography.css` 字母序在 `custom.css` 之后，会正确覆盖 custom.css 中的固定颜色
+  - blockquote ::before 大引号需要 pointer-events: none 防止影响选择交互
+  - Playwright 测试中 computed font-family 返回的是字体栈完整字符串，用 .toMatch(/fraunces|georgia/) 做 case-insensitive 匹配更健壮
+---
+
+## 2026-04-18 - US-028
+- 新建 layouts/partials/article/marginalia.html：四组 Principal / Chronicle / Dimensions / Dialect + Suggest Changes
+- 新建 assets/css/extended/marginalia.css：0.5px hairline border-left，9px uppercase 标签，display font 值，EN italic / ZH upright
+- i18n/en.yaml + zh.yaml 各增 5 个 marginalia.* key
+- layouts/_default/single.html：aside.article-marginalia 调用 partial；mobile 紧凑区升级为两行（row1: author·date；row2: readTime·words·lang）
+- assets/css/extended/article-layout.css：移动端两行布局样式 + dialect 内联样式
+- 新建 tests/e2e/us028-marginalia.spec.ts：16 个测试，EN/ZH 标签验证、日期格式、mobile/desktop 可见性、0 console error
+- Files changed: layouts/partials/article/marginalia.html（新建）、assets/css/extended/marginalia.css（新建）、assets/css/extended/article-layout.css（修改）、layouts/_default/single.html（修改）、i18n/en.yaml（修改）、i18n/zh.yaml（修改）、tests/e2e/us028-marginalia.spec.ts（新建）
+- **Learnings for future iterations:**
+  - Hugo partial 接收 . (Page) 作为上下文，.Lang / .ReadingTime / .WordCount / .IsTranslated / .Translations 全部直接可用
+  - i18n key 中点号命名空间（marginalia.principal）需在 YAML id 字段写完整 key，Hugo {{ i18n "marginalia.principal" }} 正确解析
+  - .article-marginalia 在 <1024px 用 display:none 隐藏，Playwright 需用 toBeHidden() 而非 not.toBeVisible()
+  - 移动端两行布局用 flex-direction: column + 子 div.row1/row2，避免单行过长
+---
+
+## 2026-04-18 - US-030
+- 新建 layouts/partials/article/editorial-tools.html：TOC / AI Companion / Share Scroll 三个 tab 面板 + Annotations 空态占位
+- 新建 assets/css/extended/editorial-tools.css：tab 栏 + panel 样式（9px uppercase 标题 + hairline + 28px 圆形 share 按钮）
+- 复用 reading-companion.js 的 .reading-companion 类及 .rc-tab/.rc-panel/.toc-side__nav/.rc-ai-* DOM 结构——JS 不改
+- i18n/en.yaml + zh.yaml 各增 7 个 tools.* key（tools.toc / tools.ai / tools.annotations / tools.share / tools.ai_placeholder / tools.annotations_empty / tools.toc_empty）
+- layouts/_default/single.html：editorial-tools partial 替换 placeholder；新增内联 script 处理 copy link / WeChat 按钮
+- Files changed: layouts/partials/article/editorial-tools.html（新建）、assets/css/extended/editorial-tools.css（新建）、layouts/_default/single.html（修改）、i18n/en.yaml（修改）、i18n/zh.yaml（修改）、tests/e2e/us030-editorial-tools.spec.ts（新建）
+- **Learnings for future iterations:**
+  - reading-companion.js 以 document.querySelector('.reading-companion') 检测是否初始化，editorial-tools.html 直接复用此类名，JS 无需改动即可自动初始化 tab 切换 + TOC 高亮 + AI 对话
+  - Share 按钮 copy link 逻辑可以用 navigator.clipboard.writeText + 降级 execCommand 实现，通过 data-href 传递 URL
+  - CSS .et-section-label 用 border-top hairline 实现组间分隔，与 PaperMod tokens 系统兼容
+  - <1280px 隐藏 .article-tools 已在 article-layout.css 中实现，editorial-tools.css 无需重复
 ## Codebase Patterns
 - Hugo 自定义 partial 放在 layouts/partials/ 会自动覆盖主题 themes/PaperMod/layouts/partials/ 中同名文件
 - About 类型 `type: page` 的页面直接在根目录，breadcrumbs 模板通过 .Parent.Permalink 遍历路径段时无中间段
@@ -147,5 +298,4 @@ Started: Sat Apr 18 16:45:49 +07 2026
 - **Learnings for future iterations:**
   - lhci autorun 读取 lighthouserc.json，startServerCommand 中的 "Web Server is available" 是 hugo server 启动就绪的标志字符串
   - accessibility 使用 "error" 级别（阈值不达标则 CI 失败），其余使用 "warn"（仅警告，不阻断）
-  - LHCI_GITHUB_APP_TOKEN secret 可选，有则将分数发布到 PR 评论；无则仅上传 artifact
----
+  - LHCI_GITHUB_APP_TOKEN secret 可选，有则将分数发布到 PR 评论；无则仅上传 artifact---

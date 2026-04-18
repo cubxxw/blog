@@ -1,0 +1,95 @@
+/* ─── US-028: Left Marginalia Sidebar Styles ───────────────────── */
+
+/* Inner container — vertically stacked groups */
+.marginalia-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 0.75rem;
+  border-left: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+
+/* Each label-value pair */
+.marginalia-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Label: mono tiny uppercase — matches design's font-mono tracking-[0.2em] */
+.marginalia-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  opacity: 0.5;
+  line-height: 1.4;
+}
+
+/* Value: display/headline font, small — matches design's font-headline text-sm italic */
+.marginalia-value {
+  font-size: 0.875rem;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  color: var(--color-ink, #1a1c1b);
+  line-height: 1.5;
+}
+
+/* EN: italic display font for values */
+:lang(en) .marginalia-value {
+  font-style: italic;
+}
+
+/* ZH: upright, Noto Serif SC */
+:lang(zh) .marginalia-value {
+  font-style: normal;
+}
+
+/* Dialect (language switch) */
+.dialect-current {
+  font-weight: 700;
+  color: var(--color-accent, #2e352e);
+}
+
+.dialect-sep {
+  color: var(--color-ink-muted, #5e5e63);
+  margin: 0 0.15em;
+}
+
+.dialect-link {
+  color: var(--color-ink-muted, #5e5e63);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dialect-link:hover {
+  color: var(--color-accent, #2e352e);
+  text-decoration: underline;
+}
+
+/* Suggest Changes link */
+.marginalia-suggest {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.08));
+}
+
+.marginalia-suggest-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.6;
+  text-decoration: none;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-weight: 600;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.marginalia-suggest-link:hover {
+  color: var(--color-accent, #2e352e);
+  opacity: 1;
+}

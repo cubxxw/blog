@@ -92,9 +92,9 @@ params:
     yandex:
       SiteVerificationTag: ""
   cover:
-    hidden: true
+    hidden: false
     hiddenInList: true
-    hiddenInSingle: true
+    hiddenInSingle: false
   fuseOpts:
     # https://www.fusejs.io/api/options.html#ignorefieldnorm
     isCaseSensitive: false

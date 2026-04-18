@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#919193",
+                        "on-secondary-container": "#726153",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#862122",
+                        "secondary": "#6c5b4e",
+                        "inverse-primary": "#ffb3ae",
+                        "tertiary": "#151618",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#c7c6c8",
+                        "surface-container-high": "#eae8e3",
+                        "surface-container": "#f0eee9",
+                        "on-secondary": "#ffffff",
+                        "outline": "#7e756f",
+                        "surface-variant": "#e4e2dd",
+                        "on-secondary-fixed": "#25190f",
+                        "background": "#fbf9f4",
+                        "on-surface": "#1b1c19",
+                        "on-secondary-fixed-variant": "#534437",
+                        "inverse-surface": "#30312e",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e4e2dd",
+                        "surface": "#fbf9f4",
+                        "primary": "#350003",
+                        "on-surface-variant": "#4d4540",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c19",
+                        "surface-dim": "#dbdad5",
+                        "surface-bright": "#fbf9f4",
+                        "secondary-fixed": "#f6decd",
+                        "tertiary-container": "#292a2c",
+                        "on-tertiary-fixed": "#1a1c1d",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#e3e2e4",
+                        "surface-container-low": "#f5f3ee",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-fixed": "#ffdad7",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "on-tertiary-fixed-variant": "#464749",
+                        "on-primary-container": "#e86965",
+                        "secondary-container": "#f6decd",
+                        "secondary-fixed-dim": "#d9c2b2",
+                        "primary-container": "#5c0009",
+                        "surface-tint": "#a63937",
+                        "outline-variant": "#cfc4bd",
+                        "on-primary-fixed": "#410005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif SC", "serif"],
+                        "body": ["Newsreader", "serif"],
+                        "label": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Newsreader', 'Noto Serif SC', serif;
+            background-color: #fbf9f4;
+            color: #1b1c19;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 4.5rem;
+            line-height: 1;
+            padding-top: 4px;
+            padding-right: 12px;
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 700;
+            color: #350003;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant/15 bg-[#fbf9f4]/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80">menu</span>
+<span class="text-2xl font-bold tracking-widest text-primary font-headline uppercase">THE SCHOLAR</span>
+</div>
+<div class="hidden md:flex gap-12 text-sm tracking-widest font-label items-center">
+<a class="text-primary font-bold border-b-2 border-primary" href="#">ARCHIVES</a>
+<a class="text-secondary hover:text-primary transition-all duration-300" href="#">MANUSCRIPTS</a>
+<a class="text-secondary hover:text-primary transition-all duration-300" href="#">TRADITION</a>
+<span class="material-symbols-outlined text-primary cursor-pointer">search</span>
+</div>
+</nav>
+</header>
+<main class="pt-32 pb-24">
+<!-- Hero Section: Intentional Asymmetry -->
+<article class="max-w-screen-2xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Side Metadata (Vertical influence) -->
+<aside class="lg:col-span-1 hidden lg:flex flex-col items-center pt-4">
+<div class="vertical-text text-xs tracking-[0.5em] text-secondary font-label py-8 border-r border-outline-variant/30 pr-4">
+                    二零二四年 · 仲秋卷
+                </div>
+<div class="mt-8 bg-primary w-8 h-8 flex items-center justify-center text-white text-[10px] font-bold">
+                    印
+                </div>
+</aside>
+<!-- Main Content Area -->
+<div class="lg:col-span-11 xl:col-span-10">
+<header class="mb-20">
+<div class="flex items-center gap-4 mb-6">
+<span class="px-3 py-1 text-[10px] border border-primary text-primary tracking-widest uppercase">Ethics &amp; AI</span>
+<div class="h-[1px] w-20 bg-outline-variant"></div>
+<span class="text-xs text-secondary font-label tracking-wider italic">Reading time: 12 minutes</span>
+</div>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-headline font-bold text-on-background leading-tight mb-8 max-w-5xl">
+                        人機之辨：<br/><span class="text-primary">人工智能</span>時代的倫理冥想
+                    </h1>
+<p class="text-xl md:text-2xl text-secondary font-body leading-relaxed max-w-3xl italic">
+                        當代技術與東方古老智慧的碰撞，重新審視算法背後的人性溫度。
+                    </p>
+</header>
+<!-- Featured Image -->
+<figure class="relative mb-24 aspect-[21/9] overflow-hidden">
+<img alt="Eastern calligraphy elements" class="w-full h-full object-cover grayscale opacity-90 transition-transform duration-1000 hover:scale-105" data-alt="Monochrome close-up of traditional Chinese ink brush strokes and parchment texture with soft atmospheric lighting and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZFOeiN_csyhAR5CJh3qAG1uZCtNVTmtXX5ZZxET7j3PpFfpYizciRkdWFWofiZ950LwNn7vT7gRtKxR0hVQSYDTKNcw4CzQRKxlMq5j5Ww9P8VjS5kaR6YjFkXiyUxZyW_BZg1iOkcQ_I-XDkxYjw8yv5b1g-Wr7dVjBSxdA6VoYbMOkjOcumpR0tDB8vPFGXDH9mI81lPtLdYbAXMCa5aJ_aG2f_xk5WFtgu_c0ho7RvbAXwbGir-kWl_Ooh48I4uEF1fd0U82Q"/>
+<div class="absolute bottom-8 right-8 bg-primary p-6 shadow-2xl">
+<span class="text-on-primary text-sm tracking-widest font-headline">墨化之境</span>
+</div>
+</figure>
+<!-- Editorial Content Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<section class="lg:col-span-8 space-y-12">
+<p class="text-2xl leading-[2.2] text-on-surface drop-cap font-body text-justify">
+                            在科技突飛猛進的今天，人工智能（AI）已然不只是冰冷的代碼與算力的堆砌。它正以一種無孔不入的姿態，滲透進人類社會的每一個毛孔。從算法推薦到自動駕駛，從藝術創作到道德決策，我們正站在一個歷史性的節點上：當機器開始具備某種形式的「理性」時，人類作為倫理主體的唯一性是否正在瓦解？
+                        </p>
+<p class="text-xl leading-[2] text-on-surface-variant font-body">
+                            東方哲學歷來強調「天人合一」與「中庸之道」。在面對人工智能帶來的倫理挑戰時，這種智慧提供了一種超越二元對立的視角。我們不應將AI視為人類的對立面，而應思考如何將技術納入更宏大的生態倫理秩序中。
+                        </p>
+<!-- Centered Poetic Quote -->
+<blockquote class="py-16 px-8 border-y border-outline-variant/20 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-6 opacity-30" style="font-size: 48px;">format_quote</span>
+<p class="text-3xl md:text-4xl font-headline font-bold text-primary leading-snug max-w-2xl mb-6">
+                                「器者，所以載道也。若器離道，則流於技；若道無器，則流於空。」
+                            </p>
+<cite class="not-italic text-sm tracking-[0.2em] text-secondary font-label uppercase">— 論現代技術之精神</cite>
+</blockquote>
+<h3 class="text-3xl font-headline font-bold text-on-background mt-16 mb-6">數字化的隱憂與覺醒</h3>
+<p class="text-xl leading-[2] text-on-surface-variant font-body">
+                            隱私的消逝、算法的偏見、勞動的異化——這些不僅僅是技術故障，更是人類內心深處對控制感喪失的恐懼。當我們賦予機器決策權時，我們實際上是在外包我們的道德勇氣。真正的倫理不應是預設好的程序，而應是人類在具體情境下不斷抉擇與承擔的過程。
+                        </p>
+<!-- Secondary Artistic Image (Asymmetrical) -->
+<div class="flex justify-end my-24">
+<div class="w-4/5 relative bg-surface-container p-4">
+<img alt="Zen stone garden" class="w-full h-[400px] object-cover grayscale" data-alt="Minimalist zen rock garden with perfectly raked sand patterns and soft morning light casting long shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmU54nDI6RbCqxIYDiTqBI3RtvDA2y_LXLzUK6M8d5BvLxW9qGu5d5fNJNEyJb4imECZXh6fsu9-BDsLeLqXkjQW9uMLKYw8kedTJVwUocNCMZ11kOwU4PbJMMSMn0QydYb4xWiRf7s-EHSVG7KzSeVs29L8HGnLR9nFpkwZ8xRiC05P5V9iI_ktDgQ6OGUjuQkYHXRoNCIyG2m7bRUVQRn6y6CA1E-oUV8-VwEggqbeOykSscOK8wXWfcImoS8o5LGDEWKTh7yRE"/>
+<div class="absolute -left-12 bottom-12 bg-white p-8 border border-outline-variant/15 max-w-xs shadow-xl">
+<p class="text-sm font-label text-secondary leading-relaxed">
+                                        平衡之道：在極簡的物理空間中，尋求複雜系統的平衡感。正如人工智能在嚴謹邏輯中尋求靈感的火花。
+                                    </p>
+</div>
+</div>
+</div>
+<p class="text-xl leading-[2] text-on-surface-variant font-body">
+                            未來的AI倫理，必須紮根於對「人」的重新發現。我們需要一種「覺醒的技術觀」，讓AI成為延伸人類慈悲與智慧的工具，而非束縛思想的枷鎖。只有當技術服務於生命本身的繁榮，而非僅僅是效率的極大化時，我們才真正走向了文明的新紀元。
+                        </p>
+</section>
+<!-- Sidebar Content -->
+<aside class="lg:col-span-4 space-y-16">
+<div class="bg-surface-container-low p-8 border-l-4 border-primary">
+<h4 class="text-lg font-headline font-bold text-primary mb-6 uppercase tracking-widest">核心議論</h4>
+<ul class="space-y-6">
+<li class="group">
+<div class="text-[10px] text-secondary font-label mb-1">01</div>
+<p class="text-base font-body font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">
+                                        算法中立性的幻象：數據背後的文化偏見
+                                    </p>
+</li>
+<li class="group">
+<div class="text-[10px] text-secondary font-label mb-1">02</div>
+<p class="text-base font-body font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">
+                                        道德主體的轉移：誰該為機器的過失負責？
+                                    </p>
+</li>
+<li class="group">
+<div class="text-[10px] text-secondary font-label mb-1">03</div>
+<p class="text-base font-body font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">
+                                        情感計算的悖論：機器能否感知「惻隱之心」？
+                                    </p>
+</li>
+</ul>
+</div>
+<div class="space-y-8">
+<h4 class="text-lg font-headline font-bold text-on-background uppercase tracking-widest border-b border-outline-variant/30 pb-4">編輯推薦</h4>
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="w-20 h-20 bg-surface-container-high shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of an old book with textured pages and elegant typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxhzUCUNuCcEVGz6CtwHSvfwNO7fFsBFK1yzqH_xh5-FT1YnHuHP5GyhgU870NeHnuvMjNhcJuRhisSyizv68g4pNHCaksNd1Woli84AkOVMLLDUNQX6X9Sp3W95DAPA2_zzfhOqgXLefuq3QySM8FV8g_kgNdLKgGOqkjpWt57b79cDR9JBo3P1BbmcPnhPO5XkBIHrXSy5tVgt4Pb79t38EW6xGAB1wlLGRqohtmgKnaCv66j1bnr_P4SKTf9LEtmakVEQ4flwg"/>
+</div>
+<div>
+<span class="text-[10px] text-secondary uppercase">The Scroll</span>
+<h5 class="text-sm font-bold font-headline mt-1">數字遺產與靈魂永生</h5>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-20 h-20 bg-surface-container-high shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Traditional scholar's study with ink stone and brushes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTZu8YyjwUCHr2I_7pReVkU1T3kI2BIHPDu-BYFrDH5a8EIXVRPBNwAM1-TdiTavmecEVg_knM-pNV5vjyY9UdH13VdL9gM9PbJrOo0frf5C7_gFDUz5BZlZOBREH4_tEbO-tP68rs9Ts5yRgMeyznZnTJGjciOxLibntLd_gUJSSljjSzSSH2Y8wssrcKk9Z4f8nEgDHdWQQtrP260VdedptcLTdaDYbX8hXpjYbp_9eFPZpyBSnNOgFAxQgBV7YL9JLotOult6M"/>
+</div>
+<div>
+<span class="text-[10px] text-secondary uppercase">Tradition</span>
+<h5 class="text-sm font-bold font-headline mt-1">文人墨客在矽谷：跨時空對話</h5>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</article>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low py-20 px-8 mt-24 border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center space-y-12 w-full text-center max-w-screen-xl mx-auto">
+<div class="text-2xl font-bold tracking-[0.3em] text-primary font-headline">THE EDITORIAL SCHOLAR</div>
+<div class="flex flex-wrap justify-center gap-12 text-sm tracking-widest font-label">
+<a class="text-primary underline underline-offset-8" href="#">ARCHIVES</a>
+<a class="text-secondary hover:text-primary transition-colors" href="#">MANUSCRIPTS</a>
+<a class="text-secondary hover:text-primary transition-colors" href="#">TRADITION</a>
+<a class="text-secondary hover:text-primary transition-colors" href="#">CONTACT</a>
+</div>
+<div class="text-[10px] tracking-[0.4em] text-secondary mt-8 opacity-60">
+                © MMXXIV THE EDITORIAL SCHOLAR. ALL RIGHTS RESERVED.
+            </div>
+<!-- Decorative Seal -->
+<div class="w-12 h-12 bg-primary flex items-center justify-center">
+<span class="text-white font-headline text-xl font-bold">學</span>
+</div>
+</div>
+</footer>
+<!-- Floating Interaction (Optional but helps UI quality) -->
+<div class="fixed bottom-12 right-12 flex flex-col gap-4">
+<button class="w-14 h-14 bg-primary text-white flex items-center justify-center shadow-2xl hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="w-14 h-14 bg-white border border-outline-variant/30 text-primary flex items-center justify-center shadow-2xl hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+</body></html>

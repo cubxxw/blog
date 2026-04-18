@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>人机之辨：人工智能时代的伦理冥想 | The Editorial Scholar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#862122",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1c19",
+                    "primary-container": "#5c0009",
+                    "tertiary-fixed": "#e3e2e4",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e4e2dd",
+                    "surface-container-high": "#eae8e3",
+                    "outline-variant": "#cfc4bd",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fbf9f4",
+                    "on-tertiary-fixed-variant": "#464749",
+                    "inverse-surface": "#30312e",
+                    "surface-tint": "#a63937",
+                    "surface-container-highest": "#e4e2dd",
+                    "surface": "#fbf9f4",
+                    "inverse-primary": "#ffb3ae",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#f6decd",
+                    "on-secondary-fixed": "#25190f",
+                    "tertiary-fixed-dim": "#c7c6c8",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "on-primary-container": "#e86965",
+                    "on-tertiary-fixed": "#1a1c1d",
+                    "on-tertiary-container": "#919193",
+                    "on-secondary-fixed-variant": "#534437",
+                    "on-surface": "#1b1c19",
+                    "on-primary-fixed": "#410005",
+                    "inverse-on-surface": "#f2f1ec",
+                    "primary": "#350003",
+                    "secondary-fixed": "#f6decd",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#d9c2b2",
+                    "surface-dim": "#dbdad5",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#151618",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdad7",
+                    "on-secondary-container": "#726153",
+                    "surface-container-low": "#f5f3ee",
+                    "secondary": "#6c5b4e",
+                    "tertiary-container": "#292a2c",
+                    "surface-container": "#f0eee9",
+                    "outline": "#7e756f",
+                    "background": "#fbf9f4",
+                    "on-surface-variant": "#4d4540"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif SC", "serif"],
+                    "body": ["Newsreader", "serif"],
+                    "label": ["Newsreader", "serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf9f4;
+            color: #1b1c19;
+            font-family: 'Newsreader', serif;
+        }
+        .chinese-serif {
+            font-family: 'Noto Serif SC', serif;
+        }
+        .drop-cap::first-letter {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 900;
+            font-size: 4.5rem;
+            float: left;
+            line-height: 1;
+            padding-right: 0.5rem;
+            color: #350003;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fbf9f4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cfc4bd;
+        }
+        .marginalia-border {
+            border-left: 0.5px solid rgba(207, 196, 189, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto bg-[#fbf9f4]/80 dark:bg-stone-900/80 backdrop-blur-md border-none">
+<div class="text-2xl font-bold text-[#350003] dark:text-[#ff3b3b] uppercase tracking-widest chinese-serif">The Editorial Scholar</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-[#6c5b4e] dark:text-stone-400 hover:text-[#350003] transition-colors duration-300 font-serif text-lg tracking-tight" href="#">Archives</a>
+<a class="text-[#350003] dark:text-[#ff3b3b] border-b border-[#350003] pb-1 font-bold font-serif text-lg tracking-tight" href="#">Essays</a>
+<a class="text-[#6c5b4e] dark:text-stone-400 hover:text-[#350003] transition-colors duration-300 font-serif text-lg tracking-tight" href="#">Manuscripts</a>
+<a class="text-[#6c5b4e] dark:text-stone-400 hover:text-[#350003] transition-colors duration-300 font-serif text-lg tracking-tight" href="#">Library</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#350003] cursor-pointer" data-icon="search">search</span>
+<span class="material-symbols-outlined text-[#350003] cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar (Tools & AI) -->
+<aside class="fixed right-0 top-0 h-full flex flex-col pt-32 pb-12 px-8 z-40 bg-[#f5f3ee] dark:bg-stone-900 w-80 border-l-[0.5pt] border-[#cfc4bd]/30">
+<div class="mb-10">
+<h2 class="text-[#350003] font-bold text-sm uppercase tracking-[0.2em] chinese-serif">Editorial Tools</h2>
+<p class="text-[#6c5b4e] opacity-60 text-[10px] uppercase tracking-[0.1em] mt-1">The Silent Scholar</p>
+</div>
+<nav class="flex flex-col gap-8">
+<!-- Table of Contents - Refined -->
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-[#350003] group cursor-default">
+<span class="material-symbols-outlined text-lg opacity-40 group-hover:opacity-100 transition-opacity" data-icon="menu_book">menu_book</span>
+<span class="text-xs font-bold tracking-[0.2em] uppercase chinese-serif">Table of Contents</span>
+</div>
+<ul class="space-y-4 border-l border-[#cfc4bd]/40 ml-[9px]">
+<li class="relative pl-6 group cursor-pointer">
+<div class="absolute left-[-1px] top-1.5 w-1.5 h-1.5 rounded-full bg-primary border border-surface scale-0 group-hover:scale-100 transition-transform origin-center"></div>
+<span class="text-xs text-secondary/60 group-hover:text-primary transition-colors chinese-serif leading-relaxed block">导言：硅基时代的冥想</span>
+</li>
+<li class="relative pl-6 group cursor-pointer">
+<div class="absolute left-[-1px] top-1.5 w-1.5 h-1.5 rounded-full bg-primary border border-surface scale-0 group-hover:scale-100 transition-transform origin-center"></div>
+<span class="text-xs text-secondary/60 group-hover:text-primary transition-colors chinese-serif leading-relaxed block">算法之“技”与人性之“道”</span>
+</li>
+<li class="relative pl-6 group cursor-pointer">
+<div class="absolute left-[-1px] top-1.5 w-1.5 h-1.5 rounded-full bg-primary border border-surface scale-0 group-hover:scale-100 transition-transform origin-center"></div>
+<span class="text-xs text-secondary/60 group-hover:text-primary transition-colors chinese-serif leading-relaxed block">人机边界的消融</span>
+</li>
+</ul>
+</div>
+<div class="h-[0.5pt] w-full bg-[#cfc4bd]/30"></div>
+<!-- AI Companion -->
+<div class="flex flex-col">
+<div class="flex items-center gap-3 text-[#6c5b4e] opacity-60 hover:opacity-100 transition-opacity py-1 cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-xs font-bold tracking-[0.2em] uppercase chinese-serif">AI 伴读</span>
+</div>
+<div class="mt-4 p-4 bg-white/40 border border-[#cfc4bd]/20 text-[11px] font-serif leading-relaxed italic text-secondary/80">
+                "这篇文章探讨了当代技术与传统智慧的融合，您想深入了解文中关于‘器与道’的阐述吗？"
+            </div>
+<div class="mt-4 relative">
+<input class="w-full bg-transparent border-b border-outline/30 py-2 text-xs focus:border-primary focus:ring-0 chinese-serif outline-none placeholder:opacity-40" placeholder="向 AI 提问..." type="text"/>
+<button class="absolute right-0 top-2 text-primary opacity-40 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 pt-2">
+<div class="flex items-center gap-3 text-[#6c5b4e] opacity-60 hover:opacity-100 transition-all duration-300 py-1 cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="history_edu">history_edu</span>
+<span class="text-xs font-bold tracking-[0.2em] uppercase chinese-serif">Annotations</span>
+</div>
+<div class="flex items-center gap-3 text-[#6c5b4e] opacity-60 hover:opacity-100 transition-all duration-300 py-1 cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="format_quote">format_quote</span>
+<span class="text-xs font-bold tracking-[0.2em] uppercase chinese-serif">Citations</span>
+</div>
+</div>
+<div class="h-[0.5pt] w-full bg-[#cfc4bd]/30 my-2"></div>
+<!-- Share Section - Dedicated & Elegant -->
+<div class="space-y-5">
+<div class="flex items-center gap-3 text-[#350003] opacity-80">
+<span class="material-symbols-outlined text-lg" data-icon="ios_share">ios_share</span>
+<span class="text-xs font-bold tracking-[0.2em] uppercase chinese-serif">Share Scroll</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full border border-[#cfc4bd]/40 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300">
+<svg class="w-4 h-4 text-secondary/60 group-hover:text-primary fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.447 3.39c-1.285 0-2.33 1.045-2.33 2.33s1.045 2.33 2.33 2.33 2.33-1.045 2.33-2.33-1.045-2.33-2.33-2.33zm1.666 5.62c-1.64.004-3.136.953-3.836 2.434l-.454.912c-.22.44-.33.916-.33 1.397v4.613c0 .543.44 1.01 1 1.01s1-.467 1-1.01v-2.376h1.22l.53 4.23c.068.536.56.917 1.1.848.537-.068.915-.56.846-1.096l-.6-4.782h.43c.553 0 1-.447 1-1V10.01c0-.553-.447-1-1-1h-.93zM5.333 18.667h13.334c.736 0 1.333-.597 1.333-1.334V6.667c0-.737-.597-1.334-1.333-1.334H5.333c-.736 0-1.333.597-1.333 1.334v10.666c0 .737.597 1.334 1.333 1.334z"></path></svg>
+</div>
+<span class="text-[8px] uppercase tracking-tighter text-secondary/40 font-serif group-hover:text-primary transition-colors">WeChat</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full border border-[#cfc4bd]/40 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300">
+<svg class="w-4 h-4 text-secondary/60 group-hover:text-primary fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.27 20.1H3.65V9.24h3.62V20.1zM5.47 7.76c-1.15 0-2.09-.91-2.09-2.04 0-1.13.94-2.04 2.09-2.04 1.15 0 2.09.91 2.09 2.04 0 1.13-.94 2.04-2.09 2.04zm14.63 12.34h-3.62v-5.69c0-1.36-.02-3.12-1.9-3.12-1.9 0-2.19 1.48-2.19 3.02v5.79h-3.62V9.24h3.48v1.48h.05c.48-.91 1.66-1.87 3.41-1.87 3.65 0 4.32 2.4 4.32 5.52v5.73z"></path></svg>
+</div>
+<span class="text-[8px] uppercase tracking-tighter text-secondary/40 font-serif group-hover:text-primary transition-colors">LinkedIn</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full border border-[#cfc4bd]/40 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300">
+<svg class="w-3.5 h-3.5 text-secondary/60 group-hover:text-primary fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</div>
+<span class="text-[8px] uppercase tracking-tighter text-secondary/40 font-serif group-hover:text-primary transition-colors">X / Twitter</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full border border-[#cfc4bd]/40 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300">
+<span class="material-symbols-outlined text-lg text-secondary/60 group-hover:text-primary">link</span>
+</div>
+<span class="text-[8px] uppercase tracking-tighter text-secondary/40 font-serif group-hover:text-primary transition-colors">Copy Link</span>
+</button>
+</div>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-40 pb-20 pl-12 pr-[340px] max-w-[1600px] mx-auto grid grid-cols-12 gap-12">
+<!-- Left Column: Metadata (Marginalia) -->
+<div class="col-span-2">
+<div class="sticky top-40 space-y-10 pl-4 marginalia-border">
+<div class="flex flex-col gap-1.5">
+<span class="text-[9px] uppercase tracking-[0.4em] text-secondary/50 font-serif">Principal</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface chinese-serif">熊信伟</span>
+<span class="text-[10px] italic text-secondary/60 font-serif mt-0.5">Xinwei Xiong, Me</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="text-[9px] uppercase tracking-[0.4em] text-secondary/50 font-serif">Chronicle</span>
+<div class="flex flex-col">
+<span class="text-xs text-secondary font-serif">April 5, 2026</span>
+<span class="text-[10px] text-secondary/60 chinese-serif mt-0.5">丙午年 二月十八</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="text-[9px] uppercase tracking-[0.4em] text-secondary/50 font-serif">Dimensions</span>
+<div class="flex flex-col gap-0.5">
+<span class="text-[11px] text-secondary font-serif tracking-tight">5 mins reading</span>
+<span class="text-[11px] text-secondary font-serif tracking-tight">982 words recorded</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="text-[9px] uppercase tracking-[0.4em] text-secondary/50 font-serif">Dialect</span>
+<div class="flex items-center gap-2">
+<button class="text-[10px] font-bold text-primary border-b border-primary/40 font-serif">EN</button>
+<span class="text-[10px] text-secondary/30">|</span>
+<button class="text-[10px] text-secondary/50 hover:text-secondary transition-colors chinese-serif">中</button>
+</div>
+</div>
+<div class="pt-6">
+<button class="flex items-center gap-2 group">
+<div class="w-6 h-6 bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[14px]" data-icon="edit_note">edit_note</span>
+</div>
+<span class="text-[9px] uppercase tracking-[0.2em] text-primary font-bold group-hover:underline decoration-dotted underline-offset-4">Suggest Changes</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Center Column: Article -->
+<article class="col-span-10 xl:col-span-8 space-y-16">
+<header class="space-y-6">
+<h1 class="text-6xl font-black text-on-surface leading-[1.2] chinese-serif tracking-tight">
+                人机之辨：人工智能时代的伦理冥想
+            </h1>
+<p class="text-2xl text-secondary chinese-serif font-light opacity-80 max-w-2xl">
+                当代技术与东方古老智慧的碰撞，重新审视算法背后的人性温度。
+            </p>
+</header>
+<div class="w-full aspect-[21/9] overflow-hidden">
+<img alt="Zen AI" class="w-full h-full object-cover grayscale opacity-90 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcwRB3e-uStvgEXZ9zvUAQTs2dGJKg5WbMei3wj6cS_BhfhTDtpkadHe0b3SKYnTyc0zCJAPPlbir4ErXySZJfIXwgw2b1ZxUUBTBew01uREFM6Cji8Ny8BY4eXtnMvuGCpPfcXwZCNkK1LlItTEdPGcqdtsmHJkbIHWTfHe-cFMkATqEIOs8QoygquB97FJ_XikGSMmQqkOh4HmKuJ_Hw5ebYDWHABrq9AWrhlrvrLnai9TClSQuUz-oSYhqMZmlNOXoolxD5ai8"/>
+</div>
+<section class="prose prose-lg max-w-none space-y-8">
+<p class="chinese-serif text-xl leading-[2.2] text-on-surface drop-cap tracking-wide">
+                在数字洪流席卷而来的当下，人类正站在一个前所未有的十字路口。当算力以指数级速度进化，当神经网络开始模拟人类的直觉，我们不禁要问：在那冰冷的硅基逻辑深处，是否真的能孕育出名为“人性”的温度？这不仅仅是一个技术命题，更是一个深刻的伦理冥想。
+            </p>
+<p class="chinese-serif text-xl leading-[2.2] text-on-surface tracking-wide">
+                人工智能的本质，是对人类智慧的一种极致抽象与复刻。然而，东方智慧告诉我们，智慧并非仅仅是逻辑的堆砌。它如水之无常，如风之不息，存在于那些无法被量化的空隙之中。我们习惯于用“效率”来衡量算法，却往往忽视了“无用之用”在生命体验中的重要地位。
+            </p>
+<blockquote class="border-l-4 border-primary pl-8 py-4 my-12 bg-surface-container-low">
+<p class="text-3xl italic text-primary-container chinese-serif leading-relaxed">
+                    「器者，所以载道也。若器离道，则流于技；若道无器，则流于空。」
+                </p>
+<footer class="mt-4 text-sm text-secondary/60 chinese-serif">— 《通志·器道论》 意译</footer>
+</blockquote>
+<p class="chinese-serif text-xl leading-[2.2] text-on-surface tracking-wide">
+                技术应当是“载道”之器。如果人工智能仅仅沦为追求极致效率的工具，那么它终将与人类的主体性背道而驰。我们需要在代码的编织中，注入对生命的敬畏，对苦难的同情，以及对美的感知。唯有如此，算法才能从冰冷的数学模型，升华为能够抚慰心灵的数字诗篇。
+            </p>
+</section>
+<!-- Comments Section -->
+<section class="mt-32 pt-24 border-t-[0.5pt] border-outline-variant/30">
+<div class="flex justify-between items-end mb-12">
+<h3 class="text-3xl font-bold chinese-serif text-primary">Responses</h3>
+<div class="flex gap-4 text-xs font-serif uppercase tracking-widest text-secondary">
+<button class="underline decoration-dotted text-primary">Write</button>
+<button class="opacity-40 hover:opacity-100 transition-opacity">Preview</button>
+</div>
+</div>
+<div class="mb-16">
+<textarea class="w-full bg-surface-container border-none p-6 text-lg chinese-serif placeholder:opacity-30 focus:ring-1 focus:ring-primary/20 min-h-[150px]" placeholder="在此处留下您的冥想..."></textarea>
+<div class="mt-4 flex justify-end">
+<button class="bg-primary text-white px-10 py-3 text-sm tracking-widest chinese-serif hover:bg-primary-container transition-colors">SUBMIT RESPONSE</button>
+</div>
+</div>
+<div class="space-y-12">
+<!-- Single Comment -->
+<div class="flex gap-6 group">
+<div class="w-10 h-10 bg-surface-container-highest shrink-0 grayscale overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAeEYzUQzxMWnFQu3WGmDv_hizHBdLWbZYNnPiPZS-hsEtFVktvAg-nG10_Ob0Ju9i_q3c7xOrtCfh8I32hVysa_bSl_Z0WAlS-fwTAZEH_SuMSUt59DdDO8gwQ2ibc_33eMcbPzaFblaLKIrg8PKxAyV1KJNuYmQksoE3EMAvnYepitZ_WJ6OW6KV0NPVsFYLiFAbXNB691Tfk_qzh7z_R6mzt-p1chXlcQ-5YIWB31kIR-7GNxG6goF_skp_k6eKq0Xu6zChmCI"/>
+</div>
+<div class="flex-grow space-y-2">
+<div class="flex items-center gap-3">
+<span class="text-sm font-bold chinese-serif">林墨</span>
+<span class="text-[10px] text-secondary/40 font-serif">2 HOURS AGO</span>
+</div>
+<p class="text-base text-secondary chinese-serif leading-relaxed">
+                            关于“器道”的讨论非常精辟。人工智能不应只是对人脑的替代，而应是人类认知的延伸。我们如何定义“道”，将决定未来技术演化的方向。
+                        </p>
+<div class="flex gap-4 pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-[10px] text-primary underline chinese-serif">Reply</button>
+<button class="text-[10px] text-secondary chinese-serif">Like (12)</button>
+</div>
+</div>
+</div>
+<div class="flex gap-6 group">
+<div class="w-10 h-10 bg-surface-container-highest shrink-0 grayscale overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5Qid9KWyGWLeJK-Q7-KIXrdcTDgUexL1nSrM7fLzdFnPLexZ-EHDBSoFEer5x43GJ4cLe_f-aJqHmAxiK012ERPRLEjANfvOONWA9iYcX25XJ7RZAbOFJSW5kWLViyP1skQzOqwVK5aPl--dRJ9Xj7hitJ890feo5UCN5v5kVTHFxkq_7S8-RabpO7xqZRk0d_EFSNbuglJZ_L70vIDaiqoBZOlbo6cql9KuOqIp8kQAgM54eH3tW9qpuxSUOeEsUxpyAwqko-yY"/>
+</div>
+<div class="flex-grow space-y-2">
+<div class="flex items-center gap-3">
+<span class="text-sm font-bold chinese-serif">沈清秋</span>
+<span class="text-[10px] text-secondary/40 font-serif">5 HOURS AGO</span>
+</div>
+<p class="text-base text-secondary chinese-serif leading-relaxed">
+                            文章读罢，心生平静。在快节奏的代码迭代中，这种对于“慢”和“空”的思考尤为珍贵。
+                        </p>
+<div class="flex gap-4 pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-[10px] text-primary underline chinese-serif">Reply</button>
+<button class="text-[10px] text-secondary chinese-serif">Like (8)</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</article>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-24 border-t-[0.5pt] border-[#cfc4bd]/20 bg-[#fbf9f4] dark:bg-stone-950 py-16 px-12 flex flex-col items-center gap-8">
+<div class="flex gap-12">
+<a class="text-[#6c5b4e] opacity-50 hover:opacity-100 transition-opacity font-serif text-xs uppercase tracking-[0.2em]" href="#">Privacy</a>
+<a class="text-[#6c5b4e] opacity-50 hover:opacity-100 transition-opacity font-serif text-xs uppercase tracking-[0.2em]" href="#">Colophon</a>
+<a class="text-[#350003] underline decoration-dotted font-serif text-xs uppercase tracking-[0.2em]" href="#">Ethics</a>
+<a class="text-[#6c5b4e] opacity-50 hover:opacity-100 transition-opacity font-serif text-xs uppercase tracking-[0.2em]" href="#">Contact</a>
+</div>
+<div class="text-[#6c5b4e] dark:text-stone-500 font-serif text-xs uppercase tracking-[0.2em]">
+        © MMXIV The Editorial Scholar. Curated Digital Scroll.
+    </div>
+</footer>
+</body></html>

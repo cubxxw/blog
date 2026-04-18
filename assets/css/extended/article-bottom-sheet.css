@@ -1,0 +1,264 @@
+/* ─── US-031: Mobile Bottom Sheet + FAB ──────────────────────── */
+
+/* Only visible on mobile (<1024px) */
+
+/* ── Floating Action Button ────────────────────────────────── */
+.article-fab {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.25rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+  color: var(--color-paper, #f9f9f7);
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  z-index: 200;
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.article-fab svg {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.article-fab--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+
+@media (max-width: 1023px) {
+  .article-fab {
+    display: flex;
+  }
+}
+
+/* ── Overlay ────────────────────────────────────────────────── */
+.abs-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 210;
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.abs-overlay--visible {
+  opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .abs-overlay {
+    display: block;
+  }
+}
+
+/* ── Bottom Sheet ───────────────────────────────────────────── */
+.article-bottom-sheet {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70vh;
+  background: var(--color-paper, #f9f9f7);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+  z-index: 220;
+  transform: translateY(100%);
+  transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-bottom-sheet.abs--open {
+  transform: translateY(0);
+}
+
+@media (min-width: 1024px) {
+  .article-bottom-sheet,
+  .abs-overlay,
+  .article-fab {
+    display: none !important;
+  }
+}
+
+/* ── Sheet drag handle ──────────────────────────────────────── */
+.abs-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.18));
+  margin: 0.6rem auto 0;
+  flex-shrink: 0;
+}
+
+/* ── Tab bar ────────────────────────────────────────────────── */
+.abs-tabs {
+  display: flex;
+  border-bottom: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+
+.abs-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.5rem 0.25rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.abs-tab svg {
+  width: 14px;
+  height: 14px;
+}
+
+.abs-tab:hover,
+.abs-tab--active {
+  color: var(--color-accent, #2e352e);
+  border-bottom-color: var(--color-accent, #2e352e);
+}
+
+/* ── Panels ─────────────────────────────────────────────────── */
+.abs-panels {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.abs-panel {
+  padding: 0.75rem;
+}
+
+/* ── TOC panel ───────────────────────────────────────────────── */
+.abs-toc-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.abs-toc-item a {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  padding: 0.35rem 0.5rem;
+  color: var(--color-ink-muted, #5e5e63);
+  text-decoration: none;
+  border-radius: 2px;
+  border-left: 2px solid transparent;
+  transition: color 120ms ease;
+}
+
+.abs-toc-item a:hover {
+  color: var(--color-accent, #2e352e);
+  border-left-color: var(--color-accent, #2e352e);
+}
+
+.abs-toc-item--h3 a { padding-left: 1rem; }
+.abs-toc-item--h4 a { padding-left: 1.5rem; }
+
+/* ── AI panel ────────────────────────────────────────────────── */
+.abs-ai-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.abs-ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  min-height: 80px;
+}
+
+.abs-ai-input-area {
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-end;
+}
+
+.abs-ai-textarea {
+  flex: 1;
+  font-size: 0.8rem;
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  border: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  border-radius: 4px;
+  padding: 0.4rem 0.5rem;
+  resize: none;
+  background: var(--color-paper, #f9f9f7);
+  color: var(--color-ink, #1a1c1b);
+  outline: none;
+}
+
+.abs-ai-textarea:focus {
+  border-color: var(--color-accent, #2e352e);
+}
+
+.abs-ai-send {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--color-accent, #2e352e);
+  color: var(--color-paper, #f9f9f7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.abs-ai-send svg { width: 13px; height: 13px; }
+
+/* ── Share panel ─────────────────────────────────────────────── */
+.abs-share-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 0;
+}
+
+.abs-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent-soft, #dde5da);
+  color: var(--color-accent, #2e352e);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.abs-share-btn:hover {
+  background: var(--color-accent, #2e352e);
+  color: var(--color-paper, #f9f9f7);
+}
+
+.abs-share-btn svg { width: 18px; height: 18px; }

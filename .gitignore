@@ -82,6 +82,10 @@ netlify/functions/node_modules/
 .gstack/
 .claude/worktrees/
 
+# Visual test report (generated, not committed)
+tests/e2e/visual/aesthetic-agent-report.html
+tests/e2e/visual/snapshots/
+
 # Playwright
 /test-results/
 /playwright-report/

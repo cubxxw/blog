@@ -254,6 +254,9 @@ hugo --minify
 
 | 文件 | 用途 |
 |------|------|
+| `layouts/_default/single.html` | 文章详情页（三栏布局入口） |
+| `layouts/partials/article/marginalia.html` | 左侧 Marginalia 元数据栏 partial |
+| `layouts/partials/article/editorial-tools.html` | 右侧 Editorial Tools 侧栏 partial |
 | `themes/PaperMod/layouts/partials/header.html` | 头部导航 |
 | `themes/PaperMod/layouts/partials/footer.html` | 页脚 |
 | `themes/PaperMod/layouts/partials/post_meta.html` | 文章元信息 |
@@ -263,8 +266,16 @@ hugo --minify
 
 | 文件 | 用途 |
 |------|------|
+| `assets/css/extended/tokens.css` | 双主题 CSS tokens（明/暗模式变量） |
+| `assets/css/extended/article-layout.css` | 文章三栏 12 格布局 |
+| `assets/css/extended/article-typography.css` | 文章排版（标题、首字下沉、pull-quote） |
+| `assets/css/extended/marginalia.css` | 左侧 Marginalia 元数据栏 |
+| `assets/css/extended/editorial-tools.css` | 右侧 Editorial Tools 侧栏 |
+| `assets/css/extended/article-bottom-sheet.css` | 移动端 Bottom Sheet |
 | `assets/css/extended/nav-elegant.css` | 导航样式 |
 | `assets/css/extended/custom.css` | 自定义样式 |
+| `assets/css/extended/share-buttons.css` | 分享按钮样式 |
+| `assets/css/extended/toc-highlight.css` | 目录高亮样式 |
 
 ---
 
