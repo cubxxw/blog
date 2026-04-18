@@ -376,8 +376,8 @@
         "Typecheck passes"
       ],
       "priority": 24,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "新增 .github/workflows/lighthouse.yml 和 lighthouserc.json。扫描首页、About、Projects、Travel、一篇文章详情（5 个 URL）。断言：performance ≥ 0.85(warn)、accessibility ≥ 0.90(error)、best-practices ≥ 0.90(warn)、seo ≥ 0.90(warn)。结果上传 lighthouse-results artifact（retention 7 天）。TypeCheck 通过。"
     }
   ]
 }

@@ -138,3 +138,14 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - Hugo build 在 CI 中用 `--baseURL "http://localhost:1313/"` 使静态资源路径与 hugo server 一致
   - `npm ci` 需要 package-lock.json 存在（已有），并使用 `cache: "npm"` 加速
 ---
+
+## 2026-04-18 - US-024
+- 新增 lighthouserc.json：扫描 5 个页面，断言 performance≥0.85/accessibility≥0.90/best-practices≥0.90/seo≥0.90，upload target=temporary-public-storage
+- 新增 .github/workflows/lighthouse.yml：PR 触发，步骤：checkout → setup-node → npm ci → install-hugo → dart-sass → hugo build → npm install -g @lhci/cli → lhci autorun
+- 失败或成功均上传 .lighthouseci/ 目录为 artifact（retention 7 天）
+- Files changed: .github/workflows/lighthouse.yml（新建）、lighthouserc.json（新建）
+- **Learnings for future iterations:**
+  - lhci autorun 读取 lighthouserc.json，startServerCommand 中的 "Web Server is available" 是 hugo server 启动就绪的标志字符串
+  - accessibility 使用 "error" 级别（阈值不达标则 CI 失败），其余使用 "warn"（仅警告，不阻断）
+  - LHCI_GITHUB_APP_TOKEN secret 可选，有则将分数发布到 PR 评论；无则仅上传 artifact
+---
