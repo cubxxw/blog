@@ -185,8 +185,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 12,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "使用 CSS :has() 选择器扩宽 About 页面 .main 容器至 1000px；.post-single:has(.about-container) 设 max-width:100%；.about-container 调整为 max-width:880px margin:0 auto 实现水平居中。:has() 在现代浏览器（Chrome 105+, Firefox 121+, Safari 15.4+）均支持。移动端通过已有媒体查询保持全宽带内边距。"
     },
     {
       "id": "US-013",

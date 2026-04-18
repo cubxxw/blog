@@ -1,3 +1,16 @@
+## 2026-04-18 - US-012
+- 使用 CSS :has() 选择器扩宽 About 页面 .main 容器：`.main:has(.about-container) { max-width: 1000px }`
+- `.post-single:has(.about-container) { max-width: 100% }` 消除内部 post-single 的宽度截断
+- `.about-container` 从 900px 调整为 880px，`margin: 0 auto` 保证水平居中
+- 文件变更：assets/css/extended/custom.css（新增 about-container widening 规则）
+- Hugo --minify 构建通过，:has() 规则和 max-width:880px 确认在 public/ CSS 中
+- **Learnings for future iterations:**
+  - CSS :has() 选择器在 Hugo esbuild 压缩中有效保留（已在 blog-ai 和 lang-switch 等规则中验证）
+  - .main 容器的宽度由 `--main-width` CSS 变量控制（default 720px），扩宽 About 页面需要通过 :has() 或添加特定 body class 来覆盖
+  - custom.css 中多个同选择器声明时，后声明会覆盖前声明（标准 CSS 级联），但 Hugo minifier 可能合并或优化重复规则，要确认 max-width 值在构建输出中正确
+
+---
+
 ## 2026-04-18 - US-010
 - 将 travel.html 卡片摘要从纯 `$page.Summary` 改为 `with .Description / else .Summary` 双 fallback 逻辑
 - 非首卡（截断 100 字符）和首卡（截断 160 字符）均应用相同 fallback 逻辑
