@@ -5,6 +5,9 @@
 - 语言切换通过 :lang(zh) / :lang(en) CSS 伪类实现，Hugo 生成的 html 标签含 lang 属性
 - tsconfig.json 需要 "module": "CommonJS" + "moduleResolution": "node" 才能正确解析 @playwright/test
 - package-lock.json 被 .gitignore 忽略（存在 netlify/functions/package-lock.json），不要尝试 git add package-lock.json
+- layouts/_default/single.html 覆盖 PaperMod 的同名模板，直接放在 layouts/_default/ 即可生效，无需改主题源码
+- EN 文章默认 URL 无语言前缀（/ai-technology/posts/xxx/），ZH 文章 URL 含 /zh/ 前缀
+- CSS Grid 三栏布局：.article-layout 设 display:grid + grid-template-columns:repeat(12,minmax(0,1fr))，子元素用 grid-column 定位
 ---
 
 # Ralph Progress Log
@@ -35,4 +38,19 @@ Started: 2026-04-18
   - Hugo {{ if eq .Lang "zh" }} 条件在 single 页面模板中直接可用，Lang 值为 "zh" 或 "en"（无连字符）
   - Playwright 测试运行需要 netlify dev 或 hugo server 先行启动（baseURL localhost:1313）
   - Google Fonts variable font 语法：Fraunces:ital,opsz,wght@0,9..144,300;... 可在单个 URL 中包含所有变体
+---
+
+## 2026-04-18 - US-027
+- 新建 layouts/_default/single.html：12 栅三栏结构，div.article-layout 包裹三个子区：aside.article-marginalia（col 1-2）、article.article-main（col 3-9）、aside.article-tools（col 10-12）
+- 新建 assets/css/extended/article-layout.css：完整断点覆盖（≥1440px gap 64px / ≥1280px gap 40px / 1024-1279px 隐藏 marginalia + article 扩至 col-span-9 / <1024px 单列 block）
+- <1280px 隐藏 article-tools（bottom sheet 由 US-031 接管）
+- 移动端新增 .article-marginalia-mobile 紧凑内联：作者 · 日期，<1024px 显示，≥1024px 隐藏
+- 保留所有原有 partial 调用（breadcrumbs, post_meta, cover, anchored_headings, post_nav_links, share_icons, comments）
+- aside 使用语义标签 + position: sticky
+- Files changed: layouts/_default/single.html（新建）、assets/css/extended/article-layout.css（新建）、tests/e2e/us027-layout.spec.ts（新建）
+- **Learnings for future iterations:**
+  - layouts/_default/single.html 覆盖 PaperMod 主题的同名文件，Hugo 优先加载项目 layouts/ 目录
+  - EN 文章访问 URL 无 /en/ 前缀；ZH 文章 URL 有 /zh/ 前缀——Playwright 测试时注意区分
+  - CSS Grid grid-column 语法：用 `X / span N` 定位列（1-indexed），比 `start / end` 更直观
+  - pkill -f "hugo server" 可终止后台 Hugo 进程
 ---

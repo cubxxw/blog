@@ -56,8 +56,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented layouts/_default/single.html with 12-col CSS Grid (article-layout). Three columns: aside.article-marginalia (col 1-2), article.article-main (col 3-9), aside.article-tools (col 10-12). Responsive: 1024-1279px hides marginalia (article extends to col-span-9); <1024px single column block layout. Mobile compact marginalia shown inline at article top. Playwright: 1680/1024/414 viewport screenshots, 0 console errors, all 12 tests pass."
     },
     {
       "id": "US-028",
