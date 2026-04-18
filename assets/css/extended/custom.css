@@ -5330,4 +5330,43 @@ pre:hover .copy-code {
 /* blog-ai-inline suggestion buttons */
 .blog-ai-suggestions { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px 0 4px; }
 .blog-ai-suggestion { padding: 3px 10px; border-radius: 14px; border: 1px solid rgba(99,102,241,0.3); background: transparent; cursor: pointer; font-size: 0.82em; color: inherit; transition: background 0.15s; }
+
+/* ===================================
+   US-007: Fix body scroll blocked on homepage
+   PaperMod profile-mode.css sets .main .profile { overflow: hidden }
+   which prevents natural scroll. Override to allow vertical scroll.
+   Modal-only body overflow management is handled in share_icons.html
+   and search-palette-open class (PaperMod header.css) — both temporary.
+   =================================== */
+.main .profile {
+    overflow: visible;
+}
+
+/* Ensure html/body allow vertical scroll at all times */
+html, body {
+    overflow-y: auto;
+}
+
+/* Scrollbar style coordinated with theme */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border, var(--border)) transparent;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border, var(--border));
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted, var(--secondary));
+}
 .blog-ai-suggestion:hover { background: rgba(99,102,241,0.15); }
