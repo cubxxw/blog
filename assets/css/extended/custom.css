@@ -5546,3 +5546,123 @@ html {
     background: var(--color-text-muted, var(--secondary));
 }
 .blog-ai-suggestion:hover { background: rgba(99,102,241,0.15); }
+
+/* ===================================
+   US-017: Mobile responsive fixes (375px / 414px)
+   Prevents horizontal scroll and overflow across all pages.
+   =================================== */
+
+/* Ensure all top-level page sections don't overflow */
+.main,
+.post-single,
+.post-content,
+.post-header {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* Tables: wrap in scrollable container on mobile */
+@media (max-width: 768px) {
+    /* Make tables scrollable horizontally instead of breaking layout */
+    .post-content table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+    }
+
+    /* Ensure code blocks don't exceed viewport */
+    .post-content .highlight,
+    .post-content pre {
+        max-width: calc(100vw - 2 * var(--gap, 20px));
+        overflow-x: auto;
+    }
+
+    /* Images respect viewport width */
+    .post-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Section headers (AI Tech, Growth) padding on mobile */
+    .ai-tech-header,
+    .growth-header {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+    }
+
+    /* Archive/article grid cards don't overflow */
+    .post-entry {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* About page container on mobile */
+    .main:has(.about-container) {
+        max-width: 100%;
+    }
+}
+
+/* 375px specific: extra-tight viewport fixes */
+@media (max-width: 390px) {
+    /* Header nav: prevent search keys from squeezing layout */
+    .nav-search-trigger__keys {
+        display: none !important;
+    }
+
+    /* Profile title on tiny screens */
+    .profile_title__name {
+        font-size: 1.6rem !important;
+    }
+
+    /* Reduce horizontal padding in main panels */
+    .profile_copy,
+    .profile_panel {
+        padding: 16px 12px !important;
+    }
+
+    /* Reduce newsletter card padding */
+    .rss-subscribe-card__teaser {
+        padding: 20px 16px !important;
+    }
+
+    /* Ensure post entry cards fit */
+    .post-entry {
+        padding: 16px 12px !important;
+    }
+
+    /* Travel stat grid — ensure 4-col doesn't overflow */
+    .tp-stats__inner {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Inline TOC on mobile: ensure it doesn't break layout */
+@media (max-width: 768px) {
+    .toc-inline {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* TOC sidebar must be hidden on mobile (already done, belt-and-suspenders) */
+    .toc-sidebar {
+        display: none !important;
+    }
+}
+
+/* Projects grid: single column on mobile */
+@media (max-width: 600px) {
+    .ai-tech-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Ensure long words/URLs break in post content on mobile */
+@media (max-width: 768px) {
+    .post-content p,
+    .post-content li,
+    .post-content blockquote {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}

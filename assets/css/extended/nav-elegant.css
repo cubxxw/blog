@@ -130,7 +130,8 @@
         z-index: 1000;
     }
 
-    #menu.is-open {
+    #menu.is-open,
+    #menu.mobile-open {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
