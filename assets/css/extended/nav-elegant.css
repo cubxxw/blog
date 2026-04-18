@@ -232,10 +232,37 @@ html {
 .nav-search-trigger {
     padding: 8px 14px;
     font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-search-trigger__label {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-search-trigger__keys {
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .nav-search-trigger kbd {
     min-width: 20px;
     padding: 2px 5px;
     font-size: 10px;
+}
+
+/* Language switcher - prevent vertical stacking */
+.lang-switch {
+    flex-shrink: 0;
+}
+
+.lang-switch a {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Logo switches container - don't shrink */
+.logo-switches {
+    flex-shrink: 0;
 }
