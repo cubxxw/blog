@@ -59,6 +59,25 @@ Started: 2026-04-18
   - pkill -f "hugo server" 可终止后台 Hugo 进程
 ---
 
+## 2026-04-18 - US-029
+- 新建 assets/css/extended/article-typography.css：editorial 级排版样式
+- .post-title：font-family var(--font-display)；EN clamp(2.5rem,5vw,4.5rem) weight 800 letter-spacing -0.02em line-height 1.08；ZH clamp(2.25rem,4.5vw,3.75rem) weight 900 letter-spacing 0.02em line-height 1.2
+- .post-description：italic Serif，opacity 0.65，max-w 62ch（ZH non-italic）
+- .post-content 正文：line-height/letter-spacing 引用 token；p::first-letter .drop-cap float 首字下沉（EN italic / ZH upright，color var(--color-accent)）
+- blockquote EN：::before 大装饰引号 8rem opacity 0.1；ZH：::before/::after 「」书名号
+- 行内 code pill：background var(--color-accent-soft)，border-radius 0.3em
+- .post-content hr::after：content '• • •'，color var(--color-accent)
+- .post-content h2：border-left 3px solid var(--color-accent)（覆盖 custom.css 固定颜色）
+- layouts/_default/single.html：.post-content 后加内联 script，给第一个 <p> 加 .drop-cap 类
+- 新建 tests/e2e/us029-typography.spec.ts：20 个测试（desktop + mobile 各 10），全部通过
+- Files changed: assets/css/extended/article-typography.css（新建）、layouts/_default/single.html（修改）、tests/e2e/us029-typography.spec.ts（新建）
+- **Learnings for future iterations:**
+  - CSS `::first-letter` 伪元素需要对应的元素有 .drop-cap 类，JS 在 currentScript.closest('.article-main') 中找第一个 <p> 加类，比 extend_footer.html 注入更可靠（inline script 与 DOM 同步执行）
+  - `article-typography.css` 字母序在 `custom.css` 之后，会正确覆盖 custom.css 中的固定颜色
+  - blockquote ::before 大引号需要 pointer-events: none 防止影响选择交互
+  - Playwright 测试中 computed font-family 返回的是字体栈完整字符串，用 .toMatch(/fraunces|georgia/) 做 case-insensitive 匹配更健壮
+---
+
 ## 2026-04-18 - US-028
 - 新建 layouts/partials/article/marginalia.html：四组 Principal / Chronicle / Dimensions / Dialect + Suggest Changes
 - 新建 assets/css/extended/marginalia.css：0.5px hairline border-left，9px uppercase 标签，display font 值，EN italic / ZH upright
