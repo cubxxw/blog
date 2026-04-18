@@ -281,8 +281,8 @@
         "Tests pass"
       ],
       "priority": 18,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "新增 package.json（@playwright/test + typescript + @types/node）、playwright.config.ts（desktop 1280x800 + mobile 375x812，maxDiffPixelRatio:0.01）、tsconfig.json、tests/e2e/README.md。更新 .gitignore 排除 Playwright 生成目录。npx playwright install --with-deps chromium 可执行，TypeCheck 通过，Hugo 构建 860 页面全通过。"
     },
     {
       "id": "US-019",

@@ -6,6 +6,8 @@
 - 深色模式使用 .dark 类（PaperMod 兼容）和 [data-theme="dark"] 双选择器
 - `overflow-x: clip` 而非 `hidden` 不会创建新的滚动容器，不会导致 position:sticky 失效
 - 文章正文宽度通过 `.post-single .post-content > [元素类型]` 的直接子选择器控制，可对段落与媒体设置不同 max-width 实现 bleed 效果
+- Playwright 需要 @types/node + tsconfig.json 才能通过 TypeScript 类型检查；`npx playwright install --with-deps chromium` 在 CI 中安装浏览器
+- package.json 中 Playwright 版本锁定为 ^1.52.0，实际安装 1.59.1
 ---
 
 # Ralph Progress Log
@@ -75,4 +77,19 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - 自定义组件（ai-tech-header、growth-header 等）如果用硬编码渐变色，需要单独添加 .dark 覆盖
   - 深色渐变替代方案：将原浅色渐变的颜色改为低不透明度 rgba() 版本（如 rgba(139, 92, 246, 0.08)）效果最自然
   - custom.css 文件 5500+ 行，深色覆盖分散在文件各处，通过 grep "\.dark" 可快速定位已覆盖的组件
+---
+
+## 2026-04-18 - US-018
+- 新增 package.json（devDependencies: @playwright/test ^1.52.0, typescript ^5.4.5, @types/node）
+- 新增 playwright.config.ts：desktop (1280x800) + mobile (375x812) 双 project，maxDiffPixelRatio: 0.01，baseURL localhost:1313
+- 新增 tsconfig.json（target ES2020，包含 playwright.config.ts 和 tests/**/*.ts）
+- 新增 tests/e2e/ 目录与 README.md（含 setup/运行说明）
+- 更新 .gitignore 排除 test-results/、playwright-report/、blob-report/、playwright/.cache/、dist/
+- Hugo build 860 页面全通过，TypeCheck passes
+- Files changed: package.json（新建）, playwright.config.ts（新建）, tsconfig.json（新建）, tests/e2e/README.md（新建）, .gitignore（更新）
+- **Learnings for future iterations:**
+  - Playwright 在纯 Hugo 项目（无 package.json）需要先初始化 npm，安装 @playwright/test + @types/node + typescript
+  - tsconfig.json 必须设置 "types": ["node", "@playwright/test"] 或依赖 skipLibCheck:true + @types/node 包，否则 tsc 报 Buffer/child_process 类型找不到
+  - playwright.config.ts 的 maxDiffPixelRatio: 0.01 设置在 expect.toHaveScreenshot 内，而非顶层
+  - `npx playwright test --list` 不报错但返回 "Total: 0 tests" 表示配置可被正确读取
 ---
