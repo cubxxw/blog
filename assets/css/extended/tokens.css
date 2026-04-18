@@ -16,6 +16,7 @@
   --color-rule:         rgba(30, 35, 30, 0.12);
 
   --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-prose:   'Noto Serif', 'Georgia', 'Times New Roman', serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
   --font-meta:    'Inter', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -26,7 +27,7 @@
 
   --line-height-prose: 1.75;
   --tracking-prose:    normal;
-  --drop-cap-size:     3.5rem;
+  --drop-cap-size:     5rem;
 
   /* Semantic aliases for PaperMod compat */
   --color-bg:           var(--color-paper);
@@ -113,6 +114,12 @@ body.dark:lang(zh),
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Global background: paper tone from design spec ───────── */
+/* Override PaperMod's pure white with the warm #f9f9f7 surface */
+body:not(.dark) {
+  background-color: var(--color-paper, #f9f9f7) !important;
 }
 
 /* ─── Prose background from token ──────────────────────────── */

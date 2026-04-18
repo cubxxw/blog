@@ -644,14 +644,14 @@
   max-width: none;
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.0625rem; /* 17px */
+  font-size: 1.125rem; /* 18px */
   line-height: 1.78;
   color: var(--color-text);
   font-variation-settings: "opsz" 14;
 }
 
 .post-content p {
-  margin: 0 0 1.4em;
+  margin: 0 0 2rem;
   hyphens: auto;
   -webkit-hyphens: auto;
 }
@@ -743,12 +743,17 @@
 /* Blockquote — pull-quote feel */
 .post-content blockquote {
   margin: var(--space-10) 0;
-  padding: var(--space-2) 0 var(--space-2) var(--space-6);
+  padding: 1rem 3rem;
   border-left: 2px solid var(--color-accent);
+  background: rgba(238, 238, 236, 0.3);
   color: var(--color-text-muted);
   font-style: italic;
-  font-size: 1.0625rem;
+  font-size: 1.25rem;
   line-height: 1.7;
+}
+
+.dark .post-content blockquote {
+  background: rgba(30, 35, 30, 0.4);
 }
 
 /* Lists — tighter vertical rhythm */
@@ -2403,16 +2408,16 @@ details summary,
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(var(--theme-rgb, 255, 255, 255), 0.92);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-bottom: 1px solid var(--color-border, rgba(148, 163, 184, 0.1));
+    background: rgba(249, 249, 247, 0.82);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.08));
     transition: background-color 200ms ease, border-color 200ms ease;
 }
 
 .dark .header-wrapper {
-    background: rgba(var(--theme-rgb, 29, 30, 32), 0.92);
-    border-bottom-color: rgba(148, 163, 184, 0.08);
+    background: rgba(18, 20, 19, 0.88);
+    border-bottom-color: rgba(226, 227, 225, 0.08);
 }
 
 /* Main Navigation Container */
@@ -2451,7 +2456,7 @@ details summary,
 
 .post-header {
     padding-bottom: 0;
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-16);
 }
 
 .post-header .breadcrumbs {
@@ -2464,9 +2469,9 @@ details summary,
 
 .post-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.1rem, 4.2vw, 3rem);
-    font-weight: 600;
-    line-height: 1.12;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.08;
     letter-spacing: -0.02em;
     margin: 0 0 var(--space-5);
     font-variation-settings: "opsz" 96;
@@ -2475,14 +2480,15 @@ details summary,
 
 .post-description {
     font-family: var(--font-serif);
-    font-size: 1.1875rem;
+    font-size: 1.25rem;
     line-height: 1.65;
-    color: var(--secondary);
+    color: var(--color-ink-muted, #5e5e63);
     margin: 0 0 var(--space-6);
-    max-width: 62ch;
+    max-width: 58ch;
     font-weight: 400;
     font-style: italic;
     font-variation-settings: "opsz" 14;
+    opacity: 0.72;
 }
 
 .post-meta {
@@ -2508,6 +2514,37 @@ details summary,
     background: var(--border);
     margin-top: var(--space-8);
     opacity: 0.4;
+}
+
+/* ===================================
+   Cover Image — 16:9 with rounded corners (aesthetic design)
+   =================================== */
+.post-single .entry-cover {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius-md, 8px);
+    margin: 0 0 var(--space-16) 0;
+    background: var(--color-accent-soft, #dde5da);
+}
+
+.post-single .entry-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-md, 8px);
+    margin: 0;
+    max-height: none;
+}
+
+.post-single .entry-cover p {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.7rem;
+    text-align: center;
+    color: var(--color-ink-muted, #5e5e63);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.75rem;
 }
 
 /* ===================================

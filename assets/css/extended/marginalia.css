@@ -4,7 +4,7 @@
 .marginalia-inner {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
   padding-left: 0.75rem;
   border-left: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.12));
 }
@@ -13,22 +13,23 @@
 .marginalia-group {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
 }
 
-/* Label: tiny uppercase tracking */
+/* Label: mono tiny uppercase — matches design's font-mono tracking-[0.2em] */
 .marginalia-label {
-  font-size: 9px;
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
-  color: var(--color-ink-muted, #5e5e63);
-  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  letter-spacing: 0.2em;
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  opacity: 0.5;
   line-height: 1.4;
 }
 
-/* Value: display font, small */
+/* Value: display/headline font, small — matches design's font-headline text-sm italic */
 .marginalia-value {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   color: var(--color-ink, #1a1c1b);
   line-height: 1.5;
@@ -68,20 +69,27 @@
 
 /* Suggest Changes link */
 .marginalia-suggest {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.08));
 }
 
 .marginalia-suggest-link {
-  font-size: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.6;
   text-decoration: none;
   font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
-  border-bottom: 0.5px solid currentColor;
-  transition: color 0.15s ease;
+  font-weight: 600;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
 
 .marginalia-suggest-link:hover {
   color: var(--color-accent, #2e352e);
+  opacity: 1;
 }
