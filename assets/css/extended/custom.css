@@ -2334,11 +2334,35 @@ details summary,
 }
 
 /* ===================================
-   Reading Content Width
+   Reading Content Width (US-013)
    =================================== */
 
-/* Content width is governed by --main-width on .main.
-   For single posts we cap slightly to enforce readable line-length (~72ch). */
+/* Article body: 760px for readable ~72ch line length on desktop.
+   Images and code blocks bleed out to a wider column via negative margins. */
+@media (min-width: 900px) {
+    /* Constrain prose elements to readable width */
+    .post-single .post-content > p,
+    .post-single .post-content > ul,
+    .post-single .post-content > ol,
+    .post-single .post-content > blockquote,
+    .post-single .post-content > table,
+    .post-single .post-content > h1,
+    .post-single .post-content > h2,
+    .post-single .post-content > h3,
+    .post-single .post-content > h4,
+    .post-single .post-content > h5,
+    .post-single .post-content > h6 {
+        max-width: 760px;
+    }
+
+    /* Images and code blocks bleed wider for visual impact (up to 960px) */
+    .post-single .post-content > figure,
+    .post-single .post-content > .highlight,
+    .post-single .post-content > pre {
+        max-width: 960px;
+    }
+}
+
 @media (min-width: 1600px) {
     .post-single {
         max-width: 760px;
