@@ -1,0 +1,20 @@
+## Codebase Patterns
+- CSS 加载顺序：theme-vars.css → reset.css → common/*.css → hljs → includes → zmedia → extended/*.css。新增 extended/ 目录下的 CSS 文件会自动被 resources.Match 引入，无需修改 head.html。
+- 深色模式用 `.dark` 类（加在 `<body>` 上），而非 `[data-theme="dark"]` 属性。head.html 中的 JS 通过 localStorage 和 prefers-color-scheme 控制。
+- Hugo build 命令：`hugo --minify`，验证输出在 public/ 目录。
+- 不要用 make，用 `netlify dev` 启动开发服务器，或 `hugo --minify` 做构建验证。
+
+---
+
+## 2026-04-18 - US-001
+- 新增 assets/css/extended/tokens.css，定义语义化颜色 tokens：--color-bg, --color-bg-elevated, --color-text, --color-text-muted, --color-border, --color-accent, --color-text-heading
+- 同时支持 .dark 类（PaperMod 原有机制）和 [data-theme="dark"] 属性选择器
+- 深色值：bg=rgb(29,30,32), elevated=rgb(46,46,51), text=rgb(218,218,219)，与 PaperMod 保持一致
+- 过渡时间 200ms（≤300ms 要求）
+- Hugo --minify 构建通过，public/ 已包含新变量和 data-theme 选择器
+- 文件变更：assets/css/extended/tokens.css（新增）
+- **Learnings for future iterations:**
+  - extended/*.css 自动加载，无需修改 head.html 或 config.yml
+  - 项目用 .dark 类而非 [data-theme="dark"]，新组件样式需同时写两个选择器以兼容 PRD 要求
+  - hugo --minify 是验证构建的最快方式（约 1 秒）
+---
