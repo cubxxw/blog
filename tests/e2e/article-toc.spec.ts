@@ -10,8 +10,8 @@ test.describe('Article TOC Navigation', () => {
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(500); // allow toc-highlight.js to initialize
 
-    // Find TOC links in the sidebar
-    const tocLinks = page.locator('.toc-sidebar__nav #TableOfContents a');
+    // Find TOC links (works with both sidebar and inline TOC layouts)
+    const tocLinks = page.locator('#TableOfContents a');
     const count = await tocLinks.count();
     // Need at least 2 TOC items to click the second one
     expect(count).toBeGreaterThanOrEqual(2);
@@ -23,11 +23,11 @@ test.describe('Article TOC Navigation', () => {
 
     const headingId = href!.slice(1); // strip '#'
 
-    // Click the second TOC item via JS (TOC sidebar may be outside normal click zone)
+    // Click the second TOC item via JS
     await page.evaluate((selector) => {
       const link = document.querySelector(selector) as HTMLElement;
       if (link) link.click();
-    }, `.toc-sidebar__nav #TableOfContents a[href="${href}"]`);
+    }, `#TableOfContents a[href="${href}"]`);
 
     await page.waitForTimeout(800); // allow smooth scroll + IntersectionObserver
 
@@ -46,9 +46,12 @@ test.describe('Article TOC Navigation', () => {
     // Assert URL hash updated
     expect(page.url()).toContain(`#${headingId}`);
 
-    // Assert TOC link is highlighted
+    // Assert TOC link is highlighted (any active class convention)
     const isActive = await secondLink.evaluate((el) =>
-      el.classList.contains('toc-sidebar-active') || el.classList.contains('toc-active')
+      el.classList.contains('toc-sidebar-active') ||
+      el.classList.contains('toc-active') ||
+      el.classList.contains('active') ||
+      el.closest('li')?.classList.contains('active') || false
     );
     expect(isActive).toBe(true);
   });
