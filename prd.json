@@ -110,8 +110,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "PaperMod profile-mode.css 的 .main .profile 设置了 overflow: hidden 导致首页滚动阻断。覆盖为 overflow: visible。html, body 显式设置 overflow-y: auto。添加 thin scrollbar 样式（--color-border）与主题协调。share_icons.html 的 body.overflow='hidden' 和 .search-palette-open { overflow: hidden } 均属于 Modal 临时行为，保持不变。"
     },
     {
       "id": "US-008",

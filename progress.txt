@@ -1,3 +1,17 @@
+## 2026-04-18 - US-007
+- 根本原因：PaperMod profile-mode.css 的 .main .profile { overflow: hidden } 导致首页 profile 模式整页滚动阻断
+- 覆盖修复：custom.css 末尾添加 .main .profile { overflow: visible }
+- 确保 html, body { overflow-y: auto } 显式声明允许垂直滚动
+- 添加与主题协调的 scrollbar 样式（thin, --color-border 颜色，webkit 兼容）
+- share_icons.html modal 和 .search-palette-open 的 body overflow 属于临时 Modal 行为，保持不变（正确模式）
+- 文件变更：assets/css/extended/custom.css
+- Hugo --minify 构建通过，.main .profile{overflow:visible} 在 public/ CSS 中确认
+- **Learnings for future iterations:**
+  - PaperMod profile-mode.css 第 1-5 行：.main .profile { overflow: hidden }，这是首页滚动被阻断的根本原因
+  - Modal 打开时设 body.overflow='hidden'，关闭时清空，这是正确的 Modal 行为，不需要修改
+  - 覆盖主题 overflow: hidden 时，使用 overflow: visible 而非 overflow: auto，避免引入不需要的滚动容器
+---
+
 ## 2026-04-18 - US-006
 - PaperMod profile-mode.css 的 .profile_title 设置了 letter-spacing: -0.06em，是 -5.376px 的根本原因
 - 在 custom.css 的 .profile_title 添加 letter-spacing: normal 重置主题设定
