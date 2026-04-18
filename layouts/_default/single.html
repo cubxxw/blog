@@ -1,0 +1,88 @@
+{{- define "main" }}
+
+<div class="article-layout">
+
+  {{/* ─── Left: Marginalia ──────────────────────────────────────── */}}
+  <aside class="article-marginalia" aria-label="Article metadata">
+    {{/* Compact inline version for < 1024px (rendered in article header instead) */}}
+  </aside>
+
+  {{/* ─── Centre: Article ──────────────────────────────────────── */}}
+  <article class="post-single article-main">
+
+    {{/* Compact marginalia for mobile (< 1024px) */}}
+    <div class="article-marginalia-mobile">
+      {{- if .Params.author }}
+      <span class="marginalia-author">{{ .Params.author }}</span>
+      {{- else if site.Params.author }}
+      <span class="marginalia-author">{{ site.Params.author }}</span>
+      {{- end }}
+      <span class="marginalia-sep">·</span>
+      <span class="marginalia-date">{{ .Date.Format "2006-01-02" }}</span>
+    </div>
+
+    <header class="post-header">
+      {{ partial "breadcrumbs.html" . }}
+      <h1 class="post-title">
+        {{ .Title }}
+        {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+      </h1>
+      {{- if .Description }}
+      <p class="post-description">
+        {{ .Description }}
+      </p>
+      {{- end }}
+      {{- if not (.Param "hideMeta") }}
+      <div class="post-meta">
+        {{- partial "post_meta.html" . -}}
+        {{- partial "translation_list.html" . -}}
+        {{- partial "edit_post.html" . -}}
+        {{- partial "post_canonical.html" . -}}
+      </div>
+      {{- end }}
+      <div class="post-header-rule"></div>
+    </header>
+
+    {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
+    {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
+
+    {{- if (.Param "ShowToc") }}
+    {{- partial "toc.html" . }}
+    {{- end }}
+
+    {{- if .Content }}
+    <div class="post-content">
+      {{- if not (.Param "disableAnchoredHeadings") }}
+      {{- partial "anchored_headings.html" .Content -}}
+      {{- else }}{{ .Content }}{{ end }}
+    </div>
+    {{- end }}
+
+    <footer class="post-footer">
+      {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+      <ul class="post-tags">
+        {{- range ($.GetTerms $tags) }}
+        <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        {{- end }}
+      </ul>
+      {{- if (.Param "ShowPostNavLinks") }}
+      {{- partial "post_nav_links.html" . }}
+      {{- end }}
+      {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+      {{- partial "share_icons.html" . -}}
+      {{- end }}
+    </footer>
+
+    {{- if (.Param "comments") }}
+    {{- partial "comments.html" . }}
+    {{- end }}
+  </article>
+
+  {{/* ─── Right: Editorial Tools ────────────────────────────────── */}}
+  <aside class="article-tools" aria-label="Editorial tools">
+    {{/* Placeholder — filled by US-030 */}}
+  </aside>
+
+</div>
+
+{{- end }}{{/* end main */}}

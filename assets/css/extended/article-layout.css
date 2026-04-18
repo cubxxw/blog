@@ -1,0 +1,121 @@
+/* ─── US-027: 12-column Three-Column Article Layout ──────────── */
+
+/* Wrapper: 12-column grid, full width within main */
+.article-layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto;
+  gap: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 16px;
+  align-items: start;
+}
+
+/* Centre column: 7 cols (col 3–9) */
+.article-main {
+  grid-column: 3 / span 7;
+}
+
+/* Left marginalia: col 1–2 */
+.article-marginalia {
+  grid-column: 1 / span 2;
+  position: sticky;
+  top: calc(var(--header-height, 60px) + 24px);
+}
+
+/* Right tools: col 10–12 */
+.article-tools {
+  grid-column: 10 / span 3;
+  position: sticky;
+  top: calc(var(--header-height, 60px) + 24px);
+  max-height: calc(100vh - var(--header-height, 60px) - 48px);
+  overflow-y: auto;
+}
+
+/* ─── 1280px ─────────────────────────────────────────────────── */
+@media (min-width: 1280px) {
+  .article-layout {
+    gap: 40px;
+  }
+}
+
+/* ─── 1024–1279px: hide marginalia, extend article ───────────── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .article-layout {
+    gap: 32px;
+  }
+
+  .article-marginalia {
+    display: none;
+  }
+
+  .article-main {
+    grid-column: 1 / span 9;
+  }
+
+  .article-tools {
+    grid-column: 10 / span 3;
+  }
+}
+
+/* ─── ≥ 1440px: wider gap ────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .article-layout {
+    gap: 64px;
+  }
+}
+
+/* ─── < 1280px: hide right tools (handled by US-031 bottom sheet) */
+@media (max-width: 1279px) {
+  .article-tools {
+    display: none;
+  }
+}
+
+/* ─── < 1024px: single column ───────────────────────────────── */
+@media (max-width: 1023px) {
+  .article-layout {
+    display: block;
+  }
+
+  .article-marginalia {
+    display: none;
+  }
+
+  .article-tools {
+    display: none;
+  }
+
+  .article-main {
+    width: 100%;
+  }
+}
+
+/* ─── Mobile compact marginalia (inline at article top) ─────── */
+.article-marginalia-mobile {
+  display: none;
+  font-size: 0.75rem;
+  color: var(--color-ink-muted, #5e5e63);
+  margin-bottom: 0.75rem;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .article-marginalia-mobile {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.article-marginalia-mobile .marginalia-sep {
+  opacity: 0.5;
+}
+
+/* ─── Large screens: show desktop aside ─────────────────────── */
+@media (min-width: 1024px) {
+  .article-marginalia-mobile {
+    display: none;
+  }
+}
