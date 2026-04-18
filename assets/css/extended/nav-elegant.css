@@ -130,7 +130,8 @@
         z-index: 1000;
     }
 
-    #menu.is-open {
+    #menu.is-open,
+    #menu.mobile-open {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
@@ -232,10 +233,49 @@ html {
 .nav-search-trigger {
     padding: 8px 14px;
     font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-search-trigger__label {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-search-trigger__keys {
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .nav-search-trigger kbd {
     min-width: 20px;
     padding: 2px 5px;
     font-size: 10px;
+}
+
+/* Language switcher - prevent vertical stacking */
+.lang-switch {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    display: inline-flex;
+    align-items: center;
+}
+
+.lang-switch li {
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-width: max-content;
+}
+
+.lang-switch a {
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: max-content;
+    display: inline-block;
+}
+
+/* Logo switches container - don't shrink */
+.logo-switches {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
 }

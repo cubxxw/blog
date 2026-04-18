@@ -66,7 +66,6 @@ nohup.out
 .hugo_build.lock
 
 # Netlify Functions build output
-package-lock.json
 /functions/
 /node_modules/
 netlify/functions/node_modules/
@@ -86,3 +85,10 @@ netlify/functions/node_modules/
 # Visual test report (generated, not committed)
 tests/e2e/visual/aesthetic-agent-report.html
 tests/e2e/visual/snapshots/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/dist/

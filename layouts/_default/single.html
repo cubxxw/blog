@@ -1,5 +1,14 @@
 {{- define "main" }}
 
+{{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
+{{- $has_headers := ge (len $headers) 1 -}}
+
+{{- /* Strip the first top-level <h1> from .Content so that articles
+       whose markdown starts with a redundant `# Title` line don't render
+       the title twice. Only the first occurrence is removed. */ -}}
+{{- $content := .Content -}}
+{{- $content = replaceRE `(?s)^\s*<h1[^>]*>.*?</h1>\s*` "" $content -}}
+
 <div class="article-layout">
 
   {{/* ─── Left: Marginalia ──────────────────────────────────────── */}}
@@ -50,6 +59,7 @@
       </div>
     </div>
 
+
     <header class="post-header">
       {{ partial "breadcrumbs.html" . }}
       <h1 class="post-title">
@@ -79,11 +89,11 @@
     {{- partial "toc.html" . }}
     {{- end }}
 
-    {{- if .Content }}
+    {{- if $content }}
     <div class="post-content">
       {{- if not (.Param "disableAnchoredHeadings") }}
-      {{- partial "anchored_headings.html" .Content -}}
-      {{- else }}{{ .Content }}{{ end }}
+      {{- partial "anchored_headings.html" $content -}}
+      {{- else }}{{ $content | safeHTML }}{{ end }}
     </div>
     <script>
     (function(){

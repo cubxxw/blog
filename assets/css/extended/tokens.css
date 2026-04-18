@@ -20,9 +20,47 @@
   --font-meta:    'Inter', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
+  /* Compat aliases for components using font-serif/sans/mono naming */
+  --font-serif: var(--font-display);
+  --font-sans:  var(--font-body);
+
   --line-height-prose: 1.75;
   --tracking-prose:    normal;
   --drop-cap-size:     3.5rem;
+
+  /* Semantic aliases for PaperMod compat */
+  --color-bg:           var(--color-paper);
+  --color-text:         var(--color-ink);
+  --color-text-muted:   var(--color-ink-muted);
+  --color-text-heading: var(--color-ink);
+  --color-border:       var(--color-rule);
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* ---------- Shadow (soft, editorial) ---------- */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+
+  /* ---------- Theme transition ---------- */
+  --theme-transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 
 /* ─── Light / Chinese override ─────────────────────────────── */
@@ -48,28 +86,46 @@ html:lang(zh) {
 
 /* ─── Dark / English ───────────────────────────────────────── */
 body.dark:lang(en),
-body.dark:not(:lang(zh)) {
+body.dark:not(:lang(zh)),
+[data-theme="dark"]:not(:lang(zh)) {
   --color-paper:        #121413;
   --color-ink:          #e2e3e1;
   --color-ink-muted:    #b4bcb2;
   --color-accent:       #b4bcb2;
   --color-accent-soft:  #2a2f2a;
   --color-rule:         rgba(226, 227, 225, 0.10);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 /* ─── Dark / Chinese ───────────────────────────────────────── */
-body.dark:lang(zh) {
+body.dark:lang(zh),
+[data-theme="dark"]:lang(zh) {
   --color-paper:        #1c1917;
   --color-ink:          #f5f3ee;
   --color-ink-muted:    #a8a29e;
   --color-accent:       #ff3b3b;
   --color-accent-soft:  #2e1a19;
   --color-rule:         rgba(245, 243, 238, 0.10);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 /* ─── Prose background from token ──────────────────────────── */
-/* Apply --color-paper to article-main so it reflects token in dark mode */
 .article-main {
   background: var(--color-paper);
   transition: background 0.2s ease;
+}
+
+/* Apply transition to key elements for smooth theme switching */
+body,
+header,
+.post-entry,
+nav,
+footer {
+  transition: var(--theme-transition);
 }

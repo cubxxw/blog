@@ -1,0 +1,186 @@
+## 2026-04-18 - US-017
+- 修复汉堡菜单 CSS 类名冲突：nav-elegant.css 的 `#menu.is-open` 样式也支持 `mobile-open`，与 JS 对齐
+- 添加 `.post-content table { display: block; overflow-x: auto }` 修复表格移动端溢出
+- 代码块/highlight 在 768px 以下限制 `max-width: calc(100vw - 2 * var(--gap, 20px))`
+- 375/390px 专项修复：隐藏 `.nav-search-trigger__keys` kbd 快捷键，缩小 profile 标题字体，减少 panel 内边距
+- Travel 统计 390px 以下强制 2×2 布局（原 4 列会溢出 375px 视口）
+- `.main/.post-single/.post-content` 添加 `overflow-x: clip` 防止横向滚动条
+- 段落/列表/引用块添加 `word-break: break-word` 防止长 URL 溢出
+- TOC sidebar 在 768px 以下添加 `display: none !important`（belt-and-suspenders）
+- 文件变更：assets/css/extended/custom.css（新增 US-017 区块），assets/css/extended/nav-elegant.css（mobile-open 兼容）
+- Hugo --minify 构建通过，860 页面生成成功
+- **Learnings for future iterations:**
+  - `nav-elegant.css` 的 `#menu.is-open` 与 `header.html` JS 用的 `mobile-open` 类名不匹配，导致 nav-elegant.css 菜单动画从未生效
+  - `table { overflow-x: auto }` 在 block-level table 上需要配合 `display: block` 才真正生效；对 inline-block 或 flex table 无效
+  - `overflow-x: clip` 与 `overflow-x: hidden` 的关键区别：clip 不创建新的滚动容器，不破坏 position:sticky
+
+---
+
+## 2026-04-18 - US-012
+- 使用 CSS :has() 选择器扩宽 About 页面 .main 容器：`.main:has(.about-container) { max-width: 1000px }`
+- `.post-single:has(.about-container) { max-width: 100% }` 消除内部 post-single 的宽度截断
+- `.about-container` 从 900px 调整为 880px，`margin: 0 auto` 保证水平居中
+- 文件变更：assets/css/extended/custom.css（新增 about-container widening 规则）
+- Hugo --minify 构建通过，:has() 规则和 max-width:880px 确认在 public/ CSS 中
+- **Learnings for future iterations:**
+  - CSS :has() 选择器在 Hugo esbuild 压缩中有效保留（已在 blog-ai 和 lang-switch 等规则中验证）
+  - .main 容器的宽度由 `--main-width` CSS 变量控制（default 720px），扩宽 About 页面需要通过 :has() 或添加特定 body class 来覆盖
+  - custom.css 中多个同选择器声明时，后声明会覆盖前声明（标准 CSS 级联），但 Hugo minifier 可能合并或优化重复规则，要确认 max-width 值在构建输出中正确
+
+---
+
+## 2026-04-18 - US-010
+- 将 travel.html 卡片摘要从纯 `$page.Summary` 改为 `with .Description / else .Summary` 双 fallback 逻辑
+- 非首卡（截断 100 字符）和首卡（截断 160 字符）均应用相同 fallback 逻辑
+- 有 description frontmatter 的文章优先显示 description；无 description 的回退到自动摘要 .Summary
+- 文件变更：layouts/page/travel.html（第 202-206 行，2 行变更）
+- Hugo --minify 构建通过，生成 HTML 确认所有旅行卡片均有描述文字
+- **Learnings for future iterations:**
+  - Travel 页面卡片内容来自动态过滤带旅行标签的文章，模板变量 $page 代表 RegularPage
+  - `$page.Description` 读取 frontmatter description 字段，`$page.Summary` 是 Hugo 自动截取的前几百字
+  - with/else 是 Hugo 模板处理空字符串的正确模式（空字符串被当作 falsy）
+
+---
+
+## 2026-04-18 - US-009
+- Travel 页面统计网格从 `repeat(auto-fit, minmax(180px, 1fr))` 改为 `repeat(4, 1fr)`（桌面始终 4 列）
+- 新增 `@media (max-width: 1279px) and (min-width: 768px)` 平板断点，设为 `repeat(2, 1fr)`（2×2 布局）
+- `@media (max-width: 768px)` 改为 `grid-template-columns: 1fr`（单列，原为 2 列）
+- `@media (max-width: 480px)` 同样改为 `1fr`（与 768px 保持一致）
+- 文件变更：layouts/page/travel.html
+- Hugo --minify 构建通过，生成 HTML 确认 `repeat(4,1fr)` 和响应式规则均已应用
+- **Learnings for future iterations:**
+  - Travel 页面 CSS 内联在 travel.html 的 `<style>` 标签中，不在 assets/css/ 目录
+  - travel.html 响应式断点：768px（手机）、900px（文章网格桌面）、1279px（统计网格平板），需分别处理
+  - auto-fit/auto-fill 在项目数量固定时不如显式 repeat(4, 1fr) 可预测
+
+---
+
+## 2026-04-18 - US-008
+- 根本原因：`body { overflow-x: hidden }` 使 body 成为独立滚动容器，破坏 position:sticky
+- 修复：body 改用 `overflow-x: clip`（clip 不创建滚动容器，sticky 可相对 html 正常工作）
+- `html, body { overflow-y: auto }` 改为仅 `html { overflow-y: auto }`，避免 body 变成垂直滚动容器
+- .header-wrapper 已有 position:sticky; top:0; z-index:100，Back to Top 按钮 z-index:99，无层级冲突
+- 文件变更：assets/css/extended/custom.css
+- Hugo --minify 构建通过，dev server 验证 body{overflow-x:clip} 在 CSS 中确认
+- **Learnings for future iterations:**
+  - `overflow-x: hidden` 在 body 上会创建滚动容器，导致所有后代的 position:sticky 失效
+  - 修复方案：body 用 `overflow-x: clip`（CSS 新属性，不创建滚动容器）；html 可继续用 hidden/scroll
+  - sticky 生效的关键：祖先链中没有 overflow:hidden/auto/scroll 的元素（clip 除外）
+  - PaperMod 的 html { overflow-y: scroll } 不影响 sticky，因为这正是 sticky 需要的滚动容器
+---
+
+## 2026-04-18 - US-007
+- 根本原因：PaperMod profile-mode.css 的 .main .profile { overflow: hidden } 导致首页 profile 模式整页滚动阻断
+- 覆盖修复：custom.css 末尾添加 .main .profile { overflow: visible }
+- 确保 html, body { overflow-y: auto } 显式声明允许垂直滚动
+- 添加与主题协调的 scrollbar 样式（thin, --color-border 颜色，webkit 兼容）
+- share_icons.html modal 和 .search-palette-open 的 body overflow 属于临时 Modal 行为，保持不变（正确模式）
+- 文件变更：assets/css/extended/custom.css
+- Hugo --minify 构建通过，.main .profile{overflow:visible} 在 public/ CSS 中确认
+- **Learnings for future iterations:**
+  - PaperMod profile-mode.css 第 1-5 行：.main .profile { overflow: hidden }，这是首页滚动被阻断的根本原因
+  - Modal 打开时设 body.overflow='hidden'，关闭时清空，这是正确的 Modal 行为，不需要修改
+  - 覆盖主题 overflow: hidden 时，使用 overflow: visible 而非 overflow: auto，避免引入不需要的滚动容器
+---
+
+## 2026-04-18 - US-006
+- PaperMod profile-mode.css 的 .profile_title 设置了 letter-spacing: -0.06em，是 -5.376px 的根本原因
+- 在 custom.css 的 .profile_title 添加 letter-spacing: normal 重置主题设定
+- .profile_title__name 显式设置 letter-spacing: -0.01em（符合 ≤ -0.02em 要求）
+- 文件变更：assets/css/extended/custom.css
+- Hugo --minify 构建通过，letter-spacing:normal 在 public/ CSS 中已确认
+- **Learnings for future iterations:**
+  - PaperMod profile-mode.css 的 .profile_title 有大负字距 -0.06em，覆盖时需显式重置
+  - custom.css 中覆盖 PaperMod 样式时，只写新属性不够，要检查主题是否有遗漏的负面属性
+  - 用 grep 搜索 themes/ 目录下的原始 CSS 是找出"哪个主题样式未被覆盖"的有效方法
+---
+
+## 2026-04-18 - US-005
+- 在 tokens.css 添加 --theme-rgb 变量：浅色 255,255,255，深色 29,30,32
+- header-wrapper 深色模式背景回退值从 15,23,42 修正为 29,30,32（与 PaperMod 实际深色背景一致）
+- 根本原因：--theme-rgb 未定义，rgba() 使用了默认回退值白色，导致深色模式背景显示异常
+- 添加 transition: background-color 200ms ease 确保主题切换平滑
+- 文件变更：assets/css/extended/tokens.css, assets/css/extended/custom.css
+- Hugo --minify 构建通过，--theme-rgb 变量在 public/ CSS 中确认
+- **Learnings for future iterations:**
+  - CSS 中用 rgba(var(--rgb-var), 0.9) 的模式要先定义 --rgb-var，否则 rgba() 不生效
+  - .dark class 在 body 上，所以 .dark .header-wrapper 覆盖顺序正确
+  - PaperMod 深色 --theme 为 rgb(29, 30, 32)，对应 RGB 数值是 29, 30, 32
+---
+
+## 2026-04-18 - US-004
+- 为 .lang-switch 添加 flex-wrap: nowrap，覆盖 PaperMod 原始 flex-wrap: inherit
+- .lang-switch 改为 inline-flex 布局，确保内部不换行
+- .lang-switch li 和 a 添加 flex-shrink: 0 和 min-width: max-content
+- 根本原因：.nav 设置了 flex-wrap: wrap，.lang-switch 继承导致内部 li 换行
+- 深色模式颜色继承自 --secondary (rgb(155,156,157))，背景 rgb(46,46,51)，对比度约 4.6:1 符合要求
+- 文件变更：assets/css/extended/nav-elegant.css
+- Hugo --minify 构建通过，flex-wrap:nowrap 在 public/ CSS 中确认
+- **Learnings for future iterations:**
+  - PaperMod .lang-switch 使用 flex-wrap: inherit，父容器 .nav 有 flex-wrap: wrap，所以继承后内部会换行
+  - 修复竖排问题需要同时设置 flex-wrap: nowrap + white-space: nowrap + min-width: max-content
+  - min-width: max-content 比固定像素值更好，能自适应内容宽度
+---
+
+## 2026-04-18 - US-003
+- 为 .nav-search-trigger 添加 white-space: nowrap 和 flex-shrink: 0，防止 flex 布局压缩按钮
+- 为 .nav-search-trigger__label 和 __keys 也添加 white-space: nowrap
+- lang-switch 和 .logo-switches 添加 flex-shrink: 0
+- < 768px 时 custom.css 已有 .nav-search-trigger__label { display: none } 隐藏文字，保留图标
+- 文件变更：assets/css/extended/nav-elegant.css
+- Hugo --minify 构建通过，white-space:nowrap 在 public/ 中确认存在
+- **Learnings for future iterations:**
+  - PaperMod .nav 在 1024px 以下会 flex-wrap，导致 logo-switches 宽度被压缩
+  - 搜索按钮各子元素都需要 white-space: nowrap，否则文字会在自身内部换行形成竖排
+  - flex-shrink: 0 在 logo-switches 和 nav-search-trigger 上都需要，防止宽度被挤压
+---
+
+## Codebase Patterns
+- CSS 加载顺序：theme-vars.css → reset.css → common/*.css → hljs → includes → zmedia → extended/*.css。新增 extended/ 目录下的 CSS 文件会自动被 resources.Match 引入，无需修改 head.html。
+- 深色模式用 `.dark` 类（加在 `<body>` 上），而非 `[data-theme="dark"]` 属性。head.html 中的 JS 通过 localStorage 和 prefers-color-scheme 控制。
+- Hugo build 命令：`hugo --minify`，验证输出在 public/ 目录。
+- 不要用 make，用 `netlify dev` 启动开发服务器，或 `hugo --minify` 做构建验证。
+- PaperMod 主题的 profile-mode.css 设置了 .profile_title { letter-spacing: -0.06em }，覆盖时需显式 letter-spacing: normal 重置。覆盖主题样式时要用 grep 检查 themes/ 目录是否有未覆盖的负面属性。
+- `body { overflow-x: hidden }` 会使 body 成为滚动容器，破坏 position:sticky。应改用 `body { overflow-x: clip }`（clip 不创建滚动容器）。html 可继续用 overflow-x: hidden。
+
+---
+
+## 2026-04-18 - US-002
+- 修复 `.post-entry-title a` 的 `color: var(--entry)` 错误（entry 是白色背景变量，不是文字颜色）
+- 改为 `color: var(--color-text-heading, var(--primary))`，浅色模式深灰色，深色模式浅色
+- hover 状态改用 `var(--color-accent)` + `text-decoration: underline` 提供明确反馈
+- 文件变更：assets/css/extended/custom.css（第 556-564 行）
+- Hugo --minify 构建通过，新版 stylesheet 已包含修正后的规则
+- **Learnings for future iterations:**
+  - `var(--entry)` 是 PaperMod 的卡片背景色（白色），不能用于文字颜色
+  - 文字颜色应使用 `var(--primary)`、`var(--color-text)` 或 `var(--color-text-heading)`
+  - Hugo 构建后 public/assets/css/ 会有多个版本，最新修改的是最近时间戳那个
+---
+
+## 2026-04-18 - US-001
+- 新增 assets/css/extended/tokens.css，定义语义化颜色 tokens：--color-bg, --color-bg-elevated, --color-text, --color-text-muted, --color-border, --color-accent, --color-text-heading
+- 同时支持 .dark 类（PaperMod 原有机制）和 [data-theme="dark"] 属性选择器
+- 深色值：bg=rgb(29,30,32), elevated=rgb(46,46,51), text=rgb(218,218,219)，与 PaperMod 保持一致
+- 过渡时间 200ms（≤300ms 要求）
+- Hugo --minify 构建通过，public/ 已包含新变量和 data-theme 选择器
+- 文件变更：assets/css/extended/tokens.css（新增）
+- **Learnings for future iterations:**
+  - extended/*.css 自动加载，无需修改 head.html 或 config.yml
+  - 项目用 .dark 类而非 [data-theme="dark"]，新组件样式需同时写两个选择器以兼容 PRD 要求
+  - hugo --minify 是验证构建的最快方式（约 1 秒）
+---
+
+## 2026-04-18 - US-019
+- 新增 tests/e2e/pages-home.spec.ts：首页 desktop full-page + fold，mobile full-page + fold（各自 project.name 过滤）
+- 新增 tests/e2e/pages-about.spec.ts：About 页面 desktop + mobile，路径 /en/about/
+- 新增 tests/e2e/pages-projects.spec.ts：Projects 页面 desktop + mobile，路径 /en/projects/
+- 每个测试文件对应一个 -snapshots/ 目录，存入 Darwin 平台基线截图
+- `npx playwright test --update-snapshots` 生成基线，再次运行 12 passed / 12 skipped
+- TypeCheck 通过，Hugo build 860 页面全通过
+- **Learnings for future iterations:**
+  - Playwright 截图文件名格式：`{name}-{project.name}-{platform}.png`（如 home-desktop-fold-desktop-darwin.png）
+  - 每个测试必须用 `test.skip(testInfo.project.name !== 'desktop')` 过滤，否则 desktop-only 测试也会在 mobile project 下运行并生成错误的基线
+  - `--update-snapshots` 在首次运行时创建基线，后续不加该参数则做实际视觉对比
+  - Hugo server 需先启动在 localhost:1313，playwright 才能连接；可在 CI 中先 hugo build 后 serve
+---

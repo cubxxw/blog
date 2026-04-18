@@ -149,4 +149,153 @@ Started: 2026-04-18
   - Share 按钮 copy link 逻辑可以用 navigator.clipboard.writeText + 降级 execCommand 实现，通过 data-href 传递 URL
   - CSS .et-section-label 用 border-top hairline 实现组间分隔，与 PaperMod tokens 系统兼容
   - <1280px 隐藏 .article-tools 已在 article-layout.css 中实现，editorial-tools.css 无需重复
+## Codebase Patterns
+- Hugo 自定义 partial 放在 layouts/partials/ 会自动覆盖主题 themes/PaperMod/layouts/partials/ 中同名文件
+- About 类型 `type: page` 的页面直接在根目录，breadcrumbs 模板通过 .Parent.Permalink 遍历路径段时无中间段
+- CSS 覆盖文件在 assets/css/extended/ 目录，文件名任意，会自动被主入口引入
+- hugo build（无参数）等同于完整构建，用于验证模板渲染结果
+- 深色模式使用 .dark 类（PaperMod 兼容）和 [data-theme="dark"] 双选择器
+- `overflow-x: clip` 而非 `hidden` 不会创建新的滚动容器，不会导致 position:sticky 失效
+- 文章正文宽度通过 `.post-single .post-content > [元素类型]` 的直接子选择器控制，可对段落与媒体设置不同 max-width 实现 bleed 效果
+- Playwright 需要 @types/node + tsconfig.json 才能通过 TypeScript 类型检查；`npx playwright install --with-deps chromium` 在 CI 中安装浏览器
+- package.json 中 Playwright 版本锁定为 ^1.52.0，实际安装 1.59.1
+- PaperMod 主题用 body.dark 类切换深色模式，不使用 html[data-theme]
+- sticky header 按钮 Playwright 报 outside-of-viewport：用 page.evaluate(() => el.click()) 绕过
 ---
+
+# Ralph Progress Log
+Started: Sat Apr 18 16:45:49 +07 2026
+---
+
+## 2026-04-18 - US-011
+- 创建 layouts/partials/breadcrumbs.html 覆盖主题版本的 breadcrumbs 模板
+- 在 range 循环中新增 $foundAny 变量追踪是否找到父级节点
+- 若 kind==page 且 $foundAny==false，在 Home 后追加当前页面 <span>{{ .Title }}</span>
+- 英文 About 页面：Home » About Me；中文页面：主页(Home) » 关于我
+- 文章页面 Home » AI Technology 等正常面包屑不受影响
+- Files changed: layouts/partials/breadcrumbs.html（新建）
+- **Learnings for future iterations:**
+  - Hugo partial 覆盖机制：layouts/partials/ 优先于 themes/PaperMod/layouts/partials/
+  - type:page 的独立页面（如 about.md）.Parent 是语言根，breadcrumb 路径段为空
+  - site.GetPage 对 type:page 的独立文件效果不一，依赖路径匹配
+  - Hugo scratch 变量 `$foundAny = false` 后 range 内赋值需用 `$foundAny = true`（标准 Go template 变量赋值语法）
+---
+
+## 2026-04-18 - US-013
+- 为 .post-single .post-content 段落/标题类直接子元素添加 max-width:760px（约 72ch 行宽）
+- 图片(figure)、代码块(.highlight, pre)允许 max-width:960px，实现 bleed 效果
+- 修改范围：@media (min-width:900px) 桌面视口，移动端不受影响
+- Files changed: assets/css/extended/custom.css（替换原有 Reading Content Width 部分）
+- **Learnings for future iterations:**
+  - 文章正文 bleed 布局：用 CSS 直接子选择器（.post-content > p, .post-content > figure）分别限制不同类型元素宽度，不需要 JS 或 Hugo 模板修改
+  - .post-content 的直接子元素才适用 `>` 选择器；嵌套在 div 内的元素需要额外处理
+  - 760px 约等于 72ch（英文平均字符宽约 10.5px），是理想阅读行宽
+---
+
+## 2026-04-18 - US-014
+- 创建 layouts/_default/single.html 覆盖 PaperMod 主题的文章单页模板
+- 添加 .article-layout 包装器（含左侧 .toc-sidebar + 右侧 .post-single）
+- .toc-sidebar 使用 Hugo .TableOfContents，在 ShowToc 参数为 true 且文章有标题时显示
+- ≥1280px 时 CSS Grid 双列布局（240px + 1fr），gap 40px；<1280px 时隐藏
+- .toc-sidebar__inner position:sticky，top 基于 --header-height 变量
+- Files changed: layouts/_default/single.html（新建）、assets/css/extended/custom.css（添加 TOC sidebar CSS）
+- **Learnings for future iterations:**
+  - Hugo .TableOfContents 生成 id="TableOfContents" 的 nav，内部是嵌套 ul/li/a 结构
+  - 覆盖 PaperMod single.html 时需保留所有原有 partial 调用（cover, post_meta, translation_list, edit_post, post_canonical, share_icons, comments）
+  - display:contents 让包装元素透明于布局（.article-layout 默认值），在不需要 grid 时不影响现有样式
+---
+
+## 2026-04-18 - US-015
+- 重写 toc-highlight.js：支持同时处理 .toc-sidebar__nav 和 .toc-side__nav 两个 TOC
+- IntersectionObserver rootMargin: -80px 0px -60% 0px，使顶部可见标题高亮
+- 点击 TOC 链接：preventDefault + scrollIntoView(smooth) + history.replaceState 静默更新 hash
+- toc-highlight.css 新增 .toc-sidebar-active 样式（accent 色）、html scroll-behavior:smooth
+- extend_footer.html 在文章页加载 toc-highlight.js（4KB/1.4KB gzip）
+- Files changed: static/js/toc-highlight.js（重写）、assets/css/extended/toc-highlight.css（新增样式）、layouts/partials/extend_footer.html（添加 script 引用）
+- **Learnings for future iterations:**
+  - Hugo .TableOfContents 的链接 id 与 heading 的 id 属性一致，可通过 href.slice(1) 直接对应
+  - IntersectionObserver rootMargin 的负值可缩小检测区域，避免顶部 header 遮挡导致的误判
+  - history.replaceState 更新 hash 不触发页面跳转，是 TOC hash 同步的最佳方案
+---
+
+## 2026-04-18 - US-016
+- 为 .ai-tech-header 添加 .dark 覆盖（浅紫渐变 → 低不透明度深紫渐变，border 颜色加深）
+- 为 .ai-tech-header .post-description 添加 .dark 文字颜色（#9ca3af）
+- 为 .growth-header 添加 .dark 覆盖（浅黄渐变 → 低不透明度琥珀渐变，border 颜色加深）
+- 为 .growth-header .post-description 添加 .dark 文字颜色（#9ca3af）
+- 其他组件（代码块/表格/引用块/搜索面板/Footer/RSS/Profile等）已有 PaperMod CSS 变量覆盖，无浅色残留
+- Files changed: assets/css/extended/custom.css（新增 18 行 .dark 覆盖规则）
+- **Learnings for future iterations:**
+  - PaperMod 主题通过 CSS 变量（--theme/--entry/--primary/--border/--hljs-bg/--code-bg）自动处理大多数组件的深色模式，无需单独覆盖
+  - 自定义组件（ai-tech-header、growth-header 等）如果用硬编码渐变色，需要单独添加 .dark 覆盖
+  - 深色渐变替代方案：将原浅色渐变的颜色改为低不透明度 rgba() 版本（如 rgba(139, 92, 246, 0.08)）效果最自然
+  - custom.css 文件 5500+ 行，深色覆盖分散在文件各处，通过 grep "\.dark" 可快速定位已覆盖的组件
+---
+
+## 2026-04-18 - US-018
+- 新增 package.json（devDependencies: @playwright/test ^1.52.0, typescript ^5.4.5, @types/node）
+- 新增 playwright.config.ts：desktop (1280x800) + mobile (375x812) 双 project，maxDiffPixelRatio: 0.01，baseURL localhost:1313
+- 新增 tsconfig.json（target ES2020，包含 playwright.config.ts 和 tests/**/*.ts）
+- 新增 tests/e2e/ 目录与 README.md（含 setup/运行说明）
+- 更新 .gitignore 排除 test-results/、playwright-report/、blob-report/、playwright/.cache/、dist/
+- Hugo build 860 页面全通过，TypeCheck passes
+- Files changed: package.json（新建）, playwright.config.ts（新建）, tsconfig.json（新建）, tests/e2e/README.md（新建）, .gitignore（更新）
+- **Learnings for future iterations:**
+  - Playwright 在纯 Hugo 项目（无 package.json）需要先初始化 npm，安装 @playwright/test + @types/node + typescript
+  - tsconfig.json 必须设置 "types": ["node", "@playwright/test"] 或依赖 skipLibCheck:true + @types/node 包，否则 tsc 报 Buffer/child_process 类型找不到
+  - playwright.config.ts 的 maxDiffPixelRatio: 0.01 设置在 expect.toHaveScreenshot 内，而非顶层
+  - `npx playwright test --list` 不报错但返回 "Total: 0 tests" 表示配置可被正确读取
+---
+
+## 2026-04-18 - US-020
+- 新增 tests/e2e/pages-travel.spec.ts：Travel 页（/travel/）desktop + mobile，full-page + above-fold 截图
+- 新增 tests/e2e/pages-articles.spec.ts：Articles 列表（/ai-technology/）desktop + mobile，full-page + above-fold 截图
+- 新增 tests/e2e/pages-article-detail.spec.ts：单篇文章（/ai-technology/posts/agent-identity-from-locke-to-openclaw/）desktop + mobile，full-page + above-fold 截图
+- 生成 12 个基线截图，分别存入 *-snapshots/ 目录
+- Files changed: tests/e2e/pages-travel.spec.ts（新建）、tests/e2e/pages-articles.spec.ts（新建）、tests/e2e/pages-article-detail.spec.ts（新建）及各自 *-snapshots/ 目录
+- **Learnings for future iterations:**
+  - Playwright `--update-snapshots` 标志用于首次生成基线截图，无快照时会自动写入
+  - 每个测试文件的快照存入同名 `{spec-file}.spec.ts-snapshots/` 目录，命名格式 `{name}-{project}-{platform}.png`
+  - `test.skip(testInfo.project.name !== 'desktop', ...)` 模式可避免在错误 project 下运行视口特定测试
+---
+
+## 2026-04-18 - US-021
+- 新增 tests/e2e/header-search.spec.ts：搜索面板通过点击触发按钮打开、输入关键词、Esc 关闭
+- 新增 tests/e2e/header-theme.spec.ts：主题切换按钮切换 body.dark 类（JS click 绕过 sticky header viewport 问题）
+- 新增 tests/e2e/header-lang.spec.ts：读取语言切换链接 href 并直接 page.goto 验证 URL 变化
+- tsconfig.json 添加 "DOM" 到 lib，支持 page.evaluate 中的 document/HTMLElement 类型
+- Files changed: tests/e2e/header-search.spec.ts（新建）、tests/e2e/header-theme.spec.ts（新建）、tests/e2e/header-lang.spec.ts（新建）、tsconfig.json（更新）
+- **Learnings for future iterations:**
+  - sticky header 中的按钮在 Playwright 中报 "element is outside of the viewport"，`force: true` 仍不能点击；解决方案：`page.evaluate(() => el.click())` 或直接 `page.goto(href)`
+  - tsconfig.json 的 "lib" 需包含 "DOM" 才能在 page.evaluate 回调函数中使用 document/HTMLElement 等 DOM 类型
+  - PaperMod 主题通过 body.dark 类切换主题，不使用 html[data-theme]，测试断言应检查 document.body.classList
+---
+
+## 2026-04-18 - US-022
+- 新增 tests/e2e/article-toc.spec.ts：desktop 视口打开文章，JS click 第二个 TOC 链接，断言标题滚动入视窗 + URL hash 更新 + toc-sidebar-active 高亮类
+- Files changed: tests/e2e/article-toc.spec.ts（新建）
+- **Learnings for future iterations:**
+  - TOC 侧边栏链接的 JS click：`document.querySelector('.toc-sidebar__nav a[href="#id"]').click()` 最可靠
+  - IntersectionObserver 触发需要 waitForTimeout(800) 给足时间让滚动和 observer 回调完成
+  - `page.evaluate` 返回的 getBoundingClientRect 是相对视窗的坐标，top < viewportHeight 即可认为在视窗内
+---
+
+## 2026-04-18 - US-023
+- 新增 .github/workflows/e2e.yml：PR 触发，步骤：checkout → setup-node → npm ci → install-hugo → dart-sass → hugo build → playwright install → hugo server + playwright test
+- 失败时上传 playwright-report/ 和 test-results/ 两个 artifact（retention 7 天）
+- Files changed: .github/workflows/e2e.yml（新建）
+- **Learnings for future iterations:**
+  - CI 中 Hugo server 需要 `sleep 5` 等待启动完成再运行 Playwright
+  - Hugo build 在 CI 中用 `--baseURL "http://localhost:1313/"` 使静态资源路径与 hugo server 一致
+  - `npm ci` 需要 package-lock.json 存在（已有），并使用 `cache: "npm"` 加速
+---
+
+## 2026-04-18 - US-024
+- 新增 lighthouserc.json：扫描 5 个页面，断言 performance≥0.85/accessibility≥0.90/best-practices≥0.90/seo≥0.90，upload target=temporary-public-storage
+- 新增 .github/workflows/lighthouse.yml：PR 触发，步骤：checkout → setup-node → npm ci → install-hugo → dart-sass → hugo build → npm install -g @lhci/cli → lhci autorun
+- 失败或成功均上传 .lighthouseci/ 目录为 artifact（retention 7 天）
+- Files changed: .github/workflows/lighthouse.yml（新建）、lighthouserc.json（新建）
+- **Learnings for future iterations:**
+  - lhci autorun 读取 lighthouserc.json，startServerCommand 中的 "Web Server is available" 是 hugo server 启动就绪的标志字符串
+  - accessibility 使用 "error" 级别（阈值不达标则 CI 失败），其余使用 "warn"（仅警告，不阻断）
+  - LHCI_GITHUB_APP_TOKEN secret 可选，有则将分数发布到 PR 评论；无则仅上传 artifact---

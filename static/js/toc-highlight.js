@@ -2,57 +2,122 @@
   'use strict';
 
   function initTocHighlight() {
-    var tocLinks = document.querySelectorAll('.toc-side__nav a');
-    if (!tocLinks.length) return;
+    // Collect all TOC links from both sidebar (.toc-sidebar__nav) and reading-companion (.toc-side__nav)
+    var sidebarLinks = Array.from(document.querySelectorAll('.toc-sidebar__nav #TableOfContents a'));
+    var companionLinks = Array.from(document.querySelectorAll('.toc-side__nav a'));
+    var allTocLinks = sidebarLinks.concat(companionLinks);
 
-    // 构建 标题元素 → TOC 链接 的映射
+    if (!allTocLinks.length) return;
+
+    // Enable smooth scrolling for TOC links and hash sync
+    allTocLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var href = link.getAttribute('href');
+        if (!href || href.charAt(0) !== '#') return;
+        var target = document.getElementById(decodeURIComponent(href.slice(1)));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        // Update URL hash without jumping
+        history.replaceState(null, '', href);
+      });
+    });
+
+    // Build map: heading id -> list of TOC links pointing to it
     var sections = [];
-    tocLinks.forEach(function (link) {
+    allTocLinks.forEach(function (link) {
       var href = link.getAttribute('href');
       if (href && href.charAt(0) === '#') {
-        var heading = document.getElementById(decodeURIComponent(href.slice(1)));
+        var id = decodeURIComponent(href.slice(1));
+        var heading = document.getElementById(id);
         if (heading) {
-          sections.push({ heading: heading, link: link });
+          sections.push({ heading: heading, id: id });
         }
       }
     });
 
+    // Deduplicate by id
+    var seen = {};
+    sections = sections.filter(function (s) {
+      if (seen[s.id]) return false;
+      seen[s.id] = true;
+      return true;
+    });
+
     if (!sections.length) return;
 
-    var currentActive = null;
-    var OFFSET = 100; // 距离顶部多少像素时触发高亮
+    function getLinksForId(id) {
+      return allTocLinks.filter(function (link) {
+        return link.getAttribute('href') === '#' + id;
+      });
+    }
 
-    function updateActive() {
-      var scrollY = window.scrollY || window.pageYOffset;
-      var activeSection = null;
-
-      // 从后往前找最后一个已滚过的标题
-      for (var i = sections.length - 1; i >= 0; i--) {
-        var headingTop =
-          sections[i].heading.getBoundingClientRect().top + scrollY;
-        if (scrollY >= headingTop - OFFSET) {
-          activeSection = sections[i];
-          break;
+    function setActive(id) {
+      allTocLinks.forEach(function (link) {
+        link.classList.remove('toc-active', 'toc-sidebar-active');
+      });
+      if (!id) return;
+      getLinksForId(id).forEach(function (link) {
+        if (link.closest('.toc-sidebar__nav')) {
+          link.classList.add('toc-sidebar-active');
+        } else {
+          link.classList.add('toc-active');
         }
-      }
-
-      if (activeSection !== currentActive) {
-        if (currentActive) {
-          currentActive.link.classList.remove('toc-active');
-        }
-        if (activeSection) {
-          activeSection.link.classList.add('toc-active');
-        }
-        currentActive = activeSection;
+      });
+      // Sync URL hash silently
+      if (history.replaceState) {
+        history.replaceState(null, '', '#' + id);
       }
     }
 
-    window.addEventListener('scroll', updateActive, { passive: true });
-    updateActive(); // 页面加载时立即执行一次
+    // Use IntersectionObserver to detect which heading is in view
+    var activeId = null;
+    var headingIds = sections.map(function (s) { return s.id; });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var id = entry.target.id;
+        if (entry.isIntersecting) {
+          // Pick the topmost visible heading
+          var visibleIds = headingIds.filter(function (hid) {
+            var el = document.getElementById(hid);
+            if (!el) return false;
+            var rect = el.getBoundingClientRect();
+            return rect.top >= 0 && rect.top < window.innerHeight;
+          });
+          if (visibleIds.length) {
+            activeId = visibleIds[0];
+            setActive(activeId);
+          }
+        } else {
+          // If scrolling past, fallback to last heading above viewport
+          if (id === activeId) {
+            var scrollY = window.scrollY || window.pageYOffset;
+            var best = null;
+            sections.forEach(function (s) {
+              var top = s.heading.getBoundingClientRect().top + scrollY;
+              if (scrollY + 80 >= top) {
+                best = s.id;
+              }
+            });
+            activeId = best;
+            setActive(best);
+          }
+        }
+      });
+    }, {
+      rootMargin: '-80px 0px -60% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(function (s) {
+      observer.observe(s.heading);
+    });
   }
 
-  // 等待所有 defer 脚本和 DOM 就绪后初始化
-  // 用 window.load 替代 DOMContentLoaded，确保侧边 TOC 已完整渲染
+  // Add scroll-behavior smooth for the document
+  document.documentElement.style.scrollBehavior = 'smooth';
+
   if (document.readyState === 'complete') {
     initTocHighlight();
   } else {
