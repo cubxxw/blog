@@ -24,6 +24,15 @@
   margin-top: 0.75rem;
 }
 
+.dark .ai-tech-header {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(168, 85, 247, 0.06) 50%, rgba(124, 58, 237, 0.05) 100%);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+.dark .ai-tech-header .post-description {
+  color: #9ca3af;
+}
+
 /* AI Tech Container */
 .ai-tech-container {
   display: grid;
@@ -271,6 +280,15 @@
   color: #78716c;
   font-size: 1rem;
   margin-top: 0.75rem;
+}
+
+.dark .growth-header {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(245, 158, 11, 0.06) 50%, rgba(251, 191, 36, 0.04) 100%);
+  border-color: rgba(217, 119, 6, 0.25);
+}
+
+.dark .growth-header .post-description {
+  color: #9ca3af;
 }
 
 /* Growth Container */
