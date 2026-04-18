@@ -1,3 +1,16 @@
+## 2026-04-18 - US-010
+- 将 travel.html 卡片摘要从纯 `$page.Summary` 改为 `with .Description / else .Summary` 双 fallback 逻辑
+- 非首卡（截断 100 字符）和首卡（截断 160 字符）均应用相同 fallback 逻辑
+- 有 description frontmatter 的文章优先显示 description；无 description 的回退到自动摘要 .Summary
+- 文件变更：layouts/page/travel.html（第 202-206 行，2 行变更）
+- Hugo --minify 构建通过，生成 HTML 确认所有旅行卡片均有描述文字
+- **Learnings for future iterations:**
+  - Travel 页面卡片内容来自动态过滤带旅行标签的文章，模板变量 $page 代表 RegularPage
+  - `$page.Description` 读取 frontmatter description 字段，`$page.Summary` 是 Hugo 自动截取的前几百字
+  - with/else 是 Hugo 模板处理空字符串的正确模式（空字符串被当作 falsy）
+
+---
+
 ## 2026-04-18 - US-009
 - Travel 页面统计网格从 `repeat(auto-fit, minmax(180px, 1fr))` 改为 `repeat(4, 1fr)`（桌面始终 4 列）
 - 新增 `@media (max-width: 1279px) and (min-width: 768px)` 平板断点，设为 `repeat(2, 1fr)`（2×2 布局）

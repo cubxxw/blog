@@ -156,8 +156,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "将卡片摘要渲染从纯 $page.Summary 改为 with .Description / else .Summary 双 fallback 逻辑。有 description frontmatter 的文章（如 japan-travel-2025、in-2023-i-was-wandering）直接展示 description；无 description 的文章回退到 .Summary 自动摘要，确保所有卡片均有内容。"
     },
     {
       "id": "US-011",
