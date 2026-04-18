@@ -85,6 +85,14 @@
       {{- partial "anchored_headings.html" .Content -}}
       {{- else }}{{ .Content }}{{ end }}
     </div>
+    <script>
+    (function(){
+      var c = document.currentScript.closest('.article-main');
+      if (!c) return;
+      var firstP = c.querySelector('.post-content p');
+      if (firstP) firstP.classList.add('drop-cap');
+    })();
+    </script>
     {{- end }}
 
     <footer class="post-footer">

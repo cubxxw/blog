@@ -1,0 +1,177 @@
+/* ─── US-029: Editorial-Grade Article Typography ─────────────── */
+
+/* ─── Post Title ─────────────────────────────────────────────── */
+.post-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 20px;
+}
+
+html:lang(zh) .post-title {
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* ─── Post Description ───────────────────────────────────────── */
+.post-description {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  opacity: 0.65;
+  max-width: 62ch;
+  margin: 0 0 20px;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+html:lang(zh) .post-description {
+  font-style: normal;
+}
+
+/* ─── Post Content Prose Base ────────────────────────────────── */
+.post-content {
+  line-height: var(--line-height-prose, 1.75);
+  letter-spacing: var(--tracking-prose, normal);
+}
+
+.post-content p {
+  line-height: var(--line-height-prose, 1.75);
+  letter-spacing: var(--tracking-prose, normal);
+  margin-bottom: 1.4em;
+}
+
+/* ─── Drop Cap (first paragraph only) ───────────────────────── */
+/* Applied via JS in article-typography-init.js OR ::first-letter */
+.post-content .drop-cap::first-letter,
+.post-content p.drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-size: var(--drop-cap-size, 3.5rem);
+  font-weight: 800;
+  color: var(--color-accent, #2e352e);
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.1em;
+  margin-top: 0.05em;
+  /* Ensures at least 3 lines of clearance */
+  padding-bottom: 0.05em;
+}
+
+html:lang(zh) .post-content .drop-cap::first-letter,
+html:lang(zh) .post-content p.drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: normal;
+  font-size: var(--drop-cap-size, 4.5rem);
+  line-height: 0.8;
+}
+
+html:lang(en) .post-content .drop-cap::first-letter,
+html:lang(en) .post-content p.drop-cap::first-letter {
+  font-style: italic;
+}
+
+/* ─── H2 in Post Content — accent hairline ───────────────────── */
+.post-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-accent, #2e352e);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+html:lang(zh) .post-content h2 {
+  letter-spacing: 0.02em;
+}
+
+/* ─── Blockquote — EN large decorative quote mark ───────────── */
+html:lang(en) .post-content blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 0.5rem 1.5rem 0.5rem 2rem;
+  border-left: none;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--color-ink, #1a1c1b);
+}
+
+html:lang(en) .post-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  left: -0.1em;
+  top: -0.3em;
+  font-size: 8rem;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 800;
+  color: var(--color-accent, #2e352e);
+  opacity: 0.1;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─── Blockquote — ZH 书名号 ─────────────────────────────────── */
+html:lang(zh) .post-content blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 0.5rem 1.5rem;
+  border-left: 2px solid var(--color-accent, #862122);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--color-ink, #350003);
+}
+
+html:lang(zh) .post-content blockquote::before {
+  content: '\300C';
+  color: var(--color-accent, #862122);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-right: 0.1em;
+}
+
+html:lang(zh) .post-content blockquote::after {
+  content: '\300D';
+  color: var(--color-accent, #862122);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-left: 0.1em;
+}
+
+/* ─── Inline Code — pill style ───────────────────────────────── */
+.post-content :not(pre) > code {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.85em;
+  background: var(--color-accent-soft, #dde5da);
+  color: var(--color-ink, #1a1c1b);
+  padding: 0.1em 0.45em;
+  border-radius: 0.3em;
+  border: none;
+  white-space: nowrap;
+}
+
+/* ─── HR — three dots separator ─────────────────────────────── */
+.post-content hr {
+  border: none;
+  text-align: center;
+  margin: 2.5rem 0;
+  overflow: visible;
+}
+
+.post-content hr::after {
+  content: '• • •';
+  color: var(--color-accent, #2e352e);
+  opacity: 0.45;
+  font-size: 1.1rem;
+  letter-spacing: 0.5em;
+}
