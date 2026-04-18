@@ -66,7 +66,6 @@ nohup.out
 .hugo_build.lock
 
 # Netlify Functions build output
-package-lock.json
 /functions/
 /node_modules/
 netlify/functions/node_modules/
