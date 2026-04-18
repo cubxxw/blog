@@ -136,7 +136,7 @@
     setTimeout(function () { t.classList.remove('et-copy-toast--visible'); }, 2000);
   }
   document.addEventListener('click', function (e) {
-    var btn = e.target.closest('.et-share-copy');
+    var btn = e.target.closest('.et-share-copy, .abs-share-copy');
     if (btn) {
       var href = btn.dataset.href || location.href;
       if (navigator.clipboard) {
@@ -151,7 +151,7 @@
         showToast('Link copied');
       }
     }
-    var wc = e.target.closest('.et-share-wechat');
+    var wc = e.target.closest('.et-share-wechat, .abs-share-wechat');
     if (wc) {
       var href2 = wc.dataset.href || location.href;
       if (navigator.clipboard) {
@@ -163,5 +163,127 @@
   });
 })();
 </script>
+
+{{/* ─── US-031: Mobile FAB + Bottom Sheet (<1024px) ─────────────── */}}
+
+{{/* Overlay */}}
+<div id="article-sheet-overlay" class="abs-overlay" aria-hidden="true"></div>
+
+{{/* FAB */}}
+<button id="article-fab" class="article-fab" aria-label="{{ i18n "tools.toc" | default "Contents" | safeHTML }}" aria-expanded="false" aria-controls="article-bottom-sheet">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+
+{{/* Bottom Sheet */}}
+<div id="article-bottom-sheet" class="article-bottom-sheet" role="dialog" aria-modal="true" aria-label="{{ i18n "tools.toc" | default "Article Tools" | safeHTML }}">
+  <div class="abs-handle" aria-hidden="true"></div>
+
+  {{/* Tab bar */}}
+  <div class="abs-tabs" role="tablist">
+    <button class="abs-tab abs-tab--active" role="tab" data-tab="toc" aria-selected="true" aria-controls="abs-panel-toc">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+      <span>{{ i18n "tools.toc" | default "Contents" | safeHTML }}</span>
+    </button>
+    <button class="abs-tab" role="tab" data-tab="ai" aria-selected="false" aria-controls="abs-panel-ai">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
+        <circle cx="7.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="16.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>{{ i18n "tools.ai" | default "AI" | safeHTML }}</span>
+    </button>
+    <button class="abs-tab" role="tab" data-tab="share" aria-selected="false" aria-controls="abs-panel-share">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+      <span>{{ i18n "tools.share" | default "Share" | safeHTML }}</span>
+    </button>
+  </div>
+
+  <div class="abs-panels">
+
+    {{/* Panel 1: TOC */}}
+    <div class="abs-panel" id="abs-panel-toc" role="tabpanel" aria-labelledby="abs-tab-toc">
+      {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
+      {{- if ge (len $headers) 1 -}}
+      <nav class="abs-toc-nav" aria-label="{{ i18n "tools.toc" | default "Table of Contents" | safeHTML }}">
+        <ul>
+          {{- range $headers -}}
+          {{- $level := index (findRE "[1-6]" . 1) 0 -}}
+          {{- $level := len (seq $level) -}}
+          {{- $id := index (findRE "(id=\"(.*?)\")" . 9) 0 -}}
+          {{- $cleanedID := replace (replace $id "id=\"" "") "\"" "" -}}
+          {{- $text := replaceRE "<h[1-6].*?>((.|\n])+?)</h[1-6]>" "$1" . -}}
+          <li class="abs-toc-item abs-toc-item--h{{- $level -}}">
+            <a href="#{{- $cleanedID -}}">{{- $text | safeHTML -}}</a>
+          </li>
+          {{- end -}}
+        </ul>
+      </nav>
+      {{- else -}}
+      <p style="font-size:0.75rem;color:var(--color-ink-muted);font-style:italic;">{{ i18n "tools.toc_empty" | default "No headings" | safeHTML }}</p>
+      {{- end -}}
+    </div>
+
+    {{/* Panel 2: AI Companion */}}
+    <div class="abs-panel" id="abs-panel-ai" role="tabpanel" aria-labelledby="abs-tab-ai" hidden>
+      <div class="abs-ai-panel">
+        <div class="abs-ai-messages" aria-live="polite"></div>
+        <div class="abs-ai-input-area">
+          <textarea class="abs-ai-textarea" rows="2"
+            placeholder="{{ if eq .Lang "zh" }}{{ i18n "tools.ai_placeholder" | default "向 AI 提问…" | safeHTML }}{{ else }}{{ i18n "tools.ai_placeholder" | default "Ask about this article..." | safeHTML }}{{ end }}"
+            aria-label="{{ i18n "tools.ai" | default "AI Companion" | safeHTML }}"></textarea>
+          <button class="abs-ai-send" aria-label="{{ i18n "ai_send_label" | default "Send" | safeHTML }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {{/* Panel 3: Share */}}
+    <div class="abs-panel" id="abs-panel-share" role="tabpanel" aria-labelledby="abs-tab-share" hidden>
+      <div class="abs-share-row">
+        <a class="abs-share-btn" href="https://x.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }}"
+           target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <button class="abs-share-btn abs-share-wechat" aria-label="Share via WeChat" data-href="{{ .Permalink }}">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
+          </svg>
+        </button>
+        <button class="abs-share-btn abs-share-copy" aria-label="Copy link" data-href="{{ .Permalink }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+        </button>
+        <a class="abs-share-btn" href="mailto:?subject={{ .Title | urlquery }}&body={{ .Permalink | urlquery }}"
+           aria-label="Share via Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>{{/* .abs-panels */}}
+</div>{{/* .article-bottom-sheet */}}
+
+<script src="{{ "/js/article-bottom-sheet.js" | relURL }}" defer></script>
 
 {{- end }}{{/* end main */}}
