@@ -1,3 +1,17 @@
+## 2026-04-18 - US-031
+- 新建 static/js/article-bottom-sheet.js：vanilla JS，FAB click→open sheet、overlay click→close、swipe-to-close（touchstart/touchend delta > 80px）、scroll 监听（scrollY<200 或距底部<300 时 FAB fade out）
+- 新建 assets/css/extended/article-bottom-sheet.css：FAB 48×48px 圆形、bottom sheet 70vh transform translateY、overlay backdrop、tab bar、TOC/AI/share panel 样式
+- layouts/_default/single.html：在 end main 前插入 overlay + FAB + bottom sheet HTML（含 TOC/AI/Share 三个 tab panel），<script defer> 引入 JS
+- 扩展已有 inline copy/wechat script 的选择器加 .abs-share-copy / .abs-share-wechat
+- 新建 tests/e2e/us031-bottom-sheet.spec.ts：24 个测试，375×812 / 414×896 两视口，FAB 存在 / open / close / tab panels / desktop hidden / marginalia mobile 可见 / 0 console error 全部通过
+- Files changed: static/js/article-bottom-sheet.js（新建）、assets/css/extended/article-bottom-sheet.css（新建）、layouts/_default/single.html（修改）、tests/e2e/us031-bottom-sheet.spec.ts（新建）
+- **Learnings for future iterations:**
+  - JS 文件需放 static/js/ 目录，通过 /js/xxx.js 路径在 HTML 中引用（Hugo 不处理 assets/js/）
+  - Playwright force:true click 对于 CSS display:none 的元素不触发 JS 事件；需用 page.evaluate(() => el.click()) 绕过
+  - bottom sheet 设计：display:flex + transform:translateY(100%) 在屏幕外，.abs--open 切换到 translateY(0)，无需切换 display
+  - scroll 监听 FAB hide：scrollY < FAB_HIDE_SCROLL 时隐藏（防止与页头重叠），距底部 < FAB_HIDE_BOTTOM 时隐藏（防止与 footer 重叠）
+---
+
 ## Codebase Patterns
 - layouts/partials/article/ 目录用于存放文章详情页专属 partial（marginalia、editorial-tools 等），Hugo 自动查找
 - i18n key 中可用点号分隔命名空间（如 marginalia.principal），YAML 中 id 字段写完整 key 即可
@@ -12,6 +26,8 @@
 - layouts/_default/single.html 覆盖 PaperMod 的同名模板，直接放在 layouts/_default/ 即可生效，无需改主题源码
 - EN 文章默认 URL 无语言前缀（/ai-technology/posts/xxx/），ZH 文章 URL 含 /zh/ 前缀
 - CSS Grid 三栏布局：.article-layout 设 display:grid + grid-template-columns:repeat(12,minmax(0,1fr))，子元素用 grid-column 定位
+- JS 静态文件必须放 static/js/ 目录，通过 /js/xxx.js 路径引用；assets/js/ 下的文件 Hugo 不直接 serve
+- Playwright force:true click 不触发隐藏元素的 JS 事件；用 page.evaluate(() => el.click()) 代替
 ---
 
 # Ralph Progress Log

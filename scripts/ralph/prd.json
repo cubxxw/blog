@@ -145,8 +145,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented static/js/article-bottom-sheet.js (vanilla JS <80 lines: FAB click open, overlay close, swipe-to-close, scroll fade). assets/css/extended/article-bottom-sheet.css: FAB 48px circle, bottom sheet 70vh, overlay. single.html: FAB + bottom sheet HTML with TOC/AI/Share tabs. Extended inline copy/wechat script. 24 Playwright tests pass (375×812 + 414×896 viewports), 0 console error, Hugo 0 warning, tsc passes."
     },
     {
       "id": "US-032",
