@@ -151,3 +151,18 @@
 
 - id: share_sheet_title
   translation: "Share to"
+
+- id: marginalia.principal
+  translation: "Principal"
+
+- id: marginalia.chronicle
+  translation: "Chronicle"
+
+- id: marginalia.dimensions
+  translation: "Dimensions"
+
+- id: marginalia.dialect
+  translation: "Dialect"
+
+- id: marginalia.suggest
+  translation: "Suggest Changes"

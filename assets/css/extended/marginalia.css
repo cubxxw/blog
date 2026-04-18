@@ -1,0 +1,87 @@
+/* ─── US-028: Left Marginalia Sidebar Styles ───────────────────── */
+
+/* Inner container — vertically stacked groups */
+.marginalia-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-left: 0.75rem;
+  border-left: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+
+/* Each label-value pair */
+.marginalia-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* Label: tiny uppercase tracking */
+.marginalia-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  line-height: 1.4;
+}
+
+/* Value: display font, small */
+.marginalia-value {
+  font-size: 0.75rem;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  color: var(--color-ink, #1a1c1b);
+  line-height: 1.5;
+}
+
+/* EN: italic display font for values */
+:lang(en) .marginalia-value {
+  font-style: italic;
+}
+
+/* ZH: upright, Noto Serif SC */
+:lang(zh) .marginalia-value {
+  font-style: normal;
+}
+
+/* Dialect (language switch) */
+.dialect-current {
+  font-weight: 700;
+  color: var(--color-accent, #2e352e);
+}
+
+.dialect-sep {
+  color: var(--color-ink-muted, #5e5e63);
+  margin: 0 0.15em;
+}
+
+.dialect-link {
+  color: var(--color-ink-muted, #5e5e63);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dialect-link:hover {
+  color: var(--color-accent, #2e352e);
+  text-decoration: underline;
+}
+
+/* Suggest Changes link */
+.marginalia-suggest {
+  margin-top: 0.5rem;
+}
+
+.marginalia-suggest-link {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-ink-muted, #5e5e63);
+  text-decoration: none;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  border-bottom: 0.5px solid currentColor;
+  transition: color 0.15s ease;
+}
+
+.marginalia-suggest-link:hover {
+  color: var(--color-accent, #2e352e);
+}

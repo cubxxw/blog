@@ -4,21 +4,50 @@
 
   {{/* ─── Left: Marginalia ──────────────────────────────────────── */}}
   <aside class="article-marginalia" aria-label="Article metadata">
-    {{/* Compact inline version for < 1024px (rendered in article header instead) */}}
+    {{- partial "article/marginalia.html" . -}}
   </aside>
 
   {{/* ─── Centre: Article ──────────────────────────────────────── */}}
   <article class="post-single article-main">
 
-    {{/* Compact marginalia for mobile (< 1024px) */}}
+    {{/* Compact marginalia for mobile (< 1024px): line1 author · date; line2 reading time · words · lang */}}
     <div class="article-marginalia-mobile">
-      {{- if .Params.author }}
-      <span class="marginalia-author">{{ .Params.author }}</span>
-      {{- else if site.Params.author }}
-      <span class="marginalia-author">{{ site.Params.author }}</span>
-      {{- end }}
-      <span class="marginalia-sep">·</span>
-      <span class="marginalia-date">{{ .Date.Format "2006-01-02" }}</span>
+      <div class="marginalia-mobile-row1">
+        {{- if .Params.author }}
+        <span class="marginalia-author">{{ .Params.author }}</span>
+        {{- else if site.Params.author }}
+        <span class="marginalia-author">{{ site.Params.author }}</span>
+        {{- end }}
+        <span class="marginalia-sep">·</span>
+        <span class="marginalia-date">
+          {{- if eq .Lang "zh" -}}
+            {{ .Date.Format "2006 年 1 月 2 日" }}
+          {{- else -}}
+            {{ .Date.Format "January 2, 2006" }}
+          {{- end -}}
+        </span>
+      </div>
+      <div class="marginalia-mobile-row2">
+        <span class="marginalia-dims">
+          {{- if eq .Lang "zh" -}}
+            {{ .ReadingTime }} 分钟 · {{ .WordCount }} 字
+          {{- else -}}
+            {{ .ReadingTime }} min · {{ .WordCount }} words
+          {{- end -}}
+        </span>
+        {{- if .IsTranslated }}
+        <span class="marginalia-sep">·</span>
+        <span class="marginalia-dialect-inline">
+          <span class="dialect-current-inline">{{- if eq .Lang "zh" -}}中{{- else -}}EN{{- end -}}</span>
+          {{- range .Translations }}
+          <span class="dialect-sep"> | </span>
+          <a href="{{ .Permalink }}" hreflang="{{ .Lang }}" class="dialect-link-inline">
+            {{- if eq .Lang "zh" -}}中{{- else -}}EN{{- end -}}
+          </a>
+          {{- end }}
+        </span>
+        {{- end }}
+      </div>
     </div>
 
     <header class="post-header">

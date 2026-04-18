@@ -95,25 +95,51 @@
 /* ─── Mobile compact marginalia (inline at article top) ─────── */
 .article-marginalia-mobile {
   display: none;
+  flex-direction: column;
+  gap: 0.25rem;
   font-size: 0.75rem;
   color: var(--color-ink-muted, #5e5e63);
-  margin-bottom: 0.75rem;
-  gap: 0.4rem;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+
+.marginalia-mobile-row1,
+.marginalia-mobile-row2 {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 0.3rem;
 }
 
 @media (max-width: 1023px) {
   .article-marginalia-mobile {
     display: flex;
-    flex-wrap: wrap;
   }
 }
 
-.article-marginalia-mobile .marginalia-sep {
+.article-marginalia-mobile .marginalia-sep,
+.marginalia-mobile-row1 .marginalia-sep,
+.marginalia-mobile-row2 .marginalia-sep {
   opacity: 0.5;
 }
 
-/* ─── Large screens: show desktop aside ─────────────────────── */
+.dialect-current-inline {
+  font-weight: 700;
+  color: var(--color-accent, #2e352e);
+}
+
+.dialect-link-inline {
+  color: var(--color-ink-muted, #5e5e63);
+  text-decoration: none;
+}
+
+.dialect-link-inline:hover {
+  color: var(--color-accent, #2e352e);
+}
+
+/* ─── Large screens: hide mobile compact, show desktop aside ── */
 @media (min-width: 1024px) {
   .article-marginalia-mobile {
     display: none;

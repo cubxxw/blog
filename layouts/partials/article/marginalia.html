@@ -1,0 +1,77 @@
+{{/* Left Marginalia — article metadata sidebar (US-028)
+     Shows: Principal (author) / Chronicle (date) / Dimensions (reading time + word count) / Dialect (lang switch) + Suggest Changes
+     Rendered inside aside.article-marginalia (>= 1024px sticky left column)
+*/}}
+
+{{- $page := . }}
+
+<div class="marginalia-inner">
+
+  {{/* ── Principal (Author) ── */}}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.principal" | default "Principal" }}</span>
+    <span class="marginalia-value marginalia-author">
+      {{- if $page.Params.author -}}
+        {{ $page.Params.author }}
+      {{- else if site.Params.author -}}
+        {{ site.Params.author }}
+      {{- else -}}
+        —
+      {{- end -}}
+    </span>
+  </div>
+
+  {{/* ── Chronicle (Date) ── */}}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.chronicle" | default "Chronicle" }}</span>
+    <span class="marginalia-value marginalia-date">
+      {{- if eq $page.Lang "zh" -}}
+        {{ $page.Date.Format "2006 年 1 月 2 日" }}
+      {{- else -}}
+        {{ $page.Date.Format "January 2, 2006" }}
+      {{- end -}}
+    </span>
+  </div>
+
+  {{/* ── Dimensions (Reading Time + Word Count) ── */}}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.dimensions" | default "Dimensions" }}</span>
+    <span class="marginalia-value marginalia-dimensions">
+      {{- $readTime := $page.ReadingTime -}}
+      {{- $wordCount := $page.WordCount -}}
+      {{- if eq $page.Lang "zh" -}}
+        {{ $readTime }} 分钟 · {{ $wordCount }} 字
+      {{- else -}}
+        {{ $readTime }} min · {{ $wordCount }} words
+      {{- end -}}
+    </span>
+  </div>
+
+  {{/* ── Dialect (Language Switch) ── */}}
+  {{- if $page.IsTranslated }}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.dialect" | default "Dialect" }}</span>
+    <span class="marginalia-value marginalia-dialect">
+      <span class="dialect-current">
+        {{- if eq $page.Lang "zh" -}}中{{- else -}}EN{{- end -}}
+      </span>
+      {{- range $page.Translations }}
+      <span class="dialect-sep"> | </span>
+      <a href="{{ .Permalink }}" class="dialect-link" hreflang="{{ .Lang }}">
+        {{- if eq .Lang "zh" -}}中{{- else -}}EN{{- end -}}
+      </a>
+      {{- end }}
+    </span>
+  </div>
+  {{- end }}
+
+  {{/* ── Suggest Changes ── */}}
+  {{- with site.Params.editPost.URL }}
+  <div class="marginalia-group marginalia-suggest">
+    <a href="{{ site.Params.editPost.URL }}/{{ $page.File.Path }}" class="marginalia-suggest-link" target="_blank" rel="noopener">
+      {{ i18n "marginalia.suggest" | default "Suggest Changes" }}
+    </a>
+  </div>
+  {{- end }}
+
+</div>
