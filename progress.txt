@@ -170,3 +170,17 @@
   - 项目用 .dark 类而非 [data-theme="dark"]，新组件样式需同时写两个选择器以兼容 PRD 要求
   - hugo --minify 是验证构建的最快方式（约 1 秒）
 ---
+
+## 2026-04-18 - US-019
+- 新增 tests/e2e/pages-home.spec.ts：首页 desktop full-page + fold，mobile full-page + fold（各自 project.name 过滤）
+- 新增 tests/e2e/pages-about.spec.ts：About 页面 desktop + mobile，路径 /en/about/
+- 新增 tests/e2e/pages-projects.spec.ts：Projects 页面 desktop + mobile，路径 /en/projects/
+- 每个测试文件对应一个 -snapshots/ 目录，存入 Darwin 平台基线截图
+- `npx playwright test --update-snapshots` 生成基线，再次运行 12 passed / 12 skipped
+- TypeCheck 通过，Hugo build 860 页面全通过
+- **Learnings for future iterations:**
+  - Playwright 截图文件名格式：`{name}-{project.name}-{platform}.png`（如 home-desktop-fold-desktop-darwin.png）
+  - 每个测试必须用 `test.skip(testInfo.project.name !== 'desktop')` 过滤，否则 desktop-only 测试也会在 mobile project 下运行并生成错误的基线
+  - `--update-snapshots` 在首次运行时创建基线，后续不加该参数则做实际视觉对比
+  - Hugo server 需先启动在 localhost:1313，playwright 才能连接；可在 CI 中先 hugo build 后 serve
+---
