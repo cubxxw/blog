@@ -1,3 +1,15 @@
+## 2026-04-18 - US-006
+- PaperMod profile-mode.css 的 .profile_title 设置了 letter-spacing: -0.06em，是 -5.376px 的根本原因
+- 在 custom.css 的 .profile_title 添加 letter-spacing: normal 重置主题设定
+- .profile_title__name 显式设置 letter-spacing: -0.01em（符合 ≤ -0.02em 要求）
+- 文件变更：assets/css/extended/custom.css
+- Hugo --minify 构建通过，letter-spacing:normal 在 public/ CSS 中已确认
+- **Learnings for future iterations:**
+  - PaperMod profile-mode.css 的 .profile_title 有大负字距 -0.06em，覆盖时需显式重置
+  - custom.css 中覆盖 PaperMod 样式时，只写新属性不够，要检查主题是否有遗漏的负面属性
+  - 用 grep 搜索 themes/ 目录下的原始 CSS 是找出"哪个主题样式未被覆盖"的有效方法
+---
+
 ## 2026-04-18 - US-005
 - 在 tokens.css 添加 --theme-rgb 变量：浅色 255,255,255，深色 29,30,32
 - header-wrapper 深色模式背景回退值从 15,23,42 修正为 29,30,32（与 PaperMod 实际深色背景一致）
@@ -43,6 +55,7 @@
 - 深色模式用 `.dark` 类（加在 `<body>` 上），而非 `[data-theme="dark"]` 属性。head.html 中的 JS 通过 localStorage 和 prefers-color-scheme 控制。
 - Hugo build 命令：`hugo --minify`，验证输出在 public/ 目录。
 - 不要用 make，用 `netlify dev` 启动开发服务器，或 `hugo --minify` 做构建验证。
+- PaperMod 主题的 profile-mode.css 设置了 .profile_title { letter-spacing: -0.06em }，覆盖时需显式 letter-spacing: normal 重置。覆盖主题样式时要用 grep 检查 themes/ 目录是否有未覆盖的负面属性。
 
 ---
 

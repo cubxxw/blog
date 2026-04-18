@@ -95,8 +95,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "PaperMod profile-mode.css 在 .profile_title 上设置了 letter-spacing: -0.06em，custom.css 覆盖添加 letter-spacing: normal 重置，.profile_title__name 使用 -0.01em 满足字距要求。"
     },
     {
       "id": "US-007",
