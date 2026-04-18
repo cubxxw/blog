@@ -2370,6 +2370,122 @@ details summary,
     }
 }
 
+/* ===================================
+   Left Sidebar TOC (US-014)
+   =================================== */
+
+/* Article layout: sidebar + content grid on desktop */
+.article-layout {
+    display: contents; /* transparent wrapper by default */
+}
+
+/* Left sidebar TOC — hidden on small screens */
+.toc-sidebar {
+    display: none;
+}
+
+@media (min-width: 1280px) {
+    .article-layout {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 0 40px;
+        align-items: start;
+        /* Center the grid within .main */
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .toc-sidebar {
+        display: block;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .post-single {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    /* Sticky inner wrapper */
+    .toc-sidebar__inner {
+        position: sticky;
+        top: calc(var(--header-height, 64px) + 20px);
+        max-height: calc(100vh - var(--header-height, 64px) - 40px);
+        overflow-y: auto;
+        scrollbar-width: none;
+        padding-right: 8px;
+    }
+
+    .toc-sidebar__inner::-webkit-scrollbar {
+        display: none;
+    }
+
+    .toc-sidebar__label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--secondary);
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* TOC nav links */
+    .toc-sidebar__nav #TableOfContents {
+        margin: 0;
+        padding: 0;
+    }
+
+    .toc-sidebar__nav #TableOfContents ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .toc-sidebar__nav #TableOfContents li {
+        margin: 0;
+    }
+
+    .toc-sidebar__nav #TableOfContents a {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--secondary);
+        text-decoration: none;
+        padding: 4px 0;
+        line-height: 1.45;
+        transition: color 0.15s;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .toc-sidebar__nav #TableOfContents a:hover {
+        color: var(--primary);
+    }
+
+    /* Active highlight via JS (US-015 will add IntersectionObserver) */
+    .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
+        color: var(--color-accent, var(--primary));
+        font-weight: 600;
+    }
+
+    /* Nested levels: indent */
+    .toc-sidebar__nav #TableOfContents ul ul {
+        padding-left: 12px;
+    }
+
+    .toc-sidebar__nav #TableOfContents ul ul ul {
+        padding-left: 12px;
+    }
+
+    /* Override US-013 width constraints so post-single fills its grid cell */
+    .article-layout .post-single {
+        max-width: none;
+        margin: 0;
+    }
+}
+
 @media (min-width: 1920px) {
     .post-single {
         max-width: 800px;
