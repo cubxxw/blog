@@ -1,3 +1,15 @@
+## 2026-04-18 - US-032
+- tokens.css：修正暗色 CSS 选择器 html.dark → body.dark（PaperMod 将 .dark 类加在 body 上而非 html，经 footer.html JS 确认）；新增 .article-main background transition
+- article-typography.css：新增 body.dark .post-content h2 规则，覆盖 custom.css 中固定的 .dark .post-content h2 { border-left-color: #14b8a6 }，使 h2 border 颜色引用 var(--color-accent) token
+- tests/e2e/us032-dark-mode.spec.ts（新建）：30 个测试，EN/ZH × light/dark token 值验证（paper、ink、accent）、h2 border color、toggle 可逆、0 console error
+- Files changed: assets/css/extended/tokens.css（修改）、assets/css/extended/article-typography.css（修改）、tests/e2e/us032-dark-mode.spec.ts（新建）
+- **Learnings for future iterations:**
+  - PaperMod 将 .dark 类添加到 body（不是 html）— tokens.css 中的暗色选择器必须用 body.dark，不能用 html.dark
+  - CSS :lang() 伪类是继承的，body.dark:lang(zh) 可以正确匹配 html[lang="zh"] 的 body 子元素
+  - custom.css 中存在 .dark .post-content h2 { border-left-color: #14b8a6 }，会覆盖 article-typography.css 的 token 颜色；需在 article-typography.css 中用 body.dark 更高优先级规则覆盖
+  - Playwright 测试暗色 token 时：通过 page.evaluate 直接 add 'dark' 类到 body 即可，无需操作 localStorage
+---
+
 ## 2026-04-18 - US-031
 - 新建 static/js/article-bottom-sheet.js：vanilla JS，FAB click→open sheet、overlay click→close、swipe-to-close（touchstart/touchend delta > 80px）、scroll 监听（scrollY<200 或距底部<300 时 FAB fade out）
 - 新建 assets/css/extended/article-bottom-sheet.css：FAB 48×48px 圆形、bottom sheet 70vh transform translateY、overlay backdrop、tab bar、TOC/AI/share panel 样式
@@ -28,6 +40,8 @@
 - CSS Grid 三栏布局：.article-layout 设 display:grid + grid-template-columns:repeat(12,minmax(0,1fr))，子元素用 grid-column 定位
 - JS 静态文件必须放 static/js/ 目录，通过 /js/xxx.js 路径引用；assets/js/ 下的文件 Hugo 不直接 serve
 - Playwright force:true click 不触发隐藏元素的 JS 事件；用 page.evaluate(() => el.click()) 代替
+- PaperMod 暗色类在 body（不是 html）：tokens.css 暗色选择器必须用 body.dark:lang(zh) 等，不能用 html.dark
+- custom.css 有 .dark .post-content h2 固定颜色覆盖，需在 article-typography.css 用 body.dark 高优先级规则覆盖
 ---
 
 # Ralph Progress Log

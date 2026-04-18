@@ -163,8 +163,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Fixed dark mode selectors: html.dark → body.dark (PaperMod adds .dark to body). Added body.dark .post-content h2 override to use var(--color-accent) instead of custom.css fixed teal. 30 Playwright tests pass (EN/ZH dark token values, h2 color, toggle reversibility, 0 console error). Hugo 0 warning, tsc passes."
     },
     {
       "id": "US-033",
