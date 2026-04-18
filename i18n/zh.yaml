@@ -166,3 +166,24 @@
 
 - id: marginalia.suggest
   translation: "建议修改"
+
+- id: tools.toc
+  translation: "目录"
+
+- id: tools.ai
+  translation: "AI 助读"
+
+- id: tools.annotations
+  translation: "批注"
+
+- id: tools.share
+  translation: "分享"
+
+- id: tools.ai_placeholder
+  translation: "向 AI 提问…"
+
+- id: tools.annotations_empty
+  translation: "即将上线"
+
+- id: tools.toc_empty
+  translation: "暂无目录"

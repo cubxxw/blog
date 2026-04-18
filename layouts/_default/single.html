@@ -117,9 +117,51 @@
 
   {{/* ─── Right: Editorial Tools ────────────────────────────────── */}}
   <aside class="article-tools" aria-label="Editorial tools">
-    {{/* Placeholder — filled by US-030 */}}
+    {{- partial "article/editorial-tools.html" . -}}
   </aside>
 
 </div>
+
+<script>
+(function () {
+  function showToast(msg) {
+    var t = document.querySelector('.et-copy-toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.className = 'et-copy-toast';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add('et-copy-toast--visible');
+    setTimeout(function () { t.classList.remove('et-copy-toast--visible'); }, 2000);
+  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.et-share-copy');
+    if (btn) {
+      var href = btn.dataset.href || location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(href).then(function () { showToast('Link copied'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = href;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Link copied');
+      }
+    }
+    var wc = e.target.closest('.et-share-wechat');
+    if (wc) {
+      var href2 = wc.dataset.href || location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(href2).then(function () { showToast('Link copied — paste in WeChat'); });
+      } else {
+        showToast('Copy the link to share in WeChat');
+      }
+    }
+  });
+})();
+</script>
 
 {{- end }}{{/* end main */}}

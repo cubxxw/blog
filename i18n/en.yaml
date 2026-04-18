@@ -166,3 +166,24 @@
 
 - id: marginalia.suggest
   translation: "Suggest Changes"
+
+- id: tools.toc
+  translation: "Contents"
+
+- id: tools.ai
+  translation: "AI Companion"
+
+- id: tools.annotations
+  translation: "Annotations"
+
+- id: tools.share
+  translation: "Share"
+
+- id: tools.ai_placeholder
+  translation: "Ask about this article..."
+
+- id: tools.annotations_empty
+  translation: "Coming soon"
+
+- id: tools.toc_empty
+  translation: "No headings"
