@@ -28,6 +28,20 @@
   DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
   DASHSCOPE_MODEL = "qwen-turbo"
 
+[context.deploy-preview]
+  command = "npm install --prefix netlify/functions && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+  HUGO_ENV = "development"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.branch-deploy]
+  command = "npm install --prefix netlify/functions && hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+  HUGO_ENV = "development"
+  HUGO_ENABLEGITINFO = "true"
+
 # ---------------------------------------------------------------------------
 # Cache-Control headers — fixes #146 (CSS payload) and #147 (TTFB via CDN)
 # ---------------------------------------------------------------------------

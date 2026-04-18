@@ -1,130 +1,53 @@
 name: Update README with latest blog posts
 
 on:
-  schedule: # Run workflow automatically
+  schedule:
     - cron: "15 8 * * *"
-  workflow_dispatch: # Run workflow manually (without waiting for the cron to be called), through the GitHub Actions Workflow page directly
+  workflow_dispatch:
   push:
+    branches: ["main"]
+
 jobs:
-  update-readme-with-blog:
-    name: Update this repo's README with latest blog posts
+  update-readme:
+    name: Update README (${{ matrix.lang }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - lang: EN
+            tag: My-Blog-EN
+            feed: "https://nsddd.top/index.xml"
+          - lang: ZH
+            tag: My-Blog-ZH
+            feed: "https://nsddd.top/zh/index.xml"
+          - lang: ES
+            tag: My-Blog-ES
+            feed: "https://nsddd.top/es/index.xml"
+          - lang: FR
+            tag: My-Blog-FR
+            feed: "https://nsddd.top/fr/index.xml"
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
-      # - name: Set up Git
-      #   run: |
-      #     git config --global user.name "kubbot"
-      #     git config --global user.email "3293172751ysy@gmail.com"
+        uses: actions/checkout@v4
 
-      - name: Pull in dev.to posts
+      - name: Pull in ${{ matrix.lang }} posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          comment_tag_name: "My-Blog-EN"
-          feed_list: "https://nsddd.top/index.xml"
+          comment_tag_name: ${{ matrix.tag }}
+          feed_list: ${{ matrix.feed }}
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
-          commit_message: "🔥docs(main): update with latest RadioGeek feed from EN"
+          commit_message: "🔥docs(main): update with latest blog feed from ${{ matrix.lang }}"
           committer_username: "kubbot"
           disable_html_encoding: true
 
-  update-readme-with-blog-zh:
-    name: Update this repo's README with latest blog posts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      # - name: Set up Git
-      #   run: |
-      #     git config --global user.name "kubbot"
-      #     git config --global user.email "3293172751ysy@gmail.com"
-
-      - name: Pull in Chinese posts
-        uses: gautamkrishnar/blog-post-workflow@v1
-        with:
-          comment_tag_name: "My-Blog-ZH"
-          feed_list: "https://nsddd.top/zh/index.xml"
-          token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          max_post_count: 100
-          commit_message: "🔥docs(main): update with latest RadioGeek feed from ZH"
-          committer_username: "kubbot"
-          disable_html_encoding: true
-      # 运行一系列 shell 命令，配置本地 Git 设置，从远程库拉取最新版本并推送到远程库。
-      - name: Auto green
+      - name: Auto green commit
         run: |
           git config --local user.email "3293172751ysy@gmail.com"
           git config --local user.name "kubbot"
-          git remote set-url origin https://${{ secrets.BOT_GITHUB_TOKEN }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://${{ secrets.BOT_GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git pull --rebase
-          # 将 UTC 时间转换为上海时间
-          local_time=$(date -u -d "$(date -u)" "+%Y-%m-%d %H:%M:%S" -d "8 hours")
-          # 允许空提交，-a 省略git add . 而且设置签名
           git commit --allow-empty -a -s -m "🌟 You never lose, either you win or you learn! 💪"
           git push
-
-  update-readme-with-blog-es:
-    name: Update this repo's README with latest blog posts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      # - name: Set up Git
-      #   run: |
-      #     git config --global user.name "kubbot"
-      #     git config --global user.email "3293172751ysy@gmail.com"
-      - name: Pull in Spanish posts
-        uses: gautamkrishnar/blog-post-workflow@v1
-        with:
-          comment_tag_name: "My-Blog-ES"
-          feed_list: "https://nsddd.top/es/index.xml"
-          token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          max_post_count: 100
-          commit_message: "🔥docs(main): update with latest RadioGeek feed from ES"
-          committer_username: "kubbot"
-        #   disable_html_encoding: true
-      # 运行一系列 shell 命令，配置本地 Git 设置，从远程库拉取最新版本并推送到远程库。
-      - name: Auto green
-        run: |
-          git config --local user.email "3293172751ysy@gmail.com"
-          git config --local user.name "kubbot"
-          git remote set-url origin https://${{ secrets.BOT_GITHUB_TOKEN }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull --rebase
-          # 将 UTC 时间转换为上海时间
-          local_time=$(date -u -d "$(date -u)" "+%Y-%m-%d %H:%M:%S" -d "8 hours")
-          git commit --allow-empty -a -s -m "🌟 You never lose, either you win or you learn! 💪"
-          git push
-
-  update-readme-with-blog-fr:
-    name: Update this repo's README with latest blog posts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      # - name: Set up Git
-      #   run: |
-      #     git config --global user.name "kubbot"
-      #     git config --global user.email "3293172751ysy@gmail.com"
-      - name: Pull in French posts
-        uses: gautamkrishnar/blog-post-workflow@v1
-        with:
-          comment_tag_name: "My-Blog-FR"
-          feed_list: "https://nsddd.top/fr/index.xml"
-          token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          max_post_count: 100
-          commit_message: "🔥docs(main): update with latest RadioGeek feed from FR"
-          committer_username: "kubbot"
-        #   disable_html_encoding: true
-      # 运行一系列 shell 命令，配置本地 Git 设置，从远程库拉取最新版本并推送到远程库。
-      - name: Auto green
-        run: |
-          git config --local user.email "3293172751ysy@gmail.com"
-          git config --local user.name "kubbot"
-          git remote set-url origin https://${{ secrets.BOT_GITHUB_TOKEN }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull --rebase
-          # 将 UTC 时间转换为上海时间
-          local_time=$(date -u -d "$(date -u)" "+%Y-%m-%d %H:%M:%S" -d "8 hours")
-          # 允许空提交，-a 省略git add . 而且设置签名
-          git commit --allow-empty -a -s -m "🌟 You never lose, either you win or you learn! 💪"
-          git push
-
-
