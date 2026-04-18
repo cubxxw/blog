@@ -1,0 +1,38 @@
+## Codebase Patterns
+- CSS 覆盖文件在 assets/css/extended/ 目录，文件名任意，会自动被主入口引入
+- hugo build（无参数）等同于完整构建，用于验证模板渲染结果
+- PaperMod 主题用 body.dark 类切换深色模式（不使用 html[data-theme]），但自定义 CSS token 文件中须用 html.dark 匹配
+- 语言切换通过 :lang(zh) / :lang(en) CSS 伪类实现，Hugo 生成的 html 标签含 lang 属性
+- tsconfig.json 需要 "module": "CommonJS" + "moduleResolution": "node" 才能正确解析 @playwright/test
+- package-lock.json 被 .gitignore 忽略（存在 netlify/functions/package-lock.json），不要尝试 git add package-lock.json
+---
+
+# Ralph Progress Log
+Started: 2026-04-18
+---
+
+## 2026-04-18 - US-025
+- 新增 assets/css/extended/tokens.css：语义化 CSS token 体系
+- :root（英文）：paper #f9f9f7、ink #1a1c1b、accent #2e352e、font-display Fraunces、line-height-prose 1.75
+- html:lang(zh)：paper #fbf9f4、ink #350003、accent #862122、font-display Noto Serif SC（含完整 CJK fallback）、line-height-prose 2.0、tracking-prose 0.02em
+- html.dark:lang(en) / html.dark:lang(zh) 各自暗色重映射
+- 同时新建 package.json、tsconfig.json、playwright.config.ts（为后续 TS 测试提供基础）
+- Files changed: assets/css/extended/tokens.css（新建）、package.json（新建）、tsconfig.json（新建）、playwright.config.ts（新建）
+- **Learnings for future iterations:**
+  - :lang(zh) 选择器在 Hugo 生成的页面中直接可用，Hugo 会根据内容语言在 html 标签写入正确的 lang 属性
+  - tokens.css 与 PaperMod 的 --theme/--primary/--secondary 完全独立，不会冲突
+  - package-lock.json 在 .gitignore 中，每次 npm install 后无法提交，需确保 package.json 版本号足够宽松
+  - 新分支从 main 创建时，之前在其他分支建立的 package.json/tsconfig.json 不存在，需要重建
+---
+
+## 2026-04-18 - US-026
+- 修改 layouts/partials/extend_head.html：新增单一 Google Fonts link（Fraunces variable opsz + Inter + JetBrains Mono）
+- Noto Serif SC 通过 {{ if eq .Lang "zh" }} 条件注入，仅 ZH 页面加载
+- preconnect fonts.gstatic.com 已在文件中存在，display=swap 确保字体不阻塞渲染
+- 新增 tests/e2e/us026-fonts.spec.ts：验证 EN 无 Noto link、ZH 有 Noto link、computed font-family 含预期字体
+- Files changed: layouts/partials/extend_head.html、tests/e2e/us026-fonts.spec.ts（新建）
+- **Learnings for future iterations:**
+  - Hugo {{ if eq .Lang "zh" }} 条件在 single 页面模板中直接可用，Lang 值为 "zh" 或 "en"（无连字符）
+  - Playwright 测试运行需要 netlify dev 或 hugo server 先行启动（baseURL localhost:1313）
+  - Google Fonts variable font 语法：Fraunces:ital,opsz,wght@0,9..144,300;... 可在单个 URL 中包含所有变体
+---

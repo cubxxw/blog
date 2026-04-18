@@ -1,0 +1,190 @@
+{
+  "project": "cubxxw-blog",
+  "branchName": "ralph/aesthetic-agent-identity",
+  "description": "Aesthetic Agent Identity — 文章详情页按语言自动切换两套编辑级主题（中文东方美学 / 英文西方美学），12 栅三栏布局 + marginalia + Editorial Tools + 移动 bottom sheet，不引入 Tailwind、不改 PaperMod 主题源码。",
+  "userStories": [
+    {
+      "id": "US-025",
+      "title": "建立双主题 CSS tokens 体系",
+      "description": "As a 开发者, I want 把所有主题化值抽成 CSS tokens 并用 :lang(zh) / :lang(en) 切换, so that 后续组件只需引用 token 即可自动按语言变皮。",
+      "acceptanceCriteria": [
+        "assets/css/extended/tokens.css 新增语义 token：--color-paper、--color-ink、--color-ink-muted、--color-accent、--color-accent-soft、--color-rule、--font-display、--font-body、--font-meta、--font-mono、--line-height-prose、--tracking-prose、--drop-cap-size",
+        ":root 默认（英文）值：paper #f9f9f7、ink #1a1c1b、ink-muted #5e5e63、accent #2e352e、accent-soft #dde5da、display 'Fraunces, ...'、line-height-prose 1.75、tracking-prose normal",
+        "html:lang(zh) 覆盖：paper #fbf9f4、ink #350003、ink-muted #6c5b4e、accent #862122、accent-soft #eae8e3、display '\"Noto Serif SC\", ...'、line-height-prose 2.0、tracking-prose 0.02em、drop-cap-size 4.5rem",
+        "暗色覆盖两组：html.dark:lang(en) 与 html.dark:lang(zh) 各自重映射 ink/paper/accent",
+        "不破坏 PaperMod 原有的 --theme / --primary / --secondary —— 新 token 独立共存",
+        "Hugo 构建 0 warning，Netlify dev 启动成功",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "Implemented in assets/css/extended/tokens.css. Hugo build 0 warning, tsc passes."
+    },
+    {
+      "id": "US-026",
+      "title": "引入字体资源与 preload 策略",
+      "description": "As a 用户, I want 首次访问文章页时字体快速可用且无闪烁, so that 阅读体验不因字体加载跳动。",
+      "acceptanceCriteria": [
+        "layouts/partials/extend_head.html 合并为单一 Google Fonts link：Fraunces (opsz 9..144, weights 300/400/600/700/800) + Inter (300/400/500/600) + JetBrains Mono (400/500)",
+        "Noto Serif SC (400/700/900) 仅在中文页面加载，通过 {{ if eq .Lang \"zh\" }} 条件注入",
+        "preconnect 到 fonts.gstatic.com，link 用 display=swap",
+        "tokens.css 中 CJK fallback 栈含 PingFang SC / Hiragino Sans GB / Microsoft YaHei / Source Han Serif / STSong",
+        "Playwright 验证：EN 文章页 .post-title computed font-family 首项为 Fraunces；ZH 文章页 .post-title computed font-family 首项为 Noto Serif SC",
+        "0 console error",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": "Implemented in layouts/partials/extend_head.html. EN+base fonts (Fraunces+Inter+JetBrains Mono) always loaded; Noto Serif SC conditionally injected on ZH pages only. tokens.css CJK fallback stack complete. Hugo build 0 warning, tsc passes."
+    },
+    {
+      "id": "US-027",
+      "title": "重构 single.html 为 12 栅三栏结构",
+      "description": "As a 开发者, I want 重写 layouts/_default/single.html 采用 marginalia + article + tools 的 12 栅三栏结构, so that 后续各侧栏组件只需填入对应栅。",
+      "acceptanceCriteria": [
+        ".article-layout 改为 CSS Grid，12 列：grid-template-columns: repeat(12, minmax(0, 1fr))；gap 断点 24/40/64px",
+        "三栏：.article-marginalia 占 col-span-2、.article-main 占 col-span-7、.article-tools 占 col-span-3（仅 ≥1280px）",
+        "1024-1279：隐藏 .article-marginalia，.article-main 扩到 col-span-9",
+        "<1024px：单列，.article-marginalia 以紧凑 inline 组渲染在 article 头部；.article-tools 隐藏（交给 US-031）",
+        "保留 PR #166 引入的『剥离 .Content 首个 h1』逻辑",
+        "保留现有 partial 调用：breadcrumbs、post_meta、cover、anchored_headings、post_nav_links、share_icons、comments",
+        "marginalia / tools 使用 <aside> 语义化标签，加 position: sticky",
+        "Hugo 构建 0 warning",
+        "Playwright 三视口截图：1680 / 1024 / 414 各一张，结构无溢出、无重叠",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-028",
+      "title": "实现左侧 Marginalia 元数据栏",
+      "description": "As a 读者, I want 在文章左侧看到作者、日期、阅读时长+字数、语言切换、Suggest Changes, so that 视线不离开文章即可获得元数据。",
+      "acceptanceCriteria": [
+        "新增 layouts/partials/article/marginalia.html，四组：Principal（作者）/ Chronicle（日期）/ Dimensions（时长+字数）/ Dialect（语言切换）+ Suggest Changes 链接",
+        "标签样式：text-[9px] uppercase tracking-[0.4em] color: var(--color-ink-muted)",
+        "值样式：text-xs，字体 var(--font-display)；EN 为 Fraunces italic，ZH 为 Noto Serif SC",
+        "日期统一公历：EN 格式 April 5, 2026；ZH 格式 2026 年 4 月 5 日（不显示农历）",
+        "Dialect 行显示 EN | 中，当前语言高亮，点击复用现有 translation_list.html 逻辑跳转",
+        "position: sticky; top: calc(var(--header-height) + 24px)",
+        "左侧竖向 hairline：border-left: 0.5px solid var(--color-rule)",
+        "新增 i18n key 到 i18n/en.yaml 与 i18n/zh.yaml：marginalia.principal / chronicle / dimensions / dialect / suggest",
+        "阅读时长复用 readingTime；字数用 Hugo .WordCount",
+        "Playwright：EN 页显示英文标签；ZH 页显示对应中文",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-029",
+      "title": "升级文章主体排版：标题 / 首字下沉 / pull-quote / 行内 code",
+      "description": "As a 读者, I want 文章主体拥有 editorial 级排版, so that 阅读体验接近 The New Yorker / 三联生活周刊。",
+      "acceptanceCriteria": [
+        ".post-title: font-family var(--font-display)；EN clamp(2.5rem, 5vw, 4.5rem) / weight 800 / letter-spacing -0.02em / line-height 1.08；ZH clamp(2.25rem, 4.5vw, 3.75rem) / weight 900 / letter-spacing 0.02em / line-height 1.2",
+        ".post-description 改 italic Serif，opacity 0.65，max-w 62ch",
+        ".post-content 首个 <p> 获 .drop-cap：EN Fraunces extrabold，ZH Noto Serif SC 900；color var(--color-accent)；size var(--drop-cap-size)；float left；首字下沉至少 3 行高度",
+        ".post-content 正文 line-height: var(--line-height-prose)，letter-spacing: var(--tracking-prose)",
+        "blockquote:lang(en)：前置绝对定位 '\"' 装饰大引号（8xl，color var(--color-accent) 10% 透明度）",
+        "blockquote:lang(zh)：通过 ::before / ::after content 插入「」",
+        "行内 code pill 化，背景用 var(--color-accent-soft)",
+        "保留 PR #166 已有的 <hr> '• • •' 3 连点与 h2 前 accent 小横线，改引用 var(--color-accent)",
+        "Playwright：EN/ZH 首屏各截一张，首字下沉、引号、h2 小横线视觉正确",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-030",
+      "title": "实现右侧 Editorial Tools 侧栏",
+      "description": "As a 读者, I want 在文章右侧看到 TOC、AI Companion、Annotations、Share Scroll 面板, so that 不离开页面即可导航、摘录、分享。",
+      "acceptanceCriteria": [
+        "新增 layouts/partials/article/editorial-tools.html，四组：Table of Contents / AI Companion / Annotations / Share Scroll",
+        "复用现有 Reading Companion JS 的 DOM 锚点（例如 #TableOfContents）—— 不改 JS，只改样式",
+        "每组标题：text-xs font-bold tracking-[0.2em] uppercase + 顶部 hairline（color var(--color-rule)）",
+        "TOC hover 显示朱红/橄榄 accent 小圆点 + 颜色变化（color var(--color-accent)）",
+        "AI Companion 输入框 placeholder: EN 'Ask about this article...'，ZH '向 AI 提问...'（i18n）",
+        "AI Companion 提交到已有 /netlify/functions/article-ai endpoint，复用现有调用方式",
+        "Share Scroll：4 个 28px 圆 icon（X / WeChat / Link / Email），使用 inline SVG（不引入 Material Symbols 外部字体）",
+        "Annotations 组先做空态占位：'Coming soon' / '即将上线'",
+        "position: sticky; top: calc(var(--header-height) + 24px); max-height: calc(100vh - var(--header-height) - 48px); overflow-y: auto",
+        "<1280px 隐藏（display: none），移动端由 US-031 bottom sheet 接管",
+        "新增 i18n key：tools.toc / tools.ai / tools.annotations / tools.share / tools.ai_placeholder / tools.annotations_empty",
+        "Playwright：EN 页显示英文组名；ZH 页显示中文组名",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-031",
+      "title": "移动端适配：折叠 marginalia + bottom sheet tools",
+      "description": "As a 移动端用户, I want marginalia 在文章顶部以紧凑 inline 呈现、Tools 以底部悬浮按钮弹 bottom sheet, so that 小屏也能访问元数据与工具而不占文章宽度。",
+      "acceptanceCriteria": [
+        "<1024px：marginalia 内容折叠到 article 头部（post-header 下方），两行紧凑排版：行 1 作者 · 日期；行 2 阅读时长 · 字数 · 语言切换",
+        "<1024px：右下角出现 48×48 圆形悬浮按钮（FAB），图标为三线目录（inline SVG）",
+        "点 FAB 弹出 bottom sheet：全宽、高度 70vh、内含 TOC / AI / Share 三个 tab",
+        "Bottom sheet 打开时背景 rgba(0,0,0,0.4) 遮罩，点遮罩或下滑 > 80px 关闭",
+        "CSS 动效：transform translateY(100%) ↔ translateY(0)，transition 240ms cubic-bezier",
+        "新增 assets/js/article-bottom-sheet.js，不引入框架，纯 vanilla JS，代码 ≤ 80 行",
+        "Tab 切换：radio hack 或 ≤ 20 行 JS",
+        "FAB 在滚动距离 < 200px 或到达文末（距离底部 < 300px）时自动淡出（IntersectionObserver）",
+        "Playwright：375×812 / 414×896 两个移动视口，FAB 与 bottom sheet 正常弹出/收回",
+        "0 console error",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-032",
+      "title": "暗色模式双主题同步",
+      "description": "As a 读者, I want 切换暗色时中英文各自套用对应的暗色配色, so that 主题感知在夜间仍然成立。",
+      "acceptanceCriteria": [
+        "html.dark:lang(en)：paper #121413、ink #e2e3e1、ink-muted #b4bcb2、accent #b4bcb2、accent-soft #2a2f2a、rule rgba(226,227,225,0.1)",
+        "html.dark:lang(zh)：paper #1c1917、ink #f5f3ee、ink-muted #a8a29e、accent #ff3b3b、accent-soft #2e1a19、rule rgba(245,243,238,0.1)",
+        "PaperMod 自带主题切换按钮在两种语言下都能正常 toggle，无 FOUC",
+        "暗色下 drop-cap / pull-quote 装饰引号 / h2 前小横线 全部通过 var(--color-accent) 自动重映射",
+        "Playwright：EN 暗色 / ZH 暗色 各一张全页截图",
+        "0 console error",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-033",
+      "title": "Playwright 视觉验收 + Stitch 稿并列对比",
+      "description": "As a QA/作者, I want 自动截 EN/ZH × Light/Dark × Desktop/Mobile 共 8 张截图并与 Stitch 稿并列对比, so that 可客观判断实现相似度 ≥ 80%。",
+      "acceptanceCriteria": [
+        "新增 tests/e2e/visual/aesthetic-agent.spec.ts，Matrix: {en,zh} × {light,dark} × {desktop,mobile}，共 8 用例",
+        "视口：desktop 1680×1050、mobile 414×896",
+        "截图输出到 tests/e2e/visual/snapshots/aesthetic-agent/",
+        "生成 HTML 报告 tests/e2e/visual/aesthetic-agent-report.html，把实现截图与 design/stitch/01~04 Stitch 稿左右并列展示",
+        "断言：:lang(zh) .post-title computed font-family 含 'Noto Serif SC'；:lang(en) .post-title computed font-family 含 'Fraunces'",
+        "断言：0 console error",
+        "tests/e2e/visual/aesthetic-agent-report.html 加入 .gitignore",
+        "netlify dev 本地通过，Hugo 构建 0 warning",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}
