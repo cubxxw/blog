@@ -554,13 +554,14 @@
 }
 
 .post-entry-title a {
-  color: var(--entry);
+  color: var(--color-text-heading, var(--primary));
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .post-entry-title a:hover {
-  color: var(--primary);
+  color: var(--color-accent, var(--primary));
+  text-decoration: underline;
 }
 
 .post-meta {
