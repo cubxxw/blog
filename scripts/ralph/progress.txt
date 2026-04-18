@@ -1,4 +1,8 @@
 ## Codebase Patterns
+- layouts/partials/article/ 目录用于存放文章详情页专属 partial（marginalia、editorial-tools 等），Hugo 自动查找
+- i18n key 中可用点号分隔命名空间（如 marginalia.principal），YAML 中 id 字段写完整 key 即可
+- Hugo .ReadingTime / .WordCount 在 partial 中直接可用，无需额外计算
+- :lang(zh) / :lang(en) CSS 选择器可用于 partial 中的样式隔离，与 Hugo {{ if eq .Lang "zh" }} 模板条件配合使用
 - CSS 覆盖文件在 assets/css/extended/ 目录，文件名任意，会自动被主入口引入
 - hugo build（无参数）等同于完整构建，用于验证模板渲染结果
 - PaperMod 主题用 body.dark 类切换深色模式（不使用 html[data-theme]），但自定义 CSS token 文件中须用 html.dark 匹配
@@ -53,4 +57,19 @@ Started: 2026-04-18
   - EN 文章访问 URL 无 /en/ 前缀；ZH 文章 URL 有 /zh/ 前缀——Playwright 测试时注意区分
   - CSS Grid grid-column 语法：用 `X / span N` 定位列（1-indexed），比 `start / end` 更直观
   - pkill -f "hugo server" 可终止后台 Hugo 进程
+---
+
+## 2026-04-18 - US-028
+- 新建 layouts/partials/article/marginalia.html：四组 Principal / Chronicle / Dimensions / Dialect + Suggest Changes
+- 新建 assets/css/extended/marginalia.css：0.5px hairline border-left，9px uppercase 标签，display font 值，EN italic / ZH upright
+- i18n/en.yaml + zh.yaml 各增 5 个 marginalia.* key
+- layouts/_default/single.html：aside.article-marginalia 调用 partial；mobile 紧凑区升级为两行（row1: author·date；row2: readTime·words·lang）
+- assets/css/extended/article-layout.css：移动端两行布局样式 + dialect 内联样式
+- 新建 tests/e2e/us028-marginalia.spec.ts：16 个测试，EN/ZH 标签验证、日期格式、mobile/desktop 可见性、0 console error
+- Files changed: layouts/partials/article/marginalia.html（新建）、assets/css/extended/marginalia.css（新建）、assets/css/extended/article-layout.css（修改）、layouts/_default/single.html（修改）、i18n/en.yaml（修改）、i18n/zh.yaml（修改）、tests/e2e/us028-marginalia.spec.ts（新建）
+- **Learnings for future iterations:**
+  - Hugo partial 接收 . (Page) 作为上下文，.Lang / .ReadingTime / .WordCount / .IsTranslated / .Translations 全部直接可用
+  - i18n key 中点号命名空间（marginalia.principal）需在 YAML id 字段写完整 key，Hugo {{ i18n "marginalia.principal" }} 正确解析
+  - .article-marginalia 在 <1024px 用 display:none 隐藏，Playwright 需用 toBeHidden() 而非 not.toBeVisible()
+  - 移动端两行布局用 flex-direction: column + 子 div.row1/row2，避免单行过长
 ---

@@ -78,8 +78,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented layouts/partials/article/marginalia.html with four groups: Principal/Chronicle/Dimensions/Dialect + Suggest Changes. marginalia.css adds hairline border-left + 9px uppercase labels + display-font values. i18n keys added to en.yaml + zh.yaml. single.html updated to call partial; mobile compact marginalia updated with two rows (author·date / readingTime·words·lang). Hugo build 0 warning, tsc passes, all 16 Playwright tests pass."
     },
     {
       "id": "US-029",
