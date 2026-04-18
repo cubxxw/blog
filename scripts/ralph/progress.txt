@@ -128,3 +128,13 @@ Started: Sat Apr 18 16:45:49 +07 2026
   - IntersectionObserver 触发需要 waitForTimeout(800) 给足时间让滚动和 observer 回调完成
   - `page.evaluate` 返回的 getBoundingClientRect 是相对视窗的坐标，top < viewportHeight 即可认为在视窗内
 ---
+
+## 2026-04-18 - US-023
+- 新增 .github/workflows/e2e.yml：PR 触发，步骤：checkout → setup-node → npm ci → install-hugo → dart-sass → hugo build → playwright install → hugo server + playwright test
+- 失败时上传 playwright-report/ 和 test-results/ 两个 artifact（retention 7 天）
+- Files changed: .github/workflows/e2e.yml（新建）
+- **Learnings for future iterations:**
+  - CI 中 Hugo server 需要 `sleep 5` 等待启动完成再运行 Playwright
+  - Hugo build 在 CI 中用 `--baseURL "http://localhost:1313/"` 使静态资源路径与 hugo server 一致
+  - `npm ci` 需要 package-lock.json 存在（已有），并使用 `cache: "npm"` 加速
+---

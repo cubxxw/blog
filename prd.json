@@ -360,8 +360,8 @@
         "Typecheck passes"
       ],
       "priority": 23,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "新增 .github/workflows/e2e.yml：步骤 checkout → setup-node(npm ci) → install-hugo → dart-sass → hugo build → playwright install --with-deps chromium → hugo server + playwright test。PR 触发执行，失败时上传 playwright-report 和 test-results 两个 artifact（retention 7 天）。TypeCheck 通过。"
     },
     {
       "id": "US-024",
