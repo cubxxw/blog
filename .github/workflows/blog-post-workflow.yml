@@ -21,12 +21,6 @@ jobs:
           - lang: ZH
             tag: My-Blog-ZH
             feed: "https://nsddd.top/zh/index.xml"
-          - lang: ES
-            tag: My-Blog-ES
-            feed: "https://nsddd.top/es/index.xml"
-          - lang: FR
-            tag: My-Blog-FR
-            feed: "https://nsddd.top/fr/index.xml"
 
     steps:
       - name: Checkout
@@ -37,7 +31,7 @@ jobs:
         with:
           comment_tag_name: ${{ matrix.tag }}
           feed_list: ${{ matrix.feed }}
-          token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          gh_token: ${{ secrets.BOT_GITHUB_TOKEN }}
           max_post_count: 100
           commit_message: "🔥docs(main): update with latest blog feed from ${{ matrix.lang }}"
           committer_username: "kubbot"

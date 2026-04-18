@@ -56,11 +56,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-          cache-dependency-path: "netlify/functions/package-lock.json"
 
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+        run: "[[ -f netlify/functions/package-lock.json ]] && npm ci --prefix netlify/functions || true"
 
       - name: Build with Hugo
         env:
