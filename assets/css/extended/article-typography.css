@@ -88,6 +88,11 @@ html:lang(en) .post-content p.drop-cap::first-letter {
   line-height: 1.25;
 }
 
+/* Override custom.css fixed dark color with token-based accent */
+body.dark .post-content h2 {
+  border-left-color: var(--color-accent);
+}
+
 html:lang(zh) .post-content h2 {
   letter-spacing: 0.02em;
 }

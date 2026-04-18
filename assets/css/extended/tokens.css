@@ -2,7 +2,8 @@
  *
  * These tokens are independent of PaperMod's --theme / --primary / --secondary.
  * Language switching via :lang(zh) / :lang(en) selectors.
- * Dark mode via html.dark (PaperMod convention).
+ * Dark mode via body.dark (PaperMod adds .dark to body, not html).
+ * :lang() pseudo-class inherits from html[lang], so body.dark:lang(zh) works correctly.
  */
 
 /* ─── Light / English (default) ───────────────────────────── */
@@ -46,8 +47,8 @@ html:lang(zh) {
 }
 
 /* ─── Dark / English ───────────────────────────────────────── */
-html.dark:lang(en),
-html.dark:not(:lang(zh)) {
+body.dark:lang(en),
+body.dark:not(:lang(zh)) {
   --color-paper:        #121413;
   --color-ink:          #e2e3e1;
   --color-ink-muted:    #b4bcb2;
@@ -57,11 +58,18 @@ html.dark:not(:lang(zh)) {
 }
 
 /* ─── Dark / Chinese ───────────────────────────────────────── */
-html.dark:lang(zh) {
+body.dark:lang(zh) {
   --color-paper:        #1c1917;
   --color-ink:          #f5f3ee;
   --color-ink-muted:    #a8a29e;
   --color-accent:       #ff3b3b;
   --color-accent-soft:  #2e1a19;
   --color-rule:         rgba(245, 243, 238, 0.10);
+}
+
+/* ─── Prose background from token ──────────────────────────── */
+/* Apply --color-paper to article-main so it reflects token in dark mode */
+.article-main {
+  background: var(--color-paper);
+  transition: background 0.2s ease;
 }
