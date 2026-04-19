@@ -57,6 +57,7 @@
 <script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
+        if (window.innerWidth < 1024) return;
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
@@ -78,6 +79,7 @@
 
         // Calculate scroll progress
         function updateProgress() {
+            if (window.innerWidth < 1024) return;
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = window.scrollY;
             const progress = (scrolled / windowHeight) * 100;
