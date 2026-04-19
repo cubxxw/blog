@@ -1,3 +1,13 @@
+## 2026-04-19 - US-005
+- 验证 content/en/growth/posts/flow-state.md 已包含 aliases: [/growth/posts/flow-state-guide/]
+- hugo --minify 构建通过，public/growth/posts/flow-state-guide/index.html 存在（meta-refresh 重定向到 /growth/posts/flow-state/）
+- 真实页面 /growth/posts/flow-state/ 有完整 title "Unlocking the Magic of Flow State: A Guide to Enhanced Focus and Happiness"、h1、og:title
+- 文件变更：prd.json（US-005 passes: true）
+- **Learnings for future iterations:**
+  - Hugo alias 页面是 meta-refresh 重定向，只有 title 和 canonical，没有 og:title；og:title 存在于真实目标页面
+  - Hugo alias 在 front matter 中用 `aliases: ["/path/"]` 语法，路径末尾加斜杠
+---
+
 ## 2026-04-19 - US-003
 - config.yml 新增 `shortTitle: "cubxxw"` 参数
 - layouts/partials/head.html：`<title>` 逻辑改为：若首页用 site.Title；若文章标题 > 20 字符只输出 .Title；否则输出 .Title | shortTitle

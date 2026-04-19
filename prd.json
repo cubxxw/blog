@@ -92,8 +92,8 @@
         "Typecheck passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "flow-state.md 已有 aliases: [/growth/posts/flow-state-guide/]，构建后重定向页面存在，真实文章页有完整 title、h1、og:title，hugo --minify 构建通过"
     },
     {
       "id": "US-006",
