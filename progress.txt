@@ -1,3 +1,15 @@
+## 2026-04-19 - US-006
+- 新建 content/en/growth/posts/2026-03-27-lhasa-slow-and-heavy.md 英文 stub 页（title, description, 标签完整）
+- 移除中文版 content/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy.md 的 aliases 字段（该 alias 与英文版输出路径冲突）
+- hugo --minify 构建通过（EN 368 页面，ZH 497 页面）
+- 验证：/growth/posts/2026-03-27-lhasa-slow-and-heavy/index.html 现在 lang=en，title="Lhasa: Slow and Heavy"，不再重定向到 /zh/
+- 文件变更：content/en/growth/posts/2026-03-27-lhasa-slow-and-heavy.md（新增），content/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy.md（移除 aliases），prd.json
+- **Learnings for future iterations:**
+  - 中文版文章若设置 alias 为不含 /zh/ 的路径，会与英文版同名文章的输出路径冲突（英文是默认语言，输出到根路径）
+  - 解决方案：创建英文版文章 + 移除中文版 alias，两版各自独立；不要给中文文章设置无前缀 alias
+  - Hugo 多语言：defaultContentLanguage=en 时英文内容输出到根路径 /，中文输出到 /zh/
+---
+
 ## 2026-04-19 - US-005
 - 验证 content/en/growth/posts/flow-state.md 已包含 aliases: [/growth/posts/flow-state-guide/]
 - hugo --minify 构建通过，public/growth/posts/flow-state-guide/index.html 存在（meta-refresh 重定向到 /growth/posts/flow-state/）
