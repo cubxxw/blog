@@ -34,8 +34,8 @@
         "Typecheck passes"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "og:title/og:description/twitter:title/twitter:description 改用 htmlEscape，单引号截断 bug 已修复，构建通过"
     },
     {
       "id": "US-003",
