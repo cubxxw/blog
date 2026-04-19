@@ -1,5 +1,6 @@
 {{- $pageurl := .Permalink }}
 {{- $title := .Title }}
+{{- $desc := .Description }}
 
 {{- $.Scratch.Set "tags" ""}}
 {{- with .Params.Tags }}
@@ -8,9 +9,34 @@
 {{- $.Scratch.Set "tags" (delimit ($hashtags.Get "tags") ",") }}
 {{- end -}}
 
+{{- $wc_tags := slice }}
+{{- range $.Page.GetTerms "tags" }}{{ $wc_tags = $wc_tags | append .LinkTitle }}{{ end }}
+{{- $wc_cats := slice }}
+{{- range $.Page.GetTerms "categories" }}{{ $wc_cats = $wc_cats | append .LinkTitle }}{{ end }}
+
 {{- $custom := false }}
 {{- $ShareButtons := (.Param "ShareButtons")}}
 {{- with $ShareButtons }}{{ $custom = true }}{{ end }}
+
+{{/* Build rich share text: title + description excerpt + URL */}}
+{{- $descShort := "" }}
+{{- if $desc }}{{- $descShort = $desc | truncate 120 "…" }}{{- end }}
+{{- $tagList := delimit $wc_tags " #" }}
+{{- $richText := $title }}
+{{- if $descShort }}{{- $richText = printf "%s\n\n%s" $richText $descShort }}{{- end }}
+{{- $richText = printf "%s\n\n%s" $richText $pageurl }}
+{{- if $wc_tags }}{{- $richText = printf "%s\n\n#%s" $richText $tagList }}{{- end }}
+
+{{/* Twitter tweet text: title + description excerpt */}}
+{{- $tweetText := $title }}
+{{- if $descShort }}{{- $tweetText = printf "%s — %s" $title $descShort }}{{- end }}
+
+{{/* Email body */}}
+{{- $emailBody := $title }}
+{{- if $descShort }}{{- $emailBody = printf "%s\n\n%s" $emailBody $descShort }}{{- end }}
+{{- $emailBody = printf "%s\n\n%s" $emailBody $pageurl }}
+{{- if $wc_cats }}{{- $emailBody = printf "%s\n\nTopics: %s" $emailBody (delimit $wc_cats ", ") }}{{- end }}
+{{- if $wc_tags }}{{- $emailBody = printf "%s\nTags: %s" $emailBody (delimit $wc_tags ", ") }}{{- end }}
 
 <div class="share-section">
     <div class="share-label">{{ i18n "share_label" | default "Share this article" }}</div>
@@ -24,10 +50,27 @@
                 aria-label="{{ i18n "share_copy_link" | default "Copy link" }}"
                 class="share-btn share-btn--copy"
                 data-tooltip="{{ i18n "share_copy_link" | default "Copy link" }}"
+                data-title="{{ $title | safeJS }}"
                 onclick="shareCopyLink(this)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </button>
+
+            {{/* WeChat QR */}}
+            <button
+                aria-label="分享到微信"
+                class="share-btn share-btn--wechat"
+                data-tooltip="微信"
+                data-title="{{ $title | safeJS }}"
+                data-url="{{ $pageurl }}"
+                data-desc="{{ $desc | safeJS }}"
+                data-tags="{{ delimit $wc_tags "," | safeJS }}"
+                data-cats="{{ delimit $wc_cats "," | safeJS }}"
+                onclick="openWechatQR(this)">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
                 </svg>
             </button>
 
@@ -37,7 +80,7 @@
                 aria-label="分享到 X / Twitter"
                 class="share-btn share-btn--twitter"
                 data-tooltip="X / Twitter"
-                href="https://x.com/intent/tweet/?text={{ $title | urlquery }}&amp;url={{ $pageurl }}&amp;hashtags={{- $.Scratch.Get "tags" -}}">
+                href="https://x.com/intent/tweet/?text={{ $tweetText | urlquery }}&amp;url={{ $pageurl }}&amp;hashtags={{- $.Scratch.Get "tags" -}}">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
@@ -50,7 +93,7 @@
                 aria-label="通过邮件分享"
                 class="share-btn share-btn--email"
                 data-tooltip="Email"
-                href="mailto:?subject={{ $title | urlquery }}&amp;body={{ $pageurl }}">
+                href="mailto:?subject={{ $title | urlquery }}&amp;body={{ $emailBody | urlquery }}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
@@ -64,7 +107,7 @@
                 aria-label="分享到 LinkedIn"
                 class="share-btn share-btn--linkedin"
                 data-tooltip="LinkedIn"
-                href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $pageurl }}&amp;title={{ $title | urlquery }}&amp;summary={{ $title | urlquery }}&amp;source={{ $pageurl }}">
+                href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ $pageurl }}&amp;title={{ $title | urlquery }}&amp;summary={{ $descShort | urlquery }}&amp;source={{ $pageurl }}">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                     <rect x="2" y="9" width="4" height="12"></rect>
@@ -79,7 +122,7 @@
                 aria-label="{{ i18n "share_system" | default "Share" }}"
                 class="share-btn share-btn--webshare"
                 data-tooltip="{{ i18n "share_system" | default "Share" }}"
-                onclick="shareWebShare('{{ $title | safeJS }}', '{{ $pageurl }}')">
+                onclick="shareWebShare('{{ $title | safeJS }}', '{{ $pageurl }}', '{{ $descShort | safeJS }}')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="18" cy="5" r="3"></circle>
                     <circle cx="6" cy="12" r="3"></circle>
@@ -116,7 +159,7 @@
                     aria-label="分享到 Telegram"
                     class="share-btn share-btn--telegram"
                     data-tooltip="Telegram"
-                    href="https://telegram.me/share/url?text={{ $title | urlquery }}&amp;url={{ $pageurl }}">
+                    href="https://telegram.me/share/url?text={{ $tweetText | urlquery }}&amp;url={{ $pageurl }}">
                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.73 8.16c-.13.61-.47.76-.95.47l-2.64-1.95-1.27 1.22c-.14.14-.26.26-.53.26l.19-2.69 4.87-4.4c.21-.19-.05-.29-.33-.1l-6.02 3.79-2.59-.81c-.56-.18-.57-.56.12-.82l10.12-3.9c.47-.17.88.11.76.77z"/>
                     </svg>
@@ -129,7 +172,7 @@
                     aria-label="分享到 WhatsApp"
                     class="share-btn share-btn--whatsapp"
                     data-tooltip="WhatsApp"
-                    href="https://api.whatsapp.com/send?text={{ $title | urlquery }}%20-%20{{ $pageurl }}">
+                    href="https://api.whatsapp.com/send?text={{ $tweetText | urlquery }}%20{{ $pageurl }}">
                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
                     </svg>
@@ -155,7 +198,9 @@
                     aria-label="分享到微博"
                     class="share-btn share-btn--weibo"
                     data-tooltip="微博"
-                    href="https://service.weibo.com/share/share.php?url={{ $pageurl }}&amp;title={{ $title | urlquery }}">
+                    data-rich="{{ $richText | safeJS }}"
+                    href="https://service.weibo.com/share/share.php?url={{ $pageurl }}&amp;title={{ $tweetText | urlquery }}"
+                    onclick="richCopyAndOpen(event, 'https://service.weibo.com/share/share.php?url={{ $pageurl | safeJS }}&title={{ $tweetText | urlquery }}', this)">
                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.827 16.842c-2.255.222-4.204-.798-4.351-2.28-.148-1.48 1.565-2.862 3.824-3.086 2.258-.224 4.206.797 4.352 2.278.148 1.48-1.565 2.863-3.825 3.088zm-.593-1.766c-.217.35-.685.5-1.037.341-.347-.158-.45-.562-.23-.904.215-.337.667-.489 1.017-.341.354.151.464.551.25.904zm1.536-.56c-.08.135-.254.197-.386.141-.128-.056-.169-.21-.088-.343.08-.13.247-.194.376-.143.131.051.177.202.098.345zm1.256-1.157c-.565-.653-1.607-.788-2.352-.548-.735.238-1.209.935-1.209.935s.365-.834 1.184-1.16c.817-.322 1.85-.06 2.329.509.476.568.341 1.39-.341 1.835-.12.079-.285.043-.337-.075-.014-.032-.011-.068.002-.102.18-.494.1-.993-.408-1.395-.51-.402-1.297-.25-1.617.31-.102.178-.188.415-.131.65-.232-.29-.32-.659-.121-.947.299-.43.915-.528 1.407-.273.491.255.67.855.594 1.361zm6.271-4.94c-.818-.946-2.034-1.3-3.177-1.096.041-.175.065-.358.065-.547 0-1.329-1.085-2.406-2.423-2.406-1.338 0-2.422 1.077-2.422 2.406 0 .293.053.574.149.834C8.272 10.386 6.812 12.24 6.812 14.44c0 2.872 2.361 5.2 5.272 5.2 2.563 0 4.689-1.752 5.168-4.08.123.013.247.02.373.02 1.446 0 2.617-1.152 2.617-2.572 0-.917-.489-1.72-1.224-2.18h.079z"/>
                     </svg>
@@ -168,8 +213,9 @@
                     aria-label="分享到 Bilibili"
                     class="share-btn share-btn--bilibili"
                     data-tooltip="Bilibili"
+                    data-rich="{{ $richText | safeJS }}"
                     href="https://www.bilibili.com/"
-                    onclick="copyAndOpen(event, 'https://www.bilibili.com/')">
+                    onclick="richCopyAndOpen(event, 'https://www.bilibili.com/', this)">
                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
                     </svg>
@@ -182,8 +228,9 @@
                     aria-label="分享到知乎"
                     class="share-btn share-btn--zhihu"
                     data-tooltip="知乎"
+                    data-rich="{{ $richText | safeJS }}"
                     href="https://www.zhihu.com/"
-                    onclick="copyAndOpen(event, 'https://www.zhihu.com/')">
+                    onclick="richCopyAndOpen(event, 'https://www.zhihu.com/', this)">
                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5.721 0C2.251 0 0 2.25 0 5.719V18.28C0 21.751 2.252 24 5.721 24H18.28C21.75 24 24 21.75 24 18.281V5.72C24 2.25 21.75 0 18.281 0zm6.964 6.009l-.379 1.56H8.93c0-.001-.512 1.298.342 1.298h2.853l-.47 1.844H9.272c.598 1.485 1.865 2.755 1.865 2.755s-.555.948-.928 1.562c-.748-1.088-1.29-2.354-1.67-3.549v7.07H6.733v-6.84c-.507 1.823-1.326 3.593-2.42 4.803A9.234 9.234 0 0 1 3 15.98c1.424-1.457 2.454-3.529 2.994-5.269H3.4V8.867h3.333V7.569H5.005V6.009H9.7c-.218-.667-.497-1.358-.804-1.857l1.73-.424c.392.622.729 1.495.97 2.281zm5.268-1.593c.555 1.405 1.15 3.437 1.278 4.745l-1.502.414c-.052-.38-.134-.802-.24-1.248l-.764.045V18.57h-1.74V8.44c-.605.03-1.167.055-1.645.073l-.165-1.777c.24-.001.511-.004.8-.009.251-.323.512-.703.763-1.107-.494-.648-1.311-1.44-2.021-1.994l.976-1.36c.139.105.28.218.42.335.476-.87.927-1.96 1.19-2.787l1.69.612c-.493 1.04-1.079 2.18-1.586 2.99.247.254.47.505.657.735.476-.803.914-1.637 1.225-2.35z"/>
                     </svg>
@@ -196,8 +243,9 @@
                     aria-label="分享到小红书"
                     class="share-btn share-btn--xiaohongshu"
                     data-tooltip="小红书"
+                    data-rich="{{ $richText | safeJS }}"
                     href="https://www.xiaohongshu.com/"
-                    onclick="copyAndOpen(event, 'https://www.xiaohongshu.com/')">
+                    onclick="richCopyAndOpen(event, 'https://www.xiaohongshu.com/', this)">
                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.003 0C5.376 0 0 5.376 0 12.003 0 18.625 5.376 24 12.003 24 18.625 24 24 18.625 24 12.003 24 5.376 18.625 0 12.003 0zm5.506 8.59c.193 0 .35.156.35.35v1.18c0 .195-.157.35-.35.35h-1.974v.618h1.974c.193 0 .35.157.35.35v1.18c0 .194-.157.35-.35.35h-1.974v2.637c0 .195-.156.35-.35.35h-1.3c-.195 0-.35-.155-.35-.35v-2.637H11.56c-.195 0-.35-.156-.35-.35v-1.18c0-.193.155-.35.35-.35h1.975v-.618H11.56c-.195 0-.35-.155-.35-.35V8.94c0-.194.155-.35.35-.35h5.949zM7.613 8.59h1.41c.193 0 .35.156.35.35v6.915c0 .194-.157.35-.35.35h-1.41c-.193 0-.35-.156-.35-.35V8.94c0-.194.157-.35.35-.35z"/>
                     </svg>
@@ -223,7 +271,7 @@
                     aria-label="分享到 Facebook"
                     class="share-btn share-btn--facebook"
                     data-tooltip="Facebook"
-                    href="https://facebook.com/sharer/sharer.php?u={{ $pageurl }}">
+                    href="https://facebook.com/sharer/sharer.php?u={{ $pageurl }}&quote={{ $tweetText | urlquery }}">
                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
@@ -288,20 +336,25 @@
 
     window.shareCopyLink = function (btn) {
         var url = window.location.href;
+        var title = btn.dataset.title || '';
         clipboardCopy(url, function () {
             var orig = btn.dataset.tooltip;
             btn.dataset.tooltip = '{{ i18n "share_copied" | default "Copied!" }}';
-            showShareToast('{{ i18n "share_copy_link_done" | default "Link copied" }}');
+            var toastMsg = title
+                ? ('{{ i18n "share_copy_link_done" | default "Link copied" }}' + ' — ' + title)
+                : '{{ i18n "share_copy_link_done" | default "Link copied" }}';
+            showShareToast(toastMsg);
             setTimeout(function () { btn.dataset.tooltip = orig; }, 2000);
         }, function () {
             showShareToast('{{ i18n "share_copy_fail" | default "Copy failed — please copy from the address bar" }}');
         });
     };
 
-    window.copyAndOpen = function (e, platformUrl) {
+    // richCopyAndOpen: copies rich text (title + desc + url + tags) then opens platform
+    window.richCopyAndOpen = function (e, platformUrl, btn) {
         e.preventDefault();
-        var url = window.location.href;
-        clipboardCopy(url, function () {
+        var richText = (btn && btn.dataset.rich) || window.location.href;
+        clipboardCopy(richText, function () {
             showShareToast('{{ i18n "share_platform_copied_opening" | default "Link copied, opening platform…" }}');
             setTimeout(function () { window.open(platformUrl, '_blank', 'noopener,noreferrer'); }, 400);
         }, function () {
@@ -309,9 +362,9 @@
         });
     };
 
-    window.shareWebShare = function (title, url) {
+    window.shareWebShare = function (title, url, text) {
         if (navigator.share) {
-            navigator.share({ title: title, url: url }).catch(function () {});
+            navigator.share({ title: title, url: url, text: text || '' }).catch(function () {});
         }
     };
 
@@ -352,7 +405,6 @@
         btn.setAttribute('data-tooltip', expanded ? '{{ i18n "share_collapse" | default "收起" }}' : '{{ i18n "share_more" | default "更多" }}');
         secondary.setAttribute('aria-hidden', expanded ? 'false' : 'true');
         if (expanded) {
-            // After expand animation finishes, allow tooltips to overflow
             secondary.addEventListener('transitionend', function onEnd() {
                 secondary.style.overflow = 'visible';
                 secondary.removeEventListener('transitionend', onEnd);
@@ -387,7 +439,148 @@
 
     // Close sheet on Escape
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') window.closeShareSheet();
+        if (e.key === 'Escape') {
+            window.closeShareSheet();
+            window.closeWechatQR();
+        }
     });
+
+    // ── WeChat QR Modal ──────────────────────────────────────────────
+
+    function buildWechatModal() {
+        var backdrop = document.createElement('div');
+        backdrop.id = 'wechat-qr-backdrop';
+        backdrop.className = 'wechat-qr-backdrop';
+        backdrop.setAttribute('aria-hidden', 'true');
+
+        backdrop.innerHTML = [
+            '<div class="wechat-qr-modal" role="dialog" aria-modal="true" aria-label="微信分享">',
+              '<button class="wechat-qr-close" aria-label="关闭" onclick="closeWechatQR()">&#215;</button>',
+              '<div class="wechat-qr-header">',
+                '<svg class="wechat-qr-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+                  '<path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>',
+                '</svg>',
+                '<span class="wechat-qr-platform">微信 / WeChat</span>',
+              '</div>',
+              '<div class="wechat-qr-body">',
+                '<div class="wechat-qr-img-wrap">',
+                  '<img class="wechat-qr-img" src="" alt="QR Code" width="180" height="180" />',
+                '</div>',
+                '<p class="wechat-qr-hint">用微信「扫一扫」分享</p>',
+                '<p class="wechat-qr-hint-en">Scan with WeChat to share</p>',
+              '</div>',
+              '<div class="wechat-qr-article">',
+                '<p class="wechat-qr-title"></p>',
+                '<p class="wechat-qr-desc"></p>',
+                '<div class="wechat-qr-meta">',
+                  '<div class="wechat-qr-cats"></div>',
+                  '<div class="wechat-qr-tags"></div>',
+                '</div>',
+                '<p class="wechat-qr-source"></p>',
+              '</div>',
+              '<div class="wechat-qr-footer">',
+                '<button class="wechat-qr-copy-btn" onclick="wechatQRCopyLink()">复制链接 / Copy Link</button>',
+              '</div>',
+            '</div>'
+        ].join('');
+
+        backdrop.addEventListener('click', function (e) {
+            if (e.target === backdrop) window.closeWechatQR();
+        });
+
+        document.body.appendChild(backdrop);
+        return backdrop;
+    }
+
+    window.openWechatQR = function (btn) {
+        var title = btn.dataset.title || document.title || '';
+        var url   = btn.dataset.url   || window.location.href;
+        var desc  = btn.dataset.desc  || '';
+
+        var backdrop = document.getElementById('wechat-qr-backdrop') || buildWechatModal();
+
+        // Populate QR image
+        var imgWrap = backdrop.querySelector('.wechat-qr-img-wrap');
+        var img = backdrop.querySelector('.wechat-qr-img');
+        if (imgWrap) imgWrap.classList.remove('loaded');
+        img.src = '';
+        img.onload = function () {
+            if (imgWrap) imgWrap.classList.add('loaded');
+        };
+        img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=000000&bgcolor=ffffff&margin=1&data=' + encodeURIComponent(url);
+
+        var titleEl = backdrop.querySelector('.wechat-qr-title');
+        titleEl.textContent = title;
+
+        var descEl = backdrop.querySelector('.wechat-qr-desc');
+        descEl.textContent = desc || '';
+        descEl.style.display = desc ? '' : 'none';
+
+        // Categories
+        var catsEl = backdrop.querySelector('.wechat-qr-cats');
+        var cats = (btn.dataset.cats || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+        if (catsEl) {
+            catsEl.innerHTML = '';
+            cats.forEach(function(c) {
+                var span = document.createElement('span');
+                span.className = 'wechat-qr-chip wechat-qr-chip--cat';
+                span.textContent = c;
+                catsEl.appendChild(span);
+            });
+            catsEl.style.display = cats.length ? '' : 'none';
+        }
+
+        // Tags
+        var tagsEl = backdrop.querySelector('.wechat-qr-tags');
+        var tags = (btn.dataset.tags || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+        if (tagsEl) {
+            tagsEl.innerHTML = '';
+            tags.forEach(function(t) {
+                var span = document.createElement('span');
+                span.className = 'wechat-qr-chip wechat-qr-chip--tag';
+                span.textContent = '# ' + t;
+                tagsEl.appendChild(span);
+            });
+            tagsEl.style.display = tags.length ? '' : 'none';
+        }
+
+        // URL source line
+        var srcEl = backdrop.querySelector('.wechat-qr-source');
+        if (srcEl) srcEl.textContent = url.replace(/^https?:\/\//, '').split('/')[0];
+
+        // Store current URL for copy button
+        backdrop.dataset.url = url;
+
+        // Show
+        backdrop.classList.add('is-open');
+        backdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        var closeBtn = backdrop.querySelector('.wechat-qr-close');
+        if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 50);
+    };
+
+    window.closeWechatQR = function () {
+        var backdrop = document.getElementById('wechat-qr-backdrop');
+        if (!backdrop) return;
+        backdrop.classList.remove('is-open');
+        backdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    window.wechatQRCopyLink = function () {
+        var backdrop = document.getElementById('wechat-qr-backdrop');
+        var url = (backdrop && backdrop.dataset.url) || window.location.href;
+        clipboardCopy(url, function () {
+            var copyBtn = backdrop && backdrop.querySelector('.wechat-qr-copy-btn');
+            if (copyBtn) {
+                var orig = copyBtn.textContent;
+                copyBtn.textContent = '已复制！/ Copied!';
+                setTimeout(function () { copyBtn.textContent = orig; }, 2000);
+            }
+        }, function () {
+            showShareToast('Copy failed — please copy from the address bar');
+        });
+    };
 })();
 </script>

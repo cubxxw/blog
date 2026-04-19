@@ -7,10 +7,13 @@
 
 <div class="marginalia-inner">
 
-  {{/* ── Principal (Author) ── */}}
+  {{/* ── Principal (Author) — clickable → /about/ ── */}}
+  {{- $aboutURL := "/about/" }}
+  {{- if eq $page.Lang "en" }}{{ $aboutURL = "/en/about/" }}{{ end }}
+  {{- if eq $page.Lang "zh" }}{{ $aboutURL = "/zh/about/" }}{{ end }}
   <div class="marginalia-group">
     <span class="marginalia-label">{{ i18n "marginalia.principal" | default "Principal" }}</span>
-    <span class="marginalia-value marginalia-author">
+    <a href="{{ $aboutURL | relURL }}" class="marginalia-value marginalia-author marginalia-link">
       {{- if $page.Params.author -}}
         {{ $page.Params.author }}
       {{- else if site.Params.author -}}
@@ -18,19 +21,22 @@
       {{- else -}}
         —
       {{- end -}}
-    </span>
+    </a>
   </div>
 
-  {{/* ── Chronicle (Date) ── */}}
+  {{/* ── Chronicle (Date) — clickable → /archives/ ── */}}
+  {{- $archivesURL := "/archives/" }}
+  {{- if eq $page.Lang "en" }}{{ $archivesURL = "/en/archives/" }}{{ end }}
+  {{- if eq $page.Lang "zh" }}{{ $archivesURL = "/zh/archives/" }}{{ end }}
   <div class="marginalia-group">
     <span class="marginalia-label">{{ i18n "marginalia.chronicle" | default "Chronicle" }}</span>
-    <span class="marginalia-value marginalia-date">
+    <a href="{{ $archivesURL | relURL }}" class="marginalia-value marginalia-date marginalia-link">
       {{- if eq $page.Lang "zh" -}}
         {{ $page.Date.Format "2006 年 1 月 2 日" }}
       {{- else -}}
         {{ $page.Date.Format "January 2, 2006" }}
       {{- end -}}
-    </span>
+    </a>
   </div>
 
   {{/* ── Dimensions (Reading Time + Word Count) ── */}}
@@ -65,13 +71,124 @@
   </div>
   {{- end }}
 
-  {{/* ── Suggest Changes ── */}}
-  {{- with site.Params.editPost.URL }}
-  <div class="marginalia-group marginalia-suggest">
-    <a href="{{ site.Params.editPost.URL }}/{{ $page.File.Path }}" class="marginalia-suggest-link" target="_blank" rel="noopener">
-      {{ i18n "marginalia.suggest" | default "Suggest Changes" }}
-    </a>
+  {{/* ── Topics (Categories) ── */}}
+  {{- $cats := $page.Language.Params.Taxonomies.category | default "categories" }}
+  {{- $catTerms := $page.GetTerms $cats }}
+  {{- if $catTerms }}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.topics" | default "Topics" }}</span>
+    <div class="marginalia-tags">
+      {{- range $catTerms }}
+      <a href="{{ .Permalink }}" class="marginalia-tag marginalia-tag--topic">{{ .LinkTitle }}</a>
+      {{- end }}
+    </div>
   </div>
   {{- end }}
+
+  {{/* ── Tags ── */}}
+  {{- $tagTax := $page.Language.Params.Taxonomies.tag | default "tags" }}
+  {{- $tagTerms := $page.GetTerms $tagTax }}
+  {{- if $tagTerms }}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.tags" | default "Tags" }}</span>
+    <div class="marginalia-tags">
+      {{- range $tagTerms }}
+      <a href="{{ .Permalink }}" class="marginalia-tag">{{ .LinkTitle }}</a>
+      {{- end }}
+    </div>
+  </div>
+  {{- end }}
+
+  {{/* ── GitHub / Contribute ── */}}
+  {{- with site.Params.editPost.URL }}
+  {{- $editURL := printf "%s/%s" site.Params.editPost.URL $page.File.Path }}
+  {{- $repoBase := "https://github.com/cubxxw/blog" }}
+  {{- $blobURL  := printf "%s/blob/main/content/%s/%s" $repoBase $page.Lang $page.File.Path }}
+  <div class="marginalia-group marginalia-github">
+    <span class="marginalia-label">{{ i18n "marginalia.contribute" | default "Contribute" }}</span>
+    <div class="marginalia-github-links">
+      {{/* Edit / open PR */}}
+      <a href="{{ $editURL }}" class="marginalia-github-btn" target="_blank" rel="noopener noreferrer"
+         title="{{ i18n "marginalia.suggest" | default "Suggest Changes via GitHub PR" }}">
+        {{/* GitHub logo */}}
+        <svg class="marginalia-github-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        <span>{{ i18n "marginalia.suggest" | default "Suggest Changes" }}</span>
+        {{/* PR badge */}}
+        <span class="marginalia-pr-badge">PR</span>
+      </a>
+      {{/* View source */}}
+      <a href="{{ $blobURL }}" class="marginalia-github-btn marginalia-github-btn--muted" target="_blank" rel="noopener noreferrer"
+         title="View source on GitHub">
+        <svg class="marginalia-github-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span>{{ i18n "marginalia.source" | default "View Source" }}</span>
+      </a>
+    </div>
+  </div>
+  {{- end }}
+
+  {{/* ── Share ── */}}
+  {{- $mg_tags := slice }}
+  {{- range $page.GetTerms "tags" }}{{ $mg_tags = $mg_tags | append .LinkTitle }}{{ end }}
+  {{- $mg_cats := slice }}
+  {{- range $page.GetTerms "categories" }}{{ $mg_cats = $mg_cats | append .LinkTitle }}{{ end }}
+  {{- $mg_desc := $page.Description }}
+  {{- $mg_descShort := "" }}
+  {{- if $mg_desc }}{{- $mg_descShort = $mg_desc | truncate 120 "…" }}{{- end }}
+  {{- $mg_tweetText := $page.Title }}
+  {{- if $mg_descShort }}{{- $mg_tweetText = printf "%s — %s" $page.Title $mg_descShort }}{{- end }}
+  {{- $mg_emailBody := $page.Title }}
+  {{- if $mg_descShort }}{{- $mg_emailBody = printf "%s\n\n%s" $mg_emailBody $mg_descShort }}{{- end }}
+  {{- $mg_emailBody = printf "%s\n\n%s" $mg_emailBody $page.Permalink }}
+  {{- if $mg_cats }}{{- $mg_emailBody = printf "%s\n\nTopics: %s" $mg_emailBody (delimit $mg_cats ", ") }}{{- end }}
+  {{- if $mg_tags }}{{- $mg_emailBody = printf "%s\nTags: %s" $mg_emailBody (delimit $mg_tags ", ") }}{{- end }}
+  {{- $mg_hashtagSlice := slice }}
+  {{- range $mg_tags }}{{- $mg_hashtagSlice = $mg_hashtagSlice | append (replaceRE "(\\s)" "" .) }}{{ end }}
+  {{- $mg_hashtagStr := delimit $mg_hashtagSlice "," }}
+  <div class="marginalia-share">
+    <span class="marginalia-label">{{ i18n "marginalia.share" | default "Share" }}</span>
+    <div class="marginalia-share-row">
+      <a class="marginalia-share-btn" aria-label="Share on X / Twitter"
+         href="https://x.com/intent/tweet?url={{ $page.Permalink | urlquery }}&text={{ $mg_tweetText | urlquery }}&hashtags={{ $mg_hashtagStr }}"
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <button class="marginalia-share-btn" aria-label="Share via WeChat"
+              data-title="{{ $page.Title | safeJS }}"
+              data-url="{{ $page.Permalink }}"
+              data-desc="{{ $mg_desc | safeJS }}"
+              data-tags="{{ delimit $mg_tags "," | safeJS }}"
+              data-cats="{{ delimit $mg_cats "," | safeJS }}"
+              onclick="openWechatQR(this)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
+        </svg>
+      </button>
+      <button class="marginalia-share-btn" aria-label="Copy link"
+              data-title="{{ $page.Title | safeJS }}"
+              onclick="shareCopyLink(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+      <a class="marginalia-share-btn" aria-label="Share via Email"
+         href="mailto:?subject={{ $page.Title | urlquery }}&body={{ $mg_emailBody | urlquery }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
 
 </div>

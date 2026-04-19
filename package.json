@@ -4,6 +4,7 @@
   "private": true,
   "description": "Blog E2E tests with Playwright",
   "scripts": {
+    "dev:stop": "bash scripts/stop-netlify-dev.sh",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
     "test:ui": "playwright test --ui",

@@ -38,6 +38,11 @@
   .article-layout {
     gap: 40px;
   }
+
+  /* Marginalia sidebar covers date/author/meta — hide redundant post-meta in header */
+  .article-main .post-meta {
+    display: none;
+  }
 }
 
 /* ─── 1024–1279px: hide marginalia, extend article ───────────── */

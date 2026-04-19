@@ -167,6 +167,12 @@
 - id: marginalia.suggest
   translation: "Suggest Changes"
 
+- id: marginalia.contribute
+  translation: "Contribute"
+
+- id: marginalia.source
+  translation: "View Source"
+
 - id: tools.toc
   translation: "Contents"
 

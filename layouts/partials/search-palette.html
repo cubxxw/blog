@@ -4,8 +4,8 @@
   <div class="search-palette__panel">
     <div class="search-palette__header">
       <div>
-        <p class="search-palette__eyebrow">Search</p>
-        <h2>Site Search</h2>
+        <p class="search-palette__eyebrow">{{ if eq .Lang "zh" }}The Quiet Collector / 静默收藏者{{ else }}The Quiet Collector / Global Repository{{ end }}</p>
+        <h2>{{ if eq .Lang "zh" }}在档案中寻找智慧…{{ else }}Seek wisdom within the archives…{{ end }}</h2>
       </div>
       <button class="search-palette__close" aria-label="Close search">
         <kbd>Esc</kbd>
@@ -23,7 +23,7 @@
              aria-label="Search articles" />
       <div class="search-palette__input-actions">
         <button class="search-palette__ai-trigger" id="search-ai-btn" title="Ask AI">
-          <span class="search-palette__ai-trigger-icon">🤖</span>
+          <span class="search-palette__ai-trigger-icon">✦</span>
           <span class="search-palette__ai-trigger-text">Ask bear AI</span>
         </button>
         <div class="search-palette__shortcut" title="启动 AI 搜索">

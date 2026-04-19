@@ -57,20 +57,25 @@
     var sections = [];
     tocLinks.forEach(function (link) {
       var href = link.getAttribute('href');
-      if (href && href.charAt(0) === '#') {
-        var id = decodeURIComponent(href.slice(1));
-        var heading = document.getElementById(id);
-        if (heading) {
-          sections.push({ heading: heading, link: link });
-        }
+      if (!href || href.charAt(0) !== '#') return;
+      var raw = href.slice(1);
+      var heading = null;
+      try {
+        heading = document.getElementById(decodeURIComponent(raw));
+      } catch (e) {
+        heading = null;
       }
+      if (!heading) heading = document.getElementById(raw);
+      if (heading) sections.push({ heading: heading, link: link });
     });
     if (!sections.length) return;
 
     var currentActive = null;
-    var OFFSET = 120;
+    var OFFSET = 140;
+    var rafPending = false;
 
     function updateActive() {
+      rafPending = false;
       var scrollY = window.scrollY || window.pageYOffset;
       var activeSection = null;
       for (var i = sections.length - 1; i >= 0; i--) {
@@ -80,26 +85,19 @@
           break;
         }
       }
-      if (activeSection !== currentActive) {
-        if (currentActive) currentActive.link.classList.remove('toc-active');
-        if (activeSection) {
-          activeSection.link.classList.add('toc-active');
-          // Keep the active TOC item in view.
-          var panel = document.getElementById('rc-panel-toc');
-          if (panel) {
-            var linkTop = activeSection.link.offsetTop;
-            var panelScroll = panel.scrollTop;
-            var panelHeight = panel.clientHeight;
-            if (linkTop < panelScroll + 40 || linkTop > panelScroll + panelHeight - 60) {
-              panel.scrollTo({ top: linkTop - panelHeight / 3, behavior: 'smooth' });
-            }
-          }
-        }
-        currentActive = activeSection;
-      }
+      if (activeSection === currentActive) return;
+      if (currentActive) currentActive.link.classList.remove('toc-active');
+      if (activeSection) activeSection.link.classList.add('toc-active');
+      currentActive = activeSection;
     }
 
-    window.addEventListener('scroll', updateActive, { passive: true });
+    function onScroll() {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(updateActive);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     updateActive();
   }
 

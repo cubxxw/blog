@@ -361,13 +361,35 @@
       return;
     }
     emptyMsg.hidden = true;
-    resultsList.innerHTML = results.map((r, i) => `
+    const stripHtml = (html) => {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
+    };
+    resultsList.innerHTML = results.map((r, i) => {
+      const item = r.item;
+      const date = item.date || '';
+      const rawPreview = item.summary ? stripHtml(item.summary) : '';
+      const preview = rawPreview.length > 80 ? rawPreview.substring(0, 80) + '…' : rawPreview;
+      const tags = Array.isArray(item.tags) ? item.tags.slice(0, 3) : [];
+      const tagsHtml = tags.length
+        ? `<span class="search-palette__result-meta">${tags.map(t => `<span class="search-palette__result-tag">${t}</span>`).join('')}</span>`
+        : '';
+      const dateHtml = date
+        ? `<span class="search-palette__result-date">${date}</span>`
+        : '';
+      const metaRow = (tagsHtml || dateHtml)
+        ? `<span class="search-palette__result-footer">${tagsHtml}${dateHtml}</span>`
+        : '';
+      return `
       <li class="search-palette__result" role="option">
-        <a class="search-palette__result-link" href="${r.item.permalink}">
-          <span class="search-palette__result-title">${r.item.title}</span>
-          <span class="search-palette__result-preview">${r.item.summary || ''}</span>
+        <a class="search-palette__result-link" href="${item.permalink}">
+          <span class="search-palette__result-title">${item.title}</span>
+          ${preview ? `<span class="search-palette__result-preview">${preview}</span>` : ''}
+          ${metaRow}
         </a>
-      </li>`).join('');
+      </li>`;
+    }).join('');
 
     // Auto-trigger AI for questions
     const isQuestion = query.trim().endsWith('?') || 
