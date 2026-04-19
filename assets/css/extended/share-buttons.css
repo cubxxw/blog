@@ -520,15 +520,51 @@
     line-height: 1.4;
 }
 
-.wechat-qr-source {
-    margin: 4px 0 0;
+.wechat-qr-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.wechat-qr-cats,
+.wechat-qr-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.wechat-qr-chip {
+    display: inline-block;
     font-size: 10px;
-    color: #07C160;
     font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 3px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+}
+
+.wechat-qr-chip--cat {
+    background: #07C160;
+    color: #fff;
+}
+
+.wechat-qr-chip--tag {
+    background: transparent;
+    border: 1px solid rgba(7, 193, 96, 0.4);
+    color: #07C160;
+}
+
+.wechat-qr-source {
+    margin: 6px 0 0;
+    font-size: 10px;
+    color: var(--secondary);
+    font-weight: 400;
     letter-spacing: 0.02em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    opacity: 0.6;
 }
 
 /* ── Footer (copy button) ── */

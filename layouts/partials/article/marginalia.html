@@ -138,10 +138,16 @@
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
       </a>
+      {{- $mg_tags := slice }}
+      {{- range $page.GetTerms "tags" }}{{ $mg_tags = $mg_tags | append .LinkTitle }}{{ end }}
+      {{- $mg_cats := slice }}
+      {{- range $page.GetTerms "categories" }}{{ $mg_cats = $mg_cats | append .LinkTitle }}{{ end }}
       <button class="marginalia-share-btn" aria-label="Share via WeChat"
               data-title="{{ $page.Title | safeJS }}"
               data-url="{{ $page.Permalink }}"
               data-desc="{{ $page.Description | safeJS }}"
+              data-tags="{{ delimit $mg_tags "," | safeJS }}"
+              data-cats="{{ delimit $mg_cats "," | safeJS }}"
               onclick="openWechatQR(this)">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>

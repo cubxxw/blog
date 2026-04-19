@@ -32,6 +32,10 @@
             </button>
 
             {{/* WeChat QR */}}
+            {{- $wc_tags := slice }}
+            {{- range $.Page.GetTerms "tags" }}{{ $wc_tags = $wc_tags | append .LinkTitle }}{{ end }}
+            {{- $wc_cats := slice }}
+            {{- range $.Page.GetTerms "categories" }}{{ $wc_cats = $wc_cats | append .LinkTitle }}{{ end }}
             <button
                 aria-label="分享到微信"
                 class="share-btn share-btn--wechat"
@@ -39,6 +43,8 @@
                 data-title="{{ $title | safeJS }}"
                 data-url="{{ $pageurl }}"
                 data-desc="{{ $.Page.Description | safeJS }}"
+                data-tags="{{ delimit $wc_tags "," | safeJS }}"
+                data-cats="{{ delimit $wc_cats "," | safeJS }}"
                 onclick="openWechatQR(this)">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
@@ -434,6 +440,10 @@
               '<div class="wechat-qr-article">',
                 '<p class="wechat-qr-title"></p>',
                 '<p class="wechat-qr-desc"></p>',
+                '<div class="wechat-qr-meta">',
+                  '<div class="wechat-qr-cats"></div>',
+                  '<div class="wechat-qr-tags"></div>',
+                '</div>',
                 '<p class="wechat-qr-source"></p>',
               '</div>',
               '<div class="wechat-qr-footer">',
@@ -472,7 +482,36 @@
         titleEl.textContent = title;
 
         var descEl = backdrop.querySelector('.wechat-qr-desc');
-        descEl.textContent = desc || url.replace(/^https?:\/\//, '');
+        descEl.textContent = desc || '';
+        descEl.style.display = desc ? '' : 'none';
+
+        // Categories
+        var catsEl = backdrop.querySelector('.wechat-qr-cats');
+        var cats = (btn.dataset.cats || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+        if (catsEl) {
+            catsEl.innerHTML = '';
+            cats.forEach(function(c) {
+                var span = document.createElement('span');
+                span.className = 'wechat-qr-chip wechat-qr-chip--cat';
+                span.textContent = c;
+                catsEl.appendChild(span);
+            });
+            catsEl.style.display = cats.length ? '' : 'none';
+        }
+
+        // Tags
+        var tagsEl = backdrop.querySelector('.wechat-qr-tags');
+        var tags = (btn.dataset.tags || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+        if (tagsEl) {
+            tagsEl.innerHTML = '';
+            tags.forEach(function(t) {
+                var span = document.createElement('span');
+                span.className = 'wechat-qr-chip wechat-qr-chip--tag';
+                span.textContent = '# ' + t;
+                tagsEl.appendChild(span);
+            });
+            tagsEl.style.display = tags.length ? '' : 'none';
+        }
 
         // URL source line
         var srcEl = backdrop.querySelector('.wechat-qr-source');
