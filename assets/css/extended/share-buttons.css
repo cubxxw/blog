@@ -321,3 +321,234 @@
         display: none;
     }
 }
+
+/* ===================================================================
+   WeChat QR Code Modal
+   =================================================================== */
+
+/* ── Backdrop ── */
+.wechat-qr-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.wechat-qr-backdrop.is-open {
+    display: flex;
+    animation: wqrBackdropIn 200ms ease forwards;
+}
+
+@keyframes wqrBackdropIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Modal card ── */
+.wechat-qr-modal {
+    position: relative;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px 20px;
+    max-width: 340px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.08);
+    animation: wqrModalIn 250ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes wqrModalIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Close button ── */
+.wechat-qr-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-family: inherit;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.wechat-qr-close:hover {
+    background: var(--entry);
+    color: var(--primary);
+}
+
+/* ── Header (logo + platform name) ── */
+.wechat-qr-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.wechat-qr-logo {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: #07C160;
+}
+
+.wechat-qr-platform {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.01em;
+}
+
+/* ── QR body ── */
+.wechat-qr-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+/* QR image wrapper — loading skeleton */
+.wechat-qr-img-wrap {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.wechat-qr-img-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(128,128,128,0.08) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: wqrSkeleton 1.4s ease infinite;
+}
+
+@keyframes wqrSkeleton {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.wechat-qr-img {
+    width: 180px;
+    height: 180px;
+    display: block;
+    border-radius: 11px;
+    position: relative;
+    z-index: 1;
+}
+
+.wechat-qr-hint {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
+    text-align: center;
+}
+
+.wechat-qr-hint-en {
+    margin: 0;
+    font-size: 11px;
+    color: var(--secondary);
+    text-align: center;
+}
+
+/* ── Article info ── */
+.wechat-qr-article {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wechat-qr-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    line-height: 1.4;
+}
+
+.wechat-qr-desc {
+    margin: 0;
+    font-size: 11px;
+    color: var(--secondary);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    line-height: 1.4;
+}
+
+/* ── Footer (copy button) ── */
+.wechat-qr-footer {
+    display: flex;
+}
+
+.wechat-qr-copy-btn {
+    width: 100%;
+    padding: 10px 16px;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.wechat-qr-copy-btn:hover {
+    background: #07C160;
+    border-color: #07C160;
+    color: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 400px) {
+    .wechat-qr-modal {
+        padding: 24px 16px 16px;
+    }
+
+    .wechat-qr-img-wrap,
+    .wechat-qr-img {
+        width: 160px;
+        height: 160px;
+    }
+}

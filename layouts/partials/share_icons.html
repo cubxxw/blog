@@ -31,6 +31,20 @@
                 </svg>
             </button>
 
+            {{/* WeChat QR */}}
+            <button
+                aria-label="分享到微信"
+                class="share-btn share-btn--wechat"
+                data-tooltip="微信"
+                data-title="{{ $title | safeJS }}"
+                data-url="{{ $pageurl }}"
+                data-desc="{{ $.Page.Description | safeJS }}"
+                onclick="openWechatQR(this)">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
+                </svg>
+            </button>
+
             {{/* Twitter / X */}}
             {{- if (cond ($custom) (in $ShareButtons "twitter") (true)) }}
             <a target="_blank" rel="noopener noreferrer"
@@ -387,7 +401,105 @@
 
     // Close sheet on Escape
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') window.closeShareSheet();
+        if (e.key === 'Escape') {
+            window.closeShareSheet();
+            window.closeWechatQR();
+        }
     });
+
+    // ── WeChat QR Modal ──────────────────────────────────────────────
+
+    function buildWechatModal() {
+        var backdrop = document.createElement('div');
+        backdrop.id = 'wechat-qr-backdrop';
+        backdrop.className = 'wechat-qr-backdrop';
+        backdrop.setAttribute('aria-hidden', 'true');
+
+        backdrop.innerHTML = [
+            '<div class="wechat-qr-modal" role="dialog" aria-modal="true" aria-label="微信分享">',
+              '<button class="wechat-qr-close" aria-label="关闭" onclick="closeWechatQR()">&#215;</button>',
+              '<div class="wechat-qr-header">',
+                '<svg class="wechat-qr-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+                  '<path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>',
+                '</svg>',
+                '<span class="wechat-qr-platform">微信 / WeChat</span>',
+              '</div>',
+              '<div class="wechat-qr-body">',
+                '<div class="wechat-qr-img-wrap">',
+                  '<img class="wechat-qr-img" src="" alt="QR Code" width="180" height="180" />',
+                '</div>',
+                '<p class="wechat-qr-hint">用微信「扫一扫」分享</p>',
+                '<p class="wechat-qr-hint-en">Scan with WeChat to share</p>',
+              '</div>',
+              '<div class="wechat-qr-article">',
+                '<p class="wechat-qr-title"></p>',
+                '<p class="wechat-qr-desc"></p>',
+              '</div>',
+              '<div class="wechat-qr-footer">',
+                '<button class="wechat-qr-copy-btn" onclick="wechatQRCopyLink()">复制链接 / Copy Link</button>',
+              '</div>',
+            '</div>'
+        ].join('');
+
+        backdrop.addEventListener('click', function (e) {
+            if (e.target === backdrop) window.closeWechatQR();
+        });
+
+        document.body.appendChild(backdrop);
+        return backdrop;
+    }
+
+    window.openWechatQR = function (btn) {
+        var title = btn.dataset.title || document.title || '';
+        var url   = btn.dataset.url   || window.location.href;
+        var desc  = btn.dataset.desc  || '';
+
+        var backdrop = document.getElementById('wechat-qr-backdrop') || buildWechatModal();
+
+        // Populate content
+        var img = backdrop.querySelector('.wechat-qr-img');
+        img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(url);
+
+        var titleEl = backdrop.querySelector('.wechat-qr-title');
+        titleEl.textContent = title;
+
+        var descEl = backdrop.querySelector('.wechat-qr-desc');
+        descEl.textContent = desc;
+
+        // Store current URL for copy button
+        backdrop.dataset.url = url;
+
+        // Show
+        backdrop.classList.add('is-open');
+        backdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Focus close button for accessibility
+        var closeBtn = backdrop.querySelector('.wechat-qr-close');
+        if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 50);
+    };
+
+    window.closeWechatQR = function () {
+        var backdrop = document.getElementById('wechat-qr-backdrop');
+        if (!backdrop) return;
+        backdrop.classList.remove('is-open');
+        backdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    window.wechatQRCopyLink = function () {
+        var backdrop = document.getElementById('wechat-qr-backdrop');
+        var url = (backdrop && backdrop.dataset.url) || window.location.href;
+        clipboardCopy(url, function () {
+            var copyBtn = backdrop && backdrop.querySelector('.wechat-qr-copy-btn');
+            if (copyBtn) {
+                var orig = copyBtn.textContent;
+                copyBtn.textContent = '已复制！/ Copied!';
+                setTimeout(function () { copyBtn.textContent = orig; }, 2000);
+            }
+        }, function () {
+            showShareToast('Copy failed — please copy from the address bar');
+        });
+    };
 })();
 </script>
