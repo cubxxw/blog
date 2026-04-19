@@ -1,5 +1,5 @@
 ---
-title: 'OpenIM: Building an Efficient Version Control and Testing Workflow'
+title: 'OpenIM: Version Control & Testing Workflow'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2024-01-15T21:13:07+08:00

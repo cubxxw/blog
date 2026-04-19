@@ -1,5 +1,5 @@
 ---
-title: 'Harnessing Language Model Applications with LangChain: A Developer''s Guide'
+title: 'LangChain: Building LLM Applications'
 showRssButtonInSectionTermList: true
 date: '2024-05-22T21:37:34+08:00'
 draft: false
