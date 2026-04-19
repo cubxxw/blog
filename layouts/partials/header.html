@@ -229,4 +229,36 @@ document.addEventListener('click', function(event) {
         hamburger.setAttribute('aria-expanded', 'false');
     }
 });
+
+// Auto-hide navbar on scroll down, reveal on scroll up (Medium-style)
+(function () {
+    var headerWrapper = document.querySelector('.header-wrapper');
+    if (!headerWrapper) return;
+    var lastScrollY = 0;
+    var ticking = false;
+    var THRESHOLD = 80;
+
+    function update() {
+        var currentY = window.scrollY || window.pageYOffset;
+        var menu = document.getElementById('menu');
+        var menuOpen = menu && menu.classList.contains('mobile-open');
+
+        if (!menuOpen) {
+            if (currentY > THRESHOLD && currentY > lastScrollY) {
+                headerWrapper.classList.add('nav-scroll-hidden');
+            } else {
+                headerWrapper.classList.remove('nav-scroll-hidden');
+            }
+        }
+        lastScrollY = currentY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+        }
+    }, { passive: true });
+})();
 </script>
