@@ -2,10 +2,12 @@
   'use strict';
 
   function initTocHighlight() {
-    // Collect all TOC links from both sidebar (.toc-sidebar__nav) and reading-companion (.toc-side__nav)
+    // Sidebar only. The right-side reading-companion TOC (.toc-side__nav) is
+    // handled by reading-companion.js — duplicating the observer here causes
+    // class-toggle races and URL-hash churn (hash replaceState triggers visible
+    // reflow on Chinese-encoded IDs, creating a flicker on every scroll tick).
     var sidebarLinks = Array.from(document.querySelectorAll('.toc-sidebar__nav #TableOfContents a'));
-    var companionLinks = Array.from(document.querySelectorAll('.toc-side__nav a'));
-    var allTocLinks = sidebarLinks.concat(companionLinks);
+    var allTocLinks = sidebarLinks;
 
     if (!allTocLinks.length) return;
 
@@ -64,10 +66,6 @@
           link.classList.add('toc-active');
         }
       });
-      // Sync URL hash silently
-      if (history.replaceState) {
-        history.replaceState(null, '', '#' + id);
-      }
     }
 
     // Use IntersectionObserver to detect which heading is in view

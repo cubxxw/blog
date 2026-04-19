@@ -20,29 +20,73 @@
 .marginalia-label {
   font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--color-ink, #1a1c1b);
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  opacity: 0.5;
+  opacity: 0.42;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 /* Value: display/headline font, small — matches design's font-headline text-sm italic */
 .marginalia-value {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   color: var(--color-ink, #1a1c1b);
-  line-height: 1.5;
+  line-height: 1.55;
+  opacity: 0.86;
 }
 
-/* EN: italic display font for values */
+/* EN: Fraunces italic for editorial feel */
 :lang(en) .marginalia-value {
   font-style: italic;
+  letter-spacing: -0.005em;
 }
 
-/* ZH: upright, Noto Serif SC */
+/* ZH: upright Noto Serif SC, slightly looser tracking */
 :lang(zh) .marginalia-value {
   font-style: normal;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
+  letter-spacing: 0.01em;
+  font-size: 0.92rem;
+  font-weight: 400;
+}
+
+/* Clickable author / date — subtle, editorial hover */
+.marginalia-link {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+.marginalia-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.3);
+  transform-origin: left center;
+  transition: opacity 220ms ease, transform 260ms ease;
+}
+
+.marginalia-link:hover {
+  color: var(--color-accent, #2e352e);
+  opacity: 1;
+}
+
+.marginalia-link:hover::after {
+  opacity: 0.55;
+  transform: scaleX(1);
+}
+
+:lang(zh) .marginalia-link:hover {
+  color: var(--color-accent, #862122);
 }
 
 /* Dialect (language switch) */

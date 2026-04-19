@@ -187,18 +187,6 @@ languages:
           url: /travel/
           pageRef: /travel
           weight: 20
-        - identifier: github
-          name: GitHub
-          url: https://github.com/cubxxw
-          weight: 25
-        - identifier: diary
-          name: Diary
-          url: https://diary.nsddd.top/flomo-original
-          weight: 30
-        - identifier: rss
-          name: RSS
-          url: /index.xml
-          weight: 35
     params:
       description: "Tech blog by Xinwei Xiong — AI Builder, open source contributor and digital nomad sharing Kubernetes, Go, AI projects and travel."
       profileMode:
@@ -273,18 +261,6 @@ languages:
           url: /travel/
           pageRef: /travel
           weight: 20
-        - identifier: github
-          name: GitHub
-          url: https://github.com/cubxxw
-          weight: 25
-        - identifier: diary
-          name: 日记
-          url: https://diary.nsddd.top/flomo-original
-          weight: 30
-        - identifier: rss
-          name: RSS
-          url: /index.xml
-          weight: 35
     params:
       profileMode:
         # 启用或禁用

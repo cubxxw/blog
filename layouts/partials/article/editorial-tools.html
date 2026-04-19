@@ -35,7 +35,6 @@
 
   {{/* ── Panel 1: Table of Contents ── */}}
   <div class="rc-panel rc-panel--active" id="rc-panel-toc" role="tabpanel" aria-labelledby="rc-tab-toc">
-    <div class="et-section-label">{{ i18n "tools.toc" | default "Contents" | safeHTML }}</div>
     {{- if $has_headers }}
     <nav class="toc-side__nav" aria-label="{{ i18n "tools.toc" | default "Table of Contents" | safeHTML }}">
       <ul>
@@ -58,14 +57,27 @@
 
   {{/* ── Panel 2: AI Companion ── */}}
   <div class="rc-panel" id="rc-panel-ai" role="tabpanel" aria-labelledby="rc-tab-ai" hidden>
-    <div class="et-section-label">{{ i18n "tools.ai" | default "AI Companion" | safeHTML }}</div>
     <div class="rc-ai-panel">
+      {{- $isZh := eq $page.Lang "zh" -}}
+      <div class="rc-ai-quick-label">{{ if $isZh }}快速开始{{ else }}Quick start{{ end }}</div>
       <div class="rc-ai-quick" id="rc-quick-actions">
-        <button class="rc-ai-chip" data-prompt="{{ i18n "ai_chip_summarize_prompt" | default "Summarize the key points of this article in 3–5 sentences." | safeHTML }}">
-          {{ i18n "ai_chip_summarize" | default "📝 Summary" | safeHTML }}
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}用 3-5 句话精炼地概括这篇文章的核心观点。{{ else }}Summarize the key points of this article in 3–5 sentences.{{ end }}">
+          <span class="rc-ai-chip__icon">📝</span>{{ if $isZh }}一句话总结{{ else }}Summary{{ end }}
         </button>
-        <button class="rc-ai-chip" data-prompt="{{ i18n "ai_chip_highlights_prompt" | default "List the 3 most memorable sentences or arguments from this article, and briefly explain why they stand out." | safeHTML }}">
-          {{ i18n "ai_chip_highlights" | default "✨ Key Points" | safeHTML }}
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。{{ else }}List the 3 most memorable sentences from this article, and briefly explain why they stand out.{{ end }}">
+          <span class="rc-ai-chip__icon">✨</span>{{ if $isZh }}精彩金句{{ else }}Highlights{{ end }}
+        </button>
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}这篇文章里有哪些容易被忽略但重要的概念？请列出并解释。{{ else }}What are the overlooked but important concepts in this article? List and explain.{{ end }}">
+          <span class="rc-ai-chip__icon">💡</span>{{ if $isZh }}关键概念{{ else }}Key concepts{{ end }}
+        </button>
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}帮我挑出这篇文章里最值得质疑或反驳的观点，并给出反方视角。{{ else }}Which claims in this article are most worth challenging? Give me a counter-argument.{{ end }}">
+          <span class="rc-ai-chip__icon">🤔</span>{{ if $isZh }}反方视角{{ else }}Counter-argument{{ end }}
+        </button>
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}如果我是第一次接触这个主题的读者，请用最简单的比喻帮我理解这篇文章。{{ else }}Explain this article to a complete beginner using the simplest analogy possible.{{ end }}">
+          <span class="rc-ai-chip__icon">🎓</span>{{ if $isZh }}小白讲解{{ else }}ELI5{{ end }}
+        </button>
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}基于这篇文章的主题和内容，推荐 3 个延伸阅读方向或相关话题。{{ else }}Based on this article, suggest 3 directions for further reading or related topics.{{ end }}">
+          <span class="rc-ai-chip__icon">🔗</span>{{ if $isZh }}延伸阅读{{ else }}Further reading{{ end }}
         </button>
       </div>
       <div class="rc-ai-messages" aria-live="polite"></div>

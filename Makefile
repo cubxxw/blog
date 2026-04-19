@@ -168,10 +168,7 @@ netlify-dev: module-check content-index
 ## netlify-dev-stop: Stop local Netlify/Hugo dev processes for this repo.
 .PHONY: netlify-dev-stop
 netlify-dev-stop:
-	@pkill -f "npm exec netlify dev" 2>/dev/null || true
-	@pkill -f "npxnetlify dev" 2>/dev/null || true
-	@pkill -f "hugo server --environment development" 2>/dev/null || true
-	@echo "Stopped matching local Netlify/Hugo dev processes."
+	@bash scripts/stop-netlify-dev.sh
 
 ## build-preview: Build site with drafts and future posts enabled
 .PHONY: build-preview

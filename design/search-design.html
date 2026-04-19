@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#f4dfcb",
+                    "surface-container-highest": "#e8e1db",
+                    "on-tertiary-fixed-variant": "#524436",
+                    "on-surface": "#1e1b17",
+                    "on-secondary-fixed": "#1f1a1a",
+                    "on-primary-fixed-variant": "#72342b",
+                    "primary-fixed": "#ffdad4",
+                    "surface-container-high": "#eee7e1",
+                    "surface-container": "#f4ede6",
+                    "outline-variant": "#d9c1be",
+                    "tertiary": "#655647",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1e1b17",
+                    "on-tertiary-container": "#fff5ee",
+                    "on-surface-variant": "#534340",
+                    "inverse-primary": "#ffb4a8",
+                    "on-secondary-fixed-variant": "#4c4544",
+                    "inverse-on-surface": "#f7efe9",
+                    "on-primary-fixed": "#3a0a05",
+                    "tertiary-fixed-dim": "#d7c3b0",
+                    "secondary-fixed-dim": "#cec4c3",
+                    "secondary": "#645d5c",
+                    "primary": "#89453b",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "primary-container": "#a65d52",
+                    "surface-dim": "#e0d9d3",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#6a6362",
+                    "on-error": "#ffffff",
+                    "outline": "#867370",
+                    "secondary-fixed": "#ebe0de",
+                    "background": "#fff8f3",
+                    "surface": "#fff8f3",
+                    "inverse-surface": "#33302c",
+                    "surface-bright": "#fff8f3",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e8e1db",
+                    "tertiary-container": "#7e6e5e",
+                    "on-tertiary-fixed": "#241a0e",
+                    "surface-tint": "#8f4b41",
+                    "surface-container-low": "#faf2ec",
+                    "secondary-container": "#ebe0de",
+                    "on-primary-container": "#fff5f3",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .ghost-border {
+            border: 0.5px solid rgba(217, 193, 190, 0.4);
+        }
+        .glass-panel {
+            background: rgba(255, 248, 243, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        .text-shadow-subtle {
+            text-shadow: 0 2px 4px rgba(30, 27, 23, 0.02);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar Fragment -->
+<header class="fixed top-0 w-full z-50 bg-[#fff8f3]/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(30,27,23,0.04)] flex justify-between items-center px-12 py-6 max-w-full">
+<div class="text-2xl font-serif italic text-[#89453b]">The Quiet Collector</div>
+<nav class="hidden md:flex gap-10">
+<a class="text-sm font-medium tracking-wide Manrope uppercase text-[#89453b] border-b border-[#89453b] pb-1" href="#">Library</a>
+<a class="text-sm font-medium tracking-wide Manrope uppercase text-[#645d5c] hover:text-[#89453b] transition-colors duration-200" href="#">Archives</a>
+<a class="text-sm font-medium tracking-wide Manrope uppercase text-[#645d5c] hover:text-[#89453b] transition-colors duration-200" href="#">Notebook</a>
+<a class="text-sm font-medium tracking-wide Manrope uppercase text-[#645d5c] hover:text-[#89453b] transition-colors duration-200" href="#">Curations</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#89453b] cursor-pointer">search</span>
+<span class="material-symbols-outlined text-[#89453b] cursor-pointer">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar Fragment (Research Desk Context) -->
+<aside class="fixed left-0 top-0 h-full w-72 z-40 bg-[#faf2ec] border-r border-[#d9c1be]/40 flex flex-col p-8 gap-6 pt-32">
+<div class="mb-4">
+<p class="text-xs font-bold font-label uppercase tracking-[0.05em] text-secondary">Research Desk</p>
+<p class="text-[10px] text-on-surface-variant font-medium">Current Collection</p>
+</div>
+<nav class="flex flex-col gap-2">
+<button class="flex items-center gap-3 p-3 text-[#645d5c] hover:bg-[#eee7e1] transition-all rounded-sm">
+<span class="material-symbols-outlined text-sm">menu_book</span>
+<span class="text-xs font-bold font-label uppercase tracking-[0.05em]">Article View</span>
+</button>
+<button class="flex items-center gap-3 p-3 text-[#89453b] font-semibold bg-[#fff8f3] rounded-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold font-label uppercase tracking-[0.05em]">AI Companion</span>
+</button>
+<button class="flex items-center gap-3 p-3 text-[#645d5c] hover:bg-[#eee7e1] transition-all rounded-sm">
+<span class="material-symbols-outlined text-sm">draw</span>
+<span class="text-xs font-bold font-label uppercase tracking-[0.05em]">Annotations</span>
+</button>
+<button class="flex items-center gap-3 p-3 text-[#645d5c] hover:bg-[#eee7e1] transition-all rounded-sm">
+<span class="material-symbols-outlined text-sm">format_quote</span>
+<span class="text-xs font-bold font-label uppercase tracking-[0.05em]">Citations</span>
+</button>
+</nav>
+<div class="mt-auto">
+<!-- AI Input Panel (Neomorphic indentation requested) -->
+<div class="p-4 rounded-xl bg-surface-container-low shadow-[inset_2px_2px_8px_rgba(0,0,0,0.05),inset_-4px_-4px_10px_rgba(255,255,255,0.8)] border-0.5 border-outline-variant/10">
+<p class="text-[10px] font-bold uppercase tracking-wider text-secondary mb-3">Ask Assistant</p>
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-sm text-on-surface placeholder:text-on-surface-variant/50 resize-none h-24" placeholder="Synthesize the primary arguments of this archive..."></textarea>
+<div class="flex justify-end mt-2">
+<button class="p-2 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full shadow-lg hover:translate-y-[-2px] transition-transform">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<button class="w-full flex items-center gap-3 p-3 mt-6 text-[#645d5c] hover:bg-[#eee7e1] transition-all rounded-sm">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="text-xs font-bold font-label uppercase tracking-[0.05em]">Settings</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas (Blurred Background) -->
+<main class="ml-72 pt-32 px-16 pb-20 blur-xl opacity-40 pointer-events-none">
+<article class="max-w-3xl mx-auto">
+<header class="mb-12">
+<div class="flex items-center gap-4 text-tertiary mb-4">
+<span class="text-xs font-bold tracking-widest uppercase font-label">Volume IV</span>
+<div class="w-8 h-[1px] bg-outline-variant"></div>
+<span class="text-xs font-bold tracking-widest uppercase font-label">Autumn 1924</span>
+</div>
+<h1 class="text-6xl font-headline font-light leading-tight mb-6">The Echoes of <br/><i class="font-serif">Silent Architecture</i></h1>
+<p class="text-lg italic text-on-surface-variant font-headline">A study on the relationship between spatial void and psychological stillness.</p>
+</header>
+<div class="space-y-8 text-on-surface leading-relaxed text-lg font-light">
+<p>The structure of thought is rarely linear. It follows the hallways of our environments, the vaulted ceilings of our ambitions, and the narrow doorways of our constraints. In this archival deep-dive, we examine how the physical emptiness of monastic cells influenced the dense theological manuscripts of the 12th century.</p>
+<img class="w-full h-96 object-cover rounded-sm grayscale" data-alt="monochrome photograph of a minimalist stone corridor with dramatic morning light casting long shadows across the floor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2Hqz6B4EU4yocxCflD1mhtQfbVjXkIqU5KTZzCElnPNRGFkbPqBA1XOr2rZJjPtgIyCWzNXoThPUJ55pqq-nEknEt1F2bGB5KV3cFMZ4l9PPk9m2pfkX-BVzg43VIbQlRs6Nk1MAVvo-ppd7h1tdRdFgYM7talMAQ4DMpt7IUhpweR0vSibGhyRQenirdKunH5YstOpzvGm-1f5JCMSg9zMwRoEk45pOM-2pzBB7xsnXQPagggcWGrlo2ttDvPHuwvzDcAOTklx0"/>
+<p>Consider the silence of stone. It is not an absence of sound, but a presence of gravity. When one stands in the center of the Pantheon, the eye is drawn upward, not to a ceiling, but to the oculus—to the sky itself.</p>
+</div>
+</article>
+</main>
+<!-- Search Overlay Shell (The Hero Component) -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center bg-surface/40 backdrop-blur-md">
+<div class="w-full max-w-4xl glass-panel rounded-xl shadow-[0_12px_40px_rgba(30,27,23,0.08),0_4px_20px_rgba(30,27,23,0.04)] overflow-hidden flex flex-col p-12">
+<div class="flex justify-between items-start mb-12">
+<div class="space-y-2">
+<h2 class="text-4xl font-headline text-on-surface italic">Seek wisdom within the archives...</h2>
+<p class="text-xs font-label uppercase tracking-widest text-tertiary font-bold">The Quiet Collector / Global Repository</p>
+</div>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors p-2">close</button>
+</div>
+<!-- Search Input Area -->
+<div class="relative mb-16">
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b-[0.5px] border-outline-variant focus:border-primary focus:ring-0 text-3xl font-headline py-4 placeholder:text-on-surface-variant/20 transition-all duration-300" placeholder="Enter a keyword or phrase..." type="text" value="Monastic Silence"/>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-4">
+<span class="text-[10px] font-label font-bold text-tertiary tracking-tighter uppercase px-2 py-1 bg-tertiary-fixed rounded-sm">Command + K</span>
+<span class="material-symbols-outlined text-primary text-3xl">search</span>
+</div>
+</div>
+<!-- Results Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Primary Results -->
+<div class="space-y-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-sm text-primary">auto_stories</span>
+<h3 class="text-xs font-label font-extrabold uppercase tracking-[0.2em] text-secondary">Found Manuscripts</h3>
+</div>
+<div class="group cursor-pointer space-y-2">
+<div class="flex justify-between items-baseline">
+<h4 class="text-xl font-headline font-medium group-hover:text-primary transition-colors">The Benedictine Solitude</h4>
+<span class="text-[10px] font-label text-on-surface-variant/60">Oct 1922</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">An exploration of how the absence of speech creates a reservoir for creative thought...</p>
+<div class="flex gap-2 pt-1">
+<span class="text-[9px] font-label font-bold uppercase tracking-widest text-tertiary border-[0.5px] border-outline-variant/40 px-2 py-0.5 rounded-full">Solitude</span>
+<span class="text-[9px] font-label font-bold uppercase tracking-widest text-tertiary border-[0.5px] border-outline-variant/40 px-2 py-0.5 rounded-full">History</span>
+</div>
+</div>
+<div class="group cursor-pointer space-y-2">
+<div class="flex justify-between items-baseline">
+<h4 class="text-xl font-headline font-medium group-hover:text-primary transition-colors">Stone &amp; Spirit</h4>
+<span class="text-[10px] font-label text-on-surface-variant/60">May 1923</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">How the density of medieval architecture enforced a spiritual focus through geometry...</p>
+<div class="flex gap-2 pt-1">
+<span class="text-[9px] font-label font-bold uppercase tracking-widest text-tertiary border-[0.5px] border-outline-variant/40 px-2 py-0.5 rounded-full">Stone</span>
+<span class="text-[9px] font-label font-bold uppercase tracking-widest text-tertiary border-[0.5px] border-outline-variant/40 px-2 py-0.5 rounded-full">Sacred</span>
+</div>
+</div>
+</div>
+<!-- Secondary Intelligence -->
+<div class="bg-surface-container-low/50 rounded-lg p-8 ghost-border">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-xs font-label font-extrabold uppercase tracking-[0.2em] text-secondary">AI Syntheses</h3>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<p class="text-sm italic font-headline text-on-surface leading-snug">"Your search 'Monastic Silence' is deeply linked to the concept of <b>Vocal Fasting</b> discussed in Archive 42."</p>
+<button class="text-[10px] font-label font-bold text-primary uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
+                                Generate Brief <span class="material-symbols-outlined text-xs">trending_flat</span>
+</button>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/20"></div>
+<div class="space-y-3">
+<p class="text-xs font-bold font-label uppercase tracking-widest text-secondary/60">Related Curations</p>
+<ul class="space-y-2">
+<li class="text-xs font-medium text-on-surface-variant hover:text-primary cursor-pointer flex items-center justify-between">
+<span>Modernist Minimalist Archives</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</li>
+<li class="text-xs font-medium text-on-surface-variant hover:text-primary cursor-pointer flex items-center justify-between">
+<span>The Psychology of The Void</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="mt-16 flex justify-between items-center border-t border-outline-variant/20 pt-6">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant">Live Index</span>
+</div>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant/40">3,402 Documents Searched</span>
+</div>
+<div class="flex gap-4">
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary cursor-pointer">Help</span>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary cursor-pointer">Advanced</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Elements for Visual Depth -->
+<div class="fixed top-0 right-0 p-12 pointer-events-none z-10">
+<div class="text-[12rem] font-serif italic text-primary/5 leading-none select-none">Void</div>
+</div>
+</body></html>

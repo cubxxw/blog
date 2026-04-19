@@ -1,13 +1,13 @@
 ---
 title: "About Me"
 menuTitle: "About"
-layout: "single"
+layout: "about"
 description: "Xinwei Xiong - An explorer building bridges between technology and humanity"
 summary: "An explorer building bridges between technology and humanity"
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
-ShowBreadCrumbs: true
+ShowBreadCrumbs: false
 ShowCodeCopyButtons: false
 ShowWordCount: false
 ShowRssButtonInSectionTermList: false
@@ -23,313 +23,183 @@ author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me"]
 ---
 
-<div class="about-container">
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <img src="/images/cubxxw-image.jpg" alt="Xinwei Xiong" class="about-avatar">
+    <div class="about-hero-text">
+      <h1 class="about-name">Xinwei Xiong</h1>
+      <p class="about-tagline">Explorer building bridges between technology and humanity</p>
+      <p class="about-version">Profile Snapshot v2026.1</p>
+      <div class="about-badges">
+        <span class="about-badge">🚀 AI Entrepreneur</span>
+        <span class="about-badge">📝 Writer</span>
+        <span class="about-badge">🌍 Digital Nomad</span>
+        <span class="about-badge">🥾 Hiking Enthusiast</span>
+      </div>
+    </div>
+  </div>
+  <p class="about-lead">
+    I build <strong>bridges between technology and humanity</strong>.<br>
+    If you remember three things about me, let them be: <strong>Authentic</strong>, <strong>Curious</strong>, <strong>Connector</strong>.
+  </p>
+</section>
 
-# Hello, I'm Xinwei Xiong
+<section class="about-section">
+  <h2 class="about-section-title"><span class="about-section-icon">📍</span>Where I Come From</h2>
+  <div class="about-prose">
+    <p>I was born in China in 2001 (currently <span id="age-counter">—</span> years old). Like most people, I followed the beaten path — school, exams, an ordinary undergraduate university, technology. No prestigious name on my diploma, which taught me early: <strong>credentials aren't the starting line, curiosity is</strong>.</p>
+    <p>The real turning point came in <strong>2024</strong>. I made a decision: <strong>step out of my comfort zone and rediscover the world with footsteps and curiosity</strong>.</p>
+    <p>From Hong Kong to Kuala Lumpur, from Singapore to Bangkok, from Pokhara to Kathmandu, from Tokyo to Seoul… 12 months, 9 countries, 35+ cities. Not a gap year — an <strong>intentional life experiment</strong>.</p>
+    <blockquote class="about-quote">
+      "If I was a geographic explorer in early 2025, now I'm more like an astronaut diving deep into the wilderness of thought."
+    </blockquote>
+  </div>
+</section>
 
-<p class="about-version">Profile Snapshot v2026.1</p>
+<section class="about-section">
+  <h2 class="about-section-title"><span class="about-section-icon">🧭</span>What I'm Doing Now</h2>
+  <div class="about-cards">
+    <div class="about-card">
+      <div class="about-card-icon">⚡</div>
+      <h3 class="about-card-title">AI & Open Source</h3>
+      <p class="about-card-body">AI entrepreneur and active open source contributor. I believe <strong>AI + Human = Superhuman</strong> and work toward new paradigms of human-machine collaboration. Projects: OpenIM, OpenKF, Sealos.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">✍️</div>
+      <h3 class="about-card-title">Writing & Thinking</h3>
+      <p class="about-card-body">Writing is how I <strong>dialogue with myself</strong>. Four threads: AI & Technology, Growth & Cognition, Travel & Observation, Projects & Practice.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🥾</div>
+      <h3 class="about-card-title">Hiking & Walking</h3>
+      <p class="about-card-body"><strong>400+ km</strong> of trails completed. Walking is <strong>moving meditation</strong>. At Tilicho Lake (5,416 m), I found the space to converse with my inner self.</p>
+    </div>
+  </div>
+</section>
 
-<div class="intro-lead">
-<p>I'm someone who builds <strong>bridges between technology and humanity</strong>.</p>
-<p>If you remember only three things about me, let them be: <strong>Authentic</strong>, <strong>Curious</strong>, <strong>Connector</strong>.</p>
-</div>
+<section class="about-section">
+  <h2 class="about-section-title"><span class="about-section-icon">💡</span>Why Follow Me</h2>
+  <div class="about-reasons">
+    <div class="about-reason">
+      <span class="about-reason-num">01</span>
+      <div class="about-reason-body">
+        <h3>First-Hand Experience</h3>
+        <p>I believe in <strong>Raw Data Priority</strong>. I go verify things myself rather than consuming second-hand knowledge. Everything you read here carries <strong>authentic warmth</strong>.</p>
+      </div>
+    </div>
+    <div class="about-reason">
+      <span class="about-reason-num">02</span>
+      <div class="about-reason-body">
+        <h3>Cross-Cultural Perspective</h3>
+        <p>Living across multiple countries gave me the ability to <strong>step outside single narratives</strong>. I understand China's tech ecosystem, Southeast Asian life philosophies, and the global AI community.</p>
+      </div>
+    </div>
+    <div class="about-reason">
+      <span class="about-reason-num">03</span>
+      <div class="about-reason-body">
+        <h3>Rationality Meets Emotion</h3>
+        <p>My operating system: <strong>find sensuality in ultimate rationality; calibrate rationality in waves of experience</strong>. Logical rigor and human warmth, together.</p>
+      </div>
+    </div>
+    <div class="about-reason">
+      <span class="about-reason-num">04</span>
+      <div class="about-reason-body">
+        <h3>Continuous Evolution</h3>
+        <p>I'm not afraid to admit limitations or show confusion. I believe <strong>growth comes from facing your own ignorance</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="profile-section">
-<img src="/images/cubxxw-image.jpg" alt="Xinwei Xiong" class="about-avatar">
-<div class="profile-badges">
-<span class="badge">🚀 AI Entrepreneur</span>
-<span class="badge">📝 Writer</span>
-<span class="badge">🌍 Digital Nomad</span>
-<span class="badge">🥾 Hiking Enthusiast</span>
-</div>
-</div>
+<section class="about-section about-section--center">
+  <h2 class="about-section-title"><span class="about-section-icon">🌉</span>My Core Themes</h2>
+  <blockquote class="about-quote about-quote--center">
+    Understand the world, construct the self, build bridges between technology and humanity.
+  </blockquote>
+  <ul class="about-issues">
+    <li>How to make AI an extension of human cognition, not a replacement</li>
+    <li>How to be a connector in an era of deglobalization</li>
+    <li>How to preserve human softness in a world obsessed with efficiency</li>
+    <li>How to bridge the gap between "knowing" and "doing"</li>
+  </ul>
+</section>
 
----
+<section class="about-section">
+  <h2 class="about-section-title"><span class="about-section-icon">📬</span>Get in Touch</h2>
+  <div class="about-links">
+    <a class="about-link-item" href="https://github.com/cubxxw" target="_blank" rel="noopener">
+      <span class="about-link-icon">🐙</span>
+      <span class="about-link-label">GitHub</span>
+      <span class="about-link-sub">Open source & code review</span>
+    </a>
+    <a class="about-link-item" href="mailto:3293172751nss@gmail.com">
+      <span class="about-link-icon">✉️</span>
+      <span class="about-link-label">Email</span>
+      <span class="about-link-sub">Consulting & collaboration</span>
+    </a>
+    <a class="about-link-item" href="https://x.com/xxw3293172751" target="_blank" rel="noopener">
+      <span class="about-link-icon">𝕏</span>
+      <span class="about-link-label">X / Twitter</span>
+      <span class="about-link-sub">Updates & global exchange</span>
+    </a>
+    <a class="about-link-item" href="https://www.zhihu.com/people/3293172751" target="_blank" rel="noopener">
+      <span class="about-link-icon">知</span>
+      <span class="about-link-label">Zhihu</span>
+      <span class="about-link-sub">Deep tech thinking</span>
+    </a>
+    <a class="about-link-item" href="https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4" target="_blank" rel="noopener">
+      <span class="about-link-icon">🟡</span>
+      <span class="about-link-label">Jike</span>
+      <span class="about-link-sub">Thoughts & life insights</span>
+    </a>
+    <a class="about-link-item" href="https://space.bilibili.com/1233089591" target="_blank" rel="noopener">
+      <span class="about-link-icon">📺</span>
+      <span class="about-link-label">Bilibili</span>
+      <span class="about-link-sub">Video tutorials & sharing</span>
+    </a>
+    <a class="about-link-item" href="https://www.buymeacoffee.com/cubxxw" target="_blank" rel="noopener">
+      <span class="about-link-icon">☕</span>
+      <span class="about-link-label">Buy Me a Coffee</span>
+      <span class="about-link-sub">Support my work</span>
+    </a>
+  </div>
+</section>
 
-## 📍 Where I Come From
+<section class="about-section">
+  <h2 class="about-section-title"><span class="about-section-icon">🚀</span>Start Here</h2>
+  <div class="about-start-grid">
+    <a class="about-start-item" href="/en/ai-technology/posts/">
+      <span class="about-start-num">01</span>
+      <span class="about-start-label">AI & Technology</span>
+    </a>
+    <a class="about-start-item" href="/en/growth/">
+      <span class="about-start-num">02</span>
+      <span class="about-start-label">Growth & Cognition</span>
+    </a>
+    <a class="about-start-item" href="/en/travel/">
+      <span class="about-start-num">03</span>
+      <span class="about-start-label">Travel Records</span>
+    </a>
+    <a class="about-start-item" href="https://github.com/cubxxw" target="_blank" rel="noopener">
+      <span class="about-start-num">04</span>
+      <span class="about-start-label">Open Source</span>
+    </a>
+  </div>
+</section>
 
-I was born in China in 2001 (currently <span id="age-counter">—</span> years old). Like most people, I followed the beaten path for a long time — school, exams, university, learning technology.
+<footer class="about-footer">
+  <p>Looking forward to our connection.</p>
+  <p class="about-footer-sig">— Xinwei Xiong (熊鑫伟)</p>
+</footer>
 
 <script>
 (function() {
-  function calcAge() {
-    var birth = new Date(2001, 2, 15); // 2001-03-15 (month is 0-indexed)
-    var now = new Date();
-    var age = now.getFullYear() - birth.getFullYear();
-    var m = now.getMonth() - birth.getMonth();
-    if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
-    return age;
-  }
+  var birth = new Date(2001, 2, 15);
+  var now = new Date();
+  var age = now.getFullYear() - birth.getFullYear();
+  var m = now.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
   var el = document.getElementById('age-counter');
-  if (el) el.textContent = calcAge();
+  if (el) el.textContent = age;
 })();
 </script>
-
-But the real turning point came in **2024**. That year, I made a decision: **step out of my comfort zone and rediscover the world with footsteps and curiosity**.
-
-From Hong Kong to Kuala Lumpur, from Singapore to Bangkok, from Pokhara to Kathmandu, from Tokyo to Seoul… 12 months, 9 countries, 35+ cities. This wasn't a "gap year" — it was an **intentional life experiment**.
-
-<blockquote>
-"If I was a geographic explorer in early 2025, now I'm more like an astronaut diving deep into the wilderness of thought."
-</blockquote>
-
----
-
-## 🧭 What I'm Doing Now
-
-### AI Entrepreneurship & Open Source
-
-I'm an AI entrepreneur and an active contributor to the open source community. I believe **AI + Human = Superhuman**, and I'm committed to building new paradigms of human-machine collaboration.
-
-Projects I've contributed to:
-- **OpenIM** - Open source instant messaging solution
-- **OpenKF** - Knowledge framework project
-- **Sealos** - Cloud operating system
-
-### Writing & Thinking
-
-I use this blog to record my thoughts, project breakdowns, technical explorations, and life reflections. For me, writing is a way to **dialogue with myself**.
-
-My writing revolves around four main threads:
-- **AI & Technology** - Tech trends, AI applications, open source projects
-- **Growth & Cognition** - Learning methods, mental models, self-iteration
-- **Travel & Observation** - Cross-cultural experiences, city observations, social narratives
-- **Projects & Practice** - Entrepreneurial journey, product thinking, hands-on experience
-
-### Hiking & Walking
-
-I'm a passionate hiking enthusiast. To date, I've completed **400+ kilometers** of hiking trails.
-
-Walking, for me, is a form of **moving meditation**. In the mountains, by Tilicho Lake at 5,416 meters altitude, I found the space to converse with my inner self.
-
----
-
-## 💡 Why I'm Worth Following
-
-### 1. Devotion to First-Hand Experience
-
-I firmly believe in **Raw Data Priority**. I'm not satisfied with second-hand knowledge — I go experience, verify, and document things myself.
-
-This means the content you read from me carries **authentic warmth**.
-
-### 2. Cross-Cultural Perspective
-
-Long-term living experiences across multiple countries have given me the ability to **step outside single narratives**. I can understand China's tech ecosystem, observe Southeast Asian life philosophies, and resonate with the global AI community.
-
-### 3. Integration of Rationality and Emotion
-
-My operating system is: **finding sensuality in ultimate rationality, constructing rationality in deep sensuality**.
-
-This means what you read from me has both logical rigor and human warmth.
-
-### 4. Continuous Evolution Mindset
-
-I'm not afraid to admit my limitations, nor ashamed to show my confusions. I believe **growth comes from facing your own ignorance**.
-
----
-
-## 🌉 My Core Themes
-
-If I had to summarize my current life theme in one sentence:
-
-> **Understand the world, construct the self, build bridges between technology and humanity.**
-
-I'm exploring:
-- How to make AI an extension of human cognition, not a replacement
-- How to be a connector in an era of deglobalization
-- How to preserve human softness in a technology world obsessed with efficiency
-- How to build bridges between "knowing" and "doing"
-
----
-
-## 📬 How to Contact Me
-
-If you're interested in my content or have collaboration ideas, feel free to reach out:
-
-### Technology & Open Source
-- **GitHub**: [github.com/cubxxw](https://github.com/cubxxw) - Open source collaboration and code review
-- **Email**: [3293172751nss@gmail.com](mailto:3293172751nss@gmail.com) - Technical consultation and business cooperation
-
-### Deep Thinking & Sharing
-- **Zhihu**: [Zhihu Profile](https://www.zhihu.com/people/3293172751) - Deep thinking and technical sharing
-- **X (Twitter)**: [@xxw3293172751](https://x.com/xxw3293172751) - Real-time updates and international exchange
-- **Jike**: [Jike Profile](https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4) - Instant thoughts and life insights
-
-### Video & Life
-- **Bilibili**: [Channel](https://space.bilibili.com/1233089591) - Video tutorials and technical sharing
-- **Xiaohongshu**: [Profile](https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3) - Life records and travel sharing
-
-### Support Me
-- **Buy Me a Coffee**: [Buy Me a Coffee](https://www.buymeacoffee.com/cubxxw) - Support continuous creation and thinking
-- **WeChat**: One-on-one deep communication (available via email)
-
----
-
-## 🚀 Start Here
-
-If this is your first visit, I suggest starting from these entry points:
-
-1. **[Latest Posts](/ai-technology/posts/)** - See my recent thoughts and practices
-2. **[AI & Technology](/ai-technology/)** - If you follow AI and tech trends
-3. **[Growth & Cognition](/growth/)** - If you care about self-iteration and learning methods
-4. **[Travel Records](/travel/)** - Follow my footsteps around the world
-5. **[Open Source Projects](https://github.com/cubxxw)** - For developers who want to collaborate
-
----
-
-<div class="about-footer">
-
-### Thanks for Stopping By
-
-This website is my space for dialogue with the world. If you find resonance, inspiration, or value here, that's the greatest encouragement to me.
-
-Looking forward to our connection.
-
-— Xinwei Xiong (熊鑫伟)
-
-</div>
-
-</div>
-
-<style>
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.8;
-  color: #2c3e50;
-}
-
-.about-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #1a1a1a;
-  font-weight: 700;
-}
-
-.about-container h2 {
-  font-size: 1.8rem;
-  margin: 50px 0 25px 0;
-  color: #2c3e50;
-  font-weight: 600;
-}
-
-.about-container h3 {
-  font-size: 1.3rem;
-  margin: 30px 0 15px 0;
-  color: #34495e;
-  font-weight: 600;
-}
-
-.intro-lead {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 40px;
-}
-
-.intro-lead strong {
-  color: #3498db;
-}
-
-.profile-section {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin: 40px 0;
-  padding: 30px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-  border-radius: 16px;
-}
-
-.about-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid white;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.profile-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.badge {
-  padding: 6px 14px;
-  background: white;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #555;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.about-container blockquote {
-  border-left: 4px solid #3498db;
-  padding: 20px 25px;
-  margin: 40px 0;
-  background: #f8f9fa;
-  border-radius: 0 8px 8px 0;
-  font-size: 1.1rem;
-  color: #555;
-  font-style: italic;
-}
-
-.about-container ul {
-  margin: 15px 0;
-  padding-left: 25px;
-}
-
-.about-container li {
-  margin-bottom: 10px;
-  color: #555;
-}
-
-.about-container a {
-  color: #3498db;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.about-container a:hover {
-  color: #2980b9;
-  text-decoration: underline;
-}
-
-.about-footer {
-  margin-top: 60px;
-  padding-top: 40px;
-  border-top: 2px solid #ecf0f1;
-}
-
-.about-footer h3 {
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .about-container {
-    padding: 30px 20px;
-  }
-  
-  .about-container h1 {
-    font-size: 2rem;
-  }
-  
-  .about-container h2 {
-    font-size: 1.5rem;
-  }
-  
-  .profile-section {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .profile-badges {
-    justify-content: center;
-  }
-}
-</style>

@@ -18,32 +18,34 @@ html:lang(zh) .post-title {
   line-height: 1.2;
 }
 
-/* ─── Post Description ───────────────────────────────────────── */
+/* ─── Post Description — editorial lead-in, no box ───────────── */
 .post-description {
   font-family: var(--font-prose, 'Noto Serif', 'Georgia', serif);
   font-style: italic;
   font-size: 1.125rem;
-  line-height: 1.75;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.82;
-  max-width: 60ch;
-  margin: 0 0 2rem;
-  padding: 1rem 1.25rem;
-  border-left: 3px solid var(--color-accent, #2e352e);
-  background: var(--color-accent-soft, #dde5da);
-  border-radius: 0 4px 4px 0;
+  line-height: 1.7;
+  color: var(--color-ink-muted, #5e5e63);
+  max-width: 62ch;
+  margin: 0.5rem 0 2.25rem;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  border-left: 2px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  background: transparent;
+  border-radius: 0;
+  opacity: 1;
 }
 
 html:lang(zh) .post-description {
   font-family: var(--font-display);
   font-style: normal;
   font-size: 1rem;
-  line-height: 2;
+  line-height: 1.9;
+  letter-spacing: 0.005em;
 }
 
 body.dark .post-description {
-  background: rgba(226, 227, 225, 0.06);
-  border-left-color: var(--color-accent, #b4bcb2);
+  color: rgba(226, 227, 225, 0.62);
+  background: transparent;
+  border-left-color: rgba(226, 227, 225, 0.15);
 }
 
 /* ─── Post Content Prose Base ────────────────────────────────── */
@@ -153,32 +155,49 @@ html:lang(en) .post-content blockquote::before {
   pointer-events: none;
 }
 
-/* ─── Blockquote — ZH 书名号 ─────────────────────────────────── */
+/* ─── Blockquote — ZH (editorial, no 「」 brackets) ──────────── */
+/* Decorative 「 」 corner brackets removed — they rendered as huge
+   floating marks that fought with Chinese paragraph flow. A calm
+   left rule on soft paper background reads better for CJK. */
 html:lang(zh) .post-content blockquote {
   position: relative;
   margin: 2rem 0;
-  padding: 0.5rem 1.5rem;
-  border-left: 2px solid var(--color-accent, #862122);
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  line-height: 2;
-  color: var(--color-ink, #350003);
+  padding: 0.85rem 1.5rem 0.85rem 1.65rem;
+  border-left: 2.5px solid var(--color-accent, #862122);
+  background: rgba(134, 33, 34, 0.035);
+  border-radius: 0 4px 4px 0;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC',
+               var(--font-body), serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(30, 35, 30, 0.78);
+  letter-spacing: 0.01em;
 }
 
-html:lang(zh) .post-content blockquote::before {
-  content: '\300C';
-  color: var(--color-accent, #862122);
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-right: 0.1em;
+html:lang(zh) .post-content blockquote p {
+  margin-bottom: 0.75em;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }
 
+html:lang(zh) .post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Explicitly clear the old ::before / ::after so cached CSS or
+   ordering won't re-inject the corner brackets. */
+html:lang(zh) .post-content blockquote::before,
 html:lang(zh) .post-content blockquote::after {
-  content: '\300D';
-  color: var(--color-accent, #862122);
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-left: 0.1em;
+  content: none !important;
+  display: none !important;
+}
+
+body.dark html:lang(zh) .post-content blockquote,
+html.dark:lang(zh) .post-content blockquote,
+body.dark .post-content blockquote {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(226, 227, 225, 0.82);
 }
 
 /* ─── Inline Code — pill style ───────────────────────────────── */
@@ -221,18 +240,265 @@ body.dark .post-content a:not(.footnote-ref):not(.footnote-backref):hover {
   text-decoration-color: var(--color-accent, #b4bcb2);
 }
 
-/* ─── HR — three dots separator ─────────────────────────────── */
-.post-content hr {
-  border: none;
-  text-align: center;
-  margin: 2.5rem 0;
+/* ─── HR — editorial wide-dot ornament (ProPublica / Medium pattern) ──
+   Five quietly-spaced tiny dots centered in the column.
+   No flanking rules — the whitespace does the dividing work.
+   <hr> is a void element, so the dots are painted via radial-gradient
+   tiles on the hr's own background. */
+.post-content hr,
+.post-single .post-content hr {
+  --dot-color: rgba(30, 35, 30, 0.32);
+  --dot-size: 3px;          /* visual diameter of each dot */
+  --dot-pitch: 28px;        /* center-to-center spacing */
+
+  border: none !important;
+  background: transparent !important;
+  height: 8px !important;
+  width: calc(var(--dot-pitch) * 5);   /* 5 dots across */
+  margin: 3.25rem auto 2.75rem !important;
   overflow: visible;
+  position: relative;
+
+  /* Paint 5 dots via a single radial-gradient tiled at the pitch. */
+  background-image: radial-gradient(
+    circle at center,
+    var(--dot-color) 0,
+    var(--dot-color) calc(var(--dot-size) / 2),
+    transparent calc(var(--dot-size) / 2 + 0.5px)
+  ) !important;
+  background-size: var(--dot-pitch) 100% !important;
+  background-repeat: repeat-x !important;
+  background-position: center center !important;
 }
 
+/* Remove any previous ::before/::after ornamentation. */
+.post-content hr::before,
 .post-content hr::after {
-  content: '• • •';
-  color: var(--color-accent, #2e352e);
-  opacity: 0.45;
-  font-size: 1.1rem;
-  letter-spacing: 0.5em;
+  content: none !important;
+}
+
+body.dark .post-content hr {
+  --dot-color: rgba(255, 255, 255, 0.32);
+}
+
+@media (max-width: 520px) {
+  .post-content hr {
+    --dot-pitch: 22px;
+    --dot-size: 2.5px;
+  }
+}
+
+/* ─── Code block — refined editorial treatment ──────────────── */
+/* Theme-aware surface:
+   Light mode → warm paper beige (#f4f1e9), harmonizes with page background.
+   Dark mode  → soft blue-gray (#1d2026), not pure black. */
+.post-content .highlight,
+.post-content pre:not(.mermaid) {
+  --code-surface: #f4f1e9;
+  --code-ink: #2a2c2b;
+  --code-border: rgba(30, 35, 30, 0.09);
+  --code-shadow: 0 1px 2px rgba(30,35,30,0.03),
+                 0 6px 18px -14px rgba(30,35,30,0.18);
+  --code-scroll: rgba(30, 35, 30, 0.14);
+  --code-scroll-hover: rgba(30, 35, 30, 0.26);
+  --code-btn-bg: rgba(30, 35, 30, 0.05);
+  --code-btn-border: rgba(30, 35, 30, 0.1);
+  --code-btn-color: rgba(30, 35, 30, 0.6);
+  --code-btn-bg-hover: rgba(30, 35, 30, 0.12);
+  --code-btn-color-hover: rgba(30, 35, 30, 0.95);
+
+  position: relative;
+  margin: 1.75rem 0;
+  border-radius: 10px;
+  background: var(--code-surface);
+  border: 1px solid var(--code-border);
+  box-shadow: var(--code-shadow);
+  overflow: hidden;
+  /* align width with prose column; override any wider bleed */
+  max-width: 100%;
+}
+
+/* Dark theme — inverted palette */
+body.dark .post-content .highlight,
+body.dark .post-content pre:not(.mermaid) {
+  --code-surface: #1d2026;
+  --code-ink: #d8d9dc;
+  --code-border: rgba(255,255,255,0.06);
+  --code-shadow: 0 1px 2px rgba(0,0,0,0.04),
+                 0 8px 24px -16px rgba(0,0,0,0.4);
+  --code-scroll: rgba(255,255,255,0.12);
+  --code-scroll-hover: rgba(255,255,255,0.22);
+  --code-btn-bg: rgba(255,255,255,0.06);
+  --code-btn-border: rgba(255,255,255,0.08);
+  --code-btn-color: rgba(255,255,255,0.65);
+  --code-btn-bg-hover: rgba(255,255,255,0.12);
+  --code-btn-color-hover: #fff;
+}
+
+/* If a <pre> is wrapped inside .highlight, strip the inner bg/border */
+.post-content .highlight pre {
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* The actual code area */
+.post-content pre code,
+.post-content .highlight pre code {
+  display: block;
+  padding: 16px 20px !important;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.82em;
+  line-height: 1.7;
+  color: var(--code-ink) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  overflow-x: auto;
+  word-break: normal !important;
+  tab-size: 2;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar inside code blocks */
+.post-content pre code::-webkit-scrollbar {
+  height: 6px;
+}
+.post-content pre code::-webkit-scrollbar-thumb {
+  background: var(--code-scroll);
+  border-radius: 3px;
+}
+.post-content pre code::-webkit-scrollbar-thumb:hover {
+  background: var(--code-scroll-hover);
+}
+
+/* Copy button — pill, top-right, theme-aware */
+.post-content .highlight .copy-code,
+.post-content pre .copy-code {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px !important;
+  margin: 0 !important;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.68rem !important;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--code-btn-color) !important;
+  background: var(--code-btn-bg) !important;
+  border: 1px solid var(--code-btn-border) !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 180ms ease, background 180ms ease,
+              color 180ms ease, border-color 180ms ease;
+  z-index: 2;
+}
+
+.post-content .highlight:hover .copy-code,
+.post-content pre:hover .copy-code,
+.post-content .highlight .copy-code:focus-visible,
+.post-content pre .copy-code:focus-visible {
+  opacity: 1;
+}
+
+.post-content .highlight .copy-code:hover,
+.post-content pre .copy-code:hover {
+  color: var(--code-btn-color-hover) !important;
+  background: var(--code-btn-bg-hover) !important;
+  border-color: var(--code-btn-border) !important;
+}
+
+/* Light-theme syntax highlight — warm muted palette (GitHub-ish but softer).
+   Only applies when body is NOT .dark. Chroma emits classes like
+   .k (keyword), .s / .s1 / .s2 (string), .c / .c1 / .cm (comment),
+   .nb (builtin), .nf (function name), .mi (number), .o (operator). */
+body:not(.dark) .post-content .highlight code .k,
+body:not(.dark) .post-content .highlight code .kd,
+body:not(.dark) .post-content .highlight code .kn,
+body:not(.dark) .post-content .highlight code .kr,
+body:not(.dark) .post-content .highlight code .kt { color: #8a4b00; font-weight: 500; }
+
+body:not(.dark) .post-content .highlight code .s,
+body:not(.dark) .post-content .highlight code .s1,
+body:not(.dark) .post-content .highlight code .s2,
+body:not(.dark) .post-content .highlight code .sb,
+body:not(.dark) .post-content .highlight code .sc,
+body:not(.dark) .post-content .highlight code .se,
+body:not(.dark) .post-content .highlight code .sr { color: #5b7d3e; }        /* olive green */
+
+body:not(.dark) .post-content .highlight code .c,
+body:not(.dark) .post-content .highlight code .c1,
+body:not(.dark) .post-content .highlight code .cm,
+body:not(.dark) .post-content .highlight code .cp,
+body:not(.dark) .post-content .highlight code .cs { color: #8b8578; font-style: italic; }
+
+body:not(.dark) .post-content .highlight code .nf,
+body:not(.dark) .post-content .highlight code .nx { color: #684b7e; }        /* muted plum */
+
+body:not(.dark) .post-content .highlight code .nb { color: #2f6a8f; }        /* muted teal */
+body:not(.dark) .post-content .highlight code .mi,
+body:not(.dark) .post-content .highlight code .mf { color: #a35a2a; }        /* warm rust */
+body:not(.dark) .post-content .highlight code .o  { color: #5a5a55; }
+
+/* Fallback: any red-ish text in light-mode code (e.g. bare <pre> with no
+   syntax classes) should inherit the neutral ink color. */
+body:not(.dark) .post-content pre:not(.mermaid) code {
+  color: var(--code-ink) !important;
+}
+
+/* ─── highlight.js (hljs) light-theme palette ─────────────────
+   This blog uses hljs client-side, which emits classes like
+   .hljs-keyword, .hljs-string, .hljs-comment, .hljs-regexp, .hljs-built_in.
+   Default hljs themes are too saturated; we override to a warm muted set. */
+body:not(.dark) .post-content pre code.hljs,
+body:not(.dark) .post-content .highlight pre code.hljs {
+  background: transparent !important;
+  color: var(--code-ink) !important;
+}
+
+body:not(.dark) .post-content code .hljs-keyword,
+body:not(.dark) .post-content code .hljs-selector-tag,
+body:not(.dark) .post-content code .hljs-tag,
+body:not(.dark) .post-content code .hljs-literal,
+body:not(.dark) .post-content code .hljs-symbol,
+body:not(.dark) .post-content code .hljs-type { color: #8a4b00 !important; font-weight: 500; }
+
+body:not(.dark) .post-content code .hljs-string,
+body:not(.dark) .post-content code .hljs-regexp,
+body:not(.dark) .post-content code .hljs-char,
+body:not(.dark) .post-content code .hljs-attr,
+body:not(.dark) .post-content code .hljs-attribute,
+body:not(.dark) .post-content code .hljs-template-variable { color: #5b7d3e !important; }
+
+body:not(.dark) .post-content code .hljs-comment,
+body:not(.dark) .post-content code .hljs-quote,
+body:not(.dark) .post-content code .hljs-meta { color: #8b8578 !important; font-style: italic; }
+
+body:not(.dark) .post-content code .hljs-title,
+body:not(.dark) .post-content code .hljs-name,
+body:not(.dark) .post-content code .hljs-section,
+body:not(.dark) .post-content code .hljs-function { color: #684b7e !important; }
+
+body:not(.dark) .post-content code .hljs-built_in,
+body:not(.dark) .post-content code .hljs-class,
+body:not(.dark) .post-content code .hljs-params { color: #2f6a8f !important; }
+
+body:not(.dark) .post-content code .hljs-number,
+body:not(.dark) .post-content code .hljs-deletion { color: #a35a2a !important; }
+
+body:not(.dark) .post-content code .hljs-variable,
+body:not(.dark) .post-content code .hljs-addition,
+body:not(.dark) .post-content code .hljs-subst { color: #2a2c2b !important; }
+
+/* Inline code inside paragraphs stays light-pill; already styled above. */
+
+/* Code block appearing in paragraph flow: subtle margin for breathing room */
+.post-content p + .highlight,
+.post-content p + pre {
+  margin-top: 1.25rem;
 }

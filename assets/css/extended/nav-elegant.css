@@ -1,133 +1,313 @@
 /* ===================================
-   Elegant Navigation Menu Styles
+   Navigation — Notion-inspired minimal
+   Soft grey hovers, no pills, subtle hairline.
    =================================== */
 
-/* Main Navigation Container */
-.nav {
-    gap: 16px;
+/* Sticky header with frosted glass */
+.header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 249, 244, 0.72);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    border-bottom: 1px solid rgba(30, 35, 30, 0.06);
 }
 
-/* Menu List */
+body.dark .header-wrapper {
+    background: rgba(20, 22, 24, 0.72);
+    border-bottom-color: rgba(226, 227, 225, 0.06);
+}
+
+/* Language-specific background tint */
+html:lang(en) .header-wrapper {
+    background: rgba(249, 249, 247, 0.72);
+}
+
+/* Main Navigation Container — tighter Notion rhythm */
+.nav {
+    gap: 8px;
+    padding: 0 4px;
+    line-height: 44px;
+}
+
+/* Override PaperMod default that pushes logo/menu apart by 24px */
+.logo,
+#menu {
+    margin: auto 0;
+}
+
+/* Logo refinement — compact, left-anchored */
+.logo {
+    margin: auto 0 auto 0;
+    gap: 8px;
+}
+
+.logo a {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink, var(--primary));
+}
+
+/* Menu List — centered, tight gap */
 #menu {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0;
+    margin: auto auto;
+    flex: 0 1 auto;
+    justify-content: center;
 }
 
 #menu li {
     margin-inline-start: 0;
 }
 
-/* Navigation Links - Pill Button Style */
+/* Navigation Links - flat text, no pill */
 #menu > li > a {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 999px;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 6px;
     background: transparent;
-    color: var(--secondary);
-    font-size: 14px;
+    color: var(--color-ink-muted, var(--secondary));
+    font-size: 13.5px;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
+    border: none;
+    line-height: 1.4;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-/* Hover State */
+/* Hover State - soft gray fill */
 #menu > li > a:hover {
-    background: rgba(148, 163, 184, 0.08);
-    color: var(--primary);
-    border-color: rgba(148, 163, 184, 0.2);
-    transform: translateY(-1px);
+    background: rgba(30, 35, 30, 0.05);
+    color: var(--color-ink, var(--primary));
 }
 
-/* Active State */
-#menu > li > a.active {
-    background: linear-gradient(135deg, rgba(14, 116, 144, 0.08), rgba(20, 184, 166, 0.08));
-    color: var(--primary);
-    border-color: rgba(20, 184, 166, 0.3);
+body.dark #menu > li > a:hover {
+    background: rgba(226, 227, 225, 0.06);
+}
+
+/* Active State - solid text color only, no border, no gradient */
+#menu > li > a:has(.active),
+#menu > li > a .active {
+    color: var(--color-ink, var(--primary));
     font-weight: 600;
 }
 
-/* Emoji Icons in Menu */
-#menu > li > a::before {
-    content: '';
-    display: none;
+#menu > li > a:has(.active) {
+    background: rgba(30, 35, 30, 0.04);
 }
 
-/* External Link Indicator */
-#menu > li > a[target="_blank"]::after {
-    content: '↗';
+body.dark #menu > li > a:has(.active) {
+    background: rgba(226, 227, 225, 0.05);
+}
+
+/* External link arrow subtle */
+#menu > li > a svg {
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+}
+
+#menu > li > a:hover svg {
+    opacity: 0.85;
+}
+
+/* Search Button - minimal chip */
+.nav-search-trigger {
+    height: 30px;
+    padding: 0 9px;
+    gap: 7px;
+    border-radius: 6px;
+    border: 1px solid rgba(30, 35, 30, 0.1);
+    background: rgba(30, 35, 30, 0.02);
+    color: var(--color-ink-muted, var(--secondary));
+    font-size: 12.5px;
+    flex-shrink: 0;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-search-trigger:hover {
+    background: rgba(30, 35, 30, 0.05);
+    border-color: rgba(30, 35, 30, 0.15);
+    transform: none;
+    box-shadow: none;
+    color: var(--color-ink, var(--primary));
+}
+
+body.dark .nav-search-trigger {
+    border-color: rgba(226, 227, 225, 0.1);
+    background: rgba(226, 227, 225, 0.03);
+}
+
+body.dark .nav-search-trigger:hover {
+    background: rgba(226, 227, 225, 0.07);
+    border-color: rgba(226, 227, 225, 0.18);
+}
+
+.nav-search-trigger__label {
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.nav-search-trigger__keys {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.nav-search-trigger kbd {
+    min-width: 18px;
+    padding: 1px 5px;
     font-size: 10px;
-    opacity: 0.6;
-    margin-left: 2px;
-    transition: opacity 0.2s;
+    border-radius: 3px;
+    background: rgba(30, 35, 30, 0.05);
+    border-color: rgba(30, 35, 30, 0.08);
+    color: var(--color-ink-muted, var(--secondary));
 }
 
-#menu > li > a[target="_blank"]:hover::after {
-    opacity: 1;
+body.dark .nav-search-trigger kbd {
+    background: rgba(226, 227, 225, 0.06);
+    border-color: rgba(226, 227, 225, 0.1);
 }
 
-/* Separator between items (optional) */
-#menu > li:not(:last-child) {
-    margin-inline-end: 2px;
+/* Theme toggle & lang switcher - understated */
+.logo-switches {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: center;
 }
 
-/* Dark Mode */
-.dark #menu > li > a:hover {
-    background: rgba(148, 163, 184, 0.12);
-    border-color: rgba(148, 163, 184, 0.3);
+#theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--color-ink-muted, var(--secondary));
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.dark #menu > li > a.active {
-    background: linear-gradient(135deg, rgba(14, 116, 144, 0.15), rgba(20, 184, 166, 0.12));
-    border-color: rgba(34, 211, 238, 0.35);
+#theme-toggle:hover {
+    background: rgba(30, 35, 30, 0.05);
+    color: var(--color-ink, var(--primary));
+}
+
+body.dark #theme-toggle:hover {
+    background: rgba(226, 227, 225, 0.06);
+}
+
+#theme-toggle svg {
+    width: 16px;
+    height: 16px;
+}
+
+.lang-switch {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    font-size: 13px;
+}
+
+.lang-switch li {
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-width: max-content;
+    color: var(--color-ink-muted, var(--secondary));
+    opacity: 0.4;
+}
+
+.lang-switch li:first-child {
+    padding: 0 6px;
+    font-weight: 300;
+}
+
+.lang-switch a {
+    white-space: nowrap;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-ink-muted, var(--secondary));
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.lang-switch a:hover {
+    background: rgba(30, 35, 30, 0.05);
+    color: var(--color-ink, var(--primary));
+}
+
+body.dark .lang-switch a:hover {
+    background: rgba(226, 227, 225, 0.06);
 }
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
     .nav {
         position: relative;
+        line-height: 52px;
     }
 
-    /* Hamburger Button */
     .hamburger-menu {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 8px;
+        width: 34px;
+        height: 34px;
+        padding: 0;
         background: transparent;
         border: none;
+        border-radius: 6px;
         cursor: pointer;
-        color: var(--primary);
+        color: var(--color-ink, var(--primary));
+        transition: background-color 0.15s ease;
+    }
+
+    .hamburger-menu:hover {
+        background: rgba(30, 35, 30, 0.05);
     }
 
     .hamburger-menu svg {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
     }
 
-    /* Mobile Menu */
     #menu {
         position: absolute;
         top: 100%;
         right: 0;
         flex-direction: column;
-        gap: 4px;
-        padding: 12px;
-        margin-top: 8px;
-        background: var(--theme);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        align-items: stretch;
+        gap: 2px;
+        padding: 6px;
+        margin-top: 4px;
+        background: var(--color-paper, var(--theme));
+        border: 1px solid rgba(30, 35, 30, 0.08);
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(30, 35, 30, 0.08);
         min-width: 200px;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.2s ease;
+        transform: translateY(-4px);
+        transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
         z-index: 1000;
+    }
+
+    body.dark #menu {
+        border-color: rgba(226, 227, 225, 0.08);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
     #menu.is-open,
@@ -144,23 +324,11 @@
     #menu > li > a {
         display: flex;
         width: 100%;
-        padding: 10px 14px;
+        padding: 8px 10px;
         font-size: 14px;
         gap: 8px;
         justify-content: flex-start;
-    }
-
-    #menu > li > a:hover {
-        background: rgba(148, 163, 184, 0.08);
-    }
-
-    /* Hide menu when clicking outside */
-    body.menu-open .nav #menu::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background: transparent;
-        z-index: -1;
+        border-radius: 4px;
     }
 }
 
@@ -171,111 +339,7 @@
     }
 }
 
-/* ===================================
-   Alternative: Icon-Only Navigation (Compact)
-   =================================== */
-
-/* Uncomment to enable icon-only mode on desktop */
-/*
-@media (min-width: 1024px) {
-    #menu > li > a {
-        padding: 10px;
-        border-radius: 12px;
-    }
-
-    #menu > li > a span:first-child {
-        font-size: 20px;
-    }
-
-    #menu > li > a span:nth-child(n+2) {
-        display: none;
-    }
-}
-*/
-
-/* ===================================
-   Glow Effect on Hover (Optional)
-   =================================== */
-
-#menu > li > a::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(40% 60% at 50% 0%,
-        rgba(20, 184, 166, 0.15),
-        transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-#menu > li > a:hover::before {
-    opacity: 1;
-}
-
-#menu > li > a.active::before {
-    opacity: 0.6;
-}
-
-/* ===================================
-   Smooth Scroll Margin for Anchors
-   =================================== */
-
+/* Scroll anchor padding */
 html {
-    scroll-padding-top: 80px;
-}
-
-/* ===================================
-   Search Button Enhancement
-   =================================== */
-
-.nav-search-trigger {
-    padding: 8px 14px;
-    font-size: 13px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.nav-search-trigger__label {
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.nav-search-trigger__keys {
-    flex-shrink: 0;
-    white-space: nowrap;
-}
-
-.nav-search-trigger kbd {
-    min-width: 20px;
-    padding: 2px 5px;
-    font-size: 10px;
-}
-
-/* Language switcher - prevent vertical stacking */
-.lang-switch {
-    flex-shrink: 0;
-    flex-wrap: nowrap;
-    display: inline-flex;
-    align-items: center;
-}
-
-.lang-switch li {
-    flex-shrink: 0;
-    white-space: nowrap;
-    min-width: max-content;
-}
-
-.lang-switch a {
-    white-space: nowrap;
-    flex-shrink: 0;
-    min-width: max-content;
-    display: inline-block;
-}
-
-/* Logo switches container - don't shrink */
-.logo-switches {
-    flex-shrink: 0;
-    flex-wrap: nowrap;
+    scroll-padding-top: 72px;
 }

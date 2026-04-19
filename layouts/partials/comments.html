@@ -1,8 +1,28 @@
-<script src="https://utteranc.es/client.js"
-        repo="cubxxw/blog"
-        issue-term="pathname"
-        label="blog-comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+{{- /* Comments area — utterances (GitHub Issues), wrapped in editorial "Responses" section */ -}}
+{{- $heading := i18n "comments.title" | default "Responses" }}
+{{- $sub := i18n "comments.subtitle" | default "Join the Dialogue" }}
+{{- if eq .Lang "zh" }}
+  {{- $heading = "读者回响" }}
+  {{- $sub = "加入讨论" }}
+{{- end }}
+
+<section class="post-comments" aria-label="{{ $heading }}">
+  <header class="post-comments__header">
+    <h3 class="post-comments__title">{{ $heading }}</h3>
+    <div class="post-comments__meta">
+      <span class="post-comments__dash">—</span>
+      <span class="post-comments__sub">{{ $sub }}</span>
+    </div>
+  </header>
+
+  <div class="post-comments__body">
+    <script src="https://utteranc.es/client.js"
+            repo="cubxxw/blog"
+            issue-term="pathname"
+            label="blog-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+</section>

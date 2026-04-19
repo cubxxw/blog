@@ -149,10 +149,12 @@
                 const preview = buildPreview(summarize(item), query);
                 const li = document.createElement('li');
                 li.className = 'search-palette__result' + (index === 0 ? ' is-active' : '');
+                const dateStr = item.date ? new Date(item.date).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' }) : '';
                 li.innerHTML =
                     '<a class="search-palette__result-link" href="' + escapeHtml(item.permalink) + '">' +
                     '<span class="search-palette__result-title">' + escapeHtml(item.title || item.permalink) + '</span>' +
-                    '<span class="search-palette__result-preview">' + escapeHtml(preview || item.permalink) + '</span>' +
+                    (preview ? '<span class="search-palette__result-preview">' + escapeHtml(preview) + '</span>' : '') +
+                    (dateStr ? '<span class="search-palette__result-date">' + escapeHtml(dateStr) + '</span>' : '') +
                     '</a>';
                 li.addEventListener('mouseenter', function () {
                     setActive(index);
