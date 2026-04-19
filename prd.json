@@ -107,8 +107,8 @@
         "Typecheck passes"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "创建英文版 content/en/growth/posts/2026-03-27-lhasa-slow-and-heavy.md stub 页；移除中文版 aliases（/growth/posts/2026-03-27-lhasa-slow-and-heavy/ 会与英文版路径冲突）；构建后英文版独立 HTML 存在且 lang=en，不再重定向到 /zh/"
     },
     {
       "id": "US-007",
