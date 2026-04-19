@@ -34,11 +34,7 @@
   transform: translateY(8px);
 }
 
-@media (max-width: 1023px) {
-  .article-fab {
-    display: flex;
-  }
-}
+/* FAB hidden on all screen sizes — disabled per design */
 
 /* ── Overlay ────────────────────────────────────────────────── */
 .abs-overlay {
