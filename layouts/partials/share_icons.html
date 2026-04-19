@@ -434,6 +434,7 @@
               '<div class="wechat-qr-article">',
                 '<p class="wechat-qr-title"></p>',
                 '<p class="wechat-qr-desc"></p>',
+                '<p class="wechat-qr-source"></p>',
               '</div>',
               '<div class="wechat-qr-footer">',
                 '<button class="wechat-qr-copy-btn" onclick="wechatQRCopyLink()">复制链接 / Copy Link</button>',
@@ -457,14 +458,25 @@
         var backdrop = document.getElementById('wechat-qr-backdrop') || buildWechatModal();
 
         // Populate content
+        var imgWrap = backdrop.querySelector('.wechat-qr-img-wrap');
         var img = backdrop.querySelector('.wechat-qr-img');
-        img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(url);
+        // Reset skeleton on each open
+        if (imgWrap) imgWrap.classList.remove('loaded');
+        img.src = '';
+        img.onload = function () {
+            if (imgWrap) imgWrap.classList.add('loaded');
+        };
+        img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=000000&bgcolor=ffffff&margin=1&data=' + encodeURIComponent(url);
 
         var titleEl = backdrop.querySelector('.wechat-qr-title');
         titleEl.textContent = title;
 
         var descEl = backdrop.querySelector('.wechat-qr-desc');
-        descEl.textContent = desc;
+        descEl.textContent = desc || url.replace(/^https?:\/\//, '');
+
+        // URL source line
+        var srcEl = backdrop.querySelector('.wechat-qr-source');
+        if (srcEl) srcEl.textContent = url.replace(/^https?:\/\//, '').split('/')[0];
 
         // Store current URL for copy button
         backdrop.dataset.url = url;

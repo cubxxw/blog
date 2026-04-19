@@ -456,6 +456,11 @@
     100% { background-position: -200% 0; }
 }
 
+/* Stop skeleton once image loads */
+.wechat-qr-img-wrap.loaded::before {
+    display: none;
+}
+
 .wechat-qr-img {
     width: 180px;
     height: 180px;
@@ -513,6 +518,17 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     line-height: 1.4;
+}
+
+.wechat-qr-source {
+    margin: 4px 0 0;
+    font-size: 10px;
+    color: #07C160;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ── Footer (copy button) ── */
