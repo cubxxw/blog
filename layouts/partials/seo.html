@@ -1,6 +1,7 @@
 {{- /* SEO & Social Media Meta Tags */ -}}
 
-{{- $title := cond .IsHome site.Params.title (printf "%s | %s" .Title site.Params.title) -}}
+{{- $shortTitle := site.Params.shortTitle | default site.Params.title -}}
+{{- $title := cond .IsHome site.Params.title (cond (gt (len .Title) 20) .Title (printf "%s | %s" .Title $shortTitle)) -}}
 {{- $description := cond .IsHome site.Params.description (cond .Description .Description .Summary | plainify | truncate 160) -}}
 {{- $keywords := cond .IsHome site.Params.keywords (cond .Params.keywords .Params.keywords (slice)) -}}
 {{- $author := cond .IsHome site.Params.author (cond .Params.author .Params.author site.Params.author) -}}
