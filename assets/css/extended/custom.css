@@ -2711,6 +2711,16 @@ html {
     box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
 }
 
+@media (max-width: 1023px) {
+    .reading-progress-bar {
+        display: none;
+    }
+
+    .top-link {
+        display: none !important;
+    }
+}
+
 /* Heading anchor styles */
 .post-content h2:hover .anchor,
 .post-content h3:hover .anchor,
