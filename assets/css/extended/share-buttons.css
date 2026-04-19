@@ -316,6 +316,14 @@
         display: block;
     }
 
+    .share-sheet-backdrop {
+        pointer-events: none;
+    }
+
+    .share-sheet-backdrop.is-open {
+        pointer-events: auto;
+    }
+
     /* Hide desktop expand panel on mobile */
     .share-secondary {
         display: none;
