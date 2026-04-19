@@ -347,6 +347,14 @@ body.dark .editorial-tools-panel .rc-ai-chip:hover {
   border-color: rgba(226, 227, 225, 0.2);
 }
 
+.editorial-tools-panel .rc-ai-chip--used,
+.editorial-tools-panel .rc-ai-chip:disabled {
+  opacity: 0.38;
+  cursor: default;
+  pointer-events: none;
+  background: transparent;
+}
+
 /* Messages — prose-like, airy */
 .editorial-tools-panel .rc-ai-messages {
   font-family: var(--font-body);
@@ -478,6 +486,39 @@ html:lang(en) .editorial-tools-panel .rc-ai-send {
 .editorial-tools-panel .rc-ai-send svg {
   width: 13px;
   height: 13px;
+}
+
+.editorial-tools-panel .rc-ai-share-btn {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid rgba(30, 35, 30, 0.12);
+  background: transparent;
+  color: var(--color-ink-muted, #5e5e63);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+  padding: 0;
+}
+
+.editorial-tools-panel .rc-ai-share-btn:hover {
+  background: rgba(30, 35, 30, 0.06);
+  border-color: rgba(30, 35, 30, 0.2);
+  color: var(--color-ink, #1a1c1b);
+}
+
+body.dark .editorial-tools-panel .rc-ai-share-btn {
+  border-color: rgba(226, 227, 225, 0.14);
+  color: rgba(226, 227, 225, 0.5);
+}
+
+body.dark .editorial-tools-panel .rc-ai-share-btn:hover {
+  background: rgba(226, 227, 225, 0.08);
+  border-color: rgba(226, 227, 225, 0.24);
+  color: var(--color-paper, #e2e3e1);
 }
 
 .editorial-tools-panel .rc-ai-loading {
