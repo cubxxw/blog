@@ -2639,11 +2639,10 @@ details summary,
     }
 }
 
-/* Between 1280-1499px: hide floating reading-companion (three-col has editorial-tools) */
-@media (max-width: 1499px) {
-    /* Hide floating reading-companion, but NOT the one inside .article-tools (three-column layout) */
+/* ≥1280px: editorial-tools panel handles TOC; hide the floating reading-companion from toc.html */
+@media (min-width: 1280px) {
     .reading-companion:not(.editorial-tools-panel) {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -2658,7 +2657,11 @@ details summary,
     }
 
     /* ── Panel Shell: no box, just typography ── */
-    .reading-companion {
+    /* Only the editorial-tools-panel variant is shown at ≥1280px */
+    .reading-companion:not(.editorial-tools-panel) {
+        display: none !important;
+    }
+    .reading-companion.editorial-tools-panel {
         position: fixed;
         top: calc(var(--header-height) + 40px);
         right: max(calc((100vw - var(--main-width) - var(--gap) * 2) / 2 - 272px - 20px), 16px);
