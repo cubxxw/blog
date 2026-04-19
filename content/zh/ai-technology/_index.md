@@ -1,6 +1,6 @@
 ---
 title: "AI Technology"
-description: "AI Agents, Large Language Models, and Next-Gen Engineering Infrastructure"
+description: "AI Agents、大语言模型与下一代工程基础设施"
 keywords: ["Kubernetes", "Go 语言", "AI 开源", "云原生", "DevOps", "微服务", "源码分析"]
 cascade:
   - type: "posts"

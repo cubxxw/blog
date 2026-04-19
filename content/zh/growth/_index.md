@@ -1,6 +1,6 @@
 ---
 title: "Growth & Life"
-description: "Personal Evolution, Nomad Life, and Strategic Thinking"
+description: "年度回顾、效率系统、阅读沉淀——在不断精进中寻找生活的节奏"
 keywords: ["个人成长", "年度总结", "心流状态", "认知升级", "旅行见闻", "创业心得", "效率提升"]
 cascade:
   - type: "posts"

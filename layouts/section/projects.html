@@ -1,54 +1,75 @@
 {{- define "main" }}
-<header class="page-header ai-tech-header">
-  {{- partial "breadcrumbs.html" . }}
-  <h1>{{ .Title }}</h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description | markdownify }}
-  </div>
-  {{- end }}
-</header>
-
-{{- if .Content }}
-<div class="post-content">
-  {{ .Content | safeHTML }}
-</div>
-{{- end }}
-
+{{- $lang := .Lang }}
+{{- $isZh := eq $lang "zh" }}
 {{- $projectPages := .RegularPages.ByDate.Reverse }}
-{{- if $projectPages }}
-<section class="section">
-  <div class="posts-group">
-    {{- range $projectPages }}
-    <article class="post-entry">
-      <header class="post-entry-header">
-        <div class="post-entry__top">
-          <span class="posts-badge posts-badge--projects">{{ if eq .Lang "zh" }}AI 项目{{ else }}AI Projects{{ end }}</span>
-          <time class="post-entry__date">{{ .Date.Format "2006-01-02" }}</time>
-        </div>
-        <h2 class="post-entry-title">
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </h2>
-      </header>
-      {{- if (ne (.Param "hideSummary") true) }}
-      <div class="entry-content">
-        <p>{{ .Summary | plainify | htmlUnescape | truncate 140 }}</p>
-      </div>
-      {{- end }}
-      {{- with .Params.tags }}
-      <footer class="entry-footer">
-        <div class="post-entry__tags">
-          {{- range first 4 . }}
-          <span class="post-tag">{{ . }}</span>
-          {{- end }}
-        </div>
-      </footer>
-      {{- end }}
-      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-    </article>
-    {{- end }}
-  </div>
-</section>
-{{- end }}
 
+<div class="eip-page">
+
+  {{/* ── Hero ── */}}
+  <header class="eip-hero">
+    <div class="eip-hero__eyebrow">
+      {{ if $isZh }}AI 开源项目{{ else }}AI Open Source Projects{{ end }}
+    </div>
+    <h1 class="eip-hero__title">
+      {{- if $isZh }}
+        <span class="eip-hero__plain">开源</span>
+        <span class="eip-hero__accent">让 AI 触手可及</span>
+      {{- else }}
+        <span class="eip-hero__plain">Open Source</span>
+        <span class="eip-hero__accent">Making AI Accessible</span>
+      {{- end }}
+    </h1>
+    <p class="eip-hero__desc">
+      {{- if .Description }}{{ .Description | markdownify }}
+      {{- else if $isZh }}记录参与和构建的 AI 开源项目，从架构设计到落地实践的全过程
+      {{- else }}Documenting AI open source projects — from architecture design to production deployment
+      {{- end }}
+    </p>
+    <div class="eip-hero__meta">
+      <span class="eip-hero__count">{{ len $projectPages }} {{ if $isZh }}个项目{{ else }}projects{{ end }}</span>
+    </div>
+  </header>
+
+  {{/* ── Projects Grid ── */}}
+  {{- if $projectPages }}
+  <section class="eip-projects">
+    <div class="eip-section-label">
+      <span class="eip-dot"></span>
+      {{ if $isZh }}所有项目{{ else }}All Projects{{ end }}
+    </div>
+
+    <div class="eip-grid">
+      {{- range $i, $p := $projectPages }}
+      <article class="eip-card {{ if eq $i 0 }}eip-card--hero{{ end }}">
+        <div class="eip-card__inner">
+          <div class="eip-card__top">
+            <span class="eip-badge">{{ if $isZh }}AI 项目{{ else }}AI Project{{ end }}</span>
+            <time class="eip-date">{{ $p.Date.Format "2006-01-02" }}</time>
+          </div>
+          <h2 class="eip-card__title">
+            <a href="{{ $p.Permalink }}">{{ $p.Title }}</a>
+          </h2>
+          {{- if (ne ($p.Param "hideSummary") true) }}
+          <p class="eip-card__desc">{{ $p.Summary | plainify | htmlUnescape | truncate 160 }}</p>
+          {{- end }}
+          {{- with $p.Params.tags }}
+          <div class="eip-card__tags">
+            {{- range first 5 . }}
+            <span class="eip-tag">{{ . }}</span>
+            {{- end }}
+          </div>
+          {{- end }}
+          <a href="{{ $p.Permalink }}" class="eip-cta">
+            {{ if $isZh }}查看项目{{ else }}View Project{{ end }}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <a class="eip-card__cover" href="{{ $p.Permalink }}" aria-label="{{ $p.Title | plainify }}"></a>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+</div>
 {{- end }}

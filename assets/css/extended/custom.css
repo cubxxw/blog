@@ -1,6 +1,32 @@
 /* ===================================
-   AI Technology Section - Clean Modern Style
+   AI Technology Section - DEPRECATED
+   Replaced by editorial-sections.css (.eit-*)
    =================================== */
+/* stylelint-disable */
+.ai-tech-header,
+.ai-tech-container,
+.ai-tech-section-title,
+.ai-tech-icon,
+.ai-tech-grid,
+.ai-tech-card,
+.ai-tech-card-content,
+.ai-tech-card-header,
+.ai-tech-badge,
+.ai-tech-card-title,
+.ai-tech-card-desc,
+.ai-tech-card-meta,
+.ai-tech-date,
+.ai-tech-reading-time,
+.ai-tech-list,
+.ai-tech-list-item,
+.ai-tech-list-content,
+.ai-tech-list-title,
+.ai-tech-list-meta,
+.ai-tech-list-date,
+.ai-tech-list-category,
+.ai-tech-list-tags,
+.ai-tech-recommended,
+.ai-tech-latest { display: none !important; }
 
 /* AI Tech Header */
 .ai-tech-header {
@@ -257,8 +283,34 @@
 }
 
 /* ===================================
-   Growth Section - Warm & Natural Style
+   Growth Section - DEPRECATED
+   Replaced by editorial-sections.css (.eig-*)
    =================================== */
+.growth-header,
+.growth-container,
+.growth-section-title,
+.growth-icon,
+.growth-grid,
+.growth-card,
+.growth-card-content,
+.growth-card-header,
+.growth-badge,
+.growth-card-title,
+.growth-card-desc,
+.growth-card-meta,
+.growth-date,
+.growth-list,
+.growth-list-item,
+.growth-list-content,
+.growth-list-title,
+.growth-list-meta,
+.growth-list-date,
+.growth-list-category,
+.growth-list-tags,
+.growth-subcategory,
+.growth-subcategory-title,
+.growth-recommended,
+.growth-all { display: none !important; }
 
 /* Growth Header */
 .growth-header {

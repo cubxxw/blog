@@ -1,210 +1,144 @@
 {{- define "main" }}
-<header class="page-header growth-header">
-  {{- partial "breadcrumbs.html" . }}
-  <h1>
-    {{ .Title }}
-    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
-    {{- with .OutputFormats.Get "rss" }}
-    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" height="23">
-        <path d="M4 11a9 9 0 0 1 9 9" />
-        <path d="M4 4a16 16 0 0 1 16 16" />
-        <circle cx="5" cy="19" r="1" />
-      </svg>
-    </a>
-    {{- end }}
-    {{- end }}
-  </h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description | markdownify }}
-  </div>
-  {{- end }}
-</header>
-
-{{- if .Content }}
-<div class="post-content">
-  {{ .Content | safeHTML }}
-</div>
-{{- end }}
-
-{{/* Growth Section - Dual Column Layout with Subcategories */}}
 {{- $lang := .Lang }}
+{{- $isZh := eq $lang "zh" }}
 {{- $sectionPages := where .RegularPages "Lang" $lang }}
-{{- $categoryMapEn := dict
-  "成长 (Growth)" "Growth"
-  "成长" "Growth"
-  "个人成长 (Personal Development)" "Personal Growth"
-  "Growth" "Growth"
-  "旅行 (Travel)" "Travel"
-  "Travel" "Travel"
-  "生活与教育 (Living & Education)" "Life"
-  "Life" "Life"
-}}
-
-{{/* Use this section as the source of truth, then split sub-groups by metadata */}}
 {{- $growthPages := $sectionPages.ByDate.Reverse }}
+{{- $featured := first 3 $growthPages }}
 
-{{/* Subcategory: Personal Growth */}}
-{{- $personalGrowthPages := where $growthPages "Params.categories" "intersect" (slice "成长 (Growth)" "成长" "个人成长 (Personal Development)" "Growth") }}
-{{- $latestPersonalGrowth := first 4 ($personalGrowthPages.ByDate.Reverse) }}
+<div class="eig-page">
 
-{{/* Subcategory: Travel & Life */}}
-{{- $travelPages := where $growthPages "Params.categories" "intersect" (slice "旅行 (Travel)" "Travel") }}
-{{- if eq (len $travelPages) 0 }}
-  {{- $travelPages = where $growthPages "Params.tags" "intersect" (slice "travel" "Travel" "旅行" "旅行 (Travel)") }}
-{{- end }}
-{{- $latestTravel := first 4 ($travelPages.ByDate.Reverse) }}
+  {{/* ── Hero ── */}}
+  <header class="eig-hero">
+    <div class="eig-hero__eyebrow">
+      {{ if $isZh }}成长与生活{{ else }}Growth & Life{{ end }}
+    </div>
+    <h1 class="eig-hero__title">
+      {{- if $isZh }}
+        <span class="eig-hero__plain">记录</span>
+        <span class="eig-hero__accent">每一步蜕变</span>
+      {{- else }}
+        <span class="eig-hero__plain">Documenting</span>
+        <span class="eig-hero__accent">Every Evolution</span>
+      {{- end }}
+    </h1>
+    <p class="eig-hero__desc">
+      {{- if .Description }}{{ .Description | markdownify }}
+      {{- else if $isZh }}年度回顾、效率系统、阅读沉淀——在不断精进中寻找生活的节奏
+      {{- else }}Annual reviews, productivity systems, reading reflections — finding rhythm in continuous refinement
+      {{- end }}
+    </p>
+    <div class="eig-hero__stats">
+      <div class="eig-stat">
+        <span class="eig-stat__num">{{ len $growthPages }}</span>
+        <span class="eig-stat__label">{{ if $isZh }}文章{{ else }}Articles{{ end }}</span>
+      </div>
+      {{- $categories := slice }}
+      {{- range $growthPages }}
+        {{- range .Params.categories }}
+          {{- $categories = $categories | append . }}
+        {{- end }}
+      {{- end }}
+      {{- $uniqueCats := $categories | uniq }}
+      <div class="eig-stat">
+        <span class="eig-stat__num">{{ len $uniqueCats }}</span>
+        <span class="eig-stat__label">{{ if $isZh }}主题{{ else }}Topics{{ end }}</span>
+      </div>
+      {{- if $growthPages }}
+      {{- $earliest := (index (sort $growthPages "Date" "asc") 0) }}
+      <div class="eig-stat">
+        <span class="eig-stat__num">{{ $earliest.Date.Format "2006" }}</span>
+        <span class="eig-stat__label">{{ if $isZh }}起始{{ else }}Since{{ end }}</span>
+      </div>
+      {{- end }}
+    </div>
+  </header>
 
-{{/* All latest growth articles */}}
-{{- $latestAll := first 8 ($growthPages.ByDate.Reverse) }}
-
-{{- if or $latestPersonalGrowth $latestTravel $latestAll }}
-<div class="growth-container">
-  {{/* Recommended Articles - Dual Column */}}
-  <section class="growth-recommended">
-    <h2 class="growth-section-title">
-      <span class="growth-icon">✨</span>
-      {{- if eq $lang "zh" }}精选推荐{{ else }}Featured{{ end }}
-    </h2>
-
-    <div class="growth-grid">
-      {{- range $latestAll }}
-      <article class="growth-card">
-        <div class="growth-card-content">
-          <div class="growth-card-header">
-            {{- $rawCategory := "" }}
-            {{- with .Params.categories }}{{- $rawCategory = index . 0 }}{{- end }}
-            {{- $displayCategory := $rawCategory }}
-            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
-            <span class="growth-badge growth-badge--{{ if or (eq $displayCategory "Travel") (eq $displayCategory "旅行") }}travel{{ else }}growth{{ end }}">
-              {{- $displayCategory }}
-            </span>
-          </div>
-          <h3 class="growth-card-title">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </h3>
-          {{- if .Params.description }}
-          <p class="growth-card-desc">{{ .Params.description | plainify | truncate 100 }}</p>
+  {{/* ── Featured Trio ── */}}
+  {{- if $featured }}
+  <section class="eig-featured-section">
+    <div class="eig-section-label">
+      <span class="eig-dot"></span>
+      {{ if $isZh }}近期精选{{ else }}Recent Highlights{{ end }}
+    </div>
+    <div class="eig-featured-grid">
+      {{- range $i, $p := $featured }}
+      <article class="eig-featured-card {{ if eq $i 0 }}eig-featured-card--primary{{ end }}">
+        <div class="eig-featured-card__inner">
+          {{- with $p.Params.categories }}
+          <span class="eig-chip">{{ index . 0 }}</span>
           {{- end }}
-          <div class="growth-card-meta">
-            <span class="growth-date">{{ .Date.Format "2006-01-02" }}</span>
+          <h2 class="eig-featured-card__title">
+            <a href="{{ $p.Permalink }}">{{ $p.Title }}</a>
+          </h2>
+          {{- if $p.Params.description }}
+          <p class="eig-featured-card__desc">{{ $p.Params.description | plainify | truncate 120 }}</p>
+          {{- else if and (eq $i 0) $p.Summary }}
+          <p class="eig-featured-card__desc">{{ $p.Summary | plainify | htmlUnescape | truncate 140 }}</p>
+          {{- end }}
+          <div class="eig-featured-card__foot">
+            <time class="eig-date">{{ $p.Date.Format "2006-01-02" }}</time>
+            <a href="{{ $p.Permalink }}" class="eig-cta">
+              {{ if $isZh }}阅读{{ else }}Read{{ end }} →
+            </a>
           </div>
         </div>
+        <a class="eig-card-cover" href="{{ $p.Permalink }}" aria-label="{{ $p.Title | plainify }}"></a>
       </article>
       {{- end }}
     </div>
   </section>
+  {{- end }}
 
-  {{/* Personal Growth Section */}}
-  <section class="growth-subcategory">
-    <h2 class="growth-subcategory-title">
-      <span class="growth-icon">📚</span>
-      {{- if eq $lang "zh" }}个人成长{{ else }}Personal Growth{{ end }}
-    </h2>
-
-    <div class="growth-list">
-      {{- range $latestPersonalGrowth }}
-      <article class="growth-list-item">
-        <div class="growth-list-content">
-          <h3 class="growth-list-title">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </h3>
-          <div class="growth-list-meta">
-            <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
-            {{- with .Params.categories }}
-            {{- $rawCategory := index . 0 }}
-            {{- $displayCategory := $rawCategory }}
-            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
-            <span class="growth-list-category">{{ $displayCategory }}</span>
-            {{- end }}
-          </div>
-        </div>
-      </article>
-      {{- end }}
+  {{/* ── Full Archive ── */}}
+  <section class="eig-archive">
+    <div class="eig-section-label">
+      <span class="eig-dot"></span>
+      {{ if $isZh }}全部归档{{ else }}Full Archive{{ end }}
     </div>
-  </section>
 
-  {{/* Travel & Life Section */}}
-  <section class="growth-subcategory">
-    <h2 class="growth-subcategory-title">
-      <span class="growth-icon">✈️</span>
-      {{- if eq $lang "zh" }}旅行与生活{{ else }}Travel & Life{{ end }}
-    </h2>
-
-    <div class="growth-list">
-      {{- range $latestTravel }}
-      <article class="growth-list-item">
-        <div class="growth-list-content">
-          <h3 class="growth-list-title">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </h3>
-          <div class="growth-list-meta">
-            <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
-            {{- with .Params.categories }}
-            {{- $rawCategory := index . 0 }}
-            {{- $displayCategory := $rawCategory }}
-            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
-            <span class="growth-list-category">{{ $displayCategory }}</span>
-            {{- end }}
-          </div>
-        </div>
-      </article>
-      {{- end }}
-    </div>
-  </section>
-
-  {{/* All Articles with Pagination */}}
-  <section class="growth-all">
-    <h2 class="growth-section-title">
-      <span class="growth-icon">📰</span>
-      {{- if eq $lang "zh" }}全部文章{{ else }}All Articles{{ end }}
-    </h2>
-
-    <div class="growth-list">
-      {{- $paginator := .Paginate $growthPages.ByDate.Reverse 20 }}
+    {{- $paginator := .Paginate $growthPages 20 }}
+    {{- $currentYear := "" }}
+    <div class="eig-timeline">
       {{- range $paginator.Pages }}
-      <article class="growth-list-item">
-        <div class="growth-list-content">
-          <h3 class="growth-list-title">
+      {{- $year := .Date.Format "2006" }}
+      {{- if ne $year $currentYear }}
+      {{- $currentYear = $year }}
+      <div class="eig-year-marker">{{ $year }}</div>
+      {{- end }}
+      <article class="eig-row">
+        <time class="eig-row__date">{{ .Date.Format "01-02" }}</time>
+        <div class="eig-row__body">
+          {{- with .Params.categories }}
+          <span class="eig-chip eig-chip--xs">{{ index . 0 }}</span>
+          {{- end }}
+          <h3 class="eig-row__title">
             <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h3>
-          <div class="growth-list-meta">
-            <span class="growth-list-date">{{ .Date.Format "2006-01-02" }}</span>
-            {{- with .Params.categories }}
-            {{- $rawCategory := index . 0 }}
-            {{- $displayCategory := $rawCategory }}
-            {{- if ne $lang "zh" }}{{- $displayCategory = index $categoryMapEn $rawCategory | default $rawCategory }}{{- end }}
-            <span class="growth-list-category">{{ $displayCategory }}</span>
-            {{- end }}
-            {{- if .Params.tags }}
-            <span class="growth-list-tags">{{ delimit (first 3 .Params.tags) " · " }}</span>
+          {{- if .Params.tags }}
+          <div class="eig-row__tags">
+            {{- range first 3 .Params.tags }}
+            <span class="eig-tag">{{ . }}</span>
             {{- end }}
           </div>
+          {{- end }}
         </div>
+        <a class="eig-row__cover" href="{{ .Permalink }}" aria-label="{{ .Title | plainify }}"></a>
       </article>
       {{- end }}
     </div>
 
     {{- if gt $paginator.TotalPages 1 }}
-    <footer class="page-footer">
-      <nav class="pagination">
-        {{- if $paginator.HasPrev }}
-        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-          «&nbsp;{{ i18n "prev_page" }}&nbsp;
-        </a>
-        {{- end }}
-        {{- if $paginator.HasNext }}
-        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-          {{- i18n "next_page" }}&nbsp;»
-        </a>
-        {{- end }}
-      </nav>
+    <footer class="eig-pagination">
+      {{- if $paginator.HasPrev }}
+      <a class="eig-page-btn" href="{{ $paginator.Prev.URL | absURL }}">← {{ i18n "prev_page" }}</a>
+      {{- end }}
+      <span class="eig-page-info">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      {{- if $paginator.HasNext }}
+      <a class="eig-page-btn" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
+      {{- end }}
     </footer>
     {{- end }}
   </section>
-</div>
-{{- end }}
 
+</div>
 {{- end }}
