@@ -93,3 +93,46 @@
   color: var(--color-accent, #2e352e);
   opacity: 1;
 }
+
+/* ── Share section ── */
+.marginalia-share {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.08));
+}
+
+.marginalia-share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.marginalia-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: transparent;
+  border: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  color: var(--color-ink-muted, #5e5e63);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  flex-shrink: 0;
+}
+
+.marginalia-share-btn:hover {
+  background: var(--color-accent-soft, #dde5da);
+  color: var(--color-accent, #2e352e);
+  border-color: transparent;
+}
+
+.marginalia-share-btn svg {
+  width: 11px;
+  height: 11px;
+}
