@@ -1,3 +1,19 @@
+## 2026-04-19 - US-007
+- 使用 ImageMagick 创建三张 1200x630 分类专属封面图：og-ai-technology.png（蓝色）、og-growth.png（绿色）、og-projects.png（紫色）及对应 SVG 源文件
+- 修改 layouts/partials/seo.html：$ogImage 计算逻辑改为先用 `with .Params.cover.image` 检查自定义图，否则按 .Section 从 dict 中取对应分类默认图，ai-technology/growth/projects 各有专属，其余回落到 site.Params.images 默认值
+- hugo --minify 构建通过（EN 368 页面，ZH 497 页面）
+- 验证：ai-technology 文章 og:image = "https://nsddd.top/assets/og-ai-technology.png" ✅
+- 验证：growth 文章 og:image = "https://nsddd.top/assets/og-growth.png" ✅
+- 验证：projects 文章 og:image = "https://nsddd.top/assets/og-projects.png" ✅
+- 验证：有 cover.image 的文章（如 openim-remote-work-culture）og:image 仍使用自定义图 ✅
+- 文件变更：static/assets/og-ai-technology.{svg,png}、og-growth.{svg,png}、og-projects.{svg,png}，layouts/partials/seo.html，prd.json
+- **Learnings for future iterations:**
+  - Hugo `with .Params.cover.image` 是检查 cover.image 是否为非空的正确方式，避免用 `cond (ne ... nil)` 可能因 nil/empty 区别引发问题
+  - Hugo `dict "key" "val"` + `index $dict .Section` 是按 section 选择配置值的简洁模式，不需要 if-else 链
+  - ImageMagick 7.x 需用 `magick` 命令（不是 `convert`），SVG 转 PNG 加 `-background none` 保留透明背景
+  - opengraph.html 内置模板也会输出 og:image，与 seo.html 产生重复；这是 PaperMod 主题自带行为，US-007 范围内不修改（重复的第二个 og:image 是 /assets/og-image.png 回落值，不影响 seo.html 输出的正确分类图）
+---
+
 ## 2026-04-19 - US-006
 - 新建 content/en/growth/posts/2026-03-27-lhasa-slow-and-heavy.md 英文 stub 页（title, description, 标签完整）
 - 移除中文版 content/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy.md 的 aliases 字段（该 alias 与英文版输出路径冲突）
