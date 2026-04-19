@@ -12,6 +12,13 @@
     backdrop-filter: saturate(180%) blur(16px);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
     border-bottom: 1px solid rgba(30, 35, 30, 0.06);
+    transition: transform 0.25s ease;
+    will-change: transform;
+}
+
+/* Auto-hide on scroll-down */
+.header-wrapper.nav-scroll-hidden {
+    transform: translateY(-100%);
 }
 
 body.dark .header-wrapper {
@@ -258,6 +265,29 @@ body.dark .lang-switch a:hover {
     .nav {
         position: relative;
         line-height: 52px;
+    }
+
+    /* Search button: icon-only on mobile, no label or keyboard shortcut */
+    .nav-search-trigger__label,
+    .nav-search-trigger__keys {
+        display: none;
+    }
+
+    .nav-search-trigger {
+        width: 34px;
+        height: 34px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        justify-content: center;
+    }
+
+    .nav-search-trigger:hover {
+        background: rgba(30, 35, 30, 0.05);
+    }
+
+    body.dark .nav-search-trigger:hover {
+        background: rgba(226, 227, 225, 0.06);
     }
 
     .hamburger-menu {
