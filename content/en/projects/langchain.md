@@ -1,5 +1,5 @@
 ---
-title: "LangChain: Open Source Deep Dive"
+title: "LangChain: Open Source LLM Framework"
 date: 2025-04-16T17:36:45+08:00
 draft: false
 showtoc: true

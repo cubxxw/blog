@@ -1,5 +1,5 @@
 ---
-title: "Jina AI: Multimodal Embedding and Search Deep Dive"
+title: "Jina AI: Multimodal Search & Embeddings"
 date: 2025-04-12T13:01:59+08:00
 draft: false
 showtoc: true

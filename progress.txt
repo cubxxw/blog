@@ -1,3 +1,84 @@
+## 2026-04-19 - US-008
+- 检查 seo.html：不含 hreflang 输出逻辑，head.html 的 `range .AllTranslations` 是唯一来源
+- 无需修改任何文件，现有实现已符合规范
+- hugo --minify 构建通过（EN 368 页面，ZH 497 页面）
+- 验证：英文版文章 hreflang 标签共 2 个（hreflang=en 指向英文 URL，hreflang=zh 指向中文 URL），无重复 ✅
+- 验证：中文版对应文章同样输出 2 个 hreflang 互指标签，无重复 ✅
+- 格式：`<link rel="alternate" hreflang="en/zh" href="...">` 符合 Google Search Console 规范 ✅
+- 文件变更：prd.json（US-008 passes: true）
+- **Learnings for future iterations:**
+  - head.html 的 `range .AllTranslations` 自动输出所有语言版本的 hreflang，每种语言一个标签（包括当前页语言）
+  - seo.html 接入后不需要额外添加 hreflang，两个文件分工明确：head.html 负责 hreflang、RSS，seo.html 负责 og/twitter/canonical/description
+  - Hugo .AllTranslations 包含当前页本身（所以英文页也会输出 hreflang=en 自指标签），这是 Google 推荐的写法
+---
+
+## 2026-04-19 - US-007
+- 使用 ImageMagick 创建三张 1200x630 分类专属封面图：og-ai-technology.png（蓝色）、og-growth.png（绿色）、og-projects.png（紫色）及对应 SVG 源文件
+- 修改 layouts/partials/seo.html：$ogImage 计算逻辑改为先用 `with .Params.cover.image` 检查自定义图，否则按 .Section 从 dict 中取对应分类默认图，ai-technology/growth/projects 各有专属，其余回落到 site.Params.images 默认值
+- hugo --minify 构建通过（EN 368 页面，ZH 497 页面）
+- 验证：ai-technology 文章 og:image = "https://nsddd.top/assets/og-ai-technology.png" ✅
+- 验证：growth 文章 og:image = "https://nsddd.top/assets/og-growth.png" ✅
+- 验证：projects 文章 og:image = "https://nsddd.top/assets/og-projects.png" ✅
+- 验证：有 cover.image 的文章（如 openim-remote-work-culture）og:image 仍使用自定义图 ✅
+- 文件变更：static/assets/og-ai-technology.{svg,png}、og-growth.{svg,png}、og-projects.{svg,png}，layouts/partials/seo.html，prd.json
+- **Learnings for future iterations:**
+  - Hugo `with .Params.cover.image` 是检查 cover.image 是否为非空的正确方式，避免用 `cond (ne ... nil)` 可能因 nil/empty 区别引发问题
+  - Hugo `dict "key" "val"` + `index $dict .Section` 是按 section 选择配置值的简洁模式，不需要 if-else 链
+  - ImageMagick 7.x 需用 `magick` 命令（不是 `convert`），SVG 转 PNG 加 `-background none` 保留透明背景
+  - opengraph.html 内置模板也会输出 og:image，与 seo.html 产生重复；这是 PaperMod 主题自带行为，US-007 范围内不修改（重复的第二个 og:image 是 /assets/og-image.png 回落值，不影响 seo.html 输出的正确分类图）
+---
+
+## 2026-04-19 - US-006
+- 新建 content/en/growth/posts/2026-03-27-lhasa-slow-and-heavy.md 英文 stub 页（title, description, 标签完整）
+- 移除中文版 content/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy.md 的 aliases 字段（该 alias 与英文版输出路径冲突）
+- hugo --minify 构建通过（EN 368 页面，ZH 497 页面）
+- 验证：/growth/posts/2026-03-27-lhasa-slow-and-heavy/index.html 现在 lang=en，title="Lhasa: Slow and Heavy"，不再重定向到 /zh/
+- 文件变更：content/en/growth/posts/2026-03-27-lhasa-slow-and-heavy.md（新增），content/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy.md（移除 aliases），prd.json
+- **Learnings for future iterations:**
+  - 中文版文章若设置 alias 为不含 /zh/ 的路径，会与英文版同名文章的输出路径冲突（英文是默认语言，输出到根路径）
+  - 解决方案：创建英文版文章 + 移除中文版 alias，两版各自独立；不要给中文文章设置无前缀 alias
+  - Hugo 多语言：defaultContentLanguage=en 时英文内容输出到根路径 /，中文输出到 /zh/
+---
+
+## 2026-04-19 - US-005
+- 验证 content/en/growth/posts/flow-state.md 已包含 aliases: [/growth/posts/flow-state-guide/]
+- hugo --minify 构建通过，public/growth/posts/flow-state-guide/index.html 存在（meta-refresh 重定向到 /growth/posts/flow-state/）
+- 真实页面 /growth/posts/flow-state/ 有完整 title "Unlocking the Magic of Flow State: A Guide to Enhanced Focus and Happiness"、h1、og:title
+- 文件变更：prd.json（US-005 passes: true）
+- **Learnings for future iterations:**
+  - Hugo alias 页面是 meta-refresh 重定向，只有 title 和 canonical，没有 og:title；og:title 存在于真实目标页面
+  - Hugo alias 在 front matter 中用 `aliases: ["/path/"]` 语法，路径末尾加斜杠
+---
+
+## 2026-04-19 - US-003
+- config.yml 新增 `shortTitle: "cubxxw"` 参数
+- layouts/partials/head.html：`<title>` 逻辑改为：若首页用 site.Title；若文章标题 > 20 字符只输出 .Title；否则输出 .Title | shortTitle
+- layouts/partials/seo.html：`$title` 计算逻辑同步更新，og:title / twitter:title 同样受控
+- 文件变更：config.yml, layouts/partials/head.html, layouts/partials/seo.html
+- hugo --minify 构建通过，863 页面生成成功
+- 验证：LLM 长标题文章 `<title>` 为 "Large Language Models: How LLMs Work"（37 字符，≤70）
+- 验证：首页 `<title>` 仍为完整站名 "Xinwei Xiong (cubxxw) - AI, Open Source & Nomad Blog"
+- 验证：og:title 同样为 "Large Language Models: How LLMs Work"（不含 | site.title 后缀）
+- **Learnings for future iterations:**
+  - `<title>` 在 head.html 输出，seo.html 的 `$title` 仅影响 og:title/twitter:title；两处都需要修改才能实现完整的标题长度控制
+  - Hugo `len` 函数对字符串返回字节长度（ASCII 字符 = 1 byte），对中文等多字节字符会返回字节数而非字符数；英文标题这里 len 等于字符数，无影响
+  - `site.Params.shortTitle | default site.Title` 是获取 shortTitle 配置的正确写法
+---
+
+## 2026-04-19 - US-002
+- 将 og:title, og:description, twitter:title, twitter:description 的 content 属性值改用 `htmlEscape`
+- 原：`content="{{ $title }}"` → 改为：`content="{{ $title | htmlEscape }}"`
+- `htmlEscape` 将单引号转为 `&#39;`，将 `&` 转为 `&amp;`，防止 HTML 属性被截断
+- 文件变更：layouts/partials/seo.html（4 行修改）
+- hugo --minify 构建通过，863 页面生成成功
+- 验证：notebooklm og:title 完整显示 "NotebookLM: Google&#39;s AI Research Tool | ..."，不再截断
+- 验证：2025-annual-review og:title 完整显示 "Wandering &amp; Growing: 2025-2026 Annual Review | ..."
+- **Learnings for future iterations:**
+  - Hugo content attribute 使用双引号时，`$title | htmlEscape` 是防止标题含单引号、em-dash、& 截断的正确方案
+  - `htmlEscape` 将 `'` → `&#39;`、`"` → `&#34;`、`&` → `&amp;`、`<` → `&lt;`、`>` → `&gt;`，适合放在 HTML 属性中
+  - `<meta name="title"` 和 `<meta name="description"` 的基础 SEO 标签也可加 htmlEscape，但截断风险较低（已用双引号）
+---
+
 ## 2026-04-18 - US-017
 - 修复汉堡菜单 CSS 类名冲突：nav-elegant.css 的 `#menu.is-open` 样式也支持 `mobile-open`，与 JS 对齐
 - 添加 `.post-content table { display: block; overflow-x: auto }` 修复表格移动端溢出
@@ -183,4 +264,20 @@
   - 每个测试必须用 `test.skip(testInfo.project.name !== 'desktop')` 过滤，否则 desktop-only 测试也会在 mobile project 下运行并生成错误的基线
   - `--update-snapshots` 在首次运行时创建基线，后续不加该参数则做实际视觉对比
   - Hugo server 需先启动在 localhost:1313，playwright 才能连接；可在 CI 中先 hugo build 后 serve
+---
+
+## 2026-04-19 - US-001
+- 在 head.html 的 <title> 之后添加 {{- partial "seo.html" . -}} 调用
+- 移除 head.html 中重复的 <meta name="description"> 和 <link rel="canonical">
+- seo.html: 移除重复的 <title> 标签（由 head.html 负责输出 title）
+- seo.html: canonical 改为支持 .Params.canonicalURL frontmatter（与 head.html 原逻辑一致）
+- seo.html: 修复 `site.Params.images | first` 语法错误，改为 `index (site.Params.images | default (slice "...")) 0`
+- seo.html: 修复 `.Params.categories` 字符串/slice 兼容问题，用 reflect.IsSlice 检测后转 slice
+- 文件变更：layouts/partials/head.html, layouts/partials/seo.html, prd.json
+- hugo --minify 构建通过，description 和 canonical 在生成 HTML 中确认（minified 各出现 1 次）
+- **Learnings for future iterations:**
+  - Hugo 的 `| first` pipe 在 Hugo 0.145 需要两个参数：`first N slice`，不能单独 pipe；用 `index (slice) 0` 替代
+  - seo.html 的 categories frontmatter 可能是字符串（单值）或 slice，range 前需用 reflect.IsSlice 检测并转换
+  - head.html 已有 <title> 标签，seo.html partial 里的 <title> 会重复输出；在接入时需从 seo.html 移除 <title> 行
+  - opengraph.html/twitter_cards.html 在 hugo.IsProduction 条件块内，需保留不变
 ---

@@ -1,5 +1,5 @@
 ---
-title: "LangGraph: Open Source Deep Dive"
+title: "LangGraph: Stateful AI Agent Workflows"
 date: 2025-04-19T15:19:20+08:00
 draft: false
 showtoc: true

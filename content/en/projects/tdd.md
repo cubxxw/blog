@@ -1,5 +1,5 @@
 ---
-title: "Test-Driven Development for AI Applications: Open Source Deep Dive"
+title: "TDD for AI: Test-Driven Development Guide"
 date: 2025-04-21T15:52:34+08:00
 draft: false
 showtoc: true

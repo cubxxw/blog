@@ -102,21 +102,28 @@
 
 {{- /* BreadcrumbList Schema */ -}}
 {{- if .Parent -}}
+{{- $ancestors := slice -}}
+{{- $p := .Parent -}}
+{{- range seq 10 -}}
+  {{- if $p -}}
+    {{- $ancestors = $ancestors | append $p -}}
+    {{- $p = $p.Parent -}}
+  {{- end -}}
+{{- end -}}
+{{- $ancestors = collections.Reverse $ancestors -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {{- $ancestors := .Ancestors.Reverse -}}
     {{- range $index, $ancestor := $ancestors -}}
     {
       "@type": "ListItem",
       "position": {{ add $index 1 }},
       "name": {{ $ancestor.Title }},
       "item": {{ $ancestor.Permalink }}
-    }{{- if lt $index (sub (len $ancestors) 1) -}},{{- end -}}
+    },
     {{- end -}}
-    {{- if gt (len $ancestors) 0 -}},{{- end -}}
     {
       "@type": "ListItem",
       "position": {{ add (len $ancestors) 1 }},
