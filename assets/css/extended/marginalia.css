@@ -94,6 +94,47 @@
   opacity: 1;
 }
 
+/* ── Tags / Topics ── */
+.marginalia-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.1rem;
+}
+
+.marginalia-tag {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+  border: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  color: var(--color-ink-muted, #5e5e63);
+  text-decoration: none;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  line-height: 1.4;
+}
+
+.marginalia-tag:hover {
+  background: var(--color-accent-soft, #dde5da);
+  color: var(--color-accent, #2e352e);
+  border-color: transparent;
+}
+
+.marginalia-tag--topic {
+  background: var(--color-accent-soft, #dde5da);
+  color: var(--color-accent, #2e352e);
+  border-color: transparent;
+}
+
+.marginalia-tag--topic:hover {
+  background: var(--color-accent, #2e352e);
+  color: var(--color-paper, #f9f9f7);
+}
+
 /* ── Share section ── */
 .marginalia-share {
   display: flex;

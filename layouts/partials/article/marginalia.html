@@ -65,6 +65,34 @@
   </div>
   {{- end }}
 
+  {{/* ── Topics (Categories) ── */}}
+  {{- $cats := $page.Language.Params.Taxonomies.category | default "categories" }}
+  {{- $catTerms := $page.GetTerms $cats }}
+  {{- if $catTerms }}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.topics" | default "Topics" }}</span>
+    <div class="marginalia-tags">
+      {{- range $catTerms }}
+      <a href="{{ .Permalink }}" class="marginalia-tag marginalia-tag--topic">{{ .LinkTitle }}</a>
+      {{- end }}
+    </div>
+  </div>
+  {{- end }}
+
+  {{/* ── Tags ── */}}
+  {{- $tagTax := $page.Language.Params.Taxonomies.tag | default "tags" }}
+  {{- $tagTerms := $page.GetTerms $tagTax }}
+  {{- if $tagTerms }}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.tags" | default "Tags" }}</span>
+    <div class="marginalia-tags">
+      {{- range $tagTerms }}
+      <a href="{{ .Permalink }}" class="marginalia-tag">{{ .LinkTitle }}</a>
+      {{- end }}
+    </div>
+  </div>
+  {{- end }}
+
   {{/* ── Suggest Changes ── */}}
   {{- with site.Params.editPost.URL }}
   <div class="marginalia-group marginalia-suggest">
