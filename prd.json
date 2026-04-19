@@ -51,8 +51,8 @@
         "Typecheck passes"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "config.yml 新增 shortTitle: cubxxw；head.html 和 seo.html 的 $title 逻辑改为：标题 > 20 字符只输出 .Title，否则拼接 shortTitle；首页 title 用完整站名；构建通过"
     },
     {
       "id": "US-004",

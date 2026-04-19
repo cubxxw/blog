@@ -1,3 +1,18 @@
+## 2026-04-19 - US-003
+- config.yml 新增 `shortTitle: "cubxxw"` 参数
+- layouts/partials/head.html：`<title>` 逻辑改为：若首页用 site.Title；若文章标题 > 20 字符只输出 .Title；否则输出 .Title | shortTitle
+- layouts/partials/seo.html：`$title` 计算逻辑同步更新，og:title / twitter:title 同样受控
+- 文件变更：config.yml, layouts/partials/head.html, layouts/partials/seo.html
+- hugo --minify 构建通过，863 页面生成成功
+- 验证：LLM 长标题文章 `<title>` 为 "Large Language Models: How LLMs Work"（37 字符，≤70）
+- 验证：首页 `<title>` 仍为完整站名 "Xinwei Xiong (cubxxw) - AI, Open Source & Nomad Blog"
+- 验证：og:title 同样为 "Large Language Models: How LLMs Work"（不含 | site.title 后缀）
+- **Learnings for future iterations:**
+  - `<title>` 在 head.html 输出，seo.html 的 `$title` 仅影响 og:title/twitter:title；两处都需要修改才能实现完整的标题长度控制
+  - Hugo `len` 函数对字符串返回字节长度（ASCII 字符 = 1 byte），对中文等多字节字符会返回字节数而非字符数；英文标题这里 len 等于字符数，无影响
+  - `site.Params.shortTitle | default site.Title` 是获取 shortTitle 配置的正确写法
+---
+
 ## 2026-04-19 - US-002
 - 将 og:title, og:description, twitter:title, twitter:description 的 content 属性值改用 `htmlEscape`
 - 原：`content="{{ $title }}"` → 改为：`content="{{ $title | htmlEscape }}"`
