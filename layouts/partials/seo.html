@@ -23,7 +23,11 @@
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:title" content="{{ $title | htmlEscape }}" />
 <meta property="og:description" content="{{ $description | htmlEscape }}" />
-{{- $ogImage := cond .Params.cover.image .Params.cover.image (index (site.Params.images | default (slice "/assets/og-image.png")) 0) -}}
+{{- $sectionDefault := dict "ai-technology" "/assets/og-ai-technology.png" "growth" "/assets/og-growth.png" "projects" "/assets/og-projects.png" -}}
+{{- $defaultOgImage := index (site.Params.images | default (slice "/assets/og-image.png")) 0 -}}
+{{- $sectionOgImage := index $sectionDefault .Section | default $defaultOgImage -}}
+{{- $ogImage := $sectionOgImage -}}
+{{- with .Params.cover.image -}}{{- $ogImage = . -}}{{- end -}}
 <meta property="og:image" content="{{ $ogImage | absURL }}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />

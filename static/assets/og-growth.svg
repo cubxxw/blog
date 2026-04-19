@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1f14;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0d2e1a;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="80" cy="80" r="120" fill="rgba(34,197,94,0.08)"/>
+  <circle cx="1150" cy="560" r="160" fill="rgba(16,185,129,0.08)"/>
+  <circle cx="600" cy="580" r="200" fill="rgba(34,197,94,0.05)"/>
+  <!-- Grid lines -->
+  <line x1="0" y1="210" x2="1200" y2="210" stroke="rgba(34,197,94,0.12)" stroke-width="1"/>
+  <line x1="0" y1="420" x2="1200" y2="420" stroke="rgba(34,197,94,0.08)" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="630" stroke="rgba(34,197,94,0.08)" stroke-width="1"/>
+  <line x1="900" y1="0" x2="900" y2="630" stroke="rgba(34,197,94,0.08)" stroke-width="1"/>
+  <!-- Category badge -->
+  <rect x="80" y="220" width="160" height="44" rx="22" fill="rgba(34,197,94,0.2)"/>
+  <text x="160" y="248" fill="#86efac" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="600" text-anchor="middle">Growth</text>
+  <!-- Main title -->
+  <text x="80" y="340" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="52" font-weight="700">Personal Growth</text>
+  <!-- Subtitle -->
+  <text x="80" y="400" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="26" font-weight="400">Reflections · Travel · Life as a Digital Nomad</text>
+  <!-- Site URL -->
+  <text x="80" y="530" fill="#475569" font-family="'Fira Code', monospace" font-size="20">nsddd.top / cubxxw</text>
+  <!-- Bottom bar -->
+  <rect x="0" y="600" width="1200" height="4" fill="url(#accent)"/>
+  <!-- Decorative dots -->
+  <circle cx="1050" cy="150" r="6" fill="rgba(34,197,94,0.6)"/>
+  <circle cx="1090" cy="150" r="4" fill="rgba(16,185,129,0.4)"/>
+  <circle cx="1120" cy="150" r="5" fill="rgba(34,197,94,0.3)"/>
+</svg>

@@ -123,8 +123,8 @@
         "Typecheck passes"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "创建 og-ai-technology.png、og-growth.png、og-projects.png 三张 1200x630 分类封面图；seo.html $ogImage 逻辑改为按 .Section 选择分类默认图；有 cover.image 的文章仍使用自定义图；构建通过，验证通过"
     },
     {
       "id": "US-008",
