@@ -167,6 +167,12 @@
 - id: marginalia.suggest
   translation: "建议修改"
 
+- id: marginalia.contribute
+  translation: "参与贡献"
+
+- id: marginalia.source
+  translation: "查看源码"
+
 - id: tools.toc
   translation: "目录"
 

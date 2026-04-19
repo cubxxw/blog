@@ -94,6 +94,80 @@
   opacity: 1;
 }
 
+/* ── GitHub / Contribute ── */
+.marginalia-github {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.08));
+}
+
+.marginalia-github-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.marginalia-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6rem;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-ink, #1a1c1b);
+  text-decoration: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 0.5px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  background: transparent;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  line-height: 1;
+}
+
+.marginalia-github-btn:hover {
+  background: var(--color-ink, #1a1c1b);
+  color: var(--color-paper, #f9f9f7);
+  border-color: transparent;
+}
+
+.marginalia-github-btn--muted {
+  color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.75;
+}
+
+.marginalia-github-btn--muted:hover {
+  background: var(--color-accent-soft, #dde5da);
+  color: var(--color-accent, #2e352e);
+  opacity: 1;
+}
+
+.marginalia-github-icon {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+
+.marginalia-pr-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  background: #238636;
+  color: #fff;
+  line-height: 1.4;
+  margin-left: 0.1rem;
+}
+
+.marginalia-github-btn:hover .marginalia-pr-badge {
+  background: #2ea043;
+}
+
 /* ── Tags / Topics ── */
 .marginalia-tags {
   display: flex;
