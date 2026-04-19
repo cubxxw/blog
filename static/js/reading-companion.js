@@ -149,18 +149,41 @@
     var busy     = false;
     var lastQuestion = '';
 
+    // Share button — injected into input area, shown after first AI reply
+    var shareBtn = document.createElement('button');
+    shareBtn.className = 'rc-ai-share-btn';
+    shareBtn.setAttribute('aria-label', language === 'zh' ? '分享对话' : 'Share conversation');
+    shareBtn.setAttribute('hidden', '');
+    shareBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>' +
+        '<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>' +
+      '</svg>';
+    var inputArea = panel.querySelector('.rc-ai-input-area');
+    if (inputArea) inputArea.appendChild(shareBtn);
+
+    shareBtn.addEventListener('click', function () {
+      if (typeof ShareConversation === 'undefined') return;
+      ShareConversation.show(history, {
+        lang:  language,
+        title: document.title,
+        url:   window.location.href,
+      });
+    });
+
     // Auto-resize textarea
     textarea.addEventListener('input', function () {
       this.style.height = 'auto';
       this.style.height = Math.min(this.scrollHeight, 96) + 'px';
     });
 
-    // Quick chip → send
+    // Quick chip → send (clicked chip disabled, others stay clickable)
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
-        if (busy) return;
+        if (busy || chip.disabled) return;
+        chip.disabled = true;
+        chip.classList.add('rc-ai-chip--used');
         textarea.value = chip.dataset.prompt;
-        quickRow.style.display = 'none';
         send();
       });
     });
@@ -312,6 +335,7 @@
         history.push({ role: 'user', content: q });
         history.push({ role: 'assistant', content: answer });
         if (history.length > 20) history = history.slice(-20);
+        shareBtn.removeAttribute('hidden');
 
       } catch (err) {
         request.cancel();

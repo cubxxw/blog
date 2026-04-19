@@ -5509,3 +5509,38 @@ html {
         overflow-wrap: break-word;
     }
 }
+
+/* ── Search palette: share conversation button ── */
+.search-palette__share-btn {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(140, 110, 75, 0.35);
+  border-radius: 4px;
+  background: rgba(120, 90, 55, 0.06);
+  color: #7a5c40;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+  padding: 0;
+}
+
+.search-palette__share-btn:hover {
+  background: rgba(120, 90, 55, 0.14);
+  border-color: rgba(120, 90, 55, 0.55);
+  color: #5a3a20;
+}
+
+.dark .search-palette__share-btn {
+  border-color: rgba(160, 130, 90, 0.3);
+  background: rgba(80, 60, 35, 0.25);
+  color: #c8a870;
+}
+
+.dark .search-palette__share-btn:hover {
+  background: rgba(100, 75, 45, 0.45);
+  border-color: rgba(160, 130, 90, 0.55);
+  color: #e8c888;
+}
