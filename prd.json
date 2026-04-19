@@ -138,8 +138,8 @@
         "Typecheck passes"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "seo.html 不含 hreflang 输出逻辑；head.html 的 range .AllTranslations 是唯一来源，无重复。验证：英文版与中文版各自输出 hreflang=en 和 hreflang=zh 互指，共 2 个，格式符合 Google 规范，构建通过"
     }
   ]
 }

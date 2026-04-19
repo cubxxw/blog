@@ -1,3 +1,17 @@
+## 2026-04-19 - US-008
+- 检查 seo.html：不含 hreflang 输出逻辑，head.html 的 `range .AllTranslations` 是唯一来源
+- 无需修改任何文件，现有实现已符合规范
+- hugo --minify 构建通过（EN 368 页面，ZH 497 页面）
+- 验证：英文版文章 hreflang 标签共 2 个（hreflang=en 指向英文 URL，hreflang=zh 指向中文 URL），无重复 ✅
+- 验证：中文版对应文章同样输出 2 个 hreflang 互指标签，无重复 ✅
+- 格式：`<link rel="alternate" hreflang="en/zh" href="...">` 符合 Google Search Console 规范 ✅
+- 文件变更：prd.json（US-008 passes: true）
+- **Learnings for future iterations:**
+  - head.html 的 `range .AllTranslations` 自动输出所有语言版本的 hreflang，每种语言一个标签（包括当前页语言）
+  - seo.html 接入后不需要额外添加 hreflang，两个文件分工明确：head.html 负责 hreflang、RSS，seo.html 负责 og/twitter/canonical/description
+  - Hugo .AllTranslations 包含当前页本身（所以英文页也会输出 hreflang=en 自指标签），这是 Google 推荐的写法
+---
+
 ## 2026-04-19 - US-007
 - 使用 ImageMagick 创建三张 1200x630 分类专属封面图：og-ai-technology.png（蓝色）、og-growth.png（绿色）、og-projects.png（紫色）及对应 SVG 源文件
 - 修改 layouts/partials/seo.html：$ogImage 计算逻辑改为先用 `with .Params.cover.image` 检查自定义图，否则按 .Section 从 dict 中取对应分类默认图，ai-technology/growth/projects 各有专属，其余回落到 site.Params.images 默认值
