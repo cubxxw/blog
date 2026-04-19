@@ -20,22 +20,30 @@ html:lang(zh) .post-title {
 
 /* ─── Post Description ───────────────────────────────────────── */
 .post-description {
-  /* design spec: Noto Serif italic, 1.25rem, line-height 1.6, opacity 0.72 */
   font-family: var(--font-prose, 'Noto Serif', 'Georgia', serif);
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.6;
-  opacity: 0.72;
-  max-width: 62ch;
-  margin: 0 0 20px;
+  font-size: 1.125rem;
+  line-height: 1.75;
   color: var(--color-ink, #1a1c1b);
+  opacity: 0.82;
+  max-width: 60ch;
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--color-accent, #2e352e);
+  background: var(--color-accent-soft, #dde5da);
+  border-radius: 0 4px 4px 0;
 }
 
 html:lang(zh) .post-description {
   font-family: var(--font-display);
   font-style: normal;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+body.dark .post-description {
+  background: rgba(226, 227, 225, 0.06);
+  border-left-color: var(--color-accent, #b4bcb2);
 }
 
 /* ─── Post Content Prose Base ────────────────────────────────── */

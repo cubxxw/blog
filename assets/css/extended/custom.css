@@ -2463,18 +2463,7 @@ details summary,
     color: var(--color-text-heading);
 }
 
-.post-description {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    line-height: 1.65;
-    color: var(--color-ink-muted, #5e5e63);
-    margin: 0 0 var(--space-6);
-    max-width: 58ch;
-    font-weight: 400;
-    font-style: italic;
-    font-variation-settings: "opsz" 14;
-    opacity: 0.72;
-}
+/* post-description — see article-typography.css */
 
 .post-meta {
     font-family: var(--font-sans);
