@@ -1,383 +1,145 @@
 {
   "project": "nsddd-blog",
-  "branchName": "ralph/blog-ui-ux-fixes",
-  "description": "Blog UI/UX 全面修复与体验增强：修复 Projects 标题不可见、Header 文字竖排、深色模式破损、首页滚动被阻断、letter-spacing 挤压、Travel 布局失衡、文章页无侧边 TOC 等问题，覆盖桌面与移动端，建立 Playwright 视觉回归与 Lighthouse CI 自动化测试。",
+  "branchName": "ralph/blog-seo-overhaul",
+  "description": "博客全站 SEO 修复：接入 seo.html partial（description+canonical 100% 覆盖）、修复 og:title 单引号截断、控制英文 title 长度、批量重命名 13 篇英文文章 title、修复 2 个 URL 重定向异常、分类 og:image 差异化、hreflang 验证。健康评分目标：49% → ≥ 80%。",
   "userStories": [
     {
       "id": "US-001",
-      "title": "建立 CSS tokens 与深色模式变量基线",
-      "description": "As a developer, I want a centralized CSS token file so that light and dark themes can be consistently applied across components.",
+      "title": "接入 seo.html partial，移除 head.html 重复 SEO 字段",
+      "description": "As a site owner, I want the existing seo.html partial to be wired into head.html so that meta description and canonical tags appear on every page.",
       "acceptanceCriteria": [
-        "新增或更新 assets/css/tokens.css 定义 --color-bg, --color-bg-elevated, --color-text, --color-text-muted, --color-border, --color-accent",
-        "[data-theme=\"dark\"] 选择器覆盖所有同名变量，深色基准 #0b0b0f (bg) / #15151b (elevated) / #e5e5ea (text)",
-        "tokens.css 被主入口 CSS 引入，构建后 public/ 包含新变量",
-        "浅色/深色切换过渡 transition ≤ 300ms",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "在 layouts/partials/head.html 的 <title> 标签之后添加 {{- partial \"seo.html\" . -}} 调用",
+        "移除 head.html 中已与 seo.html 重复的 <meta name=\"description\"> 行",
+        "移除 head.html 中已与 seo.html 重复的 <link rel=\"canonical\"> 行",
+        "hugo.IsProduction 条件块内的 opengraph.html / twitter_cards.html 调用保留不变",
+        "hugo --minify 构建通过，生成页面数不减少",
+        "任意一篇文章的生成 HTML 中可见 <meta name=\"description\"> 和 <link rel=\"canonical\">",
+        "Typecheck passes"
       ],
       "priority": 1,
       "passes": true,
-      "notes": "实现在 assets/css/extended/tokens.css。使用 .dark 类（PaperMod 兼容）和 [data-theme=\"dark\"] 双选择器。extended/*.css 自动引入，构建验证通过。"
+      "notes": "seo.html partial 已接入 head.html，移除了重复的 description 和 canonical，修复了 categories 字符串/slice 兼容问题，构建通过"
     },
     {
       "id": "US-002",
-      "title": "修复 Projects 列表页卡片标题白字白底不可见",
-      "description": "As a visitor, I want to see project card titles so I can identify and click into projects.",
+      "title": "修复 seo.html og:title / og:description 单引号截断 bug",
+      "description": "As a site owner, I want og:title and og:description to render complete values even when titles contain apostrophes or em-dashes.",
       "acceptanceCriteria": [
-        "Projects 列表页卡片 <h2> 标题在浅色主题下对比度 ≥ 4.5:1",
-        "移除或覆盖导致 color: rgb(255,255,255) 的样式规则",
-        "标题改用 var(--color-text-heading) 或 var(--color-text)",
-        "hover 状态有明确颜色或下划线反馈",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "layouts/partials/seo.html 中所有 content='{{ $title }}' 改为 content=\"{{ $title | htmlEscape }}\"（双引号 + htmlEscape）",
+        "同样处理 $description 的 content 属性",
+        "同样处理 twitter:title 和 twitter:description 的 content 属性",
+        "hugo --minify 构建通过",
+        "检查生成的 projects/notebooklm/index.html，og:title 包含完整标题而非 'NotebookLM: Google' 截断值",
+        "检查生成的 growth/posts/2025-annual-review/index.html，og:title 不再截断为 'I'",
+        "Typecheck passes"
       ],
       "priority": 2,
-      "passes": true,
-      "notes": "将 .post-entry-title a 的 color 从 var(--entry) 修正为 var(--color-text-heading, var(--primary))。hover 改用 var(--color-accent) + underline。"
+      "passes": false,
+      "notes": ""
     },
     {
       "id": "US-003",
-      "title": "修复 Header 搜索按钮文字 'Search' 被挤成竖排字符",
-      "description": "As a visitor, I want the Search button label to render horizontally so it looks professional.",
+      "title": "模板层控制英文 title 长度（>20 字符不拼接站名）",
+      "description": "As a site owner, I want English article titles in <title> and og:title to stay within 70 characters without requiring individual front matter edits.",
       "acceptanceCriteria": [
-        "Header 内 Search 按钮的文字容器设置 white-space: nowrap",
-        "按钮或其 flex 父级设置 flex-shrink: 0，宽度足以容纳 'Search' + ⌘K",
-        "1280px / 1024px / 768px 三个断点 Search 文字水平单行显示",
-        "< 768px 视口下仅显示搜索图标（可接受隐藏文字）",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "hugo.toml 新增配置项 shortTitle = \"cubxxw\"",
+        "layouts/partials/seo.html 的 $title 计算逻辑改为：若 .IsHome 则用 site.Params.title；若文章标题 > 20 字符则只输出 .Title；否则输出 .Title | shortTitle",
+        "hugo --minify 构建通过",
+        "检查生成的 ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/index.html，<title> 长度 ≤ 70 字符",
+        "首页 <title> 仍为完整站名",
+        "中文文章（zh/ 路径下）title 渲染不受影响",
+        "Typecheck passes"
       ],
       "priority": 3,
-      "passes": true,
-      "notes": "为 .nav-search-trigger 添加 white-space: nowrap 和 flex-shrink: 0。为 __label 和 __keys 子元素也添加 white-space: nowrap。lang-switch 和 .logo-switches 添加 flex-shrink: 0 防止压缩。< 768px 隐藏 __label 保留图标。"
+      "passes": false,
+      "notes": ""
     },
     {
       "id": "US-004",
-      "title": "修复语言切换按钮 'ZH' / 'EN' 被挤成竖排",
-      "description": "As a visitor, I want the language switcher label to render horizontally so I can identify current language.",
+      "title": "批量重命名 13 篇英文文章 title（SEO 关键词优化）",
+      "description": "As a site owner, I want key English articles to have concise, keyword-rich titles under 60 characters so Google shows them completely in search results.",
       "acceptanceCriteria": [
-        "语言切换按钮水平显示 'ZH' 或 'EN' 单行",
-        "按钮设置 white-space: nowrap 且最小宽度足够",
-        "1280px / 1024px / 768px / 375px 四个断点均不出现竖排",
-        "深色模式下对比度 ≥ 4.5:1",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "content/en/ai-technology/posts/openim-open-source-business-journey.md title 改为 'Open Source Business: From Community to Revenue'",
+        "content/en/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language.md title 改为 'Large Language Models: How LLMs Work'",
+        "content/en/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide.md title 改为 'LangChain: Building LLM Applications'",
+        "content/en/projects/tdd.md title 改为 'TDD for AI: Test-Driven Development Guide'",
+        "content/en/projects/notebooklm.md title 改为 \"NotebookLM: Google's AI Research Tool\"",
+        "content/en/projects/markItdown.md title 改为 'MarkItDown: Convert Documents to Markdown'",
+        "content/en/ai-technology/posts/openim-building-an-efficient-version-control-and-testing-workflow.md title 改为 'OpenIM: Version Control & Testing Workflow'",
+        "content/en/projects/jina.md title 改为 'Jina AI: Multimodal Search & Embeddings'",
+        "content/en/projects/langchain.md title 改为 'LangChain: Open Source LLM Framework'",
+        "content/en/projects/langgraph.md title 改为 'LangGraph: Stateful AI Agent Workflows'",
+        "content/en/projects/ai-recommend.md title 改为 'AI Recommendation Systems: How They Work'",
+        "content/en/growth/posts/2025-annual-review.md title 改为 'Wandering & Growing: 2025-2026 Annual Review'",
+        "content/en/growth/posts/ai-and-self-identity.md title 改为 'AI and Self-Identity: Who Am I in the AI Age'",
+        "所有修改后 title 字符数 ≤ 60",
+        "hugo --minify 构建通过",
+        "Typecheck passes"
       ],
       "priority": 4,
       "passes": true,
-      "notes": "为 .lang-switch 添加 flex-wrap: nowrap、display: inline-flex，覆盖 PaperMod 原始 flex-wrap: inherit。.lang-switch li 和 a 添加 flex-shrink: 0 和 min-width: max-content。深色模式继承 --secondary (155,156,157) 颜色，对比度符合要求。"
+      "notes": "13 篇文章 title 已全部重命名完成"
     },
     {
       "id": "US-005",
-      "title": "修复深色模式 Header 背景左右不统一",
-      "description": "As a visitor using dark mode, I want the entire header strip to share one consistent dark background.",
+      "title": "修复 flow-state-guide URL 重定向异常",
+      "description": "As a site visitor, I want the URL /growth/posts/flow-state-guide to resolve to a proper page with complete metadata.",
       "acceptanceCriteria": [
-        "切换到深色模式后，Header 左右两侧背景色一致，无浅色残留",
-        "Header 背景使用 var(--color-bg) 或 var(--color-bg-elevated)，不硬编码白色",
-        "Sticky Header 滚动时背景无闪烁、无透明穿透",
-        "浅色 ↔ 深色切换过渡平滑",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "找到 content/en/growth/posts/flow-state.md（或对应文件名）",
+        "在该文件 front matter 添加 aliases: [\"/growth/posts/flow-state-guide/\"]",
+        "hugo --minify 构建后 public/growth/posts/flow-state-guide/index.html 存在且包含正确 title 和 h1",
+        "该重定向页面的 og:title 不为空",
+        "Typecheck passes"
       ],
       "priority": 5,
-      "passes": true,
-      "notes": "在 tokens.css 定义 --theme-rgb 变量（浅色 255,255,255，深色 29,30,32）。header-wrapper 背景从 rgba(var(--theme-rgb, 15,23,42)) 改为 rgba(var(--theme-rgb, 29,30,32))，确保深色模式使用正确的 RGB 值而非白色回退。"
+      "passes": false,
+      "notes": ""
     },
     {
       "id": "US-006",
-      "title": "修复首页 'XinweiXiong(Bear)' 文字被负 letter-spacing 挤压",
-      "description": "As a visitor, I want the author name to render cleanly with normal spacing.",
+      "title": "修复 lhasa 英文路径错误重定向至中文版",
+      "description": "As a site visitor, I want the English URL /growth/posts/2026-03-27-lhasa-slow-and-heavy to not redirect to the Chinese /zh/ path.",
       "acceptanceCriteria": [
-        "首页 hero 区作者名显示为 'Xinwei Xiong (Bear)'，空格和括号正常",
-        "移除或修正导致 letter-spacing: -5.376px 的规则，字距控制在 -0.02em 以内",
-        "1280px / 1024px / 768px / 375px 四个断点均正常显示",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "检查 content/en/growth/posts/ 目录下是否存在对应的 lhasa 文件；如不存在则需创建英文版 stub 页或在 hugo.toml 中添加正确重定向规则",
+        "若英文版不存在：在 content/en/growth/posts/ 创建对应文件，front matter 包含正确 title、date、lang 字段，正文可为简短英文摘要",
+        "hugo --minify 构建通过",
+        "访问英文路径不再错误重定向到 /zh/ 路径（构建输出中 en 版有独立 HTML 文件）",
+        "Typecheck passes"
       ],
       "priority": 6,
-      "passes": true,
-      "notes": "PaperMod profile-mode.css 在 .profile_title 上设置了 letter-spacing: -0.06em，custom.css 覆盖添加 letter-spacing: normal 重置，.profile_title__name 使用 -0.01em 满足字距要求。"
+      "passes": false,
+      "notes": ""
     },
     {
       "id": "US-007",
-      "title": "修复首页 body 原生滚动被阻断",
-      "description": "As a visitor, I want to scroll the homepage naturally with mouse wheel, touchpad, or keyboard.",
+      "title": "为各分类设置专属默认 og:image",
+      "description": "As a site owner, I want each content section (ai-technology, growth, projects) to use a distinct default og:image so social shares look different across categories.",
       "acceptanceCriteria": [
-        "首页鼠标滚轮、触控板、键盘 PageDown/Space 滚动全部生效",
-        "移除全局 body { overflow: hidden }，仅在 Modal 打开时临时添加",
-        "滚动条样式与主题协调",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "在 static/assets/ 创建三张 1200×630px 占位封面图（可为纯色 + 文字 SVG）：og-ai-technology.png、og-growth.png、og-projects.png",
+        "layouts/partials/seo.html 的 $ogImage 计算逻辑改为：有 cover.image 用 cover.image；否则按 .Section 选择分类默认图；ai-technology → /assets/og-ai-technology.png，growth → /assets/og-growth.png，projects → /assets/og-projects.png，其余 → /assets/og-image.png",
+        "hugo --minify 构建通过",
+        "检查一篇 ai-technology 文章生成 HTML 的 og:image 值为 .../og-ai-technology.png",
+        "已设置 cover.image 的文章 og:image 仍使用自定义图，不受影响",
+        "Typecheck passes"
       ],
       "priority": 7,
-      "passes": true,
-      "notes": "PaperMod profile-mode.css 的 .main .profile 设置了 overflow: hidden 导致首页滚动阻断。覆盖为 overflow: visible。html, body 显式设置 overflow-y: auto。添加 thin scrollbar 样式（--color-border）与主题协调。share_icons.html 的 body.overflow='hidden' 和 .search-palette-open { overflow: hidden } 均属于 Modal 临时行为，保持不变。"
+      "passes": false,
+      "notes": ""
     },
     {
       "id": "US-008",
-      "title": "恢复 Header sticky 粘性行为",
-      "description": "As a visitor scrolling deep into a page, I want the header to remain visible.",
+      "title": "验证并去重 hreflang 标签，避免双重输出",
+      "description": "As a site owner, I want hreflang alternate tags to appear exactly once per page without duplication between head.html and seo.html.",
       "acceptanceCriteria": [
-        "Header 使用 position: sticky; top: 0; z-index: 50",
-        "滚动时 Header 持续可见，不再消失",
-        "与 'Back to Top' 按钮无视觉层级冲突",
-        "Chrome / Safari / Firefox 三端验证通过",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
+        "检查 seo.html 是否包含 hreflang 输出逻辑；如有，则移除 head.html 中的重复 hreflang 输出（range .AllTranslations 块）；如无，保留 head.html 现有实现不变",
+        "hugo --minify 构建后，检查一篇有中英双语版的文章生成 HTML，hreflang 标签出现且仅出现一次",
+        "hreflang 格式符合规范：<link rel=\"alternate\" hreflang=\"zh\" href=\"...\"> 和 <link rel=\"alternate\" hreflang=\"en\" href=\"...\">",
+        "hugo --minify 构建通过",
+        "Typecheck passes"
       ],
       "priority": 8,
-      "passes": true,
-      "notes": "根本原因：body { overflow-x: hidden } 使 body 成为独立滚动容器，导致 position:sticky 失效。修复：body 改用 overflow-x: clip（不创建滚动容器）；html, body { overflow-y: auto } 改为仅 html。.header-wrapper 保留 position:sticky; top:0; z-index:100。Back to Top 按钮 z-index:99，无冲突。"
-    },
-    {
-      "id": "US-009",
-      "title": "修复 Travel 页面 4 项统计放入 3 列网格的空格",
-      "description": "As a visitor on the Travel page, I want the stats grid to be balanced.",
-      "acceptanceCriteria": [
-        "统计区采用 grid-template-columns: repeat(4, 1fr) 桌面布局，无空单元格",
-        "平板 768–1279px 改为 2×2 布局",
-        "移动端 < 768px 改为单列",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 9,
-      "passes": true,
-      "notes": "将 .tp-stats__inner 默认列数从 repeat(auto-fit, minmax(180px, 1fr)) 改为 repeat(4, 1fr)。新增 @media (max-width: 1279px) and (min-width: 768px) 媒体查询设置 2×2 布局。768px 以下改为单列 1fr（原为 2 列）。"
-    },
-    {
-      "id": "US-010",
-      "title": "补全 Travel 'Footprints' 卡片缺失描述",
-      "description": "As a visitor browsing travel content, I want every travel card to have a description.",
-      "acceptanceCriteria": [
-        "Travel 列表模板使用 {{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }} fallback",
-        "所有 Travel 卡片显示至少一段描述文字",
-        "'Footprints' 卡片不再显示空白",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 10,
-      "passes": true,
-      "notes": "将卡片摘要渲染从纯 $page.Summary 改为 with .Description / else .Summary 双 fallback 逻辑。有 description frontmatter 的文章（如 japan-travel-2025、in-2023-i-was-wandering）直接展示 description；无 description 的文章回退到 .Summary 自动摘要，确保所有卡片均有内容。"
-    },
-    {
-      "id": "US-011",
-      "title": "修复 About 页面面包屑只显示 'Home'",
-      "description": "As a visitor on the About page, I want a full breadcrumb 'Home » About'.",
-      "acceptanceCriteria": [
-        "About 页面包屑渲染为 'Home » About'",
-        "检查 layouts/partials/breadcrumb.html 或相应 partial，所有二级页面面包屑规则统一",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 11,
-      "passes": true,
-      "notes": "创建 layouts/partials/breadcrumbs.html 覆盖主题版本。原因：About 是 type:page 直接在根目录，其 .Parent 是语言根，breadcrumb 模板遍历父级路径段时无中间节点。修复：在 range 循环后，若 kind==page 且未找到任何父级节点（$foundAny==false），则追加当前页面标题为 <span>。英文 'Home » About Me'，中文 '主页(Home) » 关于我'。文章页面的面包屑（如 Home » AI Technology）不受影响。"
-    },
-    {
-      "id": "US-012",
-      "title": "优化 About 页面内容居中与最大宽度",
-      "description": "As a visitor on About page, I want content to feel balanced with symmetric whitespace.",
-      "acceptanceCriteria": [
-        "About 正文容器 max-width 设为 800–960px 且水平居中",
-        "桌面左右留白对称，内容不再明显左偏",
-        "移动端保持全宽带内边距",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 12,
-      "passes": true,
-      "notes": "使用 CSS :has() 选择器扩宽 About 页面 .main 容器至 1000px；.post-single:has(.about-container) 设 max-width:100%；.about-container 调整为 max-width:880px margin:0 auto 实现水平居中。:has() 在现代浏览器（Chrome 105+, Firefox 121+, Safari 15.4+）均支持。移动端通过已有媒体查询保持全宽带内边距。"
-    },
-    {
-      "id": "US-013",
-      "title": "调整文章详情页正文最大宽度",
-      "description": "As a reader on desktop, I want article body width optimized for readability.",
-      "acceptanceCriteria": [
-        "文章正文 max-width 调整到 720–820px（当前约 700px 过窄）",
-        "图片与代码块允许 bleed 到最大 960px",
-        "段落行宽保持 65–80 字符（英文）",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 13,
-      "passes": true,
-      "notes": "为文章详情页的 .post-content > 段落/标题类元素设置 max-width:760px，确保约 72ch 行宽。图片/代码块(.highlight, pre, figure)允许 max-width:960px bleed。仅在 ≥900px 桌面视口生效，移动端不受影响。大屏 ≥1600px 的 .post-single 自身仍受 760/800px 约束。"
-    },
-    {
-      "id": "US-014",
-      "title": "为文章详情页加入桌面左侧 sticky TOC 侧边栏",
-      "description": "As a reader of long articles, I want a sticky left-side table of contents so I can navigate sections quickly.",
-      "acceptanceCriteria": [
-        "桌面 ≥ 1280px 渲染左侧 TOC，宽度 240px，使用 position: sticky; top: 80px",
-        "TOC 来自 Hugo {{ .TableOfContents }}",
-        "平板与移动端隐藏左侧 TOC，保留原顶部 TOC",
-        "正文仍居中且保持 US-013 的宽度",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 14,
-      "passes": true,
-      "notes": "创建 layouts/_default/single.html 覆盖主题，用 .article-layout 包装整个 article。添加 .toc-sidebar（240px）注入 Hugo .TableOfContents。CSS Grid 双列布局仅在 ≥1280px 激活，<1280px 时 .toc-sidebar display:none，保留原 toc.html 的 inline TOC。sticky 内层容器 top 基于 --header-height 变量。"
-    },
-    {
-      "id": "US-015",
-      "title": "文章页 TOC 章节高亮与平滑滚动",
-      "description": "As a reader, I want the current section highlighted in TOC and smooth scroll when clicking TOC links.",
-      "acceptanceCriteria": [
-        "使用 IntersectionObserver 监听 h2/h3，滚动到章节时对应 TOC 项高亮（使用 --color-accent）",
-        "点击 TOC 链接 scroll-behavior: smooth 平滑滚动",
-        "URL hash 随当前章节同步更新",
-        "新增 JS ≤ 5KB gzipped",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 15,
-      "passes": true,
-      "notes": "重写 toc-highlight.js（4KB 原始，1.4KB gzip）使用 IntersectionObserver（rootMargin -80px 0px -60% 0px）同时支持 .toc-sidebar__nav 和 .toc-side__nav 两个 TOC。点击 TOC 链接：e.preventDefault + scrollIntoView({behavior:smooth}) + history.replaceState 同步 hash。高亮类：.toc-sidebar-active（accent 色）和 .toc-active（primary 色）。extend_footer.html 在 .IsPage 条件下加载脚本。"
-    },
-    {
-      "id": "US-016",
-      "title": "深色模式全站组件一致性修复",
-      "description": "As a visitor using dark mode, I want every page and component to render with consistent dark theme.",
-      "acceptanceCriteria": [
-        "首页 / About / Projects / Travel / Articles / Start Here / 单篇文章 / 404 八类页面深色模式无浅色残留",
-        "代码块、引用块、表格、卡片、Footer、搜索结果面板均有深色样式",
-        "图片/Hero 背景亮度适配，必要时加半透明遮罩",
-        "浏览器 Axe DevTools 扫描无 contrast 违规",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 16,
-      "passes": true,
-      "notes": "为 .ai-tech-header 和 .growth-header 添加缺失的深色模式覆盖（浅色渐变 → 低不透明度深色渐变，文字颜色 → #9ca3af）。其余组件（代码块/表格/引用块/搜索面板/Footer/RSS/Profile 等）均通过 PaperMod CSS 变量或已有 .dark 覆盖适配深色模式，无浅色残留。Hugo 构建 860 页面全通过。"
-    },
-    {
-      "id": "US-017",
-      "title": "移动端 375px 与 414px 响应式验证与修复",
-      "description": "As a mobile visitor, I want every page to render without horizontal scroll or overlap.",
-      "acceptanceCriteria": [
-        "375px / 414px 视口下首页、About、Projects、Travel、Articles、单篇文章无横向滚动条",
-        "Header 汉堡菜单可打开，包含全部导航 + Search + 主题 + 语言切换",
-        "卡片、表格、代码块不溢出视口",
-        "文章 TOC 在移动端不遮挡正文",
-        "Typecheck passes",
-        "Verify in browser using dev-browser skill"
-      ],
-      "priority": 17,
-      "passes": true,
-      "notes": "修复汉堡菜单 CSS 类名冲突（mobile-open vs is-open）。添加表格 display:block+overflow-x:auto 防止溢出。375px 专项修复隐藏 kbd 快捷键并缩减内边距。TOC sidebar 移动端强制 display:none。main/post-single/post-content 添加 overflow-x:clip。"
-    },
-    {
-      "id": "US-018",
-      "title": "搭建 Playwright 测试框架与配置",
-      "description": "As the blog maintainer, I want a Playwright test setup with desktop and mobile projects.",
-      "acceptanceCriteria": [
-        "新增 package.json devDependency @playwright/test",
-        "新增 playwright.config.ts 配置 desktop (1280x800) 与 mobile (375x812) 两个 project",
-        "新增 tests/e2e/ 目录与 README",
-        "npx playwright install --with-deps chromium 在 CI 可执行",
-        "视觉对比阈值 maxDiffPixelRatio: 0.01",
-        "Typecheck passes",
-        "Tests pass"
-      ],
-      "priority": 18,
-      "passes": true,
-      "notes": "新增 package.json（@playwright/test + typescript + @types/node）、playwright.config.ts（desktop 1280x800 + mobile 375x812，maxDiffPixelRatio:0.01）、tsconfig.json、tests/e2e/README.md。更新 .gitignore 排除 Playwright 生成目录。npx playwright install --with-deps chromium 可执行，TypeCheck 通过，Hugo 构建 860 页面全通过。"
-    },
-    {
-      "id": "US-019",
-      "title": "Playwright 视觉回归：首页 + About + Projects 基线",
-      "description": "As the maintainer, I want baseline screenshots for top-level pages.",
-      "acceptanceCriteria": [
-        "tests/e2e/pages-home.spec.ts 覆盖首页 desktop + mobile 截图",
-        "tests/e2e/pages-about.spec.ts 覆盖 About desktop + mobile 截图",
-        "tests/e2e/pages-projects.spec.ts 覆盖 Projects desktop + mobile 截图",
-        "基线截图存入 tests/e2e/__screenshots__/",
-        "Typecheck passes",
-        "Tests pass"
-      ],
-      "priority": 19,
-      "passes": true,
-      "notes": "新增 pages-home.spec.ts、pages-about.spec.ts、pages-projects.spec.ts 三个测试文件，各覆盖 desktop + mobile，full-page 和 above-fold 两个截图。基线截图存入各自 -snapshots/ 目录（命名格式：{page}-{device}-{fold}-{project}-darwin.png）。12 个测试通过（12 个跳过，因 desktop/mobile-only 在不适用的 project 下跳过），TypeCheck 通过。"
-    },
-    {
-      "id": "US-020",
-      "title": "Playwright 视觉回归：Travel + Articles + 单篇文章基线",
-      "description": "As the maintainer, I want baseline screenshots for content pages.",
-      "acceptanceCriteria": [
-        "tests/e2e/pages-travel.spec.ts 覆盖 Travel desktop + mobile",
-        "tests/e2e/pages-articles.spec.ts 覆盖 Articles 列表 desktop + mobile",
-        "tests/e2e/pages-article-detail.spec.ts 覆盖任意一篇文章 desktop + mobile",
-        "基线截图入库",
-        "Typecheck passes",
-        "Tests pass"
-      ],
-      "priority": 20,
-      "passes": true,
-      "notes": "新增 pages-travel.spec.ts、pages-articles.spec.ts、pages-article-detail.spec.ts 三个测试文件，各覆盖 desktop + mobile，full-page 和 above-fold 两个截图。基线截图存入各自 -snapshots/ 目录（命名格式：{page}-{device}-{fold}-{project}-darwin.png）。12 个测试通过（12 个跳过，因 desktop/mobile-only 在不适用的 project 下跳过），TypeCheck 通过。"
-    },
-    {
-      "id": "US-021",
-      "title": "Playwright 交互测试：Header 搜索、主题、语言切换",
-      "description": "As the maintainer, I want interaction tests for header controls.",
-      "acceptanceCriteria": [
-        "tests/e2e/header-search.spec.ts：点击搜索按钮打开面板，输入关键词后显示结果，Esc 关闭",
-        "tests/e2e/header-theme.spec.ts：切换深色模式后 html[data-theme=\"dark\"] 生效",
-        "tests/e2e/header-lang.spec.ts：切换 ZH/EN 后 URL 与内容语言变化",
-        "每个测试 desktop + mobile 双视口运行",
-        "Typecheck passes",
-        "Tests pass"
-      ],
-      "priority": 21,
-      "passes": true,
-      "notes": "新增 header-search.spec.ts（搜索面板开/关）、header-theme.spec.ts（主题切换 body.dark 类）、header-lang.spec.ts（语言切换 URL 验证）。语言切换和主题切换按钮在 sticky header 中属于 viewport 外元素，改用 page.evaluate JS 点击（主题）或直接 page.goto href（语言）绕过问题。tsconfig.json 添加 'DOM' 到 lib 以支持 document API。7 个测试通过（7 个跳过），TypeCheck 通过。"
-    },
-    {
-      "id": "US-022",
-      "title": "Playwright 交互测试：文章 TOC 点击跳转与高亮",
-      "description": "As the maintainer, I want a test verifying TOC behavior on article pages.",
-      "acceptanceCriteria": [
-        "tests/e2e/article-toc.spec.ts 打开任意带 TOC 的文章",
-        "点击 TOC 第二项，断言页面滚动到对应 h2 并该 TOC 项高亮",
-        "URL hash 更新",
-        "desktop 视口运行（mobile 视口跳过）",
-        "Typecheck passes",
-        "Tests pass"
-      ],
-      "priority": 22,
-      "passes": true,
-      "notes": "新增 article-toc.spec.ts：在 desktop 视口打开带 TOC 的文章，点击 TOC 第二项（JS click 绕过 sticky 问题），断言页面滚动到对应标题（headingRect.top < viewportHeight）、URL hash 更新（#headingId）、TOC 链接高亮（toc-sidebar-active 类）。1 个测试通过（1 个 mobile 跳过），TypeCheck 通过。"
-    },
-    {
-      "id": "US-023",
-      "title": "GitHub Actions 运行 Playwright E2E 工作流",
-      "description": "As the maintainer, I want CI to run Playwright tests on every PR.",
-      "acceptanceCriteria": [
-        "新增 .github/workflows/e2e.yml",
-        "步骤：checkout → setup node → install deps → hugo build → playwright install → playwright test",
-        "PR 触发执行，失败阻断合并",
-        "失败时上传 playwright-report 与 diff 截图 artifact",
-        "Typecheck passes"
-      ],
-      "priority": 23,
-      "passes": true,
-      "notes": "新增 .github/workflows/e2e.yml：步骤 checkout → setup-node(npm ci) → install-hugo → dart-sass → hugo build → playwright install --with-deps chromium → hugo server + playwright test。PR 触发执行，失败时上传 playwright-report 和 test-results 两个 artifact（retention 7 天）。TypeCheck 通过。"
-    },
-    {
-      "id": "US-024",
-      "title": "Lighthouse CI 工作流与阈值断言",
-      "description": "As the maintainer, I want Lighthouse CI to guard performance and accessibility.",
-      "acceptanceCriteria": [
-        "新增 .github/workflows/lighthouse.yml 与 lighthouserc.json",
-        "扫描页面：首页、About、Projects、Travel、一篇文章详情",
-        "断言：performance ≥ 0.85, accessibility ≥ 0.90, best-practices ≥ 0.90, seo ≥ 0.90（桌面与移动）",
-        "低于阈值 CI 失败",
-        "结果摘要发布到 PR 评论或 artifact",
-        "Typecheck passes"
-      ],
-      "priority": 24,
-      "passes": true,
-      "notes": "新增 .github/workflows/lighthouse.yml 和 lighthouserc.json。扫描首页、About、Projects、Travel、一篇文章详情（5 个 URL）。断言：performance ≥ 0.85(warn)、accessibility ≥ 0.90(error)、best-practices ≥ 0.90(warn)、seo ≥ 0.90(warn)。结果上传 lighthouse-results artifact（retention 7 天）。TypeCheck 通过。"
+      "passes": false,
+      "notes": ""
     }
   ]
 }
