@@ -120,7 +120,7 @@
         </svg>
       </a>
       <button class="et-share-btn" aria-label="Share via WeChat"
-              data-title="{{ .Title | safeJS }}" data-url="{{ .Permalink }}" data-desc="{{ .Description | safeJS }}"
+              data-title="{{ .Title }}" data-url="{{ .Permalink }}" data-desc="{{ .Description }}"
               onclick="openWechatQR(this)">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
@@ -140,6 +140,7 @@
         </svg>
       </a>
     </div>
+    <p class="et-empty et-annotations-label">{{ i18n "tools.annotations" | default "Annotations" | safeHTML }}</p>
     <p class="et-empty et-annotations-placeholder">{{ i18n "tools.annotations_empty" | default "Coming soon" | safeHTML }}</p>
   </div>
 

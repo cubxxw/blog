@@ -66,6 +66,9 @@
             mybutton.style.opacity = "0";
         }
     };
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', function(e) {
+        if (e.matches) window.onscroll && window.onscroll();
+    });
 
 </script>
 {{- end }}
@@ -79,7 +82,6 @@
 
         // Calculate scroll progress
         function updateProgress() {
-            if (window.innerWidth < 1024) return;
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = window.scrollY;
             const progress = (scrolled / windowHeight) * 100;
@@ -89,6 +91,7 @@
         // Throttle scroll events for better performance
         let ticking = false;
         window.addEventListener('scroll', function() {
+            if (window.innerWidth < 1024) return;
             if (!ticking) {
                 window.requestAnimationFrame(function() {
                     updateProgress();
@@ -100,6 +103,11 @@
 
         // Initial update
         updateProgress();
+
+        // Refresh when viewport crosses 1024px (mobile→desktop resize)
+        window.matchMedia('(min-width: 1024px)').addEventListener('change', function(e) {
+            if (e.matches) updateProgress();
+        });
     })();
 </script>
 {{- end -}}
