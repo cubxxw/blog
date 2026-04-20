@@ -210,8 +210,7 @@ html:lang(zh) .post-content blockquote::after {
   display: none !important;
 }
 
-body.dark html:lang(zh) .post-content blockquote,
-html.dark:lang(zh) .post-content blockquote,
+html:lang(zh) body.dark .post-content blockquote,
 body.dark .post-content blockquote {
   background: rgba(255, 255, 255, 0.03);
   color: rgba(226, 227, 225, 0.82);
@@ -362,8 +361,8 @@ html:lang(zh) .post-content pre:not(.mermaid) {
 }
 
 /* ── 3. Dark / English — GitHub Dark ── */
-body.dark:not(:lang(zh)) .post-content .highlight,
-body.dark:not(:lang(zh)) .post-content pre:not(.mermaid) {
+html:not(:lang(zh)) body.dark .post-content .highlight,
+html:not(:lang(zh)) body.dark .post-content pre:not(.mermaid) {
   --code-surface: #0d1117;
   --hljs-bg: var(--code-surface);
   --code-ink: #e6edf3;
@@ -380,8 +379,8 @@ body.dark:not(:lang(zh)) .post-content pre:not(.mermaid) {
 }
 
 /* ── 4. Dark / Chinese — warm dark ink ── */
-body.dark:lang(zh) .post-content .highlight,
-body.dark:lang(zh) .post-content pre:not(.mermaid) {
+html:lang(zh) body.dark .post-content .highlight,
+html:lang(zh) body.dark .post-content pre:not(.mermaid) {
   --code-surface: #1c1917;
   --hljs-bg: var(--code-surface);
   --code-ink: #f5f3ee;
@@ -600,118 +599,118 @@ body:not(.dark):lang(zh) .post-content code .hljs-params { color: #1a5276 !impor
 body:not(.dark):lang(zh) .post-content code .hljs-number { color: #7d4f00 !important; }
 
 /* ── 3. Dark / English syntax — GitHub Dark ── */
-body.dark:not(:lang(zh)) .post-content .highlight code .k,
-body.dark:not(:lang(zh)) .post-content .highlight code .kd,
-body.dark:not(:lang(zh)) .post-content .highlight code .kn,
-body.dark:not(:lang(zh)) .post-content .highlight code .kr,
-body.dark:not(:lang(zh)) .post-content .highlight code .kt { color: #ff7b72; font-weight: 500; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .k,
+html:not(:lang(zh)) body.dark .post-content .highlight code .kd,
+html:not(:lang(zh)) body.dark .post-content .highlight code .kn,
+html:not(:lang(zh)) body.dark .post-content .highlight code .kr,
+html:not(:lang(zh)) body.dark .post-content .highlight code .kt { color: #ff7b72; font-weight: 500; }
 
-body.dark:not(:lang(zh)) .post-content .highlight code .s,
-body.dark:not(:lang(zh)) .post-content .highlight code .s1,
-body.dark:not(:lang(zh)) .post-content .highlight code .s2,
-body.dark:not(:lang(zh)) .post-content .highlight code .sb,
-body.dark:not(:lang(zh)) .post-content .highlight code .sc,
-body.dark:not(:lang(zh)) .post-content .highlight code .se,
-body.dark:not(:lang(zh)) .post-content .highlight code .sr { color: #a5d6ff; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .s,
+html:not(:lang(zh)) body.dark .post-content .highlight code .s1,
+html:not(:lang(zh)) body.dark .post-content .highlight code .s2,
+html:not(:lang(zh)) body.dark .post-content .highlight code .sb,
+html:not(:lang(zh)) body.dark .post-content .highlight code .sc,
+html:not(:lang(zh)) body.dark .post-content .highlight code .se,
+html:not(:lang(zh)) body.dark .post-content .highlight code .sr { color: #a5d6ff; }
 
-body.dark:not(:lang(zh)) .post-content .highlight code .c,
-body.dark:not(:lang(zh)) .post-content .highlight code .c1,
-body.dark:not(:lang(zh)) .post-content .highlight code .cm,
-body.dark:not(:lang(zh)) .post-content .highlight code .cp,
-body.dark:not(:lang(zh)) .post-content .highlight code .cs { color: #8b949e; font-style: italic; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .c,
+html:not(:lang(zh)) body.dark .post-content .highlight code .c1,
+html:not(:lang(zh)) body.dark .post-content .highlight code .cm,
+html:not(:lang(zh)) body.dark .post-content .highlight code .cp,
+html:not(:lang(zh)) body.dark .post-content .highlight code .cs { color: #8b949e; font-style: italic; }
 
-body.dark:not(:lang(zh)) .post-content .highlight code .nf,
-body.dark:not(:lang(zh)) .post-content .highlight code .nx { color: #d2a8ff; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .nf,
+html:not(:lang(zh)) body.dark .post-content .highlight code .nx { color: #d2a8ff; }
 
-body.dark:not(:lang(zh)) .post-content .highlight code .nb { color: #7ee787; }
-body.dark:not(:lang(zh)) .post-content .highlight code .mi,
-body.dark:not(:lang(zh)) .post-content .highlight code .mf { color: #79c0ff; }
-body.dark:not(:lang(zh)) .post-content .highlight code .o  { color: #e6edf3; }
-body.dark:not(:lang(zh)) .post-content .highlight code .na { color: #79c0ff; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .nb { color: #7ee787; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .mi,
+html:not(:lang(zh)) body.dark .post-content .highlight code .mf { color: #79c0ff; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .o  { color: #e6edf3; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .na { color: #79c0ff; }
 
 /* hljs — Dark / English */
-body.dark:not(:lang(zh)) .post-content pre code.hljs,
-body.dark:not(:lang(zh)) .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
+html:not(:lang(zh)) body.dark .post-content pre code.hljs,
+html:not(:lang(zh)) body.dark .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
 
-body.dark:not(:lang(zh)) .post-content code .hljs-keyword,
-body.dark:not(:lang(zh)) .post-content code .hljs-selector-tag,
-body.dark:not(:lang(zh)) .post-content code .hljs-literal,
-body.dark:not(:lang(zh)) .post-content code .hljs-type { color: #ff7b72 !important; font-weight: 500; }
+html:not(:lang(zh)) body.dark .post-content code .hljs-keyword,
+html:not(:lang(zh)) body.dark .post-content code .hljs-selector-tag,
+html:not(:lang(zh)) body.dark .post-content code .hljs-literal,
+html:not(:lang(zh)) body.dark .post-content code .hljs-type { color: #ff7b72 !important; font-weight: 500; }
 
-body.dark:not(:lang(zh)) .post-content code .hljs-string,
-body.dark:not(:lang(zh)) .post-content code .hljs-regexp,
-body.dark:not(:lang(zh)) .post-content code .hljs-char,
-body.dark:not(:lang(zh)) .post-content code .hljs-attr { color: #a5d6ff !important; }
+html:not(:lang(zh)) body.dark .post-content code .hljs-string,
+html:not(:lang(zh)) body.dark .post-content code .hljs-regexp,
+html:not(:lang(zh)) body.dark .post-content code .hljs-char,
+html:not(:lang(zh)) body.dark .post-content code .hljs-attr { color: #a5d6ff !important; }
 
-body.dark:not(:lang(zh)) .post-content code .hljs-comment,
-body.dark:not(:lang(zh)) .post-content code .hljs-quote,
-body.dark:not(:lang(zh)) .post-content code .hljs-meta { color: #8b949e !important; font-style: italic; }
+html:not(:lang(zh)) body.dark .post-content code .hljs-comment,
+html:not(:lang(zh)) body.dark .post-content code .hljs-quote,
+html:not(:lang(zh)) body.dark .post-content code .hljs-meta { color: #8b949e !important; font-style: italic; }
 
-body.dark:not(:lang(zh)) .post-content code .hljs-title,
-body.dark:not(:lang(zh)) .post-content code .hljs-section,
-body.dark:not(:lang(zh)) .post-content code .hljs-function { color: #d2a8ff !important; }
+html:not(:lang(zh)) body.dark .post-content code .hljs-title,
+html:not(:lang(zh)) body.dark .post-content code .hljs-section,
+html:not(:lang(zh)) body.dark .post-content code .hljs-function { color: #d2a8ff !important; }
 
-body.dark:not(:lang(zh)) .post-content code .hljs-built_in,
-body.dark:not(:lang(zh)) .post-content code .hljs-params { color: #7ee787 !important; }
+html:not(:lang(zh)) body.dark .post-content code .hljs-built_in,
+html:not(:lang(zh)) body.dark .post-content code .hljs-params { color: #7ee787 !important; }
 
-body.dark:not(:lang(zh)) .post-content code .hljs-number { color: #79c0ff !important; }
+html:not(:lang(zh)) body.dark .post-content code .hljs-number { color: #79c0ff !important; }
 
 /* ── 4. Dark / Chinese syntax — warm amber-ink palette ── */
-body.dark:lang(zh) .post-content .highlight code .k,
-body.dark:lang(zh) .post-content .highlight code .kd,
-body.dark:lang(zh) .post-content .highlight code .kn,
-body.dark:lang(zh) .post-content .highlight code .kr,
-body.dark:lang(zh) .post-content .highlight code .kt { color: #ff6b6b; font-weight: 500; }
+html:lang(zh) body.dark .post-content .highlight code .k,
+html:lang(zh) body.dark .post-content .highlight code .kd,
+html:lang(zh) body.dark .post-content .highlight code .kn,
+html:lang(zh) body.dark .post-content .highlight code .kr,
+html:lang(zh) body.dark .post-content .highlight code .kt { color: #ff6b6b; font-weight: 500; }
 
-body.dark:lang(zh) .post-content .highlight code .s,
-body.dark:lang(zh) .post-content .highlight code .s1,
-body.dark:lang(zh) .post-content .highlight code .s2,
-body.dark:lang(zh) .post-content .highlight code .sb,
-body.dark:lang(zh) .post-content .highlight code .sc,
-body.dark:lang(zh) .post-content .highlight code .se,
-body.dark:lang(zh) .post-content .highlight code .sr { color: #a8d8a8; }
+html:lang(zh) body.dark .post-content .highlight code .s,
+html:lang(zh) body.dark .post-content .highlight code .s1,
+html:lang(zh) body.dark .post-content .highlight code .s2,
+html:lang(zh) body.dark .post-content .highlight code .sb,
+html:lang(zh) body.dark .post-content .highlight code .sc,
+html:lang(zh) body.dark .post-content .highlight code .se,
+html:lang(zh) body.dark .post-content .highlight code .sr { color: #a8d8a8; }
 
-body.dark:lang(zh) .post-content .highlight code .c,
-body.dark:lang(zh) .post-content .highlight code .c1,
-body.dark:lang(zh) .post-content .highlight code .cm,
-body.dark:lang(zh) .post-content .highlight code .cp,
-body.dark:lang(zh) .post-content .highlight code .cs { color: #b8ada3; font-style: italic; }
+html:lang(zh) body.dark .post-content .highlight code .c,
+html:lang(zh) body.dark .post-content .highlight code .c1,
+html:lang(zh) body.dark .post-content .highlight code .cm,
+html:lang(zh) body.dark .post-content .highlight code .cp,
+html:lang(zh) body.dark .post-content .highlight code .cs { color: #b8ada3; font-style: italic; }
 
-body.dark:lang(zh) .post-content .highlight code .nf,
-body.dark:lang(zh) .post-content .highlight code .nx { color: #c792ea; }
+html:lang(zh) body.dark .post-content .highlight code .nf,
+html:lang(zh) body.dark .post-content .highlight code .nx { color: #c792ea; }
 
-body.dark:lang(zh) .post-content .highlight code .nb { color: #68d7e4; }
-body.dark:lang(zh) .post-content .highlight code .mi,
-body.dark:lang(zh) .post-content .highlight code .mf { color: #e5c07b; }
-body.dark:lang(zh) .post-content .highlight code .o  { color: #f5f3ee; }
-body.dark:lang(zh) .post-content .highlight code .na { color: #68d7e4; }
+html:lang(zh) body.dark .post-content .highlight code .nb { color: #68d7e4; }
+html:lang(zh) body.dark .post-content .highlight code .mi,
+html:lang(zh) body.dark .post-content .highlight code .mf { color: #e5c07b; }
+html:lang(zh) body.dark .post-content .highlight code .o  { color: #f5f3ee; }
+html:lang(zh) body.dark .post-content .highlight code .na { color: #68d7e4; }
 
 /* hljs — Dark / Chinese */
-body.dark:lang(zh) .post-content pre code.hljs,
-body.dark:lang(zh) .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
+html:lang(zh) body.dark .post-content pre code.hljs,
+html:lang(zh) body.dark .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
 
-body.dark:lang(zh) .post-content code .hljs-keyword,
-body.dark:lang(zh) .post-content code .hljs-selector-tag,
-body.dark:lang(zh) .post-content code .hljs-literal,
-body.dark:lang(zh) .post-content code .hljs-type { color: #ff6b6b !important; font-weight: 500; }
+html:lang(zh) body.dark .post-content code .hljs-keyword,
+html:lang(zh) body.dark .post-content code .hljs-selector-tag,
+html:lang(zh) body.dark .post-content code .hljs-literal,
+html:lang(zh) body.dark .post-content code .hljs-type { color: #ff6b6b !important; font-weight: 500; }
 
-body.dark:lang(zh) .post-content code .hljs-string,
-body.dark:lang(zh) .post-content code .hljs-regexp,
-body.dark:lang(zh) .post-content code .hljs-char,
-body.dark:lang(zh) .post-content code .hljs-attr { color: #a8d8a8 !important; }
+html:lang(zh) body.dark .post-content code .hljs-string,
+html:lang(zh) body.dark .post-content code .hljs-regexp,
+html:lang(zh) body.dark .post-content code .hljs-char,
+html:lang(zh) body.dark .post-content code .hljs-attr { color: #a8d8a8 !important; }
 
-body.dark:lang(zh) .post-content code .hljs-comment,
-body.dark:lang(zh) .post-content code .hljs-quote,
-body.dark:lang(zh) .post-content code .hljs-meta { color: #b8ada3 !important; font-style: italic; }
+html:lang(zh) body.dark .post-content code .hljs-comment,
+html:lang(zh) body.dark .post-content code .hljs-quote,
+html:lang(zh) body.dark .post-content code .hljs-meta { color: #b8ada3 !important; font-style: italic; }
 
-body.dark:lang(zh) .post-content code .hljs-title,
-body.dark:lang(zh) .post-content code .hljs-section,
-body.dark:lang(zh) .post-content code .hljs-function { color: #c792ea !important; }
+html:lang(zh) body.dark .post-content code .hljs-title,
+html:lang(zh) body.dark .post-content code .hljs-section,
+html:lang(zh) body.dark .post-content code .hljs-function { color: #c792ea !important; }
 
-body.dark:lang(zh) .post-content code .hljs-built_in,
-body.dark:lang(zh) .post-content code .hljs-params { color: #68d7e4 !important; }
+html:lang(zh) body.dark .post-content code .hljs-built_in,
+html:lang(zh) body.dark .post-content code .hljs-params { color: #68d7e4 !important; }
 
-body.dark:lang(zh) .post-content code .hljs-number { color: #e5c07b !important; }
+html:lang(zh) body.dark .post-content code .hljs-number { color: #e5c07b !important; }
 
 /* ── Paragraph breathing room ── */
 .post-content p + .highlight,
