@@ -1,5 +1,5 @@
 ---
-title: 'Design Proposal: Simplified Port Configuration via Config Files for Kubernetes Deployment'
+title: 'Kubernetes Port Config via Config Files'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2023-09-18T22:49:14+08:00

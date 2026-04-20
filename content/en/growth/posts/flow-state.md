@@ -1,5 +1,5 @@
 ---
-title: 'Unlocking the Magic of Flow State: A Guide to Enhanced Focus and Happiness'
+title: 'Flow State: Deep Focus and Happiness Guide'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2024-02-13T11:19:38+08:00

@@ -1,5 +1,5 @@
 ---
-title: 'Brain-Friendly English Learning Strategies: Tools and Techniques Explained'
+title: 'Brain-Friendly English Learning Strategies'
 ShowRssButtonInSectionTermList: true
 date: 2024-02-16T13:34:36+08:00
 draft: false

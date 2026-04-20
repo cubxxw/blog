@@ -1,5 +1,5 @@
 ---
-title: 'GitOps Practice Theory: In-Depth Analysis of Kubernetes Deployment Strategies'
+title: 'GitOps & Kubernetes Deployment Strategies'
 ShowRssButtonInSectionTermList: true
 cover.image: /images/gitops-kubernetes-deployment.jpg
 date: 2023-11-25T18:00:31+08:00

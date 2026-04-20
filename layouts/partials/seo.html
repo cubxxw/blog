@@ -1,8 +1,20 @@
 {{- /* SEO & Social Media Meta Tags */ -}}
 
-{{- $shortTitle := site.Params.shortTitle | default site.Params.title -}}
-{{- $title := cond .IsHome site.Params.title (cond (gt (len .Title) 20) .Title (printf "%s | %s" .Title $shortTitle)) -}}
-{{- $description := cond .IsHome site.Params.description (cond .Description .Description .Summary | plainify | truncate 160) -}}
+{{- $shortTitle := site.Params.shortTitle | default site.Title -}}
+{{- $baseTitle := .Title -}}
+{{- if hasPrefix .Title "http" -}}{{- $baseTitle = cond .Parent .Parent.Title site.Title -}}{{- end -}}
+{{- $pagerSuffix := "" -}}
+{{- if and (not .IsPage) .Paginator (gt .Paginator.PageNumber 1) -}}
+  {{- $pagerSuffix = cond (eq .Language.Lang "zh") (printf " - 第 %d 页" .Paginator.PageNumber) (printf " - Page %d" .Paginator.PageNumber) -}}
+{{- end -}}
+{{- $title := cond .IsHome site.Title (printf "%s%s" (cond (gt (len $baseTitle) 20) $baseTitle (printf "%s | %s" $baseTitle $shortTitle)) $pagerSuffix) -}}
+{{- $taxonomyDesc := "" -}}
+{{- if eq .Kind "taxonomy" -}}
+  {{- $taxonomyDesc = cond (eq .Language.Lang "zh") "探索 cubxxw 博客的所有话题。" (printf "Browse all topics on cubxxw blog.") -}}
+{{- else if eq .Kind "term" -}}
+  {{- $taxonomyDesc = cond (eq .Language.Lang "zh") (printf "浏览 %d 篇关于 %s 的文章。" (len .Pages) .Title) (printf "Browse %d articles tagged with %s." (len .Pages) .Title) -}}
+{{- end -}}
+{{- $description := cond (ne $taxonomyDesc "") $taxonomyDesc (cond .IsHome site.Params.description (cond .Description .Description .Summary | plainify | truncate 160)) -}}
 {{- $keywords := cond .IsHome site.Params.keywords (cond .Params.keywords .Params.keywords (slice)) -}}
 {{- $author := cond .IsHome site.Params.author (cond .Params.author .Params.author site.Params.author) -}}
 
@@ -19,7 +31,8 @@
 {{- end -}}
 
 {{- /* Open Graph / Facebook */ -}}
-<meta property="og:type" content="{{ cond .IsHome "website" "article" }}" />
+{{- $ogType := cond (or .IsHome (eq .Kind "taxonomy") (eq .Kind "term") (eq .Kind "section")) "website" "article" -}}
+<meta property="og:type" content="{{ $ogType }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:title" content="{{ $title | htmlEscape }}" />
 <meta property="og:description" content="{{ $description | htmlEscape }}" />

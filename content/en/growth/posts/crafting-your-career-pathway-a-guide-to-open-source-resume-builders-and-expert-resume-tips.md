@@ -1,5 +1,5 @@
 ---
-title: 'Crafting Your Career Pathway: A Guide to Open Source Resume Builders and Expert Resume Tips'
+title: 'Open Source Resume Builders & Career Tips'
 ShowRssButtonInSectionTermList: true
 date: 2024-04-19T00:24:22+08:00
 draft: false

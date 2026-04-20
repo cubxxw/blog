@@ -5544,3 +5544,58 @@ html {
   border-color: rgba(160, 130, 90, 0.55);
   color: #e8c888;
 }
+
+/* ─── Related Posts ─────────────────────────────────────────── */
+.related-posts {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.related-posts-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+}
+
+.related-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.related-post-item {
+  display: flex;
+}
+
+.related-post-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.4rem 0;
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.related-post-link:hover {
+  border-bottom-color: var(--primary);
+}
+
+.related-post-title {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.related-post-date {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
