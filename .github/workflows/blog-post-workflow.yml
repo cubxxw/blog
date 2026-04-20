@@ -43,5 +43,9 @@ jobs:
           git config --local user.name "kubbot"
           git remote set-url origin https://${{ secrets.BOT_GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git pull --rebase
-          git commit --allow-empty -a -s -m "🌟 You never lose, either you win or you learn! 💪"
+          if git diff --cached --quiet && git diff --quiet; then
+            echo "No changes to commit, skipping."
+            exit 0
+          fi
+          git commit -a -s -m "🌟 You never lose, either you win or you learn! 💪"
           git push
