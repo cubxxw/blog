@@ -1,145 +1,108 @@
 {
   "project": "nsddd-blog",
-  "branchName": "ralph/blog-seo-overhaul",
-  "description": "博客全站 SEO 修复：接入 seo.html partial（description+canonical 100% 覆盖）、修复 og:title 单引号截断、控制英文 title 长度、批量重命名 13 篇英文文章 title、修复 2 个 URL 重定向异常、分类 og:image 差异化、hreflang 验证。健康评分目标：49% → ≥ 80%。",
+  "branchName": "ralph/blog-seo-phase2",
+  "description": "博客 SEO 第二阶段：P0 修复分页标题 bug（189 个 tag 分页页面 title 输出 URL 字符串）+ GSC 就绪清单，P1 修复剩余 8 篇超长文章 title + 为 taxonomy 列表页生成 description，P2 相关文章内链 + og:image 质量验证。目标：全站 title 合规率 100%，taxonomy 页 description 覆盖，GSC sitemap 提交就绪。",
   "userStories": [
     {
-      "id": "US-001",
-      "title": "接入 seo.html partial，移除 head.html 重复 SEO 字段",
-      "description": "As a site owner, I want the existing seo.html partial to be wired into head.html so that meta description and canonical tags appear on every page.",
+      "id": "US-010",
+      "title": "P0: 修复分页列表页 title 输出 Permalink URL 字符串的 bug",
+      "description": "As a site owner, I want paginator pages (/page/N/) to show readable titles instead of URL-encoded strings, so Google doesn't index hundreds of pages with garbage titles.",
       "acceptanceCriteria": [
-        "在 layouts/partials/head.html 的 <title> 标签之后添加 {{- partial \"seo.html\" . -}} 调用",
-        "移除 head.html 中已与 seo.html 重复的 <meta name=\"description\"> 行",
-        "移除 head.html 中已与 seo.html 重复的 <link rel=\"canonical\"> 行",
-        "hugo.IsProduction 条件块内的 opengraph.html / twitter_cards.html 调用保留不变",
-        "hugo --minify 构建通过，生成页面数不减少",
-        "任意一篇文章的生成 HTML 中可见 <meta name=\"description\"> 和 <link rel=\"canonical\">",
+        "在 layouts/partials/head.html 的 $pageTitle 计算逻辑中，当 .Title 以 'http' 开头时，回退到使用 .Parent.Title（若存在）拼接分页信息，或直接使用 site.Title；不输出任何 http:// 开头的字符串作为 <title>",
+        "对于 .Paginator 存在且 .Paginator.PageNumber > 1 的页面，title 格式为：'{.Parent.Title} - Page {N} | cubxxw'（EN）或 '{.Parent.Title} - 第 {N} 页 | cubxxw'（ZH，通过 .Language.Lang 判断）",
+        "在 layouts/partials/seo.html 的 $title 计算逻辑中做相同的 http 前缀检查和分页处理，保持 head.html 和 og:title 一致",
+        "hugo --minify 构建通过",
+        "构建后用 Python 脚本检查 public/ 中所有 index.html，确认零个 <title> 以 'http' 开头",
         "Typecheck passes"
       ],
       "priority": 1,
-      "passes": true,
-      "notes": "seo.html partial 已接入 head.html，移除了重复的 description 和 canonical，修复了 categories 字符串/slice 兼容问题，构建通过"
+      "passes": false,
+      "notes": "根因：Hugo 分页页面（/page/N/）的 .Title 默认回退为 .Permalink（URL 编码字符串）。当前 head.html 的 $pageTitle 未对此做保护，导致约 189 个 ZH tag 分页页面 title 输出完整 URL。修改文件：layouts/partials/head.html（第 11-12 行），layouts/partials/seo.html（第 4 行 $title 变量）。"
     },
     {
-      "id": "US-002",
-      "title": "修复 seo.html og:title / og:description 单引号截断 bug",
-      "description": "As a site owner, I want og:title and og:description to render complete values even when titles contain apostrophes or em-dashes.",
+      "id": "US-011",
+      "title": "P0: 生成 GSC 操作手册并确认 sitemap 就绪",
+      "description": "As a site owner, I want a clear checklist for submitting to Google Search Console and confirmation that the sitemap is correctly configured.",
       "acceptanceCriteria": [
-        "layouts/partials/seo.html 中所有 content='{{ $title }}' 改为 content=\"{{ $title | htmlEscape }}\"（双引号 + htmlEscape）",
-        "同样处理 $description 的 content 属性",
-        "同样处理 twitter:title 和 twitter:description 的 content 属性",
-        "hugo --minify 构建通过",
-        "检查生成的 projects/notebooklm/index.html，og:title 包含完整标题而非 'NotebookLM: Google' 截断值",
-        "检查生成的 growth/posts/2025-annual-review/index.html，og:title 不再截断为 'I'",
+        "读取 public/sitemap.xml，确认其包含指向 /zh/sitemap.xml 和 /en/sitemap.xml（或等效语言分 sitemap）的条目，或直接包含所有页面的 URL",
+        "读取 public/robots.txt，确认 Sitemap 行指向 https://nsddd.top/sitemap.xml",
+        "在 tasks/ 目录创建 gsc-checklist.md，内容包含：1) Google Search Console 添加站点步骤（选 URL 前缀，输入 https://nsddd.top）；2) HTML 标签验证方式说明（复制 content 属性值）；3) 将验证码填入 config.yml params.analytics.google.SiteVerificationTag 的操作说明；4) 提交 sitemap URL（https://nsddd.top/sitemap.xml）；5) 提交后 48-72 小时内检查抓取状态",
+        "在 config.yml 的 analytics.google.SiteVerificationTag 空字段旁添加注释：# 在 Google Search Console 获取验证码后填入",
         "Typecheck passes"
       ],
       "priority": 2,
-      "passes": true,
-      "notes": "og:title/og:description/twitter:title/twitter:description 改用 htmlEscape，单引号截断 bug 已修复，构建通过"
+      "passes": false,
+      "notes": "GSC 验证码需要用户在浏览器手动获取，AI 无法完成。本 story 目标是技术就绪确认和操作文档生成。"
     },
     {
-      "id": "US-003",
-      "title": "模板层控制英文 title 长度（>20 字符不拼接站名）",
-      "description": "As a site owner, I want English article titles in <title> and og:title to stay within 70 characters without requiring individual front matter edits.",
+      "id": "US-012",
+      "title": "P1: 修复 8 篇文章超长 title（>70 字符）",
+      "description": "As a site owner, I want all article titles to be under 70 characters so Google displays complete titles in search results.",
       "acceptanceCriteria": [
-        "hugo.toml 新增配置项 shortTitle = \"cubxxw\"",
-        "layouts/partials/seo.html 的 $title 计算逻辑改为：若 .IsHome 则用 site.Params.title；若文章标题 > 20 字符则只输出 .Title；否则输出 .Title | shortTitle",
+        "修改 content/en/ai-technology/posts/directives-and-the-use-of-automation-tools.md 的 title 为 'Go Directives & Automation Tools' (≤60 字符)",
+        "修改 content/en/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips.md 的 title 为 'Open Source Resume Builders & Career Tips' (≤60 字符)",
+        "修改 content/en/ai-technology/posts/openim-cluster-deployment-parameter-passing-policy.md 的 title 为 'Kubernetes Port Config via Config Files' (≤60 字符)",
+        "修改 content/en/ai-technology/posts/gitops-practice-theory-part.md 的 title 为 'GitOps & Kubernetes Deployment Strategies' (≤60 字符)",
+        "修改 content/en/growth/posts/flow-state.md 的 title 为 'Flow State: Deep Focus and Happiness Guide' (≤60 字符)",
+        "修改 content/en/growth/posts/weight-of-self-in-ai-age.md 的 title 为 'Maintaining Self-Worth in the Age of AI' (≤60 字符)",
+        "修改 content/en/ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained.md 的 title 为 'Brain-Friendly English Learning Strategies' (≤60 字符)",
+        "修改 content/zh/ai-technology/posts/exploring-foundational-thinking-learning-across-disciplines.md 的 title 为 '底层思维：跨学科学习的核心原则' (≤20 中文字符)",
         "hugo --minify 构建通过",
-        "检查生成的 ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/index.html，<title> 长度 ≤ 70 字符",
-        "首页 <title> 仍为完整站名",
-        "中文文章（zh/ 路径下）title 渲染不受影响",
+        "构建后验证这 8 个页面对应的 <title> 均 ≤ 70 字符（用 Python 脚本遍历 public/ 统计）",
         "Typecheck passes"
       ],
       "priority": 3,
-      "passes": true,
-      "notes": "config.yml 新增 shortTitle: cubxxw；head.html 和 seo.html 的 $title 逻辑改为：标题 > 20 字符只输出 .Title，否则拼接 shortTitle；首页 title 用完整站名；构建通过"
+      "passes": false,
+      "notes": "具体措辞可微调，但必须保留核心关键词并控制在 60 字符以内。不要改动其他 frontmatter 字段。"
     },
     {
-      "id": "US-004",
-      "title": "批量重命名 13 篇英文文章 title（SEO 关键词优化）",
-      "description": "As a site owner, I want key English articles to have concise, keyword-rich titles under 60 characters so Google shows them completely in search results.",
+      "id": "US-013",
+      "title": "P1: 为 taxonomy 列表页生成动态 meta description",
+      "description": "As a site owner, I want tag and category pages to have meaningful meta descriptions so search results show useful snippets.",
       "acceptanceCriteria": [
-        "content/en/ai-technology/posts/openim-open-source-business-journey.md title 改为 'Open Source Business: From Community to Revenue'",
-        "content/en/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language.md title 改为 'Large Language Models: How LLMs Work'",
-        "content/en/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide.md title 改为 'LangChain: Building LLM Applications'",
-        "content/en/projects/tdd.md title 改为 'TDD for AI: Test-Driven Development Guide'",
-        "content/en/projects/notebooklm.md title 改为 \"NotebookLM: Google's AI Research Tool\"",
-        "content/en/projects/markItdown.md title 改为 'MarkItDown: Convert Documents to Markdown'",
-        "content/en/ai-technology/posts/openim-building-an-efficient-version-control-and-testing-workflow.md title 改为 'OpenIM: Version Control & Testing Workflow'",
-        "content/en/projects/jina.md title 改为 'Jina AI: Multimodal Search & Embeddings'",
-        "content/en/projects/langchain.md title 改为 'LangChain: Open Source LLM Framework'",
-        "content/en/projects/langgraph.md title 改为 'LangGraph: Stateful AI Agent Workflows'",
-        "content/en/projects/ai-recommend.md title 改为 'AI Recommendation Systems: How They Work'",
-        "content/en/growth/posts/2025-annual-review.md title 改为 'Wandering & Growing: 2025-2026 Annual Review'",
-        "content/en/growth/posts/ai-and-self-identity.md title 改为 'AI and Self-Identity: Who Am I in the AI Age'",
-        "所有修改后 title 字符数 ≤ 60",
+        "在 layouts/partials/seo.html 的 $description 变量计算块中，增加对 taxonomy/term 页面的特殊处理：当 .Kind 为 'taxonomy' 时，使用 'Browse {len .Pages} articles across all tags on cubxxw blog.'（EN）或 '探索 cubxxw 博客的所有标签。'（ZH）；当 .Kind 为 'term' 时，使用 'Browse {len .Pages} articles tagged with {.Title}.'（EN）或 '浏览 {len .Pages} 篇关于 {.Title} 的文章。'（ZH）",
+        "语言判断通过 .Language.Lang 实现（'zh' 走中文模板，其他走英文）",
+        "此逻辑在现有 $description 计算链的最前面（优先级最高），不影响有自定义 .Description 的页面",
         "hugo --minify 构建通过",
+        "构建后检查 public/tags/go/index.html 和 public/zh/tags/ai/index.html 均有非空 name=description 标签",
         "Typecheck passes"
       ],
       "priority": 4,
-      "passes": true,
-      "notes": "13 篇文章 title 已全部重命名完成"
+      "passes": false,
+      "notes": "修改文件：layouts/partials/seo.html。当前 $description 对 taxonomy 页面输出空字符串，导致 meta description 为空。.Pages 在 taxonomy/term 上下文中返回该分类下的所有文章集合。"
     },
     {
-      "id": "US-005",
-      "title": "修复 flow-state-guide URL 重定向异常",
-      "description": "As a site visitor, I want the URL /growth/posts/flow-state-guide to resolve to a proper page with complete metadata.",
+      "id": "US-014",
+      "title": "P2: 为文章添加相关文章内链模块",
+      "description": "As a site owner, I want articles to display related content at the bottom, so users discover more pages and internal link equity distributes across the site.",
       "acceptanceCriteria": [
-        "找到 content/en/growth/posts/flow-state.md（或对应文件名）",
-        "在该文件 front matter 添加 aliases: [\"/growth/posts/flow-state-guide/\"]",
-        "hugo --minify 构建后 public/growth/posts/flow-state-guide/index.html 存在且包含正确 title 和 h1",
-        "该重定向页面的 og:title 不为空",
+        "在 config.yml 中添加 related 配置块：indices 包含 tags（权重 80）和 categories（权重 20），threshold 80，includeNewer true",
+        "新建 layouts/partials/related-posts.html，使用 .Site.RegularPages.Related . 获取相关文章，最多显示 4 篇，每篇展示 title 和 date，样式使用 PaperMod 的 .entry 或 post-entry CSS class",
+        "仅当相关文章数量 ≥ 1 时渲染该模块，用 with 控制",
+        "在 layouts/_default/single.html 末尾（content 块结束后、footer 之前）插入 {{- partial 'related-posts.html' . -}}",
+        "hugo --minify 构建通过",
+        "Verify in browser using dev-browser skill：访问 http://localhost:1313/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/，确认页面底部出现相关文章区块且显示正常",
         "Typecheck passes"
       ],
       "priority": 5,
-      "passes": true,
-      "notes": "flow-state.md 已有 aliases: [/growth/posts/flow-state-guide/]，构建后重定向页面存在，真实文章页有完整 title、h1、og:title，hugo --minify 构建通过"
+      "passes": false,
+      "notes": "修改文件：config.yml（新增 related 块），layouts/_default/single.html（插入 partial 调用），新建 layouts/partials/related-posts.html。PaperMod 的文章卡片 CSS 已有 .post-entry，可复用。"
     },
     {
-      "id": "US-006",
-      "title": "修复 lhasa 英文路径错误重定向至中文版",
-      "description": "As a site visitor, I want the English URL /growth/posts/2026-03-27-lhasa-slow-and-heavy to not redirect to the Chinese /zh/ path.",
+      "id": "US-015",
+      "title": "P2: 验证并修复 og:image 尺寸与 URL 完整性",
+      "description": "As a site owner, I want og:image to always be a valid 1200×630 image with a full https:// URL, so social shares look correct on all platforms.",
       "acceptanceCriteria": [
-        "检查 content/en/growth/posts/ 目录下是否存在对应的 lhasa 文件；如不存在则需创建英文版 stub 页或在 hugo.toml 中添加正确重定向规则",
-        "若英文版不存在：在 content/en/growth/posts/ 创建对应文件，front matter 包含正确 title、date、lang 字段，正文可为简短英文摘要",
+        "用 Python 脚本（PIL 或 struct 读取 PNG header）检查 static/assets/og-image.png、og-ai-technology.png、og-growth.png、og-projects.png 的实际像素尺寸，输出检查结果",
+        "如有任何图片宽度 < 1200 或高度 < 630，使用 Python PIL（Pillow）生成正确尺寸的替换图：纯色背景（每个分类不同颜色）+ 中心白色文字（分类名），保存为 PNG",
+        "构建后对 20 篇随机文章页面检查 og:image 的 content 属性，确认全部以 https://nsddd.top 开头（用 Python 脚本）",
+        "如发现任何 og:image 为相对路径，在 seo.html 中确认 absURL 已正确应用",
         "hugo --minify 构建通过",
-        "访问英文路径不再错误重定向到 /zh/ 路径（构建输出中 en 版有独立 HTML 文件）",
         "Typecheck passes"
       ],
       "priority": 6,
-      "passes": true,
-      "notes": "创建英文版 content/en/growth/posts/2026-03-27-lhasa-slow-and-heavy.md stub 页；移除中文版 aliases（/growth/posts/2026-03-27-lhasa-slow-and-heavy/ 会与英文版路径冲突）；构建后英文版独立 HTML 存在且 lang=en，不再重定向到 /zh/"
-    },
-    {
-      "id": "US-007",
-      "title": "为各分类设置专属默认 og:image",
-      "description": "As a site owner, I want each content section (ai-technology, growth, projects) to use a distinct default og:image so social shares look different across categories.",
-      "acceptanceCriteria": [
-        "在 static/assets/ 创建三张 1200×630px 占位封面图（可为纯色 + 文字 SVG）：og-ai-technology.png、og-growth.png、og-projects.png",
-        "layouts/partials/seo.html 的 $ogImage 计算逻辑改为：有 cover.image 用 cover.image；否则按 .Section 选择分类默认图；ai-technology → /assets/og-ai-technology.png，growth → /assets/og-growth.png，projects → /assets/og-projects.png，其余 → /assets/og-image.png",
-        "hugo --minify 构建通过",
-        "检查一篇 ai-technology 文章生成 HTML 的 og:image 值为 .../og-ai-technology.png",
-        "已设置 cover.image 的文章 og:image 仍使用自定义图，不受影响",
-        "Typecheck passes"
-      ],
-      "priority": 7,
-      "passes": true,
-      "notes": "创建 og-ai-technology.png、og-growth.png、og-projects.png 三张 1200x630 分类封面图；seo.html $ogImage 逻辑改为按 .Section 选择分类默认图；有 cover.image 的文章仍使用自定义图；构建通过，验证通过"
-    },
-    {
-      "id": "US-008",
-      "title": "验证并去重 hreflang 标签，避免双重输出",
-      "description": "As a site owner, I want hreflang alternate tags to appear exactly once per page without duplication between head.html and seo.html.",
-      "acceptanceCriteria": [
-        "检查 seo.html 是否包含 hreflang 输出逻辑；如有，则移除 head.html 中的重复 hreflang 输出（range .AllTranslations 块）；如无，保留 head.html 现有实现不变",
-        "hugo --minify 构建后，检查一篇有中英双语版的文章生成 HTML，hreflang 标签出现且仅出现一次",
-        "hreflang 格式符合规范：<link rel=\"alternate\" hreflang=\"zh\" href=\"...\"> 和 <link rel=\"alternate\" hreflang=\"en\" href=\"...\">",
-        "hugo --minify 构建通过",
-        "Typecheck passes"
-      ],
-      "priority": 8,
-      "passes": true,
-      "notes": "seo.html 不含 hreflang 输出逻辑；head.html 的 range .AllTranslations 是唯一来源，无重复。验证：英文版与中文版各自输出 hreflang=en 和 hreflang=zh 互指，共 2 个，格式符合 Google 规范，构建通过"
+      "passes": false,
+      "notes": "当前 og-*.png 已存在于 static/assets/ 但尺寸未验证。Pillow 库需要 pip install pillow。如 CI 环境无 Pillow，可改用 Python struct 解析 PNG IHDR chunk 获取尺寸（无需外部依赖）。"
     }
   ]
 }
