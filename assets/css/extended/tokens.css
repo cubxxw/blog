@@ -3,7 +3,7 @@
  * These tokens are independent of PaperMod's --theme / --primary / --secondary.
  * Language switching via :lang(zh) / :lang(en) selectors.
  * Dark mode via body.dark (PaperMod adds .dark to body, not html).
- * :lang() pseudo-class inherits from html[lang], so body.dark:lang(zh) works correctly.
+ * lang attribute is on html, so use html:lang(zh) body.dark for Chinese dark mode.
  */
 
 /* ─── Light / English (default) ───────────────────────────── */
@@ -87,8 +87,7 @@ html:lang(zh) {
 
 /* ─── Dark / English ───────────────────────────────────────── */
 body.dark:lang(en),
-body.dark:not(:lang(zh)),
-[data-theme="dark"]:not(:lang(zh)) {
+[data-theme="dark"]:lang(en) {
   --color-paper:        #121413;
   --color-ink:          #e2e3e1;
   --color-ink-muted:    #b4bcb2;
@@ -102,8 +101,8 @@ body.dark:not(:lang(zh)),
 }
 
 /* ─── Dark / Chinese ───────────────────────────────────────── */
-body.dark:lang(zh),
-[data-theme="dark"]:lang(zh) {
+html:lang(zh) body.dark,
+html:lang(zh) [data-theme="dark"] {
   --color-paper:        #1c1917;
   --color-ink:          #f5f3ee;
   --color-ink-muted:    #a8a29e;
