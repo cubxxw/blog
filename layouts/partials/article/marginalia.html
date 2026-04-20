@@ -28,6 +28,8 @@
   {{- $archivesURL := "/archives/" }}
   {{- if eq $page.Lang "en" }}{{ $archivesURL = "/en/archives/" }}{{ end }}
   {{- if eq $page.Lang "zh" }}{{ $archivesURL = "/zh/archives/" }}{{ end }}
+  {{- $zeroTime := "0001-01-01" }}
+  {{- if ne ($page.Date.Format "2006-01-02") $zeroTime }}
   <div class="marginalia-group">
     <span class="marginalia-label">{{ i18n "marginalia.chronicle" | default "Chronicle" }}</span>
     <a href="{{ $archivesURL | relURL }}" class="marginalia-value marginalia-date marginalia-link">
@@ -38,6 +40,7 @@
       {{- end -}}
     </a>
   </div>
+  {{- end }}
 
   {{/* ── Dimensions (Reading Time + Word Count) ── */}}
   <div class="marginalia-group">
