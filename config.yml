@@ -190,8 +190,8 @@ languages:
           weight: 17
         - identifier: posts
           name: Posts
-          url: /posts/
-          pageRef: /posts
+          url: /articles/
+          pageRef: /articles
           weight: 18
         - identifier: travel
           name: Travel
@@ -264,8 +264,8 @@ languages:
           weight: 17
         - identifier: posts
           name: 文章
-          url: /posts/
-          pageRef: /posts
+          url: /zh/articles/
+          pageRef: /zh/articles
           weight: 18
         - identifier: travel
           name: 旅行
