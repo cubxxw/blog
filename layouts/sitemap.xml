@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+{{- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -6,15 +6,11 @@
   {{- range .Site.Pages -}}
     {{- $page := . -}}
     {{- $skip := false -}}
-    {{/* Skip private pages */}}
     {{- if .Params.private }}{{ $skip = true }}{{ end -}}
-    {{/* Skip noindex pages */}}
     {{- if .Params.robotsNoIndex }}{{ $skip = true }}{{ end -}}
-    {{/* Skip sitemap-excluded pages */}}
     {{- if eq .Params.sitemap_exclude true }}{{ $skip = true }}{{ end -}}
-    {{/* Skip utility pages (search, archives, categories listing) */}}
     {{- if in $excludedLayouts .Layout }}{{ $skip = true }}{{ end -}}
-    {{/* Only include real content kinds */}}
+    {{- if or (eq .Kind "404") (strings.Contains .RelPermalink "/404") }}{{ $skip = true }}{{ end -}}
     {{- if not (in (slice "page" "home" "section" "taxonomy" "term") .Kind) }}{{ $skip = true }}{{ end -}}
     {{- if not $skip -}}
   <url>
@@ -51,7 +47,6 @@
       <image:loc>{{ .Params.cover.image | absURL }}</image:loc>
     </image:image>
     {{- end }}
-    {{/* hreflang alternate links for translated pages */}}
     {{- if .IsTranslated }}
     {{- range .AllTranslations }}
     <xhtml:link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}"/>
