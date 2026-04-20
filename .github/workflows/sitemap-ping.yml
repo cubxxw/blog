@@ -1,0 +1,82 @@
+name: Sitemap Ping
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "content/**"
+      - "layouts/**"
+      - "static/**"
+      - "config.yml"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Netlify deploy
+        run: sleep 60
+
+      - name: Ping Google
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.google.com/ping?sitemap=https%3A%2F%2Fnsddd.top%2Fsitemap.xml")
+          echo "Google ping status: $STATUS"
+          if [ "$STATUS" != "200" ] && [ "$STATUS" != "204" ]; then
+            echo "Warning: Google ping returned $STATUS"
+          fi
+
+      - name: Ping Bing
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.bing.com/ping?sitemap=https%3A%2F%2Fnsddd.top%2Fsitemap.xml")
+          echo "Bing ping status: $STATUS"
+
+      - name: Verify sitemap is reachable
+        run: |
+          for url in \
+            "https://nsddd.top/sitemap.xml" \
+            "https://nsddd.top/en/sitemap.xml" \
+            "https://nsddd.top/zh/sitemap.xml"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+            echo "$url → $STATUS"
+            if [ "$STATUS" != "200" ]; then
+              echo "::error::$url returned $STATUS"
+              exit 1
+            fi
+          done
+
+      - name: Check sitemap quality
+        run: |
+          # 验证主 sitemap 是 sitemapindex 格式
+          CONTENT=$(curl -s "https://nsddd.top/sitemap.xml")
+          if echo "$CONTENT" | grep -q "sitemapindex"; then
+            echo "✅ Root sitemap is sitemapindex"
+          elif echo "$CONTENT" | grep -q "urlset"; then
+            echo "⚠️  Root sitemap is urlset (not sitemapindex) — may be stale cache"
+          else
+            echo "::error::Root sitemap format is unrecognized"
+            exit 1
+          fi
+
+          # 验证 en/sitemap.xml 无 zh loc 污染
+          EN_ZH_LOCS=$(curl -s "https://nsddd.top/en/sitemap.xml" | \
+            grep -o '<loc>[^<]*</loc>' | grep "/zh/" | wc -l)
+          echo "zh <loc> entries in en sitemap: $EN_ZH_LOCS (should be 0)"
+          if [ "$EN_ZH_LOCS" -gt "0" ]; then
+            echo "::warning::en/sitemap.xml contains $EN_ZH_LOCS zh <loc> entries"
+          fi
+
+          # 验证 404 没有进 sitemap
+          FOUR04=$(curl -s "https://nsddd.top/en/sitemap.xml" | \
+            grep -o '<loc>[^<]*</loc>' | grep "/404" | wc -l)
+          echo "404 entries in en sitemap: $FOUR04 (should be 0)"
+          if [ "$FOUR04" -gt "0" ]; then
+            echo "::warning::en/sitemap.xml contains $FOUR04 404-page entries"
+          fi
+
+          # 报告 URL 数量
+          EN_COUNT=$(curl -s "https://nsddd.top/en/sitemap.xml" | grep -c "<loc>")
+          ZH_COUNT=$(curl -s "https://nsddd.top/zh/sitemap.xml" | grep -c "<loc>")
+          echo "📊 en sitemap URLs: $EN_COUNT"
+          echo "📊 zh sitemap URLs: $ZH_COUNT"
