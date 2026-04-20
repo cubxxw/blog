@@ -131,8 +131,8 @@ body.dark .editorial-tools-panel .rc-tab.active {
 }
 
 /* P0-2: ZH dark — tab active text must use ink (light), not paper (dark bg) */
-body.dark:lang(zh) .editorial-tools-panel .rc-tab--active,
-body.dark:lang(zh) .editorial-tools-panel .rc-tab.active {
+html:lang(zh) body.dark .editorial-tools-panel .rc-tab--active,
+html:lang(zh) body.dark .editorial-tools-panel .rc-tab.active {
   color: var(--color-ink, #f5f3ee);
   background: rgba(245, 243, 238, 0.12);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -197,7 +197,7 @@ body.dark .editorial-tools-panel .toc-item a {
 }
 
 /* P0-3: ZH dark — TOC links must use ink (light), not paper (dark bg) */
-body.dark:lang(zh) .editorial-tools-panel .toc-item a {
+html:lang(zh) body.dark .editorial-tools-panel .toc-item a {
   color: var(--color-ink, #f5f3ee);
   opacity: 0.76;
 }
@@ -215,7 +215,7 @@ body.dark .editorial-tools-panel .toc-item a:hover {
 }
 
 /* P0-3 hover: ZH dark — same fix for hover state */
-body.dark:lang(zh) .editorial-tools-panel .toc-item a:hover {
+html:lang(zh) body.dark .editorial-tools-panel .toc-item a:hover {
   color: var(--color-ink, #f5f3ee);
   background: rgba(245, 243, 238, 0.09);
   opacity: 1;
@@ -254,7 +254,7 @@ html:lang(en) body.dark .editorial-tools-panel .toc-item a.toc-active {
 }
 
 /* P0-1: ZH dark — TOC active item must use accent red, not paper (dark bg = invisible) */
-body.dark:lang(zh) .editorial-tools-panel .toc-item a.toc-active {
+html:lang(zh) body.dark .editorial-tools-panel .toc-item a.toc-active {
   color: var(--color-accent, #ff3b3b) !important;
   border-left-color: var(--color-accent, #ff3b3b) !important;
   border-left-width: 3px;

@@ -10,12 +10,12 @@
 }
 
 /* P1-1: Split ZH/EN dark accent so colors match each language's design system */
-body.dark:not(:lang(zh)) .toc-side__nav a.toc-active,
-.dark:not(:lang(zh)) .toc-side__nav a.toc-active {
+html:not(:lang(zh)) body.dark .toc-side__nav a.toc-active,
+html:not(:lang(zh)) .dark .toc-side__nav a.toc-active {
   color: #7dd3fc !important;
 }
 
-body.dark:lang(zh) .toc-side__nav a.toc-active {
+html:lang(zh) body.dark .toc-side__nav a.toc-active {
   color: #ff3b3b !important;
 }
 
@@ -30,12 +30,12 @@ body.dark:lang(zh) .toc-side__nav a.toc-active {
 }
 
 /* P1-1: sidebar TOC also split by language */
-body.dark:not(:lang(zh)) .toc-sidebar__nav #TableOfContents a.toc-sidebar-active,
-.dark:not(:lang(zh)) .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
+html:not(:lang(zh)) body.dark .toc-sidebar__nav #TableOfContents a.toc-sidebar-active,
+html:not(:lang(zh)) .dark .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
   color: var(--color-accent, #7dd3fc) !important;
 }
 
-body.dark:lang(zh) .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
+html:lang(zh) body.dark .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
   color: var(--color-accent, #ff3b3b) !important;
 }
 
