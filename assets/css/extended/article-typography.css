@@ -43,7 +43,7 @@ html:lang(zh) .post-description {
 }
 
 body.dark .post-description {
-  color: rgba(226, 227, 225, 0.62);
+  color: rgba(226, 227, 225, 0.78);
   background: transparent;
   border-left-color: rgba(226, 227, 225, 0.15);
 }
@@ -112,6 +112,14 @@ html:lang(en) .post-content p.drop-cap::first-letter {
 /* Override custom.css fixed dark color with token-based accent */
 body.dark .post-content h2 {
   border-left-color: var(--color-accent);
+}
+
+/* P1-2: Explicit dark-mode text color for headings so ZH dark (#350003 ink)
+   never bleeds through — use the resolved light ink token instead. */
+body.dark .post-content h2,
+body.dark .post-content h3,
+body.dark .post-content h4 {
+  color: var(--color-ink, #f5f3ee);
 }
 
 html:lang(zh) .post-content h2 {
@@ -368,7 +376,7 @@ body.dark:lang(zh) .post-content pre:not(.mermaid) {
   --code-surface: #1c1917;
   --hljs-bg: var(--code-surface);
   --code-ink: #f5f3ee;
-  --code-border: rgba(245,243,238,0.08);
+  --code-border: rgba(245,243,238,0.14);
   --code-shadow: 0 1px 2px rgba(0,0,0,0.12),
                  0 8px 24px -16px rgba(0,0,0,0.50);
   --code-scroll: rgba(245,243,238,0.12);
@@ -658,7 +666,7 @@ body.dark:lang(zh) .post-content .highlight code .c,
 body.dark:lang(zh) .post-content .highlight code .c1,
 body.dark:lang(zh) .post-content .highlight code .cm,
 body.dark:lang(zh) .post-content .highlight code .cp,
-body.dark:lang(zh) .post-content .highlight code .cs { color: #7d7068; font-style: italic; }
+body.dark:lang(zh) .post-content .highlight code .cs { color: #b8ada3; font-style: italic; }
 
 body.dark:lang(zh) .post-content .highlight code .nf,
 body.dark:lang(zh) .post-content .highlight code .nx { color: #c792ea; }
@@ -685,7 +693,7 @@ body.dark:lang(zh) .post-content code .hljs-attr { color: #a8d8a8 !important; }
 
 body.dark:lang(zh) .post-content code .hljs-comment,
 body.dark:lang(zh) .post-content code .hljs-quote,
-body.dark:lang(zh) .post-content code .hljs-meta { color: #7d7068 !important; font-style: italic; }
+body.dark:lang(zh) .post-content code .hljs-meta { color: #b8ada3 !important; font-style: italic; }
 
 body.dark:lang(zh) .post-content code .hljs-title,
 body.dark:lang(zh) .post-content code .hljs-section,

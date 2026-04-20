@@ -177,6 +177,20 @@
   border-color: transparent;
 }
 
+/* Dark mode — soften border and reduce contrast so button is less jarring */
+body.dark .marginalia-github-btn {
+  color: rgba(226, 227, 225, 0.72);
+  border-color: rgba(226, 227, 225, 0.14);
+  opacity: 0.82;
+}
+
+body.dark .marginalia-github-btn:hover {
+  background: rgba(226, 227, 225, 0.1);
+  color: var(--color-ink, #e2e3e1);
+  border-color: rgba(226, 227, 225, 0.25);
+  opacity: 1;
+}
+
 .marginalia-github-btn--muted {
   color: var(--color-ink-muted, #5e5e63);
   opacity: 0.75;

@@ -110,7 +110,7 @@ html:lang(zh) .editorial-tools-panel .rc-tab {
 }
 
 body.dark .editorial-tools-panel .rc-tab:hover {
-  color: var(--color-paper, #e2e3e1);
+  color: var(--color-ink, #e2e3e1);
   background: rgba(226, 227, 225, 0.06);
 }
 
@@ -125,8 +125,16 @@ body.dark .editorial-tools-panel .rc-tab:hover {
 
 body.dark .editorial-tools-panel .rc-tab--active,
 body.dark .editorial-tools-panel .rc-tab.active {
-  color: var(--color-paper, #e2e3e1);
-  background: rgba(226, 227, 225, 0.1);
+  color: var(--color-ink, #e2e3e1);
+  background: rgba(226, 227, 225, 0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* P0-2: ZH dark — tab active text must use ink (light), not paper (dark bg) */
+body.dark:lang(zh) .editorial-tools-panel .rc-tab--active,
+body.dark:lang(zh) .editorial-tools-panel .rc-tab.active {
+  color: var(--color-ink, #f5f3ee);
+  background: rgba(245, 243, 238, 0.12);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -184,8 +192,14 @@ html:lang(zh) .editorial-tools-panel .toc-item a {
 }
 
 body.dark .editorial-tools-panel .toc-item a {
-  color: var(--color-paper, #e2e3e1);
-  opacity: 0.55;
+  color: var(--color-ink, #e2e3e1);
+  opacity: 0.72;
+}
+
+/* P0-3: ZH dark — TOC links must use ink (light), not paper (dark bg) */
+body.dark:lang(zh) .editorial-tools-panel .toc-item a {
+  color: var(--color-ink, #f5f3ee);
+  opacity: 0.76;
 }
 
 .editorial-tools-panel .toc-item a:hover {
@@ -195,8 +209,15 @@ body.dark .editorial-tools-panel .toc-item a {
 }
 
 body.dark .editorial-tools-panel .toc-item a:hover {
-  color: var(--color-paper, #e2e3e1);
-  background: rgba(226, 227, 225, 0.05);
+  color: var(--color-ink, #e2e3e1);
+  background: rgba(226, 227, 225, 0.09);
+  opacity: 1;
+}
+
+/* P0-3 hover: ZH dark — same fix for hover state */
+body.dark:lang(zh) .editorial-tools-panel .toc-item a:hover {
+  color: var(--color-ink, #f5f3ee);
+  background: rgba(245, 243, 238, 0.09);
   opacity: 1;
 }
 
@@ -214,9 +235,9 @@ html:lang(zh) .editorial-tools-panel .toc-item a.toc-active {
 }
 
 body.dark .editorial-tools-panel .toc-item a.toc-active {
-  color: var(--color-paper, #e2e3e1);
+  color: var(--color-ink, #e2e3e1);
   background: rgba(226, 227, 225, 0.08);
-  border-left-color: var(--color-paper, #e2e3e1);
+  border-left-color: var(--color-ink, #e2e3e1);
   opacity: 1;
 }
 
@@ -227,16 +248,30 @@ html:lang(en) .editorial-tools-panel .toc-item a.toc-active {
 }
 
 html:lang(en) body.dark .editorial-tools-panel .toc-item a.toc-active {
-  color: var(--color-paper, #e2e3e1);
-  background: rgba(226, 227, 225, 0.08);
-  border-left-color: var(--color-paper, #e2e3e1);
+  color: #7dd3fc;
+  background: rgba(125, 211, 252, 0.10);
+  border-left-color: #7dd3fc;
+}
+
+/* P0-1: ZH dark — TOC active item must use accent red, not paper (dark bg = invisible) */
+body.dark:lang(zh) .editorial-tools-panel .toc-item a.toc-active {
+  color: var(--color-accent, #ff3b3b) !important;
+  border-left-color: var(--color-accent, #ff3b3b) !important;
+  border-left-width: 3px;
+  background: rgba(220, 80, 60, 0.15);
+  font-weight: 600;
+  opacity: 1;
 }
 
 /* Indent sub-headings progressively, smaller but still readable */
 .editorial-tools-panel .toc-item--h3 a {
-  padding-left: 28px;
-  font-size: 0.78rem;
+  padding-left: 32px;
+  font-size: 0.80rem;
   opacity: 0.75;
+}
+
+body.dark .editorial-tools-panel .toc-item--h3 a {
+  opacity: 0.82;
 }
 .editorial-tools-panel .toc-item--h4 a {
   padding-left: 42px;
@@ -339,7 +374,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-chip {
 body.dark .editorial-tools-panel .rc-ai-chip {
   background: rgba(226, 227, 225, 0.03);
   border-color: rgba(226, 227, 225, 0.1);
-  color: var(--color-paper, #e2e3e1);
+  color: var(--color-ink, #e2e3e1);
 }
 
 body.dark .editorial-tools-panel .rc-ai-chip:hover {
@@ -394,11 +429,11 @@ html:lang(zh) .editorial-tools-panel .rc-ai-messages {
 
 body.dark .editorial-tools-panel .rc-ai-msg--user {
   background: rgba(226, 227, 225, 0.08);
-  color: var(--color-paper, #e2e3e1);
+  color: var(--color-ink, #e2e3e1);
 }
 
 body.dark .editorial-tools-panel .rc-ai-msg--ai {
-  color: var(--color-paper, #e2e3e1);
+  color: var(--color-ink, #e2e3e1);
 }
 
 /* Composer — generous, with breathing room above */
@@ -453,7 +488,7 @@ html:lang(zh) .editorial-tools-panel .rc-ai-textarea {
 }
 
 body.dark .editorial-tools-panel .rc-ai-textarea {
-  color: var(--color-paper, #e2e3e1);
+  color: var(--color-ink, #e2e3e1);
 }
 
 .editorial-tools-panel .rc-ai-textarea::placeholder {
@@ -518,7 +553,7 @@ body.dark .editorial-tools-panel .rc-ai-share-btn {
 body.dark .editorial-tools-panel .rc-ai-share-btn:hover {
   background: rgba(226, 227, 225, 0.08);
   border-color: rgba(226, 227, 225, 0.24);
-  color: var(--color-paper, #e2e3e1);
+  color: var(--color-ink, #e2e3e1);
 }
 
 .editorial-tools-panel .rc-ai-loading {
