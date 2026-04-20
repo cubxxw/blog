@@ -1,2 +1,191 @@
 /dn    /zh/categories/个人成长-personal-development/   301
 /travel-direct    https://www.polarsteps.com/cubxxw   302
+
+# www subdomain → apex domain
+https://www.nsddd.top/*   https://nsddd.top/:splat   301!
+
+# Broken template URL (Google crawled a Hugo template rendering bug)
+/search?q=%7B%7B.%7D%7D   /   301
+
+# /posts/ai-projects/* → /projects/* (moved to dedicated section)
+/posts/ai-projects/langgraph   /en/projects/langgraph/   301
+/posts/ai-projects/notebooklm   /en/projects/notebooklm/   301
+/zh/posts/ai-projects/langgraph   /zh/projects/langgraph/   301
+/zh/posts/ai-projects/notebooklm   /zh/projects/notebooklm/   301
+
+# Paginated old list pages
+/posts/page/2   /en/articles/   301
+/zh/posts/page/2   /zh/articles/   301
+
+# zh/posts/* → zh/growth/posts/* (section path changed)
+/zh/posts/2023-annual-summary-reflections-and-aspirations/    /zh/growth/posts/2023-annual-summary-reflections-and-aspirations/    301
+/zh/posts/2024-annual-review/    /zh/growth/posts/2024-annual-review/    301
+/zh/posts/2025-03-thought-notes/    /zh/growth/posts/2025-03-thought-notes/    301
+/zh/posts/2025-04-thought-notes/    /zh/growth/posts/2025-04-thought-notes/    301
+/zh/posts/2025-05-thought-notes/    /zh/growth/posts/2025-05-thought-notes/    301
+/zh/posts/2025-06-thought-notes/    /zh/growth/posts/2025-06-thought-notes/    301
+/zh/posts/2025-07-thought-notes/    /zh/growth/posts/2025-07-thought-notes/    301
+/zh/posts/2025-08-thought-notes/    /zh/growth/posts/2025-08-thought-notes/    301
+/zh/posts/2025-09-thought-notes/    /zh/growth/posts/2025-09-thought-notes/    301
+/zh/posts/2025-10-thought-notes/    /zh/growth/posts/2025-10-thought-notes/    301
+/zh/posts/2025-11-thought-notes/    /zh/growth/posts/2025-11-thought-notes/    301
+/zh/posts/2025-12-thought-notes/    /zh/growth/posts/2025-12-thought-notes/    301
+/zh/posts/2025-annual-review/    /zh/growth/posts/2025-annual-review/    301
+/zh/posts/2026-01-thought-notes/    /zh/growth/posts/2026-01-thought-notes/    301
+/zh/posts/2026-02-thought-notes/    /zh/growth/posts/2026-02-thought-notes/    301
+/zh/posts/2026-03-thought-notes/    /zh/growth/posts/2026-03-thought-notes/    301
+/zh/posts/ai-and-self-identity/    /zh/growth/posts/ai-and-self-identity/    301
+/zh/posts/combining-github-and-google-workspace-for-project-management/    /zh/growth/posts/combining-github-and-google-workspace-for-project-management/    301
+/zh/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/    /zh/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/    301
+/zh/posts/flow-state/    /zh/growth/posts/flow-state/    301
+/zh/posts/gtd-and-the-four-quadrant-rule-practice/    /zh/growth/posts/gtd-and-the-four-quadrant-rule-practice/    301
+/zh/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/    /zh/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/    301
+/zh/posts/metacognitive-transformation-review/    /zh/growth/posts/metacognitive-transformation-review/    301
+/zh/posts/my-first-blog/    /zh/growth/posts/my-first-blog/    301
+/zh/posts/stage-growth-of-open-source/    /zh/growth/posts/stage-growth-of-open-source/    301
+
+# zh/posts/* → zh/ai-technology/posts/* (tech articles)
+/zh/posts/UFO/    /zh/ai-technology/posts/UFO/    301
+/zh/posts/ufo/    /zh/ai-technology/posts/UFO/    301
+/zh/posts/advanced-githook-design/    /zh/ai-technology/posts/advanced-githook-design/    301
+/zh/posts/argo-cd/    /zh/ai-technology/posts/argo-cd/    301
+/zh/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/    /zh/ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/    301
+/zh/posts/concurrent-type-checking-and-cross-platform-development-in-go/    /zh/ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go/    301
+/zh/posts/cross-platform-compilation/    /zh/ai-technology/posts/cross-platform-compilation/    301
+/zh/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/    /zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/    301
+/zh/posts/deep-dive-into-the-components-of-kubernetes-etcd/    /zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-etcd/    301
+/zh/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/    /zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/    301
+/zh/posts/deep-dive-into-the-components-of-kubernetes-kubectl/    /zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kubectl/    301
+/zh/posts/deep-dive-into-the-components-of-kubernetes-scheduler/    /zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-scheduler/    301
+/zh/posts/deployment-and-design-of-management-backend-and-monitoring/    /zh/ai-technology/posts/deployment-and-design-of-management-backend-and-monitoring/    301
+/zh/posts/directives-and-the-use-of-automation-tools/    /zh/ai-technology/posts/directives-and-the-use-of-automation-tools/    301
+/zh/posts/emerging-challenges-and-trends-in-2024/    /zh/ai-technology/posts/emerging-challenges-and-trends-in-2024/    301
+/zh/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/    /zh/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/    301
+/zh/posts/exploring-sora-technology-for-enthusiasts-and-developers/    /zh/ai-technology/posts/exploring-sora-technology-for-enthusiasts-and-developers/    301
+/zh/posts/github-actions-advanced-techniques/    /zh/ai-technology/posts/github-actions-advanced-techniques/    301
+/zh/posts/gitops-practice-theory-part/    /zh/ai-technology/posts/gitops-practice-theory-part/    301
+/zh/posts/go-release-tools/    /zh/ai-technology/posts/go-release-tools/    301
+/zh/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/    /zh/ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/    301
+/zh/posts/hugo-advanced-tutorial/    /zh/ai-technology/posts/hugo-advanced-tutorial/    301
+/zh/posts/kubernetes-an-article-to-get-started-quickly/    /zh/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/    301
+/zh/posts/kubernetes-for-kustomize-learning/    /zh/ai-technology/posts/kubernetes-for-kustomize-learning/    301
+/zh/posts/kubernetes-learning/    /zh/ai-technology/posts/kubernetes-learning/    301
+/zh/posts/learn-about-automated-testing/    /zh/ai-technology/posts/learn-about-automated-testing/    301
+/zh/posts/mem0/    /zh/ai-technology/posts/mem0/    301
+/zh/posts/my-hugo/    /zh/ai-technology/posts/my-hugo/    301
+/zh/posts/navigating-the-open-source-landscape/    /zh/ai-technology/posts/navigating-the-open-source-landscape/    301
+/zh/posts/open-source-contribution-guidelines/    /zh/ai-technology/posts/open-source-contribution-guidelines/    301
+/zh/posts/openim-building-an-efficient-version-control-and-testing-workflow/    /zh/ai-technology/posts/openim-building-an-efficient-version-control-and-testing-workflow/    301
+/zh/posts/openim-cluster-deployment-parameter-passing-policy/    /zh/ai-technology/posts/openim-cluster-deployment-parameter-passing-policy/    301
+/zh/posts/openim-cluster-deployment-scheme-of/    /zh/ai-technology/posts/openim-cluster-deployment-scheme-of/    301
+/zh/posts/openim-devops-design/    /zh/ai-technology/posts/openim-devops-design/    301
+/zh/posts/openim-multi-process-management/    /zh/ai-technology/posts/openim-multi-process-management/    301
+/zh/posts/openim-offline-deployment-design/    /zh/ai-technology/posts/openim-offline-deployment-design/    301
+/zh/posts/openim-open-source-business-journey/    /zh/ai-technology/posts/openim-open-source-business-journey/    301
+/zh/posts/openim-remote-work-culture/    /zh/ai-technology/posts/openim-remote-work-culture/    301
+/zh/posts/openim-use-harbor-build-enterprise-mirror-repositories/    /zh/ai-technology/posts/openim-use-harbor-build-enterprise-mirror-repositories/    301
+/zh/posts/openkf-multi-architecture-image/    /zh/ai-technology/posts/openkf-multi-architecture-image/    301
+/zh/posts/participating-in-this-project/    /zh/ai-technology/posts/participating-in-this-project/    301
+/zh/posts/project-management-from-theory-to-practice/    /zh/ai-technology/posts/project-management-from-theory-to-practice/    301
+/zh/posts/prow-ecological-learning/    /zh/ai-technology/posts/prow-ecological-learning/    301
+/zh/posts/read-openim-project-sealos-openim-source-code/    /zh/ai-technology/posts/read-openim-project-sealos-openim-source-code/    301
+/zh/posts/sora-ease-guide-mastering-sora-ai-for-developers/    /zh/ai-technology/posts/sora-ease-guide-mastering-sora-ai-for-developers/    301
+/zh/posts/the-art-of-asking-questions-in-open-source-communities/    /zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/    301
+/zh/posts/troubleshooting-guide-for-openim/    /zh/ai-technology/posts/troubleshooting-guide-for-openim/    301
+/zh/posts/use-auto-gpt/    /zh/ai-technology/posts/use-auto-gpt/    301
+/zh/posts/use-go-tools-dlv/    /zh/ai-technology/posts/use-go-tools-dlv/    301
+/zh/posts/vector-database-learning/    /zh/ai-technology/posts/vector-database-learning/    301
+
+# English /posts/* → correct section paths
+/posts/2023-annual-summary-reflections-and-aspirations/    /growth/posts/2023-annual-summary-reflections-and-aspirations/    301
+/posts/2024-annual-review/    /growth/posts/2024-annual-review/    301
+/posts/2025-03-thought-notes/    /growth/posts/2025-03-thought-notes/    301
+/posts/2025-04-thought-notes/    /growth/posts/2025-04-thought-notes/    301
+/posts/2025-05-thought-notes/    /growth/posts/2025-05-thought-notes/    301
+/posts/2025-06-thought-notes/    /growth/posts/2025-06-thought-notes/    301
+/posts/2025-07-thought-notes/    /growth/posts/2025-07-thought-notes/    301
+/posts/2025-08-thought-notes/    /growth/posts/2025-08-thought-notes/    301
+/posts/2025-11-thought-notes/    /growth/posts/2025-11-thought-notes/    301
+/posts/2025-12-thought-notes/    /growth/posts/2025-12-thought-notes/    301
+/posts/2025-annual-review/    /growth/posts/2025-annual-review/    301
+/posts/2026-01-thought-notes/    /growth/posts/2026-01-thought-notes/    301
+/posts/2026-02-thought-notes/    /growth/posts/2026-02-thought-notes/    301
+/posts/2026-03-thought-notes/    /growth/posts/2026-03-thought-notes/    301
+/posts/ai-and-self-identity/    /growth/posts/ai-and-self-identity/    301
+/posts/combining-github-and-google-workspace-for-project-management/    /growth/posts/combining-github-and-google-workspace-for-project-management/    301
+/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/    /growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/    301
+/posts/flow-state/    /growth/posts/flow-state/    301
+/posts/gtd-and-the-four-quadrant-rule-practice/    /growth/posts/gtd-and-the-four-quadrant-rule-practice/    301
+/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/    /growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/    301
+/posts/metacognitive-transformation-review/    /growth/posts/metacognitive-transformation-review/    301
+/posts/my-first-blog/    /growth/posts/my-first-blog/    301
+/posts/stage-growth-of-open-source/    /growth/posts/stage-growth-of-open-source/    301
+/posts/advanced-githook-design/    /ai-technology/posts/advanced-githook-design/    301
+/posts/argo-cd/    /ai-technology/posts/argo-cd/    301
+/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/    /ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/    301
+/posts/cross-platform-compilation/    /ai-technology/posts/cross-platform-compilation/    301
+/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/    /ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/    301
+/posts/deep-dive-into-the-components-of-kubernetes-etcd/    /ai-technology/posts/deep-dive-into-the-components-of-kubernetes-etcd/    301
+/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/    /ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/    301
+/posts/deep-dive-into-the-components-of-kubernetes-kubectl/    /ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kubectl/    301
+/posts/deep-dive-into-the-components-of-kubernetes-scheduler/    /ai-technology/posts/deep-dive-into-the-components-of-kubernetes-scheduler/    301
+/posts/deployment-and-design-of-management-backend-and-monitoring/    /ai-technology/posts/deployment-and-design-of-management-backend-and-monitoring/    301
+/posts/directives-and-the-use-of-automation-tools/    /ai-technology/posts/directives-and-the-use-of-automation-tools/    301
+/posts/emerging-challenges-and-trends-in-2024/    /ai-technology/posts/emerging-challenges-and-trends-in-2024/    301
+/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/    /ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/    301
+/posts/exploring-sora-technology-for-enthusiasts-and-developers/    /ai-technology/posts/exploring-sora-technology-for-enthusiasts-and-developers/    301
+/posts/github-actions-advanced-techniques/    /ai-technology/posts/github-actions-advanced-techniques/    301
+/posts/gitops-practice-theory-part/    /ai-technology/posts/gitops-practice-theory-part/    301
+/posts/go-release-tools/    /ai-technology/posts/go-release-tools/    301
+/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/    /ai-technology/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/    301
+/posts/hugo-advanced-tutorial/    /ai-technology/posts/hugo-advanced-tutorial/    301
+/posts/kubernetes-an-article-to-get-started-quickly/    /ai-technology/posts/kubernetes-an-article-to-get-started-quickly/    301
+/posts/kubernetes-for-kustomize-learning/    /ai-technology/posts/kubernetes-for-kustomize-learning/    301
+/posts/learn-about-automated-testing/    /ai-technology/posts/learn-about-automated-testing/    301
+/posts/mem0/    /ai-technology/posts/mem0/    301
+/posts/my-hugo/    /ai-technology/posts/my-hugo/    301
+/posts/navigating-the-open-source-landscape/    /ai-technology/posts/navigating-the-open-source-landscape/    301
+/posts/open-source-contribution-guidelines/    /ai-technology/posts/open-source-contribution-guidelines/    301
+/posts/openim-building-an-efficient-version-control-and-testing-workflow/    /ai-technology/posts/openim-building-an-efficient-version-control-and-testing-workflow/    301
+/posts/openim-cluster-deployment-parameter-passing-policy/    /ai-technology/posts/openim-cluster-deployment-parameter-passing-policy/    301
+/posts/openim-cluster-deployment-scheme-of/    /ai-technology/posts/openim-cluster-deployment-scheme-of/    301
+/posts/openim-devops-design/    /ai-technology/posts/openim-devops-design/    301
+/posts/openim-multi-process-management/    /ai-technology/posts/openim-multi-process-management/    301
+/posts/openim-offline-deployment-design/    /ai-technology/posts/openim-offline-deployment-design/    301
+/posts/openim-open-source-business-journey/    /ai-technology/posts/openim-open-source-business-journey/    301
+/posts/openim-open-source-business-journey    /ai-technology/posts/openim-open-source-business-journey/    301
+/posts/openim-remote-work-culture/    /ai-technology/posts/openim-remote-work-culture/    301
+/posts/openim-use-harbor-build-enterprise-mirror-repositories/    /ai-technology/posts/openim-use-harbor-build-enterprise-mirror-repositories/    301
+/posts/openkf-multi-architecture-image/    /ai-technology/posts/openkf-multi-architecture-image/    301
+/posts/participating-in-this-project/    /ai-technology/posts/participating-in-this-project/    301
+/posts/project-management-from-theory-to-practice/    /ai-technology/posts/project-management-from-theory-to-practice/    301
+/posts/prow-ecological-learning/    /ai-technology/posts/prow-ecological-learning/    301
+/posts/read-openim-project-sealos-openim-source-code/    /ai-technology/posts/read-openim-project-sealos-openim-source-code/    301
+/posts/sora-ease-guide-mastering-sora-ai-for-developers/    /ai-technology/posts/sora-ease-guide-mastering-sora-ai-for-developers/    301
+/posts/the-art-of-asking-questions-in-open-source-communities/    /ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/    301
+/posts/troubleshooting-guide-for-openim/    /ai-technology/posts/troubleshooting-guide-for-openim/    301
+/posts/use-auto-gpt/    /ai-technology/posts/use-auto-gpt/    301
+/posts/vector-database-learning/    /ai-technology/posts/vector-database-learning/    301
+/posts/ufo/    /ai-technology/posts/ufo/    301
+/posts/UFO/    /ai-technology/posts/ufo/    301
+/posts/concurrent-type-checking-and-cross-platform-development-in-go/    /ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go/    301
+/posts/concurrent-type-checking-and-cross-platform-development-in-go    /ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go/    301
+/posts/use-go-tools-dlv/    /ai-technology/posts/use-go-tools-dlv/    301
+/posts/use-go-tools-dlv    /ai-technology/posts/use-go-tools-dlv/    301
+
+# Legacy WordPress-style URL and external referral spam
+/?p=341   /   301
+/?from=blog114com   /   301
+/zh/?from=blog114com   /zh/   301
+
+# Trailing-slash-less variants from crawl logs
+/zh/posts/openim-multi-process-management    /zh/ai-technology/posts/openim-multi-process-management/    301
+/zh/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained    /zh/ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/    301
+/zh/posts/emerging-challenges-and-trends-in-2024    /zh/ai-technology/posts/emerging-challenges-and-trends-in-2024/    301
+/zh/posts/exploring-sora-technology-for-enthusiasts-and-developers    /zh/ai-technology/posts/exploring-sora-technology-for-enthusiasts-and-developers/    301
+/zh/posts/openim-devops-design    /zh/ai-technology/posts/openim-devops-design/    301
+/zh/posts/combining-github-and-google-workspace-for-project-management    /zh/growth/posts/combining-github-and-google-workspace-for-project-management/    301
+/zh/posts/cross-platform-compilation    /zh/ai-technology/posts/cross-platform-compilation/    301
+/zh/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri    /zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/    301
+/zh/posts/vector-database-learning    /zh/ai-technology/posts/vector-database-learning/    301
+/zh/posts/openim-open-source-business-journey    /zh/ai-technology/posts/openim-open-source-business-journey/    301
