@@ -115,10 +115,19 @@ body.dark .post-content h2 {
 }
 
 /* P1-2: Explicit dark-mode text color for headings so ZH dark (#350003 ink)
-   never bleeds through — use the resolved light ink token instead. */
+   never bleeds through — use the resolved light ink token instead.
+   Covers ALL heading levels: h1 in .post-content, h2–h6, and the .post-title
+   hero heading (which lives in .post-header, outside .post-content). */
+body.dark .post-title {
+  color: var(--color-ink, #e2e3e1);
+}
+
+body.dark .post-content h1,
 body.dark .post-content h2,
 body.dark .post-content h3,
-body.dark .post-content h4 {
+body.dark .post-content h4,
+body.dark .post-content h5,
+body.dark .post-content h6 {
   color: var(--color-ink, #f5f3ee);
 }
 
