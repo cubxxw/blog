@@ -1,10 +1,14 @@
 User-agent: *
+{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 Allow: /
+{{- else }}
+Disallow: /
+{{- end }}
 
 # Sitemaps
-Sitemap: https://nsddd.top/sitemap.xml
-Sitemap: https://nsddd.top/en/sitemap.xml
-Sitemap: https://nsddd.top/zh/sitemap.xml
+Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: {{ "en/sitemap.xml" | absURL }}
+Sitemap: {{ "zh/sitemap.xml" | absURL }}
 
 # Disallow admin and private areas
 Disallow: /admin/
@@ -34,13 +38,3 @@ Allow: /
 
 User-agent: LinkedInBot
 Allow: /
-
-# Block AI scrapers (optional - uncomment if needed)
-# User-agent: GPTBot
-# Disallow: /
-#
-# User-agent: ChatGPT-User
-# Disallow: /
-#
-# User-agent: CCBot
-# Disallow: /
