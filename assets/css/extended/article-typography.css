@@ -288,54 +288,95 @@ body.dark .post-content hr {
   }
 }
 
-/* ─── Code block — refined editorial treatment ──────────────── */
-/* Theme-aware surface:
-   Light mode → warm paper beige (#f4f1e9), harmonizes with page background.
-   Dark mode  → soft blue-gray (#1d2026), not pure black. */
+/* ─── Code block — per-language light & dark themes ──────────── */
+/* Four variants:
+   1. Light / English  → GitHub Light (#f6f8fa, crisp red/blue/purple)
+   2. Light / Chinese  → Ink editorial (#faf8f5, warm ink palette)
+   3. Dark  / English  → GitHub Dark (#0d1117, vivid neon palette)
+   4. Dark  / Chinese  → Warm dark ink (#1c1917, amber-warm palette) */
+
+/* ── Shared layout (all variants) ── */
 .post-content .highlight,
 .post-content pre:not(.mermaid) {
-  --code-surface: #f4f1e9;
-  --code-ink: #2a2c2b;
-  --code-border: rgba(30, 35, 30, 0.09);
-  --code-shadow: 0 1px 2px rgba(30,35,30,0.03),
-                 0 6px 18px -14px rgba(30,35,30,0.18);
-  --code-scroll: rgba(30, 35, 30, 0.14);
-  --code-scroll-hover: rgba(30, 35, 30, 0.26);
-  --code-btn-bg: rgba(30, 35, 30, 0.05);
-  --code-btn-border: rgba(30, 35, 30, 0.1);
-  --code-btn-color: rgba(30, 35, 30, 0.6);
-  --code-btn-bg-hover: rgba(30, 35, 30, 0.12);
-  --code-btn-color-hover: rgba(30, 35, 30, 0.95);
-
   position: relative;
   margin: 1.75rem 0;
   border-radius: 10px;
+  overflow: hidden;
+  max-width: 100%;
   background: var(--code-surface);
   border: 1px solid var(--code-border);
   box-shadow: var(--code-shadow);
-  overflow: hidden;
-  /* align width with prose column; override any wider bleed */
-  max-width: 100%;
 }
 
-/* Dark theme — inverted palette */
-body.dark .post-content .highlight,
-body.dark .post-content pre:not(.mermaid) {
-  --code-surface: #1d2026;
-  --code-ink: #d8d9dc;
-  --code-border: rgba(255,255,255,0.06);
-  --code-shadow: 0 1px 2px rgba(0,0,0,0.04),
-                 0 8px 24px -16px rgba(0,0,0,0.4);
-  --code-scroll: rgba(255,255,255,0.12);
-  --code-scroll-hover: rgba(255,255,255,0.22);
-  --code-btn-bg: rgba(255,255,255,0.06);
-  --code-btn-border: rgba(255,255,255,0.08);
-  --code-btn-color: rgba(255,255,255,0.65);
-  --code-btn-bg-hover: rgba(255,255,255,0.12);
+/* ── 1. Light / English (default) — GitHub Light inspired ── */
+.post-content .highlight,
+.post-content pre:not(.mermaid) {
+  --code-surface: #f6f8fa;
+  --code-ink: #24292f;
+  --code-border: rgba(31, 35, 40, 0.15);
+  --code-shadow: 0 1px 3px rgba(31,35,40,0.04),
+                 0 4px 12px -8px rgba(31,35,40,0.12);
+  --code-scroll: rgba(31, 35, 40, 0.18);
+  --code-scroll-hover: rgba(31, 35, 40, 0.32);
+  --code-btn-bg: rgba(31, 35, 40, 0.05);
+  --code-btn-border: rgba(31, 35, 40, 0.12);
+  --code-btn-color: rgba(31, 35, 40, 0.55);
+  --code-btn-bg-hover: rgba(31, 35, 40, 0.10);
+  --code-btn-color-hover: rgba(31, 35, 40, 0.90);
+}
+
+/* ── 2. Light / Chinese — warm editorial ink ── */
+html:lang(zh) .post-content .highlight,
+html:lang(zh) .post-content pre:not(.mermaid) {
+  --code-surface: #faf8f5;
+  --code-ink: #350003;
+  --code-border: rgba(53, 0, 3, 0.10);
+  --code-shadow: 0 1px 2px rgba(53,0,3,0.03),
+                 0 6px 16px -12px rgba(53,0,3,0.10);
+  --code-scroll: rgba(53, 0, 3, 0.14);
+  --code-scroll-hover: rgba(53, 0, 3, 0.26);
+  --code-btn-bg: rgba(53, 0, 3, 0.04);
+  --code-btn-border: rgba(53, 0, 3, 0.10);
+  --code-btn-color: rgba(53, 0, 3, 0.50);
+  --code-btn-bg-hover: rgba(53, 0, 3, 0.09);
+  --code-btn-color-hover: rgba(53, 0, 3, 0.88);
+}
+
+/* ── 3. Dark / English — GitHub Dark ── */
+body.dark:not(:lang(zh)) .post-content .highlight,
+body.dark:not(:lang(zh)) .post-content pre:not(.mermaid) {
+  --code-surface: #0d1117;
+  --code-ink: #e6edf3;
+  --code-border: rgba(240,246,252,0.10);
+  --code-shadow: 0 1px 2px rgba(0,0,0,0.12),
+                 0 8px 24px -16px rgba(0,0,0,0.50);
+  --code-scroll: rgba(240,246,252,0.14);
+  --code-scroll-hover: rgba(240,246,252,0.26);
+  --code-btn-bg: rgba(240,246,252,0.07);
+  --code-btn-border: rgba(240,246,252,0.12);
+  --code-btn-color: rgba(240,246,252,0.55);
+  --code-btn-bg-hover: rgba(240,246,252,0.13);
   --code-btn-color-hover: #fff;
 }
 
-/* If a <pre> is wrapped inside .highlight, strip the inner bg/border */
+/* ── 4. Dark / Chinese — warm dark ink ── */
+body.dark:lang(zh) .post-content .highlight,
+body.dark:lang(zh) .post-content pre:not(.mermaid) {
+  --code-surface: #1c1917;
+  --code-ink: #f5f3ee;
+  --code-border: rgba(245,243,238,0.08);
+  --code-shadow: 0 1px 2px rgba(0,0,0,0.12),
+                 0 8px 24px -16px rgba(0,0,0,0.50);
+  --code-scroll: rgba(245,243,238,0.12);
+  --code-scroll-hover: rgba(245,243,238,0.24);
+  --code-btn-bg: rgba(245,243,238,0.06);
+  --code-btn-border: rgba(245,243,238,0.10);
+  --code-btn-color: rgba(245,243,238,0.52);
+  --code-btn-bg-hover: rgba(245,243,238,0.12);
+  --code-btn-color-hover: #f5f3ee;
+}
+
+/* ── Inner pre inside .highlight: strip duplicate chrome ── */
 .post-content .highlight pre {
   margin: 0 !important;
   background: transparent !important;
@@ -344,7 +385,7 @@ body.dark .post-content pre:not(.mermaid) {
   box-shadow: none !important;
 }
 
-/* The actual code area */
+/* ── Code text area ── */
 .post-content pre code,
 .post-content .highlight pre code {
   display: block;
@@ -361,10 +402,8 @@ body.dark .post-content pre:not(.mermaid) {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Scrollbar inside code blocks */
-.post-content pre code::-webkit-scrollbar {
-  height: 6px;
-}
+/* ── Scrollbar ── */
+.post-content pre code::-webkit-scrollbar { height: 6px; }
 .post-content pre code::-webkit-scrollbar-thumb {
   background: var(--code-scroll);
   border-radius: 3px;
@@ -373,7 +412,7 @@ body.dark .post-content pre:not(.mermaid) {
   background: var(--code-scroll-hover);
 }
 
-/* Copy button — pill, top-right, theme-aware */
+/* ── Copy button — pill, top-right, theme-aware ── */
 .post-content .highlight .copy-code,
 .post-content pre .copy-code {
   position: absolute;
@@ -398,14 +437,10 @@ body.dark .post-content pre:not(.mermaid) {
               color 180ms ease, border-color 180ms ease;
   z-index: 2;
 }
-
 .post-content .highlight:hover .copy-code,
 .post-content pre:hover .copy-code,
 .post-content .highlight .copy-code:focus-visible,
-.post-content pre .copy-code:focus-visible {
-  opacity: 1;
-}
-
+.post-content pre .copy-code:focus-visible { opacity: 1; }
 .post-content .highlight .copy-code:hover,
 .post-content pre .copy-code:hover {
   color: var(--code-btn-color-hover) !important;
@@ -413,91 +448,251 @@ body.dark .post-content pre:not(.mermaid) {
   border-color: var(--code-btn-border) !important;
 }
 
-/* Light-theme syntax highlight — warm muted palette (GitHub-ish but softer).
-   Only applies when body is NOT .dark. Chroma emits classes like
-   .k (keyword), .s / .s1 / .s2 (string), .c / .c1 / .cm (comment),
-   .nb (builtin), .nf (function name), .mi (number), .o (operator). */
-body:not(.dark) .post-content .highlight code .k,
-body:not(.dark) .post-content .highlight code .kd,
-body:not(.dark) .post-content .highlight code .kn,
-body:not(.dark) .post-content .highlight code .kr,
-body:not(.dark) .post-content .highlight code .kt { color: #8a4b00; font-weight: 500; }
+/* ═══════════════════════════════════════════════════════════════
+   SYNTAX TOKEN COLORS — four variants
+   Chroma: .k/.kd/.kn (keyword)  .s/.s1/.s2 (string)  .c/.c1/.cm (comment)
+           .nf/.nx (function)  .nb (builtin)  .mi/.mf (number)  .o (op)
+           .na (attribute name)
+   hljs:   .hljs-keyword  .hljs-string  .hljs-comment  etc.
+   ═══════════════════════════════════════════════════════════════ */
 
-body:not(.dark) .post-content .highlight code .s,
-body:not(.dark) .post-content .highlight code .s1,
-body:not(.dark) .post-content .highlight code .s2,
-body:not(.dark) .post-content .highlight code .sb,
-body:not(.dark) .post-content .highlight code .sc,
-body:not(.dark) .post-content .highlight code .se,
-body:not(.dark) .post-content .highlight code .sr { color: #5b7d3e; }        /* olive green */
+/* ── 1. Light / English syntax — GitHub Light ── */
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .k,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .kd,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .kn,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .kr,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .kt { color: #cf222e; font-weight: 500; }
 
-body:not(.dark) .post-content .highlight code .c,
-body:not(.dark) .post-content .highlight code .c1,
-body:not(.dark) .post-content .highlight code .cm,
-body:not(.dark) .post-content .highlight code .cp,
-body:not(.dark) .post-content .highlight code .cs { color: #8b8578; font-style: italic; }
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .s,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .s1,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .s2,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .sb,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .sc,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .se,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .sr { color: #0a3069; }
 
-body:not(.dark) .post-content .highlight code .nf,
-body:not(.dark) .post-content .highlight code .nx { color: #684b7e; }        /* muted plum */
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .c,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .c1,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .cm,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .cp,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .cs { color: #6e7781; font-style: italic; }
 
-body:not(.dark) .post-content .highlight code .nb { color: #2f6a8f; }        /* muted teal */
-body:not(.dark) .post-content .highlight code .mi,
-body:not(.dark) .post-content .highlight code .mf { color: #a35a2a; }        /* warm rust */
-body:not(.dark) .post-content .highlight code .o  { color: #5a5a55; }
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .nf,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .nx { color: #8250df; }
 
-/* Fallback: any red-ish text in light-mode code (e.g. bare <pre> with no
-   syntax classes) should inherit the neutral ink color. */
-body:not(.dark) .post-content pre:not(.mermaid) code {
-  color: var(--code-ink) !important;
-}
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .nb { color: #116329; }
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .mi,
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .mf { color: #0550ae; }
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .o  { color: #24292f; }
+body:not(.dark):not(:lang(zh)) .post-content .highlight code .na { color: #116329; }
 
-/* ─── highlight.js (hljs) light-theme palette ─────────────────
-   This blog uses hljs client-side, which emits classes like
-   .hljs-keyword, .hljs-string, .hljs-comment, .hljs-regexp, .hljs-built_in.
-   Default hljs themes are too saturated; we override to a warm muted set. */
-body:not(.dark) .post-content pre code.hljs,
-body:not(.dark) .post-content .highlight pre code.hljs {
-  background: transparent !important;
-  color: var(--code-ink) !important;
-}
+body:not(.dark):not(:lang(zh)) .post-content pre:not(.mermaid) code { color: var(--code-ink) !important; }
 
-body:not(.dark) .post-content code .hljs-keyword,
-body:not(.dark) .post-content code .hljs-selector-tag,
-body:not(.dark) .post-content code .hljs-tag,
-body:not(.dark) .post-content code .hljs-literal,
-body:not(.dark) .post-content code .hljs-symbol,
-body:not(.dark) .post-content code .hljs-type { color: #8a4b00 !important; font-weight: 500; }
+/* hljs — Light / English */
+body:not(.dark):not(:lang(zh)) .post-content pre code.hljs,
+body:not(.dark):not(:lang(zh)) .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
 
-body:not(.dark) .post-content code .hljs-string,
-body:not(.dark) .post-content code .hljs-regexp,
-body:not(.dark) .post-content code .hljs-char,
-body:not(.dark) .post-content code .hljs-attr,
-body:not(.dark) .post-content code .hljs-attribute,
-body:not(.dark) .post-content code .hljs-template-variable { color: #5b7d3e !important; }
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-keyword,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-selector-tag,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-tag,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-literal,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-type { color: #cf222e !important; font-weight: 500; }
 
-body:not(.dark) .post-content code .hljs-comment,
-body:not(.dark) .post-content code .hljs-quote,
-body:not(.dark) .post-content code .hljs-meta { color: #8b8578 !important; font-style: italic; }
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-string,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-regexp,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-char,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-attr,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-attribute { color: #0a3069 !important; }
 
-body:not(.dark) .post-content code .hljs-title,
-body:not(.dark) .post-content code .hljs-name,
-body:not(.dark) .post-content code .hljs-section,
-body:not(.dark) .post-content code .hljs-function { color: #684b7e !important; }
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-comment,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-quote,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-meta { color: #6e7781 !important; font-style: italic; }
 
-body:not(.dark) .post-content code .hljs-built_in,
-body:not(.dark) .post-content code .hljs-class,
-body:not(.dark) .post-content code .hljs-params { color: #2f6a8f !important; }
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-title,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-section,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-function { color: #8250df !important; }
 
-body:not(.dark) .post-content code .hljs-number,
-body:not(.dark) .post-content code .hljs-deletion { color: #a35a2a !important; }
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-built_in,
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-params { color: #116329 !important; }
 
-body:not(.dark) .post-content code .hljs-variable,
-body:not(.dark) .post-content code .hljs-addition,
-body:not(.dark) .post-content code .hljs-subst { color: #2a2c2b !important; }
+body:not(.dark):not(:lang(zh)) .post-content code .hljs-number { color: #0550ae !important; }
 
-/* Inline code inside paragraphs stays light-pill; already styled above. */
+/* ── 2. Light / Chinese syntax — ink editorial palette ── */
+body:not(.dark):lang(zh) .post-content .highlight code .k,
+body:not(.dark):lang(zh) .post-content .highlight code .kd,
+body:not(.dark):lang(zh) .post-content .highlight code .kn,
+body:not(.dark):lang(zh) .post-content .highlight code .kr,
+body:not(.dark):lang(zh) .post-content .highlight code .kt { color: #862122; font-weight: 500; }
 
-/* Code block appearing in paragraph flow: subtle margin for breathing room */
+body:not(.dark):lang(zh) .post-content .highlight code .s,
+body:not(.dark):lang(zh) .post-content .highlight code .s1,
+body:not(.dark):lang(zh) .post-content .highlight code .s2,
+body:not(.dark):lang(zh) .post-content .highlight code .sb,
+body:not(.dark):lang(zh) .post-content .highlight code .sc,
+body:not(.dark):lang(zh) .post-content .highlight code .se,
+body:not(.dark):lang(zh) .post-content .highlight code .sr { color: #2d5016; }
+
+body:not(.dark):lang(zh) .post-content .highlight code .c,
+body:not(.dark):lang(zh) .post-content .highlight code .c1,
+body:not(.dark):lang(zh) .post-content .highlight code .cm,
+body:not(.dark):lang(zh) .post-content .highlight code .cp,
+body:not(.dark):lang(zh) .post-content .highlight code .cs { color: #8b7355; font-style: italic; }
+
+body:not(.dark):lang(zh) .post-content .highlight code .nf,
+body:not(.dark):lang(zh) .post-content .highlight code .nx { color: #5c3d8f; }
+
+body:not(.dark):lang(zh) .post-content .highlight code .nb { color: #1a5276; }
+body:not(.dark):lang(zh) .post-content .highlight code .mi,
+body:not(.dark):lang(zh) .post-content .highlight code .mf { color: #7d4f00; }
+body:not(.dark):lang(zh) .post-content .highlight code .o  { color: #5a4a42; }
+body:not(.dark):lang(zh) .post-content .highlight code .na { color: #1a5276; }
+
+body:not(.dark):lang(zh) .post-content pre:not(.mermaid) code { color: var(--code-ink) !important; }
+
+/* hljs — Light / Chinese */
+body:not(.dark):lang(zh) .post-content pre code.hljs,
+body:not(.dark):lang(zh) .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
+
+body:not(.dark):lang(zh) .post-content code .hljs-keyword,
+body:not(.dark):lang(zh) .post-content code .hljs-selector-tag,
+body:not(.dark):lang(zh) .post-content code .hljs-tag,
+body:not(.dark):lang(zh) .post-content code .hljs-literal,
+body:not(.dark):lang(zh) .post-content code .hljs-type { color: #862122 !important; font-weight: 500; }
+
+body:not(.dark):lang(zh) .post-content code .hljs-string,
+body:not(.dark):lang(zh) .post-content code .hljs-regexp,
+body:not(.dark):lang(zh) .post-content code .hljs-char,
+body:not(.dark):lang(zh) .post-content code .hljs-attr,
+body:not(.dark):lang(zh) .post-content code .hljs-attribute { color: #2d5016 !important; }
+
+body:not(.dark):lang(zh) .post-content code .hljs-comment,
+body:not(.dark):lang(zh) .post-content code .hljs-quote,
+body:not(.dark):lang(zh) .post-content code .hljs-meta { color: #8b7355 !important; font-style: italic; }
+
+body:not(.dark):lang(zh) .post-content code .hljs-title,
+body:not(.dark):lang(zh) .post-content code .hljs-section,
+body:not(.dark):lang(zh) .post-content code .hljs-function { color: #5c3d8f !important; }
+
+body:not(.dark):lang(zh) .post-content code .hljs-built_in,
+body:not(.dark):lang(zh) .post-content code .hljs-params { color: #1a5276 !important; }
+
+body:not(.dark):lang(zh) .post-content code .hljs-number { color: #7d4f00 !important; }
+
+/* ── 3. Dark / English syntax — GitHub Dark ── */
+body.dark:not(:lang(zh)) .post-content .highlight code .k,
+body.dark:not(:lang(zh)) .post-content .highlight code .kd,
+body.dark:not(:lang(zh)) .post-content .highlight code .kn,
+body.dark:not(:lang(zh)) .post-content .highlight code .kr,
+body.dark:not(:lang(zh)) .post-content .highlight code .kt { color: #ff7b72; font-weight: 500; }
+
+body.dark:not(:lang(zh)) .post-content .highlight code .s,
+body.dark:not(:lang(zh)) .post-content .highlight code .s1,
+body.dark:not(:lang(zh)) .post-content .highlight code .s2,
+body.dark:not(:lang(zh)) .post-content .highlight code .sb,
+body.dark:not(:lang(zh)) .post-content .highlight code .sc,
+body.dark:not(:lang(zh)) .post-content .highlight code .se,
+body.dark:not(:lang(zh)) .post-content .highlight code .sr { color: #a5d6ff; }
+
+body.dark:not(:lang(zh)) .post-content .highlight code .c,
+body.dark:not(:lang(zh)) .post-content .highlight code .c1,
+body.dark:not(:lang(zh)) .post-content .highlight code .cm,
+body.dark:not(:lang(zh)) .post-content .highlight code .cp,
+body.dark:not(:lang(zh)) .post-content .highlight code .cs { color: #8b949e; font-style: italic; }
+
+body.dark:not(:lang(zh)) .post-content .highlight code .nf,
+body.dark:not(:lang(zh)) .post-content .highlight code .nx { color: #d2a8ff; }
+
+body.dark:not(:lang(zh)) .post-content .highlight code .nb { color: #7ee787; }
+body.dark:not(:lang(zh)) .post-content .highlight code .mi,
+body.dark:not(:lang(zh)) .post-content .highlight code .mf { color: #79c0ff; }
+body.dark:not(:lang(zh)) .post-content .highlight code .o  { color: #e6edf3; }
+body.dark:not(:lang(zh)) .post-content .highlight code .na { color: #79c0ff; }
+
+/* hljs — Dark / English */
+body.dark:not(:lang(zh)) .post-content pre code.hljs,
+body.dark:not(:lang(zh)) .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
+
+body.dark:not(:lang(zh)) .post-content code .hljs-keyword,
+body.dark:not(:lang(zh)) .post-content code .hljs-selector-tag,
+body.dark:not(:lang(zh)) .post-content code .hljs-literal,
+body.dark:not(:lang(zh)) .post-content code .hljs-type { color: #ff7b72 !important; font-weight: 500; }
+
+body.dark:not(:lang(zh)) .post-content code .hljs-string,
+body.dark:not(:lang(zh)) .post-content code .hljs-regexp,
+body.dark:not(:lang(zh)) .post-content code .hljs-char,
+body.dark:not(:lang(zh)) .post-content code .hljs-attr { color: #a5d6ff !important; }
+
+body.dark:not(:lang(zh)) .post-content code .hljs-comment,
+body.dark:not(:lang(zh)) .post-content code .hljs-quote,
+body.dark:not(:lang(zh)) .post-content code .hljs-meta { color: #8b949e !important; font-style: italic; }
+
+body.dark:not(:lang(zh)) .post-content code .hljs-title,
+body.dark:not(:lang(zh)) .post-content code .hljs-section,
+body.dark:not(:lang(zh)) .post-content code .hljs-function { color: #d2a8ff !important; }
+
+body.dark:not(:lang(zh)) .post-content code .hljs-built_in,
+body.dark:not(:lang(zh)) .post-content code .hljs-params { color: #7ee787 !important; }
+
+body.dark:not(:lang(zh)) .post-content code .hljs-number { color: #79c0ff !important; }
+
+/* ── 4. Dark / Chinese syntax — warm amber-ink palette ── */
+body.dark:lang(zh) .post-content .highlight code .k,
+body.dark:lang(zh) .post-content .highlight code .kd,
+body.dark:lang(zh) .post-content .highlight code .kn,
+body.dark:lang(zh) .post-content .highlight code .kr,
+body.dark:lang(zh) .post-content .highlight code .kt { color: #ff6b6b; font-weight: 500; }
+
+body.dark:lang(zh) .post-content .highlight code .s,
+body.dark:lang(zh) .post-content .highlight code .s1,
+body.dark:lang(zh) .post-content .highlight code .s2,
+body.dark:lang(zh) .post-content .highlight code .sb,
+body.dark:lang(zh) .post-content .highlight code .sc,
+body.dark:lang(zh) .post-content .highlight code .se,
+body.dark:lang(zh) .post-content .highlight code .sr { color: #a8d8a8; }
+
+body.dark:lang(zh) .post-content .highlight code .c,
+body.dark:lang(zh) .post-content .highlight code .c1,
+body.dark:lang(zh) .post-content .highlight code .cm,
+body.dark:lang(zh) .post-content .highlight code .cp,
+body.dark:lang(zh) .post-content .highlight code .cs { color: #7d7068; font-style: italic; }
+
+body.dark:lang(zh) .post-content .highlight code .nf,
+body.dark:lang(zh) .post-content .highlight code .nx { color: #c792ea; }
+
+body.dark:lang(zh) .post-content .highlight code .nb { color: #68d7e4; }
+body.dark:lang(zh) .post-content .highlight code .mi,
+body.dark:lang(zh) .post-content .highlight code .mf { color: #e5c07b; }
+body.dark:lang(zh) .post-content .highlight code .o  { color: #f5f3ee; }
+body.dark:lang(zh) .post-content .highlight code .na { color: #68d7e4; }
+
+/* hljs — Dark / Chinese */
+body.dark:lang(zh) .post-content pre code.hljs,
+body.dark:lang(zh) .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
+
+body.dark:lang(zh) .post-content code .hljs-keyword,
+body.dark:lang(zh) .post-content code .hljs-selector-tag,
+body.dark:lang(zh) .post-content code .hljs-literal,
+body.dark:lang(zh) .post-content code .hljs-type { color: #ff6b6b !important; font-weight: 500; }
+
+body.dark:lang(zh) .post-content code .hljs-string,
+body.dark:lang(zh) .post-content code .hljs-regexp,
+body.dark:lang(zh) .post-content code .hljs-char,
+body.dark:lang(zh) .post-content code .hljs-attr { color: #a8d8a8 !important; }
+
+body.dark:lang(zh) .post-content code .hljs-comment,
+body.dark:lang(zh) .post-content code .hljs-quote,
+body.dark:lang(zh) .post-content code .hljs-meta { color: #7d7068 !important; font-style: italic; }
+
+body.dark:lang(zh) .post-content code .hljs-title,
+body.dark:lang(zh) .post-content code .hljs-section,
+body.dark:lang(zh) .post-content code .hljs-function { color: #c792ea !important; }
+
+body.dark:lang(zh) .post-content code .hljs-built_in,
+body.dark:lang(zh) .post-content code .hljs-params { color: #68d7e4 !important; }
+
+body.dark:lang(zh) .post-content code .hljs-number { color: #e5c07b !important; }
+
+/* ── Paragraph breathing room ── */
 .post-content p + .highlight,
 .post-content p + pre {
   margin-top: 1.25rem;
