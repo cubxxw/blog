@@ -7,8 +7,6 @@ Disallow: /
 
 # Sitemaps
 Sitemap: {{ "sitemap.xml" | absURL }}
-Sitemap: {{ "en/sitemap.xml" | absURL }}
-Sitemap: {{ "zh/sitemap.xml" | absURL }}
 
 # Disallow admin and private areas
 Disallow: /admin/
