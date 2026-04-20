@@ -16,8 +16,8 @@
         "Typecheck passes"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": "根因：Hugo 分页页面（/page/N/）的 .Title 默认回退为 .Permalink（URL 编码字符串）。当前 head.html 的 $pageTitle 未对此做保护，导致约 189 个 ZH tag 分页页面 title 输出完整 URL。修改文件：layouts/partials/head.html（第 11-12 行），layouts/partials/seo.html（第 4 行 $title 变量）。"
+      "passes": true,
+      "notes": "分页页面 title 的 http 前缀 bug 已修复：head.html 和 seo.html 添加 hasPrefix 检查，改用父级或站点 title；分页后缀 Page N / 第 N 页 已实现，构建通过"
     },
     {
       "id": "US-011",
@@ -31,8 +31,8 @@
         "Typecheck passes"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": "GSC 验证码需要用户在浏览器手动获取，AI 无法完成。本 story 目标是技术就绪确认和操作文档生成。"
+      "passes": true,
+      "notes": "tasks/gsc-checklist.md 已创建；config.yml 添加 SiteVerificationTag 注释；sitemap.xml 和 robots.txt 已就绪"
     },
     {
       "id": "US-012",
@@ -52,8 +52,8 @@
         "Typecheck passes"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": "具体措辞可微调，但必须保留核心关键词并控制在 60 字符以内。不要改动其他 frontmatter 字段。"
+      "passes": true,
+      "notes": "8 篇超长 title 已缩短至 60 字符以内，保留核心关键词，构建通过"
     },
     {
       "id": "US-013",
@@ -68,8 +68,8 @@
         "Typecheck passes"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": "修改文件：layouts/partials/seo.html。当前 $description 对 taxonomy 页面输出空字符串，导致 meta description 为空。.Pages 在 taxonomy/term 上下文中返回该分类下的所有文章集合。"
+      "passes": true,
+      "notes": "seo.html 新增 taxonomyDesc 逻辑：taxonomy kind 输出通用话题描述，term kind 输出动态篇数描述"
     },
     {
       "id": "US-014",
@@ -85,8 +85,8 @@
         "Typecheck passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": "修改文件：config.yml（新增 related 块），layouts/_default/single.html（插入 partial 调用），新建 layouts/partials/related-posts.html。PaperMod 的文章卡片 CSS 已有 .post-entry，可复用。"
+      "passes": true,
+      "notes": "config.yml 添加 related 配置；新建 related-posts.html partial；single.html 引入；CSS 添加至 custom.css"
     },
     {
       "id": "US-015",
@@ -101,8 +101,8 @@
         "Typecheck passes"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": "当前 og-*.png 已存在于 static/assets/ 但尺寸未验证。Pillow 库需要 pip install pillow。如 CI 环境无 Pillow，可改用 Python struct 解析 PNG IHDR chunk 获取尺寸（无需外部依赖）。"
+      "passes": true,
+      "notes": "验证 4 张 og:image 均为 1200x630px；全站 og:image 均为完整 https:// URL"
     }
   ]
 }

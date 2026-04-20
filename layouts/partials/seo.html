@@ -1,16 +1,16 @@
 {{- /* SEO & Social Media Meta Tags */ -}}
 
-{{- $shortTitle := site.Params.shortTitle | default site.Params.title -}}
+{{- $shortTitle := site.Params.shortTitle | default site.Title -}}
 {{- $baseTitle := .Title -}}
 {{- if hasPrefix .Title "http" -}}{{- $baseTitle = cond .Parent .Parent.Title site.Title -}}{{- end -}}
 {{- $pagerSuffix := "" -}}
 {{- if and (not .IsPage) .Paginator (gt .Paginator.PageNumber 1) -}}
   {{- $pagerSuffix = cond (eq .Language.Lang "zh") (printf " - 第 %d 页" .Paginator.PageNumber) (printf " - Page %d" .Paginator.PageNumber) -}}
 {{- end -}}
-{{- $title := cond .IsHome site.Params.title (printf "%s%s" (cond (gt (len $baseTitle) 20) $baseTitle (printf "%s | %s" $baseTitle $shortTitle)) $pagerSuffix) -}}
+{{- $title := cond .IsHome site.Title (printf "%s%s" (cond (gt (len $baseTitle) 20) $baseTitle (printf "%s | %s" $baseTitle $shortTitle)) $pagerSuffix) -}}
 {{- $taxonomyDesc := "" -}}
 {{- if eq .Kind "taxonomy" -}}
-  {{- $taxonomyDesc = cond (eq .Language.Lang "zh") "探索 cubxxw 博客的所有标签。" (printf "Browse all tags on cubxxw blog.") -}}
+  {{- $taxonomyDesc = cond (eq .Language.Lang "zh") "探索 cubxxw 博客的所有话题。" (printf "Browse all topics on cubxxw blog.") -}}
 {{- else if eq .Kind "term" -}}
   {{- $taxonomyDesc = cond (eq .Language.Lang "zh") (printf "浏览 %d 篇关于 %s 的文章。" (len .Pages) .Title) (printf "Browse %d articles tagged with %s." (len .Pages) .Title) -}}
 {{- end -}}
@@ -31,7 +31,8 @@
 {{- end -}}
 
 {{- /* Open Graph / Facebook */ -}}
-<meta property="og:type" content="{{ cond .IsHome "website" "article" }}" />
+{{- $ogType := cond (or .IsHome (eq .Kind "taxonomy") (eq .Kind "term") (eq .Kind "section")) "website" "article" -}}
+<meta property="og:type" content="{{ $ogType }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:title" content="{{ $title | htmlEscape }}" />
 <meta property="og:description" content="{{ $description | htmlEscape }}" />
