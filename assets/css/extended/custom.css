@@ -5619,7 +5619,16 @@ html {
 }
 
 body.dark .rpc:hover {
-  background: rgba(255,255,255,0.04);
+  background: rgba(226, 227, 225, 0.08);
+}
+
+body.dark .related-posts-grid {
+  background: rgba(226, 227, 225, 0.06);
+  border-color: rgba(226, 227, 225, 0.1);
+}
+
+body.dark .rpc {
+  background: #1a1c1b;
 }
 
 /* Optional cover image strip */

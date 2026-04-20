@@ -92,8 +92,8 @@ body.dark:not(:lang(zh)),
   --color-paper:        #121413;
   --color-ink:          #e2e3e1;
   --color-ink-muted:    #b4bcb2;
-  --color-accent:       #b4bcb2;
-  --color-accent-soft:  #2a2f2a;
+  --color-accent:       #7dd3fc;
+  --color-accent-soft:  rgba(125, 211, 252, 0.10);
   --color-rule:         rgba(226, 227, 225, 0.10);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
