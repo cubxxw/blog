@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - name: Install Node.js dependencies
@@ -34,11 +34,12 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Install Dart Sass
-        run: sudo snap install dart-sass
+        run: npm install -g sass
 
       - name: Build Hugo site
         env:
           HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
         run: hugo --gc --minify --baseURL "http://localhost:1313/"
 
       - name: Install @lhci/cli
@@ -55,4 +56,5 @@ jobs:
         with:
           name: lighthouse-results
           path: .lighthouseci/
-          retention-days: 7
+          if-no-files-found: warn
+          retention-days: 14
