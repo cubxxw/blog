@@ -74,6 +74,20 @@
     var OFFSET = 140;
     var rafPending = false;
 
+    // Scroll the active TOC item into view within the sticky panel container
+    function scrollTocItemIntoView(link) {
+      // The scrollable container is .editorial-tools-panel (overflow-y: auto)
+      var container = link.closest('.editorial-tools-panel') || link.closest('.toc-side__nav');
+      if (!container) return;
+      var containerRect = container.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var padding = 40;
+      if (linkRect.top < containerRect.top + padding || linkRect.bottom > containerRect.bottom - padding) {
+        var targetScrollTop = container.scrollTop + (linkRect.top - containerRect.top) - (containerRect.height / 2) + (linkRect.height / 2);
+        container.scrollTo({ top: targetScrollTop, behavior: 'smooth' });
+      }
+    }
+
     function updateActive() {
       rafPending = false;
       var scrollY = window.scrollY || window.pageYOffset;
@@ -87,7 +101,10 @@
       }
       if (activeSection === currentActive) return;
       if (currentActive) currentActive.link.classList.remove('toc-active');
-      if (activeSection) activeSection.link.classList.add('toc-active');
+      if (activeSection) {
+        activeSection.link.classList.add('toc-active');
+        scrollTocItemIntoView(activeSection.link);
+      }
       currentActive = activeSection;
     }
 
