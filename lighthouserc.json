@@ -3,7 +3,7 @@
     "collect": {
       "url": [
         "http://localhost:1313/",
-        "http://localhost:1313/en/about/",
+        "http://localhost:1313/about/",
         "http://localhost:1313/growth/posts/2025-annual-review/",
         "http://localhost:1313/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
         "http://localhost:1313/zh/",
