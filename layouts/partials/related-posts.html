@@ -1,18 +1,34 @@
-{{- $related := .Site.RegularPages.Related . | first 4 -}}
+{{- $related := .Site.RegularPages.Related . | first 3 -}}
 {{- with $related -}}
 <div class="related-posts">
-  <h3 class="related-posts-title">相关文章 / Related Posts</h3>
-  <ul class="related-posts-list">
+  <div class="related-posts-header">
+    <h3 class="related-posts-title">相关文章 / Related Posts</h3>
+  </div>
+  <div class="related-posts-grid">
     {{- range . -}}
-    <li class="related-post-item">
-      <a href="{{ .RelPermalink }}" class="related-post-link">
-        <span class="related-post-title">{{ .Title }}</span>
-        {{- if .Date -}}
-        <span class="related-post-date">{{ .Date.Format "2006-01-02" }}</span>
+    {{- $tags := .Params.tags -}}
+    <a href="{{ .RelPermalink }}" class="related-post-card">
+      <div class="related-post-card-accent"></div>
+      <div class="related-post-card-body">
+        <p class="related-post-card-title">{{ .Title }}</p>
+        {{- if $tags -}}
+        <div class="related-post-card-tags">
+          {{- range first 2 $tags -}}
+          <span class="related-post-tag">{{ . }}</span>
+          {{- end -}}
+        </div>
         {{- end -}}
-      </a>
-    </li>
+      </div>
+      <div class="related-post-card-footer">
+        {{- if .Date -}}
+        <span class="related-post-card-date">{{ .Date.Format "2006-01-02" }}</span>
+        {{- end -}}
+        {{- if .ReadingTime -}}
+        <span class="related-post-card-read">{{ .ReadingTime }} min read</span>
+        {{- end -}}
+      </div>
+    </a>
     {{- end -}}
-  </ul>
+  </div>
 </div>
 {{- end -}}
