@@ -634,6 +634,14 @@
   text-decoration: underline;
 }
 
+body.dark .post-entry-title a {
+  color: var(--color-ink, #e2e3e1);
+}
+
+body.dark .post-entry-title a:hover {
+  color: var(--color-accent, #7dd3fc);
+}
+
 .post-meta {
   display: flex;
   align-items: center;
