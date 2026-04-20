@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemaps
 Sitemap: https://nsddd.top/sitemap.xml
+Sitemap: https://nsddd.top/en/sitemap.xml
+Sitemap: https://nsddd.top/zh/sitemap.xml
 
 # Disallow admin and private areas
 Disallow: /admin/

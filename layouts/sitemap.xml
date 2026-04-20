@@ -2,30 +2,60 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  {{- $baseUrl := site.BaseURL -}}
-  {{- range .Site.AllPages -}}
-    {{- if and (not .Params.private) (in (slice "page" "home" "section" "taxonomy" "term") .Kind) -}}
+  {{- $excludedLayouts := slice "search" "archives" "categories" }}
+  {{- range .Site.Pages -}}
+    {{- $page := . -}}
+    {{- $skip := false -}}
+    {{/* Skip private pages */}}
+    {{- if .Params.private }}{{ $skip = true }}{{ end -}}
+    {{/* Skip noindex pages */}}
+    {{- if .Params.robotsNoIndex }}{{ $skip = true }}{{ end -}}
+    {{/* Skip sitemap-excluded pages */}}
+    {{- if eq .Params.sitemap_exclude true }}{{ $skip = true }}{{ end -}}
+    {{/* Skip utility pages (search, archives, categories listing) */}}
+    {{- if in $excludedLayouts .Layout }}{{ $skip = true }}{{ end -}}
+    {{/* Only include real content kinds */}}
+    {{- if not (in (slice "page" "home" "section" "taxonomy" "term") .Kind) }}{{ $skip = true }}{{ end -}}
+    {{- if not $skip -}}
   <url>
     <loc>{{ .Permalink }}</loc>
     {{- if not .Lastmod.IsZero }}
-    <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05+07:00" ) }}</lastmod>
-    {{- else if not .PublishDate.IsZero }}
-    <lastmod>{{ safeHTML ( .PublishDate.Format "2006-01-02T15:04:05+07:00" ) }}</lastmod>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05+08:00" }}</lastmod>
+    {{- else if not .Date.IsZero }}
+    <lastmod>{{ .Date.Format "2006-01-02T15:04:05+08:00" }}</lastmod>
     {{- end }}
     {{- if .Params.changefreq }}
     <changefreq>{{ .Params.changefreq }}</changefreq>
+    {{- else if eq .Kind "home" }}
+    <changefreq>daily</changefreq>
+    {{- else if eq .Kind "section" }}
+    <changefreq>weekly</changefreq>
     {{- else }}
     <changefreq>monthly</changefreq>
     {{- end }}
-    {{- if gt .Weight 0 }}
-    <priority>{{ mul (div .Weight 100) 0.8 | printf "%.1f" }}</priority>
-    {{- else }}
+    {{- if .Params.sitemapPriority }}
+    <priority>{{ .Params.sitemapPriority }}</priority>
+    {{- else if eq .Kind "home" }}
+    <priority>1.0</priority>
+    {{- else if eq .Kind "section" }}
+    <priority>0.8</priority>
+    {{- else if eq .Kind "taxonomy" }}
+    <priority>0.6</priority>
+    {{- else if eq .Kind "term" }}
     <priority>0.5</priority>
+    {{- else }}
+    <priority>0.7</priority>
     {{- end }}
     {{- if .Params.cover.image }}
     <image:image>
       <image:loc>{{ .Params.cover.image | absURL }}</image:loc>
     </image:image>
+    {{- end }}
+    {{/* hreflang alternate links for translated pages */}}
+    {{- if .IsTranslated }}
+    {{- range .AllTranslations }}
+    <xhtml:link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}"/>
+    {{- end }}
     {{- end }}
   </url>
     {{- end -}}
