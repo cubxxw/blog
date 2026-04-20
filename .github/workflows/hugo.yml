@@ -25,17 +25,17 @@ jobs:
       HUGO_VERSION: 0.147.0
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Cache Hugo resources
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: /tmp/hugo_cache
           key: ${{ runner.os }}-hugo-${{ env.HUGO_VERSION }}-${{ hashFiles('**/hugo.toml', '**/config.yml', '**/config.yaml') }}
@@ -53,7 +53,7 @@ jobs:
         run: sudo snap install dart-sass
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
 
@@ -72,7 +72,7 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
 
@@ -85,4 +85,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
