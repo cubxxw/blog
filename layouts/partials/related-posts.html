@@ -1,34 +1,43 @@
 {{- $related := .Site.RegularPages.Related . | first 3 -}}
 {{- with $related -}}
-<div class="related-posts">
+<section class="related-posts">
   <div class="related-posts-header">
-    <h3 class="related-posts-title">相关文章 / Related Posts</h3>
+    <span class="related-posts-eyebrow">继续阅读</span>
+    <h3 class="related-posts-title">相关文章 <span class="related-posts-title-en">/ Related Posts</span></h3>
   </div>
   <div class="related-posts-grid">
     {{- range . -}}
     {{- $tags := .Params.tags -}}
-    <a href="{{ .RelPermalink }}" class="related-post-card">
-      <div class="related-post-card-accent"></div>
-      <div class="related-post-card-body">
-        <p class="related-post-card-title">{{ .Title }}</p>
+    {{- $cover := .Params.cover -}}
+    {{- $hasCover := and $cover $cover.image -}}
+    <a href="{{ .RelPermalink }}" class="rpc{{- if $hasCover }} rpc--has-cover{{- end }}">
+      {{- if $hasCover -}}
+      <div class="rpc__cover" aria-hidden="true">
+        <img src="{{ $cover.image }}" alt="" loading="lazy" decoding="async">
+      </div>
+      {{- end -}}
+      <div class="rpc__body">
         {{- if $tags -}}
-        <div class="related-post-card-tags">
+        <div class="rpc__tags">
           {{- range first 2 $tags -}}
-          <span class="related-post-tag">{{ . }}</span>
+          <span class="rpc__tag">{{ . }}</span>
           {{- end -}}
         </div>
         {{- end -}}
+        <p class="rpc__title">{{ .Title }}</p>
+        <div class="rpc__meta">
+          {{- if .Date -}}
+          <span class="rpc__date">{{ .Date.Format "2006-01-02" }}</span>
+          {{- end -}}
+          {{- if .ReadingTime -}}
+          <span class="rpc__sep" aria-hidden="true">·</span>
+          <span class="rpc__read">{{ .ReadingTime }} min</span>
+          {{- end -}}
+        </div>
       </div>
-      <div class="related-post-card-footer">
-        {{- if .Date -}}
-        <span class="related-post-card-date">{{ .Date.Format "2006-01-02" }}</span>
-        {{- end -}}
-        {{- if .ReadingTime -}}
-        <span class="related-post-card-read">{{ .ReadingTime }} min read</span>
-        {{- end -}}
-      </div>
+      <span class="rpc__arrow" aria-hidden="true">→</span>
     </a>
     {{- end -}}
   </div>
-</div>
+</section>
 {{- end -}}
