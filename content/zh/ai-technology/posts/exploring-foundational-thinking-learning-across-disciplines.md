@@ -1,5 +1,5 @@
 ---
-title: 'Exploring Foundational Thinking: Mastering New Disciplines through Core Principles'
+title: '底层思维：跨学科学习的核心原则'
 ShowRssButtonInSectionTermList: true
 cover:
   image: /path/to/your/cover/image.jpg

@@ -1,0 +1,18 @@
+{{- $related := .Site.RegularPages.Related . | first 4 -}}
+{{- with $related -}}
+<div class="related-posts">
+  <h3 class="related-posts-title">相关文章 / Related Posts</h3>
+  <ul class="related-posts-list">
+    {{- range . -}}
+    <li class="related-post-item">
+      <a href="{{ .RelPermalink }}" class="related-post-link">
+        <span class="related-post-title">{{ .Title }}</span>
+        {{- if .Date -}}
+        <span class="related-post-date">{{ .Date.Format "2006-01-02" }}</span>
+        {{- end -}}
+      </a>
+    </li>
+    {{- end -}}
+  </ul>
+</div>
+{{- end -}}

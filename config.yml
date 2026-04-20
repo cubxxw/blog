@@ -8,6 +8,16 @@ enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: true
+
+related:
+  includeNewer: true
+  threshold: 80
+  toLower: true
+  indices:
+    - name: tags
+      weight: 80
+    - name: categories
+      weight: 20
 googleAnalytics: G-FSWQC2Y01E
 pygmentsUseClasses: true
 minify:
@@ -87,7 +97,7 @@ params:
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "weibo", "xiaohongshu"] # To customize which share buttons to be enabled on page
   analytics:
     google:
-      SiteVerificationTag: ""
+      SiteVerificationTag: "" # 在 Google Search Console 获取 HTML 标签验证码后填入此处
     bing:
       SiteVerificationTag: ""
     yandex:

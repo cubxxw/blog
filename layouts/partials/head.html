@@ -9,7 +9,17 @@
 
 {{- /* Title */}}
 {{- $shortTitle := site.Params.shortTitle | default site.Title -}}
-{{- $pageTitle := cond .IsHome site.Title (cond (gt (len .Title) 20) .Title (printf "%s | %s" .Title $shortTitle)) -}}
+{{- $baseTitle := .Title -}}
+{{- if hasPrefix .Title "http" -}}{{- $baseTitle = cond .Parent .Parent.Title site.Title -}}{{- end -}}
+{{- $pagerSuffix := "" -}}
+{{- if and (not .IsPage) .Paginator (gt .Paginator.PageNumber 1) -}}
+  {{- if eq .Language.Lang "zh" -}}
+    {{- $pagerSuffix = printf " - 第 %d 页" .Paginator.PageNumber -}}
+  {{- else -}}
+    {{- $pagerSuffix = printf " - Page %d" .Paginator.PageNumber -}}
+  {{- end -}}
+{{- end -}}
+{{- $pageTitle := cond .IsHome site.Title (printf "%s%s" (cond (gt (len $baseTitle) 20) $baseTitle (printf "%s | %s" $baseTitle $shortTitle)) $pagerSuffix) -}}
 <title>{{ $pageTitle }}</title>
 {{- partial "seo.html" . -}}
 {{- if site.Params.analytics.google.SiteVerificationTag }}
