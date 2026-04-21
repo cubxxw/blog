@@ -261,7 +261,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Ai Recommend 技术、实践和深度学习](https://nsddd.top/zh/projects/ai-recommend/)
 - [Google NotebookLM 的 RAG 深度调研思考](https://nsddd.top/zh/projects/notebooklm/)
 - [AI 时代初创企业的测试驱动开发（TDD）实践方案](https://nsddd.top/zh/projects/tdd/)
-- [MarkItdown 开源项目深度学习](https://nsddd.top/zh/projects/markitdown/)
+- [MarkItDown 开源项目深度学习](https://nsddd.top/zh/projects/markitdown/)
 - [LangGraph 深度解析：设计、架构、原理与应用](https://nsddd.top/zh/projects/langgraph/)
 - [Langchain 开源项目深度学习](https://nsddd.top/zh/projects/langchain/)
 - [Ai Gateway 开源项目深度学习](https://nsddd.top/zh/projects/ai-gateway/)
