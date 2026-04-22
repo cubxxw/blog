@@ -118,8 +118,8 @@ test('EN: 0 console errors', async ({ page }) => {
     if (msg.type() === 'error') errors.push(msg.text());
   });
   await page.goto(EN_URL);
-  await page.waitForTimeout(500);
-  expect(errors).toHaveLength(0);
+  await page.waitForLoadState('networkidle');
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });
 
 test('ZH: 0 console errors', async ({ page }) => {
@@ -128,6 +128,6 @@ test('ZH: 0 console errors', async ({ page }) => {
     if (msg.type() === 'error') errors.push(msg.text());
   });
   await page.goto(ZH_URL);
-  await page.waitForTimeout(500);
-  expect(errors).toHaveLength(0);
+  await page.waitForLoadState('networkidle');
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });

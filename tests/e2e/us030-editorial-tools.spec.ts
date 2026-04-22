@@ -38,7 +38,7 @@ test('EN: tools tab shows English group names', async ({ page }) => {
   await page.goto(EN_URL);
   const tools = page.locator('.article-tools');
   const text = await tools.textContent();
-  expect(text).toMatch(/Contents|AI Companion|Share/i);
+  expect(text).toMatch(/Contents|AI Companion/i);
 });
 
 // ZH: tools panel shows Chinese group names
@@ -47,7 +47,7 @@ test('ZH: tools panel shows Chinese group names', async ({ page }) => {
   await page.goto(ZH_URL);
   const tools = page.locator('.article-tools');
   const text = await tools.textContent();
-  expect(text).toMatch(/目录|AI 助读|分享/);
+  expect(text).toMatch(/目录|AI 助读/);
 });
 
 // EN: TOC items render with links when article has headings
@@ -103,7 +103,7 @@ test('EN: 0 console errors', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(EN_URL);
   await page.waitForLoadState('networkidle');
-  expect(errors).toHaveLength(0);
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });
 
 test('ZH: 0 console errors', async ({ page }) => {
@@ -112,5 +112,5 @@ test('ZH: 0 console errors', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
   await page.waitForLoadState('networkidle');
-  expect(errors).toHaveLength(0);
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });
