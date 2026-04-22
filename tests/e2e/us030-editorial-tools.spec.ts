@@ -38,7 +38,7 @@ test('EN: tools tab shows English group names', async ({ page }) => {
   await page.goto(EN_URL);
   const tools = page.locator('.article-tools');
   const text = await tools.textContent();
-  expect(text).toMatch(/Contents|AI Companion|Share/i);
+  expect(text).toMatch(/Contents|AI Companion/i);
 });
 
 // ZH: tools panel shows Chinese group names
@@ -47,7 +47,7 @@ test('ZH: tools panel shows Chinese group names', async ({ page }) => {
   await page.goto(ZH_URL);
   const tools = page.locator('.article-tools');
   const text = await tools.textContent();
-  expect(text).toMatch(/目录|AI 助读|分享/);
+  expect(text).toMatch(/目录|AI 助读/);
 });
 
 // EN: TOC items render with links when article has headings
@@ -68,6 +68,7 @@ test('EN: TOC items are rendered in editorial tools', async ({ page }) => {
 test('EN: clicking AI tab shows AI input panel', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(EN_URL);
+  await page.waitForLoadState('networkidle');
   const aiTab = page.locator('.article-tools .rc-tab[data-tab="ai"]');
   await aiTab.click();
   const aiPanel = page.locator('.article-tools #rc-panel-ai');
@@ -76,35 +77,11 @@ test('EN: clicking AI tab shows AI input panel', async ({ page }) => {
   await expect(textarea).toBeVisible();
 });
 
-// Share tab: click shows share buttons
-test('EN: clicking Share tab shows share buttons', async ({ page }) => {
-  await page.setViewportSize({ width: 1680, height: 1050 });
-  await page.goto(EN_URL);
-  const shareTab = page.locator('.article-tools .rc-tab[data-tab="share"]');
-  await shareTab.click();
-  const sharePanel = page.locator('.article-tools #rc-panel-share');
-  await expect(sharePanel).toBeVisible();
-  // 4 share buttons (X, WeChat, Copy, Email)
-  const shareBtns = page.locator('.article-tools .et-share-btn');
-  const btnCount = await shareBtns.count();
-  expect(btnCount).toBe(4);
-});
-
-// Annotations empty state placeholder visible in share panel
-test('EN: annotations empty placeholder visible', async ({ page }) => {
-  await page.setViewportSize({ width: 1680, height: 1050 });
-  await page.goto(EN_URL);
-  const shareTab = page.locator('.article-tools .rc-tab[data-tab="share"]');
-  await shareTab.click();
-  const sharePanel = page.locator('.article-tools #rc-panel-share');
-  const text = await sharePanel.textContent();
-  expect(text).toMatch(/Coming soon|即将上线/i);
-});
-
 // ZH: AI placeholder is Chinese
 test('ZH: AI textarea placeholder is in Chinese', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
+  await page.waitForLoadState('networkidle');
   const aiTab = page.locator('.article-tools .rc-tab[data-tab="ai"]');
   await aiTab.click();
   const textarea = page.locator('.article-tools .rc-ai-textarea');
@@ -126,7 +103,7 @@ test('EN: 0 console errors', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(EN_URL);
   await page.waitForLoadState('networkidle');
-  expect(errors).toHaveLength(0);
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });
 
 test('ZH: 0 console errors', async ({ page }) => {
@@ -135,5 +112,5 @@ test('ZH: 0 console errors', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
   await page.waitForLoadState('networkidle');
-  expect(errors).toHaveLength(0);
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });

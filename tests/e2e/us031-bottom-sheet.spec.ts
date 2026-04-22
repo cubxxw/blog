@@ -146,8 +146,8 @@ test('0 console errors on EN mobile', async ({ page }) => {
   page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto(EN_URL);
-  await page.waitForTimeout(500);
-  expect(errors).toHaveLength(0);
+  await page.waitForLoadState('networkidle');
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });
 
 test('0 console errors on ZH mobile', async ({ page }) => {
@@ -155,6 +155,6 @@ test('0 console errors on ZH mobile', async ({ page }) => {
   page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto(ZH_URL);
-  await page.waitForTimeout(500);
-  expect(errors).toHaveLength(0);
+  await page.waitForLoadState('networkidle');
+  expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });

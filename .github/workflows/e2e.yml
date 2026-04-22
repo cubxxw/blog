@@ -47,7 +47,11 @@ jobs:
       - name: Start Hugo server and run Playwright tests
         run: |
           hugo server --port 1313 --disableFastRender &
-          sleep 5
+          HUGO_PID=$!
+          timeout 60 bash -c "until curl -sf http://localhost:1313/ > /dev/null; do
+            kill -0 $HUGO_PID 2>/dev/null || { echo 'Hugo server exited unexpectedly'; exit 1; }
+            sleep 1
+          done"
           npx playwright test --grep-invert "Visual Regression"
 
       - name: Upload Playwright report on failure

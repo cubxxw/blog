@@ -653,3 +653,10 @@ body.dark .editorial-tools-panel .rc-ai-share-btn:hover {
 .editorial-tools-panel::-webkit-scrollbar { width: 3px; }
 .editorial-tools-panel::-webkit-scrollbar-track { background: transparent; }
 .editorial-tools-panel::-webkit-scrollbar-thumb { background: var(--color-rule, rgba(30,35,30,0.12)); border-radius: 2px; }
+
+/* custom.css @media(min-width:1500px) sets flex:1;min-height:0 on .rc-ai-panel,
+   which collapses it to 0 height when .editorial-tools-panel is not a flex
+   container with definite height. Override so the panel sizes to its content. */
+.editorial-tools-panel .rc-ai-panel {
+  flex: none;
+}
