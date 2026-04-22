@@ -219,9 +219,9 @@ languages:
           - name: AI Projects
             url: /projects/
           - name: Archives
-            url: /en/archives/
+            url: /archives/
           - name: Categories
-            url: /en/categories/
+            url: /categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/en"
           Text: "Suggest Changes" # edit text
