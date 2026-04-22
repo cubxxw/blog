@@ -68,6 +68,7 @@ test('EN: TOC items are rendered in editorial tools', async ({ page }) => {
 test('EN: clicking AI tab shows AI input panel', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(EN_URL);
+  await page.waitForLoadState('networkidle');
   const aiTab = page.locator('.article-tools .rc-tab[data-tab="ai"]');
   await aiTab.click();
   const aiPanel = page.locator('.article-tools #rc-panel-ai');
@@ -80,6 +81,7 @@ test('EN: clicking AI tab shows AI input panel', async ({ page }) => {
 test('ZH: AI textarea placeholder is in Chinese', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
+  await page.waitForLoadState('networkidle');
   const aiTab = page.locator('.article-tools .rc-tab[data-tab="ai"]');
   await aiTab.click();
   const textarea = page.locator('.article-tools .rc-ai-textarea');
