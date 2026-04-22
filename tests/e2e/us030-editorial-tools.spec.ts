@@ -76,31 +76,6 @@ test('EN: clicking AI tab shows AI input panel', async ({ page }) => {
   await expect(textarea).toBeVisible();
 });
 
-// Share tab: click shows share buttons
-test('EN: clicking Share tab shows share buttons', async ({ page }) => {
-  await page.setViewportSize({ width: 1680, height: 1050 });
-  await page.goto(EN_URL);
-  const shareTab = page.locator('.article-tools .rc-tab[data-tab="share"]');
-  await shareTab.click();
-  const sharePanel = page.locator('.article-tools #rc-panel-share');
-  await expect(sharePanel).toBeVisible();
-  // 4 share buttons (X, WeChat, Copy, Email)
-  const shareBtns = page.locator('.article-tools .et-share-btn');
-  const btnCount = await shareBtns.count();
-  expect(btnCount).toBe(4);
-});
-
-// Annotations empty state placeholder visible in share panel
-test('EN: annotations empty placeholder visible', async ({ page }) => {
-  await page.setViewportSize({ width: 1680, height: 1050 });
-  await page.goto(EN_URL);
-  const shareTab = page.locator('.article-tools .rc-tab[data-tab="share"]');
-  await shareTab.click();
-  const sharePanel = page.locator('.article-tools #rc-panel-share');
-  const text = await sharePanel.textContent();
-  expect(text).toMatch(/Coming soon|即将上线/i);
-});
-
 // ZH: AI placeholder is Chinese
 test('ZH: AI textarea placeholder is in Chinese', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });

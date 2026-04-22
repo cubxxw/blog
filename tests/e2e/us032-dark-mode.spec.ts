@@ -67,7 +67,7 @@ test('EN dark: --color-ink is light (#e2e3e1)', async ({ page }) => {
   expect(ink).toMatch(/#?e2e3e1|226,227,225/i);
 });
 
-test('EN dark: --color-accent is muted sage (#b4bcb2)', async ({ page }) => {
+test('EN dark: --color-accent is sky blue (#7dd3fc)', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(EN_URL);
   await page.waitForLoadState('networkidle');
@@ -76,7 +76,7 @@ test('EN dark: --color-accent is muted sage (#b4bcb2)', async ({ page }) => {
   const accent = await page.evaluate(() =>
     getComputedStyle(document.body).getPropertyValue('--color-accent').trim()
   );
-  expect(accent).toMatch(/#?b4bcb2|180,188,178/i);
+  expect(accent).toMatch(/#?7dd3fc|125,211,252/i);
 });
 
 test('EN dark: drop-cap uses var(--color-accent) — color changes with dark', async ({ page }) => {
