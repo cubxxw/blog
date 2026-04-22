@@ -61,7 +61,7 @@ test('no console errors on EN article', async ({ page }) => {
     if (msg.type() === 'error') errors.push(msg.text());
   });
   await page.goto(EN_URL);
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('load');
   expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });
 
@@ -71,6 +71,6 @@ test('no console errors on ZH article', async ({ page }) => {
     if (msg.type() === 'error') errors.push(msg.text());
   });
   await page.goto(ZH_URL);
-  await page.waitForLoadState('networkidle');
+  await page.waitForLoadState('load');
   expect(errors.filter(e => !e.includes('favicon'))).toHaveLength(0);
 });

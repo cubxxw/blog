@@ -81,8 +81,6 @@ test('EN: post-description is italic', async ({ page }) => {
 test('EN: first paragraph has drop-cap class', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(EN_URL);
-  // Give JS time to execute
-  await page.waitForTimeout(500);
   const firstP = page.locator('.post-content p.drop-cap');
   await expect(firstP).toHaveCount(1);
 });
@@ -91,7 +89,6 @@ test('EN: first paragraph has drop-cap class', async ({ page }) => {
 test('ZH: first paragraph has drop-cap class', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
-  await page.waitForTimeout(500);
   const firstP = page.locator('.post-content p.drop-cap');
   await expect(firstP).toHaveCount(1);
 });
