@@ -150,6 +150,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [February 2026 Thought Notes](https://nsddd.top/growth/posts/2026-02-thought-notes/)
 - [January 2026 Thought Notes](https://nsddd.top/growth/posts/2026-01-thought-notes/)
 - [December 2025 Thought Notes](https://nsddd.top/growth/posts/2025-12-thought-notes/)
+- [Japan Travel Notes — Learning to Be with Time Through Wood, Fire, and Gaps](https://nsddd.top/growth/posts/japan-travel-2025/)
 - [2025 November Thought Notes](https://nsddd.top/growth/posts/2025-11-thought-notes/)
 - [2025 August Thought Notes](https://nsddd.top/growth/posts/2025-08-thought-notes/)
 - [2025 July Thought Notes](https://nsddd.top/growth/posts/2025-07-thought-notes/)
