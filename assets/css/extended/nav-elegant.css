@@ -282,12 +282,20 @@ body.dark .lang-switch a:hover {
     }
 
     .nav-search-trigger {
-        width: 34px;
-        height: 34px;
+        /* Touch target raised to 44px minimum (was 34px) */
+        width: 44px;
+        height: 44px;
+        min-height: 44px;
         padding: 0;
         border: none;
         background: transparent;
         justify-content: center;
+    }
+
+    /* Touch target for theme toggle button */
+    #theme-toggle {
+        min-width: 44px;
+        min-height: 44px;
     }
 
     .nav-search-trigger:hover {
@@ -302,8 +310,11 @@ body.dark .lang-switch a:hover {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
+        /* Touch target raised to 44px minimum (was 34px) */
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
         padding: 0;
         background: transparent;
         border: none;

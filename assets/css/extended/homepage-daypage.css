@@ -1687,8 +1687,6 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   .hp-topbar-inner { padding: 0 20px; gap: 16px; }
   .hp-nav { display: none; }
   .hp-hero { grid-template-columns: 1fr; padding: 48px 0 56px; gap: 40px; }
-  .hp-bear-orbit-wrap { height: 340px; max-width: 340px; margin: 0 auto; }
-  .hp-bear-orbit { width: 340px; height: 340px; }
   .hp-posts-grid { grid-template-columns: 1fr; }
   .hp-cat-row { grid-template-columns: 1fr 1fr; }
   .hp-books-grid { grid-template-columns: 1fr; }
@@ -1697,6 +1695,138 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   .hp-travel-block { grid-template-columns: 1fr; }
   .hp-subscribe { grid-template-columns: 1fr; padding: 32px 24px; }
   .hp-footer-grid { grid-template-columns: 1fr; }
+
+  /* Fix 1: Bear orbit — prevent horizontal overflow on narrow viewports */
+  .hp-bear-orbit-wrap {
+    height: min(340px, calc(100vw - 40px));
+    max-width: min(340px, calc(100vw - 40px));
+    margin: 0 auto;
+  }
+  .hp-bear-orbit {
+    width: min(340px, calc(100vw - 40px));
+    height: min(340px, calc(100vw - 40px));
+  }
+
+  /* Fix 3: Heatmap — allow horizontal scroll instead of overflowing */
+  .hp-heatmap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hp-heatmap-grid,
+  .hp-heatmap-months,
+  .hp-heatmap-legend {
+    min-width: 680px;
+  }
+
+  /* Fix 4: Hero h1 — reduce font size; name row wraps on narrow screens */
+  .hp-hero h1 {
+    font-size: clamp(34px, 9vw, 48px);
+  }
+  .hp-hero-name-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hp-hero-chibi {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Fix 5: Section padding — reduce excessive whitespace on mobile */
+  .hp-section {
+    padding: 40px 0;
+  }
+
+  /* Fix 6: Social icon touch targets — raise to 44px minimum */
+  .hp-social-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Fix 7: Bear chat button touch targets */
+  .hp-bear-chat-icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .hp-bear-chat-send {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Fix 8: Book & Project CTA touch targets — raise to 44px minimum */
+  .hp-book-cta,
+  .hp-project-cta {
+    min-height: 44px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Fix 9: Subscribe button minimum touch height */
+  .hp-subscribe-btn {
+    min-height: 44px;
+  }
+
+  /* Fix 10: Post list rows minimum touch height */
+  .hp-posts-list-row {
+    min-height: 44px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 480px (extra-small / compact phones)
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Fix 6: Tighter section padding on very small screens */
+  .hp-section { padding: 28px 0; }
+
+  /* Fix 7: Subscribe form — stack input and button vertically */
+  .hp-subscribe-input-row {
+    flex-wrap: wrap;
+  }
+  .hp-subscribe-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Fix 8: Section head — wrap title + action onto separate lines */
+  .hp-section-head {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .hp-section-action {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+  .hp-section-title {
+    font-size: 22px;
+  }
+
+  /* Fix 9: Book cards — switch to vertical layout on tiny screens */
+  .hp-book {
+    flex-direction: column;
+  }
+  .hp-book-cover {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    aspect-ratio: 16 / 7;
+    object-fit: cover;
+  }
+
+  /* Fix 10: Footer bottom — stack copyright and links on separate lines */
+  .hp-footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .hp-footer-bottom-right {
+    justify-content: center;
+  }
+
+  /* Fix 11: Travel stat number — reduce on tiny screens */
+  .hp-travel-stat-num {
+    font-size: 28px;
+  }
 }
 
 /* Respect user's reduced-motion preference — disable non-essential animations */
