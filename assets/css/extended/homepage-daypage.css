@@ -1613,3 +1613,21 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   .hp-subscribe { grid-template-columns: 1fr; padding: 32px 24px; }
   .hp-footer-grid { grid-template-columns: 1fr; }
 }
+
+/* Respect user's reduced-motion preference — disable non-essential animations */
+@media (prefers-reduced-motion: reduce) {
+  .hp-bear-orbit,
+  .hp-orbit-dot,
+  .hp-avatar-ring,
+  .hp-avatar-img,
+  [class*="hp-bubble"],
+  [class*="hp-typing"],
+  [class*="hp-blink"],
+  [class*="float"],
+  [class*="pulse"],
+  [class*="bounce"],
+  [class*="spin"] {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -43,15 +43,14 @@
   HUGO_ENABLEGITINFO = "true"
 
 # ---------------------------------------------------------------------------
-# Cache-Control headers — fixes #146 (CSS payload) and #147 (TTFB via CDN)
+# Cache-Control headers
 # ---------------------------------------------------------------------------
-# Hugo fingerprints stylesheet + highlight/search JS with a SHA-256 hash in the
-# filename (e.g. stylesheet.f0a0f1c3….css).  These are immutable — 1-year TTL.
+# Hugo fingerprints CSS/JS with a SHA-256 hash — these are immutable, 1-year TTL.
 # Static JS in /js/ is NOT fingerprinted, so it gets a shorter TTL.
-# HTML pages get s-maxage=600 so the CDN edge caches them; Netlify auto-purges
-# on every deploy, so stale HTML is never a problem in practice.
+# HTML pages get s-maxage=3600 (1h) so the CDN edge caches aggressively;
+# Netlify auto-purges on every deploy so stale HTML is never a problem.
 
-# Fingerprinted CSS and JS live under /assets/  (Hugo asset pipeline output).
+# Fingerprinted CSS and JS (Hugo asset pipeline output).
 [[headers]]
   for = "/assets/*"
   [headers.values]
@@ -63,7 +62,7 @@
   [headers.values]
     Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
-# Static images and favicons.
+# Static images under /images/.
 [[headers]]
   for = "/images/*"
   [headers.values]
@@ -84,14 +83,14 @@
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
-# HTML pages: CDN edge caches for 10 min (s-maxage) while the browser always
-# revalidates (max-age=0).  stale-while-revalidate lets the edge serve
-# a cached copy and refresh in the background — cuts TTFB for repeat visits.
-# Netlify also purges the CDN cache on every deploy, so there is no stale risk.
+# HTML pages: CDN edge caches for 1 hour (s-maxage=3600, up from 600).
+# stale-while-revalidate=86400 lets the edge serve a cached copy while
+# refreshing in the background — cuts TTFB for cold visitors significantly.
+# Netlify purges CDN on every deploy, so there is no stale-content risk.
 [[headers]]
   for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=0, s-maxage=600, stale-while-revalidate=86400"
+    Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
