@@ -161,10 +161,10 @@
 
                         {{/* code here can only access page-related data via vars set above */}}
                         {{ if ne $currentLang $anySiteLang.Lang }}
-                            {{ $translationLink := .Permalink }}
+                            {{ $translationLink := .RelPermalink }}
                             {{ range $translation := $allTranslations }}
                                 {{ if eq $anySiteLang.Lang $translation.Lang }}
-                                    {{ $translationLink = $translation.Permalink }}
+                                    {{ $translationLink = $translation.RelPermalink }}
                                 {{ end }}
                             {{ end }}
 
