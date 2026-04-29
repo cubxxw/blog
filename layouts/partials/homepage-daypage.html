@@ -161,7 +161,7 @@
           <div class="hp-cat-tile-icon">🌐</div>
           <div class="hp-cat-tile-name">Travel</div>
           <div class="hp-cat-tile-zh">旅行</div>
-          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "travel") }}</strong></div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len site.Taxonomies.tags.travel }}</strong></div>
         </a>
         <a class="hp-cat-tile" href="{{ "/projects/" | relLangURL }}">
           <div class="hp-cat-tile-icon">📦</div>
