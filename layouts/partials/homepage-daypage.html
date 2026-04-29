@@ -590,7 +590,7 @@
               if (line.startsWith('data: ')) {
                 var d = line.slice(6).trim();
                 if (d && d !== '[DONE]') {
-                  try { var j = JSON.parse(d); if (j.content) { reply += j.content; messages[messages.length-1].content = reply; renderChat(); } } catch(e) {}
+                  try { var j = JSON.parse(d); if (j.delta) { reply += j.delta; messages[messages.length-1].content = reply; renderChat(); } } catch(e) {}
                 }
               }
             });
