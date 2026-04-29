@@ -1,0 +1,808 @@
+{{- /* Homepage DayPage Redesign — Bear / 熊
+     Mirrors the design prototype: Hero + AI Chat + Posts + Books + Projects + Travel + Subscribe + Footer
+     Lang: en (default) / zh — detected from .Lang
+*/ -}}
+
+{{- $isZh := eq .Lang "zh" -}}
+{{- $lang  := .Lang -}}
+{{- $d     := site.Data.homepage -}}
+
+<div class="homepage-root" id="hp-root" data-lang="{{ $lang }}">
+
+  <main class="hp-page">
+
+    {{/* ── Hero ─────────────────────────────────────────── */}}
+    <section class="hp-hero" id="hp-about">
+      <div>
+        <div class="hp-hero-meta-row">
+          <span class="hp-status-pill" id="hp-status-pill">
+            <span class="hp-live-dot"></span>
+            <span id="hp-status-text">{{ if $isZh }}在线 · 漫游中{{ else }}Online · Roaming{{ end }}</span>
+          </span>
+          <span class="hp-entry-label">ENTRY · <span id="hp-entry-date">{{ now.Format "2006/01/02" }}</span></span>
+        </div>
+
+        <h1>
+          <span class="hp-hero-name-row">
+            <span class="hp-hero-name-text">
+              {{ $d.hero.nameEn }} <span class="hp-accent">{{ $d.hero.nameLast }}</span>.
+            </span>
+            <span class="hp-hero-chibi" aria-hidden="true">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>
+                <ellipse cx="50" cy="68" rx="9" ry="3" fill="#E8DCCA" opacity="0.6"/>
+                <circle cx="50" cy="44" r="22" fill="#FFE4C4"/>
+                <path d="M28 42 Q28 22 50 20 Q72 22 72 42 Q72 36 64 32 Q56 28 50 30 Q44 28 36 32 Q28 36 28 42 Z" fill="#2B1810"/>
+                <circle cx="32" cy="26" r="5" fill="#2B1810"/>
+                <circle cx="68" cy="26" r="5" fill="#2B1810"/>
+                <circle cx="32" cy="26" r="2.5" fill="#8B5A3C"/>
+                <circle cx="68" cy="26" r="2.5" fill="#8B5A3C"/>
+                <circle cx="42" cy="46" r="2.4" fill="#2B1810"/>
+                <circle cx="58" cy="46" r="2.4" fill="#2B1810"/>
+                <circle cx="42.7" cy="45.4" r="0.8" fill="#FFFFFF"/>
+                <circle cx="58.7" cy="45.4" r="0.8" fill="#FFFFFF"/>
+                <circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>
+                <circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>
+                <path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+              </svg>
+            </span>
+          </span>
+          <span class="hp-hero-name-zh">{{ if $isZh }}{{ $d.hero.nameZh }} · {{ $d.hero.nickZh }}{{ else }}熊 · {{ $d.hero.nickZh }}{{ end }}</span>
+        </h1>
+
+        <div class="hp-hero-tag">
+          {{- range $i, $tag := $d.hero.tagline }}{{ if $i }}<span class="hp-sep">/</span>{{ end }}<span>{{ $tag }}</span>{{ end }}
+        </div>
+
+        <p class="hp-hero-bio">
+          {{ if $isZh }}{{ $d.hero.bioZh | safeHTML }}{{ else }}{{ $d.hero.bioEn | safeHTML }}{{ end }}
+        </p>
+
+        {{- if site.Params.socialIcons }}
+        <div class="hp-hero-socials">
+          {{- range site.Params.socialIcons }}
+          <a class="hp-social-icon" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ .name | title }}">
+            {{ partial "svg.html" . }}
+          </a>
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+
+      {{- $bubblesENData := slice -}}
+      {{- $angles := slice -90 -30 30 90 150 210 -}}
+      {{- $dists  := slice 1.0 1.05 0.95 1.0 1.05 0.95 -}}
+      {{- range $i, $text := $d.ai.bubblesEn -}}
+        {{- $bubblesENData = $bubblesENData | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
+      {{- end -}}
+      {{- $bubblesZHData := slice -}}
+      {{- range $i, $text := $d.ai.bubblesZh -}}
+        {{- $bubblesZHData = $bubblesZHData | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
+      {{- end -}}
+      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
+        data-bubbles-en='{{ $bubblesENData | jsonify }}'
+        data-bubbles-zh='{{ $bubblesZHData | jsonify }}'
+        data-sys-en="{{ $d.ai.sysPromptEn }}"
+        data-sys-zh="{{ $d.ai.sysPromptZh }}"></div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Posts ───────────────────────────────────────── */}}
+    <section class="hp-section" id="hp-posts">
+      <div class="hp-section-head">
+        <span class="hp-section-num">01</span>
+        <span class="hp-section-label">{{ if $isZh }}最新信号{{ else }}Latest Signals{{ end }}</span>
+        <h2 class="hp-section-title">
+          {{ if $isZh }}正在写的{{ else }}Writing{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}文章{{ end }}</span>
+        </h2>
+        <a class="hp-section-action" href="{{ "/articles/" | relLangURL }}">
+          {{ if $isZh }}所有文章{{ else }}All Posts{{ end }}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      {{- $pages    := where site.RegularPages "Type" "in" site.Params.mainSections }}
+      {{- $featured := index $pages 0 }}
+      {{- $recent   := after 1 $pages | first 2 }}
+      {{- $archive  := after 3 $pages | first 4 }}
+
+      <div class="hp-posts-grid">
+        {{- with $featured }}
+        <a class="hp-post-card hp-featured" href="{{ .RelPermalink }}">
+          <div class="hp-post-meta">
+            <span class="hp-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+            <span>{{ .Date.Format "Jan 02" | upper }}</span>
+            <span>·</span><span>{{ .ReadingTime }} min</span>
+          </div>
+          <h3 class="hp-post-title">{{ .Title }}</h3>
+          <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 160 }}</p>
+          <div class="hp-post-foot"><span>READ ESSAY</span><span class="hp-post-arrow">↗</span></div>
+        </a>
+        {{- end }}
+        {{- range $recent }}
+        <a class="hp-post-card" href="{{ .RelPermalink }}">
+          <div class="hp-post-meta">
+            <span class="hp-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+            <span>{{ .Date.Format "Jan 02" | upper }}</span>
+          </div>
+          <h3 class="hp-post-title">{{ .Title }}</h3>
+          <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 120 }}</p>
+          <div class="hp-post-foot"><span>{{ .ReadingTime }} min</span><span class="hp-post-arrow">↗</span></div>
+        </a>
+        {{- end }}
+      </div>
+
+      <div class="hp-posts-list">
+        {{- range $archive }}
+        <a class="hp-posts-list-row" href="{{ .RelPermalink }}">
+          <span class="hp-posts-list-date">{{ .Date.Format "Jan 02" | upper }}</span>
+          <span class="hp-posts-list-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+          <span class="hp-posts-list-title">{{ .Title }}</span>
+          <span class="hp-posts-list-arrow">→</span>
+        </a>
+        {{- end }}
+      </div>
+
+      <div class="hp-cat-row">
+        <a class="hp-cat-tile" href="{{ "/ai-technology/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">⚡</div>
+          <div class="hp-cat-tile-name">AI / Tech</div>
+          <div class="hp-cat-tile-zh">技术</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "ai-technology") }}</strong></div>
+        </a>
+        <a class="hp-cat-tile" href="{{ "/growth/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">🌱</div>
+          <div class="hp-cat-tile-name">Growth</div>
+          <div class="hp-cat-tile-zh">成长</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "growth") }}</strong></div>
+        </a>
+        <a class="hp-cat-tile" href="{{ "/travel/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">🌐</div>
+          <div class="hp-cat-tile-name">Travel</div>
+          <div class="hp-cat-tile-zh">旅行</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "travel") }}</strong></div>
+        </a>
+        <a class="hp-cat-tile" href="{{ "/projects/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">📦</div>
+          <div class="hp-cat-tile-name">Projects</div>
+          <div class="hp-cat-tile-zh">项目</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "projects") }}</strong></div>
+        </a>
+      </div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Books ──────────────────────────────────────── */}}
+    <section class="hp-section" id="hp-books">
+      <div class="hp-section-head">
+        <span class="hp-section-num">02</span>
+        <span class="hp-section-label">{{ if $isZh }}我的书{{ else }}Books · Travelogues{{ end }}</span>
+        <h2 class="hp-section-title">{{ if $isZh }}我的旅行书{{ else }}Field Notebooks{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}游记{{ end }}</span></h2>
+      </div>
+      <div class="hp-books-grid">
+        {{- range $d.books }}
+        <a class="hp-book" href="{{ .url }}" target="_blank" rel="noopener">
+          <div class="hp-book-cover {{ .coverClass }}">
+            <div class="hp-book-cover-label">A FIELD NOTEBOOK</div>
+            <div>
+              <div class="hp-book-cover-title">{{ if $isZh }}{{ .titleZh }}{{ else }}{{ .titleEn }}{{ end }}</div>
+              <div class="hp-book-cover-sub">{{ if $isZh }}{{ .subtitleZh }}{{ else }}{{ .subtitleEn }}{{ end }}</div>
+            </div>
+            <div class="hp-book-cover-foot"><span>VOL.{{ .volume }}</span><span>BEAR · {{ .year }}</span></div>
+          </div>
+          <div class="hp-book-info">
+            <div class="hp-book-stamp">{{ .stamp }}</div>
+            <div class="hp-book-meta"><strong>FIELD NOTES</strong><span>·</span><span>{{ .coords }}</span></div>
+            <h3 class="hp-book-title">{{ if $isZh }}{{ .titleZh }}{{ else }}{{ .titleEn }}{{ end }}</h3>
+            <div class="hp-book-zh">{{ .titleZh }} · {{ .subtitleEn }}</div>
+            <p class="hp-book-excerpt">"{{ if $isZh }}{{ .excerptZh }}{{ else }}{{ .excerptEn }}{{ end }}"</p>
+            <div class="hp-book-stats">
+              <div class="hp-book-stat"><span class="hp-book-stat-num">{{ printf "%02d" .chapters }}</span><span class="hp-book-stat-label">Chapters</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">{{ .pages }}</span><span class="hp-book-stat-label">Pages</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">{{ printf "%02d" .cities }}</span><span class="hp-book-stat-label">Cities</span></div>
+              <span class="hp-book-cta">READ ↗</span>
+            </div>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Projects ────────────────────────────────────── */}}
+    <section class="hp-section" id="hp-projects">
+      <div class="hp-section-head">
+        <span class="hp-section-num">03</span>
+        <span class="hp-section-label">{{ if $isZh }}产品 / 开源{{ else }}Products &amp; Open Source{{ end }}</span>
+        <h2 class="hp-section-title">{{ if $isZh }}正在构建{{ else }}Building{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}项目{{ end }}</span></h2>
+        <a class="hp-section-action" href="https://github.com/telepace" target="_blank" rel="noopener">
+          GITHUB
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
+        </a>
+      </div>
+      <div class="hp-projects-featured">
+        {{- range $d.projects.featured }}
+        <a class="hp-project-featured {{ .style }}" href="{{ .url }}" target="_blank" rel="noopener">
+          <div class="hp-project-tag">{{ if $isZh }}{{ .tagZh }}{{ else }}{{ .tagEn }}{{ end }}</div>
+          <h3 class="hp-project-name">{{ .name }}</h3>
+          <p class="hp-project-desc">{{ if $isZh }}{{ .descZh }}{{ else }}{{ .descEn }}{{ end }}</p>
+          <div class="hp-project-foot">
+            <span class="hp-project-lang">{{ .lang }}</span>
+            <span class="hp-project-cta">{{ if $isZh }}{{ .visitZh }}{{ else }}{{ .visitEn }}{{ end }} ↗</span>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+      <div class="hp-repos-grid">
+        {{- range $d.projects.repos }}
+        <a class="hp-repo" href="https://github.com/{{ .org }}/{{ .name }}" target="_blank" rel="noopener">
+          <div class="hp-repo-head">
+            <div class="hp-repo-icon">📦</div>
+            <div class="hp-repo-name"><span class="hp-org">{{ .org }}/</span>{{ .name }}</div>
+          </div>
+          <p class="hp-repo-desc">{{ .desc }}</p>
+          <div class="hp-repo-foot">
+            <span><span class="hp-repo-lang-dot hp-lang-{{ .lc }}"></span>{{ .lang }}</span>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Writing Activity ─────────────────────────────── */}}
+    {{- $allPages := where site.RegularPages "Date" "gt" (time "1970-01-01") -}}
+    {{- $thisYear := now.Year -}}
+    {{- $thisYearPages := where $allPages "Date.Year" $thisYear -}}
+    {{- $firstYear := $thisYear -}}
+    {{- range $allPages -}}{{- if lt .Date.Year $firstYear -}}{{- $firstYear = .Date.Year -}}{{- end -}}{{- end -}}
+    {{- $yearsActive := add (sub $thisYear $firstYear) 1 -}}
+    {{- $allDates := slice -}}
+    {{- range $allPages -}}
+      {{- $allDates = $allDates | append (.Date.Format "2006-01-02") -}}
+    {{- end -}}
+    {{- $recentPosts := $allPages | first 8 -}}
+    <section class="hp-section" id="hp-travel" data-post-dates='{{ $allDates | jsonify }}'>
+      <div class="hp-section-head">
+        <span class="hp-section-num">04</span>
+        <span class="hp-section-label">{{ if $isZh }}写作{{ else }}Writing{{ end }}</span>
+        <h2 class="hp-section-title">{{ if $isZh }}发布记录{{ else }}Post Activity{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}写作{{ end }}</span></h2>
+        <a class="hp-section-action" href="{{ "/archives/" | relLangURL }}">
+          {{ if $isZh }}完整归档{{ else }}All Archives{{ end }}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hp-travel-block">
+        <div>
+          <div class="hp-travel-stats">
+            <div><div class="hp-travel-stat-num">{{ len $allPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}总文章{{ else }}Posts{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ len $thisYearPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}今年{{ else }}This Year{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ $yearsActive }}</div><div class="hp-travel-stat-label">{{ if $isZh }}写作年数{{ else }}Years{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ len (site.Taxonomies.categories) }}</div><div class="hp-travel-stat-label">{{ if $isZh }}分类{{ else }}Topics{{ end }}</div></div>
+          </div>
+          <div class="hp-travel-cities">
+            {{- range $i, $p := $recentPosts -}}
+              {{- if $i }}<span class="hp-city-sep">·</span>{{ end -}}
+              <a href="{{ $p.RelPermalink }}" class="hp-recent-post-link">{{ $p.Title }}</a>
+            {{- end -}}
+          </div>
+        </div>
+        <div class="hp-heatmap" id="hp-heatmap-wrap" data-archive-url="{{ "/archives/" | relLangURL }}" data-first-year="{{ $firstYear }}" data-this-year="{{ $thisYear }}">
+          <div class="hp-heatmap-year-tabs" id="hp-heatmap-tabs">
+            {{- range seq $thisYear -1 $firstYear -}}
+              <button class="hp-heatmap-year-tab{{ if eq . $thisYear }} active{{ end }}" data-year="{{ . }}">{{ . }}</button>
+            {{- end -}}
+          </div>
+          <div class="hp-heatmap-months" id="hp-heatmap-months">
+            <span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span>
+            <span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span>
+            <span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
+          </div>
+          <div class="hp-heatmap-grid" id="hp-heatmap-grid"></div>
+          <div class="hp-heatmap-legend">
+            <span>LESS</span>
+            <span class="hp-heatmap-legend-cells">
+              <span style="background:var(--heatmap-empty)"></span>
+              <span style="background:var(--heatmap-low)"></span>
+              <span style="background:var(--heatmap-mid)"></span>
+              <span style="background:var(--heatmap-high)"></span>
+            </span>
+            <span>MORE</span>
+            <span class="hp-heatmap-legend-year" id="hp-heatmap-legend-year">{{ $thisYear }} ACTIVITY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{/* ── Subscribe ────────────────────────────────────── */}}
+    <div class="hp-subscribe" id="hp-subscribe">
+      <div>
+        <div class="hp-subscribe-tag">SIGNAL · 信号</div>
+        <h3>{{ if $isZh }}别错过任何一个信号。{{ else }}Never miss a signal.{{ end }}</h3>
+        <p>{{ if $isZh }}为构建者写作。AI、开源与漫游笔记，直接送到你的邮箱。已有 {{ $d.subscribe.count }}+ 读者。{{ else }}Built for builders. New posts on AI, open source &amp; nomad life — direct to your inbox. Joined by {{ $d.subscribe.count }}+ readers.{{ end }}</p>
+      </div>
+      <form class="hp-subscribe-form" onsubmit="return hpSubscribeSubmit(event,'{{ $lang }}')">
+        <div class="hp-subscribe-input-row">
+          <input class="hp-subscribe-input" type="email" id="hp-subscribe-email"
+            placeholder="{{ if $isZh }}你的邮箱{{ else }}your@email.com{{ end }}" required>
+          <button class="hp-subscribe-btn" type="submit" id="hp-subscribe-btn">
+            {{ if $isZh }}订阅{{ else }}SUBSCRIBE{{ end }}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div class="hp-subscribe-meta">
+          {{ if $isZh }}不发广告，随时退订{{ else }}No spam, unsubscribe anytime{{ end }}
+          <span class="hp-subscribe-sep">·</span>
+          <a class="hp-subscribe-rss" href="{{ "/index.xml" | relLangURL }}" target="_blank" rel="noopener" title="RSS Feed">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+            RSS
+          </a>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  {{/* ── Footer ──────────────────────────────────────── */}}
+  <footer class="hp-footer hp-page">
+    <div class="hp-footer-grid">
+      <div>
+        <div class="hp-footer-brand">BEAR · 熊</div>
+        <p class="hp-footer-bio">{{ if $isZh }}{{ $d.hero.footerBioZh }}{{ else }}{{ $d.hero.footerBioEn }}{{ end }}</p>
+      </div>
+      <div class="hp-footer-col">
+        <h5>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h5>
+        <ul>
+          <li><a href="{{ "/start-here/" | relLangURL }}">Start Here</a></li>
+          <li><a href="{{ "/about/" | relLangURL }}">About</a></li>
+          <li><a href="{{ "/articles/" | relLangURL }}">All Posts</a></li>
+          <li><a href="{{ "/archives/" | relLangURL }}">Archives</a></li>
+        </ul>
+      </div>
+      <div class="hp-footer-col">
+        <h5>{{ if $isZh }}书与项目{{ else }}Books &amp; Builds{{ end }}</h5>
+        <ul>
+          {{- range $d.books }}
+          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .titleEn }} · {{ .titleZh }}</a></li>
+          {{- end }}
+          {{- range $d.projects.featured }}
+          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+      <div class="hp-footer-col">
+        <h5>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h5>
+        <ul>
+          {{- range site.Params.socialIcons }}
+          <li><a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .title | default (.name | title) }}</a></li>
+          {{- end }}
+          <li><a href="{{ "/index.xml" | relLangURL }}">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hp-footer-bottom">
+      <span>© {{ now.Format "2006" }} XINWEI XIONG · THE QUIET COLLECTOR</span>
+      <div class="hp-footer-bottom-right">
+        <span>BUILT WITH SIGNAL</span>
+        <span>{{ $d.hero.siteVersion }} · {{ now.Format "2006" }}</span>
+      </div>
+    </div>
+  </footer>
+
+  {{/* ── Command Palette ─────────────────────────────── */}}
+  <div class="hp-palette-overlay" id="hp-palette" style="display:none" role="dialog" aria-modal="true">
+    <div class="hp-palette-box" onclick="event.stopPropagation()">
+      <div class="hp-palette-input-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="hp-palette-input" id="hp-palette-input"
+          placeholder="{{ if $isZh }}搜索文章、书、项目...{{ else }}Search posts, books, projects...{{ end }}">
+        <span class="hp-palette-esc">ESC</span>
+      </div>
+      <div class="hp-palette-results" id="hp-palette-results"></div>
+      <div class="hp-palette-footer">
+        <span>↑↓ NAVIGATE · ↵ OPEN · ESC CLOSE</span>
+        <span>POWERED BY SIGNAL</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- .homepage-root -->
+
+<script>
+(function() {
+  var root = document.getElementById('hp-bear-ai');
+  if (!root) return;
+  var isZh = root.dataset.lang === 'zh';
+  var suggestions = JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn);
+  var chatOpen = false, messages = [], loading = false;
+
+  var CHIBI = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    '<path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>' +
+    '<ellipse cx="50" cy="68" rx="9" ry="3" fill="#E8DCCA" opacity="0.6"/>' +
+    '<circle cx="50" cy="44" r="22" fill="#FFE4C4"/>' +
+    '<path d="M28 42 Q28 22 50 20 Q72 22 72 42 Q72 36 64 32 Q56 28 50 30 Q44 28 36 32 Q28 36 28 42 Z" fill="#2B1810"/>' +
+    '<circle cx="32" cy="26" r="5" fill="#2B1810"/><circle cx="68" cy="26" r="5" fill="#2B1810"/>' +
+    '<circle cx="32" cy="26" r="2.5" fill="#8B5A3C"/><circle cx="68" cy="26" r="2.5" fill="#8B5A3C"/>' +
+    '<circle cx="42" cy="46" r="2.4" fill="#2B1810"/><circle cx="58" cy="46" r="2.4" fill="#2B1810"/>' +
+    '<circle cx="42.7" cy="45.4" r="0.8" fill="#FFFFFF"/><circle cx="58.7" cy="45.4" r="0.8" fill="#FFFFFF"/>' +
+    '<circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/><circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>' +
+    '<path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>';
+
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function renderOrbit() {
+    var r = 155;
+    var bubbles = suggestions.map(function(s,i) {
+      var rad = s.angle * Math.PI / 180;
+      var x = (Math.cos(rad) * r * s.dist).toFixed(1);
+      var y = (Math.sin(rad) * r * s.dist).toFixed(1);
+      return '<button class="hp-bear-bubble" style="left:calc(50% + '+x+'px);top:calc(50% + '+y+'px);animation-delay:'+(i*0.12)+'s" data-msg="'+esc(s.text)+'">'+s.text+'</button>';
+    }).join('');
+
+    root.innerHTML =
+      '<div class="hp-bear-orbit" id="hp-orbit">'+
+        '<svg class="hp-bear-orbit-rings" viewBox="-200 -200 400 400" aria-hidden="true">'+
+          '<defs><radialGradient id="bGlow" cx="50%" cy="50%" r="50%">'+
+            '<stop offset="0%" stop-color="rgba(93,48,0,0.18)"/>'+
+            '<stop offset="60%" stop-color="rgba(93,48,0,0.04)"/>'+
+            '<stop offset="100%" stop-color="rgba(93,48,0,0)"/>'+
+          '</radialGradient></defs>'+
+          '<circle cx="0" cy="0" r="190" fill="url(#bGlow)"/>'+
+          '<circle cx="0" cy="0" r="180" fill="none" stroke="var(--border-subtle)" stroke-width="1" stroke-dasharray="2 6"/>'+
+          '<circle cx="0" cy="0" r="140" fill="none" stroke="var(--border-subtle)" stroke-width="1"/>'+
+          '<circle cx="0" cy="0" r="100" fill="none" stroke="var(--accent-border)" stroke-width="1" stroke-dasharray="1 3"/>'+
+          '<line x1="0" y1="-180" x2="0" y2="-170" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<line x1="0" y1="170" x2="0" y2="180" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<line x1="-180" y1="0" x2="-170" y2="0" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<line x1="170" y1="0" x2="180" y2="0" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<circle class="orb-dot" cx="140" cy="-30" r="2" fill="var(--accent)"/>'+
+          '<circle class="orb-dot orb-dot-2" cx="-130" cy="60" r="2" fill="var(--accent)"/>'+
+          '<circle class="orb-dot orb-dot-3" cx="40" cy="160" r="1.5" fill="var(--fg-muted)"/>'+
+        '</svg>'+
+        bubbles+
+        '<button class="hp-bear-avatar-btn" id="hp-avatar-btn" aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
+          '<span class="hp-bear-avatar-pulse"></span>'+
+          '<span class="hp-bear-avatar-pulse hp-bear-avatar-pulse-2"></span>'+
+          '<span class="hp-bear-avatar-core"><span class="hp-bear-chibi">'+CHIBI+'</span></span>'+
+          '<span class="hp-bear-avatar-status"><span class="hp-bear-avatar-status-dot"></span>'+(isZh?'在线':'ONLINE')+'</span>'+
+        '</button>'+
+        '<div class="hp-bear-hud hp-bear-hud-tl"><div class="hp-bear-hud-label">DIGITAL TWIN</div><div class="hp-bear-hud-val">{{ $d.ai.hudTwinVal }}</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-tr"><div class="hp-bear-hud-label">'+(isZh?'协议':'PROTOCOL')+'</div><div class="hp-bear-hud-val">{{ $d.ai.hudProtocolVal }}</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-bl"><div class="hp-bear-hud-label">'+(isZh?'语气':'VOICE')+'</div><div class="hp-bear-hud-val">{{ $d.ai.hudVoiceVal }}</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-br"><div class="hp-bear-hud-label">'+(isZh?'点击开始':'TAP · BEGIN')+'</div><div class="hp-bear-hud-val">↗ '+(isZh?'聊天':'CHAT')+'</div></div>'+
+        '<div class="hp-bear-cta-line">'+(isZh?'点击头像 · 与 Bear 的数字分身对话':"Tap the orb · Talk to Bear's digital twin")+'</div>'+
+      '</div>';
+
+    document.getElementById('hp-avatar-btn').addEventListener('click', function() { openChat(null); });
+    var orbit = document.getElementById('hp-orbit');
+    orbit.addEventListener('mouseenter', function() { this.classList.add('is-hover'); });
+    orbit.addEventListener('mouseleave', function() { this.classList.remove('is-hover'); });
+    root.querySelectorAll('.hp-bear-bubble').forEach(function(btn) {
+      btn.addEventListener('click', function() { openChat(this.dataset.msg); });
+    });
+  }
+
+  function renderChat() {
+    var bodyHtml = '';
+    if (messages.length === 0) {
+      bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨。在路上，但有空聊。问点什么？':"Hey. On the road, but happy to talk. What's on your mind?")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
+    } else {
+      bodyHtml = messages.map(function(m) {
+        var cls = m.role==='user' ? 'hp-bear-chat-msg-user' : 'hp-bear-chat-msg-bear';
+        var t   = m.role==='user' ? (isZh?'已送达':'delivered') : (isZh?'刚刚':'just now');
+        return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble">'+esc(m.content)+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
+      }).join('');
+    }
+    if (loading) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
+
+    var quickHtml = suggestions.slice(0,3).map(function(s) {
+      return '<button class="hp-bear-chat-quick-btn"'+(loading?' disabled':'')+" data-msg='"+esc(s.text)+"'>"+s.text+'</button>';
+    }).join('');
+
+    root.innerHTML =
+      '<div class="hp-bear-chat">'+
+        '<div class="hp-bear-chat-head">'+
+          '<div class="hp-bear-chat-head-left">'+
+            '<span class="hp-bear-chat-avatar">'+CHIBI+'<span class="hp-bear-chat-avatar-dot"></span></span>'+
+            '<div>'+
+              '<div class="hp-bear-chat-name">Bear <span class="hp-bear-chat-name-zh">· 熊</span></div>'+
+              '<div class="hp-bear-chat-meta"><span class="hp-bear-chat-pulse-dot"></span>'+(loading?(isZh?'正在输入…':'typing…'):(isZh?'在线 · 通常几秒回复':'online · usually replies in seconds'))+'</div>'+
+            '</div>'+
+          '</div>'+
+          '<div class="hp-bear-chat-actions">'+
+            (messages.length?'<button class="hp-bear-chat-icon-btn" id="hp-chat-clear" title="Clear"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>':'')+
+            '<button class="hp-bear-chat-icon-btn" id="hp-chat-close" title="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>'+
+          '</div>'+
+        '</div>'+
+        '<div class="hp-bear-chat-body" id="hp-chat-body">'+bodyHtml+'</div>'+
+        '<div class="hp-bear-chat-quick">'+quickHtml+'</div>'+
+        '<div class="hp-bear-chat-input-row">'+
+          '<input class="hp-bear-chat-input" id="hp-chat-input" placeholder="'+(isZh?'发条消息…':'Message Bear…')+'"'+(loading?' disabled':'')+'>'+
+          '<button class="hp-bear-chat-send" id="hp-chat-send" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'+
+        '</div>'+
+        '<div class="hp-bear-chat-foot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.5 4.5L6 9l4.5 1.5L12 15l1.5-4.5L18 9l-4.5-1.5z"/></svg><span>'+(isZh?"AI 模拟 Bear 的语气 · 不是本人":"AI mimicking Bear's voice · not the human")+'</span></div>'+
+      '</div>';
+
+    var body = document.getElementById('hp-chat-body');
+    if (body) body.scrollTop = body.scrollHeight;
+
+    var inp  = document.getElementById('hp-chat-input');
+    var send = document.getElementById('hp-chat-send');
+    if (inp) {
+      inp.addEventListener('input', function() { send.disabled = !this.value.trim() || loading; });
+      inp.addEventListener('keydown', function(e) {
+        if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); if (!loading && this.value.trim()) sendMsg(this.value); }
+      });
+      if (!loading) setTimeout(function(){ inp && inp.focus(); }, 100);
+    }
+    if (send) send.addEventListener('click', function() { var v=inp&&inp.value; if(v) sendMsg(v); });
+    var clr = document.getElementById('hp-chat-clear');
+    if (clr) clr.addEventListener('click', function() { messages=[]; renderChat(); });
+    var cls = document.getElementById('hp-chat-close');
+    if (cls) cls.addEventListener('click', function() { chatOpen=false; renderOrbit(); });
+    root.querySelectorAll('.hp-bear-chat-quick-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() { if(!loading) sendMsg(this.dataset.msg); });
+    });
+  }
+
+  function openChat(initMsg) {
+    chatOpen = true; renderChat();
+    if (initMsg) sendMsg(initMsg);
+  }
+
+  function sendMsg(text) {
+    text = String(text||'').trim();
+    if (!text || loading) return;
+    chatOpen = true;
+    messages.push({ role:'user', content:text });
+    loading = true;
+    renderChat();
+    var sys = isZh ? root.dataset.sysZh : root.dataset.sysEn;
+    var history = messages.slice(0,-1).map(function(m){ return { role: m.role==='user'?'user':'assistant', content: m.content }; });
+    fetch('/.netlify/functions/blog-ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        question: text,
+        language: isZh ? 'zh' : 'en',
+        context: history,
+        searchContext: sys
+      })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('api error');
+      var ct = res.headers.get('content-type') || '';
+      if (ct.includes('text/event-stream')) {
+        var reader = res.body.getReader();
+        var decoder = new TextDecoder();
+        var reply = '';
+        messages.push({ role:'bear', content:'' });
+        loading = false;
+        function pump() {
+          return reader.read().then(function(chunk) {
+            if (chunk.done) { renderChat(); return; }
+            var lines = decoder.decode(chunk.value).split('\n');
+            lines.forEach(function(line) {
+              if (line.startsWith('data: ')) {
+                var d = line.slice(6).trim();
+                if (d && d !== '[DONE]') {
+                  try { var j = JSON.parse(d); if (j.content) { reply += j.content; messages[messages.length-1].content = reply; renderChat(); } } catch(e) {}
+                }
+              }
+            });
+            return pump();
+          });
+        }
+        return pump();
+      }
+      return res.json().then(function(d) {
+        messages.push({ role:'bear', content: d.answer || d.content || (isZh?'嗯，走神了，再问一次？':"Lost my train of thought. Try again?") });
+        loading = false; renderChat();
+      });
+    })
+    .catch(function() {
+      messages.push({ role:'bear', content: isZh?'网络有点问题，再试一次？':"Connection hiccup. Try again?" });
+      loading = false; renderChat();
+    });
+  }
+
+  renderOrbit();
+
+  /* ── Build-time post dates → heatmap; RSS → status pill only ── */
+  (function() {
+    // 1. Heatmap — per-year view, clickable cells, year tab switcher
+    (function() {
+      var section  = document.getElementById('hp-travel');
+      var wrap     = document.getElementById('hp-heatmap-wrap');
+      var hg       = document.getElementById('hp-heatmap-grid');
+      var tabs     = document.getElementById('hp-heatmap-tabs');
+      var legendYr = document.getElementById('hp-heatmap-legend-year');
+      if (!hg || !section || !wrap) return;
+
+      var archiveBase = wrap.dataset.archiveUrl || '/archives/';
+      var thisYear    = parseInt(wrap.dataset.thisYear, 10) || new Date().getFullYear();
+
+      var rawDates = [];
+      try { rawDates = JSON.parse(section.dataset.postDates || '[]'); } catch(e) {}
+
+      // Build countMap: YYYY-MM-DD → count
+      var countMap = {};
+      rawDates.forEach(function(d) {
+        if (d && d > '1970-01-01') countMap[d] = (countMap[d] || 0) + 1;
+      });
+
+      function renderYear(year) {
+        hg.innerHTML = '';
+        if (legendYr) legendYr.textContent = year + ' ACTIVITY';
+
+        // Jan 1 of selected year
+        var jan1 = new Date(year, 0, 1);
+        // start on Sunday of that week
+        var start = new Date(jan1);
+        start.setDate(jan1.getDate() - jan1.getDay());
+
+        // end: Dec 31 of selected year, extended to Saturday
+        var dec31 = new Date(year, 11, 31);
+        var end = new Date(dec31);
+        end.setDate(dec31.getDate() + (6 - dec31.getDay()));
+
+        // count weeks
+        var weeks = Math.round((end - start) / (7 * 86400000)) + 1;
+        hg.style.gridTemplateColumns = 'repeat(' + weeks + ', 1fr)';
+
+        // max count this year for relative color scaling
+        var yearKeys = Object.keys(countMap).filter(function(k) { return k.slice(0,4) === String(year); });
+        var maxCount = Math.max.apply(null, yearKeys.map(function(k) { return countMap[k]; }).concat([1]));
+
+        var cur = new Date(start);
+        while (cur <= end) {
+          var key = cur.toISOString().slice(0,10);
+          var inYear = cur.getFullYear() === year;
+          var cnt = inYear ? (countMap[key] || 0) : 0;
+          var lvl = cnt >= maxCount * 0.7 ? 3 : cnt >= maxCount * 0.35 ? 2 : cnt > 0 ? 1 : 0;
+
+          var cell = document.createElement('div');
+          cell.className = 'hp-heat-cell' + (lvl ? ' hp-heat-' + lvl : '') + (inYear ? '' : ' hp-heat-out');
+
+          if (inYear && cnt > 0) {
+            var month = cur.toLocaleString('en', { month: 'short' });
+            cell.title = month + ' ' + cur.getDate() + ', ' + year + ' · ' + cnt + ' post' + (cnt > 1 ? 's' : '');
+            cell.style.cursor = 'pointer';
+            (function(y, m) {
+              cell.addEventListener('click', function() {
+                window.location.href = archiveBase + '#year-' + y;
+              });
+            })(year, cur.getMonth() + 1);
+          }
+          hg.appendChild(cell);
+          cur.setDate(cur.getDate() + 1);
+        }
+      }
+
+      // Tab switching
+      var activeYear = thisYear;
+      if (tabs) {
+        tabs.addEventListener('click', function(e) {
+          var btn = e.target.closest('.hp-heatmap-year-tab');
+          if (!btn) return;
+          var yr = parseInt(btn.dataset.year, 10);
+          tabs.querySelectorAll('.hp-heatmap-year-tab').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeYear = yr;
+          renderYear(yr);
+        });
+      }
+
+      renderYear(activeYear);
+    })();
+
+    // 2. RSS fetch only for latest post title → status pill
+    (function() {
+      var rssUrl = isZh ? '/zh/index.xml' : '/index.xml';
+      var CACHE_KEY = 'hp_rss_pill_' + (isZh ? 'zh' : 'en');
+      var CACHE_TTL = 30 * 60 * 1000;
+
+      function applyLatest(item) {
+        var statusEl = document.getElementById('hp-status-text');
+        var dateEl   = document.getElementById('hp-entry-date');
+        if (statusEl && item.title) {
+          var short = item.title.length > 28 ? item.title.slice(0,26) + '…' : item.title;
+          statusEl.textContent = (isZh ? '最新 · ' : 'Latest · ') + short;
+          var pill = document.getElementById('hp-status-pill');
+          if (pill && item.href && item.href !== '#') {
+            pill.style.cursor = 'pointer';
+            pill.onclick = function() { window.open(item.href, '_blank'); };
+            pill.title = item.title;
+          }
+        }
+        if (dateEl && item.date) {
+          var d = item.date;
+          dateEl.textContent = d.getFullYear() + '/' +
+            String(d.getMonth()+1).padStart(2,'0') + '/' +
+            String(d.getDate()).padStart(2,'0');
+        }
+      }
+
+      function parseFirst(xml) {
+        var m = xml.match(/<item[\s\S]*?<\/item>/);
+        if (!m) return null;
+        var item = m[0];
+        var pubM  = item.match(/<pubDate>([^<]+)<\/pubDate>/);
+        var titleM = item.match(/<title>([^<]+)<\/title>/);
+        var linkM  = item.match(/<link>([^<]+)<\/link>/);
+        if (!pubM) return null;
+        return {
+          date:  new Date(pubM[1]),
+          title: titleM ? titleM[1].replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>') : '',
+          href:  linkM ? linkM[1].trim() : '#'
+        };
+      }
+
+      try {
+        var cached = sessionStorage.getItem(CACHE_KEY);
+        if (cached) {
+          var obj = JSON.parse(cached);
+          if (Date.now() - obj.ts < CACHE_TTL) { applyLatest(obj.item); return; }
+        }
+      } catch(e) {}
+
+      fetch(rssUrl)
+        .then(function(r) { return r.text(); })
+        .then(function(xml) {
+          var item = parseFirst(xml);
+          if (!item) return;
+          try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), item: item })); } catch(e) {}
+          applyLatest(item);
+        })
+        .catch(function() {});
+    })();
+  })();
+
+  /* Command Palette */
+  var palette  = document.getElementById('hp-palette');
+  var pInput   = document.getElementById('hp-palette-input');
+  var pResults = document.getElementById('hp-palette-results');
+  var pItems = [
+    { type:'NAV',  label:{{ if $isZh }}'关于'{{ else }}'About'{{ end }},    href:'{{ "/about/" | relLangURL }}' },
+    { type:'NAV',  label:{{ if $isZh }}'所有文章'{{ else }}'All Posts'{{ end }}, href:'{{ "/articles/" | relLangURL }}' },
+    {{- range first 5 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+    { type:'POST', label:{{ .Title | jsonify }}, href:{{ .RelPermalink | jsonify }} },
+    {{- end }}
+    {{- range $d.books }}
+    { type:'BOOK', label:{{ printf "%s · %s" .titleEn .subtitleEn | jsonify }}, href:{{ .url | jsonify }} },
+    {{- end }}
+    {{- range $d.projects.featured }}
+    { type:'BUILD', label:{{ printf "%s · %s" .name .tagEn | jsonify }}, href:{{ .url | jsonify }} },
+    {{- end }}
+  ];
+  function renderPalette(q) {
+    var filtered = q ? pItems.filter(function(i){ return i.label.toLowerCase().includes(q.toLowerCase()); }) : pItems;
+    if (!filtered.length) { pResults.innerHTML='<div style="padding:32px;text-align:center;font-size:14px;color:var(--fg-subtle)">'+(isZh?'没有结果。':'No results.')+'</div>'; return; }
+    pResults.innerHTML = filtered.map(function(item) {
+      return '<a class="hp-palette-item" href="'+esc(item.href)+'">'+'<span class="hp-palette-type">'+item.type+'</span><span class="hp-palette-label">'+esc(item.label)+'</span>'+'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--fg-subtle)" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>';
+    }).join('');
+  }
+  function openPalette()  { palette.style.display='flex'; pInput.value=''; pInput.focus(); renderPalette(''); }
+  function closePalette() { palette.style.display='none'; }
+  if (palette) palette.addEventListener('click', closePalette);
+  if (pInput)  pInput.addEventListener('input', function(){ renderPalette(this.value); });
+  var sb = document.getElementById('hp-search-trigger');
+  if (sb) sb.addEventListener('click', openPalette);
+  document.addEventListener('keydown', function(e) {
+    if ((e.metaKey||e.ctrlKey)&&e.key==='k') { e.preventDefault(); palette.style.display==='none'?openPalette():closePalette(); }
+    if (e.key==='Escape') closePalette();
+  });
+
+  /* Subscribe */
+  window.hpSubscribeSubmit = function(e, lang) {
+    e.preventDefault();
+    var btn = document.getElementById('hp-subscribe-btn');
+    if (btn) { btn.textContent = lang==='zh'?'已订阅 ✓':'SUBSCRIBED ✓'; btn.disabled=true; }
+    return false;
+  };
+})();
+</script>

@@ -1,0 +1,169 @@
+hero:
+  nameEn: "Xinwei"
+  nameLast: "Xiong"
+  nameZh: "熊新伟"
+  nickZh: "BEAR"
+  tagline:
+    - "AI BUILDER"
+    - "OPEN SOURCE"
+    - "DIGITAL NOMAD"
+  bioEn: "I build <strong>AI products</strong> and contribute to <strong>open source</strong> while wandering the world. Capturing raw signals from each day — code, thoughts, places — and compiling them into something durable."
+  bioZh: "构建 <strong>AI 产品</strong>，贡献<strong>开源代码</strong>，在世界的褶皱里慢慢走。每天捕捉那些原始信号——代码、念头、地方——然后让它们结晶成一些可以保留下来的东西。"
+  footerBioEn: "Xinwei Xiong — AI builder, open source contributor, digital nomad. Slowly walking between China and the world."
+  footerBioZh: "熊新伟 — AI 构建者、开源贡献者、数字游民。在中国与世界之间慢慢走。"
+  siteVersion: "v3.0"
+
+books:
+  - id: vietnam
+    volume: 1
+    url: "https://vietnam.nsddd.top/"
+    coverClass: "hp-book-cover-vietnam"
+    titleEn: "Vietnam"
+    titleZh: "越南"
+    subtitleEn: "Field Notes from the Mekong"
+    subtitleZh: "湄公河随笔"
+    year: 2024
+    stamp: "2024 · 越南"
+    coords: "10.7769° N · 106.7009° E"
+    chapters: 9
+    pages: 184
+    cities: 7
+    excerptEn: "From Hanoi's narrow alleys to the Mekong delta — a slow-cooked record of motorbikes, coffee, monsoon rain, and the strange comfort of being a stranger."
+    excerptZh: "从河内到湄公河三角洲，一段慢火细炖的旅程。"
+  - id: angkor
+    volume: 2
+    url: "https://angkor.nsddd.top/"
+    coverClass: "hp-book-cover-angkor"
+    titleEn: "Angkor"
+    titleZh: "吴哥窟"
+    subtitleEn: "Stones, Roots & Empire"
+    subtitleZh: "石头、树根与帝国"
+    year: 2024
+    stamp: "2024 · 柬埔寨"
+    coords: "13.4125° N · 103.8670° E"
+    chapters: 8
+    pages: 156
+    cities: 3
+    excerptEn: "On the temples beyond the postcards — banyan roots crawling over a lost capital, and what a vanished empire still says to us about scale and silence."
+    excerptZh: "走过吴哥的庙宇与废墟，听一个逝去帝国的回声。"
+
+projects:
+  featured:
+    - name: "Telepace"
+      tagEn: "AI · Reading & Knowledge"
+      tagZh: "AI · 阅读与知识"
+      descEn: "AI-powered reading assistant designed to help you efficiently process, understand, and summarize text content from web pages and documents."
+      descZh: "AI 驱动的阅读助手，帮助你高效处理、理解和摘要网页及文档内容。"
+      stars: "1.2k"
+      lang: "TypeScript"
+      url: "https://telepace.cc"
+      style: "hp-amber"
+      visitEn: "VISIT"
+      visitZh: "访问"
+    - name: "OpenKF"
+      tagEn: "Open Source · Customer Service"
+      tagZh: "开源 · 客服系统"
+      descEn: "Open-source AI knowledge-base customer service system. Built atop OpenIM for deep, contextual conversations at scale."
+      descZh: "基于 OpenIM 的开源 AI 知识库客服系统，支持深度、情境化的对话。"
+      stars: "2.8k"
+      lang: "Go"
+      url: "https://github.com/OpenIMSDK/OpenKF"
+      style: "hp-ink"
+      visitEn: "VISIT"
+      visitZh: "访问"
+  repos:
+    - org: "telepace"
+      name: "nexus"
+      desc: "AI-powered reading assistant for web pages and documents."
+      lang: "TypeScript"
+      lc: "ts"
+      stars: 3
+      updated: "Oct 27"
+    - org: "telepace"
+      name: "sophon"
+      desc: "Long-form AI reasoning interface. Wisdom over speed."
+      lang: "TypeScript"
+      lc: "ts"
+      stars: 1
+      updated: "Oct 28"
+    - org: "telepace"
+      name: "voiceflow"
+      desc: "LLM audio streaming — low-latency, production-ready."
+      lang: "Go"
+      lc: "go"
+      stars: 8
+      updated: "Apr 23"
+    - org: "telepace"
+      name: "quick-forge-ai"
+      desc: "FastAPI + TypeScript starter for shipping AI prototypes fast."
+      lang: "MDX"
+      lc: "mdx"
+      stars: 4
+      updated: "Oct 27"
+    - org: "telepace"
+      name: "aireader"
+      desc: "Reading agent with citation-grounded summaries."
+      lang: "TypeScript"
+      lc: "ts"
+      stars: 2
+      updated: "Sep 17"
+    - org: "telepace"
+      name: "ai-commons"
+      desc: "Shared API clients and data utilities across feedback systems."
+      lang: "Python"
+      lc: "py"
+      stars: 2
+      updated: "Apr 24"
+
+travel:
+  countries: 9
+  cities: 35
+  flights: 87
+  days: 412
+  cityList:
+    - Tokyo
+    - Kyoto
+    - Osaka
+    - Hanoi
+    - Saigon
+    - Da Nang
+    - Siem Reap
+    - Phnom Penh
+    - Bangkok
+    - Chiang Mai
+    - Singapore
+    - Kuala Lumpur
+    - Bali
+    - Lisbon
+    - Porto
+    - Barcelona
+    - Berlin
+    - Lhasa
+    - Chengdu
+    - Shenzhen
+    - Hong Kong
+    - Taipei
+
+subscribe:
+  count: "1,200"
+
+ai:
+  sysPromptEn: "You are \"Bear AI\" — a digital twin of Xinwei Xiong (熊新伟, nickname \"Bear\"). Calm, a little poetic. AI builder, open source contributor, digital nomad. Topics: AI agents, Kubernetes, Go, cloud-native, personal growth, travel Asia/Europe. Books: Vietnam, Angkor. Projects: telepace.cc, OpenIM/OpenKF. Short warm replies, 2-4 sentences. No emoji. First person."
+  sysPromptZh: "你是 \"Bear AI\" — 熊新伟（Bear）的数字分身。安静、带诗意。AI 构建者、开源、数字游民。话题：AI agent、Kubernetes、Go、云原生、个人成长、旅行。书：越南、吴哥。项目：telepace.cc、OpenIM/OpenKF。简短温暖，2-4 句，不用 emoji，第一人称。"
+  hudTwinVal: "BEAR_AI · v3.0"
+  hudProtocolVal: "CLAUDE · 4.5"
+  hudVoiceVal: "XINWEI · 熊"
+  bubblesEn:
+    - "What are you building?"
+    - "Vietnam book?"
+    - "Best AI post?"
+    - "Why nomad?"
+    - "Talk to me"
+    - "What's OpenKF?"
+  bubblesZh:
+    - "在做什么？"
+    - "聊聊越南"
+    - "推荐一篇文章"
+    - "为什么游牧？"
+    - "和我聊聊"
+    - "OpenKF 是什么？"

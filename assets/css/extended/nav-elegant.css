@@ -51,9 +51,10 @@ html:lang(en) .header-wrapper {
 }
 
 .logo a {
+    font-family: var(--font-body, system-ui, sans-serif);
     font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--color-ink, var(--primary));
 }
 
@@ -81,8 +82,10 @@ html:lang(en) .header-wrapper {
     border-radius: 6px;
     background: transparent;
     color: var(--color-ink-muted, var(--secondary));
-    font-size: 13.5px;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 13px;
     font-weight: 500;
+    letter-spacing: 0.01em;
     text-decoration: none;
     border: none;
     line-height: 1.4;
@@ -223,7 +226,9 @@ body.dark #theme-toggle:hover {
     display: inline-flex;
     align-items: center;
     gap: 0;
-    font-size: 13px;
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    letter-spacing: 0.5px;
 }
 
 .lang-switch li {
@@ -244,8 +249,11 @@ body.dark #theme-toggle:hover {
     display: inline-block;
     padding: 4px 8px;
     border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
     color: var(--color-ink-muted, var(--secondary));
     text-decoration: none;
     transition: background-color 0.15s ease, color 0.15s ease;
