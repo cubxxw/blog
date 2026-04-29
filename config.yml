@@ -81,18 +81,25 @@ params:
     Content: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
   socialIcons:
     - name: github
+      title: GitHub
       url: https://github.com/cubxxw
     - name: zhihu
+      title: 知乎
       url: https://www.zhihu.com/people/3293172751
     - name: bilibili
+      title: B站
       url: https://space.bilibili.com/1233089591
     - name: youtube
+      title: YouTube
       url: https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w
     - name: buymeacoffee
+      title: Buy me a coffee
       url: https://www.buymeacoffee.com/cubxxw
     - name: email
+      title: Email
       url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com
     - name: xhs
+      title: 小红书
       url: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "weibo", "xiaohongshu"] # To customize which share buttons to be enabled on page
   analytics:

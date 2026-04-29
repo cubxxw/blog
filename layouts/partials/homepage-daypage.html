@@ -57,6 +57,16 @@
         <p class="hp-hero-bio">
           {{ if $isZh }}{{ $d.hero.bioZh | safeHTML }}{{ else }}{{ $d.hero.bioEn | safeHTML }}{{ end }}
         </p>
+
+        {{- if site.Params.socialIcons }}
+        <div class="hp-hero-socials">
+          {{- range site.Params.socialIcons }}
+          <a class="hp-social-icon" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ .name | title }}">
+            {{ partial "svg.html" . }}
+          </a>
+          {{- end }}
+        </div>
+        {{- end }}
       </div>
 
       {{- $bubblesENData := slice -}}
@@ -367,10 +377,10 @@
       <div class="hp-footer-col">
         <h5>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h5>
         <ul>
-          <li><a href="https://github.com/cubxxw">⊕ GitHub</a></li>
-          <li><a href="https://github.com/telepace">⊕ Telepace</a></li>
-          <li><a href="{{ "/index.xml" | relLangURL }}">⊕ RSS</a></li>
-          <li><a href="mailto:hello@nsddd.top">⊕ Email</a></li>
+          {{- range site.Params.socialIcons }}
+          <li><a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .title | default (.name | title) }}</a></li>
+          {{- end }}
+          <li><a href="{{ "/index.xml" | relLangURL }}">RSS</a></li>
         </ul>
       </div>
     </div>

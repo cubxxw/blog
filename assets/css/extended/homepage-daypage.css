@@ -316,6 +316,27 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-hero-bio strong { color: var(--fg-primary); font-weight: 600; }
 
+.hp-hero-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.hp-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  color: var(--fg-muted);
+  background: var(--surface-white);
+  transition: color 150ms, border-color 150ms, background 150ms;
+}
+.hp-social-icon:hover { color: var(--fg-primary); border-color: var(--border-default); background: var(--accent-soft); }
+.hp-social-icon svg { width: 16px; height: 16px; }
+
 /* ============================================================
    BEAR AI — orbital interface
    ============================================================ */
