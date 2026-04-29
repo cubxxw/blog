@@ -434,20 +434,54 @@
 
   function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-  // Render bear AI message: escape HTML first, then restore safe Markdown links and basic formatting
+  // Render bear AI message with rich formatting
   function renderMsg(s) {
-    var safe = esc(s);
     var origin = window.location.origin;
-    // [title](url) — matches absolute https:// links OR relative /path links
-    safe = safe.replace(/\[([^\]]{1,120})\]\(((?:https?:\/\/|\/)[^)]{1,400})\)/g, function(_, title, url) {
-      var href = url.startsWith('/') ? origin + url : url;
-      return '<a href="' + href + '" target="_blank" rel="noopener noreferrer" class="hp-ai-link">' + title + ' ↗</a>';
-    });
-    // **bold**
-    safe = safe.replace(/\*\*([^*]{1,200})\*\*/g, '<strong>$1</strong>');
-    // newlines → <br>
-    safe = safe.replace(/\n/g, '<br>');
-    return safe;
+    // Split into lines for paragraph-aware processing
+    var lines = String(s).split('\n');
+    var out = [];
+    var i = 0;
+    while (i < lines.length) {
+      var line = lines[i];
+      // Markdown link on its own line → article card
+      var cardMatch = line.match(/^\s*\[([^\]]{1,120})\]\(((?:https?:\/\/|\/)[^)]{1,400})\)\s*$/);
+      if (cardMatch) {
+        var cardTitle = esc(cardMatch[1]);
+        var cardUrl   = cardMatch[2].startsWith('/') ? origin + cardMatch[2] : cardMatch[2];
+        var cardPath  = cardMatch[2].replace(/^https?:\/\/[^\/]+/, '').replace(/\/$/, '') || '/';
+        out.push(
+          '<a href="' + cardUrl + '" target="_blank" rel="noopener noreferrer" class="hp-ai-card">' +
+            '<span class="hp-ai-card-icon" aria-hidden="true">' +
+              '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
+            '</span>' +
+            '<span class="hp-ai-card-body">' +
+              '<span class="hp-ai-card-title">' + cardTitle + '</span>' +
+              '<span class="hp-ai-card-path">' + esc(cardPath) + '</span>' +
+            '</span>' +
+            '<span class="hp-ai-card-arrow" aria-hidden="true">↗</span>' +
+          '</a>'
+        );
+        i++; continue;
+      }
+      // Empty line → paragraph break
+      if (line.trim() === '') {
+        if (out.length && out[out.length-1] !== '<p class="hp-ai-para">') out.push('</p><p class="hp-ai-para">');
+        i++; continue;
+      }
+      // Inline Markdown links within text
+      var inlined = esc(line)
+        .replace(/\[([^\]]{1,120})\]\(((?:https?:\/\/|\/)[^)]{1,400})\)/g, function(_, t, u) {
+          var href = u.startsWith('/') ? origin + u : u;
+          return '<a href="' + href + '" target="_blank" rel="noopener noreferrer" class="hp-ai-link">' + t + ' ↗</a>';
+        })
+        .replace(/\*\*([^*]{1,200})\*\*/g, '<strong>$1</strong>');
+      out.push(inlined + ' ');
+      i++;
+    }
+    var body = out.join('');
+    // Wrap plain text in a paragraph
+    if (!body.startsWith('<a') && !body.startsWith('</p>')) body = '<p class="hp-ai-para">' + body.trimEnd() + '</p>';
+    return body;
   }
 
   function renderOrbit() {
