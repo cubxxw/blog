@@ -14,11 +14,11 @@
     <section class="hp-hero" id="hp-about">
       <div>
         <div class="hp-hero-meta-row">
-          <span class="hp-status-pill">
+          <span class="hp-status-pill" id="hp-status-pill">
             <span class="hp-live-dot"></span>
-            {{ if $isZh }}在线 · 漫游中{{ else }}Online · Roaming{{ end }}
+            <span id="hp-status-text">{{ if $isZh }}在线 · 漫游中{{ else }}Online · Roaming{{ end }}</span>
           </span>
-          <span class="hp-entry-label">ENTRY · {{ now.Format "2006/01/02" }}</span>
+          <span class="hp-entry-label">ENTRY · <span id="hp-entry-date">{{ now.Format "2006/01/02" }}</span></span>
         </div>
 
         <h1>
@@ -163,7 +163,7 @@
         <h2 class="hp-section-title">{{ if $isZh }}我的旅行书{{ else }}Field Notebooks{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}游记{{ end }}</span></h2>
       </div>
       <div class="hp-books-grid">
-        <a class="hp-book" href="https://vietnam.nsddd.top/">
+        <a class="hp-book" href="https://vietnam.nsddd.top/" target="_blank" rel="noopener">
           <div class="hp-book-cover hp-book-cover-vietnam">
             <div class="hp-book-cover-label">A FIELD NOTEBOOK</div>
             <div>
@@ -186,7 +186,7 @@
             </div>
           </div>
         </a>
-        <a class="hp-book" href="https://angkor.nsddd.top/">
+        <a class="hp-book" href="https://angkor.nsddd.top/" target="_blank" rel="noopener">
           <div class="hp-book-cover hp-book-cover-angkor">
             <div class="hp-book-cover-label">A FIELD NOTEBOOK</div>
             <div>
@@ -359,8 +359,8 @@
       <div class="hp-footer-col">
         <h5>{{ if $isZh }}书与项目{{ else }}Books &amp; Builds{{ end }}</h5>
         <ul>
-          <li><a href="https://vietnam.nsddd.top/">Vietnam · 越南</a></li>
-          <li><a href="https://angkor.nsddd.top/">Angkor · 吴哥</a></li>
+          <li><a href="https://vietnam.nsddd.top/" target="_blank" rel="noopener">Vietnam · 越南</a></li>
+          <li><a href="https://angkor.nsddd.top/" target="_blank" rel="noopener">Angkor · 吴哥</a></li>
           <li><a href="https://telepace.cc">Telepace</a></li>
           <li><a href="https://github.com/OpenIMSDK/OpenKF">OpenKF</a></li>
         </ul>
@@ -623,19 +623,123 @@
 
   renderOrbit();
 
-  /* Heatmap */
-  var hg = document.getElementById('hp-heatmap-grid');
-  if (hg) {
-    for (var i=0; i<371; i++) {
-      var v = ((Math.sin(i*9301+42)*43758.5453)%1+1)%1;
-      var boost = (Math.sin(Math.floor(i/28)*0.7)+1)/2;
-      var comp = v*0.6+boost*0.4;
-      var lvl = comp>0.78?3:comp>0.6?2:comp>0.4?1:0;
-      var d = document.createElement('div');
-      d.className = 'hp-heat-cell'+(lvl?' hp-heat-'+lvl:'');
-      hg.appendChild(d);
+  /* ── RSS-driven: heatmap + status pill ────────────────────── */
+  (function() {
+    var rssUrl = isZh ? '/zh/index.xml' : '/index.xml';
+    var CACHE_KEY = 'hp_rss_' + (isZh ? 'zh' : 'en');
+    var CACHE_TTL = 30 * 60 * 1000; // 30 min
+
+    function parsePubDates(xmlText) {
+      var dates = [];
+      var items = xmlText.match(/<item[\s\S]*?<\/item>/g) || [];
+      items.forEach(function(item) {
+        var m = item.match(/<pubDate>([^<]+)<\/pubDate>/);
+        var t = item.match(/<title>([^<]+)<\/title>/);
+        var l = item.match(/<link>([^<]+)<\/link>/);
+        if (m) dates.push({
+          date: new Date(m[1]),
+          title: t ? t[1].replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>') : '',
+          href:  l ? l[1].trim() : '#'
+        });
+      });
+      return dates;
     }
-  }
+
+    function buildHeatmap(pubDates) {
+      var hg = document.getElementById('hp-heatmap-grid');
+      if (!hg) return;
+      hg.innerHTML = '';
+
+      // Build day-count map (YYYY-MM-DD → count)
+      var countMap = {};
+      pubDates.forEach(function(p) {
+        var key = p.date.toISOString().slice(0,10);
+        countMap[key] = (countMap[key] || 0) + 1;
+      });
+
+      // 371 cells = 53 weeks × 7, ending today
+      var today = new Date(); today.setHours(0,0,0,0);
+      var start = new Date(today); start.setDate(start.getDate() - 370);
+      // align to Sunday
+      start.setDate(start.getDate() - start.getDay());
+
+      var maxCount = Math.max.apply(null, Object.values(countMap).concat([1]));
+
+      for (var i = 0; i < 371; i++) {
+        var day = new Date(start); day.setDate(start.getDate() + i);
+        var key = day.toISOString().slice(0,10);
+        var cnt = countMap[key] || 0;
+        var lvl = 0;
+        if (cnt > 0) lvl = cnt >= maxCount * 0.7 ? 3 : cnt >= maxCount * 0.35 ? 2 : 1;
+        var cell = document.createElement('div');
+        cell.className = 'hp-heat-cell' + (lvl ? ' hp-heat-' + lvl : '');
+        if (cnt > 0) cell.title = key + ' · ' + cnt + ' post' + (cnt>1?'s':'');
+        hg.appendChild(cell);
+      }
+    }
+
+    function updateStatus(pubDates) {
+      if (!pubDates.length) return;
+      var latest = pubDates[0];
+      var statusEl = document.getElementById('hp-status-text');
+      var dateEl   = document.getElementById('hp-entry-date');
+      if (statusEl && latest.title) {
+        // truncate long titles
+        var short = latest.title.length > 28 ? latest.title.slice(0,26) + '…' : latest.title;
+        statusEl.textContent = (isZh ? '最新 · ' : 'Latest · ') + short;
+        var pill = document.getElementById('hp-status-pill');
+        if (pill && latest.href && latest.href !== '#') {
+          pill.style.cursor = 'pointer';
+          pill.onclick = function() { window.open(latest.href, '_blank'); };
+          pill.title = latest.title;
+        }
+      }
+      if (dateEl && latest.date) {
+        var d = latest.date;
+        var fmt = d.getFullYear() + '/' +
+          String(d.getMonth()+1).padStart(2,'0') + '/' +
+          String(d.getDate()).padStart(2,'0');
+        dateEl.textContent = fmt;
+      }
+    }
+
+    function load(xml) {
+      var dates = parsePubDates(xml);
+      buildHeatmap(dates);
+      updateStatus(dates);
+    }
+
+    // Try cache first, then fetch
+    try {
+      var cached = sessionStorage.getItem(CACHE_KEY);
+      if (cached) {
+        var obj = JSON.parse(cached);
+        if (Date.now() - obj.ts < CACHE_TTL) { load(obj.xml); return; }
+      }
+    } catch(e) {}
+
+    fetch(rssUrl)
+      .then(function(r) { return r.text(); })
+      .then(function(xml) {
+        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), xml: xml })); } catch(e) {}
+        load(xml);
+      })
+      .catch(function() {
+        // fallback: deterministic noise heatmap
+        var hg = document.getElementById('hp-heatmap-grid');
+        if (!hg) return;
+        hg.innerHTML = '';
+        for (var i=0; i<371; i++) {
+          var v = ((Math.sin(i*9301+42)*43758.5453)%1+1)%1;
+          var boost = (Math.sin(Math.floor(i/28)*0.7)+1)/2;
+          var comp = v*0.6+boost*0.4;
+          var lvl = comp>0.78?3:comp>0.6?2:comp>0.4?1:0;
+          var cell = document.createElement('div');
+          cell.className = 'hp-heat-cell'+(lvl?' hp-heat-'+lvl:'');
+          hg.appendChild(cell);
+        }
+      });
+  })();
 
   /* Command Palette */
   var palette  = document.getElementById('hp-palette');
