@@ -59,7 +59,21 @@
         </p>
       </div>
 
-      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"></div>
+      {{- $bubblesENData := slice -}}
+      {{- $angles := slice -90 -30 30 90 150 210 -}}
+      {{- $dists  := slice 1.0 1.05 0.95 1.0 1.05 0.95 -}}
+      {{- range $i, $text := $d.ai.bubblesEn -}}
+        {{- $bubblesENData = $bubblesENData | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
+      {{- end -}}
+      {{- $bubblesZHData := slice -}}
+      {{- range $i, $text := $d.ai.bubblesZh -}}
+        {{- $bubblesZHData = $bubblesZHData | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
+      {{- end -}}
+      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
+        data-bubbles-en='{{ $bubblesENData | jsonify }}'
+        data-bubbles-zh='{{ $bubblesZHData | jsonify }}'
+        data-sys-en="{{ $d.ai.sysPromptEn }}"
+        data-sys-zh="{{ $d.ai.sysPromptZh }}"></div>
     </section>
 
     <div class="hp-divider-fade"></div>
@@ -206,7 +220,7 @@
           <h3 class="hp-project-name">{{ .name }}</h3>
           <p class="hp-project-desc">{{ if $isZh }}{{ .descZh }}{{ else }}{{ .descEn }}{{ end }}</p>
           <div class="hp-project-foot">
-            <div class="hp-project-stats"><span>★ <strong>{{ .stars }}</strong></span><span>{{ .lang }}</span></div>
+            <span class="hp-project-lang">{{ .lang }}</span>
             <span class="hp-project-cta">{{ if $isZh }}{{ .visitZh }}{{ else }}{{ .visitEn }}{{ end }} ↗</span>
           </div>
         </a>
@@ -222,8 +236,6 @@
           <p class="hp-repo-desc">{{ .desc }}</p>
           <div class="hp-repo-foot">
             <span><span class="hp-repo-lang-dot hp-lang-{{ .lc }}"></span>{{ .lang }}</span>
-            <span>★ {{ .stars }}</span>
-            <span class="hp-repo-updated">UPDATED {{ .updated }}</span>
           </div>
         </a>
         {{- end }}
@@ -232,31 +244,50 @@
 
     <div class="hp-divider-fade"></div>
 
-    {{/* ── Travel ──────────────────────────────────────── */}}
-    <section class="hp-section" id="hp-travel">
+    {{/* ── Writing Activity ─────────────────────────────── */}}
+    {{- $allPages := where site.RegularPages "Date" "gt" (time "1970-01-01") -}}
+    {{- $thisYear := now.Year -}}
+    {{- $thisYearPages := where $allPages "Date.Year" $thisYear -}}
+    {{- $firstYear := $thisYear -}}
+    {{- range $allPages -}}{{- if lt .Date.Year $firstYear -}}{{- $firstYear = .Date.Year -}}{{- end -}}{{- end -}}
+    {{- $yearsActive := add (sub $thisYear $firstYear) 1 -}}
+    {{- $allDates := slice -}}
+    {{- range $allPages -}}
+      {{- $allDates = $allDates | append (.Date.Format "2006-01-02") -}}
+    {{- end -}}
+    {{- $recentPosts := $allPages | first 8 -}}
+    <section class="hp-section" id="hp-travel" data-post-dates='{{ $allDates | jsonify }}'>
       <div class="hp-section-head">
         <span class="hp-section-num">04</span>
-        <span class="hp-section-label">{{ if $isZh }}足迹{{ else }}Footprint{{ end }}</span>
-        <h2 class="hp-section-title">{{ if $isZh }}走过的地方{{ else }}Where I've Been{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}足迹{{ end }}</span></h2>
-        <a class="hp-section-action" href="{{ "/travel/" | relLangURL }}">
-          {{ if $isZh }}完整地图{{ else }}Full Map{{ end }}
+        <span class="hp-section-label">{{ if $isZh }}写作{{ else }}Writing{{ end }}</span>
+        <h2 class="hp-section-title">{{ if $isZh }}发布记录{{ else }}Post Activity{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}写作{{ end }}</span></h2>
+        <a class="hp-section-action" href="{{ "/archives/" | relLangURL }}">
+          {{ if $isZh }}完整归档{{ else }}All Archives{{ end }}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
       <div class="hp-travel-block">
         <div>
           <div class="hp-travel-stats">
-            <div><div class="hp-travel-stat-num">{{ $d.travel.countries }}</div><div class="hp-travel-stat-label">{{ if $isZh }}国家{{ else }}Countries{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">{{ $d.travel.cities }}</div><div class="hp-travel-stat-label">{{ if $isZh }}城市{{ else }}Cities{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">{{ $d.travel.flights }}</div><div class="hp-travel-stat-label">{{ if $isZh }}航班{{ else }}Flights{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">{{ $d.travel.days }}</div><div class="hp-travel-stat-label">{{ if $isZh }}路上的日子{{ else }}Days On Road{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ len $allPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}总文章{{ else }}Posts{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ len $thisYearPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}今年{{ else }}This Year{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ $yearsActive }}</div><div class="hp-travel-stat-label">{{ if $isZh }}写作年数{{ else }}Years{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ len (site.Taxonomies.categories) }}</div><div class="hp-travel-stat-label">{{ if $isZh }}分类{{ else }}Topics{{ end }}</div></div>
           </div>
           <div class="hp-travel-cities">
-            {{- range $i, $city := $d.travel.cityList }}{{ if $i }}<span class="hp-city-sep">·</span>{{ end }}{{ $city }}{{ end }}
+            {{- range $i, $p := $recentPosts -}}
+              {{- if $i }}<span class="hp-city-sep">·</span>{{ end -}}
+              <a href="{{ $p.RelPermalink }}" class="hp-recent-post-link">{{ $p.Title }}</a>
+            {{- end -}}
           </div>
         </div>
-        <div class="hp-heatmap">
-          <div class="hp-heatmap-months">
+        <div class="hp-heatmap" id="hp-heatmap-wrap" data-archive-url="{{ "/archives/" | relLangURL }}" data-first-year="{{ $firstYear }}" data-this-year="{{ $thisYear }}">
+          <div class="hp-heatmap-year-tabs" id="hp-heatmap-tabs">
+            {{- range seq $thisYear -1 $firstYear -}}
+              <button class="hp-heatmap-year-tab{{ if eq . $thisYear }} active{{ end }}" data-year="{{ . }}">{{ . }}</button>
+            {{- end -}}
+          </div>
+          <div class="hp-heatmap-months" id="hp-heatmap-months">
             <span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span>
             <span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span>
             <span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
@@ -271,7 +302,7 @@
               <span style="background:var(--heatmap-high)"></span>
             </span>
             <span>MORE</span>
-            <span style="margin-left:auto">2025/26 ACTIVITY</span>
+            <span class="hp-heatmap-legend-year" id="hp-heatmap-legend-year">{{ $thisYear }} ACTIVITY</span>
           </div>
         </div>
       </div>
@@ -293,7 +324,14 @@
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
-        <div class="hp-subscribe-meta">{{ if $isZh }}不发广告，随时退订 · 也可通过 RSS 订阅{{ else }}No spam, unsubscribe anytime · Also available via RSS{{ end }}</div>
+        <div class="hp-subscribe-meta">
+          {{ if $isZh }}不发广告，随时退订{{ else }}No spam, unsubscribe anytime{{ end }}
+          <span class="hp-subscribe-sep">·</span>
+          <a class="hp-subscribe-rss" href="{{ "/index.xml" | relLangURL }}" target="_blank" rel="noopener" title="RSS Feed">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+            RSS
+          </a>
+        </div>
       </form>
     </div>
 
@@ -369,20 +407,7 @@
   var root = document.getElementById('hp-bear-ai');
   if (!root) return;
   var isZh = root.dataset.lang === 'zh';
-
-  {{- $angles := slice -90 -30 30 90 150 210 -}}
-  {{- $dists  := slice 1.0 1.05 0.95 1.0 1.05 0.95 -}}
-  {{- $bubblesEN := slice -}}
-  {{- range $i, $text := $d.ai.bubblesEn -}}
-    {{- $bubblesEN = $bubblesEN | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
-  {{- end -}}
-  {{- $bubblesZH := slice -}}
-  {{- range $i, $text := $d.ai.bubblesZh -}}
-    {{- $bubblesZH = $bubblesZH | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
-  {{- end -}}
-  var suggestionsEN = {{ $bubblesEN | jsonify }};
-  var suggestionsZH = {{ $bubblesZH | jsonify }};
-  var suggestions = isZh ? suggestionsZH : suggestionsEN;
+  var suggestions = JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn);
   var chatOpen = false, messages = [], loading = false;
 
   var CHIBI = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
@@ -519,9 +544,6 @@
     if (initMsg) sendMsg(initMsg);
   }
 
-  var SYS_EN = {{ $d.ai.sysPromptEn | jsonify }};
-  var SYS_ZH = {{ $d.ai.sysPromptZh | jsonify }};
-
   function sendMsg(text) {
     text = String(text||'').trim();
     if (!text || loading) return;
@@ -529,7 +551,7 @@
     messages.push({ role:'user', content:text });
     loading = true;
     renderChat();
-    var sys = isZh ? SYS_ZH : SYS_EN;
+    var sys = isZh ? root.dataset.sysZh : root.dataset.sysEn;
     var history = messages.slice(0,-1).map(function(m){ return { role: m.role==='user'?'user':'assistant', content: m.content }; });
     fetch('/.netlify/functions/blog-ai', {
       method: 'POST',
@@ -580,122 +602,154 @@
 
   renderOrbit();
 
-  /* ── RSS-driven: heatmap + status pill ────────────────────── */
+  /* ── Build-time post dates → heatmap; RSS → status pill only ── */
   (function() {
-    var rssUrl = isZh ? '/zh/index.xml' : '/index.xml';
-    var CACHE_KEY = 'hp_rss_' + (isZh ? 'zh' : 'en');
-    var CACHE_TTL = 30 * 60 * 1000; // 30 min
+    // 1. Heatmap — per-year view, clickable cells, year tab switcher
+    (function() {
+      var section  = document.getElementById('hp-travel');
+      var wrap     = document.getElementById('hp-heatmap-wrap');
+      var hg       = document.getElementById('hp-heatmap-grid');
+      var tabs     = document.getElementById('hp-heatmap-tabs');
+      var legendYr = document.getElementById('hp-heatmap-legend-year');
+      if (!hg || !section || !wrap) return;
 
-    function parsePubDates(xmlText) {
-      var dates = [];
-      var items = xmlText.match(/<item[\s\S]*?<\/item>/g) || [];
-      items.forEach(function(item) {
-        var m = item.match(/<pubDate>([^<]+)<\/pubDate>/);
-        var t = item.match(/<title>([^<]+)<\/title>/);
-        var l = item.match(/<link>([^<]+)<\/link>/);
-        if (m) dates.push({
-          date: new Date(m[1]),
-          title: t ? t[1].replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>') : '',
-          href:  l ? l[1].trim() : '#'
-        });
-      });
-      return dates;
-    }
+      var archiveBase = wrap.dataset.archiveUrl || '/archives/';
+      var thisYear    = parseInt(wrap.dataset.thisYear, 10) || new Date().getFullYear();
 
-    function buildHeatmap(pubDates) {
-      var hg = document.getElementById('hp-heatmap-grid');
-      if (!hg) return;
-      hg.innerHTML = '';
+      var rawDates = [];
+      try { rawDates = JSON.parse(section.dataset.postDates || '[]'); } catch(e) {}
 
-      // Build day-count map (YYYY-MM-DD → count)
+      // Build countMap: YYYY-MM-DD → count
       var countMap = {};
-      pubDates.forEach(function(p) {
-        var key = p.date.toISOString().slice(0,10);
-        countMap[key] = (countMap[key] || 0) + 1;
+      rawDates.forEach(function(d) {
+        if (d && d > '1970-01-01') countMap[d] = (countMap[d] || 0) + 1;
       });
 
-      // 371 cells = 53 weeks × 7, ending today
-      var today = new Date(); today.setHours(0,0,0,0);
-      var start = new Date(today); start.setDate(start.getDate() - 370);
-      // align to Sunday
-      start.setDate(start.getDate() - start.getDay());
-
-      var maxCount = Math.max.apply(null, Object.values(countMap).concat([1]));
-
-      for (var i = 0; i < 371; i++) {
-        var day = new Date(start); day.setDate(start.getDate() + i);
-        var key = day.toISOString().slice(0,10);
-        var cnt = countMap[key] || 0;
-        var lvl = 0;
-        if (cnt > 0) lvl = cnt >= maxCount * 0.7 ? 3 : cnt >= maxCount * 0.35 ? 2 : 1;
-        var cell = document.createElement('div');
-        cell.className = 'hp-heat-cell' + (lvl ? ' hp-heat-' + lvl : '');
-        if (cnt > 0) cell.title = key + ' · ' + cnt + ' post' + (cnt>1?'s':'');
-        hg.appendChild(cell);
-      }
-    }
-
-    function updateStatus(pubDates) {
-      if (!pubDates.length) return;
-      var latest = pubDates[0];
-      var statusEl = document.getElementById('hp-status-text');
-      var dateEl   = document.getElementById('hp-entry-date');
-      if (statusEl && latest.title) {
-        // truncate long titles
-        var short = latest.title.length > 28 ? latest.title.slice(0,26) + '…' : latest.title;
-        statusEl.textContent = (isZh ? '最新 · ' : 'Latest · ') + short;
-        var pill = document.getElementById('hp-status-pill');
-        if (pill && latest.href && latest.href !== '#') {
-          pill.style.cursor = 'pointer';
-          pill.onclick = function() { window.open(latest.href, '_blank'); };
-          pill.title = latest.title;
-        }
-      }
-      if (dateEl && latest.date) {
-        var d = latest.date;
-        var fmt = d.getFullYear() + '/' +
-          String(d.getMonth()+1).padStart(2,'0') + '/' +
-          String(d.getDate()).padStart(2,'0');
-        dateEl.textContent = fmt;
-      }
-    }
-
-    function load(xml) {
-      var dates = parsePubDates(xml);
-      buildHeatmap(dates);
-      updateStatus(dates);
-    }
-
-    // Try cache first, then fetch
-    try {
-      var cached = sessionStorage.getItem(CACHE_KEY);
-      if (cached) {
-        var obj = JSON.parse(cached);
-        if (Date.now() - obj.ts < CACHE_TTL) { load(obj.xml); return; }
-      }
-    } catch(e) {}
-
-    fetch(rssUrl)
-      .then(function(r) { return r.text(); })
-      .then(function(xml) {
-        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), xml: xml })); } catch(e) {}
-        load(xml);
-      })
-      .catch(function() {
-        // fallback: deterministic noise heatmap
-        var hg = document.getElementById('hp-heatmap-grid');
-        if (!hg) return;
+      function renderYear(year) {
         hg.innerHTML = '';
-        for (var i=0; i<371; i++) {
-          var v = ((Math.sin(i*9301+42)*43758.5453)%1+1)%1;
-          var boost = (Math.sin(Math.floor(i/28)*0.7)+1)/2;
-          var comp = v*0.6+boost*0.4;
-          var lvl = comp>0.78?3:comp>0.6?2:comp>0.4?1:0;
+        if (legendYr) legendYr.textContent = year + ' ACTIVITY';
+
+        // Jan 1 of selected year
+        var jan1 = new Date(year, 0, 1);
+        // start on Sunday of that week
+        var start = new Date(jan1);
+        start.setDate(jan1.getDate() - jan1.getDay());
+
+        // end: Dec 31 of selected year, extended to Saturday
+        var dec31 = new Date(year, 11, 31);
+        var end = new Date(dec31);
+        end.setDate(dec31.getDate() + (6 - dec31.getDay()));
+
+        // count weeks
+        var weeks = Math.round((end - start) / (7 * 86400000)) + 1;
+        hg.style.gridTemplateColumns = 'repeat(' + weeks + ', 1fr)';
+
+        // max count this year for relative color scaling
+        var yearKeys = Object.keys(countMap).filter(function(k) { return k.slice(0,4) === String(year); });
+        var maxCount = Math.max.apply(null, yearKeys.map(function(k) { return countMap[k]; }).concat([1]));
+
+        var cur = new Date(start);
+        while (cur <= end) {
+          var key = cur.toISOString().slice(0,10);
+          var inYear = cur.getFullYear() === year;
+          var cnt = inYear ? (countMap[key] || 0) : 0;
+          var lvl = cnt >= maxCount * 0.7 ? 3 : cnt >= maxCount * 0.35 ? 2 : cnt > 0 ? 1 : 0;
+
           var cell = document.createElement('div');
-          cell.className = 'hp-heat-cell'+(lvl?' hp-heat-'+lvl:'');
+          cell.className = 'hp-heat-cell' + (lvl ? ' hp-heat-' + lvl : '') + (inYear ? '' : ' hp-heat-out');
+
+          if (inYear && cnt > 0) {
+            var month = cur.toLocaleString('en', { month: 'short' });
+            cell.title = month + ' ' + cur.getDate() + ', ' + year + ' · ' + cnt + ' post' + (cnt > 1 ? 's' : '');
+            cell.style.cursor = 'pointer';
+            (function(y, m) {
+              cell.addEventListener('click', function() {
+                window.location.href = archiveBase + '#year-' + y;
+              });
+            })(year, cur.getMonth() + 1);
+          }
           hg.appendChild(cell);
+          cur.setDate(cur.getDate() + 1);
         }
-      });
+      }
+
+      // Tab switching
+      var activeYear = thisYear;
+      if (tabs) {
+        tabs.addEventListener('click', function(e) {
+          var btn = e.target.closest('.hp-heatmap-year-tab');
+          if (!btn) return;
+          var yr = parseInt(btn.dataset.year, 10);
+          tabs.querySelectorAll('.hp-heatmap-year-tab').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeYear = yr;
+          renderYear(yr);
+        });
+      }
+
+      renderYear(activeYear);
+    })();
+
+    // 2. RSS fetch only for latest post title → status pill
+    (function() {
+      var rssUrl = isZh ? '/zh/index.xml' : '/index.xml';
+      var CACHE_KEY = 'hp_rss_pill_' + (isZh ? 'zh' : 'en');
+      var CACHE_TTL = 30 * 60 * 1000;
+
+      function applyLatest(item) {
+        var statusEl = document.getElementById('hp-status-text');
+        var dateEl   = document.getElementById('hp-entry-date');
+        if (statusEl && item.title) {
+          var short = item.title.length > 28 ? item.title.slice(0,26) + '…' : item.title;
+          statusEl.textContent = (isZh ? '最新 · ' : 'Latest · ') + short;
+          var pill = document.getElementById('hp-status-pill');
+          if (pill && item.href && item.href !== '#') {
+            pill.style.cursor = 'pointer';
+            pill.onclick = function() { window.open(item.href, '_blank'); };
+            pill.title = item.title;
+          }
+        }
+        if (dateEl && item.date) {
+          var d = item.date;
+          dateEl.textContent = d.getFullYear() + '/' +
+            String(d.getMonth()+1).padStart(2,'0') + '/' +
+            String(d.getDate()).padStart(2,'0');
+        }
+      }
+
+      function parseFirst(xml) {
+        var m = xml.match(/<item[\s\S]*?<\/item>/);
+        if (!m) return null;
+        var item = m[0];
+        var pubM  = item.match(/<pubDate>([^<]+)<\/pubDate>/);
+        var titleM = item.match(/<title>([^<]+)<\/title>/);
+        var linkM  = item.match(/<link>([^<]+)<\/link>/);
+        if (!pubM) return null;
+        return {
+          date:  new Date(pubM[1]),
+          title: titleM ? titleM[1].replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>') : '',
+          href:  linkM ? linkM[1].trim() : '#'
+        };
+      }
+
+      try {
+        var cached = sessionStorage.getItem(CACHE_KEY);
+        if (cached) {
+          var obj = JSON.parse(cached);
+          if (Date.now() - obj.ts < CACHE_TTL) { applyLatest(obj.item); return; }
+        }
+      } catch(e) {}
+
+      fetch(rssUrl)
+        .then(function(r) { return r.text(); })
+        .then(function(xml) {
+          var item = parseFirst(xml);
+          if (!item) return;
+          try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), item: item })); } catch(e) {}
+          applyLatest(item);
+        })
+        .catch(function() {});
+    })();
   })();
 
   /* Command Palette */

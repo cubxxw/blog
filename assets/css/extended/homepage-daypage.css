@@ -64,6 +64,12 @@ body.dark .homepage-root {
 
 .homepage-root a { color: inherit; text-decoration: none; }
 
+/* Override PaperMod's narrow .main width constraint for homepage */
+.main:has(.homepage-root) {
+  max-width: 100%;
+  padding: 0;
+}
+
 /* ============================================================
    LAYOUT
    ============================================================ */
@@ -1200,10 +1206,7 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 
 .hp-project-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
 
-.hp-project-stats {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.hp-project-lang {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--fg-muted);
@@ -1304,8 +1307,35 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 
 .hp-travel-cities { font-family: var(--font-body); font-size: 12px; line-height: 1.8; color: var(--fg-muted); }
 .hp-travel-cities .hp-city-sep { color: var(--border-default); margin: 0 5px; }
+.hp-recent-post-link { color: var(--fg-muted); text-decoration: none; }
+.hp-recent-post-link:hover { color: var(--fg-primary); }
 
 .hp-heatmap { background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 20px; }
+
+/* Year tab switcher */
+.hp-heatmap-year-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.hp-heatmap-year-tab {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: background 150ms, color 150ms, border-color 150ms;
+}
+.hp-heatmap-year-tab:hover { background: var(--heatmap-empty); color: var(--fg-primary); border-color: var(--border-default); }
+.hp-heatmap-year-tab.active { background: var(--heatmap-high); color: #fff; border-color: transparent; }
+
+.hp-heatmap-legend-year { margin-left: auto; }
 
 .hp-heatmap-months {
   display: grid;
@@ -1326,6 +1356,8 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 .hp-heat-cell.hp-heat-1 { background: var(--heatmap-low); }
 .hp-heat-cell.hp-heat-2 { background: var(--heatmap-mid); }
 .hp-heat-cell.hp-heat-3 { background: var(--heatmap-high); }
+.hp-heat-cell.hp-heat-out { background: transparent; }
+.hp-heat-cell[style*="cursor: pointer"]:hover { opacity: 0.75; outline: 1px solid var(--fg-muted); outline-offset: 1px; }
 
 .hp-heatmap-legend {
   display: flex;
@@ -1356,6 +1388,7 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-card);
   margin: 64px 0;
+  width: 100%;
 }
 
 .hp-subscribe-tag {
@@ -1371,7 +1404,7 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 .hp-subscribe h3 { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: var(--fg-primary); margin: 0 0 10px; }
 .hp-subscribe p  { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--fg-muted); margin: 0; }
 
-.hp-subscribe-form { display: flex; flex-direction: column; gap: 10px; }
+.hp-subscribe-form { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .hp-subscribe-input-row { display: flex; gap: 10px; }
 
 .hp-subscribe-input {
@@ -1411,7 +1444,28 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 
 .hp-subscribe-btn:hover { background: var(--accent-hover); }
 
-.hp-subscribe-meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.8px; color: var(--fg-subtle); }
+.hp-subscribe-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  color: var(--fg-subtle);
+}
+.hp-subscribe-sep { color: var(--border-default); }
+.hp-subscribe-rss {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--fg-subtle);
+  text-decoration: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  padding: 1px 6px 1px 5px;
+  transition: color 150ms, border-color 150ms;
+}
+.hp-subscribe-rss:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ============================================================
    FOOTER
