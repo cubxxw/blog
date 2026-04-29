@@ -5,6 +5,7 @@
 
 {{- $isZh := eq .Lang "zh" -}}
 {{- $lang  := .Lang -}}
+{{- $d     := site.Data.homepage -}}
 
 <div class="homepage-root" id="hp-root" data-lang="{{ $lang }}">
 
@@ -24,7 +25,7 @@
         <h1>
           <span class="hp-hero-name-row">
             <span class="hp-hero-name-text">
-              Xinwei <span class="hp-accent">Xiong</span>.
+              {{ $d.hero.nameEn }} <span class="hp-accent">{{ $d.hero.nameLast }}</span>.
             </span>
             <span class="hp-hero-chibi" aria-hidden="true">
               <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,21 +47,15 @@
               </svg>
             </span>
           </span>
-          <span class="hp-hero-name-zh">{{ if $isZh }}熊新伟 · BEAR{{ else }}熊 · BEAR{{ end }}</span>
+          <span class="hp-hero-name-zh">{{ if $isZh }}{{ $d.hero.nameZh }} · {{ $d.hero.nickZh }}{{ else }}熊 · {{ $d.hero.nickZh }}{{ end }}</span>
         </h1>
 
         <div class="hp-hero-tag">
-          <span>AI BUILDER</span><span class="hp-sep">/</span>
-          <span>OPEN SOURCE</span><span class="hp-sep">/</span>
-          <span>DIGITAL NOMAD</span>
+          {{- range $i, $tag := $d.hero.tagline }}{{ if $i }}<span class="hp-sep">/</span>{{ end }}<span>{{ $tag }}</span>{{ end }}
         </div>
 
         <p class="hp-hero-bio">
-          {{ if $isZh }}
-          构建 <strong>AI 产品</strong>，贡献<strong>开源代码</strong>，在世界的褶皱里慢慢走。每天捕捉那些原始信号——代码、念头、地方——然后让它们结晶成一些可以保留下来的东西。
-          {{ else }}
-          I build <strong>AI products</strong> and contribute to <strong>open source</strong> while wandering the world. Capturing raw signals from each day — code, thoughts, places — and compiling them into something durable.
-          {{ end }}
+          {{ if $isZh }}{{ $d.hero.bioZh | safeHTML }}{{ else }}{{ $d.hero.bioEn | safeHTML }}{{ end }}
         </p>
       </div>
 
@@ -163,52 +158,31 @@
         <h2 class="hp-section-title">{{ if $isZh }}我的旅行书{{ else }}Field Notebooks{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}游记{{ end }}</span></h2>
       </div>
       <div class="hp-books-grid">
-        <a class="hp-book" href="https://vietnam.nsddd.top/" target="_blank" rel="noopener">
-          <div class="hp-book-cover hp-book-cover-vietnam">
+        {{- range $d.books }}
+        <a class="hp-book" href="{{ .url }}" target="_blank" rel="noopener">
+          <div class="hp-book-cover {{ .coverClass }}">
             <div class="hp-book-cover-label">A FIELD NOTEBOOK</div>
             <div>
-              <div class="hp-book-cover-title">{{ if $isZh }}越南{{ else }}Vietnam{{ end }}</div>
-              <div class="hp-book-cover-sub">{{ if $isZh }}湄公河随笔{{ else }}Field Notes from the Mekong{{ end }}</div>
+              <div class="hp-book-cover-title">{{ if $isZh }}{{ .titleZh }}{{ else }}{{ .titleEn }}{{ end }}</div>
+              <div class="hp-book-cover-sub">{{ if $isZh }}{{ .subtitleZh }}{{ else }}{{ .subtitleEn }}{{ end }}</div>
             </div>
-            <div class="hp-book-cover-foot"><span>VOL.1</span><span>BEAR · 2024</span></div>
+            <div class="hp-book-cover-foot"><span>VOL.{{ .volume }}</span><span>BEAR · {{ .year }}</span></div>
           </div>
           <div class="hp-book-info">
-            <div class="hp-book-stamp">2024 · 越南</div>
-            <div class="hp-book-meta"><strong>FIELD NOTES</strong><span>·</span><span>10.7769° N · 106.7009° E</span></div>
-            <h3 class="hp-book-title">{{ if $isZh }}越南{{ else }}Vietnam{{ end }}</h3>
-            <div class="hp-book-zh">越南 · Field Notes from the Mekong</div>
-            <p class="hp-book-excerpt">"{{ if $isZh }}从河内到湄公河三角洲，一段慢火细炖的旅程。{{ else }}From Hanoi's narrow alleys to the Mekong delta — a slow-cooked record of motorbikes, coffee, monsoon rain, and the strange comfort of being a stranger.{{ end }}"</p>
+            <div class="hp-book-stamp">{{ .stamp }}</div>
+            <div class="hp-book-meta"><strong>FIELD NOTES</strong><span>·</span><span>{{ .coords }}</span></div>
+            <h3 class="hp-book-title">{{ if $isZh }}{{ .titleZh }}{{ else }}{{ .titleEn }}{{ end }}</h3>
+            <div class="hp-book-zh">{{ .titleZh }} · {{ .subtitleEn }}</div>
+            <p class="hp-book-excerpt">"{{ if $isZh }}{{ .excerptZh }}{{ else }}{{ .excerptEn }}{{ end }}"</p>
             <div class="hp-book-stats">
-              <div class="hp-book-stat"><span class="hp-book-stat-num">09</span><span class="hp-book-stat-label">Chapters</span></div>
-              <div class="hp-book-stat"><span class="hp-book-stat-num">184</span><span class="hp-book-stat-label">Pages</span></div>
-              <div class="hp-book-stat"><span class="hp-book-stat-num">07</span><span class="hp-book-stat-label">Cities</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">{{ printf "%02d" .chapters }}</span><span class="hp-book-stat-label">Chapters</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">{{ .pages }}</span><span class="hp-book-stat-label">Pages</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">{{ printf "%02d" .cities }}</span><span class="hp-book-stat-label">Cities</span></div>
               <span class="hp-book-cta">READ ↗</span>
             </div>
           </div>
         </a>
-        <a class="hp-book" href="https://angkor.nsddd.top/" target="_blank" rel="noopener">
-          <div class="hp-book-cover hp-book-cover-angkor">
-            <div class="hp-book-cover-label">A FIELD NOTEBOOK</div>
-            <div>
-              <div class="hp-book-cover-title">{{ if $isZh }}吴哥窟{{ else }}Angkor{{ end }}</div>
-              <div class="hp-book-cover-sub">{{ if $isZh }}石头、树根与帝国{{ else }}Stones, Roots &amp; Empire{{ end }}</div>
-            </div>
-            <div class="hp-book-cover-foot"><span>VOL.2</span><span>BEAR · 2024</span></div>
-          </div>
-          <div class="hp-book-info">
-            <div class="hp-book-stamp">2024 · 柬埔寨</div>
-            <div class="hp-book-meta"><strong>FIELD NOTES</strong><span>·</span><span>13.4125° N · 103.8670° E</span></div>
-            <h3 class="hp-book-title">{{ if $isZh }}吴哥窟{{ else }}Angkor{{ end }}</h3>
-            <div class="hp-book-zh">吴哥 · Stones, Roots &amp; Empire</div>
-            <p class="hp-book-excerpt">"{{ if $isZh }}走过吴哥的庙宇与废墟，听一个逝去帝国的回声。{{ else }}On the temples beyond the postcards — banyan roots crawling over a lost capital, and what a vanished empire still says to us about scale and silence.{{ end }}"</p>
-            <div class="hp-book-stats">
-              <div class="hp-book-stat"><span class="hp-book-stat-num">08</span><span class="hp-book-stat-label">Chapters</span></div>
-              <div class="hp-book-stat"><span class="hp-book-stat-num">156</span><span class="hp-book-stat-label">Pages</span></div>
-              <div class="hp-book-stat"><span class="hp-book-stat-num">03</span><span class="hp-book-stat-label">Cities</span></div>
-              <span class="hp-book-cta">READ ↗</span>
-            </div>
-          </div>
-        </a>
+        {{- end }}
       </div>
     </section>
 
@@ -226,35 +200,20 @@
         </a>
       </div>
       <div class="hp-projects-featured">
-        <a class="hp-project-featured hp-amber" href="https://telepace.cc" target="_blank" rel="noopener">
-          <div class="hp-project-tag">AI · Reading &amp; Knowledge</div>
-          <h3 class="hp-project-name">Telepace</h3>
-          <p class="hp-project-desc">{{ if $isZh }}AI 驱动的阅读助手，帮助你高效处理、理解和摘要网页及文档内容。{{ else }}AI-powered reading assistant designed to help you efficiently process, understand, and summarize text content from web pages and documents.{{ end }}</p>
+        {{- range $d.projects.featured }}
+        <a class="hp-project-featured {{ .style }}" href="{{ .url }}" target="_blank" rel="noopener">
+          <div class="hp-project-tag">{{ if $isZh }}{{ .tagZh }}{{ else }}{{ .tagEn }}{{ end }}</div>
+          <h3 class="hp-project-name">{{ .name }}</h3>
+          <p class="hp-project-desc">{{ if $isZh }}{{ .descZh }}{{ else }}{{ .descEn }}{{ end }}</p>
           <div class="hp-project-foot">
-            <div class="hp-project-stats"><span>★ <strong>1.2k</strong></span><span>TypeScript</span></div>
-            <span class="hp-project-cta">{{ if $isZh }}访问{{ else }}VISIT{{ end }} ↗</span>
+            <div class="hp-project-stats"><span>★ <strong>{{ .stars }}</strong></span><span>{{ .lang }}</span></div>
+            <span class="hp-project-cta">{{ if $isZh }}{{ .visitZh }}{{ else }}{{ .visitEn }}{{ end }} ↗</span>
           </div>
         </a>
-        <a class="hp-project-featured hp-ink" href="https://github.com/OpenIMSDK/OpenKF" target="_blank" rel="noopener">
-          <div class="hp-project-tag">Open Source · Customer Service</div>
-          <h3 class="hp-project-name">OpenKF</h3>
-          <p class="hp-project-desc">{{ if $isZh }}基于 OpenIM 的开源 AI 知识库客服系统，支持深度、情境化的对话。{{ else }}Open-source AI knowledge-base customer service system. Built atop OpenIM for deep, contextual conversations at scale.{{ end }}</p>
-          <div class="hp-project-foot">
-            <div class="hp-project-stats"><span>★ <strong>2.8k</strong></span><span>Go</span></div>
-            <span class="hp-project-cta">{{ if $isZh }}访问{{ else }}VISIT{{ end }} ↗</span>
-          </div>
-        </a>
+        {{- end }}
       </div>
       <div class="hp-repos-grid">
-        {{- $repos := slice
-          (dict "org" "telepace" "name" "nexus"          "desc" "AI-powered reading assistant for web pages and documents."       "lang" "TypeScript" "lc" "ts"  "stars" 3 "updated" "Oct 27")
-          (dict "org" "telepace" "name" "sophon"         "desc" "Long-form AI reasoning interface. Wisdom over speed."             "lang" "TypeScript" "lc" "ts"  "stars" 1 "updated" "Oct 28")
-          (dict "org" "telepace" "name" "voiceflow"      "desc" "LLM audio streaming — low-latency, production-ready."            "lang" "Go"         "lc" "go"  "stars" 8 "updated" "Apr 23")
-          (dict "org" "telepace" "name" "quick-forge-ai" "desc" "FastAPI + TypeScript starter for shipping AI prototypes fast."   "lang" "MDX"        "lc" "mdx" "stars" 4 "updated" "Oct 27")
-          (dict "org" "telepace" "name" "aireader"       "desc" "Reading agent with citation-grounded summaries."                 "lang" "TypeScript" "lc" "ts"  "stars" 2 "updated" "Sep 17")
-          (dict "org" "telepace" "name" "ai-commons"     "desc" "Shared API clients and data utilities across feedback systems."  "lang" "Python"     "lc" "py"  "stars" 2 "updated" "Apr 24")
-        -}}
-        {{- range $repos }}
+        {{- range $d.projects.repos }}
         <a class="hp-repo" href="https://github.com/{{ .org }}/{{ .name }}" target="_blank" rel="noopener">
           <div class="hp-repo-head">
             <div class="hp-repo-icon">📦</div>
@@ -264,7 +223,7 @@
           <div class="hp-repo-foot">
             <span><span class="hp-repo-lang-dot hp-lang-{{ .lc }}"></span>{{ .lang }}</span>
             <span>★ {{ .stars }}</span>
-            <span style="margin-left:auto">UPDATED {{ .updated }}</span>
+            <span class="hp-repo-updated">UPDATED {{ .updated }}</span>
           </div>
         </a>
         {{- end }}
@@ -287,13 +246,13 @@
       <div class="hp-travel-block">
         <div>
           <div class="hp-travel-stats">
-            <div><div class="hp-travel-stat-num">9</div><div class="hp-travel-stat-label">{{ if $isZh }}国家{{ else }}Countries{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">35</div><div class="hp-travel-stat-label">{{ if $isZh }}城市{{ else }}Cities{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">87</div><div class="hp-travel-stat-label">{{ if $isZh }}航班{{ else }}Flights{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">412</div><div class="hp-travel-stat-label">{{ if $isZh }}路上的日子{{ else }}Days On Road{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ $d.travel.countries }}</div><div class="hp-travel-stat-label">{{ if $isZh }}国家{{ else }}Countries{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ $d.travel.cities }}</div><div class="hp-travel-stat-label">{{ if $isZh }}城市{{ else }}Cities{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ $d.travel.flights }}</div><div class="hp-travel-stat-label">{{ if $isZh }}航班{{ else }}Flights{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ $d.travel.days }}</div><div class="hp-travel-stat-label">{{ if $isZh }}路上的日子{{ else }}Days On Road{{ end }}</div></div>
           </div>
           <div class="hp-travel-cities">
-            Tokyo<span class="hp-city-sep">·</span>Kyoto<span class="hp-city-sep">·</span>Osaka<span class="hp-city-sep">·</span>Hanoi<span class="hp-city-sep">·</span>Saigon<span class="hp-city-sep">·</span>Da Nang<span class="hp-city-sep">·</span>Siem Reap<span class="hp-city-sep">·</span>Phnom Penh<span class="hp-city-sep">·</span>Bangkok<span class="hp-city-sep">·</span>Chiang Mai<span class="hp-city-sep">·</span>Singapore<span class="hp-city-sep">·</span>Kuala Lumpur<span class="hp-city-sep">·</span>Bali<span class="hp-city-sep">·</span>Lisbon<span class="hp-city-sep">·</span>Porto<span class="hp-city-sep">·</span>Barcelona<span class="hp-city-sep">·</span>Berlin<span class="hp-city-sep">·</span>Lhasa<span class="hp-city-sep">·</span>Chengdu<span class="hp-city-sep">·</span>Shenzhen<span class="hp-city-sep">·</span>Hong Kong<span class="hp-city-sep">·</span>Taipei
+            {{- range $i, $city := $d.travel.cityList }}{{ if $i }}<span class="hp-city-sep">·</span>{{ end }}{{ $city }}{{ end }}
           </div>
         </div>
         <div class="hp-heatmap">
@@ -323,7 +282,7 @@
       <div>
         <div class="hp-subscribe-tag">SIGNAL · 信号</div>
         <h3>{{ if $isZh }}别错过任何一个信号。{{ else }}Never miss a signal.{{ end }}</h3>
-        <p>{{ if $isZh }}为构建者写作。AI、开源与漫游笔记，直接送到你的邮箱。已有 1,200+ 读者。{{ else }}Built for builders. New posts on AI, open source &amp; nomad life — direct to your inbox. Joined by 1,200+ readers.{{ end }}</p>
+        <p>{{ if $isZh }}为构建者写作。AI、开源与漫游笔记，直接送到你的邮箱。已有 {{ $d.subscribe.count }}+ 读者。{{ else }}Built for builders. New posts on AI, open source &amp; nomad life — direct to your inbox. Joined by {{ $d.subscribe.count }}+ readers.{{ end }}</p>
       </div>
       <form class="hp-subscribe-form" onsubmit="return hpSubscribeSubmit(event,'{{ $lang }}')">
         <div class="hp-subscribe-input-row">
@@ -345,7 +304,7 @@
     <div class="hp-footer-grid">
       <div>
         <div class="hp-footer-brand">BEAR · 熊</div>
-        <p class="hp-footer-bio">{{ if $isZh }}熊新伟 — AI 构建者、开源贡献者、数字游民。在中国与世界之间慢慢走。{{ else }}Xinwei Xiong — AI builder, open source contributor, digital nomad. Slowly walking between China and the world.{{ end }}</p>
+        <p class="hp-footer-bio">{{ if $isZh }}{{ $d.hero.footerBioZh }}{{ else }}{{ $d.hero.footerBioEn }}{{ end }}</p>
       </div>
       <div class="hp-footer-col">
         <h5>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h5>
@@ -359,10 +318,12 @@
       <div class="hp-footer-col">
         <h5>{{ if $isZh }}书与项目{{ else }}Books &amp; Builds{{ end }}</h5>
         <ul>
-          <li><a href="https://vietnam.nsddd.top/" target="_blank" rel="noopener">Vietnam · 越南</a></li>
-          <li><a href="https://angkor.nsddd.top/" target="_blank" rel="noopener">Angkor · 吴哥</a></li>
-          <li><a href="https://telepace.cc">Telepace</a></li>
-          <li><a href="https://github.com/OpenIMSDK/OpenKF">OpenKF</a></li>
+          {{- range $d.books }}
+          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .titleEn }} · {{ .titleZh }}</a></li>
+          {{- end }}
+          {{- range $d.projects.featured }}
+          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+          {{- end }}
         </ul>
       </div>
       <div class="hp-footer-col">
@@ -379,7 +340,7 @@
       <span>© {{ now.Format "2006" }} XINWEI XIONG · THE QUIET COLLECTOR</span>
       <div class="hp-footer-bottom-right">
         <span>BUILT WITH SIGNAL</span>
-        <span>v3.0 · {{ now.Format "2006" }}</span>
+        <span>{{ $d.hero.siteVersion }} · {{ now.Format "2006" }}</span>
       </div>
     </div>
   </footer>
@@ -409,22 +370,18 @@
   if (!root) return;
   var isZh = root.dataset.lang === 'zh';
 
-  var suggestionsEN = [
-    { text: "What are you building?", angle: -90,  dist: 1    },
-    { text: "Vietnam book?",          angle: -30,  dist: 1.05 },
-    { text: "Best AI post?",          angle:  30,  dist: 0.95 },
-    { text: "Why nomad?",             angle:  90,  dist: 1    },
-    { text: "Talk to me",             angle: 150,  dist: 1.05 },
-    { text: "What's OpenKF?",         angle: 210,  dist: 0.95 },
-  ];
-  var suggestionsZH = [
-    { text: "在做什么？",      angle: -90,  dist: 1    },
-    { text: "聊聊越南",        angle: -30,  dist: 1.05 },
-    { text: "推荐一篇文章",    angle:  30,  dist: 0.95 },
-    { text: "为什么游牧？",    angle:  90,  dist: 1    },
-    { text: "和我聊聊",        angle: 150,  dist: 1.05 },
-    { text: "OpenKF 是什么？", angle: 210,  dist: 0.95 },
-  ];
+  {{- $angles := slice -90 -30 30 90 150 210 -}}
+  {{- $dists  := slice 1.0 1.05 0.95 1.0 1.05 0.95 -}}
+  {{- $bubblesEN := slice -}}
+  {{- range $i, $text := $d.ai.bubblesEn -}}
+    {{- $bubblesEN = $bubblesEN | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
+  {{- end -}}
+  {{- $bubblesZH := slice -}}
+  {{- range $i, $text := $d.ai.bubblesZh -}}
+    {{- $bubblesZH = $bubblesZH | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
+  {{- end -}}
+  var suggestionsEN = {{ $bubblesEN | jsonify }};
+  var suggestionsZH = {{ $bubblesZH | jsonify }};
   var suggestions = isZh ? suggestionsZH : suggestionsEN;
   var chatOpen = false, messages = [], loading = false;
 
@@ -478,9 +435,9 @@
           '<span class="hp-bear-avatar-core"><span class="hp-bear-chibi">'+CHIBI+'</span></span>'+
           '<span class="hp-bear-avatar-status"><span class="hp-bear-avatar-status-dot"></span>'+(isZh?'在线':'ONLINE')+'</span>'+
         '</button>'+
-        '<div class="hp-bear-hud hp-bear-hud-tl"><div class="hp-bear-hud-label">DIGITAL TWIN</div><div class="hp-bear-hud-val">BEAR_AI · v3.0</div></div>'+
-        '<div class="hp-bear-hud hp-bear-hud-tr"><div class="hp-bear-hud-label">'+(isZh?'协议':'PROTOCOL')+'</div><div class="hp-bear-hud-val">CLAUDE · 4.5</div></div>'+
-        '<div class="hp-bear-hud hp-bear-hud-bl"><div class="hp-bear-hud-label">'+(isZh?'语气':'VOICE')+'</div><div class="hp-bear-hud-val">XINWEI · 熊</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-tl"><div class="hp-bear-hud-label">DIGITAL TWIN</div><div class="hp-bear-hud-val">{{ $d.ai.hudTwinVal }}</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-tr"><div class="hp-bear-hud-label">'+(isZh?'协议':'PROTOCOL')+'</div><div class="hp-bear-hud-val">{{ $d.ai.hudProtocolVal }}</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-bl"><div class="hp-bear-hud-label">'+(isZh?'语气':'VOICE')+'</div><div class="hp-bear-hud-val">{{ $d.ai.hudVoiceVal }}</div></div>'+
         '<div class="hp-bear-hud hp-bear-hud-br"><div class="hp-bear-hud-label">'+(isZh?'点击开始':'TAP · BEGIN')+'</div><div class="hp-bear-hud-val">↗ '+(isZh?'聊天':'CHAT')+'</div></div>'+
         '<div class="hp-bear-cta-line">'+(isZh?'点击头像 · 与 Bear 的数字分身对话':"Tap the orb · Talk to Bear's digital twin")+'</div>'+
       '</div>';
@@ -562,8 +519,8 @@
     if (initMsg) sendMsg(initMsg);
   }
 
-  var SYS_EN = 'You are "Bear AI" — a digital twin of Xinwei Xiong (熊新伟, nickname "Bear"). Calm, a little poetic. AI builder, open source contributor, digital nomad. Topics: AI agents, Kubernetes, Go, cloud-native, personal growth, travel Asia/Europe. Books: Vietnam, Angkor. Projects: telepace.cc, OpenIM/OpenKF. Short warm replies, 2-4 sentences. No emoji. First person.';
-  var SYS_ZH = '你是 "Bear AI" — 熊新伟（Bear）的数字分身。安静、带诗意。AI 构建者、开源、数字游民。话题：AI agent、Kubernetes、Go、云原生、个人成长、旅行。书：越南、吴哥。项目：telepace.cc、OpenIM/OpenKF。简短温暖，2-4 句，不用 emoji，第一人称。';
+  var SYS_EN = {{ $d.ai.sysPromptEn | jsonify }};
+  var SYS_ZH = {{ $d.ai.sysPromptZh | jsonify }};
 
   function sendMsg(text) {
     text = String(text||'').trim();
@@ -746,15 +703,17 @@
   var pInput   = document.getElementById('hp-palette-input');
   var pResults = document.getElementById('hp-palette-results');
   var pItems = [
-    { type:'NAV',   label:'About',                                   href:'/about/' },
-    { type:'NAV',   label:'All Posts',                               href:'/articles/' },
-    { type:'POST',  label:'Agent Identity: From Locke to OpenClaw',  href:'#hp-posts' },
-    { type:'POST',  label:'Maintaining Self-Worth in the Age of AI', href:'#hp-posts' },
-    { type:'POST',  label:'Lhasa: Slow and Heavy',                   href:'#hp-posts' },
-    { type:'BOOK',  label:'Vietnam · Field Notes from the Mekong',   href:'https://vietnam.nsddd.top/' },
-    { type:'BOOK',  label:'Angkor · Stones, Roots & Empire',         href:'https://angkor.nsddd.top/' },
-    { type:'BUILD', label:'Telepace · AI reading assistant',         href:'https://telepace.cc' },
-    { type:'BUILD', label:'OpenKF · Open-source CS system',         href:'https://github.com/OpenIMSDK/OpenKF' },
+    { type:'NAV',  label:{{ if $isZh }}'关于'{{ else }}'About'{{ end }},    href:'{{ "/about/" | relLangURL }}' },
+    { type:'NAV',  label:{{ if $isZh }}'所有文章'{{ else }}'All Posts'{{ end }}, href:'{{ "/articles/" | relLangURL }}' },
+    {{- range first 5 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+    { type:'POST', label:{{ .Title | jsonify }}, href:{{ .RelPermalink | jsonify }} },
+    {{- end }}
+    {{- range $d.books }}
+    { type:'BOOK', label:{{ printf "%s · %s" .titleEn .subtitleEn | jsonify }}, href:{{ .url | jsonify }} },
+    {{- end }}
+    {{- range $d.projects.featured }}
+    { type:'BUILD', label:{{ printf "%s · %s" .name .tagEn | jsonify }}, href:{{ .url | jsonify }} },
+    {{- end }}
   ];
   function renderPalette(q) {
     var filtered = q ? pItems.filter(function(i){ return i.label.toLowerCase().includes(q.toLowerCase()); }) : pItems;

@@ -1275,6 +1275,7 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 }
 
 .hp-repo-foot { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); flex-wrap: wrap; }
+.hp-repo-updated { margin-left: auto; }
 
 .hp-repo-lang-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
 .hp-lang-ts  { background: #3178c6; }
