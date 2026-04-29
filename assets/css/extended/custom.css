@@ -3809,10 +3809,13 @@ body {
     border: 1px solid var(--border);
     border-radius: 12px;
     position: sticky;
-    top: 72px;
+    top: var(--sticky-offset, 72px);
     z-index: 50;
-    transition: transform 0.25s ease;
+    transition: top 0.25s ease;
 }
+
+:root { --sticky-offset: 72px; }
+body.nav-hidden { --sticky-offset: 0px; }
 
 .archives-year-nav__label {
     font-size: 0.78rem;

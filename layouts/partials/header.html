@@ -238,8 +238,6 @@ document.addEventListener('click', function(event) {
     var ticking = false;
     var THRESHOLD = 80;
 
-    var yearNav = document.querySelector('.archives-year-nav');
-
     function update() {
         var currentY = window.scrollY || window.pageYOffset;
         var menu = document.getElementById('menu');
@@ -248,10 +246,10 @@ document.addEventListener('click', function(event) {
         if (!menuOpen) {
             if (currentY > THRESHOLD && currentY > lastScrollY) {
                 headerWrapper.classList.add('nav-scroll-hidden');
-                if (yearNav) yearNav.style.transform = 'translateY(-200%)';
+                document.body.classList.add('nav-hidden');
             } else {
                 headerWrapper.classList.remove('nav-scroll-hidden');
-                if (yearNav) yearNav.style.transform = 'translateY(0)';
+                document.body.classList.remove('nav-hidden');
             }
         }
         lastScrollY = currentY;
