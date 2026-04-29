@@ -1717,5 +1717,3 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   }
 }
 
-/* Hide header search button on homepage — hp-palette is the search entry point */
-body:has(.homepage-root) .nav-search-trigger { display: none !important; }

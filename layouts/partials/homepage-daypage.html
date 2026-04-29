@@ -393,22 +393,6 @@
     </div>
   </footer>
 
-  {{/* ── Command Palette ─────────────────────────────── */}}
-  <div class="hp-palette-overlay" id="hp-palette" style="display:none" role="dialog" aria-modal="true">
-    <div class="hp-palette-box" onclick="event.stopPropagation()">
-      <div class="hp-palette-input-row">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="hp-palette-input" id="hp-palette-input"
-          placeholder="{{ if $isZh }}搜索文章、书、项目...{{ else }}Search posts, books, projects...{{ end }}">
-        <span class="hp-palette-esc">ESC</span>
-      </div>
-      <div class="hp-palette-results" id="hp-palette-results"></div>
-      <div class="hp-palette-footer">
-        <span>↑↓ NAVIGATE · ↵ OPEN · ESC CLOSE</span>
-        <span>POWERED BY SIGNAL</span>
-      </div>
-    </div>
-  </div>
 
 </div><!-- .homepage-root -->
 
@@ -813,40 +797,6 @@
     })();
   })();
 
-  /* Command Palette */
-  var palette  = document.getElementById('hp-palette');
-  var pInput   = document.getElementById('hp-palette-input');
-  var pResults = document.getElementById('hp-palette-results');
-  var pItems = [
-    { type:'NAV',  label:{{ if $isZh }}'关于'{{ else }}'About'{{ end }},    href:'{{ "/about/" | relLangURL }}' },
-    { type:'NAV',  label:{{ if $isZh }}'所有文章'{{ else }}'All Posts'{{ end }}, href:'{{ "/articles/" | relLangURL }}' },
-    {{- range first 5 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-    { type:'POST', label:{{ .Title | jsonify }}, href:{{ .RelPermalink | jsonify }} },
-    {{- end }}
-    {{- range $d.books }}
-    { type:'BOOK', label:{{ printf "%s · %s" .titleEn .subtitleEn | jsonify }}, href:{{ .url | jsonify }} },
-    {{- end }}
-    {{- range $d.projects.featured }}
-    { type:'BUILD', label:{{ printf "%s · %s" .name .tagEn | jsonify }}, href:{{ .url | jsonify }} },
-    {{- end }}
-  ];
-  function renderPalette(q) {
-    var filtered = q ? pItems.filter(function(i){ return i.label.toLowerCase().includes(q.toLowerCase()); }) : pItems;
-    if (!filtered.length) { pResults.innerHTML='<div style="padding:32px;text-align:center;font-size:14px;color:var(--fg-subtle)">'+(isZh?'没有结果。':'No results.')+'</div>'; return; }
-    pResults.innerHTML = filtered.map(function(item) {
-      return '<a class="hp-palette-item" href="'+esc(item.href)+'">'+'<span class="hp-palette-type">'+item.type+'</span><span class="hp-palette-label">'+esc(item.label)+'</span>'+'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--fg-subtle)" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>';
-    }).join('');
-  }
-  function openPalette()  { palette.style.display='flex'; pInput.value=''; pInput.focus(); renderPalette(''); }
-  function closePalette() { palette.style.display='none'; }
-  if (palette) palette.addEventListener('click', closePalette);
-  if (pInput)  pInput.addEventListener('input', function(){ renderPalette(this.value); });
-  var sb = document.getElementById('hp-search-trigger');
-  if (sb) sb.addEventListener('click', openPalette);
-  document.addEventListener('keydown', function(e) {
-    if ((e.metaKey||e.ctrlKey)&&e.key==='k') { e.preventDefault(); e.stopPropagation(); palette.style.display==='none'?openPalette():closePalette(); }
-    if (e.key==='Escape') closePalette();
-  }, true);
 
   /* Subscribe */
   window.hpSubscribeSubmit = function(e, lang) {
