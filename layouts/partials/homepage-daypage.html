@@ -437,9 +437,12 @@
   // Render bear AI message: escape HTML first, then restore safe Markdown links and basic formatting
   function renderMsg(s) {
     var safe = esc(s);
-    // [title](url) → clickable link (only http/https URLs)
-    safe = safe.replace(/\[([^\]]{1,120})\]\((https?:\/\/[^)]{1,300})\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer" class="hp-ai-link">$1 ↗</a>');
+    var origin = window.location.origin;
+    // [title](url) — matches absolute https:// links OR relative /path links
+    safe = safe.replace(/\[([^\]]{1,120})\]\(((?:https?:\/\/|\/)[^)]{1,400})\)/g, function(_, title, url) {
+      var href = url.startsWith('/') ? origin + url : url;
+      return '<a href="' + href + '" target="_blank" rel="noopener noreferrer" class="hp-ai-link">' + title + ' ↗</a>';
+    });
     // **bold**
     safe = safe.replace(/\*\*([^*]{1,200})\*\*/g, '<strong>$1</strong>');
     // newlines → <br>
