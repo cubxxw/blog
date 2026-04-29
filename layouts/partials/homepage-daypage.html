@@ -8,39 +8,6 @@
 
 <div class="homepage-root" id="hp-root" data-lang="{{ $lang }}">
 
-  {{/* ── Topbar ─────────────────────────────────────────── */}}
-  <div class="hp-topbar" id="hp-top">
-    <div class="hp-topbar-inner">
-      <a href="{{ "/" | relLangURL }}" class="hp-brand">
-        <span class="hp-brand-dot"></span>
-        <span>BEAR · 熊</span>
-      </a>
-      <nav class="hp-nav">
-        {{- if $isZh }}
-        <a href="#hp-about">关于</a>
-        <a href="#hp-posts">文章</a>
-        <a href="#hp-books">书</a>
-        <a href="#hp-projects">项目</a>
-        <a href="#hp-travel">旅行</a>
-        {{- else }}
-        <a href="#hp-about">About</a>
-        <a href="#hp-posts">Posts</a>
-        <a href="#hp-books">Books</a>
-        <a href="#hp-projects">Projects</a>
-        <a href="#hp-travel">Travel</a>
-        {{- end }}
-      </nav>
-      <button class="hp-search-btn" id="hp-search-trigger" aria-label="Search">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <span>{{ if $isZh }}搜索{{ else }}Search{{ end }}</span>
-        <kbd>⌘K</kbd>
-      </button>
-      <a href="{{ if $isZh }}/en/{{ else }}/zh/{{ end }}" class="hp-lang-btn">
-        {{ if $isZh }}EN{{ else }}ZH{{ end }}
-      </a>
-    </div>
-  </div>
-
   <main class="hp-page">
 
     {{/* ── Hero ─────────────────────────────────────────── */}}
@@ -606,19 +573,52 @@
     loading = true;
     renderChat();
     var sys = isZh ? SYS_ZH : SYS_EN;
-    var ctx = messages.slice(0,-1).map(function(m){ return (m.role==='user'?'User':'Bear')+': '+m.content; }).join('\n');
-    var prompt = sys + (ctx?'\n\nConversation:\n'+ctx:'') + '\n\nUser: '+text+'\n\nBear:';
-    if (window.claude && window.claude.complete) {
-      window.claude.complete({ messages:[{ role:'user', content:prompt }] })
-        .then(function(r){ messages.push({ role:'bear', content:r }); })
-        .catch(function(){ messages.push({ role:'bear', content: isZh?'嗯，走神了，再问一次？':"Lost my train of thought. Try again?" }); })
-        .finally(function(){ loading=false; renderChat(); });
-    } else {
-      setTimeout(function(){
-        messages.push({ role:'bear', content: isZh?'（AI 功能需在 Claude 环境中运行。）':'(AI chat requires the Claude environment.)' });
-        loading=false; renderChat();
-      }, 600);
-    }
+    var history = messages.slice(0,-1).map(function(m){ return { role: m.role==='user'?'user':'assistant', content: m.content }; });
+    fetch('/.netlify/functions/blog-ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        question: text,
+        language: isZh ? 'zh' : 'en',
+        context: history,
+        searchContext: sys
+      })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('api error');
+      var ct = res.headers.get('content-type') || '';
+      if (ct.includes('text/event-stream')) {
+        var reader = res.body.getReader();
+        var decoder = new TextDecoder();
+        var reply = '';
+        messages.push({ role:'bear', content:'' });
+        loading = false;
+        function pump() {
+          return reader.read().then(function(chunk) {
+            if (chunk.done) { renderChat(); return; }
+            var lines = decoder.decode(chunk.value).split('\n');
+            lines.forEach(function(line) {
+              if (line.startsWith('data: ')) {
+                var d = line.slice(6).trim();
+                if (d && d !== '[DONE]') {
+                  try { var j = JSON.parse(d); if (j.content) { reply += j.content; messages[messages.length-1].content = reply; renderChat(); } } catch(e) {}
+                }
+              }
+            });
+            return pump();
+          });
+        }
+        return pump();
+      }
+      return res.json().then(function(d) {
+        messages.push({ role:'bear', content: d.answer || d.content || (isZh?'嗯，走神了，再问一次？':"Lost my train of thought. Try again?") });
+        loading = false; renderChat();
+      });
+    })
+    .catch(function() {
+      messages.push({ role:'bear', content: isZh?'网络有点问题，再试一次？':"Connection hiccup. Try again?" });
+      loading = false; renderChat();
+    });
   }
 
   renderOrbit();
