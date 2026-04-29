@@ -248,10 +248,10 @@ document.addEventListener('click', function(event) {
         if (!menuOpen) {
             if (currentY > THRESHOLD && currentY > lastScrollY) {
                 headerWrapper.classList.add('nav-scroll-hidden');
-                if (yearNav) yearNav.style.top = '8px';
+                if (yearNav) yearNav.style.transform = 'translateY(-200%)';
             } else {
                 headerWrapper.classList.remove('nav-scroll-hidden');
-                if (yearNav) yearNav.style.top = headerWrapper.offsetHeight + 'px';
+                if (yearNav) yearNav.style.transform = 'translateY(0)';
             }
         }
         lastScrollY = currentY;
