@@ -1,0 +1,681 @@
+{{- /* Homepage DayPage Redesign — Bear / 熊
+     Mirrors the design prototype: Hero + AI Chat + Posts + Books + Projects + Travel + Subscribe + Footer
+     Lang: en (default) / zh — detected from .Lang
+*/ -}}
+
+{{- $isZh := eq .Lang "zh" -}}
+{{- $lang  := .Lang -}}
+
+<div class="homepage-root" id="hp-root" data-lang="{{ $lang }}">
+
+  {{/* ── Topbar ─────────────────────────────────────────── */}}
+  <div class="hp-topbar" id="hp-top">
+    <div class="hp-topbar-inner">
+      <a href="{{ "/" | relLangURL }}" class="hp-brand">
+        <span class="hp-brand-dot"></span>
+        <span>BEAR · 熊</span>
+      </a>
+      <nav class="hp-nav">
+        {{- if $isZh }}
+        <a href="#hp-about">关于</a>
+        <a href="#hp-posts">文章</a>
+        <a href="#hp-books">书</a>
+        <a href="#hp-projects">项目</a>
+        <a href="#hp-travel">旅行</a>
+        {{- else }}
+        <a href="#hp-about">About</a>
+        <a href="#hp-posts">Posts</a>
+        <a href="#hp-books">Books</a>
+        <a href="#hp-projects">Projects</a>
+        <a href="#hp-travel">Travel</a>
+        {{- end }}
+      </nav>
+      <button class="hp-search-btn" id="hp-search-trigger" aria-label="Search">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span>{{ if $isZh }}搜索{{ else }}Search{{ end }}</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <a href="{{ if $isZh }}/en/{{ else }}/zh/{{ end }}" class="hp-lang-btn">
+        {{ if $isZh }}EN{{ else }}ZH{{ end }}
+      </a>
+    </div>
+  </div>
+
+  <main class="hp-page">
+
+    {{/* ── Hero ─────────────────────────────────────────── */}}
+    <section class="hp-hero" id="hp-about">
+      <div>
+        <div class="hp-hero-meta-row">
+          <span class="hp-status-pill">
+            <span class="hp-live-dot"></span>
+            {{ if $isZh }}在线 · 漫游中{{ else }}Online · Roaming{{ end }}
+          </span>
+          <span class="hp-entry-label">ENTRY · {{ now.Format "2006/01/02" }}</span>
+        </div>
+
+        <h1>
+          <span class="hp-hero-name-row">
+            <span class="hp-hero-name-text">
+              Xinwei <span class="hp-accent">Xiong</span>.
+            </span>
+            <span class="hp-hero-chibi" aria-hidden="true">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>
+                <ellipse cx="50" cy="68" rx="9" ry="3" fill="#E8DCCA" opacity="0.6"/>
+                <circle cx="50" cy="44" r="22" fill="#FFE4C4"/>
+                <path d="M28 42 Q28 22 50 20 Q72 22 72 42 Q72 36 64 32 Q56 28 50 30 Q44 28 36 32 Q28 36 28 42 Z" fill="#2B1810"/>
+                <circle cx="32" cy="26" r="5" fill="#2B1810"/>
+                <circle cx="68" cy="26" r="5" fill="#2B1810"/>
+                <circle cx="32" cy="26" r="2.5" fill="#8B5A3C"/>
+                <circle cx="68" cy="26" r="2.5" fill="#8B5A3C"/>
+                <circle cx="42" cy="46" r="2.4" fill="#2B1810"/>
+                <circle cx="58" cy="46" r="2.4" fill="#2B1810"/>
+                <circle cx="42.7" cy="45.4" r="0.8" fill="#FFFFFF"/>
+                <circle cx="58.7" cy="45.4" r="0.8" fill="#FFFFFF"/>
+                <circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>
+                <circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>
+                <path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+              </svg>
+            </span>
+          </span>
+          <span class="hp-hero-name-zh">{{ if $isZh }}熊新伟 · BEAR{{ else }}熊 · BEAR{{ end }}</span>
+        </h1>
+
+        <div class="hp-hero-tag">
+          <span>AI BUILDER</span><span class="hp-sep">/</span>
+          <span>OPEN SOURCE</span><span class="hp-sep">/</span>
+          <span>DIGITAL NOMAD</span>
+        </div>
+
+        <p class="hp-hero-bio">
+          {{ if $isZh }}
+          构建 <strong>AI 产品</strong>，贡献<strong>开源代码</strong>，在世界的褶皱里慢慢走。每天捕捉那些原始信号——代码、念头、地方——然后让它们结晶成一些可以保留下来的东西。
+          {{ else }}
+          I build <strong>AI products</strong> and contribute to <strong>open source</strong> while wandering the world. Capturing raw signals from each day — code, thoughts, places — and compiling them into something durable.
+          {{ end }}
+        </p>
+      </div>
+
+      <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"></div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Posts ───────────────────────────────────────── */}}
+    <section class="hp-section" id="hp-posts">
+      <div class="hp-section-head">
+        <span class="hp-section-num">01</span>
+        <span class="hp-section-label">{{ if $isZh }}最新信号{{ else }}Latest Signals{{ end }}</span>
+        <h2 class="hp-section-title">
+          {{ if $isZh }}正在写的{{ else }}Writing{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}文章{{ end }}</span>
+        </h2>
+        <a class="hp-section-action" href="{{ "/articles/" | relLangURL }}">
+          {{ if $isZh }}所有文章{{ else }}All Posts{{ end }}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      {{- $pages    := where site.RegularPages "Type" "in" site.Params.mainSections }}
+      {{- $featured := index $pages 0 }}
+      {{- $recent   := after 1 $pages | first 2 }}
+      {{- $archive  := after 3 $pages | first 4 }}
+
+      <div class="hp-posts-grid">
+        {{- with $featured }}
+        <a class="hp-post-card hp-featured" href="{{ .RelPermalink }}">
+          <div class="hp-post-meta">
+            <span class="hp-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+            <span>{{ .Date.Format "Jan 02" | upper }}</span>
+            <span>·</span><span>{{ .ReadingTime }} min</span>
+          </div>
+          <h3 class="hp-post-title">{{ .Title }}</h3>
+          <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 160 }}</p>
+          <div class="hp-post-foot"><span>READ ESSAY</span><span class="hp-post-arrow">↗</span></div>
+        </a>
+        {{- end }}
+        {{- range $recent }}
+        <a class="hp-post-card" href="{{ .RelPermalink }}">
+          <div class="hp-post-meta">
+            <span class="hp-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+            <span>{{ .Date.Format "Jan 02" | upper }}</span>
+          </div>
+          <h3 class="hp-post-title">{{ .Title }}</h3>
+          <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 120 }}</p>
+          <div class="hp-post-foot"><span>{{ .ReadingTime }} min</span><span class="hp-post-arrow">↗</span></div>
+        </a>
+        {{- end }}
+      </div>
+
+      <div class="hp-posts-list">
+        {{- range $archive }}
+        <a class="hp-posts-list-row" href="{{ .RelPermalink }}">
+          <span class="hp-posts-list-date">{{ .Date.Format "Jan 02" | upper }}</span>
+          <span class="hp-posts-list-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+          <span class="hp-posts-list-title">{{ .Title }}</span>
+          <span class="hp-posts-list-arrow">→</span>
+        </a>
+        {{- end }}
+      </div>
+
+      <div class="hp-cat-row">
+        <a class="hp-cat-tile" href="{{ "/ai-technology/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">⚡</div>
+          <div class="hp-cat-tile-name">AI / Tech</div>
+          <div class="hp-cat-tile-zh">技术</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "ai-technology") }}</strong></div>
+        </a>
+        <a class="hp-cat-tile" href="{{ "/growth/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">🌱</div>
+          <div class="hp-cat-tile-name">Growth</div>
+          <div class="hp-cat-tile-zh">成长</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "growth") }}</strong></div>
+        </a>
+        <a class="hp-cat-tile" href="{{ "/travel/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">🌐</div>
+          <div class="hp-cat-tile-name">Travel</div>
+          <div class="hp-cat-tile-zh">旅行</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "travel") }}</strong></div>
+        </a>
+        <a class="hp-cat-tile" href="{{ "/projects/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">📦</div>
+          <div class="hp-cat-tile-name">Projects</div>
+          <div class="hp-cat-tile-zh">项目</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "projects") }}</strong></div>
+        </a>
+      </div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Books ──────────────────────────────────────── */}}
+    <section class="hp-section" id="hp-books">
+      <div class="hp-section-head">
+        <span class="hp-section-num">02</span>
+        <span class="hp-section-label">{{ if $isZh }}我的书{{ else }}Books · Travelogues{{ end }}</span>
+        <h2 class="hp-section-title">{{ if $isZh }}我的旅行书{{ else }}Field Notebooks{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}游记{{ end }}</span></h2>
+      </div>
+      <div class="hp-books-grid">
+        <a class="hp-book" href="https://vietnam.nsddd.top/">
+          <div class="hp-book-cover hp-book-cover-vietnam">
+            <div class="hp-book-cover-label">A FIELD NOTEBOOK</div>
+            <div>
+              <div class="hp-book-cover-title">{{ if $isZh }}越南{{ else }}Vietnam{{ end }}</div>
+              <div class="hp-book-cover-sub">{{ if $isZh }}湄公河随笔{{ else }}Field Notes from the Mekong{{ end }}</div>
+            </div>
+            <div class="hp-book-cover-foot"><span>VOL.1</span><span>BEAR · 2024</span></div>
+          </div>
+          <div class="hp-book-info">
+            <div class="hp-book-stamp">2024 · 越南</div>
+            <div class="hp-book-meta"><strong>FIELD NOTES</strong><span>·</span><span>10.7769° N · 106.7009° E</span></div>
+            <h3 class="hp-book-title">{{ if $isZh }}越南{{ else }}Vietnam{{ end }}</h3>
+            <div class="hp-book-zh">越南 · Field Notes from the Mekong</div>
+            <p class="hp-book-excerpt">"{{ if $isZh }}从河内到湄公河三角洲，一段慢火细炖的旅程。{{ else }}From Hanoi's narrow alleys to the Mekong delta — a slow-cooked record of motorbikes, coffee, monsoon rain, and the strange comfort of being a stranger.{{ end }}"</p>
+            <div class="hp-book-stats">
+              <div class="hp-book-stat"><span class="hp-book-stat-num">09</span><span class="hp-book-stat-label">Chapters</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">184</span><span class="hp-book-stat-label">Pages</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">07</span><span class="hp-book-stat-label">Cities</span></div>
+              <span class="hp-book-cta">READ ↗</span>
+            </div>
+          </div>
+        </a>
+        <a class="hp-book" href="https://angkor.nsddd.top/">
+          <div class="hp-book-cover hp-book-cover-angkor">
+            <div class="hp-book-cover-label">A FIELD NOTEBOOK</div>
+            <div>
+              <div class="hp-book-cover-title">{{ if $isZh }}吴哥窟{{ else }}Angkor{{ end }}</div>
+              <div class="hp-book-cover-sub">{{ if $isZh }}石头、树根与帝国{{ else }}Stones, Roots &amp; Empire{{ end }}</div>
+            </div>
+            <div class="hp-book-cover-foot"><span>VOL.2</span><span>BEAR · 2024</span></div>
+          </div>
+          <div class="hp-book-info">
+            <div class="hp-book-stamp">2024 · 柬埔寨</div>
+            <div class="hp-book-meta"><strong>FIELD NOTES</strong><span>·</span><span>13.4125° N · 103.8670° E</span></div>
+            <h3 class="hp-book-title">{{ if $isZh }}吴哥窟{{ else }}Angkor{{ end }}</h3>
+            <div class="hp-book-zh">吴哥 · Stones, Roots &amp; Empire</div>
+            <p class="hp-book-excerpt">"{{ if $isZh }}走过吴哥的庙宇与废墟，听一个逝去帝国的回声。{{ else }}On the temples beyond the postcards — banyan roots crawling over a lost capital, and what a vanished empire still says to us about scale and silence.{{ end }}"</p>
+            <div class="hp-book-stats">
+              <div class="hp-book-stat"><span class="hp-book-stat-num">08</span><span class="hp-book-stat-label">Chapters</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">156</span><span class="hp-book-stat-label">Pages</span></div>
+              <div class="hp-book-stat"><span class="hp-book-stat-num">03</span><span class="hp-book-stat-label">Cities</span></div>
+              <span class="hp-book-cta">READ ↗</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Projects ────────────────────────────────────── */}}
+    <section class="hp-section" id="hp-projects">
+      <div class="hp-section-head">
+        <span class="hp-section-num">03</span>
+        <span class="hp-section-label">{{ if $isZh }}产品 / 开源{{ else }}Products &amp; Open Source{{ end }}</span>
+        <h2 class="hp-section-title">{{ if $isZh }}正在构建{{ else }}Building{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}项目{{ end }}</span></h2>
+        <a class="hp-section-action" href="https://github.com/telepace" target="_blank" rel="noopener">
+          GITHUB
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
+        </a>
+      </div>
+      <div class="hp-projects-featured">
+        <a class="hp-project-featured hp-amber" href="https://telepace.cc" target="_blank" rel="noopener">
+          <div class="hp-project-tag">AI · Reading &amp; Knowledge</div>
+          <h3 class="hp-project-name">Telepace</h3>
+          <p class="hp-project-desc">{{ if $isZh }}AI 驱动的阅读助手，帮助你高效处理、理解和摘要网页及文档内容。{{ else }}AI-powered reading assistant designed to help you efficiently process, understand, and summarize text content from web pages and documents.{{ end }}</p>
+          <div class="hp-project-foot">
+            <div class="hp-project-stats"><span>★ <strong>1.2k</strong></span><span>TypeScript</span></div>
+            <span class="hp-project-cta">{{ if $isZh }}访问{{ else }}VISIT{{ end }} ↗</span>
+          </div>
+        </a>
+        <a class="hp-project-featured hp-ink" href="https://github.com/OpenIMSDK/OpenKF" target="_blank" rel="noopener">
+          <div class="hp-project-tag">Open Source · Customer Service</div>
+          <h3 class="hp-project-name">OpenKF</h3>
+          <p class="hp-project-desc">{{ if $isZh }}基于 OpenIM 的开源 AI 知识库客服系统，支持深度、情境化的对话。{{ else }}Open-source AI knowledge-base customer service system. Built atop OpenIM for deep, contextual conversations at scale.{{ end }}</p>
+          <div class="hp-project-foot">
+            <div class="hp-project-stats"><span>★ <strong>2.8k</strong></span><span>Go</span></div>
+            <span class="hp-project-cta">{{ if $isZh }}访问{{ else }}VISIT{{ end }} ↗</span>
+          </div>
+        </a>
+      </div>
+      <div class="hp-repos-grid">
+        {{- $repos := slice
+          (dict "org" "telepace" "name" "nexus"          "desc" "AI-powered reading assistant for web pages and documents."       "lang" "TypeScript" "lc" "ts"  "stars" 3 "updated" "Oct 27")
+          (dict "org" "telepace" "name" "sophon"         "desc" "Long-form AI reasoning interface. Wisdom over speed."             "lang" "TypeScript" "lc" "ts"  "stars" 1 "updated" "Oct 28")
+          (dict "org" "telepace" "name" "voiceflow"      "desc" "LLM audio streaming — low-latency, production-ready."            "lang" "Go"         "lc" "go"  "stars" 8 "updated" "Apr 23")
+          (dict "org" "telepace" "name" "quick-forge-ai" "desc" "FastAPI + TypeScript starter for shipping AI prototypes fast."   "lang" "MDX"        "lc" "mdx" "stars" 4 "updated" "Oct 27")
+          (dict "org" "telepace" "name" "aireader"       "desc" "Reading agent with citation-grounded summaries."                 "lang" "TypeScript" "lc" "ts"  "stars" 2 "updated" "Sep 17")
+          (dict "org" "telepace" "name" "ai-commons"     "desc" "Shared API clients and data utilities across feedback systems."  "lang" "Python"     "lc" "py"  "stars" 2 "updated" "Apr 24")
+        -}}
+        {{- range $repos }}
+        <a class="hp-repo" href="https://github.com/{{ .org }}/{{ .name }}" target="_blank" rel="noopener">
+          <div class="hp-repo-head">
+            <div class="hp-repo-icon">📦</div>
+            <div class="hp-repo-name"><span class="hp-org">{{ .org }}/</span>{{ .name }}</div>
+          </div>
+          <p class="hp-repo-desc">{{ .desc }}</p>
+          <div class="hp-repo-foot">
+            <span><span class="hp-repo-lang-dot hp-lang-{{ .lc }}"></span>{{ .lang }}</span>
+            <span>★ {{ .stars }}</span>
+            <span style="margin-left:auto">UPDATED {{ .updated }}</span>
+          </div>
+        </a>
+        {{- end }}
+      </div>
+    </section>
+
+    <div class="hp-divider-fade"></div>
+
+    {{/* ── Travel ──────────────────────────────────────── */}}
+    <section class="hp-section" id="hp-travel">
+      <div class="hp-section-head">
+        <span class="hp-section-num">04</span>
+        <span class="hp-section-label">{{ if $isZh }}足迹{{ else }}Footprint{{ end }}</span>
+        <h2 class="hp-section-title">{{ if $isZh }}走过的地方{{ else }}Where I've Been{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}足迹{{ end }}</span></h2>
+        <a class="hp-section-action" href="{{ "/travel/" | relLangURL }}">
+          {{ if $isZh }}完整地图{{ else }}Full Map{{ end }}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hp-travel-block">
+        <div>
+          <div class="hp-travel-stats">
+            <div><div class="hp-travel-stat-num">9</div><div class="hp-travel-stat-label">{{ if $isZh }}国家{{ else }}Countries{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">35</div><div class="hp-travel-stat-label">{{ if $isZh }}城市{{ else }}Cities{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">87</div><div class="hp-travel-stat-label">{{ if $isZh }}航班{{ else }}Flights{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">412</div><div class="hp-travel-stat-label">{{ if $isZh }}路上的日子{{ else }}Days On Road{{ end }}</div></div>
+          </div>
+          <div class="hp-travel-cities">
+            Tokyo<span class="hp-city-sep">·</span>Kyoto<span class="hp-city-sep">·</span>Osaka<span class="hp-city-sep">·</span>Hanoi<span class="hp-city-sep">·</span>Saigon<span class="hp-city-sep">·</span>Da Nang<span class="hp-city-sep">·</span>Siem Reap<span class="hp-city-sep">·</span>Phnom Penh<span class="hp-city-sep">·</span>Bangkok<span class="hp-city-sep">·</span>Chiang Mai<span class="hp-city-sep">·</span>Singapore<span class="hp-city-sep">·</span>Kuala Lumpur<span class="hp-city-sep">·</span>Bali<span class="hp-city-sep">·</span>Lisbon<span class="hp-city-sep">·</span>Porto<span class="hp-city-sep">·</span>Barcelona<span class="hp-city-sep">·</span>Berlin<span class="hp-city-sep">·</span>Lhasa<span class="hp-city-sep">·</span>Chengdu<span class="hp-city-sep">·</span>Shenzhen<span class="hp-city-sep">·</span>Hong Kong<span class="hp-city-sep">·</span>Taipei
+          </div>
+        </div>
+        <div class="hp-heatmap">
+          <div class="hp-heatmap-months">
+            <span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span>
+            <span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span>
+            <span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
+          </div>
+          <div class="hp-heatmap-grid" id="hp-heatmap-grid"></div>
+          <div class="hp-heatmap-legend">
+            <span>LESS</span>
+            <span class="hp-heatmap-legend-cells">
+              <span style="background:var(--heatmap-empty)"></span>
+              <span style="background:var(--heatmap-low)"></span>
+              <span style="background:var(--heatmap-mid)"></span>
+              <span style="background:var(--heatmap-high)"></span>
+            </span>
+            <span>MORE</span>
+            <span style="margin-left:auto">2025/26 ACTIVITY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{/* ── Subscribe ────────────────────────────────────── */}}
+    <div class="hp-subscribe" id="hp-subscribe">
+      <div>
+        <div class="hp-subscribe-tag">SIGNAL · 信号</div>
+        <h3>{{ if $isZh }}别错过任何一个信号。{{ else }}Never miss a signal.{{ end }}</h3>
+        <p>{{ if $isZh }}为构建者写作。AI、开源与漫游笔记，直接送到你的邮箱。已有 1,200+ 读者。{{ else }}Built for builders. New posts on AI, open source &amp; nomad life — direct to your inbox. Joined by 1,200+ readers.{{ end }}</p>
+      </div>
+      <form class="hp-subscribe-form" onsubmit="return hpSubscribeSubmit(event,'{{ $lang }}')">
+        <div class="hp-subscribe-input-row">
+          <input class="hp-subscribe-input" type="email" id="hp-subscribe-email"
+            placeholder="{{ if $isZh }}你的邮箱{{ else }}your@email.com{{ end }}" required>
+          <button class="hp-subscribe-btn" type="submit" id="hp-subscribe-btn">
+            {{ if $isZh }}订阅{{ else }}SUBSCRIBE{{ end }}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div class="hp-subscribe-meta">{{ if $isZh }}不发广告，随时退订 · 也可通过 RSS 订阅{{ else }}No spam, unsubscribe anytime · Also available via RSS{{ end }}</div>
+      </form>
+    </div>
+
+  </main>
+
+  {{/* ── Footer ──────────────────────────────────────── */}}
+  <footer class="hp-footer hp-page">
+    <div class="hp-footer-grid">
+      <div>
+        <div class="hp-footer-brand">BEAR · 熊</div>
+        <p class="hp-footer-bio">{{ if $isZh }}熊新伟 — AI 构建者、开源贡献者、数字游民。在中国与世界之间慢慢走。{{ else }}Xinwei Xiong — AI builder, open source contributor, digital nomad. Slowly walking between China and the world.{{ end }}</p>
+      </div>
+      <div class="hp-footer-col">
+        <h5>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h5>
+        <ul>
+          <li><a href="{{ "/start-here/" | relLangURL }}">Start Here</a></li>
+          <li><a href="{{ "/about/" | relLangURL }}">About</a></li>
+          <li><a href="{{ "/articles/" | relLangURL }}">All Posts</a></li>
+          <li><a href="{{ "/archives/" | relLangURL }}">Archives</a></li>
+        </ul>
+      </div>
+      <div class="hp-footer-col">
+        <h5>{{ if $isZh }}书与项目{{ else }}Books &amp; Builds{{ end }}</h5>
+        <ul>
+          <li><a href="https://vietnam.nsddd.top/">Vietnam · 越南</a></li>
+          <li><a href="https://angkor.nsddd.top/">Angkor · 吴哥</a></li>
+          <li><a href="https://telepace.cc">Telepace</a></li>
+          <li><a href="https://github.com/OpenIMSDK/OpenKF">OpenKF</a></li>
+        </ul>
+      </div>
+      <div class="hp-footer-col">
+        <h5>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h5>
+        <ul>
+          <li><a href="https://github.com/cubxxw">⊕ GitHub</a></li>
+          <li><a href="https://github.com/telepace">⊕ Telepace</a></li>
+          <li><a href="{{ "/index.xml" | relLangURL }}">⊕ RSS</a></li>
+          <li><a href="mailto:hello@nsddd.top">⊕ Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hp-footer-bottom">
+      <span>© {{ now.Format "2006" }} XINWEI XIONG · THE QUIET COLLECTOR</span>
+      <div class="hp-footer-bottom-right">
+        <span>BUILT WITH SIGNAL</span>
+        <span>v3.0 · {{ now.Format "2006" }}</span>
+      </div>
+    </div>
+  </footer>
+
+  {{/* ── Command Palette ─────────────────────────────── */}}
+  <div class="hp-palette-overlay" id="hp-palette" style="display:none" role="dialog" aria-modal="true">
+    <div class="hp-palette-box" onclick="event.stopPropagation()">
+      <div class="hp-palette-input-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="hp-palette-input" id="hp-palette-input"
+          placeholder="{{ if $isZh }}搜索文章、书、项目...{{ else }}Search posts, books, projects...{{ end }}">
+        <span class="hp-palette-esc">ESC</span>
+      </div>
+      <div class="hp-palette-results" id="hp-palette-results"></div>
+      <div class="hp-palette-footer">
+        <span>↑↓ NAVIGATE · ↵ OPEN · ESC CLOSE</span>
+        <span>POWERED BY SIGNAL</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- .homepage-root -->
+
+<script>
+(function() {
+  var root = document.getElementById('hp-bear-ai');
+  if (!root) return;
+  var isZh = root.dataset.lang === 'zh';
+
+  var suggestionsEN = [
+    { text: "What are you building?", angle: -90,  dist: 1    },
+    { text: "Vietnam book?",          angle: -30,  dist: 1.05 },
+    { text: "Best AI post?",          angle:  30,  dist: 0.95 },
+    { text: "Why nomad?",             angle:  90,  dist: 1    },
+    { text: "Talk to me",             angle: 150,  dist: 1.05 },
+    { text: "What's OpenKF?",         angle: 210,  dist: 0.95 },
+  ];
+  var suggestionsZH = [
+    { text: "在做什么？",      angle: -90,  dist: 1    },
+    { text: "聊聊越南",        angle: -30,  dist: 1.05 },
+    { text: "推荐一篇文章",    angle:  30,  dist: 0.95 },
+    { text: "为什么游牧？",    angle:  90,  dist: 1    },
+    { text: "和我聊聊",        angle: 150,  dist: 1.05 },
+    { text: "OpenKF 是什么？", angle: 210,  dist: 0.95 },
+  ];
+  var suggestions = isZh ? suggestionsZH : suggestionsEN;
+  var chatOpen = false, messages = [], loading = false;
+
+  var CHIBI = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    '<path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>' +
+    '<ellipse cx="50" cy="68" rx="9" ry="3" fill="#E8DCCA" opacity="0.6"/>' +
+    '<circle cx="50" cy="44" r="22" fill="#FFE4C4"/>' +
+    '<path d="M28 42 Q28 22 50 20 Q72 22 72 42 Q72 36 64 32 Q56 28 50 30 Q44 28 36 32 Q28 36 28 42 Z" fill="#2B1810"/>' +
+    '<circle cx="32" cy="26" r="5" fill="#2B1810"/><circle cx="68" cy="26" r="5" fill="#2B1810"/>' +
+    '<circle cx="32" cy="26" r="2.5" fill="#8B5A3C"/><circle cx="68" cy="26" r="2.5" fill="#8B5A3C"/>' +
+    '<circle cx="42" cy="46" r="2.4" fill="#2B1810"/><circle cx="58" cy="46" r="2.4" fill="#2B1810"/>' +
+    '<circle cx="42.7" cy="45.4" r="0.8" fill="#FFFFFF"/><circle cx="58.7" cy="45.4" r="0.8" fill="#FFFFFF"/>' +
+    '<circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/><circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>' +
+    '<path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>';
+
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function renderOrbit() {
+    var r = 155;
+    var bubbles = suggestions.map(function(s,i) {
+      var rad = s.angle * Math.PI / 180;
+      var x = (Math.cos(rad) * r * s.dist).toFixed(1);
+      var y = (Math.sin(rad) * r * s.dist).toFixed(1);
+      return '<button class="hp-bear-bubble" style="left:calc(50% + '+x+'px);top:calc(50% + '+y+'px);animation-delay:'+(i*0.12)+'s" data-msg="'+esc(s.text)+'">'+s.text+'</button>';
+    }).join('');
+
+    root.innerHTML =
+      '<div class="hp-bear-orbit" id="hp-orbit">'+
+        '<svg class="hp-bear-orbit-rings" viewBox="-200 -200 400 400" aria-hidden="true">'+
+          '<defs><radialGradient id="bGlow" cx="50%" cy="50%" r="50%">'+
+            '<stop offset="0%" stop-color="rgba(93,48,0,0.18)"/>'+
+            '<stop offset="60%" stop-color="rgba(93,48,0,0.04)"/>'+
+            '<stop offset="100%" stop-color="rgba(93,48,0,0)"/>'+
+          '</radialGradient></defs>'+
+          '<circle cx="0" cy="0" r="190" fill="url(#bGlow)"/>'+
+          '<circle cx="0" cy="0" r="180" fill="none" stroke="var(--border-subtle)" stroke-width="1" stroke-dasharray="2 6"/>'+
+          '<circle cx="0" cy="0" r="140" fill="none" stroke="var(--border-subtle)" stroke-width="1"/>'+
+          '<circle cx="0" cy="0" r="100" fill="none" stroke="var(--accent-border)" stroke-width="1" stroke-dasharray="1 3"/>'+
+          '<line x1="0" y1="-180" x2="0" y2="-170" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<line x1="0" y1="170" x2="0" y2="180" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<line x1="-180" y1="0" x2="-170" y2="0" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<line x1="170" y1="0" x2="180" y2="0" stroke="var(--fg-subtle)" stroke-width="1"/>'+
+          '<circle class="orb-dot" cx="140" cy="-30" r="2" fill="var(--accent)"/>'+
+          '<circle class="orb-dot orb-dot-2" cx="-130" cy="60" r="2" fill="var(--accent)"/>'+
+          '<circle class="orb-dot orb-dot-3" cx="40" cy="160" r="1.5" fill="var(--fg-muted)"/>'+
+        '</svg>'+
+        bubbles+
+        '<button class="hp-bear-avatar-btn" id="hp-avatar-btn" aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
+          '<span class="hp-bear-avatar-pulse"></span>'+
+          '<span class="hp-bear-avatar-pulse hp-bear-avatar-pulse-2"></span>'+
+          '<span class="hp-bear-avatar-core"><span class="hp-bear-chibi">'+CHIBI+'</span></span>'+
+          '<span class="hp-bear-avatar-status"><span class="hp-bear-avatar-status-dot"></span>'+(isZh?'在线':'ONLINE')+'</span>'+
+        '</button>'+
+        '<div class="hp-bear-hud hp-bear-hud-tl"><div class="hp-bear-hud-label">DIGITAL TWIN</div><div class="hp-bear-hud-val">BEAR_AI · v3.0</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-tr"><div class="hp-bear-hud-label">'+(isZh?'协议':'PROTOCOL')+'</div><div class="hp-bear-hud-val">CLAUDE · 4.5</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-bl"><div class="hp-bear-hud-label">'+(isZh?'语气':'VOICE')+'</div><div class="hp-bear-hud-val">XINWEI · 熊</div></div>'+
+        '<div class="hp-bear-hud hp-bear-hud-br"><div class="hp-bear-hud-label">'+(isZh?'点击开始':'TAP · BEGIN')+'</div><div class="hp-bear-hud-val">↗ '+(isZh?'聊天':'CHAT')+'</div></div>'+
+        '<div class="hp-bear-cta-line">'+(isZh?'点击头像 · 与 Bear 的数字分身对话':"Tap the orb · Talk to Bear's digital twin")+'</div>'+
+      '</div>';
+
+    document.getElementById('hp-avatar-btn').addEventListener('click', function() { openChat(null); });
+    var orbit = document.getElementById('hp-orbit');
+    orbit.addEventListener('mouseenter', function() { this.classList.add('is-hover'); });
+    orbit.addEventListener('mouseleave', function() { this.classList.remove('is-hover'); });
+    root.querySelectorAll('.hp-bear-bubble').forEach(function(btn) {
+      btn.addEventListener('click', function() { openChat(this.dataset.msg); });
+    });
+  }
+
+  function renderChat() {
+    var bodyHtml = '';
+    if (messages.length === 0) {
+      bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨。在路上，但有空聊。问点什么？':"Hey. On the road, but happy to talk. What's on your mind?")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
+    } else {
+      bodyHtml = messages.map(function(m) {
+        var cls = m.role==='user' ? 'hp-bear-chat-msg-user' : 'hp-bear-chat-msg-bear';
+        var t   = m.role==='user' ? (isZh?'已送达':'delivered') : (isZh?'刚刚':'just now');
+        return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble">'+esc(m.content)+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
+      }).join('');
+    }
+    if (loading) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
+
+    var quickHtml = suggestions.slice(0,3).map(function(s) {
+      return '<button class="hp-bear-chat-quick-btn"'+(loading?' disabled':'')+" data-msg='"+esc(s.text)+"'>"+s.text+'</button>';
+    }).join('');
+
+    root.innerHTML =
+      '<div class="hp-bear-chat">'+
+        '<div class="hp-bear-chat-head">'+
+          '<div class="hp-bear-chat-head-left">'+
+            '<span class="hp-bear-chat-avatar">'+CHIBI+'<span class="hp-bear-chat-avatar-dot"></span></span>'+
+            '<div>'+
+              '<div class="hp-bear-chat-name">Bear <span class="hp-bear-chat-name-zh">· 熊</span></div>'+
+              '<div class="hp-bear-chat-meta"><span class="hp-bear-chat-pulse-dot"></span>'+(loading?(isZh?'正在输入…':'typing…'):(isZh?'在线 · 通常几秒回复':'online · usually replies in seconds'))+'</div>'+
+            '</div>'+
+          '</div>'+
+          '<div class="hp-bear-chat-actions">'+
+            (messages.length?'<button class="hp-bear-chat-icon-btn" id="hp-chat-clear" title="Clear"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>':'')+
+            '<button class="hp-bear-chat-icon-btn" id="hp-chat-close" title="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>'+
+          '</div>'+
+        '</div>'+
+        '<div class="hp-bear-chat-body" id="hp-chat-body">'+bodyHtml+'</div>'+
+        '<div class="hp-bear-chat-quick">'+quickHtml+'</div>'+
+        '<div class="hp-bear-chat-input-row">'+
+          '<input class="hp-bear-chat-input" id="hp-chat-input" placeholder="'+(isZh?'发条消息…':'Message Bear…')+'"'+(loading?' disabled':'')+'>'+
+          '<button class="hp-bear-chat-send" id="hp-chat-send" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'+
+        '</div>'+
+        '<div class="hp-bear-chat-foot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.5 4.5L6 9l4.5 1.5L12 15l1.5-4.5L18 9l-4.5-1.5z"/></svg><span>'+(isZh?"AI 模拟 Bear 的语气 · 不是本人":"AI mimicking Bear's voice · not the human")+'</span></div>'+
+      '</div>';
+
+    var body = document.getElementById('hp-chat-body');
+    if (body) body.scrollTop = body.scrollHeight;
+
+    var inp  = document.getElementById('hp-chat-input');
+    var send = document.getElementById('hp-chat-send');
+    if (inp) {
+      inp.addEventListener('input', function() { send.disabled = !this.value.trim() || loading; });
+      inp.addEventListener('keydown', function(e) {
+        if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); if (!loading && this.value.trim()) sendMsg(this.value); }
+      });
+      if (!loading) setTimeout(function(){ inp && inp.focus(); }, 100);
+    }
+    if (send) send.addEventListener('click', function() { var v=inp&&inp.value; if(v) sendMsg(v); });
+    var clr = document.getElementById('hp-chat-clear');
+    if (clr) clr.addEventListener('click', function() { messages=[]; renderChat(); });
+    var cls = document.getElementById('hp-chat-close');
+    if (cls) cls.addEventListener('click', function() { chatOpen=false; renderOrbit(); });
+    root.querySelectorAll('.hp-bear-chat-quick-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() { if(!loading) sendMsg(this.dataset.msg); });
+    });
+  }
+
+  function openChat(initMsg) {
+    chatOpen = true; renderChat();
+    if (initMsg) sendMsg(initMsg);
+  }
+
+  var SYS_EN = 'You are "Bear AI" — a digital twin of Xinwei Xiong (熊新伟, nickname "Bear"). Calm, a little poetic. AI builder, open source contributor, digital nomad. Topics: AI agents, Kubernetes, Go, cloud-native, personal growth, travel Asia/Europe. Books: Vietnam, Angkor. Projects: telepace.cc, OpenIM/OpenKF. Short warm replies, 2-4 sentences. No emoji. First person.';
+  var SYS_ZH = '你是 "Bear AI" — 熊新伟（Bear）的数字分身。安静、带诗意。AI 构建者、开源、数字游民。话题：AI agent、Kubernetes、Go、云原生、个人成长、旅行。书：越南、吴哥。项目：telepace.cc、OpenIM/OpenKF。简短温暖，2-4 句，不用 emoji，第一人称。';
+
+  function sendMsg(text) {
+    text = String(text||'').trim();
+    if (!text || loading) return;
+    chatOpen = true;
+    messages.push({ role:'user', content:text });
+    loading = true;
+    renderChat();
+    var sys = isZh ? SYS_ZH : SYS_EN;
+    var ctx = messages.slice(0,-1).map(function(m){ return (m.role==='user'?'User':'Bear')+': '+m.content; }).join('\n');
+    var prompt = sys + (ctx?'\n\nConversation:\n'+ctx:'') + '\n\nUser: '+text+'\n\nBear:';
+    if (window.claude && window.claude.complete) {
+      window.claude.complete({ messages:[{ role:'user', content:prompt }] })
+        .then(function(r){ messages.push({ role:'bear', content:r }); })
+        .catch(function(){ messages.push({ role:'bear', content: isZh?'嗯，走神了，再问一次？':"Lost my train of thought. Try again?" }); })
+        .finally(function(){ loading=false; renderChat(); });
+    } else {
+      setTimeout(function(){
+        messages.push({ role:'bear', content: isZh?'（AI 功能需在 Claude 环境中运行。）':'(AI chat requires the Claude environment.)' });
+        loading=false; renderChat();
+      }, 600);
+    }
+  }
+
+  renderOrbit();
+
+  /* Heatmap */
+  var hg = document.getElementById('hp-heatmap-grid');
+  if (hg) {
+    for (var i=0; i<371; i++) {
+      var v = ((Math.sin(i*9301+42)*43758.5453)%1+1)%1;
+      var boost = (Math.sin(Math.floor(i/28)*0.7)+1)/2;
+      var comp = v*0.6+boost*0.4;
+      var lvl = comp>0.78?3:comp>0.6?2:comp>0.4?1:0;
+      var d = document.createElement('div');
+      d.className = 'hp-heat-cell'+(lvl?' hp-heat-'+lvl:'');
+      hg.appendChild(d);
+    }
+  }
+
+  /* Command Palette */
+  var palette  = document.getElementById('hp-palette');
+  var pInput   = document.getElementById('hp-palette-input');
+  var pResults = document.getElementById('hp-palette-results');
+  var pItems = [
+    { type:'NAV',   label:'About',                                   href:'/about/' },
+    { type:'NAV',   label:'All Posts',                               href:'/articles/' },
+    { type:'POST',  label:'Agent Identity: From Locke to OpenClaw',  href:'#hp-posts' },
+    { type:'POST',  label:'Maintaining Self-Worth in the Age of AI', href:'#hp-posts' },
+    { type:'POST',  label:'Lhasa: Slow and Heavy',                   href:'#hp-posts' },
+    { type:'BOOK',  label:'Vietnam · Field Notes from the Mekong',   href:'https://vietnam.nsddd.top/' },
+    { type:'BOOK',  label:'Angkor · Stones, Roots & Empire',         href:'https://angkor.nsddd.top/' },
+    { type:'BUILD', label:'Telepace · AI reading assistant',         href:'https://telepace.cc' },
+    { type:'BUILD', label:'OpenKF · Open-source CS system',         href:'https://github.com/OpenIMSDK/OpenKF' },
+  ];
+  function renderPalette(q) {
+    var filtered = q ? pItems.filter(function(i){ return i.label.toLowerCase().includes(q.toLowerCase()); }) : pItems;
+    if (!filtered.length) { pResults.innerHTML='<div style="padding:32px;text-align:center;font-size:14px;color:var(--fg-subtle)">'+(isZh?'没有结果。':'No results.')+'</div>'; return; }
+    pResults.innerHTML = filtered.map(function(item) {
+      return '<a class="hp-palette-item" href="'+esc(item.href)+'">'+'<span class="hp-palette-type">'+item.type+'</span><span class="hp-palette-label">'+esc(item.label)+'</span>'+'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--fg-subtle)" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>';
+    }).join('');
+  }
+  function openPalette()  { palette.style.display='flex'; pInput.value=''; pInput.focus(); renderPalette(''); }
+  function closePalette() { palette.style.display='none'; }
+  if (palette) palette.addEventListener('click', closePalette);
+  if (pInput)  pInput.addEventListener('input', function(){ renderPalette(this.value); });
+  var sb = document.getElementById('hp-search-trigger');
+  if (sb) sb.addEventListener('click', openPalette);
+  document.addEventListener('keydown', function(e) {
+    if ((e.metaKey||e.ctrlKey)&&e.key==='k') { e.preventDefault(); palette.style.display==='none'?openPalette():closePalette(); }
+    if (e.key==='Escape') closePalette();
+  });
+
+  /* Subscribe */
+  window.hpSubscribeSubmit = function(e, lang) {
+    e.preventDefault();
+    var btn = document.getElementById('hp-subscribe-btn');
+    if (btn) { btn.textContent = lang==='zh'?'已订阅 ✓':'SUBSCRIBED ✓'; btn.disabled=true; }
+    return false;
+  };
+})();
+</script>
