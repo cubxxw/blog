@@ -659,6 +659,16 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   color: var(--accent);
 }
 
+.hp-bear-chat-msg-bear .hp-bear-chat-bubble a.hp-ai-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-style: normal;
+  font-weight: 500;
+  word-break: break-word;
+}
+.hp-bear-chat-msg-bear .hp-bear-chat-bubble a.hp-ai-link:hover { color: var(--accent-hover); }
+
 .hp-bear-chat-bubble-typing span {
   display: flex;
   gap: 4px;
@@ -1631,3 +1641,6 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
     transition: none !important;
   }
 }
+
+/* Hide header search button on homepage — hp-palette is the search entry point */
+body:has(.homepage-root) .nav-search-trigger { display: none !important; }

@@ -434,6 +434,19 @@
 
   function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+  // Render bear AI message: escape HTML first, then restore safe Markdown links and basic formatting
+  function renderMsg(s) {
+    var safe = esc(s);
+    // [title](url) → clickable link (only http/https URLs)
+    safe = safe.replace(/\[([^\]]{1,120})\]\((https?:\/\/[^)]{1,300})\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer" class="hp-ai-link">$1 ↗</a>');
+    // **bold**
+    safe = safe.replace(/\*\*([^*]{1,200})\*\*/g, '<strong>$1</strong>');
+    // newlines → <br>
+    safe = safe.replace(/\n/g, '<br>');
+    return safe;
+  }
+
   function renderOrbit() {
     var r = 155;
     var bubbles = suggestions.map(function(s,i) {
@@ -494,7 +507,8 @@
       bodyHtml = messages.map(function(m) {
         var cls = m.role==='user' ? 'hp-bear-chat-msg-user' : 'hp-bear-chat-msg-bear';
         var t   = m.role==='user' ? (isZh?'已送达':'delivered') : (isZh?'刚刚':'just now');
-        return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble">'+esc(m.content)+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
+        var content = m.role==='user' ? esc(m.content) : renderMsg(m.content);
+        return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble">'+content+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
       }).join('');
     }
     if (loading) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
@@ -793,9 +807,9 @@
   var sb = document.getElementById('hp-search-trigger');
   if (sb) sb.addEventListener('click', openPalette);
   document.addEventListener('keydown', function(e) {
-    if ((e.metaKey||e.ctrlKey)&&e.key==='k') { e.preventDefault(); palette.style.display==='none'?openPalette():closePalette(); }
+    if ((e.metaKey||e.ctrlKey)&&e.key==='k') { e.preventDefault(); e.stopPropagation(); palette.style.display==='none'?openPalette():closePalette(); }
     if (e.key==='Escape') closePalette();
-  });
+  }, true);
 
   /* Subscribe */
   window.hpSubscribeSubmit = function(e, lang) {
