@@ -28,7 +28,23 @@
               {{ $d.hero.nameEn }} <span class="hp-accent">{{ $d.hero.nameLast }}</span>.
             </span>
             <span class="hp-hero-chibi" aria-hidden="true">
-              <img src="/assets/cubxxw-image.jpg" alt="Bear" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>
+                <ellipse cx="50" cy="68" rx="9" ry="3" fill="#E8DCCA" opacity="0.6"/>
+                <circle cx="50" cy="44" r="22" fill="#FFE4C4"/>
+                <path d="M28 42 Q28 22 50 20 Q72 22 72 42 Q72 36 64 32 Q56 28 50 30 Q44 28 36 32 Q28 36 28 42 Z" fill="#2B1810"/>
+                <circle cx="32" cy="26" r="5" fill="#2B1810"/>
+                <circle cx="68" cy="26" r="5" fill="#2B1810"/>
+                <circle cx="32" cy="26" r="2.5" fill="#8B5A3C"/>
+                <circle cx="68" cy="26" r="2.5" fill="#8B5A3C"/>
+                <circle cx="42" cy="46" r="2.4" fill="#2B1810"/>
+                <circle cx="58" cy="46" r="2.4" fill="#2B1810"/>
+                <circle cx="42.7" cy="45.4" r="0.8" fill="#FFFFFF"/>
+                <circle cx="58.7" cy="45.4" r="0.8" fill="#FFFFFF"/>
+                <circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>
+                <circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>
+                <path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+              </svg>
             </span>
           </span>
           <span class="hp-hero-name-zh">{{ if $isZh }}{{ $d.hero.nameZh }} · {{ $d.hero.nickZh }}{{ else }}熊 · {{ $d.hero.nickZh }}{{ end }}</span>
@@ -404,7 +420,17 @@
   var suggestions = JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn);
   var chatOpen = false, messages = [], loading = false;
 
-  var CHIBI = '<img src="/assets/cubxxw-image.jpg" alt="Bear" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+  var CHIBI = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    '<path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>' +
+    '<ellipse cx="50" cy="68" rx="9" ry="3" fill="#E8DCCA" opacity="0.6"/>' +
+    '<circle cx="50" cy="44" r="22" fill="#FFE4C4"/>' +
+    '<path d="M28 42 Q28 22 50 20 Q72 22 72 42 Q72 36 64 32 Q56 28 50 30 Q44 28 36 32 Q28 36 28 42 Z" fill="#2B1810"/>' +
+    '<circle cx="32" cy="26" r="5" fill="#2B1810"/><circle cx="68" cy="26" r="5" fill="#2B1810"/>' +
+    '<circle cx="32" cy="26" r="2.5" fill="#8B5A3C"/><circle cx="68" cy="26" r="2.5" fill="#8B5A3C"/>' +
+    '<circle cx="42" cy="46" r="2.4" fill="#2B1810"/><circle cx="58" cy="46" r="2.4" fill="#2B1810"/>' +
+    '<circle cx="42.7" cy="45.4" r="0.8" fill="#FFFFFF"/><circle cx="58.7" cy="45.4" r="0.8" fill="#FFFFFF"/>' +
+    '<circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/><circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>' +
+    '<path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>';
 
   function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
