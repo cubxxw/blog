@@ -3811,6 +3811,7 @@ body {
     position: sticky;
     top: 72px;
     z-index: 50;
+    transition: top 0.25s ease;
 }
 
 .archives-year-nav__label {
