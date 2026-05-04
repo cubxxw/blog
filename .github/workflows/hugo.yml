@@ -25,14 +25,14 @@ jobs:
       HUGO_VERSION: 0.147.0
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Cache Hugo resources
         uses: actions/cache@v5
@@ -53,7 +53,7 @@ jobs:
         run: sudo snap install dart-sass
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
 
