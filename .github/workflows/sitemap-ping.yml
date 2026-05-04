@@ -14,8 +14,18 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Netlify deploy
-        run: sleep 60
+      - name: Wait for site to be updated
+        run: |
+          echo "Waiting for site deployment to propagate..."
+          for i in $(seq 1 24); do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://nsddd.top/sitemap.xml")
+            if [ "$STATUS" = "200" ]; then
+              echo "Site is reachable (attempt $i)"
+              break
+            fi
+            echo "Attempt $i: status=$STATUS, retrying in 10s..."
+            sleep 10
+          done
 
       - name: Ping Google
         run: |

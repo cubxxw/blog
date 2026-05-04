@@ -19,7 +19,7 @@ on:
 jobs:
   assign-issue:
     if: |
-      contains(github.event.comment.body, '/assign') || contains(github.event.comment.body, '/accept') &&
+      (contains(github.event.comment.body, '/assign') || contains(github.event.comment.body, '/accept')) &&
       !contains(github.event.comment.user.login, 'openimbot') &&
       !contains(github.event.comment.user.login, 'kubbot')
     runs-on: ubuntu-latest
@@ -31,11 +31,17 @@ jobs:
 
       - name: Assign the issue
         run: |
-          export LETASE_MILESTONES=$(curl 'https://api.github.com/repos/$OWNER/$REPO/milestones' | jq -r 'last(.[]).title')
+          LATEST_MILESTONE=$(curl -fsSL \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/repos/$OWNER/$REPO/milestones" | jq -r 'last(.[]).title // empty')
           gh issue edit ${{ github.event.issue.number }} --add-assignee "${{ github.event.comment.user.login }}"
           gh issue edit ${{ github.event.issue.number }} --add-label "triage/accepted"
-          gh issue edit ${{ github.event.issue.number }} --milestone "$LETASE_MILESTONES"
-          gh issue comment $ISSUE --body "@${{ github.event.comment.user.login }} Glad to see you accepted this issue🤲, this issue has been assigned to you. I set the milestones for this issue to [$LETASE_MILESTONES](https://github.com/$OWNER/$REPO/milestones), We are looking forward to your PR!"
+          if [ -n "$LATEST_MILESTONE" ]; then
+            gh issue edit ${{ github.event.issue.number }} --milestone "$LATEST_MILESTONE"
+            gh issue comment $ISSUE --body "@${{ github.event.comment.user.login }} Glad to see you accepted this issue🤲, this issue has been assigned to you. I set the milestones for this issue to [$LATEST_MILESTONE](https://github.com/$OWNER/$REPO/milestones), We are looking forward to your PR!"
+          else
+            gh issue comment $ISSUE --body "@${{ github.event.comment.user.login }} Glad to see you accepted this issue🤲, this issue has been assigned to you. We are looking forward to your PR!"
+          fi
         env:
           GH_TOKEN: ${{ secrets.REDBOT_GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.html_url }}
