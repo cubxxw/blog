@@ -261,12 +261,12 @@
     {{- $firstYear := $thisYear -}}
     {{- range $allPages -}}{{- if lt .Date.Year $firstYear -}}{{- $firstYear = .Date.Year -}}{{- end -}}{{- end -}}
     {{- $yearsActive := add (sub $thisYear $firstYear) 1 -}}
-    {{- $allDates := slice -}}
+    {{- $allPosts := slice -}}
     {{- range $allPages -}}
-      {{- $allDates = $allDates | append (.Date.Format "2006-01-02") -}}
+      {{- $allPosts = $allPosts | append (dict "date" (.Date.Format "2006-01-02") "title" .Title "url" .RelPermalink) -}}
     {{- end -}}
     {{- $recentPosts := $allPages | first 8 -}}
-    <section class="hp-section" id="hp-travel" data-post-dates='{{ $allDates | jsonify }}'>
+    <section class="hp-section" id="hp-travel" data-post-dates='{{ $allPosts | jsonify }}'>
       <div class="hp-section-head">
         <span class="hp-section-num">04</span>
         <span class="hp-section-label">{{ if $isZh }}写作{{ else }}Writing{{ end }}</span>
@@ -661,14 +661,65 @@
       var archiveBase = wrap.dataset.archiveUrl || '/archives/';
       var thisYear    = parseInt(wrap.dataset.thisYear, 10) || new Date().getFullYear();
 
-      var rawDates = [];
-      try { rawDates = JSON.parse(section.dataset.postDates || '[]'); } catch(e) {}
+      var rawPosts = [];
+      try { rawPosts = JSON.parse(section.dataset.postDates || '[]'); } catch(e) {}
 
-      // Build countMap: YYYY-MM-DD → count
+      // Build countMap: YYYY-MM-DD → count, postsMap: YYYY-MM-DD → [{title,url}]
       var countMap = {};
-      rawDates.forEach(function(d) {
-        if (d && d > '1970-01-01') countMap[d] = (countMap[d] || 0) + 1;
+      var postsMap = {};
+      rawPosts.forEach(function(p) {
+        var d = typeof p === 'string' ? p : p.date;
+        if (!d || d <= '1970-01-01') return;
+        countMap[d] = (countMap[d] || 0) + 1;
+        if (p.title) {
+          postsMap[d] = postsMap[d] || [];
+          postsMap[d].push({ title: p.title, url: p.url });
+        }
       });
+
+      // Custom tooltip element
+      var tooltip = document.createElement('div');
+      tooltip.id = 'hp-heat-tooltip';
+      tooltip.style.cssText = [
+        'position:fixed','z-index:9999','pointer-events:none','opacity:0',
+        'background:var(--entry,#1e1e1e)','color:var(--primary,#eee)',
+        'border:1px solid var(--border,#444)','border-radius:8px',
+        'padding:10px 13px','font-size:12px','line-height:1.6',
+        'max-width:220px','box-shadow:0 4px 16px rgba(0,0,0,0.25)',
+        'transition:opacity 0.15s ease'
+      ].join(';');
+      document.body.appendChild(tooltip);
+
+      function showTooltip(cell, key, cnt, postsOnDay) {
+        var d = new Date(key + 'T12:00:00');
+        var dateStr = d.toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year:'numeric', month:'long', day:'numeric' });
+        var html = '<div style="font-weight:600;margin-bottom:4px">' + dateStr + '</div>';
+        if (cnt === 0) {
+          html += '<div style="opacity:0.5">' + (isZh ? '无发布' : 'No posts') + '</div>';
+        } else {
+          html += '<div style="opacity:0.7;margin-bottom:6px">' + cnt + (isZh ? ' 篇文章' : (cnt > 1 ? ' posts' : ' post')) + '</div>';
+          postsOnDay.forEach(function(p) {
+            html += '<div style="padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">↗ ' +
+              (p.url ? '<a href="' + p.url + '" style="color:inherit;text-decoration:none" target="_blank">' + p.title + '</a>' : p.title) +
+              '</div>';
+          });
+        }
+        tooltip.innerHTML = html;
+        tooltip.style.opacity = '1';
+
+        var rect = cell.getBoundingClientRect();
+        var tw = tooltip.offsetWidth || 200;
+        var th = tooltip.offsetHeight || 80;
+        var left = rect.left + rect.width / 2 - tw / 2;
+        var top  = rect.top - th - 8;
+        if (left < 8) left = 8;
+        if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
+        if (top < 8) top = rect.bottom + 8;
+        tooltip.style.left = left + 'px';
+        tooltip.style.top  = top  + 'px';
+      }
+
+      function hideTooltip() { tooltip.style.opacity = '0'; }
 
       function renderYear(year) {
         hg.innerHTML = '';
@@ -703,15 +754,19 @@
           var cell = document.createElement('div');
           cell.className = 'hp-heat-cell' + (lvl ? ' hp-heat-' + lvl : '') + (inYear ? '' : ' hp-heat-out');
 
-          if (inYear && cnt > 0) {
-            var month = cur.toLocaleString('en', { month: 'short' });
-            cell.title = month + ' ' + cur.getDate() + ', ' + year + ' · ' + cnt + ' post' + (cnt > 1 ? 's' : '');
-            cell.style.cursor = 'pointer';
-            (function(y, m) {
-              cell.addEventListener('click', function() {
-                window.location.href = archiveBase + '#year-' + y;
-              });
-            })(year, cur.getMonth() + 1);
+          if (inYear) {
+            var dayPosts = postsMap[key] || [];
+            (function(k, c, posts) {
+              cell.addEventListener('mouseenter', function() { showTooltip(cell, k, c, posts); });
+              cell.addEventListener('mouseleave', hideTooltip);
+              if (c > 0) {
+                cell.style.cursor = 'pointer';
+                cell.addEventListener('click', function() {
+                  if (posts.length === 1) window.location.href = posts[0].url;
+                  else window.location.href = archiveBase + '#year-' + year;
+                });
+              }
+            })(key, cnt, dayPosts);
           }
           hg.appendChild(cell);
           cur.setDate(cur.getDate() + 1);
