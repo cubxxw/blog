@@ -102,7 +102,7 @@
         </a>
       </div>
 
-      {{- $pages    := where site.RegularPages "Type" "in" site.Params.mainSections }}
+      {{- $pages    := where (where site.RegularPages "Lang" $lang) "Type" "in" site.Params.mainSections }}
       {{- $featured := index $pages 0 }}
       {{- $recent   := after 1 $pages | first 2 }}
       {{- $archive  := after 3 $pages | first 4 }}
