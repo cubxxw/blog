@@ -140,6 +140,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [April 2026 Thought Notes](https://nsddd.top/growth/posts/2026-04-thought-notes/)
 - [Agent Identity: From Locke to OpenClaw](https://nsddd.top/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
 - [Maintaining Self-Worth in the Age of AI](https://nsddd.top/growth/posts/weight-of-self-in-ai-age/)
 - [March 2026 Thought Notes](https://nsddd.top/growth/posts/2026-03-thought-notes/)
@@ -151,6 +152,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [December 2025 Thought Notes](https://nsddd.top/growth/posts/2025-12-thought-notes/)
 - [Japan Travel Notes — Learning to Be with Time Through Wood, Fire, and Gaps](https://nsddd.top/growth/posts/japan-travel-2025/)
 - [2025 November Thought Notes](https://nsddd.top/growth/posts/2025-11-thought-notes/)
+- [October 2025 Thought Notes](https://nsddd.top/growth/posts/2025-10-thought-notes/)
+- [September 2025 Thought Notes](https://nsddd.top/growth/posts/2025-09-thought-notes/)
 - [2025 August Thought Notes](https://nsddd.top/growth/posts/2025-08-thought-notes/)
 - [2025 July Thought Notes](https://nsddd.top/growth/posts/2025-07-thought-notes/)
 - [2025 June Thought Notes](https://nsddd.top/growth/posts/2025-06-thought-notes/)
