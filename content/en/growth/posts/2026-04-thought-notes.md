@@ -1,9 +1,9 @@
 ---
-title: '2026年4月思考笔记'
+title: 'April 2026 Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2026-04-30T23:59:59+08:00
-draft : false
+draft: false
 showtoc: true
 weight: 1
 tocopen: true
@@ -14,12 +14,12 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 老挝旅行 (Laos Travel)
-  - AI思考 (AI Thinking)
+  - Laos Travel
+  - AI Thinking
 categories:
   - Growth
 description: >
-    2026年4月思考笔记 - 老挝旅居中的见闻与思考，AI 时代的工程哲学，以及关于记录、理解与信任的探索。
+    April 2026 Thought Notes - Observations from living in Laos during Songkran, engineering philosophy in the AI era, and explorations of recording, understanding, and trust.
 ---
 ## 2026年4月思考笔记
 

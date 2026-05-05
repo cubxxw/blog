@@ -1,5 +1,5 @@
 ---
-title: '2025年10月思考笔记'
+title: 'October 2025 Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2025-10-31T23:59:59+08:00
@@ -9,18 +9,17 @@ weight: 1
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["思考笔记", "个人成长", "深度思考", "技术洞察", "人生哲学", "十月反思"]
+keywords: ["thought notes", "personal growth", "deep thinking", "tech insights", "life philosophy", "October reflection"]
 tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 深秋思索 (Late Autumn Reflection)
-  - 智慧沉淀 (Wisdom Precipitation)
+  - Late Autumn Reflection
+  - Wisdom Precipitation
 categories:
   - Growth
 description: >
-  2025年10月的深度思考笔记，记录本人在城市发展观察、技术产品思考、个人认知成长、社会现象洞察等多维度的思考与反思。涵盖从嘉兴发展潜力、高层建筑问题、K字签证政策，到快速迭代方法论、从知到觉的认知哲学、具身记忆理论，以及AI时代的思考与观察。通过持续的记录与思考，探索个人成长与外部世界的理解。
-  
+    October 2025 deep thinking notes, recording multi-dimensional reflections on urban development, tech product thinking, personal cognitive growth, and social phenomena. Covering topics from Jiaxing's development potential and high-rise building issues, K-visa policy, rapid iteration methodology, the philosophy of moving from knowing to awareness, embodied memory theory, and observations in the AI era.
 ---
 # 2025年10月思考笔记
 

@@ -1,5 +1,5 @@
 ---
-title: '2025年9月思考笔记'
+title: 'September 2025 Thought Notes'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2025-09-30T23:59:59+08:00
@@ -9,17 +9,17 @@ weight: 1
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["思考笔记", "个人成长", "深度思考", "技术洞察", "人生哲学", "九月反思"]
+keywords: ["thought notes", "personal growth", "deep thinking", "tech insights", "life philosophy", "September reflection"]
 tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 秋季收获 (Autumn Harvest)
-  - 智慧积累 (Wisdom Accumulation)
+  - Autumn Harvest
+  - Wisdom Accumulation
 categories:
   - Growth
 description: >
-    2025年9月思考笔记 - 在初秋的收获季节,探索技术与哲学的交汇点,记录关于AI时代、个人成长、认知升级的深度思考,以及在快速变化世界中保持内心清明的智慧沉淀
+    September 2025 Thought Notes - Exploring the intersection of technology and philosophy during the early autumn harvest season, recording deep reflections on the AI era, personal growth, cognitive upgrades, and the wisdom of maintaining inner clarity in a rapidly changing world.
 ---
 # 2025年9月思考笔记
 
