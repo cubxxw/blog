@@ -1,5 +1,5 @@
 ---
-title: '2025 年 12 月思考笔记 | December 2025 Thought Notes'
+title: '2025年12月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2025-12-31T23:59:59+08:00

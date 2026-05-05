@@ -1,5 +1,5 @@
 ---
-title: '2026 年 1 月思考笔记 | January 2026 Thought Notes'
+title: '2026年1月思考笔记'
 ShowRssButtonInSectionTermList: true
 cover.image:
 date: 2026-01-31T23:59:59+08:00
