@@ -1,0 +1,177 @@
+/* ============================================================
+   Micro-interactions — subtle motion for mobile & desktop
+   ------------------------------------------------------------
+   Progressive enhancement:
+   - Reveal-on-scroll states only apply when <html> has the
+     `motion-reveal` class (added inline in <head> ONLY when the
+     user has NOT requested reduced motion). No JS / reduced
+     motion => content is always fully visible, no layout shift.
+   - Tactile :active feedback, focus-visible rings and image
+     fade-ins are layered on top without affecting reading flow.
+   ============================================================ */
+
+/* ---------- Reveal on scroll (cards & list rows) ---------- */
+/* Hidden initial state is scoped to .motion-reveal so it never
+   hides content for no-JS or reduced-motion visitors. */
+html.motion-reveal .post-entry,
+html.motion-reveal .ai-tech-card,
+html.motion-reveal .growth-card,
+html.motion-reveal .ai-tech-list-item,
+html.motion-reveal .growth-list-item,
+html.motion-reveal .reveal-item {
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* Per-element stagger set inline by JS via --reveal-delay */
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.motion-reveal .post-entry.is-revealed,
+html.motion-reveal .ai-tech-card.is-revealed,
+html.motion-reveal .growth-card.is-revealed,
+html.motion-reveal .ai-tech-list-item.is-revealed,
+html.motion-reveal .growth-list-item.is-revealed,
+html.motion-reveal .reveal-item.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Once revealed, drop will-change so we don't pin layers. */
+html.motion-reveal .is-revealed {
+  will-change: auto;
+}
+
+/* ---------- Article images: gentle fade-in on load ---------- */
+html.motion-reveal .post-content img {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+html.motion-reveal .post-content img.img-loaded {
+  opacity: 1;
+}
+
+/* ---------- Tactile press feedback (mobile + desktop) ---------- */
+/* A quick scale-down on press makes taps feel responsive. */
+.post-entry,
+.ai-tech-card,
+.growth-card,
+.ai-tech-list-item,
+.growth-list-item {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.post-entry:active,
+.ai-tech-card:active,
+.growth-card:active,
+.growth-list-item:active,
+.ai-tech-list-item:active {
+  transform: scale(0.985);
+  transition: transform 0.12s ease;
+}
+
+.post-tag:active,
+.post-category:active,
+.button:active,
+button:active,
+.top-link:active {
+  transform: scale(0.94);
+}
+
+/* ---------- Focus-visible accessibility ring ---------- */
+/* Keyboard users get a clear, consistent focus indicator. */
+a:focus-visible,
+button:focus-visible,
+.post-entry:focus-visible,
+.ai-tech-card:focus-visible,
+.growth-card:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent, var(--primary));
+  outline-offset: 3px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+/* ---------- Scroll-to-top button polish ---------- */
+.top-link {
+  transition:
+    visibility 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.top-link:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- Swipe navigation hint (mobile article pages) ---------- */
+.swipe-hint {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent, var(--primary));
+  color: #fff;
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(15, 23, 42, 0.18));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.swipe-hint svg { width: 22px; height: 22px; }
+.swipe-hint.left { left: 14px; }
+.swipe-hint.right { right: 14px; }
+.swipe-hint.is-active {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* ---------- Animated section underline (links in prose) ---------- */
+/* A small left-to-right underline grow on hover for inline links. */
+.post-content a:not(.anchor):not(.btn) {
+  background-image: linear-gradient(var(--color-accent, var(--primary)), var(--color-accent, var(--primary)));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+.post-content a:not(.anchor):not(.btn):hover {
+  background-size: 100% 1px;
+}
+
+/* ============================================================
+   Reduced-motion: hard override. Disable all of the above so
+   the experience is fully static for users who ask for it.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .post-entry,
+  .ai-tech-card,
+  .growth-card,
+  .ai-tech-list-item,
+  .growth-list-item,
+  .reveal-item,
+  .post-content img {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .swipe-hint { display: none !important; }
+
+  .post-content a:not(.anchor):not(.btn) {
+    background-size: 0 0 !important;
+  }
+}

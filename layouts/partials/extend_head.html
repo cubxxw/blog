@@ -2,6 +2,27 @@
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 
+{{- /* Enable reveal-on-scroll states only when motion is allowed.
+       Runs before <body> paints so there is no content flash and no
+       layout shift for reduced-motion / no-JS visitors. */ -}}
+<script>
+  (function () {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var de = document.documentElement;
+      de.classList.add('motion-reveal');
+      // Failsafe: if the enhancement script never initialises (e.g. it
+      // failed to load), drop the reveal class so content is never stuck
+      // hidden. No-op when micro-interactions.js runs normally.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          if (!window.__microInteractionsReady) de.classList.remove('motion-reveal');
+        }, 1500);
+      });
+    } catch (e) {}
+  })();
+</script>
+
 {{- /* Preconnect hints for external resources */ -}}
 <link rel="preconnect" href="https://www.googletagmanager.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
