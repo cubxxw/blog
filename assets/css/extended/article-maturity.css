@@ -1,0 +1,31 @@
+/* Living-content maturity badge (Seedling / Budding / Evergreen).
+   Rendered by partials/article/maturity.html, shown in the marginalia rail.
+   Token-based so it tracks the paper/ink theme and dark mode. */
+
+.article-maturity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.85em;
+  font-family: var(--font-meta, var(--font-sans));
+  white-space: nowrap;
+}
+
+.article-maturity__emoji {
+  font-size: 1em;
+  line-height: 1;
+}
+
+.article-maturity__label {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Subtle stage tinting on the label — green ramp from young to mature. */
+.article-maturity--seedling  .article-maturity__label { color: #6c9a3f; }
+.article-maturity--budding   .article-maturity__label { color: #3f8f6b; }
+.article-maturity--evergreen .article-maturity__label { color: #2f7a4f; }
+
+.dark .article-maturity--seedling  .article-maturity__label { color: #a7d27a; }
+.dark .article-maturity--budding   .article-maturity__label { color: #7fd0aa; }
+.dark .article-maturity--evergreen .article-maturity__label { color: #74c896; }

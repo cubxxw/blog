@@ -41,6 +41,12 @@ categories:
   - AI & Technology
 description: >
   纯文本描述，不含 Markdown 语法，内容丰富
+# 可选：答案前置 TL;DR（GEO/BLUF，提升 AI 引用率），字符串或要点列表
+tldr:
+  - 一句话核心结论。
+  - 第二个关键要点。
+# 可选：内容成熟度（活内容标签）：seedling 萌芽 / budding 成长 / evergreen 常青
+maturity: budding
 ---
 ```
 

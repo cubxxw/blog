@@ -42,6 +42,15 @@
   </div>
   {{- end }}
 
+  {{/* ── Maturity (living-content stage: Seedling / Budding / Evergreen) ── */}}
+  {{- $maturityBadge := partial "article/maturity.html" $page -}}
+  {{- if trim $maturityBadge " \n\t" }}
+  <div class="marginalia-group">
+    <span class="marginalia-label">{{ i18n "marginalia.maturity" | default "Maturity" }}</span>
+    <span class="marginalia-value">{{ $maturityBadge | safeHTML }}</span>
+  </div>
+  {{- end }}
+
   {{/* ── Dimensions (Reading Time + Word Count) ── */}}
   <div class="marginalia-group">
     <span class="marginalia-label">{{ i18n "marginalia.dimensions" | default "Dimensions" }}</span>

@@ -1,0 +1,26 @@
+{{- /*
+  Living-content maturity badge (Maggie Appleton's digital-garden pattern:
+  Seedling / Budding / Evergreen). Signals that a post evolves rather than
+  being a frozen finished article, and how confident/complete it is.
+
+  Front matter:
+    maturity: seedling   # 🌱 early, rough idea
+    maturity: budding    # 🌿 developing, being refined
+    maturity: evergreen  # 🌳 mature, well-tended
+
+  Renders nothing if the field is absent (backward compatible).
+  Pass the page as the context: {{ partial "article/maturity.html" . }}
+*/ -}}
+{{- $m := lower (.Params.maturity | default "") -}}
+{{- $known := dict
+  "seedling"  (dict "emoji" "🌱" "key" "maturity.seedling"  "en" "Seedling"  "zh" "萌芽")
+  "budding"   (dict "emoji" "🌿" "key" "maturity.budding"   "en" "Budding"   "zh" "成长")
+  "evergreen" (dict "emoji" "🌳" "key" "maturity.evergreen" "en" "Evergreen" "zh" "常青")
+-}}
+{{- with index $known $m -}}
+{{- $fallback := cond (eq $.Lang "zh") .zh .en -}}
+<span class="article-maturity article-maturity--{{ $m }}" title="{{ $fallback }}">
+  <span class="article-maturity__emoji" aria-hidden="true">{{ .emoji }}</span>
+  <span class="article-maturity__label">{{ i18n .key | default $fallback }}</span>
+</span>
+{{- end -}}

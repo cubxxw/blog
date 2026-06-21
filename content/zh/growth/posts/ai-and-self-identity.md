@@ -17,6 +17,7 @@ tags:
   - 人类价值 (Human Value)
 categories:
   - Growth
+maturity: budding
 description: >
     当 AI 能替代我们思考和执行，"我"在哪里？探索 AI 时代人类的主体性、感受与意义的本质。
 aliases:

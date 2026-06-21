@@ -196,3 +196,15 @@
 
 - id: tldr_label
   translation: "核心要点"
+
+- id: marginalia.maturity
+  translation: "成熟度"
+
+- id: maturity.seedling
+  translation: "萌芽"
+
+- id: maturity.budding
+  translation: "成长"
+
+- id: maturity.evergreen
+  translation: "常青"

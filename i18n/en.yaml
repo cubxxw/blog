@@ -196,3 +196,15 @@
 
 - id: tldr_label
   translation: "TL;DR"
+
+- id: marginalia.maturity
+  translation: "Maturity"
+
+- id: maturity.seedling
+  translation: "Seedling"
+
+- id: maturity.budding
+  translation: "Budding"
+
+- id: maturity.evergreen
+  translation: "Evergreen"
