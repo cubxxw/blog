@@ -193,3 +193,6 @@
 
 - id: tools.toc_empty
   translation: "暂无目录"
+
+- id: tldr_label
+  translation: "核心要点"

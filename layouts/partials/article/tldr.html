@@ -1,0 +1,31 @@
+{{- /*
+  TL;DR / answer-first block (GEO / BLUF pattern).
+  Renders a prominent "key takeaway" box at the top of an article so the core
+  answer sits in the opening of the page — where ~44% of AI-engine citations
+  are drawn from (Kevin Indig, 1.2M ChatGPT responses). Also helps human
+  readers. Driven entirely by front matter, no backend.
+
+  Front matter:
+    tldr: "A single-sentence answer."        # string form
+  or:
+    tldr:                                      # list form (key takeaways)
+      - First point.
+      - Second point.
+
+  Semantic <aside> + heading so AI passage extraction can lift it cleanly.
+*/ -}}
+{{- $tldr := .Params.tldr -}}
+{{- with $tldr -}}
+<aside class="article-tldr" aria-label="{{ i18n "tldr_label" | default "TL;DR" }}">
+  <div class="article-tldr__label">{{ i18n "tldr_label" | default "TL;DR" }}</div>
+  {{- if reflect.IsSlice . }}
+  <ul class="article-tldr__list">
+    {{- range . }}
+    <li>{{ . | markdownify }}</li>
+    {{- end }}
+  </ul>
+  {{- else }}
+  <p class="article-tldr__text">{{ . | markdownify }}</p>
+  {{- end }}
+</aside>
+{{- end -}}

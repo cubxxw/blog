@@ -1,0 +1,54 @@
+/* TL;DR / answer-first block — GEO/BLUF pattern.
+   Uses design tokens so it stays consistent with the paper/ink theme and
+   adapts to dark mode automatically. Rendered by partials/article/tldr.html. */
+
+.article-tldr {
+  margin: var(--space-6) 0 var(--space-8);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  font-family: var(--font-prose, var(--font-body));
+}
+
+.article-tldr__label {
+  font-family: var(--font-meta, var(--font-sans));
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.article-tldr__text {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.article-tldr__list {
+  margin: 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.article-tldr__list li {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.article-tldr p:last-child,
+.article-tldr li:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark mode: soften the accent fill so it doesn't glow. */
+.dark .article-tldr {
+  background: color-mix(in srgb, var(--color-accent-soft) 14%, transparent);
+}

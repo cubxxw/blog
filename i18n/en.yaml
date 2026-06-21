@@ -193,3 +193,6 @@
 
 - id: tools.toc_empty
   translation: "No headings"
+
+- id: tldr_label
+  translation: "TL;DR"

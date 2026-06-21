@@ -89,6 +89,8 @@
     {{- partial "toc.html" . }}
     {{- end }}
 
+    {{- partial "article/tldr.html" . }}
+
     {{- if $content }}
     <div class="post-content">
       {{- if not (.Param "disableAnchoredHeadings") }}

@@ -7,6 +7,7 @@
     "dev:stop": "bash scripts/stop-netlify-dev.sh",
     "tags:check": "node scripts/normalize-tags.mjs --check",
     "tags:fix": "node scripts/normalize-tags.mjs --write",
+    "geo:audit": "node scripts/geo-audit.mjs",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
     "test:ui": "playwright test --ui",

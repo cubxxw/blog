@@ -17,6 +17,10 @@ tags:
   - CNCF
 categories:
   - AI & Technology
+tldr:
+  - Argo CD 是面向 Kubernetes 的声明式、基于 GitOps 的持续交付（CD）工具。
+  - 它把 Git 中定义的期望状态与集群中的实际状态持续同步，实现应用部署的自动化与可回滚。
+  - 核心价值是“Git 即唯一事实来源”：所有变更通过 Git 提交触发，部署过程可审计、可重现。
 description: >
   An introduction to Argo CD, a declarative, GitOps-based continuous delivery (CD) tool for Kubernetes.
   Learn how it automates application deployment by synchronizing the desired state defined in Git
