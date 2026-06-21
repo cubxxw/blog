@@ -54,6 +54,22 @@ body.dark .post-description {
   letter-spacing: var(--tracking-prose, normal);
 }
 
+/* Dark-mode prose base color. Paragraphs, headings, strong/em etc. are each
+   given explicit colors elsewhere, but text without an explicit override
+   (list items, table cells, dd/dt, captions) inherits this base. Without it
+   that text fell back to the light-mode ink and rendered near-black on the
+   dark surface. The token resolves per language (#e2e3e1 EN / #f5f3ee ZH). */
+body.dark .post-content {
+  color: var(--color-ink, #e2e3e1);
+}
+
+/* Table cells: ensure readable text + visible hairline rules in dark mode. */
+body.dark .post-content table th,
+body.dark .post-content table td {
+  color: var(--color-ink, #e2e3e1);
+  border-bottom-color: var(--color-rule, rgba(226, 227, 225, 0.12));
+}
+
 .post-content p {
   line-height: 1.8;
   letter-spacing: var(--tracking-prose, normal);

@@ -21,14 +21,19 @@
     transform: translateY(-100%);
 }
 
-body.dark .header-wrapper {
-    background: rgba(20, 22, 24, 0.72);
-    border-bottom-color: rgba(226, 227, 225, 0.06);
+/* Language-specific background tint (light mode only) */
+html:lang(en) body:not(.dark) .header-wrapper {
+    background: rgba(249, 249, 247, 0.72);
 }
 
-/* Language-specific background tint */
-html:lang(en) .header-wrapper {
-    background: rgba(249, 249, 247, 0.72);
+/* Dark mode frosted header — declared after the lang tints so it always
+   wins the cascade (the lang tints otherwise tie on specificity and would
+   leak the light background into dark mode on English pages). */
+body.dark .header-wrapper,
+html:lang(en) body.dark .header-wrapper,
+html:lang(zh) body.dark .header-wrapper {
+    background: rgba(20, 22, 24, 0.72);
+    border-bottom-color: rgba(226, 227, 225, 0.06);
 }
 
 /* Main Navigation Container — tighter Notion rhythm */
