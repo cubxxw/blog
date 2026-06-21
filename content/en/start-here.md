@@ -20,7 +20,11 @@ weight: 5
 
 # 👋 Welcome! Start Here
 
+{{< knowledge-galaxy >}}
+
 First time here? This blog covers **AI/Technology**, **Personal Growth**, and **Travel**. Pick a path below and start with 5 curated posts.
+
+> Above is a draggable 3D knowledge galaxy — that's me: the core is myself, orbited by my identities and the fields I focus on. Drag to rotate, click any node to dive in.
 
 ---
 
