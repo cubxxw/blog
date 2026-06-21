@@ -39,13 +39,34 @@ body.dark .homepage-root {
   --surface-sunken: #1A1816;
   --fg-primary:     #F5F0E8;
   --fg-muted:       #A8A29E;
-  --fg-subtle:      #6B6560;
+  /* Lifted from #6B6560 → #8C867E so subtle labels, dates and section
+     markers stay legible on the dark surfaces (contrast ~2.8 → ~4.0)
+     while remaining clearly recessed below --fg-muted. Dark mode only. */
+  --fg-subtle:      #8C867E;
   --accent:         #D4863A;
   --accent-hover:   #E8953D;
   --accent-soft:    #2A1F14;
   --accent-border:  #3D2A18;
   --border-subtle:  #2D2925;
   --border-default: #3D3830;
+}
+
+/* Dark mode: the amber accent (--accent) flips light (#D4863A), so the
+   near-white label on accent-filled CTAs drops to ~2.7 contrast. Switch
+   those surfaces to dark ink for a legible, high-contrast amber CTA.
+   Scoped to body.dark — light mode (dark-brown accent + light text) intact. */
+body.dark .hp-subscribe-btn,
+body.dark .hp-bear-avatar-status {
+  color: #1C1916;
+}
+
+/* Dark mode: meta separators inherited the hairline --border-default and
+   rendered near-invisible (~1.4 contrast), letting adjacent meta run together.
+   Nudge to a perceptible-but-quiet grey. Decorative glyphs, dark mode only. */
+body.dark .hp-sep,
+body.dark .hp-city-sep,
+body.dark .hp-subscribe-sep {
+  color: #6B655E;
 }
 
 /* ============================================================
