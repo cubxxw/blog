@@ -92,3 +92,9 @@ tests/e2e/visual/snapshots/
 /blob-report/
 /playwright/.cache/
 /dist/
+
+# Ralph iteration log
+iterations.jsonl
+
+# Playwright MCP snapshots
+.playwright-mcp/

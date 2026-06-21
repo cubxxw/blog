@@ -2,8 +2,8 @@
 (function () {
   'use strict';
 
-  var FAB_HIDE_SCROLL = 200;   // px from top — hide fab
-  var FAB_HIDE_BOTTOM = 300;   // px from bottom — hide fab near footer
+  var FAB_HIDE_SCROLL = 80;    // px from top — hide fab
+  var FAB_HIDE_BOTTOM = 80;    // px from bottom — hide fab near footer
   var SWIPE_CLOSE = 80;        // px downward swipe to close
 
   var fab, sheet, overlay, tabs, panels;
@@ -42,15 +42,19 @@
   }
 
   function openSheet() {
+    fab.classList.add('article-fab--hidden');
     sheet.classList.add('abs--open');
     overlay.classList.add('abs-overlay--visible');
+    fab.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
 
   function closeSheet() {
     sheet.classList.remove('abs--open');
     overlay.classList.remove('abs-overlay--visible');
+    fab.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    setTimeout(onScroll, 260);
   }
 
   function onScroll() {
