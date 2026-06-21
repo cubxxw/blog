@@ -2,7 +2,6 @@
 title: 'Github Actions Advanced Techniques'
 description: Master GitHub Actions with advanced workflows, custom commands, automation patterns, and best practices for CI/CD pipelines.
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-09-16T16:17:02+08:00
 draft : false
 showtoc: true
@@ -13,7 +12,6 @@ tags:
   - Blog
   - cicd
   - actions
-  - en
 categories:
   - AI & Technology
 ---

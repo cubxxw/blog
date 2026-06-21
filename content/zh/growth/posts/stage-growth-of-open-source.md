@@ -2,7 +2,6 @@
 title: '开源的阶段性成长指南'
 description: '本文将为您呈现一份开源项目的阶段性成长指南，帮助您了解如何在开源项目中不断进步和成长。'
 ShowRssButtonInSectionTermList: true
-cover.image: 
 date: 2023-05-16T16:36:15+08:00
 draft: false
 showtoc: true
@@ -18,8 +17,8 @@ tags:
   - Golang (GO语言)
   - Kubernetes
   - OpenIM
-  - 云原生 (Cloud Native)
-  - 开源 (Open Source)
+  - Cloud Native
+  - Open Source
 categories:
   - Growth
 ---

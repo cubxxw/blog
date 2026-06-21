@@ -1,7 +1,6 @@
 ---
 title: '从理论到实践的项目管理打通'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-05-07T15:12:31+08:00
 draft : false
 showtoc: true

@@ -2,7 +2,6 @@
 title: 'Use Auto Gpt'
 description: Learn how to install and use Auto-GPT for autonomous AI task automation, including setup, configuration, and practical use cases.
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-03-18T16:28:30+08:00
 draft : false
 showtoc: true

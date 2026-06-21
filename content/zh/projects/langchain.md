@@ -3,7 +3,7 @@ title: "Langchain 开源项目深度学习"
 date: 2025-04-16T17:36:46+08:00
 draft: false
 tocopen: true
-tags: ["AI开源", "项目学习"]
+tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >

@@ -2,7 +2,6 @@
 title: 'Open Source Contribution Guidelines'
 description: Learn open source contribution guidelines, GitHub workflow, and best practices for participating in open source communities.
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-09-16T16:40:53+08:00
 draft : false
 showtoc: true

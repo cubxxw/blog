@@ -1,7 +1,6 @@
 ---
 title: 'GoReleaser：自动化你的软件发布'
 ShowRssButtonInSectionTermList: true
-cover.image: 
 date: 2023-09-16T16:07:39+08:00
 draft: false
 showtoc: true

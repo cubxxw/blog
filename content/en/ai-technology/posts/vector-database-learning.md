@@ -14,9 +14,13 @@ keywords: []
 tags:
   - Blog
   - AI
-  - database
+  - Database
 categories:
   - AI & Technology
+description: >
+  An introduction to vector databases for AI applications. Starts from the prerequisites,
+  the basics of vectors, similarity measures such as cosine similarity, and database indexing,
+  then explains how vector databases differ from traditional databases and where they fit in AI.
 ---
 
 # Vector database learning

@@ -4,10 +4,13 @@ date: 2023-09-01T14:56:14+08:00
 draft : false
 tags:
   - Blog
-  - en
   - openkf
 categories:
   - AI & Technology
+description: >
+  A walkthrough of automating multi-architecture Docker image builds for the openkf project.
+  Covers building linux/amd64 and linux/arm64 images and pushing them to Docker Hub, AliYun
+  Container Registry, and GitHub Container Registry in a single seamless workflow.
 ---
 
 ## Automate Multi-Architecture Image Build for `openkf` and Push to Multiple Image Repositories

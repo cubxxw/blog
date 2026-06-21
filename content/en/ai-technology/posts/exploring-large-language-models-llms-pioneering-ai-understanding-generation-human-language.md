@@ -1,7 +1,6 @@
 ---
 title: 'Large Language Models: How LLMs Work'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2024-05-15T20:12:29+08:00
 draft: false
 showtoc: true

@@ -1,7 +1,6 @@
 ---
 title: 'Mem0 开源项目：AI记忆层的技术分析与实践'
 ShowRssButtonInSectionTermList: true
-cover.image: /images/mem0-cover.png
 date: 2025-05-09T21:33:46+08:00
 draft: false
 showtoc: true
@@ -15,7 +14,7 @@ keywords:
   - 个性化AI
   - 向量数据库
   - 知识图谱
-tags: ["AI", "机器学习", "开源项目"]
+tags: ["AI", "Open Source"]
 categories: ["Projects"]
 description: >
   本文深入分析Mem0开源项目的技术架构、核心功能和应用场景，探讨如何为AI系统构建智能记忆层，实现个性化交互体验。

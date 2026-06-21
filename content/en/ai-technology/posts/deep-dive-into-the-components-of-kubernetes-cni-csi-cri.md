@@ -11,12 +11,12 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Kubernetes", "CNI", "CSI", "CRI", "Cloud Native", "Microservices", "Service Mesh", "Go"]
 tags:
-  - 'Golang (GO Language)'
-  - 'Kubernetes'
-  - 'OpenIM'
-  - 'Cloud Native'
-  - 'Microservices'
-  - 'Service Mesh'
+  - Go
+  - Kubernetes
+  - OpenIM
+  - Cloud Native
+  - Microservices
+  - Service Mesh
 categories:
   - AI & Technology
 description: >

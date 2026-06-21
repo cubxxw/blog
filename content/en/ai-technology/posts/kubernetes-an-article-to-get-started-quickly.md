@@ -1,7 +1,6 @@
 ---
 title: 'Kubernetes an Article to Get Started Quickly'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2022-04-28T23:38:11+08:00
 draft: false
 showtoc: true
@@ -12,7 +11,7 @@ keywords: ["Kubernetes", "k8s", "Docker", Cloud Native", "CNCF"]
 tags:
   - Blog
   - kubernetes
-  - k8s
+  - Kubernetes
 categories:
   - AI & Technology
 description: >

@@ -2,7 +2,6 @@
 title: 'Prow Ecological Learning'
 description: Comprehensive guide to Prow CI/CD system for Kubernetes, covering architecture, components, plugins, and deployment.
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-08-12T16:41:15+08:00
 draft : false
 showtoc: true

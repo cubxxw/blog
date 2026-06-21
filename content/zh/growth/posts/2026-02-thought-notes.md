@@ -1,7 +1,6 @@
 ---
 title: '2026年2月思考笔记'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2026-02-28T23:59:59+08:00
 draft: false
 showtoc: true
@@ -14,8 +13,8 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 旅行记录
-  - 自我探索
+  - Travel
+  - Self-Discovery
 categories:
   - Growth
 description: >

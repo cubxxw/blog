@@ -11,7 +11,7 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["底层思维", "跨学科学习", "核心原理", "教育策略"]
 tags:
-  - 自我发现 (Self Discovery)
+  - Self-Discovery
   - Growth
   - 探索 (Exploration)
   - 个人效率 (Personal Productivity)

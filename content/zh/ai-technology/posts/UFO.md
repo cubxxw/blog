@@ -1,7 +1,6 @@
 ---
 title: '微软UFO项目深度解析：设计、实现、原理与架构'
 ShowRssButtonInSectionTermList: true
-cover.image: /images/ufo-cover.jpg
 date: 2025-05-09T21:30:15+08:00
 draft: false
 showtoc: true
@@ -15,7 +14,7 @@ keywords:
   - 桌面自动化
   - 多智能体系统
   - Windows自动化
-tags: ["AI", "自动化", "Windows 开发", "微软技术"]
+tags: ["AI", "Automation", "Windows 开发", "微软技术"]
 categories: ["Projects"]
 description: >
   本文深入解析微软UFO项目的核心设计、技术实现与系统架构，涵盖其多智能体协作、混合GUI/API操作、持续学习等创新特性，帮助开发者全面理解这一前沿的桌面自动化平台。

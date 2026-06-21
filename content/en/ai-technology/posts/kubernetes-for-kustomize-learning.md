@@ -1,7 +1,6 @@
 ---
 title: 'Kubernetes for Kustomize Learning'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-10-31T21:30:19+08:00
 draft: false
 showtoc: true

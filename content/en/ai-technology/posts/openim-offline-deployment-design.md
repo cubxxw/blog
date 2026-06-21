@@ -2,7 +2,6 @@
 title: 'Openim Offline Deployment Design'
 description: "OpenIM community offline deployment design scheme, and implementation scheme"
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-05-19T15:20:58+08:00
 draft: false
 cover:
@@ -13,7 +12,6 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - en
 categories:
   - AI & Technology
 ---

@@ -8,7 +8,7 @@ type: posts
 author: ["Xinwei Xiong"]
 keywords: ["拉萨", "西藏", "旅行见闻", "深度思考", "信仰", "纳木错", "哲蚌寺"]
 tags:
-  - 旅行
+  - Travel
   - 西藏
   - 拉萨
   - 深度思考

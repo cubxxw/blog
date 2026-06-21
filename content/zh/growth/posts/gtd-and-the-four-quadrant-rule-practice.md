@@ -1,7 +1,6 @@
 ---
 title: 'GTD与四象限法则实践'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2024-02-12T23:34:11+08:00
 draft: false
 showtoc: true

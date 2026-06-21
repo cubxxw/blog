@@ -1,7 +1,6 @@
 ---
 title: "Wandering & Growing: 2025-2026 Annual Review"
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2026-03-25T12:00:00+08:00
 draft: false
 showtoc: true

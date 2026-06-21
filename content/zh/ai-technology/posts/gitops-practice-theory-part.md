@@ -1,7 +1,6 @@
 ---
 title: 'GitOps 实践理论：Kubernetes 部署策略深入解析'
 ShowRssButtonInSectionTermList: true
-cover.image: /images/gitops-kubernetes-deployment.jpg
 date: 2023-11-25T18:00:31+08:00
 draft: false
 showtoc: true

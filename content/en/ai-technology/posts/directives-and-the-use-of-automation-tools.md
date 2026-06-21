@@ -1,7 +1,6 @@
 ---
 title: 'Go Directives & Automation Tools Deep Dive'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2024-01-25T15:22:36+08:00
 draft : false
 showtoc: true
@@ -11,10 +10,13 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - golang
-  - go
+  - Go
 categories:
   - AI & Technology
+description: >
+  A deep dive into Go directives and code-generation tooling. Learn how go generate and
+  related automation tools reduce boilerplate by producing repetitive, project-specific code
+  before compilation, saving time and cutting down on manual errors.
 ---
 
 # These go: instructions in the Go source code && go automation tools

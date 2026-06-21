@@ -6,7 +6,7 @@
   "canonical_tags": {
     "go": {
       "canonical": "Go",
-      "aliases": ["golang", "Golang (GO 语言)", "Golang (GO Language)", "Go 语言 (Golang)", "GO"],
+      "aliases": ["golang", "go", "Golang (GO 语言)", "Golang (GO Language)", "Go 语言 (Golang)", "GO"],
       "description": "Go 编程语言相关",
       "category": "编程语言"
     },
@@ -18,7 +18,7 @@
     },
     "ai": {
       "canonical": "AI",
-      "aliases": ["ai", "人工智能 (AI)", "人工智能 (Artificial Intelligence)", "AI 开源", "AI 技术"],
+      "aliases": ["ai", "人工智能 (AI)", "人工智能 (Artificial Intelligence)", "AI 开源", "AI开源", "AI 技术", "机器学习", "机器学习 (Machine Learning)"],
       "description": "人工智能相关",
       "category": "技术"
     },
@@ -57,6 +57,12 @@
       "aliases": ["开源", "开源 (Open Source)", "开源（Open Source）", "开源项目"],
       "description": "开源相关",
       "category": "文化"
+    },
+    "project-learning": {
+      "canonical": "Project Learning",
+      "aliases": ["项目学习", "项目实践"],
+      "description": "开源项目深度学习与实践",
+      "category": "技术"
     },
     "travel": {
       "canonical": "Travel",

@@ -1,7 +1,6 @@
 ---
 title: '探索大型语言模型（llm）：人工智能在理解与生成人类语言方面的先锋'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2024-05-15T20:12:29+08:00
 draft: false
 showtoc: true
@@ -10,25 +9,15 @@ type: posts
 author: ["熊鑫伟", "我"]
 keywords: ["LLM", "人工智能", "人类语言", "语言模型", "技术", "创新"]
 tags:
-  - "代码审查 (Code Review)"
-  - "人工智能 (AIGC)"
-  - "安全性 (Security)"
-  - "函数式编程 (Functional Programming)"
-  - "大数据 (Big Data)"
-  - "LLM"
-  - "人工智能与伦理 (AI & Ethics)"
-  - "机器学习与数据科学 (Machine Learning & Data Science)"
-  - "AI在医疗领域 (AI in Healthcare)"
-  - "AI在金融科技 (AI in Fintech)"
-  - "AI在艺术与创造性 (AI in Art & Creativity)"
-  - "机器人技术 (Robotics)"
-  - "自动化与智能系统 (Automation & Intelligent Systems)"
-  - "人机交互 (Human-Computer Interaction)"
-  - "AI在教育中的应用 (AI in Education)"
-  - "AI法律与合规 (AI Law & Compliance)"
-  - "深度学习 (Deep Learning)"
+  - LLM
+  - AI
+  - Deep Learning
+  - Machine Learning
 categories:
   - AI & Technology
+description: >
+  本文系统介绍大型语言模型（LLM）的核心概念、发展历程与涌现能力。从 GPT、PaLM 等数百亿参数模型出发，
+  解释它们如何在海量文本上训练以理解和生成人类语言，以及为何参数规模的提升会带来小模型不具备的复杂任务处理能力。
 ---
   - AI & Technology
 description: >

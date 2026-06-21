@@ -4,8 +4,8 @@ date: 2025-04-12T13:01:59+08:00
 draft: false
 description: AI开源项目学习笔记
 tags:
-  - AI开源
-  - 项目学习
+  - AI
+  - Project Learning
 categories:
   - Projects
 author: ["Xinwei Xiong", "Me"]

@@ -3,7 +3,7 @@ title: "LangGraph 深度解析：设计、架构、原理与应用"
 date: 2025-04-19T15:19:20+08:00
 draft: false
 tocopen: true
-tags: ["AI开源", "项目学习"]
+tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >

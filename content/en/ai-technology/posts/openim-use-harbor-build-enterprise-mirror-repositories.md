@@ -1,7 +1,6 @@
 ---
 title: 'OpenIM Use Harbor Build Enterprise Mirror Repositories'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-10-25T10:45:38+08:00
 draft : false
 showtoc: true

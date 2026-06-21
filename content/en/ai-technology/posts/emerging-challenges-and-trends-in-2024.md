@@ -1,7 +1,6 @@
 ---
 title: 'Emerging Challenges and Trends in 2024'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2024-01-14T22:52:24+08:00
 draft: false
 showtoc: true

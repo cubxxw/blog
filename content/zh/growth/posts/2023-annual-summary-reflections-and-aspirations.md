@@ -12,7 +12,7 @@ tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ['2023', '年度总结', '个人成长', '职业发展', '开源贡献', '学习', '户外探险', '战略职业规划']
-tags: ['博客', '个人发展', '职业', '反思', '开源项目', '读书']
+tags: ["Blog", "Personal Growth", "职业", "反思", "Open Source", "读书"]
 categories:
   - Growth
 description: '我的2023年旅程：个人和职业成长的反思，面临的挑战，以及未来的志向。深入了解我在开源贡献、阅读、学习、户外探险和战略职业规划方面的经历和学到的教训。'

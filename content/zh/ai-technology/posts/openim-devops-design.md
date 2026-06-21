@@ -2,7 +2,6 @@
 title: '我如何设计 DevOps 下的 OpenIM 标准开发流 & 敏捷体系 & 精益模式'
 description: '探索 OpenIM 在 DevOps 环境中的标准设计方法，本文深入讨论了如何利用 DevOps 原则优化 OpenIM 的部署和维护，提升项目的自动化和效率。'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-09-02T16:13:37+08:00
 draft: false
 showtoc: true

@@ -1,7 +1,6 @@
 ---
 title: 'AI元年: 2024年的新兴挑战与趋势'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2024-01-14T22:52:24+08:00
 draft: false
 showtoc: true

@@ -4,10 +4,13 @@ date: 2023-09-12T14:26:20+08:00
 draft: false
 tags:
    - Blog
-   - en
-   - hugo
+   - Hugo
 categories:
   - AI & Technology
+description: >
+  The story of rebuilding my blog from scratch on Hugo after losing the previous
+  dynamic, Docker-hosted version. Why I moved to a static site generator for long-term
+  durability, and how I chose Hugo as the foundation for a blog meant to last for decades.
 ---
 
 # Rebuild my blog (static)

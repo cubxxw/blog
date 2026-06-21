@@ -3,7 +3,7 @@ title: "Google NotebookLM 的 RAG 深度调研思考"
 date: 2025-04-21T22:59:57+08:00
 draft: false
 tocopen: true
-tags: ["AI开源", "项目学习"]
+tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >

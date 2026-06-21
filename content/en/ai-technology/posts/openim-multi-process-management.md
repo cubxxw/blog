@@ -2,7 +2,6 @@
 title: 'Openim Multi Process Management'
 description: Comprehensive guide to OpenIM process management strategies, from nohup and systemd to supervisord and Kubernetes health checks.
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-09-16T15:55:38+08:00
 draft : false
 showtoc: true
@@ -11,7 +10,6 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - en
 categories:
   - AI & Technology
 ---

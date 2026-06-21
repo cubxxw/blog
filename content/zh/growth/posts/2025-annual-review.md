@@ -1,7 +1,6 @@
 ---
 title: '我在游荡，但我没有迷路 — 2025-2026 年度总结'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2026-03-25T12:00:00+08:00
 draft: false
 showtoc: true

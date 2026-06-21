@@ -2,7 +2,6 @@
 title: 'Read Openim Project Sealos Openim Source Code'
 description: A deep dive into reading and understanding the OpenIM and Sealos source code architecture and design patterns.
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-05-11T16:33:09+08:00
 draft : false
 showtoc: true

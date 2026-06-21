@@ -1,7 +1,6 @@
 ---
 title: '2025年9月思考笔记'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2025-09-30T23:59:59+08:00
 draft: false
 showtoc: true

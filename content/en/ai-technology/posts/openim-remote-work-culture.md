@@ -2,7 +2,6 @@
 title: 'Openim Remote Work Culture'
 description: Explore OpenIM remote work culture, principles, and practices including documentation-driven development, effective meetings, and team collaboration.
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-07-13T16:09:30+08:00
 draft: false
 cover:
@@ -13,7 +12,6 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - en
 categories:
   - AI & Technology
 ---

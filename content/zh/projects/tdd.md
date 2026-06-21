@@ -3,7 +3,7 @@ title: "AI 时代初创企业的测试驱动开发（TDD）实践方案"
 date: 2025-04-21T15:52:34+08:00
 draft: false
 tocopen: true
-tags: ["AI开源", "项目学习"]
+tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >

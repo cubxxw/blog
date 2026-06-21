@@ -9,11 +9,11 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ["Kubernetes", "CNI", "CSI", "CRI", "云原生", "微服务", "服务网格", "Go", "学习路径", "源码"]
 tags:
-  - 'Golang (GO语言)'
-  - 'Kubernetes'
-  - '云原生 (Cloud Native)'
-  - '微服务 (Microservices)'
-  - '服务网格 (Service Mesh)'
+  - Golang (GO语言)
+  - Kubernetes
+  - Cloud Native
+  - Microservices
+  - 服务网格 (Service Mesh)
 categories:
   - AI & Technology
 description: >

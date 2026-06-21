@@ -5,7 +5,6 @@ author: ["Xinwei Xiong", "Me"]
 description: "This is my first blog, about my introduction"
 tags:
   - Blog
-  - en
 categories:
   - Growth
 aliases:

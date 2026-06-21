@@ -1,7 +1,6 @@
 ---
 title: '通过配置文件简化 Kubernetes 部署的参数端口配置'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2023-09-18T22:49:14+08:00
 draft: false
 showtoc: true

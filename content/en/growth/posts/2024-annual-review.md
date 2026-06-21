@@ -1,7 +1,6 @@
 ---
 title: '2024 Annual Review'
 ShowRssButtonInSectionTermList: true
-cover.image:
 date: 2025-02-12T16:18:31+08:00
 draft : false
 showtoc: true
