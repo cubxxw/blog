@@ -1,0 +1,158 @@
+/* ════════════════════════════════════════════════════════════════
+   zz-dark-reading.css — Dark-mode reading-comfort refinements
+   ----------------------------------------------------------------
+   Named "zz-" so it concatenates LAST in PaperMod's extended bundle
+   (resources.Match "css/extended/*.css" sorts lexicographically), which
+   lets equal-specificity dark rules here win over earlier files.
+
+   EVERY rule below is gated on `body.dark` / `[data-theme="dark"]`.
+   Light mode is never selected and therefore provably unchanged.
+   Goal: calmer, higher-legibility long-form reading in dark mode.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Text selection ───────────────────────────────────────────
+   No ::selection rule existed anywhere, so dark mode fell back to the
+   browser default (a washed blue that can swallow text). Give it a
+   quiet, theme-tinted highlight that keeps selected text crisp. */
+body.dark ::selection,
+[data-theme="dark"] ::selection {
+  background: rgba(125, 211, 252, 0.28); /* EN accent tint */
+  color: #ffffff;
+}
+html:lang(zh) body.dark ::selection,
+html:lang(zh) [data-theme="dark"] ::selection {
+  background: rgba(255, 90, 90, 0.30); /* ZH accent tint */
+  color: #fff7f5;
+}
+
+/* ── 2. Long-form table legibility ──────────────────────────────
+   Tables carried only hairline bottom borders, so dense comparison
+   grids were hard to track row-to-row on the dark surface. Add a quiet
+   header band + zebra striping (faint white overlays) so the eye stays
+   on the row. Excludes Chroma line-number tables (.lntable /
+   .highlighttable) so code blocks are untouched. Dark mode only. */
+body.dark .post-content table:not(.lntable):not(.highlighttable) thead th,
+[data-theme="dark"] .post-content table:not(.lntable):not(.highlighttable) thead th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-ink, #e2e3e1);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-rule, rgba(226, 227, 225, 0.18));
+}
+body.dark .post-content table:not(.lntable):not(.highlighttable) tbody tr:nth-child(even) td,
+[data-theme="dark"] .post-content table:not(.lntable):not(.highlighttable) tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.025);
+}
+body.dark .post-content table:not(.lntable):not(.highlighttable) tbody tr:hover td,
+[data-theme="dark"] .post-content table:not(.lntable):not(.highlighttable) tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── 3. Article images on a dark page ───────────────────────────
+   White-background diagrams and screenshots floated as glaring white
+   rectangles. Give them a soft border so the edge is defined and trim
+   brightness a touch to contain the glare; full brightness returns on
+   hover so true colours stay one intentional gesture away. Scoped to
+   in-article images in dark mode. */
+body.dark .post-content img,
+[data-theme="dark"] .post-content img {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  filter: brightness(0.94) contrast(1.02);
+  transition: filter 200ms ease;
+}
+body.dark .post-content img:hover,
+[data-theme="dark"] .post-content img:hover {
+  filter: brightness(1) contrast(1);
+}
+
+/* ── 4. In-prose link affordance ────────────────────────────────
+   Dark prose links shared the body ink colour and were distinguished
+   only by a 0.28-alpha underline that was easy to miss. Strengthen the
+   resting underline so links are discoverable without shouting, and let
+   hover resolve to the language accent for a clear, vivid cue. */
+body.dark .post-content a:not(.footnote-ref):not(.footnote-backref),
+[data-theme="dark"] .post-content a:not(.footnote-ref):not(.footnote-backref) {
+  text-decoration-color: rgba(226, 227, 225, 0.45);
+}
+body.dark .post-content a:not(.footnote-ref):not(.footnote-backref):hover,
+[data-theme="dark"] .post-content a:not(.footnote-ref):not(.footnote-backref):hover {
+  text-decoration-color: var(--color-accent, #7dd3fc);
+}
+
+/* ── 5. Page scrollbar ───────────────────────────────────────────
+   No global scrollbar styling existed, so dark pages showed the OS
+   default light track/thumb — a bright bar glued to the right edge of
+   an otherwise dark surface (very visible on Windows/Linux Chrome and
+   on hover-revealed macOS bars). Tint the *page* scrollbar to the dark
+   surface. Selectors attach the pseudo-element directly to body.dark
+   (no descendant space) so component scrollbars — code blocks, TOC,
+   chat panels — keep their own carefully-tuned styling. */
+body.dark::-webkit-scrollbar,
+[data-theme="dark"]::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+body.dark::-webkit-scrollbar-track,
+[data-theme="dark"]::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+body.dark::-webkit-scrollbar-thumb,
+[data-theme="dark"]::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+body.dark::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+  background-clip: content-box;
+}
+/* Firefox — set on the scroll root only, not descendants, to avoid
+   recolouring component scrollbars that declare their own. */
+html:has(body.dark),
+html[data-theme="dark"] {
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-width: thin;
+}
+
+/* ── 6. Highlighted text <mark> ──────────────────────────────────
+   <mark> had no styling anywhere, so highlighted prose fell back to the
+   browser default: a fluorescent yellow block with near-black text that
+   glares against the dark page and breaks reading flow. Replace it (dark
+   only) with a soft accent-tinted wash that keeps the highlighted words
+   in the page ink colour. Light mode keeps its default — untouched. */
+body.dark .post-content mark,
+[data-theme="dark"] .post-content mark {
+  background: rgba(125, 211, 252, 0.18); /* EN accent wash */
+  color: var(--color-ink, #e2e3e1);
+  padding: 0.05em 0.28em;
+  border-radius: 0.2rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+html:lang(zh) body.dark .post-content mark,
+html:lang(zh) [data-theme="dark"] .post-content mark {
+  background: rgba(255, 90, 90, 0.20); /* ZH accent wash */
+  color: var(--color-ink, #f5f3ee);
+}
+
+/* ── 7. Footnotes section ────────────────────────────────────────
+   The footnote definitions at the foot of an article had no dark
+   treatment, so they sat in full-strength body ink with the default
+   light <hr> separator — louder than footnotes should be and a hard
+   visual edge before them. Quiet the block to a muted ink and give it a
+   soft rule, so references stay reachable without competing with the
+   main prose. Dark mode only. */
+body.dark .post-content .footnotes,
+[data-theme="dark"] .post-content .footnotes {
+  color: var(--color-ink-muted, #b4bcb2);
+  font-size: 0.92em;
+}
+body.dark .post-content .footnotes hr,
+body.dark .post-content hr.footnotes-sep,
+[data-theme="dark"] .post-content .footnotes hr,
+[data-theme="dark"] .post-content hr.footnotes-sep {
+  border: none;
+  border-top: 1px solid var(--color-rule, rgba(226, 227, 225, 0.12));
+  background: none !important;
+}

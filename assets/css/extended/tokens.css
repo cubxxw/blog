@@ -95,6 +95,18 @@ body.dark:lang(en),
   --color-accent-soft:  rgba(125, 211, 252, 0.10);
   --color-rule:         rgba(226, 227, 225, 0.10);
 
+  /* Re-bind the semantic aliases inside the dark scope. They are first
+     defined on :root as var(--color-ink) etc., but the dark palette
+     overrides live here on body.dark — a descendant of :root — so the
+     :root-level aliases would otherwise resolve against the LIGHT ink and
+     leak light colours into dark mode (e.g. dark-on-dark TL;DR text).
+     Re-declaring them here makes var(--color-ink) resolve to the dark value. */
+  --color-text:         var(--color-ink);
+  --color-text-muted:   var(--color-ink-muted);
+  --color-text-heading: var(--color-ink);
+  --color-border:       var(--color-rule);
+  --color-bg:           var(--color-paper);
+
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
@@ -109,6 +121,13 @@ html:lang(zh) [data-theme="dark"] {
   --color-accent:       #ff3b3b;
   --color-accent-soft:  #2e1a19;
   --color-rule:         rgba(245, 243, 238, 0.10);
+
+  /* See note in the dark/English block: re-bind aliases to the dark palette. */
+  --color-text:         var(--color-ink);
+  --color-text-muted:   var(--color-ink-muted);
+  --color-text-heading: var(--color-ink);
+  --color-border:       var(--color-rule);
+  --color-bg:           var(--color-paper);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
