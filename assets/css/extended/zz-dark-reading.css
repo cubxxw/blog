@@ -156,3 +156,69 @@ body.dark .post-content hr.footnotes-sep,
   border-top: 1px solid var(--color-rule, rgba(226, 227, 225, 0.12));
   background: none !important;
 }
+
+/* ── 8. Collapsible <details> blocks ─────────────────────────────
+   In-article <details>/<summary> blocks (used in several guides) had
+   NO styling anywhere, so dark mode fell back to the browser default:
+   a borderless block with a bare disclosure triangle and a summary that
+   was visually indistinguishable from surrounding prose — the affordance
+   read as accidental rather than interactive. Give them a quiet recessed
+   surface, a soft rule, and an accent-tinted marker so the toggle is
+   discoverable and the revealed content sits in its own contained panel.
+   Token-driven, so the ZH palette is picked up automatically. Gated on
+   body.dark — light mode keeps the browser default, provably unchanged. */
+body.dark .post-content details,
+[data-theme="dark"] .post-content details {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--color-rule, rgba(226, 227, 225, 0.12));
+  border-radius: var(--radius-md, 8px);
+  padding: 0.4rem 1rem;
+  margin: 1.25rem 0;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+body.dark .post-content details[open],
+[data-theme="dark"] .post-content details[open] {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--color-rule, rgba(226, 227, 225, 0.18));
+}
+body.dark .post-content details > summary,
+[data-theme="dark"] .post-content details > summary {
+  cursor: pointer;
+  color: var(--color-ink, #e2e3e1);
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-weight: 600;
+  padding: 0.35rem 0;
+  list-style: none;
+  outline: none;
+  transition: color 150ms ease;
+}
+body.dark .post-content details > summary:hover,
+body.dark .post-content details[open] > summary,
+[data-theme="dark"] .post-content details:hover > summary,
+[data-theme="dark"] .post-content details[open] > summary {
+  color: var(--color-accent, #7dd3fc);
+}
+/* Replace the default triangle with a quiet accent-tinted marker that
+   rotates open, so the toggle state is legible on the dark surface. */
+body.dark .post-content details > summary::-webkit-details-marker,
+[data-theme="dark"] .post-content details > summary::-webkit-details-marker {
+  display: none;
+}
+body.dark .post-content details > summary::before,
+[data-theme="dark"] .post-content details > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.55em;
+  color: var(--color-accent, #7dd3fc);
+  transition: transform 180ms ease;
+}
+body.dark .post-content details[open] > summary::before,
+[data-theme="dark"] .post-content details[open] > summary::before {
+  transform: rotate(90deg);
+}
+/* Soft separating rule between the summary and the revealed body. */
+body.dark .post-content details[open] > summary,
+[data-theme="dark"] .post-content details[open] > summary {
+  border-bottom: 1px solid var(--color-rule, rgba(226, 227, 225, 0.10));
+  margin-bottom: 0.6rem;
+}
