@@ -135,6 +135,30 @@
       "aliases": ["月度笔记", "月度总结", "monthly notes"],
       "description": "月度思考笔记",
       "category": "生活"
+    },
+    "llm": {
+      "canonical": "LLM",
+      "aliases": ["llm", "大语言模型", "大模型", "Large Language Model", "大语言模型 (LLM)"],
+      "description": "大语言模型相关",
+      "category": "技术"
+    },
+    "agent": {
+      "canonical": "Agent",
+      "aliases": ["agent", "智能体", "AI Agent", "智能体 (Agent)", "agents"],
+      "description": "AI 智能体相关",
+      "category": "技术"
+    },
+    "context-engineering": {
+      "canonical": "Context Engineering",
+      "aliases": ["context engineering", "上下文工程", "上下文工程 (Context Engineering)"],
+      "description": "上下文工程：为 LLM 装配、检索、压缩、淘汰上下文的工程实践",
+      "category": "技术"
+    },
+    "mcp": {
+      "canonical": "MCP",
+      "aliases": ["mcp", "Model Context Protocol", "模型上下文协议"],
+      "description": "Model Context Protocol 模型上下文协议",
+      "category": "技术"
     }
   },
 
