@@ -251,6 +251,79 @@
   }
 
   /* ---------------------------------------------------------
+   * 4. Tap / click ripple (mobile + desktop)
+   *    A material-style ripple that originates at the pointer
+   *    for buttons, tags, pagination and CTAs. Pure feedback —
+   *    it never blocks the click and is delegated so it covers
+   *    dynamically-added elements too.
+   * ------------------------------------------------------- */
+  var RIPPLE_SELECTOR = [
+    'button',
+    '.button',
+    'input[type="submit"]',
+    '.post-tag',
+    '.post-category',
+    '.top-link',
+    '.paginav a',
+    '.share-button',
+    '.hp-subscribe-btn',
+    '.share-buttons a'
+  ].join(',');
+
+  function spawnRipple(host, clientX, clientY) {
+    // Pill/button hosts need a clip + stacking context for the ripple.
+    if (!host.classList.contains('has-ripple')) {
+      host.classList.add('has-ripple');
+    }
+    // `overflow:hidden` only clips block/inline-block/flex boxes. Skip
+    // pure-inline hosts so the ink can never bleed past a rounded edge.
+    if (window.getComputedStyle(host).display === 'inline') return;
+    var rect = host.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    // Center the ripple on the pointer; fall back to element center
+    // for keyboard / synthetic clicks where coordinates are 0.
+    var x = clientX ? clientX - rect.left : rect.width / 2;
+    var y = clientY ? clientY - rect.top : rect.height / 2;
+    // Diameter large enough to always cover the element from the tap point.
+    var dx = Math.max(x, rect.width - x);
+    var dy = Math.max(y, rect.height - y);
+    var diameter = 2 * Math.sqrt(dx * dx + dy * dy);
+
+    var ink = document.createElement('span');
+    ink.className = 'ripple-ink';
+    ink.style.width = ink.style.height = diameter + 'px';
+    ink.style.left = x - diameter / 2 + 'px';
+    ink.style.top = y - diameter / 2 + 'px';
+    host.appendChild(ink);
+
+    var done = false;
+    function cleanup() {
+      if (done) return;
+      done = true;
+      if (ink.parentNode) ink.parentNode.removeChild(ink);
+    }
+    ink.addEventListener('animationend', cleanup);
+    // Safety net in case the animation event never fires.
+    setTimeout(cleanup, 700);
+  }
+
+  function initRipple() {
+    document.addEventListener(
+      'pointerdown',
+      function (e) {
+        // Primary button / touch / pen only — ignore right & middle clicks.
+        if (e.button != null && e.button !== 0) return;
+        var host = e.target.closest && e.target.closest(RIPPLE_SELECTOR);
+        if (!host) return;
+        // Skip disabled controls.
+        if (host.disabled || host.getAttribute('aria-disabled') === 'true') return;
+        spawnRipple(host, e.clientX, e.clientY);
+      },
+      { passive: true }
+    );
+  }
+
+  /* ---------------------------------------------------------
    * Boot
    * ------------------------------------------------------- */
   function init() {
@@ -265,6 +338,7 @@
     initReveal();
     initImageFade();
     initSwipeNav();
+    initRipple();
   }
 
   if (document.readyState === 'loading') {

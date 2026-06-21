@@ -2764,11 +2764,32 @@ html {
     z-index: 1000;
     transition: width 0.1s ease-out;
     box-shadow: 0 0 10px rgba(8, 145, 178, 0.5);
+    /* Soft, rounded leading edge so the bar reads as a moving cue. */
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* A brighter glow concentrated at the leading tip, so the eye tracks
+   the progress edge rather than the whole bar. Hidden at 0% width. */
+.reading-progress-bar::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    transform: translate(50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.85) 0%, rgba(45, 212, 191, 0) 70%);
+    pointer-events: none;
 }
 
 .dark .reading-progress-bar {
     background: linear-gradient(90deg, #14b8a6, #2dd4bf, #5eead4);
     box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
+}
+.dark .reading-progress-bar::after {
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.9) 0%, rgba(94, 234, 212, 0) 70%);
 }
 
 @media (max-width: 1023px) {
