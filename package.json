@@ -8,6 +8,7 @@
     "tags:check": "node scripts/normalize-tags.mjs --check",
     "tags:fix": "node scripts/normalize-tags.mjs --write",
     "geo:audit": "node scripts/geo-audit.mjs",
+    "mcp:server": "node scripts/mcp-server.mjs",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
