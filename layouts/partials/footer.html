@@ -88,10 +88,10 @@
             progressBar.style.width = progress + '%';
         }
 
-        // Throttle scroll events for better performance
+        // Throttle scroll events for better performance.
+        // Runs on mobile too — the bar is a key scroll cue on phones.
         let ticking = false;
         window.addEventListener('scroll', function() {
-            if (window.innerWidth < 1024) return;
             if (!ticking) {
                 window.requestAnimationFrame(function() {
                     updateProgress();
@@ -99,15 +99,21 @@
                 });
                 ticking = true;
             }
-        });
+        }, { passive: true });
+
+        // Keep it accurate when layout height changes (resize / orientation).
+        window.addEventListener('resize', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateProgress();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
 
         // Initial update
         updateProgress();
-
-        // Refresh when viewport crosses 1024px (mobile→desktop resize)
-        window.matchMedia('(min-width: 1024px)').addEventListener('change', function(e) {
-            if (e.matches) updateProgress();
-        });
     })();
 </script>
 {{- end -}}

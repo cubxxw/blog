@@ -139,22 +139,42 @@
     }
 
     var hint = null;
-    function showHint(dir) {
+    var hintDir = null;
+    function ensureHint() {
       if (!hint) {
         hint = document.createElement('div');
         hint.className = 'swipe-hint';
         document.body.appendChild(hint);
       }
-      hint.classList.remove('left', 'right');
-      hint.classList.add(dir);
-      hint.innerHTML =
-        dir === 'left'
-          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
-          : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+      return hint;
+    }
+    // progress: 0..1 of the way to triggering. The hint slides in from the
+    // edge and "arms" (filled state) once the threshold is reached so the
+    // gesture has a clear, tactile commit point.
+    function showHint(dir, progress) {
+      ensureHint();
+      if (dir !== hintDir) {
+        hintDir = dir;
+        hint.classList.remove('left', 'right');
+        hint.classList.add(dir);
+        hint.innerHTML =
+          dir === 'left'
+            ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
+            : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+      }
+      var p = Math.max(0, Math.min(1, progress));
+      // Slide the puck in from its edge as the finger travels.
+      var travel = 6 + p * 10; // px it eases inward
+      hint.style.setProperty('--swipe-shift', (dir === 'left' ? -travel : travel) + 'px');
+      hint.style.setProperty('--swipe-scale', (0.82 + p * 0.18).toFixed(3));
       hint.classList.add('is-active');
+      hint.classList.toggle('is-armed', p >= 1);
     }
     function hideHint() {
-      if (hint) hint.classList.remove('is-active');
+      if (hint) {
+        hint.classList.remove('is-active', 'is-armed');
+        hintDir = null;
+      }
     }
 
     document.addEventListener(
@@ -189,9 +209,12 @@
           hideHint();
           return;
         }
-        if (Math.abs(dx) > 40) {
-          if (dx < 0 && nextLink) showHint('left');
-          else if (dx > 0 && prevLink) showHint('right');
+        if (Math.abs(dx) > 24) {
+          var progress = Math.abs(dx) / THRESH;
+          if (dx < 0 && nextLink) showHint('left', progress);
+          else if (dx > 0 && prevLink) showHint('right', progress);
+        } else {
+          hideHint();
         }
       },
       { passive: true }

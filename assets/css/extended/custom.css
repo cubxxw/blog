@@ -2772,8 +2772,13 @@ html {
 }
 
 @media (max-width: 1023px) {
+    /* Keep the reading-progress bar on mobile: it is the clearest
+       scroll-feedback cue on a phone. Pin it to the top, just under
+       the sticky header, and make it a touch thinner. */
     .reading-progress-bar {
-        display: none;
+        top: 0;
+        bottom: auto;
+        height: 2.5px;
     }
 
     .top-link {
