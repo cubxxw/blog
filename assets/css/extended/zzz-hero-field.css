@@ -1,0 +1,50 @@
+/* ============================================================
+   zzz-hero-field.css — homepage hero ambient 3D field placement
+   ------------------------------------------------------------
+   Turns the hero into a positioning context and parks the WebGL
+   canvas behind both grid columns. The field is purely decorative
+   (aria-hidden in markup) and pointer-transparent so it never
+   intercepts clicks on the hero text or social icons.
+
+   When 3D doesn't run (phones / reduced-motion / no-WebGL) the
+   host stays an empty, transparent box — the hero looks exactly as
+   it did before, no layout shift.
+
+   zzz- prefix keeps it late in the cascade, consistent with the
+   other motion files (zzz-cover-motion.css).
+   ============================================================ */
+
+.hp-hero {
+  position: relative;
+}
+
+.hp-hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;          /* behind the hero content… */
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* …and lift the actual hero columns above the field. The hero is a
+   two-column grid; its direct children are the text block and the
+   AI-orbit block. Raise everything except the field. */
+.hp-hero > *:not(.hp-hero-field) {
+  position: relative;
+  z-index: 1;
+}
+
+/* The canvas hero-field.js injects fills its host; declared here too
+   so even a frame before JS styles it, it never overflows. */
+.hp-hero-field canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Belt-and-braces: JS already declines to mount, but if anything
+     ever did, keep it invisible for reduced-motion visitors. */
+  .hp-hero-field { display: none; }
+}

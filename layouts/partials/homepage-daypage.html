@@ -13,6 +13,9 @@
 
     {{/* ── Hero ─────────────────────────────────────────── */}}
     <section class="hp-hero" id="hp-about">
+      {{/* Ambient 3D field — sits behind both columns, purely decorative.
+           Stays empty (transparent) on phones / reduced-motion / no-WebGL. */}}
+      <div class="hp-hero-field" id="hp-hero-field" aria-hidden="true"></div>
       <div>
         <div class="hp-hero-meta-row">
           <span class="hp-status-pill" id="hp-status-pill">
@@ -861,4 +864,36 @@
     return false;
   };
 })();
+</script>
+
+{{/* ── Hero ambient 3D field ─────────────────────────────────────
+     three.js + the hero-field shader, both fingerprinted and locally
+     hosted (same pattern as knowledge-galaxy). The module self-gates:
+     on phones / reduced-motion / no-WebGL it mounts nothing, so this
+     block adds zero runtime cost there beyond a tiny deferred import. */}}
+{{- $three := resources.Get "js/vendor/three.module.min.js" | resources.Fingerprint "sha384" -}}
+{{- /* Bundle hero-field + its ./webgl-guard import into one file via esbuild,
+       keeping the bare `three` import external so it resolves via the importmap
+       below. This avoids a second network request 404'ing on the relative
+       guard import. */ -}}
+{{- $heroField := resources.Get "js/three/hero-field.js"
+      | js.Build (dict "format" "esm" "minify" hugo.IsProduction "externals" (slice "three")) -}}
+{{- if not site.Params.assets.disableFingerprinting -}}
+  {{- $heroField = $heroField | fingerprint -}}
+{{- end -}}
+<script type="importmap">
+{
+  "imports": {
+    "three": "{{ $three.RelPermalink }}"
+  }
+}
+</script>
+<script type="module">
+  import { mountHeroField } from "{{ $heroField.RelPermalink }}";
+  const host = document.getElementById('hp-hero-field');
+  if (host) {
+    // --accent lives on .homepage-root and inherits down to the host, so read
+    // it off the host itself (light/dark flips it automatically via CSS).
+    mountHeroField(host, host);
+  }
 </script>
