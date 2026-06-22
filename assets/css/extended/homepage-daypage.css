@@ -31,6 +31,11 @@
   --radius-card:    12px;
   --radius-small:   8px;
   --radius-pill:    999px;
+  /* Bear AI orb palette — amber/gold glow over warm brown. Read by
+     bear-orb.js into the shader so the 3D core stays in the warm key
+     instead of the usual tech-blue. */
+  --orb-base:       #3A3128;
+  --orb-glow:       #C9A24B;
 }
 
 body.dark .homepage-root {
@@ -49,6 +54,10 @@ body.dark .homepage-root {
   --accent-border:  #3D2A18;
   --border-subtle:  #2D2925;
   --border-default: #3D3830;
+  /* Dark mode: lift the orb glow toward warm gold so it reads as light
+     against the dark surface; base stays a deep warm brown. */
+  --orb-base:       #2A2118;
+  --orb-glow:       #E0B45A;
 }
 
 /* Dark mode: the amber accent (--accent) flips light (#D4863A), so the

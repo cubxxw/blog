@@ -86,7 +86,15 @@
         data-bubbles-en='{{ $bubblesENData | jsonify }}'
         data-bubbles-zh='{{ $bubblesZHData | jsonify }}'
         data-sys-en="{{ $d.ai.sysPromptEn }}"
-        data-sys-zh="{{ $d.ai.sysPromptZh }}"></div>
+        data-sys-zh="{{ $d.ai.sysPromptZh }}">
+        {{/* Persistent 3D stage: the Three.js canvas lives here and is NEVER
+             torn down on orbit↔chat swaps. orbit and chat are DOM layers
+             rendered into #hp-bear-layer on top of it, so the same AI orb
+             flows continuously between states (recedes behind the chat
+             glass rather than disappearing). aria-hidden: purely ambient. */}}
+        <div id="hp-bear-stage" class="hp-bear-stage" aria-hidden="true"></div>
+        <div id="hp-bear-layer" class="hp-bear-layer"></div>
+      </div>
     </section>
 
     <div class="hp-divider-fade"></div>
@@ -403,9 +411,24 @@
 (function() {
   var root = document.getElementById('hp-bear-ai');
   if (!root) return;
+  // orbit/chat DOM render into #hp-bear-layer; the Three.js canvas in
+  // #hp-bear-stage underneath is left untouched across swaps.
+  var layer = document.getElementById('hp-bear-layer') || root;
   var isZh = root.dataset.lang === 'zh';
   var suggestions = JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn);
-  var chatOpen = false, messages = [], loading = false;
+  var chatOpen = false, messages = [], loading = false, streaming = false;
+
+  // Imperative handle to the 3D orb, registered by the module loader below
+  // once (and if) it mounts. Guarded everywhere so the widget degrades to
+  // the static/no-WebGL case without errors.
+  var bearOrb = null;
+  window.__hpBearOrbReady = function(handle) { bearOrb = handle; };
+  function orb(method) {
+    if (bearOrb && typeof bearOrb[method] === 'function') bearOrb[method]();
+  }
+  function orbSet(method, val) {
+    if (bearOrb && typeof bearOrb[method] === 'function') bearOrb[method](val);
+  }
 
   var CHIBI = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>' +
@@ -480,7 +503,10 @@
       return '<button class="hp-bear-bubble" style="left:calc(50% + '+x+'px);top:calc(50% + '+y+'px);animation-delay:'+(i*0.12)+'s" data-msg="'+esc(s.text)+'">'+s.text+'</button>';
     }).join('');
 
-    root.innerHTML =
+    // Orbit state: bring the orb forward (un-recess) — it's the hero again.
+    orbSet('setRecessed', false);
+    orbSet('setThinking', false);
+    layer.innerHTML =
       '<div class="hp-bear-orbit" id="hp-orbit">'+
         '<svg class="hp-bear-orbit-rings" viewBox="-200 -200 400 400" aria-hidden="true">'+
           '<defs><radialGradient id="bGlow" cx="50%" cy="50%" r="50%">'+
@@ -514,29 +540,19 @@
         '<div class="hp-bear-cta-line">'+(isZh?'点击头像 · 与 Bear 的数字分身对话':"Tap the orb · Talk to Bear's digital twin")+'</div>'+
       '</div>';
 
-    document.getElementById('hp-avatar-btn').addEventListener('click', function() { openChat(null); });
+    document.getElementById('hp-avatar-btn').addEventListener('click', function() { orb('pulse'); openChat(null); });
     var orbit = document.getElementById('hp-orbit');
     orbit.addEventListener('mouseenter', function() { this.classList.add('is-hover'); });
     orbit.addEventListener('mouseleave', function() { this.classList.remove('is-hover'); });
-    root.querySelectorAll('.hp-bear-bubble').forEach(function(btn) {
-      // Use pointerup, not click: the bubbles float (a slow translateY bob),
-      // so on a real mouse the pointerdown and pointerup can land a few px
-      // apart and the browser never fires `click` — the first tap felt dead.
-      // pointerup fires on release regardless, and the :hover rule freezes the
-      // float the instant the cursor arrives, so the target is steady by then.
-      // Guard against a drag/scroll gesture by requiring a matching pointerdown.
-      // Keep a keyboard handler for Enter/Space accessibility.
-      var armed = false;
-      btn.addEventListener('pointerdown', function() { armed = true; });
-      btn.addEventListener('pointerup', function() {
-        if (!armed) return;
-        armed = false;
-        openChat(this.dataset.msg);
-      });
-      btn.addEventListener('pointercancel', function() { armed = false; });
-      btn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChat(this.dataset.msg); }
-      });
+    layer.querySelectorAll('.hp-bear-bubble').forEach(function(btn) {
+      // Plain `click`, same as the avatar orb and the chat quick-buttons.
+      // (An earlier pointerdown/pointerup+armed scheme swallowed taps: any
+      // pointercancel — easily fired while the bubbles float / on a slight
+      // drag — reset the flag so pointerup bailed, and `click` was never
+      // listened for at all.) The bubbles are <button>s, so click already
+      // covers mouse, touch and keyboard (Enter/Space) for free. The
+      // :hover/:focus rule freezes the float so the target is steady.
+      btn.addEventListener('click', function() { orb('pulse'); openChat(this.dataset.msg); });
     });
   }
 
@@ -545,11 +561,14 @@
     if (messages.length === 0) {
       bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨。在路上，但有空聊。问点什么？':"Hey. On the road, but happy to talk. What's on your mind?")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
     } else {
-      bodyHtml = messages.map(function(m) {
+      bodyHtml = messages.map(function(m, idx) {
         var cls = m.role==='user' ? 'hp-bear-chat-msg-user' : 'hp-bear-chat-msg-bear';
         var t   = m.role==='user' ? (isZh?'已送达':'delivered') : (isZh?'刚刚':'just now');
         var content = m.role==='user' ? esc(m.content) : renderMsg(m.content);
-        return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble">'+content+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
+        // The last bear bubble, while a reply is still streaming, gets a
+        // blinking caret so partial tokens read as "being typed".
+        var streamCls = (streaming && m.role==='bear' && idx===messages.length-1) ? ' is-streaming' : '';
+        return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble'+streamCls+'">'+content+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
       }).join('');
     }
     if (loading) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
@@ -558,7 +577,12 @@
       return '<button class="hp-bear-chat-quick-btn"'+(loading?' disabled':'')+" data-msg='"+esc(s.text)+"'>"+s.text+'</button>';
     }).join('');
 
-    root.innerHTML =
+    // Chat state: sink the orb behind the glass panel (it keeps flowing
+    // through the backdrop blur), and mirror the loading flag onto the orb's
+    // "thinking" ramp so it visibly computes while a reply streams in.
+    orbSet('setRecessed', true);
+    orbSet('setThinking', loading);
+    layer.innerHTML =
       '<div class="hp-bear-chat">'+
         '<div class="hp-bear-chat-head">'+
           '<div class="hp-bear-chat-head-left">'+
@@ -599,8 +623,8 @@
     if (clr) clr.addEventListener('click', function() { messages=[]; renderChat(); });
     var cls = document.getElementById('hp-chat-close');
     if (cls) cls.addEventListener('click', function() { chatOpen=false; renderOrbit(); });
-    root.querySelectorAll('.hp-bear-chat-quick-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() { if(!loading) sendMsg(this.dataset.msg); });
+    layer.querySelectorAll('.hp-bear-chat-quick-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() { if(!loading) { orb('pulse'); sendMsg(this.dataset.msg); } });
     });
   }
 
@@ -615,6 +639,7 @@
     chatOpen = true;
     messages.push({ role:'user', content:text });
     loading = true;
+    orbSet('setThinking', true);   // orb visibly "computes" while we wait
     renderChat();
     var sys = isZh ? root.dataset.sysZh : root.dataset.sysEn;
     var history = messages.slice(0,-1).map(function(m){ return { role: m.role==='user'?'user':'assistant', content: m.content }; });
@@ -637,9 +662,10 @@
         var reply = '';
         messages.push({ role:'bear', content:'' });
         loading = false;
+        streaming = true;          // caret on the growing bubble; orb keeps thinking
         function pump() {
           return reader.read().then(function(chunk) {
-            if (chunk.done) { renderChat(); return; }
+            if (chunk.done) { streaming = false; orbSet('setThinking', false); renderChat(); return; }
             var lines = decoder.decode(chunk.value).split('\n');
             lines.forEach(function(line) {
               if (line.startsWith('data: ')) {
@@ -656,12 +682,12 @@
       }
       return res.json().then(function(d) {
         messages.push({ role:'bear', content: d.answer || d.content || (isZh?'嗯，走神了，再问一次？':"Lost my train of thought. Try again?") });
-        loading = false; renderChat();
+        loading = false; streaming = false; orbSet('setThinking', false); renderChat();
       });
     })
     .catch(function() {
       messages.push({ role:'bear', content: isZh?'网络有点问题，再试一次？':"Connection hiccup. Try again?" });
-      loading = false; renderChat();
+      loading = false; streaming = false; orbSet('setThinking', false); renderChat();
     });
   }
 
@@ -895,8 +921,13 @@
        guard import. */ -}}
 {{- $heroField := resources.Get "js/three/hero-field.js"
       | js.Build (dict "format" "esm" "minify" hugo.IsProduction "externals" (slice "three")) -}}
+{{- /* The Bear AI orb: shader sphere + neural particle field, same bundling
+       rules (three external → importmap, webgl-guard inlined). */ -}}
+{{- $bearOrb := resources.Get "js/three/bear-orb.js"
+      | js.Build (dict "format" "esm" "minify" hugo.IsProduction "externals" (slice "three")) -}}
 {{- if not site.Params.assets.disableFingerprinting -}}
   {{- $heroField = $heroField | fingerprint -}}
+  {{- $bearOrb = $bearOrb | fingerprint -}}
 {{- end -}}
 <script type="importmap">
 {
@@ -912,5 +943,21 @@
     // --accent lives on .homepage-root and inherits down to the host, so read
     // it off the host itself (light/dark flips it automatically via CSS).
     mountHeroField(host, host);
+  }
+
+  // Bear AI orb — mount onto the persistent stage layer. Self-gates (no
+  // WebGL / reduced-motion / phones → returns null and the CSS avatar puck
+  // shows through instead). When it does mount, register the handle so the
+  // widget IIFE can drive pulse / thinking / recess, and flag the wrap so
+  // CSS hides the fallback puck and lets the live orb show.
+  import { mountBearOrb } from "{{ $bearOrb.RelPermalink }}";
+  const stage = document.getElementById('hp-bear-stage');
+  const wrap  = document.getElementById('hp-bear-ai');
+  if (stage && wrap) {
+    const handle = mountBearOrb(stage, wrap);
+    if (handle) {
+      wrap.classList.add('has-orb');
+      if (typeof window.__hpBearOrbReady === 'function') window.__hpBearOrbReady(handle);
+    }
   }
 </script>
