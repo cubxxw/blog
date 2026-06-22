@@ -660,3 +660,91 @@ body.dark .editorial-tools-panel .rc-ai-share-btn:hover {
 .editorial-tools-panel .rc-ai-panel {
   flex: none;
 }
+
+/* ── Follow-up suggestion chips (post-reply, chat-agent feel) ── */
+.editorial-tools-panel .rc-ai-followups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(30, 35, 30, 0.1);
+  animation: rc-followup-in 260ms cubic-bezier(.22, 1, .36, 1);
+}
+
+body.dark .editorial-tools-panel .rc-ai-followups {
+  border-top-color: rgba(226, 227, 225, 0.12);
+}
+
+@keyframes rc-followup-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.editorial-tools-panel .rc-ai-followups__label {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.5;
+  width: 100%;
+  margin-bottom: 1px;
+}
+
+html:lang(zh) .editorial-tools-panel .rc-ai-followups__label {
+  text-transform: none;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+}
+
+.editorial-tools-panel .rc-ai-followup {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  line-height: 1.3;
+  font-weight: 400;
+  padding: 5px 11px;
+  border: 1px solid rgba(30, 35, 30, 0.12);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 160ms ease, border-color 160ms ease,
+              color 160ms ease, transform 120ms ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+html:lang(zh) .editorial-tools-panel .rc-ai-followup {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.editorial-tools-panel .rc-ai-followup:hover {
+  background: rgba(134, 33, 34, 0.06);
+  border-color: var(--color-accent, #862122);
+  color: var(--color-accent, #862122);
+}
+
+html:lang(en) .editorial-tools-panel .rc-ai-followup:hover {
+  background: rgba(46, 53, 46, 0.06);
+  border-color: var(--color-accent, #2e352e);
+  color: var(--color-accent, #2e352e);
+}
+
+.editorial-tools-panel .rc-ai-followup:active {
+  transform: scale(0.97);
+}
+
+body.dark .editorial-tools-panel .rc-ai-followup {
+  border-color: rgba(226, 227, 225, 0.14);
+  color: var(--color-ink, #e2e3e1);
+}
+
+body.dark .editorial-tools-panel .rc-ai-followup:hover {
+  background: rgba(226, 227, 225, 0.08);
+  border-color: rgba(226, 227, 225, 0.3);
+  color: var(--color-ink, #e2e3e1);
+}

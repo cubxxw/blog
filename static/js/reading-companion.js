@@ -9,7 +9,15 @@
       requestFailed: '请求失败',
       noAnswer: '（未收到回复）',
       timeout: '请求超时，请稍后重试。',
-      genericError: '请求失败，请稍后重试。'
+      genericError: '请求失败，请稍后重试。',
+      retry: '↺ 重试',
+      followupLabel: '继续追问',
+      followups: [
+        '能再具体展开一下吗？',
+        '有没有相反的观点或例外？',
+        '在现实里怎么应用这个？',
+        '能举一个具体例子吗？'
+      ]
     },
     en: {
       notFound: 'AI function not found. Make sure netlify dev is running.',
@@ -17,7 +25,15 @@
       requestFailed: 'Request failed',
       noAnswer: '(No answer received)',
       timeout: 'Request timed out. Please try again.',
-      genericError: 'Request failed. Please try again.'
+      genericError: 'Request failed. Please try again.',
+      retry: '↺ Retry',
+      followupLabel: 'Keep asking',
+      followups: [
+        'Can you expand on that?',
+        'Any counter-arguments or exceptions?',
+        'How do I apply this in practice?',
+        'Can you give a concrete example?'
+      ]
     }
   };
 
@@ -237,6 +253,41 @@
       return div;
     }
 
+    // Follow-up suggestion chips — rendered after each AI reply so the
+    // reader can keep the conversation going with one tap (chat-agent feel).
+    function renderFollowups() {
+      // Remove any previous follow-up row — only the latest reply offers them.
+      var stale = messagesEl.querySelector('.rc-ai-followups');
+      if (stale) stale.remove();
+
+      var suggestions = (messages[language] && messages[language].followups) || [];
+      if (!suggestions.length) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'rc-ai-followups';
+
+      var label = document.createElement('span');
+      label.className = 'rc-ai-followups__label';
+      label.textContent = t('followupLabel');
+      wrap.appendChild(label);
+
+      suggestions.forEach(function (text) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'rc-ai-followup';
+        btn.textContent = text;
+        btn.addEventListener('click', function () {
+          if (busy) return;
+          textarea.value = text;
+          send();
+        });
+        wrap.appendChild(btn);
+      });
+
+      messagesEl.appendChild(wrap);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
     function setLoading(on) {
       if (on) { loadingEl.removeAttribute('hidden'); }
       else    { loadingEl.setAttribute('hidden', ''); }
@@ -248,6 +299,10 @@
       var q = textarea.value.trim();
       if (!q || busy) return;
       lastQuestion = q;
+
+      // Clear any follow-up chips from the prior reply before the new turn.
+      var prevFollowups = messagesEl.querySelector('.rc-ai-followups');
+      if (prevFollowups) prevFollowups.remove();
 
       addMessage(q, 'user');
       textarea.value = '';
@@ -353,6 +408,7 @@
         history.push({ role: 'assistant', content: answer });
         if (history.length > 20) history = history.slice(-20);
         shareBtn.removeAttribute('hidden');
+        renderFollowups();
 
       } catch (err) {
         request.cancel();
@@ -362,7 +418,7 @@
           message.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
         var retryBtn = document.createElement('button');
         retryBtn.className = 'ai-retry-btn';
-        retryBtn.textContent = '↺ 重试';
+        retryBtn.textContent = t('retry');
         retryBtn.addEventListener('click', function() {
           if (lastQuestion) {
             textarea.value = lastQuestion;

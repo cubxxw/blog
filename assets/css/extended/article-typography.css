@@ -689,13 +689,15 @@ html:not(:lang(zh)) body.dark .post-content .highlight pre code.hljs { backgroun
 
 html:not(:lang(zh)) body.dark .post-content code .hljs-keyword,
 html:not(:lang(zh)) body.dark .post-content code .hljs-selector-tag,
+html:not(:lang(zh)) body.dark .post-content code .hljs-tag,
 html:not(:lang(zh)) body.dark .post-content code .hljs-literal,
 html:not(:lang(zh)) body.dark .post-content code .hljs-type { color: #ff7b72 !important; font-weight: 500; }
 
 html:not(:lang(zh)) body.dark .post-content code .hljs-string,
 html:not(:lang(zh)) body.dark .post-content code .hljs-regexp,
 html:not(:lang(zh)) body.dark .post-content code .hljs-char,
-html:not(:lang(zh)) body.dark .post-content code .hljs-attr { color: #a5d6ff !important; }
+html:not(:lang(zh)) body.dark .post-content code .hljs-attr,
+html:not(:lang(zh)) body.dark .post-content code .hljs-attribute { color: #a5d6ff !important; }
 
 html:not(:lang(zh)) body.dark .post-content code .hljs-comment,
 html:not(:lang(zh)) body.dark .post-content code .hljs-quote,
@@ -767,13 +769,15 @@ html:lang(zh) body.dark .post-content .highlight pre code.hljs { background: tra
 
 html:lang(zh) body.dark .post-content code .hljs-keyword,
 html:lang(zh) body.dark .post-content code .hljs-selector-tag,
+html:lang(zh) body.dark .post-content code .hljs-tag,
 html:lang(zh) body.dark .post-content code .hljs-literal,
 html:lang(zh) body.dark .post-content code .hljs-type { color: #ff6b6b !important; font-weight: 500; }
 
 html:lang(zh) body.dark .post-content code .hljs-string,
 html:lang(zh) body.dark .post-content code .hljs-regexp,
 html:lang(zh) body.dark .post-content code .hljs-char,
-html:lang(zh) body.dark .post-content code .hljs-attr { color: #a8d8a8 !important; }
+html:lang(zh) body.dark .post-content code .hljs-attr,
+html:lang(zh) body.dark .post-content code .hljs-attribute { color: #a8d8a8 !important; }
 
 html:lang(zh) body.dark .post-content code .hljs-comment,
 html:lang(zh) body.dark .post-content code .hljs-quote,
