@@ -237,7 +237,13 @@ html:lang(zh) .post-content blockquote::after {
 html:lang(zh) body.dark .post-content blockquote,
 body.dark .post-content blockquote {
   background: rgba(255, 255, 255, 0.03);
-  color: rgba(226, 227, 225, 0.82);
+  /* Derive the quote ink from the per-language dark --color-ink (cool
+     #e2e3e1 for EN, warm #f5f3ee for ZH) at 82% so the quoted passage stays
+     tonally matched to its body text instead of a fixed cool grey — the old
+     hard-coded value read slightly cold against the warm ZH dark paper.
+     color-mix is already used across the codebase; light mode is untouched
+     since this rule is gated on body.dark. */
+  color: color-mix(in srgb, var(--color-ink, #e2e3e1) 82%, transparent);
 }
 
 /* ─── Inline Code — pill style ───────────────────────────────── */
@@ -652,6 +658,31 @@ html:not(:lang(zh)) body.dark .post-content .highlight code .mf { color: #79c0ff
 html:not(:lang(zh)) body.dark .post-content .highlight code .o  { color: #e6edf3; }
 html:not(:lang(zh)) body.dark .post-content .highlight code .na { color: #79c0ff; }
 
+/* Additional Chroma tokens — without these, YAML keys (.nt), constants (.kc),
+   generic numbers (.m), interpolations (.si), variables (.nv) and class /
+   namespace / decorator names fall through to the flat default code ink,
+   which reads as washed-out, structureless code on the dark surface
+   (very common in this blog's YAML / shell / Python samples). Map each to the
+   matching GitHub-Dark hue already used above so highlighted code keeps its
+   structure in dark. Gated on body.dark — light mode is never selected. */
+html:not(:lang(zh)) body.dark .post-content .highlight code .kc,
+html:not(:lang(zh)) body.dark .post-content .highlight code .ow { color: #ff7b72; font-weight: 500; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .si,
+html:not(:lang(zh)) body.dark .post-content .highlight code .sa,
+html:not(:lang(zh)) body.dark .post-content .highlight code .sd,
+html:not(:lang(zh)) body.dark .post-content .highlight code .sc { color: #a5d6ff; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .m  { color: #79c0ff; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .nt { color: #7ee787; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .bp { color: #7ee787; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .nv,
+html:not(:lang(zh)) body.dark .post-content .highlight code .vm,
+html:not(:lang(zh)) body.dark .post-content .highlight code .fm { color: #ffa657; }
+html:not(:lang(zh)) body.dark .post-content .highlight code .nc,
+html:not(:lang(zh)) body.dark .post-content .highlight code .nn,
+html:not(:lang(zh)) body.dark .post-content .highlight code .nd,
+html:not(:lang(zh)) body.dark .post-content .highlight code .ne,
+html:not(:lang(zh)) body.dark .post-content .highlight code .no { color: #d2a8ff; }
+
 /* hljs — Dark / English */
 html:not(:lang(zh)) body.dark .post-content pre code.hljs,
 html:not(:lang(zh)) body.dark .post-content .highlight pre code.hljs { background: transparent !important; color: var(--code-ink) !important; }
@@ -708,6 +739,27 @@ html:lang(zh) body.dark .post-content .highlight code .mi,
 html:lang(zh) body.dark .post-content .highlight code .mf { color: #e5c07b; }
 html:lang(zh) body.dark .post-content .highlight code .o  { color: #f5f3ee; }
 html:lang(zh) body.dark .post-content .highlight code .na { color: #68d7e4; }
+
+/* Additional Chroma tokens (see note in the EN block above) mapped to the
+   warm dark palette so YAML keys, constants, variables and class names keep
+   their structure in Chinese dark mode. Gated on body.dark — light untouched. */
+html:lang(zh) body.dark .post-content .highlight code .kc,
+html:lang(zh) body.dark .post-content .highlight code .ow { color: #ff6b6b; font-weight: 500; }
+html:lang(zh) body.dark .post-content .highlight code .si,
+html:lang(zh) body.dark .post-content .highlight code .sa,
+html:lang(zh) body.dark .post-content .highlight code .sd,
+html:lang(zh) body.dark .post-content .highlight code .sc { color: #a8d8a8; }
+html:lang(zh) body.dark .post-content .highlight code .m  { color: #e5c07b; }
+html:lang(zh) body.dark .post-content .highlight code .nt { color: #68d7e4; }
+html:lang(zh) body.dark .post-content .highlight code .bp { color: #68d7e4; }
+html:lang(zh) body.dark .post-content .highlight code .nv,
+html:lang(zh) body.dark .post-content .highlight code .vm,
+html:lang(zh) body.dark .post-content .highlight code .fm,
+html:lang(zh) body.dark .post-content .highlight code .nc,
+html:lang(zh) body.dark .post-content .highlight code .nn,
+html:lang(zh) body.dark .post-content .highlight code .nd,
+html:lang(zh) body.dark .post-content .highlight code .ne,
+html:lang(zh) body.dark .post-content .highlight code .no { color: #c792ea; }
 
 /* hljs — Dark / Chinese */
 html:lang(zh) body.dark .post-content pre code.hljs,
