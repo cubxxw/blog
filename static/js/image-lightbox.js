@@ -8,11 +8,19 @@
  *   - Keyboard accessible (Enter / Space to open, Esc to close,
  *     focus is restored on close).
  *   - Works on both desktop (click) and mobile (tap).
+ *   - Mobile: swipe the image up or down to dismiss. The image
+ *     tracks the finger and the backdrop fades with the drag; a
+ *     flick or a long enough pull releases, otherwise it springs
+ *     back. Disabled under prefers-reduced-motion.
  * The overlay is built lazily on first use so there is zero cost
  * on pages whose images are never opened.
  * ========================================================== */
 (function () {
   'use strict';
+
+  var prefersReduced =
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function init() {
     var imgs = document.querySelectorAll('.post-content img');
@@ -80,14 +88,153 @@
 
       // Click on the backdrop (anywhere but the image) closes.
       overlay.addEventListener('click', function (e) {
+        // A swipe gesture ends with a synthetic click; swallow it once so
+        // a spring-back doesn't immediately dismiss the viewer.
+        if (suppressClick) {
+          suppressClick = false;
+          return;
+        }
         if (e.target === overlayImg) return;
         close();
       });
       closeBtn.addEventListener('click', close);
+
+      initSwipeDismiss();
+    }
+
+    /* --------------------------------------------------------
+     * Swipe-to-dismiss (touch only).
+     * The image follows the finger on the vertical axis while the
+     * backdrop fades proportionally; releasing past a distance or
+     * with enough velocity closes the viewer, otherwise it eases
+     * back to centre. Listeners are passive — we set touch-action
+     * on the overlay so the browser never pans/zooms underneath.
+     * ------------------------------------------------------ */
+    var suppressClick = false;
+
+    function resetDragStyles() {
+      overlayImg.style.transition = '';
+      overlayImg.style.transform = '';
+      overlayImg.style.opacity = '';
+      overlay.style.transition = '';
+      overlay.style.opacity = '';
+    }
+
+    function initSwipeDismiss() {
+      if (prefersReduced) return;
+      if (!('ontouchstart' in window)) return;
+
+      overlay.style.touchAction = 'none';
+
+      var startX = 0,
+        startY = 0,
+        startT = 0,
+        dy = 0,
+        tracking = false, // a finger is down
+        engaged = false; // vertical drag has taken over
+
+      var ENGAGE = 10; // px before we decide the gesture is a drag
+      var DISMISS_DIST = 110; // px pull that always dismisses
+      var FLICK_DIST = 36; // min px for a velocity-based flick
+      var FLICK_VEL = 0.5; // px/ms
+
+      overlay.addEventListener(
+        'touchstart',
+        function (e) {
+          if (!isOpen || e.touches.length !== 1) {
+            tracking = false;
+            return;
+          }
+          // Don't start a drag from the close button.
+          if (closeBtn && closeBtn.contains(e.target)) {
+            tracking = false;
+            return;
+          }
+          var t = e.touches[0];
+          startX = t.clientX;
+          startY = t.clientY;
+          startT = Date.now();
+          dy = 0;
+          tracking = true;
+          engaged = false;
+        },
+        { passive: true }
+      );
+
+      overlay.addEventListener(
+        'touchmove',
+        function (e) {
+          if (!tracking) return;
+          var t = e.touches[0];
+          dy = t.clientY - startY;
+          var dx = t.clientX - startX;
+          if (!engaged) {
+            // Wait until the gesture is clearly vertical before taking over.
+            if (Math.abs(dy) < ENGAGE) return;
+            if (Math.abs(dx) > Math.abs(dy)) {
+              tracking = false; // mostly horizontal — leave it alone
+              return;
+            }
+            engaged = true;
+            overlayImg.style.transition = 'none';
+            overlay.style.transition = 'none';
+          }
+          var ratio = Math.min(1, Math.abs(dy) / 520);
+          var scale = (1 - ratio * 0.12).toFixed(3); // down to ~0.88
+          overlayImg.style.transform =
+            'translateY(' + dy.toFixed(1) + 'px) scale(' + scale + ')';
+          overlay.style.opacity = (1 - ratio * 0.6).toFixed(3); // to ~0.4
+        },
+        { passive: true }
+      );
+
+      function onEnd() {
+        if (!tracking) return;
+        tracking = false;
+        if (!engaged) return;
+        engaged = false;
+        suppressClick = true;
+
+        var dt = Date.now() - startT;
+        var vel = dt > 0 ? dy / dt : 0;
+        var dismiss =
+          Math.abs(dy) >= DISMISS_DIST ||
+          (Math.abs(dy) >= FLICK_DIST && Math.abs(vel) >= FLICK_VEL);
+
+        // Re-enable transitions so the release animates smoothly.
+        overlayImg.style.transition =
+          'transform 0.26s cubic-bezier(0.22,0.61,0.36,1), opacity 0.26s ease';
+        overlay.style.transition = 'opacity 0.26s ease';
+
+        if (dismiss) {
+          var sign = dy < 0 ? -1 : 1;
+          var off = (window.innerHeight || 800) * sign;
+          overlayImg.style.transform =
+            'translateY(' + off + 'px) scale(0.9)';
+          overlayImg.style.opacity = '0';
+          overlay.style.opacity = '0';
+          setTimeout(function () {
+            close();
+            resetDragStyles();
+          }, 200);
+        } else {
+          // Spring back to centre, then hand styling back to CSS.
+          overlayImg.style.transform = '';
+          overlayImg.style.opacity = '';
+          overlay.style.opacity = '';
+          setTimeout(resetDragStyles, 280);
+        }
+      }
+
+      overlay.addEventListener('touchend', onEnd, { passive: true });
+      overlay.addEventListener('touchcancel', onEnd, { passive: true });
     }
 
     function open(img) {
       if (!overlay) build();
+      // Clear any inline styles left by a previous swipe so the entrance
+      // transition always starts from a clean slate.
+      resetDragStyles();
       lastFocused = document.activeElement;
 
       overlayImg.src = img.currentSrc || img.src;
