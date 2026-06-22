@@ -400,3 +400,44 @@ body.dark .post-single .entry-cover:hover img,
 [data-theme="dark"] .post-single .entry-cover:hover img {
   filter: brightness(1) contrast(1);
 }
+
+/* ── 15. In-prose <aside> callouts ───────────────────────────────
+   Many articles (kubernetes, vector-database, hugo-advanced-tutorial,
+   stage-growth-of-open-source, emerging-challenges, 2024-annual-review,
+   gtd…, brain-friendly… — 20+ posts) write notes/tips as a bare,
+   class-less <aside> in Markdown. NO `.post-content aside` rule exists
+   anywhere, so the block fell back to plain body prose: in dark mode the
+   note was visually indistinguishable from the surrounding paragraphs,
+   with no surface, rule, or affordance to mark it as a set-aside aside.
+   Give it a quiet recessed callout — accent-tinted left rule on a faint
+   lifted surface — consistent with the <details> treatment in section 8,
+   so notes read as a calm, contained aside on the dark page.
+
+   Scoped with `aside:not([class])` so the theme's CLASSED layout asides —
+   .article-tldr, .article-marginalia, .reading-companion / .editorial-
+   tools-panel, .article-tools, .profile_sidecard — keep their own styling,
+   untouched. Token-driven, so the accent resolves per language (sky-blue
+   EN / red ZH) and --color-accent-soft supplies the wash automatically.
+   Gated on body.dark / [data-theme="dark"] — light mode is never selected
+   and keeps the plain rendering, provably unchanged. */
+body.dark .post-content aside:not([class]),
+[data-theme="dark"] .post-content aside:not([class]) {
+  margin: 1.75rem 0;
+  padding: 1rem 1.35rem;
+  background: var(--color-accent-soft, rgba(125, 211, 252, 0.10));
+  border-left: 3px solid var(--color-accent, #7dd3fc);
+  border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
+  color: var(--color-ink, #e2e3e1);
+  font-size: 0.97em;
+  line-height: 1.7;
+}
+/* Trim the leading/trailing child margins so the callout isn't over-padded
+   (post-content paragraphs carry a 2rem bottom margin by default). */
+body.dark .post-content aside:not([class]) > :first-child,
+[data-theme="dark"] .post-content aside:not([class]) > :first-child {
+  margin-top: 0;
+}
+body.dark .post-content aside:not([class]) > :last-child,
+[data-theme="dark"] .post-content aside:not([class]) > :last-child {
+  margin-bottom: 0;
+}
