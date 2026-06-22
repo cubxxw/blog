@@ -1,0 +1,81 @@
+/* ============================================================
+   zzz-mobile-back-to-top.css — direction-aware back-to-top (mobile)
+   ------------------------------------------------------------
+   On desktop the #top-link control springs in past 800px and fills
+   a progress ring as you read (footer.html + micro-interactions.css
+   + zz-scroll-detail.css). On phones it was hidden outright
+   (custom.css → `@media (max-width:1023px){ .top-link{display:none} }`)
+   to avoid a control parked permanently over the content.
+
+   This layer brings it back on mobile — but only as a *gesture
+   response*, never a persistent overlay: the button stays tucked
+   away and reveals only when the reader swipes UP (an intent to go
+   back), then hides again on the next downward scroll or near the
+   top. The reveal is driven by `.is-visible-mobile`, toggled in
+   micro-interactions.js. This honours the original "don't clutter
+   the read" intent while answering the very gesture — scrolling up —
+   with the shortcut it implies.
+
+   Loads late (zzz- prefix) so these rules win source-order against
+   custom.css; the `!important` here is the minimum needed to defeat
+   the earlier `display:none !important`. Fully neutralised under
+   reduced motion (fade only, no travel) at the foot of the file.
+   ============================================================ */
+
+@media (max-width: 1023px) {
+  /* Re-enable the control on phones, but born hidden: shifted down,
+     shrunk and click-through until a scroll-up reveals it. */
+  .top-link {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    /* Sit clear of the home-indicator / safe area on modern phones. */
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
+    width: 44px;   /* keep a 44px tap target */
+    height: 44px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(14px) scale(0.72);
+    transition:
+      opacity 0.28s ease,
+      visibility 0.28s ease,
+      transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Revealed: the button rises and settles with a gentle overshoot. */
+  .top-link.is-visible-mobile {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Tactile press for the finger — a quick squash on tap. The
+     reveal class keeps it composed so :active never snaps it back to
+     the hidden resting transform mid-press. */
+  .top-link.is-visible-mobile:active {
+    transform: translateY(0) scale(0.9);
+    transition: transform 0.1s ease;
+  }
+
+  /* Replace the grey tap-flash with our own scale cue. */
+  .top-link {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ============================================================
+   Reduced motion: fade only — no rise, no spring, no squash.
+   ============================================================ */
+@media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+  .top-link {
+    transform: none !important;
+    transition: opacity 0.2s ease, visibility 0.2s ease !important;
+  }
+  .top-link.is-visible-mobile,
+  .top-link.is-visible-mobile:active {
+    transform: none !important;
+  }
+}

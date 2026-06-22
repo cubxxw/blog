@@ -518,9 +518,102 @@
   }
 
   /* ---------------------------------------------------------
+   * 7. Mobile back-to-top: direction-aware reveal
+   *    Desktop already gets the springy #top-link past 800px
+   *    (footer.html). On phones the button is hidden by default
+   *    (custom.css) to avoid a control parked over the read. Bring
+   *    it back as a *gesture response*: reveal it only when the
+   *    reader scrolls UP (an intent to head back) while deep in the
+   *    page, and tuck it away again on the next downward scroll or
+   *    near the top. Also fills its progress ring on mobile, which
+   *    the desktop-gated footer script skips. Styling + the reduced-
+   *    motion fade live in zzz-mobile-back-to-top.css; this runs even
+   *    under reduced motion because it's a navigation affordance, not
+   *    decoration (the CSS neutralises the travel either way).
+   * ------------------------------------------------------- */
+  function initMobileBackToTop() {
+    var btn = document.getElementById('top-link');
+    if (!btn) return;
+
+    var mq = window.matchMedia('(max-width: 1023px)');
+    var ring = btn.querySelector('.top-link-ring-progress');
+    var RING_CIRC = 125.66; // 2 * PI * r(20), matches the SVG + footer script
+
+    var REVEAL_AFTER = 600; // px from top before the control may appear
+    var DIR_THRESHOLD = 6;  // px of travel needed to count as a direction
+    var lastY = window.scrollY || window.pageYOffset || 0;
+    var shown = false;
+    var ticking = false;
+
+    function setShown(next) {
+      if (next === shown) return;
+      shown = next;
+      btn.classList.toggle('is-visible-mobile', next);
+    }
+
+    function evaluate() {
+      // Only governs the phone layout; on desktop the footer script owns
+      // the button and we leave its `.is-visible` class untouched.
+      if (!mq.matches) {
+        if (shown) setShown(false);
+        return;
+      }
+      var y = window.scrollY || window.pageYOffset || 0;
+      var dy = y - lastY;
+
+      if (y < REVEAL_AFTER) {
+        // Near the top there's nowhere to go back to — always tuck away.
+        setShown(false);
+      } else if (dy < -DIR_THRESHOLD) {
+        setShown(true);   // scrolling up → offer the shortcut
+      } else if (dy > DIR_THRESHOLD) {
+        setShown(false);  // scrolling down → get out of the way
+      }
+      // Tiny jitters below the threshold leave the state as-is.
+
+      if (Math.abs(dy) > 0) lastY = y;
+
+      // Keep the read-progress ring in sync on mobile too.
+      if (ring) {
+        var trackable =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        var p = trackable > 0 ? Math.min(y / trackable, 1) : 0;
+        ring.style.strokeDashoffset = (RING_CIRC * (1 - p)).toFixed(1);
+      }
+    }
+
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            evaluate();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    // Leaving the phone layout (rotate / resize to desktop): drop our class
+    // so the desktop footer script has a clean slate.
+    var onMqChange = function () {
+      if (!mq.matches) setShown(false);
+      lastY = window.scrollY || window.pageYOffset || 0;
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onMqChange);
+    else if (mq.addListener) mq.addListener(onMqChange); // older Safari
+  }
+
+  /* ---------------------------------------------------------
    * Boot
    * ------------------------------------------------------- */
   function init() {
+    // A navigation affordance, not decoration — wire it up regardless of
+    // the motion preference (its travel is neutralised in CSS).
+    initMobileBackToTop();
     if (prefersReduced) {
       // Honour the preference: show everything statically.
       revealAllImmediately();
