@@ -1,9 +1,8 @@
 {{- /*
-  TL;DR / answer-first block (GEO / BLUF pattern).
-  Renders a prominent "key takeaway" box at the top of an article so the core
-  answer sits in the opening of the page — where ~44% of AI-engine citations
-  are drawn from (Kevin Indig, 1.2M ChatGPT responses). Also helps human
-  readers. Driven entirely by front matter, no backend.
+  TL;DR / answer-first block (GEO / BLUF pattern), rendered as a "world-line"
+  panel: a vertical cable with numbered nodes, a travelling pulse and a header
+  scan line. Driven entirely by front matter, no backend. Colours follow the
+  theme accent tokens; all motion is gated by prefers-reduced-motion.
 
   Front matter:
     tldr: "A single-sentence answer."        # string form
@@ -14,31 +13,43 @@
 
   Semantic <aside> + heading so AI passage extraction can lift it cleanly.
 */ -}}
+{{- $page := . -}}
 {{- $tldr := .Params.tldr -}}
 {{- with $tldr -}}
-<aside class="article-tldr" aria-label="{{ i18n "tldr_label" | default "TL;DR" }}" data-tldr-fx>
-  {{/* Decorative animated field — drawn by a tiny canvas, gated by JS + reduced-motion */}}
-  <canvas class="article-tldr__fx" aria-hidden="true"></canvas>
-  <div class="article-tldr__glow" aria-hidden="true"></div>
-  <div class="article-tldr__body">
-    <div class="article-tldr__label">
-      <span class="article-tldr__spark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 3l1.6 5.2L19 10l-5.4 1.8L12 17l-1.6-5.2L5 10l5.4-1.8L12 3z" fill="currentColor"/>
-          <path d="M19 14l.7 2.2L22 17l-2.3.8L19 20l-.7-2.2L16 17l2.3-.8L19 14z" fill="currentColor" opacity="0.6"/>
+{{- $items := slice -}}
+{{- if reflect.IsSlice . }}{{ $items = . }}{{ else }}{{ $items = slice . }}{{ end -}}
+{{- $label := i18n "tldr_label" | default "TL;DR" -}}
+<aside class="article-tldr article-tldr--worldline" aria-label="{{ $label }}">
+  {{/* technical-drawing corner crop marks */}}
+  <span class="tldr-tick tldr-tick--tl" aria-hidden="true"></span><span class="tldr-tick tldr-tick--tr" aria-hidden="true"></span>
+  <span class="tldr-tick tldr-tick--bl" aria-hidden="true"></span><span class="tldr-tick tldr-tick--br" aria-hidden="true"></span>
+
+  <div class="tldr-head">
+    <div class="tldr-eyebrow">
+      <span class="article-tldr__spark tldr-spark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/>
         </svg>
       </span>
-      <span class="article-tldr__label-text">{{ i18n "tldr_label" | default "TL;DR" }}</span>
+      <span class="article-tldr__label-text tldr-zh">{{ $label }}</span>
+      <span class="tldr-en">Core Context</span>
     </div>
-    {{- if reflect.IsSlice . }}
-    <ul class="article-tldr__list">
-      {{- range . }}
-      <li>{{ . | markdownify }}</li>
-      {{- end }}
-    </ul>
-    {{- else }}
-    <p class="article-tldr__text">{{ . | markdownify }}</p>
+    <div class="tldr-meta"><b>{{ printf "%02d" (len $items) }}</b>&nbsp;NODES&nbsp;·&nbsp;Σ WORLD-LINE</div>
+    <span class="tldr-scan" aria-hidden="true"></span>
+  </div>
+
+  <div class="tldr-wire">
+    {{- range $i, $it := $items }}
+    <div class="tldr-item">
+      <span class="tldr-node" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+      <div class="article-tldr__text tldr-txt">{{ $it | markdownify }}</div>
+    </div>
     {{- end }}
+  </div>
+
+  <div class="tldr-foot" aria-hidden="true">
+    <span><span class="tldr-foot-dot"></span>Context Engineering</span>
+    <span>{{ $page.Date.Format "v2006.01" }} · LIVE</span>
   </div>
 </aside>
 {{- end -}}

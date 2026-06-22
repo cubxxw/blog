@@ -304,14 +304,6 @@
 {{- end -}}
 <script src="{{ $coverParallax.RelPermalink }}" defer></script>
 
-{{/* TL;DR ambient canvas FX — lightweight, no WebGL. Self-gates to
-     non-reduced-motion visitors and no-ops when there is no TL;DR block. */}}
-{{- $tldrFx := resources.Get "js/tldr-fx.js" | js.Build (dict "minify" hugo.IsProduction) -}}
-{{- if not site.Params.assets.disableFingerprinting -}}
-  {{- $tldrFx = $tldrFx | fingerprint -}}
-{{- end -}}
-<script src="{{ $tldrFx.RelPermalink }}" defer></script>
-
 {{- partial "related-posts.html" . -}}
 
 {{- end }}{{/* end main */}}
