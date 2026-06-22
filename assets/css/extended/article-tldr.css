@@ -8,6 +8,9 @@
   position: relative;
   /* Tighter top gap so it sits close to the cover/description above. */
   margin: var(--space-4) 0 var(--space-7);
+  /* Match the prose reading column (.post-content caps at 760px) so the card
+     doesn't sit wider than the body text below it. */
+  max-width: 760px;
   padding: var(--space-5) var(--space-6);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
