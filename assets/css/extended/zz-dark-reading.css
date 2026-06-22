@@ -291,3 +291,54 @@ body.dark .post-content input[type="checkbox"]:checked::after,
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
+/* ── 11. In-prose <kbd> keyboard keys ────────────────────────────
+   Markdown like `<kbd>Ctrl</kbd>` is common in this blog's technical
+   posts, but no in-prose `.post-content kbd` rule exists anywhere —
+   the only `kbd` styling is scoped to the search trigger / hp-search
+   button. So a keyboard shortcut in an article fell back to bare
+   monospace text (custom.css only sets font-family on kbd), reading as
+   indistinguishable inline code rather than a key. Give it a quiet,
+   token-drawn keycap with a subtle bottom edge so the "press me"
+   affordance is legible on the dark surface. Token-driven, so the ZH
+   accent border is picked up automatically. Gated on body.dark — light
+   mode keeps the browser/base rendering, provably unchanged. */
+body.dark .post-content kbd,
+[data-theme="dark"] .post-content kbd {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.82em;
+  line-height: 1;
+  padding: 0.18em 0.5em;
+  margin: 0 0.12em;
+  white-space: nowrap;
+  color: var(--color-ink, #e2e3e1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-rule, rgba(226, 227, 225, 0.22));
+  /* Soft bottom edge → the "raised key" cue, kept quiet for dark. */
+  border-bottom-width: 2px;
+  border-bottom-color: var(--color-rule, rgba(226, 227, 225, 0.30));
+  border-radius: 0.35em;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+/* Keys chained with a "+" (e.g. Ctrl + C) keep the joiner unboxed. */
+body.dark .post-content kbd kbd,
+[data-theme="dark"] .post-content kbd kbd {
+  margin: 0;
+  box-shadow: none;
+}
+
+/* ── 12. Abbreviations <abbr title> ──────────────────────────────
+   <abbr> has no styling anywhere, so in dark mode an abbreviation with
+   a title fell back to the browser default: either nothing, or a hard
+   black dotted underline (UA-dependent) that's invisible or jarring on
+   the dark page, with no hint that hovering reveals an expansion. Give
+   it a quiet accent-tinted dotted underline and a help cursor so the
+   affordance reads clearly. Dark mode only; light keeps the default. */
+body.dark .post-content abbr[title],
+[data-theme="dark"] .post-content abbr[title] {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--color-rule, rgba(226, 227, 225, 0.40));
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  cursor: help;
+}
