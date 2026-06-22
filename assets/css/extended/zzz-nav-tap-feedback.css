@@ -1,0 +1,106 @@
+/* ============================================================
+   zzz-nav-tap-feedback.css — navigation tap / press feedback
+   ------------------------------------------------------------
+   Completes the site's tactile-feedback coverage for the primary
+   navigation. micro-interactions.css already gives press cues to
+   content cards, buttons, tags, the theme toggle and social icons,
+   but the top-level navigation chrome — the menu links, the logo,
+   the language switcher and the breadcrumb trail — had no press
+   response, so taps on a phone (and clicks on desktop) felt inert.
+
+   This layer adds a subtle, proportional press (a slight shrink +
+   settle) plus a quiet desktop hover lift, and removes the jarring
+   grey tap-flash on touch. Loaded late (zzz-) so it composes over
+   the theme + nav-elegant rules. Everything here is purely additive
+   feedback — never required to read or operate the nav — and is
+   fully neutralised under prefers-reduced-motion at the bottom.
+   ============================================================ */
+
+/* ---------- Kill the mobile grey tap-flash on nav chrome ---------- */
+.nav .logo a,
+.nav #menu li a,
+.language-switcher .lang-selector,
+.nav .lang-switch a,
+.breadcrumbs a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Primary menu links: press + smooth colour settle ----------
+   The inner <span> carries the label (and the .active state), so the
+   press scales the link while colour transitions stay on the anchor. */
+.nav #menu li a {
+  transition:
+    transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.18s ease,
+    opacity 0.18s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.nav #menu li a:active {
+  transform: scale(0.95);
+  opacity: 0.92;
+}
+
+/* A quiet desktop hover lift gives the menu a touch of life for
+   pointer users without affecting touch (where :hover is sticky). */
+@media (hover: hover) and (pointer: fine) {
+  .nav #menu li a {
+    transition:
+      transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+      color 0.18s ease;
+  }
+  .nav #menu li a:hover {
+    transform: translateY(-1.5px);
+  }
+  .nav #menu li a:active {
+    transform: translateY(0) scale(0.95);
+  }
+}
+
+/* ---------- Logo: gentle press ---------- */
+.nav .logo a {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.nav .logo a:active {
+  transform: scale(0.96);
+}
+
+/* ---------- Language switcher: press the selected/other locale ---------- */
+.language-switcher .lang-selector,
+.nav .lang-switch a {
+  transition:
+    transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+.language-switcher .lang-selector:active,
+.nav .lang-switch a:active {
+  transform: scale(0.92);
+}
+
+/* ---------- Breadcrumb trail: small press on each crumb ---------- */
+.breadcrumbs a {
+  display: inline-block;
+  transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.breadcrumbs a:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+/* ============================================================
+   Reduced motion: neutralise every transform above. Colour /
+   background transitions are harmless and stay for a smooth feel.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .nav #menu li a,
+  .nav #menu li a:hover,
+  .nav #menu li a:active,
+  .nav .logo a:active,
+  .language-switcher .lang-selector:active,
+  .nav .lang-switch a:active,
+  .breadcrumbs a:active {
+    transform: none !important;
+  }
+}

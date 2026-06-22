@@ -140,6 +140,47 @@ body:not(.dark) {
   background-color: var(--color-paper, #f9f9f7) !important;
 }
 
+/* Dark counterpart: without this, dark mode fell back to PaperMod's
+   default page grey (--theme #1d1e20) on the <body> — including the
+   .dark.list rule that repaints list/section pages with var(--theme) —
+   while the article column painted the custom paper (--color-paper:
+   #121413 EN / #1c1917 ZH). That left a visible seam around the reading
+   column on article pages and a greyer, mismatched surface on the home /
+   list / archive pages than the prose they frame. Mirror the light rule
+   so the whole page sits on the same paper tone as the article surface,
+   restoring the seamless single-surface reading look the light mode
+   already has. Token-driven, so EN/ZH dark resolve automatically; the
+   !important matches the light rule and overrides the un-!important
+   .dark.list / PaperMod body background. Gated on body.dark —
+   light mode is never selected and is provably unchanged. */
+body.dark {
+  background-color: var(--color-paper) !important;
+}
+
+/* Match the unified dark paper on the <html> root too. The body fix above
+   paints the page, but the root element (html) keeps the browser default
+   (white/canvas), which shows through during iOS Safari / macOS trackpad
+   overscroll "rubber-band" scrolling and momentarily before the body paints
+   — flashing a glaring white band at the top/bottom edge of an otherwise
+   dark page. Paint the root the same dark paper so the surface stays
+   seamless to the very edge.
+   NOTE: --color-paper is overridden on body.dark / html:lang(zh) body.dark —
+   both DESCENDANTS of html — and custom properties inherit downward only, so
+   var(--color-paper) resolves to the LIGHT value here on the html ancestor
+   (the same gotcha the dark-token block documents). Use the explicit
+   per-language dark values, kept in sync with the dark tokens above. The
+   :lang(zh) rule carries higher specificity and follows the generic one, so
+   Chinese dark resolves to its warm paper. Gated on the dark root — light
+   mode never matches and is provably unchanged. */
+html:has(body.dark),
+html[data-theme="dark"] {
+  background-color: #121413; /* EN dark paper — mirrors --color-paper */
+}
+html:lang(zh):has(body.dark),
+html:lang(zh)[data-theme="dark"] {
+  background-color: #1c1917; /* ZH dark paper — mirrors --color-paper */
+}
+
 /* ─── Prose background from token ──────────────────────────── */
 .article-main {
   background: var(--color-paper);

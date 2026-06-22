@@ -1,0 +1,100 @@
+/* ============================================================
+   zzz-toc-tap-feedback.css — tactile feedback for every TOC
+   ------------------------------------------------------------
+   The interaction layer already gives the legacy `.toc` / TOC
+   highlight links a hover slide + tap press (micro-interactions
+   + interaction-polish). But the THREE table-of-contents
+   renderings this blog actually ships had only a colour change:
+
+     1. .toc-inline__item a            — mobile / narrow inline TOC
+     2. .abs-toc-item a                — mobile bottom-sheet TOC
+     3. .editorial-tools-panel .toc-item a — desktop side panel
+
+   This file unifies the contents-list interaction language across
+   all of them, on both phone (tap press) and pointer (hover slide),
+   matching the existing `.toc a` motion so navigating an article's
+   outline feels equally tactile everywhere. Purely additive
+   feedback — colours/active states are untouched and nothing here
+   is required to read or use the TOC. Loads last (zzz-) so the
+   transform transitions append cleanly. Fully neutralised under
+   prefers-reduced-motion at the bottom.
+   ============================================================ */
+
+/* ---------- Re-declare transitions to include `transform` ----------
+   Each base rule is repeated verbatim with `transform` appended, so the
+   existing colour / border / background eases are preserved and the new
+   slide/press eases in instead of snapping. */
+.toc-inline__item a {
+  transition:
+    color 0.15s ease,
+    transform 0.16s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.abs-toc-item a {
+  transition:
+    color 120ms ease,
+    border-left-color 120ms ease,
+    transform 0.16s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.editorial-tools-panel .toc-item a {
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-left-color 150ms ease,
+    opacity 150ms ease,
+    transform 0.16s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* The floating reading-companion variant (≥1500px) for completeness. */
+.toc-side__nav a {
+  transition:
+    color 0.15s ease,
+    transform 0.16s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.toc-inline__item a,
+.abs-toc-item a,
+.editorial-tools-panel .toc-item a,
+.toc-side__nav a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Pointer hover: gentle slide toward the text ----------
+   Mirrors the existing `.toc a:hover` cue so trackpad / mouse users
+   get the same "this row is live" nudge on every TOC variant. */
+@media (hover: hover) and (pointer: fine) {
+  .toc-inline__item a:hover,
+  .abs-toc-item a:hover,
+  .editorial-tools-panel .toc-item a:hover,
+  .toc-side__nav a:hover {
+    transform: translateX(3px);
+  }
+}
+
+/* ---------- Tap press: quick recede (mobile + desktop) ----------
+   Matches `.toc a:active` so a tap on the contents list confirms
+   itself with the same tactile dip as a card or a tag. */
+.toc-inline__item a:active,
+.abs-toc-item a:active,
+.editorial-tools-panel .toc-item a:active,
+.toc-side__nav a:active {
+  transform: translateX(2px) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* ============================================================
+   Reduced motion: neutralise the slide / press entirely.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .toc-inline__item a:hover,
+  .abs-toc-item a:hover,
+  .editorial-tools-panel .toc-item a:hover,
+  .toc-side__nav a:hover,
+  .toc-inline__item a:active,
+  .abs-toc-item a:active,
+  .editorial-tools-panel .toc-item a:active,
+  .toc-side__nav a:active {
+    transform: none !important;
+  }
+}

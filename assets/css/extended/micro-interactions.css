@@ -20,7 +20,12 @@ html.motion-reveal .ai-tech-list-item,
 html.motion-reveal .growth-list-item,
 html.motion-reveal .reveal-item {
   opacity: 0;
-  transform: translateY(16px);
+  /* translateY for the rise + a hair of scale so the card "settles"
+     into place rather than just sliding — a slightly more premium
+     entrance. Kept tiny (0.985) to avoid any text reflow shimmer.
+     The .is-revealed state resets transform to none, and the
+     reduced-motion block hard-overrides transform to none. */
+  transform: translateY(16px) scale(0.985);
   will-change: opacity, transform;
   transition:
     opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
