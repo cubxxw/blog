@@ -5370,12 +5370,40 @@ a.profile_status {
 .copy-code {
     display: block !important;
     opacity: 0.55;
-    transition: opacity 0.15s ease;
+    transition: opacity 0.15s ease, color 0.18s ease,
+        background-color 0.18s ease, transform 0.12s ease;
 }
 
 div.highlight:hover .copy-code,
 pre:hover .copy-code {
     opacity: 1;
+}
+
+.copy-code:active {
+    transform: scale(0.92);
+}
+
+/* Success state: brief pop + green tint after copying. */
+.copy-code.is-copied {
+    opacity: 1;
+    color: #fff;
+    background-color: #16a34a;
+    border-color: #16a34a;
+    animation: copy-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.dark .copy-code.is-copied {
+    background-color: #22c55e;
+    border-color: #22c55e;
+    color: #0b1220;
+}
+@keyframes copy-pop {
+    0% { transform: scale(0.82); }
+    60% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .copy-code.is-copied { animation: none; }
+    .copy-code:active { transform: none; }
 }
 
 /* ===================================

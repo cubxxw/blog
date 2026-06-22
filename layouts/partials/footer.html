@@ -144,8 +144,10 @@
 
         function copyingDone() {
             copybutton.innerHTML = '{{- i18n "code_copied" | default "copied!" }}';
+            copybutton.classList.add('is-copied');
             setTimeout(() => {
                 copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
+                copybutton.classList.remove('is-copied');
             }, 2000);
         }
 

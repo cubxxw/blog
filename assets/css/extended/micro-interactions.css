@@ -44,6 +44,22 @@ html.motion-reveal .is-revealed {
   will-change: auto;
 }
 
+/* ---------- In-article block reveal (headings, quotes, code) ---------- */
+/* Structural blocks ease up as they enter the viewport so a long read
+   feels like it unfolds. Scoped to .motion-reveal + the .reveal-block
+   class JS adds, so content is never hidden without the enhancement. */
+html.motion-reveal .post-content .reveal-block {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+html.motion-reveal .post-content .reveal-block.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
 /* ---------- Article images: gentle fade-in on load ---------- */
 html.motion-reveal .post-content img {
   opacity: 0;
@@ -201,6 +217,96 @@ button:focus-visible,
 }
 .paginav a:active { transform: scale(0.985); }
 
+/* ---------- Icon controls: tap feedback + desktop hover ---------- */
+/* Header utility controls get the same tactile press as cards, plus a
+   playful spin on the theme toggle for pointer users. */
+#theme-toggle,
+.hamburger-menu,
+.copy-code,
+.logo a,
+.social-icons a,
+.share-buttons a {
+  -webkit-tap-highlight-color: transparent;
+}
+#theme-toggle:active,
+.hamburger-menu:active,
+.social-icons a:active,
+.share-buttons a:active {
+  transform: scale(0.9);
+}
+#theme-toggle {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  #theme-toggle:hover { transform: rotate(18deg) scale(1.08); }
+  .social-icons a {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .social-icons a:hover { transform: translateY(-2px); }
+}
+
+/* ---------- TOC links: gentle slide on hover (desktop) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .toc a,
+  .toc-highlight a {
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
+  .toc a:hover,
+  .toc-highlight a:hover { transform: translateX(3px); }
+}
+
+/* ---------- Mobile nav menu: staggered item entrance ---------- */
+/* When the hamburger menu opens, the dropdown panel already slides in
+   (menuSlideDown in custom.css). Layer a gentle per-item cascade on top
+   so the links feel like they unfold rather than appear all at once.
+   Scoped to .motion-reveal so no-JS / reduced-motion visitors are
+   unaffected, and to touch-width so it only runs where the panel exists. */
+@media (max-width: 768px) {
+  html.motion-reveal #menu.mobile-open > li {
+    animation: nav-item-in 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  html.motion-reveal #menu.mobile-open > li:nth-child(1) { animation-delay: 0.04s; }
+  html.motion-reveal #menu.mobile-open > li:nth-child(2) { animation-delay: 0.08s; }
+  html.motion-reveal #menu.mobile-open > li:nth-child(3) { animation-delay: 0.12s; }
+  html.motion-reveal #menu.mobile-open > li:nth-child(4) { animation-delay: 0.16s; }
+  html.motion-reveal #menu.mobile-open > li:nth-child(5) { animation-delay: 0.20s; }
+  html.motion-reveal #menu.mobile-open > li:nth-child(6) { animation-delay: 0.24s; }
+  html.motion-reveal #menu.mobile-open > li:nth-child(n + 7) { animation-delay: 0.28s; }
+}
+@keyframes nav-item-in {
+  from { opacity: 0; transform: translateY(-7px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Nav controls: tap feedback (mobile + desktop) ---------- */
+/* The theme toggle and hamburger already press; extend the same tactile
+   scale-down to the remaining nav controls so every tap confirms itself. */
+#menu > li > a,
+.nav-search-trigger,
+.lang-switch a {
+  -webkit-tap-highlight-color: transparent;
+}
+#menu > li > a:active,
+.nav-search-trigger:active,
+.lang-switch a:active {
+  transform: scale(0.96);
+}
+
+/* ---------- Tags & categories: desktop hover lift ---------- */
+/* Pointer users get a small rise (the :active scale already handles taps).
+   transition lives here so the lift eases in and out smoothly. */
+.post-tags a,
+.post-tag,
+.post-category {
+  transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.16s ease, color 0.16s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .post-tags a:hover,
+  .post-tag:hover,
+  .post-category:hover { transform: translateY(-2px); }
+}
+
 /* ============================================================
    Reduced-motion: hard override. Disable all of the above so
    the experience is fully static for users who ask for it.
@@ -221,12 +327,31 @@ button:focus-visible,
   .ai-tech-list-item,
   .growth-list-item,
   .reveal-item,
+  .post-content .reveal-block,
   .post-content img {
     opacity: 1 !important;
     transform: none !important;
   }
 
   .swipe-hint { display: none !important; }
+
+  /* New nav/tag motion: neutralise entirely under reduced motion. */
+  #menu.mobile-open > li { animation: none !important; }
+  #menu > li > a:active,
+  .nav-search-trigger:active,
+  .lang-switch a:active,
+  .post-tags a:hover,
+  .post-tag:hover,
+  .post-category:hover { transform: none !important; }
+
+  #theme-toggle:hover,
+  #theme-toggle:active,
+  .hamburger-menu:active,
+  .social-icons a:hover,
+  .social-icons a:active,
+  .share-buttons a:active,
+  .toc a:hover,
+  .toc-highlight a:hover { transform: none !important; }
 
   /* Ripple is JS-gated off under reduced motion, but hard-hide any
      ink that slips through and neutralise the pagination shift. */

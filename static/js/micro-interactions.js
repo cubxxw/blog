@@ -81,6 +81,94 @@
   }
 
   /* ---------------------------------------------------------
+   * 1b. In-article block reveal
+   *     Structural prose blocks (headings, blockquotes, code,
+   *     tables, figures) gently fade up as they scroll into
+   *     view, giving long reads a sense of unfolding rhythm.
+   *     Paragraphs are intentionally excluded so body text never
+   *     flickers while reading. Gated behind .motion-reveal, so
+   *     no-JS / reduced-motion visitors see everything statically.
+   * ------------------------------------------------------- */
+  var PROSE_REVEAL_SELECTOR = [
+    '.post-content > h2',
+    '.post-content > h3',
+    '.post-content > h4',
+    '.post-content > blockquote',
+    '.post-content > figure',
+    '.post-content > .highlight',
+    '.post-content > pre',
+    '.post-content > table',
+    '.post-content > hr',
+    '.post-content > .reading-companion'
+  ].join(',');
+
+  function initProseReveal() {
+    var blocks = Array.prototype.slice.call(
+      document.querySelectorAll(PROSE_REVEAL_SELECTOR)
+    );
+    if (!blocks.length) return;
+
+    function revealAll() {
+      blocks.forEach(function (el) {
+        el.classList.add('is-revealed');
+      });
+    }
+
+    blocks.forEach(function (el) {
+      el.classList.add('reveal-block');
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      revealAll();
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { root: null, rootMargin: '0px 0px -6% 0px', threshold: 0.06 }
+    );
+
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    blocks.forEach(function (el) {
+      // Anything already on the first screen is shown at once so the
+      // article never paints with a half-empty viewport.
+      if (el.getBoundingClientRect().top < vh) {
+        el.classList.add('is-revealed');
+      } else {
+        observer.observe(el);
+      }
+    });
+
+    // If we land on an in-page anchor, reveal the target (and anything
+    // above it) immediately so deep links never point at hidden content.
+    if (window.location.hash) {
+      try {
+        var target = document.getElementById(
+          decodeURIComponent(window.location.hash.slice(1))
+        );
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.scrollY;
+          blocks.forEach(function (el) {
+            if (el.getBoundingClientRect().top + window.scrollY <= top + 4) {
+              el.classList.add('is-revealed');
+            }
+          });
+        }
+      } catch (e) {}
+    }
+
+    // Safety net: never leave prose hidden.
+    setTimeout(revealAll, 2500);
+  }
+
+  /* ---------------------------------------------------------
    * 2. Article images fade-in
    * ------------------------------------------------------- */
   function initImageFade() {
@@ -330,12 +418,16 @@
     if (prefersReduced) {
       // Honour the preference: show everything statically.
       revealAllImmediately();
+      document.querySelectorAll(PROSE_REVEAL_SELECTOR).forEach(function (el) {
+        el.classList.add('reveal-block', 'is-revealed');
+      });
       document.querySelectorAll('.post-content img').forEach(function (img) {
         img.classList.add('img-loaded');
       });
       return;
     }
     initReveal();
+    initProseReveal();
     initImageFade();
     initSwipeNav();
     initRipple();
