@@ -107,10 +107,10 @@
 .marginalia-avatar-ring {
   position: relative;
   flex: 0 0 auto;
-  width: 46px;
-  height: 46px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  padding: 2px;
+  padding: 1.5px;
   background:
     conic-gradient(
       from 140deg,
@@ -187,8 +187,33 @@
 .marginalia-author-name {
   position: relative;
   display: inline-block;
+  font-size: 0.82rem;
   opacity: 0.9;
   transition: color 220ms ease, opacity 220ms ease;
+}
+
+/* ZH name — upright, slightly smaller, refined */
+:lang(zh) .marginalia-author-name {
+  font-style: normal;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Latin name — expressive Fraunces display italic = artful editorial signature.
+   Placed after :lang(zh) so it wins even on Chinese pages with a Latin author name. */
+.marginalia-author-name--latin,
+:lang(zh) .marginalia-author-name--latin,
+:lang(en) .marginalia-author-name--latin {
+  font-family: 'Fraunces', var(--font-display, 'Georgia'), 'Georgia', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.96rem;
+  letter-spacing: 0.004em;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 50, 'WONK' 1, 'opsz' 40;
+  font-feature-settings: 'liga' 1, 'dlig' 1, 'swsh' 1, 'calt' 1;
 }
 
 .marginalia-author-name::after {

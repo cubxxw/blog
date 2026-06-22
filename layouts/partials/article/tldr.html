@@ -16,16 +16,29 @@
 */ -}}
 {{- $tldr := .Params.tldr -}}
 {{- with $tldr -}}
-<aside class="article-tldr" aria-label="{{ i18n "tldr_label" | default "TL;DR" }}">
-  <div class="article-tldr__label">{{ i18n "tldr_label" | default "TL;DR" }}</div>
-  {{- if reflect.IsSlice . }}
-  <ul class="article-tldr__list">
-    {{- range . }}
-    <li>{{ . | markdownify }}</li>
+<aside class="article-tldr" aria-label="{{ i18n "tldr_label" | default "TL;DR" }}" data-tldr-fx>
+  {{/* Decorative animated field — drawn by a tiny canvas, gated by JS + reduced-motion */}}
+  <canvas class="article-tldr__fx" aria-hidden="true"></canvas>
+  <div class="article-tldr__glow" aria-hidden="true"></div>
+  <div class="article-tldr__body">
+    <div class="article-tldr__label">
+      <span class="article-tldr__spark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3l1.6 5.2L19 10l-5.4 1.8L12 17l-1.6-5.2L5 10l5.4-1.8L12 3z" fill="currentColor"/>
+          <path d="M19 14l.7 2.2L22 17l-2.3.8L19 20l-.7-2.2L16 17l2.3-.8L19 14z" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </span>
+      <span class="article-tldr__label-text">{{ i18n "tldr_label" | default "TL;DR" }}</span>
+    </div>
+    {{- if reflect.IsSlice . }}
+    <ul class="article-tldr__list">
+      {{- range . }}
+      <li>{{ . | markdownify }}</li>
+      {{- end }}
+    </ul>
+    {{- else }}
+    <p class="article-tldr__text">{{ . | markdownify }}</p>
     {{- end }}
-  </ul>
-  {{- else }}
-  <p class="article-tldr__text">{{ . | markdownify }}</p>
-  {{- end }}
+  </div>
 </aside>
 {{- end -}}

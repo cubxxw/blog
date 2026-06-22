@@ -11,8 +11,22 @@
   {{- $aboutURL := "/about/" }}
   {{- if eq $page.Lang "en" }}{{ $aboutURL = "/en/about/" }}{{ end }}
   {{- if eq $page.Lang "zh" }}{{ $aboutURL = "/zh/about/" }}{{ end }}
-  {{- $authorName := "" }}
-  {{- if $page.Params.author }}{{ $authorName = $page.Params.author }}{{ else if site.Params.author }}{{ $authorName = site.Params.author }}{{ else }}{{ $authorName = "—" }}{{ end }}
+  {{/* Normalize author: front matter is often a slice like ["Xinwei Xiong", "Me"].
+       Drop redundant "Me"/"我" tokens and keep the real name; render clean string. */}}
+  {{- $rawAuthor := $page.Params.author | default site.Params.author }}
+  {{- $authorName := "—" }}
+  {{- if reflect.IsSlice $rawAuthor }}
+    {{- $names := slice }}
+    {{- range $rawAuthor }}
+      {{- $t := trim . " " }}
+      {{- if and $t (not (in (slice "Me" "me" "我" "我自己") $t)) }}{{ $names = $names | append $t }}{{ end }}
+    {{- end }}
+    {{- if $names }}{{ $authorName = index $names 0 }}{{ else if $rawAuthor }}{{ $authorName = index $rawAuthor 0 }}{{ end }}
+  {{- else if $rawAuthor }}
+    {{- $authorName = trim (replaceRE "[，,]\\s*(我|Me|me)\\s*$" "" (printf "%v" $rawAuthor)) " " }}
+  {{- end }}
+  {{/* Latin-only names get the expressive Fraunces display treatment regardless of page lang */}}
+  {{- $isLatinName := not (findRE "[\\p{Han}\\p{Hiragana}\\p{Katakana}]" $authorName) }}
   {{/* Resolve avatar from assets (fallback to static path) */}}
   {{- $avatar := resources.Get "my-avatar.jpg" }}
   {{- if not $avatar }}{{ $avatar = resources.Get "cubxxw-image.jpg" }}{{ end }}
@@ -29,7 +43,7 @@
         <span class="marginalia-avatar-glint" aria-hidden="true"></span>
       </span>
       <span class="marginalia-author-meta">
-        <span class="marginalia-value marginalia-author marginalia-author-name">{{ $authorName }}</span>
+        <span class="marginalia-value marginalia-author marginalia-author-name{{ if $isLatinName }} marginalia-author-name--latin{{ end }}">{{ $authorName }}</span>
         <span class="marginalia-author-role">
           {{- if eq $page.Lang "zh" -}}著者 · 主理人{{- else -}}Author · Curator{{- end -}}
         </span>

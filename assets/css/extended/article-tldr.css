@@ -1,46 +1,155 @@
 /* TL;DR / answer-first block — GEO/BLUF pattern.
    Uses design tokens so it stays consistent with the paper/ink theme and
-   adapts to dark mode automatically. Rendered by partials/article/tldr.html. */
+   adapts to dark mode automatically. Rendered by partials/article/tldr.html.
+   Decorative AI-flavoured motion is drawn by a tiny canvas (js/tldr-fx.js),
+   fully gated behind prefers-reduced-motion. */
 
 .article-tldr {
-  margin: var(--space-6) 0 var(--space-8);
+  position: relative;
+  /* Tighter top gap so it sits close to the cover/description above. */
+  margin: var(--space-4) 0 var(--space-7);
   padding: var(--space-5) var(--space-6);
   border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-accent);
-  border-radius: var(--radius-md);
-  background: var(--color-accent-soft);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--color-accent-soft) 70%, transparent) 0%,
+      color-mix(in srgb, var(--color-accent-soft) 38%, transparent) 100%);
   font-family: var(--font-prose, var(--font-body));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Animated gradient hairline on the left edge — the "spine" of the block. */
+.article-tldr::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    var(--color-accent) 0%,
+    color-mix(in srgb, var(--color-accent) 55%, #c9a15a) 50%,
+    var(--color-accent) 100%);
+  background-size: 100% 200%;
+  z-index: 3;
+}
+
+/* Canvas FX layer — particles / drifting light. Sits behind the text. */
+.article-tldr__fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 600ms ease;
+  pointer-events: none;
+}
+
+.article-tldr__fx.is-on {
+  opacity: 0.5;
+}
+
+/* Soft moving glow blob — pure CSS, cheap. */
+.article-tldr__glow {
+  position: absolute;
+  z-index: 1;
+  top: -40%;
+  right: -10%;
+  width: 50%;
+  height: 180%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--color-accent) 22%, transparent) 0%,
+    transparent 68%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.article-tldr__body {
+  position: relative;
+  z-index: 2;
 }
 
 .article-tldr__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-bottom: var(--space-3);
+}
+
+.article-tldr__label-text {
   font-family: var(--font-meta, var(--font-sans));
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: var(--space-2);
+  background: linear-gradient(
+    100deg,
+    var(--color-accent) 0%,
+    color-mix(in srgb, var(--color-accent) 55%, #c9a15a) 50%,
+    var(--color-accent) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sparkle icon — gently pulses to signal "AI summary". */
+.article-tldr__spark {
+  display: inline-flex;
+  width: 1.05em;
+  height: 1.05em;
+  color: var(--color-accent);
+  flex: 0 0 auto;
+}
+
+.article-tldr__spark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .article-tldr__text {
   margin: 0;
   font-size: 1.02rem;
-  line-height: 1.6;
+  line-height: 1.62;
   color: var(--color-text);
 }
 
 .article-tldr__list {
   margin: 0;
-  padding-left: 1.2em;
+  padding-left: 1.15em;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  list-style: none;
 }
 
 .article-tldr__list li {
+  position: relative;
   font-size: 0.98rem;
-  line-height: 1.55;
+  line-height: 1.58;
   color: var(--color-text);
+  padding-left: 0.1em;
+}
+
+/* Custom marker — small diamond in accent colour. */
+.article-tldr__list li::before {
+  content: "";
+  position: absolute;
+  left: -1em;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+  transform: rotate(45deg);
+  opacity: 0.7;
 }
 
 .article-tldr p:last-child,
@@ -48,7 +157,69 @@
   margin-bottom: 0;
 }
 
+/* ── Motion (gated by prefers-reduced-motion at the bottom) ── */
+@media (prefers-reduced-motion: no-preference) {
+  .article-tldr::before {
+    animation: tldr-spine-flow 5s ease-in-out infinite;
+  }
+  .article-tldr__label-text {
+    animation: tldr-label-shimmer 6s linear infinite;
+  }
+  .article-tldr__spark {
+    animation: tldr-spark-pulse 3.2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .article-tldr__glow {
+    animation: tldr-glow-drift 9s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes tldr-spine-flow {
+  0%, 100% { background-position: 0 0%; }
+  50% { background-position: 0 100%; }
+}
+
+@keyframes tldr-label-shimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes tldr-spark-pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+  50% { transform: scale(1.14) rotate(8deg); opacity: 1; }
+}
+
+@keyframes tldr-glow-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+  100% { transform: translate3d(-12%, 8%, 0) scale(1.12); opacity: 1; }
+}
+
 /* Dark mode: soften the accent fill so it doesn't glow. */
 .dark .article-tldr {
-  background: color-mix(in srgb, var(--color-accent-soft) 14%, transparent);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--color-accent-soft) 22%, transparent) 0%,
+      color-mix(in srgb, var(--color-accent-soft) 10%, transparent) 100%);
+}
+
+.dark .article-tldr__glow {
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--color-accent) 16%, transparent) 0%,
+    transparent 68%);
+}
+
+/* Reduced motion: kill all animation + canvas FX. */
+@media (prefers-reduced-motion: reduce) {
+  .article-tldr::before,
+  .article-tldr__label-text,
+  .article-tldr__spark,
+  .article-tldr__glow,
+  .article-tldr__fx {
+    animation: none !important;
+    transition: none;
+  }
+  .article-tldr__fx {
+    display: none;
+  }
 }
