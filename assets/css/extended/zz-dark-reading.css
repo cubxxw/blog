@@ -703,3 +703,30 @@ body.dark .post-content a.footnote-backref:focus-visible,
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
 }
+
+/* ── 21. Article meta line (date · reading time · author) ────────
+   The .post-meta line under every article title (custom.css ~line 2264)
+   paints var(--secondary) — rgb(155,156,157) in PaperMod dark — and then
+   stacks an extra `opacity: 0.7` on top. That double-dims the most-visible
+   secondary text on the page to an effective rgb(114,115,116) on the dark
+   paper: contrast ≈ 3.89:1 (EN) / 3.80:1 (ZH), UNDER the WCAG-AA 4.5:1 floor
+   for this small (0.78rem), uppercase, letter-spaced meta — exactly the size
+   where AA matters most. The single-post rule carries specificity (0,1,0);
+   this rule (body.dark .post-meta → 0,1,1, and loaded LAST in the extended
+   bundle) wins, drops the extra dim, and repaints the line in the design's
+   muted-ink token — the same colour already used for footnotes (§7),
+   figcaptions (§16), list markers (§18) and struck text (§19), so the meta
+   finally reads as one coherent muted-ink family in dark. Resolves to
+   9.49:1 (EN) / 6.93:1 (ZH) — comfortably AA, and still clearly recessed
+   below the body prose (≈14.5:1) so the visual hierarchy is unchanged. The
+   list/card meta (`.post-entry .post-meta` / `.first-entry .post-meta`,
+   specificity 0,2,0, colour #94a3b8 at ≈7.2:1) is more specific and already
+   AA, so it keeps its own colour — only the no-op `opacity:1` lands there.
+   Token-driven, so EN/ZH dark resolve automatically. Gated on body.dark /
+   [data-theme="dark"] — light mode keeps var(--secondary) × 0.7, provably
+   unchanged. */
+body.dark .post-meta,
+[data-theme="dark"] .post-meta {
+  color: var(--color-ink-muted, #b4bcb2);
+  opacity: 1;
+}
