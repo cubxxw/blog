@@ -730,3 +730,42 @@ body.dark .post-meta,
   color: var(--color-ink-muted, #b4bcb2);
   opacity: 1;
 }
+
+/* ── 22. AI-tech card/list title-hover & category in dark ────────
+   The home / section "AI 技术" cards and list rows colour their title
+   HOVER state and their category label with the brand violet #7c3aed
+   (custom.css: .ai-tech-card-title a:hover, .ai-tech-list-title a:hover,
+   .ai-tech-list-category). Those three rules are NOT theme-gated, so they
+   apply in BOTH modes. On the LIGHT white card #7c3aed sits at a healthy
+   5.70:1 — but in dark mode the same colour lands on the dark card surface
+   (.dark .ai-tech-card ≈ slate-800 over the warm paper) at just 2.72:1, and
+   on the darker list row at 2.92:1 — BOTH well under the WCAG-AA 4.5:1 floor.
+   So hovering an article title, or reading its category tag, in dark mode
+   rendered the text as a barely-legible dark-violet-on-dark smudge.
+
+   The fix is the convention this codebase ALREADY uses for the same hue in
+   dark: the badges next to these very cards were given color:#a78bfa for
+   dark mode (custom.css: .dark .ai-tech-badge line ~150, .dark .posts-badge
+   --ai line ~4729). These three states were simply missed — the dark title
+   override only set the RESTING colour (.dark .ai-tech-card-title a → #f3f4f6)
+   and let :hover fall through to the shared #7c3aed, and the list category
+   had no dark override at all. Reuse #a78bfa here so the violet reads
+   consistently across every AI-tech surface: it resolves to 5.69:1 on the
+   card and 6.10:1 on the list row — i.e. it restores the exact contrast the
+   light card already enjoys (5.70:1), clearing AA comfortably.
+
+   (The sibling "成长 / Growth" cards use amber #d97706 for the same states;
+   that hue already clears AA on the dark surface — 4.86:1 card / 5.21:1 list
+   — so it is intentionally left unchanged.)
+
+   Each selector below is body.dark-scoped (specificity ≥ the un-gated source
+   rule, and loaded last in the extended bundle), so it wins in dark and is
+   never selected in light — light mode is provably unchanged. */
+body.dark .ai-tech-card-title a:hover,
+body.dark .ai-tech-list-title a:hover,
+body.dark .ai-tech-list-category,
+[data-theme="dark"] .ai-tech-card-title a:hover,
+[data-theme="dark"] .ai-tech-list-title a:hover,
+[data-theme="dark"] .ai-tech-list-category {
+  color: #a78bfa;
+}
