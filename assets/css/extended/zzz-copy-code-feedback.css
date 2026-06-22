@@ -1,0 +1,91 @@
+/* ============================================================
+   zzz-copy-code-feedback.css — copy-button success feedback
+   ------------------------------------------------------------
+   The PaperMod copy button only swaps its label to "copied!".
+   This layer adds:
+     1. A tactile "pop + accent flash" when a copy succeeds
+        (JS toggles `.is-copied` for ~2s; see micro-interactions.js).
+     2. A discoverable baseline on touch devices, where the button
+        is otherwise opacity:0 forever (no :hover on a phone), so the
+        confirmation was previously invisible after a tap.
+   Everything is additive feedback and fully neutralised under
+   prefers-reduced-motion at the bottom. Loads after
+   article-typography.css, so it wins the cascade where needed.
+   ============================================================ */
+
+/* ---------- Touch discoverability ----------
+   Coarse pointers can't hover, so reveal the button at a quiet
+   baseline. It firms up on press and on the success state. */
+@media (hover: none) {
+  .post-content .highlight .copy-code,
+  .post-content pre .copy-code {
+    opacity: 0.6;
+  }
+  .post-content .highlight .copy-code:active,
+  .post-content pre .copy-code:active {
+    opacity: 1;
+    transform: scale(0.94);
+  }
+}
+
+/* ---------- Success state: pop + accent flash ---------- */
+@keyframes copy-code-pop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.12); }
+  65%  { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+.post-content .highlight .copy-code.is-copied,
+.post-content pre .copy-code.is-copied {
+  /* Stay visible through the confirmation even with no hover (mobile). */
+  opacity: 1 !important;
+  color: #fff !important;
+  background: var(--color-accent, var(--primary)) !important;
+  border-color: var(--color-accent, var(--primary)) !important;
+  animation: copy-code-pop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) 1;
+  box-shadow: 0 2px 10px
+    color-mix(in srgb, var(--color-accent, var(--primary)) 35%, transparent);
+}
+
+/* A small check that slips in ahead of the "copied!" label. */
+.post-content .highlight .copy-code.is-copied::before,
+.post-content pre .copy-code.is-copied::before {
+  content: "";
+  width: 0.72em;
+  height: 0.72em;
+  margin-right: 1px;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / contain
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
+  mask: no-repeat center / contain
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
+  animation: copy-code-check 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1;
+}
+@keyframes copy-code-check {
+  0%   { opacity: 0; transform: scale(0.4) rotate(-12deg); }
+  60%  { opacity: 1; transform: scale(1.18) rotate(0deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ============================================================
+   Reduced motion: keep the colour confirmation, drop the motion.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .post-content .highlight .copy-code.is-copied,
+  .post-content pre .copy-code.is-copied {
+    animation: none !important;
+  }
+  .post-content .highlight .copy-code.is-copied::before,
+  .post-content pre .copy-code.is-copied::before {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  @media (hover: none) {
+    .post-content .highlight .copy-code:active,
+    .post-content pre .copy-code:active {
+      transform: none !important;
+    }
+  }
+}

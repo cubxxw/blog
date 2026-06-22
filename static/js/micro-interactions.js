@@ -414,6 +414,35 @@
   }
 
   /* ---------------------------------------------------------
+   * 5. Copy-code button: success feedback (mobile + desktop)
+   *    The theme's copy button only swaps its label to "copied!".
+   *    Add a quick tactile "pop + accent flash" by toggling a
+   *    transient `.is-copied` class the CSS animates. Delegated so
+   *    it covers buttons the theme injects after load. Pure feedback
+   *    — the copy itself is handled by the theme; we never touch it.
+   * ------------------------------------------------------- */
+  function initCopyFeedback() {
+    document.addEventListener(
+      'click',
+      function (e) {
+        var btn = e.target.closest && e.target.closest('.copy-code');
+        if (!btn) return;
+        // Restart the animation cleanly on rapid re-clicks.
+        btn.classList.remove('is-copied');
+        // Force reflow so re-adding the class replays the keyframes.
+        void btn.offsetWidth;
+        btn.classList.add('is-copied');
+        // Matches the theme's 2s label-reset window.
+        window.clearTimeout(btn.__copiedTimer);
+        btn.__copiedTimer = window.setTimeout(function () {
+          btn.classList.remove('is-copied');
+        }, 2000);
+      },
+      { passive: true }
+    );
+  }
+
+  /* ---------------------------------------------------------
    * Boot
    * ------------------------------------------------------- */
   function init() {
@@ -433,6 +462,7 @@
     initImageFade();
     initSwipeNav();
     initRipple();
+    initCopyFeedback();
   }
 
   if (document.readyState === 'loading') {
