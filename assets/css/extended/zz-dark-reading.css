@@ -342,3 +342,31 @@ body.dark .post-content abbr[title],
   text-decoration-thickness: 1px;
   cursor: help;
 }
+
+/* ── 13. Hero cover image glare ──────────────────────────────────
+   In-prose images already get a subtle edge ring + brightness trim in
+   dark (section 3, `.post-content img`), but the LARGEST image on an
+   article — the 16:9 hero cover at `.post-single .entry-cover img`, which
+   lives OUTSIDE `.post-content` and so the section-3 rule never reached —
+   was left at full brightness. It therefore read as a glaring bright
+   block crowning an otherwise calm dark page, and its edge bled softly
+   into the surface. Apply the *same* restrained, already-proven treatment
+   used for prose images: a faint inset edge ring on the frame so the
+   boundary is crisp, and a touch less brightness to contain the glare,
+   with true colour returning on hover so the full cover is one
+   intentional gesture away. Values mirror section 3 exactly for visual
+   consistency across every image on the page. Dark mode only — light
+   keeps the cover untouched, provably unchanged. */
+body.dark .post-single .entry-cover,
+[data-theme="dark"] .post-single .entry-cover {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+body.dark .post-single .entry-cover img,
+[data-theme="dark"] .post-single .entry-cover img {
+  filter: brightness(0.94) contrast(1.02);
+  transition: filter 200ms ease;
+}
+body.dark .post-single .entry-cover:hover img,
+[data-theme="dark"] .post-single .entry-cover:hover img {
+  filter: brightness(1) contrast(1);
+}
