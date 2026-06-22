@@ -274,6 +274,16 @@
       };
     }
 
+    // Smart auto-scroll: only follow new content when the reader is already
+    // near the bottom. If they've scrolled up to re-read, a streaming reply
+    // shouldn't yank them back down.
+    function isNearBottom() {
+      return messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight < 80;
+    }
+    function scrollToBottom() {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
     function addMessage(text, role) {
       var div = document.createElement('div');
       div.className = 'rc-ai-msg rc-ai-msg--' + role;
@@ -283,7 +293,9 @@
         div.textContent = text;
       }
       messagesEl.appendChild(div);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
+      // The reader's own question always scrolls into view; AI bubbles only
+      // follow when they were already keeping up with the bottom.
+      if (role !== 'ai' || isNearBottom()) scrollToBottom();
       return div;
     }
 
@@ -358,7 +370,7 @@
       });
 
       messagesEl.appendChild(wrap);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
+      if (isNearBottom()) scrollToBottom();
     }
 
     function setLoading(on) {
@@ -437,9 +449,10 @@
                   } else {
                     var delta = sseJson.delta || '';
                     if (delta) {
+                      var follow = isNearBottom();
                       answer += delta;
                       streamDiv.innerHTML = parseMarkdown(answer);
-                      messagesEl.scrollTop = messagesEl.scrollHeight;
+                      if (follow) scrollToBottom();
                     }
                   }
                 } catch (_e) {}
@@ -483,7 +496,7 @@
           }).join('');
           srcDiv.innerHTML = '<span class="ai-sources-label">' + t('sourcesLabel') + '</span>' + srcLinks;
           messagesEl.appendChild(srcDiv);
-          messagesEl.scrollTop = messagesEl.scrollHeight;
+          if (isNearBottom()) scrollToBottom();
         }
 
         history.push({ role: 'user', content: q });
