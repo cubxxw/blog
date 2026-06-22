@@ -240,6 +240,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [Context 不是 Prompt：为什么「上下文工程」正在成为 AI 的新地基](https://nsddd.top/zh/ai-technology/posts/context-engineering-the-new-foundation/)
 - [2026年4月思考笔记](https://nsddd.top/zh/growth/posts/2026-04-thought-notes/)
 - [Agent 的自我：从洛克到 OpenClaw](https://nsddd.top/zh/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
 - [在不被需要的时代，如何维持自我的重量](https://nsddd.top/zh/growth/posts/weight-of-self-in-ai-age/)
