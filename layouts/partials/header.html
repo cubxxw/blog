@@ -235,6 +235,13 @@ document.addEventListener('click', function(event) {
 (function () {
     var headerWrapper = document.querySelector('.header-wrapper');
     if (!headerWrapper) return;
+    // Respect reduced-motion: keep the header steady instead of sliding it
+    // away on scroll for visitors who asked for less movement.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        headerWrapper.classList.remove('nav-scroll-hidden');
+        document.body.classList.remove('nav-hidden');
+        return;
+    }
     var lastScrollY = window.scrollY || window.pageYOffset;
     var ticking = false;
     var TOP_THRESHOLD = 80;     // 接近顶部时无条件显示

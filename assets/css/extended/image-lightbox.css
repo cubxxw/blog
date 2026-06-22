@@ -1,0 +1,154 @@
+/* ============================================================
+   image-lightbox.css — tap/click to view article images large
+   ------------------------------------------------------------
+   Pairs with image-lightbox.js. The overlay is a centered, dimmed
+   layer that fades + scales in. Fully additive: if the JS never
+   runs, images simply behave normally. Reduced motion collapses
+   the transitions to an instant show/hide (the feature still works).
+   ============================================================ */
+
+/* ---------- Affordance on the thumbnail ---------- */
+.post-content img.zoomable {
+  cursor: zoom-in;
+}
+@media (hover: hover) and (pointer: fine) {
+  .post-content img.zoomable {
+    transition: filter 0.25s ease, transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .post-content img.zoomable:hover {
+    filter: brightness(1.03);
+    transform: scale(1.01);
+  }
+}
+.post-content img.zoomable:focus-visible {
+  outline: 2px solid var(--color-accent, var(--primary));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Lock background scroll while the viewer is open. */
+html.lightbox-open {
+  overflow: hidden;
+}
+
+/* ---------- Overlay ---------- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(12, 14, 16, 0.82);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  cursor: zoom-out;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+.lightbox-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  /* leave headroom for the caption below */
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+  cursor: default;
+  transform: scale(0.94);
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.lightbox-overlay.is-open .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-caption {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  text-align: center;
+  max-width: 60ch;
+  margin: 0;
+}
+.lightbox-caption[hidden] {
+  display: none;
+}
+
+/* ---------- Close button ---------- */
+.lightbox-close {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.lightbox-close svg {
+  width: 22px;
+  height: 22px;
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+.lightbox-close:active {
+  transform: scale(0.9);
+}
+.lightbox-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Reduced motion: keep the feature, drop the movement.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .post-content img.zoomable,
+  .post-content img.zoomable:hover {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .lightbox-overlay,
+  .lightbox-img {
+    transition: none !important;
+  }
+  .lightbox-overlay.is-open .lightbox-img {
+    transform: none;
+  }
+  .lightbox-img {
+    transform: none;
+  }
+  .lightbox-close {
+    transition: none !important;
+  }
+}

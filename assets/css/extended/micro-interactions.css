@@ -326,6 +326,29 @@ button:focus-visible,
   to { opacity: 1; transform: none; }
 }
 
+/* ---------- Hamburger → X morph (mobile) ---------- */
+/* The toggle already flips aria-expanded="true" when the menu opens, so
+   the three bars can morph into a close (✕) glyph with pure CSS — no JS
+   change needed. The top/bottom bars rotate to cross at centre and the
+   middle bar collapses. Line order in the markup is middle, top, bottom. */
+.hamburger-menu svg line {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.2s ease;
+}
+.hamburger-menu[aria-expanded="true"] svg line:nth-child(1) {
+  opacity: 0;
+  transform: scaleX(0.15);
+}
+.hamburger-menu[aria-expanded="true"] svg line:nth-child(2) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburger-menu[aria-expanded="true"] svg line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 /* ---------- Nav controls: tap feedback (mobile + desktop) ---------- */
 /* The theme toggle and hamburger already press; extend the same tactile
    scale-down to the remaining nav controls so every tap confirms itself. */
@@ -385,6 +408,8 @@ button:focus-visible,
 
   /* New nav/tag motion: neutralise entirely under reduced motion. */
   #menu.mobile-open > li { animation: none !important; }
+  /* Hamburger still forms the ✕, but snaps instead of animating. */
+  .hamburger-menu svg line { transition: none !important; }
   #menu > li > a:active,
   .nav-search-trigger:active,
   .lang-switch a:active,
