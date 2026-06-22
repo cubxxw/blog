@@ -38,14 +38,19 @@
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
+            var id = decodeURIComponent(this.getAttribute("href").substr(1));
+            // getElementById tolerates ids with special characters (quotes,
+            // colons, CJK) that a `[id='…']` attribute selector would choke
+            // on. Guard against missing targets so a stale or "#" link never
+            // throws and silently dead-ends the click — it just falls through
+            // to the browser's default behaviour instead.
+            var target = id ? document.getElementById(id) : null;
+            if (!target) return;
             e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
+                target.scrollIntoView({ behavior: "smooth" });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
             if (id === "top") {
                 history.replaceState(null, null, " ");
