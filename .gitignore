@@ -98,3 +98,10 @@ iterations.jsonl
 
 # Playwright MCP snapshots
 .playwright-mcp/
+
+# Local debugging / audit scratch (screenshots, test harnesses, probes)
+# Root-level only — never ignore image assets under assets/ static/ design/
+_dark-audit/
+_probe*
+.harness.html
+/*.png
