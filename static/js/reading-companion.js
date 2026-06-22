@@ -11,6 +11,7 @@
       timeout: '请求超时，请稍后重试。',
       genericError: '请求失败，请稍后重试。',
       retry: '↺ 重试',
+      sourcesLabel: '相关阅读',
       followupLabel: '继续追问',
       followups: [
         '能再具体展开一下吗？',
@@ -27,6 +28,7 @@
       timeout: 'Request timed out. Please try again.',
       genericError: 'Request failed. Please try again.',
       retry: '↺ Retry',
+      sourcesLabel: 'Related reading',
       followupLabel: 'Keep asking',
       followups: [
         'Can you expand on that?',
@@ -391,15 +393,23 @@
           addMessage(answer, 'ai');
         }
 
-        // Render source link if candidates available
-        if (rcCandidates.length > 0) {
+        // Render "related reading" only for candidates that point to a
+        // *different* article — a permalink that's empty or equals the
+        // current page is self-referential noise, so we drop it.
+        var here = window.location.pathname.replace(/\/$/, '');
+        var related = rcCandidates.filter(function (c) {
+          if (!c || !c.permalink || !c.title) return false;
+          var p = String(c.permalink).replace(/^https?:\/\/[^/]+/, '').replace(/\/$/, '');
+          return p && p !== here;
+        });
+        if (related.length > 0) {
           var srcDiv = document.createElement('div');
           srcDiv.className = 'ai-sources';
-          var srcLinks = rcCandidates.slice(0, 3).map(function(c) {
-            var href = c.permalink || window.location.pathname;
-            return '<a href="' + href + '" class="ai-source-link" target="_blank">' + c.title + '</a>';
+          var srcLinks = related.slice(0, 3).map(function (c) {
+            var safeTitle = String(c.title).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+            return '<a href="' + c.permalink + '" class="ai-source-link" target="_blank" rel="noopener">' + safeTitle + '</a>';
           }).join('');
-          srcDiv.innerHTML = '<span class="ai-sources-label">参考 / Source: </span>' + srcLinks;
+          srcDiv.innerHTML = '<span class="ai-sources-label">' + t('sourcesLabel') + '</span>' + srcLinks;
           messagesEl.appendChild(srcDiv);
           messagesEl.scrollTop = messagesEl.scrollHeight;
         }

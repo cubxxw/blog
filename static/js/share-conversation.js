@@ -94,10 +94,18 @@
     var dark    = document.body.classList.contains('dark');
 
     var W = 1080, H = 680;
+    // High-DPI rendering so the exported PNG stays crisp on retina screens.
+    var DPR = Math.min(window.devicePixelRatio || 1, 2);
     var canvas = document.createElement('canvas');
-    canvas.width  = W;
-    canvas.height = H;
+    canvas.width  = W * DPR;
+    canvas.height = H * DPR;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
     var ctx = canvas.getContext('2d');
+    ctx.scale(DPR, DPR);
+    ctx.textBaseline = 'alphabetic';
+
+    var FONT = '-apple-system,"Inter","Helvetica Neue","PingFang SC","Hiragino Sans GB",sans-serif';
 
     // Background gradient
     var bg = ctx.createLinearGradient(0, 0, W, H);
@@ -105,34 +113,49 @@
       bg.addColorStop(0, '#1e211e');
       bg.addColorStop(1, '#272b27');
     } else {
-      bg.addColorStop(0, '#f4f5f2');
-      bg.addColorStop(1, '#eaeae4');
+      bg.addColorStop(0, '#f6f6f3');
+      bg.addColorStop(1, '#eceae3');
     }
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, W, H);
 
     // Top accent bar
-    var accent = dark ? '#4d6a4d' : '#862122';
+    var accent = dark ? '#7fa07f' : '#862122';
     ctx.fillStyle = accent;
-    ctx.fillRect(0, 0, W, 5);
+    ctx.fillRect(0, 0, W, 6);
 
-    var ink    = dark ? '#dde0dc' : '#1a1c1b';
-    var muted  = dark ? 'rgba(210,215,210,0.48)' : 'rgba(30,35,30,0.42)';
+    var ink    = dark ? '#e3e6e2' : '#1a1c1b';
+    var muted  = dark ? 'rgba(210,215,210,0.50)' : 'rgba(30,35,30,0.44)';
     var subtle = dark ? 'rgba(210,215,210,0.12)' : 'rgba(30,35,30,0.08)';
-    var PAD = 68;
+    var PAD = 72;
+    var IND = PAD + 34; // text indent past the Q/A badge
+
+    // Rounded badge helper for the Q / A markers
+    function badge(letter, cx, cy) {
+      var r = 13;
+      ctx.beginPath();
+      ctx.arc(cx + r, cy - 5, r, 0, Math.PI * 2);
+      ctx.fillStyle = accent;
+      ctx.fill();
+      ctx.font = 'bold 14px ' + FONT;
+      ctx.fillStyle = dark ? '#1e211e' : '#fff';
+      ctx.textAlign = 'center';
+      ctx.fillText(letter, cx + r, cy);
+      ctx.textAlign = 'left';
+    }
 
     // Header row
-    ctx.font = 'bold 18px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
+    ctx.font = 'bold 19px ' + FONT;
     ctx.fillStyle = accent;
-    ctx.fillText('AI Conversation', PAD, 58);
+    ctx.fillText('AI Conversation', PAD, 62);
 
-    ctx.font = '15px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
+    ctx.font = '15px ' + FONT;
     ctx.fillStyle = muted;
-    ctx.fillText(siteName, PAD, 82);
+    ctx.fillText(siteName, PAD, 86);
 
     // Divider
     ctx.fillStyle = subtle;
-    ctx.fillRect(PAD, 100, W - PAD * 2, 1);
+    ctx.fillRect(PAD, 106, W - PAD * 2, 1);
 
     // Find last Q&A pair
     var userMsg = null, aiMsg = null;
@@ -142,68 +165,70 @@
       if (userMsg && aiMsg) break;
     }
 
-    var y = 136;
+    var y = 150;
 
     // Question block
     if (userMsg) {
       var qRaw = userMsg.content.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
       var qText = qRaw.length > 140 ? qRaw.slice(0, 137) + '…' : qRaw;
 
-      ctx.font = '500 13px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
-      ctx.fillStyle = muted;
-      ctx.fillText('Q', PAD, y);
+      badge('Q', PAD, y);
 
-      ctx.font = '600 22px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
+      ctx.font = '600 23px ' + FONT;
       ctx.fillStyle = ink;
-      var qLines = wrapText(ctx, qText, W - PAD * 2 - 36, 22);
+      var qLines = wrapText(ctx, qText, W - IND - PAD, 23);
       qLines.slice(0, 3).forEach(function (line) {
-        ctx.fillText(line, PAD + 28, y);
-        y += 34;
+        ctx.fillText(line, IND, y);
+        y += 36;
       });
-      y += 18;
+      y += 22;
     }
 
     // Divider between Q and A
     ctx.fillStyle = subtle;
-    ctx.fillRect(PAD, y - 4, W - PAD * 2, 1);
-    y += 20;
+    ctx.fillRect(PAD, y - 6, W - PAD * 2, 1);
+    y += 28;
 
     // Answer block
     if (aiMsg) {
       var aRaw = aiMsg.content.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-      var aText = aRaw.length > 340 ? aRaw.slice(0, 337) + '…' : aRaw;
+      var aText = aRaw.length > 360 ? aRaw.slice(0, 357) + '…' : aRaw;
 
-      ctx.font = '500 13px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
-      ctx.fillStyle = muted;
-      ctx.fillText('A', PAD, y);
+      badge('A', PAD, y);
 
-      ctx.font = '18px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
-      ctx.fillStyle = dark ? 'rgba(210,215,210,0.82)' : 'rgba(30,35,30,0.72)';
-      var aLines = wrapText(ctx, aText, W - PAD * 2 - 36, 18);
-      var maxLines = Math.min(aLines.length, 7);
+      ctx.font = '18px ' + FONT;
+      ctx.fillStyle = dark ? 'rgba(214,219,214,0.86)' : 'rgba(30,35,30,0.74)';
+      var aLines = wrapText(ctx, aText, W - IND - PAD, 18);
+      var maxLines = Math.min(aLines.length, 8);
       aLines.slice(0, maxLines).forEach(function (line, idx) {
-        ctx.fillText(line, PAD + 28, y + idx * 30);
+        ctx.fillText(line, IND, y + idx * 31);
       });
       if (aLines.length > maxLines) {
         ctx.fillStyle = muted;
-        ctx.fillText('…', PAD + 28, y + maxLines * 30);
+        ctx.fillText('…', IND, y + maxLines * 31);
       }
     }
 
     // Footer
     ctx.fillStyle = subtle;
-    ctx.fillRect(PAD, H - 72, W - PAD * 2, 1);
+    ctx.fillRect(PAD, H - 76, W - PAD * 2, 1);
 
-    ctx.font = '13px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
+    // Brand dot + url
+    ctx.beginPath();
+    ctx.arc(PAD + 4, H - 49, 4, 0, Math.PI * 2);
+    ctx.fillStyle = accent;
+    ctx.fill();
+
+    ctx.font = '13px ' + FONT;
     ctx.fillStyle = muted;
-    var shortUrl = url.length > 64 ? url.slice(0, 61) + '…' : url;
-    ctx.fillText(shortUrl, PAD, H - 44);
+    var shortUrl = url.length > 60 ? url.slice(0, 57) + '…' : url;
+    ctx.fillText(shortUrl, PAD + 18, H - 44);
 
     if (title) {
-      ctx.font = '500 13px -apple-system,"Inter","Helvetica Neue","PingFang SC",sans-serif';
+      ctx.font = '500 13px ' + FONT;
       ctx.fillStyle = ink;
       ctx.textAlign = 'right';
-      var shortTitle = title.length > 48 ? title.slice(0, 45) + '…' : title;
+      var shortTitle = title.length > 46 ? title.slice(0, 43) + '…' : title;
       ctx.fillText(shortTitle, W - PAD, H - 44);
       ctx.textAlign = 'left';
     }
