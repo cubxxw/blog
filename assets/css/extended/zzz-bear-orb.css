@@ -71,11 +71,19 @@ body.dark .hp-bear-orbit-wrap.has-orb .hp-bear-chat {
 }
 
 /* ---- Streaming message micro-motion --------------------------------- */
-/* New messages rise + fade + scale in. renderChat() rebuilds the list each
-   token while streaming; the animation is short so re-runs read as a steady
-   "alive" pulse rather than a jarring re-entry. */
-.hp-bear-chat-msg {
+/* New messages rise + fade + scale in. Limit the enter animation to the
+   LAST message only: renderChat() rebuilds the whole list via innerHTML, so
+   animating every .hp-bear-chat-msg would replay the enter on the entire
+   transcript on each rebuild — that, plus per-token re-renders, was the
+   strobing. Streaming now patches the bubble in place (no rebuild), and only
+   the freshest message animates in. */
+.hp-bear-chat-msg:last-child {
   animation: hpMsgIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* The streaming bubble is patched in place, never re-created, so it must not
+   carry an enter animation at all while it grows. */
+.hp-bear-chat-bubble.is-streaming {
+  animation: none;
 }
 @keyframes hpMsgIn {
   from { opacity: 0; transform: translateY(8px) scale(0.98); }

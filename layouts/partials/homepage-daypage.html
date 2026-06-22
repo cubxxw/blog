@@ -628,6 +628,24 @@
     });
   }
 
+  // Patch only the growing reply bubble in place. Calling renderChat() on
+  // every streamed token rebuilt the whole chat via innerHTML, so the bear
+  // message was a brand-new node each time and replayed the hpMsgIn enter
+  // animation — the panel strobed. Here we mutate the existing last bear
+  // bubble's HTML only: no node churn, no re-animation, smooth typewriter.
+  function updateStreamingBubble(contentHtml) {
+    var body = document.getElementById('hp-chat-body');
+    if (!body) { renderChat(); return; }
+    var bubbles = body.querySelectorAll('.hp-bear-chat-msg-bear .hp-bear-chat-bubble');
+    var last = bubbles[bubbles.length - 1];
+    if (!last) { renderChat(); return; }
+    last.classList.add('is-streaming');
+    last.innerHTML = contentHtml;
+    // Keep the newest text in view without yanking if the user scrolled up.
+    var nearBottom = body.scrollHeight - body.scrollTop - body.clientHeight < 80;
+    if (nearBottom) body.scrollTop = body.scrollHeight;
+  }
+
   function openChat(initMsg) {
     chatOpen = true; renderChat();
     if (initMsg) sendMsg(initMsg);
@@ -663,15 +681,31 @@
         messages.push({ role:'bear', content:'' });
         loading = false;
         streaming = true;          // caret on the growing bubble; orb keeps thinking
+        // Build the chat skeleton ONCE (this lays down the empty bear bubble);
+        // every subsequent token patches that bubble in place — no re-render,
+        // no flicker.
+        renderChat();
         function pump() {
           return reader.read().then(function(chunk) {
-            if (chunk.done) { streaming = false; orbSet('setThinking', false); renderChat(); return; }
+            if (chunk.done) {
+              streaming = false;
+              orbSet('setThinking', false);
+              renderChat();         // final pass: drops the caret, settles state
+              return;
+            }
             var lines = decoder.decode(chunk.value).split('\n');
             lines.forEach(function(line) {
               if (line.startsWith('data: ')) {
                 var d = line.slice(6).trim();
                 if (d && d !== '[DONE]') {
-                  try { var j = JSON.parse(d); if (j.delta) { reply += j.delta; messages[messages.length-1].content = reply; renderChat(); } } catch(e) {}
+                  try {
+                    var j = JSON.parse(d);
+                    if (j.delta) {
+                      reply += j.delta;
+                      messages[messages.length-1].content = reply;
+                      updateStreamingBubble(renderMsg(reply));  // in-place, no flicker
+                    }
+                  } catch(e) {}
                 }
               }
             });
