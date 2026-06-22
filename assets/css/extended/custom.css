@@ -2747,7 +2747,9 @@ details summary,
 /* Smooth scroll for anchor links */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--header-height) + 20px);
+    /* Fallback (72px ≈ sticky header height) keeps anchored jumps clear of
+       the bar even before/without the JS that measures --header-height. */
+    scroll-padding-top: calc(var(--header-height, 72px) + 20px);
 }
 
 /* ===================================
@@ -5198,7 +5200,7 @@ a.profile_status {
 
 /* Latest Posts Section Anchor Offset */
 #latest-posts, #start-here {
-    scroll-margin-top: calc(var(--header-height) + 20px);
+    scroll-margin-top: calc(var(--header-height, 72px) + 20px);
 }
 
 /* ===================================

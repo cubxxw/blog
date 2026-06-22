@@ -26,6 +26,26 @@
   border-radius: 4px;
 }
 
+/* ---------- Touch press cue ----------
+   On desktop the hover scale/brightness above signals "this image opens".
+   Touch screens have no hover, so a tapped image gave no confirmation that
+   the gesture registered until the overlay faded in. Add a quick press
+   "depress" — a hair of scale-down that eases back on release — so a tap
+   reads as acknowledged on phones, mirroring the desktop affordance. The
+   transition is declared outside the hover query so touch devices get it
+   too; kept tiny (1.5%) so it never reflows the surrounding text. The
+   platform grey tap-flash is suppressed so this is the only cue seen. */
+.post-content img.zoomable {
+  -webkit-tap-highlight-color: transparent;
+  /* Matches the hover transition above so desktop feel is unchanged; this
+     just extends the same easing to touch devices (which skip the hover
+     query) so the press below animates instead of snapping. */
+  transition: filter 0.25s ease, transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.post-content img.zoomable:active {
+  transform: scale(0.985);
+}
+
 /* Lock background scroll while the viewer is open. */
 html.lightbox-open {
   overflow: hidden;
@@ -133,7 +153,8 @@ html.lightbox-open {
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   .post-content img.zoomable,
-  .post-content img.zoomable:hover {
+  .post-content img.zoomable:hover,
+  .post-content img.zoomable:active {
     transition: none !important;
     transform: none !important;
     filter: none !important;

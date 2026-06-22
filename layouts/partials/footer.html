@@ -121,6 +121,11 @@
             const scrolled = window.scrollY;
             const progress = (scrolled / windowHeight) * 100;
             progressBar.style.width = progress + '%';
+            // One-shot "you've reached the end" cue. The class is toggled
+            // (not re-added every frame) so the pulse plays once on arrival
+            // and replays only if the reader leaves the end and returns.
+            // CSS: zz-reading-progress-complete.css (reduced-motion safe).
+            progressBar.classList.toggle('is-complete', progress >= 99.5);
         }
 
         // Throttle scroll events for better performance.

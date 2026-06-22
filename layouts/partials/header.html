@@ -236,6 +236,39 @@ document.addEventListener('click', function(event) {
     var headerWrapper = document.querySelector('.header-wrapper');
     if (!headerWrapper) return;
 
+    // ── Publish the real sticky-header height as --header-height ──────────
+    // Several stylesheets offset anchored navigation by the header height
+    // (scroll-padding-top / scroll-margin-top for deep links, TOC jumps,
+    // footnotes and the #latest-posts / #start-here anchors, plus the TOC
+    // sidebar's sticky `top`). The variable was referenced but never set, so
+    // those `calc(var(--header-height) …)` rules with no fallback evaluated
+    // to an invalid length and were dropped — anchor jumps then landed
+    // *behind* the sticky bar. Measure the header and expose the value (kept
+    // in sync on resize / orientation change / font load) so every offset is
+    // accurate and responsive. Cheap: reads offsetHeight only on these rare
+    // events, never on scroll.
+    var headerHeightRAF = 0;
+    function setHeaderHeight() {
+        var h = Math.round(headerWrapper.offsetHeight);
+        if (h > 0) {
+            document.documentElement.style.setProperty('--header-height', h + 'px');
+        }
+    }
+    function scheduleHeaderHeight() {
+        if (headerHeightRAF) return;
+        headerHeightRAF = requestAnimationFrame(function () {
+            headerHeightRAF = 0;
+            setHeaderHeight();
+        });
+    }
+    setHeaderHeight();
+    window.addEventListener('resize', scheduleHeaderHeight, { passive: true });
+    window.addEventListener('orientationchange', scheduleHeaderHeight, { passive: true });
+    // Web fonts can change the bar's height after first paint.
+    if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+        document.fonts.ready.then(setHeaderHeight).catch(function () {});
+    }
+
     // The auto-hide slide is motion; honour prefers-reduced-motion by keeping
     // the header steady for those visitors. The scroll-elevation shadow is a
     // static depth cue (no movement) so it still runs for everyone.

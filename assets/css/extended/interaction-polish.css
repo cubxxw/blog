@@ -114,5 +114,9 @@ html.motion-reveal .reading-progress-bar {
   }
   html.motion-reveal .reading-progress-bar {
     box-shadow: none !important;
+    /* The bar fills via a `width` transition (custom.css). For visitors who
+       ask for reduced motion, drop the easing so the indicator snaps to the
+       read position instead of sliding — informational, not animated. */
+    transition: none !important;
   }
 }

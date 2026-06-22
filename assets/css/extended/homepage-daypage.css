@@ -44,10 +44,17 @@ body.dark .homepage-root {
   --surface-sunken: #1A1816;
   --fg-primary:     #F5F0E8;
   --fg-muted:       #A8A29E;
-  /* Lifted from #6B6560 → #8C867E so subtle labels, dates and section
-     markers stay legible on the dark surfaces (contrast ~2.8 → ~4.0)
-     while remaining clearly recessed below --fg-muted. Dark mode only. */
-  --fg-subtle:      #8C867E;
+  /* Lifted from #6B6560 → #8C867E → #9A938A so subtle labels, dates and
+     section markers (the 9–10px mono eyebrows: FIELD NOTES, CHAPTERS·PAGES·
+     CITIES, post dates, heatmap legend, subscribe meta/RSS) clear WCAG AA on
+     the dark card surfaces. At #8C867E they measured 4.39–4.47:1 against the
+     lightest surface (--surface-white #252220), i.e. a hair UNDER the 4.5:1
+     threshold for normal text — and these are small labels where AA matters
+     most. #9A938A measures ≥5.1:1 on every dark surface they sit on while
+     staying clearly recessed below --fg-muted (#A8A29E), so the visual
+     hierarchy is unchanged. Dark mode only — the light --fg-subtle is defined
+     separately in the :root .homepage-root block and is untouched. */
+  --fg-subtle:      #9A938A;
   --accent:         #D4863A;
   --accent-hover:   #E8953D;
   --accent-soft:    #2A1F14;
