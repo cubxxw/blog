@@ -12,6 +12,7 @@
       genericError: '请求失败，请稍后重试。',
       retry: '↺ 重试',
       sourcesLabel: '相关阅读',
+      greeting: '我已读完这篇文章，可以帮你总结、追问或挑战其中的观点。点上面的快捷入口，或直接提问。',
       followupLabel: '继续追问',
       topicTemplate: function (h) { return '「' + h + '」这部分能展开讲讲吗？'; },
       followups: [
@@ -30,6 +31,7 @@
       genericError: 'Request failed. Please try again.',
       retry: '↺ Retry',
       sourcesLabel: 'Related reading',
+      greeting: "I've read this article — I can summarize it, dig into details, or challenge its claims. Tap a shortcut above, or just ask.",
       followupLabel: 'Keep asking',
       topicTemplate: function (h) { return 'Can you expand on the "' + h + '" part?'; },
       followups: [
@@ -193,6 +195,23 @@
     var history  = [];
     var busy     = false;
     var lastQuestion = '';
+
+    // One-time greeting so an empty AI panel explains what it can do instead
+    // of showing a bare composer. Removed as soon as the reader sends.
+    if (messagesEl && !messagesEl.children.length) {
+      var greetEl = document.createElement('div');
+      greetEl.className = 'rc-ai-msg rc-ai-msg--ai rc-ai-greeting';
+      // Inline-styled (no new CSS) so the greeting reads as a soft hint, not
+      // a real answer.
+      greetEl.style.opacity = '0.62';
+      greetEl.style.fontStyle = 'italic';
+      greetEl.textContent = t('greeting');
+      messagesEl.appendChild(greetEl);
+    }
+    function clearGreeting() {
+      var g = messagesEl && messagesEl.querySelector('.rc-ai-greeting');
+      if (g) g.remove();
+    }
 
     // Share button — injected into input area, shown after first AI reply
     var shareBtn = document.createElement('button');
@@ -386,6 +405,7 @@
       if (!q || busy) return;
       lastQuestion = q;
 
+      clearGreeting();
       // Clear any follow-up chips from the prior reply before the new turn.
       var prevFollowups = messagesEl.querySelector('.rc-ai-followups');
       if (prevFollowups) prevFollowups.remove();
