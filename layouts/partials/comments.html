@@ -15,14 +15,42 @@
     </div>
   </header>
 
-  <div class="post-comments__body">
-    <script src="https://utteranc.es/client.js"
-            repo="cubxxw/blog"
-            issue-term="pathname"
-            label="blog-comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-    </script>
-  </div>
+  <div class="post-comments__body" id="post-comments-body"></div>
+  {{- /* Theme-aware utterances loader: github-light in light mode (unchanged),
+         github-dark in dark mode, and live-switches when the reader toggles
+         the site theme. Keeps the dark page from flashing a glaring white
+         comment widget. */ -}}
+  <script>
+  (function () {
+    var REPO = "cubxxw/blog";
+    function currentTheme() {
+      return document.body.classList.contains("dark") ? "github-dark" : "github-light";
+    }
+    function load() {
+      var host = document.getElementById("post-comments-body");
+      if (!host || host.querySelector("script[src*='utteranc.es']")) return;
+      var s = document.createElement("script");
+      s.src = "https://utteranc.es/client.js";
+      s.setAttribute("repo", REPO);
+      s.setAttribute("issue-term", "pathname");
+      s.setAttribute("label", "blog-comment");
+      s.setAttribute("theme", currentTheme());
+      s.setAttribute("crossorigin", "anonymous");
+      s.async = true;
+      host.appendChild(s);
+    }
+    function applyTheme() {
+      var frame = document.querySelector(".utterances-frame");
+      if (!frame || !frame.contentWindow) return;
+      frame.contentWindow.postMessage(
+        { type: "set-theme", theme: currentTheme() },
+        "https://utteranc.es"
+      );
+    }
+    load();
+    // Re-theme the already-loaded comment widget when body.dark toggles.
+    var mo = new MutationObserver(applyTheme);
+    mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  })();
+  </script>
 </section>

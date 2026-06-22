@@ -222,3 +222,72 @@ body.dark .post-content details[open] > summary,
   border-bottom: 1px solid var(--color-rule, rgba(226, 227, 225, 0.10));
   margin-bottom: 0.6rem;
 }
+
+/* ── 9. Comments loading skeleton ────────────────────────────────
+   The utterances loading shimmer (post-footer.css) painted a light
+   gradient — var(--color-surface-low, #f4f4f2), which is undefined and so
+   falls back to a near-white #f4f4f2 in BOTH modes. On the dark page this
+   flashed a glaring pale band before the comment iframe replaced it.
+   Repaint the shimmer with quiet dark-surface tones. Only the gradient
+   IMAGE is overridden (via background-image) so the base rule's
+   background-size:200% and shimmer animation keep working. Dark only. */
+body.dark .post-comments__body:empty::before,
+body.dark .post-comments__body:has(> script:only-child)::before,
+[data-theme="dark"] .post-comments__body:empty::before,
+[data-theme="dark"] .post-comments__body:has(> script:only-child)::before {
+  background-image: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.015) 50%,
+    rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0.5;
+}
+
+/* The utterances iframe itself ships transparent, so once it loads it sits
+   correctly on the dark page; the script tag now requests the github-dark
+   theme in dark mode (see layouts/partials/comments.html). No further iframe
+   styling needed here. */
+
+/* ── 10. Task-list checkboxes ────────────────────────────────────
+   Goldmark renders Markdown task lists (- [ ] / - [x]) as a bare,
+   disabled native <input type=checkbox> with NO wrapper class, so dark
+   mode fell back to the browser's native control: a glaring light box
+   that punches a hole in the dark surface, and — when checked — a
+   washed-out greyed tick that's hard to read. Replace the box (dark only)
+   with a quiet token-drawn square and an accent checkmark when ticked, so
+   checklists read as a calm part of the page. Token-driven, so the ZH
+   accent is picked up automatically. Light mode keeps the native control,
+   provably unchanged. */
+body.dark .post-content input[type="checkbox"],
+[data-theme="dark"] .post-content input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.05em;
+  height: 1.05em;
+  margin: 0 0.5em 0 0;
+  vertical-align: -0.16em;
+  border: 1px solid var(--color-rule, rgba(226, 227, 225, 0.30));
+  border-radius: 0.28em;
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+  cursor: default;
+  opacity: 1; /* override the dimmed native [disabled] rendering */
+  transition: background 150ms ease, border-color 150ms ease;
+}
+body.dark .post-content input[type="checkbox"]:checked,
+[data-theme="dark"] .post-content input[type="checkbox"]:checked {
+  background: var(--color-accent-soft, rgba(125, 211, 252, 0.16));
+  border-color: var(--color-accent, #7dd3fc);
+}
+/* CSS-drawn checkmark in the language accent. */
+body.dark .post-content input[type="checkbox"]:checked::after,
+[data-theme="dark"] .post-content input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 0.34em;
+  top: 0.12em;
+  width: 0.26em;
+  height: 0.54em;
+  border: solid var(--color-accent, #7dd3fc);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
