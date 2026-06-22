@@ -580,3 +580,61 @@ body.dark .post-content table,
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.20) transparent;
 }
+
+/* ── 18. List markers (bullets & ordered numbers) ────────────────
+   Markdown lists are everywhere in this blog's technical posts, but no
+   `::marker` rule exists anywhere — the only list styling sets spacing
+   (custom.css) and list-style:none on a few layout lists. So in dark mode
+   the disc bullets and the "1." "2." ordered numbers inherit the FULL body
+   ink (#e2e3e1 EN / #f5f3ee ZH): each marker renders at the exact weight
+   and colour of the prose beside it, so on a long list the markers compete
+   for attention with the text they're only meant to index. Demote them to
+   the muted ink so the marker reads as a quiet guide and the sentence
+   leads — the same "lead with prose, support with structure" move already
+   applied to footnotes (§7) and figcaptions (§16). Token-driven, so the ZH
+   palette (#a8a29e) is picked up automatically; muted ink on the dark paper
+   still clears WCAG AA, so nothing becomes hard to find. Scoped to
+   `.post-content` so component lists (TOC, nav, cards) keep their styling,
+   and only `::marker` is touched — the list item's own text stays full ink.
+   Gated on body.dark / [data-theme="dark"] — light mode keeps the browser
+   default marker, provably unchanged. */
+body.dark .post-content li::marker,
+[data-theme="dark"] .post-content li::marker {
+  color: var(--color-ink-muted, #b4bcb2);
+}
+
+/* ── 19. Strikethrough / retracted text <del> <s> ────────────────
+   GFM strikethrough (`~~text~~`) is used in several posts (e.g. the
+   prow / langchain / annual-review notes) and Goldmark renders it as
+   <del>; hand-written <s> appears too. NO `del`/`s` rule exists anywhere,
+   so in dark mode struck text renders at the FULL body ink (#e2e3e1 EN /
+   #f5f3ee ZH) with a full-ink line through it — i.e. the one thing the
+   author marked as removed/superseded shouts at the exact weight of the
+   live prose around it, and the heavy line crowds the glyphs. Semantically
+   struck text should read as quiet and secondary, so demote it to the
+   muted ink (the same "lead with prose, support with structure" move used
+   for footnotes §7, figcaptions §16 and list markers §18) and thin the
+   line a touch so it marks the words without smothering them. Token-driven,
+   so the ZH muted palette (#a8a29e) is picked up automatically; muted ink
+   on the dark paper still clears WCAG AA, so retracted text stays legible
+   for anyone who wants to read it. Scoped to `.post-content` so any
+   component strike (none today) is untouched, and `del a`/`s a` keep their
+   link colour so a struck-through link is still reachable. Gated on
+   body.dark / [data-theme="dark"] — light mode keeps the browser default,
+   provably unchanged. */
+body.dark .post-content del,
+body.dark .post-content s,
+[data-theme="dark"] .post-content del,
+[data-theme="dark"] .post-content s {
+  color: var(--color-ink-muted, #b4bcb2);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--color-rule, rgba(226, 227, 225, 0.45));
+  text-decoration-thickness: 1px;
+}
+/* A struck link keeps its own accent so it stays discoverable. */
+body.dark .post-content del a,
+body.dark .post-content s a,
+[data-theme="dark"] .post-content del a,
+[data-theme="dark"] .post-content s a {
+  color: var(--color-accent, #7dd3fc);
+}
