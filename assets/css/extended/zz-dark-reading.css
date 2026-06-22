@@ -343,6 +343,36 @@ body.dark .post-content abbr[title],
   cursor: help;
 }
 
+/* ── 14. Inline citation superscripts <sup> ──────────────────────
+   This blog's research-style posts cite sources with hand-authored
+   <sup>N</sup> markers — ~2,780 across the content — that point to a
+   numbered reference list at the foot of the article. They are plain
+   superscripts, NOT links, so NO `.post-content sup` rule existed
+   anywhere: in dark mode each citation rendered in the body ink colour,
+   a tiny raised number visually indistinguishable from the surrounding
+   prose, leaving the reader no cue that it marks a citation. Give them a
+   quiet accent tint and a touch more weight so they read clearly as
+   reference markers (the familiar encyclopaedia convention) while
+   staying small and calm in dense prose. Scoped with :not(:has(a)) so
+   Goldmark's real footnote-ref markers — <sup><a class="footnote-ref">>
+   — keep their own link styling, untouched (:has is already used
+   elsewhere in this file, e.g. the Firefox scrollbar rule). The accent
+   token resolves per language, so EN gets sky-blue and ZH red
+   automatically. Gated on body.dark — light mode keeps the browser
+   default, provably unchanged. */
+body.dark .post-content sup:not(:has(a)),
+[data-theme="dark"] .post-content sup:not(:has(a)) {
+  color: var(--color-accent, #7dd3fc);
+  font-weight: 600;
+  padding-left: 0.06em;
+}
+/* Adjacent citation markers (e.g. <sup>4</sup><sup>5</sup>) get a hair of
+   breathing room so stacked numbers stay individually legible. */
+body.dark .post-content sup:not(:has(a)) + sup:not(:has(a)),
+[data-theme="dark"] .post-content sup:not(:has(a)) + sup:not(:has(a)) {
+  margin-left: 0.12em;
+}
+
 /* ── 13. Hero cover image glare ──────────────────────────────────
    In-prose images already get a subtle edge ring + brightness trim in
    dark (section 3, `.post-content img`), but the LARGEST image on an
