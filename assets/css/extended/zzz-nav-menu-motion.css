@@ -1,0 +1,122 @@
+/* ============================================================
+ * zzz-nav-menu-motion.css
+ * Mobile navigation open choreography.
+ *
+ *   1. Hamburger icon morphs three bars → an X while the menu
+ *      is open (driven by the button's aria-expanded state, so
+ *      it stays in sync with the real toggle and the a11y tree).
+ *   2. Hamburger gets a tactile press scale on tap.
+ *   3. Menu items stagger-fade in when the panel opens, giving
+ *      the drop-down a sense of unfolding instead of appearing
+ *      all at once.
+ *
+ * Everything here is progressive enhancement: it only adds
+ * movement to an already-working menu, is scoped to the mobile
+ * breakpoint, and is fully neutralised under
+ * prefers-reduced-motion at the bottom of the file.
+ * ========================================================== */
+
+/* ---------- 1 + 2. Hamburger button ---------- */
+
+.hamburger-menu {
+  /* Snappy, deliberate press feedback on tap. */
+  transition: background-color 0.15s ease, transform 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-menu:active {
+  transform: scale(0.88);
+}
+
+/* The three bars share a smooth morph transition. transform-box +
+ * a centred origin let each <line> rotate about its own midpoint,
+ * which is what turns the stack into a clean, centred X. */
+.hamburger-menu svg line {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease;
+}
+
+/* Markup order of the bars is: middle (y=12), top (y=6), bottom (y=18). */
+.hamburger-menu[aria-expanded="true"] svg line:nth-child(1) {
+  /* Middle bar fades out so the two diagonals read cleanly. */
+  opacity: 0;
+}
+
+.hamburger-menu[aria-expanded="true"] svg line:nth-child(2) {
+  /* Top bar drops to the centre line and tips to one diagonal. */
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-menu[aria-expanded="true"] svg line:nth-child(3) {
+  /* Bottom bar rises to the centre line and tips the other way. */
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ---------- 3. Menu item stagger-in (mobile only) ---------- */
+/* Scoped to the mobile breakpoint so the desktop horizontal nav,
+ * which is always visible, is never hidden. */
+@media (max-width: 768px) {
+  #menu > li {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #menu.mobile-open > li,
+  #menu.is-open > li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Cascade the entrance. Delays only apply on the open state, so the
+   * panel still closes instantly without a reverse stagger. */
+  #menu.mobile-open > li:nth-child(1),
+  #menu.is-open > li:nth-child(1) { transition-delay: 0.03s; }
+  #menu.mobile-open > li:nth-child(2),
+  #menu.is-open > li:nth-child(2) { transition-delay: 0.06s; }
+  #menu.mobile-open > li:nth-child(3),
+  #menu.is-open > li:nth-child(3) { transition-delay: 0.09s; }
+  #menu.mobile-open > li:nth-child(4),
+  #menu.is-open > li:nth-child(4) { transition-delay: 0.12s; }
+  #menu.mobile-open > li:nth-child(5),
+  #menu.is-open > li:nth-child(5) { transition-delay: 0.15s; }
+  #menu.mobile-open > li:nth-child(6),
+  #menu.is-open > li:nth-child(6) { transition-delay: 0.18s; }
+  #menu.mobile-open > li:nth-child(7),
+  #menu.is-open > li:nth-child(7) { transition-delay: 0.21s; }
+  #menu.mobile-open > li:nth-child(n + 8),
+  #menu.is-open > li:nth-child(n + 8) { transition-delay: 0.24s; }
+}
+
+/* ---------- Reduced-motion: keep it all static ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hamburger-menu,
+  .hamburger-menu:active,
+  .hamburger-menu svg line {
+    transition: none;
+    transform: none;
+  }
+
+  /* Honour the toggle visually without animating, so the X state is
+   * still meaningful for visitors who keep reduced motion on. */
+  .hamburger-menu[aria-expanded="true"] svg line:nth-child(1) { opacity: 0; }
+  .hamburger-menu[aria-expanded="true"] svg line:nth-child(2) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .hamburger-menu[aria-expanded="true"] svg line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  @media (max-width: 768px) {
+    #menu > li,
+    #menu.mobile-open > li,
+    #menu.is-open > li {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      transition-delay: 0s;
+    }
+  }
+}
