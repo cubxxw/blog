@@ -82,6 +82,24 @@
       "description": "自我探索相关",
       "category": "生活"
     },
+    "buddhism": {
+      "canonical": "Buddhism",
+      "aliases": ["佛学", "佛教", "禅", "buddhism"],
+      "description": "佛学与佛教思想相关",
+      "category": "文化"
+    },
+    "philosophy": {
+      "canonical": "Philosophy",
+      "aliases": ["哲学", "思辨", "philosophy"],
+      "description": "哲学与思辨相关",
+      "category": "文化"
+    },
+    "love": {
+      "canonical": "Love",
+      "aliases": ["爱", "爱情", "love"],
+      "description": "爱、爱情与亲密关系相关",
+      "category": "生活"
+    },
     "deployment": {
       "canonical": "Deployment",
       "aliases": ["部署", "部署 (Deployment)", "发布"],
