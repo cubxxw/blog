@@ -29,7 +29,7 @@ jobs:
   goreleaser:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - run: git fetch --force --tags
@@ -63,14 +63,14 @@ jobs:
       matrix:
         format: [ deb, rpm, apk ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v1
         with:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v2
+      - uses: docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v2
       - uses: actions/cache@v5
         with:
           path: |
