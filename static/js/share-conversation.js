@@ -144,6 +144,9 @@
       ctx.textAlign = 'left';
     }
 
+    var isZh = options.lang === 'zh' ||
+               (document.documentElement.getAttribute('lang') || '').toLowerCase().indexOf('zh') === 0;
+
     // Header row
     ctx.font = 'bold 19px ' + FONT;
     ctx.fillStyle = accent;
@@ -152,6 +155,19 @@
     ctx.font = '15px ' + FONT;
     ctx.fillStyle = muted;
     ctx.fillText(siteName, PAD, 86);
+
+    // When the thread has more than one exchange, note the round count on the
+    // right of the header so a shared card carries its context (the card shows
+    // only the latest Q&A, but the reader knows it's an excerpt).
+    var rounds = messages.filter(function (m) { return m.role === 'assistant'; }).length;
+    if (rounds > 1) {
+      ctx.textAlign = 'right';
+      ctx.font = '500 14px ' + FONT;
+      ctx.fillStyle = muted;
+      var roundsLabel = isZh ? (rounds + ' 轮对话 · 最新一组') : (rounds + ' exchanges · latest shown');
+      ctx.fillText(roundsLabel, W - PAD, 72);
+      ctx.textAlign = 'left';
+    }
 
     // Divider
     ctx.fillStyle = subtle;

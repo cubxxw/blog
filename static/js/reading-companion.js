@@ -212,7 +212,9 @@
       this.style.height = Math.min(this.scrollHeight, 96) + 'px';
     });
 
-    // Quick chip → send (clicked chip disabled, others stay clickable)
+    // Quick chip → send. A used chip stays marked (asking for the same
+    // summary twice is pointless); once every chip is used, the whole quick
+    // row collapses so the space goes back to the conversation.
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
         if (busy || chip.disabled) return;
@@ -220,6 +222,12 @@
         chip.classList.add('rc-ai-chip--used');
         textarea.value = chip.dataset.prompt;
         send();
+        var allUsed = Array.prototype.every.call(chips, function (c) { return c.disabled; });
+        if (allUsed && quickRow) {
+          quickRow.classList.add('rc-ai-quick--collapsed');
+          var qLabel = panel.querySelector('.rc-ai-quick-label');
+          if (qLabel) qLabel.classList.add('rc-ai-quick--collapsed');
+        }
       });
     });
 

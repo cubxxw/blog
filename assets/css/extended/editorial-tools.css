@@ -748,3 +748,8 @@ body.dark .editorial-tools-panel .rc-ai-followup:hover {
   border-color: rgba(226, 227, 225, 0.3);
   color: var(--color-ink, #e2e3e1);
 }
+
+/* ── Quick-start collapse (after all chips are used) ── */
+.editorial-tools-panel .rc-ai-quick--collapsed {
+  display: none;
+}
