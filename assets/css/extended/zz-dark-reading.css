@@ -769,3 +769,66 @@ body.dark .ai-tech-list-category,
 [data-theme="dark"] .ai-tech-list-category {
   color: #a78bfa;
 }
+
+/* ── 23. Bold emphasis lift in dark (EN) ─────────────────────────
+   <strong> is by far the most-used inline element in this blog's prose
+   — ~5,570 occurrences across the articles, the way authors flag the
+   key phrase in almost every paragraph. But the only `strong` rule
+   anywhere just sets font-weight:600 (custom.css ~799); the element is
+   given NO colour, so in dark mode it inherits the body ink
+   (#e2e3e1 EN) and is set apart from the prose by weight ALONE. On the
+   dark paper a 600-weight run in the exact body tone reads as barely
+   distinct from the 400-weight text around it, so on a bold-dense page
+   the emphasis the author placed for scanning is muffled — the reader
+   loses the at-a-glance "this is the important bit" cue that bold is
+   for. Give emphasised text a gentle tonal lift — a soft cool white a
+   few steps above the body ink — so a strong run reads as a clear,
+   calm highlight without the glare of pure #fff. This is the one place
+   the file PROMOTES rather than demotes, because <strong> is primary
+   content the author chose to surface (the inverse of the muted
+   footnotes §7 / markers §18 / struck text §19 moves), and a restrained
+   lift serves the same goal: a legible reading hierarchy on the dark
+   page. EN-only: the ZH dark ink (#f5f3ee) already sits near-white with
+   no comfortable headroom to lift, so brightening it would glare —
+   there the 600 weight carries the emphasis on its own. The same
+   per-language judgement the code palettes (§3-4 in article-typography)
+   already make. Contrast rises above the body ink's ≈14.5:1, so AA is
+   never at risk. Gated on body.dark / [data-theme="dark"] AND
+   html:not(:lang(zh)) — light mode and Chinese dark are never selected
+   and are provably unchanged. */
+html:not(:lang(zh)) body.dark .post-content strong,
+html:not(:lang(zh)) body.dark .post-content b,
+html:not(:lang(zh)) [data-theme="dark"] .post-content strong,
+html:not(:lang(zh)) [data-theme="dark"] .post-content b {
+  color: #f0f1ef;
+}
+/* A <strong>/<b> inside a link keeps the link's own colour so an
+   emphasised link stays one coherent element, not a two-tone smudge. */
+html:not(:lang(zh)) body.dark .post-content a strong,
+html:not(:lang(zh)) body.dark .post-content a b,
+html:not(:lang(zh)) [data-theme="dark"] .post-content a strong,
+html:not(:lang(zh)) [data-theme="dark"] .post-content a b {
+  color: inherit;
+}
+/* Inside the intentionally-quieted blocks — footnotes (§7), figure
+   captions (§16) and struck/retracted text (§19) — emphasis must stay
+   muted, not jump back to the lifted ink and re-loud the very passages
+   those sections calmed. Restore the inherited (muted) colour there. */
+html:not(:lang(zh)) body.dark .post-content .footnotes strong,
+html:not(:lang(zh)) body.dark .post-content .footnotes b,
+html:not(:lang(zh)) body.dark .post-content figcaption strong,
+html:not(:lang(zh)) body.dark .post-content figcaption b,
+html:not(:lang(zh)) body.dark .post-content del strong,
+html:not(:lang(zh)) body.dark .post-content del b,
+html:not(:lang(zh)) body.dark .post-content s strong,
+html:not(:lang(zh)) body.dark .post-content s b,
+html:not(:lang(zh)) [data-theme="dark"] .post-content .footnotes strong,
+html:not(:lang(zh)) [data-theme="dark"] .post-content .footnotes b,
+html:not(:lang(zh)) [data-theme="dark"] .post-content figcaption strong,
+html:not(:lang(zh)) [data-theme="dark"] .post-content figcaption b,
+html:not(:lang(zh)) [data-theme="dark"] .post-content del strong,
+html:not(:lang(zh)) [data-theme="dark"] .post-content del b,
+html:not(:lang(zh)) [data-theme="dark"] .post-content s strong,
+html:not(:lang(zh)) [data-theme="dark"] .post-content s b {
+  color: inherit;
+}
