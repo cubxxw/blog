@@ -514,6 +514,14 @@ body.dark .editorial-tools-panel .rc-ai-textarea {
 .editorial-tools-panel .rc-ai-send:hover { opacity: 0.9; }
 .editorial-tools-panel .rc-ai-send:active { transform: scale(0.94); }
 
+/* Dimmed when there's nothing to send (empty composer or mid-request) */
+.editorial-tools-panel .rc-ai-send--empty {
+  opacity: 0.4;
+  cursor: default;
+}
+.editorial-tools-panel .rc-ai-send--empty:hover { opacity: 0.4; }
+.editorial-tools-panel .rc-ai-send--empty:active { transform: none; }
+
 html:lang(en) .editorial-tools-panel .rc-ai-send {
   background: var(--color-accent, #2e352e);
 }

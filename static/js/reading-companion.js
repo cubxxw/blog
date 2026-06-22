@@ -208,11 +208,20 @@
       });
     });
 
-    // Auto-resize textarea
+    // Reflect whether there's something to send on the button: dim it when
+    // the composer is empty so the affordance matches send()'s guard.
+    function syncSendState() {
+      var hasText = textarea.value.trim().length > 0;
+      sendBtn.classList.toggle('rc-ai-send--empty', !hasText || busy);
+    }
+
+    // Auto-resize textarea + keep the send button state in sync
     textarea.addEventListener('input', function () {
       this.style.height = 'auto';
       this.style.height = Math.min(this.scrollHeight, 96) + 'px';
+      syncSendState();
     });
+    syncSendState();
 
     // Quick chip → send. A used chip stays marked (asking for the same
     // summary twice is pointless); once every chip is used, the whole quick
@@ -233,11 +242,16 @@
       });
     });
 
-    // Enter to send (Shift+Enter = newline)
+    // Enter to send (Shift+Enter = newline); Esc clears a half-typed draft
     textarea.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         send();
+      } else if (e.key === 'Escape' && textarea.value) {
+        e.preventDefault();
+        textarea.value = '';
+        textarea.style.height = 'auto';
+        syncSendState();
       }
     });
     sendBtn.addEventListener('click', send);
@@ -344,6 +358,7 @@
       else    { loadingEl.setAttribute('hidden', ''); }
       sendBtn.disabled = on;
       busy = on;
+      syncSendState();
     }
 
     async function send() {
