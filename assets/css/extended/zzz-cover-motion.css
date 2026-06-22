@@ -1,0 +1,79 @@
+/* ============================================================
+   zzz-cover-motion.css — article hero cover motion
+   ------------------------------------------------------------
+   The 16:9 hero cover at `.post-single .entry-cover img` lives
+   OUTSIDE `.post-content`, so it never received the gentle
+   load fade that prose images get, nor any pointer affordance
+   in light mode (dark mode only adjusts brightness on hover).
+   That left the single most prominent image on an article as
+   the one static block on an otherwise lively page.
+
+   This file adds two small, tasteful touches — equally at home
+   on a phone and a trackpad:
+     1. A one-time "open" reveal: the cover eases up from a
+        slightly larger, faded state as the article loads, so
+        opening a post feels like it unfolds.
+     2. A restrained hover zoom for fine-pointer devices, giving
+        the cover the same tactile life the cards already have.
+
+   Loaded last (zzz- prefix) so the transition declaration wins
+   the cascade over zz-dark-reading.css; the dark filter
+   transition is folded back in here so dark-mode hover still
+   eases. Everything is gated behind `.motion-reveal` and fully
+   neutralised under prefers-reduced-motion, so no-JS / reduced
+   -motion visitors see the cover exactly as before — no fade,
+   no movement, no layout shift.
+   ============================================================ */
+
+/* ---------- 1. One-time open reveal (load) ---------- */
+@keyframes cover-open {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* `backwards` (not `both`) applies the first frame before the
+   animation starts to avoid an initial flash, then RELEASES the
+   element at the end so the hover-zoom transform below can take
+   over. Using `both`/`forwards` here would pin scale(1) and the
+   hover zoom would never apply. */
+html.motion-reveal .post-single .entry-cover img {
+  animation: cover-open 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+
+/* ---------- 2. Restrained hover zoom (desktop) ---------- */
+/* The transition covers transform (this file) AND filter (the
+   dark-mode brightness shift from zz-dark-reading.css) so both
+   ease smoothly in every theme. */
+.post-single .entry-cover img {
+  transition:
+    transform 600ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .post-single .entry-cover:hover img {
+    transform: scale(1.035);
+  }
+}
+
+/* ============================================================
+   Reduced motion: neutralise every effect above. The cover is
+   shown statically, exactly as it rendered before this file.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html.motion-reveal .post-single .entry-cover img {
+    animation: none !important;
+  }
+  .post-single .entry-cover img {
+    transition: none !important;
+  }
+  .post-single .entry-cover:hover img {
+    transform: none !important;
+  }
+}
