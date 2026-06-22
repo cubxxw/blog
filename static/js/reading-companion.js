@@ -13,6 +13,7 @@
       retry: '↺ 重试',
       sourcesLabel: '相关阅读',
       followupLabel: '继续追问',
+      topicTemplate: function (h) { return '「' + h + '」这部分能展开讲讲吗？'; },
       followups: [
         '能再具体展开一下吗？',
         '有没有相反的观点或例外？',
@@ -30,6 +31,7 @@
       retry: '↺ Retry',
       sourcesLabel: 'Related reading',
       followupLabel: 'Keep asking',
+      topicTemplate: function (h) { return 'Can you expand on the "' + h + '" part?'; },
       followups: [
         'Can you expand on that?',
         'Any counter-arguments or exceptions?',
@@ -263,6 +265,43 @@
       return div;
     }
 
+    // Pull section headings from the article's TOC so follow-ups can be
+    // grounded in this specific article (not just generic prompts). Keeps
+    // headings of a sensible length and dedupes.
+    var articleTopics = (function () {
+      var seen = {}, out = [];
+      document.querySelectorAll('.toc-side__nav a').forEach(function (a) {
+        var h = (a.textContent || '').replace(/\s+/g, ' ').trim();
+        // 2–24 chars keeps it phrase-like; skip numbers-only / overly long.
+        if (h.length < 2 || h.length > 24 || /^[\d.\s]+$/.test(h)) return;
+        if (seen[h]) return;
+        seen[h] = 1;
+        out.push(h);
+      });
+      return out;
+    })();
+
+    // Build the follow-up list for a given turn: 1–2 article-grounded topic
+    // questions (rotated by turn so they don't repeat) + generic deep-dive
+    // prompts, capped at 4. Falls back to generic-only when no TOC exists.
+    function buildFollowups(turnIndex) {
+      var generic = (messages[language] && messages[language].followups) || [];
+      var tmpl = messages[language] && messages[language].topicTemplate;
+      var list = [];
+      if (articleTopics.length && typeof tmpl === 'function') {
+        // Rotate through topics by turn so repeated asks surface new sections.
+        var n = Math.min(2, articleTopics.length);
+        for (var k = 0; k < n; k++) {
+          var topic = articleTopics[(turnIndex + k) % articleTopics.length];
+          list.push(tmpl(topic));
+        }
+      }
+      for (var g = 0; g < generic.length && list.length < 4; g++) {
+        if (list.indexOf(generic[g]) === -1) list.push(generic[g]);
+      }
+      return list;
+    }
+
     // Follow-up suggestion chips — rendered after each AI reply so the
     // reader can keep the conversation going with one tap (chat-agent feel).
     function renderFollowups() {
@@ -270,7 +309,9 @@
       var stale = messagesEl.querySelector('.rc-ai-followups');
       if (stale) stale.remove();
 
-      var suggestions = (messages[language] && messages[language].followups) || [];
+      // turnIndex = number of AI replies so far (history holds user+assistant).
+      var turnIndex = history.filter(function (m) { return m.role === 'assistant'; }).length;
+      var suggestions = buildFollowups(turnIndex);
       if (!suggestions.length) return;
 
       var wrap = document.createElement('div');
