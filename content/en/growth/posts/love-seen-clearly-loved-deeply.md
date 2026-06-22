@@ -1,6 +1,8 @@
 ---
 title: 'Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis'
 date: 2026-06-22T23:19:30+08:00
+cover:
+  image: 'images/blog/love-seen-clearly.png'
 draft: false
 showtoc: true
 tocopen: false
