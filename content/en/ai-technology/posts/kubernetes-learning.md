@@ -18,6 +18,10 @@ categories:
   - AI & Technology
 description: >
   This article provides detailed Kubernetes resources and learning paths, covering CNI, CRI, CSI and core technologies in cloud-native environments. We also share some important learning resources and methods to help readers further advance in the Kubernetes ecosystem.
+tldr:
+  - "Source code reading is essential for advancing in Kubernetes; start with Docker and Linux fundamentals before proceeding."
+  - "A structured four-stage learning path progresses from understanding K8s architecture, to hands-on usage, to source code analysis with debugging."
+  - "Master foundational tools like Cobra, go-restful, and etcd alongside core concepts like CNI, CRI, CSI, and design patterns for comprehensive expertise."
 ---
 
 ## **Requirements**

@@ -21,6 +21,10 @@ categories:
   - AI & Technology
 description: >
   In-depth exploration of CNI (Container Network Interface), CRI (Container Runtime Interface), and CSI (Container Storage Interface) in Kubernetes. This article provides detailed explanations of these key components' functions and their importance in cloud-native environments.
+tldr:
+  - "CRI is a gRPC-based interface that allows Kubernetes to support multiple container runtimes, with containerd being the optimal choice over Docker and CRI-O."
+  - "CNI plugins enable flexible pod networking through a standardized interface, supporting various implementations like Calico and Flannel for both same-node and cross-node communication."
+  - "CSI provides a standardized storage interface for integrating diverse storage backends through plugins, supporting temporary, semi-persistent, and persistent storage volumes for container workloads."
 ---
 
 ## Container Runtime

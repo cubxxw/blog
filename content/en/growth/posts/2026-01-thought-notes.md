@@ -39,6 +39,10 @@ description: >
   - "Sadness vs Nihilism: If I must choose, I pick sadness—sadness means the world still acts on you; nihilism is relationship's withdrawal"
   
   Time Span: January 1-31, 2026 | 30 days of continuous recording.
+tldr:
+  - "AI's true profitability comes from deterministic, ROI-measurable work delivered to businesses, not flashier consumer content generation."
+  - "Autonomy's measure is accountability for consequences and controlled uncertainty reduction, not capability—systems must reduce action intensity when uncertain."
+  - "Sadness structured by causality and possibility enables iterative existence; nihilism terminates all necessary computation and relation."
 ---
 
 # January 2026 Thought Notes | 2026 年 1 月思考笔记

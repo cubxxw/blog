@@ -13,6 +13,10 @@ categories: ["AI & Technology"]
 description: '欢迎来到我们的项目，一个基于区块链技术的学习平台。在这里，我们将分享项目进展的最新动态和见解。您可以切换到指定的语言了解更多详细信息。'
 aliases:
   - "/zh/archives/contributors"
+tldr:
+  - "项目旨在建立基于区块链的开源去中心化学习平台，欢迎各水平开发者通过提交问题、代码编写、文档撰写和社区支持等方式参与贡献。"
+  - "参与贡献需要掌握Markdown、Git等基础技能，遵循中文排版规范和Google代码规范，通过Fork、Clone、修改、Push和Pull Request的标准流程提交代码。"
+  - "提交PR前必须Pull最新代码避免覆盖，单个PR不宜改动过多文件，禁用强制Push，任何问题修复或错别字修正都欢迎贡献，Commit信息需符合规范。"
 ---
 
 

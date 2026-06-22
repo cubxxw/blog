@@ -11,6 +11,10 @@ keywords: ['OpenIM', 'Kubernetes', '集群化', '设计', '部署', '方案']
 tags: ["OpenIM", "Kubernetes", "Clustering", "Cloud Native", "Microservices", "Deployment"]
 categories: ["AI & Technology"]
 description: '本文详细总结了在 Kubernetes 环境下部署 OpenIM 集群化解决方案的过程，探讨了关键设计考虑、部署策略及其挑战，旨在为同类项目提供实践指南和设计启示。'
+tldr:
+  - "OpenIM集群部署需同时支持二进制、Docker-Compose和Kubernetes三种方式，通过配置文件和启动参数差异实现单一代码库的多环境适配。"
+  - "Kubernetes环境采用Helm图表管理基础组件（MySQL、Redis、MongoDB、Kafka等）和业务模块，通过统一的全局配置文件openim.yaml覆盖各组件value实现配置集中化。"
+  - "服务进程应独立容器化、采用Kubernetes原生服务发现替代Zookeeper、实现CICD流程中开发分支标签和release版本标签的区分，以支持日志收集、服务重启追踪和精细化扩容。"
 ---
 
 ## 会议和参考链接

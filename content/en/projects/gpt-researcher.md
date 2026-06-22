@@ -16,6 +16,10 @@ description: >
   An analysis of the GPT Researcher open source project — autonomous AI agents for deep research tasks.
 aliases:
   - /posts/ai-projects/gpt-researcher/
+tldr:
+  - "Article is a stub template with no substantive body content about GPT Researcher project."
+  - "Only contains placeholder sections for project basics and links to related articles on open source."
+  - "Cannot extract meaningful takeaways due to absence of claims, analysis, or informational content."
 ---
 
 > This project is an ongoing effort — learning AI open source projects one step at a time, building real-world practice through hands-on projects, combining AI tools to strengthen the ability to solve complex problems. Everything is documented along the way.

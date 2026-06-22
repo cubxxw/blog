@@ -16,6 +16,10 @@ description: >
   Exploring Google NotebookLM as an AI-powered research and note-taking assistant.
 aliases:
   - /posts/ai-projects/notebooklm/
+tldr:
+  - "Article body is incomplete; only stub headers and related links present with no substantive NotebookLM content"
+  - "File appears to be a template or draft placeholder with empty fields for project name, GitHub URL, and tech stack"
+  - "Cannot generate meaningful key takeaways due to missing article content beyond front matter and section headers"
 ---
 
 > This project is an ongoing journey — learning AI open-source projects one step at a time, building real skills through hands-on practice, and using AI tools to sharpen the ability to tackle complex problems. Everything gets documented along the way.

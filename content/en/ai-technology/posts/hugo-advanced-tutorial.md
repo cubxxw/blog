@@ -14,6 +14,10 @@ categories:
   - AI & Technology
 description: >
     hugo advanced tutorial
+tldr:
+  - "Hugo templates leverage Go's html/template with automatic HTML escaping and pipeline syntax, where dot notation manages context through hierarchical data access."
+  - "Hugo selects templates using specificity rules based on type, layout, output format, language, and section to render home pages, single pages, sections, and taxonomies."
+  - "Hugo's data folder stores reusable configuration in YAML, JSON, or TOML files accessed via .Site.Data variable for author info, site settings, and product management."
 ---
 
 # 136: Hugo Advanced

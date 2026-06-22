@@ -12,6 +12,10 @@ tags: ["Blog", "OpenIM", "Docker"]
 categories: ["AI & Technology"]
 description: >
     探索如何使用 Harbor 构建强大的开源容器镜像仓库，用于设置稳健的镜像存储解决方案。这一步步指南涵盖了 Harbor 的安装和配置，包括使用 Helm 图表和 Cert-manager 来确保安全的 HTTPS 连接。了解如何将 Docker 镜像推送到你的 Harbor 仓库，配置 DNS 解析，并探索使用 AWS S3 作为可伸缩的镜像存储选项。充分发挥 Harbor 的潜力，优化容器镜像管理，降低存储成本，同时确保安全性和可靠性。
+tldr:
+  - "Harbor 通过 Helm 配合 Cert-manager 实现自动化部署，使用 Let's Encrypt 免费证书保障 HTTPS 安全连接。"
+  - "企业级镜像仓库可集成 CICD 流程替代 Docker Hub，通过 DNS 配置和镜像推送完整实现本地化镜像管理。"
+  - "Harbor 支持 AWS S3 外部存储方案，提供接近无限存储容量和按量计费优势，适合大规模镜像存储需求。"
 ---
 
 

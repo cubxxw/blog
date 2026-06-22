@@ -40,6 +40,10 @@ categories:
   - AI & Technology
   - 'AI'
 description: 'This guide provides an in-depth look into the integration and application of language models using the LangChain framework, tailored for developers looking to streamline complex implementations.'
+tldr:
+  - "LangChain provides a framework simplifying language model application development through integrated components like prompt templates, models, and output parsers for structured data handling."
+  - "LangChain Chains and Agents compose multiple components into reusable workflows, enabling complex LLM applications to be built modularly without code duplication across tasks."
+  - "LangChain Memory mechanisms enable conversational context preservation across interactions, supporting summary-based or windowed approaches to manage token usage while maintaining conversation coherence."
 ---
 
 

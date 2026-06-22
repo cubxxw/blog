@@ -21,6 +21,10 @@ description: >
     In 2023, my journey took me to the edges of the world, where I discovered not just new landscapes, but deeper insights into myself. From the bustling streets of ancient cities to the tranquil solitude of mountaintops, every step was a story, a lesson, and a memory. This blog captures my adventures, the people I met, the cultures I experienced, and the personal growth that ensued. Join me as I recount the tales of my wanderings and the indelible marks they left on my soul. You can switch to the specified language to follow my journey more closely.
 aliases:
   - /ai-technology/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/
+tldr:
+  - "Stepping into the unknown through first-time adventures—Huangshan, Wugong Mountain, camping, and snow mountains—builds courage and expands personal limits constantly."
+  - "Traveling serves as a vital balance between fast-paced work life, offering physical and spiritual growth through cultural immersion and meaningful human connections."
+  - "The true meaning of travel transcends sightseeing; becoming a better version of yourself through open-mindedness, cultural understanding, and touching countless lives."
 ---
 
 

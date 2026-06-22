@@ -21,6 +21,10 @@ categories:
   - Growth
 description: >
     My 2023 journey: A reflection on personal and professional growth, challenges faced, and aspirations for the future. Dive into my experiences and lessons learned in the realms of open-source contributions, reading, learning, outdoor adventures, and strategic career planning.
+tldr:
+  - "Success is personal satisfaction after achieving ideals, requiring effort as controllable investment while accepting uncontrollable talent and luck variables."
+  - "Career-building demands progressive skill development beyond front-line operations, combining strategic vision with daily execution like chess pieces at multiple levels."
+  - "Sustained growth emerges from continuous learning, flexible adaptation to changing needs, viewing challenges fearlessly, and maintaining personal rhythm amid external trends."
 ---
 
 

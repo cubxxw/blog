@@ -41,6 +41,10 @@ tags:
 categories:
   - AI & Technology
 description: '本指南深入探讨了使用 LangChain 框架集成和应用语言模型的过程，专为希望简化复杂实现的开发者量身定制。'
+tldr:
+  - "LangChain框架通过提示模板、模型调用和输出解析的Model I/O设计，简化了复杂语言模型应用的开发过程。"
+  - "Chain和Agent是LangChain的核心机制，Chain硬编码操作序列，Agent使用大模型进行动态决策，ReAct框架将推理和行动协同以解决实际问题。"
+  - "记忆机制、检索功能和数据库查询使聊天机器人能够维持对话连贯性、访问特定领域知识并执行复杂任务。"
 ---
 
 ## 什么是Langchain？

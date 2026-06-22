@@ -14,6 +14,10 @@ tags:
   - Blog
 categories:
   - AI & Technology
+tldr:
+  - "Team members own both leadership and ownership responsibilities, speaking up immediately with solutions rather than suppressing concerns about issues"
+  - "Documentation-driven development with design reviews before implementation ensures persistent, traceable information and team consensus on critical decisions"
+  - "Remote work efficiency requires structured practices including effective meetings, evidence-driven discussions, milestone commitments, and 1-2-3 escalation protocols for problem-solving"
 ---
 
 ## Principles

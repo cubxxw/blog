@@ -1,0 +1,115 @@
+/* ============================================================
+   zzz-card-tilt.css — 3D pointer tilt for project cards
+   ------------------------------------------------------------
+   Pairs with card-tilt.js. The JS writes --tilt-* custom properties
+   as the cursor moves; this file turns them into a gentle 3D tilt
+   plus a pointer-tracking specular highlight. No WebGL — just CSS
+   transforms, so it costs almost nothing.
+
+   The project grid (.eip-grid) becomes the perspective container so
+   each card rotates in shared 3D space. The existing .eip-card hover
+   (translateY + shadow) is preserved and composed with the rotation.
+
+   zzz- prefix loads it after editorial-sections.css so the transform
+   transition here wins the cascade. Fully neutralised for
+   reduced-motion and coarse-pointer devices (matching the JS gate),
+   so phones and motion-averse visitors see the original flat cards.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  /* Establish a shared 3D space for the cards inside the grid. */
+  .eip-grid {
+    perspective: 1100px;
+  }
+
+  .eip-card {
+    /* Defaults so the very first frame (before JS) is a no-op flat card. */
+    --tilt-rx: 0deg;
+    --tilt-ry: 0deg;
+    --tilt-mx: 50%;
+    --tilt-my: 50%;
+    --tilt-active: 0;
+    transform-style: preserve-3d;
+    will-change: transform;
+    /* Compose the JS-driven rotation with the existing lift-on-hover.
+       translateY stays at 0 here; the :hover rule below lifts it. */
+    transform:
+      rotateX(var(--tilt-rx))
+      rotateY(var(--tilt-ry));
+    transition:
+      transform 220ms var(--ei-ease, ease),
+      box-shadow var(--ei-dur, 0.25s) var(--ei-ease, ease);
+  }
+
+  /* Keep the familiar lift, now layered on top of the tilt rotation. */
+  .eip-card:hover {
+    transform:
+      translateY(-5px)
+      rotateX(var(--tilt-rx))
+      rotateY(var(--tilt-ry));
+  }
+
+  /* The hero card spans two columns; at that width ANY rotateX produces a
+     long, dramatic slanted edge that breaks the restrained register, no
+     matter how small the angle. So the hero opts out of the 3D tilt and
+     keeps only its familiar lift-on-hover — it already stands apart via its
+     accent top-rule and larger type. The pointer highlight (::after) below
+     still applies, so it isn't left lifeless. */
+  .eip-card--hero,
+  .eip-card--hero:hover {
+    transform: none;
+  }
+  .eip-card--hero:hover {
+    transform: translateY(-5px);
+  }
+
+  /* While actively tilting, snap the transition shorter so the card
+     tracks the cursor crisply; on leave it eases back over 220ms. */
+  .eip-card[style*="--tilt-active: 1"] {
+    transition:
+      transform 80ms linear,
+      box-shadow var(--ei-dur, 0.25s) var(--ei-ease, ease);
+  }
+
+  /* Pointer-tracking specular highlight. A soft radial sheen centred on
+     the cursor, fading in only while the card is active. Sits above the
+     cover layer but below the text (__inner is z-index:1). */
+  .eip-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: calc(var(--tilt-active) * 0.6);
+    transition: opacity 220ms ease;
+    background: radial-gradient(
+      280px circle at var(--tilt-mx) var(--tilt-my),
+      rgba(255, 255, 255, 0.16),
+      transparent 60%
+    );
+  }
+}
+
+/* Dark mode: a cooler, fainter sheen so it reads as light catching an
+   edge rather than a grey smear on the dark surface. */
+@media (hover: hover) and (pointer: fine) {
+  body.dark .eip-card::after,
+  [data-theme="dark"] .eip-card::after {
+    background: radial-gradient(
+      280px circle at var(--tilt-mx) var(--tilt-my),
+      rgba(255, 255, 255, 0.10),
+      transparent 60%
+    );
+  }
+}
+
+/* Reduced motion: no tilt, no sheen — the original flat card, unchanged. */
+@media (prefers-reduced-motion: reduce) {
+  .eip-card {
+    transform: none !important;
+  }
+  .eip-card::after {
+    display: none !important;
+  }
+}

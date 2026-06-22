@@ -24,6 +24,10 @@ tldr:
   - 记忆系统是与上下文工程并列的独立概念：上下文工程优化当下这一窗，记忆是窗外那条持续演化的底层基质。
   - 我的判断：真正稀缺的不是模型，而是「世界线」——只有你的上下文能让 AI 知道你是谁、在哪、要什么。这条线值得 local-first 地长在你自己手里。
 maturity: budding
+cover:
+  image: 'images/blog/context-engineering-desk.png'
+  caption: '上下文工程：把模型的房间布置好——Write / Select / Compress / Isolate，和那条 local-first 的世界线。'
+  alt: '书桌上的笔记本电脑显示「Context 不是 Prompt」文章与核心要点面板，旁边摊开的笔记写着 Context Engineering 的四支柱与 Worldline'
 ---
 
 > 「与其说我们在写提示词，不如说我们在为模型布置一间房间——决定哪些东西摆进来、摆在哪、什么时候搬走。措辞只是房间里的一张便签，而我们真正在做的，是装修。」

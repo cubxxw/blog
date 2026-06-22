@@ -296,6 +296,14 @@
 
 <script src="{{ "/js/article-bottom-sheet.js" | relURL }}" defer></script>
 
+{{/* Hero cover 2.5D pointer parallax — no WebGL. Self-gates to fine-pointer
+     / non-reduced-motion visitors and no-ops when the article has no cover. */}}
+{{- $coverParallax := resources.Get "js/cover-parallax.js" | js.Build (dict "minify" hugo.IsProduction) -}}
+{{- if not site.Params.assets.disableFingerprinting -}}
+  {{- $coverParallax = $coverParallax | fingerprint -}}
+{{- end -}}
+<script src="{{ $coverParallax.RelPermalink }}" defer></script>
+
 {{- partial "related-posts.html" . -}}
 
 {{- end }}{{/* end main */}}

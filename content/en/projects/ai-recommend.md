@@ -16,6 +16,10 @@ description: >
   Exploring AI-powered recommendation systems and how to build personalized content discovery engines.
 aliases:
   - /posts/ai-projects/ai-recommend/
+tldr:
+  - "Article explores AI-powered recommendation systems and personalized content discovery engine architecture"
+  - "Project involves hands-on learning of open-source AI tools combined with practical documentation of the journey"
+  - "Related resources cover open-source growth stages, contribution guidelines, community standards, and community engagement practices"
 ---
 
 > This project is an ongoing process — learning AI open source projects one day at a time, building real-world skills by combining hands-on practice with AI tooling, and documenting the journey.

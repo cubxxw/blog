@@ -24,6 +24,10 @@ tldr:
   - "Memory is a concept distinct from context engineering: context engineering optimizes the present window, memory is the persistent, evolving substrate beyond it."
   - "My claim: the scarce thing is not the model, it is the world line - only your context lets an AI know who you are, where you are, and what you want. That line deserves to live local-first, in your own hands."
 maturity: budding
+cover:
+  image: 'images/blog/context-engineering-worldline.png'
+  caption: 'Context engineering: furnishing the model''s room — Write / Select / Compress / Isolate, and the local-first world line between you and the AI.'
+  alt: 'A wide schematic of context engineering: the Write / Select / Compress / Isolate pillars feeding an AI, a laptop with notes, and a local-first world line'
 ---
 
 > "We are not really writing prompts. We are furnishing a room for the model — deciding what gets carried in, where it sits, when it gets moved out. The wording is just a sticky note on the desk. What we are actually doing is the interior work."

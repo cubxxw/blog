@@ -19,6 +19,10 @@ categories:
   - Growth
 description: >
     August 2025 monthly reflection - harnessing late summer energy, building momentum for autumn goals, and reflecting on the transformative power of consistency.
+tldr:
+  - "Self-examination requires systematic analysis of patterns and motivations, applying game theory to life decisions by recognizing incomplete information, repeated interactions, and multiple competing objectives."
+  - "Ancient Eastern wisdom traditions—Buddhism, Daoism, and Neo-Confucianism—offer practical frameworks for reducing suffering, natural action, and integrated knowledge-action relevant to modern technological and relational challenges."
+  - "Dopamine and opioid systems control wanting and liking separately; neuroscience aligns with Buddhist teachings on craving, revealing that motivation must be balanced with genuine satisfaction and cultivated wisdom."
 ---
 
 # August 2025 Thought Notes

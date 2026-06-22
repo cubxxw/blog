@@ -232,6 +232,8 @@
       if (!hint) {
         hint = document.createElement('div');
         hint.className = 'swipe-hint';
+        // Purely decorative gesture cue — keep it out of the a11y tree.
+        hint.setAttribute('aria-hidden', 'true');
         document.body.appendChild(hint);
       }
       return hint;

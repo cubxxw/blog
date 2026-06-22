@@ -12,6 +12,10 @@ tags: ["Blog", "Kubernetes", "etcd", "raft", "Go"]
 categories: ["AI & Technology"]
 description: >
     这一篇来深入并且贯穿的讲解 ETCD 和 Raft。并且站在 Kubernetes 的角度来深入剖析 ETCD。
+tldr:
+  - "etcd是基于Raft算法的分布式键值存储，具有强一致性和高可用特性，在Kubernetes中用于存储所有集群对象的信息。"
+  - "etcd通过键值对存储、监听机制、TTL过期续约和原子操作（CAS）等核心功能，支持服务注册发现、分布式锁和leader选举等应用场景。"
+  - "生产环境中etcd集群应采用5节点规模、使用SSD存储、配置自动压缩和定期备份，同时优化心跳周期和选举超时参数以应对网络延迟。"
 ---
 
 ## 开始前

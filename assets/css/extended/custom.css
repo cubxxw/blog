@@ -2237,7 +2237,7 @@ details summary,
 
 .post-header {
     padding-bottom: 0;
-    margin-bottom: var(--space-16);
+    margin-bottom: var(--space-10);
 }
 
 .post-header .breadcrumbs {

@@ -11,6 +11,10 @@ keywords: ['Japan travel', 'Mount Fuji', 'Hakone', 'Tokyo', 'Kansai', 'autumn le
 tags: ['Travel', 'Japan', 'Self-Discovery', 'Adventure', 'Exploration']
 categories: ["Travel"]
 description: 'Summer and autumn 2025, two trips to Japan. From Hakone and Mount Fuji to Kansai autumn leaves, from Kumano Kodo to Kyoto ancient temples. A place where I learned to be with time through wood, fire, and gaps.'
+tldr:
+  - "Japan maintains relationships with time through deliberate impermanence: wood burns, gardens change, metal oxidizes, creating renewal rather than preservation."
+  - "Solitude on ancient trails and small towns reveals patterns in personal decision-making, showing how details slip despite correct direction, leaving acceptance rather than anxiety."
+  - "Objects, structures, and spaces develop unique character through human touch: Kaikado caddies remember hands, Hōryū-ji columns hold 1,400 years through millimeter tolerances, gardens yield to sight."
 ---
 
 > *July 2025, Hakone · Mount Fuji · Tokyo, 10 days*

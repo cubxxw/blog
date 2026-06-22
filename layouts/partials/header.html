@@ -235,18 +235,19 @@ document.addEventListener('click', function(event) {
 (function () {
     var headerWrapper = document.querySelector('.header-wrapper');
     if (!headerWrapper) return;
-    // Respect reduced-motion: keep the header steady instead of sliding it
-    // away on scroll for visitors who asked for less movement.
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        headerWrapper.classList.remove('nav-scroll-hidden');
-        document.body.classList.remove('nav-hidden');
-        return;
-    }
+
+    // The auto-hide slide is motion; honour prefers-reduced-motion by keeping
+    // the header steady for those visitors. The scroll-elevation shadow is a
+    // static depth cue (no movement) so it still runs for everyone.
+    var allowHide = !(window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
     var lastScrollY = window.scrollY || window.pageYOffset;
     var ticking = false;
-    var TOP_THRESHOLD = 80;     // 接近顶部时无条件显示
-    var REVEAL_THRESHOLD = 64;  // 需累积上滑这么多像素才浮现导航栏
-    var upAccumulated = 0;      // 当前连续向上滚动的累计距离
+    var TOP_THRESHOLD = 80;       // 接近顶部时无条件显示
+    var REVEAL_THRESHOLD = 64;    // 需累积上滑这么多像素才浮现导航栏
+    var ELEVATE_THRESHOLD = 8;    // 离开顶部这么多像素就抬升出阴影
+    var upAccumulated = 0;        // 当前连续向上滚动的累计距离
 
     function show() {
         headerWrapper.classList.remove('nav-scroll-hidden');
@@ -263,7 +264,10 @@ document.addEventListener('click', function(event) {
         var menu = document.getElementById('menu');
         var menuOpen = menu && menu.classList.contains('mobile-open');
 
-        if (!menuOpen) {
+        // Elevation: flush at the top, lifted (soft shadow) once scrolled.
+        headerWrapper.classList.toggle('nav-scrolled', currentY > ELEVATE_THRESHOLD);
+
+        if (allowHide && !menuOpen) {
             if (currentY <= TOP_THRESHOLD) {
                 // 顶部区域始终显示
                 upAccumulated = 0;
@@ -290,5 +294,17 @@ document.addEventListener('click', function(event) {
             ticking = true;
         }
     }, { passive: true });
+
+    // Accessibility: never strand keyboard focus inside an off-screen
+    // header. If anything in the bar gains focus (Tab / Shift+Tab) while
+    // it's auto-hidden, slide it back into view immediately.
+    headerWrapper.addEventListener('focusin', function () {
+        upAccumulated = 0;
+        show();
+    });
+
+    // Set the correct elevation state on first paint (e.g. when landing
+    // mid-page via an anchor or a restored scroll position).
+    update();
 })();
 </script>

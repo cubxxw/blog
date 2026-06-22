@@ -11,6 +11,10 @@ keywords: ['OpenIM', 'Docker', '即时通讯', '后台管理', '监控', '系统
 tags: ["OpenIM", "Docker", "Instant Messaging", "Backend Management", "Monitoring"]
 categories: ["AI & Technology"]
 description: '本文指导您如何使用 Docker 部署 OpenIM，设置管理后台，并对应用进行监控。它为初学者提供了详细的步骤，并为更高级的用户提供了洞见。'
+tldr:
+  - "OpenIM支持源码、Docker和Kubernetes三种灵活部署方式，可根据开发、测试和生产环境需求选择合适方案。"
+  - "通过设置PROMETHEUS_ENABLE环境变量启用Prometheus监控，在Grafana中配置数据源并导入Dashboard实现可视化监控。"
+  - "监控关键指标包括OpenIM应用指标、Node Exporter节点指标和MySQL、Redis、MongoDB等中间件指标，确保系统稳定运行。"
 ---
 
 

@@ -1,9 +1,8 @@
 {{- /*
-  TL;DR / answer-first block (GEO / BLUF pattern).
-  Renders a prominent "key takeaway" box at the top of an article so the core
-  answer sits in the opening of the page — where ~44% of AI-engine citations
-  are drawn from (Kevin Indig, 1.2M ChatGPT responses). Also helps human
-  readers. Driven entirely by front matter, no backend.
+  TL;DR / answer-first block (GEO / BLUF pattern), rendered as a calm,
+  prose-aligned key-takeaways card: a quiet eyebrow header and numbered
+  points. Driven entirely by front matter, no backend. Colours follow the
+  theme accent tokens; all motion is gated by prefers-reduced-motion.
 
   Front matter:
     tldr: "A single-sentence answer."        # string form
@@ -16,16 +15,43 @@
 */ -}}
 {{- $tldr := .Params.tldr -}}
 {{- with $tldr -}}
-<aside class="article-tldr" aria-label="{{ i18n "tldr_label" | default "TL;DR" }}">
-  <div class="article-tldr__label">{{ i18n "tldr_label" | default "TL;DR" }}</div>
-  {{- if reflect.IsSlice . }}
-  <ul class="article-tldr__list">
-    {{- range . }}
-    <li>{{ . | markdownify }}</li>
+{{- $items := slice -}}
+{{- if reflect.IsSlice . }}{{ $items = . }}{{ else }}{{ $items = slice . }}{{ end -}}
+{{- $label := i18n "tldr_label" | default "TL;DR" -}}
+{{- $count := len $items -}}
+<aside class="article-tldr" aria-label="{{ $label }}">
+  {{- /* technical-drawing corner crop marks */ -}}
+  <span class="tldr-tick tldr-tick--tl" aria-hidden="true"></span>
+  <span class="tldr-tick tldr-tick--tr" aria-hidden="true"></span>
+  <span class="tldr-tick tldr-tick--bl" aria-hidden="true"></span>
+  <span class="tldr-tick tldr-tick--br" aria-hidden="true"></span>
+
+  <div class="tldr-head">
+    <span class="tldr-eyebrow">
+      <span class="article-tldr__spark tldr-spark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/>
+        </svg>
+      </span>
+      <span class="article-tldr__label-text tldr-zh">{{ $label }}</span>
+      <span class="tldr-en">Core Context</span>
+    </span>
+    <span class="tldr-meta"><b>{{ printf "%02d" $count }}</b>&nbsp;{{ if eq $count 1 }}POINT{{ else }}POINTS{{ end }}</span>
+    <span class="tldr-scan" aria-hidden="true"></span>
+  </div>
+
+  <div class="tldr-wire">
+    {{- range $i, $it := $items }}
+    <div class="tldr-item">
+      <span class="tldr-node" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+      <div class="article-tldr__text tldr-txt">{{ $it | markdownify }}</div>
+    </div>
     {{- end }}
-  </ul>
-  {{- else }}
-  <p class="article-tldr__text">{{ . | markdownify }}</p>
-  {{- end }}
+  </div>
+
+  <div class="tldr-foot" aria-hidden="true">
+    <span><span class="tldr-foot-dot"></span>TL;DR · ANSWER-FIRST</span>
+    <span>GEO / BLUF</span>
+  </div>
 </aside>
 {{- end -}}

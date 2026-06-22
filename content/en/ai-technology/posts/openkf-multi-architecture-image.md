@@ -11,6 +11,10 @@ description: >
   A walkthrough of automating multi-architecture Docker image builds for the openkf project.
   Covers building linux/amd64 and linux/arm64 images and pushing them to Docker Hub, AliYun
   Container Registry, and GitHub Container Registry in a single seamless workflow.
+tldr:
+  - "Automate multi-architecture Docker image builds for linux/amd64 and linux/arm64 using GitHub Actions with QEMU and Docker Buildx"
+  - "Push built images seamlessly to Docker Hub, AliYun Container Registry, and GitHub Container Registry using dynamic tagging"
+  - "Enable secure authentication and CI/CD triggering on releases, branch commits, and scheduled events with full traceability logging"
 ---
 
 ## Automate Multi-Architecture Image Build for `openkf` and Push to Multiple Image Repositories

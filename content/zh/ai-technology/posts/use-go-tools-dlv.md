@@ -14,6 +14,10 @@ author: '熊鑫伟，我'
 keywords: ['Go', '调试', '测试', 'dlv', '性能优化', '代码质量']
 tags: ["Blog", "Development", "Debugging"]
 categories: ["AI & Technology"]
+tldr:
+  - "dlv是Go语言功能最完善的调试工具，相比gdb对goroutine和Go类型支持更出色，支持本地和远程调试功能。"
+  - "VSCode可一键生成测试单元并通过launch.json配置本地或远程调试，支持设置断点、查看变量、跟踪调用栈等完整调试工作流。"
+  - "dlv提供break、continue、print、locals、goroutines等丰富指令，能够访问深层调用栈变量信息，优于gdb在Go程序调试中的表现。"
 ---
 
 

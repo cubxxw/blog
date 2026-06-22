@@ -1,5 +1,8 @@
 {{- define "main" }}
 <div class="not-found-page">
+    {{/* Draggable low-poly easter egg — sits behind the content, purely
+         decorative. Empty (no canvas) on phones / reduced-motion / no-WebGL. */}}
+    <div class="not-found-field" id="not-found-field" aria-hidden="true"></div>
     <div class="not-found-content">
         <div class="not-found-code">404</div>
         {{- $isZh := eq site.Language.Lang "zh" }}
@@ -25,6 +28,7 @@
 </div>
 <style>
 .not-found-page {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,8 +36,30 @@
     padding: 40px 20px;
     text-align: center;
 }
+/* Decorative 3D field behind the content. Pointer-events stay ON so the
+   object can be grabbed/spun, but it's z-ordered below the content; the
+   buttons/links sit above it (z-index:1) and remain fully clickable. */
+.not-found-field {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+.not-found-field canvas { display: block; }
 .not-found-content {
+    position: relative;
+    z-index: 1;
     max-width: 520px;
+    /* Let pointer events fall through the empty margins to the 3D object,
+       while the actual content (text/buttons) still captures its own. */
+    pointer-events: none;
+}
+.not-found-content a,
+.not-found-content button {
+    pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+    .not-found-field { display: none; }
 }
 .not-found-code {
     font-size: clamp(6rem, 20vw, 10rem);
@@ -124,4 +150,31 @@
     color: #0e7490;
 }
 </style>
+
+{{/* ── 404 draggable low-poly easter egg ─────────────────────────
+     three.js + OrbitControls + the float module, all fingerprinted and
+     locally hosted (same pattern as knowledge-galaxy). The module self-
+     gates: on phones / reduced-motion / no-WebGL it mounts nothing, so
+     this costs only a tiny deferred import there. three/addons resolve
+     via the importmap; the bare ./webgl-guard import is bundled in. */}}
+{{- $three := resources.Get "js/vendor/three.module.min.js" | resources.Fingerprint "sha384" -}}
+{{- $orbit := resources.Get "js/vendor/addons/controls/OrbitControls.js" | resources.Fingerprint "sha384" -}}
+{{- $nf := resources.Get "js/three/not-found-float.js"
+      | js.Build (dict "format" "esm" "minify" hugo.IsProduction "externals" (slice "three" "three/addons/controls/OrbitControls.js")) -}}
+{{- if not site.Params.assets.disableFingerprinting -}}
+  {{- $nf = $nf | fingerprint -}}
+{{- end -}}
+<script type="importmap">
+{
+  "imports": {
+    "three": "{{ $three.RelPermalink }}",
+    "three/addons/controls/OrbitControls.js": "{{ $orbit.RelPermalink }}"
+  }
+}
+</script>
+<script type="module">
+  import { mountNotFoundFloat } from "{{ $nf.RelPermalink }}";
+  const host = document.getElementById('not-found-field');
+  if (host) mountNotFoundFloat(host);
+</script>
 {{- end }}

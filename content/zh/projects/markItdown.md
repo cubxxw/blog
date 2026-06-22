@@ -13,6 +13,10 @@ description: >
   深度分析 Microsoft MarkItDown：将 PDF、Word、PowerPoint、Excel、图像、音频等多种格式转换为 Markdown 的开源 Python 工具。涵盖架构原理、安装使用、实操教程、LLM 集成、安全考量及与同类工具的对比，帮助开发者快速上手并融入 AI 工作流。
 aliases:
   - /zh/posts/ai-projects/markitdown/
+tldr:
+  - "MarkItDown是微软开源的Python工具，将PDF、Word、PPT、Excel等多种格式统一转换为Markdown，专为LLM和RAG系统提供结构化文本数据。"
+  - "相比PDF转Word等高保真工具，MarkItDown优先保留文档逻辑结构而非视觉样式，通过模块化架构和插件系统支持广泛的格式扩展。"
+  - "工具提供Azure Document Intelligence和LLM集成选项增强能力，但默认PDF处理较弱、依赖庞大第三方库、插件安全风险高，使用需谨慎评估。"
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。

@@ -17,6 +17,10 @@ categories:
   - AI & Technology
 description: >
     Dive into the world of Sora Technology, a groundbreaking platform for AI-driven video generation. This post is designed for both tech enthusiasts and developers eager to unlock the potential of Sora. Discover how you can leverage Sora to create stunning, AI-generated videos with ease, and join a community of innovators transforming the digital landscape.
+tldr:
+  - "Sora generates up to 60 seconds of high-quality video from text descriptions using innovative Diffusion Transformer architecture combining diffusion and Transformer models"
+  - "Sora overcomes limitations of previous systems by processing variable-size patches instead of fixed tokens, enabling flexible video generation without resolution constraints"
+  - "Sora democratizes video production through reduced costs and enhanced accessibility, creating significant monetization opportunities across entertainment, education, advertising, and content creation industries"
 ---
 
 ## Sora! ! !

@@ -19,6 +19,10 @@ categories:
   - Growth
 description: >
     May 2025 monthly reflection - exploring mid-year insights, creative breakthroughs, and the evolving landscape of personal and professional growth in the AI era.
+tldr:
+  - "In the AI era, frontend has become the main value delivery battlefield as AI decouples intelligence from backend services, enabling rapid MVP development for independent developers."
+  - "Breaking free from familiar pain and embracing unknown uncertainty requires conscious choice, supported by metacognition and understanding how perception shapes reality."
+  - "Authentic growth depends on balancing intuitive wisdom with rational thinking, driven by inspiration rather than desperation, grounded in ordinary time and repeated action over years."
 ---
 
 # May 2025 Thought Notes

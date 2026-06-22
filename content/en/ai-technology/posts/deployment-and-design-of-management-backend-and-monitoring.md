@@ -20,6 +20,10 @@ description: >
     This post guides you through the process of deploying OpenIM using Docker, 
     setting up the management backend, and monitoring the application. It provides 
     detailed steps for beginners and insights for more advanced users.
+tldr:
+  - "OpenIM supports multiple deployment strategies including Docker, source code, Kubernetes, each optimized for different environments and scalability needs."
+  - "Prometheus and Grafana integration enables comprehensive monitoring of OpenIM metrics, middleware components, and node exporter across all deployment architectures."
+  - "Successful OpenIM deployment requires configuring data sources, importing dashboards, and monitoring three metric categories: application metrics, middleware, and infrastructure."
 ---
 
 OpenIM offers various flexible deployment options to suit different environments and requirements. Here is a simplified and optimized description of these deployment options:

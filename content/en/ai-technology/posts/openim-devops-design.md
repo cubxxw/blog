@@ -13,6 +13,10 @@ tags:
   - openim
 categories:
   - AI & Technology
+tldr:
+  - "DevOps automates team collaboration and communication, enabling OpenIM to deliver stable products faster with less waste through standardized processes"
+  - "Agile development uses iterative sprints and twelve guiding principles to enable teams to respond flexibly to changing customer needs and improve software quality"
+  - "DevOps and Agile complement each other; combining them with CI/CD automation, lean principles, and owner culture creates high-quality teams delivering continuous value"
 ---
 
 ## DevOps

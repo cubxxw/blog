@@ -11,6 +11,10 @@ description: >
   The story of rebuilding my blog from scratch on Hugo after losing the previous
   dynamic, Docker-hosted version. Why I moved to a static site generator for long-term
   durability, and how I chose Hugo as the foundation for a blog meant to last for decades.
+tldr:
+  - "Author rebuilt his blog as static site using Hugo after losing his Docker-hosted dynamic blog, prioritizing long-term durability over dynamic features."
+  - "Hugo combined with PaperMod theme provides comprehensive customization options including multilingual support, dark/light mode, breadcrumb navigation, and comment integration."
+  - "Deployment automated via GitHub Actions and Makefile enables reliable content publishing without ongoing server management overhead."
 ---
 
 # Rebuild my blog (static)

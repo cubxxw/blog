@@ -173,6 +173,14 @@ html:lang(en) .post-content blockquote p {
   color: inherit;
 }
 
+/* When the decorative blockquote is the very first content block, it sits
+   right under the TL;DR panel — the oversized quote glyph (8rem, top:-0.5em
+   ≈ -64px) would otherwise punch up into the panel. Give it headroom so the
+   glyph clears the panel with a calm gap. */
+html:lang(en) .post-content > blockquote:first-child {
+  margin-top: 6rem;
+}
+
 html:lang(en) .post-content blockquote::before {
   content: '\201C';
   position: absolute;

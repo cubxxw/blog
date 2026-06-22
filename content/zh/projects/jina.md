@@ -11,6 +11,10 @@ categories:
 author: ["Xinwei Xiong", "Me"]
 aliases:
   - /zh/posts/ai-projects/jina/
+tldr:
+  - "Jina是云原生MLOps框架,通过Flow、Deployment、Executor、Gateway等核心组件将复杂AI应用分解为独立可扩展的微服务,支持多模态数据处理与企业级搜索及RAG系统构建。"
+  - "DocArray进化为基于Pydantic的灵活数据结构,统一表示文本、图像、音视频等多种数据模态,是Jina多模态/跨模态能力的基础,采用gRPC与Protobuf实现高效分布式传输。"
+  - "Jina生态丰富包括Executor Hub组件复用平台、与LangChain/Haystack等主流AI框架集成、向量数据库适配,公司战略正从通用框架转向提供Embeddings、Reader、DeepSearch等专业化Search Foundation API产品。"
 ---
 
 ## 项目概览

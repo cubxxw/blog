@@ -21,6 +21,10 @@ description: >
     Welcome to our project about building a blockchain-based learning platform. Here, we share insights and updates on our progress. You can switch to the specified language for more detailed information.
 aliases:
   - "/archives/contributors" # This alias allows the page to be accessed via the specified URL
+tldr:
+  - "Contribute to this blockchain-based learning platform through issues, coding, documentation, or community support regardless of skill level"
+  - "Follow contribution guidelines including Markdown formatting, Google coding standards, and proper GitHub workflow with fork-clone-modify-push-PR steps"
+  - "Always pull latest upstream code before pushing, review changes carefully with git diff, avoid force push, and submit well-crafted commit messages for any contribution"
 ---
 
 

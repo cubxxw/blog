@@ -89,6 +89,222 @@
   color: var(--color-accent, #862122);
 }
 
+/* ─── Author card: avatar + halo + role line ───────────────────── */
+.marginalia-group--author {
+  gap: 0.55rem;
+}
+
+.marginalia-author-card {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Avatar ring — a soft gradient halo around a circular photo */
+.marginalia-avatar-ring {
+  position: relative;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 1.5px;
+  background:
+    conic-gradient(
+      from 140deg,
+      var(--color-accent, #862122) 0deg,
+      rgba(180, 140, 90, 0.85) 130deg,
+      rgba(46, 53, 46, 0.4) 250deg,
+      var(--color-accent, #862122) 360deg
+    );
+  box-shadow:
+    0 2px 8px rgba(30, 30, 30, 0.12),
+    0 0 0 0 rgba(134, 33, 34, 0);
+  transition:
+    transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 420ms ease;
+}
+
+.marginalia-avatar-ring::before {
+  /* inner thin ring (paper gap between halo and photo) */
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 50%;
+  background: var(--color-bg, #f7f5ef);
+  z-index: 1;
+}
+
+.marginalia-avatar-img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(0.35) contrast(1.02);
+  transition: filter 420ms ease, transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Sweeping glint that crosses the avatar on hover */
+.marginalia-avatar-glint {
+  position: absolute;
+  z-index: 3;
+  inset: 2px;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.marginalia-avatar-glint::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -120%;
+  width: 60%;
+  height: 220%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  transform: rotate(8deg);
+  transition: left 720ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Author meta — name + role stacked */
+.marginalia-author-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.marginalia-author-name {
+  position: relative;
+  display: inline-block;
+  font-size: 0.82rem;
+  opacity: 0.9;
+  transition: color 220ms ease, opacity 220ms ease;
+}
+
+/* ZH name — upright, slightly smaller, refined */
+:lang(zh) .marginalia-author-name {
+  font-style: normal;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Latin name — expressive Fraunces display italic = artful editorial signature.
+   Placed after :lang(zh) so it wins even on Chinese pages with a Latin author name. */
+.marginalia-author-name--latin,
+:lang(zh) .marginalia-author-name--latin,
+:lang(en) .marginalia-author-name--latin {
+  font-family: 'Fraunces', var(--font-display, 'Georgia'), 'Georgia', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.96rem;
+  letter-spacing: 0.004em;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 50, 'WONK' 1, 'opsz' 40;
+  font-feature-settings: 'liga' 1, 'dlig' 1, 'swsh' 1, 'calt' 1;
+}
+
+.marginalia-author-name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.25);
+  transform-origin: left center;
+  transition: opacity 220ms ease, transform 280ms ease;
+}
+
+.marginalia-author-role {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-weight: 600;
+  color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.55;
+  line-height: 1.3;
+  transition: opacity 220ms ease, color 220ms ease;
+}
+
+:lang(zh) .marginalia-author-role {
+  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+}
+
+/* ── Hover choreography ── */
+.marginalia-author-card:hover .marginalia-avatar-ring {
+  transform: scale(1.06) rotate(-3deg);
+  box-shadow:
+    0 4px 14px rgba(30, 30, 30, 0.18),
+    0 0 0 3px rgba(134, 33, 34, 0.08);
+}
+
+.marginalia-author-card:hover .marginalia-avatar-img {
+  filter: grayscale(0) contrast(1.05);
+  transform: scale(1.02);
+}
+
+.marginalia-author-card:hover .marginalia-avatar-glint::after {
+  left: 130%;
+}
+
+.marginalia-author-card:hover .marginalia-author-name {
+  color: var(--color-accent, #2e352e);
+  opacity: 1;
+}
+
+.marginalia-author-card:hover .marginalia-author-name::after {
+  opacity: 0.5;
+  transform: scaleX(1);
+}
+
+.marginalia-author-card:hover .marginalia-author-role {
+  opacity: 0.8;
+}
+
+:lang(zh) .marginalia-author-card:hover .marginalia-author-name {
+  color: var(--color-accent, #862122);
+}
+
+/* Subtle ambient drift so the halo feels alive even at rest */
+@media (prefers-reduced-motion: no-preference) {
+  .marginalia-avatar-ring {
+    animation: marginalia-halo-breathe 6s ease-in-out infinite;
+  }
+}
+
+@keyframes marginalia-halo-breathe {
+  0%, 100% { box-shadow: 0 2px 8px rgba(30, 30, 30, 0.12), 0 0 0 0 rgba(134, 33, 34, 0); }
+  50% { box-shadow: 0 2px 10px rgba(30, 30, 30, 0.14), 0 0 0 2px rgba(134, 33, 34, 0.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marginalia-avatar-ring,
+  .marginalia-avatar-img,
+  .marginalia-avatar-glint::after,
+  .marginalia-author-name,
+  .marginalia-author-role {
+    transition: none;
+    animation: none;
+  }
+}
+
 /* Dialect (language switch) */
 .dialect-current {
   font-weight: 700;

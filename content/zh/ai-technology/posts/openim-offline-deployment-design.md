@@ -14,6 +14,10 @@ author: '熊鑫伟，我'
 keywords: ['OpenIM', '离线部署', '设计方案', '实施策略', '社区版']
 tags: ["OpenIM", "Offline Deployment", "Design", "Implementation Strategy", "Deployment"]
 categories: ["AI & Technology"]
+tldr:
+  - "OpenIM离线部署需拉取Kafka、Redis、MongoDB、MySQL、Zookeeper和MinIO等6个基础镜像及OpenIM和Chat应用镜像"
+  - "离线部署通过docker save命令将镜像保存为tar文件，再通过scp传输至内网服务器，最后用docker load导入后部署"
+  - "OpenIM支持多个版本选择包括稳定版release-v3.2、最新版latest和main分支版本，镜像源可选择阿里云或Docker Hub"
 ---
 
 ## 1. 基础镜像

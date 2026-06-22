@@ -40,6 +40,10 @@ description: >
   - "There's a crack in everything—that's how the light gets in. Accepting imperfection is the beginning of growth."
   
   Time Span: February 1-28, 2026 | 28 days of continuous recording.
+tldr:
+  - "Wildlife protection requires controlling human desire rather than expanding resources through internal education or external systemic incentives."
+  - "Well-managed cities with clear standards and unified design create superior user experiences compared to chaotic growth-phase urban environments."
+  - "Accepting personal imperfection and embracing flaws enables growth, as light enters through cracks in all things."
 ---
 
 # February 2026 Thought Notes | 2026 年 2 月思考笔记

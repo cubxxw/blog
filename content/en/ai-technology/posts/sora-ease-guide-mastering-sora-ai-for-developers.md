@@ -17,6 +17,10 @@ categories:
   - AI & Technology
 description: >
     This comprehensive guide introduces Sora AI, offering developers an accessible, automated, and swift path to harnessing its potential. Dive into various scenarios, master commanding Sora, and explore the multi-faceted applications of this AI model trained to understand and simulate the physical world in motion. Whether you're seeking the latest Sora news, development projects, or open-source contributions, this article is your gateway to the expansive world of Sora AI development.
+tldr:
+  - "Sora AI generates realistic and imaginative videos from text instructions by understanding and simulating physical world motion."
+  - "Effective Sora prompts combine photography techniques, visual styles, technical effects, and emotional expressions to produce desired video outputs."
+  - "SoraEase provides developers with automated tools, prompt collections, and community resources to simplify Sora video creation."
 ---
 
 **Copyright: [SoraEase](https://github.com/SoraEase/sora-prompt), please indicate the source when forwarding.**

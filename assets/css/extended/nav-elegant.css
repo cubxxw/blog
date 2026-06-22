@@ -12,13 +12,34 @@
     backdrop-filter: saturate(180%) blur(16px);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
     border-bottom: 1px solid rgba(30, 35, 30, 0.06);
-    transition: transform 0.25s ease;
+    /* Animate the auto-hide slide AND the theme-toggle colour fade /
+       scroll-elevation. This rule loads after custom.css, so listing
+       background/border/box-shadow here keeps those transitions from being
+       dropped when the transform transition is declared. */
+    transition:
+        transform 0.25s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.25s ease;
     will-change: transform;
 }
 
 /* Auto-hide on scroll-down */
 .header-wrapper.nav-scroll-hidden {
     transform: translateY(-100%);
+}
+
+/* Scroll elevation: at the very top the header sits flush; once the page
+   scrolls it lifts with a soft shadow and a firmer hairline, so the bar
+   reads as floating above the content. Subtle depth cue on phone + desktop. */
+.header-wrapper.nav-scrolled {
+    border-bottom-color: rgba(30, 35, 30, 0.1);
+    box-shadow: 0 4px 20px rgba(30, 35, 30, 0.06);
+}
+
+body.dark .header-wrapper.nav-scrolled {
+    border-bottom-color: rgba(226, 227, 225, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.32);
 }
 
 /* Language-specific background tint (light mode only) */

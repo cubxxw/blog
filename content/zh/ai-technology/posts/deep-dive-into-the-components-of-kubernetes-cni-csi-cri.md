@@ -21,6 +21,10 @@ categories:
   - AI & Technology
 description: >
   深入探讨Kubernetes中的CNI（容器网络接口）、CRI（容器运行时接口）和CSI（容器存储接口）。本文将详细解释这些关键组件的作用，以及它们在云原生环境中的重要性和应用场景。
+tldr:
+  - "Kubernetes通过CRI标准化容器运行时接口，kubelet基于gRPC通过Unix Socket与containerd、CRI-O等高层运行时通信，低层运行时runc负责实际容器操作。"
+  - "CNI插件框架将Pod网络配置与Kubernetes分离，kubelet通过调用二进制CNI插件实现容器网络设置，支持bridge、ipvlan等主插件和portmap、firewall等元插件的组合使用。"
+  - "CSI存储接口将持久化存储与Kubernetes解耦，kube-controller-manager和kubelet通过Unix Domain Socket与CSI驱动交互，支持动态卷分配、挂载和快照等操作。"
 ---
 
 ## 容器运行时

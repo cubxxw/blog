@@ -105,3 +105,6 @@ _dark-audit/
 _probe*
 .harness.html
 /*.png
+
+# Hugo js.Build (esbuild) auto-generates this for editor IntelliSense
+assets/jsconfig.json

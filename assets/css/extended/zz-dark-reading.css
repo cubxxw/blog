@@ -343,6 +343,36 @@ body.dark .post-content abbr[title],
   cursor: help;
 }
 
+/* ── 14. Inline citation superscripts <sup> ──────────────────────
+   This blog's research-style posts cite sources with hand-authored
+   <sup>N</sup> markers — ~2,780 across the content — that point to a
+   numbered reference list at the foot of the article. They are plain
+   superscripts, NOT links, so NO `.post-content sup` rule existed
+   anywhere: in dark mode each citation rendered in the body ink colour,
+   a tiny raised number visually indistinguishable from the surrounding
+   prose, leaving the reader no cue that it marks a citation. Give them a
+   quiet accent tint and a touch more weight so they read clearly as
+   reference markers (the familiar encyclopaedia convention) while
+   staying small and calm in dense prose. Scoped with :not(:has(a)) so
+   Goldmark's real footnote-ref markers — <sup><a class="footnote-ref">>
+   — keep their own link styling, untouched (:has is already used
+   elsewhere in this file, e.g. the Firefox scrollbar rule). The accent
+   token resolves per language, so EN gets sky-blue and ZH red
+   automatically. Gated on body.dark — light mode keeps the browser
+   default, provably unchanged. */
+body.dark .post-content sup:not(:has(a)),
+[data-theme="dark"] .post-content sup:not(:has(a)) {
+  color: var(--color-accent, #7dd3fc);
+  font-weight: 600;
+  padding-left: 0.06em;
+}
+/* Adjacent citation markers (e.g. <sup>4</sup><sup>5</sup>) get a hair of
+   breathing room so stacked numbers stay individually legible. */
+body.dark .post-content sup:not(:has(a)) + sup:not(:has(a)),
+[data-theme="dark"] .post-content sup:not(:has(a)) + sup:not(:has(a)) {
+  margin-left: 0.12em;
+}
+
 /* ── 13. Hero cover image glare ──────────────────────────────────
    In-prose images already get a subtle edge ring + brightness trim in
    dark (section 3, `.post-content img`), but the LARGEST image on an
@@ -369,4 +399,242 @@ body.dark .post-single .entry-cover img,
 body.dark .post-single .entry-cover:hover img,
 [data-theme="dark"] .post-single .entry-cover:hover img {
   filter: brightness(1) contrast(1);
+}
+
+/* ── 15. In-prose <aside> callouts ───────────────────────────────
+   Many articles (kubernetes, vector-database, hugo-advanced-tutorial,
+   stage-growth-of-open-source, emerging-challenges, 2024-annual-review,
+   gtd…, brain-friendly… — 20+ posts) write notes/tips as a bare,
+   class-less <aside> in Markdown. NO `.post-content aside` rule exists
+   anywhere, so the block fell back to plain body prose: in dark mode the
+   note was visually indistinguishable from the surrounding paragraphs,
+   with no surface, rule, or affordance to mark it as a set-aside aside.
+   Give it a quiet recessed callout — accent-tinted left rule on a faint
+   lifted surface — consistent with the <details> treatment in section 8,
+   so notes read as a calm, contained aside on the dark page.
+
+   Scoped with `aside:not([class])` so the theme's CLASSED layout asides —
+   .article-tldr, .article-marginalia, .reading-companion / .editorial-
+   tools-panel, .article-tools, .profile_sidecard — keep their own styling,
+   untouched. Token-driven, so the accent resolves per language (sky-blue
+   EN / red ZH) and --color-accent-soft supplies the wash automatically.
+   Gated on body.dark / [data-theme="dark"] — light mode is never selected
+   and keeps the plain rendering, provably unchanged. */
+body.dark .post-content aside:not([class]),
+[data-theme="dark"] .post-content aside:not([class]) {
+  margin: 1.75rem 0;
+  padding: 1rem 1.35rem;
+  background: var(--color-accent-soft, rgba(125, 211, 252, 0.10));
+  border-left: 3px solid var(--color-accent, #7dd3fc);
+  border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
+  color: var(--color-ink, #e2e3e1);
+  font-size: 0.97em;
+  line-height: 1.7;
+}
+/* Trim the leading/trailing child margins so the callout isn't over-padded
+   (post-content paragraphs carry a 2rem bottom margin by default). */
+body.dark .post-content aside:not([class]) > :first-child,
+[data-theme="dark"] .post-content aside:not([class]) > :first-child {
+  margin-top: 0;
+}
+body.dark .post-content aside:not([class]) > :last-child,
+[data-theme="dark"] .post-content aside:not([class]) > :last-child {
+  margin-bottom: 0;
+}
+
+/* ── 16. In-prose figure captions <figcaption> ───────────────────
+   The PaperMod `figure` shortcode (layouts/shortcodes/figure.html) emits a
+   <figcaption> for any image given a title/caption/attr, and several posts
+   use it. NO `.post-content figcaption` rule exists anywhere — and the
+   article-typography base note (lines 57-64) confirms captions simply
+   "inherit this base", i.e. the FULL body ink (#e2e3e1 EN / #f5f3ee ZH).
+   So in dark mode a caption renders at the exact weight and colour of the
+   surrounding prose: the eye can't tell where the paragraph ends and the
+   image's caption begins, and the caption competes with the body text it
+   should sit quietly beneath. Demote it to the muted ink, nudge the size
+   down, centre it under the figure, and give the credit/attr link the
+   language accent so the one interactive part stays discoverable. Token-
+   driven, so EN sky-blue / ZH red resolve automatically. Scoped to
+   .post-content so the lightbox overlay's own .lightbox-caption (built at
+   body level by image-lightbox.js, already styled for the dark backdrop in
+   image-lightbox.css) is untouched. Gated on body.dark / [data-theme="dark"]
+   — light mode keeps the current (browser/base) rendering, provably
+   unchanged. */
+body.dark .post-content figcaption,
+[data-theme="dark"] .post-content figcaption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-size: 0.85em;
+  line-height: 1.55;
+  color: var(--color-ink-muted, #b4bcb2);
+}
+/* The caption body (credit / attribution line) sits in a <p> — keep it
+   tight against the title so the block reads as one quiet unit. */
+body.dark .post-content figcaption p,
+[data-theme="dark"] .post-content figcaption p {
+  margin: 0.15rem 0 0;
+}
+/* Credit links (attrlink) are the one interactive part — give them the
+   language accent with a soft underline so they're reachable without
+   pulling weight back into the caption. */
+body.dark .post-content figcaption a,
+[data-theme="dark"] .post-content figcaption a {
+  color: var(--color-accent, #7dd3fc);
+  text-decoration: underline;
+  text-decoration-color: rgba(125, 211, 252, 0.4);
+  text-underline-offset: 0.18em;
+}
+html:lang(zh) body.dark .post-content figcaption a,
+html:lang(zh) [data-theme="dark"] .post-content figcaption a {
+  text-decoration-color: rgba(255, 90, 90, 0.4);
+}
+
+/* ── 17. In-content horizontal scrollbars (code blocks & wide tables) ──
+   Long code lines (`.post-content pre code` carries overflow-x:auto in the
+   PaperMod base; `.post-content .highlight / pre` get it on mobile) and wide
+   tables (`.post-content table` becomes display:block; overflow-x:auto on
+   narrow viewports) produce a HORIZONTAL scrollbar inside the block. NO
+   `::-webkit-scrollbar` rule targets these containers anywhere — and section
+   5 above intentionally scoped the page-scrollbar fix to body.dark *directly*
+   (no descendant) precisely so it would NOT reach component scrollbars,
+   noting they "keep their own carefully-tuned styling." But code blocks and
+   tables never actually got their own styling, so they fell back to the OS
+   default: a bright light track + thumb glued to the bottom edge of an
+   otherwise calm dark code block (very visible in Chrome on Windows/Linux,
+   and on hover/scroll-reveal elsewhere). Repaint just these inner scrollbars
+   to the same quiet dark treatment used for the page bar in section 5, so a
+   scrollable code sample or table stays a contained, low-glare element on the
+   dark surface. Slightly thinner than the page bar since these are nested.
+   Gated on body.dark / [data-theme="dark"] — light mode keeps the default
+   rendering, provably unchanged. */
+body.dark .post-content pre::-webkit-scrollbar,
+body.dark .post-content pre code::-webkit-scrollbar,
+body.dark .post-content .highlight::-webkit-scrollbar,
+body.dark .post-content table::-webkit-scrollbar,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar,
+[data-theme="dark"] .post-content table::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+body.dark .post-content pre::-webkit-scrollbar-track,
+body.dark .post-content pre code::-webkit-scrollbar-track,
+body.dark .post-content .highlight::-webkit-scrollbar-track,
+body.dark .post-content table::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+}
+body.dark .post-content pre::-webkit-scrollbar-thumb,
+body.dark .post-content pre code::-webkit-scrollbar-thumb,
+body.dark .post-content .highlight::-webkit-scrollbar-thumb,
+body.dark .post-content table::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+body.dark .post-content pre::-webkit-scrollbar-thumb:hover,
+body.dark .post-content pre code::-webkit-scrollbar-thumb:hover,
+body.dark .post-content .highlight::-webkit-scrollbar-thumb:hover,
+body.dark .post-content table::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.30);
+  background-clip: content-box;
+}
+/* Keep the track corner (where H and V bars meet) from flashing the OS
+   default light square. */
+body.dark .post-content pre::-webkit-scrollbar-corner,
+body.dark .post-content pre code::-webkit-scrollbar-corner,
+body.dark .post-content .highlight::-webkit-scrollbar-corner,
+body.dark .post-content table::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-corner {
+  background: transparent;
+}
+/* Firefox — thin, tinted thumb on the same containers. Set directly on the
+   scroll containers (not a descendant selector) so no other component bar is
+   affected. */
+body.dark .post-content pre,
+body.dark .post-content pre code,
+body.dark .post-content .highlight,
+body.dark .post-content table,
+[data-theme="dark"] .post-content pre,
+[data-theme="dark"] .post-content pre code,
+[data-theme="dark"] .post-content .highlight,
+[data-theme="dark"] .post-content table {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.20) transparent;
+}
+
+/* ── 18. List markers (bullets & ordered numbers) ────────────────
+   Markdown lists are everywhere in this blog's technical posts, but no
+   `::marker` rule exists anywhere — the only list styling sets spacing
+   (custom.css) and list-style:none on a few layout lists. So in dark mode
+   the disc bullets and the "1." "2." ordered numbers inherit the FULL body
+   ink (#e2e3e1 EN / #f5f3ee ZH): each marker renders at the exact weight
+   and colour of the prose beside it, so on a long list the markers compete
+   for attention with the text they're only meant to index. Demote them to
+   the muted ink so the marker reads as a quiet guide and the sentence
+   leads — the same "lead with prose, support with structure" move already
+   applied to footnotes (§7) and figcaptions (§16). Token-driven, so the ZH
+   palette (#a8a29e) is picked up automatically; muted ink on the dark paper
+   still clears WCAG AA, so nothing becomes hard to find. Scoped to
+   `.post-content` so component lists (TOC, nav, cards) keep their styling,
+   and only `::marker` is touched — the list item's own text stays full ink.
+   Gated on body.dark / [data-theme="dark"] — light mode keeps the browser
+   default marker, provably unchanged. */
+body.dark .post-content li::marker,
+[data-theme="dark"] .post-content li::marker {
+  color: var(--color-ink-muted, #b4bcb2);
+}
+
+/* ── 19. Strikethrough / retracted text <del> <s> ────────────────
+   GFM strikethrough (`~~text~~`) is used in several posts (e.g. the
+   prow / langchain / annual-review notes) and Goldmark renders it as
+   <del>; hand-written <s> appears too. NO `del`/`s` rule exists anywhere,
+   so in dark mode struck text renders at the FULL body ink (#e2e3e1 EN /
+   #f5f3ee ZH) with a full-ink line through it — i.e. the one thing the
+   author marked as removed/superseded shouts at the exact weight of the
+   live prose around it, and the heavy line crowds the glyphs. Semantically
+   struck text should read as quiet and secondary, so demote it to the
+   muted ink (the same "lead with prose, support with structure" move used
+   for footnotes §7, figcaptions §16 and list markers §18) and thin the
+   line a touch so it marks the words without smothering them. Token-driven,
+   so the ZH muted palette (#a8a29e) is picked up automatically; muted ink
+   on the dark paper still clears WCAG AA, so retracted text stays legible
+   for anyone who wants to read it. Scoped to `.post-content` so any
+   component strike (none today) is untouched, and `del a`/`s a` keep their
+   link colour so a struck-through link is still reachable. Gated on
+   body.dark / [data-theme="dark"] — light mode keeps the browser default,
+   provably unchanged. */
+body.dark .post-content del,
+body.dark .post-content s,
+[data-theme="dark"] .post-content del,
+[data-theme="dark"] .post-content s {
+  color: var(--color-ink-muted, #b4bcb2);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--color-rule, rgba(226, 227, 225, 0.45));
+  text-decoration-thickness: 1px;
+}
+/* A struck link keeps its own accent so it stays discoverable. */
+body.dark .post-content del a,
+body.dark .post-content s a,
+[data-theme="dark"] .post-content del a,
+[data-theme="dark"] .post-content s a {
+  color: var(--color-accent, #7dd3fc);
 }

@@ -11,6 +11,10 @@ keywords: ['Hugo', '静态网站生成器', '网站开发', '博客搭建', 'Git
 tags: ["Hugo", "Blog Building", "Web Development"]
 categories: ["AI & Technology"]
 description: '本教程为Hugo高级教程，适合已经有Hugo基础知识的开发者。我们将深入探讨Hugo的高级功能和最佳实践，包括自定义主题开发、数据模板、性能优化和部署策略。此外，教程将介绍如何将Hugo与GitHub结合使用，实现持续部署和版本控制，以优化的工作流程。'
+tldr:
+  - "Hugo模块基于Go模块实现，支持将不同组件组合挂载成虚拟联合文件系统，实现项目和主题的灵活管理。"
+  - "Hugo模板基于Go的html/template包，通过管道、作用域和上下文自动转义实现安全的HTML渲染和数据驱动的动态页面生成。"
+  - "Hugo提供i18n国际化功能、data数据文件、shortcodes自定义标记等高级特性，支持多语言网站构建和可重用代码片段的灵活插入。"
 ---
 
 

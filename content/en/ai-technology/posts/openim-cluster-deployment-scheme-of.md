@@ -18,6 +18,10 @@ categories:
   - AI & Technology
   - Blog
   - OpenIM
+tldr:
+  - "OpenIM cluster deployment supports three methods: binary, docker-compose, and Kubernetes with one-click installation via sealos, using unified business code adapted through deployment scripts."
+  - "Infrastructure design requires multi-zone subnets, load balancers, persistent storage solutions like Rook, and monitoring stacks like ELK/EFK for real-time log analysis and alerting."
+  - "Microservice optimization emphasizes minimal service division with gRPC/REST communication, leveraging Kubernetes service discovery to replace Zookeeper, and using Helm charts for component deployment and configuration management."
 ---
 
 ## Conference and Reference Links

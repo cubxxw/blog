@@ -14,6 +14,10 @@ tags:
   - Blog
 categories:
   - AI & Technology
+tldr:
+  - "OpenIM offline deployment requires pulling six base images including Kafka, Redis, MongoDB, MySQL, ZooKeeper, and MinIO before transferring to intranet"
+  - "Images must be saved as tar files using docker save and imported on offline servers using docker load to enable deployment without internet"
+  - "Complete offline deployment uses docker-compose after code cloning and image import to activate all OpenIM services within isolated network environments"
 ---
 
 

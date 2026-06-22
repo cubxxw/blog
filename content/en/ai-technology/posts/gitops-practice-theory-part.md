@@ -18,6 +18,10 @@ categories:
   - AI & Technology
 description: >
     Explore the practice of GitOps in Kubernetes, with a detailed analysis of implementing Canary and Blue-Green deployment strategies using Argo Rollouts. This article provides in-depth theoretical and practical guidance for developers to optimize their continuous deployment processes.
+tldr:
+  - "GitOps combines Git as single source of truth with Kubernetes Operators to automate deployment from version control to clusters"
+  - "Advanced deployment strategies like Canary and Blue-Green reduce risk by gradually or instantly switching traffic between old and new versions"
+  - "Kubernetes namespaces isolate environment configurations with network policies and RBAC to enable separate QA, staging, and production deployments"
 ---
 
 Today we will take a look at the theory and practice of kubernetes and gitops

@@ -11,6 +11,10 @@ author: '熊鑫伟，我'
 keywords: ['Auto-GPT', '人工智能', '安装教程', '自主AI工具', '技术指南', '智能自动化']
 tags: ["Blog", "AI", "Auto-GPT"]
 categories: ["AI & Technology"]
+tldr:
+  - "Auto-GPT利用GPT-4通过自然语言处理能力自主执行内容创建、翻译、数据分析等多种复杂任务，可连接互联网获取最新信息。"
+  - "安装Auto-GPT需要准备Python环境、Git、OpenAI API密钥和PineCone API密钥，通过克隆项目、安装依赖和配置环境变量即可在本地运行。"
+  - "Auto-GPT和AgentGPT等工具代表LLM任务自动化的开始，未来将能完成更复杂的工作，帮助组织专注创意项目而将重复琐事交由程序自动处理。"
 ---
 
 ## 前言

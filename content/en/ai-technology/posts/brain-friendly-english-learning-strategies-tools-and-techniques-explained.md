@@ -16,6 +16,10 @@ categories:
   - AI & Technology
 description: >
     Explore brain-friendly strategies for English learning, including effective tools and techniques designed to enhance language acquisition. Discover how to leverage cognitive science principles to optimize your learning process and achieve fluency faster. This guide provides insights into integrating technology and traditional methods to create a personalized learning experience that aligns with how our brains work best.
+tldr:
+  - "Effective word memorization requires entering sufficient information dimensions, repeating appropriately, and using feedback to internalize the word through multisensory learning strategies."
+  - "The hippocampus transfers short-term memories into long-term storage through repetition and emotional connection, while spaced repetition combined with active retrieval strengthens neural pathways far better than cramming."
+  - "Maintaining brain health through adequate REM sleep, balanced nutrition, and regular aerobic exercise directly supports neurogenesis and enhances learning capacity and memory formation."
 ---
 
 # After researching a large amount of information, we summarized the methods of memorizing words and learning spoken English.

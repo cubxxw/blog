@@ -9,6 +9,10 @@ categories:
   - Growth
 aliases:
   - /ai-technology/posts/my-first-blog/
+tldr:
+  - "Xinwei Xiong is a passionate open source contributor and tech enthusiast guided by the OpenIM community in his digital journey."
+  - "True value emerges from what you create, not what you possess, as emphasized by open source philosophy and personal mantra."
+  - "The author balances tech pursuits with outdoor exploration, viewing life as both a digital and physical adventure worth experiencing fully."
 ---
 
 

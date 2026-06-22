@@ -18,6 +18,10 @@ categories:
   - AI & Technology
 description: >
      Each request to the Kubernetes API will go through multi-stage access control before it is accepted, including authentication, authorization and admission control (Admission Control), etc.
+tldr:
+  - "Kube-apiserver enforces multi-stage access control via authentication, authorization, and admission control before accepting API requests"
+  - "Kubernetes supports multiple concurrent authentication mechanisms including certificates, tokens, ServiceAccounts, and webhook-based authentication services"
+  - "RBAC authorization controls cluster resource access by mapping permissions between subjects, roles, and resources within cluster-wide or namespace-specific scopes"
 ---
 
 

@@ -19,6 +19,10 @@ description: >
   A deep-dive into Microsoft MarkItDown: an open source Python tool for converting PDF, Word, PowerPoint, Excel, images, audio, and more into Markdown. Covers architecture, installation, hands-on tutorials, LLM integration, security considerations, and comparisons with similar tools.
 aliases:
   - /posts/ai-projects/markitdown/
+tldr:
+  - "MarkItDown converts diverse document formats into structured Markdown, specifically designed for LLM preprocessing with emphasis on content preservation over visual fidelity."
+  - "Modular architecture with optional dependencies, 15+ supported formats, and extensibility via plugins and LLM/Azure integrations for advanced capabilities."
+  - "Ideal for RAG pipelines and document preprocessing but requires Azure Document Intelligence for strong PDF handling and careful security management of dependencies and plugins."
 ---
 
 > This project is an ongoing journey — learning AI open source projects with steady, daily progress. Through hands-on work with real projects and AI tooling, the goal is to develop the ability to solve complex problems and document the process.

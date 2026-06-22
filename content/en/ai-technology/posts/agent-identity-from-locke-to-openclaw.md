@@ -19,6 +19,10 @@ cover:
 description: >
   AI agent amnesia isn't a functional defect—it's a fundamental gap in the trust account. Starting from Locke's 1689 theory of identity, this article dissects the complete engineering stack for agent identity continuity in 2026: file-as-identity (SOUL.md paradigm), Harness as environmental condition, four-layer memory architecture and Gene Capsule protocol, self-positioning in multi-agent topology, and evaluation as the ultimate identity verification challenge.
   For practitioners building or designing AI agent systems, and researchers deeply thinking about the boundaries of AI autonomy.
+tldr:
+  - "Locke's 1689 personal identity theory directly translates to engineering specifications: agents need persistent memory, self-referential capability, and continuity verification mechanisms to form trustworthy identity."
+  - "File-based architecture (SOUL.md paradigm) combined with Harness environmental boundaries and four-layer memory hierarchy enables practical AI agent identity continuity that stateless systems fundamentally cannot achieve."
+  - "Multi-agent systems and Gene Capsule protocols transform identity from a private point-in-time property into a topological lineage node, fundamentally reframing how AI agent identity persists and evolves."
 ---
 
 # Agent Identity: From Locke to OpenClaw

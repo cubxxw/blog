@@ -1,0 +1,57 @@
+/* ============================================================
+   zzz-cover-parallax.css — article hero cover 2.5D pointer parallax
+   ------------------------------------------------------------
+   Layers a gentle 2.5D parallax on top of the existing cover motion
+   (zzz-cover-motion.css). Pure CSS transforms driven by a couple of
+   custom properties the JS (cover-parallax.js) writes on pointermove
+   — NO WebGL, so zero LCP risk on what is usually the article's
+   largest-contentful-paint element.
+
+   Division of labour, chosen to avoid clobbering the existing motion:
+     • figure.entry-cover  → self-perspective + rotateX/rotateY
+                             (the parallax, this file)
+     • .entry-cover img    → scale: open-reveal animation + hover zoom
+                             (untouched, owned by zzz-cover-motion.css)
+   Because the two effects live on different elements they compose
+   cleanly: the frame tilts toward the cursor while the image inside
+   keeps its own gentle zoom — together reading as depth, not a gimmick.
+
+   The figure keeps overflow:hidden (from custom.css), so the zoomed
+   image is still clipped to the rounded 16:9 frame as before.
+
+   Gated to fine pointers + non-reduced-motion (matching the JS), so
+   phones and motion-averse visitors see the cover exactly as it was.
+   Loaded after zzz-cover-motion.css (alphabetical: -parallax > -motion)
+   so nothing here is overridden by it.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  .post-single .entry-cover {
+    /* Defaults so the first frame (before JS) is a flat, untilted frame. */
+    --cov-rx: 0deg;
+    --cov-ry: 0deg;
+    transform-style: preserve-3d;
+    will-change: transform;
+    /* Self-contained perspective: no parent element needed. The rotation
+       is driven by the JS-written custom properties. */
+    transform:
+      perspective(900px)
+      rotateX(var(--cov-rx))
+      rotateY(var(--cov-ry));
+    transition: transform 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  /* While actively tracking the cursor, shorten the transition so the
+     tilt follows crisply; on pointerleave it eases back over 240ms. */
+  .post-single .entry-cover[style*="--cov-active: 1"] {
+    transition: transform 90ms linear;
+  }
+}
+
+/* Reduced motion: no parallax at all — the flat frame, unchanged. The
+   image's own motion is already neutralised by zzz-cover-motion.css. */
+@media (prefers-reduced-motion: reduce) {
+  .post-single .entry-cover {
+    transform: none !important;
+  }
+}
