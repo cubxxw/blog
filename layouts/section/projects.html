@@ -40,7 +40,7 @@
 
     <div class="eip-grid">
       {{- range $i, $p := $projectPages }}
-      <article class="eip-card {{ if eq $i 0 }}eip-card--hero{{ end }}">
+      <article class="eip-card {{ if eq $i 0 }}eip-card--hero{{ end }}" data-tilt>
         <div class="eip-card__inner">
           <div class="eip-card__top">
             <span class="eip-badge">{{ if $isZh }}AI 项目{{ else }}AI Project{{ end }}</span>
@@ -72,4 +72,12 @@
   {{- end }}
 
 </div>
+
+{{/* Pointer-driven 3D tilt for the project cards — no WebGL, self-gates to
+     fine-pointer / non-reduced-motion visitors (phones keep the flat card). */}}
+{{- $cardTilt := resources.Get "js/card-tilt.js" | js.Build (dict "minify" hugo.IsProduction) -}}
+{{- if not site.Params.assets.disableFingerprinting -}}
+  {{- $cardTilt = $cardTilt | fingerprint -}}
+{{- end -}}
+<script src="{{ $cardTilt.RelPermalink }}" defer></script>
 {{- end }}
