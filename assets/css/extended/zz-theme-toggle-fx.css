@@ -1,0 +1,66 @@
+/* ============================================================
+   zz-theme-toggle-fx.css — animated sun ⇄ moon crossfade
+   ------------------------------------------------------------
+   PaperMod swaps the two toggle glyphs with `display:none`, so a
+   theme change snaps instantly. Keep both glyphs rendered and
+   crossfade them with a rotate + scale, so switching theme — a
+   deliberate tap/click — gets a small, satisfying flourish on
+   both phone and desktop. The incoming glyph rises into place
+   while the outgoing one rotates and shrinks away.
+
+   Loads after the theme core + other extended CSS (filename
+   order), and uses a slightly higher specificity, so the base
+   `display:none` rules are overridden cleanly. Fully neutralised
+   under prefers-reduced-motion at the bottom — the swap still
+   happens, it just doesn't animate.
+   ============================================================ */
+
+#theme-toggle {
+  position: relative;
+  overflow: visible;
+}
+
+/* Both glyphs share the same centre point; we crossfade between
+   them rather than hard-swap, so neither one ever pops. */
+#theme-toggle #sun,
+#theme-toggle #moon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  /* Default (hidden) state — overridden per theme below. */
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Resting position of the hidden glyph: rotated + shrunk so the
+   exchange reads as one setting while the other rises. */
+#theme-toggle #sun {
+  transform: translate(-50%, -50%) rotate(-90deg) scale(0.4);
+}
+#theme-toggle #moon {
+  transform: translate(-50%, -50%) rotate(90deg) scale(0.4);
+}
+
+/* Light mode → show the moon (tap to go dark). */
+body:not(.dark) #theme-toggle #moon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+}
+
+/* Dark mode → show the sun (tap to go light). */
+body.dark #theme-toggle #sun {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #theme-toggle #sun,
+  #theme-toggle #moon {
+    transition: none !important;
+  }
+}

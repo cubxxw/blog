@@ -295,6 +295,14 @@ document.addEventListener('click', function(event) {
         }
     }, { passive: true });
 
+    // Accessibility: never strand keyboard focus inside an off-screen
+    // header. If anything in the bar gains focus (Tab / Shift+Tab) while
+    // it's auto-hidden, slide it back into view immediately.
+    headerWrapper.addEventListener('focusin', function () {
+        upAccumulated = 0;
+        show();
+    });
+
     // Set the correct elevation state on first paint (e.g. when landing
     // mid-page via an anchor or a restored scroll position).
     update();
