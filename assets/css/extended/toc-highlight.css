@@ -16,7 +16,7 @@ html:not(:lang(zh)) .dark .toc-side__nav a.toc-active {
 }
 
 html:lang(zh) body.dark .toc-side__nav a.toc-active {
-  color: #ff3b3b !important;
+  color: #ff6b6b !important; /* softened ZH dark accent — see tokens.css */
 }
 
 /* TOC highlight — left sidebar (.toc-sidebar__nav, US-015) */
@@ -36,7 +36,7 @@ html:not(:lang(zh)) .dark .toc-sidebar__nav #TableOfContents a.toc-sidebar-activ
 }
 
 html:lang(zh) body.dark .toc-sidebar__nav #TableOfContents a.toc-sidebar-active {
-  color: var(--color-accent, #ff3b3b) !important;
+  color: var(--color-accent, #ff6b6b) !important; /* fallback matches softened ZH dark accent */
 }
 
 /* Smooth scrolling (JS sets scrollBehavior on <html>, CSS provides fallback) */

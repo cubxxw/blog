@@ -118,7 +118,20 @@ html:lang(zh) [data-theme="dark"] {
   --color-paper:        #1c1917;
   --color-ink:          #f5f3ee;
   --color-ink-muted:    #a8a29e;
-  --color-accent:       #ff3b3b;
+  /* ZH dark accent — softened from the pure #ff3b3b.
+     The old value was the lowest-contrast accent in the whole dark palette:
+     4.95:1 on the paper and only 4.58:1 on the faintly-lifted card surface
+     (rgba(255,255,255,0.03)) — i.e. it cleared the WCAG-AA 4.5:1 floor by a
+     hair, exactly where the accent is smallest (footnote/citation markers,
+     active-TOC labels, in-prose link hover). A fully-saturated pure red also
+     "buzzes"/haloes against a dark surface in long-form reading. #ff6b6b is
+     already the established ZH-dark red elsewhere in this codebase (the code
+     keyword token, article-typography §4 dark/ZH), so adopting it here
+     HARMONISES the dark reds into one family rather than introducing a new
+     hue, while lifting contrast to a comfortable 6.30:1 paper / 5.84:1 card
+     and calming the glare. Light/ZH accent (#862122) lives in a separate
+     html:lang(zh) block and is untouched — this is gated on body.dark. */
+  --color-accent:       #ff6b6b;
   --color-accent-soft:  #2e1a19;
   --color-rule:         rgba(245, 243, 238, 0.10);
 

@@ -255,10 +255,10 @@ html:lang(en) body.dark .editorial-tools-panel .toc-item a.toc-active {
 
 /* P0-1: ZH dark — TOC active item must use accent red, not paper (dark bg = invisible) */
 html:lang(zh) body.dark .editorial-tools-panel .toc-item a.toc-active {
-  color: var(--color-accent, #ff3b3b) !important;
-  border-left-color: var(--color-accent, #ff3b3b) !important;
+  color: var(--color-accent, #ff6b6b) !important;
+  border-left-color: var(--color-accent, #ff6b6b) !important;
   border-left-width: 3px;
-  background: rgba(220, 80, 60, 0.15);
+  background: rgba(255, 107, 107, 0.14);
   font-weight: 600;
   opacity: 1;
 }
