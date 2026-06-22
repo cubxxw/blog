@@ -11,6 +11,10 @@ keywords: ['GitOps', 'Kubernetes', 'Argo Rollouts', 'Canary Deployment', 'Blue-G
 tags: ["GitOps", "Kubernetes", "Argo Rollouts", "Canary Deployment", "Blue-Green Deployment"]
 categories: ["AI & Technology"]
 description: '探索 GitOps 在 Kubernetes 中的实践，详细解析使用 Argo Rollouts 实现金丝雀和蓝绿部署策略。本文将为开发者提供深入的理论和实践指导，帮助优化持续部署流程。'
+tldr:
+  - "GitOps通过将Git作为真实状态源，结合Kubernetes Operator和自动化工具实现持续部署的完整流程，从代码提交到集群部署全程自动化，确保声明式配置和版本控制。"
+  - "Kubernetes命名空间作为环境边界支撑多环境管理，包含代码、运行时和配置三要素，通过RBAC、网络策略和资源隔离实现QA、E2E、Stage和Prod等环境的安全隔离。"
+  - "蓝绿部署和金丝雀部署是Argo Rollouts实现的高级部署策略，蓝绿部署适合需要快速切换和回滚的遗留应用，金丝雀部署通过渐进式流量转移和实时监控最小化新版本发布风险。"
 ---
 
 

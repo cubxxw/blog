@@ -19,6 +19,10 @@ categories:
   - Growth
 description: >
   3,614 notes, fourteen months, one person's attempt to live authentically. From "surge" to "shedding" — not getting older, but becoming real.
+tldr:
+  - "Travel initially provided transformative energy but eventually became an avoidance mechanism when internal processing grew harder to sustain through constant movement."
+  - "Physical and emotional extremes reveal authentic character; only at altitude with fever, alone, or facing impossible choices does the heart speak honestly rather than through daily judgments."
+  - "Mature perception requires holding contradictions simultaneously—understanding systems without cynicism, finding beauty amid impermanence, and recognizing that questioning rather than answering is itself a way of life."
 ---
 
 > On the edge of a cliff, all logic fails. Only intuition can connect with the world.

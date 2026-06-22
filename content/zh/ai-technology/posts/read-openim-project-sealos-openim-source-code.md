@@ -17,6 +17,10 @@ tags:
   - Cloud Native
 categories:
   - AI & Technology
+tldr:
+  - "Sealos通过Applier采用K8s声明式设计理念,用户声明期望集群状态,系统负责转换当前状态到目标状态"
+  - "集群部署通过Check、PreProcess、MountRootfs、MirrorRegistry、Bootstrap和Init等Pipeline步骤顺序执行,最终通过kubeadm完成K8s集群搭建"
+  - "Sealos使用buildah构建镜像、SSH分发部署、controller管理扩展功能,实现了优秀的开源项目架构设计标准"
 ---
 
 ## 准备

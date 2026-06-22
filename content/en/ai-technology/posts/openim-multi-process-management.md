@@ -12,6 +12,10 @@ tags:
   - Blog
 categories:
   - AI & Technology
+tldr:
+  - "OpenIM employs systemd for robust process management over nohup, offering automatic restart and kernel-level supervision without script failure risks."
+  - "Systemd supports advanced features including unit file templates, service dependencies, concurrent startup, and journalctl logging, enabling sophisticated multi-process orchestration."
+  - "OpenIM's crontask implementation demonstrates complete systemd integration with installation scripts, configuration templating, and health checks for production reliability."
 ---
 
 ## 111: OpenIM multi-process management strategy

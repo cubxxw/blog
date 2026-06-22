@@ -17,6 +17,10 @@ description: >
   A deep dive into Go directives and code-generation tooling. Learn how go generate and
   related automation tools reduce boilerplate by producing repetitive, project-specific code
   before compilation, saving time and cutting down on manual errors.
+tldr:
+  - "Go provides go:generate directive to automatically create repetitive project-specific code during development before compilation, significantly reducing boilerplate and manual errors"
+  - "Go:build directive enables precise compile-time control over which source files to include based on operating systems, architectures, and custom tags for cross-platform development"
+  - "Go:embed simplifies static file inclusion directly in binaries by embedding files and directories at compile time, eliminating third-party tools and streamlining deployment"
 ---
 
 # These go: instructions in the Go source code && go automation tools

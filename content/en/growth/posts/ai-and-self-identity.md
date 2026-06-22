@@ -20,6 +20,10 @@ categories:
   - Life
 description: >
     When AI can replace our thinking and execution, where is "me"? Exploring human agency, feelings, and the essence of meaning in the AI era.
+tldr:
+  - "Human agency rooted in embodied presence and felt experience, not thinking or logic, cannot be replicated by AI."
+  - "Meaning emerges unexpectedly from concrete moments and bodily feelings, never through calculation or algorithmic determination."
+  - "In the AI era, human value shifts from tool-making to direction-defining—clarity of self-awareness determines authentic use of AI versus being used by it."
 ---
 
 > **Preface**: This article was written on a night in Lhasa. At an altitude of over 3,000 meters, the air is thin and the stars are very close. One evening I stood in the courtyard, alone, and watched the moon in the sky for a long time. That moon doesn't lose a bit of its light because of AI's existence.

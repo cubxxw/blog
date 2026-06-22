@@ -16,6 +16,10 @@ description: >
   A deep dive into AI gateway architecture for managing LLM API traffic, rate limiting, and multi-model routing.
 aliases:
   - /posts/ai-projects/ai-getway/
+tldr:
+  - "AI gateways centralize LLM access, enabling token-based billing, multi-provider routing, cost control, security guardrails, and observability critical for production AI applications."
+  - "Two market categories emerge: purpose-built AI gateways like LiteLLM and Portkey prioritizing AI-specific features, versus evolved general API gateways like Kong and APISIX extending mature platforms with AI plugins."
+  - "LiteLLM stands out for startups with 100+ LLM support, OpenAI-compatible API, native Langfuse integration, Python ecosystem alignment, and flexible deployment options balancing cost, flexibility, and rapid iteration."
 ---
 
 > This project is an ongoing process — learning AI open source projects one day at a time, building real-world skills by combining hands-on practice with AI tooling, and documenting the journey.

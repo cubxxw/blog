@@ -19,6 +19,10 @@ categories:
   - Growth
 description: >
     September 2025 Thought Notes - Exploring the intersection of technology and philosophy during the early autumn harvest season, recording deep reflections on the AI era, personal growth, cognitive upgrades, and the wisdom of maintaining inner clarity in a rapidly changing world.
+tldr:
+  - "Technology amplifies human expression, but fundamental desires for status, connection, and meaning persist unchanged across centuries."
+  - "Understanding emerges from integrating mental models through practice and reflection, not accumulating isolated information fragments."
+  - "Authentic fulfillment requires shifting validation source from external signals to internal values, grounded in psychological safety and congruence."
 ---
 # 2025年9月思考笔记
 

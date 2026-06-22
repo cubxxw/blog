@@ -16,6 +16,10 @@ categories:
   - AI & Technology
 description: >
     Discover how to set up a robust image repository using Harbor, a powerful open-source container image registry. This step-by-step guide covers the installation and configuration of Harbor, including the use of Helm charts and Cert-manager for secure HTTPS connections. Learn how to push Docker images to your Harbor repository, configure DNS resolution, and even explore the option of using AWS S3 for scalable image storage. Harness the full potential of Harbor to streamline your container image management and reduce storage costs while ensuring security and reliability.
+tldr:
+  - "Harbor enables enterprises to build private container registries with Helm and Cert-manager for secure HTTPS-based image storage and CI/CD pipeline integration."
+  - "Docker images pushed to Harbor require full repository paths including domain, project, and image name, replacing Docker Hub in production environments."
+  - "Harbor supports scalable external storage via AWS S3 with pay-as-you-go billing, high availability, and disaster recovery capabilities for large-scale deployments."
 ---
 
 

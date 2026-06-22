@@ -16,6 +16,10 @@ description: >
   Reflections on the journey of becoming an independent developer in the AI era.
 aliases:
   - /posts/ai-projects/independent-developer/
+tldr:
+  - "Independent developers navigate the AI era through systematic hands-on engagement with open source projects and real-world applications."
+  - "Combining AI tools with open source learning accelerates problem-solving capabilities and deepens technical expertise development."
+  - "Transparent documentation of the learning journey enables community connection and supports other aspiring open source contributors."
 ---
 
 > This project is an ongoing effort — learning AI open source projects one step at a time, building real-world practice through hands-on projects, combining AI tools to strengthen the ability to solve complex problems. Everything is documented along the way.

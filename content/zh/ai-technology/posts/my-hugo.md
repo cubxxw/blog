@@ -10,6 +10,10 @@ keywords: ['Hugo', '博客搭建', '静态网站生成器', '教程']
 tags: ["Blog", "Hugo", "Tutorial"]
 categories: ["AI & Technology"]
 description: '本教程将指导你如何使用 Hugo —— 一款流行的静态网站生成器 —— 来搭建和管理个人博客。详细介绍从安装到配置的各个步骤。'
+tldr:
+  - "选择Hugo和PaperMod主题重建博客，通过静态网站生成器替代易出故障的动态博客架构获得更长期稳定性。"
+  - "Hugo支持多语言内容管理、自定义路径、主题配置和GitHub Pages自动部署，提供完整的博客搭建工具链。"
+  - "使用git submodule管理主题、Makefile集成本地命令、GitHub Actions自动化部署实现高效的内容发布流程。"
 ---
 
 # 重新搭建我的博客（静态）

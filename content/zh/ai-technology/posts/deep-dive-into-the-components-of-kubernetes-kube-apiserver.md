@@ -12,6 +12,10 @@ tags: ["Blog", "etcd", "Kubernetes", "kube-apiserver"]
 categories: ["AI & Technology"]
 description: >
     Kubernetes API的每个请求都会经过多阶段的访问控制之后才会被接受，这包括认证、授权以及准入控制（Admission Control）等。
+tldr:
+  - "Kube-APIServer是Kubernetes集群的中枢组件，所有请求都需经过认证、授权和准入控制三阶段访问控制才能被接受。"
+  - "Kubernetes支持X509证书、静态Token、ServiceAccount等多种认证方式，可同时启用多个认证插件实现灵活的身份验证。"
+  - "RBAC通过角色、主体和角色绑定三层关系实现权限管理，相比ABAC更易于维护和支持动态配置，是生产环境推荐方案。"
 ---
 
 ## 深入理解Kube-APIServer

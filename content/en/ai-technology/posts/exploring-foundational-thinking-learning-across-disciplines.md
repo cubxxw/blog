@@ -20,6 +20,10 @@ categories:
   - Growth
 description: >
   本博客探讨如何将底层思维应用于不同学科，以加速学习和掌握新领域的过程。我们讨论了利用核心原理来增强理解和在不同专业领域的应用的技巧和策略。
+tldr:
+  - "Everything possesses underlying foundational logic that enables rapid mastery of new disciplines across fields."
+  - "Understanding dual cognitive systems—intuitive and logical thinking—reveals the foundational mechanisms behind human decision-making processes."
+  - "Cross-disciplinary study of philosophy, psychology, logic, and cognitive science builds critical thinking skills for analyzing and constructing valid arguments."
 ---
 
 ## 什么是底层逻辑

@@ -15,6 +15,10 @@ categories:
   - Travel
 description: >
   Reflections from a stay in Lhasa, February to March 2026. On the body slowing down, the public nature of faith, collective memory, and the struggles of Tsangyang Gyatso.
+tldr:
+  - "The English version of this article is not yet published; full translation is in progress"
+  - "Reader should consult the Chinese version for complete reflections on Lhasa's altitude, silence, and spiritual weight"
+  - "Article explores themes of body slowing down, public faith, collective memory, and challenges faced by Tsangyang Gyatso"
 ---
 
 *This article is available in Chinese. An English translation is in progress.*

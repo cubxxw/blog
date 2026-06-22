@@ -18,6 +18,10 @@ categories:
   - AI & Technology
 description: >
   本文提供了详细的 Kubernetes 资源和学习路径，涵盖了 CNI、CRI、CSI 以及云原生环境中的核心技术。我们还分享了一些重要的学习资源和学习方法，帮助读者进一步深造 Kubernetes 生态系统。
+tldr:
+  - "Kubernetes 学习必须从 Docker 容器和 Linux 内核基础开始，先理解整体架构再深入，读源码需带着问题并具备基础积累量。"
+  - "推荐分阶段学习路径：了解理论、动手实践、阅读源码、问题排查，从微服务到 Docker 再到 Kubernetes，逐步扩展到 Knative、服务网格和消息队列等生态。"
+  - "源码阅读采用先整体后局部的方法，理论学习与实践相结合，推荐通过参考书籍、官方文档、视频资源和开源项目深入学习 Kubernetes 架构设计理念。"
 ---
 
 ## **需求**

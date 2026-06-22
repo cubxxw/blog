@@ -11,6 +11,10 @@ author: '熊鑫伟，我'
 keywords: ['OpenIM', 'DevOps', '标准设计', '自动化', '部署', '维护']
 tags: ["OpenIM", "DevOps", "Cloud Native", "Automation", "Microservices", "Deployment"]
 categories: ["AI & Technology"]
+tldr:
+  - "DevOps通过自动化和协作削减开发周期、提升软件质量，为OpenIM团队提供高效的管理方式和沟通协作平台。"
+  - "敏捷开发强调个体互动、可工作软件、客户合作、响应变化等四个核心价值观，Scrum框架通过Sprint迭代、多角色协作实现快速交付。"
+  - "精益思想是人、过程和技术的集成，DevOps作为精益管理实践，通过持续集成和自动化测试实现高质量低成本的产品价值交付。"
 ---
 
 ## DevOps

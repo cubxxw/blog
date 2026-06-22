@@ -19,6 +19,10 @@ categories:
   - AI & Technology
 description: >
     Explore the inner workings and components of Kubernetes Etcd in-depth, understanding its role and significance in the Kubernetes ecosystem.
+tldr:
+  - "etcd uses Raft consensus protocol and MVCC storage to guarantee distributed consistency and high availability for Kubernetes cluster state management"
+  - "Learner nodes can safely expand etcd clusters without disrupting quorum by receiving replication messages without participating in voting"
+  - "etcd performance depends on network latency, disk I/O, proper storage quotas under 8GB, and optimized heartbeat intervals to prevent frequent leader elections"
 ---
 
 

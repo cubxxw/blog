@@ -10,6 +10,10 @@ keywords: []
 tags: ["Blog", "Git", "openim"]
 categories: ["AI & Technology"]
 description: 'Explore advanced techniques and best practices for designing Git hooks to enhance your development workflow.'
+tldr:
+  - "Git hooks enforce standardized commit formats and file size limits, making developers consider best practices before committing"
+  - "Pre-commit, commit-msg, and pre-push hooks can be installed globally or per-project using GitHub Gists, Husky, or Makefile automation"
+  - "File size limits default to 5MB but remain overridable via environment variables or --no-verify flag, requiring developers to intentionally bypass protections"
 ---
 
 ## What to do if the community is not standardized

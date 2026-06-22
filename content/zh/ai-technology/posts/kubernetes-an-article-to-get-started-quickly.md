@@ -11,6 +11,10 @@ keywords: ['Kubernetes', '容器编排', 'Docker', '云原生', 'CNCF']
 tags: ["Blog", "Kubernetes", "Cloud Native", "Docker"]
 categories: ["AI & Technology"]
 description: 'Kubernetes是一个开源的容器编排引擎，用于自动化部署、扩展和管理容器化应用程序。该项目由云原生计算基金会管理，该基金会由Linux基金会托管。这篇文章将会带你快速入门Kubernetes。'
+tldr:
+  - "Kubernetes 是 Google 开源的容器编排引擎，通过声明式 API 管理分布式系统的部署、扩展和自愈能力"
+  - "Kubernetes 采用主从架构，控制平面通过 APIServer、Scheduler、Controller-Manager 等组件维护集群的期望状态"
+  - "Pod 是最小调度单元，Pod 控制器管理副本和生命周期，Service 资源提供固定访问入口"
 ---
 
 ## 正片开始~

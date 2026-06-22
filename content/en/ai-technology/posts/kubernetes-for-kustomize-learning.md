@@ -18,6 +18,10 @@ description: >
   Explore the power of Kustomize, an open-source configuration management tool for Kubernetes.
   Learn how to customize Kubernetes objects and manage configurations declaratively using Kustomize.
   Understand the integration with kubectl and Helm, and discover best practices for Kubernetes configuration management.
+tldr:
+  - "Kustomize enables declarative Kubernetes configuration customization through patches without modifying original YAML files, maintaining base application settings across environments."
+  - "Kustomize provides lightweight template-free configuration management with built-in kubectl support since version 1.14, making it ideal for GitOps workflows."
+  - "Kustomize can extend Helm Chart customization capabilities through plugins, post-rendering, and ChartInflator generator without maintaining separate repository forks."
 ---
 
 

@@ -11,6 +11,10 @@ keywords: ['Kubernetes', 'Kubectl', '控制平面', 'kubelet', 'Pod 管理']
 tags: ["Development", "Go", "Kubernetes"]
 categories: ["AI & Technology"]
 description: 'kubelet 架构kubelet 管理 Pod 的核心流程kubelet 节点管理Pod 管理Pod'
+tldr:
+  - "Kubelet是Kubernetes节点代理程序，负责维护本节点上Pod的生命周期，通过获取Pod清单、节点管理和Pod启动流程来完成Pod管理任务。"
+  - "Kubelet架构包括ProbeManager、OOMWatcher、GPUManager、cAdvisor、PLEG、StatusManager等核心模块，分别负责探针管理、资源监控、容器生命周期跟踪和状态汇报。"
+  - "Kubelet启动Pod涉及获取清单、镜像检查拉取、容器启动、探针监测等步骤，通过CRI、CNI、CSI接口与容器运行时、网络插件和存储插件协调。"
 ---
 
 [Kubelet组件解析](https://blog.csdn.net/jettery/article/details/78891733)

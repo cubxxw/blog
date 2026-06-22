@@ -12,6 +12,10 @@ tags:
   - Blog
 categories:
   - AI & Technology
+tldr:
+  - "Open source contributions follow a fork-branch-commit-push workflow with remote upstream tracking and rebasing for synchronization."
+  - "Documentation must comply with formatting standards: proper punctuation, capitalization, language specifications for code blocks, and correct technical term capitalization."
+  - "Kubernetes fundamentals including pods as smallest scheduling units, deployments for version management, ConfigMaps for configuration, and services for pod access within clusters."
 ---
 
 ## Task Assignment

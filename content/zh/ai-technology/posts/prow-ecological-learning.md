@@ -11,6 +11,10 @@ author: '熊鑫伟，我'
 keywords: ['Prow', 'Kubernetes', 'CI/CD', '自动化', 'DevOps', '云原生']
 tags: ["Blog", "Prow", "Kubernetes", "CI/CD", "DevOps"]
 categories: ["AI & Technology"]
+tldr:
+  - "Prow是基于Kubernetes的CI/CD系统，支持事件触发作业执行、GitHub自动化和PR自动合并，功能强大超越GitHub Actions"
+  - "Prow采用可插拔的Plugin架构处理事件，包含Controller、Plank调度器、Hook处理器、Deck前端等核心微服务组件，具有高可用和多租户支持"
+  - "Prow生态包括Webhook配置、GitHub APP认证、自定义Robot开发和Lighthouse轻量级替代方案，支持多种源代码管理平台的CI/CD流程自动化"
 ---
 
 ## why?

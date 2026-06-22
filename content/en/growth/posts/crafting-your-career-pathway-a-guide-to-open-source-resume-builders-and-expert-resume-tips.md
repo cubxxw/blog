@@ -16,6 +16,10 @@ categories:
   - Growth
 description: >
     Explore a range of open-source tools designed to enhance your resume crafting experience. This guide offers professional advice on selecting the right tool and optimizing your resume to stand out in competitive job markets. Perfect for job seekers in any field looking to elevate their professional presentation.
+tldr:
+  - "Multiple open-source resume builders like Visiky, Markdown Resume, Awesome CV, and OpenResume provide customizable, cost-effective alternatives to premium resume tools."
+  - "Follow professional resume optimization including reverse chronological ordering, STAR method storytelling, standardized formatting, and PDF submission for maximum impact."
+  - "Keep resume design simple with unified color schemes, clear contact information, proper grammar, and strategic highlighting to maintain professionalism and readability."
 ---
 
 In the vast sea of job hunting, a well-prepared resume acts like a well-designed sailboat, helping you navigate through the fierce waves of competition. With the flourishing development of the open-source community, many excellent resume building tools have emerged, designed to help job seekers create professional and personalized resumes at minimal cost. This article will introduce you to several top-tier open-source resume builders and provide practical tips for crafting and optimizing your resume.

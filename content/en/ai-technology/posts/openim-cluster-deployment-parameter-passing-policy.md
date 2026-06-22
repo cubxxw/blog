@@ -14,6 +14,10 @@ categories:
   - AI & Technology
 description: >
     <You can switch to the specified language>
+tldr:
+  - "Configuration files simplify Kubernetes port management by centralizing port definitions instead of passing multiple ports directly as arguments."
+  - "A three-tier precedence system allows direct arguments to override environment variables, which override configuration file values, ensuring maximum deployment flexibility."
+  - "The approach maintains backward compatibility while aligning with Kubernetes best practices of single-port pod exposure and supporting traditional environment variable deployments."
 ---
 
 

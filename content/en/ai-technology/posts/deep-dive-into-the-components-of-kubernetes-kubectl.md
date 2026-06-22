@@ -11,6 +11,10 @@ keywords: ['Kubernetes', 'Kubelet', 'Control Plane', 'kubelet', 'Pod Management'
 tags: ["Development", "Go", "Kubernetes"]
 categories: ["AI & Technology"]
 description: 'kubelet architecture, kubelet core processes for Pod management, kubelet node management, Pod management'
+tldr:
+  - "Kubelet runs on each Kubernetes node managing Pod lifecycles, handling container operations including image pulling, startup, monitoring, and status reporting to the API Server"
+  - "Kubelet architecture comprises multiple core modules including PLEG, StatusManager, VolumeManager, ImageManager, and others, each managing specific aspects of Pod and container lifecycle"
+  - "Pod startup involves manifests retrieval from API Server or files, CRI-based container creation, probe monitoring for liveness and readiness, with pause containers serving as network and storage foundations"
 ---
 
 [Kubelet Component Analysis](https://blog.csdn.net/jettery/article/details/78891733)

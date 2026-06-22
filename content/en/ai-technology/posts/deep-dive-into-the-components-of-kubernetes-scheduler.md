@@ -11,6 +11,10 @@ keywords: ['Kubernetes', 'Scheduler', 'Container Orchestration', 'K8s Architectu
 tags: ["Blog", "Go", "Kubernetes"]
 categories: ["AI & Technology"]
 description: 'Explore how Kubernetes scheduler component works, how it decides which node to place containers on, and its importance for cluster management and container orchestration.'
+tldr:
+  - "Kubernetes scheduler assigns pods to nodes using two phases: predicate filtering unsuitable nodes and priority ranking candidates by policies"
+  - "Resource scheduling uses requests for pod placement decisions while limits enforce cgroup constraints; init containers only count largest resource request"
+  - "Pod scheduling to specific nodes uses nodeSelector, nodeAffinity, podAffinity, taints and tolerations with priority classes enabling high-priority pod scheduling"
 ---
 
 ## Scheduler

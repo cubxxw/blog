@@ -12,6 +12,10 @@ tags:
   - Blog
 categories:
   - AI & Technology
+tldr:
+  - "Demonstrate extensive self-directed research and effort before asking questions to establish credibility and receive substantive help from experienced community members."
+  - "Ask questions in carefully selected, appropriate forums with clear descriptive titles using goal-difference format to maximize visibility and attract knowledgeable responders."
+  - "Provide detailed symptom descriptions, reproducible test cases, and debugging steps rather than speculation, while following proper etiquette like polite follow-up and clear communication."
 ---
 
 ## Before asking a question

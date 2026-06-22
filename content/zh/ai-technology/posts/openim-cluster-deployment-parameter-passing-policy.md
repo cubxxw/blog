@@ -11,6 +11,10 @@ keywords: ['Kubernetes', '配置', '端口', '简化部署', '容器化']
 tags: ["Kubernetes", "Cloud Native", "Microservices", "Deployment"]
 categories: ["AI & Technology"]
 description: '本文介绍了如何通过配置文件简化 Kubernetes 部署的端口配置，提升了配置的灵活性和部署的便捷性。'
+tldr:
+  - "配置文件方式优先用于简化Kubernetes部署，通过ConfigMap传递预定义端口值替代直接传递多个端口的复杂方式。"
+  - "参数优先级体系分为三层：直接参数传递优先级最高，环境变量其次，配置文件最低，确保部署灵活性和向后兼容。"
+  - "模块需支持三种配置方式（配置文件、直接参数、环境变量）并完整测试各场景，提升部署便捷性同时满足不同用户偏好。"
 ---
 
 ## 介绍

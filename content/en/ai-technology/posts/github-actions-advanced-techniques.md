@@ -14,6 +14,10 @@ tags:
   - actions
 categories:
   - AI & Technology
+tldr:
+  - "Create custom GitHub Actions using Docker containers or composite workflows with metadata files defining inputs outputs and execution configuration."
+  - "Master advanced workflow features including contexts concurrency matrix strategies job dependencies and environment protection to build complex CI/CD pipelines."
+  - "Automate packaging deployment and project management tasks by configuring triggers containerized services artifact sharing and GitHub script integrations."
 ---
 
 ## Create actions

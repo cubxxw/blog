@@ -19,6 +19,10 @@ categories:
   - Growth
 description: >
     October 2025 deep thinking notes, recording multi-dimensional reflections on urban development, tech product thinking, personal cognitive growth, and social phenomena. Covering topics from Jiaxing's development potential and high-rise building issues, K-visa policy, rapid iteration methodology, the philosophy of moving from knowing to awareness, embodied memory theory, and observations in the AI era.
+tldr:
+  - "Rapid iteration grounded in real feedback drives growth faster than perfectionism which masks fear of critique"
+  - "Moving from intellectual knowing to embodied awareness requires accumulation, internalization, and lived experience becoming part of identity"
+  - "True self-knowledge demands confronting uncomfortable realities about oneself rather than retreating into denial or comforting illusions"
 ---
 # 2025年10月思考笔记
 

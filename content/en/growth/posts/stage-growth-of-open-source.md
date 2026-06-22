@@ -17,6 +17,10 @@ tags:
   - github
 categories:
   - Growth
+tldr:
+  - "Open source growth progresses through eight sequential stages from reading source code to commercializing projects with increasing skill depth and business impact."
+  - "Each stage builds outputs and closed-loop learning: from passive reading toward active community contribution, product development, and eventually commercial services."
+  - "Success requires continuous output, quantified feedback, attempts to modify/improve projects, and compounds effects across time to establish industry influence and expertise."
 ---
 
 ✨ Anyone who is familiar with me knows that I am an out-and-out open source enthusiast. After I came into contact with GitHub in my freshman year, I gradually became addicted to the open source world~ Today’s article is very special, I can refer to it and summarize it. The open source stage, as well as the steps and experience of learning open source projects. In the future, I will also grow according to my own plan.

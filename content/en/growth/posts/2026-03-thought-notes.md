@@ -21,6 +21,10 @@ categories:
 description: >
   March 2026 thought notes, 468 entries across 31 days. Covers travel impressions (Cambodia Siem Reap, Angkor Wat, Phnom Penh history), AI Agent architecture and multi-agent system design, Khmer civilization engineering aesthetics, and self-narrative cognitive exploration.
   Core topics: Gewu/AI (53 entries), Gewu/Cambodia (38 entries), Gewu/Angkor Wat (23 entries), Gewu/Hinduism (15 entries), Guannwo (14 entries), Gewu/Vietnam (11 entries).
+tldr:
+  - "In healthy relationships, replace sacrificial one-way giving with co-creation: shared experiences and mutual growth build solid connections stronger than performative gestures."
+  - "AI product design must reduce cognitive load through invisible intelligence: users should perform minimal actions while receiving surprising, high-leverage results delivered seamlessly in backend."
+  - "Navigate complexity by switching dynamically between abstract overview and concrete details: flexible cognitive hierarchy prevents both getting trapped in details and losing practical intuition."
 ---
 
 # March 2026 Thought Notes

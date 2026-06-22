@@ -18,6 +18,10 @@ cover:
   alt: "How to Maintain the Weight of Self in an Age When You Are No Longer Needed"
 description: >
   When AI can replace our thinking, execution, and even creation, where does the weight of "self" come from? This isn't an article about career crisis—it's one person's attempt to figure out why they're still here.
+tldr:
+  - "Measuring self-worth by utility and being needed is fragile and crumbles when AI can replicate those functions better than humans."
+  - "Intrinsic human value exists in irreplaceable direct experience, attention, and feeling rather than in productive output or functional necessity."
+  - "Maintaining self-weight in the AI age requires a stance of preserving openness to unsayable moments and useless presence that cannot be outsourced or optimized."
 ---
 
 > Pascal wrote in the 17th century: "All of humanity's problems stem from one thing: man's inability to sit quietly in a room alone."

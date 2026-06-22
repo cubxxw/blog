@@ -21,4 +21,8 @@ categories:
   - AI & Technology
 description: >
   In-depth analysis of Microsoft UFO project's core design, technical implementation and system architecture, covering multi-agent collaboration, hybrid GUI/API operations, continuous learning and other innovative features.
+tldr:
+  - "UFO² combines HostAgent and AppAgent in a multi-agent framework with continuous learning through RAG knowledge substrates."
+  - "The system intelligently switches between GUI simulation and native API calls, reducing LLM queries by 51% through speculative multi-action execution."
+  - "Deep Windows OS integration enables robust control detection via hybrid UIA and visual analysis for diverse application interfaces."
 ---

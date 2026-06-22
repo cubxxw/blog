@@ -16,6 +16,10 @@ categories:
   - AI & Technology
 description: >
     Kubernetes is an open source container orchestration engine for automating deployment, scaling, and management of containerized applications. The project is governed by the Cloud Native Computing Foundation, which is hosted by The Linux Foundation.
+tldr:
+  - "Kubernetes is Google's open-source container orchestration platform using master-slave architecture to automatically manage containerized application deployment, scaling, and scheduling across clusters."
+  - "Docker was deprecated from Kubernetes as a container runtime because Docker lacks Container Runtime Interface (CRI) compatibility while alternatives like containerd directly implement the standard."
+  - "Kubernetes architecture consists of Master nodes managing cluster state via API server, scheduler, and controller-manager, Worker nodes running containers, and essential components including etcd storage, services for networking, and ingress for external access."
 ---
 
 

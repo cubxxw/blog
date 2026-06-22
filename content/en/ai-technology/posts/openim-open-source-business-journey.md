@@ -11,6 +11,10 @@ tags: ["Blog"]
 categories: ["AI & Technology"]
 description: >
     Reflect on the commercialization of open source software and share insights from attending the Global Traffic Conference (GTC), focusing on key takeaways and learnings.
+tldr:
+  - "Open-source commercialization requires balancing community collaboration with business revenue models through SaaS, Open Core strategies, and professional community management."
+  - "Global developer distribution is shifting rapidly with India expected to surpass the United States as the largest developer community by 2027 due to high growth rates."
+  - "Community activity metrics and contributor diversity are more reliable indicators of project success than GitHub star counts, requiring transparency and regular engagement."
 ---
 
 ## Introduction: Global Perspective at the Shenzhen Futian Convention and Exhibition Center

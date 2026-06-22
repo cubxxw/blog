@@ -12,6 +12,10 @@ tags:
   - Blog
 categories:
   - AI & Technology
+tldr:
+  - "Sealos implements Kubernetes cluster deployment through declarative design using Applier pattern, which reconciles desired cluster state with current state via pipeline-based processors"
+  - "The deployment process executes sequential stages including image preprocessing, container mounting, registry setup, and Kubernetes bootstrap to transform infrastructure into managed clusters"
+  - "Sealos core architecture leverages buildah for image management and controllers for multitenant operations including app, cluster, and infrastructure resource management"
 ---
 
 ## Prepare

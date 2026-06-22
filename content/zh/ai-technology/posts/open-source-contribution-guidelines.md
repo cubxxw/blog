@@ -11,6 +11,10 @@ keywords: ['开源', '商业', 'OpenIM', '开源项目', '技术社区', '商业
 tags: ["Blog", "OpenIM", "Development"]
 categories: ["AI & Technology"]
 description: '探索OpenIM这一活跃的开源项目如何实现其商业发展目标。了解OpenIM如何取得成功，应对挑战，并在社区贡献与商业化之间找到平衡。'
+tldr:
+  - "开源贡献流程包括fork、clone、本地修改、push和pull request五个关键步骤，推荐使用分支命名规范便于项目管理。"
+  - "文档贡献需遵循格式规范，包括中英文标点分离、代码块需标注语言、中英文间需空格等十项细节要求。"
+  - "Kubernetes基础知识涵盖Pod为最小调度单元、Deployment进行版本管理、ConfigMap挂载配置、Service提供集群内访问等核心概念。"
 ---
 
 ## 任务分配

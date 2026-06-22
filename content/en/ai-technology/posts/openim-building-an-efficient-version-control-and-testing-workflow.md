@@ -16,7 +16,10 @@ categories:
   - AI & Technology
 description: >
     The success of an open-source project largely depends on its quality management and collaborative processes. In the OpenIM open-source community, the standardization of project management and testing processes is crucial to ensure the quality and stability of the codebase. This document provides a brief overview of our testing strategy, branch management, quality control policies, and how they are applied to the main branch, PR testing branches, and stable release branches to meet the needs of developers, testers, and community managers. Additionally, we will introduce the standards, testing schemes, and project management strategies of the OpenIM open-source community, aiming to provide clear guidance to ensure project stability and sustainability.
-
+tldr:
+  - "OpenIM enforces strict branch management with main as stable, release branches for production versions, and PR testing branches requiring rigorous code review and automated testing before merge approval."
+  - "Commit messages must follow semantic format with type and optional scope, especially for release branches requiring scope like 'fix(release-v3.5)', enabling clear traceability and automated release management."
+  - "OpenIM's PR workflow mandates dual-reviewer approval, passing automated tests, comprehensive testing on release branches, and manual verification screenshots before merge to ensure code quality and project stability."
 ---
 
 The success of an open-source project largely depends on its quality management and collaborative processes. In the OpenIM open-source community, the standardization of project management and testing processes is crucial to ensure the quality and stability of the codebase. This document provides a brief overview of our testing strategy, branch management, quality control policies, and how they are applied to the main branch, PR testing branches, and stable release branches to meet the needs of developers, testers, and community managers. Additionally, we will introduce the standards, testing schemes, and project management strategies of the OpenIM open-source community, aiming to provide clear guidance to ensure project stability and sustainability.

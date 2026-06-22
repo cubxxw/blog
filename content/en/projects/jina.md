@@ -16,6 +16,10 @@ description: >
   Exploring Jina AI's multimodal embedding and search infrastructure for production AI applications.
 aliases:
   - /posts/ai-projects/jina/
+tldr:
+  - "No substantive article body exists; file contains only template structure and placeholder sections."
+  - "Document is skeleton with empty sections for project overview, technical architecture, source code analysis, and deployment."
+  - "This is an incomplete template awaiting content authors to fill in actual project documentation and analysis."
 ---
 
 ## Project Overview

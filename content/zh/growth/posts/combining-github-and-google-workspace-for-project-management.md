@@ -18,6 +18,10 @@ description: >
   探索GitHub与Google Workspace之间的协同效应，优化项目管理流程。本指南提供了利用两个平台的优势进行协作开发和项目跟踪的见解。
 aliases:
   - /zh/ai-technology/posts/combining-github-and-google-workspace-for-project-management/
+tldr:
+  - "GitHub Projects最适合管理代码相关的开发任务和自动化工作流，Google Workspace则专长于文档协作和团队沟通。"
+  - "团队应将GitHub Issues和拉取请求与Google Sheets双向同步，实现开发和非技术团队的信息透明化。"
+  - "通过明确分工规范、定期审查工作流程，结合两平台优势的混合管理方案能最大化项目协作效率。"
 ---
 
 # 双剑合璧：结合GitHub与Google Workspace的项目管理艺术

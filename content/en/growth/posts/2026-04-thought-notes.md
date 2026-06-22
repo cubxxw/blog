@@ -19,6 +19,10 @@ categories:
   - Growth
 description: >
     April 2026 Thought Notes - Observations from living in Laos during Songkran, engineering philosophy in the AI era, and explorations of recording, understanding, and trust.
+tldr:
+  - "AI era demands Harness Design and environmental/protocol thinking over traditional product design as models grow stronger than infrastructure."
+  - "Laos reveals cultural contrasts: externally placid yet internally celebratory during festivals, with economic gaps creating ethical dilemmas around wildlife trade and tourism."
+  - "Personal reflection shows tension between rational systems thinking and emotional authenticity, where alcohol strips cognitive filters to reveal accumulated but repressed life tensions."
 ---
 ## 2026年4月思考笔记
 

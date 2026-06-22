@@ -18,6 +18,10 @@ categories:
   - AI & Technology
 description: >
     This guide provides a comprehensive overview of troubleshooting methods and debugging techniques for OpenIM, drawing on real-world development and operational experiences. Ideal for developers looking to enhance their problem-solving skills in OpenIM environments.
+tldr:
+  - "Effective troubleshooting follows a systematic process: identify the problem through logs and testing, locate the root cause by tracing execution flow, and solve based on code understanding."
+  - "Essential troubleshooting skills include reading component logs to understand error context and devising solutions based on error messages, supported by debugging tools like Delve and pprof."
+  - "Online incident response requires established SOPs, dashboard-driven analysis, and systematic resource monitoring using the USE model to diagnose and resolve production issues efficiently."
 ---
 
 ### Translation and Enhancement of the Article on Troubleshooting Techniques Using OpenIM
