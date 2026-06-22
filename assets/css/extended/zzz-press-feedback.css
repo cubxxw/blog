@@ -1,0 +1,98 @@
+/* ============================================================
+   zzz-press-feedback.css — tactile press feedback
+   ------------------------------------------------------------
+   The cards across the home / section pages already lift on
+   hover (custom.css, homepage-daypage.css) which reads well with
+   a mouse — but on a phone, where there is no hover, tapping a
+   whole article card gives no "I felt that" response before the
+   navigation happens. This layer adds a quick press-down (scale)
+   the instant a finger or mouse button lands, then releases.
+
+   Design rules followed here:
+   • Loads late (zzz- prefix) so its `:active` transforms win over
+     the earlier `:hover` transforms at equal specificity.
+   • Touch gets a clear scale-down; fine pointers get a subtler
+     press that composes with the existing hover lift.
+   • Everything is additive feedback — never required to read or
+     navigate — and is fully neutralised under reduced motion.
+   ============================================================ */
+
+/* The card families that act as a single tap target. */
+.post-entry,
+.ai-tech-card,
+.growth-card,
+.hp-post-card,
+.hp-ai-card {
+  /* Replace the default grey tap-flash on mobile with our own scale
+     cue so the press reads as intentional, not like a mis-tap. */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Fine pointers (mouse / trackpad) ----------
+   On press, settle the card down from its hover lift to a slight
+   inset so the click feels like a physical button press. A short
+   transition keeps it snappy; the longer hover transition handles
+   the release back up. */
+@media (hover: hover) and (pointer: fine) {
+  .post-entry:active,
+  .ai-tech-card:active,
+  .growth-card:active,
+  .hp-post-card:active,
+  .hp-ai-card:active {
+    transform: translateY(0) scale(0.985);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* ---------- Touch / coarse pointers (phones, tablets) ----------
+   No hover lift exists here, so the press is the only motion. A
+   touch slightly deeper than the mouse press makes the tap feel
+   confirmed even through a finger. */
+@media (hover: none) and (pointer: coarse) {
+  .post-entry:active,
+  .ai-tech-card:active,
+  .growth-card:active,
+  .hp-post-card:active,
+  .hp-ai-card:active {
+    transform: scale(0.97);
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+/* ---------- Primary nav links: tap press ----------
+   #menu links only change background on hover (nav-elegant.css).
+   Add a small press response so tapping the top nav feels as
+   tactile on a phone as the in-article TOC links already do
+   (interaction-polish.css). Pointer + touch both benefit. */
+#menu > li > a {
+  -webkit-tap-highlight-color: transparent;
+}
+#menu > li > a:active {
+  transform: scale(0.94);
+  transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* The minimal search chip in the nav gets the same press cue. */
+.nav-search-trigger {
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-search-trigger:active {
+  transform: scale(0.94);
+  transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   Reduced motion: neutralise every press transform above.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .post-entry:active,
+  .ai-tech-card:active,
+  .growth-card:active,
+  .hp-post-card:active,
+  .hp-ai-card:active,
+  #menu > li > a:active,
+  .nav-search-trigger:active {
+    transform: none !important;
+    transition: none !important;
+  }
+}
