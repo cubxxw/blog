@@ -241,6 +241,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [看穿之后，依然深爱：五副透镜下的爱，与佛学的统摄](https://nsddd.top/zh/growth/posts/love-seen-clearly-loved-deeply/)
 - [Context 不是 Prompt：为什么「上下文工程」正在成为 AI 的新地基](https://nsddd.top/zh/ai-technology/posts/context-engineering-the-new-foundation/)
 - [2026年4月思考笔记](https://nsddd.top/zh/growth/posts/2026-04-thought-notes/)
 - [Agent 的自我：从洛克到 OpenClaw](https://nsddd.top/zh/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
