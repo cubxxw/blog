@@ -10,7 +10,11 @@
 
 {{- if (not site.Params.disableScrollToTop) }}
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+    <svg class="top-link-ring" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <circle class="top-link-ring-track" cx="22" cy="22" r="20" />
+        <circle class="top-link-ring-progress" cx="22" cy="22" r="20" />
+    </svg>
+    <svg class="top-link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
@@ -56,19 +60,41 @@
 {{- if (not site.Params.disableScrollToTop) }}
 <script>
     var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
+    var ringProgress = mybutton ? mybutton.querySelector('.top-link-ring-progress') : null;
+    // Circumference of the r=20 progress ring (2 * PI * 20).
+    var RING_CIRC = 125.66;
+    function updateTopLink() {
+        if (!mybutton) return;
         if (window.innerWidth < 1024) return;
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+        var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+        if (scrolled > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
         } else {
             mybutton.style.visibility = "hidden";
             mybutton.style.opacity = "0";
         }
-    };
+        // Fill the ring in proportion to how far the page has been read.
+        if (ringProgress) {
+            var trackable = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var p = trackable > 0 ? Math.min(scrolled / trackable, 1) : 0;
+            ringProgress.style.strokeDashoffset = (RING_CIRC * (1 - p)).toFixed(1);
+        }
+    }
+    var topLinkTicking = false;
+    window.addEventListener('scroll', function () {
+        if (!topLinkTicking) {
+            window.requestAnimationFrame(function () {
+                updateTopLink();
+                topLinkTicking = false;
+            });
+            topLinkTicking = true;
+        }
+    }, { passive: true });
     window.matchMedia('(min-width: 1024px)').addEventListener('change', function(e) {
-        if (e.matches) window.onscroll && window.onscroll();
+        if (e.matches) updateTopLink();
     });
+    updateTopLink();
 
 </script>
 {{- end }}
