@@ -111,6 +111,25 @@ body.dark .hp-bear-orbit-wrap.has-orb .hp-bear-chat {
   50%      { box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.18); }
 }
 
+/* ---- Defend the orbit bubbles from the global ripple effect ---------
+   static/js/micro-interactions.js delegates a tap-ripple to every <button>,
+   adding `.has-ripple` on pointerdown. That class sets `position: relative;
+   overflow: hidden`, which on these absolutely-positioned orbit bubbles
+   COLLAPSED them out of place (a bubble jumped to the bottom-right on first
+   press) and moved the target out from under the cursor mid-press, so the
+   pointerup missed and the click never fired — taps silently did nothing.
+   Pin the bubble's own positioning so the ripple class can't override it,
+   and drop the clip (a ripple bleeding past the pill edge is no loss here). */
+.hp-bear-bubble.has-ripple {
+  position: absolute;
+  overflow: visible;
+  isolation: auto;
+}
+/* The ripple selector also reparents children with position:relative;z-index:1
+   — harmless for the bubble's text but disable the ink entirely on bubbles
+   so nothing layers on top of the hit-area. */
+.hp-bear-bubble .ripple-ink { display: none; }
+
 /* ---- Reduced motion: kill orb-related motion, keep everything legible - */
 @media (prefers-reduced-motion: reduce) {
   .hp-bear-chat-msg,

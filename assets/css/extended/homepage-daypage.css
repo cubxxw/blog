@@ -431,6 +431,13 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-bear-bubble {
   position: absolute;
+  /* The bubble is positioned by left/top (set inline as calc(50% ± Npx)) and
+     centred with this translate. It is intentionally STATIC — no float
+     animation. A previous translateY bob shared this same `transform`, so it
+     moved the button every frame and a real mouse press landed mousedown and
+     mouseup on different spots → the browser never fired `click` and the tap
+     was silently swallowed. A still target clicks reliably every time; the
+     orbiting rings + the breathing 3D orb already supply the motion. */
   transform: translate(-50%, -50%);
   padding: 6px 12px;
   background: var(--surface-white);
@@ -440,15 +447,12 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   font-size: 12px;
   color: var(--fg-primary);
   cursor: pointer;
-  transition: all 200ms ease-out;
+  transition: background 180ms ease-out, border-color 180ms ease-out,
+              color 180ms ease-out, box-shadow 180ms ease-out, transform 120ms ease-out;
   white-space: nowrap;
   box-shadow: var(--shadow-card);
-  animation: hp-bubble-float 3s ease-in-out infinite;
   z-index: 2;
 }
-
-.hp-bear-bubble:nth-child(odd) { animation-delay: 0.3s; }
-.hp-bear-bubble:nth-child(3n) { animation-delay: 0.6s; }
 
 .hp-bear-bubble:hover,
 .hp-bear-bubble:focus-visible,
@@ -457,20 +461,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   border-color: var(--accent-border);
   color: var(--accent);
   box-shadow: 0 4px 12px rgba(93, 48, 0, 0.12);
-  transform: translate(-50%, -50%) scale(1.04);
-  /* Kill the float animation while pointing at a bubble. The keyframes set
-     `transform` every frame, which (a) overrides the hover scale above and
-     (b) keeps the bubble physically moving — so a real mouse press lands
-     mousedown and mouseup on different spots and the first click is swallowed.
-     `none` (not `paused`) drops it back to the resting transform so it eases
-     smoothly to centre instead of freezing mid-bob, and stays still so the
-     very first click registers. */
-  animation: none;
-}
-
-@keyframes hp-bubble-float {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(-2.5px); }
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .hp-bear-avatar-btn {
