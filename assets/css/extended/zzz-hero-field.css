@@ -25,12 +25,24 @@
   overflow: hidden;
   pointer-events: none;
   border-radius: inherit;
-  /* Fade the canvas out toward all four edges so the semi-transparent flow
-     field melts into the warm page background instead of ending in a hard
-     rectangular cut. No border, no shadow, no card — the hero stays the
-     borderless editorial block it was designed as; only the seam goes away. */
-  -webkit-mask-image: radial-gradient(120% 120% at 50% 40%, #000 55%, transparent 100%);
-          mask-image: radial-gradient(120% 120% at 50% 40%, #000 55%, transparent 100%);
+  /* Dissolve the canvas into an ambient glow rather than a filled box.
+     The old single radial held a hard 55% opaque core, so the flow field
+     read as a grey rectangular panel with a visible seam. Two stacked
+     ellipses fix that:
+       • a wide soft ellipse centred on the orb (right side) that fades out
+         long before the edges, so there's no straight cut anywhere;
+       • mask-composite intersect with a second very-soft full-bleed ellipse
+         pulls every border in further.
+     Result: a luminous halo behind the AI orb that melts on all sides — no
+     box, no seam — while the hero stays borderless and shadowless. */
+  -webkit-mask-image:
+    radial-gradient(75% 95% at 68% 48%, #000 0%, rgba(0,0,0,0.55) 45%, transparent 80%),
+    radial-gradient(115% 130% at 50% 45%, #000 30%, transparent 92%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    radial-gradient(75% 95% at 68% 48%, #000 0%, rgba(0,0,0,0.55) 45%, transparent 80%),
+    radial-gradient(115% 130% at 50% 45%, #000 30%, transparent 92%);
+          mask-composite: intersect;
 }
 
 /* …and lift the actual hero columns above the field. The hero is a

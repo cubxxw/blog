@@ -105,7 +105,7 @@
         </a>
       </div>
 
-      {{- $pages    := where (where site.RegularPages "Lang" $lang) "Type" "in" site.Params.mainSections }}
+      {{- $pages    := (where (where site.RegularPages "Lang" $lang) "Section" "in" site.Params.mainSections).ByDate.Reverse }}
       {{- $featured := index $pages 0 }}
       {{- $recent   := after 1 $pages | first 2 }}
       {{- $archive  := after 3 $pages | first 4 }}
@@ -258,7 +258,7 @@
     <div class="hp-divider-fade"></div>
 
     {{/* ── Writing Activity ─────────────────────────────── */}}
-    {{- $allPages := where site.RegularPages "Date" "gt" (time "1970-01-01") -}}
+    {{- $allPages := (where (where site.RegularPages "Lang" $lang) "Date" "gt" (time "1970-01-01")).ByDate.Reverse -}}
     {{- $thisYear := now.Year -}}
     {{- $thisYearPages := where $allPages "Date.Year" $thisYear -}}
     {{- $firstYear := $thisYear -}}
@@ -519,7 +519,24 @@
     orbit.addEventListener('mouseenter', function() { this.classList.add('is-hover'); });
     orbit.addEventListener('mouseleave', function() { this.classList.remove('is-hover'); });
     root.querySelectorAll('.hp-bear-bubble').forEach(function(btn) {
-      btn.addEventListener('click', function() { openChat(this.dataset.msg); });
+      // Use pointerup, not click: the bubbles float (a slow translateY bob),
+      // so on a real mouse the pointerdown and pointerup can land a few px
+      // apart and the browser never fires `click` — the first tap felt dead.
+      // pointerup fires on release regardless, and the :hover rule freezes the
+      // float the instant the cursor arrives, so the target is steady by then.
+      // Guard against a drag/scroll gesture by requiring a matching pointerdown.
+      // Keep a keyboard handler for Enter/Space accessibility.
+      var armed = false;
+      btn.addEventListener('pointerdown', function() { armed = true; });
+      btn.addEventListener('pointerup', function() {
+        if (!armed) return;
+        armed = false;
+        openChat(this.dataset.msg);
+      });
+      btn.addEventListener('pointercancel', function() { armed = false; });
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChat(this.dataset.msg); }
+      });
     });
   }
 

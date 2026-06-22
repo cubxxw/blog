@@ -7,20 +7,33 @@
 
 <div class="marginalia-inner">
 
-  {{/* ── Principal (Author) — clickable → /about/ ── */}}
+  {{/* ── Principal (Author) — clickable → /about/, avatar + halo ── */}}
   {{- $aboutURL := "/about/" }}
   {{- if eq $page.Lang "en" }}{{ $aboutURL = "/en/about/" }}{{ end }}
   {{- if eq $page.Lang "zh" }}{{ $aboutURL = "/zh/about/" }}{{ end }}
-  <div class="marginalia-group">
+  {{- $authorName := "" }}
+  {{- if $page.Params.author }}{{ $authorName = $page.Params.author }}{{ else if site.Params.author }}{{ $authorName = site.Params.author }}{{ else }}{{ $authorName = "—" }}{{ end }}
+  {{/* Resolve avatar from assets (fallback to static path) */}}
+  {{- $avatar := resources.Get "my-avatar.jpg" }}
+  {{- if not $avatar }}{{ $avatar = resources.Get "cubxxw-image.jpg" }}{{ end }}
+  {{- $avatarURL := "/assets/cubxxw-image.jpg" | relURL }}
+  {{- if $avatar }}
+    {{- $sm := $avatar.Fill "128x128 Center q90" }}
+    {{- $avatarURL = $sm.RelPermalink }}
+  {{- end }}
+  <div class="marginalia-group marginalia-group--author">
     <span class="marginalia-label">{{ i18n "marginalia.principal" | default "Principal" }}</span>
-    <a href="{{ $aboutURL | relURL }}" class="marginalia-value marginalia-author marginalia-link">
-      {{- if $page.Params.author -}}
-        {{ $page.Params.author }}
-      {{- else if site.Params.author -}}
-        {{ site.Params.author }}
-      {{- else -}}
-        —
-      {{- end -}}
+    <a href="{{ $aboutURL | relURL }}" class="marginalia-author-card" aria-label="{{ $authorName }} — {{ i18n "marginalia.principal" | default "Principal" }}">
+      <span class="marginalia-avatar-ring">
+        <img class="marginalia-avatar-img" src="{{ $avatarURL }}" alt="{{ $authorName }}" width="48" height="48" loading="lazy" decoding="async" />
+        <span class="marginalia-avatar-glint" aria-hidden="true"></span>
+      </span>
+      <span class="marginalia-author-meta">
+        <span class="marginalia-value marginalia-author marginalia-author-name">{{ $authorName }}</span>
+        <span class="marginalia-author-role">
+          {{- if eq $page.Lang "zh" -}}著者 · 主理人{{- else -}}Author · Curator{{- end -}}
+        </span>
+      </span>
     </a>
   </div>
 

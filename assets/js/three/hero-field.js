@@ -85,12 +85,15 @@ const FRAG = /* glsl */ `
     }
 
     // Compose: a barely-there accent wash + the motes, all low-alpha so
-    // the hero text always wins.
-    float wash = smoothstep(0.2, 0.9, n);
+    // the hero text always wins. The base alpha is deliberately low and the
+    // wash range narrowed so the field reads as an ambient glow that varies
+    // across the canvas — never a flat filled panel. The CSS mask then melts
+    // the whole thing into the page at the edges.
+    float wash = smoothstep(0.35, 0.95, n);
     vec3 col = uAccent * (0.55 + 0.45 * wash) + uAccent * motes;
-    float alpha = (0.10 + 0.16 * wash + motes * 0.6);
+    float alpha = (0.04 + 0.15 * wash + motes * 0.6);
 
-    gl_FragColor = vec4(col, clamp(alpha, 0.0, 0.55));
+    gl_FragColor = vec4(col, clamp(alpha, 0.0, 0.42));
   }
 `;
 
