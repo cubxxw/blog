@@ -638,3 +638,68 @@ body.dark .post-content s a,
 [data-theme="dark"] .post-content s a {
   color: var(--color-accent, #7dd3fc);
 }
+
+/* ── 20. Goldmark footnote markers <a.footnote-ref> / <a.footnote-backref> ─
+   This blog mixes two citation systems. Hand-authored encyclopaedia-style
+   markers (<sup>N</sup>) already get a quiet accent tint and a touch of
+   weight in dark mode (§14) so they read clearly as reference cues. But the
+   REAL Goldmark footnotes — the clickable in-text marker
+   <sup id="fnref:N"><a class="footnote-ref">N</a></sup> and the return arrow
+   <a class="footnote-backref">↩︎</a> at the foot of each definition — were
+   never given a colour: §4 explicitly EXCLUDES `.footnote-ref` /
+   `.footnote-backref` from the prose-link treatment, and §14's sup rule is
+   scoped `sup:not(:has(a))`, so a footnote marker (a <sup> that DOES contain
+   an <a>) is skipped there too. The result in dark mode: the functional
+   footnote number rendered at the full body ink — visually identical to the
+   surrounding prose — while carrying the base link's full-strength underline,
+   which on a tiny raised numeral reads as a heavy smudge rather than a clean
+   citation. So the one marker the reader can actually click looked LESS like
+   a reference than the decorative hand-authored ones beside it.
+
+   Bring them into line with the §14 citation convention: the language accent
+   plus a hair of weight so the marker reads as a reference cue, and drop the
+   awkward resting underline on the superscript so the numeral stays crisp
+   (matching §14, which carries no underline). Hover/focus resolves to a soft
+   accent underline as the discoverable "this is a link" cue — the affordance
+   stays one gesture away without shouting in the resting state. The accent
+   token resolves per language automatically (EN sky-blue / ZH red), so the
+   two citation systems finally read as one coherent family in dark mode.
+   Gated on body.dark / [data-theme="dark"] — light mode keeps its current
+   (full-ink, underlined) rendering, provably unchanged. */
+body.dark .post-content a.footnote-ref,
+body.dark .post-content a.footnote-backref,
+[data-theme="dark"] .post-content a.footnote-ref,
+[data-theme="dark"] .post-content a.footnote-backref {
+  color: var(--color-accent, #7dd3fc);
+  font-weight: 600;
+  text-decoration: none;
+  transition: text-decoration-color 150ms ease, color 150ms ease;
+}
+/* The in-text marker is a superscript numeral — give it the same hair of
+   left padding §14 uses so it sits a touch off the preceding word. */
+body.dark .post-content a.footnote-ref,
+[data-theme="dark"] .post-content a.footnote-ref {
+  padding-left: 0.06em;
+}
+/* The return arrow sits at the end of each footnote definition — nudge it a
+   little clear of the definition text so the affordance is legible. */
+body.dark .post-content a.footnote-backref,
+[data-theme="dark"] .post-content a.footnote-backref {
+  margin-left: 0.3em;
+}
+/* Hover/focus → a soft accent underline so the link is discoverable without
+   pulling weight into the resting state. underline-offset keeps the rule off
+   the raised numeral's baseline. */
+body.dark .post-content a.footnote-ref:hover,
+body.dark .post-content a.footnote-ref:focus-visible,
+body.dark .post-content a.footnote-backref:hover,
+body.dark .post-content a.footnote-backref:focus-visible,
+[data-theme="dark"] .post-content a.footnote-ref:hover,
+[data-theme="dark"] .post-content a.footnote-ref:focus-visible,
+[data-theme="dark"] .post-content a.footnote-backref:hover,
+[data-theme="dark"] .post-content a.footnote-backref:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent, #7dd3fc);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
