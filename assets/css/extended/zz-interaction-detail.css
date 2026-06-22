@@ -1,0 +1,83 @@
+/* ============================================================
+   zz-interaction-detail.css — extra detail motion (v2)
+   ------------------------------------------------------------
+   Two small, tasteful touches that build on the existing
+   micro-interaction system. Both are pure progressive
+   enhancement: gated behind .motion-reveal (added in <head>
+   ONLY when the visitor has not requested reduced motion) and
+   fully neutralised under prefers-reduced-motion below. Nothing
+   here is required for content to be readable.
+
+   Loads after custom.css / interaction-polish.css (filename
+   order) so the overrides win cleanly.
+   ============================================================ */
+
+/* ---------- Section heading: accent hairline draws in ----------
+   Each in-article <h2> already carries a 40×2px accent hairline
+   (custom.css → .post-content h2::before). When the heading scrolls
+   into view, micro-interactions.js flips it to .reveal-block.is-revealed
+   as the text eases up; ride that same moment to wipe the hairline in
+   from the left. A small delay lets the heading begin fading first, so
+   the line reads as a deliberate "section opens" flourish rather than
+   moving in lockstep with the text. Desktop + mobile, no extra DOM. */
+html.motion-reveal .post-content > h2.reveal-block::before {
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: 0.12s;
+}
+html.motion-reveal .post-content > h2.reveal-block:not(.is-revealed)::before {
+  transform: scaleX(0);
+}
+html.motion-reveal .post-content > h2.reveal-block.is-revealed::before {
+  transform: scaleX(1);
+}
+
+/* ---------- Article images: settle in (scale) as they fade ----------
+   micro-interactions.css already fades each article image from 0→1 once
+   it loads. Layer a gentle scale so the image eases up into place instead
+   of just appearing — a "settle" that reads well on both phones and
+   desktops. The transform is tiny (1.2%) so it never reflows layout or
+   disturbs lazy-loaded figures. Re-declares the transition (this file
+   loads after micro-interactions.css) so opacity + transform run together. */
+html.motion-reveal .post-content img {
+  transform: scale(0.988);
+  transition:
+    opacity 0.6s ease,
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+html.motion-reveal .post-content img.img-loaded {
+  transform: none;
+}
+
+/* ---------- Ripple hosts: spring press on key controls ----------
+   micro-interactions.js now spawns the tap/click ripple on the
+   homepage chat controls, the article tools FAB and the code-copy
+   button too. Give those that don't already press a gentle spring
+   scale-down so the tap is confirmed the instant a finger lands —
+   the ripple supplies the "where", this supplies the "felt it". */
+.article-fab,
+.hp-bear-chat-quick-btn,
+.hp-bear-chat-icon-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+.article-fab:active {
+  transform: scale(0.92);
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   Reduced motion: hard-neutralise everything above.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html.motion-reveal .post-content > h2.reveal-block::before {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+  html.motion-reveal .post-content img {
+    transform: none !important;
+    transition: none !important;
+  }
+  .article-fab:active {
+    transform: none !important;
+  }
+}
