@@ -441,3 +441,51 @@ body.dark .post-content aside:not([class]) > :last-child,
 [data-theme="dark"] .post-content aside:not([class]) > :last-child {
   margin-bottom: 0;
 }
+
+/* ── 16. In-prose figure captions <figcaption> ───────────────────
+   The PaperMod `figure` shortcode (layouts/shortcodes/figure.html) emits a
+   <figcaption> for any image given a title/caption/attr, and several posts
+   use it. NO `.post-content figcaption` rule exists anywhere — and the
+   article-typography base note (lines 57-64) confirms captions simply
+   "inherit this base", i.e. the FULL body ink (#e2e3e1 EN / #f5f3ee ZH).
+   So in dark mode a caption renders at the exact weight and colour of the
+   surrounding prose: the eye can't tell where the paragraph ends and the
+   image's caption begins, and the caption competes with the body text it
+   should sit quietly beneath. Demote it to the muted ink, nudge the size
+   down, centre it under the figure, and give the credit/attr link the
+   language accent so the one interactive part stays discoverable. Token-
+   driven, so EN sky-blue / ZH red resolve automatically. Scoped to
+   .post-content so the lightbox overlay's own .lightbox-caption (built at
+   body level by image-lightbox.js, already styled for the dark backdrop in
+   image-lightbox.css) is untouched. Gated on body.dark / [data-theme="dark"]
+   — light mode keeps the current (browser/base) rendering, provably
+   unchanged. */
+body.dark .post-content figcaption,
+[data-theme="dark"] .post-content figcaption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-size: 0.85em;
+  line-height: 1.55;
+  color: var(--color-ink-muted, #b4bcb2);
+}
+/* The caption body (credit / attribution line) sits in a <p> — keep it
+   tight against the title so the block reads as one quiet unit. */
+body.dark .post-content figcaption p,
+[data-theme="dark"] .post-content figcaption p {
+  margin: 0.15rem 0 0;
+}
+/* Credit links (attrlink) are the one interactive part — give them the
+   language accent with a soft underline so they're reachable without
+   pulling weight back into the caption. */
+body.dark .post-content figcaption a,
+[data-theme="dark"] .post-content figcaption a {
+  color: var(--color-accent, #7dd3fc);
+  text-decoration: underline;
+  text-decoration-color: rgba(125, 211, 252, 0.4);
+  text-underline-offset: 0.18em;
+}
+html:lang(zh) body.dark .post-content figcaption a,
+html:lang(zh) [data-theme="dark"] .post-content figcaption a {
+  text-decoration-color: rgba(255, 90, 90, 0.4);
+}
