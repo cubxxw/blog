@@ -139,6 +139,8 @@
   }
 
   // ─── 3. Article Content Extractor ─────────────────────────────────────────
+  var ARTICLE_MAX = 5500;
+
   function getArticleText() {
     var el = document.querySelector('.post-content');
     if (!el) return '';
@@ -147,7 +149,13 @@
       clone.querySelectorAll(sel).forEach(function (n) { n.remove(); });
     });
     var text = (clone.innerText || clone.textContent || '').replace(/\s+/g, ' ').trim();
-    return text.length > 5500 ? text.slice(0, 5500) + '…' : text;
+    if (text.length <= ARTICLE_MAX) return text;
+    // For long articles, keep the opening AND the ending rather than just the
+    // head — many pieces put their thesis up front and the payoff at the close,
+    // so a head-only slice leaves the AI blind to the conclusion.
+    var head = Math.round(ARTICLE_MAX * 0.7);
+    var tail = ARTICLE_MAX - head;
+    return text.slice(0, head) + ' […] ' + text.slice(text.length - tail);
   }
 
   function getArticleTitle() {

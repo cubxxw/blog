@@ -51,7 +51,7 @@ async function handler(event) {
     "如果涉及相关推荐，可以基于文章主题给出延伸阅读方向，标明这是建议而非站内链接。",
     articleTitle ? `\n当前文章标题：${articleTitle}` : "",
     articleContent
-      ? `\n文章正文摘要：\n${articleContent.slice(0, 5000)}`
+      ? `\n文章正文摘要：\n${articleContent.slice(0, 5600)}`
       : "\n（未提供文章内容，请基于标题回答）",
   ]
     .filter(Boolean)
