@@ -489,3 +489,94 @@ html:lang(zh) body.dark .post-content figcaption a,
 html:lang(zh) [data-theme="dark"] .post-content figcaption a {
   text-decoration-color: rgba(255, 90, 90, 0.4);
 }
+
+/* ── 17. In-content horizontal scrollbars (code blocks & wide tables) ──
+   Long code lines (`.post-content pre code` carries overflow-x:auto in the
+   PaperMod base; `.post-content .highlight / pre` get it on mobile) and wide
+   tables (`.post-content table` becomes display:block; overflow-x:auto on
+   narrow viewports) produce a HORIZONTAL scrollbar inside the block. NO
+   `::-webkit-scrollbar` rule targets these containers anywhere — and section
+   5 above intentionally scoped the page-scrollbar fix to body.dark *directly*
+   (no descendant) precisely so it would NOT reach component scrollbars,
+   noting they "keep their own carefully-tuned styling." But code blocks and
+   tables never actually got their own styling, so they fell back to the OS
+   default: a bright light track + thumb glued to the bottom edge of an
+   otherwise calm dark code block (very visible in Chrome on Windows/Linux,
+   and on hover/scroll-reveal elsewhere). Repaint just these inner scrollbars
+   to the same quiet dark treatment used for the page bar in section 5, so a
+   scrollable code sample or table stays a contained, low-glare element on the
+   dark surface. Slightly thinner than the page bar since these are nested.
+   Gated on body.dark / [data-theme="dark"] — light mode keeps the default
+   rendering, provably unchanged. */
+body.dark .post-content pre::-webkit-scrollbar,
+body.dark .post-content pre code::-webkit-scrollbar,
+body.dark .post-content .highlight::-webkit-scrollbar,
+body.dark .post-content table::-webkit-scrollbar,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar,
+[data-theme="dark"] .post-content table::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+body.dark .post-content pre::-webkit-scrollbar-track,
+body.dark .post-content pre code::-webkit-scrollbar-track,
+body.dark .post-content .highlight::-webkit-scrollbar-track,
+body.dark .post-content table::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-track,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+}
+body.dark .post-content pre::-webkit-scrollbar-thumb,
+body.dark .post-content pre code::-webkit-scrollbar-thumb,
+body.dark .post-content .highlight::-webkit-scrollbar-thumb,
+body.dark .post-content table::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-thumb,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+body.dark .post-content pre::-webkit-scrollbar-thumb:hover,
+body.dark .post-content pre code::-webkit-scrollbar-thumb:hover,
+body.dark .post-content .highlight::-webkit-scrollbar-thumb:hover,
+body.dark .post-content table::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.30);
+  background-clip: content-box;
+}
+/* Keep the track corner (where H and V bars meet) from flashing the OS
+   default light square. */
+body.dark .post-content pre::-webkit-scrollbar-corner,
+body.dark .post-content pre code::-webkit-scrollbar-corner,
+body.dark .post-content .highlight::-webkit-scrollbar-corner,
+body.dark .post-content table::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content pre::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content pre code::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content .highlight::-webkit-scrollbar-corner,
+[data-theme="dark"] .post-content table::-webkit-scrollbar-corner {
+  background: transparent;
+}
+/* Firefox — thin, tinted thumb on the same containers. Set directly on the
+   scroll containers (not a descendant selector) so no other component bar is
+   affected. */
+body.dark .post-content pre,
+body.dark .post-content pre code,
+body.dark .post-content .highlight,
+body.dark .post-content table,
+[data-theme="dark"] .post-content pre,
+[data-theme="dark"] .post-content pre code,
+[data-theme="dark"] .post-content .highlight,
+[data-theme="dark"] .post-content table {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.20) transparent;
+}
