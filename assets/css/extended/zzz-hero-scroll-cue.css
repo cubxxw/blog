@@ -1,0 +1,122 @@
+/* ============================================================
+   zzz-hero-scroll-cue.css — homepage "scroll for more" affordance
+   ------------------------------------------------------------
+   The homepage opens on a tall hero (status pill, name, bio, AI
+   orb) that fills most of the first screen, so on both phone and
+   desktop there was no signal that the day-page (posts / books /
+   projects) continues below. First-time visitors had to guess
+   that scrolling reveals more.
+
+   This adds one quiet, verified-absent cue: a small accent-tinted
+   chevron pinned to the bottom-centre of the viewport that gently
+   bobs to invite a downward scroll, then fades away for good the
+   moment the reader starts moving down — so it guides without ever
+   nagging. Tapping / clicking it smooth-scrolls to the first
+   content section (handled in micro-interactions.js).
+
+   The element is injected by micro-interactions.js ONLY on the
+   homepage and ONLY when motion is allowed (it is never created
+   for reduced-motion / no-JS visitors), mirroring the existing
+   swipe-hint pattern. This file just styles it. Language/theme
+   colours come from the shared --color-accent / --color-ink-muted
+   tokens, so it matches the EN/ZH + light/dark identities for free.
+   Loads last in the extended bundle (zzz- prefix). Purely additive
+   — nothing here is required to read or navigate the page, and the
+   whole file is neutralised under prefers-reduced-motion below.
+   ============================================================ */
+
+.hero-scroll-cue {
+  position: fixed;
+  left: 50%;
+  bottom: max(18px, env(safe-area-inset-bottom, 0px));
+  z-index: 60; /* above content, below the header (100) & modals */
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 10px 4px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-ink-muted, #5e5e63);
+  cursor: pointer;
+  border-radius: 999px;
+  -webkit-tap-highlight-color: transparent;
+  /* Start hidden; JS adds .is-in on the next frame so it eases up. */
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.hero-scroll-cue.is-in {
+  opacity: 0.72;
+  transform: translate(-50%, 0);
+}
+
+/* Dismissed once the reader scrolls down — fade out and lift away,
+   then JS removes it from the DOM. */
+.hero-scroll-cue.is-hidden {
+  opacity: 0;
+  transform: translate(-50%, 6px);
+  pointer-events: none;
+}
+
+.hero-scroll-cue__label {
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.hero-scroll-cue__chevron {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: var(--color-accent, currentColor);
+  animation: hero-scroll-cue-bob 1.9s ease-in-out infinite;
+}
+
+/* Gentle downward nudge so the eye reads "keep going". */
+@keyframes hero-scroll-cue-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* Pointer affordance: warm slightly on hover (desktop) and give a
+   small tactile press (phone + desktop), matching the site's other
+   tap cues. */
+.hero-scroll-cue:hover {
+  opacity: 0.95;
+}
+
+.hero-scroll-cue:active {
+  transform: translate(-50%, 1px) scale(0.94);
+}
+
+.hero-scroll-cue:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 3px;
+}
+
+/* On short / very wide desktop viewports keep it discreet. */
+@media (min-width: 1024px) {
+  .hero-scroll-cue__chevron { width: 22px; height: 22px; }
+}
+
+/* ---------- Reduced-motion: keep everything static ----------
+   The cue is not even created by JS under reduced motion, but guard
+   the styles too in case it is ever rendered server-side. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue {
+    transition: none;
+  }
+  .hero-scroll-cue__chevron {
+    animation: none;
+  }
+  .hero-scroll-cue:active {
+    transform: translate(-50%, 0);
+  }
+}

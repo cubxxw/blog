@@ -4,6 +4,9 @@
  *  1. Reveal-on-scroll for cards / list rows (staggered)
  *  2. Article images fade in once loaded
  *  3. Swipe left / right to navigate prev / next article (touch)
+ *  4. Tap / click ripple feedback (mobile + desktop)
+ *  5. Copy-code button success pop
+ *  6. Homepage "scroll for more" cue (bobbing chevron)
  *
  * Everything is a progressive enhancement and fully disabled
  * when the visitor prefers reduced motion.
@@ -443,6 +446,78 @@
   }
 
   /* ---------------------------------------------------------
+   * 6. Homepage scroll cue (mobile + desktop)
+   *    The day-page hero fills most of the first screen, so the
+   *    posts / books / projects below were easy to miss. Inject a
+   *    quiet bobbing chevron pinned bottom-centre that invites a
+   *    downward scroll and fades away for good the moment the
+   *    reader moves. Tapping it smooth-scrolls to the first
+   *    section. Homepage-only, motion-only (this whole file bails
+   *    early under reduced motion), and self-removing — never a
+   *    persistent nag. Styled in zzz-hero-scroll-cue.css.
+   * ------------------------------------------------------- */
+  function initScrollCue() {
+    var hero = document.querySelector('.hp-hero');
+    if (!hero) return; // homepage only
+
+    // Nothing to scroll to → no cue. (Guards short pages / wide screens.)
+    var target = document.getElementById('hp-posts');
+    var docH = document.documentElement.scrollHeight;
+    var viewH = window.innerHeight || document.documentElement.clientHeight;
+    if (docH - viewH < 120) return;
+
+    // If the visitor already landed scrolled down (anchor / restored
+    // position), don't bother showing it.
+    if ((window.scrollY || window.pageYOffset) > 60) return;
+
+    var cue = document.createElement('button');
+    cue.type = 'button';
+    cue.className = 'hero-scroll-cue';
+    var isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
+    cue.setAttribute('aria-label', isZh ? '向下滚动查看更多' : 'Scroll down for more');
+    cue.innerHTML =
+      '<span class="hero-scroll-cue__label" aria-hidden="true">' +
+      (isZh ? '向下' : 'Scroll') +
+      '</span>' +
+      '<svg class="hero-scroll-cue__chevron" viewBox="0 0 24 24" fill="none" ' +
+      'stroke="currentColor" stroke-width="2" stroke-linecap="round" ' +
+      'stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M6 9l6 6 6-6"/></svg>';
+    document.body.appendChild(cue);
+
+    // Ease it in on the next frame.
+    requestAnimationFrame(function () {
+      cue.classList.add('is-in');
+    });
+
+    var dismissed = false;
+    function dismiss() {
+      if (dismissed) return;
+      dismissed = true;
+      cue.classList.add('is-hidden');
+      window.removeEventListener('scroll', onScroll);
+      // Remove from the DOM after the fade completes.
+      window.setTimeout(function () {
+        if (cue.parentNode) cue.parentNode.removeChild(cue);
+      }, 600);
+    }
+
+    function onScroll() {
+      if ((window.scrollY || window.pageYOffset) > 40) dismiss();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    cue.addEventListener('click', function () {
+      if (target && target.scrollIntoView) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: viewH * 0.9, behavior: 'smooth' });
+      }
+      dismiss();
+    });
+  }
+
+  /* ---------------------------------------------------------
    * Boot
    * ------------------------------------------------------- */
   function init() {
@@ -463,6 +538,7 @@
     initSwipeNav();
     initRipple();
     initCopyFeedback();
+    initScrollCue();
   }
 
   if (document.readyState === 'loading') {
