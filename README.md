@@ -140,6 +140,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis](https://nsddd.top/growth/posts/love-seen-clearly-loved-deeply/)
 - [Context Is Not Prompt: Why Context Engineering Is Becoming AI's New Foundation](https://nsddd.top/ai-technology/posts/context-engineering-the-new-foundation/)
 - [April 2026 Thought Notes](https://nsddd.top/growth/posts/2026-04-thought-notes/)
 - [Agent Identity: From Locke to OpenClaw](https://nsddd.top/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
