@@ -339,7 +339,7 @@ body.dark .post-content hr {
    1. Light / English  → GitHub Light (#f6f8fa, crisp red/blue/purple)
    2. Light / Chinese  → Ink editorial (#faf8f5, warm ink palette)
    3. Dark  / English  → GitHub Dark (#0d1117, vivid neon palette)
-   4. Dark  / Chinese  → Warm dark ink (#1c1917, amber-warm palette) */
+   4. Dark  / Chinese  → Warm dark ink (#191613, amber-warm palette) */
 
 /* ── Shared layout (all variants) ── */
 .post-content .highlight,
@@ -411,7 +411,17 @@ html:not(:lang(zh)) body.dark .post-content pre:not(.mermaid) {
 /* ── 4. Dark / Chinese — warm dark ink ── */
 html:lang(zh) body.dark .post-content .highlight,
 html:lang(zh) body.dark .post-content pre:not(.mermaid) {
-  --code-surface: #1c1917;
+  /* Recess the code panel from the page paper. The old value (#1c1917) was
+     byte-identical to the ZH dark paper (--color-paper: #1c1917), so code
+     blocks dissolved into the page and read as borderless slabs — they
+     leaned entirely on the hairline --code-border to be seen. The EN dark
+     panel is gently recessed below its paper (#0d1117 on #121413, ~1.02:1),
+     which gives code an "inset panel" depth. Mirror that for ZH with a warm
+     recessed surface (#191613 → ~1.03:1 below #1c1917), keeping the warm hue
+     family so the panel still feels at home on the warm paper while gaining
+     the same quiet depth. Gated on html:lang(zh) body.dark — light mode and
+     EN dark are untouched. Ink #f5f3ee stays at a 16.6:1 panel contrast. */
+  --code-surface: #191613;
   --hljs-bg: var(--code-surface);
   --code-ink: #f5f3ee;
   --code-border: rgba(245,243,238,0.14);

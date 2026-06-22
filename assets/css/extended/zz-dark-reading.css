@@ -832,3 +832,32 @@ html:not(:lang(zh)) [data-theme="dark"] .post-content s strong,
 html:not(:lang(zh)) [data-theme="dark"] .post-content s b {
   color: inherit;
 }
+
+/* ── 24. EN blockquote decorative quote glyph in dark ─────────────
+   The English blockquote carries an oversized opening-quote glyph
+   (article-typography.css: `html:lang(en) .post-content blockquote::before`,
+   an 8rem ‟ set at `color: var(--color-accent); opacity: 0.1`). That rule is
+   NOT theme-gated, so the same colour×opacity is used in both modes. In
+   LIGHT it resolves to the near-black green accent (#2e352e) at 10% over the
+   pale paper — a soft, clearly-visible editorial mark that gives the quote
+   its character. But in DARK the accent becomes sky-blue (#7dd3fc), and a
+   10%-opacity sky-blue glyph over the near-black blockquote surface
+   (rgba(255,255,255,0.03) on #121413) is effectively invisible — the dark
+   audit render shows the quote with no glyph at all. So a deliberate design
+   flourish silently vanishes in dark, flattening the blockquote's identity.
+
+   Restore it with the faithful dark analog: swap the faint-blue tint for a
+   neutral pale ink (the page's own --color-ink) and lift the opacity a touch
+   so the mark reads as the same quiet, soft watermark the light quote has —
+   present and characterful, never glaring (still only ~12% over the dark
+   surface, well below the body prose so it never competes with the quoted
+   words). EN-only and dark-only: the selector carries html:lang(en) +
+   body.dark (specificity 0,3,3, and loaded last in the extended bundle) so it
+   beats the un-gated source rule (0,2,2) in dark while never being selected in
+   light — light mode keeps the accent glyph, provably unchanged. ZH has no
+   glyph (its corner brackets were removed), so it is intentionally untouched. */
+html:lang(en) body.dark .post-content blockquote::before,
+html:lang(en) [data-theme="dark"] .post-content blockquote::before {
+  color: var(--color-ink, #e2e3e1);
+  opacity: 0.12;
+}
