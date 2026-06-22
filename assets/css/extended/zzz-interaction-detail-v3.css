@@ -1,0 +1,83 @@
+/* ============================================================
+   zzz-interaction-detail-v3.css — detail motion & polish (v3)
+   ------------------------------------------------------------
+   Three small, verified-absent touches that round out the
+   existing micro-interaction system without duplicating it:
+
+     1. Branded text selection in LIGHT mode (dark mode already
+        has one in zz-dark-reading.css; light fell back to the
+        washed browser blue). Language-aware to match the EN/ZH
+        accent identities.
+     2. Light-mode table-row hover — dark mode highlights the
+        hovered row; light mode had no row feedback, so dense
+        comparison grids were hard to track. Adds a quiet wash
+        plus a smooth transition (both modes).
+     3. A one-shot "settle" entrance for the redesigned TL;DR
+        card so the hero takeaway eases into place on load,
+        tying it into the page's motion language.
+
+   Everything here is purely additive feedback — never required
+   for content to be readable. The entrance is gated behind
+   .motion-reveal (added to <html> only when the visitor has NOT
+   requested reduced motion) and the whole file is neutralised
+   under prefers-reduced-motion at the bottom. Loads last in the
+   extended bundle (zzz- prefix) so its light-mode rules win.
+   ============================================================ */
+
+/* ---------- 1. Branded text selection (light mode) ----------
+   Felt on desktop drag-select and mobile long-press select.
+   Kept at a low alpha so selected body text stays crisp. */
+html:lang(en) body:not(.dark) ::selection {
+  background: rgba(46, 53, 46, 0.16); /* EN accent (sage charcoal) */
+  color: var(--color-ink, #1a1c1b);
+}
+html:lang(zh) body:not(.dark) ::selection {
+  background: rgba(134, 33, 34, 0.16); /* ZH accent (deep red) */
+  color: var(--color-ink, #1a1c1b);
+}
+
+/* ---------- 2. Table rows: hover wash + smooth transition ----------
+   Mirrors the dark-mode row hover (zz-dark-reading.css) for light
+   mode, and gives both modes a soft fade so the highlight tracks the
+   pointer / tap instead of snapping. Scoped to real article tables
+   (skip Chroma line-number / highlight tables). */
+.post-content table:not(.lntable):not(.highlighttable) tbody td {
+  transition: background-color 0.18s ease;
+}
+body:not(.dark) .post-content table:not(.lntable):not(.highlighttable) tbody tr:hover td {
+  background: rgba(46, 53, 46, 0.05);
+}
+html:lang(zh) body:not(.dark) .post-content table:not(.lntable):not(.highlighttable) tbody tr:hover td {
+  background: rgba(134, 33, 34, 0.05);
+}
+
+/* ---------- 3. TL;DR card: one-shot "settle" entrance ----------
+   The card already animates internally (header scan, cable pulse,
+   beacon). Add a gentle settle so it eases up into place on first
+   paint rather than appearing flat. A CSS animation (not a persistent
+   hidden state): if motion is unsupported or .motion-reveal is absent,
+   the card simply renders fully visible — no flash-of-missing-content. */
+@keyframes tldr-settle {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+html.motion-reveal .article-tldr {
+  animation: tldr-settle 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  /* tiny beat so it follows the title/cover rather than racing them */
+  animation-delay: 0.06s;
+}
+
+/* ============================================================
+   Reduced motion: neutralise the entrance (state colours stay —
+   they carry no movement).
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html.motion-reveal .article-tldr {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .post-content table:not(.lntable):not(.highlighttable) tbody td {
+    transition: none !important;
+  }
+}

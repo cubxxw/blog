@@ -1,7 +1,7 @@
 {{- /*
-  TL;DR / answer-first block (GEO / BLUF pattern), rendered as a "world-line"
-  panel: a vertical cable with numbered nodes, a travelling pulse and a header
-  scan line. Driven entirely by front matter, no backend. Colours follow the
+  TL;DR / answer-first block (GEO / BLUF pattern), rendered as a calm,
+  prose-aligned key-takeaways card: a quiet eyebrow header and numbered
+  points. Driven entirely by front matter, no backend. Colours follow the
   theme accent tokens; all motion is gated by prefers-reduced-motion.
 
   Front matter:
@@ -13,19 +13,21 @@
 
   Semantic <aside> + heading so AI passage extraction can lift it cleanly.
 */ -}}
-{{- $page := . -}}
 {{- $tldr := .Params.tldr -}}
 {{- with $tldr -}}
 {{- $items := slice -}}
 {{- if reflect.IsSlice . }}{{ $items = . }}{{ else }}{{ $items = slice . }}{{ end -}}
 {{- $label := i18n "tldr_label" | default "TL;DR" -}}
-<aside class="article-tldr article-tldr--worldline" aria-label="{{ $label }}">
-  {{/* technical-drawing corner crop marks */}}
-  <span class="tldr-tick tldr-tick--tl" aria-hidden="true"></span><span class="tldr-tick tldr-tick--tr" aria-hidden="true"></span>
-  <span class="tldr-tick tldr-tick--bl" aria-hidden="true"></span><span class="tldr-tick tldr-tick--br" aria-hidden="true"></span>
+{{- $count := len $items -}}
+<aside class="article-tldr" aria-label="{{ $label }}">
+  {{- /* technical-drawing corner crop marks */ -}}
+  <span class="tldr-tick tldr-tick--tl" aria-hidden="true"></span>
+  <span class="tldr-tick tldr-tick--tr" aria-hidden="true"></span>
+  <span class="tldr-tick tldr-tick--bl" aria-hidden="true"></span>
+  <span class="tldr-tick tldr-tick--br" aria-hidden="true"></span>
 
   <div class="tldr-head">
-    <div class="tldr-eyebrow">
+    <span class="tldr-eyebrow">
       <span class="article-tldr__spark tldr-spark" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/>
@@ -33,8 +35,8 @@
       </span>
       <span class="article-tldr__label-text tldr-zh">{{ $label }}</span>
       <span class="tldr-en">Core Context</span>
-    </div>
-    <div class="tldr-meta"><b>{{ printf "%02d" (len $items) }}</b>&nbsp;NODES&nbsp;·&nbsp;Σ WORLD-LINE</div>
+    </span>
+    <span class="tldr-meta"><b>{{ printf "%02d" $count }}</b>&nbsp;{{ if eq $count 1 }}POINT{{ else }}POINTS{{ end }}</span>
     <span class="tldr-scan" aria-hidden="true"></span>
   </div>
 
@@ -48,8 +50,8 @@
   </div>
 
   <div class="tldr-foot" aria-hidden="true">
-    <span><span class="tldr-foot-dot"></span>Context Engineering</span>
-    <span>{{ $page.Date.Format "v2006.01" }} · LIVE</span>
+    <span><span class="tldr-foot-dot"></span>TL;DR · ANSWER-FIRST</span>
+    <span>GEO / BLUF</span>
   </div>
 </aside>
 {{- end -}}

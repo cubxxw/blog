@@ -10,7 +10,9 @@
   margin: var(--space-4) 0 var(--space-8);
   /* Match the prose reading column (.post-content caps at 760px). */
   max-width: 760px;
-  padding: var(--space-6) var(--space-7) var(--space-5);
+  /* generous interior so the wire + nodes have room to breathe.
+     (NB: there is no --space-7 token — was silently collapsing padding to 0) */
+  padding: var(--space-8) var(--space-8) var(--space-6);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl, 16px);
   background:
@@ -59,7 +61,8 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 14px;
+  /* nudge in so the eyebrow/meta clear the top crop marks */
+  padding: 2px 6px 14px;
   margin-bottom: 20px;
 }
 .tldr-head::after {
@@ -110,23 +113,24 @@
 }
 .tldr-en {
   font-family: var(--font-mono, monospace);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.32em;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--color-text-muted, var(--color-ink-muted));
+  /* quieter than the muted text so it recedes behind the serif label */
+  color: color-mix(in srgb, var(--color-text-muted, var(--color-ink-muted)) 62%, transparent);
   padding-left: 11px;
   border-left: 1px solid var(--color-border);
 }
 .tldr-meta {
   font-family: var(--font-mono, monospace);
-  font-size: 10.5px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 400;
   letter-spacing: 0.18em;
-  color: var(--color-text-muted, var(--color-ink-muted));
+  color: color-mix(in srgb, var(--color-text-muted, var(--color-ink-muted)) 62%, transparent);
   white-space: nowrap;
 }
-.tldr-meta b { color: var(--color-accent); font-weight: 700; }
+.tldr-meta b { color: color-mix(in srgb, var(--color-accent) 78%, transparent); font-weight: 600; }
 
 /* ── the world-line cable + nodes ── */
 .tldr-wire {
@@ -167,7 +171,8 @@
 
 .tldr-item {
   position: relative;
-  padding: 15px 4px 15px 56px;
+  /* even vertical rhythm so all nodes share one top offset and line up */
+  padding: 18px 4px 18px 58px;
 }
 .tldr-item + .tldr-item {
   border-top: 1px dashed var(--color-border);
@@ -176,7 +181,7 @@
 /* node chip sitting on the cable — larger, bolder */
 .tldr-node {
   position: absolute;
-  left: 0; top: 14px;
+  left: 0; top: 16px;
   width: 32px; height: 32px;
   display: grid;
   place-items: center;
@@ -185,8 +190,11 @@
   border: 1.5px solid var(--color-accent);
   color: var(--color-accent);
   font-family: var(--font-mono, monospace);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11.5px;
+  /* lighter weight + loosened tracking so the digits read as a quiet label,
+     not a hard engineering stamp */
+  font-weight: 500;
+  letter-spacing: 0.02em;
   box-shadow:
     0 0 0 5px var(--color-bg, #fbf8f1),
     0 0 12px -2px color-mix(in srgb, var(--color-accent) 40%, transparent);
@@ -236,7 +244,8 @@
 .tldr-foot {
   position: relative;
   z-index: 2;
-  margin-top: 16px;
+  /* keep clear of the bottom crop marks (14px marks sitting 11px from edge) */
+  margin: 18px 20px 8px;
   padding-top: 12px;
   border-top: 1px solid var(--color-border);
   display: flex;
@@ -244,9 +253,10 @@
   align-items: center;
   font-family: var(--font-mono, monospace);
   font-size: 9.5px;
+  font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-text-muted, var(--color-ink-muted));
+  color: color-mix(in srgb, var(--color-text-muted, var(--color-ink-muted)) 55%, transparent);
 }
 .tldr-foot-dot {
   display: inline-block;
