@@ -79,6 +79,10 @@
             mybutton.style.visibility = "hidden";
             mybutton.style.opacity = "0";
         }
+        // Drive a CSS spring pop-in (zz-scroll-detail.css). Inline
+        // opacity/visibility above is kept for the no-CSS fallback;
+        // the class only adds the scale transform on top.
+        mybutton.classList.toggle('is-visible', scrolled > 800);
         // Fill the ring in proportion to how far the page has been read.
         if (ringProgress) {
             var trackable = document.documentElement.scrollHeight - document.documentElement.clientHeight;

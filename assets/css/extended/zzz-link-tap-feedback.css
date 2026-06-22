@@ -1,0 +1,58 @@
+/* ============================================================
+   zzz-link-tap-feedback.css — in-prose link touch feedback
+   ------------------------------------------------------------
+   micro-interactions.css gives in-article links a left-to-right
+   underline grow on HOVER — felt only with a fine pointer. On
+   touch screens (where there is no hover) a tapped link gave no
+   confirmation until the next page loaded. This adds a quick,
+   layout-safe press cue: the link briefly washes with a soft
+   accent-tinted background that fades on release, so a tap reads
+   as "registered" on phones the same way the underline does on a
+   trackpad.
+
+   Deliberately uses background — NOT transform — so it never
+   reflows inline text or shifts the line it sits on. Language-aware
+   tint to match the EN/ZH accent identities used elsewhere. Loads
+   last in the extended bundle (zzz- prefix) and is fully
+   neutralised under prefers-reduced-motion at the bottom. Purely
+   additive feedback — never required for content to be readable.
+   ============================================================ */
+
+/* Suppress the platform tap flash so our own cue is the only one
+   the reader sees, and let the wash ease out smoothly on release. */
+.post-content a:not(.anchor):not(.btn) {
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 3px;
+  transition: background-color 0.18s ease;
+}
+
+/* Touch / press: a soft accent wash with a touch of horizontal
+   breathing room so the tint hugs the word rather than clipping it. */
+.post-content a:not(.anchor):not(.btn):active {
+  background-color: color-mix(in srgb, var(--color-accent, var(--primary)) 16%, transparent);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--color-accent, var(--primary)) 16%, transparent);
+}
+
+/* ZH pages lean on the deep-red accent; the var() above already
+   resolves per-language where --color-accent is set, but pin an
+   explicit fallback for themes that only define --primary. */
+html:lang(zh) .post-content a:not(.anchor):not(.btn):active {
+  background-color: color-mix(in srgb, var(--color-accent, #862122) 16%, transparent);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--color-accent, #862122) 16%, transparent);
+}
+
+/* ============================================================
+   Reduced motion: drop the transition and the press wash so the
+   experience is fully static for visitors who ask for it.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .post-content a:not(.anchor):not(.btn) {
+    transition: none !important;
+  }
+  .post-content a:not(.anchor):not(.btn):active {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
