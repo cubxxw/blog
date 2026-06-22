@@ -25,6 +25,12 @@
   overflow: hidden;
   pointer-events: none;
   border-radius: inherit;
+  /* Fade the canvas out toward all four edges so the semi-transparent flow
+     field melts into the warm page background instead of ending in a hard
+     rectangular cut. No border, no shadow, no card — the hero stays the
+     borderless editorial block it was designed as; only the seam goes away. */
+  -webkit-mask-image: radial-gradient(120% 120% at 50% 40%, #000 55%, transparent 100%);
+          mask-image: radial-gradient(120% 120% at 50% 40%, #000 55%, transparent 100%);
 }
 
 /* …and lift the actual hero columns above the field. The hero is a

@@ -365,11 +365,29 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   position: relative;
   width: 100%;
   max-width: 420px;
-  height: 420px;
+  /* min-height (not a locked height) so the chat panel can grow when its
+     content needs more room, instead of being clipped. orbit & chat both
+     stay vertically centred within this box. */
+  min-height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* visible so a slightly taller chat panel is never cut off; the orbit is
+     exactly 420×420 and never overflows. */
+  overflow: visible;
+}
+
+/* Cross-fade orbit ↔ chat on swap. renderOrbit()/renderChat() replace the
+   wrap's innerHTML, which used to make the flex-centred content jump; the
+   fade absorbs that reflow into a smooth 0.28s transition. */
+.hp-bear-orbit,
+.hp-bear-chat {
+  animation: hpFade 0.28s ease both;
+}
+
+@keyframes hpFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
 }
 
 .hp-bear-orbit {
@@ -553,7 +571,12 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 /* Chat open state */
 .hp-bear-chat {
   width: 100%;
-  height: 420px;
+  /* Was a locked height:420px — at narrow widths the 5 stacked regions
+     (head + body + quick + input + foot) had near-zero slack and the input
+     row got clipped by overflow:hidden. Now the panel sizes to its content
+     up to a ceiling; the message body scrolls internally past that. */
+  min-height: 420px;
+  max-height: 520px;
   background: var(--surface-white);
   border: 1px solid var(--border-subtle);
   border-radius: 16px;
@@ -645,7 +668,11 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 .hp-bear-chat-icon-btn:hover { background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent); }
 
 .hp-bear-chat-body {
-  flex: 1;
+  flex: 1 1 auto;
+  /* min-height:0 lets this flex child actually shrink below its content
+     size, so overflow-y:auto kicks in and the body scrolls instead of
+     pushing the input row out of the panel. */
+  min-height: 0;
   overflow-y: auto;
   padding: 16px;
   display: flex;
