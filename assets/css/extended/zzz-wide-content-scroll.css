@@ -1,0 +1,72 @@
+/* ============================================================
+   zzz-wide-content-scroll.css — horizontal scroll affordance
+   ------------------------------------------------------------
+   Wide code blocks and tables scroll sideways (custom.css gives
+   `.post-content pre|table` overflow-x:auto, especially on phones).
+   Nothing signalled that more content sat off the edge, so readers
+   missed it. wide-content-scroll.js adds `.x-scroll` and sets the
+   per-side fade widths (--x-fade-l / --x-fade-r) from the live
+   scroll position; this layer renders them as a soft edge fade —
+   a quiet "swipe sideways" cue on both mobile and desktop.
+
+   Implemented with `mask-image` on the element itself, so it never
+   touches the code/table background (works on every theme & in
+   dark mode) and needs no wrapper element — keeping these blocks
+   as direct children of `.post-content` so the existing
+   prose-reveal `.post-content > pre|table` motion still applies.
+
+   Loaded late (zzz- prefix) so it composes cleanly over the theme.
+   ============================================================ */
+
+.post-content pre.x-scroll,
+.post-content table.x-scroll {
+  /* Fade only the side(s) that still have hidden content. The JS sets
+     --x-fade-l / --x-fade-r to 28px when there is more to reveal in
+     that direction and 0px at the corresponding end, so the cue tracks
+     the scroll position. Alpha mask: transparent = hidden edge. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) var(--x-fade-l, 0px),
+    rgba(0, 0, 0, 1) calc(100% - var(--x-fade-r, 0px)),
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) var(--x-fade-l, 0px),
+    rgba(0, 0, 0, 1) calc(100% - var(--x-fade-r, 0px)),
+    rgba(0, 0, 0, 0) 100%
+  );
+  /* Ease the fade as it appears/disappears at the very ends. Gradient
+     stops interpolate where supported; elsewhere it simply snaps —
+     either way the cue stays correct. */
+  transition: -webkit-mask-image 0.2s ease, mask-image 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The fade itself is informational wayfinding, so it stays; only
+     drop the easing so it never reads as decorative motion. */
+  .post-content pre.x-scroll,
+  .post-content table.x-scroll {
+    transition: none !important;
+  }
+}
+
+/* ---------- Logo wordmark: desktop hover lift ----------
+   The primary menu links already rise a hair on hover (zzz-nav-tap-
+   feedback.css), but the logo only pressed on tap — so it felt static
+   for pointer users. Give it the same quiet lift on hover to round out
+   the header's interactivity. Touch is unaffected (no :hover), and the
+   existing press scale still wins while the finger/pointer is down. */
+@media (hover: hover) and (pointer: fine) {
+  .nav .logo a:hover {
+    transform: translateY(-1.5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav .logo a:hover {
+    transform: none !important;
+  }
+}
