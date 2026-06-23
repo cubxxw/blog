@@ -27,7 +27,7 @@ minify:
 params:
   env: production
   title: 熊鑫伟 (cubxxw) 的博客
-  description: AI Builder、开源贡献者、数字游民的技术与成长博客。分享 Kubernetes、Go 语言、AI 开源项目、个人成长思考、旅行见闻。
+  description: AI Builder、开源贡献者、数字游民的技术博客：Kubernetes、Go、AI 开源项目与成长思考。
   keywords:
     - cubxxw
     - 熊鑫伟
@@ -216,7 +216,7 @@ languages:
         title: Hi there 👋
         subtitle: |
           My name is Xinwei (bear) Xiong 🤖 — AI Builder, Open Source Contributor, Digital Nomad.
-          I'm on a journey building AI products while exploring the world, one adventure at a time ☀️.
+          Building AI products with Go & Kubernetes while exploring the world one adventure at a time ☀️.
         imageUrl: ../assets/cubxxw-image.jpg
         imageWidth: 120
         imageHeight: 120

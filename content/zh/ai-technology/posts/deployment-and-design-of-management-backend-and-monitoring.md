@@ -6,7 +6,7 @@ draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: '熊新伟，我'
+author: '熊鑫伟，我'
 keywords: ['OpenIM', 'Docker', '即时通讯', '后台管理', '监控', '系统部署']
 tags: ["OpenIM", "Docker", "Instant Messaging", "Backend Management", "Monitoring"]
 categories: ["AI & Technology"]
