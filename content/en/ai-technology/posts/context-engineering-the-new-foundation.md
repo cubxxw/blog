@@ -15,8 +15,7 @@ tags:
   - MCP
 categories:
   - AI & Technology
-description: >
-  Context engineering is turning from a slogan into a discipline of its own. This piece works from the frontline practice of Anthropic, Karpathy, LangChain, Sourcegraph and Manus to unpack what separates context engineering from prompt engineering, the two complementary four-pillar taxonomies, and the concrete patterns of assembly, retrieval, compression and eviction, before returning to my own claim: context is not a parameter of the tool, it is the shared world line between you and the AI.
+description: Why context engineering supersedes prompt engineering — a systematic look at context assembly, retrieval, compression, and eviction patterns, drawing from Anthropic, Karpathy, LangChain, and Manus.
 tldr:
   - "Prompt engineering is writing one instruction well. Context engineering is deciding, on every inference call, what goes into the whole window, in what order, and what gets evicted. The center of gravity moved from wording to wiring."
   - "Context is a finite resource subject to context rot — as token count rises, the model's recall of what is inside actually degrades. The goal is the smallest set of highest-signal tokens."
@@ -25,7 +24,7 @@ tldr:
   - "My claim: the scarce thing is not the model, it is the world line - only your context lets an AI know who you are, where you are, and what you want. That line deserves to live local-first, in your own hands."
 maturity: budding
 cover:
-  image: 'images/blog/context-engineering-worldline.png'
+  image: 'images/blog/context-engineering-worldline.webp'
   caption: 'Context engineering: furnishing the model''s room — Write / Select / Compress / Isolate, and the local-first world line between you and the AI.'
   alt: 'A wide schematic of context engineering: the Write / Select / Compress / Isolate pillars feeding an AI, a laptop with notes, and a local-first world line'
 ---

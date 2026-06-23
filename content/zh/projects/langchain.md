@@ -6,8 +6,7 @@ tocopen: true
 tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
-description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+description: LangChain 开源框架深度学习：链式调用、Agent 构建、RAG 管道与工具集成实战，持续记录学习过程与关键实践。
 aliases:
   - /zh/posts/ai-projects/langchain/
 tldr:

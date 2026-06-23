@@ -1,5 +1,5 @@
 ---
-title: 'In-depth understanding of the components of Kubernetes Kube apisserver'
+title: 'Kubernetes kube-apiserver: Deep Dive into API Server Components'
 ShowRssButtonInSectionTermList: true
 date: 2023-09-28T20:12:51+08:00
 draft : false

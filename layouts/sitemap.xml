@@ -42,11 +42,13 @@
     {{- else }}
     <priority>0.7</priority>
     {{- end }}
-    {{- if .Params.cover.image }}
+    {{- with .Params.cover.image -}}
+    {{- if not (hasPrefix . "http") }}
     <image:image>
-      <image:loc>{{ .Params.cover.image | absURL }}</image:loc>
+      <image:loc>{{ . | absURL }}</image:loc>
     </image:image>
-    {{- end }}
+    {{- end -}}
+    {{- end -}}
     {{- if .IsTranslated }}
     {{- range .AllTranslations }}
     <xhtml:link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}"/>

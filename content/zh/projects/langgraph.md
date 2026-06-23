@@ -6,8 +6,7 @@ tocopen: true
 tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
-description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+description: LangGraph 图状态机框架深度解析：设计架构、节点路由、多 Agent 工作流构建，解读有状态 AI Agent 的核心实现机制。
 aliases:
   - /zh/posts/ai-projects/langgraph/
 tldr:

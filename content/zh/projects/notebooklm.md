@@ -6,8 +6,7 @@ tocopen: true
 tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
-description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+description: Google NotebookLM 的 RAG 实现机制深度调研：向量检索、引用溯源与知识图谱构建，探讨 AI 笔记工具的技术本质。
 aliases:
   - /zh/posts/ai-projects/notebooklm/
 tldr:

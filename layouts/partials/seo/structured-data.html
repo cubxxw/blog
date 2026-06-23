@@ -27,20 +27,17 @@
   "url": {{ .Permalink }},
   "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }},
   "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }},
+  {{- $postAuthor := "Xinwei Xiong" -}}
   {{- with .Params.author -}}
-  {{- $postAuthor := "" -}}
-  {{- if reflect.IsSlice . -}}
-    {{- $postAuthor = index . 0 | string -}}
-  {{- else if reflect.IsMap . -}}
-    {{- $postAuthor = .name | default "Xinwei Xiong" -}}
-  {{- else -}}
-    {{- $postAuthor = . | string -}}
+    {{- if reflect.IsSlice . -}}{{- $postAuthor = index . 0 | string -}}
+    {{- else if reflect.IsMap . -}}{{- $postAuthor = .name | default "Xinwei Xiong" -}}
+    {{- else -}}{{- $postAuthor = . | string -}}
+    {{- end -}}
   {{- end -}}
   "author": {
     "@type": "Person",
-    "name": {{ $postAuthor | plainify | default "Xinwei Xiong" }}
+    "name": {{ $postAuthor | plainify | jsonify }}
   },
-  {{- end -}}
   "publisher": {
     "@type": "Organization",
     "name": {{ $siteName }},
@@ -54,7 +51,7 @@
     "@id": {{ .Permalink }}
   },
   {{- with .Params.tags -}}
-  "keywords": [{{ delimit . ", " | plainify }}],
+  "keywords": [{{ range $i, $kw := . }}{{ if $i }}, {{ end }}{{ $kw | plainify | jsonify }}{{ end }}],
   {{- end -}}
   "articleSection": {{ cond (gt (len .Params.categories) 0) (index .Params.categories 0) "Blog" }},
   "wordCount": {{ .WordCount }}

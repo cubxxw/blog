@@ -3,8 +3,23 @@
 <script src="{{ "/js/micro-interactions.js" | relURL }}" defer></script>
 <script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>
 <script src="{{ "/js/newsletter.js" | relURL }}" defer></script>
-<script src="{{ "/js/qrcode-generator.js" | relURL }}" defer></script>
-<script src="{{ "/js/share-conversation.js" | relURL }}" defer></script>
+{{- /* qrcode + share loaded on-demand when share panel opens, not on every page */ -}}
+<script>
+(function(){
+  function loadShareScripts(cb){
+    if(window.__shareScriptsLoaded){cb&&cb();return;}
+    var pending=2;
+    function done(){if(!--pending){window.__shareScriptsLoaded=true;cb&&cb();}}
+    var s1=document.createElement('script');s1.src='{{ "/js/qrcode-generator.js" | relURL }}';s1.onload=done;document.body.appendChild(s1);
+    var s2=document.createElement('script');s2.src='{{ "/js/share-conversation.js" | relURL }}';s2.onload=done;document.body.appendChild(s2);
+  }
+  document.addEventListener('click',function h(e){
+    if(e.target.closest('[data-share-trigger],[class*="share"],.share-btn')){
+      loadShareScripts();document.removeEventListener('click',h,true);
+    }
+  },true);
+})();
+</script>
 {{- if .IsPage }}
 <script src="{{ "/js/reading-companion.js" | relURL }}" defer></script>
 <script src="{{ "/js/toc-highlight.js" | relURL }}" defer></script>

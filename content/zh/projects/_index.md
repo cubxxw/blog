@@ -1,6 +1,8 @@
 ---
 title: "AI 开源项目"
 description: "持续追踪 AI 开源项目、产品基础设施与实践分析。"
+cascade:
+  - type: "posts"
 ---
 
 这里汇总项目导向的学习笔记与深度分析，这个 section 现在是 AI 项目内容的正式入口。

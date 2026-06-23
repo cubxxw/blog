@@ -4,30 +4,18 @@ Allow: /
 {{- else }}
 Disallow: /
 {{- end }}
-
-# Sitemaps
-Sitemap: {{ "sitemap.xml" | absURL }}
-
-# Disallow admin and private areas
 Disallow: /admin/
 Disallow: /private/
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
-
-# Google AdsBot
 User-agent: AdsBot-Google
-Crawl-delay: 2
+Allow: /
 
-# Google Bot
 User-agent: Googlebot
 Allow: /
 
-# Bing Bot
 User-agent: Bingbot
 Allow: /
 
-# Social Media Bots (for link preview)
 User-agent: Twitterbot
 Allow: /
 
@@ -36,3 +24,5 @@ Allow: /
 
 User-agent: LinkedInBot
 Allow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}
