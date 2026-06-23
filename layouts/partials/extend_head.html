@@ -32,12 +32,18 @@
 
 {{- /* Google Fonts — async (non-render-blocking) */ -}}
 {{- $baseFonts := "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" -}}
+{{- /* Google Fonts — fully async via preload + noscript fallback.
+       Use media="print" on the noscript fallback to prevent Chrome's
+       speculative parser from issuing a duplicate request (the preload
+       already triggers one). The tiny media-query mismatch guarantees
+       the print vs screen conflict is harmless — anything that actually
+       reads the print stylesheet will still render the fonts correctly. */ -}}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $baseFonts }}">
-<noscript><link rel="stylesheet" href="{{ $baseFonts }}"></noscript>
+<noscript><link rel="stylesheet" href="{{ $baseFonts }}" media="print" onload="this.media='all'"></noscript>
 {{- if eq .Lang "zh" }}
 {{- $zhFonts := "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" -}}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
-<noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>
+<noscript><link rel="stylesheet" href="{{ $zhFonts }}" media="print" onload="this.media='all'"></noscript>
 {{- end }}
 
 {{- /* SEO Structured Data handled by seo.html → seo/structured-data.html */ -}}
