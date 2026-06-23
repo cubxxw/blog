@@ -34,7 +34,23 @@
   transform: translateY(8px);
 }
 
-/* FAB hidden on all screen sizes — disabled per design */
+/* ── FAB visibility ──────────────────────────────────────────
+   The bottom sheet (Contents / AI / Share) is the ONLY path to
+   these tools below 1280px — the desktop editorial-tools sidebar
+   renders only on the ≥1280px sticky right column. The FAB was
+   previously hard-disabled, which left phone/tablet readers with
+   no way to reach the TOC, the AI companion or the share actions
+   (the AI panel's behaviour is wired up in article-bottom-sheet.js
+   but was unreachable). Re-enable it on the phone layout only — it
+   is not a persistent nag: article-bottom-sheet.js auto-fades it
+   near the very top and bottom of the page, so it only sits over
+   the live read while there's somewhere to jump to. The ≥1024px
+   rule below still force-hides it on desktop. */
+@media (max-width: 1023px) {
+  .article-fab {
+    display: flex;
+  }
+}
 
 /* ── Overlay ────────────────────────────────────────────────── */
 .abs-overlay {
@@ -79,6 +95,14 @@
 
 .article-bottom-sheet.abs--open {
   transform: translateY(0);
+}
+
+/* While a finger is dragging the sheet down to dismiss it, drop the
+   transition so the sheet tracks the touch 1:1 (article-bottom-sheet.js
+   sets the live transform). On release the class is removed and the
+   240ms ease above animates the snap-back or the slide-out. */
+.article-bottom-sheet.abs--dragging {
+  transition: none;
 }
 
 @media (min-width: 1024px) {

@@ -7,7 +7,11 @@
   var SWIPE_CLOSE = 80;        // px downward swipe to close
 
   var fab, sheet, overlay, tabs, panels;
-  var startY = 0;
+  var lastFocused = null;
+
+  var prefersReduced =
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function init() {
     fab     = document.getElementById('article-fab');
@@ -21,26 +25,111 @@
     fab.addEventListener('click', openSheet);
     overlay.addEventListener('click', closeSheet);
 
-    // Tab switching
+    // Tab switching — keep aria-selected in sync so assistive tech reports
+    // the active tab correctly (previously only the visual class changed).
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         var target = tab.dataset.tab;
-        tabs.forEach(function (t) { t.classList.toggle('abs-tab--active', t.dataset.tab === target); });
+        tabs.forEach(function (t) {
+          var on = t.dataset.tab === target;
+          t.classList.toggle('abs-tab--active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
         panels.forEach(function (p) { p.hidden = p.id !== 'abs-panel-' + target; });
       });
     });
 
-    // Swipe-to-close
-    sheet.addEventListener('touchstart', function (e) { startY = e.touches[0].clientY; }, { passive: true });
-    sheet.addEventListener('touchend', function (e) {
-      if (e.changedTouches[0].clientY - startY > SWIPE_CLOSE) closeSheet();
-    }, { passive: true });
+    initDragToClose();
+
+    // Keyboard: Escape closes the sheet; Tab is trapped inside it while open
+    // (the sheet is aria-modal) so focus can't wander to the page behind.
+    sheet.addEventListener('keydown', onSheetKeydown);
 
     // FAB auto-fade via scroll position
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
     initMobileAi();
+  }
+
+  /* ── Finger-following drag-to-close ───────────────────────────
+     The grab handle and the tab bar form the drag zone. Dragging
+     downward there pulls the whole sheet with the finger and dims
+     the overlay in proportion; releasing past a threshold (or with a
+     quick flick) dismisses it, otherwise it springs back. The panels
+     below stay independently scrollable because the drag only starts
+     on the non-scrolling header strip. Under reduced motion we skip
+     the live transform and just honour the release threshold. */
+  function initDragToClose() {
+    var grabZone = sheet.querySelector('.abs-handle');
+    var tabBar   = sheet.querySelector('.abs-tabs');
+    var startY = 0, startT = 0, delta = 0, dragging = false;
+
+    function fromGrabZone(node) {
+      while (node && node !== document.body) {
+        if (node === grabZone || node === tabBar) return true;
+        node = node.parentNode;
+      }
+      return false;
+    }
+
+    sheet.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1 || !fromGrabZone(e.target)) { dragging = false; return; }
+      startY = e.touches[0].clientY;
+      startT = Date.now();
+      delta = 0;
+      dragging = true;
+    }, { passive: true });
+
+    sheet.addEventListener('touchmove', function (e) {
+      if (!dragging) return;
+      delta = e.touches[0].clientY - startY;
+      if (delta <= 0) { delta = 0; return; }
+      if (prefersReduced) return;
+      sheet.classList.add('abs--dragging');
+      sheet.style.transform = 'translateY(' + delta + 'px)';
+      var h = sheet.offsetHeight || 1;
+      overlay.style.opacity = String(Math.max(0, 1 - (delta / h) * 1.1));
+    }, { passive: true });
+
+    sheet.addEventListener('touchend', function () {
+      if (!dragging) return;
+      dragging = false;
+      var dt = Date.now() - startT;
+      var flick = delta > 28 && dt < 240; // quick downward flick
+      sheet.classList.remove('abs--dragging');
+      sheet.style.transform = '';
+      overlay.style.opacity = '';
+      if (delta > SWIPE_CLOSE || flick) closeSheet();
+    }, { passive: true });
+  }
+
+  function onSheetKeydown(e) {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      e.preventDefault();
+      closeSheet();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    // Focus trap: keep Tab cycling within the sheet's focusable controls.
+    // Skip anything inside a hidden panel — those can't take focus, and
+    // landing the trap on one would drop focus out of the dialog.
+    var focusables = Array.prototype.filter.call(
+      sheet.querySelectorAll(
+        'button:not([disabled]), a[href], textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      ),
+      function (el) { return el.offsetParent !== null || el === document.activeElement; }
+    );
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 
   // ─── Mobile AI companion ──────────────────────────────────────────────────
@@ -186,19 +275,35 @@
   }
 
   function openSheet() {
+    lastFocused = document.activeElement;
     fab.classList.add('article-fab--hidden');
     sheet.classList.add('abs--open');
     overlay.classList.add('abs-overlay--visible');
     fab.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    // Move focus into the dialog so keyboard / screen-reader users land
+    // inside it; the active tab is the natural entry point.
+    var activeTab = sheet.querySelector('.abs-tab--active') || tabs[0];
+    if (activeTab) {
+      try { activeTab.focus({ preventScroll: true }); } catch (e) { activeTab.focus(); }
+    }
   }
 
   function closeSheet() {
-    sheet.classList.remove('abs--open');
+    sheet.classList.remove('abs--open', 'abs--dragging');
+    sheet.style.transform = '';
+    overlay.style.opacity = '';
     overlay.classList.remove('abs-overlay--visible');
     fab.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
     setTimeout(onScroll, 260);
+    // Return focus to the control that opened the sheet.
+    if (lastFocused && lastFocused.focus) {
+      try { lastFocused.focus({ preventScroll: true }); } catch (e) { lastFocused.focus(); }
+    } else {
+      fab.focus();
+    }
+    lastFocused = null;
   }
 
   function onScroll() {
