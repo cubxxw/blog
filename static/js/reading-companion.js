@@ -167,16 +167,48 @@
 
   // ─── 4. Minimal Markdown → HTML ───────────────────────────────────────────
   function parseMarkdown(text) {
-    return text
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>')
-      .replace(/`(.+?)`/g, '<code>$1</code>')
-      .replace(/^#{1,3}\s+(.+)$/gm, '<strong>$1</strong>')
-      .replace(/^[-*]\s+(.+)$/gm, '• $1')
-      .replace(/\n{2,}/g, '</p><p>')
-      .replace(/\n/g, '<br>')
-      .replace(/^/, '<p>').replace(/$/, '</p>');
+    // Inline formatting applied per line; block structure (lists) handled by
+    // grouping consecutive bullet/numbered lines into real <ul>/<ol>.
+    function inline(s) {
+      return s
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`(.+?)`/g, '<code>$1</code>');
+    }
+    var lines = text.split('\n');
+    var html = '', i = 0;
+    while (i < lines.length) {
+      var line = lines[i];
+      var ulMatch = /^\s*[-*]\s+(.+)$/.exec(line);
+      var olMatch = /^\s*\d+[.)]\s+(.+)$/.exec(line);
+      if (ulMatch || olMatch) {
+        var ordered = !!olMatch;
+        var tag = ordered ? 'ol' : 'ul';
+        html += '<' + tag + ' class="rc-ai-list">';
+        while (i < lines.length) {
+          var m = ordered ? /^\s*\d+[.)]\s+(.+)$/.exec(lines[i]) : /^\s*[-*]\s+(.+)$/.exec(lines[i]);
+          if (!m) break;
+          html += '<li>' + inline(m[1]) + '</li>';
+          i++;
+        }
+        html += '</' + tag + '>';
+        continue;
+      }
+      var h = /^#{1,3}\s+(.+)$/.exec(line);
+      if (h) { html += '<p><strong>' + inline(h[1]) + '</strong></p>'; i++; continue; }
+      if (line.trim() === '') { i++; continue; }
+      // Gather a paragraph (consecutive non-list, non-blank lines)
+      var para = [];
+      while (i < lines.length && lines[i].trim() !== ''
+             && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+[.)]\s+/.test(lines[i])
+             && !/^#{1,3}\s+/.test(lines[i])) {
+        para.push(inline(lines[i]));
+        i++;
+      }
+      html += '<p>' + para.join('<br>') + '</p>';
+    }
+    return html;
   }
 
   // ─── 5. AI Panel ──────────────────────────────────────────────────────────
