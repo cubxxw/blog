@@ -204,7 +204,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Deep Dive into Kubernetes CNI, CRI, CSI Components](https://nsddd.top/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 - [Kubernetes Control Plane - Detailed Analysis of Kubelet](https://nsddd.top/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Kubernetes Control Plane - Scheduler](https://nsddd.top/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
-- [In-depth understanding of the components of Kubernetes Kube apisserver](https://nsddd.top/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
+- [Kubernetes kube-apiserver: Deep Dive into API Server Components](https://nsddd.top/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [Deep Dive Into the Components of Kubernetes Etcd](https://nsddd.top/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [Kubernetes Port Config via Config Files](https://nsddd.top/ai-technology/posts/openim-cluster-deployment-parameter-passing-policy/)
 - [Open Source Business: From Community to Revenue](https://nsddd.top/ai-technology/posts/openim-open-source-business-journey/)
