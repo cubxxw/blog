@@ -811,9 +811,20 @@ html:not(:lang(zh)) [data-theme="dark"] .post-content a b {
   color: inherit;
 }
 /* Inside the intentionally-quieted blocks — footnotes (§7), figure
-   captions (§16) and struck/retracted text (§19) — emphasis must stay
-   muted, not jump back to the lifted ink and re-loud the very passages
-   those sections calmed. Restore the inherited (muted) colour there. */
+   captions (§16), struck/retracted text (§19) and blockquotes — emphasis
+   must stay muted, not jump back to the lifted ink and re-loud the very
+   passages those sections calmed. Restore the inherited (muted) colour
+   there. The blockquote case matters most in practice: article-typography
+   demotes a dark blockquote's text to `color-mix(--color-ink 82%, …)` so a
+   pull-quote reads as a quiet, set-aside passage, but §23 lifts every
+   <strong> to the brighter #f0f1ef — so a bold run *inside* a quote popped
+   ABOVE the quoted words around it, breaking the calm the quote is meant to
+   hold. (This blog leans on bold-in-blockquote heavily — e.g. the monthly
+   thought-notes open each quote with a bold summary line.) `inherit` pulls
+   the bold back to the quote's own 82% ink, so weight still marks the phrase
+   while the tone stays contained. Light mode already behaves this way (quote
+   text is --color-text-muted and <strong> sets no colour), so this only
+   brings dark into line. */
 html:not(:lang(zh)) body.dark .post-content .footnotes strong,
 html:not(:lang(zh)) body.dark .post-content .footnotes b,
 html:not(:lang(zh)) body.dark .post-content figcaption strong,
@@ -822,6 +833,8 @@ html:not(:lang(zh)) body.dark .post-content del strong,
 html:not(:lang(zh)) body.dark .post-content del b,
 html:not(:lang(zh)) body.dark .post-content s strong,
 html:not(:lang(zh)) body.dark .post-content s b,
+html:not(:lang(zh)) body.dark .post-content blockquote strong,
+html:not(:lang(zh)) body.dark .post-content blockquote b,
 html:not(:lang(zh)) [data-theme="dark"] .post-content .footnotes strong,
 html:not(:lang(zh)) [data-theme="dark"] .post-content .footnotes b,
 html:not(:lang(zh)) [data-theme="dark"] .post-content figcaption strong,
@@ -829,7 +842,9 @@ html:not(:lang(zh)) [data-theme="dark"] .post-content figcaption b,
 html:not(:lang(zh)) [data-theme="dark"] .post-content del strong,
 html:not(:lang(zh)) [data-theme="dark"] .post-content del b,
 html:not(:lang(zh)) [data-theme="dark"] .post-content s strong,
-html:not(:lang(zh)) [data-theme="dark"] .post-content s b {
+html:not(:lang(zh)) [data-theme="dark"] .post-content s b,
+html:not(:lang(zh)) [data-theme="dark"] .post-content blockquote strong,
+html:not(:lang(zh)) [data-theme="dark"] .post-content blockquote b {
   color: inherit;
 }
 
