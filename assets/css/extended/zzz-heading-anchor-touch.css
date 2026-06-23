@@ -1,0 +1,90 @@
+/* ============================================================
+   zzz-heading-anchor-touch.css — reachable heading permalinks on touch
+   ------------------------------------------------------------
+   PaperMod renders each heading's "#" permalink as
+   `<a hidden class="anchor" …>` and only un-hides it with
+   `h*:hover .anchor { display:inline-flex }` (theme post-single.css).
+   custom.css then fades it in on hover. That reveal is HOVER-ONLY,
+   so on touch screens — where `:hover` never fires — the anchor
+   stays `display:none` and the section permalink is completely
+   unreachable. Phone readers had no way to grab a link to a heading.
+
+   Fix + detail motion, scoped to coarse / hoverless pointers so the
+   desktop hover experience is byte-for-byte unchanged:
+     1. Reveal the anchor persistently but quietly (low opacity) so
+        it is discoverable without shouting over the heading.
+     2. Give it a comfortable tap target and a tactile press cue —
+        a quick brighten + settle + accent tint on :active — so a
+        tap reads as "registered", matching the link-tap-feedback
+        and ripple language used across the site (the brief's 点击).
+     3. Language-aware accent (EN sky / ZH red via --color-accent).
+
+   Loads last in the extended bundle (zzz- prefix) so it cleanly
+   overrides the theme + custom.css. Fully neutralised under
+   prefers-reduced-motion at the bottom. Purely additive — content
+   is fully readable without it.
+   ============================================================ */
+
+@media (hover: none), (pointer: coarse) {
+  /* Un-hide the permalink on touch and let it rest quietly beside the
+     heading. Author-origin `display` beats the UA `[hidden]` rule, so
+     no !important is needed. */
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.32;
+    color: var(--secondary);
+    margin-inline-start: 6px;
+    /* Roomier hit area than the bare glyph without disturbing the
+       heading's line box. */
+    min-width: 1.4em;
+    min-height: 1.4em;
+    padding: 0 0.12em;
+    border-radius: 6px;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: baseline;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+      background-color 0.18s ease,
+      color 0.18s ease;
+  }
+
+  /* Tap: brighten to full, give a small spring-settle, and wash the
+     hit area with the language accent so the press is unmistakable. */
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor:active {
+    opacity: 1;
+    color: var(--color-accent, var(--primary));
+    background-color: color-mix(
+      in srgb,
+      var(--color-accent, var(--primary)) 14%,
+      transparent
+    );
+    transform: scale(0.88);
+  }
+
+  /* ZH pages lean on the deep-red accent identity. */
+  html:lang(zh) .post-content :is(h1, h2, h3, h4, h5, h6) .anchor:active {
+    color: var(--color-accent, #862122);
+    background-color: color-mix(
+      in srgb,
+      var(--color-accent, #862122) 14%,
+      transparent
+    );
+  }
+}
+
+/* ============================================================
+   Reduced motion: keep the anchor reachable (the fix), drop the
+   spring + transitions (the flourish).
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor {
+    transition: none !important;
+  }
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor:active {
+    transform: none !important;
+  }
+}
