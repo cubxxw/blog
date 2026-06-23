@@ -861,3 +861,43 @@ html:lang(en) [data-theme="dark"] .post-content blockquote::before {
   color: var(--color-ink, #e2e3e1);
   opacity: 0.12;
 }
+
+/* ── 25. Prev/Next pagination eyebrow label in dark ──────────────
+   The "« PREV" / "NEXT »" eyebrow above each article-footer pagination
+   card (post-footer.css §"Eyebrow label", .paginav .title) paints
+   `color: var(--color-ink-muted) !important` and then stacks an extra
+   `opacity: 0.75` on top — the EXACT double-dim pattern §21 found and
+   fixed on the article meta line. It lands on a small (0.62rem ≈ 10px),
+   uppercase, 0.22em-letter-spaced monospace label sitting on the dark
+   paginav card (background rgba(255,255,255,0.02) over the dark paper,
+   post-footer.css §"Dark theme"). The double-dim drops the muted ink to an
+   effective contrast of ≈5.64:1 (EN) and ≈4.32:1 (ZH) on that card —
+   and the ZH value falls UNDER the WCAG-AA 4.5:1 floor, exactly the small,
+   letter-spaced size where AA matters most: the footer nav label the reader
+   uses to move between articles reads as a barely-there grey smudge in
+   Chinese dark.
+
+   Same remedy as §21, but lighter-touch: the source resting label ALREADY
+   uses the right colour — `var(--color-ink-muted)` — so the ONLY thing that
+   needs fixing is the extra `opacity: 0.75`. This rule (body.dark .paginav
+   .title → specificity 0,3,1, loaded LAST in the extended bundle) beats the
+   source rule (.paginav .title → 0,2,0) for the un-!important `opacity`, so
+   dropping the dim is enough; the label then resolves to the full muted-ink
+   token — the same family already used for the meta line (§21), footnotes
+   (§7), figcaptions (§16), list markers (§18) and struck text (§19) — at
+   ≈9.09:1 (EN) / ≈6.60:1 (ZH), comfortably AA and still clearly recessed
+   below the card's article-title text so the visual hierarchy is unchanged.
+
+   Deliberately NOT touching `color`: the source hover rule
+   (.paginav a:hover .title) carries `color: var(--color-accent) !important`
+   at equal specificity (0,3,1) but is loaded earlier, so a `color !important`
+   here would override the hover accent (later-wins between equal-important
+   declarations) and kill the hover cue. Leaving colour alone lets the resting
+   muted ink and the hover accent each apply in their own state, and only the
+   opacity double-dim — the actual bug — is removed. Token-driven, so EN/ZH
+   dark resolve automatically. Gated on body.dark / [data-theme="dark"] —
+   light mode keeps var(--color-ink-muted) × 0.75, provably unchanged. */
+body.dark .paginav .title,
+[data-theme="dark"] .paginav .title {
+  opacity: 1;
+}
