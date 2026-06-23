@@ -1,0 +1,88 @@
+/* ============================================================
+   zzz-homepage-reveal.css — scroll-entrance for the day-page
+   ------------------------------------------------------------
+   The homepage hero already has rich ambient motion, but every
+   section BELOW it (01 latest posts + category tiles, 02 field
+   notebooks, 03 projects + repos, the section headers themselves)
+   appeared as an instant hard paint the moment it scrolled into
+   view. This gives those blocks the same gentle rise-and-fade
+   entrance the article / section list pages already use, so the
+   homepage "unfolds" as the reader scrolls down — a detail felt on
+   both phones (tall hero → everything enters on scroll) and desktop.
+
+   Wiring: micro-interactions.js adds these same selectors to its
+   IntersectionObserver, tagging each element `.is-revealed` as it
+   enters the viewport and setting a per-row `--reveal-delay` for a
+   staggered cascade within each grid. Anything already on the first
+   screen is revealed on load (no above-the-fold flash), and a 2.5s
+   safety net reveals any straggler.
+
+   Why this is safe:
+   • Gated behind `html.motion-reveal`, which the inline <head>
+     script sets ONLY when the visitor has not requested reduced
+     motion. No-JS / reduced-motion / pre-init visitors therefore
+     never get the hidden state — the homepage is always fully
+     visible, no layout shift.
+   • The entrance is a one-shot @keyframes animation with
+     `backwards` fill (NOT `forwards`): once it finishes the element
+     reverts to its base styles, so the existing card hover-lifts
+     (translateY) and :active press feedback keep working untouched —
+     nothing here pins a lingering transform.
+   • Purely additive polish; loaded last (zzz- prefix). Hard-
+     neutralised under prefers-reduced-motion at the bottom.
+   ============================================================ */
+
+@keyframes hp-reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Hidden until JS marks the element revealed. Only opacity is held
+   here (no transform) so the reserved space never shifts; the rise
+   itself is carried by the animation's `backwards` from-frame. */
+html.motion-reveal .hp-section-head:not(.is-revealed),
+html.motion-reveal .hp-post-card:not(.is-revealed),
+html.motion-reveal .hp-posts-list-row:not(.is-revealed),
+html.motion-reveal .hp-cat-tile:not(.is-revealed),
+html.motion-reveal .hp-book:not(.is-revealed),
+html.motion-reveal .hp-project-featured:not(.is-revealed),
+html.motion-reveal .hp-repo:not(.is-revealed) {
+  opacity: 0;
+}
+
+/* Play the entrance once on reveal. `backwards` holds the opaque-0
+   from-frame through the stagger delay (no early flash) and then,
+   crucially, releases the element back to its own base styles so
+   hover / press transforms are never overridden. */
+html.motion-reveal .hp-section-head.is-revealed,
+html.motion-reveal .hp-post-card.is-revealed,
+html.motion-reveal .hp-posts-list-row.is-revealed,
+html.motion-reveal .hp-cat-tile.is-revealed,
+html.motion-reveal .hp-book.is-revealed,
+html.motion-reveal .hp-project-featured.is-revealed,
+html.motion-reveal .hp-repo.is-revealed {
+  animation: hp-reveal-rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)
+    var(--reveal-delay, 0ms) backwards;
+}
+
+/* Reduced motion: never hide, never animate. (The .motion-reveal gate
+   already prevents the hidden state, but neutralise explicitly so the
+   feature is provably a no-op for these visitors.) */
+@media (prefers-reduced-motion: reduce) {
+  html.motion-reveal .hp-section-head,
+  html.motion-reveal .hp-post-card,
+  html.motion-reveal .hp-posts-list-row,
+  html.motion-reveal .hp-cat-tile,
+  html.motion-reveal .hp-book,
+  html.motion-reveal .hp-project-featured,
+  html.motion-reveal .hp-repo {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}

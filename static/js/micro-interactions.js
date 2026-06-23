@@ -27,7 +27,19 @@
     '.growth-card',
     '.ai-tech-list-item',
     '.growth-list-item',
-    '.reveal-item'
+    '.reveal-item',
+    // Homepage day-page: the sections below the hero (latest posts,
+    // category tiles, field notebooks, projects, repos) used to pop in
+    // instantly. Reveal each section header and card as it scrolls into
+    // view so the page unfolds on the way down — felt on mobile + desktop.
+    // Hidden initial state + neutralisation live in zzz-homepage-reveal.css.
+    '.hp-section-head',
+    '.hp-post-card',
+    '.hp-posts-list-row',
+    '.hp-cat-tile',
+    '.hp-book',
+    '.hp-project-featured',
+    '.hp-repo'
   ].join(',');
 
   /* ---------------------------------------------------------
