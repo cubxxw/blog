@@ -773,6 +773,19 @@ html:lang(en) .editorial-tools-panel .rc-ai-followup:hover {
   transform: scale(0.97);
 }
 
+/* Tapped follow-up: solid accent fill, so the choice reads clearly in the
+   moment between click and the next turn replacing the row. */
+.editorial-tools-panel .rc-ai-followup--active,
+.editorial-tools-panel .rc-ai-followup--active:hover {
+  background: var(--color-accent, #862122);
+  border-color: var(--color-accent, #862122);
+  color: var(--color-paper, #f9f9f7);
+}
+/* Siblings recede so the eye lands on the chosen one. */
+.editorial-tools-panel .rc-ai-followup--dim {
+  opacity: 0.4;
+}
+
 body.dark .editorial-tools-panel .rc-ai-followup {
   border-color: rgba(226, 227, 225, 0.14);
   color: var(--color-ink, #e2e3e1);

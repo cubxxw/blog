@@ -19,7 +19,11 @@
         '能再具体展开一下吗？',
         '有没有相反的观点或例外？',
         '在现实里怎么应用这个？',
-        '能举一个具体例子吗？'
+        '能举一个具体例子吗？',
+        '这个观点的前提成立吗？',
+        '和主流看法有什么不同？',
+        '如果反过来想会怎样？',
+        '最关键的一点是什么？'
       ]
     },
     en: {
@@ -38,7 +42,11 @@
         'Can you expand on that?',
         'Any counter-arguments or exceptions?',
         'How do I apply this in practice?',
-        'Can you give a concrete example?'
+        'Can you give a concrete example?',
+        'Do its assumptions actually hold?',
+        'How does this differ from the mainstream view?',
+        'What if we flip the premise?',
+        "What's the single most important takeaway?"
       ]
     }
   };
@@ -404,8 +412,13 @@
           list.push(tmpl(topic));
         }
       }
+      // Rotate the generic deep-dive prompts by turn as well — without this the
+      // same two questions reappear every round, which feels canned after the
+      // first reply. The offset strides by 2 so each turn shows fresh angles.
+      var offset = (turnIndex * 2) % (generic.length || 1);
       for (var g = 0; g < generic.length && list.length < 4; g++) {
-        if (list.indexOf(generic[g]) === -1) list.push(generic[g]);
+        var item = generic[(offset + g) % generic.length];
+        if (list.indexOf(item) === -1) list.push(item);
       }
       return list;
     }
@@ -437,6 +450,13 @@
         btn.textContent = text;
         btn.addEventListener('click', function () {
           if (busy) return;
+          // Mark the tapped chip and dim its siblings so the click registers
+          // visually before the row is replaced by the next turn's follow-ups.
+          btn.classList.add('rc-ai-followup--active');
+          wrap.querySelectorAll('.rc-ai-followup').forEach(function (b) {
+            if (b !== btn) b.classList.add('rc-ai-followup--dim');
+            b.disabled = true;
+          });
           textarea.value = text;
           send();
         });
