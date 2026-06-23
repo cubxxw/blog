@@ -901,3 +901,46 @@ body.dark .paginav .title,
 [data-theme="dark"] .paginav .title {
   opacity: 1;
 }
+
+/* ── 26. Keyboard focus ring (dark) ──────────────────────────────
+   NO global :focus-visible rule exists anywhere in the codebase — the
+   only focus-visible styling is the per-element footnote-marker tweak in
+   §20. So every other interactive element (in-prose links, header / TOC /
+   pagination nav, the copy-code button, <summary> toggles, the search and
+   AI-composer inputs) relied entirely on the BROWSER-DEFAULT focus ring for
+   keyboard navigation — and several controls explicitly null it out with
+   `outline: none` (custom.css .blog-ai-input ~1205, .rc-ai-textarea ~2714,
+   editorial-tools.css ~480, homepage inputs…), leaving those with NO visible
+   keyboard-focus indicator at all (a WCAG 2.4.7 failure). On the near-black
+   dark paper the UA default ring is also faint and easy to lose, so a reader
+   tabbing through an article in dark mode could not tell where focus was.
+
+   Give dark mode a single, consistent, token-driven focus ring: the language
+   accent (sky-blue EN / red ZH, resolved via --color-accent) at a 2px outline
+   with a 3px offset so it traces the element without crowding the glyphs. It
+   is keyed on :focus-visible, so it appears ONLY for keyboard / programmatic
+   focus and never on a mouse click — normal mouse reading is visually
+   unchanged. The accent clears the WCAG 3:1 non-text-contrast floor for focus
+   indicators comfortably (EN 11.1:1 / ZH 6.30:1 on the paper). Each selector
+   is body.dark / [data-theme="dark"]-scoped (specificity ≥ the un-gated
+   `outline:none` source rules, and loaded LAST in the extended bundle) so it
+   wins in dark and is never selected in light — light mode keeps the browser
+   default ring, provably unchanged. */
+body.dark a:focus-visible,
+body.dark button:focus-visible,
+body.dark summary:focus-visible,
+body.dark [tabindex]:focus-visible,
+body.dark input:focus-visible,
+body.dark textarea:focus-visible,
+body.dark select:focus-visible,
+[data-theme="dark"] a:focus-visible,
+[data-theme="dark"] button:focus-visible,
+[data-theme="dark"] summary:focus-visible,
+[data-theme="dark"] [tabindex]:focus-visible,
+[data-theme="dark"] input:focus-visible,
+[data-theme="dark"] textarea:focus-visible,
+[data-theme="dark"] select:focus-visible {
+  outline: 2px solid var(--color-accent, #7dd3fc);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
