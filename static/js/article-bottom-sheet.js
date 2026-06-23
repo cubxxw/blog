@@ -153,6 +153,27 @@
     var endpoint = '/.netlify/functions/article-ai';
     var history = [], busy = false;
 
+    // Share-conversation button — mirrors desktop. Injected into the input
+    // area, revealed after the first reply, reuses the shared ShareConversation
+    // module so mobile readers can share AI chats too.
+    var shareBtn = document.createElement('button');
+    shareBtn.type = 'button';
+    shareBtn.className = 'abs-ai-share-btn';
+    var shareLbl = language === 'zh' ? '分享对话' : 'Share conversation';
+    shareBtn.setAttribute('aria-label', shareLbl);
+    shareBtn.setAttribute('title', shareLbl);
+    shareBtn.hidden = true;
+    shareBtn.style.cssText = 'flex-shrink:0;width:34px;height:34px;border-radius:8px;' +
+      'border:1px solid rgba(30,35,30,0.14);background:transparent;color:inherit;' +
+      'cursor:pointer;display:inline-flex;align-items:center;justify-content:center;opacity:0.72;';
+    shareBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
+    var inputArea = panel.querySelector('.abs-ai-input-area');
+    if (inputArea) inputArea.appendChild(shareBtn);
+    shareBtn.addEventListener('click', function () {
+      if (typeof ShareConversation === 'undefined' || !history.length) return;
+      ShareConversation.show(history, { lang: language, title: document.title, url: window.location.href });
+    });
+
     if (!messagesEl.children.length) {
       var greet = document.createElement('div');
       greet.className = 'abs-ai-msg abs-ai-msg--ai abs-ai-greeting';
@@ -324,6 +345,7 @@
         history.push({ role: 'assistant', content: answer || replyEl.textContent });
         if (history.length > 20) history = history.slice(-20);
         renderFollowups();
+        shareBtn.hidden = false;
       }).catch(function (err) {
         clearTimeout(timer);
         var msg = (err && err.name === 'AbortError') ? T.timeout : T.error;
