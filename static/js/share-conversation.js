@@ -294,7 +294,7 @@
 
     var y = 150;
     if (userMsg) {
-      var qRaw = cleanText(userMsg.content);
+      var qRaw = mdToPlainText(userMsg.content);
       var qText = qRaw.length > 140 ? qRaw.slice(0, 137) + '…' : qRaw;
       badge('Q', PAD, y);
       ctx.font = '600 23px ' + FONT; ctx.fillStyle = ink;
@@ -306,18 +306,57 @@
     y += 28;
 
     if (aiMsg) {
-      var aRaw = cleanText(aiMsg.content);
-      var aText = aRaw.length > 360 ? aRaw.slice(0, 357) + '…' : aRaw;
       badge('A', PAD, y);
-      ctx.font = '18px ' + FONT; ctx.fillStyle = theme.answer;
-      var aLines = wrapText(ctx, aText, W - IND - PAD);
-      var maxLines = Math.min(aLines.length, 8);
-      aLines.slice(0, maxLines).forEach(function (line, idx) { ctx.fillText(line, IND, y + idx * 31); });
-      if (aLines.length > maxLines) { ctx.fillStyle = muted; ctx.fillText('…', IND, y + maxLines * 31); }
+      // Rich-render the answer's Markdown: bold spans, list markers and
+      // paragraph spacing, capped to a line budget so the card height holds.
+      drawRichAnswer(ctx, aiMsg.content, {
+        x: IND, y: y, maxWidth: W - IND - PAD,
+        baseFont: '18px ' + FONT, boldFont: '600 18px ' + FONT,
+        lineH: 31, paraGap: 12, color: theme.answer, muted: muted, maxLines: 9,
+      });
     }
 
     paintFooter(ctx, theme, { W: W, H: H, PAD: PAD, title: title, url: url, isZh: isZh, qrSize: 150 });
     return canvas;
+  }
+
+  // Draw a Markdown answer as rich text: bold runs, ordered/bullet markers with
+  // hanging indent, and a blank line between paragraphs. Honours a maxLines
+  // budget, appending an ellipsis when the answer overflows the card.
+  function drawRichAnswer(ctx, md, o) {
+    var blocks = parseMarkdownBlocks(md);
+    var markerW = ctx.measureText('•  ').width;
+    var lineCount = 0;
+    var y = o.y;
+    for (var bi = 0; bi < blocks.length; bi++) {
+      var block = blocks[bi];
+      var isLi = block.type === 'li';
+      var textX = isLi ? o.x + 26 : o.x;
+      var lines = wrapRuns(ctx, block.runs, o.maxWidth - (isLi ? 26 : 0), o.baseFont, o.boldFont);
+      for (var li = 0; li < lines.length; li++) {
+        if (lineCount >= o.maxLines) {
+          ctx.font = o.baseFont; ctx.fillStyle = o.muted;
+          ctx.fillText('…', isLi ? textX : o.x, y);
+          return;
+        }
+        // List marker on the first wrapped line of an li block.
+        if (isLi && li === 0) {
+          ctx.font = o.boldFont; ctx.fillStyle = o.color;
+          ctx.fillText(block.marker, o.x, y);
+        }
+        var cx = textX;
+        lines[li].forEach(function (seg) {
+          ctx.font = seg.bold ? o.boldFont : o.baseFont;
+          ctx.fillStyle = o.color;
+          ctx.fillText(seg.text, cx, y);
+          cx += ctx.measureText(seg.text).width;
+        });
+        y += o.lineH;
+        lineCount++;
+      }
+      // Paragraph spacing between blocks (not after the last).
+      if (bi < blocks.length - 1) y += o.paraGap;
+    }
   }
 
   // ── Full-thread card ────────────────────────────────────────────────────────
@@ -335,7 +374,7 @@
 
     var rounds = [], pendingQ = null;
     messages.forEach(function (m) {
-      var txt = cleanText(m.content || '');
+      var txt = mdToPlainText(m.content || '');
       if (m.role === 'user') pendingQ = txt;
       else if (m.role === 'assistant') { rounds.push({ q: pendingQ || '', a: txt }); pendingQ = null; }
     });
@@ -449,8 +488,108 @@
     }
   }
 
+  // ── Markdown → rich blocks (for the answer body) ────────────────────────────
+  // The conversation history stores raw Markdown (the web panel renders it with
+  // its own parser). On the share card we mirror a small subset so bold, lists
+  // and paragraph breaks survive instead of leaking ** and 1. as literal text.
+  //
+  // A "block" is { type:'p'|'li', marker?:string, runs:[{text,bold}] }. Runs let
+  // a single line mix normal and bold spans; the painter switches fonts per run.
+  function stripInlineMd(s) {
+    // Drop emphasis/code/link syntax we don't style, keep the visible text.
+    return s
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1');
+  }
+  function parseRuns(line) {
+    // Split a line into bold / non-bold runs on **...** (and __...__).
+    var runs = [], re = /(\*\*|__)(.+?)\1/g, last = 0, m;
+    while ((m = re.exec(line)) !== null) {
+      if (m.index > last) runs.push({ text: stripInlineMd(line.slice(last, m.index)), bold: false });
+      runs.push({ text: stripInlineMd(m[2]), bold: true });
+      last = re.lastIndex;
+    }
+    if (last < line.length) runs.push({ text: stripInlineMd(line.slice(last)), bold: false });
+    // Drop *single-star* emphasis markers inside the remaining plain runs.
+    runs.forEach(function (r) { if (!r.bold) r.text = r.text.replace(/\*(.+?)\*/g, '$1'); });
+    return runs.filter(function (r) { return r.text.length; });
+  }
+  function parseMarkdownBlocks(md) {
+    var text = (md || '').replace(/<[^>]+>/g, '');
+    var lines = text.split(/\r?\n/);
+    var blocks = [], i = 0;
+    while (i < lines.length) {
+      var raw = lines[i];
+      var line = raw.replace(/\s+$/, '');
+      if (line.trim() === '') { i++; continue; }
+      var ul = /^\s*[-*]\s+(.+)$/.exec(line);
+      var ol = /^\s*(\d+)[.)]\s+(.+)$/.exec(line);
+      var hd = /^#{1,6}\s+(.+)$/.exec(line);
+      if (ol) {
+        blocks.push({ type: 'li', marker: ol[1] + '.', runs: parseRuns(ol[2]) });
+      } else if (ul) {
+        blocks.push({ type: 'li', marker: '•', runs: parseRuns(ul[1]) });
+      } else if (hd) {
+        // Render headings as a bold paragraph — no heading scale on the card.
+        blocks.push({ type: 'p', runs: parseRuns(hd[1]).map(function (r) { return { text: r.text, bold: true }; }) });
+      } else {
+        // Merge consecutive plain lines into one paragraph's runs (space-joined).
+        var runs = parseRuns(line);
+        i++;
+        while (i < lines.length && lines[i].trim() !== ''
+               && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+[.)]\s+/.test(lines[i])
+               && !/^#{1,6}\s+/.test(lines[i])) {
+          runs.push({ text: ' ', bold: false });
+          runs = runs.concat(parseRuns(lines[i].replace(/\s+$/, '')));
+          i++;
+        }
+        blocks.push({ type: 'p', runs: runs });
+        continue;
+      }
+      i++;
+    }
+    return blocks;
+  }
+
+  // Wrap a block's runs into lines that fit maxWidth, tracking bold per segment.
+  // Returns [[{text,bold}, …], …] — one inner array per visual line.
+  function wrapRuns(ctx, runs, maxWidth, baseFont, boldFont) {
+    var lines = [], cur = [], curW = 0;
+    function pushLine() { if (cur.length) { lines.push(cur); cur = []; curW = 0; } }
+    runs.forEach(function (run) {
+      ctx.font = run.bold ? boldFont : baseFont;
+      // Tokenise: keep CJK per-char, latin per-word, so wrapping stays natural.
+      var hasCJK = /[一-鿿぀-ヿ]/.test(run.text);
+      var tokens = hasCJK ? run.text.split('') : run.text.match(/\s+|\S+/g) || [];
+      tokens.forEach(function (tok) {
+        var w = ctx.measureText(tok).width;
+        if (curW + w > maxWidth && curW > 0 && tok.trim() !== '') { pushLine(); ctx.font = run.bold ? boldFont : baseFont; }
+        cur.push({ text: tok, bold: run.bold });
+        curW += w;
+      });
+    });
+    pushLine();
+    return lines;
+  }
+
+  // Flatten Markdown to readable plain text for compact contexts (thread card,
+  // copy-as-text): strip ** / * / ` / links, keep ordered "1." and turn bullets
+  // into "• ", and collapse runs of whitespace — never leaving raw emphasis
+  // markers visible.
+  function mdToPlainText(md) {
+    return (md || '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+      .replace(/(\*\*|__)(.+?)\1/g, '$2')
+      .replace(/\*(.+?)\*/g, '$1')
+      .replace(/^\s*#{1,6}\s+/gm, '')
+      .replace(/^\s*[-*]\s+/gm, '• ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
   // ── Text helpers ────────────────────────────────────────────────────────────
-  function cleanText(s) { return (s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); }
   function isZhLang(options) {
     return options.lang === 'zh' ||
       (document.documentElement.getAttribute('lang') || '').toLowerCase().indexOf('zh') === 0;
@@ -481,7 +620,7 @@
     var url   = options.url   || window.location.href;
     var out = [];
     if (title) { out.push(title); out.push(''); }
-    messages.forEach(function (msg) { out.push((msg.role === 'user' ? 'Q: ' : 'A: ') + cleanText(msg.content)); out.push(''); });
+    messages.forEach(function (msg) { out.push((msg.role === 'user' ? 'Q: ' : 'A: ') + mdToPlainText(msg.content)); out.push(''); });
     out.push(url);
     return out.join('\n');
   }
