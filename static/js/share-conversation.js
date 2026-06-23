@@ -247,8 +247,51 @@
     var url      = qrTarget(options);
     var siteName = (window.location.hostname || 'AI').replace(/^www\./, '');
 
-    var W = 1080, H = 720;
+    var W = 1080;
     var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var accent = theme.accent, ink = theme.ink, muted = theme.muted, subtle = theme.subtle;
+    var PAD = 72, IND = PAD + 34;
+    var isZh = isZhLang(options);
+    var QR_SIZE = 150;
+
+    var userMsg = null, aiMsg = null;
+    for (var i = messages.length - 1; i >= 0; i--) {
+      if (!aiMsg   && messages[i].role === 'assistant') aiMsg   = messages[i];
+      if (!userMsg && messages[i].role === 'user')      userMsg = messages[i];
+      if (userMsg && aiMsg) break;
+    }
+    var rounds = messages.filter(function (m) { return m.role === 'assistant'; }).length;
+
+    // ── Pass 1: measure on an off-screen ctx so the card height fits content ──
+    var measure = document.createElement('canvas').getContext('2d');
+    var qFont = '600 23px ' + FONT;
+    var qStartY = 150;
+    var qLines = [];
+    if (userMsg) {
+      var qRaw = mdToPlainText(userMsg.content);
+      var qText = qRaw.length > 140 ? qRaw.slice(0, 137) + '…' : qRaw;
+      measure.font = qFont;
+      qLines = wrapText(measure, qText, W - IND - PAD).slice(0, 3);
+    }
+    var qEndY = qStartY + qLines.length * 36 + (qLines.length ? 22 : 0);
+    var aStartY = qEndY + 28; // past the Q/A divider
+
+    var answerOpts = {
+      x: IND, y: aStartY, maxWidth: W - IND - PAD,
+      baseFont: '18px ' + FONT, boldFont: '600 18px ' + FONT,
+      lineH: 31, paraGap: 14, color: theme.answer, muted: muted, maxLines: 18,
+    };
+    var layout = aiMsg ? layoutRichAnswer(measure, aiMsg.content, answerOpts) : { ops: [], endY: aStartY, clipped: false };
+
+    // Footer needs breathing room above it, then the taller of the QR plate or
+    // the url/title text rows, then a bottom margin. Card height grows to fit
+    // the answer so nothing overlaps the footer (the old fixed 720 clipped long
+    // answers straight into the QR + url).
+    var FOOT_GAP = 56, FOOT_TEXT_H = 64, FOOT_BOTTOM = 40;
+    var footerH = FOOT_GAP + Math.max(QR_SIZE, FOOT_TEXT_H) + FOOT_BOTTOM;
+    var H = Math.max(560, Math.ceil(layout.endY + footerH));
+
+    // ── Pass 2: paint ──
     var canvas = document.createElement('canvas');
     canvas.width = W * DPR; canvas.height = H * DPR;
     var ctx = canvas.getContext('2d');
@@ -256,10 +299,6 @@
     ctx.textBaseline = 'alphabetic';
 
     paintBackground(ctx, theme, W, H);
-
-    var accent = theme.accent, ink = theme.ink, muted = theme.muted, subtle = theme.subtle;
-    var PAD = 72, IND = PAD + 34;
-    var isZh = isZhLang(options);
 
     function badge(letter, cx, cy) {
       var r = 13;
@@ -276,7 +315,6 @@
     ctx.font = '15px ' + FONT; ctx.fillStyle = muted;
     ctx.fillText(siteName, PAD, 86);
 
-    var rounds = messages.filter(function (m) { return m.role === 'assistant'; }).length;
     if (rounds > 1) {
       ctx.textAlign = 'right'; ctx.font = '500 14px ' + FONT; ctx.fillStyle = muted;
       ctx.fillText(isZh ? (rounds + ' 轮对话 · 最新一组') : (rounds + ' exchanges · latest shown'), W - PAD, 72);
@@ -285,78 +323,64 @@
 
     ctx.fillStyle = subtle; ctx.fillRect(PAD, 106, W - PAD * 2, 1);
 
-    var userMsg = null, aiMsg = null;
-    for (var i = messages.length - 1; i >= 0; i--) {
-      if (!aiMsg   && messages[i].role === 'assistant') aiMsg   = messages[i];
-      if (!userMsg && messages[i].role === 'user')      userMsg = messages[i];
-      if (userMsg && aiMsg) break;
-    }
-
-    var y = 150;
-    if (userMsg) {
-      var qRaw = mdToPlainText(userMsg.content);
-      var qText = qRaw.length > 140 ? qRaw.slice(0, 137) + '…' : qRaw;
+    var y = qStartY;
+    if (qLines.length) {
       badge('Q', PAD, y);
-      ctx.font = '600 23px ' + FONT; ctx.fillStyle = ink;
-      wrapText(ctx, qText, W - IND - PAD).slice(0, 3).forEach(function (line) { ctx.fillText(line, IND, y); y += 36; });
-      y += 22;
+      ctx.font = qFont; ctx.fillStyle = ink;
+      qLines.forEach(function (line) { ctx.fillText(line, IND, y); y += 36; });
     }
 
-    ctx.fillStyle = subtle; ctx.fillRect(PAD, y - 6, W - PAD * 2, 1);
-    y += 28;
+    ctx.fillStyle = subtle; ctx.fillRect(PAD, qEndY - 6, W - PAD * 2, 1);
 
     if (aiMsg) {
-      badge('A', PAD, y);
-      // Rich-render the answer's Markdown: bold spans, list markers and
-      // paragraph spacing, capped to a line budget so the card height holds.
-      drawRichAnswer(ctx, aiMsg.content, {
-        x: IND, y: y, maxWidth: W - IND - PAD,
-        baseFont: '18px ' + FONT, boldFont: '600 18px ' + FONT,
-        lineH: 31, paraGap: 12, color: theme.answer, muted: muted, maxLines: 9,
-      });
+      badge('A', PAD, aStartY);
+      paintRichAnswer(ctx, layout);
     }
 
-    paintFooter(ctx, theme, { W: W, H: H, PAD: PAD, title: title, url: url, isZh: isZh, qrSize: 150 });
+    paintFooter(ctx, theme, { W: W, H: H, PAD: PAD, title: title, url: url, isZh: isZh, qrSize: QR_SIZE });
     return canvas;
   }
 
-  // Draw a Markdown answer as rich text: bold runs, ordered/bullet markers with
-  // hanging indent, and a blank line between paragraphs. Honours a maxLines
-  // budget, appending an ellipsis when the answer overflows the card.
-  function drawRichAnswer(ctx, md, o) {
+  // Lay out a Markdown answer into positioned segments: bold runs, ordered/
+  // bullet markers with hanging indent, blank-line spacing between paragraphs.
+  // Returns { ops, endY, clipped } — a list of draw ops plus the final baseline
+  // so the caller can size the card to the content before painting. Honours a
+  // maxLines budget, marking `clipped` (and emitting an ellipsis op) on overflow.
+  function layoutRichAnswer(ctx, md, o) {
     var blocks = parseMarkdownBlocks(md);
-    var markerW = ctx.measureText('•  ').width;
-    var lineCount = 0;
-    var y = o.y;
-    for (var bi = 0; bi < blocks.length; bi++) {
+    var ops = [], lineCount = 0, y = o.y, clipped = false;
+    for (var bi = 0; bi < blocks.length && !clipped; bi++) {
       var block = blocks[bi];
       var isLi = block.type === 'li';
       var textX = isLi ? o.x + 26 : o.x;
       var lines = wrapRuns(ctx, block.runs, o.maxWidth - (isLi ? 26 : 0), o.baseFont, o.boldFont);
       for (var li = 0; li < lines.length; li++) {
         if (lineCount >= o.maxLines) {
-          ctx.font = o.baseFont; ctx.fillStyle = o.muted;
-          ctx.fillText('…', isLi ? textX : o.x, y);
-          return;
+          ops.push({ x: isLi ? textX : o.x, y: y, text: '…', font: o.baseFont, color: o.muted });
+          clipped = true;
+          break;
         }
-        // List marker on the first wrapped line of an li block.
-        if (isLi && li === 0) {
-          ctx.font = o.boldFont; ctx.fillStyle = o.color;
-          ctx.fillText(block.marker, o.x, y);
-        }
+        if (isLi && li === 0) ops.push({ x: o.x, y: y, text: block.marker, font: o.boldFont, color: o.color });
         var cx = textX;
         lines[li].forEach(function (seg) {
-          ctx.font = seg.bold ? o.boldFont : o.baseFont;
-          ctx.fillStyle = o.color;
-          ctx.fillText(seg.text, cx, y);
+          var font = seg.bold ? o.boldFont : o.baseFont;
+          ops.push({ x: cx, y: y, text: seg.text, font: font, color: o.color });
+          ctx.font = font;
           cx += ctx.measureText(seg.text).width;
         });
         y += o.lineH;
         lineCount++;
       }
-      // Paragraph spacing between blocks (not after the last).
-      if (bi < blocks.length - 1) y += o.paraGap;
+      if (!clipped && bi < blocks.length - 1) y += o.paraGap;
     }
+    return { ops: ops, endY: y, clipped: clipped };
+  }
+
+  function paintRichAnswer(ctx, layout) {
+    layout.ops.forEach(function (op) {
+      ctx.font = op.font; ctx.fillStyle = op.color;
+      ctx.fillText(op.text, op.x, op.y);
+    });
   }
 
   // ── Full-thread card ────────────────────────────────────────────────────────
