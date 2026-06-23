@@ -227,11 +227,74 @@
       return d;
     }
 
+    // Section-grounded follow-up chips, mirroring the desktop companion:
+    // 1–2 questions built from the article's TOC headings (rotated by turn)
+    // plus generic deep-dive prompts.
+    var topics = (function () {
+      var seen = {}, out = [];
+      document.querySelectorAll('.abs-toc-nav a, .toc-side__nav a').forEach(function (a) {
+        var h = (a.textContent || '').replace(/\s+/g, ' ').trim();
+        if (h.length < 2 || h.length > 24 || /^[\d.\s]+$/.test(h) || seen[h]) return;
+        seen[h] = 1; out.push(h);
+      });
+      return out;
+    })();
+    var GENERIC = language === 'zh'
+      ? ['能再具体展开一下吗？', '有没有相反的观点或例外？', '能举一个具体例子吗？']
+      : ['Can you expand on that?', 'Any counter-arguments or exceptions?', 'Can you give a concrete example?'];
+    var followLabel = language === 'zh' ? '继续追问' : 'Keep asking';
+
+    function buildFollowups(turn) {
+      var list = [];
+      if (topics.length) {
+        var n = Math.min(2, topics.length);
+        for (var k = 0; k < n; k++) {
+          var t = topics[(turn + k) % topics.length];
+          list.push(language === 'zh' ? '「' + t + '」这部分能展开讲讲吗？' : 'Can you expand on the "' + t + '" part?');
+        }
+      }
+      for (var g = 0; g < GENERIC.length && list.length < 4; g++) {
+        if (list.indexOf(GENERIC[g]) === -1) list.push(GENERIC[g]);
+      }
+      return list;
+    }
+
+    function renderFollowups() {
+      var stale = messagesEl.querySelector('.abs-ai-followups');
+      if (stale) stale.remove();
+      var turn = history.filter(function (m) { return m.role === 'assistant'; }).length;
+      var items = buildFollowups(turn);
+      if (!items.length) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'abs-ai-followups';
+      wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:4px;padding-top:8px;border-top:1px dashed rgba(30,35,30,0.12);';
+      var label = document.createElement('span');
+      label.textContent = followLabel;
+      label.style.cssText = 'width:100%;font-size:11px;font-weight:600;opacity:0.5;text-transform:uppercase;letter-spacing:0.08em;';
+      wrap.appendChild(label);
+      items.forEach(function (text) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.style.cssText = 'padding:5px 11px;border:1px solid rgba(30,35,30,0.14);border-radius:14px;background:transparent;font:inherit;font-size:12.5px;cursor:pointer;color:inherit;text-align:left;';
+        b.textContent = text;
+        b.addEventListener('click', function () {
+          if (busy) return;
+          textarea.value = text;
+          send();
+        });
+        wrap.appendChild(b);
+      });
+      messagesEl.appendChild(wrap);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
     function send() {
       var q = textarea.value.trim();
       if (!q || busy) return;
       busy = true;
       sendBtn.disabled = true;
+      var oldFollow = messagesEl.querySelector('.abs-ai-followups');
+      if (oldFollow) oldFollow.remove();
       addMsg(q, 'user');
       textarea.value = '';
       var replyEl = addMsg('…', 'ai');
@@ -260,6 +323,7 @@
         history.push({ role: 'user', content: q });
         history.push({ role: 'assistant', content: answer || replyEl.textContent });
         if (history.length > 20) history = history.slice(-20);
+        renderFollowups();
       }).catch(function (err) {
         clearTimeout(timer);
         var msg = (err && err.name === 'AbortError') ? T.timeout : T.error;
