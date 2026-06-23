@@ -487,6 +487,10 @@
       // Clear any follow-up chips from the prior reply before the new turn.
       var prevFollowups = messagesEl.querySelector('.rc-ai-followups');
       if (prevFollowups) prevFollowups.remove();
+      // Drop a stale error bubble (with its retry button) so a retry or a fresh
+      // question doesn't leave a dead "⚠ …" message stranded in the thread.
+      var prevError = messagesEl.querySelector('.rc-ai-msg--error');
+      if (prevError) prevError.remove();
 
       addMessage(q, 'user');
       textarea.value = '';
@@ -607,6 +611,9 @@
       } catch (err) {
         request.cancel();
         var errMsg = addMessage('', 'ai');
+        // Tag the error bubble so the next send()/retry can clear it — otherwise
+        // a successful retry leaves a dead "⚠ …" message stranded in the thread.
+        errMsg.classList.add('rc-ai-msg--error');
         var message = err && err.name === 'AbortError' ? t('timeout') : ((err && err.message) || t('genericError'));
         errMsg.innerHTML = '<span style="color:#ef4444">⚠ ' +
           message.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
@@ -614,10 +621,17 @@
         retryBtn.className = 'ai-retry-btn';
         retryBtn.textContent = t('retry');
         retryBtn.addEventListener('click', function() {
-          if (lastQuestion) {
-            textarea.value = lastQuestion;
-            send();
+          if (!lastQuestion || busy) return;
+          // Remove the failed turn (its user bubble + this error bubble) before
+          // resending, so a successful retry reads as one clean exchange rather
+          // than a duplicated question stacked under a dead error.
+          var failedUserMsg = errMsg.previousElementSibling;
+          if (failedUserMsg && failedUserMsg.classList.contains('rc-ai-msg--user')) {
+            failedUserMsg.remove();
           }
+          errMsg.remove();
+          textarea.value = lastQuestion;
+          send();
         });
         errMsg.appendChild(retryBtn);
       } finally {
