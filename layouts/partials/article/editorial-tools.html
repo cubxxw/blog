@@ -88,7 +88,7 @@
         <span class="rc-ai-loading-text">{{ if eq $page.Lang "zh" }}AI 思考中…{{ else }}AI is thinking…{{ end }}</span>
       </div>
       <div class="rc-ai-input-area">
-        <textarea class="rc-ai-textarea" rows="2"
+        <textarea class="rc-ai-textarea" rows="2" maxlength="500"
           placeholder="{{ if eq $page.Lang "zh" }}{{ i18n "tools.ai_placeholder" | default "向 AI 提问…" | safeHTML }}{{ else }}{{ i18n "tools.ai_placeholder" | default "Ask about this article..." | safeHTML }}{{ end }}"
           aria-label="{{ i18n "tools.ai" | default "AI Companion" | safeHTML }}"></textarea>
         <button class="rc-ai-send" aria-label="{{ i18n "ai_send_label" | default "Send" | safeHTML }}">
@@ -97,6 +97,7 @@
             <polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>
         </button>
+        <span class="rc-ai-charcount" aria-hidden="true" hidden></span>
       </div>
     </div>
   </div>

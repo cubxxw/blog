@@ -222,6 +222,10 @@
     var sendBtn    = panel.querySelector('.rc-ai-send');
     var chips      = panel.querySelectorAll('.rc-ai-chip');
     var quickRow   = panel.querySelector('.rc-ai-quick');
+    var charCount  = panel.querySelector('.rc-ai-charcount');
+    // Keep the JS guard in lock-step with the textarea's maxlength attribute so
+    // an over-long paste can't slip past into the request body / token bill.
+    var MAX_INPUT  = parseInt(textarea.getAttribute('maxlength'), 10) || 500;
 
     var endpoint = '/.netlify/functions/article-ai';
     var history  = [];
@@ -277,11 +281,26 @@
       sendBtn.classList.toggle('rc-ai-send--empty', !hasText || busy);
     }
 
+    // Show a remaining-character hint only as the input nears the cap — a quiet
+    // affordance that stays out of the way until it's actually relevant.
+    function syncCharCount() {
+      if (!charCount) return;
+      var remaining = MAX_INPUT - textarea.value.length;
+      if (remaining <= 80) {
+        charCount.hidden = false;
+        charCount.textContent = (language === 'zh' ? '剩余 ' : '') + remaining + (language === 'zh' ? ' 字' : ' left');
+        charCount.classList.toggle('rc-ai-charcount--warn', remaining <= 20);
+      } else {
+        charCount.hidden = true;
+      }
+    }
+
     // Auto-resize textarea + keep the send button state in sync
     textarea.addEventListener('input', function () {
       this.style.height = 'auto';
       this.style.height = Math.min(this.scrollHeight, 96) + 'px';
       syncSendState();
+      syncCharCount();
     });
     syncSendState();
 
@@ -314,6 +333,7 @@
         textarea.value = '';
         textarea.style.height = 'auto';
         syncSendState();
+        syncCharCount();
       }
     });
     sendBtn.addEventListener('click', send);
@@ -438,6 +458,9 @@
     async function send() {
       var q = textarea.value.trim();
       if (!q || busy) return;
+      // Defensive cap mirroring the textarea maxlength — guards programmatic
+      // fills (quick chips, paste edge cases) from over-long request bodies.
+      if (q.length > MAX_INPUT) q = q.slice(0, MAX_INPUT);
       lastQuestion = q;
 
       clearGreeting();
@@ -448,6 +471,7 @@
       addMessage(q, 'user');
       textarea.value = '';
       textarea.style.height = 'auto';
+      if (charCount) charCount.hidden = true;
       setLoading(true);
       var request = createAbortSignal(25000);
 

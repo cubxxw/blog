@@ -438,6 +438,7 @@ body.dark .editorial-tools-panel .rc-ai-msg--ai {
 
 /* Composer — generous, with breathing room above */
 .editorial-tools-panel .rc-ai-input-area {
+  position: relative;
   display: flex;
   gap: 6px;
   align-items: flex-end;
@@ -521,6 +522,32 @@ body.dark .editorial-tools-panel .rc-ai-textarea {
 }
 .editorial-tools-panel .rc-ai-send--empty:hover { opacity: 0.4; }
 .editorial-tools-panel .rc-ai-send--empty:active { transform: none; }
+
+/* Remaining-character hint — surfaces only near the cap, pinned to the
+   composer's top-right so it never reflows the textarea or send button. */
+.editorial-tools-panel .rc-ai-charcount {
+  position: absolute;
+  top: -7px;
+  right: 10px;
+  padding: 0 5px;
+  font-size: 0.62rem;
+  line-height: 1.4;
+  color: var(--color-ink-muted, #5e5e63);
+  background: var(--color-paper, #f9f9f7);
+  border-radius: 4px;
+  pointer-events: none;
+}
+body.dark .editorial-tools-panel .rc-ai-charcount {
+  color: rgba(226, 227, 225, 0.5);
+  background: #23261f;
+}
+.editorial-tools-panel .rc-ai-charcount--warn {
+  color: var(--color-accent, #862122);
+  font-weight: 600;
+}
+body.dark .editorial-tools-panel .rc-ai-charcount--warn {
+  color: #e8a0a0;
+}
 
 html:lang(en) .editorial-tools-panel .rc-ai-send {
   background: var(--color-accent, #2e352e);
