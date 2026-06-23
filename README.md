@@ -309,7 +309,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes 的 CNI，CRI，CSI 详解](https://nsddd.top/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 - [Kubernetes 控制平面 - Kubectl 详细讲解](https://nsddd.top/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Kubernetes 控制平面 - 调度器](https://nsddd.top/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
-- [深入了解Kubernetes Kube apisserver的组件](https://nsddd.top/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
+- [深入了解 Kubernetes kube-apiserver 组件架构](https://nsddd.top/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [深入了解Kubernetes等组件之ETCD](https://nsddd.top/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [通过配置文件简化 Kubernetes 部署的参数端口配置](https://nsddd.top/zh/ai-technology/posts/openim-cluster-deployment-parameter-passing-policy/)
 - [OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 会议总结](https://nsddd.top/zh/ai-technology/posts/openim-cluster-deployment-scheme-of/)
