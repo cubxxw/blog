@@ -216,7 +216,10 @@
     // Share button — injected into input area, shown after first AI reply
     var shareBtn = document.createElement('button');
     shareBtn.className = 'rc-ai-share-btn';
-    shareBtn.setAttribute('aria-label', language === 'zh' ? '分享对话' : 'Share conversation');
+    var shareLabel = language === 'zh' ? '分享对话' : 'Share conversation';
+    shareBtn.setAttribute('aria-label', shareLabel);
+    // title gives the icon-only button a hover tooltip so its purpose is discoverable
+    shareBtn.setAttribute('title', shareLabel);
     shareBtn.setAttribute('hidden', '');
     shareBtn.innerHTML =
       '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
