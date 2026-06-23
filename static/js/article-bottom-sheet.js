@@ -162,6 +162,41 @@
       messagesEl.appendChild(greet);
     }
 
+    // Quick-start chips, mirroring the desktop companion so mobile readers
+    // get the same one-tap entry points. Injected (no HTML template change).
+    var QUICK = language === 'zh'
+      ? [['📝', '一句话总结', '用 3-5 句话精炼地概括这篇文章的核心观点。'],
+         ['✨', '精彩金句', '从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。'],
+         ['💡', '关键概念', '这篇文章里有哪些容易被忽略但重要的概念？请列出并解释。'],
+         ['🤔', '反方视角', '帮我挑出这篇文章里最值得质疑或反驳的观点，并给出反方视角。']]
+      : [['📝', 'Summary', 'Summarize the key points of this article in 3–5 sentences.'],
+         ['✨', 'Highlights', 'List the 3 most memorable sentences from this article, and briefly explain why they stand out.'],
+         ['💡', 'Key concepts', 'What are the overlooked but important concepts in this article? List and explain.'],
+         ['🤔', 'Counter-argument', 'Which claims in this article are most worth challenging? Give me a counter-argument.']];
+    var quickWrap = document.createElement('div');
+    quickWrap.className = 'abs-ai-quick';
+    quickWrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px;';
+    QUICK.forEach(function (item) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'abs-ai-chip';
+      chip.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:7px 11px;' +
+        'border:1px solid rgba(30,35,30,0.12);border-radius:15px;background:transparent;' +
+        'font:inherit;font-size:13px;cursor:pointer;color:inherit;';
+      chip.innerHTML = '<span aria-hidden="true">' + item[0] + '</span>' + item[1];
+      chip.addEventListener('click', function () {
+        if (busy) return;
+        chip.disabled = true;
+        chip.style.opacity = '0.4';
+        textarea.value = item[2];
+        send();
+        var allUsed = Array.prototype.every.call(quickWrap.children, function (c) { return c.disabled; });
+        if (allUsed) quickWrap.style.display = 'none';
+      });
+      quickWrap.appendChild(chip);
+    });
+    messagesEl.parentNode.insertBefore(quickWrap, messagesEl.nextSibling);
+
     function articleText() {
       var el = document.querySelector('.post-content');
       if (!el) return '';
