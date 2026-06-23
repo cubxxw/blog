@@ -30,24 +30,17 @@
 <link rel="dns-prefetch" href="//www.google-analytics.com" />
 <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
-{{- /* Aesthetic Agent Identity — Google Fonts */ -}}
-{{- /* EN + base fonts: Fraunces (variable), Inter, Noto Serif, JetBrains Mono */ -}}
-<link rel="preload" as="style"
-  href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700;1,9..144,800&family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700;1,9..144,800&family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />
-{{- /* ZH font: Noto Serif SC — only on Chinese pages */ -}}
+{{- /* Google Fonts — async (non-render-blocking) */ -}}
+{{- $baseFonts := "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" -}}
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $baseFonts }}">
+<noscript><link rel="stylesheet" href="{{ $baseFonts }}"></noscript>
 {{- if eq .Lang "zh" }}
-<link rel="preload" as="style"
-  href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" />
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" />
+{{- $zhFonts := "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" -}}
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
+<noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>
 {{- end }}
 
-{{- /* SEO Structured Data (JSON-LD) */ -}}
-{{- if hugo.IsProduction | or (eq site.Params.env "production") -}}
-{{- partial "seo/structured-data.html" . -}}
-{{- end -}}
+{{- /* SEO Structured Data handled by seo.html → seo/structured-data.html */ -}}
 
 {{- /* Language Auto-Detection Script */ -}}
 <script src="{{ "/js/lang-redirect.js" | relURL }}" defer></script>
@@ -85,13 +78,9 @@
 {{- end }}
 {{- end }}
 
-{{- /* Preconnect hints for external resources */ -}}
+{{- /* Preconnect hints for CDN (googletagmanager already covered above) */ -}}
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
-{{- end }}
 
 {{- /* Search Command Palette dependencies */ -}}
 <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>

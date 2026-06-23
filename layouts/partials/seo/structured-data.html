@@ -70,10 +70,13 @@
   "name": {{ $siteName }},
   "url": {{ site.BaseURL }},
   "description": {{ site.Params.description }},
-  "inLanguage": "zh-CN",
+  "inLanguage": "{{ if eq .Language.Lang "zh" }}zh-CN{{ else }}en-US{{ end }}",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "{{ site.BaseURL }}search?q={search_term_string}",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ site.BaseURL }}search/?s={search_term_string}"
+    },
     "query-input": "required name=search_term_string"
   }
 }

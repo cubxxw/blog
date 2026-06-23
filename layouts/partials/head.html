@@ -21,7 +21,8 @@
     {{- $pagerSuffix = printf " - Page %d" .Paginator.PageNumber -}}
   {{- end -}}
 {{- end -}}
-{{- $pageTitle := cond .IsHome site.Title (printf "%s%s" (cond (gt (len $baseTitle) 20) $baseTitle (printf "%s | %s" $baseTitle $shortTitle)) $pagerSuffix) -}}
+{{- $titleCore := cond (gt (len $baseTitle) 50) (printf "%s…" (substr $baseTitle 0 50)) $baseTitle -}}
+{{- $pageTitle := cond .IsHome site.Title (printf "%s%s | %s" $titleCore $pagerSuffix $shortTitle) -}}
 <title>{{ $pageTitle }}</title>
 {{- partial "seo.html" . -}}
 {{- if site.Params.analytics.google.SiteVerificationTag }}
@@ -116,9 +117,14 @@
 {{ range .AlternativeOutputFormats -}}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
+{{- if .IsTranslated -}}
 {{- range .AllTranslations -}}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
 {{ end -}}
+{{- with (first 1 .Site.Home.Translations) -}}
+<link rel="alternate" hreflang="x-default" href="{{ (index . 0).Permalink }}">
+{{- end -}}
+{{- end -}}
 
 <noscript>
     <style>
@@ -200,7 +206,5 @@
 })();
 </script>
 {{- end }}
-{{- template "partials/templates/opengraph.html" . }}
-{{- template "partials/templates/twitter_cards.html" . }}
-{{- template "partials/templates/schema_json.html" . }}
+{{- /* OG/Twitter/Schema covered by seo.html and seo/structured-data.html */ -}}
 {{- end -}}

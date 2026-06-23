@@ -101,6 +101,8 @@ params:
     - name: xhs
       title: 小红书
       url: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3
+  social:
+    twitter: cubxxw
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "weibo", "xiaohongshu"] # To customize which share buttons to be enabled on page
   analytics:
     google:
@@ -251,23 +253,23 @@ languages:
           weight: 5
         - identifier: about
           name: 关于
-          url: /about/
-          pageRef: /about
+          url: /zh/about/
+          pageRef: /zh/about
           weight: 10
         - identifier: projects
           name: 项目
-          url: /projects/
-          pageRef: /projects
+          url: /zh/projects/
+          pageRef: /zh/projects
           weight: 15
         - identifier: ai
           name: AI
-          url: /ai-technology/
-          pageRef: /ai-technology
+          url: /zh/ai-technology/
+          pageRef: /zh/ai-technology
           weight: 16
         - identifier: growth
           name: 成长
-          url: /growth/
-          pageRef: /growth
+          url: /zh/growth/
+          pageRef: /zh/growth
           weight: 17
         - identifier: posts
           name: 文章
@@ -276,8 +278,8 @@ languages:
           weight: 18
         - identifier: travel
           name: 旅行
-          url: /travel/
-          pageRef: /travel
+          url: /zh/travel/
+          pageRef: /zh/travel
           weight: 20
     params:
       profileMode:
