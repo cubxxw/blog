@@ -1,0 +1,112 @@
+/* ============================================================
+   zzz-details-disclosure.css — animated <details> disclosure
+   ------------------------------------------------------------
+   In DARK mode (zz-dark-reading.css) an inline <details>/<summary>
+   gets a quiet accent chevron that rotates open and a hairline rule
+   under the summary once expanded. In LIGHT mode that treatment was
+   missing — the toggle fell back to the browser's default static
+   triangle with no open/close motion, so the click gave no sense of
+   the panel "opening". This layer:
+
+     1. Gives LIGHT mode the same custom chevron that rotates 90°
+        when the panel opens (mirrors the dark rule, scoped to
+        body:not(.dark) so the two never both paint a marker).
+     2. Adds a clear press/hover affordance on the summary row for
+        both touch and fine pointers — the toggle reads as tappable.
+     3. Eases the revealed body in (gentle fade + slide-down) on
+        open, in BOTH modes, so expanding a disclosure feels like a
+        deliberate reveal rather than an instant jump.
+
+   Everything is purely additive feedback — the panel is fully
+   usable (open/close, content readable) with none of it. The
+   reveal is gated behind html.motion-reveal (added in <head> only
+   when the visitor has NOT requested reduced motion) and the whole
+   file is hard-neutralised under prefers-reduced-motion below.
+   Loads last in the extended bundle (zzz- prefix) so its light-mode
+   rules win cleanly over the base styles.
+   ============================================================ */
+
+/* ---------- 1. Light-mode chevron marker (mirrors dark) ----------
+   Suppress the native triangle and draw our own accent chevron that
+   rotates from ▸ to ▾ as the panel opens. Scoped to body:not(.dark)
+   so it composes with — never fights — the dark rule. */
+body:not(.dark) .post-content details > summary {
+  list-style: none;            /* Firefox / spec marker */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 160ms ease;
+}
+body:not(.dark) .post-content details > summary::-webkit-details-marker {
+  display: none;               /* WebKit / Blink marker */
+}
+body:not(.dark) .post-content details > summary::before {
+  content: "\25B8";            /* ▸ */
+  display: inline-block;
+  margin-right: 0.55em;
+  color: var(--color-accent, var(--primary));
+  transition: transform 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+body:not(.dark) .post-content details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+/* Summary feedback: warm to the accent on hover, and a quiet rule
+   appears under it once the panel is open (matches dark mode). */
+body:not(.dark) .post-content details > summary:hover,
+body:not(.dark) .post-content details[open] > summary {
+  color: var(--color-accent, var(--primary));
+}
+body:not(.dark) .post-content details[open] > summary {
+  border-bottom: 1px solid var(--color-rule, rgba(0, 0, 0, 0.08));
+  margin-bottom: 0.6rem;
+}
+
+/* ---------- 2. Tactile press cue (both modes, touch + mouse) ------
+   On press the chevron gives a small nudge so the tap is felt before
+   the panel toggles. Layout-safe (only the ::before transforms). */
+html.motion-reveal .post-content details > summary:active::before {
+  transform: translateX(1px) scale(0.9);
+}
+html.motion-reveal .post-content details[open] > summary:active::before {
+  transform: rotate(90deg) scale(0.9);
+}
+
+/* ---------- 3. Reveal the body on open (both modes) ---------------
+   <details> can't transition its own height, so animate the revealed
+   children: a brief fade + slide-down when the panel opens. Targets
+   the direct children that are NOT the summary, so nested content is
+   carried along by its parent. One-shot, settles to the resting
+   state. Gated behind .motion-reveal. */
+@keyframes details-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+html.motion-reveal .post-content details[open] > summary ~ * {
+  animation: details-reveal 260ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* ---------- Reduced-motion: strip every transition + animation ----
+   Honour the preference — the marker still rotates instantly so the
+   open/closed state stays legible, but nothing eases or slides. */
+@media (prefers-reduced-motion: reduce) {
+  body:not(.dark) .post-content details > summary,
+  body:not(.dark) .post-content details > summary::before {
+    transition: none;
+  }
+  html.motion-reveal .post-content details > summary:active::before,
+  html.motion-reveal .post-content details[open] > summary:active::before {
+    transform: none;
+  }
+  body:not(.dark) .post-content details[open] > summary::before {
+    transform: rotate(90deg); /* keep the state cue, no motion */
+  }
+  html.motion-reveal .post-content details[open] > summary ~ * {
+    animation: none;
+  }
+}
