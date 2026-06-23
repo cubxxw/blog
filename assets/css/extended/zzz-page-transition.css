@@ -1,0 +1,73 @@
+/* ============================================================
+   zzz-page-transition.css — smooth cross-page navigation
+   ------------------------------------------------------------
+   Clicking through to another page (a post, a section list, the
+   archive, the home day-page) used to be an instant hard cut.
+   This adds a quick, quiet dissolve between pages using the
+   native cross-document View Transitions API: the browser
+   snapshots the page you leave and the page you arrive on and
+   cross-fades between them, so navigation reads as one continuous
+   surface on both phones and desktops. It complements the
+   existing in-page motion (scroll reveal, swipe-nav, press
+   feedback) by smoothing the one moment that was still abrupt —
+   the tap that takes you somewhere new.
+
+   Why this is safe to ship site-wide:
+   • Pure CSS, zero JavaScript. The browser owns the transition and
+     NEVER intercepts the navigation itself — ordinary clicks,
+     middle-clicks, ⌘/Ctrl-clicks, downloads and cross-origin links
+     all behave exactly as before.
+   • Browsers that lack cross-document View Transitions simply
+     ignore the at-rule and keep the original instant navigation —
+     a clean no-op, never a broken or half-painted page.
+   • Same-origin only (the spec restricts it), so it can never fire
+     while the visitor is leaving the site.
+   • The whole feature sits inside a `prefers-reduced-motion:
+     no-preference` query, so visitors who ask for reduced motion
+     keep the original instant cut.
+
+   Loads last in the extended bundle (zzz- prefix). Purely
+   additive polish — nothing here is required to read or navigate.
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Opt both the outgoing and incoming documents into a
+     cross-document view transition. Hugo serves one concatenated
+     stylesheet across every page, so both ends of any same-site
+     navigation carry this rule and the transition activates. */
+  @view-transition {
+    navigation: auto;
+  }
+
+  /* Tune the default root cross-fade. The browser default easing is
+     linear and can read as a flat flicker; a soft decelerate curve
+     and a slightly trimmed duration make the dissolve feel
+     intentional without ever slowing the navigation down. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  /* Give the incoming page a faint upward settle (6px) layered onto
+     its fade-in, so arriving somewhere new carries a subtle sense of
+     forward motion. The outgoing page only fades — keeping the old
+     content still avoids two competing movements. Both transforms
+     animate a flat snapshot image the browser captures, so they can
+     never disturb real layout, the sticky header, or scroll
+     position. */
+  @keyframes vt-page-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  ::view-transition-new(root) {
+    animation-name: vt-page-in;
+  }
+}
