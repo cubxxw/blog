@@ -959,3 +959,61 @@ body.dark select:focus-visible,
   outline-offset: 3px;
   border-radius: 3px;
 }
+
+/* ── 27. Newsletter form status messages (dark) ──────────────────
+   The RSS / newsletter sign-up form (layouts/partials/rss-subscribe.html)
+   shows a one-line status after submit, coloured by state in custom.css:
+   success #15803d, warning #b45309, error #b91c1c. Those three rules are
+   NOT theme-gated and the form carries NO dark styling at all, so in dark
+   mode the message lands on the near-black page surface (#121413 EN /
+   #1c1917 ZH) at: success 3.69:1 / 3.49:1, warning 3.68:1 / 3.48:1,
+   error 2.86:1 / 2.70:1 — every state UNDER the WCAG-AA 4.5:1 text floor,
+   the error badly so. The feedback the reader most needs to read after
+   acting (did my sign-up work?) rendered as a dim, hard-to-parse smudge.
+   Repaint each state in the lighter -400 tint of the same hue family the
+   rest of the dark palette already uses, so the messages read clearly on
+   the dark surface while keeping the green/amber/red semantic coding:
+   success #4ade80 → 10.62:1 / 10.04:1, warning #fbbf24 → 11.08:1 / 10.48:1,
+   error #f87171 → 6.69:1 / 6.32:1 — all comfortably AA. Each selector is
+   body.dark-scoped (specificity 0,3,0 vs the source 0,2,0, and loaded last
+   in the extended bundle) so it wins in dark and is never selected in light
+   — light mode keeps its darker tints, provably unchanged. */
+body.dark .newsletter-form__status[data-state="success"],
+[data-theme="dark"] .newsletter-form__status[data-state="success"] { color: #4ade80; }
+body.dark .newsletter-form__status[data-state="warning"],
+[data-theme="dark"] .newsletter-form__status[data-state="warning"]  { color: #fbbf24; }
+body.dark .newsletter-form__status[data-state="error"],
+[data-theme="dark"] .newsletter-form__status[data-state="error"]    { color: #f87171; }
+
+/* ── 28. AI-projects sidebar widget heading (dark) ───────────────
+   The "AI Projects" sidebar widget (layouts/partials/sidebar-ai-projects.html)
+   titles itself with `.widget-ai-projects h3 { color: #6b46c1 }` (custom.css),
+   un-gated, on a faint violet/blue gradient that over the dark paper is still
+   essentially the dark surface. In dark mode that deep violet resolves to just
+   2.88:1 (EN) / 2.72:1 (ZH) — well under the AA 4.5:1 floor, so the widget's
+   own heading read as a dark-violet-on-dark smudge. Reuse #a78bfa — the exact
+   dark violet this codebase already standardised for the same hue (the AI-tech
+   badges/titles, see §22 and custom.css .dark .ai-tech-badge) — so the widget
+   heading joins that established violet family: it resolves to 6.80:1 (EN) /
+   6.43:1 (ZH), clearing AA. body.dark-scoped (specificity 0,2,1 vs source
+   0,1,1, loaded last) so it wins in dark and is never selected in light —
+   light mode keeps #6b46c1, provably unchanged. */
+body.dark .widget-ai-projects h3,
+[data-theme="dark"] .widget-ai-projects h3 {
+  color: #a78bfa;
+}
+
+/* ── 29. Profile-panel AI icon tint (dark) ───────────────────────
+   The home profile panel's AI icon (layouts/partials/index_profile.html)
+   paints `.profile_panel__icon--ai { color: #6366f1 }` (indigo-500), un-gated.
+   As a non-text glyph it only needs the 3:1 contrast floor, which it clears on
+   the dark paper (4.14:1 EN / 3.92:1 ZH) — so this is NOT a failure — but at
+   that level the indigo reads dim and slightly muddy against the near-black
+   surface. Lift it one step to indigo-400 #818cf8 (6.20:1 EN / 5.86:1 ZH) so
+   the icon stays crisp and on-palette with the §28 / §22 violet family. Purely
+   a dark-only clarity nudge; body.dark-scoped (0,2,0 vs source 0,1,0, loaded
+   last) so light mode keeps #6366f1, provably unchanged. */
+body.dark .profile_panel__icon--ai,
+[data-theme="dark"] .profile_panel__icon--ai {
+  color: #818cf8;
+}
