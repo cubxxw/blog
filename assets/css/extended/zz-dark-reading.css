@@ -1046,3 +1046,37 @@ body.dark .post-content :not(pre) > code,
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--color-rule, rgba(226, 227, 225, 0.14));
 }
+
+/* ── 31. Related-posts card cover glare (dark) ───────────────────
+   Every image on an article is already tamed in dark: in-prose images
+   (§3, `.post-content img`) and the hero cover (§13,
+   `.post-single .entry-cover img`) each get a faint inset edge ring +
+   a slight brightness trim so a white-background diagram doesn't read
+   as a glaring block on the dark page. The "Related Posts" cards at the
+   foot of an article carry their OWN cover strip — `.rpc__cover img`,
+   which lives outside both `.post-content` and `.entry-cover`, so
+   neither rule reached it. A related post whose cover is a white-canvas
+   diagram (e.g. the "Vector Databases" thumbnail) therefore renders as
+   a hard, full-brightness white rectangle flush against the calm dark
+   `#1a1c1b` card — the single loudest surface in the footer, and the
+   one image class the dark pass had missed. Bring it into the same
+   already-proven family: a faint inset ring on the cover frame so the
+   bright strip has a crisp boundary against the card instead of bleeding
+   into it, and the identical brightness/contrast trim used in §3/§13 so
+   the glare is contained. True colour returns on hover — and the card's
+   existing `transform: scale(1.04)` hover (custom.css) is on a different
+   property, so both apply. Dark mode only; light keeps the cover
+   untouched, where a white canvas already blends with the light card. */
+body.dark .rpc__cover,
+[data-theme="dark"] .rpc__cover {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+body.dark .rpc__cover img,
+[data-theme="dark"] .rpc__cover img {
+  filter: brightness(0.94) contrast(1.02);
+  transition: transform 0.3s ease, filter 200ms ease;
+}
+body.dark .rpc:hover .rpc__cover img,
+[data-theme="dark"] .rpc:hover .rpc__cover img {
+  filter: brightness(1) contrast(1);
+}
