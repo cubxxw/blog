@@ -177,6 +177,36 @@
       "aliases": ["mcp", "Model Context Protocol", "模型上下文协议"],
       "description": "Model Context Protocol 模型上下文协议",
       "category": "技术"
+    },
+    "solo-builder": {
+      "canonical": "Solo Builder",
+      "aliases": ["solo builder", "独立开发者 (Solo Builder)", "Solo Founder", "单人创始人"],
+      "description": "Solo Builder / 单人创始人 / 独立产品开发者",
+      "category": "文化"
+    },
+    "indie-hacker": {
+      "canonical": "Indie Hacker",
+      "aliases": ["indie hacker", "indie", "独立开发"],
+      "description": "Indie Hacker 独立开发者文化",
+      "category": "文化"
+    },
+    "super-individual": {
+      "canonical": "Super Individual",
+      "aliases": ["super individual", "超级个体", "超级个体 (Super Individual)"],
+      "description": "AI 时代的超级个体",
+      "category": "文化"
+    },
+    "harness-engineering": {
+      "canonical": "Harness Engineering",
+      "aliases": ["harness engineering", "harness", "Harness"],
+      "description": "Agent harness 工程：包在 LLM 外面的运行时基础设施",
+      "category": "技术"
+    },
+    "product-strategy": {
+      "canonical": "Product Strategy",
+      "aliases": ["product strategy", "产品策略", "产品方向"],
+      "description": "产品策略与方向选择",
+      "category": "技术"
     }
   },
 
