@@ -28,6 +28,11 @@
     '.ai-tech-list-item',
     '.growth-list-item',
     '.reveal-item',
+    // Related-post cards at the foot of an article — fade/rise into the
+    // same cascade as everything else so the read unfolds all the way to
+    // the "continue reading" grid. Hidden state lives in
+    // micro-interactions.css; they stagger by their shared grid parent.
+    '.rpc',
     // Homepage day-page: the sections below the hero (latest posts,
     // category tiles, field notebooks, projects, repos) used to pop in
     // instantly. Reveal each section header and card as it scrolls into

@@ -6,6 +6,9 @@
 {{- $rssTitle       := cond $isZH "RSS 订阅" "Subscribe via RSS" -}}
 {{- $rssDescription := cond $isZH "第一时间获取最新文章通知，支持所有 RSS 阅读器。" "Get the latest posts delivered right to your RSS reader." -}}
 {{- $rssButtonText  := cond $isZH "打开 RSS Feed" "Open RSS Feed" -}}
+{{- $rssChannelsLabel := cond $isZH "或按频道订阅" "Or subscribe by channel" -}}
+{{- $rssAllLabel      := cond $isZH "全部文章" "All Posts" -}}
+{{- $rssOpmlHint      := cond $isZH "OPML 一键导入全部频道" "OPML — import all channels at once" -}}
 {{- $emailTitle     := cond $isZH "邮件订阅" "Email Newsletter" -}}
 {{- $emailDescription := cond $isZH "新文章和月度思考将通过邮件发送给你。默认双重确认，可随时退订。" "Get new posts and monthly notes by email. Double opt-in by default, unsubscribe anytime." -}}
 {{- $emailPlaceholder := "you@example.com" -}}
@@ -88,6 +91,41 @@
         </svg>
         {{ $rssButtonText }}
       </a>
+
+      {{/* ── Channel list: subscribe by section + JSON Feed + OPML ── */}}
+      {{- $homeJSON := (site.GetPage "/").OutputFormats.Get "JSONFeed" -}}
+      {{- $homeOPML := (site.GetPage "/").OutputFormats.Get "OPML" -}}
+      {{- $colors := slice "#3b82f6" "#10b981" "#a855f7" "#ec4899" "#06b6d4" "#eab308" -}}
+      <div class="rss-channels" role="list">
+        <p class="rss-channels__label">{{ $rssChannelsLabel }}</p>
+
+        <div class="rss-channels__row rss-channels__row--all" role="listitem">
+          <span class="rss-channels__dot" style="--ch-color: #f97316" aria-hidden="true"></span>
+          <span class="rss-channels__name">{{ $rssAllLabel }}</span>
+          <span class="rss-channels__formats">
+            <a href="{{ "/index.xml" | relLangURL }}" class="rss-channels__chip rss-channels__chip--rss" target="_blank" rel="noopener noreferrer" aria-label="RSS — {{ $rssAllLabel }}">RSS</a>
+            {{- with $homeJSON }}<a href="{{ .RelPermalink }}" class="rss-channels__chip rss-channels__chip--json" target="_blank" rel="noopener noreferrer" aria-label="JSON Feed — {{ $rssAllLabel }}">JSON</a>{{- end }}
+            {{- with $homeOPML }}<a href="{{ .RelPermalink }}" class="rss-channels__chip rss-channels__chip--opml" download title="{{ $rssOpmlHint }}" aria-label="{{ $rssOpmlHint }}">OPML</a>{{- end }}
+          </span>
+        </div>
+
+        {{- range $i, $section := site.Sections -}}
+          {{- $rss := $section.OutputFormats.Get "RSS" -}}
+          {{- $json := $section.OutputFormats.Get "JSONFeed" -}}
+          {{- $title := $section.Title | default $section.Section -}}
+          {{- $color := index $colors (mod $i (len $colors)) -}}
+          {{- if $rss }}
+        <div class="rss-channels__row" role="listitem">
+          <span class="rss-channels__dot" style="--ch-color: {{ $color }}" aria-hidden="true"></span>
+          <a href="{{ $section.RelPermalink }}" class="rss-channels__name rss-channels__name--link" title="{{ $title }}">{{ $title }}</a>
+          <span class="rss-channels__formats">
+            <a href="{{ $rss.RelPermalink }}" class="rss-channels__chip rss-channels__chip--rss" target="_blank" rel="noopener noreferrer" aria-label="RSS — {{ $title }}">RSS</a>
+            {{- with $json }}<a href="{{ .RelPermalink }}" class="rss-channels__chip rss-channels__chip--json" target="_blank" rel="noopener noreferrer" aria-label="JSON Feed — {{ $title }}">JSON</a>{{- end }}
+          </span>
+        </div>
+          {{- end -}}
+        {{- end }}
+      </div>
     </div>
   </div>
 

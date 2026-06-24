@@ -1,0 +1,179 @@
+/* ============================================================
+   zzz-footnote-preview.css — inline footnote preview card
+   ------------------------------------------------------------
+   Floats a small card with a footnote's text when the reader
+   hovers / focuses (desktop) or taps (mobile) a reference marker,
+   so a citation can be checked without jumping to the endnotes and
+   losing one's place. Behaviour + positioning live in
+   static/js/footnote-preview.js; this is purely presentation.
+
+   Theme-aware via the shared design tokens (paper, ink, rule,
+   accent, shadow), so it reads correctly in every light/dark
+   palette. The entrance motion is gated behind
+   prefers-reduced-motion: no-preference — the card still appears
+   for motion-averse visitors, just without the rise/scale, because
+   it carries information rather than decoration.
+
+   Loads last in the extended bundle (zzz- prefix).
+   ============================================================ */
+
+.fn-popover {
+  position: absolute;
+  z-index: 1200;
+  /* Comfortable reading column for a note, clamped on small screens. */
+  width: max-content;
+  max-width: min(360px, calc(100vw - 24px));
+  box-sizing: border-box;
+  padding: 0.7rem 0.85rem 0.6rem;
+  background: var(--color-bg, #f9f9f7);
+  color: var(--color-text, #1a1c1b);
+  border: 1px solid var(--color-border, rgba(30, 35, 30, 0.12));
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: var(--shadow-lg, 0 12px 32px rgba(15, 23, 42, 0.08));
+  font-family: var(--font-prose, var(--font-serif, Georgia, serif));
+  font-size: 0.86rem;
+  line-height: 1.5;
+
+  /* Hidden resting state. Opacity + visibility so it's removed from the
+     a11y tree and never intercepts pointer events while closed. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.16s ease, transform 0.18s cubic-bezier(0.22, 0.61, 0.36, 1),
+    visibility 0s linear 0.18s;
+}
+
+.fn-popover.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.18s ease, transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+    visibility 0s;
+}
+
+/* The note's text. Tame block margins so a one-line note isn't padded
+   like a full article paragraph, and keep long links from overflowing. */
+.fn-popover__body > :first-child { margin-top: 0; }
+.fn-popover__body > :last-child { margin-bottom: 0; }
+.fn-popover__body p { margin: 0 0 0.4rem; }
+.fn-popover__body a {
+  color: var(--color-accent, #2e352e);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
+}
+.fn-popover__body code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.92em;
+}
+
+/* "Go to note ↓" — quiet affordance, mostly for touch where the tap no
+   longer jumps on its own. Hidden on hover-capable pointers to keep the
+   desktop card clean (kept in the DOM for keyboard users via :focus). */
+.fn-popover__more {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-family: var(--font-meta, var(--font-sans, system-ui, sans-serif));
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted, #5e5e63);
+  text-decoration: none;
+  opacity: 0.9;
+}
+.fn-popover__more:hover,
+.fn-popover__more:focus { color: var(--color-accent, #2e352e); }
+
+@media (hover: hover) and (pointer: fine) {
+  .fn-popover__more { display: none; }
+  .fn-popover__more:focus { display: inline-block; }
+}
+
+/* Little arrow pointing at the marker. --fn-arrow-x is set in JS. */
+.fn-popover::after {
+  content: "";
+  position: absolute;
+  left: var(--fn-arrow-x, 50%);
+  width: 10px;
+  height: 10px;
+  background: var(--color-bg, #f9f9f7);
+  border: 1px solid var(--color-border, rgba(30, 35, 30, 0.12));
+  transform: translateX(-50%) rotate(45deg);
+}
+/* Card above the marker → arrow on its bottom edge (top borders hidden). */
+.fn-popover:not(.is-below)::after {
+  bottom: -6px;
+  border-top: none;
+  border-left: none;
+}
+/* Card below the marker → arrow on its top edge. */
+.fn-popover.is-below::after {
+  top: -6px;
+  border-bottom: none;
+  border-right: none;
+}
+
+/* Give the reference marker a clear "interactive" feel: a subtle pill on
+   hover/focus so readers discover the preview affordance. */
+.post-content a.footnote-ref {
+  border-radius: 4px;
+  padding: 0 0.12em;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.post-content a.footnote-ref:hover,
+.post-content a.footnote-ref:focus-visible {
+  background: var(--color-accent-soft, #dde5da);
+}
+
+/* On touch screens there's no hover to reveal that a marker is
+   previewable, so give it a quiet resting affordance: a faint dotted
+   underline — the long-standing "there's more here" convention. Uses
+   text-decoration only (never transform/border), so it adds no reflow
+   to the superscript. The marker still falls back to a plain in-page
+   anchor with JS off. */
+@media (hover: none) and (pointer: coarse) {
+  .post-content a.footnote-ref {
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-accent, currentColor) 45%,
+      transparent
+    );
+  }
+}
+
+/* ── Dark mode: lift the card off the page ───────────────────────
+   The resting fill is var(--color-bg), which in dark mode IS the page
+   paper (#121413 EN / #1c1917 ZH). The dark --shadow-lg is a near-black
+   ambient shadow, so on a near-black page it does almost nothing and the
+   1px / 10%-opacity border is barely visible — the floating note reads
+   flat against the page. Mirror the idiom used by .article-tldr: lift the
+   surface with a faint white overlay (Material-style elevation), firm up
+   the border, add a quiet top bevel + a deeper ambient shadow so the card
+   clearly hovers. The arrow is lifted to the same surface so its tip
+   doesn't read as a darker notch. Gated on .dark — light mode keeps the
+   token-driven paper fill and soft shadow untouched. */
+.dark .fn-popover {
+  --fn-surface: color-mix(in srgb, #ffffff 5%, var(--color-bg, #121413));
+  background: var(--fn-surface);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 18px 44px -22px rgba(0, 0, 0, 0.72);
+}
+.dark .fn-popover::after {
+  background: var(--fn-surface, var(--color-bg, #121413));
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Reduced motion: keep the card (it's informational) but drop the rise. */
+@media (prefers-reduced-motion: reduce) {
+  .fn-popover,
+  .fn-popover.is-visible {
+    transform: none;
+    transition: opacity 0.12s ease, visibility 0s;
+  }
+}

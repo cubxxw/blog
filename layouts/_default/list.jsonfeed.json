@@ -1,0 +1,87 @@
+{{- /*
+  JSON Feed 1.1 — https://jsonfeed.org/version/1.1
+  Output: /feed.json (home), /<section>/feed.json (sections)
+  Honors services.rss.limit (-1 = all pages).
+*/ -}}
+{{- $pages := slice -}}
+{{- if $.IsHome -}}
+  {{- $pages = site.RegularPages -}}
+{{- else if $.IsSection -}}
+  {{- $pages = .RegularPages -}}
+{{- else -}}
+  {{- $pages = .Pages -}}
+{{- end -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+  {{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- $excludedLayouts := slice "search" "archives" "categories" -}}
+{{- $items := slice -}}
+{{- range $pages -}}
+  {{- if in $excludedLayouts .Layout }}{{ continue }}{{ end -}}
+  {{- if .Params.private }}{{ continue }}{{ end -}}
+  {{- if .Params.robotsNoIndex }}{{ continue }}{{ end -}}
+  {{- $coverURL := "" -}}
+  {{- with .Params.cover -}}
+    {{- with .image -}}
+      {{- if or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+        {{- $coverURL = . -}}
+      {{- else if hasPrefix . "/" -}}
+        {{- $coverURL = . | absURL -}}
+      {{- else -}}
+        {{- with $.Resources.GetMatch . -}}{{- $coverURL = .Permalink -}}
+        {{- else -}}
+          {{- with resources.GetMatch . -}}{{- $coverURL = .Permalink -}}
+          {{- else -}}{{- $coverURL = . | absURL -}}{{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $summary := "" -}}
+  {{- with .Description -}}{{- $summary = . -}}
+  {{- else -}}{{- $summary = .Summary | plainify -}}
+  {{- end -}}
+  {{- $item := dict
+      "id" .Permalink
+      "url" .Permalink
+      "title" .Title
+      "summary" $summary
+      "date_published" (.Date.Format "2006-01-02T15:04:05Z07:00")
+      "language" site.Language.LanguageCode
+  -}}
+  {{- if not .Lastmod.IsZero -}}
+    {{- $item = merge $item (dict "date_modified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
+  {{- end -}}
+  {{- if site.Params.ShowFullTextinRSS -}}
+    {{- $item = merge $item (dict "content_html" .Content) -}}
+  {{- else -}}
+    {{- $item = merge $item (dict "content_text" $summary) -}}
+  {{- end -}}
+  {{- with site.Params.author -}}
+    {{- $author := dict "name" . -}}
+    {{- with site.Params.email -}}{{- $author = merge $author (dict "url" (printf "mailto:%s" .)) -}}{{- end -}}
+    {{- $item = merge $item (dict "authors" (slice $author)) -}}
+  {{- end -}}
+  {{- $allTags := slice -}}
+  {{- range .Params.categories -}}{{- $allTags = $allTags | append . -}}{{- end -}}
+  {{- range .Params.tags -}}{{- $allTags = $allTags | append . -}}{{- end -}}
+  {{- if $allTags -}}{{- $item = merge $item (dict "tags" $allTags) -}}{{- end -}}
+  {{- if $coverURL -}}{{- $item = merge $item (dict "image" $coverURL) -}}{{- end -}}
+  {{- $items = $items | append $item -}}
+{{- end -}}
+{{- $feed := dict
+    "version" "https://jsonfeed.org/version/1.1"
+    "title" (cond (eq .Title site.Title) site.Title (printf "%s on %s" .Title site.Title))
+    "home_page_url" .Permalink
+    "language" site.Language.LanguageCode
+    "items" $items
+-}}
+{{- with .OutputFormats.Get "JSONFeed" -}}{{- $feed = merge $feed (dict "feed_url" .Permalink) -}}{{- end -}}
+{{- with site.Params.description -}}{{- $feed = merge $feed (dict "description" .) -}}{{- end -}}
+{{- with site.Params.images -}}{{- $feed = merge $feed (dict "icon" (index . 0 | absURL)) -}}{{- end -}}
+{{- with site.Params.author -}}
+  {{- $author := dict "name" . -}}
+  {{- with site.Params.email -}}{{- $author = merge $author (dict "url" (printf "mailto:%s" .)) -}}{{- end -}}
+  {{- $feed = merge $feed (dict "authors" (slice $author)) -}}
+{{- end -}}
+{{- $feed | jsonify (dict "indent" "  ") -}}

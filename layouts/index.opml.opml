@@ -1,0 +1,43 @@
+{{- /*
+  OPML 2.0 — subscription bundle for all section RSS feeds.
+  Output: /subscriptions.opml (per language).
+  Lets readers one-click import every section feed into their RSS reader.
+  isPlainText: true → must manually XML-escape any text containing &, <, >.
+*/ -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{- $siteTitle := transform.XMLEscape site.Title -}}
+<opml version="2.0">
+  <head>
+    <title>{{ $siteTitle }} — Subscriptions</title>
+    <dateCreated>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</dateCreated>
+    {{- with site.Params.author }}
+    <ownerName>{{ transform.XMLEscape . }}</ownerName>
+    {{- end }}
+    {{- with site.Params.email }}
+    <ownerEmail>{{ transform.XMLEscape . }}</ownerEmail>
+    {{- end }}
+  </head>
+  <body>
+    <outline title="{{ $siteTitle }}" text="{{ $siteTitle }}">
+      {{- /* Site-wide RSS first */ -}}
+      {{- with .OutputFormats.Get "RSS" }}
+      <outline type="rss"
+               text="{{ $siteTitle }} — All Posts"
+               title="{{ $siteTitle }} — All Posts"
+               xmlUrl="{{ .Permalink }}"
+               htmlUrl="{{ site.BaseURL }}" />
+      {{- end }}
+      {{- /* Per-section RSS */ -}}
+      {{- range site.Sections }}
+        {{- $sectionTitle := transform.XMLEscape (.Title | default .Section) -}}
+        {{- with .OutputFormats.Get "RSS" }}
+      <outline type="rss"
+               text="{{ $sectionTitle }}"
+               title="{{ $sectionTitle }}"
+               xmlUrl="{{ .Permalink }}"
+               htmlUrl="{{ $.Permalink }}" />
+        {{- end }}
+      {{- end }}
+    </outline>
+  </body>
+</opml>

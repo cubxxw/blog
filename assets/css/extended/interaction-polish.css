@@ -55,6 +55,40 @@ html.motion-reveal .post-content :is(h1, h2, h3, h4, h5, h6):target::before {
   pointer-events: none;
 }
 
+/* ---------- JS-triggered landing flash (in-page TOC clicks) ----------
+   The :target pulse above only fires on real fragment navigation: an
+   initial deep-link load, or the browser changing the hash. The sidebar
+   table of contents (toc-highlight.js) intercepts its own clicks for
+   smooth scrolling and updates the URL with history.replaceState(), which
+   does NOT re-match :target — so following a heading from the contents
+   list scrolled the reader to it with no "you landed here" cue at all.
+   (The right-side reading-companion TOC uses native anchors, so :target
+   still fires there; this only backfills the sidebar / any JS jump.)
+   toc-highlight.js adds .anchor-target-flash to the destination on click;
+   we replay the exact same wash + accent-bar so the two paths feel
+   identical. Same .motion-reveal gate and reduced-motion neutralisation
+   as the :target rules, so no-JS / motion-averse visitors are unaffected. */
+html.motion-reveal .post-content .anchor-target-flash {
+  animation: target-wash 2s cubic-bezier(0.22, 0.61, 0.36, 1) 1;
+  border-radius: 6px;
+}
+html.motion-reveal .post-content :is(h1, h2, h3, h4, h5, h6).anchor-target-flash {
+  position: relative;
+}
+html.motion-reveal .post-content :is(h1, h2, h3, h4, h5, h6).anchor-target-flash::before {
+  content: "";
+  position: absolute;
+  left: -0.6rem;
+  top: 0.1em;
+  bottom: 0.1em;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--color-accent, var(--primary));
+  transform-origin: top center;
+  animation: target-bar 2s cubic-bezier(0.22, 0.61, 0.36, 1) 1;
+  pointer-events: none;
+}
+
 /* ---------- TOC links: tap feedback (mobile) ----------
    micro-interactions.css already adds a hover slide for pointer users.
    Add a quick press response so taps on the contents list feel as
@@ -103,6 +137,14 @@ html.motion-reveal .reading-progress-bar {
     background-color: transparent !important;
   }
   html.motion-reveal .post-content :is(h1, h2, h3, h4, h5, h6):target::before {
+    animation: none !important;
+    display: none !important;
+  }
+  html.motion-reveal .post-content .anchor-target-flash {
+    animation: none !important;
+    background-color: transparent !important;
+  }
+  html.motion-reveal .post-content :is(h1, h2, h3, h4, h5, h6).anchor-target-flash::before {
     animation: none !important;
     display: none !important;
   }

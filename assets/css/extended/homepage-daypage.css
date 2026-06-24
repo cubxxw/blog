@@ -1638,6 +1638,90 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 }
 .hp-subscribe-rss:hover { color: var(--accent); border-color: var(--accent); }
 
+/* ── Channel pills: subscribe by section ── */
+.hp-subscribe-channels {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--accent-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hp-subscribe-channels-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.hp-subscribe-channels-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hp-channel-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px 5px 9px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: var(--surface-white);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-muted);
+  transition: border-color 160ms, color 160ms, transform 160ms;
+}
+.hp-channel-pill:hover {
+  border-color: var(--ch-color, var(--accent));
+  color: var(--fg-primary);
+  transform: translateY(-1px);
+}
+
+.hp-channel-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ch-color, var(--accent));
+  flex-shrink: 0;
+}
+
+.hp-channel-pill-name {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.hp-channel-pill-fmt {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--fg-subtle);
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.04);
+  margin-left: 2px;
+}
+.hp-channel-pill:hover .hp-channel-pill-fmt {
+  color: var(--ch-color, var(--accent));
+  background: rgba(0, 0, 0, 0.06);
+}
+
+body.dark .hp-channel-pill-fmt { background: rgba(255, 255, 255, 0.06); }
+body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 255, 255, 0.1); }
+
+@media (max-width: 720px) {
+  .hp-subscribe-channels { margin-top: 20px; padding-top: 16px; }
+  .hp-channel-pill { font-size: 11.5px; padding: 4px 9px 4px 8px; }
+  .hp-channel-pill-fmt { font-size: 8.5px; }
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */

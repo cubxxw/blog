@@ -1,0 +1,34 @@
+{{- /*
+  Google News sitemap — https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap
+  Output: /news-sitemap.xml (per language).
+  Includes only articles published within the last 2 days, per Google spec.
+*/ -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  {{- $cutoff := now.AddDate 0 0 -2 -}}
+  {{- $excludedLayouts := slice "search" "archives" "categories" -}}
+  {{- range site.RegularPages -}}
+    {{- if .Date.Before $cutoff }}{{ continue }}{{ end -}}
+    {{- if .Params.private }}{{ continue }}{{ end -}}
+    {{- if .Params.robotsNoIndex }}{{ continue }}{{ end -}}
+    {{- if in $excludedLayouts .Layout }}{{ continue }}{{ end -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>{{ site.Title }}</news:name>
+        <news:language>{{ site.Language.Lang }}</news:language>
+      </news:publication>
+      <news:publication_date>{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}</news:publication_date>
+      <news:title>{{ .Title }}</news:title>
+      {{- $kw := slice -}}
+      {{- range .Params.tags -}}{{- $kw = $kw | append . -}}{{- end -}}
+      {{- range .Params.categories -}}{{- $kw = $kw | append . -}}{{- end -}}
+      {{- with $kw }}
+      <news:keywords>{{ delimit . ", " }}</news:keywords>
+      {{- end }}
+    </news:news>
+  </url>
+  {{- end }}
+</urlset>

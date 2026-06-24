@@ -26,3 +26,4 @@ User-agent: LinkedInBot
 Allow: /
 
 Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: {{ "news-sitemap.xml" | absURL }}

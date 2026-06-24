@@ -48,6 +48,17 @@
     color-mix(in srgb, var(--color-accent, var(--primary)) 35%, transparent);
 }
 
+/* In dark mode the accent flips to light sky-blue (EN #7dd3fc) / red (ZH),
+   and white label + check (currentColor) on the light-blue fill collapse to
+   ~1.67:1. Paint the on-accent foreground with the page paper tone instead —
+   dark ink on the light dark-accent reads at 11:1 (EN) / 6.3:1 (ZH). `.dark`
+   wins specificity over the base; `!important` matches the base declaration.
+   Gated on .dark — light mode (dark accent) keeps the white label. */
+.dark .post-content .highlight .copy-code.is-copied,
+.dark .post-content pre .copy-code.is-copied {
+  color: var(--color-paper) !important;
+}
+
 /* A small check that slips in ahead of the "copied!" label. */
 .post-content .highlight .copy-code.is-copied::before,
 .post-content pre .copy-code.is-copied::before {

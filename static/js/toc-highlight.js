@@ -11,6 +11,22 @@
 
     if (!allTocLinks.length) return;
 
+    // Replay the deep-link "landing" pulse on the destination. We can't rely
+    // on :target here: this handler smooth-scrolls and updates the hash with
+    // history.replaceState(), which does not re-match :target, so the pulse in
+    // interaction-polish.css would never fire on a TOC click. Toggle a class
+    // that runs the same wash + accent-bar animation instead. Force a reflow
+    // between remove/add so rapid re-clicks on the same heading replay cleanly.
+    function flashTarget(el) {
+      el.classList.remove('anchor-target-flash');
+      void el.offsetWidth; // reflow → restart the keyframes
+      el.classList.add('anchor-target-flash');
+      window.clearTimeout(el.__flashTimer);
+      el.__flashTimer = window.setTimeout(function () {
+        el.classList.remove('anchor-target-flash');
+      }, 2100); // just past the 2s animation
+    }
+
     // Enable smooth scrolling for TOC links and hash sync
     allTocLinks.forEach(function (link) {
       link.addEventListener('click', function (e) {
@@ -22,6 +38,8 @@
         target.scrollIntoView({ behavior: 'smooth' });
         // Update URL hash without jumping
         history.replaceState(null, '', href);
+        // Highlight where the reader just landed (gated + neutralised in CSS).
+        flashTarget(target);
       });
     });
 

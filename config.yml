@@ -146,12 +146,60 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+
+# Hugo internal services configuration
+services:
+  rss:
+    # -1 = include all pages, no cap. Default would silently truncate large sites.
+    limit: -1
+
+# Custom media types & output formats: JSON Feed 1.1 + OPML subscription list.
+mediaTypes:
+  application/feed+json:
+    suffixes: ["json"]
+  text/x-opml:
+    suffixes: ["opml"]
+
+outputFormats:
+  JSONFeed:
+    name: JSONFeed
+    mediaType: application/feed+json
+    baseName: feed
+    isPlainText: true
+    rel: alternate
+    notAlternative: false
+  OPML:
+    name: OPML
+    mediaType: text/x-opml
+    baseName: subscriptions
+    isPlainText: true
+    rel: alternate
+    notAlternative: false
+  # News sitemap for posts published within last 2 days (Google News spec)
+  NewsSitemap:
+    name: NewsSitemap
+    mediaType: application/xml
+    baseName: news-sitemap
+    isPlainText: false
+    rel: sitemap
+    notAlternative: true
+
 outputs:
     home:
       - HTML
       - RSS
-      - JSON # is necessary
+      - JSON           # search index
+      - JSONFeed       # JSON Feed 1.1 at /feed.json
+      - OPML           # /subscriptions.opml
+      - NewsSitemap    # /news-sitemap.xml
     section:
+      - HTML
+      - RSS
+      - JSONFeed
+    taxonomy:
+      - HTML
+      - RSS
+    term:
       - HTML
       - RSS
 
