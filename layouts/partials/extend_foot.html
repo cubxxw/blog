@@ -1,21 +1,73 @@
+{{- /* Fallback copy-code button.
+       The theme (footer.html) already adds a themed `.copy-code` control to
+       code blocks on single article pages. This is a safety net for code that
+       shows up on other page kinds (lists / archives / search) where that
+       scoped script never runs.
+
+       Two fixes over the old version:
+         1. No more double buttons. The theme places its control INSIDE the
+            <pre> for plain blocks but on the `.highlight` WRAPPER for
+            syntax-highlighted ones — so the old `pre.querySelector('button')`
+            guard missed it and every highlighted block ended up with two
+            stacked copy buttons. We now also check the `.highlight` wrapper.
+         2. Reuse the `.copy-code` class instead of a hard-coded dark button,
+            so the fallback inherits the same theme styling, hover / touch
+            reveal and "copied!" pop as the primary control (the old
+            background:#444 button ignored light/dark theme entirely). */ -}}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('pre code').forEach(function(codeBlock) {
+document.addEventListener('DOMContentLoaded', function () {
+  var isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
+  var LABEL_COPY = isZh ? '复制' : 'copy';
+  var LABEL_DONE = isZh ? '已复制!' : 'copied!';
+
+  document.querySelectorAll('pre > code').forEach(function (codeBlock) {
     var pre = codeBlock.parentElement;
-    // Skip if theme already added a copy button
+    var wrap = pre.parentElement;
+
+    // Already has a copy control? Skip — never stack a second button.
     if (pre.querySelector('button')) return;
+    if (wrap && wrap.classList.contains('highlight') && wrap.querySelector('button')) return;
+
     var button = document.createElement('button');
-    button.className = 'copy-code-btn';
-    button.textContent = 'Copy';
-    button.addEventListener('click', function() {
-      navigator.clipboard.writeText(codeBlock.innerText).then(function() {
-        button.textContent = 'Copied!';
-        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
-      });
+    button.type = 'button';
+    button.className = 'copy-code';
+    button.textContent = LABEL_COPY;
+
+    button.addEventListener('click', function () {
+      var text = codeBlock.textContent;
+      var done = function () {
+        button.textContent = LABEL_DONE;
+        button.classList.add('is-copied');
+        window.clearTimeout(button.__copiedTimer);
+        button.__copiedTimer = window.setTimeout(function () {
+          button.textContent = LABEL_COPY;
+          button.classList.remove('is-copied');
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {});
+      } else {
+        // Legacy fallback for browsers without the async clipboard API.
+        try {
+          var range = document.createRange();
+          range.selectNodeContents(codeBlock);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand('copy');
+          sel.removeAllRanges();
+          done();
+        } catch (e) {}
+      }
     });
-    pre.style.position = 'relative';
-    button.style.cssText = 'position:absolute;top:8px;right:8px;padding:2px 8px;font-size:12px;cursor:pointer;background:#444;color:#fff;border:none;border-radius:4px;opacity:0.8;';
-    pre.appendChild(button);
+
+    // Mirror the theme's placement so the `.copy-code` positioning rules
+    // (which target both `.highlight .copy-code` and `pre .copy-code`) apply.
+    if (wrap && wrap.classList.contains('highlight')) {
+      wrap.appendChild(button);
+    } else {
+      pre.appendChild(button);
+    }
   });
 });
 </script>
