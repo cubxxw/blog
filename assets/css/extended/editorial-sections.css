@@ -1384,3 +1384,21 @@ body.dark .eig-year-marker {
   .eitr-section-title { font-size: 1.6rem; }
   .eitr-stat__num { font-size: 1.8rem; }
 }
+
+/* ============================================================
+   Reduced motion: freeze the decorative ambient loops.
+   These animations (breathing dots, the floating travel-hero orb,
+   the slowly spinning compass, the scroll line) are purely
+   atmospheric and have no forwards end-state to preserve, so it is
+   safe to simply stop them and leave each element in its static
+   resting look for visitors who prefer reduced motion.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .eit-dot, .eig-dot, .eip-dot, .eitr-dot,
+  .eitr-hero__orb,
+  .eitr-hero__compass,
+  .eitr-hero__dot,
+  .eitr-hero__scroll-line {
+    animation: none !important;
+  }
+}

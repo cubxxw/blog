@@ -34,8 +34,8 @@
 {{- $ogType := cond (or .IsHome (eq .Kind "taxonomy") (eq .Kind "term") (eq .Kind "section")) "website" "article" -}}
 <meta property="og:type" content="{{ $ogType }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
-<meta property="og:title" content="{{ $title | htmlEscape }}" />
-<meta property="og:description" content="{{ $description | htmlEscape }}" />
+<meta property="og:title" content="{{ $title | plainify }}" />
+<meta property="og:description" content="{{ $description | plainify }}" />
 {{- $sectionDefault := dict "ai-technology" "/assets/og-ai-technology.png" "growth" "/assets/og-growth.png" "projects" "/assets/og-projects.png" -}}
 {{- $defaultOgImage := index (site.Params.images | default (slice "/assets/og-image.png")) 0 -}}
 {{- $sectionOgImage := index $sectionDefault .Section | default $defaultOgImage -}}
@@ -67,8 +67,8 @@
 {{- /* Twitter Card */ -}}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="{{ .Permalink }}" />
-<meta name="twitter:title" content="{{ $title | htmlEscape }}" />
-<meta name="twitter:description" content="{{ $description | htmlEscape }}" />
+<meta name="twitter:title" content="{{ $title | plainify }}" />
+<meta name="twitter:description" content="{{ $description | plainify }}" />
 <meta name="twitter:image" content="{{ $ogImage | absURL }}" />
 {{- with site.Params.social.twitter -}}
 <meta name="twitter:creator" content="@{{ . }}" />

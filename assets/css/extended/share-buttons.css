@@ -612,3 +612,13 @@
         height: 160px;
     }
 }
+
+/* ============================================================
+   Reduced motion: stop the QR skeleton shimmer. It is a transient
+   loading sweep with no end-state to keep, so freezing it is safe.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .wechat-qr-img-wrap::before {
+    animation: none !important;
+  }
+}

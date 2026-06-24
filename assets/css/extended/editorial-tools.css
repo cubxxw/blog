@@ -801,3 +801,13 @@ body.dark .editorial-tools-panel .rc-ai-followup:hover {
 .editorial-tools-panel .rc-ai-quick--collapsed {
   display: none;
 }
+
+/* ============================================================
+   Reduced motion: still the AI "thinking" pulse. It is a looping
+   loading affordance, not content, so freezing the dots is safe.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .editorial-tools-panel .rc-ai-dot {
+    animation: none !important;
+  }
+}
