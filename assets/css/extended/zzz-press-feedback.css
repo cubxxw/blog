@@ -22,7 +22,17 @@
 .ai-tech-card,
 .growth-card,
 .hp-post-card,
-.hp-ai-card {
+.hp-ai-card,
+/* Homepage day-page tiles are whole-card links too (homepage-daypage.html):
+   category tiles, the field-notebook "books", the featured project cards,
+   the repo chips and the compact post rows. They lift on hover but had no
+   press response, so a tap on a phone navigated with no "I felt that" beat.
+   Bring them into the same tactile family. */
+.hp-cat-tile,
+.hp-book,
+.hp-project-featured,
+.hp-repo,
+.hp-posts-list-row {
   /* Replace the default grey tap-flash on mobile with our own scale
      cue so the press reads as intentional, not like a mis-tap. */
   -webkit-tap-highlight-color: transparent;
@@ -38,7 +48,12 @@
   .ai-tech-card:active,
   .growth-card:active,
   .hp-post-card:active,
-  .hp-ai-card:active {
+  .hp-ai-card:active,
+  .hp-cat-tile:active,
+  .hp-book:active,
+  .hp-project-featured:active,
+  .hp-repo:active,
+  .hp-posts-list-row:active {
     transform: translateY(0) scale(0.985);
     transition: transform 0.1s ease;
   }
@@ -53,7 +68,12 @@
   .ai-tech-card:active,
   .growth-card:active,
   .hp-post-card:active,
-  .hp-ai-card:active {
+  .hp-ai-card:active,
+  .hp-cat-tile:active,
+  .hp-book:active,
+  .hp-project-featured:active,
+  .hp-repo:active,
+  .hp-posts-list-row:active {
     transform: scale(0.97);
     transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
@@ -90,6 +110,11 @@
   .growth-card:active,
   .hp-post-card:active,
   .hp-ai-card:active,
+  .hp-cat-tile:active,
+  .hp-book:active,
+  .hp-project-featured:active,
+  .hp-repo:active,
+  .hp-posts-list-row:active,
   #menu > li > a:active,
   .nav-search-trigger:active {
     transform: none !important;

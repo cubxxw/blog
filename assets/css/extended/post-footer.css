@@ -232,3 +232,14 @@ body.dark .paginav a:hover {
 body.dark .post-comments {
   border-top-color: rgba(255, 255, 255, 0.08);
 }
+
+/* ============================================================
+   Reduced motion: stop the comments-loading shimmer sweep. The
+   skeleton stays as a calm static placeholder until the embed
+   loads, so no information is lost.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .post-comments__body:has(> script:only-child)::before {
+    animation: none !important;
+  }
+}
