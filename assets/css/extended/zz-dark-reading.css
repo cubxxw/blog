@@ -1080,3 +1080,87 @@ body.dark .rpc:hover .rpc__cover img,
 [data-theme="dark"] .rpc:hover .rpc__cover img {
   filter: brightness(1) contrast(1);
 }
+
+/* ── 32. "Projects" cyan accent UI in dark (AA repair) ────────────
+   The site uses a cyan "projects" brand colour, #0e7490 (cyan-700), for a
+   cluster of NON-prose UI: the home profile's title accent + terminal
+   prompt + "view more" ghost button + featured-post bold lead, the Archives
+   hero stat number and the per-year count badge, and the Posts hero count.
+   All seven rules paint #0e7490 and are NOT theme-gated, so the same dark cyan
+   is reused in dark mode — where it lands on the near-black paper (and, for
+   the featured-post lead, on its dark gradient card) (#121413 EN / #1c1917 ZH) at
+   just 3.45:1 (EN) / 3.27:1 (ZH), UNDER the WCAG-AA 4.5:1 text floor. So the
+   profile's accent, the archive/posts counters and the year badges — several
+   of the first numbers a reader's eye lands on — render as a dim cyan-on-dark
+   smudge.
+
+   This codebase ALREADY standardised the dark form of this exact cyan: the
+   projects badge and the "signal" icon were given color:#22d3ee (cyan-400)
+   for dark (custom.css: .dark .posts-badge--projects, .dark .signal-icon).
+   These six states were simply missed. Reuse #22d3ee so the cyan reads
+   consistently across every projects surface — it resolves to 10.24:1 (EN) /
+   9.68:1 (ZH), restoring comfortable AA and matching the established family
+   (the same move §22 made for the violet #7c3aed → #a78bfa). The faint chip /
+   border tints (rgba(14,116,144,…)) on the year badge and ghost button are
+   non-text and already read fine, so only the text colour is repaired.
+
+   !important is carried because two of the source rules (.profile_title__accent,
+   .profile_view_more) declare `color: …7490 !important`; an equal-importance
+   body.dark rule with higher specificity (0,2,0 vs 0,1,0) wins, and the flag
+   is harmless on the other four (none has a dark hover that recolours text).
+   Each selector is body.dark / [data-theme="dark"]-scoped and loads LAST in
+   the extended bundle, so it wins in dark and is never selected in light —
+   light mode keeps #0e7490, provably unchanged. */
+body.dark .profile_title__accent,
+body.dark .profile_terminal__prompt,
+body.dark .profile_view_more,
+body.dark .profile_post--featured strong,
+body.dark .archives-stat__number,
+body.dark .archives-year__count,
+body.dark .posts-hero__count,
+[data-theme="dark"] .profile_title__accent,
+[data-theme="dark"] .profile_terminal__prompt,
+[data-theme="dark"] .profile_view_more,
+[data-theme="dark"] .profile_post--featured strong,
+[data-theme="dark"] .archives-stat__number,
+[data-theme="dark"] .archives-year__count,
+[data-theme="dark"] .posts-hero__count {
+  color: #22d3ee !important;
+}
+
+/* ── 33. Section-list tag text in dark (AA repair) ────────────────
+   The "AI 技术" and "成长 / Growth" section LIST rows label their tags with a
+   flat grey — .ai-tech-list-tags #6b7280 and .growth-list-tags #78716c — and
+   neither rule is theme-gated, so the same grey is reused in dark. On the
+   near-black paper that lands at 3.83:1 / 3.86:1 respectively — UNDER the AA
+   4.5:1 floor for this small (≈0.8rem) tag text, so the tag line reads as a
+   barely-there grey smudge under each list title. Repaint with the design's
+   muted-ink token (the same family already used for the meta line §21, list
+   markers §18, footnotes §7 and struck text §19), which resolves per language
+   to #b4bcb2 (EN, 9.49:1) / #a8a29e (ZH, 6.93:1) — comfortably AA and still
+   clearly recessed below the list title, so the hierarchy is unchanged. The
+   sibling CARD tags already inherit an AA-safe colour, so only the list-row
+   tags needed this. body.dark-scoped, loaded last — light mode keeps the
+   grey, provably unchanged. */
+body.dark .ai-tech-list-tags,
+body.dark .growth-list-tags,
+[data-theme="dark"] .ai-tech-list-tags,
+[data-theme="dark"] .growth-list-tags {
+  color: var(--color-ink-muted, #b4bcb2);
+}
+
+/* ── 34. Archives "draft" badge in dark (AA repair) ──────────────
+   The Archives list flags unpublished entries with a draft badge:
+   .archives-post__draft paints amber #b45309 on a faint amber chip
+   (background rgba(234,179,8,0.15)), un-gated. In dark the chip is a faint
+   amber wash over the near-black paper and the #b45309 text lands at just
+   3.68:1 (EN) / 3.49:1 (ZH) — under the AA floor for this small uppercase
+   label. Lift the text to amber-400 #fbbf24 — the exact tint §27 already
+   uses for the dark "warning" state — so the badge keeps its amber semantic
+   while clearing AA at 11.08:1 (EN) / 10.48:1 (ZH) over the paper, and reads
+   crisply against its own faint chip. body.dark-scoped, loaded last — light
+   mode keeps #b45309, provably unchanged. */
+body.dark .archives-post__draft,
+[data-theme="dark"] .archives-post__draft {
+  color: #fbbf24;
+}
