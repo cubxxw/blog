@@ -18,7 +18,12 @@ html.motion-reveal .ai-tech-card,
 html.motion-reveal .growth-card,
 html.motion-reveal .ai-tech-list-item,
 html.motion-reveal .growth-list-item,
-html.motion-reveal .reveal-item {
+html.motion-reveal .reveal-item,
+/* Related-post cards at the foot of an article join the same cascade so
+   the page keeps unfolding right to the "continue reading" zone instead
+   of the grid popping in fully-formed. Staggered per row by the shared
+   .related-posts-grid parent (see micro-interactions.js). */
+html.motion-reveal .rpc {
   opacity: 0;
   /* translateY for the rise + a hair of scale so the card "settles"
      into place rather than just sliding — a slightly more premium
@@ -39,7 +44,8 @@ html.motion-reveal .ai-tech-card.is-revealed,
 html.motion-reveal .growth-card.is-revealed,
 html.motion-reveal .ai-tech-list-item.is-revealed,
 html.motion-reveal .growth-list-item.is-revealed,
-html.motion-reveal .reveal-item.is-revealed {
+html.motion-reveal .reveal-item.is-revealed,
+html.motion-reveal .rpc.is-revealed {
   opacity: 1;
   transform: none;
 }
@@ -374,6 +380,7 @@ button:focus-visible,
   .ai-tech-list-item,
   .growth-list-item,
   .reveal-item,
+  .rpc,
   .post-content .reveal-block,
   .post-content img {
     opacity: 1 !important;
