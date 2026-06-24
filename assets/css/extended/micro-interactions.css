@@ -210,6 +210,14 @@ button:focus-visible,
     var(--shadow-md, 0 4px 16px rgba(15, 23, 42, 0.18)),
     0 0 0 6px color-mix(in srgb, var(--color-accent, var(--primary)) 18%, transparent);
 }
+/* The puck hardcodes `color:#fff` on an accent fill. In dark/EN the accent is
+   light sky-blue (#7dd3fc), so the white chevron drops to ~1.67:1 — worst when
+   armed (solid fill). Use the page paper tone as the on-accent ink in dark
+   (dark glyph on the light dark-accent: 11:1 EN / 6.3:1 ZH). `.dark` outranks
+   the base selector. Gated on .dark — light mode keeps the white chevron. */
+.dark .swipe-hint {
+  color: var(--color-paper);
+}
 
 /* ---------- Animated section underline (links in prose) ---------- */
 /* A small left-to-right underline grow on hover for inline links. */

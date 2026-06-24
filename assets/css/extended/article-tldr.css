@@ -280,6 +280,24 @@
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
     color-mix(in srgb, var(--color-accent) 8%, transparent);
+  /* The base box-shadow carries a bright `0 1px 0 rgba(255,255,255,0.6) inset`
+     top-edge bevel tuned for the light paper. On the dark card that white
+     hairline reads as a glare line across the top inner edge. Drop the inset
+     to a faint lift and keep only a soft dark ambient shadow. Gated on .dark —
+     light mode keeps its original glossy bevel untouched. */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 24px 60px -34px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+/* The closing "world-line terminus" node fills with the accent and hardcodes
+   `color:#fff`. In dark/EN the accent flips to light sky-blue (#7dd3fc), so
+   white digits on it drop to ~1.67:1 (illegible). Use the page paper tone as
+   the on-accent ink (the idiom used elsewhere in this codebase): dark ink on
+   the light-blue / red dark accent reads at 11:1 (EN) / 6.3:1 (ZH). Gated on
+   .dark — light mode (dark accent) keeps white. */
+.dark .tldr-item:last-child .tldr-node {
+  color: var(--color-paper);
 }
 .dark .tldr-node,
 .dark .tldr-item:last-child .tldr-node {
