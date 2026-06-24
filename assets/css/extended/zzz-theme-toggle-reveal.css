@@ -1,0 +1,83 @@
+/* ============================================================
+   zzz-theme-toggle-reveal.css — circular light/dark ink-wipe
+   ------------------------------------------------------------
+   Tapping the sun/moon toggle used to flip the whole page in one
+   hard cut (zz-theme-toggle-fx.css crossfades only the glyph). This
+   rides the same-document View Transitions API so the NEW theme is
+   unveiled with a soft circle that expands outward from the toggle
+   button itself — the moment of the tap becomes the origin of the
+   colour change. Reads identically on phones and desktop; the
+   origin point follows wherever the control sits.
+
+   How it stays safe:
+   • The toggle handler (footer.html) only calls
+     document.startViewTransition() when the API exists AND the
+     visitor has NOT asked for reduced motion. Everywhere else the
+     theme flips instantly exactly as before — never a broken state.
+   • Scoped to `:root.theme-switching`, a class the handler adds for
+     the life of the transition only. Cross-page navigation
+     transitions (zzz-page-transition.css) never carry it, so the two
+     effects stay fully independent.
+   • The class + pseudo-element selector out-specifies the page-
+     transition root rules, so the wipe cleanly replaces the default
+     cross-fade for this one interaction.
+   • Wrapped in prefers-reduced-motion: no-preference as a second
+     belt-and-braces guard alongside the JS check.
+
+   Loads last in the extended bundle (zzz- prefix).
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The toggle handler writes these before starting the transition:
+     --tt-x / --tt-y  → the toggle button's centre (viewport px)
+     --tt-r           → distance to the farthest viewport corner
+     Fallbacks centre the circle if the handler couldn't measure. */
+  :root.theme-switching {
+    --tt-x: 50vw;
+    --tt-y: 0px;
+    --tt-r: 150vmax;
+  }
+
+  /* Both snapshots sit still and opaque — we drive the reveal purely
+     with a clip-path on the incoming layer, so there is no competing
+     fade or upward drift inherited from the page-navigation rules. */
+  :root.theme-switching::view-transition-old(root),
+  :root.theme-switching::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  /* Outgoing (current) theme stays beneath, fully visible, untouched. */
+  :root.theme-switching::view-transition-old(root) {
+    z-index: 1;
+  }
+
+  /* Incoming theme rides on top and is clipped to a growing circle
+     centred on the toggle, so the new palette "floods in" from the
+     tap point. */
+  :root.theme-switching::view-transition-new(root) {
+    z-index: 2147483646;
+    animation: tt-ink-reveal 0.52s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  @keyframes tt-ink-reveal {
+    from {
+      clip-path: circle(0 at var(--tt-x) var(--tt-y));
+    }
+    to {
+      clip-path: circle(var(--tt-r) at var(--tt-x) var(--tt-y));
+    }
+  }
+
+  /* A brief, soft glow on the toggle itself acknowledges the press as
+     the wipe travels — anchored to the button, gone when it settles. */
+  :root.theme-switching #theme-toggle {
+    animation: tt-toggle-pulse 0.52s ease-out;
+  }
+
+  @keyframes tt-toggle-pulse {
+    0%   { transform: scale(1);    }
+    35%  { transform: scale(1.18); }
+    100% { transform: scale(1);    }
+  }
+}

@@ -160,15 +160,58 @@
 
 {{- if (not site.Params.disableThemeToggle) }}
 <script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
+    (function () {
+        var toggle = document.getElementById("theme-toggle");
+        if (!toggle) return;
+
+        // The actual theme flip. Kept in one place so the instant path
+        // and the animated path stay identical.
+        function applyTheme() {
+            if (document.body.className.includes("dark")) {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            } else {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            }
         }
-    })
+
+        var prefersReduced =
+            window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        toggle.addEventListener("click", function () {
+            // Fallback: no View Transitions API, or reduced motion → flip
+            // instantly, exactly as before. Never a half-painted state.
+            if (typeof document.startViewTransition !== 'function' || prefersReduced) {
+                applyTheme();
+                return;
+            }
+
+            // Anchor the circular reveal on the toggle button's centre and
+            // size it to reach the farthest viewport corner.
+            var rect = toggle.getBoundingClientRect();
+            var cx = rect.left + rect.width / 2;
+            var cy = rect.top + rect.height / 2;
+            var vw = window.innerWidth || document.documentElement.clientWidth;
+            var vh = window.innerHeight || document.documentElement.clientHeight;
+            var r = Math.hypot(Math.max(cx, vw - cx), Math.max(cy, vh - cy));
+
+            var root = document.documentElement;
+            root.style.setProperty('--tt-x', cx + 'px');
+            root.style.setProperty('--tt-y', cy + 'px');
+            root.style.setProperty('--tt-r', r + 'px');
+            root.classList.add('theme-switching');
+
+            var vt = document.startViewTransition(applyTheme);
+            vt.finished.finally(function () {
+                root.classList.remove('theme-switching');
+                root.style.removeProperty('--tt-x');
+                root.style.removeProperty('--tt-y');
+                root.style.removeProperty('--tt-r');
+            });
+        });
+    })();
 
 </script>
 {{- end }}
