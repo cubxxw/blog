@@ -51,32 +51,6 @@
 {{- /* Language Auto-Detection Script */ -}}
 <script src="{{ "/js/lang-redirect.js" | relURL }}" defer></script>
 
-{{- /* Add some inline styles for language selector if needed */ -}}
-<style>
-.lang-selector {
-    display: inline-block;
-    margin: 0 5px;
-}
-
-.lang-selector a {
-    text-decoration: none;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 0.9em;
-}
-
-.lang-selector a:hover {
-    background-color: var(--theme);
-    color: var(--primary);
-}
-
-.lang-selector.active a {
-    background-color: var(--theme);
-    color: var(--primary);
-    font-weight: bold;
-}
-</style>
-
 {{- /* Preload hero/LCP image on homepage */ -}}
 {{- if .IsHome }}
 {{- with site.Params.profileMode.imageUrl }}

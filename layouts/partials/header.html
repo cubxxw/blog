@@ -150,34 +150,33 @@
             </button>
             {{- end }}
 
-            {{/* LANGUAGE SELECTOR */}}
+            {{/* LANGUAGE SELECTOR — bilingual pill, current language sealed in cinnabar */}}
             {{ if gt (len .Site.Languages) 1 }}
-                {{/* set vars with page data */}}
                 {{ $currentLang := .Lang }}
                 {{ $allTranslations := .Translations }}
 
-                <ul class="lang-switch">
+                <ul class="lang-switch" role="group" aria-label="Language">
                     {{ range $anySiteLang := .Site.Home.AllTranslations }}
-
-                        {{/* code here can only access page-related data via vars set above */}}
-                        {{ if ne $currentLang $anySiteLang.Lang }}
+                        {{ $code := .Lang }}
+                        {{ $glyph := cond (eq $code "zh") "中" (.Lang | upper) }}
+                        {{ $aria := .Language.LanguageName | default (.Lang | upper) }}
+                        {{ if eq $currentLang $code }}
+                            <li class="lang-switch__item lang-switch__item--active lang-switch__item--{{ $code }}">
+                                <span aria-current="true" aria-label="{{ $aria }}">{{ $glyph }}</span>
+                            </li>
+                        {{ else }}
                             {{ $translationLink := .RelPermalink }}
                             {{ range $translation := $allTranslations }}
-                                {{ if eq $anySiteLang.Lang $translation.Lang }}
+                                {{ if eq $code $translation.Lang }}
                                     {{ $translationLink = $translation.RelPermalink }}
                                 {{ end }}
                             {{ end }}
-
-                            <li>
+                            <li class="lang-switch__item lang-switch__item--{{ $code }}">
                                 <a href="{{ $translationLink }}"
-                                title="{{ .Language.Params.languageAltTitle | default (.Language.LanguageName ) | default (.Lang | upper) }}"
-                                aria-label="{{ .Language.LanguageName | default (.Lang | upper) }}">
-                                    {{ if site.Params.DisplayFullLangName }}
-                                        {{ .Language.LanguageName }}
-                                    {{ else }}
-                                        {{ .Lang | upper }}
-                                    {{ end }}
-                                </a>
+                                   title="{{ .Language.Params.languageAltTitle | default (.Language.LanguageName) | default (.Lang | upper) }}"
+                                   aria-label="{{ $aria }}"
+                                   hreflang="{{ $code }}"
+                                   rel="alternate">{{ $glyph }}</a>
                             </li>
                         {{ end }}
                     {{ end }}
