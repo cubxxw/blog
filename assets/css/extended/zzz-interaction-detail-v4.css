@@ -1,0 +1,114 @@
+/* ============================================================
+   zzz-interaction-detail-v4.css — detail motion & polish (v4)
+   ------------------------------------------------------------
+   Two small, verified-absent touches that extend the existing
+   micro-interaction family without duplicating it — one for the
+   brief's 点击 (tap/click) and one for 下滑 (scroll):
+
+     1. Search palette input — focus underline bloom. The command
+        palette's search field sits on a flat 1px rule that only
+        nudged the icon colour on focus (theme header.css). Add an
+        accent underline that grows out from the centre the instant
+        the field is focused (tap on mobile, click / ⌘K on desktop),
+        so the field "wakes up" the way the in-prose link underline
+        does on hover. Language-aware EN/ZH accent.
+
+     2. Article blockquotes — accent bar draw-in on scroll. A pulled
+        quote already fades up as it enters view (the prose reveal in
+        micro-interactions). Layer a quick vertical "draw" of its left
+        accent bar on top, so the quote feels authored into place as
+        you scroll down a long read rather than the bar just being
+        there. Robust by construction: the real border is only handed
+        over to the animated bar once the enhancement is active, so
+        no-JS / reduced-motion readers always see a solid accent bar.
+
+   Everything here is purely additive feedback — never required for
+   content to be read. The scroll touch is gated behind .motion-reveal
+   (added to <html> only when the visitor has NOT requested reduced
+   motion) and the whole file is neutralised under prefers-reduced-
+   motion at the bottom. Loads last in the extended bundle (zzz-
+   prefix) so its rules win cleanly.
+   ============================================================ */
+
+/* ---------- 1. Search palette: focus underline bloom (tap / click) ----------
+   The wrap is already position:relative (theme header.css), so the
+   underline can ride its bottom edge. It grows from the centre out and
+   eases back on blur — a quiet "the field is live" cue felt on a phone
+   tap and a desktop click / ⌘K alike. The existing 1px rule stays as
+   the resting track underneath. */
+.search-palette__input-wrap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: auto;
+  bottom: -1px; /* sit exactly over the wrap's 1px bottom rule */
+  height: 2px;
+  width: 0;
+  transform: translateX(-50%);
+  background: var(--color-accent, #7a5c40);
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    width 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.28s ease;
+}
+.search-palette__input-wrap:focus-within::after {
+  width: 100%;
+  opacity: 1;
+}
+/* ZH leans on the deep-red accent identity; EN on sky/sage. The var()
+   resolves per-language where --color-accent is set, but pin explicit
+   fallbacks so the bloom is always on-brand. */
+html:lang(zh) .search-palette__input-wrap::after {
+  background: var(--color-accent, #862122);
+}
+
+/* ---------- 2. Blockquote: accent bar draw-in on scroll reveal (下滑) ----------
+   `.post-content > blockquote` is tagged `.reveal-block` by
+   micro-interactions.js and fades up on entry. Only when that
+   enhancement is live (html.motion-reveal) do we hand the left accent
+   over to an animated bar: hide the real border and draw a fresh one
+   downward from the top as the quote settles in. Because the prose
+   reveal always ends in `.is-revealed` (immediate for first-screen
+   quotes, a 2.5s safety net otherwise, and forced under reduced
+   motion), the bar is guaranteed to finish fully drawn. */
+html.motion-reveal .post-content > blockquote.reveal-block {
+  position: relative;
+  /* Hand the accent over to the animated bar below. */
+  border-left-color: transparent;
+}
+html.motion-reveal .post-content > blockquote.reveal-block::before {
+  content: "";
+  position: absolute;
+  left: -2px; /* overlay the 2px border-left track */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* follow the quote's own fade-up by a hair */
+  transition-delay: 0.08s;
+  pointer-events: none;
+}
+html.motion-reveal .post-content > blockquote.reveal-block.is-revealed::before {
+  transform: scaleY(1);
+}
+
+/* ============================================================
+   Reduced motion: drop the bloom transition and hand the blockquote
+   accent straight back to a solid, fully-drawn bar — no movement.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .search-palette__input-wrap::after {
+    transition: none !important;
+  }
+  html.motion-reveal .post-content > blockquote.reveal-block {
+    border-left-color: var(--color-accent) !important;
+  }
+  html.motion-reveal .post-content > blockquote.reveal-block::before {
+    display: none !important;
+  }
+}
