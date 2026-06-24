@@ -9,11 +9,29 @@
     {{- range . -}}
     {{- $tags := .Params.tags -}}
     {{- $cover := .Params.cover -}}
-    {{- $hasCover := and $cover $cover.image -}}
+    {{- $coverURL := "" -}}
+    {{- with $cover -}}
+      {{- with .image -}}
+        {{- if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "/") -}}
+          {{- $coverURL = . -}}
+        {{- else -}}
+          {{- with $.Resources.GetMatch . -}}
+            {{- $coverURL = .RelPermalink -}}
+          {{- else -}}
+            {{- with resources.GetMatch . -}}
+              {{- $coverURL = .RelPermalink -}}
+            {{- else -}}
+              {{- $coverURL = relURL . -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $hasCover := ne $coverURL "" -}}
     <a href="{{ .RelPermalink }}" class="rpc{{- if $hasCover }} rpc--has-cover{{- end }}">
       {{- if $hasCover -}}
       <div class="rpc__cover" aria-hidden="true">
-        <img src="{{ $cover.image }}" alt="" loading="lazy" decoding="async">
+        <img src="{{ $coverURL }}" alt="" loading="lazy" decoding="async">
       </div>
       {{- end -}}
       <div class="rpc__body">
