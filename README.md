@@ -140,6 +140,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [The Super-Individual Stack: AI-Native Product Directions and Solo Builder Ops in 2026](https://nsddd.top/growth/posts/super-individual-ai-product-and-solo-builder-stack/)
 - [Building a Production-Grade AI Agent System from Scratch: A Full Architecture Breakdown of Relay](https://nsddd.top/ai-technology/posts/relay-agent-architecture-design/)
 - [Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis](https://nsddd.top/growth/posts/love-seen-clearly-loved-deeply/)
 - [Context Is Not Prompt: Why Context Engineering Is Becoming AI's New Foundation](https://nsddd.top/ai-technology/posts/context-engineering-the-new-foundation/)
