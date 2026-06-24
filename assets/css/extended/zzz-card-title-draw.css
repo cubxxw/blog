@@ -1,0 +1,107 @@
+/* ============================================================
+   zzz-card-title-draw.css — card title comes alive on hover
+   ------------------------------------------------------------
+   The article / homepage cards already lift on hover (custom.css,
+   homepage-daypage.css, zzz-press-feedback.css) — but the *title*
+   inside them stays completely static. With a mouse that lift reads
+   fine, yet the headline never signals "I am the link you're about
+   to open." This layer brings the title to life on pointer hover:
+   it shifts to the accent ink and a short accent underline draws in
+   from the left edge — the same "you are here / click me" idiom the
+   in-prose links (micro-interactions.css) and the deep-link landing
+   bar (interaction-polish.css) already use, so it feels native.
+
+   Design rules followed here (matching the rest of this codebase):
+   • Pointer-only: wrapped in `@media (hover: hover) and (pointer: fine)`
+     so it never fires from a touch tap (phones get the press-scale
+     from zzz-press-feedback.css instead — no phantom hover stuck on).
+   • Zero layout shift: the underline is an absolutely-positioned
+     ::after that scales on the X axis. It never reserves flow space,
+     so resting layout is byte-identical to before.
+   • Language-aware accent via --color-accent (EN sky/green, ZH
+     cinnabar; dark flips per tokens.css) — the same variable the
+     links already resolve, so light/dark/EN/ZH all read correctly.
+   • Loads late (zzz- prefix) and is fully neutralised under
+     prefers-reduced-motion at the bottom. Purely additive feedback —
+     never required for content to be read or navigated.
+   ============================================================ */
+
+/* The title elements across the card families that act as whole-card
+   links. Give each a positioning context for the underline and an
+   eased colour transition so the hover is a glide, not a jump. */
+.hp-post-card .hp-post-title,
+.hp-ai-card .hp-ai-card-title,
+.post-entry .entry-header h2 {
+  position: relative;
+  transition: color 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* The drawn underline: a short accent rule pinned to the title's
+   left edge. Kept to ~2.2em so it reads as a deliberate marker that
+   hugs the start of the headline rather than a full-width rule that
+   would overshoot short titles. Absolute + scaleX(0) at rest means it
+   occupies no space until it grows in. */
+.hp-post-card .hp-post-title::after,
+.hp-ai-card .hp-ai-card-title::after,
+.post-entry .entry-header h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.18em;
+  width: 2.2em;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-accent, var(--primary));
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.32s ease;
+  pointer-events: none;
+}
+
+/* ---------- Pointer hover: light the title up ----------
+   Only fine pointers hover, so this is fenced off from touch. The
+   whole card is the hover target; the title responds. */
+@media (hover: hover) and (pointer: fine) {
+  .hp-post-card:hover .hp-post-title,
+  .hp-ai-card:hover .hp-ai-card-title,
+  .post-entry:hover .entry-header h2 {
+    color: var(--color-accent, var(--primary));
+  }
+  .hp-post-card:hover .hp-post-title::after,
+  .hp-ai-card:hover .hp-ai-card-title::after,
+  .post-entry:hover .entry-header h2::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Keyboard parity: when the card link itself is focused (tab nav),
+   draw the same marker so keyboard users get the identical cue. The
+   featured homepage card and the article cards expose their link via
+   :focus-visible on the card / overlay anchor. */
+.hp-post-card:focus-visible .hp-post-title::after,
+.hp-ai-card:focus-visible .hp-ai-card-title::after,
+.post-entry:focus-within .entry-header h2::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* ============================================================
+   Reduced motion: drop the draw + colour glide entirely so the
+   experience is fully static for visitors who ask for it.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hp-post-card .hp-post-title,
+  .hp-ai-card .hp-ai-card-title,
+  .post-entry .entry-header h2 {
+    transition: none !important;
+  }
+  .hp-post-card .hp-post-title::after,
+  .hp-ai-card .hp-ai-card-title::after,
+  .post-entry .entry-header h2::after {
+    display: none !important;
+  }
+}
