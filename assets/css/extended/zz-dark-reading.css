@@ -1017,3 +1017,32 @@ body.dark .profile_panel__icon--ai,
 [data-theme="dark"] .profile_panel__icon--ai {
   color: #818cf8;
 }
+
+/* ── 30. Inline <code> chip — bring into the contained-chip family (dark) ──
+   Inline code is one of the most-frequent inline elements in this blog's
+   technical prose. The base dark rule (article-typography.css, "Inline Code —
+   pill style": `body.dark .post-content :not(pre) > code`) paints a FLAT
+   `rgba(255,255,255,0.10)` fill with `border: none`. At 0.10 white over the
+   near-black paper that pill is the BRIGHTEST small surface in otherwise-calm
+   dark prose — every other lifted surface in the dark design sits far quieter
+   and is given a hairline rule to contain it: <kbd> (§11) uses a 0.06 fill +
+   a 0.22 token border, <details> (§8) a 0.025 fill + a token border, table
+   headers (§2) a 0.05 band. So a paragraph peppered with inline code reads as
+   a row of glaring patches that pull the eye off the sentence — the one
+   element meant to sit quietly INSIDE the prose shouts above it.
+
+   Bring the inline-code chip into that same contained-chip family: drop the
+   fill to a calmer 0.06 lift (matching <kbd>) and add a 1px token rule so the
+   chip is defined by its EDGE rather than a bright fill — the standard dark-UI
+   idiom, and the move this file already makes for every other inline surface.
+   The code text itself stays `var(--color-ink)` (≈14:1 on the paper — set by
+   the base rule, untouched here), so legibility and discoverability are
+   preserved; only the surrounding glare is calmed. ZH resolves automatically
+   via --color-rule. The selector matches the base rule's specificity exactly
+   (0,2,1) and loads LAST in the extended bundle, so it wins in dark; light
+   mode keeps its `rgba(0,0,0,0.06)` pill, provably unchanged. */
+body.dark .post-content :not(pre) > code,
+[data-theme="dark"] .post-content :not(pre) > code {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-rule, rgba(226, 227, 225, 0.14));
+}
