@@ -69,7 +69,15 @@ body.dark {
   --ei-bg-raised:   #1f3040;
   --ei-text:        #e2edf0;
   --ei-text-2:      #8fb8c4;
-  --ei-text-3:      #5a8a98;
+  /* Tertiary editorial text (dates · tags · list counts). The old #5a8a98
+     landed at just 3.97:1 on the dark card surface (#1a2830) — UNDER the
+     WCAG-AA 4.5:1 floor for this small metadata text, so every list date and
+     count read as a dim teal smudge. Lift to #79a6b4 (same teal hue, a hair
+     brighter): 5.70:1 on the card / 6.25:1 on the low surface — comfortably
+     AA — while staying clearly the dimmest of the three teal text tiers
+     (below --ei-text-2 #8fb8c4), so the hierarchy is unchanged. Dark-scoped
+     in body.dark; the light :root --ei-text-3 is untouched. */
+  --ei-text-3:      #79a6b4;
   --ei-green:       #4ebd82;
   --ei-green-dim:   #3da96f;
   --ei-green-wash:  rgba(78,189,130,0.08);
