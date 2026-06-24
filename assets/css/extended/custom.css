@@ -3496,6 +3496,7 @@ html {
 @media (max-width: 768px) {
     .logo a,
     .lang-switch a,
+    .lang-switch__item,
     .lang-switch li {
         white-space: nowrap !important;
     }
@@ -3673,13 +3674,24 @@ body {
         min-width: 44px;
     }
 
-    .logo-switches button,
-    .lang-switch a {
+    .logo-switches button {
         min-height: 44px;
         min-width: 44px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+    }
+
+    /* Lang switch: keep the pill compact on mobile but enlarge the tap target
+       via the parent <li> so the visual stays elegant while remaining a11y-safe. */
+    .lang-switch__item {
+        min-height: 44px;
+        align-items: center;
+    }
+    .lang-switch__item > a,
+    .lang-switch__item > span {
+        min-height: 28px;
+        padding: 0 11px;
     }
 
     .top-link {
