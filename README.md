@@ -243,6 +243,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [超级个体的栈：2026 年 AI 原生 Solo Builder 的产品方向与运营全图](https://nsddd.top/zh/growth/posts/super-individual-ai-product-and-solo-builder-stack/)
 - [从零设计一个生产级 AI Agent 系统：Relay 求职 Agent 的架构全解](https://nsddd.top/zh/ai-technology/posts/relay-agent-architecture-design/)
 - [看穿之后，依然深爱：五副透镜下的爱，与佛学的统摄](https://nsddd.top/zh/growth/posts/love-seen-clearly-loved-deeply/)
 - [Context 不是 Prompt：为什么「上下文工程」正在成为 AI 的新地基](https://nsddd.top/zh/ai-technology/posts/context-engineering-the-new-foundation/)
