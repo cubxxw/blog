@@ -57,10 +57,32 @@
     {{- else }}
     <priority>0.7</priority>
     {{- end }}
-    {{- if .Params.cover.image }}
+    {{- with .Params.cover.image }}
+    {{- $imgURL := "" -}}
+    {{- if or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+      {{- $imgURL = . -}}
+    {{- else if hasPrefix . "/" -}}
+      {{- $imgURL = . | absURL -}}
+    {{- else -}}
+      {{- with $page.Resources.GetMatch . -}}
+        {{- $imgURL = .Permalink -}}
+      {{- else -}}
+        {{- with resources.GetMatch . -}}
+          {{- $imgURL = .Permalink -}}
+        {{- else -}}
+          {{- $imgURL = . | absURL -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $imgURL }}
     <image:image>
-      <image:loc>{{ .Params.cover.image | absURL }}</image:loc>
+      <image:loc>{{ $imgURL }}</image:loc>
+      <image:title>{{ $page.Title }}</image:title>
+      {{- with $page.Params.cover.alt }}
+      <image:caption>{{ . | plainify }}</image:caption>
+      {{- end }}
     </image:image>
+    {{- end -}}
     {{- end }}
     {{- if .IsTranslated }}
     {{- range .AllTranslations }}

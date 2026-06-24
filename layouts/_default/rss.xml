@@ -1,0 +1,113 @@
+{{- /*
+  Custom RSS 2.0 template — supersedes PaperMod default.
+  Adds: <category>, <enclosure> (cover image), media:content, dc:creator,
+        language-aware channel, full pages on home / regular pages on section.
+  Behavior: summary mode (ShowFullTextinRSS=false).
+  Limit: services.rss.limit = -1 (config.yml) → emits all pages.
+*/ -}}
+{{- $pctx := . -}}
+{{- if .IsHome -}}{{ $pctx = site }}{{- end -}}
+{{- $pages := slice -}}
+{{- if or $.IsHome $.IsSection -}}
+  {{- $pages = $pctx.RegularPages -}}
+{{- else -}}
+  {{- $pages = $pctx.Pages -}}
+{{- end -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+  {{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- $excludedLayouts := slice "search" "archives" "categories" -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>{{ if eq .Title site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ with site.Params.description }}{{ . }}{{ else }}Recent content {{ if ne .Title site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}{{ end }}</description>
+    {{- with site.Params.images }}
+    <image>
+      <title>{{ site.Title }}</title>
+      <url>{{ index . 0 | absURL }}</url>
+      <link>{{ site.BaseURL }}</link>
+    </image>
+    {{- end }}
+    <generator>Hugo -- gohugo.io</generator>
+    {{- with site.LanguageCode }}
+    <language>{{ . }}</language>
+    {{- end }}
+    {{- with site.Params.email }}
+    <managingEditor>{{ . }}{{ with site.Params.author }} ({{ . }}){{ end }}</managingEditor>
+    <webMaster>{{ . }}{{ with site.Params.author }} ({{ . }}){{ end }}</webMaster>
+    {{- end }}
+    {{- with site.Copyright }}
+    <copyright>{{ . }}</copyright>
+    {{- end }}
+    {{- if not .Date.IsZero }}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- end }}
+    {{- with .OutputFormats.Get "RSS" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range $pages }}
+      {{- if in $excludedLayouts .Layout }}{{ continue }}{{ end }}
+      {{- if .Params.private }}{{ continue }}{{ end }}
+      {{- if .Params.robotsNoIndex }}{{ continue }}{{ end }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{- if not .Lastmod.IsZero }}
+      <atom:updated>{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</atom:updated>
+      {{- end }}
+      {{- with site.Params.email }}
+      <author>{{ . }}{{ with site.Params.author }} ({{ . }}){{ end }}</author>
+      {{- end }}
+      {{- with site.Params.author }}
+      <dc:creator>{{ . }}</dc:creator>
+      {{- end }}
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      <description>{{ with .Description }}{{ . | html }}{{ else }}{{ .Summary | plainify | htmlEscape | safeHTML }}{{ end }}</description>
+      {{- if site.Params.ShowFullTextinRSS }}
+      <content:encoded>{{ printf "<![CDATA[%s]]>" .Content | safeHTML }}</content:encoded>
+      {{- end }}
+      {{- range .Params.categories }}
+      <category domain="category">{{ . }}</category>
+      {{- end }}
+      {{- range .Params.tags }}
+      <category domain="tag">{{ . }}</category>
+      {{- end }}
+      {{- /* Cover image → <enclosure> + <media:content> */ -}}
+      {{- $coverURL := "" -}}
+      {{- with .Params.cover }}
+        {{- with .image }}
+          {{- if or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+            {{- $coverURL = . -}}
+          {{- else if hasPrefix . "/" -}}
+            {{- $coverURL = . | absURL -}}
+          {{- else -}}
+            {{- with $.Resources.GetMatch . -}}
+              {{- $coverURL = .Permalink -}}
+            {{- else -}}
+              {{- with resources.GetMatch . -}}
+                {{- $coverURL = .Permalink -}}
+              {{- else -}}
+                {{- $coverURL = . | absURL -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end }}
+      {{- end }}
+      {{- if $coverURL }}
+      <enclosure url="{{ $coverURL }}" type="image/jpeg" length="0" />
+      <media:content url="{{ $coverURL }}" medium="image">
+        {{- with .Params.cover.alt }}<media:description>{{ . | plainify }}</media:description>{{ end -}}
+      </media:content>
+      {{- end }}
+    </item>
+    {{- end }}
+  </channel>
+</rss>

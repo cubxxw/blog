@@ -1849,6 +1849,105 @@ details summary,
   flex-shrink: 0;
 }
 
+/* ── Channel list (subscribe by section, JSON Feed, OPML) ── */
+.rss-channels {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border, rgba(148, 163, 184, 0.25));
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rss-channels__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary, #94a3b8);
+  margin: 0 0 6px;
+}
+
+.rss-channels__row {
+  display: grid;
+  grid-template-columns: 8px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: background 0.12s ease;
+}
+.rss-channels__row:hover {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.rss-channels__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ch-color, #94a3b8);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.04);
+}
+
+.rss-channels__name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--primary);
+  letter-spacing: 0.005em;
+}
+.rss-channels__name--link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+.rss-channels__name--link:hover {
+  color: var(--ch-color, #f97316);
+}
+
+.rss-channels__formats {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.rss-channels__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--secondary, #64748b);
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid transparent;
+  transition: color 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+  min-width: 38px;
+  line-height: 1.4;
+}
+.rss-channels__chip:hover {
+  background: rgba(148, 163, 184, 0.18);
+  border-color: currentColor;
+}
+.rss-channels__chip--rss:hover  { color: #f97316; }
+.rss-channels__chip--json:hover { color: #3b82f6; }
+.rss-channels__chip--opml:hover { color: #a855f7; }
+
+.dark .rss-channels__chip {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--secondary);
+}
+.dark .rss-channels__chip:hover {
+  background: rgba(148, 163, 184, 0.22);
+}
+
+@media (max-width: 480px) {
+  .rss-channels__row  { padding: 5px 6px; gap: 8px; }
+  .rss-channels__name { font-size: 0.8rem; }
+  .rss-channels__chip { padding: 2px 7px; min-width: 34px; font-size: 0.6rem; }
+}
+
 /* ── Newsletter Form ── */
 .newsletter-form {
   display: grid;
