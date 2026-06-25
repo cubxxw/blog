@@ -235,7 +235,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
 - [Start Here](https://nsddd.top/start-here/)
 - [[No Title] - Post](https://nsddd.top/claude/)
-- [分类 · CATEGORIES](https://nsddd.top/categories/)
 <!-- My-Blog-EN:END -->
 
 
