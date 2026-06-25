@@ -129,3 +129,72 @@
     transition: none !important;
   }
 }
+
+/* ============================================================
+   Pagination & tag-link controls — bring them into the family
+   ------------------------------------------------------------
+   The article prev/next pair (.paginav a) already settles on
+   :active (micro-interactions.css), and whole-card links press
+   above. But three other interactive controls only changed on
+   HOVER and gave no tap response on a phone:
+
+   • Section list pagination — .eit-page-btn / .eig-page-btn
+     (AI-tech & growth "← prev / next →") lift on hover
+     (editorial-sections.css) but had no press beat.
+   • The PaperMod-style .pagination a buttons (technology section
+     + default list) lift on hover (custom.css) with the same gap.
+   • The homepage profile tag links (.profile_nav_tag) recolour on
+     hover (custom.css) but, as real <a> links, never confirmed a
+     tap.
+
+   Add the same press cue used for the rest of the family: fine
+   pointers settle down out of their hover lift; touch gets a
+   slightly deeper scale so the tap reads as confirmed before the
+   page changes. Loads last (zzz-) so :active wins at equal
+   specificity, and the default grey tap-flash is replaced by our
+   own cue. Fully neutralised under reduced motion below.
+   ============================================================ */
+.eit-page-btn,
+.eig-page-btn,
+.pagination a,
+.profile_nav_tag {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fine pointers (mouse / trackpad): settle down from the hover lift. */
+@media (hover: hover) and (pointer: fine) {
+  .eit-page-btn:active,
+  .eig-page-btn:active,
+  .pagination a:active {
+    transform: translateY(0) scale(0.97);
+    transition: transform 0.1s ease;
+  }
+  .profile_nav_tag:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Touch / coarse pointers: a slightly deeper, springy press. */
+@media (hover: none) and (pointer: coarse) {
+  .eit-page-btn:active,
+  .eig-page-btn:active,
+  .pagination a:active {
+    transform: scale(0.96);
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .profile_nav_tag:active {
+    transform: scale(0.93);
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eit-page-btn:active,
+  .eig-page-btn:active,
+  .pagination a:active,
+  .profile_nav_tag:active {
+    transform: none !important;
+    transition: none !important;
+  }
+}
