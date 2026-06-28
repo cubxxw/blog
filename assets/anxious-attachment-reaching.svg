@@ -1,0 +1,22 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="450" fill="#2D3748"/>
+
+<g id="anxious_figure" transform="translate(250, 225)">
+    <circle cx="0" cy="0" r="15" fill="#B794F4"/>
+    <circle cx="0" cy="0" r="18" fill="#B794F4" opacity="0.4" filter="url(#pulse)"/>
+</g>
+
+<g id="avoidant_figure" transform="translate(550, 225)" opacity="0.6">
+    <circle cx="0" cy="0" r="15" fill="#718096"/>
+</g>
+
+<path id="connection_line" d="M270 225 Q 400 180 530 225" stroke="#B794F4" stroke-width="2" stroke-dasharray="5 10" fill="none" opacity="0.8">
+    <animate attributeName="stroke-dashoffset" from="0" to="30" dur="1.5s" repeatCount="indefinite"/>
+</path>
+
+<defs>
+    <filter id="pulse" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+</defs>
+</svg>

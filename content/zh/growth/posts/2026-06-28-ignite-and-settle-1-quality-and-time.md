@@ -40,6 +40,8 @@ series:
 > 第三篇讲焦虑型依恋——为什么爱里我们总在确认。
 > 三篇可以从任何一篇进入，但合起来读会构成一张完整的地图。
 
+![Illustration of a spark igniting over a calm surface, representing the concepts of 'ignite' and 'settle'](/ignite-and-settle-duality.svg)
+
 ---
 
 ## 引：一个看起来很简单的问题

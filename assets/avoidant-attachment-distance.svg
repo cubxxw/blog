@@ -1,0 +1,19 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="450" fill="#F0F2F5"/>
+<g id="figure" transform="translate(150, 350)">
+    <circle cx="0" cy="-20" r="8" fill="#A0AEC0"/>
+    <rect x="-6" y="-12" width="12" height="30" rx="6" fill="#A0AEC0"/>
+</g>
+<g id="landscape" opacity="0.8">
+    <path d="M0 400 H800" stroke="#CBD5E0" stroke-width="1"/>
+    <path d="M-100 380 Q 300 350 900 380" stroke="#CBD5E0" stroke-width="0.5" fill="none" />
+    <path d="M-50 420 Q 400 430 850 410" stroke="#E2E8F0" stroke-width="1.5" fill="none" />
+</g>
+<rect width="800" height="450" fill="url(#vignette)"/>
+<defs>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <stop offset="60%" stop-color="rgba(240,242,245,0)" />
+        <stop offset="100%" stop-color="rgba(240,242,245,0.3)" />
+    </radialGradient>
+</defs>
+</svg>

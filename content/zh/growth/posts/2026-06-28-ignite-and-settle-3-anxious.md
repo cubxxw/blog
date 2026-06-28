@@ -40,6 +40,8 @@ series:
 > 第二篇 [回避型依恋](/zh/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/) 讲了那个"想转身"的人是怎么被造出来的。
 > 这一篇讲那个看起来正好相反、底层却紧紧咬住前一篇的另一半——焦虑型。
 
+![Illustration of one shape reaching for another with a dashed, uncertain line, representing anxious attachment and fear of a fading connection](/anxious-attachment-reaching.svg)
+
 ---
 
 ## 一、焦虑型不是"爱得多"
