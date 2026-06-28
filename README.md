@@ -140,6 +140,9 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
+- [Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
+- [Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/)
 - [The Super-Individual Stack: AI-Native Product Directions and Solo Builder Ops in 2026](https://nsddd.top/growth/posts/super-individual-ai-product-and-solo-builder-stack/)
 - [Building a Production-Grade AI Agent System from Scratch: A Full Architecture Breakdown of Relay](https://nsddd.top/ai-technology/posts/relay-agent-architecture-design/)
 - [Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis](https://nsddd.top/growth/posts/love-seen-clearly-loved-deeply/)
