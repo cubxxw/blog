@@ -207,6 +207,36 @@
       "aliases": ["product strategy", "产品策略", "产品方向"],
       "description": "产品策略与方向选择",
       "category": "技术"
+    },
+    "psychology": {
+      "canonical": "Psychology",
+      "aliases": ["psychology", "心理学", "心理"],
+      "description": "心理学相关",
+      "category": "生活"
+    },
+    "attachment": {
+      "canonical": "Attachment",
+      "aliases": ["attachment", "依恋", "依恋理论", "Attachment Theory"],
+      "description": "依恋理论与依恋风格相关",
+      "category": "生活"
+    },
+    "relationships": {
+      "canonical": "Relationships",
+      "aliases": ["relationships", "亲密关系", "人际关系", "关系"],
+      "description": "亲密关系与人际关系相关",
+      "category": "生活"
+    },
+    "intimacy": {
+      "canonical": "Intimacy",
+      "aliases": ["intimacy", "亲密", "亲密感"],
+      "description": "亲密感、靠近、连接相关",
+      "category": "生活"
+    },
+    "inner-work": {
+      "canonical": "Inner Work",
+      "aliases": ["inner work", "内在工作", "自我探索（深度）"],
+      "description": "深度内在探索与自我修复",
+      "category": "生活"
     }
   },
 
