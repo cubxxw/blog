@@ -246,6 +246,9 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [点火与沉底（下）：焦虑型依恋——为什么爱里我们总在确认](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
+- [点火与沉底（中）：回避型依恋——为什么靠近时我们想逃](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
+- [点火与沉底（上）：陪伴的质量与时间，和我们为什么总在快要靠近时转身](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/)
 - [超级个体的栈：2026 年 AI 原生 Solo Builder 的产品方向与运营全图](https://nsddd.top/zh/growth/posts/super-individual-ai-product-and-solo-builder-stack/)
 - [从零设计一个生产级 AI Agent 系统：Relay 求职 Agent 的架构全解](https://nsddd.top/zh/ai-technology/posts/relay-agent-architecture-design/)
 - [看穿之后，依然深爱：五副透镜下的爱，与佛学的统摄](https://nsddd.top/zh/growth/posts/love-seen-clearly-loved-deeply/)
