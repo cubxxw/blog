@@ -83,10 +83,12 @@
     {{- $sIsZh := eq $page.Lang "zh" }}
     {{- $sOrder := $rcSeries.order | default 0 }}
     {{- $sTotal := $rcSeries.total | default (len $rcSeriesOrdered) }}
+    {{- $rcColumnURL := printf "/columns/%s/" $rcSeries.slug }}
+    {{- if eq $page.Lang "zh" }}{{ $rcColumnURL = printf "/zh/columns/%s/" $rcSeries.slug }}{{ end }}
     <div class="rc-series-panel">
       <div class="rc-series-head">
         <span class="rc-series-eyebrow">{{ if $sIsZh }}系列{{ else }}Series{{ end }}</span>
-        <span class="rc-series-name">{{ $rcSeries.name }}</span>
+        <a class="rc-series-name rc-series-name--link" href="{{ $rcColumnURL | relURL }}" title="{{ if $sIsZh }}进入专栏{{ else }}Open column{{ end }}">{{ $rcSeries.name }}</a>
         <span class="rc-series-badge">{{ if $sIsZh }}{{ $sOrder }} / {{ $sTotal }}{{ else }}{{ $sOrder }} of {{ $sTotal }}{{ end }}</span>
       </div>
       <ol class="rc-series-list">

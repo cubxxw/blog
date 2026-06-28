@@ -26,6 +26,8 @@ tldr:
   - Repair isn't becoming "not caring." It's transferring part of the self-soothing function from the outside back onto yourself.
   - The single most important sentence — you don't need love too much. You're too afraid of love disappearing.
 maturity: budding
+columns:
+  - ignite-and-settle
 series:
   name: Ignite and Settle
   slug: ignite-and-settle

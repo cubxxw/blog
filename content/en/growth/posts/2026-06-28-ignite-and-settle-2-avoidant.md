@@ -26,6 +26,8 @@ tldr:
   - The core of repair is not forcing yourself to become warmer. It is allowing another person to come closer, a little at a time, without losing yourself.
   - The single most important sentence — you are not broken. You learned to protect yourself too early. That protection has now become excessive.
 maturity: budding
+columns:
+  - ignite-and-settle
 series:
   name: Ignite and Settle
   slug: ignite-and-settle

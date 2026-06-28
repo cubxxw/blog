@@ -203,6 +203,18 @@ outputs:
       - HTML
       - RSS
 
+# Taxonomies — keep Hugo defaults (tag/category) and add `column` for
+# multi-part essay groups ("专栏"). Each article opts in via frontmatter:
+#   columns: [ignite-and-settle]
+# URL becomes /columns/ignite-and-settle/ (and /zh/columns/...).
+taxonomies:
+  category: categories
+  tag: tags
+  column: columns
+
+permalinks:
+  columns: /columns/:slug/
+
 # languageCode: en-us
 DefaultContentLanguage: en
 # 启用多语言模式

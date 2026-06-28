@@ -26,6 +26,8 @@ tldr:
   - 修复的关键不是变得不在乎，而是把自我安抚的能力从外部转移一部分回到自己身上。
   - 最关键的一句：你不是太需要爱，你是太害怕爱消失。
 maturity: budding
+columns:
+  - ignite-and-settle
 series:
   name: 点火与沉底
   slug: ignite-and-settle

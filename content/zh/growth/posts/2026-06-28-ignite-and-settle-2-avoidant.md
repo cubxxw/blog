@@ -26,6 +26,8 @@ tldr:
   - 修复的核心不是逼自己变热情，而是在不失去自我的情况下，允许别人靠近一点点。
   - 最关键的一句：你不是有问题，你是以前太早学会了自我保护——现在那套保护过度了。
 maturity: budding
+columns:
+  - ignite-and-settle
 series:
   name: 点火与沉底
   slug: ignite-and-settle

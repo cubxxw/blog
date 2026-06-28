@@ -261,10 +261,12 @@
       {{- $absIsZh := eq .Lang "zh" }}
       {{- $absOrder := $absSeries.order | default 0 }}
       {{- $absTotal := $absSeries.total | default (len $absOrdered) }}
+      {{- $absColumnURL := printf "/columns/%s/" $absSeries.slug }}
+      {{- if eq .Lang "zh" }}{{ $absColumnURL = printf "/zh/columns/%s/" $absSeries.slug }}{{ end }}
       <div class="abs-series">
         <div class="abs-series-head">
           <span class="abs-series-eyebrow">{{ if $absIsZh }}系列{{ else }}Series{{ end }}</span>
-          <span class="abs-series-name">{{ $absSeries.name }}</span>
+          <a class="abs-series-name abs-series-name--link" href="{{ $absColumnURL | relURL }}">{{ $absSeries.name }}</a>
           <span class="abs-series-badge">{{ if $absIsZh }}{{ $absOrder }} / {{ $absTotal }}{{ else }}{{ $absOrder }} of {{ $absTotal }}{{ end }}</span>
         </div>
         <ol class="abs-series-list">

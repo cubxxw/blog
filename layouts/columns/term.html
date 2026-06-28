@@ -1,0 +1,109 @@
+{{- define "main" }}
+{{- $isZh := eq .Lang "zh" -}}
+{{/* Order pages within this column by series.order if present, else by date */}}
+{{- $pages := .Pages.ByParam "series.order" -}}
+{{- if not $pages }}{{ $pages = .Pages.ByDate }}{{ end -}}
+{{- $total := len $pages -}}
+
+<article class="column-page">
+
+  {{/* ─────────────────────────────────────────────────────────────
+       Masthead — magazine opening spread
+       ───────────────────────────────────────────────────────────── */}}
+  <header class="column-masthead">
+    <div class="column-masthead__inner">
+      <p class="column-masthead__eyebrow">
+        <span class="column-eyebrow-rule" aria-hidden="true"></span>
+        <span>{{ if $isZh }}系列专栏{{ else }}Column{{ end }}</span>
+        <span class="column-eyebrow-rule" aria-hidden="true"></span>
+      </p>
+      <h1 class="column-masthead__title">{{ .Title }}</h1>
+      {{- with .Params.subtitle }}
+      <p class="column-masthead__subtitle">{{ . }}</p>
+      {{- end }}
+      <p class="column-masthead__meta">
+        <span class="column-meta-count">
+          {{- if $isZh }}共 {{ $total }} 篇{{ else }}{{ $total }} essays{{ end -}}
+        </span>
+        {{- $totalReading := 0 -}}
+        {{- range $pages -}}
+          {{- $totalReading = add $totalReading .ReadingTime -}}
+        {{- end -}}
+        {{- if $totalReading }}
+        <span class="column-meta-sep">·</span>
+        <span class="column-meta-reading">
+          {{- if $isZh }}约 {{ $totalReading }} 分钟{{ else }}{{ $totalReading }} min total{{ end -}}
+        </span>
+        {{- end }}
+      </p>
+    </div>
+  </header>
+
+  {{/* ─────────────────────────────────────────────────────────────
+       Editorial intro — the column's standfirst / opening note
+       ───────────────────────────────────────────────────────────── */}}
+  {{- if .Content }}
+  <section class="column-intro">
+    <div class="column-intro__rule" aria-hidden="true"></div>
+    <div class="column-intro__body">
+      {{ .Content }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{/* ─────────────────────────────────────────────────────────────
+       Table of contents — numbered vertical roll of each essay
+       ───────────────────────────────────────────────────────────── */}}
+  <section class="column-toc" aria-labelledby="column-toc-heading">
+    <header class="column-toc__head">
+      <h2 id="column-toc-heading" class="column-toc__heading">
+        {{- if $isZh }}目录{{ else }}Contents{{ end -}}
+      </h2>
+      <span class="column-toc__heading-en" aria-hidden="true">{{ if $isZh }}Contents{{ else }}目录{{ end }}</span>
+    </header>
+
+    <ol class="column-toc__list">
+      {{- range $i, $p := $pages -}}
+        {{- $ord := $p.Params.series.order | default (add $i 1) }}
+        {{- $padded := printf "%02d" $ord }}
+      <li class="column-entry">
+        <a class="column-entry__link" href="{{ $p.RelPermalink }}">
+          <span class="column-entry__num" aria-hidden="true">{{ $padded }}</span>
+          <span class="column-entry__body">
+            <h3 class="column-entry__title">{{ $p.Title }}</h3>
+            {{- with $p.Description }}
+            <p class="column-entry__desc">{{ . }}</p>
+            {{- end }}
+            <p class="column-entry__meta">
+              <time datetime="{{ $p.Date.Format "2006-01-02" }}">
+                {{- if $isZh }}{{ $p.Date.Format "2006 年 1 月 2 日" }}{{ else }}{{ $p.Date.Format "January 2, 2006" }}{{ end -}}
+              </time>
+              {{- if $p.ReadingTime }}
+              <span class="column-entry__meta-sep">·</span>
+              <span>
+                {{- if $isZh }}{{ $p.ReadingTime }} 分钟{{ else }}{{ $p.ReadingTime }} min{{ end -}}
+              </span>
+              {{- end }}
+            </p>
+          </span>
+          <svg class="column-entry__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+
+  {{/* Footer rule */}}
+  <footer class="column-footer">
+    <div class="column-footer__rule" aria-hidden="true"></div>
+    <p class="column-footer__note">
+      {{- if $isZh -}}— 完 —{{- else -}}— End —{{- end -}}
+    </p>
+  </footer>
+
+</article>
+
+{{- end }}

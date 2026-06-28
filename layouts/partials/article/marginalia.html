@@ -110,7 +110,7 @@
   </div>
   {{- end }}
 
-  {{/* ── Series (multi-part essay group) ── */}}
+  {{/* ── Series (multi-part essay group, collapsible) ── */}}
   {{- $seriesP := $page.Params.series }}
   {{- if and $seriesP $seriesP.slug }}
     {{- $sSlug := $seriesP.slug }}
@@ -122,13 +122,20 @@
     {{- $sOrdered := sort $sSibs "Params.series.order" "asc" }}
     {{- $sOrder := $seriesP.order | default 0 }}
     {{- $sTotal := $seriesP.total | default (len $sOrdered) }}
+    {{- $sColumnURL := printf "/columns/%s/" $sSlug }}
+    {{- if eq $page.Lang "zh" }}{{ $sColumnURL = printf "/zh/columns/%s/" $sSlug }}{{ end }}
   <div class="marginalia-group marginalia-group--series">
-    <span class="marginalia-label">{{ if $sIsZh }}系列{{ else }}Series{{ end }}</span>
-    <div class="marginalia-series">
-      <div class="marginalia-series-head">
-        <span class="marginalia-series-name">{{ $seriesP.name }}</span>
-        <span class="marginalia-series-badge">{{ $sOrder }}<span class="marginalia-series-badge-sep">/</span>{{ $sTotal }}</span>
-      </div>
+    <details class="marginalia-series-disclose" {{ if false }}open{{ end }}>
+      <summary class="marginalia-series-summary">
+        <span class="marginalia-label">{{ if $sIsZh }}系列{{ else }}Series{{ end }}</span>
+        <span class="marginalia-series-summary-row">
+          <a class="marginalia-series-name marginalia-series-name--link" href="{{ $sColumnURL | relURL }}" title="{{ if $sIsZh }}进入专栏{{ else }}Open column{{ end }}">{{ $seriesP.name }}</a>
+          <span class="marginalia-series-badge">{{ $sOrder }}<span class="marginalia-series-badge-sep">/</span>{{ $sTotal }}</span>
+          <svg class="marginalia-series-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 6 15 12 9 18"/>
+          </svg>
+        </span>
+      </summary>
       {{- if $sOrdered }}
       <ol class="marginalia-series-list">
         {{- range $sOrdered }}
@@ -150,7 +157,7 @@
         {{- end }}
       </ol>
       {{- end }}
-    </div>
+    </details>
   </div>
   {{- end }}
 

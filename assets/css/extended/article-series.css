@@ -14,6 +14,75 @@
 .marginalia-group--series .marginalia-label {
   margin-bottom: 0.1rem;
 }
+
+/* Disclosure wrapper — collapsed by default, expand on click */
+.marginalia-series-disclose {
+  display: block;
+}
+.marginalia-series-disclose > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.05rem 0;
+  border-radius: 4px;
+  outline: none;
+  transition: background-color 160ms ease;
+}
+.marginalia-series-disclose > summary::-webkit-details-marker { display: none; }
+.marginalia-series-disclose > summary::marker { content: ""; }
+.marginalia-series-disclose > summary:focus-visible {
+  background: color-mix(in oklab, var(--color-accent, #862122) 6%, transparent);
+}
+.marginalia-series-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+.marginalia-series-summary-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  line-height: 1.3;
+}
+.marginalia-series-caret {
+  width: 10px;
+  height: 10px;
+  margin-left: auto;
+  color: var(--color-ink, #1a1c1b);
+  opacity: 0.4;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+.marginalia-series-disclose[open] .marginalia-series-caret {
+  transform: rotate(90deg);
+  opacity: 0.7;
+}
+.marginalia-series-disclose:hover .marginalia-series-caret {
+  opacity: 0.75;
+}
+
+/* Series name — now a link to the column page */
+.marginalia-series-name--link {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+.marginalia-series-name--link:hover,
+.marginalia-series-name--link:focus-visible {
+  color: var(--color-accent, #862122);
+  border-bottom-color: color-mix(in oklab, var(--color-accent, #862122) 40%, transparent);
+  outline: none;
+}
+
+/* Expanded list reveal animation */
+.marginalia-series-disclose[open] .marginalia-series-list {
+  animation: marginalia-series-reveal 240ms ease;
+  margin-top: 0.65rem;
+}
+@keyframes marginalia-series-reveal {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .marginalia-series {
   display: flex;
   flex-direction: column;
@@ -299,6 +368,21 @@
   opacity: 0;
   margin-top: 0.35rem;
   transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.rc-series-name--link,
+.abs-series-name--link {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+.rc-series-name--link:hover,
+.rc-series-name--link:focus-visible,
+.abs-series-name--link:active {
+  color: var(--color-accent, #862122);
+  border-bottom-color: color-mix(in oklab, var(--color-accent, #862122) 40%, transparent);
+  outline: none;
 }
 
 .rc-ai-chip--series {
