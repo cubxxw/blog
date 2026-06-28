@@ -1164,3 +1164,38 @@ body.dark .archives-post__draft,
 [data-theme="dark"] .archives-post__draft {
   color: #fbbf24;
 }
+
+/* ── 35. Quiet-UI text on lifted chip surfaces in dark (AA repair) ─
+   PaperMod's dark secondary text token is --secondary: rgb(155,156,157)
+   (#9b9c9d). It clears AA comfortably where it sits straight on the dark
+   paper (#121413 EN / #1c1917 ZH) — e.g. the inline TOC links read at
+   ~6.7:1. But two reading-adjacent components paint their quiet text/icons
+   over a FAINTLY-LIFTED surface rather than the bare paper: the article
+   share bar (.share-btn — resting colour var(--secondary)) and the
+   end-of-post tag chips (.post-tags a). The lift (an rgba-white wash on the
+   chip / button) raises the local background luminance, so the SAME
+   #9b9c9d text drops to just 4.25:1 there — UNDER the WCAG-AA 4.5:1 floor
+   for this small UI text. So the share icons and the post tags read as a
+   dim grey smudge exactly where a reader reaches to share or browse on.
+
+   Fix at the token level, scoped to just these two component subtrees:
+   re-bind --secondary to a HAIR-brighter neutral of the same hue —
+   rgb(176,177,178) (#b0b1b2), a proportional lift of the original grey, so
+   every var(--secondary) consumer inside the share bar (icons + label) and
+   the tag list inherits it at once. That resolves to 5.44:1 on the lifted
+   chip and 8.6:1 on the bare paper — comfortably AA in both EN and ZH dark —
+   while staying clearly recessed below the primary #dadada text, so the
+   visual hierarchy is unchanged. Only text/icon colours key off --secondary
+   in these blocks (borders use --border), so nothing non-text shifts; the
+   :hover states recolour to var(--primary) and are untouched.
+
+   Scoped to .share-container / .post-tags under body.dark /
+   [data-theme="dark"] and loaded last in the extended bundle, so it wins in
+   dark and is never selected in light — light mode keeps #9b9c9d, provably
+   unchanged. */
+body.dark .share-container,
+body.dark .post-tags,
+[data-theme="dark"] .share-container,
+[data-theme="dark"] .post-tags {
+  --secondary: rgb(176, 177, 178);
+}
