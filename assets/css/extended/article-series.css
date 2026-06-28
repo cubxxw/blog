@@ -1,0 +1,403 @@
+/* Series UI — top-of-article banner + sidebar group + bottom-sheet panel.
+   Activated by frontmatter:
+     series: { name, slug, order, total }
+*/
+
+/* ── Top-of-article banner (centred column) ─────────────────────── */
+.series-nav {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem 1.1rem;
+  border: 1px solid var(--color-rule, rgba(0, 0, 0, 0.08));
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--theme, #fff) 96%, transparent),
+    color-mix(in oklab, var(--theme, #fff) 100%, transparent)
+  );
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+.series-nav__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.75rem;
+  margin-bottom: 0.65rem;
+}
+.series-nav__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #6b6f76);
+  font-weight: 600;
+}
+.series-nav__eyebrow svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.85;
+}
+.series-nav__name {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--primary, #1f2937);
+  line-height: 1.3;
+}
+.series-nav__badge {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-accent, #b45309) 14%, transparent);
+  color: var(--color-accent, #b45309);
+  letter-spacing: 0.02em;
+}
+.series-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+  counter-reset: none;
+}
+.series-nav__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
+  transition: background 160ms ease;
+}
+.series-nav__item:hover {
+  background: color-mix(in oklab, var(--color-accent, #b45309) 6%, transparent);
+}
+.series-nav__item--current {
+  background: color-mix(in oklab, var(--color-accent, #b45309) 10%, transparent);
+}
+.series-nav__num {
+  flex: 0 0 1.6rem;
+  height: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-ink-muted, #6b6f76);
+  background: color-mix(in oklab, var(--color-ink-muted, #6b6f76) 10%, transparent);
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+}
+.series-nav__item--current .series-nav__num {
+  background: var(--color-accent, #b45309);
+  color: #fff;
+}
+.series-nav__title {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--primary, #1f2937);
+  text-decoration: none;
+  flex: 1;
+  word-break: break-word;
+}
+.series-nav__title:hover {
+  color: var(--color-accent, #b45309);
+}
+.series-nav__item--current .series-nav__title {
+  font-weight: 600;
+  color: var(--primary, #111);
+}
+
+/* ── Left marginalia "Series" group ─────────────────────────────── */
+.marginalia-group--series .marginalia-series {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.marginalia-series-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.marginalia-series-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary, #1f2937);
+  line-height: 1.3;
+}
+.marginalia-series-badge {
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 0.08rem 0.4rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-accent, #b45309) 14%, transparent);
+  color: var(--color-accent, #b45309);
+  letter-spacing: 0.02em;
+}
+.marginalia-series-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.2rem;
+  border-left: 2px solid color-mix(in oklab, var(--color-rule, #ddd) 70%, transparent);
+  padding-left: 0.6rem;
+}
+.marginalia-series-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+.marginalia-series-num {
+  flex: 0 0 1rem;
+  text-align: right;
+  color: var(--color-ink-muted, #6b6f76);
+  font-variant-numeric: tabular-nums;
+}
+.marginalia-series-title {
+  flex: 1;
+  color: var(--color-ink-muted, #6b6f76);
+  text-decoration: none;
+  word-break: break-word;
+}
+.marginalia-series-title:hover {
+  color: var(--color-accent, #b45309);
+}
+.marginalia-series-item.is-current .marginalia-series-title,
+.marginalia-series-item.is-current .marginalia-series-num {
+  color: var(--primary, #111);
+  font-weight: 600;
+}
+
+/* ── Right editorial-tools "Series" panel ───────────────────────── */
+.rc-series-panel {
+  padding: 0.25rem 0;
+}
+.rc-series-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px dashed color-mix(in oklab, var(--color-rule, #ddd) 80%, transparent);
+}
+.rc-series-eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #6b6f76);
+  font-weight: 600;
+}
+.rc-series-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary, #1f2937);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.rc-series-badge {
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-accent, #b45309) 14%, transparent);
+  color: var(--color-accent, #b45309);
+}
+.rc-series-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.rc-series-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: 8px;
+  transition: background 160ms ease;
+}
+.rc-series-item:hover {
+  background: color-mix(in oklab, var(--color-accent, #b45309) 6%, transparent);
+}
+.rc-series-item.is-current {
+  background: color-mix(in oklab, var(--color-accent, #b45309) 9%, transparent);
+}
+.rc-series-num {
+  flex: 0 0 1.4rem;
+  height: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-ink-muted, #6b6f76);
+  background: color-mix(in oklab, var(--color-ink-muted, #6b6f76) 10%, transparent);
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+}
+.rc-series-item.is-current .rc-series-num {
+  background: var(--color-accent, #b45309);
+  color: #fff;
+}
+.rc-series-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.rc-series-title {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--primary, #1f2937);
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-word;
+}
+.rc-series-title:hover {
+  color: var(--color-accent, #b45309);
+}
+.rc-series-item.is-current .rc-series-title {
+  font-weight: 600;
+}
+.rc-series-desc {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--color-ink-muted, #6b6f76);
+}
+.rc-ai-chip--series {
+  background: color-mix(in oklab, var(--color-accent, #b45309) 6%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent, #b45309) 28%, transparent);
+}
+
+/* ── Mobile bottom sheet "Series" panel ─────────────────────────── */
+.abs-series {
+  padding: 0.4rem 0.25rem;
+}
+.abs-series-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed color-mix(in oklab, var(--color-rule, #ddd) 80%, transparent);
+}
+.abs-series-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #6b6f76);
+  font-weight: 600;
+}
+.abs-series-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary, #1f2937);
+}
+.abs-series-badge {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-accent, #b45309) 14%, transparent);
+  color: var(--color-accent, #b45309);
+}
+.abs-series-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.abs-series-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0.5rem;
+  border-radius: 10px;
+}
+.abs-series-item.is-current {
+  background: color-mix(in oklab, var(--color-accent, #b45309) 9%, transparent);
+}
+.abs-series-num {
+  flex: 0 0 1.7rem;
+  height: 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-ink-muted, #6b6f76);
+  background: color-mix(in oklab, var(--color-ink-muted, #6b6f76) 10%, transparent);
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+}
+.abs-series-item.is-current .abs-series-num {
+  background: var(--color-accent, #b45309);
+  color: #fff;
+}
+.abs-series-title {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--primary, #1f2937);
+  text-decoration: none;
+  flex: 1;
+  word-break: break-word;
+}
+.abs-series-title:hover {
+  color: var(--color-accent, #b45309);
+}
+.abs-series-item.is-current .abs-series-title {
+  font-weight: 600;
+}
+
+/* ── Dark theme overrides ───────────────────────────────────────── */
+.dark .series-nav,
+body.dark .series-nav {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--theme, #1a1a1a) 96%, transparent),
+    color-mix(in oklab, var(--theme, #1a1a1a) 100%, transparent)
+  );
+  border-color: color-mix(in oklab, var(--color-rule, #2a2a2a) 100%, transparent);
+}
+.dark .series-nav__title,
+.dark .marginalia-series-name,
+.dark .rc-series-name,
+.dark .rc-series-title,
+.dark .abs-series-name,
+.dark .abs-series-title,
+body.dark .series-nav__title,
+body.dark .marginalia-series-name,
+body.dark .rc-series-name,
+body.dark .rc-series-title,
+body.dark .abs-series-name,
+body.dark .abs-series-title {
+  color: var(--primary, #e8e6e3);
+}
+
+/* ── Compact view on narrow screens ─────────────────────────────── */
+@media (max-width: 640px) {
+  .series-nav {
+    margin: 1rem 0 1.4rem;
+    padding: 0.85rem 0.95rem 0.95rem;
+  }
+  .series-nav__name {
+    font-size: 0.92rem;
+  }
+  .series-nav__badge {
+    font-size: 0.68rem;
+  }
+  .series-nav__title {
+    font-size: 0.86rem;
+  }
+}

@@ -26,6 +26,11 @@ tldr:
   - Love in long relationships is not a feeling that auto-renews — it is a small action you have to do again and again against the gravity of habit.
   - When we push away someone who is coming close, the impulse comes first. The reason comes after, suspiciously on time.
 maturity: budding
+series:
+  name: Ignite and Settle
+  slug: ignite-and-settle
+  order: 1
+  total: 3
 ---
 
 > This is Part 1 of the "Ignite and Settle" series.

@@ -7,6 +7,17 @@
 {{- $page := . }}
 {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
 {{- $has_headers := ge (len $headers) 1 }}
+{{/* ── Series detection for sidebar Tab ── */}}
+{{- $rcSeries := $page.Params.series }}
+{{- $rcHasSeries := and $rcSeries $rcSeries.slug }}
+{{- $rcSeriesOrdered := slice }}
+{{- if $rcHasSeries }}
+  {{- $rcSibs := slice }}
+  {{- range where (where site.RegularPages "Lang" $page.Lang) "Params.series.slug" $rcSeries.slug }}
+    {{- $rcSibs = $rcSibs | append . }}
+  {{- end }}
+  {{- $rcSeriesOrdered = sort $rcSibs "Params.series.order" "asc" }}
+{{- end }}
 
 <aside class="reading-companion editorial-tools-panel" aria-label="{{ i18n "tools.toc" | default "Editorial Tools" | safeHTML }}">
 
@@ -21,6 +32,17 @@
       </svg>
       <span>{{ i18n "tools.toc" | default "Contents" | safeHTML }}</span>
     </button>
+    {{- if $rcHasSeries }}
+    <button class="rc-tab" role="tab"
+            aria-selected="false" aria-controls="rc-panel-series"
+            id="rc-tab-series" data-tab="series">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      </svg>
+      <span>{{ if eq $page.Lang "zh" }}系列{{ else }}Series{{ end }}</span>
+    </button>
+    {{- end }}
     <button class="rc-tab" role="tab"
             aria-selected="false" aria-controls="rc-panel-ai"
             id="rc-tab-ai" data-tab="ai">
@@ -55,6 +77,41 @@
     {{- end }}
   </div>
 
+  {{- if $rcHasSeries }}
+  {{/* ── Panel: Series (multi-part essay group) ── */}}
+  <div class="rc-panel" id="rc-panel-series" role="tabpanel" aria-labelledby="rc-tab-series" hidden>
+    {{- $sIsZh := eq $page.Lang "zh" }}
+    {{- $sOrder := $rcSeries.order | default 0 }}
+    {{- $sTotal := $rcSeries.total | default (len $rcSeriesOrdered) }}
+    <div class="rc-series-panel">
+      <div class="rc-series-head">
+        <span class="rc-series-eyebrow">{{ if $sIsZh }}系列{{ else }}Series{{ end }}</span>
+        <span class="rc-series-name">{{ $rcSeries.name }}</span>
+        <span class="rc-series-badge">{{ if $sIsZh }}{{ $sOrder }} / {{ $sTotal }}{{ else }}{{ $sOrder }} of {{ $sTotal }}{{ end }}</span>
+      </div>
+      <ol class="rc-series-list">
+        {{- range $rcSeriesOrdered }}
+          {{- $isCurrent := eq .RelPermalink $page.RelPermalink }}
+          {{- $ord := .Params.series.order | default 0 }}
+          <li class="rc-series-item{{ if $isCurrent }} is-current{{ end }}">
+            <span class="rc-series-num">{{ $ord }}</span>
+            <div class="rc-series-body">
+              {{- if $isCurrent }}
+              <span class="rc-series-title" aria-current="page">{{ .Title }}</span>
+              {{- else }}
+              <a class="rc-series-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+              {{- end }}
+              {{- with .Description }}
+              <span class="rc-series-desc">{{ . | truncate 80 "…" }}</span>
+              {{- end }}
+            </div>
+          </li>
+        {{- end }}
+      </ol>
+    </div>
+  </div>
+  {{- end }}
+
   {{/* ── Panel 2: AI Companion ── */}}
   <div class="rc-panel" id="rc-panel-ai" role="tabpanel" aria-labelledby="rc-tab-ai" hidden>
     <div class="rc-ai-panel">
@@ -79,6 +136,17 @@
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}基于这篇文章的主题和内容，推荐 3 个延伸阅读方向或相关话题。{{ else }}Based on this article, suggest 3 directions for further reading or related topics.{{ end }}">
           <span class="rc-ai-chip__icon">🔗</span>{{ if $isZh }}延伸阅读{{ else }}Further reading{{ end }}
         </button>
+        {{- if $rcHasSeries }}
+        {{- $rcSeriesTitles := slice }}
+        {{- range $rcSeriesOrdered }}{{ $rcSeriesTitles = $rcSeriesTitles | append .Title }}{{ end }}
+        {{- $rcSeriesAllTitles := delimit $rcSeriesTitles " / " }}
+        <button type="button" class="rc-ai-chip rc-ai-chip--series" data-prompt="{{ if $isZh }}这篇文章属于《{{ $rcSeries.name }}》系列（全 {{ len $rcSeriesOrdered }} 篇：{{ $rcSeriesAllTitles }}）。请用一段话把整个系列的脉络讲清楚，再告诉我这一篇在其中扮演什么角色。{{ else }}This article is part of the {{ $rcSeries.name }} series ({{ len $rcSeriesOrdered }} parts in total: {{ $rcSeriesAllTitles }}). Give me a one-paragraph map of the whole series, then tell me what role this part plays.{{ end }}">
+          <span class="rc-ai-chip__icon">🧭</span>{{ if $isZh }}全系列脉络{{ else }}Series map{{ end }}
+        </button>
+        <button type="button" class="rc-ai-chip rc-ai-chip--series" data-prompt="{{ if $isZh }}这篇文章在《{{ $rcSeries.name }}》系列里是第 {{ $rcSeries.order }} 篇。请对照另外几篇（{{ $rcSeriesAllTitles }}），告诉我这一篇相对其他几篇的独特视角和不可替代的部分是什么。{{ else }}This article is Part {{ $rcSeries.order }} of the {{ $rcSeries.name }} series. Comparing it to the others ({{ $rcSeriesAllTitles }}), what is the unique angle this part contributes that the others do not?{{ end }}">
+          <span class="rc-ai-chip__icon">🔀</span>{{ if $isZh }}与他篇对比{{ else }}Compare to siblings{{ end }}
+        </button>
+        {{- end }}
       </div>
       <div class="rc-ai-messages" aria-live="polite"></div>
       <div class="rc-ai-loading" hidden>

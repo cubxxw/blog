@@ -110,6 +110,45 @@
   </div>
   {{- end }}
 
+  {{/* ── Series (multi-part essay group) ── */}}
+  {{- $seriesP := $page.Params.series }}
+  {{- if and $seriesP $seriesP.slug }}
+    {{- $sSlug := $seriesP.slug }}
+    {{- $sIsZh := eq $page.Lang "zh" }}
+    {{- $sSibs := slice }}
+    {{- range where (where site.RegularPages "Lang" $page.Lang) "Params.series.slug" $sSlug }}
+      {{- $sSibs = $sSibs | append . }}
+    {{- end }}
+    {{- $sOrdered := sort $sSibs "Params.series.order" "asc" }}
+    {{- $sOrder := $seriesP.order | default 0 }}
+    {{- $sTotal := $seriesP.total | default (len $sOrdered) }}
+  <div class="marginalia-group marginalia-group--series">
+    <span class="marginalia-label">{{ if $sIsZh }}系列{{ else }}Series{{ end }}</span>
+    <div class="marginalia-series">
+      <div class="marginalia-series-head">
+        <span class="marginalia-series-name">{{ $seriesP.name }}</span>
+        <span class="marginalia-series-badge">{{ if $sIsZh }}{{ $sOrder }} / {{ $sTotal }}{{ else }}{{ $sOrder }} of {{ $sTotal }}{{ end }}</span>
+      </div>
+      {{- if $sOrdered }}
+      <ol class="marginalia-series-list">
+        {{- range $sOrdered }}
+          {{- $isCurrent := eq .RelPermalink $page.RelPermalink }}
+          {{- $ord := .Params.series.order | default 0 }}
+          <li class="marginalia-series-item{{ if $isCurrent }} is-current{{ end }}">
+            <span class="marginalia-series-num">{{ $ord }}</span>
+            {{- if $isCurrent }}
+            <span class="marginalia-series-title" aria-current="page">{{ .Title }}</span>
+            {{- else }}
+            <a class="marginalia-series-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{- end }}
+          </li>
+        {{- end }}
+      </ol>
+      {{- end }}
+    </div>
+  </div>
+  {{- end }}
+
   {{/* ── Topics (Categories) ── */}}
   {{- $cats := $page.Language.Params.Taxonomies.category | default "categories" }}
   {{- $catTerms := $page.GetTerms $cats }}

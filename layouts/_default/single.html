@@ -85,6 +85,8 @@
     {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
     {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
 
+    {{- partial "article/series-nav.html" . }}
+
     {{- if (.Param "ShowToc") }}
     {{- partial "toc.html" . }}
     {{- end }}
@@ -197,6 +199,17 @@
       </svg>
       <span>{{ i18n "tools.toc" | default "Contents" | safeHTML }}</span>
     </button>
+    {{- $absSeries := .Params.series }}
+    {{- $absHasSeries := and $absSeries $absSeries.slug }}
+    {{- if $absHasSeries }}
+    <button class="abs-tab" role="tab" data-tab="series" aria-selected="false" aria-controls="abs-panel-series">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      </svg>
+      <span>{{ if eq .Lang "zh" }}系列{{ else }}Series{{ end }}</span>
+    </button>
+    {{- end }}
     <button class="abs-tab" role="tab" data-tab="ai" aria-selected="false" aria-controls="abs-panel-ai">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
@@ -238,6 +251,41 @@
       <p style="font-size:0.75rem;color:var(--color-ink-muted);font-style:italic;">{{ i18n "tools.toc_empty" | default "No headings" | safeHTML }}</p>
       {{- end -}}
     </div>
+
+    {{- if $absHasSeries }}
+    {{/* Panel: Series (multi-part essay group) — mobile */}}
+    <div class="abs-panel" id="abs-panel-series" role="tabpanel" aria-labelledby="abs-tab-series" hidden>
+      {{- $absSibs := slice }}
+      {{- range where (where site.RegularPages "Lang" .Lang) "Params.series.slug" $absSeries.slug }}
+        {{- $absSibs = $absSibs | append . }}
+      {{- end }}
+      {{- $absOrdered := sort $absSibs "Params.series.order" "asc" }}
+      {{- $absIsZh := eq .Lang "zh" }}
+      {{- $absOrder := $absSeries.order | default 0 }}
+      {{- $absTotal := $absSeries.total | default (len $absOrdered) }}
+      <div class="abs-series">
+        <div class="abs-series-head">
+          <span class="abs-series-eyebrow">{{ if $absIsZh }}系列{{ else }}Series{{ end }}</span>
+          <span class="abs-series-name">{{ $absSeries.name }}</span>
+          <span class="abs-series-badge">{{ if $absIsZh }}{{ $absOrder }} / {{ $absTotal }}{{ else }}{{ $absOrder }} of {{ $absTotal }}{{ end }}</span>
+        </div>
+        <ol class="abs-series-list">
+          {{- range $absOrdered }}
+            {{- $isCurrent := eq .RelPermalink $.RelPermalink }}
+            {{- $ord := .Params.series.order | default 0 }}
+            <li class="abs-series-item{{ if $isCurrent }} is-current{{ end }}">
+              <span class="abs-series-num">{{ $ord }}</span>
+              {{- if $isCurrent }}
+              <span class="abs-series-title" aria-current="page">{{ .Title }}</span>
+              {{- else }}
+              <a class="abs-series-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+              {{- end }}
+            </li>
+          {{- end }}
+        </ol>
+      </div>
+    </div>
+    {{- end }}
 
     {{/* Panel 2: AI Companion */}}
     <div class="abs-panel" id="abs-panel-ai" role="tabpanel" aria-labelledby="abs-tab-ai" hidden>

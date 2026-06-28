@@ -1,0 +1,58 @@
+{{/* Series Navigation — top-of-article banner for multi-part essays.
+     Activates when frontmatter contains:
+       series:
+         name: 系列名
+         slug: ignite-and-settle
+         order: N
+         total: M
+     Renders a compact card with: eyebrow, series title, "N / M" badge,
+     and an inline ordered list of all parts (current highlighted).
+     Looks across the same language only; uses series.slug to group.
+*/}}
+{{- $page := . }}
+{{- $series := $page.Params.series }}
+{{- if and $series $series.slug }}
+  {{- $slug := $series.slug }}
+  {{- $isZh := eq $page.Lang "zh" }}
+  {{/* Collect siblings: pages in the same language whose series.slug matches */}}
+  {{- $siblings := slice }}
+  {{- range where (where site.RegularPages "Lang" $page.Lang) "Params.series.slug" $slug }}
+    {{- $siblings = $siblings | append . }}
+  {{- end }}
+  {{/* Sort by series.order ascending */}}
+  {{- $ordered := sort $siblings "Params.series.order" "asc" }}
+  {{- $order := $series.order | default 0 }}
+  {{- $total := $series.total | default (len $ordered) }}
+  {{- $eyebrow := cond $isZh "系列长文" "Series" }}
+  {{- $partLabel := cond $isZh (printf "第 %d 篇 / 共 %d 篇" $order $total) (printf "Part %d of %d" $order $total) }}
+
+  <aside class="series-nav" role="complementary" aria-label="{{ $eyebrow }}: {{ $series.name }}">
+    <div class="series-nav__head">
+      <span class="series-nav__eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>{{ $eyebrow }}</span>
+      </span>
+      <span class="series-nav__name">{{ $series.name }}</span>
+      <span class="series-nav__badge">{{ $partLabel }}</span>
+    </div>
+    {{- if $ordered }}
+    <ol class="series-nav__list">
+      {{- range $i, $sib := $ordered }}
+        {{- $sibOrder := $sib.Params.series.order | default (add $i 1) }}
+        {{- $isCurrent := eq $sib.RelPermalink $page.RelPermalink }}
+        <li class="series-nav__item{{ if $isCurrent }} series-nav__item--current{{ end }}">
+          <span class="series-nav__num">{{ $sibOrder }}</span>
+          {{- if $isCurrent }}
+          <span class="series-nav__title" aria-current="page">{{ $sib.Title }}</span>
+          {{- else }}
+          <a class="series-nav__title" href="{{ $sib.RelPermalink }}">{{ $sib.Title }}</a>
+          {{- end }}
+        </li>
+      {{- end }}
+    </ol>
+    {{- end }}
+  </aside>
+{{- end }}

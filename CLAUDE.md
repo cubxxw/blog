@@ -31,4 +31,6 @@ hugo new content content/en/projects/my-project.md --kind ai-project
 
 判断文章属于 `ai-technology`、`growth` 还是 `projects`，用对应命令创建文件，不要手工新建到错误目录
 
+系列长文用 frontmatter `series: { name, slug, order, total }` 标识（中英文 slug 一致），自动生成正文导航卡、侧栏 Series 块与 AI 系列问。
+
 ---
