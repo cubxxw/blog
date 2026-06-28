@@ -127,7 +127,7 @@
     <div class="marginalia-series">
       <div class="marginalia-series-head">
         <span class="marginalia-series-name">{{ $seriesP.name }}</span>
-        <span class="marginalia-series-badge">{{ if $sIsZh }}{{ $sOrder }} / {{ $sTotal }}{{ else }}{{ $sOrder }} of {{ $sTotal }}{{ end }}</span>
+        <span class="marginalia-series-badge">{{ $sOrder }}<span class="marginalia-series-badge-sep">/</span>{{ $sTotal }}</span>
       </div>
       {{- if $sOrdered }}
       <ol class="marginalia-series-list">
@@ -135,11 +135,16 @@
           {{- $isCurrent := eq .RelPermalink $page.RelPermalink }}
           {{- $ord := .Params.series.order | default 0 }}
           <li class="marginalia-series-item{{ if $isCurrent }} is-current{{ end }}">
-            <span class="marginalia-series-num">{{ $ord }}</span>
             {{- if $isCurrent }}
-            <span class="marginalia-series-title" aria-current="page">{{ .Title }}</span>
+            <span class="marginalia-series-link" aria-current="page">
+              <span class="marginalia-series-num">{{ $ord }}</span>
+              <span class="marginalia-series-title">{{ .Title }}</span>
+            </span>
             {{- else }}
-            <a class="marginalia-series-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a class="marginalia-series-link" href="{{ .RelPermalink }}">
+              <span class="marginalia-series-num">{{ $ord }}</span>
+              <span class="marginalia-series-title">{{ .Title }}</span>
+            </a>
             {{- end }}
           </li>
         {{- end }}

@@ -94,17 +94,26 @@
           {{- $isCurrent := eq .RelPermalink $page.RelPermalink }}
           {{- $ord := .Params.series.order | default 0 }}
           <li class="rc-series-item{{ if $isCurrent }} is-current{{ end }}">
-            <span class="rc-series-num">{{ $ord }}</span>
-            <div class="rc-series-body">
-              {{- if $isCurrent }}
-              <span class="rc-series-title" aria-current="page">{{ .Title }}</span>
-              {{- else }}
-              <a class="rc-series-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-              {{- end }}
-              {{- with .Description }}
-              <span class="rc-series-desc">{{ . | truncate 80 "…" }}</span>
-              {{- end }}
-            </div>
+            {{- if $isCurrent }}
+            <span class="rc-series-link" aria-current="page">
+              <span class="rc-series-num">{{ $ord }}</span>
+              <span class="rc-series-body">
+                <span class="rc-series-title">{{ .Title }}</span>
+                {{- with .Description }}<span class="rc-series-desc">{{ . | truncate 70 "…" }}</span>{{- end }}
+              </span>
+            </span>
+            {{- else }}
+            <a class="rc-series-link" href="{{ .RelPermalink }}">
+              <span class="rc-series-num">{{ $ord }}</span>
+              <span class="rc-series-body">
+                <span class="rc-series-title">{{ .Title }}</span>
+                {{- with .Description }}<span class="rc-series-desc">{{ . | truncate 70 "…" }}</span>{{- end }}
+              </span>
+              <svg class="rc-series-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </a>
+            {{- end }}
           </li>
         {{- end }}
       </ol>

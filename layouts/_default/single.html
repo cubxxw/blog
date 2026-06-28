@@ -85,8 +85,6 @@
     {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
     {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
 
-    {{- partial "article/series-nav.html" . }}
-
     {{- if (.Param "ShowToc") }}
     {{- partial "toc.html" . }}
     {{- end }}
@@ -274,11 +272,16 @@
             {{- $isCurrent := eq .RelPermalink $.RelPermalink }}
             {{- $ord := .Params.series.order | default 0 }}
             <li class="abs-series-item{{ if $isCurrent }} is-current{{ end }}">
-              <span class="abs-series-num">{{ $ord }}</span>
               {{- if $isCurrent }}
-              <span class="abs-series-title" aria-current="page">{{ .Title }}</span>
+              <span class="abs-series-link" aria-current="page">
+                <span class="abs-series-num">{{ $ord }}</span>
+                <span class="abs-series-title">{{ .Title }}</span>
+              </span>
               {{- else }}
-              <a class="abs-series-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <a class="abs-series-link" href="{{ .RelPermalink }}">
+                <span class="abs-series-num">{{ $ord }}</span>
+                <span class="abs-series-title">{{ .Title }}</span>
+              </a>
               {{- end }}
             </li>
           {{- end }}
