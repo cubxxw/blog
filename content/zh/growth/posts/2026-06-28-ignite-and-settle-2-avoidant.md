@@ -40,7 +40,7 @@ series:
 > 这一篇专门讲它的成因和修复路径。
 > 下一篇会讲焦虑型依恋——一个看起来相反、底层却紧紧咬在一起的姐妹模式。
 
-![Illustration of a solitary figure looking out over a vast, empty space, representing emotional distance and avoidance](/avoidant-attachment-distance.svg)
+![Illustration of a solitary figure looking out over a vast, empty space, representing emotional distance and avoidance](/images/avoidant-attachment-distance.svg)
 
 ---
 
