@@ -1,0 +1,71 @@
+<svg viewBox="0 0 720 900" role="img" aria-labelledby="olt old" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:-apple-system,system-ui,sans-serif">
+  <title id="olt">open-lovable 端到端生成流程</title>
+  <desc id="old">从一条指令到一个可预览 React 应用：抓取与建沙箱并行、单次流式生成、截断时单文件补全、写入沙箱预览后终止；后续修改由用户发起，并非自动视觉收敛。</desc>
+  <defs>
+    <marker id="olar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7280"/></marker>
+  </defs>
+  <style>
+    .olbox{fill:#fff;stroke:#2d3748;stroke-width:1.4}
+    .olllm{fill:#eef;stroke:#2d3748;stroke-width:1.4}
+    .olfin{fill:#fff;stroke:#2d3748;stroke-width:2.4}
+    .olt{fill:#2d3748;font-size:14px;font-weight:600;text-anchor:middle}
+    .ols{fill:#6b7280;font-size:11px;text-anchor:middle}
+    .olar{stroke:#6b7280;stroke-width:1.4;fill:none}
+    .oldash{stroke-dasharray:5 4}
+    .oln{fill:#6b7280;font-size:11px;font-style:italic;text-anchor:middle}
+  </style>
+  <rect class="olbox" x="230" y="18" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="44">① 用户输入 URL 或一句话描述</text>
+  <text class="ols" x="360" y="78">并行启动 ↓</text>
+  <line class="olar" x1="360" y1="60" x2="200" y2="98" marker-end="url(#olar)"/>
+  <line class="olar" x1="360" y1="60" x2="520" y2="98" marker-end="url(#olar)"/>
+  <rect class="olbox" x="70" y="98" width="250" height="50" rx="8"/>
+  <text class="olt" x="195" y="120">② 创建沙箱（E2B / Vercel）</text>
+  <text class="ols" x="195" y="138">后台并行启动</text>
+  <rect class="olbox" x="400" y="98" width="250" height="50" rx="8"/>
+  <text class="olt" x="525" y="120">③ Firecrawl 抓取</text>
+  <text class="ols" x="525" y="138">Markdown + 截图</text>
+  <line class="olar" x1="195" y1="148" x2="305" y2="183" marker-end="url(#olar)"/>
+  <line class="olar" x1="525" y1="148" x2="415" y2="183" marker-end="url(#olar)"/>
+  <rect class="olbox" x="230" y="183" width="260" height="50" rx="8"/>
+  <text class="olt" x="360" y="205">④ 拼装 Prompt</text>
+  <text class="ols" x="360" y="223">抓取内容 + 风格 + 约束规则</text>
+  <line class="olar" x1="360" y1="233" x2="360" y2="260" marker-end="url(#olar)"/>
+  <rect class="olllm" x="230" y="260" width="260" height="50" rx="8"/>
+  <text class="olt" x="360" y="282">⑤ streamText 流式生成</text>
+  <text class="ols" x="360" y="300">逐字输出 &lt;file&gt;（LLM 调用）</text>
+  <line class="olar" x1="360" y1="310" x2="360" y2="334" marker-end="url(#olar)"/>
+  <polygon class="olbox" points="360,334 420,372 360,410 300,372"/>
+  <text class="olt" x="360" y="377">⑥ 截断?</text>
+  <text class="ols" x="455" y="364">是</text>
+  <line class="olar oldash" x1="420" y1="372" x2="500" y2="372" marker-end="url(#olar)"/>
+  <rect class="olbox" x="500" y="346" width="190" height="52" rx="8"/>
+  <text class="olt" x="595" y="368">单文件聚焦补全</text>
+  <text class="ols" x="595" y="386">唯一的自动重试</text>
+  <path class="olar oldash" d="M595,346 L595,285 L490,285" marker-end="url(#olar)"/>
+  <text class="ols" x="375" y="428">否</text>
+  <line class="olar" x1="360" y1="410" x2="360" y2="438" marker-end="url(#olar)"/>
+  <rect class="olbox" x="230" y="438" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="464">⑦ 解析 &lt;file&gt; / &lt;package&gt;</text>
+  <line class="olar" x1="360" y1="480" x2="360" y2="500" marker-end="url(#olar)"/>
+  <rect class="olbox" x="230" y="500" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="526">⑧ 写入沙箱 + npm install</text>
+  <line class="olar" x1="360" y1="542" x2="360" y2="562" marker-end="url(#olar)"/>
+  <rect class="olbox" x="230" y="562" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="588">⑨ Vite HMR → iframe 预览</text>
+  <line class="olar" x1="360" y1="604" x2="360" y2="624" marker-end="url(#olar)"/>
+  <rect class="olfin" x="218" y="624" width="284" height="44" rx="8"/>
+  <text class="olt" x="360" y="651">✅ 完成 · 单次生成即终止</text>
+  <line class="olar" x1="360" y1="668" x2="360" y2="712" marker-end="url(#olar)"/>
+  <line class="olar oldash" x1="120" y1="698" x2="600" y2="698"/>
+  <text class="oln" x="360" y="692">↓ 以下由用户发起 · 非自动闭环</text>
+  <rect class="olbox" x="230" y="712" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="738">⑩ 用户在对话中提出修改</text>
+  <line class="olar" x1="360" y1="754" x2="360" y2="774" marker-end="url(#olar)"/>
+  <rect class="olbox" x="200" y="774" width="320" height="42" rx="8"/>
+  <text class="olt" x="360" y="800">Edit 模式 · Agentic Search 定位文件</text>
+  <path class="olar oldash" d="M200,795 L40,795 L40,285 L230,285" marker-end="url(#olar)"/>
+  <text class="ols" x="118" y="300">回到生成（带历史上下文）</text>
+  <text class="oln" x="360" y="846">系统不会自动截图比对「目标站 vs 生成站」反复收敛；</text>
+  <text class="oln" x="360" y="864">视觉逼近完全靠用户多轮对话推进。</text>
+</svg>

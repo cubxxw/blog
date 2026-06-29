@@ -1,0 +1,71 @@
+<svg viewBox="0 0 720 900" role="img" aria-labelledby="olt-en old-en" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:-apple-system,system-ui,sans-serif">
+  <title id="olt-en">open-lovable end-to-end generation flow</title>
+  <desc id="old-en">From one prompt to a previewable React app: scraping and sandbox creation run in parallel, a single streaming generation pass, single-file completion on truncation, write to sandbox and preview, then terminate; later changes are user-initiated, not automatic visual convergence.</desc>
+  <defs>
+    <marker id="olar-en" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7280"/></marker>
+  </defs>
+  <style>
+    .olbox{fill:#fff;stroke:#2d3748;stroke-width:1.4}
+    .olllm{fill:#eef;stroke:#2d3748;stroke-width:1.4}
+    .olfin{fill:#fff;stroke:#2d3748;stroke-width:2.4}
+    .olt{fill:#2d3748;font-size:13px;font-weight:600;text-anchor:middle}
+    .ols{fill:#6b7280;font-size:11px;text-anchor:middle}
+    .olar{stroke:#6b7280;stroke-width:1.4;fill:none}
+    .oldash{stroke-dasharray:5 4}
+    .oln{fill:#6b7280;font-size:11px;font-style:italic;text-anchor:middle}
+  </style>
+  <rect class="olbox" x="230" y="18" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="44">① User enters a URL or prompt</text>
+  <text class="ols" x="360" y="78">launch in parallel ↓</text>
+  <line class="olar" x1="360" y1="60" x2="200" y2="98" marker-end="url(#olar-en)"/>
+  <line class="olar" x1="360" y1="60" x2="520" y2="98" marker-end="url(#olar-en)"/>
+  <rect class="olbox" x="70" y="98" width="250" height="50" rx="8"/>
+  <text class="olt" x="195" y="120">② Create sandbox (E2B / Vercel)</text>
+  <text class="ols" x="195" y="138">background, parallel</text>
+  <rect class="olbox" x="400" y="98" width="250" height="50" rx="8"/>
+  <text class="olt" x="525" y="120">③ Firecrawl scrape</text>
+  <text class="ols" x="525" y="138">Markdown + screenshot</text>
+  <line class="olar" x1="195" y1="148" x2="305" y2="183" marker-end="url(#olar-en)"/>
+  <line class="olar" x1="525" y1="148" x2="415" y2="183" marker-end="url(#olar-en)"/>
+  <rect class="olbox" x="230" y="183" width="260" height="50" rx="8"/>
+  <text class="olt" x="360" y="205">④ Assemble prompt</text>
+  <text class="ols" x="360" y="223">content + style + rules</text>
+  <line class="olar" x1="360" y1="233" x2="360" y2="260" marker-end="url(#olar-en)"/>
+  <rect class="olllm" x="230" y="260" width="260" height="50" rx="8"/>
+  <text class="olt" x="360" y="282">⑤ streamText generation</text>
+  <text class="ols" x="360" y="300">streams &lt;file&gt; (LLM call)</text>
+  <line class="olar" x1="360" y1="310" x2="360" y2="334" marker-end="url(#olar-en)"/>
+  <polygon class="olbox" points="360,334 420,372 360,410 300,372"/>
+  <text class="olt" x="360" y="377">⑥ Truncated?</text>
+  <text class="ols" x="455" y="364">yes</text>
+  <line class="olar oldash" x1="420" y1="372" x2="500" y2="372" marker-end="url(#olar-en)"/>
+  <rect class="olbox" x="500" y="346" width="190" height="52" rx="8"/>
+  <text class="olt" x="595" y="368">Single-file completion</text>
+  <text class="ols" x="595" y="386">the only auto-retry</text>
+  <path class="olar oldash" d="M595,346 L595,285 L490,285" marker-end="url(#olar-en)"/>
+  <text class="ols" x="375" y="428">no</text>
+  <line class="olar" x1="360" y1="410" x2="360" y2="438" marker-end="url(#olar-en)"/>
+  <rect class="olbox" x="230" y="438" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="464">⑦ Parse &lt;file&gt; / &lt;package&gt;</text>
+  <line class="olar" x1="360" y1="480" x2="360" y2="500" marker-end="url(#olar-en)"/>
+  <rect class="olbox" x="230" y="500" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="526">⑧ Write to sandbox + npm install</text>
+  <line class="olar" x1="360" y1="542" x2="360" y2="562" marker-end="url(#olar-en)"/>
+  <rect class="olbox" x="230" y="562" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="588">⑨ Vite HMR → iframe preview</text>
+  <line class="olar" x1="360" y1="604" x2="360" y2="624" marker-end="url(#olar-en)"/>
+  <rect class="olfin" x="218" y="624" width="284" height="44" rx="8"/>
+  <text class="olt" x="360" y="651">✅ Done · single pass ends</text>
+  <line class="olar" x1="360" y1="668" x2="360" y2="712" marker-end="url(#olar-en)"/>
+  <line class="olar oldash" x1="120" y1="698" x2="600" y2="698"/>
+  <text class="oln" x="360" y="692">↓ below is user-initiated · not an auto loop</text>
+  <rect class="olbox" x="230" y="712" width="260" height="42" rx="8"/>
+  <text class="olt" x="360" y="738">⑩ User asks for changes in chat</text>
+  <line class="olar" x1="360" y1="754" x2="360" y2="774" marker-end="url(#olar-en)"/>
+  <rect class="olbox" x="200" y="774" width="320" height="42" rx="8"/>
+  <text class="olt" x="360" y="800">Edit mode · Agentic Search picks files</text>
+  <path class="olar oldash" d="M200,795 L40,795 L40,285 L230,285" marker-end="url(#olar-en)"/>
+  <text class="ols" x="115" y="300">back to generation (with history)</text>
+  <text class="oln" x="360" y="846">The system does NOT auto-diff "target vs generated" to converge;</text>
+  <text class="oln" x="360" y="864">visual fidelity is driven entirely by user chat.</text>
+</svg>
