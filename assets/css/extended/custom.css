@@ -2319,13 +2319,15 @@ details summary,
 }
 
 /* SVGs are diagrams, not photos — don't crop, don't cap height, let them
-   breathe to the full content width. role="img" is set by the render-image
-   hook for every Markdown ![](*.svg). */
-.post-content img[role="img"][src$=".svg"] {
-    max-height: none;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+   breathe to the full content width. The src$=".svg" hook is selector-only;
+   the image-lightbox JS overwrites role="img" → role="button", so don't
+   match on role here. */
+.post-content img[src$=".svg"],
+.post-content img[src*=".svg?"] {
+    max-height: none !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
     border-radius: 8px;
 }
 
