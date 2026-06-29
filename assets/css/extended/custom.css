@@ -2318,6 +2318,17 @@ details summary,
     border-radius: 4px;
 }
 
+/* SVGs are diagrams, not photos — don't crop, don't cap height, let them
+   breathe to the full content width. role="img" is set by the render-image
+   hook for every Markdown ![](*.svg). */
+.post-content img[role="img"][src$=".svg"] {
+    max-height: none;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
 /* Allow users to override with data attributes */
 .post-content img[data-full-height="true"] {
     max-height: none;
