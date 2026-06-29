@@ -140,6 +140,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Dissecting open-lovable: An App Generator That Tames the Raw API Without an Agent Framework](https://nsddd.top/ai-technology/posts/dissecting-open-lovable/)
 - [Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
 - [Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
 - [Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/)
