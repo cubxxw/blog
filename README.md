@@ -246,6 +246,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [拆解 open-lovable：一个不靠 Agent 框架、直接驯服裸 API 的应用生成器](https://nsddd.top/zh/ai-technology/posts/dissecting-open-lovable/)
 - [点火与沉底（下）：焦虑型依恋——为什么爱里我们总在确认](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
 - [点火与沉底（中）：回避型依恋——为什么靠近时我们想逃](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
 - [点火与沉底（上）：陪伴的质量与时间，和我们为什么总在快要靠近时转身](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/)
@@ -345,7 +346,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [跨平台以及多架构编译设计](https://nsddd.top/zh/ai-technology/posts/cross-platform-compilation/)
 - [Kubernetes一篇快速入门的文章](https://nsddd.top/zh/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
 - [参与我们的区块链学习平台项目](https://nsddd.top/zh/ai-technology/posts/participating-in-this-project/)
-- [从这里开始](https://nsddd.top/zh/start-here/)
 <!-- My-Blog-ZH:END -->
 
 
