@@ -1,0 +1,5 @@
+{{- $dest := .Destination | safeURL -}}
+{{- $alt := .Text | safeHTML -}}
+{{- $title := .Title -}}
+{{- $isSVG := hasSuffix (lower .Destination) ".svg" -}}
+<img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async"{{ if $isSVG }} role="img"{{ end }}>

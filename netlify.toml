@@ -82,6 +82,10 @@
   for = "/*.svg"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    # Lock SVGs down: no scripts, no external fetches, treated as opaque images.
+    # Inline styles are kept (many SVGs use style="" for fills/strokes).
+    # sandbox is belt-and-braces for any UA that ignores the directives.
+    Content-Security-Policy = "default-src 'none'; style-src 'unsafe-inline'; sandbox"
 
 # HTML pages: CDN edge caches for 1 hour (s-maxage=3600, up from 600).
 # stale-while-revalidate=86400 lets the edge serve a cached copy while
