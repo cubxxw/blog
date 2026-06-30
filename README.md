@@ -248,6 +248,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2026年6月思考笔记：推开的动作，先于推开的理由](https://nsddd.top/zh/growth/posts/2026-06-thought-notes/)
 - [拆解 open-lovable：一个不靠 Agent 框架、直接驯服裸 API 的应用生成器](https://nsddd.top/zh/ai-technology/posts/dissecting-open-lovable/)
 - [点火与沉底（下）：焦虑型依恋——为什么爱里我们总在确认](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
 - [点火与沉底（中）：回避型依恋——为什么靠近时我们想逃](https://nsddd.top/zh/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
@@ -257,6 +258,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [看穿之后，依然深爱：五副透镜下的爱，与佛学的统摄](https://nsddd.top/zh/growth/posts/love-seen-clearly-loved-deeply/)
 - [Context 不是 Prompt：为什么「上下文工程」正在成为 AI 的新地基](https://nsddd.top/zh/ai-technology/posts/context-engineering-the-new-foundation/)
 - [Agent Engineering 全景地图：那 98.4% 的工程量到底在哪里](https://nsddd.top/zh/ai-technology/posts/agent-engineering-the-98-percent-harness/)
+- [2026年5月思考笔记：在边缘上，用行动认出自己](https://nsddd.top/zh/growth/posts/2026-05-thought-notes/)
 - [2026年4月思考笔记](https://nsddd.top/zh/growth/posts/2026-04-thought-notes/)
 - [Agent 的自我：从洛克到 OpenClaw](https://nsddd.top/zh/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
 - [在不被需要的时代，如何维持自我的重量](https://nsddd.top/zh/growth/posts/weight-of-self-in-ai-age/)
@@ -346,8 +348,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Openkf 多架构镜像的构建策略设计](https://nsddd.top/zh/ai-technology/posts/openkf-multi-architecture-image/)
 - [在AI时代 - 精益团队的企业文化和远程工作指南 v2.0](https://nsddd.top/zh/ai-technology/posts/openim-remote-work-culture/)
 - [跨平台以及多架构编译设计](https://nsddd.top/zh/ai-technology/posts/cross-platform-compilation/)
-- [Kubernetes一篇快速入门的文章](https://nsddd.top/zh/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
-- [参与我们的区块链学习平台项目](https://nsddd.top/zh/ai-technology/posts/participating-in-this-project/)
 <!-- My-Blog-ZH:END -->
 
 
