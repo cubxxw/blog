@@ -140,6 +140,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [2026 June Thought Notes: The Pushing-Away Comes Before the Reason for Pushing Away](https://nsddd.top/growth/posts/2026-06-thought-notes/)
 - [Dissecting open-lovable: An App Generator That Tames the Raw API Without an Agent Framework](https://nsddd.top/ai-technology/posts/dissecting-open-lovable/)
 - [Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
 - [Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close](https://nsddd.top/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
@@ -149,6 +150,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Seen Clearly, Loved Deeply: Five Lenses on Love, and the Buddhist Synthesis](https://nsddd.top/growth/posts/love-seen-clearly-loved-deeply/)
 - [Context Is Not Prompt: Why Context Engineering Is Becoming AI's New Foundation](https://nsddd.top/ai-technology/posts/context-engineering-the-new-foundation/)
 - [The Agent Engineering Map: Where Does That 98.4% of the Work Actually Live?](https://nsddd.top/ai-technology/posts/agent-engineering-the-98-percent-harness/)
+- [2026 May Thought Notes: On the Edge, I Recognize Myself Through Action](https://nsddd.top/growth/posts/2026-05-thought-notes/)
 - [April 2026 Thought Notes](https://nsddd.top/growth/posts/2026-04-thought-notes/)
 - [Agent Identity: From Locke to OpenClaw](https://nsddd.top/ai-technology/posts/agent-identity-from-locke-to-openclaw/)
 - [Maintaining Self-Worth in the Age of AI](https://nsddd.top/growth/posts/weight-of-self-in-ai-age/)
@@ -238,7 +240,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Participating in This Project](https://nsddd.top/ai-technology/posts/participating-in-this-project/)
 - [Kubernetes an Article to Get Started Quickly](https://nsddd.top/ai-technology/posts/kubernetes-an-article-to-get-started-quickly/)
 - [Start Here](https://nsddd.top/start-here/)
-- [[No Title] - Post](https://nsddd.top/claude/)
 <!-- My-Blog-EN:END -->
 
 
