@@ -66,12 +66,12 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v1
+      - uses: arduino/setup-task@c0bc642852239c2689f73f4ea6459c29405f3c52 # v1
         with:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v2
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         with:
           path: |
             ./_output/dist/*.deb
