@@ -33,6 +33,14 @@
 {{- /* Open Graph / Facebook */ -}}
 {{- $ogType := cond (or .IsHome (eq .Kind "taxonomy") (eq .Kind "term") (eq .Kind "section")) "website" "article" -}}
 <meta property="og:type" content="{{ $ogType }}" />
+<meta property="og:site_name" content="{{ site.Title }}" />
+{{- $ogLocale := cond (eq .Language.Lang "zh") "zh_CN" "en_US" -}}
+<meta property="og:locale" content="{{ $ogLocale }}" />
+{{- range .AllTranslations -}}
+{{- if ne .Language.Lang $.Language.Lang -}}
+<meta property="og:locale:alternate" content="{{ cond (eq .Language.Lang "zh") "zh_CN" "en_US" }}" />
+{{- end -}}
+{{- end -}}
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:title" content="{{ $title | plainify }}" />
 <meta property="og:description" content="{{ $description | plainify }}" />
@@ -70,7 +78,9 @@
 <meta name="twitter:title" content="{{ $title | plainify }}" />
 <meta name="twitter:description" content="{{ $description | plainify }}" />
 <meta name="twitter:image" content="{{ $ogImage | absURL }}" />
+<meta name="twitter:image:alt" content="{{ with .Params.cover.alt }}{{ . }}{{ else }}{{ .Title }}{{ end }}" />
 {{- with site.Params.social.twitter -}}
+<meta name="twitter:site" content="@{{ . }}" />
 <meta name="twitter:creator" content="@{{ . }}" />
 {{- end -}}
 
