@@ -36,8 +36,10 @@
   {{- end -}}
   "author": {
     "@type": "Person",
-    "name": {{ $postAuthor | plainify | jsonify }}
+    "name": {{ $postAuthor | plainify | jsonify }},
+    "url": {{ site.BaseURL }}
   },
+  "inLanguage": "{{ if eq .Language.Lang "zh" }}zh-CN{{ else }}en-US{{ end }}",
   "publisher": {
     "@type": "Organization",
     "name": {{ $siteName }},

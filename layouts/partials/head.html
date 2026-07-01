@@ -4,7 +4,7 @@
 {{- if or (eq .Kind "404") .Params.robotsNoIndex }}
 <meta name="robots" content="noindex, nofollow">
 {{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 {{- else }}
 <meta name="robots" content="noindex, nofollow">
 {{- end }}
