@@ -62,6 +62,13 @@
   [headers.values]
     Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
+# Fingerprinted vendor JS (content hash in filename, e.g. fuse.min.<sha>.js)
+# — immutable, 1-year TTL. More specific than /js/*, so it wins for vendor.
+[[headers]]
+  for = "/js/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Static images under /images/.
 [[headers]]
   for = "/images/*"

@@ -14,6 +14,11 @@ ShowRssButtonInSectionTermList: false
 cover:
     hidden: true
 weight: 5
+tldr:
+  - "This is the personal blog of Xinwei Xiong (cubxxw), covering three themes — AI & Technology, Personal Growth, and Travel — with curated reading paths for first-time visitors."
+  - "The AI & Technology path recommends five posts: AI Agent evolution, Sora development, Kubernetes quick start, asking questions in open source, and Go release tooling."
+  - "The Growth path recommends five posts: 2025 annual review, weight of self in the AI age, flow state, GTD four-quadrant practice, and stage growth of open source."
+  - "The Travel path includes an interactive footprint map across 9 countries, digital nomad life records, and the Mount Fuji summit in Japan."
 ---
 
 <div class="start-here-container">

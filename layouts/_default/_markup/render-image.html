@@ -2,4 +2,21 @@
 {{- $alt := .Text | safeHTML -}}
 {{- $title := .Title -}}
 {{- $isSVG := hasSuffix (lower .Destination) ".svg" -}}
-<img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async"{{ if $isSVG }} role="img"{{ end }}>
+{{- /* Intrinsic dimensions for CLS: bitmaps referenced by absolute /path
+       live under static/ (site convention, see CLAUDE.md) — read their
+       size with imageConfig and emit width/height so the browser reserves
+       the box before the lazy image loads. SVGs, external URLs and
+       query-string destinations are skipped. CSS keeps them responsive
+       (max-width:100%; height:auto). */ -}}
+{{- $w := 0 -}}{{- $h := 0 -}}
+{{- if and (not $isSVG) (hasPrefix $dest "/") (not (in $dest "?")) -}}
+  {{- $path := printf "static%s" $dest -}}
+  {{- if fileExists $path -}}
+    {{- with imageConfig $path -}}{{- $w = .Width -}}{{- $h = .Height -}}{{- end -}}
+  {{- end -}}
+{{- else if and (not $isSVG) (not (hasPrefix $dest "http")) (not (hasPrefix $dest "/")) -}}
+  {{- with .Page.Resources.Get .Destination -}}
+    {{- if eq .ResourceType "image" -}}{{- $w = .Width -}}{{- $h = .Height -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }}{{ if gt $w 0 }} width="{{ $w }}" height="{{ $h }}"{{ end }} loading="lazy" decoding="async"{{ if $isSVG }} role="img"{{ end }}>

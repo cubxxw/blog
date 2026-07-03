@@ -14,6 +14,11 @@ ShowRssButtonInSectionTermList: false
 cover:
     hidden: true
 weight: 5
+tldr:
+  - "这是熊鑫伟（cubxxw）的个人博客，聚焦 AI 与技术、个人成长、旅行三大主题，为首次访问者提供精选阅读路径。"
+  - "AI 与技术路径推荐 AI Agent 演进、Sora 开发、Kubernetes 入门、开源提问、Go 工具链等 5 篇代表作。"
+  - "成长路径推荐 2025 年度复盘、AI 时代的自我、心流状态、GTD 四象限、开源阶段成长等 5 篇文章。"
+  - "旅行路径包含跨越 9 个国家的互动足迹地图、数字游民生活记录和日本登富士山等内容。"
 ---
 
 <div class="start-here-container">

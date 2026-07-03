@@ -85,9 +85,12 @@ html:lang(zh) {
   --color-accent-soft:  #eae8e3;
   --color-rule:         rgba(53, 0, 3, 0.10);
 
-  --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC',
-                  'Hiragino Sans GB', 'Microsoft YaHei', 'STSong',
-                  'SimSun', serif;
+  /* Songti SC / STSong sit before the sans fallbacks so the long
+     Noto Serif SC webfont download (dozens of CJK unicode-range
+     subsets) swaps serif→serif instead of flashing sans first. */
+  --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC',
+                  'STSong', 'SimSun', 'PingFang SC', 'Hiragino Sans GB',
+                  'Microsoft YaHei', serif;
   --font-body:    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
                   system-ui, sans-serif;
   --font-meta:    'PingFang SC', 'Hiragino Sans GB', system-ui, sans-serif;

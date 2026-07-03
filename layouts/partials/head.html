@@ -63,7 +63,11 @@
 
 {{- /* order is important */}}
 {{- $core := (slice $theme_vars $reset $common $hljs $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
-{{- $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" | resources.Minify }}
+{{- /* homepage-daypage.css (~52 KB) is homepage-only — keep it out of the
+       site-wide bundle and load it separately on the home pages below. */}}
+{{- $homepageCSS := resources.Get "css/extended/homepage-daypage.css" }}
+{{- $extendedFiles := collections.Complement (slice $homepageCSS) (resources.Match "css/extended/*.css") }}
+{{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
 
 {{- /* bundle all required css */}}
 {{- /* Add extended css after theme style */ -}}
@@ -74,6 +78,19 @@
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
 {{- else }}
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
+{{- end }}
+
+{{- /* Homepage-only DayPage stylesheet (split out of the global bundle
+       above). Loaded after it, so its rules keep the same cascade
+       priority they had when concatenated. */}}
+{{- if .IsHome }}
+{{- $hp := $homepageCSS | resources.Minify }}
+{{- if not site.Params.assets.disableFingerprinting }}
+{{- $hp = $hp | fingerprint }}
+<link crossorigin="anonymous" href="{{ $hp.RelPermalink }}" integrity="{{ $hp.Data.Integrity }}" rel="preload stylesheet" as="style">
+{{- else }}
+<link crossorigin="anonymous" href="{{ $hp.RelPermalink }}" rel="preload stylesheet" as="style">
+{{- end }}
 {{- end }}
 
 {{- /* Search */}}

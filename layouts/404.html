@@ -62,20 +62,19 @@
     .not-found-field { display: none; }
 }
 .not-found-code {
+    font-family: var(--font-display, Georgia, serif);
     font-size: clamp(6rem, 20vw, 10rem);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1;
-    background: linear-gradient(135deg, #0e7490, #00b4ad);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-accent, #2e352e);
     margin-bottom: 16px;
 }
 .not-found-title {
+    font-family: var(--font-display, Georgia, serif);
     font-size: 1.8rem;
     font-weight: 700;
     margin: 0 0 12px;
-    color: var(--primary);
+    color: var(--color-ink, var(--primary));
 }
 .not-found-desc {
     color: var(--secondary);
@@ -100,22 +99,22 @@
     transition: all 0.2s ease;
 }
 .not-found-btn--primary {
-    background: linear-gradient(135deg, #0e7490, #00b4ad);
-    color: #fff;
+    background: var(--color-accent, #2e352e);
+    color: var(--color-paper, #fff);
 }
 .not-found-btn--primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(14,116,144,0.35);
-    color: #fff;
+    box-shadow: var(--shadow-md, 0 4px 16px rgba(15, 23, 42, 0.12));
+    color: var(--color-paper, #fff);
 }
 .not-found-btn--secondary {
-    border: 1px solid var(--border);
-    color: var(--primary);
-    background: var(--entry);
+    border: 1px solid var(--color-rule, var(--border));
+    color: var(--color-ink, var(--primary));
+    background: transparent;
 }
 .not-found-btn--secondary:hover {
-    border-color: #0e7490;
-    color: #0e7490;
+    border-color: var(--color-accent, #2e352e);
+    color: var(--color-accent, #2e352e);
 }
 .not-found-recent {
     text-align: left;
@@ -147,7 +146,7 @@
     font-weight: 500;
 }
 .not-found-recent ul a:hover {
-    color: #0e7490;
+    color: var(--color-accent, #2e352e);
 }
 </style>
 

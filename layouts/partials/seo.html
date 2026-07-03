@@ -84,19 +84,8 @@
 <meta name="twitter:creator" content="@{{ . }}" />
 {{- end -}}
 
-{{- /* Favicon */ -}}
-{{- with site.Params.assets.favicon -}}
-<link rel="icon" href="{{ . | absURL }}" type="image/x-icon" />
-{{- end -}}
-{{- with site.Params.assets.favicon16x16 -}}
-<link rel="icon" type="image/png" sizes="16x16" href="{{ . | absURL }}" />
-{{- end -}}
-{{- with site.Params.assets.favicon32x32 -}}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ . | absURL }}" />
-{{- end -}}
-{{- with site.Params.assets.apple_touch_icon -}}
-<link rel="apple-touch-icon" sizes="180x180" href="{{ . | absURL }}" />
-{{- end -}}
+{{- /* Favicons are emitted once by head.html (with defaults) — do not
+       duplicate them here. */ -}}
 
 {{- /* RSS Feed */ -}}
 {{- range .AlternativeOutputFormats -}}

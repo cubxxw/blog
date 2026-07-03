@@ -12,7 +12,9 @@
   {{- end -}}
 {{- end -}}
 {{- $siteName := site.Title -}}
-{{- $logo := site.Params.assets.favicon | default "/favicon.ico" | absURL -}}
+{{- /* Publisher logo: schema.org wants a raster ≥112×112 — use the
+       180×180 apple-touch-icon PNG, not the .ico favicon. */ -}}
+{{- $logo := site.Params.assets.apple_touch_icon | default "/apple-touch-icon.png" | absURL -}}
 
 {{- /* Article Schema */ -}}
 {{- if $isPost -}}
@@ -36,7 +38,10 @@
   {{- end -}}
   "author": {
     "@type": "Person",
-    "name": {{ $postAuthor | plainify | jsonify }},
+    {{- /* No jsonify: Hugo's JS-context auto-escaping already JSON-encodes
+           values inside ld+json scripts; jsonify here double-encoded the
+           name into "\"Xinwei Xiong\"". */}}
+    "name": {{ $postAuthor | plainify }},
     "url": {{ site.BaseURL }}
   },
   "inLanguage": "{{ if eq .Language.Lang "zh" }}zh-CN{{ else }}en-US{{ end }}",
@@ -53,7 +58,7 @@
     "@id": {{ .Permalink }}
   },
   {{- with .Params.tags -}}
-  "keywords": [{{ range $i, $kw := . }}{{ if $i }}, {{ end }}{{ $kw | plainify | jsonify }}{{ end }}],
+  "keywords": [{{ range $i, $kw := . }}{{ if $i }}, {{ end }}{{ $kw | plainify }}{{ end }}],
   {{- end -}}
   "articleSection": {{ cond (gt (len .Params.categories) 0) (index .Params.categories 0) "Blog" }},
   "wordCount": {{ .WordCount }}

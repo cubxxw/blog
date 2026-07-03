@@ -4,7 +4,10 @@
    Warm amber editorial aesthetic
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+/* Fonts (Space Grotesk / Inter / JetBrains Mono) load asynchronously via
+   extend_head.html's $baseFonts preload — a CSS @import here would be
+   render-blocking on EVERY page once concatenated into the site bundle,
+   and would re-download families the head already fetches. */
 
 /* ---------- DayPage Tokens (homepage scope only) ---------- */
 .homepage-root {
@@ -1885,10 +1888,15 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
     padding: 40px 0;
   }
 
-  /* Fix 6: Social icon touch targets — raise to 44px minimum */
+  /* Fix 6: Social icon touch targets. 42px (not 44) so all seven icons
+     fit one row on a 390px viewport: 7×42 + 6×6px gap = 330px — at 44px
+     they wrapped 6 + 1 with an orphan icon on its own row. */
+  .hp-hero-socials {
+    gap: 6px;
+  }
   .hp-social-icon {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
 
   /* Fix 7: Bear chat button touch targets */

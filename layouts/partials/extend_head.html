@@ -31,7 +31,10 @@
 <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
 {{- /* Google Fonts — async (non-render-blocking) */ -}}
-{{- $baseFonts := "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" -}}
+{{- /* Space Grotesk + the 700 weights of Inter / JetBrains Mono moved here
+       from a render-blocking @import that used to live in
+       homepage-daypage.css — one consolidated async request. */ -}}
+{{- $baseFonts := "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" -}}
 {{- /* Google Fonts — fully async via preload + noscript fallback.
        Use media="print" on the noscript fallback to prevent Chrome's
        speculative parser from issuing a duplicate request (the preload
@@ -58,12 +61,12 @@
 {{- end }}
 {{- end }}
 
-{{- /* Preconnect hints for CDN (googletagmanager already covered above) */ -}}
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-{{- /* Search Command Palette dependencies */ -}}
-<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+{{- /* Search Command Palette dependencies.
+       fuse.js is self-hosted (assets/js/vendor/fuse.min.js): jsdelivr is
+       unreliable from mainland China and cost an extra third-party
+       connection on every page. Fingerprinted → 1-year immutable cache. */ -}}
+{{- $fuseJS := resources.Get "js/vendor/fuse.min.js" | fingerprint }}
+<script defer src="{{ $fuseJS.RelPermalink }}" integrity="{{ $fuseJS.Data.Integrity }}"></script>
 {{- $searchPaletteJS := resources.Get "js/search-palette.js" | minify | fingerprint }}
 <script defer src="{{ $searchPaletteJS.RelPermalink }}" integrity="{{ $searchPaletteJS.Data.Integrity }}"></script>
 

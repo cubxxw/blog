@@ -1,0 +1,373 @@
+/* ============================================================
+   zzz-utility-editorial.css — retheme utility pages to the
+   editorial identity (paper / ink / per-language accent, serif
+   display headings), replacing the legacy teal palette that made
+   /archives/, /articles/, /search/ and the terms pages read like
+   a different website from the home + article surfaces.
+
+   Loads after custom.css (extended bundle is glob-sorted, zzz-
+   sorts last), so plain re-declarations of the same selectors win
+   without !important wars. Colours come from tokens.css so EN/ZH
+   and light/dark variants resolve automatically.
+   ============================================================ */
+
+/* ─── Archives: hero ───────────────────────────────────────── */
+.archives-hero,
+.dark .archives-hero {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-rule);
+  border-radius: 0;
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.archives-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700 !important;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+  background-clip: initial;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+
+.archives-hero__desc {
+  font-family: var(--font-prose);
+  font-style: italic;
+  color: var(--color-ink-muted);
+  max-width: 46em;
+}
+
+.archives-hero__stats,
+.dark .archives-hero__stats {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 8px 0 0;
+  gap: 32px;
+}
+
+.archives-stat {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.archives-stat__number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.archives-stat__label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+}
+
+.archives-stat__divider { background: var(--color-rule); }
+
+/* ─── Archives: year nav ───────────────────────────────────── */
+.archives-year-nav__link,
+.dark .archives-year-nav__link {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink-muted);
+}
+
+.archives-year-nav__link:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: none;
+}
+
+/* ─── Archives: timeline ───────────────────────────────────── */
+.archives-timeline::before {
+  background: var(--color-rule);
+  width: 1px;
+  left: 18.5px;
+}
+
+.archives-year__header::before {
+  background: var(--color-accent);
+  border-color: var(--color-paper);
+  box-shadow: 0 0 0 1px var(--color-accent);
+  width: 12px;
+  height: 12px;
+}
+
+.archives-year__title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-ink);
+}
+
+.archives-year__count {
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+}
+
+.archives-month__title { color: var(--color-ink-muted); }
+
+.archives-month__count {
+  color: var(--color-ink-muted);
+  background: transparent;
+  border: 1px solid var(--color-rule);
+}
+
+.archives-post__dot { background: var(--color-rule); }
+
+.archives-post:hover .archives-post__dot {
+  background: var(--color-accent);
+  box-shadow: none;
+}
+
+.archives-post__link:hover,
+.dark .archives-post__link:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-rule);
+}
+
+.archives-post__date {
+  font-family: var(--font-mono);
+  color: var(--color-ink-muted);
+}
+
+.archives-post__title { color: var(--color-ink); }
+
+.archives-post__tag,
+.dark .archives-post__tag {
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+}
+
+/* ─── Articles (/articles/, section lists): hero ───────────── */
+.posts-hero,
+.dark .posts-hero {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-rule);
+  border-radius: 0;
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.posts-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700 !important;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+  background-clip: initial;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+
+.posts-hero__desc {
+  font-family: var(--font-prose);
+  font-style: italic;
+  color: var(--color-ink-muted);
+}
+
+.posts-hero__count {
+  font-family: var(--font-display);
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.posts-hero__label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+}
+
+/* ─── Articles: filter bar ─────────────────────────────────── */
+.posts-filter,
+.dark .posts-filter {
+  background: color-mix(in srgb, var(--color-paper) 78%, transparent);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  border: 1px solid var(--color-rule);
+  border-radius: 12px;
+}
+
+.posts-filter__label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+}
+
+.posts-filter__chip,
+.dark .posts-filter__chip {
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink-muted);
+}
+
+.posts-filter__chip:hover,
+.dark .posts-filter__chip:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: none;
+}
+
+.posts-filter__chip--active,
+.dark .posts-filter__chip--active {
+  /* custom.css declares these with !important — match it to win the cascade */
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-paper) !important;
+}
+
+.posts-filter__chip--active .posts-filter__chip-count { color: inherit; opacity: 0.75; }
+
+.posts-filter__select {
+  border: 1px solid var(--color-rule);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* ─── Articles: cards ──────────────────────────────────────── */
+.post-entry {
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.post-entry:hover,
+.dark .post-entry:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.post-entry .entry-header h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.005em;
+}
+
+/* Category badges on cards: quiet mono chips instead of the old
+   per-category candy colours, matching the homepage hp-cat chips. */
+.posts-badge {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--color-accent-soft) !important;
+  color: var(--color-accent) !important;
+  border: none !important;
+}
+
+/* Card footer tag pills: quiet hairline chips, not teal candy. */
+.entry-footer .post-tag,
+.dark .entry-footer .post-tag {
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.entry-footer .post-tag:hover,
+.dark .entry-footer .post-tag:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: none;
+}
+
+/* ─── Search page ──────────────────────────────────────────── */
+#searchbox input#searchInput {
+  font-family: var(--font-prose);
+  font-size: 1.05rem;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: 1px solid var(--color-rule);
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#searchbox input#searchInput:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+#searchResults li {
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#searchResults li:hover,
+#searchResults li.focus {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+
+/* Page-header h1 on utility pages (search, terms) → display serif */
+.page-header h1 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* ─── Detail: hero scroll cue readability ──────────────────────
+   The cue is fixed at the viewport's bottom centre with a fully
+   transparent background, so on short viewports its label collided
+   with the post-card text scrolling underneath and both became
+   illegible. Give it a frosted paper pill so it reads as a floating
+   control instead of ghost text. */
+.hero-scroll-cue {
+  background: color-mix(in srgb, var(--color-paper) 82%, transparent);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border: 1px solid var(--color-rule);
+  box-shadow: var(--shadow-sm);
+}
+
+/* On phones the cue lands on top of the digital-twin orb's avatar
+   (the hero is taller than one screen), reading as a broken overlay
+   rather than an affordance — the orb section itself already invites
+   scrolling there. Hide it below tablet width. */
+@media (max-width: 767px) {
+  .hero-scroll-cue { display: none; }
+}
+
+/* (Mobile hero social-icon sizing lives in homepage-daypage.css —
+   that file is loaded only on the homepage, after this bundle.) */
+
+/* ─── Detail: keep sized images responsive ─────────────────────
+   render-image.html now emits intrinsic width/height for CLS; pair
+   with height:auto so the attributes never distort a downscaled
+   image inside the prose column. */
+.post-content img[width] {
+  height: auto;
+}
+
+/* ─── Detail: marginalia PR badge wrap ─────────────────────────
+   In the narrow article sidebar the "PR" badge could get squeezed
+   and wrap its two letters vertically. Pin it to one line. */
+.marginalia-pr-badge {
+  white-space: nowrap;
+  flex-shrink: 0;
+}

@@ -21,6 +21,11 @@ tocopen: false
 type: page
 author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
+tldr:
+  - "熊鑫伟（cubxxw），2001 年出生于中国，是一名 AI 创业者、开源贡献者和数字游民，核心标签是真实、好奇、连接者。"
+  - "他活跃于 OpenIM、OpenKF、Sealos 等开源项目，信奉 AI + Human = Superhuman 的人机协作理念。"
+  - "2024 年起走出舒适区，12 个月游历 9 个国家、35+ 城市，完成 400+ 公里徒步，包括海拔 5416 米的 Tilicho 湖。"
+  - "写作围绕 AI 与技术、成长与认知、旅行与观察、项目与实践四条主线，坚持一手数据优先与跨文化观察视角。"
 ---
 
 <section class="about-hero">
