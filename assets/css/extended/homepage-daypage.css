@@ -64,6 +64,13 @@ body.dark .homepage-root {
   --accent-border:  #3D2A18;
   --border-subtle:  #2D2925;
   --border-default: #3D3830;
+  /* Heatmap ramp for dark surfaces — without these the light beige ramp
+     above leaks through and the card renders as a wall of bright squares.
+     Brightness now encodes activity (high = lightest amber). */
+  --heatmap-empty:  #2E2A25;
+  --heatmap-low:    #57402A;
+  --heatmap-mid:    #A8722F;
+  --heatmap-high:   #EDA24A;
   /* Dark mode: lift the orb glow toward warm gold so it reads as light
      against the dark surface; base stays a deep warm brown. */
   --orb-base:       #2A2118;
@@ -1484,7 +1491,18 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 .hp-recent-post-link { color: var(--fg-muted); text-decoration: none; }
 .hp-recent-post-link:hover { color: var(--fg-primary); }
 
-.hp-heatmap { background: var(--surface-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-card); padding: 20px; }
+.hp-heatmap {
+  --heat-cell: 10px;  /* JS reads grid-auto-columns/column-gap to place month labels */
+  --heat-gap: 2px;
+  background: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  /* grid item: allow shrinking below the week grid's intrinsic width so
+     the inner viewport scrolls instead of the whole page overflowing */
+  min-width: 0;
+  max-width: 100%;
+}
 
 /* Year tab switcher */
 .hp-heatmap-year-tabs {
@@ -1508,14 +1526,31 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 }
 .hp-heatmap-year-tab:hover { background: var(--heatmap-empty); color: var(--fg-primary); border-color: var(--border-default); }
 .hp-heatmap-year-tab.active { background: var(--heatmap-high); color: #fff; border-color: transparent; }
+/* dark ramp flips bright (high = light amber) — white text would vanish */
+body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
 
 .hp-heatmap-legend-year { margin-left: auto; }
 
+/* Horizontal scroll shell: the week grid has an intrinsic width
+   (~53 × 12px); on phones the viewport pans instead of squashing it. */
+.hp-heatmap-viewport {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.hp-heatmap-canvas {
+  width: max-content;
+  opacity: 1;
+  transition: opacity 140ms ease;
+}
+.hp-heatmap-canvas.is-swapping { opacity: 0; }
+
+/* Month labels — JS positions each at its actual first-week column */
 .hp-heatmap-months {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 0;
-  margin-bottom: 8px;
+  position: relative;
+  height: 13px;
+  margin: 0 0 6px 32px; /* 26px weekday rail + 6px gap */
   font-family: var(--font-mono);
   font-size: 9px;
   font-weight: 700;
@@ -1523,15 +1558,124 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   text-transform: uppercase;
   color: var(--fg-subtle);
 }
+.hp-heatmap-months span { position: absolute; top: 0; }
 
-.hp-heatmap-grid { display: grid; grid-template-columns: repeat(53, 1fr); gap: 2px; }
+.hp-heatmap-body { display: flex; gap: 6px; }
 
-.hp-heat-cell { aspect-ratio: 1; border-radius: 2px; background: var(--heatmap-empty); transition: background 200ms; }
+/* Weekday rail (MON / WED / FRI) */
+.hp-heatmap-days {
+  flex: 0 0 26px;
+  display: grid;
+  grid-template-rows: repeat(7, var(--heat-cell));
+  row-gap: var(--heat-gap);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--fg-subtle);
+  text-align: right;
+}
+.hp-heatmap-days span { line-height: var(--heat-cell); }
+
+/* Column-per-week flow: cells are appended day by day starting on a
+   Sunday, so with column auto-flow each 7-cell column is one week —
+   the GitHub layout the month labels assume. (It used to flow in rows,
+   which scrambled the whole year.) */
+.hp-heatmap-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, var(--heat-cell));
+  grid-auto-columns: var(--heat-cell);
+  gap: var(--heat-gap);
+}
+
+.hp-heat-cell {
+  width: var(--heat-cell);
+  height: var(--heat-cell);
+  border-radius: 2px;
+  background: var(--heatmap-empty);
+  transition: transform 120ms ease, background 150ms ease, box-shadow 120ms ease;
+}
 .hp-heat-cell.hp-heat-1 { background: var(--heatmap-low); }
 .hp-heat-cell.hp-heat-2 { background: var(--heatmap-mid); }
 .hp-heat-cell.hp-heat-3 { background: var(--heatmap-high); }
 .hp-heat-cell.hp-heat-out { background: transparent; }
-.hp-heat-cell[style*="cursor: pointer"]:hover { opacity: 0.75; outline: 1px solid var(--fg-muted); outline-offset: 1px; }
+.hp-heat-cell.hp-heat-future { opacity: 0.35; }
+.hp-heat-cell.hp-heat-today { box-shadow: 0 0 0 1px var(--accent); }
+
+.hp-heat-cell.has-posts { cursor: pointer; }
+.hp-heat-cell[data-date]:hover,
+.hp-heat-cell:focus-visible {
+  transform: scale(1.45);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--accent), 0 2px 6px rgba(0, 0, 0, 0.18);
+  position: relative;
+  z-index: 2;
+  outline: none;
+}
+
+/* ── Heatmap tooltip (interactive: links inside are clickable, and a
+      multi-post day pins it open on click) ── */
+.hp-heat-tooltip {
+  position: fixed;
+  z-index: 240;
+  opacity: 0;
+  pointer-events: none;
+  background: var(--surface-white);
+  color: var(--fg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.55;
+  width: max-content;
+  max-width: 250px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  transform: translateY(4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+.hp-heat-tooltip.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.hp-heat-tooltip.is-pinned {
+  border-color: var(--accent-border);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+}
+
+.hp-heat-tip-date {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  margin-bottom: 2px;
+}
+.hp-heat-tip-count { font-weight: 600; }
+.hp-heat-tip-count.is-empty { color: var(--fg-subtle); font-weight: 400; }
+.hp-heat-tip-link {
+  display: block;
+  padding: 3px 0;
+  color: var(--fg-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 226px;
+}
+.hp-heat-tip-link:first-of-type { margin-top: 4px; border-top: 1px solid var(--border-subtle); padding-top: 6px; }
+.hp-heat-tip-link:hover { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-heat-cell,
+  .hp-heat-tooltip,
+  .hp-heatmap-canvas { transition: none; }
+  .hp-heat-cell[data-date]:hover,
+  .hp-heat-cell:focus-visible { transform: none; }
+}
 
 .hp-heatmap-legend {
   display: flex;
@@ -1859,16 +2003,8 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
     height: min(340px, calc(100vw - 40px));
   }
 
-  /* Fix 3: Heatmap — allow horizontal scroll instead of overflowing */
-  .hp-heatmap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .hp-heatmap-grid,
-  .hp-heatmap-months,
-  .hp-heatmap-legend {
-    min-width: 680px;
-  }
+  /* Fix 3: Heatmap — .hp-heatmap-viewport pans the intrinsic-width week
+     grid; the legend stays put. Nothing extra needed at this breakpoint. */
 
   /* Fix 4: Hero h1 — reduce font size; name row wraps on narrow screens */
   .hp-hero h1 {

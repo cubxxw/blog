@@ -305,15 +305,20 @@
         <div class="hp-heatmap" id="hp-heatmap-wrap" data-archive-url="{{ "/archives/" | relLangURL }}" data-first-year="{{ $firstYear }}" data-this-year="{{ $thisYear }}">
           <div class="hp-heatmap-year-tabs" id="hp-heatmap-tabs">
             {{- range seq $thisYear -1 $firstYear -}}
-              <button class="hp-heatmap-year-tab{{ if eq . $thisYear }} active{{ end }}" data-year="{{ . }}">{{ . }}</button>
+              <button class="hp-heatmap-year-tab{{ if eq . $thisYear }} active{{ end }}" data-year="{{ . }}" aria-pressed="{{ if eq . $thisYear }}true{{ else }}false{{ end }}">{{ . }}</button>
             {{- end -}}
           </div>
-          <div class="hp-heatmap-months" id="hp-heatmap-months">
-            <span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span>
-            <span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span>
-            <span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
+          <div class="hp-heatmap-viewport">
+            <div class="hp-heatmap-canvas" id="hp-heatmap-canvas">
+              <div class="hp-heatmap-months" id="hp-heatmap-months" aria-hidden="true"></div>
+              <div class="hp-heatmap-body">
+                <div class="hp-heatmap-days" aria-hidden="true">
+                  <span></span><span>MON</span><span></span><span>WED</span><span></span><span>FRI</span><span></span>
+                </div>
+                <div class="hp-heatmap-grid" id="hp-heatmap-grid"></div>
+              </div>
+            </div>
           </div>
-          <div class="hp-heatmap-grid" id="hp-heatmap-grid"></div>
           <div class="hp-heatmap-legend">
             <span>LESS</span>
             <span class="hp-heatmap-legend-cells">
@@ -761,22 +766,26 @@
 
   /* ── Build-time post dates → heatmap; RSS → status pill only ── */
   (function() {
-    // 1. Heatmap — per-year view, clickable cells, year tab switcher
+    // 1. Heatmap — GitHub-style column-per-week grid, per-year view, rich
+    //    interactive tooltip (hover / focus / click-to-pin), year switcher.
     (function() {
       var section  = document.getElementById('hp-travel');
       var wrap     = document.getElementById('hp-heatmap-wrap');
       var hg       = document.getElementById('hp-heatmap-grid');
+      var months   = document.getElementById('hp-heatmap-months');
+      var canvas   = document.getElementById('hp-heatmap-canvas');
       var tabs     = document.getElementById('hp-heatmap-tabs');
       var legendYr = document.getElementById('hp-heatmap-legend-year');
       if (!hg || !section || !wrap) return;
 
       var archiveBase = wrap.dataset.archiveUrl || '/archives/';
       var thisYear    = parseInt(wrap.dataset.thisYear, 10) || new Date().getFullYear();
+      var MONTHS      = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 
       var rawPosts = [];
       try { rawPosts = JSON.parse(section.dataset.postDates || '[]'); } catch(e) {}
 
-      // Build countMap: YYYY-MM-DD → count, postsMap: YYYY-MM-DD → [{title,url}]
+      // countMap: YYYY-MM-DD → count, postsMap: YYYY-MM-DD → [{title,url}]
       var countMap = {};
       var postsMap = {};
       rawPosts.forEach(function(p) {
@@ -789,117 +798,255 @@
         }
       });
 
-      // Custom tooltip element
+      // Local-timezone date key. (toISOString() is UTC: east of Greenwich it
+      // shifts every key back one day — Jan 1 posts fell out of their year.)
+      function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+      function keyOf(d) { return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+      var todayKey = keyOf(new Date());
+
+      /* ── Tooltip: single element, interactive (links are clickable),
+            delayed hide so the pointer can travel into it, click-to-pin
+            for multi-post days. Appended inside the card so the DayPage
+            CSS tokens resolve. ── */
       var tooltip = document.createElement('div');
-      tooltip.id = 'hp-heat-tooltip';
-      tooltip.style.cssText = [
-        'position:fixed','z-index:9999','pointer-events:none','opacity:0',
-        'background:var(--entry,#1e1e1e)','color:var(--primary,#eee)',
-        'border:1px solid var(--border,#444)','border-radius:8px',
-        'padding:10px 13px','font-size:12px','line-height:1.6',
-        'max-width:220px','box-shadow:0 4px 16px rgba(0,0,0,0.25)',
-        'transition:opacity 0.15s ease'
-      ].join(';');
-      document.body.appendChild(tooltip);
+      tooltip.className = 'hp-heat-tooltip';
+      tooltip.setAttribute('role', 'tooltip');
+      wrap.appendChild(tooltip);
 
-      function showTooltip(cell, key, cnt, postsOnDay) {
+      var hideTimer = null;
+      var pinned = false;
+      var anchorCell = null;
+
+      function buildTip(key, cnt, posts) {
+        tooltip.textContent = '';
         var d = new Date(key + 'T12:00:00');
-        var dateStr = d.toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year:'numeric', month:'long', day:'numeric' });
-        var html = '<div style="font-weight:600;margin-bottom:4px">' + dateStr + '</div>';
-        if (cnt === 0) {
-          html += '<div style="opacity:0.5">' + (isZh ? '无发布' : 'No posts') + '</div>';
-        } else {
-          html += '<div style="opacity:0.7;margin-bottom:6px">' + cnt + (isZh ? ' 篇文章' : (cnt > 1 ? ' posts' : ' post')) + '</div>';
-          postsOnDay.forEach(function(p) {
-            html += '<div style="padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">↗ ' +
-              (p.url ? '<a href="' + p.url + '" style="color:inherit;text-decoration:none" target="_blank">' + p.title + '</a>' : p.title) +
-              '</div>';
-          });
-        }
-        tooltip.innerHTML = html;
-        tooltip.style.opacity = '1';
+        var dateEl = document.createElement('div');
+        dateEl.className = 'hp-heat-tip-date';
+        dateEl.textContent = d.toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        tooltip.appendChild(dateEl);
 
+        var countEl = document.createElement('div');
+        if (cnt === 0) {
+          countEl.className = 'hp-heat-tip-count is-empty';
+          countEl.textContent = isZh ? '无发布' : 'No posts';
+        } else {
+          countEl.className = 'hp-heat-tip-count';
+          countEl.textContent = isZh ? cnt + ' 篇文章' : cnt + (cnt > 1 ? ' posts' : ' post');
+        }
+        tooltip.appendChild(countEl);
+
+        posts.forEach(function(p) {
+          if (!p.url) return;
+          var a = document.createElement('a');
+          a.className = 'hp-heat-tip-link';
+          a.href = p.url;
+          a.textContent = p.title;
+          tooltip.appendChild(a);
+        });
+      }
+
+      function positionTip(cell) {
         var rect = cell.getBoundingClientRect();
-        var tw = tooltip.offsetWidth || 200;
-        var th = tooltip.offsetHeight || 80;
+        var tw = tooltip.offsetWidth  || 200;
+        var th = tooltip.offsetHeight || 60;
         var left = rect.left + rect.width / 2 - tw / 2;
-        var top  = rect.top - th - 8;
+        var top  = rect.top - th - 10;
         if (left < 8) left = 8;
         if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
-        if (top < 8) top = rect.bottom + 8;
+        if (top < 8) top = rect.bottom + 10;
         tooltip.style.left = left + 'px';
         tooltip.style.top  = top  + 'px';
       }
 
-      function hideTooltip() { tooltip.style.opacity = '0'; }
+      function showTip(cell) {
+        clearTimeout(hideTimer);
+        var key = cell.dataset.date;
+        buildTip(key, parseInt(cell.dataset.count, 10) || 0, postsMap[key] || []);
+        tooltip.classList.add('is-visible');
+        positionTip(cell);
+        anchorCell = cell;
+      }
 
+      function hideTip() {
+        tooltip.classList.remove('is-visible', 'is-pinned');
+        pinned = false;
+        anchorCell = null;
+      }
+
+      function scheduleHide() {
+        if (pinned) return;
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(hideTip, 150);
+      }
+
+      tooltip.addEventListener('mouseenter', function() { clearTimeout(hideTimer); });
+      tooltip.addEventListener('mouseleave', scheduleHide);
+      document.addEventListener('click', function(e) {
+        if (pinned && !tooltip.contains(e.target) && !(anchorCell && anchorCell === e.target)) hideTip();
+      });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') hideTip(); });
+      // fixed-position tooltip goes stale the moment anything scrolls
+      document.addEventListener('scroll', function() {
+        if (tooltip.classList.contains('is-visible')) hideTip();
+      }, true);
+      window.addEventListener('resize', hideTip);
+
+      /* ── Cell interaction (event delegation — one listener set for the
+            ~370 cells instead of ~740 bound closures per render) ── */
+      function cellOf(e) {
+        var c = e.target.closest ? e.target.closest('.hp-heat-cell') : null;
+        return (c && c.dataset.date) ? c : null;
+      }
+
+      hg.addEventListener('mouseover', function(e) {
+        var c = cellOf(e);
+        if (c && !pinned) showTip(c);
+      });
+      hg.addEventListener('mouseout', function(e) {
+        if (cellOf(e)) scheduleHide();
+      });
+      hg.addEventListener('focusin', function(e) {
+        var c = cellOf(e);
+        if (c) showTip(c);
+      });
+      hg.addEventListener('focusout', function(e) {
+        if (cellOf(e)) scheduleHide();
+      });
+
+      function activateCell(c) {
+        var key = c.dataset.date;
+        var posts = postsMap[key] || [];
+        if (!posts.length) return;
+        if (posts.length === 1 && posts[0].url) {
+          window.location.href = posts[0].url;
+          return;
+        }
+        // multi-post day: pin the tooltip so its links can be picked
+        showTip(c);
+        pinned = true;
+        tooltip.classList.add('is-pinned');
+      }
+
+      hg.addEventListener('click', function(e) {
+        var c = cellOf(e);
+        if (c) activateCell(c);
+      });
+      hg.addEventListener('keydown', function(e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        var c = cellOf(e);
+        if (c) { e.preventDefault(); activateCell(c); }
+      });
+
+      /* ── Year render: column-per-week (grid-auto-flow: column in CSS),
+            month labels positioned at their actual week columns ── */
       function renderYear(year) {
-        hg.innerHTML = '';
-        if (legendYr) legendYr.textContent = year + ' ACTIVITY';
+        hg.textContent = '';
+        if (months) months.textContent = '';
 
-        // Jan 1 of selected year
-        var jan1 = new Date(year, 0, 1);
-        // start on Sunday of that week
-        var start = new Date(jan1);
-        start.setDate(jan1.getDate() - jan1.getDay());
-
-        // end: Dec 31 of selected year, extended to Saturday
+        var jan1  = new Date(year, 0, 1);
+        var start = new Date(year, 0, 1 - jan1.getDay());          // back to Sunday
         var dec31 = new Date(year, 11, 31);
-        var end = new Date(dec31);
-        end.setDate(dec31.getDate() + (6 - dec31.getDay()));
+        var end   = new Date(year, 11, 31 + (6 - dec31.getDay())); // forward to Saturday
+        var totalDays = Math.round((end - start) / 86400000) + 1;  // always a multiple of 7
 
-        // count weeks
-        var weeks = Math.round((end - start) / (7 * 86400000)) + 1;
-        hg.style.gridTemplateColumns = 'repeat(' + weeks + ', 1fr)';
+        var yearTotal = 0;
+        var frag = document.createDocumentFragment();
+        var monthMarks = [];
 
-        // max count this year for relative color scaling
-        var yearKeys = Object.keys(countMap).filter(function(k) { return k.slice(0,4) === String(year); });
-        var maxCount = Math.max.apply(null, yearKeys.map(function(k) { return countMap[k]; }).concat([1]));
-
-        var cur = new Date(start);
-        while (cur <= end) {
-          var key = cur.toISOString().slice(0,10);
+        for (var i = 0; i < totalDays; i++) {
+          var cur = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+          var key = keyOf(cur);
           var inYear = cur.getFullYear() === year;
           var cnt = inYear ? (countMap[key] || 0) : 0;
-          var lvl = cnt >= maxCount * 0.7 ? 3 : cnt >= maxCount * 0.35 ? 2 : cnt > 0 ? 1 : 0;
+          yearTotal += cnt;
+          // absolute scale: 1 / 2 / 3+ posts a day — relative scaling washed
+          // every active day into the same top shade in low-volume years
+          var lvl = cnt >= 3 ? 3 : cnt;
 
           var cell = document.createElement('div');
-          cell.className = 'hp-heat-cell' + (lvl ? ' hp-heat-' + lvl : '') + (inYear ? '' : ' hp-heat-out');
+          var cls = 'hp-heat-cell';
+          if (lvl) cls += ' hp-heat-' + lvl;
+          if (!inYear) cls += ' hp-heat-out';
+          if (inYear && key > todayKey) cls += ' hp-heat-future';
+          if (key === todayKey) cls += ' hp-heat-today';
 
-          if (inYear) {
-            var dayPosts = postsMap[key] || [];
-            (function(k, c, posts) {
-              cell.addEventListener('mouseenter', function() { showTooltip(cell, k, c, posts); });
-              cell.addEventListener('mouseleave', hideTooltip);
-              if (c > 0) {
-                cell.style.cursor = 'pointer';
-                cell.addEventListener('click', function() {
-                  if (posts.length === 1) window.location.href = posts[0].url;
-                  else window.location.href = archiveBase + '#year-' + year;
-                });
-              }
-            })(key, cnt, dayPosts);
+          if (inYear && key <= todayKey) {
+            cell.dataset.date = key;
+            cell.dataset.count = cnt;
+            if (cnt > 0) {
+              cell.className = cls + ' has-posts';
+              cell.tabIndex = 0;
+              cell.setAttribute('role', 'button');
+              var d = new Date(key + 'T12:00:00');
+              cell.setAttribute('aria-label',
+                d.toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' }) +
+                (isZh ? '，' + cnt + ' 篇文章' : ', ' + cnt + (cnt > 1 ? ' posts' : ' post')));
+            } else {
+              cell.className = cls;
+            }
+          } else {
+            cell.className = cls;
           }
-          hg.appendChild(cell);
-          cur.setDate(cur.getDate() + 1);
+
+          if (inYear && cur.getDate() === 1) {
+            monthMarks.push({ m: cur.getMonth(), week: Math.floor(i / 7) });
+          }
+          frag.appendChild(cell);
+        }
+        hg.appendChild(frag);
+
+        // month labels aligned to their real week columns
+        var cs = getComputedStyle(hg);
+        var pitch = (parseFloat(cs.gridAutoColumns) || 10) + (parseFloat(cs.columnGap) || 3);
+        if (months) {
+          monthMarks.forEach(function(mk) {
+            var s = document.createElement('span');
+            s.textContent = MONTHS[mk.m];
+            s.style.left = (mk.week * pitch) + 'px';
+            months.appendChild(s);
+          });
+        }
+
+        if (legendYr) {
+          legendYr.textContent = year + ' · ' + yearTotal + (yearTotal === 1 ? ' POST' : ' POSTS');
+        }
+
+        // narrow viewports open on JAN — pan the current year to "today"
+        // so the recent activity is what greets the visitor
+        if (year === thisYear) {
+          var vp = wrap.querySelector('.hp-heatmap-viewport');
+          if (vp && vp.scrollWidth > vp.clientWidth) {
+            var todayWeek = Math.floor(Math.round((new Date() - start) / 86400000) / 7);
+            var railW = canvas ? (hg.getBoundingClientRect().left - canvas.getBoundingClientRect().left) : 32;
+            vp.scrollLeft = Math.max(0, railW + (todayWeek + 2) * pitch - vp.clientWidth);
+          }
         }
       }
 
-      // Tab switching
-      var activeYear = thisYear;
+      // Tab switching with a soft cross-fade
       if (tabs) {
         tabs.addEventListener('click', function(e) {
           var btn = e.target.closest('.hp-heatmap-year-tab');
           if (!btn) return;
           var yr = parseInt(btn.dataset.year, 10);
-          tabs.querySelectorAll('.hp-heatmap-year-tab').forEach(function(b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          activeYear = yr;
-          renderYear(yr);
+          tabs.querySelectorAll('.hp-heatmap-year-tab').forEach(function(b) {
+            b.classList.toggle('active', b === btn);
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+          });
+          hideTip();
+          if (canvas) {
+            canvas.classList.add('is-swapping');
+            setTimeout(function() {
+              renderYear(yr);
+              canvas.classList.remove('is-swapping');
+            }, 120);
+          } else {
+            renderYear(yr);
+          }
         });
       }
 
-      renderYear(activeYear);
+      renderYear(thisYear);
     })();
 
     // 2. RSS fetch only for latest post title → status pill
