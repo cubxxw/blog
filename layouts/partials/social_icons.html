@@ -1,9 +1,35 @@
 <div class="social-icons">
     {{- range . }}
+    {{- if eq .name "wechat" }}
+    {{- /* WeChat has no clickable profile URL — render a button that opens an
+           on-site contact card (QR + WeChat ID) instead of a dead link.
+           The QR is served resized/optimised via Hugo Pipes when available,
+           falling back to the raw static asset. */ -}}
+    {{- $qrSrc := .qr | relURL -}}
+    {{- with resources.Get "wechat.jpg" -}}
+        {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
+        {{- if and hugo.IsExtended $prod -}}
+            {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
+        {{- else -}}
+            {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
+        {{- end -}}
+    {{- end -}}
+    <button type="button"
+       class="social-icons__wechat"
+       title="{{ .title | default "微信 / WeChat" }}"
+       aria-label="{{ .title | default "微信 / WeChat" }}"
+       aria-haspopup="dialog"
+       data-wechat-id="{{ .wechatID }}"
+       data-wechat-qr="{{ $qrSrc }}"
+       onclick="openWechatContact(this)">
+        {{ partial "svg.html" . }}
+    </button>
+    {{- else }}
     <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
        title="{{ (.title | default .name) | title }}"
        aria-label="{{ (.title | default .name) | title }}">
         {{ partial "svg.html" . }}
     </a>
+    {{- end }}
     {{- end }}
 </div>

@@ -1,0 +1,144 @@
+{{- /* ── WeChat contact card ──────────────────────────────────────────────
+       A lightweight, on-site "Add me on WeChat" dialog: personal QR code +
+       copyable WeChat ID. Built lazily on first open, works on any page that
+       renders the wechat social icon. No third-party requests. */ -}}
+{{- $zh := eq site.Language.Lang "zh" -}}
+<script>
+(function () {
+  "use strict";
+
+  // Localised copy. jsonify + safeJS => one valid, correctly-escaped JS string
+  // literal per entry (no double-encoding, no HTML entities inside <script>).
+  var T = {
+    title:      {{ cond $zh "加我的微信" "Add me on WeChat" | jsonify | safeJS }},
+    titleSub:   {{ cond $zh "Add me on WeChat" "加我的微信" | jsonify | safeJS }},
+    lead:       {{ cond $zh "扫一扫二维码，或搜索微信号加我为好友，一起聊 AI、开源与远程生活。" "Scan the QR code, or search my WeChat ID to add me — let’s talk AI, open source and the nomad life." | jsonify | safeJS }},
+    idLabel:    {{ cond $zh "微信号" "WeChat ID" | jsonify | safeJS }},
+    copy:       {{ cond $zh "复制微信号" "Copy ID" | jsonify | safeJS }},
+    copied:     {{ cond $zh "已复制 ✓" "Copied ✓" | jsonify | safeJS }},
+    scanHint:   {{ cond $zh "打开微信 →「扫一扫」" "Open WeChat · Scan" | jsonify | safeJS }},
+    qrAlt:      {{ cond $zh "微信二维码" "WeChat QR code" | jsonify | safeJS }},
+    close:      {{ cond $zh "关闭" "Close" | jsonify | safeJS }},
+    viewQr:     {{ cond $zh "查看大图" "View full size" | jsonify | safeJS }}
+  };
+
+  var backdrop = null, lastFocus = null;
+
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
+  }); }
+
+  function build(){
+    backdrop = document.createElement("div");
+    backdrop.id = "wechat-contact-backdrop";
+    backdrop.className = "wxc-backdrop";
+    backdrop.setAttribute("aria-hidden", "true");
+    backdrop.innerHTML = [
+      '<div class="wxc-card" role="dialog" aria-modal="true" aria-labelledby="wxc-title">',
+        '<button class="wxc-close" type="button" aria-label="' + esc(T.close) + '" onclick="closeWechatContact()">&#215;</button>',
+        '<div class="wxc-head">',
+          '<span class="wxc-logo" aria-hidden="true">',
+            '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">',
+              '<path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>',
+            '</svg>',
+          '</span>',
+          '<div class="wxc-headtext">',
+            '<h2 class="wxc-title" id="wxc-title">' + esc(T.title) + '</h2>',
+            '<span class="wxc-title-sub">' + esc(T.titleSub) + '</span>',
+          '</div>',
+        '</div>',
+        '<p class="wxc-lead">' + esc(T.lead) + '</p>',
+        '<a class="wxc-qr" href="#" target="_blank" rel="noopener" title="' + esc(T.viewQr) + '">',
+          '<span class="wxc-qr-frame">',
+            '<img class="wxc-qr-img" src="" alt="' + esc(T.qrAlt) + '" width="220" height="220" decoding="async" loading="lazy" />',
+            '<span class="wxc-scanline" aria-hidden="true"></span>',
+          '</span>',
+        '</a>',
+        '<p class="wxc-scanhint"><span class="wxc-scanhint-dot" aria-hidden="true"></span>' + esc(T.scanHint) + '</p>',
+        '<div class="wxc-id">',
+          '<span class="wxc-id-label">' + esc(T.idLabel) + '</span>',
+          '<code class="wxc-id-value"></code>',
+          '<button class="wxc-copy" type="button" onclick="copyWechatID(this)">',
+            '<svg class="wxc-copy-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+            '<span class="wxc-copy-txt">' + esc(T.copy) + '</span>',
+          '</button>',
+        '</div>',
+      '</div>'
+    ].join("");
+    backdrop.addEventListener("click", function (e) {
+      if (e.target === backdrop) closeWechatContact();
+    });
+    document.body.appendChild(backdrop);
+    return backdrop;
+  }
+
+  window.openWechatContact = function (btn) {
+    lastFocus = btn || document.activeElement;
+    var id = (btn && btn.getAttribute("data-wechat-id")) || "";
+    var qr = (btn && btn.getAttribute("data-wechat-qr")) || "";
+    if (!backdrop) build();
+
+    var img = backdrop.querySelector(".wxc-qr-img");
+    var frame = backdrop.querySelector(".wxc-qr-frame");
+    var link = backdrop.querySelector(".wxc-qr");
+    frame.classList.remove("is-loaded");
+    img.onload = function () { frame.classList.add("is-loaded"); };
+    img.src = qr;
+    link.setAttribute("href", qr);
+
+    backdrop.querySelector(".wxc-id-value").textContent = id;
+    backdrop.dataset.wechatId = id;
+
+    // reset copy button label
+    var txt = backdrop.querySelector(".wxc-copy-txt");
+    if (txt) txt.textContent = T.copy;
+    var copyBtn = backdrop.querySelector(".wxc-copy");
+    if (copyBtn) copyBtn.classList.remove("is-done");
+
+    backdrop.classList.add("is-open");
+    backdrop.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    var closeBtn = backdrop.querySelector(".wxc-close");
+    if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 60);
+  };
+
+  window.closeWechatContact = function () {
+    if (!backdrop) return;
+    backdrop.classList.remove("is-open");
+    backdrop.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+  };
+
+  window.copyWechatID = function (el) {
+    var id = (backdrop && backdrop.dataset.wechatId) || "";
+    if (!id) return;
+    var done = function () {
+      var btn = el.closest ? el.closest(".wxc-copy") : el;
+      var txt = btn && btn.querySelector(".wxc-copy-txt");
+      if (btn) btn.classList.add("is-done");
+      if (txt) { txt.textContent = T.copied; setTimeout(function () {
+        txt.textContent = T.copy; btn.classList.remove("is-done");
+      }, 1800); }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(id).then(done).catch(function () { fallback(id, done); });
+    } else { fallback(id, done); }
+  };
+
+  function fallback(text, cb) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "absolute"; ta.style.left = "-9999px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); cb && cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && backdrop && backdrop.classList.contains("is-open")) {
+      closeWechatContact();
+    }
+  });
+})();
+</script>

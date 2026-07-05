@@ -102,6 +102,10 @@ params:
     - name: xhs
       title: 小红书
       url: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3
+    - name: wechat
+      title: 微信 / WeChat
+      wechatID: nsddd_top
+      qr: /wechat.jpg
   social:
     twitter: cubxxw
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "weibo", "xiaohongshu"] # To customize which share buttons to be enabled on page

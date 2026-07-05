@@ -1,0 +1,421 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   WeChat contact card
+   A polished "Add me on WeChat" dialog + the social-row trigger button.
+   Self-contained, theme-aware, motion-safe. Loads site-wide.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --wx-green: #07c160;
+  --wx-green-strong: #06a850;
+}
+
+/* ── Trigger button — sits inside .social-icons alongside the <a> chips ─── */
+.social-icons__wechat {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.social-icons__wechat svg {
+  height: 26px;
+  width: 26px;
+  transition: color 0.18s ease;
+}
+/* The preceding <a> is :last-of-type so core drops its trailing margin —
+   restore the gap on the button's leading edge instead. */
+.social-icons__wechat { margin-inline-start: 12px; }
+@media (hover: hover) and (pointer: fine) {
+  .social-icons__wechat:hover { color: var(--wx-green); }
+}
+.social-icons__wechat:focus-visible {
+  outline: 2px solid var(--wx-green);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Profile homepage renders the row as 42px circular chips — match it. */
+.profile .social-icons__wechat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-inline-start: 0; /* profile anchors already carry margin-right */
+  margin-right: 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--theme) 80%, transparent);
+  transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+.profile .social-icons__wechat svg { height: 22px; width: 22px; }
+@media (hover: hover) and (pointer: fine) {
+  .profile .social-icons__wechat:hover {
+    color: var(--wx-green);
+    border-color: color-mix(in srgb, var(--wx-green) 45%, var(--border));
+    background: color-mix(in srgb, var(--wx-green) 10%, var(--theme));
+    transform: translateY(-2px);
+  }
+}
+.profile .social-icons__wechat:active { transform: scale(0.92); }
+
+/* Homepage hero social row (homepage-daypage) — button variant that inherits
+   the .hp-social-icon chip and only resets native button chrome. */
+.hp-social-icon--wechat {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.hp-social-icon--wechat:hover {
+  color: var(--wx-green);
+  border-color: color-mix(in srgb, var(--wx-green) 45%, var(--border-subtle));
+  background: color-mix(in srgb, var(--wx-green) 10%, var(--surface-white));
+}
+.hp-social-icon--wechat:active { transform: scale(0.92); }
+.hp-social-icon--wechat:focus-visible { outline: 2px solid var(--wx-green); outline-offset: 2px; }
+
+/* Homepage footer "Connect" list — button that reads as a text link. */
+.hp-footer-wechat {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: color 160ms;
+}
+.hp-footer-wechat:hover { color: var(--wx-green); }
+.hp-footer-wechat:focus-visible {
+  outline: 2px solid var(--wx-green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Backdrop ─────────────────────────────────────────────────────────── */
+.wxc-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: color-mix(in srgb, #0a0f14 62%, transparent);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+}
+.wxc-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.28s ease;
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────── */
+.wxc-card {
+  position: relative;
+  width: 100%;
+  max-width: 348px;
+  padding: 30px 26px 24px;
+  border-radius: 22px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 24px 60px -20px rgba(0, 0, 0, 0.5),
+    0 2px 10px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  transform: translateY(14px) scale(0.965);
+  opacity: 0;
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease;
+}
+.wxc-backdrop.is-open .wxc-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+/* soft WeChat-green aura along the top edge */
+.wxc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(90deg, transparent, var(--wx-green), transparent);
+  opacity: 0.85;
+}
+
+.wxc-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--primary) 6%, transparent);
+  color: var(--secondary);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.wxc-close:hover {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+  transform: rotate(90deg);
+}
+.wxc-close:focus-visible { outline: 2px solid var(--wx-green); outline-offset: 2px; }
+
+/* Header */
+.wxc-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-bottom: 10px;
+}
+.wxc-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--wx-green), var(--wx-green-strong));
+  box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--wx-green) 75%, transparent);
+  flex: none;
+}
+.wxc-logo svg { width: 25px; height: 25px; }
+.wxc-headtext { text-align: left; line-height: 1.15; }
+.wxc-title {
+  margin: 0;
+  font-size: 1.16rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.01em;
+}
+.wxc-title-sub {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  opacity: 0.75;
+}
+.wxc-lead {
+  margin: 0 auto 18px;
+  max-width: 30ch;
+  font-size: 0.845rem;
+  line-height: 1.55;
+  color: var(--secondary);
+}
+
+/* ── QR ───────────────────────────────────────────────────────────────── */
+.wxc-qr {
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+}
+.wxc-qr-frame {
+  position: relative;
+  display: block;
+  width: 220px;
+  max-width: 68vw;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--wx-green) 22%, var(--border));
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.wxc-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.wxc-qr-frame.is-loaded .wxc-qr-img { opacity: 1; transform: scale(1); }
+/* skeleton shimmer while the QR loads */
+.wxc-qr-frame:not(.is-loaded)::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 8px;
+  background: linear-gradient(100deg,
+    #eef1f4 30%, #f6f8fa 50%, #eef1f4 70%);
+  background-size: 200% 100%;
+  animation: wxc-shimmer 1.15s ease-in-out infinite;
+}
+@keyframes wxc-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+/* scanning laser sweep — the "it's alive" quality touch */
+.wxc-scanline {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 12px;
+  height: 34px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--wx-green) 0%, transparent),
+    color-mix(in srgb, var(--wx-green) 32%, transparent)
+  );
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--wx-green) 70%, transparent);
+}
+.wxc-qr-frame.is-loaded .wxc-scanline {
+  opacity: 1;
+  animation: wxc-scan 2.6s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+@keyframes wxc-scan {
+  0%   { transform: translateY(0); opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateY(158px); opacity: 0; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .wxc-qr:hover .wxc-qr-frame {
+    border-color: color-mix(in srgb, var(--wx-green) 55%, var(--border));
+    box-shadow: 0 14px 34px -14px color-mix(in srgb, var(--wx-green) 45%, rgba(0,0,0,0.4));
+  }
+}
+
+.wxc-scanhint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 14px 0 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--secondary);
+}
+.wxc-scanhint-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--wx-green);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--wx-green) 60%, transparent);
+  animation: wxc-pulse 1.9s ease-out infinite;
+}
+@keyframes wxc-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--wx-green) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 7px color-mix(in srgb, var(--wx-green) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--wx-green) 0%, transparent); }
+}
+
+/* ── WeChat ID row ────────────────────────────────────────────────────── */
+.wxc-id {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 7px 7px 12px;
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--primary) 4%, transparent);
+  border: 1px solid var(--border);
+}
+.wxc-id-label {
+  flex: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+.wxc-id-value {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.01em;
+  background: none;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wxc-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: none;
+  padding: 7px 11px;
+  border: none;
+  border-radius: 9px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--wx-green), var(--wx-green-strong));
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+  box-shadow: 0 4px 12px -5px color-mix(in srgb, var(--wx-green) 70%, transparent);
+}
+.wxc-copy:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.wxc-copy:active { transform: translateY(0) scale(0.97); }
+.wxc-copy:focus-visible { outline: 2px solid var(--wx-green); outline-offset: 2px; }
+.wxc-copy.is-done {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+.wxc-copy-ico { flex: none; }
+
+/* ── Dark theme touch-ups ─────────────────────────────────────────────── */
+.dark .wxc-backdrop { background: color-mix(in srgb, #000 72%, transparent); }
+.dark .wxc-card {
+  box-shadow:
+    0 26px 70px -22px rgba(0, 0, 0, 0.8),
+    0 0 0 1px color-mix(in srgb, var(--wx-green) 10%, transparent);
+}
+/* QR frame stays white in dark mode (scannability) — shimmer already light. */
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 420px) {
+  .wxc-card { padding: 26px 18px 20px; border-radius: 18px; }
+  .wxc-id { flex-wrap: wrap; }
+  .wxc-copy { width: 100%; justify-content: center; margin-top: 2px; }
+}
+
+/* ── Motion / accessibility ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .wxc-backdrop,
+  .wxc-card { transition: opacity 0.2s ease; }
+  .wxc-card { transform: none; }
+  .wxc-scanline,
+  .wxc-scanhint-dot,
+  .wxc-qr-frame:not(.is-loaded)::before { animation: none; }
+  .wxc-scanline { opacity: 0; }
+  .wxc-close:hover { transform: none; }
+}
