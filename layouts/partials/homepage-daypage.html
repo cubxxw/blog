@@ -64,9 +64,30 @@
         {{- if site.Params.socialIcons }}
         <div class="hp-hero-socials">
           {{- range site.Params.socialIcons }}
+          {{- if eq .name "wechat" }}
+          {{- $qrSrc := .qr | relURL -}}
+          {{- with resources.Get "wechat.jpg" -}}
+            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
+            {{- if and hugo.IsExtended $prod -}}
+              {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
+            {{- else -}}
+              {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
+            {{- end -}}
+          {{- end -}}
+          <button type="button" class="hp-social-icon hp-social-icon--wechat"
+            title="{{ .title | default "微信 / WeChat" }}"
+            aria-label="{{ .title | default "微信 / WeChat" }}"
+            aria-haspopup="dialog"
+            data-wechat-id="{{ .wechatID }}"
+            data-wechat-qr="{{ $qrSrc }}"
+            onclick="openWechatContact(this)">
+            {{ partial "svg.html" . }}
+          </button>
+          {{- else }}
           <a class="hp-social-icon" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ .name | title }}">
             {{ partial "svg.html" . }}
           </a>
+          {{- end }}
           {{- end }}
         </div>
         {{- end }}
@@ -420,7 +441,22 @@
         <h5>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h5>
         <ul>
           {{- range site.Params.socialIcons }}
+          {{- if eq .name "wechat" }}
+          {{- $qrSrc := .qr | relURL -}}
+          {{- with resources.Get "wechat.jpg" -}}
+            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
+            {{- if and hugo.IsExtended $prod -}}
+              {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
+            {{- else -}}
+              {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
+            {{- end -}}
+          {{- end -}}
+          <li><button type="button" class="hp-footer-wechat" aria-haspopup="dialog"
+            data-wechat-id="{{ .wechatID }}" data-wechat-qr="{{ $qrSrc }}"
+            onclick="openWechatContact(this)">{{ .title | default (.name | title) }}</button></li>
+          {{- else }}
           <li><a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .title | default (.name | title) }}</a></li>
+          {{- end }}
           {{- end }}
           <li><a href="{{ "/index.xml" | relLangURL }}">RSS</a></li>
           {{- with (site.GetPage "/").OutputFormats.Get "JSONFeed" }}
