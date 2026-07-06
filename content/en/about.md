@@ -131,6 +131,36 @@ tldr:
 
 <section class="about-section">
   <h2 class="about-section-title"><span class="about-section-icon">📬</span>Get in Touch</h2>
+
+  <button type="button" class="about-wechat"
+          aria-haspopup="dialog"
+          data-wechat-id="nsddd_top"
+          data-wechat-qr="/wechat.jpg"
+          onclick="openWechatContact(this)">
+    <span class="about-wechat-glow" aria-hidden="true"></span>
+    <span class="about-wechat-qr" aria-hidden="true">
+      <img src="/wechat.jpg" alt="" width="120" height="120" loading="lazy" decoding="async">
+      <span class="about-wechat-scan"></span>
+    </span>
+    <span class="about-wechat-body">
+      <span class="about-wechat-eyebrow">
+        <span class="about-wechat-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
+        </span>
+        WeChat · Fastest way to reach me
+      </span>
+      <span class="about-wechat-title">Add me on WeChat — let's talk AI &amp; remote life</span>
+      <span class="about-wechat-id">
+        <span class="about-wechat-id-label">WeChat ID</span>
+        <span class="about-wechat-id-value">nsddd_top</span>
+      </span>
+    </span>
+    <span class="about-wechat-cta" aria-hidden="true">
+      <span class="about-wechat-cta-text">Scan to add</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </span>
+  </button>
+
   <div class="about-links">
     <a class="about-link-item" href="https://github.com/cubxxw" target="_blank" rel="noopener">
       <span class="about-link-icon">🐙</span>
