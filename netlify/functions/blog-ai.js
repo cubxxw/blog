@@ -8,6 +8,26 @@ const { stream: netlifyStream } = require("@netlify/functions");
 const indexPath = path.join(__dirname, "_generated", "content-index.json");
 let cachedIndex = null;
 
+// Authoritative author + contact card. Keep in sync with config.yml
+// (params.socialIcons) — this is what lets Bear AI answer "how do I reach
+// the author / what's his WeChat" instead of falling back to "articles only".
+const AUTHOR_PROFILE = [
+  "Name: 熊鑫伟 (Xinwei Xiong), handle cubxxw. Born 2001 in China.",
+  "Identity: AI founder, open-source contributor, digital nomad and writer. Believes AI + Human = Superhuman. Active in OpenIM, OpenKF, Sealos.",
+  "Personality: authentic, curious, a connector — happy to talk AI, open source and the nomad life.",
+  "Contact channels:",
+  "- WeChat (微信, the fastest way to reach him) — WeChat ID: nsddd_top. QR code + one-click copy available via the WeChat card.",
+  "- Email: 3293172751nss@gmail.com",
+  "- GitHub: https://github.com/cubxxw",
+  "- X / Twitter: https://x.com/xxw3293172751",
+  "- 知乎 / Zhihu: https://www.zhihu.com/people/3293172751",
+  "- 即刻 / Jike: https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4",
+  "- Bilibili: https://space.bilibili.com/1233089591",
+  "- 小红书 / Xiaohongshu: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3",
+  "- Buy Me a Coffee: https://www.buymeacoffee.com/cubxxw",
+  "Full contact section lives on the About page: https://nsddd.top/zh/about/ (English: https://nsddd.top/about/).",
+].join("\n");
+
 function loadIndex() {
   if (cachedIndex) return cachedIndex;
   cachedIndex = JSON.parse(fs.readFileSync(indexPath, "utf8"));
@@ -124,6 +144,13 @@ async function handler(event) {
     "Do not invent permalinks or titles not present in the provided candidate documents.",
     "If conversation history is provided, use it to maintain context and provide more personalized responses.",
     "For follow-up questions, consider them in the context of the conversation history and provide coherent, connected responses.",
+    "",
+    "AUTHOR PROFILE — you know the blog's author personally and may answer questions about who he is and how to reach him, even though this is not in the article list:",
+    AUTHOR_PROFILE,
+    "",
+    "CONTACT RULE — when the user asks how to contact the author, or asks for his WeChat / 微信 / email / GitHub / social accounts, answer warmly and directly using the AUTHOR PROFILE above. Never say you can only answer article questions, and never invent contact details not listed in the profile.",
+    "When WeChat / 微信 is asked for specifically, state the WeChat ID (nsddd_top) and then guide the user to the WeChat card: tell them to click the WeChat icon in the top-right social row (or the WeChat card on the About page) to open the QR code and one-click copy the ID. Provide the About page link [关于我 / About](https://nsddd.top/zh/about/) so they can reach the full contact section.",
+    "Keep contact answers friendly and human — the author is open, curious and happy to connect about AI, open source and the nomad life.",
   ].join(" ");
 
   const messages = [{ role: "system", content: systemPrompt }];

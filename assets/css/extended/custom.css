@@ -5546,6 +5546,32 @@ pre:hover .copy-code {
 .ai-retry-btn { margin-top: 6px; padding: 3px 10px; border-radius: 8px; border: 1px solid currentColor; opacity: 0.7; cursor: pointer; background: transparent; font-size: 0.85em; }
 .ai-retry-btn:hover { opacity: 1; }
 
+/* Contact-aware WeChat quick action under an AI answer */
+.ai-wechat-cta { margin: 10px 0 4px; }
+.ai-wechat-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #07c160, #06a850);
+  box-shadow: 0 6px 16px -8px rgba(7, 193, 96, 0.75);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, gap 0.16s ease;
+}
+.ai-wechat-cta-btn svg { flex: none; }
+.ai-wechat-cta-btn:hover { transform: translateY(-1px); gap: 9px; box-shadow: 0 10px 22px -8px rgba(7, 193, 96, 0.8); }
+.ai-wechat-cta-btn:active { transform: translateY(0) scale(0.97); }
+.ai-wechat-cta-btn:focus-visible { outline: 2px solid #07c160; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .ai-wechat-cta-btn { transition: none; }
+  .ai-wechat-cta-btn:hover { transform: none; }
+}
+
 /* blog-ai-inline suggestion buttons */
 .blog-ai-suggestions { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px 0 4px; }
 .blog-ai-suggestion { padding: 3px 10px; border-radius: 14px; border: 1px solid rgba(99,102,241,0.3); background: transparent; cursor: pointer; font-size: 0.82em; color: inherit; transition: background 0.15s; }
