@@ -344,6 +344,22 @@
   border-radius: 13px;
   background: color-mix(in srgb, var(--primary) 4%, transparent);
   border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .wxc-id:hover {
+    border-color: color-mix(in srgb, var(--wx-green) 40%, var(--border));
+    background: color-mix(in srgb, var(--wx-green) 7%, transparent);
+  }
+}
+.wxc-id:focus-visible {
+  outline: 2px solid var(--wx-green);
+  outline-offset: 2px;
+}
+.wxc-id.is-done {
+  border-color: color-mix(in srgb, var(--wx-green) 55%, var(--border));
+  background: color-mix(in srgb, var(--wx-green) 12%, transparent);
 }
 .wxc-id-label {
   flex: none;

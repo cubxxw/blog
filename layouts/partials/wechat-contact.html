@@ -55,10 +55,10 @@
           '</span>',
         '</a>',
         '<p class="wxc-scanhint"><span class="wxc-scanhint-dot" aria-hidden="true"></span>' + esc(T.scanHint) + '</p>',
-        '<div class="wxc-id">',
+        '<div class="wxc-id" role="button" tabindex="0" title="' + esc(T.copy) + '" onclick="copyWechatID(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();copyWechatID(this);}">',
           '<span class="wxc-id-label">' + esc(T.idLabel) + '</span>',
           '<code class="wxc-id-value"></code>',
-          '<button class="wxc-copy" type="button" onclick="copyWechatID(this)">',
+          '<button class="wxc-copy" type="button" tabindex="-1" onclick="event.stopPropagation();copyWechatID(this)">',
             '<svg class="wxc-copy-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
             '<span class="wxc-copy-txt">' + esc(T.copy) + '</span>',
           '</button>',
@@ -114,12 +114,22 @@
     var id = (backdrop && backdrop.dataset.wechatId) || "";
     if (!id) return;
     var done = function () {
-      var btn = el.closest ? el.closest(".wxc-copy") : el;
+      // The copy action fires from two places: the .wxc-copy button itself,
+      // or the whole .wxc-id row. Resolve the button either way so the label
+      // + done-state land on the pill regardless of which was clicked.
+      var btn = (el.closest && el.closest(".wxc-copy")) ||
+                (backdrop && backdrop.querySelector(".wxc-copy"));
+      var row = (el.closest && el.closest(".wxc-id")) ||
+                (backdrop && backdrop.querySelector(".wxc-id"));
       var txt = btn && btn.querySelector(".wxc-copy-txt");
       if (btn) btn.classList.add("is-done");
-      if (txt) { txt.textContent = T.copied; setTimeout(function () {
-        txt.textContent = T.copy; btn.classList.remove("is-done");
-      }, 1800); }
+      if (row) row.classList.add("is-done");
+      if (txt) { txt.textContent = T.copied; }
+      setTimeout(function () {
+        if (txt) txt.textContent = T.copy;
+        if (btn) btn.classList.remove("is-done");
+        if (row) row.classList.remove("is-done");
+      }, 1800);
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(id).then(done).catch(function () { fallback(id, done); });

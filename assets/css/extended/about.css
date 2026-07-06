@@ -306,6 +306,212 @@
   font-size: 0.85rem;
 }
 
+/* ── WeChat featured card ──────────────────────────────────────────────
+   The hero of the contact section: a full-width, WeChat-green accented
+   panel with a live mini-QR, copy-ready ID and a scan CTA. Clicking it
+   opens the site-wide contact dialog (openWechatContact). */
+.about-wechat {
+  --wx-green: #07c160;
+  --wx-green-strong: #06a850;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 22px 24px;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--wx-green) 32%, var(--color-rule));
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--wx-green) 12%, transparent), transparent 55%),
+    var(--color-paper);
+  color: var(--color-ink);
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 220ms ease, box-shadow 220ms ease;
+}
+.about-wechat:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--wx-green) 60%, var(--color-rule));
+  box-shadow: 0 18px 42px -22px color-mix(in srgb, var(--wx-green) 70%, rgba(0, 0, 0, 0.5));
+}
+.about-wechat:active { transform: translateY(-1px) scale(0.995); }
+.about-wechat:focus-visible {
+  outline: 2px solid var(--wx-green);
+  outline-offset: 3px;
+}
+
+/* moving glow that follows the top-left corner on hover */
+.about-wechat-glow {
+  position: absolute;
+  top: -40%;
+  left: -10%;
+  width: 55%;
+  height: 180%;
+  z-index: -1;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--wx-green) 30%, transparent), transparent);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 320ms ease, transform 320ms ease;
+  pointer-events: none;
+}
+.about-wechat:hover .about-wechat-glow { opacity: 1; transform: translateX(0); }
+
+/* mini QR preview */
+.about-wechat-qr {
+  position: relative;
+  flex: none;
+  width: 96px;
+  height: 96px;
+  padding: 7px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--wx-green) 24%, var(--color-rule));
+  box-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.about-wechat-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+}
+/* scan sweep across the mini QR */
+.about-wechat-scan {
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 7px;
+  height: 26px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(to bottom,
+    color-mix(in srgb, var(--wx-green) 0%, transparent),
+    color-mix(in srgb, var(--wx-green) 34%, transparent));
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--wx-green) 65%, transparent);
+}
+.about-wechat:hover .about-wechat-scan {
+  animation: about-wx-scan 1.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+@keyframes about-wx-scan {
+  0%   { transform: translateY(0);    opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(56px); opacity: 0; }
+}
+
+/* text body */
+.about-wechat-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.about-wechat-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--wx-green-strong);
+}
+.about-wechat-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--wx-green), var(--wx-green-strong));
+  box-shadow: 0 4px 10px -5px color-mix(in srgb, var(--wx-green) 80%, transparent);
+  flex: none;
+}
+.about-wechat-badge svg { width: 14px; height: 14px; }
+.about-wechat-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+.about-wechat-id {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+.about-wechat-id-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-ink-muted);
+}
+.about-wechat-id-value {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+  padding: 2px 9px;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--wx-green) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wx-green) 20%, var(--color-rule));
+}
+
+/* CTA pill */
+.about-wechat-cta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--wx-green), var(--wx-green-strong));
+  box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--wx-green) 75%, transparent);
+  transition: gap 200ms ease, box-shadow 200ms ease;
+}
+.about-wechat-cta svg { width: 16px; height: 16px; transition: transform 200ms ease; }
+.about-wechat:hover .about-wechat-cta { gap: 10px; }
+.about-wechat:hover .about-wechat-cta svg { transform: translateX(3px); }
+
+body.dark .about-wechat {
+  background:
+    radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--wx-green) 16%, transparent), transparent 55%),
+    color-mix(in srgb, var(--color-paper) 82%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-wechat,
+  .about-wechat-glow,
+  .about-wechat-cta,
+  .about-wechat-cta svg { transition: none; }
+  .about-wechat:hover { transform: none; }
+  .about-wechat:hover .about-wechat-scan { animation: none; }
+}
+
+@media (max-width: 560px) {
+  .about-wechat {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 18px;
+  }
+  .about-wechat-cta {
+    width: 100%;
+    justify-content: center;
+    order: 3;
+  }
+}
+
 /* ── Contact links ── */
 .about-links {
   display: grid;
