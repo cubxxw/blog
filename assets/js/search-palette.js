@@ -264,6 +264,10 @@
 
       // Attach event listeners to follow-up elements
       attachFollowUpListeners();
+
+      // Contact-aware quick action: if the answer is about WeChat/contact,
+      // surface a one-tap button that opens the site-wide WeChat card.
+      maybeAddWechatCTA(answer);
     } catch (err) {
       clearTimeout(aiTimeoutId);
       console.error('AI Error:', err);
@@ -343,6 +347,35 @@
       `<a href="${c.permalink}" class="ai-source-link" target="_blank">${c.title}</a>`
     ).join('');
     return `<div class="ai-sources"><span class="ai-sources-label">参考 / Sources: </span>${links}</div>`;
+  }
+
+  // When an AI answer is about WeChat / contact, append a one-tap button that
+  // opens the site-wide WeChat card (QR + copy). No-op if the WeChat helper or
+  // trigger isn't on the page.
+  function maybeAddWechatCTA(answer) {
+    if (typeof window.openWechatContact !== 'function') return;
+    const trigger = document.querySelector('[data-wechat-id][data-wechat-qr]');
+    if (!trigger || !aiContent) return;
+    if (!/(wechat|微信|nsddd_top)/i.test(String(answer || ''))) return;
+    if (aiContent.querySelector('.ai-wechat-cta')) return; // avoid dupes on follow-ups
+
+    const isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
+    const wrap = document.createElement('div');
+    wrap.className = 'ai-wechat-cta';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ai-wechat-cta-btn';
+    btn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>' +
+      '<span>' + (isZh ? '打开微信名片' : 'Open WeChat card') + '</span>';
+    btn.addEventListener('click', function () {
+      try { window.openWechatContact(trigger); } catch (e) {}
+    });
+    wrap.appendChild(btn);
+    // Insert right after the last assistant turn, before the follow-up input.
+    const followUp = aiContent.querySelector('.search-palette__followup');
+    if (followUp) aiContent.insertBefore(wrap, followUp);
+    else aiContent.appendChild(wrap);
   }
 
   function formatAiAnswer(text) {
