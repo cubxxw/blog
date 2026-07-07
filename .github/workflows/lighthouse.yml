@@ -1,9 +1,13 @@
 name: Lighthouse CI
 
 on:
-  pull_request:
+  push:
     branches: ["main"]
   workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   lighthouse:
@@ -49,6 +53,15 @@ jobs:
         run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Sync report to tracking issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: node scripts/lighthouse-report-to-issue.mjs
 
       - name: Upload Lighthouse results
         if: always()
