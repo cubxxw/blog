@@ -26,7 +26,7 @@
   <!-- Subtitle -->
   <text x="80" y="400" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="26" font-weight="400">LangChain · LangGraph · AI Developer Tools</text>
   <!-- Site URL -->
-  <text x="80" y="530" fill="#475569" font-family="'Fira Code', monospace" font-size="20">nsddd.top / cubxxw</text>
+  <text x="80" y="530" fill="#475569" font-family="'Fira Code', monospace" font-size="20">cubxxw.com</text>
   <!-- Bottom bar -->
   <rect x="0" y="600" width="1200" height="4" fill="url(#accent)"/>
   <!-- Decorative dots -->
