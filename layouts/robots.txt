@@ -63,5 +63,45 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: DataForSeoBot
+Allow: /
+
+# China AI / search crawlers — Baidu (Wenxin), Sogou (WeChat search),
+# Shenma (UC/Alibaba), ByteDance (Doubao / Toutiao / Douyin search).
+# Same rationale: being cited by domestic AI answer engines is a
+# distribution channel worth encouraging.
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-render
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: DoubaoSpider
+Allow: /
+
 Sitemap: {{ "sitemap.xml" | absURL }}
 Sitemap: {{ "news-sitemap.xml" | absURL }}
