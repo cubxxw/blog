@@ -134,14 +134,20 @@
 {{ range .AlternativeOutputFormats -}}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
-{{- if .IsTranslated -}}
+{{- /* hreflang: emit one <link> per translation of this page (Hugo's
+       AllTranslations includes the current page since v0.62), plus an
+       explicit x-default pointing at the default-language version
+       (DefaultContentLanguage — currently "en"; .Sites is ordered by
+       language weight, so the first entry is the default). Fall back
+       to the current page's own permalink if a default-lang version
+       doesn't exist for this page. */ -}}
+{{- $defaultLang := (index .Sites 0).Language.Lang -}}
+{{- $defaultURL := .Permalink -}}
 {{- range .AllTranslations -}}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{ if eq .Lang $defaultLang -}}{{- $defaultURL = .Permalink -}}{{- end -}}
 {{ end -}}
-{{- with (first 1 .Site.Home.Translations) -}}
-<link rel="alternate" hreflang="x-default" href="{{ (index . 0).Permalink }}">
-{{- end -}}
-{{- end -}}
+<link rel="alternate" hreflang="x-default" href="{{ $defaultURL }}">
 
 <noscript>
     <style>

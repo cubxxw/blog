@@ -84,11 +84,21 @@
     </image:image>
     {{- end -}}
     {{- end }}
-    {{- if .IsTranslated }}
+    {{- /* hreflang annotations (mirror layouts/partials/head.html and
+           layouts/sitemap.xml). Emit one xhtml:link per translation of
+           this page — Hugo's AllTranslations includes the current page
+           since v0.62, so single-language pages get one
+           self-referencing alternate, which is the shape Google
+           recommends. Then add x-default pointing at the
+           default-language version (site.Sites is ordered by language
+           weight, so the first entry is the default). */ -}}
+    {{- $defaultLang := (index site.Sites 0).Language.Lang -}}
+    {{- $defaultURL := .Permalink -}}
     {{- range .AllTranslations }}
     <xhtml:link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}"/>
+    {{- if eq .Language.Lang $defaultLang -}}{{- $defaultURL = .Permalink -}}{{- end -}}
     {{- end }}
-    {{- end }}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ $defaultURL }}"/>
   </url>
         {{- end }}
       {{- end }}
