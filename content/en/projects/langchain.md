@@ -1,6 +1,7 @@
 ---
 title: "LangChain: Open Source LLM Framework"
 date: 2025-04-16T17:36:45+08:00
+lastmod: 2026-07-07T10:00:00+08:00
 draft: false
 showtoc: true
 tocopen: false
@@ -10,16 +11,19 @@ keywords: []
 tags:
   - AI
   - Open Source
+  - LangChain
+  - Agent
+  - RAG
 categories:
   - Projects
 description: >
-  A practical guide to building LLM applications with LangChain, covering chains, agents, and memory.
+  A practical guide to building LLM applications with LangChain — chains, agents, RAG, and the LangChain 1.0 create_agent + middleware model — with hands-on quick-start cases, 2025–2026 frontier updates, and common interview questions.
 aliases:
   - /posts/ai-projects/langchain/
 tldr:
   - "LangChain evolved from a monolithic LLM framework into a modular ecosystem with specialized tools—LCEL for composition, LangGraph for complex agents, LangSmith for observability, and platform infrastructure."
-  - "The framework excels at rapid prototyping through extensive integrations and flexible component composition but suffers from steep learning curves, abstraction overhead, and debugging complexity requiring ecosystem tools for production use."
-  - "LangChain's strategic future centers on agent capabilities through LangGraph and commercial platforms, positioning the open-source library as foundational for developer onboarding while ecosystem products enable enterprise-scale deployments."
+  - "LangChain 1.0 and LangGraph 1.0 both went GA on 2025-10-22: the core now centers on the create_agent loop plus a middleware system, standardized content blocks land in langchain-core, legacy code moves to langchain-classic, and Python 3.10+ is required."
+  - "Beyond the original report, this article adds three practical sections: runnable hands-on cases (LCEL, RAG, create_agent, HITL middleware, LangGraph), a 2025–2026 frontier update, and common interview questions."
 ---
 
 > This project is an ongoing effort to study AI open source projects one step at a time, building real-world skills by combining hands-on practice with AI tooling to tackle complex problems. Everything is documented here.
@@ -470,6 +474,205 @@ However, this flexibility and comprehensiveness also bring challenges of complex
 LangChain plays an important and continuously evolving role in the LLM application development space. Its future appears increasingly tied to the success of LangGraph and LangSmith, and the market acceptance of its commercial platform, LangGraph Platform. For potential users, LangChain offers a powerful starting point and a rich toolset. The best practice is to carefully select appropriate components and ecosystem tools based on specific project needs, complexity, and team experience — with clear-eyed awareness of both its strengths and limitations. Understanding its evolution path from prototype to production, and the relationship between open source libraries and commercial platforms, is essential for successfully building reliable and maintainable LLM applications with LangChain. The framework's rapid development also means that continuous learning and adaptation will be the norm for LangChain users.
 
 
+## **VIII. 2025–2026 Frontier Update: LangChain 1.0 and LangGraph 1.0**
+
+> This section updates the report, which was originally written in April 2025. On **October 22, 2025**, LangChain 1.0 and LangGraph 1.0 both reached general availability — the first major stable releases of either framework, with a commitment to no breaking changes until 2.0 <sup>61</sup>.
+
+### **A. Repositioning: LangChain vs. LangGraph**
+
+The two frameworks now serve clearly distinct purposes: **LangChain** is the fastest way to build an agent — a standard tool-calling architecture, provider-agnostic design, and middleware-based customization; **LangGraph** is the lower-level framework and runtime for highly custom, controllable, production-grade long-running agents <sup>61</sup>. Crucially, LangChain agents are built *on top of* LangGraph, so teams can start with LangChain's high-level APIs and drop down to LangGraph when they need more control, and can even embed a `create_agent` agent inside a custom LangGraph workflow <sup>61</sup>.
+
+### **B. `create_agent`: The New Standard Entry Point**
+
+`create_agent` (Python) / `createAgent` (TypeScript) is now the standard way to build an agent. It is built on the LangGraph runtime and **supersedes both the legacy `AgentExecutor` and the `langgraph.prebuilt.create_react_agent` shortcut** <sup>61</sup>. The core loop is: pick a model, give it tools and a prompt; send a request; the model returns either tool calls (execute and feed results back) or a final answer (return); repeat.
+
+```python
+from langchain.agents import create_agent
+
+weather_agent = create_agent(
+    model="openai:gpt-5",
+    tools=[get_weather],
+    system_prompt="Help the user by fetching the weather in their city.",
+)
+result = weather_agent.invoke(
+    {"messages": [{"role": "user", "content": "what's the weather in SF?"}]}
+)
+```
+
+### **C. Middleware: The Biggest Addition**
+
+Middleware defines a set of **hooks** that let you customize behavior at every step of the agent loop — the key differentiator from other agent builders that don't permit customization outside the core loop <sup>61</sup>. The hooks include `before_agent`, `before_model`, `wrap_model_call`, `wrap_tool_call`, `after_model`, and `after_agent`. Built-in middleware ships for common needs:
+
+* **Human-in-the-loop**: pause execution so users can approve, edit, or reject tool calls before they run — essential for agents that touch external systems or make sensitive transactions.
+* **Summarization**: condense message history as it approaches context limits, keeping recent messages while summarizing older context to prevent token overflow.
+* **PII redaction**: pattern-match and redact sensitive data (emails, phone numbers, SSNs) before content reaches the model, aiding privacy compliance.
+
+LangChain 1.0 also folds **structured output generation** into the main model↔tools loop, eliminating an extra LLM call that previously ran alongside it — reducing both latency and cost — with control via tool calling or provider-native structured output <sup>61</sup>.
+
+### **D. Standard Content Blocks**
+
+`langchain-core` was promoted to 1.0 with a key addition: a `.content_blocks` property on messages that provides consistent content types across providers, with support for **reasoning traces, citations, and (server-side) tool calls**, plus full backward compatibility <sup>61</sup>. This fixes the long-standing pain where switching models or providers would break streams, frontends, or memory stores.
+
+### **E. Slimmer Surface Area and Migration**
+
+Legacy functionality moves to **`langchain-classic`** for backward compatibility; the main package is trimmed to essential abstractions <sup>61</sup>. `create_react_agent` is deprecated in `langgraph.prebuilt` (the whole `langgraph.prebuilt` module is deprecated, with enhanced functionality moved to `langchain.agents`) <sup>62</sup>. Because Python 3.9 reached EOL in October 2025, **1.0 requires Python 3.10+**. Install with `uv pip install --upgrade langchain` and add `langchain-classic` only if you still need legacy code <sup>61</sup>.
+
+### **F. deepagents: A Batteries-Included Agent Harness**
+
+`deepagents` is a standalone library built on LangChain's agent building blocks and the LangGraph runtime, designed for **long-running, multi-step tasks** (research, coding), with an architecture inspired by Deep Research and Claude Code <sup>63</sup>. It provides three core capabilities: **planning** (a built-in `write_todos` tool to break large tasks into tracked steps), **context management** (file tools like `ls`, `read_file`, `write_file`, `edit_file` to store information outside short-term memory and avoid context overflow), and **sub-agents** (a built-in `task` tool to delegate focused work). By default it uses Claude Sonnet 4.5, but any LangChain-supported model works <sup>63</sup>.
+
+### **G. Platform Evolution**
+
+LangSmith has grown into a broader agent-engineering platform, adding deployment, sandboxes (safely running agent-generated code), and no-code company-wide agents (Fleet) on top of observability and evaluation — reinforcing the open-source-framework-plus-commercial-platform strategy across the build → run → improve loop.
+
+
+## **IX. Hands-On Quick-Start Cases**
+
+> Examples target LangChain 1.0 (Python 3.10+). Install with `uv pip install -U langchain langchain-openai langchain-community langgraph` and set `OPENAI_API_KEY`. Enable LangSmith tracing with `export LANGSMITH_TRACING=true` and `LANGSMITH_API_KEY`.
+
+### **A. Case 1 — Minimal LCEL chain (prompt → model → parser)**
+
+```python
+from langchain.chat_models import init_chat_model
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+model = init_chat_model("openai:gpt-4o-mini")
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a concise technical translator."),
+    ("user", "Translate to English: {text}"),
+])
+chain = prompt | model | StrOutputParser()   # every link is a Runnable
+print(chain.invoke({"text": "日拱一卒，功不唐捐"}))
+```
+
+Each `|`-composed link is a Runnable, so `invoke / batch / stream / ainvoke` all work for free.
+
+### **B. Case 2 — A minimal RAG pipeline**
+
+```python
+from langchain_community.document_loaders import WebBaseLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
+
+docs = WebBaseLoader("https://docs.langchain.com/oss/python/langchain/overview").load()
+chunks = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150).split_documents(docs)
+retriever = FAISS.from_documents(chunks, OpenAIEmbeddings()).as_retriever(search_kwargs={"k": 4})
+
+prompt = ChatPromptTemplate.from_template(
+    "Answer only from the context below.\n\nContext:\n{context}\n\nQuestion: {question}"
+)
+rag = (
+    {"context": retriever, "question": RunnablePassthrough()}
+    | prompt | ChatOpenAI(model="gpt-4o-mini") | StrOutputParser()
+)
+print(rag.invoke("What does create_agent do in LangChain 1.0?"))
+```
+
+RAG = load → split → embed → retrieve top-k → stuff into the prompt → generate. In production the leverage is in chunking strategy, retrieval quality, and re-ranking.
+
+### **C. Case 3 — `create_agent` with tool calling**
+
+```python
+from langchain.agents import create_agent
+from langchain_core.tools import tool
+
+@tool
+def get_weather(city: str) -> str:
+    """Return the weather for a given city."""
+    return f"{city}: sunny, 26°C"
+
+agent = create_agent(
+    model="openai:gpt-4o-mini",
+    tools=[get_weather],
+    system_prompt="You are a weather assistant; call tools when needed.",
+)
+result = agent.invoke({"messages": [{"role": "user", "content": "Weather in Beijing?"}]})
+print(result["messages"][-1].content)
+```
+
+### **D. Case 4 — Human-in-the-loop agent via middleware**
+
+```python
+from langchain.agents import create_agent
+from langchain.agents.middleware import HumanInTheLoopMiddleware, SummarizationMiddleware
+
+agent = create_agent(
+    model="openai:gpt-4o-mini",
+    tools=[send_email],  # a sensitive tool defined elsewhere
+    middleware=[
+        HumanInTheLoopMiddleware(),   # pause for approval before sensitive tool calls
+        SummarizationMiddleware(),     # compress history when it grows too long
+    ],
+)
+```
+
+Middleware lets you inject approval, redaction, or summarization as cross-cutting concerns without touching the core loop — the primary productionization lever in 1.0.
+
+### **E. Case 5 — Explicit LangGraph state machine (branching + loops)**
+
+```python
+from typing import TypedDict, Annotated
+from langgraph.graph import StateGraph, START, END
+from langgraph.graph.message import add_messages
+
+class State(TypedDict):
+    messages: Annotated[list, add_messages]
+
+def call_model(state: State):
+    return {"messages": [model.invoke(state["messages"])]}
+
+builder = StateGraph(State)
+builder.add_node("model", call_model)
+builder.add_edge(START, "model")
+builder.add_edge("model", END)
+graph = builder.compile()   # attach a checkpointer for persistence / resumability
+```
+
+When a workflow needs explicit branching, loops, persisted state, or human-in-the-loop, drop down to LangGraph and model it with nodes and edges — more controllable than an implicit agent.
+
+
+## **X. Common Interview Questions**
+
+**1. What's the difference between a Chain and an Agent?** A chain is a **predefined, fixed flow** (steps fixed at design time) — faster, predictable, easier to debug. An agent lets the LLM **decide actions at runtime** (which tool to call) — more flexible but less predictable and more costly.
+
+**2. What is LCEL and why use it over legacy chains?** LCEL is a declarative composition syntax that pipes Runnable-implementing components with `|`. Versus subclassing `Chain`, it unifies `invoke/batch/stream/async`, natively supports streaming, parallelism, retries/fallbacks, automatic schema inference, and LangSmith tracing — and code runs unchanged from prototype to production.
+
+**3. What are the core methods of the Runnable interface?** `invoke` (single input), `batch` (list of inputs), `stream` (streamed chunks), `astream_events` (fine-grained event stream), plus async counterparts `ainvoke/abatch/astream`.
+
+**4. Walk through the steps of a RAG pipeline.** Load (Loader) → split (Text Splitter) → embed (Embeddings) → store in a Vector Store → retrieve top-k for the query (Retriever) → stuff retrieved context into the prompt → generate with the LLM. Advanced levers: chunking strategy, MultiQuery / contextual compression / re-ranking, and retrieval evaluation.
+
+**5. How does LangChain handle memory across multi-turn conversations?** By storing and replaying conversation history — full history, windowed (last N turns), or summarized (compressed when over the limit). In 1.0, long histories can be auto-compressed with `SummarizationMiddleware`; LangGraph provides short-term and cross-session long-term memory via state + checkpointers.
+
+**6. What problem does each of LangChain / LangGraph / LangSmith / LangServe solve?** LangChain builds (components + `create_agent`); LangGraph orchestrates complex stateful agents (graph/nodes/edges/persistence); LangSmith gives observability and evaluation (tracing, evals, monitoring); LangServe deploys Runnables as REST APIs (use LangGraph Platform for LangGraph apps).
+
+**7. When would you use LangGraph instead of `create_agent`?** When you need explicit branching/loops, a mix of deterministic and agentic steps, long-running business processes, strong human-in-the-loop/audit, careful latency/cost control, or highly custom workflows — choose LangGraph. When the task fits the default model→tools→response loop and only needs middleware customization for fast delivery, use `create_agent`.
+
+**8. What's the biggest change in LangChain 1.0?** The core centers on the `create_agent` loop plus a **middleware system**; standard content blocks arrive; legacy code moves to `langchain-classic`; `create_react_agent` / `AgentExecutor` are superseded; Python 3.10+ is required.
+
+**9. What can middleware do? Name a few built-ins.** It injects cross-cutting logic at each step of the agent loop (`before/after_model`, `wrap_tool_call`, etc.). Built-ins: human-in-the-loop (approval before tool execution), summarization (compress history), PII redaction.
+
+**10. How do you define a tool and how does an agent call it?** Decorate a function with `@tool`; its docstring becomes the model-facing description. The LLM decides whether to call it and generates arguments; the runtime executes and feeds the result back into the conversation, looping until a final answer.
+
+**11. How do you get strict structured output (a fixed JSON schema)?** Define the schema with a Pydantic model and use `with_structured_output` or `create_agent(response_format=ToolStrategy(Model))`. In 1.0, structured output is folded into the main loop, removing an extra LLM call.
+
+**12. How do you stream and run async with LCEL chains?** Any Runnable supports `stream/astream` for streaming and `ainvoke/abatch/astream` for async. Prototype synchronously in a notebook, switch to async in production for concurrency — no change to core logic.
+
+**13. What are LangChain's common criticisms and how do you mitigate them?** Heavy abstraction, hard debugging, opaque performance/cost, lagging docs, breaking changes. Mitigations: adopt LangSmith tracing/evals early, drop down to LangGraph or raw APIs when needed, pin dependency versions, and separate prototype from production.
+
+**14. LangChain vs. LlamaIndex — how do you choose?** Pure RAG / retrieval optimization prioritizing index and query performance → LlamaIndex; general composition, broad integrations, complex agents → LangChain. They compose: LlamaIndex as the retrieval layer inside a LangChain workflow.
+
+**15. How do you evaluate an LLM/agent application?** In LangSmith, build a dataset (inputs + optional expected outputs), define evaluators (rule-based, heuristic, LLM-as-Judge), score the target (a single call or the whole app), and iterate with human feedback.
+
+**16. What problem does deepagents solve?** Long-running, multi-step tasks — it offers built-in planning (`write_todos`), context management (file tools that move info out of short-term memory), and sub-agent delegation (`task`), inspired by Deep Research and Claude Code.
+
+**17. How does LangGraph achieve persistence / resumability?** A checkpointer persists execution state automatically, so a restarted server or interrupted long workflow resumes from where it stopped without custom database logic — the basis for multi-day approvals, background jobs, and cross-session memory.
+
+
 #### Works Cited
 
 
@@ -534,6 +737,9 @@ LangChain plays an important and continuously evolving role in the LLM applicati
 58. What makes langchain so useful? I'm new to it and don't get it - Reddit, accessed April 16, 2025, [https://www.reddit.com/r/LangChain/comments/1chpywv/what_makes_langchain_so_useful_im_new_to_it_and/](https://www.reddit.com/r/LangChain/comments/1chpywv/what_makes_langchain_so_useful_im_new_to_it_and/)
 59. LangChain State of AI Agents Report, accessed April 16, 2025, [https://www.langchain.com/stateofaiagents](https://www.langchain.com/stateofaiagents)
 60. I need a roadmap : r/LangChain - Reddit, accessed April 16, 2025, [https://www.reddit.com/r/LangChain/comments/1jugf30/i_need_a_roadmap/](https://www.reddit.com/r/LangChain/comments/1jugf30/i_need_a_roadmap/)
+61. LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones - LangChain Blog, accessed July 7, 2026, [https://www.langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)
+62. LangGraph 1.0 is now generally available - LangChain Changelog, accessed July 7, 2026, [https://changelog.langchain.com/announcements/langgraph-1-0-is-now-generally-available](https://changelog.langchain.com/announcements/langgraph-1-0-is-now-generally-available)
+63. Deep Agents overview - Docs by LangChain, accessed July 7, 2026, [https://docs.langchain.com/oss/python/deepagents/overview](https://docs.langchain.com/oss/python/deepagents/overview)
 
 
 
