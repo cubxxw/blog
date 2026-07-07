@@ -22,7 +22,7 @@
   GIT_SUBMODULE_STRATEGY = "recursive"
 
 [context.production.environment]
-  HUGO_BASEURL = "https://nsddd.top"
+  HUGO_BASEURL = "https://cubxxw.com"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
   DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"

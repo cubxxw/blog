@@ -41,7 +41,7 @@ This project is initiated by a team passionate about blockchain and software dev
 ### 🌐 Contact Information
 
 - [Website](https://telsacoin.io/)
-- [Blog](http://nsddd.top)
+- [Blog](https://cubxxw.com)
 - [Telegram](https://t.me/smile3293172751)
 
 <p align='center'>
@@ -102,9 +102,9 @@ All content follows the [CC-BY-SA 3.0 license (Attribution-ShareAlike)](http://z
 
 ## ⚡ Contribution Steps
 
-> How to keep our fork in sync with the upstream in real-time? [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://nsddd.top/archives/git-fork)
+> How to keep our fork in sync with the upstream in real-time? [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://cubxxw.com/archives/git-fork)
 >
-> 📮 You can even play more with [🧷GitHub's actions ci/cd~](https://nsddd.top/archives/actions)
+> 📮 You can even play more with [🧷GitHub's actions ci/cd~](https://cubxxw.com/archives/actions)
 
 💡 **Steps**:
 
@@ -153,7 +153,7 @@ Here you will be asked to write a description of your code changes, then you can
 
 📜 **Explanation**:
 
-> We need to `pull` frequently to keep the branch up-to-date, see [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://nsddd.top/archives/git-fork)
+> We need to `pull` frequently to keep the branch up-to-date, see [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://cubxxw.com/archives/git-fork)
 >
 > To contribute your repository to ours, just:
 >

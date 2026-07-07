@@ -82,8 +82,8 @@ tldr:
 
 ### 🧷 补充阅读
 
-1. [如何参与github项目或许你可以参考这篇文章~](https://nsddd.top/archives/contributors)
-2. [如何使用actions自动部署实现自动更新远程~](https://nsddd.top/archives/actions)
+1. [如何参与github项目或许你可以参考这篇文章~](https://cubxxw.com/archives/contributors)
+2. [如何使用actions自动部署实现自动更新远程~](https://cubxxw.com/archives/actions)
 
 ### 💡 步骤
 

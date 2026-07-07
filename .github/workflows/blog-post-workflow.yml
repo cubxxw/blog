@@ -17,10 +17,10 @@ jobs:
         include:
           - lang: EN
             tag: My-Blog-EN
-            feed: "https://nsddd.top/index.xml"
+            feed: "https://cubxxw.com/index.xml"
           - lang: ZH
             tag: My-Blog-ZH
-            feed: "https://nsddd.top/zh/index.xml"
+            feed: "https://cubxxw.com/zh/index.xml"
 
     steps:
       - name: Checkout

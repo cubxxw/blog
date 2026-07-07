@@ -33,7 +33,7 @@ tldr:
 ### 🌐 联系方式
 
 - [Website](https://telsacoin.io/)
-- [Blog](http://nsddd.top)
+- [Blog](https://cubxxw.com)
 - [Telegram](https://t.me/smile3293172751)
 
 <p align='center'>
@@ -99,9 +99,9 @@ tldr:
 
 ## ⚡贡献步骤
 
-> 我们的fork，如何保证实时的同步上游？[🧷这篇教会你 保持自己github的forks自动和上游仓库同步并推送到 gitee](https://nsddd.top/archives/git-fork)
+> 我们的fork，如何保证实时的同步上游？[🧷这篇教会你 保持自己github的forks自动和上游仓库同步并推送到 gitee](https://cubxxw.com/archives/git-fork)
 >
-> 📮 你甚至可以通过 [🧷GitHub 的actions ci/cd 玩出更多花样~](https://nsddd.top/archives/actions)
+> 📮 你甚至可以通过 [🧷GitHub 的actions ci/cd 玩出更多花样~](https://cubxxw.com/archives/actions)
 
 💡 **步骤**：
 
@@ -162,7 +162,7 @@ tldr:
 
 📜 **对上面的解释**：
 
-> 我们需要经常`pull`保持分支所在最新，可以看[🧷这篇教会你 保持自己github的forks自动和上游仓库同步并推送到 gitee](https://nsddd.top/archives/git-fork)
+> 我们需要经常`pull`保持分支所在最新，可以看[🧷这篇教会你 保持自己github的forks自动和上游仓库同步并推送到 gitee](https://cubxxw.com/archives/git-fork)
 >
 > 将自己的仓库贡献到我们的仓库只需要：
 >

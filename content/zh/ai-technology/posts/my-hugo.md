@@ -84,7 +84,7 @@ tldr:
 推荐使用 yaml 或者是 toml ，我比较喜欢用 yaml 哈哈，当然，用 https://tooltt.com/yaml2toml/ 工具可以随便转换
 
 ```toml
-baseURL = 'https://nsddd.top'
+baseURL = 'https://cubxxw.com'
 languageCode = 'en-us'
 title = 'cubxxw is blog'
 theme = "PaperMod"

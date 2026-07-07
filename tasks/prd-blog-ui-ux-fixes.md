@@ -2,7 +2,7 @@
 
 ## 1. Introduction / Overview
 
-本次针对 `https://nsddd.top` 个人博客网站进行了系统性 UI/UX 体验测试，覆盖首页、About、Projects、Travel、Articles、Start Here 与文章详情页，测试了导航、搜索、主题切换、语言切换、滚动行为等核心交互。
+本次针对 `https://cubxxw.com` 个人博客网站进行了系统性 UI/UX 体验测试，覆盖首页、About、Projects、Travel、Articles、Start Here 与文章详情页，测试了导航、搜索、主题切换、语言切换、滚动行为等核心交互。
 
 测试发现了多个等级的问题：
 - **P0 Critical（阻断使用）**：Projects 页面标题白字白底完全不可见；Header 深色模式背景破损；首页与 Header 文字因负 letter-spacing 与窄容器被压成竖排 / 连字。

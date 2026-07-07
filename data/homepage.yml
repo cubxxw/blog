@@ -16,7 +16,7 @@ hero:
 books:
   - id: vietnam
     volume: 1
-    url: "https://vietnam.nsddd.top/"
+    url: "https://vietnam.cubxxw.com/"
     coverClass: "hp-book-cover-vietnam"
     titleEn: "Vietnam"
     titleZh: "越南"
@@ -32,7 +32,7 @@ books:
     excerptZh: "从河内到湄公河三角洲，一段慢火细炖的旅程。"
   - id: angkor
     volume: 2
-    url: "https://angkor.nsddd.top/"
+    url: "https://angkor.cubxxw.com/"
     coverClass: "hp-book-cover-angkor"
     titleEn: "Angkor"
     titleZh: "吴哥窟"

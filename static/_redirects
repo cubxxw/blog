@@ -1,8 +1,12 @@
 /dn    /zh/categories/个人成长-personal-development/   301
 /travel-direct    https://www.polarsteps.com/cubxxw   302
 
+# Legacy domain nsddd.top (+ www) → new primary domain cubxxw.com (preserves SEO)
+https://nsddd.top/*        https://cubxxw.com/:splat    301!
+https://www.nsddd.top/*    https://cubxxw.com/:splat    301!
+
 # www subdomain → apex domain
-https://www.nsddd.top/*   https://nsddd.top/:splat   301!
+https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 
 # Broken template URL (Google crawled a Hugo template rendering bug)
 /search?q=%7B%7B.%7D%7D   /   301

@@ -25,8 +25,8 @@
       "description": "As a site owner, I want a clear checklist for submitting to Google Search Console and confirmation that the sitemap is correctly configured.",
       "acceptanceCriteria": [
         "读取 public/sitemap.xml，确认其包含指向 /zh/sitemap.xml 和 /en/sitemap.xml（或等效语言分 sitemap）的条目，或直接包含所有页面的 URL",
-        "读取 public/robots.txt，确认 Sitemap 行指向 https://nsddd.top/sitemap.xml",
-        "在 tasks/ 目录创建 gsc-checklist.md，内容包含：1) Google Search Console 添加站点步骤（选 URL 前缀，输入 https://nsddd.top）；2) HTML 标签验证方式说明（复制 content 属性值）；3) 将验证码填入 config.yml params.analytics.google.SiteVerificationTag 的操作说明；4) 提交 sitemap URL（https://nsddd.top/sitemap.xml）；5) 提交后 48-72 小时内检查抓取状态",
+        "读取 public/robots.txt，确认 Sitemap 行指向 https://cubxxw.com/sitemap.xml",
+        "在 tasks/ 目录创建 gsc-checklist.md，内容包含：1) Google Search Console 添加站点步骤（选 URL 前缀，输入 https://cubxxw.com）；2) HTML 标签验证方式说明（复制 content 属性值）；3) 将验证码填入 config.yml params.analytics.google.SiteVerificationTag 的操作说明；4) 提交 sitemap URL（https://cubxxw.com/sitemap.xml）；5) 提交后 48-72 小时内检查抓取状态",
         "在 config.yml 的 analytics.google.SiteVerificationTag 空字段旁添加注释：# 在 Google Search Console 获取验证码后填入",
         "Typecheck passes"
       ],
@@ -95,7 +95,7 @@
       "acceptanceCriteria": [
         "用 Python 脚本（PIL 或 struct 读取 PNG header）检查 static/assets/og-image.png、og-ai-technology.png、og-growth.png、og-projects.png 的实际像素尺寸，输出检查结果",
         "如有任何图片宽度 < 1200 或高度 < 630，使用 Python PIL（Pillow）生成正确尺寸的替换图：纯色背景（每个分类不同颜色）+ 中心白色文字（分类名），保存为 PNG",
-        "构建后对 20 篇随机文章页面检查 og:image 的 content 属性，确认全部以 https://nsddd.top 开头（用 Python 脚本）",
+        "构建后对 20 篇随机文章页面检查 og:image 的 content 属性，确认全部以 https://cubxxw.com 开头（用 Python 脚本）",
         "如发现任何 og:image 为相对路径，在 seo.html 中确认 absURL 已正确应用",
         "hugo --minify 构建通过",
         "Typecheck passes"

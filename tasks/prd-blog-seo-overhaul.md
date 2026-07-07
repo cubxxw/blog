@@ -2,7 +2,7 @@
 
 **Issue:** https://github.com/cubxxw/blog/issues/174
 **Status:** Draft
-**Target:** nsddd.top (cubxxw/blog, Hugo + PaperMod)
+**Target:** cubxxw.com (cubxxw/blog, Hugo + PaperMod)
 **Baseline health score:** 49% (41 articles audited, 2026-04-19)
 **Target health score:** ≥ 80%
 
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-nsddd.top 是一个 Hugo 静态博客，中英文双语，100+ 篇文章覆盖 AI、Kubernetes、开源贡献、成长记录等主题。全站 SEO 存在 6 类系统性缺陷，其中 `meta description` 和 `canonical` 标签 100% 缺失，英文 title 66% 超长，`og:title` 在含单引号的标题上截断。
+cubxxw.com 是一个 Hugo 静态博客，中英文双语，100+ 篇文章覆盖 AI、Kubernetes、开源贡献、成长记录等主题。全站 SEO 存在 6 类系统性缺陷，其中 `meta description` 和 `canonical` 标签 100% 缺失，英文 title 66% 超长，`og:title` 在含单引号的标题上截断。
 
 根本原因已定位：`layouts/partials/seo.html` 实现了完整 SEO 逻辑，但**从未被任何模板调用**；`layouts/partials/head.html` 自带的 title/og 实现存在 bug。修复路径明确：接入 `seo.html`、修复 bug、批量更新英文 title、修复 URL 异常、补充分类封面图。
 
@@ -128,12 +128,12 @@ nsddd.top 是一个 Hugo 静态博客，中英文双语，100+ 篇文章覆盖 A
 **Description:** As a site visitor, I want all blog URLs to resolve to the correct page with proper metadata, so I don't land on a broken or wrong-language page.
 
 **Background:**
-1. `https://nsddd.top/growth/posts/flow-state-guide` → 重定向到 `/growth/posts/flow-state/`，目标页 title 显示为 URL 字符串，H1/og 全缺失。根因：文章 slug 为 `flow-state`，但被链接为 `flow-state-guide`。
-2. `https://nsddd.top/growth/posts/2026-03-27-lhasa-slow-and-heavy` → 重定向到 `/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy/`，英文路径被重定向到中文版。根因：该文章可能只有中文版，英文路径应返回 404 或重定向到中文版并加 hreflang。
+1. `https://cubxxw.com/growth/posts/flow-state-guide` → 重定向到 `/growth/posts/flow-state/`，目标页 title 显示为 URL 字符串，H1/og 全缺失。根因：文章 slug 为 `flow-state`，但被链接为 `flow-state-guide`。
+2. `https://cubxxw.com/growth/posts/2026-03-27-lhasa-slow-and-heavy` → 重定向到 `/zh/growth/posts/2026-03-27-lhasa-slow-and-heavy/`，英文路径被重定向到中文版。根因：该文章可能只有中文版，英文路径应返回 404 或重定向到中文版并加 hreflang。
 
 **Acceptance Criteria:**
 - [ ] 定位 `flow-state` 文章文件，在 front matter 添加 `aliases: ["/growth/posts/flow-state-guide/"]` 使旧 URL 正常跳转
-- [ ] 访问 `https://nsddd.top/growth/posts/flow-state-guide` 时正确渲染文章（title、h1、og 全部正常）
+- [ ] 访问 `https://cubxxw.com/growth/posts/flow-state-guide` 时正确渲染文章（title、h1、og 全部正常）
 - [ ] 定位 `lhasa-slow-and-heavy` 文章，确认是否存在英文版；如不存在，在 `/content/en/` 对应位置创建 stub 页（或删除错误重定向配置）
 - [ ] 两个 URL 均不再出现语言错误或元数据缺失
 

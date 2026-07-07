@@ -1,16 +1,16 @@
 # Google Search Console 接入手册
 
-**站点**: https://nsddd.top  
-**Sitemap**: https://nsddd.top/sitemap.xml
+**站点**: https://cubxxw.com  
+**Sitemap**: https://cubxxw.com/sitemap.xml
 
 ---
 
 ## Sitemap 状态确认 ✅
 
-- 根 sitemap: `https://nsddd.top/sitemap.xml`（sitemapindex 格式）
-  - 指向 `https://nsddd.top/en/sitemap.xml`
-  - 指向 `https://nsddd.top/zh/sitemap.xml`
-- robots.txt: 已配置 `Sitemap: https://nsddd.top/sitemap.xml`
+- 根 sitemap: `https://cubxxw.com/sitemap.xml`（sitemapindex 格式）
+  - 指向 `https://cubxxw.com/en/sitemap.xml`
+  - 指向 `https://cubxxw.com/zh/sitemap.xml`
+- robots.txt: 已配置 `Sitemap: https://cubxxw.com/sitemap.xml`
 
 ---
 
@@ -20,7 +20,7 @@
 
 1. 访问 https://search.google.com/search-console
 2. 点击「添加资源」→ 选择「URL 前缀」
-3. 输入 `https://nsddd.top`，点击「继续」
+3. 输入 `https://cubxxw.com`，点击「继续」
 
 ### Step 2 — 获取 HTML 标签验证码
 

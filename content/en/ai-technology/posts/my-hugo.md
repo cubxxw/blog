@@ -84,7 +84,7 @@ Choose the theme we use:
 It is recommended to use yaml or toml. I prefer to use yaml haha. Of course, you can use the tool https://tooltt.com/yaml2toml/ to convert it at will.
 
 ```toml
-baseURL = 'https://nsddd.top'
+baseURL = 'https://cubxxw.com'
 languageCode = 'en-us'
 title = 'cubxxw is blog'
 theme = "PaperMod"

@@ -83,8 +83,8 @@ For **general** issues, maybe you can choose [issues]([New Issue · labring/seal
 
 ### 🧷 Additional reading
 
-1. [How to participate in the github project, you may refer to this article~](https://nsddd.top/archives/contributors)
-2. [How to use actions automatic deployment to achieve automatic remote updates~](https://nsddd.top/archives/actions)
+1. [How to participate in the github project, you may refer to this article~](https://cubxxw.com/archives/contributors)
+2. [How to use actions automatic deployment to achieve automatic remote updates~](https://cubxxw.com/archives/actions)
 
 ### 💡 Steps
 
