@@ -1,3 +1,7 @@
+# Baidu site verification — bypass Netlify Pretty URLs (preserve exact case + .html)
+# Baidu 校验器不跟随 301，必须原路径直接 200
+/baidu_verify_codeva-c8P8VEh8BQ.html   /baidu_verify_codeva-c8P8VEh8BQ.html   200!
+
 /dn    /zh/categories/个人成长-personal-development/   301
 /travel-direct    https://www.polarsteps.com/cubxxw   302
 
