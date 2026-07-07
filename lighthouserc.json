@@ -31,9 +31,10 @@
         "hreflang":                  ["warn",  {}]
       }
     },
-    "upload": [
-      { "target": "temporary-public-storage" },
-      { "target": "filesystem", "outputDir": ".lighthouseci", "reportFilenamePattern": "%%HOSTNAME%%-%%PATHNAME%%-%%DATETIME%%.%%EXTENSION%%" }
-    ]
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci",
+      "reportFilenamePattern": "%%HOSTNAME%%-%%PATHNAME%%-%%DATETIME%%.%%EXTENSION%%"
+    }
   }
 }
