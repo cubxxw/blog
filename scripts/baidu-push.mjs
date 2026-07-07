@@ -22,7 +22,7 @@ import { contentPathsToUrls } from './lib/content-to-url.mjs';
 
 const SITE = 'https://cubxxw.com';
 const ENDPOINT = `http://data.zz.baidu.com/urls?site=${SITE}&token=`;
-// Skip root /sitemap.xml — see indexnow-push.mjs for rationale.
+// See indexnow-push.mjs for rationale — go straight to per-lang sitemaps.
 const SITEMAP_URLS = [
   `${SITE}/en/sitemap.xml`,
   `${SITE}/zh/sitemap.xml`,

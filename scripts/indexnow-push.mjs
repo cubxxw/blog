@@ -37,10 +37,9 @@ import { contentPathsToUrls } from './lib/content-to-url.mjs';
 const SITE = 'https://cubxxw.com';
 const HOST = 'cubxxw.com';
 const ENDPOINT = 'https://api.indexnow.org/IndexNow';
-// Skip the root /sitemap.xml — it's built by the Netlify sitemap plugin
-// which strips trailing slashes (all URLs 301 → slash-version), so anything
-// pushed from there would waste requests. The per-language sitemaps come
-// from our custom template with canonical trailing-slash URLs.
+// Per-language sitemaps hold every published URL and use our custom
+// template (canonical trailing-slash + hreflang). Reading them directly
+// skips the sitemapindex round-trip on the root /sitemap.xml.
 const SITEMAP_URLS = [
   `${SITE}/en/sitemap.xml`,
   `${SITE}/zh/sitemap.xml`,
