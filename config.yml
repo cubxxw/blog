@@ -104,7 +104,7 @@ params:
       url: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3
     - name: wechat
       title: 微信 / WeChat
-      wechatID: nsddd_top
+      wechatID: cubxxw_com
       qr: /wechat.jpg
   social:
     twitter: cubxxw

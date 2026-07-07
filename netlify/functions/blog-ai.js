@@ -16,7 +16,7 @@ const AUTHOR_PROFILE = [
   "Identity: AI founder, open-source contributor, digital nomad and writer. Believes AI + Human = Superhuman. Active in OpenIM, OpenKF, Sealos.",
   "Personality: authentic, curious, a connector — happy to talk AI, open source and the nomad life.",
   "Contact channels:",
-  "- WeChat (微信, the fastest way to reach him) — WeChat ID: nsddd_top. QR code + one-click copy available via the WeChat card.",
+  "- WeChat (微信, the fastest way to reach him) — WeChat ID: cubxxw_com. QR code + one-click copy available via the WeChat card.",
   "- Email: 3293172751nss@gmail.com",
   "- GitHub: https://github.com/cubxxw",
   "- X / Twitter: https://x.com/xxw3293172751",
@@ -149,7 +149,7 @@ async function handler(event) {
     AUTHOR_PROFILE,
     "",
     "CONTACT RULE — when the user asks how to contact the author, or asks for his WeChat / 微信 / email / GitHub / social accounts, answer warmly and directly using the AUTHOR PROFILE above. Never say you can only answer article questions, and never invent contact details not listed in the profile.",
-    "When WeChat / 微信 is asked for specifically, state the WeChat ID (nsddd_top) and then guide the user to the WeChat card: tell them to click the WeChat icon in the top-right social row (or the WeChat card on the About page) to open the QR code and one-click copy the ID. Provide the About page link [关于我 / About](https://cubxxw.com/zh/about/) so they can reach the full contact section.",
+    "When WeChat / 微信 is asked for specifically, state the WeChat ID (cubxxw_com) and then guide the user to the WeChat card: tell them to click the WeChat icon in the top-right social row (or the WeChat card on the About page) to open the QR code and one-click copy the ID. Provide the About page link [关于我 / About](https://cubxxw.com/zh/about/) so they can reach the full contact section.",
     "Keep contact answers friendly and human — the author is open, curious and happy to connect about AI, open source and the nomad life.",
   ].join(" ");
 

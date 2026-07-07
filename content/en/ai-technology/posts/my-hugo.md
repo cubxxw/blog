@@ -21,7 +21,7 @@ tldr:
 
 The enemy is back...
 
-It’s so difficult this time. When I was preparing my resume, I found that my blog was gone. My dearest blog [nsddd.top](nsddd.top), which I had accompanied for a year and was well-received, was sacrificed. Wuwuwuwu
+It’s so difficult this time. When I was preparing my resume, I found that my blog was gone. My dearest blog [cubxxw.com](https://cubxxw.com), which I had accompanied for a year and was well-received, was sacrificed. Wuwuwuwu
 
 Don't be impatient, don't be impatient, learn a lesson, what is the first thing? I will definitely not use dynamic blogs anymore. I used workpress for my first blog in my freshman year. The server management tool I used at that time was the famous Pagoda. Although I still don't use it now. I am using it, hahaha, but I will definitely never use it again in the future. Do you remember the second generation blog? The second generation blog is the blog I just sacrificed. It was built using docker and survived for two years (sophomore to junior year). The server was changed halfway through, but thanks to Docker’s elegant Portability haha, so my blog survives.
 
