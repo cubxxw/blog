@@ -1,0 +1,79 @@
+{{- /*
+  /llms.txt — curated Markdown map of the site for LLM crawlers
+  (Perplexity, ChatGPT Search, Kimi Explore, You.com, etc.).
+  Spec: https://llmstxt.org
+*/ -}}
+# {{ site.Title | plainify }}
+
+> {{ site.Params.description | plainify }}
+
+Author: Xinwei Xiong (熊鑫伟, cubxxw) — AI Builder, open-source contributor, digital nomad.
+Primary domain: {{ site.BaseURL }}
+Available languages: English ({{ site.BaseURL }}), Simplified Chinese ({{ site.BaseURL }}zh/).
+
+## About
+
+{{- $aboutURL := "" -}}
+{{- with (site.GetPage "/about") -}}{{- $aboutURL = .Permalink -}}{{- end }}
+- [About / Contact]({{ $aboutURL | default (printf "%sabout/" site.BaseURL) }}): Personal profile and ways to reach me (WeChat, email, GitHub, socials).
+
+{{- /* Group posts by first category. Fall back to "Other". */ -}}
+{{- $posts := where site.RegularPages "Type" "posts" -}}
+{{- $byCat := dict -}}
+{{- range $posts -}}
+  {{- $cat := "Other" -}}
+  {{- with .Params.categories -}}{{- $cat = index . 0 -}}{{- end -}}
+  {{- $list := index $byCat $cat | default (slice) -}}
+  {{- $list = $list | append . -}}
+  {{- $byCat = merge $byCat (dict $cat $list) -}}
+{{- end -}}
+
+{{- /* Emit known categories in a deterministic order, then anything else. */ -}}
+{{- $known := slice "AI & Technology" "Growth" "Projects" -}}
+{{- $seen := dict -}}
+{{- range $cat := $known }}
+  {{- $list := index $byCat $cat -}}
+  {{- if $list }}
+## {{ $cat }}
+
+    {{- range $post := first 15 (sort $list "Date" "desc") -}}
+      {{- $desc := "" -}}
+      {{- with $post.Params.tldr -}}
+        {{- if reflect.IsSlice . -}}{{- $desc = index . 0 | plainify -}}
+        {{- else -}}{{- $desc = . | plainify -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $desc -}}{{- $desc = $post.Description | plainify -}}{{- end -}}
+      {{- if not $desc -}}{{- $desc = $post.Summary | plainify | truncate 160 -}}{{- end }}
+- [{{ $post.Title | plainify }}]({{ $post.Permalink }}){{ with $desc }}: {{ . }}{{ end }}
+    {{- end }}
+
+    {{- $seen = merge $seen (dict $cat true) -}}
+  {{- end -}}
+{{- end }}
+
+{{- range $cat, $list := $byCat }}
+  {{- if not (index $seen $cat) }}
+## {{ $cat }}
+
+    {{- range $post := first 15 (sort $list "Date" "desc") -}}
+      {{- $desc := "" -}}
+      {{- with $post.Params.tldr -}}
+        {{- if reflect.IsSlice . -}}{{- $desc = index . 0 | plainify -}}
+        {{- else -}}{{- $desc = . | plainify -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $desc -}}{{- $desc = $post.Description | plainify -}}{{- end -}}
+      {{- if not $desc -}}{{- $desc = $post.Summary | plainify | truncate 160 -}}{{- end }}
+- [{{ $post.Title | plainify }}]({{ $post.Permalink }}){{ with $desc }}: {{ . }}{{ end }}
+    {{- end }}
+  {{- end -}}
+{{- end }}
+
+## Feeds
+
+- Sitemap: {{ site.BaseURL }}sitemap.xml
+- RSS: {{ site.BaseURL }}index.xml
+- JSON Feed: {{ site.BaseURL }}feed.json
+
+_Rendered from {{ .Path }} on {{ site.BaseURL }} (language: {{ .Language.Lang }})._

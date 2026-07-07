@@ -1,0 +1,83 @@
+{{- /*
+  /llms-full.txt — same map as /llms.txt but each entry carries a short
+  excerpt so a crawler that fetches only this file already has enough
+  context to cite. Spec: https://llmstxt.org
+*/ -}}
+# {{ site.Title | plainify }}
+
+> {{ site.Params.description | plainify }}
+
+Author: Xinwei Xiong (熊鑫伟, cubxxw) — AI Builder, open-source contributor, digital nomad.
+Primary domain: {{ site.BaseURL }}
+Available languages: English ({{ site.BaseURL }}), Simplified Chinese ({{ site.BaseURL }}zh/).
+
+## About
+
+{{- $aboutURL := "" -}}
+{{- with (site.GetPage "/about") -}}{{- $aboutURL = .Permalink -}}{{- end }}
+- [About / Contact]({{ $aboutURL | default (printf "%sabout/" site.BaseURL) }}): Personal profile and ways to reach me (WeChat, email, GitHub, socials).
+
+{{- $posts := where site.RegularPages "Type" "posts" -}}
+{{- $byCat := dict -}}
+{{- range $posts -}}
+  {{- $cat := "Other" -}}
+  {{- with .Params.categories -}}{{- $cat = index . 0 -}}{{- end -}}
+  {{- $list := index $byCat $cat | default (slice) -}}
+  {{- $list = $list | append . -}}
+  {{- $byCat = merge $byCat (dict $cat $list) -}}
+{{- end -}}
+
+{{- $known := slice "AI & Technology" "Growth" "Projects" -}}
+{{- $seen := dict -}}
+{{- range $cat := $known }}
+  {{- $list := index $byCat $cat -}}
+  {{- if $list }}
+## {{ $cat }}
+
+    {{- range $post := first 15 (sort $list "Date" "desc") }}
+      {{- $desc := "" -}}
+      {{- with $post.Params.tldr -}}
+        {{- if reflect.IsSlice . -}}{{- $desc = index . 0 | plainify -}}
+        {{- else -}}{{- $desc = . | plainify -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $desc -}}{{- $desc = $post.Description | plainify -}}{{- end }}
+
+### [{{ $post.Title | plainify }}]({{ $post.Permalink }})
+{{ with $desc }}> {{ . }}
+{{ end }}
+{{ $post.Summary | plainify | truncate 400 }}
+    {{- end }}
+
+    {{- $seen = merge $seen (dict $cat true) -}}
+  {{- end -}}
+{{- end }}
+
+{{- range $cat, $list := $byCat }}
+  {{- if not (index $seen $cat) }}
+## {{ $cat }}
+
+    {{- range $post := first 15 (sort $list "Date" "desc") }}
+      {{- $desc := "" -}}
+      {{- with $post.Params.tldr -}}
+        {{- if reflect.IsSlice . -}}{{- $desc = index . 0 | plainify -}}
+        {{- else -}}{{- $desc = . | plainify -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $desc -}}{{- $desc = $post.Description | plainify -}}{{- end }}
+
+### [{{ $post.Title | plainify }}]({{ $post.Permalink }})
+{{ with $desc }}> {{ . }}
+{{ end }}
+{{ $post.Summary | plainify | truncate 400 }}
+    {{- end }}
+  {{- end -}}
+{{- end }}
+
+## Feeds
+
+- Sitemap: {{ site.BaseURL }}sitemap.xml
+- RSS: {{ site.BaseURL }}index.xml
+- JSON Feed: {{ site.BaseURL }}feed.json
+
+_Rendered from {{ .Path }} on {{ site.BaseURL }} (language: {{ .Language.Lang }})._

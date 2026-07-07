@@ -163,6 +163,10 @@ mediaTypes:
     suffixes: ["json"]
   text/x-opml:
     suffixes: ["opml"]
+  # llms.txt is Markdown by spec but named `.txt`; declare a dedicated
+  # mediaType so we don't clobber Hugo's built-in text/markdown → .md.
+  text/x-llms:
+    suffixes: ["txt"]
 
 outputFormats:
   JSONFeed:
@@ -187,6 +191,20 @@ outputFormats:
     isPlainText: false
     rel: sitemap
     notAlternative: true
+  # llms.txt — curated site map for LLM crawlers (Perplexity, ChatGPT
+  # Search, Kimi Explore). Spec: https://llmstxt.org
+  LLMS:
+    name: LLMS
+    mediaType: text/x-llms
+    baseName: llms
+    isPlainText: true
+    notAlternative: true
+  LLMSFull:
+    name: LLMSFull
+    mediaType: text/x-llms
+    baseName: llms-full
+    isPlainText: true
+    notAlternative: true
 
 outputs:
     home:
@@ -196,6 +214,8 @@ outputs:
       - JSONFeed       # JSON Feed 1.1 at /feed.json
       - OPML           # /subscriptions.opml
       - NewsSitemap    # /news-sitemap.xml
+      - LLMS           # /llms.txt — curated site map for LLM crawlers
+      - LLMSFull       # /llms-full.txt — same list with tldr excerpts
     section:
       - HTML
       - RSS
