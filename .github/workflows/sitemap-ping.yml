@@ -36,11 +36,46 @@ jobs:
             echo "Warning: Google ping returned $STATUS"
           fi
 
-      - name: Ping Bing
+      # Bing's legacy /ping was deprecated in 2023 — IndexNow (below) replaces it
+      # and additionally notifies Yandex. Legacy ping kept as a harmless fallback.
+      - name: Ping Bing (legacy fallback)
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
             "https://www.bing.com/ping?sitemap=https%3A%2F%2Fcubxxw.com%2Fsitemap.xml")
-          echo "Bing ping status: $STATUS"
+          echo "Bing legacy ping status: $STATUS (endpoint is deprecated; IndexNow is primary)"
+
+      - name: Setup Node.js for push scripts
+        if: env.BAIDU_PUSH_TOKEN != '' || env.INDEXNOW_KEY != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+        env:
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      - name: Push URLs to IndexNow (Bing + Yandex)
+        if: env.INDEXNOW_KEY != ''
+        run: node scripts/indexnow-push.mjs --recent 7
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      - name: Verify IndexNow key file is reachable
+        if: env.INDEXNOW_KEY != ''
+        run: |
+          KEY_URL="https://cubxxw.com/${{ secrets.INDEXNOW_KEY }}.txt"
+          STATUS=$(curl -s -o /tmp/key.txt -w "%{http_code}" "$KEY_URL")
+          BODY=$(tr -d '[:space:]' < /tmp/key.txt)
+          echo "Key file status: $STATUS, body: $BODY"
+          if [ "$STATUS" != "200" ]; then echo "::error::Key file returned $STATUS — IndexNow will 403"; exit 1; fi
+          if [ "$BODY" != "${{ secrets.INDEXNOW_KEY }}" ]; then echo "::error::Key file body mismatch — IndexNow will 403"; exit 1; fi
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      - name: Push URLs to Baidu (recent 7d, quota-friendly)
+        if: env.BAIDU_PUSH_TOKEN != ''
+        run: node scripts/baidu-push.mjs --recent 7
+        env:
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
 
       - name: Verify sitemap is reachable
         run: |
