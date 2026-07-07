@@ -14,11 +14,16 @@
 // with a matching _redirects rule to bypass Netlify Pretty URLs.
 //
 // Usage:
-//   INDEXNOW_KEY=xxx node scripts/indexnow-push.mjs                # recent 7 days
+//   INDEXNOW_KEY=xxx node scripts/indexnow-push.mjs                       # recent 7 days
 //   INDEXNOW_KEY=xxx node scripts/indexnow-push.mjs --recent 30
 //   INDEXNOW_KEY=xxx node scripts/indexnow-push.mjs --all
 //   INDEXNOW_KEY=xxx node scripts/indexnow-push.mjs --file urls.txt
+//   INDEXNOW_KEY=xxx node scripts/indexnow-push.mjs --changed <base>..<head>   # git diff
 //   INDEXNOW_KEY=xxx node scripts/indexnow-push.mjs --dry-run
+//
+// The --changed mode inspects `git diff --name-only <range>` for
+// content/**/*.md paths and derives the exact URLs that were added/modified.
+// Falls back gracefully to no-op if the diff has no content changes.
 //
 // Response codes (per spec):
 //   200 = accepted   202 = accepted (async validation)
@@ -26,6 +31,8 @@
 //   422 = URL not on host / key mismatch   429 = rate-limited
 
 import { readFileSync } from 'node:fs';
+import { execSync } from 'node:child_process';
+import { contentPathsToUrls } from './lib/content-to-url.mjs';
 
 const SITE = 'https://cubxxw.com';
 const HOST = 'cubxxw.com';
@@ -47,6 +54,7 @@ const DRY_RUN = flag('--dry-run') !== -1;
 const ALL = flag('--all') !== -1;
 const RECENT_DAYS = ALL ? Infinity : parseInt(val('--recent', '7'), 10);
 const FILE = val('--file', null);
+const CHANGED = val('--changed', null); // e.g. "HEAD~1..HEAD" or "abc..def"
 const KEY = process.env.INDEXNOW_KEY;
 const KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION || (KEY && `${SITE}/${KEY}.txt`);
 
@@ -132,6 +140,17 @@ function loadUrlsFromFile(path) {
     .map((loc) => ({ loc, lastmod: now }));
 }
 
+// Only "added" (A) and "modified" (M) files — skip deletions/renames-from.
+function loadUrlsFromGitDiff(range) {
+  const raw = execSync(`git diff --name-only --diff-filter=AM ${range} -- 'content/**/*.md'`, {
+    encoding: 'utf8',
+  });
+  const paths = raw.split('\n').map((s) => s.trim()).filter(Boolean);
+  const urls = contentPathsToUrls(paths);
+  const now = new Date();
+  return urls.map((loc) => ({ loc, lastmod: now }));
+}
+
 async function pushBatch(urls) {
   const body = {
     host: HOST,
@@ -150,7 +169,10 @@ async function pushBatch(urls) {
 
 async function main() {
   let urls;
-  if (FILE) {
+  if (CHANGED) {
+    urls = loadUrlsFromGitDiff(CHANGED);
+    console.log(`🔀 git diff ${CHANGED} yielded ${urls.length} content URL(s)`);
+  } else if (FILE) {
     urls = loadUrlsFromFile(FILE);
     console.log(`📄 loaded ${urls.length} URLs from ${FILE}`);
   } else {
@@ -164,7 +186,8 @@ async function main() {
     console.log(`🚫 skipped ${beforeSkip - urls.length} URL(s) matching 404/verify/txt patterns`);
   }
 
-  if (Number.isFinite(RECENT_DAYS)) {
+  // --recent applies to sitemap mode only; --changed/--file already yield an explicit list
+  if (Number.isFinite(RECENT_DAYS) && !CHANGED && !FILE) {
     const cutoff = Date.now() - RECENT_DAYS * 86_400_000;
     const before = urls.length;
     urls = urls.filter((u) => u.lastmod.getTime() >= cutoff);

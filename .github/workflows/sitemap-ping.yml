@@ -14,6 +14,14 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
+      # fetch-depth: 2 so `git diff HEAD~1..HEAD` works for --changed mode.
+      # For workflow_dispatch or a first-commit-in-branch, HEAD~1 may not
+      # exist — --changed step handles that gracefully by falling back.
+      - name: Checkout (need history for content diff)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
       - name: Wait for site to be updated
         run: |
           echo "Waiting for site deployment to propagate..."
@@ -53,12 +61,6 @@ jobs:
           BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
-      - name: Push URLs to IndexNow (Bing + Yandex)
-        if: env.INDEXNOW_KEY != ''
-        run: node scripts/indexnow-push.mjs --recent 7
-        env:
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-
       - name: Verify IndexNow key file is reachable
         if: env.INDEXNOW_KEY != ''
         run: |
@@ -71,7 +73,31 @@ jobs:
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
-      - name: Push URLs to Baidu (recent 7d, quota-friendly)
+      # Two-layer push strategy:
+      #   1. Exact: push URLs derived from this commit's content diff
+      #      (fast, precise, no waste when only 1 file changed)
+      #   2. Safety net: push everything modified in the last 7 days
+      #      (catches renames/reverts/manual triggers where the diff misses)
+      # IndexNow is idempotent — duplicate pushes don't hurt.
+      - name: Push changed URLs to IndexNow (exact)
+        if: env.INDEXNOW_KEY != '' && github.event_name == 'push'
+        run: node scripts/indexnow-push.mjs --changed HEAD~1..HEAD
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      - name: Push recent URLs to IndexNow (safety net)
+        if: env.INDEXNOW_KEY != ''
+        run: node scripts/indexnow-push.mjs --recent 7
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      - name: Push changed URLs to Baidu (exact)
+        if: env.BAIDU_PUSH_TOKEN != '' && github.event_name == 'push'
+        run: node scripts/baidu-push.mjs --changed HEAD~1..HEAD
+        env:
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+
+      - name: Push recent URLs to Baidu (safety net, quota-aware)
         if: env.BAIDU_PUSH_TOKEN != ''
         run: node scripts/baidu-push.mjs --recent 7
         env:

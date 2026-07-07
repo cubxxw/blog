@@ -9,13 +9,16 @@
 // hardcoded.
 //
 // Usage:
-//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs                # recent 7 days
-//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --recent 30    # recent 30 days
-//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --all          # every URL in sitemap
+//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs                       # recent 7 days
+//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --recent 30
+//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --all
 //   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --file urls.txt
-//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --dry-run      # preview only
+//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --changed <base>..<head>   # git diff
+//   BAIDU_PUSH_TOKEN=xxx node scripts/baidu-push.mjs --dry-run
 
 import { readFileSync } from 'node:fs';
+import { execSync } from 'node:child_process';
+import { contentPathsToUrls } from './lib/content-to-url.mjs';
 
 const SITE = 'https://cubxxw.com';
 const ENDPOINT = `http://data.zz.baidu.com/urls?site=${SITE}&token=`;
@@ -36,6 +39,7 @@ const DRY_RUN = flag('--dry-run') !== -1;
 const ALL = flag('--all') !== -1;
 const RECENT_DAYS = ALL ? Infinity : parseInt(val('--recent', '7'), 10);
 const FILE = val('--file', null);
+const CHANGED = val('--changed', null);
 const TOKEN = process.env.BAIDU_PUSH_TOKEN;
 
 if (!TOKEN && !DRY_RUN) {
@@ -120,6 +124,16 @@ function loadUrlsFromFile(path) {
     .map((loc) => ({ loc, lastmod: now }));
 }
 
+function loadUrlsFromGitDiff(range) {
+  const raw = execSync(`git diff --name-only --diff-filter=AM ${range} -- 'content/**/*.md'`, {
+    encoding: 'utf8',
+  });
+  const paths = raw.split('\n').map((s) => s.trim()).filter(Boolean);
+  const urls = contentPathsToUrls(paths);
+  const now = new Date();
+  return urls.map((loc) => ({ loc, lastmod: now }));
+}
+
 async function pushBatch(urls) {
   const body = urls.map((u) => u.loc).join('\n');
   const res = await fetch(ENDPOINT + TOKEN, {
@@ -142,7 +156,10 @@ async function pushBatch(urls) {
 
 async function main() {
   let urls;
-  if (FILE) {
+  if (CHANGED) {
+    urls = loadUrlsFromGitDiff(CHANGED);
+    console.log(`🔀 git diff ${CHANGED} yielded ${urls.length} content URL(s)`);
+  } else if (FILE) {
     urls = loadUrlsFromFile(FILE);
     console.log(`📄 loaded ${urls.length} URLs from ${FILE}`);
   } else {
@@ -156,7 +173,7 @@ async function main() {
     console.log(`🚫 skipped ${beforeSkip - urls.length} URL(s) matching 404/verify patterns`);
   }
 
-  if (Number.isFinite(RECENT_DAYS)) {
+  if (Number.isFinite(RECENT_DAYS) && !CHANGED && !FILE) {
     const cutoff = Date.now() - RECENT_DAYS * 86_400_000;
     const before = urls.length;
     urls = urls.filter((u) => u.lastmod.getTime() >= cutoff);
