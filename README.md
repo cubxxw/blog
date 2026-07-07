@@ -287,7 +287,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [AI 时代初创企业的测试驱动开发（TDD）实践方案](https://cubxxw.com/zh/projects/tdd/)
 - [MarkItDown 开源项目深度学习](https://cubxxw.com/zh/projects/markitdown/)
 - [LangGraph 深度解析：设计、架构、原理与应用](https://cubxxw.com/zh/projects/langgraph/)
-- [Langchain 开源项目深度学习](https://cubxxw.com/zh/projects/langchain/)
+- [LangChain 开源项目深度学习](https://cubxxw.com/zh/projects/langchain/)
 - [Ai Gateway 开源项目深度学习](https://cubxxw.com/zh/projects/ai-gateway/)
 - [独立开发者必备技能及现代工具 & 分别的上手指导](https://cubxxw.com/zh/projects/independent-developer/)
 - [Gpt Researcher 开源项目深度学习](https://cubxxw.com/zh/projects/gpt-researcher/)
