@@ -36,10 +36,23 @@ jobs:
         run: npm ci
 
       - name: Fetch Google Search Console snapshot
+        continue-on-error: true
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
           LOOKBACK: ${{ inputs.lookback || '2' }}
         run: node scripts/gsc-fetch.mjs --lookback "$LOOKBACK"
+
+      - name: Fetch PageSpeed Insights snapshot
+        continue-on-error: true
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: node scripts/psi-fetch.mjs
+
+      - name: Fetch CrUX History snapshot
+        continue-on-error: true
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: node scripts/crux-fetch.mjs
 
       - name: Commit snapshot if changed
         run: |
@@ -51,7 +64,7 @@ jobs:
             exit 0
           fi
           DATE=$(date -u +%Y-%m-%d)
-          git commit -m "chore(seo): daily GSC snapshot ${DATE}"
+          git commit -m "chore(seo): daily SEO snapshot ${DATE}"
           # Retry once if main advanced during the run.
           git pull --rebase origin main
           git push origin main
