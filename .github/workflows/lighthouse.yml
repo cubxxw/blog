@@ -68,6 +68,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: lighthouse-results
-          path: .lighthouseci/
+          path: .lighthouseci/**
           if-no-files-found: warn
           retention-days: 14
