@@ -17,10 +17,12 @@
 
 import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { isAbsolute, join } from 'node:path';
 
 const TRACKING_TITLE = 'Lighthouse CI — 站点性能跟踪';
 const TRACKING_LABEL = 'lighthouse';
 const MANIFEST = '.lighthouseci/manifest.json';
+const LHCI_DIR = '.lighthouseci';
 
 const repo = process.env.GITHUB_REPOSITORY;
 const runId = process.env.GITHUB_RUN_ID;
@@ -56,6 +58,62 @@ const rows = runs
   })
   .join('\n');
 
+// lhci writes jsonPath as an absolute path inside the runner; resolve it
+// robustly whether we get an absolute string or a name relative to LHCI_DIR.
+function resolveReportPath(p) {
+  if (!p) return null;
+  if (isAbsolute(p)) return existsSync(p) ? p : null;
+  const rel = join(LHCI_DIR, p);
+  return existsSync(rel) ? rel : existsSync(p) ? p : null;
+}
+
+// Diagnostics per URL: Core Web Vitals + top 3 opportunities with meaningful
+// savings. Fed by the lhr JSON that lhci dumps alongside manifest.json.
+function readDetails(jsonPath) {
+  const resolved = resolveReportPath(jsonPath);
+  if (!resolved) return null;
+  let lhr;
+  try {
+    lhr = JSON.parse(readFileSync(resolved, 'utf8'));
+  } catch {
+    return null;
+  }
+  const a = lhr.audits || {};
+  const pick = (id) => {
+    const audit = a[id];
+    if (!audit) return '—';
+    if (audit.displayValue) return audit.displayValue;
+    if (typeof audit.numericValue === 'number') return `${Math.round(audit.numericValue)}`;
+    return '—';
+  };
+  const metrics = [
+    ['LCP', pick('largest-contentful-paint')],
+    ['FCP', pick('first-contentful-paint')],
+    ['CLS', pick('cumulative-layout-shift')],
+    ['TBT', pick('total-blocking-time')],
+    ['SI',  pick('speed-index')],
+    ['TTI', pick('interactive')],
+  ];
+  const opps = Object.values(a)
+    .filter((audit) => audit && typeof audit.numericValue === 'number' && audit.details && audit.details.type === 'opportunity' && audit.numericValue >= 100)
+    .sort((x, y) => y.numericValue - x.numericValue)
+    .slice(0, 3)
+    .map((audit) => `- **${audit.title}** — potential savings ${Math.round(audit.numericValue)} ms`);
+  return { metrics, opps };
+}
+
+const detailSections = runs.map((r) => {
+  const d = readDetails(r.jsonPath);
+  if (!d) return `<details><summary>${r.url}</summary>\n\n(no detailed report)\n\n</details>`;
+  const metricsTbl = [
+    '| Metric | Value |',
+    '| --- | --- |',
+    ...d.metrics.map(([k, v]) => `| ${k} | ${v} |`),
+  ].join('\n');
+  const oppsBlock = d.opps.length ? ['', '**Top opportunities**', ...d.opps].join('\n') : '';
+  return `<details><summary>${r.url}</summary>\n\n${metricsTbl}${oppsBlock}\n\n</details>`;
+}).join('\n');
+
 const body = [
   `### Lighthouse — ${stamp}`,
   '',
@@ -64,6 +122,9 @@ const body = [
   '| URL | Perf | A11y | Best-Practices | SEO | PWA |',
   '| --- | ---: | ---: | ---: | ---: | ---: |',
   rows,
+  '',
+  '#### 每 URL 详细指标（点击展开）',
+  detailSections,
 ].join('\n');
 
 const gh = (args, opts = {}) =>

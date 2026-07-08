@@ -12,14 +12,11 @@ permissions:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.147.0
 
     steps:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -31,23 +28,16 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb \
-            https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-
-      - name: Install Dart Sass
-        run: npm install -g sass
-
-      - name: Build Hugo site
-        env:
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
-        run: hugo --gc --minify --baseURL "http://localhost:1313/"
-
       - name: Install @lhci/cli
         run: npm install -g @lhci/cli
+
+      # Netlify rebuilds on every push to main; wait it out so lhci scans the
+      # freshly deployed HTML instead of the previous revision.
+      - name: Wait for Netlify to publish this commit
+        if: github.event_name == 'push'
+        run: |
+          echo "Waiting 120s for Netlify to publish ${GITHUB_SHA}…"
+          sleep 120
 
       - name: Run Lighthouse CI
         run: lhci autorun

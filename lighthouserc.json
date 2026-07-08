@@ -2,16 +2,19 @@
   "ci": {
     "collect": {
       "url": [
-        "http://localhost:1313/",
-        "http://localhost:1313/about/",
-        "http://localhost:1313/growth/posts/2025-annual-review/",
-        "http://localhost:1313/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
-        "http://localhost:1313/zh/",
-        "http://localhost:1313/zh/growth/posts/2025-annual-review/"
+        "https://cubxxw.com/",
+        "https://cubxxw.com/zh/",
+        "https://cubxxw.com/about/",
+        "https://cubxxw.com/zh/about/",
+        "https://cubxxw.com/ai-technology/",
+        "https://cubxxw.com/zh/ai-technology/",
+        "https://cubxxw.com/growth/",
+        "https://cubxxw.com/zh/growth/",
+        "https://cubxxw.com/projects/",
+        "https://cubxxw.com/archives/",
+        "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+        "https://cubxxw.com/zh/growth/posts/2025-annual-review/"
       ],
-      "startServerCommand": "hugo server --port 1313 --disableFastRender --environment production",
-      "startServerReadyPattern": "Web Server is available",
-      "startServerReadyTimeout": 30000,
       "numberOfRuns": 1,
       "settings": {
         "chromeFlags": "--no-sandbox --disable-dev-shm-usage"
