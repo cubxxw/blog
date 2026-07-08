@@ -1,6 +1,6 @@
 {
   "meta": {
-    "fetchedAt": "2026-07-08T06:42:17.148Z",
+    "fetchedAt": "2026-07-08T08:25:33.161Z",
     "runDate": "2026-07-08",
     "strategies": [
       "mobile",
@@ -13,93 +13,42 @@
       "seo"
     ],
     "urls": 12,
-    "failures": 4
+    "failures": 3
   },
   "failures": [
     {
-      "url": "https://cubxxw.com/about/",
-      "strategy": "desktop",
-      "error": "PSI desktop https://cubxxw.com/about/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
-    },
-    {
-      "url": "https://cubxxw.com/zh/about/",
+      "url": "https://cubxxw.com/",
       "strategy": "mobile",
-      "error": "PSI mobile https://cubxxw.com/zh/about/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+      "error": "PSI mobile https://cubxxw.com/ → 400: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Lighthouse returned error: FAILED_DOCUMENT_REQUEST. Lighthouse was unable to reliably load the page you requested. Make sure you are testing the correct"
     },
     {
-      "url": "https://cubxxw.com/projects/",
+      "url": "https://cubxxw.com/zh/",
       "strategy": "desktop",
-      "error": "PSI desktop https://cubxxw.com/projects/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+      "error": "PSI desktop https://cubxxw.com/zh/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
     },
     {
-      "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
-      "strategy": "desktop",
-      "error": "PSI desktop https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "strategy": "mobile",
+      "error": "PSI mobile https://cubxxw.com/zh/growth/posts/2025-annual-review/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
     }
   ],
   "results": [
     {
       "url": "https://cubxxw.com/",
-      "strategy": "mobile",
-      "finalUrl": "https://cubxxw.com/",
-      "fetchTime": "2026-07-08T06:31:56.217Z",
-      "categories": {
-        "performance": 0.9,
-        "accessibility": 0.86,
-        "best-practices": 1,
-        "seo": 1
-      },
-      "metrics": {
-        "LCP": {
-          "displayValue": "3.3 s",
-          "numericValue": 3312,
-          "score": 0.69
-        },
-        "FCP": {
-          "displayValue": "1.7 s",
-          "numericValue": 1661,
-          "score": 0.93
-        },
-        "CLS": {
-          "displayValue": "0.072",
-          "numericValue": 0,
-          "score": 0.96
-        },
-        "TBT": {
-          "displayValue": "70 ms",
-          "numericValue": 73,
-          "score": 0.99
-        },
-        "SI": {
-          "displayValue": "3.1 s",
-          "numericValue": 3080,
-          "score": 0.93
-        },
-        "TTI": {
-          "displayValue": "3.3 s",
-          "numericValue": 3312,
-          "score": 0.94
-        }
-      },
-      "fieldData": null,
-      "originFieldData": null
-    },
-    {
-      "url": "https://cubxxw.com/",
       "strategy": "desktop",
       "finalUrl": "https://cubxxw.com/",
-      "fetchTime": "2026-07-08T06:34:22.057Z",
+      "fetchTime": "2026-07-08T08:11:51.683Z",
       "categories": {
-        "performance": 0.98,
-        "accessibility": 0.86,
-        "best-practices": 1,
+        "performance": 0.66,
+        "accessibility": 0.89,
+        "best-practices": 0.96,
         "seo": 1
       },
       "metrics": {
         "LCP": {
-          "displayValue": "0.8 s",
-          "numericValue": 806,
-          "score": 0.98
+          "displayValue": "0.4 s",
+          "numericValue": 445,
+          "score": 1
         },
         "FCP": {
           "displayValue": "0.4 s",
@@ -107,23 +56,23 @@
           "score": 1
         },
         "CLS": {
-          "displayValue": "0.001",
+          "displayValue": "0",
           "numericValue": 0,
           "score": 1
         },
         "TBT": {
-          "displayValue": "100 ms",
-          "numericValue": 103,
-          "score": 0.97
+          "displayValue": "630 ms",
+          "numericValue": 632,
+          "score": 0.18
         },
         "SI": {
-          "displayValue": "1.3 s",
-          "numericValue": 1262,
-          "score": 0.91
+          "displayValue": "6.0 s",
+          "numericValue": 5973,
+          "score": 0.01
         },
         "TTI": {
-          "displayValue": "1.3 s",
-          "numericValue": 1270,
+          "displayValue": "1.2 s",
+          "numericValue": 1174,
           "score": 1
         }
       },
@@ -134,89 +83,43 @@
       "url": "https://cubxxw.com/zh/",
       "strategy": "mobile",
       "finalUrl": "https://cubxxw.com/zh/",
-      "fetchTime": "2026-07-08T06:34:41.503Z",
+      "fetchTime": "2026-07-08T08:12:25.258Z",
       "categories": {
-        "performance": 0.69,
+        "performance": 0.83,
         "accessibility": 0.86,
         "best-practices": 1,
         "seo": 1
       },
       "metrics": {
         "LCP": {
-          "displayValue": "5.0 s",
-          "numericValue": 4992,
-          "score": 0.27
+          "displayValue": "3.8 s",
+          "numericValue": 3763,
+          "score": 0.56
         },
         "FCP": {
-          "displayValue": "4.1 s",
-          "numericValue": 4092,
-          "score": 0.21
+          "displayValue": "2.1 s",
+          "numericValue": 2115,
+          "score": 0.8
         },
         "CLS": {
-          "displayValue": "0",
+          "displayValue": "0.113",
           "numericValue": 0,
-          "score": 1
+          "score": 0.86
         },
         "TBT": {
-          "displayValue": "0 ms",
-          "numericValue": 0,
+          "displayValue": "10 ms",
+          "numericValue": 13,
           "score": 1
         },
         "SI": {
-          "displayValue": "5.5 s",
-          "numericValue": 5476,
-          "score": 0.55
+          "displayValue": "2.9 s",
+          "numericValue": 2932,
+          "score": 0.95
         },
         "TTI": {
-          "displayValue": "5.0 s",
-          "numericValue": 4992,
-          "score": 0.77
-        }
-      },
-      "fieldData": null,
-      "originFieldData": null
-    },
-    {
-      "url": "https://cubxxw.com/zh/",
-      "strategy": "desktop",
-      "finalUrl": "https://cubxxw.com/zh/",
-      "fetchTime": "2026-07-08T06:34:57.000Z",
-      "categories": {
-        "performance": 0.9,
-        "accessibility": 0.86,
-        "best-practices": 0.96,
-        "seo": 1
-      },
-      "metrics": {
-        "LCP": {
-          "displayValue": "0.8 s",
-          "numericValue": 775,
-          "score": 0.98
-        },
-        "FCP": {
-          "displayValue": "0.5 s",
-          "numericValue": 536,
-          "score": 1
-        },
-        "CLS": {
-          "displayValue": "0.027",
-          "numericValue": 0,
-          "score": 1
-        },
-        "TBT": {
-          "displayValue": "50 ms",
-          "numericValue": 51,
-          "score": 1
-        },
-        "SI": {
-          "displayValue": "5.4 s",
-          "numericValue": 5431,
-          "score": 0.02
-        },
-        "TTI": {
-          "displayValue": "0.9 s",
-          "numericValue": 947,
-          "score": 1
+          "displayValue": "3.8 s",
+          "numericValue": 3763,
+          "score": 0.9
         }
       },
       "fieldData": null,
@@ -226,7 +129,7 @@
       "url": "https://cubxxw.com/about/",
       "strategy": "mobile",
       "finalUrl": "https://cubxxw.com/about/",
-      "fetchTime": "2026-07-08T06:35:20.524Z",
+      "fetchTime": "2026-07-08T08:12:48.543Z",
       "categories": {
         "performance": 0.8,
         "accessibility": 0.89,
@@ -236,12 +139,12 @@
       "metrics": {
         "LCP": {
           "displayValue": "3.9 s",
-          "numericValue": 3912,
+          "numericValue": 3914,
           "score": 0.52
         },
         "FCP": {
           "displayValue": "3.5 s",
-          "numericValue": 3462,
+          "numericValue": 3464,
           "score": 0.35
         },
         "CLS": {
@@ -256,13 +159,105 @@
         },
         "SI": {
           "displayValue": "3.5 s",
-          "numericValue": 3462,
-          "score": 0.89
+          "numericValue": 3540,
+          "score": 0.88
         },
         "TTI": {
           "displayValue": "3.9 s",
-          "numericValue": 3912,
+          "numericValue": 3914,
           "score": 0.88
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/about/",
+      "fetchTime": "2026-07-08T08:13:08.323Z",
+      "categories": {
+        "performance": 0.98,
+        "accessibility": 0.89,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 838,
+          "score": 0.97
+        },
+        "FCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 818,
+          "score": 0.94
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "80 ms",
+          "numericValue": 82,
+          "score": 0.99
+        },
+        "SI": {
+          "displayValue": "1.0 s",
+          "numericValue": 1019,
+          "score": 0.97
+        },
+        "TTI": {
+          "displayValue": "1.1 s",
+          "numericValue": 1076,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/zh/about/",
+      "fetchTime": "2026-07-08T08:13:33.279Z",
+      "categories": {
+        "performance": 0.59,
+        "accessibility": 0.89,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "7.8 s",
+          "numericValue": 7828,
+          "score": 0.03
+        },
+        "FCP": {
+          "displayValue": "6.8 s",
+          "numericValue": 6778,
+          "score": 0.02
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "6.8 s",
+          "numericValue": 6778,
+          "score": 0.35
+        },
+        "TTI": {
+          "displayValue": "7.8 s",
+          "numericValue": 7828,
+          "score": 0.44
         }
       },
       "fieldData": null,
@@ -272,42 +267,42 @@
       "url": "https://cubxxw.com/zh/about/",
       "strategy": "desktop",
       "finalUrl": "https://cubxxw.com/zh/about/",
-      "fetchTime": "2026-07-08T06:36:22.332Z",
+      "fetchTime": "2026-07-08T08:13:44.934Z",
       "categories": {
-        "performance": 0.96,
+        "performance": 0.95,
         "accessibility": 0.89,
-        "best-practices": 0.96,
+        "best-practices": 1,
         "seo": 1
       },
       "metrics": {
         "LCP": {
-          "displayValue": "1.3 s",
-          "numericValue": 1338,
-          "score": 0.85
+          "displayValue": "1.4 s",
+          "numericValue": 1378,
+          "score": 0.84
         },
         "FCP": {
-          "displayValue": "0.5 s",
-          "numericValue": 499,
-          "score": 1
+          "displayValue": "0.8 s",
+          "numericValue": 818,
+          "score": 0.94
         },
         "CLS": {
-          "displayValue": "0.002",
+          "displayValue": "0",
           "numericValue": 0,
           "score": 1
         },
         "TBT": {
-          "displayValue": "20 ms",
-          "numericValue": 22,
+          "displayValue": "0 ms",
+          "numericValue": 0,
           "score": 1
         },
         "SI": {
-          "displayValue": "0.7 s",
-          "numericValue": 737,
-          "score": 1
+          "displayValue": "0.8 s",
+          "numericValue": 818,
+          "score": 0.99
         },
         "TTI": {
-          "displayValue": "1.3 s",
-          "numericValue": 1338,
+          "displayValue": "1.4 s",
+          "numericValue": 1378,
           "score": 0.99
         }
       },
@@ -318,193 +313,9 @@
       "url": "https://cubxxw.com/ai-technology/",
       "strategy": "mobile",
       "finalUrl": "https://cubxxw.com/ai-technology/",
-      "fetchTime": "2026-07-08T06:36:43.345Z",
+      "fetchTime": "2026-07-08T08:13:58.956Z",
       "categories": {
-        "performance": 0.94,
-        "accessibility": 0.92,
-        "best-practices": 1,
-        "seo": 1
-      },
-      "metrics": {
-        "LCP": {
-          "displayValue": "2.9 s",
-          "numericValue": 2875,
-          "score": 0.81
-        },
-        "FCP": {
-          "displayValue": "1.5 s",
-          "numericValue": 1524,
-          "score": 0.95
-        },
-        "CLS": {
-          "displayValue": "0",
-          "numericValue": 0,
-          "score": 1
-        },
-        "TBT": {
-          "displayValue": "0 ms",
-          "numericValue": 0,
-          "score": 1
-        },
-        "SI": {
-          "displayValue": "3.3 s",
-          "numericValue": 3331,
-          "score": 0.9
-        },
-        "TTI": {
-          "displayValue": "2.9 s",
-          "numericValue": 2875,
-          "score": 0.96
-        }
-      },
-      "fieldData": null,
-      "originFieldData": null
-    },
-    {
-      "url": "https://cubxxw.com/ai-technology/",
-      "strategy": "desktop",
-      "finalUrl": "https://cubxxw.com/ai-technology/",
-      "fetchTime": "2026-07-08T06:36:57.730Z",
-      "categories": {
-        "performance": 0.99,
-        "accessibility": 0.92,
-        "best-practices": 1,
-        "seo": 1
-      },
-      "metrics": {
-        "LCP": {
-          "displayValue": "0.7 s",
-          "numericValue": 734,
-          "score": 0.99
-        },
-        "FCP": {
-          "displayValue": "0.7 s",
-          "numericValue": 694,
-          "score": 0.98
-        },
-        "CLS": {
-          "displayValue": "0.001",
-          "numericValue": 0,
-          "score": 1
-        },
-        "TBT": {
-          "displayValue": "0 ms",
-          "numericValue": 0,
-          "score": 1
-        },
-        "SI": {
-          "displayValue": "0.8 s",
-          "numericValue": 773,
-          "score": 0.99
-        },
-        "TTI": {
-          "displayValue": "0.7 s",
-          "numericValue": 734,
-          "score": 1
-        }
-      },
-      "fieldData": null,
-      "originFieldData": null
-    },
-    {
-      "url": "https://cubxxw.com/zh/ai-technology/",
-      "strategy": "mobile",
-      "finalUrl": "https://cubxxw.com/zh/ai-technology/",
-      "fetchTime": "2026-07-08T06:37:13.565Z",
-      "categories": {
-        "performance": 0.88,
-        "accessibility": 0.92,
-        "best-practices": 1,
-        "seo": 1
-      },
-      "metrics": {
-        "LCP": {
-          "displayValue": "3.3 s",
-          "numericValue": 3321,
-          "score": 0.69
-        },
-        "FCP": {
-          "displayValue": "2.6 s",
-          "numericValue": 2571,
-          "score": 0.65
-        },
-        "CLS": {
-          "displayValue": "0",
-          "numericValue": 0,
-          "score": 1
-        },
-        "TBT": {
-          "displayValue": "0 ms",
-          "numericValue": 0,
-          "score": 1
-        },
-        "SI": {
-          "displayValue": "2.6 s",
-          "numericValue": 2571,
-          "score": 0.97
-        },
-        "TTI": {
-          "displayValue": "3.3 s",
-          "numericValue": 3321,
-          "score": 0.93
-        }
-      },
-      "fieldData": null,
-      "originFieldData": null
-    },
-    {
-      "url": "https://cubxxw.com/zh/ai-technology/",
-      "strategy": "desktop",
-      "finalUrl": "https://cubxxw.com/zh/ai-technology/",
-      "fetchTime": "2026-07-08T06:37:29.717Z",
-      "categories": {
-        "performance": 0.99,
-        "accessibility": 0.92,
-        "best-practices": 1,
-        "seo": 1
-      },
-      "metrics": {
-        "LCP": {
-          "displayValue": "0.8 s",
-          "numericValue": 788,
-          "score": 0.98
-        },
-        "FCP": {
-          "displayValue": "0.5 s",
-          "numericValue": 509,
-          "score": 1
-        },
-        "CLS": {
-          "displayValue": "0",
-          "numericValue": 0,
-          "score": 1
-        },
-        "TBT": {
-          "displayValue": "10 ms",
-          "numericValue": 6,
-          "score": 1
-        },
-        "SI": {
-          "displayValue": "0.9 s",
-          "numericValue": 889,
-          "score": 0.98
-        },
-        "TTI": {
-          "displayValue": "0.8 s",
-          "numericValue": 788,
-          "score": 1
-        }
-      },
-      "fieldData": null,
-      "originFieldData": null
-    },
-    {
-      "url": "https://cubxxw.com/growth/",
-      "strategy": "mobile",
-      "finalUrl": "https://cubxxw.com/growth/",
-      "fetchTime": "2026-07-08T06:37:46.442Z",
-      "categories": {
-        "performance": 0.9,
+        "performance": 0.87,
         "accessibility": 0.92,
         "best-practices": 1,
         "seo": 1
@@ -526,19 +337,203 @@
           "score": 1
         },
         "TBT": {
+          "displayValue": "80 ms",
+          "numericValue": 78,
+          "score": 0.99
+        },
+        "SI": {
+          "displayValue": "4.5 s",
+          "numericValue": 4532,
+          "score": 0.72
+        },
+        "TTI": {
+          "displayValue": "3.8 s",
+          "numericValue": 3786,
+          "score": 0.89
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/ai-technology/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/ai-technology/",
+      "fetchTime": "2026-07-08T08:14:21.144Z",
+      "categories": {
+        "performance": 0.98,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.7 s",
+          "numericValue": 739,
+          "score": 0.98
+        },
+        "FCP": {
+          "displayValue": "0.7 s",
+          "numericValue": 699,
+          "score": 0.97
+        },
+        "CLS": {
+          "displayValue": "0.001",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
           "displayValue": "0 ms",
           "numericValue": 0,
           "score": 1
         },
         "SI": {
-          "displayValue": "3.2 s",
-          "numericValue": 3168,
-          "score": 0.92
+          "displayValue": "1.4 s",
+          "numericValue": 1380,
+          "score": 0.87
         },
         "TTI": {
-          "displayValue": "2.9 s",
-          "numericValue": 2890,
+          "displayValue": "0.7 s",
+          "numericValue": 742,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-technology/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/zh/ai-technology/",
+      "fetchTime": "2026-07-08T08:14:48.324Z",
+      "categories": {
+        "performance": 0.88,
+        "accessibility": 0.93,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "2.0 s",
+          "numericValue": 1980,
+          "score": 0.97
+        },
+        "FCP": {
+          "displayValue": "2.0 s",
+          "numericValue": 1980,
+          "score": 0.85
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "40 ms",
+          "numericValue": 43,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "13.1 s",
+          "numericValue": 13141,
+          "score": 0.02
+        },
+        "TTI": {
+          "displayValue": "3.0 s",
+          "numericValue": 2986,
           "score": 0.96
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-technology/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/zh/ai-technology/",
+      "fetchTime": "2026-07-08T08:15:14.568Z",
+      "categories": {
+        "performance": 0.89,
+        "accessibility": 0.93,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.5 s",
+          "numericValue": 494,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.5 s",
+          "numericValue": 494,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "100 ms",
+          "numericValue": 103,
+          "score": 0.97
+        },
+        "SI": {
+          "displayValue": "5.0 s",
+          "numericValue": 4980,
+          "score": 0.03
+        },
+        "TTI": {
+          "displayValue": "0.8 s",
+          "numericValue": 796,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/growth/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/growth/",
+      "fetchTime": "2026-07-08T08:15:46.022Z",
+      "categories": {
+        "performance": 0.88,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "2.9 s",
+          "numericValue": 2863,
+          "score": 0.81
+        },
+        "FCP": {
+          "displayValue": "2.9 s",
+          "numericValue": 2863,
+          "score": 0.54
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "40 ms",
+          "numericValue": 44,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "4.6 s",
+          "numericValue": 4586,
+          "score": 0.71
+        },
+        "TTI": {
+          "displayValue": "3.7 s",
+          "numericValue": 3698,
+          "score": 0.9
         }
       },
       "fieldData": null,
@@ -548,7 +543,7 @@
       "url": "https://cubxxw.com/growth/",
       "strategy": "desktop",
       "finalUrl": "https://cubxxw.com/growth/",
-      "fetchTime": "2026-07-08T06:37:59.198Z",
+      "fetchTime": "2026-07-08T08:17:04.021Z",
       "categories": {
         "performance": 1,
         "accessibility": 0.92,
@@ -558,12 +553,12 @@
       "metrics": {
         "LCP": {
           "displayValue": "0.7 s",
-          "numericValue": 728,
+          "numericValue": 729,
           "score": 0.99
         },
         "FCP": {
           "displayValue": "0.7 s",
-          "numericValue": 688,
+          "numericValue": 689,
           "score": 0.98
         },
         "CLS": {
@@ -578,12 +573,12 @@
         },
         "SI": {
           "displayValue": "0.7 s",
-          "numericValue": 688,
+          "numericValue": 689,
           "score": 1
         },
         "TTI": {
           "displayValue": "0.7 s",
-          "numericValue": 728,
+          "numericValue": 729,
           "score": 1
         }
       },
@@ -594,23 +589,23 @@
       "url": "https://cubxxw.com/zh/growth/",
       "strategy": "mobile",
       "finalUrl": "https://cubxxw.com/zh/growth/",
-      "fetchTime": "2026-07-08T06:38:22.063Z",
+      "fetchTime": "2026-07-08T08:18:16.766Z",
       "categories": {
-        "performance": 0.91,
+        "performance": 0.75,
         "accessibility": 0.92,
         "best-practices": 1,
         "seo": 1
       },
       "metrics": {
         "LCP": {
-          "displayValue": "3.3 s",
-          "numericValue": 3332,
-          "score": 0.69
+          "displayValue": "3.5 s",
+          "numericValue": 3469,
+          "score": 0.65
         },
         "FCP": {
-          "displayValue": "2.0 s",
-          "numericValue": 1984,
-          "score": 0.85
+          "displayValue": "3.3 s",
+          "numericValue": 3319,
+          "score": 0.39
         },
         "CLS": {
           "displayValue": "0",
@@ -623,14 +618,14 @@
           "score": 1
         },
         "SI": {
-          "displayValue": "2.3 s",
-          "numericValue": 2305,
-          "score": 0.99
+          "displayValue": "12.3 s",
+          "numericValue": 12311,
+          "score": 0.03
         },
         "TTI": {
-          "displayValue": "3.3 s",
-          "numericValue": 3332,
-          "score": 0.93
+          "displayValue": "3.5 s",
+          "numericValue": 3469,
+          "score": 0.92
         }
       },
       "fieldData": null,
@@ -640,9 +635,9 @@
       "url": "https://cubxxw.com/zh/growth/",
       "strategy": "desktop",
       "finalUrl": "https://cubxxw.com/zh/growth/",
-      "fetchTime": "2026-07-08T06:38:36.258Z",
+      "fetchTime": "2026-07-08T08:19:19.806Z",
       "categories": {
-        "performance": 0.99,
+        "performance": 1,
         "accessibility": 0.92,
         "best-practices": 1,
         "seo": 1
@@ -650,12 +645,12 @@
       "metrics": {
         "LCP": {
           "displayValue": "0.8 s",
-          "numericValue": 809,
+          "numericValue": 811,
           "score": 0.98
         },
         "FCP": {
           "displayValue": "0.5 s",
-          "numericValue": 501,
+          "numericValue": 504,
           "score": 1
         },
         "CLS": {
@@ -670,12 +665,12 @@
         },
         "SI": {
           "displayValue": "0.7 s",
-          "numericValue": 743,
-          "score": 0.99
+          "numericValue": 698,
+          "score": 1
         },
         "TTI": {
           "displayValue": "0.8 s",
-          "numericValue": 809,
+          "numericValue": 811,
           "score": 1
         }
       },
@@ -686,9 +681,9 @@
       "url": "https://cubxxw.com/projects/",
       "strategy": "mobile",
       "finalUrl": "https://cubxxw.com/projects/",
-      "fetchTime": "2026-07-08T06:38:48.914Z",
+      "fetchTime": "2026-07-08T08:20:42.173Z",
       "categories": {
-        "performance": 0.9,
+        "performance": 0.91,
         "accessibility": 0.92,
         "best-practices": 1,
         "seo": 1
@@ -696,13 +691,13 @@
       "metrics": {
         "LCP": {
           "displayValue": "2.9 s",
-          "numericValue": 2876,
+          "numericValue": 2873,
           "score": 0.81
         },
         "FCP": {
-          "displayValue": "2.9 s",
-          "numericValue": 2876,
-          "score": 0.54
+          "displayValue": "2.6 s",
+          "numericValue": 2573,
+          "score": 0.65
         },
         "CLS": {
           "displayValue": "0",
@@ -715,13 +710,13 @@
           "score": 1
         },
         "SI": {
-          "displayValue": "3.4 s",
-          "numericValue": 3386,
-          "score": 0.9
+          "displayValue": "2.7 s",
+          "numericValue": 2713,
+          "score": 0.96
         },
         "TTI": {
           "displayValue": "2.9 s",
-          "numericValue": 2876,
+          "numericValue": 2873,
           "score": 0.96
         }
       },
@@ -729,56 +724,10 @@
       "originFieldData": null
     },
     {
-      "url": "https://cubxxw.com/archives/",
-      "strategy": "mobile",
-      "finalUrl": "https://cubxxw.com/archives/",
-      "fetchTime": "2026-07-08T06:39:21.386Z",
-      "categories": {
-        "performance": 0.84,
-        "accessibility": 0.92,
-        "best-practices": 1,
-        "seo": 1
-      },
-      "metrics": {
-        "LCP": {
-          "displayValue": "3.3 s",
-          "numericValue": 3341,
-          "score": 0.68
-        },
-        "FCP": {
-          "displayValue": "3.0 s",
-          "numericValue": 3041,
-          "score": 0.48
-        },
-        "CLS": {
-          "displayValue": "0",
-          "numericValue": 0,
-          "score": 1
-        },
-        "TBT": {
-          "displayValue": "60 ms",
-          "numericValue": 62,
-          "score": 1
-        },
-        "SI": {
-          "displayValue": "4.7 s",
-          "numericValue": 4679,
-          "score": 0.69
-        },
-        "TTI": {
-          "displayValue": "3.8 s",
-          "numericValue": 3787,
-          "score": 0.89
-        }
-      },
-      "fieldData": null,
-      "originFieldData": null
-    },
-    {
-      "url": "https://cubxxw.com/archives/",
+      "url": "https://cubxxw.com/projects/",
       "strategy": "desktop",
-      "finalUrl": "https://cubxxw.com/archives/",
-      "fetchTime": "2026-07-08T06:39:43.846Z",
+      "finalUrl": "https://cubxxw.com/projects/",
+      "fetchTime": "2026-07-08T08:20:55.316Z",
       "categories": {
         "performance": 0.99,
         "accessibility": 0.92,
@@ -787,14 +736,14 @@
       },
       "metrics": {
         "LCP": {
-          "displayValue": "0.8 s",
-          "numericValue": 774,
+          "displayValue": "0.7 s",
+          "numericValue": 737,
           "score": 0.98
         },
         "FCP": {
-          "displayValue": "0.8 s",
-          "numericValue": 774,
-          "score": 0.96
+          "displayValue": "0.7 s",
+          "numericValue": 737,
+          "score": 0.97
         },
         "CLS": {
           "displayValue": "0.001",
@@ -807,13 +756,105 @@
           "score": 1
         },
         "SI": {
-          "displayValue": "0.8 s",
-          "numericValue": 802,
+          "displayValue": "0.7 s",
+          "numericValue": 739,
           "score": 0.99
         },
         "TTI": {
+          "displayValue": "0.7 s",
+          "numericValue": 737,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/archives/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/archives/",
+      "fetchTime": "2026-07-08T08:21:10.651Z",
+      "categories": {
+        "performance": 0.9,
+        "accessibility": 0.93,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "1.5 s",
+          "numericValue": 1514,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "1.5 s",
+          "numericValue": 1514,
+          "score": 0.95
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "40 ms",
+          "numericValue": 41,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "12.6 s",
+          "numericValue": 12560,
+          "score": 0.03
+        },
+        "TTI": {
+          "displayValue": "2.7 s",
+          "numericValue": 2663,
+          "score": 0.97
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null
+    },
+    {
+      "url": "https://cubxxw.com/archives/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/archives/",
+      "fetchTime": "2026-07-08T08:21:43.372Z",
+      "categories": {
+        "performance": 0.99,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
           "displayValue": "0.8 s",
-          "numericValue": 774,
+          "numericValue": 776,
+          "score": 0.98
+        },
+        "FCP": {
+          "displayValue": "0.7 s",
+          "numericValue": 696,
+          "score": 0.97
+        },
+        "CLS": {
+          "displayValue": "0.005",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "40 ms",
+          "numericValue": 43,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "0.9 s",
+          "numericValue": 885,
+          "score": 0.98
+        },
+        "TTI": {
+          "displayValue": "0.8 s",
+          "numericValue": 839,
           "score": 1
         }
       },
@@ -824,23 +865,23 @@
       "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
       "strategy": "mobile",
       "finalUrl": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
-      "fetchTime": "2026-07-08T06:40:55.015Z",
+      "fetchTime": "2026-07-08T08:22:12.503Z",
       "categories": {
-        "performance": 0.7,
+        "performance": 0.82,
         "accessibility": 0.88,
         "best-practices": 1,
         "seo": 1
       },
       "metrics": {
         "LCP": {
-          "displayValue": "4.8 s",
-          "numericValue": 4835,
-          "score": 0.3
+          "displayValue": "4.9 s",
+          "numericValue": 4881,
+          "score": 0.29
         },
         "FCP": {
-          "displayValue": "4.4 s",
-          "numericValue": 4385,
-          "score": 0.17
+          "displayValue": "1.7 s",
+          "numericValue": 1655,
+          "score": 0.93
         },
         "CLS": {
           "displayValue": "0",
@@ -848,18 +889,18 @@
           "score": 1
         },
         "TBT": {
-          "displayValue": "0 ms",
-          "numericValue": 0,
+          "displayValue": "50 ms",
+          "numericValue": 47,
           "score": 1
         },
         "SI": {
-          "displayValue": "5.5 s",
-          "numericValue": 5496,
-          "score": 0.55
+          "displayValue": "1.7 s",
+          "numericValue": 1655,
+          "score": 1
         },
         "TTI": {
-          "displayValue": "4.8 s",
-          "numericValue": 4835,
+          "displayValue": "4.9 s",
+          "numericValue": 4888,
           "score": 0.78
         }
       },
@@ -867,46 +908,46 @@
       "originFieldData": null
     },
     {
-      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
-      "strategy": "mobile",
-      "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
-      "fetchTime": "2026-07-08T06:41:42.148Z",
+      "url": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/ai-technology/posts/agent-identity-from-locke-to-openclaw/",
+      "fetchTime": "2026-07-08T08:22:25.682Z",
       "categories": {
-        "performance": 0.55,
-        "accessibility": 0.88,
+        "performance": 0.99,
+        "accessibility": 0.85,
         "best-practices": 1,
         "seo": 1
       },
       "metrics": {
         "LCP": {
-          "displayValue": "16.7 s",
-          "numericValue": 16663,
-          "score": 0
+          "displayValue": "1.0 s",
+          "numericValue": 1012,
+          "score": 0.94
         },
         "FCP": {
-          "displayValue": "15.9 s",
-          "numericValue": 15913,
-          "score": 0
+          "displayValue": "0.5 s",
+          "numericValue": 451,
+          "score": 1
         },
         "CLS": {
-          "displayValue": "0",
+          "displayValue": "0.005",
           "numericValue": 0,
           "score": 1
         },
         "TBT": {
-          "displayValue": "0 ms",
-          "numericValue": 0,
+          "displayValue": "60 ms",
+          "numericValue": 61,
           "score": 1
         },
         "SI": {
-          "displayValue": "15.9 s",
-          "numericValue": 15913,
-          "score": 0
+          "displayValue": "0.5 s",
+          "numericValue": 507,
+          "score": 1
         },
         "TTI": {
-          "displayValue": "16.7 s",
-          "numericValue": 16663,
-          "score": 0.05
+          "displayValue": "1.0 s",
+          "numericValue": 1012,
+          "score": 1
         }
       },
       "fieldData": null,
@@ -916,7 +957,7 @@
       "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
       "strategy": "desktop",
       "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
-      "fetchTime": "2026-07-08T06:42:04.443Z",
+      "fetchTime": "2026-07-08T08:25:16.714Z",
       "categories": {
         "performance": 0.83,
         "accessibility": 0.84,
@@ -926,16 +967,16 @@
       "metrics": {
         "LCP": {
           "displayValue": "2.9 s",
-          "numericValue": 2935,
-          "score": 0.35
+          "numericValue": 2892,
+          "score": 0.36
         },
         "FCP": {
-          "displayValue": "0.8 s",
-          "numericValue": 779,
-          "score": 0.95
+          "displayValue": "0.5 s",
+          "numericValue": 533,
+          "score": 1
         },
         "CLS": {
-          "displayValue": "0",
+          "displayValue": "0.001",
           "numericValue": 0,
           "score": 1
         },
@@ -945,14 +986,14 @@
           "score": 1
         },
         "SI": {
-          "displayValue": "0.8 s",
-          "numericValue": 779,
-          "score": 0.99
+          "displayValue": "1.2 s",
+          "numericValue": 1197,
+          "score": 0.93
         },
         "TTI": {
           "displayValue": "2.9 s",
-          "numericValue": 2935,
-          "score": 0.81
+          "numericValue": 2892,
+          "score": 0.82
         }
       },
       "fieldData": null,
