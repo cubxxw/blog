@@ -1,0 +1,129 @@
+name: SEO Fix (single article)
+
+# Manual, single-shot workflow. Point it at a recommendation in the daily
+# SEO observation issue and Claude opens a PR that carries out ONE change.
+# This is deliberately narrow — the goal is to prove the "signal → PR"
+# loop on a small case before we hand over broader authority.
+#
+# You can re-trigger it any day for any specific recommendation; the
+# workflow itself has no schedule.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_issue:
+        description: "SEO observation issue number to read (default 223)"
+        required: false
+        default: "223"
+      task:
+        description: "One-line description of the fix to apply (Claude uses this as the north star)"
+        required: true
+      scope_hint:
+        description: "Optional: file paths Claude may touch, comma-separated"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: seo-fix-${{ inputs.target_issue }}
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          branch_prefix: "seo-fix/"
+          prompt: |
+            REPO: ${{ github.repository }}
+            TARGET ISSUE: #${{ inputs.target_issue }}
+            TASK: ${{ inputs.task }}
+            SCOPE HINT: ${{ inputs.scope_hint }}
+
+            You are handling ONE targeted SEO fix on a Hugo blog. The
+            operator has read the daily observation in issue
+            #${{ inputs.target_issue }} and asked you to carry out the
+            task described above. Everything you do must trace back to
+            that recommendation and stay inside its scope.
+
+            ## Hard rules
+
+            - Change ONLY the files needed for this one task.
+              - If SCOPE HINT is non-empty, treat it as an allowlist —
+                do not modify files outside it unless the change is
+                genuinely required (a new page-bundle folder for an
+                article, for example) and you clearly explain why in the
+                PR description.
+              - If SCOPE HINT is empty, keep the diff to a single article
+                or a single template file at most.
+            - Do NOT touch these unless explicitly named in the task:
+              `layouts/**`, `.github/**`, `scripts/**`, `config.yml`,
+              `package.json`, `netlify.toml`, `data/seo/**`.
+            - Do NOT create new files under `static/` — image processing
+              works when assets sit next to the article as a page bundle
+              (co-located) or under `assets/`, not `static/`.
+            - Follow the conventions in the project's CLAUDE.md; the SVG
+              placement rules matter for images too.
+            - Keep the change reversible: one PR, small diff, no
+              opportunistic clean-ups.
+
+            ## Workflow
+
+            1. `gh issue view ${{ inputs.target_issue }} --comments` — read
+               the latest comments. Confirm the task the operator gave you
+               matches an actual recommendation in there. If it doesn't,
+               STOP and post a comment on the issue explaining what you
+               couldn't find, then exit.
+            2. Explore the repo enough to understand what the fix requires
+               — read the target article, look at how similar articles
+               already handle images (page bundles vs static paths), read
+               `layouts/_default/_markup/render-image.html` to know what
+               render pipeline the change unlocks.
+            3. Make the minimal change. When moving images into a page
+               bundle, also update the Markdown references in the same
+               commit so nothing breaks.
+            4. Verify the site still builds. There is no `make` target
+               here; run `hugo --gc --minify --quiet` from the repo root
+               and confirm exit status is 0. If it fails, fix it before
+               opening the PR.
+            5. Create a NEW branch under `seo-fix/`, commit with a
+               Conventional Commit message starting with `perf(seo):`,
+               `fix(seo):`, or `refactor(seo):` as appropriate.
+            6. Open a PR with:
+               - Title: one-line summary of the change
+               - Body includes a `## Source` block linking issue
+                 #${{ inputs.target_issue }} and quoting the exact
+                 recommendation text you're acting on
+               - A `## Change` block listing every file touched and why
+               - A `## Verification` block showing the hugo command you
+                 ran and the result
+               - Add label `seo-auto` (create it first if missing:
+                 `gh label create seo-auto --color FBCA04 --description "AI-generated SEO fix"` — ignore errors)
+            7. Post a comment back on issue #${{ inputs.target_issue }}
+               linking to the PR, so the observation issue has a paper
+               trail: `处理建议 X → PR #NN`.
+
+            Notes:
+            - You are working in a fresh checkout on GitHub's Ubuntu
+              runner. Hugo is not preinstalled; install it before step 4:
+              `wget -qO /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.147.0/hugo_extended_0.147.0_linux-amd64.deb && sudo dpkg -i /tmp/hugo.deb`.
+            - `git mv` preserves history when moving images into a page
+              bundle. Prefer it over add/delete.
+            - Do NOT skip the hugo build check. A broken build is the one
+              thing that guarantees this PR gets closed and wastes the run.
+
+          claude_args: |
+            --max-turns 40
+            --allowedTools "Read,Edit,Write,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(git:*),Bash(mkdir:*),Bash(mv:*),Bash(cp:*),Bash(rm:*),Bash(wget:*),Bash(sudo dpkg:*),Bash(hugo:*),Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh pr create:*),Bash(gh pr view:*),Bash(gh label create:*)"
