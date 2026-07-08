@@ -1,0 +1,51 @@
+name: SEO Snapshot
+
+on:
+  schedule:
+    # Daily at 06:00 UTC (14:00 Beijing). GSC data lags 2–3 days, so this only
+    # needs to run once a day — no benefit to hitting the API more often.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch Google Search Console snapshot
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: node scripts/gsc-fetch.mjs
+
+      - name: Commit snapshot if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/seo/
+          if git diff --cached --quiet; then
+            echo "No new snapshot to commit."
+            exit 0
+          fi
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "chore(seo): daily GSC snapshot ${DATE}"
+          # Retry once if main advanced during the run.
+          git pull --rebase origin main
+          git push origin main

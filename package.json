@@ -15,6 +15,8 @@
     "indexnow:push": "node scripts/indexnow-push.mjs",
     "indexnow:push:all": "node scripts/indexnow-push.mjs --all",
     "indexnow:push:dry": "node scripts/indexnow-push.mjs --dry-run",
+    "seo:gsc": "node scripts/gsc-fetch.mjs",
+    "seo:gsc:dry": "node scripts/gsc-fetch.mjs --dry-run",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
