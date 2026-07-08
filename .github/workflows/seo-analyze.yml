@@ -1,0 +1,121 @@
+name: SEO Analyze
+
+on:
+  schedule:
+    # Daily at 07:00 UTC (15:00 Beijing). Runs one hour after seo-snapshot
+    # so the freshest gsc-/psi-/crux-*.json files are already on main.
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  id-token: write
+
+concurrency:
+  group: seo-analyze
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Enough history for Claude to eyeball trends without cloning
+          # the entire log.
+          fetch-depth: 30
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Dry-run mode: read the SEO snapshots, write findings to the
+          # tracking issue, do NOT touch the source tree. `contents: read`
+          # above already blocks writes at the token level; this prompt is
+          # the belt to that suspenders.
+          prompt: |
+            REPO: ${{ github.repository }}
+
+            You are the SEO analyst for a Hugo blog. Your job today is to
+            look at the freshest snapshots in `data/seo/` and post an
+            actionable-but-terse daily observation to the rolling tracking
+            issue.
+
+            ## Data inputs
+
+            - `data/seo/gsc-YYYY-MM-DD.json` — Google Search Console
+              snapshots. Each file has a `meta` block plus four dimension
+              slices: `date_query`, `date_page`, `query_device`,
+              `query_country`. Empty rows means the property is still fresh
+              (Google is processing) — say so plainly, don't invent data.
+            - `data/seo/psi-YYYY-MM-DD.json` — PageSpeed Insights, 12 URLs
+              × 2 strategies. Focus on `results[].categories.performance`,
+              `results[].metrics.LCP`, `results[].fieldData` (real-user
+              CrUX; often null on a small site — that's expected).
+            - `data/seo/crux-YYYY-MM-DD.json` — CrUX History for the whole
+              origin. `notEligible: true` means the origin doesn't have
+              enough real Chrome traffic yet — note it once, move on.
+
+            ## What to do
+
+            1. `ls data/seo/` and identify the two most recent dates. If
+               only one date is available, use it and say so.
+            2. Read the files for those dates. Compare today vs the prior
+               snapshot. Look for:
+               - PSI performance score deltas > 5 points (mobile OR desktop)
+                 on any URL — flag the URL + delta + likely metric to blame
+                 (LCP, TBT, CLS).
+               - New PSI failures — URLs that returned 500 today.
+               - GSC: new queries appearing that aren't landing on a strong
+                 page (impressions ≥ 10, position 8–20). These are cheap
+                 wins to rewrite title/meta for.
+               - GSC: pages with impressions ≥ 20 and CTR < 2%. Title/meta
+                 candidates.
+               - GSC: hreflang gaps hinted by only one language ranking for
+                 a query that clearly has both.
+            3. Compose a Markdown comment. Keep it under ~600 words.
+               Structure it as:
+
+               ```
+               ### SEO 每日观察 — YYYY-MM-DD
+               (Data window: ...)
+
+               #### 关键变化
+               - ...
+
+               #### 建议动作（本 issue 为 dry-run，不改代码）
+               1. **[分类]** 具体建议 — 影响文件路径 — 数据依据
+               2. ...
+
+               #### 数据状态
+               - GSC: ... rows, ...
+               - PSI: ... urls / ... failures
+               - CrUX: eligible / not eligible
+               ```
+
+               Categories to prefer: `[标题重写]` `[meta 描述]` `[内链]`
+               `[新内容机会]` `[性能]` `[hreflang]` `[结构化数据]`.
+
+               If nothing changed meaningfully today, still post a short
+               comment — even a heartbeat is signal.
+
+            4. Upsert into an issue titled exactly `SEO 每日观察`:
+               - Find it via `gh issue list --search '"SEO 每日观察" in:title' --state open --json number,title --limit 5`.
+               - If none, create it once with a short intro body and label
+                 `seo-observation`. Try `gh label create seo-observation` first
+                 (ignore failure if the label exists).
+               - Post today's summary as a NEW comment via `gh issue comment`
+                 so the trend is preserved.
+
+            5. Do NOT edit any files. Do NOT create branches or PRs. Do
+               NOT run gh CLI commands other than the ones listed in your
+               allowedTools.
+
+            Data files live in the repo checked out at the workflow's
+            working directory; use `Read` for JSON files, `Bash(cat:*)`,
+            `Bash(ls:*)`, and `Bash(find:*)` for quick listings.
+
+          claude_args: |
+            --max-turns 25
+            --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(gh issue list:*),Bash(gh issue create:*),Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh label create:*),Bash(gh label list:*)"
