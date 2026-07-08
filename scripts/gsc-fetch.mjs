@@ -19,7 +19,8 @@
 //   GSC_SITE_URL             — override property; defaults to sc-domain:cubxxw.com
 //
 // Usage:
-//   node scripts/gsc-fetch.mjs                # write today's snapshot
+//   node scripts/gsc-fetch.mjs                # 3-day window ending today-3d
+//   node scripts/gsc-fetch.mjs --lookback 28  # 28-day window for backfill
 //   node scripts/gsc-fetch.mjs --dry-run      # log summary, don't write
 //   node scripts/gsc-fetch.mjs --out path.json # override output path
 //
@@ -47,6 +48,13 @@ const flagValue = (name, fallback) => {
 
 const DRY_RUN = hasFlag('--dry-run');
 const SITE_URL = process.env.GSC_SITE_URL || DEFAULT_SITE;
+// Default 2 → produces the same [today-5, today-3] 3-day window as before
+// (window length = lookback + 1). Bump via --lookback for one-off backfills.
+const LOOKBACK = Number.parseInt(flagValue('--lookback', '2'), 10);
+if (!Number.isFinite(LOOKBACK) || LOOKBACK < 0) {
+  console.error(`Invalid --lookback value; expected non-negative integer.`);
+  process.exit(1);
+}
 
 const runDate = new Date().toISOString().slice(0, 10);
 const OUT_PATH = flagValue('--out', `${OUT_DIR}/gsc-${runDate}.json`);
@@ -60,12 +68,14 @@ function requireEnv(name) {
   return v;
 }
 
-// GSC lags 2–3 days. Ask for a stable 3-day window ending 3 days ago.
+// GSC lags 2–3 days. End 3 days ago is stable ("final") data; start is
+// `lookback` days earlier than end. So --lookback 2 → 3-day window,
+// --lookback 27 → 28-day backfill, etc.
 function windowUTC() {
   const dayMs = 24 * 60 * 60 * 1000;
   const now = Date.now();
   const end = new Date(now - 3 * dayMs).toISOString().slice(0, 10);
-  const start = new Date(now - 5 * dayMs).toISOString().slice(0, 10);
+  const start = new Date(now - (3 + LOOKBACK) * dayMs).toISOString().slice(0, 10);
   return { start, end };
 }
 
