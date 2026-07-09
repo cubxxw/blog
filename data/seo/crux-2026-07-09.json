@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "fetchedAt": "2026-07-09T09:32:12.918Z",
+    "runDate": "2026-07-09",
+    "origin": "https://cubxxw.com",
+    "formFactors": [
+      "PHONE",
+      "DESKTOP"
+    ],
+    "metrics": [
+      "largest_contentful_paint",
+      "interaction_to_next_paint",
+      "cumulative_layout_shift",
+      "first_contentful_paint",
+      "experimental_time_to_first_byte",
+      "round_trip_time",
+      "navigation_types"
+    ],
+    "warnings": [
+      "PHONE: origin not eligible (insufficient real-user samples)",
+      "DESKTOP: origin not eligible (insufficient real-user samples)"
+    ]
+  },
+  "results": [
+    {
+      "formFactor": "PHONE",
+      "notEligible": true
+    },
+    {
+      "formFactor": "DESKTOP",
+      "notEligible": true
+    }
+  ]
+}
