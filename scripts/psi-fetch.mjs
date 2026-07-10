@@ -81,6 +81,69 @@ function pickFieldData(le) {
   };
 }
 
+// Pull the actual LCP element (selector + short snippet) out of the
+// `largest-contentful-paint-element` audit. Without this, all we get is a
+// number like "16.4 s" with no idea which element is late. Structure varies
+// slightly between Lighthouse versions — we defensively walk both shapes.
+function pickLcpElement(audits) {
+  const a = audits?.['largest-contentful-paint-element'];
+  if (!a) return null;
+  const items = a.details?.items || [];
+  // v11: [{ items: [ { node: { selector, nodeLabel, snippet } } ] }, { phases }]
+  // fall back: direct { node: {...} } items on the top level.
+  let node = null;
+  for (const it of items) {
+    if (it?.node?.selector) { node = it.node; break; }
+    if (Array.isArray(it?.items)) {
+      const sub = it.items.find((x) => x?.node?.selector);
+      if (sub) { node = sub.node; break; }
+    }
+  }
+  if (!node) return null;
+  return {
+    selector: node.selector || null,
+    nodeLabel: node.nodeLabel || null,
+    snippet: typeof node.snippet === 'string' ? node.snippet.slice(0, 240) : null,
+  };
+}
+
+// Top opportunities by wasted-ms. Lighthouse groups these under
+// `opportunity` details type. We rank by numericValue (ms) so the
+// biggest LCP/FCP wins bubble up first.
+function pickOpportunities(audits, limit = 3) {
+  const ids = [
+    'render-blocking-resources',
+    'unused-css-rules',
+    'unused-javascript',
+    'unminified-css',
+    'unminified-javascript',
+    'uses-text-compression',
+    'uses-optimized-images',
+    'uses-responsive-images',
+    'offscreen-images',
+    'modern-image-formats',
+    'efficient-animated-content',
+    'total-byte-weight',
+    'server-response-time',
+    'redirects',
+  ];
+  const out = [];
+  for (const id of ids) {
+    const a = audits?.[id];
+    if (!a) continue;
+    const wasted = typeof a.numericValue === 'number' ? Math.round(a.numericValue) : null;
+    if (!wasted || wasted <= 0) continue;
+    if (typeof a.score === 'number' && a.score >= 0.9) continue;
+    out.push({
+      id,
+      title: a.title || null,
+      wastedMs: wasted,
+      displayValue: a.displayValue || null,
+    });
+  }
+  return out.sort((x, y) => y.wastedMs - x.wastedMs).slice(0, limit);
+}
+
 async function runOne(url, strategy) {
   const endpoint = buildUrl(url, strategy);
   const res = await fetch(endpoint);
@@ -115,6 +178,12 @@ async function runOne(url, strategy) {
     // instead of just running Lighthouse in CI.
     fieldData: pickFieldData(json.loadingExperience),
     originFieldData: pickFieldData(json.originLoadingExperience),
+    // Which element is the LCP + which audits leak the most wasted-ms.
+    // Cheap to store, saves a manual round of guessing when a page regresses.
+    diagnostics: {
+      lcpElement: pickLcpElement(audits),
+      opportunities: pickOpportunities(audits),
+    },
   };
 }
 
