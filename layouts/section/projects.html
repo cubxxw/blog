@@ -8,7 +8,7 @@
   {{/* ── Hero ── */}}
   <header class="eip-hero">
     <div class="eip-hero__eyebrow">
-      {{ if $isZh }}AI 开源项目{{ else }}AI Open Source Projects{{ end }}
+      {{ if $isZh }}开源项目{{ else }}Open Source Projects{{ end }}
     </div>
     <h1 class="eip-hero__title">
       {{- if $isZh }}
@@ -21,21 +21,33 @@
     </h1>
     <p class="eip-hero__desc">
       {{- if .Description }}{{ .Description | markdownify }}
-      {{- else if $isZh }}记录参与和构建的 AI 开源项目，从架构设计到落地实践的全过程
-      {{- else }}Documenting AI open source projects — from architecture design to production deployment
+      {{- else if $isZh }}我构建与深度参与的开源项目，以及围绕它们的架构分析与实践文章
+      {{- else }}Open source I build and contribute to, with architecture analyses and hands-on write-ups
       {{- end }}
     </p>
+    {{- $ossCount := 0 }}
+    {{- range site.Data.opensource.groups }}{{ $ossCount = add $ossCount (len .items) }}{{ end }}
     <div class="eip-hero__meta">
-      <span class="eip-hero__count">{{ len $projectPages }} {{ if $isZh }}个项目{{ else }}projects{{ end }}</span>
+      <span class="eip-hero__count">{{ $ossCount }} {{ if $isZh }}个开源项目与产品{{ else }}projects &amp; products{{ end }}</span>
+      <span class="eip-hero__count">{{ len $projectPages }} {{ if $isZh }}篇实践文章{{ else }}write-ups{{ end }}</span>
     </div>
   </header>
+
+  {{/* ── Open Source showcase — real repos & products (data/opensource.yml) ── */}}
+  <section class="eip-oss">
+    <div class="eip-section-label">
+      <span class="eip-dot"></span>
+      {{ if $isZh }}开源项目{{ else }}Open Source{{ end }}
+    </div>
+    {{ partial "opensource-grid.html" (dict "lang" $lang "class" "oss-grid-root--eip") }}
+  </section>
 
   {{/* ── Projects Grid ── */}}
   {{- if $projectPages }}
   <section class="eip-projects">
     <div class="eip-section-label">
       <span class="eip-dot"></span>
-      {{ if $isZh }}所有项目{{ else }}All Projects{{ end }}
+      {{ if $isZh }}项目实践文章{{ else }}Project Write-ups{{ end }}
     </div>
 
     <div class="eip-grid">
@@ -43,7 +55,7 @@
       <article class="eip-card {{ if eq $i 0 }}eip-card--hero{{ end }}" data-tilt>
         <div class="eip-card__inner">
           <div class="eip-card__top">
-            <span class="eip-badge">{{ if $isZh }}AI 项目{{ else }}AI Project{{ end }}</span>
+            <span class="eip-badge">{{ if $isZh }}实践文章{{ else }}Write-up{{ end }}</span>
             <time class="eip-date">{{ $p.Date.Format "2006-01-02" }}</time>
           </div>
           <h2 class="eip-card__title">

@@ -23,7 +23,7 @@ author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
 tldr:
   - "熊鑫伟（cubxxw），2001 年出生于中国，是一名 AI 创业者、开源贡献者和数字游民，核心标签是真实、好奇、连接者。"
-  - "他活跃于 OpenIM、OpenKF、Sealos 等开源项目，信奉 AI + Human = Superhuman 的人机协作理念。"
+  - "他构建了 awesome-cs-cloudnative-blockchain（1.4k star）等开源项目，深度参与 OpenIM、WiseEngage、Sealos，并在 Telepace 打磨 AI 产品，信奉 AI + Human = Superhuman 的人机协作理念。"
   - "2024 年起走出舒适区，12 个月游历 9 个国家、35+ 城市，完成 400+ 公里徒步，包括海拔 5416 米的 Tilicho 湖。"
   - "写作围绕 AI 与技术、成长与认知、旅行与观察、项目与实践四条主线，坚持一手数据优先与跨文化观察视角。"
 ---
@@ -67,7 +67,7 @@ tldr:
     <div class="about-card">
       <div class="about-card-icon">⚡</div>
       <h3 class="about-card-title">AI 创业与开源</h3>
-      <p class="about-card-body">我是一名 AI 创业者，也是开源社区的活跃贡献者。我相信 <strong>AI + Human = Superhuman</strong>，并致力于构建人机协作的新范式。参与项目包括 OpenIM、OpenKF、Sealos。</p>
+      <p class="about-card-body">我是一名 AI 创业者，也是开源社区的活跃贡献者。我相信 <strong>AI + Human = Superhuman</strong>，并致力于构建人机协作的新范式。我构建和参与的项目都在下方的<a href="#oss">开源项目与产品</a>里，实践记录见<a href="/zh/projects/">开源项目板块</a>。</p>
     </div>
     <div class="about-card">
       <div class="about-card-icon">✍️</div>
@@ -113,6 +113,20 @@ tldr:
         <p>我不害怕承认自己的局限，也不羞于展示自己的困惑。我相信<strong>成长来自于直面自己的无知</strong>。</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="about-section" id="oss">
+  <h2 class="about-section-title"><span class="about-section-icon">⚙️</span>开源项目与产品</h2>
+  <div class="about-prose">
+    <p>我不想只是"提到"开源，下面是我真实写过、维护过、投入过的东西 —— 每一个都可以点进去看代码和提交记录。项目背后的架构分析与实践笔记，都在<a href="/zh/projects/">开源项目板块</a>持续更新。</p>
+  </div>
+
+{{< opensource >}}
+
+  <div class="about-oss-cta">
+    <a class="about-oss-cta-link" href="/zh/projects/">📖 阅读项目实践文章 →</a>
+    <a class="about-oss-cta-link" href="https://github.com/cubxxw" target="_blank" rel="noopener">🐙 GitHub 主页 →</a>
   </div>
 </section>
 
@@ -215,7 +229,7 @@ tldr:
       <span class="about-start-num">03</span>
       <span class="about-start-label">旅行记录</span>
     </a>
-    <a class="about-start-item" href="https://github.com/cubxxw" target="_blank" rel="noopener">
+    <a class="about-start-item" href="/zh/projects/">
       <span class="about-start-num">04</span>
       <span class="about-start-label">开源项目</span>
     </a>

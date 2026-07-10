@@ -23,7 +23,7 @@ author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me"]
 tldr:
   - "Xinwei Xiong (cubxxw), born in China in 2001, is an AI entrepreneur, open source contributor, and digital nomad whose three defining traits are authentic, curious, and connector."
-  - "He actively contributes to open source projects including OpenIM, OpenKF, and Sealos, and believes in the AI + Human = Superhuman model of human-machine collaboration."
+  - "He built open source projects such as awesome-cs-cloudnative-blockchain (1.4k stars), contributes deeply to OpenIM, WiseEngage and Sealos, and is building AI products at Telepace, believing in the AI + Human = Superhuman model of collaboration."
   - "Since 2024 he stepped out of his comfort zone, traveling 9 countries and 35+ cities over 12 months and completing 400+ km of hiking, including Tilicho Lake at 5,416 m."
   - "His writing spans four threads — AI & Technology, Growth & Cognition, Travel & Observation, Projects & Practice — grounded in first-hand data and a cross-cultural perspective."
 ---
@@ -67,7 +67,7 @@ tldr:
     <div class="about-card">
       <div class="about-card-icon">⚡</div>
       <h3 class="about-card-title">AI & Open Source</h3>
-      <p class="about-card-body">AI entrepreneur and active open source contributor. I believe <strong>AI + Human = Superhuman</strong> and work toward new paradigms of human-machine collaboration. Projects: OpenIM, OpenKF, Sealos.</p>
+      <p class="about-card-body">AI entrepreneur and active open source contributor. I believe <strong>AI + Human = Superhuman</strong> and work toward new paradigms of human-machine collaboration. Everything I build and contribute to is listed under <a href="#oss">Open Source &amp; Products</a> below, with hands-on write-ups in the <a href="/projects/">projects section</a>.</p>
     </div>
     <div class="about-card">
       <div class="about-card-icon">✍️</div>
@@ -113,6 +113,20 @@ tldr:
         <p>I'm not afraid to admit limitations or show confusion. I believe <strong>growth comes from facing your own ignorance</strong>.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="about-section" id="oss">
+  <h2 class="about-section-title"><span class="about-section-icon">⚙️</span>Open Source &amp; Products</h2>
+  <div class="about-prose">
+    <p>I don't want to just "mention" open source. Below is what I have actually written, maintained and invested in — every item links to real code and commit history. Architecture analyses and hands-on notes live in the <a href="/projects/">open source projects section</a>.</p>
+  </div>
+
+{{< opensource >}}
+
+  <div class="about-oss-cta">
+    <a class="about-oss-cta-link" href="/projects/">📖 Read the project write-ups →</a>
+    <a class="about-oss-cta-link" href="https://github.com/cubxxw" target="_blank" rel="noopener">🐙 GitHub profile →</a>
   </div>
 </section>
 
@@ -203,19 +217,19 @@ tldr:
 <section class="about-section">
   <h2 class="about-section-title"><span class="about-section-icon">🚀</span>Start Here</h2>
   <div class="about-start-grid">
-    <a class="about-start-item" href="/en/ai-technology/posts/">
+    <a class="about-start-item" href="/ai-technology/posts/">
       <span class="about-start-num">01</span>
       <span class="about-start-label">AI & Technology</span>
     </a>
-    <a class="about-start-item" href="/en/growth/">
+    <a class="about-start-item" href="/growth/">
       <span class="about-start-num">02</span>
       <span class="about-start-label">Growth & Cognition</span>
     </a>
-    <a class="about-start-item" href="/en/travel/">
+    <a class="about-start-item" href="/travel/">
       <span class="about-start-num">03</span>
       <span class="about-start-label">Travel Records</span>
     </a>
-    <a class="about-start-item" href="https://github.com/cubxxw" target="_blank" rel="noopener">
+    <a class="about-start-item" href="/projects/">
       <span class="about-start-num">04</span>
       <span class="about-start-label">Open Source</span>
     </a>

@@ -343,7 +343,7 @@ languages:
           pageRef: /zh/about
           weight: 10
         - identifier: projects
-          name: 项目
+          name: 开源项目
           url: /zh/projects/
           pageRef: /zh/projects
           weight: 15

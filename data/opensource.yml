@@ -1,0 +1,100 @@
+# Real open source projects & products of Xinwei Xiong (cubxxw).
+# Shared by the About page shortcode ({{< opensource >}}) and the /projects/ section header.
+# Star counts are a snapshot (2026-07); keep them coarse ("1.4k") so they age gracefully.
+
+groups:
+  - id: built
+    icon: "🛠"
+    title_zh: "我构建的开源项目"
+    title_en: "Open Source I Built"
+    desc_zh: "从零开始写、长期维护的仓库"
+    desc_en: "Repositories I created and maintain"
+    items:
+      - name: awesome-cs-cloudnative-blockchain
+        url: https://github.com/cubxxw/awesome-cs-cloudnative-blockchain
+        stars: "1.4k"
+        lang: "Docs · Go · Solidity"
+        desc_zh: "菜鸟成长手册：CS、云原生、区块链、Go 的体系化学习路线"
+        desc_en: "A systematic learning roadmap covering CS, cloud native, blockchain and Go"
+      - name: awesome-cs-course
+        url: https://github.com/cubxxw/awesome-cs-course
+        stars: "195"
+        lang: "Docs · Multi-lang"
+        desc_zh: "计算机基础知识库：Linux、CSAPP、OS、算法与全栈路线"
+        desc_en: "CS fundamentals knowledge base: Linux, CSAPP, OS, algorithms and full-stack"
+      - name: awesome-go
+        url: https://github.com/cubxxw/awesome-go
+        stars: "59"
+        lang: "Go"
+        desc_zh: "Go 语言基础、进阶、高级三段式文档"
+        desc_en: "Three-stage Go documentation: basics, intermediate and advanced"
+      - name: RemoteAI-Nomads
+        url: https://github.com/cubxxw/RemoteAI-Nomads
+        stars: "57"
+        lang: "Docs"
+        desc_zh: "AI 创业者的极致远程工作实验：全球数字游民社区一手调研"
+        desc_en: "An AI founder's remote-work experiment: first-hand research on nomad communities"
+      - name: awesome-cloud-native
+        url: https://github.com/cubxxw/awesome-cloud-native
+        stars: "49"
+        lang: "Shell · K8s"
+        desc_zh: "云原生、Kubernetes、Docker 与开源社区实践笔记"
+        desc_en: "Field notes on cloud native, Kubernetes, Docker and open source community"
+      - name: blog
+        url: https://github.com/cubxxw/blog
+        stars: "26"
+        lang: "Hugo · JS"
+        desc_zh: "本站源码：AI-native 博客，内置 MCP Server、AI 伴读与生成引擎优化"
+        desc_en: "Source of this site: an AI-native blog with MCP server, AI reading companion and GEO"
+
+  - id: contrib
+    icon: "🤝"
+    title_zh: "深度参与的开源项目"
+    title_en: "Open Source I Contribute To"
+    desc_zh: "以核心贡献者身份长期投入的社区"
+    desc_en: "Communities where I invest long-term as a core contributor"
+    items:
+      - name: openimsdk/open-im-server
+        url: https://github.com/openimsdk/open-im-server
+        stars: "16.5k"
+        lang: "Go"
+        desc_zh: "开源即时通讯基础设施，为应用内置聊天、音视频能力"
+        desc_en: "Open source instant messaging infrastructure for in-app chat and RTC"
+      - name: openimsdk/wiseengage
+        url: https://github.com/openimsdk/wiseengage
+        stars: "155"
+        lang: "Go"
+        desc_zh: "开源智能客服系统（OpenKF 的延续），对标 Intercom / Zendesk"
+        desc_en: "Open source intelligent customer service (successor to OpenKF), an Intercom / Zendesk alternative"
+      - name: labring/sealos
+        url: https://github.com/labring/sealos
+        stars: "18k"
+        lang: "Go · K8s"
+        desc_zh: "AI-native 云操作系统，统一应用从开发到生产的全生命周期"
+        desc_en: "AI-native cloud operating system unifying the app lifecycle from dev to production"
+
+  - id: products
+    icon: "🚀"
+    title_zh: "我的产品"
+    title_en: "Products"
+    desc_zh: "正在打磨的真实产品"
+    desc_en: "Real products in the making"
+    items:
+      - name: Telepace · voiceflow
+        url: https://github.com/telepace/voiceflow
+        stars: "9"
+        lang: "Go"
+        desc_zh: "LLM 音频流解决方案，让语音与大模型实时对话"
+        desc_en: "LLM audio streaming solution for real-time voice conversations with models"
+      - name: Telepace · nexus
+        url: https://github.com/telepace/nexus
+        stars: "3"
+        lang: "TypeScript"
+        desc_zh: "AI 阅读助手：高效处理、理解与总结网页和文档"
+        desc_en: "AI reading assistant that processes, understands and summarizes pages and documents"
+      - name: cubxxw.com
+        url: https://cubxxw.com
+        stars: ""
+        lang: "AI-native"
+        desc_zh: "你正在访问的这个博客：把写作、AI 与开源工程揉在一起的长期实验"
+        desc_en: "The blog you are reading: a long-term experiment blending writing, AI and open source engineering"

@@ -1,6 +1,6 @@
 ---
-title: "AI Projects"
-description: "Ongoing deep dives into AI open-source projects, product infrastructure, and implementation notes."
+title: "Open Source Projects"
+description: "Open source projects I build and contribute to, products in the making, plus architecture analyses and hands-on write-ups around them."
 ---
 
-Browse project-focused writeups here. This section is now the canonical home for AI project notes.
+This is the canonical home for open source: the top half showcases repositories and products I actually build, maintain and contribute to; the bottom half collects project-focused notes and deep dives.

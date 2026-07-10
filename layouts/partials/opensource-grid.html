@@ -1,0 +1,35 @@
+{{- /*
+  Renders the real open-source projects & products from data/opensource.yml.
+  Context (dict):
+    "lang"  — "zh" | "en"
+    "class" — optional extra class on the root element
+*/ -}}
+{{- $lang := .lang | default "en" -}}
+{{- $isZh := eq $lang "zh" -}}
+<div class="oss-grid-root{{ with .class }} {{ . }}{{ end }}">
+  {{- range site.Data.opensource.groups }}
+  <section class="oss-group oss-group--{{ .id }}">
+    <header class="oss-group__head">
+      <h3 class="oss-group__title"><span class="oss-group__icon" aria-hidden="true">{{ .icon }}</span>{{ if $isZh }}{{ .title_zh }}{{ else }}{{ .title_en }}{{ end }}</h3>
+      <p class="oss-group__desc">{{ if $isZh }}{{ .desc_zh }}{{ else }}{{ .desc_en }}{{ end }}</p>
+    </header>
+    <div class="oss-cards">
+      {{- range .items }}
+      <a class="oss-card" href="{{ .url }}" {{ if hasPrefix .url "https://github.com" }}target="_blank" rel="noopener"{{ end }}>
+        <span class="oss-card__name">{{ .name }}</span>
+        <span class="oss-card__desc">{{ if $isZh }}{{ .desc_zh }}{{ else }}{{ .desc_en }}{{ end }}</span>
+        <span class="oss-card__meta">
+          <span class="oss-card__lang">{{ .lang }}</span>
+          {{- with .stars }}
+          <span class="oss-card__stars" aria-label="GitHub stars">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+            {{ . }}
+          </span>
+          {{- end }}
+        </span>
+      </a>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+</div>
