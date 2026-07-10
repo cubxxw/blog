@@ -1,5 +1,5 @@
 ---
-title: "MarkItDown: Convert Documents to Markdown"
+title: "Microsoft MarkItDown Tutorial: Convert PDF to Markdown"
 date: 2025-04-21T15:41:21+08:00
 draft: false
 showtoc: true
@@ -16,13 +16,24 @@ tags:
 categories:
   - Projects
 description: >
-  A deep-dive into Microsoft MarkItDown: an open source Python tool for converting PDF, Word, PowerPoint, Excel, images, audio, and more into Markdown. Covers architecture, installation, hands-on tutorials, LLM integration, security considerations, and comparisons with similar tools.
+  Learn how to install and use Microsoft MarkItDown to convert PDF, Word, Excel, and 15+ file formats to Markdown for LLM and RAG pipelines, with code examples.
 aliases:
   - /posts/ai-projects/markitdown/
 tldr:
   - "MarkItDown converts diverse document formats into structured Markdown, specifically designed for LLM preprocessing with emphasis on content preservation over visual fidelity."
   - "Modular architecture with optional dependencies, 15+ supported formats, and extensibility via plugins and LLM/Azure integrations for advanced capabilities."
   - "Ideal for RAG pipelines and document preprocessing but requires Azure Document Intelligence for strong PDF handling and careful security management of dependencies and plugins."
+faq:
+  - q: "What is Microsoft MarkItDown?"
+    a: "MarkItDown is an open source Python utility from Microsoft that converts files and Office documents into Markdown. It is designed for preparing document data for large language models and text analysis pipelines, so it prioritizes preserving document structure such as headings, lists, and tables over visual fidelity. The source code is available on GitHub under microsoft/markitdown and the package is published on PyPI."
+  - q: "How do I install MarkItDown?"
+    a: "MarkItDown requires Python 3.10 or higher and installs via pip. Run pip install 'markitdown[all]' to get support for every format, or install only the feature groups you need, for example pip install 'markitdown[pdf,docx,pptx]'. After installation you can convert a file from the command line with markitdown report.docx or markitdown paper.pdf -o paper.md, or call the MarkItDown class from Python."
+  - q: "What file formats does MarkItDown support?"
+    a: "MarkItDown supports 15+ formats: PDF, Word (.docx), PowerPoint (.pptx), Excel (.xlsx), images with EXIF and OCR, audio with speech transcription, HTML, CSV, JSON, XML, ZIP archives processed recursively, EPUB, and even YouTube URLs via transcript extraction. Optional integrations add LLM-generated image captions and Azure Document Intelligence for high-quality PDF conversion, and a plugin system lets the community add more formats."
+  - q: "How do I convert a PDF to Markdown with MarkItDown?"
+    a: "Install the tool with pip install 'markitdown[pdf]' and run markitdown paper.pdf -o paper.md, or call md.convert('paper.pdf') in Python. By default MarkItDown uses pdfminer.six, which extracts text but has no OCR and loses much of the layout. For scanned PDFs or complex layouts with tables, enable the Azure Document Intelligence integration with the -d and -e endpoint flags to get structured Markdown output."
+  - q: "How does MarkItDown compare to Pandoc, Marker, and Docling?"
+    a: "Pandoc is the better choice for general-purpose, high-fidelity conversion between many formats. Marker uses deep learning models and typically produces better results for complex PDFs with tables and formulas. Docling, from IBM, focuses on parsing PDF, DOCX, and PPTX into Markdown and JSON. MarkItDown stands out for its breadth of input formats, its LLM-focused structure preservation, and its Azure and OpenAI integrations, making it a strong fit for RAG preprocessing."
 ---
 
 > This project is an ongoing journey — learning AI open source projects with steady, daily progress. Through hands-on work with real projects and AI tooling, the goal is to develop the ability to solve complex problems and document the process.

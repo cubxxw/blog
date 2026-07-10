@@ -66,6 +66,31 @@
 </script>
 {{- end -}}
 
+{{- /* FAQPage Schema — driven by front-matter `faq:` list; the matching
+       visible block is rendered by partials/article/faq.html. No jsonify:
+       Hugo's JS-context auto-escaping already JSON-encodes these values. */ -}}
+{{- with .Params.faq -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{- range $i, $item := . -}}
+    {{- if $i }},{{ end }}
+    {
+      "@type": "Question",
+      "name": {{ $item.q }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ $item.a }}
+      }
+    }
+    {{- end }}
+  ]
+}
+</script>
+{{- end -}}
+
 {{- /* WebSite Schema */ -}}
 <script type="application/ld+json">
 {

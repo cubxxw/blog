@@ -1,5 +1,5 @@
 ---
-title: "MarkItDown 开源项目深度学习"
+title: "MarkItDown 教程：微软开源文档转 Markdown 工具"
 date: 2025-04-21T15:41:21+08:00
 draft: false
 showtoc: true
@@ -10,13 +10,24 @@ categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 keywords: ["markitdown", "microsoft", "markdown", "文档转换", "LLM", "RAG", "Python"]
 description: >
-  深度分析 Microsoft MarkItDown：将 PDF、Word、PowerPoint、Excel、图像、音频等多种格式转换为 Markdown 的开源 Python 工具。涵盖架构原理、安装使用、实操教程、LLM 集成、安全考量及与同类工具的对比，帮助开发者快速上手并融入 AI 工作流。
+  手把手教你安装和使用微软开源工具 MarkItDown：将 PDF、Word、Excel、PPT、图片等 15+ 种格式统一转换为 Markdown，附命令行与 Python 代码示例，覆盖 RAG 预处理、Azure 集成与同类工具对比。
 aliases:
   - /zh/posts/ai-projects/markitdown/
 tldr:
   - "MarkItDown是微软开源的Python工具，将PDF、Word、PPT、Excel等多种格式统一转换为Markdown，专为LLM和RAG系统提供结构化文本数据。"
   - "相比PDF转Word等高保真工具，MarkItDown优先保留文档逻辑结构而非视觉样式，通过模块化架构和插件系统支持广泛的格式扩展。"
   - "工具提供Azure Document Intelligence和LLM集成选项增强能力，但默认PDF处理较弱、依赖庞大第三方库、插件安全风险高，使用需谨慎评估。"
+faq:
+  - q: "MarkItDown 是什么？"
+    a: "MarkItDown 是微软开发并开源的 Python 工具库，用于把各种文件和 Office 文档转换为 Markdown 格式。它的主要用途是为大型语言模型和文本分析管道准备文档数据，因此设计上优先保留标题、列表、表格等结构信息，而非视觉样式。项目托管在 GitHub 的 microsoft/markitdown 仓库，可通过 PyPI 直接安装。"
+  - q: "MarkItDown 怎么安装和使用？"
+    a: "MarkItDown 要求 Python 3.10 或更高版本，用 pip install 'markitdown[all]' 一条命令即可安装全部格式支持，也可以按需只装特定特性组，如 pip install 'markitdown[pdf,docx]'。安装后在命令行执行 markitdown 文件名 即可转换，加 -o 参数指定输出文件；也可以在 Python 代码中调用 MarkItDown 类的 convert 方法。"
+  - q: "MarkItDown 支持哪些文件格式？"
+    a: "MarkItDown 支持 15 种以上格式，包括 PDF、Word（.docx）、PowerPoint（.pptx）、Excel（.xlsx）、图像（EXIF 元数据与 OCR）、音频（语音转录）、HTML、CSV、JSON、XML、ZIP 压缩包（递归处理）、EPUB，甚至支持直接传入 YouTube 链接提取转录文本。还可选集成 LLM 生成图像描述、Azure Document Intelligence 增强 PDF 处理，并通过插件系统扩展新格式。"
+  - q: "MarkItDown 能把 PDF 转成 Markdown 吗？"
+    a: "可以。安装后执行 markitdown paper.pdf -o paper.md 即可转换。但要注意默认使用的 pdfminer.six 库只能提取文本，没有 OCR 能力，无法处理扫描版 PDF，而且会丢失大部分格式结构。如果需要处理扫描件或包含复杂表格的 PDF，建议启用 Azure Document Intelligence 集成（命令行加 -d 和 -e 端点参数），可以得到结构化的 Markdown 输出。"
+  - q: "MarkItDown 和 Pandoc、Marker 有什么区别？"
+    a: "Pandoc 是成熟的通用文档转换工具，追求高保真度，支持极多的输入输出格式，适合通用格式转换。Marker 利用深度学习模型理解文档布局，在复杂 PDF（含表格、公式）的转换质量上通常更好。MarkItDown 的优势在于输入格式广、专为 LLM 和 RAG 预处理优化、可集成 Azure 和 OpenAI 服务，适合把多来源文档统一处理成 AI 系统可用的结构化 Markdown。"
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。

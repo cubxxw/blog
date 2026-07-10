@@ -1,5 +1,5 @@
 ---
-title: "Gpt Researcher 开源项目深度学习"
+title: "GPT Researcher 是什么？开源 AI 深度研究代理架构解析"
 date: 2025-04-14T16:17:27+08:00
 draft: false
 tocopen: true
@@ -7,13 +7,24 @@ tags: ["AI", "Project Learning"]
 categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+  GPT Researcher 是开源自主 AI 研究代理，聚合 20 多个信息源，几分钟内生成 2000 词以上的深度研究报告。本文拆解其多代理架构、LangGraph 工作流与检索抓取模块，并给出安装配置步骤、成本考量与系统学习路径。
 aliases:
   - /zh/posts/ai-projects/gpt-researcher/
 tldr:
   - "GPT-Researcher通过结合LLM推理、实时网络数据、本地文档处理和多代理系统，将传统耗时数周的研究过程自动化为分钟级效率。"
   - "项目采用灵活可扩展的技术架构，支持多种LLM和搜索引擎，通过超20个信息源聚合生成2000字以上的深度研究报告，确保信息的客观性和全面性。"
   - "使用者需警惕系统配置复杂性、LLM API成本、网络依赖等挑战，但该项目为学习AI代理、多代理协作和LLM集成模式提供了优秀的学习平台。"
+faq:
+  - q: "GPT Researcher 是什么？"
+    a: "GPT Researcher 是一个开源的自主 AI 研究代理，它结合大语言模型、实时网络搜索和本地文档处理，自动聚合超过 20 个信息源，在几分钟内生成 2000 词以上的客观深度研究报告，把传统上耗时数周的手动研究流程自动化。"
+  - q: "GPT Researcher 怎么安装部署？"
+    a: "从 GitHub 克隆仓库后，用 requirements.txt 或 Poetry 安装 Python 依赖，把 .env.example 复制为 .env 并填入至少一个 LLM 密钥（如 OpenAI）和一个搜索引擎密钥（如 Tavily），即可通过 cli.py 或 main.py 运行研究任务；项目也提供 Dockerfile 和 docker-compose，支持容器化部署。"
+  - q: "GPT Researcher 的多代理架构是怎么工作的？"
+    a: "核心包按模块分工：retrievers 负责网络搜索和网页抓取（支持 Selenium、Playwright 处理动态页面），processors 清洗并摘要信息，memory 维护研究上下文，report 综合生成报告；multi_agents 模块基于 LangGraph 编排有状态的多代理工作流，支持循环与条件分支，实现更深入的研究。"
+  - q: "GPT Researcher 和 ChatGPT 的 Deep Research 有什么区别？"
+    a: "GPT Researcher 是开源、可自托管的深度研究方案：可以自由选择 LLM 提供商（OpenAI、Anthropic 等）和搜索引擎（Tavily、Google、Bing、DuckDuckGo 等），还能整合本地文档做混合研究；成本只来自自己的 API 调用，整个研究流程可配置、可扩展。"
+  - q: "使用 GPT Researcher 的成本高吗？"
+    a: "GPT Researcher 本身开源免费，主要成本来自运行时的 LLM API 调用，规划、摘要、报告生成等环节都会消耗 token，深度研究模式下开销更高。项目支持多种 LLM 和搜索引擎，可以根据预算选择更经济的模型来控制成本。"
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。

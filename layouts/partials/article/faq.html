@@ -1,0 +1,33 @@
+{{- /*
+  Visible FAQ block (pairs with the FAQPage JSON-LD emitted by
+  seo/structured-data.html). Google requires FAQ rich-result content to be
+  visible on the page, so the same front-matter list drives both.
+
+  Front matter:
+    faq:
+      - q: "Question phrased like a real search query?"
+        a: "Self-contained plain-text answer."
+
+  Native <details>/<summary> keeps it accessible with zero JS; first item
+  starts open so crawlers and skimmers see an answer immediately.
+*/ -}}
+{{- with .Params.faq -}}
+{{- $isZh := eq $.Lang "zh" -}}
+<section class="article-faq" aria-labelledby="article-faq-title">
+  <div class="article-faq__head">
+    <h2 id="article-faq-title" class="article-faq__title">{{ if $isZh }}常见问题{{ else }}Frequently Asked Questions{{ end }}</h2>
+    <span class="article-faq__count">{{ printf "%02d" (len .) }}</span>
+  </div>
+  <div class="article-faq__list">
+    {{- range $i, $item := . }}
+    <details class="article-faq__item"{{ if eq $i 0 }} open{{ end }}>
+      <summary class="article-faq__q">
+        <span class="article-faq__q-text">{{ $item.q }}</span>
+        <span class="article-faq__marker" aria-hidden="true"></span>
+      </summary>
+      <p class="article-faq__a">{{ $item.a }}</p>
+    </details>
+    {{- end }}
+  </div>
+</section>
+{{- end -}}
