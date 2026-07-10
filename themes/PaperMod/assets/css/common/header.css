@@ -216,6 +216,9 @@ body:not(.dark) #sun {
 .search-palette__input-wrap {
     padding-left: 28px;
     padding-right: 28px;
+    /* Fixed rows of the panel's flex column — never let them collapse when
+       the AI box + results compete for the 82vh budget. */
+    flex-shrink: 0;
 }
 
 .search-palette__header {
@@ -387,7 +390,9 @@ body:not(.dark) #sun {
     line-height: 1;
 }
 
-/* AI Answer Box */
+/* AI Answer Box — a shrinkable flex region inside the 82vh panel. The box
+   itself never scrolls; its __ai-content child does, so the AI header,
+   suggestion chips and footer stay pinned while a long answer scrolls. */
 .search-palette__ai-box {
     margin: 14px 20px 0;
     padding: 16px 20px;
@@ -396,6 +401,23 @@ body:not(.dark) #sun {
     border: 1px solid rgba(160, 140, 110, 0.2);
     border-left: 2px solid rgba(140, 110, 75, 0.4);
     animation: ai-slide-down 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    /* Natural height — __ai-content carries an explicit viewport-aware cap
+       instead of flex-shrink negotiation, which is unreliable for nested
+       flex scroll containers (Chrome treats their min-content as the full
+       content height and refuses to shrink them). */
+    flex: 0 0 auto;
+}
+
+.search-palette__ai-box[hidden] {
+    display: none;
+}
+
+.search-palette__ai-header,
+.search-palette__ai-suggestions,
+.search-palette__ai-footer {
+    flex-shrink: 0;
 }
 
 .dark .search-palette__ai-box {
@@ -452,6 +474,16 @@ body:not(.dark) #sun {
     line-height: 1.65;
     color: #3c2c18;
     font-family: Georgia, 'Times New Roman', serif;
+    /* Long answers scroll here instead of pushing results out of the panel.
+       Budget: 82vh panel minus fixed chrome (palette header + input row +
+       AI box header/footer/padding + meta row) minus a 96px results peek
+       ≈ 415px. The 140px floor keeps answers readable on short screens. */
+    flex: 0 0 auto;
+    max-height: max(140px, calc(82vh - 420px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(160, 140, 110, 0.2) transparent;
 }
 
 .dark .search-palette__ai-content {
@@ -716,8 +748,19 @@ body:not(.dark) #sun {
     list-style: none;
     max-height: 46vh;
     overflow-y: auto;
+    overscroll-behavior: contain;
     scrollbar-width: thin;
     scrollbar-color: rgba(160, 140, 110, 0.2) transparent;
+    /* May shrink when the AI box is open, but keeps a visible, scrollable
+       peek of the hit list so results are always reachable. */
+    flex: 0 1 auto;
+    min-height: 0;
+}
+
+.search-palette__results:not(:empty) {
+    /* ~1.5 result rows: enough to show "there are hits, scroll me" without
+       starving the AI answer above. */
+    min-height: 96px;
 }
 
 .search-palette__result {
@@ -831,6 +874,13 @@ body:not(.dark) #sun {
     font-family: Georgia, 'Times New Roman', serif;
 }
 
+/* With the AI box open, the roomy empty-state padding steals ~130px the
+   answer could use — compact it. */
+.search-palette__ai-box:not([hidden]) ~ .search-palette__empty {
+    padding: 14px 20px;
+    flex-shrink: 0;
+}
+
 @media (max-width: 960px) {
     .nav-search-trigger {
         order: 3;
@@ -865,5 +915,11 @@ body:not(.dark) #sun {
 
     .search-palette__header h2 {
         font-size: 1.1rem;
+    }
+
+    /* Narrow screens wrap the AI box chrome onto more lines — reserve a
+       little extra so the results peek never clips out of the panel. */
+    .search-palette__ai-content {
+        max-height: max(140px, calc(82vh - 440px));
     }
 }

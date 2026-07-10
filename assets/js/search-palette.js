@@ -53,6 +53,9 @@
     isAiThinking = false;
     conversationHistory = []; // Clear conversation history when closing
     currentQuery = '';
+    // Bring the suggestion chips back for the next conversation
+    const suggestions = document.getElementById('search-ai-suggestions');
+    if (suggestions) suggestions.style.display = '';
   }
 
   // Add message to conversation history
@@ -134,6 +137,52 @@
       .catch(err => console.error('Failed to load search index:', err));
   }
 
+  // Tokenize a query for fallback search: latin/number words plus CJK
+  // bigrams (CJK runs have no word boundaries, so 心流状态 → 心流/流状/状态).
+  function fallbackTokens(query) {
+    const tokens = [];
+    // Strip question/politeness filler so its bigrams (请详/详细/细介…) don't
+    // reward unrelated articles that merely say "详细介绍" somewhere.
+    const cleaned = String(query).toLowerCase()
+      .replace(/请问|请|详细|介绍|什么是|什么|怎么样|怎么|如何|为什么|哪些|一下|关于|文章|讲讲|说说|解释|谢谢/g, ' ');
+    const words = cleaned.match(/[\p{L}\p{N}_-]+/gu) || [];
+    for (const w of words) {
+      if (/[一-鿿]/.test(w)) {
+        if (w.length <= 2) tokens.push(w);
+        else for (let i = 0; i < w.length - 1 && tokens.length < 12; i++) tokens.push(w.slice(i, i + 2));
+      } else if (w.length >= 2) {
+        tokens.push(w);
+      }
+    }
+    return [...new Set(tokens)].slice(0, 12);
+  }
+
+  // Fuse treats the whole query as one fuzzy pattern, which fails on long
+  // natural-language questions (especially Chinese). If the direct search
+  // misses, retry per-token and rank by how many tokens each doc hits.
+  function searchWithFallback(query, limit) {
+    if (!fuse) return [];
+    const direct = fuse.search(query, { limit });
+    if (direct.length > 0) return direct;
+    const tokens = fallbackTokens(query);
+    if (tokens.length < 2) return direct;
+    const byRef = new Map();
+    for (const token of tokens) {
+      // Latin words (product names, tech terms) identify intent far better
+      // than generic CJK bigrams like 架构/原理 — weight them heavier.
+      const weight = /[一-鿿]/.test(token) ? 1 : 3;
+      for (const r of fuse.search(token, { limit })) {
+        const key = r.item.permalink || r.item.title;
+        const prev = byRef.get(key);
+        if (prev) { prev.hits += weight; prev.score = Math.min(prev.score, r.score ?? 1); }
+        else byRef.set(key, { item: r.item, score: r.score ?? 1, hits: weight });
+      }
+    }
+    return [...byRef.values()]
+      .sort((a, b) => b.hits - a.hits || a.score - b.score)
+      .slice(0, limit);
+  }
+
   // AI Integration
   async function askAI(query, isFollowUp = false) {
     if (isAiThinking || !query.trim()) return;
@@ -165,7 +214,7 @@
     }
 
     // Get context from search results
-    const results = fuse ? fuse.search(query, { limit: 5 }) : [];
+    const results = searchWithFallback(query, 5);
     const context = results.map(r => ({
       title: r.item.title,
       summary: r.item.summary,
@@ -206,6 +255,7 @@
       const contentType = response.headers.get('content-type') || '';
       let answer = '';
       let candidates = [];
+      let keepAtBottom = true; // false if the user scrolled up mid-stream
 
       if (contentType.includes('text/event-stream')) {
         // Streaming SSE response
@@ -217,6 +267,14 @@
             <div class="search-palette__conversation-content" id="ai-streaming-target"></div>
           </div>`;
         const streamTarget = document.getElementById('ai-streaming-target');
+
+        // Follow the streaming answer, but stop pinning as soon as the user
+        // scrolls up to read something — resume when they return to bottom.
+        let pinToBottom = true;
+        const onAiScroll = () => {
+          pinToBottom = aiContent.scrollHeight - aiContent.scrollTop - aiContent.clientHeight < 40;
+        };
+        aiContent.addEventListener('scroll', onAiScroll, { passive: true });
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
@@ -241,6 +299,7 @@
                   if (delta) {
                     answer += delta;
                     streamTarget.innerHTML = formatAiAnswer(answer);
+                    if (pinToBottom) aiContent.scrollTop = aiContent.scrollHeight;
                   }
                 }
               } catch(e) {}
@@ -248,6 +307,8 @@
           }
         }
 
+        aiContent.removeEventListener('scroll', onAiScroll);
+        keepAtBottom = pinToBottom;
         if (!answer) answer = 'Sorry, I couldn\'t find an answer.';
       } else {
         // Non-streaming JSON response (fallback)
@@ -259,8 +320,17 @@
       // Add AI response to history
       addToHistory('assistant', answer);
 
+      // A conversation is underway — retire the starter suggestion chips so
+      // the answer gets their vertical space.
+      const suggestionsRow = document.getElementById('search-ai-suggestions');
+      if (suggestionsRow) suggestionsRow.style.display = 'none';
+
       // Render full conversation with follow-up input and sources
       aiContent.innerHTML = renderConversation() + renderSources(candidates) + renderFollowUpInput(query);
+
+      // Land at the end of the answer so sources + follow-up input are
+      // visible — unless the user deliberately scrolled up to read.
+      if (keepAtBottom) aiContent.scrollTop = aiContent.scrollHeight;
 
       // Attach event listeners to follow-up elements
       attachFollowUpListeners();
@@ -337,8 +407,9 @@
       });
     }
 
-    // Focus the input
-    setTimeout(() => followUpInput.focus(), 10);
+    // Focus the input without yanking the scroll position (we position the
+    // scroll explicitly after rendering)
+    setTimeout(() => followUpInput.focus({ preventScroll: true }), 10);
   }
 
   function renderSources(candidates) {
@@ -405,7 +476,7 @@
       emptyMsg.hidden = true;
       return;
     }
-    const results = fuse.search(query, { limit: 10 });
+    const results = searchWithFallback(query, 10);
     resultCount.textContent = results.length;
     if (results.length === 0) {
       resultsList.innerHTML = '';
