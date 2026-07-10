@@ -1,0 +1,405 @@
+{
+  "_notes": [
+    "Source of truth for the /start-here/ reading atlas AND the AI layer (content-index atlas block).",
+    "Each post stores only its logical page path + a one-line hook; titles/reading times resolve at build time via site.GetPage in layouts/shortcodes/start-here.html.",
+    "Converted from YAML to JSON so scripts/generate-content-index.mjs can read it with zero deps; Hugo site.Data reads JSON identically.",
+    "Curation basis (GSC 2026-07): my-hugo is the CTR champion; markitdown/langgraph/notebooklm/tdd/gpt-researcher are the top organic pages.",
+    "EN mem0 is draft — EN AI path uses go-release-tools until the translation ships."
+  ],
+  "zh": {
+    "kicker": "阅读地图",
+    "heading": "从这里开始",
+    "intro": "这里是熊鑫伟（cubxxw）的个人博客。写作围绕四条主线：AI 与技术、成长与思考、旅行与观察、项目与实践。不知道从哪读起？下面是为第一次来的你画的地图。",
+    "first_read": {
+      "label": "只想先读一篇？",
+      "page": "/growth/posts/2025-annual-review",
+      "hook": "一年的深度复盘——技术、成长、旅行都在里面。读完这一篇，你就大致认识我了。",
+      "cta": "从这篇开始"
+    },
+    "paths_title": "选择你的路径",
+    "paths_note": "四条主线，各选了几篇代表作。挑一条感兴趣的走进去。",
+    "minutes_tpl": "约 %d 分钟",
+    "paths": [
+      {
+        "key": "ai",
+        "numeral": "01",
+        "title": "AI 与技术",
+        "audience": "写给对 AI、大语言模型、Kubernetes 与 Go 工程感兴趣的开发者。",
+        "more_url": "/zh/ai-technology/",
+        "more_label": "浏览全部 AI 与技术文章",
+        "posts": [
+          {
+            "page": "/ai-technology/posts/agent-identity-from-locke-to-openclaw",
+            "hook": "从洛克的人格同一性谈到 AI 智能体的身份——一篇署名之作。"
+          },
+          {
+            "page": "/ai-technology/posts/my-hugo",
+            "hook": "这个博客是怎么搭起来的：Hugo 建站的完整实践。"
+          },
+          {
+            "page": "/ai-technology/posts/kubernetes-an-article-to-get-started-quickly",
+            "hook": "零基础快速理解 Kubernetes 的长青入门篇。"
+          },
+          {
+            "page": "/ai-technology/posts/mem0",
+            "hook": "给 AI 装上记忆：mem0 架构与原理拆解。"
+          },
+          {
+            "page": "/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities",
+            "hook": "在开源社区高效提问的艺术——参与开源的第一课。"
+          }
+        ]
+      },
+      {
+        "key": "growth",
+        "numeral": "02",
+        "title": "成长与思考",
+        "audience": "写给正在自我探索、年度复盘、认知升级路上的你。",
+        "more_url": "/zh/growth/",
+        "more_label": "浏览全部成长与思考文章",
+        "posts": [
+          {
+            "page": "/growth/posts/weight-of-self-in-ai-age",
+            "hook": "当 AI 什么都会，「我」的重量在哪里？"
+          },
+          {
+            "page": "/growth/posts/flow-state",
+            "hook": "如何进入并保持心流——一份完整指南。"
+          },
+          {
+            "page": "/growth/posts/metacognitive-transformation-review",
+            "hook": "元认知转变的亲历复盘：怎样觉察自己的思考。"
+          },
+          {
+            "page": "/growth/posts/gtd-and-the-four-quadrant-rule-practice",
+            "hook": "GTD 与四象限的落地实践，真正跑得通的生产力系统。"
+          },
+          {
+            "page": "/growth/posts/super-individual-ai-product-and-solo-builder-stack",
+            "hook": "超级个体：一个人 + AI 能走多远。"
+          }
+        ]
+      },
+      {
+        "key": "travel",
+        "numeral": "03",
+        "title": "旅行与观察",
+        "audience": "写给数字游民、徒步爱好者和文化观察者。",
+        "more_url": "/zh/travel/",
+        "more_label": "查看完整旅行记录",
+        "posts": [
+          {
+            "page": "/travel",
+            "hook": "跨越 9 个国家的互动足迹地图——从这里俯瞰全部旅程。",
+            "meta": "互动地图"
+          },
+          {
+            "page": "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world",
+            "hook": "在世界边缘流浪的一年——数字游民生活实录。"
+          },
+          {
+            "page": "/growth/posts/japan-travel-2025",
+            "hook": "富士山登顶与日本行记。"
+          },
+          {
+            "page": "/growth/posts/2026-03-27-lhasa-slow-and-heavy",
+            "hook": "拉萨：慢与重——高原上的观察手记。"
+          }
+        ]
+      },
+      {
+        "key": "projects",
+        "numeral": "04",
+        "title": "项目与实践",
+        "audience": "写给想深入源码与工程实践的人——这是全站搜索流量最高的一条线。",
+        "more_url": "/zh/projects/",
+        "more_label": "浏览全部项目研究",
+        "posts": [
+          {
+            "page": "/projects/markitdown",
+            "hook": "微软 MarkItDown 源码深读——本站被搜索最多的一页。"
+          },
+          {
+            "page": "/projects/langgraph",
+            "hook": "LangGraph 设计、架构与原理的深度解析。"
+          },
+          {
+            "page": "/projects/notebooklm",
+            "hook": "Google NotebookLM 背后的 RAG 工程调研。"
+          },
+          {
+            "page": "/projects/tdd",
+            "hook": "AI 时代初创企业怎么做测试驱动开发。"
+          },
+          {
+            "page": "/projects/gpt-researcher",
+            "hook": "GPT-Researcher 开源项目深度学习。"
+          }
+        ]
+      }
+    ],
+    "subscribe": {
+      "lead": "喜欢这些内容？",
+      "text": "新文章不定期发布——用 RSS 或邮件跟上更新，不错过下一篇。",
+      "links": [
+        {
+          "label": "RSS 订阅",
+          "url": "/zh/index.xml"
+        },
+        {
+          "label": "邮件联系",
+          "url": "mailto:3293172751nss@gmail.com"
+        }
+      ]
+    },
+    "explore": {
+      "title": "换个方式认识我",
+      "note": "下面是一张可拖拽的 3D 知识星系：中心是我本人，环绕的是我的身份与专注的领域。拖动旋转，点击任意节点即可深入。"
+    },
+    "colophon": {
+      "label": "关于本站",
+      "entity": "cubxxw.com 是熊鑫伟（Xinwei Xiong，网名 cubxxw）的个人博客。他生于 2001 年，是一名 AI 创业者、开源贡献者与数字游民，活跃于 OpenIM、OpenKF、Sealos 等开源项目。博客写作围绕四条主线：AI 与技术（Kubernetes、Go、LLM 应用与智能体框架）、成长与思考（年度复盘、元认知、心流）、旅行与观察（9 个国家、35+ 城市、400+ 公里徒步），以及开源项目与工程实践的深度研究（MarkItDown、LangGraph、NotebookLM、GPT-Researcher 等）。",
+      "facts": [
+        {
+          "k": "作者",
+          "v": "熊鑫伟（cubxxw）"
+        },
+        {
+          "k": "身份",
+          "v": "AI 创业者 · 开源贡献者 · 数字游民"
+        },
+        {
+          "k": "主题",
+          "v": "AI 与技术 / 成长与思考 / 旅行与观察 / 项目与实践"
+        },
+        {
+          "k": "足迹",
+          "v": "9 个国家 · 35+ 城市 · 徒步 400+ 公里"
+        }
+      ],
+      "about_url": "/zh/about/",
+      "about_label": "了解更多关于我",
+      "connect_label": "保持连接",
+      "connect": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/cubxxw",
+          "note": "开源贡献"
+        },
+        {
+          "label": "RSS",
+          "url": "/zh/index.xml",
+          "note": "订阅更新"
+        },
+        {
+          "label": "Email",
+          "url": "mailto:3293172751nss@gmail.com",
+          "note": "直接联系"
+        },
+        {
+          "label": "Buy Me a Coffee",
+          "url": "https://www.buymeacoffee.com/cubxxw",
+          "note": "支持我的写作"
+        }
+      ]
+    }
+  },
+  "en": {
+    "kicker": "Reading Atlas",
+    "heading": "Start Here",
+    "intro": "This is the personal blog of Xinwei Xiong (cubxxw). Everything here follows four threads: AI & technology, growth & thinking, travel & observation, and projects & practice. Not sure where to begin? Here is the map I drew for first-time visitors.",
+    "first_read": {
+      "label": "Just want one post?",
+      "page": "/growth/posts/2025-annual-review",
+      "hook": "A year in deep review — the tech, the growth, the travel, all in one place. Read this and you will roughly know me.",
+      "cta": "Start with this one"
+    },
+    "paths_title": "Choose your path",
+    "paths_note": "Four threads, a few representative posts each. Pick the one that pulls you in.",
+    "minutes_tpl": "%d min read",
+    "paths": [
+      {
+        "key": "ai",
+        "numeral": "01",
+        "title": "AI & Technology",
+        "audience": "For developers curious about AI, LLMs, Kubernetes, and Go engineering.",
+        "more_url": "/en/ai-technology/",
+        "more_label": "Browse all AI & technology posts",
+        "posts": [
+          {
+            "page": "/ai-technology/posts/agent-identity-from-locke-to-openclaw",
+            "hook": "From Locke's personal identity to the identity of AI agents — a signature essay."
+          },
+          {
+            "page": "/ai-technology/posts/my-hugo",
+            "hook": "How this blog is built: a complete Hugo walkthrough."
+          },
+          {
+            "page": "/ai-technology/posts/kubernetes-an-article-to-get-started-quickly",
+            "hook": "The evergreen zero-to-one introduction to Kubernetes."
+          },
+          {
+            "page": "/ai-technology/posts/go-release-tools",
+            "hook": "Go release tooling and engineering practice, end to end."
+          },
+          {
+            "page": "/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities",
+            "hook": "The art of asking good questions — lesson one of open source."
+          }
+        ]
+      },
+      {
+        "key": "growth",
+        "numeral": "02",
+        "title": "Growth & Thinking",
+        "audience": "For anyone on the road of self-discovery, annual reviews, and sharper thinking.",
+        "more_url": "/en/growth/",
+        "more_label": "Browse all growth & thinking posts",
+        "posts": [
+          {
+            "page": "/growth/posts/weight-of-self-in-ai-age",
+            "hook": "When AI can do everything, where does the weight of the self sit?"
+          },
+          {
+            "page": "/growth/posts/flow-state",
+            "hook": "How to enter and hold a flow state — a complete guide."
+          },
+          {
+            "page": "/growth/posts/metacognitive-transformation-review",
+            "hook": "A first-person review of a metacognitive shift."
+          },
+          {
+            "page": "/growth/posts/gtd-and-the-four-quadrant-rule-practice",
+            "hook": "GTD and the four-quadrant rule, as a system that actually runs."
+          },
+          {
+            "page": "/growth/posts/super-individual-ai-product-and-solo-builder-stack",
+            "hook": "The super individual: how far can one person plus AI go?"
+          }
+        ]
+      },
+      {
+        "key": "travel",
+        "numeral": "03",
+        "title": "Travel & Observation",
+        "audience": "For digital nomads, hikers, and cultural observers.",
+        "more_url": "/en/travel/",
+        "more_label": "See the full travel log",
+        "posts": [
+          {
+            "page": "/travel",
+            "hook": "An interactive footprint map across 9 countries — the whole journey at a glance.",
+            "meta": "Interactive map"
+          },
+          {
+            "page": "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world",
+            "hook": "A year of wandering at the edge of the world — digital nomad life, unfiltered."
+          },
+          {
+            "page": "/growth/posts/japan-travel-2025",
+            "hook": "Summiting Mount Fuji, and the rest of Japan."
+          },
+          {
+            "page": "/growth/posts/2026-03-27-lhasa-slow-and-heavy",
+            "hook": "Lhasa: slow and heavy — field notes from the plateau."
+          }
+        ]
+      },
+      {
+        "key": "projects",
+        "numeral": "04",
+        "title": "Projects & Practice",
+        "audience": "For readers who want to go deep into source code and engineering practice — the highest-traffic thread on this site.",
+        "more_url": "/en/projects/",
+        "more_label": "Browse all project deep-dives",
+        "posts": [
+          {
+            "page": "/projects/markitdown",
+            "hook": "A deep read of Microsoft's MarkItDown — the most-searched page on this site."
+          },
+          {
+            "page": "/projects/langgraph",
+            "hook": "LangGraph's design, architecture, and principles, dissected."
+          },
+          {
+            "page": "/projects/notebooklm",
+            "hook": "The RAG engineering behind Google NotebookLM."
+          },
+          {
+            "page": "/projects/tdd",
+            "hook": "Test-driven development for AI-era startups."
+          },
+          {
+            "page": "/projects/gpt-researcher",
+            "hook": "Learning from the GPT-Researcher open-source project."
+          }
+        ]
+      }
+    ],
+    "subscribe": {
+      "lead": "Enjoying these?",
+      "text": "New posts ship irregularly — follow along via RSS or email so you don't miss the next one.",
+      "links": [
+        {
+          "label": "Subscribe via RSS",
+          "url": "/en/index.xml"
+        },
+        {
+          "label": "Say hello by email",
+          "url": "mailto:3293172751nss@gmail.com"
+        }
+      ]
+    },
+    "explore": {
+      "title": "Meet me another way",
+      "note": "Below is a draggable 3D knowledge galaxy: the core is me, orbited by my identities and the fields I focus on. Drag to rotate, click any node to dive in."
+    },
+    "colophon": {
+      "label": "About this site",
+      "entity": "cubxxw.com is the personal blog of Xinwei Xiong (known online as cubxxw). Born in 2001, he is an AI founder, open-source contributor, and digital nomad, active in projects such as OpenIM, OpenKF, and Sealos. The blog follows four threads: AI & technology (Kubernetes, Go, LLM applications, and agent frameworks), growth & thinking (annual reviews, metacognition, flow), travel & observation (9 countries, 35+ cities, 400+ km on foot), and deep dives into open-source projects and engineering practice (MarkItDown, LangGraph, NotebookLM, GPT-Researcher, and more).",
+      "facts": [
+        {
+          "k": "Author",
+          "v": "Xinwei Xiong (cubxxw)"
+        },
+        {
+          "k": "Identity",
+          "v": "AI founder · Open-source contributor · Digital nomad"
+        },
+        {
+          "k": "Threads",
+          "v": "AI & Tech / Growth & Thinking / Travel / Projects"
+        },
+        {
+          "k": "Footprint",
+          "v": "9 countries · 35+ cities · 400+ km hiked"
+        }
+      ],
+      "about_url": "/en/about/",
+      "about_label": "More about me",
+      "connect_label": "Stay connected",
+      "connect": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/cubxxw",
+          "note": "Open source"
+        },
+        {
+          "label": "RSS",
+          "url": "/en/index.xml",
+          "note": "Subscribe"
+        },
+        {
+          "label": "Email",
+          "url": "mailto:3293172751nss@gmail.com",
+          "note": "Direct line"
+        },
+        {
+          "label": "Buy Me a Coffee",
+          "url": "https://www.buymeacoffee.com/cubxxw",
+          "note": "Support the writing"
+        }
+      ]
+    }
+  }
+}

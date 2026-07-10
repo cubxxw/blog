@@ -120,6 +120,19 @@ function getExcerpt(body) {
   return stripMarkdown(body).slice(0, 360);
 }
 
+// Longer plain-text slice for the AI get_post tool: opening + closing, since
+// long pieces put the thesis up front and the payoff at the end (same
+// heuristic as reading-companion.js).
+const BODY_MAX = 2400;
+
+function getBody(body) {
+  const text = stripMarkdown(body);
+  if (text.length <= BODY_MAX) return text;
+  const head = Math.round(BODY_MAX * 0.7);
+  const tail = BODY_MAX - head;
+  return `${text.slice(0, head)} […] ${text.slice(text.length - tail)}`;
+}
+
 function getHeadings(body) {
   return body
     .split("\n")
@@ -129,7 +142,14 @@ function getHeadings(body) {
 }
 
 function buildPermalink(language, relativePath) {
-  const cleanPath = relativePath.replace(/\\/g, "/").replace(/\.md$/i, "");
+  let cleanPath = relativePath.replace(/\\/g, "/").replace(/\.md$/i, "");
+  // Page bundles (dir/index.md) publish at the directory URL, not .../index/;
+  // section stubs (_index.md) publish at their section URL.
+  cleanPath = cleanPath.replace(/\/_?index$/i, "");
+  if (cleanPath === "_index") cleanPath = "";
+  // Hugo lowercases URL paths by default (e.g. markItdown.md publishes at
+  // /projects/markitdown/), so the permalink must match.
+  cleanPath = cleanPath.toLowerCase();
   const segments = cleanPath.split("/");
   const prefix = language === defaultLanguage ? "" : `/${language}`;
 
@@ -199,8 +219,14 @@ export function buildIndex() {
       const { language, relativePath } = detectLanguage(relativeFile);
       const raw = fs.readFileSync(filePath, "utf8");
       const { data, body } = parseFrontmatter(raw);
-      const slug = slugify(path.basename(relativePath));
-      const relativeDir = path.dirname(relativePath);
+      let slug = slugify(path.basename(relativePath));
+      let relativeDir = path.dirname(relativePath);
+      // Page bundles (dir/index.md): the bundle directory is the real slug
+      // and the section is its parent, mirroring the published URL.
+      if (slug === "index" && relativeDir !== ".") {
+        slug = path.basename(relativeDir);
+        relativeDir = path.dirname(relativeDir);
+      }
       const sectionPath = relativeDir === "." ? "" : relativeDir.replace(/\\/g, "/");
       const sectionParts = sectionPath ? sectionPath.split("/") : [];
 
@@ -218,6 +244,17 @@ export function buildIndex() {
         draft: data.draft === "true" || data.draft === true,
         headings: getHeadings(body),
         excerpt: getExcerpt(body),
+        // GEO answer-first summary — the strongest grounding signal for the
+        // AI layer, far denser than the excerpt (see blog memory on tldr).
+        tldr: Array.isArray(data.tldr)
+          ? data.tldr.slice(0, 6)
+          : typeof data.tldr === "string" && data.tldr
+            ? [data.tldr]
+            : [],
+        maturity: typeof data.maturity === "string" ? data.maturity : "",
+        // Set to true during atlas resolution for hand-curated posts.
+        featured: false,
+        body: getBody(body),
       };
     })
     .filter((doc) => !doc.draft)
@@ -231,13 +268,87 @@ export function buildIndex() {
     byLanguage[doc.language] += 1;
   }
 
+  const atlas = buildAtlas(documents);
+
   return {
     generatedAt: new Date().toISOString(),
     totalDocuments: documents.length,
     byLanguage,
     tree: buildTree(documents),
+    atlas,
     documents,
   };
+}
+
+// ─── Reading atlas (data/start_here.json) → AI-ready structure ──────────────
+// The atlas is the human-curated map of the blog (entity statement, four
+// threads, hand-picked posts). Resolving its logical page paths against the
+// scanned documents gives the AI layer real permalinks + titles + tldr, and
+// lets us tag those documents as `featured` so retrieval can boost them.
+
+function logicalPathOf(doc) {
+  return (
+    "/" +
+    doc.relativePath
+      .replace(/\.md$/i, "")
+      .replace(/\/index$/i, "")
+      .toLowerCase()
+  );
+}
+
+function buildAtlas(documents) {
+  const atlasSource = path.join(repoRoot, "data", "start_here.json");
+  if (!fs.existsSync(atlasSource)) return null;
+
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(atlasSource, "utf8"));
+  } catch (error) {
+    console.warn(`content-index: unable to parse ${atlasSource}: ${error.message}`);
+    return null;
+  }
+
+  const byLogicalPath = new Map();
+  for (const doc of documents) {
+    byLogicalPath.set(`${doc.language}:${logicalPathOf(doc)}`, doc);
+  }
+
+  const resolvePost = (language, entry) => {
+    if (!entry || typeof entry.page !== "string") return null;
+    const doc = byLogicalPath.get(`${language}:${entry.page.toLowerCase()}`);
+    if (!doc) {
+      console.warn(`content-index atlas: page not found: ${language}:${entry.page}`);
+      return null;
+    }
+    doc.featured = true;
+    return {
+      title: doc.title,
+      permalink: doc.permalink,
+      hook: entry.hook || "",
+      tldr: doc.tldr.slice(0, 2),
+    };
+  };
+
+  const atlas = {};
+  for (const language of Object.keys(data)) {
+    if (language.startsWith("_")) continue;
+    const lang = data[language];
+    if (!lang || !Array.isArray(lang.paths)) continue;
+
+    atlas[language] = {
+      entity: lang.colophon?.entity || "",
+      first_read: resolvePost(language, lang.first_read),
+      threads: lang.paths.map((thread) => ({
+        key: thread.key,
+        title: thread.title,
+        audience: thread.audience || "",
+        section_url: thread.more_url || "",
+        posts: (thread.posts || []).map((post) => resolvePost(language, post)).filter(Boolean),
+      })),
+    };
+  }
+
+  return atlas;
 }
 
 export function writeOutput(filePath, payload) {
@@ -247,6 +358,9 @@ export function writeOutput(filePath, payload) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const index = buildIndex();
+  // Both copies stay byte-identical (score-content-search-integrity.mjs
+  // enforces this). Nothing in the browser fetches the static copy — it is
+  // the MCP server's fallback, which also benefits from the `body` slices.
   for (const outputPath of outputPaths) {
     writeOutput(outputPath, index);
   }

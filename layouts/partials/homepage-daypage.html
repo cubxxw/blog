@@ -751,6 +751,19 @@
         var reader = res.body.getReader();
         var decoder = new TextDecoder();
         var reply = '';
+        // Agent trace (search/read tool activity) shown as quiet step lines
+        // inside the growing bubble until the real answer takes over.
+        var agentSteps = {}, agentOrder = [];
+        function agentStepsHtml() {
+          if (!agentOrder.length) return '';
+          var out = '';
+          for (var si = 0; si < agentOrder.length; si++) {
+            var st = agentSteps[agentOrder[si]];
+            out += '<span class="ai-step ai-step--' + (st.state === 'done' ? 'done' : 'run') + '">'
+                 + String(st.label).replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>';
+          }
+          return '<div class="ai-steps"' + (reply ? ' data-settled="true"' : '') + '>' + out + '</div>';
+        }
         messages.push({ role:'bear', content:'' });
         loading = false;
         streaming = true;          // caret on the growing bubble; orb keeps thinking
@@ -776,7 +789,16 @@
                     if (j.delta) {
                       reply += j.delta;
                       messages[messages.length-1].content = reply;
-                      updateStreamingBubble(renderMsg(reply));  // in-place, no flicker
+                      updateStreamingBubble(agentStepsHtml() + renderMsg(reply));  // in-place, no flicker
+                    } else if (j.status && j.status.label) {
+                      var sid = j.status.id || j.status.label;
+                      if (!agentSteps[sid]) agentOrder.push(sid);
+                      agentSteps[sid] = { state: j.status.state || 'run', label: j.status.label };
+                      updateStreamingBubble(agentStepsHtml() + renderMsg(reply));
+                    } else if (j.error) {
+                      reply = reply || (isZh ? '出了点问题：' : 'Something went wrong: ') + j.error;
+                      messages[messages.length-1].content = reply;
+                      updateStreamingBubble(renderMsg(reply));
                     }
                   } catch(e) {}
                 }

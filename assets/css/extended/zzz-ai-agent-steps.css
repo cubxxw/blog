@@ -1,0 +1,79 @@
+/* ============================================================
+   zzz-ai-agent-steps.css — quiet agent-activity trace for the
+   AI chat surfaces (Bear AI site chat + homepage bear chat).
+
+   The blog-ai function streams {status:{id,state,label}} events
+   while its retrieval tools run; frontends render them as small
+   step lines above the growing answer:
+
+     <div class="ai-steps">
+       <span class="ai-step ai-step--run">检索「k8s」…</span>
+       <span class="ai-step ai-step--done">检索「k8s」— 5 篇相关</span>
+     </div>
+
+   Token-driven (tokens.css) so EN/ZH and light/dark resolve
+   automatically. data-settled="true" is set once answer text has
+   started streaming — the trace fades back but stays legible.
+   ============================================================ */
+
+.ai-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 2px 0 10px;
+  font-family: var(--font-meta, system-ui, sans-serif);
+  font-size: 0.78em;
+  line-height: 1.5;
+  color: var(--color-ink-muted, #5e5e63);
+  transition: opacity 300ms ease;
+}
+
+.ai-steps[data-settled="true"] {
+  opacity: 0.62;
+}
+
+.ai-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.ai-step::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+  flex: none;
+}
+
+.ai-step--run::before {
+  animation: aiStepPulse 1s ease-in-out infinite;
+}
+
+.ai-step--done {
+  opacity: 0.78;
+}
+
+.ai-step--done::before {
+  background: var(--color-ink-muted, #5e5e63);
+}
+
+@keyframes aiStepPulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.8); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-step--run::before { animation: none; }
+  .ai-steps { transition: none; }
+}
+
+/* AI-answer links inside the reading companion sidebar */
+.rc-ai-msg .rc-ai-link {
+  color: var(--color-accent, #2e352e);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}

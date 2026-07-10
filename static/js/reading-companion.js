@@ -177,9 +177,21 @@
   function parseMarkdown(text) {
     // Inline formatting applied per line; block structure (lists) handled by
     // grouping consecutive bullet/numbered lines into real <ul>/<ol>.
+    function safeHref(url) {
+      // Only http(s) and site-relative targets become real links; anything
+      // else (javascript:, data:, …) is rendered as plain text.
+      if (/^https?:\/\//i.test(url) || /^\//.test(url)) return url;
+      return null;
+    }
     function inline(s) {
       return s
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
+          var href = safeHref(url);
+          if (!href) return label;
+          var ext = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
+          return '<a href="' + href + '" class="rc-ai-link"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
+        })
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/`(.+?)`/g, '<code>$1</code>');
@@ -508,6 +520,7 @@
             language: language,
             articleTitle: getArticleTitle(),
             articleContent: getArticleText(),
+            pagePath: window.location.pathname,
             context: history,
           }),
           signal: request.signal,

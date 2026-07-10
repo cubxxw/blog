@@ -236,12 +236,24 @@
     function escapeHtml(s) {
       return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
+    // Escaped text → HTML with Markdown [label](url) links rendered as safe
+    // anchors (http(s)/site-relative only) so AI-recommended articles are
+    // tappable on mobile too.
+    function renderAiText(text) {
+      return escapeHtml(text)
+        .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
+          if (!/^https?:\/\//i.test(url) && !/^\//.test(url)) return label;
+          var ext = /^https?:\/\//i.test(url) && url.indexOf(window.location.origin) !== 0;
+          return '<a href="' + url + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + ' style="color:inherit;text-decoration:underline;text-underline-offset:2px;">' + label + '</a>';
+        })
+        .replace(/\n/g, '<br>');
+    }
     function addMsg(text, role) {
       var g = messagesEl.querySelector('.abs-ai-greeting');
       if (g) g.remove();
       var d = document.createElement('div');
       d.className = 'abs-ai-msg abs-ai-msg--' + role;
-      if (role === 'ai') { d.innerHTML = escapeHtml(text).replace(/\n/g, '<br>'); }
+      if (role === 'ai') { d.innerHTML = renderAiText(text); }
       else { d.textContent = text; }
       messagesEl.appendChild(d);
       messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -326,7 +338,7 @@
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: q, language: language, articleTitle: articleTitle(), articleContent: articleText(), context: history }),
+        body: JSON.stringify({ question: q, language: language, articleTitle: articleTitle(), articleContent: articleText(), pagePath: window.location.pathname, context: history }),
         signal: controller ? controller.signal : undefined
       }).then(function (res) {
         clearTimeout(timer);
@@ -337,7 +349,7 @@
         }
         return res.json().then(function (data) {
           var answer = (data && data.answer) || T.empty;
-          replyEl.innerHTML = escapeHtml(answer).replace(/\n/g, '<br>');
+          replyEl.innerHTML = renderAiText(answer);
           return answer;
         });
       }).then(function (answer) {
@@ -375,7 +387,7 @@
               var j = JSON.parse(raw);
               if (j.delta) {
                 answer += j.delta;
-                replyEl.innerHTML = escapeHtml(answer).replace(/\n/g, '<br>');
+                replyEl.innerHTML = renderAiText(answer);
                 messagesEl.scrollTop = messagesEl.scrollHeight;
               }
             } catch (e) {}

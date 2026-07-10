@@ -92,7 +92,11 @@
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
       .replace(/```(\w*)\n([\s\S]*?)```/g, "<pre><code class='language-$1'>$2</code></pre>")
       .replace(/`([^`]+)`/g, "<code>$1</code>")
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' target='_blank' rel='noopener noreferrer' style='color:inherit;text-decoration:underline'>$1</a>")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (m, label, url) {
+        // Whitelist http(s)/site-relative targets; drop javascript:/data: etc.
+        if (!/^https?:\/\//i.test(url) && !/^\//.test(url)) return label;
+        return "<a href='" + url + "' target='_blank' rel='noopener noreferrer' style='color:inherit;text-decoration:underline'>" + label + "</a>";
+      })
       .replace(/^\s*[-*+]\s+(.*$)/gim, "<li>$1</li>")
       .replace(/\n/gim, "<br>");
 
@@ -354,12 +358,35 @@
         let candidates = [];
 
         if (contentType.includes("text/event-stream")) {
-          // Streaming SSE — typewriter effect
+          // Streaming SSE — typewriter effect + live agent-step indicator
           removeLoading();
           const streamMsg = addMessage("", false);
           const reader = response.body.getReader();
           const decoder = new TextDecoder();
           let buf = "";
+          // Agent steps (search_blog / get_post activity) rendered as a quiet
+          // trace line above the growing answer.
+          const steps = {};
+          const stepOrder = [];
+          const escText = (s) => {
+            const d = document.createElement("div");
+            d.textContent = s;
+            return d.innerHTML;
+          };
+          const stepsHtml = () => {
+            if (!stepOrder.length) return "";
+            const items = stepOrder
+              .map((id) => {
+                const s = steps[id];
+                return `<span class="ai-step ai-step--${s.state === "done" ? "done" : "run"}">${escText(s.label)}</span>`;
+              })
+              .join("");
+            return `<div class="ai-steps"${answer ? ' data-settled="true"' : ""}>${items}</div>`;
+          };
+          const paint = () => {
+            streamMsg.innerHTML = stepsHtml() + parseMarkdown(answer);
+            messages.scrollTop = messages.scrollHeight;
+          };
           outer: while (true) {
             const { done, value } = await reader.read();
             if (done) break;
@@ -374,12 +401,21 @@
                 const chunk = JSON.parse(raw);
                 if (chunk.meta) {
                   candidates = chunk.meta.candidates || [];
+                } else if (chunk.status && chunk.status.label) {
+                  const st = chunk.status;
+                  const id = st.id || st.label;
+                  if (!steps[id]) stepOrder.push(id);
+                  steps[id] = { state: st.state || "run", label: st.label };
+                  paint();
+                } else if (chunk.error) {
+                  throw new Error(chunk.error);
                 } else if (chunk.delta) {
                   answer += chunk.delta;
-                  streamMsg.innerHTML = parseMarkdown(answer);
-                  messages.scrollTop = messages.scrollHeight;
+                  paint();
                 }
-              } catch (_) {}
+              } catch (e) {
+                if (e && e.message && !(e instanceof SyntaxError)) throw e;
+              }
             }
           }
         } else {
