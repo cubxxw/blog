@@ -10,6 +10,10 @@
 
   Native <details>/<summary> keeps it accessible with zero JS; first item
   starts open so crawlers and skimmers see an answer immediately.
+
+  /js/article-faq.js progressively enhances each item with (1) an eased
+  height animation on toggle and (2) an inline "ask the AI" thread that is
+  seeded with the item's Q&A and streams from /.netlify/functions/article-ai.
 */ -}}
 {{- with .Params.faq -}}
 {{- $isZh := eq $.Lang "zh" -}}
@@ -25,9 +29,12 @@
         <span class="article-faq__q-text">{{ $item.q }}</span>
         <span class="article-faq__marker" aria-hidden="true"></span>
       </summary>
-      <p class="article-faq__a">{{ $item.a }}</p>
+      <div class="article-faq__body">
+        <p class="article-faq__a">{{ $item.a }}</p>
+      </div>
     </details>
     {{- end }}
   </div>
 </section>
+<script src="{{ "/js/article-faq.js" | relURL }}" defer></script>
 {{- end -}}

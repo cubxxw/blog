@@ -1,7 +1,8 @@
 /* ── Article FAQ block (partials/article/faq.html) ────────────────────
    Editorial companion to the TL;DR card: quiet rules, serif questions,
    native <details> disclosure. Powers the visible half of the FAQPage
-   rich result. */
+   rich result. /js/article-faq.js adds the eased height animation and
+   the per-item "keep asking the AI" thread styled below. */
 
 .article-faq {
   margin: 3rem 0 1rem;
@@ -73,11 +74,38 @@
   inset: 0;
   margin: auto;
   background: var(--color-ink-muted, var(--secondary));
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .article-faq__marker::before { width: 100%; height: 1.5px; }
 .article-faq__marker::after  { width: 1.5px; height: 100%; }
-.article-faq__item[open] .article-faq__marker::after { transform: scaleY(0); }
+/* The marker rotates a quarter turn while its vertical bar collapses, so
+   + resolves into − with a gentle spin. [open] alone (no JS) still works. */
+.article-faq__item--open .article-faq__marker::before,
+.article-faq__item[open] .article-faq__marker::before {
+  transform: rotate(90deg);
+}
+.article-faq__item--open .article-faq__marker::after,
+.article-faq__item[open] .article-faq__marker::after {
+  transform: rotate(90deg) scaleY(0);
+}
+
+/* Answer content fades and drifts up as the item opens. article-faq.js
+   toggles .article-faq__item--open in sync with its height animation;
+   the [open] selector keeps content visible without JS. */
+.article-faq__body > * {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.32s ease 0.08s, transform 0.36s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+}
+.article-faq__item--open .article-faq__body > *,
+.article-faq__item[open] .article-faq__body > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* flow-root keeps child margins inside the box so the JS height
+   measurement (summary + body offsetHeight) matches the real layout. */
+.article-faq__body { display: flow-root; }
 
 .article-faq__a {
   margin: 0 0 1.1rem;
@@ -87,7 +115,266 @@
   color: var(--color-ink-muted, var(--secondary));
 }
 
+/* ── AI follow-up thread ──────────────────────────────────────────────── */
+
+.article-faq__ai {
+  margin: 0 0 1.1rem;
+  max-width: 62ch;
+}
+
+.article-faq__ai-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted, var(--secondary));
+  transition: color 0.2s ease;
+}
+.article-faq__ai-toggle:hover,
+.article-faq__ai--open .article-faq__ai-toggle {
+  color: var(--color-accent, var(--primary));
+}
+.article-faq__ai-spark {
+  flex: 0 0 auto;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.article-faq__ai-toggle:hover .article-faq__ai-spark {
+  transform: rotate(20deg) scale(1.12);
+}
+/* Small chevron that flips when the thread is open */
+.article-faq__ai-chev {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.article-faq__ai--open .article-faq__ai-chev {
+  transform: rotate(225deg) translateY(-2px);
+}
+
+/* Collapsible panel — grid-rows 0fr→1fr gives an eased auto-height reveal */
+.article-faq__ai-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+.article-faq__ai-panel--open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.article-faq__ai-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.65rem 0.8rem 0.8rem;
+  margin-top: 0.4rem;
+  border-left: 2px solid var(--color-accent, var(--primary));
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-accent, var(--primary)) 4%, transparent),
+      transparent 70%
+    );
+}
+
+.article-faq__ai-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.article-faq__ai-thread:empty { display: none; }
+
+.article-faq__ai-msg {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  animation: faq-ai-msg-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes faq-ai-msg-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: none; }
+}
+.article-faq__ai-tag {
+  flex: 0 0 auto;
+  min-width: 1.6rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, var(--secondary));
+  opacity: 0.7;
+}
+.article-faq__ai-msg--ai .article-faq__ai-tag {
+  color: var(--color-accent, var(--primary));
+  opacity: 1;
+}
+.article-faq__ai-msg-body {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--color-text, var(--primary));
+  overflow-wrap: anywhere;
+}
+.article-faq__ai-msg--user .article-faq__ai-msg-body {
+  color: var(--color-ink-muted, var(--secondary));
+  font-style: italic;
+}
+.article-faq__ai-msg-body p { margin: 0 0 0.5em; }
+.article-faq__ai-msg-body p:last-child { margin-bottom: 0; }
+.article-faq__ai-msg-body ul,
+.article-faq__ai-msg-body ol { margin: 0.3em 0 0.5em; padding-left: 1.2em; }
+.article-faq__ai-msg-body code {
+  font-size: 0.82em;
+  padding: 0.1em 0.35em;
+  background: color-mix(in srgb, var(--color-text, var(--primary)) 8%, transparent);
+  border-radius: 3px;
+}
+.article-faq__ai-msg-body a {
+  color: var(--color-accent, var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Thinking dots */
+.article-faq__ai-thinking {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28rem;
+  font-size: 0.78rem;
+  color: var(--color-ink-muted, var(--secondary));
+}
+.article-faq__ai-thinking i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: faq-ai-dot 1.2s ease-in-out infinite;
+}
+.article-faq__ai-thinking i:nth-child(3) { animation-delay: 0.15s; }
+.article-faq__ai-thinking i:nth-child(4) { animation-delay: 0.3s; }
+@keyframes faq-ai-dot {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-2px); }
+}
+
+/* Suggestion chips */
+.article-faq__ai-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+.article-faq__ai-chips--gone {
+  opacity: 0;
+  transform: translateY(-3px);
+  pointer-events: none;
+}
+.article-faq__ai-chip {
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--color-border, var(--border));
+  border-radius: 999px;
+  background: none;
+  cursor: pointer;
+  font-size: 0.76rem;
+  color: var(--color-ink-muted, var(--secondary));
+  transition: color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.article-faq__ai-chip:hover {
+  color: var(--color-accent, var(--primary));
+  border-color: var(--color-accent, var(--primary));
+  transform: translateY(-1px);
+}
+
+/* Composer */
+.article-faq__ai-composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.article-faq__ai-input {
+  flex: 1 1 auto;
+  resize: none;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--color-border, var(--border));
+  border-radius: 8px;
+  background: var(--color-bg, var(--theme));
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text, var(--primary));
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.article-faq__ai-input:focus {
+  outline: none;
+  border-color: var(--color-accent, var(--primary));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent, var(--primary)) 12%, transparent);
+}
+.article-faq__ai-input::placeholder {
+  color: var(--color-ink-muted, var(--secondary));
+  opacity: 0.65;
+}
+.article-faq__ai-send {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-border, var(--border));
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  color: var(--color-ink-muted, var(--secondary));
+  opacity: 0.55;
+  transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.article-faq__ai-send--ready {
+  opacity: 1;
+  color: var(--color-bg, var(--theme));
+  background: var(--color-accent, var(--primary));
+  border-color: var(--color-accent, var(--primary));
+}
+.article-faq__ai-send--ready:hover { transform: translateY(-1px); }
+.article-faq__ai-send:disabled { cursor: default; }
+
+/* Error + retry */
+.article-faq__ai-error {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: #ef4444;
+}
+.article-faq__ai-retry {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: none;
+  cursor: pointer;
+  font-size: 0.74rem;
+  color: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .article-faq__marker::before,
-  .article-faq__marker::after { transition: none; }
+  .article-faq__marker::after,
+  .article-faq__body > *,
+  .article-faq__ai-panel,
+  .article-faq__ai-spark,
+  .article-faq__ai-chev,
+  .article-faq__ai-chips,
+  .article-faq__ai-chip,
+  .article-faq__ai-send { transition: none; }
+  .article-faq__ai-msg { animation: none; }
+  .article-faq__ai-thinking i { animation: none; }
 }
