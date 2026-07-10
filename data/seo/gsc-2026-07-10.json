@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "siteUrl": "sc-domain:cubxxw.com",
+    "window": {
+      "start": "2026-07-05",
+      "end": "2026-07-07"
+    },
+    "fetchedAt": "2026-07-10T09:20:38.277Z",
+    "runDate": "2026-07-10"
+  },
+  "date_query": [
+    {
+      "keys": [
+        "2026-07-07",
+        "site:nsddd.top"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    }
+  ],
+  "date_page": [
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/growth/posts/2026-03-27-lhasa-slow-and-heavy/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 30
+    },
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/zh/categories/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/zh/projects/ai-recommend/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    }
+  ],
+  "query_device": [
+    {
+      "keys": [
+        "site:nsddd.top",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    }
+  ],
+  "query_country": [
+    {
+      "keys": [
+        "site:nsddd.top",
+        "sgp"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    }
+  ]
+}
