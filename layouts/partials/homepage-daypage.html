@@ -418,7 +418,7 @@
         <p class="hp-footer-bio">{{ if $isZh }}{{ $d.hero.footerBioZh }}{{ else }}{{ $d.hero.footerBioEn }}{{ end }}</p>
       </div>
       <div class="hp-footer-col">
-        <h5>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h5>
+        <h4>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h4>
         <ul>
           <li><a href="{{ "/start-here/" | relLangURL }}">Start Here</a></li>
           <li><a href="{{ "/about/" | relLangURL }}">About</a></li>
@@ -427,7 +427,7 @@
         </ul>
       </div>
       <div class="hp-footer-col">
-        <h5>{{ if $isZh }}书与项目{{ else }}Books &amp; Builds{{ end }}</h5>
+        <h4>{{ if $isZh }}书与项目{{ else }}Books &amp; Builds{{ end }}</h4>
         <ul>
           {{- range $d.books }}
           <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .titleEn }} · {{ .titleZh }}</a></li>
@@ -438,7 +438,7 @@
         </ul>
       </div>
       <div class="hp-footer-col">
-        <h5>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h5>
+        <h4>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h4>
         <ul>
           {{- range site.Params.socialIcons }}
           {{- if eq .name "wechat" }}
@@ -847,6 +847,10 @@
       var tooltip = document.createElement('div');
       tooltip.className = 'hp-heat-tooltip';
       tooltip.setAttribute('role', 'tooltip');
+      // Accessible name: role=tooltip without one fails the a11y-tree
+      // well-formedness check (Lighthouse / agentic browsing).
+      tooltip.setAttribute('aria-label', {{ if $isZh }}'发布日历详情'{{ else }}'Publishing calendar details'{{ end }});
+      tooltip.setAttribute('aria-hidden', 'true');
       wrap.appendChild(tooltip);
 
       var hideTimer = null;
@@ -899,12 +903,14 @@
         var key = cell.dataset.date;
         buildTip(key, parseInt(cell.dataset.count, 10) || 0, postsMap[key] || []);
         tooltip.classList.add('is-visible');
+        tooltip.setAttribute('aria-hidden', 'false');
         positionTip(cell);
         anchorCell = cell;
       }
 
       function hideTip() {
         tooltip.classList.remove('is-visible', 'is-pinned');
+        tooltip.setAttribute('aria-hidden', 'true');
         pinned = false;
         anchorCell = null;
       }
