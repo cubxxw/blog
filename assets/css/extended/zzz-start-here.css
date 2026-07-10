@@ -1,0 +1,539 @@
+/* ============================================================
+   zzz-start-here.css — the /start-here/ reading atlas.
+
+   Editorial identity: paper / ink / per-language accent from
+   tokens.css, display serif for numerals & titles. Every colour
+   resolves through tokens, so EN/ZH and light/dark variants work
+   automatically — no hardcoded palette (the old page inlined 170
+   lines of light-only CSS that broke in dark mode).
+
+   Structure rendered by layouts/shortcodes/start-here.html:
+     .sh-lead          intro lead paragraph
+     .sh-first         zero-decision featured "slip" card
+     .sh-path          numbered chapter (ghost numeral + post rows)
+     .sh-subscribe     mid-page subscribe strip
+     .sh-explore-*     heading for the 3D galaxy
+     .sh-colophon      entity block + facts (GEO)
+     .sh-connect       connect links
+     .sh-will/.sh-in   scroll-reveal states (JS progressive enhancement)
+   ============================================================ */
+
+/* ─── Local link reset: the atlas manages its own link styling.
+   article-typography.css underlines prose links with
+   .post-content a:not(.footnote-ref):not(.footnote-backref) — three
+   class-level selectors. Mirror that :not() pattern so this reset has
+   equal specificity and wins by load order (zzz- sorts last). ── */
+.post-content .sh a:not(.footnote-ref):not(.footnote-backref) {
+  text-decoration: none;
+  box-shadow: none;
+  border-bottom: none;
+}
+
+.sh {
+  --sh-hairline: 1px solid var(--color-rule);
+  font-family: var(--font-body);
+}
+
+/* ─── Lead ─────────────────────────────────────────────────── */
+.post-content .sh-lead {
+  font-family: var(--font-prose);
+  font-size: 1.16em;
+  line-height: var(--line-height-prose);
+  color: var(--color-ink);
+  max-width: 40em;
+  margin: 0 0 var(--space-10);
+}
+
+/* ─── First-read slip ──────────────────────────────────────── */
+.post-content .sh-first {
+  display: block;
+  position: relative;
+  border: var(--sh-hairline);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-8) var(--space-5);
+  margin: 0 0 var(--space-16);
+  background:
+    linear-gradient(135deg, var(--color-accent-soft) 0%, transparent 42%),
+    transparent;
+  color: var(--color-ink);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.post-content .sh-first:hover,
+.post-content .sh-first:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.sh-first-label {
+  display: block;
+  font-family: var(--font-meta);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.sh-first-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5em, 4vw, 2em);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-3);
+}
+
+.sh-first-hook {
+  display: block;
+  font-family: var(--font-prose);
+  font-style: italic;
+  color: var(--color-ink-muted);
+  max-width: 38em;
+  margin-bottom: var(--space-5);
+}
+
+.sh-first-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  border-top: var(--sh-hairline);
+  padding-top: var(--space-4);
+}
+
+.sh-first-meta {
+  font-family: var(--font-meta);
+  font-size: 0.82em;
+  color: var(--color-ink-muted);
+}
+
+.sh-first-cta {
+  font-family: var(--font-meta);
+  font-size: 0.88em;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* Shared arrow micro-interaction */
+.sh .sh-arrow {
+  display: inline-block;
+  margin-left: 0.4em;
+  transition: transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.post-content .sh-first:hover .sh-arrow,
+.post-content .sh-more:hover .sh-arrow,
+.post-content .sh-first:focus-visible .sh-arrow,
+.post-content .sh-more:focus-visible .sh-arrow {
+  transform: translateX(5px);
+}
+
+/* ─── Paths intro ──────────────────────────────────────────── */
+.post-content .sh-paths-title,
+.post-content .sh-explore-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7em, 4.5vw, 2.2em);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  border-top: var(--sh-hairline);
+  margin: 0 0 var(--space-2);
+  padding-top: var(--space-8);
+}
+
+.post-content .sh-paths-note,
+.post-content .sh-explore-note {
+  font-family: var(--font-prose);
+  font-style: italic;
+  color: var(--color-ink-muted);
+  margin: 0 0 var(--space-10);
+  max-width: 40em;
+}
+
+/* ─── Path chapter ─────────────────────────────────────────── */
+.sh-path {
+  margin: 0 0 var(--space-16);
+}
+
+.sh-path-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+/* Ghost chapter numeral — big, quiet, editorial */
+.sh-path-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(2.6em, 7vw, 3.6em);
+  font-weight: 700;
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-accent);
+  opacity: 0.55;
+  user-select: none;
+  transition: opacity 300ms ease;
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .sh-path-numeral {
+    color: var(--color-accent);
+    opacity: 0.3;
+    -webkit-text-stroke: 0;
+  }
+}
+
+.sh-path:hover .sh-path-numeral {
+  opacity: 1;
+}
+
+.post-content .sh-path-title {
+  font-family: var(--font-display);
+  font-size: 1.45em;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-1);
+  padding: 0;
+  border: none;
+}
+
+.sh-path-audience {
+  font-family: var(--font-prose);
+  font-style: italic;
+  font-size: 0.94em;
+  color: var(--color-ink-muted);
+  margin: 0;
+  max-width: 42em;
+}
+
+/* ─── Post rows ────────────────────────────────────────────── */
+.post-content .sh-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--sh-hairline);
+}
+
+.sh-item {
+  border-bottom: var(--sh-hairline);
+}
+
+.sh-item-link {
+  display: grid;
+  grid-template-columns: 2.2ch 1fr auto;
+  column-gap: var(--space-5);
+  align-items: baseline;
+  padding: var(--space-4) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: background-color 180ms ease;
+}
+
+.sh-item-link:hover,
+.sh-item-link:focus-visible {
+  background-color: var(--color-accent-soft);
+}
+
+.sh-item-idx {
+  font-family: var(--font-display);
+  font-size: 1.05em;
+  font-weight: 600;
+  font-variant-numeric: oldstyle-nums;
+  color: var(--color-ink-muted);
+  text-align: right;
+  transition: color 180ms ease;
+}
+
+.sh-item-link:hover .sh-item-idx,
+.sh-item-link:focus-visible .sh-item-idx {
+  color: var(--color-accent);
+}
+
+.sh-item-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-ink);
+  /* underline draw on hover */
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1.5px;
+  transition: background-size 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  width: fit-content;
+}
+
+.sh-item-link:hover .sh-item-title,
+.sh-item-link:focus-visible .sh-item-title {
+  background-size: 100% 1.5px;
+}
+
+.sh-item-hook {
+  display: block;
+  font-family: var(--font-prose);
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  margin-top: 2px;
+}
+
+.sh-item-meta {
+  font-family: var(--font-meta);
+  font-size: 0.78em;
+  white-space: nowrap;
+  color: var(--color-ink-muted);
+}
+
+/* ─── "More" links ─────────────────────────────────────────── */
+/* a.sh-more keeps specificity level with article-typography's
+   .post-content a:not():not() rule so the accent colour survives. */
+.post-content .sh a.sh-more,
+.post-content .sh a.sh-more:hover,
+.post-content .sh a.sh-more:focus-visible {
+  display: inline-block;
+  font-family: var(--font-meta);
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  margin-top: var(--space-4);
+}
+
+/* ─── Subscribe strip ──────────────────────────────────────── */
+.sh-subscribe {
+  text-align: center;
+  border-top: 3px double var(--color-rule);
+  border-bottom: 3px double var(--color-rule);
+  padding: var(--space-8) var(--space-4);
+  margin: 0 0 var(--space-8);
+}
+
+.post-content .sh-subscribe-lead {
+  font-family: var(--font-display);
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-2);
+}
+
+.post-content .sh-subscribe-text {
+  font-family: var(--font-prose);
+  color: var(--color-ink-muted);
+  max-width: 34em;
+  margin: 0 auto var(--space-4);
+}
+
+.post-content .sh-subscribe-links {
+  margin: 0;
+  font-family: var(--font-meta);
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.post-content .sh .sh-subscribe-links a {
+  color: var(--color-accent);
+}
+
+.post-content .sh .sh-subscribe-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sh-dot {
+  color: var(--color-ink-muted);
+  margin: 0 var(--space-3);
+}
+
+/* ─── Colophon (entity block, GEO) ─────────────────────────── */
+.sh-colophon {
+  border-top: 3px double var(--color-rule);
+  padding-top: var(--space-8);
+  margin: var(--space-10) 0 var(--space-12);
+}
+
+.post-content .sh-colophon-label,
+.post-content .sh-connect-label {
+  font-family: var(--font-meta);
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: none;
+  margin: 0 0 var(--space-5);
+  padding: 0;
+}
+
+.sh-colophon-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.post-content .sh-entity {
+  font-family: var(--font-prose);
+  line-height: var(--line-height-prose);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.post-content .sh-facts {
+  margin: 0;
+  border-left: var(--sh-hairline);
+  padding-left: var(--space-6);
+}
+
+.sh-fact {
+  margin-bottom: var(--space-4);
+}
+
+.sh-fact dt {
+  font-family: var(--font-meta);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-bottom: 2px;
+}
+
+.sh-fact dd {
+  font-family: var(--font-body);
+  font-size: 0.92em;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+/* ─── Connect ──────────────────────────────────────────────── */
+.sh-connect {
+  margin-bottom: var(--space-8);
+}
+
+.post-content .sh-connect-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+}
+
+.post-content .sh-connect-list a {
+  display: block;
+  border: var(--sh-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.post-content .sh-connect-list a:hover,
+.post-content .sh-connect-list a:focus-visible {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.sh-connect-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+
+.sh-connect-note {
+  display: block;
+  font-family: var(--font-meta);
+  font-size: 0.78em;
+  color: var(--color-ink-muted);
+}
+
+/* ─── Focus visibility ─────────────────────────────────────── */
+.post-content .sh a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Scroll reveal (JS adds .sh-will, then .sh-in) ────────── */
+.sh-will {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.sh-will.sh-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Cascade the rows once their chapter is revealed */
+.sh-path.sh-will .sh-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.sh-path.sh-will.sh-in .sh-item {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms ease, transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--sh-i, 0) * 70ms + 120ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sh-will,
+  .sh-path.sh-will .sh-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .post-content .sh-first,
+  .post-content .sh-connect-list a,
+  .sh .sh-arrow,
+  .sh-item-title {
+    transition: none;
+  }
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .sh-item-link {
+    grid-template-columns: 2ch 1fr;
+    row-gap: 2px;
+  }
+
+  .sh-item-meta {
+    grid-column: 2;
+    white-space: normal;
+  }
+
+  .sh-colophon-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .post-content .sh-facts {
+    border-left: none;
+    padding-left: 0;
+    border-top: var(--sh-hairline);
+    padding-top: var(--space-5);
+  }
+
+  .post-content .sh-connect-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .post-content .sh-first {
+    padding: var(--space-5) var(--space-5) var(--space-4);
+  }
+}

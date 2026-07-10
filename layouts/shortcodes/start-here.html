@@ -1,0 +1,197 @@
+{{- /*
+  start-here — data-driven reading atlas for /start-here/.
+
+  Usage in markdown (composable so the knowledge-galaxy shortcode can sit
+  between sections without being wrapped) — call it three times with
+  section="main" (hero lead + first-read + 4 paths + subscribe),
+  section="explore" (heading + note for the 3D galaxy), and
+  section="colophon" (entity block + facts + connect + reveal JS).
+
+  All copy and the curated lists live in data/start_here.yml (keyed by
+  language). Each recommended post stores only its logical page path — the
+  title, permalink and reading time are resolved here via site.GetPage, so a
+  renamed or deleted post produces a build WARNING instead of a dead link.
+
+  The "main" section also emits CollectionPage + ItemList JSON-LD (built as
+  one dict and jsonify-ed once — see blog memory re: double-encoding).
+*/ -}}
+{{- $section := .Get "section" | default "main" -}}
+{{- $lang := site.Language.Lang -}}
+{{- $d := index site.Data.start_here $lang -}}
+{{- if not $d -}}
+  {{- warnf "start-here: no data for language %q in data/start_here.yml" $lang -}}
+{{- else -}}
+
+{{- if eq $section "main" -}}
+<div class="sh sh-main">
+
+  <p class="sh-lead sh-r">{{ $d.intro }}</p>
+
+  {{- /* ── Zero-decision entry: the one post to start with ── */ -}}
+  {{- with $d.first_read -}}
+    {{- $p := site.GetPage .page -}}
+    {{- if $p -}}
+    <a class="sh-first sh-r" href="{{ $p.RelPermalink }}">
+      <span class="sh-first-label">{{ .label }}</span>
+      <span class="sh-first-title">{{ $p.Title }}</span>
+      <span class="sh-first-hook">{{ .hook }}</span>
+      <span class="sh-first-foot">
+        <span class="sh-first-meta">{{ printf $d.minutes_tpl $p.ReadingTime }}</span>
+        <span class="sh-first-cta">{{ .cta }}<span class="sh-arrow" aria-hidden="true">→</span></span>
+      </span>
+    </a>
+    {{- else -}}
+      {{- warnf "start-here(%s): first_read page not found: %s" $lang .page -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* ── The four paths ── */ -}}
+  <h2 class="sh-paths-title sh-r" id="paths">{{ $d.paths_title }}</h2>
+  <p class="sh-paths-note sh-r">{{ $d.paths_note }}</p>
+
+  {{- range $d.paths }}
+  <section class="sh-path sh-path--{{ .key }} sh-r" aria-labelledby="sh-path-{{ .key }}">
+    <header class="sh-path-head">
+      <span class="sh-path-numeral" aria-hidden="true">{{ .numeral }}</span>
+      <div class="sh-path-heading">
+        <h3 class="sh-path-title" id="sh-path-{{ .key }}">{{ .title }}</h3>
+        <p class="sh-path-audience">{{ .audience }}</p>
+      </div>
+    </header>
+    <ol class="sh-list">
+      {{- range $i, $post := .posts }}
+      {{- $p := site.GetPage $post.page -}}
+      {{- if $p }}
+      <li class="sh-item" style="--sh-i: {{ $i }};">
+        <a class="sh-item-link" href="{{ $p.RelPermalink }}">
+          <span class="sh-item-idx" aria-hidden="true">{{ add $i 1 }}</span>
+          <span class="sh-item-body">
+            <span class="sh-item-title">{{ $p.Title }}</span>
+            <span class="sh-item-hook">{{ $post.hook }}</span>
+          </span>
+          <span class="sh-item-meta">
+            {{- if $post.meta }}{{ $post.meta }}{{ else }}{{ printf $d.minutes_tpl $p.ReadingTime }}{{ end -}}
+          </span>
+        </a>
+      </li>
+      {{- else -}}
+        {{- warnf "start-here(%s): page not found: %s" $lang $post.page -}}
+      {{- end -}}
+      {{- end }}
+    </ol>
+    <a class="sh-more" href="{{ .more_url }}">{{ .more_label }}<span class="sh-arrow" aria-hidden="true">→</span></a>
+  </section>
+  {{- end }}
+
+  {{- /* ── Mid-page subscribe strip ── */ -}}
+  {{- with $d.subscribe }}
+  <aside class="sh-subscribe sh-r">
+    <p class="sh-subscribe-lead">{{ .lead }}</p>
+    <p class="sh-subscribe-text">{{ .text }}</p>
+    <p class="sh-subscribe-links">
+      {{- range $i, $l := .links }}{{ if $i }}<span class="sh-dot" aria-hidden="true">·</span>{{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end -}}
+    </p>
+  </aside>
+  {{- end }}
+
+  {{- /* ── CollectionPage + ItemList JSON-LD ── */ -}}
+  {{- $items := slice -}}
+  {{- $pos := 1 -}}
+  {{- with $d.first_read -}}
+    {{- with site.GetPage .page -}}
+      {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "url" .Permalink "name" .Title) -}}
+      {{- $pos = add $pos 1 -}}
+    {{- end -}}
+  {{- end -}}
+  {{- range $d.paths -}}
+    {{- range .posts -}}
+      {{- with site.GetPage .page -}}
+        {{- $items = $items | append (dict "@type" "ListItem" "position" $pos "url" .Permalink "name" .Title) -}}
+        {{- $pos = add $pos 1 -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $ld := dict
+        "@context" "https://schema.org"
+        "@type" "CollectionPage"
+        "@id" $.Page.Permalink
+        "url" $.Page.Permalink
+        "name" $.Page.Title
+        "description" $.Page.Description
+        "inLanguage" site.Language.LanguageCode
+        "isPartOf" (dict "@type" "WebSite" "url" site.BaseURL "name" site.Title)
+        "about" (dict "@type" "Person" "name" "Xinwei Xiong" "alternateName" "cubxxw" "url" site.BaseURL)
+        "mainEntity" (dict "@type" "ItemList" "numberOfItems" (len $items) "itemListElement" $items)
+  -}}
+  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+</div>
+{{- end -}}
+
+{{- if eq $section "explore" -}}
+{{- with $d.explore -}}
+<div class="sh sh-explore">
+  <h2 class="sh-explore-title sh-r" id="explore">{{ .title }}</h2>
+  <p class="sh-explore-note sh-r">{{ .note }}</p>
+</div>
+{{- end -}}
+{{- end -}}
+
+{{- if eq $section "colophon" -}}
+{{- with $d.colophon -}}
+<div class="sh sh-colophon-wrap">
+  <section class="sh-colophon sh-r" aria-labelledby="sh-colophon-title">
+    <h2 class="sh-colophon-label" id="sh-colophon-title">{{ .label }}</h2>
+    <div class="sh-colophon-grid">
+      <p class="sh-entity">{{ .entity }}</p>
+      <dl class="sh-facts">
+        {{- range .facts }}
+        <div class="sh-fact">
+          <dt>{{ .k }}</dt>
+          <dd>{{ .v }}</dd>
+        </div>
+        {{- end }}
+      </dl>
+    </div>
+    <a class="sh-more sh-about-link" href="{{ .about_url }}">{{ .about_label }}<span class="sh-arrow" aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="sh-connect sh-r" aria-label="{{ .connect_label }}">
+    <h2 class="sh-connect-label">{{ .connect_label }}</h2>
+    <ul class="sh-connect-list">
+      {{- range .connect }}
+      <li>
+        <a href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener me"{{ end }}>
+          <span class="sh-connect-name">{{ .label }}</span>
+          <span class="sh-connect-note">{{ .note }}</span>
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+</div>
+
+{{- /* Staggered scroll reveal — progressive enhancement only. Elements are
+       fully visible without JS; the observer adds motion when allowed. */ -}}
+<script>
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var els = document.querySelectorAll('.sh-r');
+  if (!els.length) return;
+  els.forEach(function (el) { el.classList.add('sh-will'); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('sh-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+{{- end -}}
+{{- end -}}
+
+{{- end -}}
