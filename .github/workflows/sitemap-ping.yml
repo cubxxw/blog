@@ -18,7 +18,7 @@ jobs:
       # For workflow_dispatch or a first-commit-in-branch, HEAD~1 may not
       # exist — --changed step handles that gracefully by falling back.
       - name: Checkout (need history for content diff)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
 
@@ -54,7 +54,7 @@ jobs:
 
       - name: Setup Node.js for push scripts
         if: env.BAIDU_PUSH_TOKEN != '' || env.INDEXNOW_KEY != ''
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
         env:
