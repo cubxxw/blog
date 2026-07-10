@@ -327,3 +327,7 @@ hugo --minify
 
 **最后更新**: 2026-03-28
 **维护者**: Xinwei Xiong
+
+## Imported Claude Cowork project instructions
+
+我的个人博客，撰写文章的地方

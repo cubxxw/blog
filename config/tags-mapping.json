@@ -160,6 +160,18 @@
       "description": "大语言模型相关",
       "category": "技术"
     },
+    "python": {
+      "canonical": "Python",
+      "aliases": ["python", "Python 语言"],
+      "description": "Python 编程语言与生态",
+      "category": "编程语言"
+    },
+    "rag": {
+      "canonical": "RAG",
+      "aliases": ["rag", "Retrieval-Augmented Generation", "检索增强生成", "检索增强生成 (RAG)"],
+      "description": "检索增强生成相关技术",
+      "category": "技术"
+    },
     "agent": {
       "canonical": "Agent",
       "aliases": ["agent", "智能体", "AI Agent", "智能体 (Agent)", "agents"],

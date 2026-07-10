@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">Mem0 memory architecture</title>
+  <desc id="desc">A diagram showing conversation input, memory extraction, vector and entity storage, hybrid retrieval, and prompt injection.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.box{fill:#fff;stroke:#cbd5e1;stroke-width:2}.llm{fill:#fef3c7;stroke:#d97706;stroke-width:2}.store{fill:#dcfce7;stroke:#16a34a;stroke-width:2}.rank{fill:#e0f2fe;stroke:#0284c7;stroke-width:2}.text{font:600 24px Arial,sans-serif;fill:#0f172a}.small{font:600 18px Arial,sans-serif;fill:#1e293b}.tiny{font:500 15px Arial,sans-serif;fill:#475569}.arrow{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 z" fill="#334155"/></marker>
+  </defs>
+  <rect class="bg" width="1120" height="560" rx="24"/>
+  <text x="56" y="62" class="text">Mem0: memory layer for personalized agents</text>
+  <rect x="58" y="126" width="190" height="110" rx="16" class="box"/>
+  <text x="88" y="170" class="small">Conversation</text>
+  <text x="88" y="202" class="tiny">messages, user, agent</text>
+  <path class="arrow" d="M248 181 H342"/>
+  <rect x="342" y="102" width="230" height="158" rx="16" class="llm"/>
+  <text x="384" y="150" class="small">Extraction LLM</text>
+  <text x="384" y="184" class="tiny">facts, preferences</text>
+  <text x="384" y="214" class="tiny">entities, conflicts</text>
+  <path class="arrow" d="M572 181 H666"/>
+  <rect x="666" y="78" width="206" height="110" rx="16" class="store"/>
+  <text x="708" y="122" class="small">Vector store</text>
+  <text x="708" y="154" class="tiny">semantic similarity</text>
+  <rect x="666" y="228" width="206" height="110" rx="16" class="store"/>
+  <text x="708" y="272" class="small">Entity store</text>
+  <text x="708" y="304" class="tiny">links and graph signals</text>
+  <path class="arrow" d="M769 188 V228"/>
+  <rect x="342" y="356" width="230" height="110" rx="16" class="box"/>
+  <text x="384" y="400" class="small">User query</text>
+  <text x="384" y="432" class="tiny">current task context</text>
+  <path class="arrow" d="M572 411 H666"/>
+  <rect x="666" y="380" width="206" height="110" rx="16" class="rank"/>
+  <text x="696" y="424" class="small">Hybrid retrieval</text>
+  <text x="696" y="456" class="tiny">semantic + keyword + entity</text>
+  <path class="arrow" d="M769 338 V380"/>
+  <path class="arrow" d="M872 435 H970"/>
+  <rect x="970" y="356" width="120" height="110" rx="16" class="llm"/>
+  <text x="998" y="400" class="small">LLM</text>
+  <text x="998" y="432" class="tiny">answer</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">LangGraph stateful agent graph</title>
+  <desc id="desc">A diagram showing LangGraph state flowing through nodes, conditional edges, checkpointing, tools, and human review.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.state{fill:#ede9fe;stroke:#7c3aed;stroke-width:2}.node{fill:#fff;stroke:#2563eb;stroke-width:2}.edge{fill:#ecfdf5;stroke:#059669;stroke-width:2}.persist{fill:#fff7ed;stroke:#ea580c;stroke-width:2}.text{font:600 24px Arial,sans-serif;fill:#0f172a}.small{font:600 18px Arial,sans-serif;fill:#1e293b}.tiny{font:500 15px Arial,sans-serif;fill:#475569}.arrow{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#arrow)}.loop{stroke:#7c3aed;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 z" fill="#334155"/></marker>
+  </defs>
+  <rect class="bg" width="1120" height="560" rx="24"/>
+  <text x="56" y="62" class="text">LangGraph: durable state machine for agents</text>
+  <rect x="72" y="126" width="210" height="128" rx="18" class="state"/>
+  <text x="116" y="174" class="small">Shared State</text>
+  <text x="116" y="206" class="tiny">messages, plan, tools</text>
+  <path class="arrow" d="M282 190 H370"/>
+  <rect x="370" y="104" width="180" height="92" rx="16" class="node"/>
+  <text x="418" y="158" class="small">Planner</text>
+  <rect x="370" y="270" width="180" height="92" rx="16" class="node"/>
+  <text x="416" y="324" class="small">Tool node</text>
+  <path class="arrow" d="M460 196 V270"/>
+  <rect x="654" y="104" width="210" height="92" rx="16" class="edge"/>
+  <text x="690" y="148" class="small">Conditional edge</text>
+  <text x="690" y="174" class="tiny">route by state</text>
+  <path class="arrow" d="M550 150 H654"/>
+  <path class="arrow" d="M654 150 C610 218 610 284 550 316"/>
+  <rect x="654" y="270" width="210" height="92" rx="16" class="persist"/>
+  <text x="692" y="314" class="small">Checkpoint</text>
+  <text x="692" y="340" class="tiny">resume, time travel</text>
+  <path class="arrow" d="M550 316 H654"/>
+  <path class="loop" d="M864 316 C1000 316 1000 104 864 150"/>
+  <rect x="912" y="406" width="164" height="92" rx="16" class="node"/>
+  <text x="948" y="450" class="small">Human</text>
+  <text x="948" y="476" class="tiny">inspect / edit</text>
+  <path class="arrow" d="M759 362 C810 426 856 452 912 452"/>
+</svg>

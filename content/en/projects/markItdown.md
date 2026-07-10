@@ -56,7 +56,15 @@ MarkItDown is a lightweight Python utility designed to convert many types of fil
 **GitHub Repository**: [microsoft/markitdown](https://github.com/microsoft/markitdown)  
 **PyPI Page**: [markitdown on PyPI](https://pypi.org/project/markitdown/)
 
-### **1.3. Goals and Scope of This Article**
+![MarkItDown document conversion pipeline](/images/projects/markitdown-pipeline.svg)
+
+### **1.3. 2026 Update: MarkItDown Is a Document Ingestion Layer**
+
+As of July 2026, MarkItDown is best understood as a document ingestion layer for LLM and RAG systems, not as a general-purpose high-fidelity converter. The official repository lists support for PDF, PowerPoint, Word, Excel, images, audio, HTML, CSV/JSON/XML, ZIP, YouTube URLs, EPUB, and more. Recent releases also emphasize optional dependency groups, plugin-based extension, in-memory conversion, EPUB support, and CLI overrides for MIME type, extension, and charset.
+
+That changes the evaluation lens. MarkItDown is attractive for enterprise knowledge ingestion, RAG indexing, research corpus cleanup, and internal document batch processing. If your main requirement is layout fidelity, complex PDF tables, or mathematical formula preservation, pair it with Azure Document Intelligence, Marker, Docling, or a dedicated OCR/layout-analysis pipeline.
+
+### **1.4. Goals and Scope of This Article**
 
 This article provides a deep technical and practical analysis of MarkItDown. It covers its design philosophy, core architecture, file conversion mechanisms, installation and usage, integration with external services such as LLMs and Azure Document Intelligence, security considerations, comparisons with similar tools, and real-world use cases and limitations. The goal is to give technical decision-makers, developers, and data scientists a comprehensive understanding of MarkItDown's capabilities, strengths, weaknesses, and applicable scenarios.
 
@@ -613,6 +621,7 @@ MarkItDown is an open source Python tool from Microsoft focused on converting mu
 8. [VikParuchuri/marker — GitHub](https://github.com/VikParuchuri/marker) (accessed: April 20, 2025)
 9. [DS4SD/docling — GitHub](https://github.com/DS4SD/docling) (accessed: April 20, 2025)
 10. [MarkItDown: Python tool for converting files and office documents to Markdown | Hacker News](https://news.ycombinator.com/item?id=42410803) (accessed: April 20, 2025)
+11. [microsoft/markitdown releases — GitHub](https://github.com/microsoft/markitdown/releases) (accessed: July 11, 2026)
 
 
 ## Related Articles

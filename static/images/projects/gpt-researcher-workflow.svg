@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">GPT Researcher workflow</title>
+  <desc id="desc">A diagram showing question planning, web and local retrieval, source validation, summarization, report generation, and export.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.box{fill:#fff;stroke:#cbd5e1;stroke-width:2}.agent{fill:#e0f2fe;stroke:#0284c7;stroke-width:2}.data{fill:#dcfce7;stroke:#16a34a;stroke-width:2}.out{fill:#fef3c7;stroke:#d97706;stroke-width:2}.text{font:600 24px Arial,sans-serif;fill:#0f172a}.small{font:600 18px Arial,sans-serif;fill:#1e293b}.tiny{font:500 15px Arial,sans-serif;fill:#475569}.arrow{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 z" fill="#334155"/></marker>
+  </defs>
+  <rect class="bg" width="1120" height="560" rx="24"/>
+  <text x="56" y="62" class="text">GPT Researcher: autonomous deep research loop</text>
+  <rect x="62" y="154" width="172" height="96" rx="16" class="box"/>
+  <text x="104" y="198" class="small">Research</text>
+  <text x="104" y="224" class="tiny">question</text>
+  <path class="arrow" d="M234 202 H322"/>
+  <rect x="322" y="112" width="196" height="96" rx="16" class="agent"/>
+  <text x="366" y="156" class="small">Planner</text>
+  <text x="366" y="182" class="tiny">sub-questions</text>
+  <rect x="322" y="286" width="196" height="96" rx="16" class="agent"/>
+  <text x="362" y="330" class="small">Retriever</text>
+  <text x="362" y="356" class="tiny">web + local docs</text>
+  <path class="arrow" d="M420 208 V286"/>
+  <path class="arrow" d="M518 334 H614"/>
+  <rect x="614" y="112" width="210" height="96" rx="16" class="data"/>
+  <text x="658" y="156" class="small">Sources</text>
+  <text x="658" y="182" class="tiny">search, pages, files</text>
+  <rect x="614" y="286" width="210" height="96" rx="16" class="agent"/>
+  <text x="650" y="330" class="small">Processor</text>
+  <text x="650" y="356" class="tiny">clean, cite, summarize</text>
+  <path class="arrow" d="M719 208 V286"/>
+  <path class="arrow" d="M824 334 H920"/>
+  <rect x="920" y="242" width="154" height="136" rx="16" class="out"/>
+  <text x="956" y="292" class="small">Report</text>
+  <text x="956" y="322" class="tiny">Markdown</text>
+  <text x="956" y="348" class="tiny">PDF / DOCX</text>
+  <path class="arrow" d="M997 242 C997 120 824 112 824 160"/>
+</svg>
