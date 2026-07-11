@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">把每一段写成可引用</title>
+  <desc id="desc">Answer-First、Schema 与主题集群</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#7c3aed" stop-opacity="0.13"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#d7dee8" stroke-width="1" opacity="0.46"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="#f8fafc"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d7dee8" stroke-width="2"/>
+  <circle cx="1040" cy="110" r="180" fill="#7c3aed" opacity="0.08"/>
+  <circle cx="1070" cy="540" r="120" fill="#7c3aed" opacity="0.08"/>
+  
+      <g>
+        <rect x="690" y="132" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.16"/><rect x="816" y="132" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.20"/><rect x="942" y="132" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.24"/><rect x="724" y="210" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.23"/><rect x="850" y="210" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.27"/><rect x="976" y="210" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.31"/><rect x="690" y="288" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.30"/><rect x="816" y="288" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.34"/><rect x="942" y="288" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.38"/><rect x="724" y="366" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.37"/><rect x="850" y="366" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.41"/><rect x="976" y="366" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.45"/><rect x="690" y="444" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.44"/><rect x="816" y="444" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.48"/><rect x="942" y="444" width="96" height="48" rx="10" fill="#7c3aed" opacity="0.52"/>
+      </g>
+  <g>
+    <text x="88" y="142" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#7c3aed">CHAPTER 03 · TACTICS</text>
+    <text x="88" y="250" font-family="'Noto Serif SC','PingFang SC','Microsoft YaHei',serif" font-size="66" font-weight="700" fill="#102033">
+      <tspan x="88" dy="0">把每一段写成可引用</tspan>
+    </text>
+    <text x="90" y="442" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="28" font-weight="500" fill="#526173">
+      <tspan x="90" dy="0">Answer-First、Schem</tspan><tspan x="90" dy="38">a 与主题集群</tspan>
+    </text>
+    <rect x="90" y="516" width="260" height="4" rx="2" fill="#7c3aed"/>
+    <text x="90" y="552" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#526173">CUBXXW · AI SEARCH</text>
+  </g>
+</svg>

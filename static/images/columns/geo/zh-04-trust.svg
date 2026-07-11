@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">信任与站外背书</title>
+  <desc id="desc">E-E-A-T、实体一致性与社区引用</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d97706" stop-opacity="0.13"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#d7dee8" stroke-width="1" opacity="0.46"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="#f8fafc"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d7dee8" stroke-width="2"/>
+  <circle cx="1040" cy="110" r="180" fill="#d97706" opacity="0.08"/>
+  <circle cx="1070" cy="540" r="120" fill="#d97706" opacity="0.08"/>
+  
+      <g stroke="#d97706" stroke-width="3" fill="#fff">
+        <path d="M720 380 L820 250 L930 320 L1030 180 L1060 420 L930 320 L820 250" fill="none" opacity="0.7"/>
+        <circle cx="720" cy="380" r="18"/><circle cx="820" cy="250" r="24"/><circle cx="930" cy="320" r="30"/><circle cx="1030" cy="180" r="20"/><circle cx="1060" cy="420" r="24"/>
+      </g>
+  <g>
+    <text x="88" y="142" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#d97706">CHAPTER 04 · TRUST</text>
+    <text x="88" y="250" font-family="'Noto Serif SC','PingFang SC','Microsoft YaHei',serif" font-size="66" font-weight="700" fill="#102033">
+      <tspan x="88" dy="0">信任与站外背书</tspan>
+    </text>
+    <text x="90" y="442" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="28" font-weight="500" fill="#526173">
+      <tspan x="90" dy="0">E-E-A-T、实体一致性与社区引用</tspan>
+    </text>
+    <rect x="90" y="516" width="260" height="4" rx="2" fill="#d97706"/>
+    <text x="90" y="552" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#526173">CUBXXW · AI SEARCH</text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">GEO Complete Guide</title>
+  <desc id="desc">The five-layer model from SEO ranking to AI citation</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#0891b2" stop-opacity="0.13"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#d7dee8" stroke-width="1" opacity="0.46"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="#f8fafc"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d7dee8" stroke-width="2"/>
+  <circle cx="1040" cy="110" r="180" fill="#0891b2" opacity="0.08"/>
+  <circle cx="1070" cy="540" r="120" fill="#0891b2" opacity="0.08"/>
+  
+      <g opacity="0.96">
+        <rect x="770" y="156" width="260" height="64" rx="14" fill="#0891b2" opacity="0.16"/>
+        <rect x="730" y="244" width="320" height="64" rx="14" fill="#0891b2" opacity="0.24"/>
+        <rect x="690" y="332" width="380" height="64" rx="14" fill="#0891b2" opacity="0.34"/>
+        <rect x="650" y="420" width="440" height="64" rx="14" fill="#0891b2" opacity="0.46"/>
+        <path d="M650 452 H1090" stroke="#0891b2" stroke-width="4"/>
+      </g>
+  <g>
+    <text x="88" y="142" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#0891b2">CHAPTER 01 · PILLAR</text>
+    <text x="88" y="242" font-family="Georgia,'Times New Roman',serif" font-size="58" font-weight="700" fill="#102033">
+      <tspan x="88" dy="0">GEO Complete Guide</tspan>
+    </text>
+    <text x="90" y="442" font-family="Arial, sans-serif" font-size="26" font-weight="500" fill="#526173">
+      <tspan x="90" dy="0">The five-layer model from SEO ranking to</tspan><tspan x="90" dy="38">AI citation</tspan>
+    </text>
+    <rect x="90" y="516" width="260" height="4" rx="2" fill="#0891b2"/>
+    <text x="90" y="552" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#526173">CUBXXW · AI SEARCH</text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">GEO 生成式引擎优化</title>
+  <desc id="desc">当搜索从给链接变成给答案</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0.13"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#d7dee8" stroke-width="1" opacity="0.46"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="#f8fafc"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d7dee8" stroke-width="2"/>
+  <circle cx="1040" cy="110" r="180" fill="#2563eb" opacity="0.08"/>
+  <circle cx="1070" cy="540" r="120" fill="#2563eb" opacity="0.08"/>
+  
+    <g fill="none" stroke="#2563eb" stroke-width="4">
+      <path d="M660 380 C740 250 820 450 900 260 S1040 180 1090 340" opacity="0.85"/>
+      <path d="M680 180 H1030 M720 250 H1070 M650 322 H990" opacity="0.36"/>
+      <circle cx="746" cy="286" r="18" fill="#fff"/>
+      <circle cx="894" cy="270" r="26" fill="#fff"/>
+      <circle cx="1040" cy="230" r="18" fill="#fff"/>
+    </g>
+  <g>
+    <text x="88" y="142" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#2563eb">GEO COLUMN</text>
+    <text x="88" y="250" font-family="'Noto Serif SC','PingFang SC','Microsoft YaHei',serif" font-size="66" font-weight="700" fill="#102033">
+      <tspan x="88" dy="0">GEO 生成式引擎优化</tspan>
+    </text>
+    <text x="90" y="442" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="28" font-weight="500" fill="#526173">
+      <tspan x="90" dy="0">当搜索从给链接变成给答案</tspan>
+    </text>
+    <rect x="90" y="516" width="260" height="4" rx="2" fill="#2563eb"/>
+    <text x="90" y="552" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#526173">CUBXXW · AI SEARCH</text>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">GEO 度量与工具</title>
+  <desc id="desc">被引率、声量份额与 DIY 监测</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0.13"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#d7dee8" stroke-width="1" opacity="0.46"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="#f8fafc"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d7dee8" stroke-width="2"/>
+  <circle cx="1040" cy="110" r="180" fill="#2563eb" opacity="0.08"/>
+  <circle cx="1070" cy="540" r="120" fill="#2563eb" opacity="0.08"/>
+  
+      <g transform="translate(890 302)" fill="none" stroke="#2563eb" stroke-width="3">
+        <circle r="56" opacity="0.28"/><circle r="112" opacity="0.28"/><circle r="168" opacity="0.28"/>
+        <path d="M0 -172 V172 M-172 0 H172 M-122 -122 L122 122 M122 -122 L-122 122" opacity="0.22"/>
+        <path d="M0 0 L118 -118" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="118" cy="-118" r="14" fill="#2563eb" stroke="none"/>
+      </g>
+  <g>
+    <text x="88" y="142" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#2563eb">CHAPTER 06 · MEASUREMENT</text>
+    <text x="88" y="250" font-family="'Noto Serif SC','PingFang SC','Microsoft YaHei',serif" font-size="66" font-weight="700" fill="#102033">
+      <tspan x="88" dy="0">GEO 度量与工具</tspan>
+    </text>
+    <text x="90" y="442" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="28" font-weight="500" fill="#526173">
+      <tspan x="90" dy="0">被引率、声量份额与 DIY 监测</tspan>
+    </text>
+    <rect x="90" y="516" width="260" height="4" rx="2" fill="#2563eb"/>
+    <text x="90" y="552" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#526173">CUBXXW · AI SEARCH</text>
+  </g>
+</svg>

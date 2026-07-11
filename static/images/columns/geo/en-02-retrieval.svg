@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">How AI Retrieves and Cites</title>
+  <desc id="desc">Three citation gates inside the RAG pipeline</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#059669" stop-opacity="0.13"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#d7dee8" stroke-width="1" opacity="0.46"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="#f8fafc"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d7dee8" stroke-width="2"/>
+  <circle cx="1040" cy="110" r="180" fill="#059669" opacity="0.08"/>
+  <circle cx="1070" cy="540" r="120" fill="#059669" opacity="0.08"/>
+  
+      <g fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M670 190 H820 C880 190 880 270 940 270 H1070"/>
+        <path d="M670 350 H800 C860 350 860 270 940 270"/>
+        <circle cx="670" cy="190" r="24" fill="#fff"/>
+        <circle cx="670" cy="350" r="24" fill="#fff"/>
+        <circle cx="940" cy="270" r="34" fill="#fff"/>
+        <circle cx="1070" cy="270" r="24" fill="#fff"/>
+      </g>
+  <g>
+    <text x="88" y="142" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#059669">CHAPTER 02 · MECHANICS</text>
+    <text x="88" y="242" font-family="Georgia,'Times New Roman',serif" font-size="58" font-weight="700" fill="#102033">
+      <tspan x="88" dy="0">How AI Retrieves and</tspan><tspan x="88" dy="66">Cites</tspan>
+    </text>
+    <text x="90" y="442" font-family="Arial, sans-serif" font-size="26" font-weight="500" fill="#526173">
+      <tspan x="90" dy="0">Three citation gates inside the RAG</tspan><tspan x="90" dy="38">pipeline</tspan>
+    </text>
+    <rect x="90" y="516" width="260" height="4" rx="2" fill="#059669"/>
+    <text x="90" y="552" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#526173">CUBXXW · AI SEARCH</text>
+  </g>
+</svg>

@@ -18,6 +18,9 @@ tags:
   - AEO
 description: >
   When 68% of Google searches no longer produce a click and AI hands the answer straight to the user, the "rankings" that classic SEO fights for are quietly losing value. GEO (Generative Engine Optimization) fights for something else: getting the AI to understand, trust, and cite you when it writes the answer. A pillar-length guide from first principles to methodology to a real case study on my own blog — and the opening chapter of the GEO series.
+cover:
+  image: 'images/columns/geo/en-01-guide.svg'
+  alt: GEO complete guide cover showing the five-layer model from SEO ranking to AI citation
 tldr:
   - GEO doesn't replace SEO; it adds a layer. SEO fights for links and rankings; GEO fights for being cited when AI generates an answer. Both draw on the same content assets.
   - In 2026, 68% of US searches are zero-click, and when AI Overviews appear, click-through drops by ~60%. The traffic entry point is migrating from "blue links" to "the AI answer box" — that's why GEO suddenly matters.
