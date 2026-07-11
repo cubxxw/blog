@@ -249,6 +249,10 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [给 AI 任务，别给方向：一条原则改变你和 AI 的协作](https://cubxxw.com/zh/ai-agent/posts/give-ai-tasks-not-directions/)
+- [摩擦即成长：当 AI 替你消除一切阻力，请主动留下一些](https://cubxxw.com/zh/growth/posts/friction-is-growth/)
+- [给你的 AI 工作流装上质量门禁：把软件工程的纪律搬进个人系统](https://cubxxw.com/zh/ai-agent/posts/engineering-discipline-ai-workflow/)
+- [把笔记交给 AI 操作：Claude + Obsidian 搭一个 AI 原生的第二大脑](https://cubxxw.com/zh/ai-agent/posts/ai-second-brain-build/)
 - [第四层·创作：把知识重组成别人愿意接收的东西](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-creation/)
 - [第三层·知识：知识库不是收藏夹，是你的能力沉淀区](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-knowledge/)
 - [第二层·记录：信息和知识之间，那个转化率最高的半成品](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-record/)
@@ -345,10 +349,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [在开源社区中学会如何提问](https://cubxxw.com/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
 - [自动化的高级追求： Prow 是什么？Kubernetes 为什么需要它](https://cubxxw.com/zh/engineering/posts/prow-ecological-learning/)
 - [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](https://cubxxw.com/zh/engineering/posts/open-source-contribution-guidelines/)
-- [我的实践总结：开源社区的规范设计思路](https://cubxxw.com/zh/engineering/posts/advanced-githook-design/)
-- [GoReleaser：自动化你的软件发布](https://cubxxw.com/zh/engineering/posts/go-release-tools/)
-- [我的第一个博客](https://cubxxw.com/zh/growth/posts/my-first-blog/)
-- [关于我的 Hugo 博客 (教程)](https://cubxxw.com/zh/engineering/posts/my-hugo/)
 <!-- My-Blog-ZH:END -->
 
 
