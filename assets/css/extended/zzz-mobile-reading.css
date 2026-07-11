@@ -1,0 +1,113 @@
+/* ============================================================
+   zzz-mobile-reading.css — phone reading rhythm + quiet anchors
+   ------------------------------------------------------------
+   Two mobile-only refinements, both scoped so desktop / tablet
+   reading is byte-for-byte unchanged. Loads last in the extended
+   bundle (zzz- prefix) so it cleanly overrides article-typography
+   and zzz-heading-anchor-touch.
+
+   1. READING RHYTHM (≤ 768px)
+      The base prose is tuned for a wide editorial column: p is
+      18px / line-height 1.8 with a 2rem (≈1.78em) paragraph gap,
+      and Chinese pushes line-height to 2.0 via --line-height-prose.
+      On a 390px phone that reads loose and airy — paragraphs drift
+      apart and the eye has to travel too far between lines.
+
+      Tighten toward the WeChat / Medium mobile convention that
+      long-form CJK readers expect: slightly smaller body, calmer
+      line-height (≈1.75), and a paragraph gap around 1.4em. These
+      are established comfortable-reading values for narrow screens,
+      not guesses — dense enough to feel like a single passage,
+      open enough to breathe.
+
+   2. QUIET HEADING ANCHORS (touch)
+      zzz-heading-anchor-touch.css reveals the "#" permalink
+      persistently on touch (opacity .32) so it's reachable without
+      hover. But a "#" trailing EVERY heading is visual noise on a
+      phone. Flip it: keep the anchor present & tappable (so the
+      permalink stays reachable — the original a11y goal) but hide
+      it by default and let it surface only while the heading is
+      being pressed (:active) or focused. Tap-and-hold a heading →
+      the "#" fades in → tap it to copy the section link.
+   ============================================================ */
+
+/* ─── 1. Phone reading rhythm ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .post-content p {
+    font-size: 1.0625rem;      /* 17px — WeChat-grade body on narrow screens */
+    line-height: 1.75;         /* calm, not airy */
+    margin-bottom: 1.4rem;     /* ≈1.4em paragraph gap — one continuous passage */
+  }
+
+  /* Chinese base line-height token resolves to 2.0 for the wide column;
+     rein it in for the phone so CJK lines sit closer together. */
+  html:lang(zh) .post-content p {
+    line-height: 1.78;
+    letter-spacing: 0.01em;    /* was 0.02em — a touch tighter reads cleaner */
+  }
+
+  /* Headings: shrink the generous desktop lead-in so a new section
+     doesn't open a large void on a short viewport, while still giving
+     a clear visual break above it. */
+  .post-content h2 {
+    margin-top: 2.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Lists inherit the same tightened rhythm as paragraphs. */
+  .post-content li {
+    line-height: 1.75;
+  }
+  html:lang(zh) .post-content li {
+    line-height: 1.78;
+  }
+  .post-content li + li {
+    margin-top: 0.4rem;
+  }
+}
+
+/* ─── 2. Quiet heading anchors on touch ───────────────────────── */
+/* Override the persistent-reveal from zzz-heading-anchor-touch.css:
+   default to invisible, surface only on press/focus. The element
+   stays laid out (display:inline-flex, a real tap target) so the
+   permalink remains reachable — we only change WHEN it is seen. */
+@media (hover: none), (pointer: coarse) {
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor {
+    opacity: 0;                        /* hidden until the heading is pressed */
+    transition:
+      opacity 0.2s ease,
+      transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+      background-color 0.18s ease,
+      color 0.18s ease;
+  }
+
+  /* Press the heading (or the anchor itself) → the "#" fades in.
+     :focus-within covers keyboard / assistive focus landing on the
+     anchor link; :active on the heading covers the tap-and-hold. */
+  .post-content :is(h1, h2, h3, h4, h5, h6):active .anchor,
+  .post-content :is(h1, h2, h3, h4, h5, h6):focus-within .anchor,
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor:active,
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor:focus {
+    opacity: 0.55;
+  }
+
+  /* The anchor's own active state (tapping the "#" to grab the link)
+     stays the loud, unmistakable confirmation from the base file. */
+  .post-content :is(h1, h2, h3, h4, h5, h6) .anchor:active {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion: keep the reveal instant, drop the easing. */
+@media (prefers-reduced-motion: reduce) {
+  @media (hover: none), (pointer: coarse) {
+    .post-content :is(h1, h2, h3, h4, h5, h6) .anchor {
+      transition: none;
+    }
+  }
+}
