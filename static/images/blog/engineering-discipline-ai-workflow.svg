@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">给你的 AI 工作流</title>
+  <desc id="d">系统不只要能跑，还要能报警</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#2563eb" stop-opacity="0.13"/></linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0v36" fill="none" stroke="#d5dbe4" stroke-width="1" opacity="0.5"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f7f9fb"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d5dbe4" stroke-width="2"/>
+  <circle cx="1050" cy="120" r="180" fill="#2563eb" opacity="0.08"/>
+  <circle cx="1080" cy="540" r="120" fill="#2563eb" opacity="0.08"/>
+  <g transform="translate(830,190)"><rect x="0" y="0" width="210" height="210" rx="16" fill="none" stroke="#2563eb" stroke-width="4"/><path d="M45 110 l35 35 l85 -90" fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="60" x2="210" y2="60" stroke="#2563eb" stroke-width="3" opacity="0.4"/></g>
+  <text x="88" y="150" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4" fill="#2563eb">AI WORKFLOW · 工程纪律</text>
+  <text x="88" y="252" font-family="'Noto Serif SC','PingFang SC','Microsoft YaHei',serif" font-size="58" font-weight="700" fill="#101f38"><tspan x="88" dy="0">给你的 AI 工作流</tspan><tspan x="88" dy="74">装上质量门禁</tspan></text>
+  <text x="90" y="470" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="26" font-weight="500" fill="#55606e">系统不只要能跑，还要能报警</text>
+  <rect x="90" y="536" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="90" y="572" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="3" fill="#8792a1">CUBXXW.COM</text>
+</svg>

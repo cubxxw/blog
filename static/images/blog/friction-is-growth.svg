@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">摩擦即成长</title>
+  <desc id="d">当 AI 替你消除一切阻力，请主动留下摩擦</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d97706" stop-opacity="0.13"/></linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0v36" fill="none" stroke="#d5dbe4" stroke-width="1" opacity="0.5"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f7f9fb"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d5dbe4" stroke-width="2"/>
+  <circle cx="1050" cy="120" r="180" fill="#d97706" opacity="0.08"/>
+  <circle cx="1080" cy="540" r="120" fill="#d97706" opacity="0.08"/>
+  <g transform="translate(830,190)"><circle cx="105" cy="105" r="100" fill="none" stroke="#d97706" stroke-width="4" opacity="0.5"/><path d="M25 150 Q105 40 185 150" fill="none" stroke="#d97706" stroke-width="6"/><g stroke="#d97706" stroke-width="5" stroke-linecap="round"><line x1="70" y1="120" x2="60" y2="100"/><line x1="105" y1="112" x2="105" y2="88"/><line x1="140" y1="120" x2="150" y2="100"/></g><circle cx="105" cy="170" r="12" fill="#d97706"/></g>
+  <text x="88" y="150" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4" fill="#d97706">GROWTH · 反潮流</text>
+  <text x="88" y="252" font-family="'Noto Serif SC','PingFang SC','Microsoft YaHei',serif" font-size="58" font-weight="700" fill="#3a2708"><tspan x="88" dy="0">摩擦即成长</tspan></text>
+  <text x="90" y="430" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="26" font-weight="500" fill="#55606e">当 AI 替你消除一切阻力，请主动留下摩擦</text>
+  <rect x="90" y="536" width="230" height="4" rx="2" fill="#d97706"/>
+  <text x="90" y="572" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="3" fill="#8792a1">CUBXXW.COM</text>
+</svg>
