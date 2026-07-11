@@ -1,6 +1,10 @@
 baseURL: https://cubxxw.com
 title: 熊鑫伟 (cubxxw) 的博客 - AI Builder · Open Source Contributor · Digital Nomad
 theme: PaperMod
+# Raise the per-template timeout above the 30s default: a cold build has to
+# generate every image variant (resize + WebP) on first render, which can
+# push head.html/related-posts.html past 30s. Cached builds stay fast.
+timeout: 180s
 
 # Config WIKI
 # https://github.com/adityatelange/hugo-PaperMod/wiki/Variables
@@ -21,6 +25,13 @@ related:
       weight: 20
 googleAnalytics: G-FSWQC2Y01E
 pygmentsUseClasses: true
+# Image processing defaults for Hugo Pipes (used by render-image hook on
+# page-bundle bitmaps). Lanczos gives the sharpest downscale; quality 78 is
+# a good size/clarity balance for photos; hint photo tunes the encoder.
+imaging:
+  quality: 78
+  resampleFilter: Lanczos
+  hint: photo
 minify:
   disableXML: true
   minifyOutput: true
