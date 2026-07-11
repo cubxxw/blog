@@ -126,13 +126,20 @@
     if (sortSelect) sortSelect.value = state.sort;
   }
 
-  /* ── Sticky "stuck" behaviour ────────────────────────────── */
+  /* ── Sticky choreography ─────────────────────────────────── */
+  // Stuck state is derived from geometry on every scroll frame. (The old
+  // IntersectionObserver fired at the moment the sentinel crossed the
+  // observation line, when its top was still ~90px above zero — so slow
+  // scrolls never registered as stuck and the expanded panel floated over
+  // the cards.) While reading downward the bar exits the viewport together
+  // with the auto-hiding site header; the first upward scroll brings both back.
 
   function isSticky() {
     return window.getComputedStyle(panel).position === 'sticky';
   }
 
   function setStuck(stuck) {
+    if (stuck === panel.classList.contains('posts-filter--stuck')) return;
     panel.classList.toggle('posts-filter--stuck', stuck);
     if (toggleBtn) toggleBtn.hidden = !stuck;
     if (!stuck) setOpen(false);
@@ -143,34 +150,41 @@
     if (toggleBtn) toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
-  if (sentinel && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      var entry = entries[0];
-      // Stuck = sentinel has scrolled above the sticky line (not merely off-screen below)
-      var stuck = !entry.isIntersecting && entry.boundingClientRect.top < 0 && isSticky();
-      setStuck(stuck);
-    }, { rootMargin: '-90px 0px 0px 0px', threshold: 0 }).observe(sentinel);
+  function setExited(exited) {
+    if (exited === panel.classList.contains('posts-filter--exit')) return;
+    if (exited) setOpen(false);
+    panel.classList.toggle('posts-filter--exit', exited);
   }
+
+  var stickyRafPending = false;
+
+  function updateStickyState() {
+    stickyRafPending = false;
+    if (!sentinel || !isSticky()) {
+      setExited(false);
+      setStuck(false);
+      return;
+    }
+    var stickyTop = parseFloat(window.getComputedStyle(panel).top) || 0;
+    var stuck = sentinel.getBoundingClientRect().top < stickyTop - 1;
+    setStuck(stuck);
+    setExited(stuck && !!header && header.classList.contains('nav-scroll-hidden'));
+  }
+
+  function requestStickyUpdate() {
+    if (stickyRafPending) return;
+    stickyRafPending = true;
+    requestAnimationFrame(updateStickyState);
+  }
+
+  window.addEventListener('scroll', requestStickyUpdate, { passive: true });
+  window.addEventListener('resize', requestStickyUpdate, { passive: true });
+  updateStickyState();
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', function () {
       setOpen(!panel.classList.contains('posts-filter--open'));
     });
-  }
-
-  // Track the auto-hiding site header: when it slides away, raise the stuck
-  // bar to the top so cards never scroll through a gap above the filter.
-  if (header) {
-    var rafPending = false;
-    window.addEventListener('scroll', function () {
-      if (rafPending) return;
-      rafPending = true;
-      requestAnimationFrame(function () {
-        rafPending = false;
-        panel.classList.toggle('posts-filter--raised',
-          header.classList.contains('nav-scroll-hidden'));
-      });
-    }, { passive: true });
   }
 
   // After changing filters from the stuck bar, bring the result list back

@@ -256,7 +256,7 @@
 
 .posts-filter {
   transition:
-    top 0.25s ease,
+    transform 0.3s ease,
     box-shadow 0.25s ease,
     background-color 0.2s ease,
     padding 0.28s ease,
@@ -295,23 +295,56 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
-/* Stuck + collapsed: compact single row */
-.posts-filter--stuck:not(.posts-filter--open) {
+/* Stuck: always a compact single row — the extra rows never grow the bar */
+.posts-filter--stuck {
   gap: 0;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.posts-filter--stuck:not(.posts-filter--open) .posts-filter__collapsible {
+.posts-filter--stuck .posts-filter__collapsible {
   grid-template-rows: 0fr;
   opacity: 0;
   visibility: hidden;
   transition: grid-template-rows 0.3s ease, opacity 0.22s ease, visibility 0s 0.3s;
 }
 
-/* Site header auto-hides on scroll-down: raise the bar so no gap opens */
-.posts-filter--raised {
-  top: 12px;
+/* Stuck + open: TAGS + SORT drop down as an overlay panel below the bar.
+   Keeping them out of the document flow means opening never changes the
+   page height — the scroll-anchoring jump that used to hide the site
+   header (and yank the freshly opened panel away) cannot happen. */
+.posts-filter--stuck.posts-filter--open .posts-filter__collapsible {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  padding: 16px 20px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(30, 35, 30, 0.18);
+  transition: opacity 0.18s ease;
+}
+
+.dark .posts-filter--stuck.posts-filter--open .posts-filter__collapsible {
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+}
+
+/* The in-bar divider makes no sense inside the dropdown surface */
+.posts-filter--stuck.posts-filter--open .posts-filter__collapsible .posts-filter__section:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* Reading downward: exit the viewport together with the auto-hiding site
+   header, giving the cards the full canvas. The offset covers the sticky
+   top gap plus the lifted shadow so no edge lingers on screen. */
+.posts-filter--exit {
+  transform: translateY(calc(-100% - 96px));
+  pointer-events: none;
 }
 
 /* Filters toggle (visible only while stuck) */
