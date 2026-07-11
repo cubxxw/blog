@@ -245,6 +245,139 @@
   color: var(--color-ink);
 }
 
+/* ─── Articles: sticky filter — compact "stuck" behaviour ───
+   While the panel is stuck to the viewport the TAGS + SORT rows collapse,
+   leaving a slim category bar; a Filters toggle re-expands them in place.
+   Classes are driven by static/js/articles-filter.js. */
+
+.posts-filter-sentinel {
+  height: 1px;
+}
+
+.posts-filter {
+  transition:
+    top 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.2s ease,
+    padding 0.28s ease,
+    gap 0.28s ease;
+}
+
+.posts-filter__collapsible {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition: grid-template-rows 0.3s ease, opacity 0.22s ease;
+}
+
+.posts-filter__collapsible-inner {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Restore the divider the old sibling selector used to draw between rows */
+.posts-filter__collapsible .posts-filter__section:first-child {
+  padding-top: 8px;
+  border-top: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+/* Stuck: nearly opaque so cards never bleed through, lifted shadow */
+.posts-filter--stuck,
+.dark .posts-filter--stuck {
+  background: color-mix(in srgb, var(--color-paper) 97%, transparent);
+  box-shadow: 0 12px 32px rgba(30, 35, 30, 0.12);
+}
+
+.dark .posts-filter--stuck {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Stuck + collapsed: compact single row */
+.posts-filter--stuck:not(.posts-filter--open) {
+  gap: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.posts-filter--stuck:not(.posts-filter--open) .posts-filter__collapsible {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 0.3s ease, opacity 0.22s ease, visibility 0s 0.3s;
+}
+
+/* Site header auto-hides on scroll-down: raise the bar so no gap opens */
+.posts-filter--raised {
+  top: 12px;
+}
+
+/* Filters toggle (visible only while stuck) */
+.posts-filter__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.posts-filter__toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.posts-filter__toggle[hidden] {
+  display: none;
+}
+
+.posts-filter__toggle-chevron {
+  transition: transform 0.25s ease;
+}
+
+.posts-filter--open .posts-filter__toggle-chevron {
+  transform: rotate(180deg);
+}
+
+.posts-filter__toggle-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-paper);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.posts-filter__toggle-badge[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .posts-filter,
+  .posts-filter__collapsible,
+  .posts-filter__toggle-chevron {
+    transition: none;
+  }
+}
+
 /* ─── Articles: cards ──────────────────────────────────────── */
 .post-entry {
   background: var(--color-paper);

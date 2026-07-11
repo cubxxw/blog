@@ -1488,8 +1488,39 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 
 .hp-travel-cities { font-family: var(--font-body); font-size: 12px; line-height: 1.8; color: var(--fg-muted); }
 .hp-travel-cities .hp-city-sep { color: var(--border-default); margin: 0 5px; }
-.hp-recent-post-link { color: var(--fg-muted); text-decoration: none; }
-.hp-recent-post-link:hover { color: var(--fg-primary); }
+/* Recent posts — one elegant row per post (latest 5) */
+.hp-recent-posts { list-style: none; margin: 0; padding: 0; }
+.hp-recent-post + .hp-recent-post { border-top: 1px solid var(--border-default); }
+.hp-recent-post-link {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 9px 2px;
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.hp-recent-post-date {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  opacity: 0.75;
+}
+.hp-recent-post-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.hp-recent-post-link:hover .hp-recent-post-title { color: var(--accent); }
+.hp-recent-post-link:hover .hp-recent-post-date { opacity: 1; }
 
 .hp-heatmap {
   --heat-cell: 10px;  /* JS reads grid-auto-columns/column-gap to place month labels */

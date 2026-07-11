@@ -303,7 +303,7 @@
     {{- range $allPages -}}
       {{- $allPosts = $allPosts | append (dict "date" (.Date.Format "2006-01-02") "title" .Title "url" .RelPermalink) -}}
     {{- end -}}
-    {{- $recentPosts := $allPages | first 8 -}}
+    {{- $recentPosts := (where $allPages "Section" "in" site.Params.mainSections) | first 5 -}}
     <section class="hp-section" id="hp-travel" data-post-dates='{{ $allPosts | jsonify }}'>
       <div class="hp-section-head">
         <span class="hp-section-num">04</span>
@@ -322,12 +322,16 @@
             <div><div class="hp-travel-stat-num">{{ $yearsActive }}</div><div class="hp-travel-stat-label">{{ if $isZh }}写作年数{{ else }}Years{{ end }}</div></div>
             <div><div class="hp-travel-stat-num">{{ len (site.Taxonomies.tags) }}</div><div class="hp-travel-stat-label">{{ if $isZh }}标签{{ else }}Topics{{ end }}</div></div>
           </div>
-          <div class="hp-travel-cities">
-            {{- range $i, $p := $recentPosts -}}
-              {{- if $i }}<span class="hp-city-sep">·</span>{{ end -}}
-              <a href="{{ $p.RelPermalink }}" class="hp-recent-post-link">{{ $p.Title }}</a>
-            {{- end -}}
-          </div>
+          <ul class="hp-recent-posts">
+            {{- range $recentPosts }}
+            <li class="hp-recent-post">
+              <a href="{{ .RelPermalink }}" class="hp-recent-post-link">
+                <time class="hp-recent-post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+                <span class="hp-recent-post-title">{{ .Title }}</span>
+              </a>
+            </li>
+            {{- end }}
+          </ul>
         </div>
         <div class="hp-heatmap" id="hp-heatmap-wrap" data-archive-url="{{ "/archives/" | relLangURL }}" data-first-year="{{ $firstYear }}" data-this-year="{{ $thisYear }}">
           <div class="hp-heatmap-year-tabs" id="hp-heatmap-tabs">
