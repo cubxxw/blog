@@ -1470,11 +1470,33 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 /* ============================================================
    TRAVEL
    ============================================================ */
-.hp-travel-block { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: start; }
+/* Stat strip — one full-width editorial data band above the two columns */
+.hp-travel-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  row-gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-default);
+  margin-bottom: 32px;
+}
 
-.hp-travel-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.hp-travel-stat { display: flex; align-items: baseline; gap: 9px; }
 
-.hp-travel-stat-num { font-family: var(--font-display); font-weight: 700; font-size: 36px; color: var(--fg-primary); line-height: 1; }
+.hp-travel-stat + .hp-travel-stat {
+  margin-left: 36px;
+  padding-left: 36px;
+  border-left: 1px solid var(--border-default);
+}
+
+.hp-travel-stat-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--fg-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
 
 .hp-travel-stat-label {
   font-family: var(--font-mono);
@@ -1483,19 +1505,34 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--fg-subtle);
-  margin-top: 4px;
 }
 
-.hp-travel-cities { font-family: var(--font-body); font-size: 12px; line-height: 1.8; color: var(--fg-muted); }
-.hp-travel-cities .hp-city-sep { color: var(--border-default); margin: 0 5px; }
-/* Recent posts — one elegant row per post (latest 5) */
+.hp-travel-block { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+
+/* Recent posts — kicker header + one clean row per post (latest 5) */
+.hp-recent-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--fg-primary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.hp-recent-head-label { color: var(--fg-primary); }
+.hp-recent-head-meta { color: var(--fg-subtle); }
+
 .hp-recent-posts { list-style: none; margin: 0; padding: 0; }
-.hp-recent-post + .hp-recent-post { border-top: 1px solid var(--border-default); }
+.hp-recent-post { border-bottom: 1px solid var(--border-default); }
 .hp-recent-post-link {
   display: flex;
   align-items: baseline;
-  gap: 14px;
-  padding: 9px 2px;
+  gap: 16px;
+  padding: 12px 2px;
   color: var(--fg-muted);
   text-decoration: none;
   transition: color 0.15s ease;
@@ -1506,12 +1543,12 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   font-size: 10.5px;
   letter-spacing: 0.06em;
   color: var(--fg-muted);
-  opacity: 0.75;
+  opacity: 0.7;
 }
 .hp-recent-post-title {
   flex: 1;
   min-width: 0;
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
   color: var(--fg-primary);
   overflow: hidden;
@@ -1519,8 +1556,17 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   white-space: nowrap;
   transition: color 0.15s ease;
 }
+.hp-recent-post-arrow {
+  flex-shrink: 0;
+  align-self: center;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
 .hp-recent-post-link:hover .hp-recent-post-title { color: var(--accent); }
 .hp-recent-post-link:hover .hp-recent-post-date { opacity: 1; }
+.hp-recent-post-link:hover .hp-recent-post-arrow { opacity: 1; transform: translateX(0); }
 
 .hp-heatmap {
   --heat-cell: 10px;  /* JS reads grid-auto-columns/column-gap to place month labels */
@@ -2147,9 +2193,16 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
     justify-content: center;
   }
 
-  /* Fix 11: Travel stat number — reduce on tiny screens */
-  .hp-travel-stat-num {
-    font-size: 28px;
+  /* Fix 11: Travel stat strip — 2×2 grid on tiny screens, no vertical rules */
+  .hp-travel-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+  }
+  .hp-travel-stat + .hp-travel-stat {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
   }
 }
 

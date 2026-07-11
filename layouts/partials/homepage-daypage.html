@@ -314,13 +314,17 @@
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
+      <div class="hp-travel-stats">
+        <div class="hp-travel-stat"><span class="hp-travel-stat-num">{{ len $allPages }}</span><span class="hp-travel-stat-label">{{ if $isZh }}总文章{{ else }}Posts{{ end }}</span></div>
+        <div class="hp-travel-stat"><span class="hp-travel-stat-num">{{ len $thisYearPages }}</span><span class="hp-travel-stat-label">{{ if $isZh }}今年{{ else }}This Year{{ end }}</span></div>
+        <div class="hp-travel-stat"><span class="hp-travel-stat-num">{{ $yearsActive }}</span><span class="hp-travel-stat-label">{{ if $isZh }}写作年数{{ else }}Years{{ end }}</span></div>
+        <div class="hp-travel-stat"><span class="hp-travel-stat-num">{{ len (site.Taxonomies.tags) }}</span><span class="hp-travel-stat-label">{{ if $isZh }}标签{{ else }}Topics{{ end }}</span></div>
+      </div>
       <div class="hp-travel-block">
-        <div>
-          <div class="hp-travel-stats">
-            <div><div class="hp-travel-stat-num">{{ len $allPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}总文章{{ else }}Posts{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">{{ len $thisYearPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}今年{{ else }}This Year{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">{{ $yearsActive }}</div><div class="hp-travel-stat-label">{{ if $isZh }}写作年数{{ else }}Years{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">{{ len (site.Taxonomies.tags) }}</div><div class="hp-travel-stat-label">{{ if $isZh }}标签{{ else }}Topics{{ end }}</div></div>
+        <div class="hp-recent">
+          <div class="hp-recent-head">
+            <span class="hp-recent-head-label">{{ if $isZh }}最近更新{{ else }}Recently Published{{ end }}</span>
+            <span class="hp-recent-head-meta">LATEST 5</span>
           </div>
           <ul class="hp-recent-posts">
             {{- range $recentPosts }}
@@ -328,6 +332,7 @@
               <a href="{{ .RelPermalink }}" class="hp-recent-post-link">
                 <time class="hp-recent-post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
                 <span class="hp-recent-post-title">{{ .Title }}</span>
+                <svg class="hp-recent-post-arrow" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </li>
             {{- end }}
