@@ -177,36 +177,29 @@
       </div>
 
       <div class="hp-cat-row">
-        <a class="hp-cat-tile" href="{{ "/ai-agent/" | relLangURL }}">
-          <div class="hp-cat-tile-icon">🤖</div>
-          <div class="hp-cat-tile-name">AI Agent</div>
-          <div class="hp-cat-tile-zh">智能体</div>
-          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "ai-agent") }}</strong></div>
+        {{- range $d.sections }}
+        {{- $count := 0 }}
+        {{- if eq .key "travel" }}
+          {{- $count = len site.Taxonomies.tags.travel }}
+        {{- else }}
+          {{- $count = len (where site.RegularPages "Section" .key) }}
+        {{- end }}
+        <a class="hp-cat-tile" href="{{ .url | relLangURL }}">
+          <div class="hp-cat-tile-top">
+            <span class="hp-cat-tile-icon">{{ .icon }}</span>
+            <span class="hp-cat-tile-count"><strong>{{ $count }}</strong><span>{{ if $isZh }}篇{{ else }}posts{{ end }}</span></span>
+          </div>
+          <div class="hp-cat-tile-name">
+            {{ if $isZh }}{{ .nameZh }}{{ else }}{{ .nameEn }}{{ end }}
+            <span class="hp-cat-tile-zh">{{ if $isZh }}{{ .nameEn }}{{ else }}{{ .nameZh }}{{ end }}</span>
+          </div>
+          <p class="hp-cat-tile-desc">{{ if $isZh }}{{ .descZh }}{{ else }}{{ .descEn }}{{ end }}</p>
+          <div class="hp-cat-tile-foot">
+            <span class="hp-cat-tile-cta">{{ if $isZh }}进入栏目{{ else }}Browse{{ end }}</span>
+            <span class="hp-cat-tile-arrow" aria-hidden="true">→</span>
+          </div>
         </a>
-        <a class="hp-cat-tile" href="{{ "/engineering/" | relLangURL }}">
-          <div class="hp-cat-tile-icon">⚙️</div>
-          <div class="hp-cat-tile-name">Engineering</div>
-          <div class="hp-cat-tile-zh">工程</div>
-          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "engineering") }}</strong></div>
-        </a>
-        <a class="hp-cat-tile" href="{{ "/growth/" | relLangURL }}">
-          <div class="hp-cat-tile-icon">🌱</div>
-          <div class="hp-cat-tile-name">Growth</div>
-          <div class="hp-cat-tile-zh">成长</div>
-          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "growth") }}</strong></div>
-        </a>
-        <a class="hp-cat-tile" href="{{ "/travel/" | relLangURL }}">
-          <div class="hp-cat-tile-icon">🌐</div>
-          <div class="hp-cat-tile-name">Travel</div>
-          <div class="hp-cat-tile-zh">旅行</div>
-          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len site.Taxonomies.tags.travel }}</strong></div>
-        </a>
-        <a class="hp-cat-tile" href="{{ "/projects/" | relLangURL }}">
-          <div class="hp-cat-tile-icon">📦</div>
-          <div class="hp-cat-tile-name">Projects</div>
-          <div class="hp-cat-tile-zh">项目</div>
-          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "projects") }}</strong></div>
-        </a>
+        {{- end }}
       </div>
     </section>
 

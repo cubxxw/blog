@@ -13,6 +13,44 @@ hero:
   footerBioZh: "熊鑫伟 — AI 构建者、开源贡献者、数字游民。在中国与世界之间慢慢走的探索者。"
   siteVersion: "v3.0"
 
+# Section tiles under "Writing" — rendered by homepage-daypage.html .hp-cat-row
+sections:
+  - key: ai-agent
+    url: /ai-agent/
+    icon: "🤖"
+    nameEn: "AI Agent"
+    nameZh: "智能体"
+    descEn: "Agent engineering, context engineering & GEO"
+    descZh: "Agent 工程 · 上下文工程 · GEO"
+  - key: engineering
+    url: /engineering/
+    icon: "⚙️"
+    nameEn: "Engineering"
+    nameZh: "工程"
+    descEn: "Cloud native, Go, DevOps & open source"
+    descZh: "云原生 · Go · 开源实践"
+  - key: growth
+    url: /growth/
+    icon: "🌱"
+    nameEn: "Growth"
+    nameZh: "成长"
+    descEn: "Reviews, thought notes & life experiments"
+    descZh: "复盘 · 思考笔记 · 人生实验"
+  - key: travel
+    url: /travel/
+    icon: "🌐"
+    nameEn: "Travel"
+    nameZh: "旅行"
+    descEn: "Cities and moments on the road"
+    descZh: "在路上的城市与瞬间"
+  - key: projects
+    url: /projects/
+    icon: "📦"
+    nameEn: "Projects"
+    nameZh: "项目"
+    descEn: "Open-source deep-dives & AI products"
+    descZh: "开源项目拆解 · AI 产品构建"
+
 books:
   - id: vietnam
     volume: 1
