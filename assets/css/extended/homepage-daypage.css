@@ -1481,13 +1481,22 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   margin-bottom: 32px;
 }
 
-.hp-travel-stat { display: flex; align-items: baseline; gap: 9px; }
+.hp-travel-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
 
 .hp-travel-stat + .hp-travel-stat {
   margin-left: 36px;
   padding-left: 36px;
   border-left: 1px solid var(--border-default);
 }
+
+.hp-travel-stat:hover { transform: translateY(-1px); }
+.hp-travel-stat:active { transform: translateY(0) scale(0.97); }
 
 .hp-travel-stat-num {
   font-family: var(--font-display);
@@ -1496,6 +1505,7 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   color: var(--fg-primary);
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  transition: color 0.15s ease;
 }
 
 .hp-travel-stat-label {
@@ -1505,7 +1515,11 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--fg-subtle);
+  transition: color 0.15s ease;
 }
+
+.hp-travel-stat:hover .hp-travel-stat-num { color: var(--accent); }
+.hp-travel-stat:hover .hp-travel-stat-label { color: var(--fg-muted); }
 
 .hp-travel-block { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
 
@@ -1567,6 +1581,28 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
 .hp-recent-post-link:hover .hp-recent-post-title { color: var(--accent); }
 .hp-recent-post-link:hover .hp-recent-post-date { opacity: 1; }
 .hp-recent-post-link:hover .hp-recent-post-arrow { opacity: 1; transform: translateX(0); }
+
+/* MORE row — closes the list, leads into the full archives */
+.hp-recent-more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 2px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.hp-recent-more svg {
+  transition: transform 0.15s ease;
+}
+.hp-recent-more:hover { color: var(--accent); }
+.hp-recent-more:hover svg { transform: translateX(3px); }
+.hp-recent-more:active svg { transform: translateX(5px); }
 
 .hp-heatmap {
   --heat-cell: 10px;  /* JS reads grid-auto-columns/column-gap to place month labels */
