@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   -  Spring Growth
   - Innovation Mindset
-categories:
-  - Growth
 description: >
     April 2025 monthly reflection - capturing the essence of spring growth, new beginnings, and the continuous journey of learning and self-improvement.
 tldr:

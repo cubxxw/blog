@@ -12,12 +12,10 @@ tags:
   - 'google (谷歌)'
   - 'project (项目)'
   - 'management (管理)'
-categories:
-  - Growth
 description: >
   探索GitHub与Google Workspace之间的协同效应，优化项目管理流程。本指南提供了利用两个平台的优势进行协作开发和项目跟踪的见解。
 aliases:
-  - /zh/ai-technology/posts/combining-github-and-google-workspace-for-project-management/
+  - /zh/ai-agent/posts/combining-github-and-google-workspace-for-project-management/
 tldr:
   - "GitHub Projects最适合管理代码相关的开发任务和自动化工作流，Google Workspace则专长于文档协作和团队沟通。"
   - "团队应将GitHub Issues和拉取请求与Google Sheets双向同步，实现开发和非技术团队的信息透明化。"
@@ -26,7 +24,7 @@ tldr:
 
 # 双剑合璧：结合GitHub与Google Workspace的项目管理艺术
 
-之前写过一篇 [从理论到实践的项目管理打通](/zh/ai-technology/posts/project-management-from-theory-to-practice/) 。
+之前写过一篇 [从理论到实践的项目管理打通](/zh/growth/posts/project-management-from-theory-to-practice/) 。
 
 其中介绍了 Github 的项目管理方式 Github Projects，以及配合 Github 实现整个开发和项目管理打通，但是可能会出现一些问题，今天来聊聊其中会出现的问题，以及给出对应的解决方法，顺便总结一下现阶段自己认为的开源项目做项目管理的最佳实践方法。
 
@@ -71,7 +69,7 @@ tldr:
 
 ## 谷歌项目管理工具：所有你需要知道的
 
-对于 Github 的项目管理，可以阅读 [从理论到实践的项目管理打通](/zh/ai-technology/posts/project-management-from-theory-to-practice/) ，以及 Github Projects 官方网站 https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
+对于 Github 的项目管理，可以阅读 [从理论到实践的项目管理打通](/zh/growth/posts/project-management-from-theory-to-practice/) ，以及 Github Projects 官方网站 https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
 
 我来详细介绍一些谷歌的项目管理的时间实践方法。
 

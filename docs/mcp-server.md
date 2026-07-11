@@ -14,7 +14,7 @@ just Node 18+.
 | Tool | Purpose |
 |------|---------|
 | `search_blog` | Keyword search across all posts (bilingual). Returns ranked title / permalink / tags / excerpt. Args: `query` (required), `language` (`en`\|`zh`, optional), `limit` (1-20, default 8). |
-| `get_blog_post` | Fetch the full markdown of one post by `relativePath` (as returned by `search_blog`, e.g. `zh/ai-technology/posts/argo-cd.md`). |
+| `get_blog_post` | Fetch the full markdown of one post by `relativePath` (as returned by `search_blog`, e.g. `zh/engineering/posts/argo-cd.md`). |
 
 ## Setup — Claude Desktop
 

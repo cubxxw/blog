@@ -27,8 +27,6 @@ tags:
   - MCP
   - Product Strategy
   - Personal Growth
-categories:
-  - Growth
 cover:
   image: /images/posts/2026/super-individual/cover.jpg
   alt: "超级个体的栈：AI 原生 Solo Builder 的产品方向与运营全图"

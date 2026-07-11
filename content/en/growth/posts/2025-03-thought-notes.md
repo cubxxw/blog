@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   - Learning Journey
   - Growth Mindset
-categories:
-  - Growth
 description: >
     March 2025 monthly reflection - documenting learning, growth, challenges, and insights from my journey of continuous improvement and personal development.
 tldr:

@@ -4,7 +4,6 @@ date: 2025-04-21T22:59:57+08:00
 draft: false
 tocopen: true
 tags: ["AI", "Project Learning"]
-categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: Google NotebookLM 的 RAG 实现机制深度调研：向量检索、引用溯源与知识图谱构建，探讨 AI 笔记工具的技术本质。
 aliases:
@@ -422,6 +421,6 @@ tldr:
 ## 补充相关文章
 
 + [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
-+ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/ai-technology/posts/open-source-contribution-guidelines/)
-+ [我的实践总结：开源社区的规范设计思路](/zh/ai-technology/posts/advanced-githook-design/)
-+ [在开源社区中学会如何提问](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/engineering/posts/open-source-contribution-guidelines/)
++ [我的实践总结：开源社区的规范设计思路](/zh/engineering/posts/advanced-githook-design/)
++ [在开源社区中学会如何提问](/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

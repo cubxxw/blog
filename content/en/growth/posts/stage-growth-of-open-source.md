@@ -15,8 +15,6 @@ tags:
   - open-source
   - kubernetes
   - github
-categories:
-  - Growth
 tldr:
   - "Open source growth progresses through eight sequential stages from reading source code to commercializing projects with increasing skill depth and business impact."
   - "Each stage builds outputs and closed-loop learning: from passive reading toward active community contribution, product development, and eventually commercial services."

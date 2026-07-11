@@ -2,8 +2,8 @@ import { test, expect, Page } from '@playwright/test';
 import * as path from 'path';
 import * as fs from 'fs';
 
-const EN_URL = 'http://localhost:1313/ai-technology/posts/use-go-tools-dlv/';
-const ZH_URL = 'http://localhost:1313/zh/ai-technology/posts/use-go-tools-dlv/';
+const EN_URL = 'http://localhost:1313/engineering/posts/use-go-tools-dlv/';
+const ZH_URL = 'http://localhost:1313/zh/engineering/posts/use-go-tools-dlv/';
 
 const SNAPSHOTS_DIR = path.join(__dirname, '__screenshots__', 'us032');
 

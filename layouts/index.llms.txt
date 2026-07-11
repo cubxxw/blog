@@ -17,24 +17,25 @@ Available languages: English ({{ site.BaseURL }}), Simplified Chinese ({{ site.B
 {{- with (site.GetPage "/about") -}}{{- $aboutURL = .Permalink -}}{{- end }}
 - [About / Contact]({{ $aboutURL | default (printf "%sabout/" site.BaseURL) }}): Personal profile and ways to reach me (WeChat, email, GitHub, socials).
 
-{{- /* Group posts by first category. Fall back to "Other". */ -}}
+{{- /* Group posts by section. Fall back to "Other". */ -}}
 {{- $posts := where site.RegularPages "Type" "posts" -}}
 {{- $byCat := dict -}}
 {{- range $posts -}}
-  {{- $cat := "Other" -}}
-  {{- with .Params.categories -}}{{- $cat = index . 0 -}}{{- end -}}
+  {{- $cat := .Section | default "Other" -}}
   {{- $list := index $byCat $cat | default (slice) -}}
   {{- $list = $list | append . -}}
   {{- $byCat = merge $byCat (dict $cat $list) -}}
 {{- end -}}
 
-{{- /* Emit known categories in a deterministic order, then anything else. */ -}}
-{{- $known := slice "AI & Technology" "Growth" "Projects" -}}
+{{- /* Emit known sections in a deterministic order, then anything else. */ -}}
+{{- $known := slice "ai-agent" "engineering" "growth" "projects" -}}
 {{- $seen := dict -}}
 {{- range $cat := $known }}
   {{- $list := index $byCat $cat -}}
   {{- if $list }}
-## {{ $cat }}
+{{- $catTitle := $cat -}}
+{{- with site.GetPage (printf "/%s" $cat) }}{{ with .Title }}{{ $catTitle = . }}{{ end }}{{ end }}
+## {{ $catTitle }}
 
     {{- range $post := first 15 (sort $list "Date" "desc") -}}
       {{- $desc := "" -}}

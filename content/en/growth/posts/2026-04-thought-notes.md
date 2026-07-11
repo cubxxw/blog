@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   - Laos Travel
   - AI Thinking
-categories:
-  - Growth
 description: >
     April 2026 Thought Notes - Observations from living in Laos during Songkran, engineering philosophy in the AI era, and explorations of recording, understanding, and trust.
 tldr:

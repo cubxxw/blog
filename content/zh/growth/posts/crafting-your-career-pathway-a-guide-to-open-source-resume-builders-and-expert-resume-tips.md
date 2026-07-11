@@ -13,12 +13,10 @@ tags:
   - 'resume (简历)'
   - 'career (职业)'
   - '职业 (Career)'
-categories:
-  - Growth
 description: >
   探索一系列开源工具，旨在增强你的简历制作体验。本指南提供专业建议，帮助你选择合适的工具并优化简历，使你在竞争激烈的职场市场中脱颖而出。适合任何领域寻求提升专业展示的求职者。
 aliases:
-  - /zh/ai-technology/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/
+  - /zh/ai-agent/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/
 tldr:
   - "开源简历生成工具如Visiky Resume、Markdown Resume、木及简历等为求职者提供低成本、高定制性的简历制作方案。"
   - "运用STAR法则描述工作成就、保持简洁设计、统一格式排版等专业建议能显著提升简历质量和招聘认可度。"

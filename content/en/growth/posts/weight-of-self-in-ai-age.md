@@ -11,8 +11,6 @@ tags:
   - AI
   - Personal Growth
   - Self-Discovery
-categories:
-  - Growth
 cover:
   image: /images/posts/2026/ai-self-identity/mountain-path.jpg
   alt: "How to Maintain the Weight of Self in an Age When You Are No Longer Needed"

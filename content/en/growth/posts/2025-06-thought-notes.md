@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   -  Summer Solstice
   - Strategic Planning
-categories:
-  - Growth
 description: >
     June 2025 monthly reflection - embracing the summer solstice energy, strategic planning for the second half of the year, and celebrating progress made.
 tldr:

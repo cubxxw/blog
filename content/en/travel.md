@@ -19,8 +19,6 @@ tags:
   - Travel
   - Adventure
   - Exploration
-categories:
-  - Travel
 description: "Follow my travel adventures and footprints around the world. Explore my journeys, stories, and experiences from digital nomad life."
 polarsteps_url: "https://www.polarsteps.com/cubxxw"
 ---

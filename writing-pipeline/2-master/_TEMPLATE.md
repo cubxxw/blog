@@ -4,7 +4,7 @@ title: ""                      # 母版工作标题（不必是最终标题）
 slug: ""                       # 英文短横线，全平台文件名/URL 复用
 status: seed                   # seed → draft → master-ready → distributed
 created: 2026-07-08
-type: ai-technology            # ai-technology | growth | projects（对应博客三分类）
+type: ai-agent                 # ai-agent | engineering | growth | projects（对应博客四分类）
 
 # —— 分发原料：适配器靠这些生成各平台版本 ——
 one_liner: ""                  # 一句话核心，钩子/标题的原料

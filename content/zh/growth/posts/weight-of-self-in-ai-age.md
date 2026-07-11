@@ -11,8 +11,6 @@ tags:
   - AI
   - Personal Growth
   - Self-Discovery
-categories:
-  - Growth
 cover:
   image: /images/posts/2026/ai-self-identity/mountain-path.jpg
   alt: "在不被需要的时代，如何维持自我的重量"

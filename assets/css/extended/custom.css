@@ -4892,8 +4892,12 @@ body.nav-hidden { --sticky-offset: 0px; }
     border-left-color: rgba(14, 116, 144, 0.4);
 }
 
-.posts-grid .post-entry[data-section="ai-technology"]:hover {
+.posts-grid .post-entry[data-section="ai-agent"]:hover {
     border-left-color: rgba(139, 92, 246, 0.5);
+}
+
+.posts-grid .post-entry[data-section="engineering"]:hover {
+    border-left-color: rgba(180, 83, 9, 0.5);
 }
 
 .posts-grid .post-entry[data-section="growth"]:hover {

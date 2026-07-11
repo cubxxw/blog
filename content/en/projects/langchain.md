@@ -14,8 +14,6 @@ tags:
   - LangChain
   - Agent
   - RAG
-categories:
-  - Projects
 description: >
   A practical guide to building LLM applications with LangChain — chains, agents, RAG, and the LangChain 1.0 create_agent + middleware model — with hands-on quick-start cases, 2025–2026 frontier updates, and common interview questions.
 aliases:
@@ -746,6 +744,6 @@ When a workflow needs explicit branching, loops, persisted state, or human-in-th
 ## Related Articles
 
 + [Staged Growth Guide for Open Source](/growth/posts/stage-growth-of-open-source/)
-+ [A Complete Guide to Open Source Contributions (A Beginner's Playbook)](/ai-technology/posts/open-source-contribution-guidelines/)
-+ [My Practical Summary: Design Principles for Open Source Community Standards](/ai-technology/posts/advanced-githook-design/)
-+ [Learning How to Ask Questions in Open Source Communities](/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [A Complete Guide to Open Source Contributions (A Beginner's Playbook)](/engineering/posts/open-source-contribution-guidelines/)
++ [My Practical Summary: Design Principles for Open Source Community Standards](/engineering/posts/advanced-githook-design/)
++ [Learning How to Ask Questions in Open Source Communities](/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

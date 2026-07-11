@@ -10,8 +10,6 @@ keywords: []
 tags:
   - AI
   - Open Source
-categories:
-  - Projects
 description: >
   Reflections on the journey of becoming an independent developer in the AI era.
 aliases:
@@ -35,6 +33,6 @@ tldr:
 ## Related Articles
 
 + [A Staged Growth Guide for Open Source](/growth/posts/stage-growth-of-open-source/)
-+ [A Complete Guide to Open Source Contribution (A Handbook for First-Timers)](/ai-technology/posts/open-source-contribution-guidelines/)
-+ [My Practical Summary: Designing Norms in Open Source Communities](/ai-technology/posts/advanced-githook-design/)
-+ [How to Ask Questions in Open Source Communities](/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [A Complete Guide to Open Source Contribution (A Handbook for First-Timers)](/engineering/posts/open-source-contribution-guidelines/)
++ [My Practical Summary: Designing Norms in Open Source Communities](/engineering/posts/advanced-githook-design/)
++ [How to Ask Questions in Open Source Communities](/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

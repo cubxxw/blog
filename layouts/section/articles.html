@@ -5,7 +5,7 @@
 
 {{/* Aggregate ALL articles across all sections */}}
 {{- $allPages := where site.RegularPages "Lang" $lang }}
-{{- $allPages = where $allPages "Section" "in" (slice "ai-technology" "growth" "projects") }}
+{{- $allPages = where $allPages "Section" "in" (slice "ai-agent" "engineering" "growth" "projects") }}
 {{- $allPages = $allPages.ByDate.Reverse }}
 {{- $totalCount := len $allPages }}
 
@@ -27,12 +27,15 @@
 {{- $topTags := first 15 $sortedTags }}
 
 {{/* Section counts */}}
-{{- $aiTechCount := 0 }}
+{{- $aiAgentCount := 0 }}
+{{- $engineeringCount := 0 }}
 {{- $growthCount := 0 }}
 {{- $projectsCount := 0 }}
 {{- range $allPages }}
-  {{- if eq .Section "ai-technology" }}
-    {{- $aiTechCount = add $aiTechCount 1 }}
+  {{- if eq .Section "ai-agent" }}
+    {{- $aiAgentCount = add $aiAgentCount 1 }}
+  {{- else if eq .Section "engineering" }}
+    {{- $engineeringCount = add $engineeringCount 1 }}
   {{- else if eq .Section "growth" }}
     {{- $growthCount = add $growthCount 1 }}
   {{- else if eq .Section "projects" }}
@@ -67,18 +70,22 @@
     </div>
   </header>
 
-  {{/* Filter Bar */}}
+  {{/* Filter Bar — sentinel lets JS detect the sticky "stuck" state */}}
+  <div class="posts-filter-sentinel" aria-hidden="true"></div>
   <div class="posts-filter" id="posts-filter">
 
-    {{/* Category Chips */}}
-    <div class="posts-filter__section">
+    {{/* Category Chips — the always-visible primary row */}}
+    <div class="posts-filter__section posts-filter__section--primary">
       <span class="posts-filter__label">{{ $filterCategoryLabel }}</span>
       <div class="posts-filter__chips" id="filter-categories">
         <button class="posts-filter__chip posts-filter__chip--active" data-category="all" aria-pressed="true">
           {{ $filterAllLabel }} <span class="posts-filter__chip-count">{{ $totalCount }}</span>
         </button>
-        <button class="posts-filter__chip" data-category="ai-technology" aria-pressed="false">
-          AI Technology <span class="posts-filter__chip-count">{{ $aiTechCount }}</span>
+        <button class="posts-filter__chip" data-category="ai-agent" aria-pressed="false">
+          AI Agent <span class="posts-filter__chip-count">{{ $aiAgentCount }}</span>
+        </button>
+        <button class="posts-filter__chip" data-category="engineering" aria-pressed="false">
+          Engineering <span class="posts-filter__chip-count">{{ $engineeringCount }}</span>
         </button>
         <button class="posts-filter__chip" data-category="growth" aria-pressed="false">
           Growth & Life <span class="posts-filter__chip-count">{{ $growthCount }}</span>
@@ -87,32 +94,41 @@
           AI Projects <span class="posts-filter__chip-count">{{ $projectsCount }}</span>
         </button>
       </div>
-    </div>
-
-    {{/* Tags */}}
-    <div class="posts-filter__section">
-      <span class="posts-filter__label">{{ $filterTagsLabel }}</span>
-      <div class="posts-filter__chips posts-filter__chips--tags" id="filter-tags">
-        {{- range $topTags }}
-        <button class="posts-filter__chip posts-filter__chip--tag" data-tag="{{ .tag }}" aria-pressed="false">
-          {{ .tag }}
-        </button>
-        {{- end }}
-      </div>
-    </div>
-
-    {{/* Sort + Active Filter */}}
-    <div class="posts-filter__section posts-filter__section--controls">
-      <div class="posts-filter__sort">
-        <label for="filter-sort" class="posts-filter__label">{{ $filterSortLabel }}</label>
-        <select id="filter-sort" class="posts-filter__select">
-          <option value="newest">{{ $filterNewest }}</option>
-          <option value="oldest">{{ $filterOldest }}</option>
-        </select>
-      </div>
-      <button class="posts-filter__clear" id="filter-clear" style="display:none;" aria-label="{{ $filterClear }}">
-        {{ $filterClear }}
+      <button type="button" class="posts-filter__toggle" id="filter-toggle"
+              aria-expanded="false" aria-controls="filter-collapsible" hidden>
+        <span class="posts-filter__toggle-badge" id="filter-active-count" hidden></span>
+        <span class="posts-filter__toggle-text">{{ if $isZh }}筛选{{ else }}Filters{{ end }}</span>
+        <svg class="posts-filter__toggle-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
+    </div>
+
+    {{/* Tags + Sort — collapses to keep the stuck bar compact */}}
+    <div class="posts-filter__collapsible" id="filter-collapsible">
+      <div class="posts-filter__collapsible-inner">
+        <div class="posts-filter__section">
+          <span class="posts-filter__label">{{ $filterTagsLabel }}</span>
+          <div class="posts-filter__chips posts-filter__chips--tags" id="filter-tags">
+            {{- range $topTags }}
+            <button class="posts-filter__chip posts-filter__chip--tag" data-tag="{{ .tag }}" aria-pressed="false">
+              {{ .tag }}
+            </button>
+            {{- end }}
+          </div>
+        </div>
+
+        <div class="posts-filter__section posts-filter__section--controls">
+          <div class="posts-filter__sort">
+            <label for="filter-sort" class="posts-filter__label">{{ $filterSortLabel }}</label>
+            <select id="filter-sort" class="posts-filter__select">
+              <option value="newest">{{ $filterNewest }}</option>
+              <option value="oldest">{{ $filterOldest }}</option>
+            </select>
+          </div>
+          <button class="posts-filter__clear" id="filter-clear" style="display:none;" aria-label="{{ $filterClear }}">
+            {{ $filterClear }}
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -122,8 +138,11 @@
     {{- $section := .Section }}
     {{- $sectionDisplay := "AI Projects" }}
     {{- $sectionClass := "posts-badge--projects" }}
-    {{- if eq $section "ai-technology" }}
-      {{- $sectionDisplay = "AI Technology" }}
+    {{- if eq $section "ai-agent" }}
+      {{- $sectionDisplay = "AI Agent" }}
+      {{- $sectionClass = "posts-badge--ai" }}
+    {{- else if eq $section "engineering" }}
+      {{- $sectionDisplay = "Engineering" }}
       {{- $sectionClass = "posts-badge--ai" }}
     {{- else if eq $section "growth" }}
       {{- $sectionDisplay = "Growth & Life" }}

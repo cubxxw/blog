@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   -  Pilgrimage Journey
   - Year-End Contemplation
-categories:
-  - Growth
 description: >
   December 2025 deep thought notes with 380 entries documenting pilgrimage experiences, Zen philosophy, and self-discovery journeys.
   

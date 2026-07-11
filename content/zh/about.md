@@ -217,7 +217,7 @@ tldr:
 <section class="about-section">
   <h2 class="about-section-title"><span class="about-section-icon">🚀</span>从这里开始</h2>
   <div class="about-start-grid">
-    <a class="about-start-item" href="/zh/ai-technology/posts/">
+    <a class="about-start-item" href="/zh/ai-agent/posts/">
       <span class="about-start-num">01</span>
       <span class="about-start-label">AI 技术文章</span>
     </a>

@@ -5,7 +5,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('US-026 Font loading', () => {
   test('EN article page: post-title uses Fraunces as first font', async ({ page }) => {
-    await page.goto('/ai-technology/posts/agent-identity-from-locke-to-openclaw/');
+    await page.goto('/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
     const fontFamily = await page.evaluate(() => {
       const el = document.querySelector('.post-title');
       if (!el) return '';
@@ -19,7 +19,7 @@ test.describe('US-026 Font loading', () => {
   });
 
   test('ZH article page: post-title uses Noto Serif SC as first font', async ({ page }) => {
-    await page.goto('/zh/ai-technology/posts/agent-identity-from-locke-to-openclaw/');
+    await page.goto('/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
     const fontFamily = await page.evaluate(() => {
       const el = document.querySelector('.post-title');
       if (!el) return '';
@@ -32,19 +32,19 @@ test.describe('US-026 Font loading', () => {
   });
 
   test('ZH page head contains Noto Serif SC font link', async ({ page }) => {
-    await page.goto('/zh/ai-technology/posts/agent-identity-from-locke-to-openclaw/');
+    await page.goto('/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
     const notoLink = await page.$('link[href*="Noto+Serif+SC"]');
     expect(notoLink).not.toBeNull();
   });
 
   test('EN page head does NOT contain Noto Serif SC font link', async ({ page }) => {
-    await page.goto('/ai-technology/posts/agent-identity-from-locke-to-openclaw/');
+    await page.goto('/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
     const notoLink = await page.$('link[href*="Noto+Serif+SC"]');
     expect(notoLink).toBeNull();
   });
 
   test('EN page head contains Fraunces font link', async ({ page }) => {
-    await page.goto('/ai-technology/posts/agent-identity-from-locke-to-openclaw/');
+    await page.goto('/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
     const fraunceLink = await page.$('link[href*="Fraunces"]');
     expect(fraunceLink).not.toBeNull();
   });

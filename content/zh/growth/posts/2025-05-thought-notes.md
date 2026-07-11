@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   - 年中洞察 (Mid-year Insights)
   - 创意思维 (Creative Thinking)
-categories:
-  - Growth
 description: >
     2025年5月思考笔记 - 探索年中洞察，创意突破，以及个人与专业成长不断演进的全景观察。
 tldr:

@@ -37,8 +37,6 @@ keywords: []
 tags:
   - Go
   - Kubernetes
-categories:
-  - AI & Technology
 description: >
   纯文本描述，不含 Markdown 语法，内容丰富
 # 可选：答案前置 TL;DR（GEO/BLUF，提升 AI 引用率），字符串或要点列表

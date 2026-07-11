@@ -10,7 +10,6 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags: ["Blog", "Annual Recap", "Travel", "Product Development", "Philosophy"]
-categories: ["Growth"]
 description: >
   This article is my annual review of 2024, covering my experiences and reflections on travel, product development, personal growth, etc. By sharing my experiences and thoughts, I hope to bring inspiration and space for reflection to myself and my readers.
 tldr:
@@ -1788,7 +1787,7 @@ On the surface, the gap between China and the United States in AI seems to be hu
 #### 2024Thinking about open source
 
 From my own perspective, I think open source has been very helpful to my growth. I even wrote an article about how to learn open source [/zh/growth/posts/stage-growth-of-open-source/](/zh/growth/posts/stage-growth-of-open-source/)
-In addition, regarding the thoughts on open source and the open source business model, I have also written an article before, Before the outbreak of AI [/zh/ai-technology/posts/navigating-the-open-source-landscape/](/zh/ai-technology/posts/navigating-the-open-source-landscape/)
+In addition, regarding the thoughts on open source and the open source business model, I have also written an article before, Before the outbreak of AI [/zh/engineering/posts/navigating-the-open-source-landscape/](/zh/engineering/posts/navigating-the-open-source-landscape/)
 
 **Thoughts on development trends in the AI ​​era:**
 

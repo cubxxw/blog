@@ -10,8 +10,6 @@ keywords: []
 tags:
   - AI
   - Open Source
-categories:
-  - Projects
 description: >
   Exploring Google NotebookLM as an AI-powered research and note-taking assistant.
 aliases:
@@ -35,6 +33,6 @@ tldr:
 ## Related Articles
 
 + [A Stage-by-Stage Growth Guide for Open Source](/growth/posts/stage-growth-of-open-source/)
-+ [A Complete Guide to Open Source Contribution (A Primer for First-Time Contributors)](/ai-technology/posts/open-source-contribution-guidelines/)
-+ [My Practical Summary: Designing Norms for Open Source Communities](/ai-technology/posts/advanced-githook-design/)
-+ [Learning How to Ask Questions in Open Source Communities](/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [A Complete Guide to Open Source Contribution (A Primer for First-Time Contributors)](/engineering/posts/open-source-contribution-guidelines/)
++ [My Practical Summary: Designing Norms for Open Source Communities](/engineering/posts/advanced-githook-design/)
++ [Learning How to Ask Questions in Open Source Communities](/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

@@ -12,8 +12,6 @@ tags:
   - Blog
   - resume
   - Career
-categories:
-  - Growth
 description: >
     Explore a range of open-source tools designed to enhance your resume crafting experience. This guide offers professional advice on selecting the right tool and optimizing your resume to stand out in competitive job markets. Perfect for job seekers in any field looking to elevate their professional presentation.
 tldr:

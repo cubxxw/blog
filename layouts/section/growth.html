@@ -32,15 +32,15 @@
         <span class="eig-stat__num">{{ len $growthPages }}</span>
         <span class="eig-stat__label">{{ if $isZh }}文章{{ else }}Articles{{ end }}</span>
       </div>
-      {{- $categories := slice }}
+      {{- $topicTags := slice }}
       {{- range $growthPages }}
-        {{- range .Params.categories }}
-          {{- $categories = $categories | append . }}
+        {{- range .Params.tags }}
+          {{- $topicTags = $topicTags | append . }}
         {{- end }}
       {{- end }}
-      {{- $uniqueCats := $categories | uniq }}
+      {{- $uniqueTags := $topicTags | uniq }}
       <div class="eig-stat">
-        <span class="eig-stat__num">{{ len $uniqueCats }}</span>
+        <span class="eig-stat__num">{{ len $uniqueTags }}</span>
         <span class="eig-stat__label">{{ if $isZh }}主题{{ else }}Topics{{ end }}</span>
       </div>
       {{- if $growthPages }}
@@ -64,7 +64,7 @@
       {{- range $i, $p := $featured }}
       <article class="eig-featured-card {{ if eq $i 0 }}eig-featured-card--primary{{ end }}">
         <div class="eig-featured-card__inner">
-          {{- with $p.Params.categories }}
+          {{- with $p.Params.tags }}
           <span class="eig-chip">{{ index . 0 }}</span>
           {{- end }}
           <h2 class="eig-featured-card__title">
@@ -108,7 +108,7 @@
       <article class="eig-row">
         <time class="eig-row__date">{{ .Date.Format "01-02" }}</time>
         <div class="eig-row__body">
-          {{- with .Params.categories }}
+          {{- with .Params.tags }}
           <span class="eig-chip eig-chip--xs">{{ index . 0 }}</span>
           {{- end }}
           <h3 class="eig-row__title">

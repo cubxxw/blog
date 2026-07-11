@@ -17,7 +17,7 @@ related:
   indices:
     - name: tags
       weight: 80
-    - name: categories
+    - name: keywords
       weight: 20
 googleAnalytics: G-FSWQC2Y01E
 pygmentsUseClasses: true
@@ -134,7 +134,8 @@ params:
       - summary
       - content
   mainSections:
-    - ai-technology
+    - ai-agent
+    - engineering
     - growth
     - projects
   ShowAllPagesInArchive: false
@@ -233,7 +234,6 @@ outputs:
 #   columns: [ignite-and-settle]
 # URL becomes /columns/ignite-and-settle/ (and /zh/columns/...).
 taxonomies:
-  category: categories
   tag: tags
   column: columns
 
@@ -273,26 +273,35 @@ languages:
           url: /projects/
           pageRef: /projects
           weight: 15
-        - identifier: ai
-          name: AI
-          url: /ai-technology/
-          pageRef: /ai-technology
+        - identifier: ai-agent
+          name: AI Agent
+          url: /ai-agent/
+          pageRef: /ai-agent
           weight: 16
+        - identifier: engineering
+          name: Engineering
+          url: /engineering/
+          pageRef: /engineering
+          weight: 17
         - identifier: growth
           name: Growth
           url: /growth/
           pageRef: /growth
-          weight: 17
+          weight: 18
         - identifier: posts
           name: Posts
           url: /articles/
           pageRef: /articles
-          weight: 18
+          weight: 19
+        - identifier: columns
+          name: Columns
+          url: /columns/
+          weight: 20
         - identifier: travel
           name: Travel
           url: /travel/
           pageRef: /travel
-          weight: 20
+          weight: 21
     params:
       description: "Tech blog by Xinwei Xiong — AI Builder, open source contributor and digital nomad sharing Kubernetes, Go, AI projects and travel."
       profileMode:
@@ -307,16 +316,16 @@ languages:
         imageHeight: 120
         imageTitle: "Xinwei Xiong profile photo"
         buttons:
-          - name: AI Technology
-            url: /ai-technology/
+          - name: AI Agent
+            url: /ai-agent/
+          - name: Engineering
+            url: /engineering/
           - name: Growth & Life
             url: /growth/
           - name: AI Projects
             url: /projects/
           - name: Archives
             url: /archives/
-          - name: Categories
-            url: /categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/en"
           Text: "Suggest Changes" # edit text
@@ -347,26 +356,35 @@ languages:
           url: /zh/projects/
           pageRef: /zh/projects
           weight: 15
-        - identifier: ai
-          name: AI
-          url: /zh/ai-technology/
-          pageRef: /zh/ai-technology
+        - identifier: ai-agent
+          name: AI Agent
+          url: /zh/ai-agent/
+          pageRef: /zh/ai-agent
           weight: 16
+        - identifier: engineering
+          name: 工程
+          url: /zh/engineering/
+          pageRef: /zh/engineering
+          weight: 17
         - identifier: growth
           name: 成长
           url: /zh/growth/
           pageRef: /zh/growth
-          weight: 17
+          weight: 18
         - identifier: posts
           name: 文章
           url: /zh/articles/
           pageRef: /zh/articles
-          weight: 18
+          weight: 19
+        - identifier: columns
+          name: 专栏
+          url: /zh/columns/
+          weight: 20
         - identifier: travel
           name: 旅行
           url: /zh/travel/
           pageRef: /zh/travel
-          weight: 20
+          weight: 21
     params:
       profileMode:
         # 启用或禁用
@@ -379,16 +397,16 @@ languages:
         imageWidth: 120
         imageHeight: 120
         buttons:
-          - name: AI 技术
-            url: /ai-technology/
+          - name: AI Agent
+            url: /zh/ai-agent/
+          - name: 工程
+            url: /zh/engineering/
           - name: 成长与生活
-            url: /growth/
+            url: /zh/growth/
           - name: AI 开源项目
-            url: /projects/
+            url: /zh/projects/
           - name: 归档
             url: /zh/archives/
-          - name: 分类
-            url: /zh/categories/
       editPost:
           URL: "https://github.com/cubxxw/blog/edit/main/content/zh"
           Text: "Suggest Changes" # edit text

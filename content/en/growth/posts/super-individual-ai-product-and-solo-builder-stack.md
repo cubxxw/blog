@@ -27,8 +27,6 @@ tags:
   - MCP
   - Product Strategy
   - Personal Growth
-categories:
-  - Growth
 cover:
   image: /images/posts/2026/super-individual/cover.jpg
   alt: "The Super-Individual Stack: AI-Native Product Directions and Solo Builder Ops in 2026"

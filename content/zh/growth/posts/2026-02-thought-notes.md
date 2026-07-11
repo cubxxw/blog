@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   - Travel
   - Self-Discovery
-categories:
-  - Growth
 description: >
   2026 年 2 月深度思考笔记，本月共 365 条。涵盖旅行见闻（清迈、博卡拉）、生态保护思考、城市治理观察、AI 产品思考、佛学感悟、以及自我探索的深度记录。
   

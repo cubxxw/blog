@@ -16,8 +16,6 @@ tags:
   - Travel
   - Self-Discovery
   - AI
-categories:
-  - Growth
 description: >
   March 2026 thought notes, 468 entries across 31 days. Covers travel impressions (Cambodia Siem Reap, Angkor Wat, Phnom Penh history), AI Agent architecture and multi-agent system design, Khmer civilization engineering aesthetics, and self-narrative cognitive exploration.
   Core topics: Gewu/AI (53 entries), Gewu/Cambodia (38 entries), Gewu/Angkor Wat (23 entries), Gewu/Hinduism (15 entries), Guannwo (14 entries), Gewu/Vietnam (11 entries).

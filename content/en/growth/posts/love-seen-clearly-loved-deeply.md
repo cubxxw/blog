@@ -14,8 +14,6 @@ tags:
   - Philosophy
   - Love
   - Personal Growth
-categories:
-  - Personal Growth
 description: >
   Five lenses—psychology, biology, anthropology, history, sociology—dissect love, and then Buddhism's dependent origination gathers all five into a single circle. From possession to seeing, from seeing through to loving deeply: a long essay on the anatomy and the liberation of love.
 tldr:

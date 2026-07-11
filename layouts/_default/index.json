@@ -9,7 +9,6 @@
         "lang" .Lang
         "date" (.Date.Format "2006-01-02")
         "tags" .Params.tags
-        "categories" .Params.categories
         "section" .Section
     ) -}}
     {{- end }}

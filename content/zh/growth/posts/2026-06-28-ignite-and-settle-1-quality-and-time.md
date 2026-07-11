@@ -16,8 +16,6 @@ tags:
   - Personal Growth
   - Self-Discovery
   - Love
-categories:
-  - Growth
 description: >
   陪伴的质量与时间不是二选一，而是两套不同系统在分别工作。质量管点火，时间管沉底。这一篇拆开响应系统与熟悉化系统，再用杏仁核的工作机理解释为什么安全感不是这里没有威胁，而是这里没有意外。最后回到一个最常见、最少被识别的动作：为什么我们总在快要靠近时转身。
 tldr:

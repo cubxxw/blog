@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   -  Mid-year Insights
   - Creative Thinking
-categories:
-  - Growth
 description: >
     May 2025 monthly reflection - exploring mid-year insights, creative breakthroughs, and the evolving landscape of personal and professional growth in the AI era.
 tldr:

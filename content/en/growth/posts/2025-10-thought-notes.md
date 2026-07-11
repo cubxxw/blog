@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   - Late Autumn Reflection
   - Wisdom Precipitation
-categories:
-  - Growth
 description: >
     October 2025 deep thinking notes, recording multi-dimensional reflections on urban development, tech product thinking, personal cognitive growth, and social phenomena. Covering topics from Jiaxing's development potential and high-rise building issues, K-visa policy, rapid iteration methodology, the philosophy of moving from knowing to awareness, embodied memory theory, and observations in the AI era.
 tldr:

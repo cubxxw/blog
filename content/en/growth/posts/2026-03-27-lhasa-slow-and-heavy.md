@@ -11,8 +11,6 @@ tags:
   - Travel
   - Tibet
   - Reflection
-categories:
-  - Travel
 description: >
   Reflections from a stay in Lhasa, February to March 2026. On the body slowing down, the public nature of faith, collective memory, and the struggles of Tsangyang Gyatso.
 tldr:

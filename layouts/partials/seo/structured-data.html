@@ -60,7 +60,9 @@
   {{- with .Params.tags -}}
   "keywords": [{{ range $i, $kw := . }}{{ if $i }}, {{ end }}{{ $kw | plainify }}{{ end }}],
   {{- end -}}
-  "articleSection": {{ cond (gt (len .Params.categories) 0) (index .Params.categories 0) "Blog" }},
+  {{- $sectionTitle := "Blog" -}}
+  {{- with .FirstSection }}{{ with .Title }}{{ $sectionTitle = . }}{{ end }}{{ end -}}
+  "articleSection": {{ $sectionTitle }},
   "wordCount": {{ .WordCount }}
 }
 </script>

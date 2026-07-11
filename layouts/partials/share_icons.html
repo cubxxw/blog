@@ -12,7 +12,7 @@
 {{- $wc_tags := slice }}
 {{- range $.Page.GetTerms "tags" }}{{ $wc_tags = $wc_tags | append .LinkTitle }}{{ end }}
 {{- $wc_cats := slice }}
-{{- range $.Page.GetTerms "categories" }}{{ $wc_cats = $wc_cats | append .LinkTitle }}{{ end }}
+{{- with $.Page.FirstSection }}{{ if ne .RelPermalink "/" }}{{ $wc_cats = $wc_cats | append .Title }}{{ end }}{{ end }}
 
 {{- $custom := false }}
 {{- $ShareButtons := (.Param "ShareButtons")}}

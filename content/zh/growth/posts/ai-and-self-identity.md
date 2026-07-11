@@ -15,13 +15,11 @@ tags:
   - 技术哲学 (Technology Philosophy)
   - 自我认知 (Self Awareness)
   - 人类价值 (Human Value)
-categories:
-  - Growth
 maturity: budding
 description: >
     当 AI 能替代我们思考和执行，"我"在哪里？探索 AI 时代人类的主体性、感受与意义的本质。
 aliases:
-  - /zh/ai-technology/posts/ai-and-self-identity/
+  - /zh/ai-agent/posts/ai-and-self-identity/
 tldr:
   - "人类主体性的核心不是思考、知识或创造力，而是从具体身体出发的感受与在场，这是AI永远无法复制的有限性。"
   - "真正的意义和灵感源于意外涌现而非理性计算，它需要身体反应、情感涌动和被自己惊讶到的瞬间。"

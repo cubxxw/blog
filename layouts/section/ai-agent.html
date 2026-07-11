@@ -1,0 +1,139 @@
+{{- define "main" }}
+{{- $lang := .Lang }}
+{{- $isZh := eq $lang "zh" }}
+{{- $pages := (where .RegularPages "Lang" $lang).ByDate.Reverse }}
+{{- $featured := index $pages 0 }}
+
+{{/* Topic detection by tags — powers the working filter chips */}}
+{{- $agentTags := slice "Agent" "MCP" "Architecture" "Agent 工程" "Harness" }}
+{{- $ctxTags := slice "Context Engineering" "RAG" "Vector Database" "Memory" "GEO" "SEO" }}
+
+<div class="aia-page">
+
+  {{/* ── Hero: signal field ── */}}
+  <header class="aia-hero">
+    <div class="aia-hero__field" aria-hidden="true"></div>
+    <div class="aia-hero__eyebrow">
+      <span class="aia-pulse"></span>
+      {{ if $isZh }}AI Agent · 一线构建笔记{{ else }}AI Agent · Field Notes{{ end }}
+    </div>
+    <h1 class="aia-hero__title">
+      {{- if $isZh }}
+      <span class="aia-hero__plain">与智能体</span>
+      <span class="aia-hero__accent">一起构建</span>
+      {{- else }}
+      <span class="aia-hero__plain">Building with</span>
+      <span class="aia-hero__accent">Intelligent Agents</span>
+      {{- end }}
+    </h1>
+    <p class="aia-hero__desc">
+      {{- if .Description }}{{ .Description | markdownify }}
+      {{- else if $isZh }}Agent 工程、上下文工程与大模型应用——记录 AI 原生时代的每一次构建
+      {{- else }}Agent engineering, context engineering, and LLM applications — documenting every build in the AI-native era
+      {{- end }}
+    </p>
+    <div class="aia-hero__meta">
+      <span class="aia-hero__count">{{ len $pages }} {{ if $isZh }}篇{{ else }}articles{{ end }}</span>
+      {{- with .OutputFormats.Get "rss" }}
+      <a href="{{ .RelPermalink }}" class="aia-hero__rss" title="RSS">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" height="14" width="14"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+        RSS
+      </a>
+      {{- end }}
+    </div>
+  </header>
+
+  {{/* ── Topic filter ── */}}
+  <nav class="aia-topics" aria-label="{{ if $isZh }}主题过滤{{ else }}Topic filter{{ end }}">
+    <button class="aia-topic aia-topic--active" data-topic="all">{{ if $isZh }}全部{{ else }}All{{ end }}</button>
+    <button class="aia-topic" data-topic="agent">{{ if $isZh }}Agent 工程{{ else }}Agent Engineering{{ end }}</button>
+    <button class="aia-topic" data-topic="context">{{ if $isZh }}上下文 · 检索{{ else }}Context · Retrieval{{ end }}</button>
+    <button class="aia-topic" data-topic="llm">{{ if $isZh }}大模型 · 生成式{{ else }}LLM · Generative{{ end }}</button>
+  </nav>
+
+  {{/* ── Featured transmission ── */}}
+  {{- with $featured }}
+  {{- $ftags := .Params.tags | default slice }}
+  <article class="aia-featured" data-topic="{{ if intersect $ftags $agentTags }}agent{{ else if intersect $ftags $ctxTags }}context{{ else }}llm{{ end }}">
+    <div class="aia-featured__label">
+      <span class="aia-pulse aia-pulse--live"></span>
+      {{ if $isZh }}最新信号{{ else }}Latest Signal{{ end }}
+    </div>
+    <h2 class="aia-featured__title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{- with .Params.description }}
+    <p class="aia-featured__desc">{{ . | plainify | truncate 180 }}</p>
+    {{- end }}
+    <div class="aia-featured__foot">
+      <time class="aia-mono">{{ .Date.Format "2006-01-02" }}</time>
+      {{- with .Params.tags }}
+      <div class="aia-featured__tags">
+        {{- range first 3 . }}<span class="aia-tag">{{ . }}</span>{{ end }}
+      </div>
+      {{- end }}
+      <a href="{{ .Permalink }}" class="aia-cta">
+        {{ if $isZh }}阅读全文{{ else }}Read article{{ end }}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </article>
+  {{- end }}
+
+  {{/* ── Index ── */}}
+  <section class="aia-index">
+    <div class="aia-index__head">
+      <h2 class="aia-index__title">{{ if $isZh }}全部文章{{ else }}All Articles{{ end }}</h2>
+      <span class="aia-index__rule" aria-hidden="true"></span>
+      <span class="aia-mono aia-index__count">{{ len $pages }}</span>
+    </div>
+
+    {{- $paginator := .Paginate $pages 20 }}
+    <ol class="aia-list" start="{{ add 1 (mul (sub $paginator.PageNumber 1) 20) }}">
+      {{- range $i, $p := $paginator.Pages }}
+      {{- $ptags := $p.Params.tags | default slice }}
+      <li class="aia-row" data-topic="{{ if intersect $ptags $agentTags }}agent{{ else if intersect $ptags $ctxTags }}context{{ else }}llm{{ end }}">
+        <span class="aia-row__num aia-mono">{{ printf "%02d" (add $i (add 1 (mul (sub $paginator.PageNumber 1) 20))) }}</span>
+        <div class="aia-row__body">
+          <h3 class="aia-row__title"><a href="{{ $p.Permalink }}">{{ $p.Title }}</a></h3>
+          {{- with $p.Params.tags }}
+          <div class="aia-row__tags">
+            {{- range first 3 . }}<span class="aia-tag aia-tag--xs">{{ . }}</span>{{ end }}
+          </div>
+          {{- end }}
+        </div>
+        <time class="aia-row__date aia-mono">{{ $p.Date.Format "2006-01-02" }}</time>
+        <a class="aia-row__cover" href="{{ $p.Permalink }}" aria-label="{{ $p.Title | plainify }}"></a>
+      </li>
+      {{- end }}
+    </ol>
+
+    {{- if gt $paginator.TotalPages 1 }}
+    <footer class="aia-pagination">
+      {{- if $paginator.HasPrev }}
+      <a class="aia-page-btn" href="{{ $paginator.Prev.URL | absURL }}">← {{ i18n "prev_page" }}</a>
+      {{- end }}
+      <span class="aia-mono">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      {{- if $paginator.HasNext }}
+      <a class="aia-page-btn" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
+      {{- end }}
+    </footer>
+    {{- end }}
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('.aia-topic');
+  var items = document.querySelectorAll('[data-topic].aia-row, [data-topic].aia-featured');
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var topic = chip.dataset.topic;
+      chips.forEach(function (c) { c.classList.toggle('aia-topic--active', c === chip); });
+      items.forEach(function (el) {
+        el.classList.toggle('aia-hidden', topic !== 'all' && el.dataset.topic !== topic);
+      });
+    });
+  });
+})();
+</script>
+{{- end }}

@@ -4,7 +4,6 @@ date: 2025-04-15T20:53:12+08:00
 draft: false
 tocopen: true
 tags: ["AI", "Project Learning"]
-categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: >
   介绍一些好用的工具，以及基本的上手的步骤，学习，note
@@ -1208,6 +1207,6 @@ describe('Login Functionality', () => {
 ## 补充相关文章
 
 + [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
-+ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/ai-technology/posts/open-source-contribution-guidelines/)
-+ [我的实践总结：开源社区的规范设计思路](/zh/ai-technology/posts/advanced-githook-design/)
-+ [在开源社区中学会如何提问](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/engineering/posts/open-source-contribution-guidelines/)
++ [我的实践总结：开源社区的规范设计思路](/zh/engineering/posts/advanced-githook-design/)
++ [在开源社区中学会如何提问](/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

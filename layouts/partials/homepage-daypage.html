@@ -143,7 +143,7 @@
         {{- with $featured }}
         <a class="hp-post-card hp-featured" href="{{ .RelPermalink }}">
           <div class="hp-post-meta">
-            <span class="hp-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+            <span class="hp-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>
             <span>{{ .Date.Format "Jan 02" | upper }}</span>
             <span>·</span><span>{{ .ReadingTime }} min</span>
           </div>
@@ -155,7 +155,7 @@
         {{- range $recent }}
         <a class="hp-post-card" href="{{ .RelPermalink }}">
           <div class="hp-post-meta">
-            <span class="hp-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+            <span class="hp-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>
             <span>{{ .Date.Format "Jan 02" | upper }}</span>
           </div>
           <h3 class="hp-post-title">{{ .Title }}</h3>
@@ -169,7 +169,7 @@
         {{- range $archive }}
         <a class="hp-posts-list-row" href="{{ .RelPermalink }}">
           <span class="hp-posts-list-date">{{ .Date.Format "Jan 02" | upper }}</span>
-          <span class="hp-posts-list-cat">{{ with .Params.categories }}{{ index . 0 }}{{ end }}</span>
+          <span class="hp-posts-list-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>
           <span class="hp-posts-list-title">{{ .Title }}</span>
           <span class="hp-posts-list-arrow">→</span>
         </a>
@@ -177,11 +177,17 @@
       </div>
 
       <div class="hp-cat-row">
-        <a class="hp-cat-tile" href="{{ "/ai-technology/" | relLangURL }}">
-          <div class="hp-cat-tile-icon">⚡</div>
-          <div class="hp-cat-tile-name">AI / Tech</div>
-          <div class="hp-cat-tile-zh">技术</div>
-          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "ai-technology") }}</strong></div>
+        <a class="hp-cat-tile" href="{{ "/ai-agent/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">🤖</div>
+          <div class="hp-cat-tile-name">AI Agent</div>
+          <div class="hp-cat-tile-zh">智能体</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "ai-agent") }}</strong></div>
+        </a>
+        <a class="hp-cat-tile" href="{{ "/engineering/" | relLangURL }}">
+          <div class="hp-cat-tile-icon">⚙️</div>
+          <div class="hp-cat-tile-name">Engineering</div>
+          <div class="hp-cat-tile-zh">工程</div>
+          <div class="hp-cat-tile-count"><span>ENTRIES</span><strong>{{ len (where site.RegularPages "Section" "engineering") }}</strong></div>
         </a>
         <a class="hp-cat-tile" href="{{ "/growth/" | relLangURL }}">
           <div class="hp-cat-tile-icon">🌱</div>
@@ -314,7 +320,7 @@
             <div><div class="hp-travel-stat-num">{{ len $allPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}总文章{{ else }}Posts{{ end }}</div></div>
             <div><div class="hp-travel-stat-num">{{ len $thisYearPages }}</div><div class="hp-travel-stat-label">{{ if $isZh }}今年{{ else }}This Year{{ end }}</div></div>
             <div><div class="hp-travel-stat-num">{{ $yearsActive }}</div><div class="hp-travel-stat-label">{{ if $isZh }}写作年数{{ else }}Years{{ end }}</div></div>
-            <div><div class="hp-travel-stat-num">{{ len (site.Taxonomies.categories) }}</div><div class="hp-travel-stat-label">{{ if $isZh }}分类{{ else }}Topics{{ end }}</div></div>
+            <div><div class="hp-travel-stat-num">{{ len (site.Taxonomies.tags) }}</div><div class="hp-travel-stat-label">{{ if $isZh }}标签{{ else }}Topics{{ end }}</div></div>
           </div>
           <div class="hp-travel-cities">
             {{- range $i, $p := $recentPosts -}}

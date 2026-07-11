@@ -46,7 +46,7 @@ find content/ -name "*.md" -newer <(date -v-7d +%Y-%m-%d) 2>/dev/null | head -20
 为每篇文章打印检查结果，格式如下：
 
 ```
-📄 content/zh/ai-technology/posts/my-article.md
+📄 content/zh/ai-agent/posts/my-article.md
   ✅ Front matter 格式正确
   ✅ date 包含 +08:00
   ❌ date 是未来时间: 2026-05-01T10:00:00+08:00（当前时间之后）

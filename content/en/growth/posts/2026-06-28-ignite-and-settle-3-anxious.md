@@ -16,8 +16,6 @@ tags:
   - Personal Growth
   - Self-Discovery
   - Love
-categories:
-  - Growth
 description: >
   Anxious attachment is not about loving too much. It comes from repeatedly experiencing as a child that love would come but might not stay, that people would draw close and then suddenly disappear. So in adulthood the anxious person doesn't distrust love — they fear love disappearing. This piece lays out the origins, typical patterns, the anxious-avoidant trap, and the path of repair, all in one place.
 tldr:

@@ -19,8 +19,6 @@ tags:
   - Travel
   - Adventure
   - Exploration
-categories:
-  - Travel
 description: "跟随我的脚步探索世界，记录旅行足迹、冒险经历和数字游民生活"
 polarsteps_url: "https://www.polarsteps.com/cubxxw"
 ---

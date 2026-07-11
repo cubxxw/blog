@@ -1,0 +1,129 @@
+{{- define "main" }}
+{{- $lang := .Lang }}
+{{- $isZh := eq $lang "zh" }}
+{{- $pages := (where .RegularPages "Lang" $lang).ByDate.Reverse }}
+
+{{/* System clusters — tag-driven grouping rendered as schematic modules */}}
+{{- $cloudTags := slice "Kubernetes" "Cloud Native" "etcd" "服务网格 (Service Mesh)" "Service Mesh" "Helm" "Kustomize" "Sealos" "GitOps" }}
+{{- $goTags := slice "Go" "Golang (GO语言)" "Golang" "Go 语言" }}
+{{- $devopsTags := slice "DevOps" "CI/CD" "Automation" "Deployment" "Docker" "Git" "GitHub Actions" "Testing" "Harbor" "Prow" "Monitoring" }}
+{{- $ossTags := slice "Open Source" "OpenIM" "Community" "Open Source Commercialization" "开源" }}
+
+{{- $cloud := slice }}{{- $go := slice }}{{- $devops := slice }}{{- $oss := slice }}{{- $notes := slice }}
+{{- range $pages }}
+  {{- $t := .Params.tags | default slice }}
+  {{- if intersect $t $cloudTags }}{{ $cloud = $cloud | append . }}
+  {{- else if intersect $t $goTags }}{{ $go = $go | append . }}
+  {{- else if intersect $t $devopsTags }}{{ $devops = $devops | append . }}
+  {{- else if intersect $t $ossTags }}{{ $oss = $oss | append . }}
+  {{- else }}{{ $notes = $notes | append . }}
+  {{- end }}
+{{- end }}
+
+<div class="eng-page">
+
+  {{/* ── Hero: blueprint header ── */}}
+  <header class="eng-hero">
+    <div class="eng-hero__grid" aria-hidden="true"></div>
+    <div class="eng-hero__eyebrow eng-mono">
+      ENGINEERING NOTEBOOK
+      <span class="eng-hero__rev eng-mono">REV. {{ now.Format "2006" }}</span>
+    </div>
+    <h1 class="eng-hero__title">
+      {{- if $isZh }}
+      <span class="eng-hero__plain">工程</span><span class="eng-hero__accent">手记</span>
+      {{- else }}
+      <span class="eng-hero__plain">Systems &</span> <span class="eng-hero__accent">Craft</span>
+      {{- end }}
+    </h1>
+    <p class="eng-hero__desc">
+      {{- if .Description }}{{ .Description | markdownify }}
+      {{- else if $isZh }}Kubernetes 云原生、Go 工程化与 DevOps 实践——支撑 AI 产品的工程根基
+      {{- else }}Kubernetes, Go engineering, and DevOps practice — the infrastructure foundation behind AI products
+      {{- end }}
+    </p>
+    <div class="eng-hero__specs eng-mono">
+      <span>{{ len $pages }} {{ if $isZh }}篇{{ else }}ARTICLES{{ end }}</span>
+      <span class="eng-spec-sep">/</span>
+      <span>K8S {{ len $cloud }}</span>
+      <span class="eng-spec-sep">/</span>
+      <span>GO {{ len $go }}</span>
+      <span class="eng-spec-sep">/</span>
+      <span>DEVOPS {{ len $devops }}</span>
+      <span class="eng-spec-sep">/</span>
+      <span>OSS {{ len $oss }}</span>
+      {{- with .OutputFormats.Get "rss" }}
+      <a href="{{ .RelPermalink }}" class="eng-hero__rss" title="RSS">RSS ↗</a>
+      {{- end }}
+    </div>
+  </header>
+
+  {{/* ── System modules ── */}}
+  <section class="eng-modules">
+    {{- $modules := slice
+      (dict "id" "01" "name" (cond $isZh "云原生 · Kubernetes" "Cloud Native · Kubernetes") "list" $cloud)
+      (dict "id" "02" "name" (cond $isZh "Go 工程化" "Go Engineering") "list" $go)
+      (dict "id" "03" "name" (cond $isZh "DevOps · 自动化" "DevOps · Automation") "list" $devops)
+      (dict "id" "04" "name" (cond $isZh "开源 · 协作" "Open Source · Community") "list" $oss)
+    }}
+    {{- range $modules }}
+    {{- if .list }}
+    <article class="eng-module">
+      <div class="eng-module__head">
+        <span class="eng-module__id eng-mono">{{ .id }}</span>
+        <h2 class="eng-module__name">{{ .name }}</h2>
+        <span class="eng-module__count eng-mono">×{{ len .list }}</span>
+      </div>
+      <ul class="eng-module__list">
+        {{- range first 4 .list }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a><time class="eng-mono">{{ .Date.Format "06-01" }}</time></li>
+        {{- end }}
+      </ul>
+    </article>
+    {{- end }}
+    {{- end }}
+  </section>
+
+  {{/* ── Full archive: year-grouped index ── */}}
+  <section class="eng-archive">
+    <div class="eng-archive__head">
+      <h2 class="eng-archive__title">{{ if $isZh }}全部归档{{ else }}Full Archive{{ end }}</h2>
+      <span class="eng-archive__rule" aria-hidden="true"></span>
+      <span class="eng-mono">{{ len $pages }}</span>
+    </div>
+
+    {{- $paginator := .Paginate $pages 25 }}
+    {{- $currentYear := "" }}
+    <div class="eng-index">
+      {{- range $paginator.Pages }}
+      {{- $year := .Date.Format "2006" }}
+      {{- if ne $year $currentYear }}
+      {{- $currentYear = $year }}
+      <div class="eng-year eng-mono">{{ $year }}</div>
+      {{- end }}
+      <article class="eng-row">
+        <time class="eng-row__date eng-mono">{{ .Date.Format "01-02" }}</time>
+        <h3 class="eng-row__title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        {{- with .Params.tags }}
+        <span class="eng-row__tag eng-mono">{{ index . 0 }}</span>
+        {{- end }}
+        <a class="eng-row__cover" href="{{ .Permalink }}" aria-label="{{ .Title | plainify }}"></a>
+      </article>
+      {{- end }}
+    </div>
+
+    {{- if gt $paginator.TotalPages 1 }}
+    <footer class="eng-pagination">
+      {{- if $paginator.HasPrev }}
+      <a class="eng-page-btn" href="{{ $paginator.Prev.URL | absURL }}">← {{ i18n "prev_page" }}</a>
+      {{- end }}
+      <span class="eng-mono">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      {{- if $paginator.HasNext }}
+      <a class="eng-page-btn" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
+      {{- end }}
+    </footer>
+    {{- end }}
+  </section>
+
+</div>
+{{- end }}

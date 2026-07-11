@@ -9,7 +9,6 @@ type: posts
 author: ["Xinwei Xiong"]
 keywords: ['Japan travel', 'Mount Fuji', 'Hakone', 'Tokyo', 'Kansai', 'autumn leaves', 'Wakayama', 'Kumano Kodo', 'Nara', 'Kyoto', 'travel essay']
 tags: ['Travel', 'Japan', 'Self-Discovery', 'Adventure', 'Exploration']
-categories: ["Travel"]
 description: 'Summer and autumn 2025, two trips to Japan. From Hakone and Mount Fuji to Kansai autumn leaves, from Kumano Kodo to Kyoto ancient temples. A place where I learned to be with time through wood, fire, and gaps.'
 tldr:
   - "Japan maintains relationships with time through deliberate impermanence: wood burns, gardens change, metal oxidizes, creating renewal rather than preservation."

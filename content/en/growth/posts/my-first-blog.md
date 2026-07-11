@@ -5,10 +5,8 @@ author: ["Xinwei Xiong", "Me"]
 description: "This is my first blog, about my introduction"
 tags:
   - Blog
-categories:
-  - Growth
 aliases:
-  - /ai-technology/posts/my-first-blog/
+  - /ai-agent/posts/my-first-blog/
 tldr:
   - "Xinwei Xiong is a passionate open source contributor and tech enthusiast guided by the OpenIM community in his digital journey."
   - "True value emerges from what you create, not what you possess, as emphasized by open source philosophy and personal mantra."

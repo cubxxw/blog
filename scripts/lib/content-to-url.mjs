@@ -6,8 +6,8 @@
 // Rules mirror this repo's Hugo config (defaultContentLanguageInSubdir: false):
 //   content/en/growth/posts/foo.md     → https://cubxxw.com/growth/posts/foo/
 //   content/zh/growth/posts/foo.md     → https://cubxxw.com/zh/growth/posts/foo/
-//   content/en/ai-technology/_index.md → https://cubxxw.com/ai-technology/
-//   content/zh/ai-technology/_index.md → https://cubxxw.com/zh/ai-technology/
+//   content/en/ai-agent/_index.md → https://cubxxw.com/ai-agent/
+//   content/zh/ai-agent/_index.md → https://cubxxw.com/zh/ai-agent/
 //
 // Anything outside `content/<lang>/` is ignored (layouts, static, config).
 

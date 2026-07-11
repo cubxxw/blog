@@ -16,8 +16,6 @@ tags:
   - Personal Growth
   - Self-Discovery
   - Love
-categories:
-  - Growth
 description: >
   In the Chinese context, what people often call avoidant personality is more precisely avoidant attachment. Its core is not no need for love but a slowly learned lesson from childhood: expressing needs does not work, getting close is not safe, carrying it alone is steadiest. This piece lays out where it grows from, what its underlying beliefs look like, how it typically shows up, and step by step how it can be repaired — both with others and with yourself.
 tldr:

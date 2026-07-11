@@ -11,8 +11,6 @@ tags:
   - AI
   - Open Source
   - Project Learning
-categories:
-  - Projects
 description: >
   Learn LangGraph architecture: how StateGraph, nodes, edges, and checkpointing power stateful multi-agent LLM workflows, plus how it differs from LangChain.
 aliases:
@@ -121,6 +119,6 @@ For learning, build a tiny graph first: chatbot state, one model node, one tool 
 ## Related Articles
 
 + [A Staged Growth Guide for Open Source](/growth/posts/stage-growth-of-open-source/)
-+ [A Complete Guide to Open Source Contributions (A Handbook for First-Time Contributors)](/ai-technology/posts/open-source-contribution-guidelines/)
-+ [My Practical Summary: Designing Standards for Open Source Communities](/ai-technology/posts/advanced-githook-design/)
-+ [Learning How to Ask Questions in Open Source Communities](/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [A Complete Guide to Open Source Contributions (A Handbook for First-Time Contributors)](/engineering/posts/open-source-contribution-guidelines/)
++ [My Practical Summary: Designing Standards for Open Source Communities](/engineering/posts/advanced-githook-design/)
++ [Learning How to Ask Questions in Open Source Communities](/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

@@ -161,16 +161,13 @@
   </div>
   {{- end }}
 
-  {{/* ── Topics (Categories) ── */}}
-  {{- $cats := $page.Language.Params.Taxonomies.category | default "categories" }}
-  {{- $catTerms := $page.GetTerms $cats }}
-  {{- if $catTerms }}
+  {{/* ── Topics (Section) ── */}}
+  {{- $topicSection := $page.FirstSection }}
+  {{- if and $topicSection (ne $topicSection.RelPermalink "/") }}
   <div class="marginalia-group">
     <span class="marginalia-label">{{ i18n "marginalia.topics" | default "Topics" }}</span>
     <div class="marginalia-tags">
-      {{- range $catTerms }}
-      <a href="{{ .Permalink }}" class="marginalia-tag marginalia-tag--topic">{{ .LinkTitle }}</a>
-      {{- end }}
+      <a href="{{ $topicSection.Permalink }}" class="marginalia-tag marginalia-tag--topic">{{ $topicSection.Title }}</a>
     </div>
   </div>
   {{- end }}
@@ -228,7 +225,7 @@
   {{- $mg_tags := slice }}
   {{- range $page.GetTerms "tags" }}{{ $mg_tags = $mg_tags | append .LinkTitle }}{{ end }}
   {{- $mg_cats := slice }}
-  {{- range $page.GetTerms "categories" }}{{ $mg_cats = $mg_cats | append .LinkTitle }}{{ end }}
+  {{- with $page.FirstSection }}{{ if ne .RelPermalink "/" }}{{ $mg_cats = $mg_cats | append .Title }}{{ end }}{{ end }}
   {{- $mg_desc := $page.Description }}
   {{- $mg_descShort := "" }}
   {{- if $mg_desc }}{{- $mg_descShort = $mg_desc | truncate 120 "…" }}{{- end }}

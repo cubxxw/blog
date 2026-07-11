@@ -1,190 +1,76 @@
-# Category Architecture
+# Content Architecture
 
-> **Version**: 2.0.0
-> **Date**: 2026-04-06
-> **Purpose**: Unified top-level information architecture for the blog
+> **Version**: 3.0.0
+> **Date**: 2026-07-11
+> **Purpose**: Unified information architecture for the blog
 
 ## Overview
 
-This blog uses a **4-category architecture** aligned with the author's identity as **AI Builder, Open Source Contributor, and Digital Nomad**.
+The blog organizes content along **three axes**, aligned with the author's identity as **AI Builder, Open Source Contributor, and Digital Nomad**:
 
-## Core Categories
+1. **Sections** (directory = primary classification, one per post)
+2. **Tags** (fine-grained topics, 5-8 per post)
+3. **Columns** (curated multi-part essay series, opt-in)
 
-### 1. AI & Technology
+> ⚠️ The `categories` taxonomy was **retired in v3.0.0** (2026-07). It duplicated
+> the section structure one-to-one and generated near-duplicate list pages.
+> Do NOT add `categories:` to frontmatter — the field is ignored.
+> Old `/categories/*` URLs 301-redirect to `/archives/`.
 
-**Purpose**: Technical content about AI/LLM, Kubernetes, Go, DevOps, and engineering practices.
+## Sections
 
-**Coverage**:
-- AI/LLM applications and frameworks (LangChain, AutoGPT, Agents)
-- Kubernetes cloud-native technologies (K8s components, GitOps, Service Mesh)
-- Go language engineering (concurrency, tooling, cross-platform)
-- DevOps practices (CI/CD, testing, deployment, monitoring)
+| Section | Path | Purpose |
+|---------|------|---------|
+| **AI Agent** | `content/{zh,en}/ai-agent/posts/` | Agent engineering, context engineering, LLM applications, GEO |
+| **Engineering** | `content/{zh,en}/engineering/posts/` | Kubernetes cloud-native, Go engineering, DevOps, open-source practice |
+| **Growth** | `content/{zh,en}/growth/posts/` | Annual reviews, thought notes, personal growth, relationships |
+| **Projects** | `content/{zh,en}/projects/` | Open-source project deep-dives and product builds (flat files, no `posts/` subdir) |
 
-**Previous mappings**:
-- `Development` → AI & Technology
-- `Technology` → AI & Technology
-- `开发 (Development)` → AI & Technology
-- `技术 (Technology)` → AI & Technology
+Supporting surfaces (not content sections): `articles` (all-posts aggregator),
+`columns` (series landing pages), `travel` (standalone life page), `start-here`
+(curated entry), `about`, `archives`, `search`.
 
-**Sample tags**: `Kubernetes`, `Go`, `AI`, `LLM`, `DevOps`, `Cloud Native`, `LangChain`, `GitOps`, `CI/CD`, `Microservices`
+### Choosing a section
 
----
+- Writing about agents, LLMs, context/memory/RAG, AI search → **ai-agent**
+- Writing about K8s, Go, CI/CD, deployment, open-source workflow → **engineering**
+- Writing about life, reviews, mindset, relationships, learning methods → **growth**
+- A deep-dive on one specific open-source project or product → **projects**
 
-### 2. Projects
+History note: `ai-technology` was split into `ai-agent` + `engineering` in v3.0.0.
+All old URLs are covered by per-post 301 rules in `static/_redirects`.
 
-**Purpose**: AI open source project deep-dives, product builds, and independent development work.
+## Tags
 
-**Coverage**:
-- AI project analysis (LangChain, GPT-Researcher, Jina, etc.)
-- Independent developer products
-- Product demos and feature showcases
-- Project documentation and usage guides
+- 5-8 per post, Title Case English (`Go`, not `golang`)
+- Registered names only — see `config/tags-mapping.json` and run `npm run tags:check`
+- Never use sentences or summaries as tags
 
-**Previous mappings**:
-- `AI Open Source` → Projects
-- `Projects` → Projects
-- `AI 开源 (AI Open Source)` → Projects
+## Columns（专栏）
 
-**Sample tags**: `Open Source`, `AI Projects`, `Product Development`, `Independent Developer`, `Project Analysis`
-
----
-
-### 3. Growth
-
-**Purpose**: Personal growth, annual reviews, mindset shifts, efficiency methods, and life reflections.
-
-**Coverage**:
-- Annual reviews (2023, 2024, 2025...)
-- Monthly thought notes
-- Personal growth methodology (GTD, Flow State, Metacognition)
-- Career development and open source journey
-- Self-discovery in the AI age
-
-**Previous mappings**:
-- `Growth` → Growth
-- `成长 (Growth)` → Growth
-- `Personal Development` → Growth
-- `个人成长 (Personal Development)` → Growth
-
-**Sample tags**: `Personal Growth`, `Annual Review`, `Flow State`, `GTD`, `Metacognition`, `Self-Discovery`, `Career Development`, `Open Source Journey`
-
----
-
-### 4. Travel
-
-**Purpose**: Travel experiences, digital nomad lifestyle, cultural exploration, and adventure records.
-
-**Coverage**:
-- Travel itineraries and guides
-- Digital nomad lifestyle
-- Cultural immersion and local experiences
-- Adventure and outdoor activities
-
-**Previous mappings**:
-- `Travel` → Travel
-- `旅行 (Travel)` → Travel
-- `冒险 (Adventure)` → Travel (as tag)
-
-**Sample tags**: `Travel`, `Digital Nomad`, `Adventure`, `Cultural Exploration`, `Travel Photography`, `Remote Work`
-
----
-
-## Category Decision Matrix
-
-| Content Type | Primary Category | Secondary Category |
-|--------------|------------------|-------------------|
-| Kubernetes tutorial | AI & Technology | - |
-| LangChain project demo | AI & Technology | Projects |
-| Annual review | Growth | - |
-| Travel itinerary | Travel | Growth (optional) |
-| AI project analysis | Projects | AI & Technology |
-| Open source contribution story | Growth | Projects |
-| GTD methodology | Growth | - |
-| Go tool development | AI & Technology | Projects |
-| Digital nomad setup | Travel | Growth |
-| Sora AI guide | AI & Technology | - |
-
----
-
-## Tag Guidelines
-
-### What goes in Category vs Tag?
-
-**Categories (1 per post)**:
-- Broad content buckets for navigation
-- Answer: "Where does this fit in the site structure?"
-- Stable, limited set (4 categories)
-
-**Tags (5-8 per post)**:
-- Specific topics and technologies
-- Answer: "What specific topics does this cover?"
-- Flexible, can grow with content
-
-**Examples**:
+Multi-part essay series. A post opts in via frontmatter:
 
 ```yaml
-# AI Technology Tutorial
-categories: [AI & Technology]
-tags: [Kubernetes, Go, DevOps, Tutorial, Cloud Native]
-
-# AI Project Deep-Dive
-categories: ["Projects"]
-tags: [LangChain, AI, Open Source, Project Analysis, LLM]
-
-# Annual Review
-categories: ["Growth"]
-tags: [Annual Review, Personal Growth, Reflection, Career Development]
-
-# Travel Experience
-categories: ["Travel"]
-tags: [Travel, Digital Nomad, Cultural Exploration, Photography]
+columns:
+  - agent-engineering
 ```
 
+Each column has a landing page at `content/{zh,en}/columns/<slug>/_index.md`
+(frontmatter: `title`, `slug`, `subtitle`, `date`, `description`, `type: columns`).
+
+Active columns: `ignite-and-settle` (点火与沉底), `agent-engineering` (Agent 工程), `geo` (GEO 生成式引擎优化, ongoing).
+
+## Frontmatter example
+
+```yaml
 ---
-
-## Migration Notes
-
-### Content Distribution (Current State)
-
-| Old Category | Count | New Category |
-|--------------|-------|--------------|
-| Development | 47 | AI & Technology |
-| Technology | 45 | AI & Technology |
-| AI Open Source | 20 | Projects |
-| Growth | 28 | Growth |
-| Travel | 3 | Travel |
-| Projects | 2 | Projects |
-| Personal Development | 2 | Growth |
-| 成长 (Growth) | 8 | Growth |
-| 技术 (Technology) | 6 | AI & Technology |
-
-### Migration Script
-
-```bash
-# Run the migration script
-./scripts/migrate-categories.sh
+title: '文章标题'
+date: 2026-07-11T12:00:00+08:00
+type: posts
+tags: [Agent, Context Engineering, LLM]
+description: >
+  纯文本描述。
+columns:        # optional
+  - agent-engineering
+---
 ```
-
-The script will:
-1. Backup all content files
-2. Replace old category names with new standardized names
-3. Preserve tags unchanged
-4. Generate a migration report
-
----
-
-## Future Considerations
-
-- **Do not add new top-level categories** unless content volume exceeds 100+ posts in a new distinct area
-- **Use tags for granularity** within categories
-- **Consider series/collections** for recurring content types (e.g., "Monthly Thoughts", "Project Deep-Dive")
-- **Review annually** to ensure categories still reflect content strategy
-
----
-
-## Version History
-
-| Version | Date | Changes |
-|---------|------|---------|
-| 2.0.0 | 2026-04-06 | Unified to 4-category architecture |
-| 1.0.0 | 2026-03-28 | Initial tagging standards document |

@@ -14,8 +14,6 @@ tags:
   - Philosophy
   - Love
   - Personal Growth
-categories:
-  - Personal Growth
 description: >
   用心理学、生物学、人类学、历史学、社会学五副透镜解剖爱情，再以佛学的缘起、无常、无我把五者收进一个圆。从占有到看见，从看穿到深爱——这是一篇关于爱的解剖与解脱的长文。
 tldr:

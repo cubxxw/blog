@@ -25,27 +25,27 @@
         "numeral": "01",
         "title": "AI 与技术",
         "audience": "写给对 AI、大语言模型、Kubernetes 与 Go 工程感兴趣的开发者。",
-        "more_url": "/zh/ai-technology/",
+        "more_url": "/zh/ai-agent/",
         "more_label": "浏览全部 AI 与技术文章",
         "posts": [
           {
-            "page": "/ai-technology/posts/agent-identity-from-locke-to-openclaw",
+            "page": "/ai-agent/posts/agent-identity-from-locke-to-openclaw",
             "hook": "从洛克的人格同一性谈到 AI 智能体的身份——一篇署名之作。"
           },
           {
-            "page": "/ai-technology/posts/my-hugo",
+            "page": "/engineering/posts/my-hugo",
             "hook": "这个博客是怎么搭起来的：Hugo 建站的完整实践。"
           },
           {
-            "page": "/ai-technology/posts/kubernetes-an-article-to-get-started-quickly",
+            "page": "/engineering/posts/kubernetes-an-article-to-get-started-quickly",
             "hook": "零基础快速理解 Kubernetes 的长青入门篇。"
           },
           {
-            "page": "/ai-technology/posts/mem0",
+            "page": "/projects/mem0",
             "hook": "给 AI 装上记忆：mem0 架构与原理拆解。"
           },
           {
-            "page": "/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities",
+            "page": "/engineering/posts/the-art-of-asking-questions-in-open-source-communities",
             "hook": "在开源社区高效提问的艺术——参与开源的第一课。"
           }
         ]
@@ -223,27 +223,27 @@
         "numeral": "01",
         "title": "AI & Technology",
         "audience": "For developers curious about AI, LLMs, Kubernetes, and Go engineering.",
-        "more_url": "/en/ai-technology/",
+        "more_url": "/en/ai-agent/",
         "more_label": "Browse all AI & technology posts",
         "posts": [
           {
-            "page": "/ai-technology/posts/agent-identity-from-locke-to-openclaw",
+            "page": "/ai-agent/posts/agent-identity-from-locke-to-openclaw",
             "hook": "From Locke's personal identity to the identity of AI agents — a signature essay."
           },
           {
-            "page": "/ai-technology/posts/my-hugo",
+            "page": "/engineering/posts/my-hugo",
             "hook": "How this blog is built: a complete Hugo walkthrough."
           },
           {
-            "page": "/ai-technology/posts/kubernetes-an-article-to-get-started-quickly",
+            "page": "/engineering/posts/kubernetes-an-article-to-get-started-quickly",
             "hook": "The evergreen zero-to-one introduction to Kubernetes."
           },
           {
-            "page": "/ai-technology/posts/go-release-tools",
+            "page": "/engineering/posts/go-release-tools",
             "hook": "Go release tooling and engineering practice, end to end."
           },
           {
-            "page": "/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities",
+            "page": "/engineering/posts/the-art-of-asking-questions-in-open-source-communities",
             "hook": "The art of asking good questions — lesson one of open source."
           }
         ]

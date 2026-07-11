@@ -15,9 +15,9 @@
 - 本仓库的正式内容目录是 `content/{lang}/{section}/...`
 - 聚合入口使用 `articles`，不是根级 `posts`
 - 普通文章只放在：
-  - `content/zh/ai-technology/posts/`
+  - `content/zh/ai-agent/posts/`、`content/zh/engineering/posts/`
   - `content/zh/growth/posts/`
-  - `content/en/ai-technology/posts/`
+  - `content/en/ai-agent/posts/`、`content/en/engineering/posts/`
   - `content/en/growth/posts/`
 - 项目型文章只放在：
   - `content/zh/projects/`
@@ -109,12 +109,14 @@ description: >
 ```yaml
 content/
 ├── en/
-│   ├── ai-technology/posts/   # AI 技术文章
+│   ├── ai-agent/posts/        # AI Agent 文章
+│   ├── engineering/posts/     # 工程文章
 │   ├── growth/posts/          # 成长类文章
 │   ├── projects/              # AI 项目文章
 │   └── articles/_index.md     # 全部文章聚合页
 ├── zh/
-│   ├── ai-technology/posts/
+│   ├── ai-agent/posts/
+│   ├── engineering/posts/
 │   ├── growth/posts/
 │   ├── projects/
 │   └── articles/_index.md
@@ -152,8 +154,8 @@ content/
 
 ```bash
 # 技术文章
-hugo new content content/zh/ai-technology/posts/my-article.md
-hugo new content content/en/ai-technology/posts/my-article.md
+hugo new content content/zh/ai-agent/posts/my-article.md
+hugo new content content/en/ai-agent/posts/my-article.md
 
 # 成长文章
 hugo new content content/zh/growth/posts/my-article.md
@@ -167,14 +169,14 @@ hugo new content content/en/projects/my-project.md --kind ai-project
 **更推荐的项目内命令**：
 
 ```bash
-make new-post SECTION="ai-technology" POST_NAME="my-article"
+make new-post SECTION="ai-agent" POST_NAME="my-article"
 make new-post SECTION="growth" POST_NAME="my-article"
 make new-ai-project PROJECT_NAME="my-project"
 ```
 
 ### 添加文章的推荐流程
 
-1. 先判断文章属于 `ai-technology`、`growth` 还是 `projects`
+1. 先判断文章属于 `ai-agent`、`engineering`、`growth` 还是 `projects`
 2. 用对应命令创建文件，不要手工新建到错误目录
 3. 先补完整 front matter，再写正文
 4. `date` 一律写上海时间 `+08:00`

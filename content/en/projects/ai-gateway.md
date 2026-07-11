@@ -10,8 +10,6 @@ keywords: []
 tags:
   - AI
   - Open Source
-categories:
-  - Projects
 description: >
   A deep dive into AI gateway architecture for managing LLM API traffic, rate limiting, and multi-model routing.
 aliases:
@@ -569,6 +567,6 @@ Ultimately, carefully choosing and effectively utilizing AI API gateways will be
 ## Related Articles
 
 + [Stages of Growth in Open Source](/growth/posts/stage-growth-of-open-source/)
-+ [A Complete Guide to Open Source Contribution (For First-Timers)](/ai-technology/posts/open-source-contribution-guidelines/)
-+ [My Practice Notes: Designing Standards for Open Source Communities](/ai-technology/posts/advanced-githook-design/)
-+ [How to Ask Questions in Open Source Communities](/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [A Complete Guide to Open Source Contribution (For First-Timers)](/engineering/posts/open-source-contribution-guidelines/)
++ [My Practice Notes: Designing Standards for Open Source Communities](/engineering/posts/advanced-githook-design/)
++ [How to Ask Questions in Open Source Communities](/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

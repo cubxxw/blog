@@ -16,8 +16,6 @@ tags:
   - Personal Growth
   - Self-Discovery
   - Love
-categories:
-  - Growth
 description: >
   在中国语境里，很多人说的回避型人格更准确地说是回避型依恋。它的核心不是不需要爱，而是从小慢慢学会了：表达需要没有用，靠近别人不安全，自己扛最稳。这一篇把它的成长土壤、底层信念、典型表现、与他人和与自己的修复路径，一次性整理清楚。
 tldr:

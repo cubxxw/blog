@@ -16,8 +16,6 @@ tags:
   - Personal Growth
   - Self-Discovery
   - Love
-categories:
-  - Growth
 description: >
   焦虑型不是太黏人，而是小时候反复体验到爱会来但不一定留、人会靠近但也可能突然走。所以长大后他不是不信任爱，而是太害怕爱消失。这一篇把焦虑型的成因、典型表现、和回避型的追逃循环、以及修复路径，一次性整理清楚。
 tldr:

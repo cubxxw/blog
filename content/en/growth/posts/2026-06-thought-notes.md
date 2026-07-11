@@ -19,8 +19,6 @@ tags:
   - 商业思考 (Business Thinking)
   - 自我认知 (Self-Knowledge)
   - AI思考 (AI Thinking)
-categories:
-  - Growth
 description: >
   In June I came back from Laos to Shenzhen. The dense, active records of the entire month were squeezed into the last ten days (June 21 to 30) — about thirty-nine conversations, almost all in Chinese. On the surface I was slack. Underneath I was thinking through hard things at high density. This piece breaks June into seven layers: the deepest psychological line — "I finally saw the mechanism of how I push people away" — and how the same move lives inside my career; Agent architecture and technical engineering; what to do and not do in product direction; the founder studies and the lesson that "incentive structure colonizes personality"; a handful of epistemological knives; and finally back to my own situation today — that the essence of disorientation is not insufficient effort, it is not yet recognizing what problem I have to solve.
 tldr:

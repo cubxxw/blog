@@ -10,7 +10,6 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags: ["Blog", "Annual Recap", "Travel", "Product Development", "Philosophy"]
-categories: ["Growth"]
 description: >
     这篇文章是我对2024年的年度回顾，涵盖了我在旅居、产品开发、个人成长等方面的经验与反思。通过分享我的经历和思考，希望能为自己和读者带来启发和思考的空间。
 tldr:
@@ -1841,7 +1840,7 @@ Deepseek 模型已开源，而 ChatGPT O3-mini 模型却未能发布；二者均
 #### 2024 开源的思考
 
 站在我自己的角度上，我觉得开源对自己的成长是非常大的，甚至是写了一篇文章，关于如何学习开源 [/zh/growth/posts/stage-growth-of-open-source/](/zh/growth/posts/stage-growth-of-open-source/)
-另外针对开源的思考以及开源的商业模式，之前也写过一篇文章，在 AI 爆发之前 [/zh/ai-technology/posts/navigating-the-open-source-landscape/](/zh/ai-technology/posts/navigating-the-open-source-landscape/)
+另外针对开源的思考以及开源的商业模式，之前也写过一篇文章，在 AI 爆发之前 [/zh/engineering/posts/navigating-the-open-source-landscape/](/zh/engineering/posts/navigating-the-open-source-landscape/)
 
 
 **AI 时代对发展趋势的思考：**

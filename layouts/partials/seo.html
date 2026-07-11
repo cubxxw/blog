@@ -44,7 +44,7 @@
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:title" content="{{ $title | plainify }}" />
 <meta property="og:description" content="{{ $description | plainify }}" />
-{{- $sectionDefault := dict "ai-technology" "/assets/og-ai-technology.png" "growth" "/assets/og-growth.png" "projects" "/assets/og-projects.png" -}}
+{{- $sectionDefault := dict "ai-agent" "/assets/og-ai-technology.png" "engineering" "/assets/og-ai-technology.png" "growth" "/assets/og-growth.png" "projects" "/assets/og-projects.png" -}}
 {{- $defaultOgImage := index (site.Params.images | default (slice "/assets/og-image.png")) 0 -}}
 {{- $sectionOgImage := index $sectionDefault .Section | default $defaultOgImage -}}
 {{- $ogImage := $sectionOgImage -}}
@@ -64,11 +64,9 @@
 <meta property="article:tag" content="{{ . | plainify }}" />
 {{- end -}}
 {{- end -}}
-{{- $cats := .Params.categories -}}
-{{- if $cats -}}
-{{- if not (reflect.IsSlice $cats) -}}{{- $cats = slice $cats -}}{{- end -}}
-{{- range first 3 $cats -}}
-<meta property="article:section" content="{{ . | plainify }}" />
+{{- with .FirstSection -}}
+{{- if ne .RelPermalink "/" -}}
+<meta property="article:section" content="{{ .Title | plainify }}" />
 {{- end -}}
 {{- end -}}
 

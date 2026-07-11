@@ -14,9 +14,13 @@ This document contains critical information about working with this codebase. Fo
 ### 创建新文章
 
 ```bash
-# 技术文章
-hugo new content content/zh/ai-technology/posts/my-article.md
-hugo new content content/en/ai-technology/posts/my-article.md
+# AI Agent 文章（Agent 工程、上下文工程、LLM 应用、GEO）
+hugo new content content/zh/ai-agent/posts/my-article.md
+hugo new content content/en/ai-agent/posts/my-article.md
+
+# 工程文章（Kubernetes 云原生、Go、DevOps、开源实践）
+hugo new content content/zh/engineering/posts/my-article.md
+hugo new content content/en/engineering/posts/my-article.md
 
 # 成长文章
 hugo new content content/zh/growth/posts/my-article.md
@@ -27,11 +31,16 @@ hugo new content content/zh/projects/my-project.md --kind ai-project
 hugo new content content/en/projects/my-project.md --kind ai-project
 ```
 
-### 添加文章的推荐流程
+### 内容架构（v3.0.0，2026-07）
 
-判断文章属于 `ai-technology`、`growth` 还是 `projects`，用对应命令创建文件，不要手工新建到错误目录
+- 四个内容 section：`ai-agent`、`engineering`、`growth`、`projects`；判断归属用对应命令创建文件，不要手工新建到错误目录（详见 `content/CATEGORIES.md`）
+- **categories taxonomy 已退役**：不要在 frontmatter 写 `categories:`，分类职责由 section 承担，细粒度用 tags
+- 旧 `ai-technology` 的所有 URL 已在 `static/_redirects` 配置逐篇 301；新增文章移动/改名时也要在该文件补重定向
+- `travel` 是刻意保留的顶层生活单页（非 section），位于主菜单尾部，与"专栏"相邻——这是有意的定位，不要"修复"它
 
 系列长文用 frontmatter `series: { name, slug, order, total }` 标识（中英文 slug 一致），自动生成正文导航卡、侧栏 Series 块与 AI 系列问。
+
+多篇成组的专栏用 frontmatter `columns: [<slug>]` 挂载，落地页在 `content/{zh,en}/columns/<slug>/_index.md`。现有专栏：`ignite-and-settle`、`agent-engineering`、`geo`。
 
 ### SVG 放置规则
 

@@ -48,7 +48,8 @@ Recommended URL structure:
 - `/posts/{slug}/` - General blog posts
 - `/projects/{slug}/` - Project pages
 - `/growth/posts/{slug}/` - Personal growth/reflection posts
-- `/ai-technology/posts/{slug}/` - AI/technology technical posts
+- `/ai-agent/posts/{slug}/` - AI Agent posts
+- `/engineering/posts/{slug}/` - engineering posts
 - `/travel/{slug}/` - Travel-related posts
 
 ## Checklist Before Publishing

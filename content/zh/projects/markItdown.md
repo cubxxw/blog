@@ -6,7 +6,6 @@ showtoc: true
 tocopen: true
 type: posts
 tags: ["AI", "Open Source", "Python", "LLM", "RAG"]
-categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 keywords: ["markitdown", "microsoft", "markdown", "文档转换", "LLM", "RAG", "Python"]
 description: >
@@ -623,6 +622,6 @@ MarkItDown 是微软推出的一款专注于将多种文档格式转换为 Markd
 ## 补充相关文章
 
 + [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
-+ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/ai-technology/posts/open-source-contribution-guidelines/)
-+ [我的实践总结：开源社区的规范设计思路](/zh/ai-technology/posts/advanced-githook-design/)
-+ [在开源社区中学会如何提问](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/engineering/posts/open-source-contribution-guidelines/)
++ [我的实践总结：开源社区的规范设计思路](/zh/engineering/posts/advanced-githook-design/)
++ [在开源社区中学会如何提问](/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)

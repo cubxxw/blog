@@ -20,19 +20,20 @@ Available languages: English ({{ site.BaseURL }}), Simplified Chinese ({{ site.B
 {{- $posts := where site.RegularPages "Type" "posts" -}}
 {{- $byCat := dict -}}
 {{- range $posts -}}
-  {{- $cat := "Other" -}}
-  {{- with .Params.categories -}}{{- $cat = index . 0 -}}{{- end -}}
+  {{- $cat := .Section | default "Other" -}}
   {{- $list := index $byCat $cat | default (slice) -}}
   {{- $list = $list | append . -}}
   {{- $byCat = merge $byCat (dict $cat $list) -}}
 {{- end -}}
 
-{{- $known := slice "AI & Technology" "Growth" "Projects" -}}
+{{- $known := slice "ai-agent" "engineering" "growth" "projects" -}}
 {{- $seen := dict -}}
 {{- range $cat := $known }}
   {{- $list := index $byCat $cat -}}
   {{- if $list }}
-## {{ $cat }}
+{{- $catTitle := $cat -}}
+{{- with site.GetPage (printf "/%s" $cat) }}{{ with .Title }}{{ $catTitle = . }}{{ end }}{{ end }}
+## {{ $catTitle }}
 
     {{- range $post := first 15 (sort $list "Date" "desc") }}
       {{- $desc := "" -}}

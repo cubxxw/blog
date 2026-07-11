@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   -  Travel & Exploration
   - Self-Discovery Journey
-categories:
-  - Growth
 description: >
   February 2026 deep thought notes with 365 entries covering travel experiences (Chiang Mai, Pokhara), ecological protection, urban governance observation, AI product thinking, Buddhist philosophy, and self-discovery.
   

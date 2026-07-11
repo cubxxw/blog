@@ -16,8 +16,6 @@ tags:
   - Personal Growth
   - Self-Discovery
   - Love
-categories:
-  - Growth
 description: >
   Quality and time in companionship are not a choice between two things. They are two different systems doing two different jobs. Quality lights the fire. Time settles it to the bottom. This piece pulls apart the responsiveness system and the habituation system, then uses how the amygdala actually works to explain why safety is not no threat here but no surprise here. Finally we return to the most common and least recognized move of all: why we turn away just as we are about to come close.
 tldr:

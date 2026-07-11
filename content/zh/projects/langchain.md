@@ -6,7 +6,6 @@ draft: false
 showtoc: true
 tocopen: true
 tags: ["AI", "Project Learning", "LangChain", "Agent", "RAG"]
-categories: ["Projects"]
 author: ["Xinwei Xiong", "Me"]
 description: LangChain 开源框架深度学习：从 LCEL、链式调用、RAG 管道到 LangChain 1.0 的 create_agent 与中间件（middleware）体系，配套上手案例、前沿进展与面试高频题，持续记录学习过程与关键实践。
 aliases:
@@ -416,9 +415,9 @@ LangChain 构建（组件 + `create_agent`）；LangGraph 编排复杂有状态 
 ## 补充相关文章
 
 - [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
-- [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/ai-technology/posts/open-source-contribution-guidelines/)
-- [我的实践总结：开源社区的规范设计思路](/zh/ai-technology/posts/advanced-githook-design/)
-- [在开源社区中学会如何提问](/zh/ai-technology/posts/the-art-of-asking-questions-in-open-source-communities/)
+- [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/engineering/posts/open-source-contribution-guidelines/)
+- [我的实践总结：开源社区的规范设计思路](/zh/engineering/posts/advanced-githook-design/)
+- [在开源社区中学会如何提问](/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
 
 ## 参考资料
 

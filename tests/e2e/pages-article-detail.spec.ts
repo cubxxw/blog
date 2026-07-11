@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const ARTICLE_URL = '/ai-technology/posts/agent-identity-from-locke-to-openclaw/';
+const ARTICLE_URL = '/ai-agent/posts/agent-identity-from-locke-to-openclaw/';
 
 test.describe('Article Detail Page Visual Regression', () => {
   test('desktop - article detail full page', async ({ page }, testInfo) => {

@@ -123,7 +123,7 @@
             { name: 'content', weight: 0.3 },
             { name: 'summary', weight: 0.15 },
             { name: 'tags', weight: 0.03 },
-            { name: 'categories', weight: 0.02 }
+            { name: 'section', weight: 0.02 }
           ],
           threshold: 0.3,
           includeMatches: true,

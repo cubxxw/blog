@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   - 夏日冒险 (Summer Adventures)
   - 深度思考 (Deep Thinking)
-categories:
-  - Growth
 description: >
     2025年7月思考笔记 - 深入夏日冒险，哲学思辨，以及平衡行动与反思的艺术。
 tldr:

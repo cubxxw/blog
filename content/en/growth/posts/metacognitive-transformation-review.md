@@ -3,9 +3,6 @@ title: 'Metacognitive Transformation Review'
 date: 2025-06-02
 author: ["Xinwei Xiong"]
 description: "An in-depth review of metacognitive transformation, exploring its processes, impact on learning, and strategies for personal development."
-categories:
-  - Growth
-  - Growth
 tags:
   - metacognition
   - learning strategies

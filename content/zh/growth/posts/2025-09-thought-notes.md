@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   - 秋季收获 (Autumn Harvest)
   - 智慧积累 (Wisdom Accumulation)
-categories:
-  - Growth
 description: >
     2025年9月思考笔记 - 在初秋的收获季节,探索技术与哲学的交汇点,记录关于AI时代、个人成长、认知升级的深度思考,以及在快速变化世界中保持内心清明的智慧沉淀
 tldr:

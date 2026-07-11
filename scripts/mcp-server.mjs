@@ -91,7 +91,7 @@ function getBlogPost({ relativePath }) {
   }
   const contentRoot = path.join(ROOT, "content");
   // The index stores relativePath without the language prefix (e.g.
-  // "ai-technology/posts/argo-cd.md"), but files live under content/<lang>/.
+  // "engineering/posts/argo-cd.md"), but files live under content/<lang>/.
   // Accept both the prefixed form and the bare form by probing each language.
   const candidates = [relativePath, `zh/${relativePath}`, `en/${relativePath}`];
   let resolved = null;
@@ -127,7 +127,7 @@ const TOOLS = [
   {
     name: "get_blog_post",
     description:
-      "Fetch the full markdown of one blog post by its relativePath (as returned by search_blog), e.g. 'zh/ai-technology/posts/argo-cd.md'.",
+      "Fetch the full markdown of one blog post by its relativePath (as returned by search_blog), e.g. 'zh/engineering/posts/argo-cd.md'.",
     inputSchema: {
       type: "object",
       properties: {

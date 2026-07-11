@@ -11,7 +11,7 @@
 ## 生成规则
 
 **目录与文件名**
-- 按母版 `type` 选目录：`ai-technology` / `growth` / `projects`。
+- 按母版 `type` 选目录：`ai-agent` / `engineering` / `growth` / `projects`。
 - 用 `hugo new content` 对应命令创建（见仓库 CLAUDE.md），不要手工建到错目录。
 - 中英同 `slug`，分别落 `content/zh/...` 和 `content/en/...`。
 

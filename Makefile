@@ -114,10 +114,10 @@ ifndef POST_NAME
 	$(error POST_NAME is not set. Please provide a name for the post. example: make new-post POST_NAME="hello-world")
 endif
 ifndef SECTION
-	$(error SECTION is not set. Please provide ai-technology or growth. example: make new-post SECTION="growth" POST_NAME="hello-world")
+	$(error SECTION is not set. Please provide ai-agent, engineering or growth. example: make new-post SECTION="growth" POST_NAME="hello-world")
 endif
-ifneq ($(filter $(SECTION),ai-technology growth),$(SECTION))
-	$(error SECTION must be one of: ai-technology, growth)
+ifneq ($(filter $(SECTION),ai-agent engineering growth),$(SECTION))
+	$(error SECTION must be one of: ai-agent, engineering, growth)
 endif
 	@$(HUGO) new content content/en/$(SECTION)/posts/$(POST_NAME).md
 	@$(HUGO) new content content/zh/$(SECTION)/posts/$(POST_NAME).md

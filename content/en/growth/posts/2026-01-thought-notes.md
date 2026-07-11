@@ -15,8 +15,6 @@ tags:
   - Personal Reflection
   -  New Year Planning
   - Technology & AI
-categories:
-  - Growth
 description: >
   January 2026 deep thought notes with 388 entries covering AI product design, finance, biology, Buddhism, social observation, and self-discovery.
   

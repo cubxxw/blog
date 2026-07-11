@@ -10,8 +10,6 @@ keywords: []
 tags:
   - AI
   - Open Source
-categories:
-  - Projects
 description: >
   Exploring Jina AI's multimodal embedding and search infrastructure for production AI applications.
 aliases:

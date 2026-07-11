@@ -15,9 +15,6 @@ tags:
   - Technology Philosophy
   - Self Awareness
   - Human Value
-categories:
-  - Growth
-  - Life
 description: >
     When AI can replace our thinking and execution, where is "me"? Exploring human agency, feelings, and the essence of meaning in the AI era.
 tldr:
