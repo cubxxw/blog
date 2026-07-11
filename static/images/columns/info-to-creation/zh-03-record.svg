@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">记录：半成品的知识</title>
+  <desc id="d">信息和知识之间，转化率最高的那个形态</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#6d28d9" stop-opacity="0.12"/></linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0v36" fill="none" stroke="#d9d5e6" stroke-width="1" opacity="0.5"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f7f6fb"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#d9d5e6" stroke-width="2"/>
+  <circle cx="1050" cy="120" r="180" fill="#6d28d9" opacity="0.07"/>
+  <circle cx="1080" cy="540" r="120" fill="#6d28d9" opacity="0.07"/>
+  <g><circle cx="690" cy="300" r="34" fill="#ffffff" stroke="#6d28d9" stroke-width="3" opacity="1"/><text x="690" y="309" text-anchor="middle" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="26" font-weight="700" fill="#6d28d9" opacity="1">信息</text><line x1="724" y1="300" x2="764" y2="300" stroke="#6d28d9" stroke-width="3" opacity="0.9"/><path d="M760 294 L772 300 L760 306 Z" fill="#6d28d9" opacity="0.9"/><circle cx="808" cy="300" r="34" fill="#6d28d9" stroke="#6d28d9" stroke-width="3" opacity="1"/><text x="808" y="309" text-anchor="middle" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="26" font-weight="700" fill="#ffffff" opacity="1">记录</text><line x1="842" y1="300" x2="882" y2="300" stroke="#6d28d9" stroke-width="3" opacity="0.28"/><path d="M878 294 L890 300 L878 306 Z" fill="#6d28d9" opacity="0.28"/><circle cx="926" cy="300" r="34" fill="#ffffff" stroke="#6d28d9" stroke-width="3" opacity="0.32"/><text x="926" y="309" text-anchor="middle" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="26" font-weight="700" fill="#6d28d9" opacity="0.4">知识</text><line x1="960" y1="300" x2="1000" y2="300" stroke="#6d28d9" stroke-width="3" opacity="0.28"/><path d="M996 294 L1008 300 L996 306 Z" fill="#6d28d9" opacity="0.28"/><circle cx="1044" cy="300" r="34" fill="#ffffff" stroke="#6d28d9" stroke-width="3" opacity="0.32"/><text x="1044" y="309" text-anchor="middle" font-family="'PingFang SC','Microsoft YaHei',sans-serif" font-size="26" font-weight="700" fill="#6d28d9" opacity="0.4">创作</text></g>
+  <text x="88" y="150" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4" fill="#6d28d9">第二层 · RECORD</text>
+  <text x="88" y="250" font-family="'Noto Serif SC','PingFang SC','Microsoft YaHei',serif" font-size="60" font-weight="700" fill="#1a1330"><tspan x="88" dy="0">记录：半成品的知识</tspan></text>
+  <text x="90" y="452" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="27" font-weight="500" fill="#5b5470">信息和知识之间，转化率最高的那个形态</text>
+  <rect x="90" y="536" width="240" height="4" rx="2" fill="#6d28d9"/>
+  <text x="90" y="572" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="3" fill="#8a83a0">CUBXXW · AI NOTE SYSTEM</text>
+</svg>
