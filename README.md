@@ -141,6 +141,11 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [GEO Measurement & Tools: How to Know If AI Actually Cites You (with a DIY Monitor)](https://cubxxw.com/ai-agent/posts/geo-measurement-and-tools/)
+- [GEO Blog Rebuild Case Study: Running the Five-Layer Model on Real Data](https://cubxxw.com/ai-agent/posts/geo-blog-rebuild-case-study/)
+- [GEO Trust & Endorsement: Why Reddit and Wikipedia Make Up Half of AI Citations](https://cubxxw.com/ai-agent/posts/geo-trust-and-endorsement/)
+- [GEO Structured Tactics: Writing "Worth Citing" Into Every Paragraph (Answer-First, Schema, llms.txt)](https://cubxxw.com/ai-agent/posts/geo-structured-content-tactics/)
+- [GEO Mechanics: How AI Retrieves, Re-ranks, and Cites You](https://cubxxw.com/ai-agent/posts/geo-how-ai-retrieves-and-cites/)
 - [GEO: The Complete Guide to Generative Engine Optimization (When Search Stops Giving Links and Starts Giving Answers)](https://cubxxw.com/ai-agent/posts/geo-generative-engine-optimization-guide/)
 - [Start Here](https://cubxxw.com/start-here/)
 - [2026 June Thought Notes: The Pushing-Away Comes Before the Reason for Pushing Away](https://cubxxw.com/growth/posts/2026-06-thought-notes/)
@@ -236,11 +241,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Openim Remote Work Culture](https://cubxxw.com/engineering/posts/openim-remote-work-culture/)
 - [Advanced Githook Design](https://cubxxw.com/engineering/posts/advanced-githook-design/)
 - [Openim Offline Deployment Design](https://cubxxw.com/engineering/posts/openim-offline-deployment-design/)
-- [Read Openim Project Sealos Openim Source Code](https://cubxxw.com/engineering/posts/read-openim-project-sealos-openim-source-code/)
-- [Project Management From Theory to Practice](https://cubxxw.com/growth/posts/project-management-from-theory-to-practice/)
-- [Stage Growth of Open Source](https://cubxxw.com/growth/posts/stage-growth-of-open-source/)
-- [Use Auto Gpt](https://cubxxw.com/ai-agent/posts/use-auto-gpt/)
-- [Use Go Tools Dlv](https://cubxxw.com/engineering/posts/use-go-tools-dlv/)
 <!-- My-Blog-EN:END -->
 
 
