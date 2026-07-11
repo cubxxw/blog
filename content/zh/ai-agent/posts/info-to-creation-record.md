@@ -1,7 +1,7 @@
 ---
 title: '第二层·记录：信息和知识之间，那个转化率最高的半成品'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-11T20:20:00+08:00'
+date: '2026-07-11T14:20:00+08:00'
 draft: false
 showtoc: true
 tocopen: true

@@ -1,7 +1,7 @@
 ---
 title: 'GEO Trust & Endorsement: Why Reddit and Wikipedia Make Up Half of AI Citations'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-13T21:00:00+08:00'
+date: '2026-07-11T11:00:00+08:00'
 draft: false
 showtoc: true
 tocopen: true

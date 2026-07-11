@@ -1,7 +1,7 @@
 ---
 title: 'GEO Measurement & Tools: How to Know If AI Actually Cites You (with a DIY Monitor)'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-15T21:00:00+08:00'
+date: '2026-07-11T12:00:00+08:00'
 draft: false
 showtoc: true
 tocopen: true

@@ -1,7 +1,7 @@
 ---
 title: 'GEO Structured Tactics: Writing "Worth Citing" Into Every Paragraph (Answer-First, Schema, llms.txt)'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-12T21:00:00+08:00'
+date: '2026-07-11T10:30:00+08:00'
 draft: false
 showtoc: true
 tocopen: true

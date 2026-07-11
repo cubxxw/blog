@@ -1,7 +1,7 @@
 ---
 title: 'GEO 信任与背书：为什么 Reddit 和 Wikipedia 占了 AI 引用的一大半'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-13T21:00:00+08:00'
+date: '2026-07-11T11:00:00+08:00'
 draft: false
 showtoc: true
 tocopen: true

@@ -1,7 +1,7 @@
 ---
 title: '第一层·信息：给 AI 看的，给自己扫的，和纯粹的噪音'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-11T20:10:00+08:00'
+date: '2026-07-11T14:10:00+08:00'
 draft: false
 showtoc: true
 tocopen: true
