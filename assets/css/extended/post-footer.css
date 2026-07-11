@@ -22,7 +22,10 @@
   position: relative;
   display: flex !important;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  /* PaperMod base sets width: 50% for its flex layout; in our grid it
+     would shrink each card to half its column */
+  width: 100% !important;
   padding: 22px 26px !important;
   border: 1px solid var(--rule) !important;
   border-radius: 10px;
@@ -33,6 +36,10 @@
               box-shadow 220ms ease, transform 260ms cubic-bezier(.2,.6,.2,1);
   overflow: hidden;
 }
+
+/* Pin sides so a lone card keeps its lane: prev left, next right */
+.paginav .prev { grid-column: 1; }
+.paginav .next { grid-column: 2; }
 
 .paginav a::before {
   content: "";
@@ -78,8 +85,19 @@
   opacity: 1;
 }
 
+/* Direction arrow inside the eyebrow: nudges on hover */
+.paginav .pagi-arrow {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  transition: transform 240ms cubic-bezier(.2,.6,.2,1);
+}
+
+.paginav .prev:hover .pagi-arrow { transform: translateX(-3px); }
+.paginav .next:hover .pagi-arrow { transform: translateX(3px); }
+
 /* Title of the linked article */
-.paginav a > span:not(.title) {
+.paginav .pagi-title {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   font-size: 1.02rem;
   font-weight: 500;
@@ -93,15 +111,36 @@
   overflow: hidden;
 }
 
-:lang(zh) .paginav a > span:not(.title) {
+:lang(zh) .paginav .pagi-title {
   font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body), serif;
   font-size: 1.04rem;
   letter-spacing: 0.01em;
   font-weight: 500;
 }
 
-:lang(en) .paginav a > span:not(.title) {
+:lang(en) .paginav .pagi-title {
   font-style: normal;
+}
+
+/* Series context line ("从信息到创作 · 第 2 篇") */
+.paginav .pagi-meta {
+  margin-top: auto;
+  padding-top: 6px;
+  font-family: 'PingFang SC', var(--font-body), system-ui, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.65;
+  letter-spacing: 0.04em;
+}
+
+:lang(en) .paginav .pagi-meta {
+  font-family: var(--font-mono, 'JetBrains Mono', ui-monospace, monospace);
+  font-size: 0.66rem;
+}
+
+.paginav a:hover .pagi-meta {
+  opacity: 0.9;
 }
 
 /* Align next card to the right */
@@ -120,12 +159,22 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
+  .paginav .prev,
+  .paginav .next {
+    grid-column: 1;
+  }
   .paginav .next,
   .paginav .next .title {
     text-align: left;
     align-items: flex-start;
     justify-content: flex-start;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paginav .pagi-arrow { transition: none; }
+  .paginav .prev:hover .pagi-arrow,
+  .paginav .next:hover .pagi-arrow { transform: none; }
 }
 
 /* Dark theme */

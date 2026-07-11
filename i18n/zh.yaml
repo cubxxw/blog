@@ -1,8 +1,8 @@
 - id: prev_page
-  translation: "上一页"
+  translation: "上一篇"
 
 - id: next_page
-  translation: "下一页"
+  translation: "下一篇"
 
 - id: read_time
   translation:

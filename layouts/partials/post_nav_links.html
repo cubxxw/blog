@@ -1,22 +1,59 @@
-{{- /* Use current section pages for prev/next, fallback to all regular pages */ -}}
-{{- $pages := .CurrentSection.Pages.ByDate.Reverse }}
-{{- if lt (len $pages) 2 }}
-  {{- $pages = where site.RegularPages "Lang" site.Language.Lang }}
+{{- /* Prev/Next article navigation.
+
+     Series-aware: when the page carries `series: { slug, order }`,
+     prev/next follow the series reading order (order-1 / order+1)
+     instead of publish dates, so part 1 always points forward to
+     part 2 under "下一篇". Outside a series, reading order is
+     chronological: prev = published earlier, next = published later.
+*/ -}}
+{{- $page := . }}
+{{- $prev := "" }}
+{{- $next := "" }}
+{{- $series := $page.Params.series }}
+{{- $inSeries := and $series $series.slug $series.order }}
+{{- if $inSeries }}
+  {{- $curOrder := int $series.order }}
+  {{- range where (where site.RegularPages "Lang" $page.Lang) "Params.series.slug" $series.slug }}
+    {{- $o := int (.Params.series.order | default 0) }}
+    {{- if eq $o (sub $curOrder 1) }}{{ $prev = . }}{{ end }}
+    {{- if eq $o (add $curOrder 1) }}{{ $next = . }}{{ end }}
+  {{- end }}
+{{- else }}
+  {{- $pages := $page.CurrentSection.Pages.ByDate.Reverse }}
+  {{- if lt (len $pages) 2 }}
+    {{- $pages = (where site.RegularPages "Lang" site.Language.Lang).ByDate.Reverse }}
+  {{- end }}
+  {{- if in $pages $page }}
+    {{- /* collection is newest-first: Prev = older, Next = newer */ -}}
+    {{- $prev = $pages.Prev $page }}
+    {{- $next = $pages.Next $page }}
+  {{- end }}
 {{- end }}
-{{- if and (gt (len $pages) 1) (in $pages .) }}
-<nav class="paginav">
-  {{- with $pages.Next . }}
+{{- if or $prev $next }}
+{{- $isZh := eq $page.Lang "zh" }}
+<nav class="paginav{{ if $inSeries }} paginav--series{{ end }}" aria-label="{{ cond $isZh "文章导航" "Article navigation" }}">
+  {{- with $prev }}
   <a class="prev" href="{{ .Permalink }}">
-    <span class="title">« {{ i18n "prev_page" | default "Prev" }}</span>
-    <br>
-    <span>{{- .Title -}}</span>
+    <span class="title">
+      <svg class="pagi-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 3.5 6 8l4.5 4.5"/></svg>
+      {{ i18n "prev_page" | default "Previous" }}
+    </span>
+    <span class="pagi-title">{{ .Title }}</span>
+    {{- if $inSeries }}
+    <span class="pagi-meta">{{ $series.name }} · {{ if $isZh }}第 {{ .Params.series.order }} 篇{{ else }}Part {{ .Params.series.order }}{{ end }}</span>
+    {{- end }}
   </a>
   {{- end }}
-  {{- with $pages.Prev . }}
+  {{- with $next }}
   <a class="next" href="{{ .Permalink }}">
-    <span class="title">{{ i18n "next_page" | default "Next" }} »</span>
-    <br>
-    <span>{{- .Title -}}</span>
+    <span class="title">
+      {{ i18n "next_page" | default "Next" }}
+      <svg class="pagi-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 3.5 10 8l-4.5 4.5"/></svg>
+    </span>
+    <span class="pagi-title">{{ .Title }}</span>
+    {{- if $inSeries }}
+    <span class="pagi-meta">{{ $series.name }} · {{ if $isZh }}第 {{ .Params.series.order }} 篇{{ else }}Part {{ .Params.series.order }}{{ end }}</span>
+    {{- end }}
   </a>
   {{- end }}
 </nav>
