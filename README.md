@@ -249,6 +249,16 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [第四层·创作：把知识重组成别人愿意接收的东西](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-creation/)
+- [第三层·知识：知识库不是收藏夹，是你的能力沉淀区](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-knowledge/)
+- [第二层·记录：信息和知识之间，那个转化率最高的半成品](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-record/)
+- [第一层·信息：给 AI 看的，给自己扫的，和纯粹的噪音](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-information/)
+- [信息、记录、知识、创作：AI 时代，我把笔记拆成了四种东西](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-the-framework/)
+- [GEO 度量与工具：怎么知道 AI 到底有没有引用你（附 DIY 监测）](https://cubxxw.com/zh/ai-agent/posts/geo-measurement-and-tools/)
+- [GEO 本博客改造复盘：用真实数据把五层模型跑一遍](https://cubxxw.com/zh/ai-agent/posts/geo-blog-rebuild-case-study/)
+- [GEO 信任与背书：为什么 Reddit 和 Wikipedia 占了 AI 引用的一大半](https://cubxxw.com/zh/ai-agent/posts/geo-trust-and-endorsement/)
+- [GEO 结构化实战：把"值得被引用"写进每一段（Answer-First、Schema、llms.txt）](https://cubxxw.com/zh/ai-agent/posts/geo-structured-content-tactics/)
+- [GEO 原理篇：AI 是怎么把你"检索 → 重排 → 引用"的](https://cubxxw.com/zh/ai-agent/posts/geo-how-ai-retrieves-and-cites/)
 - [GEO 生成式引擎优化完全指南：当搜索从"给链接"变成"给答案"](https://cubxxw.com/zh/ai-agent/posts/geo-generative-engine-optimization-guide/)
 - [从这里开始](https://cubxxw.com/zh/start-here/)
 - [2026年6月思考笔记：推开的动作，先于推开的理由](https://cubxxw.com/zh/growth/posts/2026-06-thought-notes/)
@@ -339,16 +349,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [GoReleaser：自动化你的软件发布](https://cubxxw.com/zh/engineering/posts/go-release-tools/)
 - [我的第一个博客](https://cubxxw.com/zh/growth/posts/my-first-blog/)
 - [关于我的 Hugo 博客 (教程)](https://cubxxw.com/zh/engineering/posts/my-hugo/)
-- [速读开源项目 Sealos 的源码](https://cubxxw.com/zh/engineering/posts/read-openim-project-sealos-openim-source-code/)
-- [我如何设计 DevOps 下的 OpenIM 标准开发流 & 敏捷体系 & 精益模式](https://cubxxw.com/zh/engineering/posts/openim-devops-design/)
-- [我是如何优雅设计 OpenIM 多进程管理策略的](https://cubxxw.com/zh/engineering/posts/openim-multi-process-management/)
-- [如何安装和使用自主人工智能工具Auto-GPT](https://cubxxw.com/zh/ai-agent/posts/use-auto-gpt/)
-- [Go 调试测试以及调试工具 dlv 学习](https://cubxxw.com/zh/engineering/posts/use-go-tools-dlv/)
-- [Github Actions 的高级使用技巧](https://cubxxw.com/zh/engineering/posts/github-actions-advanced-techniques/)
-- [OpenIM离线部署设计](https://cubxxw.com/zh/engineering/posts/openim-offline-deployment-design/)
-- [开源的阶段性成长指南](https://cubxxw.com/zh/growth/posts/stage-growth-of-open-source/)
-- [从理论到实践的项目管理打通](https://cubxxw.com/zh/growth/posts/project-management-from-theory-to-practice/)
-- [Openkf 多架构镜像的构建策略设计](https://cubxxw.com/zh/engineering/posts/openkf-multi-architecture-image/)
 <!-- My-Blog-ZH:END -->
 
 
