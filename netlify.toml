@@ -105,3 +105,44 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# ---------------------------------------------------------------------------
+# Build plugins (file-based, version-controlled — single source of truth)
+# ---------------------------------------------------------------------------
+# Critical CSS via the maintained fork `netlify-plugin-critical-css`, which
+# adds a concurrency pool (@supercharge/promise-pool), per-task timeout and a
+# progress bar — many times faster than the original inline-critical-css.
+#
+# Scope: we deliberately limit it to LANDING templates via `globs` — the
+# homepage, section index pages and column landing pages (both languages).
+# Every article body shares the same theme critical CSS, so extracting it
+# per-post across 1,100+ pages was pure waste and the cause of ~16-minute
+# builds. Bodies simply load the normal (fingerprinted, cached) stylesheet.
+#
+# `base` MUST be the Hugo publish dir. This replaces the UI-installed
+# netlify-plugin-inline-critical-css (removed from the Netlify UI).
+[[plugins]]
+  package = "netlify-plugin-critical-css"
+  [plugins.inputs]
+    base = "public"
+    concurrency = 4
+    taskTimeout = 30000
+    showProgressBar = true
+    globs = [
+      "index.html",
+      "zh/index.html",
+      "start-here/index.html",
+      "zh/start-here/index.html",
+      "ai-agent/index.html",
+      "engineering/index.html",
+      "growth/index.html",
+      "projects/index.html",
+      "articles/index.html",
+      "zh/ai-agent/index.html",
+      "zh/engineering/index.html",
+      "zh/growth/index.html",
+      "zh/projects/index.html",
+      "zh/articles/index.html",
+      "columns/*/index.html",
+      "zh/columns/*/index.html"
+    ]
