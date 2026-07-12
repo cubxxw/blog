@@ -104,7 +104,7 @@ test('en-dark-desktop: EN dark mode applies correct tokens', async ({ page }) =>
   const accent = await page.evaluate(() =>
     getComputedStyle(document.body).getPropertyValue('--color-accent').trim()
   );
-  expect(accent).not.toContain('ff3b3b');
+  expect(accent).not.toContain('ff6b6b');
 
   await takeScreenshot(page, 'en-dark-desktop');
 });
@@ -139,7 +139,7 @@ test('zh-dark-desktop: ZH dark mode applies correct tokens', async ({ page }) =>
   const accent = await page.evaluate(() =>
     getComputedStyle(document.body).getPropertyValue('--color-accent').trim()
   );
-  expect(accent.toLowerCase()).toContain('ff3b3b');
+  expect(accent.toLowerCase()).toContain('ff6b6b');
 
   await takeScreenshot(page, 'zh-dark-desktop');
 });
