@@ -85,11 +85,17 @@ html:lang(zh) {
   --color-accent-soft:  #eae8e3;
   --color-rule:         rgba(53, 0, 3, 0.10);
 
-  /* Songti SC / STSong sit before the sans fallbacks so the long
-     Noto Serif SC webfont download (dozens of CJK unicode-range
-     subsets) swaps serif→serif instead of flashing sans first. */
-  --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC',
-                  'STSong', 'SimSun', 'PingFang SC', 'Hiragino Sans GB',
+  /* LCP fix: the H1 title is the LCP element on long ZH posts, and the
+     Noto Serif SC webfont (dozens of CJK unicode-range subsets) loads from
+     fonts.gstatic.com — slow/blocked from PSI probes & mainland networks,
+     which pushed title LCP to 16–19s (issue #222/#223). Local system serifs
+     (Source Han / Songti / STSong) now sit FIRST so the title paints
+     instantly from the visitor's own fonts; Noto Serif SC still upgrades
+     the glyphs seamlessly once it arrives, but LCP no longer waits on it.
+     The families are near-identical serif designs, so there is no visual
+     regression for the common macOS/Windows reader. */
+  --font-display: 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun',
+                  'Noto Serif SC', 'PingFang SC', 'Hiragino Sans GB',
                   'Microsoft YaHei', serif;
   --font-body:    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
                   system-ui, sans-serif;

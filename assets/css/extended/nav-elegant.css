@@ -297,7 +297,7 @@ body.dark #theme-toggle:hover {
 /* Chinese glyph (中) gets a serif face for character feel */
 .lang-switch__item--zh > a,
 .lang-switch__item--zh > span {
-    font-family: "Noto Serif SC", "Source Han Serif SC", var(--font-serif, serif);
+    font-family: "Source Han Serif SC", "Songti SC", "Noto Serif SC", var(--font-serif, serif);
     font-size: 13px;
     letter-spacing: 0;
 }
