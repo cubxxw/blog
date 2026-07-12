@@ -1,0 +1,529 @@
+{
+  "meta": {
+    "siteUrl": "sc-domain:cubxxw.com",
+    "window": {
+      "start": "2026-07-07",
+      "end": "2026-07-09"
+    },
+    "fetchedAt": "2026-07-12T08:02:23.581Z",
+    "runDate": "2026-07-12"
+  },
+  "date_query": [
+    {
+      "keys": [
+        "2026-07-07",
+        "site:nsddd.top"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "\"shipping ai\""
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "\"voiceflow\" -site:reddit.com -site:twitter.com -site:x.com -site:wykop.pl -site:tripadvisor.com -site:youtube.com -site:yelp.com -site:booking.com -site:facebook.com -site:instagram.com -site:tiktok.com"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "golang hack"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "litellm vs kong"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 56
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "xxw.com"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    }
+  ],
+  "date_page": [
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/growth/posts/2026-03-27-lhasa-slow-and-heavy/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 30
+    },
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/zh/categories/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-07",
+        "https://cubxxw.com/zh/projects/ai-recommend/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/about/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/ai-technology/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/archives/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/articles/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 5.8
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 18.333333333333332
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/growth/posts/2026-02-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/projects/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 3.6666666666666665
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/projects/ai-gateway/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 5.166666666666667
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/start-here/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/tags/ai/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/travel/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-08",
+        "https://cubxxw.com/zh/ai-technology/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/articles/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 4.333333333333334
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/growth/posts/2026-02-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 14.5
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/growth/posts/2026-03-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/projects/ai-gateway/"
+      ],
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 8.818181818181818
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/projects/markitdown/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10.666666666666666
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-etcd/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 42.5
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/ai-technology/posts/gitops-practice-theory-part/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 47
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/ai-technology/posts/openim-cluster-deployment-scheme-of/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/ai-technology/posts/troubleshooting-guide-for-openim/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/ai-technology/posts/vector-database-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 44.333333333333336
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 7.142857142857143
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/growth/posts/gtd-and-the-four-quadrant-rule-practice/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/projects/langchain/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/tags/docker/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 36
+    },
+    {
+      "keys": [
+        "2026-07-09",
+        "https://cubxxw.com/zh/tags/troubleshooting/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 28
+    }
+  ],
+  "query_device": [
+    {
+      "keys": [
+        "\"shipping ai\"",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
+    },
+    {
+      "keys": [
+        "\"voiceflow\" -site:reddit.com -site:twitter.com -site:x.com -site:wykop.pl -site:tripadvisor.com -site:youtube.com -site:yelp.com -site:booking.com -site:facebook.com -site:instagram.com -site:tiktok.com",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "golang hack",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "litellm vs kong",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 56
+    },
+    {
+      "keys": [
+        "site:nsddd.top",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "xxw.com",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    }
+  ],
+  "query_country": [
+    {
+      "keys": [
+        "\"shipping ai\"",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
+    },
+    {
+      "keys": [
+        "\"voiceflow\" -site:reddit.com -site:twitter.com -site:x.com -site:wykop.pl -site:tripadvisor.com -site:youtube.com -site:yelp.com -site:booking.com -site:facebook.com -site:instagram.com -site:tiktok.com",
+        "rus"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "golang hack",
+        "hun"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "litellm vs kong",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 56
+    },
+    {
+      "keys": [
+        "site:nsddd.top",
+        "sgp"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "xxw.com",
+        "bgd"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    }
+  ]
+}
