@@ -287,7 +287,7 @@ body.dark {
   padding: 8px 18px;
   border: 1px solid var(--ei-divide, rgba(30,45,50,0.07));
   border-radius: 6px;
-  transition: all var(--ei-dur, 0.28s) var(--ei-ease, ease);
+  transition: transform var(--ei-dur, 0.28s) var(--ei-ease, ease), opacity var(--ei-dur, 0.28s) var(--ei-ease, ease), box-shadow var(--ei-dur, 0.28s) var(--ei-ease, ease), border-color var(--ei-dur, 0.28s) var(--ei-ease, ease), border-radius var(--ei-dur, 0.28s) var(--ei-ease, ease), background-color var(--ei-dur, 0.28s) var(--ei-ease, ease), color var(--ei-dur, 0.28s) var(--ei-ease, ease), filter var(--ei-dur, 0.28s) var(--ei-ease, ease), backdrop-filter var(--ei-dur, 0.28s) var(--ei-ease, ease), outline-color var(--ei-dur, 0.28s) var(--ei-ease, ease);
 }
 .eng-page-btn:hover {
   border-color: var(--eng-accent);

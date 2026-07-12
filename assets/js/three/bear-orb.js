@@ -255,14 +255,20 @@ export function mountBearOrb(host, themeEl = host) {
   let recess = 0;        // eased 0..1 (1 = sunk behind chat)
   let recessTarget = 0;
 
+  // Cache the host rect; refresh only on scroll/resize. getBoundingClientRect()
+  // per pointermove forces a synchronous layout on every event (up to ~120/s).
+  let hostRect = host.getBoundingClientRect();
+  const refreshRect = () => { hostRect = host.getBoundingClientRect(); };
   const onPointerMove = (e) => {
-    const r = host.getBoundingClientRect();
+    if (!loop.running) return; // skip while paused/off-screen
+    const r = hostRect;
     pointer.set(
       ((e.clientX - r.left) / r.width) * 2 - 1,
       -(((e.clientY - r.top) / r.height) * 2 - 1)
     );
   };
   window.addEventListener('pointermove', onPointerMove, { passive: true });
+  window.addEventListener('scroll', refreshRect, { passive: true });
 
   // Re-read palette on theme flip.
   const themeObserver = new MutationObserver(() => {
@@ -276,6 +282,7 @@ export function mountBearOrb(host, themeEl = host) {
     renderer.setSize(W(), H());
     camera.aspect = W() / H();
     camera.updateProjectionMatrix();
+    refreshRect();
   };
   window.addEventListener('resize', onResize, { passive: true });
 
@@ -326,6 +333,7 @@ export function mountBearOrb(host, themeEl = host) {
   }, {
     onDispose() {
       window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('scroll', refreshRect);
       window.removeEventListener('resize', onResize);
       themeObserver.disconnect();
       orbGeo.dispose(); orbMat.dispose();

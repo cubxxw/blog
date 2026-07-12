@@ -97,6 +97,7 @@
 }
 .marginalia-series-name {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-optical-sizing: auto;
   font-size: 0.92rem;
   font-weight: 500;
   color: var(--color-ink, #1a1c1b);
@@ -309,7 +310,7 @@
   letter-spacing: 0;
   line-height: 1;
   margin-top: 0.05rem;
-  transition: all 180ms ease;
+  transition: transform 180ms ease, opacity 180ms ease, box-shadow 180ms ease, border-color 180ms ease, border-radius 180ms ease, background-color 180ms ease, color 180ms ease, filter 180ms ease, backdrop-filter 180ms ease, outline-color 180ms ease;
 }
 .rc-series-item.is-current .rc-series-num {
   background: var(--color-accent, #862122);
@@ -530,4 +531,13 @@ body.dark .rc-series-num,
 body.dark .abs-series-num {
   border-color: color-mix(in oklab, var(--primary, #e8e6e3) 22%, transparent);
   color: var(--primary, #e8e6e3);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────
+   Drop the position travel (list reveal slide, arrow nudge); keep the
+   opacity/colour changes that aid comprehension. */
+@media (prefers-reduced-motion: reduce) {
+  .marginalia-series-disclose[open] .marginalia-series-list { animation: none; }
+  .rc-series-link:hover .rc-series-arrow,
+  .rc-series-link:focus-visible .rc-series-arrow { transform: none; }
 }

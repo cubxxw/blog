@@ -29,6 +29,7 @@ function init() {
   cards.forEach((card) => {
     let raf = 0;
     let pending = null;
+    let rect = null; // cached bounds; set on enter, refreshed on scroll/resize
 
     function apply() {
       raf = 0;
@@ -41,7 +42,7 @@ function init() {
     }
 
     function onMove(e) {
-      const r = card.getBoundingClientRect();
+      const r = rect || (rect = card.getBoundingClientRect());
       const px = (e.clientX - r.left) / r.width; // 0..1
       const py = (e.clientY - r.top) / r.height; // 0..1
       // Map cursor position to opposing rotations: top tilts back, etc.
@@ -55,6 +56,7 @@ function init() {
     }
 
     function onEnter() {
+      rect = card.getBoundingClientRect(); // cache once; reused every move
       card.style.setProperty('--tilt-active', '1');
     }
 
@@ -68,11 +70,18 @@ function init() {
         raf = 0;
       }
       pending = null;
+      rect = null;
     }
+
+    // Only recompute the cached rect while hovering, and only when the layout
+    // could actually have shifted — never per pointermove.
+    function refreshRect() { if (rect) rect = card.getBoundingClientRect(); }
 
     card.addEventListener('pointerenter', onEnter);
     card.addEventListener('pointermove', onMove, { passive: true });
     card.addEventListener('pointerleave', onLeave);
+    window.addEventListener('scroll', refreshRect, { passive: true });
+    window.addEventListener('resize', refreshRect, { passive: true });
   });
 }
 

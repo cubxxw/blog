@@ -77,7 +77,7 @@
 }
 .language-switcher .lang-selector:active,
 .nav .lang-switch a:active {
-  transform: scale(0.92);
+  transform: scale(0.96);
 }
 
 /* ---------- Breadcrumb trail: small press on each crumb ---------- */

@@ -164,3 +164,9 @@ body.dark .oss-card {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Reduced motion ──────────────────────────────────────────
+   Drop the card lift; the border/shadow hover state still signals hover. */
+@media (prefers-reduced-motion: reduce) {
+  .oss-card:hover { transform: none; }
+}

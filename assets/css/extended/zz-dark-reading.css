@@ -1199,3 +1199,11 @@ body.dark .post-tags,
 [data-theme="dark"] .post-tags {
   --secondary: rgb(176, 177, 178);
 }
+
+/* ── Reduced motion ──────────────────────────────────────────
+   The disclosure caret still rotates to show open/closed state, but
+   without the 180ms tween for motion-sensitive readers. */
+@media (prefers-reduced-motion: reduce) {
+  body.dark .post-content details > summary::before,
+  [data-theme="dark"] .post-content details > summary::before { transition: none; }
+}

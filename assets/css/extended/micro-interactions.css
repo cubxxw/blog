@@ -299,7 +299,7 @@ button:focus-visible,
 .hamburger-menu:active,
 .social-icons a:active,
 .share-buttons a:active {
-  transform: scale(0.9);
+  transform: scale(0.96);
 }
 #theme-toggle {
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);

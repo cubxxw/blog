@@ -99,6 +99,7 @@
 /* Title of the linked article */
 .paginav .pagi-title {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-optical-sizing: auto;
   font-size: 1.02rem;
   font-weight: 500;
   line-height: 1.45;

@@ -46,7 +46,8 @@
   line-height: 1.08;
   margin: 0;
   color: var(--color-ink, #1a1c1b);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
 }
 :lang(zh) .column-masthead__title {
   font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
@@ -197,7 +198,7 @@
   align-items: start;
   text-decoration: none;
   color: inherit;
-  transition: background-color 220ms ease, padding 220ms ease;
+  transition: background-color 220ms ease;
 }
 .column-entry__link:hover,
 .column-entry__link:focus-visible {
@@ -385,4 +386,11 @@ body.dark .column-toc__head {
 .dark .column-entry,
 body.dark .column-entry {
   border-bottom-color: color-mix(in oklab, var(--primary, #e8e6e3) 12%, transparent);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────
+   Remove the hover arrow travel; opacity/colour hover cues remain. */
+@media (prefers-reduced-motion: reduce) {
+  .column-entry__link:hover .column-entry__arrow,
+  .column-entry__link:focus-visible .column-entry__arrow { transform: none; }
 }

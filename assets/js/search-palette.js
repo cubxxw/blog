@@ -28,8 +28,15 @@
     document.body.classList.add('search-palette-open');
     isOpen = true;
     triggers.forEach(t => t.setAttribute('aria-expanded', 'true'));
-    // Delay longer than the 0.18s palette-in animation so focus lands reliably
-    setTimeout(() => input && input.focus(), 100);
+    // Focus synchronously — a Cmd+K palette is a 100+/day action and must have
+    // zero added latency. If the browser drops focus mid-animation, retry once
+    // on the next frame (a single rAF, never a timer).
+    if (input) {
+      input.focus();
+      if (document.activeElement !== input) {
+        requestAnimationFrame(() => input.focus());
+      }
+    }
     // Lazy load search data
     if (!fuse) loadSearchData();
   }

@@ -25,7 +25,7 @@
 }
 
 .hamburger-menu:active {
-  transform: scale(0.88);
+  transform: scale(0.96);
 }
 
 /* The three bars share a smooth morph transition. transform-box +

@@ -25,6 +25,7 @@ function init() {
 
   let raf = 0;
   let pending = null;
+  let rect = null; // cached bounds; set on enter, refreshed on scroll/resize
 
   function apply() {
     raf = 0;
@@ -34,7 +35,7 @@ function init() {
   }
 
   function onMove(e) {
-    const r = cover.getBoundingClientRect();
+    const r = rect || (rect = cover.getBoundingClientRect());
     const px = (e.clientX - r.left) / r.width; // 0..1
     const py = (e.clientY - r.top) / r.height; // 0..1
     pending = {
@@ -45,6 +46,7 @@ function init() {
   }
 
   function onEnter() {
+    rect = cover.getBoundingClientRect(); // cache once; reused every move
     cover.style.setProperty('--cov-active', '1');
   }
 
@@ -57,11 +59,18 @@ function init() {
       raf = 0;
     }
     pending = null;
+    rect = null;
   }
+
+  // Refresh the cached rect only while hovering and only when layout may have
+  // shifted — never per pointermove.
+  function refreshRect() { if (rect) rect = cover.getBoundingClientRect(); }
 
   cover.addEventListener('pointerenter', onEnter);
   cover.addEventListener('pointermove', onMove, { passive: true });
   cover.addEventListener('pointerleave', onLeave);
+  window.addEventListener('scroll', refreshRect, { passive: true });
+  window.addEventListener('resize', refreshRect, { passive: true });
 }
 
 if (document.readyState === 'loading') {
