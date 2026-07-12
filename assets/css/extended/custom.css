@@ -2320,21 +2320,10 @@ details summary,
    =================================== */
 
 /* 1. Sticky Navigation with Glass Effect */
-.header-wrapper {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(249, 249, 247, 0.82);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.08));
-    transition: background-color 200ms ease, border-color 200ms ease;
-}
-
-.dark .header-wrapper {
-    background: rgba(18, 20, 19, 0.88);
-    border-bottom-color: rgba(226, 227, 225, 0.08);
-}
+/* The frosted-nav material (.header-wrapper light + dark) lives solely in
+   nav-elegant.css, which loads after this file and fully supersedes it —
+   the block that used to sit here was dead by load order. Single source of
+   truth is nav-elegant.css. */
 
 /* Main Navigation Container */
 .nav {
@@ -4583,11 +4572,15 @@ body.nav-hidden { --sticky-offset: 0px; }
     position: sticky;
     top: 64px;
     z-index: 50;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(148, 163, 184, 0.12);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: saturate(160%) blur(20px);
+    -webkit-backdrop-filter: saturate(160%) blur(20px);
+    /* Float on a soft shadow rather than a hard 1px cage, matching the
+       sibling .archives-year-nav sticky bar (apple-design §12: separate
+       floating chrome with a shadow, not a full border). */
+    border: 1px solid rgba(148, 163, 184, 0.08);
     border-radius: 16px;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
     padding: 16px 20px;
     margin-bottom: 2rem;
     display: flex;
@@ -4596,8 +4589,9 @@ body.nav-hidden { --sticky-offset: 0px; }
 }
 
 .dark .posts-filter {
-    background: rgba(15, 23, 42, 0.88);
-    border-color: rgba(148, 163, 184, 0.1);
+    background: rgba(15, 23, 42, 0.72);
+    border-color: rgba(148, 163, 184, 0.08);
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.20);
 }
 
 /* Filter sections */
