@@ -24,7 +24,7 @@
   .post-content .highlight .copy-code:active,
   .post-content pre .copy-code:active {
     opacity: 1;
-    transform: scale(0.94);
+    transform: scale(0.96);
   }
 }
 

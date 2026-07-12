@@ -307,3 +307,16 @@
 }
 
 .abs-share-btn svg { width: 18px; height: 18px; }
+
+/* ── Reduced motion ──────────────────────────────────────────
+   The sheet opens via a 70vh translateY slide — a large vestibular
+   travel. For prefers-reduced-motion, keep the open/closed positions
+   but replace the slide with an in-place cross-fade (apple-design §14:
+   "cross-fade, not slide"). */
+@media (prefers-reduced-motion: reduce) {
+  .article-bottom-sheet {
+    transition: opacity 200ms ease !important;
+    opacity: 0;
+  }
+  .article-bottom-sheet.abs--open { opacity: 1; }
+}

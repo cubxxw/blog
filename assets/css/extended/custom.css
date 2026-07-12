@@ -108,7 +108,7 @@
   border: 1px solid rgba(139, 92, 246, 0.15);
   border-radius: 16px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -121,6 +121,11 @@
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(139, 92, 246, 0.15), 0 4px 12px rgba(139, 92, 246, 0.1);
   border-color: rgba(139, 92, 246, 0.35);
+}
+
+/* Touch devices keep the sticky hover state pinned; drop the translate */
+@media (hover: none) {
+  .ai-tech-card:hover { transform: none; }
 }
 
 .ai-tech-card-content {
@@ -217,7 +222,7 @@
   border: 1px solid rgba(139, 92, 246, 0.1);
   border-radius: 12px;
   padding: 1rem 1.25rem;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .dark .ai-tech-list-item {
@@ -229,6 +234,10 @@
   border-color: rgba(139, 92, 246, 0.25);
   background: rgba(249, 245, 255, 0.5);
   transform: translateX(4px);
+}
+
+@media (hover: none) {
+  .ai-tech-list-item:hover { transform: none; }
 }
 
 .dark .ai-tech-list-item:hover {
@@ -392,7 +401,7 @@
   border: 1px solid rgba(217, 119, 6, 0.15);
   border-radius: 16px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -405,6 +414,10 @@
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(217, 119, 6, 0.15), 0 4px 12px rgba(217, 119, 6, 0.1);
   border-color: rgba(217, 119, 6, 0.35);
+}
+
+@media (hover: none) {
+  .growth-card:hover { transform: none; }
 }
 
 .growth-card-content {
@@ -511,7 +524,7 @@
   border: 1px solid rgba(217, 119, 6, 0.1);
   border-radius: 12px;
   padding: 1rem 1.25rem;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .dark .growth-list-item {
@@ -523,6 +536,10 @@
   border-color: rgba(217, 119, 6, 0.25);
   background: rgba(255, 251, 235, 0.5);
   transform: translateX(4px);
+}
+
+@media (hover: none) {
+  .growth-list-item:hover { transform: none; }
 }
 
 .dark .growth-list-item:hover {
@@ -603,13 +620,17 @@
   border-radius: 12px;
   background: var(--entry);
   border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .post-entry:hover {
   border-color: var(--primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (hover: none) {
+  .post-entry:hover { transform: none; }
 }
 
 .post-entry-header {
@@ -673,7 +694,7 @@ body.dark .post-entry-title a:hover {
   font-size: 0.75rem;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .post-tag {
@@ -746,7 +767,22 @@ body.dark .post-entry-title a:hover {
 .post-content h6 {
   font-family: var(--font-sans);
   color: var(--color-text-heading);
+}
+
+/* Size-specific optical tracking: larger headings get tighter tracking (apple-design §15) */
+.post-content h1,
+.post-content h2 {
+  letter-spacing: -0.02em;
+}
+
+.post-content h3,
+.post-content h4 {
   letter-spacing: -0.01em;
+}
+
+.post-content h5,
+.post-content h6 {
+  letter-spacing: 0;
 }
 
 .post-content h2 {
@@ -894,7 +930,7 @@ code, pre, kbd, samp, tt {
   border: 1px solid rgba(148, 163, 184, 0.2);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .blog-ai-inline:hover {
@@ -911,7 +947,7 @@ code, pre, kbd, samp, tt {
   border-radius: 12px;
   font-size: 0.75rem;
   background: rgba(148, 163, 184, 0.1);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease, outline-color 0.3s ease;
 }
 
 .blog-ai-status__dot {
@@ -919,7 +955,7 @@ code, pre, kbd, samp, tt {
   height: 8px;
   border-radius: 50%;
   background: #94a3b8;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease, outline-color 0.3s ease;
 }
 
 .blog-ai-status--online {
@@ -1134,7 +1170,7 @@ code, pre, kbd, samp, tt {
   color: #0891b2;
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: all 0.2s;
+  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s, border-color 0.2s, border-radius 0.2s, background-color 0.2s, color 0.2s, filter 0.2s, backdrop-filter 0.2s, outline-color 0.2s;
   font-weight: 500;
 }
 
@@ -1196,7 +1232,7 @@ code, pre, kbd, samp, tt {
   font-family: inherit;
   font-size: 0.93rem;
   color: #334155;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
   line-height: 1.5;
 }
@@ -1226,7 +1262,7 @@ code, pre, kbd, samp, tt {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
 }
 
@@ -1413,7 +1449,7 @@ code, pre, kbd, samp, tt {
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease, outline-color 0.3s ease;
   animation: pulse 2s infinite;
   margin: 10px 0;
 }
@@ -1499,7 +1535,7 @@ details summary,
   border-radius: 50%;
   background: var(--primary);
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: transform 0.3s cubic-bezier(.25,.8,.25,1), opacity 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s cubic-bezier(.25,.8,.25,1), border-color 0.3s cubic-bezier(.25,.8,.25,1), border-radius 0.3s cubic-bezier(.25,.8,.25,1), background-color 0.3s cubic-bezier(.25,.8,.25,1), color 0.3s cubic-bezier(.25,.8,.25,1), filter 0.3s cubic-bezier(.25,.8,.25,1), backdrop-filter 0.3s cubic-bezier(.25,.8,.25,1), outline-color 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .top-link:hover {
@@ -2122,7 +2158,7 @@ details summary,
   color: #0e7490;
   font-size: 1.2rem;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(14, 116, 144, 0.2);
 }
 
@@ -2951,8 +2987,8 @@ html {
     font-size: 2.8rem !important;
     font-weight: 700 !important;
     margin: 0 !important;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .profile_title__accent {
@@ -3098,7 +3134,7 @@ html {
     background: #ffffff;
     border: 1px solid rgba(148, 163, 184, 0.15);
     border-radius: 12px;
-    transition: all 0.25s ease;
+    transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, border-radius 0.25s ease, background-color 0.25s ease, color 0.25s ease, filter 0.25s ease, backdrop-filter 0.25s ease, outline-color 0.25s ease;
     text-decoration: none;
 }
 
@@ -3182,7 +3218,7 @@ html {
     color: #0e7490 !important;
     font-weight: 600 !important;
     text-decoration: none !important;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     margin-top: 8px;
     font-size: 0.78rem !important;
     letter-spacing: 0.03em;
@@ -3230,7 +3266,7 @@ html {
 
 #menu > li > a {
     padding: 8px 12px !important;
-    transition: all 0.2s ease !important;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease !important;
     border-radius: 8px;
     display: inline-flex !important;
     align-items: center !important;
@@ -3436,7 +3472,7 @@ html {
     font-size: 0.8rem;
     color: #64748b;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
     padding: 5px 8px;
     border-radius: 8px;
     line-height: 1.4;
@@ -3497,7 +3533,7 @@ html {
     font-size: 0.85rem;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .posts-list-filter__tag:hover {
@@ -3544,7 +3580,7 @@ html {
     font-size: 0.8rem;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .entry-footer .post-tag:hover {
@@ -3626,7 +3662,7 @@ html {
 /* Skip to main content link */
 .skip-link {
     position: absolute;
-    top: -100%;
+    top: 8px;
     left: 16px;
     z-index: 10000;
     padding: 8px 16px;
@@ -3636,11 +3672,13 @@ html {
     border-radius: 4px;
     font-size: 14px;
     text-decoration: none;
-    transition: top 0.2s ease;
+    /* Animate transform instead of the layout-driving `top` (compositor-friendly) */
+    transform: translateY(-200%);
+    transition: transform var(--dur-hover) var(--ease-out);
 }
 
 .skip-link:focus {
-    top: 8px;
+    transform: translateY(0);
 }
 
 /* Fix mobile horizontal overflow.
@@ -3893,6 +3931,7 @@ body {
 .archives-hero__title {
     font-size: 2rem;
     font-weight: 700 !important;
+    letter-spacing: -0.02em;
     background: linear-gradient(135deg, #0e7490, #14b8a6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -3964,9 +4003,11 @@ body {
     border-radius: 14px;
     box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
     position: sticky;
-    top: var(--sticky-offset, 72px);
+    top: 72px;
     z-index: 50;
-    transition: top 0.25s ease;
+    /* Sticky anchor fixed at 72px; animate the offset via transform, not `top` */
+    transform: translateY(calc(var(--sticky-offset, 72px) - 72px));
+    transition: transform 0.25s var(--ease-out);
 }
 
 body.dark .archives-year-nav {
@@ -4128,7 +4169,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     height: 6px;
     border-radius: 50%;
     background: rgba(14, 116, 144, 0.4);
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .archives-post:hover .archives-post__dot {
@@ -4144,7 +4185,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     padding: 10px 14px;
     border-radius: 10px;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
     border: 1px solid transparent;
 }
 
@@ -4276,7 +4317,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin-bottom: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
@@ -4285,6 +4326,10 @@ body.nav-hidden { --sticky-offset: 0px; }
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
     border-color: rgba(14, 116, 144, 0.25);
+}
+
+@media (hover: none) {
+    .post-entry:hover { transform: none; }
 }
 
 .dark .post-entry:hover {
@@ -4336,6 +4381,10 @@ body.nav-hidden { --sticky-offset: 0px; }
     border-color: rgba(14, 116, 144, 0.3);
     box-shadow: 0 16px 40px rgba(14, 116, 144, 0.1);
     transform: translateY(-4px);
+}
+
+@media (hover: none) {
+    .first-entry:hover { transform: none; }
 }
 
 .dark .first-entry {
@@ -4394,7 +4443,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .pagination a:hover {
@@ -4448,7 +4497,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
 }
 
 .terms-tags a:hover {
@@ -4601,7 +4650,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     font-size: 0.82rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
     white-space: nowrap;
 }
 
@@ -4686,7 +4735,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     font-size: 0.78rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
     white-space: nowrap;
 }
 
@@ -5130,7 +5179,7 @@ a.profile_status {
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
     white-space: nowrap;
     letter-spacing: 0.02em;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -5188,7 +5237,7 @@ a.profile_status {
     color: var(--secondary);
     font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     text-decoration: none;
-    transition: all 0.18s ease;
+    transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, border-radius 0.18s ease, background-color 0.18s ease, color 0.18s ease, filter 0.18s ease, backdrop-filter 0.18s ease, outline-color 0.18s ease;
     letter-spacing: 0.02em;
     cursor: pointer;
     outline: none;
@@ -5224,7 +5273,7 @@ a.profile_status {
     color: var(--secondary);
     font: 500 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     text-decoration: none;
-    transition: all 0.15s ease;
+    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, border-radius 0.15s ease, background-color 0.15s ease, color 0.15s ease, filter 0.15s ease, backdrop-filter 0.15s ease, outline-color 0.15s ease;
     letter-spacing: 0.03em;
     white-space: nowrap;
 }
@@ -5288,7 +5337,7 @@ a.profile_status {
     letter-spacing: 0.05em;
     text-decoration: none;
     margin-top: 8px;
-    transition: all 0.15s ease;
+    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, border-radius 0.15s ease, background-color 0.15s ease, color 0.15s ease, filter 0.15s ease, backdrop-filter 0.15s ease, outline-color 0.15s ease;
 }
 
 .profile_view_all:hover {
@@ -5385,7 +5434,7 @@ a.profile_status {
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid transparent;
     white-space: nowrap;
 }
@@ -5565,7 +5614,7 @@ pre:hover .copy-code {
   cursor: pointer;
   background: linear-gradient(135deg, #07c160, #06a850);
   box-shadow: 0 6px 16px -8px rgba(7, 193, 96, 0.75);
-  transition: transform 0.16s ease, box-shadow 0.16s ease, gap 0.16s ease;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 .ai-wechat-cta-btn svg { flex: none; }
 .ai-wechat-cta-btn:hover { transform: translateY(-1px); gap: 9px; box-shadow: 0 10px 22px -8px rgba(7, 193, 96, 0.8); }

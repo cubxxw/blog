@@ -207,7 +207,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   font-family: var(--font-body);
   font-size: 12px;
   color: var(--fg-muted);
-  transition: all 180ms;
+  transition: transform 180ms, opacity 180ms, box-shadow 180ms, border-color 180ms, border-radius 180ms, background-color 180ms, color 180ms, filter 180ms, backdrop-filter 180ms, outline-color 180ms;
 }
 
 .hp-search-btn:hover { border-color: var(--accent-border); color: var(--fg-primary); }
@@ -232,7 +232,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--fg-muted);
-  transition: all 180ms;
+  transition: transform 180ms, opacity 180ms, box-shadow 180ms, border-color 180ms, border-radius 180ms, background-color 180ms, color 180ms, filter 180ms, backdrop-filter 180ms, outline-color 180ms;
 }
 
 .hp-lang-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -689,7 +689,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   align-items: center;
   justify-content: center;
   color: var(--fg-muted);
-  transition: all 160ms;
+  transition: transform 160ms, opacity 160ms, box-shadow 160ms, border-color 160ms, border-radius 160ms, background-color 160ms, color 160ms, filter 160ms, backdrop-filter 160ms, outline-color 160ms;
 }
 
 .hp-bear-chat-icon-btn:hover { background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent); }
@@ -870,7 +870,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   font-size: 11px;
   color: var(--fg-muted);
   white-space: nowrap;
-  transition: all 160ms;
+  transition: transform 160ms, opacity 160ms, box-shadow 160ms, border-color 160ms, border-radius 160ms, background-color 160ms, color 160ms, filter 160ms, backdrop-filter 160ms, outline-color 160ms;
 }
 
 .hp-bear-chat-quick-btn:hover:not(:disabled) { background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent); }
@@ -911,7 +911,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   align-items: center;
   justify-content: center;
   color: #FAF8F6;
-  transition: all 160ms;
+  transition: transform 160ms, opacity 160ms, box-shadow 160ms, border-color 160ms, border-radius 160ms, background-color 160ms, color 160ms, filter 160ms, backdrop-filter 160ms, outline-color 160ms;
   flex-shrink: 0;
 }
 
@@ -1015,7 +1015,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   background: var(--surface-white);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-card);
-  transition: all 220ms ease-out;
+  transition: transform 220ms ease-out, opacity 220ms ease-out, box-shadow 220ms ease-out, border-color 220ms ease-out, border-radius 220ms ease-out, background-color 220ms ease-out, color 220ms ease-out, filter 220ms ease-out, backdrop-filter 220ms ease-out, outline-color 220ms ease-out;
   box-shadow: var(--shadow-card);
 }
 
@@ -1303,7 +1303,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   background: var(--surface-white);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-card);
-  transition: all 220ms;
+  transition: transform 220ms, opacity 220ms, box-shadow 220ms, border-color 220ms, border-radius 220ms, background-color 220ms, color 220ms, filter 220ms, backdrop-filter 220ms, outline-color 220ms;
   box-shadow: var(--shadow-card);
 }
 
@@ -1431,7 +1431,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-small);
   background: var(--accent-soft);
-  transition: all 180ms;
+  transition: transform 180ms, opacity 180ms, box-shadow 180ms, border-color 180ms, border-radius 180ms, background-color 180ms, color 180ms, filter 180ms, backdrop-filter 180ms, outline-color 180ms;
 }
 
 .hp-book:hover .hp-book-cta { background: var(--accent); color: #FAF8F6; }
@@ -1455,7 +1455,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   border-radius: var(--radius-card);
   border: 1px solid var(--border-subtle);
   overflow: hidden;
-  transition: all 220ms;
+  transition: transform 220ms, opacity 220ms, box-shadow 220ms, border-color 220ms, border-radius 220ms, background-color 220ms, color 220ms, filter 220ms, backdrop-filter 220ms, outline-color 220ms;
 }
 
 .hp-project-featured.hp-amber { background: linear-gradient(135deg, var(--accent-soft) 0%, #FAF8F6 100%); border-color: var(--accent-border); }
@@ -1500,7 +1500,7 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-small);
   background: var(--accent-soft);
-  transition: all 180ms;
+  transition: transform 180ms, opacity 180ms, box-shadow 180ms, border-color 180ms, border-radius 180ms, background-color 180ms, color 180ms, filter 180ms, backdrop-filter 180ms, outline-color 180ms;
 }
 
 .hp-project-featured:hover .hp-project-cta { background: var(--accent); color: #FAF8F6; }
@@ -1515,7 +1515,7 @@ body.dark .hp-project-featured.hp-ink   { background: linear-gradient(135deg, #2
   background: var(--surface-white);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-card);
-  transition: all 200ms;
+  transition: transform 200ms, opacity 200ms, box-shadow 200ms, border-color 200ms, border-radius 200ms, background-color 200ms, color 200ms, filter 200ms, backdrop-filter 200ms, outline-color 200ms;
 }
 
 .hp-repo:hover { border-color: var(--accent-border); background: var(--accent-soft); transform: translateY(-1px); }

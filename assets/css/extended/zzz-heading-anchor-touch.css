@@ -62,7 +62,7 @@
       var(--color-accent, var(--primary)) 14%,
       transparent
     );
-    transform: scale(0.88);
+    transform: scale(0.96);
   }
 
   /* ZH pages lean on the deep-red accent identity. */

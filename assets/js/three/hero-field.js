@@ -156,15 +156,21 @@ export function mountHeroField(host, themeEl = document.body) {
   scene.add(mesh);
 
   // Smoothed mouse parallax — lerp toward target so it eases, never jitters.
+  // Cache the host rect and refresh it only on scroll/resize; reading it per
+  // mousemove (up to ~120/s) forces a synchronous layout every event.
+  let hostRect = host.getBoundingClientRect();
+  const refreshRect = () => { hostRect = host.getBoundingClientRect(); };
   const target = new THREE.Vector2(0, 0);
   const onMouse = (e) => {
-    const r = host.getBoundingClientRect();
+    if (!loop.running) return; // idle while paused/off-screen — no work
+    const r = hostRect;
     target.set(
       ((e.clientX - r.left) / r.width) * 2 - 1,
       ((e.clientY - r.top) / r.height) * 2 - 1
     );
   };
   window.addEventListener('mousemove', onMouse, { passive: true });
+  window.addEventListener('scroll', refreshRect, { passive: true });
 
   // Re-read accent when the theme toggles (PaperMod flips a class on <body>).
   const themeObserver = new MutationObserver(() => {
@@ -177,6 +183,7 @@ export function mountHeroField(host, themeEl = document.body) {
     ({ w, h } = size());
     renderer.setSize(w, h);
     uniforms.uAspect.value = w / Math.max(h, 1);
+    refreshRect();
   };
   window.addEventListener('resize', onResize, { passive: true });
 
@@ -187,6 +194,7 @@ export function mountHeroField(host, themeEl = document.body) {
   }, {
     onDispose() {
       window.removeEventListener('mousemove', onMouse);
+      window.removeEventListener('scroll', refreshRect);
       window.removeEventListener('resize', onResize);
       themeObserver.disconnect();
       geom.dispose();

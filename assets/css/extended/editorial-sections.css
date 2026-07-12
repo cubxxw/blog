@@ -410,7 +410,8 @@ body.dark .eig-year-marker {
   align-items: start;
   padding: var(--ei-s3) 0;
   border-bottom: 1px solid var(--ei-divide);
-  transition: padding var(--ei-dur) var(--ei-ease);
+  transition: background-color var(--ei-dur) var(--ei-ease),
+              border-color var(--ei-dur) var(--ei-ease);
 }
 .eig-row:last-child { border-bottom: none; }
 .eig-row:hover {
