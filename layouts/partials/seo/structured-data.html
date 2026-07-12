@@ -25,7 +25,11 @@
   "headline": {{ .Title }},
   "name": {{ .Title }},
   "description": {{ cond (ne .Description "") .Description .Summary | plainify | truncate 200 }},
-  "image": {{ with .Params.cover.image }}{{ . | absURL }}{{ else }}{{ index site.Params.images 0 | default "/assets/og-image.png" | absURL }}{{ end }},
+  {{- /* schema.org Article images must be a crawlable raster (JPG/PNG/WebP);
+         SVG is unsupported. Fall back to the default PNG when the cover is SVG. */ -}}
+  {{- $schemaImage := index site.Params.images 0 | default "/assets/og-image.png" -}}
+  {{- with .Params.cover.image }}{{ if not (strings.HasSuffix (lower .) ".svg") }}{{ $schemaImage = . }}{{ end }}{{ end -}}
+  "image": {{ $schemaImage | absURL }},
   "url": {{ .Permalink }},
   "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }},
   "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }},
@@ -38,9 +42,12 @@
   {{- end -}}
   "author": {
     "@type": "Person",
-    {{- /* No jsonify: Hugo's JS-context auto-escaping already JSON-encodes
-           values inside ld+json scripts; jsonify here double-encoded the
-           name into "\"Xinwei Xiong\"". */}}
+    {{- /* @id links this to the canonical Person node so Google resolves the
+           byline to one entity ("cubxxw") across every article, instead of a
+           fresh unlinked Person per post. No jsonify: Hugo's JS-context
+           auto-escaping already JSON-encodes values inside ld+json scripts;
+           jsonify here double-encoded the name into "\"Xinwei Xiong\"". */}}
+    "@id": "{{ site.BaseURL }}#person",
     "name": {{ $postAuthor | plainify }},
     "url": {{ site.BaseURL }}
   },
@@ -102,6 +109,7 @@
   "url": {{ site.BaseURL }},
   "description": {{ site.Params.description }},
   "inLanguage": "{{ if eq .Language.Lang "zh" }}zh-CN{{ else }}en-US{{ end }}",
+  "publisher": { "@id": "{{ site.BaseURL }}#person" },
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
@@ -113,15 +121,26 @@
 }
 </script>
 
-{{- /* Person/Author Schema */ -}}
+{{- /* Person/Author Schema — the canonical entity for "cubxxw".
+       alternateName disambiguates the handle from a typo; @id lets other
+       nodes (WebSite publisher, BlogPosting author) reference this one
+       entity instead of scattering unlinked Person/Organization nodes.
+       sameAs profiles are the strongest entity-disambiguation signal. */ -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "{{ site.BaseURL }}#person",
   "name": {{ $authorName | default "Xinwei Xiong" }},
+  "alternateName": ["cubxxw", "熊鑫伟", "Xinwei Xiong"],
   "url": {{ site.BaseURL }},
+  "email": "mailto:3293172751nss@gmail.com",
   "sameAs": [
+    "https://cubxxw.com",
+    "https://nsddd.top",
     "https://github.com/cubxxw",
+    "https://x.com/xxw3293172751",
+    "https://www.linkedin.com/in/cubxxw",
     "https://www.zhihu.com/people/3293172751",
     "https://space.bilibili.com/1233089591",
     "https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w"
@@ -129,6 +148,7 @@
   "jobTitle": "AI Entrepreneur",
   "worksFor": {
     "@type": "Organization",
+    "@id": "{{ site.BaseURL }}#organization",
     "name": "OpenClaw"
   }
 }
