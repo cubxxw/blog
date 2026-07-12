@@ -49,7 +49,46 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
+    // FAB auto-fade once the reader reaches the end-of-article zone.
+    // Past the article body — the comments, related posts and footer —
+    // the Contents / AI tools no longer serve the read, so the FAB
+    // should get out of the way rather than sit over the discussion.
+    initEndZoneFade();
+
     initMobileAi();
+  }
+
+  /* ── Hide the FAB in the end-of-article zone ──────────────────
+     `fromBottom < 80` alone kept the FAB visible all through a tall
+     comments iframe (utterances) because real page-bottom was still
+     far below. Watch the first end-zone block instead — comments, or
+     failing that related-posts / post-footer — and fade the FAB the
+     moment it scrolls into view. Purely additive: `endZoneVisible`
+     only ever forces the hide; onScroll still owns the top/bottom
+     fades. No IntersectionObserver (very old browser) → no-op, and the
+     scroll-based fade still applies. */
+  var endZoneVisible = false;
+
+  function initEndZoneFade() {
+    if (!('IntersectionObserver' in window)) return;
+    var target =
+      document.querySelector('.post-comments') ||
+      document.querySelector('.related-posts') ||
+      document.querySelector('.post-footer');
+    if (!target) return;
+
+    var io = new IntersectionObserver(function (entries) {
+      endZoneVisible = entries[0].isIntersecting;
+      onScroll();
+    }, {
+      // Fade as soon as the end zone's top edge crosses into the lower
+      // viewport — the moment the reader is done with the body and the
+      // comments start coming up, the FAB clears out. No negative
+      // bottom margin (that delayed the trigger until the block was
+      // well up the screen); intersecting-at-all is the signal.
+      threshold: 0,
+    });
+    io.observe(target);
   }
 
   /* ── Finger-following drag-to-close ───────────────────────────
@@ -445,7 +484,10 @@
     var docH      = document.documentElement.scrollHeight;
     var viewH     = window.innerHeight;
     var fromBottom = docH - scrollY - viewH;
-    var hide = scrollY < FAB_HIDE_SCROLL || fromBottom < FAB_HIDE_BOTTOM;
+    var hide =
+      scrollY < FAB_HIDE_SCROLL ||
+      fromBottom < FAB_HIDE_BOTTOM ||
+      endZoneVisible;            // reached comments / related / footer
     fab.classList.toggle('article-fab--hidden', hide);
   }
 
