@@ -2,29 +2,53 @@
 
 /* Only visible on mobile (<1024px) */
 
-/* ── Floating Action Button ────────────────────────────────── */
+/* ── Floating Action Button ──────────────────────────────────
+   The single mobile floating control (the back-to-top orb is gone on
+   phones — see zzz-mobile-back-to-top.css). Tuned to be as quiet as a
+   floating control can be: small, dimmed and semi-transparent at rest
+   so it barely marks the page, then lifting to full presence only when
+   the finger arrives (:active) or focus lands on it. It sits in the
+   very bottom-right corner now that nothing stacks beneath it. */
 .article-fab {
   display: none;
   position: fixed;
-  bottom: 6.5rem;
-  right: 1.25rem;
-  width: 48px;
-  height: 48px;
+  /* Down in the corner, clear of the home-indicator safe area. */
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  right: 1rem;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--color-accent, #2e352e);
+  /* Translucent accent so the paper shows through — a hint, not a slab.
+     color-mix keeps it on-brand (accent) while cutting its weight; the
+     rgba fallback covers browsers without color-mix. */
+  background: rgba(46, 53, 46, 0.55);
+  background: color-mix(in srgb, var(--color-accent, #2e352e) 62%, transparent);
   color: var(--color-paper, #f9f9f7);
   border: none;
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  /* Soft, low shadow — presence without a hard drop. */
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0.62;              /* dimmed at rest so it recedes into the read */
   z-index: 200;
-  transition: opacity 240ms ease, transform 240ms ease;
+  transition: opacity 240ms ease, transform 240ms ease, background-color 200ms ease;
+}
+
+/* Finger on it (or focused): come fully forward, solid accent. */
+.article-fab:active,
+.article-fab:focus-visible {
+  opacity: 1;
+  background: var(--color-accent, #2e352e);
+  transform: scale(0.94);
 }
 
 .article-fab svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   pointer-events: none;
 }
 

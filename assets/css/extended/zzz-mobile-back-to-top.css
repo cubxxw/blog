@@ -1,81 +1,34 @@
 /* ============================================================
-   zzz-mobile-back-to-top.css — direction-aware back-to-top (mobile)
+   zzz-mobile-back-to-top.css — back-to-top is DESKTOP-ONLY
    ------------------------------------------------------------
    On desktop the #top-link control springs in past 800px and fills
    a progress ring as you read (footer.html + micro-interactions.css
-   + zz-scroll-detail.css). On phones it was hidden outright
-   (custom.css → `@media (max-width:1023px){ .top-link{display:none} }`)
+   + zz-scroll-detail.css). custom.css already hides it on phones
+   (`@media (max-width:1023px){ .top-link{display:none !important} }`)
    to avoid a control parked permanently over the content.
 
-   This layer brings it back on mobile — but only as a *gesture
-   response*, never a persistent overlay: the button stays tucked
-   away and reveals only when the reader swipes UP (an intent to go
-   back), then hides again on the next downward scroll or near the
-   top. The reveal is driven by `.is-visible-mobile`, toggled in
-   micro-interactions.js. This honours the original "don't clutter
-   the read" intent while answering the very gesture — scrolling up —
-   with the shortcut it implies.
+   An earlier iteration re-introduced it on mobile as a swipe-up
+   "gesture response". In practice that put a SECOND floating orb in
+   the bottom-right corner, stacked under the article FAB — two round
+   controls fighting for the same corner over the live read. The
+   mobile brief is the opposite: as few floating controls as possible,
+   so the reader sees the article, not the chrome.
 
-   Loads late (zzz- prefix) so these rules win source-order against
-   custom.css; the `!important` here is the minimum needed to defeat
-   the earlier `display:none !important`. Fully neutralised under
-   reduced motion (fade only, no travel) at the foot of the file.
+   So on mobile the back-to-top button is gone entirely. The single
+   article FAB (article-bottom-sheet.css) is the ONE mobile floating
+   control; its bottom-sheet already carries every tool a phone reader
+   needs (Contents / Series / AI / Share), and its Contents tab jumps
+   straight back to any heading — including the top. This file now
+   only hard-guarantees the phone hide so no later layer can revive
+   the orb; desktop behaviour is untouched (rules live elsewhere).
    ============================================================ */
 
 @media (max-width: 1023px) {
-  /* Re-enable the control on phones, but born hidden: shifted down,
-     shrunk and click-through until a scroll-up reveals it. */
-  .top-link {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    /* Sit clear of the home-indicator / safe area on modern phones. */
-    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-    right: 16px;
-    width: 44px;   /* keep a 44px tap target */
-    height: 44px;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(14px) scale(0.72);
-    transition:
-      opacity 0.28s ease,
-      visibility 0.28s ease,
-      transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  /* Revealed: the button rises and settles with a gentle overshoot. */
+  /* One floating control on phones, and it isn't this one. Keep the
+     control fully removed — not just faded — so it can never overlap
+     the FAB or intercept a tap over the content. */
+  .top-link,
   .top-link.is-visible-mobile {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-  }
-
-  /* Tactile press for the finger — a quick squash on tap. The
-     reveal class keeps it composed so :active never snaps it back to
-     the hidden resting transform mid-press. */
-  .top-link.is-visible-mobile:active {
-    transform: translateY(0) scale(0.9);
-    transition: transform 0.1s ease;
-  }
-
-  /* Replace the grey tap-flash with our own scale cue. */
-  .top-link {
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-
-/* ============================================================
-   Reduced motion: fade only — no rise, no spring, no squash.
-   ============================================================ */
-@media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
-  .top-link {
-    transform: none !important;
-    transition: opacity 0.2s ease, visibility 0.2s ease !important;
-  }
-  .top-link.is-visible-mobile,
-  .top-link.is-visible-mobile:active {
-    transform: none !important;
+    display: none !important;
   }
 }
