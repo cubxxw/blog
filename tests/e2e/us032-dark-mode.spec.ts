@@ -37,7 +37,7 @@ test('EN light: --color-accent is dark olive (not dark override)', async ({ page
   );
   // EN light accent should be ~#2e352e
   expect(accent).not.toBe('');
-  expect(accent).not.toContain('ff3b3b'); // not ZH dark red
+  expect(accent).not.toContain('ff6b6b'); // not ZH dark red
   await screenshot(page, 'en-light-desktop');
 });
 
@@ -143,7 +143,7 @@ test('ZH dark: --color-ink is warm white (#f5f3ee)', async ({ page }) => {
   expect(ink).toMatch(/#?f5f3ee|245,243,238/i);
 });
 
-test('ZH dark: --color-accent is vivid red (#ff3b3b)', async ({ page }) => {
+test('ZH dark: --color-accent is red (#ff6b6b)', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
   await page.waitForLoadState('networkidle');
@@ -152,7 +152,7 @@ test('ZH dark: --color-accent is vivid red (#ff3b3b)', async ({ page }) => {
   const accent = await page.evaluate(() =>
     getComputedStyle(document.body).getPropertyValue('--color-accent').trim()
   );
-  expect(accent).toMatch(/#?ff3b3b|255,59,59/i);
+  expect(accent).toMatch(/#?ff6b6b|255,107,107/i);
 });
 
 test('ZH dark: full page screenshot', async ({ page }) => {
@@ -190,7 +190,7 @@ test('EN: dark class toggle changes --color-paper token', async ({ page }) => {
 
 // ── US-032-06: ZH dark — accent for h2/drop-cap reflects token ───
 
-test('ZH dark: h2 border-left color reflects --color-accent (#ff3b3b)', async ({ page }) => {
+test('ZH dark: h2 border-left color reflects --color-accent (#ff6b6b)', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
   await page.waitForLoadState('networkidle');
@@ -201,8 +201,8 @@ test('ZH dark: h2 border-left color reflects --color-accent (#ff3b3b)', async ({
     if (!h2) return '';
     return getComputedStyle(h2).borderLeftColor;
   });
-  // rgb(255,59,59) = #ff3b3b
-  expect(h2Color).toMatch(/255,\s*59,\s*59/);
+  // rgb(255,107,107) = #ff6b6b
+  expect(h2Color).toMatch(/255,\s*107,\s*107/);
 });
 
 // ── US-032-07: 0 console errors ──────────────────────────────────
