@@ -28,7 +28,7 @@
   font-size: clamp(2.4rem, 6vw, 3.6rem);
   font-weight: 700 !important;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;  /* large display title → -0.02em (apple-design §15) */
   background: none;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: currentColor;
@@ -88,6 +88,16 @@
   border-color: var(--color-accent);
   color: var(--color-accent);
   transform: none;
+}
+
+/* The year-nav chips compute to ~28px — under the 44px touch minimum. Lift on
+   coarse pointers only (desktop stays compact). */
+@media (hover: none) and (pointer: coarse) {
+  .archives-year-nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 
 /* ─── Archives: timeline ───────────────────────────────────── */
@@ -171,7 +181,7 @@
   font-size: clamp(2.4rem, 6vw, 3.6rem);
   font-weight: 700 !important;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;  /* large display title → -0.02em (apple-design §15) */
   background: none;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: currentColor;
@@ -239,6 +249,17 @@
 
 .posts-filter__chip--active .posts-filter__chip-count { color: inherit; opacity: 0.75; }
 
+/* Touch targets: the category/tag chips, sort select and clear button compute
+   to ~26–30px tall — fine for a mouse but under the 44px touch minimum. Lift
+   them only on coarse pointers so the desktop bar stays compact. */
+@media (hover: none) and (pointer: coarse) {
+  .posts-filter__chip,
+  .posts-filter__select,
+  .posts-filter__clear {
+    min-height: 44px;
+  }
+}
+
 .posts-filter__select {
   border: 1px solid var(--color-rule);
   background: var(--color-paper);
@@ -255,19 +276,22 @@
 }
 
 .posts-filter {
+  /* Strong curves replace the weak built-in `ease`: the panel's translateY
+     exit is an on-screen positional move (--ease-in-out); the surface changes
+     (shadow/fill/padding/gap) read as enter/exit (--ease-out). */
   transition:
-    transform 0.3s ease,
-    box-shadow 0.25s ease,
-    background-color 0.2s ease,
-    padding 0.28s ease,
-    gap 0.28s ease;
+    transform 0.3s var(--ease-in-out),
+    box-shadow 0.25s var(--ease-out),
+    background-color 0.2s var(--ease-out),
+    padding 0.28s var(--ease-out),
+    gap 0.28s var(--ease-out);
 }
 
 .posts-filter__collapsible {
   display: grid;
   grid-template-rows: 1fr;
   opacity: 1;
-  transition: grid-template-rows 0.3s ease, opacity 0.22s ease;
+  transition: grid-template-rows 0.3s var(--ease-out), opacity 0.22s var(--ease-out);
 }
 
 .posts-filter__collapsible-inner {
@@ -306,7 +330,7 @@
   grid-template-rows: 0fr;
   opacity: 0;
   visibility: hidden;
-  transition: grid-template-rows 0.3s ease, opacity 0.22s ease, visibility 0s 0.3s;
+  transition: grid-template-rows 0.3s var(--ease-out), opacity 0.22s var(--ease-out), visibility 0s 0.3s;
 }
 
 /* Stuck + open: TAGS + SORT drop down as an overlay panel below the bar.
@@ -378,7 +402,7 @@
 }
 
 .posts-filter__toggle-chevron {
-  transition: transform 0.25s ease;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .posts-filter--open .posts-filter__toggle-chevron {
@@ -417,13 +441,21 @@
   border: 1px solid var(--color-rule);
   border-radius: 12px;
   box-shadow: none;
+  /* Was untransitioned, so the hover lift/border/shadow snapped. */
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms ease;
 }
 
-.post-entry:hover,
-.dark .post-entry:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
+/* Gate the hover lift to real hover pointers so a tap doesn't leave the card
+   stuck-lifted on touch (press feedback handles the tap via :active). This
+   file loads after the shared touch-reset + press-feedback layers, so the gate
+   lives at the source here rather than in the reset. */
+@media (hover: hover) and (pointer: fine) {
+  .post-entry:hover,
+  .dark .post-entry:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 .post-entry .entry-header h2 {
@@ -483,6 +515,8 @@
   border: 1px solid var(--color-rule);
   border-radius: 10px;
   margin-top: 10px;
+  /* Smooth the hover/keyboard-focus bg + border change (was an instant snap). */
+  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out);
 }
 
 #searchResults li:hover,
@@ -491,10 +525,19 @@
   border-color: var(--color-accent);
 }
 
+/* The full-cover result anchor is outline:none in the theme, so keyboard-Tab
+   focus was invisible (only the JS arrow-key .focus class was styled). Give it
+   a real accent ring on :focus-visible. */
+#searchResults a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  border-radius: 10px;
+}
+
 /* Page-header h1 on utility pages (search, terms) → display serif */
 .page-header h1 {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;  /* large display title → -0.02em (apple-design §15) */
 }
 
 /* ─── Detail: hero scroll cue readability ──────────────────────

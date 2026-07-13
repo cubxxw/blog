@@ -95,7 +95,9 @@ a.oss-card:hover {
 .oss-card__lang {
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.85;
+  /* 0.85 pulled the muted lang kicker to ~4.36:1 (just under AA at 0.69rem);
+     full opacity on the already-muted token reads at ~6:1. */
+  opacity: 1;
 }
 
 .oss-card__stars {

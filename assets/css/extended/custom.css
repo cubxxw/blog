@@ -108,7 +108,7 @@
   border: 1px solid rgba(139, 92, 246, 0.15);
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s var(--ease-standard), opacity 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard), border-color 0.3s var(--ease-standard), border-radius 0.3s var(--ease-standard), background-color 0.3s var(--ease-standard), color 0.3s var(--ease-standard), filter 0.3s var(--ease-standard), backdrop-filter 0.3s var(--ease-standard), outline-color 0.3s var(--ease-standard);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -401,7 +401,7 @@
   border: 1px solid rgba(217, 119, 6, 0.15);
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s var(--ease-standard), opacity 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard), border-color 0.3s var(--ease-standard), border-radius 0.3s var(--ease-standard), background-color 0.3s var(--ease-standard), color 0.3s var(--ease-standard), filter 0.3s var(--ease-standard), backdrop-filter 0.3s var(--ease-standard), outline-color 0.3s var(--ease-standard);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -930,7 +930,7 @@ code, pre, kbd, samp, tt {
   border: 1px solid rgba(148, 163, 184, 0.2);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s var(--ease-standard), opacity 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard), border-color 0.3s var(--ease-standard), border-radius 0.3s var(--ease-standard), background-color 0.3s var(--ease-standard), color 0.3s var(--ease-standard), filter 0.3s var(--ease-standard), backdrop-filter 0.3s var(--ease-standard), outline-color 0.3s var(--ease-standard);
 }
 
 .blog-ai-inline:hover {
@@ -1066,7 +1066,7 @@ code, pre, kbd, samp, tt {
   border-radius: 16px;
   line-height: 1.65;
   font-size: 0.93rem;
-  animation: messageSlide 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: messageSlide 0.35s var(--ease-standard);
 }
 
 @keyframes messageSlide {
@@ -1232,7 +1232,7 @@ code, pre, kbd, samp, tt {
   font-family: inherit;
   font-size: 0.93rem;
   color: #334155;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s var(--ease-standard), opacity 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard), border-color 0.25s var(--ease-standard), border-radius 0.25s var(--ease-standard), background-color 0.25s var(--ease-standard), color 0.25s var(--ease-standard), filter 0.25s var(--ease-standard), backdrop-filter 0.25s var(--ease-standard), outline-color 0.25s var(--ease-standard);
   box-sizing: border-box;
   line-height: 1.5;
 }
@@ -1262,7 +1262,7 @@ code, pre, kbd, samp, tt {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s var(--ease-standard), opacity 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard), border-color 0.25s var(--ease-standard), border-radius 0.25s var(--ease-standard), background-color 0.25s var(--ease-standard), color 0.25s var(--ease-standard), filter 0.25s var(--ease-standard), backdrop-filter 0.25s var(--ease-standard), outline-color 0.25s var(--ease-standard);
   border: none;
 }
 
@@ -2158,7 +2158,7 @@ details summary,
   color: #0e7490;
   font-size: 1.2rem;
   text-decoration: none;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s var(--ease-standard), opacity 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard), border-color 0.3s var(--ease-standard), border-radius 0.3s var(--ease-standard), background-color 0.3s var(--ease-standard), color 0.3s var(--ease-standard), filter 0.3s var(--ease-standard), backdrop-filter 0.3s var(--ease-standard), outline-color 0.3s var(--ease-standard);
   border: 1px solid rgba(14, 116, 144, 0.2);
 }
 
@@ -2537,6 +2537,18 @@ details summary,
 
 .toc-inline__item a:hover {
     color: var(--primary);
+}
+
+/* On touch the inline-TOC rows compute to ~28px — under the 44px minimum.
+   Lift them to a comfortable tap target on coarse pointers only (desktop
+   keeps the compact list). */
+@media (hover: none) and (pointer: coarse) {
+    .toc-inline__item a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 6px 0;
+    }
 }
 
 .toc-inline__item--h3 { padding-left: 14px; }
@@ -3083,7 +3095,7 @@ html {
 
 .profile_panel {
     border-top: 3px solid transparent !important;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s var(--ease-standard), border-color 0.3s, box-shadow 0.3s;
 }
 
 .profile_panel:hover {
@@ -3145,9 +3157,16 @@ html {
 
 .profile_post__date {
     font-size: 0.72rem;
-    color: #94a3b8;
+    /* Same AA fix as .post-entry__date: #94a3b8 is ~2.5:1 on the white
+       .profile_post card. Darken to #647385 in light; the .dark override
+       below keeps the original tone, which passes on the dark card. */
+    color: #647385;
     display: block;
     margin-bottom: 6px;
+}
+
+.dark .profile_post__date {
+    color: #94a3b8;
 }
 
 .profile_post strong {
@@ -3207,7 +3226,7 @@ html {
     color: #0e7490 !important;
     font-weight: 600 !important;
     text-decoration: none !important;
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: transform 0.25s var(--ease-standard), opacity 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard), border-color 0.25s var(--ease-standard), border-radius 0.25s var(--ease-standard), background-color 0.25s var(--ease-standard), color 0.25s var(--ease-standard), filter 0.25s var(--ease-standard), backdrop-filter 0.25s var(--ease-standard), outline-color 0.25s var(--ease-standard) !important;
     margin-top: 8px;
     font-size: 0.78rem !important;
     letter-spacing: 0.03em;
@@ -4158,13 +4177,25 @@ body.nav-hidden { --sticky-offset: 0px; }
     height: 6px;
     border-radius: 50%;
     background: rgba(14, 116, 144, 0.4);
-    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
+    /* Only these three actually change on :hover — trimmed from the
+       10-property blanket list so the transition declares what it animates. */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .archives-post:hover .archives-post__dot {
     background: #0e7490;
     box-shadow: 0 0 8px rgba(14, 116, 144, 0.4);
     transform: scale(1.5);
+}
+
+/* No archives rule was in any reduced-motion block — the timeline dot still
+   scaled and the year-nav chips still lifted under reduced motion. Neutralise
+   those position/scale changes (colour + glow cues stay). */
+@media (prefers-reduced-motion: reduce) {
+    .archives-post:hover .archives-post__dot,
+    .archives-year-nav__link:hover {
+        transform: none !important;
+    }
 }
 
 .archives-post__link {
@@ -4174,7 +4205,9 @@ body.nav-hidden { --sticky-offset: 0px; }
     padding: 10px 14px;
     border-radius: 10px;
     text-decoration: none;
-    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, backdrop-filter 0.2s ease, outline-color 0.2s ease;
+    /* Only background + border-color change on :hover — trimmed from the
+       10-property blanket list. */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
     border: 1px solid transparent;
 }
 
@@ -4306,7 +4339,7 @@ body.nav-hidden { --sticky-offset: 0px; }
     border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s var(--ease-standard), opacity 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard), border-color 0.3s var(--ease-standard), border-radius 0.3s var(--ease-standard), background-color 0.3s var(--ease-standard), color 0.3s var(--ease-standard), filter 0.3s var(--ease-standard), backdrop-filter 0.3s var(--ease-standard), outline-color 0.3s var(--ease-standard);
     margin-bottom: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
@@ -4679,7 +4712,10 @@ body.nav-hidden { --sticky-offset: 0px; }
 
 .posts-filter__chip-count {
     font-size: 0.7rem;
-    opacity: 0.6;
+    /* 0.6 dropped the count numerals below AA on the inactive chip; 0.9 keeps
+       them subordinate while legible (the active chip inherits white on accent
+       and is unaffected). */
+    opacity: 0.9;
 }
 
 .posts-filter__chip--tag {
@@ -4709,10 +4745,15 @@ body.nav-hidden { --sticky-offset: 0px; }
     background-position: right 8px center;
 }
 
-.posts-filter__select:focus {
+.posts-filter__select:focus { outline: none; }
+/* Was teal #0e7490 on :focus (pre-editorial palette), clashing with the maroon
+   editorial accent that themes this page, and it fired on mouse click too. Bind
+   the ring to the accent token and gate it to :focus-visible so only keyboard
+   focus draws it. */
+.posts-filter__select:focus-visible {
     outline: none;
-    border-color: #0e7490;
-    box-shadow: 0 0 0 2px rgba(14, 116, 144, 0.1);
+    border-color: var(--color-accent, #862122);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent, #862122) 18%, transparent);
 }
 
 .dark .posts-filter__select {
@@ -4857,8 +4898,17 @@ body.nav-hidden { --sticky-offset: 0px; }
 
 .post-entry__date {
     font-size: 0.78rem;
-    color: #94a3b8;
+    /* Darkened from #94a3b8 (~2.4:1 on the light card — a WCAG-AA fail) to
+       #647385 (~4.6:1 on cream / ~4.85:1 on white). The old value only cleared
+       AA in dark mode (6.8:1 on the dark card), so this is gated per-theme:
+       light uses the darker blue-grey; the dark override below restores the
+       original lighter tone (which already passes on the dark surface). */
+    color: #647385;
     font-variant-numeric: tabular-nums;
+}
+
+.dark .post-entry__date {
+    color: #94a3b8;
 }
 
 /* Section badge */
@@ -5428,7 +5478,7 @@ a.profile_status {
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), outline-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s var(--ease-standard), opacity 0.2s var(--ease-standard), box-shadow 0.2s var(--ease-standard), border-color 0.2s var(--ease-standard), border-radius 0.2s var(--ease-standard), background-color 0.2s var(--ease-standard), color 0.2s var(--ease-standard), filter 0.2s var(--ease-standard), backdrop-filter 0.2s var(--ease-standard), outline-color 0.2s var(--ease-standard);
     border: 2px solid transparent;
     white-space: nowrap;
 }
@@ -5562,7 +5612,7 @@ pre:hover .copy-code {
     color: #fff;
     background-color: #16a34a;
     border-color: #16a34a;
-    animation: copy-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: copy-pop 0.32s var(--ease-spring);
 }
 .dark .copy-code.is-copied {
     background-color: #22c55e;

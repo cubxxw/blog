@@ -1117,14 +1117,16 @@ body.dark .profile_view_more,
 body.dark .profile_post--featured strong,
 body.dark .archives-stat__number,
 body.dark .archives-year__count,
-body.dark .posts-hero__count,
+/* The editorial utility pages (articles/archives) are re-themed to the
+   per-language accent in zzz-utility-editorial.css; a leftover cyan !important
+   here overrode that in dark, so the hero/stat counts clashed with the maroon
+   (ZH) / sky (EN) accent. Dropped .posts-hero__count / .archives-stat__number /
+   .archives-year__count from this block so they inherit the accent. The
+   profile_* selectors are the distinct AI-chat widget and stay cyan. */
 [data-theme="dark"] .profile_title__accent,
 [data-theme="dark"] .profile_terminal__prompt,
 [data-theme="dark"] .profile_view_more,
-[data-theme="dark"] .profile_post--featured strong,
-[data-theme="dark"] .archives-stat__number,
-[data-theme="dark"] .archives-year__count,
-[data-theme="dark"] .posts-hero__count {
+[data-theme="dark"] .profile_post--featured strong {
   color: #22d3ee !important;
 }
 

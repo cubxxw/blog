@@ -69,7 +69,9 @@
   font-size: 0.72rem;
   font-family: var(--font-mono);
   color: var(--color-ink-muted);
-  opacity: 0.6;
+  /* 0.6 multiplied the muted token down to ~2.6:1 (AA fail at 0.72rem);
+     0.9 keeps a slight recession while clearing 4.5:1. */
+  opacity: 0.9;
   margin: 0 0 16px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -478,10 +480,11 @@
   color: #fff;
   background: linear-gradient(135deg, var(--wx-green), var(--wx-green-strong));
   box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--wx-green) 75%, transparent);
-  transition: gap 200ms ease, box-shadow 200ms ease;
+  transition: box-shadow 200ms ease;
 }
+/* The arrow already slides via transform (below), so animating flex `gap` too
+   was redundant layout thrash — dropped. */
 .about-wechat-cta svg { width: 16px; height: 16px; transition: transform 200ms ease; }
-.about-wechat:hover .about-wechat-cta { gap: 10px; }
 .about-wechat:hover .about-wechat-cta svg { transform: translateX(3px); }
 
 body.dark .about-wechat {
@@ -622,6 +625,16 @@ body.dark .about-wechat {
   font-style: italic;
   color: var(--color-ink-muted);
   opacity: 0.7;
+}
+
+/* CJK serifs (Source Han Serif / Songti) ship no true italic glyphs, so
+   `font-style: italic` forces the browser to fake a mechanical oblique slant
+   that reads as broken on Chinese text. Keep italic for the Latin (en) site
+   where the serif has real italics; render upright on the Chinese pages. */
+html:lang(zh) .about-tagline,
+html:lang(zh) .about-quote,
+html:lang(zh) .about-footer-sig {
+  font-style: normal;
 }
 
 /* ── Dark mode adjustments ── */

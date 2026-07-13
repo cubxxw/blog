@@ -82,7 +82,7 @@
   .hp-posts-list-row:active,
   .rpc:active {
     transform: scale(0.97);
-    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.12s var(--ease-out);
   }
 }
 
@@ -96,7 +96,7 @@
 }
 #menu > li > a:active {
   transform: scale(0.94);
-  transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.1s var(--ease-out);
 }
 
 /* The minimal search chip in the nav gets the same press cue. */
@@ -105,7 +105,7 @@
 }
 .nav-search-trigger:active {
   transform: scale(0.96);
-  transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.1s var(--ease-out);
 }
 
 /* ============================================================
@@ -175,17 +175,18 @@
   }
 }
 
-/* Touch / coarse pointers: a slightly deeper, springy press. */
+/* Touch / coarse pointers: a slightly deeper press that settles with ease-out
+   (press feedback decelerates — overshoot is reserved for drag-to-dismiss). */
 @media (hover: none) and (pointer: coarse) {
   .eit-page-btn:active,
   .eig-page-btn:active,
   .pagination a:active {
     transform: scale(0.96);
-    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.12s var(--ease-out);
   }
   .profile_nav_tag:active {
     transform: scale(0.96);
-    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.12s var(--ease-out);
   }
 }
 
@@ -194,6 +195,95 @@
   .eig-page-btn:active,
   .pagination a:active,
   .profile_nav_tag:active {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   Section-page whole-card links — extend the press family
+   ------------------------------------------------------------
+   The editorial section grids (AI-Agent / Engineering / Growth /
+   Travel), the open-source project cards, the featured AI-Agent
+   card and the About-page cards are all whole-card <a> targets
+   that lift on hover but — unlike the homepage hp-* cards above —
+   had NO press response, so a phone tap navigated with no tactile
+   beat (audit: "no :active press feedback on any pressable element"
+   on travel / growth / engineering / projects). Bring them into
+   the same tactile family: fine pointers settle down from the
+   hover lift; touch gets a slightly deeper springy press. Loads
+   last (zzz-) so :active wins at equal specificity; the grey
+   tap-flash is replaced by our own cue; neutralised under reduced
+   motion.
+   ============================================================ */
+.eig-featured-card,
+.eip-card,
+.eitr-card,
+.eitr-philo-card,
+.eitr-social,
+.eitr-btn,
+.oss-card,
+.aia-featured,
+.about-card,
+.about-link-item,
+.about-start-item,
+.eng-row,
+.eng-page-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .eig-featured-card:active,
+  .eip-card:active,
+  .eitr-card:active,
+  .eitr-philo-card:active,
+  .eitr-social:active,
+  .eitr-btn:active,
+  .oss-card:active,
+  .aia-featured:active,
+  .about-card:active,
+  .about-link-item:active,
+  .about-start-item:active,
+  .eng-row:active,
+  .eng-page-btn:active {
+    transform: translateY(0) scale(0.985);
+    transition: transform 0.1s ease;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .eig-featured-card:active,
+  .eip-card:active,
+  .eitr-card:active,
+  .eitr-philo-card:active,
+  .eitr-social:active,
+  .eitr-btn:active,
+  .oss-card:active,
+  .aia-featured:active,
+  .about-card:active,
+  .about-link-item:active,
+  .about-start-item:active,
+  .eng-row:active,
+  .eng-page-btn:active {
+    transform: scale(0.97);
+    transition: transform 0.12s var(--ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eig-featured-card:active,
+  .eip-card:active,
+  .eitr-card:active,
+  .eitr-philo-card:active,
+  .eitr-social:active,
+  .eitr-btn:active,
+  .oss-card:active,
+  .aia-featured:active,
+  .about-card:active,
+  .about-link-item:active,
+  .about-start-item:active,
+  .eng-row:active,
+  .eng-page-btn:active {
     transform: none !important;
     transition: none !important;
   }

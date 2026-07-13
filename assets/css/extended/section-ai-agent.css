@@ -76,7 +76,7 @@ body.dark {
   font-weight: 500;
   font-size: clamp(38px, 7vw, 64px);
   line-height: 1.12;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em; /* large display → -0.02em (apple-design §15) */
   margin: 0 0 var(--ei-s3, 24px);
 }
 .aia-hero__plain { color: var(--ei-text, #1e2d32); }
@@ -185,7 +185,8 @@ body.dark .aia-topic--active { color: #12141f; }
   background-repeat: no-repeat;
   background-size: 0% 2px;
   background-position: 0 100%;
-  transition: background-size 0.4s var(--ei-ease, ease);
+  /* 0.4s exceeded the sub-300ms UI budget for a hover underline draw. */
+  transition: background-size 0.26s var(--ei-ease, ease);
 }
 .aia-featured:hover .aia-featured__title a { background-size: 100% 2px; }
 .aia-featured__desc {
@@ -221,9 +222,11 @@ body.dark .aia-topic--active { color: #12141f; }
   font-size: 13.5px;
   font-weight: 600;
   color: var(--aia-accent);
-  transition: gap var(--ei-dur, 0.28s) var(--ei-ease, ease);
 }
-.aia-cta:hover { gap: 11px; }
+/* Slide the arrow via transform instead of animating flex `gap` (a
+   layout-triggering property). Same "arrow reaches forward" read, on the GPU. */
+.aia-cta svg { transition: transform var(--ei-dur, 0.28s) var(--ei-ease); }
+.aia-cta:hover svg { transform: translateX(4px); }
 
 /* ── Index list ── */
 .aia-index__head {
@@ -321,6 +324,18 @@ body.dark .aia-topic--active { color: #12141f; }
   .aia-row__num { display: none; }
   .aia-featured { padding: var(--ei-s3, 24px); }
   .aia-cta { margin-left: 0; }
+}
+
+/* Touch targets: the topic filter chips (~30px) and pagination buttons (~34px)
+   are the page's primary controls but fall under the 44px touch minimum. Lift
+   on coarse pointers only so the desktop bar stays compact. */
+@media (hover: none) and (pointer: coarse) {
+  .aia-topic,
+  .aia-page-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

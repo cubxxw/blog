@@ -20,7 +20,15 @@
   /* Text */
   --ei-text:         #1e2d32;
   --ei-text-2:       #3d5560;
-  --ei-text-3:       #6b8590;
+  /* Darkened from #6b8590 (~3.4–3.9:1 on the blue-grey surfaces — a WCAG-AA
+     fail) to #556a72. This is the tertiary metadata colour (dates, kickers,
+     read-time, card labels across the AI-Agent / Engineering / Growth /
+     Travel section grids), so it must clear 4.5:1: #556a72 lands at
+     4.9–5.7:1 across --ei-bg-card/#fff, --ei-bg, --ei-bg-low and
+     --ei-bg-raised, while staying below --ei-text-2 (#3d5560) so the
+     hierarchy is unchanged. Light only; dark --ei-text-3 (#79a6b4) is a
+     separate scoped token below and untouched. */
+  --ei-text-3:       #556a72;
 
   /* Accent — emerald, used sparingly */
   --ei-green:        #2d6a4f;
@@ -99,6 +107,10 @@ body.dark {
 /* Category chip */
 .eig-chip, .eip-chip, .eitr-chip {
   display: inline-block;
+  /* In a column flex parent an inline-block child is blockified and stretches
+     to full width; keep the pill hugging its label. */
+  align-self: flex-start;
+  width: fit-content;
   padding: 4px 12px;
   border-radius: 999px;
   background: var(--ei-green-wash);
@@ -144,9 +156,15 @@ body.dark {
   color: var(--ei-green);
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: gap var(--ei-dur) var(--ei-ease);
 }
-.eig-cta:hover, .eip-cta:hover, .eitr-cta:hover { gap: 10px; }
+/* Slide the arrow via transform rather than animating flex `gap` (layout).
+   Same forward-reach read, composited. */
+.eig-cta svg, .eip-cta svg, .eitr-cta svg {
+  transition: transform var(--ei-dur) var(--ei-ease);
+}
+.eig-cta:hover svg, .eip-cta:hover svg, .eitr-cta:hover svg {
+  transform: translateX(4px);
+}
 
 /* Breathing dot (live / active indicator) */
 .eig-dot, .eip-dot, .eitr-dot {
@@ -498,7 +516,9 @@ body.dark .eig-year-marker {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ei-green);
-  margin-bottom: var(--ei-s5);
+  /* margin-top reset so it renders identically whether it's a <div> or the
+     <h2> section heading it now is (see projects.html — heading-order fix). */
+  margin: 0 0 var(--ei-s5);
 }
 .eip-grid {
   display: grid;
@@ -888,7 +908,10 @@ body.dark .eig-year-marker {
 .eitr-card__img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.6s var(--ei-ease);
+  /* Was 0.6s — double the <300ms UI budget and out of sync with the card's
+     own hover lift. Match a snappier reveal so the image zoom and the card
+     lift settle together. */
+  transition: transform 0.28s var(--ei-ease);
 }
 .eitr-card:hover .eitr-card__img { transform: scale(1.05); }
 .eitr-card__img-scrim {
@@ -1063,7 +1086,11 @@ body.dark .eig-year-marker {
   position: relative;
 }
 .eitr-social {
-  display: inline-block;
+  /* inline-flex + min-height lifts the tap target from ~36px to the 44px
+     touch minimum without changing the visual pill height much. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 10px 22px;
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 999px;
@@ -1075,6 +1102,15 @@ body.dark .eig-year-marker {
   backdrop-filter: blur(10px);
   background: rgba(255,255,255,0.06);
   transition: background var(--ei-dur), transform var(--ei-dur) var(--ei-ease), color var(--ei-dur);
+}
+/* The social pills + CTAs sit on a dark photographic hero where the native
+   focus ring is nearly invisible. Give keyboard users a clear, on-brand
+   ring. */
+.eitr-social:focus-visible,
+.eitr-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  border-radius: 999px;
 }
 .eitr-social:hover {
   background: rgba(255,255,255,0.14);
@@ -1137,5 +1173,21 @@ body.dark .eig-year-marker {
 @media (prefers-reduced-motion: reduce) {
   .eig-dot, .eip-dot, .eitr-dot, .eitr-hero__orb, .eitr-hero__compass, .eitr-hero__dot, .eitr-hero__scroll-line {
     animation: none !important;
+  }
+  /* The block above only stilled decorative loops; the card/button hover
+     states still translated and the cover images still zoomed under reduced
+     motion. Neutralise those position/scale changes too (colour + shadow hover
+     cues are kept — reduced motion means fewer position changes, not zero
+     feedback). */
+  .eig-featured-card:hover,
+  .eip-card:hover,
+  .eitr-card:hover,
+  .eitr-card:hover .eitr-card__img,
+  .eitr-philo-card:hover,
+  .eitr-social:hover,
+  .eitr-btn--primary:hover,
+  .eitr-btn--ghost:hover,
+  .eig-page-btn:hover {
+    transform: none !important;
   }
 }

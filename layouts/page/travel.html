@@ -151,7 +151,11 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
-        <a class="eitr-card__cover" href="{{ $p.Permalink }}" aria-label="{{ $p.Title }}"></a>
+        {{/* Full-card click convenience only — the visible title + CTA already
+             link to the same post, so expose just those to assistive tech and
+             keep this overlay out of the a11y tree and tab order (was a third
+             redundant anchor to the same permalink). */}}
+        <a class="eitr-card__cover" href="{{ $p.Permalink }}" aria-hidden="true" tabindex="-1"></a>
       </article>
       {{- end }}
     </div>

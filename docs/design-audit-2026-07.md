@@ -186,3 +186,84 @@ Highest blast radius: the head.html @layer/ordered-slice change re-defines the w
 | low | performance | `assets/css/extended/custom.css` | 2879 | Reading-progress bar animates `width` instead of transform: scaleX | Set `width:100%; transform-origin:left; transform: scaleX(0)` and drive `scaleX` via JS; `transition: transform 0.1s ease-out`. |
 | low | performance | `assets/css/extended/custom.css` | 3969 | Sticky archives nav animates `top` — layout property on a position:sticky element | Prefer `transform: translateY()` for the reveal/offset motion; a sticky element's `top` transition is both janky and rarely observed. |
 | low | cohesion-tokens | `assets/css/extended/zzz-toc-tap-feedback.css` | 27 | TOC file re-declares full transition shorthands verbatim to append transform, duplicating base values that will silently | Prefer additive composition: declare only `transition-property: transform; transition-duration: .16s; transition-timing-function: var(--ease-press);` scoped to  |
+
+---
+
+# Round 2 — full-site re-audit & refinement (2026-07)
+
+A second agent-teams pass ran **14 page auditors** (one per archetype: home,
+article, all section landings, column, project-single, about, travel, archives,
+search, start-here) + adversarial verification, scoring **8 dimensions** per page
+(motion, typography, color-contrast, layout-spacing, materials-depth, components,
+responsive, accessibility).
+
+## Score trajectory (overall, per archetype)
+
+| Page | Round-2 baseline | After pass 1 | After pass 2 |
+| --- | --- | --- | --- |
+| travel | 80 | 90 | ↑ |
+| section-growth | 80 | — | — |
+| column | 80 | 82 | ↑ |
+| home | 83 | 88 | ↑ |
+| archives | 84 | 89 | ↑ |
+| section-articles | 84 | 86 | ↑ |
+| section-projects | 85 | 86 | ↑ |
+| about / start-here | 86 | 86 | ↑ |
+| section-engineering | 86 | 84 | ↑ |
+| section-ai-agent | 82 | 86 | ↑ |
+| project-single | 87 | 88 | ↑ |
+| article | 89 | 89 | ↑ |
+
+`color_contrast` was the weakest dimension (68–81 across pages); after the
+contrast pass it sits at **92–94** everywhere.
+
+## Shipped (pass 1 + pass 2)
+
+- **Contrast (WCAG AA):** darkened the light tertiary-text tokens that failed
+  4.5:1 (`--ei-text-3` `#6b8590`→`#556a72`, `--fg-subtle` `#A39F99`→`#767068`,
+  card dates `#94a3b8`→`#647385` theme-aware, `.marginalia-label` opacity
+  0.42→0.68); lifted opacity-thinned micro-labels (column kickers, about-version,
+  chip-count, oss lang, TL;DR labels); sort-select focus ring teal→accent,
+  gated to `:focus-visible`.
+- **Touch / a11y:** new `zzz-hover-touch-reset.css` kills sticky hover-lift on
+  touch; press feedback extended to every section card family; reduced-motion
+  completeness (hero chibi, editorial hovers, archives, start-here); focus-visible
+  rings for travel CTAs and column entries; 44px touch targets on coarse pointers
+  (social pills, filter chips, inline-TOC, year-nav); projects heading order
+  h1→h2→h3; redundant full-card cover anchors removed from the a11y tree.
+- **Motion / cohesion:** consolidated 98 Material curves → `--ease-standard` and
+  27 spring literals → `--ease-spring`; hover `gap` animations → arrow transforms;
+  durations into budget (travel cover 0.6s→0.28s, underlines →0.26s); strengthened
+  sticky-filter easing; EN prose reading-measure capped at 68ch.
+- **Type:** size-relative display tracking (-0.02em) on the home hero and the
+  hero/page titles; CJK rendered upright instead of synthetic-italic on About.
+
+Every change verified with a clean `hugo` build (1206 pages) and Playwright
+before/after screenshots (light/dark/mobile); curve consolidation is
+pixel-identical at rest, contrast changes are localized to the intended labels.
+
+## Deliberately deferred (rationale)
+
+These verified findings were **not** shipped in this effort — each is either
+intentional house style, a high-risk change to a core page for marginal gain, or
+a subjective call:
+
+1. **Filter-grid FLIP reflow** (`static/js/articles-filter.js`, medium) — the
+   115-card articles filter uses `display:none`, so surviving cards reflow with a
+   hard jump. A true fix needs a FLIP animation on a busy, most-used page; a
+   partial fade adds timing-bug surface without removing the survivor teleport.
+   Deferred pending a dedicated, device-tested implementation.
+2. **Prose-link underline via `background-size`** (`custom.css`, low) — paint-only
+   (not layout), on a one-line text underline; the scaleX-pseudo rewrite touches
+   every article link for negligible perf gain. Not worth the blast radius.
+3. **TL;DR perpetual decorative loops** (`article-tldr.css`, medium) — already
+   fully `prefers-reduced-motion` gated; the loops are an intentional part of the
+   "core-points" card aesthetic.
+4. **Home hero social icons 42px mobile** (medium) — a documented deliberate
+   trade-off: 44px forced a 7-icon orphan-wrap on a 390px viewport; 42px keeps one
+   row. **Rejected** by the verifier as intentional.
+5. **Cmd/Ctrl+K palette entrance** (PaperMod theme, medium) — a 0.22s entrance the
+   rubric would drop for a 100×/day palette; a blog search is not that frequency,
+   and the rule lives in vendored theme CSS. Left as-is.
+6. **`.oss-card` vs `.eip-card` two card systems** (low) — a subjective cohesion
+   call on an intentionally distinct open-source-vs-writeup visual language.
