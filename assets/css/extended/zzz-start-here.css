@@ -267,7 +267,9 @@
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 1.5px;
-  transition: background-size 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* 320ms exceeded the sub-300ms UI budget for a hover underline; 260ms keeps
+     the same draw curve but lands inside budget. */
+  transition: background-size 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
   width: fit-content;
 }
 
@@ -473,7 +475,9 @@
 .sh-will.sh-in {
   opacity: 1;
   transform: none;
-  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* Opacity shares the transform's ease-out curve so the two coordinated
+     properties settle in sync (was a bare `ease` against a strong curve). */
+  transition: opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 /* Cascade the rows once their chapter is revealed */
@@ -502,6 +506,22 @@
   .sh .sh-arrow,
   .sh-item-title {
     transition: none;
+  }
+}
+
+/* On touch there is no true hover, but a tap latches :hover and leaves the
+   card/arrow lifted. Neutralise the hover transforms on non-hover pointers
+   (this file loads after the shared zzz-hover-touch-reset, so its resets are
+   kept in-file). Colour/shadow hover cues remain. */
+@media (hover: none) {
+  .post-content .sh-first:hover,
+  .post-content .sh-more:hover,
+  .post-content .sh-connect-list a:hover {
+    transform: none;
+  }
+  .post-content .sh-first:hover .sh-arrow,
+  .post-content .sh-more:hover .sh-arrow {
+    transform: none;
   }
 }
 

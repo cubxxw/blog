@@ -30,7 +30,7 @@
    press scales the link while colour transitions stay on the anchor. */
 .nav #menu li a {
   transition:
-    transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.14s var(--ease-spring),
     color 0.18s ease,
     opacity 0.18s ease;
   -webkit-user-select: none;
@@ -46,7 +46,7 @@
 @media (hover: hover) and (pointer: fine) {
   .nav #menu li a {
     transition:
-      transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.22s var(--ease-spring),
       color 0.18s ease;
   }
   .nav #menu li a:hover {
@@ -61,7 +61,7 @@
 .nav .logo a {
   display: inline-flex;
   align-items: center;
-  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.18s var(--ease-spring);
 }
 .nav .logo a:active {
   transform: scale(0.96);
@@ -71,7 +71,7 @@
 .language-switcher .lang-selector,
 .nav .lang-switch a {
   transition:
-    transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.14s var(--ease-spring),
     background-color 0.18s ease,
     color 0.18s ease;
 }
@@ -83,7 +83,7 @@
 /* ---------- Breadcrumb trail: small press on each crumb ---------- */
 .breadcrumbs a {
   display: inline-block;
-  transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.14s var(--ease-spring);
 }
 .breadcrumbs a:active {
   transform: translateY(1px) scale(0.97);

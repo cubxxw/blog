@@ -23,7 +23,10 @@
   letter-spacing: 0.22em;
   color: var(--color-ink, #1a1c1b);
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  opacity: 0.42;
+  /* Raised from 0.42 (~2.6–2.8:1 in light, ~3.5–3.8:1 in dark — a WCAG-AA
+     fail at ~9.6px) to 0.68, which lifts the ink/paper blend to ≥4.5:1 on
+     all four theme surfaces while keeping the label visibly recessed. */
+  opacity: 0.68;
   line-height: 1.4;
   font-weight: 500;
 }

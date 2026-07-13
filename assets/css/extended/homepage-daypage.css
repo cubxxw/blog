@@ -16,7 +16,14 @@
   --surface-sunken: #F3F0EB;
   --fg-primary:     #2B2822;
   --fg-muted:       #6B6560;
-  --fg-subtle:      #A39F99;
+  /* Darkened from #A39F99 (~2.5:1 on the cream/white surface — a WCAG-AA
+     fail) to #767068. This token drives real small text — hero tags
+     (AI BUILDER / OPEN SOURCE / DIGITAL NOMAD), entry labels and HUD/meta
+     labels — so it must clear the 4.5:1 floor: #767068 lands at ~4.65:1 on
+     cream while staying clearly recessed below --fg-muted (#6B6560, ~5.46:1),
+     so the three-step hierarchy is preserved. Light only; dark --fg-subtle
+     (#9A938A) is a separate token below and untouched. */
+  --fg-subtle:      #767068;
   --accent:         #5D3000;
   --accent-hover:   #7A3F00;
   --accent-soft:    #F5EDE3;
@@ -2344,6 +2351,11 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
   .hp-orbit-dot,
   .hp-avatar-ring,
   .hp-avatar-img,
+  /* The hero chibi has a continuous translateY head-bob (hp-chibi-bob 3s
+     infinite). Its class name matches none of the substring patterns below,
+     so it kept bobbing under reduced motion — a position-changing infinite
+     loop the rubric requires stopping. Name it explicitly. */
+  .hp-hero-chibi,
   [class*="hp-bubble"],
   [class*="hp-typing"],
   [class*="hp-blink"],

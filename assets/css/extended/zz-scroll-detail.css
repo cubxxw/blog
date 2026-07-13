@@ -14,7 +14,7 @@
    no-CSS fallback; this layer only adds the transform.
 
    micro-interactions.css already gives .top-link a
-   `transform 0.3s cubic-bezier(0.34,1.56,0.64,1)` transition,
+   `transform 0.3s var(--ease-spring)` transition,
    so the pop inherits a gentle overshoot for free.
    ============================================================ */
 

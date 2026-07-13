@@ -624,6 +624,16 @@ body.dark .about-wechat {
   opacity: 0.7;
 }
 
+/* CJK serifs (Source Han Serif / Songti) ship no true italic glyphs, so
+   `font-style: italic` forces the browser to fake a mechanical oblique slant
+   that reads as broken on Chinese text. Keep italic for the Latin (en) site
+   where the serif has real italics; render upright on the Chinese pages. */
+html:lang(zh) .about-tagline,
+html:lang(zh) .about-quote,
+html:lang(zh) .about-footer-sig {
+  font-style: normal;
+}
+
 /* ── Dark mode adjustments ── */
 body.dark .about-card {
   background: color-mix(in srgb, var(--color-paper) 80%, var(--color-accent-soft));

@@ -1,0 +1,57 @@
+/* ============================================================
+   zzz-hover-touch-reset.css — kill sticky hover-lift on touch
+   ------------------------------------------------------------
+   The whole-card families across the home / section / about /
+   projects / travel pages lift or zoom on :hover (defined in
+   homepage-daypage.css, editorial-sections.css, about.css,
+   opensource-grid.css, section-ai-agent.css). On a mouse this
+   reads well. On a phone there is no true hover, but a tap still
+   latches :hover — so the card stays lifted/zoomed after the
+   finger leaves, a "stuck" state the rubric flags (AUDIT.md §6 /
+   STANDARDS.md Accessibility: gate hover motion behind pointer
+   capability). This layer neutralises ONLY the transform of those
+   hover states on non-hover pointers, leaving their colour/shadow/
+   border hover cues intact for hybrid devices.
+
+   Load order is deliberate and load-bearing:
+     source hover rules  <  THIS file  <  zzz-press-feedback.css
+   'zzz-hover-...' sorts after every non-zzz source file (so this
+   wins over their :hover at equal specificity) but before
+   'zzz-press-feedback.css' (so its touch :active press scale still
+   wins over this reset DURING a press). Net effect on touch:
+   during the tap the press-scale shows; after touchend the reset
+   holds the card flat instead of stuck-lifted.
+   ============================================================ */
+@media (hover: none) {
+  /* Homepage day-page whole-card links */
+  .hp-post-card:hover,
+  .hp-cat-tile:hover,
+  .hp-book:hover,
+  .hp-project-featured:hover,
+  .hp-repo:hover,
+  .hp-travel-stat:hover,
+  .hp-ai-card:hover,
+  /* Editorial section grids (AI-Agent / Engineering / Growth / Travel) */
+  .eig-featured-card:hover,
+  .eip-card:hover,
+  .eitr-card:hover,
+  .eitr-card:hover .eitr-card__img,
+  .eitr-philo-card:hover,
+  .eitr-social:hover,
+  .eitr-btn--primary:hover,
+  .eitr-btn--ghost:hover,
+  .eig-page-btn:hover,
+  .aia-featured:hover,
+  /* Open-source project grid */
+  .oss-card:hover,
+  /* About page cards */
+  .about-card:hover,
+  .about-link-item:hover,
+  .about-start-item:hover,
+  .about-wechat:hover,
+  /* Archives timeline: year-nav chips lift, timeline dot scales */
+  .archives-year-nav__link:hover,
+  .archives-post:hover .archives-post__dot {
+    transform: none;
+  }
+}

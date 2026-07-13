@@ -239,6 +239,17 @@
 
 .posts-filter__chip--active .posts-filter__chip-count { color: inherit; opacity: 0.75; }
 
+/* Touch targets: the category/tag chips, sort select and clear button compute
+   to ~26–30px tall — fine for a mouse but under the 44px touch minimum. Lift
+   them only on coarse pointers so the desktop bar stays compact. */
+@media (hover: none) and (pointer: coarse) {
+  .posts-filter__chip,
+  .posts-filter__select,
+  .posts-filter__clear {
+    min-height: 44px;
+  }
+}
+
 .posts-filter__select {
   border: 1px solid var(--color-rule);
   background: var(--color-paper);
@@ -255,19 +266,22 @@
 }
 
 .posts-filter {
+  /* Strong curves replace the weak built-in `ease`: the panel's translateY
+     exit is an on-screen positional move (--ease-in-out); the surface changes
+     (shadow/fill/padding/gap) read as enter/exit (--ease-out). */
   transition:
-    transform 0.3s ease,
-    box-shadow 0.25s ease,
-    background-color 0.2s ease,
-    padding 0.28s ease,
-    gap 0.28s ease;
+    transform 0.3s var(--ease-in-out),
+    box-shadow 0.25s var(--ease-out),
+    background-color 0.2s var(--ease-out),
+    padding 0.28s var(--ease-out),
+    gap 0.28s var(--ease-out);
 }
 
 .posts-filter__collapsible {
   display: grid;
   grid-template-rows: 1fr;
   opacity: 1;
-  transition: grid-template-rows 0.3s ease, opacity 0.22s ease;
+  transition: grid-template-rows 0.3s var(--ease-out), opacity 0.22s var(--ease-out);
 }
 
 .posts-filter__collapsible-inner {
@@ -306,7 +320,7 @@
   grid-template-rows: 0fr;
   opacity: 0;
   visibility: hidden;
-  transition: grid-template-rows 0.3s ease, opacity 0.22s ease, visibility 0s 0.3s;
+  transition: grid-template-rows 0.3s var(--ease-out), opacity 0.22s var(--ease-out), visibility 0s 0.3s;
 }
 
 /* Stuck + open: TAGS + SORT drop down as an overlay panel below the bar.
@@ -378,7 +392,7 @@
 }
 
 .posts-filter__toggle-chevron {
-  transition: transform 0.25s ease;
+  transition: transform 0.25s var(--ease-out);
 }
 
 .posts-filter--open .posts-filter__toggle-chevron {
