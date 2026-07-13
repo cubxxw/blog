@@ -107,6 +107,10 @@ body.dark {
 /* Category chip */
 .eig-chip, .eip-chip, .eitr-chip {
   display: inline-block;
+  /* In a column flex parent an inline-block child is blockified and stretches
+     to full width; keep the pill hugging its label. */
+  align-self: flex-start;
+  width: fit-content;
   padding: 4px 12px;
   border-radius: 999px;
   background: var(--ei-green-wash);

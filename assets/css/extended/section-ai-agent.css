@@ -76,7 +76,7 @@ body.dark {
   font-weight: 500;
   font-size: clamp(38px, 7vw, 64px);
   line-height: 1.12;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em; /* large display → -0.02em (apple-design §15) */
   margin: 0 0 var(--ei-s3, 24px);
 }
 .aia-hero__plain { color: var(--ei-text, #1e2d32); }
@@ -324,6 +324,18 @@ body.dark .aia-topic--active { color: #12141f; }
   .aia-row__num { display: none; }
   .aia-featured { padding: var(--ei-s3, 24px); }
   .aia-cta { margin-left: 0; }
+}
+
+/* Touch targets: the topic filter chips (~30px) and pagination buttons (~34px)
+   are the page's primary controls but fall under the 44px touch minimum. Lift
+   on coarse pointers only so the desktop bar stays compact. */
+@media (hover: none) and (pointer: coarse) {
+  .aia-topic,
+  .aia-page-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

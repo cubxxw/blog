@@ -42,6 +42,11 @@
   .eitr-btn--ghost:hover,
   .eig-page-btn:hover,
   .aia-featured:hover,
+  .aia-row:hover,
+  .aia-topic:hover,
+  .aia-page-btn:hover,
+  .aia-hero__rss:hover,
+  .aia-cta:hover svg,
   /* Open-source project grid */
   .oss-card:hover,
   /* About page cards */
@@ -51,7 +56,9 @@
   .about-wechat:hover,
   /* Archives timeline: year-nav chips lift, timeline dot scales */
   .archives-year-nav__link:hover,
-  .archives-post:hover .archives-post__dot {
+  .archives-post:hover .archives-post__dot,
+  /* Column index entries indent on hover */
+  .column-entry__link:hover {
     transform: none;
   }
 }

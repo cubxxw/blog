@@ -198,14 +198,14 @@
   align-items: start;
   text-decoration: none;
   color: inherit;
-  /* padding was left out of the transition, so the hover indent snapped. Include
-     it so the 0.4→0.9rem slide animates smoothly. */
-  transition: background-color 220ms ease, padding-left 220ms var(--ease-out);
+  /* Indent on hover via transform (GPU) rather than animating padding-left
+     (layout). translateX gives the same 0.5rem rightward nudge, composited. */
+  transition: background-color 220ms ease, transform 220ms var(--ease-out);
 }
 .column-entry__link:hover,
 .column-entry__link:focus-visible {
   background: color-mix(in oklab, var(--color-accent, #862122) 3.5%, transparent);
-  padding-left: 0.9rem;
+  transform: translateX(0.5rem);
 }
 .column-entry__link:hover { outline: none; }
 /* Keyboard focus previously fell back to only a 3.5% background wash — not a

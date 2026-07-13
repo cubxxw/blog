@@ -82,7 +82,7 @@
   .hp-posts-list-row:active,
   .rpc:active {
     transform: scale(0.97);
-    transition: transform 0.12s var(--ease-spring);
+    transition: transform 0.12s var(--ease-out);
   }
 }
 
@@ -96,7 +96,7 @@
 }
 #menu > li > a:active {
   transform: scale(0.94);
-  transition: transform 0.1s var(--ease-spring);
+  transition: transform 0.1s var(--ease-out);
 }
 
 /* The minimal search chip in the nav gets the same press cue. */
@@ -105,7 +105,7 @@
 }
 .nav-search-trigger:active {
   transform: scale(0.96);
-  transition: transform 0.1s var(--ease-spring);
+  transition: transform 0.1s var(--ease-out);
 }
 
 /* ============================================================
@@ -175,17 +175,18 @@
   }
 }
 
-/* Touch / coarse pointers: a slightly deeper, springy press. */
+/* Touch / coarse pointers: a slightly deeper press that settles with ease-out
+   (press feedback decelerates — overshoot is reserved for drag-to-dismiss). */
 @media (hover: none) and (pointer: coarse) {
   .eit-page-btn:active,
   .eig-page-btn:active,
   .pagination a:active {
     transform: scale(0.96);
-    transition: transform 0.12s var(--ease-spring);
+    transition: transform 0.12s var(--ease-out);
   }
   .profile_nav_tag:active {
     transform: scale(0.96);
-    transition: transform 0.12s var(--ease-spring);
+    transition: transform 0.12s var(--ease-out);
   }
 }
 
@@ -265,7 +266,7 @@
   .eng-row:active,
   .eng-page-btn:active {
     transform: scale(0.97);
-    transition: transform 0.12s var(--ease-spring);
+    transition: transform 0.12s var(--ease-out);
   }
 }
 
