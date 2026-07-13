@@ -30,7 +30,7 @@
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--color-ink, #1a1c1b);
-  opacity: 0.5;
+  opacity: 0.72; /* AA lift: 0.65rem mono kicker on --color-ink was ~2.9:1 */
 }
 .column-eyebrow-rule {
   display: inline-block;
@@ -78,7 +78,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-ink, #1a1c1b);
-  opacity: 0.45;
+  opacity: 0.72; /* AA lift: 0.7rem mono meta label */
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -171,7 +171,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-ink, #1a1c1b);
-  opacity: 0.4;
+  opacity: 0.72; /* AA lift: 0.62rem mono EN heading */
 }
 
 /* ── Entry card ─────────────────────────────────────────────────── */
@@ -198,13 +198,22 @@
   align-items: start;
   text-decoration: none;
   color: inherit;
-  transition: background-color 220ms ease;
+  /* padding was left out of the transition, so the hover indent snapped. Include
+     it so the 0.4→0.9rem slide animates smoothly. */
+  transition: background-color 220ms ease, padding-left 220ms var(--ease-out);
 }
 .column-entry__link:hover,
 .column-entry__link:focus-visible {
   background: color-mix(in oklab, var(--color-accent, #862122) 3.5%, transparent);
   padding-left: 0.9rem;
-  outline: none;
+}
+.column-entry__link:hover { outline: none; }
+/* Keyboard focus previously fell back to only a 3.5% background wash — not a
+   discernible focus indicator. Draw a real inset accent ring for focus-visible. */
+.column-entry__link:focus-visible {
+  outline: 2px solid var(--color-accent, #862122);
+  outline-offset: -2px;
+  border-radius: 6px;
 }
 .column-entry__link:hover .column-entry__arrow,
 .column-entry__link:focus-visible .column-entry__arrow {

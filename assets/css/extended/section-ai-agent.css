@@ -185,7 +185,8 @@ body.dark .aia-topic--active { color: #12141f; }
   background-repeat: no-repeat;
   background-size: 0% 2px;
   background-position: 0 100%;
-  transition: background-size 0.4s var(--ei-ease, ease);
+  /* 0.4s exceeded the sub-300ms UI budget for a hover underline draw. */
+  transition: background-size 0.26s var(--ei-ease, ease);
 }
 .aia-featured:hover .aia-featured__title a { background-size: 100% 2px; }
 .aia-featured__desc {
@@ -221,9 +222,11 @@ body.dark .aia-topic--active { color: #12141f; }
   font-size: 13.5px;
   font-weight: 600;
   color: var(--aia-accent);
-  transition: gap var(--ei-dur, 0.28s) var(--ei-ease, ease);
 }
-.aia-cta:hover { gap: 11px; }
+/* Slide the arrow via transform instead of animating flex `gap` (a
+   layout-triggering property). Same "arrow reaches forward" read, on the GPU. */
+.aia-cta svg { transition: transform var(--ei-dur, 0.28s) var(--ei-ease); }
+.aia-cta:hover svg { transform: translateX(4px); }
 
 /* ── Index list ── */
 .aia-index__head {

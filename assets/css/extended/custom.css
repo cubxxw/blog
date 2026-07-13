@@ -4712,7 +4712,10 @@ body.nav-hidden { --sticky-offset: 0px; }
 
 .posts-filter__chip-count {
     font-size: 0.7rem;
-    opacity: 0.6;
+    /* 0.6 dropped the count numerals below AA on the inactive chip; 0.9 keeps
+       them subordinate while legible (the active chip inherits white on accent
+       and is unaffected). */
+    opacity: 0.9;
 }
 
 .posts-filter__chip--tag {

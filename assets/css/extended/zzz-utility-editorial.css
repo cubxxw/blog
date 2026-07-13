@@ -28,7 +28,7 @@
   font-size: clamp(2.4rem, 6vw, 3.6rem);
   font-weight: 700 !important;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;  /* large display title → -0.02em (apple-design §15) */
   background: none;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: currentColor;
@@ -88,6 +88,16 @@
   border-color: var(--color-accent);
   color: var(--color-accent);
   transform: none;
+}
+
+/* The year-nav chips compute to ~28px — under the 44px touch minimum. Lift on
+   coarse pointers only (desktop stays compact). */
+@media (hover: none) and (pointer: coarse) {
+  .archives-year-nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 
 /* ─── Archives: timeline ───────────────────────────────────── */
@@ -171,7 +181,7 @@
   font-size: clamp(2.4rem, 6vw, 3.6rem);
   font-weight: 700 !important;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;  /* large display title → -0.02em (apple-design §15) */
   background: none;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: currentColor;
@@ -508,7 +518,7 @@
 /* Page-header h1 on utility pages (search, terms) → display serif */
 .page-header h1 {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;  /* large display title → -0.02em (apple-design §15) */
 }
 
 /* ─── Detail: hero scroll cue readability ──────────────────────

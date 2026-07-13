@@ -152,9 +152,15 @@ body.dark {
   color: var(--ei-green);
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: gap var(--ei-dur) var(--ei-ease);
 }
-.eig-cta:hover, .eip-cta:hover, .eitr-cta:hover { gap: 10px; }
+/* Slide the arrow via transform rather than animating flex `gap` (layout).
+   Same forward-reach read, composited. */
+.eig-cta svg, .eip-cta svg, .eitr-cta svg {
+  transition: transform var(--ei-dur) var(--ei-ease);
+}
+.eig-cta:hover svg, .eip-cta:hover svg, .eitr-cta:hover svg {
+  transform: translateX(4px);
+}
 
 /* Breathing dot (live / active indicator) */
 .eig-dot, .eip-dot, .eitr-dot {
@@ -506,7 +512,9 @@ body.dark .eig-year-marker {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ei-green);
-  margin-bottom: var(--ei-s5);
+  /* margin-top reset so it renders identically whether it's a <div> or the
+     <h2> section heading it now is (see projects.html — heading-order fix). */
+  margin: 0 0 var(--ei-s5);
 }
 .eip-grid {
   display: grid;

@@ -35,20 +35,20 @@
 
   {{/* ── Open Source showcase — real repos & products (data/opensource.yml) ── */}}
   <section class="eip-oss">
-    <div class="eip-section-label">
+    <h2 class="eip-section-label">
       <span class="eip-dot"></span>
       {{ if $isZh }}开源项目{{ else }}Open Source{{ end }}
-    </div>
+    </h2>
     {{ partial "opensource-grid.html" (dict "lang" $lang "class" "oss-grid-root--eip") }}
   </section>
 
   {{/* ── Projects Grid ── */}}
   {{- if $projectPages }}
   <section class="eip-projects">
-    <div class="eip-section-label">
+    <h2 class="eip-section-label">
       <span class="eip-dot"></span>
       {{ if $isZh }}项目实践文章{{ else }}Project Write-ups{{ end }}
-    </div>
+    </h2>
 
     <div class="eip-grid">
       {{- range $i, $p := $projectPages }}
@@ -58,9 +58,9 @@
             <span class="eip-badge">{{ if $isZh }}实践文章{{ else }}Write-up{{ end }}</span>
             <time class="eip-date">{{ $p.Date.Format "2006-01-02" }}</time>
           </div>
-          <h2 class="eip-card__title">
+          <h3 class="eip-card__title">
             <a href="{{ $p.Permalink }}">{{ $p.Title }}</a>
-          </h2>
+          </h3>
           {{- if (ne ($p.Param "hideSummary") true) }}
           <p class="eip-card__desc">{{ $p.Summary | plainify | htmlUnescape | truncate 160 }}</p>
           {{- end }}
@@ -76,7 +76,9 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
-        <a class="eip-card__cover" href="{{ $p.Permalink }}" aria-label="{{ $p.Title | plainify }}"></a>
+        {{/* Full-card click convenience only; title + CTA already link to the
+             post. Keep this overlay out of the a11y tree + tab order. */}}
+        <a class="eip-card__cover" href="{{ $p.Permalink }}" aria-hidden="true" tabindex="-1"></a>
       </article>
       {{- end }}
     </div>

@@ -83,6 +83,18 @@ html:lang(en) .post-content p {
   color: var(--color-ink, #1a1c1b);
 }
 
+/* Reading measure: the .article-main column is ~888px at ≥1440px, so unbounded
+   EN serif body ran ~90 chars/line — past the comfortable 60–75ch range. Cap the
+   body flow (paragraphs, lists, blockquotes) to ~68ch; figures, code blocks,
+   tables and mermaid keep the full column width. EN-only: CJK glyphs are wider,
+   so ZH lines already sit well under this measure and are left untouched. */
+html:lang(en) .post-content p,
+html:lang(en) .post-content ul,
+html:lang(en) .post-content ol,
+html:lang(en) .post-content blockquote {
+  max-width: 68ch;
+}
+
 /* ─── Drop Cap (first paragraph only) ───────────────────────── */
 /* Applied via JS in article-typography-init.js OR ::first-letter */
 .post-content .drop-cap::first-letter,
