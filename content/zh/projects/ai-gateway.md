@@ -6,7 +6,7 @@ tocopen: true
 tags: ["AI", "Project Learning"]
 author: ["Xinwei Xiong", "Me"]
 description: >
-  以日拱一卒的态度深度学习 AI Gateway（AI 网关）开源项目，记录 LLM API 网关的架构、多模型路由、成本控制与实践思考。
+  以日拱一卒的态度深度学习 AI Gateway（AI 网关）开源项目：梳理 LLM API 网关的整体架构，记录多模型路由、令牌级成本控制、语义缓存、安全护栏与可观测性等核心能力的学习笔记，并附上 LiteLLM、Kong、APISIX 等主流方案的实践观察、选型思考与技术栈推荐，帮助你在成本与灵活性之间做出权衡。
 aliases:
   - /zh/posts/ai-projects/ai-getway/
 tldr:

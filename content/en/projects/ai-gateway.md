@@ -11,7 +11,7 @@ tags:
   - AI
   - Open Source
 description: >
-  An in-depth comparison of open source and commercial LLM/AI API gateways — LiteLLM, Portkey, Kong, Apache APISIX, Gloo, and Cloudflare — covering model routing, token-based cost control, semantic caching, security guardrails, and observability, plus a recommended gateway stack for AI startups.
+  Compare open source LLM/AI API gateways — LiteLLM, Portkey, Kong, APISIX, Gloo, and Cloudflare — on routing, cost control, caching, and observability.
 aliases:
   - /posts/ai-projects/ai-getway/
 tldr:

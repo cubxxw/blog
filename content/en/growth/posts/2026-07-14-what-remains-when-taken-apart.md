@@ -19,11 +19,11 @@ tags:
 description: >
   Starting from a single image — a shaft of sunlight passing through an eye clouded by cataracts — this piece dismantles the self step by step: no-self, the five aggregates, dependent origination, until the sheer relativity of concepts makes you dizzy: "You can say it either way, so what's left to reach for?" It refuses to hand you an answer. Instead it argues that relativity is a property of standing outside your life, not of walking through it. When you've taken everything apart, whatever still has weight — whatever you can't dissolve with "emptiness" or "impermanence" — that residue is your ground. And the pain is the proof it's still there.
 tldr:
-  - An eye that can't see clearly erases the line between light and shadow — and that line was never in the world. The seer drew it.
-  - Dismantling the self is like dismantling a chariot: the wheel isn't the chariot, the axle isn't the chariot; lay every part on the ground and "the chariot" has nowhere to hide. That's no-self, not "I don't exist."
-  - The dizziness of "you could say it either way" is the illusion of standing too long at the map. On the map every road can be relabeled; the moment you walk in, there's only one under your feet.
-  - When you've taken it all apart, some things still have weight no matter how much "emptiness" you throw at them. That residue is your ground — and it's yours alone.
-  - Growth isn't finding an answer that stops the pain. It's learning to stand between taking-apart and claiming: some things can't be dismantled, and shouldn't be. The pain is the proof they still have weight.
+  - "An eye that can't see clearly erases the line between light and shadow — and that line was never in the world. The seer drew it."
+  - "Dismantling the self is like dismantling a chariot: the wheel isn't the chariot, the axle isn't the chariot; lay every part on the ground and \"the chariot\" has nowhere to hide. That's no-self, not \"I don't exist.\""
+  - "The dizziness of \"you could say it either way\" is the illusion of standing too long at the map. On the map every road can be relabeled; the moment you walk in, there's only one under your feet."
+  - "When you've taken it all apart, some things still have weight no matter how much \"emptiness\" you throw at them. That residue is your ground — and it's yours alone."
+  - "Growth isn't finding an answer that stops the pain. It's learning to stand between taking-apart and claiming: some things can't be dismantled, and shouldn't be. The pain is the proof they still have weight."
 maturity: budding
 ---
 
