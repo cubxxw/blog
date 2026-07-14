@@ -1,22 +1,43 @@
 <h3 align="center" style="border-bottom: none">
     <a href="https://cubxxw.com">
-      ⭐️  Welcome to my blog ⭐️ <br>
+      ⭐️  Welcome to my blog · cubxxw.com ⭐️ <br>
     </a>
 </h3>
 
+<p align="center">
+  <b>熊鑫伟 (Xinwei Xiong / cubxxw)</b> —— AI Builder · 开源贡献者 · 数字游民<br>
+  <sub>在技术与人性之间搭建桥梁：AI Agent 工程、云原生、开源实践，以及一场走过 9 国 35+ 城的人生实验。</sub><br>
+  <sub><i>Building bridges between technology and humanity — AI agent engineering, cloud-native, open source, and a life experiment across 9 countries.</i></sub>
+</p>
+
+<!-- 👋 交个朋友 · Let's connect — 双平台扫码 / copyable ID, mirrors the on-site contact cards -->
 <div align="center">
   <br>
-  <img src="assets/wechat.jpg" alt="扫码加我微信 · Add me on WeChat" width="180" />
-  <br>
-  <sub>👋 <b>交个朋友 · Let's connect</b></sub>
-  <br>
-  <sub>扫码加我微信，一起聊 AI、开源与远程生活，也欢迎加入我们的社群 🚀</sub>
-  <br>
-  <sub><i>Scan to add me on WeChat — chat about AI, open source & the nomad life, and join the community.</i></sub>
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <img src="assets/wechat.jpg" alt="扫码加我微信 cubxxwAI · Add me on WeChat" width="200" /><br>
+        <b>💬 微信 · WeChat</b><br>
+        <sub>微信号 / ID：<code>cubxxwAI</code></sub><br>
+        <sub>聊 AI、开源与远程生活，欢迎进社群 🚀</sub>
+      </td>
+      <td align="center" width="50%">
+        <img src="assets/xiaohongshu.jpg" alt="扫码关注我的小红书 nsddd_top · Follow me on RedNote" width="200" /><br>
+        <b>📕 小红书 · RedNote</b><br>
+        <sub>小红书号 / ID：<code>nsddd_top</code></sub><br>
+        <sub>看我记录 AI、开源与旅居的日常 ✍️</sub>
+      </td>
+    </tr>
+  </table>
+  <sub>👋 <b>交个朋友 · Let's connect</b> — 扫码添加，或搜索 ID 找到我 / scan or search the ID to reach me</sub>
   <br><br>
 </div>
 
 ## Introduction
+
+> **这是一个 AI-native 的开源博客**，把「写作 + AI + 开源工程」揉在一起做长期实验。内容围绕四条主线免费开放：**AI Agent 工程**、**云原生 / Go 工程**、**成长与认知**、**旅行与数字游民**。所有文章、源码与实践笔记都可自由取用 —— 若对你有帮助，欢迎 Star、订阅或加我交流。
+>
+> **An AI-native open-source blog** — a long-running experiment blending writing, AI, and open-source engineering. Everything (posts, source, notes) is free to use across four threads: AI agent engineering, cloud-native/Go, growth & cognition, and travel & the nomad life. If it helps you, a Star or subscribe means a lot.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/10e9c8fc-0201-4d41-9240-5c35f10ee952/deploy-status)](https://app.netlify.com/sites/cubxxw/deploys)
 
@@ -434,7 +455,7 @@ This indicates the submodules are not updated. Please run the following command 
 ```
 
 **📱 加入社群 · Join the Community 🛠️**
-<p>扫描页首二维码添加我的微信 <code>cubxxwAI</code>，一起交流 AI、开源与远程工作，并受邀加入我们的社群。<br>Scan the QR code at the top to add my WeChat <code>cubxxwAI</code> — let's talk AI, open source & remote work, and join the community.</p>
+<p>扫描页首二维码，添加微信 <code>cubxxwAI</code> 或关注小红书 <code>nsddd_top</code>，一起交流 AI、开源与远程工作，并受邀加入我们的社群。<br>Scan the QR codes at the top — add me on WeChat <code>cubxxwAI</code> or follow me on RedNote <code>nsddd_top</code> to talk AI, open source & remote work, and join the community.</p>
 
 
 ## Reference
