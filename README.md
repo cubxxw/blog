@@ -249,6 +249,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [从 Chatbot 到 Agent 到 Skill：AI 落地传统行业的真正分水岭](https://cubxxw.com/zh/ai-agent/posts/from-chatbot-to-agent-to-skill/)
 - [给 AI 任务，别给方向：一条原则改变你和 AI 的协作](https://cubxxw.com/zh/ai-agent/posts/give-ai-tasks-not-directions/)
 - [摩擦即成长：当 AI 替你消除一切阻力，请主动留下一些](https://cubxxw.com/zh/growth/posts/friction-is-growth/)
 - [给你的 AI 工作流装上质量门禁：把软件工程的纪律搬进个人系统](https://cubxxw.com/zh/ai-agent/posts/engineering-discipline-ai-workflow/)
@@ -348,7 +349,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 会议总结](https://cubxxw.com/zh/engineering/posts/openim-cluster-deployment-scheme-of/)
 - [在开源社区中学会如何提问](https://cubxxw.com/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
 - [自动化的高级追求： Prow 是什么？Kubernetes 为什么需要它](https://cubxxw.com/zh/engineering/posts/prow-ecological-learning/)
-- [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](https://cubxxw.com/zh/engineering/posts/open-source-contribution-guidelines/)
 <!-- My-Blog-ZH:END -->
 
 
