@@ -1,0 +1,68 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A shaft of light passing through a clouded lens; the crisp window-shadow bars on the left soften and dissolve into a continuous glow on the right.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1117"/>
+      <stop offset="0.55" stop-color="#181b26"/>
+      <stop offset="1" stop-color="#20242f"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fbf3d9" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#f3e2b3" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f3e2b3" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff6df" stop-opacity="0.9"/>
+      <stop offset="0.35" stop-color="#f4e4b8" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#f4e4b8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lens" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e8eef5" stop-opacity="0.14"/>
+      <stop offset="0.7" stop-color="#c7d2e0" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#9fb0c4" stop-opacity="0.02"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="softer" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- crisp window frame on the left: sharp, geometric, defined -->
+  <g stroke="#3a4152" stroke-width="3" fill="none" opacity="0.85">
+    <rect x="70" y="150" width="220" height="330"/>
+    <line x1="180" y1="150" x2="180" y2="480"/>
+    <line x1="70" y1="315" x2="290" y2="315"/>
+  </g>
+
+  <!-- sharp shadow bars near the source, fading and softening toward the right -->
+  <g fill="#0b0d12" opacity="0.9">
+    <rect x="330" y="150" width="34" height="330"/>
+    <rect x="430" y="150" width="34" height="330"/>
+  </g>
+  <g fill="#0b0d12" opacity="0.5" filter="url(#soft)">
+    <rect x="560" y="150" width="40" height="330"/>
+    <rect x="690" y="150" width="46" height="330"/>
+  </g>
+  <g fill="#0b0d12" opacity="0.22" filter="url(#softer)">
+    <rect x="840" y="150" width="60" height="330"/>
+    <rect x="1000" y="150" width="70" height="330"/>
+  </g>
+
+  <!-- the shaft of light, sharp at source, blooming as it travels -->
+  <polygon points="70,300 70,330 1200,150 1200,480" fill="url(#beam)" opacity="0.6" filter="url(#soft)"/>
+
+  <!-- the clouded lens / eye through which the light scatters -->
+  <g transform="translate(620,315)">
+    <circle r="210" fill="url(#halo)" filter="url(#softer)"/>
+    <circle r="150" fill="url(#lens)"/>
+    <circle r="150" fill="none" stroke="#dfe7f1" stroke-width="1.5" opacity="0.25"/>
+    <circle r="96" fill="none" stroke="#eaf1f9" stroke-width="1" opacity="0.18"/>
+    <circle r="44" fill="url(#halo)" opacity="0.8"/>
+  </g>
+
+  <!-- continuous glow flooding the right side: the reconciliation of light and shadow -->
+  <rect x="760" y="0" width="440" height="630" fill="url(#halo)" opacity="0.18" filter="url(#softer)"/>
+</svg>
