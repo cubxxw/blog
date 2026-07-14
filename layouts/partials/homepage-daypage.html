@@ -68,6 +68,7 @@
           {{- $platform := cond (eq .name "wechat") "wechat" "xhs" -}}
           {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
           {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
+          {{- $contactURL := cond (eq .name "xhs") (trim .url " ") "" -}}
           {{- $qrSrc := .qr | relURL -}}
           {{- with resources.Get $asset -}}
             {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
@@ -84,6 +85,7 @@
             data-contact-platform="{{ $platform }}"
             data-contact-id="{{ $contactID }}"
             data-contact-qr="{{ $qrSrc }}"
+            {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }}
             onclick="openContactCard(this)">
             {{ partial "svg.html" . }}
           </button>
@@ -461,6 +463,7 @@
           {{- $platform := cond (eq .name "wechat") "wechat" "xhs" -}}
           {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
           {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
+          {{- $contactURL := cond (eq .name "xhs") (trim .url " ") "" -}}
           {{- $qrSrc := .qr | relURL -}}
           {{- with resources.Get $asset -}}
             {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
@@ -472,6 +475,7 @@
           {{- end -}}
           <li><button type="button" class="hp-footer-wechat hp-footer-wechat--{{ $platform }}" aria-haspopup="dialog"
             data-contact-platform="{{ $platform }}" data-contact-id="{{ $contactID }}" data-contact-qr="{{ $qrSrc }}"
+            {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }}
             onclick="openContactCard(this)">{{ .title | default (.name | title) }}</button></li>
           {{- else }}
           <li><a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .title | default (.name | title) }}</a></li>

@@ -16,13 +16,13 @@
   <table>
     <tr>
       <td align="center" width="50%">
-        <img src="assets/wechat.jpg" alt="扫码加我微信 cubxxwAI · Add me on WeChat" width="200" /><br>
+        <img src="assets/wechat.jpg" alt="扫码加我微信 cubxxwAI · Add me on WeChat" width="240" /><br>
         <b>💬 微信 · WeChat</b><br>
         <sub>微信号 / ID：<code>cubxxwAI</code></sub><br>
         <sub>聊 AI、开源与远程生活，欢迎进社群 🚀</sub>
       </td>
       <td align="center" width="50%">
-        <img src="assets/xiaohongshu.jpg" alt="扫码关注我的小红书 nsddd_top · Follow me on RedNote" width="200" /><br>
+        <img src="assets/xiaohongshu.jpg" alt="扫码关注我的小红书 nsddd_top · Follow me on RedNote" width="240" /><br>
         <b>📕 小红书 · RedNote</b><br>
         <sub>小红书号 / ID：<code>nsddd_top</code></sub><br>
         <sub>看我记录 AI、开源与旅居的日常 ✍️</sub>

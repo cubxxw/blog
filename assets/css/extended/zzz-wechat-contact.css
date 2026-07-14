@@ -273,8 +273,8 @@
 .wxc-qr-frame {
   position: relative;
   display: block;
-  width: 220px;
-  max-width: 68vw;
+  width: 260px;
+  max-width: 74vw;
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   padding: 12px;
@@ -335,7 +335,7 @@
   0%   { transform: translateY(0); opacity: 0; }
   12%  { opacity: 1; }
   88%  { opacity: 1; }
-  100% { transform: translateY(158px); opacity: 0; }
+  100% { transform: translateY(198px); opacity: 0; }
 }
 @media (hover: hover) and (pointer: fine) {
   .wxc-qr:hover .wxc-qr-frame {
@@ -440,6 +440,34 @@
   background: linear-gradient(135deg, #10b981, #059669);
 }
 .wxc-copy-ico { flex: none; }
+
+/* ── "Open profile" link (optional, e.g. RedNote) ─────────────────────────
+   Accent-outlined pill shown below the ID row when the trigger passes a URL. */
+.wxc-visit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--wx-green);
+  background: color-mix(in srgb, var(--wx-green) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--wx-green) 32%, var(--border));
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.16s ease;
+}
+.wxc-visit[hidden] { display: none; }
+.wxc-visit:hover {
+  background: color-mix(in srgb, var(--wx-green) 15%, transparent);
+  border-color: color-mix(in srgb, var(--wx-green) 55%, var(--border));
+}
+.wxc-visit:active { transform: scale(0.98); }
+.wxc-visit:focus-visible { outline: 2px solid var(--wx-green); outline-offset: 2px; }
+.wxc-visit-ico { flex: none; }
 
 /* ── Dark theme touch-ups ─────────────────────────────────────────────── */
 .dark .wxc-backdrop { background: color-mix(in srgb, #000 72%, transparent); }

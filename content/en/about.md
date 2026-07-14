@@ -181,6 +181,7 @@ tldr:
           data-contact-platform="xhs"
           data-contact-id="nsddd_top"
           data-contact-qr="/xiaohongshu.jpg"
+          data-contact-url="https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3"
           onclick="openContactCard(this)">
     <span class="about-wechat-glow" aria-hidden="true"></span>
     <span class="about-wechat-qr" aria-hidden="true">

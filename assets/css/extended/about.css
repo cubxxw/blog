@@ -375,8 +375,8 @@
 .about-wechat-qr {
   position: relative;
   flex: none;
-  width: 96px;
-  height: 96px;
+  width: 112px;
+  height: 112px;
   padding: 7px;
   border-radius: 14px;
   background: #fff;
@@ -413,7 +413,7 @@
   0%   { transform: translateY(0);    opacity: 0; }
   15%  { opacity: 1; }
   85%  { opacity: 1; }
-  100% { transform: translateY(56px); opacity: 0; }
+  100% { transform: translateY(72px); opacity: 0; }
 }
 
 /* text body */

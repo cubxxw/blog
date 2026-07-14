@@ -8,6 +8,8 @@
     {{- $platform := cond (eq .name "wechat") "wechat" "xhs" -}}
     {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
     {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
+    {{- /* RedNote has a real web profile to open directly; WeChat does not. */ -}}
+    {{- $contactURL := cond (eq .name "xhs") (trim .url " ") "" -}}
     {{- $qrSrc := .qr | relURL -}}
     {{- with resources.Get $asset -}}
         {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
@@ -25,6 +27,7 @@
        data-contact-platform="{{ $platform }}"
        data-contact-id="{{ $contactID }}"
        data-contact-qr="{{ $qrSrc }}"
+       {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }}
        onclick="openContactCard(this)">
         {{ partial "svg.html" . }}
     </button>

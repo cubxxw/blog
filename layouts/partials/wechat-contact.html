@@ -24,17 +24,19 @@
       lead:     {{ cond $zh "扫一扫二维码，或搜索微信号加我为好友，一起聊 AI、开源与远程生活。" "Scan the QR code, or search my WeChat ID to add me — let’s talk AI, open source and the nomad life." | jsonify | safeJS }},
       idLabel:  {{ cond $zh "微信号" "WeChat ID" | jsonify | safeJS }},
       scanHint: {{ cond $zh "打开微信 →「扫一扫」" "Open WeChat · Scan" | jsonify | safeJS }},
-      qrAlt:    {{ cond $zh "微信二维码" "WeChat QR code" | jsonify | safeJS }}
+      qrAlt:    {{ cond $zh "微信二维码" "WeChat QR code" | jsonify | safeJS }},
+      openText: {{ cond $zh "打开主页" "Open profile" | jsonify | safeJS }}
     },
     xhs: {
       accent:   "#ff2442",
       logoPath: {{ "M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm2.6 4.4a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zm.9 3.1H6.7v5h1.8v-5zm3.2-3.1h-1.8v8.1h1.8v-2.3l.6-.7 1.5 3h2l-2.3-4.2 2.1-2.4h-2.1l-1.8 2.2V8.4zm5.2 3a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5c.5 0 1-.15 1.4-.4v.3h1.6v-4.8h-1.6v.3c-.4-.25-.9-.4-1.4-.4zm.2 1.6a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z" | jsonify | safeJS }},
       title:    {{ cond $zh "在小红书找到我" "Find me on RedNote" | jsonify | safeJS }},
       titleSub: {{ cond $zh "Find me on RedNote" "在小红书找到我" | jsonify | safeJS }},
-      lead:     {{ cond $zh "扫一扫二维码，或在小红书搜索我的账号，看我记录 AI、开源与旅居生活。" "Scan the QR code, or search my RedNote ID — I share notes on AI, open source and the nomad life." | jsonify | safeJS }},
+      lead:     {{ cond $zh "扫码或搜索账号看我记录 AI、开源与旅居生活；也可直接打开我的小红书主页。" "Scan or search my ID to see my notes on AI, open source and the nomad life — or open my RedNote profile directly." | jsonify | safeJS }},
       idLabel:  {{ cond $zh "小红书号" "RedNote ID" | jsonify | safeJS }},
       scanHint: {{ cond $zh "打开小红书 →「扫一扫」" "Open RedNote · Scan" | jsonify | safeJS }},
-      qrAlt:    {{ cond $zh "小红书二维码" "RedNote QR code" | jsonify | safeJS }}
+      qrAlt:    {{ cond $zh "小红书二维码" "RedNote QR code" | jsonify | safeJS }},
+      openText: {{ cond $zh "打开小红书主页" "Open my RedNote profile" | jsonify | safeJS }}
     }
   };
 
@@ -74,7 +76,7 @@
         '<p class="wxc-lead"></p>',
         '<a class="wxc-qr" href="#" target="_blank" rel="noopener" title="' + esc(T.viewQr) + '">',
           '<span class="wxc-qr-frame">',
-            '<img class="wxc-qr-img" src="" alt="" width="220" height="220" decoding="async" loading="lazy" />',
+            '<img class="wxc-qr-img" src="" alt="" width="260" height="260" decoding="async" loading="lazy" />',
             '<span class="wxc-scanline" aria-hidden="true"></span>',
           '</span>',
         '</a>',
@@ -87,6 +89,12 @@
             '<span class="wxc-copy-txt">' + esc(T.copy) + '</span>',
           '</button>',
         '</div>',
+        // Optional: direct link to the on-web profile (shown only when the
+        // trigger carries data-contact-url — e.g. RedNote). Hidden by default.
+        '<a class="wxc-visit" href="#" target="_blank" rel="noopener" hidden>',
+          '<span class="wxc-visit-txt"></span>',
+          '<svg class="wxc-visit-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>',
+        '</a>',
       '</div>'
     ].join("");
     backdrop.addEventListener("click", function (e) {
@@ -126,6 +134,20 @@
 
     backdrop.querySelector(".wxc-id-value").textContent = id;
     backdrop.dataset.contactId = id;
+
+    // Optional "open profile" link — shown only when the trigger carries a URL.
+    var url = (btn && btn.getAttribute("data-contact-url")) || "";
+    var visit = backdrop.querySelector(".wxc-visit");
+    if (visit) {
+      if (url) {
+        visit.setAttribute("href", url);
+        visit.querySelector(".wxc-visit-txt").textContent = cfg.openText || "";
+        visit.hidden = false;
+      } else {
+        visit.hidden = true;
+        visit.removeAttribute("href");
+      }
+    }
 
     // reset copy button label
     var txt = backdrop.querySelector(".wxc-copy-txt");
