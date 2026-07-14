@@ -174,6 +174,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [What Remains When You Take It All Apart: On No-Self, Suffering, and "You Could Say It Either Way"](https://cubxxw.com/growth/posts/2026-07-14-what-remains-when-taken-apart/)
 - [From Chatbot to Agent to Skill: The Real Dividing Line for AI Landing in Traditional Industries](https://cubxxw.com/ai-agent/posts/from-chatbot-to-agent-to-skill/)
 - [Give AI Tasks, Not Directions: One Principle That Changes How You Work With AI](https://cubxxw.com/ai-agent/posts/give-ai-tasks-not-directions/)
 - [Friction Is Growth: When AI Removes All Resistance for You, Deliberately Keep Some](https://cubxxw.com/growth/posts/friction-is-growth/)
@@ -229,7 +230,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Microsoft MarkItDown Tutorial: Convert PDF to Markdown](https://cubxxw.com/projects/markitdown/)
 - [LangGraph Architecture: StateGraph, Nodes and Edges](https://cubxxw.com/projects/langgraph/)
 - [LangChain: Open Source LLM Framework](https://cubxxw.com/projects/langchain/)
-- [LLM/AI API Gateway Market Analysis & Startup Stack Recommendations](https://cubxxw.com/projects/ai-gateway/)
+- [LLM/AI API Gateway Comparison: LiteLLM vs Kong vs APISIX and the Best Stack for Startups](https://cubxxw.com/projects/ai-gateway/)
 - [Independent Developer in the AI Era: Open Source Deep Dive](https://cubxxw.com/projects/independent-developer/)
 - [GPT Researcher Explained: Open Source Deep Research Agent](https://cubxxw.com/projects/gpt-researcher/)
 - [Jina AI: Multimodal Search & Embeddings](https://cubxxw.com/projects/jina/)
@@ -273,7 +274,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [The Art of Asking Questions in Open Source Communities](https://cubxxw.com/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
 - [Open Source Contribution Guidelines](https://cubxxw.com/engineering/posts/open-source-contribution-guidelines/)
 - [Cross Platform Compilation](https://cubxxw.com/engineering/posts/cross-platform-compilation/)
-- [Github Actions Advanced Techniques](https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/)
 <!-- My-Blog-EN:END -->
 
 
