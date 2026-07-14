@@ -1,5 +1,5 @@
 ---
-title: 'LLM/AI API Gateway Market Analysis & Startup Stack Recommendations'
+title: 'LLM/AI API Gateway Comparison: LiteLLM vs Kong vs APISIX and the Best Stack for Startups'
 date: 2025-04-16T17:36:12+08:00
 draft: false
 showtoc: true
@@ -11,7 +11,7 @@ tags:
   - AI
   - Open Source
 description: >
-  A deep dive into AI gateway architecture for managing LLM API traffic, rate limiting, and multi-model routing.
+  An in-depth comparison of open source and commercial LLM/AI API gateways — LiteLLM, Portkey, Kong, Apache APISIX, Gloo, and Cloudflare — covering model routing, token-based cost control, semantic caching, security guardrails, and observability, plus a recommended gateway stack for AI startups.
 aliases:
   - /posts/ai-projects/ai-getway/
 tldr:
