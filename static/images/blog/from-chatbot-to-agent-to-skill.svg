@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">从 Chatbot 到 Agent 到 Skill</title>
+  <desc id="d">AI 落地的三级跃迁：单次问答、完整任务、可复用流程</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif">
+    <text x="80" y="120" fill="#e2e8f0" font-size="52" font-weight="700">从 Chatbot 到 Agent 到 Skill</text>
+    <text x="80" y="176" fill="#94a3b8" font-size="27" font-weight="400">AI 落地传统行业的真正分水岭</text>
+
+    <!-- arrows -->
+    <g stroke="#475569" stroke-width="3" fill="none">
+      <path d="M 340 380 L 430 380"/>
+      <path d="M 760 380 L 850 380"/>
+    </g>
+    <g fill="#475569">
+      <path d="M 430 380 l -14 -7 l 0 14 z"/>
+      <path d="M 850 380 l -14 -7 l 0 14 z"/>
+    </g>
+
+    <!-- tier 1 Chatbot -->
+    <rect x="80" y="290" width="260" height="180" rx="20" fill="#0b2233" stroke="url(#c1)" stroke-width="2.5"/>
+    <text x="210" y="352" fill="url(#c1)" font-size="34" font-weight="700" text-anchor="middle">Chatbot</text>
+    <text x="210" y="392" fill="#cbd5e1" font-size="21" text-anchor="middle">回答问题的人</text>
+    <text x="210" y="424" fill="#64748b" font-size="18" text-anchor="middle">解决单次问答</text>
+
+    <!-- tier 2 Agent -->
+    <rect x="470" y="290" width="290" height="180" rx="20" fill="#1a1330" stroke="url(#c2)" stroke-width="2.5"/>
+    <text x="615" y="352" fill="url(#c2)" font-size="34" font-weight="700" text-anchor="middle">Agent</text>
+    <text x="615" y="392" fill="#cbd5e1" font-size="21" text-anchor="middle">执行任务的人</text>
+    <text x="615" y="424" fill="#64748b" font-size="18" text-anchor="middle">解决完整任务</text>
+
+    <!-- tier 3 Skill -->
+    <rect x="890" y="290" width="230" height="180" rx="20" fill="#0c2a22" stroke="url(#c3)" stroke-width="2.5"/>
+    <text x="1005" y="352" fill="url(#c3)" font-size="34" font-weight="700" text-anchor="middle">Skill</text>
+    <text x="1005" y="392" fill="#cbd5e1" font-size="21" text-anchor="middle">可复用的流程</text>
+    <text x="1005" y="424" fill="#64748b" font-size="18" text-anchor="middle">解决重复任务</text>
+
+    <text x="80" y="560" fill="#64748b" font-size="22" font-weight="400">壁垒不是工具，是把判断沉淀成流程</text>
+  </g>
+</svg>
