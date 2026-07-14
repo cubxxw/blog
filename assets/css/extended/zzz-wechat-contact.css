@@ -9,6 +9,17 @@
   --wx-green-strong: #06a850;
 }
 
+/* The dialog is brand-aware: JS sets --wxc-accent on .wxc-card (WeChat green /
+   RedNote red). Inside the card, the shared --wx-green / --wx-green-strong
+   variables are re-bound to that accent so every accent reference below tracks
+   the active platform, while the social-row trigger buttons outside the dialog
+   keep the :root WeChat green. --wxc-accent defaults to green for safety. */
+.wxc-card {
+  --wxc-accent: #07c160;
+  --wx-green: var(--wxc-accent);
+  --wx-green-strong: color-mix(in srgb, var(--wxc-accent) 82%, #000);
+}
+
 /* ── Trigger button — sits inside .social-icons alongside the <a> chips ─── */
 .social-icons__wechat {
   -webkit-appearance: none;
@@ -106,6 +117,28 @@
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* ── RedNote (小红书) trigger variants ─────────────────────────────────────
+   The contact buttons reuse the WeChat button styling but hover/focus in
+   RedNote red instead of green. --xhs-red mirrors the card accent. */
+:root { --xhs-red: #ff2442; }
+@media (hover: hover) and (pointer: fine) {
+  .social-icons__contact--xhs:hover { color: var(--xhs-red); }
+  .profile .social-icons__contact--xhs:hover {
+    color: var(--xhs-red);
+    border-color: color-mix(in srgb, var(--xhs-red) 45%, var(--border));
+    background: color-mix(in srgb, var(--xhs-red) 10%, var(--theme));
+  }
+  .hp-social-icon--xhs:hover {
+    color: var(--xhs-red);
+    border-color: color-mix(in srgb, var(--xhs-red) 45%, var(--border-subtle));
+    background: color-mix(in srgb, var(--xhs-red) 10%, var(--surface-white));
+  }
+  .hp-footer-wechat--xhs:hover { color: var(--xhs-red); }
+}
+.social-icons__contact--xhs:focus-visible,
+.hp-social-icon--xhs:focus-visible,
+.hp-footer-wechat--xhs:focus-visible { outline-color: var(--xhs-red); }
 
 /* ── Backdrop ─────────────────────────────────────────────────────────── */
 .wxc-backdrop {

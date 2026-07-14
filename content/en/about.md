@@ -148,9 +148,10 @@ tldr:
 
   <button type="button" class="about-wechat"
           aria-haspopup="dialog"
-          data-wechat-id="cubxxwAI"
-          data-wechat-qr="/wechat.jpg"
-          onclick="openWechatContact(this)">
+          data-contact-platform="wechat"
+          data-contact-id="cubxxwAI"
+          data-contact-qr="/wechat.jpg"
+          onclick="openContactCard(this)">
     <span class="about-wechat-glow" aria-hidden="true"></span>
     <span class="about-wechat-qr" aria-hidden="true">
       <img src="/wechat.jpg" alt="" width="120" height="120" loading="lazy" decoding="async">
@@ -171,6 +172,36 @@ tldr:
     </span>
     <span class="about-wechat-cta" aria-hidden="true">
       <span class="about-wechat-cta-text">Scan to add</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </span>
+  </button>
+
+  <button type="button" class="about-wechat about-wechat--xhs"
+          aria-haspopup="dialog"
+          data-contact-platform="xhs"
+          data-contact-id="nsddd_top"
+          data-contact-qr="/xiaohongshu.jpg"
+          onclick="openContactCard(this)">
+    <span class="about-wechat-glow" aria-hidden="true"></span>
+    <span class="about-wechat-qr" aria-hidden="true">
+      <img src="/xiaohongshu.jpg" alt="" width="120" height="120" loading="lazy" decoding="async">
+      <span class="about-wechat-scan"></span>
+    </span>
+    <span class="about-wechat-body">
+      <span class="about-wechat-eyebrow">
+        <span class="about-wechat-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm2.6 4.4a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zm.9 3.1H6.7v5h1.8v-5zm3.2-3.1h-1.8v8.1h1.8v-2.3l.6-.7 1.5 3h2l-2.3-4.2 2.1-2.4h-2.1l-1.8 2.2V8.4zm5.2 3a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5c.5 0 1-.15 1.4-.4v.3h1.6v-4.8h-1.6v.3c-.4-.25-.9-.4-1.4-.4zm.2 1.6a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z"/></svg>
+        </span>
+        RedNote · See my notes
+      </span>
+      <span class="about-wechat-title">Find me on RedNote — notes on AI, open source &amp; nomad life</span>
+      <span class="about-wechat-id">
+        <span class="about-wechat-id-label">RedNote ID</span>
+        <span class="about-wechat-id-value">nsddd_top</span>
+      </span>
+    </span>
+    <span class="about-wechat-cta" aria-hidden="true">
+      <span class="about-wechat-cta-text">Scan to follow</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </span>
   </button>

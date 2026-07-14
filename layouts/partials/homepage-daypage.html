@@ -64,9 +64,12 @@
         {{- if site.Params.socialIcons }}
         <div class="hp-hero-socials">
           {{- range site.Params.socialIcons }}
-          {{- if eq .name "wechat" }}
+          {{- if or (eq .name "wechat") (eq .name "xhs") }}
+          {{- $platform := cond (eq .name "wechat") "wechat" "xhs" -}}
+          {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
+          {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
           {{- $qrSrc := .qr | relURL -}}
-          {{- with resources.Get "wechat.jpg" -}}
+          {{- with resources.Get $asset -}}
             {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
             {{- if and hugo.IsExtended $prod -}}
               {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
@@ -74,13 +77,14 @@
               {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
             {{- end -}}
           {{- end -}}
-          <button type="button" class="hp-social-icon hp-social-icon--wechat"
-            title="{{ .title | default "微信 / WeChat" }}"
-            aria-label="{{ .title | default "微信 / WeChat" }}"
+          <button type="button" class="hp-social-icon hp-social-icon--wechat hp-social-icon--{{ $platform }}"
+            title="{{ .title | default .name }}"
+            aria-label="{{ .title | default .name }}"
             aria-haspopup="dialog"
-            data-wechat-id="{{ .wechatID }}"
-            data-wechat-qr="{{ $qrSrc }}"
-            onclick="openWechatContact(this)">
+            data-contact-platform="{{ $platform }}"
+            data-contact-id="{{ $contactID }}"
+            data-contact-qr="{{ $qrSrc }}"
+            onclick="openContactCard(this)">
             {{ partial "svg.html" . }}
           </button>
           {{- else }}
@@ -453,9 +457,12 @@
         <h4>{{ if $isZh }}联系{{ else }}Connect{{ end }}</h4>
         <ul>
           {{- range site.Params.socialIcons }}
-          {{- if eq .name "wechat" }}
+          {{- if or (eq .name "wechat") (eq .name "xhs") }}
+          {{- $platform := cond (eq .name "wechat") "wechat" "xhs" -}}
+          {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
+          {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
           {{- $qrSrc := .qr | relURL -}}
-          {{- with resources.Get "wechat.jpg" -}}
+          {{- with resources.Get $asset -}}
             {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
             {{- if and hugo.IsExtended $prod -}}
               {{- $qrSrc = (.Resize "440x webp q88").RelPermalink -}}
@@ -463,9 +470,9 @@
               {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
             {{- end -}}
           {{- end -}}
-          <li><button type="button" class="hp-footer-wechat" aria-haspopup="dialog"
-            data-wechat-id="{{ .wechatID }}" data-wechat-qr="{{ $qrSrc }}"
-            onclick="openWechatContact(this)">{{ .title | default (.name | title) }}</button></li>
+          <li><button type="button" class="hp-footer-wechat hp-footer-wechat--{{ $platform }}" aria-haspopup="dialog"
+            data-contact-platform="{{ $platform }}" data-contact-id="{{ $contactID }}" data-contact-qr="{{ $qrSrc }}"
+            onclick="openContactCard(this)">{{ .title | default (.name | title) }}</button></li>
           {{- else }}
           <li><a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer">{{ .title | default (.name | title) }}</a></li>
           {{- end }}

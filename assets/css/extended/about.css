@@ -347,6 +347,14 @@
   outline-offset: 3px;
 }
 
+/* RedNote (小红书) variant — the entire card is accent-driven, so re-pointing
+   the two accent variables recolours the border, glow, QR frame, badge, ID pill
+   and CTA to RedNote red without duplicating any of the layout rules above. */
+.about-wechat--xhs {
+  --wx-green: #ff2442;
+  --wx-green-strong: #e01e3c;
+}
+
 /* moving glow that follows the top-left corner on hover */
 .about-wechat-glow {
   position: absolute;

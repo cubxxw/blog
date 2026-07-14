@@ -111,8 +111,10 @@ params:
       title: Email
       url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=3293172751nss@gmail.com
     - name: xhs
-      title: 小红书
+      title: 小红书 / RedNote
       url: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3
+      xhsID: nsddd_top
+      qr: /xiaohongshu.jpg
     - name: wechat
       title: 微信 / WeChat
       wechatID: cubxxwAI

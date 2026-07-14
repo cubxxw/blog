@@ -1,25 +1,49 @@
-{{- /* ── WeChat contact card ──────────────────────────────────────────────
-       A lightweight, on-site "Add me on WeChat" dialog: personal QR code +
-       copyable WeChat ID. Built lazily on first open, works on any page that
-       renders the wechat social icon. No third-party requests. */ -}}
+{{- /* ── On-site contact card (WeChat + RedNote/小红书) ───────────────────
+       A lightweight "scan to connect" dialog: personal QR code + copyable
+       account ID. Built lazily on first open, brand-aware (WeChat green /
+       RedNote red), works on any page that renders the matching social icon.
+       No third-party requests — the QR is a self-hosted asset.
+
+       Triggers set data-contact-platform ("wechat" | "xhs"),
+       data-contact-id and data-contact-qr on the button, then call
+       openContactCard(this). openWechatContact() is kept as a back-compat
+       alias for existing WeChat buttons. */ -}}
 {{- $zh := eq site.Language.Lang "zh" -}}
 <script>
 (function () {
   "use strict";
 
-  // Localised copy. jsonify + safeJS => one valid, correctly-escaped JS string
-  // literal per entry (no double-encoding, no HTML entities inside <script>).
+  // Per-platform localised copy + brand. jsonify + safeJS => one valid,
+  // correctly-escaped JS string literal per entry (no double-encoding).
+  var PLATFORMS = {
+    wechat: {
+      accent:   "#07c160",
+      logoPath: {{ "M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z" | jsonify | safeJS }},
+      title:    {{ cond $zh "加我的微信" "Add me on WeChat" | jsonify | safeJS }},
+      titleSub: {{ cond $zh "Add me on WeChat" "加我的微信" | jsonify | safeJS }},
+      lead:     {{ cond $zh "扫一扫二维码，或搜索微信号加我为好友，一起聊 AI、开源与远程生活。" "Scan the QR code, or search my WeChat ID to add me — let’s talk AI, open source and the nomad life." | jsonify | safeJS }},
+      idLabel:  {{ cond $zh "微信号" "WeChat ID" | jsonify | safeJS }},
+      scanHint: {{ cond $zh "打开微信 →「扫一扫」" "Open WeChat · Scan" | jsonify | safeJS }},
+      qrAlt:    {{ cond $zh "微信二维码" "WeChat QR code" | jsonify | safeJS }}
+    },
+    xhs: {
+      accent:   "#ff2442",
+      logoPath: {{ "M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm2.6 4.4a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zm.9 3.1H6.7v5h1.8v-5zm3.2-3.1h-1.8v8.1h1.8v-2.3l.6-.7 1.5 3h2l-2.3-4.2 2.1-2.4h-2.1l-1.8 2.2V8.4zm5.2 3a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5c.5 0 1-.15 1.4-.4v.3h1.6v-4.8h-1.6v.3c-.4-.25-.9-.4-1.4-.4zm.2 1.6a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z" | jsonify | safeJS }},
+      title:    {{ cond $zh "在小红书找到我" "Find me on RedNote" | jsonify | safeJS }},
+      titleSub: {{ cond $zh "Find me on RedNote" "在小红书找到我" | jsonify | safeJS }},
+      lead:     {{ cond $zh "扫一扫二维码，或在小红书搜索我的账号，看我记录 AI、开源与旅居生活。" "Scan the QR code, or search my RedNote ID — I share notes on AI, open source and the nomad life." | jsonify | safeJS }},
+      idLabel:  {{ cond $zh "小红书号" "RedNote ID" | jsonify | safeJS }},
+      scanHint: {{ cond $zh "打开小红书 →「扫一扫」" "Open RedNote · Scan" | jsonify | safeJS }},
+      qrAlt:    {{ cond $zh "小红书二维码" "RedNote QR code" | jsonify | safeJS }}
+    }
+  };
+
+  // Shared, platform-independent copy.
   var T = {
-    title:      {{ cond $zh "加我的微信" "Add me on WeChat" | jsonify | safeJS }},
-    titleSub:   {{ cond $zh "Add me on WeChat" "加我的微信" | jsonify | safeJS }},
-    lead:       {{ cond $zh "扫一扫二维码，或搜索微信号加我为好友，一起聊 AI、开源与远程生活。" "Scan the QR code, or search my WeChat ID to add me — let’s talk AI, open source and the nomad life." | jsonify | safeJS }},
-    idLabel:    {{ cond $zh "微信号" "WeChat ID" | jsonify | safeJS }},
-    copy:       {{ cond $zh "复制微信号" "Copy ID" | jsonify | safeJS }},
-    copied:     {{ cond $zh "已复制 ✓" "Copied ✓" | jsonify | safeJS }},
-    scanHint:   {{ cond $zh "打开微信 →「扫一扫」" "Open WeChat · Scan" | jsonify | safeJS }},
-    qrAlt:      {{ cond $zh "微信二维码" "WeChat QR code" | jsonify | safeJS }},
-    close:      {{ cond $zh "关闭" "Close" | jsonify | safeJS }},
-    viewQr:     {{ cond $zh "查看大图" "View full size" | jsonify | safeJS }}
+    copy:   {{ cond $zh "复制账号" "Copy ID" | jsonify | safeJS }},
+    copied: {{ cond $zh "已复制 ✓" "Copied ✓" | jsonify | safeJS }},
+    close:  {{ cond $zh "关闭" "Close" | jsonify | safeJS }},
+    viewQr: {{ cond $zh "查看大图" "View full size" | jsonify | safeJS }}
   };
 
   var backdrop = null, lastFocus = null;
@@ -35,30 +59,30 @@
     backdrop.setAttribute("aria-hidden", "true");
     backdrop.innerHTML = [
       '<div class="wxc-card" role="dialog" aria-modal="true" aria-labelledby="wxc-title">',
-        '<button class="wxc-close" type="button" aria-label="' + esc(T.close) + '" onclick="closeWechatContact()">&#215;</button>',
+        '<button class="wxc-close" type="button" aria-label="' + esc(T.close) + '" onclick="closeContactCard()">&#215;</button>',
         '<div class="wxc-head">',
           '<span class="wxc-logo" aria-hidden="true">',
             '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">',
-              '<path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>',
+              '<path class="wxc-logo-path" d=""></path>',
             '</svg>',
           '</span>',
           '<div class="wxc-headtext">',
-            '<h2 class="wxc-title" id="wxc-title">' + esc(T.title) + '</h2>',
-            '<span class="wxc-title-sub">' + esc(T.titleSub) + '</span>',
+            '<h2 class="wxc-title" id="wxc-title"></h2>',
+            '<span class="wxc-title-sub"></span>',
           '</div>',
         '</div>',
-        '<p class="wxc-lead">' + esc(T.lead) + '</p>',
+        '<p class="wxc-lead"></p>',
         '<a class="wxc-qr" href="#" target="_blank" rel="noopener" title="' + esc(T.viewQr) + '">',
           '<span class="wxc-qr-frame">',
-            '<img class="wxc-qr-img" src="" alt="' + esc(T.qrAlt) + '" width="220" height="220" decoding="async" loading="lazy" />',
+            '<img class="wxc-qr-img" src="" alt="" width="220" height="220" decoding="async" loading="lazy" />',
             '<span class="wxc-scanline" aria-hidden="true"></span>',
           '</span>',
         '</a>',
-        '<p class="wxc-scanhint"><span class="wxc-scanhint-dot" aria-hidden="true"></span>' + esc(T.scanHint) + '</p>',
-        '<div class="wxc-id" role="button" tabindex="0" title="' + esc(T.copy) + '" onclick="copyWechatID(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();copyWechatID(this);}">',
-          '<span class="wxc-id-label">' + esc(T.idLabel) + '</span>',
+        '<p class="wxc-scanhint"><span class="wxc-scanhint-dot" aria-hidden="true"></span><span class="wxc-scanhint-txt"></span></p>',
+        '<div class="wxc-id" role="button" tabindex="0" title="' + esc(T.copy) + '" onclick="copyContactID(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();copyContactID(this);}">',
+          '<span class="wxc-id-label"></span>',
           '<code class="wxc-id-value"></code>',
-          '<button class="wxc-copy" type="button" tabindex="-1" onclick="event.stopPropagation();copyWechatID(this)">',
+          '<button class="wxc-copy" type="button" tabindex="-1" onclick="event.stopPropagation();copyContactID(this)">',
             '<svg class="wxc-copy-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
             '<span class="wxc-copy-txt">' + esc(T.copy) + '</span>',
           '</button>',
@@ -66,28 +90,42 @@
       '</div>'
     ].join("");
     backdrop.addEventListener("click", function (e) {
-      if (e.target === backdrop) closeWechatContact();
+      if (e.target === backdrop) closeContactCard();
     });
     document.body.appendChild(backdrop);
     return backdrop;
   }
 
-  window.openWechatContact = function (btn) {
+  window.openContactCard = function (btn) {
     lastFocus = btn || document.activeElement;
-    var id = (btn && btn.getAttribute("data-wechat-id")) || "";
-    var qr = (btn && btn.getAttribute("data-wechat-qr")) || "";
+    var platform = (btn && btn.getAttribute("data-contact-platform")) || "wechat";
+    var cfg = PLATFORMS[platform] || PLATFORMS.wechat;
+    var id = (btn && btn.getAttribute("data-contact-id")) || "";
+    var qr = (btn && btn.getAttribute("data-contact-qr")) || "";
     if (!backdrop) build();
+
+    // Brand: accent colour, logo, and all localised copy.
+    var card = backdrop.querySelector(".wxc-card");
+    card.style.setProperty("--wxc-accent", cfg.accent);
+    card.setAttribute("data-platform", platform);
+    backdrop.querySelector(".wxc-logo-path").setAttribute("d", cfg.logoPath);
+    backdrop.querySelector(".wxc-title").textContent = cfg.title;
+    backdrop.querySelector(".wxc-title-sub").textContent = cfg.titleSub;
+    backdrop.querySelector(".wxc-lead").textContent = cfg.lead;
+    backdrop.querySelector(".wxc-id-label").textContent = cfg.idLabel;
+    backdrop.querySelector(".wxc-scanhint-txt").textContent = cfg.scanHint;
 
     var img = backdrop.querySelector(".wxc-qr-img");
     var frame = backdrop.querySelector(".wxc-qr-frame");
     var link = backdrop.querySelector(".wxc-qr");
     frame.classList.remove("is-loaded");
     img.onload = function () { frame.classList.add("is-loaded"); };
+    img.alt = cfg.qrAlt;
     img.src = qr;
     link.setAttribute("href", qr);
 
     backdrop.querySelector(".wxc-id-value").textContent = id;
-    backdrop.dataset.wechatId = id;
+    backdrop.dataset.contactId = id;
 
     // reset copy button label
     var txt = backdrop.querySelector(".wxc-copy-txt");
@@ -102,16 +140,36 @@
     if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 60);
   };
 
-  window.closeWechatContact = function () {
+  // Back-compat alias: existing WeChat buttons still call openWechatContact().
+  window.openWechatContact = function (btn) {
+    if (btn && !btn.getAttribute("data-contact-platform")) {
+      // Legacy buttons carry data-wechat-id / data-wechat-qr. Bridge them.
+      var shim = {
+        getAttribute: function (k) {
+          if (k === "data-contact-platform") return "wechat";
+          if (k === "data-contact-id") return btn.getAttribute("data-wechat-id");
+          if (k === "data-contact-qr") return btn.getAttribute("data-wechat-qr");
+          return btn.getAttribute(k);
+        },
+        focus: btn.focus ? btn.focus.bind(btn) : null
+      };
+      return window.openContactCard(shim);
+    }
+    return window.openContactCard(btn);
+  };
+
+  window.closeContactCard = function () {
     if (!backdrop) return;
     backdrop.classList.remove("is-open");
     backdrop.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
   };
+  // Back-compat alias.
+  window.closeWechatContact = window.closeContactCard;
 
-  window.copyWechatID = function (el) {
-    var id = (backdrop && backdrop.dataset.wechatId) || "";
+  window.copyContactID = function (el) {
+    var id = (backdrop && backdrop.dataset.contactId) || "";
     if (!id) return;
     var done = function () {
       // The copy action fires from two places: the .wxc-copy button itself,
@@ -135,6 +193,8 @@
       navigator.clipboard.writeText(id).then(done).catch(function () { fallback(id, done); });
     } else { fallback(id, done); }
   };
+  // Back-compat alias.
+  window.copyWechatID = window.copyContactID;
 
   function fallback(text, cb) {
     var ta = document.createElement("textarea");
@@ -147,7 +207,7 @@
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && backdrop && backdrop.classList.contains("is-open")) {
-      closeWechatContact();
+      closeContactCard();
     }
   });
 })();
