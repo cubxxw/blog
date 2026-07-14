@@ -434,7 +434,7 @@
     if (typeof window.openWechatContact !== 'function') return;
     const trigger = document.querySelector('[data-wechat-id][data-wechat-qr]');
     if (!trigger || !aiContent) return;
-    if (!/(wechat|微信|cubxxw_com)/i.test(String(answer || ''))) return;
+    if (!/(wechat|微信|cubxxwai|cubxxw_com)/i.test(String(answer || ''))) return;
     if (aiContent.querySelector('.ai-wechat-cta')) return; // avoid dupes on follow-ups
 
     const isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;

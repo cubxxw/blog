@@ -290,7 +290,7 @@
       const trigger = document.querySelector("[data-wechat-id][data-wechat-qr]");
       if (!trigger) return;
       const text = String(answer || "");
-      if (!/(wechat|微信|cubxxw_com)/i.test(text)) return;
+      if (!/(wechat|微信|cubxxwai|cubxxw_com)/i.test(text)) return;
 
       const wrap = document.createElement("div");
       wrap.className = "ai-wechat-cta";

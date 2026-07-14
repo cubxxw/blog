@@ -148,7 +148,7 @@ tldr:
 
   <button type="button" class="about-wechat"
           aria-haspopup="dialog"
-          data-wechat-id="cubxxw_com"
+          data-wechat-id="cubxxwAI"
           data-wechat-qr="/wechat.jpg"
           onclick="openWechatContact(this)">
     <span class="about-wechat-glow" aria-hidden="true"></span>
@@ -166,7 +166,7 @@ tldr:
       <span class="about-wechat-title">加我的微信，一起聊 AI 与远程生活</span>
       <span class="about-wechat-id">
         <span class="about-wechat-id-label">微信号</span>
-        <span class="about-wechat-id-value">cubxxw_com</span>
+        <span class="about-wechat-id-value">cubxxwAI</span>
       </span>
     </span>
     <span class="about-wechat-cta" aria-hidden="true">

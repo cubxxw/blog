@@ -291,6 +291,6 @@ While Sola isn't officially released yet, we're rounding up tips to help you qui
 **SoraEase** provides development tools and resources to simplify Sora's AI video technology for everyone. Developers can better use our various tools for Sora development, and users can more conveniently use our tools to complete manual work with us. Smart video creation.
 
 - **GitHub address**: [SoraEase GitHub](https://github.com/SoraEase)
-- **Join our community**: Add Wechat **cubxxw_com** and reply `sora` to join the group. In our WeChat community, you can get Sora's latest consultation and technology sharing, and it is also a communication platform for Sora enthusiasts and developers.
+- **Join our community**: Add Wechat **cubxxwAI** and reply `sora` to join the group. In our WeChat community, you can get Sora's latest consultation and technology sharing, and it is also a communication platform for Sora enthusiasts and developers.
 
 We look forward to your joining and exploring the infinite possibilities of Sora technology!
