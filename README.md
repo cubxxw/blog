@@ -282,6 +282,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问](https://cubxxw.com/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/)
 - [从 Chatbot 到 Agent 到 Skill：AI 落地传统行业的真正分水岭](https://cubxxw.com/zh/ai-agent/posts/from-chatbot-to-agent-to-skill/)
 - [给 AI 任务，别给方向：一条原则改变你和 AI 的协作](https://cubxxw.com/zh/ai-agent/posts/give-ai-tasks-not-directions/)
 - [摩擦即成长：当 AI 替你消除一切阻力，请主动留下一些](https://cubxxw.com/zh/growth/posts/friction-is-growth/)
@@ -339,7 +340,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [MarkItDown 教程：微软开源文档转 Markdown 工具](https://cubxxw.com/zh/projects/markitdown/)
 - [LangGraph 架构深度解析：状态图、节点与边的设计原理](https://cubxxw.com/zh/projects/langgraph/)
 - [LangChain 开源项目深度学习](https://cubxxw.com/zh/projects/langchain/)
-- [Ai Gateway 开源项目深度学习](https://cubxxw.com/zh/projects/ai-gateway/)
+- [AI Gateway（AI 网关）开源项目深度学习笔记](https://cubxxw.com/zh/projects/ai-gateway/)
 - [独立开发者必备技能及现代工具 & 分别的上手指导](https://cubxxw.com/zh/projects/independent-developer/)
 - [GPT Researcher 是什么？开源 AI 深度研究代理架构解析](https://cubxxw.com/zh/projects/gpt-researcher/)
 - [Jina 开源项目深度学习](https://cubxxw.com/zh/projects/jina/)
@@ -381,7 +382,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [通过配置文件简化 Kubernetes 部署的参数端口配置](https://cubxxw.com/zh/engineering/posts/openim-cluster-deployment-parameter-passing-policy/)
 - [OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 会议总结](https://cubxxw.com/zh/engineering/posts/openim-cluster-deployment-scheme-of/)
 - [在开源社区中学会如何提问](https://cubxxw.com/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
-- [自动化的高级追求： Prow 是什么？Kubernetes 为什么需要它](https://cubxxw.com/zh/engineering/posts/prow-ecological-learning/)
 <!-- My-Blog-ZH:END -->
 
 
