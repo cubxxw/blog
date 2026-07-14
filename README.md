@@ -141,6 +141,16 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [From Chatbot to Agent to Skill: The Real Dividing Line for AI Landing in Traditional Industries](https://cubxxw.com/ai-agent/posts/from-chatbot-to-agent-to-skill/)
+- [Give AI Tasks, Not Directions: One Principle That Changes How You Work With AI](https://cubxxw.com/ai-agent/posts/give-ai-tasks-not-directions/)
+- [Friction Is Growth: When AI Removes All Resistance for You, Deliberately Keep Some](https://cubxxw.com/growth/posts/friction-is-growth/)
+- [Installing Quality Gates Into Your AI Workflow: Bringing Software Engineering Discipline Into Your Personal System](https://cubxxw.com/ai-agent/posts/engineering-discipline-ai-workflow/)
+- [Handing Your Notes Over to AI: Building an AI-Native Second Brain With Claude + Obsidian](https://cubxxw.com/ai-agent/posts/ai-second-brain-build/)
+- [Layer Four · Creation: Recombining Knowledge Into Something Others Are Willing to Receive](https://cubxxw.com/ai-agent/posts/info-to-creation-creation/)
+- [Layer Three · Knowledge: Your Knowledge Base Is Not a Bookmark Folder, It Is Your Capability Sediment Zone](https://cubxxw.com/ai-agent/posts/info-to-creation-knowledge/)
+- [Layer Two · Records: The Highest-Conversion Semi-Finished Product Between Information and Knowledge](https://cubxxw.com/ai-agent/posts/info-to-creation-record/)
+- [Layer One · Information: What to Show AI, What to Skim Yourself, and Pure Noise](https://cubxxw.com/ai-agent/posts/info-to-creation-information/)
+- [Information, Records, Knowledge, Creation: In the AI Era, I Split My Notes Into Four Different Things](https://cubxxw.com/ai-agent/posts/info-to-creation-the-framework/)
 - [GEO Measurement & Tools: How to Know If AI Actually Cites You (with a DIY Monitor)](https://cubxxw.com/ai-agent/posts/geo-measurement-and-tools/)
 - [GEO Blog Rebuild Case Study: Running the Five-Layer Model on Real Data](https://cubxxw.com/ai-agent/posts/geo-blog-rebuild-case-study/)
 - [GEO Trust & Endorsement: Why Reddit and Wikipedia Make Up Half of AI Citations](https://cubxxw.com/ai-agent/posts/geo-trust-and-endorsement/)
@@ -231,16 +241,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Open Source Contribution Guidelines](https://cubxxw.com/engineering/posts/open-source-contribution-guidelines/)
 - [Cross Platform Compilation](https://cubxxw.com/engineering/posts/cross-platform-compilation/)
 - [Github Actions Advanced Techniques](https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/)
-- [Openim Devops Design](https://cubxxw.com/engineering/posts/openim-devops-design/)
-- [GoReleaser: Automate your software releases](https://cubxxw.com/engineering/posts/go-release-tools/)
-- [Openim Multi Process Management](https://cubxxw.com/engineering/posts/openim-multi-process-management/)
-- [About My Blog](https://cubxxw.com/growth/posts/my-first-blog/)
-- [About My Hugo teaching](https://cubxxw.com/engineering/posts/my-hugo/)
-- [Openkf Multi Architecture Image](https://cubxxw.com/engineering/posts/openkf-multi-architecture-image/)
-- [Prow Ecological Learning](https://cubxxw.com/engineering/posts/prow-ecological-learning/)
-- [Openim Remote Work Culture](https://cubxxw.com/engineering/posts/openim-remote-work-culture/)
-- [Advanced Githook Design](https://cubxxw.com/engineering/posts/advanced-githook-design/)
-- [Openim Offline Deployment Design](https://cubxxw.com/engineering/posts/openim-offline-deployment-design/)
 <!-- My-Blog-EN:END -->
 
 
