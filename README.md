@@ -4,6 +4,18 @@
     </a>
 </h3>
 
+<div align="center">
+  <br>
+  <img src="assets/wechat.jpg" alt="扫码加我微信 · Add me on WeChat" width="180" />
+  <br>
+  <sub>👋 <b>交个朋友 · Let's connect</b></sub>
+  <br>
+  <sub>扫码加我微信，一起聊 AI、开源与远程生活，也欢迎加入我们的社群 🚀</sub>
+  <br>
+  <sub><i>Scan to add me on WeChat — chat about AI, open source & the nomad life, and join the community.</i></sub>
+  <br><br>
+</div>
+
 ## Introduction
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/10e9c8fc-0201-4d41-9240-5c35f10ee952/deploy-status)](https://app.netlify.com/sites/cubxxw/deploys)
@@ -421,9 +433,8 @@ This indicates the submodules are not updated. Please run the following command 
 ❯ git submodule update --init --recursive
 ```
 
-**📱 Join Our WeChat Developer Group 🛠️**
-<p>Add as a friend and include the note <code>openkf</code> to receive an invitation to our <strong>' openkf '</strong> developers' group chat.</p>
-<p><img src="./assets/wechat.jpg" alt="WeChat Group" style="max-width:30%;height:auto;"></p>
+**📱 加入社群 · Join the Community 🛠️**
+<p>扫描页首二维码添加我的微信 <code>cubxxwAI</code>，一起交流 AI、开源与远程工作，并受邀加入我们的社群。<br>Scan the QR code at the top to add my WeChat <code>cubxxwAI</code> — let's talk AI, open source & remote work, and join the community.</p>
 
 
 ## Reference
