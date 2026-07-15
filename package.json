@@ -30,6 +30,7 @@
     "test:report": "playwright show-report"
   },
   "devDependencies": {
+    "@netlify/functions": "^5.3.0",
     "@playwright/test": "^1.52.0",
     "@types/node": "^25.6.0",
     "netlify-plugin-critical-css": "^1.0.4",
