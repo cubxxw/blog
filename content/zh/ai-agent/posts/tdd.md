@@ -7,13 +7,18 @@ tocopen: true
 tags: ["AI", "Project Learning"]
 author: ["Xinwei Xiong", "Me"]
 description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+  面向 AI 时代初创企业的 TDD 实践指南：从红-绿-重构循环与测试先行思维讲起，权衡严格 TDD 对 MVP 阶段的利弊与务实替代策略，
+  给出 pytest、Jest 与 React Testing Library、Go 内置 testing 包三套技术栈的落地要点，并讲解如何用 Cursor 等 AI
+  编程助手加速测试生成、驾驭 AI 生成测试的质量风险。
 aliases:
   - /zh/posts/ai-projects/tdd/
 tldr:
   - "测试驱动开发通过红绿重构循环提升代码质量和可维护性，对于构建可靠AI系统至关重要。"
   - "AI工具如Cursor能加速TDD各环节但需谨慎，测试先行原则是指导AI代码生成的核心机制。"
   - "AI初创企业应策略性选择严格TDD、选择性TDD或BDD混合方案，平衡MVP快速迭代与核心质量保障。"
+cover:
+  image: /images/covers/ai-agent/2025/tdd.jpeg
+  alt: "AI 时代初创企业的测试驱动开发（TDD）实践方案"
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。
@@ -337,6 +342,7 @@ describe('Counter component', () => {
     expect(countElement).toBeInTheDocument();
   });
 });
+```
 
 ### **5.3 (可选) Go 服务 (内置 testing 包)**
 
@@ -356,7 +362,7 @@ describe('Counter component', () => {
     * **模糊测试 (Fuzzing)**：编写以 FuzzXxx 命名并接收 *testing.F 参数的函数，使用 f.Add() 提供种子语料，并用 f.Fuzz() 定义模糊测试目标，以自动发现边界情况和 Bug <sup>44</sup>。
     * **区分逻辑与 IO**：对于纯计算逻辑的函数，直接进行单元测试。对于涉及大量 IO 操作（网络、文件、数据库等）的函数，应通过接口进行抽象，并在测试中使用 Mock 或 Fake 对象进行隔离，或者编写集成测试 <sup>40</sup>。
     * **错误处理测试**：确保充分测试代码中的错误处理路径，而不仅仅是“快乐路径”（happy path）<sup>46</sup>。可以考虑定义和测试自定义错误类型 <sup>40</sup>。
-* **实践示例 (内置 testing)**： \
+* **实践示例 (内置 testing)**：
 
 ```go
 package greetings
@@ -380,7 +386,7 @@ func Hello(name string, language string) string {
     // Refactor: Introduce language switching logic as tests demand
     return prefix + name
 }
-
+```
 
 选择和使用这些框架时，理解其背后的设计哲学很重要。pytest 的哲学是减少样板代码，提供强大灵活的测试工具 <sup>27</sup>。RTL 的哲学是用户中心，强调通过模拟用户交互来测试行为，而非实现细节 <sup>36</sup>。Go 的内置 testing 包则体现了 Go 语言简洁、约定优于配置的哲学，表驱动测试是其惯用法 <sup>40</sup>。将 TDD 实践与所选工具的哲学相结合，有助于更有效地利用这些工具。
 
