@@ -193,7 +193,7 @@
         {{- else }}
           {{- $count = len (where site.RegularPages "Section" .key) }}
         {{- end }}
-        <a class="hp-cat-tile" href="{{ .url | relLangURL }}">
+        <a class="hp-cat-tile" href="{{ .url | relLangURL }}"{{ if $isProducts }} target="_blank" rel="noopener"{{ end }}>
           <div class="hp-cat-tile-top">
             <span class="hp-cat-tile-icon">{{ .icon }}</span>
             <span class="hp-cat-tile-count"><strong>{{ $count }}</strong><span>{{ if $isProducts }}{{ if $isZh }}个产品{{ else }}products{{ end }}{{ else }}{{ if $isZh }}篇{{ else }}posts{{ end }}{{ end }}</span></span>
@@ -258,7 +258,7 @@
         <span class="hp-section-num">03</span>
         <span class="hp-section-label">{{ if $isZh }}独立产品{{ else }}Independent Products{{ end }}</span>
         <h2 class="hp-section-title">{{ if $isZh }}正在构建{{ else }}What I'm Building{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}产品{{ end }}</span></h2>
-        <a class="hp-section-action" href="{{ "/projects/" | relLangURL }}">
+        <a class="hp-section-action" href="{{ "/projects/" | relLangURL }}" target="_blank" rel="noopener">
           {{ if $isZh }}全部产品{{ else }}All Products{{ end }}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
         </a>
@@ -269,7 +269,7 @@
         {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" .id) }}
         <article class="hp-product hp-product--{{ .color }}">
           <div class="hp-product__chrome" aria-hidden="true"><span class="hp-product__lights"><i></i><i></i><i></i></span><span class="hp-product__domain">{{ $domain }}</span></div>
-          <a class="hp-product__main" href="{{ printf "/projects/#%s" .id | relLangURL }}">
+          <a class="hp-product__main" href="{{ printf "/projects/#%s" .id | relLangURL }}" target="_blank" rel="noopener">
             {{- if $hasShot }}
             <span class="hp-product__shot">
               <img src="{{ printf "/images/products/%s.jpg" .id }}" alt="{{ .name }} — {{ $domain }}" width="1440" height="900" loading="lazy" decoding="async">

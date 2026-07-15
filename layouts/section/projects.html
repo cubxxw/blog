@@ -29,6 +29,9 @@
     </div>
     <div class="osx-menubar__right">
       <span class="osx-menubar__stat"><i aria-hidden="true"></i>{{ len $products }} apps · {{ $live }} live</span>
+      {{- range .Translations }}
+      <a class="osx-menubar__lang" href="{{ .RelPermalink }}" data-osx-lang hreflang="{{ .Lang }}">{{ if $isZh }}EN{{ else }}中文{{ end }}</a>
+      {{- end }}
       <span class="osx-menubar__clock" data-osx-clock aria-hidden="true">--:--</span>
     </div>
   </div>
@@ -85,30 +88,60 @@
       <div class="osx-window__info">
         <div class="osx-window__meta osx-reveal" style="--r:0">
           <span class="osx-window__status"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
-          <span>{{ if $isZh }}{{ $product.audience_zh }}{{ else }}{{ $product.audience_en }}{{ end }}</span>
+          <span>{{ $product.stack }}</span>
         </div>
         <h2 class="osx-reveal" style="--r:1">{{ $product.name }}</h2>
         <p class="osx-window__headline osx-reveal" style="--r:2">{{ if $isZh }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
         <p class="osx-window__desc osx-reveal" style="--r:3">{{ if $isZh }}{{ $product.desc_zh }}{{ else }}{{ $product.desc_en }}{{ end }}</p>
-        <div class="osx-window__chips osx-reveal" style="--r:4" aria-label="Stack">
-          {{- range split $product.stack " · " }}<span>{{ . }}</span>{{- end }}
+        <div class="osx-window__tags osx-reveal" style="--r:4" aria-label="{{ if $isZh }}相关话题{{ else }}Related topics{{ end }}">
+          {{- range $product.tags }}
+          {{- $term := index site.Taxonomies.tags . }}
+          {{- if not $term }}{{ $term = index site.Taxonomies.tags (replace . "-" " ") }}{{ end }}
+          {{- if $term }}
+          <a href="{{ $term.Page.RelPermalink }}" target="_blank" rel="noopener" title="{{ if $isZh }}{{ len $term.Pages }} 篇相关文章{{ else }}{{ len $term.Pages }} related posts{{ end }}">#{{ . }}<b>{{ len $term.Pages }}</b></a>
+          {{- else }}<span>#{{ . }}</span>{{- end }}
+          {{- end }}
         </div>
         <div class="osx-window__actions osx-reveal" style="--r:5">
-          <a class="osx-window__primary" href="{{ $product.url }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }} ↗</a>
-          <a href="{{ $product.github }}" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="osx-window__primary" href="{{ $product.url }}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            {{ if $isZh }}打开产品{{ else }}Open product{{ end }}
+          </a>
+          <a class="osx-window__ghost" href="{{ $product.github }}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            GitHub
+          </a>
+        </div>
+        <div class="osx-progress osx-reveal" style="--r:6">
+          <div class="osx-progress__head">
+            <span>{{ if $isZh }}开发进度{{ else }}Dev progress{{ end }} · ROADMAP</span>
+            <b>{{ $product.progress }}%</b>
+          </div>
+          <div class="osx-progress__bar" role="progressbar" aria-valuenow="{{ $product.progress }}" aria-valuemin="0" aria-valuemax="100"><i style="--p:{{ $product.progress }}%"></i></div>
+          <ul class="osx-progress__todo">
+            {{- range $product.todo }}
+            <li{{ if .done }} class="is-done"{{ end }}><i aria-hidden="true"></i><span>{{ if $isZh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</span></li>
+            {{- end }}
+          </ul>
+          {{- with $product.feedback }}
+          <a class="osx-progress__feedback" href="{{ . }}" target="_blank" rel="noopener">
+            <span>$ {{ if $isZh }}你的建议会直接进入这块路线图{{ else }}your idea can land on this roadmap{{ end }}</span>
+            <b>{{ if $isZh }}去 Issue 评论{{ else }}Comment on the issue{{ end }} ↗</b>
+          </a>
+          {{- end }}
         </div>
         <div class="osx-related">
-          <span class="osx-related__label osx-reveal" style="--r:6">{{ if $isZh }}相关阅读{{ else }}Related reading{{ end }} · {{ len $related }}</span>
+          <span class="osx-related__label osx-reveal" style="--r:7">{{ if $isZh }}相关阅读{{ else }}Related reading{{ end }} · {{ len $related }}</span>
           {{- if $related }}
           {{- range $ri, $rp := $related }}
-          <a class="osx-related__item osx-reveal" style="--r:{{ add 7 $ri }}" href="{{ $rp.RelPermalink }}">
+          <a class="osx-related__item osx-reveal" style="--r:{{ add 8 $ri }}" href="{{ $rp.RelPermalink }}" target="_blank" rel="noopener">
             <time datetime="{{ $rp.Date.Format "2006-01-02" }}">{{ $rp.Date.Format "2006.01" }}</time>
             <span>{{ $rp.Title }}</span>
             <b aria-hidden="true">→</b>
           </a>
           {{- end }}
           {{- else }}
-          <span class="osx-related__empty osx-reveal" style="--r:7">$ {{ if $isZh }}构建笔记写作中{{ else }}build notes in progress{{ end }}<b class="osx-caret">_</b></span>
+          <span class="osx-related__empty osx-reveal" style="--r:8">$ {{ if $isZh }}构建笔记写作中{{ else }}build notes in progress{{ end }}<b class="osx-caret">_</b></span>
           {{- end }}
         </div>
       </div>
@@ -218,7 +251,16 @@
   root.addEventListener('click', function (e) {
     var opener = e.target.closest('[data-osx-open]');
     if (opener) { open(opener.getAttribute('data-osx-open')); return; }
-    if (e.target.closest('[data-osx-close]')) close();
+    if (e.target.closest('[data-osx-close]')) { close(); return; }
+    /* click on the backdrop (outside window/dock/menubar) smoothly returns to desktop */
+    if (current !== null && !e.target.closest('.osx-window') && !e.target.closest('.osx-dock') && !e.target.closest('.osx-menubar')) close();
+  });
+
+  /* language switch keeps the open window via hash */
+  root.querySelectorAll('[data-osx-lang]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      a.href = a.href.split('#')[0] + (current ? '#' + current : '');
+    });
   });
 
   document.addEventListener('keydown', function (e) {
@@ -235,9 +277,14 @@
     }
   });
 
-  /* deep link */
-  var hash = location.hash.replace('#', '');
-  if (hash && ids.indexOf(hash) !== -1) open(hash);
+  /* deep link — on load and on same-document hash navigation */
+  function applyHash() {
+    var hash = location.hash.replace('#', '');
+    if (hash && ids.indexOf(hash) !== -1) open(hash);
+    else if (!hash && current !== null) close();
+  }
+  window.addEventListener('hashchange', applyHash);
+  applyHash();
 })();
 </script>
 {{- end }}

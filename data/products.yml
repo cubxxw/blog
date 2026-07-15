@@ -17,6 +17,14 @@ products:
     related:
       - /growth/posts/metacognitive-transformation-review
       - /growth/posts/2026-07-14-what-remains-when-taken-apart
+    tags: [personal-growth, self-discovery, gtd]
+    feedback: https://github.com/cubxxw/blog/issues/235
+    progress: 82
+    todo:
+      - { zh: iOS 上架与地图核心体验, en: iOS launch & map-first core, done: true }
+      - { zh: Solo Score 场所评分体系, en: Solo Score rating system, done: true }
+      - { zh: 多语言与离线地图, en: i18n & offline maps, done: false }
+      - { zh: Android 版本, en: Android version, done: false }
 
   - id: daypage
     name: DayPage
@@ -36,6 +44,14 @@ products:
     related:
       - /growth/posts/2026-06-thought-notes
       - /growth/posts/2025-05-thought-notes
+    tags: [mindfulness, personal-reflection, personal-productivity]
+    feedback: https://github.com/cubxxw/blog/issues/236
+    progress: 76
+    todo:
+      - { zh: iOS 私测与 2am AI 日记编译, en: iOS beta & 2am AI compile, done: true }
+      - { zh: 手表与桌面小组件, en: Watch & desktop widgets, done: true }
+      - { zh: 知识 wiki 图谱视图, en: Knowledge wiki graph view, done: false }
+      - { zh: 导出与端到端备份, en: Export & E2E backup, done: false }
 
   - id: telepace
     name: Telepace
@@ -55,6 +71,14 @@ products:
     related:
       - /ai-agent/posts/relay-agent-architecture-design
       - /growth/posts/super-individual-ai-product-and-solo-builder-stack
+    tags: [product-development, agent, ai]
+    feedback: https://github.com/cubxxw/blog/issues/237
+    progress: 64
+    todo:
+      - { zh: 语音访谈引擎与招募闭环, en: Voice interview engine & recruiting loop, done: true }
+      - { zh: MCP 接入与 60 秒体验访谈, en: MCP integration & 60-sec live demo, done: true }
+      - { zh: 洞察报告 2.0, en: Insight reports 2.0, done: false }
+      - { zh: 团队协作与工作区, en: Team workspaces, done: false }
 
   - id: apply-agent
     name: Apply Agent
@@ -74,3 +98,11 @@ products:
     related:
       - /growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips
       - /ai-agent/posts/independent-developer
+    tags: [career, indie-hacker, agent]
+    feedback: https://github.com/cubxxw/blog/issues/238
+    progress: 38
+    todo:
+      - { zh: 简历解析与个人档案, en: Résumé parsing & profile, done: true }
+      - { zh: 岗位匹配 Agent, en: Role-matching agent, done: false }
+      - { zh: ATS 自动填表（Greenhouse/Lever…）, en: ATS autofill (Greenhouse/Lever…), done: false }
+      - { zh: 公开测试, en: Public beta, done: false }
