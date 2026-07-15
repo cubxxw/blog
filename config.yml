@@ -270,51 +270,50 @@ languages:
     languageName: English
     weight: 1
     menu:
+      # Nav v4 (2026-07): 9 items collapsed to 3 — Posts ▾ (dropdown) /
+      # Products / About. Columns, Travel and the flat section links moved
+      # into the dropdown or the merged About page; /start-here/ 301s to
+      # /about/ (see static/_redirects).
       main:
-        - identifier: start-here
-          name: Start Here
-          url: /start-here/
-          pageRef: /start-here
-          weight: 5
-        - identifier: about
-          name: About
-          url: /about/
-          pageRef: /about
-          weight: 10
-        - identifier: projects
-          name: Products
-          url: /projects/
-          pageRef: /projects
-          weight: 15
-        - identifier: ai-agent
-          name: AI Agent
-          url: /ai-agent/
-          pageRef: /ai-agent
-          weight: 16
-        - identifier: engineering
-          name: Engineering
-          url: /engineering/
-          pageRef: /engineering
-          weight: 17
-        - identifier: growth
-          name: Growth
-          url: /growth/
-          pageRef: /growth
-          weight: 18
         - identifier: posts
           name: Posts
           url: /articles/
           pageRef: /articles
-          weight: 19
-        - identifier: columns
-          name: Columns
-          url: /columns/
+          weight: 10
+        - identifier: ai-agent
+          parent: posts
+          name: AI Agent
+          url: /ai-agent/
+          pageRef: /ai-agent
+          weight: 1
+        - identifier: engineering
+          parent: posts
+          name: Engineering
+          url: /engineering/
+          pageRef: /engineering
+          weight: 2
+        - identifier: growth
+          parent: posts
+          name: Growth
+          url: /growth/
+          pageRef: /growth
+          weight: 3
+        - identifier: all-posts
+          parent: posts
+          name: All Posts
+          url: /articles/
+          pageRef: /articles
+          weight: 4
+        - identifier: projects
+          name: Products
+          url: /projects/
+          pageRef: /projects
           weight: 20
-        - identifier: travel
-          name: Travel
-          url: /travel/
-          pageRef: /travel
-          weight: 21
+        - identifier: about
+          name: About
+          url: /about/
+          pageRef: /about
+          weight: 30
     params:
       description: "Tech blog by Xinwei Xiong — AI Builder, open source contributor and digital nomad sharing Kubernetes, Go, AI projects and travel."
       profileMode:
@@ -355,51 +354,49 @@ languages:
     contentDir: "content/zh"
     weight: 2
     menu:
+      # Nav v4（2026-07）：9 项收敛为 3 项——文章 ▾（下拉）/ 产品 / 关于。
+      # 专栏、旅行与平铺的 section 链接收进下拉或合并后的 About 页；
+      # /zh/start-here/ 301 到 /zh/about/（见 static/_redirects）。
       main:
-        - identifier: start-here
-          name: 🚀 精选入口
-          url: /zh/start-here/
-          pageRef: /zh/start-here
-          weight: 5
-        - identifier: about
-          name: 关于
-          url: /zh/about/
-          pageRef: /zh/about
-          weight: 10
-        - identifier: projects
-          name: 产品
-          url: /zh/projects/
-          pageRef: /zh/projects
-          weight: 15
-        - identifier: ai-agent
-          name: AI Agent
-          url: /zh/ai-agent/
-          pageRef: /zh/ai-agent
-          weight: 16
-        - identifier: engineering
-          name: 工程
-          url: /zh/engineering/
-          pageRef: /zh/engineering
-          weight: 17
-        - identifier: growth
-          name: 成长
-          url: /zh/growth/
-          pageRef: /zh/growth
-          weight: 18
         - identifier: posts
           name: 文章
           url: /zh/articles/
-          pageRef: /zh/articles
-          weight: 19
-        - identifier: columns
-          name: 专栏
-          url: /zh/columns/
+          pageRef: /articles
+          weight: 10
+        - identifier: ai-agent
+          parent: posts
+          name: AI Agent
+          url: /zh/ai-agent/
+          pageRef: /ai-agent
+          weight: 1
+        - identifier: engineering
+          parent: posts
+          name: 工程
+          url: /zh/engineering/
+          pageRef: /engineering
+          weight: 2
+        - identifier: growth
+          parent: posts
+          name: 成长
+          url: /zh/growth/
+          pageRef: /growth
+          weight: 3
+        - identifier: all-posts
+          parent: posts
+          name: 全部文章
+          url: /zh/articles/
+          pageRef: /articles
+          weight: 4
+        - identifier: projects
+          name: 产品
+          url: /zh/projects/
+          pageRef: /projects
           weight: 20
-        - identifier: travel
-          name: 旅行
-          url: /zh/travel/
-          pageRef: /zh/travel
-          weight: 21
+        - identifier: about
+          name: 关于
+          url: /zh/about/
+          pageRef: /about
+          weight: 30
     params:
       profileMode:
         # 启用或禁用

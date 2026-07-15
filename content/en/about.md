@@ -1,9 +1,9 @@
 ---
-title: "About Me"
+title: "About Me & This Blog"
 menuTitle: "About"
 layout: "about"
-description: "Xinwei Xiong - An explorer building bridges between technology and humanity"
-summary: "An explorer building bridges between technology and humanity"
+description: "Xinwei Xiong - An explorer building bridges between technology and humanity. This page is also the site's reading atlas: four curated paths across AI & technology, growth & thinking, travel & observation, and projects & practice."
+summary: "Meet the person, then learn how to read the blog — the About page and reading atlas, merged."
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -20,12 +20,13 @@ showtoc: false
 tocopen: false
 type: page
 author: ["Xinwei Xiong"]
-keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me"]
+keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me", "Reading Atlas", "Start Here"]
 tldr:
   - "Xinwei Xiong (cubxxw), born in China in 2001, is an AI entrepreneur, open source contributor, and digital nomad whose three defining traits are authentic, curious, and connector."
   - "He built open source projects such as awesome-cs-cloudnative-blockchain (1.4k stars), contributes deeply to OpenIM, WiseEngage and Sealos, and is building AI products at Telepace, believing in the AI + Human = Superhuman model of collaboration."
   - "Since 2024 he stepped out of his comfort zone, traveling 9 countries and 35+ cities over 12 months and completing 400+ km of hiking, including Tilicho Lake at 5,416 m."
   - "His writing spans four threads — AI & Technology, Growth & Cognition, Travel & Observation, Projects & Practice — grounded in first-hand data and a cross-cultural perspective."
+  - "This page doubles as the site's reading atlas: one recommended first read (the 2025 Annual Review), four curated reading paths, and an interactive 3D knowledge galaxy."
 ---
 
 <section class="about-hero">
@@ -143,6 +144,22 @@ tldr:
   </ul>
 </section>
 
+<section class="about-section about-section--atlas" id="start-here">
+  <h2 class="about-section-title"><span class="about-section-icon">🗺️</span>Reading Atlas: Start Here</h2>
+</section>
+
+<div class="post-content about-atlas">
+
+{{< start-here section="main" >}}
+
+{{< start-here section="explore" >}}
+
+{{< knowledge-galaxy >}}
+
+{{< start-here section="colophon" >}}
+
+</div>
+
 <section class="about-section">
   <h2 class="about-section-title"><span class="about-section-icon">📬</span>Get in Touch</h2>
 
@@ -242,28 +259,6 @@ tldr:
       <span class="about-link-icon">☕</span>
       <span class="about-link-label">Buy Me a Coffee</span>
       <span class="about-link-sub">Support my work</span>
-    </a>
-  </div>
-</section>
-
-<section class="about-section">
-  <h2 class="about-section-title"><span class="about-section-icon">🚀</span>Start Here</h2>
-  <div class="about-start-grid">
-    <a class="about-start-item" href="/ai-agent/posts/">
-      <span class="about-start-num">01</span>
-      <span class="about-start-label">AI & Technology</span>
-    </a>
-    <a class="about-start-item" href="/growth/">
-      <span class="about-start-num">02</span>
-      <span class="about-start-label">Growth & Cognition</span>
-    </a>
-    <a class="about-start-item" href="/travel/">
-      <span class="about-start-num">03</span>
-      <span class="about-start-label">Travel Records</span>
-    </a>
-    <a class="about-start-item" href="/projects/">
-      <span class="about-start-num">04</span>
-      <span class="about-start-label">Open Source</span>
     </a>
   </div>
 </section>

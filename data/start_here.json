@@ -9,7 +9,7 @@
   "zh": {
     "kicker": "阅读地图",
     "heading": "从这里开始",
-    "intro": "这里是熊鑫伟（cubxxw）的个人博客。写作围绕四条主线：AI 与技术、成长与思考、旅行与观察、项目与实践。不知道从哪读起？下面是为第一次来的你画的地图。",
+    "intro": "认识了我这个人，接下来认识我的写作。这个博客围绕四条主线：AI 与技术、成长与思考、旅行与观察、项目与实践。不知道从哪读起？下面是为第一次来的你画的地图。",
     "first_read": {
       "label": "只想先读一篇？",
       "page": "/growth/posts/2025-annual-review",
@@ -207,7 +207,7 @@
   "en": {
     "kicker": "Reading Atlas",
     "heading": "Start Here",
-    "intro": "This is the personal blog of Xinwei Xiong (cubxxw). Everything here follows four threads: AI & technology, growth & thinking, travel & observation, and projects & practice. Not sure where to begin? Here is the map I drew for first-time visitors.",
+    "intro": "Now that you know the person, meet the writing. Everything on this blog follows four threads: AI & technology, growth & thinking, travel & observation, and projects & practice. Not sure where to begin? Here is the map drawn for your first visit.",
     "first_read": {
       "label": "Just want one post?",
       "page": "/growth/posts/2025-annual-review",

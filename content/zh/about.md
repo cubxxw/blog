@@ -1,9 +1,9 @@
 ---
-title: "关于我"
-menuTitle: "关于我"
+title: "关于我与这个博客"
+menuTitle: "关于"
 layout: "about"
-description: "熊鑫伟 (Xinwei Xiong) - 一个在技术与人性之间寻找桥梁的探索者"
-summary: "一个在技术与人性之间寻找桥梁的探索者"
+description: "熊鑫伟 (Xinwei Xiong) - 一个在技术与人性之间寻找桥梁的探索者。本页也是全站的阅读地图：AI 与技术、成长与思考、旅行与观察、项目与实践四条路径，为第一次访问的你精选起点。"
+summary: "认识我这个人，也认识这个博客怎么读 —— 关于页与阅读地图的合体。"
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -20,12 +20,13 @@ showtoc: false
 tocopen: false
 type: page
 author: ["Xinwei Xiong"]
-keywords: ["About", "Self", "Identity", "个人介绍", "关于我"]
+keywords: ["About", "Self", "Identity", "个人介绍", "关于我", "阅读地图", "Start Here", "精选入口"]
 tldr:
   - "熊鑫伟（cubxxw），2001 年出生于中国，是一名 AI 创业者、开源贡献者和数字游民，核心标签是真实、好奇、连接者。"
   - "他构建了 awesome-cs-cloudnative-blockchain（1.4k star）等开源项目，深度参与 OpenIM、WiseEngage、Sealos，并在 Telepace 打磨 AI 产品，信奉 AI + Human = Superhuman 的人机协作理念。"
   - "2024 年起走出舒适区，12 个月游历 9 个国家、35+ 城市，完成 400+ 公里徒步，包括海拔 5416 米的 Tilicho 湖。"
   - "写作围绕 AI 与技术、成长与认知、旅行与观察、项目与实践四条主线，坚持一手数据优先与跨文化观察视角。"
+  - "本页同时是全站阅读地图：只想先读一篇推荐《2025 年度复盘》，四条阅读路径各配精选文章，并附可交互的 3D 知识星系。"
 ---
 
 <section class="about-hero">
@@ -143,6 +144,22 @@ tldr:
   </ul>
 </section>
 
+<section class="about-section about-section--atlas" id="start-here">
+  <h2 class="about-section-title"><span class="about-section-icon">🗺️</span>阅读地图：从这里开始读</h2>
+</section>
+
+<div class="post-content about-atlas">
+
+{{< start-here section="main" >}}
+
+{{< start-here section="explore" >}}
+
+{{< knowledge-galaxy >}}
+
+{{< start-here section="colophon" >}}
+
+</div>
+
 <section class="about-section">
   <h2 class="about-section-title"><span class="about-section-icon">📬</span>如何联系我</h2>
 
@@ -242,28 +259,6 @@ tldr:
       <span class="about-link-icon">☕</span>
       <span class="about-link-label">Buy Me a Coffee</span>
       <span class="about-link-sub">支持持续创作与思考</span>
-    </a>
-  </div>
-</section>
-
-<section class="about-section">
-  <h2 class="about-section-title"><span class="about-section-icon">🚀</span>从这里开始</h2>
-  <div class="about-start-grid">
-    <a class="about-start-item" href="/zh/ai-agent/posts/">
-      <span class="about-start-num">01</span>
-      <span class="about-start-label">AI 技术文章</span>
-    </a>
-    <a class="about-start-item" href="/zh/growth/">
-      <span class="about-start-num">02</span>
-      <span class="about-start-label">成长认知</span>
-    </a>
-    <a class="about-start-item" href="/zh/travel/">
-      <span class="about-start-num">03</span>
-      <span class="about-start-label">旅行记录</span>
-    </a>
-    <a class="about-start-item" href="/zh/projects/">
-      <span class="about-start-num">04</span>
-      <span class="about-start-label">开源项目</span>
     </a>
   </div>
 </section>

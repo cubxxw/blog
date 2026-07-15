@@ -440,10 +440,11 @@
       <div class="hp-footer-col">
         <h4>{{ if $isZh }}导航{{ else }}Navigate{{ end }}</h4>
         <ul>
-          <li><a href="{{ "/start-here/" | relLangURL }}">Start Here</a></li>
-          <li><a href="{{ "/about/" | relLangURL }}">About</a></li>
-          <li><a href="{{ "/articles/" | relLangURL }}">All Posts</a></li>
-          <li><a href="{{ "/archives/" | relLangURL }}">Archives</a></li>
+          <li><a href="{{ "/about/" | relLangURL }}">{{ if $isZh }}关于 · 阅读地图{{ else }}About · Start Here{{ end }}</a></li>
+          <li><a href="{{ "/articles/" | relLangURL }}">{{ if $isZh }}全部文章{{ else }}All Posts{{ end }}</a></li>
+          <li><a href="{{ "/columns/" | relLangURL }}">{{ if $isZh }}专栏{{ else }}Columns{{ end }}</a></li>
+          <li><a href="{{ "/travel/" | relLangURL }}">{{ if $isZh }}旅行{{ else }}Travel{{ end }}</a></li>
+          <li><a href="{{ "/archives/" | relLangURL }}">{{ if $isZh }}归档{{ else }}Archives{{ end }}</a></li>
         </ul>
       </div>
       <div class="hp-footer-col">

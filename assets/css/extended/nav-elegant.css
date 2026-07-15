@@ -57,11 +57,18 @@ html:lang(zh) body.dark .header-wrapper {
     border-bottom-color: rgba(226, 227, 225, 0.06);
 }
 
-/* Main Navigation Container — tighter Notion rhythm */
+/* Main Navigation Container — tighter Notion rhythm.
+   One composed line, not three islands: cap the bar to the content shell
+   (profile_shell is 1280px) instead of letting --nav-width climb to 1760px
+   on wide monitors, and left-cluster the brand with the menu so only two
+   anchor points remain — identity + wayfinding on the left, utilities on
+   the right. */
 .nav {
     gap: 8px;
     padding: 0 4px;
     line-height: 44px;
+    max-width: calc(1280px + var(--gap) * 2);
+    justify-content: flex-start;
 }
 
 /* Override PaperMod default that pushes logo/menu apart by 24px */
@@ -84,18 +91,56 @@ html:lang(zh) body.dark .header-wrapper {
     color: var(--color-ink, var(--primary));
 }
 
-/* Menu List — centered, tight gap */
+/* Menu List — joined to the brand, tight gap */
 #menu {
     display: flex;
     align-items: center;
-    gap: 0;
-    margin: auto auto;
+    gap: 2px;
+    margin: auto 0;
     flex: 0 1 auto;
-    justify-content: center;
+    /* PaperMod puts overflow-x on #menu; visible is required or the
+       dropdown card gets clipped by the scroll container it creates. */
+    overflow: visible;
+}
+
+/* Hairline divider joining brand and menu — a deliberate seam instead of
+   empty distance (the Vercel-slash idea, quieter). */
+#menu::before {
+    content: "";
+    width: 1px;
+    height: 15px;
+    margin: 0 12px 0 6px;
+    background: rgba(30, 35, 30, 0.16);
+    align-self: center;
+    flex-shrink: 0;
+}
+
+body.dark #menu::before {
+    background: rgba(226, 227, 225, 0.18);
+}
+
+/* Utilities dock right once the menu stops floating in the middle. */
+.logo-switches {
+    margin-left: auto;
 }
 
 #menu li {
     margin-inline-start: 0;
+}
+
+/* PaperMod spaces menu items with `#menu li + li { margin-inline-start:
+   var(--gap) }` — an ID selector that outranks every class rule here and
+   was blowing 24px gaps into BOTH nav levels (top row and the dropdown's
+   rows, which is why the panel items rendered raggedly indented). Same
+   selector, later source: neutralize it and let gap/padding set the rhythm. */
+#menu li + li {
+    margin-inline-start: 0;
+}
+
+/* PaperMod's `#menu .active` underline would leak a 2px border into the
+   pill look and the dropdown rows. */
+#menu .active {
+    border-bottom: none;
 }
 
 /* Navigation Links - flat text, no pill */
@@ -151,6 +196,148 @@ body.dark #menu > li > a:has(.active) {
 
 #menu > li > a:hover svg {
     opacity: 0.85;
+}
+
+/* ===================================
+   Dropdown submenu — Posts ▾
+   Same Notion-minimal card language as the
+   mobile hamburger panel; opens on hover and
+   :focus-within so keyboard users get it too.
+   =================================== */
+#menu li.nav-item--has-sub {
+    position: relative;
+}
+
+.nav-sub-chevron {
+    margin-top: 1px;
+    transition: transform 0.18s ease;
+}
+
+#menu li.nav-item--has-sub:hover .nav-sub-chevron,
+#menu li.nav-item--has-sub:focus-within .nav-sub-chevron {
+    transform: rotate(180deg);
+}
+
+.nav-sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 8px 0 0;
+    padding: 5px;
+    min-width: 208px;
+    list-style: none;
+    background: var(--color-paper, var(--theme));
+    border: 1px solid rgba(30, 35, 30, 0.08);
+    border-radius: 12px;
+    /* Layered shadow: a tight contact line plus a soft ambient falloff
+       reads as one raised card, not a grey smudge. */
+    box-shadow:
+        0 1px 2px rgba(30, 35, 30, 0.05),
+        0 12px 32px rgba(30, 35, 30, 0.10);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top left;
+    transform: translateY(-6px) scale(0.97);
+    transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.2, 0, 0, 1), visibility 0.16s ease;
+    z-index: 1000;
+}
+
+/* Invisible hover bridge across the 8px gap between trigger and panel,
+   so the pointer never "falls out" of the li while travelling down. */
+.nav-sub::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+}
+
+#menu li.nav-item--has-sub:hover > .nav-sub,
+#menu li.nav-item--has-sub:focus-within > .nav-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.nav-sub li {
+    margin: 0;
+    width: 100%;
+}
+
+/* Row: name left, live post count right. The #menu prefix is not optional —
+   PaperMod's `#menu a { font-size: 16px }` (ID specificity) is what blew the
+   panel typography up before; these must outrank it. */
+#menu .nav-sub a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 7px 11px;
+    border-radius: 8px;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    color: var(--color-ink-muted, var(--secondary));
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+#menu .nav-sub a:hover {
+    background: rgba(30, 35, 30, 0.05);
+    color: var(--color-ink, var(--primary));
+}
+
+#menu .nav-sub a .active {
+    color: var(--color-ink, var(--primary));
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.nav-sub__count {
+    font-size: 11px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink-muted, var(--secondary));
+    opacity: 0.55;
+    transition: opacity 0.15s ease;
+}
+
+#menu .nav-sub a:hover .nav-sub__count {
+    opacity: 0.9;
+}
+
+/* "All Posts" style row: hairline above the last item */
+.nav-sub li:last-child {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(30, 35, 30, 0.07);
+}
+
+body.dark .nav-sub {
+    border-color: rgba(226, 227, 225, 0.08);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.25),
+        0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Must outrank the light-mode `#menu .nav-sub a:hover` (1,1,2). */
+body.dark #menu .nav-sub a:hover {
+    background: rgba(226, 227, 225, 0.06);
+}
+
+body.dark .nav-sub li:last-child {
+    border-top-color: rgba(226, 227, 225, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-sub,
+    .nav-sub-chevron {
+        transition: none;
+    }
 }
 
 /* Search Button - minimal chip */
@@ -470,6 +657,46 @@ body.dark .lang-switch__item--active > span {
         gap: 8px;
         justify-content: flex-start;
         border-radius: 4px;
+    }
+
+    /* The brand/menu divider is a desktop idea; in the hamburger column it
+       would render as a stray tick. */
+    #menu::before {
+        display: none;
+    }
+
+    /* Submenu inside the hamburger panel: no floating card — the
+       children render inline, indented under their parent. */
+    .nav-sub {
+        position: static;
+        margin: 0 0 2px;
+        padding: 0 0 0 14px;
+        min-width: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .nav-sub::before {
+        display: none;
+    }
+
+    #menu .nav-sub a {
+        padding: 7px 10px;
+        font-size: 13.5px;
+        border-radius: 4px;
+    }
+
+    .nav-sub li:last-child {
+        margin-top: 2px;
+        padding-top: 2px;
+    }
+
+    .nav-sub-chevron {
+        display: none;
     }
 }
 
