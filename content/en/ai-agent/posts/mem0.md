@@ -30,6 +30,9 @@ faq:
     a: "Mem0 suits conversational AI that benefits from cross-session personalization: customer support chatbots, personal AI companions, personalized AI tutors, e-commerce recommendations, and enterprise knowledge management. It ships integration examples for popular frameworks including LangGraph, CrewAI, LlamaIndex, Vercel AI SDK, and AG2."
   - q: "What are Mem0's limitations?"
     a: "Key drawbacks include missing or inaccessible technical documentation, little configuration guidance beyond the default OpenAI, Qdrant, and Neo4j stack, heavy reliance on LLMs for extraction and conflict resolution which adds cost and uncertainty, complex self-hosted deployment due to the dual-database design, and advanced features like custom categories and memory export that appear exclusive to the managed platform."
+cover:
+  image: /images/covers/ai-agent/2025/mem0.jpeg
+  alt: "Mem0 Explained: AI Memory Layer Architecture & How It Works"
 ---
 
 > This project is an ongoing journey: learning AI open source projects through hands-on practice, building real systems with AI tools, and documenting the process.

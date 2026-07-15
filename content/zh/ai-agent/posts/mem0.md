@@ -33,6 +33,9 @@ faq:
     a: "适合需要跨会话个性化的对话式 AI，如客户支持聊天机器人、个人 AI 伴侣、个性化 AI 导师、电商推荐和企业知识管理。官方提供了 LangGraph、CrewAI、LlamaIndex、Vercel AI SDK、AG2 等主流框架的集成示例，便于融入现有工作流。"
   - q: "Mem0 有哪些局限性？"
     a: "主要局限包括关键技术文档缺失、超出默认组件（OpenAI、Qdrant、Neo4j）的配置缺乏说明、信息提取与冲突解决依赖 LLM 带来成本和不确定性、双数据库架构使自托管部署复杂，且自定义类别、记忆导出等高级功能似乎仅托管平台提供。"
+cover:
+  image: /images/covers/ai-agent/2025/mem0.jpeg
+  alt: "Mem0 是什么？AI 记忆层原理、架构与实践评估"
 ---
 
 

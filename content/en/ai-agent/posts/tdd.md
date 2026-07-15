@@ -19,6 +19,9 @@ tldr:
   - "Applying Test-Driven Development principles to AI and LLM application development practices"
   - "Learning AI open-source projects requires hands-on practice and documentation of the learning journey"
   - "TDD for AI involves understanding open-source contribution processes and community design norms"
+cover:
+  image: /images/covers/ai-agent/2025/tdd.jpeg
+  alt: "TDD for AI: Test-Driven Development Guide"
 ---
 
 > This project is an ongoing journey — learning AI open-source projects one step at a time, building real skills through hands-on practice, and using AI tools to sharpen the ability to tackle complex problems. Everything gets documented along the way.
