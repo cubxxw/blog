@@ -85,7 +85,7 @@ params:
     # safari_pinned_tab: <link / abs url>
     customCSS: ["css/custom.css", "css/nav-elegant.css"]
   label:
-    text: Home
+    text: cubxxw
     icon: ./assets/cubxxw-image.jpg
     iconHeight: 35
   homeInfoParams:

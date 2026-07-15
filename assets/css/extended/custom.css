@@ -3601,10 +3601,11 @@ html {
     display: none !important;
 }
 
-/* Fix 2: Hide the | separator in lang-switch */
-.lang-switch li:first-child:not(:has(a)) {
-    display: none !important;
-}
+/* (Removed) Fix 2 hid `.lang-switch li:first-child:not(:has(a))` to kill a
+   legacy "|" separator <li>. In the current markup the ACTIVE language is
+   rendered as a link-less <li><span>, so on EN pages (where EN sorts first)
+   the rule was hiding the current language itself. The divider is now a
+   ::before on the second item — no separator element exists to hide. */
 
 /* Fix 3: RSS button - subtle style (remove orange border) */
 #menu a[title="RSS"],
