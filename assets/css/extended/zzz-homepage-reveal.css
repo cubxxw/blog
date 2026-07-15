@@ -49,7 +49,6 @@
 html.motion-reveal .hp-section-head:not(.is-revealed),
 html.motion-reveal .hp-post-card:not(.is-revealed),
 html.motion-reveal .hp-posts-list-row:not(.is-revealed),
-html.motion-reveal .hp-cat-tile:not(.is-revealed),
 html.motion-reveal .hp-book:not(.is-revealed),
 html.motion-reveal .hp-project-featured:not(.is-revealed),
 html.motion-reveal .hp-repo:not(.is-revealed) {
@@ -63,7 +62,6 @@ html.motion-reveal .hp-repo:not(.is-revealed) {
 html.motion-reveal .hp-section-head.is-revealed,
 html.motion-reveal .hp-post-card.is-revealed,
 html.motion-reveal .hp-posts-list-row.is-revealed,
-html.motion-reveal .hp-cat-tile.is-revealed,
 html.motion-reveal .hp-book.is-revealed,
 html.motion-reveal .hp-project-featured.is-revealed,
 html.motion-reveal .hp-repo.is-revealed {
@@ -78,7 +76,6 @@ html.motion-reveal .hp-repo.is-revealed {
   html.motion-reveal .hp-section-head,
   html.motion-reveal .hp-post-card,
   html.motion-reveal .hp-posts-list-row,
-  html.motion-reveal .hp-cat-tile,
   html.motion-reveal .hp-book,
   html.motion-reveal .hp-project-featured,
   html.motion-reveal .hp-repo {

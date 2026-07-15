@@ -1,0 +1,60 @@
+{{- /* Channel panel body — featured card + 2 recent cards + up-to-4 row list.
+     Rendered once per channel by homepage-daypage.html (Channel Rail).
+     dict args:
+       pages   — page slice, newest first
+       isZh    — bool
+       showCat — bool: show the section chip on cards/rows (useful for the
+                 mixed "latest" and cross-section "travel" channels; redundant
+                 inside a single-section channel) */ -}}
+{{- $pages   := .pages -}}
+{{- $isZh    := .isZh -}}
+{{- $showCat := .showCat -}}
+{{- $featured := index $pages 0 }}
+{{- $recent   := after 1 $pages | first 2 }}
+{{- $archive  := after 3 $pages | first 4 }}
+
+{{- if not $featured }}
+<div class="hp-channel-empty">
+  <span class="hp-channel-empty-mark" aria-hidden="true">◦</span>
+  {{ if $isZh }}这个频道还没有信号 — 快了。{{ else }}No signals on this channel yet — soon.{{ end }}
+</div>
+{{- else }}
+<div class="hp-posts-grid">
+  {{- with $featured }}
+  <a class="hp-post-card hp-featured" href="{{ .RelPermalink }}">
+    <div class="hp-post-meta">
+      {{- if $showCat }}<span class="hp-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>{{ end }}
+      <span>{{ .Date.Format "Jan 02" | upper }}</span>
+      <span>·</span><span>{{ .ReadingTime }} min</span>
+    </div>
+    <h3 class="hp-post-title">{{ .Title }}</h3>
+    <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 160 }}</p>
+    <div class="hp-post-foot"><span>READ ESSAY</span><span class="hp-post-arrow">↗</span></div>
+  </a>
+  {{- end }}
+  {{- range $recent }}
+  <a class="hp-post-card" href="{{ .RelPermalink }}">
+    <div class="hp-post-meta">
+      {{- if $showCat }}<span class="hp-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>{{ end }}
+      <span>{{ .Date.Format "Jan 02" | upper }}</span>
+    </div>
+    <h3 class="hp-post-title">{{ .Title }}</h3>
+    <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 120 }}</p>
+    <div class="hp-post-foot"><span>{{ .ReadingTime }} min</span><span class="hp-post-arrow">↗</span></div>
+  </a>
+  {{- end }}
+</div>
+
+{{- with $archive }}
+<div class="hp-posts-list">
+  {{- range . }}
+  <a class="hp-posts-list-row" href="{{ .RelPermalink }}">
+    <span class="hp-posts-list-date">{{ .Date.Format "Jan 02" | upper }}</span>
+    {{- if $showCat }}<span class="hp-posts-list-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>{{ end }}
+    <span class="hp-posts-list-title">{{ .Title }}</span>
+    <span class="hp-posts-list-arrow">→</span>
+  </a>
+  {{- end }}
+</div>
+{{- end }}
+{{- end }}

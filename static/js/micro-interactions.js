@@ -41,7 +41,6 @@
     '.hp-section-head',
     '.hp-post-card',
     '.hp-posts-list-row',
-    '.hp-cat-tile',
     '.hp-book',
     '.hp-project-featured',
     '.hp-repo'

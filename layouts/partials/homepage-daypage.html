@@ -134,80 +134,77 @@
         <h2 class="hp-section-title">
           {{ if $isZh }}正在写的{{ else }}Writing{{ end }}<span class="hp-zh">{{ if $isZh }}{{ else }}文章{{ end }}</span>
         </h2>
-        <a class="hp-section-action" href="{{ "/articles/" | relLangURL }}">
-          {{ if $isZh }}所有文章{{ else }}All Posts{{ end }}
+        <a class="hp-section-action" id="hp-posts-action" href="{{ "/articles/" | relLangURL }}">
+          <span class="hp-section-action-text">{{ if $isZh }}所有文章{{ else }}All Posts{{ end }}</span>
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      {{- $pages    := (where (where site.RegularPages "Lang" $lang) "Section" "in" site.Params.mainSections).ByDate.Reverse }}
-      {{- $featured := index $pages 0 }}
-      {{- $recent   := after 1 $pages | first 2 }}
-      {{- $archive  := after 3 $pages | first 4 }}
-
-      <div class="hp-posts-grid">
-        {{- with $featured }}
-        <a class="hp-post-card hp-featured" href="{{ .RelPermalink }}">
-          <div class="hp-post-meta">
-            <span class="hp-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>
-            <span>{{ .Date.Format "Jan 02" | upper }}</span>
-            <span>·</span><span>{{ .ReadingTime }} min</span>
-          </div>
-          <h3 class="hp-post-title">{{ .Title }}</h3>
-          <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 160 }}</p>
-          <div class="hp-post-foot"><span>READ ESSAY</span><span class="hp-post-arrow">↗</span></div>
-        </a>
-        {{- end }}
-        {{- range $recent }}
-        <a class="hp-post-card" href="{{ .RelPermalink }}">
-          <div class="hp-post-meta">
-            <span class="hp-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>
-            <span>{{ .Date.Format "Jan 02" | upper }}</span>
-          </div>
-          <h3 class="hp-post-title">{{ .Title }}</h3>
-          <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 120 }}</p>
-          <div class="hp-post-foot"><span>{{ .ReadingTime }} min</span><span class="hp-post-arrow">↗</span></div>
-        </a>
-        {{- end }}
-      </div>
-
-      <div class="hp-posts-list">
-        {{- range $archive }}
-        <a class="hp-posts-list-row" href="{{ .RelPermalink }}">
-          <span class="hp-posts-list-date">{{ .Date.Format "Jan 02" | upper }}</span>
-          <span class="hp-posts-list-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>
-          <span class="hp-posts-list-title">{{ .Title }}</span>
-          <span class="hp-posts-list-arrow">→</span>
-        </a>
-        {{- end }}
-      </div>
-
-      <div class="hp-cat-row">
-        {{- range $d.sections }}
-        {{- $count := 0 }}
-        {{- $isProducts := eq .key "projects" }}
+      {{- /* ── Channel Rail — category selector on top; panels below swap.
+             Hover (fine pointers) / ‹ › arrows / ←→ keys tune the channel;
+             clicking the active tab enters that section page. ── */}}
+      {{- $langPages := where site.RegularPages "Lang" $lang }}
+      {{- $allPosts  := (where $langPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
+      {{- $travelPages := slice }}
+      {{- with site.Taxonomies.tags.travel }}{{ $travelPages = .Pages.ByDate.Reverse }}{{ end }}
+      {{- $channels := slice (dict
+            "key" "latest" "icon" "✦" "url" "/articles/"
+            "nameEn" "Latest" "nameZh" "最新"
+            "browseEn" "All Posts" "browseZh" "所有文章"
+            "count" (len $allPosts) "pages" $allPosts) }}
+      {{- range $d.sections }}
+        {{- if ne .key "projects" }}{{- /* Products live in section 03, not the rail */}}
+        {{- $pages := slice }}{{- $count := 0 }}
         {{- if eq .key "travel" }}
-          {{- $count = len site.Taxonomies.tags.travel }}
-        {{- else if $isProducts }}
-          {{- $count = len site.Data.products.products }}
+          {{- $pages = $travelPages }}{{- $count = len $travelPages }}
         {{- else }}
-          {{- $count = len (where site.RegularPages "Section" .key) }}
+          {{- $pages = (where $langPages "Section" .key).ByDate.Reverse }}{{- $count = len $pages }}
         {{- end }}
-        <a class="hp-cat-tile" href="{{ .url | relLangURL }}"{{ if $isProducts }} target="_blank" rel="noopener"{{ end }}>
-          <div class="hp-cat-tile-top">
-            <span class="hp-cat-tile-icon">{{ .icon }}</span>
-            <span class="hp-cat-tile-count"><strong>{{ $count }}</strong><span>{{ if $isProducts }}{{ if $isZh }}个产品{{ else }}products{{ end }}{{ else }}{{ if $isZh }}篇{{ else }}posts{{ end }}{{ end }}</span></span>
-          </div>
-          <div class="hp-cat-tile-name">
-            {{ if $isZh }}{{ .nameZh }}{{ else }}{{ .nameEn }}{{ end }}
-            <span class="hp-cat-tile-zh">{{ if $isZh }}{{ .nameEn }}{{ else }}{{ .nameZh }}{{ end }}</span>
-          </div>
-          <p class="hp-cat-tile-desc">{{ if $isZh }}{{ .descZh }}{{ else }}{{ .descEn }}{{ end }}</p>
-          <div class="hp-cat-tile-foot">
-            <span class="hp-cat-tile-cta">{{ if $isZh }}进入栏目{{ else }}Browse{{ end }}</span>
-            <span class="hp-cat-tile-arrow" aria-hidden="true">→</span>
-          </div>
-        </a>
+        {{- /* zh keeps the latin brand name for AI Agent (user preference) */}}
+        {{- $nameZh := cond (eq .key "ai-agent") "AI Agent" .nameZh }}
+        {{- $browseZh := cond (eq .key "ai-agent") "进入 AI Agent" (printf "进入%s" $nameZh) }}
+        {{- $channels = $channels | append (dict
+              "key" .key "icon" .icon "url" .url
+              "nameEn" .nameEn "nameZh" $nameZh
+              "browseEn" (printf "Browse %s" .nameEn) "browseZh" $browseZh
+              "count" $count "pages" $pages) }}
+        {{- end }}
+      {{- end }}
+
+      <div class="hp-rail" id="hp-rail" role="navigation" aria-label="{{ if $isZh }}文章频道{{ else }}Writing channels{{ end }}">
+        <div class="hp-rail-track" id="hp-rail-track">
+          <span class="hp-rail-indicator" id="hp-rail-indicator" aria-hidden="true"></span>
+          {{- range $i, $ch := $channels }}
+          <a class="hp-rail-tab{{ if eq $i 0 }} is-active{{ end }}"
+             href="{{ $ch.url | relLangURL }}"
+             data-channel="{{ $ch.key }}"
+             data-browse="{{ if $isZh }}{{ $ch.browseZh }}{{ else }}{{ $ch.browseEn }}{{ end }}"
+             {{- if eq $ch.key "projects" }} target="_blank" rel="noopener"{{ end }}
+             {{- if eq $i 0 }} aria-current="true"{{ end }}
+             title="{{ if $isZh }}{{ $ch.browseZh }}{{ else }}{{ $ch.browseEn }}{{ end }}">
+            <span class="hp-rail-tab-icon" aria-hidden="true">{{ $ch.icon }}</span>
+            <span class="hp-rail-tab-name">{{ if $isZh }}{{ $ch.nameZh }}{{ else }}{{ $ch.nameEn }}{{ end }}</span>
+            <span class="hp-rail-tab-count">{{ $ch.count }}</span>
+            <span class="hp-rail-tab-go" aria-hidden="true">↗</span>
+          </a>
+          {{- end }}
+        </div>
+        <div class="hp-rail-ctrl">
+          <span class="hp-rail-counter" aria-hidden="true"><strong id="hp-rail-counter">01</strong><span class="hp-rail-counter-sep">/</span>{{ printf "%02d" (len $channels) }}</span>
+          <button type="button" class="hp-rail-arrow" id="hp-rail-prev" aria-label="{{ if $isZh }}上一个频道{{ else }}Previous channel{{ end }}">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="hp-rail-arrow" id="hp-rail-next" aria-label="{{ if $isZh }}下一个频道{{ else }}Next channel{{ end }}">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="hp-channel-panels" id="hp-channel-panels">
+        {{- range $i, $ch := $channels }}
+        <div class="hp-channel-panel{{ if eq $i 0 }} is-active{{ end }}" data-channel="{{ $ch.key }}"{{ if ne $i 0 }} hidden{{ end }}>
+          {{ partial "homepage-posts-panel.html" (dict "pages" $ch.pages "isZh" $isZh "showCat" (or (eq $ch.key "latest") (eq $ch.key "travel"))) }}
+        </div>
         {{- end }}
       </div>
     </section>
@@ -1263,4 +1260,136 @@
       if (typeof window.__hpBearOrbReady === 'function') window.__hpBearOrbReady(handle);
     }
   }
+</script>
+
+<script>
+/* ── Channel Rail — hover / arrows / ←→ keys tune the channel; the sliding
+   pill indicator tracks the active tab; panels crossfade with a height FLIP.
+   Tabs are plain <a> links (no-JS = native navigation): clicking an INACTIVE
+   tab selects it instead (covers touch), clicking the ACTIVE tab falls
+   through to the link — "enter the column". */
+(function() {
+  var rail   = document.getElementById('hp-rail');
+  var track  = document.getElementById('hp-rail-track');
+  var ind    = document.getElementById('hp-rail-indicator');
+  var wrapEl = document.getElementById('hp-channel-panels');
+  if (!rail || !track || !ind || !wrapEl) return;
+
+  var tabs    = [].slice.call(track.querySelectorAll('.hp-rail-tab'));
+  var panels  = [].slice.call(wrapEl.querySelectorAll('.hp-channel-panel'));
+  var counter = document.getElementById('hp-rail-counter');
+  var action  = document.getElementById('hp-posts-action');
+  var prevBtn = document.getElementById('hp-rail-prev');
+  var nextBtn = document.getElementById('hp-rail-next');
+  if (tabs.length !== panels.length || tabs.length < 2) return;
+
+  var active = 0, hoverTimer = null, settleTimer = null, hoverArm = -1;
+  var fine    = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function placeIndicator() {
+    var t = tabs[active];
+    ind.style.width = t.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + t.offsetLeft + 'px)';
+  }
+
+  function centerTab(t) {
+    var target = t.offsetLeft - (track.clientWidth - t.offsetWidth) / 2;
+    if (typeof track.scrollTo === 'function') {
+      track.scrollTo({ left: target, behavior: reduced.matches ? 'auto' : 'smooth' });
+    } else { track.scrollLeft = target; }
+  }
+
+  function switchTo(i) {
+    i = (i + tabs.length) % tabs.length;
+    if (i === active) return;
+    var prev = active; active = i;
+    var t = tabs[i];
+
+    tabs.forEach(function(tab, k) {
+      tab.classList.toggle('is-active', k === i);
+      if (k === i) tab.setAttribute('aria-current', 'true');
+      else tab.removeAttribute('aria-current');
+    });
+    placeIndicator();
+    centerTab(t);
+    if (counter) counter.textContent = pad(i + 1);
+
+    // Contextual head action: "All Posts" → "Browse {channel}"
+    if (action) {
+      action.href = t.href;
+      var txt = action.querySelector('.hp-section-action-text');
+      if (txt) txt.textContent = t.dataset.browse || txt.textContent;
+      if (t.target === '_blank') { action.target = '_blank'; action.rel = 'noopener'; }
+      else { action.removeAttribute('target'); action.removeAttribute('rel'); }
+    }
+
+    // Swap panels with a height FLIP + staggered entrance.
+    var h0 = wrapEl.offsetHeight;
+    panels[prev].hidden = true;
+    panels[prev].classList.remove('is-active', 'is-entering');
+    var p = panels[i];
+    p.hidden = false;
+    p.classList.add('is-active');
+    // Scroll-reveal marks cards .is-revealed lazily; a panel hidden at load
+    // never intersected, so force-reveal its children or they stay invisible.
+    [].forEach.call(p.querySelectorAll('.hp-post-card, .hp-posts-list-row'), function(el) {
+      el.classList.add('is-revealed');
+    });
+    if (!reduced.matches) {
+      var h1 = wrapEl.offsetHeight;
+      wrapEl.style.height = h0 + 'px';
+      void wrapEl.offsetHeight;
+      wrapEl.classList.add('is-animating');
+      wrapEl.style.height = h1 + 'px';
+      p.classList.add('is-entering');
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(function() {
+        wrapEl.style.height = '';
+        wrapEl.classList.remove('is-animating');
+        p.classList.remove('is-entering');
+      }, 520);
+    }
+  }
+
+  tabs.forEach(function(t, i) {
+    t.addEventListener('click', function(e) {
+      if (i !== active) { e.preventDefault(); switchTo(i); }
+      // active tab: fall through → navigate into the column
+    });
+    // Hover-to-tune uses pointermove, NOT pointerenter: when a switch
+    // reflows/scrolls the track, a tab sliding under a RESTING cursor fires
+    // pointerenter (→ endless self-advancing loop) but never pointermove.
+    // Only genuine pointer motion over a tab arms the dwell timer.
+    t.addEventListener('pointermove', function(e) {
+      if (!fine.matches || e.pointerType === 'touch') return;
+      if (i === active) { hoverArm = -1; clearTimeout(hoverTimer); return; }
+      if (hoverArm === i) return;
+      hoverArm = i;
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function() { hoverArm = -1; switchTo(i); }, 140);
+    });
+    t.addEventListener('pointerleave', function() {
+      if (hoverArm === i) hoverArm = -1;
+      clearTimeout(hoverTimer);
+    });
+  });
+
+  if (prevBtn) prevBtn.addEventListener('click', function() { switchTo(active - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { switchTo(active + 1); });
+
+  rail.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); switchTo(active + 1); tabs[active].focus({ preventScroll: true }); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); switchTo(active - 1); tabs[active].focus({ preventScroll: true }); }
+  });
+
+  window.addEventListener('resize', placeIndicator, { passive: true });
+  // Web fonts change tab widths — re-seat the pill once they settle.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeIndicator);
+  placeIndicator();
+  // Enable the slide transition only after first placement (no fly-in flash).
+  requestAnimationFrame(function() { rail.classList.add('is-ready'); });
+})();
 </script>
