@@ -452,9 +452,236 @@
   }
 }
 
+/* ════════════════════════════════════════════════════════════════
+   Column outro — end-of-article continuation card
+   (partials/article/column-outro.html, rendered after the prose on
+   essays that belong to a column). Echoes the column pages: Oxford
+   rule, folio nodes, hairline spine.
+   ════════════════════════════════════════════════════════════════ */
+
+.column-outro {
+  margin: 3.2rem 0 1rem;
+}
+/* Thick-thin rule announcing the outro — a quieter cousin of the
+   masthead's .column-rule-double */
+.column-outro__rule {
+  height: 5px;
+  border-top: 2px solid var(--color-ink, #1a1c1b);
+  border-bottom: 1px solid var(--color-ink, #1a1c1b);
+  margin-bottom: 1.3rem;
+}
+
+.column-outro__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.15rem;
+}
+.column-outro__eyebrow {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent, #862122);
+  white-space: nowrap;
+}
+.column-outro__name {
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--color-ink, #1a1c1b);
+  text-decoration: none;
+  transition: color var(--dur-hover, 200ms) ease;
+}
+.column-outro__name:hover,
+.column-outro__name:focus-visible {
+  color: var(--color-accent, #862122);
+}
+.column-outro__progress {
+  margin-left: auto;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: var(--color-ink-muted, #5e5e63);
+  white-space: nowrap;
+}
+
+/* Next-essay call-to-action */
+.column-outro__next {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.05rem 1.2rem 1.1rem;
+  border: 1px solid color-mix(in oklab, var(--color-accent, #862122) 38%, transparent);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in oklab, var(--color-accent, #862122) 3%, transparent);
+  transition: border-color var(--dur-hover, 200ms) ease,
+              background-color var(--dur-hover, 200ms) ease;
+}
+.column-outro__next:hover,
+.column-outro__next:focus-visible {
+  border-color: var(--color-accent, #862122);
+  background: color-mix(in oklab, var(--color-accent, #862122) 7%, transparent);
+}
+.column-outro__next:focus-visible {
+  outline: 2px solid var(--color-accent, #862122);
+  outline-offset: 2px;
+}
+.column-outro__next-kicker {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent, #862122);
+}
+.column-outro__next-title {
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: var(--color-ink, #1a1c1b);
+  transition: color var(--dur-hover, 200ms) ease;
+}
+.column-outro__next:hover .column-outro__next-title,
+.column-outro__next:focus-visible .column-outro__next-title {
+  color: var(--color-accent, #862122);
+}
+.column-outro__next-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+.column-outro__next-sep {
+  opacity: 0.5;
+}
+.column-outro__next-arrow {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-accent, #862122);
+  transition: transform var(--dur-hover, 200ms) var(--ease-out, ease);
+}
+.column-outro__next:hover .column-outro__next-arrow,
+.column-outro__next:focus-visible .column-outro__next-arrow {
+  transform: translateX(4px);
+}
+
+/* Reading path — compact version of the column page spine */
+.column-outro__list {
+  list-style: none;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.column-outro__item {
+  position: relative;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1.9rem 1fr;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.45rem 0;
+}
+.column-outro__item::before {
+  content: "";
+  position: absolute;
+  left: 0.95rem; /* centre of the 1.9rem node column */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+.column-outro__item:first-child::before {
+  top: 1.4rem; /* start at the first node's centre */
+}
+.column-outro__item:last-child::before {
+  bottom: auto;
+  height: 1.4rem; /* stop at the last node's centre */
+}
+.column-outro__item:only-child::before {
+  display: none;
+}
+.column-outro__node {
+  position: relative;
+  z-index: 1;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--color-accent, #862122) 40%, transparent);
+  background: var(--color-paper, #f9f9f7);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-indent: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent, #862122);
+}
+.column-outro__item--current .column-outro__node {
+  background: var(--color-accent, #862122);
+  border-color: var(--color-accent, #862122);
+  color: var(--color-paper, #f9f9f7);
+}
+.column-outro__title {
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-weight: 500;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--color-ink, #1a1c1b);
+  text-decoration: none;
+  transition: color var(--dur-hover, 200ms) ease;
+  min-width: 0;
+}
+a.column-outro__title:hover,
+a.column-outro__title:focus-visible {
+  color: var(--color-accent, #862122);
+}
+.column-outro__item--current .column-outro__title {
+  color: var(--color-ink-muted, #5e5e63);
+}
+.column-outro__now {
+  display: inline-block;
+  margin-left: 0.45em;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent, #862122);
+  border: 1px solid color-mix(in oklab, var(--color-accent, #862122) 40%, transparent);
+  border-radius: 999px;
+  padding: 0.1em 0.55em;
+  vertical-align: 0.12em;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .column-outro {
+    margin-top: 2.6rem;
+  }
+  .column-outro__progress {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+}
+
 /* ── Reduced motion ──────────────────────────────────────────
    Remove the hover arrow travel; opacity/colour hover cues remain. */
 @media (prefers-reduced-motion: reduce) {
   .column-entry__link:hover .column-entry__arrow,
   .column-entry__link:focus-visible .column-entry__arrow { transform: none; }
+  .column-outro__next:hover .column-outro__next-arrow,
+  .column-outro__next:focus-visible .column-outro__next-arrow { transform: none; }
 }

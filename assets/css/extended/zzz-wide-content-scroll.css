@@ -44,6 +44,37 @@
   transition: -webkit-mask-image 0.2s ease, mask-image 0.2s ease;
 }
 
+/* Code blocks additionally host the fullscreen-reader button
+   (code-mobile.js) in their bottom-right corner — INSIDE the pre, so
+   the right-edge fade above was masking the button away: invisible
+   and seemingly unclickable. Composite a second, fully-opaque mask
+   layer over the bottom strip (button zone) so the fade never eats
+   the control. Layers union by default (mask-composite: add), so the
+   rest of the block keeps the exact same edge fade. Tables carry no
+   tools and keep the single-layer mask above. */
+.post-content pre.x-scroll {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) var(--x-fade-l, 0px),
+    rgba(0, 0, 0, 1) calc(100% - var(--x-fade-r, 0px)),
+    rgba(0, 0, 0, 0) 100%
+  ), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) var(--x-fade-l, 0px),
+    rgba(0, 0, 0, 1) calc(100% - var(--x-fade-r, 0px)),
+    rgba(0, 0, 0, 0) 100%
+  ), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
+  -webkit-mask-size: 100% 100%, 100% 48px;
+  mask-size: 100% 100%, 100% 48px;
+  -webkit-mask-position: 0 0, left bottom;
+  mask-position: 0 0, left bottom;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
 @media (prefers-reduced-motion: reduce) {
   /* The fade itself is informational wayfinding, so it stays; only
      drop the easing so it never reads as decorative motion. */

@@ -118,13 +118,11 @@ html.motion-reveal .post-content :is(h1, h2, h3, h4, h5, h6).anchor-target-flash
   transform: scale(0.85);
 }
 
-/* ---------- Reading-progress bar: soft leading glow ----------
-   The bar (custom.css) fills as the page scrolls. Add a faint glow at
-   its leading edge so motion reads clearly as it advances, on phones
-   especially where the bar is the primary scroll cue. Additive only. */
-html.motion-reveal .reading-progress-bar {
-  box-shadow: 0 0 6px color-mix(in srgb, var(--color-accent, var(--primary)) 55%, transparent);
-}
+/* ---------- Reading-progress bar ----------
+   Deliberately no glow here: the bar (custom.css) is a quiet 2px
+   hairline in the muted accent, and any box-shadow made it read as a
+   bright stripe on phones. The completion pulse lives in
+   zz-reading-progress-complete.css. */
 
 /* ============================================================
    Reduced motion: neutralise every effect above.

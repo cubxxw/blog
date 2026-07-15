@@ -111,6 +111,8 @@
 
     {{- partial "article/faq.html" . -}}
 
+    {{- partial "article/column-outro.html" . -}}
+
     <footer class="post-footer">
       {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
       <ul class="post-tags">

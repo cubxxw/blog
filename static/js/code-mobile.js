@@ -6,8 +6,8 @@
  *  1. Shell-ish blocks (bash/console/text…) soft-wrap by default:
  *     they carry no indentation semantics, and a command you must
  *     copy but cannot see in full is the worst mobile outcome.
- *  2. Every overflowing block grows a small tool cluster:
- *     ⏎ wrap-toggle (scroll ⇄ wrap) and ⛶ expand (phones/tablets).
+ *  2. Every overflowing block grows a single ⛶ expand button
+ *     (phones/tablets only — desktop columns are wide enough).
  *  3. Expand opens a fullscreen reader. While the phone is held
  *     portrait the CSS rotates the panel 90° (simulated landscape —
  *     iOS Safari offers no element-fullscreen or orientation lock),
@@ -20,7 +20,6 @@
   var WRAP_LANGS = ['bash', 'sh', 'shell', 'zsh', 'console', 'shell-session', 'text', 'plaintext', 'txt'];
   var ZH = (document.documentElement.lang || '').indexOf('zh') === 0;
   var T = {
-    wrap: ZH ? '切换自动换行' : 'Toggle line wrap',
     expand: ZH ? '全屏阅读' : 'Read fullscreen',
     close: ZH ? '关闭' : 'Close',
     zoomIn: ZH ? '放大' : 'Zoom in',
@@ -44,9 +43,8 @@
     );
   }
 
-  /* ── Tool cluster ─────────────────────────────────────────── */
+  /* ── Tool cluster (single fullscreen button) ──────────────── */
 
-  var WRAP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M3 12h13a3 3 0 1 1 0 6h-3"/><path d="m15 16-2 2 2 2"/><path d="M3 18h6"/></svg>';
   var EXPAND_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>';
 
   function ensureTools(code) {
@@ -58,20 +56,6 @@
     tools = document.createElement('div');
     tools.className = 'code-tools';
 
-    var wrapBtn = document.createElement('button');
-    wrapBtn.type = 'button';
-    wrapBtn.className = 'code-tool-wrap';
-    wrapBtn.setAttribute('aria-label', T.wrap);
-    wrapBtn.setAttribute('aria-pressed', pre.classList.contains('code-wrap') ? 'true' : 'false');
-    wrapBtn.innerHTML = WRAP_ICON;
-    wrapBtn.addEventListener('click', function () {
-      var wrapped = pre.classList.toggle('code-wrap');
-      wrapBtn.setAttribute('aria-pressed', wrapped ? 'true' : 'false');
-      refresh(code);
-      /* Let the edge-fade affordance re-measure the block. */
-      window.dispatchEvent(new Event('resize'));
-    });
-
     var expandBtn = document.createElement('button');
     expandBtn.type = 'button';
     expandBtn.className = 'code-tool-expand';
@@ -81,10 +65,24 @@
       openReader(container, code);
     });
 
-    tools.appendChild(wrapBtn);
     tools.appendChild(expandBtn);
     container.appendChild(tools);
     return tools;
+  }
+
+  /* Full-bleed blocks (≤600px, zzz-code-mobile.css) overflow their
+     .post-content column sideways, and the column's `overflow-x: clip`
+     leaves that overflowed strip painted but NOT hit-testable — a
+     button anchored to the block's visual right edge looks fine yet
+     cannot be tapped. Anchor it to the clickable column edge instead. */
+  function positionTools(container, tools) {
+    var offset = 8;
+    var content = container.closest('.post-content');
+    if (content) {
+      var d = container.getBoundingClientRect().right - content.getBoundingClientRect().right;
+      if (d > 0.5) offset = Math.round(d) + 8;
+    }
+    tools.style.right = offset + 'px';
   }
 
   function refresh(code) {
@@ -93,10 +91,12 @@
     var wrapped = pre.classList.contains('code-wrap');
     var overflows = code.scrollWidth - code.clientWidth > 2;
     if (wrapped || overflows) {
-      ensureTools(code).style.display = '';
+      var tools = ensureTools(code);
+      tools.style.display = '';
+      positionTools(container, tools);
     } else {
-      var tools = container.querySelector(':scope > .code-tools');
-      if (tools) tools.style.display = 'none';
+      var tools2 = container.querySelector(':scope > .code-tools');
+      if (tools2) tools2.style.display = 'none';
     }
   }
 

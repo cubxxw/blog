@@ -1,0 +1,92 @@
+{{/* Column outro — end-of-article continuation card for column essays.
+     Renders when the page belongs to a column (frontmatter `columns: [slug]`,
+     wired through the `column` taxonomy). Shows, in reading-flow order:
+       - the column name + "part N / M" progress,
+       - a "next essay" call-to-action (or "back to the column" when done),
+       - the column's full reading path with the current essay marked.
+     Shares the folio-node + spine visual system of the column pages
+     (assets/css/extended/columns.css, .column-outro* rules). */}}
+{{- $page := . }}
+{{- range $page.GetTerms "columns" }}
+  {{- $term := . }}
+  {{- $isZh := eq $page.Lang "zh" }}
+  {{/* Same ordering as layouts/columns/term.html */}}
+  {{- $pages := $term.Pages.ByParam "series.order" }}
+  {{- if not $pages }}{{ $pages = $term.Pages.ByDate }}{{ end }}
+  {{- $total := len $pages }}
+  {{- $cur := -1 }}
+  {{- range $i, $p := $pages }}
+    {{- if eq $p.RelPermalink $page.RelPermalink }}{{ $cur = $i }}{{ end }}
+  {{- end }}
+  {{- if and (ge $cur 0) (gt $total 1) }}
+  {{- $next := "" }}
+  {{- if lt (add $cur 1) $total }}{{ $next = index $pages (add $cur 1) }}{{ end }}
+
+  <aside class="column-outro" aria-label="{{ if $isZh }}专栏导航：{{ $term.Title }}{{ else }}Column navigation: {{ $term.Title }}{{ end }}">
+    <div class="column-outro__rule" aria-hidden="true"></div>
+
+    <header class="column-outro__head">
+      <span class="column-outro__eyebrow">{{ if $isZh }}系列专栏{{ else }}Column{{ end }}</span>
+      <a class="column-outro__name" href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
+      <span class="column-outro__progress">
+        {{- if $isZh }}第 {{ add $cur 1 }} / {{ $total }} 篇{{ else }}Part {{ add $cur 1 }} of {{ $total }}{{ end -}}
+      </span>
+    </header>
+
+    {{- if $next }}
+    <a class="column-outro__next" href="{{ $next.RelPermalink }}">
+      <span class="column-outro__next-kicker">
+        {{- if $isZh }}接着读{{ else }}Read next{{ end -}}
+      </span>
+      <span class="column-outro__next-title">{{ $next.Title }}</span>
+      <span class="column-outro__next-meta">
+        <span>{{ printf "%02d" (add $cur 2) }} / {{ printf "%02d" $total }}</span>
+        {{- if $next.ReadingTime }}
+        <span class="column-outro__next-sep">·</span>
+        <span>{{ if $isZh }}{{ $next.ReadingTime }} 分钟{{ else }}{{ $next.ReadingTime }} min{{ end }}</span>
+        {{- end }}
+        <svg class="column-outro__next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </span>
+    </a>
+    {{- else }}
+    <a class="column-outro__next column-outro__next--done" href="{{ $term.RelPermalink }}">
+      <span class="column-outro__next-kicker">
+        {{- if $isZh }}本专栏已读完{{ else }}You’ve finished this column{{ end -}}
+      </span>
+      <span class="column-outro__next-title">
+        {{- if $isZh }}回到「{{ $term.Title }}」总览{{ else }}Back to “{{ $term.Title }}”{{ end -}}
+      </span>
+      <span class="column-outro__next-meta">
+        <span>{{ printf "%02d" $total }} / {{ printf "%02d" $total }}</span>
+        <svg class="column-outro__next-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </span>
+    </a>
+    {{- end }}
+
+    <ol class="column-outro__list">
+      {{- range $i, $p := $pages }}
+        {{- $ord := $p.Params.series.order | default (add $i 1) }}
+        {{- $isCurrent := eq $i $cur }}
+      <li class="column-outro__item{{ if $isCurrent }} column-outro__item--current{{ end }}">
+        {{- if $isCurrent }}
+        <span class="column-outro__node" aria-hidden="true">{{ printf "%02d" $ord }}</span>
+        <span class="column-outro__title" aria-current="page">
+          {{ $p.Title }}
+          <span class="column-outro__now">{{ if $isZh }}本篇{{ else }}You are here{{ end }}</span>
+        </span>
+        {{- else }}
+        <span class="column-outro__node" aria-hidden="true">{{ printf "%02d" $ord }}</span>
+        <a class="column-outro__title" href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ol>
+  </aside>
+  {{- end }}
+{{- end }}

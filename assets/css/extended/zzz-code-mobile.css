@@ -8,10 +8,10 @@
       trim the inner padding, so fewer lines overflow at all.
    2. Soft-wrap state — `pre.code-wrap` wraps instead of scrolling.
       Shell-ish languages (bash/console/text…) get it by default
-      (code-mobile.js), every block gets a toggle button.
-   3. Per-block tool cluster (wrap toggle + expand) sitting at the
-      bottom-right, styled with the existing --code-btn-* tokens so
-      it follows all four code themes automatically.
+      (code-mobile.js).
+   3. Per-block fullscreen button sitting at the bottom-right,
+      styled with the existing --code-btn-* tokens so it follows
+      all four code themes automatically. Phones/tablets only.
    4. Fullscreen reader — a fixed overlay that rotates the panel
       90° while the phone is held portrait (iOS Safari has no
       element-fullscreen / orientation-lock, so simulated landscape
@@ -58,7 +58,7 @@
   overflow-x: visible;
 }
 
-/* ── 3. Tool cluster (wrap / expand) ────────────────────────── */
+/* ── 3. Fullscreen button ───────────────────────────────────── */
 .code-tools {
   position: absolute;
   right: 8px;
@@ -72,10 +72,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 24px;
+  width: 34px;
+  height: 30px;
   padding: 0;
-  border-radius: 6px;
+  border-radius: 7px;
   background: var(--code-btn-bg, rgba(31, 35, 40, 0.05));
   border: 1px solid var(--code-btn-border, rgba(31, 35, 40, 0.12));
   color: var(--code-btn-color, rgba(31, 35, 40, 0.55));
@@ -90,22 +90,16 @@
 }
 
 .code-tools button svg {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   display: block;
 }
 
-/* Wrap toggle shows its active state like a pressed key. */
-.code-tools .code-tool-wrap[aria-pressed="true"] {
-  background: var(--code-btn-bg-hover, rgba(31, 35, 40, 0.1));
-  color: var(--code-btn-color-hover, rgba(31, 35, 40, 0.9));
-  border-color: currentColor;
-}
-
 /* The fullscreen reader is a phone/tablet affordance — desktop
-   columns are wide enough already. */
+   columns are wide enough already, so the whole cluster (now just
+   the one expand button) disappears there. */
 @media (min-width: 1024px) {
-  .code-tools .code-tool-expand {
+  .code-tools {
     display: none;
   }
 }

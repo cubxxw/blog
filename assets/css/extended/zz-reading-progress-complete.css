@@ -5,10 +5,9 @@
    article is scrolled. When the reader reaches the very end the
    footer script toggles `.is-complete` on #reading-progress-bar.
    Ride that moment for one quiet acknowledgement: the bar gives a
-   single soft brightness pulse and its leading dot sends one gentle
-   outward ping, then settles. A small "you've arrived" flourish at
-   the end of a long read — felt the same on phones (bar pinned top)
-   and desktop (bar pinned bottom).
+   single soft brightness pulse, then settles. A small "you've
+   arrived" flourish at the end of a long read — the bar is pinned to
+   the bottom edge on every viewport.
 
    Purely additive: no layout, no reflow, nothing required to read
    the page. Gated behind `html.motion-reveal` (set in <head> only
@@ -31,26 +30,15 @@ html.motion-reveal .reading-progress-bar.is-complete {
   animation: rp-complete-glow 0.85s ease-out 1;
 }
 
-/* The leading-edge dot expands once and fades — a single "ping" that
-   lands as the bar completes. The base transform (custom.css) is
-   translate(50%, -50%); the keyframe carries it through so the dot
-   stays anchored to the bar's tip while it scales. */
-@keyframes rp-complete-ping {
-  0%   { transform: translate(50%, -50%) scale(1);   opacity: 0.95; }
-  70%  { transform: translate(50%, -50%) scale(2.2); opacity: 0;    }
-  100% { transform: translate(50%, -50%) scale(2.2); opacity: 0;    }
-}
-
-html.motion-reveal .reading-progress-bar.is-complete::after {
-  animation: rp-complete-ping 0.85s ease-out 1;
-}
+/* (The old leading-edge "ping" rode a ::after glow dot that was removed
+   when the bar was calmed down to a plain hairline — the single soft
+   brightness pulse above is the whole completion cue now.) */
 
 /* ============================================================
-   Reduced motion: no pulse, no ping — the bar simply rests full.
+   Reduced motion: no pulse — the bar simply rests full.
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  html.motion-reveal .reading-progress-bar.is-complete,
-  html.motion-reveal .reading-progress-bar.is-complete::after {
+  html.motion-reveal .reading-progress-bar.is-complete {
     animation: none !important;
   }
 }
