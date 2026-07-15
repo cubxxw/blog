@@ -320,3 +320,9 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /ai-technology/posts/ufo/   /projects/ufo/   301
 /ai-technology/posts/mem0/   /projects/mem0/   301
 /ai-technology/*   /ai-agent/   301
+
+# Start Here merged into About (2026-07, nav v4) — reading atlas now lives at /about/#start-here
+/start-here        /about/       301
+/start-here/       /about/       301
+/zh/start-here     /zh/about/    301
+/zh/start-here/    /zh/about/    301

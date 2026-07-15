@@ -235,7 +235,14 @@ export function buildIndex() {
         slug,
         language,
         relativePath: relativePath.replace(/\\/g, "/"),
-        permalink: buildPermalink(language, relativePath),
+        // Preserve deliberately stable public URLs when content is moved to a
+        // more accurate editorial section (for example projects -> ai-agent).
+        permalink:
+          typeof data.url === "string" && data.url
+            ? data.url.endsWith("/")
+              ? data.url
+              : `${data.url}/`
+            : buildPermalink(language, relativePath),
         section: sectionPath,
         sectionParts,
         tags: Array.isArray(data.tags) ? data.tags.slice(0, 12) : [],
@@ -311,6 +318,15 @@ function buildAtlas(documents) {
   const byLogicalPath = new Map();
   for (const doc of documents) {
     byLogicalPath.set(`${doc.language}:${logicalPathOf(doc)}`, doc);
+    // A page may keep a stable public URL after moving to a different
+    // editorial section. Let the curated atlas resolve either its source
+    // location or that explicit permalink.
+    const languagePrefix = doc.language === defaultLanguage ? "" : `/${doc.language}`;
+    const publicLogicalPath = doc.permalink
+      .replace(new RegExp(`^${languagePrefix}`), "")
+      .replace(/\/$/, "")
+      .toLowerCase();
+    byLogicalPath.set(`${doc.language}:${publicLogicalPath}`, doc);
   }
 
   const resolvePost = (language, entry) => {

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">AI 2026: First-Half Review, Second-Half Forecast</title>
+  <desc id="d">Five essays: from what actually happened, to what comes next</desc>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#0f766e" stop-opacity="0.12"/></linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0v36" fill="none" stroke="#cfdedb" stroke-width="1" opacity="0.5"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f6faf9"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="34" fill="url(#fade)" stroke="#cfdedb" stroke-width="2"/>
+  <circle cx="1050" cy="120" r="180" fill="#0f766e" opacity="0.07"/>
+  <circle cx="1080" cy="540" r="120" fill="#0f766e" opacity="0.07"/>
+
+  <!-- Half-time divider: observed past (solid) vs forecast future (dashed).
+       Kept right of x=760 so it never collides with the title/subtitle column. -->
+  <g>
+    <line x1="856" y1="150" x2="856" y2="404" stroke="#0f766e" stroke-width="2" stroke-dasharray="5 7" opacity="0.5"/>
+    <text x="856" y="134" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#5f8f89">H1 / H2</text>
+
+    <!-- Observed: five solid nodes rising -->
+    <line x1="784" y1="348" x2="820" y2="330" stroke="#0f766e" stroke-width="3" opacity="0.9"/>
+    <line x1="820" y1="330" x2="856" y2="304" stroke="#0f766e" stroke-width="3" opacity="0.9"/>
+    <line x1="856" y1="304" x2="900" y2="288" stroke="#0f766e" stroke-width="3" opacity="0.9"/>
+    <line x1="900" y1="288" x2="952" y2="252" stroke="#0f766e" stroke-width="3" opacity="0.9"/>
+    <circle cx="784" cy="348" r="10" fill="#0f766e"/>
+    <circle cx="820" cy="330" r="10" fill="#0f766e"/>
+    <circle cx="856" cy="304" r="10" fill="#0f766e"/>
+    <circle cx="900" cy="288" r="10" fill="#0f766e"/>
+    <circle cx="952" cy="252" r="10" fill="#0f766e"/>
+
+    <!-- Forecast: dashed continuation fanning into a cone of possibilities -->
+    <line x1="952" y1="252" x2="1074" y2="192" stroke="#0f766e" stroke-width="3" stroke-dasharray="7 8" opacity="0.65"/>
+    <line x1="952" y1="252" x2="1074" y2="266" stroke="#0f766e" stroke-width="3" stroke-dasharray="7 8" opacity="0.45"/>
+    <line x1="952" y1="252" x2="1074" y2="340" stroke="#0f766e" stroke-width="3" stroke-dasharray="7 8" opacity="0.3"/>
+    <circle cx="1074" cy="192" r="9" fill="none" stroke="#0f766e" stroke-width="3" opacity="0.65"/>
+    <circle cx="1074" cy="266" r="9" fill="none" stroke="#0f766e" stroke-width="3" opacity="0.45"/>
+    <circle cx="1074" cy="340" r="9" fill="none" stroke="#0f766e" stroke-width="3" opacity="0.3"/>
+  </g>
+
+  <text x="88" y="150" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4" fill="#0f766e">AI 2026 · REVIEW &amp; FORECAST</text>
+  <text x="88" y="244" font-family="'Noto Serif SC',Georgia,serif" font-size="52" font-weight="700" fill="#12211f"><tspan x="88" dy="0">First-Half Review,</tspan><tspan x="88" dy="70">Second-Half Forecast</tspan></text>
+  <text x="90" y="440" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="500" fill="#4f6360"><tspan x="90" dy="0">Five essays: from what actually happened,</tspan><tspan x="90" dy="40">to what comes next</tspan></text>
+  <rect x="90" y="536" width="240" height="4" rx="2" fill="#0f766e"/>
+  <text x="90" y="572" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="3" fill="#7d9793">CUBXXW · AI AGENT COLUMN</text>
+</svg>

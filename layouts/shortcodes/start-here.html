@@ -136,6 +136,10 @@
 {{- end -}}
 {{- end -}}
 
+{{- /* colophon — entity block + facts (GEO). Since the atlas merged into
+       /about/ (2026-07) the self-referential "about me" link and the
+       connect list (duplicated by the About page's own contact section)
+       are gone; only the machine-readable site identity remains. */ -}}
 {{- if eq $section "colophon" -}}
 {{- with $d.colophon -}}
 <div class="sh sh-colophon-wrap">
@@ -152,21 +156,6 @@
         {{- end }}
       </dl>
     </div>
-    <a class="sh-more sh-about-link" href="{{ .about_url }}">{{ .about_label }}<span class="sh-arrow" aria-hidden="true">→</span></a>
-  </section>
-
-  <section class="sh-connect sh-r" aria-label="{{ .connect_label }}">
-    <h2 class="sh-connect-label">{{ .connect_label }}</h2>
-    <ul class="sh-connect-list">
-      {{- range .connect }}
-      <li>
-        <a href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener me"{{ end }}>
-          <span class="sh-connect-name">{{ .label }}</span>
-          <span class="sh-connect-note">{{ .note }}</span>
-        </a>
-      </li>
-      {{- end }}
-    </ul>
   </section>
 </div>
 

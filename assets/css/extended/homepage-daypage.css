@@ -1155,146 +1155,244 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 .hp-posts-list-arrow { color: var(--fg-subtle); font-size: 13px; transition: color 160ms; }
 .hp-posts-list-row:hover .hp-posts-list-arrow { color: var(--accent); }
 
-.hp-cat-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.hp-cat-tile {
+/* ============================================================
+   CHANNEL RAIL — category dial above the posts panels.
+   A sunken segmented track; a white pill (the indicator) glides
+   under the active tab. Hover / ‹ › arrows / ←→ keys tune the
+   channel; clicking the active tab enters that section.
+   ============================================================ */
+.hp-rail {
   display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding: 18px 18px 0;
-  background: var(--surface-white);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card);
-  transition: border-color 200ms ease, box-shadow 200ms ease,
-              transform 220ms cubic-bezier(.2,.6,.2,1);
-  overflow: hidden;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
-.hp-cat-tile:hover {
-  border-color: var(--accent-border);
-  box-shadow: 0 10px 26px -16px rgba(93, 48, 0, 0.28);
-  transform: translateY(-2px);
-}
-
-/* Top row: icon chip left, count right */
-.hp-cat-tile-top {
+.hp-rail-track {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4px;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+  padding: 5px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 1px 3px rgba(43, 40, 34, 0.05);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.hp-rail-track::-webkit-scrollbar { display: none; }
+
+/* The gliding pill. JS sets width + translateX from the active tab;
+   .is-ready gates the transition so first paint doesn't fly in. */
+.hp-rail-indicator {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  background: var(--surface-white);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 3px 14px -5px rgba(93, 48, 0, 0.4),
+              0 1px 3px rgba(93, 48, 0, 0.1);
+  pointer-events: none;
+}
+.hp-rail.is-ready .hp-rail-indicator {
+  transition: transform 380ms cubic-bezier(0.3, 0.7, 0.25, 1),
+              width 380ms cubic-bezier(0.3, 0.7, 0.25, 1);
 }
 
-.hp-cat-tile-icon {
-  width: 34px;
-  height: 34px;
-  background: var(--surface-sunken);
-  border-radius: var(--radius-small);
+.hp-rail-tab {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  transition: background 200ms ease, transform 220ms cubic-bezier(.2,.6,.2,1);
-}
-
-.hp-cat-tile:hover .hp-cat-tile-icon {
-  background: var(--accent-soft);
-  transform: scale(1.06) rotate(-4deg);
-}
-
-.hp-cat-tile-count {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  font-family: var(--font-mono);
-  color: var(--fg-subtle);
-}
-
-.hp-cat-tile-count strong {
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--fg-muted);
+  transform-origin: center;
+  transition: color 200ms ease, background 200ms ease,
+              transform 280ms cubic-bezier(0.3, 1.3, 0.4, 1);
+}
+.hp-rail-tab:not(.is-active):hover {
+  color: var(--fg-primary);
+  background: color-mix(in srgb, var(--accent-soft) 60%, transparent);
+}
+/* The active channel reads bigger — via transform ONLY. Nothing here may
+   change layout (no weight/padding/width steps): with space-between, any
+   width change reflows every tab, sliding one under a resting cursor and
+   re-triggering hover-switch — a self-oscillating carousel. */
+.hp-rail-tab.is-active {
+  color: var(--fg-primary);
+  transform: scale(1.07);
+}
+
+.hp-rail-tab-icon {
+  font-size: 14px;
   line-height: 1;
-  color: var(--fg-primary);
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
-  transition: color 180ms ease;
+  filter: grayscale(1) opacity(0.7);
+  transition: filter 200ms ease, transform 280ms cubic-bezier(0.3, 1.3, 0.4, 1);
+}
+.hp-rail-tab.is-active .hp-rail-tab-icon {
+  filter: none;
+  transform: scale(1.2) rotate(-6deg);
 }
 
-.hp-cat-tile-count span {
-  font-size: 10px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-}
-
-.hp-cat-tile:hover .hp-cat-tile-count strong { color: var(--accent); }
-
-.hp-cat-tile-name {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  flex-wrap: wrap;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--fg-primary);
+.hp-rail-tab-name {
   letter-spacing: -0.01em;
 }
 
-.hp-cat-tile-zh {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 11.5px;
-  color: var(--fg-muted);
-}
-
-.hp-cat-tile-desc {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 12px;
-  line-height: 1.55;
-  color: var(--fg-muted);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Footer: reveal-on-hover CTA with sliding arrow */
-.hp-cat-tile-foot {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-top: 1px solid var(--border-subtle);
+.hp-rail-tab-count {
   font-family: var(--font-mono);
   font-size: 9.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-variant-numeric: tabular-nums;
   color: var(--fg-subtle);
-  transition: color 180ms ease;
+  background: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  transition: color 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+.hp-rail-tab.is-active .hp-rail-tab-count {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
 }
 
-.hp-cat-tile-arrow {
-  font-size: 12px;
-  transition: transform 220ms cubic-bezier(.2,.6,.2,1), color 180ms ease;
+/* Enter hint on the ACTIVE tab: a quiet ↗ that wakes on hover —
+   "click again to enter the column". Constant 12px slot on EVERY tab
+   (opacity-only reveal) so activation never changes tab widths. */
+.hp-rail-tab-go {
+  width: 12px;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--accent);
+  transform: translateY(1px);
+  transition: opacity 200ms ease;
+}
+.hp-rail-tab.is-active .hp-rail-tab-go { opacity: 0.5; }
+.hp-rail-tab.is-active:hover .hp-rail-tab-go,
+.hp-rail-tab.is-active:focus-visible .hp-rail-tab-go { opacity: 1; }
+
+.hp-rail-tab:focus-visible,
+.hp-rail-arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-.hp-cat-tile:hover .hp-cat-tile-foot { color: var(--accent); }
-.hp-cat-tile:hover .hp-cat-tile-arrow { transform: translateX(4px); color: var(--accent); }
+/* ‹ › dial + 01/06 counter */
+.hp-rail-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.hp-rail-counter {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--fg-subtle);
+  font-variant-numeric: tabular-nums;
+  margin-right: 2px;
+}
+.hp-rail-counter strong { color: var(--fg-primary); font-weight: 700; }
+.hp-rail-counter-sep { margin: 0 3px; opacity: 0.6; }
+
+.hp-rail-arrow {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background: var(--surface-white);
+  color: var(--fg-muted);
+  cursor: pointer;
+  padding: 0;
+  transition: color 180ms ease, border-color 180ms ease,
+              background 180ms ease, transform 160ms ease;
+}
+.hp-rail-arrow:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+}
+.hp-rail-arrow:active { transform: scale(0.92); }
+
+/* ============================================================
+   CHANNEL PANELS — one per channel; JS swaps with a height FLIP
+   and a staggered rise on the incoming cards.
+   ============================================================ */
+.hp-channel-panels { position: relative; }
+.hp-channel-panels.is-animating {
+  overflow: hidden;
+  transition: height 420ms cubic-bezier(0.3, 0.7, 0.25, 1);
+}
+
+@keyframes hpChannelIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hp-channel-panel.is-entering .hp-post-card,
+.hp-channel-panel.is-entering .hp-posts-list,
+.hp-channel-panel.is-entering .hp-channel-empty {
+  animation: hpChannelIn 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.hp-channel-panel.is-entering .hp-post-card:nth-child(2) { animation-delay: 55ms; }
+.hp-channel-panel.is-entering .hp-post-card:nth-child(3) { animation-delay: 110ms; }
+.hp-channel-panel.is-entering .hp-posts-list { animation-delay: 150ms; }
+
+/* Empty channel (defensive — shouldn't normally render) */
+.hp-channel-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 20px;
+  border: 1px dashed var(--border-default);
+  border-radius: var(--radius-card);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--fg-subtle);
+}
+.hp-channel-empty-mark { color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
-  .hp-cat-tile,
-  .hp-cat-tile-icon,
-  .hp-cat-tile-arrow { transition: none; }
-  .hp-cat-tile:hover { transform: none; }
-  .hp-cat-tile:hover .hp-cat-tile-icon,
-  .hp-cat-tile:hover .hp-cat-tile-arrow { transform: none; }
+  .hp-rail.is-ready .hp-rail-indicator,
+  .hp-rail-tab,
+  .hp-rail-tab-icon,
+  .hp-rail-tab-count,
+  .hp-rail-tab-go,
+  .hp-rail-arrow { transition: none; }
+  .hp-rail-tab.is-active { transform: none; }
+  .hp-rail-tab.is-active .hp-rail-tab-icon { transform: none; }
+  .hp-rail-arrow:active { transform: none; }
+  .hp-channel-panels.is-animating { transition: none; }
+  .hp-channel-panel.is-entering .hp-post-card,
+  .hp-channel-panel.is-entering .hp-posts-list,
+  .hp-channel-panel.is-entering .hp-channel-empty { animation: none; }
 }
 
 /* ============================================================
@@ -1449,6 +1547,28 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 /* ============================================================
    PROJECTS
    ============================================================ */
+.hp-products-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.hp-product{--hp-product:#64748b;display:flex;flex-direction:column;min-height:280px;border:1px solid color-mix(in srgb,var(--hp-product) 22%,var(--border-subtle));border-radius:var(--radius-card);background:linear-gradient(145deg,color-mix(in srgb,var(--hp-product) 8%,var(--surface-white)),var(--surface-white) 58%);overflow:hidden;transition:transform 220ms,box-shadow 220ms,border-color 220ms}.hp-product--cobalt{--hp-product:#4868a9}.hp-product--amber{--hp-product:#a76f2b}.hp-product--sage{--hp-product:#497a67}.hp-product--coral{--hp-product:#a8584d}.hp-product:hover{transform:translateY(-3px);box-shadow:0 14px 32px color-mix(in srgb,var(--hp-product) 12%,transparent);border-color:color-mix(in srgb,var(--hp-product) 45%,var(--border-subtle))}.hp-product__main{display:flex;flex:1;flex-direction:column;padding:22px 22px 18px;color:inherit;text-decoration:none}.hp-product__top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}.hp-product__mark{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:color-mix(in srgb,var(--hp-product) 15%,var(--surface-white));color:var(--hp-product);font:800 12px/1 var(--font-display);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--hp-product) 24%,transparent)}.hp-product__status{display:inline-flex;align-items:center;gap:7px;font:700 9px/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hp-product)}.hp-product h3{margin:0;font:700 1.65rem/1 var(--font-display);letter-spacing:-.04em;color:var(--fg-primary)}.hp-product__headline{margin:11px 0 6px;font:500 14px/1.45 var(--font-body);color:var(--hp-product)}.hp-product__desc{margin:0;font:400 12px/1.65 var(--font-body);color:var(--fg-muted)}.hp-product__foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 22px;border-top:1px solid var(--border-subtle);font:600 9px/1.2 var(--font-mono);letter-spacing:.04em;color:var(--fg-subtle)}.hp-product__foot a{color:var(--hp-product);text-decoration:none;font-weight:700}body.dark .hp-product{background:linear-gradient(145deg,color-mix(in srgb,var(--hp-product) 13%,#1c1916),#1c1916 60%)}
+@media(max-width:760px){.hp-products-grid{grid-template-columns:1fr}.hp-product{min-height:250px}}
+
+/* Products v2 — mini window chrome + live-site snapshot (ties into /projects/ Product OS) */
+.hp-product__chrome{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid color-mix(in srgb,var(--hp-product) 16%,var(--border-subtle));background:color-mix(in srgb,var(--hp-product) 5%,transparent);font:600 9.5px/1 var(--font-mono);letter-spacing:.05em;color:var(--fg-subtle)}
+.hp-product__lights{display:inline-flex;gap:5px}
+.hp-product__lights i{width:8px;height:8px;border-radius:50%;background:#e0564f}
+.hp-product__lights i:nth-child(2){background:#e5a93d}
+.hp-product__lights i:nth-child(3){background:#57b45f}
+.hp-product__domain{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hp-product__main{padding:0}
+.hp-product__shot{position:relative;display:block;height:168px;overflow:hidden;border-bottom:1px solid color-mix(in srgb,var(--hp-product) 14%,var(--border-subtle))}
+.hp-product__shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transform-origin:top center;transition:transform 480ms cubic-bezier(.22,.8,.3,1)}
+.hp-product:hover .hp-product__shot img{transform:scale(1.035)}
+.hp-product__shot .hp-product__status{position:absolute;top:10px;right:10px;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--surface-white) 82%,transparent);backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--hp-product) 25%,transparent)}
+.hp-product__text{display:flex;flex:1;flex-direction:column;padding:18px 22px}
+.hp-product__main>.hp-product__top{margin:18px 22px 0}
+.hp-product__more{display:inline-block;margin-top:14px;font:700 10px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hp-product);opacity:.75;transition:opacity 200ms,transform 200ms}
+.hp-product:hover .hp-product__more{opacity:1;transform:translateX(3px)}
+.hp-product__links{display:inline-flex;gap:12px;white-space:nowrap}
+body.dark .hp-product__shot .hp-product__status{background:rgba(28,25,22,.72)}
+
 .hp-projects-featured {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2192,7 +2312,6 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
   .hp-posts-grid { grid-template-columns: 1fr 1fr; }
   .hp-repos-grid { grid-template-columns: repeat(2, 1fr); }
   .hp-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .hp-cat-row { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -2201,9 +2320,10 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
   .hp-nav { display: none; }
   .hp-hero { grid-template-columns: 1fr; padding: 48px 0 56px; gap: 40px; }
   .hp-posts-grid { grid-template-columns: 1fr; }
-  .hp-cat-row { grid-template-columns: 1fr 1fr; }
-  /* Odd tile count: let the last tile span the full row instead of orphaning */
-  .hp-cat-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  /* Channel rail: the track scrolls horizontally; tabs grow to a
+     comfortable touch height. */
+  .hp-rail { gap: 10px; }
+  .hp-rail-tab { padding: 11px 14px; }
   .hp-books-grid { grid-template-columns: 1fr; }
   .hp-projects-featured { grid-template-columns: 1fr; }
   .hp-repos-grid { grid-template-columns: 1fr; }
@@ -2290,6 +2410,11 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
   /* Fix 6: Tighter section padding on very small screens */
   .hp-section { padding: 28px 0; }
 
+  /* Channel rail: the counter is nice-to-have — reclaim its width for
+     the scrolling track; arrows keep 34px (44px hit area via padding
+     is overkill inside a 44px-tall rail row). */
+  .hp-rail-counter { display: none; }
+
   /* Fix 7: Subscribe form — stack input and button vertically */
   .hp-subscribe-input-row {
     flex-wrap: wrap;
@@ -2370,4 +2495,3 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
     transition: none !important;
   }
 }
-

@@ -387,8 +387,8 @@
 }
 
 .rc-ai-chip--series {
-  background: color-mix(in oklab, var(--color-accent, #862122) 6%, transparent);
-  border-color: color-mix(in oklab, var(--color-accent, #862122) 26%, transparent);
+  background: transparent;
+  border-color: color-mix(in oklab, var(--color-accent, #862122) 30%, transparent);
 }
 
 /* ──────────────────────────────────────────────────────────────────

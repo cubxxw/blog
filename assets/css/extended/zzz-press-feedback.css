@@ -28,7 +28,7 @@
    the repo chips and the compact post rows. They lift on hover but had no
    press response, so a tap on a phone navigated with no "I felt that" beat.
    Bring them into the same tactile family. */
-.hp-cat-tile,
+.hp-rail-tab,
 .hp-book,
 .hp-project-featured,
 .hp-repo,
@@ -54,7 +54,7 @@
   .growth-card:active,
   .hp-post-card:active,
   .hp-ai-card:active,
-  .hp-cat-tile:active,
+  .hp-rail-tab:active,
   .hp-book:active,
   .hp-project-featured:active,
   .hp-repo:active,
@@ -75,7 +75,7 @@
   .growth-card:active,
   .hp-post-card:active,
   .hp-ai-card:active,
-  .hp-cat-tile:active,
+  .hp-rail-tab:active,
   .hp-book:active,
   .hp-project-featured:active,
   .hp-repo:active,
@@ -117,7 +117,7 @@
   .growth-card:active,
   .hp-post-card:active,
   .hp-ai-card:active,
-  .hp-cat-tile:active,
+  .hp-rail-tab:active,
   .hp-book:active,
   .hp-project-featured:active,
   .hp-repo:active,

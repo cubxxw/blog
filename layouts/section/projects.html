@@ -1,97 +1,354 @@
 {{- define "main" }}
-{{- $lang := .Lang }}
-{{- $isZh := eq $lang "zh" }}
-{{- $projectPages := .RegularPages.ByDate.Reverse }}
+{{- $isZh := eq .Lang "zh" -}}
+{{- $products := site.Data.products.products -}}
+{{- $live := 0 }}{{- range $products }}{{ if eq .stage_en "Live" }}{{ $live = add $live 1 }}{{ end }}{{- end }}
 
-<div class="eip-page">
+<div class="osx" id="bear-os" data-osx>
 
-  {{/* ── Hero ── */}}
-  <header class="eip-hero">
-    <div class="eip-hero__eyebrow">
-      {{ if $isZh }}开源项目{{ else }}Open Source Projects{{ end }}
+  {{/* ── Boot splash (once per session) ─────────────────── */}}
+  <div class="osx-boot" data-osx-boot aria-hidden="true">
+    <span class="osx-boot__logo">◆</span>
+    <span class="osx-boot__name">BEAR&nbsp;OS</span>
+    <span class="osx-boot__bar"><i></i></span>
+  </div>
+
+  {{/* ── Ambient background ─────────────────────────────── */}}
+  <div class="osx-bg" aria-hidden="true">
+    <i class="osx-bg__blob osx-bg__blob--a"></i>
+    <i class="osx-bg__blob osx-bg__blob--b"></i>
+    <i class="osx-bg__blob osx-bg__blob--c"></i>
+    <span class="osx-bg__grid"></span>
+  </div>
+
+  {{/* ── Menubar ─────────────────────────────────────────── */}}
+  <div class="osx-menubar">
+    <div class="osx-menubar__left">
+      <span class="osx-menubar__logo" aria-hidden="true">◆</span>
+      <strong>BEAR&nbsp;OS</strong>
+      <a class="osx-menubar__home" href="{{ "/" | relLangURL }}">{{ if $isZh }}← 返回博客{{ else }}← Back to blog{{ end }}</a>
     </div>
-    <h1 class="eip-hero__title">
-      {{- if $isZh }}
-        <span class="eip-hero__plain">开源</span>
-        <span class="eip-hero__accent">让 AI 触手可及</span>
-      {{- else }}
-        <span class="eip-hero__plain">Open Source</span>
-        <span class="eip-hero__accent">Making AI Accessible</span>
+    <div class="osx-menubar__right">
+      <span class="osx-menubar__stat"><i aria-hidden="true"></i>{{ len $products }} apps · {{ $live }} live</span>
+      {{- range .Translations }}
+      <a class="osx-menubar__lang" href="{{ .RelPermalink }}" data-osx-lang hreflang="{{ .Lang }}">{{ if $isZh }}EN{{ else }}中文{{ end }}</a>
       {{- end }}
-    </h1>
-    <p class="eip-hero__desc">
-      {{- if .Description }}{{ .Description | markdownify }}
-      {{- else if $isZh }}我构建与深度参与的开源项目，以及围绕它们的架构分析与实践文章
-      {{- else }}Open source I build and contribute to, with architecture analyses and hands-on write-ups
-      {{- end }}
-    </p>
-    {{- $ossCount := 0 }}
-    {{- range site.Data.opensource.groups }}{{ $ossCount = add $ossCount (len .items) }}{{ end }}
-    <div class="eip-hero__meta">
-      <span class="eip-hero__count">{{ $ossCount }} {{ if $isZh }}个开源项目与产品{{ else }}projects &amp; products{{ end }}</span>
-      <span class="eip-hero__count">{{ len $projectPages }} {{ if $isZh }}篇实践文章{{ else }}write-ups{{ end }}</span>
+      <span class="osx-menubar__clock" data-osx-clock aria-hidden="true">--:--</span>
     </div>
-  </header>
+  </div>
 
-  {{/* ── Open Source showcase — real repos & products (data/opensource.yml) ── */}}
-  <section class="eip-oss">
-    <h2 class="eip-section-label">
-      <span class="eip-dot"></span>
-      {{ if $isZh }}开源项目{{ else }}Open Source{{ end }}
-    </h2>
-    {{ partial "opensource-grid.html" (dict "lang" $lang "class" "oss-grid-root--eip") }}
+  {{/* ── Desktop: functional widget grid ─────────────────── */}}
+  <section class="osx-desktop" data-osx-desktop aria-label="{{ if $isZh }}产品桌面{{ else }}Product desktop{{ end }}">
+    <h1 class="osx-sr">{{ if $isZh }}产品 — BEAR OS{{ else }}Products — BEAR OS{{ end }}</h1>
+
+    {{/* proc — process monitor, primary launcher */}}
+    <div class="osx-widget osx-widget--proc" style="--w:0">
+      <header><i></i>PROC <span>{{ if $isZh }}进程{{ else }}processes{{ end }}</span><b>{{ len $products }}</b></header>
+      {{- range $index, $product := $products }}
+      <button type="button" class="osx-proc osx-proc--{{ $product.color }}" data-osx-open="{{ $product.id }}">
+        <span class="osx-proc__mark" aria-hidden="true">{{ $product.mark }}</span>
+        <span class="osx-proc__name">{{ $product.name }}<em>{{ $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}</em></span>
+        <span class="osx-proc__stage"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+        <span class="osx-proc__bar" aria-hidden="true"><i style="--p:{{ $product.progress }}%"></i></span>
+        <b class="osx-proc__pct">{{ $product.progress }}%</b>
+        <span class="osx-proc__go" aria-hidden="true">↵</span>
+      </button>
+      {{- end }}
+      <footer>$ top — {{ len $products }} running · {{ $live }} live · 1 maintainer</footer>
+    </div>
+
+    {{/* clock */}}
+    <div class="osx-widget osx-widget--clock" style="--w:1">
+      <header><i></i>CLOCK</header>
+      <b class="osx-clock__time" data-osx-clock-big>--:--</b>
+      <span class="osx-clock__date" data-osx-date></span>
+      <footer><kbd>1</kbd>–<kbd>{{ len $products }}</kbd> {{ if $isZh }}打开{{ else }}open{{ end }} · <kbd>←</kbd><kbd>→</kbd> {{ if $isZh }}切换{{ else }}switch{{ end }} · <kbd>ESC</kbd> {{ if $isZh }}桌面{{ else }}desktop{{ end }}</footer>
+    </div>
+
+    {{/* next_up — aggregated first undone todo per product */}}
+    <div class="osx-widget osx-widget--next" style="--w:2">
+      <header><i></i>NEXT_UP <span>{{ if $isZh }}待办{{ else }}queue{{ end }}</span></header>
+      {{- range $product := $products }}
+      {{- $next := dict }}
+      {{- range .todo }}{{ if and (not .done) (not $next.zh) }}{{ $next = . }}{{ end }}{{ end }}
+      {{- with $next.zh }}
+      <button type="button" class="osx-next osx-next--{{ $product.color }}" data-osx-open="{{ $product.id }}">
+        <span class="osx-next__mark">{{ $product.mark }}</span>
+        <span class="osx-next__text">{{ if $isZh }}{{ $next.zh }}{{ else }}{{ $next.en }}{{ end }}</span>
+        <i aria-hidden="true"></i>
+      </button>
+      {{- end }}
+      {{- end }}
+    </div>
+
+    {{/* build.log — related writing across all products, newest first */}}
+    {{- $logs := slice }}
+    {{- range $product := $products }}
+      {{- range where site.RegularPages "Params.product" $product.id }}{{ $logs = $logs | append (dict "p" . "mark" $product.mark "color" $product.color) }}{{ end }}
+      {{- range $product.related }}{{ with site.GetPage . }}{{ $logs = $logs | append (dict "p" . "mark" $product.mark "color" $product.color) }}{{ end }}{{ end }}
+    {{- end }}
+    {{- $logs = sort $logs "p.Date" "desc" | first 6 }}
+    <div class="osx-widget osx-widget--log" style="--w:3">
+      <header><i></i>BUILD.LOG <span>{{ if $isZh }}相关写作{{ else }}related writing{{ end }}</span><b>{{ len $logs }}</b></header>
+      {{- range $logs }}
+      <a class="osx-log osx-log--{{ .color }}" href="{{ .p.RelPermalink }}" target="_blank" rel="noopener">
+        <time datetime="{{ .p.Date.Format "2006-01-02" }}">{{ .p.Date.Format "2006.01.02" }}</time>
+        <span class="osx-log__mark">[{{ .mark }}]</span>
+        <span class="osx-log__title">{{ .p.Title }}</span>
+      </a>
+      {{- end }}
+      <footer>$ tail -f ~/products/build.log<b class="osx-caret">_</b></footer>
+    </div>
+
+    {{/* inbox — public feedback issues */}}
+    <div class="osx-widget osx-widget--inbox" style="--w:4">
+      <header><i></i>INBOX <span>{{ if $isZh }}建议信箱{{ else }}feedback{{ end }}</span></header>
+      {{- range $p := $products }}
+      {{- with $p.feedback }}
+      <a class="osx-inbox osx-inbox--{{ $p.color }}" href="{{ . }}" target="_blank" rel="noopener">
+        <span class="osx-inbox__num">#{{ . | replaceRE `.*/(\d+)$` "$1" }}</span>
+        <span class="osx-inbox__name">{{ $p.name }}</span>
+        <b aria-hidden="true">↗</b>
+      </a>
+      {{- end }}
+      {{- end }}
+      <footer>$ gh issue comment {{ if $isZh }}→ 直达路线图{{ else }}→ straight to roadmap{{ end }}</footer>
+    </div>
   </section>
 
-  {{/* ── Projects Grid ── */}}
-  {{- if $projectPages }}
-  <section class="eip-projects">
-    <h2 class="eip-section-label">
-      <span class="eip-dot"></span>
-      {{ if $isZh }}项目实践文章{{ else }}Project Write-ups{{ end }}
-    </h2>
-
-    <div class="eip-grid">
-      {{- range $i, $p := $projectPages }}
-      <article class="eip-card {{ if eq $i 0 }}eip-card--hero{{ end }}" data-tilt>
-        <div class="eip-card__inner">
-          <div class="eip-card__top">
-            <span class="eip-badge">{{ if $isZh }}实践文章{{ else }}Write-up{{ end }}</span>
-            <time class="eip-date">{{ $p.Date.Format "2006-01-02" }}</time>
-          </div>
-          <h3 class="eip-card__title">
-            <a href="{{ $p.Permalink }}">{{ $p.Title }}</a>
-          </h3>
-          {{- if (ne ($p.Param "hideSummary") true) }}
-          <p class="eip-card__desc">{{ $p.Summary | plainify | htmlUnescape | truncate 160 }}</p>
+  {{/* ── App windows ─────────────────────────────────────── */}}
+  {{- range $index, $product := $products }}
+  {{- $domain := $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}
+  {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" $product.id) }}
+  {{- /* related: curated list from data + any page with `product: <id>` front matter */}}
+  {{- $related := slice }}
+  {{- range where site.RegularPages "Params.product" $product.id }}{{ $related = $related | append . }}{{ end }}
+  {{- range $product.related }}{{ with site.GetPage . }}{{ $related = $related | append . }}{{ end }}{{ end }}
+  {{- $related = $related | uniq | first 3 }}
+  <section class="osx-window osx-window--{{ $product.color }}" id="{{ $product.id }}" data-osx-window="{{ $product.id }}" hidden aria-label="{{ $product.name }}">
+    <header class="osx-window__bar">
+      <span class="osx-window__lights">
+        <button type="button" class="osx-window__close" data-osx-close aria-label="{{ if $isZh }}关闭窗口{{ else }}Close window{{ end }}"></button>
+        <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </span>
+      <span class="osx-window__url">{{ $domain }}</span>
+      <span class="osx-window__proc" aria-hidden="true">PID {{ printf "%02d" (add $index 1) }}</span>
+    </header>
+    <div class="osx-window__body">
+      <a class="osx-window__screen{{ if not $hasShot }} osx-window__screen--abstract{{ end }}" href="{{ $product.url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
+        {{- if $hasShot }}
+        <img src="{{ printf "/images/products/%s.jpg" $product.id }}" alt="{{ $product.name }} — {{ $domain }}" width="1440" height="900" loading="lazy" decoding="async">
+        {{- else }}
+        <span class="osx-window__mark" aria-hidden="true">{{ $product.mark }}</span>
+        {{- end }}
+        <span class="osx-window__launch">{{ if $isZh }}启动{{ else }}Launch{{ end }} ↗</span>
+      </a>
+      <div class="osx-window__info">
+        <div class="osx-window__meta osx-reveal" style="--r:0">
+          <span class="osx-window__status"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+          <span>{{ $product.stack }}</span>
+        </div>
+        <h2 class="osx-reveal" style="--r:1">{{ $product.name }}</h2>
+        <p class="osx-window__headline osx-reveal" style="--r:2">{{ if $isZh }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
+        <p class="osx-window__desc osx-reveal" style="--r:3">{{ if $isZh }}{{ $product.desc_zh }}{{ else }}{{ $product.desc_en }}{{ end }}</p>
+        <div class="osx-window__tags osx-reveal" style="--r:4" aria-label="{{ if $isZh }}相关话题{{ else }}Related topics{{ end }}">
+          {{- range $product.tags }}
+          {{- $term := index site.Taxonomies.tags . }}
+          {{- if not $term }}{{ $term = index site.Taxonomies.tags (replace . "-" " ") }}{{ end }}
+          {{- if $term }}
+          <a href="{{ $term.Page.RelPermalink }}" target="_blank" rel="noopener" title="{{ if $isZh }}{{ len $term.Pages }} 篇相关文章{{ else }}{{ len $term.Pages }} related posts{{ end }}">#{{ . }}<b>{{ len $term.Pages }}</b></a>
+          {{- else }}<span>#{{ . }}</span>{{- end }}
           {{- end }}
-          {{- with $p.Params.tags }}
-          <div class="eip-card__tags">
-            {{- range first 5 . }}
-            <span class="eip-tag">{{ . }}</span>
-            {{- end }}
-          </div>
-          {{- end }}
-          <a href="{{ $p.Permalink }}" class="eip-cta">
-            {{ if $isZh }}查看项目{{ else }}View Project{{ end }}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="osx-window__actions osx-reveal" style="--r:5">
+          <a class="osx-window__primary" href="{{ $product.url }}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            {{ if $isZh }}打开产品{{ else }}Open product{{ end }}
+          </a>
+          <a class="osx-window__ghost" href="{{ $product.github }}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            GitHub
           </a>
         </div>
-        {{/* Full-card click convenience only; title + CTA already link to the
-             post. Keep this overlay out of the a11y tree + tab order. */}}
-        <a class="eip-card__cover" href="{{ $p.Permalink }}" aria-hidden="true" tabindex="-1"></a>
-      </article>
-      {{- end }}
+        <div class="osx-progress osx-reveal" style="--r:6">
+          <div class="osx-progress__head">
+            <span>{{ if $isZh }}开发进度{{ else }}Dev progress{{ end }} · ROADMAP</span>
+            <b>{{ $product.progress }}%</b>
+          </div>
+          <div class="osx-progress__bar" role="progressbar" aria-valuenow="{{ $product.progress }}" aria-valuemin="0" aria-valuemax="100"><i style="--p:{{ $product.progress }}%"></i></div>
+          <ul class="osx-progress__todo">
+            {{- range $product.todo }}
+            <li{{ if .done }} class="is-done"{{ end }}><i aria-hidden="true"></i><span>{{ if $isZh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</span></li>
+            {{- end }}
+          </ul>
+          {{- with $product.feedback }}
+          <a class="osx-progress__feedback" href="{{ . }}" target="_blank" rel="noopener">
+            <span>$ {{ if $isZh }}你的建议会直接进入这块路线图{{ else }}your idea can land on this roadmap{{ end }}</span>
+            <b>{{ if $isZh }}去 Issue 评论{{ else }}Comment on the issue{{ end }} ↗</b>
+          </a>
+          {{- end }}
+        </div>
+        <div class="osx-related">
+          <span class="osx-related__label osx-reveal" style="--r:7">{{ if $isZh }}相关阅读{{ else }}Related reading{{ end }} · {{ len $related }}</span>
+          {{- if $related }}
+          {{- range $ri, $rp := $related }}
+          <a class="osx-related__item osx-reveal" style="--r:{{ add 8 $ri }}" href="{{ $rp.RelPermalink }}" target="_blank" rel="noopener">
+            <time datetime="{{ $rp.Date.Format "2006-01-02" }}">{{ $rp.Date.Format "2006.01" }}</time>
+            <span>{{ $rp.Title }}</span>
+            <b aria-hidden="true">→</b>
+          </a>
+          {{- end }}
+          {{- else }}
+          <span class="osx-related__empty osx-reveal" style="--r:8">$ {{ if $isZh }}构建笔记写作中{{ else }}build notes in progress{{ end }}<b class="osx-caret">_</b></span>
+          {{- end }}
+        </div>
+      </div>
     </div>
   </section>
   {{- end }}
 
+  {{/* ── Dock (visible in app state) ─────────────────────── */}}
+  <nav class="osx-dock" aria-label="{{ if $isZh }}产品切换{{ else }}Switch product{{ end }}">
+    <button type="button" class="osx-dock__home" data-osx-close aria-label="{{ if $isZh }}返回桌面{{ else }}Back to desktop{{ end }}">◆</button>
+    <span class="osx-dock__sep" aria-hidden="true"></span>
+    {{- range $products }}
+    <button type="button" class="osx-dock__app osx-dock__app--{{ .color }}" data-osx-open="{{ .id }}" aria-label="{{ .name }}">
+      <span aria-hidden="true">{{ .mark }}</span>
+      <b>{{ .name }}</b>
+      <i class="osx-dock__dot" aria-hidden="true"></i>
+    </button>
+    {{- end }}
+  </nav>
+
+  <noscript>
+    <style>
+      .osx{position:static;height:auto;overflow:visible}
+      .osx-window[hidden]{display:flex!important;position:static;transform:none;opacity:1;margin:20px auto;max-width:1100px}
+      .osx-boot,.osx-hint{display:none}
+      body:has(.osx){overflow:auto}
+    </style>
+  </noscript>
 </div>
 
-{{/* Pointer-driven 3D tilt for the project cards — no WebGL, self-gates to
-     fine-pointer / non-reduced-motion visitors (phones keep the flat card). */}}
-{{- $cardTilt := resources.Get "js/card-tilt.js" | js.Build (dict "minify" hugo.IsProduction) -}}
-{{- if not site.Params.assets.disableFingerprinting -}}
-  {{- $cardTilt = $cardTilt | fingerprint -}}
-{{- end -}}
-<script src="{{ $cardTilt.RelPermalink }}" defer></script>
+<script>
+(function () {
+  var root = document.querySelector('[data-osx]');
+  if (!root) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ids = Array.prototype.map.call(root.querySelectorAll('[data-osx-window]'), function (w) { return w.getAttribute('data-osx-window'); });
+  var current = null;
+
+  /* boot splash — once per session */
+  var boot = root.querySelector('[data-osx-boot]');
+  if (boot) {
+    if (reduceMotion || sessionStorage.getItem('osx-booted')) { boot.remove(); }
+    else {
+      sessionStorage.setItem('osx-booted', '1');
+      root.classList.add('osx--booting');
+      setTimeout(function () { root.classList.remove('osx--booting'); boot.classList.add('osx-boot--done'); }, 1150);
+      setTimeout(function () { boot.remove(); }, 1750);
+    }
+  }
+
+  /* clocks — menubar + desktop widget */
+  var clock = root.querySelector('[data-osx-clock]');
+  var clockBig = root.querySelector('[data-osx-clock-big]');
+  var dateEl = root.querySelector('[data-osx-date]');
+  function tick() {
+    var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+    var t = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+    if (clock) clock.textContent = t;
+    if (clockBig) clockBig.textContent = t.slice(0, 5);
+    if (dateEl) {
+      var days = {{ if $isZh }}['周日','周一','周二','周三','周四','周五','周六']{{ else }}['SUN','MON','TUE','WED','THU','FRI','SAT']{{ end }};
+      dateEl.textContent = d.getFullYear() + '.' + p(d.getMonth() + 1) + '.' + p(d.getDate()) + ' · ' + days[d.getDay()];
+    }
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* pointer parallax (fine pointers only) */
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+    window.addEventListener('pointermove', function (e) {
+      tx = (e.clientX / innerWidth - .5) * 2;
+      ty = (e.clientY / innerHeight - .5) * 2;
+      if (!raf) raf = requestAnimationFrame(step);
+    }, { passive: true });
+    function step() {
+      cx += (tx - cx) * .06; cy += (ty - cy) * .06;
+      root.style.setProperty('--mx', cx.toFixed(4));
+      root.style.setProperty('--my', cy.toFixed(4));
+      raf = (Math.abs(tx - cx) + Math.abs(ty - cy) > .001) ? requestAnimationFrame(step) : null;
+    }
+  }
+
+  function windowEl(id) { return root.querySelector('[data-osx-window="' + id + '"]'); }
+
+  function open(id) {
+    if (!windowEl(id) || id === current) return;
+    ids.forEach(function (other) {
+      var w = windowEl(other);
+      if (other === id) { w.hidden = false; requestAnimationFrame(function () { w.classList.add('osx-window--open'); }); }
+      else { w.classList.remove('osx-window--open'); w.hidden = true; }
+    });
+    current = id;
+    root.classList.add('osx--app');
+    root.querySelectorAll('.osx-dock__app').forEach(function (btn) {
+      btn.classList.toggle('osx-dock__app--active', btn.getAttribute('data-osx-open') === id);
+    });
+    history.replaceState(null, '', '#' + id);
+    var closeBtn = windowEl(id).querySelector('[data-osx-close]');
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
+  }
+
+  function close() {
+    if (current === null) return;
+    var w = windowEl(current), prev = current;
+    w.classList.remove('osx-window--open');
+    root.classList.remove('osx--app');
+    setTimeout(function () { if (current === null) w.hidden = true; }, 300);
+    current = null;
+    history.replaceState(null, '', location.pathname);
+    var icon = root.querySelector('.osx-widget--proc [data-osx-open="' + prev + '"]');
+    if (icon) icon.focus({ preventScroll: true });
+  }
+
+  root.addEventListener('click', function (e) {
+    var opener = e.target.closest('[data-osx-open]');
+    if (opener) { open(opener.getAttribute('data-osx-open')); return; }
+    if (e.target.closest('[data-osx-close]')) { close(); return; }
+    /* click on the backdrop (outside window/dock/menubar) smoothly returns to desktop */
+    if (current !== null && !e.target.closest('.osx-window') && !e.target.closest('.osx-dock') && !e.target.closest('.osx-menubar')) close();
+  });
+
+  /* language switch keeps the open window via hash */
+  root.querySelectorAll('[data-osx-lang]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      a.href = a.href.split('#')[0] + (current ? '#' + current : '');
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { close(); return; }
+    var n = parseInt(e.key, 10);
+    if (n >= 1 && n <= ids.length && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      var tag = document.activeElement && document.activeElement.tagName;
+      if (tag !== 'INPUT' && tag !== 'TEXTAREA') open(ids[n - 1]);
+      return;
+    }
+    if (current !== null && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+      var i = ids.indexOf(current);
+      open(ids[(i + (e.key === 'ArrowRight' ? 1 : ids.length - 1)) % ids.length]);
+    }
+  });
+
+  /* deep link — on load and on same-document hash navigation */
+  function applyHash() {
+    var hash = location.hash.replace('#', '');
+    if (hash && ids.indexOf(hash) !== -1) open(hash);
+    else if (!hash && current !== null) close();
+  }
+  window.addEventListener('hashchange', applyHash);
+  applyHash();
+})();
+</script>
 {{- end }}

@@ -25,6 +25,9 @@ tldr:
   - "When you've taken it all apart, some things still have weight no matter how much \"emptiness\" you throw at them. That residue is your ground — and it's yours alone."
   - "Growth isn't finding an answer that stops the pain. It's learning to stand between taking-apart and claiming: some things can't be dismantled, and shouldn't be. The pain is the proof they still have weight."
 maturity: budding
+cover:
+  image: /images/covers/growth/2026/2026-07-14-what-remains-when-taken-apart.jpeg
+  alt: "What Remains When You Take It All Apart: On No-Self, Suffering, and \"You Could Say It Either Way\""
 ---
 
 > The seed of this piece was a conversation that ran for several rounds — starting from small talk about the weather and sliding, almost by accident, into "what is life even made of?"

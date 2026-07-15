@@ -45,116 +45,150 @@ body.dark .article-tools .editorial-tools-panel {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   TAB BAR — segmented pill, subtle, generous touch area
+   TAB BAR — quiet typographic tabs on a hairline, no chrome.
+   The tab bar is wayfinding, not content: at rest it should read
+   as a faint caption; the active tab is marked by ink + a short
+   underline that slides, not by a filled pill.
    ──────────────────────────────────────────────────────────────── */
 .editorial-tools-panel .rc-tabs {
   display: flex;
-  gap: 2px;
-  border-bottom: none;
-  margin: 0 0 18px;
-  padding: 3px;
+  gap: 20px;
+  margin: 0 0 16px;
+  padding: 0;
   flex-shrink: 0;
-  background: rgba(30, 35, 30, 0.045);
-  border-radius: 9px;
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(30, 35, 30, 0.08);
   width: 100%;
   box-sizing: border-box;
 }
 
 body.dark .editorial-tools-panel .rc-tabs {
-  background: rgba(226, 227, 225, 0.05);
+  background: transparent;
+  border-bottom-color: rgba(226, 227, 225, 0.1);
 }
 
 .editorial-tools-panel .rc-tab {
-  flex: 1 1 50%;
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 8px 10px;
+  gap: 0;
+  padding: 2px 1px 9px;
+  margin: 0;
   background: transparent;
   border: none;
-  border-radius: 6px;
-  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
   cursor: pointer;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.2;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: 0.06em;
   text-transform: none;
   color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.62;
+  min-width: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: color 180ms ease, background-color 180ms ease;
-  opacity: 1;
-  min-width: 0;
+  transition: color 200ms ease, opacity 200ms ease;
 }
 
 html:lang(zh) .editorial-tools-panel .rc-tab {
-  font-size: 13.5px;
-  letter-spacing: 0.02em;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
 }
 
+/* Typographic tabs: the labels carry the meaning, icons only add noise */
 .editorial-tools-panel .rc-tab svg {
-  width: 14px;
-  height: 14px;
-  stroke-width: 1.75;
-  opacity: 0.65;
-  flex-shrink: 0;
+  display: none;
+}
+
+/* Sliding underline — drawn per-tab, revealed on activation */
+.editorial-tools-panel .rc-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1.5px;
+  background: var(--color-ink, #1a1c1b);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.dark .editorial-tools-panel .rc-tab::after {
+  background: var(--color-ink, #e2e3e1);
 }
 
 .editorial-tools-panel .rc-tab:hover {
   color: var(--color-ink, #1a1c1b);
-  background: rgba(30, 35, 30, 0.04);
+  background: transparent;
+  opacity: 0.9;
 }
 
 body.dark .editorial-tools-panel .rc-tab:hover {
   color: var(--color-ink, #e2e3e1);
-  background: rgba(226, 227, 225, 0.06);
+  background: transparent;
 }
 
 .editorial-tools-panel .rc-tab--active,
 .editorial-tools-panel .rc-tab.active {
   color: var(--color-ink, #1a1c1b);
-  background: var(--color-paper, #f9f9f7);
-  box-shadow: 0 1px 2px rgba(30, 35, 30, 0.06), 0 0 0 0.5px rgba(30, 35, 30, 0.04);
+  background: transparent;
+  box-shadow: none;
   font-weight: 600;
   opacity: 1;
+}
+
+.editorial-tools-panel .rc-tab--active::after,
+.editorial-tools-panel .rc-tab.active::after {
+  transform: scaleX(1);
 }
 
 body.dark .editorial-tools-panel .rc-tab--active,
 body.dark .editorial-tools-panel .rc-tab.active {
   color: var(--color-ink, #e2e3e1);
-  background: rgba(226, 227, 225, 0.15);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  box-shadow: none;
 }
 
-/* P0-2: ZH dark — tab active text must use ink (light), not paper (dark bg) */
+/* ZH dark — tab active text must use ink (light), not paper (dark bg) */
 html:lang(zh) body.dark .editorial-tools-panel .rc-tab--active,
 html:lang(zh) body.dark .editorial-tools-panel .rc-tab.active {
   color: var(--color-ink, #f5f3ee);
-  background: rgba(245, 243, 238, 0.12);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.editorial-tools-panel .rc-tab--active svg,
-.editorial-tools-panel .rc-tab.active svg {
-  opacity: 1;
+  background: transparent;
+  box-shadow: none;
 }
 
 /* ────────────────────────────────────────────────────────────────
-   TOC — editorial outline, generous rhythm, clear hierarchy
+   TOC — quiet peripheral wayfinding.
+
+   The TOC lives in the reader's peripheral vision while the fovea
+   is on the article. At rest it should register as faint texture:
+   small, low-contrast, uniform. Position (not color) carries the
+   "you are here" signal — a 2px tick that slides along a hairline
+   rail. No background fills, no red text: color blocks and
+   saturated red are attention captures, exactly what a sidebar
+   must not do. On approach (hover anywhere over the list) the
+   whole outline lifts slightly — contrast arrives when sought.
    ──────────────────────────────────────────────────────────────── */
 .editorial-tools-panel .toc-side__nav {
-  padding: 0 0 12px;
+  padding: 2px 0 12px;
 }
 
 .editorial-tools-panel .toc-side__nav ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 14px;
   position: relative;
+  border-left: 1px solid rgba(30, 35, 30, 0.09);
+}
+
+body.dark .editorial-tools-panel .toc-side__nav ul {
+  border-left-color: rgba(226, 227, 225, 0.12);
 }
 
 .editorial-tools-panel .toc-item {
@@ -163,126 +197,136 @@ html:lang(zh) body.dark .editorial-tools-panel .rc-tab.active {
   position: relative;
 }
 
+/* "You are here" tick — rides the rail, revealed by scaleY */
+.editorial-tools-panel .toc-item::before {
+  content: "";
+  position: absolute;
+  left: -15.5px;
+  top: 50%;
+  width: 2px;
+  height: 15px;
+  border-radius: 2px;
+  background: var(--color-accent, #862122);
+  opacity: 0;
+  transform: translateY(-50%) scaleY(0.4);
+  transition: opacity 220ms ease,
+              transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.editorial-tools-panel .toc-item:has(> a.toc-active)::before {
+  opacity: 1;
+  transform: translateY(-50%) scaleY(1);
+}
+
 .editorial-tools-panel .toc-item a {
   display: block;
   font-family: var(--font-body);
-  font-size: 13.5px;
+  font-size: 13px;
   line-height: 1.55;
-  padding: 7px 10px 7px 14px;
+  padding: 5px 8px 5px 0;
   color: var(--color-ink, #1a1c1b);
   text-decoration: none;
-  border-left: 2px solid transparent;
-  border-radius: 0 5px 5px 0;
+  border: none;
+  border-radius: 0;
   font-weight: 400;
   letter-spacing: 0;
-  opacity: 0.68;
+  opacity: 0.55;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: color 150ms ease, background-color 150ms ease,
-              border-left-color 150ms ease, opacity 150ms ease;
+  transition: color 200ms ease, opacity 200ms ease;
 }
 
 html:lang(zh) .editorial-tools-panel .toc-item a {
-  font-size: 14px;
+  font-size: 13.5px;
   letter-spacing: 0.01em;
   font-weight: 400;
 }
 
 body.dark .editorial-tools-panel .toc-item a {
   color: var(--color-ink, #e2e3e1);
-  opacity: 0.72;
+  opacity: 0.58;
 }
 
-/* P0-3: ZH dark — TOC links must use ink (light), not paper (dark bg) */
+/* ZH dark — TOC links must use ink (light), not paper (dark bg) */
 html:lang(zh) body.dark .editorial-tools-panel .toc-item a {
   color: var(--color-ink, #f5f3ee);
-  opacity: 0.76;
+  opacity: 0.6;
 }
 
-.editorial-tools-panel .toc-item a:hover {
-  color: var(--color-ink, #1a1c1b);
-  background: rgba(30, 35, 30, 0.04);
-  opacity: 1;
-}
-
-body.dark .editorial-tools-panel .toc-item a:hover {
-  color: var(--color-ink, #e2e3e1);
-  background: rgba(226, 227, 225, 0.09);
-  opacity: 1;
-}
-
-/* P0-3 hover: ZH dark — same fix for hover state */
-html:lang(zh) body.dark .editorial-tools-panel .toc-item a:hover {
-  color: var(--color-ink, #f5f3ee);
-  background: rgba(245, 243, 238, 0.09);
-  opacity: 1;
-}
-
-/* Active: left accent bar + bold + full opacity + soft tinted background */
-.editorial-tools-panel .toc-item a.toc-active {
-  color: var(--color-accent, #862122);
-  font-weight: 600;
-  border-left-color: var(--color-accent, #862122);
-  background: rgba(134, 33, 34, 0.065);
-  opacity: 1;
-}
-
-html:lang(zh) .editorial-tools-panel .toc-item a.toc-active {
-  font-weight: 500;
-}
-
-body.dark .editorial-tools-panel .toc-item a.toc-active {
-  color: var(--color-ink, #e2e3e1);
-  background: rgba(226, 227, 225, 0.08);
-  border-left-color: var(--color-ink, #e2e3e1);
-  opacity: 1;
-}
-
-html:lang(en) .editorial-tools-panel .toc-item a.toc-active {
-  color: var(--color-accent, #2e352e);
-  border-left-color: var(--color-accent, #2e352e);
-  background: rgba(46, 53, 46, 0.06);
-}
-
-html:lang(en) body.dark .editorial-tools-panel .toc-item a.toc-active {
-  color: #7dd3fc;
-  background: rgba(125, 211, 252, 0.10);
-  border-left-color: #7dd3fc;
-}
-
-/* P0-1: ZH dark — TOC active item must use accent red, not paper (dark bg = invisible) */
-html:lang(zh) body.dark .editorial-tools-panel .toc-item a.toc-active {
-  color: var(--color-accent, #ff6b6b) !important;
-  border-left-color: var(--color-accent, #ff6b6b) !important;
-  border-left-width: 3px;
-  background: rgba(255, 107, 107, 0.14);
-  font-weight: 600;
-  opacity: 1;
-}
-
-/* Indent sub-headings progressively, smaller but still readable */
-.editorial-tools-panel .toc-item--h3 a {
-  padding-left: 32px;
-  font-size: 0.80rem;
+/* Progressive disclosure: approaching the outline lifts it slightly */
+.editorial-tools-panel .toc-side__nav:hover .toc-item a {
   opacity: 0.75;
 }
 
+.editorial-tools-panel .toc-item a:hover,
+.editorial-tools-panel .toc-side__nav:hover .toc-item a:hover {
+  color: var(--color-ink, #1a1c1b);
+  background: transparent;
+  opacity: 1;
+}
+
+body.dark .editorial-tools-panel .toc-item a:hover,
+body.dark .editorial-tools-panel .toc-side__nav:hover .toc-item a:hover {
+  color: var(--color-ink, #e2e3e1);
+  background: transparent;
+  opacity: 1;
+}
+
+html:lang(zh) body.dark .editorial-tools-panel .toc-item a:hover,
+html:lang(zh) body.dark .editorial-tools-panel .toc-side__nav:hover .toc-item a:hover {
+  color: var(--color-ink, #f5f3ee);
+  background: transparent;
+  opacity: 1;
+}
+
+/* Active: ink at full strength + medium weight — the tick carries
+   the accent, the text stays calm. */
+.editorial-tools-panel .toc-item a.toc-active,
+.editorial-tools-panel .toc-side__nav:hover .toc-item a.toc-active {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 500;
+  background: transparent;
+  opacity: 1;
+}
+
+body.dark .editorial-tools-panel .toc-item a.toc-active,
+body.dark .editorial-tools-panel .toc-side__nav:hover .toc-item a.toc-active {
+  color: var(--color-ink, #e2e3e1);
+  background: transparent;
+  opacity: 1;
+}
+
+html:lang(zh) body.dark .editorial-tools-panel .toc-item a.toc-active,
+html:lang(zh) body.dark .editorial-tools-panel .toc-side__nav:hover .toc-item a.toc-active {
+  color: var(--color-ink, #f5f3ee);
+  background: transparent;
+  opacity: 1;
+}
+
+/* Indent sub-headings progressively; each level recedes a step */
+.editorial-tools-panel .toc-item--h3 a {
+  padding-left: 14px;
+  font-size: 12.5px;
+  opacity: 0.5;
+}
+
 body.dark .editorial-tools-panel .toc-item--h3 a {
-  opacity: 0.82;
+  opacity: 0.52;
 }
 .editorial-tools-panel .toc-item--h4 a {
-  padding-left: 42px;
-  font-size: 0.74rem;
-  opacity: 0.7;
+  padding-left: 26px;
+  font-size: 12px;
+  opacity: 0.46;
 }
 .editorial-tools-panel .toc-item--h5 a,
 .editorial-tools-panel .toc-item--h6 a {
-  padding-left: 52px;
-  font-size: 0.72rem;
-  opacity: 0.65;
+  padding-left: 36px;
+  font-size: 11.5px;
+  opacity: 0.44;
 }
 
 /* ────────────────────────────────────────────────────────────────
@@ -316,70 +360,68 @@ html:lang(zh) .editorial-tools-panel .rc-ai-quick-label {
   text-transform: none;
 }
 
-/* Chip grid — 2 columns, generous gap */
+/* Chip grid — 2 columns, quiet hairline pills.
+   No emoji, no fills: the labels are short enough to carry
+   themselves; accent color only surfaces on intent (hover). */
 .editorial-tools-panel .rc-ai-quick {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 7px;
   margin: 0;
 }
 
 .editorial-tools-panel .rc-ai-chip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 0;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.3;
-  font-weight: 500;
-  padding: 10px 12px;
-  border: 1px solid rgba(30, 35, 30, 0.08);
-  border-radius: 9px;
-  background: var(--color-paper, #f9f9f7);
-  color: var(--color-ink, #1a1c1b);
+  font-weight: 450;
+  padding: 7px 10px;
+  border: 1px solid rgba(30, 35, 30, 0.12);
+  border-radius: 999px;
+  background: transparent;
+  color: color-mix(in oklab, var(--color-ink, #1a1c1b) 72%, transparent);
   cursor: pointer;
   transition: background-color 180ms ease, border-color 180ms ease,
-              transform 120ms ease, box-shadow 180ms ease;
-  text-align: left;
+              color 180ms ease, transform 120ms ease;
+  text-align: center;
   user-select: none;
   pointer-events: auto;
-  min-height: 40px;
+  min-height: 32px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html:lang(zh) .editorial-tools-panel .rc-ai-chip {
-  font-size: 13.5px;
-  letter-spacing: 0.02em;
-  font-weight: 500;
-}
-
-.editorial-tools-panel .rc-ai-chip__icon {
-  font-size: 15px;
-  line-height: 1;
-  flex-shrink: 0;
-  opacity: 0.95;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  font-weight: 400;
 }
 
 .editorial-tools-panel .rc-ai-chip:hover {
-  background: rgba(30, 35, 30, 0.035);
-  border-color: rgba(30, 35, 30, 0.18);
-  box-shadow: 0 1px 2px rgba(30, 35, 30, 0.04);
+  background: color-mix(in oklab, var(--color-accent, #862122) 5%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent, #862122) 45%, transparent);
+  color: var(--color-accent, #862122);
+  box-shadow: none;
 }
 
 .editorial-tools-panel .rc-ai-chip:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
 body.dark .editorial-tools-panel .rc-ai-chip {
-  background: rgba(226, 227, 225, 0.03);
-  border-color: rgba(226, 227, 225, 0.1);
-  color: var(--color-ink, #e2e3e1);
+  background: transparent;
+  border-color: rgba(226, 227, 225, 0.14);
+  color: color-mix(in oklab, var(--color-ink, #e2e3e1) 75%, transparent);
 }
 
 body.dark .editorial-tools-panel .rc-ai-chip:hover {
-  background: rgba(226, 227, 225, 0.07);
-  border-color: rgba(226, 227, 225, 0.2);
+  background: color-mix(in oklab, var(--color-accent, #ff6b6b) 8%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent, #ff6b6b) 45%, transparent);
+  color: var(--color-accent, #ff6b6b);
 }
 
 .editorial-tools-panel .rc-ai-chip--used,

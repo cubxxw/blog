@@ -1,6 +1,9 @@
 /* ===================================
-   Navigation — Notion-inspired minimal
-   Soft grey hovers, no pills, subtle hairline.
+   Navigation — editorial masthead.
+   The bar borrows the article page's own language: a serif
+   wordmark, quiet letterspaced text links, state carried by ink
+   strength and hairline underlines — no filled pills, no boxed
+   chips. Chrome recedes; typography does the work.
    =================================== */
 
 /* Sticky header with frosted glass */
@@ -57,11 +60,18 @@ html:lang(zh) body.dark .header-wrapper {
     border-bottom-color: rgba(226, 227, 225, 0.06);
 }
 
-/* Main Navigation Container — tighter Notion rhythm */
+/* Main Navigation Container — tighter Notion rhythm.
+   One composed line, not three islands: cap the bar to the content shell
+   (profile_shell is 1280px) instead of letting --nav-width climb to 1760px
+   on wide monitors, and left-cluster the brand with the menu so only two
+   anchor points remain — identity + wayfinding on the left, utilities on
+   the right. */
 .nav {
     gap: 8px;
     padding: 0 4px;
     line-height: 44px;
+    max-width: calc(1280px + var(--gap) * 2);
+    justify-content: flex-start;
 }
 
 /* Override PaperMod default that pushes logo/menu apart by 24px */
@@ -76,71 +86,115 @@ html:lang(zh) body.dark .header-wrapper {
     gap: 8px;
 }
 
+/* Wordmark set in the site's display serif — the same voice as the
+   article titles below it, so the bar and the page read as one book. */
 .logo a {
-    font-family: var(--font-body, system-ui, sans-serif);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display, 'Fraunces', Georgia, serif);
+    font-size: 16.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
     color: var(--color-ink, var(--primary));
 }
 
-/* Menu List — centered, tight gap */
+/* Menu List — joined to the brand; wider gaps because the links no
+   longer carry pill padding of their own. */
 #menu {
     display: flex;
     align-items: center;
-    gap: 0;
-    margin: auto auto;
+    gap: 20px;
+    margin: auto 0;
     flex: 0 1 auto;
-    justify-content: center;
+    /* PaperMod puts overflow-x on #menu; visible is required or the
+       dropdown card gets clipped by the scroll container it creates. */
+    overflow: visible;
+}
+
+/* Hairline divider joining brand and menu — a deliberate seam instead of
+   empty distance (the Vercel-slash idea, quieter). */
+#menu::before {
+    content: "";
+    width: 1px;
+    height: 15px;
+    margin: 0 12px 0 6px;
+    background: rgba(30, 35, 30, 0.16);
+    align-self: center;
+    flex-shrink: 0;
+}
+
+body.dark #menu::before {
+    background: rgba(226, 227, 225, 0.18);
+}
+
+/* Utilities dock right once the menu stops floating in the middle. */
+.logo-switches {
+    margin-left: auto;
 }
 
 #menu li {
     margin-inline-start: 0;
 }
 
-/* Navigation Links - flat text, no pill */
+/* PaperMod spaces menu items with `#menu li + li { margin-inline-start:
+   var(--gap) }` — an ID selector that outranks every class rule here and
+   was blowing 24px gaps into BOTH nav levels (top row and the dropdown's
+   rows, which is why the panel items rendered raggedly indented). Same
+   selector, later source: neutralize it and let gap/padding set the rhythm. */
+#menu li + li {
+    margin-inline-start: 0;
+}
+
+/* PaperMod's `#menu .active` 2px underline is too loud; a refined one
+   is drawn below on the span itself. */
+#menu .active {
+    border-bottom: none;
+}
+
+/* Navigation Links — bare text, letterspaced, no container */
 #menu > li > a {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 5px 10px;
-    border-radius: 6px;
+    gap: 5px;
+    padding: 5px 1px;
+    border-radius: 0;
     background: transparent;
     color: var(--color-ink-muted, var(--secondary));
     font-family: var(--font-body, system-ui, sans-serif);
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 500;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     text-decoration: none;
     border: none;
     line-height: 1.4;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition: color 0.18s ease;
 }
 
-/* Hover State - soft gray fill */
+/* Hover: ink arrives, nothing fills */
 #menu > li > a:hover {
-    background: rgba(30, 35, 30, 0.05);
+    background: transparent;
     color: var(--color-ink, var(--primary));
 }
 
 body.dark #menu > li > a:hover {
-    background: rgba(226, 227, 225, 0.06);
+    background: transparent;
 }
 
-/* Active State - solid text color only, no border, no gradient */
-#menu > li > a:has(.active),
+/* Active: ink text + a hairline underline hugging the word — the same
+   understated "you are here" the TOC and panel tabs use. */
 #menu > li > a .active {
     color: var(--color-ink, var(--primary));
     font-weight: 600;
+    padding-bottom: 2px;
+    border-bottom: 1px solid color-mix(in oklab, var(--color-accent, #862122) 55%, transparent);
 }
 
 #menu > li > a:has(.active) {
-    background: rgba(30, 35, 30, 0.04);
+    color: var(--color-ink, var(--primary));
+    background: transparent;
 }
 
 body.dark #menu > li > a:has(.active) {
-    background: rgba(226, 227, 225, 0.05);
+    background: transparent;
 }
 
 /* External link arrow subtle */
@@ -153,61 +207,219 @@ body.dark #menu > li > a:has(.active) {
     opacity: 0.85;
 }
 
-/* Search Button - minimal chip */
+/* ===================================
+   Dropdown submenu — Posts ▾
+   Same Notion-minimal card language as the
+   mobile hamburger panel; opens on hover and
+   :focus-within so keyboard users get it too.
+   =================================== */
+#menu li.nav-item--has-sub {
+    position: relative;
+}
+
+.nav-sub-chevron {
+    margin-top: 1px;
+    transition: transform 0.18s ease;
+}
+
+#menu li.nav-item--has-sub:hover .nav-sub-chevron,
+#menu li.nav-item--has-sub:focus-within .nav-sub-chevron {
+    transform: rotate(180deg);
+}
+
+.nav-sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 8px 0 0;
+    padding: 5px;
+    min-width: 208px;
+    list-style: none;
+    background: var(--color-paper, var(--theme));
+    border: 1px solid rgba(30, 35, 30, 0.08);
+    border-radius: 12px;
+    /* Layered shadow: a tight contact line plus a soft ambient falloff
+       reads as one raised card, not a grey smudge. */
+    box-shadow:
+        0 1px 2px rgba(30, 35, 30, 0.05),
+        0 12px 32px rgba(30, 35, 30, 0.10);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top left;
+    transform: translateY(-6px) scale(0.97);
+    transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.2, 0, 0, 1), visibility 0.16s ease;
+    z-index: 1000;
+}
+
+/* Invisible hover bridge across the 8px gap between trigger and panel,
+   so the pointer never "falls out" of the li while travelling down. */
+.nav-sub::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+}
+
+#menu li.nav-item--has-sub:hover > .nav-sub,
+#menu li.nav-item--has-sub:focus-within > .nav-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.nav-sub li {
+    margin: 0;
+    width: 100%;
+}
+
+/* Row: name left, live post count right. The #menu prefix is not optional —
+   PaperMod's `#menu a { font-size: 16px }` (ID specificity) is what blew the
+   panel typography up before; these must outrank it. */
+#menu .nav-sub a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 7px 11px;
+    border-radius: 8px;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    color: var(--color-ink-muted, var(--secondary));
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+#menu .nav-sub a:hover {
+    background: rgba(30, 35, 30, 0.05);
+    color: var(--color-ink, var(--primary));
+}
+
+#menu .nav-sub a .active {
+    color: var(--color-ink, var(--primary));
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.nav-sub__count {
+    font-size: 11px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink-muted, var(--secondary));
+    opacity: 0.55;
+    transition: opacity 0.15s ease;
+}
+
+#menu .nav-sub a:hover .nav-sub__count {
+    opacity: 0.9;
+}
+
+/* "All Posts" style row: hairline above the last item */
+.nav-sub li:last-child {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(30, 35, 30, 0.07);
+}
+
+body.dark .nav-sub {
+    border-color: rgba(226, 227, 225, 0.08);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.25),
+        0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Must outrank the light-mode `#menu .nav-sub a:hover` (1,1,2). */
+body.dark #menu .nav-sub a:hover {
+    background: rgba(226, 227, 225, 0.06);
+}
+
+body.dark .nav-sub li:last-child {
+    border-top-color: rgba(226, 227, 225, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-sub,
+    .nav-sub-chevron {
+        transition: none;
+    }
+}
+
+/* Search — a quiet text affordance, not a widget. Icon + word, with
+   the shortcut as a faint typographic whisper (no keycap boxes). */
 .nav-search-trigger {
     height: 30px;
-    padding: 0 9px;
-    gap: 7px;
-    border-radius: 6px;
-    border: 1px solid rgba(30, 35, 30, 0.1);
-    background: rgba(30, 35, 30, 0.02);
+    padding: 0 2px;
+    gap: 6px;
+    border-radius: 0;
+    border: none;
+    background: transparent;
     color: var(--color-ink-muted, var(--secondary));
-    font-size: 12.5px;
+    font-size: 13px;
     flex-shrink: 0;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    transition: color 0.18s ease;
 }
 
 .nav-search-trigger:hover {
-    background: rgba(30, 35, 30, 0.05);
-    border-color: rgba(30, 35, 30, 0.15);
+    background: transparent;
+    border: none;
     transform: none;
     box-shadow: none;
     color: var(--color-ink, var(--primary));
 }
 
 body.dark .nav-search-trigger {
-    border-color: rgba(226, 227, 225, 0.1);
-    background: rgba(226, 227, 225, 0.03);
+    border: none;
+    background: transparent;
 }
 
 body.dark .nav-search-trigger:hover {
-    background: rgba(226, 227, 225, 0.07);
-    border-color: rgba(226, 227, 225, 0.18);
+    background: transparent;
+}
+
+.nav-search-trigger__icon svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 1.75;
 }
 
 .nav-search-trigger__label {
     font-size: 13px;
+    letter-spacing: 0.02em;
     white-space: nowrap;
 }
 
 .nav-search-trigger__keys {
     flex-shrink: 0;
     white-space: nowrap;
+    opacity: 0.5;
+    transition: opacity 0.18s ease;
+}
+
+.nav-search-trigger:hover .nav-search-trigger__keys {
+    opacity: 0.75;
 }
 
 .nav-search-trigger kbd {
-    min-width: 18px;
-    padding: 1px 5px;
-    font-size: 10px;
-    border-radius: 3px;
-    background: rgba(30, 35, 30, 0.05);
-    border-color: rgba(30, 35, 30, 0.08);
-    color: var(--color-ink-muted, var(--secondary));
+    min-width: 0;
+    padding: 0;
+    font-size: 10.5px;
+    font-family: var(--font-body, system-ui, sans-serif);
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: inherit;
 }
 
 body.dark .nav-search-trigger kbd {
-    background: rgba(226, 227, 225, 0.06);
-    border-color: rgba(226, 227, 225, 0.1);
+    background: transparent;
+    border: none;
 }
 
 /* Theme toggle & lang switcher - understated */
@@ -233,12 +445,12 @@ body.dark .nav-search-trigger kbd {
 }
 
 #theme-toggle:hover {
-    background: rgba(30, 35, 30, 0.05);
+    background: transparent;
     color: var(--color-ink, var(--primary));
 }
 
 body.dark #theme-toggle:hover {
-    background: rgba(226, 227, 225, 0.06);
+    background: transparent;
 }
 
 #theme-toggle svg {
@@ -246,34 +458,41 @@ body.dark #theme-toggle:hover {
     height: 16px;
 }
 
-/* Language Switcher — bilingual pill, current language sealed in cinnabar (朱砂印).
-   Both glyphs are always visible so users see the choice, not just the destination.
-   Active glyph fills with the cinnabar token (#862122 — the seal red used on
-   Chinese 印章); the muted glyph lifts into the same wash on hover. */
-:root {
-    --color-cinnabar: #862122;
-    --color-cinnabar-soft: #a64041;
-}
+/* Language Switcher — a typographic pair, 中 / EN, divided by a faint
+   slash. The current language is set in the page's accent ink; the
+   other waits in muted grey. No pill, no seal: a persistent saturated
+   badge in the periphery taxes attention on every page — the accent
+   colored glyph says "current" at a fraction of the visual cost. */
 .lang-switch {
     flex-shrink: 0;
     display: inline-flex;
-    align-items: stretch;
+    align-items: center;
     gap: 0;
     margin: 0;
-    padding: 2px;
+    padding: 0;
     list-style: none;
-    border-radius: 999px;
-    background: rgba(30, 35, 30, 0.04);
-    box-shadow: inset 0 0 0 1px rgba(30, 35, 30, 0.08);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
     line-height: 1;
 }
 
 .lang-switch__item {
     display: inline-flex;
+    align-items: center;
     margin: 0;
     padding: 0;
     opacity: 1;
     color: inherit;
+}
+
+/* Hairline slash between the two glyphs */
+.lang-switch__item + .lang-switch__item::before {
+    content: "/";
+    margin: 0 5px;
+    font-size: 11px;
+    color: var(--color-ink-muted, var(--secondary));
+    opacity: 0.4;
 }
 
 .lang-switch__item > a,
@@ -281,24 +500,27 @@ body.dark #theme-toggle:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 28px;
-    height: 22px;
-    padding: 0 9px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
+    min-width: 0;
+    height: auto;
+    padding: 3px 2px;
+    border-radius: 0;
+    font-size: 12.5px;
+    font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.03em;
     color: var(--color-ink-muted, var(--secondary));
+    background: transparent;
+    box-shadow: none;
     text-decoration: none;
-    transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+    opacity: 0.75;
+    transition: color 180ms ease, opacity 180ms ease;
 }
 
 /* Chinese glyph (中) gets a serif face for character feel */
 .lang-switch__item--zh > a,
 .lang-switch__item--zh > span {
     font-family: "Source Han Serif SC", "Songti SC", "Noto Serif SC", var(--font-serif, serif);
-    font-size: 13px;
+    font-size: 13.5px;
     letter-spacing: 0;
 }
 
@@ -309,30 +531,33 @@ body.dark #theme-toggle:hover {
     font-feature-settings: "ss01" on, "kern" on;
 }
 
-/* Inactive hover: cinnabar wash — signals "click to switch here" */
+/* Inactive hover: ink arrives */
 .lang-switch__item > a:hover,
 .lang-switch__item > a:focus-visible {
-    color: var(--color-cinnabar, #862122);
-    background: rgba(134, 33, 34, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(134, 33, 34, 0.18);
+    color: var(--color-ink, var(--primary));
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
 }
 
 .lang-switch__item > a:focus-visible {
-    outline: none;
-    box-shadow: inset 0 0 0 1px rgba(134, 33, 34, 0.45);
+    outline: 1.5px solid color-mix(in oklab, var(--color-accent, #862122) 55%, transparent);
+    outline-offset: 2px;
 }
 
-/* Active: cinnabar seal — solid #862122 with white ink, like a stamped 印 */
+/* Active: the accent ink of the current language's design system */
 .lang-switch__item--active > span {
-    color: #fff;
-    background: var(--color-cinnabar, #862122);
-    box-shadow: 0 1px 2px rgba(134, 33, 34, 0.28), inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+    color: var(--color-accent, #862122);
+    font-weight: 600;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
 }
 
-/* Dark mode: lift the rail off the ink background, soften the cinnabar */
+/* Dark mode inherits the same logic through the accent token */
 body.dark .lang-switch {
-    background: rgba(226, 227, 225, 0.05);
-    box-shadow: inset 0 0 0 1px rgba(226, 227, 225, 0.08);
+    background: transparent;
+    box-shadow: none;
 }
 
 body.dark .lang-switch__item > a,
@@ -342,15 +567,15 @@ body.dark .lang-switch__item > span {
 
 body.dark .lang-switch__item > a:hover,
 body.dark .lang-switch__item > a:focus-visible {
-    color: #f3c9c9;
-    background: rgba(214, 88, 88, 0.14);
-    box-shadow: inset 0 0 0 1px rgba(214, 88, 88, 0.30);
+    color: var(--color-ink, var(--primary));
+    background: transparent;
+    box-shadow: none;
 }
 
 body.dark .lang-switch__item--active > span {
-    color: #fff;
-    background: var(--color-cinnabar-soft, #a64041); /* slightly lifted cinnabar for dark surfaces */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color: var(--color-accent, #ff6b6b);
+    background: transparent;
+    box-shadow: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -470,6 +695,58 @@ body.dark .lang-switch__item--active > span {
         gap: 8px;
         justify-content: flex-start;
         border-radius: 4px;
+    }
+
+    /* Rows inside the hamburger card DO need touch feedback — the
+       desktop "ink only" hover has nothing to press against here. */
+    #menu > li > a:hover,
+    #menu > li > a:active {
+        background: rgba(30, 35, 30, 0.05);
+    }
+
+    body.dark #menu > li > a:hover,
+    body.dark #menu > li > a:active {
+        background: rgba(226, 227, 225, 0.06);
+    }
+
+    /* The brand/menu divider is a desktop idea; in the hamburger column it
+       would render as a stray tick. */
+    #menu::before {
+        display: none;
+    }
+
+    /* Submenu inside the hamburger panel: no floating card — the
+       children render inline, indented under their parent. */
+    .nav-sub {
+        position: static;
+        margin: 0 0 2px;
+        padding: 0 0 0 14px;
+        min-width: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .nav-sub::before {
+        display: none;
+    }
+
+    #menu .nav-sub a {
+        padding: 7px 10px;
+        font-size: 13.5px;
+        border-radius: 4px;
+    }
+
+    .nav-sub li:last-child {
+        margin-top: 2px;
+        padding-top: 2px;
+    }
+
+    .nav-sub-chevron {
+        display: none;
     }
 }
 

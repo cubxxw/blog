@@ -105,6 +105,13 @@ _dark-audit/
 _probe*
 .harness.html
 /*.png
+/*.jpeg
+
+# Crash leftovers from the front-matter rewriters (normalize-tags, generate-covers)
+config.yml.tmp.*
+
+# Deno is not part of this toolchain; the lockfile is a stray from an ad-hoc script run
+deno.lock
 
 # Hugo js.Build (esbuild) auto-generates this for editor IntelliSense
 assets/jsconfig.json

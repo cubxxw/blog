@@ -82,14 +82,30 @@
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
             {{- $is_search := strings.Contains .URL "search" }}
-            <li>
+            {{- /* Parent lights up when the current page lives inside any
+                   child section (prefix match), not only on exact URL. */}}
+            {{- $parent_active := eq $menu_item_url $page_url }}
+            {{- if .HasChildren }}
+                {{- range .Children }}
+                {{- $child_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
+                {{- if hasPrefix $page_url $child_url }}{{ $parent_active = true }}{{ end }}
+                {{- end }}
+            {{- end }}
+            <li{{ if .HasChildren }} class="nav-item--has-sub"{{ end }}>
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
-                {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
-                    <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
+                {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}
+                {{- if .HasChildren }} aria-haspopup="true"{{ end }}>
+                    <span {{- if $parent_active }} class="active" {{- end }}>
                         {{- .Pre }}
                         {{- .Name -}}
                         {{ .Post -}}
                     </span>
+                    {{- if .HasChildren }}
+                    <svg class="nav-sub-chevron" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" height="11" width="11">
+                        <path d="M6 9l6 6 6-6"></path>
+                    </svg>
+                    {{- end }}
                     {{- if (findRE "://" .URL) }}&nbsp;
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
@@ -99,6 +115,25 @@
                     </svg>
                     {{- end }}
                 </a>
+                {{- if .HasChildren }}
+                <ul class="nav-sub">
+                    {{- range .Children }}
+                    {{- $child_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
+                    {{- /* Section entries carry a live post count — informational
+                           depth, and it keeps the panel from reading as three
+                           bare words in a box. Non-section entries (All Posts,
+                           a layouts page) simply show none. */}}
+                    {{- $count := 0 }}
+                    {{- with .Page }}{{ $count = len .RegularPagesRecursive }}{{ end }}
+                    <li>
+                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+                            <span {{- if eq $child_url $page_url }} class="active" {{- end }}>{{ .Name }}</span>
+                            {{- if gt $count 0 }}<span class="nav-sub__count" aria-hidden="true">{{ $count }}</span>{{ end }}
+                        </a>
+                    </li>
+                    {{- end }}
+                </ul>
+                {{- end }}
             </li>
             {{- end }}
         </ul>

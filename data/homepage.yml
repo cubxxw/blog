@@ -45,11 +45,11 @@ sections:
     descZh: "在路上的城市与瞬间"
   - key: projects
     url: /projects/
-    icon: "📦"
-    nameEn: "Projects"
-    nameZh: "项目"
-    descEn: "Open-source deep-dives & AI products"
-    descZh: "开源项目拆解 · AI 产品构建"
+    icon: "◆"
+    nameEn: "Products"
+    nameZh: "产品"
+    descEn: "Products I build and operate"
+    descZh: "独立构建 · 持续运营"
 
 books:
   - id: vietnam

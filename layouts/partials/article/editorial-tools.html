@@ -130,32 +130,32 @@
       <div class="rc-ai-quick-label">{{ if $isZh }}快速开始{{ else }}Quick start{{ end }}</div>
       <div class="rc-ai-quick" id="rc-quick-actions">
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}用 3-5 句话精炼地概括这篇文章的核心观点。{{ else }}Summarize the key points of this article in 3–5 sentences.{{ end }}">
-          <span class="rc-ai-chip__icon">📝</span>{{ if $isZh }}一句话总结{{ else }}Summary{{ end }}
+          {{ if $isZh }}一句话总结{{ else }}Summary{{ end }}
         </button>
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。{{ else }}List the 3 most memorable sentences from this article, and briefly explain why they stand out.{{ end }}">
-          <span class="rc-ai-chip__icon">✨</span>{{ if $isZh }}精彩金句{{ else }}Highlights{{ end }}
+          {{ if $isZh }}精彩金句{{ else }}Highlights{{ end }}
         </button>
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}这篇文章里有哪些容易被忽略但重要的概念？请列出并解释。{{ else }}What are the overlooked but important concepts in this article? List and explain.{{ end }}">
-          <span class="rc-ai-chip__icon">💡</span>{{ if $isZh }}关键概念{{ else }}Key concepts{{ end }}
+          {{ if $isZh }}关键概念{{ else }}Key concepts{{ end }}
         </button>
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}帮我挑出这篇文章里最值得质疑或反驳的观点，并给出反方视角。{{ else }}Which claims in this article are most worth challenging? Give me a counter-argument.{{ end }}">
-          <span class="rc-ai-chip__icon">🤔</span>{{ if $isZh }}反方视角{{ else }}Counter-argument{{ end }}
+          {{ if $isZh }}反方视角{{ else }}Counter-argument{{ end }}
         </button>
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}如果我是第一次接触这个主题的读者，请用最简单的比喻帮我理解这篇文章。{{ else }}Explain this article to a complete beginner using the simplest analogy possible.{{ end }}">
-          <span class="rc-ai-chip__icon">🎓</span>{{ if $isZh }}小白讲解{{ else }}ELI5{{ end }}
+          {{ if $isZh }}小白讲解{{ else }}ELI5{{ end }}
         </button>
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}基于这篇文章的主题和内容，推荐 3 个延伸阅读方向或相关话题。{{ else }}Based on this article, suggest 3 directions for further reading or related topics.{{ end }}">
-          <span class="rc-ai-chip__icon">🔗</span>{{ if $isZh }}延伸阅读{{ else }}Further reading{{ end }}
+          {{ if $isZh }}延伸阅读{{ else }}Further reading{{ end }}
         </button>
         {{- if $rcHasSeries }}
         {{- $rcSeriesTitles := slice }}
         {{- range $rcSeriesOrdered }}{{ $rcSeriesTitles = $rcSeriesTitles | append .Title }}{{ end }}
         {{- $rcSeriesAllTitles := delimit $rcSeriesTitles " / " }}
         <button type="button" class="rc-ai-chip rc-ai-chip--series" data-prompt="{{ if $isZh }}这篇文章属于《{{ $rcSeries.name }}》系列（全 {{ len $rcSeriesOrdered }} 篇：{{ $rcSeriesAllTitles }}）。请用一段话把整个系列的脉络讲清楚，再告诉我这一篇在其中扮演什么角色。{{ else }}This article is part of the {{ $rcSeries.name }} series ({{ len $rcSeriesOrdered }} parts in total: {{ $rcSeriesAllTitles }}). Give me a one-paragraph map of the whole series, then tell me what role this part plays.{{ end }}">
-          <span class="rc-ai-chip__icon">🧭</span>{{ if $isZh }}全系列脉络{{ else }}Series map{{ end }}
+          {{ if $isZh }}全系列脉络{{ else }}Series map{{ end }}
         </button>
         <button type="button" class="rc-ai-chip rc-ai-chip--series" data-prompt="{{ if $isZh }}这篇文章在《{{ $rcSeries.name }}》系列里是第 {{ $rcSeries.order }} 篇。请对照另外几篇（{{ $rcSeriesAllTitles }}），告诉我这一篇相对其他几篇的独特视角和不可替代的部分是什么。{{ else }}This article is Part {{ $rcSeries.order }} of the {{ $rcSeries.name }} series. Comparing it to the others ({{ $rcSeriesAllTitles }}), what is the unique angle this part contributes that the others do not?{{ end }}">
-          <span class="rc-ai-chip__icon">🔀</span>{{ if $isZh }}与他篇对比{{ else }}Compare to siblings{{ end }}
+          {{ if $isZh }}与他篇对比{{ else }}Compare to siblings{{ end }}
         </button>
         {{- end }}
       </div>

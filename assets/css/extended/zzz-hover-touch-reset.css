@@ -25,7 +25,7 @@
 @media (hover: none) {
   /* Homepage day-page whole-card links */
   .hp-post-card:hover,
-  .hp-cat-tile:hover,
+  .hp-rail-tab:hover,
   .hp-book:hover,
   .hp-project-featured:hover,
   .hp-repo:hover,
