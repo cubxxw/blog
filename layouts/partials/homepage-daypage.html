@@ -1302,11 +1302,14 @@
     } else { track.scrollLeft = target; }
   }
 
-  function switchTo(i) {
+  function switchTo(i, silent) {
     i = (i + tabs.length) % tabs.length;
     if (i === active) return;
     var prev = active; active = i;
     var t = tabs[i];
+    // Remember the channel for this browsing session: dev live-reloads (and
+    // plain refreshes) restore it silently instead of snapping back to Latest.
+    try { sessionStorage.setItem('hp-rail-channel', t.dataset.channel); } catch (e) {}
 
     tabs.forEach(function(tab, k) {
       tab.classList.toggle('is-active', k === i);
@@ -1338,7 +1341,7 @@
     [].forEach.call(p.querySelectorAll('.hp-post-card, .hp-posts-list-row'), function(el) {
       el.classList.add('is-revealed');
     });
-    if (!reduced.matches) {
+    if (!reduced.matches && !silent) {
       var h1 = wrapEl.offsetHeight;
       wrapEl.style.height = h0 + 'px';
       void wrapEl.offsetHeight;
@@ -1388,6 +1391,16 @@
   window.addEventListener('resize', placeIndicator, { passive: true });
   // Web fonts change tab widths — re-seat the pill once they settle.
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeIndicator);
+  // Restore this session's channel BEFORE transitions are enabled, so a
+  // refresh / dev live-reload lands on it instantly — no slide, no re-entrance.
+  try {
+    var savedCh = sessionStorage.getItem('hp-rail-channel');
+    if (savedCh) {
+      for (var si = 0; si < tabs.length; si++) {
+        if (tabs[si].dataset.channel === savedCh) { switchTo(si, true); break; }
+      }
+    }
+  } catch (e) {}
   placeIndicator();
   // Enable the slide transition only after first placement (no fly-in flash).
   requestAnimationFrame(function() { rail.classList.add('is-ready'); });
