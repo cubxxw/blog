@@ -3,20 +3,21 @@
   transition: color 0.15s ease, opacity 0.15s ease;
 }
 
+/* Active TOC text stays ink — the accent lives in the rail tick
+   (editorial-tools.css), so the sidebar never shouts in color. */
 .toc-side__nav a.toc-active {
-  color: var(--primary) !important;
+  color: var(--color-ink, var(--primary)) !important;
   opacity: 1 !important;
   font-weight: 500;
 }
 
-/* P1-1: Split ZH/EN dark accent so colors match each language's design system */
 html:not(:lang(zh)) body.dark .toc-side__nav a.toc-active,
 html:not(:lang(zh)) .dark .toc-side__nav a.toc-active {
-  color: #7dd3fc !important;
+  color: var(--color-ink, #e2e3e1) !important;
 }
 
 html:lang(zh) body.dark .toc-side__nav a.toc-active {
-  color: #ff6b6b !important; /* softened ZH dark accent — see tokens.css */
+  color: var(--color-ink, #f5f3ee) !important;
 }
 
 /* TOC highlight — left sidebar (.toc-sidebar__nav, US-015) */
