@@ -32,8 +32,21 @@
     return Array.prototype.slice.call(document.querySelectorAll(SEL));
   }
 
+  /* For code blocks the actual scroll container is the inner <code>
+     (the <pre> itself is overflow:hidden), so measuring/listening on
+     the <pre> never saw any overflow and the cue never appeared. Keep
+     the fade class + vars on the <pre> (the CSS mask target), but do
+     all measuring and scroll-listening on the real scroller. */
+  function scrollerOf(el) {
+    if (el.tagName === 'PRE' && el.firstElementChild && el.firstElementChild.tagName === 'CODE') {
+      return el.firstElementChild;
+    }
+    return el;
+  }
+
   function update(el) {
-    var max = el.scrollWidth - el.clientWidth;
+    var sc = scrollerOf(el);
+    var max = sc.scrollWidth - sc.clientWidth;
     if (max <= EPS * 2) {
       // Not (or no longer) overflowing — remove the cue entirely.
       if (el.classList.contains('x-scroll')) {
@@ -44,7 +57,7 @@
       return;
     }
     el.classList.add('x-scroll');
-    var left = el.scrollLeft;
+    var left = sc.scrollLeft;
     el.style.setProperty('--x-fade-l', (left > EPS ? FADE : 0) + 'px');
     el.style.setProperty('--x-fade-r', (left < max - EPS ? FADE : 0) + 'px');
   }
@@ -53,7 +66,7 @@
     if (el.__xScrollBound) return;
     el.__xScrollBound = true;
     var ticking = false;
-    el.addEventListener(
+    scrollerOf(el).addEventListener(
       'scroll',
       function () {
         if (ticking) return;

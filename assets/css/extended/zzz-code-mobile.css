@@ -1,0 +1,235 @@
+/* ============================================================
+   zzz-code-mobile.css — mobile code-block reading kit
+   ------------------------------------------------------------
+   Four layers, all working against the same constraint: a phone
+   shows ~45 monospace characters while code wants 80+.
+
+   1. Full-bleed blocks ≤600px — reclaim the column gutters and
+      trim the inner padding, so fewer lines overflow at all.
+   2. Soft-wrap state — `pre.code-wrap` wraps instead of scrolling.
+      Shell-ish languages (bash/console/text…) get it by default
+      (code-mobile.js), every block gets a toggle button.
+   3. Per-block tool cluster (wrap toggle + expand) sitting at the
+      bottom-right, styled with the existing --code-btn-* tokens so
+      it follows all four code themes automatically.
+   4. Fullscreen reader — a fixed overlay that rotates the panel
+      90° while the phone is held portrait (iOS Safari has no
+      element-fullscreen / orientation-lock, so simulated landscape
+      via transform is the only universal route) with font-size
+      zoom via pinch or A−/A+ buttons.
+
+   Loaded late (zzz- prefix) so it composes over the theme.
+   ============================================================ */
+
+/* ── 0. Scroll hygiene: the real scroller is `pre code` ─────── */
+.post-content pre:not(.mermaid) code {
+  /* Reaching the end of a sideways swipe must not leak into the
+     browser's history-swipe / page navigation. */
+  overscroll-behavior-x: contain;
+}
+
+/* ── 1. Full-bleed on phones ────────────────────────────────── */
+@media (max-width: 600px) {
+  .post-content > .highlight,
+  .post-content > pre:not(.mermaid) {
+    /* Stretch to the physical screen edges. The parent column is
+       viewport-centred on phones, so half-parent minus half-viewport
+       lands exactly on the screen edge. */
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  .post-content pre code,
+  .post-content .highlight pre code {
+    /* 20px → 14px inner gutters + a slightly tighter type size:
+       together ~7 extra characters per line before overflow. */
+    padding: 14px 14px !important;
+    font-size: 0.78em;
+  }
+}
+
+/* ── 2. Soft-wrap state ─────────────────────────────────────── */
+.post-content pre.code-wrap code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-x: visible;
+}
+
+/* ── 3. Tool cluster (wrap / expand) ────────────────────────── */
+.code-tools {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+}
+
+.code-tools button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 24px;
+  padding: 0;
+  border-radius: 6px;
+  background: var(--code-btn-bg, rgba(31, 35, 40, 0.05));
+  border: 1px solid var(--code-btn-border, rgba(31, 35, 40, 0.12));
+  color: var(--code-btn-color, rgba(31, 35, 40, 0.55));
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.code-tools button:hover,
+.code-tools button:focus-visible {
+  background: var(--code-btn-bg-hover, rgba(31, 35, 40, 0.1));
+  color: var(--code-btn-color-hover, rgba(31, 35, 40, 0.9));
+}
+
+.code-tools button svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+/* Wrap toggle shows its active state like a pressed key. */
+.code-tools .code-tool-wrap[aria-pressed="true"] {
+  background: var(--code-btn-bg-hover, rgba(31, 35, 40, 0.1));
+  color: var(--code-btn-color-hover, rgba(31, 35, 40, 0.9));
+  border-color: currentColor;
+}
+
+/* The fullscreen reader is a phone/tablet affordance — desktop
+   columns are wide enough already. */
+@media (min-width: 1024px) {
+  .code-tools .code-tool-expand {
+    display: none;
+  }
+}
+
+/* ── 4. Fullscreen reader overlay ───────────────────────────── */
+.code-fs-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  /* Background is synced from the source block by code-mobile.js so
+     it matches whichever of the four code themes is active. */
+  background: #0d1117;
+}
+
+.code-fs-backdrop.is-open {
+  display: block;
+}
+
+.code-fs-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Simulated landscape: while the phone is physically portrait, lay
+   the stage out for the rotated geometry (w↔h swapped) and turn it
+   90°. Touch scrolling inside transformed boxes follows the visual
+   axes on modern iOS/Android, so it feels native. */
+@media (orientation: portrait) {
+  .code-fs-stage {
+    width: 100vh;
+    height: 100vw;
+    width: 100dvh;
+    height: 100dvw;
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: top left;
+  }
+}
+
+.code-fs-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+.code-fs-bar .code-fs-lang {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-right: auto;
+}
+
+.code-fs-bar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 7px;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  background: transparent;
+  color: inherit;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.code-fs-bar button:active {
+  background: rgba(128, 128, 128, 0.2);
+}
+
+.code-fs-zoom-val {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  opacity: 0.55;
+  min-width: 3.5ch;
+  text-align: center;
+}
+
+.code-fs-scroll {
+  flex: 1;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  /* Manual pinch handling lives in JS; native panning stays on. */
+  touch-action: pan-x pan-y;
+}
+
+/* The clone keeps its .highlight/.chroma classes and sits inside a
+   `.post-content`-classed wrapper so all four token themes resolve.
+   Undo the in-article framing: the overlay itself is the frame, and
+   the single scroller must be .code-fs-scroll. */
+.code-fs-content .highlight,
+.code-fs-content pre {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+}
+
+.code-fs-content pre code {
+  overflow: visible !important;
+  white-space: pre !important;
+  font-size: var(--code-fs-size, 14px) !important;
+  padding: 14px 18px !important;
+}
+
+/* Never show in-article controls inside the reader. */
+.code-fs-content .copy-code,
+.code-fs-content .code-tools {
+  display: none !important;
+}
