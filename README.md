@@ -57,29 +57,6 @@
 - [AI 框架](/tags/ai框架/)
 - [AI 工具链](/tags/ai工具链/)
 
-## Readme Poster
-
-<div align="center">
-    <table>
-        <tr>
-            <td align="center" valign="top" width="50%">
-                <a href="https://github.com/cubxxw">
-                    <img src="assets/cubxxw-github.png" alt="GitHub Poster" width="100%"/>
-                </a>
-                <br>
-                😎 Check out my GitHub!
-            </td>
-            <td align="center" valign="top" width="50%">
-                <a href="https://cubxxw.com">
-                    <img src="assets/cubxxw-blog.png" alt="Blog Poster" width="100%"/>
-                </a>
-                <br>
-                🚀 Visit my Blog!
-            </td>
-        </tr>
-    </table>
-</div>
-
 ## Content Architecture (v3.0.0)
 
 This blog uses a **4-section architecture** aligned with the author's identity as **AI Builder, Open Source Contributor, and Digital Nomad**.
