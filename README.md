@@ -259,6 +259,12 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [2026 下半场，AI Agent 的红海已满，蓝海在哪](https://cubxxw.com/zh/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/)
+- [怎么才能放心把活交给一个没人盯着的 AI Agent](https://cubxxw.com/zh/ai-agent/posts/trusting-unattended-ai-agent/)
+- [超级个体的情报系统：用 Agent 和 MCP 搭一条从信息采集到行动的个人流水线](https://cubxxw.com/zh/ai-agent/posts/super-individual-intelligence-system/)
+- [开源模型便宜了近九成，一个人能养多大的 Agent 舰队](https://cubxxw.com/zh/ai-agent/posts/open-model-cost-collapse-agent-fleet/)
+- [AI Agent 开始"反过来提示你"，这一步意味着什么](https://cubxxw.com/zh/ai-agent/posts/proactive-agent-it-prompts-you/)
+- [让 AI 自动帮你追全网资讯，最后会卡在哪里](https://cubxxw.com/zh/ai-agent/posts/ai-auto-news-pipeline-limits/)
 - [拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问](https://cubxxw.com/zh/growth/posts/2026-07-14-what-remains-when-taken-apart/)
 - [从 Chatbot 到 Agent 到 Skill：AI 落地传统行业的真正分水岭](https://cubxxw.com/zh/ai-agent/posts/from-chatbot-to-agent-to-skill/)
 - [给 AI 任务，别给方向：一条原则改变你和 AI 的协作](https://cubxxw.com/zh/ai-agent/posts/give-ai-tasks-not-directions/)
@@ -276,7 +282,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [GEO 结构化实战：把"值得被引用"写进每一段（Answer-First、Schema、llms.txt）](https://cubxxw.com/zh/ai-agent/posts/geo-structured-content-tactics/)
 - [GEO 原理篇：AI 是怎么把你"检索 → 重排 → 引用"的](https://cubxxw.com/zh/ai-agent/posts/geo-how-ai-retrieves-and-cites/)
 - [GEO 生成式引擎优化完全指南：当搜索从"给链接"变成"给答案"](https://cubxxw.com/zh/ai-agent/posts/geo-generative-engine-optimization-guide/)
-- [从这里开始](https://cubxxw.com/zh/start-here/)
 - [2026年6月思考笔记：推开的动作，先于推开的理由](https://cubxxw.com/zh/growth/posts/2026-06-thought-notes/)
 - [拆解 open-lovable：一个不靠 Agent 框架、直接驯服裸 API 的应用生成器](https://cubxxw.com/zh/ai-agent/posts/dissecting-open-lovable/)
 - [点火与沉底（下）：焦虑型依恋——为什么爱里我们总在确认](https://cubxxw.com/zh/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
@@ -308,13 +313,13 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [四个月的一些思考片段整理](https://cubxxw.com/zh/growth/posts/metacognitive-transformation-review/)
 - [2025年5月思考笔记](https://cubxxw.com/zh/growth/posts/2025-05-thought-notes/)
 - [Mem0 是什么？AI 记忆层原理、架构与实践评估](https://cubxxw.com/zh/projects/mem0/)
-- [微软UFO项目深度解析：设计、实现、原理与架构](https://cubxxw.com/zh/projects/ufo/)
+- [微软UFO项目深度解析：设计、实现、原理与架构](https://cubxxw.com/zh/projects/UFO/)
 - [Argo CD: Declarative GitOps for Kubernetes Continuous Delivery](https://cubxxw.com/zh/engineering/posts/argo-cd/)
 - [2025年4月思考笔记](https://cubxxw.com/zh/growth/posts/2025-04-thought-notes/)
 - [Ai Recommend 技术、实践和深度学习](https://cubxxw.com/zh/projects/ai-recommend/)
 - [Google NotebookLM 的 RAG 深度调研思考](https://cubxxw.com/zh/projects/notebooklm/)
 - [AI 时代初创企业的测试驱动开发（TDD）实践方案](https://cubxxw.com/zh/projects/tdd/)
-- [MarkItDown 教程：微软开源文档转 Markdown 工具](https://cubxxw.com/zh/projects/markitdown/)
+- [MarkItDown 教程：微软开源文档转 Markdown 工具](https://cubxxw.com/zh/projects/markItdown/)
 - [LangGraph 架构深度解析：状态图、节点与边的设计原理](https://cubxxw.com/zh/projects/langgraph/)
 - [LangChain 开源项目深度学习](https://cubxxw.com/zh/projects/langchain/)
 - [AI Gateway（AI 网关）开源项目深度学习笔记](https://cubxxw.com/zh/projects/ai-gateway/)
@@ -323,7 +328,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina 开源项目深度学习](https://cubxxw.com/zh/projects/jina/)
 - [2025年3月思考笔记](https://cubxxw.com/zh/growth/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://cubxxw.com/zh/growth/posts/2024-annual-review/)
-- [关于我](https://cubxxw.com/zh/about/)
+- [关于我与这个博客](https://cubxxw.com/zh/about/)
 - [旅行足迹](https://cubxxw.com/zh/travel/)
 - [Kubernetes 资源与学习路径总结](https://cubxxw.com/zh/engineering/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://cubxxw.com/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
@@ -354,11 +359,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes 的 CNI，CRI，CSI 详解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 - [Kubernetes 控制平面 - Kubectl 详细讲解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Kubernetes 控制平面 - 调度器](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
-- [深入了解 Kubernetes kube-apiserver 组件架构](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
-- [深入了解Kubernetes等组件之ETCD](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
-- [通过配置文件简化 Kubernetes 部署的参数端口配置](https://cubxxw.com/zh/engineering/posts/openim-cluster-deployment-parameter-passing-policy/)
-- [OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 会议总结](https://cubxxw.com/zh/engineering/posts/openim-cluster-deployment-scheme-of/)
-- [在开源社区中学会如何提问](https://cubxxw.com/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
 <!-- My-Blog-ZH:END -->
 
 
