@@ -39,12 +39,15 @@
     </div>
   </header>
 
+  {{/* Oxford rule — thick-thin double line closing the masthead */}}
+  <div class="column-rule-double" aria-hidden="true"></div>
+
   {{/* ─────────────────────────────────────────────────────────────
-       Editorial intro — the column's standfirst / opening note
+       Editorial intro — the column's standfirst / opening note.
+       CSS renders the first paragraph as an epigraph-style lede.
        ───────────────────────────────────────────────────────────── */}}
   {{- if .Content }}
   <section class="column-intro">
-    <div class="column-intro__rule" aria-hidden="true"></div>
     <div class="column-intro__body">
       {{ .Content }}
     </div>
@@ -52,7 +55,7 @@
   {{- end }}
 
   {{/* ─────────────────────────────────────────────────────────────
-       Table of contents — numbered vertical roll of each essay
+       Table of contents — numbered reading path, 01 → NN
        ───────────────────────────────────────────────────────────── */}}
   <section class="column-toc" aria-labelledby="column-toc-heading">
     <header class="column-toc__head">
@@ -60,6 +63,9 @@
         {{- if $isZh }}目录{{ else }}Contents{{ end -}}
       </h2>
       <span class="column-toc__heading-en" aria-hidden="true">{{ if $isZh }}Contents{{ else }}目录{{ end }}</span>
+      <span class="column-toc__order-hint">
+        {{- if $isZh }}建议按序阅读{{ else }}Best read in order{{ end -}}
+      </span>
     </header>
 
     <ol class="column-toc__list">

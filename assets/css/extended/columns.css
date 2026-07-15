@@ -1,6 +1,12 @@
-/* Column term page — magazine opening spread.
-   Applies to /columns/<slug>/ rendered by layouts/columns/term.html
-*/
+/* Columns — magazine opening spread.
+   Covers both:
+   - /columns/<slug>/  term page   (layouts/columns/term.html)
+   - /columns/         index page  (layouts/columns/terms.html)
+   Both share one visual system: centered masthead, Oxford double rule,
+   epigraph lede, then a numbered "reading path" — a vertical spine with
+   circled folio numbers marking each essay, 01 → NN.
+   All colours resolve through the tokens in tokens.css (--color-ink /
+   --color-accent / --color-paper rebind for :lang and body.dark). */
 
 .column-page {
   max-width: 760px;
@@ -12,7 +18,7 @@
 
 .column-masthead {
   text-align: center;
-  padding: 2rem 0 2.4rem;
+  padding: 2rem 0 2.2rem;
 }
 .column-masthead__inner {
   display: flex;
@@ -29,29 +35,28 @@
   font-size: 0.65rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.72; /* AA lift: 0.65rem mono kicker on --color-ink was ~2.9:1 */
+  color: var(--color-accent, #862122);
 }
 .column-eyebrow-rule {
   display: inline-block;
   width: 2.4rem;
   height: 1px;
   background: currentColor;
-  opacity: 0.6;
+  opacity: 0.55;
 }
 .column-masthead__title {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   font-weight: 500;
   font-size: clamp(2.4rem, 5vw, 3.6rem);
-  line-height: 1.08;
+  line-height: 1.12;
   margin: 0;
   color: var(--color-ink, #1a1c1b);
   letter-spacing: -0.02em;
   font-optical-sizing: auto;
+  text-wrap: balance;
 }
 :lang(zh) .column-masthead__title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
 .column-masthead__subtitle {
@@ -59,26 +64,23 @@
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1rem, 1.6vw, 1.18rem);
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.7;
+  color: var(--color-ink-muted, #5e5e63);
   margin: 0.2rem 0 0;
-  line-height: 1.5;
+  line-height: 1.55;
   max-width: 32em;
+  text-wrap: balance;
 }
 :lang(zh) .column-masthead__subtitle {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
   font-style: normal;
-  letter-spacing: 0.015em;
-  opacity: 0.65;
+  letter-spacing: 0.02em;
 }
 .column-masthead__meta {
-  margin: 0.95rem 0 0;
+  margin: 1rem 0 0;
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.72; /* AA lift: 0.7rem mono meta label */
+  color: var(--color-ink-muted, #5e5e63);
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -87,82 +89,92 @@
   opacity: 0.5;
 }
 
+/* ── Oxford rule — thick-thin, closes the masthead ──────────────── */
+
+.column-rule-double {
+  height: 6px;
+  border-top: 3px solid var(--color-ink, #1a1c1b);
+  border-bottom: 1px solid var(--color-ink, #1a1c1b);
+  margin: 0 0 2.4rem;
+}
+
 /* ── Intro (standfirst) ─────────────────────────────────────────── */
 
 .column-intro {
-  display: grid;
-  grid-template-columns: 4rem 1fr;
-  gap: 1.2rem;
-  margin: 1.2rem auto 2.6rem;
-  padding: 0.4rem 0;
   max-width: 620px;
-}
-.column-intro__rule {
-  margin-top: 0.7rem;
-  width: 100%;
-  height: 1px;
-  background: var(--color-ink, #1a1c1b);
-  opacity: 0.35;
+  margin: 0 auto 3.2rem;
 }
 .column-intro__body {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   font-weight: 400;
   font-size: 1.02rem;
-  line-height: 1.75;
+  line-height: 1.78;
   color: var(--color-ink, #1a1c1b);
-  opacity: 0.85;
 }
 :lang(zh) .column-intro__body {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
   font-size: 0.98rem;
-  line-height: 1.92;
-  letter-spacing: 0.012em;
-}
-.column-intro__body p:first-child::first-letter {
-  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
-  font-size: 3.2rem;
-  font-weight: 500;
-  float: left;
-  line-height: 1;
-  padding: 0.05em 0.08em 0 0;
-  color: var(--color-accent, #862122);
-}
-:lang(zh) .column-intro__body p:first-child::first-letter {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', serif;
-  font-size: 2.8rem;
-  padding-right: 0.12em;
+  line-height: 2;
+  letter-spacing: 0.015em;
 }
 .column-intro__body p {
-  margin: 0 0 1.1em;
+  margin: 0 0 1.15em;
 }
 .column-intro__body p:last-child {
   margin-bottom: 0;
+}
+/* First paragraph reads as the column's epigraph — set it large, in the
+   display face, and let the rest of the note follow at text size.
+   (Replaces the old ::first-letter drop cap, which broke Chinese words:
+   "信息" was split after "信".) */
+.column-intro__body > p:first-child {
+  font-size: 1.34rem;
+  line-height: 1.62;
+  font-weight: 500;
+  margin: 0 0 1.3em;
+  text-wrap: balance;
+}
+:lang(zh) .column-intro__body > p:first-child {
+  font-size: 1.22rem;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+/* Chinese epigraph carries traditional title brackets in the accent red */
+:lang(zh) .column-intro__body > p:first-child::before {
+  content: "「";
+  color: var(--color-accent, #862122);
+  margin-right: 0.05em;
+}
+:lang(zh) .column-intro__body > p:first-child::after {
+  content: "」";
+  color: var(--color-accent, #862122);
+  margin-left: 0.05em;
+}
+:lang(en) .column-intro__body > p:first-child {
+  font-style: italic;
 }
 
 /* ── TOC heading ─────────────────────────────────────────────────── */
 
 .column-toc {
-  margin-top: 2.2rem;
+  margin-top: 2.4rem;
+}
+.columns-index .column-toc {
+  margin-top: 0.4rem;
 }
 .column-toc__head {
   display: flex;
   align-items: baseline;
   gap: 0.7rem;
-  margin: 0 0 1.4rem;
+  margin: 0 0 0.4rem;
   padding-bottom: 0.85rem;
-  border-bottom: 1px solid color-mix(in oklab, var(--color-ink, #1a1c1b) 16%, transparent);
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
 }
 .column-toc__heading {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.15rem;
   margin: 0;
   color: var(--color-ink, #1a1c1b);
-  letter-spacing: 0.005em;
-}
-:lang(zh) .column-toc__heading {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
-  font-weight: 500;
   letter-spacing: 0.04em;
 }
 .column-toc__heading-en {
@@ -170,11 +182,17 @@
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.72; /* AA lift: 0.62rem mono EN heading */
+  color: var(--color-ink-muted, #5e5e63);
+}
+.column-toc__order-hint {
+  margin-left: auto;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--color-ink-muted, #5e5e63);
 }
 
-/* ── Entry card ─────────────────────────────────────────────────── */
+/* ── Reading path — spine + entries ─────────────────────────────── */
 
 .column-toc__list {
   list-style: none;
@@ -182,72 +200,82 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
+/* The spine: a hairline running through the folio nodes, turning the list
+   into a visible 01 → NN reading path. Painted per-entry so it can start at
+   the first node and stop at the last one (node centre sits at
+   padding-top 1.9rem + 0.1rem offset + half of the 2.75rem node ≈ 3.4rem). */
 .column-entry {
   margin: 0;
-  border-bottom: 1px solid color-mix(in oklab, var(--color-ink, #1a1c1b) 9%, transparent);
+  position: relative;
 }
-.column-entry:last-child {
-  border-bottom: 0;
+.column-entry::before {
+  content: "";
+  position: absolute;
+  left: 1.375rem; /* centre of the 2.75rem node column */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+.column-entry:first-child::before {
+  top: 3.4rem;
+}
+.column-entry:last-child::before {
+  bottom: auto;
+  height: 3.4rem;
+}
+.column-entry:only-child::before {
+  display: none;
 }
 .column-entry__link {
   display: grid;
-  grid-template-columns: 5.5rem 1fr auto;
-  gap: 1.4rem;
-  padding: 1.8rem 0.4rem;
+  grid-template-columns: 2.75rem 1fr auto;
+  gap: 1.5rem;
+  padding: 1.9rem 0.4rem 1.9rem 0;
   align-items: start;
   text-decoration: none;
   color: inherit;
-  /* Indent on hover via transform (GPU) rather than animating padding-left
-     (layout). translateX gives the same 0.5rem rightward nudge, composited. */
-  transition: background-color 220ms ease, transform 220ms var(--ease-out);
 }
-.column-entry__link:hover,
-.column-entry__link:focus-visible {
-  background: color-mix(in oklab, var(--color-accent, #862122) 3.5%, transparent);
-  transform: translateX(0.5rem);
-}
-.column-entry__link:hover { outline: none; }
-/* Keyboard focus previously fell back to only a 3.5% background wash — not a
-   discernible focus indicator. Draw a real inset accent ring for focus-visible. */
-.column-entry__link:focus-visible {
-  outline: 2px solid var(--color-accent, #862122);
-  outline-offset: -2px;
-  border-radius: 6px;
-}
-.column-entry__link:hover .column-entry__arrow,
-.column-entry__link:focus-visible .column-entry__arrow {
-  opacity: 1;
-  transform: translateX(4px);
-  color: var(--color-accent, #862122);
-}
-.column-entry__link:hover .column-entry__title,
-.column-entry__link:focus-visible .column-entry__title {
-  color: var(--color-accent, #862122);
+.column-entry + .column-entry .column-entry__link {
+  border-top: 1px solid color-mix(in oklab, var(--color-ink, #1a1c1b) 7%, transparent);
 }
 
+/* Folio node — circled number sitting on the spine */
 .column-entry__num {
-  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
-  font-feature-settings: "lnum", "tnum";
-  font-weight: 400;
-  font-size: 3.4rem;
-  line-height: 0.92;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.2;
-  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--color-accent, #862122) 40%, transparent);
+  background: var(--color-paper, #f9f9f7);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-indent: 0.06em; /* re-centre: letter-spacing adds a trailing gap */
   font-variant-numeric: tabular-nums;
-  transition: color 220ms ease, opacity 220ms ease;
-  padding-top: 0.18rem;
+  color: var(--color-accent, #862122);
+  margin-top: 0.1rem;
+  transition: background-color var(--dur-hover, 200ms) ease,
+              border-color var(--dur-hover, 200ms) ease,
+              color var(--dur-hover, 200ms) ease;
 }
 .column-entry__link:hover .column-entry__num,
 .column-entry__link:focus-visible .column-entry__num {
-  color: var(--color-accent, #862122);
-  opacity: 0.7;
+  background: var(--color-accent, #862122);
+  border-color: var(--color-accent, #862122);
+  color: var(--color-paper, #f9f9f7);
 }
+
 .column-entry__body {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.5rem;
   min-width: 0;
 }
 .column-entry__title {
@@ -258,41 +286,57 @@
   margin: 0;
   color: var(--color-ink, #1a1c1b);
   letter-spacing: -0.005em;
-  transition: color 180ms ease;
+  transition: color var(--dur-hover, 200ms) ease;
 }
 :lang(zh) .column-entry__title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'PingFang SC', var(--font-body, system-ui), serif;
-  font-weight: 500;
-  font-size: 1.24rem;
+  font-weight: 600;
+  font-size: 1.26rem;
   line-height: 1.5;
-  letter-spacing: 0.005em;
+  letter-spacing: 0.01em;
+}
+.column-entry__link:hover .column-entry__title,
+.column-entry__link:focus-visible .column-entry__title {
+  color: var(--color-accent, #862122);
+}
+/* Index page only: the column's subtitle, set as a hanging strapline */
+.column-entry__subtitle {
+  margin: 0;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--color-accent, #862122);
+}
+:lang(zh) .column-entry__subtitle {
+  font-style: normal;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
 }
 .column-entry__desc {
-  margin: 0;
+  margin: 0.1rem 0 0;
   font-family: var(--font-body, system-ui, sans-serif);
   font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.62;
+  line-height: 1.7;
+  color: var(--color-ink-muted, #5e5e63);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 :lang(zh) .column-entry__desc {
-  font-family: 'PingFang SC', 'Hiragino Sans GB', var(--font-body, system-ui), sans-serif;
   font-size: 0.9rem;
-  line-height: 1.7;
-  letter-spacing: 0.005em;
+  letter-spacing: 0.01em;
+}
+.columns-index .column-entry__desc {
+  -webkit-line-clamp: 2;
 }
 .column-entry__meta {
-  margin: 0.2rem 0 0;
+  margin: 0.35rem 0 0;
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.66rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.42;
+  color: var(--color-ink-muted, #5e5e63);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -301,12 +345,28 @@
   opacity: 0.5;
 }
 .column-entry__arrow {
-  width: 22px;
-  height: 22px;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.35;
-  margin-top: 1.2rem;
-  transition: opacity 220ms ease, transform 220ms ease, color 220ms ease;
+  width: 20px;
+  height: 20px;
+  color: var(--color-ink-muted, #5e5e63);
+  opacity: 0.55;
+  margin-top: 0.85rem;
+  transition: opacity var(--dur-hover, 200ms) ease,
+              transform var(--dur-hover, 200ms) var(--ease-out, ease),
+              color var(--dur-hover, 200ms) ease;
+}
+.column-entry__link:hover .column-entry__arrow,
+.column-entry__link:focus-visible .column-entry__arrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--color-accent, #862122);
+}
+.column-entry__link:hover {
+  outline: none;
+}
+.column-entry__link:focus-visible {
+  outline: 2px solid var(--color-accent, #862122);
+  outline-offset: -2px;
+  border-radius: 6px;
 }
 
 /* ── Footer ─────────────────────────────────────────────────────── */
@@ -328,8 +388,7 @@
   font-size: 0.66rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--color-ink, #1a1c1b);
-  opacity: 0.4;
+  color: var(--color-ink-muted, #5e5e63);
 }
 
 /* ── Mobile ──────────────────────────────────────────────────────── */
@@ -339,7 +398,7 @@
     padding: 1.5rem 1rem 3rem;
   }
   .column-masthead {
-    padding: 1rem 0 1.5rem;
+    padding: 1rem 0 1.4rem;
   }
   .column-masthead__eyebrow {
     font-size: 0.6rem;
@@ -348,53 +407,49 @@
   .column-eyebrow-rule {
     width: 1.5rem;
   }
-  .column-intro {
-    grid-template-columns: 1.6rem 1fr;
-    gap: 0.85rem;
-    margin: 0.6rem 0 1.8rem;
+  .column-rule-double {
+    margin-bottom: 1.8rem;
   }
-  .column-intro__rule {
-    margin-top: 0.85rem;
+  .column-intro {
+    margin-bottom: 2.2rem;
+  }
+  .column-intro__body > p:first-child {
+    font-size: 1.18rem;
+  }
+  :lang(zh) .column-intro__body > p:first-child {
+    font-size: 1.1rem;
+  }
+  .column-toc__order-hint {
+    display: none;
+  }
+  .column-entry::before {
+    left: 1.1rem; /* centre of the 2.2rem mobile node */
+  }
+  .column-entry:first-child::before {
+    top: 2.55rem; /* padding 1.35rem + 0.1rem offset + half of 2.2rem node */
+  }
+  .column-entry:last-child::before {
+    height: 2.55rem;
   }
   .column-entry__link {
-    grid-template-columns: 3rem 1fr;
-    gap: 0.85rem;
-    padding: 1.2rem 0.3rem;
-  }
-  .column-entry__link:hover {
-    padding-left: 0.5rem;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0.95rem;
+    padding: 1.35rem 0.2rem 1.35rem 0;
   }
   .column-entry__num {
-    font-size: 2.2rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 0.68rem;
   }
   .column-entry__arrow {
     display: none;
   }
   .column-entry__title {
-    font-size: 1.1rem;
+    font-size: 1.12rem;
   }
   :lang(zh) .column-entry__title {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
   }
-}
-
-/* ── Dark ────────────────────────────────────────────────────────── */
-
-.dark .column-masthead__title,
-.dark .column-toc__heading,
-.dark .column-entry__title,
-body.dark .column-masthead__title,
-body.dark .column-toc__heading,
-body.dark .column-entry__title {
-  color: var(--primary, #e8e6e3);
-}
-.dark .column-toc__head,
-body.dark .column-toc__head {
-  border-bottom-color: color-mix(in oklab, var(--primary, #e8e6e3) 18%, transparent);
-}
-.dark .column-entry,
-body.dark .column-entry {
-  border-bottom-color: color-mix(in oklab, var(--primary, #e8e6e3) 12%, transparent);
 }
 
 /* ── Reduced motion ──────────────────────────────────────────

@@ -1,0 +1,91 @@
+{{- define "main" }}
+{{- $isZh := eq .Lang "zh" -}}
+{{/* Term pages (one per column), newest column first by its _index.md date */}}
+{{- $terms := .Pages.ByDate.Reverse -}}
+{{- $termCount := len $terms -}}
+{{- $essayCount := 0 -}}
+{{- range $terms }}{{ $essayCount = add $essayCount (len .Pages) }}{{ end -}}
+
+<article class="column-page columns-index">
+
+  {{/* ─────────────────────────────────────────────────────────────
+       Masthead — the columns shelf, same spread language as a column
+       ───────────────────────────────────────────────────────────── */}}
+  <header class="column-masthead">
+    <div class="column-masthead__inner">
+      <p class="column-masthead__eyebrow">
+        <span class="column-eyebrow-rule" aria-hidden="true"></span>
+        <span>{{ if $isZh }}专栏索引{{ else }}Column Index{{ end }}</span>
+        <span class="column-eyebrow-rule" aria-hidden="true"></span>
+      </p>
+      <h1 class="column-masthead__title">{{ if $isZh }}专栏{{ else }}Columns{{ end }}</h1>
+      <p class="column-masthead__subtitle">
+        {{- with .Params.subtitle }}{{ . }}{{ else }}{{ if $isZh }}成组的长文，沿一条线索写到底{{ else }}Essays in sets, each following one thread to its end{{ end }}{{ end -}}
+      </p>
+      <p class="column-masthead__meta">
+        <span>{{ if $isZh }}{{ $termCount }} 个专栏{{ else }}{{ $termCount }} columns{{ end }}</span>
+        <span class="column-meta-sep">·</span>
+        <span>{{ if $isZh }}{{ $essayCount }} 篇文章{{ else }}{{ $essayCount }} essays{{ end }}</span>
+      </p>
+    </div>
+  </header>
+
+  {{/* Oxford rule — thick-thin double line closing the masthead */}}
+  <div class="column-rule-double" aria-hidden="true"></div>
+
+  {{- if .Content }}
+  <section class="column-intro">
+    <div class="column-intro__body">
+      {{ .Content }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{/* ─────────────────────────────────────────────────────────────
+       Shelf — one editorial row per column
+       ───────────────────────────────────────────────────────────── */}}
+  <section class="column-toc" aria-label="{{ if $isZh }}全部专栏{{ else }}All columns{{ end }}">
+    <ol class="column-toc__list">
+      {{- range $i, $t := $terms }}
+      {{- $count := len $t.Pages }}
+      {{- $reading := 0 }}{{ range $t.Pages }}{{ $reading = add $reading .ReadingTime }}{{ end }}
+      <li class="column-entry">
+        <a class="column-entry__link" href="{{ $t.RelPermalink }}">
+          <span class="column-entry__num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+          <span class="column-entry__body">
+            <h2 class="column-entry__title">{{ $t.Title }}</h2>
+            {{- with $t.Params.subtitle }}
+            <p class="column-entry__subtitle">{{ . }}</p>
+            {{- end }}
+            {{- with $t.Description }}
+            <p class="column-entry__desc">{{ . }}</p>
+            {{- end }}
+            <p class="column-entry__meta">
+              <span>{{ if $isZh }}{{ $count }} 篇{{ else }}{{ $count }} essays{{ end }}</span>
+              {{- if $reading }}
+              <span class="column-entry__meta-sep">·</span>
+              <span>{{ if $isZh }}约 {{ $reading }} 分钟{{ else }}{{ $reading }} min total{{ end }}</span>
+              {{- end }}
+            </p>
+          </span>
+          <svg class="column-entry__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+
+  {{/* Footer rule */}}
+  <footer class="column-footer">
+    <div class="column-footer__rule" aria-hidden="true"></div>
+    <p class="column-footer__note">
+      {{- if $isZh -}}— 完 —{{- else -}}— End —{{- end -}}
+    </p>
+  </footer>
+
+</article>
+
+{{- end }}
