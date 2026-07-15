@@ -36,26 +36,83 @@
     </div>
   </div>
 
-  {{/* ── Desktop: launchpad ──────────────────────────────── */}}
+  {{/* ── Desktop: functional widget grid ─────────────────── */}}
   <section class="osx-desktop" data-osx-desktop aria-label="{{ if $isZh }}产品桌面{{ else }}Product desktop{{ end }}">
-    <header class="osx-head">
-      <h1>{{ if $isZh }}我的<em>产品</em>操作系统{{ else }}My product <em>OS.</em>{{ end }}</h1>
-      <p>{{ if $isZh }}独立设计、开发与运营的 {{ len $products }} 个产品。选择一个进入。{{ else }}{{ len $products }} products designed, built, and operated solo. Pick one to enter.{{ end }}</p>
-    </header>
-    <div class="osx-launchpad" role="list">
+    <h1 class="osx-sr">{{ if $isZh }}产品 — BEAR OS{{ else }}Products — BEAR OS{{ end }}</h1>
+
+    {{/* proc — process monitor, primary launcher */}}
+    <div class="osx-widget osx-widget--proc" style="--w:0">
+      <header><i></i>PROC <span>{{ if $isZh }}进程{{ else }}processes{{ end }}</span><b>{{ len $products }}</b></header>
       {{- range $index, $product := $products }}
-      <button class="osx-app osx-app--{{ $product.color }}" type="button" role="listitem" data-osx-open="{{ $product.id }}" style="--i:{{ $index }}">
-        <span class="osx-app__tile" aria-hidden="true"><b>{{ $product.mark }}</b></span>
-        <span class="osx-app__name">{{ $product.name }}</span>
-        <span class="osx-app__stage"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+      <button type="button" class="osx-proc osx-proc--{{ $product.color }}" data-osx-open="{{ $product.id }}">
+        <span class="osx-proc__mark" aria-hidden="true">{{ $product.mark }}</span>
+        <span class="osx-proc__name">{{ $product.name }}<em>{{ $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}</em></span>
+        <span class="osx-proc__stage"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+        <span class="osx-proc__bar" aria-hidden="true"><i style="--p:{{ $product.progress }}%"></i></span>
+        <b class="osx-proc__pct">{{ $product.progress }}%</b>
+        <span class="osx-proc__go" aria-hidden="true">↵</span>
       </button>
       {{- end }}
+      <footer>$ top — {{ len $products }} running · {{ $live }} live · 1 maintainer</footer>
     </div>
-    <p class="osx-hint" aria-hidden="true">
-      <kbd>1</kbd>–<kbd>{{ len $products }}</kbd> {{ if $isZh }}打开{{ else }}open{{ end }}
-      <span>·</span> <kbd>←</kbd><kbd>→</kbd> {{ if $isZh }}切换{{ else }}switch{{ end }}
-      <span>·</span> <kbd>ESC</kbd> {{ if $isZh }}返回桌面{{ else }}desktop{{ end }}
-    </p>
+
+    {{/* clock */}}
+    <div class="osx-widget osx-widget--clock" style="--w:1">
+      <header><i></i>CLOCK</header>
+      <b class="osx-clock__time" data-osx-clock-big>--:--</b>
+      <span class="osx-clock__date" data-osx-date></span>
+      <footer><kbd>1</kbd>–<kbd>{{ len $products }}</kbd> {{ if $isZh }}打开{{ else }}open{{ end }} · <kbd>←</kbd><kbd>→</kbd> {{ if $isZh }}切换{{ else }}switch{{ end }} · <kbd>ESC</kbd> {{ if $isZh }}桌面{{ else }}desktop{{ end }}</footer>
+    </div>
+
+    {{/* next_up — aggregated first undone todo per product */}}
+    <div class="osx-widget osx-widget--next" style="--w:2">
+      <header><i></i>NEXT_UP <span>{{ if $isZh }}待办{{ else }}queue{{ end }}</span></header>
+      {{- range $product := $products }}
+      {{- $next := dict }}
+      {{- range .todo }}{{ if and (not .done) (not $next.zh) }}{{ $next = . }}{{ end }}{{ end }}
+      {{- with $next.zh }}
+      <button type="button" class="osx-next osx-next--{{ $product.color }}" data-osx-open="{{ $product.id }}">
+        <span class="osx-next__mark">{{ $product.mark }}</span>
+        <span class="osx-next__text">{{ if $isZh }}{{ $next.zh }}{{ else }}{{ $next.en }}{{ end }}</span>
+        <i aria-hidden="true"></i>
+      </button>
+      {{- end }}
+      {{- end }}
+    </div>
+
+    {{/* build.log — related writing across all products, newest first */}}
+    {{- $logs := slice }}
+    {{- range $product := $products }}
+      {{- range where site.RegularPages "Params.product" $product.id }}{{ $logs = $logs | append (dict "p" . "mark" $product.mark "color" $product.color) }}{{ end }}
+      {{- range $product.related }}{{ with site.GetPage . }}{{ $logs = $logs | append (dict "p" . "mark" $product.mark "color" $product.color) }}{{ end }}{{ end }}
+    {{- end }}
+    {{- $logs = sort $logs "p.Date" "desc" | first 6 }}
+    <div class="osx-widget osx-widget--log" style="--w:3">
+      <header><i></i>BUILD.LOG <span>{{ if $isZh }}相关写作{{ else }}related writing{{ end }}</span><b>{{ len $logs }}</b></header>
+      {{- range $logs }}
+      <a class="osx-log osx-log--{{ .color }}" href="{{ .p.RelPermalink }}" target="_blank" rel="noopener">
+        <time datetime="{{ .p.Date.Format "2006-01-02" }}">{{ .p.Date.Format "2006.01.02" }}</time>
+        <span class="osx-log__mark">[{{ .mark }}]</span>
+        <span class="osx-log__title">{{ .p.Title }}</span>
+      </a>
+      {{- end }}
+      <footer>$ tail -f ~/products/build.log<b class="osx-caret">_</b></footer>
+    </div>
+
+    {{/* inbox — public feedback issues */}}
+    <div class="osx-widget osx-widget--inbox" style="--w:4">
+      <header><i></i>INBOX <span>{{ if $isZh }}建议信箱{{ else }}feedback{{ end }}</span></header>
+      {{- range $p := $products }}
+      {{- with $p.feedback }}
+      <a class="osx-inbox osx-inbox--{{ $p.color }}" href="{{ . }}" target="_blank" rel="noopener">
+        <span class="osx-inbox__num">#{{ . | replaceRE `.*/(\d+)$` "$1" }}</span>
+        <span class="osx-inbox__name">{{ $p.name }}</span>
+        <b aria-hidden="true">↗</b>
+      </a>
+      {{- end }}
+      {{- end }}
+      <footer>$ gh issue comment {{ if $isZh }}→ 直达路线图{{ else }}→ straight to roadmap{{ end }}</footer>
+    </div>
   </section>
 
   {{/* ── App windows ─────────────────────────────────────── */}}
@@ -192,12 +249,19 @@
     }
   }
 
-  /* menubar clock */
+  /* clocks — menubar + desktop widget */
   var clock = root.querySelector('[data-osx-clock]');
+  var clockBig = root.querySelector('[data-osx-clock-big]');
+  var dateEl = root.querySelector('[data-osx-date]');
   function tick() {
-    if (!clock) return;
     var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
-    clock.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+    var t = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+    if (clock) clock.textContent = t;
+    if (clockBig) clockBig.textContent = t.slice(0, 5);
+    if (dateEl) {
+      var days = {{ if $isZh }}['周日','周一','周二','周三','周四','周五','周六']{{ else }}['SUN','MON','TUE','WED','THU','FRI','SAT']{{ end }};
+      dateEl.textContent = d.getFullYear() + '.' + p(d.getMonth() + 1) + '.' + p(d.getDate()) + ' · ' + days[d.getDay()];
+    }
   }
   tick(); setInterval(tick, 1000);
 
@@ -244,7 +308,7 @@
     setTimeout(function () { if (current === null) w.hidden = true; }, 300);
     current = null;
     history.replaceState(null, '', location.pathname);
-    var icon = root.querySelector('.osx-launchpad [data-osx-open="' + prev + '"]');
+    var icon = root.querySelector('.osx-widget--proc [data-osx-open="' + prev + '"]');
     if (icon) icon.focus({ preventScroll: true });
   }
 
