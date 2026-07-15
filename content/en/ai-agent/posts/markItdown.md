@@ -1,4 +1,5 @@
 ---
+url: "/projects/markItdown/"
 title: "Microsoft MarkItDown Tutorial: Convert PDF to Markdown"
 date: 2025-04-21T15:41:21+08:00
 draft: false

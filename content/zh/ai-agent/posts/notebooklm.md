@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/notebooklm/"
 title: "Google NotebookLM 的 RAG 深度调研思考"
 date: 2025-04-21T22:59:57+08:00
 draft: false

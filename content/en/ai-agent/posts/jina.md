@@ -1,4 +1,5 @@
 ---
+url: "/projects/jina/"
 title: "Jina AI: Multimodal Search & Embeddings"
 date: 2025-04-12T13:01:59+08:00
 draft: false

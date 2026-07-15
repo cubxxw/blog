@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/jina/"
 title: Jina 开源项目深度学习
 date: 2025-04-12T13:01:59+08:00
 draft: false

@@ -1,4 +1,5 @@
 ---
+url: "/projects/ai-gateway/"
 title: 'LLM/AI API Gateway Comparison: LiteLLM vs Kong vs APISIX and the Best Stack for Startups'
 date: 2025-04-16T17:36:12+08:00
 draft: false

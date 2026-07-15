@@ -1,4 +1,5 @@
 ---
+url: "/projects/langgraph/"
 title: "LangGraph Architecture: StateGraph, Nodes and Edges"
 date: 2025-04-19T15:19:20+08:00
 draft: false

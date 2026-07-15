@@ -1,4 +1,5 @@
 ---
+url: "/projects/langchain/"
 title: "LangChain: Open Source LLM Framework"
 date: 2025-04-16T17:36:45+08:00
 lastmod: 2026-07-07T10:00:00+08:00

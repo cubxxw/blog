@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/gpt-researcher/"
 title: "GPT Researcher 是什么？开源 AI 深度研究代理架构解析"
 date: 2025-04-14T16:17:27+08:00
 draft: false

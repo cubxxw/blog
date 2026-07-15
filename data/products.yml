@@ -1,0 +1,64 @@
+products:
+  - id: solo-compass
+    name: Solo Compass
+    stage_zh: 已上线
+    stage_en: Live
+    headline_zh: 把人生方向，变成每天可以执行的一小步。
+    headline_en: Turn life direction into one clear step you can take today.
+    desc_zh: 一款安静、清晰的个人方向系统，帮助你梳理长期目标、当下优先级与下一步行动。
+    desc_en: A calm personal direction system for connecting long-term goals, present priorities, and the next meaningful action.
+    audience_zh: 个人成长 · 独立创作者
+    audience_en: Personal growth · Indie builders
+    stack: Next.js · AI
+    color: cobalt
+    mark: SC
+    url: https://solo.cubxxw.com
+    github: https://github.com/getyak/solo-compass
+
+  - id: daypage
+    name: DayPage
+    stage_zh: 已上线
+    stage_en: Live
+    headline_zh: 不管理人生，只接住今天。
+    headline_en: Don't manage your life. Hold on to today.
+    desc_zh: 面向日常记录与自我觉察的轻量空间，让念头、情绪和行动自然沉淀为可回看的时间线。
+    desc_en: A lightweight space for daily reflection where thoughts, emotions, and actions settle into a timeline worth revisiting.
+    audience_zh: 日常记录 · 自我觉察
+    audience_en: Daily reflection · Self-awareness
+    stack: Next.js · Mobile
+    color: amber
+    mark: DP
+    url: https://daypage.cubxxw.com
+    github: https://github.com/getyak/daypage
+
+  - id: telepace
+    name: Telepace
+    stage_zh: 公开测试
+    stage_en: Public beta
+    headline_zh: 让产品团队持续听见真实用户。
+    headline_en: Keep real customer voices inside every product decision.
+    desc_zh: Voice-native、Agent-first 的用户研究基础设施，从访谈招募、执行到洞察交付形成自动化闭环。
+    desc_en: Voice-native, agent-first research infrastructure automating recruitment, interviews, synthesis, and insight delivery.
+    audience_zh: 产品团队 · 用户研究
+    audience_en: Product teams · User research
+    stack: Python · Next.js · Voice AI
+    color: sage
+    mark: TP
+    url: https://telepace.cubxxw.com
+    github: https://github.com/getyak/telepace-next
+
+  - id: apply-agent
+    name: Apply Agent
+    stage_zh: 开发中
+    stage_en: In development
+    headline_zh: 把求职流程交给一个可信赖的智能体。
+    headline_en: A trustworthy agent for the repetitive work of finding your next role.
+    desc_zh: 面向求职者的智能工作台，协助整理机会、匹配岗位、准备材料并追踪每一次申请。
+    desc_en: An intelligent job-search workspace for organizing opportunities, matching roles, preparing materials, and tracking applications.
+    audience_zh: 求职者 · 职业转型
+    audience_en: Job seekers · Career transitions
+    stack: Next.js · Python · Agents
+    color: coral
+    mark: AA
+    url: https://apply.cubxxw.com
+    github: https://github.com/getyak/apply-agent

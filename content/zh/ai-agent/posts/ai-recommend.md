@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/ai-recommend/"
 title: "Ai Recommend 技术、实践和深度学习"
 date: 2025-04-23T10:39:05+08:00
 draft: false

@@ -1,4 +1,5 @@
 ---
+url: "/projects/ai-recommend/"
 title: "AI Recommendation Systems: How They Work"
 date: 2025-04-23T10:39:04+08:00
 draft: false

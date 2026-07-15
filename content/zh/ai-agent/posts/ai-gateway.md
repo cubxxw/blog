@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/ai-gateway/"
 title: "AI Gateway（AI 网关）开源项目深度学习笔记"
 date: 2025-04-16T17:36:12+08:00
 draft: false

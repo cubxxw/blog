@@ -282,7 +282,7 @@ languages:
           pageRef: /about
           weight: 10
         - identifier: projects
-          name: Projects
+          name: Products
           url: /projects/
           pageRef: /projects
           weight: 15
@@ -367,7 +367,7 @@ languages:
           pageRef: /zh/about
           weight: 10
         - identifier: projects
-          name: 开源项目
+          name: 产品
           url: /zh/projects/
           pageRef: /zh/projects
           weight: 15
@@ -418,7 +418,7 @@ languages:
             url: /zh/engineering/
           - name: 成长与生活
             url: /zh/growth/
-          - name: AI 开源项目
+          - name: 产品
             url: /zh/projects/
           - name: 归档
             url: /zh/archives/

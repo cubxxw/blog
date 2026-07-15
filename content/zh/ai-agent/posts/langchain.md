@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/langchain/"
 title: "LangChain 开源项目深度学习"
 date: 2025-04-16T17:36:46+08:00
 lastmod: 2026-07-07T10:00:00+08:00

@@ -1,4 +1,5 @@
 ---
+url: "/projects/independent-developer/"
 title: 'Independent Developer in the AI Era: Open Source Deep Dive'
 date: 2025-04-15T20:53:12+08:00
 draft: false

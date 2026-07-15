@@ -1,6 +1,6 @@
 ---
-title: "Open Source Projects"
-description: "Open source projects I build and contribute to, products in the making, plus architecture analyses and hands-on write-ups around them."
+title: "Products"
+description: "Products independently built by Xinwei Xiong: Solo Compass, DayPage, Telepace, and Apply Agent, plus build notes directly connected to them."
 ---
 
-This is the canonical home for open source: the top half showcases repositories and products I actually build, maintain and contribute to; the bottom half collects project-focused notes and deep dives.
+This page is reserved for products I build and operate. Research about third-party open-source projects now lives under AI Agent.

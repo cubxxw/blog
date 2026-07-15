@@ -1,4 +1,5 @@
 ---
+url: "/projects/gpt-researcher/"
 title: 'GPT Researcher Explained: Open Source Deep Research Agent'
 date: 2025-04-14T16:17:27+08:00
 draft: false

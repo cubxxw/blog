@@ -1,4 +1,5 @@
 ---
+url: "/projects/notebooklm/"
 title: "NotebookLM: Google's AI Research Tool"
 date: 2025-04-21T22:59:57+08:00
 draft: false

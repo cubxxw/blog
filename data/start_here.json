@@ -41,7 +41,7 @@
             "hook": "零基础快速理解 Kubernetes 的长青入门篇。"
           },
           {
-            "page": "/projects/mem0",
+            "page": "/ai-agent/posts/mem0",
             "hook": "给 AI 装上记忆：mem0 架构与原理拆解。"
           },
           {
@@ -116,23 +116,23 @@
         "more_label": "浏览全部项目研究",
         "posts": [
           {
-            "page": "/projects/markitdown",
+            "page": "/ai-agent/posts/markitdown",
             "hook": "微软 MarkItDown 源码深读——本站被搜索最多的一页。"
           },
           {
-            "page": "/projects/langgraph",
+            "page": "/ai-agent/posts/langgraph",
             "hook": "LangGraph 设计、架构与原理的深度解析。"
           },
           {
-            "page": "/projects/notebooklm",
+            "page": "/ai-agent/posts/notebooklm",
             "hook": "Google NotebookLM 背后的 RAG 工程调研。"
           },
           {
-            "page": "/projects/tdd",
+            "page": "/ai-agent/posts/tdd",
             "hook": "AI 时代初创企业怎么做测试驱动开发。"
           },
           {
-            "page": "/projects/gpt-researcher",
+            "page": "/ai-agent/posts/gpt-researcher",
             "hook": "GPT-Researcher 开源项目深度学习。"
           }
         ]
@@ -314,23 +314,23 @@
         "more_label": "Browse all project deep-dives",
         "posts": [
           {
-            "page": "/projects/markitdown",
+            "page": "/ai-agent/posts/markitdown",
             "hook": "A deep read of Microsoft's MarkItDown — the most-searched page on this site."
           },
           {
-            "page": "/projects/langgraph",
+            "page": "/ai-agent/posts/langgraph",
             "hook": "LangGraph's design, architecture, and principles, dissected."
           },
           {
-            "page": "/projects/notebooklm",
+            "page": "/ai-agent/posts/notebooklm",
             "hook": "The RAG engineering behind Google NotebookLM."
           },
           {
-            "page": "/projects/tdd",
+            "page": "/ai-agent/posts/tdd",
             "hook": "Test-driven development for AI-era startups."
           },
           {
-            "page": "/projects/gpt-researcher",
+            "page": "/ai-agent/posts/gpt-researcher",
             "hook": "Learning from the GPT-Researcher open-source project."
           }
         ]

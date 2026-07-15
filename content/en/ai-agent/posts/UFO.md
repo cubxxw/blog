@@ -1,4 +1,5 @@
 ---
+url: "/projects/UFO/"
 title: 'UFO'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T21:30:15+08:00

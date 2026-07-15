@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/UFO/"
 title: '微软UFO项目深度解析：设计、实现、原理与架构'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T21:30:15+08:00

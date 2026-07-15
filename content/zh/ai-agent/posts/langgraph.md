@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/langgraph/"
 title: "LangGraph 架构深度解析：状态图、节点与边的设计原理"
 date: 2025-04-19T15:19:20+08:00
 draft: false

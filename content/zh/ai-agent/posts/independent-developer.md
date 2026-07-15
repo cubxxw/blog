@@ -1,4 +1,5 @@
 ---
+url: "/zh/projects/independent-developer/"
 title: "独立开发者必备技能及现代工具 & 分别的上手指导"
 date: 2025-04-15T20:53:12+08:00
 draft: false
