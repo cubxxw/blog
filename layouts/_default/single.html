@@ -9,6 +9,8 @@
 {{- $content := .Content -}}
 {{- $content = replaceRE `(?s)^\s*<h1[^>]*>.*?</h1>\s*` "" $content -}}
 
+{{- partial "wechat-share-thumb.html" . }}
+
 <div class="article-layout">
 
   {{/* ─── Left: Marginalia ──────────────────────────────────────── */}}

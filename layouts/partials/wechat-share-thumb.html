@@ -1,0 +1,19 @@
+{{- /* WeChat in-app share cards ignore og:image unless the JS-SDK is wired up
+       (which needs a verified 服务号 + JS 安全域名). Without it, WeChat grabs
+       the first raster image ≥ ~300px it finds in the DOM — on article pages
+       that would be the 48px author avatar or, worse, an SVG cover it can't
+       use. Plant the thumbnail deterministically instead: the cover when it
+       is a locally-hosted raster, otherwise the section OG card (1200×630).
+       Clipped via 0×0 overflow — display:none would stop the fetch. */ -}}
+{{- $sectionDefault := dict "ai-agent" "/assets/og-ai-technology.png" "engineering" "/assets/og-ai-technology.png" "growth" "/assets/og-growth.png" "projects" "/assets/og-projects.png" -}}
+{{- $thumb := index $sectionDefault .Section | default (index (site.Params.images | default (slice "/assets/og-image.png")) 0) -}}
+{{- with .Params.cover.image -}}
+  {{- /* External hosts (e.g. the sm.nsddd.top image bed with its broken cert)
+         are unreliable inside WeChat's WebView — only trust local rasters. */ -}}
+  {{- if and (hasPrefix . "/") (not (strings.HasSuffix (lower .) ".svg")) -}}
+    {{- $thumb = . -}}
+  {{- end -}}
+{{- end -}}
+<div class="wechat-share-thumb" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <img src="{{ $thumb | absURL }}" alt="" width="1200" height="630" loading="eager" decoding="async" />
+</div>
