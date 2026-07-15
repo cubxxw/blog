@@ -1,199 +1,243 @@
 {{- define "main" }}
 {{- $isZh := eq .Lang "zh" -}}
 {{- $products := site.Data.products.products -}}
-{{- $notes := where .RegularPages "Params.product" "ne" nil -}}
+{{- $live := 0 }}{{- range $products }}{{ if eq .stage_en "Live" }}{{ $live = add $live 1 }}{{ end }}{{- end }}
 
-<div class="pos" id="product-os">
+<div class="osx" id="bear-os" data-osx>
+
+  {{/* ── Boot splash (once per session) ─────────────────── */}}
+  <div class="osx-boot" data-osx-boot aria-hidden="true">
+    <span class="osx-boot__logo">◆</span>
+    <span class="osx-boot__name">BEAR&nbsp;OS</span>
+    <span class="osx-boot__bar"><i></i></span>
+  </div>
+
+  {{/* ── Ambient background ─────────────────────────────── */}}
+  <div class="osx-bg" aria-hidden="true">
+    <i class="osx-bg__blob osx-bg__blob--a"></i>
+    <i class="osx-bg__blob osx-bg__blob--b"></i>
+    <i class="osx-bg__blob osx-bg__blob--c"></i>
+    <span class="osx-bg__grid"></span>
+  </div>
 
   {{/* ── Menubar ─────────────────────────────────────────── */}}
-  <div class="pos-menubar">
-    <div class="pos-menubar__left">
-      <span class="pos-menubar__logo" aria-hidden="true">◆</span>
+  <div class="osx-menubar">
+    <div class="osx-menubar__left">
+      <span class="osx-menubar__logo" aria-hidden="true">◆</span>
       <strong>BEAR&nbsp;OS</strong>
-      <span class="pos-menubar__path">~/products</span>
+      <a class="osx-menubar__home" href="{{ "/" | relLangURL }}">{{ if $isZh }}← 返回博客{{ else }}← Back to blog{{ end }}</a>
     </div>
-    <div class="pos-menubar__right">
-      <span class="pos-menubar__stat"><i aria-hidden="true"></i>{{ len $products }} {{ if $isZh }}个进程运行中{{ else }}apps running{{ end }}</span>
-      <span class="pos-menubar__clock" data-pos-clock aria-hidden="true">--:--</span>
+    <div class="osx-menubar__right">
+      <span class="osx-menubar__stat"><i aria-hidden="true"></i>{{ len $products }} apps · {{ $live }} live</span>
+      <span class="osx-menubar__clock" data-osx-clock aria-hidden="true">--:--</span>
     </div>
   </div>
 
-  {{/* ── Boot / Hero ─────────────────────────────────────── */}}
-  {{- $live := 0 }}{{- range $products }}{{ if eq .stage_en "Live" }}{{ $live = add $live 1 }}{{ end }}{{- end }}
-  {{- $ids := slice }}{{- range $products }}{{ $ids = $ids | append .id }}{{- end }}
-  <header class="pos-boot">
-    <div class="pos-boot__terminal" aria-hidden="true">
-      <span class="pos-boot__line">$ ls ~/products</span>
-      <span class="pos-boot__line">{{ delimit $ids "  " }}</span>
-      <span class="pos-boot__line pos-boot__line--ok">$ open --all<b class="pos-caret">_</b></span>
+  {{/* ── Desktop: launchpad ──────────────────────────────── */}}
+  <section class="osx-desktop" data-osx-desktop aria-label="{{ if $isZh }}产品桌面{{ else }}Product desktop{{ end }}">
+    <header class="osx-head">
+      <h1>{{ if $isZh }}我的<em>产品</em>操作系统{{ else }}My product <em>OS.</em>{{ end }}</h1>
+      <p>{{ if $isZh }}独立设计、开发与运营的 {{ len $products }} 个产品。选择一个进入。{{ else }}{{ len $products }} products designed, built, and operated solo. Pick one to enter.{{ end }}</p>
+    </header>
+    <div class="osx-launchpad" role="list">
+      {{- range $index, $product := $products }}
+      <button class="osx-app osx-app--{{ $product.color }}" type="button" role="listitem" data-osx-open="{{ $product.id }}" style="--i:{{ $index }}">
+        <span class="osx-app__tile" aria-hidden="true"><b>{{ $product.mark }}</b></span>
+        <span class="osx-app__name">{{ $product.name }}</span>
+        <span class="osx-app__stage"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+      </button>
+      {{- end }}
     </div>
-    <h1 class="pos-boot__title">
-      {{ if $isZh }}独立<em>产品</em>{{ else }}Independent<br><em>products.</em>{{ end }}
-    </h1>
-    <div class="pos-boot__grid">
-      <p class="pos-boot__thesis">
-        {{ if $isZh }}设计、代码、部署、运营，由我一个人完成。下面每个窗口都是产品官网的快照，点击进入真实站点。{{ else }}Design, code, deployment, operations — done by one person. Each window below is a snapshot of the product's live site; click through to visit.{{ end }}
-      </p>
-      <div class="pos-boot__stats">
-        <span><strong>{{ len $products }}</strong>{{ if $isZh }}个产品{{ else }}products{{ end }}</span>
-        <span><strong>{{ $live }}</strong>{{ if $isZh }}个已上线{{ else }}live{{ end }}</span>
-        <span><strong>1</strong>{{ if $isZh }}人维护{{ else }}maintainer{{ end }}</span>
-      </div>
-    </div>
-  </header>
-
-  {{/* ── Desktop: product windows ────────────────────────── */}}
-  <section class="pos-desktop" aria-label="{{ if $isZh }}产品{{ else }}Products{{ end }}">
-    {{- range $index, $product := $products }}
-    {{- $domain := $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}
-    <article class="pos-window pos-window--{{ $product.color }}" id="{{ $product.id }}" tabindex="-1">
-      <div class="pos-window__bar">
-        <span class="pos-window__lights" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="pos-window__url">{{ $domain }}</span>
-        <span class="pos-window__proc" aria-hidden="true">PID {{ printf "%02d" (add $index 1) }}</span>
-      </div>
-      {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" $product.id) }}
-      <a class="pos-window__screen{{ if not $hasShot }} pos-window__screen--abstract{{ end }}" href="{{ $product.url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
-        {{- if $hasShot }}
-        <img class="pos-window__shot" src="{{ printf "/images/products/%s.jpg" $product.id }}" alt="{{ $product.name }} — {{ $domain }}" width="1440" height="900" loading="lazy" decoding="async">
-        {{- else }}
-        <span class="pos-window__grid" aria-hidden="true"></span>
-        <span class="pos-window__icon" aria-hidden="true">{{ $product.mark }}</span>
-        <span class="pos-window__skeleton" aria-hidden="true"><i></i><i></i><i></i></span>
-        {{- end }}
-        <span class="pos-window__launch">{{ if $isZh }}启动{{ else }}Launch{{ end }} ↗</span>
-      </a>
-      <div class="pos-window__body">
-        <div class="pos-window__meta">
-          <span class="pos-window__status"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
-          <span class="pos-window__audience">{{ if $isZh }}{{ $product.audience_zh }}{{ else }}{{ $product.audience_en }}{{ end }}</span>
-        </div>
-        <h2>{{ $product.name }}</h2>
-        <p class="pos-window__headline">{{ if $isZh }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
-        <p class="pos-window__desc">{{ if $isZh }}{{ $product.desc_zh }}{{ else }}{{ $product.desc_en }}{{ end }}</p>
-        <div class="pos-window__foot">
-          <div class="pos-window__chips">
-            {{- range split $product.stack " · " }}<span>{{ . }}</span>{{- end }}
-          </div>
-          <div class="pos-window__actions">
-            <a href="{{ $product.github }}" target="_blank" rel="noopener">GitHub ↗</a>
-            <a class="pos-window__primary" href="{{ $product.url }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }} ↗</a>
-          </div>
-        </div>
-      </div>
-    </article>
-    {{- end }}
+    <p class="osx-hint" aria-hidden="true">
+      <kbd>1</kbd>–<kbd>{{ len $products }}</kbd> {{ if $isZh }}打开{{ else }}open{{ end }}
+      <span>·</span> <kbd>←</kbd><kbd>→</kbd> {{ if $isZh }}切换{{ else }}switch{{ end }}
+      <span>·</span> <kbd>ESC</kbd> {{ if $isZh }}返回桌面{{ else }}desktop{{ end }}
+    </p>
   </section>
 
-  {{/* ── Dock ────────────────────────────────────────────── */}}
-  <nav class="pos-dock" aria-label="{{ if $isZh }}产品快捷入口{{ else }}Product dock{{ end }}">
-    <div class="pos-dock__tray">
-      {{- range $products }}
-      <a class="pos-dock__app pos-dock__app--{{ .color }}" href="#{{ .id }}" data-pos-dock>
-        <span aria-hidden="true">{{ .mark }}</span>
-        <b>{{ .name }}</b>
+  {{/* ── App windows ─────────────────────────────────────── */}}
+  {{- range $index, $product := $products }}
+  {{- $domain := $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}
+  {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" $product.id) }}
+  {{- /* related: curated list from data + any page with `product: <id>` front matter */}}
+  {{- $related := slice }}
+  {{- range where site.RegularPages "Params.product" $product.id }}{{ $related = $related | append . }}{{ end }}
+  {{- range $product.related }}{{ with site.GetPage . }}{{ $related = $related | append . }}{{ end }}{{ end }}
+  {{- $related = $related | uniq | first 3 }}
+  <section class="osx-window osx-window--{{ $product.color }}" id="{{ $product.id }}" data-osx-window="{{ $product.id }}" hidden aria-label="{{ $product.name }}">
+    <header class="osx-window__bar">
+      <span class="osx-window__lights">
+        <button type="button" class="osx-window__close" data-osx-close aria-label="{{ if $isZh }}关闭窗口{{ else }}Close window{{ end }}"></button>
+        <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </span>
+      <span class="osx-window__url">{{ $domain }}</span>
+      <span class="osx-window__proc" aria-hidden="true">PID {{ printf "%02d" (add $index 1) }}</span>
+    </header>
+    <div class="osx-window__body">
+      <a class="osx-window__screen{{ if not $hasShot }} osx-window__screen--abstract{{ end }}" href="{{ $product.url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
+        {{- if $hasShot }}
+        <img src="{{ printf "/images/products/%s.jpg" $product.id }}" alt="{{ $product.name }} — {{ $domain }}" width="1440" height="900" loading="lazy" decoding="async">
+        {{- else }}
+        <span class="osx-window__mark" aria-hidden="true">{{ $product.mark }}</span>
+        {{- end }}
+        <span class="osx-window__launch">{{ if $isZh }}启动{{ else }}Launch{{ end }} ↗</span>
       </a>
-      {{- end }}
-      <span class="pos-dock__sep" aria-hidden="true"></span>
-      <a class="pos-dock__app pos-dock__app--mono" href="https://github.com/getyak" target="_blank" rel="noopener">
-        <span aria-hidden="true">GH</span>
-        <b>getyak</b>
-      </a>
+      <div class="osx-window__info">
+        <div class="osx-window__meta osx-reveal" style="--r:0">
+          <span class="osx-window__status"><i aria-hidden="true"></i>{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+          <span>{{ if $isZh }}{{ $product.audience_zh }}{{ else }}{{ $product.audience_en }}{{ end }}</span>
+        </div>
+        <h2 class="osx-reveal" style="--r:1">{{ $product.name }}</h2>
+        <p class="osx-window__headline osx-reveal" style="--r:2">{{ if $isZh }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
+        <p class="osx-window__desc osx-reveal" style="--r:3">{{ if $isZh }}{{ $product.desc_zh }}{{ else }}{{ $product.desc_en }}{{ end }}</p>
+        <div class="osx-window__chips osx-reveal" style="--r:4" aria-label="Stack">
+          {{- range split $product.stack " · " }}<span>{{ . }}</span>{{- end }}
+        </div>
+        <div class="osx-window__actions osx-reveal" style="--r:5">
+          <a class="osx-window__primary" href="{{ $product.url }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }} ↗</a>
+          <a href="{{ $product.github }}" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="osx-related">
+          <span class="osx-related__label osx-reveal" style="--r:6">{{ if $isZh }}相关阅读{{ else }}Related reading{{ end }} · {{ len $related }}</span>
+          {{- if $related }}
+          {{- range $ri, $rp := $related }}
+          <a class="osx-related__item osx-reveal" style="--r:{{ add 7 $ri }}" href="{{ $rp.RelPermalink }}">
+            <time datetime="{{ $rp.Date.Format "2006-01-02" }}">{{ $rp.Date.Format "2006.01" }}</time>
+            <span>{{ $rp.Title }}</span>
+            <b aria-hidden="true">→</b>
+          </a>
+          {{- end }}
+          {{- else }}
+          <span class="osx-related__empty osx-reveal" style="--r:7">$ {{ if $isZh }}构建笔记写作中{{ else }}build notes in progress{{ end }}<b class="osx-caret">_</b></span>
+          {{- end }}
+        </div>
+      </div>
     </div>
+  </section>
+  {{- end }}
+
+  {{/* ── Dock (visible in app state) ─────────────────────── */}}
+  <nav class="osx-dock" aria-label="{{ if $isZh }}产品切换{{ else }}Switch product{{ end }}">
+    <button type="button" class="osx-dock__home" data-osx-close aria-label="{{ if $isZh }}返回桌面{{ else }}Back to desktop{{ end }}">◆</button>
+    <span class="osx-dock__sep" aria-hidden="true"></span>
+    {{- range $products }}
+    <button type="button" class="osx-dock__app osx-dock__app--{{ .color }}" data-osx-open="{{ .id }}" aria-label="{{ .name }}">
+      <span aria-hidden="true">{{ .mark }}</span>
+      <b>{{ .name }}</b>
+      <i class="osx-dock__dot" aria-hidden="true"></i>
+    </button>
+    {{- end }}
   </nav>
 
-  {{/* ── Principles: system preferences ──────────────────── */}}
-  <section class="pos-prefs" aria-labelledby="pos-prefs-title">
-    <div class="pos-section-head">
-      <span>{{ if $isZh }}系统偏好设置{{ else }}System preferences{{ end }} · KERNEL</span>
-      <h2 id="pos-prefs-title">{{ if $isZh }}运行原则{{ else }}Operating principles{{ end }}</h2>
-      <p>{{ if $isZh }}三条不可关闭的默认设置。{{ else }}Three defaults that cannot be switched off.{{ end }}</p>
-    </div>
-    <div class="pos-prefs__list">
-      <div class="pos-pref">
-        <div class="pos-pref__text">
-          <h3>{{ if $isZh }}替用户拿走复杂度{{ else }}Carry the complexity{{ end }}</h3>
-          <p>{{ if $isZh }}复杂度不会消失，只会转移。产品的职责，是把它搬到用户永远看不见的地方。{{ else }}Complexity never disappears; it only moves. A product's job is to carry it where the user never has to look.{{ end }}</p>
-        </div>
-        <span class="pos-pref__toggle" role="img" aria-label="{{ if $isZh }}始终开启{{ else }}Always on{{ end }}"><i></i></span>
-      </div>
-      <div class="pos-pref">
-        <div class="pos-pref__text">
-          <h3>{{ if $isZh }}小，但每天都在{{ else }}Small, but always on{{ end }}</h3>
-          <p>{{ if $isZh }}比起庞大的可能性，我更相信持续的存在。上线只是开始，运营才是承诺。{{ else }}I trust steady presence over grand possibility. Shipping is the start; operating is the promise.{{ end }}</p>
-        </div>
-        <span class="pos-pref__toggle" role="img" aria-label="{{ if $isZh }}始终开启{{ else }}Always on{{ end }}"><i></i></span>
-      </div>
-      <div class="pos-pref">
-        <div class="pos-pref__text">
-          <h3>{{ if $isZh }}先解决自己的问题{{ else }}Solve my own problem first{{ end }}</h3>
-          <p>{{ if $isZh }}每个产品都始于我自己的困境。我是第一个用户，也是最后一个愿意妥协的人。{{ else }}Every product starts as my own problem. I am the first user, and the last one willing to compromise.{{ end }}</p>
-        </div>
-        <span class="pos-pref__toggle" role="img" aria-label="{{ if $isZh }}始终开启{{ else }}Always on{{ end }}"><i></i></span>
-      </div>
-    </div>
-  </section>
-
-  {{/* ── Docs: file manager ──────────────────────────────── */}}
-  <section class="pos-files" id="pos-files" aria-labelledby="pos-files-title">
-    <div class="pos-section-head">
-      <span>~/products/build-notes · $ ls -la</span>
-      <h2 id="pos-files-title">{{ if $isZh }}构建文档{{ else }}Build documents{{ end }}</h2>
-      <p>{{ if $isZh }}只收录与上述产品直接相关的决策、复盘与工程记录。{{ else }}Only decisions, retrospectives, and engineering notes tied to these products.{{ end }}</p>
-    </div>
-    {{- if $notes }}
-    <div class="pos-files__list">
-      <div class="pos-files__cols" aria-hidden="true">
-        <span>{{ if $isZh }}产品{{ else }}PRODUCT{{ end }}</span><span>{{ if $isZh }}文档{{ else }}DOCUMENT{{ end }}</span><span>{{ if $isZh }}修改日期{{ else }}MODIFIED{{ end }}</span>
-      </div>
-      {{- range $notes.ByDate.Reverse }}
-      <a href="{{ .RelPermalink }}" class="pos-file">
-        <span class="pos-file__product">{{ .Params.product | upper }}</span>
-        <span class="pos-file__name"><i aria-hidden="true">▤</i>{{ .Title }}</span>
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
-        <b aria-hidden="true">→</b>
-      </a>
-      {{- end }}
-    </div>
-    {{- else }}
-    <div class="pos-files__empty">
-      <span class="pos-files__prompt">$ ls ~/products/build-notes<br>total 0 · {{ if $isZh }}构建笔记正在写作中{{ else }}build notes are being written{{ end }}<b class="pos-caret">_</b></span>
-      <p>{{ if $isZh }}构建笔记整理中。第三方项目研究已归入「AI Agent」栏目，这个目录只收录上面四个产品的决策记录、复盘与工程笔记。{{ else }}Build notes are being organized. Third-party project research now lives under AI Agent; this directory only holds decision records, retrospectives, and engineering notes for the four products above.{{ end }}</p>
-    </div>
-    {{- end }}
-  </section>
-
-  {{/* ── Shutdown line ───────────────────────────────────── */}}
-  <footer class="pos-shutdown" aria-hidden="true">
-    <span>$ uptime · {{ len $products }} apps · {{ if $isZh }}截图更新于{{ else }}snapshots updated{{ end }} {{ now.Format "2006-01" }}</span>
-  </footer>
+  <noscript>
+    <style>
+      .osx{position:static;height:auto;overflow:visible}
+      .osx-window[hidden]{display:flex!important;position:static;transform:none;opacity:1;margin:20px auto;max-width:1100px}
+      .osx-boot,.osx-hint{display:none}
+      body:has(.osx){overflow:auto}
+    </style>
+  </noscript>
 </div>
 
 <script>
 (function () {
-  var clock = document.querySelector('[data-pos-clock]');
-  if (clock) {
-    var tick = function () {
-      var d = new Date();
-      var p = function (n) { return String(n).padStart(2, '0'); };
-      clock.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
-    };
-    tick();
-    setInterval(tick, 1000);
+  var root = document.querySelector('[data-osx]');
+  if (!root) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ids = Array.prototype.map.call(root.querySelectorAll('[data-osx-window]'), function (w) { return w.getAttribute('data-osx-window'); });
+  var current = null;
+
+  /* boot splash — once per session */
+  var boot = root.querySelector('[data-osx-boot]');
+  if (boot) {
+    if (reduceMotion || sessionStorage.getItem('osx-booted')) { boot.remove(); }
+    else {
+      sessionStorage.setItem('osx-booted', '1');
+      root.classList.add('osx--booting');
+      setTimeout(function () { root.classList.remove('osx--booting'); boot.classList.add('osx-boot--done'); }, 1150);
+      setTimeout(function () { boot.remove(); }, 1750);
+    }
   }
-  document.querySelectorAll('[data-pos-dock]').forEach(function (app) {
-    app.addEventListener('click', function (e) {
-      var target = document.querySelector(app.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      target.scrollIntoView({ behavior: motionOK ? 'smooth' : 'auto', block: 'center' });
-      target.classList.remove('pos-window--focus');
-      void target.offsetWidth;
-      target.classList.add('pos-window--focus');
-      history.replaceState(null, '', app.getAttribute('href'));
+
+  /* menubar clock */
+  var clock = root.querySelector('[data-osx-clock]');
+  function tick() {
+    if (!clock) return;
+    var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+    clock.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* pointer parallax (fine pointers only) */
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+    window.addEventListener('pointermove', function (e) {
+      tx = (e.clientX / innerWidth - .5) * 2;
+      ty = (e.clientY / innerHeight - .5) * 2;
+      if (!raf) raf = requestAnimationFrame(step);
+    }, { passive: true });
+    function step() {
+      cx += (tx - cx) * .06; cy += (ty - cy) * .06;
+      root.style.setProperty('--mx', cx.toFixed(4));
+      root.style.setProperty('--my', cy.toFixed(4));
+      raf = (Math.abs(tx - cx) + Math.abs(ty - cy) > .001) ? requestAnimationFrame(step) : null;
+    }
+  }
+
+  function windowEl(id) { return root.querySelector('[data-osx-window="' + id + '"]'); }
+
+  function open(id) {
+    if (!windowEl(id) || id === current) return;
+    ids.forEach(function (other) {
+      var w = windowEl(other);
+      if (other === id) { w.hidden = false; requestAnimationFrame(function () { w.classList.add('osx-window--open'); }); }
+      else { w.classList.remove('osx-window--open'); w.hidden = true; }
     });
+    current = id;
+    root.classList.add('osx--app');
+    root.querySelectorAll('.osx-dock__app').forEach(function (btn) {
+      btn.classList.toggle('osx-dock__app--active', btn.getAttribute('data-osx-open') === id);
+    });
+    history.replaceState(null, '', '#' + id);
+    var closeBtn = windowEl(id).querySelector('[data-osx-close]');
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
+  }
+
+  function close() {
+    if (current === null) return;
+    var w = windowEl(current), prev = current;
+    w.classList.remove('osx-window--open');
+    root.classList.remove('osx--app');
+    setTimeout(function () { if (current === null) w.hidden = true; }, 300);
+    current = null;
+    history.replaceState(null, '', location.pathname);
+    var icon = root.querySelector('.osx-launchpad [data-osx-open="' + prev + '"]');
+    if (icon) icon.focus({ preventScroll: true });
+  }
+
+  root.addEventListener('click', function (e) {
+    var opener = e.target.closest('[data-osx-open]');
+    if (opener) { open(opener.getAttribute('data-osx-open')); return; }
+    if (e.target.closest('[data-osx-close]')) close();
   });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { close(); return; }
+    var n = parseInt(e.key, 10);
+    if (n >= 1 && n <= ids.length && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      var tag = document.activeElement && document.activeElement.tagName;
+      if (tag !== 'INPUT' && tag !== 'TEXTAREA') open(ids[n - 1]);
+      return;
+    }
+    if (current !== null && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+      var i = ids.indexOf(current);
+      open(ids[(i + (e.key === 'ArrowRight' ? 1 : ids.length - 1)) % ids.length]);
+    }
+  });
+
+  /* deep link */
+  var hash = location.hash.replace('#', '');
+  if (hash && ids.indexOf(hash) !== -1) open(hash);
 })();
 </script>
 {{- end }}

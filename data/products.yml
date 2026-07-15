@@ -14,6 +14,9 @@ products:
     mark: SC
     url: https://solo.cubxxw.com
     github: https://github.com/getyak/solo-compass
+    related:
+      - /growth/posts/metacognitive-transformation-review
+      - /growth/posts/2026-07-14-what-remains-when-taken-apart
 
   - id: daypage
     name: DayPage
@@ -30,6 +33,9 @@ products:
     mark: DP
     url: https://daypage.cubxxw.com
     github: https://github.com/getyak/daypage
+    related:
+      - /growth/posts/2026-06-thought-notes
+      - /growth/posts/2025-05-thought-notes
 
   - id: telepace
     name: Telepace
@@ -46,6 +52,9 @@ products:
     mark: TP
     url: https://telepace.cubxxw.com
     github: https://github.com/getyak/telepace-next
+    related:
+      - /ai-agent/posts/relay-agent-architecture-design
+      - /growth/posts/super-individual-ai-product-and-solo-builder-stack
 
   - id: apply-agent
     name: Apply Agent
@@ -62,3 +71,6 @@ products:
     mark: AA
     url: https://apply.cubxxw.com
     github: https://github.com/getyak/apply-agent
+    related:
+      - /growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips
+      - /ai-agent/posts/independent-developer
