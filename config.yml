@@ -85,9 +85,11 @@ params:
     # safari_pinned_tab: <link / abs url>
     customCSS: ["css/custom.css", "css/nav-elegant.css"]
   label:
+    # Typographic masthead only. The avatar was removed on purpose: the
+    # author card in the article sidebar (and the homepage hero) already
+    # carry the face — a second headshot in the nav duplicated it a few
+    # pixels away and never sat on the wordmark's baseline.
     text: cubxxw
-    icon: ./assets/cubxxw-image.jpg
-    iconHeight: 35
   homeInfoParams:
     Title: Hi there 👋
     Content: My name is Xinwei(bear) Xiong. My loyalty is to adventure 🤖
