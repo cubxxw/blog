@@ -160,7 +160,7 @@
 {{- $p := .Parent -}}
 {{- range seq 10 -}}
   {{- if $p -}}
-    {{- $ancestors = $ancestors | append $p -}}
+    {{- if $p.Title -}}{{- $ancestors = $ancestors | append $p -}}{{- end -}}
     {{- $p = $p.Parent -}}
   {{- end -}}
 {{- end -}}

@@ -326,3 +326,9 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /start-here/       /about/       301
 /zh/start-here     /zh/about/    301
 /zh/start-here/    /zh/about/    301
+
+# Canonical-case fix (2026-07): the ranking MarkItDown page moved from the
+# accidental camelCase URL to all-lowercase. 301 the old case so Google
+# consolidates on the lowercase canonical that internal links already use.
+/projects/markItdown/      /projects/markitdown/      301!
+/zh/projects/markItdown/   /zh/projects/markitdown/   301!

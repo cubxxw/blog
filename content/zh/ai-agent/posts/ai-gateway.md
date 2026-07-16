@@ -1,6 +1,7 @@
 ---
 url: "/zh/projects/ai-gateway/"
 title: "AI Gateway（AI 网关）开源项目深度学习笔记"
+keywords: ["llm api 网关", "ai gateway", "ai 网关", "litellm", "litellm vs portkey", "portkey", "kong", "apisix", "大模型网关"]
 date: 2025-04-16T17:36:12+08:00
 draft: false
 tocopen: true

@@ -1,5 +1,5 @@
 ---
-url: "/zh/projects/markItdown/"
+url: "/zh/projects/markitdown/"
 title: "MarkItDown 教程：微软开源文档转 Markdown 工具"
 date: 2025-04-21T15:41:21+08:00
 draft: false
@@ -8,9 +8,9 @@ tocopen: true
 type: posts
 tags: ["AI", "Open Source", "Python", "LLM", "RAG"]
 author: ["Xinwei Xiong", "Me"]
-keywords: ["markitdown", "microsoft", "markdown", "文档转换", "LLM", "RAG", "Python"]
+keywords: ["markitdown", "markitdown ocr", "microsoft markitdown", "markdown", "OCR", "PDF 转 Markdown", "文档转换", "LLM", "RAG", "Python"]
 description: >
-  手把手教你安装和使用微软开源工具 MarkItDown：将 PDF、Word、Excel、PPT、图片等 15+ 种格式统一转换为 Markdown，附命令行与 Python 代码示例，覆盖 RAG 预处理、Azure 集成与同类工具对比。
+  手把手教你安装和使用微软开源工具 MarkItDown：将 PDF、Word、Excel、PPT、图片（含扫描件 OCR）等 15+ 种格式统一转换为 Markdown，附命令行与 Python 代码示例，覆盖 RAG 预处理、Azure 集成与同类工具对比。
 aliases:
   - /zh/posts/ai-projects/markitdown/
 tldr:

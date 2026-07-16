@@ -20,7 +20,7 @@
       {{- $page := . }}
       {{- $skip := false }}
       {{- if .Params.private }}{{ $skip = true }}{{ end }}
-      {{- if .Params.robotsNoIndex }}{{ $skip = true }}{{ end }}
+      {{- if partial "seo/should-noindex.html" . }}{{ $skip = true }}{{ end }}
       {{- if eq .Params.sitemap_exclude true }}{{ $skip = true }}{{ end }}
       {{- if in $excludedLayouts .Layout }}{{ $skip = true }}{{ end }}
       {{- if or (eq .Kind "404") (strings.Contains .RelPermalink "/404") }}{{ $skip = true }}{{ end }}

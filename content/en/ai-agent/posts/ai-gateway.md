@@ -7,7 +7,7 @@ showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: []
+keywords: ["llm api gateway", "ai gateway", "litellm", "litellm vs portkey", "portkey", "kong ai gateway", "apisix", "llm api gateway startup"]
 tags:
   - AI
   - Open Source

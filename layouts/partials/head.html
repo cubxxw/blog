@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-{{- if or (eq .Kind "404") .Params.robotsNoIndex }}
+{{- if partial "seo/should-noindex.html" . }}
 <meta name="robots" content="noindex, nofollow">
 {{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
