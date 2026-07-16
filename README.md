@@ -209,7 +209,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [AI Recommendation Systems: How They Work](https://cubxxw.com/projects/ai-recommend/)
 - [NotebookLM: Google's AI Research Tool](https://cubxxw.com/projects/notebooklm/)
 - [TDD for AI: Test-Driven Development Guide](https://cubxxw.com/projects/tdd/)
-- [Microsoft MarkItDown Tutorial: Convert PDF to Markdown](https://cubxxw.com/projects/markItdown/)
+- [Microsoft MarkItDown Tutorial: Convert PDF to Markdown](https://cubxxw.com/projects/markitdown/)
 - [LangGraph Architecture: StateGraph, Nodes and Edges](https://cubxxw.com/projects/langgraph/)
 - [LangChain: Open Source LLM Framework](https://cubxxw.com/projects/langchain/)
 - [LLM/AI API Gateway Comparison: LiteLLM vs Kong vs APISIX and the Best Stack for Startups](https://cubxxw.com/projects/ai-gateway/)
