@@ -22,6 +22,12 @@
 
   font-family: var(--font-body, system-ui, sans-serif);
   color: var(--tw-ink);
+
+  /* custom.css caps .main at max-width:100% (overflow guard), so this page
+     was running edge-to-edge on desktop. Keep the whole quest log on a
+     centered measure instead. */
+  max-width: 1080px;
+  margin-inline: auto;
 }
 body.dark .tw-page {
   --tw-surface: #1b212c;
@@ -535,7 +541,21 @@ body.dark .tw-area__status { color: #6fe0a8; }
   grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
   gap: 20px;
 }
-.tw-cards--single { grid-template-columns: minmax(0, 620px); }
+/* An area with a single save: stretch it into one wide horizontal slot
+   instead of leaving half the measure empty. */
+.tw-cards--single { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) {
+  .tw-cards--single .tw-card {
+    display: grid;
+    grid-template-columns: minmax(0, 44%) minmax(0, 1fr);
+  }
+  .tw-cards--single .tw-card__media {
+    height: 100%;
+    min-height: 250px;
+    aspect-ratio: auto;
+  }
+  .tw-cards--single .tw-card__body { padding: 24px 28px; align-self: center; }
+}
 
 .tw-card {
   position: relative;

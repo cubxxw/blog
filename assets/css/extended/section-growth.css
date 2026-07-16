@@ -28,6 +28,16 @@
   /* Spine geometry */
   --gr-spine-x: 10px;
 }
+/* ── Contained measure ──
+   custom.css caps .main at max-width:100% (overflow guard), which left this
+   page running edge-to-edge on desktop. The page keeps painting its paper
+   across the full main column; every top-level block sits on a centered
+   measure so the composition can breathe. */
+.gr-page > * {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
 body.dark .gr-page {
   --gr-spring: #7ed09b;
   --gr-summer: #4ebd82;
@@ -179,6 +189,28 @@ html.motion-reveal .gr-sprout__bud    { transform-origin: 74px 12px;  animation-
   font-size: 0.98rem;
   line-height: 1.85;
   color: var(--ei-text-2);
+}
+/* Desktop: months grid on the left, the caption as a marginal note on the
+   right — instead of a left-anchored block with half the measure empty.
+   (Placed after the base rules: media queries don't add specificity.) */
+@media (min-width: 980px) {
+  .gr-garden {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-areas:
+      "label label"
+      "grid  caption";
+    column-gap: var(--ei-s6, 56px);
+    align-items: start;
+  }
+  .gr-garden > .eig-section-label { grid-area: label; }
+  .gr-garden__grid { grid-area: grid; }
+  .gr-garden__caption {
+    grid-area: caption;
+    margin: 10px 0 0;
+    padding-left: var(--ei-s4, 28px);
+    border-left: 1px solid var(--ei-divide);
+  }
 }
 .gr-garden__grid {
   display: flex;
