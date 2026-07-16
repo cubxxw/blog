@@ -328,7 +328,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina 开源项目深度学习](https://cubxxw.com/zh/projects/jina/)
 - [2025年3月思考笔记](https://cubxxw.com/zh/growth/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://cubxxw.com/zh/growth/posts/2024-annual-review/)
-- [旅行足迹](https://cubxxw.com/zh/travel/)
+- [旅行 · 世界这场游戏](https://cubxxw.com/zh/travel/)
 - [关于我与这个博客](https://cubxxw.com/zh/about/)
 - [Kubernetes 资源与学习路径总结](https://cubxxw.com/zh/engineering/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://cubxxw.com/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
