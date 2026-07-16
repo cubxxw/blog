@@ -328,8 +328,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina 开源项目深度学习](https://cubxxw.com/zh/projects/jina/)
 - [2025年3月思考笔记](https://cubxxw.com/zh/growth/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://cubxxw.com/zh/growth/posts/2024-annual-review/)
-- [关于我与这个博客](https://cubxxw.com/zh/about/)
 - [旅行足迹](https://cubxxw.com/zh/travel/)
+- [关于我与这个博客](https://cubxxw.com/zh/about/)
 - [Kubernetes 资源与学习路径总结](https://cubxxw.com/zh/engineering/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://cubxxw.com/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [探索大型语言模型（llm）：人工智能在理解与生成人类语言方面的先锋](https://cubxxw.com/zh/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
@@ -356,9 +356,9 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes Kustomize 学习指南](https://cubxxw.com/zh/engineering/posts/kubernetes-for-kustomize-learning/)
 - [设计 OpenIM 使用 Harbor 构建企业镜像仓库](https://cubxxw.com/zh/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
 - [自动化测试的学习(一)](https://cubxxw.com/zh/engineering/posts/learn-about-automated-testing/)
-- [Kubernetes 的 CNI，CRI，CSI 详解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
-- [Kubernetes 控制平面 - Kubectl 详细讲解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Kubernetes 控制平面 - 调度器](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
+- [Kubernetes 控制平面 - Kubectl 详细讲解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
+- [Kubernetes 的 CNI，CRI，CSI 详解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 <!-- My-Blog-ZH:END -->
 
 
