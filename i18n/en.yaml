@@ -197,6 +197,9 @@
 - id: tldr_label
   translation: "TL;DR"
 
+- id: tldr_eyebrow
+  translation: "In Brief"
+
 - id: marginalia.maturity
   translation: "Maturity"
 

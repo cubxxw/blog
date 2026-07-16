@@ -197,6 +197,9 @@
 - id: tldr_label
   translation: "核心要点"
 
+- id: tldr_eyebrow
+  translation: "提要"
+
 - id: marginalia.maturity
   translation: "成熟度"
 

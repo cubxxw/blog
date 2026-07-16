@@ -1,216 +1,84 @@
-/* TL;DR / answer-first block — GEO/BLUF pattern, rendered as a "world-line"
-   panel: a vertical cable with numbered nodes, a travelling pulse, a header
-   scan line and technical-drawing crop marks. Colours follow the theme accent
-   tokens so it adapts to light/dark/paper themes. Rendered by
-   partials/article/tldr.html. All motion is gated by prefers-reduced-motion. */
+/* TL;DR / answer-first block — "book front-matter précis" (书前提要).
+   GEO/BLUF semantics live in the markup (<aside> + <ol>, see
+   partials/article/tldr.html); visually this is a quiet typographic
+   passage between the post header and the cover, not a card: a small
+   letterspaced eyebrow fading into a hairline rule, then numbered lines
+   (一、二、三 in zh via a cjk-ideographic counter, 1. 2. 3. elsewhere).
+   No box, no background, no animation — it must never be louder than
+   the prose it summarises. */
 
 .article-tldr {
-  position: relative;
-  /* Tighter top gap so it sits close to the cover/description above. */
-  margin: var(--space-4) 0 var(--space-8);
   /* Match the prose reading column (.post-content caps at 760px). */
   max-width: 760px;
-  /* generous interior so the wire + nodes have room to breathe.
-     (NB: there is no --space-7 token — was silently collapsing padding to 0) */
-  padding: var(--space-8) var(--space-8) var(--space-6);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl, 16px);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.12)),
-    color-mix(in srgb, var(--color-accent-soft) 55%, var(--color-bg, #fbf8f1));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 24px 60px -34px color-mix(in srgb, var(--color-accent) 45%, transparent);
+  margin: var(--space-2) 0 var(--space-10);
   font-family: var(--font-prose, var(--font-body));
-  overflow: hidden;
-  isolation: isolate;
 }
 
-/* faint schematic wash bleeding from the wire side */
-.article-tldr::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 55%),
-    radial-gradient(120% 120% at 100% 100%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 50%);
-  pointer-events: none;
-}
-
-/* ── technical-drawing corner crop marks ── */
-.tldr-tick {
-  position: absolute;
-  z-index: 2;
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid var(--color-accent);
-  opacity: 0.5;
-  pointer-events: none;
-}
-.tldr-tick--tl { top: 11px; left: 11px; border-right: 0; border-bottom: 0; }
-.tldr-tick--tr { top: 11px; right: 11px; border-left: 0; border-bottom: 0; }
-.tldr-tick--bl { bottom: 11px; left: 11px; border-right: 0; border-top: 0; }
-.tldr-tick--br { bottom: 11px; right: 11px; border-left: 0; border-top: 0; }
-
-/* ── header ── */
-.tldr-head {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  /* nudge in so the eyebrow/meta clear the top crop marks */
-  padding: 2px 6px 14px;
-  margin-bottom: 20px;
-}
-.tldr-head::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    var(--color-accent) 0%,
-    color-mix(in srgb, var(--color-accent) 50%, #c2823c) 18%,
-    transparent 60%);
-  opacity: 0.5;
-}
-/* animated scan dot riding the header rule */
-.tldr-scan {
-  position: absolute;
-  left: 0; bottom: -1.5px;
-  width: 46px; height: 3px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, transparent,
-    color-mix(in srgb, var(--color-accent) 60%, #e6a85a), transparent);
-  filter: blur(0.3px);
-  animation: tldr-scan 5.5s linear infinite;
-}
-
+/* ── eyebrow: 「提要」/ In Brief + hairline rule ── */
 .tldr-eyebrow {
   display: flex;
   align-items: center;
-  gap: 11px;
-}
-.tldr-spark {
-  width: 17px; height: 17px;
-  color: var(--color-accent);
-  flex: none;
-  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--color-accent) 45%, transparent));
-  animation: tldr-twinkle 3.2s ease-in-out infinite;
-}
-.tldr-spark svg { width: 100%; height: 100%; display: block; }
-.tldr-zh {
-  font-family: var(--font-display, var(--font-serif));
+  gap: 14px;
+  margin: 0 0 12px;
+  /* an <h2> for extraction semantics; visually a micro-label */
   font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 0.06em;
+}
+.tldr-eyebrow-text {
+  font-family: var(--font-display, var(--font-serif));
+  font-size: 0.8125rem;
+  letter-spacing: 0.42em;
   color: var(--color-accent);
-  /* override the old shimmer clip from prior design */
-  -webkit-text-fill-color: currentColor;
-  background: none;
-}
-.tldr-en {
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  /* quieter than the muted text so it recedes behind the serif label */
-  color: color-mix(in srgb, var(--color-text-muted, var(--color-ink-muted)) 85%, transparent);
-  padding-left: 11px;
-  border-left: 1px solid var(--color-border);
-}
-.tldr-meta {
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  color: color-mix(in srgb, var(--color-text-muted, var(--color-ink-muted)) 85%, transparent);
   white-space: nowrap;
 }
-.tldr-meta b { color: color-mix(in srgb, var(--color-accent) 78%, transparent); font-weight: 600; }
-
-/* ── the world-line cable + nodes ── */
-.tldr-wire {
-  position: relative;
-  z-index: 2;
-  padding-left: 4px;
-}
-/* the cable — thicker & more visible than before */
-.tldr-wire::before {
+.tldr-eyebrow::after {
   content: "";
-  position: absolute;
-  top: 10px; bottom: 10px;
-  left: 16px;
-  width: 3px;
-  border-radius: 3px;
-  background: linear-gradient(180deg,
-    color-mix(in srgb, var(--color-accent) 60%, #c2823c) 0%,
-    color-mix(in srgb, var(--color-accent) 80%, #a8434a) 40%,
-    var(--color-accent) 100%);
-  opacity: 0.7;
-}
-/* travelling pulse down the cable */
-.tldr-wire::after {
-  content: "";
-  position: absolute;
-  top: 10px; bottom: 10px;
-  left: 13.5px;
-  width: 8px;
-  border-radius: 8px;
-  background: linear-gradient(180deg,
-    transparent 0%, transparent 42%,
-    color-mix(in srgb, var(--color-accent) 50%, #e6a85a) 50%,
-    transparent 58%, transparent 100%);
-  background-size: 100% 280%;
-  filter: blur(0.8px);
-  animation: tldr-pulse 4.6s linear infinite;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-accent) 32%, transparent),
+    transparent 72%
+  );
 }
 
-.tldr-item {
-  position: relative;
-  /* even vertical rhythm so all nodes share one top offset and line up */
-  padding: 18px 4px 18px 58px;
-}
-.tldr-item + .tldr-item {
-  border-top: 1px dashed var(--color-border);
-}
-
-/* node chip sitting on the cable — larger, bolder */
-.tldr-node {
-  position: absolute;
-  left: 0; top: 16px;
-  width: 32px; height: 32px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  background: var(--color-bg, #fbf8f1);
-  border: 1.5px solid var(--color-accent);
-  color: var(--color-accent);
-  font-family: var(--font-mono, monospace);
-  font-size: 11.5px;
-  /* lighter weight + loosened tracking so the digits read as a quiet label,
-     not a hard engineering stamp */
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  box-shadow:
-    0 0 0 5px var(--color-bg, #fbf8f1),
-    0 0 12px -2px color-mix(in srgb, var(--color-accent) 40%, transparent);
-  transition: box-shadow .3s ease, transform .3s ease, color .3s ease;
-}
-
-.tldr-txt {
-  font-family: var(--font-prose, var(--font-body));
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--color-text);
+/* ── the numbered lines ── */
+.tldr-list {
   margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: tldr;
 }
-.tldr-txt :is(p) { margin: 0; }
-.tldr-txt :is(strong, b) { color: var(--color-accent); font-weight: 600; }
-.tldr-txt code {
+.tldr-list li {
+  counter-increment: tldr;
+  position: relative;
+  padding-left: 2.6em;
+  margin: 0 0 0.5em;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  /* a half-step quieter than body ink: skimmable, skippable */
+  color: color-mix(in srgb, var(--color-text) 88%, var(--color-bg, #fbf8f1));
+}
+.tldr-list li:last-child { margin-bottom: 0; }
+.tldr-list li::before {
+  content: counter(tldr) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display, var(--font-serif));
+  color: color-mix(in srgb, var(--color-accent) 78%, transparent);
+}
+/* zh pages number like the TOC does: 一、二、三 */
+:lang(zh) .tldr-list li::before,
+.tldr-list li:lang(zh)::before {
+  content: counter(tldr, cjk-ideographic) "、";
+}
+
+.tldr-list li :is(p) { margin: 0; display: inline; }
+.tldr-list li :is(strong, b) {
+  color: var(--color-text);
+  font-weight: 600;
+}
+.tldr-list li code {
   font-family: var(--font-mono, monospace);
   font-size: 0.86em;
   color: var(--color-accent);
@@ -219,106 +87,7 @@
   border-radius: 4px;
 }
 
-/* hover: light the node */
-.tldr-item:hover .tldr-node {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 0 5px var(--color-bg, #fbf8f1),
-    0 0 18px 0 color-mix(in srgb, var(--color-accent) 55%, #e6a85a);
-}
-
-/* the closing node glows steady — the "world-line" terminus */
-.tldr-item:last-child .tldr-node {
-  color: #fff;
-  background: linear-gradient(180deg,
-    color-mix(in srgb, var(--color-accent) 75%, #a8434a),
-    var(--color-accent));
-  border-color: var(--color-accent);
-  box-shadow:
-    0 0 0 5px var(--color-bg, #fbf8f1),
-    0 0 16px 0 color-mix(in srgb, var(--color-accent) 50%, #e6a85a);
-  animation: tldr-beacon 2.8s ease-in-out infinite;
-}
-
-/* ── footer micro-line ── */
-.tldr-foot {
-  position: relative;
-  z-index: 2;
-  /* keep clear of the bottom crop marks (14px marks sitting 11px from edge) */
-  margin: 18px 20px 8px;
-  padding-top: 12px;
-  border-top: 1px solid var(--color-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono, monospace);
-  font-size: 9.5px;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text-muted, var(--color-ink-muted)) 85%, transparent);
-}
-.tldr-foot-dot {
-  display: inline-block;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  margin-right: 7px;
-  box-shadow: 0 0 8px color-mix(in srgb, var(--color-accent) 60%, #e6a85a);
-  animation: tldr-beacon 2.8s ease-in-out infinite;
-  vertical-align: middle;
-}
-
-/* ── keyframes ── */
-@keyframes tldr-pulse  { 0% { background-position-y: -90%; } 100% { background-position-y: 190%; } }
-@keyframes tldr-scan   { 0% { left: 0; opacity: 0; } 8% { opacity: 1; } 60% { opacity: 1; } 70%, 100% { left: 58%; opacity: 0; } }
-@keyframes tldr-twinkle { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-@keyframes tldr-beacon { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.28); } }
-
-/* Dark mode: lift the panel fill off the page so it reads as a card. */
-.dark .article-tldr {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
-    color-mix(in srgb, var(--color-accent) 8%, transparent);
-  /* The base box-shadow carries a bright `0 1px 0 rgba(255,255,255,0.6) inset`
-     top-edge bevel tuned for the light paper. On the dark card that white
-     hairline reads as a glare line across the top inner edge. Drop the inset
-     to a faint lift and keep only a soft dark ambient shadow. Gated on .dark —
-     light mode keeps its original glossy bevel untouched. */
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.04) inset,
-    0 24px 60px -34px color-mix(in srgb, var(--color-accent) 30%, transparent);
-}
-
-/* The closing "world-line terminus" node fills with the accent and hardcodes
-   `color:#fff`. In dark/EN the accent flips to light sky-blue (#7dd3fc), so
-   white digits on it drop to ~1.67:1 (illegible). Use the page paper tone as
-   the on-accent ink (the idiom used elsewhere in this codebase): dark ink on
-   the light-blue / red dark accent reads at 11:1 (EN) / 6.3:1 (ZH). Gated on
-   .dark — light mode (dark accent) keeps white. */
-.dark .tldr-item:last-child .tldr-node {
-  color: var(--color-paper);
-}
-.dark .tldr-node,
-.dark .tldr-item:last-child .tldr-node {
-  box-shadow:
-    0 0 0 5px var(--color-bg, #1a1c1b),
-    0 0 14px -2px color-mix(in srgb, var(--color-accent) 45%, transparent);
-}
-
 @media (max-width: 560px) {
-  .article-tldr { padding: var(--space-5) var(--space-4) var(--space-4); }
-  .tldr-en { display: none; }
-  .tldr-item { padding-left: 50px; }
-}
-
-/* Reduced motion: freeze everything. */
-@media (prefers-reduced-motion: reduce) {
-  .tldr-wire::after,
-  .tldr-scan,
-  .tldr-spark,
-  .tldr-item:last-child .tldr-node,
-  .tldr-foot-dot {
-    animation: none !important;
-  }
+  .article-tldr { margin-bottom: var(--space-8); }
+  .tldr-list li { padding-left: 2.3em; }
 }
