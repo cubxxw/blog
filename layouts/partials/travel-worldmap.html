@@ -1,0 +1,77 @@
+{{- /* Interactive dot-matrix world map for /travel/.
+     dict args: isZh, groups (list of dicts: region + pages)
+     Projection: equirectangular, viewBox 720x300 (Antarctica cropped) —
+       x = (lon + 180) * 2 ; y = (90 - lat) * 2
+     Unlocked regions re-light the shared dots path through a clipPath circle;
+     everything else stays under fog. Blips are plain anchors positioned in %,
+     so map navigation works without JS. */ -}}
+{{- $isZh := .isZh }}
+{{- $groups := .groups }}
+<section id="tw-worldmap" class="tw-wm tw-reveal" aria-labelledby="tw-wm-title">
+  <header class="tw-wm__head">
+    <span class="tw-eyebrow tw-eyebrow--light">WORLD&nbsp;MAP</span>
+    <h2 class="tw-wm__title" id="tw-wm-title">{{ if $isZh }}战争迷雾之下{{ else }}Under the Fog of War{{ end }}</h2>
+    <p class="tw-wm__desc">
+      {{- if $isZh -}}
+      亮起来的坐标，是到过的地方。点一个，读那片地图的存档。
+      {{- else -}}
+      The lit coordinates are places I've been. Click one to load that map's saves.
+      {{- end -}}
+    </p>
+  </header>
+
+  <div class="tw-wm__stage">
+    <svg class="tw-wm__svg" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs>
+        {{ partial "travel-worldmap-dots.html" . }}
+        {{- range $groups }}
+        {{- $r := .region }}
+        {{- $x := mul (add $r.lon 180.0) 2.0 }}
+        {{- $y := mul (sub 90.0 $r.lat) 2.0 }}
+        <clipPath id="twClip-{{ $r.slug }}"><circle cx="{{ printf "%.1f" $x }}" cy="{{ printf "%.1f" $y }}" r="34"/></clipPath>
+        <radialGradient id="twGlow-{{ $r.slug }}">
+          <stop offset="0%" stop-color="hsl({{ $r.hue }} 75% 60%)" stop-opacity="0.30"/>
+          <stop offset="100%" stop-color="hsl({{ $r.hue }} 75% 60%)" stop-opacity="0"/>
+        </radialGradient>
+        {{- end }}
+      </defs>
+      <use href="#twDots" class="tw-wm__fog"/>
+      {{- range $groups }}
+      {{- $r := .region }}
+      {{- $x := mul (add $r.lon 180.0) 2.0 }}
+      {{- $y := mul (sub 90.0 $r.lat) 2.0 }}
+      <circle class="tw-wm__halo" cx="{{ printf "%.1f" $x }}" cy="{{ printf "%.1f" $y }}" r="48" fill="url(#twGlow-{{ $r.slug }})"/>
+      <use href="#twDots" clip-path="url(#twClip-{{ $r.slug }})" class="tw-wm__lit" style="stroke: hsl({{ $r.hue }} 78% 68%)"/>
+      {{- end }}
+    </svg>
+
+    <div class="tw-wm__blips">
+      {{- range $groups }}
+      {{- $r := .region }}
+      {{- $n := len .pages }}
+      {{- $x := mul (add $r.lon 180.0) 2.0 }}
+      {{- $y := mul (sub 90.0 $r.lat) 2.0 }}
+      {{- $px := div $x 7.2 }}
+      {{- $py := div $y 3.0 }}
+      {{- $name := cond $isZh $r.name_zh $r.name_en }}
+      {{- $tag := cond $isZh $r.tagline_zh $r.tagline_en }}
+      <a class="tw-wm__blip{{ if gt $px 68.0 }} tw-wm__blip--edge{{ end }}"
+         href="#tw-area-{{ $r.slug }}"
+         data-region="{{ $r.slug }}"
+         style="left: {{ printf "%.2f" $px }}%; top: {{ printf "%.2f" $py }}%; --tw-hue: {{ $r.hue }};"
+         aria-label="{{ if $isZh }}{{ $name }}——{{ $tag }}，{{ $n }} 条存档{{ else }}{{ $name }} — {{ $tag }}, {{ $n }} save{{ if gt $n 1 }}s{{ end }}{{ end }}">
+        <span class="tw-wm__blip-core" aria-hidden="true"></span>
+        <span class="tw-wm__tip" aria-hidden="true">
+          <strong>{{ $name }}</strong>
+          <span>{{ $r.coords }} · {{ $n }} {{ if $isZh }}条存档{{ else }}save{{ if gt $n 1 }}s{{ end }}{{ end }}</span>
+        </span>
+      </a>
+      {{- end }}
+    </div>
+  </div>
+
+  <footer class="tw-wm__legend">
+    <span class="tw-wm__legend-item"><i class="tw-wm__dot tw-wm__dot--lit" aria-hidden="true"></i>{{ if $isZh }}已解锁 {{ len $groups }} 片区域{{ else }}{{ len $groups }} areas unlocked{{ end }}</span>
+    <span class="tw-wm__legend-item"><i class="tw-wm__dot tw-wm__dot--fog" aria-hidden="true"></i>{{ if $isZh }}其余仍在迷雾之下{{ else }}the rest still under fog{{ end }}</span>
+  </footer>
+</section>

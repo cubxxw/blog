@@ -165,28 +165,6 @@ body.dark .tw-page {
 .tw-hero__glow--amber { background: #b96f1e; top: -160px; right: -80px; }
 .tw-hero__glow--teal  { background: #14524a; bottom: -180px; left: -100px; }
 
-/* minimap radar */
-.tw-hero__radar {
-  position: absolute;
-  right: 4%;
-  bottom: 8%;
-  width: min(220px, 26vw);
-  height: auto;
-  opacity: 0.9;
-}
-.tw-hero__sweep {
-  transform-origin: 100px 100px;
-  animation: tw-sweep 6s linear infinite;
-}
-@keyframes tw-sweep { to { transform: rotate(360deg); } }
-.tw-blip { animation: tw-blip 3s ease-in-out infinite; }
-.tw-blip--d2 { animation-delay: 1s; }
-.tw-blip--d3 { animation-delay: 2s; }
-@keyframes tw-blip {
-  0%, 100% { opacity: 0.35; }
-  50%      { opacity: 1; }
-}
-
 .tw-hero__content {
   position: relative;
   z-index: 1;
@@ -246,6 +224,167 @@ body.dark .tw-page {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* =============================================================
+   World map — dot-matrix night map, fog of war, clickable blips
+   ============================================================= */
+.tw-wm {
+  position: relative;
+  border-radius: var(--radius-xl, 16px);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 100% at 20% 0%, #16233f 0%, transparent 55%),
+    var(--tw-night);
+  padding: 44px clamp(16px, 4vw, 40px) 24px;
+  margin: 0 0 56px;
+  scroll-margin-top: 84px;
+}
+.tw-wm__head {
+  max-width: 560px;
+  margin: 0 auto 26px;
+  text-align: center;
+}
+.tw-wm__title {
+  font-family: var(--font-display, serif);
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.tw-wm__desc {
+  font-family: var(--font-prose, serif);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0;
+}
+.tw-wm__stage {
+  position: relative;
+  max-width: 940px;
+  margin: 0 auto;
+}
+.tw-wm__svg { display: block; width: 100%; height: auto; }
+.tw-wm__fog { stroke: rgba(255, 255, 255, 0.16); }
+.tw-wm__lit { stroke: var(--tw-amber); } /* fallback; real hue arrives inline */
+
+/* blips — plain anchors positioned in % over the svg */
+.tw-wm__blips { position: absolute; inset: 0; }
+.tw-wm__blip {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.tw-wm__blip-core {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: hsl(var(--tw-hue), 85%, 70%);
+  box-shadow:
+    0 0 0 3px hsla(var(--tw-hue), 85%, 70%, 0.22),
+    0 0 14px hsla(var(--tw-hue), 85%, 70%, 0.8);
+  transition: transform 200ms var(--ease-out, ease-out), box-shadow 200ms var(--ease-standard, ease);
+}
+.tw-wm__blip-core::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px solid hsla(var(--tw-hue), 85%, 70%, 0.55);
+  animation: tw-wm-ring 2.6s ease-out infinite;
+}
+@keyframes tw-wm-ring {
+  0%   { transform: scale(0.5); opacity: 0.9; }
+  70%, 100% { transform: scale(1.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-wm__blip-core::after { animation: none; opacity: 0.45; }
+}
+.tw-wm__blip:hover .tw-wm__blip-core,
+.tw-wm__blip:focus-visible .tw-wm__blip-core,
+.tw-wm__blip.is-live .tw-wm__blip-core {
+  transform: scale(1.35);
+  box-shadow:
+    0 0 0 5px hsla(var(--tw-hue), 85%, 70%, 0.28),
+    0 0 22px hsla(var(--tw-hue), 85%, 70%, 0.95);
+}
+.tw-wm__blip:focus-visible {
+  outline: 2px solid var(--tw-amber);
+  outline-offset: 2px;
+}
+
+/* hover tooltip */
+.tw-wm__tip {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(9, 14, 26, 0.94);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms var(--ease-standard, ease), transform 180ms var(--ease-out, ease-out);
+  z-index: 2;
+}
+.tw-wm__tip strong {
+  font-family: var(--font-display, serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.tw-wm__tip span {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: hsla(var(--tw-hue), 70%, 75%, 0.95);
+}
+.tw-wm__blip:hover .tw-wm__tip,
+.tw-wm__blip:focus-visible .tw-wm__tip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.tw-wm__blip--edge .tw-wm__tip {
+  left: auto;
+  right: -6px;
+  transform: translateY(4px);
+}
+.tw-wm__blip--edge:hover .tw-wm__tip,
+.tw-wm__blip--edge:focus-visible .tw-wm__tip {
+  transform: translateY(0);
+}
+
+/* legend */
+.tw-wm__legend {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  font-family: var(--font-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.55);
+}
+.tw-wm__legend-item { display: inline-flex; align-items: center; gap: 7px; }
+.tw-wm__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+.tw-wm__dot--lit { background: var(--tw-amber); box-shadow: 0 0 8px rgba(255, 180, 84, 0.9); }
+.tw-wm__dot--fog { background: rgba(255, 255, 255, 0.22); }
 
 /* =============================================================
    HUD — player stats + XP bar
@@ -327,6 +466,22 @@ body.dark .tw-page {
    ============================================================= */
 .tw-map { margin-bottom: 88px; }
 .tw-areas { display: flex; flex-direction: column; gap: 64px; }
+
+.tw-area { scroll-margin-top: 84px; }
+/* arrival flash after travelling here from the world map (also on :target
+   for the no-JS anchor jump) */
+.tw-area--ping .tw-area__head,
+.tw-area:target .tw-area__head {
+  animation: tw-area-arrive 1.5s var(--ease-out, ease-out) 1;
+}
+@keyframes tw-area-arrive {
+  0%   { background: var(--tw-area-soft); box-shadow: -3px 0 0 0 var(--tw-area); }
+  100% { background: transparent; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-area--ping .tw-area__head,
+  .tw-area:target .tw-area__head { animation: none; }
+}
 
 .tw-area__head {
   padding-left: 18px;
@@ -451,6 +606,22 @@ body.dark .tw-area__status { color: #6fe0a8; }
   padding: 18px 20px 20px;
   flex: 1;
 }
+/* save-slot strip */
+.tw-card__slot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding-bottom: 9px;
+  border-bottom: 1px dashed color-mix(in srgb, var(--tw-area) 32%, transparent);
+}
+.tw-card__slot-id { color: var(--tw-area); }
+.tw-card__slot-rt { color: var(--tw-ink-2); font-weight: 500; }
+
 .tw-card__meta {
   display: flex;
   align-items: center;

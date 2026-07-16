@@ -54,28 +54,6 @@
       <div class="tw-hero__grid"></div>
       <div class="tw-hero__glow tw-hero__glow--amber"></div>
       <div class="tw-hero__glow tw-hero__glow--teal"></div>
-      {{/* minimap radar */}}
-      <svg class="tw-hero__radar" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-        <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-opacity="0.14" stroke-width="1"/>
-        <circle cx="100" cy="100" r="62" stroke="currentColor" stroke-opacity="0.10" stroke-width="1"/>
-        <circle cx="100" cy="100" r="32" stroke="currentColor" stroke-opacity="0.10" stroke-width="1"/>
-        <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" stroke-opacity="0.08"/>
-        <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-opacity="0.08"/>
-        <g class="tw-hero__sweep">
-          <path d="M100 100 L100 8 A92 92 0 0 1 165 35 Z" fill="url(#twSweep)"/>
-        </g>
-        <defs>
-          <linearGradient id="twSweep" x1="100" y1="8" x2="165" y2="100" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#ffb454" stop-opacity="0.35"/>
-            <stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        {{/* blips: places on the minimap */}}
-        <circle class="tw-blip" cx="128" cy="62" r="3" fill="#ffb454"/>
-        <circle class="tw-blip tw-blip--d2" cx="76" cy="128" r="2.5" fill="#7fd8c4"/>
-        <circle class="tw-blip tw-blip--d3" cx="142" cy="118" r="2" fill="#ff8f8f"/>
-        <circle cx="100" cy="100" r="3.5" fill="#fff" fill-opacity="0.85"/>
-      </svg>
     </div>
 
     <div class="tw-hero__content">
@@ -102,9 +80,9 @@
         {{- end -}}
       </p>
       <div class="tw-hero__actions tw-reveal">
-        <a href="#tw-map" class="tw-btn tw-btn--primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
-          {{ if $isZh }}打开任务日志{{ else }}Open Quest Log{{ end }}
+        <a href="#tw-worldmap" class="tw-btn tw-btn--primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/></svg>
+          {{ if $isZh }}打开世界地图{{ else }}Open World Map{{ end }}
         </a>
         <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="tw-btn tw-btn--ghost">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -113,6 +91,11 @@
       </div>
     </div>
   </header>
+
+  {{/* ══ World map — fog of war, lit regions, clickable blips ══ */}}
+  {{- if gt (len $regionGroups) 0 }}
+  {{- partial "travel-worldmap.html" (dict "isZh" $isZh "groups" $regionGroups) }}
+  {{- end }}
 
   {{/* ══ HUD — player stats ══ */}}
   <section class="tw-hud tw-reveal" aria-label="{{ if $isZh }}玩家数据{{ else }}Player stats{{ end }}">
@@ -157,7 +140,7 @@
     <div class="tw-areas">
       {{- range $gi, $g := $regionGroups }}
       {{- $r := $g.region }}
-      <section class="tw-area tw-reveal" style="--tw-hue: {{ $r.hue | default 210 }}">
+      <section id="tw-area-{{ $r.slug }}" class="tw-area tw-reveal" data-region="{{ $r.slug }}" style="--tw-hue: {{ $r.hue | default 210 }}">
         <header class="tw-area__head">
           <div class="tw-area__meta">
             <span class="tw-area__code">AREA&nbsp;{{ printf "%02d" (add $gi 1) }}</span>
@@ -169,14 +152,14 @@
         </header>
         <div class="tw-cards{{ if eq (len $g.pages) 1 }} tw-cards--single{{ end }}">
           {{- range $pi, $p := $g.pages }}
-          {{- partial "travel-card.html" (dict "page" $p "isZh" $isZh "featured" (and (eq $pi 0) (gt (len $g.pages) 1))) }}
+          {{- partial "travel-card.html" (dict "page" $p "isZh" $isZh "featured" (and (eq $pi 0) (gt (len $g.pages) 1)) "num" (add $pi 1)) }}
           {{- end }}
         </div>
       </section>
       {{- end }}
 
       {{- if gt (len $rest) 0 }}
-      <section class="tw-area tw-area--notes tw-reveal" style="--tw-hue: 210">
+      <section id="tw-area-notes" class="tw-area tw-area--notes tw-reveal" style="--tw-hue: 210">
         <header class="tw-area__head">
           <div class="tw-area__meta">
             <span class="tw-area__code">AREA&nbsp;??</span>
@@ -187,8 +170,8 @@
           <p class="tw-area__tagline">{{ if $isZh }}不属于任何一张地图的移动记录{{ else }}Records of movement that belong to no single map{{ end }}</p>
         </header>
         <div class="tw-cards">
-          {{- range $rest }}
-          {{- partial "travel-card.html" (dict "page" . "isZh" $isZh "featured" false) }}
+          {{- range $ri, $p := $rest }}
+          {{- partial "travel-card.html" (dict "page" $p "isZh" $isZh "featured" false "num" (add $ri 1)) }}
           {{- end }}
         </div>
       </section>
@@ -286,12 +269,47 @@
 (function () {
   var root = document.querySelector('.tw-page');
   if (!root) return;
-  var els = root.querySelectorAll('.tw-reveal');
-  if (!('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var hasIO = 'IntersectionObserver' in window;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── World map ⇄ quest log linkage ──
+     Blips are plain anchors, so navigation works without any of this;
+     JS only adds the live highlight and smooth travel. */
+  var blipByRegion = {};
+  root.querySelectorAll('.tw-wm__blip[data-region]').forEach(function (b) {
+    blipByRegion[b.getAttribute('data-region')] = b;
+  });
+  var areas = root.querySelectorAll('.tw-area[data-region]');
+  if (hasIO && areas.length) {
+    var live = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var b = blipByRegion[e.target.getAttribute('data-region')];
+        if (b) b.classList.toggle('is-live', e.isIntersecting);
+      });
+    }, { rootMargin: '-35% 0px -35% 0px' });
+    areas.forEach(function (a) { live.observe(a); });
+  }
+  if (!reduced) {
+    Object.keys(blipByRegion).forEach(function (slug) {
+      blipByRegion[slug].addEventListener('click', function (ev) {
+        var t = document.getElementById('tw-area-' + slug);
+        if (!t) return;
+        ev.preventDefault();
+        history.replaceState(null, '', '#tw-area-' + slug);
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        t.classList.remove('tw-area--ping');
+        void t.offsetWidth; /* restart the arrival flash */
+        t.classList.add('tw-area--ping');
+      });
+    });
+  }
+
+  /* ── Scroll reveal ── */
+  if (!hasIO || reduced) {
     return; /* no .tw-js stamp → everything stays visible in place */
   }
   root.classList.add('tw-js');
+  var els = root.querySelectorAll('.tw-reveal');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }

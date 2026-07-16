@@ -1,10 +1,11 @@
-{{- /* Travel quest-log card.
-     dict args: page, isZh, featured
+{{- /* Travel quest-log card, styled as a save slot.
+     dict args: page, isZh, featured, num (1-based slot number within its area)
      Card image: frontmatter cover.image → first inline markdown image in
      the body → region-hued gradient placeholder (no image markup at all). */ -}}
 {{- $p := .page }}
 {{- $isZh := .isZh }}
 {{- $featured := .featured }}
+{{- $num := .num | default 1 }}
 {{- $img := "" }}
 {{- with $p.Params.cover }}{{- with .image }}{{- $img = . }}{{- end }}{{- end }}
 {{- if not $img }}
@@ -32,6 +33,11 @@
   </div>
   {{- end }}
   <div class="tw-card__body">
+    {{- /* save-slot strip; date + title below carry the real info for AT */}}
+    <div class="tw-card__slot" aria-hidden="true">
+      <span class="tw-card__slot-id">SAVE&nbsp;{{ printf "%02d" $num }}</span>
+      <span class="tw-card__slot-rt">{{ $p.ReadingTime }}&nbsp;MIN</span>
+    </div>
     <div class="tw-card__meta">
       <time class="tw-card__date" datetime="{{ $p.Date.Format "2006-01-02" }}">
         {{- if $isZh }}{{ $p.Date.Format "2006 年 1 月 2 日" }}{{ else }}{{ $p.Date.Format "Jan 2, 2006" }}{{ end -}}

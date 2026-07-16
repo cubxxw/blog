@@ -3,6 +3,8 @@
 # regions —— 世界地图分区。文章按 frontmatter tags 与各区 match 列表求交集归区；
 #            没命中任何地区的旅行文章会自动落入页面上的"路上 · 随笔"兜底区。
 #            新去一个地方：加一个 region + 给文章打上对应地区 tag 即可。
+#            lat/lon —— 数值经纬度，驱动页面顶部点阵世界地图上的发光区与
+#            可点击 blip（等距投影）；coords 仅作展示文本。
 # books   —— 行囊书单（旅行书籍展示区）。直接增删此列表即可，
 #            slot_* 是游戏风格的"装备槽位"标签，随意发挥。
 regions:
@@ -10,6 +12,8 @@ regions:
     name_zh: 西藏高原
     name_en: Tibetan Plateau
     coords: "29.65°N 91.14°E"
+    lat: 29.65
+    lon: 91.14
     tagline_zh: 海拔 3650 米，一张强制降速的地图
     tagline_en: "3,650 m above sea level — a map that forces you to slow down"
     hue: 6
@@ -19,6 +23,8 @@ regions:
     name_zh: 日本列岛
     name_en: Japanese Archipelago
     coords: "35.36°N 138.73°E"
+    lat: 35.36
+    lon: 138.73
     tagline_zh: 用木头、火与缺口和时间共处的群岛
     tagline_en: "Islands that make peace with time through wood, fire and imperfection"
     hue: 340
@@ -28,6 +34,8 @@ regions:
     name_zh: 东南亚
     name_en: Southeast Asia
     coords: "18.92°N 102.45°E"
+    lat: 18.92
+    lon: 102.45
     tagline_zh: 湄公河的慢，与岩洞里的光
     tagline_en: "The slowness of the Mekong, and the light inside limestone caves"
     hue: 152
