@@ -131,7 +131,7 @@ Github 的贡献的小绿点：
     <img src="https://sm.nsddd.top/DSC05895.JPG" style="width: 30%;">
 </div>
 
-> 我的 [Twitter](https://twitter.com/xxw3293172751)
+> 我的 [Twitter](https://twitter.com/cubxxw)
 
 ## 五、未来规划
 

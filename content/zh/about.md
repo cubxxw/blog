@@ -235,7 +235,7 @@ tldr:
       <span class="about-link-label">Email</span>
       <span class="about-link-sub">技术咨询与商务合作</span>
     </a>
-    <a class="about-link-item" href="https://x.com/xxw3293172751" target="_blank" rel="noopener">
+    <a class="about-link-item" href="https://x.com/cubxxw" target="_blank" rel="noopener">
       <span class="about-link-icon">𝕏</span>
       <span class="about-link-label">X / Twitter</span>
       <span class="about-link-sub">实时动态与国际交流</span>

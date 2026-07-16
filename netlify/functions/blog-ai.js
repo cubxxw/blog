@@ -37,7 +37,7 @@ const AUTHOR_PROFILE = [
   "- WeChat (微信, the fastest way to reach him) — WeChat ID: cubxxw_com. QR code + one-click copy available via the WeChat card.",
   "- Email: 3293172751nss@gmail.com",
   "- GitHub: https://github.com/cubxxw",
-  "- X / Twitter: https://x.com/xxw3293172751",
+  "- X / Twitter: https://x.com/cubxxw",
   "- 知乎 / Zhihu: https://www.zhihu.com/people/3293172751",
   "- 即刻 / Jike: https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4",
   "- Bilibili: https://space.bilibili.com/1233089591",

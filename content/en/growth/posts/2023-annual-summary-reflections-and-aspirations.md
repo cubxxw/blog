@@ -110,7 +110,7 @@ Just before Christmas, I fulfilled a long-time wish by traveling to Western Sich
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">     <img src="https://sm.nsddd.top/DSC05356.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05396.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC01627.JPG" style="width: 30%;"> </div> <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">     <img src="https://sm.nsddd.top/DSC05321.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05289.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05718.JPG" style="width: 30%;"> </div> <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">     <img src="https://sm.nsddd.top/DSC01681.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05871.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05895.JPG" style="width: 30%;"> </div>
 
-> My [Twitter](https://twitter.com/xxw3293172751)
+> My [Twitter](https://twitter.com/cubxxw)
 
 ## V. Future Plans
 
