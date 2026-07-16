@@ -1,13 +1,16 @@
 #!/usr/bin/env node
-// Sync a Lighthouse CI run to a fixed tracking issue on GitHub.
+// Sync a Lighthouse CI run into the shared daily site-report issue.
 //
 // Reads .lighthouseci/manifest.json (produced by `lhci autorun`), keeps only
 // representative runs, formats a Markdown table with the five category scores
-// per URL, and posts it as a new comment on the issue titled TRACKING_TITLE.
-// The issue is created on first run with the `lighthouse` label.
+// per URL, and writes it into the `lighthouse` section of today's report issue
+// (see scripts/daily-report-issue.mjs).
 //
-// Adding a comment per run (instead of overwriting the body) preserves the
-// trend — you can eyeball whether scores drift over time.
+// This used to append a comment per run to a dedicated rolling issue. Because
+// Lighthouse runs on every push, that buried the issue — five comments in one
+// day was normal, and nobody reads a 43-comment thread. Now the section is
+// OVERWRITTEN in place, so the issue shows the latest scores for the day and
+// the day-over-day trend lives in the sequence of daily issues instead.
 //
 // Env (all provided by GitHub Actions):
 //   GH_TOKEN            — token with `issues: write`
@@ -16,11 +19,14 @@
 //   GITHUB_SHA          — the commit that triggered the run
 
 import { existsSync, readFileSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { isAbsolute, join } from 'node:path';
+import {
+  ensureDailyIssue,
+  upsertSection,
+  closeStaleDailyIssues,
+} from './daily-report-issue.mjs';
 
-const TRACKING_TITLE = 'Lighthouse CI — 站点性能跟踪';
-const TRACKING_LABEL = 'lighthouse';
+const SECTION_MARKER = 'lighthouse';
 const MANIFEST = '.lighthouseci/manifest.json';
 const LHCI_DIR = '.lighthouseci';
 
@@ -115,7 +121,9 @@ const detailSections = runs.map((r) => {
 }).join('\n');
 
 const body = [
-  `### Lighthouse — ${stamp}`,
+  '### 🔦 Lighthouse',
+  '',
+  `更新于 ${stamp}`,
   '',
   commitUrl ? `Commit: [\`${short}\`](${commitUrl}) · [Workflow run](${runUrl})` : `[Workflow run](${runUrl})`,
   '',
@@ -127,63 +135,11 @@ const body = [
   detailSections,
 ].join('\n');
 
-const gh = (args, opts = {}) =>
-  execFileSync('gh', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'], ...opts });
+const number = ensureDailyIssue({ repo });
+upsertSection({ repo, issueNumber: number, marker: SECTION_MARKER, content: body });
+console.log(`Wrote Lighthouse section into daily issue #${number}`);
 
-function findTrackingIssue() {
-  const raw = gh([
-    'issue',
-    'list',
-    '--repo', repo,
-    '--state', 'open',
-    '--search', `${TRACKING_TITLE} in:title`,
-    '--json', 'number,title',
-    '--limit', '20',
-  ]);
-  const list = JSON.parse(raw || '[]');
-  const hit = list.find((i) => i.title === TRACKING_TITLE);
-  return hit ? hit.number : null;
-}
-
-function createTrackingIssue() {
-  const intro = [
-    '这个 issue 由 `.github/workflows/lighthouse.yml` 自动维护。',
-    '每次 push 到 `main` 后会追加一条评论，记录该次构建的 Lighthouse 分数。',
-    '',
-    '- 触发：`push: main`、手动 `workflow_dispatch`',
-    '- 配置：`lighthouserc.json`（URL 列表 + 阈值）',
-    '- 报告：workflow 的 `lighthouse-results` artifact（保留 14 天）',
-  ].join('\n');
-  const out = gh([
-    'issue',
-    'create',
-    '--repo', repo,
-    '--title', TRACKING_TITLE,
-    '--label', TRACKING_LABEL,
-    '--body', intro,
-  ]);
-  const m = out.match(/\/issues\/(\d+)/);
-  if (!m) throw new Error(`Cannot parse issue number from: ${out}`);
-  return Number(m[1]);
-}
-
-function ensureLabel() {
-  try {
-    gh(
-      ['label', 'create', TRACKING_LABEL, '--repo', repo, '--color', 'F9D0C4', '--description', 'Lighthouse CI tracker'],
-      { stdio: ['ignore', 'ignore', 'ignore'] },
-    );
-  } catch {
-    // label already exists; ignore
-  }
-}
-
-ensureLabel();
-let number = findTrackingIssue();
-if (!number) {
-  number = createTrackingIssue();
-  console.log(`Created tracking issue #${number}`);
-}
-
-gh(['issue', 'comment', String(number), '--repo', repo, '--body', body]);
-console.log(`Appended Lighthouse report to issue #${number}`);
+// Reap yesterday's report once today's is known-good. Doing it here (rather
+// than in a separate step) means we never close the old issue unless the new
+// one actually received content.
+closeStaleDailyIssues({ repo, keepNumber: number });

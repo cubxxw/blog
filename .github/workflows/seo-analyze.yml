@@ -78,7 +78,7 @@ jobs:
                Structure it as:
 
                ```
-               ### SEO 每日观察 — YYYY-MM-DD
+               ### 🔍 SEO
                (Data window: ...)
 
                #### 关键变化
@@ -100,17 +100,30 @@ jobs:
                If nothing changed meaningfully today, still post a short
                comment — even a heartbeat is signal.
 
-            4. Upsert into an issue titled exactly `SEO 每日观察`:
-               - Find it via `gh issue list --search '"SEO 每日观察" in:title' --state open --json number,title --limit 5`.
-               - If none, create it once with a short intro body and label
-                 `seo-observation`. Try `gh label create seo-observation` first
-                 (ignore failure if the label exists).
-               - Post today's summary as a NEW comment via `gh issue comment`
-                 so the trend is preserved.
+            4. Write the summary into TODAY'S daily report issue. Do NOT create
+               or comment on an issue yourself — a shared helper owns that, so
+               that Lighthouse and SEO land in one issue per day instead of two
+               endless comment threads.
 
-            5. Do NOT edit any files. Do NOT create branches or PRs. Do
-               NOT run gh CLI commands other than the ones listed in your
-               allowedTools.
+               - Write your Markdown to a file first, e.g. `/tmp/seo-section.md`.
+                 Use the `Write` tool for this — do NOT try to `cat`/heredoc it
+                 through Bash, since the content has backticks and newlines.
+               - Then run exactly:
+                 `node scripts/seo-section-to-issue.mjs /tmp/seo-section.md`
+               - That script resolves (or creates) the issue titled
+                 `站点日报 — YYYY-MM-DD`, replaces the `seo` section in place,
+                 and prints the issue number. Re-running OVERWRITES your section
+                 rather than appending, which is intended: the day's issue should
+                 show the latest read, and the trend lives across daily issues.
+               - If the script exits non-zero, report the error plainly. Do not
+                 fall back to creating an issue by hand.
+
+               Start your Markdown at the `### 🔍 SEO` heading level shown below
+               (it is a section inside a larger issue, not a standalone comment).
+
+            5. Do NOT edit any file in the source tree — `/tmp/seo-section.md`
+               is the only file you may write. Do NOT create branches or PRs.
+               Do NOT run gh CLI commands other than the ones in allowedTools.
 
             Data files live in the repo checked out at the workflow's
             working directory; use `Read` for JSON files, `Bash(cat:*)`,
@@ -118,4 +131,4 @@ jobs:
 
           claude_args: |
             --max-turns 25
-            --allowedTools "Read,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(gh issue list:*),Bash(gh issue create:*),Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh label create:*),Bash(gh label list:*)"
+            --allowedTools "Read,Write,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(node scripts/seo-section-to-issue.mjs:*),Bash(gh issue list:*),Bash(gh issue view:*)"

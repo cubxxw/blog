@@ -3,11 +3,22 @@ name: Lighthouse CI
 on:
   push:
     branches: ["main"]
+  # Daily at 07:30 UTC (15:30 Beijing), just after seo-analyze, so both
+  # reporters land in the same daily issue.
+  schedule:
+    - cron: "30 7 * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
   issues: write
+
+concurrency:
+  # Two pushes in quick succession would otherwise race to write the same
+  # section of the same issue. Queue instead of cancelling: a cancelled run
+  # could leave the daily issue without a Lighthouse section at all.
+  group: lighthouse
+  cancel-in-progress: false
 
 jobs:
   lighthouse:
@@ -44,8 +55,12 @@ jobs:
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-      - name: Sync report to tracking issue
-        if: always()
+      # Push runs still execute lhci above — the assertions in lighthouserc.json
+      # remain a per-push quality gate. They just no longer write to the issue:
+      # reporting on every push is exactly what buried the old tracker. The
+      # daily schedule (and a manual dispatch) own the write.
+      - name: Sync report to daily issue
+        if: always() && github.event_name != 'push'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
