@@ -1,5 +1,5 @@
 ---
-title: '旅行足迹'
+title: '旅行 · 世界这场游戏'
 menuTitle: '🌍 旅行'
 ShowRssButtonInSectionTermList: false
 ShowBreadCrumbs: false
@@ -19,6 +19,6 @@ tags:
   - Travel
   - Adventure
   - Exploration
-description: "跟随我的脚步探索世界，记录旅行足迹、冒险经历和数字游民生活"
+description: "世界是一场大型在线游戏，地球是一张开放世界地图，我们都是玩家。按地区归档的旅行任务日志、行囊书单与数字游民存档点。"
 polarsteps_url: "https://www.polarsteps.com/cubxxw"
 ---

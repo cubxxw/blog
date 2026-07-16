@@ -1,5 +1,5 @@
 ---
-title: 'Travel Footprints'
+title: 'Travel · The World Game'
 menuTitle: '🌍 Travel'
 ShowRssButtonInSectionTermList: false
 ShowBreadCrumbs: false
@@ -19,6 +19,6 @@ tags:
   - Travel
   - Adventure
   - Exploration
-description: "Follow my travel adventures and footprints around the world. Explore my journeys, stories, and experiences from digital nomad life."
+description: "The world is one giant online game and Earth is an open-world map — we are all players. A travel quest log archived by region, with books in the pack and digital-nomad save points."
 polarsteps_url: "https://www.polarsteps.com/cubxxw"
 ---

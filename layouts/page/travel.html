@@ -1,12 +1,19 @@
 {{- define "main" }}
 {{- $isZh := eq .Lang "zh" }}
 {{- $polarsteps := .Params.polarsteps_url | default "https://www.polarsteps.com/cubxxw" }}
+{{- $data := .Site.Data.travel }}
+{{- $regions := $data.regions | default slice }}
+{{- $books := $data.books | default slice }}
 
-{{- $travelTags := slice "travel" "Travel" "Adventure" "旅行" "Exploration" "探索" "hiking" "Hiking" }}
+{{/* ── Collect travel pages: generic travel tags ∪ every region's match list ── */}}
+{{- $genericTags := slice "Travel" "travel" "旅行" "Adventure" }}
+{{- $allMatch := $genericTags }}
+{{- range $regions }}{{- range .match }}{{- $allMatch = $allMatch | append . }}{{- end }}{{- end }}
+
 {{- $travelPages := slice }}
 {{- range .Site.RegularPages }}
-  {{- if and (not .Params.Draft) (.Params.tags) }}
-    {{- if gt (len (intersect .Params.tags $travelTags)) 0 }}
+  {{- if and (not .Draft) .Params.tags (ne .Permalink $.Permalink) }}
+    {{- if gt (len (intersect .Params.tags $allMatch)) 0 }}
       {{- $travelPages = $travelPages | append . }}
     {{- end }}
   {{- end }}
@@ -14,207 +21,283 @@
 {{- $travelPages = sort $travelPages "Date" "desc" }}
 {{- $articleCount := len $travelPages }}
 
-{{- $allTags := slice }}
-{{- range $travelPages }}
-  {{- range .Params.tags }}{{- $allTags = $allTags | append . }}{{- end }}
+{{/* ── Group by region; leftovers become the "Field Notes" area ── */}}
+{{- $assigned := slice }}
+{{- $regionGroups := slice }}
+{{- range $regions }}
+  {{- $r := . }}
+  {{- $pages := slice }}
+  {{- range $travelPages }}
+    {{- if gt (len (intersect .Params.tags $r.match)) 0 }}
+      {{- $pages = $pages | append . }}
+      {{- $assigned = $assigned | append .Permalink }}
+    {{- end }}
+  {{- end }}
+  {{- if gt (len $pages) 0 }}
+    {{- $regionGroups = $regionGroups | append (dict "region" $r "pages" $pages) }}
+  {{- end }}
 {{- end }}
-{{- $uniqueTags := $allTags | uniq }}
+{{- $rest := slice }}
+{{- range $travelPages }}
+  {{- if not (in $assigned .Permalink) }}{{- $rest = $rest | append . }}{{- end }}
+{{- end }}
 
-<div class="eitr-page">
+{{- $startYear := now.Year }}
+{{- if $travelPages }}{{- $startYear = (index (sort $travelPages "Date" "asc") 0).Date.Year }}{{- end }}
+{{- $years := sub now.Year $startYear }}{{- if lt $years 1 }}{{- $years = 1 }}{{- end }}
 
-  {{/* ── Hero ── */}}
-  <header class="eitr-hero">
-    <div class="eitr-hero__bg">
-      <div class="eitr-hero__grid"></div>
-      <div class="eitr-hero__orb eitr-hero__orb--1"></div>
-      <div class="eitr-hero__orb eitr-hero__orb--2"></div>
-      <svg class="eitr-hero__compass" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-        <circle cx="100" cy="100" r="90" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-        <circle cx="100" cy="100" r="65" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <circle cx="100" cy="100" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="10" y1="100" x2="190" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <polygon points="100,18 104,94 100,106 96,94" fill="rgba(255,255,255,0.55)"/>
-        <polygon points="100,182 104,106 100,94 96,106" fill="rgba(255,255,255,0.18)"/>
-        <polygon points="18,100 94,96 106,100 94,104" fill="rgba(255,255,255,0.18)"/>
-        <polygon points="182,100 106,96 94,100 106,104" fill="rgba(255,255,255,0.12)"/>
-        <circle cx="100" cy="100" r="5" fill="rgba(255,255,255,0.65)"/>
-        <text x="100" y="9" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9" font-family="sans-serif">N</text>
-        <text x="100" y="197" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9" font-family="sans-serif">S</text>
-        <text x="197" y="104" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9" font-family="sans-serif">E</text>
-        <text x="3" y="104" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9" font-family="sans-serif">W</text>
+<div class="tw-page">
+
+  {{/* ══ Hero — the world as one giant online game ══ */}}
+  <header class="tw-hero">
+    <div class="tw-hero__bg" aria-hidden="true">
+      <div class="tw-hero__grid"></div>
+      <div class="tw-hero__glow tw-hero__glow--amber"></div>
+      <div class="tw-hero__glow tw-hero__glow--teal"></div>
+      {{/* minimap radar */}}
+      <svg class="tw-hero__radar" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-opacity="0.14" stroke-width="1"/>
+        <circle cx="100" cy="100" r="62" stroke="currentColor" stroke-opacity="0.10" stroke-width="1"/>
+        <circle cx="100" cy="100" r="32" stroke="currentColor" stroke-opacity="0.10" stroke-width="1"/>
+        <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" stroke-opacity="0.08"/>
+        <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-opacity="0.08"/>
+        <g class="tw-hero__sweep">
+          <path d="M100 100 L100 8 A92 92 0 0 1 165 35 Z" fill="url(#twSweep)"/>
+        </g>
+        <defs>
+          <linearGradient id="twSweep" x1="100" y1="8" x2="165" y2="100" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ffb454" stop-opacity="0.35"/>
+            <stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        {{/* blips: places on the minimap */}}
+        <circle class="tw-blip" cx="128" cy="62" r="3" fill="#ffb454"/>
+        <circle class="tw-blip tw-blip--d2" cx="76" cy="128" r="2.5" fill="#7fd8c4"/>
+        <circle class="tw-blip tw-blip--d3" cx="142" cy="118" r="2" fill="#ff8f8f"/>
+        <circle cx="100" cy="100" r="3.5" fill="#fff" fill-opacity="0.85"/>
       </svg>
     </div>
-    <div class="eitr-hero__content">
-      <div class="eitr-hero__badge">
-        <span class="eitr-hero__dot"></span>
-        {{ if $isZh }}数字游民 · 探险者{{ else }}Digital Nomad · Explorer{{ end }}
+
+    <div class="tw-hero__content">
+      <div class="tw-hero__server tw-reveal">
+        <span class="tw-online-dot"></span>
+        <span class="tw-hero__server-txt">SERVER&nbsp;·&nbsp;EARTH</span>
+        <span class="tw-hero__server-sep">/</span>
+        <span class="tw-hero__server-txt">PLAYER&nbsp;·&nbsp;CUBXXW</span>
       </div>
-      <h1 class="eitr-hero__title">
+      <h1 class="tw-hero__title">
         {{- if $isZh }}
-        <span class="eitr-hero__line1">探索世界</span>
-        <span class="eitr-hero__line2">记录足迹</span>
+        <span class="tw-hero__l1 tw-reveal">世界是一场</span>
+        <span class="tw-hero__l2 tw-reveal">大型在线游戏</span>
         {{- else }}
-        <span class="eitr-hero__line1">Explore the World</span>
-        <span class="eitr-hero__line2">Leave Footprints</span>
+        <span class="tw-hero__l1 tw-reveal">The World Is One</span>
+        <span class="tw-hero__l2 tw-reveal">Giant Online Game</span>
         {{- end }}
       </h1>
-      <p class="eitr-hero__sub">
-        {{ if $isZh }}一步一个脚印，记录旅途中的真实故事与深度感悟{{ else }}One step at a time — real stories and deep reflections from the road{{ end }}
+      <p class="tw-hero__sub tw-reveal">
+        {{- if $isZh -}}
+        地球是一张开放世界地图，我们都是里面的玩家。这里是我的任务日志——按地区归档的见闻、感受与存档点。
+        {{- else -}}
+        Earth is an open-world map and we are all players on it. This is my quest log — stories, feelings and save points, archived by region.
+        {{- end -}}
       </p>
-      <div class="eitr-hero__actions">
-        <a href="#eitr-stories" class="eitr-btn eitr-btn--primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          {{ if $isZh }}旅行故事{{ else }}Travel Stories{{ end }}
+      <div class="tw-hero__actions tw-reveal">
+        <a href="#tw-map" class="tw-btn tw-btn--primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+          {{ if $isZh }}打开任务日志{{ else }}Open Quest Log{{ end }}
         </a>
-        <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="eitr-btn eitr-btn--ghost">
+        <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="tw-btn tw-btn--ghost">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          {{ if $isZh }}Polarsteps 地图{{ else }}Polarsteps Map{{ end }}
+          {{ if $isZh }}世界地图 · Polarsteps{{ else }}World Map · Polarsteps{{ end }}
         </a>
       </div>
-    </div>
-    <div class="eitr-hero__scroll" aria-hidden="true">
-      <div class="eitr-hero__scroll-line"></div>
     </div>
   </header>
 
-  {{/* ── Stats ── */}}
-  {{- if gt $articleCount 0 }}
-  <section class="eitr-stats">
-    <div class="eitr-stat">
-      <span class="eitr-stat__num">{{ $articleCount }}</span>
-      <span class="eitr-stat__label">{{ if $isZh }}旅行故事{{ else }}Stories{{ end }}</span>
+  {{/* ══ HUD — player stats ══ */}}
+  <section class="tw-hud tw-reveal" aria-label="{{ if $isZh }}玩家数据{{ else }}Player stats{{ end }}">
+    <div class="tw-hud__cells">
+      <div class="tw-hud__cell">
+        <span class="tw-hud__num">LV.{{ $years }}</span>
+        <span class="tw-hud__label">{{ if $isZh }}玩家等级 · 年{{ else }}Player Level · yrs{{ end }}</span>
+      </div>
+      <div class="tw-hud__cell">
+        <span class="tw-hud__num">{{ len $regionGroups }}<em>{{ if gt (len $rest) 0 }}+{{ end }}</em></span>
+        <span class="tw-hud__label">{{ if $isZh }}已解锁地图{{ else }}Maps Unlocked{{ end }}</span>
+      </div>
+      <div class="tw-hud__cell">
+        <span class="tw-hud__num">{{ $articleCount }}</span>
+        <span class="tw-hud__label">{{ if $isZh }}任务日志{{ else }}Quest Entries{{ end }}</span>
+      </div>
+      <div class="tw-hud__cell">
+        <span class="tw-hud__num">∞</span>
+        <span class="tw-hud__label">{{ if $isZh }}剩余地图{{ else }}Maps Remaining{{ end }}</span>
+      </div>
     </div>
-    <div class="eitr-stat__divider"></div>
-    <div class="eitr-stat">
-      <span class="eitr-stat__num">{{ len $uniqueTags }}</span>
-      <span class="eitr-stat__label">{{ if $isZh }}探索主题{{ else }}Topics{{ end }}</span>
-    </div>
-    <div class="eitr-stat__divider"></div>
-    {{- $startYear := now.Year }}
-    {{- if $travelPages }}
-    {{- $startYear = (index (sort $travelPages "Date" "asc") 0).Date.Year }}
-    {{- end }}
-    {{- $years := sub now.Year $startYear }}{{- if lt $years 1 }}{{- $years = 1 }}{{- end }}
-    <div class="eitr-stat">
-      <span class="eitr-stat__num">{{ $years }}+</span>
-      <span class="eitr-stat__label">{{ if $isZh }}旅行年数{{ else }}Years{{ end }}</span>
-    </div>
-    <div class="eitr-stat__divider"></div>
-    <div class="eitr-stat">
-      <span class="eitr-stat__num">∞</span>
-      <span class="eitr-stat__label">{{ if $isZh }}探索可能{{ else }}Possibilities{{ end }}</span>
+    <div class="tw-hud__xp" role="presentation">
+      <span class="tw-hud__xp-label">{{ if $isZh }}主线进度{{ else }}Main Quest{{ end }}</span>
+      <span class="tw-hud__xp-track"><span class="tw-hud__xp-fill"></span></span>
+      <span class="tw-hud__xp-note">{{ if $isZh }}无限期进行中{{ else }}Ongoing, indefinitely{{ end }}</span>
     </div>
   </section>
-  {{- end }}
 
-  {{/* ── Travel Stories ── */}}
-  <section id="eitr-stories" class="eitr-stories">
-    <div class="eitr-section-header">
-      <div class="eitr-section-eyebrow">
-        <span class="eitr-dot"></span>
-        {{ if $isZh }}来自路上{{ else }}From the Road{{ end }}
-      </div>
-      <h2 class="eitr-section-title">{{ if $isZh }}旅行故事与记录{{ else }}Travel Stories & Journals{{ end }}</h2>
-      <p class="eitr-section-desc">{{ if $isZh }}深度记录、真实感悟和实用指南{{ else }}Deep dives, honest reflections, and practical guides{{ end }}</p>
+  {{/* ══ Quest log — articles grouped by region ══ */}}
+  <section id="tw-map" class="tw-map">
+    <div class="tw-section-head tw-reveal">
+      <span class="tw-eyebrow">QUEST&nbsp;LOG</span>
+      <h2 class="tw-section-title">{{ if $isZh }}已解锁的地图{{ else }}Unlocked Maps{{ end }}</h2>
+      <p class="tw-section-desc">
+        {{- if $isZh }}每到一个地区，就多一片会自己发光的地图。点开一条存档，回到那个坐标。
+        {{- else }}Every region visited lights up another patch of the map. Open a save to return to those coordinates.
+        {{- end }}
+      </p>
     </div>
 
     {{- if gt $articleCount 0 }}
-    <div class="eitr-grid">
-      {{- range $i, $p := $travelPages }}
-      <article class="eitr-card {{ if eq $i 0 }}eitr-card--featured{{ end }}{{ if not $p.Params.cover.image }} eitr-card--no-img{{ end }}">
-        {{- with $p.Params.cover.image }}
-        <div class="eitr-card__img-wrap">
-          <img src="{{ . }}" alt="{{ $p.Title }}" loading="lazy" class="eitr-card__img">
-          <div class="eitr-card__img-scrim"></div>
-        </div>
-        {{- end }}
-        <div class="eitr-card__body">
-          <div class="eitr-card__meta">
-            <time class="eitr-date">{{ if $isZh }}{{ $p.Date.Format "2006 年 1 月 2 日" }}{{ else }}{{ $p.Date.Format "Jan 2, 2006" }}{{ end }}</time>
-            {{- with $p.Params.tags }}
-            <div class="eitr-card__tags">
-              {{- range first 2 . }}<span class="eitr-tag">{{ . }}</span>{{- end }}
-            </div>
-            {{- end }}
+    <div class="tw-areas">
+      {{- range $gi, $g := $regionGroups }}
+      {{- $r := $g.region }}
+      <section class="tw-area tw-reveal" style="--tw-hue: {{ $r.hue | default 210 }}">
+        <header class="tw-area__head">
+          <div class="tw-area__meta">
+            <span class="tw-area__code">AREA&nbsp;{{ printf "%02d" (add $gi 1) }}</span>
+            <span class="tw-area__coords">{{ $r.coords }}</span>
+            <span class="tw-area__status">{{ if $isZh }}已解锁{{ else }}UNLOCKED{{ end }}</span>
           </div>
-          <h3 class="eitr-card__title">
-            <a href="{{ $p.Permalink }}">{{ $p.Title }}</a>
-          </h3>
-          <p class="eitr-card__excerpt">
-            {{- with $p.Description }}{{ . | plainify | htmlUnescape | truncate 120 }}
-            {{- else }}{{ $p.Summary | plainify | htmlUnescape | truncate 120 }}
-            {{- end }}
-          </p>
-          <a href="{{ $p.Permalink }}" class="eitr-cta">
-            {{ if $isZh }}阅读全文{{ else }}Read Story{{ end }}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
+          <h3 class="tw-area__name">{{ if $isZh }}{{ $r.name_zh }}{{ else }}{{ $r.name_en }}{{ end }}</h3>
+          <p class="tw-area__tagline">{{ if $isZh }}{{ $r.tagline_zh }}{{ else }}{{ $r.tagline_en }}{{ end }}</p>
+        </header>
+        <div class="tw-cards{{ if eq (len $g.pages) 1 }} tw-cards--single{{ end }}">
+          {{- range $pi, $p := $g.pages }}
+          {{- partial "travel-card.html" (dict "page" $p "isZh" $isZh "featured" (and (eq $pi 0) (gt (len $g.pages) 1))) }}
+          {{- end }}
         </div>
-        {{/* Full-card click convenience only — the visible title + CTA already
-             link to the same post, so expose just those to assistive tech and
-             keep this overlay out of the a11y tree and tab order (was a third
-             redundant anchor to the same permalink). */}}
-        <a class="eitr-card__cover" href="{{ $p.Permalink }}" aria-hidden="true" tabindex="-1"></a>
-      </article>
+      </section>
+      {{- end }}
+
+      {{- if gt (len $rest) 0 }}
+      <section class="tw-area tw-area--notes tw-reveal" style="--tw-hue: 210">
+        <header class="tw-area__head">
+          <div class="tw-area__meta">
+            <span class="tw-area__code">AREA&nbsp;??</span>
+            <span class="tw-area__coords">--.--°N&nbsp;&nbsp;---.--°E</span>
+            <span class="tw-area__status tw-area__status--roam">{{ if $isZh }}漫游中{{ else }}ROAMING{{ end }}</span>
+          </div>
+          <h3 class="tw-area__name">{{ if $isZh }}路上 · 随笔{{ else }}Field Notes{{ end }}</h3>
+          <p class="tw-area__tagline">{{ if $isZh }}不属于任何一张地图的移动记录{{ else }}Records of movement that belong to no single map{{ end }}</p>
+        </header>
+        <div class="tw-cards">
+          {{- range $rest }}
+          {{- partial "travel-card.html" (dict "page" . "isZh" $isZh "featured" false) }}
+          {{- end }}
+        </div>
+      </section>
       {{- end }}
     </div>
     {{- else }}
-    <div class="eitr-empty">
-      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <p>{{ if $isZh }}旅行故事即将到来…{{ else }}Travel stories coming soon…{{ end }}</p>
-      <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="eitr-btn eitr-btn--outline">
+    <div class="tw-empty tw-reveal">
+      <p>{{ if $isZh }}任务日志加载中…{{ else }}Quest log loading…{{ end }}</p>
+      <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="tw-btn tw-btn--outline">
         {{ if $isZh }}先去 Polarsteps 看看{{ else }}See Polarsteps for now{{ end }}
       </a>
     </div>
     {{- end }}
   </section>
 
-  {{/* ── Philosophy ── */}}
-  <section class="eitr-philosophy">
-    <blockquote class="eitr-philosophy__quote">
-      {{- if $isZh }}旅行不是逃离生活，而是让生活不会逃离你
-      {{- else }}Travel is not an escape from life — it's so life doesn't escape from you
+  {{/* ══ Inventory — travel books ══ */}}
+  {{- if gt (len $books) 0 }}
+  <section id="tw-pack" class="tw-pack">
+    <div class="tw-section-head tw-reveal">
+      <span class="tw-eyebrow">INVENTORY</span>
+      <h2 class="tw-section-title">{{ if $isZh }}行囊里的书{{ else }}Books in the Pack{{ end }}</h2>
+      <p class="tw-section-desc">
+        {{- if $isZh }}长途移动时随身携带的纸质装备——每一本都改变过我看这张地图的方式。
+        {{- else }}Paper gear carried on long hauls — each one changed how I read this map.
+        {{- end }}
+      </p>
+    </div>
+    <div class="tw-books">
+      {{- range $bi, $b := $books }}
+      <article class="tw-book tw-reveal" style="--tw-book-i: {{ $bi }}">
+        <span class="tw-book__slot">{{ if $isZh }}{{ $b.slot_zh }}{{ else }}{{ $b.slot_en }}{{ end }}</span>
+        <h3 class="tw-book__title">{{ if $isZh }}{{ $b.title_zh }}{{ else }}{{ $b.title_en }}{{ end }}</h3>
+        <span class="tw-book__author">{{ if $isZh }}{{ $b.author_zh }}{{ else }}{{ $b.author_en }}{{ end }}</span>
+        <p class="tw-book__note">{{ if $isZh }}{{ $b.note_zh }}{{ else }}{{ $b.note_en }}{{ end }}</p>
+      </article>
       {{- end }}
-    </blockquote>
-    <div class="eitr-philosophy__cards">
-      <div class="eitr-philo-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <h3>{{ if $isZh }}真实连接{{ else }}Real Connection{{ end }}</h3>
-        <p>{{ if $isZh }}与当地文化深度交流，而非走马观花{{ else }}Deep cultural exchange, not just sightseeing{{ end }}</p>
+    </div>
+  </section>
+  {{- end }}
+
+  {{/* ══ Player's code ══ */}}
+  <section class="tw-code">
+    <div class="tw-section-head tw-reveal">
+      <span class="tw-eyebrow">PLAYER'S&nbsp;CODE</span>
+      <h2 class="tw-section-title">{{ if $isZh }}玩家守则{{ else }}How I Play{{ end }}</h2>
+    </div>
+    <div class="tw-code__cards">
+      <div class="tw-code__card tw-reveal">
+        <span class="tw-code__num">01</span>
+        <h3>{{ if $isZh }}没有 NPC{{ else }}No NPCs{{ end }}</h3>
+        <p>{{ if $isZh }}每一个擦肩而过的人都是真实玩家，各有自己的主线。停下来说话，支线就展开了。{{ else }}Everyone you pass is a real player running a main quest of their own. Stop and talk — a side quest unfolds.{{ end }}</p>
       </div>
-      <div class="eitr-philo-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-        <h3>{{ if $isZh }}慢旅行{{ else }}Slow Travel{{ end }}</h3>
-        <p>{{ if $isZh }}驻留体验，不赶打卡，感受每个地方的节奏{{ else }}Stay longer, skip checklists, feel each place's rhythm{{ end }}</p>
+      <div class="tw-code__card tw-reveal">
+        <span class="tw-code__num">02</span>
+        <h3>{{ if $isZh }}不赶主线{{ else }}Never Speedrun{{ end }}</h3>
+        <p>{{ if $isZh }}最好的剧情都藏在支线里。驻留、绕路、坐慢车，让每张地图以自己的节奏展开。{{ else }}The best storylines hide in side quests. Stay longer, take detours, ride the slow train.{{ end }}</p>
       </div>
-      <div class="eitr-philo-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <h3>{{ if $isZh }}数字游民{{ else }}Digital Nomad{{ end }}</h3>
-        <p>{{ if $isZh }}代码与旅途并行，世界是我的办公室{{ else }}Code and travel in parallel — the world is my office{{ end }}</p>
+      <div class="tw-code__card tw-reveal">
+        <span class="tw-code__num">03</span>
+        <h3>{{ if $isZh }}随身工作台{{ else }}Portable Workbench{{ end }}</h3>
+        <p>{{ if $isZh }}代码与旅途并行，在任何坐标都能提交这一天。世界是地图，也是办公室。{{ else }}Code travels with me — the day can be committed from any coordinates. The world is a map, and an office.{{ end }}</p>
       </div>
     </div>
   </section>
 
-  {{/* ── Connect ── */}}
-  <section class="eitr-connect">
-    <h2 class="eitr-connect__title">{{ if $isZh }}一起出发？{{ else }}Travel Together?{{ end }}</h2>
-    <p class="eitr-connect__desc">
-      {{ if $isZh }}分享旅行技巧、交流冒险故事，或者讨论数字游民生活{{ else }}Share travel tips, exchange adventure stories, or discuss the nomad life{{ end }}
+  {{/* ══ Party invite ══ */}}
+  <section class="tw-party tw-reveal">
+    <span class="tw-eyebrow tw-eyebrow--light">PARTY&nbsp;INVITE</span>
+    <h2 class="tw-party__title">{{ if $isZh }}要组队吗？{{ else }}Join the Party?{{ end }}</h2>
+    <p class="tw-party__desc">
+      {{- if $isZh }}交换路线、分享存档，或者聊聊数字游民这条支线怎么打。
+      {{- else }}Trade routes, share saves, or talk about how to play the digital-nomad side quest.
+      {{- end }}
     </p>
-    <div class="eitr-connect__links">
+    <div class="tw-party__links">
+      {{- $shown := false }}
       {{- with .Site.Params.socialIcons }}
         {{- range . }}
           {{- if or (eq .name "twitter") (eq .name "github") (eq .name "email") }}
-          <a href="{{ .url }}" {{ if ne .name "email" }}target="_blank" rel="noopener noreferrer"{{ end }} class="eitr-social">{{ .name }}</a>
+          {{- $shown = true }}
+          <a href="{{ .url }}" {{ if ne .name "email" }}target="_blank" rel="noopener noreferrer"{{ end }} class="tw-social">{{ .name }}</a>
           {{- end }}
         {{- end }}
-      {{- else }}
-      <a href="https://twitter.com/cubxxw" target="_blank" rel="noopener noreferrer" class="eitr-social">Twitter / X</a>
-      <a href="https://github.com/cubxxw" target="_blank" rel="noopener noreferrer" class="eitr-social">GitHub</a>
+      {{- end }}
+      {{- if not $shown }}
+      <a href="https://twitter.com/cubxxw" target="_blank" rel="noopener noreferrer" class="tw-social">Twitter / X</a>
+      <a href="https://github.com/cubxxw" target="_blank" rel="noopener noreferrer" class="tw-social">GitHub</a>
       {{- end }}
     </div>
   </section>
 
 </div>
+
+<script>
+(function () {
+  var root = document.querySelector('.tw-page');
+  if (!root) return;
+  var els = root.querySelectorAll('.tw-reveal');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return; /* no .tw-js stamp → everything stays visible in place */
+  }
+  root.classList.add('tw-js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
 {{- end }}

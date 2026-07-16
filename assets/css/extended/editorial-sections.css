@@ -98,14 +98,14 @@ body.dark {
 
 /* ── Shared atoms ── */
 
-.eig-page, .eip-page, .eitr-page {
+.eig-page, .eip-page {
   font-family: var(--ei-serif);
   color: var(--ei-text);
   background: var(--ei-bg);
 }
 
 /* Category chip */
-.eig-chip, .eip-chip, .eitr-chip {
+.eig-chip, .eip-chip {
   display: inline-block;
   /* In a column flex parent an inline-block child is blockified and stretches
      to full width; keep the pill hugging its label. */
@@ -124,7 +124,7 @@ body.dark {
 }
 
 /* Tag */
-.eig-tag, .eip-tag, .eitr-tag {
+.eig-tag, .eip-tag {
   display: inline-block;
   padding: 3px 9px;
   border-radius: var(--ei-r-sm);
@@ -137,7 +137,7 @@ body.dark {
 }
 
 /* Date */
-.eig-date, .eip-date, .eitr-date {
+.eig-date, .eip-date {
   font-family: var(--ei-label);
   font-size: 12px;
   color: var(--ei-text-3);
@@ -146,7 +146,7 @@ body.dark {
 }
 
 /* CTA arrow link */
-.eig-cta, .eip-cta, .eitr-cta {
+.eig-cta, .eip-cta {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -159,15 +159,15 @@ body.dark {
 }
 /* Slide the arrow via transform rather than animating flex `gap` (layout).
    Same forward-reach read, composited. */
-.eig-cta svg, .eip-cta svg, .eitr-cta svg {
+.eig-cta svg, .eip-cta svg {
   transition: transform var(--ei-dur) var(--ei-ease);
 }
-.eig-cta:hover svg, .eip-cta:hover svg, .eitr-cta:hover svg {
+.eig-cta:hover svg, .eip-cta:hover svg {
   transform: translateX(4px);
 }
 
 /* Breathing dot (live / active indicator) */
-.eig-dot, .eip-dot, .eitr-dot {
+.eig-dot, .eip-dot {
   display: inline-block;
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -181,7 +181,7 @@ body.dark {
 }
 
 /* Section eyebrow label */
-.eig-eyebrow, .eip-eyebrow, .eitr-eyebrow {
+.eig-eyebrow, .eip-eyebrow {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -605,520 +605,6 @@ body.dark .eig-year-marker {
 .eip-card__inner { position: relative; z-index: 1; }
 
 /* =============================================================
-   TRAVEL (eitr-)
-   ============================================================= */
-
-.eitr-page { font-family: var(--ei-serif); color: var(--ei-text); }
-
-/* ── Hero ── */
-.eitr-hero {
-  position: relative;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--ei-r-xl);
-  overflow: hidden;
-  margin-bottom: var(--ei-s7);
-}
-.eitr-hero__bg {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 18% 55%, #064970 0%, transparent 52%),
-    radial-gradient(ellipse at 76% 18%, #032d50 0%, transparent 48%),
-    radial-gradient(ellipse at 55% 88%, #1a4a35 0%, transparent 38%),
-    linear-gradient(150deg, #031f36 0%, #064970 40%, #1a4a35 100%);
-}
-.eitr-hero__grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-.eitr-hero__orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(72px);
-  animation: eitr-float 10s ease-in-out infinite;
-}
-.eitr-hero__orb--1 {
-  width: 300px; height: 300px;
-  top: -70px; right: -50px;
-  background: rgba(78,189,130,0.10);
-}
-.eitr-hero__orb--2 {
-  width: 240px; height: 240px;
-  bottom: -50px; left: -30px;
-  background: rgba(45,106,79,0.14);
-  animation-delay: 5s;
-}
-@keyframes eitr-float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-20px); }
-}
-.eitr-hero__compass {
-  position: absolute;
-  right: 7%; top: 50%;
-  transform: translateY(-50%);
-  width: 260px; height: 260px;
-  opacity: 0.35;
-  animation: eitr-spin 80s linear infinite;
-}
-@keyframes eitr-spin {
-  from { transform: translateY(-50%) rotate(0deg); }
-  to   { transform: translateY(-50%) rotate(360deg); }
-}
-.eitr-hero__content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: var(--ei-s7) var(--ei-s5);
-  max-width: 680px;
-}
-.eitr-hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 999px;
-  color: rgba(255,255,255,0.85);
-  font-family: var(--ei-label);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  margin-bottom: var(--ei-s4);
-  backdrop-filter: blur(10px);
-}
-.eitr-hero__dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #4ebd82;
-  animation: ei-breathe 2.8s ease-in-out infinite;
-}
-.eitr-hero__title {
-  font-family: var(--ei-display);
-  font-size: clamp(2.8rem, 6vw, 4.2rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-  color: white;
-  margin: 0 0 var(--ei-s3);
-}
-.eitr-hero__line1 { display: block; }
-.eitr-hero__line2 {
-  display: block;
-  background: linear-gradient(135deg, #4ebd82 20%, #48cae4 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.eitr-hero__sub {
-  font-family: var(--ei-serif);
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.68);
-  margin: 0 0 var(--ei-s5);
-}
-.eitr-hero__actions {
-  display: flex;
-  gap: var(--ei-s2);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.eitr-hero__scroll {
-  position: absolute;
-  bottom: var(--ei-s3);
-  left: 50%;
-  transform: translateX(-50%);
-}
-.eitr-hero__scroll-line {
-  width: 1px; height: 36px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-  animation: eitr-scroll 2.4s ease-in-out infinite;
-}
-@keyframes eitr-scroll {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.15; }
-}
-
-/* Buttons */
-.eitr-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  border-radius: 999px;
-  font-family: var(--ei-label);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform var(--ei-dur) var(--ei-ease),
-              box-shadow var(--ei-dur) var(--ei-ease),
-              background var(--ei-dur);
-  white-space: nowrap;
-}
-.eitr-btn--primary {
-  background: white;
-  color: #031f36;
-}
-.eitr-btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(255,255,255,0.22);
-  color: #031f36;
-}
-.eitr-btn--ghost {
-  background: rgba(255,255,255,0.07);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
-}
-.eitr-btn--ghost:hover {
-  background: rgba(255,255,255,0.14);
-  transform: translateY(-2px);
-  color: white;
-}
-.eitr-btn--outline {
-  background: transparent;
-  color: var(--ei-green);
-  border: 1.5px solid var(--ei-green);
-}
-.eitr-btn--outline:hover {
-  background: var(--ei-green-wash);
-}
-
-/* Stats */
-.eitr-stats {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background: var(--ei-bg-card);
-  border-radius: var(--ei-r-xl);
-  box-shadow: var(--ei-shadow-1);
-  margin-bottom: var(--ei-s7);
-  overflow: hidden;
-}
-.eitr-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--ei-s5) var(--ei-s5);
-  flex: 1;
-  gap: 6px;
-  transition: background var(--ei-dur);
-}
-.eitr-stat:hover { background: var(--ei-bg-low); }
-.eitr-stat__divider {
-  width: 1px;
-  align-self: stretch;
-  margin: var(--ei-s3) 0;
-  background: var(--ei-divide);
-  flex-shrink: 0;
-}
-.eitr-stat__num {
-  font-family: var(--ei-display);
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: var(--ei-green);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.eitr-stat__label {
-  font-family: var(--ei-label);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ei-text-3);
-}
-
-/* Section header */
-.eitr-stories { margin-bottom: var(--ei-s7); }
-.eitr-section-header {
-  text-align: center;
-  margin-bottom: var(--ei-s6);
-}
-.eitr-section-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--ei-label);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ei-green);
-  margin-bottom: var(--ei-s2);
-}
-.eitr-section-title {
-  font-family: var(--ei-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  color: var(--ei-text);
-  margin: 0 0 var(--ei-s2);
-  line-height: 1.15;
-}
-.eitr-section-desc {
-  font-family: var(--ei-serif);
-  font-size: 1rem;
-  color: var(--ei-text-2);
-  max-width: 440px;
-  margin: 0 auto;
-  line-height: 1.8;
-}
-
-/* Story grid */
-.eitr-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--ei-s3);
-}
-@media (min-width: 900px) {
-  .eitr-grid { grid-template-columns: repeat(3, 1fr); }
-  .eitr-card--featured { grid-column: span 2; }
-  .eitr-card--featured .eitr-card__img-wrap { height: 300px; }
-  .eitr-card--featured .eitr-card__title { font-size: 1.45rem; }
-}
-
-.eitr-card {
-  position: relative;
-  background: var(--ei-bg-card);
-  border-radius: var(--ei-r-lg);
-  box-shadow: var(--ei-shadow-1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform var(--ei-dur) var(--ei-ease),
-              box-shadow var(--ei-dur) var(--ei-ease);
-}
-.eitr-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--ei-shadow-3);
-}
-.eitr-card__img-wrap {
-  height: 180px;
-  overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-}
-.eitr-card__img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  /* Was 0.6s — double the <300ms UI budget and out of sync with the card's
-     own hover lift. Match a snappier reveal so the image zoom and the card
-     lift settle together. */
-  transition: transform 0.28s var(--ei-ease);
-}
-.eitr-card:hover .eitr-card__img { transform: scale(1.05); }
-.eitr-card__img-scrim {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(3,31,54,0.28));
-}
-/* No-image cards: clean text-only layout with left accent */
-.eitr-card--no-img {
-  border-left: 3px solid var(--ei-green);
-}
-.eitr-card--no-img .eitr-card__body {
-  padding: var(--ei-s5) var(--ei-s4);
-}
-.eitr-card__body {
-  padding: var(--ei-s4);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ei-s2);
-  position: relative;
-  z-index: 1;
-}
-.eitr-card__meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ei-s2);
-  flex-wrap: wrap;
-}
-.eitr-card__tags { display: flex; gap: 6px; }
-.eitr-tag {
-  display: inline-block;
-  padding: 3px 10px;
-  background: var(--ei-green-wash);
-  color: var(--ei-green);
-  border-radius: 999px;
-  font-family: var(--ei-label);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-.eitr-card__title {
-  font-family: var(--ei-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.4;
-  margin: 0;
-}
-.eitr-card__title a { color: var(--ei-text); text-decoration: none; transition: color var(--ei-dur); }
-.eitr-card:hover .eitr-card__title a { color: var(--ei-green); }
-.eitr-card__excerpt {
-  font-family: var(--ei-serif);
-  font-size: 0.9rem;
-  color: var(--ei-text-2);
-  line-height: 1.8;
-  margin: 0;
-  flex: 1;
-}
-.eitr-card__cover { position: absolute; inset: 0; z-index: 0; }
-.eitr-cta, .eitr-card__tags { position: relative; z-index: 2; }
-
-/* Empty state */
-.eitr-empty {
-  text-align: center;
-  padding: var(--ei-s8) var(--ei-s5);
-  color: var(--ei-text-3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--ei-s3);
-}
-.eitr-empty p { font-size: 1.05rem; margin: 0; color: var(--ei-text-2); }
-
-/* Philosophy */
-.eitr-philosophy {
-  background: var(--ei-bg-low);
-  border-radius: var(--ei-r-xl);
-  padding: var(--ei-s7) var(--ei-s6);
-  margin-bottom: var(--ei-s7);
-}
-.eitr-philosophy__quote {
-  font-family: var(--ei-serif);
-  font-size: clamp(1.25rem, 2.5vw, 1.7rem);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--ei-text);
-  border-left: 2px solid var(--ei-green);
-  padding-left: var(--ei-s4);
-  margin: 0 0 var(--ei-s6);
-  max-width: 680px;
-}
-.eitr-philosophy__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--ei-s3);
-}
-.eitr-philo-card {
-  background: var(--ei-bg-card);
-  border-radius: var(--ei-r-md);
-  padding: var(--ei-s4) var(--ei-s4) var(--ei-s3);
-  transition: transform var(--ei-dur) var(--ei-ease),
-              box-shadow var(--ei-dur) var(--ei-ease);
-}
-.eitr-philo-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--ei-shadow-2);
-}
-.eitr-philo-card svg {
-  width: 28px; height: 28px;
-  color: var(--ei-green);
-  margin-bottom: var(--ei-s2);
-  display: block;
-}
-.eitr-philo-card h3 {
-  font-family: var(--ei-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--ei-text);
-  margin: 0 0 8px;
-}
-.eitr-philo-card p {
-  font-family: var(--ei-serif);
-  font-size: 0.875rem;
-  color: var(--ei-text-2);
-  line-height: 1.75;
-  margin: 0;
-}
-
-/* Connect */
-.eitr-connect {
-  position: relative;
-  background: linear-gradient(150deg, #031f36 0%, #064970 55%, #1a4a35 100%);
-  border-radius: var(--ei-r-xl);
-  padding: var(--ei-s7) var(--ei-s6);
-  text-align: center;
-  margin-bottom: var(--ei-s6);
-  overflow: hidden;
-}
-.eitr-connect::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    radial-gradient(circle at 22% 55%, rgba(78,189,130,0.07) 0%, transparent 42%),
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: auto, 36px 36px, 36px 36px;
-}
-.eitr-connect__title {
-  font-family: var(--ei-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  color: white;
-  margin: 0 0 var(--ei-s2);
-  position: relative;
-}
-.eitr-connect__desc {
-  font-family: var(--ei-serif);
-  font-size: 1rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.8;
-  max-width: 420px;
-  margin: 0 auto var(--ei-s5);
-  position: relative;
-}
-.eitr-connect__links {
-  display: flex;
-  gap: var(--ei-s2);
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-}
-.eitr-social {
-  /* inline-flex + min-height lifts the tap target from ~36px to the 44px
-     touch minimum without changing the visual pill height much. */
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 10px 22px;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 999px;
-  color: rgba(255,255,255,0.8);
-  font-family: var(--ei-label);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.06);
-  transition: background var(--ei-dur), transform var(--ei-dur) var(--ei-ease), color var(--ei-dur);
-}
-/* The social pills + CTAs sit on a dark photographic hero where the native
-   focus ring is nearly invisible. Give keyboard users a clear, on-brand
-   ring. */
-.eitr-social:focus-visible,
-.eitr-btn:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
-  border-radius: 999px;
-}
-.eitr-social:hover {
-  background: rgba(255,255,255,0.14);
-  color: white;
-  transform: translateY(-2px);
-}
-
-/* =============================================================
    Responsive
    ============================================================= */
 @media (max-width: 768px) {
@@ -1136,17 +622,6 @@ body.dark .eig-year-marker {
   .eip-grid { grid-template-columns: 1fr; }
   .eip-card--hero { grid-column: span 1; }
   .eip-card__inner { padding: var(--ei-s4) var(--ei-s4); }
-  .eitr-hero { min-height: 520px; margin-bottom: var(--ei-s6); }
-  .eitr-hero__content { padding: var(--ei-s6) var(--ei-s3); }
-  .eitr-hero__compass { display: none; }
-  .eitr-hero__actions { flex-direction: column; align-items: center; }
-  .eitr-btn { width: 100%; max-width: 280px; justify-content: center; }
-  .eitr-stats { flex-wrap: wrap; }
-  .eitr-stat { min-width: 48%; padding: var(--ei-s4) var(--ei-s3); }
-  .eitr-stat__divider { display: none; }
-  .eitr-philosophy { padding: var(--ei-s5) var(--ei-s4); }
-  .eitr-connect { padding: var(--ei-s6) var(--ei-s4); }
-  .eitr-grid { grid-template-columns: 1fr; }
   
   .eig-row { grid-template-columns: 50px 1fr; gap: var(--ei-s3); }
 }
@@ -1158,20 +633,17 @@ body.dark .eig-year-marker {
   .eig-hero__stats { gap: var(--ei-s3); flex-wrap: wrap; }
   .eig-stat__num { font-size: 1.6rem; }
   .eig-year-marker { font-size: 2.4rem; }
-  .eitr-section-title { font-size: 1.6rem; }
-  .eitr-stat__num { font-size: 1.8rem; }
 }
 
 /* ============================================================
    Reduced motion: freeze the decorative ambient loops.
-   These animations (breathing dots, the floating travel-hero orb,
-   the slowly spinning compass, the scroll line) are purely
+   These animations (the breathing dots) are purely
    atmospheric and have no forwards end-state to preserve, so it is
    safe to simply stop them and leave each element in its static
    resting look for visitors who prefer reduced motion.
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .eig-dot, .eip-dot, .eitr-dot, .eitr-hero__orb, .eitr-hero__compass, .eitr-hero__dot, .eitr-hero__scroll-line {
+  .eig-dot, .eip-dot {
     animation: none !important;
   }
   /* The block above only stilled decorative loops; the card/button hover
@@ -1181,12 +653,6 @@ body.dark .eig-year-marker {
      feedback). */
   .eig-featured-card:hover,
   .eip-card:hover,
-  .eitr-card:hover,
-  .eitr-card:hover .eitr-card__img,
-  .eitr-philo-card:hover,
-  .eitr-social:hover,
-  .eitr-btn--primary:hover,
-  .eitr-btn--ghost:hover,
   .eig-page-btn:hover {
     transform: none !important;
   }

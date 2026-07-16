@@ -1,0 +1,89 @@
+# /travel/ "世界游戏" 页面数据
+#
+# regions —— 世界地图分区。文章按 frontmatter tags 与各区 match 列表求交集归区；
+#            没命中任何地区的旅行文章会自动落入页面上的"路上 · 随笔"兜底区。
+#            新去一个地方：加一个 region + 给文章打上对应地区 tag 即可。
+# books   —— 行囊书单（旅行书籍展示区）。直接增删此列表即可，
+#            slot_* 是游戏风格的"装备槽位"标签，随意发挥。
+regions:
+  - slug: tibet
+    name_zh: 西藏高原
+    name_en: Tibetan Plateau
+    coords: "29.65°N 91.14°E"
+    tagline_zh: 海拔 3650 米，一张强制降速的地图
+    tagline_en: "3,650 m above sea level — a map that forces you to slow down"
+    hue: 6
+    match: ["西藏", "拉萨", "Tibet", "Lhasa"]
+
+  - slug: japan
+    name_zh: 日本列岛
+    name_en: Japanese Archipelago
+    coords: "35.36°N 138.73°E"
+    tagline_zh: 用木头、火与缺口和时间共处的群岛
+    tagline_en: "Islands that make peace with time through wood, fire and imperfection"
+    hue: 340
+    match: ["Japan", "日本"]
+
+  - slug: southeast-asia
+    name_zh: 东南亚
+    name_en: Southeast Asia
+    coords: "18.92°N 102.45°E"
+    tagline_zh: 湄公河的慢，与岩洞里的光
+    tagline_en: "The slowness of the Mekong, and the light inside limestone caves"
+    hue: 152
+    match: ["老挝旅行 (Laos Travel)", "Laos Travel", "Laos", "老挝", "柬埔寨", "Cambodia", "暹粒"]
+
+books:
+  - title_zh: 在路上
+    title_en: On the Road
+    author_zh: 杰克·凯鲁亚克
+    author_en: Jack Kerouac
+    slot_zh: 主线剧情
+    slot_en: Main Quest
+    note_zh: 出发不需要一个成立的理由，出发本身就是理由。
+    note_en: You don't need a valid reason to leave — leaving is the reason.
+
+  - title_zh: 旅行的艺术
+    title_en: The Art of Travel
+    author_zh: 阿兰·德波顿
+    author_en: Alain de Botton
+    slot_zh: 视角模组
+    slot_en: Perspective Mod
+    note_zh: 决定一段旅程质量的不是目的地，而是携带的注意力。
+    note_en: What makes a journey is not the destination but the attention you bring.
+
+  - title_zh: 江城
+    title_en: River Town
+    author_zh: 彼得·海斯勒
+    author_en: Peter Hessler
+    slot_zh: 地图注释
+    slot_en: Map Annotations
+    note_zh: 在一个地方住下来，地图上的名字才会变成人。
+    note_en: Only when you stay does a name on the map become people.
+
+  - title_zh: 旅行之木
+    title_en: The Tree That Travels
+    author_zh: 星野道夫
+    author_en: Michio Hoshino
+    slot_zh: 慢速增益
+    slot_en: Slow Buff
+    note_zh: 另一片土地上，有一种和我们完全不同的时间在流动。
+    note_en: Somewhere else, a completely different kind of time is flowing.
+
+  - title_zh: 禅与摩托车维修艺术
+    title_en: Zen and the Art of Motorcycle Maintenance
+    author_zh: 罗伯特·波西格
+    author_en: Robert M. Pirsig
+    slot_zh: 装备维护手册
+    slot_en: Maintenance Manual
+    note_zh: 骑在路上修的不是摩托车，是自己的心智。
+    note_en: What you maintain on the road is not the motorcycle — it's your mind.
+
+  - title_zh: 夜航西飞
+    title_en: West with the Night
+    author_zh: 柏瑞尔·马卡姆
+    author_en: Beryl Markham
+    slot_zh: 飞行执照
+    slot_en: Flight License
+    note_zh: 独自飞过黑夜与海洋的人，写下的每个字都有重量。
+    note_en: Every word weighs more when written by someone who flew the night alone.

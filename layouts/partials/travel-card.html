@@ -1,0 +1,62 @@
+{{- /* Travel quest-log card.
+     dict args: page, isZh, featured
+     Card image: frontmatter cover.image → first inline markdown image in
+     the body → region-hued gradient placeholder (no image markup at all). */ -}}
+{{- $p := .page }}
+{{- $isZh := .isZh }}
+{{- $featured := .featured }}
+{{- $img := "" }}
+{{- with $p.Params.cover }}{{- with .image }}{{- $img = . }}{{- end }}{{- end }}
+{{- if not $img }}
+  {{- $m := findRE `!\[[^\]]*\]\([^)\s]+` $p.RawContent 1 }}
+  {{- with index $m 0 }}{{- $img = replaceRE `!\[[^\]]*\]\(` "" . }}{{- end }}
+{{- end }}
+{{- /* Resolve bundle-relative image paths (e.g. "tibet-drive.jpg" inside a
+     page bundle) — they would 404 from the travel page's URL. */ -}}
+{{- if and $img (not (hasPrefix $img "/")) (not (hasPrefix $img "http")) }}
+  {{- with $p.Resources.GetMatch $img }}
+    {{- $img = .RelPermalink }}
+  {{- else }}
+    {{- $img = printf "%s%s" $p.RelPermalink $img }}
+  {{- end }}
+{{- end }}
+<article class="tw-card{{ if $featured }} tw-card--featured{{ end }}{{ if not $img }} tw-card--no-img{{ end }}">
+  {{- if $img }}
+  <div class="tw-card__media">
+    <img src="{{ $img }}" alt="" loading="lazy" decoding="async" class="tw-card__img">
+    <div class="tw-card__scrim" aria-hidden="true"></div>
+  </div>
+  {{- else }}
+  <div class="tw-card__media tw-card__media--void" aria-hidden="true">
+    <span class="tw-card__void-mark">{{ if $isZh }}未渲染区域{{ else }}UNRENDERED{{ end }}</span>
+  </div>
+  {{- end }}
+  <div class="tw-card__body">
+    <div class="tw-card__meta">
+      <time class="tw-card__date" datetime="{{ $p.Date.Format "2006-01-02" }}">
+        {{- if $isZh }}{{ $p.Date.Format "2006 年 1 月 2 日" }}{{ else }}{{ $p.Date.Format "Jan 2, 2006" }}{{ end -}}
+      </time>
+      {{- $skip := slice "Travel" "travel" "旅行" "Blog" "Monthly Notes" }}
+      {{- $shown := 0 }}
+      {{- range $p.Params.tags }}
+        {{- if and (lt $shown 2) (not (in $skip .)) }}
+        <span class="tw-card__tag">{{ . }}</span>
+        {{- $shown = add $shown 1 }}
+        {{- end }}
+      {{- end }}
+    </div>
+    <h4 class="tw-card__title"><a href="{{ $p.Permalink }}">{{ $p.Title }}</a></h4>
+    <p class="tw-card__excerpt">
+      {{- with $p.Description }}{{ . | plainify | htmlUnescape | truncate 110 }}
+      {{- else }}{{ $p.Summary | plainify | htmlUnescape | truncate 110 }}
+      {{- end }}
+    </p>
+    <span class="tw-card__cta" aria-hidden="true">
+      {{ if $isZh }}读取存档{{ else }}Load Save{{ end }}
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </span>
+  </div>
+  {{- /* Full-card click convenience; the visible title link already exposes
+       the destination to assistive tech, keep this out of the a11y tree. */}}
+  <a class="tw-card__cover" href="{{ $p.Permalink }}" aria-hidden="true" tabindex="-1"></a>
+</article>
