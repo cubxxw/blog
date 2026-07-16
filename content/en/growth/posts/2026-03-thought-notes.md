@@ -23,6 +23,9 @@ tldr:
   - "In healthy relationships, replace sacrificial one-way giving with co-creation: shared experiences and mutual growth build solid connections stronger than performative gestures."
   - "AI product design must reduce cognitive load through invisible intelligence: users should perform minimal actions while receiving surprising, high-leverage results delivered seamlessly in backend."
   - "Navigate complexity by switching dynamically between abstract overview and concrete details: flexible cognitive hierarchy prevents both getting trapped in details and losing practical intuition."
+cover:
+  image: /images/covers/growth/2026/2026-03-thought-notes.jpeg
+  alt: "March 2026 Thought Notes"
 ---
 
 # March 2026 Thought Notes

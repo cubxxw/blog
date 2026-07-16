@@ -21,6 +21,9 @@ tldr:
   - "AI era demands Harness Design and environmental/protocol thinking over traditional product design as models grow stronger than infrastructure."
   - "Laos reveals cultural contrasts: externally placid yet internally celebratory during festivals, with economic gaps creating ethical dilemmas around wildlife trade and tourism."
   - "Personal reflection shows tension between rational systems thinking and emotional authenticity, where alcohol strips cognitive filters to reveal accumulated but repressed life tensions."
+cover:
+  image: /images/covers/growth/2026/2026-04-thought-notes.jpeg
+  alt: "April 2026 Thought Notes"
 ---
 ## 2026年4月思考笔记
 

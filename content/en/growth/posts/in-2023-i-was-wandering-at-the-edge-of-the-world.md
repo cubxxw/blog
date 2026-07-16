@@ -22,6 +22,9 @@ tldr:
   - "Stepping into the unknown through first-time adventures—Huangshan, Wugong Mountain, camping, and snow mountains—builds courage and expands personal limits constantly."
   - "Traveling serves as a vital balance between fast-paced work life, offering physical and spiritual growth through cultural immersion and meaningful human connections."
   - "The true meaning of travel transcends sightseeing; becoming a better version of yourself through open-mindedness, cultural understanding, and touching countless lives."
+cover:
+  image: /images/covers/growth/2024/in-2023-i-was-wandering-at-the-edge-of-the-world.jpeg
+  alt: "In 2023, I Was Wandering at the Edge of the World"
 ---
 
 
