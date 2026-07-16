@@ -151,6 +151,12 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [The Red Ocean Is Full: Where the Blue Ocean for AI Agents Is in Late 2026](https://cubxxw.com/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/)
+- [How Do You Get to the Point Where You Trust an AI Agent Nobody Is Watching?](https://cubxxw.com/ai-agent/posts/trusting-unattended-ai-agent/)
+- [The Super Individual's Intelligence System: Building a Personal Pipeline From Information to Action With Agents and MCP](https://cubxxw.com/ai-agent/posts/super-individual-intelligence-system/)
+- [Open Models Got Roughly 90% Cheaper. How Big an Agent Fleet Can One Person Afford?](https://cubxxw.com/ai-agent/posts/open-model-cost-collapse-agent-fleet/)
+- [When the AI Agent Starts Prompting You, What Has Actually Changed](https://cubxxw.com/ai-agent/posts/proactive-agent-it-prompts-you/)
+- [Where an AI That Tracks a Whole Field For You Finally Gets Stuck](https://cubxxw.com/ai-agent/posts/ai-auto-news-pipeline-limits/)
 - [What Remains When You Take It All Apart: On No-Self, Suffering, and "You Could Say It Either Way"](https://cubxxw.com/growth/posts/2026-07-14-what-remains-when-taken-apart/)
 - [From Chatbot to Agent to Skill: The Real Dividing Line for AI Landing in Traditional Industries](https://cubxxw.com/ai-agent/posts/from-chatbot-to-agent-to-skill/)
 - [Give AI Tasks, Not Directions: One Principle That Changes How You Work With AI](https://cubxxw.com/ai-agent/posts/give-ai-tasks-not-directions/)
@@ -168,7 +174,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [GEO Structured Tactics: Writing "Worth Citing" Into Every Paragraph (Answer-First, Schema, llms.txt)](https://cubxxw.com/ai-agent/posts/geo-structured-content-tactics/)
 - [GEO Mechanics: How AI Retrieves, Re-ranks, and Cites You](https://cubxxw.com/ai-agent/posts/geo-how-ai-retrieves-and-cites/)
 - [GEO: The Complete Guide to Generative Engine Optimization (When Search Stops Giving Links and Starts Giving Answers)](https://cubxxw.com/ai-agent/posts/geo-generative-engine-optimization-guide/)
-- [Start Here](https://cubxxw.com/start-here/)
 - [2026 June Thought Notes: The Pushing-Away Comes Before the Reason for Pushing Away](https://cubxxw.com/growth/posts/2026-06-thought-notes/)
 - [Dissecting open-lovable: An App Generator That Tames the Raw API Without an Agent Framework](https://cubxxw.com/ai-agent/posts/dissecting-open-lovable/)
 - [Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love](https://cubxxw.com/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)
@@ -204,7 +209,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [AI Recommendation Systems: How They Work](https://cubxxw.com/projects/ai-recommend/)
 - [NotebookLM: Google's AI Research Tool](https://cubxxw.com/projects/notebooklm/)
 - [TDD for AI: Test-Driven Development Guide](https://cubxxw.com/projects/tdd/)
-- [Microsoft MarkItDown Tutorial: Convert PDF to Markdown](https://cubxxw.com/projects/markitdown/)
+- [Microsoft MarkItDown Tutorial: Convert PDF to Markdown](https://cubxxw.com/projects/markItdown/)
 - [LangGraph Architecture: StateGraph, Nodes and Edges](https://cubxxw.com/projects/langgraph/)
 - [LangChain: Open Source LLM Framework](https://cubxxw.com/projects/langchain/)
 - [LLM/AI API Gateway Comparison: LiteLLM vs Kong vs APISIX and the Best Stack for Startups](https://cubxxw.com/projects/ai-gateway/)
@@ -213,7 +218,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Jina AI: Multimodal Search & Embeddings](https://cubxxw.com/projects/jina/)
 - [2025 March Thought Notes](https://cubxxw.com/growth/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://cubxxw.com/growth/posts/2024-annual-review/)
-- [About Me](https://cubxxw.com/about/)
+- [About Me & This Blog](https://cubxxw.com/about/)
 - [Travel Footprints](https://cubxxw.com/travel/)
 - [Kubernetes Resources and Learning Path Summary](https://cubxxw.com/engineering/posts/kubernetes-learning/)
 - [LangChain: Building LLM Applications](https://cubxxw.com/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
@@ -246,11 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes kube-apiserver: Deep Dive into API Server Components](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [Deep Dive Into the Components of Kubernetes Etcd](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 - [Kubernetes Port Config via Config Files](https://cubxxw.com/engineering/posts/openim-cluster-deployment-parameter-passing-policy/)
-- [Open Source Business: From Community to Revenue](https://cubxxw.com/engineering/posts/openim-open-source-business-journey/)
-- [OpenIM clustering design Kubernetes deploy concludes](https://cubxxw.com/engineering/posts/openim-cluster-deployment-scheme-of/)
-- [The Art of Asking Questions in Open Source Communities](https://cubxxw.com/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
-- [Open Source Contribution Guidelines](https://cubxxw.com/engineering/posts/open-source-contribution-guidelines/)
-- [Cross Platform Compilation](https://cubxxw.com/engineering/posts/cross-platform-compilation/)
 <!-- My-Blog-EN:END -->
 
 
