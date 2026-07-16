@@ -91,7 +91,7 @@ Instead of using `![]()` to reference images, we use `<img>` tags. This is to co
 
 )
 
-<img src="https://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com" style="zoom:200%;"/>
+![](https://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com)
 
 ### License
 

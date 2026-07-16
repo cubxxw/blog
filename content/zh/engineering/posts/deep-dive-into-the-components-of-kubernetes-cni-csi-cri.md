@@ -136,7 +136,7 @@ Docker 内部关于容器运行时功能的核心组件是 containerd,后来 con
 
 #### docker 和 containerd 的差异细节
 
-<img src="http://sm.nsddd.top/sm202303082050059.png" alt="image-20230308205012033" style="zoom:67%;" />
+![image-20230308205012033](http://sm.nsddd.top/sm202303082050059.png)
 
 可以看到 docker 中有许多 k8s 不需要的功能，k8s 需要的只是 红框中的部分，其他的都是冗余，即便去掉这部分，剩下的调用链也是非常的长。
 
@@ -303,7 +303,7 @@ ls -al /opt/cni/bin # CNI 可执行二进制文件
 
 因此整个调用链就是 `kubelet --> CRI --> CNI`。
 
-<img src="http://sm.nsddd.top/sm202303082216115.jpeg" alt="img" style="zoom:33%;" />
+![img](http://sm.nsddd.top/sm202303082216115.jpeg)
 
 
 

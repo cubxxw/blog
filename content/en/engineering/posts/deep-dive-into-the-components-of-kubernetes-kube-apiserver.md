@@ -51,9 +51,9 @@ Each request to the Kubernetes API will go through multi-stage access control be
 
 > The previous one is Mutating Webhook, which can change the value of an object, but Validating Webhook cannot modify the value of an object and will not take effect.
 
-<p><img src="https://sm.nsddd.top/sm202310142043549.png" referrerpolicy="no-referrer" alt="openim-img"></p>
+<p>![](https://sm.nsddd.top/sm202310142043549.png)</p>
 <p><strong>More detailed request processing process:</strong></p>
-<p><img src="https://sm.nsddd.top/sm202310142043692.jpeg" referrerpolicy="no-referrer" alt="openim-ximg"> </p>
+<p>![](https://sm.nsddd.top/sm202310142043692.jpeg) </p>
 
 > **📜 Explanation of the above:**
 >

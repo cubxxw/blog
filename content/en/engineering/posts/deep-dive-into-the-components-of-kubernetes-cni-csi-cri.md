@@ -136,7 +136,7 @@ Of course, Docker also has many features that containerd doesn't have, such as s
 
 #### Detailed Differences between docker and containerd
 
-<img src="https://sm.nsddd.top/sm202303082050059.png" alt="image-20230308205012033" style="zoom:67%;" />
+![image-20230308205012033](https://sm.nsddd.top/sm202303082050059.png)
 
 You can see that docker has many features that k8s doesn't need. k8s only needs the parts in the red box; the rest are redundant. Even if we remove these parts, the remaining call chain is still very long.
 
@@ -303,7 +303,7 @@ The process of starting Pod includes **network-related configuration**, which ne
 
 Therefore, the entire call chain is `kubelet --> CRI --> CNI`.
 
-<img src="https://sm.nsddd.top/sm202303082216115.jpeg" alt="img" style="zoom:33%;" />
+![img](https://sm.nsddd.top/sm202303082216115.jpeg)
 
 
 

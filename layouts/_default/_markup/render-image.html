@@ -2,6 +2,20 @@
 {{- $alt := .Text | safeHTML -}}
 {{- $title := .Title -}}
 {{- $isSVG := hasSuffix (lower .Destination) ".svg" -}}
+{{- /* Dead external hosts: sm.nsddd.top (image bed shut down — every URL 404s
+       after a ~2s TLS stall) and expired Notion S3 signed URLs. Requesting
+       them stalls page load for seconds per image, so emit a static
+       placeholder at build time instead of the <img>.
+       Remove a host from this list once its images are migrated locally. */ -}}
+{{- $deadHosts := slice "sm.nsddd.top" "prod-files-secure.s3.us-west-2.amazonaws.com" -}}
+{{- $isDead := false -}}
+{{- range $deadHosts -}}{{- if in $.Destination . -}}{{- $isDead = true -}}{{- end -}}{{- end -}}
+{{- if $isDead -}}
+  <figure class="img-unavailable" role="note">
+    <span class="img-unavailable__mark" aria-hidden="true">⌀</span>
+    <span class="img-unavailable__label">{{ if eq .Page.Language.Lang "zh" }}配图已失效{{ else }}Image no longer available{{ end }}{{ with $alt }} · {{ . }}{{ end }}</span>
+  </figure>
+{{- else -}}
 {{- /* A page-bundle-relative bitmap (jpg/png, no scheme, not root-absolute,
        no query string) is resolved as a page Resource so Hugo Pipes can
        resize/compress it. Everything else — SVGs, absolute /static paths,
@@ -48,4 +62,5 @@
     {{- end -}}
   {{- end -}}
   <img src="{{ $dest }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }}{{ if gt $w 0 }} width="{{ $w }}" height="{{ $h }}"{{ end }} loading="lazy" decoding="async"{{ if $isSVG }} role="img"{{ end }}>
+{{- end -}}
 {{- end -}}

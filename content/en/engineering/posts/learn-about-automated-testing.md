@@ -105,15 +105,15 @@ We know that the different stages, testing time and testing frequency are differ
 
 In the world of test design, an often mentioned approach is layering. Specifically, given a system, the structure is divided into three levels. The unit is in the smallest circle; the service contains multiple units, which is in the middle circle; and the system contains multiple services, which is the outer largest circle. The structure diagram is as follows:
 
-<img src="https://sm.nsddd.top/sm202310151032767.png" alt="image-20231015103231709" style="zoom:50%;" />
+![image-20231015103231709](https://sm.nsddd.top/sm202310151032767.png)
 
 In practice, how should these three tests be combined and arranged? Mike Cohen first proposed the testing pyramid model in 2009 in his new book, How to Succeed with Agile. Unit test automation is at the bottom of the pyramid, interface test automation is in the middle, and UI test automation is at the top of the pyramid.
 
-<img src="https://sm.nsddd.top/sm202310151032517.png" alt="image-20231015103245476" style="zoom:50%;" />
+![image-20231015103245476](https://sm.nsddd.top/sm202310151032517.png)
 
 Why a pyramid? If you don't understand the "why" behind the law, you won't be able to use the law well. In the previous lecture, we learned that "ROI is actually the implicit lifeblood of automated testing." Now we will use ROI thinking to analyze the testing pyramid law.
 
-<img src="https://sm.nsddd.top/sm202310151033215.png" alt="image-20231015103316990" style="zoom:50%;" />
+![image-20231015103316990](https://sm.nsddd.top/sm202310151033215.png)
 
 Below, we look at the ROI of each layer separately. Unit tests can be triggered and run every time the developer commits code, and the regression frequency is high; interface tests are run in every round of integration testing, and the regression frequency is medium; UI automation tests are run in user acceptance testing, and the regression frequency is low.
 
@@ -1546,7 +1546,7 @@ Excluding the manual test items mentioned in the previous table, we fill in the 
 
 In accordance with the implementation-level principle of seeking maximum ROI in automated testing, we convert the above table into an ROI automated testing pyramid.
 
-<img src="https://sm.nsddd.top/sm202310151901112.png" alt="image-20231015190158033" style="zoom:50%;" />
+![image-20231015190158033](https://sm.nsddd.top/sm202310151901112.png)
 
 
 

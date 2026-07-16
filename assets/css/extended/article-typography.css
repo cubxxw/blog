@@ -819,3 +819,30 @@ html:lang(zh) body.dark .post-content code .hljs-number { color: #e5c07b !import
 .post-content p + pre {
   margin-top: 1.25rem;
 }
+
+/* ── Dead-image placeholder (render-image hook blacklists dead hosts) ── */
+.post-content .img-unavailable {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+  padding: 0.85rem 1.1rem;
+  border: 1px dashed var(--color-rule);
+  border-radius: 6px;
+  background: transparent;
+}
+
+.post-content .img-unavailable__mark {
+  font-family: var(--font-meta);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-ink-muted);
+  opacity: 0.7;
+}
+
+.post-content .img-unavailable__label {
+  font-family: var(--font-meta);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-muted);
+}

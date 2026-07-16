@@ -4,8 +4,6 @@ description: Explore OpenIM remote work culture, principles, and practices inclu
 ShowRssButtonInSectionTermList: true
 date: 2023-07-13T16:09:30+08:00
 draft: false
-cover:
-  image: "https://sm.nsddd.top/sm202309161529285.jpg"
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

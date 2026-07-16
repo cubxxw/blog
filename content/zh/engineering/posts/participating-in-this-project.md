@@ -89,7 +89,7 @@ tldr:
 >
 > 对于大型程序，我们需要对 [🔥软件工程有一定的了解](https://github.com/3293172751/cs-awesome-Block_Chain/blob/master/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B&%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%92%8C%E6%9E%B6%E6%9E%84/README.md)
 
-<img src="http://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com" style="zoom:200%;"/>
+![](http://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com)
 
 ### 协议许可
 

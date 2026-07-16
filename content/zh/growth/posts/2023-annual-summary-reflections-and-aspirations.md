@@ -115,21 +115,18 @@ Github 的贡献的小绿点：
 
 圣诞节前后也完成了很久的愿望，去了一趟川西，去了 318 自驾游，去了人生第一座雪山，也去了第二座雪山。很有意思的是带着电脑去旅行，出去玩随时背着电脑，在他们点菜的时候，利用空闲的时间就拿出来办公。也去过很多城市生活了一段时间，感受到了重庆和成都城市的文化。或许留下烙印了，以后毕业会考虑来享受生活 ~
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="https://sm.nsddd.top/DSC05356.JPG" style="width: 30%;">
-    <img src="https://sm.nsddd.top/DSC05396.JPG" style="width: 30%;">
-    <img src="https://sm.nsddd.top/DSC01627.JPG" style="width: 30%;">
-</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="https://sm.nsddd.top/DSC05321.JPG" style="width: 30%;">
-    <img src="https://sm.nsddd.top/DSC05289.JPG" style="width: 30%;">
-    <img src="https://sm.nsddd.top/DSC05718.JPG" style="width: 30%;">
-</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <img src="https://sm.nsddd.top/DSC01681.JPG" style="width: 30%;">
-    <img src="https://sm.nsddd.top/DSC05871.JPG" style="width: 30%;">
-    <img src="https://sm.nsddd.top/DSC05895.JPG" style="width: 30%;">
-</div>
+![](https://sm.nsddd.top/DSC05356.JPG)
+![](https://sm.nsddd.top/DSC05396.JPG)
+![](https://sm.nsddd.top/DSC01627.JPG)
+
+![](https://sm.nsddd.top/DSC05321.JPG)
+![](https://sm.nsddd.top/DSC05289.JPG)
+![](https://sm.nsddd.top/DSC05718.JPG)
+
+![](https://sm.nsddd.top/DSC01681.JPG)
+![](https://sm.nsddd.top/DSC05871.JPG)
+![](https://sm.nsddd.top/DSC05895.JPG)
+
 
 > 我的 [Twitter](https://twitter.com/cubxxw)
 

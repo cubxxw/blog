@@ -108,7 +108,10 @@ On my second trip to Wugong Mountain, I went with classmates, and later I visite
 
 Just before Christmas, I fulfilled a long-time wish by traveling to Western Sichuan, self-driving along Highway 318, and climbing my first and second snow mountains. Interestingly, I carried my laptop on trips, working during idle times, like when others were ordering food. I also lived in various cities for short periods, immersing myself in the cultures of Chongqing and Chengdu. These experiences might influence my post-graduation plans.
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">     <img src="https://sm.nsddd.top/DSC05356.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05396.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC01627.JPG" style="width: 30%;"> </div> <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">     <img src="https://sm.nsddd.top/DSC05321.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05289.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05718.JPG" style="width: 30%;"> </div> <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">     <img src="https://sm.nsddd.top/DSC01681.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05871.JPG" style="width: 30%;">     <img src="https://sm.nsddd.top/DSC05895.JPG" style="width: 30%;"> </div>
+![](https://sm.nsddd.top/DSC05356.JPG)     ![](https://sm.nsddd.top/DSC05396.JPG)     ![](https://sm.nsddd.top/DSC01627.JPG)
+![](https://sm.nsddd.top/DSC05321.JPG)     ![](https://sm.nsddd.top/DSC05289.JPG)     ![](https://sm.nsddd.top/DSC05718.JPG)
+![](https://sm.nsddd.top/DSC01681.JPG)     ![](https://sm.nsddd.top/DSC05871.JPG)     ![](https://sm.nsddd.top/DSC05895.JPG)
+
 
 > My [Twitter](https://twitter.com/cubxxw)
 
