@@ -10,16 +10,25 @@
     {{- $tags := .Params.tags -}}
     {{- $cover := .Params.cover -}}
     {{- $coverURL := "" -}}
+    {{- $coverRes := "" -}}
     {{- with $cover -}}
       {{- with .image -}}
         {{- if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "/") -}}
           {{- $coverURL = . -}}
+          {{- /* /images/… covers resolve via the assets mount for resizing */ -}}
+          {{- if and (hasPrefix . "/images/") (not (hasSuffix (lower .) ".svg")) -}}
+            {{- with resources.Get (strings.TrimPrefix "/" .) -}}
+              {{- if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") -}}{{- $coverRes = . -}}{{- end -}}
+            {{- end -}}
+          {{- end -}}
         {{- else -}}
           {{- with $.Resources.GetMatch . -}}
             {{- $coverURL = .RelPermalink -}}
+            {{- if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") -}}{{- $coverRes = . -}}{{- end -}}
           {{- else -}}
             {{- with resources.GetMatch . -}}
               {{- $coverURL = .RelPermalink -}}
+              {{- if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") -}}{{- $coverRes = . -}}{{- end -}}
             {{- else -}}
               {{- $coverURL = relURL . -}}
             {{- end -}}
@@ -31,7 +40,20 @@
     <a href="{{ .RelPermalink }}" class="rpc{{- if $hasCover }} rpc--has-cover{{- end }}">
       {{- if $hasCover -}}
       <div class="rpc__cover" aria-hidden="true">
+        {{- if $coverRes -}}
+        {{- $fallback := $coverRes -}}
+        {{- if gt $coverRes.Width 560 }}{{ $fallback = $coverRes.Resize "560x" }}{{ end -}}
+        {{- $set := slice -}}
+        {{- range slice 360 560 -}}
+          {{- if le . $coverRes.Width -}}
+            {{- $v := $coverRes.Resize (printf "%dx webp" .) -}}
+            {{- $set = $set | append (printf "%s %dw" $v.RelPermalink .) -}}
+          {{- end -}}
+        {{- end -}}
+        <img src="{{ $fallback.RelPermalink }}"{{ with $set }} srcset="{{ delimit . ", " }}" sizes="(max-width: 760px) 100vw, 360px"{{ end }} width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="" loading="lazy" decoding="async">
+        {{- else -}}
         <img src="{{ $coverURL }}" alt="" loading="lazy" decoding="async">
+        {{- end -}}
       </div>
       {{- end -}}
       <div class="rpc__body">

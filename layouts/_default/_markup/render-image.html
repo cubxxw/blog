@@ -16,17 +16,24 @@
     <span class="img-unavailable__label">{{ if eq .Page.Language.Lang "zh" }}配图已失效{{ else }}Image no longer available{{ end }}{{ with $alt }} · {{ . }}{{ end }}</span>
   </figure>
 {{- else -}}
-{{- /* A page-bundle-relative bitmap (jpg/png, no scheme, not root-absolute,
-       no query string) is resolved as a page Resource so Hugo Pipes can
-       resize/compress it. Everything else — SVGs, absolute /static paths,
+{{- /* A local bitmap (jpg/png, no scheme, no query string) is resolved as a
+       resource so Hugo Pipes can resize/compress it: page-bundle-relative
+       paths via page Resources, root-absolute /images/… paths via the
+       static/images → assets/images module mount. Everything else — SVGs,
        external URLs, query-string destinations — keeps the old behaviour:
        emit the raw <img> and, where possible, its intrinsic width/height so
        the browser reserves the box before the lazy image loads (CLS). */ -}}
 {{- $isBitmap := or (hasSuffix (lower .Destination) ".jpg") (hasSuffix (lower .Destination) ".jpeg") (hasSuffix (lower .Destination) ".png") -}}
 {{- $bundleImg := false -}}
-{{- if and $isBitmap (not (hasPrefix $dest "http")) (not (hasPrefix $dest "/")) (not (in $dest "?")) -}}
-  {{- with .Page.Resources.Get .Destination -}}
-    {{- if eq .ResourceType "image" -}}{{- $bundleImg = . -}}{{- end -}}
+{{- if and $isBitmap (not (hasPrefix $dest "http")) (not (in $dest "?")) -}}
+  {{- if hasPrefix $dest "/" -}}
+    {{- with resources.Get (strings.TrimPrefix "/" $dest) -}}
+      {{- if eq .ResourceType "image" -}}{{- $bundleImg = . -}}{{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- with .Page.Resources.Get .Destination -}}
+      {{- if eq .ResourceType "image" -}}{{- $bundleImg = . -}}{{- end -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 {{- if $bundleImg -}}

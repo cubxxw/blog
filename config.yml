@@ -25,6 +25,27 @@ related:
       weight: 20
 googleAnalytics: G-FSWQC2Y01E
 pygmentsUseClasses: true
+# Mount static/images into assets as well, so templates can run Hugo Pipes
+# (resize/WebP) on the same files that markdown references as /images/…
+# absolute URLs. The static mount stays untouched — unprocessed URLs keep
+# working; processed variants land under /images/…_hu…. Declaring any mount
+# for the assets target root drops the default assets mount, hence the
+# explicit assets→assets line.
+module:
+  mounts:
+    # Declaring mounts disables the implicit per-language contentDir mounts,
+    # so they must be restated here (lang must match the languages: keys).
+    - source: content/en
+      target: content
+      lang: en
+    - source: content/zh
+      target: content
+      lang: zh
+    - source: assets
+      target: assets
+    - source: static/images
+      target: assets/images
+
 # Image processing defaults for Hugo Pipes (used by render-image hook on
 # page-bundle bitmaps). Lanczos gives the sharpest downscale; quality 78 is
 # a good size/clarity balance for photos; hint photo tunes the encoder.
