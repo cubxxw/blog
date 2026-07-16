@@ -492,6 +492,166 @@
   transform: none;
 }
 
+/* ─── Articles: filter/reveal reconciliation (kills the flicker) ───
+   The cards are scroll-reveal targets (micro-interactions REVEAL_SELECTOR).
+   Its observer only reveals cards that entered the viewport; the rest sit at
+   opacity:0/translateY until scrolled to. Filtering re-flows the grid, pulling
+   those never-seen cards into view where they replay their entrance one by one
+   — the flicker the user reported. articles-filter.js promotes every card to
+   .is-revealed and marks the grid .posts-grid--settled the instant a filter is
+   touched; from then on this rule pins the cards open so re-flows stay silent.
+   The `opacity: 1 !important` here wins over the reveal rule's plain
+   `opacity: 1` on both counts: !important beats a non-important declaration
+   outright, and the zzz- filename also loads this bundle last. */
+html.motion-reveal .posts-grid--settled .post-entry,
+.posts-grid--settled .post-entry {
+  opacity: 1 !important;
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms ease;
+}
+/* Pin transform to none for settled cards so a card without .is-revealed can't
+   keep the reveal hidden-state translateY/scale. Excludes mid-flip cards (they
+   carry an inline transform the FLIP animation is driving); their inline style
+   outranks this rule anyway, and the class keeps intent explicit. */
+.posts-grid--settled .post-entry:not(.posts-entry--flipping) {
+  transform: none;
+}
+
+/* FLIP: surviving cards glide to their new slot instead of teleporting.
+   articles-filter.js sets the inverted transform pre-paint, then clears it
+   next frame; this transition carries the card home. During the flip we drop
+   the hover transition so the two don't fight. */
+.post-entry.posts-entry--flipping {
+  transition: transform 360ms var(--ease-out) !important;
+  will-change: transform;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-entry.posts-entry--flipping { transition: none !important; }
+}
+
+/* ─── Articles: hero refinements ───────────────────────────────
+   Tie the count numeral and label into one baseline-aligned unit, and give
+   the stat a hair more presence so the page opens with a clear "how much is
+   here" signal (apple-design §16: wayfinding — answer "what's here" up front). */
+.posts-hero__stats {
+  gap: 10px;
+}
+.posts-hero__count {
+  font-size: 2.4rem;
+  font-weight: 700 !important;
+  line-height: 1;
+}
+/* The visible count animates when filters change — a gentle tick so the number
+   reads as "responding to you", not just silently swapping (apple-design §16:
+   status feedback). Driven by the .is-counting class from articles-filter.js. */
+.posts-hero__count.is-counting {
+  animation: posts-count-tick 260ms var(--ease-out);
+}
+@keyframes posts-count-tick {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(-3px); opacity: 0.6; }
+  100% { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .posts-hero__count.is-counting { animation: none; }
+}
+
+/* ─── Articles: filter bar density + rhythm ────────────────────
+   The bar carried a lot of vertical air. Tighten the row gaps and align the
+   mono labels to a fixed column so CATEGORY / TAGS / SORT read as a clean
+   left rail rather than ragged inline text. */
+.posts-filter {
+  padding: 14px 18px;
+  gap: 10px;
+}
+.posts-filter__label {
+  font-size: 0.7rem;
+  min-width: 62px;
+  align-self: center;
+}
+
+/* Chips: a touch more horizontal padding + a firmer active state so the
+   selected category never reads as ambiguous. */
+.posts-filter__chip {
+  padding: 6px 13px;
+  font-weight: 500;
+}
+.posts-filter__chip--active,
+.dark .posts-filter__chip--active {
+  font-weight: 600;
+  box-shadow: 0 1px 6px color-mix(in srgb, var(--color-accent) 22%, transparent);
+}
+
+/* The chip count sits inside a hairline pill so the number reads as metadata,
+   not part of the label — clearer scan of "how many in each bucket". */
+.posts-filter__chip-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-ink) 6%, transparent);
+  opacity: 1;
+}
+.posts-filter__chip--active .posts-filter__chip-count {
+  background: color-mix(in srgb, var(--color-paper) 24%, transparent);
+}
+
+/* ─── Articles: grid + cards ───────────────────────────────────
+   Slightly tighter minimum column so three cards hold on standard laptops
+   without stretching, and a calmer gutter. */
+.posts-grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+/* Card internals: build the hierarchy from the top row (badge + date, quiet
+   mono) → title (serif, the hero of the card) → summary (muted prose) →
+   tags (hairline). The title gets a hover accent so the whole card reads as
+   one link target. */
+.posts-grid .post-entry .entry-header h2 {
+  font-size: 1.12rem;
+  line-height: 1.4;
+  transition: color 160ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .posts-grid .post-entry:hover .entry-header h2 {
+    color: var(--color-accent);
+  }
+}
+.posts-grid .post-entry .entry-content p {
+  color: var(--color-ink-muted);
+}
+
+/* Kill the leftover teal left-border accent from custom.css — the editorial
+   card uses a full-border accent on hover, and a coloured left stripe here
+   both clashes and shifts layout. */
+.posts-grid .post-entry,
+.posts-grid .post-entry:hover,
+.posts-grid .post-entry[data-section]:hover {
+  border-left-width: 1px;
+  border-left-color: var(--color-rule);
+}
+@media (hover: hover) and (pointer: fine) {
+  .posts-grid .post-entry:hover,
+  .posts-grid .post-entry[data-section]:hover {
+    border-left-color: var(--color-accent);
+  }
+}
+
+/* ─── Articles: empty state ────────────────────────────────────
+   The bare "no articles match" text felt like an error. Frame it as a calm
+   editorial note and offer the way out (apple-design §16: never trap; give a
+   next step). The reset affordance is the existing Clear button in the bar. */
+.posts-grid--empty::after {
+  content: attr(data-no-results);
+  font-family: var(--font-prose);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-ink-muted);
+  opacity: 1;
+}
+
 /* ─── Search page ──────────────────────────────────────────── */
 #searchbox input#searchInput {
   font-family: var(--font-prose);

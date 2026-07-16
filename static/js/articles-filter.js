@@ -29,9 +29,86 @@
     sort: 'newest'
   };
 
+  /* ── Reveal-vs-filter reconciliation ─────────────────────────
+   * The cards double as scroll-reveal targets (micro-interactions.js:
+   * REVEAL_SELECTOR includes .post-entry). Its IntersectionObserver only
+   * un-hides cards that have *entered the viewport*; everything further down
+   * stays at the initial `opacity:0; translateY(16px)` state until scrolled
+   * to. Filtering re-flows the grid with display:none, which yanks those
+   * never-seen cards up into view — where they fire their entrance animation
+   * one by one. That is the flicker: a filter (reorganising existing content)
+   * masquerading as a first paint (content arriving).
+   *
+   * Fix: the moment the reader touches a filter control, promote every card
+   * to its revealed state and flag the grid so the reveal transition can't
+   * replay. From then on the grid is "settled" — re-flows are silent. */
+  var revealNeutralized = false;
+  function neutralizeReveal() {
+    if (revealNeutralized) return;
+    revealNeutralized = true;
+    articles.forEach(function (el) {
+      el.classList.add('is-revealed');
+    });
+    grid.classList.add('posts-grid--settled');
+  }
+
+  /* ── FLIP: smooth re-layout on filter / sort ─────────────────
+   * apple-design §3: reorganising on-screen content should move continuously,
+   * not jump. Capture each surviving card's box before the DOM mutates, then
+   * play the delta back as a transform that eases to zero — the cards glide
+   * to their new grid slots instead of teleporting. */
+  function measure() {
+    var rects = {};
+    articles.forEach(function (el, i) {
+      if (!el.classList.contains('posts-entry--hidden')) {
+        rects[i] = el.getBoundingClientRect();
+      }
+    });
+    return rects;
+  }
+
+  var FLIP_MS = 360; // must match the .posts-entry--flipping transition duration
+  function playFlip(prevRects) {
+    if (prefersReducedMotion) return;
+    articles.forEach(function (el, i) {
+      if (el.classList.contains('posts-entry--hidden')) return;
+      var prev = prevRects[i];
+      if (!prev) return; // newly shown card — let it cross-fade in, no slide
+      var next = el.getBoundingClientRect();
+      var dx = prev.left - next.left;
+      var dy = prev.top - next.top;
+      if (!dx && !dy) return;
+      // Cancel any in-flight flip on this card so a rapid second filter doesn't
+      // strand the previous cleanup timer (and its flipping class).
+      if (el.__flipTimer) clearTimeout(el.__flipTimer);
+      el.classList.add('posts-entry--flipping');
+      el.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+      // Next frame: release to the identity transform so the card eases home.
+      requestAnimationFrame(function () {
+        el.style.transform = '';
+      });
+      // Timer-based cleanup, not transitionend: a zero-delta or coalesced frame
+      // can swallow the event, permanently stranding the flipping class (which
+      // would then suppress the card's hover transition). A timer always fires.
+      el.__flipTimer = setTimeout(function () {
+        // Removing the class drops both the transform transition and the
+        // will-change (both declared on .posts-entry--flipping in CSS); we only
+        // need to also clear the inline transform we set above.
+        el.classList.remove('posts-entry--flipping');
+        el.style.transform = '';
+        el.__flipTimer = null;
+      }, FLIP_MS + 60);
+    });
+  }
+
   /* ── Filtering & sorting ─────────────────────────────────── */
 
-  function applyFilters() {
+  function applyFilters(animate) {
+    // Only freeze the reveal cascade when the user is actually driving a
+    // filter (animate=true). The silent initial paint leaves the cascade
+    // intact so a fresh visitor still gets the on-scroll entrance.
+    if (animate) neutralizeReveal();
+    var prevRects = animate ? measure() : null;
     var visible = 0;
 
     articles.forEach(function (el) {
@@ -51,10 +128,28 @@
 
       var show = catMatch && tagMatch;
       el.classList.toggle('posts-entry--hidden', !show);
+      // Cards that were hidden and now show simply appear in place: the grid is
+      // already .settled (opacity pinned to 1), so there's no flicker, and the
+      // surviving cards' FLIP glide carries the sense of motion. An extra
+      // per-card entrance animation here proved fragile (stranded classes,
+      // mid-flight cancellation) for little visible gain, so it's intentionally
+      // omitted — reorganising content stays calm, not busy.
       if (show) visible++;
     });
 
-    if (countEl) countEl.textContent = visible;
+    if (prevRects) playFlip(prevRects);
+
+    if (countEl) {
+      var changed = countEl.textContent !== String(visible);
+      countEl.textContent = visible;
+      // Tick the numeral when it actually changes and the user drove it —
+      // status feedback that the count is responding (apple-design §16).
+      if (changed && animate && !prefersReducedMotion) {
+        countEl.classList.remove('is-counting');
+        void countEl.offsetWidth; // restart the keyframes cleanly
+        countEl.classList.add('is-counting');
+      }
+    }
 
     grid.classList.toggle('posts-grid--empty', visible === 0);
 
@@ -66,7 +161,9 @@
     }
   }
 
-  function applySorting() {
+  function applySorting(animate) {
+    if (animate) neutralizeReveal();
+    var prevRects = animate ? measure() : null;
     var sorted = articles.slice().sort(function (a, b) {
       var da = a.getAttribute('data-date');
       var db = b.getAttribute('data-date');
@@ -76,6 +173,8 @@
     sorted.forEach(function (el) {
       grid.appendChild(el);
     });
+
+    if (prevRects) playFlip(prevRects);
   }
 
   /* ── URL state (shareable filters) ───────────────────────── */
@@ -211,7 +310,7 @@
         b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
-      applyFilters();
+      applyFilters(true);
       syncURL();
       scrollToResultsIfStuck();
     });
@@ -232,7 +331,7 @@
         btn.setAttribute('aria-pressed', 'false');
       }
 
-      applyFilters();
+      applyFilters(true);
       syncURL();
       scrollToResultsIfStuck();
     });
@@ -241,7 +340,7 @@
   if (sortSelect) {
     sortSelect.addEventListener('change', function () {
       state.sort = sortSelect.value;
-      applySorting();
+      applySorting(true);
       syncURL();
     });
   }
@@ -264,8 +363,8 @@
         b.setAttribute('aria-pressed', 'false');
       });
 
-      applySorting();
-      applyFilters();
+      applySorting(false);
+      applyFilters(true);
       syncURL();
     });
   }
@@ -273,6 +372,13 @@
   /* ── Init ────────────────────────────────────────────────── */
 
   initFromURL();
-  if (state.sort !== 'newest') applySorting();
-  applyFilters();
+  // Initial paint runs silently: no FLIP, and the reveal cascade is left
+  // intact so a fresh visitor still gets the on-scroll entrance. The grid
+  // only "settles" (reveal frozen) once a filter is actually touched.
+  if (state.sort !== 'newest') applySorting(false);
+  // If the URL restored a filter, we're already reorganising content on
+  // load — neutralise reveal up front so restored results don't flicker.
+  var hasInitialFilter = state.category !== 'all' || state.tags.length > 0;
+  if (hasInitialFilter) neutralizeReveal();
+  applyFilters(false);
 })();

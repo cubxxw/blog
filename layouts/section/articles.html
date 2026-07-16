@@ -90,9 +90,14 @@
         <button class="posts-filter__chip" data-category="growth" aria-pressed="false">
           Growth & Life <span class="posts-filter__chip-count">{{ $growthCount }}</span>
         </button>
+        {{- /* Only surface a section chip when it actually holds articles —
+               an empty bucket (e.g. AI Projects at 0) would filter to a blank
+               grid, a dead end (apple-design §16: don't offer paths to nowhere). */}}
+        {{- if gt $projectsCount 0 }}
         <button class="posts-filter__chip" data-category="projects" aria-pressed="false">
           AI Projects <span class="posts-filter__chip-count">{{ $projectsCount }}</span>
         </button>
+        {{- end }}
       </div>
       <button type="button" class="posts-filter__toggle" id="filter-toggle"
               aria-expanded="false" aria-controls="filter-collapsible" hidden>
