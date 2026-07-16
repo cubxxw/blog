@@ -13,6 +13,9 @@
 {{- else -}}
   {{- $pages = $pctx.Pages -}}
 {{- end -}}
+{{- /* RSS must be reverse-chronological: default page order puts weighted
+       (site-pinned) pages first, which buries newer posts in the feed. */ -}}
+{{- $pages = $pages.ByDate.Reverse -}}
 {{- $limit := site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
   {{- $pages = $pages | first $limit -}}
