@@ -4,53 +4,71 @@
 {{- $sectionPages := where .RegularPages "Lang" $lang }}
 {{- $growthPages := $sectionPages.ByDate.Reverse }}
 {{- $featured := first 3 $growthPages }}
+{{- $earliest := "" }}
+{{- if $growthPages }}{{ $earliest = index (sort $growthPages "Date" "asc") 0 }}{{ end }}
+{{- $firstYear := 0 }}
+{{- $daysGrowing := 0 }}
+{{- $yearCount := 0 }}
+{{- if $earliest }}
+  {{- $firstYear = $earliest.Date.Year }}
+  {{- $daysGrowing = div (sub now.Unix $earliest.Date.Unix) 86400 }}
+  {{- $years := slice }}
+  {{- range $growthPages }}{{ $y := .Date.Year }}{{ if not (in $years $y) }}{{ $years = $years | append $y }}{{ end }}{{ end }}
+  {{- $yearCount = len $years }}
+{{- end }}
 
-<div class="eig-page">
+<div class="eig-page gr-page">
 
-  {{/* ── Hero ── */}}
-  <header class="eig-hero">
-    <div class="eig-hero__eyebrow">
-      {{ if $isZh }}成长与生活{{ else }}Growth & Life{{ end }}
-    </div>
-    <h1 class="eig-hero__title">
-      {{- if $isZh }}
-        <span class="eig-hero__plain">记录</span>
-        <span class="eig-hero__accent">每一步蜕变</span>
-      {{- else }}
-        <span class="eig-hero__plain">Documenting</span>
-        <span class="eig-hero__accent">Every Evolution</span>
-      {{- end }}
-    </h1>
-    {{/* Answer-first lede — rendered from _index.md body so crawlers and AI
-         engines get a citable definition of what this section is. */}}
-    <div class="eig-hero__lede">
-      {{- if .Content }}{{ .Content }}
-      {{- else }}<p>{{ .Description }}</p>
-      {{- end }}
-    </div>
-    <div class="eig-hero__stats">
-      <div class="eig-stat">
-        <span class="eig-stat__num">{{ len $growthPages }}</span>
-        <span class="eig-stat__label">{{ if $isZh }}文章{{ else }}Articles{{ end }}</span>
+  {{/* ── Hero: a living record, not a static archive ── */}}
+  <header class="eig-hero gr-hero">
+    <div class="gr-hero__body">
+      <div class="eig-hero__eyebrow">
+        {{ if $isZh }}成长与生活{{ else }}Growth & Life{{ end }}
       </div>
-      {{- $topicTags := slice }}
-      {{- range $growthPages }}
-        {{- range .Params.tags }}
-          {{- $topicTags = $topicTags | append . }}
+      <h1 class="eig-hero__title gr-hero__title">
+        {{- if $isZh }}
+          <span class="eig-hero__plain">不是写出来的，</span>
+          <span class="eig-hero__accent gr-hero__accent">是长出来的。</span>
+        {{- else }}
+          <span class="eig-hero__plain">Not written.</span>
+          <span class="eig-hero__accent gr-hero__accent">Grown.</span>
         {{- end }}
-      {{- end }}
-      {{- $uniqueTags := $topicTags | uniq }}
-      <div class="eig-stat">
-        <span class="eig-stat__num">{{ len $uniqueTags }}</span>
-        <span class="eig-stat__label">{{ if $isZh }}主题{{ else }}Topics{{ end }}</span>
+      </h1>
+      {{/* Answer-first lede — rendered from _index.md body so crawlers and AI
+           engines get a citable definition of what this section is. */}}
+      <div class="eig-hero__lede">
+        {{- if .Content }}{{ .Content }}
+        {{- else }}<p>{{ .Description }}</p>
+        {{- end }}
       </div>
-      {{- if $growthPages }}
-      {{- $earliest := (index (sort $growthPages "Date" "asc") 0) }}
-      <div class="eig-stat">
-        <span class="eig-stat__num">{{ $earliest.Date.Format "2006" }}</span>
-        <span class="eig-stat__label">{{ if $isZh }}起始{{ else }}Since{{ end }}</span>
+      <div class="eig-hero__stats gr-hero__stats">
+        <div class="eig-stat">
+          <span class="eig-stat__num">{{ len $growthPages }}</span>
+          <span class="eig-stat__label">{{ if $isZh }}篇记录{{ else }}Entries{{ end }}</span>
+        </div>
+        {{- if $earliest }}
+        <div class="eig-stat">
+          <span class="eig-stat__num">{{ $daysGrowing }}</span>
+          <span class="eig-stat__label">{{ if $isZh }}天生长{{ else }}Days growing{{ end }}</span>
+        </div>
+        <div class="eig-stat">
+          <span class="eig-stat__num">{{ $yearCount }}</span>
+          <span class="eig-stat__label">{{ if $isZh }}圈年轮{{ else }}Rings{{ end }}</span>
+        </div>
+        {{- end }}
       </div>
-      {{- end }}
+    </div>
+    {{/* A sprout that draws itself on load — the section's living signature.
+         Animation is gated behind html.motion-reveal (see extend_head.html);
+         without JS / with reduced motion it renders fully grown, static. */}}
+    <div class="gr-sprout" aria-hidden="true">
+      <svg viewBox="0 0 140 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="gr-sprout__stem" d="M74 214 C 70 176, 76 148, 71 116 C 67 90, 73 62, 69 30 C 68 22, 70 14, 74 8" stroke-width="2.5" stroke-linecap="round"/>
+        <path class="gr-sprout__leaf gr-sprout__leaf--1" d="M72 160 C 52 156, 38 142, 36 122 C 58 124, 72 140, 72 160 Z"/>
+        <path class="gr-sprout__leaf gr-sprout__leaf--2" d="M71 122 C 91 116, 103 100, 104 80 C 82 84, 70 102, 71 122 Z"/>
+        <path class="gr-sprout__leaf gr-sprout__leaf--3" d="M70 78 C 52 74, 40 62, 38 44 C 58 46, 70 60, 70 78 Z"/>
+        <path class="gr-sprout__bud" d="M74 8 C 80 12, 82 20, 78 26 C 72 22, 70 13, 74 8 Z"/>
+      </svg>
     </div>
   </header>
 
@@ -79,15 +97,23 @@
   <section class="eig-featured-section">
     <div class="eig-section-label">
       <span class="eig-dot"></span>
-      {{ if $isZh }}近期精选{{ else }}Recent Highlights{{ end }}
+      {{ if $isZh }}新长出来的{{ else }}Freshly Grown{{ end }}
     </div>
     <div class="eig-featured-grid">
       {{- range $i, $p := $featured }}
       <article class="eig-featured-card {{ if eq $i 0 }}eig-featured-card--primary{{ end }}">
         <div class="eig-featured-card__inner">
-          {{- with $p.Params.tags }}
-          <span class="eig-chip">{{ index . 0 }}</span>
-          {{- end }}
+          <div class="gr-card-meta">
+            {{- with $p.Params.tags }}
+            <span class="eig-chip">{{ index . 0 }}</span>
+            {{- end }}
+            {{- with $p.Params.maturity }}
+            {{- $mLabel := dict "seedling" (cond $isZh "萌芽" "Seedling") "budding" (cond $isZh "成长中" "Budding") "evergreen" (cond $isZh "常青" "Evergreen") }}
+            {{- with index $mLabel . }}
+            <span class="gr-maturity gr-maturity--{{ $p.Params.maturity }}"><i class="gr-maturity__leaf" aria-hidden="true"></i>{{ . }}</span>
+            {{- end }}
+            {{- end }}
+          </div>
           <h2 class="eig-featured-card__title">
             <a href="{{ $p.Permalink }}">{{ $p.Title }}</a>
           </h2>
@@ -105,6 +131,76 @@
         </div>
         <a class="eig-card-cover" href="{{ $p.Permalink }}" aria-label="{{ $p.Title | plainify }}"></a>
       </article>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{/* ── The Growing Calendar: monthly thought-notes as a month-by-month
+       germination grid. Continuity itself is the proof of life. ── */}}
+  {{- $notes := dict }}
+  {{- $noteKeys := slice }}
+  {{- range $growthPages }}
+    {{- $isNote := false }}
+    {{- with .Params.tags }}{{ if in . "Monthly Notes" }}{{ $isNote = true }}{{ end }}{{ end }}
+    {{- if and (not $isNote) .File }}{{ if strings.Contains .File.BaseFileName "thought-notes" }}{{ $isNote = true }}{{ end }}{{ end }}
+    {{- if $isNote }}
+      {{- $k := .Date.Format "2006-01" }}
+      {{- $notes = merge $notes (dict $k .) }}
+      {{- $noteKeys = $noteKeys | append $k }}
+    {{- end }}
+  {{- end }}
+  {{- if gt (len $noteKeys) 2 }}
+  {{- $noteKeys = sort $noteKeys }}
+  {{- $firstKey := index $noteKeys 0 }}
+  {{- /* Derive year/month ints from the page dates, never from `int "08"`
+        (Hugo's cast parses zero-padded strings as octal and fails). */}}
+  {{- $firstNote := index $notes $firstKey }}
+  {{- $fy := $firstNote.Date.Year }}
+  {{- $fm := int ($firstNote.Date.Format "1") }}
+  {{- $firstIdx := add (mul $fy 12) $fm }}
+  {{- $lastKey := index $noteKeys (sub (len $noteKeys) 1) }}
+  {{- $lastNote := index $notes $lastKey }}
+  {{- $lastIdx := add (mul $lastNote.Date.Year 12) (int ($lastNote.Date.Format "1")) }}
+  {{- $nowIdx := add (mul now.Year 12) (int (now.Format "1")) }}
+  {{- $noteCount := len $noteKeys }}
+  {{- $unbroken := eq $noteCount (add (sub $lastIdx $firstIdx) 1) }}
+  <section class="gr-garden" aria-label="{{ if $isZh }}月度思考生长历{{ else }}Monthly notes calendar{{ end }}">
+    <div class="eig-section-label">
+      <span class="eig-dot"></span>
+      {{ if $isZh }}生长历 · 月度思考{{ else }}Growing Calendar · Monthly Notes{{ end }}
+    </div>
+    <p class="gr-garden__caption">
+      {{- if $isZh -}}
+        自 {{ $fy }} 年 {{ $fm }} 月起，{{ if $unbroken }}连续 {{ $noteCount }} 个月未曾间断{{ else }}已记录 {{ $noteCount }} 个月{{ end }}——每月一篇，像一株不停抽枝的植物。
+      {{- else -}}
+        Since {{ $firstNote.Date.Format "January 2006" }}, {{ if $unbroken }}{{ $noteCount }} consecutive months without a gap{{ else }}{{ $noteCount }} months recorded{{ end }} — one note a month, like a plant that never stops branching.
+      {{- end -}}
+    </p>
+    <div class="gr-garden__grid">
+      {{- range $y := seq $fy now.Year }}
+      <div class="gr-garden__year">
+        <span class="gr-garden__yearlabel">{{ $y }}</span>
+        <div class="gr-garden__months">
+          {{- range $m := seq 1 12 }}
+          {{- $idx := add (mul $y 12) $m }}
+          {{- $key := printf "%d-%02d" $y $m }}
+          {{- $note := index $notes $key }}
+          {{- if $note }}
+          <a class="gr-cell gr-cell--filled" href="{{ $note.Permalink }}" title="{{ $note.Title | plainify }}" style="--gr-cell-i: {{ sub $idx $firstIdx }}">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14 C 8 10, 8 8, 8 6 M8 8 C 5.6 7.6, 4 5.8, 3.8 3.4 C 6.4 3.8, 8 5.6, 8 8 M8 6 C 10.2 5.6, 11.8 4, 12 1.8 C 9.6 2.2, 8 3.8, 8 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <span class="gr-cell__m">{{ $m }}</span>
+          </a>
+          {{- else if or (lt $idx $firstIdx) (gt $idx $nowIdx) }}
+          <span class="gr-cell gr-cell--out" aria-hidden="true"></span>
+          {{- else if eq $idx $nowIdx }}
+          <span class="gr-cell gr-cell--now" title="{{ if $isZh }}这个月还在生长{{ else }}This month is still growing{{ end }}"><span class="gr-cell__m">{{ $m }}</span></span>
+          {{- else }}
+          <span class="gr-cell gr-cell--missed" title="{{ $key }}"><span class="gr-cell__m">{{ $m }}</span></span>
+          {{- end }}
+          {{- end }}
+        </div>
+      </div>
       {{- end }}
     </div>
   </section>
@@ -148,23 +244,59 @@
   </section>
   {{- end }}
 
-  {{/* ── Full Archive ── */}}
-  <section class="eig-archive">
-    <div class="eig-section-label">
-      <span class="eig-dot"></span>
-      {{ if $isZh }}全部归档{{ else }}Full Archive{{ end }}
+  {{/* ── Growth Rings: the full archive as a living spine.
+       Newest entry sits at the growing tip; every year is one ring. ── */}}
+  <section class="eig-archive gr-archive">
+    <div class="gr-archive__head">
+      <div class="eig-section-label">
+        <span class="eig-dot"></span>
+        {{ if $isZh }}生长年轮{{ else }}Growth Rings{{ end }}
+      </div>
+      <div class="gr-seasons" aria-hidden="true">
+        <span class="gr-seasons__item gr-seasons__item--spring">{{ if $isZh }}春{{ else }}Spr{{ end }}</span>
+        <span class="gr-seasons__item gr-seasons__item--summer">{{ if $isZh }}夏{{ else }}Sum{{ end }}</span>
+        <span class="gr-seasons__item gr-seasons__item--autumn">{{ if $isZh }}秋{{ else }}Aut{{ end }}</span>
+        <span class="gr-seasons__item gr-seasons__item--winter">{{ if $isZh }}冬{{ else }}Win{{ end }}</span>
+      </div>
     </div>
 
     {{- $paginator := .Paginate $growthPages }}
     {{- $currentYear := "" }}
-    <div class="eig-timeline">
+    <div class="eig-timeline gr-timeline">
+      {{- if eq $paginator.PageNumber 1 }}
+      <div class="gr-tip">
+        <span class="gr-tip__node" aria-hidden="true"></span>
+        <span class="gr-tip__label">{{ if $isZh }}此刻，仍在生长{{ else }}Still growing, right now{{ end }}</span>
+      </div>
+      {{- end }}
       {{- range $paginator.Pages }}
       {{- $year := .Date.Format "2006" }}
       {{- if ne $year $currentYear }}
       {{- $currentYear = $year }}
-      <div class="eig-year-marker">{{ $year }}</div>
+      {{- $ringN := 1 }}
+      {{- if gt $firstYear 0 }}{{ $ringN = add (sub (int $year) $firstYear) 1 }}{{ end }}
+      {{- if gt $ringN 5 }}{{ $ringN = 5 }}{{ end }}
+      {{- if lt $ringN 1 }}{{ $ringN = 1 }}{{ end }}
+      <div class="eig-year-marker gr-year">
+        <svg class="gr-year__rings" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="2.5" class="gr-year__core"/>
+          {{- range seq 1 $ringN }}
+          <circle cx="20" cy="20" r="{{ add 3 (mul . 3.6) }}" class="gr-year__ring"/>
+          {{- end }}
+        </svg>
+        <span class="gr-year__num">{{ $year }}</span>
+        <span class="gr-year__ordinal">
+          {{- if $isZh }}第 {{ add (sub (int $year) $firstYear) 1 }} 圈{{ else }}Ring {{ add (sub (int $year) $firstYear) 1 }}{{ end -}}
+        </span>
+      </div>
       {{- end }}
-      <article class="eig-row">
+      {{- $m := int (.Date.Format "1") }}
+      {{- $season := "winter" }}
+      {{- if and (ge $m 3) (le $m 5) }}{{ $season = "spring" }}
+      {{- else if and (ge $m 6) (le $m 8) }}{{ $season = "summer" }}
+      {{- else if and (ge $m 9) (le $m 11) }}{{ $season = "autumn" }}
+      {{- end }}
+      <article class="eig-row gr-row gr-row--{{ $season }}">
         <time class="eig-row__date">{{ .Date.Format "01-02" }}</time>
         <div class="eig-row__body">
           {{- with .Params.tags }}
@@ -241,4 +373,30 @@
       "mainEntity" (dict "@type" "ItemList" "numberOfItems" (len $items) "itemListElement" $items)
 }}
 <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+
+{{/* Reveal-on-scroll for the growth spine. Self-gated: rows are only hidden
+     AFTER this script tags the timeline with .gr-js, so no-JS visitors and
+     script failures never see blank content. Reduced motion opts out. */}}
+<script>
+(function () {
+  try {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var tl = document.querySelector('.gr-timeline');
+    if (!tl) return;
+    var items = tl.querySelectorAll('.gr-row, .gr-year');
+    if (!items.length) return;
+    tl.classList.add('gr-js');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('gr-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+    items.forEach(function (el) { io.observe(el); });
+  } catch (e) {}
+})();
+</script>
 {{- end }}

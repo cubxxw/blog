@@ -1,0 +1,505 @@
+/* =============================================================
+   GROWTH SECTION — “不是写出来的，是长出来的。”
+   A living-record identity layered on the editorial (eig-) base:
+
+   · Fraunces optical serif for display — organic, warm, already
+     loaded site-wide but previously unused here (--ei-display
+     pointed at Manrope, which is never shipped).
+   · A sprout that draws itself on page load (html.motion-reveal).
+   · The Growing Calendar: monthly notes as a germination grid.
+   · The archive as a growth spine — year markers carry real
+     tree rings (2023 = ring 1), entry nodes are tinted by season,
+     and the newest entry sits under a breathing growing tip.
+
+   Loads after editorial-sections.css (alphabetical bundle order),
+   so the gr- layer may override eig- defaults for this page only.
+   ============================================================= */
+
+.gr-page {
+  /* Display face: Fraunces for latin, Noto Serif SC for CJK. */
+  --gr-display: 'Fraunces', 'Noto Serif SC', Georgia, serif;
+
+  /* Seasons — node tints along the spine. Light theme. */
+  --gr-spring: #4c9d68;
+  --gr-summer: #22705a;
+  --gr-autumn: #b07d33;
+  --gr-winter: #5b7d94;
+
+  /* Spine geometry */
+  --gr-spine-x: 10px;
+}
+body.dark .gr-page {
+  --gr-spring: #7ed09b;
+  --gr-summer: #4ebd82;
+  --gr-autumn: #d9a659;
+  --gr-winter: #8fb3c9;
+}
+
+/* ── Display typography: give the page a voice ── */
+.gr-page .eig-hero__title,
+.gr-page .eig-stat__num,
+.gr-page .eig-featured-card__title,
+.gr-page .eig-domain__name,
+.gr-page .eig-series__name {
+  font-family: var(--gr-display);
+}
+.gr-page .eig-hero__title {
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.gr-page .eig-stat__num {
+  font-weight: 700;
+}
+
+/* ── Hero ── */
+.gr-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--ei-s5);
+}
+.gr-hero__body {
+  flex: 1;
+  min-width: 0;
+}
+/* Faint organic wash behind the hero — atmosphere, not decoration. */
+.gr-hero::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 420px;
+  height: 420px;
+  border-radius: 46% 54% 60% 40% / 48% 42% 58% 52%;
+  background: radial-gradient(closest-side, var(--ei-green-wash), transparent 72%);
+  pointer-events: none;
+}
+
+.gr-hero__accent {
+  position: relative;
+  font-style: italic;
+}
+:lang(zh) .gr-hero__accent { font-style: normal; }
+/* Hand-drawn underline beneath the accent line. */
+.gr-hero__accent::after {
+  content: "";
+  display: block;
+  width: min(280px, 60%);
+  height: 8px;
+  margin-top: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 8' preserveAspectRatio='none'%3E%3Cpath d='M2 5.5 C 60 2.5, 130 6.5, 200 3.5 C 235 2, 262 4.5, 278 3.5' fill='none' stroke='%232d6a4f' stroke-width='2.4' stroke-linecap='round' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+body.dark .gr-hero__accent::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 8' preserveAspectRatio='none'%3E%3Cpath d='M2 5.5 C 60 2.5, 130 6.5, 200 3.5 C 235 2, 262 4.5, 278 3.5' fill='none' stroke='%234ebd82' stroke-width='2.4' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* ── The sprout ── */
+.gr-sprout {
+  flex: none;
+  width: 128px;
+  margin-bottom: var(--ei-s2);
+  pointer-events: none;
+}
+.gr-sprout svg { display: block; width: 100%; height: auto; }
+.gr-sprout__stem { stroke: var(--ei-green); }
+.gr-sprout__leaf,
+.gr-sprout__bud {
+  fill: var(--ei-green);
+  opacity: 0.82;
+}
+.gr-sprout__leaf--2 { opacity: 0.6; }
+.gr-sprout__bud    { opacity: 0.9; }
+
+/* Draw-on-load, only when the site-wide motion gate is open.
+   Without JS or with reduced motion the sprout is simply there —
+   fully grown, no dependency on animation to become visible. */
+html.motion-reveal .gr-sprout__stem {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: gr-stem-draw 1.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+html.motion-reveal .gr-sprout__leaf,
+html.motion-reveal .gr-sprout__bud {
+  transform: scale(0);
+  animation: gr-leaf-unfurl 0.9s cubic-bezier(0.34, 1.4, 0.44, 1) forwards;
+}
+html.motion-reveal .gr-sprout__leaf--1 { transform-origin: 72px 160px; animation-delay: 0.9s; }
+html.motion-reveal .gr-sprout__leaf--2 { transform-origin: 71px 122px; animation-delay: 1.15s; }
+html.motion-reveal .gr-sprout__leaf--3 { transform-origin: 70px 78px;  animation-delay: 1.4s; }
+html.motion-reveal .gr-sprout__bud    { transform-origin: 74px 12px;  animation-delay: 1.7s; }
+
+@keyframes gr-stem-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes gr-leaf-unfurl {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+/* ── Featured card meta row (chip + maturity) ── */
+.gr-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.gr-maturity {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--ei-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ei-text-3);
+}
+.gr-maturity__leaf {
+  width: 7px;
+  height: 7px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--gr-spring);
+}
+.gr-maturity--seedling  .gr-maturity__leaf { background: var(--gr-spring); opacity: 0.7; }
+.gr-maturity--budding   .gr-maturity__leaf { background: var(--gr-spring); }
+.gr-maturity--evergreen .gr-maturity__leaf { background: var(--gr-summer); }
+
+/* ── The Growing Calendar ── */
+.gr-garden {
+  margin-bottom: var(--ei-s7);
+  padding-top: var(--ei-s5);
+  border-top: 1px solid var(--ei-divide);
+}
+.gr-garden__caption {
+  margin: calc(-1 * var(--ei-s2)) 0 var(--ei-s4);
+  max-width: 620px;
+  font-family: var(--ei-serif);
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--ei-text-2);
+}
+.gr-garden__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.gr-garden__year {
+  display: flex;
+  align-items: center;
+  gap: var(--ei-s3);
+}
+.gr-garden__yearlabel {
+  flex: none;
+  width: 58px;
+  font-family: var(--gr-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ei-text-3);
+  font-variant-numeric: tabular-nums;
+}
+.gr-garden__months {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 40px));
+  gap: 8px;
+  flex: 1;
+}
+.gr-cell {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  border-radius: 9px;
+  text-decoration: none;
+}
+.gr-cell__m {
+  font-family: var(--ei-label);
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ei-text-3);
+}
+.gr-cell--filled {
+  background: var(--ei-green-wash);
+  color: var(--ei-green);
+  transition: transform var(--ei-dur) var(--ei-ease),
+              box-shadow var(--ei-dur) var(--ei-ease),
+              background var(--ei-dur) var(--ei-ease);
+}
+.gr-cell--filled svg {
+  width: 15px;
+  height: 15px;
+}
+.gr-cell--filled .gr-cell__m { color: var(--ei-green); opacity: 0.75; }
+.gr-cell--filled:hover {
+  transform: translateY(-3px);
+  background: var(--ei-green-glow);
+  box-shadow: var(--ei-shadow-1);
+}
+.gr-cell--missed {
+  border: 1px dashed var(--ei-divide);
+}
+.gr-cell--missed .gr-cell__m { opacity: 0.55; }
+/* The current month: not yet written, not missed — still growing. */
+.gr-cell--now {
+  border: 1.5px solid var(--ei-green);
+}
+.gr-cell--now .gr-cell__m { color: var(--ei-green); }
+html.motion-reveal .gr-cell--now {
+  animation: gr-cell-breathe 3.2s ease-in-out infinite;
+}
+@keyframes gr-cell-breathe {
+  0%, 100% { border-color: var(--ei-green); }
+  50%      { border-color: var(--ei-green-glow); }
+}
+.gr-cell--out {
+  border-radius: 9px;
+  background: transparent;
+}
+
+/* Cells germinate in sequence on load — one grid-wide sweep. */
+html.motion-reveal .gr-cell--filled {
+  opacity: 0;
+  animation: gr-germinate 0.5s var(--ei-ease) forwards;
+  animation-delay: calc(0.35s + var(--gr-cell-i, 0) * 45ms);
+}
+@keyframes gr-germinate {
+  from { opacity: 0; transform: translateY(6px) scale(0.85); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Archive: the growth spine ── */
+.gr-archive__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ei-s3);
+  flex-wrap: wrap;
+}
+.gr-seasons {
+  display: flex;
+  gap: 14px;
+}
+.gr-seasons__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--ei-label);
+  font-size: 11px;
+  color: var(--ei-text-3);
+}
+.gr-seasons__item::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.gr-seasons__item--spring::before { background: var(--gr-spring); }
+.gr-seasons__item--summer::before { background: var(--gr-summer); }
+.gr-seasons__item--autumn::before { background: var(--gr-autumn); }
+.gr-seasons__item--winter::before { background: var(--gr-winter); }
+
+/* Spine line: alive at the top, fading into the past below. */
+.gr-timeline {
+  position: relative;
+  padding-left: 34px;
+}
+.gr-timeline::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 0;
+  left: var(--gr-spine-x);
+  width: 2px;
+  border-radius: 2px;
+  background: var(--ei-divide);
+  background: linear-gradient(180deg,
+    var(--ei-green) 0,
+    color-mix(in srgb, var(--ei-green) 45%, transparent) 120px,
+    var(--ei-divide) 380px,
+    var(--ei-divide) calc(100% - 60px),
+    transparent 100%);
+}
+
+/* Growing tip — the newest point of the record, breathing. */
+.gr-tip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 2px 0 var(--ei-s3);
+}
+.gr-tip__node {
+  position: absolute;
+  top: 5px;
+  left: calc(-34px + var(--gr-spine-x) - 4px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ei-green);
+}
+.gr-tip__node::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ei-green);
+  opacity: 0;
+}
+html.motion-reveal .gr-tip__node::after {
+  animation: gr-ripple 2.6s ease-out infinite;
+}
+@keyframes gr-ripple {
+  0%   { transform: scale(0.5); opacity: 0.7; }
+  70%  { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.gr-tip__label {
+  font-family: var(--ei-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ei-green);
+}
+
+/* Year markers → rings. Replaces the flat watermark numeral. */
+.gr-year.eig-year-marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: unset;
+  color: unset;
+  letter-spacing: unset;
+  pointer-events: none;
+  padding: var(--ei-s5) 0 var(--ei-s2);
+}
+.gr-year__rings { flex: none; margin-left: -34px; }
+.gr-year__core { fill: var(--ei-green); }
+.gr-year__ring {
+  fill: none;
+  stroke: var(--ei-green);
+  stroke-width: 1.3;
+}
+.gr-year__ring:nth-of-type(2) { opacity: 0.75; }
+.gr-year__ring:nth-of-type(3) { opacity: 0.55; }
+.gr-year__ring:nth-of-type(4) { opacity: 0.38; }
+.gr-year__ring:nth-of-type(5) { opacity: 0.25; }
+.gr-year__ring:nth-of-type(6) { opacity: 0.16; }
+.gr-year__num {
+  font-family: var(--gr-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ei-text);
+}
+.gr-year__ordinal {
+  font-family: var(--ei-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ei-text-3);
+  padding-top: 6px;
+}
+
+/* Season node on every entry. */
+.gr-row.eig-row::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--ei-s3) + 7px);
+  left: calc(-34px + var(--gr-spine-x) - 2.5px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ei-text-3);
+  transition: transform var(--ei-dur) var(--ei-ease),
+              box-shadow var(--ei-dur) var(--ei-ease);
+}
+.gr-row--spring.eig-row::before { background: var(--gr-spring); }
+.gr-row--summer.eig-row::before { background: var(--gr-summer); }
+.gr-row--autumn.eig-row::before { background: var(--gr-autumn); }
+.gr-row--winter.eig-row::before { background: var(--gr-winter); }
+.gr-row.eig-row:hover::before {
+  transform: scale(1.5);
+  box-shadow: 0 0 0 4px var(--ei-green-wash);
+  /* Base .eig-row:hover shifts the border box left by --ei-s2 (negative
+     margin); push the node back the same amount so it stays on the spine. */
+  left: calc(-34px + var(--gr-spine-x) - 2.5px + var(--ei-s2));
+}
+
+/* Rows sprout as they enter the viewport. Hidden state is applied only
+   after JS tags the container with .gr-js (see growth.html), so nothing
+   can ever be stranded invisible. */
+.gr-timeline.gr-js .gr-row,
+.gr-timeline.gr-js .gr-year {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.gr-timeline.gr-js .gr-row.gr-in,
+.gr-timeline.gr-js .gr-year.gr-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s var(--ei-ease), transform 0.55s var(--ei-ease);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .gr-sprout { width: 96px; }
+}
+@media (max-width: 760px) {
+  .gr-hero { align-items: flex-start; }
+  .gr-sprout { display: none; }
+  .gr-hero::before { width: 260px; height: 260px; right: -80px; }
+  .gr-garden__year {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .gr-garden__months {
+    grid-template-columns: repeat(6, minmax(0, 44px));
+    width: 100%;
+  }
+  .gr-cell--out { display: none; }
+  .gr-timeline { padding-left: 26px; }
+  .gr-page { --gr-spine-x: 6px; }
+  .gr-tip__node { left: calc(-26px + var(--gr-spine-x) - 4px); }
+  .gr-year__rings { margin-left: -26px; }
+  .gr-row.eig-row::before { left: calc(-26px + var(--gr-spine-x) - 2.5px); }
+  .gr-row.eig-row:hover::before { left: calc(-26px + var(--gr-spine-x) - 2.5px - var(--ei-s2)); }
+  .gr-year__num { font-size: 1.7rem; }
+  .gr-seasons { gap: 10px; }
+}
+
+/* ── Reduced motion: everything simply is, nothing performs. ──
+   html.motion-reveal is never added under prefers-reduced-motion
+   (extend_head.html), and the reveal script opts out too, but keep a
+   hard fence for UA overrides and mid-session preference changes. */
+@media (prefers-reduced-motion: reduce) {
+  html.motion-reveal .gr-sprout__stem,
+  html.motion-reveal .gr-sprout__leaf,
+  html.motion-reveal .gr-sprout__bud,
+  html.motion-reveal .gr-cell--filled,
+  html.motion-reveal .gr-cell--now,
+  html.motion-reveal .gr-tip__node::after {
+    animation: none !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+  html.motion-reveal .gr-cell--filled { opacity: 1; }
+  html.motion-reveal .gr-tip__node::after { opacity: 0; }
+  .gr-timeline.gr-js .gr-row,
+  .gr-timeline.gr-js .gr-year {
+    opacity: 1;
+    transform: none;
+  }
+  .gr-cell--filled:hover,
+  .gr-row.eig-row:hover::before {
+    transform: none !important;
+  }
+}
