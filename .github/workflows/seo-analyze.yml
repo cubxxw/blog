@@ -28,6 +28,13 @@ jobs:
           fetch-depth: 30
 
       - uses: anthropics/claude-code-action@v1
+        # scripts/seo-section-to-issue.mjs shells out to `gh`, which needs both
+        # of these: without GITHUB_REPOSITORY it exits 0 and silently writes
+        # nothing, and without GH_TOKEN the gh call fails unauthenticated.
+        # Neither is inherited by the action's tool sandbox automatically.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # Dry-run mode: read the SEO snapshots, write findings to the
@@ -123,7 +130,9 @@ jobs:
 
             5. Do NOT edit any file in the source tree — `/tmp/seo-section.md`
                is the only file you may write. Do NOT create branches or PRs.
-               Do NOT run gh CLI commands other than the ones in allowedTools.
+               Do NOT invoke the gh CLI at all: issue creation and editing
+               belong to seo-section-to-issue.mjs, and gh is not in your
+               allowedTools. If you think you need it, report why instead.
 
             Data files live in the repo checked out at the workflow's
             working directory; use `Read` for JSON files, `Bash(cat:*)`,
@@ -131,4 +140,4 @@ jobs:
 
           claude_args: |
             --max-turns 25
-            --allowedTools "Read,Write,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(node scripts/seo-section-to-issue.mjs:*),Bash(gh issue list:*),Bash(gh issue view:*)"
+            --allowedTools "Read,Write,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(node scripts/seo-section-to-issue.mjs:*)"
