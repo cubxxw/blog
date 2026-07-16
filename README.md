@@ -319,7 +319,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Ai Recommend 技术、实践和深度学习](https://cubxxw.com/zh/projects/ai-recommend/)
 - [Google NotebookLM 的 RAG 深度调研思考](https://cubxxw.com/zh/projects/notebooklm/)
 - [AI 时代初创企业的测试驱动开发（TDD）实践方案](https://cubxxw.com/zh/projects/tdd/)
-- [MarkItDown 教程：微软开源文档转 Markdown 工具](https://cubxxw.com/zh/projects/markItdown/)
+- [MarkItDown 教程：微软开源文档转 Markdown 工具](https://cubxxw.com/zh/projects/markitdown/)
 - [LangGraph 架构深度解析：状态图、节点与边的设计原理](https://cubxxw.com/zh/projects/langgraph/)
 - [LangChain 开源项目深度学习](https://cubxxw.com/zh/projects/langchain/)
 - [AI Gateway（AI 网关）开源项目深度学习笔记](https://cubxxw.com/zh/projects/ai-gateway/)
