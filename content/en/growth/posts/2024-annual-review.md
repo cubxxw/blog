@@ -12,6 +12,9 @@ keywords: []
 tags: ["Blog", "Annual Recap", "Travel", "Product Development", "Philosophy"]
 description: >
   This article is my annual review of 2024, covering my experiences and reflections on travel, product development, personal growth, etc. By sharing my experiences and thoughts, I hope to bring inspiration and space for reflection to myself and my readers.
+cover:
+  image: /images/covers/growth/2024/2024-annual-review.jpeg
+  alt: "2024 Annual Review"
 tldr:
   - "Transformation requires embracing death and impermanence, which liberates individuals to pursue meaningful lives focused on growth, creation, and genuine happiness rather than external validation."
   - "Traveling as a digital nomad serves as profound self-discovery, enabling critical thinking about worldviews, values, and the distinction between authentic desires and socially imposed expectations."

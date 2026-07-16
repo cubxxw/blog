@@ -17,6 +17,9 @@ tags:
   - Philosophy
 description: >
   3,614 notes, fourteen months, one person's attempt to live authentically. From "surge" to "shedding" — not getting older, but becoming real.
+cover:
+  image: /images/covers/growth/2025/2025-annual-review.jpeg
+  alt: "Wandering & Growing: 2025-2026 Annual Review"
 tldr:
   - "Travel initially provided transformative energy but eventually became an avoidance mechanism when internal processing grew harder to sustain through constant movement."
   - "Physical and emotional extremes reveal authentic character; only at altitude with fever, alone, or facing impossible choices does the heart speak honestly rather than through daily judgments."

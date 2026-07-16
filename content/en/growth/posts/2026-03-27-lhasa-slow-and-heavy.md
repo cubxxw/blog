@@ -13,6 +13,9 @@ tags:
   - Reflection
 description: >
   Reflections from a stay in Lhasa, February to March 2026. On the body slowing down, the public nature of faith, collective memory, and the struggles of Tsangyang Gyatso.
+cover:
+  image: /images/covers/growth/2026/2026-03-27-lhasa-slow-and-heavy.jpeg
+  alt: "Lhasa: Slow and Heavy"
 tldr:
   - "The English version of this article is not yet published; full translation is in progress"
   - "Reader should consult the Chinese version for complete reflections on Lhasa's altitude, silence, and spiritual weight"

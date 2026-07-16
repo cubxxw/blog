@@ -17,6 +17,9 @@ tags:
   - 创新思维 (Innovation Mindset)
 description: >
     2025年4月思考笔记 - 捕捉春天成长的精髓，新的开始与持续学习和自我改进的旅程记录。
+cover:
+  image: /images/posts/2025/04-thought-notes/songkran.jpg
+  alt: 泰国泼水节的街头，人群举着水枪互相泼水
 tldr:
   - "感性驱动理性，最终回到感性；思考循环的终极目标是深化自我认识与满足真实需求。"
   - "在AI时代，工程师核心能力从「写代码」转向「读代码」；设计要为AI友好而优化，让系统逐步获得智能决策能力。"
