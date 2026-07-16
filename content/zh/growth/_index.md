@@ -1,53 +1,39 @@
 ---
 title: "Growth & Life"
-description: "年度回顾、效率系统、阅读沉淀——在不断精进中寻找生活的节奏"
-keywords: ["个人成长", "年度总结", "心流状态", "认知升级", "旅行见闻", "创业心得", "效率提升"]
+description: "年度深度复盘、心智与效率系统、亲密关系与旅行见闻——40+ 篇个人成长与生活思考，从 2023 年持续记录至今。"
+keywords: ["个人成长", "年度总结", "心流状态", "认知升级", "旅行见闻", "数字游民", "亲密关系", "效率提升", "元认知"]
+faq:
+  - q: 这个栏目记录什么？
+    a: 三类内容：年度深度复盘（2023 年起每年一篇）、心智与效率系统（心流、GTD、元认知），以及旅行与数字游民生活。另有「点火与沉底」亲密关系三部曲连载。
+  - q: 年度总结有哪些？
+    a: 从 2023 年开始每年一篇深度复盘——2023、2024、2025 各一篇，记录从学生到 AI 创业者的完整轨迹。建议从最新的《2025 年度总结》进入，再按时间倒序回看。
+  - q: 「点火与沉底」是什么？
+    a: 一个关于亲密关系的三篇长文连载：陪伴的质量与时间、回避型依恋、焦虑型依恋。三篇彼此咬合，可以从任何一篇进入，合起来读会构成一张关于亲密关系的完整地图。
+  - q: 作者的旅行观是什么？
+    a: 世界就是一个巨大的在线游戏，地球是服务器，我们都是玩家。旅行页按地区整理了所有旅行记录与影响过作者的旅行书单。
+domains:
+  - num: "01"
+    name: "成长复盘"
+    kicker: "ANNUAL REVIEWS"
+    desc: "从 2023 年起每年一篇深度复盘——认知升级、轨迹回望与下一年的方向。"
+    link: "/growth/posts/2025-annual-review/"
+    link_text: "2025 年度总结"
+  - num: "02"
+    name: "心智与效率"
+    kicker: "MIND & FLOW"
+    desc: "心流、GTD、元认知——把专注变成可复制系统的实践方法。"
+    link: "/growth/posts/flow-state/"
+    link_text: "心流状态指南"
+  - num: "03"
+    name: "旅行与生活"
+    kicker: "TRAVEL & LIFE"
+    desc: "数字游民的世界游戏：按地区整理的旅行见闻、文化体验与书单。"
+    link: "/travel/"
+    link_text: "旅行地图"
 cascade:
   - type: "posts"
     showtoc: true
     tocopen: true
 ---
 
-## 🌱 成长与生活
-
-这里是个人成长与生活思考的记录，涵盖两个主要领域：
-
-### 📚 个人成长
-年度总结、认知升级、心流状态、效率提升、元认知等深度思考内容
-
-### ✈️ 旅行与生活
-旅行见闻、数字游民生活、文化体验、人生感悟
-
----
-
-## 核心主题
-
-### 年度总结
-
-每年的深度复盘，记录成长轨迹：
-
-- [2025 年度总结]({{< relref "/growth/posts/2025-annual-review.md" >}})
-- [2024 年度总结]({{< relref "/growth/posts/2024-annual-review.md" >}})
-- [2023 年度总结]({{< relref "/growth/posts/2023-annual-summary-reflections-and-aspirations.md" >}})
-
-### 心智模式与效率
-
-提升专注力与工作效率的实践方法：
-
-- [心流状态指南]({{< relref "/growth/posts/flow-state.md" >}})
-- [GTD 与四象限法则]({{< relref "/growth/posts/gtd-and-the-four-quadrant-rule-practice.md" >}})
-- [元认知转化复盘]({{< relref "/growth/posts/metacognitive-transformation-review.md" >}})
-
-### 旅行与生活
-
-数字游民的旅行见闻与生活感悟：
-
-- [旅行分类]({{< relref "/travel.md" >}})
-- [2023 世界边缘漫步]({{< relref "/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world.md" >}})
-- [2025 日本旅行]({{< relref "/growth/posts/japan-travel-2025.md" >}})
-
----
-
-## 最近更新
-
-成长类文章列表可在下方查看。
+这里是熊鑫伟（cubxxw）的成长与生活记录：**年度深度复盘**、**心智与效率系统**、**亲密关系**与**旅行见闻**。技术之外，记录一个人如何思考、感受与生活。

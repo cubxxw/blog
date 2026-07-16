@@ -21,12 +21,13 @@
         <span class="eig-hero__accent">Every Evolution</span>
       {{- end }}
     </h1>
-    <p class="eig-hero__desc">
-      {{- if .Description }}{{ .Description | markdownify }}
-      {{- else if $isZh }}年度回顾、效率系统、阅读沉淀——在不断精进中寻找生活的节奏
-      {{- else }}Annual reviews, productivity systems, reading reflections — finding rhythm in continuous refinement
+    {{/* Answer-first lede — rendered from _index.md body so crawlers and AI
+         engines get a citable definition of what this section is. */}}
+    <div class="eig-hero__lede">
+      {{- if .Content }}{{ .Content }}
+      {{- else }}<p>{{ .Description }}</p>
       {{- end }}
-    </p>
+    </div>
     <div class="eig-hero__stats">
       <div class="eig-stat">
         <span class="eig-stat__num">{{ len $growthPages }}</span>
@@ -52,6 +53,26 @@
       {{- end }}
     </div>
   </header>
+
+  {{/* ── Domains: three real, crawlable directions (from front matter) ── */}}
+  {{- with .Params.domains }}
+  <section class="eig-domains" aria-label="{{ if $isZh }}核心主题{{ else }}Core topics{{ end }}">
+    {{- range . }}
+    <article class="eig-domain">
+      <div class="eig-domain__head">
+        <span class="eig-domain__num">{{ .num }}</span>
+        <span class="eig-domain__kicker">{{ .kicker }}</span>
+      </div>
+      <h2 class="eig-domain__name">{{ .name }}</h2>
+      <p class="eig-domain__desc">{{ .desc }}</p>
+      <a class="eig-domain__link" href="{{ .link | relLangURL }}">
+        {{ .link_text }}
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </article>
+    {{- end }}
+  </section>
+  {{- end }}
 
   {{/* ── Featured Trio ── */}}
   {{- if $featured }}
@@ -89,6 +110,44 @@
   </section>
   {{- end }}
 
+  {{/* ── Series shelf: aggregate `series` front matter across the section ── */}}
+  {{- $slugs := slice }}
+  {{- range $growthPages }}
+    {{- with .Params.series }}
+      {{- if not (in $slugs .slug) }}{{ $slugs = $slugs | append .slug }}{{ end }}
+    {{- end }}
+  {{- end }}
+  {{- if $slugs }}
+  <section class="eig-series" aria-label="{{ if $isZh }}连载系列{{ else }}Series{{ end }}">
+    <div class="eig-section-label">
+      <span class="eig-dot"></span>
+      {{ if $isZh }}连载系列{{ else }}Series{{ end }}
+    </div>
+    <div class="eig-series__grid">
+      {{- range $slug := $slugs }}
+      {{- $sp := slice }}
+      {{- range $growthPages }}{{ if and .Params.series (eq .Params.series.slug $slug) }}{{ $sp = $sp | append . }}{{ end }}{{ end }}
+      {{- $meta := (index $sp 0).Params.series }}
+      {{- $columnPage := $.Site.GetPage (printf "/columns/%s" $slug) }}
+      {{- $firstPost := index (sort $sp "Params.series.order") 0 }}
+      {{- $href := "" }}
+      {{- with $columnPage }}{{ $href = .RelPermalink }}{{ else }}{{ $href = $firstPost.RelPermalink }}{{ end }}
+      <a class="eig-series__card" href="{{ $href }}">
+        <span class="eig-series__kicker">{{ if $isZh }}连载{{ else }}SERIES{{ end }}</span>
+        <span class="eig-series__name">{{ $meta.name }}</span>
+        <span class="eig-series__meta">
+          {{ len $sp }}{{ if $isZh }} 篇{{ else }} parts{{ end }}
+          · {{ (index $sp 0).Date.Format "2006-01" }}
+        </span>
+        <span class="eig-series__arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
   {{/* ── Full Archive ── */}}
   <section class="eig-archive">
     <div class="eig-section-label">
@@ -96,7 +155,7 @@
       {{ if $isZh }}全部归档{{ else }}Full Archive{{ end }}
     </div>
 
-    {{- $paginator := .Paginate $growthPages 20 }}
+    {{- $paginator := .Paginate $growthPages }}
     {{- $currentYear := "" }}
     <div class="eig-timeline">
       {{- range $paginator.Pages }}
@@ -140,5 +199,46 @@
     {{- end }}
   </section>
 
+  {{/* ── FAQ: visible block matching the FAQPage JSON-LD emitted by
+       partials/seo/structured-data.html from the same front matter. ── */}}
+  {{- with .Params.faq }}
+  <section class="eig-faq" aria-label="FAQ">
+    <div class="eig-section-label">
+      <span class="eig-dot"></span>
+      {{ if $isZh }}常见问题{{ else }}FAQ{{ end }}
+    </div>
+    {{- range . }}
+    <details class="eig-faq__item">
+      <summary class="eig-faq__q">{{ .q }}</summary>
+      <p class="eig-faq__a">{{ .a }}</p>
+    </details>
+    {{- end }}
+  </section>
+  {{- end }}
+
 </div>
+
+{{/* ── CollectionPage + ItemList JSON-LD — tells AI/search engines this is a
+     curated collection about personal growth, with every article listed. ── */}}
+{{- $items := slice }}
+{{- range $i, $p := $growthPages }}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "url" $p.Permalink "name" $p.Title) }}
+{{- end }}
+{{- $ld := dict
+      "@context" "https://schema.org"
+      "@type" "CollectionPage"
+      "@id" .Permalink
+      "url" .Permalink
+      "name" .Title
+      "description" .Description
+      "inLanguage" (cond $isZh "zh-CN" "en-US")
+      "isPartOf" (dict "@type" "WebSite" "url" site.BaseURL "name" site.Title)
+      "about" (slice
+        (dict "@type" "Thing" "name" "Personal Growth")
+        (dict "@type" "Thing" "name" "Productivity")
+        (dict "@type" "Thing" "name" "Travel"))
+      "author" (dict "@id" (printf "%s#person" site.BaseURL))
+      "mainEntity" (dict "@type" "ItemList" "numberOfItems" (len $items) "itemListElement" $items)
+}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
 {{- end }}

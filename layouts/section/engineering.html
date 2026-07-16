@@ -36,12 +36,13 @@
       <span class="eng-hero__plain">Systems &</span> <span class="eng-hero__accent">Craft</span>
       {{- end }}
     </h1>
-    <p class="eng-hero__desc">
-      {{- if .Description }}{{ .Description | markdownify }}
-      {{- else if $isZh }}Kubernetes 云原生、Go 工程化与 DevOps 实践——支撑 AI 产品的工程根基
-      {{- else }}Kubernetes, Go engineering, and DevOps practice — the infrastructure foundation behind AI products
+    {{/* Answer-first lede — rendered from _index.md body so crawlers and AI
+         engines get a citable definition of what this section is. */}}
+    <div class="eng-hero__lede">
+      {{- if .Content }}{{ .Content }}
+      {{- else }}<p>{{ .Description }}</p>
       {{- end }}
-    </p>
+    </div>
     <div class="eng-hero__specs eng-mono">
       <span>{{ len $pages }} {{ if $isZh }}篇{{ else }}ARTICLES{{ end }}</span>
       <span class="eng-spec-sep">/</span>
@@ -61,10 +62,10 @@
   {{/* ── System modules ── */}}
   <section class="eng-modules">
     {{- $modules := slice
-      (dict "id" "01" "name" (cond $isZh "云原生 · Kubernetes" "Cloud Native · Kubernetes") "list" $cloud)
-      (dict "id" "02" "name" (cond $isZh "Go 工程化" "Go Engineering") "list" $go)
-      (dict "id" "03" "name" (cond $isZh "DevOps · 自动化" "DevOps · Automation") "list" $devops)
-      (dict "id" "04" "name" (cond $isZh "开源 · 协作" "Open Source · Community") "list" $oss)
+      (dict "id" "01" "name" (cond $isZh "云原生 · Kubernetes" "Cloud Native · Kubernetes") "list" $cloud "tag" "kubernetes")
+      (dict "id" "02" "name" (cond $isZh "Go 工程化" "Go Engineering") "list" $go "tag" "go")
+      (dict "id" "03" "name" (cond $isZh "DevOps · 自动化" "DevOps · Automation") "list" $devops "tag" "devops")
+      (dict "id" "04" "name" (cond $isZh "开源 · 协作" "Open Source · Community") "list" $oss "tag" "open-source")
     }}
     {{- range $modules }}
     {{- if .list }}
@@ -79,6 +80,13 @@
         <li><a href="{{ .Permalink }}">{{ .Title }}</a><time class="eng-mono">{{ .Date.Format "06-01" }}</time></li>
         {{- end }}
       </ul>
+      {{/* Crawlable escape hatch to the tag archive — real internal link
+           instead of a dead-end module. */}}
+      {{- with $.Site.GetPage (printf "/tags/%s" .tag) }}
+      <a class="eng-module__more eng-mono" href="{{ .RelPermalink }}">
+        {{ if $isZh }}浏览标签{{ else }}BROWSE TAG{{ end }} →
+      </a>
+      {{- end }}
     </article>
     {{- end }}
     {{- end }}
@@ -92,7 +100,7 @@
       <span class="eng-mono">{{ len $pages }}</span>
     </div>
 
-    {{- $paginator := .Paginate $pages 25 }}
+    {{- $paginator := .Paginate $pages }}
     {{- $currentYear := "" }}
     <div class="eng-index">
       {{- range $paginator.Pages }}
@@ -125,5 +133,47 @@
     {{- end }}
   </section>
 
+  {{/* ── FAQ: visible block matching the FAQPage JSON-LD emitted by
+       partials/seo/structured-data.html from the same front matter. ── */}}
+  {{- with .Params.faq }}
+  <section class="eng-faq" aria-label="FAQ">
+    <div class="eng-archive__head">
+      <h2 class="eng-archive__title">{{ if $isZh }}常见问题{{ else }}FAQ{{ end }}</h2>
+      <span class="eng-archive__rule" aria-hidden="true"></span>
+    </div>
+    {{- range . }}
+    <details class="eng-faq__item">
+      <summary class="eng-faq__q">{{ .q }}</summary>
+      <p class="eng-faq__a">{{ .a }}</p>
+    </details>
+    {{- end }}
+  </section>
+  {{- end }}
+
 </div>
+
+{{/* ── CollectionPage + ItemList JSON-LD — tells AI/search engines this is a
+     curated collection about infrastructure engineering, with every article listed. ── */}}
+{{- $items := slice }}
+{{- range $i, $p := $pages }}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "url" $p.Permalink "name" $p.Title) }}
+{{- end }}
+{{- $ld := dict
+      "@context" "https://schema.org"
+      "@type" "CollectionPage"
+      "@id" .Permalink
+      "url" .Permalink
+      "name" .Title
+      "description" .Description
+      "inLanguage" (cond $isZh "zh-CN" "en-US")
+      "isPartOf" (dict "@type" "WebSite" "url" site.BaseURL "name" site.Title)
+      "about" (slice
+        (dict "@type" "Thing" "name" "Kubernetes")
+        (dict "@type" "Thing" "name" "Go")
+        (dict "@type" "Thing" "name" "DevOps")
+        (dict "@type" "Thing" "name" "Open Source"))
+      "author" (dict "@id" (printf "%s#person" site.BaseURL))
+      "mainEntity" (dict "@type" "ItemList" "numberOfItems" (len $items) "itemListElement" $items)
+}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
 {{- end }}

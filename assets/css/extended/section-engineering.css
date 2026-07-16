@@ -308,3 +308,76 @@ body.dark {
 @media (prefers-reduced-motion: reduce) {
   .eng-module, .eng-module:hover { box-shadow: none; }
 }
+
+/* =============================================================
+   Engineering — GEO additions: lede, module tag links, FAQ
+   Same blueprint idiom: mono labels, steel + amber accents.
+   ============================================================= */
+
+/* Hero lede (rendered _index.md body) */
+.eng-hero__lede {
+  position: relative;
+  max-width: 600px;
+  margin: 0 0 var(--ei-s4, 32px);
+}
+.eng-hero__lede p {
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--ei-text-2, #3d5560);
+  margin: 0;
+}
+.eng-hero__lede strong { font-weight: 600; color: var(--ei-text, #1e2d32); }
+
+/* Module tag link */
+.eng-module__more {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--eng-steel);
+  text-decoration: none;
+  transition: color var(--ei-dur, 0.28s) var(--ei-ease, ease);
+}
+.eng-module__more:hover { color: var(--eng-accent); }
+
+/* FAQ */
+.eng-faq { margin-top: var(--ei-s6, 64px); }
+.eng-faq__item { border-bottom: 1px solid var(--ei-divide, rgba(30,45,50,0.07)); }
+.eng-faq__q {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 18px 4px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ei-text, #1e2d32);
+  transition: color var(--ei-dur, 0.28s) var(--ei-ease, ease);
+}
+.eng-faq__q::-webkit-details-marker { display: none; }
+.eng-faq__q::before {
+  content: "+";
+  flex: none;
+  font-family: var(--eng-mono);
+  font-size: 15px;
+  color: var(--eng-accent);
+  transition: transform var(--ei-dur, 0.28s) var(--ei-ease, ease);
+}
+.eng-faq__item[open] .eng-faq__q::before { transform: rotate(45deg); }
+.eng-faq__q:hover { color: var(--eng-accent); }
+.eng-faq__a {
+  margin: 0;
+  padding: 0 4px 22px 29px;
+  max-width: 640px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--ei-text-2, #3d5560);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .eng-module__more { min-height: 44px; }
+}
