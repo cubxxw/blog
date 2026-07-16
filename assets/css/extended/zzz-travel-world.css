@@ -719,72 +719,155 @@ body.dark .tw-area__status { color: #6fe0a8; }
 .tw-empty p { margin: 0 0 18px; }
 
 /* =============================================================
-   Inventory — books
+   Inventory — the bookshelf（書架）
+   A quiet Kyoto shelf: cloth spines standing on a thin rail with
+   vertical titles and plenty of 間 (negative space); one book in
+   each row leans slightly. The washi-coloured spines bearing the
+   vermilion「著」seal are self-written volumes and link out.
    ============================================================= */
 .tw-pack { margin-bottom: 88px; }
-.tw-books {
+.tw-shelf {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0;      /* zero gap keeps each row's shelf rail continuous */
+  row-gap: 48px;
 }
-.tw-book {
-  --tw-spine: hsl(calc(20 + var(--tw-book-i, 0) * 47), 42%, 46%);
+.tw-tome { display: flex; flex-direction: column; min-width: 0; }
+
+/* the shelf board */
+.tw-tome__case {
   position: relative;
-  padding: 20px 20px 20px 26px;
-  border: 1px solid var(--tw-line);
-  border-radius: var(--radius-md, 8px);
-  background: var(--tw-surface);
-  overflow: hidden;
-  transition: transform 240ms var(--ease-out, ease-out), box-shadow 240ms var(--ease-out, ease-out);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 212px;
+  border-bottom: 2px solid rgba(88, 74, 58, 0.5);
 }
-body.dark .tw-book { --tw-spine: hsl(calc(20 + var(--tw-book-i, 0) * 47), 48%, 62%); }
-/* book spine */
-.tw-book::before {
+.tw-tome__case::after {
   content: "";
   position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 6px;
-  background: linear-gradient(180deg,
-    color-mix(in srgb, var(--tw-spine) 85%, #fff),
-    var(--tw-spine));
-  transition: width 240ms var(--ease-out, ease-out);
+  left: 3%; right: 3%;
+  top: 100%;
+  height: 12px;
+  background: linear-gradient(180deg, rgba(40, 32, 24, 0.07), transparent);
+  pointer-events: none;
 }
-.tw-book:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(12, 18, 32, 0.10); }
-.tw-book:hover::before { width: 10px; }
-.tw-book__slot {
-  display: inline-block;
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  padding: 3px 9px;
-  border-radius: 4px;
-  color: var(--tw-spine);
-  background: color-mix(in srgb, var(--tw-spine) 12%, transparent);
-  margin-bottom: 12px;
+body.dark .tw-tome__case { border-bottom-color: rgba(255, 255, 255, 0.22); }
+body.dark .tw-tome__case::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent); }
+
+/* the spine — vertical title on muted book cloth */
+.tw-tome__spine {
+  --spine: #6d7076;
+  --spine-ink: rgba(255, 255, 255, 0.92);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 172px;
+  min-width: 46px;
+  padding: 16px 7px 10px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent 24%, rgba(0, 0, 0, 0.10) 96%),
+    var(--spine);
+  border-radius: 2px 3px 3px 2px;
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.14),
+    2px 0 6px rgba(30, 24, 16, 0.18);
+  text-decoration: none;
+  transition: translate 260ms var(--ease-out, ease-out), box-shadow 260ms var(--ease-out, ease-out);
 }
-.tw-book__title {
+/* only real links (self-written volumes) pull off the shelf */
+a.tw-tome__spine:hover,
+a.tw-tome__spine:focus-visible {
+  translate: 0 -10px;
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.14),
+    3px 8px 16px rgba(30, 24, 16, 0.24);
+}
+.tw-tome__title {
+  writing-mode: vertical-rl;
+  max-height: 100%;
   font-family: var(--font-display, serif);
-  font-size: 1.08rem;
-  font-weight: 700;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  margin: 0 0 4px;
-  color: var(--tw-ink);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  color: var(--spine-ink);
 }
-.tw-book__author {
+
+/* varied heights + one leaning book per row — the wabi in the shelf */
+.tw-tome:nth-child(4n+1) .tw-tome__spine { height: 180px; }
+.tw-tome:nth-child(4n+2) .tw-tome__spine { height: 156px; }
+.tw-tome:nth-child(4n+3) .tw-tome__spine { height: 186px; rotate: -4.5deg; transform-origin: 50% 100%; translate: 0 -2px; }
+.tw-tome:nth-child(4n)   .tw-tome__spine { height: 148px; }
+
+/* book-cloth palette — muted Japanese traditional colours, cycling */
+.tw-tome:nth-child(6n+1) .tw-tome__spine { --spine: #5f7185; } /* 藍鼠 */
+.tw-tome:nth-child(6n+2) .tw-tome__spine { --spine: #7d8069; } /* 利休鼠 */
+.tw-tome:nth-child(6n+3) .tw-tome__spine { --spine: #a06b4c; } /* 柿渋 */
+.tw-tome:nth-child(6n+4) .tw-tome__spine { --spine: #71697a; } /* 鈍色 */
+.tw-tome:nth-child(6n+5) .tw-tome__spine { --spine: #74815d; } /* 苔 */
+.tw-tome:nth-child(6n)   .tw-tome__spine { --spine: #8d7154; } /* 枯茶 */
+
+/* self-written volumes — unbleached washi spine, sumi ink, vermilion seal.
+   Doubled class beats the nth-child palette cycle above. */
+.tw-tome.tw-tome--own .tw-tome__spine {
+  --spine: #ece3d1;
+  --spine-ink: #2c2620;
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.55),
+    2px 0 6px rgba(30, 24, 16, 0.14);
+}
+.tw-tome.tw-tome--own + .tw-tome.tw-tome--own .tw-tome__spine { --spine: #e0d6c2; }
+.tw-tome__seal {
+  margin-top: auto;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  background: #b23a2a;
+  color: #fff8ef;
+  font-family: var(--font-display, serif);
+  font-size: 11px;
+  line-height: 1;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+}
+
+/* museum caption below the rail */
+.tw-tome__plate { padding: 16px 8% 0; text-align: center; }
+.tw-tome__slot {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--tw-amber-deep);
+  margin-bottom: 7px;
+}
+.tw-tome__author {
   display: block;
   font-family: var(--font-meta, sans-serif);
-  font-size: 12px;
-  color: var(--tw-ink-2);
-  margin-bottom: 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--tw-ink);
+  margin-bottom: 6px;
 }
-.tw-book__note {
+.tw-tome__note {
   font-family: var(--font-prose, serif);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.7;
   color: var(--tw-ink-2);
   margin: 0;
+}
+.tw-shelf__coda {
+  max-width: 460px;
+  margin: 34px auto 0;
+  text-align: center;
+  font-family: var(--font-prose, serif);
+  font-size: 0.86rem;
+  line-height: 1.8;
+  color: var(--tw-ink-2);
 }
 
 /* =============================================================
@@ -918,6 +1001,8 @@ body.dark .tw-book { --tw-spine: hsl(calc(20 + var(--tw-book-i, 0) * 47), 48%, 6
   .tw-hud__cell:nth-child(n+3) { border-bottom: none; }
   .tw-hud__xp-note { display: none; }
   .tw-map, .tw-pack, .tw-code { margin-bottom: 64px; }
+  .tw-shelf { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+  .tw-tome__case { height: 190px; }
   .tw-areas { gap: 48px; }
   .tw-code__cards { grid-template-columns: 1fr; }
   .tw-party { padding: 48px 18px; }
@@ -934,11 +1019,15 @@ body.dark .tw-book { --tw-spine: hsl(calc(20 + var(--tw-book-i, 0) * 47), 48%, 6
   }
   .tw-card:hover,
   .tw-card:hover .tw-card__img,
-  .tw-book:hover,
   .tw-code__card:hover,
   .tw-btn--primary:hover,
   .tw-btn--ghost:hover,
   .tw-social:hover {
     transform: none !important;
+  }
+  a.tw-tome__spine { transition: none; }
+  a.tw-tome__spine:hover,
+  a.tw-tome__spine:focus-visible {
+    translate: 0 -2px;
   }
 }

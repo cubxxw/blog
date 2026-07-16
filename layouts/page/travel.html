@@ -199,16 +199,37 @@
         {{- end }}
       </p>
     </div>
-    <div class="tw-books">
+    <div class="tw-shelf">
       {{- range $bi, $b := $books }}
-      <article class="tw-book tw-reveal" style="--tw-book-i: {{ $bi }}">
-        <span class="tw-book__slot">{{ if $isZh }}{{ $b.slot_zh }}{{ else }}{{ $b.slot_en }}{{ end }}</span>
-        <h3 class="tw-book__title">{{ if $isZh }}{{ $b.title_zh }}{{ else }}{{ $b.title_en }}{{ end }}</h3>
-        <span class="tw-book__author">{{ if $isZh }}{{ $b.author_zh }}{{ else }}{{ $b.author_en }}{{ end }}</span>
-        <p class="tw-book__note">{{ if $isZh }}{{ $b.note_zh }}{{ else }}{{ $b.note_en }}{{ end }}</p>
+      {{- $title := cond $isZh $b.title_zh $b.title_en }}
+      {{- $author := cond $isZh $b.author_zh $b.author_en }}
+      <article class="tw-tome tw-reveal{{ if $b.own }} tw-tome--own{{ end }}">
+        <div class="tw-tome__case">
+          {{- if $b.url }}
+          <a class="tw-tome__spine" href="{{ $b.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $title }} — {{ $author }}">
+            <span class="tw-tome__title">{{ $title }}</span>
+            {{- if $b.own }}<span class="tw-tome__seal" aria-hidden="true">著</span>{{ end }}
+          </a>
+          {{- else }}
+          <div class="tw-tome__spine">
+            <span class="tw-tome__title">{{ $title }}</span>
+            {{- if $b.own }}<span class="tw-tome__seal" aria-hidden="true">著</span>{{ end }}
+          </div>
+          {{- end }}
+        </div>
+        <div class="tw-tome__plate">
+          <span class="tw-tome__slot">{{ if $isZh }}{{ $b.slot_zh }}{{ else }}{{ $b.slot_en }}{{ end }}</span>
+          <span class="tw-tome__author">{{ $author }}</span>
+          <p class="tw-tome__note">{{ if $isZh }}{{ $b.note_zh }}{{ else }}{{ $b.note_en }}{{ end }}</p>
+        </div>
       </article>
       {{- end }}
     </div>
+    <p class="tw-shelf__coda tw-reveal">
+      {{- if $isZh }}钤朱印「著」的两卷，是我自己在路上写下的。
+      {{- else }}The two spines bearing the vermilion seal are the volumes I wrote on the road.
+      {{- end }}
+    </p>
   </section>
   {{- end }}
 

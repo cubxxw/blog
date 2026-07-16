@@ -5,8 +5,10 @@
 #            新去一个地方：加一个 region + 给文章打上对应地区 tag 即可。
 #            lat/lon —— 数值经纬度，驱动页面顶部点阵世界地图上的发光区与
 #            可点击 blip（等距投影）；coords 仅作展示文本。
-# books   —— 行囊书单（旅行书籍展示区）。直接增删此列表即可，
+# books   —— 行囊书单（旅行书架展示区）。直接增删此列表即可，
 #            slot_* 是游戏风格的"装备槽位"标签，随意发挥。
+#            own: true 表示自己写的书——书脊呈和纸原色并钤朱印「著」；
+#            url 可选，给出后整个书脊可点击跳转。
 regions:
   - slug: tibet
     name_zh: 西藏高原
@@ -42,6 +44,28 @@ regions:
     match: ["老挝旅行 (Laos Travel)", "Laos Travel", "Laos", "老挝", "柬埔寨", "Cambodia", "暹粒"]
 
 books:
+  - title_zh: 越南
+    title_en: Vietnam
+    author_zh: 熊鑫伟 · 自著
+    author_en: Xinwei Xiong · self-written
+    slot_zh: 自制装备 · 卷一
+    slot_en: Crafted Gear · Vol. I
+    note_zh: 胡志明的车流、大叻的雾、会安的灯——两个月慢火炖出来的湄公河随笔。
+    note_en: Saigon's traffic, Da Lat's fog, Hoi An's lanterns — Mekong field notes, slow-cooked over two months.
+    url: https://vietnam.cubxxw.com/
+    own: true
+
+  - title_zh: 吴哥窟
+    title_en: Angkor
+    author_zh: 熊鑫伟 · 自著
+    author_en: Xinwei Xiong · self-written
+    slot_zh: 自制装备 · 卷二
+    slot_en: Crafted Gear · Vol. II
+    note_zh: 石头、树根与帝国——走过吴哥的庙宇与废墟，听一个逝去帝国的回声。
+    note_en: Stones, roots and empire — walking the ruins of Angkor, listening for the echo of a vanished kingdom.
+    url: https://angkor.cubxxw.com/
+    own: true
+
   - title_zh: 在路上
     title_en: On the Road
     author_zh: 杰克·凯鲁亚克
