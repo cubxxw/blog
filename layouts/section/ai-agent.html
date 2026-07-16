@@ -91,41 +91,90 @@
   </article>
   {{- end }}
 
-  {{/* ── Series shelf: aggregate `series` front matter across the section.
-       Pages are date-desc, so first appearance = most recently updated. ── */}}
+  {{/* ── Series shelf: aggregate `series` AND `columns` front matter across
+       the section (some columns, e.g. agent-engineering, mount posts via
+       `columns:` only). Pages are date-desc, so first appearance = most
+       recently updated. Card copy comes from the column landing page. ── */}}
   {{- $slugs := slice }}
   {{- range $pages }}
     {{- with .Params.series }}
       {{- if not (in $slugs .slug) }}{{ $slugs = $slugs | append .slug }}{{ end }}
     {{- end }}
+    {{- range .Params.columns }}
+      {{- if not (in $slugs .) }}{{ $slugs = $slugs | append . }}{{ end }}
+    {{- end }}
   {{- end }}
-  {{- if $slugs }}
+  {{- $shelf := slice }}
+  {{- range $slug := $slugs }}
+    {{- $sp := slice }}
+    {{- range $pages }}
+      {{- $hit := false }}
+      {{- with .Params.series }}{{ if eq .slug $slug }}{{ $hit = true }}{{ end }}{{ end }}
+      {{- if in (.Params.columns | default slice) $slug }}{{ $hit = true }}{{ end }}
+      {{- if $hit }}{{ $sp = $sp | append . }}{{ end }}
+    {{- end }}
+    {{- $first := index (sort $sp "Date") 0 }}
+    {{- $total := len $sp }}
+    {{- range $sp }}{{ with .Params.series }}{{ with .total }}{{ $total = . }}{{ end }}{{ end }}{{ end }}
+    {{- $columnPage := $.Site.GetPage (printf "/columns/%s" $slug) }}
+    {{- $name := "" }}{{ $sub := "" }}{{ $desc := "" }}{{ $href := $first.RelPermalink }}
+    {{- with $columnPage }}
+      {{- $name = .Title }}{{ $sub = .Params.subtitle }}{{ $desc = .Description }}{{ $href = .RelPermalink }}
+    {{- end }}
+    {{- if not $name }}{{ range $sp }}{{ if and (not $name) .Params.series }}{{ $name = .Params.series.name }}{{ end }}{{ end }}{{ end }}
+    {{- if not $name }}{{ $name = humanize $slug }}{{ end }}
+    {{- $shelf = $shelf | append (dict "name" $name "sub" $sub "desc" $desc "href" $href "count" (len $sp) "total" $total "since" $first.Date) }}
+  {{- end }}
+  {{- if $shelf }}
   <section class="aia-series" aria-label="{{ if $isZh }}连载系列{{ else }}Series{{ end }}">
     <div class="aia-index__head">
       <h2 class="aia-index__title">{{ if $isZh }}连载系列{{ else }}Series{{ end }}</h2>
       <span class="aia-index__rule" aria-hidden="true"></span>
-      <span class="aia-mono aia-index__count">{{ len $slugs }}</span>
-    </div>
-    <div class="aia-series__grid">
-      {{- range $slug := $slugs }}
-      {{- $sp := slice }}
-      {{- range $pages }}{{ if and .Params.series (eq .Params.series.slug $slug) }}{{ $sp = $sp | append . }}{{ end }}{{ end }}
-      {{- $meta := (index $sp 0).Params.series }}
-      {{- $columnPage := $.Site.GetPage (printf "/columns/%s" $slug) }}
-      {{- $firstPost := index (sort $sp "Params.series.order") 0 }}
-      {{- $href := "" }}
-      {{- with $columnPage }}{{ $href = .RelPermalink }}{{ else }}{{ $href = $firstPost.RelPermalink }}{{ end }}
-      <a class="aia-series__card" href="{{ $href }}">
-        <span class="aia-series__kicker aia-mono">{{ if $isZh }}连载{{ else }}SERIES{{ end }}</span>
-        <span class="aia-series__name">{{ $meta.name }}</span>
-        <span class="aia-series__meta aia-mono">
-          {{ len $sp }}{{ if $isZh }} 篇{{ else }} parts{{ end }}
-          · {{ (index $sp 0).Date.Format "2006-01" }}
-        </span>
-        <span class="aia-series__arrow" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
+      <a class="aia-series__all" href="{{ "/columns/" | relLangURL }}">
+        {{ if $isZh }}全部专栏{{ else }}All columns{{ end }}
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
+    </div>
+
+    {{/* Showcase: one large "billboard" slide per series, auto-rotating.
+         Without JS the stage degrades to a plain stacked card list (all
+         links crawlable); the tab rail only appears once JS tags .aia-js. */}}
+    <div class="aia-show" role="group" aria-roledescription="{{ if $isZh }}轮播{{ else }}carousel{{ end }}">
+      <div class="aia-show__stage">
+        {{- range $i, $s := $shelf }}
+        <a class="aia-show__slide{{ if eq $i 0 }} is-active{{ end }}" href="{{ $s.href }}">
+          <span class="aia-show__wm aia-mono" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+          <span class="aia-show__kicker aia-mono">
+            <span class="aia-show__kicker-tag">{{ if $isZh }}连载{{ else }}SERIES{{ end }}</span>
+            {{ printf "%02d" (add $i 1) }} / {{ printf "%02d" (len $shelf) }}
+          </span>
+          <span class="aia-show__name">{{ $s.name }}</span>
+          {{- with $s.sub }}<span class="aia-show__sub">{{ . }}</span>{{ end }}
+          {{- with $s.desc }}<span class="aia-show__desc">{{ . | plainify | truncate 100 }}</span>{{ end }}
+          <span class="aia-show__foot">
+            <span class="aia-show__ticks" aria-hidden="true">
+              {{- range $t := seq $s.total }}<i{{ if le $t $s.count }} class="is-on"{{ end }}></i>{{ end }}
+            </span>
+            <span class="aia-show__meta aia-mono">{{ $s.count }} / {{ $s.total }} {{ if $isZh }}篇{{ else }}parts{{ end }} · {{ $s.since.Format "2006-01" }}</span>
+            <span class="aia-show__cta">
+              {{ if $isZh }}进入专栏{{ else }}Open column{{ end }}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </span>
+        </a>
+        {{- end }}
+      </div>
+      {{- if gt (len $shelf) 1 }}
+      <div class="aia-show__rail">
+        {{- range $i, $s := $shelf }}
+        <button type="button" class="aia-show__tab{{ if eq $i 0 }} is-active{{ end }}" data-index="{{ $i }}"
+                aria-label="{{ if $isZh }}查看系列：{{ else }}Show series: {{ end }}{{ $s.name }}"{{ if eq $i 0 }} aria-current="true"{{ end }}>
+          <span class="aia-show__tab-bar" aria-hidden="true"><i></i></span>
+          <span class="aia-show__tab-num aia-mono">{{ printf "%02d" (add $i 1) }}</span>
+          <span class="aia-show__tab-name">{{ $s.name }}</span>
+        </button>
+        {{- end }}
+      </div>
       {{- end }}
     </div>
   </section>
@@ -217,4 +266,60 @@
       "mainEntity" (dict "@type" "ItemList" "numberOfItems" (len $items) "itemListElement" $items)
 }}
 <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+
+{{/* Series showcase driver — progressive enhancement. The carousel layout
+     only engages AFTER this script tags the widget with .aia-js, so no-JS
+     visitors see a plain stacked card list. Rotation is driven by the
+     active tab's CSS fill animation (animationend → next slide), so the
+     progress bar and the slide switch can never drift apart; pausing the
+     animation (hover/focus/offscreen, via CSS play-state) pauses rotation
+     for free. Reduced motion ⇒ no fill animation ⇒ manual-only. */}}
+<script>
+(function () {
+  'use strict';
+  var show = document.querySelector('.aia-show');
+  if (!show) return;
+  var slides = Array.prototype.slice.call(show.querySelectorAll('.aia-show__slide'));
+  var tabs = Array.prototype.slice.call(show.querySelectorAll('.aia-show__tab'));
+  if (slides.length < 2 || !tabs.length) return;
+  show.classList.add('aia-js');
+  var idx = 0;
+
+  function go(n) {
+    idx = ((n % slides.length) + slides.length) % slides.length;
+    slides.forEach(function (s, i) {
+      var on = i === idx;
+      s.classList.toggle('is-active', on);
+      s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      s.tabIndex = on ? 0 : -1;
+    });
+    tabs.forEach(function (t, i) {
+      t.classList.toggle('is-active', i === idx);
+      if (i === idx) t.setAttribute('aria-current', 'true');
+      else t.removeAttribute('aria-current');
+    });
+  }
+  go(0);
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { go(+t.dataset.index); });
+  });
+
+  // The active tab's fill bar finishing its animation is the "tick".
+  show.addEventListener('animationend', function (e) {
+    if (e.target.parentElement && e.target.parentElement.classList.contains('aia-show__tab-bar')) {
+      go(idx + 1);
+    }
+  });
+
+  // Only run the countdown while the widget is actually on screen.
+  // A fast programmatic scroll can batch leave+enter into one callback,
+  // so always act on the most recent entry, not entries[0].
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      show.classList.toggle('is-off', !entries[entries.length - 1].isIntersecting);
+    }, { threshold: 0.25 }).observe(show);
+  }
+})();
+</script>
 {{- end }}

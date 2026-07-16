@@ -292,54 +292,247 @@ body.dark {
 .aia-cta svg { transition: transform var(--ei-dur, 0.28s) var(--ei-ease); }
 .aia-cta:hover svg { transform: translateX(4px); }
 
-/* ── Series shelf ── */
+/* ── Series showcase — a rotating "billboard": one series at a time,
+   poster-scale type, a giant numeral watermark, and a segmented progress
+   rail underneath. Carousel behaviour is gated on .aia-js (added by the
+   template's driver script); without JS the stage is a plain card list. ── */
 .aia-series { margin-bottom: var(--ei-s6, 64px); }
-.aia-series__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--ei-s2, 16px);
+.aia-series__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ei-label, system-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ei-text-3, #556a72);
+  transition: color var(--ei-dur, 0.28s) var(--ei-ease, ease);
 }
-.aia-series__card {
+.aia-series__all svg { transition: transform var(--ei-dur, 0.28s) var(--ei-ease, ease); }
+.aia-series__all:hover { color: var(--aia-accent); }
+.aia-series__all:hover svg { transform: translateX(3px); }
+
+.aia-show { --aia-show-interval: 7s; }
+.aia-show__stage {
+  display: grid;
+  gap: var(--ei-s2, 16px); /* no-JS fallback: stacked card list */
+}
+.aia-show__slide {
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 20px 22px;
+  padding: var(--ei-s4, 32px) var(--ei-s4, 32px) var(--ei-s3, 24px);
   border: 1px solid var(--ei-divide, rgba(30,45,50,0.07));
-  border-radius: var(--ei-r-md, 12px);
-  background: var(--ei-bg-card, #fff);
+  border-radius: var(--ei-r-lg, 20px);
+  background:
+    linear-gradient(135deg, var(--aia-accent-soft), transparent 55%),
+    var(--ei-bg-card, #fff);
+  box-shadow: var(--ei-shadow-1, 0 1px 2px rgba(20,40,50,0.04));
   color: var(--ei-text, #1e2d32);
-  transition: border-color var(--ei-dur, 0.28s) var(--ei-ease, ease),
-              box-shadow var(--ei-dur, 0.28s) var(--ei-ease, ease);
+  transition: box-shadow var(--ei-dur, 0.28s) var(--ei-ease, ease);
 }
-.aia-series__card:hover {
-  border-color: var(--aia-accent-glow);
-  box-shadow: var(--ei-shadow-2, 0 4px 16px rgba(20,40,50,0.06));
-}
-.aia-series__kicker {
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  color: var(--aia-accent);
-}
-.aia-series__name {
-  font-family: var(--ei-serif, Georgia, serif);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.4;
-  padding-right: 28px;
-}
-.aia-series__meta { color: var(--ei-text-3, #556a72); }
-.aia-series__arrow {
+.aia-show__slide:hover { box-shadow: var(--ei-shadow-3, 0 12px 40px rgba(20,40,50,0.08)); }
+/* Giant numeral watermark — the one poster gesture per slide */
+.aia-show__wm {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
-  color: var(--ei-text-3, #556a72);
-  transition: color var(--ei-dur, 0.28s) var(--ei-ease, ease),
-              transform var(--ei-dur, 0.28s) var(--ei-ease, ease);
-}
-.aia-series__card:hover .aia-series__arrow {
+  top: -0.18em;
+  right: 6px;
+  font-size: clamp(110px, 22vw, 190px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.06em;
   color: var(--aia-accent);
-  transform: translateX(4px);
+  opacity: 0.07;
+  user-select: none;
+  pointer-events: none;
+}
+.aia-show__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--ei-text-3, #556a72);
+  margin-bottom: var(--ei-s2, 16px);
+}
+.aia-show__kicker-tag {
+  color: var(--aia-accent);
+  border: 1px solid var(--aia-accent-glow);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.aia-show__name {
+  font-family: var(--ei-serif, Georgia, serif);
+  font-size: clamp(24px, 4.2vw, 36px);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  max-width: 15em;
+  margin-bottom: 10px;
+}
+.aia-show__sub {
+  font-family: var(--ei-serif, Georgia, serif);
+  font-style: italic;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--aia-accent);
+  margin-bottom: 10px;
+}
+.aia-show__desc {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--ei-text-2, #3d5560);
+  max-width: 560px;
+  margin-bottom: var(--ei-s3, 24px);
+}
+.aia-show__foot {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: auto;
+  color: var(--ei-text-3, #556a72);
+}
+/* Published-parts ticks: filled = live, hollow = still to come */
+.aia-show__ticks { display: inline-flex; gap: 5px; }
+.aia-show__ticks i {
+  width: 14px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--ei-divide, rgba(30,45,50,0.1));
+}
+.aia-show__ticks i.is-on { background: var(--aia-accent-bright); }
+.aia-show__cta {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--ei-label, system-ui);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--aia-accent);
+}
+.aia-show__cta svg { transition: transform var(--ei-dur, 0.28s) var(--ei-ease, ease); }
+.aia-show__slide:hover .aia-show__cta svg { transform: translateX(4px); }
+
+/* JS engaged: stack every slide into the same grid cell (container height
+   = tallest slide, so rotation never shifts the layout below) and reveal
+   one at a time with a fade + rise; inner lines stagger in like titles
+   on an ad slate. */
+.aia-js .aia-show__stage { gap: 0; }
+.aia-js .aia-show__slide {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition:
+    opacity 0.4s var(--ei-ease, ease),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--ei-dur, 0.28s) var(--ei-ease, ease),
+    visibility 0s linear 0.4s;
+}
+.aia-js .aia-show__slide.is-active {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  /* Incoming slide waits 0.12s so the outgoing one is mostly gone —
+     avoids a text-on-text double exposure mid-dissolve. */
+  transition:
+    opacity 0.45s var(--ei-ease, ease) 0.12s,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+    box-shadow var(--ei-dur, 0.28s) var(--ei-ease, ease),
+    visibility 0s;
+}
+.aia-js .aia-show__name,
+.aia-js .aia-show__sub,
+.aia-js .aia-show__desc,
+.aia-js .aia-show__foot {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s var(--ei-ease, ease), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.aia-js .aia-show__slide.is-active :is(.aia-show__name, .aia-show__sub, .aia-show__desc, .aia-show__foot) {
+  opacity: 1;
+  transform: none;
+}
+.aia-js .aia-show__slide.is-active .aia-show__name { transition-delay: 0.16s; }
+.aia-js .aia-show__slide.is-active .aia-show__sub  { transition-delay: 0.22s; }
+.aia-js .aia-show__slide.is-active .aia-show__desc { transition-delay: 0.28s; }
+.aia-js .aia-show__slide.is-active .aia-show__foot { transition-delay: 0.34s; }
+
+/* Progress rail: one segment per series; the active segment fills over
+   the rotation interval. animationend on the fill = the rotation tick,
+   so pausing the animation pauses the carousel with zero drift. */
+.aia-show__rail { display: none; }
+.aia-js .aia-show__rail {
+  display: flex;
+  gap: var(--ei-s2, 16px);
+  margin-top: 18px;
+}
+.aia-show__tab {
+  flex: 1 1 0;
+  min-width: 0;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0 0 4px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ei-text-3, #556a72);
+  transition: color var(--ei-dur, 0.28s) var(--ei-ease, ease);
+}
+.aia-show__tab:hover { color: var(--aia-accent); }
+.aia-show__tab.is-active { color: var(--ei-text, #1e2d32); }
+.aia-show__tab:focus-visible {
+  outline: 2px solid var(--aia-accent);
+  outline-offset: 4px;
+  border-radius: var(--ei-r-sm, 6px);
+}
+.aia-show__tab-bar {
+  display: block;
+  position: relative;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ei-divide, rgba(30,45,50,0.1));
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.aia-show__tab-bar i {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--aia-accent-bright);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.aia-show__tab.is-active .aia-show__tab-bar i {
+  animation: aia-show-fill var(--aia-show-interval) linear forwards;
+}
+/* Hover / keyboard focus / offscreen ⇒ countdown (and rotation) pauses */
+.aia-show:is(:hover, :focus-within) .aia-show__tab-bar i,
+.aia-show.is-off .aia-show__tab-bar i { animation-play-state: paused; }
+@keyframes aia-show-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.aia-show__tab-num {
+  color: var(--aia-accent);
+  margin-right: 7px;
+  font-size: 11px;
+}
+.aia-show__tab-name {
+  display: inline-block;
+  max-width: calc(100% - 34px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  font-family: var(--ei-label, system-ui);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* ── Index list ── */
@@ -474,8 +667,15 @@ body.dark {
 /* ── Responsive ── */
 @media (max-width: 760px) {
   .aia-domains { grid-template-columns: 1fr; gap: var(--ei-s3, 24px); }
-  .aia-series__grid { grid-template-columns: 1fr; }
   .aia-hero__tate { display: none; }
+}
+@media (max-width: 560px) {
+  .aia-show__slide { padding: var(--ei-s3, 24px) var(--ei-s3, 24px) 20px; }
+  .aia-show__wm { font-size: 96px; right: 2px; }
+  .aia-show__meta { display: none; }
+  .aia-show__tab-name { display: none; }
+  .aia-show__tab-num { margin-right: 0; }
+  .aia-js .aia-show__rail { gap: 10px; }
 }
 @media (max-width: 640px) {
   .aia-page { padding-top: var(--ei-s3, 24px); }
@@ -501,4 +701,15 @@ body.dark {
   .aia-pulse { animation: none; }
   .aia-featured, .aia-featured:hover { transform: none; }
   .aia-domain::before, .aia-domain:hover::before { width: 28px; }
+  /* No fill animation ⇒ no animationend ⇒ no auto-rotation; the rail
+     becomes a plain manual switcher with a static active indicator. */
+  .aia-show__tab.is-active .aia-show__tab-bar i { animation: none; transform: scaleX(1); }
+  .aia-js .aia-show__slide,
+  .aia-js .aia-show__slide.is-active,
+  .aia-js .aia-show__name, .aia-js .aia-show__sub,
+  .aia-js .aia-show__desc, .aia-js .aia-show__foot {
+    transition-duration: 0.01s;
+    transition-delay: 0s;
+    transform: none;
+  }
 }
