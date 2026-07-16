@@ -104,7 +104,10 @@
       {{- if $coverURL }}
       <enclosure url="{{ $coverURL }}" type="image/jpeg" length="0" />
       <media:content url="{{ $coverURL }}" medium="image">
-        {{- with .Params.cover.alt }}<media:description>{{ . | plainify }}</media:description>{{ end -}}
+        {{- /* plainify returns template.HTML, which suppresses Hugo's auto-escaping
+               and lets a bare `&` in the alt text emit invalid XML. Cast back to a
+               plain string so the `&`/`<`/`>` escaping is applied. */ -}}
+        {{- with .Params.cover.alt }}<media:description>{{ . | plainify | printf "%s" }}</media:description>{{ end -}}
       </media:content>
       {{- end }}
     </item>
