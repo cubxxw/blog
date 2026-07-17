@@ -1,0 +1,102 @@
+{{- /*
+  link-preview-data.html — build-time annotation for internal article links.
+
+  Given an internal destination path (root-absolute, e.g. /zh/ai-agent/posts/x/
+  or /engineering/posts/y/), resolves the target page across every language
+  site and returns a dict of hover-card fields consumed by the render-link
+  hook + static/js/link-preview.js:
+
+    eyebrow  section title, optionally "· series/column name" appended
+    title    target page title
+    desc     tldr (first item) → description → summary, plain text, ≤140 chars
+    meta     "2026-05 · 约 12 分钟" (zh) / "May 2026 · 12 min read" (en)
+
+  Returns an empty dict for anything that is not a regular content page
+  (static assets, sections, taxonomies, unknown paths). Invoked through
+  partialCached keyed on the destination, so each unique target resolves
+  once per build. Content paths that resolve to no page at all are surfaced
+  as build warnings — a free internal-link linter.
+*/ -}}
+{{- $result := dict -}}
+
+{{- /* Normalize: strip fragment / query, require a trailing slash. */ -}}
+{{- $path := index (split .dest "#") 0 -}}
+{{- $path = index (split $path "?") 0 -}}
+
+{{- /* Skip static assets (any dotted basename: .svg, .pdf, .png …). */ -}}
+{{- if and $path (not (in (path.Base $path) ".")) -}}
+  {{- $path = printf "%s/" (strings.TrimSuffix "/" $path) -}}
+
+  {{- $target := "" -}}
+  {{- range site.Sites -}}
+    {{- if not $target -}}
+      {{- $m := where .RegularPages "RelPermalink" $path -}}
+      {{- if gt (len $m) 0 }}{{ $target = index $m 0 }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- with $target -}}
+    {{- /* Eyebrow: section, plus the series or column it belongs to. */ -}}
+    {{- $eyebrow := "" -}}
+    {{- with .FirstSection }}{{ $eyebrow = .Title }}{{ end -}}
+    {{- $extra := "" -}}
+    {{- with .Params.series }}{{ with .name }}{{ $extra = . }}{{ end }}{{ end -}}
+    {{- if not $extra -}}
+      {{- with .Params.columns -}}
+        {{- with $target.Site.GetPage (printf "/columns/%s" (index . 0)) -}}
+          {{- $extra = .Title -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if and $eyebrow $extra }}{{ $eyebrow = printf "%s · %s" $eyebrow $extra }}{{ end -}}
+
+    {{- /* Description: tldr first item → description. Deliberately NO
+           .Summary fallback — .Summary renders the target page's content,
+           whose own render hooks call back into this partial; two articles
+           linking to each other would deadlock the build. Metadata only. */ -}}
+    {{- $desc := "" -}}
+    {{- with .Params.tldr -}}
+      {{- if reflect.IsSlice . -}}
+        {{- if gt (len .) 0 }}{{ $desc = index . 0 }}{{ end -}}
+      {{- else -}}
+        {{- $desc = . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if not $desc }}{{ with .Description }}{{ $desc = . }}{{ end }}{{ end -}}
+    {{- $desc = $desc | plainify | chomp | truncate 140 -}}
+
+    {{- /* Reading time from .RawContent (source markdown, never rendered —
+           .ReadingTime would trigger the same deadlock as .Summary).
+           zh: rune count at Hugo's CJK rate (~501 chars/min) so the card
+           matches the reading time shown on the article page itself;
+           en: word count at Hugo's 213 wpm. */ -}}
+    {{- $meta := "" -}}
+    {{- if strings.HasPrefix .Lang "zh" -}}
+      {{- $mins := add (div (strings.RuneCount .RawContent) 501) 1 -}}
+      {{- $meta = printf "%s · 约 %d 分钟" (.Date.Format "2006-01") $mins -}}
+    {{- else -}}
+      {{- $mins := add (div (countwords .RawContent) 213) 1 -}}
+      {{- $meta = printf "%s · %d min read" (.Date.Format "Jan 2006") $mins -}}
+    {{- end -}}
+
+    {{- $result = dict "eyebrow" $eyebrow "title" .Title "desc" $desc "meta" $meta -}}
+  {{- end -}}
+
+  {{- /* Internal-link linter: an article-looking path with no page behind
+         it (any kind, any language) is probably a broken link. */ -}}
+  {{- if not $target -}}
+    {{- if or (strings.HasPrefix $path "/zh/") (in $path "/posts/") -}}
+      {{- $known := false -}}
+      {{- range site.Sites -}}
+        {{- if not $known -}}
+          {{- if gt (len (where .Pages "RelPermalink" $path)) 0 }}{{ $known = true }}{{ end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $known -}}
+        {{- warnf "link-preview: internal link resolves to no page: %s" $path -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $result -}}

@@ -1,1 +1,18 @@
-<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /* Internal article links get build-time hover-card data (data-lp-*) via
+       the cached link-preview-data partial; static/js/link-preview.js reads
+       the attributes at runtime — zero fetches. External links keep the
+       new-tab + noopener treatment. */ -}}
+{{- $dest := .Destination -}}
+{{- $title := .Title -}}
+{{- $text := .Text -}}
+{{- $base := strings.TrimSuffix "/" site.BaseURL -}}
+{{- $lookup := "" -}}
+{{- if strings.HasPrefix $dest "/" -}}
+  {{- $lookup = $dest -}}
+{{- else if and $base (strings.HasPrefix $dest $base) -}}
+  {{- $lookup = strings.TrimPrefix $base $dest -}}
+  {{- if not (strings.HasPrefix $lookup "/") }}{{ $lookup = printf "/%s" $lookup }}{{ end -}}
+{{- end -}}
+{{- $lp := dict -}}
+{{- with $lookup }}{{ $lp = partialCached "link-preview-data.html" (dict "dest" .) . }}{{ end -}}
+<a href="{{ $dest | safeURL }}"{{ with $title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix $dest "http" }} target="_blank" rel="noopener noreferrer"{{ end }}{{ with $lp.title }} data-lp-title="{{ . }}" data-lp-eyebrow="{{ $lp.eyebrow }}" data-lp-desc="{{ $lp.desc }}" data-lp-meta="{{ $lp.meta }}"{{ end }}>{{ $text | safeHTML }}</a>

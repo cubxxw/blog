@@ -1,0 +1,139 @@
+/* ============================================================
+   zzz-link-preview.css — internal link hover card
+   ------------------------------------------------------------
+   A floating marginalia note previewing the article behind an
+   internal link: eyebrow (section · series/column) / serif title /
+   two-line excerpt / date · reading time. Data is stamped at build
+   time by the render-link hook (data-lp-*); behaviour + positioning
+   live in static/js/link-preview.js — this is purely presentation.
+
+   Deliberately typographic: no cover image, no arrow, no buttons.
+   Paper over glass — a solid token-driven surface with a quiet
+   two-layer shadow, sharing the visual idiom (and the dark-mode
+   surface lift) of the footnote card in zzz-footnote-preview.css.
+
+   Desktop-only by construction (the JS bails on coarse pointers),
+   so no touch affordances are needed here.
+
+   Loads last in the extended bundle (zzz- prefix).
+   ============================================================ */
+
+.lp-card {
+  position: absolute;
+  z-index: 1200;
+  width: min(22rem, calc(100vw - 24px));
+  box-sizing: border-box;
+  padding: 0.8rem 0.95rem 0.7rem;
+  background: var(--color-bg, #f9f9f7);
+  color: var(--color-text, #1a1c1b);
+  border: 1px solid var(--color-border, rgba(30, 35, 30, 0.12));
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(15, 23, 42, 0.04)),
+    var(--shadow-lg, 0 12px 32px rgba(15, 23, 42, 0.08));
+  cursor: pointer;
+
+  /* Hidden resting state — removed from the a11y tree and never
+     intercepting the pointer while closed. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.16s ease,
+    transform 0.18s var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    visibility 0s linear 0.18s;
+}
+/* Flipped above the link → develop downward instead. */
+.lp-card.is-above {
+  transform: translateY(-4px);
+}
+
+.lp-card.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.18s ease,
+    transform 0.2s var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    visibility 0s;
+}
+
+/* ── Typography: the card IS its type ──────────────────────────── */
+.lp-card__eyebrow {
+  font-family: var(--font-meta, system-ui, sans-serif);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #5e5e63);
+  margin-bottom: 0.4rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.lp-card__title {
+  font-family: var(--font-prose, Georgia, serif);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-text-heading, var(--color-text, #1a1c1b));
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lp-card__desc {
+  margin-top: 0.35rem;
+  font-family: var(--font-prose, Georgia, serif);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-text, #1a1c1b) 78%, transparent);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lp-card__meta {
+  margin-top: 0.5rem;
+  font-family: var(--font-meta, system-ui, sans-serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted, #5e5e63);
+}
+
+/* ── The link itself: a faint tint while previewable/previewing ── */
+.post-content a[data-lp-title] {
+  border-radius: 3px;
+  transition: background-color 0.15s ease;
+}
+.post-content a[data-lp-title]:hover,
+.post-content a[data-lp-title]:focus-visible {
+  background: color-mix(
+    in srgb,
+    var(--color-accent-soft, #dde5da) 55%,
+    transparent
+  );
+}
+
+/* ── Dark mode: lift the surface off the near-black page ─────────
+   Same Material-style elevation idiom as .fn-popover / .article-tldr:
+   faint white overlay fill, firmer border, inset top bevel + deep
+   ambient shadow so the card clearly hovers. */
+.dark .lp-card {
+  background: color-mix(in srgb, #ffffff 5%, var(--color-bg, #121413));
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 18px 44px -22px rgba(0, 0, 0, 0.72);
+}
+
+/* Reduced motion: keep the card (it informs), drop the rise. */
+@media (prefers-reduced-motion: reduce) {
+  .lp-card,
+  .lp-card.is-above,
+  .lp-card.is-visible {
+    transform: none;
+    transition: opacity 0.12s ease, visibility 0s;
+  }
+}
