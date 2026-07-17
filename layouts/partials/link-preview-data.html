@@ -23,8 +23,11 @@
 {{- $path := index (split .dest "#") 0 -}}
 {{- $path = index (split $path "?") 0 -}}
 
-{{- /* Skip static assets (any dotted basename: .svg, .pdf, .png …). */ -}}
-{{- if and $path (not (in (path.Base $path) ".")) -}}
+{{- /* Skip static assets (any dotted basename: .svg, .pdf, .png …) and
+       shortcode placeholders — a destination written with a relref-style
+       shortcode reaches render hooks as an opaque HAHAHUGOSHORTCODE token
+       that is substituted later, so it can't be resolved (or linted) here. */ -}}
+{{- if and $path (not (in (path.Base $path) ".")) (not (in $path "HAHAHUGOSHORTCODE")) -}}
   {{- $path = printf "%s/" (strings.TrimSuffix "/" $path) -}}
 
   {{- $target := "" -}}

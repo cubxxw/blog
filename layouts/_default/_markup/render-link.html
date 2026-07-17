@@ -12,6 +12,10 @@
 {{- else if and $base (strings.HasPrefix $dest $base) -}}
   {{- $lookup = strings.TrimPrefix $base $dest -}}
   {{- if not (strings.HasPrefix $lookup "/") }}{{ $lookup = printf "/%s" $lookup }}{{ end -}}
+{{- else if and $dest (not (strings.Contains $dest ":")) (not (strings.HasPrefix $dest "#")) -}}
+  {{- /* Relative link (../sibling/, ./child/ …) — resolve against the
+         current page's URL directory, exactly as the browser will. */ -}}
+  {{- $lookup = path.Join .Page.RelPermalink $dest -}}
 {{- end -}}
 {{- $lp := dict -}}
 {{- with $lookup }}{{ $lp = partialCached "link-preview-data.html" (dict "dest" .) . }}{{ end -}}
