@@ -16,7 +16,28 @@ tldr:
   - "Auto-GPT leverages GPT-4 to autonomously automate diverse tasks like content creation, translation, and data analysis with high precision and efficiency."
   - "Auto-GPT connects to the internet to retrieve latest information and can be extended with plugins for Twitter, email, Telegram, and analytics integrations."
   - "Future LLMs will revolutionize work automation while raising concerns about bias, but freeing humans to focus on complex creative tasks instead of repetitive work."
+howto:
+  name: "How to install and run Auto-GPT locally"
+  totalTime: PT30M
+  supplies:
+    - "Git"
+    - "Python 3.8 or later"
+    - "OpenAI API key"
+    - "PineCone API key"
+  steps:
+    - name: "Prepare the environment"
+      text: "Install Git and Python 3.8 or later, and obtain an OpenAI API key and a PineCone API key (a free PineCone account is enough)."
+    - name: "Clone the repository"
+      text: "Run git clone https://github.com/Significant-Gravitas/Auto-GPT and change into the Auto-GPT project directory."
+    - name: "Install dependencies"
+      text: "Inside the project directory, run pip install -r requirements.txt to install all Python dependencies."
+    - name: "Configure API keys"
+      text: "Rename .env.template to .env, then fill in OPENAI_API_KEY plus the PINECONE_API_KEY and PINECONE_ENV values generated in the PineCone console."
+    - name: "Run Auto-GPT"
+      text: "Execute python3 -m autogpt, then name the AI, define its role, and set its goals; authorize each action with y and Enter, and it will autonomously search the web and loop until the goals are done."
 ---
+
+**Auto-GPT is an open-source autonomous AI tool built on GPT-4: give it a goal and it decomposes the task, searches the web, and loops through actions until the goal is done.** Installing it locally takes five steps — prepare Git, Python 3.8+, and OpenAI plus PineCone API keys; clone the repo; install dependencies with `pip install -r requirements.txt`; configure `.env`; then run `python3 -m autogpt`. Full steps and screenshots below.
 
 ## Preface
 

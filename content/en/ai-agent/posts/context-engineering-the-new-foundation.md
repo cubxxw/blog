@@ -21,6 +21,15 @@ tldr:
   - "Memory is a concept distinct from context engineering: context engineering optimizes the present window, memory is the persistent, evolving substrate beyond it."
   - "My claim: the scarce thing is not the model, it is the world line - only your context lets an AI know who you are, where you are, and what you want. That line deserves to live local-first, in your own hands."
 maturity: budding
+faq:
+  - q: "What is context engineering?"
+    a: "Context engineering is the set of strategies for curating and maintaining the optimal set of tokens that enter an LLM's context window on every inference call — the system prompt, retrieved documents, conversation history, tool definitions, and memory. The definition comes from Anthropic's engineering practice, and Karpathy has publicly endorsed replacing 'prompt engineering' with this more accurate term."
+  - q: "How is context engineering different from prompt engineering?"
+    a: "Prompt engineering optimizes the wording of one instruction; context engineering optimizes the wiring of the whole window. Sourcegraph's operational test: if you are swapping nouns and adjectives, you are doing prompt engineering; if you are changing what data the agent retrieves, in what order, with what re-ranking, and what gets evicted when the window fills, you are doing context engineering."
+  - q: "What is context rot?"
+    a: "Context rot is the phenomenon where, as the token count inside a context window grows, the model's ability to accurately recall information from it actually degrades. Attention is a pairwise n² relation, so the longer the window, the thinner the attention each token receives. The engineering goal is therefore not to fill the window but to find the smallest, highest-signal token set — smallest meaning highest information density, not shortest."
+  - q: "What are the main frameworks for context engineering?"
+    a: "The field has converged on two complementary four-pillar schemes: LangChain's (Lance Martin's) Write / Select / Compress / Isolate — persist outside the window, pull in on demand, keep only necessary tokens, and split context across agents — and Sourcegraph's Instructions / Retrieval / Memory / Tools. The labels differ, but production practice confirms both."
 cover:
   image: '/images/blog/context-engineering-worldline.webp'
   caption: 'Context engineering: furnishing the model''s room — Write / Select / Compress / Isolate, and the local-first world line between you and the AI.'
@@ -28,6 +37,8 @@ cover:
 columns:
   - agent-engineering
 ---
+
+**Context engineering is the set of strategies for curating, ordering, and evicting the optimal set of tokens that enter an LLM's context window on every inference call — system prompt, retrieved documents, conversation history, tool definitions, and memory.** The one-line contrast with prompt engineering: prompts optimize the *wording* of a sentence; context engineering optimizes the *wiring* of the whole window. The definition comes from Anthropic's engineering writing, and Karpathy publicly backed the rename. The rest of this article takes the forming discipline apart.
 
 > "We are not really writing prompts. We are furnishing a room for the model — deciding what gets carried in, where it sits, when it gets moved out. The wording is just a sticky note on the desk. What we are actually doing is the interior work."
 

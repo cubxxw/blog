@@ -45,7 +45,21 @@ tldr:
   - 第二个关键要点。
 # 可选：内容成熟度（活内容标签）：seedling 萌芽 / budding 成长 / evergreen 常青
 maturity: budding
+# 可选：FAQ（同时产出可见 FAQ 块 + FAQPage JSON-LD），问题写成真实搜索问句，答案自包含
+faq:
+  - q: "X 是什么？"
+    a: "不依赖上下文即可独立成立的纯文本答案。"
+# 可选：HowTo schema（仅步骤型教程文章用），steps 必须与正文可见步骤一致
+howto:
+  name: "如何做 X"
+  totalTime: PT30M          # ISO 8601 时长，可省略
+  supplies: ["工具 A", "密钥 B"]  # 可省略
+  steps:
+    - name: "步骤名"
+      text: "该步骤的自包含描述。"
 ---
 ```
+
+**Answer-First 开头（GEO）**：How-to /「是什么」类文章正文第一段直接给答案——一句可独立成立的结论 + 40–100 字展开 + 至少一个证据，再进入正文。`tldr` 是提要块，Answer-First 是正文首段，两者并存不冲突。
 
 

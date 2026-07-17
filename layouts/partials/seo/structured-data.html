@@ -100,6 +100,41 @@
 </script>
 {{- end -}}
 
+{{- /* HowTo Schema — driven by front-matter `howto:` (name + steps list).
+       Steps must mirror the visible step-by-step sections in the article body.
+       Google dropped HowTo rich results, but AI engines still parse the schema. */ -}}
+{{- with .Params.howto -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ .name }},
+  {{- with .totalTime }}
+  "totalTime": {{ . }},
+  {{- end }}
+  {{- with .supplies }}
+  "supply": [
+    {{- range $i, $s := . -}}
+    {{- if $i }},{{ end }}
+    { "@type": "HowToSupply", "name": {{ $s }} }
+    {{- end }}
+  ],
+  {{- end }}
+  "step": [
+    {{- range $i, $s := .steps -}}
+    {{- if $i }},{{ end }}
+    {
+      "@type": "HowToStep",
+      "position": {{ add $i 1 }},
+      "name": {{ $s.name }},
+      "text": {{ $s.text }}
+    }
+    {{- end }}
+  ]
+}
+</script>
+{{- end -}}
+
 {{- /* WebSite Schema */ -}}
 <script type="application/ld+json">
 {

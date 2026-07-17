@@ -14,7 +14,18 @@ tldr:
   - "Kubernetes 是 Google 开源的容器编排引擎，通过声明式 API 管理分布式系统的部署、扩展和自愈能力"
   - "Kubernetes 采用主从架构，控制平面通过 APIServer、Scheduler、Controller-Manager 等组件维护集群的期望状态"
   - "Pod 是最小调度单元，Pod 控制器管理副本和生命周期，Service 资源提供固定访问入口"
+faq:
+  - q: "Kubernetes 是什么？"
+    a: "Kubernetes（简称 k8s）是 Google 基于内部 Borg 系统开源的容器编排调度引擎，现由 CNCF（云原生计算基金会）托管。它用声明式 API 自动完成容器化应用的部署、扩缩容、故障转移与自愈：你描述集群的期望状态，Kubernetes 负责把系统驱动并维持在这个状态。"
+  - q: "为什么 Kubernetes 弃用了 Docker？"
+    a: "从 1.20 版本起 Kubernetes 弃用 Docker 作为容器运行时，因为 Docker 本身不实现 CRI（容器运行时接口）标准，过去靠 dockershim 这个中间层桥接。Docker 实际构建在 containerd 运行时之上，而 Kubernetes 可以直接使用 containerd 或 CRI-O，不再需要中间人。注意被弃用的只是运行时角色——Docker 构建的镜像依然可以在 Kubernetes 中正常运行。"
+  - q: "Pod 和容器是什么关系？"
+    a: "Pod 是 Kubernetes 的最小调度单元，一个 Pod 内可以运行一个或多个共享网络与存储的容器。Kubernetes 不直接管理容器，而是通过 Pod 控制器（如 Deployment）管理 Pod 的副本数和生命周期，再由 Service 资源为一组动态变化的 Pod 提供固定的访问入口。"
+  - q: "Kubernetes 控制平面由哪些组件组成？"
+    a: "控制平面核心组件包括：kube-apiserver（集群统一入口，所有交互都经过它）、etcd（保存集群状态的分布式键值存储）、kube-scheduler（为 Pod 挑选合适的节点）和 kube-controller-manager（运行各类控制器让实际状态趋近期望状态）。工作节点上则运行 kubelet 和 kube-proxy。"
 ---
+
+**Kubernetes（k8s）是 Google 基于内部 Borg 系统开源的容器编排引擎，由 CNCF 托管，用声明式 API 自动完成容器化应用的部署、扩缩容、故障转移与自愈。** 你只需描述集群的期望状态，它负责把系统驱动并维持在这个状态——这也是它被称为「云操作系统内核」的原因。下文从架构、组件到核心资源对象，带你一篇入门。
 
 ## 正片开始~
 

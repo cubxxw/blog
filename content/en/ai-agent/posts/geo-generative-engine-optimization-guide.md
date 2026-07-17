@@ -28,6 +28,15 @@ tldr:
   - "I break GEO into a five-layer operational model: Crawlable → Understandable → Trustworthy → Quotable → Endorsed. The technical base is just the entry ticket; the real moat is trust and off-site endorsement."
   - Black-hat "AI poisoning" (mass-producing fake articles to feed models) has been exposed and is being regulated. The white-hat, compounding path is the one individuals and brands should take.
 maturity: budding
+faq:
+  - q: "What is GEO and how is it different from SEO?"
+    a: "GEO (Generative Engine Optimization) is the systematic optimization of content, structure, and off-site reputation so that generative AI systems — ChatGPT, Perplexity, Google AI Overviews, Doubao, DeepSeek — can more easily understand, trust, and cite your content when answering a question. It doesn't replace SEO: SEO fights for link rankings and clicks, GEO fights for being cited inside AI-generated answers, and both draw on the same content assets."
+  - q: "Why does GEO matter in 2026?"
+    a: "Because the traffic entry point is migrating from blue links to the AI answer box: 68% of US Google searches in the first four months of 2026 ended with zero clicks, and click-through on organic results drops by roughly 60% when AI Overviews appear. Yet sites that do get cited by AI Overviews see 35% more organic clicks and 4–9x higher conversion — the upside concentrates in the few sources that get named, which is exactly the position GEO competes for."
+  - q: "How do I make AI more likely to cite my content?"
+    a: "Princeton's GEO study validated it across 10,000 queries: adding statistics, citing sources, and including authoritative quotations lifts a page's visibility inside AI answers by 22%–41%. In practice, work through a five-layer model: first make content crawlable and understandable (technical base and structured writing), then build trustworthiness, quotability, and off-site endorsement (author reputation and third-party mentions)."
+  - q: "What are the risks of black-hat GEO (AI poisoning)?"
+    a: "AI poisoning means mass-publishing fabricated articles to feed large models and manipulate their recommendations; it was exposed on China's 2026 3·15 consumer-rights show. It may work short-term, but it exploits model source-credibility gaps that platforms are patching and regulators are tightening — AIIA launched a GEO-specific safety pledge in February 2026, and AI-generated advertising is now an enforcement priority. The only sustainable path for individuals and brands is white-hat: earning citations with genuine, authoritative, well-structured content."
 columns:
   - geo
 series:

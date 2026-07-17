@@ -14,7 +14,28 @@ tldr:
   - "Auto-GPT利用GPT-4通过自然语言处理能力自主执行内容创建、翻译、数据分析等多种复杂任务，可连接互联网获取最新信息。"
   - "安装Auto-GPT需要准备Python环境、Git、OpenAI API密钥和PineCone API密钥，通过克隆项目、安装依赖和配置环境变量即可在本地运行。"
   - "Auto-GPT和AgentGPT等工具代表LLM任务自动化的开始，未来将能完成更复杂的工作，帮助组织专注创意项目而将重复琐事交由程序自动处理。"
+howto:
+  name: "如何在本地安装并运行 Auto-GPT"
+  totalTime: PT30M
+  supplies:
+    - "Git"
+    - "Python 3.8 或更高版本"
+    - "OpenAI API 密钥"
+    - "PineCone API 密钥"
+  steps:
+    - name: "准备环境"
+      text: "安装 Git 与 Python 3.8 或更高版本，并申请 OpenAI API 密钥和 PineCone API 密钥（PineCone 免费账户即可）。"
+    - name: "克隆仓库"
+      text: "运行 git clone https://github.com/Significant-Gravitas/Auto-GPT 并进入 Auto-GPT 项目目录。"
+    - name: "安装依赖"
+      text: "在项目目录内运行 pip install -r requirements.txt 安装全部 Python 依赖。"
+    - name: "配置 API 密钥"
+      text: "将 .env.template 重命名为 .env，在其中填入 OPENAI_API_KEY，以及 PineCone 控制台生成的 PINECONE_API_KEY 和 PINECONE_ENV。"
+    - name: "运行 Auto-GPT"
+      text: "执行 python3 -m autogpt，依次为 AI 命名、设定角色和目标；每一步行动按 y 加回车授权，它就会自主联网检索并循环执行直到完成目标。"
 ---
+
+**Auto-GPT 是一个基于 GPT-4 的开源自主 AI 工具：给它一个目标，它会自行拆解任务、联网检索信息并循环执行，直到目标完成。** 本地安装只需五步——准备 Git、Python 3.8+ 与 OpenAI、PineCone 两个 API 密钥，克隆仓库，`pip install -r requirements.txt` 装依赖，配置 `.env`，最后 `python3 -m autogpt` 运行。完整步骤和截图见下文。
 
 ## 前言
 

@@ -18,8 +18,18 @@ tldr:
   - "Kubernetes is Google's open-source container orchestration platform using master-slave architecture to automatically manage containerized application deployment, scaling, and scheduling across clusters."
   - "Docker was deprecated from Kubernetes as a container runtime because Docker lacks Container Runtime Interface (CRI) compatibility while alternatives like containerd directly implement the standard."
   - "Kubernetes architecture consists of Master nodes managing cluster state via API server, scheduler, and controller-manager, Worker nodes running containers, and essential components including etcd storage, services for networking, and ingress for external access."
+faq:
+  - q: "What is Kubernetes?"
+    a: "Kubernetes (k8s) is a container orchestration engine that Google open-sourced from its internal Borg system, now hosted by the CNCF (Cloud Native Computing Foundation). It uses a declarative API to automate deployment, scaling, failover, and self-healing of containerized applications: you describe the desired state of the cluster, and Kubernetes drives and keeps the system in that state."
+  - q: "Why did Kubernetes deprecate Docker?"
+    a: "From version 1.20, Kubernetes deprecated Docker as a container runtime because Docker does not implement the CRI (Container Runtime Interface) standard and needed the dockershim bridge layer. Docker itself is built on top of the containerd runtime, which Kubernetes can use directly — as it can CRI-O — so the middleman was no longer needed. Note that only the runtime role was deprecated: images built with Docker still run fine on Kubernetes."
+  - q: "What is the relationship between a Pod and a container?"
+    a: "A Pod is the smallest schedulable unit in Kubernetes; one Pod can run one or more containers that share network and storage. Kubernetes does not manage containers directly — Pod controllers such as Deployments manage Pod replicas and lifecycle, and Service resources give a group of ever-changing Pods a stable access endpoint."
+  - q: "What components make up the Kubernetes control plane?"
+    a: "The core control-plane components are kube-apiserver (the cluster's single entry point that all interactions go through), etcd (the distributed key-value store holding cluster state), kube-scheduler (which picks a suitable node for each Pod), and kube-controller-manager (which runs controllers that move actual state toward desired state). Worker nodes run kubelet and kube-proxy."
 ---
 
+**Kubernetes (k8s) is a container orchestration engine open-sourced by Google from its internal Borg system and hosted by the CNCF. It uses a declarative API to automate deployment, scaling, failover, and self-healing of containerized applications.** You describe the desired state of your cluster, and Kubernetes drives the system to that state and keeps it there — which is why it is often called the kernel of the cloud operating system. This article walks you from architecture and components to the core resource objects.
 
 ## The main film begins~
 
