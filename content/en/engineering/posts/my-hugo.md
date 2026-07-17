@@ -15,6 +15,8 @@ tldr:
   - "Deployment automated via GitHub Actions and Makefile enables reliable content publishing without ongoing server management overhead."
 ---
 
+> **📌 Update (July 2026)**: This post, written in 2023, covers how the third generation of this blog was built from scratch on Hugo — the setup tutorial still holds up. Three years later I reassembled the entire blog again, and this time it wasn't the theme that changed but the whole production line: an AI writing pipeline, a two-stage cover factory, an AI duty officer living in GitHub Actions, and GEO infrastructure. The full retrospective is in [this new article (in Chinese)](/zh/ai-agent/posts/ai-native-blog-rebuild/) — read the two together: this one is the foundation, that one is how the house grew into a system.
+
 # Rebuild my blog (static)
 
 The enemy is back...

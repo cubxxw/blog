@@ -57,7 +57,7 @@ I'd add one more layer of interpretation myself: **underlying this three-stage l
 - Agent: context is **fetched by the Agent itself** (reading spreadsheets, pulling data, calling tools).
 - Skill: even "how to fetch it, how to judge it" gets **baked into the process** — the human only needs to trigger it and check the acceptance criteria.
 
-Once you understand this, you see why "learning 100 prompts" doesn't help — you're only optimizing the wording of the "hand-feeding" step, while the real leverage lies in turning hand-feeding into automatic fetching, and then into a codified process. This is also an extension of the principle I wrote about earlier in [Give AI Tasks, Not Directions](./give-ai-tasks-not-directions/): keep direction for yourself, hand tasks to the Agent, and recurring tasks should be sedimented into a Skill.
+Once you understand this, you see why "learning 100 prompts" doesn't help — you're only optimizing the wording of the "hand-feeding" step, while the real leverage lies in turning hand-feeding into automatic fetching, and then into a codified process. This is also an extension of the principle I wrote about earlier in [Give AI Tasks, Not Directions](/ai-agent/posts/give-ai-tasks-not-directions/): keep direction for yourself, hand tasks to the Agent, and recurring tasks should be sedimented into a Skill.
 
 ## Why "Sedimenting Judgment Into Process" Is the Real Moat
 
