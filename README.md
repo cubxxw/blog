@@ -151,6 +151,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [One Person and a Crew of Agents Rebuilt a 120-Post Blog From the Ground Up](https://cubxxw.com/ai-agent/posts/ai-native-blog-rebuild/)
 - [The Red Ocean Is Full: Where the Blue Ocean for AI Agents Is in Late 2026](https://cubxxw.com/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/)
 - [How Do You Get to the Point Where You Trust an AI Agent Nobody Is Watching?](https://cubxxw.com/ai-agent/posts/trusting-unattended-ai-agent/)
 - [The Super Individual's Intelligence System: Building a Personal Pipeline From Information to Action With Agents and MCP](https://cubxxw.com/ai-agent/posts/super-individual-intelligence-system/)
@@ -250,7 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Deep Dive into Kubernetes CNI, CRI, CSI Components](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 - [Kubernetes kube-apiserver: Deep Dive into API Server Components](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 - [Deep Dive Into the Components of Kubernetes Etcd](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
-- [Kubernetes Port Config via Config Files](https://cubxxw.com/engineering/posts/openim-cluster-deployment-parameter-passing-policy/)
 <!-- My-Blog-EN:END -->
 
 
