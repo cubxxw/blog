@@ -11,11 +11,17 @@
   margin: 0 0 20px;
 }
 
+/* ZH title: weight 700, not 900 — the 900 request resolved per-glyph to
+   Songti/Source Han Black for Latin but a lighter cut for CJK (or vice
+   versa depending on installed weights), producing visibly mismatched
+   grey between "Agent" and 汉字. Bold (700) exists in every font of the
+   stack — local Songti/Source Han AND the Noto Serif SC webfont — so both
+   scripts always render from the same real cut. */
 html:lang(zh) .post-title {
   font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
 }
 
 /* ─── Post Description — editorial lead-in, no box ───────────── */
@@ -83,6 +89,24 @@ html:lang(en) .post-content p {
   color: var(--color-ink, #1a1c1b);
 }
 
+/* ZH prose: Source Han Serif (思源宋体) body — the ZH counterpart of the EN
+   Noto Serif rule above; the two families are drawn to harmonize, so mixed
+   中文/English paragraphs keep one grey. Lists and definition text join the
+   serif voice too (ZH posts are list-heavy; sans list items next to serif
+   paragraphs read as two different articles). Tables, captions, code and
+   all UI chrome stay on the sans/mono voices. */
+html:lang(zh) .post-content p,
+html:lang(zh) .post-content li,
+html:lang(zh) .post-content dd {
+  font-family: var(--font-prose);
+  color: var(--color-ink, #1a1c1b);
+}
+
+/* 宋体 needs more leading than the sans it replaces. */
+html:lang(zh) .post-content p {
+  line-height: var(--line-height-prose, 2);
+}
+
 /* Reading measure: the .article-main column is ~888px at ≥1440px, so unbounded
    EN serif body ran ~90 chars/line — past the comfortable 60–75ch range. Cap the
    body flow (paragraphs, lists, blockquotes) to ~68ch; figures, code blocks,
@@ -115,7 +139,7 @@ html:lang(en) .post-content blockquote {
 html:lang(zh) .post-content .drop-cap::first-letter,
 html:lang(zh) .post-content p.drop-cap::first-letter {
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 700;
   font-style: normal;
   font-size: var(--drop-cap-size, 4.5rem);
   line-height: 0.8;
@@ -159,7 +183,20 @@ body.dark .post-content h6 {
   color: var(--color-ink, #f5f3ee);
 }
 
-html:lang(zh) .post-content h2 {
+/* ZH headings: serif display face, one voice with the title and 宋体 body.
+   (custom.css resets all .post-content headings to the sans UI face for the
+   EN serif-body/sans-heading contrast — right for EN, wrong for ZH where it
+   left 黑体 headings floating over 宋体 prose. :lang(zh) wins on specificity
+   regardless of file order.) Positive tracking: CJK never wants the negative
+   optical tracking the EN headings use. Weight is pinned to 700 — the one
+   bold cut every font in the stack actually ships. */
+html:lang(zh) .post-content h2,
+html:lang(zh) .post-content h3,
+html:lang(zh) .post-content h4,
+html:lang(zh) .post-content h5,
+html:lang(zh) .post-content h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
 

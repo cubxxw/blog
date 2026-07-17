@@ -117,6 +117,13 @@ html:lang(zh) {
   --font-display: 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun',
                   'Noto Serif SC', 'PingFang SC', 'Hiragino Sans GB',
                   'Microsoft YaHei', serif;
+  /* ZH prose serif — same local-first strategy as --font-display, but the
+     Noto Serif SC webfont sits BEFORE SimSun: body text is never the LCP
+     element, so Windows readers can safely swap up to the webfont instead
+     of being pinned to SimSun forever. macOS still resolves instantly to
+     Source Han / Songti. */
+  --font-prose:   'Source Han Serif SC', 'Songti SC', 'STSong',
+                  'Noto Serif SC', 'SimSun', 'PingFang SC', serif;
   --font-body:    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
                   system-ui, sans-serif;
   --font-meta:    'PingFang SC', 'Hiragino Sans GB', system-ui, sans-serif;

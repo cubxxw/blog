@@ -421,6 +421,9 @@ languages:
           pageRef: /about
           weight: 30
     params:
+      # 中文日期：覆盖全局 "January 2, 2006"（渲染成「7 月 11, 2026」的
+      # 英式混排），标题区 meta 行统一为中文书写习惯。
+      DateFormat: "2006 年 1 月 2 日"
       profileMode:
         # 启用或禁用
         enabled: true
