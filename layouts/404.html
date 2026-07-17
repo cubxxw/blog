@@ -7,7 +7,7 @@
         <div class="not-found-code">404</div>
         {{- $isZh := eq site.Language.Lang "zh" }}
         <h1 class="not-found-title">{{ if $isZh }}页面未找到{{ else }}Page Not Found{{ end }}</h1>
-        <p class="not-found-desc">{{ if $isZh }}这个页面好像去冒险了，找不回来了。让我们重新出发。{{ else }}Looks like this page went exploring without a map. Let's get you back on track.{{ end }}</p>
+        <p class="not-found-desc">{{ if $isZh }}这个页面去冒险了，一时找不回来。重新出发。{{ else }}Looks like this page went exploring without a map. Let's get you back on track.{{ end }}</p>
         <div class="not-found-actions">
             <a href="{{ "/" | relLangURL }}" class="not-found-btn not-found-btn--primary">← {{ if $isZh }}返回主页{{ else }}Go Home{{ end }}</a>
             <a href="{{ "/articles/" | relLangURL }}" class="not-found-btn not-found-btn--secondary">{{ if $isZh }}浏览所有文章{{ else }}Browse All Articles{{ end }}</a>
