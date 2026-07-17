@@ -18,7 +18,7 @@ tags:
 description: >
   知识是结构化、可反复调用、解决你自己问题的能力沉淀。这篇文章讲清楚为什么要把知识库从"收藏夹"改造成"能力沉淀区"：分开生产区与沉淀区、只让验证过的内容入库、用 PARA 和知识卡片做结构、把目录当成给 AI 的地图、以及"没用过就删掉"的淘汰机制。这是「从信息到创作」专栏的第四篇，也是与上下文工程结合最紧的一篇。
 cover:
-  image: 'images/columns/info-to-creation/zh-04-knowledge.svg'
+  image: '/images/columns/info-to-creation/zh-04-knowledge.svg'
   alt: 知识层：把验证过的成果沉淀为可复用的能力
 tldr:
   - 知识库最大的误解是把它当收藏夹。它真正的定位是"能力沉淀区"：只沉淀已验证的成果、只保存真正用过的知识。

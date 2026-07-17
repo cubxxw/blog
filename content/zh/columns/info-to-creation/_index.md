@@ -6,7 +6,7 @@ date: 2026-07-11T20:00:00+08:00
 description: >
   一个连载中的专栏：大多数人把「信息、记录、知识、创作」当成同一件事，于是笔记越记越多，人却没有变。这个专栏把它们拆成四道工序——信息负责采集与降噪，记录是转化率最高的半成品，知识是可复用的能力沉淀，创作面向受众重组——并用 AI 时代的工具与真实社群案例，把这条流水线一节一节讲清楚。
 cover:
-  image: 'images/columns/info-to-creation/zh-series.svg'
+  image: '/images/columns/info-to-creation/zh-series.svg'
   alt: 从信息到创作专栏封面，展示信息、记录、知识、创作四段流水线
 type: columns
 ---

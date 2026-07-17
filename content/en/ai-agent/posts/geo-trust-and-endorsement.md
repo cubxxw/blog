@@ -19,7 +19,7 @@ tags:
 description: >
   Your technical base and structure are right — so why still no AI citations? Because the final gate is trust, and most trust comes from off-site. This chapter covers operationalizing E-E-A-T, building entity consistency, why Reddit + Wikipedia are 66% of AI citations, and how a personal blog builds off-site endorsement pragmatically. Chapter 4 of the GEO series.
 cover:
-  image: 'images/columns/geo/en-04-trust.svg'
+  image: '/images/columns/geo/en-04-trust.svg'
   alt: GEO trust and endorsement cover showing entity consistency and community proof
 tldr:
   - Retrieved and top-ranked still don't mean cited - citation hinges on trust, and most trust comes from how others talk about you, not how you talk about yourself.

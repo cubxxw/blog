@@ -18,7 +18,7 @@ tags:
 description: >
   信息是流水线的第一道工序，它的绝大部分是噪音。这篇文章把信息分成三类——给 AI 看的、给自己粗略扫的、和该被挡在门外的纯噪音，讲清楚在 AI 批量生产内容、信噪比持续恶化的时代，怎么采集、怎么降噪、怎么反过来去抓稀缺信号。这是「从信息到创作」专栏的第二篇。
 cover:
-  image: 'images/columns/info-to-creation/zh-02-information.svg'
+  image: '/images/columns/info-to-creation/zh-02-information.svg'
   alt: 信息层：采集与降噪，把噪音挡在门外
 tldr:
   - 信息的默认状态是噪音。第一层的工作不是"多存"，而是"多挡"——判断标准是"值不值得进入下一道工序"，而不是"有没有用"。

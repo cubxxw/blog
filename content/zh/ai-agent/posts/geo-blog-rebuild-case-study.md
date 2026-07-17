@@ -19,7 +19,7 @@ tags:
 description: >
   前四篇讲方法，这一篇上真数据。我把 cubxxw.com 的 Google Search Console 与 PageSpeed Insights 数据翻了个底朝天，用五层模型逐层诊断：87 万曝光为什么只换来 852 点击、哪些是噪声哪些是金矿、域名迁移怎么保权重，以及一份按优先级排好的改造清单。GEO 系列第 5 篇。
 cover:
-  image: 'images/columns/geo/zh-05-case-study.svg'
+  image: '/images/columns/geo/zh-05-case-study.svg'
   alt: GEO 本博客改造复盘封面，展示真实数据仪表盘与增长曲线
 tldr:
   - 真实基线（旧域近 3 个月）：852 点击、87.8 万曝光、CTR 0.1%、平均排名 13.2。技术底座 Lighthouse SEO 满分，瓶颈不在技术，在排名与点击。

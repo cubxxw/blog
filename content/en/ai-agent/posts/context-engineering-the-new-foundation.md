@@ -22,7 +22,7 @@ tldr:
   - "My claim: the scarce thing is not the model, it is the world line - only your context lets an AI know who you are, where you are, and what you want. That line deserves to live local-first, in your own hands."
 maturity: budding
 cover:
-  image: 'images/blog/context-engineering-worldline.webp'
+  image: '/images/blog/context-engineering-worldline.webp'
   caption: 'Context engineering: furnishing the model''s room — Write / Select / Compress / Isolate, and the local-first world line between you and the AI.'
   alt: 'A wide schematic of context engineering: the Write / Select / Compress / Isolate pillars feeding an AI, a laptop with notes, and a local-first world line'
 columns:

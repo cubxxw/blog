@@ -2,7 +2,7 @@
 title: '看穿之后，依然深爱：五副透镜下的爱，与佛学的统摄'
 date: 2026-06-22T23:09:32+08:00
 cover:
-  image: 'images/blog/love-seen-clearly.png'
+  image: '/images/blog/love-seen-clearly.png'
 draft: false
 showtoc: true
 tocopen: false

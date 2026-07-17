@@ -19,7 +19,7 @@ tags:
 description: >
   Classic "rank + click" fails in the GEO era because most value happens where the user never visits you. This final chapter gives you a workable measurement system: prompt testing, AI referral traffic, GSC cross-check, dedicated tools (Profound/Peec), and a low-cost DIY monitor built on this repo's own scripts. Chapter 6 (finale) of the GEO series.
 cover:
-  image: 'images/columns/geo/en-06-measurement.svg'
+  image: '/images/columns/geo/en-06-measurement.svg'
   alt: GEO measurement and tools cover showing citation rate, share of voice, and monitoring radar
 tldr:
   - GEO's core metrics aren't rank and clicks but citation rate and share of voice - because most value happens in AI answers the user never clicks through to.

@@ -25,7 +25,7 @@ tldr:
   - 混合后端（TypeScript API + Python Agent）解耦的关键是共享数据而非共享进程：HTTP + Redis + 同一张 PG 表。
 maturity: budding
 cover:
-  image: 'images/blog/relay-agent-architecture.webp'
+  image: '/images/blog/relay-agent-architecture.webp'
   caption: 'Relay 五层 Agent 架构：从用户对话到客户端投递的完整数据流'
   alt: '展示 Relay 求职 Agent 系统五层架构的技术图解：用户层、API 编排层、Agent 执行层、共享服务层、数据与集成层'
 columns:

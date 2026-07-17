@@ -6,7 +6,7 @@ date: 2026-07-10T20:00:00+08:00
 description: >
   一个连载中的专栏：当 AI 搜索引擎直接给出答案而非链接，内容创作者的可见性规则被彻底改写。这个专栏系统拆解 GEO（Generative Engine Optimization）——从原理、测量到落地实践。
 cover:
-  image: 'images/columns/geo/zh-series.svg'
+  image: '/images/columns/geo/zh-series.svg'
   alt: GEO 生成式引擎优化专栏封面
 type: columns
 ---

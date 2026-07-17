@@ -2,7 +2,7 @@
 title: 'OpenIM：构建高效的版本控制和测试工作流程'
 ShowRssButtonInSectionTermList: true
 cover:
-  image: 'images/blog/openim-version-control.jpg'  # 假设您有这张图片，如无请更换
+  image: '/images/blog/openim-version-control.jpg'  # 假设您有这张图片，如无请更换
   caption: '高效的版本控制和测试工作流程'
 date: '2024-01-15T21:13:07+08:00'
 draft: false

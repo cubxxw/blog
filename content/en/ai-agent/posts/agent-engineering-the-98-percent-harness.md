@@ -24,7 +24,7 @@ tldr:
   - The single axis for choosing a framework - look at which pillars' decision rights it takes off your hands. Hand over the pillars that are not your differentiator, and concentrate your engineering on the moat that actually is.
 maturity: budding
 cover:
-  image: 'images/blog/agent-engineering-harness.webp'
+  image: '/images/blog/agent-engineering-harness.webp'
   caption: 'The eight pillars of Agent Engineering: the 100,000 lines of fortification wrapped around a 10-line agent loop.'
   alt: 'A technical diagram with a tiny agent loop at the center, surrounded by concentric rings of the eight pillars: orchestration, context, memory, tools, reliability, evaluation, cost, governance'
 columns:

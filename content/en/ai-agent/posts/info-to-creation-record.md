@@ -18,7 +18,7 @@ tags:
 description: >
   Records are the semi-finished product between information and knowledge, and the highest-conversion stage in the entire pipeline. This essay explains why "writing something every day" is the most underrated action, why the act of writing is itself a retrospective, how to let the semi-finished product settle with the lowest possible friction, and how a "next-day polish" uses a cooling-off period to push a record toward knowledge. This is the third essay in the "From Information to Creation" column.
 cover:
-  image: 'images/columns/info-to-creation/zh-03-record.svg'
+  image: '/images/columns/info-to-creation/zh-03-record.svg'
   alt: The record layer — the first site where information is processed into semi-finished knowledge
 tldr:
   - A record is an index — semi-finished knowledge. It isn't knowledge yet, but it's one of the highest-conversion methods from information to knowledge, because the moment you write something down, you're forced to choose, compress, and restate.

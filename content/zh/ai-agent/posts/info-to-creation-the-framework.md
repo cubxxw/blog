@@ -19,7 +19,7 @@ tags:
 description: >
   大多数人的笔记越记越多，人却没有变——因为把「信息、记录、知识、创作」当成了同一件事。这篇文章把它拆成四道工序：信息负责采集与降噪，记录是转化率最高的半成品，知识是可复用的能力沉淀，创作面向受众重组。这是「从信息到创作」专栏的总纲，也是我在 AI 时代重建笔记系统的底层框架。
 cover:
-  image: 'images/columns/info-to-creation/zh-01-framework.svg'
+  image: '/images/columns/info-to-creation/zh-01-framework.svg'
   alt: 信息、记录、知识、创作四段流水线示意图
 tldr:
   - AI 让「拥有信息」彻底不再是门槛，「把信息加工成能力和作品」才是。信息不值钱，值钱的是处理信息的能力。

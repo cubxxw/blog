@@ -18,7 +18,7 @@ tags:
 description: >
   Knowledge is structured, repeatedly reusable capability sediment that solves your own problems. This essay explains how to transform a knowledge base from a "bookmark folder" into a "capability sediment zone": separating the production zone from the sediment zone, only admitting validated content, using PARA and knowledge cards for structure, treating your folder structure as a map for AI, and the retirement mechanism of "if it's unused, delete it." This is the fourth essay in the "From Information to Creation" column, and the one most tightly bound to context engineering.
 cover:
-  image: 'images/columns/info-to-creation/zh-04-knowledge.svg'
+  image: '/images/columns/info-to-creation/zh-04-knowledge.svg'
   alt: The knowledge layer — turning validated output into reusable capability
 tldr:
   - The biggest misconception about a knowledge base is treating it like a bookmark folder. Its real role is a "capability sediment zone" — it only sediments validated output, and only keeps knowledge that's actually been used.

@@ -19,7 +19,7 @@ tags:
 description: >
   技术底座和结构都做对了，为什么还是不被 AI 引用？因为最后一关拼的是"信任"，而信任大半来自站外。这一篇讲 E-E-A-T 怎么落地、实体一致性怎么建、为什么 Reddit+Wikipedia 占了 AI 引用的 66%，以及个人博客怎么务实地做站外背书。GEO 系列第 4 篇。
 cover:
-  image: 'images/columns/geo/zh-04-trust.svg'
+  image: '/images/columns/geo/zh-04-trust.svg'
   alt: GEO 信任与站外背书封面，展示实体一致性与社区引用网络
 tldr:
   - 被检索、被排前都不等于被引用——引用拼的是信任，而信任大半来自"别人怎么谈论你"，不是你自己怎么说。

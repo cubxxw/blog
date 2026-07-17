@@ -19,7 +19,7 @@ tags:
 description: >
   Four chapters of method — now real data. I dug through cubxxw.com's Google Search Console and PageSpeed Insights and diagnosed it layer by layer with the five-layer model: why 878K impressions produced only 852 clicks, which queries are noise and which are gold, how to protect a domain migration, and a priority-ranked rebuild checklist. Chapter 5 of the GEO series.
 cover:
-  image: 'images/columns/geo/en-05-case-study.svg'
+  image: '/images/columns/geo/en-05-case-study.svg'
   alt: GEO blog rebuild case study cover showing a real-data dashboard and growth curve
 tldr:
   - Real baseline (old domain, last 3 months) - 852 clicks, 878K impressions, 0.1% CTR, average position 13.2. The technical base scores a perfect Lighthouse SEO; the bottleneck is ranking and clicks, not tech.

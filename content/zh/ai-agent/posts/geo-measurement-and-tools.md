@@ -19,7 +19,7 @@ tags:
 description: >
   传统的"排名+点击"在 GEO 时代会失灵，因为大半价值发生在用户没来你站的地方。这最后一篇给你一套能落地的度量体系：提示词测试法、AI 转介流量、GSC 交叉验证、专业工具（Profound/Peec），以及用本仓库自带脚本搭的低成本 DIY 监测。GEO 系列第 6 篇（终章）。
 cover:
-  image: 'images/columns/geo/zh-06-measurement.svg'
+  image: '/images/columns/geo/zh-06-measurement.svg'
   alt: GEO 度量与工具封面，展示被引率、声量份额与监测雷达
 tldr:
   - GEO 的核心度量不是排名和点击，而是"被引率（citation rate）"和"声量份额（share of voice）"——因为大半价值发生在用户没点进你站的 AI 答案里。

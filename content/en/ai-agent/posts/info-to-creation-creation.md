@@ -19,7 +19,7 @@ tags:
 description: >
   Creation is the finished product of the pipeline, and it solves other people's problems. This essay explains the fundamental difference between creation and knowledge, how to build a content flywheel that runs "inspiration → processing → article → video → feedback → new insight," why you must "present yourself manually first" before AI can actually help, and exactly where AI should stand at the creation layer. This is the finale of the "From Information to Creation" column.
 cover:
-  image: 'images/columns/info-to-creation/zh-05-creation.svg'
+  image: '/images/columns/info-to-creation/zh-05-creation.svg'
   alt: The creation layer — recombining knowledge for an audience into a finished product, forming a flywheel
 tldr:
   - "Creation and knowledge are two different things: knowledge faces inward and solves your own problems; creation faces outward and solves other people's problems, aiming to have the audience receive it, understand it, and want to connect with you."

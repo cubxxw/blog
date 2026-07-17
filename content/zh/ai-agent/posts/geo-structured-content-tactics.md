@@ -19,7 +19,7 @@ tags:
 description: >
   原理讲完，这一篇全是手上功夫：怎么写 Answer-First 段落、怎么把标题改成问题、FAQPage/HowTo schema 在富媒体被弃用后到底还要不要加、llms.txt 与 tldr 的正确姿势，以及怎么用内链织成主题集群。带代码、带前后对照。GEO 系列第 3 篇。
 cover:
-  image: 'images/columns/geo/zh-03-structured.svg'
+  image: '/images/columns/geo/zh-03-structured.svg'
   alt: GEO 结构化实战封面，展示把每一段写成可引用内容块
 tldr:
   - Answer-First 段落有公式：一句可独立成立的结论 + 40~100 字展开 + 至少一个证据（数字/来源/引语）。这是被 AI 一字不差搬走的那段。

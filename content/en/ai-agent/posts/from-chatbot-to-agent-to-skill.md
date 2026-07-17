@@ -18,7 +18,7 @@ tags:
 description: >
   Everyone is "using AI," but most people are stuck at "ask one question, get one answer." The real dividing line is moving from Chatbot to Agent to Skill — turning one-off Q&A into a reusable, verifiable workflow. I did a deep read of a 400-member paid cross-border e-commerce AI community and laid out this path clearly, then pushed one level further: why "sedimenting judgment into process" is the real moat of the AI era, and what kind of opportunity it opens up, separately, for traditional-industry players and AI super individuals.
 cover:
-  image: 'images/blog/from-chatbot-to-agent-to-skill.svg'
+  image: '/images/blog/from-chatbot-to-agent-to-skill.svg'
   alt: From Chatbot to Agent to Skill — the three-stage leap of AI adoption
 tldr:
   - Most people using AI stay stuck at "ask one question, get one answer" (Chatbot) — shallow value. The real leap is Chatbot → Agent → Skill.

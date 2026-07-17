@@ -6,7 +6,7 @@ date: 2026-07-10T20:00:00+08:00
 description: >
   An ongoing column: when AI search engines answer directly instead of linking out, the visibility rules for content creators are rewritten. This column takes GEO (Generative Engine Optimization) apart — principles, measurement, and hands-on practice.
 cover:
-  image: 'images/columns/geo/en-series.svg'
+  image: '/images/columns/geo/en-series.svg'
   alt: Generative Engine Optimization column cover
 type: columns
 ---

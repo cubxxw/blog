@@ -18,7 +18,7 @@ tags:
 description: >
   Most people's note-taking systems are "meant to be read by a human," while what genuinely has leverage in the AI era is a knowledge system "AI can directly read, write, and operate." This essay lays out its three-layer architecture (Claude as the brain, Obsidian as the file system, WeChat as the on-the-go entry point), how to build it step by step, and a real pitfall someone hit in a community: don't try to run the whole chain in one day — validate layer by layer.
 cover:
-  image: 'images/blog/ai-second-brain-build.svg'
+  image: '/images/blog/ai-second-brain-build.svg'
   alt: The three-layer AI second-brain architecture of Claude, Obsidian, and WeChat
 tldr:
   - The key distinction is not "a note-taking app meant for humans to read" versus "a knowledge system AI can directly read, write, and operate." The former grows as you record more; the latter gets stronger the more you use it.

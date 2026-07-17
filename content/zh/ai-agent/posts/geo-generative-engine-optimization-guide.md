@@ -19,7 +19,7 @@ tags:
 description: >
   当 68% 的 Google 搜索不再产生点击、AI 直接把答案端到用户面前，传统 SEO 争的"排名"正在失效。GEO（生成式引擎优化）争的是另一件事：让 AI 在生成答案时理解你、信任你、引用你。这是一篇从原理到方法论、再到我用自己博客做的真实案例复盘的支柱长文，也是「GEO 系列」的总纲。
 cover:
-  image: 'images/columns/geo/zh-01-guide.svg'
+  image: '/images/columns/geo/zh-01-guide.svg'
   alt: GEO 完全指南封面，展示从 SEO 排名到 AI 引用的五层模型
 tldr:
   - GEO（生成式引擎优化）不是取代 SEO，而是新增一层：SEO 争链接排名，GEO 争"被 AI 生成时引用"。二者共用同一套内容资产。

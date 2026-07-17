@@ -17,7 +17,7 @@ tags:
 description: >
   AI's core selling point is removing friction — faster, less effort, painless. But almost all human growth comes from friction: forcing the vague into the clear, working through what you don't yet know, being jolted by an objection. This essay argues that in an era where everything can be painless, learning to tell which friction to remove and which to deliberately keep is becoming a new form of self-discipline.
 cover:
-  image: 'images/blog/friction-is-growth.svg'
+  image: '/images/blog/friction-is-growth.svg'
   alt: Friction is growth — deliberately keeping friction in an era when AI removes resistance
 tldr:
   - "There's an unsettling signal: \"When I have a really enjoyable conversation with AI, it probably means I didn't grow that day.\" Because enjoyment usually means you didn't hit any friction."

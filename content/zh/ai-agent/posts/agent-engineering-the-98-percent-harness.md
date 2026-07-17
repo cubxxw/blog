@@ -24,7 +24,7 @@ tldr:
   - 选型的判断轴只有一句：看一个框架替你拿走了哪几根支柱的决策权——把不差异化的支柱交出去，把工程力压在你真正的护城河上。
 maturity: budding
 cover:
-  image: 'images/blog/agent-engineering-harness.webp'
+  image: '/images/blog/agent-engineering-harness.webp'
   caption: 'Agent Engineering 的八大支柱：包在 10 行 agent loop 外面的那 10 万行防御工事。'
   alt: '一张技术示意图，中心是一个小小的 agent loop，外面一圈一圈包裹着编排、上下文、记忆、工具、可靠性、评估、成本、治理八根支柱'
 columns:

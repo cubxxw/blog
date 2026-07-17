@@ -19,7 +19,7 @@ tags:
 description: >
   创作是流水线的成品，它解决的是别人的问题。这篇文章讲清楚创作和知识的本质区别、如何搭一条"灵感→加工→文章→视频→反馈→新洞见"的内容飞轮、为什么必须"先手动呈现自己"AI 才帮得上忙，以及 AI 在创作层到底该站在哪个位置。这是「从信息到创作」专栏的收官篇。
 cover:
-  image: 'images/columns/info-to-creation/zh-05-creation.svg'
+  image: '/images/columns/info-to-creation/zh-05-creation.svg'
   alt: 创作层：把知识面向受众重组为成品并形成飞轮
 tldr:
   - 创作和知识是两码事：知识向内、解决你自己的问题；创作向外、解决别人的问题，目标是让受众收到、读懂、愿意连接。

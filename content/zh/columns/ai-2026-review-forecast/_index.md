@@ -6,7 +6,7 @@ date: 2026-07-15T09:00:00+08:00
 description: >
   一个五篇的观察 + 预测专栏。我把 2026 上半场 AI Agent 领域真实发生的事拆开来看——信息自动化的能力边界、交互范式从"你提示它"到"它提示你"的迁移、开源模型的成本坍塌、无人值守 Agent 的信任工程、红海与蓝海的分野——再据此推演下半场最可能发生的事。不追热点，只追那些会改变你下一步动作的信号。
 cover:
-  image: 'images/columns/ai-2026-review-forecast/zh-series.svg'
+  image: '/images/columns/ai-2026-review-forecast/zh-series.svg'
   alt: 2026 AI 上半场观察与下半场预测专栏封面
 type: columns
 ---

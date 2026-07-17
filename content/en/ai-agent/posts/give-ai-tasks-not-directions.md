@@ -18,7 +18,7 @@ tags:
 description: >
   Why does a three-hour conversation with AI, one that felt more and more enjoyable the whole way through, leave you with nothing when you stop? Because you gave it a "direction," not a "task." A direction has no completion state and can be discussed forever; a task has clear acceptance criteria and produces something usable in one pass. This short essay lays out that one operating principle in full — it might be the single most important habit to build when working with AI.
 cover:
-  image: 'images/blog/give-ai-tasks-not-directions.svg'
+  image: '/images/blog/give-ai-tasks-not-directions.svg'
   alt: Give AI tasks, not directions — from an endless ramble with no completion state to output with acceptance criteria
 tldr:
   - "Talking to AI nonstop and yet producing nothing comes down to one root cause: you gave it a 'direction,' not a 'task.'"

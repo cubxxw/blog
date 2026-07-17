@@ -18,7 +18,7 @@ tags:
 description: >
   Most people's personal AI systems stop at "it runs," and then get bitten by unreliable output. Software engineering has already accumulated a set of disciplines for making systems reliable, decades in the making- observability, quality gates, structure as constraint, and SOPs. This essay brings all four into your personal AI workflow — so your system doesn't just run, it can also alert, self-check, and reliably reproduce.
 cover:
-  image: 'images/blog/engineering-discipline-ai-workflow.svg'
+  image: '/images/blog/engineering-discipline-ai-workflow.svg'
   alt: 'Four engineering disciplines for installing quality gates into an AI workflow'
 tldr:
   - "\"It runs\" does not equal \"it's reliable.\" AI will consistently give you output that \"looks correct\" — the biggest risk in a personal system is having no mechanism at all to notice when it's wrong."

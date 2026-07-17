@@ -17,7 +17,7 @@ tags:
 description: >
   AI 的核心卖点是消除摩擦——更快、更省力、无痛。但人的成长几乎都来自摩擦：把模糊逼成清晰，把不会的做出来，被反对意见硌一下。这篇文章想说的是：在一个可以无痛的时代，分辨该消除哪些摩擦、又该主动保留哪些摩擦，正在成为新的自律。
 cover:
-  image: 'images/blog/friction-is-growth.svg'
+  image: '/images/blog/friction-is-growth.svg'
   alt: 摩擦即成长——在 AI 消除阻力的时代主动保留摩擦
 tldr:
   - 有个扎心的信号："当我跟 AI 聊得很开心，说明这天我大概率没成长。" 因为愉悦往往意味着没遇到摩擦。

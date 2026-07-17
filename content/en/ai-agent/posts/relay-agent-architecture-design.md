@@ -25,7 +25,7 @@ tldr:
   - "The key to decoupling a hybrid backend (TypeScript API + Python Agent) is sharing data, not sharing processes: HTTP + Redis + the same PG tables."
 maturity: budding
 cover:
-  image: 'images/blog/relay-agent-architecture.webp'
+  image: '/images/blog/relay-agent-architecture.webp'
   caption: 'Relay five-layer Agent architecture: the complete data flow from user conversation to client-side job application'
   alt: 'Technical diagram showing the five-layer architecture of the Relay job-search Agent system: UI layer, API orchestration layer, Agent execution layer, shared services layer, and data and integration layer'
 columns:

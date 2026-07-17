@@ -18,7 +18,7 @@ tags:
 description: >
   大多数人的笔记系统是"给人读的"，而 AI 时代真正有杠杆的，是一个"AI 能直接读写、操作"的知识系统。这篇文章讲清楚它的三层架构（Claude 当大脑、Obsidian 当文件系统、微信当随身入口），一步步怎么搭，以及一个社群里真实踩出来的坑：别想一天跑通全链路，要分层验收。
 cover:
-  image: 'images/blog/ai-second-brain-build.svg'
+  image: '/images/blog/ai-second-brain-build.svg'
   alt: Claude + Obsidian + 微信 三层 AI 第二大脑架构示意
 tldr:
   - 关键分野：不是"给人读的笔记 app"，而是"AI 能直接读写、操作的知识系统"。前者你越记越多，后者越用越强。

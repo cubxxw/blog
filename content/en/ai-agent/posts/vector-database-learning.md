@@ -2,7 +2,7 @@
 title: 'Vector Database Learning'
 ShowRssButtonInSectionTermList: true
 cover:
-    image: 'images/blog/vector-database.png'
+    image: '/images/blog/vector-database.png'
     caption: 'Vector database learning'
 date: 2024-01-20T12:57:15+08:00
 draft : false

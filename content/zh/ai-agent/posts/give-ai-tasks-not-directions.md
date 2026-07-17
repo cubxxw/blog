@@ -18,7 +18,7 @@ tags:
 description: >
   为什么你跟 AI 聊了三个小时，越聊越开心，停下来却什么都没留下？因为你给的是"方向"，不是"任务"。方向没有完成态，可以聊到天荒地老；任务有明确的验收标准，一次就产出可用的东西。这篇短文把这一条操作原则讲透——它可能是你用 AI 时最该建立的习惯。
 cover:
-  image: 'images/blog/give-ai-tasks-not-directions.svg'
+  image: '/images/blog/give-ai-tasks-not-directions.svg'
   alt: 给 AI 任务而非方向——从无完成态的漫谈到有验收标准的产出
 tldr:
   - 跟 AI 聊得停不下来、却什么都没产出，根因是你给的是"方向"不是"任务"。

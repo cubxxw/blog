@@ -19,7 +19,7 @@ tags:
 description: >
   Most people's notes keep piling up while they themselves stay the same — because they treat information, records, knowledge, and creation as the same thing. This essay splits it into four stages: information handles capture and noise reduction, records are the highest-conversion semi-finished product, knowledge is reusable capability sediment, and creation recombines it for an audience. This is the overview of the "From Information to Creation" column, and the underlying framework I use to rebuild my note-taking system in the AI era.
 cover:
-  image: 'images/columns/info-to-creation/zh-01-framework.svg'
+  image: '/images/columns/info-to-creation/zh-01-framework.svg'
   alt: Diagram of the four-stage pipeline of information, records, knowledge, and creation
 tldr:
   - AI has completely removed "having information" as a moat. What's scarce now is "the ability to turn information into capability and finished work." Information is cheap; the value lies in the ability to process it.

@@ -19,7 +19,7 @@ tags:
 description: >
   To get cited by AI, first understand how it picks. This chapter takes the RAG pipeline apart to the component level: query fan-out, hybrid retrieval, vector semantics, multi-stage reranking, and citations pre-embedded before generation. The one core takeaway — the retrieval unit is the passage, not the page. Optimize the chunk. Chapter 2 of the GEO series.
 cover:
-  image: 'images/columns/geo/en-02-retrieval.svg'
+  image: '/images/columns/geo/en-02-retrieval.svg'
   alt: GEO mechanics cover showing the RAG pipeline for AI retrieval, reranking, and citation
 tldr:
   - AI search is RAG (retrieval-augmented generation). You must clear three gates — get retrieved, rank high in re-ranking, and get chosen as a citation at generation. Each gate rewards different signals.

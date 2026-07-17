@@ -23,7 +23,7 @@ tldr:
   - 我的判断：真正稀缺的不是模型，而是「世界线」——只有你的上下文能让 AI 知道你是谁、在哪、要什么。这条线值得 local-first 地长在你自己手里。
 maturity: budding
 cover:
-  image: 'images/blog/context-engineering-desk.webp'
+  image: '/images/blog/context-engineering-desk.webp'
   caption: '上下文工程：把模型的房间布置好——Write / Select / Compress / Isolate，和那条 local-first 的世界线。'
   alt: '书桌上的笔记本电脑显示「Context 不是 Prompt」文章与核心要点面板，旁边摊开的笔记写着 Context Engineering 的四支柱与 Worldline'
 columns:

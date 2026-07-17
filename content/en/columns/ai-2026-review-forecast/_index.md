@@ -6,7 +6,7 @@ date: 2026-07-15T09:00:00+08:00
 description: >
   A five-part column of observation and forecast. I take the things that actually happened in AI Agent land in the first half of 2026 — the ceiling on information automation, the shift from "you prompt it" to "it prompts you", the cost collapse of open models, the trust engineering behind unattended agents, the split between red ocean and blue ocean — and use them to reason about what the second half most likely holds. No hype chasing; only the signals that change your next move.
 cover:
-  image: 'images/columns/ai-2026-review-forecast/en-series.svg'
+  image: '/images/columns/ai-2026-review-forecast/en-series.svg'
   alt: "AI 2026 first-half review and second-half forecast column cover"
 type: columns
 ---

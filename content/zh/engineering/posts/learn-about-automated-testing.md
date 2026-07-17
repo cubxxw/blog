@@ -2,7 +2,7 @@
 title: '自动化测试的学习(一)'
 ShowRssButtonInSectionTermList: true
 cover:
-  image: 'images/blog/automation-testing-part1.jpg'  # 假设您有这张图片，如无请更换
+  image: '/images/blog/automation-testing-part1.jpg'  # 假设您有这张图片，如无请更换
   caption: '自动化测试学习'
 date: '2023-10-14T10:27:43+08:00'
 draft: false

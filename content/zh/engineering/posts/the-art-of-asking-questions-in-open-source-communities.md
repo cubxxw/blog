@@ -3,7 +3,7 @@ title: '在开源社区中学会如何提问'
 description: '在开源社区中，提问的艺术'
 ShowRssButtonInSectionTermList: true
 cover:
-    image: 'images/blog/opensource-questions.png'  # 假设您有这张图片，如无请更换
+    image: '/images/blog/opensource-questions.png'  # 假设您有这张图片，如无请更换
     caption: '在开源社区提问的艺术'
 date: '2023-09-17T03:35:18+08:00'
 draft: false

@@ -18,7 +18,7 @@ tags:
 description: >
   大多数人的个人 AI 系统停在"能跑就行"，然后被不可靠的输出反噬。而软件工程早就积累了一套让系统可靠的纪律：可观测性、质量门禁、结构即约束、SOP。这篇文章把这四样搬进个人 AI 工作流——让你的系统不只是能跑，还能报警、能自查、能稳定复用。
 cover:
-  image: 'images/blog/engineering-discipline-ai-workflow.svg'
+  image: '/images/blog/engineering-discipline-ai-workflow.svg'
   alt: 给 AI 工作流装质量门禁的四道工程纪律
 tldr:
   - 「能跑」不等于「可靠」。AI 会稳定地给你「看起来对」的输出，个人系统最大的风险是你没有任何机制发现它错了。

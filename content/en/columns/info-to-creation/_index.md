@@ -6,7 +6,7 @@ date: 2026-07-11T20:00:00+08:00
 description: >
   An ongoing column: most people treat information, records, knowledge, and creation as the same thing, so their notes keep piling up while they themselves stay the same. This column splits them into four distinct stages — information handles capture and noise reduction, records are the highest-conversion semi-finished product, knowledge is reusable capability sediment, and creation recombines it for an audience — and walks through the whole pipeline stage by stage, using AI-era tools and real cases from a community of tens of thousands.
 cover:
-  image: 'images/columns/info-to-creation/zh-series.svg'
+  image: '/images/columns/info-to-creation/zh-series.svg'
   alt: Cover of the From Information to Creation column, showing the four-stage pipeline of information, records, knowledge, and creation
 type: columns
 ---

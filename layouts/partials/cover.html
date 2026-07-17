@@ -18,7 +18,16 @@
         {{- if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") }}{{ $mountedCover = . }}{{ end }}
       {{- end }}
     {{- end }}
-    {{- $globalResourcesCover := or $mountedCover ((resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image))) }}
+    {{- /* SVGs matched from global resources must also fall through to the
+         absolute-URL branch: the non-processable fallback path.Joins the cover
+         path onto the page's RelPermalink, which 404s for mounted resources. */ -}}
+    {{- $globalMatch := "" }}
+    {{- if not $mountedCover }}
+      {{- with (resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
+        {{- if ne .MediaType.SubType "svg" }}{{ $globalMatch = . }}{{ end }}
+      {{- end }}
+    {{- end }}
+    {{- $globalResourcesCover := or $mountedCover $globalMatch }}
     {{- $cover := (or $pageBundleCover $globalResourcesCover)}}
     {{- if $cover -}}{{/* i.e it is present in page bundle */}}
         {{- if $addLink }}<a href="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" target="_blank"

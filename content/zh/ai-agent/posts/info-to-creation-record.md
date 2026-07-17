@@ -18,7 +18,7 @@ tags:
 description: >
   记录是信息和知识之间的半成品，也是整条流水线上转化率最高的一环。这篇文章讲清楚为什么"每天写点什么"是最被低估的动作、写下来的过程本身就是复盘、用最低摩擦把半成品沉下来的方法，以及"隔天精修"如何用冷却期把记录逼向知识。这是「从信息到创作」专栏的第三篇。
 cover:
-  image: 'images/columns/info-to-creation/zh-03-record.svg'
+  image: '/images/columns/info-to-creation/zh-03-record.svg'
   alt: 记录层：把信息加工成半成品知识的第一现场
 tldr:
   - 记录是 index、是半成品的知识。它本身还不是知识，但它是信息到知识之间转化率最高的方法——因为写下来的那一刻，你被迫做了选择、压缩和重述。

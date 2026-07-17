@@ -2,7 +2,7 @@
 title: '回顾与前瞻：我的2023年度总结报告'
 ShowRssButtonInSectionTermList: true
 cover:
-    image: images/blog/sm202309161719007.webp
+    image: /images/blog/sm202309161719007.webp
     caption: '关于2023年'
 date: '2023-12-31T22:26:20+08:00'
 draft: false

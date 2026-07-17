@@ -18,7 +18,7 @@ tags:
 description: >
   人人都在"用 AI"，但大多数人卡在"问一句、答一句"。真正的分水岭，是从 Chatbot 走向 Agent、再走向 Skill——把一次性的问答，沉淀成可复用、可验证的工作流。我深读了一个 400 人的付费出海 AI 社群，把这条路径讲清楚，再往下推一层：为什么"把判断沉淀成流程"才是 AI 时代真正的护城河，以及它给传统行业玩家和 AI 超级个体分别劈开了什么样的机会。
 cover:
-  image: 'images/blog/from-chatbot-to-agent-to-skill.svg'
+  image: '/images/blog/from-chatbot-to-agent-to-skill.svg'
   alt: 从 Chatbot 到 Agent 到 Skill——AI 落地的三级跃迁
 tldr:
   - 大多数人用 AI 停在"问一句答一句"（Chatbot），价值很浅；真正的跃迁是 Chatbot → Agent → Skill。

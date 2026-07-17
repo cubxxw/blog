@@ -18,7 +18,7 @@ tags:
 description: >
   Information is the first stage of the pipeline, and most of it is noise. This essay splits information into three categories — what to show AI, what to skim casually yourself, and pure noise that should be kept out — and explains how to capture, how to reduce noise, and how to hunt for scarce signal instead, in an era when AI mass-produces content and the signal-to-noise ratio keeps deteriorating. This is the second essay in the "From Information to Creation" column.
 cover:
-  image: 'images/columns/info-to-creation/zh-02-information.svg'
+  image: '/images/columns/info-to-creation/zh-02-information.svg'
   alt: The information layer — capturing and reducing noise, keeping it out at the door
 tldr:
   - The default state of information is noise. The work of the first layer isn't "store more" — it's "block more." The test is "is this worth moving into the next stage," not "is this useful."

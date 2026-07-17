@@ -19,7 +19,7 @@ tags:
 description: >
   Principles done — this chapter is all hands-on: how to write Answer-First paragraphs, turn headings into questions, whether FAQPage/HowTo schema still matters after Google retired the rich results, the right way to do llms.txt and tldr, and how to weave internal links into a topic cluster. With code and before/after. Chapter 3 of the GEO series.
 cover:
-  image: 'images/columns/geo/en-03-structured.svg'
+  image: '/images/columns/geo/en-03-structured.svg'
   alt: GEO structured tactics cover showing citable paragraph blocks
 tldr:
   - Answer-First paragraphs follow a formula - one standalone conclusion + 40-100 words of expansion + at least one piece of evidence (number/source/quote). That's the block AI lifts verbatim.
