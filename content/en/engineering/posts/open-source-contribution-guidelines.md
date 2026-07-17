@@ -82,7 +82,7 @@ For **general** issues, maybe you can choose [issues]([New Issue · labring/seal
 ### 🧷 Additional reading
 
 1. [How to participate in the github project, you may refer to this article~](https://cubxxw.com/archives/contributors)
-2. [How to use actions automatic deployment to achieve automatic remote updates~](https://cubxxw.com/archives/actions)
+2. [How to use actions automatic deployment to achieve automatic remote updates~](/engineering/posts/github-actions-advanced-techniques/)
 
 ### 💡 Steps
 

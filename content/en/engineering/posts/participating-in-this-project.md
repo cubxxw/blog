@@ -100,9 +100,9 @@ All content follows the [CC-BY-SA 3.0 license (Attribution-ShareAlike)](http://z
 
 ## ⚡ Contribution Steps
 
-> How to keep our fork in sync with the upstream in real-time? [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://cubxxw.com/archives/git-fork)
+> How to keep our fork in sync with the upstream in real-time? [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
 >
-> 📮 You can even play more with [🧷GitHub's actions ci/cd~](https://cubxxw.com/archives/actions)
+> 📮 You can even play more with [🧷GitHub's actions ci/cd~](/engineering/posts/github-actions-advanced-techniques/)
 
 💡 **Steps**:
 
@@ -151,7 +151,7 @@ Here you will be asked to write a description of your code changes, then you can
 
 📜 **Explanation**:
 
-> We need to `pull` frequently to keep the branch up-to-date, see [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://cubxxw.com/archives/git-fork)
+> We need to `pull` frequently to keep the branch up-to-date, see [🧷This tutorial teaches you how to keep your GitHub forks automatically synchronized with the upstream repository and push to Gitee](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
 >
 > To contribute your repository to ours, just:
 >

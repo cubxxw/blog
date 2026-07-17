@@ -9,7 +9,6 @@
 
   {{/* ── Principal (Author) — clickable → /about/, avatar + halo ── */}}
   {{- $aboutURL := "/about/" }}
-  {{- if eq $page.Lang "en" }}{{ $aboutURL = "/en/about/" }}{{ end }}
   {{- if eq $page.Lang "zh" }}{{ $aboutURL = "/zh/about/" }}{{ end }}
   {{/* Normalize author: front matter is often a slice like ["Xinwei Xiong", "Me"].
        Drop redundant "Me"/"我" tokens and keep the real name; render clean string. */}}
@@ -53,7 +52,6 @@
 
   {{/* ── Chronicle (Date) — clickable → /archives/ ── */}}
   {{- $archivesURL := "/archives/" }}
-  {{- if eq $page.Lang "en" }}{{ $archivesURL = "/en/archives/" }}{{ end }}
   {{- if eq $page.Lang "zh" }}{{ $archivesURL = "/zh/archives/" }}{{ end }}
   {{- $zeroTime := "0001-01-01" }}
   {{- if ne ($page.Date.Format "2006-01-02") $zeroTime }}

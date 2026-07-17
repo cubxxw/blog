@@ -57,7 +57,7 @@ I learned about Auto-GPT a long time ago. As the fastest growing project on GitH
 
 Thanks to Auto-GPT’s outstanding technology, many tasks can be automated with high precision and efficiency. It leverages the powerful natural language processing capabilities of GPT-4.
 
-We can even use it to achieve more automated work, such as the previous section [Developing an AI automatic cloud native project automatic launch tool on Sealos] (./49.md)
+We can even use it to achieve more automated work, such as the previous section "Developing an AI automatic cloud native project automatic launch tool on Sealos"
 
 
 

@@ -82,7 +82,7 @@ tldr:
 ### 🧷 补充阅读
 
 1. [如何参与github项目或许你可以参考这篇文章~](https://cubxxw.com/archives/contributors)
-2. [如何使用actions自动部署实现自动更新远程~](https://cubxxw.com/archives/actions)
+2. [如何使用actions自动部署实现自动更新远程~](/zh/engineering/posts/github-actions-advanced-techniques/)
 
 ### 💡 步骤
 

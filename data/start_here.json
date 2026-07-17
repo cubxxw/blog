@@ -223,7 +223,7 @@
         "numeral": "01",
         "title": "AI & Technology",
         "audience": "For developers curious about AI, LLMs, Kubernetes, and Go engineering.",
-        "more_url": "/en/ai-agent/",
+        "more_url": "/ai-agent/",
         "more_label": "Browse all AI & technology posts",
         "posts": [
           {
@@ -253,7 +253,7 @@
         "numeral": "02",
         "title": "Growth & Thinking",
         "audience": "For anyone on the road of self-discovery, annual reviews, and sharper thinking.",
-        "more_url": "/en/growth/",
+        "more_url": "/growth/",
         "more_label": "Browse all growth & thinking posts",
         "posts": [
           {
@@ -283,7 +283,7 @@
         "numeral": "03",
         "title": "Travel & Observation",
         "audience": "For digital nomads, hikers, and cultural observers.",
-        "more_url": "/en/travel/",
+        "more_url": "/travel/",
         "more_label": "See the full travel log",
         "posts": [
           {
@@ -310,7 +310,7 @@
         "numeral": "04",
         "title": "Projects & Practice",
         "audience": "For readers who want to go deep into source code and engineering practice — the highest-traffic thread on this site.",
-        "more_url": "/en/projects/",
+        "more_url": "/projects/",
         "more_label": "Browse all project deep-dives",
         "posts": [
           {
@@ -342,7 +342,7 @@
       "links": [
         {
           "label": "Subscribe via RSS",
-          "url": "/en/index.xml"
+          "url": "/index.xml"
         },
         {
           "label": "Say hello by email",
@@ -375,7 +375,7 @@
           "v": "9 countries · 35+ cities · 400+ km hiked"
         }
       ],
-      "about_url": "/en/about/",
+      "about_url": "/about/",
       "about_label": "More about me",
       "connect_label": "Stay connected",
       "connect": [
@@ -386,7 +386,7 @@
         },
         {
           "label": "RSS",
-          "url": "/en/index.xml",
+          "url": "/index.xml",
           "note": "Subscribe"
         },
         {
