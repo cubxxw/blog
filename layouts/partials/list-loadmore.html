@@ -1,0 +1,130 @@
+{{- /* Progressive in-place pagination for section archive lists.
+
+     Markup contract (set by the section template):
+       data-lm-list  — the list container whose children are appended
+       data-lm-year  — year-group markers inside the list (deduped on join)
+       data-lm-info  — the "N / M" page indicator inside the footer
+       data-lm-next  — the real next-page <a>; kept as-is for no-JS & crawlers
+
+     Clicking next fetches the next page, splices its entries into the
+     current list (dropping a repeated year marker at the seam), replays
+     the section's own entrance motion, and updates the footer from the
+     fetched document. Any failure falls back to a real navigation. */ -}}
+{{- $isZh := eq .Lang "zh" }}
+<script>
+(function () {
+  var list = document.querySelector('[data-lm-list]');
+  var next = document.querySelector('[data-lm-next]');
+  if (!list || !next || !('fetch' in window) || !('DOMParser' in window)) return;
+  var info = document.querySelector('[data-lm-info]');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var loadingText = {{ if $isZh }}'加载中…'{{ else }}'Loading…'{{ end }};
+  var loadedText = {{ if $isZh }}'已加载'{{ else }}'loaded'{{ end }};
+  var busy = false;
+
+  var live = document.createElement('span');
+  live.setAttribute('aria-live', 'polite');
+  live.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;';
+  next.parentNode.appendChild(live);
+
+  function yearOf(el) {
+    var m = el && el.textContent.match(/\d{4}/);
+    return m ? m[0] : null;
+  }
+
+  next.addEventListener('click', function (ev) {
+    // Respect open-in-new-tab gestures.
+    if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
+    ev.preventDefault();
+    if (busy) return;
+    busy = true;
+    // absURL bakes in the configured baseURL, which differs from the
+    // serving origin behind local proxies (netlify dev). Same-origin it.
+    var u = new URL(next.href, location.href);
+    var url = location.origin + u.pathname + u.search;
+    var label = next.textContent;
+    next.setAttribute('aria-busy', 'true');
+    next.textContent = loadingText;
+
+    fetch(url).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var newList = doc.querySelector('[data-lm-list]');
+      if (!newList) throw new Error('list missing');
+
+      // Hugo restarts year grouping on every page; drop the seam duplicate.
+      var markers = list.querySelectorAll('[data-lm-year]');
+      var lastYear = markers.length ? yearOf(markers[markers.length - 1]) : null;
+      var head = newList.firstElementChild;
+      if (head && head.hasAttribute('data-lm-year') && lastYear && yearOf(head) === lastYear) {
+        head.remove();
+      }
+
+      var added = [];
+      var frag = document.createDocumentFragment();
+      while (newList.firstElementChild) {
+        added.push(newList.firstElementChild);
+        frag.appendChild(newList.firstElementChild);
+      }
+      var grown = list.classList.contains('gr-js');
+      if (!reduced) {
+        added.forEach(function (el, i) {
+          var delay = Math.min(i * 45, 450) + 'ms';
+          if (grown) {
+            // growth spine: reuse its own .gr-in reveal transition
+            el.style.transitionDelay = delay;
+          } else {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(12px)';
+            el.style.transition = 'opacity .5s ease ' + delay + ', transform .5s ease ' + delay;
+          }
+        });
+      }
+      list.appendChild(frag);
+      if (reduced) {
+        if (grown) added.forEach(function (el) { el.classList.add('gr-in'); });
+      } else {
+        // Force a style flush so the hidden start state is committed, then
+        // reveal on a timer — rAF can stall in throttled/background tabs
+        // and would leave the new rows stranded invisible.
+        void list.offsetHeight;
+        setTimeout(function () {
+          added.forEach(function (el) {
+            if (grown) { el.classList.add('gr-in'); }
+            else { el.style.opacity = '1'; el.style.transform = 'none'; }
+          });
+        }, 20);
+        setTimeout(function () {
+          added.forEach(function (el) { el.style.transitionDelay = ''; });
+        }, 1100);
+      }
+
+      // Sync footer state from the fetched page. Prev is deliberately not
+      // introduced: everything above is already on screen.
+      var newInfo = doc.querySelector('[data-lm-info]');
+      if (info && newInfo) info.textContent = newInfo.textContent;
+      var newNext = doc.querySelector('[data-lm-next]');
+      if (newNext) {
+        next.href = newNext.href;
+        next.textContent = label;
+        next.removeAttribute('aria-busy');
+      } else {
+        next.remove();
+      }
+      live.textContent = (newInfo ? newInfo.textContent + ' ' : '') + loadedText;
+
+      // Hand keyboard/AT users the first new entry.
+      var target = null;
+      for (var i = 0; i < added.length && !target; i++) {
+        target = added[i].querySelector && added[i].querySelector('a[href]');
+      }
+      if (target) target.focus({ preventScroll: true });
+      busy = false;
+    }).catch(function () {
+      window.location.href = url;
+    });
+  });
+})();
+</script>

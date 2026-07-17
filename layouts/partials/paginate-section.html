@@ -1,0 +1,9 @@
+{{- /* Sole pagination initializer for the ai-agent / engineering / growth
+     section lists. Hugo locks .Paginator to whatever collection FIRST
+     touches it; head.html reads .Paginator for the "Page N" title suffix
+     before the section template runs, which used to freeze the paginator
+     on the default (weight-first) ordering and silently discard the
+     templates' date-sorted .Paginate call. head.html now calls this
+     partial first, and the section templates reuse it, so both sides
+     always share the same date-descending collection. */ -}}
+{{- return .Paginate ((where .RegularPages "Lang" .Lang).ByDate.Reverse) }}

@@ -100,14 +100,14 @@
       <span class="eng-mono">{{ len $pages }}</span>
     </div>
 
-    {{- $paginator := .Paginate $pages }}
+    {{- $paginator := partial "paginate-section.html" . }}
     {{- $currentYear := "" }}
-    <div class="eng-index">
+    <div class="eng-index" data-lm-list>
       {{- range $paginator.Pages }}
       {{- $year := .Date.Format "2006" }}
       {{- if ne $year $currentYear }}
       {{- $currentYear = $year }}
-      <div class="eng-year eng-mono">{{ $year }}</div>
+      <div class="eng-year eng-mono" data-lm-year>{{ $year }}</div>
       {{- end }}
       <article class="eng-row">
         <time class="eng-row__date eng-mono">{{ .Date.Format "01-02" }}</time>
@@ -125,11 +125,12 @@
       {{- if $paginator.HasPrev }}
       <a class="eng-page-btn" href="{{ $paginator.Prev.URL | absURL }}">← {{ i18n "prev_page" }}</a>
       {{- end }}
-      <span class="eng-mono">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      <span class="eng-mono" data-lm-info>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
       {{- if $paginator.HasNext }}
-      <a class="eng-page-btn" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
+      <a class="eng-page-btn" data-lm-next href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
       {{- end }}
     </footer>
+    {{- partial "list-loadmore.html" . }}
     {{- end }}
   </section>
 

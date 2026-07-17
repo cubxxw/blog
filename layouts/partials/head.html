@@ -1,3 +1,9 @@
+{{- /* Must run before anything reads .Paginator (title suffix below,
+     seo.html): first touch locks the paginator's collection, and these
+     sections paginate a date-sorted set, not the default ordering. */}}
+{{- if and (eq .Kind "section") (in (slice "ai-agent" "engineering" "growth") .Section) }}
+  {{- $_ := partial "paginate-section.html" . }}
+{{- end }}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

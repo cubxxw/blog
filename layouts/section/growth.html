@@ -260,9 +260,9 @@
       </div>
     </div>
 
-    {{- $paginator := .Paginate $growthPages }}
+    {{- $paginator := partial "paginate-section.html" . }}
     {{- $currentYear := "" }}
-    <div class="eig-timeline gr-timeline">
+    <div class="eig-timeline gr-timeline" data-lm-list>
       {{- if eq $paginator.PageNumber 1 }}
       <div class="gr-tip">
         <span class="gr-tip__node" aria-hidden="true"></span>
@@ -277,7 +277,7 @@
       {{- if gt $firstYear 0 }}{{ $ringN = add (sub (int $year) $firstYear) 1 }}{{ end }}
       {{- if gt $ringN 5 }}{{ $ringN = 5 }}{{ end }}
       {{- if lt $ringN 1 }}{{ $ringN = 1 }}{{ end }}
-      <div class="eig-year-marker gr-year">
+      <div class="eig-year-marker gr-year" data-lm-year>
         <svg class="gr-year__rings" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
           <circle cx="20" cy="20" r="2.5" class="gr-year__core"/>
           {{- range seq 1 $ringN }}
@@ -323,11 +323,12 @@
       {{- if $paginator.HasPrev }}
       <a class="eig-page-btn" href="{{ $paginator.Prev.URL | absURL }}">← {{ i18n "prev_page" }}</a>
       {{- end }}
-      <span class="eig-page-info">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      <span class="eig-page-info" data-lm-info>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
       {{- if $paginator.HasNext }}
-      <a class="eig-page-btn" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
+      <a class="eig-page-btn" data-lm-next href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
       {{- end }}
     </footer>
+    {{- partial "list-loadmore.html" . }}
     {{- end }}
   </section>
 

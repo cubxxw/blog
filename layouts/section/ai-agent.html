@@ -188,9 +188,9 @@
       <span class="aia-mono aia-index__count">{{ len $pages }}</span>
     </div>
 
-    {{- $paginator := .Paginate $pages }}
+    {{- $paginator := partial "paginate-section.html" . }}
     {{- $offset := mul (sub $paginator.PageNumber 1) $paginator.PagerSize }}
-    <ol class="aia-list" start="{{ add 1 $offset }}">
+    <ol class="aia-list" start="{{ add 1 $offset }}" data-lm-list>
       {{- range $i, $p := $paginator.Pages }}
       <li class="aia-row">
         <span class="aia-row__num aia-mono">{{ printf "%02d" (add $i (add 1 $offset)) }}</span>
@@ -216,11 +216,12 @@
       {{- if $paginator.HasPrev }}
       <a class="aia-page-btn" href="{{ $paginator.Prev.URL | absURL }}">← {{ i18n "prev_page" }}</a>
       {{- end }}
-      <span class="aia-mono">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      <span class="aia-mono" data-lm-info>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
       {{- if $paginator.HasNext }}
-      <a class="aia-page-btn" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
+      <a class="aia-page-btn" data-lm-next href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} →</a>
       {{- end }}
     </footer>
+    {{- partial "list-loadmore.html" . }}
     {{- end }}
   </section>
 
