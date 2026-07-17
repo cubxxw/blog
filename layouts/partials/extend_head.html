@@ -43,10 +43,18 @@
        reads the print stylesheet will still render the fonts correctly. */ -}}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $baseFonts }}">
 <noscript><link rel="stylesheet" href="{{ $baseFonts }}" media="print" onload="this.media='all'"></noscript>
+{{- /* ZH serif (Noto Serif SC 400/700) — self-hosted woff2 slices under
+       /fonts/, same-origin with the site. fonts.gstatic.com is unreliable
+       from mainland China, and the readers who depend on this webfont
+       (Windows/Android, no local Songti-quality serif) are exactly the ones
+       who couldn't fetch it from Google. unicode-range slicing is preserved,
+       so browsers still download only the slices a page actually uses.
+       The version is baked into the path (immutable cache) — upgrading the
+       font means bumping the directory name in static/fonts/. */ -}}
 {{- if eq .Lang "zh" }}
-{{- $zhFonts := "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" -}}
+{{- $zhFonts := "/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" | relURL -}}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
-<noscript><link rel="stylesheet" href="{{ $zhFonts }}" media="print" onload="this.media='all'"></noscript>
+<noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>
 {{- end }}
 
 {{- /* SEO Structured Data handled by seo.html → seo/structured-data.html */ -}}

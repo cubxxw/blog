@@ -106,9 +106,11 @@ html:lang(zh) {
   --color-rule:         rgba(53, 0, 3, 0.10);
 
   /* LCP fix: the H1 title is the LCP element on long ZH posts, and the
-     Noto Serif SC webfont (dozens of CJK unicode-range subsets) loads from
-     fonts.gstatic.com — slow/blocked from PSI probes & mainland networks,
-     which pushed title LCP to 16–19s (issue #222/#223). Local system serifs
+     Noto Serif SC webfont (dozens of CJK unicode-range subsets) used to load
+     from fonts.gstatic.com — slow/blocked from PSI probes & mainland networks,
+     which pushed title LCP to 16–19s (issue #222/#223). It is now self-hosted
+     under /fonts/, but a webfont still arrives after first paint, so the
+     local-first ordering below remains load-bearing. Local system serifs
      (Source Han / Songti / STSong) now sit FIRST so the title paints
      instantly from the visitor's own fonts; Noto Serif SC still upgrades
      the glyphs seamlessly once it arrives, but LCP no longer waits on it.

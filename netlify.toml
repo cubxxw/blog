@@ -69,6 +69,15 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Self-hosted webfonts (/fonts/<family>/<version>/...). The version is baked
+# into the path, so the files never change under a given URL — safe to cache
+# forever. Upgrading a font means bumping the version directory, which
+# naturally busts the cache.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Static images under /images/.
 [[headers]]
   for = "/images/*"
