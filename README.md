@@ -259,6 +259,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [一个人带一队 Agent，把 120 多篇文章的博客重新组装了一遍](https://cubxxw.com/zh/ai-agent/posts/ai-native-blog-rebuild/)
 - [2026 下半场，AI Agent 的红海已满，蓝海在哪](https://cubxxw.com/zh/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/)
 - [怎么才能放心把活交给一个没人盯着的 AI Agent](https://cubxxw.com/zh/ai-agent/posts/trusting-unattended-ai-agent/)
 - [超级个体的情报系统：用 Agent 和 MCP 搭一条从信息采集到行动的个人流水线](https://cubxxw.com/zh/ai-agent/posts/super-individual-intelligence-system/)
@@ -356,9 +357,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes Kustomize 学习指南](https://cubxxw.com/zh/engineering/posts/kubernetes-for-kustomize-learning/)
 - [设计 OpenIM 使用 Harbor 构建企业镜像仓库](https://cubxxw.com/zh/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
 - [自动化测试的学习(一)](https://cubxxw.com/zh/engineering/posts/learn-about-automated-testing/)
-- [Kubernetes 控制平面 - 调度器](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
-- [Kubernetes 控制平面 - Kubectl 详细讲解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Kubernetes 的 CNI，CRI，CSI 详解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
+- [Kubernetes 控制平面 - 调度器](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
 <!-- My-Blog-ZH:END -->
 
 
