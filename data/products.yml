@@ -82,8 +82,8 @@ products:
 
   - id: apply-agent
     name: Apply Agent
-    stage_zh: 开发中
-    stage_en: In development
+    stage_zh: 公开测试
+    stage_en: Public beta
     headline_zh: 把求职流程交给一个可信赖的智能体。
     headline_en: A trustworthy agent for the repetitive work of finding your next role.
     desc_zh: 面向求职者的智能工作台，协助整理机会、匹配岗位、准备材料并追踪每一次申请。
@@ -100,9 +100,9 @@ products:
       - /ai-agent/posts/independent-developer
     tags: [career, indie-hacker, agent]
     feedback: https://github.com/cubxxw/blog/issues/238
-    progress: 38
+    progress: 55
     todo:
       - { zh: 简历解析与个人档案, en: Résumé parsing & profile, done: true }
+      - { zh: 公开测试, en: Public beta, done: true }
       - { zh: 岗位匹配 Agent, en: Role-matching agent, done: false }
       - { zh: ATS 自动填表（Greenhouse/Lever…）, en: ATS autofill (Greenhouse/Lever…), done: false }
-      - { zh: 公开测试, en: Public beta, done: false }
