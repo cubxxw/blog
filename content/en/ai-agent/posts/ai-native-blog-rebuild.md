@@ -26,6 +26,9 @@ tldr:
   - Cover generation is deliberately two-stage — reading the piece and imagining the image goes to a language model (or me), and the image model receives exactly one concrete scene, because every abstraction you feed it comes back misspelled and painted onto the picture.
   - The automation boundary is drawn sharply — the AI reads the data and files a daily report, opens a PR when named, but the merge is always human. 98.4% of the scaffolding can be handed off; the 1.6% that is judgment cannot.
 maturity: budding
+cover:
+  image: /images/covers/ai-agent/2026/ai-native-blog-rebuild.jpeg
+  alt: "One Person and a Crew of Agents Rebuilt a 120-Post Blog From the Ground Up"
 ---
 
 ## What actually happened here
