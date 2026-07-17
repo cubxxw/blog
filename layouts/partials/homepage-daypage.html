@@ -513,6 +513,11 @@
   var isZh = root.dataset.lang === 'zh';
   var suggestions = JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn);
   var chatOpen = false, messages = [], loading = false, streaming = false;
+  // Guided-question rotation: chips the visitor already tapped/typed drop out
+  // of the quick row, so it always offers something new. `followups` are
+  // related-article questions the backend derives from whatever the last
+  // answer actually cited — they take over the quick row when present.
+  var asked = {}, followups = [];
 
   // Imperative handle to the 3D orb, registered by the module loader below
   // once (and if) it mounts. Guarded everywhere so the widget degrades to
@@ -655,7 +660,7 @@
   function renderChat() {
     var bodyHtml = '';
     if (messages.length === 0) {
-      bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨。在路上，但有空聊。问点什么？':"Hey. On the road, but happy to talk. What's on your mind?")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
+      bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨，我是 Bear 的数字分身。站里每一篇文章我都读过——帮你找文章、聊 Agent 与开源，或者讲讲路上的事，都可以。':"Hey — I'm Bear's digital twin. I've read every post on this site. I can find articles for you, talk agents and open source, or tell you about life on the road.")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
     } else {
       bodyHtml = messages.map(function(m, idx) {
         var cls = m.role==='user' ? 'hp-bear-chat-msg-user' : 'hp-bear-chat-msg-bear';
@@ -669,8 +674,23 @@
     }
     if (loading) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
 
-    var quickHtml = suggestions.slice(0,3).map(function(s) {
-      return '<button class="hp-bear-chat-quick-btn"'+(loading?' disabled':'')+" data-msg='"+esc(s.text)+"'>"+s.text+'</button>';
+    // Quick row: empty chat shows the full starter set (wrapped grid, same
+    // six lanes as the orbit); once talking, backend followups win, else the
+    // starter questions not yet asked keep rotating in.
+    var isStart = messages.length === 0;
+    var chips;
+    if (isStart) {
+      chips = suggestions.map(function(s){ return { label: s.text, msg: s.text }; });
+    } else if (followups.length) {
+      chips = followups.slice(0,3);
+    } else {
+      chips = suggestions.filter(function(s){ return !asked[s.text]; })
+        .slice(0,3).map(function(s){ return { label: s.text, msg: s.text }; });
+    }
+    var quickHtml = chips.map(function(c) {
+      // Double-quoted attributes: esc() escapes `"` but not `'`, so a chip
+      // like "What's GEO?" would truncate a single-quoted data-msg.
+      return '<button class="hp-bear-chat-quick-btn"'+(loading?' disabled':'')+' data-msg="'+esc(c.msg)+'" title="'+esc(c.msg)+'">'+esc(c.label)+'</button>';
     }).join('');
 
     // Chat state: sink the orb behind the glass panel (it keeps flowing
@@ -694,9 +714,9 @@
           '</div>'+
         '</div>'+
         '<div class="hp-bear-chat-body" id="hp-chat-body">'+bodyHtml+'</div>'+
-        '<div class="hp-bear-chat-quick">'+quickHtml+'</div>'+
+        (quickHtml ? '<div class="hp-bear-chat-quick'+(isStart?' is-start':'')+'">'+(followups.length && !isStart ? '<span class="hp-bear-chat-quick-tag">'+(isZh?'继续聊':'go deeper')+'</span>' : '')+quickHtml+'</div>' : '')+
         '<div class="hp-bear-chat-input-row">'+
-          '<input class="hp-bear-chat-input" id="hp-chat-input" placeholder="'+(isZh?'发条消息…':'Message Bear…')+'"'+(loading?' disabled':'')+'>'+
+          '<input class="hp-bear-chat-input" id="hp-chat-input" placeholder="'+(isZh?'问我文章、产品或旅行…':'Ask about posts, projects, travel…')+'"'+(loading?' disabled':'')+'>'+
           '<button class="hp-bear-chat-send" id="hp-chat-send" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'+
         '</div>'+
         '<div class="hp-bear-chat-foot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.5 4.5L6 9l4.5 1.5L12 15l1.5-4.5L18 9l-4.5-1.5z"/></svg><span>'+(isZh?"AI 模拟 Bear 的语气 · 不是本人":"AI mimicking Bear's voice · not the human")+'</span></div>'+
@@ -751,6 +771,8 @@
     text = String(text||'').trim();
     if (!text || loading) return;
     chatOpen = true;
+    asked[text] = true;      // rotate this chip out of the quick row
+    followups = [];          // stale — the new answer will bring its own
     messages.push({ role:'user', content:text });
     loading = true;
     orbSet('setThinking', true);   // orb visibly "computes" while we wait
@@ -764,7 +786,7 @@
         question: text,
         language: isZh ? 'zh' : 'en',
         context: history,
-        searchContext: sys
+        persona: sys
       })
     })
     .then(function(res) {
@@ -818,6 +840,11 @@
                       if (!agentSteps[sid]) agentOrder.push(sid);
                       agentSteps[sid] = { state: j.status.state || 'run', label: j.status.label };
                       updateStreamingBubble(agentStepsHtml() + renderMsg(reply));
+                    } else if (Array.isArray(j.followups)) {
+                      // Related-article questions derived from what the
+                      // answer cited — shown as quick chips on the final
+                      // render after the stream settles.
+                      followups = j.followups.filter(function(f){ return f && f.label && f.msg; }).slice(0,3);
                     } else if (j.error) {
                       reply = reply || (isZh ? '出了点问题：' : 'Something went wrong: ') + j.error;
                       messages[messages.length-1].content = reply;

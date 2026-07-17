@@ -885,6 +885,33 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-bear-chat-quick-btn:hover:not(:disabled) { background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent); }
 
+/* Empty-chat starter state: the full six-lane guided set, wrapped into a
+   quiet two-row grid instead of a cropped horizontal scroller. */
+.hp-bear-chat-quick.is-start {
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+
+/* Followup chips carry article titles — cap and ellipsize so one long title
+   can't push its siblings out of the row (full text stays in title=). */
+.hp-bear-chat-quick-btn {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tiny mono label in front of backend-derived followup chips. */
+.hp-bear-chat-quick-tag {
+  align-self: center;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  padding-right: 2px;
+}
+
 .hp-bear-chat-input-row {
   display: flex;
   align-items: center;

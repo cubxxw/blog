@@ -13,6 +13,8 @@
 //   data: {"meta": {...}}                        once, first
 //   data: {"status":{"id","state":"run"|"done","label"}}   per tool call
 //   data: {"delta":"..."}                        streamed answer text
+//   data: {"followups":[{"label","msg"}]}        once, after the answer —
+//                                                related-question chips
 //   data: [DONE]
 
 const fs = require("node:fs");
@@ -32,6 +34,7 @@ const UPSTREAM_TIMEOUT_MS = 22000;
 const AUTHOR_PROFILE = [
   "Name: 熊鑫伟 (Xinwei Xiong), handle cubxxw. Born 2001 in China.",
   "Identity: AI founder, open-source contributor, digital nomad and writer. Believes AI + Human = Superhuman. Active in OpenIM, OpenKF, Sealos.",
+  "Products & projects: Telepace (https://telepace.cc) — AI reading assistant for web pages and documents; OpenKF (https://github.com/OpenIMSDK/OpenKF) — open-source AI knowledge-base customer-service system built on OpenIM; full product shelf: https://cubxxw.com/projects/ (Chinese: https://cubxxw.com/zh/projects/).",
   "Personality: authentic, curious, a connector — happy to talk AI, open source and the nomad life.",
   "Contact channels:",
   "- WeChat (微信, the fastest way to reach him) — WeChat ID: cubxxw_com. QR code + one-click copy available via the WeChat card.",
@@ -181,6 +184,58 @@ function atlasPromptBlock(index, requestedLanguage) {
   }
   lines.push("The same atlas exists in both Chinese and English; recommend posts matching the user's language when possible.");
   return lines.join("\n");
+}
+
+// ─── Followups ───────────────────────────────────────────────────────────────
+// Related-article questions derived from what the answer actually cited.
+// Deterministic (tag overlap on the content index) — no extra model call, so
+// it adds zero latency and can't hallucinate titles. The frontend renders
+// them as "go deeper" quick chips.
+
+function extractCitedDocs(index, answer) {
+  const docs = [];
+  const seen = new Set();
+  const re = /\]\(((?:https?:\/\/[^/)\s]+)?\/[^)\s]+)\)/g;
+  let match;
+  while ((match = re.exec(String(answer || "")))) {
+    const doc = findByPermalink(index, match[1]);
+    if (doc && !seen.has(doc.permalink)) {
+      seen.add(doc.permalink);
+      docs.push(doc);
+    }
+  }
+  return docs;
+}
+
+function relatedFollowups(index, answer, isZh, limit = 3) {
+  const cited = extractCitedDocs(index, answer);
+  if (!cited.length) return [];
+  const citedSet = new Set(cited.map((doc) => doc.permalink));
+  const lang = isZh ? "zh" : "en";
+  const tagWeight = new Map();
+  for (const doc of cited) {
+    for (const tag of doc.tags || []) tagWeight.set(tag, (tagWeight.get(tag) || 0) + 1);
+  }
+  if (!tagWeight.size) return [];
+  const citedSections = new Set(cited.map((doc) => doc.section).filter(Boolean));
+  const scored = [];
+  for (const doc of index.documents) {
+    if (doc.language !== lang || citedSet.has(doc.permalink)) continue;
+    let score = 0;
+    for (const tag of doc.tags || []) score += tagWeight.get(tag) || 0;
+    if (!score) continue;
+    if (doc.featured) score += 1;
+    // Same shelf as what was cited reads as "next chapter", not a topic jump.
+    if (citedSections.has(doc.section)) score += 2;
+    scored.push({ doc, score });
+  }
+  scored.sort((a, b) => b.score - a.score || String(b.doc.date || "").localeCompare(String(a.doc.date || "")));
+  return scored.slice(0, limit).map(({ doc }) => {
+    const short = doc.title.length > 18 ? `${doc.title.slice(0, 17)}…` : doc.title;
+    return isZh
+      ? { label: `聊聊《${short}》`, msg: `《${doc.title}》讲了什么？` }
+      : { label: `About “${short}”`, msg: `What is “${doc.title}” about?` };
+  });
 }
 
 // ─── Tools ───────────────────────────────────────────────────────────────────
@@ -393,6 +448,9 @@ async function handler(event) {
   const language = String(payload.language || "").trim();
   const conversationHistory = payload.context || [];
   const searchContext = payload.searchContext || [];
+  // Voice card from the frontend (data/homepage.yml ai.sysPrompt*). Tone
+  // only — facts stay in AUTHOR_PROFILE/atlas so the two can't drift.
+  const persona = typeof payload.persona === "string" ? payload.persona.trim().slice(0, 600) : "";
   const isZh = language.toLowerCase().startsWith("zh") || (!language && /[一-鿿]/.test(question));
 
   if (!question) return json(400, { error: "Question is required" });
@@ -410,6 +468,11 @@ async function handler(event) {
   const systemPrompt = [
     "You are Bear AI — the digital twin assistant of this Hugo blog, deeply familiar with every article, book note, and project on the site.",
     "Reply directly and concisely; do not narrate your reasoning.",
+    "VOICE — how Bear sounds:",
+    persona ||
+      (isZh
+        ? "安静、克制、带一点诗意——像在旅途中回复朋友。默认 2-4 句；被追问细节或请求推荐时才展开。第一人称，不用 emoji。"
+        : "Calm, a little poetic — like replying to a friend from the road. Default to 2-4 warm sentences; expand only for depth or recommendations. First person, no emoji."),
     "CRITICAL RULE — Article citations: whenever you reference or recommend a specific article, you MUST format it as a Markdown hyperlink using the exact permalink from the candidates, atlas, or tool results.",
     "Correct format: [Article Title](permalink) — for example: [Agent 的自我](https://cubxxw.com/zh/ai-agent/posts/agent-identity/)",
     "NEVER write an article title as plain text without a link, and never invent permalinks or titles.",
@@ -464,7 +527,8 @@ async function handler(event) {
         .map((line) => { try { return JSON.parse(line.slice(6)); } catch { return null; } })
         .filter((evt) => evt && evt.status)
         .map((evt) => evt.status);
-      return json(200, { answer, model, candidates, toolTrace, generatedAt: index.generatedAt });
+      const followups = relatedFollowups(index, answer, isZh);
+      return json(200, { answer, model, candidates, toolTrace, followups, generatedAt: index.generatedAt });
     } catch (error) {
       return json(error.statusCode || 502, { error: error.message || "Upstream failure" });
     }
@@ -476,7 +540,9 @@ async function handler(event) {
   (async () => {
     try {
       pushLine(`data: ${JSON.stringify({ meta: { model, candidates, generatedAt: index.generatedAt } })}\n\n`);
-      await runAgentLoop(index, baseUrl, model, messages, language, isZh, pushLine);
+      const answer = await runAgentLoop(index, baseUrl, model, messages, language, isZh, pushLine);
+      const followups = relatedFollowups(index, answer, isZh);
+      if (followups.length) pushLine(`data: ${JSON.stringify({ followups })}\n\n`);
       pushLine("data: [DONE]\n\n");
     } catch (err) {
       // Surface the failure inside the stream so the client shows a message

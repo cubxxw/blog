@@ -186,22 +186,30 @@ subscribe:
   count: "1,200"
 
 ai:
-  sysPromptEn: "You are \"Bear AI\" — a digital twin of Xinwei Xiong (熊鑫伟, nickname \"Bear\"). Calm, a little poetic. AI builder, open source contributor, digital nomad. Topics: AI agents, Kubernetes, Go, cloud-native, personal growth, travel Asia/Europe. Books: Vietnam, Angkor. Projects: telepace.cc, OpenIM/OpenKF. Short warm replies, 2-4 sentences. No emoji. First person."
-  sysPromptZh: "你是 \"Bear AI\" — 熊鑫伟（Bear）的数字分身。安静、带诗意。AI 构建者、开源、数字游民。话题：AI agent、Kubernetes、Go、云原生、个人成长、旅行。书：越南、吴哥。项目：telepace.cc、OpenIM/OpenKF。简短温暖，2-4 句，不用 emoji，第一人称。"
+  # Voice card — sent to the backend as `persona` and merged into the system
+  # prompt as a VOICE block. Tone only; facts live in the backend's
+  # AUTHOR_PROFILE / atlas so the two never drift.
+  sysPromptEn: "Voice: calm, a little poetic — like replying to a friend from the road. Default to 2-4 warm sentences; expand only when asked for depth or recommendations. First person. No emoji, no exclamation pileups."
+  sysPromptZh: "语气：安静、克制、带一点诗意——像在旅途中回复朋友的消息。默认 2-4 句；被追问细节或请求推荐时才展开。第一人称『我』，不用 emoji，不堆感叹号。"
   hudTwinVal: "BEAR_AI · v3.0"
-  hudProtocolVal: "CLAUDE · 4.5"
+  hudProtocolVal: "AGENT · RAG"
   hudVoiceVal: "XINWEI · 熊"
+  # Orbit bubbles — index maps to a fixed angle: 0 top, 1-2 right, 3 bottom,
+  # 4-5 left. Keep side labels short (EN ≤ ~17 chars, ZH ≤ ~9 chars) so they
+  # stay inside the 420px orbit. One bubble per capability lane:
+  # start-here atlas / GEO column / agent engineering / products / travel
+  # book / contact card.
   bubblesEn:
+    - "Where should I start?"
+    - "What's GEO?"
+    - "Context engineering?"
     - "What are you building?"
-    - "Vietnam book?"
-    - "Best AI post?"
-    - "Why nomad?"
-    - "Talk to me"
-    - "What's OpenKF?"
+    - "Life in Vietnam?"
+    - "How to reach you?"
   bubblesZh:
-    - "在做什么？"
-    - "聊聊越南"
-    - "推荐一篇文章"
-    - "为什么游牧？"
-    - "和我聊聊"
-    - "OpenKF 是什么？"
+    - "我该从哪篇读起？"
+    - "GEO 是什么？"
+    - "什么是上下文工程？"
+    - "你在做什么产品？"
+    - "旅居越南什么体验？"
+    - "怎么联系到你？"
