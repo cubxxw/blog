@@ -54,7 +54,7 @@ Understanding the difference is only half of it — you also need to understand 
 
 **First, the illusion of "making progress."** Because there's no completion state, every round of conversation feels like moving forward — you keep feeling "almost there, a bit more discussion and it'll be clear." But progress with no endpoint is, in essence, spinning in place.
 
-**Second, the illusion of "growing."** Chatting fluidly with AI about direction feels good — no friction, no need to grind through hard thinking. But it's exactly that comfort that deceives you. There's a line that stings- **when you have a really enjoyable conversation with AI, it often means you didn't grow that day**, because you didn't hit any friction. Direction-style rambling is using pleasure to mask the fact that nothing got done. (I explored this separately in [Friction Is Growth](/en/growth/posts/friction-is-growth/).)
+**Second, the illusion of "growing."** Chatting fluidly with AI about direction feels good — no friction, no need to grind through hard thinking. But it's exactly that comfort that deceives you. There's a line that stings- **when you have a really enjoyable conversation with AI, it often means you didn't grow that day**, because you didn't hit any friction. Direction-style rambling is using pleasure to mask the fact that nothing got done. (I explored this separately in [Friction Is Growth](/growth/posts/friction-is-growth/).)
 
 So "giving direction" isn't just inefficient — it also tricks you into believing you're thinking deeply, when you're actually just enjoying a conversation that produces nothing.
 
@@ -85,4 +85,4 @@ Give it tasks, not directions. This one habit alone will make every collaboratio
 
 ---
 
-*Related reading: [Friction Is Growth](/en/growth/posts/friction-is-growth/) | [Installing Quality Gates Into Your AI Workflow](../engineering-discipline-ai-workflow/) | Series overview: [From Information to Creation](../info-to-creation-the-framework/).*
+*Related reading: [Friction Is Growth](/growth/posts/friction-is-growth/) | [Installing Quality Gates Into Your AI Workflow](../engineering-discipline-ai-workflow/) | Series overview: [From Information to Creation](../info-to-creation-the-framework/).*

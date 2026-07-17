@@ -34,8 +34,8 @@ series:
 ---
 
 > This is Part 3 of "Ignite and Settle," and the close of the series.
-> Part 1, [The Quality and Time of Companionship](/en/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/), asked why we turn away just as we come close.
-> Part 2, [Avoidant Attachment](/en/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/), described how the "turning away" person is made.
+> Part 1, [The Quality and Time of Companionship](/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/), asked why we turn away just as we come close.
+> Part 2, [Avoidant Attachment](/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/), described how the "turning away" person is made.
 > This part describes the other half — the one that looks opposite, and bites tight to the previous one at the bottom: the anxious.
 
 ---
@@ -541,6 +541,6 @@ That single moment of pause, that single different attempt — from beginning to
 >
 > If you want to read from the start:
 >
-> - Part 1: [Ignite and Settle (Part 1): The Quality and Time of Companionship](/en/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/)
-> - Part 2: [Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close](/en/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
+> - Part 1: [Ignite and Settle (Part 1): The Quality and Time of Companionship](/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/)
+> - Part 2: [Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close](/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)
 > - Part 3: (you're reading it)

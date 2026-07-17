@@ -345,6 +345,6 @@ Often, simply seeing the crack is where all the change begins.
 
 ---
 
-> Next: **[Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close](/en/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)**
+> Next: **[Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close](/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/)**
 >
 > We'll take this article's last layer — "pushing away someone coming close" — and open it up: what kind of childhood produces it, why it's particularly common in Chinese families, what its inner beliefs look like, and how, step by step, that gate can stop dropping so automatically.

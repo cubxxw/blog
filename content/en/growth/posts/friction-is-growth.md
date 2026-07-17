@@ -84,7 +84,7 @@ Once you recognize this, "using AI" should be designed in reverse — not thinki
 
 - **Manual first, AI second.** For any important thinking, write a rough version yourself first, then let AI polish it. Don't open with "what do you think?"
 - **Write something every day.** Writing is the highest-return way to actively manufacture friction — it forces you to think an idea all the way through, once a day.
-- **Give AI tasks, not directions.** Rambling endlessly with AI about "how should I approach this" feels great, but that's using pleasure to mask a lack of output. Treat it as an executor and hand it concrete tasks; keep "figuring out the direction" — the hard part — for yourself. (I wrote a separate essay on this: [Give AI Tasks, Not Directions](/en/ai-agent/posts/give-ai-tasks-not-directions/).)
+- **Give AI tasks, not directions.** Rambling endlessly with AI about "how should I approach this" feels great, but that's using pleasure to mask a lack of output. Treat it as an executor and hand it concrete tasks; keep "figuring out the direction" — the hard part — for yourself. (I wrote a separate essay on this: [Give AI Tasks, Not Directions](/ai-agent/posts/give-ai-tasks-not-directions/).)
 - **Let someone — or another AI — jolt you.** Actively seek out objections and nitpicking reviewers. Comfortable agreement makes you stay put; uncomfortable pushback moves you forward.
 
 ## A New Discipline: Treat Comfort as a Signal
@@ -99,4 +99,4 @@ Because in the end, there's only one standard for measuring all of this — not 
 
 ---
 
-*Related reading: [Give AI Tasks, Not Directions](/en/ai-agent/posts/give-ai-tasks-not-directions/) | Series overview: [From Information to Creation](/en/ai-agent/posts/info-to-creation-the-framework/).*
+*Related reading: [Give AI Tasks, Not Directions](/ai-agent/posts/give-ai-tasks-not-directions/) | Series overview: [From Information to Creation](/ai-agent/posts/info-to-creation-the-framework/).*

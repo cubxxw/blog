@@ -34,7 +34,7 @@ series:
 ---
 
 > This is Part 2 of "Ignite and Settle."
-> Part 1, [The Quality and Time of Companionship](/en/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/), described the act of "running when someone gets close."
+> Part 1, [The Quality and Time of Companionship](/growth/posts/2026-06-28-ignite-and-settle-1-quality-and-time/), described the act of "running when someone gets close."
 > This part focuses on its origins and repair.
 > Part 3 will describe anxious attachment — its mirror, with which it is biting at the bottom.
 
@@ -548,6 +548,6 @@ Avoidants are usually not "cured." They are **waited out**.
 
 ---
 
-> Next: **[Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love](/en/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)**
+> Next: **[Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love](/growth/posts/2026-06-28-ignite-and-settle-3-anxious/)**
 >
 > We'll cover the mirror pattern — looking opposite to avoidance, biting at the bottom — why these two types most readily attract each other, drive each other to despair, and how the "anxious-avoidant trap" actually runs.
