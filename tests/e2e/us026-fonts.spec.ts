@@ -31,15 +31,18 @@ test.describe('US-026 Font loading', () => {
     expect(consoleErrors).toHaveLength(0);
   });
 
+  // The ZH serif webfont is self-hosted at /fonts/noto-serif-sc/<version>/noto-serif-sc.css
+  // (migrated off Google Fonts' `?family=Noto+Serif+SC` URL, which is unreliable from
+  // mainland China). Match the self-hosted path, not the old Google Fonts query string.
   test('ZH page head contains Noto Serif SC font link', async ({ page }) => {
     await page.goto('/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
-    const notoLink = await page.$('link[href*="Noto+Serif+SC"]');
+    const notoLink = await page.$('link[href*="noto-serif-sc"]');
     expect(notoLink).not.toBeNull();
   });
 
   test('EN page head does NOT contain Noto Serif SC font link', async ({ page }) => {
     await page.goto('/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
-    const notoLink = await page.$('link[href*="Noto+Serif+SC"]');
+    const notoLink = await page.$('link[href*="noto-serif-sc"]');
     expect(notoLink).toBeNull();
   });
 
