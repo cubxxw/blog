@@ -29,6 +29,12 @@
     {{- end }}
     {{- $globalResourcesCover := or $mountedCover $globalMatch }}
     {{- $cover := (or $pageBundleCover $globalResourcesCover)}}
+    {{- /* On a single page (IsHome false) the cover is the hero — the LCP
+         element. A lazy-loaded LCP image is the classic cause of multi-second
+         LCP, so the hero loads eagerly with high fetch priority; list/home
+         covers sit lower in a grid and stay lazy. */ -}}
+    {{- $isHero := (not $.IsHome) }}
+    {{- $loadAttr := cond $isHero "eager" "lazy" }}
     {{- if $cover -}}{{/* i.e it is present in page bundle */}}
         {{- if $addLink }}<a href="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" target="_blank"
             rel="noopener noreferrer">{{ end -}}
@@ -39,20 +45,32 @@
         {{- end -}}
         {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
         {{- if (and (in $processableFormats $cover.MediaType.SubType) ($responsiveImages) (eq $prod true)) }}
-        <img loading="lazy" srcset="{{- range $size := $sizes -}}
-                        {{- if (ge $cover.Width $size) -}}
-                        {{ printf "%s %s" (($cover.Resize (printf "%sx" $size)).Permalink) (printf "%sw ," $size) -}}
-                        {{ end }}
-                    {{- end -}}{{$cover.Permalink }} {{printf "%dw" ($cover.Width)}}" 
-            sizes="(min-width: 768px) 720px, 100vw" src="{{ $cover.Permalink }}" alt="{{ $alt }}" 
-            width="{{ $cover.Width }}" height="{{ $cover.Height }}">
+        {{- /* Emit a WebP srcset (extended binary only) alongside the
+             original-format one so the browser fetches a next-gen, correctly
+             sized variant instead of the full-resolution source. */ -}}
+        {{- $origSet := slice }}{{- $webpSet := slice }}
+        {{- $canWebp := hugo.IsExtended }}
+        {{- range $size := $sizes -}}
+            {{- if (ge $cover.Width $size) -}}
+                {{- $origSet = $origSet | append (printf "%s %sw" ($cover.Resize (printf "%sx" $size)).Permalink $size) -}}
+                {{- if $canWebp -}}{{- $webpSet = $webpSet | append (printf "%s %sw" ($cover.Resize (printf "%sx webp" $size)).Permalink $size) -}}{{- end -}}
+            {{- end -}}
+        {{- end -}}
+        {{- $origSet = $origSet | append (printf "%s %dw" $cover.Permalink $cover.Width) -}}
+        {{- if $canWebp -}}{{- $webpSet = $webpSet | append (printf "%s %dw" ($cover.Resize (printf "%dx webp" $cover.Width)).Permalink $cover.Width) -}}{{- end -}}
+        <picture>
+            {{- with $webpSet }}<source type="image/webp" srcset="{{ delimit . ", " }}" sizes="(min-width: 768px) 720px, 100vw">{{ end }}
+            <img srcset="{{ delimit $origSet ", " }}" sizes="(min-width: 768px) 720px, 100vw"
+                src="{{ $cover.Permalink }}" alt="{{ $alt }}" width="{{ $cover.Width }}" height="{{ $cover.Height }}"
+                loading="{{ $loadAttr }}" decoding="async"{{ if $isHero }} fetchpriority="high"{{ end }}>
+        </picture>
         {{- else }}{{/* Unprocessable image or responsive images disabled */}}
-        <img loading="lazy" src="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" alt="{{ $alt }}">
+        <img loading="{{ $loadAttr }}" decoding="async"{{ if $isHero }} fetchpriority="high"{{ end }} src="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" alt="{{ $alt }}">
         {{- end }}
     {{- else }}{{/* For absolute urls and external links, no img processing here */}}
         {{- if $addLink }}<a href="{{ (.Params.cover.image) | absURL }}" target="_blank"
             rel="noopener noreferrer">{{ end -}}
-            <img loading="lazy" src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}">
+            <img loading="{{ $loadAttr }}" decoding="async"{{ if $isHero }} fetchpriority="high"{{ end }} src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}">
     {{- end }}
     {{- if $addLink }}</a>{{ end -}}
     {{/*  Display Caption  */}}
