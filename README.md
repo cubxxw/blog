@@ -151,6 +151,8 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [How Many of Your Mac Tools Are Fighting Each Other? I Designed a Dev-Machine Checkup Skill](https://cubxxw.com/ai-agent/posts/devbox-doctor-design/)
+- [How to Design a Skill Worth Having: I Dissected a Plugin That Dared to Delete My Files](https://cubxxw.com/ai-agent/posts/designing-valuable-agent-skills/)
 - [Field Notes: I Built My Knowledge Layer into an Arsenal](https://cubxxw.com/ai-agent/posts/info-to-creation-arsenal/)
 - [One Person and a Crew of Agents Rebuilt a 120-Post Blog From the Ground Up](https://cubxxw.com/ai-agent/posts/ai-native-blog-rebuild/)
 - [The Red Ocean Is Full: Where the Blue Ocean for AI Agents Is in Late 2026](https://cubxxw.com/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/)
@@ -249,8 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Learn About Automated Testing](https://cubxxw.com/engineering/posts/learn-about-automated-testing/)
 - [Kubernetes Control Plane - Scheduler](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
 - [Kubernetes Control Plane - Detailed Analysis of Kubelet](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
-- [Deep Dive into Kubernetes CNI, CRI, CSI Components](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
-- [Kubernetes kube-apiserver: Deep Dive into API Server Components](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
 <!-- My-Blog-EN:END -->
 
 
