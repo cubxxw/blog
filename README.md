@@ -151,6 +151,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Field Notes: I Built My Knowledge Layer into an Arsenal](https://cubxxw.com/ai-agent/posts/info-to-creation-arsenal/)
 - [One Person and a Crew of Agents Rebuilt a 120-Post Blog From the Ground Up](https://cubxxw.com/ai-agent/posts/ai-native-blog-rebuild/)
 - [The Red Ocean Is Full: Where the Blue Ocean for AI Agents Is in Late 2026](https://cubxxw.com/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/)
 - [How Do You Get to the Point Where You Trust an AI Agent Nobody Is Watching?](https://cubxxw.com/ai-agent/posts/trusting-unattended-ai-agent/)
@@ -250,7 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Kubernetes Control Plane - Detailed Analysis of Kubelet](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 - [Deep Dive into Kubernetes CNI, CRI, CSI Components](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 - [Kubernetes kube-apiserver: Deep Dive into API Server Components](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/)
-- [Deep Dive Into the Components of Kubernetes Etcd](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/)
 <!-- My-Blog-EN:END -->
 
 
