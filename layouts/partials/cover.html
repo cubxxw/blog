@@ -50,8 +50,11 @@
              sized variant instead of the full-resolution source. */ -}}
         {{- $origSet := slice }}{{- $webpSet := slice }}
         {{- $canWebp := hugo.IsExtended }}
+        {{- /* gt (not ge): a source whose width equals a target size is emitted
+             once by the final original-width append below, never here — avoids a
+             duplicate width descriptor in the srcset. */ -}}
         {{- range $size := $sizes -}}
-            {{- if (ge $cover.Width $size) -}}
+            {{- if (gt $cover.Width (int $size)) -}}
                 {{- $origSet = $origSet | append (printf "%s %sw" ($cover.Resize (printf "%sx" $size)).Permalink $size) -}}
                 {{- if $canWebp -}}{{- $webpSet = $webpSet | append (printf "%s %sw" ($cover.Resize (printf "%sx webp" $size)).Permalink $size) -}}{{- end -}}
             {{- end -}}
