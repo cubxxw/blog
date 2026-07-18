@@ -75,7 +75,7 @@ Each request to the Kubernetes API will go through multi-stage access control be
 >
 > Now we will further introduce the filters established in DefaultBuildHandlerChain() mentioned earlier:
 >
-> **WithRequestInfo():**Defined in requestinfo.go, attaches RequestInfo to the context.
+> **WithRequestInfo():** Defined in requestinfo.go, attaches RequestInfo to the context.
 >
 > **WithMaxInFlightLimit():** Defined in maxinflight.go, limits the current number of requests.
 >
@@ -91,7 +91,7 @@ Each request to the Kubernetes API will go through multi-stage access control be
 >
 > **WithImpersonation():** defined in impersonation.go, handles fake users by checking requests that attempt to modify the user (similar to sudo);
 >
-> **WithAuthorization():**Defined in authorization.go, passes all authorized requests to the multiplexer that has distributed the requests to the correct handler, otherwise a forbidden error is returned.
+> **WithAuthorization():** Defined in authorization.go, passes all authorized requests to the multiplexer that has distributed the requests to the correct handler, otherwise a forbidden error is returned.
 
 
 

@@ -429,43 +429,6 @@ body.dark .tw-page {
   letter-spacing: 0.08em;
   color: var(--tw-ink-2);
 }
-.tw-hud__xp {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 20px;
-  border-top: 1px solid var(--tw-line);
-  background: color-mix(in srgb, var(--tw-surface) 60%, transparent);
-}
-.tw-hud__xp-label,
-.tw-hud__xp-note {
-  font-family: var(--font-mono, monospace);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--tw-ink-2);
-  white-space: nowrap;
-}
-.tw-hud__xp-track {
-  flex: 1;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--tw-line);
-  overflow: hidden;
-}
-.tw-hud__xp-fill {
-  display: block;
-  height: 100%;
-  width: 38%;
-  border-radius: inherit;
-  background:
-    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%) 0 0 / 200% 100%,
-    linear-gradient(90deg, var(--tw-amber-deep), var(--tw-amber));
-  animation: tw-xp 2.8s var(--ease-standard, ease) infinite;
-}
-@keyframes tw-xp {
-  from { background-position: 200% 0, 0 0; }
-  to   { background-position: -200% 0, 0 0; }
-}
 
 /* =============================================================
    Quest log — regions
@@ -720,9 +683,9 @@ body.dark .tw-area__status { color: #6fe0a8; }
 
 /* =============================================================
    Inventory — the bookshelf（書架）
-   A quiet Kyoto shelf: cloth spines standing on a thin rail with
-   vertical titles and plenty of 間 (negative space); one book in
-   each row leans slightly. The washi-coloured spines bearing the
+   A quiet Kyoto shelf: cloth spines of uniform height standing
+   bottom-aligned on a thin rail, vertical titles and plenty of 間
+   (negative space). The washi-coloured spines bearing the
    vermilion「著」seal are self-written volumes and link out.
    ============================================================= */
 .tw-pack { margin-bottom: 88px; }
@@ -763,7 +726,7 @@ body.dark .tw-tome__case::after { background: linear-gradient(180deg, rgba(0, 0,
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 172px;
+  height: 176px;   /* uniform, bottom-aligned — clean shelf, no leaning books */
   min-width: 46px;
   padding: 16px 7px 10px;
   background:
@@ -795,11 +758,6 @@ a.tw-tome__spine:focus-visible {
   color: var(--spine-ink);
 }
 
-/* varied heights + one leaning book per row — the wabi in the shelf */
-.tw-tome:nth-child(4n+1) .tw-tome__spine { height: 180px; }
-.tw-tome:nth-child(4n+2) .tw-tome__spine { height: 156px; }
-.tw-tome:nth-child(4n+3) .tw-tome__spine { height: 186px; rotate: -4.5deg; transform-origin: 50% 100%; translate: 0 -2px; }
-.tw-tome:nth-child(4n)   .tw-tome__spine { height: 148px; }
 
 /* book-cloth palette — muted Japanese traditional colours, cycling */
 .tw-tome:nth-child(6n+1) .tw-tome__spine { --spine: #5f7185; } /* 藍鼠 */
@@ -876,8 +834,10 @@ a.tw-tome__spine:focus-visible {
 .tw-code { margin-bottom: 88px; }
 .tw-code__cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
+  max-width: 760px;
+  margin: 0 auto;
 }
 .tw-code__card {
   padding: 26px 24px;
@@ -965,21 +925,348 @@ a.tw-tome__spine:focus-visible {
 .tw-social {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   min-height: 44px;
-  padding: 10px 22px;
+  padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.82);
   font-family: var(--font-meta, sans-serif);
   font-size: 13px;
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
-  text-transform: capitalize;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(8px);
-  transition: background 200ms var(--ease-standard, ease), transform 200ms var(--ease-standard, ease), color 200ms var(--ease-standard, ease);
+  cursor: pointer;
+  transition: background 200ms var(--ease-standard, ease), transform 200ms var(--ease-standard, ease), color 200ms var(--ease-standard, ease), border-color 200ms var(--ease-standard, ease);
 }
-.tw-social:hover { background: rgba(255, 255, 255, 0.14); color: #fff; transform: translateY(-2px); }
+.tw-social__ico { flex: none; opacity: 0.9; }
+.tw-social:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.34);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.tw-social:hover .tw-social__ico { opacity: 1; }
+
+/* ── QR popover (WeChat / RedNote) ── */
+.tw-qr {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 200ms var(--ease-standard, ease);
+}
+.tw-qr.is-open { opacity: 1; }
+.tw-qr[hidden] { display: none; }
+.tw-qr__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 14, 10, 0.62);
+  backdrop-filter: blur(4px);
+}
+.tw-qr__card {
+  position: relative;
+  z-index: 1;
+  width: min(300px, calc(100vw - 40px));
+  padding: 28px 24px 24px;
+  background: var(--tw-surface, #fff);
+  border: 1px solid var(--tw-line, rgba(0, 0, 0, 0.1));
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: 0 24px 60px rgba(20, 14, 8, 0.32);
+  text-align: center;
+  transform: scale(0.94) translateY(8px);
+  transition: transform 240ms var(--ease-out, cubic-bezier(.2,.8,.2,1));
+}
+.tw-qr.is-open .tw-qr__card { transform: scale(1) translateY(0); }
+.tw-qr__x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tw-ink-2, #8a7d6e);
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+.tw-qr__x:hover { background: color-mix(in srgb, var(--tw-ink, #33291d) 8%, transparent); color: var(--tw-ink, #33291d); }
+.tw-qr__img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 14px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #f2ede3;
+}
+.tw-qr__label {
+  margin: 0;
+  font-family: var(--font-display, serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--tw-ink, #33291d);
+}
+.tw-qr__id {
+  margin: 4px 0 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: var(--tw-ink-2, #8a7d6e);
+  user-select: all;
+}
+.tw-qr__id[hidden] { display: none; }
+
+/* =============================================================
+   "Ask AI about this book" — per-book button + reused modal panel
+   Modal shell mirrors .tw-qr; inner thread/chips/composer mirror
+   the article FAQ AI panel, recoloured with --tw-* tokens.
+   ============================================================= */
+.tw-tome__ask {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border: 1px solid var(--tw-line);
+  border-radius: 999px;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-meta, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--tw-ink-2);
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+.tw-tome__ask svg { opacity: 0.85; }
+.tw-tome__ask:hover {
+  color: var(--tw-amber-deep);
+  border-color: color-mix(in srgb, var(--tw-amber-deep) 45%, var(--tw-line));
+  background: color-mix(in srgb, var(--tw-amber-deep) 6%, transparent);
+  transform: translateY(-1px);
+}
+.tw-tome__ask:focus-visible {
+  outline: 2px solid var(--tw-amber-deep);
+  outline-offset: 3px;
+}
+
+/* Modal shell — same behaviour as .tw-qr */
+.tw-book-ai {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 200ms var(--ease-standard, ease);
+}
+.tw-book-ai.is-open { opacity: 1; }
+.tw-book-ai[hidden] { display: none; }
+.tw-book-ai__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 14, 10, 0.62);
+  backdrop-filter: blur(4px);
+}
+.tw-book-ai__card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(80vh, 720px);
+  padding: 26px 24px 20px;
+  background: var(--tw-surface, #fff);
+  border: 1px solid var(--tw-line, rgba(0, 0, 0, 0.1));
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: 0 24px 60px rgba(20, 14, 8, 0.32);
+  transform: scale(0.96) translateY(8px);
+  transition: transform 240ms var(--ease-out, cubic-bezier(.2,.8,.2,1));
+}
+.tw-book-ai.is-open .tw-book-ai__card { transform: scale(1) translateY(0); }
+.tw-book-ai__x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tw-ink-2);
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+.tw-book-ai__x:hover { background: color-mix(in srgb, var(--tw-ink, #33291d) 8%, transparent); color: var(--tw-ink, #33291d); }
+
+.tw-book-ai__head { flex: none; margin-bottom: 14px; padding-right: 32px; }
+.tw-book-ai__eyebrow {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tw-amber-deep);
+  margin-bottom: 8px;
+}
+.tw-book-ai__title {
+  margin: 0;
+  font-family: var(--font-display, serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--tw-ink);
+}
+.tw-book-ai__author {
+  margin: 3px 0 0;
+  font-family: var(--font-meta, sans-serif);
+  font-size: 12.5px;
+  color: var(--tw-ink-2);
+}
+.tw-book-ai__author:empty { display: none; }
+
+.tw-book-ai__thread {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 2px;
+}
+.tw-book-ai__thread:empty { display: none; }
+.tw-book-ai__msg { display: flex; align-items: baseline; gap: 9px; animation: tw-bai-in 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes tw-bai-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+.tw-book-ai__tag {
+  flex: 0 0 auto;
+  min-width: 1.7rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tw-ink-2);
+  opacity: 0.7;
+}
+.tw-book-ai__msg--ai .tw-book-ai__tag { color: var(--tw-amber-deep); opacity: 1; }
+.tw-book-ai__msg-body {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--tw-ink);
+  overflow-wrap: anywhere;
+}
+.tw-book-ai__msg--user .tw-book-ai__msg-body { color: var(--tw-ink-2); font-style: italic; }
+.tw-book-ai__msg-body p { margin: 0 0 0.5em; }
+.tw-book-ai__msg-body p:last-child { margin-bottom: 0; }
+.tw-book-ai__msg-body ul, .tw-book-ai__msg-body ol { margin: 0.3em 0 0.5em; padding-left: 1.2em; }
+.tw-book-ai__msg-body code {
+  font-size: 0.82em;
+  padding: 0.1em 0.35em;
+  background: color-mix(in srgb, var(--tw-ink) 8%, transparent);
+  border-radius: 3px;
+}
+.tw-book-ai__msg-body a { color: var(--tw-amber-deep); text-decoration: underline; text-underline-offset: 2px; }
+
+.tw-book-ai__thinking { display: inline-flex; align-items: center; gap: 5px; padding: 4px 2px; }
+.tw-book-ai__thinking span {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--tw-ink-2);
+  animation: tw-bai-dot 1.2s ease-in-out infinite;
+}
+.tw-book-ai__thinking span:nth-child(2) { animation-delay: 0.15s; }
+.tw-book-ai__thinking span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes tw-bai-dot { 0%, 60%, 100% { opacity: 0.25; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
+
+.tw-book-ai__error {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.82rem; color: #c0392b;
+}
+.tw-book-ai__retry {
+  border: 1px solid currentColor; border-radius: 999px;
+  padding: 2px 10px; background: none; color: inherit; cursor: pointer; font-size: 0.76rem;
+}
+
+.tw-book-ai__chips {
+  flex: none;
+  display: flex; flex-wrap: wrap; gap: 7px;
+  margin: 12px 0 0;
+}
+.tw-book-ai__chips[hidden] { display: none; }
+.tw-book-ai__chip {
+  padding: 6px 12px;
+  border: 1px solid var(--tw-line);
+  border-radius: 999px;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-meta, sans-serif);
+  font-size: 12px;
+  color: var(--tw-ink-2);
+  text-align: left;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+.tw-book-ai__chip:hover {
+  color: var(--tw-amber-deep);
+  border-color: color-mix(in srgb, var(--tw-amber-deep) 45%, var(--tw-line));
+  background: color-mix(in srgb, var(--tw-amber-deep) 6%, transparent);
+  transform: translateY(-1px);
+}
+
+.tw-book-ai__composer { flex: none; display: flex; align-items: flex-end; gap: 8px; margin-top: 14px; }
+.tw-book-ai__input {
+  flex: 1 1 auto;
+  resize: none;
+  max-height: 96px;
+  padding: 9px 12px;
+  border: 1px solid var(--tw-line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--tw-ink) 3%, transparent);
+  font-family: inherit;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--tw-ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tw-book-ai__input:focus {
+  outline: none;
+  border-color: var(--tw-amber-deep);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tw-amber-deep) 14%, transparent);
+}
+.tw-book-ai__input::placeholder { color: var(--tw-ink-2); opacity: 0.65; }
+.tw-book-ai__send {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  border: 1px solid var(--tw-line);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  color: var(--tw-ink-2);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.tw-book-ai__send:hover:not(:disabled) {
+  color: #fff;
+  background: var(--tw-amber-deep);
+  border-color: var(--tw-amber-deep);
+  transform: translateY(-1px);
+}
+.tw-book-ai__send:disabled, .tw-book-ai__input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-book-ai, .tw-book-ai__card { transition: none; }
+  .tw-book-ai__msg { animation: none; }
+  .tw-book-ai__thinking span { animation: none; opacity: 0.6; }
+}
 
 /* =============================================================
    Responsive
@@ -999,7 +1286,6 @@ a.tw-tome__spine:focus-visible {
   .tw-hud__cell { border-bottom: 1px solid var(--tw-line); }
   .tw-hud__cell:nth-child(2n) { border-right: none; }
   .tw-hud__cell:nth-child(n+3) { border-bottom: none; }
-  .tw-hud__xp-note { display: none; }
   .tw-map, .tw-pack, .tw-code { margin-bottom: 64px; }
   .tw-shelf { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
   .tw-tome__case { height: 190px; }
@@ -1014,7 +1300,7 @@ a.tw-tome__spine:focus-visible {
    ============================================================= */
 @media (prefers-reduced-motion: reduce) {
   .tw-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .tw-hero__sweep, .tw-blip, .tw-online-dot, .tw-hud__xp-fill {
+  .tw-hero__sweep, .tw-blip, .tw-online-dot {
     animation: none !important;
   }
   .tw-card:hover,

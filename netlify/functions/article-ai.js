@@ -79,6 +79,62 @@ function findRelated(question, articleTitle, language, currentPath, limit) {
     }));
 }
 
+// Parse the model's follow-up output into [{label, msg}]. Prefers a JSON array;
+// falls back to line-splitting (stripping markdown list markers). Never throws.
+function parseFollowupList(raw) {
+  const text = String(raw || "");
+  let arr = null;
+  const m = text.match(/\[[\s\S]*\]/);
+  if (m) {
+    try { arr = JSON.parse(m[0]); } catch { /* fall through */ }
+  }
+  if (!Array.isArray(arr)) {
+    arr = text
+      .split("\n")
+      .map((s) => s.replace(/^\s*[-*\d.)、。]+\s*/, "").replace(/^["'“”]|["'“”]$/g, "").trim())
+      .filter(Boolean);
+  }
+  return arr
+    .filter((s) => typeof s === "string" && s.trim().length > 1)
+    .slice(0, 3)
+    .map((q) => ({ label: q.trim(), msg: q.trim() }));
+}
+
+// Second, tiny model call after the main answer: generate 2-3 follow-up
+// questions that go DEEPER INTO THIS BOOK. Non-streaming, short output.
+// Any failure degrades silently to no follow-ups (the main answer is unaffected).
+async function generateBookFollowups({ baseUrl, model, isZh, bookContext, userQuestion, answer }) {
+  const sys = isZh
+    ? '你要基于下面这本书的信息、读者刚问的问题和 AI 刚给出的回答，生成 2-3 个让读者继续深入了解【这本书本身】的追问。'
+      + '要求：紧扣书的内容/主题/观点，不要推荐其它书或文章，不要重复读者已问的问题，每个问题不超过 22 字。'
+      + '只输出一个 JSON 数组，形如 ["问题1","问题2","问题3"]，不要任何多余文字。'
+    : 'Based on the book info, the reader\'s question and the AI answer below, generate 2-3 follow-up questions that go DEEPER INTO THIS BOOK itself (its content, themes, arguments). '
+      + 'Do not recommend other books or articles, do not repeat the reader\'s question, keep each under 12 words. '
+      + 'Output ONLY a JSON array like ["q1","q2","q3"], nothing else.';
+  const usr = `${bookContext}\n\n${isZh ? "读者问" : "Reader asked"}: ${userQuestion}\n\n`
+    + `${isZh ? "AI 回答" : "AI answered"}: ${String(answer).slice(0, 800)}`;
+  try {
+    const res = await fetch(`${baseUrl}/chat/completions`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: "system", content: sys }, { role: "user", content: usr }],
+        max_completion_tokens: 220,
+        stream: false,
+      }),
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return parseFollowupList(data?.choices?.[0]?.message?.content || "");
+  } catch {
+    return [];
+  }
+}
+
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -116,6 +172,10 @@ async function handler(event) {
   // Respect the reader's language — the previous prompt was hardcoded to
   // Chinese, so EN readers got Chinese answers.
   const isZh = String(payload.language || "zh").toLowerCase().indexOf("zh") === 0;
+  // Book-companion mode (travel bookshelf) asks for "go deeper into this book"
+  // follow-up questions after each answer. Off by default so article pages,
+  // which share this endpoint, are completely unaffected.
+  const wantFollowups = payload.wantFollowups === true;
 
   if (!question) return json(400, { error: "question is required" });
 
@@ -214,8 +274,10 @@ async function handler(event) {
   const nodeReadable = new Readable({ read() {} });
 
   // Emit related-reading links first so the frontend can render the
-  // "related reading" row as soon as the answer completes.
-  if (related.length) {
+  // "related reading" row as soon as the answer completes. In book-companion
+  // mode we suppress this — the book panel wants deeper questions, not other
+  // articles — so the panel stays focused on the book.
+  if (related.length && !wantFollowups) {
     nodeReadable.push(
       `data: ${JSON.stringify({ meta: { candidates: related.map((r) => ({ title: r.title, permalink: r.permalink })) } })}\n\n`
     );
@@ -226,6 +288,7 @@ async function handler(event) {
       const reader = upstreamRes.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
+      let fullAnswer = "";
 
       while (true) {
         const { done, value } = await reader.read();
@@ -241,11 +304,30 @@ async function handler(event) {
             const chunk = JSON.parse(raw);
             const delta = chunk.choices?.[0]?.delta?.content || "";
             if (delta) {
+              if (wantFollowups) fullAnswer += delta;
               nodeReadable.push(`data: ${JSON.stringify({ delta })}\n\n`);
             }
           } catch {}
         }
       }
+
+      // Book-companion mode: after the answer completes, a small second call
+      // produces "go deeper into this book" follow-ups, sent as one extra SSE
+      // event before [DONE]. Silent no-op on any failure.
+      if (wantFollowups && fullAnswer.trim()) {
+        const followups = await generateBookFollowups({
+          baseUrl,
+          model,
+          isZh,
+          bookContext: articleContent,
+          userQuestion: question,
+          answer: fullAnswer,
+        });
+        if (followups.length) {
+          nodeReadable.push(`data: ${JSON.stringify({ followups })}\n\n`);
+        }
+      }
+
       nodeReadable.push("data: [DONE]\n\n");
     } catch (err) {
       nodeReadable.destroy(err);

@@ -200,7 +200,7 @@ AppAgent的核心运作机制是**ReAct（Reasoning and Acting）循环** <sup>5
 
 
 
-* **理解增强 (Comprehension Enhancement):** 通过**检索增强生成（RAG）**从异构来源（包括外部知识库如帮助文档、Bing搜索结果，以及演示库如自我演示和用户演示）获取信息，使其成为特定应用的“专家” <sup>1</sup>。
+* **理解增强 (Comprehension Enhancement):** 通过**检索增强生成（RAG）** 从异构来源（包括外部知识库如帮助文档、Bing搜索结果，以及演示库如自我演示和用户演示）获取信息，使其成为特定应用的“专家” <sup>1</sup>。
     * **从帮助文档学习:** 用户可以在config.yaml中配置帮助文档路径，AppAgent通过build_offline_docs_retriever构建检索器，并使用retrieved_documents_prompt_helper构建提示 <sup>9</sup>。
     * **从Bing搜索学习:** 当帮助文档不足或过时，可启用Bing搜索获取最新信息。通过build_online_search_retriever构建检索器 <sup>9</sup>。
     * **从自我演示学习:** 保存成功的动作轨迹供未来参考。通过build_experience_retriever构建检索器，并使用rag_experience_retrieve检索演示 <sup>9</sup>。
@@ -272,7 +272,7 @@ HostAgent和AppAgent将动作请求传递给Puppeteer，Puppeteer再根据动作
 
 ### **5.3. 知识获取与RAG (Knowledge Acquisition & RAG)**
 
-UFO的核心能力之一是其**持续知识基底（Continuous Knowledge Substrate）**，它通过**检索增强生成（Retrieval-Augmented Generation, RAG）**技术，使智能体能够动态地获取和利用知识，从而不断学习和提升性能 <sup>1</sup>。
+UFO的核心能力之一是其**持续知识基底（Continuous Knowledge Substrate）**，它通过**检索增强生成（Retrieval-Augmented Generation, RAG）** 技术，使智能体能够动态地获取和利用知识，从而不断学习和提升性能 <sup>1</sup>。
 
 知识的来源是多样的：
 
@@ -311,11 +311,11 @@ UFO中的AppAgent采用**ReAct (Reasoning and Acting)** 的工作模式 <sup>5</
 
 ### **5.5. 投机性多动作执行 (Speculative Multi-Action)**
 
-为了解决大型语言模型（LLM）固有的推理延迟问题，并提高自动化流程的整体效率，UFO²引入了**投机性多动作执行（Speculative Multi-Action）**机制 <sup>1</sup>。
+为了解决大型语言模型（LLM）固有的推理延迟问题，并提高自动化流程的整体效率，UFO²引入了**投机性多动作执行（Speculative Multi-Action）** 机制 <sup>1</sup>。
 
 该机制的核心思想是：与其让AppAgent在ReAct循环中每一步都单独调用LLM进行一次观察-思考-行动的决策，不如尝试预测接下来可能连续发生的多个步骤，并将这些预测的动作序列捆绑在一起，通过一次LLM调用进行统一的评估和验证 <sup>1</sup>。
 
-具体来说，**Speculative Executor（投机执行器）**会根据当前状态和任务目标，预测出一批（batch）可能的后续动作 <sup>5</sup>。然后，这些预测的动作会与实时的UIA状态（或其他应用状态信息）进行比对验证，以确保它们的可行性和正确性 <sup>1</sup>。如果LLM确认这个动作序列是合理的，那么这些动作就可以被连续执行，从而减少了多次LLM调用的开销。
+具体来说，**Speculative Executor（投机执行器）** 会根据当前状态和任务目标，预测出一批（batch）可能的后续动作 <sup>5</sup>。然后，这些预测的动作会与实时的UIA状态（或其他应用状态信息）进行比对验证，以确保它们的可行性和正确性 <sup>1</sup>。如果LLM确认这个动作序列是合理的，那么这些动作就可以被连续执行，从而减少了多次LLM调用的开销。
 
 根据项目文档，这种方法可以将LLM的查询次数减少高达51% <sup>1</sup>。这对于提升用户体验和降低API调用成本都具有重要意义。
 
@@ -326,7 +326,7 @@ UFO中的AppAgent采用**ReAct (Reasoning and Acting)** 的工作模式 <sup>5</
 
 ### **5.6. 画中画桌面 (Picture-in-Picture Desktop)**
 
-为了提升用户体验，使得自动化任务的执行不干扰用户的正常工作，UFO²计划并已完成（将在下一版本发布）**画中画桌面（Picture-in-Picture Desktop, PiP）**功能 <sup>1</sup>。
+为了提升用户体验，使得自动化任务的执行不干扰用户的正常工作，UFO²计划并已完成（将在下一版本发布）**画中画桌面（Picture-in-Picture Desktop, PiP）** 功能 <sup>1</sup>。
 
 PiP模式的核心特性是，智能体的自动化操作将在一个隔离的、沙箱化的虚拟桌面环境中运行 <sup>1</sup>。这意味着：
 

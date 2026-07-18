@@ -9,6 +9,8 @@
 #            slot_* 是游戏风格的"装备槽位"标签，随意发挥。
 #            own: true 表示自己写的书——书脊呈和纸原色并钤朱印「著」；
 #            url 可选，给出后整个书脊可点击跳转。
+#            ai_prompts_zh / ai_prompts_en —— 每本书 3 个「问 AI」引导问题，
+#            点开该书的 AI 对话面板时作为默认胶囊显示。中英各一组，逐本定制。
 regions:
   - slug: tibet
     name_zh: 西藏高原
@@ -54,6 +56,14 @@ books:
     note_en: Saigon's traffic, Da Lat's fog, Hoi An's lanterns — Mekong field notes, slow-cooked over two months.
     url: https://vietnam.cubxxw.com/
     own: true
+    ai_prompts_zh:
+      - 这本游记里，越南给作者留下最深的一个瞬间是什么？
+      - 两个月慢走越南，和打卡式旅游最大的不同在哪？
+      - 如果我只有一周时间去越南，作者会建议怎么走？
+    ai_prompts_en:
+      - What single moment in Vietnam left the deepest mark on the author?
+      - How does two months of slow travel differ from checklist tourism?
+      - If I only had a week in Vietnam, what would the author suggest?
 
   - title_zh: 吴哥窟
     title_en: Angkor
@@ -65,6 +75,14 @@ books:
     note_en: Stones, roots and empire — walking the ruins of Angkor, listening for the echo of a vanished kingdom.
     url: https://angkor.cubxxw.com/
     own: true
+    ai_prompts_zh:
+      - 走过吴哥的庙宇与废墟，作者听到了怎样的「帝国回声」？
+      - 面对被树根吞没的石头建筑，人会生出什么样的时间感？
+      - 去吴哥窟旅行前，最好先了解哪些历史背景？
+    ai_prompts_en:
+      - What "echo of empire" did the author hear among Angkor's temples and ruins?
+      - What sense of time arises before stone swallowed by tree roots?
+      - What history is worth knowing before visiting Angkor?
 
   - title_zh: 在路上
     title_en: On the Road
@@ -74,6 +92,14 @@ books:
     slot_en: Main Quest
     note_zh: 出发不需要一个成立的理由，出发本身就是理由。
     note_en: You don't need a valid reason to leave — leaving is the reason.
+    ai_prompts_zh:
+      - 「出发本身就是理由」这句话，在书里是怎么被活出来的？
+      - 凯鲁亚克笔下的「垮掉的一代」到底在反抗什么？
+      - 这本书为什么能成为公路旅行的精神图腾？
+    ai_prompts_en:
+      - How is "leaving is the reason" actually lived out in the book?
+      - What was Kerouac's Beat Generation really rebelling against?
+      - Why did this book become the spiritual icon of road trips?
 
   - title_zh: 旅行的艺术
     title_en: The Art of Travel
@@ -83,6 +109,14 @@ books:
     slot_en: Perspective Mod
     note_zh: 决定一段旅程质量的不是目的地，而是携带的注意力。
     note_en: What makes a journey is not the destination but the attention you bring.
+    ai_prompts_zh:
+      - 德波顿说「决定旅程质量的是携带的注意力」，具体怎么理解？
+      - 为什么我们对旅行的期待，常常比旅行本身更美好？
+      - 怎样才能像书里说的那样，带着哲学的眼光去旅行？
+    ai_prompts_en:
+      - What does de Botton mean by "the attention you bring" shaping a journey?
+      - Why is anticipating travel often better than the trip itself?
+      - How can I travel with the philosophical eye the book describes?
 
   - title_zh: 江城
     title_en: River Town
@@ -92,6 +126,14 @@ books:
     slot_en: Map Annotations
     note_zh: 在一个地方住下来，地图上的名字才会变成人。
     note_en: Only when you stay does a name on the map become people.
+    ai_prompts_zh:
+      - 海斯勒是怎么从一个外来者，变成能读懂涪陵的人的？
+      - 「住下来，地图上的名字才会变成人」在书里怎么体现？
+      - 这本书对理解 90 年代的中国有什么独特视角？
+    ai_prompts_en:
+      - How did Hessler go from outsider to someone who understood Fuling?
+      - How does "staying turns a name into people" play out in the book?
+      - What unique lens does this book offer on 1990s China?
 
   - title_zh: 旅行之木
     title_en: The Tree That Travels
@@ -101,6 +143,14 @@ books:
     slot_en: Slow Buff
     note_zh: 另一片土地上，有一种和我们完全不同的时间在流动。
     note_en: Somewhere else, a completely different kind of time is flowing.
+    ai_prompts_zh:
+      - 星野道夫说「另一片土地上有完全不同的时间在流动」，指的是什么？
+      - 一个摄影师用一生守候阿拉斯加，图的是什么？
+      - 这本书如何改变我们对「自然」和「远方」的想象？
+    ai_prompts_en:
+      - What did Hoshino mean by "a completely different kind of time flowing"?
+      - Why would a photographer spend a lifetime keeping vigil over Alaska?
+      - How does this book reshape our idea of "nature" and "the far away"?
 
   - title_zh: 禅与摩托车维修艺术
     title_en: Zen and the Art of Motorcycle Maintenance
@@ -110,6 +160,14 @@ books:
     slot_en: Maintenance Manual
     note_zh: 骑在路上修的不是摩托车，是自己的心智。
     note_en: What you maintain on the road is not the motorcycle — it's your mind.
+    ai_prompts_zh:
+      - 「修的不是摩托车，是自己的心智」——这个隐喻怎么展开的？
+      - 书里说的「良质」（Quality）到底是什么？
+      - 为什么一本讲摩托车维修的书，会变成哲学经典？
+    ai_prompts_en:
+      - How does the metaphor "you maintain your mind, not the bike" unfold?
+      - What exactly is the "Quality" the book keeps circling?
+      - Why did a book about motorcycle maintenance become a philosophy classic?
 
   - title_zh: 夜航西飞
     title_en: West with the Night
@@ -119,3 +177,11 @@ books:
     slot_en: Flight License
     note_zh: 独自飞过黑夜与海洋的人，写下的每个字都有重量。
     note_en: Every word weighs more when written by someone who flew the night alone.
+    ai_prompts_zh:
+      - 独自飞越黑夜与海洋是种怎样的体验？
+      - 为什么海明威说马卡姆的文字让他「羞愧」？
+      - 这本书里的非洲和飞行，各自意味着什么？
+    ai_prompts_en:
+      - What is it like to fly across the night and the ocean alone?
+      - Why did Hemingway say Markham's writing made him "ashamed"?
+      - What do Africa and flight each mean in this book?

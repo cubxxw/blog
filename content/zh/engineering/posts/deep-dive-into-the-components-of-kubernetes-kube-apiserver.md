@@ -71,23 +71,23 @@ Kubernetes API的每个请求都会经过多阶段的访问控制之后才会被
 >
 > 现在我们进一步深入的对前文中提到的DefaultBuildHandlerChain()中建立的过滤器（filters）进行介绍：
 >
-> **WithRequestInfo()：**在requestinfo.go中定义，将RequestInfo附加到上下文中。
+> **WithRequestInfo()：** 在requestinfo.go中定义，将RequestInfo附加到上下文中。
 >
-> **WithMaxInFlightLimit()：**在maxinflight.go中定义，对当前的请求数量进行限制。
+> **WithMaxInFlightLimit()：** 在maxinflight.go中定义，对当前的请求数量进行限制。
 >
-> **WithTimeoutForNonLongRunningRequests()：**在timeout.go中定义，超时暂停非长时间运行请求（如大多数GET，PUT，POST，DELETE请求），这种请求与长时间运行请求（如watch和proxy请求）正好相反。
+> **WithTimeoutForNonLongRunningRequests()：** 在timeout.go中定义，超时暂停非长时间运行请求（如大多数GET，PUT，POST，DELETE请求），这种请求与长时间运行请求（如watch和proxy请求）正好相反。
 >
-> **WithPanicRecovery()：**在wrap.go中定义，包装一个http Handler来恢复和记录报错。
+> **WithPanicRecovery()：** 在wrap.go中定义，包装一个http Handler来恢复和记录报错。
 >
-> **WithCORS()：**在cors.go中定义，提供了一个CORS实现；CORS代表跨原始资源共享（Cross-Origin Resource Sharing），是一种允许嵌入在HTML页面中的JavaScript生成XMLHttpRequests请求到一个域（domain）的机制，这个域不同于JavaScript的初始起源。
+> **WithCORS()：** 在cors.go中定义，提供了一个CORS实现；CORS代表跨原始资源共享（Cross-Origin Resource Sharing），是一种允许嵌入在HTML页面中的JavaScript生成XMLHttpRequests请求到一个域（domain）的机制，这个域不同于JavaScript的初始起源。
 >
-> **WithAuthentication()：**在authentication.go中定义，尝试以用户身份对给定的请求进行验证，并将用户信息存储在提供的上下文中。成功后，授权HTTP header将从请求中删除。
+> **WithAuthentication()：** 在authentication.go中定义，尝试以用户身份对给定的请求进行验证，并将用户信息存储在提供的上下文中。成功后，授权HTTP header将从请求中删除。
 >
-> **WithAudit()：**在audit.go中定义，使用所有传入请求的审计日志信息来充实handler。审计日志的条目包含很多信息，例如请求的源IP、调用操作的用户信息以及请求的命名空间等。
+> **WithAudit()：** 在audit.go中定义，使用所有传入请求的审计日志信息来充实handler。审计日志的条目包含很多信息，例如请求的源IP、调用操作的用户信息以及请求的命名空间等。
 >
-> **WithImpersonation()：**在impersonation.go中定义，通过检查试图对用户进行修改的请求（类似sudo），来对假用户进行处理；
+> **WithImpersonation()：** 在impersonation.go中定义，通过检查试图对用户进行修改的请求（类似sudo），来对假用户进行处理；
 >
-> **WithAuthorization()：**在authorization.go中定义，将所有授权的请求传递给已经将请求分发给正确的handler的复用器，否则返回禁止错误（forbidden error）。
+> **WithAuthorization()：** 在authorization.go中定义，将所有授权的请求传递给已经将请求分发给正确的handler的复用器，否则返回禁止错误（forbidden error）。
 
 
 

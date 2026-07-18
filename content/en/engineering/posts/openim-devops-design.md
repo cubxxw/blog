@@ -110,7 +110,7 @@ The Twelve Principles are guiding principles that further expand and explain the
 
 ## Agile development framework
 
-Many people have heard of **Scrum Master,**oh, I am curious what is Scrum Master?
+Many people have heard of **Scrum Master**,oh, I am curious what is Scrum Master?
 
 **Scrum is an iterative and incremental software development process**
 
