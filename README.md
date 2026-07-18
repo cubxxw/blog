@@ -259,6 +259,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [你的 Mac 上有几套工具在打架？我设计了一个开发机体检 Skill](https://cubxxw.com/zh/ai-agent/posts/devbox-doctor-design/)
+- [如何设计一套有价值的 Skill：我拆了一个敢删我文件的插件](https://cubxxw.com/zh/ai-agent/posts/designing-valuable-agent-skills/)
 - [番外·实践：我把「知识层」建成了一座兵工厂](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-arsenal/)
 - [一个人带一队 Agent，把 120 多篇文章的博客重新组装了一遍](https://cubxxw.com/zh/ai-agent/posts/ai-native-blog-rebuild/)
 - [2026 下半场，AI Agent 的红海已满，蓝海在哪](https://cubxxw.com/zh/ai-agent/posts/ai-agent-red-ocean-blue-ocean-2026/)
@@ -357,8 +359,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Hugo 的高级教程](https://cubxxw.com/zh/engineering/posts/hugo-advanced-tutorial/)
 - [Kubernetes Kustomize 学习指南](https://cubxxw.com/zh/engineering/posts/kubernetes-for-kustomize-learning/)
 - [设计 OpenIM 使用 Harbor 构建企业镜像仓库](https://cubxxw.com/zh/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
-- [自动化测试的学习(一)](https://cubxxw.com/zh/engineering/posts/learn-about-automated-testing/)
-- [Kubernetes 的 CNI，CRI，CSI 详解](https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/)
 <!-- My-Blog-ZH:END -->
 
 
