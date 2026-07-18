@@ -536,7 +536,7 @@ go get github.com/derekparker/delve/cmd/dlv
 
 ### 执行方法
 
-**dlv的debug远程调试需要远端和近端都持有全部的源代码文件。**为了方便，这里就不改变GOPATH，在远端直接将整个项目，扔到 `$GOPATH/src` 里面。
+**dlv的debug远程调试需要远端和近端都持有全部的源代码文件**。为了方便，这里就不改变GOPATH，在远端直接将整个项目，扔到 `$GOPATH/src` 里面。
 
 源代码文件路径为 `$GOPATH/src/hello/main.go`
 
@@ -848,7 +848,7 @@ Warning: debugging optimized function
         at /home/lday/Tools/Dev_Tools/Go_Tools/go_1_6_2/src/runtime/asm_amd64.s:1998
     ```
 
-    我们看到，我们自己dbgTest.go的调用栈在第12层。当前goroutine已经不再我们自己的调用栈上，而是进入到系统函数的调用中，在这种情况下，使用gdb进行调试时，我们发现，此时我们没有很好的方法能够输出我们需要的调用栈变量信息。**dlv可以!**此时只需简单的通过`frame x cmd`就可以输出我们想要的调用栈信息了
+    我们看到，我们自己dbgTest.go的调用栈在第12层。当前goroutine已经不再我们自己的调用栈上，而是进入到系统函数的调用中，在这种情况下，使用gdb进行调试时，我们发现，此时我们没有很好的方法能够输出我们需要的调用栈变量信息。**dlv可以**!此时只需简单的通过`frame x cmd`就可以输出我们想要的调用栈信息了
 
     ```yaml
     (dlv) frame 12 ls

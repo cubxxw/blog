@@ -426,7 +426,7 @@ LCEL 从第一天起就被设计为支持将原型投入生产，从最简单的
 
 1. **[Get started](https://python.langchain.com/v0.1/docs/expression_language/)** 开始使用：LCEL 及其优势
 2. **[Runnable interface](https://python.langchain.com/v0.1/docs/expression_language/interface/)** Runnable 接口：LCEL 对象的标准接口
-3. **[Primitives](https://python.langchain.com/v0.1/docs/expression_language/primitives/)**原语：有关 LCEL 包含的原语的更多信息
+3. **[Primitives](https://python.langchain.com/v0.1/docs/expression_language/primitives/)** 原语：有关 LCEL 包含的原语的更多信息
 4. and more !
 
 

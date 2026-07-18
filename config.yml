@@ -142,6 +142,12 @@ params:
       title: 微信 / WeChat
       wechatID: cubxxwAI
       qr: /wechat.jpg
+    - name: instagram
+      title: Instagram
+      url: https://www.instagram.com/cubxxw/
+    - name: facebook
+      title: Facebook
+      url: https://www.facebook.com/cubxxw/
   social:
     twitter: cubxxw
   ShareButtons: ["linkedin", "twitter","bilibili","zhihu","email","facebook", "reddit", "telegram", "whatsapp", "ycombinator", "weibo", "xiaohongshu"] # To customize which share buttons to be enabled on page

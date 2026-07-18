@@ -109,7 +109,7 @@ OpenIM 的团队约束制定：[https://traveling-thistle-a0c.notion.site/OpenIM
 
 ## 敏捷开发框架
 
-很多人听说过 **Scrum Master ，**oh，我很好奇 Scrum Master 是什么？
+很多人听说过 **Scrum Master **，oh，我很好奇 Scrum Master 是什么？
 
 **Scrum 是迭代式增量软件开发过程**
 

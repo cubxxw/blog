@@ -255,7 +255,7 @@ https://chat.langchain.com/
 
 ![Untitled](http://sm.nsddd.top/Untitled (2).png)
 
-**面壁智能（ModelBest）**联合清华大学 NLP 实验室共同开发的大模型全流程自动化软件开发框架 OpenBME/ChatDev
+**面壁智能（ModelBest）** 联合清华大学 NLP 实验室共同开发的大模型全流程自动化软件开发框架 OpenBME/ChatDev
 
 https://github.com/OpenBMB/ChatDev
 

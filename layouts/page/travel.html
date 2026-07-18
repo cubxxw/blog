@@ -117,11 +117,6 @@
         <span class="tw-hud__label">{{ if $isZh }}剩余地图{{ else }}Maps Remaining{{ end }}</span>
       </div>
     </div>
-    <div class="tw-hud__xp" role="presentation">
-      <span class="tw-hud__xp-label">{{ if $isZh }}主线进度{{ else }}Main Quest{{ end }}</span>
-      <span class="tw-hud__xp-track"><span class="tw-hud__xp-fill"></span></span>
-      <span class="tw-hud__xp-note">{{ if $isZh }}无限期进行中{{ else }}Ongoing, indefinitely{{ end }}</span>
-    </div>
   </section>
 
   {{/* ══ Quest log — articles grouped by region ══ */}}
@@ -221,15 +216,53 @@
           <span class="tw-tome__slot">{{ if $isZh }}{{ $b.slot_zh }}{{ else }}{{ $b.slot_en }}{{ end }}</span>
           <span class="tw-tome__author">{{ $author }}</span>
           <p class="tw-tome__note">{{ if $isZh }}{{ $b.note_zh }}{{ else }}{{ $b.note_en }}{{ end }}</p>
+          {{- $prompts := cond $isZh $b.ai_prompts_zh $b.ai_prompts_en }}
+          {{- if $prompts }}
+          <button type="button" class="tw-tome__ask"
+                  data-book-title="{{ $title }}"
+                  data-book-author="{{ $author }}"
+                  data-book-note="{{ if $isZh }}{{ $b.note_zh }}{{ else }}{{ $b.note_en }}{{ end }}"
+                  data-book-prompts="{{ $prompts | jsonify }}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            {{ if $isZh }}问 AI{{ else }}Ask AI{{ end }}
+          </button>
+          {{- end }}
         </div>
       </article>
       {{- end }}
     </div>
     <p class="tw-shelf__coda tw-reveal">
-      {{- if $isZh }}钤朱印「著」的两卷，是我自己在路上写下的。
-      {{- else }}The two spines bearing the vermilion seal are the volumes I wrote on the road.
+      {{- if $isZh }}钤朱印「著」的两卷，是我自己在路上写下的。点任意一本书上的「问 AI」，可以就这本书追问下去。
+      {{- else }}The two spines bearing the vermilion seal are the volumes I wrote on the road. Hit "Ask AI" on any book to keep digging into it.
       {{- end }}
     </p>
+
+    {{/* Single reused "Ask AI about this book" modal — mirrors the QR popover pattern.
+         Filled per-book by /js/travel-book-ai.js when a .tw-tome__ask button is clicked. */}}
+    <div class="tw-book-ai" id="tw-book-ai" role="dialog" aria-modal="true"
+         aria-label="{{ if $isZh }}问 AI 关于这本书{{ else }}Ask AI about this book{{ end }}"
+         data-lang="{{ cond $isZh "zh" "en" }}" hidden>
+      <div class="tw-book-ai__backdrop" data-bai-close></div>
+      <div class="tw-book-ai__card" role="document">
+        <button type="button" class="tw-book-ai__x" data-bai-close aria-label="{{ if $isZh }}关闭{{ else }}Close{{ end }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <header class="tw-book-ai__head">
+          <span class="tw-book-ai__eyebrow">{{ if $isZh }}问 AI · 关于这本书{{ else }}Ask AI · about this book{{ end }}</span>
+          <h3 class="tw-book-ai__title"></h3>
+          <p class="tw-book-ai__author"></p>
+        </header>
+        <div class="tw-book-ai__thread" aria-live="polite"></div>
+        <div class="tw-book-ai__chips" hidden></div>
+        <div class="tw-book-ai__composer">
+          <textarea class="tw-book-ai__input" rows="1" maxlength="400"
+                    placeholder="{{ if $isZh }}追问这本书…{{ else }}Ask more about this book…{{ end }}"></textarea>
+          <button type="button" class="tw-book-ai__send" aria-label="{{ if $isZh }}发送{{ else }}Send{{ end }}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </section>
   {{- end }}
 
@@ -250,11 +283,6 @@
         <h3>{{ if $isZh }}不赶主线{{ else }}Never Speedrun{{ end }}</h3>
         <p>{{ if $isZh }}最好的剧情藏在支线里。驻留、绕路、坐慢车，让每张地图慢慢展开。{{ else }}The best storylines hide in side quests. Stay longer, take detours, ride the slow train.{{ end }}</p>
       </div>
-      <div class="tw-code__card tw-reveal">
-        <span class="tw-code__num">03</span>
-        <h3>{{ if $isZh }}随身工作台{{ else }}Portable Workbench{{ end }}</h3>
-        <p>{{ if $isZh }}代码与旅途并行，在任何坐标都能提交这一天。世界是地图，也是办公室。{{ else }}Code travels with me — the day can be committed from any coordinates. The world is a map, and an office.{{ end }}</p>
-      </div>
     </div>
   </section>
 
@@ -267,20 +295,40 @@
       {{- else }}Trade routes, share saves, or talk about how to play the digital-nomad side quest.
       {{- end }}
     </p>
+    {{/* Language-aware channels: zh pushes RedNote + WeChat + GitHub; en pushes Instagram + Facebook + Email + GitHub.
+         Data (url / qr / id) all comes from config socialIcons — nothing hardcoded here. */}}
+    {{- $icons := dict }}
+    {{- with .Site.Params.socialIcons }}{{ range . }}{{ $icons = merge $icons (dict .name .) }}{{ end }}{{ end }}
+    {{- $order := cond $isZh (slice "xhs" "wechat" "github") (slice "instagram" "facebook" "email" "github") }}
     <div class="tw-party__links">
-      {{- $shown := false }}
-      {{- with .Site.Params.socialIcons }}
-        {{- range . }}
-          {{- if or (eq .name "twitter") (eq .name "github") (eq .name "email") }}
-          {{- $shown = true }}
-          <a href="{{ .url }}" {{ if ne .name "email" }}target="_blank" rel="noopener noreferrer"{{ end }} class="tw-social">{{ .name }}</a>
+      {{- range $name := $order }}
+        {{- with index $icons $name }}
+          {{- $label := .title | default $name }}
+          {{- if .qr }}
+          {{/* QR channels (WeChat / RedNote): click to reveal a QR popover */}}
+          <button type="button" class="tw-social tw-social--qr" data-qr="{{ .qr | relURL }}" data-qr-id="{{ .wechatID | default .xhsID | default "" }}" data-qr-label="{{ $label }}" aria-haspopup="dialog" aria-expanded="false">
+            {{- partial "travel-social-icon.html" $name }}<span>{{ $label }}</span>
+          </button>
+          {{- else if .url }}
+          <a href="{{ .url }}" {{ if ne $name "email" }}target="_blank" rel="noopener noreferrer"{{ end }} class="tw-social">
+            {{- partial "travel-social-icon.html" $name }}<span>{{ $label }}</span>
+          </a>
           {{- end }}
         {{- end }}
       {{- end }}
-      {{- if not $shown }}
-      <a href="https://twitter.com/cubxxw" target="_blank" rel="noopener noreferrer" class="tw-social">Twitter / X</a>
-      <a href="https://github.com/cubxxw" target="_blank" rel="noopener noreferrer" class="tw-social">GitHub</a>
-      {{- end }}
+    </div>
+
+    {{/* QR popover (single, reused by all QR channels) */}}
+    <div class="tw-qr" id="tw-qr" role="dialog" aria-modal="true" aria-label="{{ if $isZh }}扫码添加{{ else }}Scan to connect{{ end }}" hidden>
+      <div class="tw-qr__backdrop" data-qr-close></div>
+      <div class="tw-qr__card" role="document">
+        <button type="button" class="tw-qr__x" data-qr-close aria-label="{{ if $isZh }}关闭{{ else }}Close{{ end }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <img class="tw-qr__img" src="" alt="" width="200" height="200" loading="lazy" decoding="async">
+        <p class="tw-qr__label"></p>
+        <p class="tw-qr__id"></p>
+      </div>
     </div>
   </section>
 
@@ -325,6 +373,44 @@
     });
   }
 
+  /* ── QR popover (WeChat / RedNote) ── */
+  (function () {
+    var modal = document.getElementById('tw-qr');
+    if (!modal) return;
+    var img = modal.querySelector('.tw-qr__img');
+    var labelEl = modal.querySelector('.tw-qr__label');
+    var idEl = modal.querySelector('.tw-qr__id');
+    var lastTrigger = null;
+    function open(btn) {
+      img.src = btn.getAttribute('data-qr');
+      img.alt = btn.getAttribute('data-qr-label') || '';
+      labelEl.textContent = btn.getAttribute('data-qr-label') || '';
+      var id = btn.getAttribute('data-qr-id') || '';
+      idEl.textContent = id;
+      idEl.hidden = !id;
+      modal.hidden = false;
+      requestAnimationFrame(function () { modal.classList.add('is-open'); });
+      btn.setAttribute('aria-expanded', 'true');
+      lastTrigger = btn;
+    }
+    function close() {
+      modal.classList.remove('is-open');
+      if (lastTrigger) lastTrigger.setAttribute('aria-expanded', 'false');
+      var done = function () { modal.hidden = true; modal.removeEventListener('transitionend', done); };
+      if (reduced) done(); else modal.addEventListener('transitionend', done);
+      if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
+    }
+    root.querySelectorAll('.tw-social--qr').forEach(function (btn) {
+      btn.addEventListener('click', function () { open(btn); });
+    });
+    modal.querySelectorAll('[data-qr-close]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  })();
+
   /* ── Scroll reveal ── */
   if (!hasIO || reduced) {
     return; /* no .tw-js stamp → everything stays visible in place */
@@ -339,4 +425,5 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 </script>
+<script src="{{ "/js/travel-book-ai.js" | relURL }}" defer></script>
 {{- end }}
