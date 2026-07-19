@@ -31,6 +31,9 @@ series:
   slug: super-individual-stack
   order: 2
   total: 5
+cover:
+  image: /images/covers/ai-agent/2026/super-individual-stack-production.jpeg
+  alt: "夜里跑十个 agent，早上收十个 PR，然后我卡住了"
 ---
 
 这是《超级个体的装备栈》系列的第二篇。如果你还没读过[总纲](../super-individual-stack-four-layers/)，建议先读那篇——这篇的所有判断都建立在那篇提出的标准之上：**一层装备的进步，是只帮你，还是同时帮你所有对手。**

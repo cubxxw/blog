@@ -31,6 +31,9 @@ series:
   slug: super-individual-stack
   order: 4
   total: 5
+cover:
+  image: /images/covers/ai-agent/2026/super-individual-stack-distribution.jpeg
+  alt: "你的产品一夜就能被抄走，你的读者不能"
 ---
 
 ## 我在这句话上浪费了好几年

@@ -31,6 +31,9 @@ series:
   slug: super-individual-stack
   order: 5
   total: 5
+cover:
+  image: /images/covers/ai-agent/2026/super-individual-stack-reputation.jpeg
+  alt: "当东西人人做得出来，「这是他做的」就成了信号"
 ---
 
 ## 同一个东西，换个名字，分数就变了

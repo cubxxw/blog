@@ -31,6 +31,9 @@ series:
   slug: super-individual-stack
   order: 1
   total: 5
+cover:
+  image: /images/covers/ai-agent/2026/super-individual-stack-four-layers.jpeg
+  alt: "你的装备，同时也在武装你的对手"
 ---
 
 ## 一份清单让我警觉的地方

@@ -31,6 +31,9 @@ series:
   slug: super-individual-stack
   order: 3
   total: 5
+cover:
+  image: /images/covers/ai-agent/2026/super-individual-stack-judgment.jpeg
+  alt: "AI 提需求不要钱，这才是最危险的地方"
 ---
 
 ## 一个早上，和三件不该存在的东西

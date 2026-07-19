@@ -23,6 +23,9 @@ tldr:
   - "A programmable pipeline (split / transcribe / de-silence / LLM-generated EDL / ffmpeg render) is a structural advantage for developers: it turns repeated labor into a versioned asset instead of a fresh act of willpower every episode."
   - Automated publishing in 2026 tops out at semi-automatic. YouTube's official upload API has loosened, TikTok requires an audit and rate-limits you, Douyin and Bilibili demand a business entity, and Xiaohongshu has no publishing API for ordinary developers.
 maturity: budding
+cover:
+  image: /images/covers/ai-agent/2026/solo-creator-video-pipeline.jpeg
+  alt: "AI Can't Edit a Shot You Never Filmed: A Solo Creator's Video Pipeline for 2026"
 ---
 
 Last winter I ran a very ugly set of numbers.

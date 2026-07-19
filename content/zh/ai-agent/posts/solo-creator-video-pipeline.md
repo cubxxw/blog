@@ -24,6 +24,9 @@ tldr:
   - 可编程流水线（切分 / 转写 / 去静音 / LLM 出 EDL / ffmpeg 渲染）对开发者是结构性优势，它把重复劳动变成可版本化的资产，而不是每期重新耗一次意志力。
   - 自动发布在 2026 年只能做到半自动：YouTube 的官方上传接口已经放宽，TikTok 需过审且限流，抖音和 B 站要企业资质，小红书没有面向普通开发者的官方发布通道。
 maturity: budding
+cover:
+  image: /images/covers/ai-agent/2026/solo-creator-video-pipeline.jpeg
+  alt: "AI 剪不出你没拍的镜头"
 ---
 
 去年冬天有一次我算了一笔很难看的账。
