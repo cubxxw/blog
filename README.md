@@ -151,6 +151,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [AI Can't Edit a Shot You Never Filmed: A Solo Creator's Video Pipeline for 2026](https://cubxxw.com/ai-agent/posts/solo-creator-video-pipeline/)
 - [How Many of Your Mac Tools Are Fighting Each Other? I Designed a Dev-Machine Checkup Skill](https://cubxxw.com/ai-agent/posts/devbox-doctor-design/)
 - [How to Design a Skill Worth Having: I Dissected a Plugin That Dared to Delete My Files](https://cubxxw.com/ai-agent/posts/designing-valuable-agent-skills/)
 - [Field Notes: I Built My Knowledge Layer into an Arsenal](https://cubxxw.com/ai-agent/posts/info-to-creation-arsenal/)
@@ -250,7 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [OpenIM Use Harbor Build Enterprise Mirror Repositories](https://cubxxw.com/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
 - [Learn About Automated Testing](https://cubxxw.com/engineering/posts/learn-about-automated-testing/)
 - [Kubernetes Control Plane - Scheduler](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-scheduler/)
-- [Kubernetes Control Plane - Detailed Analysis of Kubelet](https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/)
 <!-- My-Blog-EN:END -->
 
 
