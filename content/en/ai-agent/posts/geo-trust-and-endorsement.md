@@ -10,12 +10,9 @@ author: ["Xinwei Xiong"]
 keywords: ['GEO', 'E-E-A-T', 'off-site endorsement', 'third-party citations', 'Reddit', 'Wikipedia', 'entity consistency', 'sameAs', 'digital PR', 'community distribution', 'backlinks', 'AI citations', 'topical authority']
 tags:
   - GEO
-  - E-E-A-T
-  - Digital PR
   - Content Strategy
   - AI Search
   - Community
-  - Branding
 description: >
   Your technical base and structure are right — so why still no AI citations? Because the final gate is trust, and most trust comes from off-site. This chapter covers operationalizing E-E-A-T, building entity consistency, why Reddit + Wikipedia are 66% of AI citations, and how a personal blog builds off-site endorsement pragmatically. Chapter 4 of the GEO series.
 cover:

@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Hugo', '静态网站生成器', '网站开发', '博客搭建', 'GitHub']
-tags: ["Hugo", "Blog Building", "Web Development"]
+tags: ["Hugo", "Blog", "Development"]
 description: '本教程为Hugo高级教程，适合已经有Hugo基础知识的开发者。我们将深入探讨Hugo的高级功能和最佳实践，包括自定义主题开发、数据模板、性能优化和部署策略。此外，教程将介绍如何将Hugo与GitHub结合使用，实现持续部署和版本控制，以优化的工作流程。'
 tldr:
   - "Hugo模块基于Go模块实现，支持将不同组件组合挂载成虚拟联合文件系统，实现项目和主题的灵活管理。"

@@ -1,304 +1,887 @@
 {
   "_comment": "Tags 同义词映射表 - 用于合并相同含义的 tags",
-  "_version": "1.0.0",
+  "_version": "2.0.0",
   "_created": "2026-03-28",
-
   "canonical_tags": {
     "go": {
       "canonical": "Go",
-      "aliases": ["golang", "go", "Golang (GO 语言)", "Golang (GO Language)", "Go 语言 (Golang)", "GO"],
+      "aliases": [
+        "golang",
+        "go",
+        "Golang (GO 语言)",
+        "Golang (GO Language)",
+        "Go 语言 (Golang)",
+        "GO",
+        "Golang (GO语言)",
+        "Concurrency",
+        "Functional Programming",
+        "dlv",
+        "Cross-Platform",
+        "Cross-Platform Compilation",
+        "Multi-Architecture Compilation",
+        "Multi-Processing"
+      ],
       "description": "Go 编程语言相关",
       "category": "编程语言"
     },
     "kubernetes": {
       "canonical": "Kubernetes",
-      "aliases": ["K8s", "k8s", "Kubernetes (GO 语言)"],
+      "aliases": [
+        "K8s",
+        "k8s",
+        "Kubernetes (GO 语言)",
+        "kubernetes",
+        "ArgoCD",
+        "Argo Rollouts",
+        "Kustomize",
+        "Prow",
+        "ETCD",
+        "etcd",
+        "kube-apiserver",
+        "Clustering",
+        "clustering",
+        "Raft",
+        "raft",
+        "Offline Deployment",
+        "Resource Management",
+        "System Stability"
+      ],
       "description": "Kubernetes 容器编排",
       "category": "云原生"
     },
     "ai": {
       "canonical": "AI",
-      "aliases": ["ai", "人工智能 (AI)", "人工智能 (Artificial Intelligence)", "AI 开源", "AI开源", "AI 技术", "机器学习", "机器学习 (Machine Learning)"],
+      "aliases": [
+        "ai",
+        "人工智能 (AI)",
+        "人工智能 (Artificial Intelligence)",
+        "AI 开源",
+        "AI开源",
+        "AI 技术",
+        "机器学习",
+        "机器学习 (Machine Learning)",
+        "AI Development",
+        "AI 开发 (AI Development)",
+        "AI Frameworks",
+        "AI 框架 (AI Frameworks)",
+        "AI Reflection",
+        "AI 思考 (AI Reflection)",
+        "AI Thinking",
+        "AI思考 (AI Thinking)",
+        "AI Tools",
+        "AI 工具 (AI Tools)",
+        "OpenAI",
+        "chatgpt",
+        "Sora",
+        "sora",
+        "Deep Learning",
+        "深度学习 (Deep Learning)",
+        "Machine Learning",
+        "Technology & AI"
+      ],
       "description": "人工智能相关",
       "category": "技术"
     },
     "blog": {
       "canonical": "Blog",
-      "aliases": ["blog", "博客", "博客 (Blog)", "博客搭建 (Blog Building)"],
+      "aliases": [
+        "blog",
+        "博客",
+        "博客 (Blog)",
+        "博客搭建 (Blog Building)",
+        "blog (博客)",
+        "Blog Building"
+      ],
       "description": "博客相关",
       "category": "生活"
     },
     "devops": {
       "canonical": "DevOps",
-      "aliases": ["运维开发", "运维"],
+      "aliases": [
+        "运维开发",
+        "运维",
+        "CI/CD",
+        "cicd",
+        "Continuous Delivery",
+        "Automated Release",
+        "automated",
+        "actions",
+        "release",
+        "GoReleaser",
+        "Blue-Green Deployment",
+        "Canary Deployment",
+        "Configuration Management"
+      ],
       "description": "开发运维相关",
       "category": "技术"
     },
     "docker": {
       "canonical": "Docker",
-      "aliases": ["容器化"],
+      "aliases": [
+        "容器化",
+        "docker"
+      ],
       "description": "Docker 容器技术",
       "category": "云原生"
     },
     "git": {
       "canonical": "Git",
-      "aliases": ["版本控制 (Version Control)", "git"],
+      "aliases": [
+        "版本控制 (Version Control)",
+        "git",
+        "github"
+      ],
       "description": "Git 版本控制",
       "category": "工具"
     },
     "github": {
       "canonical": "GitHub",
-      "aliases": ["Github"],
+      "aliases": [
+        "Github"
+      ],
       "description": "GitHub 相关",
       "category": "工具"
     },
     "open-source": {
       "canonical": "Open Source",
-      "aliases": ["开源", "开源 (Open Source)", "开源（Open Source）", "开源项目"],
+      "aliases": [
+        "开源",
+        "开源 (Open Source)",
+        "开源（Open Source）",
+        "开源项目",
+        "open source",
+        "open-source",
+        "Open Source Commercialization"
+      ],
       "description": "开源相关",
       "category": "文化"
     },
     "project-learning": {
       "canonical": "Project Learning",
-      "aliases": ["项目学习", "项目实践"],
+      "aliases": [
+        "项目学习",
+        "项目实践",
+        "project",
+        "project (项目)"
+      ],
       "description": "开源项目深度学习与实践",
       "category": "技术"
     },
     "travel": {
       "canonical": "Travel",
-      "aliases": ["旅行", "旅行 (Travel)", "冒险 (Adventure)", "旅行记录"],
+      "aliases": [
+        "旅行",
+        "旅行 (Travel)",
+        "冒险 (Adventure)",
+        "旅行记录",
+        "travel",
+        "Travel & Exploration",
+        "Japan",
+        "Tibet",
+        "西藏",
+        "拉萨",
+        "Laos Travel",
+        "老挝旅行 (Laos Travel)",
+        "Pilgrimage Journey",
+        "朝圣之路",
+        "Digital Nomad"
+      ],
       "description": "旅行相关",
       "category": "生活"
     },
     "personal-growth": {
       "canonical": "Personal Growth",
-      "aliases": ["个人成长", "个人发展", "成长"],
+      "aliases": [
+        "个人成长",
+        "个人发展",
+        "成长",
+        "Growth Mindset",
+        "成长思维 (Growth Mindset)",
+        "个人成长 (Personal Growth)",
+        "self-improvement",
+        "自我提升",
+        "Learning Journey",
+        "学习之旅 (Learning Journey)",
+        "Wisdom Accumulation",
+        "智慧积累",
+        "Wisdom Precipitation",
+        "智慧沉淀 (Wisdom Precipitation)",
+        "智慧积累 (Wisdom Accumulation)",
+        "Growth"
+      ],
       "description": "个人成长相关",
       "category": "生活"
     },
     "self-discovery": {
       "canonical": "Self-Discovery",
-      "aliases": ["自我发现 (Self Discovery)", "自我探索", "self-discovery"],
+      "aliases": [
+        "自我发现 (Self Discovery)",
+        "自我探索",
+        "self-discovery",
+        "Self Awareness",
+        "自我认知 (Self Awareness)",
+        "自我认知 (Self-Knowledge)",
+        "Self Discovery",
+        "Self-Discovery Journey",
+        "metacognition",
+        "元认知"
+      ],
       "description": "自我探索相关",
       "category": "生活"
     },
     "buddhism": {
       "canonical": "Buddhism",
-      "aliases": ["佛学", "佛教", "禅", "buddhism"],
+      "aliases": [
+        "佛学",
+        "佛教",
+        "禅",
+        "buddhism"
+      ],
       "description": "佛学与佛教思想相关",
       "category": "文化"
     },
     "philosophy": {
       "canonical": "Philosophy",
-      "aliases": ["哲学", "思辨", "philosophy"],
+      "aliases": [
+        "哲学",
+        "思辨",
+        "philosophy",
+        "哲理 (Philosophy)",
+        "Existentialism",
+        "Suffering",
+        "Human Value",
+        "人类价值 (Human Value)",
+        "知行合一 (Unity of Knowing and Doing)",
+        "Technology Philosophy",
+        "技术哲学 (Technology Philosophy)",
+        "科技思考"
+      ],
       "description": "哲学与思辨相关",
       "category": "文化"
     },
     "love": {
       "canonical": "Love",
-      "aliases": ["爱", "爱情", "love"],
+      "aliases": [
+        "爱",
+        "爱情",
+        "love",
+        "爱情 (Love)"
+      ],
       "description": "爱、爱情与亲密关系相关",
       "category": "生活"
     },
     "deployment": {
       "canonical": "Deployment",
-      "aliases": ["部署", "部署 (Deployment)", "发布"],
+      "aliases": [
+        "部署",
+        "部署 (Deployment)",
+        "发布"
+      ],
       "description": "部署相关",
       "category": "技术"
     },
     "microservices": {
       "canonical": "Microservices",
-      "aliases": ["微服务", "微服务 (Microservices)"],
+      "aliases": [
+        "微服务",
+        "微服务 (Microservices)"
+      ],
       "description": "微服务架构",
       "category": "架构"
     },
     "cloud-native": {
       "canonical": "Cloud Native",
-      "aliases": ["云原生", "云原生 (Cloud Native)"],
+      "aliases": [
+        "云原生",
+        "云原生 (Cloud Native)",
+        "CNCF",
+        "Service Mesh",
+        "服务网格 (Service Mesh)",
+        "sealos"
+      ],
       "description": "云原生技术",
       "category": "云原生"
     },
     "automation": {
       "canonical": "Automation",
-      "aliases": ["自动化", "自动化 (Automation)", "自动化工具 (Automation Tools)"],
+      "aliases": [
+        "自动化",
+        "自动化 (Automation)",
+        "自动化工具 (Automation Tools)"
+      ],
       "description": "自动化相关",
       "category": "技术"
     },
     "testing": {
       "canonical": "Testing",
-      "aliases": ["测试", "测试 (Test)", "单元测试"],
+      "aliases": [
+        "测试",
+        "测试 (Test)",
+        "单元测试",
+        "Testing Workflow",
+        "Selenium"
+      ],
       "description": "测试相关",
       "category": "技术"
     },
     "performance": {
       "canonical": "Performance",
-      "aliases": ["性能优化", "性能优化 (Performance Optimization)"],
+      "aliases": [
+        "性能优化",
+        "性能优化 (Performance Optimization)"
+      ],
       "description": "性能优化",
       "category": "技术"
     },
     "security": {
       "canonical": "Security",
-      "aliases": ["安全", "安全性"],
+      "aliases": [
+        "安全",
+        "安全性"
+      ],
       "description": "安全相关",
       "category": "技术"
     },
     "monitoring": {
       "canonical": "Monitoring",
-      "aliases": ["监控 (Monitoring)", "可观测性"],
+      "aliases": [
+        "监控 (Monitoring)",
+        "可观测性"
+      ],
       "description": "监控相关",
       "category": "技术"
     },
     "monthly-notes": {
       "canonical": "Monthly Notes",
-      "aliases": ["月度笔记", "月度总结", "monthly notes"],
+      "aliases": [
+        "月度笔记",
+        "月度总结",
+        "monthly notes",
+        "Autumn Harvest",
+        "秋季收获 (Autumn Harvest)",
+        "Early Winter",
+        "初冬沉思 (Early Winter Reflection)",
+        "Late Autumn Reflection",
+        "深秋思索 (Late Autumn Reflection)",
+        "Late Summer",
+        "晚夏时光 (Late Summer)",
+        "Summer Solstice",
+        "夏至传递 (Summer Solstice)",
+        "Summer Adventures",
+        "夏日冒险 (Summer Adventures)",
+        "Mid-year Insights",
+        "年中洞察 (Mid-year Insights)",
+        "New Year Planning",
+        "新年规划",
+        "Spring Growth",
+        "春天成长 (Spring Growth)"
+      ],
       "description": "月度思考笔记",
       "category": "生活"
     },
     "llm": {
       "canonical": "LLM",
-      "aliases": ["llm", "大语言模型", "大模型", "Large Language Model", "大语言模型 (LLM)"],
+      "aliases": [
+        "llm",
+        "大语言模型",
+        "大模型",
+        "Large Language Model",
+        "大语言模型 (LLM)",
+        "Language Models",
+        "语言模型 (Language Models)",
+        "Natural Language Processing (NLP)",
+        "自然语言处理 (NLP)"
+      ],
       "description": "大语言模型相关",
       "category": "技术"
     },
     "python": {
       "canonical": "Python",
-      "aliases": ["python", "Python 语言"],
+      "aliases": [
+        "python",
+        "Python 语言"
+      ],
       "description": "Python 编程语言与生态",
       "category": "编程语言"
     },
     "rag": {
       "canonical": "RAG",
-      "aliases": ["rag", "Retrieval-Augmented Generation", "检索增强生成", "检索增强生成 (RAG)"],
+      "aliases": [
+        "rag",
+        "Retrieval-Augmented Generation",
+        "检索增强生成",
+        "检索增强生成 (RAG)",
+        "Embeddings",
+        "Retrieval"
+      ],
       "description": "检索增强生成相关技术",
       "category": "技术"
     },
     "agent": {
       "canonical": "Agent",
-      "aliases": ["agent", "智能体", "AI Agent", "智能体 (Agent)", "agents"],
+      "aliases": [
+        "agent",
+        "智能体",
+        "AI Agent",
+        "智能体 (Agent)",
+        "agents",
+        "Auto-GPT",
+        "autogpt",
+        "LangGraph",
+        "Sandbox"
+      ],
       "description": "AI 智能体相关",
       "category": "技术"
     },
     "context-engineering": {
       "canonical": "Context Engineering",
-      "aliases": ["context engineering", "上下文工程", "上下文工程 (Context Engineering)"],
+      "aliases": [
+        "context engineering",
+        "上下文工程",
+        "上下文工程 (Context Engineering)"
+      ],
       "description": "上下文工程：为 LLM 装配、检索、压缩、淘汰上下文的工程实践",
       "category": "技术"
     },
     "mcp": {
       "canonical": "MCP",
-      "aliases": ["mcp", "Model Context Protocol", "模型上下文协议"],
+      "aliases": [
+        "mcp",
+        "Model Context Protocol",
+        "模型上下文协议"
+      ],
       "description": "Model Context Protocol 模型上下文协议",
       "category": "技术"
     },
     "solo-builder": {
       "canonical": "Solo Builder",
-      "aliases": ["solo builder", "独立开发者 (Solo Builder)", "Solo Founder", "单人创始人"],
+      "aliases": [
+        "solo builder",
+        "独立开发者 (Solo Builder)",
+        "Solo Founder",
+        "单人创始人",
+        "Indie Hacker"
+      ],
       "description": "Solo Builder / 单人创始人 / 独立产品开发者",
       "category": "文化"
     },
     "indie-hacker": {
       "canonical": "Indie Hacker",
-      "aliases": ["indie hacker", "indie", "独立开发"],
+      "aliases": [
+        "indie hacker",
+        "indie",
+        "独立开发"
+      ],
       "description": "Indie Hacker 独立开发者文化",
       "category": "文化"
     },
     "super-individual": {
       "canonical": "Super Individual",
-      "aliases": ["super individual", "超级个体", "超级个体 (Super Individual)"],
+      "aliases": [
+        "super individual",
+        "超级个体",
+        "超级个体 (Super Individual)"
+      ],
       "description": "AI 时代的超级个体",
       "category": "文化"
     },
     "harness-engineering": {
       "canonical": "Harness Engineering",
-      "aliases": ["harness engineering", "harness", "Harness"],
+      "aliases": [
+        "harness engineering",
+        "harness",
+        "Harness"
+      ],
       "description": "Agent harness 工程：包在 LLM 外面的运行时基础设施",
       "category": "技术"
     },
     "product-strategy": {
       "canonical": "Product Strategy",
-      "aliases": ["product strategy", "产品策略", "产品方向"],
+      "aliases": [
+        "product strategy",
+        "产品策略",
+        "产品方向",
+        "Business Model",
+        "商业思考 (Business Thinking)",
+        "Product Development"
+      ],
       "description": "产品策略与方向选择",
       "category": "技术"
     },
     "psychology": {
       "canonical": "Psychology",
-      "aliases": ["psychology", "心理学", "心理"],
+      "aliases": [
+        "psychology",
+        "心理学",
+        "心理"
+      ],
       "description": "心理学相关",
       "category": "生活"
     },
     "attachment": {
       "canonical": "Attachment",
-      "aliases": ["attachment", "依恋", "依恋理论", "Attachment Theory"],
+      "aliases": [
+        "attachment",
+        "依恋",
+        "依恋理论",
+        "Attachment Theory",
+        "回避型依恋 (Avoidant Attachment)"
+      ],
       "description": "依恋理论与依恋风格相关",
       "category": "生活"
     },
     "relationships": {
       "canonical": "Relationships",
-      "aliases": ["relationships", "亲密关系", "人际关系", "关系"],
+      "aliases": [
+        "relationships",
+        "亲密关系",
+        "人际关系",
+        "关系"
+      ],
       "description": "亲密关系与人际关系相关",
       "category": "生活"
     },
     "intimacy": {
       "canonical": "Intimacy",
-      "aliases": ["intimacy", "亲密", "亲密感"],
+      "aliases": [
+        "intimacy",
+        "亲密",
+        "亲密感"
+      ],
       "description": "亲密感、靠近、连接相关",
       "category": "生活"
     },
     "inner-work": {
       "canonical": "Inner Work",
-      "aliases": ["inner work", "内在工作", "自我探索（深度）"],
+      "aliases": [
+        "inner work",
+        "内在工作",
+        "自我探索（深度）",
+        "Mindfulness",
+        "Happiness",
+        "happiness",
+        "brain-efficiency",
+        "大脑效率"
+      ],
       "description": "深度内在探索与自我修复",
       "category": "生活"
+    },
+    "ai-search": {
+      "canonical": "AI Search",
+      "aliases": [
+        "google",
+        "google (谷歌)"
+      ],
+      "description": "AI Search 聚合标签",
+      "category": "consolidated"
+    },
+    "geo": {
+      "canonical": "GEO",
+      "aliases": [
+        "AEO",
+        "Generative Engine Optimization",
+        "E-E-A-T",
+        "Digital PR",
+        "Structured Data",
+        "Schema"
+      ],
+      "description": "GEO 聚合标签",
+      "category": "consolidated"
+    },
+    "seo": {
+      "canonical": "SEO",
+      "aliases": [
+        "SEO Audit",
+        "Measurement"
+      ],
+      "description": "SEO 聚合标签",
+      "category": "consolidated"
+    },
+    "openim": {
+      "canonical": "OpenIM",
+      "aliases": [
+        "openim",
+        "openkf",
+        "Instant Messaging"
+      ],
+      "description": "OpenIM 聚合标签",
+      "category": "consolidated"
+    },
+    "debugging": {
+      "canonical": "Debugging",
+      "aliases": [
+        "debugging",
+        "Troubleshooting",
+        "troubleshooting"
+      ],
+      "description": "Debugging 聚合标签",
+      "category": "consolidated"
+    },
+    "development": {
+      "canonical": "Development",
+      "aliases": [
+        "development",
+        "Software Development",
+        "软件开发 (Software Development)",
+        "Programming",
+        "编程 (Programming)",
+        "Developer Guide",
+        "Tutorial",
+        "Web Development",
+        "TypeScript",
+        "Windows"
+      ],
+      "description": "Development 聚合标签",
+      "category": "consolidated"
+    },
+    "windows": {
+      "canonical": "Windows",
+      "aliases": [
+        "Windows Development",
+        "Windows 开发",
+        "微软技术",
+        "Microsoft Technology"
+      ],
+      "description": "Windows 聚合标签",
+      "category": "consolidated"
+    },
+    "personal-reflection": {
+      "canonical": "Personal Reflection",
+      "aliases": [
+        "Reflection",
+        "Reflections",
+        "反思",
+        "Deep Reflection",
+        "Deep Thinking",
+        "深度思考",
+        "深度思考 (Deep Thinking)",
+        "Year-End Contemplation",
+        "年终总结"
+      ],
+      "description": "Personal Reflection 聚合标签",
+      "category": "consolidated"
+    },
+    "annual-recap": {
+      "canonical": "Annual Recap",
+      "aliases": [
+        "年度回顾 (Annual Recap)"
+      ],
+      "description": "Annual Recap 聚合标签",
+      "category": "consolidated"
+    },
+    "productivity": {
+      "canonical": "Productivity",
+      "aliases": [
+        "Personal Productivity",
+        "个人效率 (Personal Productivity)",
+        "Productivity Enhancement",
+        "productivity",
+        "Time Management",
+        "GTD",
+        "gtd",
+        "Focus",
+        "focus",
+        "Flow"
+      ],
+      "description": "Productivity 聚合标签",
+      "category": "consolidated"
+    },
+    "learning": {
+      "canonical": "Learning",
+      "aliases": [
+        "learning strategies",
+        "learning-strategies",
+        "学习策略",
+        "english-learning",
+        "英语学习",
+        "educational-tools",
+        "教育工具",
+        "读书",
+        "Living & Education"
+      ],
+      "description": "Learning 聚合标签",
+      "category": "consolidated"
+    },
+    "career": {
+      "canonical": "Career",
+      "aliases": [
+        "career",
+        "career (职业)",
+        "职业",
+        "职业 (Career)",
+        "resume",
+        "resume (简历)",
+        "Remote Work"
+      ],
+      "description": "Career 聚合标签",
+      "category": "consolidated"
+    },
+    "adventure": {
+      "canonical": "Adventure",
+      "aliases": [
+        "adventure"
+      ],
+      "description": "Adventure 聚合标签",
+      "category": "consolidated"
+    },
+    "exploration": {
+      "canonical": "Exploration",
+      "aliases": [
+        "exploration",
+        "探索 (Exploration)"
+      ],
+      "description": "Exploration 聚合标签",
+      "category": "consolidated"
+    },
+    "content-strategy": {
+      "canonical": "Content Strategy",
+      "aliases": [
+        "Branding"
+      ],
+      "description": "Content Strategy 聚合标签",
+      "category": "consolidated"
     }
   },
-
   "tags_to_remove": [
     "en",
     "first",
     "${{ steps.meta.outputs.tags }}",
     "xxx/abc:${{ env.TAG }}",
     "your-dockerhub-username/your-app-name:latest",
-    "使用正则表达式或 glob 模式过滤允许考虑的标签。例如，只允许 v1.*.* 格式的稳定版本标签。"
+    "使用正则表达式或 glob 模式过滤允许考虑的标签。例如，只允许 v1.*.* 格式的稳定版本标签。",
+    "Agile",
+    "agile",
+    "Scrum",
+    "scrum",
+    "manage",
+    "management",
+    "Management",
+    "management (管理)",
+    "Team Collaboration",
+    "Project Management",
+    "Planning",
+    "planning",
+    "Implementation Strategy",
+    "Strategic Planning",
+    "战略规划 (Strategic Planning)",
+    "Case Study",
+    "Questions",
+    "Tools",
+    "Technology",
+    "Design",
+    "Innovation",
+    "innovation",
+    "Innovation Mindset",
+    "创新思维 (Innovation Mindset)",
+    "Creative Thinking",
+    "创意思维 (Creative Thinking)",
+    "Momentum Building",
+    "动力积蓄 (Momentum Building)",
+    "Tech Trends",
+    "Technical Support",
+    "tech support",
+    "Backend Management",
+    "API Integration",
+    "API 集成 (API Integration)",
+    "Type Checking",
+    "Database",
+    "Performance",
+    "Blockchain",
+    "Global Traffic Conference",
+    "个人反思 (Personal Reflection)"
   ],
-
   "category_groups": {
     "Technology": {
-      "tags": ["Go", "Kubernetes", "Docker", "Cloud Native", "DevOps", "AI", "LLM", "Microservices", "Git", "GitHub"],
+      "tags": [
+        "Go",
+        "Kubernetes",
+        "Docker",
+        "Cloud Native",
+        "DevOps",
+        "AI",
+        "LLM",
+        "Microservices",
+        "Git",
+        "GitHub"
+      ],
       "icon": "gear",
-      "color": { "from": "#10b981", "to": "#059669" },
+      "color": {
+        "from": "#10b981",
+        "to": "#059669"
+      },
       "description": "技术教程和开发实践"
     },
     "Projects": {
-      "tags": ["OpenIM", "Open Source", "LangChain", "AI Projects"],
+      "tags": [
+        "OpenIM",
+        "Open Source",
+        "LangChain",
+        "AI Projects"
+      ],
       "icon": "heart",
-      "color": { "from": "#f43f5e", "to": "#e11d48" },
+      "color": {
+        "from": "#f43f5e",
+        "to": "#e11d48"
+      },
       "description": "开源项目和 AI 实践"
     },
     "Growth": {
-      "tags": ["Annual Review", "Personal Growth", "Thinking", "Flow State", "GTD", "Metacognition"],
+      "tags": [
+        "Annual Review",
+        "Personal Growth",
+        "Thinking",
+        "Flow State",
+        "GTD",
+        "Metacognition"
+      ],
       "icon": "leaf",
-      "color": { "from": "#14b8a6", "to": "#0d9488" },
+      "color": {
+        "from": "#14b8a6",
+        "to": "#0d9488"
+      },
       "description": "个人成长和方法论"
     },
     "Travel": {
-      "tags": ["Japan", "Lhasa", "Southeast Asia", "Cambodia", "Nepal", "Travel"],
+      "tags": [
+        "Japan",
+        "Lhasa",
+        "Southeast Asia",
+        "Cambodia",
+        "Nepal",
+        "Travel"
+      ],
       "icon": "cloud",
-      "color": { "from": "#3b82f6", "to": "#1d4ed8" },
+      "color": {
+        "from": "#3b82f6",
+        "to": "#1d4ed8"
+      },
       "description": "旅行记录和见闻"
     },
     "Life": {
-      "tags": ["English Learning", "Reading", "Self-Discovery", "Blog"],
+      "tags": [
+        "English Learning",
+        "Reading",
+        "Self-Discovery",
+        "Blog"
+      ],
       "icon": "users",
-      "color": { "from": "#8b5cf6", "to": "#6d28d9" },
+      "color": {
+        "from": "#8b5cf6",
+        "to": "#6d28d9"
+      },
       "description": "生活感悟和兴趣爱好"
     }
   },
-
   "_new_categories": {
     "description": "新的 5 大分类体系",
-    "categories": ["Technology", "Projects", "Growth", "Travel", "Life"]
+    "categories": [
+      "Technology",
+      "Projects",
+      "Growth",
+      "Travel",
+      "Life"
+    ]
   },
-
   "category_mapping": {
     "AI Open Source": "Projects",
     "开发 (Development)": "Technology",
@@ -307,12 +890,18 @@
     "AI Technology": "Technology",
     "Growth & Life": "Growth"
   },
-
   "naming_conventions": {
     "format": "Title Case (首字母大写)",
-    "examples": ["Personal Growth", "Cloud Native", "Open Source"],
+    "examples": [
+      "Personal Growth",
+      "Cloud Native",
+      "Open Source"
+    ],
     "chinese_format": "中文 + (英文)",
-    "chinese_examples": ["部署 (Deployment)", "微服务 (Microservices)"],
+    "chinese_examples": [
+      "部署 (Deployment)",
+      "微服务 (Microservices)"
+    ],
     "rules": [
       "1. 优先使用英文术语",
       "2. 中文术语需附带英文翻译",
@@ -321,5 +910,7 @@
       "5. 每个 tag 应该是一个独立的概念",
       "6. 避免 tag 嵌套（如 'blog - Annual Recap'）"
     ]
-  }
+  },
+  "_updated": "2026-07-19",
+  "_changelog_v2": "Long-tail consolidation: 309 tags -> ~65. 247 tags had <=2 posts, generating ~390 thin term pages that Google discovered but never crawled. Aliases fold bilingual duplicates and near-synonyms into strong hubs; tags_to_remove drops process/filler tags with no search intent."
 }

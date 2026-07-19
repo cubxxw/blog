@@ -10,10 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
    - Blog
-   - etcd
    - Kubernetes
-   - kubernetes
-   - kube-apiserver
 description: >
      Each request to the Kubernetes API will go through multi-stage access control before it is accepted, including authentication, authorization and admission control (Admission Control), etc.
 tldr:

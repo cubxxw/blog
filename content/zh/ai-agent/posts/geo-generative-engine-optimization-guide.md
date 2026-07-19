@@ -12,10 +12,8 @@ tags:
   - GEO
   - SEO
   - AI Search
-  - Generative Engine Optimization
   - Content Strategy
   - LLM
-  - AEO
 description: >
   当 68% 的 Google 搜索不再产生点击、AI 直接把答案端到用户面前，传统 SEO 争的"排名"正在失效。GEO（生成式引擎优化）争的是另一件事：让 AI 在生成答案时理解你、信任你、引用你。这是一篇从原理到方法论、再到我用自己博客做的真实案例复盘的支柱长文，也是「GEO 系列」的总纲。
 cover:

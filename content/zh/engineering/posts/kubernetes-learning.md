@@ -9,11 +9,10 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ["Kubernetes", "CNI", "CSI", "CRI", "云原生", "微服务", "服务网格", "Go", "学习路径", "源码"]
 tags:
-  - Golang (GO语言)
+  - Go
   - Kubernetes
   - Cloud Native
   - Microservices
-  - 服务网格 (Service Mesh)
 description: >
   本文提供了详细的 Kubernetes 资源和学习路径，涵盖了 CNI、CRI、CSI 以及云原生环境中的核心技术。我们还分享了一些重要的学习资源和学习方法，帮助读者进一步深造 Kubernetes 生态系统。
 tldr:

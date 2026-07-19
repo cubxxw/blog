@@ -20,7 +20,6 @@ keywords:
 tags:
   - Super Individual
   - Solo Builder
-  - Indie Hacker
   - AI
   - Agent
   - Harness Engineering

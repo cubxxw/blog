@@ -12,9 +12,8 @@ author: ["Xinwei Xiong", "Me"]
 keywords: ["Flow State", "Productivity", "Happiness", "Focus"]
 tags:
   - Blog
-  - productivity
-  - focus
-  - happiness
+  - Productivity
+  - Inner Work
 description: >
     Dive into the world of Flow State with our comprehensive guide. Learn how to harness this powerful psychological state to boost your focus, productivity, and overall happiness. Whether you're a developer, artist, or anyone looking to elevate their work and life experience, this article offers valuable insights and practical tips to achieve and maintain the flow. Join Xinwei Xiong and me as we explore the magic of Flow State, and discover how to transform your everyday tasks into opportunities for growth and fulfillment.
 tldr:

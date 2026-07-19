@@ -13,8 +13,7 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 新年规划
-  - 科技思考
+  - Philosophy
 description: >
   2026 年 1 月深度思考笔记，本月共 388 条。涵盖 AI 产品设计、金融投资、生物学、佛学、社会观察、自我认知等多个维度。
   

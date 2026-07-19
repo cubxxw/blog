@@ -10,12 +10,10 @@ author: ["Xinwei Xiong"]
 keywords: ['GEO', '度量', 'AI可见度', '被引率', '提示词测试', 'AI转介流量', 'GA4', 'Profound', 'Peec AI', 'share of voice', 'GSC', '监测工具', 'AI搜索优化']
 tags:
   - GEO
-  - Measurement
+  - SEO
   - Analytics
   - AI Search
-  - Tools
   - Content Strategy
-  - SEO
 description: >
   传统的"排名+点击"在 GEO 时代会失灵，因为大半价值发生在用户没来你站的地方。这最后一篇给你一套能落地的度量体系：提示词测试法、AI 转介流量、GSC 交叉验证、专业工具（Profound/Peec），以及用本仓库自带脚本搭的低成本 DIY 监测。GEO 系列第 6 篇（终章）。
 cover:

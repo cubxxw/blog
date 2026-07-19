@@ -10,6 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
+  - Kubernetes
 tldr:
   - "Prow is a Kubernetes-native CI/CD system executing jobs triggered by GitHub events with comprehensive automation and policy enforcement."
   - "Prow architecture consists of core components including Hook, Controller Manager, Plank scheduler, and Deck dashboard providing scalable testing infrastructure."

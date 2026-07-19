@@ -11,12 +11,11 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ["Kubernetes", "CNI", "CSI", "CRI", "云原生", "微服务", "服务网格", "Go"]
 tags:
-  - Golang (GO语言)
+  - Go
   - Kubernetes
   - OpenIM
   - Cloud Native
   - Microservices
-  - 服务网格 (Service Mesh)
 description: >
   深入探讨Kubernetes中的CNI（容器网络接口）、CRI（容器运行时接口）和CSI（容器存储接口）。本文将详细解释这些关键组件的作用，以及它们在云原生环境中的重要性和应用场景。
 tldr:

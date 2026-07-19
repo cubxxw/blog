@@ -12,7 +12,6 @@ author: ["Xinwei Xiong", "Me"]
 keywords: ["blockchain", "learning platform", "community contribution", "software development"]
 tags:
   - Blog
-  - Blockchain
   - Open Source
   - Community
 description: >

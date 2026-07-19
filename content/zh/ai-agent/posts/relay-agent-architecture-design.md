@@ -10,10 +10,9 @@ keywords: ["AI Agent", "LangGraph", "Multi-Agent", "HITL", "Agent Architecture",
 tags:
   - AI
   - Agent
-  - LangGraph
   - LLM
   - Architecture
-  - TypeScript
+  - Development
   - Python
 description: >
   这篇文章以 Relay 开源求职 Agent 项目为案例，完整拆解一个生产级多 Agent 系统从架构设计到落地的每一个关键决策：为什么把单 Agent 拆成 5 个、如何用 LangGraph 实现 HITL 检查点、三层 LLM 路由如何精算成本、反虚构防卫如何运行时验证、混合后端（Hono/Bun + FastAPI/Python）如何优雅解耦。无论你是在搭建第一个 Agent PoC 还是推进生产落地，这里都有可以拿走的设计模式。

@@ -10,8 +10,7 @@ author: ["Xinwei Xiong"]
 keywords: ['GEO', 'case study', 'Google Search Console', 'PageSpeed Insights', 'SEO audit', 'zero-click', 'topic cluster', 'domain migration', 'cubxxw', 'data-driven', 'AI search optimization']
 tags:
   - GEO
-  - Case Study
-  - SEO Audit
+  - SEO
   - Analytics
   - Content Strategy
   - AI Search

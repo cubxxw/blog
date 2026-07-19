@@ -23,19 +23,11 @@ keywords:
   - 'OpenAI'
   - 'Language Model Interfaces'
 tags:
-  - 'AI Development'
-  - 'Language Models'
-  - 'LangChain'
-  - 'AI Frameworks'
-  - 'Machine Learning'
-  - 'API Integration'
-  - 'Natural Language Processing (NLP)'
-  - 'Software Development'
-  - 'Programming'
-  - 'Automation'
-  - 'AI Tools'
-  - 'OpenAI'
-  - 'Deep Learning'
+  - AI
+  - LLM
+  - LangChain
+  - Development
+  - Automation
 description: 'This guide provides an in-depth look into the integration and application of language models using the LangChain framework, tailored for developers looking to streamline complex implementations.'
 tldr:
   - "LangChain provides a framework simplifying language model application development through integrated components like prompt templates, models, and output parsers for structured data handling."

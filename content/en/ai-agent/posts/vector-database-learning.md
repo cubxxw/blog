@@ -14,7 +14,6 @@ keywords: []
 tags:
   - Blog
   - AI
-  - Database
 description: >
   An introduction to vector databases for AI applications. Starts from the prerequisites,
   the basics of vectors, similarity measures such as cosine similarity, and database indexing,

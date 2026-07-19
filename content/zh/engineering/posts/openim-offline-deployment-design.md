@@ -9,7 +9,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '离线部署', '设计方案', '实施策略', '社区版']
-tags: ["OpenIM", "Offline Deployment", "Design", "Implementation Strategy", "Deployment"]
+tags: ["OpenIM", "Kubernetes", "Deployment"]
 tldr:
   - "OpenIM离线部署需拉取Kafka、Redis、MongoDB、MySQL、Zookeeper和MinIO等6个基础镜像及OpenIM和Chat应用镜像"
   - "离线部署通过docker save命令将镜像保存为tar文件，再通过scp传输至内网服务器，最后用docker load导入后部署"

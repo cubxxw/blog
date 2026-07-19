@@ -13,8 +13,7 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 深秋思索 (Late Autumn Reflection)
-  - 智慧沉淀 (Wisdom Precipitation)
+  - Personal Growth
 description: >
   2025年10月的深度思考笔记，记录本人在城市发展观察、技术产品思考、个人认知成长、社会现象洞察等多维度的思考与反思。涵盖从嘉兴发展潜力、高层建筑问题、K字签证政策，到快速迭代方法论、从知到觉的认知哲学、具身记忆理论，以及AI时代的思考与观察。通过持续的记录与思考，探索个人成长与外部世界的理解。
 tldr:

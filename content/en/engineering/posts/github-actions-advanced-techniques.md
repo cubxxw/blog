@@ -10,8 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - cicd
-  - actions
+  - DevOps
 tldr:
   - "Create custom GitHub Actions using Docker containers or composite workflows with metadata files defining inputs outputs and execution configuration."
   - "Master advanced workflow features including contexts concurrency matrix strategies job dependencies and environment protection to build complex CI/CD pipelines."

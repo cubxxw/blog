@@ -13,8 +13,8 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 老挝旅行 (Laos Travel)
-  - AI思考 (AI Thinking)
+  - Travel
+  - AI
 description: >
     2026年4月思考笔记 - 老挝旅居中的见闻与思考，AI 时代的工程哲学，以及关于记录、理解与信任的探索。
 tldr:

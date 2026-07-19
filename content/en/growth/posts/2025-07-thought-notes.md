@@ -13,8 +13,6 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  -  Summer Adventures
-  - Deep Thinking
 description: >
     July 2025 monthly reflection - diving deep into summer adventures, philosophical contemplations, and the art of balancing action with reflection.
 tldr:

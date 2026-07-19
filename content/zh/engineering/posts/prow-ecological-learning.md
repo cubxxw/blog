@@ -9,7 +9,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Prow', 'Kubernetes', 'CI/CD', '自动化', 'DevOps', '云原生']
-tags: ["Blog", "Prow", "Kubernetes", "CI/CD", "DevOps"]
+tags: ["Blog", "Kubernetes", "DevOps"]
 tldr:
   - "Prow是基于Kubernetes的CI/CD系统，支持事件触发作业执行、GitHub自动化和PR自动合并，功能强大超越GitHub Actions"
   - "Prow采用可插拔的Plugin架构处理事件，包含Controller、Plank调度器、Hook处理器、Deck前端等核心微服务组件，具有高可用和多租户支持"

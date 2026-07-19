@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'  # 注意，您的原始作者字段缺少中文标准格式，这里我做了适当调整
 keywords: ['开源商业化', 'OpenIM', '全球流量大会', '技术总结', '社区贡献', '业务发展']
-tags: ["OpenIM", "Blog", "Open Source Commercialization", "Open Source", "Global Traffic Conference"]
+tags: ["OpenIM", "Blog", "Open Source"]
 description: '通过 OpenIM 这个充满活力的开源项目的旅程，探索开源技术与业务发展的交汇点。了解 OpenIM 如何取得成功，应对挑战，并在商业化中平衡社区贡献。'
 tldr:
   - "开源项目成功需要远程协作充分沟通，建立海外社区和国际化战略是中国企业全球竞争的必要条件，活跃度而非Star数才是评估开源项目健康度的真实指标"

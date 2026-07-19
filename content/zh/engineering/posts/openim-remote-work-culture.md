@@ -12,7 +12,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '远程工作', '团队协作', '协议版本', '工作效率', '远程协作工具', 'OpenIM 协作', '远程工作最佳实践', '团队沟通策略', '协作协议更新', '高效团队管理', '远程办公工具']
-tags: ["Blog", "Remote Work", "Team Collaboration", "OpenIM"]
+tags: ["Blog", "Career", "OpenIM"]
 tldr:
   - "团队每个成员都应承担主人翁和领导角色，发现问题时主动指出并提供方案，不应被动等待或沉默。"
   - "通过文档驱动、设计评审、里程碑承诺等实践规范团队协作，确保关键信息结构化且可追溯。"

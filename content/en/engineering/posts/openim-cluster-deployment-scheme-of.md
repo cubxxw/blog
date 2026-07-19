@@ -10,10 +10,9 @@ author: ["Xinwei Xiong", "Me"]
 keywords: ["OpenIM", "Kubernetes", "Clustering", "Design", "Deployment", "Scheme"]
 tags:
   - Blog
-  - openim
-  - kubernetes
-  - sealos
-  - clustering
+  - OpenIM
+  - Kubernetes
+  - Cloud Native
 tldr:
   - "OpenIM cluster deployment supports three methods: binary, docker-compose, and Kubernetes with one-click installation via sealos, using unified business code adapted through deployment scripts."
   - "Infrastructure design requires multi-zone subnets, load balancers, persistent storage solutions like Rook, and monitoring stacks like ELK/EFK for real-time log analysis and alerting."

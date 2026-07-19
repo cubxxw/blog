@@ -11,10 +11,10 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - 年度回顾 (Annual Recap)
+  - Annual Recap
   - Travel
-  - 个人成长 (Personal Growth)
-  - 哲理 (Philosophy)
+  - Personal Growth
+  - Philosophy
 description: >
   这是 3614 条笔记，十四个月，一个试图把自己活明白的人的记录。从"澎湃"到"剥落"，不是变老，是变真实。
 tldr:

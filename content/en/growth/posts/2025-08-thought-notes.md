@@ -13,8 +13,6 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  -  Late Summer
-  - Momentum Building
 description: >
     August 2025 monthly reflection - harnessing late summer energy, building momentum for autumn goals, and reflecting on the transformative power of consistency.
 tldr:

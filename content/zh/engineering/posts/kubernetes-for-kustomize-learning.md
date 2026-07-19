@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Kubernetes', 'Kustomize', '配置管理', 'kubectl', 'Helm']
-tags: ["Blog", "Kubernetes", "Kustomize", "Configuration Management"]
+tags: ["Blog", "Kubernetes", "DevOps"]
 description: '探索 Kustomize 的强大功能，这是专为 Kubernetes 设计的开源配置管理工具。学习如何使用 Kustomize 以声明式的方式自定义 Kubernetes 对象并管理配置。了解与 kubectl 和 Helm 的集成，发现 Kubernetes 配置管理的最佳实践。'
 tldr:
   - "Kustomize 是专为 Kubernetes 设计的开源配置管理工具，通过声明式补丁无需修改原始 YAML 文件即可实现配置自定义。"

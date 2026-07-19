@@ -10,12 +10,10 @@ author: ["Xinwei Xiong"]
 keywords: ['GEO', 'measurement', 'AI visibility', 'citation rate', 'prompt testing', 'AI referral traffic', 'GA4', 'Profound', 'Peec AI', 'share of voice', 'GSC', 'monitoring tools', 'AI search optimization']
 tags:
   - GEO
-  - Measurement
+  - SEO
   - Analytics
   - AI Search
-  - Tools
   - Content Strategy
-  - SEO
 description: >
   Classic "rank + click" fails in the GEO era because most value happens where the user never visits you. This final chapter gives you a workable measurement system: prompt testing, AI referral traffic, GSC cross-check, dedicated tools (Profound/Peec), and a low-cost DIY monitor built on this repo's own scripts. Chapter 6 (finale) of the GEO series.
 cover:

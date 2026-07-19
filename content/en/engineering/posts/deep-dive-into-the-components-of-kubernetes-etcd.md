@@ -11,8 +11,6 @@ keywords: ["kubernetes", "etcd", "raft", "go"]
 tags:
   - Blog
   - Kubernetes
-  - ETCD
-  - Raft
   - Go
 description: >
     Explore the inner workings and components of Kubernetes Etcd in-depth, understanding its role and significance in the Kubernetes ecosystem.

@@ -16,7 +16,6 @@ tags:
   - OpenIM
   - Cloud Native
   - Microservices
-  - Service Mesh
 description: >
   In-depth exploration of CNI (Container Network Interface), CRI (Container Runtime Interface), and CSI (Container Storage Interface) in Kubernetes. This article provides detailed explanations of these key components' functions and their importance in cloud-native environments.
 tldr:

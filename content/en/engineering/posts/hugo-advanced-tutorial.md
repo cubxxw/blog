@@ -10,6 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
+  - Hugo
 description: >
     hugo advanced tutorial
 tldr:

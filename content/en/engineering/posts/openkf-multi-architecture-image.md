@@ -4,7 +4,7 @@ date: 2023-09-01T14:56:14+08:00
 draft : false
 tags:
   - Blog
-  - openkf
+  - OpenIM
 description: >
   A walkthrough of automating multi-architecture Docker image builds for the openkf project.
   Covers building linux/amd64 and linux/arm64 images and pushing them to Docker Hub, AliYun

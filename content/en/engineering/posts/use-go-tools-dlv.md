@@ -11,7 +11,6 @@ keywords: []
 tags:
   - Blog
   - Go
-  - dlv
 tldr:
   - "Delve (dlv) provides comprehensive Go debugging capabilities superior to gdb, especially for goroutine inspection and Go type handling with integrated VSCode support."
   - "Dlv debugging workflow involves installation via git clone and make, launch.json configuration for local/remote modes, and essential commands for breakpoints, execution control, and variable inspection."

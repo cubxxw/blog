@@ -13,8 +13,7 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - Autumn Harvest
-  - Wisdom Accumulation
+  - Personal Growth
 description: >
     September 2025 Thought Notes - Exploring the intersection of technology and philosophy during the early autumn harvest season, recording deep reflections on the AI era, personal growth, cognitive upgrades, and the wisdom of maintaining inner clarity in a rapidly changing world.
 tldr:

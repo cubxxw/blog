@@ -10,11 +10,10 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["AI", "Agency", "Self-awareness", "Human Value", "Technology Philosophy"]
 tags:
-  - AI Reflection
+  - AI
   - Personal Reflection
-  - Technology Philosophy
-  - Self Awareness
-  - Human Value
+  - Philosophy
+  - Self-Discovery
 description: >
     When AI can replace our thinking and execution, where is "me"? Exploring human agency, feelings, and the essence of meaning in the AI era.
 tldr:

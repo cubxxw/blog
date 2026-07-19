@@ -11,8 +11,6 @@ keywords: ["OpenIM", "Docker", "Instant Messaging", "Backend Management", "Monit
 tags:
   - OpenIM
   - Docker
-  - Instant Messaging
-  - Backend Management
   - Monitoring
 description: >
     This post guides you through the process of deploying OpenIM using Docker, 

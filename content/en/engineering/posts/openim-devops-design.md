@@ -10,7 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - openim
+  - OpenIM
 tldr:
   - "DevOps automates team collaboration and communication, enabling OpenIM to deliver stable products faster with less waste through standardized processes"
   - "Agile development uses iterative sprints and twelve guiding principles to enable teams to respond flexibly to changing customer needs and improve software quality"

@@ -12,9 +12,7 @@ tags:
   - GEO
   - RAG
   - AI Search
-  - Retrieval
   - LLM
-  - Embeddings
   - Content Strategy
 description: >
   想让 AI 引用你，先得知道它怎么"选人"。这一篇把 AI 搜索的 RAG 管线拆到零件级：查询扇出、混合检索、向量语义匹配、多层重排、预埋引用的生成。核心结论只有一句——检索单元是"段落"不是"整页"，你要优化的是 chunk。GEO 系列第 2 篇。

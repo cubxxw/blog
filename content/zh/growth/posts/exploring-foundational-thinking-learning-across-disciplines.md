@@ -9,10 +9,10 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["foundational thinking", "cross-disciplinary learning", "core principles", "educational strategies"]
 tags:
-  - Self Discovery
-  - Living & Education
+  - Self-Discovery
+  - Learning
   - Exploration
-  - Personal Productivity
+  - Productivity
 description: >
   This blog explores how foundational thinking can be applied across different disciplines
   to accelerate learning and mastery of new fields. We discuss techniques and strategies that leverage

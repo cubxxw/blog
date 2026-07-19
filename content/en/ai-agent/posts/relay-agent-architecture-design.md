@@ -10,10 +10,9 @@ keywords: ["AI Agent", "LangGraph", "Multi-Agent", "HITL", "Agent Architecture",
 tags:
   - AI
   - Agent
-  - LangGraph
   - LLM
   - Architecture
-  - TypeScript
+  - Development
   - Python
 description: >
   Using the Relay open-source job-search Agent project as a case study, this article fully breaks down every key design decision in a production-grade multi-agent system: why split a single Agent into 5, how to implement HITL checkpoints with LangGraph, how a three-tier LLM router precisely tracks costs, how a fabrication guard validates at runtime, and how a hybrid backend (Hono/Bun + FastAPI/Python) decouples cleanly. Whether you are building your first Agent PoC or pushing toward production, there are design patterns here you can take away.

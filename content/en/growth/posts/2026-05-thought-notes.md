@@ -13,11 +13,10 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 老挝旅行 (Laos Travel)
-  - 知行合一 (Unity of Knowing and Doing)
-  - 自我认知 (Self-Knowledge)
-  - AI思考 (AI Thinking)
-  - Digital Nomad
+  - Travel
+  - Philosophy
+  - Self-Discovery
+  - AI
 description: >
   In May I did not write a single flomo note. I barely posted on social. It was a month of intentional disconnection — disconnecting from the tools other people designed to record me, disconnecting from the Shenzhen default script for how a life should be lived, and throwing myself into the cafés, caves, bars and riverbanks of Laos to see, in the absence of any external frame, what I am actually pulled toward, when I light up and when I go hollow. This is a deep recap of that one month: from the alms-giving in Luang Prabang to the wild adventure of Vang Vieng, from the post-water-festival emptiness in Vientiane to a month-plus of slow life there; from reading myself as a risk-seeker, to the realization that the unity of knowing and doing is the answer, to the engineering thought of compiling a person into a self-model, and finally to the disorientation after returning home and a life roadmap I now have to design myself.
 tldr:

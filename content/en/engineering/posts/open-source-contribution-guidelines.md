@@ -10,6 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
+  - Open Source
 tldr:
   - "Open source contributions follow a fork-branch-commit-push workflow with remote upstream tracking and rebasing for synchronization."
   - "Documentation must comply with formatting standards: proper punctuation, capitalization, language specifications for code blocks, and correct technical term capitalization."

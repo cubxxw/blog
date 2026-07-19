@@ -8,7 +8,7 @@ tocopen: true
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源', '商业模式', '开发者指南', '开源商业化']
-tags: ["Open Source", "Business Model", "Open Source Commercialization", "Developer Guide", "Innovation", "Tech Trends"]
+tags: ["Open Source", "Product Strategy", "Development"]
 description: '本文深入探讨了开源和商业模式的结合，分析了开源项目的经济潜力与挑战，为开发者提供了如何在开源项目中找到商业机会的实用指南。'
 tldr:
   - "开源商业化需要通过Open Core和Open Standard两大主流模式实现，核心在于将用户高付费意愿的功能闭源，有吸引力的功能开源。"

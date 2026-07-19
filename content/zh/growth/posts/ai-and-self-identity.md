@@ -10,11 +10,9 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["AI", "主体性", "自我认知", "人类价值", "技术哲学"]
 tags:
-  - AI 思考 (AI Reflection)
-  - 个人反思 (Personal Reflection)
-  - 技术哲学 (Technology Philosophy)
-  - 自我认知 (Self Awareness)
-  - 人类价值 (Human Value)
+  - AI
+  - Philosophy
+  - Self-Discovery
 maturity: budding
 description: >
     当 AI 能替代我们思考和执行，"我"在哪里？探索 AI 时代人类的主体性、感受与意义的本质。

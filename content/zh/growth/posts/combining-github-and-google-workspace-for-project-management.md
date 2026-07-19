@@ -9,9 +9,8 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ['GitHub', 'Google Workspace', '项目管理', '开发策略', '协作工具', 'GitHub与Google Workspace', 'GitHub与Google Workspace项目管理', 'GitHub与Google Workspace协作', 'GitHub与Google Workspace优化', 'GitHub与Google Workspace使用技巧']
 tags:
-  - 'google (谷歌)'
-  - 'project (项目)'
-  - 'management (管理)'
+  - AI Search
+  - Project Learning
 description: >
   探索GitHub与Google Workspace之间的协同效应，优化项目管理流程。本指南提供了利用两个平台的优势进行协作开发和项目跟踪的见解。
 aliases:

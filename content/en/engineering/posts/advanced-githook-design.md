@@ -7,7 +7,7 @@ showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: []
-tags: ["Blog", "Git", "openim"]
+tags: ["Blog", "Git", "OpenIM"]
 description: 'Explore advanced techniques and best practices for designing Git hooks to enhance your development workflow.'
 tldr:
   - "Git hooks enforce standardized commit formats and file size limits, making developers consider best practices before committing"

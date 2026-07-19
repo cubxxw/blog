@@ -25,19 +25,11 @@ keywords:
   - 'OpenAI'
   - '语言模型接口'
 tags:
-  - AI 开发 (AI Development)
-  - 语言模型 (Language Models)
-  - LangChain
-  - AI 框架 (AI Frameworks)
   - AI
-  - API 集成 (API Integration)
-  - 自然语言处理 (NLP)
-  - 软件开发 (Software Development)
-  - 编程 (Programming)
+  - LLM
+  - LangChain
+  - Development
   - Automation
-  - AI 工具 (AI Tools)
-  - OpenAI
-  - 深度学习 (Deep Learning)
 description: '本指南深入探讨了使用 LangChain 框架集成和应用语言模型的过程，专为希望简化复杂实现的开发者量身定制。'
 tldr:
   - "LangChain框架通过提示模板、模型调用和输出解析的Model I/O设计，简化了复杂语言模型应用的开发过程。"
