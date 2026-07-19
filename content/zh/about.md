@@ -23,7 +23,7 @@ author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "个人介绍", "关于我", "阅读地图", "Start Here", "精选入口"]
 tldr:
   - "熊鑫伟（cubxxw），2001 年出生于中国，是一名 AI 创业者、开源贡献者和数字游民，核心标签是真实、好奇、连接者。"
-  - "他构建了 awesome-cs-cloudnative-blockchain（1.4k star）等开源项目，深度参与 OpenIM、WiseEngage、Sealos，并在 Telepace 打磨 AI 产品，信奉 AI + Human = Superhuman 的人机协作理念。"
+  - "他构建了 awesome-cs-cloudnative-blockchain（1.4k star）等开源项目，是开源即时通讯基础设施 OpenIM（16.5k star）的头号贡献者（Top Contributor），并深度参与 WiseEngage、Sealos，在 Telepace 打磨 AI 产品，信奉 AI + Human = Superhuman 的人机协作理念。"
   - "2024 年起走出舒适区，12 个月游历 9 个国家、35+ 城市，完成 400+ 公里徒步，包括海拔 5416 米的 Tilicho 湖。"
   - "写作围绕 AI 与技术、成长与认知、旅行与观察、项目与实践四条主线，坚持一手数据优先与跨文化观察视角。"
   - "本页同时是全站阅读地图：只想先读一篇推荐《2025 年度复盘》，四条阅读路径各配精选文章，并附可交互的 3D 知识星系。"

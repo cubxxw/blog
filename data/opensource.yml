@@ -58,6 +58,11 @@ groups:
         url: https://github.com/openimsdk/open-im-server
         stars: "16.5k"
         lang: "Go"
+        # Ranked #1 by contributions on the project's GitHub Insights → Contributors page.
+        badge_zh: "头号贡献者"
+        badge_en: "Top Contributor"
+        badge_title_zh: "在 OpenIM 贡献排名第一（GitHub Contributors）"
+        badge_title_en: "Ranked #1 contributor on OpenIM (GitHub Contributors)"
         desc_zh: "开源即时通讯基础设施，为应用内置聊天、音视频能力"
         desc_en: "Open source instant messaging infrastructure for in-app chat and RTC"
       - name: openimsdk/wiseengage

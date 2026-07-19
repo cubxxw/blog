@@ -67,12 +67,41 @@ a.oss-card:hover {
   border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-rule));
 }
 
+.oss-card__namerow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+
 .oss-card__name {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--color-ink);
   word-break: break-word;
+}
+
+/* "Top Contributor" style badge — quiet outlined chip, accent ink, no loud fill */
+.oss-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 7px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+.oss-card__badge svg {
+  flex: none;
+  opacity: 0.85;
 }
 
 .oss-card__desc {

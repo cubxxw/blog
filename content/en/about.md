@@ -23,7 +23,7 @@ author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me", "Reading Atlas", "Start Here"]
 tldr:
   - "Xinwei Xiong (cubxxw), born in China in 2001, is an AI entrepreneur, open source contributor, and digital nomad whose three defining traits are authentic, curious, and connector."
-  - "He built open source projects such as awesome-cs-cloudnative-blockchain (1.4k stars), contributes deeply to OpenIM, WiseEngage and Sealos, and is building AI products at Telepace, believing in the AI + Human = Superhuman model of collaboration."
+  - "He built open source projects such as awesome-cs-cloudnative-blockchain (1.4k stars), is the top contributor to OpenIM (16.5k stars), the open source instant messaging infrastructure, and contributes deeply to WiseEngage and Sealos while building AI products at Telepace, believing in the AI + Human = Superhuman model of collaboration."
   - "Since 2024 he stepped out of his comfort zone, traveling 9 countries and 35+ cities over 12 months and completing 400+ km of hiking, including Tilicho Lake at 5,416 m."
   - "His writing spans four threads — AI & Technology, Growth & Cognition, Travel & Observation, Projects & Practice — grounded in first-hand data and a cross-cultural perspective."
   - "This page doubles as the site's reading atlas: one recommended first read (the 2025 Annual Review), four curated reading paths, and an interactive 3D knowledge galaxy."
