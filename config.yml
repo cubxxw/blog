@@ -282,6 +282,12 @@ taxonomies:
 permalinks:
   columns: /columns/:slug/
 
+# Pagination. Hugo's default pagerSize of 10 turned ~290 posts into 543 paginated
+# URLs — more than the site has real content pages. 30 per page cuts that by
+# roughly two thirds; robots.txt blocks the survivors from being crawled at all.
+pagination:
+  pagerSize: 30
+
 # languageCode: en-us
 DefaultContentLanguage: en
 # 启用多语言模式
