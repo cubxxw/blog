@@ -84,6 +84,44 @@ books:
       - What sense of time arises before stone swallowed by tree roots?
       - What history is worth knowing before visiting Angkor?
 
+  - title_zh: 西藏
+    title_en: Tibet
+    author_zh: 熊鑫伟 · 自著
+    author_en: Xinwei Xiong · self-written
+    slot_zh: 自制装备 · 卷三
+    slot_en: Crafted Gear · Vol. III
+    note_zh: 海拔 3650 米的拉萨——被高原强制降速的一段路，看云、看人、看信仰怎么落进日子里。
+    note_en: Lhasa at 3,650 m — a stretch of road the plateau forces you to slow down on, watching clouds, people and faith settle into everyday life.
+    url: https://tibet.cubxxw.com/
+    own: true
+    ai_prompts_zh:
+      - 高原反应之外，西藏最让作者「降速」的是什么？
+      - 在拉萨慢下来的这些天，作者看见了怎样的信仰与日常？
+      - 第一次进藏，作者会给什么样的节奏建议？
+    ai_prompts_en:
+      - Beyond altitude sickness, what really made the author slow down in Tibet?
+      - What faith and daily life did the author notice in those slow Lhasa days?
+      - For a first trip to Tibet, what pace would the author suggest?
+
+  - title_zh: 乱世为龙
+    title_en: Dragon in a Broken Age
+    author_zh: 熊鑫伟 · 自著
+    author_en: Xinwei Xiong · self-written
+    slot_zh: 自制装备 · 卷四
+    slot_en: Crafted Gear · Vol. IV
+    note_zh: 一部写后周太祖郭威的历史长篇——从颈刺飞雀的潞州孤儿，到碎玉罢租、薄葬嵩陵的开国天子。史实为骨，文学为肉。
+    note_en: A historical novel of Guo Wei, founding emperor of Later Zhou — from a tattooed orphan in Luzhou to a ruler who smashed the palace jade and chose a pauper's burial. History for the bones, fiction for the flesh.
+    url: https://wudai.cubxxw.com/
+    own: true
+    ai_prompts_zh:
+      - 「天子，兵强马壮者为之」——郭威是怎么在这套乱世规则里活下来的？
+      - 登基后先砸碎宫里的金玉，郭威想改写的到底是什么？
+      - 五代十国为什么是「最黑暗也最赤裸」的五十三年？
+    ai_prompts_en:
+      - How did Guo Wei survive an age where "the throne goes to whoever has the strongest army"?
+      - Why did Guo Wei smash the palace jade the moment he took the throne?
+      - What made the Five Dynasties the most brutal, most naked fifty-three years in Chinese history?
+
   - title_zh: 在路上
     title_en: On the Road
     author_zh: 杰克·凯鲁亚克
