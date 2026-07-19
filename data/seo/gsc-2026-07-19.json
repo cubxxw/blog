@@ -1,0 +1,5649 @@
+{
+  "meta": {
+    "siteUrl": "sc-domain:cubxxw.com",
+    "window": {
+      "start": "2026-07-14",
+      "end": "2026-07-16"
+    },
+    "fetchedAt": "2026-07-19T08:01:52.538Z",
+    "runDate": "2026-07-19"
+  },
+  "date_query": [
+    {
+      "keys": [
+        "2026-07-16",
+        "go build directive"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "microsoft/markitdown"
+      ],
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "super individual"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 26
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "asyncapi testing"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 33
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "disabled md means"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "github to google sheets"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 38.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "go directives"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "hugo 博客"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "kustomization"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "langgraph"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "langgraph low level concepts stategraph nodes edges official docs"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "litellm vs kong"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "litellm vs portkey"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "llm api gateway startup"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown ocr"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 1.6666666666666665
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown pdf"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown pdf to markdown"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown vs pandoc"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 54.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown with ocr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown 教程"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "markitdown-ocr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "microsoft mark it down"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "openkf"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "pdf markitdown"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "portkey vs litellm"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "project management theories"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 38
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "site:nsddd.top"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "test driven llm development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "what is a cni"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "xxw.com"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "directive go"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "docker buildx build --platform linux/arm64"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 35
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "github google sheets integration"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 40
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "github to google sheets"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "golang dlv"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "growth friction"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 71
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "intelligent quality gates"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "is langchain open source"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "jina ai"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "jinaai"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "langchain for llm app development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 47
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "langchain for llm application development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 68
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "langchain with open-source llm"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "langgraph low-level orchestration framework stateful agents official"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "llm api gateway startup"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "mark it down microsoft"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 28.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "markitdown chatgpt"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "markitdown command"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "markitdown microsoft"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 3.6666666666666665
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "markitdown ocr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "markitdown online"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 59
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "markitdown vs pandoc"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 53.333333333333336
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "microsoft mark it down"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "microsoft’s markitdown"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "notebooklm 制約"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "online project management theory practice"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 19.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "openkf"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "project management theory"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 14
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "project theories"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 41
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "test driven llm development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 57
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "what is cni in kubernetes"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "心流状态"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "\"graph neural networks for recommender systems: a survey\""
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "ai directions"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "asyncapi testing"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "docker buildx build --platform linux/amd64 linux/arm64 official docs"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "docker run --privileged --rm tonistiigi/binfmt --install arm64"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "github google sheets integration"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 46
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "go //go:norace compiler directive documentation"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "go directives"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "gpt res"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "gpt researcher"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 2.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "gpt researcher github open source autonomous research agent"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "gpt-researcher"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "gptresearcher"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "growth friction"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "install markitdown on windows"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "langchain for llm application development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown app"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown converter"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown ocr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown ocr plugin"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown online"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 31.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown vs pandoc"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 33
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "markitdown-ocr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "microsoft markitdown"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "microsoft markitdown tutorial"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "microsoft ufo"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "ms mark it down"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "online project management theory practice"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 20
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "project management theory"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 36.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "py research"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "site:.top \"safe mortgage loan originator test - national component with uniform state test content outline\" download"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "test driven llm development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "what is a cni"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "xxw.com"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "xxwcom"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "抖音上20-40岁关注品质生活美学、低调内敛、偏好老钱风、消费高质感奢品且兴趣集中在高端旅游等场景的女性群体的生活状态、消费偏好、决策影响因素及生活方式与兴趣场景监测"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "麦当劳中国（金拱门）全量舆情监测"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    }
+  ],
+  "date_page": [
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/engineering/posts/my-hugo/"
+      ],
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      ],
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 0.07142857142857142,
+      "position": 5.857142857142857
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/ai-and-self-identity/"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 35
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+      ],
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 14
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/markitdown/"
+      ],
+      "clicks": 1,
+      "impressions": 42,
+      "ctr": 0.023809523809523808,
+      "position": 7.404761904761905
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/weight-of-self-in-ai-age/"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/langchain/"
+      ],
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 6.8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/langgraph/"
+      ],
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 10.333333333333334
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/about/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-agent/posts/ai-second-brain-build/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-agent/posts/from-chatbot-to-agent-to-skill/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 20
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6.75
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/github-actions-advanced-techniques/"
+      ],
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 12.333333333333334
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/gitops-practice-theory-part/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10.333333333333334
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/openim-devops-design/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 13
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/ai-technology/posts/relay-agent-architecture-design/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/archives/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 29.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 1.6
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 3.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 3.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 3.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 35
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/learn-about-automated-testing/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 33
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/openim-cluster-deployment-scheme-of/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/openim-multi-process-management/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/engineering/posts/troubleshooting-guide-for-openim/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2025-09-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 17.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2025-10-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 16.615384615384613
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2025-12-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 17.8
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2025-annual-review/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 17.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2026-03-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 17.833333333333332
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2026-06-28-ignite-and-settle-3-anxious/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/2026-07-14-what-remains-when-taken-apart/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 22.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 21.333333333333332
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/#9-google-map"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/#google-project-management-tools-all-you-need-to-know"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/#google-projects-vs-github-projects"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/love-seen-clearly-loved-deeply/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/metacognitive-transformation-review/"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 12.714285714285714
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/project-management-from-theory-to-practice/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 28.4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/projects/ai-gateway/"
+      ],
+      "clicks": 0,
+      "impressions": 51,
+      "ctr": 0,
+      "position": 10.823529411764707
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/projects/langchain/"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 7.428571428571429
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/projects/langgraph/"
+      ],
+      "clicks": 0,
+      "impressions": 66,
+      "ctr": 0,
+      "position": 7.7727272727272725
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/projects/markitdown/"
+      ],
+      "clicks": 0,
+      "impressions": 31,
+      "ctr": 0,
+      "position": 6.709677419354839
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/projects/tdd/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 30
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/tags/exploration/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 3.75
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/about/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7.8
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/ai-agent/posts/engineering-discipline-ai-workflow/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-etcd/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 38.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/ai-technology/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/ai-technology/posts/my-hugo/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 33
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-kube-apiserver/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 29
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/engineering/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 57.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/engineering/posts/kubernetes-for-kustomize-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 56.666666666666664
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/engineering/posts/navigating-the-open-source-landscape/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 18
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/engineering/posts/openkf-multi-architecture-image/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2025-08-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2025-09-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 6.333333333333333
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2025-10-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2025-11-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.666666666666667
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 7.769230769230769
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 4.545454545454545
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 12.705882352941176
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/2026-04-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/gtd-and-the-four-quadrant-rule-practice/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/metacognitive-transformation-review/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/projects/gpt-researcher/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/projects/jina/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 32.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/projects/langchain/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 13
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/projects/langgraph/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/projects/markitdown/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "keys": [
+        "2026-07-14",
+        "https://cubxxw.com/zh/projects/mem0/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 2.6
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-agent/posts/agent-engineering-the-98-percent-harness/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-agent/posts/engineering-discipline-ai-workflow/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-agent/posts/geo-blog-rebuild-case-study/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-agent/posts/geo-generative-engine-optimization-guide/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 57.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/advanced-githook-design/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 46
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/github-actions-advanced-techniques/"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 22.11111111111111
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/gitops-practice-theory-part/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 47
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/openim-offline-deployment-design/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 13
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/ai-technology/posts/relay-agent-architecture-design/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/archives/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/columns/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/cross-platform-compilation/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 18
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 25
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-kubectl/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 49.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 7.625
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 14
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/my-hugo/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/openim-cluster-deployment-scheme-of/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/openim-multi-process-management/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/troubleshooting-guide-for-openim/"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 5.428571428571429
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/engineering/posts/use-go-tools-dlv/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2025-09-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 22.4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2025-10-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2025-12-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 74,
+      "ctr": 0,
+      "position": 20.18918918918919
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 18
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2026-02-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 20.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2026-03-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 20.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2026-04-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 26
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2026-05-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/2026-07-14-what-remains-when-taken-apart/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/ai-and-self-identity/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 22.25
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/friction-is-growth/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 25
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 23
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/metacognitive-transformation-review/"
+      ],
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 11.434782608695652
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/project-management-from-theory-to-practice/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 21.2
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/ai-gateway/"
+      ],
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/gpt-researcher/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/jina/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 45.333333333333336
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/langchain/"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/langgraph/"
+      ],
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/markitdown/"
+      ],
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 12.333333333333334
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/mem0/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/projects/tdd/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 57
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/tags/blog/page/5/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/travel/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 40
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/ai-agent/posts/vector-database-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 4.333333333333334
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 40
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/ai-technology/posts/troubleshooting-guide-for-openim/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-etcd/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 26
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/engineering/posts/github-actions-advanced-techniques/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 47
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/engineering/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 4.333333333333334
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/engineering/posts/navigating-the-open-source-landscape/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/engineering/posts/openim-devops-design/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 15
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/engineering/posts/openkf-multi-architecture-image/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2023-annual-summary-reflections-and-aspirations/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2025-06-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 11.666666666666666
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2025-08-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 16.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2025-09-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 19.416666666666668
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2025-10-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 21.9375
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2025-11-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 17.2
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 78,
+      "ctr": 0,
+      "position": 18.23076923076923
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 57,
+      "ctr": 0,
+      "position": 19.54385964912281
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 38,
+      "ctr": 0,
+      "position": 16.026315789473685
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2026-04-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 21.058823529411764
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2026-06-28-ignite-and-settle-2-avoidant/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 15.6
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/2026-06-28-ignite-and-settle-3-anxious/"
+      ],
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 15.6875
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/flow-state/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/gtd-and-the-four-quadrant-rule-practice/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/metacognitive-transformation-review/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 23.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/growth/posts/super-individual-ai-product-and-solo-builder-stack/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/ai-recommend/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/gpt-researcher/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/independent-developer/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/jina/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/langchain/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/langgraph/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/markitdown/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/mem0/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/notebooklm/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "2026-07-15",
+        "https://cubxxw.com/zh/projects/ufo/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/about/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/agent-engineering-the-98-percent-harness/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 15
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/from-chatbot-to-agent-to-skill/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/geo-generative-engine-optimization-guide/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/give-ai-tasks-not-directions/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-agent/posts/info-to-creation-creation/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 18.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-technology/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 21
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-technology/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 65
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-technology/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.333333333333333
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-technology/posts/openim-offline-deployment-design/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/ai-technology/posts/relay-agent-architecture-design/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/articles/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/cross-platform-compilation/"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 8.857142857142858
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 79,
+      "ctr": 0,
+      "position": 5.367088607594937
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#advanced-applications-of-the-gobuild-command"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gobuild"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 7.25
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#goembed"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7.2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gogenerate"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#golinkname"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 8.25
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonorace"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/#gonosplit"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/"
+      ],
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/gitops-practice-theory-part/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 8.333333333333332
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/kubernetes-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/learn-about-automated-testing/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/openim-offline-deployment-design/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 8.6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/prow-ecological-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/read-openim-project-sealos-openim-source-code/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.666666666666667
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/the-art-of-asking-questions-in-open-source-communities/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/troubleshooting-guide-for-openim/"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 5.142857142857143
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/engineering/posts/use-go-tools-dlv/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 16.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/2025-10-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/2025-12-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 12.88888888888889
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 15.6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/friction-is-growth/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/love-seen-clearly-loved-deeply/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/metacognitive-transformation-review/"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 7.75
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/growth/posts/project-management-from-theory-to-practice/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 31
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/ai-gateway/"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 9.357142857142858
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/gpt-researcher/"
+      ],
+      "clicks": 0,
+      "impressions": 43,
+      "ctr": 0,
+      "position": 6.604651162790698
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/jina/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/langchain/"
+      ],
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/langgraph/"
+      ],
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 6.8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/markItdown/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 13.6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/markItdown/#12-markitdown-overview"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/markItdown/#42-cli-convert-your-first-file-in-30-seconds"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/markItdown/#45-batch-documents--markdown--vector-database-rag-pipeline"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/projects/tdd/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/start-here/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/tags/kubernetes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/ai-agent/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/ai-agent/posts/engineering-discipline-ai-workflow/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/deep-dive-into-the-components-of-kubernetes-cni-csi-cri/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 82
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/go-release-tools/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/kubernetes-learning/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 14.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/navigating-the-open-source-landscape/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/engineering/posts/open-source-contribution-guidelines/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2025-06-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2025-08-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 15.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2025-10-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 8.6
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2025-11-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 9.11111111111111
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 5.666666666666667
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 10.45
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2026-04-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2026-06-28-ignite-and-settle-3-anxious/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/2026-06-thought-notes/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 13
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/japan-travel-2025/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 88
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/growth/posts/metacognitive-transformation-review/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6.25
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/ai-recommend/"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/gpt-researcher/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/jina/"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 8.666666666666668
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/mem0/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 6.666666666666667
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/notebooklm/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "2026-07-16",
+        "https://cubxxw.com/zh/projects/ufo/"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    }
+  ],
+  "query_device": [
+    {
+      "keys": [
+        "go build directive",
+        "DESKTOP"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 3
+    },
+    {
+      "keys": [
+        "microsoft/markitdown",
+        "DESKTOP"
+      ],
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 5
+    },
+    {
+      "keys": [
+        "super individual",
+        "DESKTOP"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 26
+    },
+    {
+      "keys": [
+        "\"graph neural networks for recommender systems: a survey\"",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "ai directions",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "keys": [
+        "asyncapi testing",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "asyncapi testing",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 33
+    },
+    {
+      "keys": [
+        "directive go",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "disabled md means",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "docker buildx build --platform linux/amd64 linux/arm64 official docs",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "docker buildx build --platform linux/arm64",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 35
+    },
+    {
+      "keys": [
+        "docker run --privileged --rm tonistiigi/binfmt --install arm64",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "github google sheets integration",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 46
+    },
+    {
+      "keys": [
+        "github google sheets integration",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 40
+    },
+    {
+      "keys": [
+        "github to google sheets",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 37.5
+    },
+    {
+      "keys": [
+        "github to google sheets",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 39
+    },
+    {
+      "keys": [
+        "go //go:norace compiler directive documentation",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "go directives",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "golang dlv",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "gpt res",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "gpt researcher",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 2.5
+    },
+    {
+      "keys": [
+        "gpt researcher github open source autonomous research agent",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "keys": [
+        "gpt-researcher",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "gptresearcher",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "growth friction",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "keys": [
+        "hugo 博客",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "install markitdown on windows",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "intelligent quality gates",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "keys": [
+        "is langchain open source",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "keys": [
+        "jina ai",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "keys": [
+        "jinaai",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "kustomization",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "keys": [
+        "langchain for llm app development",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 47
+    },
+    {
+      "keys": [
+        "langchain for llm application development",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 68
+    },
+    {
+      "keys": [
+        "langchain for llm application development",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 83
+    },
+    {
+      "keys": [
+        "langchain with open-source llm",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "langgraph",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "keys": [
+        "langgraph low level concepts stategraph nodes edges official docs",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "langgraph low-level orchestration framework stateful agents official",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "litellm vs kong",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "litellm vs portkey",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "llm api gateway startup",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7.5
+    },
+    {
+      "keys": [
+        "mark it down microsoft",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 28.5
+    },
+    {
+      "keys": [
+        "markitdown",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 28.5
+    },
+    {
+      "keys": [
+        "markitdown app",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown chatgpt",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown command",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown converter",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "markitdown microsoft",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "markitdown microsoft",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "markitdown ocr",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 1.5
+    },
+    {
+      "keys": [
+        "markitdown ocr",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown ocr plugin",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "markitdown online",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 40.666666666666664
+    },
+    {
+      "keys": [
+        "markitdown pdf",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown pdf to markdown",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown vs pandoc",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 46
+    },
+    {
+      "keys": [
+        "markitdown with ocr",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "markitdown 教程",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "markitdown-ocr",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 1.5
+    },
+    {
+      "keys": [
+        "microsoft mark it down",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "microsoft markitdown",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "microsoft markitdown tutorial",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "microsoft ufo",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "microsoft’s markitdown",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "ms mark it down",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "notebooklm 制約",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "online project management theory practice",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 19.666666666666668
+    },
+    {
+      "keys": [
+        "openkf",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "keys": [
+        "pdf markitdown",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "portkey vs litellm",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "project management theories",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 38
+    },
+    {
+      "keys": [
+        "project management theory",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 29
+    },
+    {
+      "keys": [
+        "project theories",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 41
+    },
+    {
+      "keys": [
+        "py research",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "site:.top \"safe mortgage loan originator test - national component with uniform state test content outline\" download",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "site:nsddd.top",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "test driven llm development",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 60.333333333333336
+    },
+    {
+      "keys": [
+        "what is a cni",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "keys": [
+        "what is cni in kubernetes",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "keys": [
+        "xxw.com",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "xxw.com",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "xxwcom",
+        "MOBILE"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "心流状态",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "抖音上20-40岁关注品质生活美学、低调内敛、偏好老钱风、消费高质感奢品且兴趣集中在高端旅游等场景的女性群体的生活状态、消费偏好、决策影响因素及生活方式与兴趣场景监测",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "麦当劳中国（金拱门）全量舆情监测",
+        "DESKTOP"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    }
+  ],
+  "query_country": [
+    {
+      "keys": [
+        "go build directive",
+        "gbr"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 3
+    },
+    {
+      "keys": [
+        "microsoft/markitdown",
+        "tha"
+      ],
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 5
+    },
+    {
+      "keys": [
+        "super individual",
+        "gbr"
+      ],
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 26
+    },
+    {
+      "keys": [
+        "\"graph neural networks for recommender systems: a survey\"",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "ai directions",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "keys": [
+        "asyncapi testing",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 33.666666666666664
+    },
+    {
+      "keys": [
+        "directive go",
+        "ecu"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "disabled md means",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "docker buildx build --platform linux/amd64 linux/arm64 official docs",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "docker buildx build --platform linux/arm64",
+        "mex"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 35
+    },
+    {
+      "keys": [
+        "docker run --privileged --rm tonistiigi/binfmt --install arm64",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "github google sheets integration",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 43
+    },
+    {
+      "keys": [
+        "github to google sheets",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 38
+    },
+    {
+      "keys": [
+        "go //go:norace compiler directive documentation",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "go directives",
+        "aus"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "go directives",
+        "gbr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "go directives",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "golang dlv",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "gpt res",
+        "mex"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "gpt researcher",
+        "aus"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "gpt researcher",
+        "deu"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "gpt researcher",
+        "isr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "gpt researcher",
+        "nga"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "gpt researcher github open source autonomous research agent",
+        "deu"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "keys": [
+        "gpt researcher github open source autonomous research agent",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "gpt-researcher",
+        "deu"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "gptresearcher",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "growth friction",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "keys": [
+        "hugo 博客",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "install markitdown on windows",
+        "ita"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "intelligent quality gates",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "keys": [
+        "is langchain open source",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "keys": [
+        "jina ai",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "keys": [
+        "jinaai",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "kustomization",
+        "twn"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 73
+    },
+    {
+      "keys": [
+        "langchain for llm app development",
+        "idn"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 47
+    },
+    {
+      "keys": [
+        "langchain for llm application development",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 75.5
+    },
+    {
+      "keys": [
+        "langchain with open-source llm",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "langgraph",
+        "hkg"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "keys": [
+        "langgraph low level concepts stategraph nodes edges official docs",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "langgraph low-level orchestration framework stateful agents official",
+        "hkg"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "litellm vs kong",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "litellm vs portkey",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "llm api gateway startup",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7.5
+    },
+    {
+      "keys": [
+        "mark it down microsoft",
+        "sau"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "mark it down microsoft",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "keys": [
+        "markitdown",
+        "cmr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "markitdown",
+        "deu"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "keys": [
+        "markitdown app",
+        "aus"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown chatgpt",
+        "isl"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown command",
+        "can"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown converter",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "markitdown microsoft",
+        "sau"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 3.6666666666666665
+    },
+    {
+      "keys": [
+        "markitdown ocr",
+        "esp"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown ocr",
+        "gbr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown ocr",
+        "hkg"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "markitdown ocr",
+        "sau"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown ocr",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "markitdown ocr plugin",
+        "tha"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "markitdown online",
+        "deu"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 40.666666666666664
+    },
+    {
+      "keys": [
+        "markitdown pdf",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown pdf to markdown",
+        "nld"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "markitdown vs pandoc",
+        "deu"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 52.42857142857143
+    },
+    {
+      "keys": [
+        "markitdown vs pandoc",
+        "mex"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "markitdown with ocr",
+        "mys"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "markitdown 教程",
+        "chn"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "markitdown-ocr",
+        "npl"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "markitdown-ocr",
+        "rus"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "microsoft mark it down",
+        "bel"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "microsoft mark it down",
+        "phl"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "microsoft mark it down",
+        "sgp"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "microsoft markitdown",
+        "tha"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "microsoft markitdown tutorial",
+        "rou"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "microsoft ufo",
+        "twn"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "microsoft’s markitdown",
+        "sau"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "ms mark it down",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "notebooklm 制約",
+        "col"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "online project management theory practice",
+        "zaf"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 19.666666666666668
+    },
+    {
+      "keys": [
+        "openkf",
+        "hkg"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "keys": [
+        "pdf markitdown",
+        "isr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "portkey vs litellm",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "project management theories",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 38
+    },
+    {
+      "keys": [
+        "project management theory",
+        "can"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 39
+    },
+    {
+      "keys": [
+        "project management theory",
+        "gbr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "project management theory",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 14
+    },
+    {
+      "keys": [
+        "project theories",
+        "dza"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "keys": [
+        "project theories",
+        "pak"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "keys": [
+        "py research",
+        "blr"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "site:.top \"safe mortgage loan originator test - national component with uniform state test content outline\" download",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "site:.top \"safe mortgage loan originator test - national component with uniform state test content outline\" download",
+        "kor"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "site:nsddd.top",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "site:nsddd.top",
+        "vnm"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "test driven llm development",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 60.333333333333336
+    },
+    {
+      "keys": [
+        "what is a cni",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 68
+    },
+    {
+      "keys": [
+        "what is a cni",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "keys": [
+        "what is cni in kubernetes",
+        "usa"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "keys": [
+        "xxw.com",
+        "pak"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "xxw.com",
+        "ven"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "xxwcom",
+        "ind"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "心流状态",
+        "uzb"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "keys": [
+        "抖音上20-40岁关注品质生活美学、低调内敛、偏好老钱风、消费高质感奢品且兴趣集中在高端旅游等场景的女性群体的生活状态、消费偏好、决策影响因素及生活方式与兴趣场景监测",
+        "hkg"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keys": [
+        "麦当劳中国（金拱门）全量舆情监测",
+        "hkg"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    }
+  ]
+}
