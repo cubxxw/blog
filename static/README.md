@@ -13,7 +13,7 @@
 
 > [!NOTE]
 > + [关于我](https://cubxxw.com/zh/about/)
-> + [一些碎片的思考笔记](https://diary.nsddd.top/flomo-original/)
+> + [一些碎片的思考笔记](https://cubxxw.com/zh/growth/)
 > + [跟着我看我环游世界旅居的笔记](https://www.polarsteps.com/cubxxw)
 
 
