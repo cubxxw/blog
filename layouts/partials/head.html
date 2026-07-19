@@ -20,7 +20,12 @@
 {{- $baseTitle := .Title -}}
 {{- if hasPrefix .Title "http" -}}{{- $baseTitle = cond .Parent .Parent.Title site.Title -}}{{- end -}}
 {{- $pagerSuffix := "" -}}
-{{- if and (not .IsPage) .Paginator (gt .Paginator.PageNumber 1) -}}
+{{- /* Only touch .Paginator on kinds whose templates genuinely paginate.
+     `not .IsPage` used to include the 404 page: merely *reading* .Paginator
+     makes Hugo build one, so the 404 page got paginated over site.RegularPages
+     and emitted /404/page/1..13 — real 200-status URLs that Google discovered
+     and burned crawl budget on. Gate on Kind instead. */ -}}
+{{- if and (in (slice "home" "section" "taxonomy" "term") .Kind) .Paginator (gt .Paginator.PageNumber 1) -}}
   {{- if eq .Language.Lang "zh" -}}
     {{- $pagerSuffix = printf " - 第 %d 页" .Paginator.PageNumber -}}
   {{- else -}}
