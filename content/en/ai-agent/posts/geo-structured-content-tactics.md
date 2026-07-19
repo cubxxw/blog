@@ -10,8 +10,6 @@ author: ["Xinwei Xiong"]
 keywords: ['GEO', 'Answer-First', 'structured data', 'Schema', 'JSON-LD', 'FAQPage', 'HowTo schema', 'llms.txt', 'tldr', 'question headings', 'extractability', 'AI search optimization', 'internal linking', 'topic cluster']
 tags:
   - GEO
-  - Structured Data
-  - Schema
   - Content Strategy
   - SEO
   - AI Search

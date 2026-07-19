@@ -10,7 +10,6 @@ author: ["Xinwei Xiong", "Me"]
 keywords: ["resume building", "career development", "open source", "professional tips"]
 tags:
   - Blog
-  - resume
   - Career
 description: >
     Explore a range of open-source tools designed to enhance your resume crafting experience. This guide offers professional advice on selecting the right tool and optimizing your resume to stand out in competitive job markets. Perfect for job seekers in any field looking to elevate their professional presentation.

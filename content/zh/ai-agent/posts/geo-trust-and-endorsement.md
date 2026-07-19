@@ -10,12 +10,9 @@ author: ["Xinwei Xiong"]
 keywords: ['GEO', 'E-E-A-T', '站外背书', '第三方引用', 'Reddit', 'Wikipedia', '实体一致性', 'sameAs', '数字PR', '社区分发', '知乎', '外链', 'AI引用', '话题权威']
 tags:
   - GEO
-  - E-E-A-T
-  - Digital PR
   - Content Strategy
   - AI Search
   - Community
-  - Branding
 description: >
   技术底座和结构都做对了，为什么还是不被 AI 引用？因为最后一关拼的是"信任"，而信任大半来自站外。这一篇讲 E-E-A-T 怎么落地、实体一致性怎么建、为什么 Reddit+Wikipedia 占了 AI 引用的 66%，以及个人博客怎么务实地做站外背书。GEO 系列第 4 篇。
 cover:

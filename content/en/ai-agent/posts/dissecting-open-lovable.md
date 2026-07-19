@@ -12,7 +12,6 @@ tags:
   - Agent
   - LLM
   - Architecture
-  - Sandbox
   - Harness Engineering
 description: >
   A full dissection of firecrawl/open-lovable (27k★, paste a URL and get a working React app in seconds), from product to code. Its most interesting trait isn't that it generates code — it's that it uses no agent framework, no Claude Agent SDK, no native tool-calling. Instead it hand-rolls an entire harness on top of the raw LLM API: a text DSL protocol, streaming regex parsing, truncation detection and recovery, manual context orchestration, plus a swappable cloud sandbox layer (E2B / Vercel Sandbox). This is a case study in taming the raw API.

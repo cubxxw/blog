@@ -12,7 +12,6 @@ tags:
   - Agent
   - LLM
   - Architecture
-  - Sandbox
   - Harness Engineering
 description: >
   把 firecrawl/open-lovable（27k★，输入一个网址几秒重建成 React 应用）从产品到代码彻底拆开。它最有意思的地方不是「能生成代码」，而是它不用任何 Agent 框架、不用 Claude Agent SDK、不用原生 tool-calling，而是在裸 LLM API 之上手搓了一整套 harness：文本 DSL 协议、流式正则解析、截断检测与补全、手工上下文编排，再配一套可切换的云端沙箱（E2B / Vercel Sandbox）。这是一份「直接驯服原始 API」的工程范本拆解。

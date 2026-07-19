@@ -9,8 +9,7 @@ author: ["Xinwei Xiong"]
 keywords: ["Lhasa", "Tibet", "travel", "reflection", "faith", "Namtso", "Drepung Monastery"]
 tags:
   - Travel
-  - Tibet
-  - Reflection
+  - Personal Reflection
 description: >
   Reflections from a stay in Lhasa, February to March 2026. On the body slowing down, the public nature of faith, collective memory, and the struggles of Tsangyang Gyatso.
 cover:

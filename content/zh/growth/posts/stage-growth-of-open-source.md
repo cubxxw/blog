@@ -14,7 +14,7 @@ keywords:
   - 成长
   - 指南
 tags:
-  - Golang (GO语言)
+  - Go
   - Kubernetes
   - OpenIM
   - Cloud Native

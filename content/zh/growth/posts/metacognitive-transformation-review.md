@@ -4,9 +4,9 @@ date: 2025-06-02
 author: ["Xinwei Xiong"]
 description: "记录距离 2024 年度总结到现在的四个月，一些思考想法。"
 tags:
-  - 元认知
-  - 学习策略
-  - 自我提升
+  - Self-Discovery
+  - Learning
+  - Personal Growth
 draft: false
 type: posts
 weight: 50

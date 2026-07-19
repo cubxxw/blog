@@ -9,7 +9,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['OpenIM', '多进程管理', '系统稳定性', '资源控制', '系统扩展']
-tags: ["OpenIM", "Multi-Processing", "Performance", "System Stability", "Resource Management"]
+tags: ["OpenIM", "Go", "Kubernetes"]
 tldr:
   - "OpenIM从nohup后台运行升级至systemd进程管理，由操作系统守护避免脚本自身挂掉的问题。"
   - "systemd配置模板化(@符号)可一次创建多个实例化单元文件，大幅简化多进程配置维护工作。"

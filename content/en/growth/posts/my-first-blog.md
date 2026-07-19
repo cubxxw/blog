@@ -5,6 +5,7 @@ author: ["Xinwei Xiong", "Me"]
 description: "This is my first blog, about my introduction"
 tags:
   - Blog
+  - Personal Reflection
 aliases:
   - /ai-agent/posts/my-first-blog/
 tldr:

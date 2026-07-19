@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Sora技术', 'AI视频生成', '软件开发', '技术爱好者']
-tags: ["Blog", "AI", "Technology", "Development", "Git"]
+tags: ["Blog", "AI", "Development", "Git"]
 description: '深入Sora技术的世界，这是一个开创性的AI驱动视频生成平台。本文旨在为技术爱好者和开发者提供一个了解和利用Sora潜能的入口。探索如何轻松利用Sora创造令人惊叹的AI生成视频，并加入一个正在改变数字景观的创新者社区。'
 tldr:
   - "Sora采用扩散变压器模型架构，能基于文本描述生成长达60秒的高质量视频，比前代工具实现了显著质量和灵活性升级。"

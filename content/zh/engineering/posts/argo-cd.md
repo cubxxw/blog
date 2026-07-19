@@ -9,12 +9,10 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Argo CD", "GitOps", "Kubernetes", "Continuous Delivery", "CD", "CNCF", "Declarative Configuration", "Cloud Native", "DevOps"]
 tags:
-  - ArgoCD
-  - GitOps
   - Kubernetes
-  - Continuous Delivery
+  - GitOps
   - DevOps
-  - CNCF
+  - Cloud Native
 maturity: evergreen
 tldr:
   - Argo CD 是面向 Kubernetes 的声明式、基于 GitOps 的持续交付（CD）工具。

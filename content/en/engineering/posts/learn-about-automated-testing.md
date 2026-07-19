@@ -10,8 +10,8 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
-  - github
-  - automated
+  - Git
+  - DevOps
 description: >
     Automated testing practices and strategies for GitHub open source Go projects in the cloud native field
 tldr:

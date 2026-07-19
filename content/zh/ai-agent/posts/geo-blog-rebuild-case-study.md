@@ -10,8 +10,7 @@ author: ["Xinwei Xiong"]
 keywords: ['GEO', '案例复盘', 'Google Search Console', 'PageSpeed Insights', 'SEO审计', '零点击', '主题集群', '域名迁移', 'cubxxw', '数据驱动', 'AI搜索优化']
 tags:
   - GEO
-  - Case Study
-  - SEO Audit
+  - SEO
   - Analytics
   - Content Strategy
   - AI Search

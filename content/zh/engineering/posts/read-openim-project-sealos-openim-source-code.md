@@ -11,7 +11,7 @@ author:
   - 我
 keywords: []
 tags:
-  - Golang (GO语言)
+  - Go
   - Kubernetes
   - OpenIM
   - Cloud Native

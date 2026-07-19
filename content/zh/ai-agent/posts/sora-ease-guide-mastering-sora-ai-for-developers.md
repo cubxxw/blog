@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['Sora AI', '开发指南', 'AI 建模', 'OpenAI', '开发者工具', 'AI 技术']
-tags: ["Blog", "Sora", "AI", "Developer Guide"]
+tags: ["Blog", "AI", "Development"]
 description: '本综合指南介绍了 Sora AI，为开发者提供了一个易于访问、自动化且迅速的途径来挖掘其潜力。深入不同的场景，掌握指挥 Sora 的技巧，并探索这个 AI 模型的多面应用，该模型被训练用以理解和模拟运动中的物理世界。无论你是寻求最新的 Sora 新闻、开发项目还是开源贡献，本文都是你进入 Sora AI 开发广阔世界的入口。'
 tldr:
   - "Sora是OpenAI开发的AI模型，可根据文本指令生成逼真视频，支持文本到视频、动画、视频编辑等多种功能。"

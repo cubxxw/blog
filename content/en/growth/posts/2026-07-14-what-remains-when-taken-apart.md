@@ -13,9 +13,6 @@ tags:
   - Self-Discovery
   - Inner Work
   - Personal Growth
-  - Suffering
-  - Existentialism
-  - Mindfulness
 description: >
   Starting from a single image — a shaft of sunlight passing through an eye clouded by cataracts — this piece dismantles the self step by step: no-self, the five aggregates, dependent origination, until the sheer relativity of concepts makes you dizzy: "You can say it either way, so what's left to reach for?" It refuses to hand you an answer. Instead it argues that relativity is a property of standing outside your life, not of walking through it. When you've taken everything apart, whatever still has weight — whatever you can't dissolve with "emptiness" or "impermanence" — that residue is your ground. And the pain is the proof it's still there.
 tldr:

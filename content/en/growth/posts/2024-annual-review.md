@@ -9,7 +9,7 @@ tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
-tags: ["Blog", "Annual Recap", "Travel", "Product Development", "Philosophy"]
+tags: ["Blog", "Annual Recap", "Travel", "Product Strategy", "Philosophy"]
 description: >
   This article is my annual review of 2024, covering my experiences and reflections on travel, product development, personal growth, etc. By sharing my experiences and thoughts, I hope to bring inspiration and space for reflection to myself and my readers.
 cover:

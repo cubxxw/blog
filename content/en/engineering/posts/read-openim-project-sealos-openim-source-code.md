@@ -10,6 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
+  - OpenIM
 tldr:
   - "Sealos implements Kubernetes cluster deployment through declarative design using Applier pattern, which reconciles desired cluster state with current state via pipeline-based processors"
   - "The deployment process executes sequential stages including image preprocessing, container mounting, registry setup, and Kubernetes bootstrap to transform infrastructure into managed clusters"

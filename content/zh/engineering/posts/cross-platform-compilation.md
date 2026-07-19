@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['跨平台编译', '多架构编译', '编译设计', '跨平台开发', '多架构开发', '软件灵活性', '软件可移植性', '跨平台编程', '多架构支持']
-tags: ["Blog", "Cross-Platform Compilation", "Multi-Architecture Compilation"]
+tags: ["Blog", "Go"]
 description: '探索跨平台和多架构编译设计的技术。本文介绍如何设计和实施能够在不同平台和架构上无缝运行的编译方案，以提高软件项目的灵活性和可移植性。'
 tldr:
   - "Docker buildx 通过 QEMU 和 binfmt_misc 支持在 x86/amd64 机器上交叉编译多架构镜像，可同时构建 arm、arm64、amd64 等平台的容器镜像。"

@@ -13,9 +13,6 @@ tags:
   - Self-Discovery
   - Inner Work
   - Personal Growth
-  - Suffering
-  - Existentialism
-  - Mindfulness
 description: >
   从一束阳光穿过白内障眼球的意象出发，一路拆解自我——无我、五蕴、缘起，直到概念的相对性让人眩晕："怎么说都可以，那还追求什么？"这篇文章不给现成答案，而是主张：相对性是站在生命外面看的性质，不是走在路上的性质。拆到最后，那个你怎么用"空""无常""执著"都消解不掉、依然压手的残余，才是你的地面。痛，正是它压手的证据。
 tldr:

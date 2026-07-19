@@ -9,9 +9,8 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - open source
-  - development
-  - innovation
+  - Open Source
+  - Development
 description: >
     This article explores the various facets of engaging with open source, from understanding its impact to navigating its challenges and opportunities, providing a comprehensive guide for developers and enthusiasts interested in contributing to and benefiting from the open source community.
 tldr:

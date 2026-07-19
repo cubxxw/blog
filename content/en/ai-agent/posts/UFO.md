@@ -16,8 +16,7 @@ keywords:
 tags:
   - AI
   - Automation
-  - Windows Development
-  - Microsoft Technology
+  - Development
 description: >
   In-depth analysis of Microsoft UFO project's core design, technical implementation and system architecture, covering multi-agent collaboration, hybrid GUI/API operations, continuous learning and other innovative features.
 tldr:

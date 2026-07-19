@@ -4,9 +4,9 @@ date: 2025-06-02
 author: ["Xinwei Xiong"]
 description: "An in-depth review of metacognitive transformation, exploring its processes, impact on learning, and strategies for personal development."
 tags:
-  - metacognition
-  - learning strategies
-  - self-improvement
+  - Self-Discovery
+  - Learning
+  - Personal Growth
 draft: false
 type: posts
 weight: 50

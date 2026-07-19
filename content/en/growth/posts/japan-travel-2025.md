@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: ["Xinwei Xiong"]
 keywords: ['Japan travel', 'Mount Fuji', 'Hakone', 'Tokyo', 'Kansai', 'autumn leaves', 'Wakayama', 'Kumano Kodo', 'Nara', 'Kyoto', 'travel essay']
-tags: ['Travel', 'Japan', 'Self-Discovery', 'Adventure', 'Exploration']
+tags: ["Travel", "Self-Discovery", "Adventure", "Exploration"]
 description: 'Summer and autumn 2025, two trips to Japan. From Hakone and Mount Fuji to Kansai autumn leaves, from Kumano Kodo to Kyoto ancient temples. A place where I learned to be with time through wood, fire, and gaps.'
 cover:
   image: /images/posts/2025/japan-travel/tsukubai.jpg

@@ -12,9 +12,7 @@ tags:
   - GEO
   - RAG
   - AI Search
-  - Retrieval
   - LLM
-  - Embeddings
   - Content Strategy
 description: >
   To get cited by AI, first understand how it picks. This chapter takes the RAG pipeline apart to the component level: query fan-out, hybrid retrieval, vector semantics, multi-stage reranking, and citations pre-embedded before generation. The one core takeaway — the retrieval unit is the passage, not the page. Optimize the chunk. Chapter 2 of the GEO series.

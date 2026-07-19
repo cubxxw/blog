@@ -8,7 +8,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['GitOps', 'Kubernetes', 'Argo Rollouts', 'Canary Deployment', 'Blue-Green Deployment', 'Deployment Strategies', 'DevOps', 'Cloud Native', 'Service Mesh', 'Container Orchestration']
-tags: ["GitOps", "Kubernetes", "Argo Rollouts", "Canary Deployment", "Blue-Green Deployment"]
+tags: ["GitOps", "Kubernetes", "DevOps"]
 description: '探索 GitOps 在 Kubernetes 中的实践，详细解析使用 Argo Rollouts 实现金丝雀和蓝绿部署策略。本文将为开发者提供深入的理论和实践指导，帮助优化持续部署流程。'
 tldr:
   - "GitOps通过将Git作为真实状态源，结合Kubernetes Operator和自动化工具实现持续部署的完整流程，从代码提交到集群部署全程自动化，确保声明式配置和版本控制。"

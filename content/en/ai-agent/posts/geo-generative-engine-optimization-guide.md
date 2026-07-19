@@ -12,10 +12,8 @@ tags:
   - GEO
   - SEO
   - AI Search
-  - Generative Engine Optimization
   - Content Strategy
   - LLM
-  - AEO
 description: >
   When 68% of Google searches no longer produce a click and AI hands the answer straight to the user, the "rankings" that classic SEO fights for are quietly losing value. GEO (Generative Engine Optimization) fights for something else: getting the AI to understand, trust, and cite you when it writes the answer. A pillar-length guide from first principles to methodology to a real case study on my own blog — and the opening chapter of the GEO series.
 cover:

@@ -11,8 +11,6 @@ keywords: ["LLM", "人工智能", "人类语言", "语言模型", "技术", "创
 tags:
   - LLM
   - AI
-  - Deep Learning
-  - Machine Learning
 description: >
   本文系统介绍大型语言模型（LLM）的核心概念、发展历程与涌现能力。从 GPT、PaLM 等数百亿参数模型出发，
   解释它们如何在海量文本上训练以理解和生成人类语言，以及为何参数规模的提升会带来小模型不具备的复杂任务处理能力。

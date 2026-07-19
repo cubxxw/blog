@@ -10,6 +10,7 @@ author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
   - Blog
+  - OpenIM
 tldr:
   - "Team members own both leadership and ownership responsibilities, speaking up immediately with solutions rather than suppressing concerns about issues"
   - "Documentation-driven development with design reviews before implementation ensures persistent, traceable information and team consensus on critical decisions"

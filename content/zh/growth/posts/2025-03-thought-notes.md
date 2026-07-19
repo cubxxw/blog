@@ -13,8 +13,7 @@ tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
-  - 学习之旅 (Learning Journey)
-  - 成长思维 (Growth Mindset)
+  - Personal Growth
 description: >
     2025年3月思考笔记 - 记录学习成长、挑战收获与人生感悟的月度反思，持续改进与自我发展的见证。
 tldr:

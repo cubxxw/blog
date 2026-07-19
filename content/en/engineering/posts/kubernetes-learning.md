@@ -13,7 +13,6 @@ tags:
   - Kubernetes
   - Cloud Native
   - Microservices
-  - Service Mesh
 description: >
   This article provides detailed Kubernetes resources and learning paths, covering CNI, CRI, CSI and core technologies in cloud-native environments. We also share some important learning resources and methods to help readers further advance in the Kubernetes ecosystem.
 tldr:

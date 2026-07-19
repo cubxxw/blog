@@ -9,9 +9,7 @@ author: ["Xinwei Xiong"]
 keywords: ["拉萨", "西藏", "旅行见闻", "深度思考", "信仰", "纳木错", "哲蚌寺"]
 tags:
   - Travel
-  - 西藏
-  - 拉萨
-  - 深度思考
+  - Personal Reflection
 description: >
   2026 年 2 月至 3 月，拉萨驻留期间的深度见闻与思考。涵盖身体的降速、信仰的公共性、集体记忆的抗崩溃机制、以及仓央嘉措的挣扎与真实。
 tldr:

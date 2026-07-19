@@ -12,7 +12,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['开源', '社区', '提问技巧', '有效沟通', 'GitHub', '问题解决']
-tags: ["Blog", "Open Source", "Community", "Questions"]
+tags: ["Blog", "Open Source", "Community"]
 tldr:
   - "提问前充分做功课，包括搜索、阅读手册和FAQ，展示自己的学习努力能显著提高获得回答的机会。"
   - "提问时选择合适的论坛、使用清晰精准的标题和描述症状而非猜测，能帮助忙人快速理解并解决问题。"

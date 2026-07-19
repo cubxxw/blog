@@ -11,7 +11,7 @@ tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['自动化测试', '测试框架', 'Selenium', '测试自动化', '软件测试']
-tags: ["Blog", "Testing", "Automation", "Selenium"]
+tags: ["Blog", "Testing", "Automation"]
 description: '在这篇文章中，我将分享我学习自动化测试的过程，特别是使用Selenium框架。这是自动化测试系列文章的第一部分，旨在为初学者提供基础知识和操作指南。'
 tldr:
   - "自动化测试的ROI主要受测试运行频率和维护成本影响，应按测试金字塔原则优先投入高ROI的单元测试、次选接口测试、最后才做UI测试。"

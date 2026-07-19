@@ -18,12 +18,10 @@ keywords:
   - Cloud Native
   - DevOps
 tags:
-  - ArgoCD
-  - GitOps
   - Kubernetes
-  - Continuous Delivery
+  - GitOps
   - DevOps
-  - CNCF
+  - Cloud Native
 maturity: evergreen
 tldr:
   - Argo CD is a declarative, GitOps-based continuous delivery (CD) tool for Kubernetes.
