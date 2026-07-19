@@ -20,7 +20,7 @@ tldr:
   - For a super individual, video belongs to the distribution layer, not the production layer. So the metric isn't "does it look good" — it's "did it carry across the thing only you have."
   - One-click AI auto-edit necessarily produces a 60-point cut, because it takes the mean of your footage. In a year of exploding supply, mean content has exactly zero distribution value.
   - The real leverage sits at the shooting end. Freeze each content line into a fixed shot list and editing downgrades from creation to filling in a template — which is the only thing AI can deterministically take over.
-  - A programmable pipeline (split / transcribe / de-silence / LLM-generated EDL / ffmpeg render) is a structural advantage for developers: it turns repeated labor into a versioned asset instead of a fresh act of willpower every episode.
+  - "A programmable pipeline (split / transcribe / de-silence / LLM-generated EDL / ffmpeg render) is a structural advantage for developers: it turns repeated labor into a versioned asset instead of a fresh act of willpower every episode."
   - Automated publishing in 2026 tops out at semi-automatic. YouTube's official upload API has loosened, TikTok requires an audit and rate-limits you, Douyin and Bilibili demand a business entity, and Xiaohongshu has no publishing API for ordinary developers.
 maturity: budding
 ---
