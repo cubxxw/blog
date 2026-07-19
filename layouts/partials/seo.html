@@ -7,7 +7,7 @@
 {{- /* Kind gate, not `not .IsPage` — reading .Paginator builds one, which
      paginated the 404 page into /404/page/N. See head.html for the full note. */ -}}
 {{- if and (in (slice "home" "section" "taxonomy" "term") .Kind) .Paginator (gt .Paginator.PageNumber 1) -}}
-  {{- $pagerSuffix = cond (eq .Language.Lang "zh")(printf " - 第 %d 页" .Paginator.PageNumber) (printf " - Page %d" .Paginator.PageNumber) -}}
+  {{- $pagerSuffix = cond (eq .Language.Lang "zh") (printf " - 第 %d 页" .Paginator.PageNumber) (printf " - Page %d" .Paginator.PageNumber) -}}
 {{- end -}}
 {{- $titleCore := cond (gt (len $baseTitle) 50) (printf "%s…" (substr $baseTitle 0 50)) $baseTitle -}}
 {{- $title := cond .IsHome site.Title (printf "%s%s | %s" $titleCore $pagerSuffix $shortTitle) -}}
