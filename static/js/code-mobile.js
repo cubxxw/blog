@@ -89,7 +89,9 @@
     var pre = code.parentNode;
     var container = pre.closest('.highlight') || pre;
     var wrapped = pre.classList.contains('code-wrap');
-    var overflows = code.scrollWidth - code.clientWidth > 2;
+    /* The <pre> is the horizontal scroller (zzz-code-mobile.css §0), so
+       overflow is measured on it, not the inline-block code child. */
+    var overflows = pre.scrollWidth - pre.clientWidth > 2;
     if (wrapped || overflows) {
       var tools = ensureTools(code);
       tools.style.display = '';
