@@ -32,15 +32,11 @@
     return Array.prototype.slice.call(document.querySelectorAll(SEL));
   }
 
-  /* For code blocks the actual scroll container is the inner <code>
-     (the <pre> itself is overflow:hidden), so measuring/listening on
-     the <pre> never saw any overflow and the cue never appeared. Keep
-     the fade class + vars on the <pre> (the CSS mask target), but do
-     all measuring and scroll-listening on the real scroller. */
+  /* The <pre> and <table> are themselves the horizontal scrollers
+     (zzz-code-mobile.css §0 moved the code scroll from the inner
+     <code> onto the <pre> so trailing padding survives to the scroll
+     end), so measure and listen on the element itself. */
   function scrollerOf(el) {
-    if (el.tagName === 'PRE' && el.firstElementChild && el.firstElementChild.tagName === 'CODE') {
-      return el.firstElementChild;
-    }
     return el;
   }
 

@@ -21,11 +21,31 @@
    Loaded late (zzz- prefix) so it composes over the theme.
    ============================================================ */
 
-/* ── 0. Scroll hygiene: the real scroller is `pre code` ─────── */
-.post-content pre:not(.mermaid) code {
+/* ── 0. Scroll hygiene: the <pre> is the horizontal scroller ──
+   The inner `code` used to scroll, but a scroll container's own
+   `padding-right` is dropped from the scrollable extent in WebKit /
+   iOS Safari. So at the far end of a sideways swipe the last glyph
+   sat flush against the frame, and momentum-scroll snapped back with
+   it still clipped — you could drag it into view but never rest there.
+
+   Fix: let the <pre> scroll and make `code` an inline-block child that
+   carries the padding. A child's padding box is always counted in an
+   ancestor's scroll extent (every engine, Safari included), so the
+   trailing gutter survives to the very end of the scroll. */
+.post-content pre:not(.mermaid) {
+  overflow-x: auto;
   /* Reaching the end of a sideways swipe must not leak into the
      browser's history-swipe / page navigation. */
   overscroll-behavior-x: contain;
+}
+.post-content pre:not(.mermaid) > code {
+  display: inline-block;
+  min-width: 100%;
+  box-sizing: border-box;
+  vertical-align: top;
+  /* the <pre> owns the horizontal scroll now; the code box just holds
+     content (and its own left/right padding). */
+  overflow: visible;
 }
 
 /* ── 1. Full-bleed on phones ────────────────────────────────── */
@@ -52,10 +72,14 @@
 }
 
 /* ── 2. Soft-wrap state ─────────────────────────────────────── */
-.post-content pre.code-wrap code {
+.post-content pre.code-wrap {
+  /* Wrapped blocks have nothing off-screen, so the <pre> must not
+     scroll (an empty scroll would still let momentum rubber-band). */
+  overflow-x: hidden;
+}
+.post-content pre.code-wrap > code {
   white-space: pre-wrap !important;
   word-break: break-word !important;
-  overflow-x: visible;
 }
 
 /* ── 3. Fullscreen button ───────────────────────────────────── */
@@ -216,6 +240,13 @@
 }
 
 .code-fs-content pre code {
+  /* The reader's single scroller is .code-fs-scroll and the <pre> is
+     sized to max-content, so here the code is a plain block again —
+     not the in-article inline-block scroll carrier (§0). Reset it, or
+     `min-width:100%` against a max-content <pre> sizes circularly and
+     collapses the clone. */
+  display: block !important;
+  min-width: 0 !important;
   overflow: visible !important;
   white-space: pre !important;
   font-size: var(--code-fs-size, 14px) !important;
