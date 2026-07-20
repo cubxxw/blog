@@ -81,7 +81,8 @@
 
   // ─── 2. TOC Scroll Highlighting ───────────────────────────────────────────
   function initTocHighlight() {
-    var tocLinks = document.querySelectorAll('.toc-side__nav a');
+    var nav = document.querySelector('.toc-side__nav');
+    var tocLinks = nav ? nav.querySelectorAll('a') : [];
     if (!tocLinks.length) return;
 
     var sections = [];
@@ -99,6 +100,57 @@
       if (heading) sections.push({ heading: heading, link: link });
     });
     if (!sections.length) return;
+
+    // ── Progressive disclosure: group the flat TOC into sections ──
+    // The outline is a single flat <ul>; H2/H3/H4 are siblings, not nested.
+    // We treat the shallowest heading level present as the "section anchor"
+    // (always visible) and gather each anchor's deeper headings as its
+    // collapsible children. Only the section the reader is currently in stays
+    // expanded — the rest recede to their anchors, so the panel reads as a
+    // short map instead of a wall of every subheading at once.
+    var items = Array.prototype.slice.call(nav.querySelectorAll('.toc-item'));
+    var groupOf = null; // Map: .toc-item li -> group index
+    var groups = [];    // [{ anchor: li|null, subs: [li,…] }]
+    if (items.length) {
+      groupOf = (typeof Map === 'function') ? new Map() : null;
+      var levelOf = function (li) {
+        var a = li.querySelector('a');
+        return a ? (parseInt(a.getAttribute('data-level'), 10) || 2) : 2;
+      };
+      var topLevel = items.reduce(function (min, li) {
+        return Math.min(min, levelOf(li));
+      }, 99);
+      var cursor = -1;
+      items.forEach(function (li) {
+        if (levelOf(li) <= topLevel) {
+          cursor = groups.length;
+          groups.push({ anchor: li, subs: [] });
+        } else {
+          if (cursor === -1) { cursor = groups.length; groups.push({ anchor: null, subs: [] }); }
+          groups[cursor].subs.push(li);
+          li.classList.add('toc-item--sub');
+        }
+        if (groupOf) groupOf.set(li, cursor);
+      });
+      // Only worth collapsing when at least one section actually has children.
+      var hasNesting = groups.some(function (g) { return g.subs.length; });
+      if (hasNesting) nav.classList.add('toc-side__nav--grouped');
+      else { groups = []; groupOf = null; }
+    }
+
+    var openGroup = -1;
+    function setOpenGroup(gi) {
+      if (!groups.length || gi === openGroup) return;
+      openGroup = gi;
+      for (var i = 0; i < groups.length; i++) {
+        var open = (i === gi);
+        var g = groups[i];
+        if (g.anchor) g.anchor.classList.toggle('toc-section-current', open);
+        for (var j = 0; j < g.subs.length; j++) {
+          g.subs[j].classList.toggle('toc-collapsed', !open);
+        }
+      }
+    }
 
     var currentActive = null;
     var OFFSET = 140;
@@ -128,6 +180,17 @@
           activeSection = sections[i];
           break;
         }
+      }
+      // Reveal the section the reader is in (falls back to the first group
+      // while still above the first heading), independent of whether the
+      // active *link* changed — keeps the open section correct on load.
+      if (groups.length) {
+        var gi = 0;
+        if (activeSection) {
+          var li = activeSection.link.closest('.toc-item');
+          if (li && groupOf && groupOf.has(li)) gi = groupOf.get(li);
+        }
+        setOpenGroup(gi);
       }
       if (activeSection === currentActive) return;
       if (currentActive) currentActive.link.classList.remove('toc-active');
