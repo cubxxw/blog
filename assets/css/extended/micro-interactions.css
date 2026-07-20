@@ -269,20 +269,11 @@ button:focus-visible,
   z-index: 1;
 }
 
-/* ---------- Prev / next pagination: desktop hover lift ---------- */
-/* Pairs the existing :active press with a gentle hover cue so the
-   prev/next blocks feel as tactile on a trackpad as a card does. */
-.paginav a {
-  transition:
-    transform 0.18s cubic-bezier(0.22, 0.61, 0.36, 1),
-    box-shadow 0.18s ease,
-    background-color 0.18s ease;
-}
-@media (hover: hover) and (pointer: fine) {
-  .paginav .prev:hover { transform: translateX(-3px); }
-  .paginav .next:hover { transform: translateX(3px); }
-}
-.paginav a:active { transform: scale(0.985); }
+/* ---------- Prev / next pagination ----------
+   The whole hover/press/lift treatment for `.paginav a` lives in
+   post-footer.css (its single source of truth). The old sideways
+   translateX slide that used to live here fought that file's vertical
+   lift, so it was removed — do not re-add paginav transforms here. */
 
 /* ---------- Icon controls: tap feedback + desktop hover ---------- */
 /* Header utility controls get the same tactile press as cards, plus a
@@ -410,11 +401,9 @@ button:focus-visible,
   .toc-highlight a:hover { transform: none !important; }
 
   /* Ripple is JS-gated off under reduced motion, but hard-hide any
-     ink that slips through and neutralise the pagination shift. */
+     ink that slips through. (Paginav motion is neutralised in
+     post-footer.css's own reduced-motion block.) */
   .ripple-ink { display: none !important; }
-  .paginav .prev:hover,
-  .paginav .next:hover,
-  .paginav a:active { transform: none !important; }
 
   .post-content a:not(.anchor):not(.btn) {
     background-size: 0 0 !important;
