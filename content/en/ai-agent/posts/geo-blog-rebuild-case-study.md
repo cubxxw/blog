@@ -46,7 +46,7 @@ The first four chapters were method; this one is live fire. Every number comes f
 
 ---
 
-## 1. The real baseline: numbers on the table
+## The real baseline: numbers on the table
 
 First, PageSpeed Insights mobile (real-browser scores):
 
@@ -71,7 +71,7 @@ Then Google Search Console (old domain nsddd.top, last 3 months):
 
 ---
 
-## 2. The truth about 878K impressions: demystifying a vanity metric
+## The truth about 878K impressions: demystifying a vanity metric
 
 Sort queries by impressions and the truth appears — the highest-impression queries are all noise unrelated to the blog:
 
@@ -88,7 +88,7 @@ Echoing [Chapter 2](/ai-agent/posts/geo-how-ai-retrieves-and-cites/): these nois
 
 ---
 
-## 3. The gold is in clicks: finding the clusters to invest in
+## The gold is in clicks: finding the clusters to invest in
 
 Switch the lens to clicks, and the genuinely valuable technical clusters surface:
 
@@ -108,7 +108,7 @@ Switch the lens to clicks, and the genuinely valuable technical clusters surface
 
 ---
 
-## 4. Shining the five-layer model on it, layer by layer
+## Shining the five-layer model on it, layer by layer
 
 Aligning the real state with the previous chapters' five-layer model makes the gaps obvious:
 
@@ -124,7 +124,7 @@ Aligning the real state with the previous chapters' five-layer model makes the g
 
 ---
 
-## 5. A priority-ranked rebuild checklist
+## A priority-ranked rebuild checklist
 
 Turning diagnosis into a schedule (aligned with the [pillar's](/ai-agent/posts/geo-generative-engine-optimization-guide/) 30/60/90):
 
@@ -145,7 +145,7 @@ Turning diagnosis into a schedule (aligned with the [pillar's](/ai-agent/posts/g
 
 ---
 
-## 6. The domain migration: don't let this one step undo everything
+## The domain migration: don't let this one step undo everything
 
 An easily-overlooked, veto-power item: **cubxxw.com was migrated from the old domain nsddd.top.**
 
@@ -155,7 +155,7 @@ An easily-overlooked, veto-power item: **cubxxw.com was migrated from the old do
 
 ---
 
-## 7. FAQ
+## FAQ
 
 **Q: Lighthouse SEO is 100 — why still no traffic?**
 A: Because Lighthouse only tests the L1 technical base. GEO traffic depends on L2–L5 (structure, evidence, quotability, endorsement) and real rankings. A perfect technical score is necessary, not sufficient.

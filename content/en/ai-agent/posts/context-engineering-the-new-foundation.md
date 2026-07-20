@@ -50,7 +50,7 @@ This article wants to do two things. First, with my **Logic Core**, take apart t
 
 ---
 
-## 1. Draw the boundary first: prompt and context are not the same thing
+## Draw the boundary first: prompt and context are not the same thing
 
 The easiest confusion is treating context engineering as "advanced prompt engineering." They are related, but they are not on the same layer.
 
@@ -68,7 +68,7 @@ This is not wordplay. When your agent is just a single-turn chatbox, writing one
 
 ---
 
-## 2. Why "engineering": context is a finite resource, and it rots
+## Why "engineering": context is a finite resource, and it rots
 
 Calling it "engineering" rather than "tricks" has a hard justification. The context window is not a container that is better the larger it gets — it is a **finite resource with diminishing marginal returns**.
 
@@ -82,7 +82,7 @@ For me, this turns "context is the bottleneck" from a line I wrote in my own not
 
 ---
 
-## 3. Two four-pillar schemes: how the field converged
+## Two four-pillar schemes: how the field converged
 
 A sign a discipline is maturing is that people start using a shared vocabulary. Between 2025 and 2026, context engineering converged on two **complementary** four-pillar frameworks — note, two of them, different labels, mutually reinforcing.
 
@@ -110,25 +110,25 @@ These two are not competitors. They cut the same ground from two axes: **what ac
 
 ---
 
-## 4. Down to the ground: patterns already in production
+## Down to the ground: patterns already in production
 
 Beyond the abstract frameworks, what genuinely excites me is that this year the design patterns of context engineering moved from "war stories" to **first-party API primitives** and **reproducible engineering practice**.
 
-### 4.1 Retrieve then re-rank: 50 → top-5, not all 50 dumped in
+### Retrieve then re-rank: 50 → top-5, not all 50 dumped in
 
 Sourcegraph's example is concrete: "a pipeline that retrieves 50 candidates with high recall and re-ranks them down to a precise top-5 is usually better than one that dumps all 50 chunks into the prompt." The re-ranker is often a smaller cross-encoder or a cheap model that scores each candidate against the query and keeps only the top-k.[^sourcegraph]
 
 This is the engineering antidote to context rot: **few and precise beats many and blurry.**
 
-### 4.2 Cut before it enters the window, not regret after
+### Cut before it enters the window, not regret after
 
 Sourcegraph defines token-budget management as "the discipline of cutting low-signal content *before* it enters the context window, not after." Concrete moves: truncating tool outputs, compacting old conversation into a running summary, dropping chunks below a relevance threshold, hard-capping the re-ranker.[^sourcegraph]
 
-### 4.3 Summarization-based compaction: Claude Code's 95% auto-compact
+### Summarization-based compaction: Claude Code's 95% auto-compact
 
 A repeatedly corroborated example: **Claude Code runs auto-compact after you exceed 95% of the context window and summarizes the full trajectory of user-agent interactions.**[^lance] (Note: the 95% threshold is tied to window size and version and shifts — cite it with a date.)
 
-### 4.4 Anthropic shipped three primitives into the API
+### Anthropic shipped three primitives into the API
 
 This is the step with the most signal value — context management is no longer a script you hand-roll, it is a platform capability. Anthropic's API now exposes three first-party primitives targeting distinct bottlenecks:[^cookbook][^context-editing]
 
@@ -140,7 +140,7 @@ The Memory tool's design philosophy suits me well: it is **client-implemented** 
 
 (These version identifiers are dated and will evolve — do not treat them as eternal truth.)
 
-### 4.5 KV-cache hit rate: the underrated lifeline in production
+### KV-cache hit rate: the underrated lifeline in production
 
 If the patterns above are the art of *assembling* context, the Manus team's build postmortem is about the *economics* of context engineering in production. Co-founder Yichao "Peak" Ji states it plainly: **"the KV-cache hit rate is the single most important metric for a production-stage AI agent... It directly affects both latency and cost."**[^manus]
 
@@ -154,7 +154,7 @@ And one design I especially love, almost philosophical: **the file system as the
 
 ---
 
-## 5. Bring in the vendors: when the "context layer" becomes a product
+## Bring in the vendors: when the "context layer" becomes a product
 
 If the above is context engineering at the personal/engineering scale, 2026 has a larger line too: **vendors are starting to sell the "context layer" as a product of its own.**
 
@@ -168,7 +168,7 @@ As for AWS Context and Microsoft Fabric IQ, which the research kept surfacing �
 
 ---
 
-## 6. Context vs memory: a window, and the river beyond it
+## Context vs memory: a window, and the river beyond it
 
 Here we must clarify a relationship that is often conflated: **memory and context engineering are two parallel concepts, not the same thing.**
 
@@ -186,7 +186,7 @@ Last year I wrote a technical analysis of Mem0. Looking back today, that piece w
 
 ---
 
-## 7. My claim: the end of context is a "world line"
+## My claim: the end of context is a "world line"
 
 The previous six sections are the part my Logic Core can verify. In this one I switch to the **Sensitivity Core** and say things a fact-check cannot underwrite for me, but which I am increasingly sure of. Please read it as *my opinion*, not as *verified fact* — and that very distinction is something context engineering taught me.
 

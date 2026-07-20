@@ -117,13 +117,13 @@ Just before Christmas, I fulfilled a long-time wish by traveling to Western Sich
 
 ## V. Future Plans
 
-### 1. Career Development:
+### Career Development:
 
 - **Outlook for future career**: In the next few years, I aim to expand my contributions and influence in the open-source community and deepen my technical expertise in areas like cloud computing, artificial intelligence, and big data.
 - **Planned projects or learning goals**: My short-term goal is to delve into core concepts of machine learning and AI, applying them in practical projects. I also plan to participate in more challenging open-source projects to gain experience and broaden my technical horizons.
 - **Maintaining independent thought and personal rhythm**: Individual behavior is driven by cognition. In prosperous times, opportunities seem everywhere, while economic downturns reveal the real situation. It's important to maintain your own pace and not be swept away by trends.
 
-### 2. Personal Growth:
+### Personal Growth:
 
 - **Plan for developing personal interests**: Besides professional growth, I plan to further cultivate my interest in outdoor activities like hiking, cycling, and photography. These activities not only promote physical and mental health but also enhance adaptability and the ability to handle complex situations.
 - **Preparation and strategy for future challenges**: Facing future challenges, I will continue to maintain a learning and adaptive attitude. To prepare for future professional challenges, I will continuously improve my technical and teamwork skills. I will also focus on mental and emotional health to ensure clear and balanced thinking when facing challenges.

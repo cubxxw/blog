@@ -72,7 +72,7 @@ It closes with a 12-month roadmap.
 
 The fastest way to wreck an article about the "super-individual" is to mis-cite the numbers. Let me put three frequently mangled statistics back where they belong.
 
-### 1. "$1M ARR in 11.5 months" is Stripe's data, not Carta's
+### "$1M ARR in 11.5 months" is Stripe's data, not Carta's
 
 Stripe's *Indexing the AI Economy* (2025) states it plainly: **The top 100 AI companies on Stripe achieved annualized revenues of $1 million in a median period of just 11.5 months—about four months ahead of the fastest-growing SaaS companies.**
 
@@ -82,7 +82,7 @@ Bolt to $20M ARR in two months. Cursor to $100M+ ARR in three years. ElevenLabs 
 
 > Why does this matter for the super-individual? Because it's the first time the speed advantage has been **stamped with a median of 100 companies**, not just an outlier anecdote: **speed is no longer the exception, it's the distribution**.
 
-### 2. Carta's real finding: solo founders are now 36.3%
+### Carta's real finding: solo founders are now 36.3%
 
 The core number from Carta's 2025 Solo Founder Report, disclosed by Peter Walker, is this: **the share of new U.S. startups with a single founder rose from 23.7% in 2019 to 36.3% in H1 2025**; the median solo founder's first hire arrives at day 399, vs. day 480 for team-founded companies.
 
@@ -90,7 +90,7 @@ Walker's words: "A 13-point rise in about five years is a big shift."
 
 > Solo founders aren't a minority narrative anymore. They're approaching the mainstream at 40%.
 
-### 3. MIT NANDA's real insight: what the 5% did right
+### MIT NANDA's real insight: what the 5% did right
 
 "95% of enterprise GenAI pilots produced no measurable P&L impact" became the viral headline, but the **real insight** of MIT NANDA's *The GenAI Divide: State of AI in Business 2025* (August 2025, lead author Aditya Challapally) is the four things the 5% who succeeded did right:
 
@@ -103,7 +103,7 @@ Challapally puts it bluntly: "The barrier is absence of learning and memory in d
 
 > Those four traits are a portrait of the super-individual's **natural advantage**. The things big organizations are structurally bad at are exactly the moat the individual gets to keep.
 
-### 4. Service-as-Software: a $4.6T new unit
+### Service-as-Software: a $4.6T new unit
 
 The "Service-as-Software" paradigm wasn't coined by Sequoia or a16z—it was **named by Joanne Chen and Jaya Gupta at Foundation Capital in 2024**, sized at a **$4.6 trillion market** ($2.3T global wages + $2.3T outsourced services).
 
@@ -218,7 +218,7 @@ Xiaohongshu is actively courting 50K+ independent developers ("developers are th
 
 Don't chase "one tool to do everything." The most effective stack is always **a lightweight combination of 3–5 specialist tools**. As builtthisweek.com puts it: the Supabase + Vercel + Stripe + Cursor stack costs $85–$200/month vs. $5K/month in 2019.
 
-### 1. Acquisition / Growth
+### Acquisition / Growth
 
 **SEO + AI Answer Visibility (GEO / AEO)**:
 - Bootstrapping (0–$1K MRR): free tools (GSC, Keyword Planner, AlsoAsked) cover 50% of needs.
@@ -229,7 +229,7 @@ Don't chase "one tool to do everything." The most effective stack is always **a 
 
 **Avoid**: Pure AI-generated programmatic SEO. Google's algorithm has crushed it; it's no longer viable.
 
-### 2. Content Ops
+### Content Ops
 
 **The high-ROI long-to-short loop**:
 
@@ -242,7 +242,7 @@ Long video (your podcast / Twitter Space / demo)
 
 **Generation tools**: Notion AI ($8/mo) + your own Claude/GPT API key is the most economical setup.
 
-### 3. Social Media Ops
+### Social Media Ops
 
 **Overseas**: Buffer free tier (3 channels) → Publer ($12/mo flat) → Postiz self-hosted (open source Apache 2.0, supports 17–30+ platforms, integrates with n8n / Claude via MCP).
 
@@ -252,13 +252,13 @@ Long video (your podcast / Twitter Space / demo)
 
 **Implication**: Pure AI-generated content gets actively demoted or removed. The only viable mode is **human-AI symbiosis**—AI generates the draft, humans edit, term filters check, then publish.
 
-### 4. User Ops / Retention / Lifecycle
+### User Ops / Retention / Lifecycle
 
 **Email starter**: Loops free tier (1K contacts) or Resend ($20/mo, API-first—best for technical builders).
 
 **Complex lifecycles**: Customer.io ($100+/mo), but you'll need a dedicated maintainer.
 
-### 5. Analytics
+### Analytics
 
 **Default to self-hosted PostHog**: One SDK for analytics + session recording (5K/mo free) + feature flags + A/B experiments + error tracking. $5/mo cloud-server hosting cost; data stays on your own server. Max AI turns natural language into SQL queries.
 
@@ -268,7 +268,7 @@ Long video (your podcast / Twitter Space / demo)
 
 If product direction is the "what," this section is the "how." Three engineering concepts are unavoidable for the super-individual.
 
-### 1. Soul Core: A Schema for "Me"
+### Soul Core: A Schema for "Me"
 
 The moat isn't the record; it's **the schema that defines the record**. Another Self, Plurality OCL, OpenBrain—they're all trying to do the same thing: structure a person's identity, beliefs, goals, and voice into a portable record, and pipe it via MCP into any AI tool.
 
@@ -285,7 +285,7 @@ A minimal working Soul Core schema has six layers:
 
 The stack isn't complicated: Supabase + pgvector + Ollama (the OpenBrain path); $0.10–0.30/month; expose via an MCP server to Claude / ChatGPT / Cursor.
 
-### 2. Harness Engineering: That 98.4% of Scaffolding
+### Harness Engineering: That 98.4% of Scaffolding
 
 A production-grade agent harness has roughly **15 components** (reverse-engineered from Claude Code / Codex):
 
@@ -308,7 +308,7 @@ A production-grade agent harness has roughly **15 components** (reverse-engineer
 
 A model's "refusal" only counts when the harness validates the tool-call schema and rejects it **before** execution. Refusal isn't an alignment property; it's a **runtime validation result**.
 
-### 3. Overnight Agent: Trade Sleep for Dollars
+### Overnight Agent: Trade Sleep for Dollars
 
 The essence of the Ralph Loop pattern (Geoffrey Huntley, 2025) is this: **API time spent while you sleep is free in opportunity cost**. The skeleton is one line:
 
@@ -362,23 +362,23 @@ Resurrects HTTP `402 Payment Required` to embed USDC micro-payments in HTTP head
 
 ## VII. Failure Modes: Hard Data on What Not to Do
 
-### 1. Gartner: 40% of agentic projects will be cancelled
+### Gartner: 40% of agentic projects will be cancelled
 
 On June 25, 2025, Gartner Senior Director Analyst Anushree Verma publicly predicted that by the end of 2027, **over 40% of agentic AI projects will be cancelled** due to "escalating costs, unclear business value, or inadequate risk controls."
 
 Gartner also estimated: **of the vendors industry-wide claiming to be agentic, only about 130 actually are**. The rest is "agent-washing."
 
-### 2. The 80–95% wrapper failure rate
+### The 80–95% wrapper failure rate
 
 No single authoritative source, but the hardest evidence is IdeaProof's failure database tracking **319+ AI startup deaths (2023–2026)**.
 
 Google Cloud VP Darren Mowry (February 2026, TechCrunch): startups "wrapping very thin intellectual property around Gemini or GPT-5" have no future.
 
-### 3. China: pure AI content gets algorithmically demoted
+### China: pure AI content gets algorithmically demoted
 
 Xiaohongshu acted against **600K low-quality AIGC notes** and banned 10M+ black-hat accounts in H1 2025. National content-labeling standard compliance kicked in September 1. **Pure AI content gets auto-throttled or permanently removed.**
 
-### 4. Lusser's Law nails down "why HITL can't be cut"
+### Lusser's Law nails down "why HITL can't be cut"
 
 Compounding error is hard science: 95% × 20 steps is only 36% success. **Checkpoints are survival.**
 
@@ -432,29 +432,29 @@ Use OpenClaw + MCP / Skills (Direction 4) as **open-source distribution**, not a
 
 Five mental models to keep you from flinching at boundary decisions:
 
-### 1. Distribution is the 10–100x Variable
+### Distribution is the 10–100x Variable
 
 Andrew Chen's "Revenge of the GPT Wrappers" (February 2025) said it plainly: great distribution + "good enough" product wins.
 
 You already have an audience on Xiaohongshu / X / WeChat / public accounts. **That's an asset nobody can buy. Use it. Don't abandon it.**
 
-### 2. Protocols, Not Platforms
+### Protocols, Not Platforms
 
 Mike Masnick's 2019 original thesis is carried in the AI era by MCP (released November 2024) + Linux Foundation governance (December 2025). Packy McCormick extends it in "Raising a Special Little AI" to the AI-agent protocol layer.
 
 **Implication**: Publish your schema as a protocol; don't lock it inside your product. Protocols get reinforced by the whole ecosystem; platforms get harvested by giants.
 
-### 3. Three Specialist Tools Beat One Platform
+### Three Specialist Tools Beat One Platform
 
 Supabase + Vercel + Stripe + Cursor: $85–$200/month vs. $5K/month in 2019. **Lightweight composition always beats attempts at universal coverage.**
 
-### 4. Centaur vs. Cyborg (Ethan Mollick)
+### Centaur vs. Cyborg (Ethan Mollick)
 
 > Centaur work has a clear line between person and machine... Cyborgs don't just delegate; they intertwine.
 
 The super-individual isn't a centaur (you do this, AI does that), it's a cyborg (**you and the AI are interleaved into the same workflow; the line is gone**). Core thesis from Ethan Mollick's *Co-Intelligence* (2024).
 
-### 5. Sell Work, Not Software
+### Sell Work, Not Software
 
 Sarah Tavel (Benchmark) in her own words. Combine with Intercom Fin's $0.99/resolution + Foundation Capital's $4.6T Service-as-Software framing, and the whole line becomes clear.
 

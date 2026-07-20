@@ -45,7 +45,7 @@ Chapter 2 (the [mechanics](/ai-agent/posts/geo-how-ai-retrieves-and-cites/)) pro
 
 ---
 
-## 1. The Answer-First paragraph formula
+## The Answer-First paragraph formula
 
 A before/after makes the difference obvious:
 
@@ -65,7 +65,7 @@ The difference isn't information — it's **order and evidence.** The Answer-Fir
 
 ---
 
-## 2. A question-heading system: paving the way for query fan-out
+## A question-heading system: paving the way for query fan-out
 
 Chapter 2 covered Google's **query fan-out** — splitting one question into many parallel sub-queries. Headings are how you claim those sub-queries.
 
@@ -77,7 +77,7 @@ Chapter 2 covered Google's **query fan-out** — splitting one question into man
 
 ---
 
-## 3. AI-facing Schema: a critical mental update
+## AI-facing Schema: a critical mental update
 
 This is the most easily-outdated and most-often-wrong part — see the 2026 reality clearly:
 
@@ -123,7 +123,7 @@ In Hugo, loop over a frontmatter `faq` field to generate it (sketch):
 
 ---
 
-## 4. llms.txt vs tldr: don't spend effort backwards
+## llms.txt vs tldr: don't spend effort backwards
 
 These two get conflated, but their value differs wildly:
 
@@ -134,7 +134,7 @@ These two get conflated, but their value differs wildly:
 
 ---
 
-## 5. Extractability layout: break the article into LEGO
+## Extractability layout: break the article into LEGO
 
 Same information, different layout, wildly different extractability for AI. Four hard rules:
 
@@ -145,7 +145,7 @@ Same information, different layout, wildly different extractability for AI. Four
 
 ---
 
-## 6. Internal links and topic clusters: turning one post into an "authority zone"
+## Internal links and topic clusters: turning one post into an "authority zone"
 
 Even a great single post is an island. The GEO era builds **topic clusters**: one pillar + several child posts + mutual internal links, forming topical authority — one of the six citation factors.
 
@@ -155,7 +155,7 @@ Even a great single post is an island. The GEO era builds **topic clusters**: on
 
 ---
 
-## 7. Back to my blog: a "ship it today" checklist
+## Back to my blog: a "ship it today" checklist
 
 Compressing the six sections into executable actions for cubxxw.com:
 
@@ -168,7 +168,7 @@ Compressing the six sections into executable actions for cubxxw.com:
 
 ---
 
-## 8. FAQ
+## FAQ
 
 **Q: Google retired FAQ rich results — is adding FAQPage schema still worth it?**
 A: Yes. FAQPage is still valid schema, Google keeps parsing it, and AI Overviews/ChatGPT/Perplexity use Q&A structure to extract answers. You add it now "for AI parsing," not "for rich snippets." Unused structured data carries no penalty. ([The HOTH](https://www.thehoth.com/blog/google-faq-rich-results-deprecated/))

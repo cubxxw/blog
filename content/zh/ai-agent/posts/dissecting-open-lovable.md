@@ -38,7 +38,7 @@ columns:
 
 ---
 
-## 一、产品视角：一个伪装成应用的增长漏斗
+## 产品视角：一个伪装成应用的增长漏斗
 
 ### 它到底是什么
 
@@ -66,7 +66,7 @@ open-lovable 本身不直接变现。它是 Firecrawl 的**获客漏斗与技术
 
 ---
 
-## 二、技术总览：四层架构与一条流水线
+## 技术总览：四层架构与一条流水线
 
 ### 技术栈
 
@@ -128,7 +128,7 @@ Provider 抽象层（Vercel Sandbox ↔ E2B 可切换）
 
 ---
 
-## 三、Agent 架构：它其实是 workflow，不是 autonomous agent
+## Agent 架构：它其实是 workflow，不是 autonomous agent
 
 很多人看到「AI 生成代码 + 对话修改」就默认它背后是个经典 Agent 循环。**不是的。** open-lovable 没有那种「模型决策 → 调工具 → 看结果 → 再决策」的自主 while 循环。用 Anthropic 的术语，它是 **workflow（prompt chaining + routing）**，不是 autonomous agent。理解这点，整个架构就清晰了。
 
@@ -264,7 +264,7 @@ Make ONLY the change requested. Do not modify any other code.
 
 ---
 
-## 四、自研 harness：如何在裸 API 上手搓一套脚手架
+## 自研 harness：如何在裸 API 上手搓一套脚手架
 
 这是整篇文章我最想讲的部分，也是 open-lovable 最反直觉的地方：**它直接用 LLM API，而不用 Claude Agent SDK、不用 CLI 工具、不用任何 Agent 框架。** 那么，一个可用编码 Agent 所需的全部能力——orchestration、工具调用、上下文管理、重试恢复——它是怎么补出来的？
 
@@ -355,7 +355,7 @@ streamText({ model, system, prompt }) → 流式 token
 
 ---
 
-## 五、云端沙箱：可切换的执行底座与最佳实践
+## 云端沙箱：可切换的执行底座与最佳实践
 
 生成的代码要真的跑起来、能预览，就需要一个云端执行环境。open-lovable 支持两家——E2B 与 Vercel Sandbox——并用一层抽象把它们隔开。这一层的工程质量很高，值得单独拆。
 
@@ -472,7 +472,7 @@ allowedHosts: [...]     // 白名单 E2B/Vercel 域名，否则被 Vite 拦截
 
 ---
 
-## 六、可借鉴点：做产品与写代码都用得上
+## 可借鉴点：做产品与写代码都用得上
 
 把一整套拆解收敛成可以直接复用的设计模式：
 
@@ -487,7 +487,7 @@ allowedHosts: [...]     // 白名单 E2B/Vercel 域名，否则被 Vite 拦截
 
 ---
 
-## 七、不是让 Agent 更自由，而是把 LLM 框得更稳
+## 不是让 Agent 更自由，而是把 LLM 框得更稳
 
 open-lovable 最有价值的，从来不是「它能生成代码」这个结果，而是**为了让不可靠的 LLM 输出变得可用，它堆叠的那一整套防御性工程**：流式协议、截断恢复、agentic search、多级 fallback、感知性能优化、可切换沙箱。
 

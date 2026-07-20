@@ -65,19 +65,19 @@ This article is my attempt to answer this question. Not the final answer, but th
 
 Let's honestly acknowledge the losses.
 
-### 2.1 The Satisfaction of Detailed Control
+### The Satisfaction of Detailed Control
 
 In the past, when writing an algorithm, the feeling of personally handling all boundary cases had texture. It was the satisfaction of a craftsman — not just because the function was implemented, but because you witnessed every step of its creation from nothing to something.
 
 Now AI generates code, and often you don't fully understand it, but it just works. You're enjoying something you didn't fully participate in creating.
 
-### 2.2 The Identity from Technical Barriers
+### The Identity from Technical Barriers
 
 Programming was once a privileged ability. Mastering it meant there was a visible boundary between you and those who didn't. Now this boundary is beginning to blur. Ten-year-old children and sixty-year-old elders can all make machines do things using natural language.
 
 This is certainly a good thing, but for many people, that boundary was once part of their self-identity. When the boundary disappears, identity also wavers.
 
-### 2.3 The Necessity of "Slow Accumulation"
+### The Necessity of "Slow Accumulation"
 
 Learning a language, mastering a skill, putting in ten thousand hours in a certain field — these were once the only paths to knowledge. Now AI compresses the accumulation cycle, and knowledge is being democratized. Anyone can access in five minutes information that used to take five years to reach.
 
@@ -262,7 +262,7 @@ But is this the same as inspiration?
 
 Inspiration, in my view, has two necessary conditions:
 
-### 7.1 Randomness
+### Randomness
 
 Inspiration always appears when you least expect it.
 
@@ -272,7 +272,7 @@ Inspiration always appears when you least expect it.
 
 This "suddenness" is not the result of calculation; it's more like the brain in some relaxed state, letting different neural circuits connect freely, accidentally producing a new contact point.
 
-### 7.2 Emotional Surge
+### Emotional Surge
 
 Moreover, inspiration is always accompanied by an emotional surge.
 

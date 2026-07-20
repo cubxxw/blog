@@ -41,7 +41,7 @@ Half the material comes from the pits I keep falling into building agent systems
 
 ---
 
-## 1. The Number Everyone Cites: 98.4%
+## The Number Everyone Cites: 98.4%
 
 Let's start with a number that has spread far and wide, because it's the title of this piece and the best opening line the field has.
 
@@ -61,7 +61,7 @@ Hold this image: model capability is something you **buy — uncontrollable**; t
 
 ---
 
-## 2. First Principles: Why This Discipline Must Exist
+## First Principles: Why This Discipline Must Exist
 
 ![A stateless probabilistic predictor versus a stateful, unbounded world — the harness is the bridge between them](images/blog/agent-engineering-impedance.webp)
 
@@ -87,7 +87,7 @@ Nail these two iron laws down. As you read each pillar, you'll see it's really r
 
 ---
 
-## 3. A Component Anatomy
+## A Component Anatomy
 
 Before the eight pillars, take one look at what parts actually live inside a harness. The diagram below is the standard "component model" reverse-engineered from production systems like Claude Code / Codex. Being able to recite this list basically means you know what modules a production-grade agent is assembled from:
 
@@ -112,7 +112,7 @@ The **eight pillars** are what you get when you regroup these parts by "engineer
 
 ---
 
-## 4. Pillar One: Orchestration (Control Flow)
+## Pillar One: Orchestration (Control Flow)
 
 **The gap it fills:** an LLM outputs one chunk of text at a time; but tasks need the "think → act → observe → think again" multi-step loop, plus coordination across subtasks. Orchestration decides **how control flows**.
 
@@ -160,7 +160,7 @@ Put both together and the conclusion actually converges: **both agree the bottle
 
 ---
 
-## 5. Pillar Two: Context Engineering
+## Pillar Two: Context Engineering
 
 This is the heaviest block of 2026, the widest chasm between demo and production. **A production agent is far more likely to fail at the context layer than at the prompt layer.** I've written a dedicated piece, ["Context Is Not Prompt"](../context-engineering-the-new-foundation/) — here I just put it back into the harness structure and make clear what it solves and what it doesn't.
 
@@ -198,7 +198,7 @@ This economics directly rewrites the optimization target: **from "minimize conte
 
 ---
 
-## 6. Pillar Three: Memory Engineering
+## Pillar Three: Memory Engineering
 
 **The gap it fills:** context engineering manages the window **within a single session**; but an agent needs to remember facts, preferences, and procedures **across sessions**. Memory is the continuously evolving substrate outside the window.
 
@@ -223,7 +223,7 @@ There's a **counterintuitive but important point of disagreement** here, worth d
 
 ---
 
-## 7. Pillar Four: Tool Engineering
+## Pillar Four: Tool Engineering
 
 **The gap it fills:** an LLM only generates text; to change the world (query data, send email, run code) it must go through tools. Tools are the agent's "hands."
 
@@ -254,7 +254,7 @@ def dispatch(tool_call, registry):
 
 ---
 
-## 8. Pillar Five: Reliability Engineering
+## Pillar Five: Reliability Engineering
 
 **The gap it fills:** how to assemble an "overall reliable" system from components where every step can be wrong. This is the core grind of turning a demo into production, and the layer where capital placed its heaviest bets in 2026.
 
@@ -284,7 +284,7 @@ The reliability pillar's standard arsenal also includes: **error classification*
 
 ---
 
-## 9. Pillar Six: Evaluation & Observability
+## Pillar Six: Evaluation & Observability
 
 **The gap it fills:** a probabilistic system **has no "it ran, so it's correct."** The same input gives two different results. Without eval, you have no idea whether changing a prompt made it better or worse. **This is most teams' weakest spot and the one they should fix most.**
 
@@ -305,7 +305,7 @@ But LLM-as-Judge has a must-know pitfall — **judges are biased.** The foundati
 
 ---
 
-## 10. Pillar Seven: Cost & Latency Engineering
+## Pillar Seven: Cost & Latency Engineering
 
 **The gap it fills:** running correctly ≠ running affordably. A demo costing a few cents per run is fine; at scale, token cost and latency will crush the product.
 
@@ -321,7 +321,7 @@ But LLM-as-Judge has a must-know pitfall — **judges are biased.** The foundati
 
 ---
 
-## 11. Pillar Eight: Safety & Governance
+## Pillar Eight: Safety & Governance
 
 **The gap it fills:** all the previous pillars make the agent **more powerful, more autonomous**; this pillar ensures powerful doesn't become dangerous. This is the last 20% of demo→production, and the hardest 20% — because **it's a governance problem, not a capability problem.**
 
@@ -349,7 +349,7 @@ OpenAI's Codex uses an isomorphic two-layer model: (a) the **sandbox / mode** de
 
 ---
 
-## 12. Weaving the Eight Pillars Together: the Full Lifecycle of One Request
+## Weaving the Eight Pillars Together: the Full Lifecycle of One Request
 
 The eight pillars aren't a parallel checklist — they're a pipeline that **flows together within every single request.** Walk it end to end and you see how they mesh:
 
@@ -378,7 +378,7 @@ If you can narrate this pipeline in one breath, you've basically nailed the clas
 
 ---
 
-## 13. The Learning Path: Learn by Pillar, Not by Framework
+## The Learning Path: Learn by Pillar, Not by Framework
 
 Finally, a learning path ordered by dependency — each stage fills the gap the previous one left:
 
@@ -404,7 +404,7 @@ The essence of encapsulation is the **transfer of decision rights.** MCP transfe
 
 ---
 
-## 14. One Line to Close
+## One Line to Close
 
 By now we can compress the whole map into a single sentence:
 

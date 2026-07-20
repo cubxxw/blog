@@ -45,7 +45,7 @@ Those three gates reward different signals. Most failed GEO efforts optimize onl
 
 ---
 
-## 1. Taking RAG apart: Perplexity's six stages
+## Taking RAG apart: Perplexity's six stages
 
 A Perplexity answer comes from a roughly six-stage RAG pipeline — a useful template for understanding all AI search: ([ZipTie](https://ziptie.dev/blog/how-perplexity-ai-answers-work/), [AuthorityTech](https://authoritytech.io/blog/how-perplexity-selects-sources-algorithm-2026))
 
@@ -66,7 +66,7 @@ Details you must remember:
 
 ---
 
-## 2. Shift #1: the retrieval unit is the passage, not the page
+## Shift #1: the retrieval unit is the passage, not the page
 
 The single most important line in this piece deserves its own section: **AI retrieves chunks (passages), not your whole article.** The system splits pages into blocks, computes a vector for each, and finds the blocks nearest the question in "vector space." ([Mersel AI](https://www.mersel.ai/blog/how-ai-search-algorithms-read-and-rank-content))
 
@@ -81,7 +81,7 @@ This inverts several SEO intuitions:
 
 ---
 
-## 3. Shift #2: query fan-out means the head term isn't the only battlefield
+## Shift #2: query fan-out means the head term isn't the only battlefield
 
 Google has publicly confirmed that AI Overviews rely on **query fan-out**: the system splits one question into a batch of related sub-queries, retrieves them **in parallel**, and synthesizes the results. ([Search Engine Land](https://searchengineland.com/guide/how-to-optimize-for-ai-overviews), [Stackmatix](https://www.stackmatix.com/blog/how-google-selects-ai-overview-sources))
 
@@ -95,7 +95,7 @@ Direct guidance for GEO:
 
 ---
 
-## 4. Shift #3: vector semantics — why "plain language" works
+## Shift #3: vector semantics — why "plain language" works
 
 Classic SEO is **lexical matching**: you must contain the exact words the user typed. AI retrieval is **semantic matching**: content is encoded into vectors (hundreds/thousands of numbers — a "meaning coordinate"), and the system finds the passages nearest in *meaning*, not nearest in spelling. ([Mersel AI](https://www.mersel.ai/blog/how-ai-search-algorithms-read-and-rank-content))
 
@@ -109,7 +109,7 @@ This explains several things:
 
 ---
 
-## 5. Retrieved ≠ cited: what the final gate weighs
+## Retrieved ≠ cited: what the final gate weighs
 
 Entering the candidate pool — even ranking high — doesn't mean you'll be written into the answer. **Citation is a separate gate**, weighing six dimensions together: ([Wellows](https://wellows.com/blog/google-ai-overviews-ranking-factors/))
 
@@ -123,7 +123,7 @@ Some quantified rules that tell you where to spend effort:
 
 ---
 
-## 6. Five battlefields, different temperaments (same principle)
+## Five battlefields, different temperaments (same principle)
 
 The principle is always RAG, but each platform has a different "taste," so the emphasis shifts:
 
@@ -139,7 +139,7 @@ The principle is always RAG, but each platform has a different "taste," so the e
 
 ---
 
-## 7. Turning mechanics into action: the chunk-level checklist
+## Turning mechanics into action: the chunk-level checklist
 
 Understanding the machine has to land on how each paragraph is written. This table compresses the chapter into an executable checklist:
 
@@ -154,7 +154,7 @@ Understanding the machine has to land on how each paragraph is written. This tab
 
 ---
 
-## 8. Back to my blog: which chunks are friendly, which aren't
+## Back to my blog: which chunks are friendly, which aren't
 
 Held against my own posts, the mechanics immediately expose problems:
 
@@ -165,7 +165,7 @@ Held against my own posts, the mechanics immediately expose problems:
 
 ---
 
-## 9. FAQ
+## FAQ
 
 **Q: If I don't rank high, am I out of the AI-citation game?**
 A: The opposite. The share of AI Overview citations from top-10 pages fell from 76% to 38%, and RAG often extracts from positions 4–20 or lower based on **passage quality**. Ranking is a bonus, not an entry ticket. ([ALM Corp](https://almcorp.com/blog/google-ai-overview-citations-drop-top-ranking-pages-2026/))

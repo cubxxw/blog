@@ -19,7 +19,7 @@ tldr:
 
 
 
-## 1. Base Images
+## Base Images
 
 Below are the base images and their versions you'll need:
 
@@ -41,7 +41,7 @@ docker pull wurstmeister/zookeeper
 docker pull minio/minio
 ```
 
-## 2. OpenIM & Chat Images
+## OpenIM & Chat Images
 
 **For detailed understanding of version management and storage of OpenIM and Chat**: [version.md](https://github.com/OpenIMSDK/Open-IM-Server/blob/main/docs/conversions/version.md)
 
@@ -62,7 +62,7 @@ docker pull ghcr.io/openimsdk/openim-server:<version-name>
 docker pull ghcr.io/openimsdk/openim-server:<version-name>
 ```
 
-## 3. Image Storage Selection
+## Image Storage Selection
 
 **Repositories**:
 
@@ -75,7 +75,7 @@ docker pull ghcr.io/openimsdk/openim-server:<version-name>
 - Latest: latest
 - Latest of main: main
 
-## 4. Version Selection
+## Version Selection
 
 You can select from the following versions:
 
@@ -83,7 +83,7 @@ You can select from the following versions:
 - Latest: latest
 - Latest from main branch: main
 
-## 5. Offline Deployment Steps
+## Offline Deployment Steps
 
 1. **Pull images**: Execute the above `docker pull` commands to pull all required images locally.
 2. **Save images**:
@@ -126,7 +126,7 @@ docker-compose ps
 
 > **Note**: If you're using a version of Docker prior to 20, make sure you've installed `docker-compose`.
 
-## 6. Reference Links
+## Reference Links
 
 - [OpenIMSDK Issue #432](https://github.com/OpenIMSDK/Open-IM-Server/issues/432)
 - [Notion Link](https://nsddd.notion.site/435ee747c0bc44048da9300a2d745ad3?pvs=25)

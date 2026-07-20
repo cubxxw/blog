@@ -31,7 +31,7 @@ columns:
 
 ---
 
-## 0. Introduction: An Engineering Problem Misdiagnosed as Philosophy
+## Introduction: An Engineering Problem Misdiagnosed as Philosophy
 
 The cost of agent amnesia is systematically underestimated.
 
@@ -49,7 +49,7 @@ In 2026, the technology stack finally has the conditions to fully implement Lock
 
 ---
 
-## 1. Locke's Specification: An Engineering Requirements Document Written 300 Years Ago
+## Locke's Specification: An Engineering Requirements Document Written 300 Years Ago
 
 John Locke's *An Essay Concerning Human Understanding*, Book II, Chapter 27, isn't a philosophical essay. It's an engineering specification.
 
@@ -82,7 +82,7 @@ But Locke's specification has a critical flaw: it treats identity as a purely in
 
 ---
 
-## 2. The Cost of Discontinuity: Why Statelessness is Expensive in Production
+## The Cost of Discontinuity: Why Statelessness is Expensive in Production
 
 The engineer's instinct is to ask: how much does this defect actually cost?
 
@@ -118,7 +118,7 @@ If an agent is stateless, then "Agent X" as a thing doesn't exist at all. There'
 
 ---
 
-## 3. Files as Identity: The Engineering Logic of the SOUL.md Paradigm
+## Files as Identity: The Engineering Logic of the SOUL.md Paradigm
 
 So what should the architecture look like?
 
@@ -169,7 +169,7 @@ One final cautionary note: many teams treat `SOUL.md` as a static prompt templat
 
 ---
 
-## 4. Harness: Environment as the Condition of Identity
+## Harness: Environment as the Condition of Identity
 
 One thing Locke didn't consider: environment.
 
@@ -207,7 +207,7 @@ Looking at Claude's Harness architecture, putting RM (Reward Model), tools, and 
 
 ---
 
-## 5. Memory Hierarchy: From Session to Gene Capsule
+## Memory Hierarchy: From Session to Gene Capsule
 
 In 2026, agent memory architecture has converged on a four-layer model:
 
@@ -253,7 +253,7 @@ The answer is: identity is no longer a question of "persistence," but of "lineag
 
 ---
 
-## 6. The Multi-Agent Identity Problem: When Self Becomes Topology
+## The Multi-Agent Identity Problem: When Self Becomes Topology
 
 The single-agent identity problem is solvable, or at least has a solution direction. Multi-agent is the real hard problem.
 
@@ -288,7 +288,7 @@ But multi-agent systems also have an identity drift problem worth separate vigil
 
 ---
 
-## 7. Evaluation: Identity Verification is the Hardest Part
+## Evaluation: Identity Verification is the Hardest Part
 
 "Without evaluation, all agents are just performances"—this sentence is precise enough to deserve careful unpacking.
 
@@ -312,7 +312,7 @@ The fundamental problem with the current evaluation ecosystem is: most benchmark
 
 ---
 
-## 8. Checklist for Builders
+## Checklist for Builders
 
 This isn't a universal best practices list. Each item is a question that forces you to make real design decisions.
 
@@ -348,7 +348,7 @@ If not, you're creating knowledge silos. Every agent is starting from zero; your
 
 ---
 
-## 9. Conclusion: The Engineer's Metaphysical Debt
+## Conclusion: The Engineer's Metaphysical Debt
 
 We've unknowingly inherited problems that philosophers have been wrestling with for centuries.
 

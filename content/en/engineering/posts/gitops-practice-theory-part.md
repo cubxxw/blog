@@ -103,7 +103,7 @@ spec:
      -ngxconf
 ```
 
-### 2. Write Operator controller
+### Write Operator controller
 
 Use Go language to write Operator controller. The Operator controller will listen to the creation, update, and deletion events of the NginxConfig resource and perform corresponding operations.
 
@@ -120,11 +120,11 @@ func main() {
 }
 ```
 
-### 3. Handle Nginx instance
+### Handle Nginx instance
 
 In the controller, handle the creation and update of Nginx instances. When an NginxConfig resource is created or updated, the controller sets up the Nginx Pod according to the defined specifications, including the required configuration and static files.
 
-### 4. Create Docker image and deploy Operator
+### Create Docker image and deploy Operator
 
 Package the Operator into a Docker image, and then deploy this image in the Kubernetes cluster.
 
@@ -165,7 +165,7 @@ spec:
          image: nginx-operator:latest
 ```
 
-### 5. Test Operator
+### Test Operator
 
 Create an NginxConfig instance to test the Operator:
 

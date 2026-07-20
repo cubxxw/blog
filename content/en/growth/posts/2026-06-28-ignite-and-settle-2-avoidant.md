@@ -40,7 +40,7 @@ series:
 
 ---
 
-## 1. First, get the terminology right
+## First, get the terminology right
 
 In the Chinese context, what people often call "avoidant personality" is more accurately **avoidant attachment** or **emotional avoidance** — not necessarily the clinical "Avoidant Personality Disorder" (AvPD).
 
@@ -61,11 +61,11 @@ Let's lay those "small things" out.
 
 ---
 
-## 2. Seven common soils for avoidant attachment
+## Seven common soils for avoidant attachment
 
 A caveat first: not everyone who lives through these environments becomes avoidant. Personality and attachment are also shaped by temperament, peers, later relationships, friendships, teachers, major events. What follows are statistically common soils, not verdicts.
 
-### 1) Emotional needs chronically ignored
+### Emotional needs chronically ignored
 
 When the child was sad, hurt, scared, the caregiver responded not with comfort but with:
 
@@ -85,7 +85,7 @@ A classic finding in attachment research supports this: avoidant attachment is s
 
 The keyword is **down-regulate**, not "disappear." The need is still there. It just stops being expressed. In adulthood this turns into a particularly twisted state: I clearly need it — but I cut the need before it shows, then explain to myself "I didn't really need it that much."
 
-### 2) Parents value performance, rules, and function; not feelings
+### Parents value performance, rules, and function; not feelings
 
 A common pattern in Chinese families:
 
@@ -100,7 +100,7 @@ So in adulthood they become: capable of doing things, taking responsibility, wor
 
 These people are often praised at work — reliable, independent, stress-tolerant, unemotional. Ironically, much of this "strength" is a side effect of trauma. A person who was emotionally caught as a child isn't necessarily this hard; a child allowed to be little isn't necessarily this "mature."
 
-### 3) Shame, denial, or putdowns in intimate relationships
+### Shame, denial, or putdowns in intimate relationships
 
 Parents who often say:
 
@@ -115,7 +115,7 @@ A more subtle version is **comparative shaming**: the parent never hits you dire
 
 A person raised like this develops, in adulthood, **a strong reflex of shame around exposure**. Even with someone who shows no sign of attacking them, their first response after being vulnerable is to want to withdraw — not because this specific person is unsafe, but because their body long ago encoded "exposure = attack" at a base layer.
 
-### 4) Parents who don't know how to express love either
+### Parents who don't know how to express love either
 
 Many Chinese parents aren't unloving — they were never loved well themselves. Their way of expressing love often looks like:
 
@@ -134,7 +134,7 @@ This deserves an extra paragraph. If you look back at many Chinese kids praised 
 
 In adulthood this logic secretly shapes their romantic patterns: they may habitually give to a partner (cooking, solving problems, organizing life), but **they find it very hard to be taken care of**. Being taken care of is dangerous for them — it means they're temporarily "not useful," and the old program firmly believes useless people get left behind.
 
-### 5) A cold, tense, low-touch household
+### A cold, tense, low-touch household
 
 Some families have no obvious violence, no major trauma — they're just chronically cold:
 
@@ -149,7 +149,7 @@ This kind of environment develops a **"low-need personality"** in the child: doe
 
 "Early-ripened" and "mature" look alike but aren't the same. Mature is the steadiness after full development. Early-ripened is when some development is accelerated to completion and other development is frozen. An early-ripened child looks like an adult in function, but is missing the capacities one only develops by being allowed to be childish — they can't be silly, can't throw tantrums, can't run into someone's arms asking to be hugged, can't say "I'm tired, I don't want to do this anymore." They don't have these capacities because they never got to practice.
 
-### 6) Strong control, weak emotional support
+### Strong control, weak emotional support
 
 A common Chinese family combination:
 
@@ -164,7 +164,7 @@ So in adulthood they crave intimacy on one hand, and fear being controlled and e
 
 People shaped by this kind of "close-up loneliness" develop a near-sacred sensitivity to "personal space." Being pushed, interrogated, told "we have to talk this out today" — all of it can activate the childhood feeling of "nowhere to escape," because as a child there really was nowhere to escape.
 
-### 7) Children forced to be "good"
+### Children forced to be "good"
 
 Many avoidants were often praised as kids:
 
@@ -183,7 +183,7 @@ If someone in your life is praised as "exceptionally independent, never made the
 
 ---
 
-## 3. Underlying beliefs: the inner monologue avoidants themselves may not hear
+## Underlying beliefs: the inner monologue avoidants themselves may not hear
 
 The Chinese-style avoidant soil is usually not "no one raised them at all." It's:
 
@@ -207,7 +207,7 @@ The most common tragedy avoidants face: **the "I won't bother you" they spent ev
 
 ---
 
-## 4. Formation timeline: when does it get installed?
+## Formation timeline: when does it get installed?
 
 The prototype of avoidant attachment usually starts forming between **0 and 6 years old, with 0–3 being most critical**. It isn't formed on any single day — it's a long, repeated adaptation.
 
@@ -291,7 +291,7 @@ It's not a character defect. It's an adaptation that was reasonable then and is 
 
 ---
 
-## 5. The path of repair: ten concrete moves
+## The path of repair: ten concrete moves
 
 The core of repairing "avoidance" is **not to force yourself to be extroverted or clingy**. It is to relearn one thing:
 
@@ -299,7 +299,7 @@ The core of repairing "avoidance" is **not to force yourself to be extroverted o
 
 The ten directions below.
 
-### 1) Stop calling yourself "cold"
+### Stop calling yourself "cold"
 
 Most avoidants aren't unfeeling. They have a lot of feelings, just don't dare express.
 
@@ -323,7 +323,7 @@ The first step is to change "I'm broken" into:
 
 This matters. **You aren't bad. You learned to protect yourself too early.** Switching your stance toward yourself from "fixing a malfunction" to "understanding a once-necessary strategy" is what makes all subsequent work hold.
 
-### 2) Identify your avoidance triggers
+### Identify your avoidance triggers
 
 Avoidants don't always avoid. They're triggered in specific situations.
 
@@ -353,7 +353,7 @@ Train yourself, when these thoughts arise, to pause and ask:
 
 If you can ask these three questions in the moment of impulse, you've already won half the battle. The mistake avoidants make most often is mistaking "nervous" for "not in love" and "wanting to escape pressure" for "wanting to break up."
 
-### 3) Practice expressing "low-intensity needs"
+### Practice expressing "low-intensity needs"
 
 Don't force yourself into deep disclosure right away. Avoidants are best served by starting with low-risk expression.
 
@@ -376,7 +376,7 @@ The point isn't expressing perfectly. The point is letting the other person know
 
 This small step is a **paradigm shift** for avoidants — discovering for the first time that "expressing need" doesn't have to be handing yourself over all at once. It can be one sentence, one small update, one brief status note. After this low-risk expression succeeds a few times, your body starts to believe it's safe and possible.
 
-### 4) Don't solve pressure by disappearing
+### Don't solve pressure by disappearing
 
 What hurts relationships most isn't an avoidant needing space — it's **sudden disappearance, no explanation, cold treatment**.
 
@@ -394,7 +394,7 @@ This is critical practice for avoidants. It turns "retreat" from a **unilateral 
 
 Many avoidants initially feel "why do I have to explain when I retreat, that's a hassle." But: you're not explaining — you're **acknowledging the other person is also in this relationship**. Retreating without saying a word is like saying "I get to decide what happens in this relationship, your feelings don't need to be informed." That's an invisible form of control, just dressed as "I just need space."
 
-### 5) Practice receiving care
+### Practice receiving care
 
 Many avoidants get uncomfortable when cared for, sometimes want to hide.
 
@@ -412,7 +412,7 @@ This isn't being precious. **It's retraining your brain that being cared for is 
 
 For avoidants, being cared for has a strange discomfort to it — you long for it and instinctively recoil from it. That reaction isn't ingratitude. It's your nervous system protecting you. In its old files, admitting "I need to be cared for" = admitting "I have a weakness" = exposure = attack. That chain takes time to unpack, piece by piece. The fastest way isn't insight, it's repeated experience — letting the experience of being cared for land, again and again, letting your body verify "this time there was no attack."
 
-### 6) Build "safe relationship samples"
+### Build "safe relationship samples"
 
 Avoidants can't change by thinking alone. They need **new relational experiences**.
 
@@ -438,7 +438,7 @@ The key to avoidant repair isn't "suddenly becoming warm." It's **incrementally 
 
 Psychologist Dan Siegel put it well: **relational problems ultimately have to be healed in relationships.** No amount of solo reading or meditation can fully replace the **corrective experience** of "I tried something new in a safe relationship, and was not punished for it."
 
-### 7) Distinguish "independence" from "isolation"
+### Distinguish "independence" from "isolation"
 
 Healthy independence:
 
@@ -458,7 +458,7 @@ Ask yourself:
 
 This distinction is enormous. **Chosen solitude and forced isolation look identical from the outside and feel utterly different from inside.** The first is rich, recharging, quietly being with yourself. The second is a tense withdrawal — refusing to get close first so as not to be hurt.
 
-### 8) Don't only ask "are we compatible"
+### Don't only ask "are we compatible"
 
 Avoidants often suddenly start nit-picking when relationships deepen:
 
@@ -484,7 +484,7 @@ Like:
 
 **Stating a need is more mature than just fleeing.** And when you try to state these needs, you'll often discover an astonishing fact: people are often willing to adjust, and the force pushing you to flee shrinks correspondingly. That "I must leave" urgency was often because you thought your only options were "endure" or "flee." There's a third: **say it.**
 
-### 9) If you are in a relationship with an avoidant
+### If you are in a relationship with an avoidant
 
 Don't chase too hard, but also don't fully let go. Best practice: **steady, clear, with boundaries**.
 
@@ -501,7 +501,7 @@ The two extremes most damaging in a relationship with an avoidant:
 
 The middle road: **acknowledge their avoidance is real, while holding that your needs are also real**. Two real people don't require sacrificing either.
 
-### 10) An effective repair sequence
+### An effective repair sequence
 
 In this order:
 
@@ -516,7 +516,7 @@ The key step isn't any particular one. It's **step 6, "repeat."** The avoidant p
 
 ---
 
-## 6. The single most important sentence
+## The single most important sentence
 
 What an avoidant needs to solve is not "how to become great at loving." It is:
 
@@ -534,7 +534,7 @@ slowly to —
 
 ---
 
-## 7. For two kinds of readers
+## For two kinds of readers
 
 **If you are avoidant**:
 

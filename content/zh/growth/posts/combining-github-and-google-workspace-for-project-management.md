@@ -48,13 +48,13 @@ tldr:
 
 我希望组合使用GitHub Projects和Google Projects（或Google Workspace的相关工具）进行项目管理，可以根据各自的优势制定一个最佳实践方案。这样做可以充分利用两个平台的优点，实现更高效和全面的项目管理：
 
-### 1. 使用GitHub Projects管理开发活动
+### 使用GitHub Projects管理开发活动
 
 - **代码管理和追踪**：利用GitHub的核心优势，将所有代码管理任务（包括版本控制、分支管理等）以及与代码直接相关的活动（如Bug追踪、功能请求等）保留在GitHub。
 - **自动化工作流**：通过GitHub Actions实现自动化，比如自动测试、构建和部署，以及自动化的问题和拉取请求管理。
 - **项目看板**：使用GitHub Projects的看板功能跟踪开发进度，如待办事项、进行中和已完成任务。
 
-### 2. 利用Google Workspace管理项目的其他方面
+### 利用Google Workspace管理项目的其他方面
 
 - **文档和文件共享**：使用Google Docs、Sheets和Slides来创建和共享项目文档、计划和报告，利用它们强大的实时协作功能。
 - **通信和会议**：通过 Google Meet 和 Gmail 进行项目会议、沟通和更新，保持团队成员之间的紧密联系。

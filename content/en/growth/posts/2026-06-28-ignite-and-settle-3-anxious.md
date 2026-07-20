@@ -40,7 +40,7 @@ series:
 
 ---
 
-## 1. Anxious is not "loving too much"
+## Anxious is not "loving too much"
 
 Anxious typically refers to **anxious / preoccupied attachment** — not simply "loving too much" or "too sensitive."
 
@@ -64,9 +64,9 @@ Let's start from childhood.
 
 ---
 
-## 2. Seven common soils for anxious attachment
+## Seven common soils for anxious attachment
 
-### 1) The most typical source: caregivers who are hot then cold
+### The most typical source: caregivers who are hot then cold
 
 This is the most common soil.
 
@@ -92,7 +92,7 @@ This is why anxious adults keep confirming in relationships:
 
 Not because they are paranoid — because their internal model learned, from the start, **love disappears suddenly, and I must spot the signs first.**
 
-### 2) Emotionally unstable parents, child has to "watch the face"
+### Emotionally unstable parents, child has to "watch the face"
 
 If parents had big mood swings:
 
@@ -121,7 +121,7 @@ In adulthood, in romance, this person is extremely sensitive to tiny changes.
 
 Many anxious adults are accused in relationships of "why are you so sensitive" — it sounds like a flaw, but consider: a child hyper-sensitive to tiny environmental changes was that way because his childhood environment really did have the danger of "sudden change." **He isn't overreacting. He's running an old sensor in an environment that has long since stopped existing.**
 
-### 3) Love bound to performance
+### Love bound to performance
 
 Some families aren't unloving — they have **deeply conditional love**.
 
@@ -150,7 +150,7 @@ This and the avoidant pattern of "parents who don't express love" look similar �
 
 Both used opposite strategies to solve the same problem: **the relationship is conditional.**
 
-### 4) Experiences of being left, separated, lost touch with
+### Experiences of being left, separated, lost touch with
 
 Anxious is also common in people with clear **separation experiences**:
 
@@ -169,7 +169,7 @@ Even after life stabilizes, adult intimacy easily activates this fear. The other
 
 This is especially common in the Chinese context for those born in the 1980s and 1990s. The phrase **"left-behind children"** (留守儿童) represents a generation whose attachment patterns were reshaped by a particular economic structure — children in the years when they most needed stable care repeatedly experiencing cycles of "parent leaves / returns / leaves again." Even after the parents return, the early-trained prediction "important people will disappear" is already in the body. It doesn't auto-revoke just because "it's fine now."
 
-### 5) Parents over-dependent on the child, child forced to carry emotion
+### Parents over-dependent on the child, child forced to carry emotion
 
 There's also an anxious pathway born of **role reversal (parentification)**.
 
@@ -196,7 +196,7 @@ The hidden damage of role reversal is that it makes a child, very early on, conf
 
 That's why many anxious people repeatedly fall for "obviously unreliable" partners. Not because they're blind — because their nervous system recognizes the taste of "I have to work hard for him to stay." A calm, mature partner who doesn't need to be rescued feels to him like "something is missing."
 
-### 6) Common anxious soil in Chinese families
+### Common anxious soil in Chinese families
 
 In the Chinese context, anxious is often not produced by total coldness, but by this combination:
 
@@ -217,7 +217,7 @@ So anxious people **aren't unindependent** — once the relationship gets import
 
 Note this: many anxious people are in their work life, when living alone, with strangers, in fact highly independent, very stable, even leadership-grade. Their "anxiety" isn't a trait-level fragility. It's an **intimacy-specific trigger**. Once a relationship is deep enough that the other person matters, the prediction engine installed in childhood starts up.
 
-### 7) Typical adult presentations of anxious
+### Typical adult presentations of anxious
 
 Common:
 
@@ -238,7 +238,7 @@ This is where the anxious most easily traps themselves: **what they pursue is wh
 
 ---
 
-## 3. The biggest difference between anxious and avoidant
+## The biggest difference between anxious and avoidant
 
 A simple way to put it:
 
@@ -262,7 +262,7 @@ Both are reasoning backward from what they fear most, into their behavior.
 
 ---
 
-## 4. The chase-flee cycle — why anxious people most easily fall for avoidants
+## The chase-flee cycle — why anxious people most easily fall for avoidants
 
 Attachment research has repeatedly observed: **anxious and avoidant attract each other unusually easily.**
 
@@ -312,13 +312,13 @@ That "different" is where all change seeds.
 
 ---
 
-## 5. The path of anxious repair
+## The path of anxious repair
 
 The core of anxious repair is not becoming "not caring," not learning to be "cold," not closing half your heart.
 
 It is **transferring part of the self-soothing function from the outside back onto yourself**.
 
-### 1) First see the urgency of "I must be confirmed right now"
+### First see the urgency of "I must be confirmed right now"
 
 When anxious is triggered, a **physical-level urgency** floods the body — heart racing, chest tight, hands wanting the phone, mind looping "did he stop loving me," "I have to clear this up right now."
 
@@ -331,7 +331,7 @@ First step: recognize it. **This isn't real urgency. This is old urgency.**
 
 Separating these two categories is the anxious person's lifelong homework.
 
-### 2) Don't make decisions in the moment of being triggered
+### Don't make decisions in the moment of being triggered
 
 When anxious is triggered, the brain is at its **least decision-capable**.
 
@@ -347,7 +347,7 @@ Often, after two hours, that "must resolve right now" urgency drops a lot on its
 
 Those two hours are the anxious version of "the only crack" — exactly parallel to the avoidant's.
 
-### 3) Build your own "secure base"
+### Build your own "secure base"
 
 Attachment theory has a term: **secure base** — theoretically, a secure person derives their sense of safety from **internalizing a stable, dependable caregiver image**. When triggered, they don't need external immediate confirmation; an internal "base" is already there.
 
@@ -363,7 +363,7 @@ Concretely:
 
 Each of these is small. Together they shift your baseline — leaving **more residual resource in your body** when you're triggered, so the whole soothing demand doesn't get crushed onto one person.
 
-### 4) Learn to distinguish "their state" from "their stance toward you"
+### Learn to distinguish "their state" from "their stance toward you"
 
 The most common anxious attribution error: auto-reading the other person's daily state as their stance toward you.
 
@@ -380,7 +380,7 @@ Practice a new inner monologue:
 
 This ability to "defer attribution" is one of the most important inner skills for the anxious.
 
-### 5) Allow yourself to ask for needs — but separate "needs" from "fears"
+### Allow yourself to ask for needs — but separate "needs" from "fears"
 
 A common misunderstanding: anxious people should "ask for less." Actually, no.
 
@@ -406,7 +406,7 @@ These are **structural needs about the relationship** — clear, negotiable, thi
 
 Expressed this way, the other person's reaction is entirely different. The first activates their defenses; the second invites their collaboration.
 
-### 6) Beware the pull of "hot then cold"
+### Beware the pull of "hot then cold"
 
 If you notice you fall for the same kind of person again and again — initially very warm, then suddenly cold, then suddenly warm again — please recognize: **fate isn't playing with you. Your nervous system is finding a familiar taste.**
 
@@ -418,7 +418,7 @@ A healthy relationship at first may feel "missing something" — and the missing
 
 Please give "boring" a chance. It's not no-fire — it's fire that isn't burning in the wrong place.
 
-### 7) If they're avoidant, the hardest and most crucial step
+### If they're avoidant, the hardest and most crucial step
 
 If you're with an avoidant, the thing you most need to practice is:
 
@@ -441,7 +441,7 @@ It is extremely hard. But each time, the cycle loosens.
 
 ---
 
-## 6. For two kinds of readers
+## For two kinds of readers
 
 **If you are anxious**:
 
@@ -474,7 +474,7 @@ The old wire that ties "love" to "disappearing" gets untied, one "this time it d
 
 ---
 
-## 7. Back to where "Ignite and Settle" began
+## Back to where "Ignite and Settle" began
 
 These three pieces traveled a long arc; now we can return to the core of Part 1.
 

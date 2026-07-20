@@ -49,7 +49,7 @@ I learned rust today and found that rust is a very suitable language for writing
 1.7 Project practice: Carry out a small project to practice the design and application of vector database.
 1.8 Review and Assessment: Review what you have learned and use assessments to test understanding and application.
 
-## 0.1 Introduction to basic knowledge
+## Introduction to basic knowledge
 
 Vector databases are a special type of database that use mathematical vectors to represent and store data. This is very different from traditional databases, which typically use tables and rows to organize data.
 
@@ -121,7 +121,7 @@ Vector databases are a special type of database that use mathematical vectors to
 - Lancedb: https://github.com/lancedb/lancedb
 - Vectra: https://github.com/Stevenic/vectra
 
-## 0.2 Data structure basics
+## Data structure basics
 
 1. **Basics of Vectors** 🧮
      - **Definition**: In programming and data science, a vector is usually viewed as a one-dimensional array containing a sequence of elements. Each element can be a number, character, or other data type.
@@ -137,7 +137,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - **Non-relational database**: In a non-relational database, the data structure can be more flexible, such as document storage, key-value pairs, or graph structures.
      - **Vector Database**: In a vector database, data is typically represented as vectors, which are indexed and retrieved in the database for efficient similarity searches.
 
-### 0.3 Introduction to Linear Algebra: Vector Operations
+### Introduction to Linear Algebra: Vector Operations
 
 ### Vector addition 🔄
 
@@ -194,7 +194,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - **Projection**: The dot product can be used to calculate the length of the projection of one vector onto another vector.
      - **Angle calculation**: Through dot product and vector length, the angle between two vectors can be calculated.
 
-## 0.4 similarity measure: cosine similarity
+## similarity measure: cosine similarity
 
 ### What is cosine similarity? 
 
@@ -234,7 +234,7 @@ Vector databases are a special type of database that use mathematical vectors to
 - **Recommendation System**: Used to compare feature vectors of users or items to find similar users or recommend similar items.
 - **Image recognition**: In image processing, it can be used to compare the similarity of image feature vectors.
 
-## 0.5 Database Index Basics
+## Database Index Basics
 
 ### What is a database index? 
 
@@ -283,7 +283,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Vector databases utilize ANN search to efficiently handle similarity queries, especially in high-dimensional data environments.
      - This is critical for applications such as recommender systems, image retrieval and language processing.
 
-### 0.6 Preliminary search algorithm
+### Preliminary search algorithm
 
 ### Classification of basic search algorithms
 
@@ -316,9 +316,9 @@ Vector databases are a special type of database that use mathematical vectors to
 - Design a simple search algorithm to find specific elements in an array.
 - Find elements in a sorted array using binary search algorithm.
 
-### 0.7 Application Case Study: Practical Application of Vector Database
+### Application Case Study: Practical Application of Vector Database
 
-### 1. Recommendation system
+### Recommendation system
 
 - **Overview**: Recommender systems are designed to recommend items or content to users that may be of interest to them.
 - **The role of vector database**:
@@ -326,7 +326,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Conduct similarity searches using vector databases to discover similar items that users may like.
 - **Example**: An online shopping website recommends similar products, or a music streaming service recommends similar songs.
 
-### 2. Image recognition
+### Image recognition
 
 - **Overview**: Image recognition refers to recognizing and processing information in images, such as identifying objects, faces, or scenes.
 - **The role of vector database**:
@@ -334,7 +334,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Vector databases are used to store and quickly retrieve these image feature vectors to identify similar images or patterns.
 - **Example**: Facial recognition or medical image analysis in security surveillance systems.
 
-### 3. Language processing
+### Language processing
 
 - **Overview**: Natural language processing involves understanding and interpreting human language.
 - **The role of vector database**:
@@ -342,7 +342,7 @@ Vector databases are a special type of database that use mathematical vectors to
      - Vector databases are used to perform text similarity analysis, such as searches for related documents or sentiment analysis.
 - **Example**: Chatbot understanding user queries or social media trend analysis.
 
-### 4. Data analysis and scientific research
+### Data analysis and scientific research
 
 - **Overview**: Large data sets are increasingly common in scientific research and data analysis.
 - **The role of vector database**:
@@ -356,7 +356,7 @@ Vector databases are a special type of database that use mathematical vectors to
 
 </aside>
 
-### 1.1 Vector database in-depth
+### Vector database in-depth
 
 ### Advanced Features
 
@@ -388,7 +388,7 @@ Vector databases are a special type of database that use mathematical vectors to
 - **Image and Video Search**: Quickly find visually similar images or videos in large image libraries.
 - **Bioinformatics**: Processing and analyzing large amounts of gene and protein sequence data.
 
-### 1.2 Algorithm Exploration
+### Algorithm Exploration
 
 ### Index algorithm
 
@@ -505,7 +505,7 @@ Vector databases are a special type of database that use mathematical vectors to
      4. **Use specific algorithm**
          - On high-dimensional data, use those algorithms designed specifically for high dimensions, such as tree-based methods or locality-sensitive hashing.
 
-### 1.3 Database design: vector database architecture
+### Database design: vector database architecture
 
 ### Understand the core requirements of vector database
 
@@ -544,7 +544,7 @@ Vector databases are a special type of database that use mathematical vectors to
 - **Security and Privacy**:
      - Implement appropriate security measures to protect data from unauthorized access and attacks.
 
-### 1.4 Integrated Machine Learning
+### Integrated Machine Learning
 
 ### What is machine learning?
 
@@ -683,7 +683,7 @@ Collection methods can be divided into two categories:
 3. **Resource Optimization**
      - Ensure that the integration of databases and machine learning models does not excessively consume computing and storage resources.
 
-### 1.5 Actual case analysis
+### Actual case analysis
 
 ### Case 1: Recommendation system
 
@@ -718,7 +718,7 @@ Collection methods can be divided into two categories:
      - Identify and block fraudulent transactions promptly, reducing financial losses.
      - Improved the overall security and reliability of the system.
 
-### 1.6 Advanced Mathematics Concepts
+### Advanced Mathematics Concepts
 
 ### Vector representation of high-dimensional space
 
@@ -754,7 +754,7 @@ Collection methods can be divided into two categories:
 - **Data Visualization in Data Science**:
      - Use dimensionality reduction techniques (such as PCA) to project high-dimensional data into a low-dimensional space for visualization.
 
-### 1.7 Project Practice: Vector Database Application
+### Project Practice: Vector Database Application
 
 ### Project Concept: Personalized Recommendation System
 
@@ -797,7 +797,7 @@ Collection methods can be divided into two categories:
 
 ---
 
-### 1.8 Review and Evaluation
+### Review and Evaluation
 
 ### Review what you learned
 

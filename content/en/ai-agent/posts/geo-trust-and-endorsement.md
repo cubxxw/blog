@@ -44,7 +44,7 @@ The first three chapters solved crawlable, understandable, and quotable (layers 
 
 ---
 
-## 1. E-E-A-T: turning "trustworthy" into visible signals
+## E-E-A-T: turning "trustworthy" into visible signals
 
 Google and the AI engines decide whether to trust you via **E-E-A-T** — Experience, Expertise, Authoritativeness, Trust. It's not mysticism; it's a set of signals you can operationalize:
 
@@ -57,7 +57,7 @@ Google and the AI engines decide whether to trust you via **E-E-A-T** — Experi
 
 ---
 
-## 2. Entity consistency: help AI recognize "the same person"
+## Entity consistency: help AI recognize "the same person"
 
 To cite you, AI must first recognize the scattered "you" as a single **entity**. The more consistent your name, title, bio, and field are across platforms, the stronger the entity signal.
 
@@ -69,7 +69,7 @@ To cite you, AI must first recognize the scattered "you" as a single **entity**.
 
 ---
 
-## 3. Off-site endorsement is the hidden variable: the hard data
+## Off-site endorsement is the hidden variable: the hard data
 
 Many optimize only their own site and miss that AI's "trust" mostly comes from **other people's turf**. The 2026 citation data is blunt:
 
@@ -81,7 +81,7 @@ Why them? Because **AI weighs both "perceived authority" and "authentic user inp
 
 ---
 
-## 4. But don't blindly chase Reddit: engines differ
+## But don't blindly chase Reddit: engines differ
 
 Reacting to that data by mass-posting on Reddit/Wikipedia is another trap. Two things to stay clear on:
 
@@ -92,7 +92,7 @@ This returns us to [Chapter 1](/ai-agent/posts/geo-generative-engine-optimizatio
 
 ---
 
-## 5. A personal blog's pragmatic distribution play
+## A personal blog's pragmatic distribution play
 
 A personal blog has no PR budget, but something scarcer: **real first-hand experience.** Sincerely delivering it to the right places is the best endorsement.
 
@@ -115,7 +115,7 @@ A personal blog has no PR budget, but something scarcer: **real first-hand exper
 
 ---
 
-## 6. Back to my blog: the trust-layer checklist
+## Back to my blog: the trust-layer checklist
 
 - [ ] Flesh out the author/About page: "who you are, what you've done, why you're credible" (Experience + Trust).
 - [ ] Verify name/bio consistency across the four profiles (site/GitHub/Zhihu/Bilibili); expand `Person.sameAs`.
@@ -126,7 +126,7 @@ A personal blog has no PR budget, but something scarcer: **real first-hand exper
 
 ---
 
-## 7. FAQ
+## FAQ
 
 **Q: I'm a solo blogger — how can I have "authority"?**
 A: Authority ≠ big institution. In a niche, consistently publishing real, deep, community-recognized content *is* authority. A personal blog's first-hand experience is exactly the original signal big sites lack.

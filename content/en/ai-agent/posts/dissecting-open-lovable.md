@@ -38,7 +38,7 @@ The code-level facts here come mainly from cross-reading the repository and its 
 
 ---
 
-## 1. Product: A Growth Funnel Disguised as an App
+## Product: A Growth Funnel Disguised as an App
 
 ### What it actually is
 
@@ -66,7 +66,7 @@ The primary users are **developers and technical founders**, not pure beginners 
 
 ---
 
-## 2. Technical Overview: Four Layers and One Pipeline
+## Technical Overview: Four Layers and One Pipeline
 
 ### Stack
 
@@ -128,7 +128,7 @@ In one line: **visual fidelity is advanced by multi-turn user chat, not by machi
 
 ---
 
-## 3. Agent Architecture: It's a Workflow, Not an Autonomous Agent
+## Agent Architecture: It's a Workflow, Not an Autonomous Agent
 
 People see "AI generates code + chat-edit" and assume a classic agent loop behind it. **It isn't.** open-lovable has no autonomous "model decides → calls tool → sees result → decides again" while-loop. In Anthropic's terms it's a **workflow (prompt chaining + routing)**, not an autonomous agent. Grasp that, and the architecture snaps into focus.
 
@@ -247,7 +247,7 @@ The benefits: **predictable, debuggable, cost-controlled, never runs away.** For
 
 ---
 
-## 4. The DIY Harness: Hand-Rolling Scaffold on the Raw API
+## The DIY Harness: Hand-Rolling Scaffold on the Raw API
 
 This is the part I most wanted to write, and the most counterintuitive thing about open-lovable: **it calls the LLM API directly, without the Claude Agent SDK, without a CLI tool, without any agent framework.** So how does it supply everything a usable coding agent needs — orchestration, tool calls, context management, retry/recovery?
 
@@ -338,7 +338,7 @@ In one line: open-lovable's harness replaces **native tool-calling with a text p
 
 ---
 
-## 5. The Cloud Sandbox: A Swappable Execution Base, and Best Practices
+## The Cloud Sandbox: A Swappable Execution Base, and Best Practices
 
 For generated code to actually run and preview, you need a cloud execution environment. open-lovable supports two — E2B and Vercel Sandbox — and isolates them behind one abstraction. This layer is engineered well and deserves its own chapter.
 
@@ -455,7 +455,7 @@ Startup: E2B runs it in the background via Python `Popen()`; Vercel uses `nohup 
 
 ---
 
-## 6. Takeaways: For Building Products and Writing Code
+## Takeaways: For Building Products and Writing Code
 
 Condensing the dissection into directly reusable patterns:
 
@@ -470,7 +470,7 @@ Condensing the dissection into directly reusable patterns:
 
 ---
 
-## 7. Conclusion: Not Freeing the Agent, But Boxing the LLM More Tightly
+## Conclusion: Not Freeing the Agent, But Boxing the LLM More Tightly
 
 The most valuable thing about open-lovable was never the result "it generates code," but **the whole layer of defensive engineering it stacks to make unreliable LLM output usable**: a streaming protocol, truncation recovery, agentic search, multi-tier fallback, perceived-performance tricks, swappable sandboxes.
 

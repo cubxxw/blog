@@ -45,7 +45,7 @@ This is the series finale. The first five chapters taught you *how* to do GEO; t
 
 ---
 
-## 1. Why classic metrics fail
+## Why classic metrics fail
 
 [Chapter 5](/ai-agent/posts/geo-blog-rebuild-case-study/) had a glaring example: my blog turned 878K impressions into 852 clicks, a 0.1% CTR. Looking only at "rank + click," you'd wrongly conclude "the content is bad."
 
@@ -57,7 +57,7 @@ The truth: with zero-click at 68% today, **much of your content is read, summari
 
 ---
 
-## 2. Four workable measurement methods
+## Four workable measurement methods
 
 ### Method 1 · Prompt testing (zero-cost, most direct)
 
@@ -92,7 +92,7 @@ When you need scaled, cross-platform tracking, use dedicated tools:
 
 ---
 
-## 3. Core KPIs: these four are enough
+## Core KPIs: these four are enough
 
 Don't drown in flashy dashboards — GEO really tracks just four:
 
@@ -103,7 +103,7 @@ Don't drown in flashy dashboards — GEO really tracks just four:
 
 ---
 
-## 4. DIY low-cost monitoring: use this repo's existing scripts
+## DIY low-cost monitoring: use this repo's existing scripts
 
 Good news: the cubxxw blog repo **already ships a set of GEO/SEO scripts** — no need to reinvent (see `package.json`):
 
@@ -127,7 +127,7 @@ npm run baidu:push     # proactively push to Baidu (China indexing)
 
 ---
 
-## 5. Cadence: setting a frequency beats chasing a perfect score
+## Cadence: setting a frequency beats chasing a perfect score
 
 GEO isn't a one-time project; it's a loop. A suggested cadence:
 
@@ -139,7 +139,7 @@ GEO isn't a one-time project; it's a loop. A suggested cadence:
 
 ---
 
-## 6. Series recap: the five-layer model + a six-chapter map
+## Series recap: the five-layer model + a six-chapter map
 
 Here the *Generative Engine Optimization* series concludes. The whole map in one line — **make content worth citing legible to machines and worth their endorsement.**
 
@@ -156,7 +156,7 @@ The five-layer model runs throughout: **Crawlable → Understandable → Trustwo
 
 ---
 
-## 7. FAQ
+## FAQ
 
 **Q: No budget — can I measure GEO?**
 A: Yes. Prompt testing (manual), GA4 referral traffic, and GSC cross-check are all free, plus this repo's `geo:audit`/`seo:gsc`/`seo:psi` scripts — enough for a complete baseline. Paid tools come after you need scale.

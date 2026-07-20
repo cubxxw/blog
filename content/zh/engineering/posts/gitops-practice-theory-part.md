@@ -100,7 +100,7 @@ spec:
     - ngxconf
 ```
 
-### 2. 编写 Operator 控制器
+### 编写 Operator 控制器
 
 使用 Go 语言编写 Operator 控制器。Operator 控制器将监听 NginxConfig 资源的创建、更新和删除事件，并执行相应的操作。
 
@@ -117,11 +117,11 @@ func main() {
 }
 ```
 
-### 3. 处理 Nginx 实例
+### 处理 Nginx 实例
 
 在控制器中，处理 Nginx 实例的创建和更新。当一个 NginxConfig 资源被创建或更新时，控制器会根据定义的规格来设置 Nginx Pod，包括所需的配置和静态文件。
 
-### 4. 创建 Docker 镜像和部署 Operator
+### 创建 Docker 镜像和部署 Operator
 
 将 Operator 打包成 Docker 镜像，然后在 Kubernetes 集群中部署这个镜像。
 
@@ -162,7 +162,7 @@ spec:
         image: nginx-operator:latest
 ```
 
-### 5. 测试 Operator
+### 测试 Operator
 
 创建一个 NginxConfig 实例来测试 Operator：
 

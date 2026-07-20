@@ -366,7 +366,7 @@ In this example, we first demonstrate how to use type assertions to inspect and 
 
 Now let’s dig into the Go code you provided. This code is a tool for quick type checking of OpenIM code, supporting cross-platform builds. We will analyze the main parts of this code block by block to better understand its structure and functionality.
 
-### 1. Package declaration and import
+### Package declaration and import
 
 ```go
 package main
@@ -379,7 +379,7 @@ import (
 - This code declares a Go program belonging to the `main` package.
 - The import part includes Go standard libraries (such as `fmt`, `log`, `os`) and third-party libraries (`golang.org/x/tools/go/packages`).
 
-### 2. Global variable declaration
+### Global variable declaration
 
 ```go
 var (
@@ -390,7 +390,7 @@ var (
 - A series of global variables are declared here, mainly used to control the behavior of the program (such as `verbose`, `cross`, `platforms`, etc.).
 - These variables are set via command line arguments and are used in programs to control the behavior of type checking.
 
-### 3. `newConfig` function
+### `newConfig` function
 
 ```go
 func newConfig(platform string) *packages.Config {
@@ -457,7 +457,7 @@ func newConfig(platform string) *packages.Config {
     - Finally, the function creates and returns a **`packages.Config`** instance that contains all these settings.
       - This configuration will be used for subsequent package loading and analysis.
 
-### 4. `collector` structure and related methods
+### `collector` structure and related methods
 
 ### `collector` structure
 
@@ -511,7 +511,7 @@ func (c *collector) walk(roots []string) error {
 - If an error is encountered during the traversal, the **`walk`** method will return the error immediately.
 - After the traversal is completed, the collected **`dirs`**Sort to ensure that the order of the directory listing is consistent.
 
-### 5. `verify` method
+### `verify` method
 
 ```go
 func (c *collector) verify(plat string) ([]string, error) {
@@ -612,7 +612,7 @@ func (c *collector) verify(plat string) ([]string, error) {
     - If timing mode is enabled (**`timings`** flag), print out the elapsed time of the type check.
       - Return the error list after deduplication.
 
-### 6. `main` function
+### `main` function
 
 ```go
 func main() {
@@ -754,7 +754,7 @@ func main() {
 - Uses the concurrency features of the Go language (goroutines and channels) and synchronization primitives (such as **`sync.WaitGroup`** and **`sync.Mutex`**) to control concurrent execution and synchronization.
 - Errors are handled in detail within the function to ensure program robustness and correct error reporting.
 
-### 7. Concurrency control
+### Concurrency control
 
 - `sync.WaitGroup` and `sync.Mutex` are used in the code to control concurrency.
 - This allows programs to be type-checked on multiple platforms simultaneously while ensuring correct output and error handling.
@@ -850,31 +850,31 @@ In this example, we use the `packages.Load` function to load the package from th
 
 Cross-platform building is the ability to build a program from one platform (such as Windows) to run on another platform (such as Linux or macOS). In the Go language, cross-platform building is a built-in feature and is very easy to implement. Here are some key points to achieve cross-platform builds:
 
-### 1. Cross-platform support for Go language
+### Cross-platform support for Go language
 
 - **Compiler Support**: The Go language compiler supports multiple operating systems and architectures, including but not limited to Linux, Windows, macOS, ARM and AMD64.
 - **Unified Standard Library**: Go's standard library is cross-platform, meaning that most standard library functions behave consistently on all supported platforms.
 
-### 2. Set target platform
+### Set target platform
 
 - **GOOS and GOARCH environment variables**: You can specify the target operating system and architecture by setting the **`GOOS`** and **`GOARCH`** environment variables. For example, **`GOOS=linux`** and **`GOARCH=amd64`** will build the program for Linux AMD64.
 - **Cross-compilation**: Compiling an executable file on one platform to run on another platform is called cross-compilation. The Go language natively supports cross-compilation by simply setting relevant environment variables.
 
-### 3. Conditional compilation
+### Conditional compilation
 
 - **Build Constraints**: The Go language supports conditional compilation through file names and build tags. You can write specialized code for a specific platform.
 - **File name constraints**: For example, a file named **`xxx_windows.go`** will only be included when building the Windows version of the program.
 - **Build Tags**: Comments at the top of files can be used as build tags, such as **`// +build linux`**, and such files will only be included when building the Linux version.
 
-### 4. Dependency management
+### Dependency management
 
 - **Dependency Selection**: When building cross-platform, ensure that the dependent packages are also cross-platform. Some third-party packages may only work with specific operating systems or architectures.
 
-### 5. Test cross-platform compatibility
+### Test cross-platform compatibility
 
 - **Automated Testing**: Write tests to verify that your program behaves consistently across different platforms. This helps detect cross-platform compatibility issues early.
 
-### 6. Using Docker and virtualization technology
+### Using Docker and virtualization technology
 
 - **Docker container**: Use Docker containers to simulate different operating system environments to test the cross-platform compatibility of the program.
 - **Virtual Machine**: For more comprehensive testing, run your program on a virtual machine with different operating systems.
@@ -909,26 +909,26 @@ make build BINS="openim-api openim-cmdutils"
 
 In the Go language project you provided, concurrency is used to perform type checking on different platforms at the same time, thereby improving efficiency. The Go language provides powerful concurrent programming features, mainly through goroutines (lightweight threads) and channels (pipes for communication between goroutines). Here are the key practices and concepts of concurrent programming in your projects:
 
-### 1. Using Goroutines
+### Using Goroutines
 
 - **Startup of Goroutines**: Start a new goroutine by using the `go` keyword before the function call. In your project, this is used to enable type checking for multiple platforms simultaneously.
 
-### 2. Synchronize Goroutines
+### Synchronize Goroutines
 
 - **sync.WaitGroup**: Use `sync.WaitGroup` in your project to wait for a group of goroutines to complete. `WaitGroup` has three main methods: `Add` (increase the count), `Done` (decrement the count), and `Wait` (wait for the count to reach zero).
 - **Example usage**: Each time a type-checked goroutine is started, the count of `WaitGroup` is incremented. When each type check is completed, the `Done` method is called. The main goroutine blocks on the `Wait` method until all type checks are completed.
 
-### 3. Control concurrency
+### Control concurrency
 
 - **Limit the number of concurrencies**: The project uses a channel as a concurrency limiter (throttling mechanism). This channel is used to control the number of goroutines running simultaneously.
 - **Example usage**: Limit the number of goroutines running simultaneously by limiting the capacity of the channel. Each goroutine starts by receiving a value from the channel (or blocking if the channel is empty). When finished, put the value back into the channel.
 
-### 4. Concurrency safety and locks
+### Concurrency safety and locks
 
 - **sync.Mutex**: In order to ensure concurrency safety, when multiple goroutines need to write to shared resources, use a mutex lock (`sync.Mutex`) to avoid race conditions.
 - **Example usage**: Use `Mutex` locking and unbundling when updating shared variables (such as error flags or shared logs)Lock.
 
-### 5. Handling concurrency errors
+### Handling concurrency errors
 
 - **Collect Concurrency Errors**: In a concurrent environment, errors generated by individual goroutines need to be collected and processed.
 - **Example usage**: Use a shared data structure (protected by a mutex) to collect errors returned from individual goroutines.
@@ -977,7 +977,7 @@ In this example, we start a new goroutine for each platform to execute the `perf
 
 Practical exercises are key to consolidating and improving programming skills. For the Go language project you provided, we can design some practical exercises to deepen your understanding of code structure, concurrent programming, cross-platform construction and type checking mechanisms. Here are a few suggested exercises:
 
-### 1. Extended functions
+### Extended functions
 
 - Added new command line parameters:
 
@@ -991,7 +991,7 @@ Practical exercises are key to consolidating and improving programming skills. F
     - The current code may support limited platforms. Try adding support for more platforms, such as **`linux/arm`** or **`android/amd64`**.
       - Research Go language support for these platforms and modify the code accordingly.
 
-### 2. Optimize existing code
+### Optimize existing code
 
 - Performance optimization:
 
@@ -1005,7 +1005,7 @@ Practical exercises are key to consolidating and improving programming skills. F
     - Review error handling in code. Make sure all potential errors are properly handled and no errors are ignored.
       - More complex error recovery strategies can be implemented, such as retrying when specific errors are encountered.
 
-### 3. Write tests
+### Write tests
 
 - unit test:
 
@@ -1019,7 +1019,7 @@ Practical exercises are key to consolidating and improving programming skills. F
     -Write integration tests to verify that the program as a whole works as expected.
       - Different environments and parameter combinations can be set up to test different parts of the program.
 
-### 4. Implement logging
+### Implement logging
 
 - Added logging function:
 
@@ -1027,12 +1027,12 @@ Practical exercises are key to consolidating and improving programming skills. F
     - Add detailed logging to the program, especially during error handling and critical operations.
       - Use the **`log`** package from the standard library or a more advanced logging tool (such as **`zap`** or **`logrus`**).
 
-### 5. Build the user interface
+### Build the user interface
 
 - Command line interface (CLI) improvements:
      - If the current program is a command line tool, you can consider using a library like **`cobra`** to improve the command line interface and add functions such as help commands and command auto-completion.
 
-### 6. Documentation and code comments
+### Documentation and code comments
 
 -Write documentation:
      - Write detailed documentation and usage instructions for the program.

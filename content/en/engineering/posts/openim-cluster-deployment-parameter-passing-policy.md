@@ -32,7 +32,7 @@ In the current module's execution, numerous ports (ws, api, rpc, Prometheus) are
 
 ## Proposed Solution
 
-### 1. Configuration File
+### Configuration File
 
 Instead of passing multiple ports directly, a configuration file will be introduced. By default, this file will contain predefined ports. This configuration file can be passed to the module using Kubernetes' `ConfigMap`.
 
@@ -45,11 +45,11 @@ rpc_port: 3002
 prometheus_port: 9090
 ```
 
-### 2. Passing Ports Directly
+### Passing Ports Directly
 
 While the configuration file approach is recommended for Kubernetes deployment, users can still pass the ports directly. If ports are passed as arguments, these values will override the values from the configuration file.
 
-### 3. Environment Variable-based Deployment
+### Environment Variable-based Deployment
 
 For users who prefer source code deployment using environment variables, the module can be designed to read port values set as environment variables on a Linux system. If these environment variables are set, they will override the configuration file values but will have lower precedence than port values passed directly as arguments.
 

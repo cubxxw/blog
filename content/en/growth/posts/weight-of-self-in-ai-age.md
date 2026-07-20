@@ -50,7 +50,7 @@ Eventually I slowly realized: career anxiety is just the surface layer. The deep
 
 ---
 
-## 1. We Mistook "Being Needed" for Weight Itself
+## We Mistook "Being Needed" for Weight Itself
 
 This isn't just my problem.
 
@@ -68,7 +68,7 @@ This is a cruel question. But it's cruel precisely because we've built the found
 
 ---
 
-## 2. Tsangyang Gyatso Encountered This Problem Long Ago
+## Tsangyang Gyatso Encountered This Problem Long Ago
 
 During those days in Lhasa, I thought of Tsangyang Gyatso many times.
 
@@ -94,7 +94,7 @@ Yet they've lived until now. That fact itself is a kind of answer's shape.
 
 ---
 
-## 3. Zhuangzi's Useless Tree
+## Zhuangzi's Useless Tree
 
 There's a great tree in *Zhuangzi: The Human World*.
 
@@ -116,7 +116,7 @@ In the AI age, this becomes very concrete. If all your functional value can be o
 
 ---
 
-## 4. Feeling Is the Only Thing That Cannot Be Outsourced
+## Feeling Is the Only Thing That Cannot Be Outsourced
 
 In Lhasa, there was a night I stood in the courtyard watching the moon for a long time.
 
@@ -142,7 +142,7 @@ This isn't comfort—it's a structural fact:
 
 ---
 
-## 5. Attention: The Rarest Generosity
+## Attention: The Rarest Generosity
 
 In Pokhara, the waitress at that small restaurant remembered what I ordered last time.
 
@@ -166,7 +166,7 @@ These two experiences are essentially different. One lets you know you have valu
 
 ---
 
-## 6. The Moment Narrative Stops
+## The Moment Narrative Stops
 
 Last year at Namtso, just as the sun was setting, the lake was that deep layer of blue-green, from light cyan at the shore to peacock blue in the middle to indigo in the distance. The distant snow mountains were still. I stood like that for a long time, didn't take many photos.
 

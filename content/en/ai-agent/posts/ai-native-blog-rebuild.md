@@ -47,7 +47,7 @@ This post is the complete retrospective. It is not an "AI is amazing" piece — 
 
 ---
 
-## 1. Before rebuilding, answer what a blog even is
+## Before rebuilding, answer what a blog even is
 
 Four years ago I understood a blog as "a website where articles go." Before this rebuild I finally got the thing straight: **the blog is not the source. It's the most downstream outlet of my content pipeline.**
 
@@ -69,7 +69,7 @@ Once that layer is settled, every downstream AI job has something to hang off: *
 
 ---
 
-## 2. How I talk to AI: the question patterns that keep proving themselves
+## How I talk to AI: the question patterns that keep proving themselves
 
 I ran an enormous volume of conversation through Claude and Codex during this rebuild. Past a certain volume, the ways of asking that actually work precipitate out on their own. I use these five every day now:
 
@@ -87,7 +87,7 @@ All five collapse into one sentence: **direction, standards, and boundaries are 
 
 ---
 
-## 3. Skills: freezing the traps you've already stepped in into craft
+## Skills: freezing the traps you've already stepped in into craft
 
 Question patterns solve "how to ask well once." The real leverage is **making a good way of asking reusable.** That's what skills are in my system: every skill under `.claude/skills/` is a verified work instruction that the AI follows each time, so it no longer depends on me re-describing it.
 
@@ -115,7 +115,7 @@ Getting this working the first time cost me an evening. Every new post's cover s
 
 ---
 
-## 4. MCP: growing an API for the blog
+## MCP: growing an API for the blog
 
 My favorite step in the rebuild was writing the blog its own MCP server (`scripts/mcp-server.mjs`, zero dependencies, one file). It exposes two tools, `search_blog` and `get_blog_post` — any MCP-capable client (Claude, Cursor, the ChatGPT desktop app) can add one line of config and search and read my entire archive.
 
@@ -129,7 +129,7 @@ A note on layout while I'm here. The new article page is three columns: metadata
 
 ---
 
-## 5. The engineering discipline behind Claude and Codex
+## The engineering discipline behind Claude and Codex
 
 I used both Claude Code and Codex for this rebuild (`CLAUDE.md` and `AGENTS.md` coexist in the repo, each with its own config directory). The deeper I went, the more one judgment held: **the ceiling on these tools isn't the model. It's the structure you lay under it.** A few things that earned their place:
 
@@ -143,7 +143,7 @@ I used both Claude Code and Codex for this rebuild (`CLAUDE.md` and `AGENTS.md` 
 
 ---
 
-## 6. Automated operations: an AI on duty inside GitHub Actions
+## Automated operations: an AI on duty inside GitHub Actions
 
 The biggest change after the rebuild isn't what the site looks like. It's that it **started operating itself.** The loop:
 
@@ -171,7 +171,7 @@ The permission design in this pipeline cost me more thought than the functionali
 
 ---
 
-## 7. GEO: getting cited by AI, not just indexed by Google
+## GEO: getting cited by AI, not just indexed by Google
 
 The last piece of the rebuild is GEO — generative engine optimization. As more people take their answers straight from an AI, content visibility stops being decided by click-through rate and starts being decided by the probability of being cited. I wrote a full [six-part column](/columns/geo/) about it, and this blog is the column's own test bed:
 
@@ -187,7 +187,7 @@ The reorganized content is in service of citation too: every multi-part long-for
 
 ---
 
-## 8. What isn't finished
+## What isn't finished
 
 An honest retrospective has to include this section.
 
@@ -197,7 +197,7 @@ These are logged here as both a reminder and the backlog for the next round.
 
 ---
 
-## 9. FAQ
+## FAQ
 
 **Q: Does this pipeline transfer to a non-Hugo blog?**
 A: Yes. The master-source pipeline, the question patterns, the two-stage cover factory, the AI on duty, and the GEO checklist don't depend on Hugo. Only the concrete scripts (index generation, front-matter parsing) need rewriting for your system — which is precisely the kind of task with a clean definition of done that you should hand to an AI.
@@ -213,7 +213,7 @@ A: Not installing tools. Break the things you do repeatedly into a task list whe
 
 ---
 
-## 10. What got rebuilt wasn't the blog
+## What got rebuilt wasn't the blog
 
 The last thing worth saying: on the surface this rebuild shipped a new website. What it actually shipped was **an upgrade to the way I process information.**
 

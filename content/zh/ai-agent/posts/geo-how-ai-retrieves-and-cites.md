@@ -45,7 +45,7 @@ series:
 
 ---
 
-## 一、把 RAG 管线拆开：以 Perplexity 为例的六步
+## 把 RAG 管线拆开：以 Perplexity 为例的六步
 
 Perplexity 的回答，来自一条大致六步的 RAG 流水线，这也是理解所有 AI 搜索的通用模板：([ZipTie](https://ziptie.dev/blog/how-perplexity-ai-answers-work/)、[AuthorityTech](https://authoritytech.io/blog/how-perplexity-selects-sources-algorithm-2026))
 
@@ -66,7 +66,7 @@ flowchart TB
 
 ---
 
-## 二、认知转变①：检索单元是"段落"，不是"整页"
+## 认知转变①：检索单元是"段落"，不是"整页"
 
 这是整篇最重要的一句话，值得单独成节：**AI 检索的是 chunk（段落/片段），不是你的整篇文章。** 系统把网页切成一块块，为每块算向量，然后在"向量空间"里找与问题最近的那些块。([Mersel AI](https://www.mersel.ai/blog/how-ai-search-algorithms-read-and-rank-content))
 
@@ -81,7 +81,7 @@ flowchart TB
 
 ---
 
-## 三、认知转变②：查询扇出，主词不再是唯一战场
+## 认知转变②：查询扇出，主词不再是唯一战场
 
 Google 已公开确认 AI Overviews 依赖 **"查询扇出（query fan-out）"**：系统把用户的一个问题，拆成一批相关子查询**并行检索**，再把多路结果综合成答案。([Search Engine Land](https://searchengineland.com/guide/how-to-optimize-for-ai-overviews)、[Stackmatix](https://www.stackmatix.com/blog/how-google-selects-ai-overview-sources))
 
@@ -95,7 +95,7 @@ Google 已公开确认 AI Overviews 依赖 **"查询扇出（query fan-out）"**
 
 ---
 
-## 四、认知转变③：向量语义匹配，为什么"说人话"有效
+## 认知转变③：向量语义匹配，为什么"说人话"有效
 
 传统 SEO 是**词面匹配**：你得出现用户搜的那个词。AI 检索是**语义匹配**：内容被编码成向量（几百上千个数字组成的"意义坐标"），系统找的是**意思最近**的段落，而不是字面最像的。([Mersel AI](https://www.mersel.ai/blog/how-ai-search-algorithms-read-and-rank-content))
 
@@ -109,7 +109,7 @@ Google 已公开确认 AI Overviews 依赖 **"查询扇出（query fan-out）"**
 
 ---
 
-## 五、被检索 ≠ 被引用：最后一关看什么
+## 被检索 ≠ 被引用：最后一关看什么
 
 进了候选池、甚至排得靠前，也不等于会被写进答案。**引用是独立的一关**，它综合看六个维度：([Wellows](https://wellows.com/blog/google-ai-overviews-ranking-factors/))
 
@@ -123,7 +123,7 @@ Google 已公开确认 AI Overviews 依赖 **"查询扇出（query fan-out）"**
 
 ---
 
-## 六、五大战场的机制差异（同一原理，不同脾气）
+## 五大战场的机制差异（同一原理，不同脾气）
 
 原理都是 RAG，但每个平台的"口味"不同，优化侧重也不同：
 
@@ -139,7 +139,7 @@ Google 已公开确认 AI Overviews 依赖 **"查询扇出（query fan-out）"**
 
 ---
 
-## 七、把原理翻译成动作：chunk 级自查清单
+## 把原理翻译成动作：chunk 级自查清单
 
 读懂机制，最终要落到每一段怎么写。下面这张表，是把本篇的原理压缩成的可执行清单：
 
@@ -154,7 +154,7 @@ Google 已公开确认 AI Overviews 依赖 **"查询扇出（query fan-out）"**
 
 ---
 
-## 八、回到本博客：哪些 chunk 友好，哪些不友好
+## 回到本博客：哪些 chunk 友好，哪些不友好
 
 拿我自己的文章对照，机制立刻照出问题：
 
@@ -165,7 +165,7 @@ Google 已公开确认 AI Overviews 依赖 **"查询扇出（query fan-out）"**
 
 ---
 
-## 九、常见问题（FAQ）
+## 常见问题（FAQ）
 
 **Q：我排名不高，是不是就没戏被 AI 引用？**
 A：恰恰相反。AI Overviews 里来自前十名页面的引用占比已从 76% 跌到 38%，RAG 经常从第 4–20 位、甚至更靠后但**段落质量高**的页面里抠答案。排名是加分项，不是入场券。([ALM Corp](https://almcorp.com/blog/google-ai-overview-citations-drop-top-ranking-pages-2026/))

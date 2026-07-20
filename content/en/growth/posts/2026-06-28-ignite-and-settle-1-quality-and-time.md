@@ -125,7 +125,7 @@ First, please delete the phrase "amygdala = fear center." Even the scientist mos
 
 Three things about it worth keeping:
 
-### 1) It is faster than awareness
+### It is faster than awareness
 
 Something moves in the grass — you jump first, then realize it was a branch. That "jump first" is the amygdala bypassing your conscious mind: body moves first, awareness arrives later.
 
@@ -133,13 +133,13 @@ In intimacy this has a direct consequence. Many of those moments of "I suddenly 
 
 The reason will, of course, sound reasonable. But the reason came after the fact. We'll come back to this.
 
-### 2) It is a learning machine, not a reaction switch
+### It is a learning machine, not a reaction switch
 
 It learns "what predicts what" — and what it stores is not the event itself but the **emotional charge** of the event. So a smell, or a quality of light, can suddenly tense you up for no reason you can name. The plot is gone; the charge remains.
 
 That's why some people who do nothing wrong in front of you can still activate some ancient unease in you. They may, in some extremely subtle feature — a shift in tone, a flicker of impatience in the eyes, some "way of approaching" you can't put into words — have hit a piece of charge from your earliest archive. You don't know what happened, but your body does.
 
-### 3) What it fears most is not danger, it is uncertainty
+### What it fears most is not danger, it is uncertainty
 
 Anything not yet categorized is, by default, "potential threat" in its eyes.
 

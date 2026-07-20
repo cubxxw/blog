@@ -55,7 +55,7 @@ One thing must be said up front: Buddhism never asks you to stop loving a person
 
 # Part One · Anatomy: Love Under Five Lenses
 
-## 1. Psychology: The Inner Structure and Childhood Roots of Love
+## Psychology: The Inner Structure and Childhood Roots of Love
 
 Psychology doesn't ask where love comes from; it asks how love is assembled inside a particular person, and by what past it is determined.
 
@@ -73,7 +73,7 @@ The insight runs deep: **the scripts we replay in adult love are often reruns of
 
 The lens of psychology illuminates love's inner structure and personal history. But it has a boundary: it can tell you what love is made of and what shapes it, but not the more fundamental question—why does this creature, the human, have something called "love" in the first place? That goes to the next lens.
 
-## 2. Biology: The Chemistry and Calculus of Love
+## Biology: The Chemistry and Calculus of Love
 
 Put love under a brain scanner and romance is reduced to a set of molecules and an evolutionary strategy. This lens is cold, but devastatingly penetrating.
 
@@ -87,7 +87,7 @@ And the killer conclusion: **the chemical storm of infatuation is physiologicall
 
 But biology has a boundary it itself admits: **it can explain how love works, but not what love means.** Knowing infatuation is dopamine doesn't cancel the reality of your heart racing now; mechanism is not meaning, "how" is not "ought." Better still—this resonates with a profound Buddhist insight: when you see that "the racing heart is just a biochemical program running," you gain a margin of awareness inside that gap "between feeling and craving." **Reductionism itself can become a blade for cutting through attachment.**
 
-## 3. Anthropology: Is Love a Human Universal?
+## Anthropology: Is Love a Human Universal?
 
 Psychology and biology stare at the individual; anthropology pulls the camera back to all of humanity: is romantic love a Western modern invention, or a human universal?
 
@@ -97,7 +97,7 @@ But anthropology adds a crucial clarification: what is universal is the *emotion
 
 Anthropology thus gives the full picture: **the biological substrate of love is universal, but its forms of expression, its permitted place, and the meaning assigned to it are scripted differently by each culture.** The same neurochemistry, choreographed by different cultural grammars into wildly different stories. Which raises the next question: our script today—"one ought to marry for love; love is life's highest meaning"—when was it written?
 
-## 4. History: Was Romantic Love "Invented"?
+## History: Was Romantic Love "Invented"?
 
 If romantic passion is universal, why do we feel today that "union for love is self-evident"? History's answer: **this belief is a fairly recent historical construction.**
 
@@ -109,7 +109,7 @@ If romantic passion is universal, why do we feel today that "union for love is s
 
 The lens of history illuminates a startling fact: **much of what you take as "self-evident" about love is actually a very young historical product—constructed by a particular era, and then mistaken by you for eternal truth.** In Buddhist terms: an entire system of collectively reified *imaginary construction* (*parikalpita*).
 
-## 5. Sociology: Why Modern Love Hurts So Much
+## Sociology: Why Modern Love Hurts So Much
 
 History tells us how this belief arose; sociology dissects how, in today's concrete social structure, it operates, and why it manufactures the particular suffering of contemporary love.
 
@@ -121,7 +121,7 @@ History tells us how this belief arose; sociology dissects how, in today's concr
 
 The lens of sociology illuminates a liberating truth: **modern struggle, anxiety, and repeated wounding in love is, to a large degree, not because you don't know how to love or the other is the wrong person, but because the entire social structure is systematically manufacturing this difficulty.** Misreading structural suffering as personal fault is one of the greatest love-myths of our age.
 
-## 6. A Few Beams of Philosophical Light
+## A Few Beams of Philosophical Light
 
 Beyond the five empirical disciplines, several philosophers offer the most condensed insights—one line each:
 
@@ -142,7 +142,7 @@ The five disciplines each illuminate part of the elephant, yet stay severed—ev
 
 **Buddhism's answer: all are right, and all are merely conditions.**
 
-## 7. Dependent Origination: A Natural Cross-Disciplinary Meta-Framework
+## Dependent Origination: A Natural Cross-Disciplinary Meta-Framework
 
 Dependent origination says: "When this exists, that exists; when this arises, that arises." Any phenomenon is the convergence of countless conditions. Spread that line over the love before you, and it is exactly—
 
@@ -158,7 +158,7 @@ This is Buddhism's position relative to the five disciplines: it doesn't fight a
 
 Having understood dependent origination, see one more thing: our language habitually speaks of "love" as a noun, as if it were a thing hidden in the heart, to be possessed, to be lost. But seen through dependent origination, love is not a noun but a verb—**an occurrence when conditions converge, a recession when conditions change.** Much of our suffering in love comes from mistaking an "occurrence" for a "property" to be held forever.
 
-## 8. Translating Each Discipline's Findings into Buddhism
+## Translating Each Discipline's Findings into Buddhism
 
 More remarkably, each core finding of the five disciplines can be precisely translated into the language of Buddhism—and after translation, its meaning is not diminished but deepened:
 
@@ -172,7 +172,7 @@ More remarkably, each core finding of the five disciplines can be precisely tran
 
 **The suffering of modern love = treating the impermanent as permanent, treating dependent arising as possession—amplified by structure.** Sociology says modern love-suffering is structural; Buddhism says the root of all suffering is "treating the impermanent as permanent, treating selfless love as possession." What modern social structures (marketization, individualization, consumer logic) do is **systematically amplify and scale up** this fundamental inversion—manufacturing unprecedented craving and grasping while stripping away every external support, so suffering is doubled. Sociology diagnoses the "structural face" of the lesion; Buddhism reveals its "mind face." Together they form the complete pathology.
 
-## 9. Craving and the Four Noble Truths: Where Suffering Comes From
+## Craving and the Four Noble Truths: Where Suffering Comes From
 
 The "love" Buddhism deems the cause of suffering is *taṇhā* in Pali, best rendered as "**craving**"—its core image is "thirst," a lack that can never be filled. The *Saṃyukta Āgama* divides it into three, nearly covering all human forms of love-desire: **sensual craving** (for sensory objects), **becoming-craving** (for the continuation of existence—"I want us to be together forever" hides it), and **non-becoming-craving** (for non-existence—the impulse after heartbreak to "just forget it all").
 
@@ -182,7 +182,7 @@ Aim the Four Noble Truths—suffering, its origin, its cessation, the path—at 
 
 The most subversive point is this: the Four Noble Truths move the root of suffering from the "outside" (the other changed, the other left) back to the "inside" (my craving and grasping toward the other). This is not blaming the sufferer but returning a sovereignty—you cannot control whether the other leaves, but you can tend to that "thirst" within. The exit from suffering, from the very start, is on your own side.
 
-## 10. Impermanence and Non-Self: What Is Loved Must Pass; Who Is It That Loves?
+## Impermanence and Non-Self: What Is Loved Must Pass; Who Is It That Loves?
 
 Aimed at love, **impermanence** at first looks cruel: the racing heart fades, passion subsides (biology has given the iron proof), no love however deep can promise the eternal. But impermanence's true teaching is not to make us afraid to love—quite the opposite. If everything were permanent and unchanging, there'd be no need to cherish it—it's always there. *Because* of impermanence, because this moment of togetherness is the chance convergence of countless conditions, **cherishing acquires real weight.** Impermanence doesn't tell you not to love; it tells you not to love *as if you could possess forever*, but to love *knowing you will lose*. The latter love is more attentive, more tender, less willing to fail the present. A flower will wither—not a reason the flower stops being worth admiring, but the very reason this flower is worth gazing at now.
 
@@ -194,7 +194,7 @@ Aimed at love, **impermanence** at first looks cruel: the racing heart fades, pa
 
 The teaching of non-self at first sounds like it hollows out love's foundation, but what it truly dissolves is not love but the *grasping* in love. When you no longer clutch at "my" needs, no longer insist "you should be the way I imagine," a wholly new possibility opens: **you can begin to see the real person—to see them as they are, not as you need them to be.**
 
-## 11. Compassion and the Four Immeasurables: Another Possibility of Love
+## Compassion and the Four Immeasurables: Another Possibility of Love
 
 One word, love, conflates two things; Buddhism distinguishes them clearly: the cause of suffering is **taṇhā (craving)**; what is held supreme is **mettā (loving-kindness)** and **karuṇā (compassion)**. The difference can be seen on three axes:
 
@@ -213,7 +213,7 @@ Compassion is not a vague lump of goodwill; Buddhism unfolds it precisely into t
 
 With all four present, love is deep yet not sticky, intimate yet not engulfing. Without kindness and compassion, love goes cold; without joy, love turns sour; without equanimity, love becomes a cage.
 
-## 12. The Soulmate: How to Understand "Destined" Within Non-Self
+## The Soulmate: How to Understand "Destined" Within Non-Self
 
 Now to answer that most romantic—and most easily conflicting-with-Buddhism—concept: the **soulmate**.
 
@@ -229,7 +229,7 @@ So does Buddhism just declare "soulmate" wholly false and be done? No. What Budd
 
 The meaning of "soulmate" is thereby utterly inverted: he is not the other-half soul destined to fill you, possess you, and bind to you eternally; he is one who, through deep good affinity, met you, walks beside you toward awakening, and in whom you see truth and compassion. The former traps you in the grasping of "it must be him, it must be forever"; the latter lets you remain vast and free within deep love.
 
-## 13. Affliction Is Awakening: Love as the Path
+## Affliction Is Awakening: Love as the Path
 
 Here a more thorough turn can be revealed, from the wisdom of Chan and Tiantai: "**affliction is none other than awakening**." Awakening is not on some pure far shore away from affliction—it is precisely in the moment affliction is seen through and penetrated, here and now.
 

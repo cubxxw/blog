@@ -124,13 +124,13 @@ Gather ──▶ Analyze ──▶ Process ──▶ Knowledge ──▶ Action
 
 Let me take them one at a time. For each I ask only three questions: what's its essence? Can I outsource it to AI? How do I know it didn't break?
 
-### 1. Gather: compile your attention into standing queries
+### Gather: compile your attention into standing queries
 
 The essence is settled above — compile "what I care about" into a set of subscriptions and queries. In engineering terms it should be **config-driven**: one direction is one config file, spelling out its sources, fetch frequency, processing rules, and distribution targets. Adding a new direction of attention equals adding a config file, not rewriting code. Only this way can your field of attention keep evolving instead of demanding a rewrite each time.
 
 The most counterintuitive point in this layer: **what you subscribe to is what a future version of you will need.** So don't only subscribe to what's hot now; subscribe to directions that are "cold now, but you judge will accelerate" — that's where the excess returns of intelligence come from.
 
-### 2. Analyze: signal-to-noise is the only KPI here
+### Analyze: signal-to-noise is the only KPI here
 
 What comes in from gathering is a pile of raw items, mostly noise, and highly repetitive — for one event, twenty sources will report it twenty times from twenty angles. The entire task of this layer is to push the signal-to-noise ratio up.
 
@@ -148,7 +148,7 @@ The good news: the judgment here is highly deterministic and mechanical, so **yo
 
 **How to observe it**: watch the "dedup hit rate." A sudden change in this ratio often means a source's structure changed or something failed.
 
-### 3. Process: compress raw into "units you can judge"
+### Process: compress raw into "units you can judge"
 
 Translate, summarize, tag, pre-score. The essence is a compression move: **turn something that takes two minutes of reading the original to judge, into a card you can judge in ten seconds.**
 
@@ -156,7 +156,7 @@ This is still AI's home turf, mapping to the "information-to-records" refinement
 
 **How to observe it**: watch the quality-check pass rate. When it drops, either source quality changed or the model needs tuning.
 
-### 4. Knowledge: don't outsource this layer
+### Knowledge: don't outsource this layer
 
 Here the chain hits a watershed.
 
@@ -168,7 +168,7 @@ That sentence is the 1.6% hammered on in [The Super Individual's Stack](/growth/
 
 The output of this layer should **flow back into your second brain**, becoming reusable knowledge cards rather than lying in the stream to be washed away by the next batch. On how to build a knowledge base AI can read and write directly, I wrote the full three-layer architecture in [Handing Your Notes Over to AI](../ai-second-brain-build/); the knowledge layer of an intelligence system should exit straight into that second brain. Gathering is the inlet, the second brain is the settling pond — they were always meant to be one river.
 
-### 5. Action: intelligence ends in action, not information
+### Action: intelligence ends in action, not information
 
 This is the layer most easily skipped, and the only one that makes the whole system genuinely worth something.
 

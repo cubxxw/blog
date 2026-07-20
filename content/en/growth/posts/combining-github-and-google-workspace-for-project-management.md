@@ -46,13 +46,13 @@ For example, some important document records, some important forms, as well as P
 
 I hope to use GitHub Projects and Google Projects (or related tools of Google Workspace) in combination for project management, and I can develop a best practice plan based on their respective advantages. Doing so takes full advantage of both platforms and enables more efficient and comprehensive project management:
 
-### 1. Use GitHub Projects to manage development activities
+### Use GitHub Projects to manage development activities
 
 - **Code Management and Tracking**: Leverage the core advantages of GitHub to keep all code management tasks (including version control, branch management, etc.) and activities directly related to the code (such as Bug tracking, feature requests, etc.) in GitHub.
 - **Automated Workflows**: Automate things like automated testing, builds, and deployments with GitHub Actions, as well as automated issue and pull request management.
 - **Project Kanban Board**: Use GitHub Projects’ Kanban board feature to track development progress, such as to-do items, in-progress, and completed tasks.
 
-### 2. Use Google Workspace to manage other aspects of the project
+### Use Google Workspace to manage other aspects of the project
 
 - **Documents and File Sharing**: Use Google Docs, Sheets, and Slides to create and share project documents, plans, and reports, taking advantage of their powerful real-time collaboration capabilities.
 - **COMMUNICATIONS & MEETINGS**: Keep team members connected with project meetings, communications and updates via Google Meet and Gmail.

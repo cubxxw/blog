@@ -16,7 +16,7 @@ tldr:
   - "OpenIM支持多个版本选择包括稳定版release-v3.2、最新版latest和main分支版本，镜像源可选择阿里云或Docker Hub"
 ---
 
-## 1. 基础镜像
+## 基础镜像
 
 以下是你需要的基础镜像及其版本：
 
@@ -38,7 +38,7 @@ docker pull wurstmeister/zookeeper
 docker pull minio/minio
 ```
 
-## 2. OpenIM 与 Chat 镜像
+## OpenIM 与 Chat 镜像
 
 **详细了解 OpenIM 和 Chat 的版本管理及存储**: [version.md](https://github.com/OpenIMSDK/Open-IM-Server/blob/main/docs/conversions/version.md)
 
@@ -59,7 +59,7 @@ docker pull ghcr.io/openimsdk/openim-server:<version-name>
 docker pull ghcr.io/openimsdk/openim-server:<version-name>
 ```
 
-## 3. 镜像存储选择
+## 镜像存储选择
 
 **存储库**：
 
@@ -74,7 +74,7 @@ docker pull ghcr.io/openimsdk/openim-server:<version-name>
 
 
 
-## 4. 版本选择
+## 版本选择
 
 你可以选择以下版本：
 
@@ -82,7 +82,7 @@ docker pull ghcr.io/openimsdk/openim-server:<version-name>
 - 最新版：latest
 - main 分支的最新版：main
 
-## 5. 离线部署步骤
+## 离线部署步骤
 
 1. **拉取镜像**: 执行上面的 `docker pull` 命令将所需的所有镜像拉取到本地。
 2. **保存镜像**:
@@ -126,7 +126,7 @@ docker-compose ps
 
 > **备注**: 若你使用的是 Docker 的版本 20 之前，需确保已经安装了 `docker-compose`。
 
-## 6. 参考链接
+## 参考链接
 
 - [OpenIMSDK Issue #432](https://github.com/OpenIMSDK/Open-IM-Server/issues/432)
 - [Notion Link](https://nsddd.notion.site/435ee747c0bc44048da9300a2d745ad3?pvs=25)
