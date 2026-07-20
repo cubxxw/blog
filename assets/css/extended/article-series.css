@@ -49,14 +49,16 @@
   margin-left: auto;
   color: var(--color-ink, #1a1c1b);
   opacity: 0.4;
-  transition: transform 220ms ease, opacity 220ms ease;
+  transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity 220ms ease;
 }
+/* Caret turns down whenever the panel is open — on hover, on keyboard
+   focus, or after an explicit toggle. It reads as an affordance, not a
+   button you must hunt for and click. */
+.marginalia-series-disclose:hover .marginalia-series-caret,
+.marginalia-series-disclose:focus-within .marginalia-series-caret,
 .marginalia-series-disclose[open] .marginalia-series-caret {
   transform: rotate(90deg);
-  opacity: 0.7;
-}
-.marginalia-series-disclose:hover .marginalia-series-caret {
-  opacity: 0.75;
+  opacity: 0.72;
 }
 
 /* Series name — now a link to the column page */
@@ -73,14 +75,40 @@
   outline: none;
 }
 
-/* Expanded list reveal animation */
-.marginalia-series-disclose[open] .marginalia-series-list {
-  animation: marginalia-series-reveal 240ms ease;
-  margin-top: 0.65rem;
+/* ── Hover / focus / toggle reveal ────────────────────────────────────
+   The list unfurls the instant the pointer rests on the group — no click,
+   no hunting for the caret. Keyboard focus and an explicit <details>
+   toggle open it too; touch and legacy browsers fall back to the native
+   click. The animation lives on ::details-content, whose own height is
+   driven by a 0fr→1fr grid track so it eases open and shut at its natural
+   height. content-visibility rides along with allow-discrete so the panel
+   stays painted through the entire close, then drops out cleanly. */
+.marginalia-series-disclose::details-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  /* clip vertically for the collapse; keep the horizontal axis visible so
+     the current-item timeline dot (which sits left of the rule) is never
+     shaved off. */
+  overflow-x: visible;
+  overflow-y: clip;
+  content-visibility: hidden;
+  transition:
+    grid-template-rows 340ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 260ms ease,
+    content-visibility 340ms allow-discrete;
 }
-@keyframes marginalia-series-reveal {
-  from { opacity: 0; transform: translateY(-2px); }
-  to   { opacity: 1; transform: translateY(0); }
+.marginalia-series-disclose:hover::details-content,
+.marginalia-series-disclose:focus-within::details-content,
+.marginalia-series-disclose[open]::details-content {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  content-visibility: visible;
+}
+/* The grid track's child must be free to shrink to zero for the reveal. */
+.marginalia-series-disclose .marginalia-series-list {
+  min-height: 0;
+  margin: 0;
 }
 
 .marginalia-series {
@@ -123,14 +151,27 @@
   margin: 0 0.18rem;
 }
 
-/* Vertical timeline of the series — single hairline rule, no boxes */
+/* Vertical timeline of the series — single hairline rule, no boxes.
+   The 0.7rem top padding is the breathing room under the summary; because
+   it lives inside the collapsing panel it eases open/shut with it. The rule
+   is drawn as a ::before starting below that padding, so it still begins at
+   the first item rather than floating up into the gap. */
 .marginalia-series-list {
+  position: relative;
   list-style: none;
   margin: 0;
-  padding: 0 0 0 0.55rem;
+  padding: 0.7rem 0 0 0.55rem;
   display: grid;
   gap: 0.32rem;
-  border-left: 1px solid color-mix(in oklab, var(--color-ink, #1a1c1b) 14%, transparent);
+}
+.marginalia-series-list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in oklab, var(--color-ink, #1a1c1b) 14%, transparent);
 }
 .marginalia-series-item {
   position: relative;
@@ -515,9 +556,9 @@ body.dark .rc-series-title,
 body.dark .abs-series-title {
   color: var(--primary, #e8e6e3);
 }
-.dark .marginalia-series-list,
-body.dark .marginalia-series-list {
-  border-left-color: color-mix(in oklab, var(--primary, #e8e6e3) 18%, transparent);
+.dark .marginalia-series-list::before,
+body.dark .marginalia-series-list::before {
+  background: color-mix(in oklab, var(--primary, #e8e6e3) 18%, transparent);
 }
 .dark .rc-series-head,
 .dark .abs-series-head,
@@ -537,7 +578,9 @@ body.dark .abs-series-num {
    Drop the position travel (list reveal slide, arrow nudge); keep the
    opacity/colour changes that aid comprehension. */
 @media (prefers-reduced-motion: reduce) {
-  .marginalia-series-disclose[open] .marginalia-series-list { animation: none; }
+  /* Reveal still works on hover/focus/toggle — just no height easing. */
+  .marginalia-series-disclose::details-content { transition: none; }
+  .marginalia-series-caret { transition: opacity 220ms ease; }
   .rc-series-link:hover .rc-series-arrow,
   .rc-series-link:focus-visible .rc-series-arrow { transform: none; }
 }
