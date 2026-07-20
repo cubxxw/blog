@@ -259,6 +259,12 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [AI 剪不出你没拍的镜头](https://cubxxw.com/zh/ai-agent/posts/solo-creator-video-pipeline/)
+- [当东西人人做得出来，「这是他做的」就成了信号](https://cubxxw.com/zh/ai-agent/posts/super-individual-stack-reputation/)
+- [你的产品一夜就能被抄走，你的读者不能](https://cubxxw.com/zh/ai-agent/posts/super-individual-stack-distribution/)
+- [AI 提需求不要钱，这才是最危险的地方](https://cubxxw.com/zh/ai-agent/posts/super-individual-stack-judgment/)
+- [夜里跑十个 agent，早上收十个 PR，然后我卡住了](https://cubxxw.com/zh/ai-agent/posts/super-individual-stack-production/)
+- [你的装备，同时也在武装你的对手](https://cubxxw.com/zh/ai-agent/posts/super-individual-stack-four-layers/)
 - [你的 Mac 上有几套工具在打架？我设计了一个开发机体检 Skill](https://cubxxw.com/zh/ai-agent/posts/devbox-doctor-design/)
 - [如何设计一套有价值的 Skill：我拆了一个敢删我文件的插件](https://cubxxw.com/zh/ai-agent/posts/designing-valuable-agent-skills/)
 - [番外·实践：我把「知识层」建成了一座兵工厂](https://cubxxw.com/zh/ai-agent/posts/info-to-creation-arsenal/)
@@ -353,12 +359,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [OpenIM：构建高效的版本控制和测试工作流程](https://cubxxw.com/zh/engineering/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
 - [AI元年: 2024年的新兴挑战与趋势](https://cubxxw.com/zh/ai-agent/posts/emerging-challenges-and-trends-in-2024/)
 - [回顾与前瞻：我的2023年度总结报告](https://cubxxw.com/zh/growth/posts/2023-annual-summary-reflections-and-aspirations/)
-- [对开源商业化的思考 & 全球流量大会（GTC）学习以及总结](https://cubxxw.com/zh/engineering/posts/openim-open-source-business-journey/)
-- [GitOps 实践理论：Kubernetes 部署策略深入解析](https://cubxxw.com/zh/engineering/posts/gitops-practice-theory-part/)
-- [管理后台和监控的部署与设计](https://cubxxw.com/zh/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/)
-- [Hugo 的高级教程](https://cubxxw.com/zh/engineering/posts/hugo-advanced-tutorial/)
-- [Kubernetes Kustomize 学习指南](https://cubxxw.com/zh/engineering/posts/kubernetes-for-kustomize-learning/)
-- [设计 OpenIM 使用 Harbor 构建企业镜像仓库](https://cubxxw.com/zh/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
 <!-- My-Blog-ZH:END -->
 
 
