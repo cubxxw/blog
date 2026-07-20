@@ -153,6 +153,55 @@
   font-style: italic;
 }
 
+/* ── Standfirst structured list — the column's argument as strata ──
+   Two columns open on a list that IS the thesis: the super-individual
+   "四层" stack and the info→creation "四道工序". Lift such a list out of
+   default body-bullets into ruled editorial bands — an accent folio-tick
+   clamped to each stratum, the leading label carried in the accent ink,
+   roomier leading. Scoped to lists inside the standfirst, so prose
+   paragraphs are untouched; works for any item count and any column. */
+.column-intro__body ul,
+.column-intro__body ol {
+  list-style: none;
+  margin: 2rem 0 1.9rem;
+  padding: 0;
+}
+.column-intro__body li {
+  position: relative;
+  margin: 0;
+  padding: 1.05rem 0 1.05rem 1.75rem;
+  border-top: 1px solid var(--color-rule, rgba(53, 0, 3, 0.1));
+  line-height: 1.85;
+}
+.column-intro__body li:last-child {
+  border-bottom: 1px solid var(--color-rule, rgba(53, 0, 3, 0.1));
+}
+:lang(zh) .column-intro__body li {
+  line-height: 1.95;
+  letter-spacing: 0.015em;
+}
+/* Folio tick — a short accent rule clamped to each stratum's first line,
+   echoing the eyebrow rules and the folio nodes below. */
+.column-intro__body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.6rem;
+  width: 0.72rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent, #862122);
+  opacity: 0.85;
+}
+:lang(zh) .column-intro__body li::before {
+  top: 1.72rem;
+}
+/* The leading label reads as the term being defined. */
+.column-intro__body li > strong:first-child {
+  color: var(--color-accent, #862122);
+  font-weight: 600;
+}
+
 /* ── TOC heading ─────────────────────────────────────────────────── */
 
 .column-toc {
@@ -305,6 +354,13 @@
   flex-direction: column;
   gap: 0.5rem;
   min-width: 0;
+  transition: transform var(--dur-hover, 200ms) var(--ease-out, ease);
+}
+/* The row leans a hair toward the reader on hover — pairs with the folio
+   node lift and the arrow travel so the whole entry reads as one target. */
+.column-entry__link:hover .column-entry__body,
+.column-entry__link:focus-visible .column-entry__body {
+  transform: translateX(4px);
 }
 .column-entry__title {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
@@ -417,6 +473,43 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-ink-muted, #5e5e63);
+}
+/* Closing affordance — a quiet way back to the shelf of columns */
+.column-footer__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.6rem;
+  padding: 0.4rem 0.2rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-muted, #5e5e63);
+  border-radius: 6px;
+  transition: color var(--dur-hover, 200ms) ease;
+}
+.column-footer__back:hover,
+.column-footer__back:focus-visible {
+  color: var(--color-accent, #862122);
+}
+.column-footer__back:focus-visible {
+  outline: 2px solid var(--color-accent, #862122);
+  outline-offset: 3px;
+}
+.column-footer__back-arrow {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--dur-hover, 200ms) var(--ease-out, ease);
+}
+.column-footer__back:hover .column-footer__back-arrow,
+.column-footer__back:focus-visible .column-footer__back-arrow {
+  transform: translateX(-3px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .column-footer__back:hover .column-footer__back-arrow,
+  .column-footer__back:focus-visible .column-footer__back-arrow { transform: none; }
 }
 
 /* ── Mobile ──────────────────────────────────────────────────────── */
@@ -705,9 +798,43 @@ a.column-outro__title:focus-visible {
   }
 }
 
+/* ── Load entrance — the reading path draws itself in ────────────
+   Each entry (folio node + text + its spine segment) fades up in sequence,
+   so the 01 → NN path assembles top-to-bottom rather than snapping in flat.
+   Purely decorative and non-blocking: `both` holds the settled state, the
+   masthead/intro above are never animated (no LCP impact), and the whole
+   effect is gated off under reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .column-entry {
+    animation: column-entry-in 620ms var(--ease-out, ease) both;
+  }
+  .column-entry:nth-child(1) { animation-delay: 40ms; }
+  .column-entry:nth-child(2) { animation-delay: 110ms; }
+  .column-entry:nth-child(3) { animation-delay: 180ms; }
+  .column-entry:nth-child(4) { animation-delay: 250ms; }
+  .column-entry:nth-child(5) { animation-delay: 320ms; }
+  .column-entry:nth-child(6) { animation-delay: 390ms; }
+  .column-entry:nth-child(n + 7) { animation-delay: 450ms; }
+}
+@keyframes column-entry-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ── Reduced motion ──────────────────────────────────────────
-   Remove the hover arrow travel; opacity/colour hover cues remain. */
+   Remove the hover arrow travel and row lean; opacity/colour hover
+   cues remain. (The load entrance needs no reset here — it is only
+   declared under prefers-reduced-motion: no-preference, so it never
+   applies in the first place.) */
 @media (prefers-reduced-motion: reduce) {
+  .column-entry__link:hover .column-entry__body,
+  .column-entry__link:focus-visible .column-entry__body { transform: none; }
   .column-entry__link:hover .column-entry__arrow,
   .column-entry__link:focus-visible .column-entry__arrow { transform: none; }
   .column-outro__next:hover .column-outro__next-arrow,
