@@ -3,8 +3,14 @@
      Series-aware: when the page carries `series: { slug, order }`,
      prev/next follow the series reading order (order-1 / order+1)
      instead of publish dates, so part 1 always points forward to
-     part 2 under "下一篇". Outside a series, reading order is
-     chronological: prev = published earlier, next = published later.
+     part 2 under "下一篇".
+
+     Outside a series, the reference frame is the archive as you
+     browse it: newest on top, oldest at the bottom. So "上一篇"
+     points UP the timeline (a newer post) and "下一篇" points DOWN
+     into the archive (an older post). On the newest post there is
+     nothing newer, so only "下一篇" (older) shows — which is what a
+     reader expects on the latest article.
 */ -}}
 {{- $page := . }}
 {{- $prev := "" }}
@@ -24,14 +30,16 @@
     {{- $pages = (where site.RegularPages "Lang" site.Language.Lang).ByDate.Reverse }}
   {{- end }}
   {{- if in $pages $page }}
-    {{- /* collection is newest-first: Prev = older, Next = newer */ -}}
-    {{- $prev = $pages.Prev $page }}
-    {{- $next = $pages.Next $page }}
+    {{- /* Collection is newest-first, so in the slice `.Next` is the
+           newer neighbour and `.Prev` is the older one. Map them to the
+           timeline metaphor above: "上一篇" = newer, "下一篇" = older. */ -}}
+    {{- $prev = $pages.Next $page }}
+    {{- $next = $pages.Prev $page }}
   {{- end }}
 {{- end }}
 {{- if or $prev $next }}
 {{- $isZh := eq $page.Lang "zh" }}
-<nav class="paginav{{ if $inSeries }} paginav--series{{ end }}" aria-label="{{ cond $isZh "文章导航" "Article navigation" }}">
+<nav class="paginav{{ if $inSeries }} paginav--series{{ end }}{{ if not (and $prev $next) }} paginav--single{{ end }}" aria-label="{{ cond $isZh "文章导航" "Article navigation" }}">
   {{- with $prev }}
   <a class="prev" href="{{ .Permalink }}">
     <span class="title">

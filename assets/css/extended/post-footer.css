@@ -3,10 +3,21 @@
    Style: editorial aesthetic-care, Stitch-inspired
    ─────────────────────────────────────────────── */
 
-/* ── Override PaperMod's default .paginav ───────────── */
+/* ── Override PaperMod's default .paginav ───────────────────────────
+   Single source of truth for the prev/next cards. Hover / press / lift
+   all live here; micro-interactions.css deliberately no longer touches
+   .paginav (its old sideways slide fought this file's vertical lift).
+
+   Motion language (Emil-style restraint):
+   • Only transform + box-shadow + colour move — GPU-friendly, no layout.
+   • Custom ease-out curve, sub-300ms — reads as intentional, not floaty.
+   • The card lifts a hair and casts a soft shadow; the brand accent is
+     spent only on the eyebrow + arrow, never a loud full-card border.
+*/
 .paginav {
   --rule: var(--color-rule, rgba(30, 35, 30, 0.08));
   --surface: var(--color-surface-low, #f4f4f2);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
   display: grid !important;
   grid-template-columns: 1fr 1fr;
@@ -28,12 +39,13 @@
   width: 100% !important;
   padding: 22px 26px !important;
   border: 1px solid var(--rule) !important;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--color-paper, #f9f9f7);
   color: var(--color-ink, #1a1c1b);
   text-decoration: none;
-  transition: border-color 220ms ease, background 220ms ease,
-              box-shadow 220ms ease, transform 260ms cubic-bezier(.2,.6,.2,1);
+  transition: border-color 240ms var(--ease-out),
+              box-shadow 240ms var(--ease-out),
+              transform 240ms var(--ease-out);
   overflow: hidden;
 }
 
@@ -41,27 +53,46 @@
 .paginav .prev { grid-column: 1; }
 .paginav .next { grid-column: 2; }
 
+/* A whisper of warmth pooling up from the base — barely there at rest,
+   just enough on hover to give the card a sense of depth. */
 .paginav a::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    transparent 0%,
-    var(--color-accent-soft, rgba(134, 33, 34, 0.035)) 100%);
+    transparent 30%,
+    var(--color-accent-soft, rgba(134, 33, 34, 0.05)) 100%);
   opacity: 0;
-  transition: opacity 240ms ease;
+  transition: opacity 240ms var(--ease-out);
   pointer-events: none;
 }
 
-.paginav a:hover {
-  border-color: var(--color-accent, #2e352e) !important;
-  background: var(--color-paper, #f9f9f7);
-  box-shadow: 0 8px 24px -12px rgba(30, 35, 30, 0.15);
-  transform: translateY(-1px);
+/* Two PaperMod defaults fight this design and must be neutralised:
+   • `.paginav a:hover { background: var(--border) }` flashes the card
+     grey on hover — keep our paper instead.
+   • `.paginav span:hover:not(.title) { box-shadow: 0 1px 0 }` draws a
+     hard 1px "underline" under the title span on hover — drop it; the
+     lift + border already signal the link. */
+.paginav a:hover { background: var(--color-paper, #f9f9f7) !important; }
+.paginav span:hover:not(.title) { box-shadow: none; }
+
+/* Hover is gated to fine pointers so a phone tap never sticks the
+   lifted state (touch gets the :active press below instead). */
+@media (hover: hover) and (pointer: fine) {
+  .paginav a:hover {
+    border-color: color-mix(in srgb,
+      var(--color-accent, #2e352e) 26%, rgba(30, 35, 30, 0.28)) !important;
+    box-shadow: 0 14px 30px -18px rgba(30, 35, 30, 0.28);
+    transform: translateY(-3px);
+  }
+  .paginav a:hover::before { opacity: 1; }
 }
 
-.paginav a:hover::before {
-  opacity: 0.4;
+/* Press: settle back down and compress a touch — confirms the tap
+   before the page turns. Snappy on release. */
+.paginav a:active {
+  transform: translateY(0) scale(0.99);
+  transition-duration: 120ms;
 }
 
 /* Eyebrow label ("« Prev" / "Next »") */
@@ -154,6 +185,67 @@
   justify-content: flex-end;
 }
 
+/* ── Lone card (newest / oldest post) ───────────────────────────────
+   On the newest post only "下一篇" exists, on the oldest only "上一篇".
+   A single half-width card stranded in one lane reads as broken, so the
+   lone card spans the full row and becomes a calm "up next" banner: the
+   eyebrow + title sit on the leading edge, and a large directional
+   chevron anchors the trailing edge and nudges on hover. */
+.paginav--single {
+  grid-template-columns: 1fr;
+}
+.paginav--single a {
+  min-height: 96px;
+  justify-content: center;
+}
+/* The large trailing chevron is the directional cue here, so the small
+   inline eyebrow arrow would just be a second arrow pointing the same
+   way — drop it. */
+.paginav--single .pagi-arrow { display: none; }
+/* Lone "下一篇" (older, forward): read left-to-right, chevron on the right. */
+.paginav--single .next,
+.paginav--single .next .title {
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.paginav--single .next { padding-right: 68px !important; }
+/* Lone "上一篇" (newer, back): leave room for the chevron on the left. */
+.paginav--single .prev { padding-left: 68px !important; }
+
+.paginav--single a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  border: solid var(--color-ink-muted, #5e5e63);
+  border-width: 1.8px 1.8px 0 0;
+  opacity: 0.32;
+  transition: transform 280ms var(--ease-out), opacity 240ms var(--ease-out),
+              border-color 240ms var(--ease-out);
+}
+.paginav--single .next::after {
+  right: 30px;
+  transform: translateY(-50%) rotate(45deg);
+}
+.paginav--single .prev::after {
+  left: 30px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+@media (hover: hover) and (pointer: fine) {
+  .paginav--single .next:hover::after {
+    transform: translateY(-50%) translateX(4px) rotate(45deg);
+    opacity: 0.85;
+    border-color: var(--color-accent, #2e352e);
+  }
+  .paginav--single .prev:hover::after {
+    transform: translateY(-50%) translateX(-4px) rotate(-135deg);
+    opacity: 0.85;
+    border-color: var(--color-accent, #2e352e);
+  }
+}
+
 /* Mobile: stack */
 @media (max-width: 720px) {
   .paginav {
@@ -173,9 +265,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .paginav .pagi-arrow { transition: none; }
+  /* Keep the colour/shadow cues; drop every positional move. */
+  .paginav a,
+  .paginav .pagi-arrow,
+  .paginav--single a::after { transition: none; }
+  .paginav a:hover,
+  .paginav a:active { transform: none; }
   .paginav .prev:hover .pagi-arrow,
   .paginav .next:hover .pagi-arrow { transform: none; }
+  .paginav--single .next::after,
+  .paginav--single .next:hover::after { transform: translateY(-50%) rotate(45deg); }
+  .paginav--single .prev::after,
+  .paginav--single .prev:hover::after { transform: translateY(-50%) rotate(-135deg); }
 }
 
 /* Dark theme */
@@ -185,8 +286,13 @@ body.dark .paginav a {
 }
 
 body.dark .paginav a:hover {
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.035) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 16px 34px -18px rgba(0, 0, 0, 0.66);
+}
+
+body.dark .paginav--single a::after {
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 
