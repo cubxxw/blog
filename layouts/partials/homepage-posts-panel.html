@@ -1,5 +1,15 @@
-{{- /* Channel panel body — featured card + 2 recent cards + up-to-4 row list.
+{{- /* Channel panel body — featured card + recent cards + up-to-4 row list.
      Rendered once per channel by homepage-daypage.html (Channel Rail).
+
+     Column folding: within a channel, when 2+ of the posts on screen belong
+     to the same column (frontmatter `columns:`, wired through the `columns`
+     taxonomy), they collapse into ONE column card that names the column and
+     lists its essays — so a serialized column takes a single slot and reads
+     as one thing, instead of tiling several near-identical rows. The featured
+     (newest) post is always shown on its own; folding applies to the cards
+     and rows after it. Single-column posts and column-less posts are
+     unchanged.
+
      dict args:
        pages   — page slice, newest first
        isZh    — bool
@@ -10,8 +20,6 @@
 {{- $isZh    := .isZh -}}
 {{- $showCat := .showCat -}}
 {{- $featured := index $pages 0 }}
-{{- $recent   := after 1 $pages | first 2 }}
-{{- $archive  := after 3 $pages | first 4 }}
 
 {{- if not $featured }}
 <div class="hp-channel-empty">
@@ -19,6 +27,41 @@
   {{ if $isZh }}这个频道还没有信号 — 快了。{{ else }}No signals on this channel yet — soon.{{ end }}
 </div>
 {{- else }}
+
+{{- /* ── Pass 1: which columns appear 2+ times among the non-featured posts?
+       Only those fold. A column with a single post here stays a normal card. */ -}}
+{{- $rest := after 1 $pages -}}
+{{- $colCount := dict -}}
+{{- range $rest -}}
+  {{- with (.GetTerms "columns") -}}
+    {{- $slug := (index . 0).RelPermalink -}}
+    {{- $colCount = merge $colCount (dict $slug (add (int (index $colCount $slug | default 0)) 1)) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* ── Pass 2: walk the rest in order, emitting a slot per post, but the
+       first time a foldable column is hit we emit its column card and mark it
+       done; later posts of that column are skipped. Collect up to 2 "recent"
+       slots for the grid, the remainder go to the row list. */ -}}
+{{- $slots := slice -}}
+{{- $doneCols := slice -}}
+{{- range $rest -}}
+  {{- $col := "" -}}
+  {{- with (.GetTerms "columns") -}}{{ $col = (index . 0).RelPermalink }}{{- end -}}
+  {{- $foldable := and (ne $col "") (ge (int (index $colCount $col | default 0)) 2) -}}
+  {{- if $foldable -}}
+    {{- if not (in $doneCols $col) -}}
+      {{- $doneCols = $doneCols | append $col -}}
+      {{- $slots = $slots | append (dict "kind" "column" "term" (index (.GetTerms "columns") 0)) -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $slots = $slots | append (dict "kind" "post" "page" .) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $recentSlots := first 2 $slots -}}
+{{- $archiveSlots := after 2 $slots | first 4 -}}
+
 <div class="hp-posts-grid">
   {{- with $featured }}
   <a class="hp-post-card hp-featured" href="{{ .RelPermalink }}">
@@ -32,29 +75,77 @@
     <div class="hp-post-foot"><span>READ ESSAY</span><span class="hp-post-arrow">↗</span></div>
   </a>
   {{- end }}
-  {{- range $recent }}
-  <a class="hp-post-card" href="{{ .RelPermalink }}">
+  {{- range $recentSlots }}
+  {{- if eq .kind "column" }}
+  {{- template "hp-column-card" (dict "term" .term "isZh" $isZh) }}
+  {{- else }}
+  {{- $p := .page }}
+  <a class="hp-post-card" href="{{ $p.RelPermalink }}">
     <div class="hp-post-meta">
-      {{- if $showCat }}<span class="hp-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>{{ end }}
-      <span>{{ .Date.Format "Jan 02" | upper }}</span>
+      {{- if $showCat }}<span class="hp-cat">{{ with $p.FirstSection }}{{ .Title }}{{ end }}</span>{{ end }}
+      <span>{{ $p.Date.Format "Jan 02" | upper }}</span>
     </div>
-    <h3 class="hp-post-title">{{ .Title }}</h3>
-    <p class="hp-post-excerpt">{{ .Summary | plainify | truncate 120 }}</p>
-    <div class="hp-post-foot"><span>{{ .ReadingTime }} min</span><span class="hp-post-arrow">↗</span></div>
+    <h3 class="hp-post-title">{{ $p.Title }}</h3>
+    <p class="hp-post-excerpt">{{ $p.Summary | plainify | truncate 120 }}</p>
+    <div class="hp-post-foot"><span>{{ $p.ReadingTime }} min</span><span class="hp-post-arrow">↗</span></div>
   </a>
+  {{- end }}
   {{- end }}
 </div>
 
-{{- with $archive }}
+{{- with $archiveSlots }}
 <div class="hp-posts-list">
   {{- range . }}
-  <a class="hp-posts-list-row" href="{{ .RelPermalink }}">
-    <span class="hp-posts-list-date">{{ .Date.Format "Jan 02" | upper }}</span>
-    {{- if $showCat }}<span class="hp-posts-list-cat">{{ with .FirstSection }}{{ .Title }}{{ end }}</span>{{ end }}
-    <span class="hp-posts-list-title">{{ .Title }}</span>
+  {{- if eq .kind "column" }}
+  {{- $term := .term }}
+  {{- $cpages := $term.Pages.ByParam "series.order" }}
+  {{- if not $cpages }}{{ $cpages = $term.Pages.ByDate }}{{ end }}
+  <a class="hp-posts-list-row hp-posts-list-row--column" href="{{ $term.RelPermalink }}">
+    <span class="hp-posts-list-date">{{ if $isZh }}专栏{{ else }}COLUMN{{ end }}</span>
+    <span class="hp-posts-list-title">{{ $term.Title }}</span>
+    <span class="hp-posts-list-colcount">{{ if $isZh }}{{ len $cpages }} 篇{{ else }}{{ len $cpages }} parts{{ end }}</span>
+    <span class="hp-posts-list-arrow">→</span>
+  </a>
+  {{- else }}
+  {{- $p := .page }}
+  <a class="hp-posts-list-row" href="{{ $p.RelPermalink }}">
+    <span class="hp-posts-list-date">{{ $p.Date.Format "Jan 02" | upper }}</span>
+    {{- if $showCat }}<span class="hp-posts-list-cat">{{ with $p.FirstSection }}{{ .Title }}{{ end }}</span>{{ end }}
+    <span class="hp-posts-list-title">{{ $p.Title }}</span>
     <span class="hp-posts-list-arrow">→</span>
   </a>
   {{- end }}
+  {{- end }}
 </div>
 {{- end }}
+{{- end }}
+
+{{- /* ── Column card: a quiet entry card standing in for a serialized column.
+       Deliberately minimal — column name + subtitle + a one-line teaser + a
+       part-count row — so it reads as calm as the featured essay card beside
+       it, instead of a crowded table of contents. The whole card links to the
+       column landing page; the essay list lives there. */ -}}
+{{- define "hp-column-card" }}
+{{- $term := .term }}
+{{- $isZh := .isZh }}
+{{- $cpages := $term.Pages.ByParam "series.order" }}
+{{- if not $cpages }}{{ $cpages = $term.Pages.ByDate }}{{ end }}
+{{- $total := len $cpages }}
+{{- $subtitle := $term.Params.subtitle }}
+{{- $desc := $term.Params.description | plainify | truncate 92 }}
+<a class="hp-post-card hp-column-card" href="{{ $term.RelPermalink }}">
+  <div class="hp-post-meta">
+    <span class="hp-cat hp-cat--column">{{ if $isZh }}专栏{{ else }}COLUMN{{ end }}</span>
+    <span>{{ if $isZh }}{{ $total }} 篇连载{{ else }}{{ $total }}-PART SERIES{{ end }}</span>
+  </div>
+  <h3 class="hp-post-title hp-column-card-name">{{ $term.Title }}</h3>
+  {{- with $subtitle }}<p class="hp-column-card-subtitle">{{ . }}</p>{{ end }}
+  {{- with $desc }}<p class="hp-post-excerpt hp-column-card-desc">{{ . }}</p>{{ end }}
+  <div class="hp-column-card-foot">
+    <span class="hp-column-card-dots" aria-hidden="true">
+      {{- range $i := (seq $total) }}<span class="hp-column-card-dot"></span>{{ end -}}
+    </span>
+    <span class="hp-column-card-enter">{{ if $isZh }}进入专栏{{ else }}ENTER{{ end }} <span class="hp-post-arrow">↗</span></span>
+  </div>
+</a>
 {{- end }}

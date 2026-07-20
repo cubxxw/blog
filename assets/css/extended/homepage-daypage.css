@@ -1128,6 +1128,92 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-post-arrow { color: var(--accent); font-size: 16px; font-weight: 400; }
 
+/* ── Column card — a quiet entry card standing in for a serialized column.
+   Shares .hp-post-card's shell; a soft accent tint + left seam mark it as a
+   container without shouting. Kept minimal so it sits at the same visual
+   weight as the featured essay card, not a crowded table of contents. */
+.hp-column-card {
+  gap: 10px;
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+  border-left: 2px solid var(--accent);
+}
+.hp-column-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(93, 48, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.hp-cat.hp-cat--column {
+  color: var(--accent);
+  background: rgba(93, 48, 0, 0.12);
+}
+
+.hp-column-card .hp-column-card-name {
+  transition: color 160ms;
+}
+.hp-column-card:hover .hp-column-card-name { color: var(--accent); }
+
+.hp-column-card-subtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--fg-muted);
+  margin: 0;
+}
+
+.hp-column-card-desc {
+  margin: 2px 0 0;
+  -webkit-line-clamp: 2;
+}
+
+.hp-column-card-foot {
+  margin-top: auto;
+  padding-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hp-column-card-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.hp-column-card-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.35;
+}
+
+.hp-column-card-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Column row in the archive list */
+.hp-posts-list-colcount {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  margin-left: auto;
+  margin-right: 12px;
+}
+.hp-posts-list-row--column .hp-posts-list-date { color: var(--accent); }
+
 .hp-posts-list {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-card);
