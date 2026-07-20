@@ -106,6 +106,16 @@ _probe*
 .harness.html
 /*.png
 /*.jpeg
+/*.jpg
+/*.gif
+/*.webp
+
+# FUSE / editor leftovers: hidden temp files a mounted filesystem or crashed
+# editor leaves behind (e.g. content/**/.fuse_hidden0000...)
+.fuse_hidden*
+
+# Ruff (Python linter) cache — not part of this toolchain, stray from ad-hoc runs
+.ruff_cache/
 
 # Crash leftovers from the front-matter rewriters (normalize-tags, generate-covers)
 config.yml.tmp.*
