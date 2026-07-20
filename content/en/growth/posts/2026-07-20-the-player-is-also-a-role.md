@@ -1,6 +1,6 @@
 ---
 title: 'You Think You''re the Player — But "Player" Is Also a Role: Rereading the Samādhi of Play'
-date: 2026-07-20T21:00:00+08:00
+date: 2026-07-20T12:00:00+08:00
 draft: false
 showtoc: true
 tocopen: false
