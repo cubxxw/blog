@@ -5,6 +5,9 @@ draft: false
 tags:
    - Blog
    - Hugo
+cover:
+  image: /images/covers/engineering/2023/my-hugo.jpeg
+  alt: 'About My Hugo teaching'
 description: >
   The story of rebuilding my blog from scratch on Hugo after losing the previous
   dynamic, Docker-hosted version. Why I moved to a static site generator for long-term

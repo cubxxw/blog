@@ -12,7 +12,7 @@ tags:
   - Open Source
   - Monthly Notes
 cover:
-  image: /images/agent-identity/01-locke-spec.svg
+  image: /images/covers/ai-agent/2026/agent-identity-from-locke-to-openclaw.jpeg
   alt: "Locke Identity Spec — Agent Identity Engineering Stack"
 description: >
   AI Agent 的失忆不是功能缺陷，是信任账户的根本缺失。本文从洛克 1689 年的身份理论出发，逐层拆解 2026 年 Agent 身份连续性的完整工程栈：文件即身份（SOUL.md 范式）、Harness 作为环境条件、记忆的四层结构与 Gene Capsule 协议、多智能体拓扑中的自我定位，以及评测作为身份验证的终极难题。

@@ -8,6 +8,9 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Hugo', '博客搭建', '静态网站生成器', '教程']
 tags: ["Blog", "Hugo", "Development"]
+cover:
+  image: /images/covers/engineering/2023/my-hugo.jpeg
+  alt: '关于我的 Hugo 博客 (教程)'
 description: '本教程将指导你如何使用 Hugo —— 一款流行的静态网站生成器 —— 来搭建和管理个人博客。详细介绍从安装到配置的各个步骤。'
 tldr:
   - "选择Hugo和PaperMod主题重建博客，通过静态网站生成器替代易出故障的动态博客架构获得更长期稳定性。"

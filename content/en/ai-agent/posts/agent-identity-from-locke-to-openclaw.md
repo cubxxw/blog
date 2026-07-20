@@ -12,7 +12,7 @@ tags:
   - Open Source
   - Monthly Notes
 cover:
-  image: /images/agent-identity/01-locke-spec.svg
+  image: /images/covers/ai-agent/2026/agent-identity-from-locke-to-openclaw.jpeg
   alt: "Locke Identity Spec — Agent Identity Engineering Stack"
 description: >
   AI agent amnesia isn't a functional defect—it's a fundamental gap in the trust account. Starting from Locke's 1689 theory of identity, this article dissects the complete engineering stack for agent identity continuity in 2026: file-as-identity (SOUL.md paradigm), Harness as environmental condition, four-layer memory architecture and Gene Capsule protocol, self-positioning in multi-agent topology, and evaluation as the ultimate identity verification challenge.

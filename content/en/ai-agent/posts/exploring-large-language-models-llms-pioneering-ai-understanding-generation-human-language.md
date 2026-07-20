@@ -18,6 +18,9 @@ tldr:
   - "Large Language Models exhibit emergent capabilities—contextual learning, instruction-following, and step-by-step reasoning—that scale dramatically beyond traditional smaller language models."
   - "LLMs function as foundation models enabling multiple downstream applications from a single pre-trained base, significantly improving R&D efficiency and reducing development cycles."
   - "Practical LLM applications leverage Retrieval-Augmented Generation (RAG), LangChain frameworks, and prompt optimization to overcome knowledge limitations and generate accurate, contextual answers."
+cover:
+  image: /images/covers/ai-agent/2024/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language.jpeg
+  alt: "Large Language Models: How LLMs Work"
 ---
 
 

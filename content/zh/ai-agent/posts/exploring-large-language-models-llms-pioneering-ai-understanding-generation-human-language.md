@@ -18,6 +18,9 @@ tldr:
   - "大语言模型是包含数百亿参数的神经网络，通过大规模文本训练实现对人类语言的深度理解与生成能力。"
   - "模型规模扩大会突现上下文学习、指令遵循等前所未有的能力，实现从量变到质变的跃升。"
   - "检索增强生成（RAG）技术通过整合外部知识库与LLM推理，有效缓解幻觉问题并提升应用准确性与可信度。"
+cover:
+  image: /images/covers/ai-agent/2024/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language.jpeg
+  alt: "探索大型语言模型（llm）：人工智能在理解与生成人类语言方面的先锋"
 ---
   - AI & Technology
 description: >
