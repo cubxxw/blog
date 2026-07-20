@@ -828,10 +828,11 @@ a.column-outro__title:focus-visible {
 }
 
 /* ── Reduced motion ──────────────────────────────────────────
-   Remove the hover arrow travel and row lean, and skip the load
-   entrance; opacity/colour hover cues remain. */
+   Remove the hover arrow travel and row lean; opacity/colour hover
+   cues remain. (The load entrance needs no reset here — it is only
+   declared under prefers-reduced-motion: no-preference, so it never
+   applies in the first place.) */
 @media (prefers-reduced-motion: reduce) {
-  .column-entry { animation: none; }
   .column-entry__link:hover .column-entry__body,
   .column-entry__link:focus-visible .column-entry__body { transform: none; }
   .column-entry__link:hover .column-entry__arrow,
