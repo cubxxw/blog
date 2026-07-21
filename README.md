@@ -151,6 +151,8 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [121 Tips from the Creator of Claude Code: I Compressed Them Into 10 Changes You Can Ship Tonight](https://cubxxw.com/ai-agent/posts/claude-code-boris-121-tips-playbook/)
+- [Write Your Prompts as Loops: One Person's Loop Engineering Practice](https://cubxxw.com/ai-agent/posts/prompt-loop-engineering-practice/)
 - [You Think You're the Player — But "Player" Is Also a Role: Rereading the Samādhi of Play](https://cubxxw.com/growth/posts/2026-07-20-the-player-is-also-a-role/)
 - [AI Can't Edit a Shot You Never Filmed: A Solo Creator's Video Pipeline for 2026](https://cubxxw.com/ai-agent/posts/solo-creator-video-pipeline/)
 - [How Many of Your Mac Tools Are Fighting Each Other? I Designed a Dev-Machine Checkup Skill](https://cubxxw.com/ai-agent/posts/devbox-doctor-design/)
@@ -249,8 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Deployment and Design of Management Backend and Monitoring](https://cubxxw.com/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/)
 - [Hugo Advanced Tutorial](https://cubxxw.com/engineering/posts/hugo-advanced-tutorial/)
 - [Kubernetes for Kustomize Learning](https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/)
-- [OpenIM Use Harbor Build Enterprise Mirror Repositories](https://cubxxw.com/engineering/posts/openim-use-harbor-build-enterprise-mirror-repositories/)
-- [Learn About Automated Testing](https://cubxxw.com/engineering/posts/learn-about-automated-testing/)
 <!-- My-Blog-EN:END -->
 
 
