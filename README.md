@@ -151,6 +151,7 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Taking Open Design Apart: Turning the Coding Agent You Already Have Into a Design Engine](https://cubxxw.com/ai-agent/posts/open-design/)
 - [121 Tips from the Creator of Claude Code: I Compressed Them Into 10 Changes You Can Ship Tonight](https://cubxxw.com/ai-agent/posts/claude-code-boris-121-tips-playbook/)
 - [Write Your Prompts as Loops: One Person's Loop Engineering Practice](https://cubxxw.com/ai-agent/posts/prompt-loop-engineering-practice/)
 - [You Think You're the Player — But "Player" Is Also a Role: Rereading the Samādhi of Play](https://cubxxw.com/growth/posts/2026-07-20-the-player-is-also-a-role/)
@@ -250,7 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Concurrent Type Checking and Cross-Platform Development in Go](https://cubxxw.com/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
 - [Vector Database Learning](https://cubxxw.com/ai-agent/posts/vector-database-learning/)
 - [OpenIM: Version Control & Testing Workflow](https://cubxxw.com/engineering/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
-- [Emerging Challenges and Trends in 2024](https://cubxxw.com/ai-agent/posts/emerging-challenges-and-trends-in-2024/)
 <!-- My-Blog-EN:END -->
 
 
