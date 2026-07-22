@@ -32,7 +32,10 @@
     {{- $pagerSuffix = printf " - Page %d" .Paginator.PageNumber -}}
   {{- end -}}
 {{- end -}}
-{{- $titleCore := cond (gt (len $baseTitle) 50) (printf "%s…" (substr $baseTitle 0 50)) $baseTitle -}}
+{{- /* len counts BYTES, but substr counts runes — a 40-char Chinese title is
+     ~120 bytes, so every CJK title used to get a spurious trailing "…" while
+     keeping its full text. Compare runes against runes. */ -}}
+{{- $titleCore := cond (gt (strings.RuneCount $baseTitle) 50) (printf "%s…" (substr $baseTitle 0 50)) $baseTitle -}}
 {{- $pageTitle := cond .IsHome site.Title (printf "%s%s | %s" $titleCore $pagerSuffix $shortTitle) -}}
 <title>{{ $pageTitle }}</title>
 {{- partial "seo.html" . -}}
