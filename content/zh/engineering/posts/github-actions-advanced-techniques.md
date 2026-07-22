@@ -118,7 +118,7 @@ steps:
 
 每个Git提交都会收到一个计算出来的SHA值，这个值是唯一的，不可变的。你的动作的用户可能更喜欢依赖于提交的SHA值，因为这种方法比指定一个标签更可靠，而标签可能会被删除或移动。
 
-但是，这意味着用户将不会收到对操作的进一步更新。您必须使用提交的完整SHA值，而不是缩写值。
+但是，这样一来用户将不会收到对操作的进一步更新。您必须使用提交的完整SHA值，而不是缩写值。
 
 ```yaml
 steps:
@@ -632,7 +632,7 @@ jobs:
 | `github.job`                 | `string`  | [`job_id`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_id)当前工作的。 注意：此上下文属性由操作运行器设置，并且仅在`steps`作业执行期间可用。否则，该属性的值为`null`。 |
 | `github.job_workflow_sha`    | `string`  | 对于使用可重用工作流程的作业，可重用工作流程文件的提交 SHA。 |
 | `github.path`                | `string`  | 运行器上从工作流命令设置系统变量的文件的路径`PATH`。该文件对于当前步骤是唯一的，并且是作业中每个步骤的不同文件。有关更多信息，请参阅“ [GitHub Actions 的工作流程命令](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path)”。 |
-| `github.ref`                 | `string`  | 触发工作流运行的分支或标签的完整引用。对于 触发的工作流程`push`，这是推送的分支或标签引用。对于 触发的工作流程`pull_request`，这是拉取请求合并分支。对于由 触发的工作流程`release`，这是创建的发布标签。对于其他触发器，这是触发工作流运行的分支或标记引用。仅当分支或标签可用于事件类型时才设置此值。给出的 ref 是完全形成的，这意味着对于分支，格式是，对于拉取请求，格式是，对于标签，格式是。例如，.`refs/heads/<branch_name>``refs/pull/<pr_number>/merge``refs/tags/<tag_name>``refs/heads/feature-branch-1` |
+| `github.ref`                 | `string`  | 触发工作流运行的分支或标签的完整引用。对于 触发的工作流程`push`，这是推送的分支或标签引用。对于 触发的工作流程`pull_request`，这是拉取请求合并分支。对于由 触发的工作流程`release`，这是创建的发布标签。对于其他触发器，这是触发工作流运行的分支或标记引用。仅当分支或标签可用于事件类型时才设置此值。给出的 ref 是完全形成的：对于分支，格式是，对于拉取请求，格式是，对于标签，格式是。例如，.`refs/heads/<branch_name>``refs/pull/<pr_number>/merge``refs/tags/<tag_name>``refs/heads/feature-branch-1` |
 | `github.ref_name`            | `string`  | 触发工作流运行的分支或标签的短引用名称。该值与 GitHub 上显示的分支或标签名称匹配。例如，`feature-branch-1`. |
 | `github.ref_protected`       | `boolean` | `true`是否为触发工作流运行的引用配置了分支保护。             |
 | `github.ref_type`            | `string`  | 触发工作流运行的引用类型。有效值为`branch`或`tag`。          |
@@ -682,7 +682,7 @@ jobs:
 
 ### 储存秘密
 
-*如果您的工作流程使用敏感数据（例如密码或证书），您可以将这些数据作为机密* 保存在 GitHub 中，然后在工作流程中将它们用作环境变量。这意味着您将能够创建和共享工作流程，而无需将敏感值直接嵌入到工作流程的 YAML 源中。
+*如果您的工作流程使用敏感数据（例如密码或证书），您可以将这些数据作为机密* 保存在 GitHub 中，然后在工作流程中将它们用作环境变量。这样您将能够创建和共享工作流程，而无需将敏感值直接嵌入到工作流程的 YAML 源中。
 
 此示例作业演示了如何引用现有密钥作为环境变量，并将其作为参数发送到示例命令。
 
@@ -1134,7 +1134,7 @@ on:
 
 并发确保一次只运行使用同一并发组的单个作业或工作流。您可以使用并发性，以便环境中一次最多有一个正在进行的部署和一个挂起的部署。
 
-例如，当以下工作流运行时， `pending` 如果使用并发组的任何作业或工作流 `production` 正在进行，则该工作流将暂停，状态为。它还将取消使用并发组并具有状态的任何作业或工作流 `production` , `pending` 。这意味着在中使用并发组的作业或工作流最多只能有一个正在运行和一个挂 `production` 起。
+例如，当以下工作流运行时， `pending` 如果使用并发组的任何作业或工作流 `production` 正在进行，则该工作流将暂停，状态为。它还将取消使用并发组并具有状态的任何作业或工作流 `production` , `pending` 。也就是说，在中使用并发组的作业或工作流最多只能有一个正在运行和一个挂 `production` 起。
 
 ```yaml
 name: Deployment
