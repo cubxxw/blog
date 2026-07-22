@@ -79,7 +79,11 @@
       <image:loc>{{ $imgURL }}</image:loc>
       <image:title>{{ $page.Title }}</image:title>
       {{- with $page.Params.cover.alt }}
-      <image:caption>{{ . | plainify }}</image:caption>
+      {{- /* plainify returns template.HTML (safe-marked), which bypasses the
+             XML auto-escaping that image:title relies on — a raw & in alt
+             text then breaks the whole sitemap (GSC: parsing error, 0 pages).
+             htmlEscape re-escapes deterministically (& < > → entities). */ -}}
+      <image:caption>{{ . | plainify | htmlEscape | safeHTML }}</image:caption>
       {{- end }}
     </image:image>
     {{- end -}}
