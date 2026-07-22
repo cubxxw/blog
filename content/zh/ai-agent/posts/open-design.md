@@ -25,6 +25,9 @@ tldr:
 maturity: budding
 columns:
   - agent-engineering
+cover:
+  image: /images/covers/ai-agent/2026/open-design.jpeg
+  alt: "拆解 Open Design：让你已有的 coding agent 变成设计引擎"
 ---
 
 先做个消歧。中文语境里「Open Design」这个词至少指两样毫不相干的东西：一个是起源于 1990 年代末的**开源硬件 / 开放式设计运动**（MIT 那批人搞的 Open Design Foundation、OpenStructures、Open Source Ecology 那一脉，讲的是公开发布物理产品的设计蓝图协同制造）；另一个是 2025 年之后冒出来的 GitHub 项目 [`nexu-io/open-design`](https://github.com/nexu-io/open-design)，一个把 AI coding agent 当设计引擎的开源工具。

@@ -25,6 +25,9 @@ tldr:
 maturity: budding
 columns:
   - agent-engineering
+cover:
+  image: /images/covers/ai-agent/2026/open-design.jpeg
+  alt: "Taking Open Design Apart: Turning the Coding Agent You Already Have Into a Design Engine"
 ---
 
 First, a disambiguation. In tech writing "Open Design" points to at least two unrelated things. One is the **open-hardware / open design movement** that began in the late 1990s (the MIT-adjacent Open Design Foundation, OpenStructures, Open Source Ecology — publishing the blueprints of physical products for collaborative manufacture). The other is a GitHub project that surfaced after 2025, [`nexu-io/open-design`](https://github.com/nexu-io/open-design), a tool that turns an AI coding agent into a design engine.
