@@ -84,6 +84,12 @@ function analyze(file) {
   const errors = [];
   const warns = [];
 
+  // Body starts after the front-matter block; offset makes reported line
+  // numbers match the actual file, not the body-relative index.
+  const fmMatch = text.match(/^---\n[\s\S]*?\n---\n?/);
+  const lineOffset = fmMatch ? fmMatch[0].split('\n').length - 1 : 0;
+  const L = (i) => i + 1 + lineOffset;
+
   // E1: front-matter title / description
   for (const key of ['title', 'description', 'summary']) {
     const val = fmField(fm, key);
@@ -95,7 +101,7 @@ function analyze(file) {
 
   // E2 headings / E3 blockquotes — line-scoped
   lines.forEach((line, i) => {
-    const n = i + 1;
+    const n = L(i);
     if (/^#{1,6}\s/.test(line) && RE_CONTRAST.test(line)) {
       errors.push(`E2 标题行使用「不是…而是」 (L${n}): ${line.trim().slice(0, 60)}`);
     }
@@ -108,11 +114,15 @@ function analyze(file) {
     RE_CONTRAST.lastIndex = 0;
   });
 
-  // E4 clusters: >=2 「而是」 within a sliding 3-line window
+  // E4 clusters: the CONTRAST template repeated within a short window. We count
+  // only real 「不是…而是」 matches (not bare 而是, which fires on 排比 and
+  // incidental 而+是), and only flag when a paragraph stacks the template so
+  // densely the reader notices the mold: >=2 matches within a 3-line window.
   const hitLines = [];
   lines.forEach((line, i) => {
-    const c = count(RE_ERSHI, line);
-    for (let k = 0; k < c; k++) hitLines.push(i + 1);
+    const c = count(RE_CONTRAST, line);
+    for (let k = 0; k < c; k++) hitLines.push(L(i));
+    RE_CONTRAST.lastIndex = 0;
   });
   const clusters = [];
   const seen = new Set();
@@ -126,7 +136,7 @@ function analyze(file) {
     clusters.push(a === b ? `L${b}(同行x2)` : `L${a}~L${b}`);
   }
   if (clusters.length) {
-    errors.push(`E4 「而是」3 行内连发 ${clusters.length} 组: ${clusters.slice(0, 5).join(', ')}${clusters.length > 5 ? ' …' : ''}`);
+    errors.push(`E4 「不是…而是」3 行内连发 ${clusters.length} 组: ${clusters.slice(0, 5).join(', ')}${clusters.length > 5 ? ' …' : ''}`);
   }
 
   // W1 density
