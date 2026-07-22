@@ -31,6 +31,15 @@ hugo new content content/zh/projects/my-project.md --kind ai-project
 hugo new content content/en/projects/my-project.md --kind ai-project
 ```
 
+### 写作反模式（AI 味句式，写中文文章时必须遵守）
+
+- **「不是 X，而是 Y」全文 ≤2 次；title/description、标题行、blockquote 金句位禁用**。改写手法：
+  - 假对立（两边不构成真对立）→ 删掉前半句直陈：「训练的不是记忆，而是思考」→「训练的是思考」
+  - 真对立 → 拆成独立短句或用破折号/冒号：「这不是倒退，而是把注意力挪到关键点」→「有人会说这是倒退。不是——它把注意力从"全程盯着"挪到"关键点按一下"」
+  - 金句/标题 → 重写为正面断言：「不是让 Agent 更自由，而是把 LLM 框得更稳」→「用确定性的编排框住非确定性的 LLM」
+- 「本质上」「不仅仅是」「这意味着」原则上直接删除——删后句意不变即证明它是填充词；每篇各 ≤3 次
+- 每写完一节自查一遍上述句式；成稿后跑 `node scripts/check-ai-flavor.mjs <文件>` 验证（`npm run flavor:check` 查本次 git 改动，E 级必须清零）
+
 ### 内容架构（v3.0.0，2026-07）
 
 - 四个内容 section：`ai-agent`、`engineering`、`growth`、`projects`；判断归属用对应命令创建文件，不要手工新建到错误目录（详见 `content/CATEGORIES.md`）

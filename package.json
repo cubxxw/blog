@@ -7,6 +7,8 @@
     "dev:stop": "bash scripts/stop-netlify-dev.sh",
     "tags:check": "node scripts/normalize-tags.mjs --check",
     "tags:fix": "node scripts/normalize-tags.mjs --write",
+    "flavor:check": "node scripts/check-ai-flavor.mjs --changed --check",
+    "flavor:scan": "node scripts/check-ai-flavor.mjs",
     "geo:audit": "node scripts/geo-audit.mjs",
     "covers": "node --env-file-if-exists=.env scripts/generate-covers.mjs",
     "covers:write": "node --env-file-if-exists=.env scripts/generate-covers.mjs --write",

@@ -38,6 +38,13 @@ find content/ -name "*.md" -newer <(date -v-7d +%Y-%m-%d) 2>/dev/null | head -20
 - 若文件在 `content/zh/`，检查对应的 `content/en/` 路径是否存在同名文件，反之亦然
 - 对应文件若存在，检查其内容不为空（排除只有 front matter 的占位文件）
 
+#### AI 味句式检查（仅中文文章）
+运行 `node scripts/check-ai-flavor.mjs <文件>`（无参数时用 `--changed` 检查本次 git 改动），报告其输出：
+- **E1-E3（错误）**：「不是…而是」出现在 title/description、标题行或 blockquote —— 金句位必须改写
+- **E4（错误）**：「而是」3 行内连发 —— 每组保留最强一处，其余改写
+- **W1/W2（警告）**：密度超 0.5/千字，或「本质上」「不仅仅是」「这意味着」超频 —— 建议削减
+- 改写手法参考 CLAUDE.md「写作反模式」一节
+
 #### 可选项检查
 - **cover image**：front matter 中是否有 `cover` 字段（提示但不报错）
 
