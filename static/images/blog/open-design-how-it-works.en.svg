@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="590" viewBox="0 0 880 590" role="img" aria-labelledby="t d">
+  <title id="t">How Open Design works</title>
+  <desc id="d">Your installed coding agent is the design engine; Open Design orchestrates three layers of files — skills, design systems and plugins — running a brief to memory loop that emits HTML/PDF/PPTX/MP4.</desc>
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker>
+    <style>
+      .h{font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;}
+      .m{font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;}
+    </style>
+  </defs>
+
+  <rect width="880" height="590" fill="#f7f9fb"/>
+  <rect x="16" y="14" width="848" height="562" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- title -->
+  <text class="h" x="40" y="52" font-size="25" font-weight="700" fill="#0f766e">How Open Design works</text>
+  <text class="m" x="40" y="78" font-size="14" fill="#64748b">Your coding agent is the engine; OD orchestrates skills, design systems &amp; plugins</text>
+
+  <!-- engine layer -->
+  <rect x="150" y="98" width="580" height="56" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+  <text class="h" x="440" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#16233a">Your installed coding agent = the design engine</text>
+  <text class="m" x="440" y="143" text-anchor="middle" font-size="11.5" fill="#64748b">Claude Code · Codex · Cursor · Gemini · 8+ CLIs on PATH, or BYOK to a compatible endpoint</text>
+  <line x1="440" y1="154" x2="440" y2="180" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+
+  <!-- orchestration layer -->
+  <rect x="60" y="182" width="760" height="112" rx="12" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.8"/>
+  <text class="h" x="440" y="208" text-anchor="middle" font-size="15" font-weight="700" fill="#0f766e">Open Design orchestration layer (local-first · ships no model)</text>
+  <g>
+    <rect x="88" y="224" width="220" height="52" rx="9" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.4"/>
+    <text class="h" x="198" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">Skills</text>
+    <text class="m" x="198" y="264" text-anchor="middle" font-size="11" fill="#64748b">the agent's taste</text>
+    <rect x="330" y="224" width="220" height="52" rx="9" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.4"/>
+    <text class="h" x="440" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">Design systems · DESIGN.md</text>
+    <text class="m" x="440" y="264" text-anchor="middle" font-size="11" fill="#64748b">the brand</text>
+    <rect x="572" y="224" width="220" height="52" rx="9" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.4"/>
+    <text class="h" x="682" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">Plugins</text>
+    <text class="m" x="682" y="264" text-anchor="middle" font-size="11" fill="#64748b">runnable workflows</text>
+  </g>
+  <line x1="440" y1="294" x2="440" y2="316" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#ah)"/>
+
+  <!-- agent-native loop -->
+  <text class="h" x="440" y="334" text-anchor="middle" font-size="12.5" font-weight="700" fill="#475569">Agent-native loop</text>
+  <g>
+    <rect x="60" y="344" width="128" height="58" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.3"/>
+    <text class="h" x="124" y="369" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">① Brief</text>
+    <text class="m" x="124" y="388" text-anchor="middle" font-size="10.5" fill="#64748b">pick a plugin</text>
+    <rect x="213" y="344" width="128" height="58" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.3"/>
+    <text class="h" x="277" y="369" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">② Direction</text>
+    <text class="m" x="277" y="388" text-anchor="middle" font-size="10.5" fill="#64748b">design system</text>
+    <rect x="366" y="344" width="128" height="58" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.3"/>
+    <text class="h" x="430" y="369" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">③ Artifact</text>
+    <text class="m" x="430" y="388" text-anchor="middle" font-size="10.5" fill="#64748b">sandbox preview</text>
+    <rect x="519" y="344" width="128" height="58" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.3"/>
+    <text class="h" x="583" y="369" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">④ Deliver</text>
+    <text class="m" x="583" y="388" text-anchor="middle" font-size="10.5" fill="#64748b">export / to code</text>
+    <rect x="672" y="344" width="128" height="58" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.3"/>
+    <text class="h" x="736" y="369" text-anchor="middle" font-size="13" font-weight="700" fill="#16233a">⑤ Memory</text>
+    <text class="m" x="736" y="388" text-anchor="middle" font-size="10.5" fill="#64748b">next-run defaults</text>
+  </g>
+  <line x1="188" y1="373" x2="211" y2="373" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="341" y1="373" x2="364" y2="373" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="494" y1="373" x2="517" y2="373" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+  <line x1="647" y1="373" x2="670" y2="373" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"/>
+  <path d="M736,402 L736,420 L124,420 L124,404" fill="none" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <text class="m" x="440" y="437" text-anchor="middle" font-size="11" fill="#64748b">Gets smarter: screenshots, fonts, palettes &amp; approved artifacts become next-run defaults</text>
+
+  <!-- outputs -->
+  <rect x="150" y="452" width="580" height="54" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+  <text class="h" x="440" y="476" text-anchor="middle" font-size="14" font-weight="700" fill="#16233a">Real files out</text>
+  <text class="m" x="440" y="495" text-anchor="middle" font-size="11" fill="#64748b">HTML (inline) · PDF · PPTX · MP4 · ZIP · hand off to Cursor/Codex → React/Vue/Next</text>
+
+  <!-- legend + footer -->
+  <rect x="228" y="528" width="14" height="10" rx="2" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+  <text class="m" x="248" y="537" font-size="11" fill="#64748b">Provided by Open Design</text>
+  <rect x="446" y="528" width="14" height="10" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text class="m" x="466" y="537" font-size="11" fill="#64748b">Yours / outputs</text>
+  <text class="h" x="40" y="537" font-size="12" font-weight="700" letter-spacing="2" fill="#0f766e">CUBXXW.COM</text>
+</svg>
