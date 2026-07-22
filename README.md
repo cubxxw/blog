@@ -155,6 +155,11 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Write Your Prompts as Loops: One Person's Loop Engineering Practice](https://cubxxw.com/ai-agent/posts/prompt-loop-engineering-practice/)
 - [You Think You're the Player — But "Player" Is Also a Role: Rereading the Samādhi of Play](https://cubxxw.com/growth/posts/2026-07-20-the-player-is-also-a-role/)
 - [AI Can't Edit a Shot You Never Filmed: A Solo Creator's Video Pipeline for 2026](https://cubxxw.com/ai-agent/posts/solo-creator-video-pipeline/)
+- [When Anyone Can Build the Thing, "He Built It" Becomes the Signal](https://cubxxw.com/ai-agent/posts/super-individual-stack-reputation/)
+- [Your Product Can Be Copied Overnight. Your Readers Can't.](https://cubxxw.com/ai-agent/posts/super-individual-stack-distribution/)
+- [AI Writes Requirements for Free, and That's the Most Dangerous Part](https://cubxxw.com/ai-agent/posts/super-individual-stack-judgment/)
+- [I Ran Ten Agents Overnight, Woke Up to Ten PRs, and Then I Got Stuck](https://cubxxw.com/ai-agent/posts/super-individual-stack-production/)
+- [Your Gear Is Arming Your Competitors Too](https://cubxxw.com/ai-agent/posts/super-individual-stack-four-layers/)
 - [How Many of Your Mac Tools Are Fighting Each Other? I Designed a Dev-Machine Checkup Skill](https://cubxxw.com/ai-agent/posts/devbox-doctor-design/)
 - [How to Design a Skill Worth Having: I Dissected a Plugin That Dared to Delete My Files](https://cubxxw.com/ai-agent/posts/designing-valuable-agent-skills/)
 - [Field Notes: I Built My Knowledge Layer into an Arsenal](https://cubxxw.com/ai-agent/posts/info-to-creation-arsenal/)
@@ -246,11 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Vector Database Learning](https://cubxxw.com/ai-agent/posts/vector-database-learning/)
 - [OpenIM: Version Control & Testing Workflow](https://cubxxw.com/engineering/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
 - [Emerging Challenges and Trends in 2024](https://cubxxw.com/ai-agent/posts/emerging-challenges-and-trends-in-2024/)
-- [2023 Annual Summary Reflections and Aspirations](https://cubxxw.com/growth/posts/2023-annual-summary-reflections-and-aspirations/)
-- [GitOps & Kubernetes Deployment Strategies](https://cubxxw.com/engineering/posts/gitops-practice-theory-part/)
-- [Deployment and Design of Management Backend and Monitoring](https://cubxxw.com/engineering/posts/deployment-and-design-of-management-backend-and-monitoring/)
-- [Hugo Advanced Tutorial](https://cubxxw.com/engineering/posts/hugo-advanced-tutorial/)
-- [Kubernetes for Kustomize Learning](https://cubxxw.com/engineering/posts/kubernetes-for-kustomize-learning/)
 <!-- My-Blog-EN:END -->
 
 
