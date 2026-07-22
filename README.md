@@ -259,6 +259,8 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [Claude Code 之父的 121 条用法：我把它拆成了 10 个今晚就能改的配置](https://cubxxw.com/zh/ai-agent/posts/claude-code-boris-121-tips-playbook/)
+- [把提示词写成循环：一个人的 Loop 工程实践](https://cubxxw.com/zh/ai-agent/posts/prompt-loop-engineering-practice/)
 - [你以为你是玩家，可「玩家」也是一个角色：重读游戏三昧](https://cubxxw.com/zh/growth/posts/2026-07-20-the-player-is-also-a-role/)
 - [AI 剪不出你没拍的镜头](https://cubxxw.com/zh/ai-agent/posts/solo-creator-video-pipeline/)
 - [当东西人人做得出来，「这是他做的」就成了信号](https://cubxxw.com/zh/ai-agent/posts/super-individual-stack-reputation/)
@@ -357,8 +359,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Go 源码里的这些 go: 指令 && go 自动化工具](https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/)
 - [Go 语言中的并发类型检查与跨平台开发](https://cubxxw.com/zh/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
 - [向量数据库的学习](https://cubxxw.com/zh/ai-agent/posts/vector-database-learning/)
-- [OpenIM：构建高效的版本控制和测试工作流程](https://cubxxw.com/zh/engineering/posts/openim-building-an-efficient-version-control-and-testing-workflow/)
-- [AI元年: 2024年的新兴挑战与趋势](https://cubxxw.com/zh/ai-agent/posts/emerging-challenges-and-trends-in-2024/)
 <!-- My-Blog-ZH:END -->
 
 
