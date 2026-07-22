@@ -1,5 +1,5 @@
 ---
-title: 'GoReleaser：自动化你的软件发布'
+title: 'GoReleaser 教程：goreleaser.yaml 配置与发布自动化实战'
 ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:07:39+08:00
 draft: false
@@ -7,9 +7,9 @@ showtoc: true
 tocopen: false
 type: posts
 author: '熊鑫伟，我'
-keywords: ['GoReleaser', 'CI/CD', '自动化发布', 'Golang ', '软件开发']
+keywords: ['GoReleaser', 'goreleaser.yaml', 'GoReleaser 配置', 'Go release', 'CI/CD', '自动化发布', 'GitHub Actions', 'Golang']
 tags: ["DevOps", "Go"]
-description: '本文介绍 GoReleaser 工具，一个帮助开发者自动化软件发布流程的强大工具。通过使用 GoReleaser，你可以简化构建、打包和发布软件的步骤，提高开发效率。'
+description: 'GoReleaser 实战教程：从 goreleaser init 生成 .goreleaser.yaml 开始，逐段讲解 builds、archives、name_template、Docker 镜像、签名与 GitHub Release 配置，并给出接入 GitHub Actions 的完整自动化发布流程。'
 tldr:
   - "GoReleaser通过defaulting、building、releasing、announcing四个步骤完全自动化Go项目的软件发布流程，支持多平台构建、Docker镜像推送、GitHub发布等功能。"
   - "开发者可在.goreleaser.yaml配置文件中自定义构建选项、打包格式、签名认证、云存储上传等参数，实现灵活高效的发布工作流。"

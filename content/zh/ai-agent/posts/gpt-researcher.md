@@ -10,7 +10,7 @@ keywords: []
 tags: ["AI", "Project Learning"]
 author: ["Xinwei Xiong", "Me"]
 description: >
-  GPT Researcher 是开源自主 AI 研究代理，聚合 20 多个信息源，几分钟内生成 2000 词以上的深度研究报告。本文拆解其多代理架构、LangGraph 工作流与检索抓取模块，并给出安装配置步骤、成本考量与系统学习路径。
+  GPT Researcher 是 ChatGPT Deep Research 的免费开源替代品：可自托管的 AI 研究代理，聚合 20 多个信息源，几分钟生成带引用的 2000 词深度报告。本文拆解其 LangGraph 多代理架构与检索抓取模块，给出 Docker 安装步骤、真实 API 成本，以及何时该选它而非闭源方案。
 aliases:
   - /zh/posts/ai-projects/gpt-researcher/
 tldr:

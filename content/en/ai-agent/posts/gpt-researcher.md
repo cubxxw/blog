@@ -13,7 +13,7 @@ tags:
   - Open Source
   - Project Learning
 description: >
-  GPT Researcher is an open source AI agent that turns 20+ web sources into 2,000+ word research reports in minutes. Learn its architecture, setup, and cost.
+  GPT Researcher is a free, self-hosted alternative to ChatGPT Deep Research: an open source agent that turns 20+ web sources into cited 2,000+ word reports in minutes. This deep dive covers its LangGraph multi-agent architecture, installation with Docker, real API costs, and when to pick it over closed tools.
 aliases:
   - /posts/ai-projects/gpt-researcher/
 tldr:

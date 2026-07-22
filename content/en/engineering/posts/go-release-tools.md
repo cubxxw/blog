@@ -1,15 +1,15 @@
 ---
-title: 'GoReleaser: Automate your software releases'
+title: 'GoReleaser Tutorial: .goreleaser.yaml Config Guide'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:07:39+08:00'
 draft: false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]
-keywords: ['GoReleaser', 'Software Releases', 'Release Automation', 'Go Programming Language', 'Continuous Integration', 'Continuous Deployment']
+keywords: ['GoReleaser', 'goreleaser.yaml', 'GoReleaser configuration', 'name_template', 'Go release automation', 'GitHub Actions', 'Continuous Integration', 'Continuous Deployment']
 tags: ["Blog", "Go", "DevOps"]
 description: >
-    Learn how to streamline and automate your software release process using GoReleaser, a powerful tool for Go projects.
+    Hands-on GoReleaser tutorial: generate .goreleaser.yaml with goreleaser init, then walk through builds, archives, name_template, Docker images, signing, and GitHub Release settings — ending with a full GitHub Actions release pipeline for Go projects.
 tldr:
   - "GoReleaser automates software release workflows for Go projects through four stages: defaulting, building, releasing, and announcing, with sensible defaults and extensive customization options."
   - "The tool builds multi-platform binaries, creates archives and packages, generates Docker images, and produces checksums while supporting GPG/Cosign signing for security verification."
