@@ -8,7 +8,7 @@ tocopen: false
 author: ["Xinwei Xiong", "Me"]
 keywords: ['Cross Platform Compilation', 'Go Programming Language', 'Build Process', 'Compatibility', 'Distribution']
 tags: ["Blog", "Go"]
-description: 'Learn how to efficiently compile Go programs for multiple platforms, ensuring compatibility and ease of distribution.'
+description: 'Cross-building multi-arch Docker images with buildx and QEMU: adjusting base images and dependency URLs per target architecture, why complex builds still need real ARM hardware, and how to verify with buildx imagetools inspect.'
 tldr:
   - "Docker buildx enables cross-platform Docker image compilation from X86/AMD64 machines to ARM architectures using QEMU emulation without native ARM hardware."
   - "Base images and Dockerfile dependencies must support target architectures; architecture-specific binaries and downloads must be explicitly changed or ARM images may fail at runtime."

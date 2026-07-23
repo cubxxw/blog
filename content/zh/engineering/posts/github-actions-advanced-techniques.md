@@ -9,7 +9,7 @@ type: posts
 author: '熊鑫伟，我'
 keywords: ['Github Actions', 'CI/CD', '自动化', '软件开发', 'DevOps', '技术自动化', '代码集成', '代码部署']
 tags: ["Blog", "DevOps", "Automation"]
-description: '本文深入探讨了 Github Actions 的高级使用技巧，旨在帮助开发者更好地理解和利用这一强大的自动化工具来优化软件开发流程。通过实际案例和详细的步骤说明，您将学习到如何设置高效的 CI/CD 管道，以及如何通过 Github Actions 自动化常见的开发任务。'
+description: 'GitHub Actions 进阶实战：用 Docker 容器封装自定义 action、写 action.yml 定义输入输出，配置并发控制、GITHUB_TOKEN 权限与依赖缓存，串成打包发布、镜像构建部署和看板自动化的完整 CI/CD 流程。'
 tldr:
   - "GitHub Actions支持创建Docker容器操作、使用标签版本管理、通过action.yml元数据定义输入输出，实现高度可复用的自动化工作流。"
   - "CI/CD工作流需要配置触发事件、并发控制、权限管理和缓存依赖优化，可通过action.yml、并发组、GITHUB_TOKEN权限和缓存策略提升效率。"

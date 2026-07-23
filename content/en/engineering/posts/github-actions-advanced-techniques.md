@@ -1,6 +1,6 @@
 ---
 title: 'Github Actions Advanced Techniques'
-description: Master GitHub Actions with advanced workflows, custom commands, automation patterns, and best practices for CI/CD pipelines.
+description: Build custom GitHub Actions with Docker or composite steps, wire up concurrency groups, GITHUB_TOKEN permissions, and dependency caching, then automate packaging, Docker image deploys, and project-board updates end to end.
 ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:17:02+08:00
 draft : false
