@@ -34,7 +34,7 @@ tldr:
   <details class="meet-atlas-details">
     <summary class="meet-atlas-summary">
       <span class="meet-atlas-title">Want to read my writing?</span>
-      <span class="meet-atlas-hint">Open the reading atlas · curated starting points on four paths</span>
+      <span class="meet-atlas-hint">The atlas opens by itself, no click needed · curated starting points on four paths</span>
     </summary>
 <div class="post-content about-atlas">
 

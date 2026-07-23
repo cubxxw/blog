@@ -34,7 +34,7 @@ tldr:
   <details class="meet-atlas-details">
     <summary class="meet-atlas-summary">
       <span class="meet-atlas-title">想读我的文字？</span>
-      <span class="meet-atlas-hint">展开阅读地图 · 四条路径的精选起点</span>
+      <span class="meet-atlas-hint">阅读地图会自动展开，无需点击 · 四条路径的精选起点</span>
     </summary>
 <div class="post-content about-atlas">
 

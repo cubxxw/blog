@@ -1,6 +1,16 @@
 {{- define "main" }}
 {{- $isZH := eq .Language.Lang "zh" }}
 {{- $products := first 3 site.Data.products.products }}
+{{- /* article levels: "?" blocks along the road; pages resolve per language,
+       missing translations are skipped (the HUD total adapts) */}}
+{{- $levels := slice
+  (dict "x" 2140 "page" "/growth/posts/metacognitive-transformation-review" "hzh" "觉察自己的思考——元认知转变复盘" "hen" "Watching your own thinking — a metacognition review")
+  (dict "x" 3160 "page" "/engineering/posts/the-art-of-asking-questions-in-open-source-communities" "hzh" "在开源社区高效提问——参与开源的第一课" "hen" "Asking good questions — lesson one of open source")
+  (dict "x" 3800 "page" "/engineering/posts/my-hugo" "hzh" "这个博客是怎么搭起来的" "hen" "How this blog was built")
+  (dict "x" 7430 "page" "/growth/posts/2025-annual-review" "hzh" "站在高处回望：一年的深度复盘" "hen" "The view from up here: a year in deep review")
+  (dict "x" 15020 "page" "/growth/posts/super-individual-ai-product-and-solo-builder-stack" "hzh" "超级个体：一个人 + AI 能走多远" "hen" "Super-individual: how far one person plus AI can go")
+  (dict "x" 16280 "page" "/growth/posts/weight-of-self-in-ai-age" "hzh" "当 AI 什么都会，「我」的重量在哪里？" "hen" "When AI can do everything, where is the weight of me?")
+}}
 {{- $shots := slice
   (dict "src" "01-nantaihang" "w" 675 "h" 900 "pzh" "南太行 · 中国" "pen" "Nan-Taihang · China" "nzh" "瀑布从头顶的崖壁落下来" "nen" "A waterfall right over the trail" "azh" "南太行，瀑布从崖壁上方落下" "aen" "Nan-Taihang: a waterfall pours off the cliff above the trail")
   (dict "src" "02-g318" "w" 675 "h" 900 "pzh" "川藏 318 · 中国" "pen" "G318 · China" "nzh" "雪山一直在窗外" "nen" "Snow peaks outside the window" "azh" "川藏 318 国道旁，雪山脚下与越野车合影" "aen" "By a car beneath snow mountains on G318")
@@ -17,10 +27,13 @@
 
 <div class="about-page">
 
-<!-- ═══ BEAR QUEST · a side-scrolling walk through a life ═══
-     Auto-walks by default; hold →/D to speed up, ←/A to walk back,
-     drag anywhere, Space (or tap the bear) to jump. Without JS or
-     with reduced motion, everything lays out as a readable column. -->
+<!-- ═══ BEAR QUEST · life, played as a narrative game ═══
+     A START screen opens the run. Scrolling down ADVANCES the story
+     (released once the run is cleared — the HUD always carries a skip
+     link). The road has real terrain: a hike up, one climbing pitch,
+     the 5,416 m summit, then down. "?" blocks are article levels the
+     bear head-bumps open; in auto mode he hops them himself. Without
+     JS or with reduced motion, everything is a readable column. -->
 <section class="bq" id="bq" aria-label="{{ if $isZH }}关于我 · 一段可以行走的旅程{{ else }}About me · a walkable journey{{ end }}">
 
   <!-- sky -->
@@ -58,7 +71,7 @@
       <p class="bq-hello-sub">{{ if $isZH }}这一页是一段路。陪我走一小段吧。{{ else }}This page is a road. Walk a little of it with me.{{ end }}</p>
     </div>
     <div class="bq-prop bq-sign bq-sign--small" style="--x:1120px">
-      <p>{{ if $isZH }}小熊会自己往前走——<br>也可以按住 <kbd>→</kbd> 加速、拖拽世界、<kbd>空格</kbd> 跳一下。{{ else }}The bear walks on his own —<br>hold <kbd>→</kbd> to hurry, drag the world, <kbd>Space</kbd> to hop.{{ end }}</p>
+      <p>{{ if $isZH }}小熊会自己往前走；<br>滚轮下滑是快进剧情，<kbd>空格</kbd> 跳起来顶亮问号砖。{{ else }}The bear walks on his own;<br>scrolling fast-forwards the story, <kbd>Space</kbd> head-bumps the ? blocks.{{ end }}</p>
     </div>
 
     <!-- ── ch.1 2001 ── -->
@@ -99,6 +112,12 @@ $ gh repo view openim
       <figcaption><span class="bq-photo-place">{{ if $isZH }}{{ $s.pzh }}{{ else }}{{ $s.pen }}{{ end }}</span><span class="bq-photo-note">{{ if $isZH }}{{ $s.nzh }}{{ else }}{{ $s.nen }}{{ end }}</span></figcaption>
     </figure>
     {{- end }}
+    <div class="bq-prop bq-sign bq-sign--small bq-sign--cliff" style="--x:6290px">
+      <p>{{ if $isZH }}这一段是攀岩。抓稳。{{ else }}This bit is a climb. Hold on.{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--small bq-sign--peak" style="--x:7510px">
+      <p>SUMMIT · 5416 m</p>
+    </div>
     <div class="bq-prop bq-sign bq-sign--small" style="--x:11800px">
       <p>{{ if $isZH }}在海拔 5416 米，我找到了和自己对话的空间。<br>这条路的完整版，在<a href="{{ "travel" | relLangURL }}">旅行</a>那一页。{{ else }}At 5,416 m I found the space to talk with myself.<br>The full road lives on the <a href="{{ "travel" | relLangURL }}">travel</a> page.{{ end }}</p>
     </div>
@@ -160,8 +179,25 @@ $ gh repo view openim
       <p class="bq-sig">{{ if $isZH }}期待我们的连接。— 熊鑫伟{{ else }}Looking forward to our connection. — Xinwei Xiong{{ end }}</p>
     </div>
     <div class="bq-prop bq-sign bq-sign--small bq-sign--end" style="--x:21160px">
-      <p>{{ if $isZH }}终点啦。想读我的文字？<br>往下滚，有一张阅读地图 ↓{{ else }}The end. Want my writing?<br>Scroll down — there's a reading atlas ↓{{ end }}</p>
+      <p>{{ if $isZH }}通关啦。想读我的文字？<br>往下滚——阅读地图已经自动展开 ↓{{ else }}Run cleared. Want my writing?<br>Scroll on — the reading atlas has opened itself ↓{{ end }}</p>
     </div>
+
+    <!-- ── article levels: "?" blocks the bear head-bumps open ── -->
+    {{- range $i, $lv := $levels }}
+    {{- with site.GetPage $lv.page }}
+    <div class="bq-prop bq-level" style="--x:{{ $lv.x }}px" data-level="{{ $i }}">
+      <a class="bq-level-card" href="{{ .RelPermalink }}">
+        <span class="bq-level-tag">LV.{{ add $i 1 }}</span>
+        <span class="bq-level-title">{{ .Title }}</span>
+        <span class="bq-level-hook">{{ if $isZH }}{{ $lv.hzh }}{{ else }}{{ $lv.hen }}{{ end }}</span>
+        <span class="bq-level-go">{{ if $isZH }}阅读这一篇 →{{ else }}Read it →{{ end }}</span>
+      </a>
+      <button class="bq-level-block" type="button" aria-label="{{ if $isZH }}打开第 {{ add $i 1 }} 关文章卡{{ else }}Open level {{ add $i 1 }} article card{{ end }}">
+        <span class="bq-level-q">?</span><span class="bq-level-s">★</span>
+      </button>
+    </div>
+    {{- end }}
+    {{- end }}
 
   </div>
 
@@ -192,6 +228,7 @@ $ gh repo view openim
   <!-- HUD -->
   <div class="bq-hud" id="bqHud">
     <span class="bq-km" id="bqKm" aria-hidden="true"><b id="bqKmNum">0</b> km</span>
+    <span class="bq-lv" id="bqLvChip" aria-hidden="true">LV <b id="bqLvNum">0</b>/<span id="bqLvTotal">6</span></span>
     <nav class="bq-chapters" id="bqChapters" aria-label="{{ if $isZH }}章节{{ else }}Chapters{{ end }}"></nav>
     <span class="bq-words" id="bqWords" aria-hidden="true">
       <i data-word="0">{{ if $isZH }}真实{{ else }}Authentic{{ end }}</i>
@@ -199,6 +236,17 @@ $ gh repo view openim
       <i data-word="2">{{ if $isZH }}连接者{{ else }}Connector{{ end }}</i>
     </span>
     <button class="bq-play" id="bqPlay" type="button" aria-label="{{ if $isZH }}暂停 / 继续{{ else }}Pause / play{{ end }}" aria-pressed="false"></button>
+    <a class="bq-skip" id="bqSkip" href="#start-here">{{ if $isZH }}跳过 ↓{{ else }}Skip ↓{{ end }}</a>
+  </div>
+
+  <!-- START — life, played as a game -->
+  <div class="bq-start" id="bqStart">
+    <p class="bq-start-kicker">BEAR QUEST</p>
+    <p class="bq-start-title">{{ if $isZH }}人生如戏{{ else }}Life, played{{ end }}</p>
+    <p class="bq-start-tag">{{ if $isZH }}游戏人生——观察世界，观察自己；理解世界，理解自己。这一页是我的存档。{{ else }}Play life as a game — watch the world, watch yourself; understand both. This page is my save file.{{ end }}</p>
+    <button class="bq-start-btn" id="bqStartBtn" type="button">▶ START</button>
+    <p class="bq-start-hint">{{ if $isZH }}滚动推进剧情 · <kbd>←</kbd><kbd>→</kbd> 行走 · <kbd>空格</kbd> 跳跃{{ else }}Scroll to advance · <kbd>←</kbd><kbd>→</kbd> walk · <kbd>Space</kbd> to jump{{ end }}</p>
+    <a class="bq-start-skip" id="bqStartSkip" href="#start-here">{{ if $isZH }}直接看文字版 ↓{{ else }}Straight to the text ↓{{ end }}</a>
   </div>
 
 </section>
@@ -225,6 +273,12 @@ $ gh repo view openim
   var playBtn = document.getElementById('bqPlay');
   var chaptersNav = document.getElementById('bqChapters');
   var wordsHud = document.getElementById('bqWords');
+  var startOv = document.getElementById('bqStart');
+  var lvNum = document.getElementById('bqLvNum');
+  var lvTotalEl = document.getElementById('bqLvTotal');
+  var skipBtn = document.getElementById('bqSkip');
+  var atlasSec = document.querySelector('.meet-atlas');
+  var atlasDetails = document.querySelector('.meet-atlas-details');
 
   var L = 21600;                 /* world length */
   var BEAR_AT = 0.34;            /* bear's screen x as viewport fraction */
@@ -238,9 +292,63 @@ $ gh repo view openim
     { x: 15750, zh: '三个词', en: '3 words'  },
     { x: 18150, zh: '营地',   en: 'Camp'     }
   ];
+  /* elevation profile [worldX, px above flat ground]: hike up, one
+     steep climbing pitch, the 5,416 m summit, then back down */
+  var TERRAIN = [
+    [0, 0], [4300, 0], [5200, 40], [6060, 95], [6220, 100],
+    [6320, 180], [6460, 190], [7280, 205], [7620, 195],
+    [8300, 110], [9400, 40], [10300, 0], [21600, 0]
+  ];
   var isZH = document.documentElement.lang.indexOf('zh') === 0;
 
+  function elev(wx) {
+    if (wx <= TERRAIN[0][0]) return 0;
+    for (var i = 1; i < TERRAIN.length; i++) {
+      if (wx <= TERRAIN[i][0]) {
+        var a = TERRAIN[i - 1], b = TERRAIN[i];
+        return a[1] + (b[1] - a[1]) * (wx - a[0]) / (b[0] - a[0]);
+      }
+    }
+    return 0;
+  }
+
   stage.classList.add('bq-js');
+
+  /* terrain ridge svg drawn once from TERRAIN; rides inside the world */
+  (function () {
+    var NS = 'http://www.w3.org/2000/svg';
+    var x0 = 4300, x1 = 10300, H = 212;
+    var top = '';
+    TERRAIN.forEach(function (p) {
+      if (p[0] < x0 || p[0] > x1) return;
+      top += (top ? ' L' : 'M') + (p[0] - x0) + ' ' + (H - p[1]);
+    });
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'bq-terrain');
+    svg.setAttribute('width', x1 - x0);
+    svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', '0 0 ' + (x1 - x0) + ' ' + H);
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.left = x0 + 'px';
+    var fill = document.createElementNS(NS, 'path');
+    fill.setAttribute('class', 'bq-terrain-fill');
+    fill.setAttribute('d', top + ' L' + (x1 - x0) + ' ' + H + ' Z');
+    var line = document.createElementNS(NS, 'path');
+    line.setAttribute('class', 'bq-terrain-line');
+    line.setAttribute('d', top);
+    var notch = '';
+    for (var n = 1; n <= 4; n++) {  /* climbing holds on the steep face */
+      var f = n / 5;
+      var nx = 6220 + 100 * f - x0;
+      var ny = H - (100 + 80 * f);
+      notch += 'M' + (nx - 7) + ' ' + ny + ' h14 ';
+    }
+    var ticks = document.createElementNS(NS, 'path');
+    ticks.setAttribute('class', 'bq-terrain-notch');
+    ticks.setAttribute('d', notch);
+    svg.appendChild(fill); svg.appendChild(line); svg.appendChild(ticks);
+    world.insertBefore(svg, world.firstChild);
+  })();
 
   /* chapter dots */
   CHAPTERS.forEach(function (c, i) {
@@ -249,34 +357,68 @@ $ gh repo view openim
     b.className = 'bq-dot';
     b.setAttribute('aria-label', isZH ? c.zh : c.en);
     b.innerHTML = '<i></i><span>' + (isZH ? c.zh : c.en) + '</span>';
-    b.addEventListener('click', function () { tweenTo(c.x); userTouched(); });
+    b.addEventListener('click', function () { start(); tweenTo(c.x); userTouched(); });
     chaptersNav.appendChild(b);
   });
   var dots = chaptersNav.children;
 
-  /* props & berries */
+  /* props & berries; props in the mountain zone stand ON the terrain */
   var props = [].map.call(stage.querySelectorAll('.bq-prop'), function (el) {
     return { el: el, x: parseFloat(el.style.getPropertyValue('--x')) || 0, on: false };
+  });
+  props.forEach(function (p) {
+    var e = elev(p.x + (p.el.offsetWidth || 0) / 2);
+    if (e > 0.5) {
+      var lift = parseFloat(getComputedStyle(p.el).getPropertyValue('--lift')) || 0;
+      p.el.style.bottom = (lift + e) + 'px';
+    }
   });
   var berries = [].map.call(stage.querySelectorAll('[data-berry]'), function (el) {
     return { el: el, x: parseFloat(el.style.getPropertyValue('--x')) || 0, got: false };
   });
   var gotCount = 0;
 
+  /* article levels: "?" blocks; x is the block's centre */
+  var levels = [].map.call(stage.querySelectorAll('.bq-level'), function (el) {
+    return { el: el, x: (parseFloat(el.style.getPropertyValue('--x')) || 0) + 27, hit: false };
+  });
+  var lvGot = 0;
+  if (lvTotalEl) lvTotalEl.textContent = String(levels.length);
+
   var x = 0, vx = 0, keyR = false, keyL = false;
+  var started = false, finished = false;
   var paused = false, manualUntil = 0, tweenTarget = -1;
-  var dragging = false, dragStartX = 0, dragStartWorld = 0, dragVel = 0, lastDragX = 0, lastDragT = 0;
+  var dragging = false, dragStartX = 0, dragStartY = 0, dragStartWorld = 0, dragVel = 0,
+      lastDragX = 0, lastDragY = 0, lastDragT = 0;
   var inertia = 0;
   var vw = stage.clientWidth;
   var AUTO = 120, FAST = 460, BACK = -380;
   var visible = true;
+  var prevX = 0, facingBack = false;
   var last = performance.now();
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function maxX() { return Math.max(0, L - vw); }
   function userTouched() { manualUntil = performance.now() + 3200; }
-
   function tweenTo(t) { tweenTarget = clamp(t, 0, maxX()); }
+
+  function start() {
+    if (started) return;
+    started = true;
+    stage.classList.add('bq-run');
+    if (startOv) startOv.classList.add('bq-start-out');
+    last = performance.now();
+  }
+  function openAtlas() { if (atlasDetails) atlasDetails.open = true; }
+  function finish() {
+    if (finished) return;
+    finished = true;
+    stage.classList.remove('bq-run');
+    stage.classList.add('bq-done');   /* releases page scroll on touch */
+    openAtlas();
+    bear.classList.add('is-happy');
+    setTimeout(function () { bear.classList.remove('is-happy'); }, 900);
+  }
 
   function collect(b) {
     b.got = true; gotCount++;
@@ -288,43 +430,71 @@ $ gh repo view openim
     if (gotCount === berries.length) wordsHud.classList.add('bq-words-all');
   }
 
+  function hitLevel(lv) {
+    if (lv.hit) return;
+    lv.hit = true; lvGot++;
+    lv.el.classList.add('bq-hit');
+    if (lvNum) lvNum.textContent = String(lvGot);
+    bear.classList.add('is-happy');
+    setTimeout(function () { bear.classList.remove('is-happy'); }, 700);
+  }
+
   function jump() {
     if (bear.classList.contains('is-jump')) return;
     bear.classList.add('is-jump');
+    setTimeout(function () {  /* head reaches the blocks near the apex */
+      var bw = x + vw * BEAR_AT;
+      for (var m = 0; m < levels.length; m++) {
+        if (!levels[m].hit && Math.abs(bw - levels[m].x) < 95) { hitLevel(levels[m]); break; }
+      }
+    }, 170);
     setTimeout(function () { bear.classList.remove('is-jump'); }, 620);
   }
 
   function frame(now) {
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible) {
-      var moving;
+      var auto = started && !paused && !dragging && tweenTarget < 0 && now > manualUntil;
       if (dragging) {
-        moving = true;
+        /* x is written by pointermove */
       } else if (tweenTarget >= 0) {
         x += (tweenTarget - x) * Math.min(1, dt * 6);
         if (Math.abs(tweenTarget - x) < 2) { x = tweenTarget; tweenTarget = -1; }
-        moving = true;
       } else {
         if (keyR) { vx = FAST; userTouched(); }
         else if (keyL) { vx = BACK; userTouched(); }
         else if (Math.abs(inertia) > 8) { vx = inertia; inertia *= Math.pow(0.9, dt * 60); }
-        else if (!paused && now > manualUntil) { inertia = 0; vx = AUTO; }
+        else if (auto) { inertia = 0; vx = AUTO; }
         else vx = 0;
         x += vx * dt;
-        moving = Math.abs(vx) > 2;
       }
       x = clamp(x, 0, maxX());
-      if (x >= maxX() - 1 && !paused) moving = false;
+      var dx = x - prevX; prevX = x;
+      var moving = Math.abs(dx) > 0.15;
+      if (dx > 0.3) facingBack = false;
+      else if (dx < -0.3) facingBack = true;
+      if (started && !finished && x >= maxX() - 2) finish();
 
       world.style.transform = 'translate3d(' + (-x) + 'px,0,0)';
       mid.style.transform = 'translate3d(' + (-x * 0.4 % 1000) + 'px,0,0)';
       far.style.transform = 'translate3d(' + (-x * 0.18 % 1400) + 'px,0,0)';
 
-      var back = dragging ? (lastDragX - dragStartX) > 0 : (vx < -1 || (tweenTarget >= 0 && tweenTarget < x - 2));
-      bearFlip.style.transform = back ? 'scaleX(-1)' : '';
-      bear.classList.toggle('is-walking', !!moving);
-
       var bearWorld = x + vw * BEAR_AT;
+      /* the bear rides the terrain and leans into slopes */
+      var eB = elev(bearWorld);
+      var slope = (elev(bearWorld + 40) - elev(bearWorld - 40)) / 80;
+      var ang = clamp(Math.atan(slope) * 28.6, -14, 14);
+      bear.style.transform = 'translate3d(0,' + (-eB).toFixed(1) + 'px,0) rotate(' + (-ang).toFixed(1) + 'deg)';
+
+      bearFlip.style.transform = facingBack ? 'scaleX(-1)' : '';
+      bear.classList.toggle('is-walking', moving);
+
+      /* auto mode: the bear plays himself and hops the unhit blocks */
+      if (auto) {
+        for (var m = 0; m < levels.length; m++) {
+          if (!levels[m].hit && Math.abs(bearWorld - levels[m].x) < 30) { jump(); break; }
+        }
+      }
       /* reveal props near the viewport */
       for (var i = 0; i < props.length; i++) {
         var p = props[i];
@@ -353,30 +523,53 @@ $ gh repo view openim
   window.addEventListener('keydown', function (e) {
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
     if (!stageInView()) return;
-    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') { keyR = true; tweenTarget = -1; e.preventDefault(); }
-    else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') { keyL = true; tweenTarget = -1; e.preventDefault(); }
-    else if (e.key === ' ') { jump(); e.preventDefault(); }
+    var k = e.key;
+    if (!started) {
+      if (k === ' ' || k === 'Enter' || k === 'ArrowRight' || k === 'ArrowDown' || k === 'd' || k === 'D') { start(); e.preventDefault(); }
+      return;
+    }
+    if (k === 'ArrowDown' && finished) return; /* run cleared: keys scroll again */
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'd' || k === 'D') { keyR = true; tweenTarget = -1; e.preventDefault(); }
+    else if (k === 'ArrowLeft' || k === 'a' || k === 'A') { keyL = true; tweenTarget = -1; e.preventDefault(); }
+    else if (k === ' ') { jump(); e.preventDefault(); }
   });
   window.addEventListener('keyup', function (e) {
-    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keyR = false;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'd' || e.key === 'D') keyR = false;
     if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keyL = false;
   });
 
-  /* input: drag (mouse + touch; touch-action pan-y keeps vertical page scroll) */
+  /* input: wheel — scrolling down ADVANCES the run; released once cleared */
+  window.addEventListener('wheel', function (e) {
+    if (!stageInView()) return;
+    var d = e.deltaY * (e.deltaMode === 1 ? 33 : e.deltaMode === 2 ? 400 : 1);
+    if (!started) { if (d > 0) { start(); e.preventDefault(); } return; }
+    if (finished) return;
+    if ((d > 0 && x < maxX() - 1) || (d < 0 && x > 1)) {
+      e.preventDefault();
+      tweenTarget = -1;
+      inertia = clamp(inertia + d * 9, -3400, 3400);
+      userTouched();
+    }
+  }, { passive: false });
+
+  /* input: drag — horizontal drag or vertical swipe both drive the run
+     (touch-action is none until the run is cleared, then pan-y again) */
   stage.addEventListener('pointerdown', function (e) {
     if (e.target.closest('a, button')) return;
+    start();
     dragging = true; tweenTarget = -1; inertia = 0;
-    dragStartX = lastDragX = e.clientX; dragStartWorld = x; lastDragT = e.timeStamp;
+    dragStartX = lastDragX = e.clientX; dragStartY = lastDragY = e.clientY;
+    dragStartWorld = x; lastDragT = e.timeStamp;
     stage.classList.add('bq-drag');
     try { stage.setPointerCapture(e.pointerId); } catch (err) {}
     userTouched();
   });
   stage.addEventListener('pointermove', function (e) {
     if (!dragging) return;
-    x = clamp(dragStartWorld - (e.clientX - dragStartX) * 1.4, 0, maxX());
+    x = clamp(dragStartWorld - (e.clientX - dragStartX) * 1.4 - (e.clientY - dragStartY) * 2.2, 0, maxX());
     var dtms = e.timeStamp - lastDragT;
-    if (dtms > 0) dragVel = -(e.clientX - lastDragX) / dtms * 1400;
-    lastDragX = e.clientX; lastDragT = e.timeStamp;
+    if (dtms > 0) dragVel = (-(e.clientX - lastDragX) * 1.4 - (e.clientY - lastDragY) * 2.2) / dtms * 1000;
+    lastDragX = e.clientX; lastDragY = e.clientY; lastDragT = e.timeStamp;
   });
   function endDrag() {
     if (!dragging) return;
@@ -392,11 +585,35 @@ $ gh repo view openim
   bear.addEventListener('click', jump);
   stage.addEventListener('dblclick', function (e) { if (!e.target.closest('a, button')) jump(); });
 
+  /* blocks are also clickable — the bear hops along */
+  levels.forEach(function (lv) {
+    var btn = lv.el.querySelector('.bq-level-block');
+    if (btn) btn.addEventListener('click', function () { jump(); hitLevel(lv); });
+  });
+
   playBtn.addEventListener('click', function () {
+    if (!started) { start(); return; }
     paused = !paused;
     playBtn.setAttribute('aria-pressed', String(paused));
     stage.classList.toggle('bq-paused', paused);
   });
+
+  /* start overlay */
+  if (startOv) {
+    var sBtn = document.getElementById('bqStartBtn');
+    if (sBtn) sBtn.addEventListener('click', start);
+    startOv.addEventListener('click', function (e) { if (!e.target.closest('button, a')) start(); });
+  }
+
+  /* skip + atlas: it opens by itself, no click needed */
+  if (skipBtn) skipBtn.addEventListener('click', openAtlas);
+  var sSkip = document.getElementById('bqStartSkip');
+  if (sSkip) sSkip.addEventListener('click', openAtlas);
+  if (atlasSec && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en, obs) {
+      if (en[0].isIntersecting) { openAtlas(); obs.disconnect(); }
+    }, { threshold: 0.4 }).observe(atlasSec);
+  }
 
   /* pause the sim while off screen */
   if ('IntersectionObserver' in window) {
