@@ -1,151 +1,412 @@
 {{- define "main" }}
+{{- $isZH := eq .Language.Lang "zh" }}
+{{- $products := first 3 site.Data.products.products }}
+{{- $shots := slice
+  (dict "src" "01-nantaihang" "w" 675 "h" 900 "pzh" "南太行 · 中国" "pen" "Nan-Taihang · China" "nzh" "瀑布从头顶的崖壁落下来" "nen" "A waterfall right over the trail" "azh" "南太行，瀑布从崖壁上方落下" "aen" "Nan-Taihang: a waterfall pours off the cliff above the trail")
+  (dict "src" "02-g318" "w" 675 "h" 900 "pzh" "川藏 318 · 中国" "pen" "G318 · China" "nzh" "雪山一直在窗外" "nen" "Snow peaks outside the window" "azh" "川藏 318 国道旁，雪山脚下与越野车合影" "aen" "By a car beneath snow mountains on G318")
+  (dict "src" "03-prayer-flags" "w" 675 "h" 900 "pzh" "318 途中 · 经幡" "pen" "On the G318 · flags" "nzh" "风替人把经念了一遍" "nen" "The wind reads the prayers aloud" "azh" "垭口的经幡阵" "aen" "A pass covered in prayer flags")
+  (dict "src" "04-thorong-la" "w" 1046 "h" 900 "pzh" "Thorong La · 尼泊尔" "pen" "Thorong La · Nepal" "nzh" "5416 米，环线最高点" "nen" "5,416 m — top of the circuit" "azh" "尼泊尔 Thorong La 垭口 5416 米标牌" "aen" "Thorong La Pass sign at 5,416 m")
+  (dict "src" "05-fuji" "w" 675 "h" 900 "pzh" "富士山 · 日本" "pen" "Mt. Fuji · Japan" "nzh" "云海在脚下" "nen" "Clouds under your feet" "azh" "富士山下山路，云海铺在脚下" "aen" "Descending Mt. Fuji above a sea of clouds")
+  (dict "src" "06-kumano" "w" 675 "h" 900 "pzh" "熊野古道 · 日本" "pen" "Kumano Kodo · Japan" "nzh" "被走了一千年的路" "nen" "Walked for a thousand years" "azh" "熊野古道杉林间的千年石阶" "aen" "Mossy stone steps on the Kumano Kodo")
+  (dict "src" "07-sakura-bar" "w" 1200 "h" 900 "pzh" "樱花 bar · 途中" "pen" "Sakura bar · en route" "nzh" "路上遇见的人" "nen" "People you meet on the road" "azh" "旅途酒吧夜，和朋友们的合影" "aen" "A bar night with friends on the road")
+  (dict "src" "08-vientiane" "w" 675 "h" 900 "pzh" "万象 · 老挝" "pen" "Vientiane · Laos" "nzh" "佛像公园，坐进巨口里" "nen" "Inside the giant mouth" "azh" "万象佛像公园，坐在雕塑巨口中" "aen" "Sitting in the sculpted mouth, Buddha Park")
+  (dict "src" "09-vangvieng" "w" 675 "h" 900 "pzh" "万荣 · 老挝" "pen" "Vang Vieng · Laos" "nzh" "骑摩托上了山顶" "nen" "Rode a motorbike up" "azh" "万荣山顶，摩托车上挥老挝国旗" "aen" "On a motorbike at the Vang Vieng summit")
+  (dict "src" "10-taprohm" "w" 675 "h" 900 "pzh" "塔普伦寺 · 柬埔寨" "pen" "Ta Prohm · Cambodia" "nzh" "树把庙抱住了" "nen" "The trees hold the temple" "azh" "塔普伦寺，巨树抱住庙宇" "aen" "The giant tree embracing Ta Prohm")
+  (dict "src" "11-danang" "w" 1200 "h" 900 "pzh" "岘港 · 越南" "pen" "Da Nang · Vietnam" "nzh" "骑行去五行山" "nen" "Cycling to Marble Mountains" "azh" "岘港五行山下骑行留影" "aen" "Cycling stop below the Marble Mountains")
+}}
 
 <div class="about-page">
-  <div class="about-content">
-    {{ .Content | safeHTML }}
+
+<!-- ═══ BEAR QUEST · a side-scrolling walk through a life ═══
+     Auto-walks by default; hold →/D to speed up, ←/A to walk back,
+     drag anywhere, Space (or tap the bear) to jump. Without JS or
+     with reduced motion, everything lays out as a readable column. -->
+<section class="bq" id="bq" aria-label="{{ if $isZH }}关于我 · 一段可以行走的旅程{{ else }}About me · a walkable journey{{ end }}">
+
+  <!-- sky -->
+  <div class="bq-sky" aria-hidden="true">
+    <span class="bq-sun"></span>
+    <span class="bq-cloud bq-cloud--1"></span>
+    <span class="bq-cloud bq-cloud--2"></span>
+    <span class="bq-cloud bq-cloud--3"></span>
   </div>
+
+  <!-- parallax hills -->
+  <div class="bq-far" id="bqFar" aria-hidden="true">
+    <svg preserveAspectRatio="none" width="100%" height="100%">
+      <defs><pattern id="bqPatFar" patternUnits="userSpaceOnUse" width="1400" height="220">
+        <path class="bq-hill-far" d="M0,220 L0,150 Q160,60 340,140 Q470,190 620,120 Q800,30 980,130 Q1120,190 1260,140 Q1330,115 1400,150 L1400,220 Z"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#bqPatFar)"/>
+    </svg>
+  </div>
+  <div class="bq-mid" id="bqMid" aria-hidden="true">
+    <svg preserveAspectRatio="none" width="100%" height="100%">
+      <defs><pattern id="bqPatMid" patternUnits="userSpaceOnUse" width="1000" height="140">
+        <path class="bq-hill-mid" d="M0,140 L0,100 Q120,40 300,95 Q430,135 560,90 Q720,35 860,95 Q940,125 1000,100 L1000,140 Z"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#bqPatMid)"/>
+    </svg>
+  </div>
+
+  <!-- the world -->
+  <div class="bq-world" id="bqWorld">
+
+    <!-- ── ch.0 起点 ── -->
+    <div class="bq-prop bq-sign bq-sign--hello" style="--x:520px">
+      <h1 class="bq-hello">{{ if $isZH }}你好，我是<strong>熊鑫伟</strong>{{ else }}Hello, I'm <strong>Xinwei Xiong</strong>{{ end }}</h1>
+      <p class="bq-hello-sub">{{ if $isZH }}这一页是一段路。陪我走一小段吧。{{ else }}This page is a road. Walk a little of it with me.{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:1120px">
+      <p>{{ if $isZH }}小熊会自己往前走——<br>也可以按住 <kbd>→</kbd> 加速、拖拽世界、<kbd>空格</kbd> 跳一下。{{ else }}The bear walks on his own —<br>hold <kbd>→</kbd> to hurry, drag the world, <kbd>Space</kbd> to hop.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.1 2001 ── -->
+    <div class="bq-prop bq-house" style="--x:1900px" aria-hidden="true">
+      <svg viewBox="0 0 160 130"><path class="bq-house-roof" d="M10 62 L80 12 L150 62 Z"/><rect class="bq-house-body" x="26" y="62" width="108" height="66" rx="3"/><rect class="bq-house-door" x="70" y="86" width="24" height="42" rx="2"/><rect class="bq-house-win" x="40" y="74" width="18" height="16" rx="2"/><rect class="bq-house-win" x="102" y="74" width="18" height="16" rx="2"/></svg>
+    </div>
+    <div class="bq-prop bq-sign" style="--x:2260px">
+      <p>{{ if $isZH }}2001 年，我出生在中国。<br>读书、考试、一所没有光环的本科。{{ else }}Born in China, 2001.<br>School, exams, a university with no prestige attached.{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--em" style="--x:2760px">
+      <p>{{ if $isZH }}它反而让我更早明白——<br><em>资源不是起点，好奇心才是。</em>{{ else }}Which taught me early —<br><em>resources aren't the starting point. Curiosity is.</em>{{ end }}</p>
+    </div>
+
+    <!-- ── ch.2 开源 ── -->
+    <div class="bq-prop bq-term" style="--x:3400px">
+      <div class="bq-term-bar"><i></i><i></i><i></i></div>
+      <pre class="bq-term-body" aria-hidden="true">$ git shortlog -sn
+  #1  cubxxw
+$ gh repo view openim
+  ★ 16.5k</pre>
+      <p class="bq-term-cap">{{ if $isZH }}<a href="https://github.com/openimsdk/open-im-server" target="_blank" rel="noopener">OpenIM</a> 头号贡献者{{ else }}Top contributor to <a href="https://github.com/openimsdk/open-im-server" target="_blank" rel="noopener">OpenIM</a>{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign" style="--x:4040px">
+      <p>{{ if $isZH }}白天写开源，晚上写博客。<br>相信公开地建造，公开地学习。{{ else }}Open source by day, this blog by night.<br>Build in public, learn in public.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.3 远行 ── -->
+    <div class="bq-prop bq-flags" style="--x:4640px" aria-hidden="true">
+      <svg viewBox="0 0 260 90"><path class="bq-flagline" d="M4 78 Q130 8 256 78"/><g class="bq-flag-set"><path class="bq-flag bq-flag--a" d="M30 62 l26 -8 l-4 22 z"/><path class="bq-flag bq-flag--b" d="M76 44 l26 -7 l-4 21 z"/><path class="bq-flag bq-flag--c" d="M124 36 l26 -6 l-3 20 z"/><path class="bq-flag bq-flag--a" d="M172 44 l25 -6 l-4 20 z"/><path class="bq-flag bq-flag--b" d="M216 60 l25 -7 l-4 21 z"/></g></svg>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--trace" style="--x:4900px">
+      <p>{{ if $isZH }}2024 年，我决定走出去。{{ else }}In 2024 I decided to step out.{{ end }}</p>
+      <p class="bq-trace"><span>12</span>{{ if $isZH }}个月{{ else }}months{{ end }} · <span>9</span>{{ if $isZH }}国家{{ else }}countries{{ end }} · <span>35+</span>{{ if $isZH }}城市{{ else }}cities{{ end }} · <span>400+</span>km</p>
+    </div>
+    {{- range $i, $s := $shots }}
+    <figure class="bq-prop bq-photo{{ if gt $s.w 1000 }} bq-photo--wide{{ end }}{{ if modBool $i 2 }} bq-photo--alt{{ end }}" style="--x:{{ add 5450 (mul $i 560) }}px;--rot:{{ index (slice "-1.4" "1.1" "-0.7" "1.3" "-1" "0.8" "-1.2" "0.9" "-0.8" "1.2" "-1" ) $i }}deg">
+      <img src="/images/about/journey/{{ $s.src }}.webp" width="{{ $s.w }}" height="{{ $s.h }}" alt="{{ if $isZH }}{{ $s.azh }}{{ else }}{{ $s.aen }}{{ end }}" loading="lazy" decoding="async" draggable="false">
+      <figcaption><span class="bq-photo-place">{{ if $isZH }}{{ $s.pzh }}{{ else }}{{ $s.pen }}{{ end }}</span><span class="bq-photo-note">{{ if $isZH }}{{ $s.nzh }}{{ else }}{{ $s.nen }}{{ end }}</span></figcaption>
+    </figure>
+    {{- end }}
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:11800px">
+      <p>{{ if $isZH }}在海拔 5416 米，我找到了和自己对话的空间。<br>这条路的完整版，在<a href="{{ "travel" | relLangURL }}">旅行</a>那一页。{{ else }}At 5,416 m I found the space to talk with myself.<br>The full road lives on the <a href="{{ "travel" | relLangURL }}">travel</a> page.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.4 产品街 ── -->
+    <div class="bq-prop bq-arch" style="--x:12500px">
+      <p class="bq-arch-line">AI + Human = <strong>Superhuman</strong></p>
+      <p class="bq-arch-sub">{{ if $isZH }}技术应该延伸人的认知，而非替代。现在，我在造这些——{{ else }}Technology should extend cognition, not replace it. These are what I'm building —{{ end }}</p>
+    </div>
+    {{- range $i, $p := $products }}
+    <div class="bq-prop bq-kiosk" style="--x:{{ add 13260 (mul $i 640) }}px" data-color="{{ $p.color }}">
+      <div class="bq-kiosk-head">
+        <span class="bq-kiosk-mark">{{ $p.mark }}</span>
+        <span class="bq-kiosk-name">{{ $p.name }}</span>
+        <span class="bq-kiosk-stage">{{ if $isZH }}{{ $p.stage_zh }}{{ else }}{{ $p.stage_en }}{{ end }}</span>
+      </div>
+      <p class="bq-kiosk-line">{{ if $isZH }}{{ $p.headline_zh }}{{ else }}{{ $p.headline_en }}{{ end }}</p>
+      <div class="bq-kiosk-meter" aria-hidden="true"><i style="width:{{ $p.progress }}%"></i></div>
+      <a class="bq-kiosk-go" href="{{ $p.url }}" target="_blank" rel="noopener">{{ if $isZH }}去看看{{ else }}Visit{{ end }} ↗</a>
+    </div>
+    {{- end }}
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:15300px">
+      <p>{{ if $isZH }}全部产品与开源项目，在<a href="{{ "projects" | relLangURL }}">产品</a>那一页。{{ else }}Every product and open source project lives on the <a href="{{ "projects" | relLangURL }}">projects</a> page.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.5 三个词（走过收集） ── -->
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:15900px">
+      <p>{{ if $isZH }}前面有三颗果子。<br>如果你只能用三个词记住我——{{ else }}Three berries ahead.<br>If you only remember three words about me —{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-berry" style="--x:16500px" data-berry="0"><span class="bq-berry-fruit"></span><span class="bq-berry-word">{{ if $isZH }}真实{{ else }}Authentic{{ end }}</span></div>
+    <div class="bq-prop bq-berry" style="--x:17050px" data-berry="1"><span class="bq-berry-fruit"></span><span class="bq-berry-word">{{ if $isZH }}好奇{{ else }}Curious{{ end }}</span></div>
+    <div class="bq-prop bq-berry" style="--x:17600px" data-berry="2"><span class="bq-berry-fruit"></span><span class="bq-berry-word">{{ if $isZH }}连接者{{ else }}Connector{{ end }}</span></div>
+
+    <!-- ── ch.6 营地 ── -->
+    <div class="bq-prop bq-fire" style="--x:18400px" aria-hidden="true">
+      <span class="bq-fire-glow"></span>
+      <svg viewBox="0 0 120 100"><rect class="bq-log" x="18" y="80" width="84" height="10" rx="5" transform="rotate(8 60 85)"/><rect class="bq-log" x="18" y="80" width="84" height="10" rx="5" transform="rotate(-8 60 85)"/><path class="bq-flame bq-flame--big" d="M60 18 Q76 42 68 62 Q64 74 60 78 Q56 74 52 62 Q44 42 60 18 Z"/><path class="bq-flame bq-flame--small" d="M60 42 Q68 54 64 66 Q62 72 60 74 Q58 72 56 66 Q52 54 60 42 Z"/></svg>
+    </div>
+    <div class="bq-prop bq-sign" style="--x:18800px">
+      <p>{{ if $isZH }}走到这里，我们算认识了。<br>想继续聊——扫一个就能找到我。{{ else }}If you've walked this far, we've met.<br>Want to keep talking? One scan and you've found me.{{ end }}</p>
+    </div>
+    <figure class="bq-prop bq-qr" style="--x:19420px;--rot:-1.2deg">
+      <img src="/images/about/qr-wechat.webp" width="560" height="717" alt="{{ if $isZH }}微信二维码，微信号 cubxxwAI{{ else }}WeChat QR code, ID cubxxwAI{{ end }}" loading="lazy" decoding="async" draggable="false">
+      <figcaption><span>{{ if $isZH }}微信{{ else }}WeChat{{ end }}</span><code>cubxxwAI</code></figcaption>
+    </figure>
+    <figure class="bq-prop bq-qr" style="--x:19800px;--rot:1.1deg">
+      <img src="/images/about/qr-xhs.webp" width="560" height="765" alt="{{ if $isZH }}小红书二维码，账号 nsddd_top{{ else }}RedNote QR code, ID nsddd_top{{ end }}" loading="lazy" decoding="async" draggable="false">
+      <figcaption><span>{{ if $isZH }}小红书{{ else }}RedNote{{ end }}</span><code>nsddd_top</code><a href="https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3" target="_blank" rel="noopener">↗</a></figcaption>
+    </figure>
+    <div class="bq-prop bq-sign bq-sign--links" style="--x:20440px">
+      <p class="bq-linkrow">
+        <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:3293172751nss@gmail.com">Email</a>
+        <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X</a>
+        <a href="https://www.zhihu.com/people/3293172751" target="_blank" rel="noopener">{{ if $isZH }}知乎{{ else }}Zhihu{{ end }}</a>
+        <a href="https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4" target="_blank" rel="noopener">{{ if $isZH }}即刻{{ else }}Jike{{ end }}</a>
+        <a href="https://space.bilibili.com/1233089591" target="_blank" rel="noopener">Bilibili</a>
+      </p>
+      <p class="bq-sig">{{ if $isZH }}期待我们的连接。— 熊鑫伟{{ else }}Looking forward to our connection. — Xinwei Xiong{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--small bq-sign--end" style="--x:21160px">
+      <p>{{ if $isZH }}终点啦。想读我的文字？<br>往下滚，有一张阅读地图 ↓{{ else }}The end. Want my writing?<br>Scroll down — there's a reading atlas ↓{{ end }}</p>
+    </div>
+
+  </div>
+
+  <!-- ground -->
+  <div class="bq-ground" aria-hidden="true"></div>
+
+  <!-- the bear (fixed on screen, world moves) -->
+  <div class="bq-bear" id="bqBear" aria-hidden="true" role="presentation">
+    <span class="bq-bear-flip" id="bqBearFlip">
+      <svg viewBox="0 0 120 116" focusable="false">
+        <path class="tb-stick" d="M95 62 L106 102"/>
+        <rect class="tb-pack" x="15" y="48" width="27" height="33" rx="10"/>
+        <rect class="tb-leg tb-leg--a" x="45" y="84" width="11" height="24" rx="5.5"/>
+        <rect class="tb-leg tb-leg--b" x="64" y="84" width="11" height="24" rx="5.5"/>
+        <ellipse class="tb-ink" cx="60" cy="70" rx="27" ry="23"/>
+        <circle class="tb-ink" cx="57" cy="22" r="8"/><circle class="tb-ear" cx="57" cy="22" r="3.6"/>
+        <circle class="tb-ink" cx="87" cy="20" r="8"/><circle class="tb-ear" cx="87" cy="20" r="3.6"/>
+        <circle class="tb-ink" cx="72" cy="38" r="21"/>
+        <ellipse class="tb-muzzle" cx="85" cy="44" rx="9.5" ry="7.5"/>
+        <ellipse class="tb-nose" cx="89" cy="41" rx="3.2" ry="2.5"/>
+        <circle class="tb-eye" cx="75" cy="33" r="3"/>
+        <ellipse class="tb-blush" cx="66" cy="45" rx="4.6" ry="2.6"/>
+        <rect class="tb-paw" x="86" y="56" width="13" height="9" rx="4.5"/>
+      </svg>
+    </span>
+  </div>
+
+  <!-- HUD -->
+  <div class="bq-hud" id="bqHud">
+    <span class="bq-km" id="bqKm" aria-hidden="true"><b id="bqKmNum">0</b> km</span>
+    <nav class="bq-chapters" id="bqChapters" aria-label="{{ if $isZH }}章节{{ else }}Chapters{{ end }}"></nav>
+    <span class="bq-words" id="bqWords" aria-hidden="true">
+      <i data-word="0">{{ if $isZH }}真实{{ else }}Authentic{{ end }}</i>
+      <i data-word="1">{{ if $isZH }}好奇{{ else }}Curious{{ end }}</i>
+      <i data-word="2">{{ if $isZH }}连接者{{ else }}Connector{{ end }}</i>
+    </span>
+    <button class="bq-play" id="bqPlay" type="button" aria-label="{{ if $isZH }}暂停 / 继续{{ else }}Pause / play{{ end }}" aria-pressed="false"></button>
+  </div>
+
+</section>
+
+<div class="about-content">
+  {{ .Content | safeHTML }}
+</div>
+
 </div>
 
 <script>
 (function () {
-  var meet = document.getElementById('meet');
-  if (!meet) return;
-  var els = document.querySelectorAll('[data-meet]');
+  var stage = document.getElementById('bq');
+  if (!stage) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !('IntersectionObserver' in window)) {
-    els.forEach(function (el) { el.classList.add('meet-in'); });
-    return;
-  }
-  meet.classList.add('meet-js');
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('meet-in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
-  els.forEach(function (el) { io.observe(el); });
+  if (reduce) return; /* static column fallback stays */
 
-  /* ── The trail: a winding path drawn by scroll, walked by a bear ──
-     Nodes ([data-trail=fx]) anchor the route to the content flow; the
-     path is rebuilt from live layout, so it survives any breakpoint.
-     All motion is transform/dashoffset in one rAF loop. */
-  var svg = document.getElementById('trailSvg');
-  var basePath = document.getElementById('trailBase');
-  var ink = document.getElementById('trailInk');
-  var bear = document.getElementById('trailBear');
-  var flip = bear && bear.querySelector('.trail-bear-flip');
-  var km = document.getElementById('trailKm');
-  var kmNum = document.getElementById('trailKmNum');
-  var nodes = [].slice.call(meet.querySelectorAll('[data-trail]'));
-  if (!svg || !ink || !bear || !flip || nodes.length < 2) return;
+  var world = document.getElementById('bqWorld');
+  var far = document.getElementById('bqFar');
+  var mid = document.getElementById('bqMid');
+  var bear = document.getElementById('bqBear');
+  var bearFlip = document.getElementById('bqBearFlip');
+  var kmNum = document.getElementById('bqKmNum');
+  var playBtn = document.getElementById('bqPlay');
+  var chaptersNav = document.getElementById('bqChapters');
+  var wordsHud = document.getElementById('bqWords');
 
-  var total = 0, samples = [], built = false;
-  var curLen = 0, targetLen = 0, sampIdx = 0, dir = 1, meetTop = 0;
+  var L = 21600;                 /* world length */
+  var BEAR_AT = 0.34;            /* bear's screen x as viewport fraction */
   var KM_TOTAL = 412;
+  var CHAPTERS = [
+    { x: 0,     zh: '起点',   en: 'Start'    },
+    { x: 1800,  zh: '2001',   en: '2001'     },
+    { x: 3200,  zh: '开源',   en: 'Open src' },
+    { x: 4640,  zh: '远行',   en: 'The road' },
+    { x: 12350, zh: '在造',   en: 'Building' },
+    { x: 15750, zh: '三个词', en: '3 words'  },
+    { x: 18150, zh: '营地',   en: 'Camp'     }
+  ];
+  var isZH = document.documentElement.lang.indexOf('zh') === 0;
 
-  function build() {
-    var W = meet.offsetWidth, H = meet.offsetHeight;
-    if (!W || !H) return;
-    meetTop = meet.getBoundingClientRect().top + window.pageYOffset;
-    var band = Math.min(W, 1080), off = (W - band) / 2;
-    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    svg.style.width = W + 'px';
-    svg.style.height = H + 'px';
-    var squeeze = band < 700; /* narrow screens: push the route into the margins */
-    var pts = nodes.map(function (n) {
-      var r = n.getBoundingClientRect();
-      var fx = parseFloat(n.getAttribute('data-trail'));
-      if (squeeze) fx = fx < 0.5 ? fx * 0.4 : 1 - (1 - fx) * 0.4;
-      return {
-        x: off + fx * band,
-        y: r.top + r.height / 2 + window.pageYOffset - meetTop
-      };
-    }).sort(function (a, b) { return a.y - b.y; });
-    var d = 'M ' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
-    for (var i = 0; i < pts.length - 1; i++) {
-      var p0 = pts[Math.max(0, i - 1)], p1 = pts[i];
-      var p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
-      d += ' C ' + (p1.x + (p2.x - p0.x) / 6).toFixed(1) + ' ' + (p1.y + (p2.y - p0.y) / 6).toFixed(1) +
-           ', ' + (p2.x - (p3.x - p1.x) / 6).toFixed(1) + ' ' + (p2.y - (p3.y - p1.y) / 6).toFixed(1) +
-           ', ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
-    }
-    basePath.setAttribute('d', d);
-    ink.setAttribute('d', d);
-    total = ink.getTotalLength();
-    ink.style.strokeDasharray = total + ' ' + total;
-    ink.style.strokeDashoffset = Math.max(0, total - curLen);
-    samples = [];
-    var N = Math.min(900, Math.max(240, Math.round(total / 22)));
-    for (var j = 0; j <= N; j++) {
-      var p = ink.getPointAtLength(total * j / N);
-      samples.push({ x: p.x, y: p.y, l: total * j / N });
-    }
-    sampIdx = Math.min(sampIdx, samples.length - 2);
-    curLen = Math.min(curLen, total);
-    built = true;
-    meet.classList.add('trail-ready');
+  stage.classList.add('bq-js');
+
+  /* chapter dots */
+  CHAPTERS.forEach(function (c, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'bq-dot';
+    b.setAttribute('aria-label', isZH ? c.zh : c.en);
+    b.innerHTML = '<i></i><span>' + (isZH ? c.zh : c.en) + '</span>';
+    b.addEventListener('click', function () { tweenTo(c.x); userTouched(); });
+    chaptersNav.appendChild(b);
+  });
+  var dots = chaptersNav.children;
+
+  /* props & berries */
+  var props = [].map.call(stage.querySelectorAll('.bq-prop'), function (el) {
+    return { el: el, x: parseFloat(el.style.getPropertyValue('--x')) || 0, on: false };
+  });
+  var berries = [].map.call(stage.querySelectorAll('[data-berry]'), function (el) {
+    return { el: el, x: parseFloat(el.style.getPropertyValue('--x')) || 0, got: false };
+  });
+  var gotCount = 0;
+
+  var x = 0, vx = 0, keyR = false, keyL = false;
+  var paused = false, manualUntil = 0, tweenTarget = -1;
+  var dragging = false, dragStartX = 0, dragStartWorld = 0, dragVel = 0, lastDragX = 0, lastDragT = 0;
+  var inertia = 0;
+  var vw = stage.clientWidth;
+  var AUTO = 120, FAST = 460, BACK = -380;
+  var visible = true;
+  var last = performance.now();
+
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  function maxX() { return Math.max(0, L - vw); }
+  function userTouched() { manualUntil = performance.now() + 3200; }
+
+  function tweenTo(t) { tweenTarget = clamp(t, 0, maxX()); }
+
+  function collect(b) {
+    b.got = true; gotCount++;
+    b.el.classList.add('bq-got');
+    var chip = wordsHud.querySelector('[data-word="' + b.el.getAttribute('data-berry') + '"]');
+    if (chip) chip.classList.add('bq-word-on');
+    bear.classList.add('is-happy');
+    setTimeout(function () { bear.classList.remove('is-happy'); }, 900);
+    if (gotCount === berries.length) wordsHud.classList.add('bq-words-all');
   }
 
-  function retarget() {
-    var anchorY = window.pageYOffset + window.innerHeight * 0.42 - meetTop;
-    while (sampIdx < samples.length - 1 && samples[sampIdx + 1].y < anchorY) sampIdx++;
-    while (sampIdx > 0 && samples[sampIdx].y > anchorY) sampIdx--;
-    targetLen = samples[sampIdx].l;
+  function jump() {
+    if (bear.classList.contains('is-jump')) return;
+    bear.classList.add('is-jump');
+    setTimeout(function () { bear.classList.remove('is-jump'); }, 620);
   }
 
-  function frame() {
-    if (built) {
-      retarget();
-      var delta = targetLen - curLen;
-      curLen += delta * 0.085;
-      if (Math.abs(delta) < 0.4) curLen = targetLen;
-      var i = Math.round(curLen / total * (samples.length - 1));
-      i = Math.max(1, Math.min(samples.length - 2, i));
-      var p = samples[i];
-      var dx = samples[i + 1].x - samples[i - 1].x;
-      var dy = samples[i + 1].y - samples[i - 1].y;
-      var norm = Math.hypot(dx, dy) || 1;
-      var tx = dx / norm;
-      if (Math.abs(tx) > 0.08) dir = tx >= 0 ? 1 : -1;
-      var lean = Math.max(-14, Math.min(14, tx * 18));
-      bear.style.transform = 'translate3d(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px,0) rotate(' + lean.toFixed(1) + 'deg)';
-      flip.style.transform = 'scaleX(' + dir + ')';
-      bear.classList.toggle('is-walking', Math.abs(delta) > 1.5);
-      ink.style.strokeDashoffset = Math.max(0, total - curLen);
-      if (kmNum) {
-        var kmVal = Math.round(curLen / total * KM_TOTAL);
-        if (kmNum.textContent !== String(kmVal)) kmNum.textContent = kmVal;
+  function frame(now) {
+    var dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (visible) {
+      var moving;
+      if (dragging) {
+        moving = true;
+      } else if (tweenTarget >= 0) {
+        x += (tweenTarget - x) * Math.min(1, dt * 6);
+        if (Math.abs(tweenTarget - x) < 2) { x = tweenTarget; tweenTarget = -1; }
+        moving = true;
+      } else {
+        if (keyR) { vx = FAST; userTouched(); }
+        else if (keyL) { vx = BACK; userTouched(); }
+        else if (Math.abs(inertia) > 8) { vx = inertia; inertia *= Math.pow(0.9, dt * 60); }
+        else if (!paused && now > manualUntil) { inertia = 0; vx = AUTO; }
+        else vx = 0;
+        x += vx * dt;
+        moving = Math.abs(vx) > 2;
       }
-      if (km) {
-        var vTop = window.pageYOffset, vBot = vTop + window.innerHeight;
-        var bearAbs = p.y + meetTop;
-        km.classList.toggle('is-on', curLen > 8 && bearAbs > vTop && bearAbs < vBot + 200);
+      x = clamp(x, 0, maxX());
+      if (x >= maxX() - 1 && !paused) moving = false;
+
+      world.style.transform = 'translate3d(' + (-x) + 'px,0,0)';
+      mid.style.transform = 'translate3d(' + (-x * 0.4 % 1000) + 'px,0,0)';
+      far.style.transform = 'translate3d(' + (-x * 0.18 % 1400) + 'px,0,0)';
+
+      var back = dragging ? (lastDragX - dragStartX) > 0 : (vx < -1 || (tweenTarget >= 0 && tweenTarget < x - 2));
+      bearFlip.style.transform = back ? 'scaleX(-1)' : '';
+      bear.classList.toggle('is-walking', !!moving);
+
+      var bearWorld = x + vw * BEAR_AT;
+      /* reveal props near the viewport */
+      for (var i = 0; i < props.length; i++) {
+        var p = props[i];
+        if (!p.on && p.x > x - 500 && p.x < x + vw + 500) { p.on = true; p.el.classList.add('bq-in'); }
       }
+      /* berries */
+      for (var j = 0; j < berries.length; j++) {
+        var b = berries[j];
+        if (!b.got && bearWorld > b.x - 10) collect(b);
+      }
+      /* km + chapter */
+      var kmVal = Math.round(x / maxX() * KM_TOTAL) || 0;
+      if (kmNum.textContent !== String(kmVal)) kmNum.textContent = kmVal;
+      var ci = 0;
+      for (var k = 0; k < CHAPTERS.length; k++) if (bearWorld >= CHAPTERS[k].x) ci = k;
+      for (var d = 0; d < dots.length; d++) dots[d].classList.toggle('bq-dot-on', d === ci);
     }
     requestAnimationFrame(frame);
   }
 
-  bear.addEventListener('click', function () {
-    if (bear.classList.contains('is-hop')) return;
-    bear.classList.add('is-hop');
-    setTimeout(function () { bear.classList.remove('is-hop'); }, 700);
+  /* input: keys (only while the stage is mostly on screen) */
+  function stageInView() {
+    var r = stage.getBoundingClientRect();
+    return r.bottom > window.innerHeight * 0.5 && r.top < window.innerHeight * 0.5;
+  }
+  window.addEventListener('keydown', function (e) {
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+    if (!stageInView()) return;
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') { keyR = true; tweenTarget = -1; e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') { keyL = true; tweenTarget = -1; e.preventDefault(); }
+    else if (e.key === ' ') { jump(); e.preventDefault(); }
+  });
+  window.addEventListener('keyup', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keyR = false;
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keyL = false;
   });
 
-  var rebuildTimer = 0;
-  function scheduleBuild() {
-    clearTimeout(rebuildTimer);
-    rebuildTimer = setTimeout(build, 160);
+  /* input: drag (mouse + touch; touch-action pan-y keeps vertical page scroll) */
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('a, button')) return;
+    dragging = true; tweenTarget = -1; inertia = 0;
+    dragStartX = lastDragX = e.clientX; dragStartWorld = x; lastDragT = e.timeStamp;
+    stage.classList.add('bq-drag');
+    try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+    userTouched();
+  });
+  stage.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    x = clamp(dragStartWorld - (e.clientX - dragStartX) * 1.4, 0, maxX());
+    var dtms = e.timeStamp - lastDragT;
+    if (dtms > 0) dragVel = -(e.clientX - lastDragX) / dtms * 1400;
+    lastDragX = e.clientX; lastDragT = e.timeStamp;
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove('bq-drag');
+    inertia = clamp(dragVel, -2400, 2400);
+    dragVel = 0;
+    userTouched();
   }
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(scheduleBuild).observe(meet);
-  } else {
-    window.addEventListener('resize', scheduleBuild);
-  }
-  window.addEventListener('load', scheduleBuild);
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
 
-  build();
+  bear.addEventListener('click', jump);
+  stage.addEventListener('dblclick', function (e) { if (!e.target.closest('a, button')) jump(); });
+
+  playBtn.addEventListener('click', function () {
+    paused = !paused;
+    playBtn.setAttribute('aria-pressed', String(paused));
+    stage.classList.toggle('bq-paused', paused);
+  });
+
+  /* pause the sim while off screen */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+    }, { threshold: 0.05 }).observe(stage);
+  }
+
+  window.addEventListener('resize', function () { vw = stage.clientWidth; });
+
   requestAnimationFrame(frame);
 })();
 </script>
