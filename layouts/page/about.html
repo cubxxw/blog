@@ -6,4 +6,148 @@
   </div>
 </div>
 
+<script>
+(function () {
+  var meet = document.getElementById('meet');
+  if (!meet) return;
+  var els = document.querySelectorAll('[data-meet]');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('meet-in'); });
+    return;
+  }
+  meet.classList.add('meet-js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('meet-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (el) { io.observe(el); });
+
+  /* ── The trail: a winding path drawn by scroll, walked by a bear ──
+     Nodes ([data-trail=fx]) anchor the route to the content flow; the
+     path is rebuilt from live layout, so it survives any breakpoint.
+     All motion is transform/dashoffset in one rAF loop. */
+  var svg = document.getElementById('trailSvg');
+  var basePath = document.getElementById('trailBase');
+  var ink = document.getElementById('trailInk');
+  var bear = document.getElementById('trailBear');
+  var flip = bear && bear.querySelector('.trail-bear-flip');
+  var km = document.getElementById('trailKm');
+  var kmNum = document.getElementById('trailKmNum');
+  var nodes = [].slice.call(meet.querySelectorAll('[data-trail]'));
+  if (!svg || !ink || !bear || !flip || nodes.length < 2) return;
+
+  var total = 0, samples = [], built = false;
+  var curLen = 0, targetLen = 0, sampIdx = 0, dir = 1, meetTop = 0;
+  var KM_TOTAL = 412;
+
+  function build() {
+    var W = meet.offsetWidth, H = meet.offsetHeight;
+    if (!W || !H) return;
+    meetTop = meet.getBoundingClientRect().top + window.pageYOffset;
+    var band = Math.min(W, 1080), off = (W - band) / 2;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.style.width = W + 'px';
+    svg.style.height = H + 'px';
+    var squeeze = band < 700; /* narrow screens: push the route into the margins */
+    var pts = nodes.map(function (n) {
+      var r = n.getBoundingClientRect();
+      var fx = parseFloat(n.getAttribute('data-trail'));
+      if (squeeze) fx = fx < 0.5 ? fx * 0.4 : 1 - (1 - fx) * 0.4;
+      return {
+        x: off + fx * band,
+        y: r.top + r.height / 2 + window.pageYOffset - meetTop
+      };
+    }).sort(function (a, b) { return a.y - b.y; });
+    var d = 'M ' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[Math.max(0, i - 1)], p1 = pts[i];
+      var p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+      d += ' C ' + (p1.x + (p2.x - p0.x) / 6).toFixed(1) + ' ' + (p1.y + (p2.y - p0.y) / 6).toFixed(1) +
+           ', ' + (p2.x - (p3.x - p1.x) / 6).toFixed(1) + ' ' + (p2.y - (p3.y - p1.y) / 6).toFixed(1) +
+           ', ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+    }
+    basePath.setAttribute('d', d);
+    ink.setAttribute('d', d);
+    total = ink.getTotalLength();
+    ink.style.strokeDasharray = total + ' ' + total;
+    ink.style.strokeDashoffset = Math.max(0, total - curLen);
+    samples = [];
+    var N = Math.min(900, Math.max(240, Math.round(total / 22)));
+    for (var j = 0; j <= N; j++) {
+      var p = ink.getPointAtLength(total * j / N);
+      samples.push({ x: p.x, y: p.y, l: total * j / N });
+    }
+    sampIdx = Math.min(sampIdx, samples.length - 2);
+    curLen = Math.min(curLen, total);
+    built = true;
+    meet.classList.add('trail-ready');
+  }
+
+  function retarget() {
+    var anchorY = window.pageYOffset + window.innerHeight * 0.42 - meetTop;
+    while (sampIdx < samples.length - 1 && samples[sampIdx + 1].y < anchorY) sampIdx++;
+    while (sampIdx > 0 && samples[sampIdx].y > anchorY) sampIdx--;
+    targetLen = samples[sampIdx].l;
+  }
+
+  function frame() {
+    if (built) {
+      retarget();
+      var delta = targetLen - curLen;
+      curLen += delta * 0.085;
+      if (Math.abs(delta) < 0.4) curLen = targetLen;
+      var i = Math.round(curLen / total * (samples.length - 1));
+      i = Math.max(1, Math.min(samples.length - 2, i));
+      var p = samples[i];
+      var dx = samples[i + 1].x - samples[i - 1].x;
+      var dy = samples[i + 1].y - samples[i - 1].y;
+      var norm = Math.hypot(dx, dy) || 1;
+      var tx = dx / norm;
+      if (Math.abs(tx) > 0.08) dir = tx >= 0 ? 1 : -1;
+      var lean = Math.max(-14, Math.min(14, tx * 18));
+      bear.style.transform = 'translate3d(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px,0) rotate(' + lean.toFixed(1) + 'deg)';
+      flip.style.transform = 'scaleX(' + dir + ')';
+      bear.classList.toggle('is-walking', Math.abs(delta) > 1.5);
+      ink.style.strokeDashoffset = Math.max(0, total - curLen);
+      if (kmNum) {
+        var kmVal = Math.round(curLen / total * KM_TOTAL);
+        if (kmNum.textContent !== String(kmVal)) kmNum.textContent = kmVal;
+      }
+      if (km) {
+        var vTop = window.pageYOffset, vBot = vTop + window.innerHeight;
+        var bearAbs = p.y + meetTop;
+        km.classList.toggle('is-on', curLen > 8 && bearAbs > vTop && bearAbs < vBot + 200);
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  bear.addEventListener('click', function () {
+    if (bear.classList.contains('is-hop')) return;
+    bear.classList.add('is-hop');
+    setTimeout(function () { bear.classList.remove('is-hop'); }, 700);
+  });
+
+  var rebuildTimer = 0;
+  function scheduleBuild() {
+    clearTimeout(rebuildTimer);
+    rebuildTimer = setTimeout(build, 160);
+  }
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(scheduleBuild).observe(meet);
+  } else {
+    window.addEventListener('resize', scheduleBuild);
+  }
+  window.addEventListener('load', scheduleBuild);
+
+  build();
+  requestAnimationFrame(frame);
+})();
+</script>
+
 {{- end }}

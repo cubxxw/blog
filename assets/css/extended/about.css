@@ -18,19 +18,29 @@
   color: var(--color-ink);
 }
 
+/* Full-width canvas: the trail needs the whole page. Each scene
+   carries its own 640px column instead of the shared wrapper. */
 .about-content {
-  max-width: 640px;
   margin: 0 auto;
-  padding: 0 24px 96px;
+  padding: 0 0 96px;
+}
+
+/* ── The meeting is a trail ── */
+.meet {
+  position: relative;
 }
 
 /* ── Scenes: one screen, one thought ── */
 .meet-scene {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
   min-height: 78vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 12vh 0;
+  padding: 12vh 24px;
 }
 
 .meet-scene--opening {
@@ -167,50 +177,125 @@
   vertical-align: 0.2em;
 }
 
-/* ── Journey strip: full-bleed film strip of places ──
-   Breaks out of the 640px column. Native horizontal scroll +
-   scroll-snap; mouse drag & inertia added by JS. Cards are
-   quiet polaroids with a slight editorial tilt. ── */
-.meet-scene--journey { min-height: auto; padding: 6vh 0 10vh; }
+/* ── The trail: winding SVG path + hiking bear ──
+   Built entirely by JS from [data-trail] anchors; hidden until
+   .trail-ready lands (and forever under reduced motion / no JS). */
+.trail-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-standard);
+}
+.trail-ready .trail-svg { opacity: 1; }
 
-.meet-strip {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+.trail-base {
+  fill: none;
+  stroke: var(--color-rule);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 11;
+}
+.trail-ink {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0.55;
 }
 
-.meet-strip-track {
+.trail-bear {
+  position: absolute;
+  top: -34px;
+  left: -34px;
+  width: 68px;
+  height: 68px;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-standard);
+  will-change: transform;
+}
+.trail-ready .trail-bear { opacity: 1; }
+.trail-bear-flip {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.trail-bear svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+.tb-ink   { fill: var(--color-ink); }
+.tb-ear   { fill: var(--color-accent-soft); }
+.tb-muzzle{ fill: var(--color-paper); }
+.tb-nose  { fill: var(--color-ink); }
+.tb-eye   { fill: var(--color-paper); }
+.tb-blush { fill: var(--color-accent); opacity: 0.35; }
+.tb-pack  { fill: var(--color-accent); opacity: 0.85; }
+.tb-paw   { fill: var(--color-ink); }
+.tb-stick { stroke: var(--color-ink-muted); stroke-width: 3.4; stroke-linecap: round; }
+.tb-leg   { fill: var(--color-ink); transform-origin: center 86px; }
+
+.trail-bear.is-walking .tb-leg--a { animation: tb-step 0.42s var(--ease-in-out) infinite; }
+.trail-bear.is-walking .tb-leg--b { animation: tb-step 0.42s var(--ease-in-out) 0.21s infinite; }
+@keyframes tb-step {
+  0%, 100% { transform: rotate(13deg); }
+  50%      { transform: rotate(-13deg); }
+}
+.trail-bear.is-hop .trail-bear-flip { animation: tb-hop 0.65s var(--ease-out); }
+@keyframes tb-hop {
+  0%   { translate: 0 0; scale: 1 1; }
+  30%  { translate: 0 -26px; scale: 0.96 1.05; }
+  55%  { translate: 0 0; scale: 1.06 0.92; }
+  75%  { translate: 0 -8px; scale: 0.99 1.02; }
+  100% { translate: 0 0; scale: 1 1; }
+}
+
+/* Hiked-distance chip: scrolling = walking */
+.trail-km {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 6;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  padding: 6px 13px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s var(--ease-standard), transform 0.45s var(--ease-standard);
+}
+.trail-km.is-on { opacity: 1; transform: none; }
+.trail-km #trailKmNum { color: var(--color-ink); }
+
+/* ── Journey scrapbook: postcards pinned along the trail ── */
+.meet-scene--journey {
+  max-width: 980px;
+  min-height: auto;
+  padding: 6vh 24px 10vh;
+}
+.meet-journey-intro { margin-bottom: 3em; }
+.meet-journey-outro { margin-top: 3.4em; }
+
+.meet-scrap {
   display: flex;
-  align-items: flex-start;
-  gap: 26px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;
-  /* first card aligns with the 640px text column */
-  padding: 18px max(24px, calc(50vw - 296px)) 26px;
-  cursor: grab;
-  scrollbar-width: none;
-  outline: none;
-}
-.meet-strip-track::-webkit-scrollbar { display: none; }
-.meet-strip-track.is-drag {
-  cursor: grabbing;
-  scroll-snap-type: none;
-  user-select: none;
-}
-.meet-strip-track:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: -2px;
-  border-radius: var(--radius-lg);
+  flex-direction: column;
+  gap: clamp(30px, 7vh, 72px);
 }
 
-.meet-shot {
-  flex: none;
-  scroll-snap-align: center;
-}
+.meet-shot { width: min(400px, 72%); }
+.meet-shot--wide { width: min(520px, 86%); }
+.meet-shot:nth-child(odd)  { align-self: flex-start; }
+.meet-shot:nth-child(even) { align-self: flex-end; }
 
 .meet-shot-card {
-  --shot-h: clamp(300px, 44vh, 430px);
+  position: relative;
   margin: 0;
   padding: 10px 10px 12px;
   background: var(--color-paper);
@@ -221,6 +306,20 @@
   transition: transform 0.45s var(--ease-out),
               box-shadow 0.45s var(--ease-out);
 }
+/* map pin */
+.meet-shot-card::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-paper);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
 .meet-shot:hover .meet-shot-card {
   transform: rotate(0deg) translateY(-6px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 22px 44px -20px rgba(0, 0, 0, 0.26);
@@ -228,9 +327,8 @@
 
 .meet-shot-card img {
   display: block;
-  height: var(--shot-h);
-  width: auto;
-  max-width: none;
+  width: 100%;
+  height: auto;
   border-radius: var(--radius-lg);
   background: var(--color-rule);
   user-select: none;
@@ -265,40 +363,106 @@
   opacity: 0.7;
 }
 
-.meet-strip-hint {
-  margin: 2px 0 0;
-  padding: 0 max(24px, calc(50vw - 296px));
-  font-family: var(--font-meta);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  color: var(--color-ink-muted);
-  transition: opacity 0.6s var(--ease-standard);
-}
-.meet-strip-hint.is-away { opacity: 0; }
-
-/* Entrance: the strip reveals as one block (data-meet), then each
-   card surfaces with its own stagger. Hover transform lives on the
-   inner card so the reveal delay never touches it. */
-.meet-js .meet-strip .meet-shot {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 90ms);
-}
-.meet-js .meet-strip.meet-in .meet-shot {
-  opacity: 1;
-  transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .meet-js .meet-strip .meet-shot {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  .trail-svg, .trail-bear, .trail-km { display: none; }
   .meet-shot-card { transition: none; }
   .meet-shot:hover .meet-shot-card { transform: rotate(var(--rot, 0deg)); }
 }
+
+/* ── Now block: what's on the desk right now ── */
+.meet-now {
+  margin: 0 0 1.8em;
+  padding: 18px 22px 16px;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-lg);
+  background: var(--color-paper);
+}
+.meet-now-title {
+  margin: 0 0 10px;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--color-ink-muted);
+}
+.meet-now-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.meet-now-list li {
+  font-family: var(--font-prose);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+.meet-now-k {
+  display: inline-block;
+  min-width: 3.4em;
+  margin-right: 10px;
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+/* ── Contact QRs: shown directly, no dialog ── */
+.meet-qr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 0 0 2.4em;
+}
+.meet-qr-card {
+  margin: 0;
+  width: 186px;
+  padding: 10px 10px 8px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 30px -18px rgba(0, 0, 0, 0.16);
+  transform: rotate(var(--rot, 0deg));
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+}
+.meet-qr-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 18px 40px -20px rgba(0, 0, 0, 0.24);
+}
+.meet-qr-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  background: #fff;
+}
+.meet-qr-cap {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 8px 4px 2px;
+  font-family: var(--font-meta);
+}
+.meet-qr-name {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.meet-qr-id {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-ink-muted);
+}
+.meet-qr-open {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--color-ink-muted);
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-hover) var(--ease-standard);
+}
+.meet-qr-open:hover { color: var(--color-accent); }
 
 /* ── Contact ── */
 .meet-scene--contact { min-height: 70vh; }
@@ -402,8 +566,10 @@
 
 /* ── Reading atlas (#start-here 301 target) ── */
 .meet-atlas {
+  max-width: 640px;
+  margin: 0 auto;
   border-top: 1px solid var(--color-rule);
-  padding-top: 48px;
+  padding: 48px 24px 0;
   /* anchor lands below the sticky header */
   scroll-margin-top: 90px;
 }
@@ -441,8 +607,8 @@
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  .about-content { padding: 0 20px 72px; }
-  .meet-scene { min-height: 66vh; padding: 10vh 0; }
+  .about-content { padding: 0 0 72px; }
+  .meet-scene { min-height: 66vh; padding: 10vh 20px; }
   .meet-scene--opening { min-height: calc(100svh - 100px); }
   .meet-line { font-size: 1.15rem; }
   /* re-assert the display sizes: the generic .meet-line rule above sits
@@ -454,18 +620,28 @@
   .meet-line--aside { font-size: 0.98rem; }
   .meet-num { font-size: 1.5rem; }
   .meet-portrait img { width: 76px; height: 76px; }
-  .meet-scene--journey { padding: 4vh 0 8vh; }
-  .meet-strip-track {
-    gap: 16px;
-    padding: 12px 20px 20px;
-  }
-  .meet-shot-card {
-    --shot-h: clamp(240px, 38vh, 330px);
-    padding: 8px 8px 10px;
-  }
+
+  .meet-scene--journey { padding: 4vh 20px 8vh; }
+  .meet-scrap { gap: 26px; }
+  .meet-shot { width: 86%; }
+  .meet-shot--wide { width: 94%; }
+  .meet-shot-card { padding: 8px 8px 10px; }
   .meet-shot-cap { flex-wrap: wrap; gap: 2px 10px; }
   .meet-shot-place { order: 1; }
   .meet-shot-idx { order: 2; }
   .meet-shot-note { order: 3; width: 100%; }
-  .meet-strip-hint { padding: 0 20px; }
+
+  .trail-bear {
+    width: 52px;
+    height: 52px;
+    top: -26px;
+    left: -26px;
+    /* narrow screens: walk behind the content so photos/text stay clear */
+    z-index: 0;
+  }
+  .trail-km { left: 14px; bottom: 14px; font-size: 0.68rem; }
+
+  .meet-qr { gap: 14px; }
+  .meet-qr-card { width: min(160px, calc(50% - 7px)); }
+  .meet-atlas { padding: 48px 20px 0; }
 }
