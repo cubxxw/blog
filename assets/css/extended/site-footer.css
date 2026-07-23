@@ -1,0 +1,61 @@
+/* Shared rich footer (site-footer.html) — every page except home, travel
+   and /projects/. Quiet editorial: hairline top rule, mono headings,
+   muted links that ink up on hover. Tokens make dark mode automatic. */
+
+.sf {
+  max-width: var(--main-width, 720px);
+  margin: 3.5rem auto 0;
+  padding: 2rem var(--gap, 24px) 0.5rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+
+.sf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 2rem;
+}
+
+.sf-heading {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+.sf-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sf-list li {
+  margin: 0 0 0.45rem;
+}
+
+.sf-list a {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-ink-muted, #5e5e63);
+  text-decoration: none;
+}
+
+.sf-list a:hover {
+  color: var(--color-ink, var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sf-list a.sf-more {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .sf-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,43 @@
+{{- /* Shared rich footer for every page except the homepage (which has its
+     own hp-footer), the travel world page, and the /projects/ BEAR OS page
+     (both full-screen immersive layouts). Called from baseof.html OUTSIDE
+     the partialCached footer.html — the conditions below use page fields
+     (Section) that are not part of that cache key. */ -}}
+{{- $isZh := eq .Lang "zh" -}}
+<footer class="sf" role="contentinfo" aria-label="{{ if $isZh }}站点导航{{ else }}Site navigation{{ end }}">
+  <div class="sf-grid">
+    <div class="sf-col">
+      <h4 class="sf-heading">{{ if $isZh }}继续读{{ else }}Keep Reading{{ end }}</h4>
+      <ul class="sf-list">
+        <li><a href="{{ "/columns/" | relLangURL }}">{{ if $isZh }}专栏{{ else }}Columns{{ end }}</a></li>
+        <li><a href="{{ "/ai-agent/" | relLangURL }}">AI Agent</a></li>
+        <li><a href="{{ "/engineering/" | relLangURL }}">{{ if $isZh }}工程{{ else }}Engineering{{ end }}</a></li>
+        <li><a href="{{ "/growth/" | relLangURL }}">{{ if $isZh }}成长{{ else }}Growth{{ end }}</a></li>
+        <li><a href="{{ "/articles/" | relLangURL }}">{{ if $isZh }}全部文章{{ else }}All Posts{{ end }}</a></li>
+        <li><a href="{{ "/archives/" | relLangURL }}">{{ if $isZh }}归档{{ else }}Archives{{ end }}</a></li>
+        <li><a href="{{ "/travel/" | relLangURL }}">{{ if $isZh }}旅行{{ else }}Travel{{ end }}</a></li>
+      </ul>
+    </div>
+    <div class="sf-col">
+      <h4 class="sf-heading">{{ if $isZh }}产品{{ else }}Products{{ end }}</h4>
+      <ul class="sf-list">
+        {{- range site.Data.products.products }}
+        <li><a href="{{ "/projects/" | relLangURL }}#{{ .id }}">{{ .name }}</a></li>
+        {{- end }}
+        <li><a href="{{ "/projects/" | relLangURL }}" class="sf-more">{{ if $isZh }}全部产品 →{{ else }}All products →{{ end }}</a></li>
+      </ul>
+    </div>
+    <div class="sf-col">
+      <h4 class="sf-heading">{{ if $isZh }}订阅与联系{{ else }}Subscribe &amp; Connect{{ end }}</h4>
+      <ul class="sf-list">
+        <li><a href="{{ "/about/" | relLangURL }}">{{ if $isZh }}关于 · 阅读地图{{ else }}About · Start Here{{ end }}</a></li>
+        <li><a href="{{ "/index.xml" | relLangURL }}">RSS</a></li>
+        {{- with (site.GetPage "/").OutputFormats.Get "JSONFeed" }}
+        <li><a href="{{ .RelPermalink }}">JSON Feed</a></li>
+        {{- end }}
+        <li><a href="https://github.com/cubxxw" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="mailto:3293172751nss@gmail.com">{{ if $isZh }}邮件{{ else }}Email{{ end }}</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
