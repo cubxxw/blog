@@ -315,30 +315,35 @@ languages:
           url: /articles/
           pageRef: /articles
           weight: 10
+        - identifier: columns
+          parent: posts
+          name: Columns
+          url: /columns/
+          weight: 1
         - identifier: ai-agent
           parent: posts
           name: AI Agent
           url: /ai-agent/
           pageRef: /ai-agent
-          weight: 1
+          weight: 2
         - identifier: engineering
           parent: posts
           name: Engineering
           url: /engineering/
           pageRef: /engineering
-          weight: 2
+          weight: 3
         - identifier: growth
           parent: posts
           name: Growth
           url: /growth/
           pageRef: /growth
-          weight: 3
+          weight: 4
         - identifier: all-posts
           parent: posts
           name: All Posts
           url: /articles/
           pageRef: /articles
-          weight: 4
+          weight: 5
         - identifier: projects
           name: Products
           url: /projects/
@@ -398,30 +403,35 @@ languages:
           url: /zh/articles/
           pageRef: /articles
           weight: 10
+        - identifier: columns
+          parent: posts
+          name: 专栏
+          url: /zh/columns/
+          weight: 1
         - identifier: ai-agent
           parent: posts
           name: AI Agent
           url: /zh/ai-agent/
           pageRef: /ai-agent
-          weight: 1
+          weight: 2
         - identifier: engineering
           parent: posts
           name: 工程
           url: /zh/engineering/
           pageRef: /engineering
-          weight: 2
+          weight: 3
         - identifier: growth
           parent: posts
           name: 成长
           url: /zh/growth/
           pageRef: /growth
-          weight: 3
+          weight: 4
         - identifier: all-posts
           parent: posts
           name: 全部文章
           url: /zh/articles/
           pageRef: /articles
-          weight: 4
+          weight: 5
         - identifier: projects
           name: 产品
           url: /zh/projects/
