@@ -133,7 +133,7 @@ tldr:
           </figure>
         </div>
       </div>
-      <p class="meet-strip-hint" id="meetStripHint" aria-hidden="true">drag →</p>
+      <p class="meet-strip-hint" id="meetStripHint" aria-hidden="true">drag or swipe →</p>
     </div>
   </section>
 

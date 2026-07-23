@@ -133,7 +133,7 @@ tldr:
           </figure>
         </div>
       </div>
-      <p class="meet-strip-hint" id="meetStripHint" aria-hidden="true">拖动看看 →</p>
+      <p class="meet-strip-hint" id="meetStripHint" aria-hidden="true">滑动看看 →</p>
     </div>
   </section>
 
