@@ -77,10 +77,32 @@
 
 {{- /* order is important */}}
 {{- $core := (slice $theme_vars $reset $common $hljs $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
-{{- /* homepage-daypage.css (~52 KB) is homepage-only — keep it out of the
-       site-wide bundle and load it separately on the home pages below. */}}
+{{- /* Page-scoped extended CSS: files whose (uniquely namespaced) selectors
+       render on exactly one page or section are pulled OUT of the site-wide
+       bundle and loaded only where they apply — the same split already used
+       for homepage-daypage.css. Every other page then stops shipping this
+       CSS as dead weight (Lighthouse "Reduce unused CSS").
+
+         homepage-daypage.css (~52 KB, .hp-*)  → home only
+         zzz-travel-world.css  (~38 KB, .tw-*)  → travel page only
+         products.css          (~32 KB, .osx-*) → /projects/ landing only
+         section-growth.css    (~15 KB, .gr-*)  → /growth/ landing only
+
+       These three (.tw-/.osx-/.gr-) are provably independent of the
+       load-bearing hover/press cascade documented in zzz-hover-touch-reset.css
+       ("source hover < reset < press-feedback"): that layer, and every other
+       bundled file, only ever target the .hp-/.eig-/.eip-/.eitr-/.aia-/.oss-/
+       .about-/.eng-/.column- families — never .tw-/.osx-/.gr-. So loading
+       them after the main bundle changes no existing cascade outcome. Files
+       whose classes DO appear in that layer (about.css, section-ai-agent.css,
+       section-engineering.css, columns.css) are deliberately left in the
+       bundle to preserve that order. */}}
 {{- $homepageCSS := resources.Get "css/extended/homepage-daypage.css" }}
-{{- $extendedFiles := collections.Complement (slice $homepageCSS) (resources.Match "css/extended/*.css") }}
+{{- $travelCSS   := resources.Get "css/extended/zzz-travel-world.css" }}
+{{- $projectsCSS := resources.Get "css/extended/products.css" }}
+{{- $growthCSS   := resources.Get "css/extended/section-growth.css" }}
+{{- $pageScoped  := (slice $homepageCSS $travelCSS $projectsCSS $growthCSS) }}
+{{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
 {{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
 
 {{- /* bundle all required css */}}
@@ -94,16 +116,21 @@
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
 {{- end }}
 
-{{- /* Homepage-only DayPage stylesheet (split out of the global bundle
-       above). Loaded after it, so its rules keep the same cascade
-       priority they had when concatenated. */}}
-{{- if .IsHome }}
-{{- $hp := $homepageCSS | resources.Minify }}
+{{- /* Page-scoped stylesheets split out of the global bundle above, each
+       loaded only where its selectors render and after the main bundle, so
+       its rules keep the same cascade priority they had when concatenated. */}}
+{{- $conditionalCSS := slice }}
+{{- if .IsHome }}{{ $conditionalCSS = $conditionalCSS | append $homepageCSS }}{{ end }}
+{{- if eq .Layout "travel" }}{{ $conditionalCSS = $conditionalCSS | append $travelCSS }}{{ end }}
+{{- if and (eq .Kind "section") (eq .Section "projects") }}{{ $conditionalCSS = $conditionalCSS | append $projectsCSS }}{{ end }}
+{{- if and (eq .Kind "section") (eq .Section "growth") }}{{ $conditionalCSS = $conditionalCSS | append $growthCSS }}{{ end }}
+{{- range $conditionalCSS }}
+{{- $c := . | resources.Minify }}
 {{- if not site.Params.assets.disableFingerprinting }}
-{{- $hp = $hp | fingerprint }}
-<link crossorigin="anonymous" href="{{ $hp.RelPermalink }}" integrity="{{ $hp.Data.Integrity }}" rel="preload stylesheet" as="style">
+{{- $c = $c | fingerprint }}
+<link crossorigin="anonymous" href="{{ $c.RelPermalink }}" integrity="{{ $c.Data.Integrity }}" rel="preload stylesheet" as="style">
 {{- else }}
-<link crossorigin="anonymous" href="{{ $hp.RelPermalink }}" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="{{ $c.RelPermalink }}" rel="preload stylesheet" as="style">
 {{- end }}
 {{- end }}
 
