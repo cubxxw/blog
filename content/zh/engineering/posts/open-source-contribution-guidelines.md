@@ -62,7 +62,7 @@ tldr:
 
 对于**一般** 的问题，或许你可以选择 [issues]([New Issue · labring/sealos (github.com)](https://github.com/labring/sealos/issues/new/choose)) 来指出问题
 
-![image-20221019161049208](http://sm.nsddd.top/smimage-20221019161049208.png)
+![image-20221019161049208](http://sm.cubxxw.com/smimage-20221019161049208.png)
 
 ⚡ 显然，相比较`issues`，我更喜欢`pr` ，你可以发现下面的问题并且改进
 
@@ -125,7 +125,7 @@ git remote add upstream https://github.com/labring/sealos.git
 git remote set-url --push upstream no-pushing
 ```
 
-![image-20221109173951312](http://sm.nsddd.top/smimage-20221109173951312.png)
+![image-20221109173951312](http://sm.cubxxw.com/smimage-20221109173951312.png)
 
 使用此远程设置，你可以像这样检查 git 远程配置：
 
@@ -139,7 +139,7 @@ upstream   no-pushing (push)
 
 添加此内容，我们可以轻松地将本地分支与上游分支同步。
 
-![image-20221019162733226](http://sm.nsddd.top/smimage-20221019162733226.png)
+![image-20221019162733226](http://sm.cubxxw.com/smimage-20221019162733226.png)
 
 
 
@@ -177,7 +177,7 @@ git checkout -b bug-xiongxinwei
 > 修复分支		bug-*		修复线上代码的 bug
 > ```
 
-![image-20221019164941695](http://sm.nsddd.top/smimage-20221019164941695.png)
+![image-20221019164941695](http://sm.cubxxw.com/smimage-20221019164941695.png)
 
 
 
@@ -188,7 +188,7 @@ git checkout -b bug-xiongxinwei
 > + `-a` 参数设置修改文件后不需要执行 `git add` 命令，直接来提交
 > + `-s` 表示添加了一个签名，加入了自己的信息
 >
-> ![image-20221019190552361](http://sm.nsddd.top/smimage-20221019190552361.png)
+> ![image-20221019190552361](http://sm.cubxxw.com/smimage-20221019190552361.png)
 
 ```bash
 golangci-lint run -c .golangci.yml # lint
@@ -198,7 +198,7 @@ git rebase -i	<commit-id>  # 如果你的pr有多次提交
 git push   # 在rebase完成后推送到分叉库，如果是第一次推送，运行git push --set-upstream origin <new-branch>
 ```
 
-![image-20221019190409127](http://sm.nsddd.top/smimage-20221019190409127.png)
+![image-20221019190409127](http://sm.cubxxw.com/smimage-20221019190409127.png)
 
 > 为每个 Markdown 代码块指定一种语言，除非没有关联的语言。
 
@@ -224,7 +224,7 @@ git commit -m -s "init infra"
 
 **提交拉取请求给主分支：**
 
-![image-20221019192522791](http://sm.nsddd.top/smimage-20221019192522791.png)
+![image-20221019192522791](http://sm.cubxxw.com/smimage-20221019192522791.png)
 
 
 
@@ -303,7 +303,7 @@ export PATH=$PATH:$GO_PATH/bin
 
 😂 让我很喜欢的一点是：`sealos`能一次性把环境搭建好，想当年，我真是废了九牛二虎之力才搭建~失败的。
 
-![image-20221019194939030](http://sm.nsddd.top/smimage-20221019194939030.png)
+![image-20221019194939030](http://sm.cubxxw.com/smimage-20221019194939030.png)
 
 
 
@@ -393,7 +393,7 @@ root@VM-4-3-ubuntu:/#
 
 ### docker、k8s、云原生笔记
 
-+ [x] [docker.nsddd.top](https://docker.nsddd.top)
++ [x] [docker.cubxxw.com](https://docker.cubxxw.com)
 
 
 
@@ -401,10 +401,10 @@ root@VM-4-3-ubuntu:/#
 
 - 基本使用：
 
-  - 创建一个 `pod` 并理解什么是 `pod`   ➡️  [🧷记录](https://docker.nsddd.top/Cloud-Native-k8s/9.html)
-  - 创建一个 `deployment` 理解 `deployment` 与 `pod` 的关系  ➡️  [🧷记录](https://docker.nsddd.top/Cloud-Native-k8s/10.html)
-  - 创建一个 `configmap`， 理解挂载配置文件给 `pod`  ➡️  [🧷记录](https://docker.nsddd.top/Cloud-Native-k8s/13.html)
-  - 创建一个 `service`，通过 `service` 在集群内访问 `pod`  ➡️  [🧷记录](https://docker.nsddd.top/Cloud-Native-k8s/11.html)
+  - 创建一个 `pod` 并理解什么是 `pod`   ➡️  [🧷记录](https://docker.cubxxw.com/Cloud-Native-k8s/9.html)
+  - 创建一个 `deployment` 理解 `deployment` 与 `pod` 的关系  ➡️  [🧷记录](https://docker.cubxxw.com/Cloud-Native-k8s/10.html)
+  - 创建一个 `configmap`， 理解挂载配置文件给 `pod`  ➡️  [🧷记录](https://docker.cubxxw.com/Cloud-Native-k8s/13.html)
+  - 创建一个 `service`，通过 `service` 在集群内访问 `pod`  ➡️  [🧷记录](https://docker.cubxxw.com/Cloud-Native-k8s/11.html)
 
 - 核心概念，核心组件的作用：
 
@@ -440,7 +440,7 @@ root@VM-4-3-ubuntu:/#
 
 **what is `pod`？**
 
-+ [🧷 Go to cub to learn pod ](https://docker.nsddd.top/Cloud-Native-k8s/9.html#%E4%BF%AE%E6%94%B9pod)
++ [🧷 Go to cub to learn pod ](https://docker.cubxxw.com/Cloud-Native-k8s/9.html#%E4%BF%AE%E6%94%B9pod)
 
 Pod is the smallest scheduling unit in `Kubernetes`. A Pod encapsulates a container (or multiple containers). Containers in a Pod share storage, network, etc. That is, you can think of the entire pod as a virtual machine, and then each container is equivalent to a process running on the virtual machine. All containers in the same pod are scheduled and scheduled uniformly.
 
@@ -584,7 +584,7 @@ multipass mount /your-bin-dir <name>[:<path>]
 
 😂 让我很喜欢的一点是：`sealos`能一次性把环境搭建好，想当年，我真是废了九牛二虎之力才搭建~失败的。
 
-![image-20221019194939030](http://sm.nsddd.top/smimage-20221019194939030.png)
+![image-20221019194939030](http://sm.cubxxw.com/smimage-20221019194939030.png)
 
 
 
@@ -592,7 +592,7 @@ multipass mount /your-bin-dir <name>[:<path>]
 
 **💡 重新把昨天集群全部删除，新开三台服务器，纯新~**
 
-![image-20221021151347038](http://sm.nsddd.top/smimage-20221021151347038.png)
+![image-20221021151347038](http://sm.cubxxw.com/smimage-20221021151347038.png)
 
 
 
@@ -627,9 +627,9 @@ sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24.1
 >
 > 开启ssh免密不需要些密码了，在这里就实现了。
 >
-> ![image-20221020111912006](http://sm.nsddd.top/smimage-20221020111912006.png)
+> ![image-20221020111912006](http://sm.cubxxw.com/smimage-20221020111912006.png)
 
-![image-20221020105230320](http://sm.nsddd.top/smimage-20221020105230320.png)
+![image-20221020105230320](http://sm.cubxxw.com/smimage-20221020105230320.png)
 
 
 
@@ -639,7 +639,7 @@ sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24.1
 kubectl get nodes
 ```
 
-![image-20221020113615770](http://sm.nsddd.top/smimage-20221020113615770.png)
+![image-20221020113615770](http://sm.cubxxw.com/smimage-20221020113615770.png)
 
 
 
@@ -656,4 +656,4 @@ $ sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24
 $ kubectl taint node --all node-role.kubernetes.io/control-plane-
 ```
 
-![image-20221020212025716](http://sm.nsddd.top/smimage-20221020212025716.png)
+![image-20221020212025716](http://sm.cubxxw.com/smimage-20221020212025716.png)

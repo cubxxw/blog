@@ -25,7 +25,7 @@ tldr:
   - 87 万曝光是"虚荣指标"：曝光最高的词全是 MBTI/脑震荡/地方史这类与博客无关的噪声，点击为 0，把整站 CTR 稀释到 0.1%。
   - 真金在点击里：markitdown（96 点击/7.2 万曝光）、my-hugo（35 点击/CTR 10.4% 的标杆）、TDD/LangGraph/NotebookLM——这些技术集群才值得重仓。
   - 用五层模型一照：L1 技术底座接近满分，真正欠的是 L2 结构、L3 证据、L4 FAQ schema、L5 站外背书——和前几篇的方法论一一对应。
-  - 域名 nsddd.top→cubxxw.com 迁移中：已设 Change of Address、301 保留路径且实测有效，关键是保住旧域 301 至少 180 天并两资源并存监控。
+  - 域名 cubxxw.com→cubxxw.com 迁移中：已设 Change of Address、301 保留路径且实测有效，关键是保住旧域 301 至少 180 天并两资源并存监控。
 maturity: budding
 columns:
   - geo
@@ -58,7 +58,7 @@ series:
 | Accessibility | 86 | 对比度/标题跳级/tooltip |
 | Agentic Browsing（AI 可读性） | 2/3 | 一个 tooltip 缺可访问名 |
 
-再看 Google Search Console（旧域 nsddd.top，近 3 个月）：
+再看 Google Search Console（旧域 cubxxw.com，近 3 个月）：
 
 | 指标 | 数值 |
 |---|---|
@@ -129,7 +129,7 @@ series:
 把诊断变成排期（与 [支柱篇](/zh/ai-agent/posts/geo-generative-engine-optimization-guide/) 的 30/60/90 对齐）：
 
 **🔴 P0 · 保迁移（1 周）**
-- 保住旧域 nsddd.top 的 301 至少 180 天；两个 GSC 资源并存、每周对比曲线确认权重转移。
+- 保住旧域 cubxxw.com 的 301 至少 180 天；两个 GSC 资源并存、每周对比曲线确认权重转移。
 - 新域 cubxxw.com 重新提交 `sitemap.xml` 与 `news-sitemap.xml`，对核心页"请求编入索引"。
 - 逐一核对旧域 813 个有流量页面，确保每个都 301 到新域同名路径（markitdown 这类流量页绝不能 404）。
 
@@ -147,9 +147,9 @@ series:
 
 ## 域名迁移：别让这一步毁掉前面所有努力
 
-一个容易被忽视、却能一票否决的事项：**cubxxw.com 是从旧域 nsddd.top 迁移来的。**
+一个容易被忽视、却能一票否决的事项：**cubxxw.com 是从旧域 cubxxw.com 迁移来的。**
 
-- ✅ 已在 GSC 设置"地址变更（Change of Address）"，301 保留路径、实测有效（`nsddd.top/projects/markitdown/` → 301 → `cubxxw.com/projects/markitdown/`，canonical 正确）。
+- ✅ 已在 GSC 设置"地址变更（Change of Address）"，301 保留路径、实测有效（`cubxxw.com/projects/markitdown/` → 301 → `cubxxw.com/projects/markitdown/`，canonical 正确）。
 - ⚠️ 新域资源较新，Search 数据仍在回填——**近期看历史要用旧域数据，未来 1–3 个月要盯新域把权重接过来。**
 - 关键动作：**旧域 301 至少 180 天、两资源并存监控、核对每一条重定向。** 迁移期任何 404 或断链，都是在把前面所有 GEO 努力往水里倒。
 
@@ -182,4 +182,4 @@ A：能。流程就是：PSI 测技术底座 → GSC 按点击和曝光双维度
 
 ---
 
-*本文数据来源：我对 cubxxw.com（及旧域 nsddd.top）的 Google Search Console 与 PageSpeed Insights 真实实测（2026-07）。方法论见本系列前四篇。*
+*本文数据来源：我对 cubxxw.com（及旧域 cubxxw.com）的 Google Search Console 与 PageSpeed Insights 真实实测（2026-07）。方法论见本系列前四篇。*

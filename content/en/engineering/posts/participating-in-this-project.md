@@ -90,7 +90,7 @@ Instead of using `![]()` to reference images, we use `<img>` tags. This is to co
 
 )
 
-![](https://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com)
+![](https://sm.cubxxw.com//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com)
 
 ### License
 
@@ -127,18 +127,18 @@ Here you will be asked to write a description of your code changes, then you can
 
  ⚠️ **For example, if you are in the following documentation~**
 
-+ [x] [Learn Go](https://go.nsddd.top/)
-+ [x] [Learn Docker](https://docker.nsddd.top/)
++ [x] [Learn Go](https://go.cubxxw.com/)
++ [x] [Learn Docker](https://docker.cubxxw.com/)
 
 ⬇️ Then it's even easier for you, you can choose one of the following two methods:
 
 ### Direct Modification and Upload
 
-![Direct modification and upload example image](https://sm.nsddd.top/smimage-20221015232042494.png?xxw@nsddd.top)
+![Direct modification and upload example image](https://sm.cubxxw.com/smimage-20221015232042494.png?xxw@cubxxw.com)
 
 ⬇️ Continue to modify the `md` file directly in GitHub and then submit:
 
-![GitHub direct modification example image](https://sm.nsddd.top/smimage-20221015232445350.png?xxw@nsddd.top)
+![GitHub direct modification example image](https://sm.cubxxw.com/smimage-20221015232445350.png?xxw@cubxxw.com)
 
 ### Clone to Local and Modify
 
@@ -154,13 +154,13 @@ Here you will be asked to write a description of your code changes, then you can
 >
 > To contribute your repository to ours, just:
 >
-> ![GitHub pull request example image](https://sm.nsddd.top/smimage-20221015233657581.png?xxw@nsddd.top)
+> ![GitHub pull request example image](https://sm.cubxxw.com/smimage-20221015233657581.png?xxw@cubxxw.com)
 
 ### What Kind of Request Do We Hope For?
 
 **Optimize existing code or documentation**
 
-![](https://sm.nsddd.top//typora/6rnRNubHeXAp54s.png?mail:3293172751@qq.com)
+![](https://sm.cubxxw.com//typora/6rnRNubHeXAp54s.png?mail:3293172751@qq.com)
 
 2. **Supplement and share project notes**
 3. **Correct erroneous code**

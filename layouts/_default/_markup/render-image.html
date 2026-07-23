@@ -2,12 +2,12 @@
 {{- $alt := .Text | safeHTML -}}
 {{- $title := .Title -}}
 {{- $isSVG := hasSuffix (lower .Destination) ".svg" -}}
-{{- /* Dead external hosts: sm.nsddd.top (image bed shut down — every URL 404s
+{{- /* Dead external hosts: sm.cubxxw.com (image bed shut down — every URL 404s
        after a ~2s TLS stall) and expired Notion S3 signed URLs. Requesting
        them stalls page load for seconds per image, so emit a static
        placeholder at build time instead of the <img>.
        Remove a host from this list once its images are migrated locally. */ -}}
-{{- $deadHosts := slice "sm.nsddd.top" "prod-files-secure.s3.us-west-2.amazonaws.com" -}}
+{{- $deadHosts := slice "sm.cubxxw.com" "prod-files-secure.s3.us-west-2.amazonaws.com" -}}
 {{- $isDead := false -}}
 {{- range $deadHosts -}}{{- if in $.Destination . -}}{{- $isDead = true -}}{{- end -}}{{- end -}}
 {{- if $isDead -}}

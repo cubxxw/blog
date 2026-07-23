@@ -25,7 +25,7 @@ tldr:
   - 878K impressions is a vanity metric - the highest-impression queries are all off-topic noise (MBTI/medical/local history) with zero clicks, diluting site CTR to 0.1%.
   - The gold is in clicks - markitdown (96 clicks / 72K impressions), my-hugo (35 clicks / 10.4% CTR benchmark), TDD/LangGraph/NotebookLM. Those technical clusters deserve the investment.
   - Held against the five-layer model - L1 technical base is near-perfect; the real gaps are L2 structure, L3 evidence, L4 FAQ schema, L5 off-site endorsement - mapping one-to-one to the earlier chapters.
-  - Domain nsddd.top → cubxxw.com is mid-migration - Change of Address set, 301s path-preserving and verified. The key is keeping old-domain 301s for 180+ days and monitoring both properties.
+  - Domain cubxxw.com → cubxxw.com is mid-migration - Change of Address set, 301s path-preserving and verified. The key is keeping old-domain 301s for 180+ days and monitoring both properties.
 maturity: budding
 columns:
   - geo
@@ -58,7 +58,7 @@ First, PageSpeed Insights mobile (real-browser scores):
 | Accessibility | 86 | Contrast / heading skips / tooltip |
 | Agentic Browsing (AI readability) | 2/3 | One tooltip lacks an accessible name |
 
-Then Google Search Console (old domain nsddd.top, last 3 months):
+Then Google Search Console (old domain cubxxw.com, last 3 months):
 
 | Metric | Value |
 |---|---|
@@ -129,7 +129,7 @@ Aligning the real state with the previous chapters' five-layer model makes the g
 Turning diagnosis into a schedule (aligned with the [pillar's](/ai-agent/posts/geo-generative-engine-optimization-guide/) 30/60/90):
 
 **🔴 P0 · Protect the migration (1 week)**
-- Keep old-domain nsddd.top 301s for 180+ days; keep both GSC properties and compare curves weekly to confirm equity transfer.
+- Keep old-domain cubxxw.com 301s for 180+ days; keep both GSC properties and compare curves weekly to confirm equity transfer.
 - Re-submit `sitemap.xml` and `news-sitemap.xml` on cubxxw.com; "request indexing" for core pages.
 - Verify all 813 old-domain traffic pages 301 to the same path on the new domain (a page like markitdown must never 404).
 
@@ -147,9 +147,9 @@ Turning diagnosis into a schedule (aligned with the [pillar's](/ai-agent/posts/g
 
 ## The domain migration: don't let this one step undo everything
 
-An easily-overlooked, veto-power item: **cubxxw.com was migrated from the old domain nsddd.top.**
+An easily-overlooked, veto-power item: **cubxxw.com was migrated from the old domain cubxxw.com.**
 
-- ✅ Change of Address is set in GSC; 301s preserve paths and are verified (`nsddd.top/projects/markitdown/` → 301 → `cubxxw.com/projects/markitdown/`, canonical correct).
+- ✅ Change of Address is set in GSC; 301s preserve paths and are verified (`cubxxw.com/projects/markitdown/` → 301 → `cubxxw.com/projects/markitdown/`, canonical correct).
 - ⚠️ The new-domain property is recent, so Search data is still backfilling — **read history from the old domain now, and watch the new domain absorb the equity over the next 1–3 months.**
 - Key actions: **keep old-domain 301s for 180+ days, monitor both properties, verify every redirect.** Any 404 or broken link during migration pours all your prior GEO effort down the drain.
 
@@ -182,4 +182,4 @@ But once rebuilt, how do you know it worked? The classic "rank + click" fails in
 
 ---
 
-*Data source: my real measurements of cubxxw.com (and old domain nsddd.top) via Google Search Console and PageSpeed Insights (July 2026). Methodology in the first four chapters of this series.*
+*Data source: my real measurements of cubxxw.com (and old domain cubxxw.com) via Google Search Console and PageSpeed Insights (July 2026). Methodology in the first four chapters of this series.*

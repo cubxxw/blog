@@ -75,7 +75,7 @@ docker compose up -d
    + 在数据源页面，点击“添加数据源”按钮。
    + 在列表中找到并选择“Prometheus”。
 
-   ![image-20231114175117374](http://sm.nsddd.top/sm202311141751692.png)
+   ![image-20231114175117374](http://sm.cubxxw.com/sm202311141751692.png)
 
    点击 `Add New connection` 可以添加更多的数据源，比如说 Loki (负责日志存储和处理查询)
 
@@ -87,7 +87,7 @@ docker compose up -d
 
    + 根据需要调整其他设置，例如认证、TLS 设置等。
 
-   ![image-20231114180351923](http://sm.nsddd.top/sm202311141803076.png)
+   ![image-20231114180351923](http://sm.cubxxw.com/sm202311141803076.png)
 
 6. **保存并测试**:
 
@@ -159,7 +159,7 @@ docker compose up -d
 
 **图示例：**
 
-![image-20231114194451673](http://sm.nsddd.top/sm202311141944953.png)
+![image-20231114194451673](http://sm.cubxxw.com/sm202311141944953.png)
 
 
 
@@ -204,7 +204,7 @@ docker-compose up -d
 
 #### 运行效果
 
-![image-20231115100811208](http://sm.nsddd.top/sm202311151008639.png)
+![image-20231115100811208](http://sm.cubxxw.com/sm202311151008639.png)
 
 #### 步骤 4: 访问管理后台
 
@@ -213,7 +213,7 @@ docker-compose up -d
 
 运行效果图：
 
-![image-20231115101039837](http://sm.nsddd.top/sm202311151010116.png)
+![image-20231115101039837](http://sm.cubxxw.com/sm202311151010116.png)
 
 #### 步骤 5: 进入监控界面
 

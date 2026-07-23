@@ -59,8 +59,8 @@ tldr:
 
 **Some resources I wrote:**
 
-- [Cloud Native Learning](https://docker.nsddd.top/)
-- [golang Learning](https://go.nsddd.top/)
+- [Cloud Native Learning](https://docker.cubxxw.com/)
+- [golang Learning](https://go.cubxxw.com/)
 
 > All collected in awesome repository, covering 📚 Beginner's Growth Manual🚀 CS series, Cloud Native series, Blockchain series, web3 series🔥, Golang series💡...... Visit GitHub👀 https://github.com/cubxxw/awesome-cs-cloudnative-blockchain ⏬⏬⏬
 > 
@@ -255,7 +255,7 @@ Simply understand Restful concepts, it's best if you've done Restful Service
     
     `Kubernetes` code is particularly large, using cloc statistics **(⏱️ 2023-03-17)**:
     
-    !https://sm.nsddd.top/sm202303172221221.png
+    !https://sm.cubxxw.com/sm202303172221221.png
     
     ### **Other Source Code Statistics**
     

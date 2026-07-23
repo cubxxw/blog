@@ -253,7 +253,7 @@ https://chat.langchain.com/
 
 尽管从比尔盖茨到OpenAI，大家都在谈AI Agent，但是它还没有一个确切的定义。目前，在行业内关于AI Agent达成的共识，主要来自OpenAI的一篇博文。它将AI Agent定义为：大语言模型作为大脑，Agent具备感知、记忆、规划和使用工具的能力，能够自动化实现用户复杂的目标，这其实也奠定了AI Agent的基本框架。
 
-![Untitled](http://sm.nsddd.top/Untitled (2).png)
+![Untitled](http://sm.cubxxw.com/Untitled (2).png)
 
 **面壁智能（ModelBest）** 联合清华大学 NLP 实验室共同开发的大模型全流程自动化软件开发框架 OpenBME/ChatDev
 
@@ -263,7 +263,7 @@ https://chatdev.toscl.com/zh
 
 安装插件使用：
 
-![Untitled](http://sm.nsddd.top/Untitled (1).png)
+![Untitled](http://sm.cubxxw.com/Untitled (1).png)
 
 **AI Agent 的经典项目：**
 
@@ -309,7 +309,7 @@ https://github.com/lm-sys/FastChat
 https://github.com/wzzzd/FAQ_system
 > 
 
-[搭建一个FAQ智能问答系统](http://sm.nsddd.top/Untitled.png)
+[搭建一个FAQ智能问答系统](http://sm.cubxxw.com/Untitled.png)
 
 **资源：**
 

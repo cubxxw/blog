@@ -52,7 +52,7 @@ Each node runs a kubelet service process, listening on port 10250 by default.
 
 The kubelet architecture is shown in the following diagram:
 
-![https://sm.nsddd.top/sm202303081731495.png](https://sm.nsddd.top/sm202303081731495.png)
+![https://sm.cubxxw.com/sm202303081731495.png](https://sm.cubxxw.com/sm202303081731495.png)
 
 kubelet listens on 4 ports by default:
 
@@ -74,7 +74,7 @@ kubelet listens on 4 ports by default:
 
 ## kubelet Core Process for Managing Pods
 
-![https://sm.nsddd.top/sm202303081730574.png](https://sm.nsddd.top/sm202303081730574.png)
+![https://sm.cubxxw.com/sm202303081730574.png](https://sm.cubxxw.com/sm202303081730574.png)
 
 Sources include two types: file and http:
 
@@ -107,7 +107,7 @@ Getting Pod manifests:
 
 ### Pod Startup Process
 
-![https://sm.nsddd.top/sm202303081731318.png](https://sm.nsddd.top/sm202303081731318.png)
+![https://sm.cubxxw.com/sm202303081731318.png](https://sm.cubxxw.com/sm202303081731318.png)
 
 The core process of kubelet managing Pods is as follows:
 
@@ -136,7 +136,7 @@ More detailed process:
 
 > Classified by components, detailed to method level.
 >
-> ![https://sm.nsddd.top/sm202303081908979.png](https://sm.nsddd.top/sm202303081908979.png)
+> ![https://sm.cubxxw.com/sm202303081908979.png](https://sm.cubxxw.com/sm202303081908979.png)
 
 You can see the calling process of CNI, CRI, CSI, giving a clear understanding here.
 

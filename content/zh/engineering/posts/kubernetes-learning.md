@@ -59,8 +59,8 @@ tldr:
 
 **自己写作的一些资源：**
 
-- [云原生学习](https://docker.nsddd.top/)
-- [golang 学习](https://go.nsddd.top/)
+- [云原生学习](https://docker.cubxxw.com/)
+- [golang 学习](https://go.cubxxw.com/)
 
 > 都收纳到 awesome 仓库中，覆盖 📚 菜鸟成长手册🚀 CS系列 、云原生系列、区块链系列、web3系列🔥、Golang系列💡...... 访问 GitHub👀 https://github.com/cubxxw/awesome-cs-cloudnative-blockchain ⏬⏬⏬
 > 
@@ -255,7 +255,7 @@ graph LR;
     
     `Kubernetes` 代码特别庞大，使用 cloc 统计 **（⏱️ 2023-03-17）**：
     
-    !http://sm.nsddd.top/sm202303172221221.png
+    !http://sm.cubxxw.com/sm202303172221221.png
     
     ### **其他源码统计**
     

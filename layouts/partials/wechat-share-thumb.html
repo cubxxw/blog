@@ -15,7 +15,7 @@
 {{- $sectionDefault := dict "ai-agent" "/assets/og-ai-technology.png" "engineering" "/assets/og-ai-technology.png" "growth" "/assets/og-growth.png" "projects" "/assets/og-projects.png" -}}
 {{- $thumb := index $sectionDefault .Section | default (index (site.Params.images | default (slice "/assets/og-image.png")) 0) -}}
 {{- with .Params.cover.image -}}
-  {{- /* External hosts (e.g. the sm.nsddd.top image bed with its broken cert)
+  {{- /* External hosts (e.g. the sm.cubxxw.com image bed with its broken cert)
          are unreliable inside WeChat's WebView — only trust local rasters. */ -}}
   {{- if and (hasPrefix . "/") (not (strings.HasSuffix (lower .) ".svg")) -}}
     {{- $thumb = . -}}

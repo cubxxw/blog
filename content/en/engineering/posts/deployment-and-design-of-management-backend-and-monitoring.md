@@ -74,7 +74,7 @@ To configure Prometheus data sources in Grafana, follow these steps:
    + On the Data Sources page, click the "Add data source" button.
    + In the list, find and select "Prometheus."
 
-   ![image-20231114175117374](https://sm.nsddd.top/sm202311141751692.png)
+   ![image-20231114175117374](https://sm.cubxxw.com/sm202311141751692.png)
 
    Click `Add New connection` to add more data sources, such as Loki (responsible for log storage and query processing).
 
@@ -83,7 +83,7 @@ To configure Prometheus data sources in Grafana, follow these steps:
    + On the configuration page, fill in the details of the Prometheus server. This typically includes the URL of the Prometheus service (e.g., if Prometheus is running on the same machine as OpenIM, the URL might be `http://172.28.0.1:19090`, with the address matching the `DOCKER_BRIDGE_GATEWAY` variable address). OpenIM and the components are linked via a gateway. The default port used by OpenIM is `19090`.
    + Adjust other settings as needed, such as authentication and TLS settings.
 
-   ![image-20231114180351923](https://sm.nsddd.top/sm202311141803076.png)
+   ![image-20231114180351923](https://sm.cubxxw.com/sm202311141803076.png)
 
 6. **Save and Test**:
 
@@ -144,7 +144,7 @@ To monitor OpenIM in Grafana, you need to focus on three categories of key metri
 
 **Graph Examples:**
 
-![image-20231114194451673](https://sm.nsddd.top/sm202311141944953.png)
+![image-20231114194451673](https://sm.cubxxw.com/sm202311141944953.png)
 
 
 
@@ -187,7 +187,7 @@ This will download the required Docker images and start the OpenIM service.
 
 #### Running Effect
 
-![image-20231115100811208](https://sm.nsddd.top/sm202311151008639.png)
+![image-20231115100811208](https://sm.cubxxw.com/sm202311151008639.png)
 
 #### Step 4: Access the Admin Panel
 
@@ -196,7 +196,7 @@ This will download the required Docker images and start the OpenIM service.
 
 Running Effect Image:
 
-![image-20231115101039837](https://sm.nsddd.top/sm202311151010116.png)
+![image-20231115101039837](https://sm.cubxxw.com/sm202311151010116.png)
 
 #### Step 5: Access the Monitoring Interface
 

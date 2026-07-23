@@ -61,17 +61,17 @@ My GitHub contributions:
 
 - [My GitHub 2023](https://github.com/cubxxw?tab=overview&from=2023-12-01&to=2023-12-29)
 
-![2023-GitHub](https://sm.nsddd.top/20231230190154.png)
+![2023-GitHub](https://sm.cubxxw.com/20231230190154.png)
 
 Badges:
 
-![You Never Lose](https://sm.nsddd.top/20231230190256.png)
+![You Never Lose](https://sm.cubxxw.com/20231230190256.png)
 
 ## I. Open Source Project Contributions
 
 Represented by GitHub, this year's [ossinsight](https://ossinsight.io/analyze/cubxxw) performance:
 
-![ossinsight](https://sm.nsddd.top/20231230191146.png)
+![ossinsight](https://sm.cubxxw.com/20231230191146.png)
 
 1. Project Participation:
     - Major open source projects participated in 2023: [openim](https://github.com/OpenIMSDK/Open-IM-Server), Alibaba's [sealer](https://github.com/sealerio/sealer), NetEase's GitOps project [horizon](https://github.com/horizoncd/horizon), contributions to the [kubernetes](https://github.com/kubernetes/kubernetes/) project, [k8sgpt](https://github.com/k8sgpt-ai/k8sgpt), and more.
@@ -108,9 +108,9 @@ On my second trip to Wugong Mountain, I went with classmates, and later I visite
 
 Just before Christmas, I fulfilled a long-time wish by traveling to Western Sichuan, self-driving along Highway 318, and climbing my first and second snow mountains. Interestingly, I carried my laptop on trips, working during idle times, like when others were ordering food. I also lived in various cities for short periods, immersing myself in the cultures of Chongqing and Chengdu. These experiences might influence my post-graduation plans.
 
-![](https://sm.nsddd.top/DSC05356.JPG)     ![](https://sm.nsddd.top/DSC05396.JPG)     ![](https://sm.nsddd.top/DSC01627.JPG)
-![](https://sm.nsddd.top/DSC05321.JPG)     ![](https://sm.nsddd.top/DSC05289.JPG)     ![](https://sm.nsddd.top/DSC05718.JPG)
-![](https://sm.nsddd.top/DSC01681.JPG)     ![](https://sm.nsddd.top/DSC05871.JPG)     ![](https://sm.nsddd.top/DSC05895.JPG)
+![](https://sm.cubxxw.com/DSC05356.JPG)     ![](https://sm.cubxxw.com/DSC05396.JPG)     ![](https://sm.cubxxw.com/DSC01627.JPG)
+![](https://sm.cubxxw.com/DSC05321.JPG)     ![](https://sm.cubxxw.com/DSC05289.JPG)     ![](https://sm.cubxxw.com/DSC05718.JPG)
+![](https://sm.cubxxw.com/DSC01681.JPG)     ![](https://sm.cubxxw.com/DSC05871.JPG)     ![](https://sm.cubxxw.com/DSC05895.JPG)
 
 
 > My [Twitter](https://twitter.com/cubxxw)

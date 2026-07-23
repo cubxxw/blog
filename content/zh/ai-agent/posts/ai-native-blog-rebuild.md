@@ -177,7 +177,7 @@ cover:
 
 ![GEO 专栏落地页：六篇成组，从原理到实操到度量](/images/blog/rebuild-2026/column-geo.jpeg)
 
-落到这次重组里的实操，捡几件说：robots 明确欢迎 GPTBot、ClaudeBot、PerplexityBot 们来抓；站点根下放了 `llms.txt`；每篇文章的 front matter 都带结构化的 `tldr` 字段——AI 摘答案时最喜欢这种段落级可提取的结论；四类 JSON-LD 结构化数据补齐。更疼的一刀是砍索引：博客攒了四年的标签页里，七成标签底下只有一篇文章，这些薄页占掉了 sitemap 的一大半——统一 noindex 并踢出 sitemap 之后，提交给搜索引擎的 URL 几乎砍半，把抓取预算还给正文。还有域名迁移（nsddd.top → cubxxw.com）这种一步走错前功尽弃的事：301 保路径、新旧资源并存监控、旧域重定向至少保 180 天。
+落到这次重组里的实操，捡几件说：robots 明确欢迎 GPTBot、ClaudeBot、PerplexityBot 们来抓；站点根下放了 `llms.txt`；每篇文章的 front matter 都带结构化的 `tldr` 字段——AI 摘答案时最喜欢这种段落级可提取的结论；四类 JSON-LD 结构化数据补齐。更疼的一刀是砍索引：博客攒了四年的标签页里，七成标签底下只有一篇文章，这些薄页占掉了 sitemap 的一大半——统一 noindex 并踢出 sitemap 之后，提交给搜索引擎的 URL 几乎砍半，把抓取预算还给正文。还有域名迁移（cubxxw.com → cubxxw.com）这种一步走错前功尽弃的事：301 保路径、新旧资源并存监控、旧域重定向至少保 180 天。
 
 这套东西的完整方法论在专栏里，我自己站点的真实数据复盘（87 万曝光为什么只换来 852 次点击、虚荣指标怎么祛魅）单独写在[改造复盘篇](../geo-blog-rebuild-case-study/)。这里只留一句最重要的：**技术满分只是入场券，真正决定被不被引用的，是结构、证据和背书。**
 

@@ -400,7 +400,7 @@ summary: archives
 
 然后访问：http://localhost:1313/ 
 
-![image-20230913222054387](http://sm.nsddd.top/sm202309132220842.png)
+![image-20230913222054387](http://sm.cubxxw.com/sm202309132220842.png)
 
 点击 **月亮** ，支持设置 **明暗** 。
 

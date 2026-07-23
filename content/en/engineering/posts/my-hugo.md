@@ -399,7 +399,7 @@ NOTE: The **Archives** layout does not support multilingual month translations.
 
 Then visit: http://localhost:1313/
 
-![image-20230913222054387](https://sm.nsddd.top/sm202309132220842.png)
+![image-20230913222054387](https://sm.cubxxw.com/sm202309132220842.png)
 
 Click **Moon** to support setting **Light and Dark**.
 

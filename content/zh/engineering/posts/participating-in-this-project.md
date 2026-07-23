@@ -89,7 +89,7 @@ tldr:
 >
 > 对于大型程序，我们需要对 [🔥软件工程有一定的了解](https://github.com/3293172751/cs-awesome-Block_Chain/blob/master/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B&%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%92%8C%E6%9E%B6%E6%9E%84/README.md)
 
-![](http://sm.nsddd.top//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com)
+![](http://sm.cubxxw.com//typora/E1GMeZO5A3kbK29.png?mail:3293172751@qq.com)
 
 ### 协议许可
 
@@ -132,8 +132,8 @@ tldr:
 
  ⚠️ **例如：你是在以下的文档中~**
 
-+ [x] [go语言学习](https://go.nsddd.top/)
-+ [x] [docker学习](https://docker.nsddd.top/)
++ [x] [go语言学习](https://go.cubxxw.com/)
++ [x] [docker学习](https://docker.cubxxw.com/)
 
 ⬇️ 那么你就更容易了，你可以选择下面两种方法：
 
@@ -141,13 +141,13 @@ tldr:
 
 ### 直接修改，上传
 
-![image-20221015232042494](http://sm.nsddd.top/smimage-20221015232042494.png?xxw@nsddd.top)
+![image-20221015232042494](http://sm.cubxxw.com/smimage-20221015232042494.png?xxw@cubxxw.com)
 
 
 
 ⬇️ 继续在GitHub中直接修改`md`文件，然后提交：
 
-![image-20221015232445350](http://sm.nsddd.top/smimage-20221015232445350.png?xxw@nsddd.top)
+![image-20221015232445350](http://sm.cubxxw.com/smimage-20221015232445350.png?xxw@cubxxw.com)
 
 
 
@@ -165,7 +165,7 @@ tldr:
 >
 > 将自己的仓库贡献到我们的仓库只需要：
 >
-> ![image-20221015233657581](http://sm.nsddd.top/smimage-20221015233657581.png?xxw@nsddd.top)
+> ![image-20221015233657581](http://sm.cubxxw.com/smimage-20221015233657581.png?xxw@cubxxw.com)
 
 
 
@@ -173,7 +173,7 @@ tldr:
 
 **优化已有代码或者文档**
 
-![](http://sm.nsddd.top//typora/6rnRNubHeXAp54s.png?mail:3293172751@qq.com)
+![](http://sm.cubxxw.com//typora/6rnRNubHeXAp54s.png?mail:3293172751@qq.com)
 
 2. **补充和分享项目笔记**
 3. **修改错误的代码**

@@ -59,7 +59,7 @@ tldr:
 2. 生产化：使用 `LangSmith` 检查、监控和评估您的链，以便您可以充满信心地持续优化和部署。
 3. 部署：使用 `LangServe` 将任何链转变为 `API`。
 
-![Diagram outlining the hierarchical organization of the LangChain framework, displaying the interconnected parts across multiple layers.](http://sm.nsddd.top/langchain_stack.svg)
+![Diagram outlining the hierarchical organization of the LangChain framework, displaying the interconnected parts across multiple layers.](http://sm.cubxxw.com/langchain_stack.svg)
 
 
 ### langchain 框架组成

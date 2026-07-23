@@ -77,7 +77,7 @@ Short: "sealos is a Kubernetes distribution, a unified OS to manage cloud native
 
 As the most important command of sealos to achieve Kubernetes cluster, let’s try `sealos run`
 
-+ [Use sealos to quickly build HA cluster](https://docker.nsddd.top/Cloud-Native-k8s/6.html)
++ [Use sealos to quickly build HA cluster](https://docker.cubxxw.com/Cloud-Native-k8s/6.html)
 
 ```bash
 sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24.1 \
@@ -250,7 +250,7 @@ Logic for creating Applier:
 
 The `buildah mount` command is a tool used to mount container images on the local file system. Through this command, you can easily view and edit files in the container image. For specific usage, please refer to [Official Document](https://buildah.io/commands/mount/).
 
-![Untitled](https://sm.nsddd.top/sm202304152156333.png)
+![Untitled](https://sm.cubxxw.com/sm202304152156333.png)
 
 **Creating an `Applier` will go through the following steps:**
 
@@ -782,7 +782,7 @@ return todoList, nil
 
 + To facilitate understanding, the sealer picture is stolen here
 
-   ![sdUntitled](https://sm.nsddd.top/sm202304152338621.png)
+   ![sdUntitled](https://sm.cubxxw.com/sm202304152338621.png)
 
 Next, a series of pipelines will be executed to officially enter the actual cluster deployment process:
 

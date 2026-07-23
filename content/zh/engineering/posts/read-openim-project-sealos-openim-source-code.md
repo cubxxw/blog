@@ -81,7 +81,7 @@ var rootCmd = &cobra.Command{
 
 作为 sealos 成就 Kubernetes 集群最主要的命令，我们来尝试一下 `sealos run`
 
-+ [使用 sealos 快速搭建 HA cluster](https://docker.nsddd.top/Cloud-Native-k8s/6.html)
++ [使用 sealos 快速搭建 HA cluster](https://docker.cubxxw.com/Cloud-Native-k8s/6.html)
 
 ```bash
 sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24.1 \
@@ -254,7 +254,7 @@ type Interface interface {
 
 `buildah mount` 命令是用于将容器镜像挂载到本地文件系统上的工具。通过该命令可以方便地查看、编辑容器镜像中的文件。具体用法可以参考 [官方文档](https://buildah.io/commands/mount/)。
 
-![Untitled](http://sm.nsddd.top/sm202304152156333.png)
+![Untitled](http://sm.cubxxw.com/sm202304152156333.png)
 
 **创建一个 `Applier` 会经过以下步骤：**
 
@@ -788,7 +788,7 @@ func (c *CreateProcessor) GetPipeLine() ([]func(cluster *v2.Cluster) error, erro
 
 + 方便理解，这里盗用 sealer 图
 
-  ![sdUntitled](http://sm.nsddd.top/sm202304152338621.png)
+  ![sdUntitled](http://sm.cubxxw.com/sm202304152338621.png)
 
 接下来会执行一系列 pipeline，正式进入实际的集群部署过程中：
 

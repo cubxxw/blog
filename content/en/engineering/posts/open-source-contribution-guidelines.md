@@ -63,7 +63,7 @@ For **security** issues discovered, it is recommended to notify [admin@sealyun.c
 
 For **general** issues, maybe you can choose [issues]([New Issue · labring/sealos (github.com)](https://github.com/labring/sealos/issues/new/choose)) to point out the problem
 
-![image-20221019161049208](https://sm.nsddd.top/smimage-20221019161049208.png)
+![image-20221019161049208](https://sm.cubxxw.com/smimage-20221019161049208.png)
 
 ⚡ Obviously, I prefer `pr` to `issues`, you can find the following problems and improve them
 
@@ -126,7 +126,7 @@ git remote add upstream https://github.com/labring/sealos.git
 git remote set-url --push upstream no-pushing
 ```
 
-![image-20221109173951312](https://sm.nsddd.top/smimage-20221109173951312.png)
+![image-20221109173951312](https://sm.cubxxw.com/smimage-20221109173951312.png)
 
 With this remote setup, you can check the git remote configuration like this:
 
@@ -140,7 +140,7 @@ upstream no-pushing (push)
 
 Adding this we can easily synchronize our local branch with the upstream branch.
 
-![image-20221019162733226](https://sm.nsddd.top/smimage-20221019162733226.png)
+![image-20221019162733226](https://sm.cubxxw.com/smimage-20221019162733226.png)
 
 
 
@@ -178,7 +178,7 @@ Make any changes to the code and then build and test it. `new-branch`
 > Fix branch bug-* Fix bug in online code
 > ```
 
-![image-20221019164941695](https://sm.nsddd.top/smimage-20221019164941695.png)
+![image-20221019164941695](https://sm.cubxxw.com/smimage-20221019164941695.png)
 
 
 
@@ -189,7 +189,7 @@ Make any changes to the code and then build and test it. `new-branch`
 > + `-a` parameter setting does not need to execute the `git add` command after modifying the file, just submit it directly
 > + `-s` means adding a signature and adding your own information
 >
-> ![image-20221019190552361](https://sm.nsddd.top/smimage-20221019190552361.png)
+> ![image-20221019190552361](https://sm.cubxxw.com/smimage-20221019190552361.png)
 
 ```bash
 golangci-lint run -c .golangci.yml # lint
@@ -199,7 +199,7 @@ git rebase -i <commit-id> # If your PR has multiple submissions
 git push # Push to the forked library after rebase is completed. If this is the first push, run git push --set-upstream origin <new-branch>
 ```
 
-![image-20221019190409127](https://sm.nsddd.top/smimage-20221019190409127.png)
+![image-20221019190409127](https://sm.cubxxw.com/smimage-20221019190409127.png)
 
 > Specify a language for each Markdown block unless there is no associated language.
 
@@ -225,7 +225,7 @@ git commit -m -s "init infra"
 
 **Submit a pull request to the master branch:**
 
-![image-20221019192522791](https://sm.nsddd.top/smimage-20221019192522791.png)
+![image-20221019192522791](https://sm.cubxxw.com/smimage-20221019192522791.png)
 
 
 
@@ -304,7 +304,7 @@ export PATH=$PATH:$GO_PATH/bin
 
 😂 What I like very much is that `sealos` can build the environment in one go. I think back then, I really spent all my efforts to build it~ but failed.
 
-![image-20221019194939030](https://sm.nsddd.top/smimage-20221019194939030.png)
+![image-20221019194939030](https://sm.cubxxw.com/smimage-20221019194939030.png)
 
 
 
@@ -394,7 +394,7 @@ root@VM-4-3-ubuntu:/#
 
 ### docker, k8s, cloud native notes
 
-+ [x] [docker.nsddd.top](https://docker.nsddd.top)
++ [x] [docker.cubxxw.com](https://docker.cubxxw.com)
 
 
 
@@ -402,10 +402,10 @@ root@VM-4-3-ubuntu:/#
 
 - Basic usage:
 
-   - Create a `pod` and understand what a `pod` is ➡️ [🧷Record](https://docker.nsddd.top/Cloud-Native-k8s/9.html)
-   - Create a `deployment` and understand the relationship between `deployment` and `pod` ➡️ [🧷Record](https://docker.nsddd.top/Cloud-Native-k8s/10.html)
-   - Create a `configmap` and understand the mounting configuration file to `pod` ➡️ [🧷Record](https://docker.nsddd.top/Cloud-Native-k8s/13.html)
-   - Create a `service` and access `pod` within the cluster through `service` ➡️ [🧷Record](https://docker.nsddd.top/Cloud-Native-k8s/11.html)
+   - Create a `pod` and understand what a `pod` is ➡️ [🧷Record](https://docker.cubxxw.com/Cloud-Native-k8s/9.html)
+   - Create a `deployment` and understand the relationship between `deployment` and `pod` ➡️ [🧷Record](https://docker.cubxxw.com/Cloud-Native-k8s/10.html)
+   - Create a `configmap` and understand the mounting configuration file to `pod` ➡️ [🧷Record](https://docker.cubxxw.com/Cloud-Native-k8s/13.html)
+   - Create a `service` and access `pod` within the cluster through `service` ➡️ [🧷Record](https://docker.cubxxw.com/Cloud-Native-k8s/11.html)
 
 - Core concepts and functions of core components:
 
@@ -441,7 +441,7 @@ root@VM-4-3-ubuntu:/#
 
 **what is `pod`? **
 
-+ [🧷 Go to cub to learn pod ](https://docker.nsddd.top/Cloud-Native-k8s/9.html#%E4%BF%AE%E6%94%B9pod)
++ [🧷 Go to cub to learn pod ](https://docker.cubxxw.com/Cloud-Native-k8s/9.html#%E4%BF%AE%E6%94%B9pod)
 
 Pod is the smallest scheduling unit in `Kubernetes`. A Pod encapsulates a container (or multiple containers). Containers in a Pod share storage, network, etc. That is, you can think of the entire pod as a virtual machine, and then each container is equivalent to a process running on the virtual machine. All containers in the same pod are scheduled and scheduled uniformly.
 
@@ -585,7 +585,7 @@ Then test it locally.
 
 😂 What I like very much is that `sealos` can build the environment in one go. I think back then, I really spent all my efforts to build it~ but failed.
 
-![image-20221019194939030](https://sm.nsddd.top/smimage-20221019194939030.png)
+![image-20221019194939030](https://sm.cubxxw.com/smimage-20221019194939030.png)
 
 
 
@@ -593,7 +593,7 @@ Then test it locally.
 
 **💡 Delete all the clusters from yesterday and open three new servers, completely new~**
 
-![image-20221021151347038](https://sm.nsddd.top/smimage-20221021151347038.png)
+![image-20221021151347038](https://sm.cubxxw.com/smimage-20221021151347038.png)
 
 
 
@@ -628,9 +628,9 @@ sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24.1
 >
 > Turning on ssh password-free does not require a password, it is implemented here.
 >
-> ![image-20221020111912006](https://sm.nsddd.top/smimage-20221020111912006.png)
+> ![image-20221020111912006](https://sm.cubxxw.com/smimage-20221020111912006.png)
 
-![image-20221020105230320](https://sm.nsddd.top/smimage-20221020105230320.png)
+![image-20221020105230320](https://sm.cubxxw.com/smimage-20221020105230320.png)
 
 
 
@@ -640,7 +640,7 @@ sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24.1
 kubectl get nodes
 ```
 
-![image-20221020113615770](https://sm.nsddd.top/smimage-20221020113615770.png)
+![image-20221020113615770](https://sm.cubxxw.com/smimage-20221020113615770.png)
 
 
 
@@ -657,4 +657,4 @@ $ sealos run labring/kubernetes:v1.25.0 labring/helm:v3.8.2 labring/calico:v3.24
 $ kubectl taint node --all node-role.kubernetes.io/control-plane-
 ```
 
-![image-20221020212025716](https://sm.nsddd.top/smimage-20221020212025716.png) branch
+![image-20221020212025716](https://sm.cubxxw.com/smimage-20221020212025716.png) branch
