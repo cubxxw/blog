@@ -12,9 +12,9 @@
 /categories/*      /archives/      301
 /travel-direct    https://www.polarsteps.com/cubxxw   302
 
-# Legacy domain cubxxw.com (+ www) → new primary domain cubxxw.com (preserves SEO)
-https://cubxxw.com/*        https://cubxxw.com/:splat    301!
-https://www.cubxxw.com/*    https://cubxxw.com/:splat    301!
+# Legacy domain nsddd.top (+ www) → new primary domain cubxxw.com (preserves SEO)
+https://nsddd.top/*        https://cubxxw.com/:splat    301!
+https://www.nsddd.top/*    https://cubxxw.com/:splat    301!
 
 # www subdomain → apex domain
 https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
