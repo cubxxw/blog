@@ -71,7 +71,7 @@
       <p class="bq-hello-sub">{{ if $isZH }}这一页是一段路。陪我走一小段吧。{{ else }}This page is a road. Walk a little of it with me.{{ end }}</p>
     </div>
     <div class="bq-prop bq-sign bq-sign--small" style="--x:1120px">
-      <p>{{ if $isZH }}小熊会自己往前走；<br>滚轮下滑是快进剧情，<kbd>空格</kbd> 跳起来顶亮问号砖。{{ else }}The bear walks on his own;<br>scrolling fast-forwards the story, <kbd>Space</kbd> head-bumps the ? blocks.{{ end }}</p>
+      <p>{{ if $isZH }}小熊会自己往前走；<br>滚轮下滑快进剧情，<kbd>空格</kbd> 跳起来顶问号砖、吃高处的金币——连按两下是二段跳。{{ else }}The bear walks on his own;<br>scrolling fast-forwards the story, <kbd>Space</kbd> head-bumps ? blocks and grabs high coins — tap twice to double-jump.{{ end }}</p>
     </div>
 
     <!-- ── ch.1 2001 ── -->
@@ -182,6 +182,24 @@ $ gh repo view openim
       <p>{{ if $isZH }}通关啦。想读我的文字？<br>往下滚——阅读地图已经自动展开 ↓{{ else }}Run cleared. Want my writing?<br>Scroll on — the reading atlas has opened itself ↓{{ end }}</p>
     </div>
 
+    <!-- ── coins: little rewards along the road (some need a jump) ── -->
+    {{- $coins := slice 780 1560 2520 3020 3620 4260 4820 5210 5680 6120 6650 7100 7460 8060 8620 9200 9900 10600 11300 12060 12900 13640 14300 14960 15620 16780 17320 17880 18620 19180 20120 20900 }}
+    {{- range $i, $cx := $coins }}
+    <span class="bq-coin{{ if modBool $i 3 }} bq-coin--high{{ end }}" style="--x:{{ $cx }}px" aria-hidden="true"></span>
+    {{- end }}
+
+    <!-- ── summit flag: unfurls when the bear reaches the top ── -->
+    <div class="bq-prop bq-peakflag" style="--x:7370px" aria-hidden="true">
+      <svg viewBox="0 0 60 120"><line class="bq-peakflag-pole" x1="8" y1="4" x2="8" y2="120"/><path class="bq-peakflag-cloth" d="M8 8 L52 20 L8 34 Z"/></svg>
+    </div>
+
+    <!-- ── birds: startle and fly off when the bear gets close ── -->
+    {{- range $i, $bx := slice 2680 5960 9700 14100 17500 }}
+    <span class="bq-bird" style="--x:{{ $bx }}px;--fly:{{ if modBool $i 2 }}-1{{ else }}1{{ end }}" aria-hidden="true">
+      <svg viewBox="0 0 26 16"><path d="M2 9 Q7 2 13 8 Q19 2 24 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </span>
+    {{- end }}
+
     <!-- ── article levels: "?" blocks the bear head-bumps open ── -->
     {{- range $i, $lv := $levels }}
     {{- with site.GetPage $lv.page }}
@@ -229,6 +247,7 @@ $ gh repo view openim
   <div class="bq-hud" id="bqHud">
     <span class="bq-km" id="bqKm" aria-hidden="true"><b id="bqKmNum">0</b> km</span>
     <span class="bq-lv" id="bqLvChip" aria-hidden="true">LV <b id="bqLvNum">0</b>/<span id="bqLvTotal">6</span></span>
+    <span class="bq-coinhud" id="bqCoinHud" aria-hidden="true"><i class="bq-coinhud-dot"></i><b id="bqCoinNum">0</b></span>
     <nav class="bq-chapters" id="bqChapters" aria-label="{{ if $isZH }}章节{{ else }}Chapters{{ end }}"></nav>
     <span class="bq-words" id="bqWords" aria-hidden="true">
       <i data-word="0">{{ if $isZH }}真实{{ else }}Authentic{{ end }}</i>
@@ -245,8 +264,27 @@ $ gh repo view openim
     <p class="bq-start-title">{{ if $isZH }}人生如戏{{ else }}Life, played{{ end }}</p>
     <p class="bq-start-tag">{{ if $isZH }}游戏人生——观察世界，观察自己；理解世界，理解自己。这一页是我的存档。{{ else }}Play life as a game — watch the world, watch yourself; understand both. This page is my save file.{{ end }}</p>
     <button class="bq-start-btn" id="bqStartBtn" type="button">▶ START</button>
-    <p class="bq-start-hint">{{ if $isZH }}滚动推进剧情 · <kbd>←</kbd><kbd>→</kbd> 行走 · <kbd>空格</kbd> 跳跃{{ else }}Scroll to advance · <kbd>←</kbd><kbd>→</kbd> walk · <kbd>Space</kbd> to jump{{ end }}</p>
+    <p class="bq-start-hint">{{ if $isZH }}滚动推进剧情 · <kbd>←</kbd><kbd>→</kbd> 行走 · <kbd>空格</kbd> 跳跃（可二段跳）{{ else }}Scroll to advance · <kbd>←</kbd><kbd>→</kbd> walk · <kbd>Space</kbd> to jump (double-jump works){{ end }}</p>
     <a class="bq-start-skip" id="bqStartSkip" href="#start-here">{{ if $isZH }}直接看文字版 ↓{{ else }}Straight to the text ↓{{ end }}</a>
+  </div>
+
+  <!-- CLEAR — the run's results screen -->
+  <div class="bq-clear" id="bqClear" aria-hidden="true">
+    <div class="bq-clear-card">
+      <p class="bq-clear-kicker">RUN CLEARED</p>
+      <p class="bq-clear-title">{{ if $isZH }}通关 · 我们算认识了{{ else }}Cleared · now we've met{{ end }}</p>
+      <div class="bq-clear-stats">
+        <span><b id="bqClearKm">0</b><i>km</i></span>
+        <span><b id="bqClearLv">0</b><i>{{ if $isZH }}文章关{{ else }}levels{{ end }}</i></span>
+        <span><b id="bqClearCoin">0</b><i>{{ if $isZH }}金币{{ else }}coins{{ end }}</i></span>
+        <span><b id="bqClearWord">0</b><i>{{ if $isZH }}词{{ else }}words{{ end }}</i></span>
+      </div>
+      <p class="bq-clear-rank" id="bqClearRank"></p>
+      <div class="bq-clear-actions">
+        <button class="bq-clear-replay" id="bqReplay" type="button">↻ {{ if $isZH }}再走一遍{{ else }}Replay{{ end }}</button>
+        <a class="bq-clear-read" href="#start-here">{{ if $isZH }}去读文字 ↓{{ else }}Read the words ↓{{ end }}</a>
+      </div>
+    </div>
   </div>
 
 </section>
@@ -385,7 +423,66 @@ $ gh repo view openim
   var lvGot = 0;
   if (lvTotalEl) lvTotalEl.textContent = String(levels.length);
 
+  /* coins: low ones sit on the path, high ones need a jump */
+  var coins = [].map.call(stage.querySelectorAll('.bq-coin'), function (el) {
+    var cx = parseFloat(el.style.getPropertyValue('--x')) || 0;
+    var high = el.classList.contains('bq-coin--high');
+    el.style.bottom = (elev(cx) + (high ? 118 : 34)) + 'px';
+    return { el: el, x: cx, high: high, got: false };
+  });
+  var coinCount = 0;
+  var coinNum = document.getElementById('bqCoinNum');
+  var coinHud = document.getElementById('bqCoinHud');
+
+  /* birds startle when the bear gets close */
+  var birds = [].map.call(stage.querySelectorAll('.bq-bird'), function (el) {
+    var bx = parseFloat(el.style.getPropertyValue('--x')) || 0;
+    el.style.bottom = (elev(bx) + 6) + 'px';
+    return { el: el, x: bx, flew: false };
+  });
+
+  var peakFlag = stage.querySelector('.bq-peakflag');
+  var peakDone = false;
+
+  /* ── tiny particle + floating-text pool (plain DOM, short-lived) ── */
+  var fxLayer = document.createElement('div');
+  fxLayer.className = 'bq-fx';
+  fxLayer.setAttribute('aria-hidden', 'true');
+  stage.appendChild(fxLayer);
+  function fxAt(sx, sy, kind, n) {
+    for (var i = 0; i < n; i++) {
+      var p = document.createElement('i');
+      p.className = 'bq-p bq-p--' + kind;
+      var a = Math.random() * Math.PI - Math.PI;      /* upper half */
+      var d = 18 + Math.random() * 34;
+      p.style.left = sx + 'px';
+      p.style.top = sy + 'px';
+      p.style.setProperty('--dx', (Math.cos(a) * d).toFixed(0) + 'px');
+      p.style.setProperty('--dy', (Math.sin(a) * d - 12).toFixed(0) + 'px');
+      fxLayer.appendChild(p);
+      (function (el) { setTimeout(function () { el.remove(); }, 700); })(p);
+    }
+  }
+  function floatText(sx, sy, txt, kind) {
+    var t = document.createElement('span');
+    t.className = 'bq-float' + (kind ? ' bq-float--' + kind : '');
+    t.textContent = txt;
+    t.style.left = sx + 'px';
+    t.style.top = sy + 'px';
+    fxLayer.appendChild(t);
+    setTimeout(function () { t.remove(); }, 1000);
+  }
+  /* screen coords of the bear (fx layer is fixed to the stage) */
+  function bearScreen() {
+    var r = bear.getBoundingClientRect(), s = stage.getBoundingClientRect();
+    return { x: r.left - s.left + r.width / 2, y: r.top - s.top + r.height / 2 };
+  }
+  function worldToScreenX(wx) { return wx - x; }
+
   var x = 0, vx = 0, keyR = false, keyL = false;
+  /* jump physics: y above terrain, JS-driven so we can double-jump */
+  var jy = 0, jvy = 0, airborne = false, jumpsUsed = 0;
+  var GRAV = 2600, JUMP_V = 780;
   var started = false, finished = false;
   var paused = false, manualUntil = 0, tweenTarget = -1;
   var dragging = false, dragStartX = 0, dragStartY = 0, dragStartWorld = 0, dragVel = 0,
@@ -395,6 +492,8 @@ $ gh repo view openim
   var AUTO = 120, FAST = 460, BACK = -380;
   var visible = true;
   var prevX = 0, facingBack = false;
+  var prevBearWorld = 0;
+  var lastPrint = 0;
   var last = performance.now();
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
@@ -418,6 +517,26 @@ $ gh repo view openim
     openAtlas();
     bear.classList.add('is-happy');
     setTimeout(function () { bear.classList.remove('is-happy'); }, 900);
+    /* results screen */
+    var clearOv = document.getElementById('bqClear');
+    if (clearOv) {
+      var put = function (id, v) { var el = document.getElementById(id); if (el) el.textContent = String(v); };
+      put('bqClearKm', KM_TOTAL);
+      put('bqClearLv', lvGot + '/' + levels.length);
+      put('bqClearCoin', coinCount + '/' + coins.length);
+      put('bqClearWord', gotCount + '/' + berries.length);
+      var full = lvGot === levels.length && coinCount === coins.length;
+      var rank = full ? 'S' : (lvGot === levels.length ? 'A' : coinCount > coins.length * 0.6 ? 'B' : 'C');
+      var rankEl = document.getElementById('bqClearRank');
+      if (rankEl) rankEl.textContent = (isZH ? '评价 ' : 'Rank ') + rank +
+        (full ? (isZH ? ' · 全收集！' : ' · all clear!') : '');
+      clearOv.classList.add('bq-clear-on');
+      clearOv.setAttribute('aria-hidden', 'false');
+      var cs = stage.getBoundingClientRect();
+      for (var f = 0; f < 14; f++) {  /* confetti burst */
+        fxAt(cs.width * (0.2 + Math.random() * 0.6), cs.height * 0.3, f % 2 ? 'spark' : 'coin', 2);
+      }
+    }
   }
 
   function collect(b) {
@@ -425,6 +544,10 @@ $ gh repo view openim
     b.el.classList.add('bq-got');
     var chip = wordsHud.querySelector('[data-word="' + b.el.getAttribute('data-berry') + '"]');
     if (chip) chip.classList.add('bq-word-on');
+    var sx = worldToScreenX(b.x + 45);
+    var sy = stage.clientHeight - 90 - elev(b.x) - 78;
+    fxAt(sx, sy, 'spark', 7);
+    floatText(sx, sy - 12, b.el.querySelector('.bq-berry-word').textContent, 'word');
     bear.classList.add('is-happy');
     setTimeout(function () { bear.classList.remove('is-happy'); }, 900);
     if (gotCount === berries.length) wordsHud.classList.add('bq-words-all');
@@ -435,20 +558,40 @@ $ gh repo view openim
     lv.hit = true; lvGot++;
     lv.el.classList.add('bq-hit');
     if (lvNum) lvNum.textContent = String(lvGot);
+    var bs = bearScreen();
+    fxAt(bs.x, bs.y - 90, 'spark', 8);
+    floatText(bs.x, bs.y - 110, 'LV.' + lvGot + ' ★', 'lv');
     bear.classList.add('is-happy');
     setTimeout(function () { bear.classList.remove('is-happy'); }, 700);
   }
 
+  function collectCoin(c) {
+    c.got = true; coinCount++;
+    c.el.classList.add('bq-coin-got');
+    if (coinNum) coinNum.textContent = String(coinCount);
+    if (coinHud) {
+      coinHud.classList.remove('bq-coin-bump');
+      void coinHud.offsetWidth;               /* restart the bump */
+      coinHud.classList.add('bq-coin-bump');
+    }
+    var sx = worldToScreenX(c.x);
+    var sy = stage.clientHeight - 90 - elev(c.x) - (c.high ? 118 : 34);
+    fxAt(sx, sy, 'coin', 5);
+    floatText(sx, sy - 8, '+1', 'coin');
+  }
+
   function jump() {
-    if (bear.classList.contains('is-jump')) return;
-    bear.classList.add('is-jump');
-    setTimeout(function () {  /* head reaches the blocks near the apex */
-      var bw = x + vw * BEAR_AT;
-      for (var m = 0; m < levels.length; m++) {
-        if (!levels[m].hit && Math.abs(bw - levels[m].x) < 95) { hitLevel(levels[m]); break; }
-      }
-    }, 170);
-    setTimeout(function () { bear.classList.remove('is-jump'); }, 620);
+    if (jumpsUsed >= 2) return;              /* double jump, then wait to land */
+    jumpsUsed++;
+    airborne = true;
+    jvy = jumpsUsed === 1 ? JUMP_V : JUMP_V * 0.86;
+    bear.classList.add('is-air');
+    bear.classList.remove('is-land');
+    if (jumpsUsed === 2) {                   /* flip on the second hop */
+      bear.classList.remove('is-flip');
+      void bear.offsetWidth;
+      bear.classList.add('is-flip');
+    }
   }
 
   function frame(now) {
@@ -480,20 +623,84 @@ $ gh repo view openim
       far.style.transform = 'translate3d(' + (-x * 0.18 % 1400) + 'px,0,0)';
 
       var bearWorld = x + vw * BEAR_AT;
+
+      /* jump physics: integrate y, land back on the terrain */
+      if (airborne) {
+        jy += jvy * dt;
+        jvy -= GRAV * dt;
+        if (jy <= 0 && jvy < 0) {
+          jy = 0; jvy = 0; airborne = false; jumpsUsed = 0;
+          bear.classList.remove('is-air', 'is-flip');
+          bear.classList.add('is-land');
+          var lb = bearScreen();
+          fxAt(lb.x, lb.y + 34, 'dust', 5);   /* landing puff */
+          setTimeout(function () { bear.classList.remove('is-land'); }, 260);
+        }
+      }
+
       /* the bear rides the terrain and leans into slopes */
       var eB = elev(bearWorld);
       var slope = (elev(bearWorld + 40) - elev(bearWorld - 40)) / 80;
-      var ang = clamp(Math.atan(slope) * 28.6, -14, 14);
-      bear.style.transform = 'translate3d(0,' + (-eB).toFixed(1) + 'px,0) rotate(' + (-ang).toFixed(1) + 'deg)';
+      var ang = airborne ? 0 : clamp(Math.atan(slope) * 28.6, -14, 14);
+      bear.style.transform = 'translate3d(0,' + (-(eB + jy)).toFixed(1) + 'px,0) rotate(' + (-ang).toFixed(1) + 'deg)';
 
       bearFlip.style.transform = facingBack ? 'scaleX(-1)' : '';
-      bear.classList.toggle('is-walking', moving);
+      bear.classList.toggle('is-walking', moving && !airborne);
 
-      /* auto mode: the bear plays himself and hops the unhit blocks */
-      if (auto) {
+      /* head-bump the "?" blocks while airborne near their height */
+      if (airborne && jy > 46) {
+        for (var m2 = 0; m2 < levels.length; m2++) {
+          if (!levels[m2].hit && Math.abs(bearWorld - levels[m2].x) < 95) { hitLevel(levels[m2]); break; }
+        }
+      }
+      /* auto mode: the bear plays himself and hops the unhit blocks
+         (and the occasional high coin, because he wants them too) */
+      if (auto && !airborne) {
         for (var m = 0; m < levels.length; m++) {
           if (!levels[m].hit && Math.abs(bearWorld - levels[m].x) < 30) { jump(); break; }
         }
+        if (!airborne) {
+          for (var hc = 0; hc < coins.length; hc++) {
+            if (!coins[hc].got && coins[hc].high && Math.abs(bearWorld - coins[hc].x) < 26) { jump(); break; }
+          }
+        }
+      }
+      /* coins: low ones on the path; high ones only while airborne.
+         Swept check so fast wheel-scrolls can't tunnel past them. */
+      var sweepLo = Math.min(prevBearWorld, bearWorld) - 34;
+      var sweepHi = Math.max(prevBearWorld, bearWorld) + 34;
+      for (var cc = 0; cc < coins.length; cc++) {
+        var cn = coins[cc];
+        if (cn.got || cn.x < sweepLo || cn.x > sweepHi) continue;
+        if (!cn.high || jy > 62) collectCoin(cn);
+      }
+      prevBearWorld = bearWorld;
+      /* birds startle within ~260px */
+      for (var bb = 0; bb < birds.length; bb++) {
+        if (!birds[bb].flew && Math.abs(bearWorld - birds[bb].x) < 260) {
+          birds[bb].flew = true;
+          birds[bb].el.classList.add('bq-bird-fly');
+        }
+      }
+      /* summit flag unfurls at the top */
+      if (!peakDone && peakFlag && bearWorld > 7280) {
+        peakDone = true;
+        peakFlag.classList.add('bq-peak-up');
+        floatText(worldToScreenX(7370), stage.clientHeight - 90 - elev(7370) - 130, 'SUMMIT!', 'lv');
+      }
+      /* dusk falls on the way into camp */
+      var dusk = clamp((bearWorld - 17400) / 1400, 0, 1);
+      stage.style.setProperty('--dusk', dusk.toFixed(3));
+      stage.classList.toggle('bq-dusk', dusk > 0.45);
+      /* footprints while walking on the ground */
+      if (moving && !airborne && now - lastPrint > 240) {
+        lastPrint = now;
+        var fp = document.createElement('i');
+        fp.className = 'bq-print';
+        fp.style.left = bearWorld + (facingBack ? 34 : -34) + 'px';
+        fp.style.bottom = (elev(bearWorld) - 2) + 'px';
+        world.appendChild(fp);
+        (function (el) { setTimeout(function () { el.remove(); }, 2400); })(fp);
       }
       /* reveal props near the viewport */
       for (var i = 0; i < props.length; i++) {
@@ -596,6 +803,41 @@ $ gh repo view openim
     paused = !paused;
     playBtn.setAttribute('aria-pressed', String(paused));
     stage.classList.toggle('bq-paused', paused);
+  });
+
+  /* results screen: replay resets the run; reading dismisses it */
+  var clearLayer = document.getElementById('bqClear');
+  function dismissClear() {
+    if (!clearLayer) return;
+    clearLayer.classList.remove('bq-clear-on');
+    clearLayer.setAttribute('aria-hidden', 'true');
+  }
+  var replayBtn = document.getElementById('bqReplay');
+  if (replayBtn) replayBtn.addEventListener('click', function () {
+    dismissClear();
+    finished = false;
+    stage.classList.remove('bq-done');
+    stage.classList.add('bq-run');
+    /* rewind world state so the road is playable again */
+    x = 0; prevX = 0; prevBearWorld = 0; inertia = 0; tweenTarget = -1;
+    jy = 0; jvy = 0; airborne = false; jumpsUsed = 0;
+    lvGot = 0; coinCount = 0; gotCount = 0;
+    if (lvNum) lvNum.textContent = '0';
+    if (coinNum) coinNum.textContent = '0';
+    levels.forEach(function (lv) { lv.hit = false; lv.el.classList.remove('bq-hit'); });
+    coins.forEach(function (c) { c.got = false; c.el.classList.remove('bq-coin-got'); });
+    berries.forEach(function (b) { b.got = false; b.el.classList.remove('bq-got'); });
+    birds.forEach(function (bd) { bd.flew = false; bd.el.classList.remove('bq-bird-fly'); });
+    if (peakFlag) { peakDone = false; peakFlag.classList.remove('bq-peak-up'); }
+    wordsHud.classList.remove('bq-words-all');
+    [].forEach.call(wordsHud.querySelectorAll('.bq-word-on'), function (w) { w.classList.remove('bq-word-on'); });
+    stage.classList.remove('bq-dusk');
+    stage.style.setProperty('--dusk', '0');
+    userTouched();
+  });
+  if (clearLayer) clearLayer.addEventListener('click', function (e) {
+    if (e.target === clearLayer) dismissClear();          /* backdrop click */
+    if (e.target.closest('.bq-clear-read')) dismissClear();
   });
 
   /* start overlay */

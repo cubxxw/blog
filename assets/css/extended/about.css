@@ -173,7 +173,9 @@ body.dark .bq-sun {
 .bq:not(.bq-js) .bq-hud,
 .bq:not(.bq-js) .bq-level-block,
 .bq:not(.bq-js) .bq-sign--cliff,
-.bq:not(.bq-js) .bq-sign--peak { display: none; }
+.bq:not(.bq-js) .bq-sign--peak,
+.bq:not(.bq-js) .bq-peakflag,
+.bq:not(.bq-js) .bq-clear { display: none; }
 .bq:not(.bq-js) .bq-level { width: auto; }
 .bq:not(.bq-js) .bq-level-card {
   position: static;
@@ -785,16 +787,29 @@ body.dark .bq-sun {
   0%, 100% { translate: 0 0; }
   50%      { translate: 0 -3px; }
 }
-.bq-bear.is-jump .bq-bear-flip { animation: bq-jump 0.62s var(--ease-out); }
-@keyframes bq-jump {
-  0%   { translate: 0 0; scale: 1 1; }
-  28%  { translate: 0 -58px; scale: 0.96 1.06; }
-  58%  { translate: 0 0; scale: 1.07 0.9; }
-  76%  { translate: 0 -10px; scale: 0.99 1.02; }
-  100% { translate: 0 0; scale: 1 1; }
+/* airborne: JS integrates the y — CSS just poses the body */
+.bq-bear.is-air .bq-bear-flip { animation: none; }
+.bq-bear.is-air svg { scale: 0.97 1.05; }
+.bq-bear.is-air .tb-leg--a { transform: rotate(22deg); }
+.bq-bear.is-air .tb-leg--b { transform: rotate(-20deg); }
+.bq-bear.is-flip svg { animation: bq-somersault 0.55s var(--ease-out); }
+@keyframes bq-somersault {
+  to { rotate: -360deg; }
+}
+.bq-bear.is-land svg { animation: bq-squash 0.26s var(--ease-out); }
+@keyframes bq-squash {
+  35% { scale: 1.12 0.85; }
+  100% { scale: 1 1; }
 }
 .bq-bear.is-happy .tb-blush { opacity: 0.8; }
-.bq-bear.is-happy .bq-bear-flip { animation: bq-jump 0.62s var(--ease-out); }
+.bq-bear.is-happy .bq-bear-flip { animation: bq-cheer 0.62s var(--ease-out); }
+@keyframes bq-cheer {
+  0%   { translate: 0 0; scale: 1 1; }
+  28%  { translate: 0 -34px; scale: 0.96 1.06; }
+  58%  { translate: 0 0; scale: 1.07 0.9; }
+  76%  { translate: 0 -8px; scale: 0.99 1.02; }
+  100% { translate: 0 0; scale: 1 1; }
+}
 
 /* ── HUD ── */
 .bq-hud { display: none; }
@@ -938,6 +953,290 @@ body.dark .bq-sun {
   border-bottom: 6px solid transparent;
 }
 .bq-paused .bq-play::after { display: none; }
+
+/* ── Coins ── */
+.bq-coin { display: none; }
+.bq-js .bq-coin {
+  display: block;
+  position: absolute;
+  left: var(--x, 0px);
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-ink);
+  box-shadow: inset -3px 0 0 rgba(0, 0, 0, 0.16);
+  animation: bq-coin-spin 1.5s linear infinite;
+}
+@keyframes bq-coin-spin {
+  0%, 100% { transform: scaleX(1); }
+  50%      { transform: scaleX(0.24); }
+}
+.bq-js .bq-coin.bq-coin-got {
+  animation: bq-coin-out 0.45s var(--ease-out) forwards;
+}
+@keyframes bq-coin-out {
+  to { transform: translateY(-34px) scale(0.2); opacity: 0; }
+}
+
+/* ── Birds ── */
+.bq-bird { display: none; }
+.bq-js .bq-bird {
+  display: block;
+  position: absolute;
+  left: var(--x, 0px);
+  width: 26px;
+  height: 16px;
+  color: var(--color-ink-muted);
+  animation: bq-bird-idle 1.8s var(--ease-in-out) infinite;
+}
+.bq-js .bq-bird svg { display: block; width: 100%; height: 100%; }
+@keyframes bq-bird-idle {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -3px; }
+}
+.bq-js .bq-bird.bq-bird-fly {
+  animation: bq-bird-fly 1.6s ease-in forwards;
+}
+@keyframes bq-bird-fly {
+  20%  { transform: translate(calc(var(--fly, 1) * 60px), -70px) scale(0.94); opacity: 1; }
+  100% { transform: translate(calc(var(--fly, 1) * 320px), -320px) scale(0.5); opacity: 0; }
+}
+
+/* ── Summit flag ── */
+.bq-peakflag { width: 60px; --lift: 0px; }
+.bq-peakflag svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bq-peakflag-pole { stroke: var(--color-ink); stroke-width: 3; stroke-linecap: round; }
+.bq-peakflag-cloth {
+  fill: var(--color-accent);
+  transform-origin: 8px 8px;
+  transform: scaleX(0.08);
+  opacity: 0.4;
+  transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s var(--ease-out);
+}
+.bq-peakflag.bq-peak-up .bq-peakflag-cloth {
+  transform: scaleX(1);
+  opacity: 0.95;
+  animation: bq-flag-wave 1.8s var(--ease-in-out) 0.9s infinite;
+}
+@keyframes bq-flag-wave {
+  0%, 100% { transform: scaleX(1) skewY(0deg); }
+  50%      { transform: scaleX(0.94) skewY(3deg); }
+}
+
+/* ── Footprints ── */
+.bq-print {
+  position: absolute;
+  width: 10px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-ink-muted);
+  opacity: 0.4;
+  animation: bq-print-fade 2.4s linear forwards;
+  pointer-events: none;
+}
+@keyframes bq-print-fade { to { opacity: 0; } }
+
+/* ── FX layer: particles + floating text ── */
+.bq-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 8; /* above the results screen so its confetti shows */
+  pointer-events: none;
+  overflow: hidden;
+}
+.bq-p {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: bq-p-fly 0.65s var(--ease-out) forwards;
+}
+.bq-p--spark { background: var(--color-accent); }
+.bq-p--coin  { background: var(--color-accent); border: 1px solid var(--color-ink); }
+.bq-p--dust  { background: var(--color-ink-muted); opacity: 0.5; width: 5px; height: 5px; }
+@keyframes bq-p-fly {
+  to { transform: translate(var(--dx, 0px), var(--dy, -20px)) scale(0.2); opacity: 0; }
+}
+.bq-float {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  white-space: nowrap;
+  transform: translateX(-50%);
+  animation: bq-float-up 0.95s var(--ease-out) forwards;
+}
+.bq-float--coin { color: var(--color-accent); }
+.bq-float--lv   { color: var(--color-accent); font-size: 0.95rem; letter-spacing: 0.06em; }
+.bq-float--word { font-family: var(--font-display); font-size: 1.05rem; }
+@keyframes bq-float-up {
+  0%   { transform: translate(-50%, 6px); opacity: 0; }
+  18%  { transform: translate(-50%, 0);   opacity: 1; }
+  100% { transform: translate(-50%, -44px); opacity: 0; }
+}
+
+/* ── Dusk: the sky dims as the bear walks into camp ── */
+.bq.bq-js { --dusk: 0; }
+.bq-js .bq-sky::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    color-mix(in srgb, var(--color-ink) 32%, transparent),
+    color-mix(in srgb, var(--color-ink) 10%, transparent));
+  opacity: var(--dusk, 0);
+  transition: opacity 0.4s linear;
+}
+.bq-js.bq-dusk .bq-sun {
+  background: var(--color-paper);
+  box-shadow: inset -14px -8px 0 2px color-mix(in srgb, var(--color-ink) 26%, var(--color-paper)),
+              0 0 0 10px color-mix(in srgb, var(--color-paper) 30%, transparent);
+  transition: background 1.2s var(--ease-out), box-shadow 1.2s var(--ease-out);
+}
+.bq-js.bq-dusk .bq-fire-glow { opacity: 1.4; }
+
+/* ── HUD coin counter ── */
+.bq-coinhud {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted);
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  padding: 6px 13px;
+  white-space: nowrap;
+}
+.bq-coinhud b { color: var(--color-ink); font-weight: 600; min-width: 1.3em; }
+.bq-coinhud-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 1.5px solid var(--color-ink);
+}
+.bq-coinhud.bq-coin-bump { animation: bq-hud-bump 0.35s var(--ease-out); }
+@keyframes bq-hud-bump {
+  40% { transform: translateY(-4px) scale(1.07); }
+}
+
+/* ── CLEAR: the results screen ── */
+.bq-clear { display: none; }
+.bq-js .bq-clear {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: color-mix(in srgb, var(--color-paper) 55%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s var(--ease-out), visibility 0.5s;
+}
+.bq-js .bq-clear.bq-clear-on {
+  opacity: 1;
+  visibility: visible;
+}
+.bq-clear-card {
+  width: min(440px, 100%);
+  text-align: center;
+  background: var(--color-paper);
+  border: 1.5px solid var(--color-ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 0 var(--color-ink), 0 26px 60px -24px rgba(0, 0, 0, 0.3);
+  padding: 28px 26px 24px;
+  transform: translateY(16px) scale(0.94);
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.bq-clear-on .bq-clear-card { transform: none; }
+.bq-clear-kicker {
+  margin: 0 0 4px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  color: var(--color-accent);
+}
+.bq-clear-title {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-ink);
+}
+.bq-clear-stats {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.bq-clear-stats span {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 4px 8px;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-lg);
+}
+.bq-clear-stats b {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+.bq-clear-stats i {
+  font-style: normal;
+  font-family: var(--font-meta);
+  font-size: 0.68rem;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.05em;
+}
+.bq-clear-rank {
+  margin: 0 0 18px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-muted);
+}
+.bq-clear-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.bq-clear-replay {
+  appearance: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  padding: 10px 22px;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 999px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  transition: background var(--dur-hover) var(--ease-standard), color var(--dur-hover) var(--ease-standard);
+}
+.bq-clear-replay:hover { background: var(--color-ink); color: var(--color-paper); }
+.bq-clear-read {
+  align-self: center;
+  font-family: var(--font-meta);
+  font-size: 0.85rem;
+  padding: 10px 6px;
+  color: var(--color-ink-muted);
+  border-bottom: 1px dashed var(--color-rule);
+  transition: color var(--dur-hover) var(--ease-standard);
+}
+.bq-clear-read:hover { color: var(--color-accent); }
 
 /* ── START overlay: life, played as a game ── */
 .bq-start { display: none; }
@@ -1098,6 +1397,10 @@ body.dark .bq-sun {
   .bq-words i.bq-word-on { display: inline-block; }
   .bq-km { display: none; } /* lv chip + skip need the room */
   .bq-lv { font-size: 0.66rem; padding: 5px 10px; }
+  .bq-coinhud { font-size: 0.66rem; padding: 5px 9px; gap: 5px; }
+  .bq-coinhud-dot { width: 9px; height: 9px; }
+  .bq-clear-card { padding: 22px 18px 18px; }
+  .bq-clear-title { font-size: 1.25rem; }
   .bq-skip { font-size: 0.72rem; }
 
   .bq-level { --lift: 120px; }
