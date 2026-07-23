@@ -27,6 +27,9 @@ faq:
     a: "适合复杂有状态的应用：需要循环重试、条件分支、持久化记忆、人机交互或多智能体协作的场景，例如客服机器人、自动化单元测试生成、SQL 查询生成和研究助手。简单的单次 LLM 调用或线性链用 LCEL 即可，无需引入 LangGraph。"
   - q: "如何入门 LangGraph？"
     a: "先用 pip install langgraph 安装并配置 LLM 提供商的 API 密钥，然后用 TypedDict 定义状态、add_node 添加节点、add_edge 连接 START 与 END，compile 编译后用 stream 运行对话。官方文档和 LangChain Academy 的免费入门课程是推荐的学习路径。"
+cover:
+  image: /images/covers/ai-agent/2025/langgraph.jpeg
+  alt: "LangGraph 架构深度解析：状态图、节点与边的设计原理"
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。

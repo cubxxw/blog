@@ -120,8 +120,13 @@ share card: it should signal to its own audience what kind of content sits behin
 a tech essay whose cover reads as a lifestyle vignette loses exactly the reader it was
 written for (and the share-card click-through with it). The `SECTIONS` map in
 `scripts/generate-covers.mjs` gives each section an audience line + material vocabulary for
-stage 1 (tech → 仪器/工作台/图纸/传送分拣机构; growth → 自然与日常; projects → 单一主体的
-产品海报式静物) and one temperament clause for stage 2 (理性精确 / 安静温和 / 利落聚焦).
+stage 1 (ai-agent → 案头的智性劳动，画 AI 的动作——理解/生成/转译/代理：手稿誊写、译文对照、
+乐谱、棋局、提线小剧场，不画机器本身; engineering → 案头尺度的构建与秩序：积木模块拼装、
+活字排版盘、桌面管道阀门模型、卡片柜、透明发条装置; growth → 自然与日常; projects →
+单一主体的产品海报式静物) and one temperament clause for stage 2 (理性精确 / 扎实克制 /
+安静温和 / 利落聚焦). The ai-agent/engineering vocabularies deliberately moved from a
+hardware workshop (仪器/图纸/传送机构) to the desk — software is intellectual labour, and
+the old kit read as machining, not computing.
 When you design a scene in stage 1, draw its objects from that section's material world.
 This is the sanctioned way to differentiate sections — colours are still never named.
 

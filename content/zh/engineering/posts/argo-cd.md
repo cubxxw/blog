@@ -22,6 +22,9 @@ description: >
   An introduction to Argo CD, a declarative, GitOps-based continuous delivery (CD) tool for Kubernetes.
   Learn how it automates application deployment by synchronizing the desired state defined in Git
   with the live state in a Kubernetes cluster.
+cover:
+  image: /images/covers/engineering/2025/argo-cd.jpeg
+  alt: "Argo CD: Declarative GitOps for Kubernetes Continuous Delivery"
 ---
 
 

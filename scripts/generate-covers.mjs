@@ -84,14 +84,31 @@ const STYLE_LINE =
 // — never in colours or palettes; the per-section colour table was tried once
 // and produced the cyber-tunnel failure.
 const SECTIONS = {
+  // ai-agent metaphors depict what AI DOES (understand, generate, translate,
+  // delegate, converse) through desk-bound intellectual labour — never what AI
+  // supposedly IS (the glowing-brain/robot/circuit imagery the blacklist bans;
+  // see the Better Images of AI critique). Same shift for engineering: from a
+  // hardware workshop to the constructive order of software — assembly,
+  // orchestration, typesetting — rendered as tabletop objects.
+  // Vocabulary entries here were validated by generating real images. Two
+  // seemingly-good entries proved un-drawable and were removed: 提线木偶
+  // (the control bar renders as an upright religious cross, and puppets get
+  // faces) and 活字排版 (movable type IS letterforms — it cannot not violate
+  // the no-text rule). Prefer objects whose drawn form carries no glyphs and
+  // no figures.
   'ai-agent': {
     audience: '面向工程师与 AI 从业者的技术文章',
-    material: '画面取材于精密的器物与装置：仪器、工作台、图纸、传送与分拣的机构、模块化的构件',
+    material:
+      '画面表现智性的劳动与协作：书桌与案头的世界——空白卷轴与誊写台、棋盘与棋子、' +
+      '沙盘推演、放大镜、镜子与分身、灯下的多副眼镜、传声筒与听诊器。' +
+      '画隐喻的动作（理解、生成、转译、代理、对话），不画机器本身，画面中的书页和纸张一律留白无字',
     mood: '画面气质理性、精确、现代。',
   },
   engineering: {
     audience: '面向工程师的工程实践文章',
-    material: '画面取材于工程现场与图纸世界：蓝图、脚手架、管线、桥梁、机械结构',
+    material:
+      '画面表现构建与秩序：案头尺度的构造物——积木与模块的拼装、桌面上的管道与阀门模型、' +
+      '多层抽屉柜、透明外壳的发条装置、脚手架模型、俄罗斯套盒、整理中的工具抽屉。结构清晰、可拆可装',
     mood: '画面气质扎实、精确、克制。',
   },
   growth: {
@@ -129,6 +146,10 @@ export function buildScenePrompt({ title, description, section }) {
     ...(brief ? [`这是一篇${brief.audience}。${brief.material}。`] : []),
     '用一到两句话描述一个具体画面：有什么物体、什么样的构图。必须是具象的、可以直接画出来的场景。',
     '禁止科技陈词滥调：电路、发光、机器人、大脑、齿轮、网络节点图。',
+    // Objects that inevitably render as glyphs or figures (movable type,
+    // marionettes, keyboards, open printed pages) break the no-text/no-face
+    // canvas rule downstream — steer the scene away at design time.
+    '避免任何画出来必然带文字或人形的物件（如活字、键盘、印刷页、木偶）；书页纸张一律留白。',
     '只输出画面描述本身，不要解释。',
   ].join('\n');
 }

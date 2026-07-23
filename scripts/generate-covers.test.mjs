@@ -182,7 +182,7 @@ test('section briefs: every content section has one, and none names a colour', (
     const s1 = buildScenePrompt({ title: 'x', description: 'y', section });
     const s2 = buildPrompt({ title: 'x', description: 'y', tags: [], section });
     assert.ok(/这是一篇面向/.test(s1), `${section}: stage 1 states the audience`);
-    assert.ok(/画面取材于|画面像一张/.test(s1), `${section}: stage 1 steers the material`);
+    assert.ok(/画面取材于|画面像一张|画面表现/.test(s1), `${section}: stage 1 steers the material`);
     assert.ok(/画面气质/.test(s2), `${section}: stage 2 carries a temperament clause`);
     for (const p of [s1, s2]) {
       assert.ok(!/#[0-9A-Fa-f]{6}/.test(p), `${section}: no hex codes`);
@@ -192,11 +192,17 @@ test('section briefs: every content section has one, and none names a colour', (
 });
 
 test('section briefs: tech and life audiences get different material vocabularies', () => {
-  const tech = buildScenePrompt({ title: 'x', description: 'y', section: 'ai-agent' });
+  const ai = buildScenePrompt({ title: 'x', description: 'y', section: 'ai-agent' });
+  const eng = buildScenePrompt({ title: 'x', description: 'y', section: 'engineering' });
   const life = buildScenePrompt({ title: 'x', description: 'y', section: 'growth' });
-  assert.ok(/仪器|图纸|装置/.test(tech), 'tech scenes draw from instruments and apparatus');
+  // ai-agent depicts AI's ACTIONS as desk-bound intellectual labour, and says
+  // so explicitly — the hardware-workshop vocabulary was replaced on purpose.
+  assert.ok(/理解|生成|转译|代理/.test(ai), 'ai scenes name the actions AI performs');
+  assert.ok(/不画机器本身/.test(ai), 'ai scenes are steered away from machinery');
+  // engineering depicts constructive order at tabletop scale.
+  assert.ok(/模块|拼装|排版|装置/.test(eng), 'engineering scenes draw from assembly and order');
   assert.ok(/自然|日常|植物/.test(life), 'life scenes draw from nature and the everyday');
-  assert.ok(!/仪器|图纸/.test(life), 'and the vocabularies do not bleed across');
+  assert.ok(!/模块|排版|棋局/.test(life), 'and the vocabularies do not bleed across');
 });
 
 test('section briefs: an unknown or missing section degrades to no brief, not a crash', () => {

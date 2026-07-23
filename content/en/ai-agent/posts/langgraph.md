@@ -31,6 +31,9 @@ faq:
     a: "Use LangGraph when your application needs complex stateful workflows: loops and retries, conditional branching, persistent memory, human-in-the-loop review, or multiple collaborating agents. Production examples include Klarna's customer support bot, Elastic's security assistant, and Uber's automated unit test generation. For a single LLM call or a simple linear chain, plain LangChain with LCEL is enough."
   - q: "How do I get started with LangGraph?"
     a: "Install it with pip install langgraph, set your LLM provider's API key, then build a minimal chatbot: define a State with TypedDict, add a node that calls the model, connect START and END with edges, compile the graph, and run it with stream(). The official documentation and the free LangChain Academy introductory course are the recommended learning paths."
+cover:
+  image: /images/covers/ai-agent/2025/langgraph.jpeg
+  alt: "LangGraph Architecture: StateGraph, Nodes and Edges"
 ---
 
 > This project is an ongoing journey — learning AI open source projects with steady, daily progress. Through hands-on work with real projects and AI tooling, the goal is to develop the ability to solve complex problems and document the process.
