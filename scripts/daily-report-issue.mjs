@@ -110,8 +110,9 @@ function createDailyIssue(repo, title) {
   const intro = [
     '这个 issue 由 `.github/workflows/` 下的定时任务自动维护，每天一条。',
     '',
-    '- **Lighthouse** 与 **SEO** 两个部分都写在这里，各自只覆盖自己的小节。',
+    '- **Lighthouse**、**SEO** 与 **自动处置** 都写在这里，各自只覆盖自己的小节。',
     '- 每次运行是**覆盖**而不是追加，所以看到的永远是当天最新结果。',
+    '- SEO 小节给出建议动作；自动处置小节记录当天哪些建议已开成 PR、哪些留给人工。',
     '- 次日的日报开出来时，这条会被自动关闭。',
   ].join('\n');
   const out = gh([
