@@ -12,7 +12,7 @@ tags:
   - AI Search
   - Project Learning
 description: >
-    Explore the synergies between GitHub and Google Workspace to streamline your project management process. This guide offers insights into leveraging the best of both platforms for collaborative development and project tracking.
+    When to run tasks in GitHub Projects versus Google Workspace, and how to two-way sync GitHub issues and pull requests with Google Sheets so technical and non-technical teams see the same project status.
 tldr:
   - "GitHub Projects manages development tasks with code repositories, issues, and pull requests, while Google Workspace handles documents, communication, and schedules for non-technical teams."
   - "Combining both platforms through two-way data synchronization leverages GitHub's developer-focused automation and Google's real-time collaboration strengths for comprehensive project oversight."

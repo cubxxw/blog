@@ -12,7 +12,7 @@ tags:
   - AI Search
   - Project Learning
 description: >
-  探索GitHub与Google Workspace之间的协同效应，优化项目管理流程。本指南提供了利用两个平台的优势进行协作开发和项目跟踪的见解。
+  讲清楚何时用 GitHub Projects 管理研发任务、何时靠 Google Workspace 处理文档沟通，以及如何把 Issue 和 PR 与 Google Sheets 双向同步，让技术团队和非技术团队看到同一份项目进度。
 aliases:
   - /zh/ai-agent/posts/combining-github-and-google-workspace-for-project-management/
 tldr:
