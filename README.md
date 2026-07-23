@@ -343,7 +343,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [2025年3月思考笔记](https://cubxxw.com/zh/growth/posts/2025-03-thought-notes/)
 - [2024 年度回顾](https://cubxxw.com/zh/growth/posts/2024-annual-review/)
 - [旅行 · 世界这场游戏](https://cubxxw.com/zh/travel/)
-- [关于我与这个博客](https://cubxxw.com/zh/about/)
+- [关于我](https://cubxxw.com/zh/about/)
 - [Kubernetes 资源与学习路径总结](https://cubxxw.com/zh/engineering/posts/kubernetes-learning/)
 - [利用 LangChain 框架的语言模型应用：开发者指南](https://cubxxw.com/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [探索大型语言模型（llm）：人工智能在理解与生成人类语言方面的先锋](https://cubxxw.com/zh/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
