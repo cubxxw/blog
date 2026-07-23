@@ -9,6 +9,11 @@ This document contains critical information about working with this codebase. Fo
 
 执行任务之前确保当前的分支从远程更新了，避免大的冲突，执行一个任务之后尽可能的再验证一下，通过的情况下去 commit
 
+### PR 关联 issue 规则
+
+- **一事一议的普通 issue**：PR 正文必须用关闭关键词 `Closes #N`（或 `Fixes #N`），合并即自动关闭 issue 并出现在 Development 侧栏。这是默认做法，凡 PR 解决某个 issue 都要写。
+- **滚动聚合类 issue（带 `daily-report` 标签的站点日报）**：PR 正文只允许普通引用 `#N`，**禁止**关闭关键词——一条日报对应多个 PR，首个合并会提前关闭日报；且 `scripts/daily-report-issue.mjs` 只查 open 状态定位当天 issue，提前关闭会导致当天重复建日报。日报的关闭由次日 `closeStaleDailyIssues` 负责。
+
 
 
 ### 创建新文章

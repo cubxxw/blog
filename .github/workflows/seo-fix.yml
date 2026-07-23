@@ -105,7 +105,11 @@ jobs:
                - Title: one-line summary of the change
                - Body includes a `## Source` block linking issue
                  #${{ inputs.target_issue }} and quoting the exact
-                 recommendation text you're acting on
+                 recommendation text you're acting on. Reference it as a
+                 plain `#N` — NEVER `Closes`/`Fixes`: daily-report issues
+                 map to many PRs and are closed by automation the next
+                 day; a keyword-close would also make the daily-issue
+                 locator (open-state only) spawn a duplicate report.
                - A `## Change` block listing every file touched and why
                - A `## Verification` block showing the hugo command you
                  ran and the result

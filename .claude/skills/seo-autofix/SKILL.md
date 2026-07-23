@@ -48,6 +48,7 @@ Pick AT MOST `MAX_PRS`, favoring impact (impressions, persistence across days) a
   `wget -qO /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.147.0/hugo_extended_0.147.0_linux-amd64.deb && sudo dpkg -i /tmp/hugo.deb`
   Then `hugo --gc --minify --quiet` must exit 0.
 - PR body must contain: `## Source` (link to today's issue + exact recommendation text quoted), `## Change` (files touched and why), `## Verification` (the hugo command and result). Label `seo-auto` (create if missing: `gh label create seo-auto --color FBCA04 --description "AI-generated SEO fix"` — ignore errors).
+- Issue-linking rule: reference the daily report issue as a plain `#N` — NEVER with closing keywords (`Closes`/`Fixes`/`Resolves`). One daily issue maps to many PRs, and the daily-issue locator only searches open issues, so a keyword-triggered early close would spawn a duplicate report the same afternoon. If (and only if) a recommendation traces to a standalone issue of its own, close THAT one with `Closes #N` in the PR body.
 
 ## Step 5 — write the autofix section (ALWAYS, even on zero picks)
 
