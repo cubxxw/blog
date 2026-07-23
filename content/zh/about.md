@@ -61,6 +61,82 @@ tldr:
     <p class="meet-line meet-line--soft" data-meet>在海拔 5416 米的 Tilicho 湖畔，<br>我找到了与自己对话的空间。</p>
   </section>
 
+  <!-- ── 二·五 · 路上 ──────────────────────────── -->
+  <section class="meet-scene meet-scene--journey">
+    <p class="meet-line meet-line--soft" data-meet>一些路上的瞬间——</p>
+    <div class="meet-strip" data-meet>
+      <div class="meet-strip-track" id="meetStripTrack" tabindex="0" role="group" aria-label="旅途照片，可左右滑动浏览">
+        <div class="meet-shot" style="--i:0;--rot:-1.1deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/01-nantaihang.webp" width="675" height="900" alt="南太行，瀑布从崖壁上方落下，一个背包客站在山径上" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">南太行 · 中国</span><span class="meet-shot-note">瀑布从头顶的崖壁落下来</span><span class="meet-shot-idx">01</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:1;--rot:0.9deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/02-g318.webp" width="675" height="900" alt="川藏 318 国道旁，雪山脚下与越野车合影" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">川藏 318 · 中国</span><span class="meet-shot-note">雪山一直在窗外</span><span class="meet-shot-idx">02</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:2;--rot:-0.6deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/03-prayer-flags.webp" width="675" height="900" alt="垭口的经幡阵中，风把五彩经幡吹得猎猎作响" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">318 途中 · 经幡</span><span class="meet-shot-note">风替人把经念了一遍</span><span class="meet-shot-idx">03</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:3;--rot:1.2deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/04-thorong-la.webp" width="1046" height="900" alt="尼泊尔 Thorong La 垭口，海拔 5416 米的标牌与经幡" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">Thorong La · 尼泊尔</span><span class="meet-shot-note">5416 米，安纳普尔纳环线最高点</span><span class="meet-shot-idx">04</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:4;--rot:-0.9deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/05-fuji.webp" width="675" height="900" alt="富士山下山路，云海铺在脚下" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">富士山 · 日本</span><span class="meet-shot-note">下山路上，云海在脚下</span><span class="meet-shot-idx">05</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:5;--rot:0.7deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/06-kumano.webp" width="675" height="900" alt="熊野古道，杉林间长满青苔的千年石阶" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">熊野古道 · 日本</span><span class="meet-shot-note">一条被走了一千年的路</span><span class="meet-shot-idx">06</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:6;--rot:-1.2deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/07-sakura-bar.webp" width="1200" height="900" alt="旅途中的酒吧夜晚，和一群朋友的欢乐合影" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">樱花 bar · 途中</span><span class="meet-shot-note">路上遇见的人</span><span class="meet-shot-idx">07</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:7;--rot:0.8deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/08-vientiane.webp" width="675" height="900" alt="老挝万象佛像公园，坐在巨型雕塑张开的口中" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">万象 · 老挝</span><span class="meet-shot-note">佛像公园，坐进巨口里</span><span class="meet-shot-idx">08</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:8;--rot:-0.7deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/09-vangvieng.webp" width="675" height="900" alt="老挝万荣观景台山顶，坐在摩托车上挥着老挝国旗" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">万荣 · 老挝</span><span class="meet-shot-note">骑摩托上了山顶</span><span class="meet-shot-idx">09</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:9;--rot:1deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/10-taprohm.webp" width="675" height="900" alt="柬埔寨塔普伦寺，仰头看把庙宇抱住的巨树" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">塔普伦寺 · 柬埔寨</span><span class="meet-shot-note">树把庙抱住了</span><span class="meet-shot-idx">10</span></figcaption>
+          </figure>
+        </div>
+        <div class="meet-shot" style="--i:10;--rot:-0.8deg">
+          <figure class="meet-shot-card">
+            <img src="/images/about/journey/11-danang.webp" width="1200" height="900" alt="越南岘港五行山下，戴着头盔骑行途中留影" loading="lazy" decoding="async" draggable="false">
+            <figcaption class="meet-shot-cap"><span class="meet-shot-place">岘港 · 越南</span><span class="meet-shot-note">骑行去五行山</span><span class="meet-shot-idx">11</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="meet-strip-hint" id="meetStripHint" aria-hidden="true">拖动看看 →</p>
+    </div>
+  </section>
+
   <!-- ── 三 · 现在 ─────────────────────────────── -->
   <section class="meet-scene">
     <p class="meet-line" data-meet>现在，我做 AI，也写开源。</p>
@@ -153,5 +229,57 @@ tldr:
     });
   }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
   els.forEach(function (el) { io.observe(el); });
+})();
+
+/* ── 路上长廊：鼠标拖拽 + 惯性滑动 ── */
+(function () {
+  var track = document.getElementById('meetStripTrack');
+  if (!track) return;
+  var hint = document.getElementById('meetStripHint');
+  var down = false, moved = false;
+  var startX = 0, startLeft = 0, lastX = 0, lastT = 0, vel = 0, raf = 0;
+
+  track.addEventListener('scroll', function onScroll() {
+    if (hint) hint.classList.add('is-away');
+    track.removeEventListener('scroll', onScroll);
+  }, { passive: true });
+
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    down = true; moved = false;
+    startX = lastX = e.clientX;
+    startLeft = track.scrollLeft;
+    lastT = e.timeStamp; vel = 0;
+    cancelAnimationFrame(raf);
+    track.classList.add('is-drag');
+    track.setPointerCapture(e.pointerId);
+  });
+
+  track.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    track.scrollLeft = startLeft - dx;
+    var dt = e.timeStamp - lastT;
+    if (dt > 0) vel = (e.clientX - lastX) / dt;
+    lastX = e.clientX; lastT = e.timeStamp;
+  });
+
+  function release() {
+    if (!down) return;
+    down = false;
+    var speed = vel * 14;
+    (function glide() {
+      if (Math.abs(speed) < 0.4) { track.classList.remove('is-drag'); return; }
+      track.scrollLeft -= speed;
+      speed *= 0.94;
+      raf = requestAnimationFrame(glide);
+    })();
+  }
+  track.addEventListener('pointerup', release);
+  track.addEventListener('pointercancel', release);
+  track.addEventListener('click', function (e) {
+    if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+  }, true);
 })();
 </script>

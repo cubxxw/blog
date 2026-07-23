@@ -167,6 +167,139 @@
   vertical-align: 0.2em;
 }
 
+/* ── Journey strip: full-bleed film strip of places ──
+   Breaks out of the 640px column. Native horizontal scroll +
+   scroll-snap; mouse drag & inertia added by JS. Cards are
+   quiet polaroids with a slight editorial tilt. ── */
+.meet-scene--journey { min-height: auto; padding: 6vh 0 10vh; }
+
+.meet-strip {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.meet-strip-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  /* first card aligns with the 640px text column */
+  padding: 18px max(24px, calc(50vw - 296px)) 26px;
+  cursor: grab;
+  scrollbar-width: none;
+  outline: none;
+}
+.meet-strip-track::-webkit-scrollbar { display: none; }
+.meet-strip-track.is-drag {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+.meet-strip-track:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  border-radius: var(--radius-lg);
+}
+
+.meet-shot {
+  flex: none;
+  scroll-snap-align: center;
+}
+
+.meet-shot-card {
+  --shot-h: clamp(300px, 44vh, 430px);
+  margin: 0;
+  padding: 10px 10px 12px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -18px rgba(0, 0, 0, 0.18);
+  transform: rotate(var(--rot, 0deg));
+  transition: transform 0.45s var(--ease-out),
+              box-shadow 0.45s var(--ease-out);
+}
+.meet-shot:hover .meet-shot-card {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 22px 44px -20px rgba(0, 0, 0, 0.26);
+}
+
+.meet-shot-card img {
+  display: block;
+  height: var(--shot-h);
+  width: auto;
+  max-width: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-rule);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.meet-shot-cap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 4px 2px;
+  font-family: var(--font-meta);
+}
+.meet-shot-place {
+  font-size: 0.82rem;
+  color: var(--color-ink);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.meet-shot-note {
+  font-size: 0.78rem;
+  color: var(--color-ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meet-shot-idx {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-ink-muted);
+  opacity: 0.7;
+}
+
+.meet-strip-hint {
+  margin: 2px 0 0;
+  padding: 0 max(24px, calc(50vw - 296px));
+  font-family: var(--font-meta);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-muted);
+  transition: opacity 0.6s var(--ease-standard);
+}
+.meet-strip-hint.is-away { opacity: 0; }
+
+/* Entrance: the strip reveals as one block (data-meet), then each
+   card surfaces with its own stagger. Hover transform lives on the
+   inner card so the reveal delay never touches it. */
+.meet-js .meet-strip .meet-shot {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.meet-js .meet-strip.meet-in .meet-shot {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meet-js .meet-strip .meet-shot {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .meet-shot-card { transition: none; }
+  .meet-shot:hover .meet-shot-card { transform: rotate(var(--rot, 0deg)); }
+}
+
 /* ── Contact ── */
 .meet-scene--contact { min-height: 70vh; }
 
@@ -321,4 +454,18 @@
   .meet-line--aside { font-size: 0.98rem; }
   .meet-num { font-size: 1.5rem; }
   .meet-portrait img { width: 76px; height: 76px; }
+  .meet-scene--journey { padding: 4vh 0 8vh; }
+  .meet-strip-track {
+    gap: 16px;
+    padding: 12px 20px 20px;
+  }
+  .meet-shot-card {
+    --shot-h: clamp(240px, 38vh, 330px);
+    padding: 8px 8px 10px;
+  }
+  .meet-shot-cap { flex-wrap: wrap; gap: 2px 10px; }
+  .meet-shot-place { order: 1; }
+  .meet-shot-idx { order: 2; }
+  .meet-shot-note { order: 3; width: 100%; }
+  .meet-strip-hint { padding: 0 20px; }
 }
