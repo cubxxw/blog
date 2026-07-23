@@ -372,65 +372,16 @@
       </div>
     </section>
 
-    {{/* ── Subscribe ────────────────────────────────────── */}}
-    <div class="hp-subscribe" id="hp-subscribe">
-      <div>
-        <div class="hp-subscribe-tag">SIGNAL · 信号</div>
-        <h3>{{ if $isZh }}别错过任何一个信号。{{ else }}Never miss a signal.{{ end }}</h3>
-        <p>{{ if $isZh }}为构建者写作。AI、开源与漫游笔记，直接送到你的邮箱。已有 {{ $d.subscribe.count }}+ 读者。{{ else }}Built for builders. New posts on AI, open source &amp; nomad life — direct to your inbox. Joined by {{ $d.subscribe.count }}+ readers.{{ end }}</p>
-      </div>
-      <form class="hp-subscribe-form" onsubmit="return hpSubscribeSubmit(event,'{{ $lang }}')">
-        <div class="hp-subscribe-input-row">
-          <input class="hp-subscribe-input" type="email" id="hp-subscribe-email"
-            placeholder="{{ if $isZh }}你的邮箱{{ else }}your@email.com{{ end }}" required>
-          <button class="hp-subscribe-btn" type="submit" id="hp-subscribe-btn">
-            {{ if $isZh }}订阅{{ else }}SUBSCRIBE{{ end }}
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-        <div class="hp-subscribe-meta">
-          {{ if $isZh }}不发广告，随时退订{{ else }}No spam, unsubscribe anytime{{ end }}
-          <span class="hp-subscribe-sep">·</span>
-          <a class="hp-subscribe-rss" href="{{ "/index.xml" | relLangURL }}" target="_blank" rel="noopener" title="RSS Feed">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
-            RSS
-          </a>
-          {{- with (site.GetPage "/").OutputFormats.Get "JSONFeed" }}
-          <a class="hp-subscribe-rss" href="{{ .RelPermalink }}" target="_blank" rel="noopener" title="JSON Feed 1.1">JSON</a>
-          {{- end }}
-          {{- with (site.GetPage "/").OutputFormats.Get "OPML" }}
-          <a class="hp-subscribe-rss" href="{{ .RelPermalink }}" download title="{{ if $isZh }}OPML 订阅集 — 导入到任意 RSS 阅读器{{ else }}OPML — import all channels into any reader{{ end }}">OPML</a>
-          {{- end }}
-        </div>
-      </form>
-
-      {{/* ── By-channel feeds (compact, magazine-style) ── */}}
-      <div class="hp-subscribe-channels">
-        <span class="hp-subscribe-channels-label">{{ if $isZh }}按频道订阅{{ else }}By channel{{ end }}</span>
-        <div class="hp-subscribe-channels-list">
-          {{- $colors := slice "#3b82f6" "#10b981" "#a855f7" "#ec4899" "#06b6d4" "#eab308" -}}
-          {{- range $i, $section := site.Sections -}}
-            {{- $rss := $section.OutputFormats.Get "RSS" -}}
-            {{- if $rss -}}
-              {{- $title := $section.Title | default $section.Section -}}
-              {{- $color := index $colors (mod $i (len $colors)) }}
-          <a class="hp-channel-pill" href="{{ $rss.RelPermalink }}" target="_blank" rel="noopener" title="RSS · {{ $title }}" style="--ch-color: {{ $color }}">
-            <span class="hp-channel-pill-dot" aria-hidden="true"></span>
-            <span class="hp-channel-pill-name">{{ $title }}</span>
-            <span class="hp-channel-pill-fmt">RSS</span>
-          </a>
-            {{- end -}}
-          {{- end }}
-        </div>
-      </div>
-    </div>
+    {{- /* Subscribe section removed (2026-07): its hpSubscribeSubmit
+         handler was a stub that faked "SUBSCRIBED ✓" without ever
+         sending the email anywhere. The real, wired subscribe band
+         (footer-subscribe.html → Buttondown) now sits right below,
+         above the footer, and carries the by-channel feed chips. */}}
 
   </main>
 
   {{/* ── Footer ──────────────────────────────────────── */}}
-  {{- /* No footer-subscribe band here: the homepage ships its own
-       hp-subscribe section directly above this footer — two adjacent
-       email forms would be redundant. The band covers inner pages. */}}
+  {{ partial "footer-subscribe.html" . }}
   <footer class="hp-footer hp-page">
     <div class="hp-footer-grid">
       <div>
@@ -1231,13 +1182,6 @@
   })();
 
 
-  /* Subscribe */
-  window.hpSubscribeSubmit = function(e, lang) {
-    e.preventDefault();
-    var btn = document.getElementById('hp-subscribe-btn');
-    if (btn) { btn.textContent = lang==='zh'?'已订阅 ✓':'SUBSCRIBED ✓'; btn.disabled=true; }
-    return false;
-  };
 })();
 </script>
 

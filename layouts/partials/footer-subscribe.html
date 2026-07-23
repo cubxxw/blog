@@ -84,10 +84,25 @@
 
     <p class="fsub-status" data-fsub-status aria-live="polite"></p>
 
-    <p class="fsub-alt">
-      {{ if $isZH }}更喜欢 RSS？{{ else }}Prefer RSS?{{ end }}
-      <a href="{{ "/index.xml" | relLangURL }}">{{ if $isZH }}订阅 Feed →{{ else }}Grab the feed →{{ end }}</a>
-    </p>
+    {{- /* Quiet feed row — the whole-site feed plus per-channel RSS,
+         migrated from the homepage's old hp-subscribe-channels. Text
+         chips, no color dots: footer stays calm. */ -}}
+    <div class="fsub-feeds">
+      <span class="fsub-feeds-label">{{ if $isZH }}更喜欢 RSS？{{ else }}Prefer RSS?{{ end }}</span>
+      <a class="fsub-chip" href="{{ "/index.xml" | relLangURL }}" target="_blank" rel="noopener">{{ if $isZH }}全部{{ else }}All{{ end }} · RSS</a>
+      {{- with (site.GetPage "/").OutputFormats.Get "JSONFeed" }}
+      <a class="fsub-chip" href="{{ .RelPermalink }}" target="_blank" rel="noopener" title="JSON Feed 1.1">JSON</a>
+      {{- end }}
+      {{- with (site.GetPage "/").OutputFormats.Get "OPML" }}
+      <a class="fsub-chip" href="{{ .RelPermalink }}" download title="{{ if $isZH }}OPML — 一键导入全部频道{{ else }}OPML — import all channels at once{{ end }}">OPML</a>
+      {{- end }}
+      <span class="fsub-feeds-sep" aria-hidden="true"></span>
+      {{- range $section := site.Sections }}
+        {{- with $section.OutputFormats.Get "RSS" }}
+      <a class="fsub-chip fsub-chip--ch" href="{{ .RelPermalink }}" target="_blank" rel="noopener" title="RSS · {{ $section.Title }}">{{ $section.Title | default $section.Section }}</a>
+        {{- end }}
+      {{- end }}
+    </div>
 
   </div>
 </section>

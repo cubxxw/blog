@@ -214,18 +214,46 @@
 .fsub-status[data-state="success"] { color: var(--color-ink); font-weight: 500; }
 .fsub-status[data-state="error"]   { color: var(--color-accent); }
 
-.fsub-alt {
-  margin: 0.9rem 0 0;
+/* ── Quiet feed chips (all + JSON/OPML + per-channel RSS) ── */
+.fsub-feeds {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 1.1rem 0 0;
+}
+.fsub-feeds-label {
   font-family: var(--font-meta);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--color-ink-muted);
+  margin-right: 4px;
 }
-.fsub-alt a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.fsub-feeds-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--color-rule);
+  margin: 0 4px;
 }
-.fsub-alt a:hover { color: var(--color-accent); }
+.fsub-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: color var(--dur-hover) var(--ease-standard),
+              border-color var(--dur-hover) var(--ease-standard),
+              transform var(--dur-press) var(--ease-out);
+}
+.fsub-chip:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
 
 .fsub-honeypot {
   position: absolute;

@@ -88,7 +88,6 @@ body.dark .homepage-root {
    near-white label on accent-filled CTAs drops to ~2.7 contrast. Switch
    those surfaces to dark ink for a legible, high-contrast amber CTA.
    Scoped to body.dark — light mode (dark-brown accent + light text) intact. */
-body.dark .hp-subscribe-btn,
 body.dark .hp-bear-avatar-status {
   color: #1C1916;
 }
@@ -97,8 +96,7 @@ body.dark .hp-bear-avatar-status {
    rendered near-invisible (~1.4 contrast), letting adjacent meta run together.
    Nudge to a perceptible-but-quiet grey. Decorative glyphs, dark mode only. */
 body.dark .hp-sep,
-body.dark .hp-city-sep,
-body.dark .hp-subscribe-sep {
+body.dark .hp-city-sep {
   color: #6B655E;
 }
 
@@ -2142,181 +2140,10 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
 .hp-heatmap-legend-cells { display: flex; gap: 3px; }
 .hp-heatmap-legend-cells span { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
 
-/* ============================================================
-   SUBSCRIBE
-   ============================================================ */
-.hp-subscribe {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  padding: 56px 48px;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-border);
-  border-radius: var(--radius-card);
-  margin: 64px 0;
-  width: 100%;
-}
-
-.hp-subscribe-tag {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
-.hp-subscribe h3 { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: var(--fg-primary); margin: 0 0 10px; }
-.hp-subscribe p  { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--fg-muted); margin: 0; }
-
-.hp-subscribe-form { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.hp-subscribe-input-row { display: flex; gap: 10px; }
-
-.hp-subscribe-input {
-  flex: 1;
-  padding: 11px 16px;
-  border: 1px solid var(--accent-border);
-  border-radius: var(--radius-small);
-  background: var(--surface-white);
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--fg-primary);
-  outline: none;
-  transition: border-color 160ms;
-}
-
-.hp-subscribe-input:focus { border-color: var(--accent); }
-.hp-subscribe-input::placeholder { color: var(--fg-subtle); }
-
-.hp-subscribe-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 11px 20px;
-  background: var(--accent);
-  border: none;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #FAF8F6;
-  transition: background 180ms;
-  white-space: nowrap;
-}
-
-.hp-subscribe-btn:hover { background: var(--accent-hover); }
-
-.hp-subscribe-meta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.8px;
-  color: var(--fg-subtle);
-}
-.hp-subscribe-sep { color: var(--border-default); }
-.hp-subscribe-rss {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--fg-subtle);
-  text-decoration: none;
-  border: 1px solid var(--border-subtle);
-  border-radius: 3px;
-  padding: 1px 6px 1px 5px;
-  transition: color 150ms, border-color 150ms;
-}
-.hp-subscribe-rss:hover { color: var(--accent); border-color: var(--accent); }
-
-/* ── Channel pills: subscribe by section ── */
-.hp-subscribe-channels {
-  grid-column: 1 / -1;
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px dashed var(--accent-border);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.hp-subscribe-channels-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: var(--fg-subtle);
-}
-
-.hp-subscribe-channels-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.hp-channel-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 10px 5px 9px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  background: var(--surface-white);
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 12px;
-  color: var(--fg-muted);
-  transition: border-color 160ms, color 160ms, transform 160ms;
-}
-.hp-channel-pill:hover {
-  border-color: var(--ch-color, var(--accent));
-  color: var(--fg-primary);
-  transform: translateY(-1px);
-}
-
-.hp-channel-pill-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ch-color, var(--accent));
-  flex-shrink: 0;
-}
-
-.hp-channel-pill-name {
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-
-.hp-channel-pill-fmt {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  color: var(--fg-subtle);
-  padding: 1px 5px;
-  border-radius: 3px;
-  background: rgba(0, 0, 0, 0.04);
-  margin-left: 2px;
-}
-.hp-channel-pill:hover .hp-channel-pill-fmt {
-  color: var(--ch-color, var(--accent));
-  background: rgba(0, 0, 0, 0.06);
-}
-
-body.dark .hp-channel-pill-fmt { background: rgba(255, 255, 255, 0.06); }
-body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 255, 255, 0.1); }
-
-@media (max-width: 720px) {
-  .hp-subscribe-channels { margin-top: 20px; padding-top: 16px; }
-  .hp-channel-pill { font-size: 11.5px; padding: 4px 9px 4px 8px; }
-  .hp-channel-pill-fmt { font-size: 8.5px; }
-}
+/* SUBSCRIBE section removed (2026-07): the hp-subscribe block was a
+   stub form that never posted anywhere. The wired footer-subscribe
+   band (site-footer-subscribe.css) replaced it and carries the
+   by-channel feed chips. */
 
 /* ============================================================
    FOOTER
@@ -2441,7 +2268,6 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
   .hp-projects-featured { grid-template-columns: 1fr; }
   .hp-repos-grid { grid-template-columns: 1fr; }
   .hp-travel-block { grid-template-columns: 1fr; }
-  .hp-subscribe { grid-template-columns: 1fr; padding: 32px 24px; }
   .hp-footer-grid { grid-template-columns: 1fr; }
 
   /* Fix 1: Bear orbit — prevent horizontal overflow on narrow viewports */
@@ -2505,11 +2331,6 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
     padding-bottom: 0;
   }
 
-  /* Fix 9: Subscribe button minimum touch height */
-  .hp-subscribe-btn {
-    min-height: 44px;
-  }
-
   /* Fix 10: Post list rows minimum touch height */
   .hp-posts-list-row {
     min-height: 44px;
@@ -2527,15 +2348,6 @@ body.dark .hp-channel-pill:hover .hp-channel-pill-fmt { background: rgba(255, 25
      the scrolling track; arrows keep 34px (44px hit area via padding
      is overkill inside a 44px-tall rail row). */
   .hp-rail-counter { display: none; }
-
-  /* Fix 7: Subscribe form — stack input and button vertically */
-  .hp-subscribe-input-row {
-    flex-wrap: wrap;
-  }
-  .hp-subscribe-btn {
-    width: 100%;
-    justify-content: center;
-  }
 
   /* Fix 8: Section head — wrap title + action onto separate lines */
   .hp-section-head {
