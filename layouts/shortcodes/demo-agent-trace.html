@@ -1,0 +1,212 @@
+{{- /* Flagship: deterministic agent-loop replayer. Renders a scripted trace
+     (user question → think → tool_call → tool_result → … → answer) in the
+     visual language of the homepage Bear AI agent rows, replayed with
+     streaming typing. No network, no API cost — the trace is data.
+
+     Usage (inner is a JSON array):
+       {{< demo-agent-trace title="一个真实的 Agent Loop" question="明天北京的天气?" >}}
+       [
+         {"type":"think","text":"没有实时数据，需要调工具。"},
+         {"type":"tool_call","tool":"get_weather","args":"{\"city\":\"北京\"}"},
+         {"type":"tool_result","text":"{\"temp\":\"31°C\",\"cond\":\"晴\"}"},
+         {"type":"answer","text":"明天北京晴，最高 31°C。"}
+       ]
+       {{< /demo-agent-trace >}}
+
+     Progressive enhancement: the full trace is server-rendered as a
+     structured list (crawlers and no-JS readers see everything). JS replays
+     it once in view — tool rows get running→done states, think/answer text
+     streams in. Reduced-motion shows the static trace. */ -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $question := .Get "question" | default "" -}}
+{{- $trace := transform.Unmarshal (trim .Inner " \n\r\t") -}}
+{{- $n := add (int (.Page.Store.Get "demoTraceCount" | default 0)) 1 -}}
+{{- .Page.Store.Set "demoTraceCount" $n -}}
+{{- $uid := printf "dat-%d" $n -}}
+{{- $isZh := eq .Page.Lang "zh" -}}
+{{- if $trace }}
+<div class="demo-trace" id="{{ $uid }}" data-demo-trace>
+  <div class="dat-chrome">
+    <span class="dat-dot" aria-hidden="true"></span>
+    <span class="dat-kicker">AGENT TRACE{{ with $title }} · {{ . }}{{ end }}</span>
+    <span class="dat-status" data-dat-status aria-live="polite"></span>
+    <button type="button" class="dat-btn" data-dat-replay aria-label="replay">↺ REPLAY</button>
+  </div>
+  <div class="dat-body">
+    {{- with $question }}
+    <div class="dat-q"><span class="dat-q-tag">{{ if $isZh }}用户{{ else }}USER{{ end }}</span>{{ . }}</div>
+    {{- end }}
+    <ol class="dat-steps">
+      {{- range $i, $s := $trace }}
+      {{- $type := $s.type | default "think" }}
+      <li class="dat-step dat-step--{{ $type }}" data-dat-step data-type="{{ $type }}">
+        {{- if eq $type "think" }}
+        <span class="dat-step-icon" aria-hidden="true">◦</span>
+        <span class="dat-step-main"><span class="dat-step-tag">{{ if $isZh }}思考{{ else }}THINK{{ end }}</span>
+          <span class="dat-text" data-dat-text>{{ $s.text }}</span></span>
+        {{- else if eq $type "tool_call" }}
+        <span class="dat-step-icon dat-spin" aria-hidden="true">⚙</span>
+        <span class="dat-step-main"><span class="dat-step-tag">{{ if $isZh }}调用工具{{ else }}TOOL{{ end }}</span>
+          <code class="dat-tool">{{ $s.tool }}</code>{{ with $s.args }} <code class="dat-args">{{ . }}</code>{{ end }}
+          <span class="dat-state" data-dat-state aria-hidden="true">✓</span></span>
+        {{- else if eq $type "tool_result" }}
+        <span class="dat-step-icon" aria-hidden="true">⤷</span>
+        <span class="dat-step-main"><span class="dat-step-tag">{{ if $isZh }}工具结果{{ else }}RESULT{{ end }}</span>
+          <code class="dat-result" data-dat-text>{{ $s.text }}</code></span>
+        {{- else }}
+        <span class="dat-step-icon" aria-hidden="true">■</span>
+        <span class="dat-step-main"><span class="dat-step-tag">{{ if $isZh }}回答{{ else }}ANSWER{{ end }}</span>
+          <span class="dat-answer" data-dat-text>{{ $s.text }}</span><span class="dat-caret" data-dat-caret aria-hidden="true"></span></span>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ol>
+    <p class="dat-foot">{{ if $isZh }}循环的终止条件：模型不再请求工具。{{ else }}The loop ends when the model stops requesting tools.{{ end }}</p>
+  </div>
+</div>
+{{- if not (.Page.Store.Get "demoTraceAssets") }}
+{{- .Page.Store.Set "demoTraceAssets" true }}
+<style>
+.demo-trace{margin:2rem 0;border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:12px;overflow:hidden}
+.dat-chrome{display:flex;align-items:center;gap:.55rem;padding:.6rem .95rem;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.12))}
+.dat-dot{width:7px;height:7px;border-radius:50%;background:var(--color-accent,#8c2b2b);opacity:.8}
+.demo-trace.is-running .dat-dot{animation:datPulse 1.1s ease-in-out infinite}
+.dat-kicker{font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-muted,#5e5e63)}
+.dat-status{margin-left:auto;font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;color:var(--color-ink-muted,#5e5e63)}
+.dat-btn{display:none;border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:6px;background:none;padding:.15rem .55rem;font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.06em;color:var(--color-ink-muted,#5e5e63);cursor:pointer}
+.demo-trace.is-ready .dat-btn{display:inline-block}
+.dat-btn:hover{color:var(--color-ink,var(--primary));border-color:var(--color-ink-muted,#5e5e63)}
+.dat-body{padding:.9rem 1.1rem 1rem}
+.dat-q{font-size:.9375rem;color:var(--color-ink,var(--primary));border:1px solid var(--color-rule,rgba(30,35,30,.12));border-radius:10px 10px 10px 3px;padding:.55rem .8rem;margin-bottom:.9rem;width:max-content;max-width:100%}
+.dat-q-tag{display:block;font-family:var(--font-mono,ui-monospace,monospace);font-size:.625rem;letter-spacing:.1em;color:var(--color-ink-muted,#5e5e63);margin-bottom:.15rem}
+.dat-steps{margin:0;padding:0;list-style:none;border-left:1px solid var(--color-rule,rgba(30,35,30,.12));margin-left:.4rem}
+.dat-step{display:flex;gap:.6rem;padding:.4rem 0 .4rem .75rem;position:relative}
+.dat-step-icon{flex:0 0 auto;width:1.1em;font-family:var(--font-mono,ui-monospace,monospace);font-size:.8125rem;color:var(--color-ink-muted,#5e5e63)}
+.dat-step-main{min-width:0;font-size:.875rem;line-height:1.65}
+.dat-step-tag{display:inline-block;font-family:var(--font-mono,ui-monospace,monospace);font-size:.625rem;letter-spacing:.1em;color:var(--color-ink-muted,#5e5e63);margin-right:.45rem;text-transform:uppercase}
+.dat-step--think .dat-text{color:var(--color-ink-muted,#5e5e63);font-style:italic}
+.dat-tool{font-family:var(--font-mono,ui-monospace,monospace);font-size:.8125rem;color:var(--color-ink,var(--primary));background:transparent;padding:0}
+.dat-args{font-family:var(--font-mono,ui-monospace,monospace);font-size:.75rem;color:var(--color-ink-muted,#5e5e63);background:transparent;padding:0;word-break:break-all}
+.dat-state{font-family:var(--font-mono,ui-monospace,monospace);font-size:.75rem;color:var(--color-ink-muted,#5e5e63);margin-left:.35rem}
+.dat-result{display:block;font-family:var(--font-mono,ui-monospace,monospace);font-size:.75rem;color:var(--color-ink-muted,#5e5e63);background:transparent;padding:.15rem 0 0;white-space:pre-wrap;word-break:break-all}
+.dat-step--answer{border-top:1px dashed var(--color-rule,rgba(30,35,30,.12));margin-top:.45rem;padding-top:.7rem}
+.dat-answer{color:var(--color-ink,var(--primary))}
+.dat-caret{display:none;width:.5em;height:1em;margin-left:2px;background:var(--color-accent,#8c2b2b);vertical-align:text-bottom;animation:datBlink 1s steps(1) infinite}
+.dat-foot{margin:.8rem 0 0;font-size:.75rem;color:var(--color-ink-muted,#5e5e63)}
+.demo-trace.is-playing .dat-step{display:none}
+.demo-trace.is-playing .dat-step.is-shown{display:flex;animation:datFade .22s var(--ease-out,ease-out)}
+.demo-trace.is-playing .dat-step.is-shown .dat-caret.is-on{display:inline-block}
+.dat-step.is-shown .dat-spin.is-running{display:inline-block;animation:datSpin 1s linear infinite}
+@keyframes datFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes datSpin{to{transform:rotate(360deg)}}
+@keyframes datBlink{50%{opacity:0}}
+@keyframes datPulse{0%,100%{opacity:.8}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){
+  .demo-trace .dat-dot,.dat-step.is-shown .dat-spin.is-running,.dat-caret{animation:none}
+}
+</style>
+<script>
+(function () {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function init(root) {
+    var steps = Array.prototype.slice.call(root.querySelectorAll('[data-dat-step]'));
+    var status = root.querySelector('[data-dat-status]');
+    var replay = root.querySelector('[data-dat-replay]');
+    if (!steps.length) return;
+    var timer = null;
+    var played = false;
+    function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+    function setStatus(t) { if (status) status.textContent = t; }
+    function finish() {
+      stop();
+      root.classList.remove('is-playing', 'is-running');
+      steps.forEach(function (s) {
+        s.classList.add('is-shown');
+        var tx = s.querySelector('[data-dat-text]');
+        if (tx && tx.dataset.full) tx.textContent = tx.dataset.full;
+        var st = s.querySelector('[data-dat-state]');
+        if (st) st.textContent = '✓';
+      });
+      setStatus('');
+    }
+    function play() {
+      stop();
+      played = true;
+      if (reduced) { finish(); return; }
+      root.classList.add('is-playing', 'is-running');
+      steps.forEach(function (s) {
+        s.classList.remove('is-shown');
+        var tx = s.querySelector('[data-dat-text]');
+        if (tx) {
+          if (!tx.dataset.full) tx.dataset.full = tx.textContent;
+          tx.textContent = '';
+        }
+      });
+      var i = 0;
+      function nextStep() {
+        if (i >= steps.length) {
+          root.classList.remove('is-running');
+          setStatus('DONE');
+          timer = setTimeout(function () { setStatus(''); }, 1600);
+          return;
+        }
+        var s = steps[i++];
+        s.classList.add('is-shown');
+        var type = s.getAttribute('data-type');
+        var tx = s.querySelector('[data-dat-text]');
+        var caret = s.querySelector('[data-dat-caret]');
+        if (type === 'tool_call') {
+          setStatus('CALLING');
+          var st = s.querySelector('[data-dat-state]');
+          var icon = s.querySelector('.dat-spin');
+          if (st) st.textContent = '⋯';
+          if (icon) icon.classList.add('is-running');
+          timer = setTimeout(function () {
+            if (st) st.textContent = '✓';
+            if (icon) icon.classList.remove('is-running');
+            timer = setTimeout(nextStep, 240);
+          }, 850);
+        } else if (tx) {
+          setStatus(type === 'answer' ? 'STREAMING' : 'THINKING');
+          if (caret) caret.classList.add('is-on');
+          var full = tx.dataset.full || '';
+          var c = 0;
+          var chunk = type === 'answer' ? 2 : 3;
+          var tick = type === 'answer' ? 28 : 16;
+          (function typeOut() {
+            if (c < full.length) {
+              c = Math.min(full.length, c + chunk);
+              tx.textContent = full.slice(0, c);
+              timer = setTimeout(typeOut, tick);
+            } else {
+              if (caret) caret.classList.remove('is-on');
+              timer = setTimeout(nextStep, 320);
+            }
+          })();
+        } else {
+          timer = setTimeout(nextStep, 200);
+        }
+      }
+      nextStep();
+    }
+    if (replay) replay.addEventListener('click', play);
+    root.classList.add('is-ready');
+    if ('IntersectionObserver' in window && !reduced) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && !played) { io.disconnect(); play(); }
+        });
+      }, { rootMargin: '0px 0px -15% 0px' });
+      io.observe(root);
+    }
+  }
+  function boot() { document.querySelectorAll('[data-demo-trace]').forEach(init); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+{{- end }}
+{{- end }}

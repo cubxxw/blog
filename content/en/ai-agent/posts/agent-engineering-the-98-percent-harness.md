@@ -63,7 +63,7 @@ Hold this image: model capability is something you **buy — uncontrollable**; t
 
 ## First Principles: Why This Discipline Must Exist
 
-![A stateless probabilistic predictor versus a stateful, unbounded world — the harness is the bridge between them](images/blog/agent-engineering-impedance.webp)
+![A stateless probabilistic predictor versus a stateful, unbounded world — the harness is the bridge between them](/images/blog/agent-engineering-impedance.webp)
 
 Before listing the pillars, we have to answer a more fundamental question: **why can't the model just do the whole job end to end? Why wrap such a thick layer around it?**
 
@@ -130,6 +130,20 @@ return finalize(state)
 ```
 
 Notice the `execute(action)` line — **it is the entry point to the entire harness.** When the model says "I want to `rm -rf /`," this line decides whether that happens at all, where, and whether to intercept it first. OpenAI's definition when dissecting Codex matches word for word: "At the heart of every AI agent is something called 'the agent loop,'" where the model either produces a final response or requests a tool call, then appends the result and re-queries, "until the model stops emitting tool calls."
+
+Let's run the loop through a real scenario. Watch the second `run_command`: the model merely **requests** the deletion — what decides whether it happens is the harness's confirmation gate:
+
+{{< demo-agent-trace title="Agent Loop × Harness Gate" question="Clean the build artifacts out of this repo" >}}
+[
+  {"type":"think","text":"Files need deleting. First see what's actually there — never act blind."},
+  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"ls dist/ build/\"}"},
+  {"type":"tool_result","text":"dist/  14 files · 3.2 MB\nbuild/  7 files · 1.1 MB"},
+  {"type":"think","text":"Target confirmed. Deletion is a dangerous action — this call will be intercepted by the harness for approval."},
+  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"rm -rf dist build\"}"},
+  {"type":"tool_result","text":"[harness] rm -rf matched a confirmation rule → awaiting approval → approved\n21 files deleted (4.3 MB)"},
+  {"type":"answer","text":"Cleaned dist/ and build/ — 21 files, 4.3 MB. The deletion passed through the harness's confirmation gate before executing; the model only ever issued requests and never touched the shell."}
+]
+{{< /demo-agent-trace >}}
 
 **The progression** (unavoidable in both interviews and real selection):
 

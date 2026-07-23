@@ -63,7 +63,7 @@ columns:
 
 ## 第一性原理：为什么这门学科必须存在
 
-![无状态的概率预测器 vs 有状态的无限世界——harness 就是它们之间那座桥](images/blog/agent-engineering-impedance.webp)
+![无状态的概率预测器 vs 有状态的无限世界——harness 就是它们之间那座桥](/images/blog/agent-engineering-impedance.webp)
 
 在罗列支柱之前，得先回答一个更根本的问题：**为什么不能就让模型自己端到端地干活？为什么非要在外面套这么厚一层？**
 
@@ -130,6 +130,20 @@ return finalize(state)
 ```
 
 注意 `execute(action)` 这一行——**它就是整个 harness 的入口**。模型说"我要 `rm -rf /`"，是这行代码决定它到底发不发生、在哪发生、发生前要不要拦。OpenAI 拆 Codex 时给的定义一字不差：「每个 AI agent 的核心，都是一个叫做 *agent loop* 的东西」，模型要么产出最终响应，要么请求一次 tool call，执行后追加结果再重新查询，「直到模型不再发出 tool call 为止」。
+
+把这个循环放进一个真实场景跑一遍。注意第二次 `run_command`：模型只是**请求**删除，真正决定它发不发生的，是 harness 的确认闸门：
+
+{{< demo-agent-trace title="Agent Loop × Harness 闸门" question="帮我把仓库里的构建产物清掉" >}}
+[
+  {"type":"think","text":"要删文件。先看清楚有什么可删的，不能直接动手。"},
+  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"ls dist/ build/\"}"},
+  {"type":"tool_result","text":"dist/  14 files · 3.2 MB\nbuild/  7 files · 1.1 MB"},
+  {"type":"think","text":"目标明确了。删除属于危险动作，这次调用会被 harness 拦下来要求确认。"},
+  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"rm -rf dist build\"}"},
+  {"type":"tool_result","text":"[harness] rm -rf 命中确认规则 → 等待人工批准 → 已批准\n21 个文件已删除（4.3 MB）"},
+  {"type":"answer","text":"已清理 dist/ 与 build/，共删除 21 个文件、4.3 MB。删除动作在执行前经过了 harness 的确认闸门——模型从头到尾只发出请求，没有碰过 shell。"}
+]
+{{< /demo-agent-trace >}}
 
 **进阶谱系**（这是面试和选型都绕不开的）：
 
