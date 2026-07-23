@@ -1,0 +1,142 @@
+{{- /* Interactive step player for tutorials (agent loops, deploy flows,
+     pipelines). Self-contained like knowledge-galaxy.html: inline style +
+     script emitted once per page via .Store, no global bundle cost.
+
+     Usage:
+       {{< demo-steps title="Agent Loop" >}}
+         {{< demo-step label="用户输入" >}}markdown…{{< /demo-step >}}
+         {{< demo-step label="LLM 决策" >}}markdown…{{< /demo-step >}}
+       {{< /demo-steps >}}
+
+     Progressive enhancement: before JS runs (or without JS at all) every
+     step renders stacked with its label as a small heading — crawlers and
+     no-JS readers see the full content. JS adds .is-ready, turning it into
+     a tabbed player: rail on the left (desktop) / scrollable strip (mobile),
+     arrow keys, prev/next, mono step counter. */ -}}
+{{- $inner := .Inner -}}
+{{- $steps := .Scratch.Get "demoSteps" | default slice -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $n := add (int (.Page.Store.Get "demoStepsCount" | default 0)) 1 -}}
+{{- .Page.Store.Set "demoStepsCount" $n -}}
+{{- $uid := printf "ds-%d" $n -}}
+{{- $total := len $steps -}}
+{{- if $steps }}
+<div class="demo-steps" id="{{ $uid }}" data-demo-steps>
+  <div class="ds-chrome">
+    <span class="ds-dot" aria-hidden="true"></span>
+    <span class="ds-kicker">INTERACTIVE{{ with $title }} · {{ . }}{{ end }}</span>
+    <span class="ds-count" data-ds-count aria-hidden="true">01 / {{ printf "%02d" $total }}</span>
+  </div>
+  <div class="ds-body">
+    <div class="ds-rail" role="tablist" aria-label="{{ $title | default "steps" }}">
+      {{- range $i, $s := $steps }}
+      <button type="button" class="ds-tab" role="tab" id="{{ $uid }}-tab-{{ $i }}"
+        aria-controls="{{ $uid }}-panel-{{ $i }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"
+        data-ds-tab>
+        <span class="ds-tab-num">{{ printf "%02d" (add $i 1) }}</span>
+        <span class="ds-tab-label">{{ $s.label }}</span>
+      </button>
+      {{- end }}
+    </div>
+    <div class="ds-panels">
+      {{- range $i, $s := $steps }}
+      <div class="ds-panel" role="tabpanel" id="{{ $uid }}-panel-{{ $i }}"
+        aria-labelledby="{{ $uid }}-tab-{{ $i }}" data-ds-panel data-label="{{ printf "%02d" (add $i 1) }} · {{ $s.label }}">
+        {{ $s.content }}
+      </div>
+      {{- end }}
+    </div>
+  </div>
+  <div class="ds-nav">
+    <button type="button" class="ds-nav-btn" data-ds-prev aria-label="previous step">←</button>
+    <button type="button" class="ds-nav-btn" data-ds-next aria-label="next step">→</button>
+  </div>
+</div>
+{{- if not (.Page.Store.Get "demoStepsAssets") }}
+{{- .Page.Store.Set "demoStepsAssets" true }}
+<style>
+.demo-steps{margin:2rem 0;border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:12px;overflow:hidden}
+.ds-chrome{display:flex;align-items:center;gap:.55rem;padding:.6rem .95rem;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.12))}
+.ds-dot{width:7px;height:7px;border-radius:50%;background:var(--color-accent,#8c2b2b);opacity:.8;animation:dsPulse 2.4s ease-in-out infinite}
+.ds-kicker{font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-muted,#5e5e63)}
+.ds-count{margin-left:auto;font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;color:var(--color-ink-muted,#5e5e63)}
+.ds-rail{display:flex;flex-direction:column;gap:2px;padding:.6rem .4rem}
+.ds-tab{display:flex;align-items:baseline;gap:.55rem;width:100%;padding:.45rem .55rem;border:0;border-left:2px solid transparent;border-radius:6px;background:none;text-align:left;cursor:pointer;color:var(--color-ink-muted,#5e5e63);font-size:.8125rem;line-height:1.4}
+.ds-tab-num{font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem}
+.ds-tab:hover{color:var(--color-ink,var(--primary))}
+.ds-tab.is-active{color:var(--color-ink,var(--primary));font-weight:600;border-left-color:var(--color-accent,#8c2b2b)}
+.ds-panels{padding:.35rem 1.1rem .9rem;min-width:0}
+.ds-panel{font-size:.9375rem}
+.ds-panel>:first-child{margin-top:.65rem}
+.ds-panel>:last-child{margin-bottom:.4rem}
+/* No-JS / pre-JS: all panels stacked, each labelled */
+.demo-steps:not(.is-ready) .ds-panel::before{content:attr(data-label);display:block;margin-top:.9rem;font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.08em;color:var(--color-ink-muted,#5e5e63)}
+.demo-steps:not(.is-ready) .ds-nav,.demo-steps:not(.is-ready) .ds-count{display:none}
+/* JS-enhanced: tabbed player */
+.demo-steps.is-ready .ds-body{display:grid;grid-template-columns:minmax(150px,200px) 1fr}
+.demo-steps.is-ready .ds-rail{border-right:1px solid var(--color-rule,rgba(30,35,30,.12))}
+.demo-steps.is-ready .ds-panel{display:none}
+.demo-steps.is-ready .ds-panel.is-active{display:block;animation:dsFade .28s var(--ease-out,ease-out)}
+.ds-nav{display:flex;justify-content:flex-end;gap:.4rem;padding:.4rem .8rem .7rem}
+.ds-nav-btn{border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:6px;background:none;padding:.2rem .7rem;font-family:var(--font-mono,ui-monospace,monospace);font-size:.8125rem;color:var(--color-ink-muted,#5e5e63);cursor:pointer}
+.ds-nav-btn:hover{color:var(--color-ink,var(--primary));border-color:var(--color-ink-muted,#5e5e63)}
+@keyframes dsFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes dsPulse{0%,100%{opacity:.8}50%{opacity:.3}}
+@media (max-width:640px){
+  .demo-steps.is-ready .ds-body{grid-template-columns:1fr}
+  .demo-steps.is-ready .ds-rail{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.12));padding:.5rem .6rem}
+  .demo-steps.is-ready .ds-tab{border-left:0;border-bottom:2px solid transparent;border-radius:0;white-space:nowrap}
+  .demo-steps.is-ready .ds-tab.is-active{border-bottom-color:var(--color-accent,#8c2b2b)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ds-dot{animation:none}
+  .demo-steps.is-ready .ds-panel.is-active{animation:none}
+}
+</style>
+<script>
+(function () {
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function init(root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-ds-tab]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-ds-panel]'));
+    if (!tabs.length || tabs.length !== panels.length) return;
+    var counter = root.querySelector('[data-ds-count]');
+    var idx = 0;
+    function show(i, focus) {
+      idx = (i + tabs.length) % tabs.length;
+      tabs.forEach(function (t, j) {
+        var on = j === idx;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.classList.toggle('is-active', on);
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(function (p, j) { p.classList.toggle('is-active', j === idx); });
+      if (counter) counter.textContent = pad(idx + 1) + ' / ' + pad(tabs.length);
+      if (focus) tabs[idx].focus();
+    }
+    tabs.forEach(function (t, j) {
+      t.addEventListener('click', function () { show(j); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); show(idx + 1, true); }
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1, true); }
+      });
+    });
+    var prev = root.querySelector('[data-ds-prev]');
+    var next = root.querySelector('[data-ds-next]');
+    if (prev) prev.addEventListener('click', function () { show(idx - 1); });
+    if (next) next.addEventListener('click', function () { show(idx + 1); });
+    root.classList.add('is-ready');
+    show(0);
+  }
+  function boot() {
+    document.querySelectorAll('[data-demo-steps]').forEach(init);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+{{- end }}
+{{- end }}

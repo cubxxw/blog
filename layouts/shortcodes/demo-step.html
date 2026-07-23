@@ -1,0 +1,7 @@
+{{- /* One step inside {{< demo-steps >}}. Usage:
+     {{< demo-step label="LLM 决策" >}}markdown body{{< /demo-step >}}
+     Collects itself into the parent's scratch; renders nothing here. */ -}}
+{{- $existing := .Parent.Scratch.Get "demoSteps" | default slice -}}
+{{- $label := .Get "label" | default (printf "Step %d" (add (len $existing) 1)) -}}
+{{- $content := .Inner | .Page.RenderString (dict "display" "block") -}}
+{{- .Parent.Scratch.Add "demoSteps" (slice (dict "label" $label "content" $content)) -}}
