@@ -89,6 +89,10 @@
          acts as the curtain into the prose. */}}
     {{- partial "article/tldr.html" . }}
 
+    {{- /* Series banner sits with the header front matter, before the cover:
+         one line telling the reader they are on a multi-part thread. */}}
+    {{- partial "article/series-nav.html" . }}
+
     {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
     {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
 

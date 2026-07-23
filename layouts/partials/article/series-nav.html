@@ -39,20 +39,26 @@
       <span class="series-nav__badge">{{ $partLabel }}</span>
     </div>
     {{- if $ordered }}
-    <ol class="series-nav__list">
-      {{- range $i, $sib := $ordered }}
-        {{- $sibOrder := $sib.Params.series.order | default (add $i 1) }}
-        {{- $isCurrent := eq $sib.RelPermalink $page.RelPermalink }}
-        <li class="series-nav__item{{ if $isCurrent }} series-nav__item--current{{ end }}">
-          <span class="series-nav__num">{{ $sibOrder }}</span>
-          {{- if $isCurrent }}
-          <span class="series-nav__title" aria-current="page">{{ $sib.Title }}</span>
-          {{- else }}
-          <a class="series-nav__title" href="{{ $sib.RelPermalink }}">{{ $sib.Title }}</a>
-          {{- end }}
-        </li>
-      {{- end }}
-    </ol>
+    {{- /* Collapsed by default: the banner is a one-line "you are on a
+           thread" cue; the full map opens on demand so it never competes
+           with the article opening for attention. */}}
+    <details class="series-nav__details">
+      <summary class="series-nav__summary">{{ if $isZh }}查看系列全部 {{ len $ordered }} 篇{{ else }}All {{ len $ordered }} parts{{ end }}</summary>
+      <ol class="series-nav__list">
+        {{- range $i, $sib := $ordered }}
+          {{- $sibOrder := $sib.Params.series.order | default (add $i 1) }}
+          {{- $isCurrent := eq $sib.RelPermalink $page.RelPermalink }}
+          <li class="series-nav__item{{ if $isCurrent }} series-nav__item--current{{ end }}">
+            <span class="series-nav__num">{{ $sibOrder }}</span>
+            {{- if $isCurrent }}
+            <span class="series-nav__title" aria-current="page">{{ $sib.Title }}</span>
+            {{- else }}
+            <a class="series-nav__title" href="{{ $sib.RelPermalink }}">{{ $sib.Title }}</a>
+            {{- end }}
+          </li>
+        {{- end }}
+      </ol>
+    </details>
     {{- end }}
   </aside>
 {{- end }}
