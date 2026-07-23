@@ -1,14 +1,38 @@
-{{- $related := .Site.RegularPages.Related . | first 3 -}}
-{{- /* 兜底：tags/keywords 命中不足 3 篇时（threshold 高，很多文章会命中 0），
-       用同 section 的最新文章补齐，保证每篇文章都有内链出口（SEO 回游）。
-       补齐项排除当前页与已命中的相关文章，按站点默认的日期倒序取新。 */ -}}
-{{- if lt (len $related) 3 -}}
-  {{- $need := sub 3 (len $related) -}}
-  {{- $exclude := $related | append . -}}
-  {{- $pool := where .Site.RegularPages "Section" .Section -}}
-  {{- $fill := first $need (complement $exclude $pool) -}}
-  {{- $related = $related | append $fill -}}
+{{- /* 相关文章选取按信号强度分四级，取满 3 篇为止：
+       1. 同系列（series.slug）——最强的编辑信号：优先当前篇之后的部分
+          （读者的自然去向），不足再补前面的，最多占 2 席；
+       2. tags/keywords 的 .Related 命中；
+       3. 同专栏（columns taxonomy）最新文章；
+       4. 同 section 最新文章兜底，保证每篇文章都有内链出口（SEO 回游）。
+       每级都排除当前页与已选中的文章。 */ -}}
+{{- $page := . -}}
+{{- $limit := 3 -}}
+{{- $picked := slice -}}
+{{- with $page.Params.series -}}
+  {{- if .slug -}}
+    {{- $sibs := where site.RegularPages "Params.series.slug" .slug -}}
+    {{- $sibs = where $sibs "Permalink" "ne" $page.Permalink -}}
+    {{- $order := int (default 0 .order) -}}
+    {{- $after := sort (where $sibs "Params.series.order" ">" $order) "Params.series.order" "asc" -}}
+    {{- $before := sort (where $sibs "Params.series.order" "<=" $order) "Params.series.order" "asc" -}}
+    {{- $picked = first 2 ($after | append $before) -}}
+  {{- end -}}
 {{- end -}}
+{{- if lt (len $picked) $limit -}}
+  {{- $rel := complement ($picked | append $page) (site.RegularPages.Related $page) -}}
+  {{- $picked = $picked | append (first (sub $limit (len $picked)) $rel) -}}
+{{- end -}}
+{{- if and (lt (len $picked) $limit) $page.Params.columns -}}
+  {{- $col := where site.RegularPages "Params.columns" "intersect" $page.Params.columns -}}
+  {{- $col = complement ($picked | append $page) $col -}}
+  {{- $picked = $picked | append (first (sub $limit (len $picked)) $col) -}}
+{{- end -}}
+{{- if lt (len $picked) $limit -}}
+  {{- $pool := where site.RegularPages "Section" $page.Section -}}
+  {{- $pool = complement ($picked | append $page) $pool -}}
+  {{- $picked = $picked | append (first (sub $limit (len $picked)) $pool) -}}
+{{- end -}}
+{{- $related := $picked -}}
 {{- with $related -}}
 <section class="related-posts">
   <div class="related-posts-header">
