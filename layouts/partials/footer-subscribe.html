@@ -1,0 +1,214 @@
+{{- /* ── footer-subscribe — playful full-bleed subscribe band ─────────
+     A peeking bear (the site's BEAR brand) climbs over a gentle wave at
+     the top of the footer. One-line email form posts to the existing
+     /.netlify/functions/subscribe-email → Buttondown pipeline (double
+     opt-in, so no consent checkbox is needed here — the confirmation
+     email IS the opt-in).
+
+     Self-contained: markup + SVG + JS in this partial, styles in
+     assets/css/extended/site-footer-subscribe.css. Called from
+     site-footer.html (all inner pages) and homepage-daypage.html.
+     JS is guarded so double-inclusion is harmless.
+
+     Interactions (all gated on prefers-reduced-motion):
+       • bear idles with a slow float + occasional blink
+       • pupils follow the pointer inside the band
+       • focusing the input makes the bear lean in and watch you type
+       • success / already-subscribed → bounce + happy-arc eyes
+     ─────────────────────────────────────────────────────────────── */ -}}
+{{- $isZH := eq site.Language.Lang "zh" -}}
+<section class="fsub" data-fsub aria-label="{{ if $isZH }}邮件订阅{{ else }}Email newsletter{{ end }}">
+
+  {{- /* Wave edge — fill matches the band background */ -}}
+  <svg class="fsub-wave" viewBox="0 0 1200 44" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M0,30 C120,10 240,42 380,30 C520,18 610,38 760,26 C910,14 1040,40 1200,22 L1200,44 L0,44 Z"/>
+  </svg>
+
+  <div class="fsub-inner">
+
+    {{- /* Peeking bear */ -}}
+    <div class="fsub-bear" data-fsub-bear aria-hidden="true">
+      <svg viewBox="0 0 140 100" focusable="false">
+        <g class="fsub-bear-body">
+          <!-- ears -->
+          <circle class="fsub-ink-fill" cx="38" cy="27" r="13"/>
+          <circle class="fsub-inner-ear" cx="38" cy="27" r="6"/>
+          <circle class="fsub-ink-fill" cx="102" cy="27" r="13"/>
+          <circle class="fsub-inner-ear" cx="102" cy="27" r="6"/>
+          <!-- head -->
+          <ellipse class="fsub-ink-fill" cx="70" cy="57" rx="42" ry="36"/>
+          <!-- blush -->
+          <ellipse class="fsub-blush" cx="43" cy="64" rx="6" ry="3.4"/>
+          <ellipse class="fsub-blush" cx="97" cy="64" rx="6" ry="3.4"/>
+          <!-- eyes: pupils (default) + happy arcs (success) -->
+          <g class="fsub-eyes">
+            <g class="fsub-pupils">
+              <circle class="fsub-pupil" cx="54" cy="52" r="3.6"/>
+              <circle class="fsub-pupil" cx="86" cy="52" r="3.6"/>
+            </g>
+            <g class="fsub-happy">
+              <path d="M48 54 q6 -8 12 0"/>
+              <path d="M80 54 q6 -8 12 0"/>
+            </g>
+          </g>
+          <!-- nose + mouth -->
+          <ellipse class="fsub-nose" cx="70" cy="63" rx="4.6" ry="3.4"/>
+          <path class="fsub-mouth" d="M64 71 q6 5 12 0"/>
+          <!-- paws gripping the wave edge -->
+          <rect class="fsub-ink-fill" x="38" y="80" width="20" height="14" rx="7"/>
+          <rect class="fsub-ink-fill" x="82" y="80" width="20" height="14" rx="7"/>
+          <path class="fsub-paw-line" d="M45 81.5 v6 M51 81.5 v6"/>
+          <path class="fsub-paw-line" d="M89 81.5 v6 M95 81.5 v6"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="fsub-copy">
+      <h2 class="fsub-headline">{{ if $isZH }}新文章写好，先寄给你{{ else }}New posts, straight to your inbox{{ end }}</h2>
+      <p class="fsub-sub">{{ if $isZH }}每有新文章，寄一封信到你的邮箱。双重确认，随时退订。{{ else }}One email per new post. Double opt-in, unsubscribe anytime.{{ end }}</p>
+    </div>
+
+    <form class="fsub-form" data-fsub-form novalidate>
+      <label class="fsub-field">
+        <span class="fsub-visually-hidden">{{ if $isZH }}邮箱地址{{ else }}Email address{{ end }}</span>
+        <input class="fsub-input" type="email" name="email" inputmode="email"
+               placeholder="you@example.com" autocomplete="email" required>
+      </label>
+      <button class="fsub-go" type="submit" aria-label="{{ if $isZH }}订阅{{ else }}Subscribe{{ end }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M4 12h15M13 6l6 6-6 6"/>
+        </svg>
+      </button>
+      <input type="text" name="company" class="fsub-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+    </form>
+
+    <p class="fsub-status" data-fsub-status aria-live="polite"></p>
+
+    <p class="fsub-alt">
+      {{ if $isZH }}更喜欢 RSS？{{ else }}Prefer RSS?{{ end }}
+      <a href="{{ "/index.xml" | relLangURL }}">{{ if $isZH }}订阅 Feed →{{ else }}Grab the feed →{{ end }}</a>
+    </p>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  if (window.__fsubInit) return;
+  window.__fsubInit = true;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MSG = {
+    zh: {
+      sending: '正在寄出…',
+      success: '成功！去邮箱点一下确认，我们就正式认识了。',
+      dup: '这个邮箱已经在名单里了——我们已经认识啦。',
+      rate: '请求太频繁了，喝口水稍后再试。',
+      invalid: '这个邮箱好像不太对，再看一眼？',
+      error: '寄丢了…请稍后再试一次。'
+    },
+    en: {
+      sending: 'Sending…',
+      success: 'Done! Check your inbox to confirm — then it’s official.',
+      dup: 'This address is already on the list — we’ve met!',
+      rate: 'Too many attempts. Take a sip of water and retry.',
+      invalid: 'That email looks off — mind double-checking?',
+      error: 'Lost in the mail… please try again shortly.'
+    }
+  };
+  var lang = (document.documentElement.lang || '').indexOf('zh') === 0 ? 'zh' : 'en';
+  var t = MSG[lang];
+
+  document.querySelectorAll('[data-fsub]').forEach(function (band) {
+    var bear = band.querySelector('[data-fsub-bear]');
+    var form = band.querySelector('[data-fsub-form]');
+    var input = form.querySelector('input[name="email"]');
+    var status = band.querySelector('[data-fsub-status]');
+
+    /* ── pupil tracking ─────────────────────────────── */
+    if (!reduce && bear && window.matchMedia('(pointer: fine)').matches) {
+      var raf = null;
+      function look(x, y) {
+        var r = bear.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height * 0.55;
+        var dx = x - cx, dy = y - cy;
+        var d = Math.hypot(dx, dy) || 1;
+        var m = Math.min(d / 60, 1) * 2.6; /* max pupil travel in svg px */
+        bear.style.setProperty('--ex', (dx / d * m).toFixed(2) + 'px');
+        bear.style.setProperty('--ey', (dy / d * m).toFixed(2) + 'px');
+      }
+      band.addEventListener('mousemove', function (e) {
+        if (band.classList.contains('is-success')) return;
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = null;
+          look(e.clientX, e.clientY);
+        });
+      });
+      band.addEventListener('mouseleave', function () {
+        bear.style.setProperty('--ex', '0px');
+        bear.style.setProperty('--ey', '0px');
+      });
+      /* watch the input while typing */
+      input.addEventListener('focus', function () {
+        band.classList.add('is-focus');
+        var r = input.getBoundingClientRect();
+        look(r.left + r.width * 0.3, r.top + r.height / 2);
+      });
+      input.addEventListener('blur', function () {
+        band.classList.remove('is-focus');
+        bear.style.setProperty('--ex', '0px');
+        bear.style.setProperty('--ey', '0px');
+      });
+    } else {
+      input.addEventListener('focus', function () { band.classList.add('is-focus'); });
+      input.addEventListener('blur', function () { band.classList.remove('is-focus'); });
+    }
+
+    /* ── submit ─────────────────────────────────────── */
+    function setStatus(msg, state) {
+      status.textContent = msg;
+      status.dataset.state = state || '';
+    }
+    function celebrate() {
+      band.classList.remove('is-loading');
+      band.classList.add('is-success');
+      if (bear) { bear.style.setProperty('--ex', '0px'); bear.style.setProperty('--ey', '0px'); }
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (band.classList.contains('is-loading') || band.classList.contains('is-success')) return;
+      var email = String(input.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setStatus(t.invalid, 'error');
+        band.classList.add('is-shake');
+        setTimeout(function () { band.classList.remove('is-shake'); }, 500);
+        input.focus();
+        return;
+      }
+      band.classList.add('is-loading');
+      setStatus(t.sending, 'loading');
+      fetch('/.netlify/functions/subscribe-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          language: lang,
+          topic: 'general',
+          sourcePath: window.location.pathname,
+          sourceType: 'footer',
+          company: String(form.elements.company.value || '').trim()
+        })
+      }).then(function (res) {
+        if (res.ok) { celebrate(); setStatus(t.success, 'success'); return; }
+        if (res.status === 409) { celebrate(); setStatus(t.dup, 'success'); return; }
+        band.classList.remove('is-loading');
+        setStatus(res.status === 429 ? t.rate : t.error, 'error');
+      }).catch(function () {
+        band.classList.remove('is-loading');
+        setStatus(t.error, 'error');
+      });
+    });
+  });
+})();
+</script>

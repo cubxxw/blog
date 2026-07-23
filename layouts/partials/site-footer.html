@@ -4,6 +4,7 @@
      the partialCached footer.html — the conditions below use page fields
      (Section) that are not part of that cache key. */ -}}
 {{- $isZh := eq .Lang "zh" -}}
+{{- partial "footer-subscribe.html" . }}
 <footer class="sf" role="contentinfo" aria-label="{{ if $isZh }}站点导航{{ else }}Site navigation{{ end }}">
   <div class="sf-grid">
     <div class="sf-col">

@@ -2,7 +2,11 @@
 {{- /* <script src="{{ "/js/blog-ai.js" | relURL }}" defer></script> */ -}}
 <script src="{{ "/js/micro-interactions.js" | relURL }}" defer></script>
 <script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>
-<script src="{{ "/js/newsletter.js" | relURL }}" defer></script>
+{{- /* newsletter.js removed: it only served [data-newsletter-form] inside
+     rss-subscribe.html, whose callers (index_profile / home-info /
+     sidebar-ai-projects) are dead partials never rendered by any layout.
+     Email subscribe now lives in footer-subscribe.html (self-contained JS)
+     plus the homepage's own hp-subscribe. */ -}}
 {{- /* qrcode + share loaded on-demand when share panel opens, not on every page */ -}}
 <script>
 (function(){

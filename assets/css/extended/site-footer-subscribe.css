@@ -1,0 +1,262 @@
+/* ============================================================
+   site-footer-subscribe.css — playful footer subscribe band
+   (footer-subscribe.html partial). A bear peeks over a wave at
+   the top of the footer; one-line email form below.
+   Token-driven: ZH/EN × light/dark resolve automatically.
+   ============================================================ */
+
+.fsub {
+  position: relative;
+  background: var(--color-accent-soft);
+  margin-top: 4.5rem;
+  /* room for the wave that rises above the band */
+  padding-top: 8px;
+}
+
+/* Wave edge — sits just above the band, same fill so they read as one
+   surface. The bear rises through it. */
+.fsub-wave {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  display: block;
+}
+.fsub-wave path { fill: var(--color-accent-soft); }
+
+.fsub-inner {
+  position: relative;
+  max-width: var(--main-width, 720px);
+  margin: 0 auto;
+  padding: 1.6rem var(--gap, 24px) 2.4rem;
+}
+
+/* ── Bear ──────────────────────────────────────────── */
+.fsub-bear {
+  position: absolute;
+  right: clamp(16px, 9%, 90px);
+  top: 0;
+  width: 108px;
+  height: 78px;
+  /* paws grip the wave: lift the bear so ~70% rises above the band */
+  transform: translateY(-72%);
+  transform-origin: 50% 90%;
+  transition: transform 300ms var(--ease-out);
+  pointer-events: none;
+}
+.fsub-bear svg { width: 100%; height: 100%; overflow: visible; display: block; }
+
+.fsub-ink-fill {
+  fill: var(--color-paper);
+  stroke: var(--color-ink);
+  stroke-width: 3;
+}
+.fsub-inner-ear { fill: var(--color-accent-soft); }
+.fsub-blush { fill: var(--color-accent); opacity: 0.22; }
+.fsub-pupil { fill: var(--color-ink); }
+.fsub-nose { fill: var(--color-ink); }
+.fsub-mouth,
+.fsub-happy path,
+.fsub-paw-line {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.fsub-paw-line { stroke-width: 2; opacity: 0.55; }
+
+/* pupils follow the pointer via --ex/--ey set from JS */
+.fsub-pupils { transform: translate(var(--ex, 0px), var(--ey, 0px)); }
+
+/* happy arc eyes only on success */
+.fsub-happy { display: none; }
+.is-success .fsub-happy { display: block; }
+.is-success .fsub-pupils { display: none; }
+
+/* idle float + blink (decorative; killed under reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .fsub-bear-body {
+    animation: fsub-float 5.2s ease-in-out infinite;
+  }
+  .fsub-eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: fsub-blink 6.4s infinite;
+  }
+  .is-success .fsub-eyes { animation: none; }
+}
+@keyframes fsub-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(3px); }
+}
+@keyframes fsub-blink {
+  0%, 93.5%, 97.5%, 100% { transform: scaleY(1); }
+  95.5%                  { transform: scaleY(0.08); }
+}
+
+/* lean in when the visitor is typing */
+.fsub.is-focus .fsub-bear {
+  transform: translateY(-78%) rotate(-5deg);
+}
+
+/* success bounce */
+.fsub.is-success .fsub-bear {
+  animation: fsub-bounce 650ms var(--ease-spring);
+}
+@keyframes fsub-bounce {
+  0%   { transform: translateY(-72%); }
+  40%  { transform: translateY(-95%) rotate(3deg); }
+  70%  { transform: translateY(-66%); }
+  100% { transform: translateY(-72%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fsub.is-success .fsub-bear { animation: none; }
+  .fsub.is-focus .fsub-bear { transform: translateY(-72%); }
+}
+
+/* ── Copy ──────────────────────────────────────────── */
+.fsub-headline {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.2vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+.fsub-sub {
+  margin: 0 0 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+  max-width: 34em;
+}
+
+/* ── Form ──────────────────────────────────────────── */
+.fsub-form {
+  display: flex;
+  gap: 10px;
+  max-width: 430px;
+  transition: opacity 300ms var(--ease-standard);
+}
+.fsub.is-success .fsub-form {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.fsub-field { flex: 1; min-width: 0; }
+
+.fsub-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur-hover) var(--ease-standard),
+              box-shadow var(--dur-hover) var(--ease-standard);
+}
+.fsub-input::placeholder { color: var(--color-ink-muted); opacity: 0.7; }
+.fsub-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.fsub-go {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: transform var(--dur-press) var(--ease-out),
+              background var(--dur-hover) var(--ease-standard);
+}
+.fsub-go svg { width: 20px; height: 20px; }
+.fsub-go:hover { background: var(--color-accent); }
+.fsub-go:active { transform: scale(0.94); }
+.fsub.is-loading .fsub-go { opacity: 0.6; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .fsub.is-loading .fsub-go svg { animation: fsub-nudge 900ms ease-in-out infinite; }
+}
+@keyframes fsub-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(4px); }
+}
+
+/* invalid-email shake */
+@media (prefers-reduced-motion: no-preference) {
+  .fsub.is-shake .fsub-form { animation: fsub-shake 400ms ease-in-out; }
+}
+@keyframes fsub-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+
+/* ── Status + RSS alt ──────────────────────────────── */
+.fsub-status {
+  min-height: 1.4em;
+  margin: 0.7rem 0 0;
+  font-family: var(--font-meta);
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+}
+.fsub-status[data-state="success"] { color: var(--color-ink); font-weight: 500; }
+.fsub-status[data-state="error"]   { color: var(--color-accent); }
+
+.fsub-alt {
+  margin: 0.9rem 0 0;
+  font-family: var(--font-meta);
+  font-size: 0.8rem;
+  color: var(--color-ink-muted);
+}
+.fsub-alt a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.fsub-alt a:hover { color: var(--color-accent); }
+
+.fsub-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.fsub-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* the shared footer's own top rule doubles the band's bottom edge —
+   drop it when the band sits above. General sibling (~): the partial's
+   inline <script> sits between the band and the footer, so + won't match. */
+.fsub ~ .sf { border-top: none; margin-top: 2rem; }
+
+/* ── Mobile ────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .fsub { margin-top: 3.5rem; }
+  .fsub-bear {
+    width: 84px;
+    height: 61px;
+    right: 14px;
+  }
+  .fsub-inner { padding: 1.2rem 20px 2rem; }
+  .fsub-headline { padding-right: 70px; }
+}
