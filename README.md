@@ -233,7 +233,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [2025 March Thought Notes](https://cubxxw.com/growth/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://cubxxw.com/growth/posts/2024-annual-review/)
 - [Travel · The World Game](https://cubxxw.com/travel/)
-- [About Me & This Blog](https://cubxxw.com/about/)
+- [About Me](https://cubxxw.com/about/)
 - [Kubernetes Resources and Learning Path Summary](https://cubxxw.com/engineering/posts/kubernetes-learning/)
 - [LangChain: Building LLM Applications](https://cubxxw.com/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
 - [Large Language Models: How LLMs Work](https://cubxxw.com/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
