@@ -33,6 +33,9 @@ faq:
     a: "Install the tool with pip install 'markitdown[pdf]' and run markitdown paper.pdf -o paper.md, or call md.convert('paper.pdf') in Python. By default MarkItDown uses pdfminer.six, which extracts text but has no OCR and loses much of the layout. For scanned PDFs or complex layouts with tables, enable the Azure Document Intelligence integration with the -d and -e endpoint flags to get structured Markdown output."
   - q: "How does MarkItDown compare to Pandoc, Marker, and Docling?"
     a: "Pandoc is the better choice for general-purpose, high-fidelity conversion between many formats. Marker uses deep learning models and typically produces better results for complex PDFs with tables and formulas. Docling, from IBM, focuses on parsing PDF, DOCX, and PPTX into Markdown and JSON. MarkItDown stands out for its breadth of input formats, its LLM-focused structure preservation, and its Azure and OpenAI integrations, making it a strong fit for RAG preprocessing."
+cover:
+  image: /images/covers/ai-agent/2025/markItdown.jpeg
+  alt: "Microsoft MarkItDown Tutorial: Convert PDF to Markdown"
 ---
 
 > This project is an ongoing journey — learning AI open source projects with steady, daily progress. Through hands-on work with real projects and AI tooling, the goal is to develop the ability to solve complex problems and document the process.

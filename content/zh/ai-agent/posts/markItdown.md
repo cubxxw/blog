@@ -28,6 +28,9 @@ faq:
     a: "可以。安装后执行 markitdown paper.pdf -o paper.md 即可转换。但要注意默认使用的 pdfminer.six 库只能提取文本，没有 OCR 能力，无法处理扫描版 PDF，而且会丢失大部分格式结构。如果需要处理扫描件或包含复杂表格的 PDF，建议启用 Azure Document Intelligence 集成（命令行加 -d 和 -e 端点参数），可以得到结构化的 Markdown 输出。"
   - q: "MarkItDown 和 Pandoc、Marker 有什么区别？"
     a: "Pandoc 是成熟的通用文档转换工具，追求高保真度，支持极多的输入输出格式，适合通用格式转换。Marker 利用深度学习模型理解文档布局，在复杂 PDF（含表格、公式）的转换质量上通常更好。MarkItDown 的优势在于输入格式广、专为 LLM 和 RAG 预处理优化、可集成 Azure 和 OpenAI 服务，适合把多来源文档统一处理成 AI 系统可用的结构化 Markdown。"
+cover:
+  image: /images/covers/ai-agent/2025/markItdown.jpeg
+  alt: "MarkItDown 教程：微软开源文档转 Markdown 工具"
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。
