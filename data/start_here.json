@@ -1,15 +1,15 @@
 {
   "_notes": [
-    "Source of truth for the /start-here/ reading atlas AND the AI layer (content-index atlas block).",
+    "Source of truth for the reading atlas (About page section) AND the AI layer (content-index atlas block).",
     "Each post stores only its logical page path + a one-line hook; titles/reading times resolve at build time via site.GetPage in layouts/shortcodes/start-here.html.",
     "Converted from YAML to JSON so scripts/generate-content-index.mjs can read it with zero deps; Hugo site.Data reads JSON identically.",
-    "Curation basis (GSC 2026-07): my-hugo is the CTR champion; markitdown/langgraph/notebooklm/tdd/gpt-researcher are the top organic pages.",
-    "EN mem0 is draft — EN AI path uses go-release-tools until the translation ships."
+    "Paths follow the v3 content architecture (2026-07): ai-agent and engineering are separate sections; project deep-dives (markitdown/langgraph/notebooklm) live in the AI Agent path since that is their section.",
+    "Curation basis (GSC 2026-07): my-hugo is the CTR champion; markitdown/langgraph/notebooklm are the top organic pages."
   ],
   "zh": {
     "kicker": "阅读地图",
     "heading": "从这里开始",
-    "intro": "认识了我这个人，接下来认识我的写作。这个博客围绕四条主线：AI 与技术、成长与思考、旅行与观察、项目与实践。不知道从哪读起？下面是为第一次来的你画的地图。",
+    "intro": "认识了我这个人，接下来认识我的写作。这个博客围绕四条主线：AI Agent、工程与开源、成长与思考、旅行与观察。不知道从哪读起？下面是为第一次来的你画的地图。",
     "first_read": {
       "label": "只想先读一篇？",
       "page": "/growth/posts/2025-annual-review",
@@ -23,15 +23,41 @@
       {
         "key": "ai",
         "numeral": "01",
-        "title": "AI 与技术",
-        "audience": "写给对 AI、大语言模型、Kubernetes 与 Go 工程感兴趣的开发者。",
+        "title": "AI Agent",
+        "audience": "写给对 LLM 应用、智能体工程与开源 AI 项目源码感兴趣的开发者——这是全站搜索流量最高的一条线。",
         "more_url": "/zh/ai-agent/",
-        "more_label": "浏览全部 AI 与技术文章",
+        "more_label": "浏览全部 AI Agent 文章",
         "posts": [
+          {
+            "page": "/ai-agent/posts/markitdown",
+            "hook": "微软 MarkItDown 源码深读——本站被搜索最多的一页。"
+          },
+          {
+            "page": "/ai-agent/posts/langgraph",
+            "hook": "LangGraph 设计、架构与原理的深度解析。"
+          },
+          {
+            "page": "/ai-agent/posts/notebooklm",
+            "hook": "Google NotebookLM 背后的 RAG 工程调研。"
+          },
           {
             "page": "/ai-agent/posts/agent-identity-from-locke-to-openclaw",
             "hook": "从洛克的人格同一性谈到 AI 智能体的身份——一篇署名之作。"
           },
+          {
+            "page": "/ai-agent/posts/mem0",
+            "hook": "给 AI 装上记忆：mem0 架构与原理拆解。"
+          }
+        ]
+      },
+      {
+        "key": "engineering",
+        "numeral": "02",
+        "title": "工程与开源",
+        "audience": "写给关心 Kubernetes 云原生、Go 工程与开源实践的工程师。",
+        "more_url": "/zh/engineering/",
+        "more_label": "浏览全部工程文章",
+        "posts": [
           {
             "page": "/engineering/posts/my-hugo",
             "hook": "这个博客是怎么搭起来的：Hugo 建站的完整实践。"
@@ -41,8 +67,8 @@
             "hook": "零基础快速理解 Kubernetes 的长青入门篇。"
           },
           {
-            "page": "/ai-agent/posts/mem0",
-            "hook": "给 AI 装上记忆：mem0 架构与原理拆解。"
+            "page": "/engineering/posts/go-release-tools",
+            "hook": "Go 发布工具链与工程实践，从头到尾。"
           },
           {
             "page": "/engineering/posts/the-art-of-asking-questions-in-open-source-communities",
@@ -52,7 +78,7 @@
       },
       {
         "key": "growth",
-        "numeral": "02",
+        "numeral": "03",
         "title": "成长与思考",
         "audience": "写给正在自我探索、年度复盘、认知升级路上的你。",
         "more_url": "/zh/growth/",
@@ -82,7 +108,7 @@
       },
       {
         "key": "travel",
-        "numeral": "03",
+        "numeral": "04",
         "title": "旅行与观察",
         "audience": "写给数字游民、徒步爱好者和文化观察者。",
         "more_url": "/zh/travel/",
@@ -104,36 +130,6 @@
           {
             "page": "/growth/posts/2026-03-27-lhasa-slow-and-heavy",
             "hook": "拉萨：慢与重——高原上的观察手记。"
-          }
-        ]
-      },
-      {
-        "key": "projects",
-        "numeral": "04",
-        "title": "项目与实践",
-        "audience": "写给想深入源码与工程实践的人——这是全站搜索流量最高的一条线。",
-        "more_url": "/zh/projects/",
-        "more_label": "浏览全部项目研究",
-        "posts": [
-          {
-            "page": "/ai-agent/posts/markitdown",
-            "hook": "微软 MarkItDown 源码深读——本站被搜索最多的一页。"
-          },
-          {
-            "page": "/ai-agent/posts/langgraph",
-            "hook": "LangGraph 设计、架构与原理的深度解析。"
-          },
-          {
-            "page": "/ai-agent/posts/notebooklm",
-            "hook": "Google NotebookLM 背后的 RAG 工程调研。"
-          },
-          {
-            "page": "/ai-agent/posts/tdd",
-            "hook": "AI 时代初创企业怎么做测试驱动开发。"
-          },
-          {
-            "page": "/ai-agent/posts/gpt-researcher",
-            "hook": "GPT-Researcher 开源项目深度学习。"
           }
         ]
       }
@@ -158,7 +154,7 @@
     },
     "colophon": {
       "label": "关于本站",
-      "entity": "cubxxw.com 是熊鑫伟（Xinwei Xiong，网名 cubxxw）的个人博客。他生于 2001 年，是一名 AI 创业者、开源贡献者与数字游民，活跃于 OpenIM、OpenKF、Sealos 等开源项目。博客写作围绕四条主线：AI 与技术（Kubernetes、Go、LLM 应用与智能体框架）、成长与思考（年度复盘、元认知、心流）、旅行与观察（9 个国家、35+ 城市、400+ 公里徒步），以及开源项目与工程实践的深度研究（MarkItDown、LangGraph、NotebookLM、GPT-Researcher 等）。",
+      "entity": "cubxxw.com 是熊鑫伟（Xinwei Xiong，网名 cubxxw）的个人博客。他生于 2001 年，是一名 AI 创业者、开源贡献者与数字游民，活跃于 OpenIM、OpenKF、Sealos 等开源项目。博客写作围绕四条主线：AI Agent（LLM 应用、智能体工程、GEO，以及 MarkItDown、LangGraph、NotebookLM 等开源项目的源码深读）、工程与开源（Kubernetes、Go、DevOps 与开源实践）、成长与思考（年度复盘、元认知、心流），以及旅行与观察（9 个国家、35+ 城市、400+ 公里徒步）。",
       "facts": [
         {
           "k": "作者",
@@ -170,7 +166,7 @@
         },
         {
           "k": "主题",
-          "v": "AI 与技术 / 成长与思考 / 旅行与观察 / 项目与实践"
+          "v": "AI Agent / 工程与开源 / 成长与思考 / 旅行与观察"
         },
         {
           "k": "足迹",
@@ -207,7 +203,7 @@
   "en": {
     "kicker": "Reading Atlas",
     "heading": "Start Here",
-    "intro": "Now that you know the person, meet the writing. Everything on this blog follows four threads: AI & technology, growth & thinking, travel & observation, and projects & practice. Not sure where to begin? Here is the map drawn for your first visit.",
+    "intro": "Now that you know the person, meet the writing. Everything on this blog follows four threads: AI agents, engineering & open source, growth & thinking, and travel & observation. Not sure where to begin? Here is the map drawn for your first visit.",
     "first_read": {
       "label": "Just want one post?",
       "page": "/growth/posts/2025-annual-review",
@@ -221,15 +217,41 @@
       {
         "key": "ai",
         "numeral": "01",
-        "title": "AI & Technology",
-        "audience": "For developers curious about AI, LLMs, Kubernetes, and Go engineering.",
+        "title": "AI Agent",
+        "audience": "For developers curious about LLM applications, agent engineering, and open-source AI deep-dives — the highest-traffic thread on this site.",
         "more_url": "/ai-agent/",
-        "more_label": "Browse all AI & technology posts",
+        "more_label": "Browse all AI Agent posts",
         "posts": [
+          {
+            "page": "/ai-agent/posts/markitdown",
+            "hook": "A deep read of Microsoft's MarkItDown — the most-searched page on this site."
+          },
+          {
+            "page": "/ai-agent/posts/langgraph",
+            "hook": "LangGraph's design, architecture, and principles, dissected."
+          },
+          {
+            "page": "/ai-agent/posts/notebooklm",
+            "hook": "The RAG engineering behind Google NotebookLM."
+          },
           {
             "page": "/ai-agent/posts/agent-identity-from-locke-to-openclaw",
             "hook": "From Locke's personal identity to the identity of AI agents — a signature essay."
           },
+          {
+            "page": "/ai-agent/posts/mem0",
+            "hook": "Giving AI a memory: the mem0 architecture, unpacked."
+          }
+        ]
+      },
+      {
+        "key": "engineering",
+        "numeral": "02",
+        "title": "Engineering & Open Source",
+        "audience": "For engineers who care about Kubernetes, cloud native, Go, and open-source practice.",
+        "more_url": "/engineering/",
+        "more_label": "Browse all engineering posts",
+        "posts": [
           {
             "page": "/engineering/posts/my-hugo",
             "hook": "How this blog is built: a complete Hugo walkthrough."
@@ -250,7 +272,7 @@
       },
       {
         "key": "growth",
-        "numeral": "02",
+        "numeral": "03",
         "title": "Growth & Thinking",
         "audience": "For anyone on the road of self-discovery, annual reviews, and sharper thinking.",
         "more_url": "/growth/",
@@ -280,7 +302,7 @@
       },
       {
         "key": "travel",
-        "numeral": "03",
+        "numeral": "04",
         "title": "Travel & Observation",
         "audience": "For digital nomads, hikers, and cultural observers.",
         "more_url": "/travel/",
@@ -302,36 +324,6 @@
           {
             "page": "/growth/posts/2026-03-27-lhasa-slow-and-heavy",
             "hook": "Lhasa: slow and heavy — field notes from the plateau."
-          }
-        ]
-      },
-      {
-        "key": "projects",
-        "numeral": "04",
-        "title": "Projects & Practice",
-        "audience": "For readers who want to go deep into source code and engineering practice — the highest-traffic thread on this site.",
-        "more_url": "/projects/",
-        "more_label": "Browse all project deep-dives",
-        "posts": [
-          {
-            "page": "/ai-agent/posts/markitdown",
-            "hook": "A deep read of Microsoft's MarkItDown — the most-searched page on this site."
-          },
-          {
-            "page": "/ai-agent/posts/langgraph",
-            "hook": "LangGraph's design, architecture, and principles, dissected."
-          },
-          {
-            "page": "/ai-agent/posts/notebooklm",
-            "hook": "The RAG engineering behind Google NotebookLM."
-          },
-          {
-            "page": "/ai-agent/posts/tdd",
-            "hook": "Test-driven development for AI-era startups."
-          },
-          {
-            "page": "/ai-agent/posts/gpt-researcher",
-            "hook": "Learning from the GPT-Researcher open-source project."
           }
         ]
       }
@@ -356,7 +348,7 @@
     },
     "colophon": {
       "label": "About this site",
-      "entity": "cubxxw.com is the personal blog of Xinwei Xiong (known online as cubxxw). Born in 2001, he is an AI founder, open-source contributor, and digital nomad, active in projects such as OpenIM, OpenKF, and Sealos. The blog follows four threads: AI & technology (Kubernetes, Go, LLM applications, and agent frameworks), growth & thinking (annual reviews, metacognition, flow), travel & observation (9 countries, 35+ cities, 400+ km on foot), and deep dives into open-source projects and engineering practice (MarkItDown, LangGraph, NotebookLM, GPT-Researcher, and more).",
+      "entity": "cubxxw.com is the personal blog of Xinwei Xiong (known online as cubxxw). Born in 2001, he is an AI founder, open-source contributor, and digital nomad, active in projects such as OpenIM, OpenKF, and Sealos. The blog follows four threads: AI agents (LLM applications, agent engineering, GEO, and source-level deep dives into MarkItDown, LangGraph, NotebookLM, and more), engineering & open source (Kubernetes, Go, DevOps), growth & thinking (annual reviews, metacognition, flow), and travel & observation (9 countries, 35+ cities, 400+ km on foot).",
       "facts": [
         {
           "k": "Author",
@@ -368,7 +360,7 @@
         },
         {
           "k": "Threads",
-          "v": "AI & Tech / Growth & Thinking / Travel / Projects"
+          "v": "AI Agent / Engineering & Open Source / Growth & Thinking / Travel"
         },
         {
           "k": "Footprint",
