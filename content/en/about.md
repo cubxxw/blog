@@ -1,9 +1,9 @@
 ---
-title: "About Me & This Blog"
+title: "About Me"
 menuTitle: "About"
 layout: "about"
-description: "Xinwei Xiong - An explorer building bridges between technology and humanity. This page is also the site's reading atlas: four curated paths across AI & technology, growth & thinking, travel & observation, and projects & practice."
-summary: "Meet the person, then learn how to read the blog — the About page and reading atlas, merged."
+description: "Xinwei Xiong - A person building bridges between technology and humanity. AI entrepreneur, open source contributor, digital nomad. This page unfolds like a slow first meeting: scroll down and get to know the person."
+summary: "Meet me the way you'd meet a friend — slowly."
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -23,259 +23,134 @@ author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me", "Reading Atlas", "Start Here"]
 tldr:
   - "Xinwei Xiong (cubxxw), born in China in 2001, is an AI entrepreneur, open source contributor, and digital nomad whose three defining traits are authentic, curious, and connector."
-  - "He built open source projects such as awesome-cs-cloudnative-blockchain (1.4k stars), is the top contributor to OpenIM (16.5k stars), the open source instant messaging infrastructure, and contributes deeply to WiseEngage and Sealos while building AI products at Telepace, believing in the AI + Human = Superhuman model of collaboration."
+  - "Top contributor to OpenIM (16.5k stars), the open source instant messaging infrastructure; built awesome-cs-cloudnative-blockchain (1.4k stars); contributes to WiseEngage and Sealos while building AI products at Telepace, believing in AI + Human = Superhuman."
   - "Since 2024 he stepped out of his comfort zone, traveling 9 countries and 35+ cities over 12 months and completing 400+ km of hiking, including Tilicho Lake at 5,416 m."
-  - "His writing spans four threads — AI & Technology, Growth & Cognition, Travel & Observation, Projects & Practice — grounded in first-hand data and a cross-cultural perspective."
-  - "This page doubles as the site's reading atlas: one recommended first read (the 2025 Annual Review), four curated reading paths, and an interactive 3D knowledge galaxy."
+  - "The end of this page holds the site's reading atlas (Start Here): four curated reading paths with hand-picked starting points."
 ---
 
-<section class="about-hero">
-  <div class="about-hero-inner">
-    <img src="/images/cubxxw-image.jpg" alt="Xinwei Xiong" class="about-avatar">
-    <div class="about-hero-text">
-      <h1 class="about-name">Xinwei Xiong</h1>
-      <p class="about-tagline">Explorer building bridges between technology and humanity</p>
-      <p class="about-version">Profile Snapshot v2026.1</p>
-      <div class="about-badges">
-        <span class="about-badge">🚀 AI Entrepreneur</span>
-        <span class="about-badge">📝 Writer</span>
-        <span class="about-badge">🌍 Digital Nomad</span>
-        <span class="about-badge">🥾 Hiking Enthusiast</span>
-      </div>
+<div class="meet" id="meet">
+
+  <!-- ── I · The meeting ───────────────────────── -->
+  <section class="meet-scene meet-scene--opening">
+    <p class="meet-line meet-line--hello" data-meet>Hello.</p>
+    <p class="meet-line meet-line--name" data-meet>I'm <strong>Xinwei Xiong</strong>.</p>
+    <p class="meet-line meet-line--soft" data-meet>Glad you stopped by this page.</p>
+    <div class="meet-cue" aria-hidden="true">
+      <span class="meet-cue-text">take it slow</span>
+      <span class="meet-cue-arrow"></span>
     </div>
-  </div>
-  <p class="about-lead">
-    I build <strong>bridges between technology and humanity</strong>.<br>
-    If you remember three things about me, let them be: <strong>Authentic</strong>, <strong>Curious</strong>, <strong>Connector</strong>.
-  </p>
-</section>
+  </section>
 
-<section class="about-section">
-  <h2 class="about-section-title"><span class="about-section-icon">📍</span>Where I Come From</h2>
-  <div class="about-prose">
-    <p>I was born in China in 2001 (currently <span id="age-counter">—</span> years old). Like most people, I followed the beaten path — school, exams, an ordinary undergraduate university, technology. No prestigious name on my diploma, which taught me early: <strong>credentials aren't the starting line, curiosity is</strong>.</p>
-    <p>The real turning point came in <strong>2024</strong>. I made a decision: <strong>step out of my comfort zone and rediscover the world with footsteps and curiosity</strong>.</p>
-    <p>From Hong Kong to Kuala Lumpur, from Singapore to Bangkok, from Pokhara to Kathmandu, from Tokyo to Seoul… 12 months, 9 countries, 35+ cities. Not a gap year — an <strong>intentional life experiment</strong>.</p>
-    <blockquote class="about-quote">
-      "If I was a geographic explorer in early 2025, now I'm more like an astronaut diving deep into the wilderness of thought."
-    </blockquote>
-  </div>
-</section>
+  <!-- ── II · The person surfaces ──────────────── -->
+  <section class="meet-scene">
+    <figure class="meet-portrait" data-meet>
+      <img src="/images/cubxxw-image.jpg" alt="Xinwei Xiong" width="112" height="112" loading="lazy" decoding="async">
+    </figure>
+    <p class="meet-line" data-meet>I was born in China, in 2001.</p>
+    <p class="meet-line" data-meet>School, exams, a university with no prestige attached.<br>Which taught me early on — <em>resources aren't the starting point. Curiosity is</em>.</p>
+  </section>
 
-<section class="about-section">
-  <h2 class="about-section-title"><span class="about-section-icon">🧭</span>What I'm Doing Now</h2>
-  <div class="about-cards">
-    <div class="about-card">
-      <div class="about-card-icon">⚡</div>
-      <h3 class="about-card-title">AI & Open Source</h3>
-      <p class="about-card-body">AI entrepreneur and active open source contributor. I believe <strong>AI + Human = Superhuman</strong> and work toward new paradigms of human-machine collaboration. Everything I build and contribute to is listed under <a href="#oss">Open Source &amp; Products</a> below, with hands-on write-ups in the <a href="/projects/">projects section</a>.</p>
+  <section class="meet-scene">
+    <p class="meet-line" data-meet>In 2024, I made a decision: step out.</p>
+    <p class="meet-line meet-line--trace" data-meet>
+      <span class="meet-num">12</span> months ·
+      <span class="meet-num">9</span> countries ·
+      <span class="meet-num">35+</span> cities ·
+      <span class="meet-num">400+</span> km on foot
+    </p>
+    <p class="meet-line meet-line--soft" data-meet>By Tilicho Lake, at 5,416 meters,<br>I found the space to talk with myself.</p>
+  </section>
+
+  <!-- ── III · Now ─────────────────────────────── -->
+  <section class="meet-scene">
+    <p class="meet-line" data-meet>These days, I build AI and write open source.</p>
+    <p class="meet-line" data-meet>I'm the top contributor to <a href="https://github.com/openimsdk/open-im-server" target="_blank" rel="noopener">OpenIM</a> (16.5k stars),<br>and I craft AI products at Telepace.</p>
+    <p class="meet-line" data-meet>I believe <strong>AI + Human = Superhuman</strong> —<br>technology should extend human cognition, not replace it.</p>
+    <p class="meet-line meet-line--aside" data-meet>More projects and practice notes live in the <a href="/projects/">projects section</a> and on <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>.</p>
+  </section>
+
+  <!-- ── IV · Three words ──────────────────────── -->
+  <section class="meet-scene meet-scene--words">
+    <p class="meet-line meet-line--soft" data-meet>If you can only remember three words about me:</p>
+    <p class="meet-words" data-meet>
+      <span class="meet-word">Authentic</span>
+      <span class="meet-word">Curious</span>
+      <span class="meet-word">Connector</span>
+    </p>
+    <p class="meet-line meet-line--soft" data-meet>I look for warmth inside rigorous reasoning,<br>and build bridges between technology and humanity.</p>
+  </section>
+
+  <!-- ── V · Reach me ──────────────────────────── -->
+  <section class="meet-scene meet-scene--contact">
+    <p class="meet-line" data-meet>If any of this makes you want to talk —</p>
+    <div class="meet-contact" data-meet>
+      <button type="button" class="meet-contact-chip"
+              aria-haspopup="dialog"
+              data-contact-platform="wechat"
+              data-contact-id="cubxxwAI"
+              data-contact-qr="/wechat.jpg"
+              onclick="openContactCard(this)">
+        <span class="meet-contact-label">WeChat</span>
+        <span class="meet-contact-sub">cubxxwAI</span>
+      </button>
+      <button type="button" class="meet-contact-chip"
+              aria-haspopup="dialog"
+              data-contact-platform="xhs"
+              data-contact-id="nsddd_top"
+              data-contact-qr="/xiaohongshu.jpg"
+              data-contact-url="https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3"
+              onclick="openContactCard(this)">
+        <span class="meet-contact-label">RedNote</span>
+        <span class="meet-contact-sub">nsddd_top</span>
+      </button>
     </div>
-    <div class="about-card">
-      <div class="about-card-icon">✍️</div>
-      <h3 class="about-card-title">Writing & Thinking</h3>
-      <p class="about-card-body">Writing is how I <strong>dialogue with myself</strong>. Four threads: AI & Technology, Growth & Cognition, Travel & Observation, Projects & Practice.</p>
-    </div>
-    <div class="about-card">
-      <div class="about-card-icon">🥾</div>
-      <h3 class="about-card-title">Hiking & Walking</h3>
-      <p class="about-card-body"><strong>400+ km</strong> of trails completed. Walking is <strong>moving meditation</strong>. At Tilicho Lake (5,416 m), I found the space to converse with my inner self.</p>
-    </div>
-  </div>
-</section>
+    <p class="meet-links" data-meet>
+      <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:3293172751nss@gmail.com">Email</a>
+      <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X</a>
+      <a href="https://www.zhihu.com/people/3293172751" target="_blank" rel="noopener">Zhihu</a>
+      <a href="https://space.bilibili.com/1233089591" target="_blank" rel="noopener">Bilibili</a>
+    </p>
+    <p class="meet-line meet-line--sig" data-meet>Looking forward to our connection.<span class="meet-sig">— Xinwei Xiong</span></p>
+  </section>
 
-<section class="about-section">
-  <h2 class="about-section-title"><span class="about-section-icon">💡</span>Why Follow Me</h2>
-  <div class="about-reasons">
-    <div class="about-reason">
-      <span class="about-reason-num">01</span>
-      <div class="about-reason-body">
-        <h3>First-Hand Experience</h3>
-        <p>I believe in <strong>Raw Data Priority</strong>. I go verify things myself rather than consuming second-hand knowledge. Everything you read here carries <strong>authentic warmth</strong>.</p>
-      </div>
-    </div>
-    <div class="about-reason">
-      <span class="about-reason-num">02</span>
-      <div class="about-reason-body">
-        <h3>Cross-Cultural Perspective</h3>
-        <p>Living across multiple countries gave me the ability to <strong>step outside single narratives</strong>. I understand China's tech ecosystem, Southeast Asian life philosophies, and the global AI community.</p>
-      </div>
-    </div>
-    <div class="about-reason">
-      <span class="about-reason-num">03</span>
-      <div class="about-reason-body">
-        <h3>Rationality Meets Emotion</h3>
-        <p>My operating system: <strong>find sensuality in ultimate rationality; calibrate rationality in waves of experience</strong>. Logical rigor and human warmth, together.</p>
-      </div>
-    </div>
-    <div class="about-reason">
-      <span class="about-reason-num">04</span>
-      <div class="about-reason-body">
-        <h3>Continuous Evolution</h3>
-        <p>I'm not afraid to admit limitations or show confusion. I believe <strong>growth comes from facing your own ignorance</strong>.</p>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
-<section class="about-section" id="oss">
-  <h2 class="about-section-title"><span class="about-section-icon">⚙️</span>Open Source &amp; Products</h2>
-  <div class="about-prose">
-    <p>I don't want to just "mention" open source. Below is what I have actually written, maintained and invested in — every item links to real code and commit history. Architecture analyses and hands-on notes live in the <a href="/projects/">open source projects section</a>.</p>
-  </div>
-
-{{< opensource >}}
-
-  <div class="about-oss-cta">
-    <a class="about-oss-cta-link" href="/projects/">📖 Read the project write-ups →</a>
-    <a class="about-oss-cta-link" href="https://github.com/cubxxw" target="_blank" rel="noopener">🐙 GitHub profile →</a>
-  </div>
-</section>
-
-<section class="about-section about-section--center">
-  <h2 class="about-section-title"><span class="about-section-icon">🌉</span>My Core Themes</h2>
-  <blockquote class="about-quote about-quote--center">
-    Understand the world, construct the self, build bridges between technology and humanity.
-  </blockquote>
-  <ul class="about-issues">
-    <li>How to make AI an extension of human cognition, not a replacement</li>
-    <li>How to be a connector in an era of deglobalization</li>
-    <li>How to preserve human softness in a world obsessed with efficiency</li>
-    <li>How to bridge the gap between "knowing" and "doing"</li>
-  </ul>
-</section>
-
-<section class="about-section about-section--atlas" id="start-here">
-  <h2 class="about-section-title"><span class="about-section-icon">🗺️</span>Reading Atlas: Start Here</h2>
-</section>
-
+<!-- ── Coda · Reading atlas (#start-here 301 target) ── -->
+<section class="meet-atlas" id="start-here">
+  <details class="meet-atlas-details">
+    <summary class="meet-atlas-summary">
+      <span class="meet-atlas-title">Want to read my writing?</span>
+      <span class="meet-atlas-hint">Open the reading atlas · curated starting points on four paths</span>
+    </summary>
 <div class="post-content about-atlas">
 
 {{< start-here section="main" >}}
 
-{{< start-here section="explore" >}}
-
-{{< knowledge-galaxy >}}
-
 {{< start-here section="colophon" >}}
 
 </div>
-
-<section class="about-section">
-  <h2 class="about-section-title"><span class="about-section-icon">📬</span>Get in Touch</h2>
-
-  <button type="button" class="about-wechat"
-          aria-haspopup="dialog"
-          data-contact-platform="wechat"
-          data-contact-id="cubxxwAI"
-          data-contact-qr="/wechat.jpg"
-          onclick="openContactCard(this)">
-    <span class="about-wechat-glow" aria-hidden="true"></span>
-    <span class="about-wechat-qr" aria-hidden="true">
-      <img src="/wechat.jpg" alt="" width="120" height="120" loading="lazy" decoding="async">
-      <span class="about-wechat-scan"></span>
-    </span>
-    <span class="about-wechat-body">
-      <span class="about-wechat-eyebrow">
-        <span class="about-wechat-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
-        </span>
-        WeChat · Fastest way to reach me
-      </span>
-      <span class="about-wechat-title">Add me on WeChat — let's talk AI &amp; remote life</span>
-      <span class="about-wechat-id">
-        <span class="about-wechat-id-label">WeChat ID</span>
-        <span class="about-wechat-id-value">cubxxwAI</span>
-      </span>
-    </span>
-    <span class="about-wechat-cta" aria-hidden="true">
-      <span class="about-wechat-cta-text">Scan to add</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </span>
-  </button>
-
-  <button type="button" class="about-wechat about-wechat--xhs"
-          aria-haspopup="dialog"
-          data-contact-platform="xhs"
-          data-contact-id="nsddd_top"
-          data-contact-qr="/xiaohongshu.jpg"
-          data-contact-url="https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3"
-          onclick="openContactCard(this)">
-    <span class="about-wechat-glow" aria-hidden="true"></span>
-    <span class="about-wechat-qr" aria-hidden="true">
-      <img src="/xiaohongshu.jpg" alt="" width="120" height="120" loading="lazy" decoding="async">
-      <span class="about-wechat-scan"></span>
-    </span>
-    <span class="about-wechat-body">
-      <span class="about-wechat-eyebrow">
-        <span class="about-wechat-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm2.6 4.4a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zm.9 3.1H6.7v5h1.8v-5zm3.2-3.1h-1.8v8.1h1.8v-2.3l.6-.7 1.5 3h2l-2.3-4.2 2.1-2.4h-2.1l-1.8 2.2V8.4zm5.2 3a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5c.5 0 1-.15 1.4-.4v.3h1.6v-4.8h-1.6v.3c-.4-.25-.9-.4-1.4-.4zm.2 1.6a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z"/></svg>
-        </span>
-        RedNote · See my notes
-      </span>
-      <span class="about-wechat-title">Find me on RedNote — notes on AI, open source &amp; nomad life</span>
-      <span class="about-wechat-id">
-        <span class="about-wechat-id-label">RedNote ID</span>
-        <span class="about-wechat-id-value">nsddd_top</span>
-      </span>
-    </span>
-    <span class="about-wechat-cta" aria-hidden="true">
-      <span class="about-wechat-cta-text">Scan to follow</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </span>
-  </button>
-
-  <div class="about-links">
-    <a class="about-link-item" href="https://github.com/cubxxw" target="_blank" rel="noopener">
-      <span class="about-link-icon">🐙</span>
-      <span class="about-link-label">GitHub</span>
-      <span class="about-link-sub">Open source & code review</span>
-    </a>
-    <a class="about-link-item" href="mailto:3293172751nss@gmail.com">
-      <span class="about-link-icon">✉️</span>
-      <span class="about-link-label">Email</span>
-      <span class="about-link-sub">Consulting & collaboration</span>
-    </a>
-    <a class="about-link-item" href="https://x.com/cubxxw" target="_blank" rel="noopener">
-      <span class="about-link-icon">𝕏</span>
-      <span class="about-link-label">X / Twitter</span>
-      <span class="about-link-sub">Updates & global exchange</span>
-    </a>
-    <a class="about-link-item" href="https://www.zhihu.com/people/3293172751" target="_blank" rel="noopener">
-      <span class="about-link-icon">知</span>
-      <span class="about-link-label">Zhihu</span>
-      <span class="about-link-sub">Deep tech thinking</span>
-    </a>
-    <a class="about-link-item" href="https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4" target="_blank" rel="noopener">
-      <span class="about-link-icon">🟡</span>
-      <span class="about-link-label">Jike</span>
-      <span class="about-link-sub">Thoughts & life insights</span>
-    </a>
-    <a class="about-link-item" href="https://space.bilibili.com/1233089591" target="_blank" rel="noopener">
-      <span class="about-link-icon">📺</span>
-      <span class="about-link-label">Bilibili</span>
-      <span class="about-link-sub">Video tutorials & sharing</span>
-    </a>
-    <a class="about-link-item" href="https://www.buymeacoffee.com/cubxxw" target="_blank" rel="noopener">
-      <span class="about-link-icon">☕</span>
-      <span class="about-link-label">Buy Me a Coffee</span>
-      <span class="about-link-sub">Support my work</span>
-    </a>
-  </div>
+  </details>
 </section>
 
-<footer class="about-footer">
-  <p>Looking forward to our connection.</p>
-  <p class="about-footer-sig">— Xinwei Xiong (熊鑫伟)</p>
-</footer>
-
 <script>
-(function() {
-  var birth = new Date(2001, 2, 15);
-  var now = new Date();
-  var age = now.getFullYear() - birth.getFullYear();
-  var m = now.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
-  var el = document.getElementById('age-counter');
-  if (el) el.textContent = age;
+(function () {
+  var els = document.querySelectorAll('[data-meet]');
+  if (!els.length) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('meet-in'); });
+    return;
+  }
+  document.getElementById('meet').classList.add('meet-js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('meet-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (el) { io.observe(el); });
 })();
 </script>
