@@ -1,0 +1,89 @@
+name: Newsletter Send
+
+# Closes the subscribe loop: new posts in the live RSS feeds become
+# Buttondown emails to that language's subscribers (lang:zh / lang:en tags
+# set by the subscribe-email function). State lives in
+# config/newsletter-state.json — the first run bootstraps it (no emails),
+# then each run only emails genuinely new posts.
+#
+# Default mode is "draft": emails wait in the Buttondown dashboard for a
+# one-click send. Set repo variable NEWSLETTER_MODE=send (or dispatch with
+# mode=send) for fully automatic delivery.
+#
+# Requires the BUTTONDOWN_API_KEY repo secret (same key the Netlify
+# subscribe function uses).
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "content/**"
+  schedule:
+    # Daily catch-up (13:00 UTC ≈ 21:00 Beijing) in case a push run raced
+    # the Netlify deploy and the feed didn't have the new post yet.
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "draft (review in dashboard) or send (automatic)"
+        type: choice
+        options: [draft, send]
+        default: draft
+      dry_run:
+        description: "Dry run — log what would happen, send nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsletter-send
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Wait for deploy to propagate (push runs only)
+        if: github.event_name == 'push'
+        run: |
+          echo "Giving Netlify time to publish the new post into the feed..."
+          for i in $(seq 1 30); do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://cubxxw.com/zh/index.xml")
+            if [ "$STATUS" = "200" ]; then break; fi
+            sleep 10
+          done
+          # The feed being 200 doesn't prove the NEW post is in it — the
+          # daily cron is the safety net for deploy races.
+          sleep 120
+
+      - name: Send newsletter
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          NEWSLETTER_MODE: ${{ inputs.mode || vars.NEWSLETTER_MODE || 'draft' }}
+        run: |
+          EXTRA=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then EXTRA="--dry-run"; fi
+          node scripts/newsletter-send.mjs $EXTRA
+
+      - name: Commit state
+        run: |
+          if git diff --quiet config/newsletter-state.json 2>/dev/null; then
+            echo "No state changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add config/newsletter-state.json
+          git commit -m "chore(newsletter): update sent state [skip ci]"
+          git pull --rebase origin main
+          git push
