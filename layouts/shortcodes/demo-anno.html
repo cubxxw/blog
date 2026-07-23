@@ -1,0 +1,112 @@
+{{- /* Annotated diagram: numbered hotspots over a static image, notes shown
+     below on click. Upgrades the site's existing excalidraw/SVG diagrams
+     without touching the image files. Self-contained (inline style+script
+     once per page via .Store).
+
+     Usage:
+       {{< demo-anno src="/images/xxx.svg" alt="架构图" title="架构总览" >}}
+         {{< demo-spot x="32" y="18" label="转换器注册表" >}}note…{{< /demo-spot >}}
+         {{< demo-spot x="70" y="55" label="转换结果" >}}note…{{< /demo-spot >}}
+       {{< /demo-anno >}}
+
+     x/y are percentages of the image box. Progressive enhancement: server
+     HTML always renders the full numbered note list under the image
+     (crawlers and no-JS readers get everything); JS collapses the list into
+     a single note panel driven by the hotspots. */ -}}
+{{- $inner := .Inner -}}
+{{- $spots := .Scratch.Get "demoSpots" | default slice -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default $title -}}
+{{- $n := add (int (.Page.Store.Get "demoAnnoCount" | default 0)) 1 -}}
+{{- .Page.Store.Set "demoAnnoCount" $n -}}
+{{- $uid := printf "da-%d" $n -}}
+{{- if and $src $spots }}
+<div class="demo-anno" id="{{ $uid }}" data-demo-anno>
+  <div class="da-chrome">
+    <span class="da-dot" aria-hidden="true"></span>
+    <span class="da-kicker">ANNOTATED{{ with $title }} · {{ . }}{{ end }}</span>
+    <span class="da-hint" data-da-hint>{{ if eq .Page.Lang "zh" }}点击图上的编号{{ else }}Tap a number on the diagram{{ end }}</span>
+  </div>
+  <div class="da-stage">
+    <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+    {{- range $i, $s := $spots }}
+    <button type="button" class="da-spot" style="left:{{ $s.x }}%;top:{{ $s.y }}%"
+      aria-expanded="false" aria-controls="{{ $uid }}-note-{{ $i }}" data-da-spot
+      title="{{ $s.label }}"><span>{{ add $i 1 }}</span></button>
+    {{- end }}
+  </div>
+  <ol class="da-notes">
+    {{- range $i, $s := $spots }}
+    <li class="da-note" id="{{ $uid }}-note-{{ $i }}" data-da-note>
+      <span class="da-note-head"><span class="da-note-num">{{ printf "%02d" (add $i 1) }}</span> {{ $s.label }}</span>
+      <div class="da-note-body">{{ $s.note }}</div>
+    </li>
+    {{- end }}
+  </ol>
+</div>
+{{- if not (.Page.Store.Get "demoAnnoAssets") }}
+{{- .Page.Store.Set "demoAnnoAssets" true }}
+<style>
+.demo-anno{margin:2rem 0;border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:12px;overflow:hidden}
+.da-chrome{display:flex;align-items:center;gap:.55rem;padding:.6rem .95rem;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.12))}
+.da-dot{width:7px;height:7px;border-radius:50%;background:var(--color-accent,#8c2b2b);opacity:.8}
+.da-kicker{font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-muted,#5e5e63)}
+.da-hint{margin-left:auto;display:none;font-size:.75rem;color:var(--color-ink-muted,#5e5e63)}
+.demo-anno.is-ready .da-hint{display:inline}
+.da-stage{position:relative;margin:.9rem;line-height:0}
+.da-stage img{width:100%;height:auto;margin:0}
+.da-spot{position:absolute;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;border:1px solid var(--color-accent,#8c2b2b);background:var(--color-paper,#faf8f4);color:var(--color-accent,#8c2b2b);font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;padding:0}
+.demo-anno.is-ready .da-spot{display:inline-flex}
+.da-spot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid var(--color-accent,#8c2b2b);opacity:.35;animation:daPing 2.6s ease-out infinite}
+.da-spot:hover,.da-spot.is-active{background:var(--color-accent,#8c2b2b);color:var(--color-paper,#faf8f4)}
+.da-spot.is-active::after{animation:none;opacity:.5}
+.da-notes{margin:0;padding:.2rem 1.1rem .9rem;list-style:none}
+.da-note{padding:.55rem 0;border-top:1px dashed var(--color-rule,rgba(30,35,30,.12))}
+.da-note-head{display:block;font-size:.875rem;font-weight:600;color:var(--color-ink,var(--primary))}
+.da-note-num{font-family:var(--font-mono,ui-monospace,monospace);font-weight:400;font-size:.6875rem;color:var(--color-ink-muted,#5e5e63);margin-right:.3rem}
+.da-note-body{font-size:.875rem;color:var(--color-ink-muted,#5e5e63)}
+.da-note-body>:first-child{margin-top:.25rem}
+.da-note-body>:last-child{margin-bottom:0}
+.demo-anno.is-ready .da-note{display:none}
+.demo-anno.is-ready .da-note.is-active{display:block;animation:daFade .24s var(--ease-out,ease-out)}
+@keyframes daFade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+@keyframes daPing{0%{transform:scale(.7);opacity:.5}70%{transform:scale(1.25);opacity:0}100%{transform:scale(1.25);opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .da-spot::after{animation:none;opacity:0}
+  .demo-anno.is-ready .da-note.is-active{animation:none}
+}
+</style>
+<script>
+(function () {
+  function init(root) {
+    var spots = Array.prototype.slice.call(root.querySelectorAll('[data-da-spot]'));
+    var notes = Array.prototype.slice.call(root.querySelectorAll('[data-da-note]'));
+    if (!spots.length || spots.length !== notes.length) return;
+    var hint = root.querySelector('[data-da-hint]');
+    function show(i) {
+      spots.forEach(function (s, j) {
+        var on = j === i;
+        s.classList.toggle('is-active', on);
+        s.setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+      notes.forEach(function (n, j) { n.classList.toggle('is-active', j === i); });
+      if (hint) hint.style.display = 'none';
+    }
+    spots.forEach(function (s, j) {
+      s.addEventListener('click', function () { show(j); });
+    });
+    root.classList.add('is-ready');
+    show(0);
+    if (hint) hint.style.display = '';
+  }
+  function boot() { document.querySelectorAll('[data-demo-anno]').forEach(init); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+{{- end }}
+{{- end }}

@@ -1,0 +1,116 @@
+{{- /* Side-by-side variant switcher for tutorials (prompt before/after,
+     config A/B). Self-contained like demo-steps.html: inline style + script
+     emitted once per page via .Store, zero global bundle cost.
+
+     Usage:
+       {{< demo-compare title="Prompt 改造" >}}
+         {{< demo-case label="改造前" >}}markdown…{{< /demo-case >}}
+         {{< demo-case label="改造后" >}}markdown…{{< /demo-case >}}
+       {{< /demo-compare >}}
+
+     Progressive enhancement: server HTML stacks every case with a mono
+     label heading (crawlers and no-JS readers see everything); JS upgrades
+     it to a segmented toggle with a sliding indicator. */ -}}
+{{- $inner := .Inner -}}
+{{- $cases := .Scratch.Get "demoCases" | default slice -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $n := add (int (.Page.Store.Get "demoCompareCount" | default 0)) 1 -}}
+{{- .Page.Store.Set "demoCompareCount" $n -}}
+{{- $uid := printf "dc-%d" $n -}}
+{{- if $cases }}
+<div class="demo-compare" id="{{ $uid }}" data-demo-compare>
+  <div class="dc-chrome">
+    <span class="dc-dot" aria-hidden="true"></span>
+    <span class="dc-kicker">COMPARE{{ with $title }} · {{ . }}{{ end }}</span>
+  </div>
+  <div class="dc-seg" role="tablist" aria-label="{{ $title | default "compare" }}">
+    <span class="dc-seg-pill" aria-hidden="true"></span>
+    {{- range $i, $c := $cases }}
+    <button type="button" class="dc-seg-btn" role="tab" id="{{ $uid }}-tab-{{ $i }}"
+      aria-controls="{{ $uid }}-panel-{{ $i }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"
+      data-dc-tab>{{ $c.label }}</button>
+    {{- end }}
+  </div>
+  <div class="dc-panels">
+    {{- range $i, $c := $cases }}
+    <div class="dc-panel" role="tabpanel" id="{{ $uid }}-panel-{{ $i }}"
+      aria-labelledby="{{ $uid }}-tab-{{ $i }}" data-dc-panel data-label="{{ $c.label }}">
+      {{ $c.content }}
+    </div>
+    {{- end }}
+  </div>
+</div>
+{{- if not (.Page.Store.Get "demoCompareAssets") }}
+{{- .Page.Store.Set "demoCompareAssets" true }}
+<style>
+.demo-compare{margin:2rem 0;border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:12px;overflow:hidden}
+.dc-chrome{display:flex;align-items:center;gap:.55rem;padding:.6rem .95rem;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.12))}
+.dc-dot{width:7px;height:7px;border-radius:50%;background:var(--color-accent,#8c2b2b);opacity:.8}
+.dc-kicker{font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-muted,#5e5e63)}
+.dc-seg{position:relative;display:none;gap:2px;margin:.7rem .95rem 0;padding:3px;border:1px solid var(--color-rule,rgba(30,35,30,.12));border-radius:8px;width:max-content;max-width:calc(100% - 1.9rem)}
+.demo-compare.is-ready .dc-seg{display:inline-flex}
+.dc-seg-pill{position:absolute;top:3px;bottom:3px;left:0;width:0;border-radius:6px;background:var(--color-rule,rgba(30,35,30,.1));transition:transform .22s var(--ease-out,ease-out),width .22s var(--ease-out,ease-out)}
+.dc-seg-btn{position:relative;z-index:1;border:0;background:none;padding:.3rem .8rem;border-radius:6px;font-size:.8125rem;color:var(--color-ink-muted,#5e5e63);cursor:pointer;white-space:nowrap}
+.dc-seg-btn:hover{color:var(--color-ink,var(--primary))}
+.dc-seg-btn.is-active{color:var(--color-ink,var(--primary));font-weight:600}
+.dc-panels{padding:.35rem 1.1rem .9rem}
+.dc-panel{font-size:.9375rem}
+.dc-panel>:first-child{margin-top:.65rem}
+.dc-panel>:last-child{margin-bottom:.4rem}
+.demo-compare:not(.is-ready) .dc-panel::before{content:attr(data-label);display:block;margin-top:.9rem;font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.08em;color:var(--color-ink-muted,#5e5e63)}
+.demo-compare.is-ready .dc-panel{display:none}
+.demo-compare.is-ready .dc-panel.is-active{display:block;animation:dcFade .26s var(--ease-out,ease-out)}
+@keyframes dcFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .dc-seg-pill{transition:none}
+  .demo-compare.is-ready .dc-panel.is-active{animation:none}
+}
+</style>
+<script>
+(function () {
+  function init(root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-dc-tab]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-dc-panel]'));
+    if (!tabs.length || tabs.length !== panels.length) return;
+    var pill = root.querySelector('.dc-seg-pill');
+    var idx = 0;
+    function place() {
+      if (!pill) return;
+      var t = tabs[idx];
+      pill.style.width = t.offsetWidth + 'px';
+      pill.style.transform = 'translateX(' + t.offsetLeft + 'px)';
+    }
+    function show(i, focus) {
+      idx = (i + tabs.length) % tabs.length;
+      tabs.forEach(function (t, j) {
+        var on = j === idx;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.classList.toggle('is-active', on);
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(function (p, j) { p.classList.toggle('is-active', j === idx); });
+      place();
+      if (focus) tabs[idx].focus();
+    }
+    tabs.forEach(function (t, j) {
+      t.addEventListener('click', function () { show(j); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); show(idx + 1, true); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); show(idx - 1, true); }
+      });
+    });
+    root.classList.add('is-ready');
+    show(0);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    window.addEventListener('resize', place, { passive: true });
+  }
+  function boot() { document.querySelectorAll('[data-demo-compare]').forEach(init); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+{{- end }}
+{{- end }}

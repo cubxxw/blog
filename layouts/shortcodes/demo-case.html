@@ -1,0 +1,7 @@
+{{- /* One variant inside {{< demo-compare >}}. Usage:
+     {{< demo-case label="改造后" >}}markdown body{{< /demo-case >}}
+     Collects itself into the parent's scratch; renders nothing here. */ -}}
+{{- $existing := .Parent.Scratch.Get "demoCases" | default slice -}}
+{{- $label := .Get "label" | default (printf "Case %d" (add (len $existing) 1)) -}}
+{{- $content := .Inner | .Page.RenderString (dict "display" "block") -}}
+{{- .Parent.Scratch.Add "demoCases" (slice (dict "label" $label "content" $content)) -}}

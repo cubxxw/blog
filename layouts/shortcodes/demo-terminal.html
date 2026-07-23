@@ -1,0 +1,129 @@
+{{- /* Terminal replay for CLI tutorials. Lines starting with "$ " are
+     commands (typed character by character); everything else is output
+     (revealed after its command). Self-contained (inline style+script once
+     per page via .Store).
+
+     Usage:
+       {{< demo-terminal title="创建新文章" >}}
+$ hugo new content/zh/ai-agent/posts/my-article.md
+Content "…/my-article.md" created
+       {{< /demo-terminal >}}
+
+     Progressive enhancement: server HTML is a complete <pre> transcript
+     (crawlers and no-JS readers see everything); JS replays it once when
+     scrolled into view, with a replay control. Reduced-motion shows the
+     full transcript without animation. */ -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $n := add (int (.Page.Store.Get "demoTermCount" | default 0)) 1 -}}
+{{- .Page.Store.Set "demoTermCount" $n -}}
+{{- $uid := printf "dt-%d" $n -}}
+{{- $lines := split (trim .Inner "\n\r ") "\n" -}}
+<div class="demo-term" id="{{ $uid }}" data-demo-term>
+  <div class="dt-chrome">
+    <span class="dt-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="dt-kicker">TERMINAL{{ with $title }} · {{ . }}{{ end }}</span>
+    <button type="button" class="dt-replay" data-dt-replay aria-label="replay">↺ REPLAY</button>
+  </div>
+  <pre class="dt-screen" data-dt-screen>
+    {{- range $lines }}
+    {{- if hasPrefix . "$ " }}
+<span class="dt-line dt-cmd" data-dt-line data-cmd><span class="dt-prompt">$</span> <span class="dt-cmd-text">{{ strings.TrimPrefix "$ " . }}</span></span>
+    {{- else }}
+<span class="dt-line dt-out" data-dt-line>{{ . }}</span>
+    {{- end }}
+    {{- end }}
+<span class="dt-caret" data-dt-caret aria-hidden="true"></span></pre>
+</div>
+{{- if not (.Page.Store.Get "demoTermAssets") }}
+{{- .Page.Store.Set "demoTermAssets" true }}
+<style>
+.demo-term{margin:2rem 0;border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:12px;overflow:hidden}
+.dt-chrome{display:flex;align-items:center;gap:.55rem;padding:.55rem .95rem;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.12))}
+.dt-lights{display:inline-flex;gap:5px}
+.dt-lights i{width:9px;height:9px;border-radius:50%;background:var(--color-rule,rgba(30,35,30,.18))}
+.dt-kicker{font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-muted,#5e5e63)}
+.dt-replay{margin-left:auto;display:none;border:1px solid var(--color-rule,rgba(30,35,30,.15));border-radius:6px;background:none;padding:.15rem .55rem;font-family:var(--font-mono,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.06em;color:var(--color-ink-muted,#5e5e63);cursor:pointer}
+.demo-term.is-ready .dt-replay{display:inline-block}
+.dt-replay:hover{color:var(--color-ink,var(--primary));border-color:var(--color-ink-muted,#5e5e63)}
+.demo-term .dt-screen{margin:0;padding:.9rem 1.1rem 1rem;background:transparent;border:0;border-radius:0;font-family:var(--font-mono,ui-monospace,monospace);font-size:.8125rem;line-height:1.7;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+.dt-line{display:block;min-height:1.2em}
+.dt-cmd{color:var(--color-ink,var(--primary))}
+.dt-prompt{color:var(--color-accent,#8c2b2b);font-weight:600}
+.dt-out{color:var(--color-ink-muted,#5e5e63)}
+.demo-term.is-playing .dt-line{display:none}
+.demo-term.is-playing .dt-line.is-shown{display:block}
+.dt-caret{display:none;width:.55em;height:1.05em;margin-left:1px;background:var(--color-accent,#8c2b2b);vertical-align:text-bottom;animation:dtBlink 1s steps(1) infinite}
+.demo-term.is-playing .dt-caret{display:inline-block}
+@keyframes dtBlink{50%{opacity:0}}
+</style>
+<script>
+(function () {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function init(root) {
+    var lines = Array.prototype.slice.call(root.querySelectorAll('[data-dt-line]'));
+    var caret = root.querySelector('[data-dt-caret]');
+    var replay = root.querySelector('[data-dt-replay]');
+    if (!lines.length) return;
+    var timer = null;
+    var played = false;
+    function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+    function finish() {
+      stop();
+      root.classList.remove('is-playing');
+      lines.forEach(function (l) { l.classList.add('is-shown'); });
+    }
+    function play() {
+      stop();
+      played = true;
+      if (reduced) { finish(); return; }
+      root.classList.add('is-playing');
+      lines.forEach(function (l) {
+        l.classList.remove('is-shown');
+        var t = l.querySelector('.dt-cmd-text');
+        if (t && !t.dataset.full) t.dataset.full = t.textContent;
+        if (t) t.textContent = '';
+      });
+      var i = 0;
+      function nextLine() {
+        if (i >= lines.length) { root.classList.remove('is-playing'); return; }
+        var line = lines[i++];
+        line.classList.add('is-shown');
+        if (caret) line.after(caret);
+        var t = line.querySelector('.dt-cmd-text');
+        if (t) {
+          var full = t.dataset.full || '';
+          var c = 0;
+          (function type() {
+            if (c <= full.length) {
+              t.textContent = full.slice(0, c++);
+              timer = setTimeout(type, 24);
+            } else {
+              timer = setTimeout(nextLine, 260);
+            }
+          })();
+        } else {
+          timer = setTimeout(nextLine, 90);
+        }
+      }
+      nextLine();
+    }
+    if (replay) replay.addEventListener('click', play);
+    root.classList.add('is-ready');
+    if ('IntersectionObserver' in window && !reduced) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && !played) { io.disconnect(); play(); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      io.observe(root);
+    }
+  }
+  function boot() { document.querySelectorAll('[data-demo-term]').forEach(init); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+{{- end }}
