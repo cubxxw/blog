@@ -366,6 +366,44 @@
 {{- end -}}
 <script src="{{ $coverParallax.RelPermalink }}" defer></script>
 
+{{/* Mermaid: render-codeblock-mermaid.html flags pages containing ```mermaid
+     fences via .Store. Lives here (not extend_footer.html) because footer.html
+     is partialCached by Layout/Kind — a per-page .Store check inside it would
+     be evaluated once and shared across pages. The 3.4MB self-hosted renderer
+     loads only on flagged pages, and only once a diagram scrolls within 600px
+     of the viewport. */}}
+{{- if .Store.Get "hasMermaid" }}
+<script>
+(function () {
+  var nodes = document.querySelectorAll('pre.mermaid');
+  if (!nodes.length) return;
+  var booted = false;
+  function boot() {
+    if (booted) return;
+    booted = true;
+    var s = document.createElement('script');
+    s.src = '{{ "/js/vendor/mermaid-11.16.0.min.js" | relURL }}';
+    s.onload = function () {
+      window.mermaid.initialize({
+        startOnLoad: false,
+        theme: document.body.classList.contains('dark') ? 'dark' : 'neutral',
+        securityLevel: 'strict'
+      });
+      window.mermaid.run({ nodes: nodes });
+    };
+    document.head.appendChild(s);
+  }
+  if (!('IntersectionObserver' in window)) { boot(); return; }
+  var io = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) { io.disconnect(); boot(); return; }
+    }
+  }, { rootMargin: '600px 0px' });
+  nodes.forEach(function (n) { io.observe(n); });
+})();
+</script>
+{{- end }}
+
 {{- partial "related-posts.html" . -}}
 
 {{- end }}{{/* end main */}}

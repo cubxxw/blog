@@ -1,0 +1,6 @@
+{{- /* ```mermaid fences render as <pre class="mermaid"> and flag the page so
+     extend_footer.html lazy-loads the self-hosted renderer only where needed.
+     No <code> child on purpose: keeps the copy-code button script away, and
+     code-mobile.js already excludes pre.mermaid. */ -}}
+{{- .Page.Store.Set "hasMermaid" true -}}
+<pre class="mermaid">{{ .Inner | htmlEscape | safeHTML }}</pre>

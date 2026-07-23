@@ -1,0 +1,26 @@
+/* Mermaid diagrams in article bodies.
+   Before the lazy renderer runs, pre.mermaid holds the diagram source —
+   show it as a quiet mono block. After mermaid.run() it holds an SVG
+   (data-processed set), which we centre and let scroll horizontally. */
+
+.post-content pre.mermaid {
+  background: transparent;
+  border: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+.post-content pre.mermaid[data-processed="true"] {
+  border-color: transparent;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.post-content pre.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
