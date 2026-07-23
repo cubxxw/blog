@@ -25,6 +25,11 @@ CONTAINER_RUN     = "$(CONTAINER_ENGINE)" run --rm --interactive --tty --volume 
 HUGO_VERSION      = $(shell grep -E '^[[:space:]]*HUGO_VERSION[[:space:]]*=' netlify.toml | tail -n 1 | cut -d '=' -f 2 | tr -d " \"\n")
 NODE_BIN          = node_modules/.bin
 NETLIFY_FUNC      = $(NODE_BIN)/netlify-lambda
+# Unified dev ports. Every local Hugo server binds HUGO_DEV_PORT (1313):
+# make run, netlify-dev's inner hugo, container-serve's host mapping, CI
+# (e2e.yml) and Playwright's baseURL all anchor on it. netlify dev's public
+# proxy uses NETLIFY_DEV_PORT (8888) — it MUST differ from the Hugo port it
+# proxies to. scripts/stop-netlify-dev.sh honours both variables.
 HUGO_DEV_PORT     ?= 1313
 NETLIFY_DEV_PORT  ?= 8888
 
@@ -82,14 +87,6 @@ SPACE :=
 # SPACE: Replace multiple consecutive Spaces with a single space
 SPACE +=
 
-## run-default: Run hugo server with default mode.
-run-default:
-	@$(HUGO) server -D --gc -p 13132 --config config.default.yml
-
-## run-profile-mode: Run hugo server with profile mode.
-run-profile-mode:
-	@$(HUGO) server -D --gc -p 13133 --config config.profileMode.yml
-
 ## chroma-css: Generate chroma css.
 chroma-css:
 	@$(HUGO) gen chromastyles --style=dracula > assets/css/lib/chroma-dark.css
@@ -103,7 +100,7 @@ content-index:
 .PHONY: run
 run: tools.verify.hugo module-check content-index
 	@$(HUGO)
-	@$(HUGO) server -D --gc -p 13131 --config config.yml
+	@$(HUGO) server -D --gc -p $(HUGO_DEV_PORT) --config config.yml
 
 ## new-post: Create a new content file and automatically add the current date.
 POST_NAME ?=
@@ -249,7 +246,7 @@ container-build: module-check
 # no build lock to allow for read-only mounts
 .PHONY: container-serve
 container-serve: module-check
-	$(CONTAINER_RUN) --cap-drop=ALL --cap-add=AUDIT_WRITE --read-only --mount type=tmpfs,destination=/tmp,tmpfs-mode=01777 -p 1313:1313 $(CONTAINER_IMAGE) hugo server --buildFuture --environment development --bind 0.0.0.0 --destination /tmp/hugo --cleanDestinationDir --noBuildLock
+	$(CONTAINER_RUN) --cap-drop=ALL --cap-add=AUDIT_WRITE --read-only --mount type=tmpfs,destination=/tmp,tmpfs-mode=01777 -p $(HUGO_DEV_PORT):1313 $(CONTAINER_IMAGE) hugo server --buildFuture --environment development --bind 0.0.0.0 --destination /tmp/hugo --cleanDestinationDir --noBuildLock
 
 test-examples:
 	scripts/test_examples.sh install
