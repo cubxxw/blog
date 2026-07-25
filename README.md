@@ -259,6 +259,7 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [小熊人生游戏 — Play My Story](https://cubxxw.com/zh/about/quest/)
 - [拆解 Open Design：让你已有的 coding agent 变成设计引擎](https://cubxxw.com/zh/ai-agent/posts/open-design/)
 - [Claude Code 之父的 121 条用法：我把它拆成了 10 个今晚就能改的配置](https://cubxxw.com/zh/ai-agent/posts/claude-code-boris-121-tips-playbook/)
 - [把提示词写成循环：一个人的 Loop 工程实践](https://cubxxw.com/zh/ai-agent/posts/prompt-loop-engineering-practice/)
@@ -358,7 +359,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [心流状态的魔力：专注与幸福感提升指南](https://cubxxw.com/zh/growth/posts/flow-state/)
 - [GTD与四象限法则实践](https://cubxxw.com/zh/growth/posts/gtd-and-the-four-quadrant-rule-practice/)
 - [Go 源码里的这些 go: 指令 && go 自动化工具](https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/)
-- [Go 语言中的并发类型检查与跨平台开发](https://cubxxw.com/zh/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
 <!-- My-Blog-ZH:END -->
 
 
