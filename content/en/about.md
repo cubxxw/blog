@@ -2,8 +2,8 @@
 title: "About Me"
 menuTitle: "About"
 layout: "about"
-description: "Xinwei Xiong - A person building bridges between technology and humanity. AI entrepreneur, open source contributor, digital nomad. This page is a walkable journey: a little bear walks you through the story."
-summary: "Meet me the way you'd play a tiny game — slowly."
+description: "Meet Xinwei Xiong (cubxxw): living on the road, writing to understand himself, and building products that turn understanding into something useful."
+summary: "Learning the world, and learning myself."
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -22,10 +22,9 @@ type: page
 author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me", "Reading Atlas", "Start Here"]
 tldr:
-  - "Xinwei Xiong (cubxxw), born in China in 2001, is an AI entrepreneur, open source contributor, and digital nomad whose three defining traits are authentic, curious, and connector."
-  - "Top contributor to OpenIM (16.5k stars), the open source instant messaging infrastructure; built awesome-cs-cloudnative-blockchain (1.4k stars); contributes to WiseEngage and Sealos while building AI products at Telepace, believing in AI + Human = Superhuman."
-  - "Since 2024 he stepped out of his comfort zone, traveling 9 countries and 35+ cities over 12 months and completing 400+ km of hiking, including Tilicho Lake at 5,416 m."
-  - "Currently building Telepace, Solo Compass, and DayPage; the end of this page holds the site's reading atlas (Start Here): four curated reading paths with hand-picked starting points."
+  - "Xinwei Xiong (cubxxw) walks to observe the world, writes to understand himself, and builds products that turn understanding into something useful."
+  - "He keeps returning to one question: as AI learns more about us, how can a person preserve their experience, judgment, and path of growth?"
+  - "The page offers two ways to continue: enter Bear Quest or see the products he is building."
 ---
 
 <!-- ── Coda · Reading atlas (#start-here 301 target).
@@ -34,7 +33,7 @@ tldr:
   <details class="meet-atlas-details">
     <summary class="meet-atlas-summary">
       <span class="meet-atlas-title">Want to read my writing?</span>
-      <span class="meet-atlas-hint">The atlas opens by itself, no click needed · curated starting points on four paths</span>
+      <span class="meet-atlas-hint">Open four curated reading paths</span>
     </summary>
 <div class="post-content about-atlas">
 

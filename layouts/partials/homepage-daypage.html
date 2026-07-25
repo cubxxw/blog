@@ -1213,28 +1213,45 @@
 }
 </script>
 <script type="module">
-  import { mountHeroField } from "{{ $heroField.RelPermalink }}";
-  const host = document.getElementById('hp-hero-field');
-  if (host) {
-    // --accent lives on .homepage-root and inherits down to the host, so read
-    // it off the host itself (light/dark flips it automatically via CSS).
-    mountHeroField(host, host);
+  // Three.js is progressive decoration, not content. Importing it immediately
+  // made the browser parse the large engine while the homepage was becoming
+  // interactive (the daily Lighthouse report showed 460 ms TBT). Let the
+  // useful DOM settle first; the CSS artwork remains visible in the meantime.
+  function mountAmbient3D() {
+    Promise.all([
+      import("{{ $heroField.RelPermalink }}"),
+      import("{{ $bearOrb.RelPermalink }}")
+    ]).then(function(modules) {
+      const host = document.getElementById('hp-hero-field');
+      if (host) {
+        // --accent lives on .homepage-root and inherits down to the host.
+        modules[0].mountHeroField(host, host);
+      }
+
+      // Bear AI orb — mount onto the persistent stage layer. Self-gates (no
+      // WebGL / reduced-motion / phones → returns null and CSS stays visible).
+      const stage = document.getElementById('hp-bear-stage');
+      const wrap  = document.getElementById('hp-bear-ai');
+      if (stage && wrap) {
+        const handle = modules[1].mountBearOrb(stage, wrap);
+        if (handle) {
+          wrap.classList.add('has-orb');
+          if (typeof window.__hpBearOrbReady === 'function') window.__hpBearOrbReady(handle);
+        }
+      }
+    }).catch(function () {
+      // The static/CSS fallback is the intended failure mode.
+    });
   }
 
-  // Bear AI orb — mount onto the persistent stage layer. Self-gates (no
-  // WebGL / reduced-motion / phones → returns null and the CSS avatar puck
-  // shows through instead). When it does mount, register the handle so the
-  // widget IIFE can drive pulse / thinking / recess, and flag the wrap so
-  // CSS hides the fallback puck and lets the live orb show.
-  import { mountBearOrb } from "{{ $bearOrb.RelPermalink }}";
-  const stage = document.getElementById('hp-bear-stage');
-  const wrap  = document.getElementById('hp-bear-ai');
-  if (stage && wrap) {
-    const handle = mountBearOrb(stage, wrap);
-    if (handle) {
-      wrap.classList.add('has-orb');
-      if (typeof window.__hpBearOrbReady === 'function') window.__hpBearOrbReady(handle);
-    }
+  function scheduleAmbient3D() {
+    window.setTimeout(mountAmbient3D, 2500);
+  }
+
+  if (document.readyState === 'complete') {
+    scheduleAmbient3D();
+  } else {
+    window.addEventListener('load', scheduleAmbient3D, { once: true });
   }
 </script>
 

@@ -2,8 +2,8 @@
 title: "关于我"
 menuTitle: "关于"
 layout: "about"
-description: "熊鑫伟 (Xinwei Xiong) - 一个在技术与人性之间寻找桥梁的人。AI 创业者、开源贡献者、数字游民。这一页是一段可以行走的旅程：一只小熊会陪你走过我的故事。"
-summary: "像玩一段小游戏那样，慢慢认识我。"
+description: "熊鑫伟（cubxxw）的自我介绍：旅居、写作与产品，都是理解世界、理解自己，并把理解变成作品的方式。"
+summary: "理解世界，也理解自己。"
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -22,10 +22,9 @@ type: page
 author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "个人介绍", "关于我", "阅读地图", "Start Here"]
 tldr:
-  - "熊鑫伟（cubxxw），2001 年出生于中国，AI 创业者、开源贡献者、数字游民，核心标签是真实、好奇、连接者。"
-  - "开源即时通讯基础设施 OpenIM（16.5k star）头号贡献者，构建了 awesome-cs-cloudnative-blockchain（1.4k star），深度参与 WiseEngage、Sealos，在 Telepace 打磨 AI 产品，信奉 AI + Human = Superhuman。"
-  - "2024 年起走出舒适区，12 个月游历 9 个国家、35+ 城市，完成 400+ 公里徒步，包括海拔 5416 米的 Tilicho 湖。"
-  - "正在打造 Telepace、Solo Compass、DayPage 等产品；本页尾部附全站阅读地图（Start Here），四条阅读路径各配精选起点。"
+  - "熊鑫伟（cubxxw）通过旅居观察世界，通过写作理解自己，再把理解做成产品。"
+  - "他持续关心一个问题：AI 越来越懂我们时，一个人怎样保存自己的经历、判断和成长轨迹。"
+  - "页面提供两种继续认识他的方式：走进 Bear Quest，或查看正在构建的产品。"
 ---
 
 <!-- ── 尾 · 阅读地图（/start-here 301 落点，保留锚点）。
@@ -34,7 +33,7 @@ tldr:
   <details class="meet-atlas-details">
     <summary class="meet-atlas-summary">
       <span class="meet-atlas-title">想读我的文字？</span>
-      <span class="meet-atlas-hint">阅读地图会自动展开，无需点击 · 四条路径的精选起点</span>
+      <span class="meet-atlas-hint">展开四条精选阅读路径</span>
     </summary>
 <div class="post-content about-atlas">
 

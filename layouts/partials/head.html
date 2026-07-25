@@ -84,6 +84,7 @@
        CSS as dead weight (Lighthouse "Reduce unused CSS").
 
          homepage-daypage.css (~52 KB, .hp-*)  → home only
+         about.css            (~40 KB, .about-/.bq-*) → About only
          zzz-travel-world.css  (~38 KB, .tw-*)  → travel page only
          products.css          (~32 KB, .osx-*) → /projects/ landing only
          section-growth.css    (~15 KB, .gr-*)  → /growth/ landing only
@@ -94,16 +95,33 @@
        bundled file, only ever target the .hp-/.eig-/.eip-/.eitr-/.aia-/.oss-/
        .about-/.eng-/.column- families — never .tw-/.osx-/.gr-. So loading
        them after the main bundle changes no existing cascade outcome. Files
-       whose classes DO appear in that layer (about.css, section-ai-agent.css,
-       section-engineering.css, columns.css) are deliberately left in the
-       bundle to preserve that order. */}}
+       About is the exception: it is emitted separately BEFORE the global
+       bundle below, so the global zzz-hover-touch-reset / press-feedback
+       layers still follow it and preserve their intended cascade. Files whose
+       classes DO appear in those layers but cannot use that ordering
+       (section-ai-agent.css, section-engineering.css, columns.css) remain in
+       the bundle. */}}
 {{- $homepageCSS := resources.Get "css/extended/homepage-daypage.css" }}
+{{- $aboutCSS    := resources.Get "css/extended/about.css" }}
 {{- $travelCSS   := resources.Get "css/extended/zzz-travel-world.css" }}
 {{- $projectsCSS := resources.Get "css/extended/products.css" }}
 {{- $growthCSS   := resources.Get "css/extended/section-growth.css" }}
-{{- $pageScoped  := (slice $homepageCSS $travelCSS $projectsCSS $growthCSS) }}
+{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $growthCSS) }}
 {{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
 {{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
+
+{{- /* About's interaction reset lives in the global zzz-* layers. Load the
+       page stylesheet first so those later global rules keep winning on touch
+       and reduced-motion devices exactly as before the split. */}}
+{{- if or (eq .Layout "about") (eq .Layout "about-quest") }}
+{{- $aboutPageCSS := $aboutCSS | resources.Minify }}
+{{- if not site.Params.assets.disableFingerprinting }}
+{{- $aboutPageCSS = $aboutPageCSS | fingerprint }}
+<link crossorigin="anonymous" href="{{ $aboutPageCSS.RelPermalink }}" integrity="{{ $aboutPageCSS.Data.Integrity }}" rel="preload stylesheet" as="style">
+{{- else }}
+<link crossorigin="anonymous" href="{{ $aboutPageCSS.RelPermalink }}" rel="preload stylesheet" as="style">
+{{- end }}
+{{- end }}
 
 {{- /* bundle all required css */}}
 {{- /* Add extended css after theme style */ -}}

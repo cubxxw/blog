@@ -14,6 +14,7 @@
   const fullLink = document.getElementById('search-full-link');
 
   if (!palette) return;
+  window.__searchPaletteReady = true;
 
   let fuse, searchData;
   let isOpen = false;

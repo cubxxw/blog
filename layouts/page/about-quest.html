@@ -1,0 +1,1002 @@
+{{- define "main" }}
+{{- $isZH := eq .Language.Lang "zh" }}
+{{- $products := first 3 site.Data.products.products }}
+{{- /* article levels: "?" blocks along the road; pages resolve per language,
+       missing translations are skipped (the HUD total adapts) */}}
+{{- $levels := slice
+  (dict "x" 2140 "page" "/growth/posts/metacognitive-transformation-review" "hzh" "觉察自己的思考——元认知转变复盘" "hen" "Watching your own thinking — a metacognition review")
+  (dict "x" 3160 "page" "/engineering/posts/the-art-of-asking-questions-in-open-source-communities" "hzh" "在开源社区高效提问——参与开源的第一课" "hen" "Asking good questions — lesson one of open source")
+  (dict "x" 3800 "page" "/engineering/posts/my-hugo" "hzh" "这个博客是怎么搭起来的" "hen" "How this blog was built")
+  (dict "x" 7430 "page" "/growth/posts/2025-annual-review" "hzh" "站在高处回望：一年的深度复盘" "hen" "The view from up here: a year in deep review")
+  (dict "x" 15020 "page" "/growth/posts/super-individual-ai-product-and-solo-builder-stack" "hzh" "超级个体：一个人 + AI 能走多远" "hen" "Super-individual: how far one person plus AI can go")
+  (dict "x" 16280 "page" "/growth/posts/weight-of-self-in-ai-age" "hzh" "当 AI 什么都会，「我」的重量在哪里？" "hen" "When AI can do everything, where is the weight of me?")
+}}
+{{- $shots := slice
+  (dict "src" "01-nantaihang" "w" 675 "h" 900 "pzh" "南太行 · 中国" "pen" "Nan-Taihang · China" "nzh" "瀑布从头顶的崖壁落下来" "nen" "A waterfall right over the trail" "azh" "南太行，瀑布从崖壁上方落下" "aen" "Nan-Taihang: a waterfall pours off the cliff above the trail")
+  (dict "src" "02-g318" "w" 675 "h" 900 "pzh" "川藏 318 · 中国" "pen" "G318 · China" "nzh" "雪山一直在窗外" "nen" "Snow peaks outside the window" "azh" "川藏 318 国道旁，雪山脚下与越野车合影" "aen" "By a car beneath snow mountains on G318")
+  (dict "src" "03-prayer-flags" "w" 675 "h" 900 "pzh" "318 途中 · 经幡" "pen" "On the G318 · flags" "nzh" "风替人把经念了一遍" "nen" "The wind reads the prayers aloud" "azh" "垭口的经幡阵" "aen" "A pass covered in prayer flags")
+  (dict "src" "04-thorong-la" "w" 1046 "h" 900 "pzh" "Thorong La · 尼泊尔" "pen" "Thorong La · Nepal" "nzh" "5416 米，环线最高点" "nen" "5,416 m — top of the circuit" "azh" "尼泊尔 Thorong La 垭口 5416 米标牌" "aen" "Thorong La Pass sign at 5,416 m")
+  (dict "src" "05-fuji" "w" 675 "h" 900 "pzh" "富士山 · 日本" "pen" "Mt. Fuji · Japan" "nzh" "云海在脚下" "nen" "Clouds under your feet" "azh" "富士山下山路，云海铺在脚下" "aen" "Descending Mt. Fuji above a sea of clouds")
+  (dict "src" "06-kumano" "w" 675 "h" 900 "pzh" "熊野古道 · 日本" "pen" "Kumano Kodo · Japan" "nzh" "被走了一千年的路" "nen" "Walked for a thousand years" "azh" "熊野古道杉林间的千年石阶" "aen" "Mossy stone steps on the Kumano Kodo")
+  (dict "src" "07-sakura-bar" "w" 1200 "h" 900 "pzh" "樱花 bar · 途中" "pen" "Sakura bar · en route" "nzh" "路上遇见的人" "nen" "People you meet on the road" "azh" "旅途酒吧夜，和朋友们的合影" "aen" "A bar night with friends on the road")
+  (dict "src" "08-vientiane" "w" 675 "h" 900 "pzh" "万象 · 老挝" "pen" "Vientiane · Laos" "nzh" "佛像公园，坐进巨口里" "nen" "Inside the giant mouth" "azh" "万象佛像公园，坐在雕塑巨口中" "aen" "Sitting in the sculpted mouth, Buddha Park")
+  (dict "src" "09-vangvieng" "w" 675 "h" 900 "pzh" "万荣 · 老挝" "pen" "Vang Vieng · Laos" "nzh" "骑摩托上了山顶" "nen" "Rode a motorbike up" "azh" "万荣山顶，摩托车上挥老挝国旗" "aen" "On a motorbike at the Vang Vieng summit")
+  (dict "src" "10-taprohm" "w" 675 "h" 900 "pzh" "塔普伦寺 · 柬埔寨" "pen" "Ta Prohm · Cambodia" "nzh" "树把庙抱住了" "nen" "The trees hold the temple" "azh" "塔普伦寺，巨树抱住庙宇" "aen" "The giant tree embracing Ta Prohm")
+  (dict "src" "11-danang" "w" 1200 "h" 900 "pzh" "岘港 · 越南" "pen" "Da Nang · Vietnam" "nzh" "骑行去五行山" "nen" "Cycling to Marble Mountains" "azh" "岘港五行山下骑行留影" "aen" "Cycling stop below the Marble Mountains")
+}}
+
+<div class="about-page">
+
+<!-- ═══ BEAR QUEST · life, played as a narrative game ═══
+     A START screen opens the run. Scrolling down ADVANCES the story
+     (released once the run is cleared — the HUD always carries a skip
+     link). The road has real terrain: a hike up, one climbing pitch,
+     the 5,416 m summit, then down. "?" blocks are article levels the
+     bear head-bumps open; in auto mode he hops them himself. Without
+     JS or with reduced motion, everything is a readable column. -->
+<section class="bq" id="bq" aria-label="{{ if $isZH }}关于我 · 一段可以行走的旅程{{ else }}About me · a walkable journey{{ end }}">
+
+  <!-- sky -->
+  <div class="bq-sky" aria-hidden="true">
+    <span class="bq-sun"></span>
+    <span class="bq-cloud bq-cloud--1"></span>
+    <span class="bq-cloud bq-cloud--2"></span>
+    <span class="bq-cloud bq-cloud--3"></span>
+  </div>
+
+  <!-- parallax hills -->
+  <div class="bq-far" id="bqFar" aria-hidden="true">
+    <svg preserveAspectRatio="none" width="100%" height="100%">
+      <defs><pattern id="bqPatFar" patternUnits="userSpaceOnUse" width="1400" height="220">
+        <path class="bq-hill-far" d="M0,220 L0,150 Q160,60 340,140 Q470,190 620,120 Q800,30 980,130 Q1120,190 1260,140 Q1330,115 1400,150 L1400,220 Z"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#bqPatFar)"/>
+    </svg>
+  </div>
+  <div class="bq-mid" id="bqMid" aria-hidden="true">
+    <svg preserveAspectRatio="none" width="100%" height="100%">
+      <defs><pattern id="bqPatMid" patternUnits="userSpaceOnUse" width="1000" height="140">
+        <path class="bq-hill-mid" d="M0,140 L0,100 Q120,40 300,95 Q430,135 560,90 Q720,35 860,95 Q940,125 1000,100 L1000,140 Z"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#bqPatMid)"/>
+    </svg>
+  </div>
+
+  <!-- the world -->
+  <div class="bq-world" id="bqWorld">
+
+    <!-- ── ch.0 起点 ── -->
+    <div class="bq-prop bq-sign bq-sign--hello" style="--x:520px">
+      <h1 class="bq-hello">{{ if $isZH }}你好，我是<strong>熊鑫伟</strong>{{ else }}Hello, I'm <strong>Xinwei Xiong</strong>{{ end }}</h1>
+      <p class="bq-hello-sub">{{ if $isZH }}这一页是一段路。陪我走一小段吧。{{ else }}This page is a road. Walk a little of it with me.{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:1120px">
+      <p>{{ if $isZH }}小熊会自己往前走；<br>滚轮下滑快进剧情，<kbd>空格</kbd> 跳起来顶问号砖、吃高处的金币——连按两下是二段跳。{{ else }}The bear walks on his own;<br>scrolling fast-forwards the story, <kbd>Space</kbd> head-bumps ? blocks and grabs high coins — tap twice to double-jump.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.1 2001 ── -->
+    <div class="bq-prop bq-house" style="--x:1900px" aria-hidden="true">
+      <svg viewBox="0 0 160 130"><path class="bq-house-roof" d="M10 62 L80 12 L150 62 Z"/><rect class="bq-house-body" x="26" y="62" width="108" height="66" rx="3"/><rect class="bq-house-door" x="70" y="86" width="24" height="42" rx="2"/><rect class="bq-house-win" x="40" y="74" width="18" height="16" rx="2"/><rect class="bq-house-win" x="102" y="74" width="18" height="16" rx="2"/></svg>
+    </div>
+    <div class="bq-prop bq-sign" style="--x:2260px">
+      <p>{{ if $isZH }}2001 年，我出生在中国。<br>读书、考试、一所没有光环的本科。{{ else }}Born in China, 2001.<br>School, exams, a university with no prestige attached.{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--em" style="--x:2760px">
+      <p>{{ if $isZH }}它反而让我更早明白——<br><em>资源不是起点，好奇心才是。</em>{{ else }}Which taught me early —<br><em>resources aren't the starting point. Curiosity is.</em>{{ end }}</p>
+    </div>
+
+    <!-- ── ch.2 开源 ── -->
+    <div class="bq-prop bq-term" style="--x:3400px">
+      <div class="bq-term-bar"><i></i><i></i><i></i></div>
+      <pre class="bq-term-body" aria-hidden="true">$ git shortlog -sn
+  #1  cubxxw
+$ gh repo view openim
+  ★ 16.5k</pre>
+      <p class="bq-term-cap">{{ if $isZH }}<a href="https://github.com/openimsdk/open-im-server" target="_blank" rel="noopener">OpenIM</a> 头号贡献者{{ else }}Top contributor to <a href="https://github.com/openimsdk/open-im-server" target="_blank" rel="noopener">OpenIM</a>{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign" style="--x:4040px">
+      <p>{{ if $isZH }}白天写开源，晚上写博客。<br>相信公开地建造，公开地学习。{{ else }}Open source by day, this blog by night.<br>Build in public, learn in public.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.3 远行 ── -->
+    <div class="bq-prop bq-flags" style="--x:4640px" aria-hidden="true">
+      <svg viewBox="0 0 260 90"><path class="bq-flagline" d="M4 78 Q130 8 256 78"/><g class="bq-flag-set"><path class="bq-flag bq-flag--a" d="M30 62 l26 -8 l-4 22 z"/><path class="bq-flag bq-flag--b" d="M76 44 l26 -7 l-4 21 z"/><path class="bq-flag bq-flag--c" d="M124 36 l26 -6 l-3 20 z"/><path class="bq-flag bq-flag--a" d="M172 44 l25 -6 l-4 20 z"/><path class="bq-flag bq-flag--b" d="M216 60 l25 -7 l-4 21 z"/></g></svg>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--trace" style="--x:4900px">
+      <p>{{ if $isZH }}2024 年，我决定走出去。{{ else }}In 2024 I decided to step out.{{ end }}</p>
+      <p class="bq-trace"><span>12</span>{{ if $isZH }}个月{{ else }}months{{ end }} · <span>9</span>{{ if $isZH }}国家{{ else }}countries{{ end }} · <span>35+</span>{{ if $isZH }}城市{{ else }}cities{{ end }} · <span>400+</span>km</p>
+    </div>
+    {{- range $i, $s := $shots }}
+    <figure class="bq-prop bq-photo{{ if gt $s.w 1000 }} bq-photo--wide{{ end }}{{ if modBool $i 2 }} bq-photo--alt{{ end }}" style="--x:{{ add 5450 (mul $i 560) }}px;--rot:{{ index (slice "-1.4" "1.1" "-0.7" "1.3" "-1" "0.8" "-1.2" "0.9" "-0.8" "1.2" "-1" ) $i }}deg">
+      <img src="/images/about/journey/{{ $s.src }}.webp" width="{{ $s.w }}" height="{{ $s.h }}" alt="{{ if $isZH }}{{ $s.azh }}{{ else }}{{ $s.aen }}{{ end }}" loading="lazy" decoding="async" draggable="false">
+      <figcaption><span class="bq-photo-place">{{ if $isZH }}{{ $s.pzh }}{{ else }}{{ $s.pen }}{{ end }}</span><span class="bq-photo-note">{{ if $isZH }}{{ $s.nzh }}{{ else }}{{ $s.nen }}{{ end }}</span></figcaption>
+    </figure>
+    {{- end }}
+    <div class="bq-prop bq-sign bq-sign--small bq-sign--cliff" style="--x:6290px">
+      <p>{{ if $isZH }}这一段是攀岩。抓稳。{{ else }}This bit is a climb. Hold on.{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--small bq-sign--peak" style="--x:7510px">
+      <p>SUMMIT · 5416 m</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:11800px">
+      <p>{{ if $isZH }}在海拔 5416 米，我找到了和自己对话的空间。<br>这条路的完整版，在<a href="{{ "travel" | relLangURL }}">旅行</a>那一页。{{ else }}At 5,416 m I found the space to talk with myself.<br>The full road lives on the <a href="{{ "travel" | relLangURL }}">travel</a> page.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.4 产品街 ── -->
+    <div class="bq-prop bq-arch" style="--x:12500px">
+      <p class="bq-arch-line">AI + Human = <strong>Superhuman</strong></p>
+      <p class="bq-arch-sub">{{ if $isZH }}技术应该延伸人的认知，而非替代。现在，我在造这些——{{ else }}Technology should extend cognition, not replace it. These are what I'm building —{{ end }}</p>
+    </div>
+    {{- range $i, $p := $products }}
+    <div class="bq-prop bq-kiosk" style="--x:{{ add 13260 (mul $i 640) }}px" data-color="{{ $p.color }}">
+      <div class="bq-kiosk-head">
+        <span class="bq-kiosk-mark">{{ $p.mark }}</span>
+        <span class="bq-kiosk-name">{{ $p.name }}</span>
+        <span class="bq-kiosk-stage">{{ if $isZH }}{{ $p.stage_zh }}{{ else }}{{ $p.stage_en }}{{ end }}</span>
+      </div>
+      <p class="bq-kiosk-line">{{ if $isZH }}{{ $p.headline_zh }}{{ else }}{{ $p.headline_en }}{{ end }}</p>
+      <div class="bq-kiosk-meter" aria-hidden="true"><i style="width:{{ $p.progress }}%"></i></div>
+      <a class="bq-kiosk-go" href="{{ $p.url }}" target="_blank" rel="noopener">{{ if $isZH }}去看看{{ else }}Visit{{ end }} ↗</a>
+    </div>
+    {{- end }}
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:15300px">
+      <p>{{ if $isZH }}全部产品与开源项目，在<a href="{{ "projects" | relLangURL }}">产品</a>那一页。{{ else }}Every product and open source project lives on the <a href="{{ "projects" | relLangURL }}">projects</a> page.{{ end }}</p>
+    </div>
+
+    <!-- ── ch.5 三个词（走过收集） ── -->
+    <div class="bq-prop bq-sign bq-sign--small" style="--x:15900px">
+      <p>{{ if $isZH }}前面有三颗果子。<br>如果你只能用三个词记住我——{{ else }}Three berries ahead.<br>If you only remember three words about me —{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-berry" style="--x:16500px" data-berry="0"><span class="bq-berry-fruit"></span><span class="bq-berry-word">{{ if $isZH }}真实{{ else }}Authentic{{ end }}</span></div>
+    <div class="bq-prop bq-berry" style="--x:17050px" data-berry="1"><span class="bq-berry-fruit"></span><span class="bq-berry-word">{{ if $isZH }}好奇{{ else }}Curious{{ end }}</span></div>
+    <div class="bq-prop bq-berry" style="--x:17600px" data-berry="2"><span class="bq-berry-fruit"></span><span class="bq-berry-word">{{ if $isZH }}连接者{{ else }}Connector{{ end }}</span></div>
+
+    <!-- ── ch.6 营地 ── -->
+    <div class="bq-prop bq-fire" style="--x:18400px" aria-hidden="true">
+      <span class="bq-fire-glow"></span>
+      <svg viewBox="0 0 120 100"><rect class="bq-log" x="18" y="80" width="84" height="10" rx="5" transform="rotate(8 60 85)"/><rect class="bq-log" x="18" y="80" width="84" height="10" rx="5" transform="rotate(-8 60 85)"/><path class="bq-flame bq-flame--big" d="M60 18 Q76 42 68 62 Q64 74 60 78 Q56 74 52 62 Q44 42 60 18 Z"/><path class="bq-flame bq-flame--small" d="M60 42 Q68 54 64 66 Q62 72 60 74 Q58 72 56 66 Q52 54 60 42 Z"/></svg>
+    </div>
+    <div class="bq-prop bq-sign" style="--x:18800px">
+      <p>{{ if $isZH }}走到这里，我们算认识了。<br>想继续聊——扫一个就能找到我。{{ else }}If you've walked this far, we've met.<br>Want to keep talking? One scan and you've found me.{{ end }}</p>
+    </div>
+    <figure class="bq-prop bq-qr" style="--x:19420px;--rot:-1.2deg">
+      <img src="/images/about/qr-wechat.webp" width="560" height="717" alt="{{ if $isZH }}微信二维码，微信号 cubxxwAI{{ else }}WeChat QR code, ID cubxxwAI{{ end }}" loading="lazy" decoding="async" draggable="false">
+      <figcaption><span>{{ if $isZH }}微信{{ else }}WeChat{{ end }}</span><code>cubxxwAI</code></figcaption>
+    </figure>
+    <figure class="bq-prop bq-qr" style="--x:19800px;--rot:1.1deg">
+      <img src="/images/about/qr-xhs.webp" width="560" height="765" alt="{{ if $isZH }}小红书二维码，账号 nsddd_top{{ else }}RedNote QR code, ID nsddd_top{{ end }}" loading="lazy" decoding="async" draggable="false">
+      <figcaption><span>{{ if $isZH }}小红书{{ else }}RedNote{{ end }}</span><code>nsddd_top</code><a href="https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3" target="_blank" rel="noopener">↗</a></figcaption>
+    </figure>
+    <div class="bq-prop bq-sign bq-sign--links" style="--x:20440px">
+      <p class="bq-linkrow">
+        <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:3293172751nss@gmail.com">Email</a>
+        <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X</a>
+        <a href="https://www.zhihu.com/people/3293172751" target="_blank" rel="noopener">{{ if $isZH }}知乎{{ else }}Zhihu{{ end }}</a>
+        <a href="https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4" target="_blank" rel="noopener">{{ if $isZH }}即刻{{ else }}Jike{{ end }}</a>
+        <a href="https://space.bilibili.com/1233089591" target="_blank" rel="noopener">Bilibili</a>
+      </p>
+      <p class="bq-sig">{{ if $isZH }}期待我们的连接。— 熊鑫伟{{ else }}Looking forward to our connection. — Xinwei Xiong{{ end }}</p>
+    </div>
+    <div class="bq-prop bq-sign bq-sign--small bq-sign--end" style="--x:21160px">
+      <p>{{ if $isZH }}通关啦。想读我的文字？<br>往下滚——阅读地图已经自动展开 ↓{{ else }}Run cleared. Want my writing?<br>Scroll on — the reading atlas has opened itself ↓{{ end }}</p>
+    </div>
+
+    <!-- ── coins: little rewards along the road (some need a jump) ── -->
+    {{- $coins := slice 780 1560 2520 3020 3620 4260 4820 5210 5680 6120 6650 7100 7460 8060 8620 9200 9900 10600 11300 12060 12900 13640 14300 14960 15620 16780 17320 17880 18620 19180 20120 20900 }}
+    {{- range $i, $cx := $coins }}
+    <span class="bq-coin{{ if modBool $i 3 }} bq-coin--high{{ end }}" style="--x:{{ $cx }}px" aria-hidden="true"></span>
+    {{- end }}
+
+    <!-- ── summit flag: unfurls when the bear reaches the top ── -->
+    <div class="bq-prop bq-peakflag" style="--x:7370px" aria-hidden="true">
+      <svg viewBox="0 0 60 120"><line class="bq-peakflag-pole" x1="8" y1="4" x2="8" y2="120"/><path class="bq-peakflag-cloth" d="M8 8 L52 20 L8 34 Z"/></svg>
+    </div>
+
+    <!-- ── birds: startle and fly off when the bear gets close ── -->
+    {{- range $i, $bx := slice 2680 5960 9700 14100 17500 }}
+    <span class="bq-bird" style="--x:{{ $bx }}px;--fly:{{ if modBool $i 2 }}-1{{ else }}1{{ end }}" aria-hidden="true">
+      <svg viewBox="0 0 26 16"><path d="M2 9 Q7 2 13 8 Q19 2 24 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </span>
+    {{- end }}
+
+    <!-- ── article levels: "?" blocks the bear head-bumps open ── -->
+    {{- range $i, $lv := $levels }}
+    {{- with site.GetPage $lv.page }}
+    <div class="bq-prop bq-level" style="--x:{{ $lv.x }}px" data-level="{{ $i }}">
+      <a class="bq-level-card" href="{{ .RelPermalink }}">
+        <span class="bq-level-tag">LV.{{ add $i 1 }}</span>
+        <span class="bq-level-title">{{ .Title }}</span>
+        <span class="bq-level-hook">{{ if $isZH }}{{ $lv.hzh }}{{ else }}{{ $lv.hen }}{{ end }}</span>
+        <span class="bq-level-go">{{ if $isZH }}阅读这一篇 →{{ else }}Read it →{{ end }}</span>
+      </a>
+      <button class="bq-level-block" type="button" aria-label="{{ if $isZH }}打开第 {{ add $i 1 }} 关文章卡{{ else }}Open level {{ add $i 1 }} article card{{ end }}">
+        <span class="bq-level-q">?</span><span class="bq-level-s">★</span>
+      </button>
+    </div>
+    {{- end }}
+    {{- end }}
+
+  </div>
+
+  <!-- ground -->
+  <div class="bq-ground" aria-hidden="true"></div>
+
+  <!-- the bear (fixed on screen, world moves) -->
+  <div class="bq-bear" id="bqBear" aria-hidden="true" role="presentation">
+    <span class="bq-bear-flip" id="bqBearFlip">
+      <svg viewBox="0 0 120 116" focusable="false">
+        <path class="tb-stick" d="M95 62 L106 102"/>
+        <rect class="tb-pack" x="15" y="48" width="27" height="33" rx="10"/>
+        <rect class="tb-leg tb-leg--a" x="45" y="84" width="11" height="24" rx="5.5"/>
+        <rect class="tb-leg tb-leg--b" x="64" y="84" width="11" height="24" rx="5.5"/>
+        <ellipse class="tb-ink" cx="60" cy="70" rx="27" ry="23"/>
+        <circle class="tb-ink" cx="57" cy="22" r="8"/><circle class="tb-ear" cx="57" cy="22" r="3.6"/>
+        <circle class="tb-ink" cx="87" cy="20" r="8"/><circle class="tb-ear" cx="87" cy="20" r="3.6"/>
+        <circle class="tb-ink" cx="72" cy="38" r="21"/>
+        <ellipse class="tb-muzzle" cx="85" cy="44" rx="9.5" ry="7.5"/>
+        <ellipse class="tb-nose" cx="89" cy="41" rx="3.2" ry="2.5"/>
+        <circle class="tb-eye" cx="75" cy="33" r="3"/>
+        <ellipse class="tb-blush" cx="66" cy="45" rx="4.6" ry="2.6"/>
+        <rect class="tb-paw" x="86" y="56" width="13" height="9" rx="4.5"/>
+      </svg>
+    </span>
+  </div>
+
+  <!-- HUD -->
+  <div class="bq-hud" id="bqHud">
+    <span class="bq-km" id="bqKm" aria-hidden="true"><b id="bqKmNum">0</b> km</span>
+    <span class="bq-lv" id="bqLvChip" aria-hidden="true">LV <b id="bqLvNum">0</b>/<span id="bqLvTotal">6</span></span>
+    <span class="bq-coinhud" id="bqCoinHud" aria-hidden="true"><i class="bq-coinhud-dot"></i><b id="bqCoinNum">0</b></span>
+    <nav class="bq-chapters" id="bqChapters" aria-label="{{ if $isZH }}章节{{ else }}Chapters{{ end }}"></nav>
+    <span class="bq-words" id="bqWords" aria-hidden="true">
+      <i data-word="0">{{ if $isZH }}真实{{ else }}Authentic{{ end }}</i>
+      <i data-word="1">{{ if $isZH }}好奇{{ else }}Curious{{ end }}</i>
+      <i data-word="2">{{ if $isZH }}连接者{{ else }}Connector{{ end }}</i>
+    </span>
+    <div class="bq-speed" id="bqSpeed" role="group" aria-label="{{ if $isZH }}旅程速度{{ else }}Journey speed{{ end }}">
+      <button type="button" data-speed="0.65">{{ if $isZH }}慢走{{ else }}Slow{{ end }}</button>
+      <button type="button" data-speed="1" class="is-active" aria-pressed="true">{{ if $isZH }}正常{{ else }}Normal{{ end }}</button>
+      <button type="button" data-speed="2.15">{{ if $isZH }}加速{{ else }}Fast{{ end }}</button>
+    </div>
+    <a class="bq-skip" id="bqSkip" href="#start-here">{{ if $isZH }}跳过 ↓{{ else }}Skip ↓{{ end }}</a>
+  </div>
+  <div class="bq-toast" id="bqToast" role="status" aria-live="polite"></div>
+
+  <!-- START — life, played as a game -->
+  <div class="bq-start" id="bqStart">
+    <p class="bq-start-kicker">BEAR QUEST</p>
+    <p class="bq-start-title">{{ if $isZH }}人生如戏{{ else }}Life, played{{ end }}</p>
+    <p class="bq-start-tag">{{ if $isZH }}游戏人生——观察世界，观察自己；理解世界，理解自己。这一页是我的存档。{{ else }}Play life as a game — watch the world, watch yourself; understand both. This page is my save file.{{ end }}</p>
+    <button class="bq-start-btn" id="bqStartBtn" type="button">▶ START</button>
+    <p class="bq-start-hint">{{ if $isZH }}滚动推进剧情 · <kbd>←</kbd><kbd>→</kbd> 行走 · <kbd>空格</kbd> 跳跃（可二段跳）{{ else }}Scroll to advance · <kbd>←</kbd><kbd>→</kbd> walk · <kbd>Space</kbd> to jump (double-jump works){{ end }}</p>
+    <a class="bq-start-skip" id="bqStartSkip" href="#start-here">{{ if $isZH }}直接看文字版 ↓{{ else }}Straight to the text ↓{{ end }}</a>
+  </div>
+
+  <!-- CLEAR — the run's results screen -->
+  <div class="bq-clear" id="bqClear" aria-hidden="true">
+    <div class="bq-clear-card">
+      <p class="bq-clear-kicker">RUN CLEARED</p>
+      <p class="bq-clear-title">{{ if $isZH }}通关 · 我们算认识了{{ else }}Cleared · now we've met{{ end }}</p>
+      <div class="bq-clear-stats">
+        <span><b id="bqClearKm">0</b><i>km</i></span>
+        <span><b id="bqClearLv">0</b><i>{{ if $isZH }}文章关{{ else }}levels{{ end }}</i></span>
+        <span><b id="bqClearCoin">0</b><i>{{ if $isZH }}金币{{ else }}coins{{ end }}</i></span>
+        <span><b id="bqClearWord">0</b><i>{{ if $isZH }}词{{ else }}words{{ end }}</i></span>
+      </div>
+      <p class="bq-clear-rank" id="bqClearRank"></p>
+      <div class="bq-clear-actions">
+        <button class="bq-clear-replay" id="bqReplay" type="button">↻ {{ if $isZH }}再走一遍{{ else }}Replay{{ end }}</button>
+        <a class="bq-clear-read" href="#start-here">{{ if $isZH }}去读文字 ↓{{ else }}Read the words ↓{{ end }}</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="about-content">
+  {{ .Content | safeHTML }}
+</div>
+
+</div>
+
+<script>
+(function () {
+  var stage = document.getElementById('bq');
+  if (!stage) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return; /* static column fallback stays */
+
+  var world = document.getElementById('bqWorld');
+  var far = document.getElementById('bqFar');
+  var mid = document.getElementById('bqMid');
+  var bear = document.getElementById('bqBear');
+  var bearFlip = document.getElementById('bqBearFlip');
+  var kmNum = document.getElementById('bqKmNum');
+  var speedBox = document.getElementById('bqSpeed');
+  var chaptersNav = document.getElementById('bqChapters');
+  var wordsHud = document.getElementById('bqWords');
+  var startOv = document.getElementById('bqStart');
+  var lvNum = document.getElementById('bqLvNum');
+  var lvTotalEl = document.getElementById('bqLvTotal');
+  var skipBtn = document.getElementById('bqSkip');
+  var atlasSec = document.querySelector('.meet-atlas');
+  var atlasDetails = document.querySelector('.meet-atlas-details');
+
+  var L = 21600;                 /* world length */
+  var BEAR_AT = 0.34;            /* bear's screen x as viewport fraction */
+  var KM_TOTAL = 412;
+  var CHAPTERS = [
+    { x: 0,     zh: '起点',   en: 'Start'    },
+    { x: 1800,  zh: '2001',   en: '2001'     },
+    { x: 3200,  zh: '开源',   en: 'Open src' },
+    { x: 4640,  zh: '远行',   en: 'The road' },
+    { x: 12350, zh: '在造',   en: 'Building' },
+    { x: 15750, zh: '三个词', en: '3 words'  },
+    { x: 18150, zh: '营地',   en: 'Camp'     }
+  ];
+  /* elevation profile [worldX, px above flat ground]: hike up, one
+     steep climbing pitch, the 5,416 m summit, then back down */
+  var TERRAIN = [
+    [0, 0], [4300, 0], [5200, 40], [6060, 95], [6220, 100],
+    [6320, 180], [6460, 190], [7280, 205], [7620, 195],
+    [8300, 110], [9400, 40], [10300, 0], [21600, 0]
+  ];
+  var isZH = document.documentElement.lang.indexOf('zh') === 0;
+  var SAVE_KEY = 'bear-quest-v2:' + (isZH ? 'zh' : 'en');
+  var toastEl = document.getElementById('bqToast');
+  var toastTimer = 0;
+
+  function toast(zh, en) {
+    if (!toastEl) return;
+    toastEl.textContent = isZH ? zh : en;
+    toastEl.classList.remove('is-on');
+    void toastEl.offsetWidth;
+    toastEl.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('is-on'); }, 2600);
+  }
+
+  function elev(wx) {
+    if (wx <= TERRAIN[0][0]) return 0;
+    for (var i = 1; i < TERRAIN.length; i++) {
+      if (wx <= TERRAIN[i][0]) {
+        var a = TERRAIN[i - 1], b = TERRAIN[i];
+        return a[1] + (b[1] - a[1]) * (wx - a[0]) / (b[0] - a[0]);
+      }
+    }
+    return 0;
+  }
+
+  stage.classList.add('bq-js');
+
+  /* terrain ridge svg drawn once from TERRAIN; rides inside the world */
+  (function () {
+    var NS = 'http://www.w3.org/2000/svg';
+    var x0 = 4300, x1 = 10300, H = 212;
+    var top = '';
+    TERRAIN.forEach(function (p) {
+      if (p[0] < x0 || p[0] > x1) return;
+      top += (top ? ' L' : 'M') + (p[0] - x0) + ' ' + (H - p[1]);
+    });
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'bq-terrain');
+    svg.setAttribute('width', x1 - x0);
+    svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', '0 0 ' + (x1 - x0) + ' ' + H);
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.left = x0 + 'px';
+    var fill = document.createElementNS(NS, 'path');
+    fill.setAttribute('class', 'bq-terrain-fill');
+    fill.setAttribute('d', top + ' L' + (x1 - x0) + ' ' + H + ' Z');
+    var line = document.createElementNS(NS, 'path');
+    line.setAttribute('class', 'bq-terrain-line');
+    line.setAttribute('d', top);
+    var notch = '';
+    for (var n = 1; n <= 4; n++) {  /* climbing holds on the steep face */
+      var f = n / 5;
+      var nx = 6220 + 100 * f - x0;
+      var ny = H - (100 + 80 * f);
+      notch += 'M' + (nx - 7) + ' ' + ny + ' h14 ';
+    }
+    var ticks = document.createElementNS(NS, 'path');
+    ticks.setAttribute('class', 'bq-terrain-notch');
+    ticks.setAttribute('d', notch);
+    svg.appendChild(fill); svg.appendChild(line); svg.appendChild(ticks);
+    world.insertBefore(svg, world.firstChild);
+  })();
+
+  /* chapter dots */
+  CHAPTERS.forEach(function (c, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'bq-dot';
+    b.setAttribute('aria-label', isZH ? c.zh : c.en);
+    b.innerHTML = '<i></i><span>' + (isZH ? c.zh : c.en) + '</span>';
+    b.addEventListener('click', function () {
+      start();
+      tweenTo(c.x);
+      userTouched();
+      toast((i + 1) + '/7 · 传送到「' + c.zh + '」', (i + 1) + '/7 · Warped to “' + c.en + '”');
+    });
+    chaptersNav.appendChild(b);
+  });
+  var dots = chaptersNav.children;
+
+  /* props & berries; props in the mountain zone stand ON the terrain */
+  var props = [].map.call(stage.querySelectorAll('.bq-prop'), function (el) {
+    return { el: el, x: parseFloat(el.style.getPropertyValue('--x')) || 0, on: false };
+  });
+  props.forEach(function (p) {
+    var e = elev(p.x + (p.el.offsetWidth || 0) / 2);
+    if (e > 0.5) {
+      var lift = parseFloat(getComputedStyle(p.el).getPropertyValue('--lift')) || 0;
+      p.el.style.bottom = (lift + e) + 'px';
+    }
+  });
+  var berries = [].map.call(stage.querySelectorAll('[data-berry]'), function (el) {
+    return { el: el, x: parseFloat(el.style.getPropertyValue('--x')) || 0, got: false };
+  });
+  var gotCount = 0;
+
+  /* article levels: "?" blocks; x is the block's centre */
+  var levels = [].map.call(stage.querySelectorAll('.bq-level'), function (el) {
+    return { el: el, x: (parseFloat(el.style.getPropertyValue('--x')) || 0) + 27, hit: false };
+  });
+  var lvGot = 0;
+  if (lvTotalEl) lvTotalEl.textContent = String(levels.length);
+
+  /* coins: low ones sit on the path, high ones need a jump */
+  var coins = [].map.call(stage.querySelectorAll('.bq-coin'), function (el) {
+    var cx = parseFloat(el.style.getPropertyValue('--x')) || 0;
+    var high = el.classList.contains('bq-coin--high');
+    el.style.bottom = (elev(cx) + (high ? 118 : 34)) + 'px';
+    return { el: el, x: cx, high: high, got: false };
+  });
+  var coinCount = 0;
+  var coinNum = document.getElementById('bqCoinNum');
+  var coinHud = document.getElementById('bqCoinHud');
+
+  /* birds startle when the bear gets close */
+  var birds = [].map.call(stage.querySelectorAll('.bq-bird'), function (el) {
+    var bx = parseFloat(el.style.getPropertyValue('--x')) || 0;
+    el.style.bottom = (elev(bx) + 6) + 'px';
+    return { el: el, x: bx, flew: false };
+  });
+
+  var peakFlag = stage.querySelector('.bq-peakflag');
+  var peakDone = false;
+
+  /* ── tiny particle + floating-text pool (plain DOM, short-lived) ── */
+  var fxLayer = document.createElement('div');
+  fxLayer.className = 'bq-fx';
+  fxLayer.setAttribute('aria-hidden', 'true');
+  stage.appendChild(fxLayer);
+  function fxAt(sx, sy, kind, n) {
+    for (var i = 0; i < n; i++) {
+      var p = document.createElement('i');
+      p.className = 'bq-p bq-p--' + kind;
+      var a = Math.random() * Math.PI - Math.PI;      /* upper half */
+      var d = 18 + Math.random() * 34;
+      p.style.left = sx + 'px';
+      p.style.top = sy + 'px';
+      p.style.setProperty('--dx', (Math.cos(a) * d).toFixed(0) + 'px');
+      p.style.setProperty('--dy', (Math.sin(a) * d - 12).toFixed(0) + 'px');
+      fxLayer.appendChild(p);
+      (function (el) { setTimeout(function () { el.remove(); }, 700); })(p);
+    }
+  }
+  function floatText(sx, sy, txt, kind) {
+    var t = document.createElement('span');
+    t.className = 'bq-float' + (kind ? ' bq-float--' + kind : '');
+    t.textContent = txt;
+    t.style.left = sx + 'px';
+    t.style.top = sy + 'px';
+    fxLayer.appendChild(t);
+    setTimeout(function () { t.remove(); }, 1000);
+  }
+  /* screen coords of the bear (fx layer is fixed to the stage) */
+  function bearScreen() {
+    var r = bear.getBoundingClientRect(), s = stage.getBoundingClientRect();
+    return { x: r.left - s.left + r.width / 2, y: r.top - s.top + r.height / 2 };
+  }
+  function worldToScreenX(wx) { return wx - x; }
+
+  var x = 0, vx = 0, keyR = false, keyL = false;
+  /* jump physics: y above terrain, JS-driven so we can double-jump */
+  var jy = 0, jvy = 0, airborne = false, jumpsUsed = 0;
+  var GRAV = 2600, JUMP_V = 780;
+  var started = false, finished = false;
+  var speed = 1, manualUntil = 0, tweenTarget = -1;
+  var dragging = false, dragStartX = 0, dragStartY = 0, dragStartWorld = 0, dragVel = 0,
+      lastDragX = 0, lastDragY = 0, lastDragT = 0;
+  var inertia = 0;
+  var vw = stage.clientWidth;
+  var AUTO = 120, FAST = 460, BACK = -380;
+  var visible = true;
+  var prevX = 0, facingBack = false;
+  var prevBearWorld = 0;
+  var lastPrint = 0;
+  var last = performance.now();
+  var lastSave = 0;
+
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  function maxX() { return Math.max(0, L - vw); }
+  function userTouched() { manualUntil = performance.now() + 3200; }
+  function tweenTo(t) { tweenTarget = clamp(t, 0, maxX()); }
+
+  function start() {
+    if (started) return;
+    started = true;
+    stage.classList.add('bq-run');
+    if (startOv) startOv.classList.add('bq-start-out');
+    requestAnimationFrame(function () {
+      window.scrollTo({ top: stage.offsetTop, behavior: 'auto' });
+    });
+    last = performance.now();
+    saveState(true);
+  }
+
+  function saveState(force) {
+    var now = Date.now();
+    if (!force && now - lastSave < 500) return;
+    lastSave = now;
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        x: Math.round(x),
+        started: started,
+        finished: finished,
+        speed: speed,
+        levels: levels.map(function (v) { return v.hit ? 1 : 0; }),
+        coins: coins.map(function (v) { return v.got ? 1 : 0; }),
+        berries: berries.map(function (v) { return v.got ? 1 : 0; }),
+        pendingArticle: stage.getAttribute('data-pending-article') || '',
+        savedAt: now
+      }));
+    } catch (err) {}
+  }
+
+  function setSpeed(next, announce) {
+    speed = next;
+    [].forEach.call(speedBox ? speedBox.querySelectorAll('[data-speed]') : [], function (btn) {
+      var on = parseFloat(btn.getAttribute('data-speed')) === speed;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-pressed', String(on));
+    });
+    if (announce) {
+      if (speed > 1) toast('加速前进 · 随时可以切回正常', 'Fast-forwarding · switch back anytime');
+      else if (speed < 1) toast('慢慢走 · 不错过沿途细节', 'Taking it slow · notice the details');
+      else toast('恢复正常速度', 'Back to normal speed');
+    }
+    if (announce) saveState(true);
+  }
+
+  function restoreState() {
+    var state;
+    try { state = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch (err) {}
+    if (!state || !state.started || state.finished) return false;
+    x = clamp(Number(state.x) || 0, 0, maxX());
+    prevX = x;
+    prevBearWorld = x + vw * BEAR_AT;
+    started = true;
+    stage.classList.add('bq-run');
+    if (startOv) startOv.classList.add('bq-start-out');
+    setSpeed(Number(state.speed) || 1, false);
+    requestAnimationFrame(function () {
+      window.scrollTo({ top: stage.offsetTop, behavior: 'auto' });
+    });
+    lvGot = 0; coinCount = 0; gotCount = 0;
+    levels.forEach(function (v, i) {
+      v.hit = !!(state.levels && state.levels[i]);
+      v.el.classList.toggle('bq-hit', v.hit);
+      if (v.hit) lvGot++;
+    });
+    coins.forEach(function (v, i) {
+      v.got = !!(state.coins && state.coins[i]);
+      v.el.classList.toggle('bq-coin-got', v.got);
+      if (v.got) coinCount++;
+    });
+    berries.forEach(function (v, i) {
+      v.got = !!(state.berries && state.berries[i]);
+      v.el.classList.toggle('bq-got', v.got);
+      var chip = wordsHud.querySelector('[data-word="' + v.el.getAttribute('data-berry') + '"]');
+      if (chip) chip.classList.toggle('bq-word-on', v.got);
+      if (v.got) gotCount++;
+    });
+    if (lvNum) lvNum.textContent = String(lvGot);
+    if (coinNum) coinNum.textContent = String(coinCount);
+    if (state.pendingArticle) {
+      stage.removeAttribute('data-pending-article');
+      toast('欢迎回来 · 阅读已记录，旅程继续', 'Welcome back · reading logged, journey resumed');
+    } else {
+      toast('从上次的位置继续', 'Continuing from your last checkpoint');
+    }
+    saveState(true);
+    return true;
+  }
+  function openAtlas() { if (atlasDetails) atlasDetails.open = true; }
+  function finish() {
+    if (finished) return;
+    finished = true;
+    stage.classList.remove('bq-run');
+    stage.classList.add('bq-done');   /* releases page scroll on touch */
+    openAtlas();
+    bear.classList.add('is-happy');
+    setTimeout(function () { bear.classList.remove('is-happy'); }, 900);
+    saveState(true);
+    /* results screen */
+    var clearOv = document.getElementById('bqClear');
+    if (clearOv) {
+      var put = function (id, v) { var el = document.getElementById(id); if (el) el.textContent = String(v); };
+      put('bqClearKm', KM_TOTAL);
+      put('bqClearLv', lvGot + '/' + levels.length);
+      put('bqClearCoin', coinCount + '/' + coins.length);
+      put('bqClearWord', gotCount + '/' + berries.length);
+      var full = lvGot === levels.length && coinCount === coins.length;
+      var rank = full ? 'S' : (lvGot === levels.length ? 'A' : coinCount > coins.length * 0.6 ? 'B' : 'C');
+      var rankEl = document.getElementById('bqClearRank');
+      if (rankEl) rankEl.textContent = (isZH ? '评价 ' : 'Rank ') + rank +
+        (full ? (isZH ? ' · 全收集！' : ' · all clear!') : '');
+      clearOv.classList.add('bq-clear-on');
+      clearOv.setAttribute('aria-hidden', 'false');
+      var cs = stage.getBoundingClientRect();
+      for (var f = 0; f < 14; f++) {  /* confetti burst */
+        fxAt(cs.width * (0.2 + Math.random() * 0.6), cs.height * 0.3, f % 2 ? 'spark' : 'coin', 2);
+      }
+    }
+  }
+
+  function collect(b) {
+    b.got = true; gotCount++;
+    b.el.classList.add('bq-got');
+    var chip = wordsHud.querySelector('[data-word="' + b.el.getAttribute('data-berry') + '"]');
+    if (chip) chip.classList.add('bq-word-on');
+    var sx = worldToScreenX(b.x + 45);
+    var sy = stage.clientHeight - 90 - elev(b.x) - 78;
+    fxAt(sx, sy, 'spark', 7);
+    floatText(sx, sy - 12, b.el.querySelector('.bq-berry-word').textContent, 'word');
+    bear.classList.add('is-happy');
+    setTimeout(function () { bear.classList.remove('is-happy'); }, 900);
+    if (gotCount === berries.length) wordsHud.classList.add('bq-words-all');
+  }
+
+  function hitLevel(lv) {
+    if (lv.hit) return;
+    lv.hit = true; lvGot++;
+    lv.el.classList.add('bq-hit');
+    if (lvNum) lvNum.textContent = String(lvGot);
+    var bs = bearScreen();
+    fxAt(bs.x, bs.y - 90, 'spark', 8);
+    floatText(bs.x, bs.y - 110, 'LV.' + lvGot + ' ★', 'lv');
+    bear.classList.add('is-happy');
+    setTimeout(function () { bear.classList.remove('is-happy'); }, 700);
+  }
+
+  function collectCoin(c) {
+    c.got = true; coinCount++;
+    c.el.classList.add('bq-coin-got');
+    if (coinNum) coinNum.textContent = String(coinCount);
+    if (coinHud) {
+      coinHud.classList.remove('bq-coin-bump');
+      void coinHud.offsetWidth;               /* restart the bump */
+      coinHud.classList.add('bq-coin-bump');
+    }
+    var sx = worldToScreenX(c.x);
+    var sy = stage.clientHeight - 90 - elev(c.x) - (c.high ? 118 : 34);
+    fxAt(sx, sy, 'coin', 5);
+    floatText(sx, sy - 8, '+1', 'coin');
+  }
+
+  function jump() {
+    if (jumpsUsed >= 2) return;              /* double jump, then wait to land */
+    jumpsUsed++;
+    airborne = true;
+    jvy = jumpsUsed === 1 ? JUMP_V : JUMP_V * 0.86;
+    bear.classList.add('is-air');
+    bear.classList.remove('is-land');
+    if (jumpsUsed === 2) {                   /* flip on the second hop */
+      bear.classList.remove('is-flip');
+      void bear.offsetWidth;
+      bear.classList.add('is-flip');
+    }
+  }
+
+  function frame(now) {
+    var dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (visible) {
+      var auto = started && !dragging && tweenTarget < 0 && now > manualUntil;
+      if (dragging) {
+        /* x is written by pointermove */
+      } else if (tweenTarget >= 0) {
+        x += (tweenTarget - x) * Math.min(1, dt * 6);
+        if (Math.abs(tweenTarget - x) < 2) { x = tweenTarget; tweenTarget = -1; }
+      } else {
+        if (keyR) { vx = FAST; userTouched(); }
+        else if (keyL) { vx = BACK; userTouched(); }
+        else if (Math.abs(inertia) > 8) { vx = inertia; inertia *= Math.pow(0.9, dt * 60); }
+        else if (auto) { inertia = 0; vx = AUTO * speed; }
+        else vx = 0;
+        x += vx * dt;
+      }
+      x = clamp(x, 0, maxX());
+      var dx = x - prevX; prevX = x;
+      var moving = Math.abs(dx) > 0.15;
+      if (dx > 0.3) facingBack = false;
+      else if (dx < -0.3) facingBack = true;
+      if (started && !finished && x >= maxX() - 2) finish();
+
+      world.style.transform = 'translate3d(' + (-x) + 'px,0,0)';
+      mid.style.transform = 'translate3d(' + (-x * 0.4 % 1000) + 'px,0,0)';
+      far.style.transform = 'translate3d(' + (-x * 0.18 % 1400) + 'px,0,0)';
+
+      var bearWorld = x + vw * BEAR_AT;
+
+      /* jump physics: integrate y, land back on the terrain */
+      if (airborne) {
+        jy += jvy * dt;
+        jvy -= GRAV * dt;
+        if (jy <= 0 && jvy < 0) {
+          jy = 0; jvy = 0; airborne = false; jumpsUsed = 0;
+          bear.classList.remove('is-air', 'is-flip');
+          bear.classList.add('is-land');
+          var lb = bearScreen();
+          fxAt(lb.x, lb.y + 34, 'dust', 5);   /* landing puff */
+          setTimeout(function () { bear.classList.remove('is-land'); }, 260);
+        }
+      }
+
+      /* the bear rides the terrain and leans into slopes */
+      var eB = elev(bearWorld);
+      var slope = (elev(bearWorld + 40) - elev(bearWorld - 40)) / 80;
+      var ang = airborne ? 0 : clamp(Math.atan(slope) * 28.6, -14, 14);
+      bear.style.transform = 'translate3d(0,' + (-(eB + jy)).toFixed(1) + 'px,0) rotate(' + (-ang).toFixed(1) + 'deg)';
+
+      bearFlip.style.transform = facingBack ? 'scaleX(-1)' : '';
+      bear.classList.toggle('is-walking', moving && !airborne);
+
+      /* head-bump the "?" blocks while airborne near their height */
+      if (airborne && jy > 46) {
+        for (var m2 = 0; m2 < levels.length; m2++) {
+          if (!levels[m2].hit && Math.abs(bearWorld - levels[m2].x) < 95) { hitLevel(levels[m2]); break; }
+        }
+      }
+      /* auto mode: the bear plays himself and hops the unhit blocks
+         (and the occasional high coin, because he wants them too) */
+      if (auto && !airborne) {
+        for (var m = 0; m < levels.length; m++) {
+          if (!levels[m].hit && Math.abs(bearWorld - levels[m].x) < 30) { jump(); break; }
+        }
+        if (!airborne) {
+          for (var hc = 0; hc < coins.length; hc++) {
+            if (!coins[hc].got && coins[hc].high && Math.abs(bearWorld - coins[hc].x) < 26) { jump(); break; }
+          }
+        }
+      }
+      /* coins: low ones on the path; high ones only while airborne.
+         Swept check so fast wheel-scrolls can't tunnel past them. */
+      var sweepLo = Math.min(prevBearWorld, bearWorld) - 34;
+      var sweepHi = Math.max(prevBearWorld, bearWorld) + 34;
+      for (var cc = 0; cc < coins.length; cc++) {
+        var cn = coins[cc];
+        if (cn.got || cn.x < sweepLo || cn.x > sweepHi) continue;
+        if (!cn.high || jy > 62) collectCoin(cn);
+      }
+      prevBearWorld = bearWorld;
+      /* birds startle within ~260px */
+      for (var bb = 0; bb < birds.length; bb++) {
+        if (!birds[bb].flew && Math.abs(bearWorld - birds[bb].x) < 260) {
+          birds[bb].flew = true;
+          birds[bb].el.classList.add('bq-bird-fly');
+        }
+      }
+      /* summit flag unfurls at the top */
+      if (!peakDone && peakFlag && bearWorld > 7280) {
+        peakDone = true;
+        peakFlag.classList.add('bq-peak-up');
+        floatText(worldToScreenX(7370), stage.clientHeight - 90 - elev(7370) - 130, 'SUMMIT!', 'lv');
+      }
+      /* dusk falls on the way into camp */
+      var dusk = clamp((bearWorld - 17400) / 1400, 0, 1);
+      stage.style.setProperty('--dusk', dusk.toFixed(3));
+      stage.classList.toggle('bq-dusk', dusk > 0.45);
+      /* footprints while walking on the ground */
+      if (moving && !airborne && now - lastPrint > 240) {
+        lastPrint = now;
+        var fp = document.createElement('i');
+        fp.className = 'bq-print';
+        fp.style.left = bearWorld + (facingBack ? 34 : -34) + 'px';
+        fp.style.bottom = (elev(bearWorld) - 2) + 'px';
+        world.appendChild(fp);
+        (function (el) { setTimeout(function () { el.remove(); }, 2400); })(fp);
+      }
+      /* reveal props near the viewport */
+      for (var i = 0; i < props.length; i++) {
+        var p = props[i];
+        if (!p.on && p.x > x - 500 && p.x < x + vw + 500) { p.on = true; p.el.classList.add('bq-in'); }
+      }
+      /* berries */
+      for (var j = 0; j < berries.length; j++) {
+        var b = berries[j];
+        if (!b.got && bearWorld > b.x - 10) collect(b);
+      }
+      /* km + chapter */
+      var kmVal = Math.round(x / maxX() * KM_TOTAL) || 0;
+      if (kmNum.textContent !== String(kmVal)) kmNum.textContent = kmVal;
+      var ci = 0;
+      for (var k = 0; k < CHAPTERS.length; k++) if (bearWorld >= CHAPTERS[k].x) ci = k;
+      for (var d = 0; d < dots.length; d++) dots[d].classList.toggle('bq-dot-on', d === ci);
+      if (started && !finished) saveState(false);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* input: keys (only while the stage is mostly on screen) */
+  function stageInView() {
+    var r = stage.getBoundingClientRect();
+    return r.bottom > window.innerHeight * 0.5 && r.top < window.innerHeight * 0.5;
+  }
+  window.addEventListener('keydown', function (e) {
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+    if (!stageInView()) return;
+    var k = e.key;
+    if (!started) {
+      if (k === ' ' || k === 'Enter' || k === 'ArrowRight' || k === 'ArrowDown' || k === 'd' || k === 'D') { start(); e.preventDefault(); }
+      return;
+    }
+    if (k === 'ArrowDown' && finished) return; /* run cleared: keys scroll again */
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'd' || k === 'D') { keyR = true; tweenTarget = -1; e.preventDefault(); }
+    else if (k === 'ArrowLeft' || k === 'a' || k === 'A') { keyL = true; tweenTarget = -1; e.preventDefault(); }
+    else if (k === ' ') { jump(); e.preventDefault(); }
+  });
+  window.addEventListener('keyup', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'd' || e.key === 'D') keyR = false;
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keyL = false;
+  });
+
+  /* input: wheel — scrolling down ADVANCES the run; released once cleared */
+  window.addEventListener('wheel', function (e) {
+    if (!stageInView()) return;
+    var d = e.deltaY * (e.deltaMode === 1 ? 33 : e.deltaMode === 2 ? 400 : 1);
+    if (!started) { if (d > 0) { start(); e.preventDefault(); } return; }
+    if (finished) return;
+    if ((d > 0 && x < maxX() - 1) || (d < 0 && x > 1)) {
+      e.preventDefault();
+      tweenTarget = -1;
+      inertia = clamp(inertia + d * 9, -3400, 3400);
+      userTouched();
+    }
+  }, { passive: false });
+
+  /* input: drag — horizontal drag or vertical swipe both drive the run
+     (touch-action is none until the run is cleared, then pan-y again) */
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('a, button')) return;
+    start();
+    dragging = true; tweenTarget = -1; inertia = 0;
+    dragStartX = lastDragX = e.clientX; dragStartY = lastDragY = e.clientY;
+    dragStartWorld = x; lastDragT = e.timeStamp;
+    stage.classList.add('bq-drag');
+    try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+    userTouched();
+  });
+  stage.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    x = clamp(dragStartWorld - (e.clientX - dragStartX) * 1.4 - (e.clientY - dragStartY) * 2.2, 0, maxX());
+    var dtms = e.timeStamp - lastDragT;
+    if (dtms > 0) dragVel = (-(e.clientX - lastDragX) * 1.4 - (e.clientY - lastDragY) * 2.2) / dtms * 1000;
+    lastDragX = e.clientX; lastDragY = e.clientY; lastDragT = e.timeStamp;
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove('bq-drag');
+    inertia = clamp(dragVel, -2400, 2400);
+    dragVel = 0;
+    userTouched();
+  }
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+
+  bear.addEventListener('click', jump);
+  stage.addEventListener('dblclick', function (e) { if (!e.target.closest('a, button')) jump(); });
+
+  /* blocks are also clickable — the bear hops along */
+  levels.forEach(function (lv) {
+    var btn = lv.el.querySelector('.bq-level-block');
+    if (btn) btn.addEventListener('click', function () { jump(); hitLevel(lv); });
+  });
+
+  if (speedBox) speedBox.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-speed]');
+    if (!btn) return;
+    start();
+    setSpeed(parseFloat(btn.getAttribute('data-speed')) || 1, true);
+  });
+
+  levels.forEach(function (lv, index) {
+    var link = lv.el.querySelector('.bq-level-card');
+    if (!link) return;
+    link.addEventListener('click', function () {
+      stage.setAttribute('data-pending-article', String(index + 1));
+      saveState(true);
+    });
+  });
+
+  /* results screen: replay resets the run; reading dismisses it */
+  var clearLayer = document.getElementById('bqClear');
+  function dismissClear() {
+    if (!clearLayer) return;
+    clearLayer.classList.remove('bq-clear-on');
+    clearLayer.setAttribute('aria-hidden', 'true');
+  }
+  var replayBtn = document.getElementById('bqReplay');
+  if (replayBtn) replayBtn.addEventListener('click', function () {
+    dismissClear();
+    finished = false;
+    stage.classList.remove('bq-done');
+    stage.classList.add('bq-run');
+    /* rewind world state so the road is playable again */
+    x = 0; prevX = 0; prevBearWorld = 0; inertia = 0; tweenTarget = -1;
+    jy = 0; jvy = 0; airborne = false; jumpsUsed = 0;
+    lvGot = 0; coinCount = 0; gotCount = 0;
+    if (lvNum) lvNum.textContent = '0';
+    if (coinNum) coinNum.textContent = '0';
+    levels.forEach(function (lv) { lv.hit = false; lv.el.classList.remove('bq-hit'); });
+    coins.forEach(function (c) { c.got = false; c.el.classList.remove('bq-coin-got'); });
+    berries.forEach(function (b) { b.got = false; b.el.classList.remove('bq-got'); });
+    birds.forEach(function (bd) { bd.flew = false; bd.el.classList.remove('bq-bird-fly'); });
+    if (peakFlag) { peakDone = false; peakFlag.classList.remove('bq-peak-up'); }
+    wordsHud.classList.remove('bq-words-all');
+    [].forEach.call(wordsHud.querySelectorAll('.bq-word-on'), function (w) { w.classList.remove('bq-word-on'); });
+    stage.classList.remove('bq-dusk');
+    stage.style.setProperty('--dusk', '0');
+    userTouched();
+    saveState(true);
+  });
+  if (clearLayer) clearLayer.addEventListener('click', function (e) {
+    if (e.target === clearLayer) dismissClear();          /* backdrop click */
+    if (e.target.closest('.bq-clear-read')) dismissClear();
+  });
+
+  /* start overlay */
+  if (startOv) {
+    var sBtn = document.getElementById('bqStartBtn');
+    if (sBtn) sBtn.addEventListener('click', start);
+    startOv.addEventListener('click', function (e) { if (!e.target.closest('button, a')) start(); });
+  }
+
+  /* skip + atlas: it opens by itself, no click needed */
+  if (skipBtn) skipBtn.addEventListener('click', openAtlas);
+  var sSkip = document.getElementById('bqStartSkip');
+  if (sSkip) sSkip.addEventListener('click', openAtlas);
+  if (atlasSec && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en, obs) {
+      if (en[0].isIntersecting) { openAtlas(); obs.disconnect(); }
+    }, { threshold: 0.4 }).observe(atlasSec);
+  }
+
+  window.addEventListener('pagehide', function () { saveState(true); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      saveState(true);
+    } else {
+      last = performance.now();
+      if (started && !finished) toast('旅程继续', 'Journey resumed');
+    }
+  });
+
+  /* pause the sim while off screen */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+    }, { threshold: 0.05 }).observe(stage);
+  }
+
+  window.addEventListener('resize', function () { vw = stage.clientWidth; });
+
+  restoreState();
+  requestAnimationFrame(frame);
+})();
+</script>
+
+{{- end }}

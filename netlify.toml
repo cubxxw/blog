@@ -50,6 +50,18 @@
 # HTML pages get s-maxage=3600 (1h) so the CDN edge caches aggressively;
 # Netlify auto-purges on every deploy so stale HTML is never a problem.
 
+# Default document/security policy. Netlify applies later matching header rules
+# over earlier ones, so keep the catch-all first and let the more specific
+# static-asset rules below replace only Cache-Control. When this block lived
+# last, it accidentally reduced fingerprinted CSS/JS and images to max-age=0.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
 # Fingerprinted CSS and JS (Hugo asset pipeline output).
 [[headers]]
   for = "/assets/*"
@@ -102,18 +114,6 @@
     # Inline styles are kept (many SVGs use style="" for fills/strokes).
     # sandbox is belt-and-braces for any UA that ignores the directives.
     Content-Security-Policy = "default-src 'none'; style-src 'unsafe-inline'; sandbox"
-
-# HTML pages: CDN edge caches for 1 hour (s-maxage=3600, up from 600).
-# stale-while-revalidate=86400 lets the edge serve a cached copy while
-# refreshing in the background — cuts TTFB for cold visitors significantly.
-# Netlify purges CDN on every deploy, so there is no stale-content risk.
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    Referrer-Policy = "strict-origin-when-cross-origin"
 
 # ---------------------------------------------------------------------------
 # Build plugins (file-based, version-controlled — single source of truth)

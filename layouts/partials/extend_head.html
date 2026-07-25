@@ -62,20 +62,23 @@
 {{- /* Language Auto-Detection Script */ -}}
 <script src="{{ "/js/lang-redirect.js" | relURL }}" defer></script>
 
-{{- /* Preload hero/LCP image on homepage */ -}}
-{{- if .IsHome }}
-{{- with site.Params.profileMode.imageUrl }}
-<link rel="preload" href="{{ . | absURL }}" as="image" fetchpriority="high">
-{{- end }}
-{{- end }}
-
 {{- /* Search Command Palette dependencies.
-       fuse.js is self-hosted (assets/js/vendor/fuse.min.js): jsdelivr is
-       unreliable from mainland China and cost an extra third-party
-       connection on every page. Fingerprinted → 1-year immutable cache. */ -}}
+       Search is an explicit interaction, so do not parse Fuse and the full
+       palette controller during initial page load. A tiny bootstrap listens
+       for the search button / keyboard shortcut, loads both fingerprinted
+       files in order, then replays the user's action. This removes roughly
+       47 KB of JavaScript from the critical path on every non-search page. */ -}}
 {{- $fuseJS := resources.Get "js/vendor/fuse.min.js" | fingerprint }}
-<script defer src="{{ $fuseJS.RelPermalink }}" integrity="{{ $fuseJS.Data.Integrity }}"></script>
 {{- $searchPaletteJS := resources.Get "js/search-palette.js" | minify | fingerprint }}
-<script defer src="{{ $searchPaletteJS.RelPermalink }}" integrity="{{ $searchPaletteJS.Data.Integrity }}"></script>
+{{- $searchBootstrapJS := resources.Get "js/search-bootstrap.js" | js.Build (dict
+      "minify" hugo.IsProduction
+      "params" (dict
+        "fuseSrc" $fuseJS.RelPermalink
+        "fuseIntegrity" $fuseJS.Data.Integrity
+        "paletteSrc" $searchPaletteJS.RelPermalink
+        "paletteIntegrity" $searchPaletteJS.Data.Integrity
+      )
+    ) | fingerprint }}
+<script defer src="{{ $searchBootstrapJS.RelPermalink }}" integrity="{{ $searchBootstrapJS.Data.Integrity }}"></script>
 
 {{- /* Head custom content area end */ -}}
