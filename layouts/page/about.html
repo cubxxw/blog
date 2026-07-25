@@ -254,9 +254,14 @@ $ gh repo view openim
       <i data-word="1">{{ if $isZH }}好奇{{ else }}Curious{{ end }}</i>
       <i data-word="2">{{ if $isZH }}连接者{{ else }}Connector{{ end }}</i>
     </span>
-    <button class="bq-play" id="bqPlay" type="button" aria-label="{{ if $isZH }}暂停 / 继续{{ else }}Pause / play{{ end }}" aria-pressed="false"></button>
+    <div class="bq-speed" id="bqSpeed" role="group" aria-label="{{ if $isZH }}旅程速度{{ else }}Journey speed{{ end }}">
+      <button type="button" data-speed="0.65">{{ if $isZH }}慢走{{ else }}Slow{{ end }}</button>
+      <button type="button" data-speed="1" class="is-active" aria-pressed="true">{{ if $isZH }}正常{{ else }}Normal{{ end }}</button>
+      <button type="button" data-speed="2.15">{{ if $isZH }}加速{{ else }}Fast{{ end }}</button>
+    </div>
     <a class="bq-skip" id="bqSkip" href="#start-here">{{ if $isZH }}跳过 ↓{{ else }}Skip ↓{{ end }}</a>
   </div>
+  <div class="bq-toast" id="bqToast" role="status" aria-live="polite"></div>
 
   <!-- START — life, played as a game -->
   <div class="bq-start" id="bqStart">
@@ -308,7 +313,7 @@ $ gh repo view openim
   var bear = document.getElementById('bqBear');
   var bearFlip = document.getElementById('bqBearFlip');
   var kmNum = document.getElementById('bqKmNum');
-  var playBtn = document.getElementById('bqPlay');
+  var speedBox = document.getElementById('bqSpeed');
   var chaptersNav = document.getElementById('bqChapters');
   var wordsHud = document.getElementById('bqWords');
   var startOv = document.getElementById('bqStart');
@@ -338,6 +343,19 @@ $ gh repo view openim
     [8300, 110], [9400, 40], [10300, 0], [21600, 0]
   ];
   var isZH = document.documentElement.lang.indexOf('zh') === 0;
+  var SAVE_KEY = 'bear-quest-v2:' + (isZH ? 'zh' : 'en');
+  var toastEl = document.getElementById('bqToast');
+  var toastTimer = 0;
+
+  function toast(zh, en) {
+    if (!toastEl) return;
+    toastEl.textContent = isZH ? zh : en;
+    toastEl.classList.remove('is-on');
+    void toastEl.offsetWidth;
+    toastEl.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('is-on'); }, 2600);
+  }
 
   function elev(wx) {
     if (wx <= TERRAIN[0][0]) return 0;
@@ -395,7 +413,12 @@ $ gh repo view openim
     b.className = 'bq-dot';
     b.setAttribute('aria-label', isZH ? c.zh : c.en);
     b.innerHTML = '<i></i><span>' + (isZH ? c.zh : c.en) + '</span>';
-    b.addEventListener('click', function () { start(); tweenTo(c.x); userTouched(); });
+    b.addEventListener('click', function () {
+      start();
+      tweenTo(c.x);
+      userTouched();
+      toast((i + 1) + '/7 · 传送到「' + c.zh + '」', (i + 1) + '/7 · Warped to “' + c.en + '”');
+    });
     chaptersNav.appendChild(b);
   });
   var dots = chaptersNav.children;
@@ -484,7 +507,7 @@ $ gh repo view openim
   var jy = 0, jvy = 0, airborne = false, jumpsUsed = 0;
   var GRAV = 2600, JUMP_V = 780;
   var started = false, finished = false;
-  var paused = false, manualUntil = 0, tweenTarget = -1;
+  var speed = 1, manualUntil = 0, tweenTarget = -1;
   var dragging = false, dragStartX = 0, dragStartY = 0, dragStartWorld = 0, dragVel = 0,
       lastDragX = 0, lastDragY = 0, lastDragT = 0;
   var inertia = 0;
@@ -495,6 +518,7 @@ $ gh repo view openim
   var prevBearWorld = 0;
   var lastPrint = 0;
   var last = performance.now();
+  var lastSave = 0;
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function maxX() { return Math.max(0, L - vw); }
@@ -506,7 +530,89 @@ $ gh repo view openim
     started = true;
     stage.classList.add('bq-run');
     if (startOv) startOv.classList.add('bq-start-out');
+    requestAnimationFrame(function () {
+      window.scrollTo({ top: stage.offsetTop, behavior: 'auto' });
+    });
     last = performance.now();
+    saveState(true);
+  }
+
+  function saveState(force) {
+    var now = Date.now();
+    if (!force && now - lastSave < 500) return;
+    lastSave = now;
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        x: Math.round(x),
+        started: started,
+        finished: finished,
+        speed: speed,
+        levels: levels.map(function (v) { return v.hit ? 1 : 0; }),
+        coins: coins.map(function (v) { return v.got ? 1 : 0; }),
+        berries: berries.map(function (v) { return v.got ? 1 : 0; }),
+        pendingArticle: stage.getAttribute('data-pending-article') || '',
+        savedAt: now
+      }));
+    } catch (err) {}
+  }
+
+  function setSpeed(next, announce) {
+    speed = next;
+    [].forEach.call(speedBox ? speedBox.querySelectorAll('[data-speed]') : [], function (btn) {
+      var on = parseFloat(btn.getAttribute('data-speed')) === speed;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-pressed', String(on));
+    });
+    if (announce) {
+      if (speed > 1) toast('加速前进 · 随时可以切回正常', 'Fast-forwarding · switch back anytime');
+      else if (speed < 1) toast('慢慢走 · 不错过沿途细节', 'Taking it slow · notice the details');
+      else toast('恢复正常速度', 'Back to normal speed');
+    }
+    if (announce) saveState(true);
+  }
+
+  function restoreState() {
+    var state;
+    try { state = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch (err) {}
+    if (!state || !state.started || state.finished) return false;
+    x = clamp(Number(state.x) || 0, 0, maxX());
+    prevX = x;
+    prevBearWorld = x + vw * BEAR_AT;
+    started = true;
+    stage.classList.add('bq-run');
+    if (startOv) startOv.classList.add('bq-start-out');
+    setSpeed(Number(state.speed) || 1, false);
+    requestAnimationFrame(function () {
+      window.scrollTo({ top: stage.offsetTop, behavior: 'auto' });
+    });
+    lvGot = 0; coinCount = 0; gotCount = 0;
+    levels.forEach(function (v, i) {
+      v.hit = !!(state.levels && state.levels[i]);
+      v.el.classList.toggle('bq-hit', v.hit);
+      if (v.hit) lvGot++;
+    });
+    coins.forEach(function (v, i) {
+      v.got = !!(state.coins && state.coins[i]);
+      v.el.classList.toggle('bq-coin-got', v.got);
+      if (v.got) coinCount++;
+    });
+    berries.forEach(function (v, i) {
+      v.got = !!(state.berries && state.berries[i]);
+      v.el.classList.toggle('bq-got', v.got);
+      var chip = wordsHud.querySelector('[data-word="' + v.el.getAttribute('data-berry') + '"]');
+      if (chip) chip.classList.toggle('bq-word-on', v.got);
+      if (v.got) gotCount++;
+    });
+    if (lvNum) lvNum.textContent = String(lvGot);
+    if (coinNum) coinNum.textContent = String(coinCount);
+    if (state.pendingArticle) {
+      stage.removeAttribute('data-pending-article');
+      toast('欢迎回来 · 阅读已记录，旅程继续', 'Welcome back · reading logged, journey resumed');
+    } else {
+      toast('从上次的位置继续', 'Continuing from your last checkpoint');
+    }
+    saveState(true);
+    return true;
   }
   function openAtlas() { if (atlasDetails) atlasDetails.open = true; }
   function finish() {
@@ -517,6 +623,7 @@ $ gh repo view openim
     openAtlas();
     bear.classList.add('is-happy');
     setTimeout(function () { bear.classList.remove('is-happy'); }, 900);
+    saveState(true);
     /* results screen */
     var clearOv = document.getElementById('bqClear');
     if (clearOv) {
@@ -597,7 +704,7 @@ $ gh repo view openim
   function frame(now) {
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible) {
-      var auto = started && !paused && !dragging && tweenTarget < 0 && now > manualUntil;
+      var auto = started && !dragging && tweenTarget < 0 && now > manualUntil;
       if (dragging) {
         /* x is written by pointermove */
       } else if (tweenTarget >= 0) {
@@ -607,7 +714,7 @@ $ gh repo view openim
         if (keyR) { vx = FAST; userTouched(); }
         else if (keyL) { vx = BACK; userTouched(); }
         else if (Math.abs(inertia) > 8) { vx = inertia; inertia *= Math.pow(0.9, dt * 60); }
-        else if (auto) { inertia = 0; vx = AUTO; }
+        else if (auto) { inertia = 0; vx = AUTO * speed; }
         else vx = 0;
         x += vx * dt;
       }
@@ -718,6 +825,7 @@ $ gh repo view openim
       var ci = 0;
       for (var k = 0; k < CHAPTERS.length; k++) if (bearWorld >= CHAPTERS[k].x) ci = k;
       for (var d = 0; d < dots.length; d++) dots[d].classList.toggle('bq-dot-on', d === ci);
+      if (started && !finished) saveState(false);
     }
     requestAnimationFrame(frame);
   }
@@ -798,11 +906,20 @@ $ gh repo view openim
     if (btn) btn.addEventListener('click', function () { jump(); hitLevel(lv); });
   });
 
-  playBtn.addEventListener('click', function () {
-    if (!started) { start(); return; }
-    paused = !paused;
-    playBtn.setAttribute('aria-pressed', String(paused));
-    stage.classList.toggle('bq-paused', paused);
+  if (speedBox) speedBox.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-speed]');
+    if (!btn) return;
+    start();
+    setSpeed(parseFloat(btn.getAttribute('data-speed')) || 1, true);
+  });
+
+  levels.forEach(function (lv, index) {
+    var link = lv.el.querySelector('.bq-level-card');
+    if (!link) return;
+    link.addEventListener('click', function () {
+      stage.setAttribute('data-pending-article', String(index + 1));
+      saveState(true);
+    });
   });
 
   /* results screen: replay resets the run; reading dismisses it */
@@ -834,6 +951,7 @@ $ gh repo view openim
     stage.classList.remove('bq-dusk');
     stage.style.setProperty('--dusk', '0');
     userTouched();
+    saveState(true);
   });
   if (clearLayer) clearLayer.addEventListener('click', function (e) {
     if (e.target === clearLayer) dismissClear();          /* backdrop click */
@@ -857,6 +975,16 @@ $ gh repo view openim
     }, { threshold: 0.4 }).observe(atlasSec);
   }
 
+  window.addEventListener('pagehide', function () { saveState(true); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      saveState(true);
+    } else {
+      last = performance.now();
+      if (started && !finished) toast('旅程继续', 'Journey resumed');
+    }
+  });
+
   /* pause the sim while off screen */
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
@@ -866,6 +994,7 @@ $ gh repo view openim
 
   window.addEventListener('resize', function () { vw = stage.clientWidth; });
 
+  restoreState();
   requestAnimationFrame(frame);
 })();
 </script>
