@@ -428,6 +428,36 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   outline-offset: 3px;
 }
 
+/* ---- Plan A: line-art "hiker gazing at stars" silhouette in the orb ----
+   Lives in homepage-daypage.css because zzz-bear-orb.css is NOT loaded by
+   any template (only homepage-daypage.css reaches the browser). */
+.hp-orb-avatar {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 46%;
+  max-width: 196px;
+  color: var(--fg-muted, #6B6560);
+  opacity: 0.22;
+  pointer-events: none;
+  transform: translate(-50%, -46%);
+  animation: hp-orb-avatar-float 6s ease-in-out infinite;
+  transition: opacity 320ms var(--ease-standard);
+}
+.hp-orb-avatar svg { width: 100%; height: auto; display: block; }
+
+@keyframes hp-orb-avatar-float {
+  0%, 100% { transform: translate(-50%, -46%) translateY(0); }
+  50%      { transform: translate(-50%, -46%) translateY(-7px); }
+}
+
+.hp-bear-orbit-wrap:hover .hp-orb-avatar { opacity: 0.5; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-orb-avatar { animation: none; }
+}
+
 @media (max-width: 768px) {
   .hp-hero-motto { font-size: clamp(19px, 6vw, 24px); }
 }
@@ -2331,11 +2361,11 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
   .hp-travel-block { grid-template-columns: 1fr; }
   .hp-footer-grid { grid-template-columns: 1fr; }
 
-  /* Fix 1: Bear orbit — prevent horizontal overflow on narrow viewports */
+  /* Fix 1: Bear orbit — hide entire widget on mobile (orb, figure,
+     bubbles, chat). At ≤768px the collapsed layout has no room for a
+     decorative 3D element; hero is text-only. */
   .hp-bear-orbit-wrap {
-    height: min(340px, calc(100vw - 40px));
-    max-width: min(340px, calc(100vw - 40px));
-    margin: 0 auto;
+    display: none;
   }
   .hp-bear-orbit {
     width: min(340px, calc(100vw - 40px));
