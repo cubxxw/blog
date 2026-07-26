@@ -64,7 +64,7 @@
   .hp-orb-avatar { animation: none; }
 }
 @media (max-width: 768px) {
-  .hp-orb-avatar { width: 42%; opacity: 0.2; }
+  .hp-orb-avatar { display: none; }
 }
 
 /* When the live orb is mounted, dissolve the fallback avatar puck so the
