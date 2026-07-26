@@ -396,29 +396,33 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   margin: 14px 0 0;
 }
 
-/* About Me CTA — guides the visitor to the about page */
+/* About Me CTA — subtle inline link, not a heavy pill */
 .hp-hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 26px;
-  padding: 11px 22px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--accent-fg);
+  gap: 6px;
+  margin-top: 20px;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  color: var(--fg-muted);
   text-decoration: none;
-  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-standard), box-shadow 160ms var(--ease-out);
+  border-bottom: 1px solid transparent;
+  transition: color 160ms var(--ease-standard), border-color 160ms var(--ease-standard), gap 160ms var(--ease-standard);
 }
-.hp-hero-cta svg { transition: transform 160ms var(--ease-out); }
+.hp-hero-cta svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.5;
+  transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
 .hp-hero-cta:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  color: var(--accent);
+  border-bottom-color: var(--border-default);
+  gap: 8px;
 }
-.hp-hero-cta:hover svg { transform: translateX(3px); }
+.hp-hero-cta:hover svg { opacity: 1; transform: translateX(2px); }
 .hp-hero-cta:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -426,7 +430,6 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 @media (max-width: 768px) {
   .hp-hero-motto { font-size: clamp(19px, 6vw, 24px); }
-  .hp-hero-cta { margin-top: 22px; }
 }
 
 .hp-hero-socials {
