@@ -8,6 +8,8 @@ weight: 1
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
+cover:
+  image: /images/covers/growth/2025/2025-12-thought-notes.jpeg
 keywords: ["思考笔记", "个人成长", "深度思考", "年终总结", "熊野古道", "朝圣体验", "自我认知", "佛学", "禅修", "日本文化", "建筑美学", "十二月反思"]
 tags:
   - Blog

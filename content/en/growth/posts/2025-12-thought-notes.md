@@ -8,6 +8,8 @@ weight: 1
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
+cover:
+  image: /images/covers/growth/2025/2025-12-thought-notes.jpeg
 keywords: ["Thought Notes", "Personal Growth", "Deep Reflection", "Kumano Kodo", "Pilgrimage", "Zen Buddhism", "Self-Discovery", "Year-End Reflection", "Japanese Culture", "Architecture Aesthetics", "December 2025", "AI as Modern Priest"]
 tags:
   - Blog
