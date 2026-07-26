@@ -64,7 +64,10 @@
   .hp-orb-avatar { animation: none; }
 }
 @media (max-width: 768px) {
-  .hp-orb-avatar { display: none; }
+  /* Hide the whole orb / Digital Twin widget on mobile — the figure and the
+     ambient 3D orb add clutter at the collapsed 340px size with no real
+     payoff, so the hero shows text only. */
+  .hp-bear-orbit-wrap { display: none; }
 }
 
 /* When the live orb is mounted, dissolve the fallback avatar puck so the
