@@ -3,10 +3,20 @@ hero:
   nameLast: "Xiong"
   nameZh: "熊鑫伟"
   nickZh: "BEAR"
+  # Persona tagline — replaces the old "AI BUILDER / OPEN SOURCE / DIGITAL NOMAD"
   tagline:
-    - "AI BUILDER"
-    - "OPEN SOURCE"
-    - "DIGITAL NOMAD"
+    - "风险偏好者"
+    - "徒步"
+    - "创造者"
+  taglineEn:
+    - "RISK-TAKER"
+    - "HIKER"
+    - "BUILDER"
+  # Poetic motto line under the name
+  mottoZh: "脚踏泥地，也仰望星辰"
+  mottoEn: "Feet on the mud, eyes on the stars"
+  # English signature line
+  publicLine: "All is builder. Builder is public."
   bioEn: "I build <strong>AI products</strong> and contribute to <strong>open source</strong> while wandering the world. Capturing raw signals from each day — code, thoughts, places — and compiling them into something durable."
   bioZh: "构建 <strong>AI 产品</strong>，贡献<strong>开源代码</strong>，在世界的褶皱里慢慢走。每天捕捉原始信号——代码、念头、地方——让它们结晶成能留下来的东西。"
   footerBioEn: "Xinwei Xiong — AI builder, open source contributor and digital nomad. Kubernetes, Go, AI agents & travel."

@@ -54,12 +54,24 @@
         </h1>
 
         <div class="hp-hero-tag">
-          {{- range $i, $tag := $d.hero.tagline }}{{ if $i }}<span class="hp-sep">/</span>{{ end }}<span>{{ $tag }}</span>{{ end }}
+          {{- $tags := cond $isZh $d.hero.tagline $d.hero.taglineEn -}}
+          {{- range $i, $tag := $tags }}{{ if $i }}<span class="hp-sep">/</span>{{ end }}<span>{{ $tag }}</span>{{ end }}
         </div>
+
+        <p class="hp-hero-motto">
+          {{ if $isZh }}{{ $d.hero.mottoZh }}{{ else }}{{ $d.hero.mottoEn }}{{ end }}
+        </p>
 
         <p class="hp-hero-bio">
           {{ if $isZh }}{{ $d.hero.bioZh | safeHTML }}{{ else }}{{ $d.hero.bioEn | safeHTML }}{{ end }}
         </p>
+
+        <p class="hp-hero-public">{{ $d.hero.publicLine }}</p>
+
+        <a class="hp-hero-cta" href="{{ "/about/" | relLangURL }}">
+          <span>{{ if $isZh }}关于我{{ else }}About Me{{ end }}</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
 
         {{- if site.Params.socialIcons }}
         <div class="hp-hero-socials">

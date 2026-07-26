@@ -25,6 +25,8 @@
      (#9A938A) is a separate token below and untouched. */
   --fg-subtle:      #767068;
   --accent:         #5D3000;
+  /* On-accent text — light on the dark-brown light-mode accent */
+  --accent-fg:      #FBF7F1;
   --accent-hover:   #7A3F00;
   --accent-soft:    #F5EDE3;
   --accent-border:  #E8DCCA;
@@ -66,6 +68,8 @@ body.dark .homepage-root {
      separately in the :root .homepage-root block and is untouched. */
   --fg-subtle:      #9A938A;
   --accent:         #D4863A;
+  /* On-accent text — dark on the amber dark-mode accent */
+  --accent-fg:      #2B2822;
   --accent-hover:   #E8953D;
   --accent-soft:    #2A1F14;
   --accent-border:  #3D2A18;
@@ -370,6 +374,60 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 }
 
 .hp-hero-bio strong { color: var(--fg-primary); font-weight: 600; }
+
+/* Poetic motto line — the human statement under the persona tagline */
+.hp-hero-motto {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+  color: var(--fg-primary);
+  margin: 16px 0 0;
+}
+
+/* English signature line */
+.hp-hero-public {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 14px 0 0;
+}
+
+/* About Me CTA — guides the visitor to the about page */
+.hp-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-standard), box-shadow 160ms var(--ease-out);
+}
+.hp-hero-cta svg { transition: transform 160ms var(--ease-out); }
+.hp-hero-cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.hp-hero-cta:hover svg { transform: translateX(3px); }
+.hp-hero-cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .hp-hero-motto { font-size: clamp(19px, 6vw, 24px); }
+  .hp-hero-cta { margin-top: 22px; }
+}
 
 .hp-hero-socials {
   display: flex;
