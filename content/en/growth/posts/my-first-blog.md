@@ -1,6 +1,6 @@
 ---
 title: "About My Blog"
-date: 2023-09-14
+date: 2023-09-14T08:00:00+08:00
 author: ["Xinwei Xiong", "Me"]
 description: "This is my first blog, about my introduction"
 tags:

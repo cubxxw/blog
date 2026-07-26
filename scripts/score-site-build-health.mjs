@@ -101,7 +101,7 @@ function buildScore() {
   const components = {
     hugo_resolution: scoreHugoResolution(),
     envbuild: scoreMakeTarget("envbuild", 20),
-    build: scoreMakeTarget("build", 30),
+    production_build: scoreMakeTarget("production-build", 30),
     build_preview: scoreMakeTarget("build-preview", 25),
     index_freshness: scoreIndexFreshness(),
   };
@@ -118,7 +118,7 @@ if (process.argv.includes("--json")) {
   console.log(`score: ${result.score}/${result.max}`);
   console.log(`- hugo_resolution: ${result.components.hugo_resolution.score}/${result.components.hugo_resolution.max}`);
   console.log(`- envbuild: ${result.components.envbuild.score}/${result.components.envbuild.max}`);
-  console.log(`- build: ${result.components.build.score}/${result.components.build.max}`);
+  console.log(`- production_build: ${result.components.production_build.score}/${result.components.production_build.max}`);
   console.log(`- build_preview: ${result.components.build_preview.score}/${result.components.build_preview.max}`);
   console.log(`- index_freshness: ${result.components.index_freshness.score}/${result.components.index_freshness.max}`);
 }

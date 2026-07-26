@@ -9,7 +9,9 @@
 {{- if and (in (slice "home" "section" "taxonomy" "term") .Kind) .Paginator (gt .Paginator.PageNumber 1) -}}
   {{- $pagerSuffix = cond (eq .Language.Lang "zh") (printf " - 第 %d 页" .Paginator.PageNumber) (printf " - Page %d" .Paginator.PageNumber) -}}
 {{- end -}}
-{{- $titleCore := cond (gt (len $baseTitle) 50) (printf "%s…" (substr $baseTitle 0 50)) $baseTitle -}}
+{{- /* Keep social titles consistent with the document <title>. `len` counts
+     UTF-8 bytes, so a short CJK title was incorrectly treated as 50+ chars. */ -}}
+{{- $titleCore := cond (gt (strings.RuneCount $baseTitle) 50) (printf "%s…" (substr $baseTitle 0 50)) $baseTitle -}}
 {{- $title := cond .IsHome site.Title (printf "%s%s | %s" $titleCore $pagerSuffix $shortTitle) -}}
 {{- $taxonomyDesc := "" -}}
 {{- if eq .Kind "taxonomy" -}}
@@ -19,7 +21,9 @@
 {{- end -}}
 {{- $description := cond (ne $taxonomyDesc "") $taxonomyDesc (cond .IsHome site.Params.description (cond .Description .Description .Summary | plainify | truncate 160)) -}}
 {{- $keywords := cond .IsHome site.Params.keywords (cond .Params.keywords .Params.keywords (slice)) -}}
-{{- $author := cond .IsHome site.Params.author (cond .Params.author .Params.author site.Params.author) -}}
+{{- /* author.html normalizes scalar and list-shaped front matter. Rendering
+     the raw list here produced content="[Xinwei Xiong]" in article pages. */ -}}
+{{- $author := partial "author.html" . -}}
 
 {{- /* Canonical URL */ -}}
 <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}" />
