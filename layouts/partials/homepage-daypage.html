@@ -132,6 +132,39 @@
              flows continuously between states (recedes behind the chat
              glass rather than disappearing). aria-hidden: purely ambient. */}}
         <div id="hp-bear-stage" class="hp-bear-stage" aria-hidden="true"></div>
+        {{/* Plan A: a line-art "hiker looking up at the stars" figure, floating
+             in front of the orb as a quiet digital-twin silhouette. Pure DOM/SVG,
+             sits between the canvas (orb) and the DOM layer (bubbles/chat) so it
+             reads as holographically projected onto the sphere. */}}
+        <div class="hp-orb-avatar" aria-hidden="true">
+          <svg viewBox="0 0 200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M152 22 l3.4 9 9 3.4 -9 3.4 -3.4 9 -3.4 -9 -9 -3.4 9 -3.4 z"
+                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="100" cy="82" r="22" stroke="currentColor" stroke-width="2.5"/>
+            <!-- short masculine hair: cap with a slight fringe -->
+            <path d="M78 80 Q76 56 100 54 Q124 56 122 80 Q118 70 108 68 Q100 66 92 68 Q82 70 78 80 Z"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M92 68 L93 77 M100 67 L100 78 M108 68 L107 77"
+                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <!-- faint face hint: brows, eyes, nose -->
+            <path d="M91 85 q4 -2 8 0 M101 85 q4 -2 8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M100 87 l-1.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M100 104 L100 116" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- torso: broad shoulders, V-taper (masculine build) -->
+            <path d="M78 118 Q100 112 122 118 L127 196 Q100 204 73 196 Z"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M122 126 Q147 130 145 168 Q143 192 124 194"
+                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M80 126 L62 182 L58 214" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M120 126 L144 104 L156 56" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M90 198 L82 270 L78 336" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M110 198 L118 268 L122 336" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div id="hp-bear-layer" class="hp-bear-layer"></div>
       </div>
     </section>

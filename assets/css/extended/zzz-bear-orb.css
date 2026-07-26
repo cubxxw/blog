@@ -32,6 +32,41 @@
   justify-content: center;
 }
 
+/* ---- Plan A: line-art "hiker gazing at the stars" silhouette ----------
+   Projected in front of the orb, between the canvas (z0) and the DOM layer
+   (z1). Faint at rest so the sphere glows through; brightens on hover.
+   Sits just below the chat/bubbles layer, so when the chat glass opens it
+   naturally covers the figure (which reads as the twin stepping into the chat). */
+.hp-orb-avatar {
+  position: absolute;
+  z-index: 1;            /* above canvas, below chat/buttons inside the layer */
+  top: 50%;
+  left: 50%;
+  width: 46%;
+  max-width: 196px;
+  color: var(--fg-muted, #6B6560);
+  opacity: 0.22;
+  pointer-events: none;
+  transform: translate(-50%, -46%);
+  animation: hp-orb-avatar-float 6s ease-in-out infinite;
+  transition: opacity 320ms var(--ease-out, ease);
+}
+.hp-orb-avatar svg { width: 100%; height: auto; display: block; }
+
+@keyframes hp-orb-avatar-float {
+  0%, 100% { transform: translate(-50%, -46%) translateY(0); }
+  50%      { transform: translate(-50%, -46%) translateY(-7px); }
+}
+
+.hp-bear-orbit-wrap:hover .hp-orb-avatar { opacity: 0.5; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-orb-avatar { animation: none; }
+}
+@media (max-width: 768px) {
+  .hp-orb-avatar { width: 42%; opacity: 0.2; }
+}
+
 /* When the live orb is mounted, dissolve the fallback avatar puck so the
    shader sphere is what the eye sees. The button stays in the DOM as a
    transparent hit-area (and keyboard target) centred on the orb. */
