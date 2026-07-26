@@ -2358,7 +2358,15 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
   .hp-books-grid { grid-template-columns: 1fr; }
   .hp-projects-featured { grid-template-columns: 1fr; }
   .hp-repos-grid { grid-template-columns: 1fr; }
-  .hp-travel-block { grid-template-columns: 1fr; }
+  /* `1fr` keeps an automatic min-content floor. The recent-post titles use
+     nowrap + ellipsis, so that floor was ~700px and the whole activity block
+     was silently clipped on phones. Explicitly allow the single track and
+     its children to shrink to the viewport. */
+  .hp-travel-block { grid-template-columns: minmax(0, 1fr); }
+  .hp-recent {
+    min-width: 0;
+    max-width: 100%;
+  }
   .hp-footer-grid { grid-template-columns: 1fr; }
 
   /* Fix 1: Bear orbit — hide entire widget on mobile (orb, figure,
@@ -2434,6 +2442,11 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
 @media (max-width: 480px) {
   /* Fix 6: Tighter section padding on very small screens */
   .hp-section { padding: 28px 0; }
+
+  /* Preserve more of the heatmap on compact phones while keeping a clear
+     card boundary and an independently scrollable year grid. */
+  .hp-heatmap { padding: 14px; }
+  .hp-recent-post-link { gap: 10px; }
 
   /* Channel rail: the counter is nice-to-have — reclaim its width for
      the scrolling track; arrows keep 34px (44px hit area via padding

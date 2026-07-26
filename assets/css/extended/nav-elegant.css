@@ -750,6 +750,36 @@ body.dark .lang-switch__item--active > span {
     }
 }
 
+/* Compact phones cannot fit brand + search + theme + two-language status +
+   hamburger while preserving 44px utility targets. Show only the actionable
+   target language: the current language is already conveyed by page content
+   and `<html lang>`, while the remaining glyph still switches languages.
+   This saves ~56px and keeps the hamburger fully inside a 320px viewport. */
+@media (max-width: 360px) {
+    .logo-switches {
+        gap: 4px !important;
+        margin-right: 0;
+    }
+
+    .lang-switch__item--active {
+        display: none !important;
+    }
+
+    .lang-switch__item + .lang-switch__item::before {
+        display: none;
+    }
+
+    .lang-switch__item > a {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0;
+    }
+
+    .hamburger-menu {
+        margin-left: 0;
+    }
+}
+
 /* Desktop - hide hamburger */
 @media (min-width: 769px) {
     .hamburger-menu {

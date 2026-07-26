@@ -1,6 +1,6 @@
 ---
 title: 'Metacognitive Transformation Review'
-date: 2025-06-02
+date: 2025-06-02T08:00:00+08:00
 author: ["Xinwei Xiong"]
 description: "An in-depth review of metacognitive transformation, exploring its processes, impact on learning, and strategies for personal development."
 tags:

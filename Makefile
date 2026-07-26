@@ -97,6 +97,11 @@ chroma-css:
 content-index:
 	@node scripts/generate-content-index.mjs
 
+## content-check: Validate canonical tags before publishing.
+.PHONY: content-check
+content-check:
+	@node scripts/normalize-tags.mjs --check
+
 .PHONY: run
 run: tools.verify.hugo module-check content-index
 	@$(HUGO)
@@ -116,8 +121,8 @@ endif
 ifneq ($(filter $(SECTION),ai-agent engineering growth),$(SECTION))
 	$(error SECTION must be one of: ai-agent, engineering, growth)
 endif
-	@$(HUGO) new content content/en/$(SECTION)/posts/$(POST_NAME).md
-	@$(HUGO) new content content/zh/$(SECTION)/posts/$(POST_NAME).md
+	@TZ=Asia/Shanghai $(HUGO) new content content/en/$(SECTION)/posts/$(POST_NAME).md
+	@TZ=Asia/Shanghai $(HUGO) new content content/zh/$(SECTION)/posts/$(POST_NAME).md
 	@$(MAKE) content-index
 	@$(HUGO)
 
@@ -129,8 +134,8 @@ ifndef PROJECT_NAME
 	$(error PROJECT_NAME is not set. Please provide a name for the AI project. example: make new-ai-project PROJECT_NAME="llama")
 endif
 	@echo "Creating new AI project learning content for $(PROJECT_NAME)..."
-	@$(HUGO) new content content/en/projects/$(PROJECT_NAME).md --kind ai-project
-	@$(HUGO) new content content/zh/projects/$(PROJECT_NAME).md --kind ai-project
+	@TZ=Asia/Shanghai $(HUGO) new content content/en/projects/$(PROJECT_NAME).md --kind ai-project
+	@TZ=Asia/Shanghai $(HUGO) new content content/zh/projects/$(PROJECT_NAME).md --kind ai-project
 	@echo "✅ AI project files created successfully!"
 	@echo "📂 English version: content/en/projects/$(PROJECT_NAME).md"
 	@echo "📂 Chinese version: content/zh/projects/$(PROJECT_NAME).md"
@@ -195,9 +200,27 @@ module-update: tools.verify.hugo
 
 ## production-build: Build the production site and ensure that noindex headers aren't added
 .PHONY: production-build
-production-build: tools.verify.hugo module-check content-index
+production-build: tools.verify.hugo module-check content-check content-index
 	GOMAXPROCS=1 $(HUGO) --cleanDestinationDir --minify --environment production
-	HUGO_ENV=production $(MAKE) check-headers-file
+	@$(MAKE) check-production-output
+
+## check-production-output: Guard production indexing and sitemap invariants.
+.PHONY: check-production-output
+check-production-output:
+	@test -s public/index.html -a -s public/zh/index.html -a -s public/sitemap.xml || \
+		{ echo "ERROR: production output is incomplete" 1>&2; exit 1; }
+	@for page in public/index.html public/zh/index.html; do \
+		if grep -Eiq 'name="?robots"?[^>]+content="?noindex' "$$page"; then \
+			echo "ERROR: $$page is noindex in a production build" 1>&2; exit 1; \
+		fi; \
+	done
+	@if test -f public/_headers && grep -Eiq 'X-Robots-Tag:[[:space:]]*noindex' public/_headers; then \
+		echo "ERROR: public/_headers applies X-Robots-Tag: noindex" 1>&2; exit 1; \
+	fi
+	@if grep -Eiq '<loc>[^<]*/404(/|<)' public/sitemap.xml; then \
+		echo "ERROR: 404 URL leaked into public/sitemap.xml" 1>&2; exit 1; \
+	fi
+	@echo "Production output checks passed."
 
 ## non-production-build: Build the non-production site, which adds noindex headers to prevent indexing
 .PHONY: non-production-build

@@ -1,6 +1,8 @@
 # netlify.toml
 [build]
-  command = "npm install --prefix netlify/functions && make envbuild"
+  # Use the real production target so deploys run tag, robots and sitemap
+  # guards. `envbuild` explicitly selects Hugo's development environment.
+  command = "npm install --prefix netlify/functions && make production-build"
   publish = "public"
 
 [functions]

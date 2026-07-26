@@ -1,13 +1,22 @@
 ---
-title: "{{ replace .Name "-" " " | title }} 开源项目深度学习"
+title: '{{ replace .Name "-" " " | title }} 开源项目深度学习'
 date: {{ .Date }}
-draft: false
+draft: true
+showtoc: true
 tocopen: true
-tags: ["AI开源", "项目学习"]
-categories: ["AI Open Source"]
+type: posts
 author: ["Xinwei Xiong", "Me"]
+keywords: []
+tags:
+  - AI
+  - Open Source
+  - Project Learning
+  - Developer Tools
+  - Engineering
+categories:
+  - Development
 description: >
-  本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，并且记录。
+  说明该 AI 开源项目解决的问题、适合的读者、实践路径与核心结论。完成正文与双语版本后再将 draft 改为 false。
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。
@@ -22,7 +31,7 @@ description: >
 
 ## 补充相关文章
 
-+ [开源的阶段性成长指南](https://cubxxw.com/zh/posts/stage-growth-of-open-source/)
-+ [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](https://cubxxw.com/zh/posts/open-source-contribution-guidelines/)
-+ [我的实践总结：开源社区的规范设计思路](https://cubxxw.com/zh/posts/advanced-githook-design/)
-+ [在开源社区中学会如何提问](https://cubxxw.com/zh/posts/the-art-of-asking-questions-in-open-source-communities/)
++ [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
++ [一份完整的开源贡献指南](/zh/engineering/posts/open-source-contribution-guidelines/)
++ [我的实践总结：开源社区的规范设计思路](/zh/engineering/posts/advanced-githook-design/)
++ [在开源社区中学会如何提问](/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
