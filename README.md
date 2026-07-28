@@ -259,6 +259,13 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [每条路都要收费](https://cubxxw.com/zh/growth/posts/2026-07-26-every-path-has-a-price/)
+- [AI 解决问题以后，问题会搬到哪里](https://cubxxw.com/zh/growth/posts/2026-07-26-bottlenecks-after-ai/)
+- [越快看到的数字，往往离结果越远](https://cubxxw.com/zh/growth/posts/2026-07-26-fast-feedback-slow-results/)
+- [行动不会自动带来真相](https://cubxxw.com/zh/growth/posts/2026-07-26-action-and-evidence/)
+- [聪明人的逃跑方式：把能力用在不该解决的问题上](https://cubxxw.com/zh/growth/posts/2026-07-26-competence-trap/)
+- [利润到底证明了什么](https://cubxxw.com/zh/growth/posts/2026-07-26-profit-and-value/)
+- [下一步做什么：一场关于赚钱、行动与理想的争论](https://cubxxw.com/zh/growth/posts/2026-07-26-what-to-do-next/)
 - [小熊人生游戏 — Play My Story](https://cubxxw.com/zh/about/quest/)
 - [拆解 Open Design：让你已有的 coding agent 变成设计引擎](https://cubxxw.com/zh/ai-agent/posts/open-design/)
 - [Claude Code 之父的 121 条用法：我把它拆成了 10 个今晚就能改的配置](https://cubxxw.com/zh/ai-agent/posts/claude-code-boris-121-tips-playbook/)
@@ -352,13 +359,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [这是一篇我职业生涯总结的 OpenIM 故障排查指南](https://cubxxw.com/zh/engineering/posts/troubleshooting-guide-for-openim/)
 - [探索开源以及开源商业模式研究](https://cubxxw.com/zh/engineering/posts/navigating-the-open-source-landscape/)
 - [Sora Ease 指南：开发者掌握 Sora AI 的全面指南](https://cubxxw.com/zh/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
-- [2023年，我的旅行起点 - 2023年的我漫步在世界边缘](https://cubxxw.com/zh/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
-- [Sora 技术讨论以及普通人和开发者如何利用 Sora 改变世界](https://cubxxw.com/zh/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
-- [双剑合璧：结合GitHub与Google Workspace的项目管理艺术](https://cubxxw.com/zh/growth/posts/combining-github-and-google-workspace-for-project-management/)
-- [脑友好型英语学习策略：工具与技巧解析](https://cubxxw.com/zh/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/)
-- [心流状态的魔力：专注与幸福感提升指南](https://cubxxw.com/zh/growth/posts/flow-state/)
-- [GTD与四象限法则实践](https://cubxxw.com/zh/growth/posts/gtd-and-the-four-quadrant-rule-practice/)
-- [Go 源码里的这些 go: 指令 && go 自动化工具](https://cubxxw.com/zh/engineering/posts/directives-and-the-use-of-automation-tools/)
 <!-- My-Blog-ZH:END -->
 
 
