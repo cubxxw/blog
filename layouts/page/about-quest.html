@@ -254,6 +254,10 @@ $ gh repo view openim
       <i data-word="1">{{ if $isZH }}好奇{{ else }}Curious{{ end }}</i>
       <i data-word="2">{{ if $isZH }}连接者{{ else }}Connector{{ end }}</i>
     </span>
+    <button class="bq-pause" id="bqPause" type="button" aria-pressed="false">
+      <span aria-hidden="true">Ⅱ</span>
+      <b>{{ if $isZH }}暂停{{ else }}Pause{{ end }}</b>
+    </button>
     <div class="bq-speed" id="bqSpeed" role="group" aria-label="{{ if $isZH }}旅程速度{{ else }}Journey speed{{ end }}">
       <button type="button" data-speed="0.65">{{ if $isZH }}慢走{{ else }}Slow{{ end }}</button>
       <button type="button" data-speed="1" class="is-active" aria-pressed="true">{{ if $isZH }}正常{{ else }}Normal{{ end }}</button>
@@ -268,7 +272,9 @@ $ gh repo view openim
     <p class="bq-start-kicker">BEAR QUEST</p>
     <p class="bq-start-title">{{ if $isZH }}人生如戏{{ else }}Life, played{{ end }}</p>
     <p class="bq-start-tag">{{ if $isZH }}游戏人生——观察世界，观察自己；理解世界，理解自己。这一页是我的存档。{{ else }}Play life as a game — watch the world, watch yourself; understand both. This page is my save file.{{ end }}</p>
+    <p class="bq-start-meta">{{ if $isZH }}约 90 秒 · 7 个章节 · 随时暂停或跳过{{ else }}About 90 seconds · 7 chapters · pause or skip anytime{{ end }}</p>
     <button class="bq-start-btn" id="bqStartBtn" type="button">▶ START</button>
+    <button class="bq-start-restart" id="bqStartRestart" type="button" hidden>{{ if $isZH }}从头开始{{ else }}Start over{{ end }}</button>
     <p class="bq-start-hint">{{ if $isZH }}滚动推进剧情 · <kbd>←</kbd><kbd>→</kbd> 行走 · <kbd>空格</kbd> 跳跃（可二段跳）{{ else }}Scroll to advance · <kbd>←</kbd><kbd>→</kbd> walk · <kbd>Space</kbd> to jump (double-jump works){{ end }}</p>
     <a class="bq-start-skip" id="bqStartSkip" href="#start-here">{{ if $isZH }}直接看文字版 ↓{{ else }}Straight to the text ↓{{ end }}</a>
   </div>
@@ -314,6 +320,7 @@ $ gh repo view openim
   var bearFlip = document.getElementById('bqBearFlip');
   var kmNum = document.getElementById('bqKmNum');
   var speedBox = document.getElementById('bqSpeed');
+  var pauseBtn = document.getElementById('bqPause');
   var chaptersNav = document.getElementById('bqChapters');
   var wordsHud = document.getElementById('bqWords');
   var startOv = document.getElementById('bqStart');
@@ -507,6 +514,7 @@ $ gh repo view openim
   var jy = 0, jvy = 0, airborne = false, jumpsUsed = 0;
   var GRAV = 2600, JUMP_V = 780;
   var started = false, finished = false;
+  var paused = false;
   var speed = 1, manualUntil = 0, tweenTarget = -1;
   var dragging = false, dragStartX = 0, dragStartY = 0, dragStartWorld = 0, dragVel = 0,
       lastDragX = 0, lastDragY = 0, lastDragT = 0;
@@ -528,6 +536,7 @@ $ gh repo view openim
   function start() {
     if (started) return;
     started = true;
+    paused = false;
     stage.classList.add('bq-run');
     if (startOv) startOv.classList.add('bq-start-out');
     requestAnimationFrame(function () {
@@ -535,6 +544,24 @@ $ gh repo view openim
     });
     last = performance.now();
     saveState(true);
+  }
+
+  function setPaused(next, announce) {
+    paused = !!next;
+    stage.classList.toggle('bq-paused', paused);
+    if (pauseBtn) {
+      pauseBtn.setAttribute('aria-pressed', String(paused));
+      pauseBtn.querySelector('span').textContent = paused ? '▶' : 'Ⅱ';
+      pauseBtn.querySelector('b').textContent = paused
+        ? (isZH ? '继续' : 'Resume')
+        : (isZH ? '暂停' : 'Pause');
+    }
+    if (announce) {
+      toast(
+        paused ? '旅程已暂停 · 仍可手动探索' : '继续前进',
+        paused ? 'Journey paused · manual exploration still works' : 'Moving again'
+      );
+    }
   }
 
   function saveState(force) {
@@ -571,14 +598,20 @@ $ gh repo view openim
     if (announce) saveState(true);
   }
 
-  function restoreState() {
-    var state;
+  function readSavedState() {
+    var state = null;
     try { state = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch (err) {}
+    return state;
+  }
+
+  function restoreState(state) {
+    state = state || readSavedState();
     if (!state || !state.started || state.finished) return false;
     x = clamp(Number(state.x) || 0, 0, maxX());
     prevX = x;
     prevBearWorld = x + vw * BEAR_AT;
     started = true;
+    setPaused(false, false);
     stage.classList.add('bq-run');
     if (startOv) startOv.classList.add('bq-start-out');
     setSpeed(Number(state.speed) || 1, false);
@@ -613,6 +646,23 @@ $ gh repo view openim
     }
     saveState(true);
     return true;
+  }
+
+  var resumeOffer = null;
+  function offerRestore() {
+    var state = readSavedState();
+    if (!state || !state.started || state.finished) return;
+    resumeOffer = state;
+    var title = startOv && startOv.querySelector('.bq-start-title');
+    var tag = startOv && startOv.querySelector('.bq-start-tag');
+    var startButton = document.getElementById('bqStartBtn');
+    var restartButton = document.getElementById('bqStartRestart');
+    if (title) title.textContent = isZH ? '欢迎回来' : 'Welcome back';
+    if (tag) tag.textContent = isZH
+      ? '上一次旅程已经保存。你可以继续，也可以重新认识我。'
+      : 'Your last journey is saved. Continue where you left off, or begin again.';
+    if (startButton) startButton.textContent = isZH ? '▶ 继续旅程' : '▶ CONTINUE';
+    if (restartButton) restartButton.hidden = false;
   }
   function openAtlas() { if (atlasDetails) atlasDetails.open = true; }
   function finish() {
@@ -704,7 +754,7 @@ $ gh repo view openim
   function frame(now) {
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible) {
-      var auto = started && !dragging && tweenTarget < 0 && now > manualUntil;
+      var auto = started && !paused && !dragging && tweenTarget < 0 && now > manualUntil;
       if (dragging) {
         /* x is written by pointermove */
       } else if (tweenTarget >= 0) {
@@ -913,6 +963,11 @@ $ gh repo view openim
     setSpeed(parseFloat(btn.getAttribute('data-speed')) || 1, true);
   });
 
+  if (pauseBtn) pauseBtn.addEventListener('click', function () {
+    if (!started) start();
+    setPaused(!paused, true);
+  });
+
   levels.forEach(function (lv, index) {
     var link = lv.el.querySelector('.bq-level-card');
     if (!link) return;
@@ -961,8 +1016,25 @@ $ gh repo view openim
   /* start overlay */
   if (startOv) {
     var sBtn = document.getElementById('bqStartBtn');
-    if (sBtn) sBtn.addEventListener('click', start);
-    startOv.addEventListener('click', function (e) { if (!e.target.closest('button, a')) start(); });
+    var restartBtn = document.getElementById('bqStartRestart');
+    function beginFromOverlay() {
+      if (resumeOffer) {
+        var state = resumeOffer;
+        resumeOffer = null;
+        restoreState(state);
+      } else {
+        start();
+      }
+    }
+    if (sBtn) sBtn.addEventListener('click', beginFromOverlay);
+    if (restartBtn) restartBtn.addEventListener('click', function () {
+      try { localStorage.removeItem(SAVE_KEY); } catch (err) {}
+      resumeOffer = null;
+      start();
+    });
+    startOv.addEventListener('click', function (e) {
+      if (!e.target.closest('button, a')) beginFromOverlay();
+    });
   }
 
   /* skip + atlas: it opens by itself, no click needed */
@@ -994,7 +1066,7 @@ $ gh repo view openim
 
   window.addEventListener('resize', function () { vw = stage.clientWidth; });
 
-  restoreState();
+  offerRestore();
   requestAnimationFrame(frame);
 })();
 </script>
