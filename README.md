@@ -151,6 +151,13 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [Every Path Has a Price](https://cubxxw.com/growth/posts/2026-07-26-every-path-has-a-price/)
+- [After AI Solves a Problem, Where Does the Bottleneck Move?](https://cubxxw.com/growth/posts/2026-07-26-bottlenecks-after-ai/)
+- [The Fastest Numbers Are Often Furthest from the Outcome](https://cubxxw.com/growth/posts/2026-07-26-fast-feedback-slow-results/)
+- [Action Does Not Automatically Lead to Truth](https://cubxxw.com/growth/posts/2026-07-26-action-and-evidence/)
+- [The Escape Routes of Smart People: Applying Ability to the Wrong Problem](https://cubxxw.com/growth/posts/2026-07-26-competence-trap/)
+- [What Does Profit Actually Prove?](https://cubxxw.com/growth/posts/2026-07-26-profit-and-value/)
+- [What Should I Do Next? A Debate About Money, Action, and Ideals](https://cubxxw.com/growth/posts/2026-07-26-what-to-do-next/)
 - [Bear Quest — Play My Story](https://cubxxw.com/about/quest/)
 - [Taking Open Design Apart: Turning the Coding Agent You Already Have Into a Design Engine](https://cubxxw.com/ai-agent/posts/open-design/)
 - [121 Tips from the Creator of Claude Code: I Compressed Them Into 10 Changes You Can Ship Tonight](https://cubxxw.com/ai-agent/posts/claude-code-boris-121-tips-playbook/)
@@ -244,13 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [Sora Ease Guide: Mastering Sora AI for Developers](https://cubxxw.com/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
 - [In 2023, I Was Wandering at the Edge of the World](https://cubxxw.com/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
 - [Exploring Sora Technology for Enthusiasts and Developers](https://cubxxw.com/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
-- [Combining GitHub and Google Workspace for Effective Project Management](https://cubxxw.com/growth/posts/combining-github-and-google-workspace-for-project-management/)
-- [Brain-Friendly English Learning Strategies](https://cubxxw.com/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/)
-- [Flow State: Deep Focus and Happiness Guide](https://cubxxw.com/growth/posts/flow-state/)
-- [GTD and the Quadrant Method Practice](https://cubxxw.com/growth/posts/gtd-and-the-four-quadrant-rule-practice/)
-- [Go Directives & Automation Tools Deep Dive](https://cubxxw.com/engineering/posts/directives-and-the-use-of-automation-tools/)
-- [Concurrent Type Checking and Cross-Platform Development in Go](https://cubxxw.com/engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/)
-- [Vector Database Learning](https://cubxxw.com/ai-agent/posts/vector-database-learning/)
 <!-- My-Blog-EN:END -->
 
 
