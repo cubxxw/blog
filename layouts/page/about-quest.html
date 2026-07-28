@@ -133,6 +133,26 @@ $ gh repo view openim
       <p>{{ if $isZH }}2024 年，我决定走出去。{{ else }}In 2024 I decided to step out.{{ end }}</p>
       <p class="bq-trace"><span>12</span>{{ if $isZH }}个月{{ else }}months{{ end }} · <span>9</span>{{ if $isZH }}国家{{ else }}countries{{ end }} · <span>35+</span>{{ if $isZH }}城市{{ else }}cities{{ end }} · <span>400+</span>km</p>
     </div>
+    <div class="bq-prop bq-alpine" style="--x:5000px" aria-hidden="true">
+      <span class="bq-mountain bq-mountain--1"></span>
+      <span class="bq-mountain bq-mountain--2"></span>
+      <span class="bq-mountain bq-mountain--3"></span>
+      <span class="bq-snow-wind bq-snow-wind--1"></span>
+      <span class="bq-snow-wind bq-snow-wind--2"></span>
+      <span class="bq-snow-wind bq-snow-wind--3"></span>
+    </div>
+    <div class="bq-prop bq-route-card" style="--x:5320px">
+      <span class="bq-route-code">ACT · NEPAL</span>
+      <strong>{{ if $isZH }}安纳普尔纳大环线{{ else }}Annapurna Circuit Trek{{ end }}</strong>
+      <span>{{ if $isZH }}山谷 → 雪线 → Thorong La · 5416m{{ else }}Valley → snow line → Thorong La · 5,416m{{ end }}</span>
+      <i><em></em></i>
+    </div>
+    <div class="bq-prop bq-trail-mark" style="--x:5800px" aria-hidden="true"><i></i><span>ACT</span></div>
+    <div class="bq-prop bq-trail-mark bq-trail-mark--snow" style="--x:6760px" aria-hidden="true"><i></i><span>4800m</span></div>
+    <div class="bq-prop bq-snow-camp" style="--x:6900px" aria-hidden="true">
+      <span class="bq-tent"></span><span class="bq-tent bq-tent--small"></span>
+      <i>{{ if $isZH }}高营地{{ else }}HIGH CAMP{{ end }}</i>
+    </div>
     {{- range $i, $s := $shots }}
     <figure class="bq-prop bq-photo{{ if gt $s.w 1000 }} bq-photo--wide{{ end }}{{ if modBool $i 2 }} bq-photo--alt{{ end }}" style="--x:{{ add 5450 (mul $i 560) }}px;--rot:{{ index (slice "-1.4" "1.1" "-0.7" "1.3" "-1" "0.8" "-1.2" "0.9" "-0.8" "1.2" "-1" ) $i }}deg">
       <img src="/images/about/journey/{{ $s.src }}.webp" width="{{ $s.w }}" height="{{ $s.h }}" alt="{{ if $isZH }}{{ $s.azh }}{{ else }}{{ $s.aen }}{{ end }}" loading="lazy" decoding="async" draggable="false">
@@ -144,6 +164,12 @@ $ gh repo view openim
     </div>
     <div class="bq-prop bq-sign bq-sign--small bq-sign--peak" style="--x:7510px">
       <p>SUMMIT · 5416 m</p>
+    </div>
+    <div class="bq-prop bq-zipline" style="--x:7900px" aria-hidden="true">
+      <span class="bq-zip-post bq-zip-post--start"></span>
+      <span class="bq-zip-cable"></span>
+      <span class="bq-zip-post bq-zip-post--end"></span>
+      <span class="bq-zip-label">{{ if $isZH }}雪山滑索 · 按住 → 冲{{ else }}ALPINE ZIPLINE · HOLD → TO SEND IT{{ end }}</span>
     </div>
     <div class="bq-prop bq-sign bq-sign--small" style="--x:11800px">
       <p>{{ if $isZH }}在海拔 5416 米，我找到了和自己对话的空间。<br>这条路的完整版，在<a href="{{ "travel" | relLangURL }}">旅行</a>那一页。{{ else }}At 5,416 m I found the space to talk with myself.<br>The full road lives on the <a href="{{ "travel" | relLangURL }}">travel</a> page.{{ end }}</p>
@@ -304,10 +330,10 @@ $ gh repo view openim
       <span>{{ if $isZH }}AI 产品创造者{{ else }}AI PRODUCT MAKER{{ end }}</span>
       <span>{{ if $isZH }}长期旅行者{{ else }}LONG-TERM TRAVELER{{ end }}</span>
     </div>
-    <p class="bq-start-meta">{{ if $isZH }}约 90 秒 · 7 个章节 · 随时暂停或跳过{{ else }}About 90 seconds · 7 chapters · pause or skip anytime{{ end }}</p>
+    <p class="bq-start-meta">{{ if $isZH }}约 90 秒 · 10 个章节 · 含雪山与滑翔 · 随时跳过{{ else }}About 90 seconds · 10 chapters · snow climb + zipline · skip anytime{{ end }}</p>
     <button class="bq-start-btn" id="bqStartBtn" type="button">▶ {{ if $isZH }}进入故事{{ else }}PLAY MY STORY{{ end }}</button>
     <button class="bq-start-restart" id="bqStartRestart" type="button" hidden>{{ if $isZH }}从头开始{{ else }}Start over{{ end }}</button>
-    <p class="bq-start-hint">{{ if $isZH }}滚动推进剧情 · <kbd>←</kbd><kbd>→</kbd> 行走 · <kbd>空格</kbd> 跳跃（可二段跳）{{ else }}Scroll to advance · <kbd>←</kbd><kbd>→</kbd> walk · <kbd>Space</kbd> to jump (double-jump works){{ end }}</p>
+    <p class="bq-start-hint">{{ if $isZH }}滚动推进 · <kbd>→</kbd> 冲刺 / 滑索加速 · <kbd>空格</kbd> 二段跳{{ else }}Scroll to advance · <kbd>→</kbd> sprint / boost the zipline · <kbd>Space</kbd> double-jump{{ end }}</p>
     <a class="bq-start-skip" id="bqStartSkip" href="#start-here">{{ if $isZH }}直接看文字版 ↓{{ else }}Straight to the text ↓{{ end }}</a>
   </div>
 
@@ -379,9 +405,12 @@ $ gh repo view openim
     { x: 0,     zh: '起点',   en: 'Start',    kzh: '序章 · 个人存档', ken: 'PROLOGUE · PLAYER SAVE', tzh: '熊鑫伟，正在路上', ten: 'Xinwei Xiong, in motion', lzh: '开源贡献者 · AI 产品构建者 · 长期旅行者', len: 'Open-source contributor · AI product builder · long-term traveler', mzh: '收集三个身份线索', men: 'Collect three identity signals' },
     { x: 1800,  zh: '2001',   en: '2001',     kzh: '第一章 · 普通起点', ken: 'CHAPTER 01 · AN ORDINARY START', tzh: '没有光环，就让好奇心带路', ten: 'No prestige. Curiosity led instead.', lzh: '2001 年出生，普通本科；越普通的起点，越早学会主动寻找资源。', len: 'Born in 2001, from an ordinary university — so I learned early to seek resources instead of waiting for them.', mzh: '找到驱动我的东西', men: 'Find what keeps me moving' },
     { x: 3200,  zh: '开源',   en: 'Open src', kzh: '第二章 · 公开建造', ken: 'CHAPTER 02 · BUILD IN PUBLIC', tzh: '在开源世界建立坐标', ten: 'I found my coordinates in open source', lzh: 'OpenIM 头号贡献者。白天写代码，晚上写博客，把学习过程留给后来的人。', len: 'Top OpenIM contributor. Code by day, blog by night — leaving a trail others can follow.', mzh: '身份线索 1/3 · 开源建设者', men: 'Signal 1/3 · Open-source builder' },
-    { x: 4640,  zh: '远行',   en: 'The road', kzh: '第三章 · 远行', ken: 'CHAPTER 03 · THE ROAD', tzh: '12 个月 · 9 个国家', ten: '12 months · 9 countries', lzh: '走过 400 多公里、翻过 5416 米山口；地图开始于向外走，也终于向内看。', len: 'Over 400 km and a 5,416 m summit — the map went outward, while the journey turned inward.', mzh: '身份线索 2/3 · 长期旅行者', men: 'Signal 2/3 · Long-term traveler' },
-    { x: 12350, zh: '在造',   en: 'Building', kzh: '第四章 · 现在正在做', ken: 'CHAPTER 04 · WHAT I BUILD NOW', tzh: '一个人，也能造完整的产品', ten: 'One person can still build complete products', lzh: 'Solo Compass、DayPage、Telepace：用 AI 延伸人的判断，而不是替代。', len: 'Solo Compass, DayPage, Telepace — using AI to extend human judgment, not replace it.', mzh: '身份线索 3/3 · AI 产品创造者', men: 'Signal 3/3 · AI product maker' },
-    { x: 15750, zh: '三个词', en: '3 words',  kzh: '第五章 · 收集', ken: 'CHAPTER 05 · COLLECT', tzh: '真实 · 好奇 · 连接者', ten: 'Authentic · Curious · Connector', lzh: '如果只能留下三个词，就留下这三个。', len: 'If only three words remain, let them be these.', mzh: '收集三颗果子', men: 'Collect the three berries' },
+    { x: 4640,  zh: '远行',   en: 'The road', kzh: '第三章 · 远行', ken: 'CHAPTER 03 · THE ROAD', tzh: '12 个月 · 9 个国家', ten: '12 months · 9 countries', lzh: '走过 400 多公里；地图开始于向外走，也终于向内看。', len: 'Over 400 km — the map went outward, while the journey turned inward.', mzh: '身份线索 2/3 · 长期旅行者', men: 'Signal 2/3 · Long-term traveler' },
+    { x: 5200,  zh: 'ACT',    en: 'ACT',      kzh: '第四章 · 安纳普尔纳', ken: 'CHAPTER 04 · ANNAPURNA', tzh: '一步一步，走进雪线', ten: 'Step by step, into the snow line', lzh: '安纳普尔纳大环线：山谷、高营地、稀薄空气，以及只剩呼吸声的路。', len: 'The Annapurna Circuit: valleys, high camp, thin air, and a trail reduced to the sound of breathing.', mzh: '沿着 ACT 路标爬升', men: 'Follow the ACT marks uphill' },
+    { x: 6400,  zh: '雪山',   en: 'Snow',     kzh: '第五章 · 雪山攀登', ken: 'CHAPTER 05 · SNOW CLIMB', tzh: '在 5416 米，世界只剩下一步', ten: 'At 5,416m, the world becomes one next step', lzh: '坡度变陡，雪线压低视野。不是征服山，而是学会尊重节奏。', len: 'The slope steepens and snow narrows the view. The lesson is rhythm, not conquest.', mzh: '翻越 Thorong La 垭口', men: 'Cross Thorong La Pass' },
+    { x: 7900,  zh: '滑翔',   en: 'Zipline',  kzh: '第六章 · 放手一冲', ken: 'CHAPTER 06 · SEND IT', tzh: '爬得够久，就奖励一次飞翔', ten: 'Climb long enough, earn a little flight', lzh: '挂上滑索后会自动滑行；按住右方向键，让风再快一点。', len: 'The line carries you automatically. Hold the right arrow and let the wind push harder.', mzh: '滑索已接入 · 按住 → 加速', men: 'Zipline attached · hold → to boost' },
+    { x: 12350, zh: '在造',   en: 'Building', kzh: '第七章 · 现在正在做', ken: 'CHAPTER 07 · WHAT I BUILD NOW', tzh: '一个人，也能造完整的产品', ten: 'One person can still build complete products', lzh: 'Solo Compass、DayPage、Telepace：用 AI 延伸人的判断，而不是替代。', len: 'Solo Compass, DayPage, Telepace — using AI to extend human judgment, not replace it.', mzh: '身份线索 3/3 · AI 产品创造者', men: 'Signal 3/3 · AI product maker' },
+    { x: 15750, zh: '三个词', en: '3 words',  kzh: '第八章 · 收集', ken: 'CHAPTER 08 · COLLECT', tzh: '真实 · 好奇 · 连接者', ten: 'Authentic · Curious · Connector', lzh: '如果只能留下三个词，就留下这三个。', len: 'If only three words remain, let them be these.', mzh: '收集三颗果子', men: 'Collect the three berries' },
     { x: 18150, zh: '营地',   en: 'Camp',     kzh: '终章 · 营地', ken: 'FINAL CHAPTER · CAMP', tzh: '我们算认识了', ten: 'Now we have met', lzh: '路走到这里，对话可以从这里开始。', len: 'The road ends here. The conversation can start.', mzh: '抵达篝火，完成旅程', men: 'Reach the fire and clear the run' }
   ];
   /* elevation profile [worldX, px above flat ground]: hike up, one
@@ -392,9 +421,9 @@ $ gh repo view openim
     [8300, 110], [9400, 40], [10300, 0], [21600, 0]
   ];
   var isZH = document.documentElement.lang.indexOf('zh') === 0;
-  /* v3 resets the old journey once so returning visitors see the new
-     identity-first opening instead of resuming halfway through it. */
-  var SAVE_KEY = 'bear-quest-v3:' + (isZH ? 'zh' : 'en');
+  /* v4 introduces the Annapurna / zipline route, so an older save should
+     not drop a returning visitor halfway past the new playable scene. */
+  var SAVE_KEY = 'bear-quest-v4:' + (isZH ? 'zh' : 'en');
   var toastEl = document.getElementById('bqToast');
   var toastTimer = 0;
 
@@ -468,7 +497,7 @@ $ gh repo view openim
       start();
       tweenTo(c.x);
       userTouched();
-      toast((i + 1) + '/7 · 传送到「' + c.zh + '」', (i + 1) + '/7 · Warped to “' + c.en + '”');
+      toast((i + 1) + '/' + CHAPTERS.length + ' · 传送到「' + c.zh + '」', (i + 1) + '/' + CHAPTERS.length + ' · Warped to “' + c.en + '”');
     });
     chaptersNav.appendChild(b);
   });
@@ -480,7 +509,7 @@ $ gh repo view openim
   });
   props.forEach(function (p) {
     var e = elev(p.x + (p.el.offsetWidth || 0) / 2);
-    if (e > 0.5) {
+    if (e > 0.5 && !p.el.classList.contains('bq-alpine') && !p.el.classList.contains('bq-zipline')) {
       var lift = parseFloat(getComputedStyle(p.el).getPropertyValue('--lift')) || 0;
       p.el.style.bottom = (lift + e) + 'px';
     }
@@ -574,6 +603,8 @@ $ gh repo view openim
   var lastSave = 0;
   var activeChapter = -1;
   var driveState = '';
+  var ZIP_START = 7900, ZIP_END = 9750;
+  var zipEntered = false, zipFinished = false;
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function maxX() { return Math.max(0, L - vw); }
@@ -593,7 +624,7 @@ $ gh repo view openim
     if (identityMap) {
       [].forEach.call(identityMap.querySelectorAll('[data-signal]'), function (chip) {
         var signal = Number(chip.getAttribute('data-signal'));
-        var unlocked = (signal === 0 && i >= 2) || (signal === 1 && i >= 3) || (signal === 2 && i >= 4);
+        var unlocked = (signal === 0 && c.x >= 3200) || (signal === 1 && c.x >= 4640) || (signal === 2 && c.x >= 12350);
         chip.classList.toggle('is-unlocked', unlocked);
       });
     }
@@ -603,10 +634,10 @@ $ gh repo view openim
       scene.classList.add('bq-scene-enter');
     }
     stage.setAttribute('data-chapter', String(i));
-    if (previousChapter >= 0 && i > previousChapter && (i === 2 || i === 3 || i === 4)) {
+    if (previousChapter >= 0 && i > previousChapter && (i === 2 || i === 3 || i === 7)) {
       var labelsZH = ['开源建设者', '长期旅行者', 'AI 产品创造者'];
       var labelsEN = ['Open-source builder', 'Long-term traveler', 'AI product maker'];
-      var signalIndex = i - 2;
+      var signalIndex = i === 2 ? 0 : i === 3 ? 1 : 2;
       toast('身份线索解锁 · ' + labelsZH[signalIndex], 'Identity signal unlocked · ' + labelsEN[signalIndex]);
     }
   }
@@ -615,7 +646,9 @@ $ gh repo view openim
     if (next !== driveState) {
       driveState = next;
       if (driveMode) {
-        driveMode.textContent = next === 'sprint'
+        driveMode.textContent = next === 'zip'
+          ? (isZH ? '滑索冲刺' : 'ZIP BOOST')
+          : next === 'sprint'
           ? (isZH ? '冲刺' : 'SPRINT')
           : next === 'glide'
             ? (isZH ? '滑行' : 'GLIDE')
@@ -624,6 +657,7 @@ $ gh repo view openim
     }
     stage.classList.toggle('bq-sprinting', next === 'sprint');
     stage.classList.toggle('bq-gliding', next === 'glide');
+    stage.classList.toggle('bq-zip-riding', next === 'zip');
     if (driveFill) driveFill.style.transform = 'scaleX(' + clamp(power, 0.08, 1).toFixed(3) + ')';
   }
 
@@ -704,6 +738,8 @@ $ gh repo view openim
     x = clamp(Number(state.x) || 0, 0, maxX());
     prevX = x;
     prevBearWorld = x + vw * BEAR_AT;
+    zipEntered = prevBearWorld >= ZIP_START;
+    zipFinished = prevBearWorld >= ZIP_END;
     started = true;
     setPaused(false, false);
     stage.classList.add('bq-run');
@@ -832,6 +868,7 @@ $ gh repo view openim
   }
 
   function jump() {
+    if (stage.classList.contains('bq-zip-riding')) return;
     if (jumpsUsed >= 2) return;              /* double jump, then wait to land */
     jumpsUsed++;
     airborne = true;
@@ -849,6 +886,9 @@ $ gh repo view openim
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (visible) {
       var auto = started && !paused && !dragging && tweenTarget < 0 && now > manualUntil;
+      var beforeMove = x + vw * BEAR_AT;
+      var zipRide = started && !paused && !zipFinished && beforeMove >= ZIP_START &&
+        beforeMove < ZIP_END && !dragging && tweenTarget < 0;
       if (dragging) {
         /* x is written by pointermove */
       } else if (tweenTarget >= 0) {
@@ -857,7 +897,12 @@ $ gh repo view openim
       } else {
         var cruise = AUTO * speed;
         var sprint = Math.max(FAST * Math.sqrt(speed), cruise * 2.2);
-        if (keyR) {
+        if (zipRide) {
+          boost = keyR ? clamp(boost + dt * 3.4, 0.45, 1) : Math.max(0.45, boost - dt * 0.32);
+          vx = 620 + 420 * boost;
+          setDriveState('zip', 0.6 + boost * 0.4);
+        }
+        else if (keyR) {
           boost = clamp(boost + dt * 2.6, 0, 1);
           vx = cruise + (sprint - cruise) * (0.58 + boost * 0.42);
           setDriveState('sprint', 0.58 + boost * 0.42);
@@ -895,6 +940,21 @@ $ gh repo view openim
       far.style.transform = 'translate3d(' + (-x * 0.18 % 1400) + 'px,0,0)';
 
       var bearWorld = x + vw * BEAR_AT;
+      var onZip = !zipFinished && bearWorld >= ZIP_START && bearWorld < ZIP_END;
+      if (onZip && !zipEntered) {
+        zipEntered = true;
+        jy = 0; jvy = 0; airborne = false; jumpsUsed = 0;
+        bear.classList.remove('is-air', 'is-flip');
+        toast('滑索接入！按住 → 再加速', 'Zipline attached! Hold → to boost');
+        var zs = bearScreen();
+        fxAt(zs.x, zs.y - 28, 'spark', 10);
+      }
+      if (zipEntered && !zipFinished && bearWorld >= ZIP_END) {
+        zipFinished = true;
+        boost = Math.max(boost, 0.72);
+        toast('落地！把雪山的风带下来了', 'Landed! You brought the mountain wind down');
+      }
+      bear.classList.toggle('is-zip', onZip);
 
       /* jump physics: integrate y, land back on the terrain */
       if (airborne) {
@@ -912,12 +972,18 @@ $ gh repo view openim
 
       /* the bear rides the terrain and leans into slopes */
       var eB = elev(bearWorld);
+      var zipLift = 0;
+      if (onZip) {
+        var zipT = clamp((bearWorld - ZIP_START) / (ZIP_END - ZIP_START), 0, 1);
+        var cableElev = 286 + (42 - 286) * zipT;
+        zipLift = Math.max(0, cableElev - eB) + Math.sin(zipT * Math.PI * 6) * 3;
+      }
       var slope = (elev(bearWorld + 40) - elev(bearWorld - 40)) / 80;
-      var ang = airborne ? 0 : clamp(Math.atan(slope) * 28.6, -14, 14);
-      bear.style.transform = 'translate3d(0,' + (-(eB + jy)).toFixed(1) + 'px,0) rotate(' + (-ang).toFixed(1) + 'deg)';
+      var ang = onZip ? -7 : airborne ? 0 : clamp(Math.atan(slope) * 28.6, -14, 14);
+      bear.style.transform = 'translate3d(0,' + (-(eB + jy + zipLift)).toFixed(1) + 'px,0) rotate(' + (-ang).toFixed(1) + 'deg)';
 
       bearFlip.style.transform = facingBack ? 'scaleX(-1)' : '';
-      bear.classList.toggle('is-walking', moving && !airborne);
+      bear.classList.toggle('is-walking', moving && !airborne && !onZip);
 
       /* head-bump the "?" blocks while airborne near their height */
       if (airborne && jy > 46) {
@@ -1112,6 +1178,9 @@ $ gh repo view openim
     stage.classList.add('bq-run');
     /* rewind world state so the road is playable again */
     x = 0; prevX = 0; prevBearWorld = 0; inertia = 0; tweenTarget = -1;
+    zipEntered = false; zipFinished = false;
+    stage.classList.remove('bq-zip-riding');
+    bear.classList.remove('is-zip');
     jy = 0; jvy = 0; airborne = false; jumpsUsed = 0;
     lvGot = 0; coinCount = 0; gotCount = 0;
     if (lvNum) lvNum.textContent = '0';

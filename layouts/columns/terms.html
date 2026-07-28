@@ -52,7 +52,7 @@
       <li class="column-entry">
         <a class="column-entry__link" href="{{ $t.RelPermalink }}">
           <span class="column-entry__num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
-          <span class="column-entry__body">
+          <div class="column-entry__body">
             <h2 class="column-entry__title">{{ $t.Title }}</h2>
             {{- with $t.Params.subtitle }}
             <p class="column-entry__subtitle">{{ . }}</p>
@@ -60,14 +60,14 @@
             {{- with $t.Description }}
             <p class="column-entry__desc">{{ . }}</p>
             {{- end }}
-            <p class="column-entry__meta">
+            <div class="column-entry__meta">
               <span>{{ if $isZh }}{{ $count }} 篇{{ else }}{{ $count }} essays{{ end }}</span>
               {{- if $reading }}
-              <span class="column-entry__meta-sep">·</span>
+              <span class="column-entry__meta-sep" aria-hidden="true"></span>
               <span>{{ if $isZh }}约 {{ $reading }} 分钟{{ else }}{{ $reading }} min total{{ end }}</span>
               {{- end }}
-            </p>
-          </span>
+            </div>
+          </div>
           <svg class="column-entry__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="12 5 19 12 12 19"/>

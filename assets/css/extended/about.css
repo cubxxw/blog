@@ -404,6 +404,223 @@ body.dark .bq-sun {
 .bq-terrain-line { fill: none; stroke: var(--color-ink); stroke-width: 2.5; opacity: 0.75; }
 .bq-terrain-notch { stroke: var(--color-ink-muted); stroke-width: 2; opacity: 0.7; }
 
+/* ── Annapurna sequence: valley, snow line, high camp, zipline ── */
+.bq-alpine {
+  width: 5900px;
+  height: clamp(300px, 48vh, 510px);
+  --lift: 0px;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bq-js .bq-alpine {
+  bottom: -1px;
+  transform: none;
+  opacity: 0;
+}
+.bq-js .bq-alpine.bq-in { opacity: 1; }
+.bq-mountain {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 1450px;
+  height: 430px;
+  clip-path: polygon(0 100%, 16% 76%, 28% 79%, 51% 8%, 69% 62%, 78% 55%, 100% 100%);
+  background: color-mix(in srgb, var(--color-rule) 74%, var(--color-paper));
+  filter: drop-shadow(0 -1px 0 color-mix(in srgb, var(--color-ink) 20%, transparent));
+}
+.bq-mountain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(42% 27%, 51% 8%, 60% 35%, 56% 31%, 52% 43%, 48% 30%);
+  background: color-mix(in srgb, white 88%, var(--color-paper));
+}
+.bq-mountain--1 { left: 300px; scale: 0.72; transform-origin: bottom left; opacity: 0.62; }
+.bq-mountain--2 { left: 1320px; height: 500px; opacity: 0.94; }
+.bq-mountain--3 { left: 2920px; scale: 0.82; transform-origin: bottom left; opacity: 0.7; }
+body.dark .bq-mountain::after {
+  background: color-mix(in srgb, var(--color-paper) 54%, #dce8ef);
+}
+.bq-snow-wind {
+  position: absolute;
+  display: block;
+  width: 130px;
+  height: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, white 75%, var(--color-rule));
+  box-shadow: 44px 18px 0 -0.5px color-mix(in srgb, white 65%, var(--color-rule));
+  opacity: 0.7;
+  animation: bq-snow-gust 2.4s ease-in-out infinite;
+}
+.bq-snow-wind--1 { left: 1740px; top: 24%; }
+.bq-snow-wind--2 { left: 2420px; top: 42%; animation-delay: -0.8s; }
+.bq-snow-wind--3 { left: 3340px; top: 19%; animation-delay: -1.5s; }
+@keyframes bq-snow-gust {
+  50% { translate: 68px -8px; opacity: 0.18; }
+}
+.bq-route-card {
+  width: 300px;
+  padding: 14px 16px 13px;
+  --lift: 68px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 28%, var(--color-rule));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-paper) 90%, transparent);
+  box-shadow: 5px 5px 0 color-mix(in srgb, var(--color-ink) 9%, transparent);
+}
+.bq-route-card > span,
+.bq-route-card strong { display: block; }
+.bq-route-code {
+  margin-bottom: 5px;
+  font: 700 0.62rem/1 var(--font-mono);
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+}
+.bq-route-card strong {
+  font: 600 1.05rem/1.35 var(--font-display);
+  color: var(--color-ink);
+}
+.bq-route-card strong + span {
+  margin-top: 5px;
+  font: 0.72rem/1.5 var(--font-meta);
+  color: var(--color-ink-muted);
+}
+.bq-route-card > i {
+  display: block;
+  height: 4px;
+  margin-top: 11px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: var(--color-rule);
+}
+.bq-route-card > i em {
+  display: block;
+  width: 76%;
+  height: 100%;
+  background: var(--color-accent);
+}
+.bq-trail-mark {
+  width: 58px;
+  --lift: 74px;
+  text-align: center;
+}
+.bq-trail-mark i {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 6px;
+  rotate: 45deg;
+  border: 2px solid var(--color-ink);
+  background: var(--color-accent-soft);
+  box-shadow: inset 0 0 0 6px var(--color-paper);
+}
+.bq-trail-mark span {
+  padding: 2px 5px;
+  border-radius: 4px;
+  font: 700 0.6rem/1 var(--font-mono);
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+.bq-trail-mark--snow i { background: color-mix(in srgb, white 78%, var(--color-accent-soft)); }
+.bq-snow-camp {
+  width: 210px;
+  height: 86px;
+  --lift: 0px;
+}
+.bq-tent {
+  position: absolute;
+  left: 8px;
+  bottom: 0;
+  width: 105px;
+  height: 60px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: var(--color-accent);
+  filter: drop-shadow(0 3px 0 color-mix(in srgb, var(--color-ink) 40%, transparent));
+}
+.bq-tent::after {
+  content: '';
+  position: absolute;
+  left: 48%;
+  bottom: 0;
+  width: 4px;
+  height: 42px;
+  rotate: -18deg;
+  transform-origin: bottom;
+  background: color-mix(in srgb, var(--color-ink) 70%, transparent);
+}
+.bq-tent--small {
+  left: 104px;
+  width: 72px;
+  height: 42px;
+  opacity: 0.68;
+}
+.bq-snow-camp > i {
+  position: absolute;
+  left: 12px;
+  bottom: 66px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font: 700 0.58rem/1 var(--font-mono);
+  font-style: normal;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+}
+.bq-zipline {
+  width: 1850px;
+  height: 330px;
+  --lift: 0px;
+  pointer-events: none;
+  z-index: 2;
+}
+.bq-js .bq-zipline { bottom: 0; }
+.bq-zip-cable {
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 1870px;
+  height: 3px;
+  border-radius: 99px;
+  transform: rotate(7.55deg);
+  transform-origin: left center;
+  background: var(--color-ink);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--color-paper) 55%, transparent);
+}
+.bq-zip-post {
+  position: absolute;
+  bottom: 0;
+  width: 9px;
+  border-radius: 5px 5px 0 0;
+  background: var(--color-ink-muted);
+}
+.bq-zip-post::after {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 49px;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--color-ink);
+}
+.bq-zip-post--start { left: 0; height: 310px; }
+.bq-zip-post--end { right: 0; height: 66px; }
+.bq-zip-label {
+  position: absolute;
+  left: 16px;
+  top: -18px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-ink);
+  border-radius: 7px;
+  font: 700 0.64rem/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+.bq-zip-riding .bq-drive {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
 .bq-js .bq-prop {
   position: absolute;
   left: var(--x, 0px);
@@ -426,6 +643,10 @@ body.dark .bq-sun {
 .bq:not(.bq-js) .bq-sign--cliff,
 .bq:not(.bq-js) .bq-sign--peak,
 .bq:not(.bq-js) .bq-peakflag,
+.bq:not(.bq-js) .bq-alpine,
+.bq:not(.bq-js) .bq-trail-mark,
+.bq:not(.bq-js) .bq-snow-camp,
+.bq:not(.bq-js) .bq-zipline,
 .bq:not(.bq-js) .bq-clear { display: none; }
 .bq:not(.bq-js) .bq-level { width: auto; }
 .bq:not(.bq-js) .bq-level-card {
@@ -1030,6 +1251,27 @@ body.dark .bq-sun {
 .bq-bear.is-walking .tb-leg--a { animation: tb-step 0.38s var(--ease-in-out) infinite; }
 .bq-bear.is-walking .tb-leg--b { animation: tb-step 0.38s var(--ease-in-out) 0.19s infinite; }
 .bq-bear.is-walking .bq-bear-flip { animation: bq-bob 0.38s var(--ease-in-out) infinite; }
+.bq-bear.is-zip::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 49%;
+  bottom: 82%;
+  width: 2px;
+  height: 48px;
+  transform-origin: bottom;
+  rotate: 7deg;
+  background: var(--color-ink);
+  box-shadow: 0 -4px 0 3px var(--color-accent);
+}
+.bq-bear.is-zip .bq-bear-flip {
+  animation: bq-zip-swing 0.72s var(--ease-in-out) infinite;
+}
+.bq-bear.is-zip .tb-leg--a { transform: rotate(28deg); }
+.bq-bear.is-zip .tb-leg--b { transform: rotate(-25deg); }
+@keyframes bq-zip-swing {
+  50% { translate: 0 4px; rotate: 3deg; }
+}
 @keyframes tb-step {
   0%, 100% { transform: rotate(14deg); }
   50%      { transform: rotate(-14deg); }
@@ -1785,6 +2027,10 @@ body.dark .bq-sun {
   .bq-hello-sub { font-size: 0.95rem; }
   .bq-photo { width: 190px; }
   .bq-photo--wide { width: 240px; }
+  .bq-route-card { width: 250px; }
+  .bq-alpine { height: 350px; }
+  .bq-mountain { opacity: 0.55; }
+  .bq-zip-label { font-size: 0.56rem; }
   .bq-term { width: 270px; }
   .bq-kiosk { width: 300px; padding: 13px 15px 12px; }
   .bq-arch { width: 320px; }
