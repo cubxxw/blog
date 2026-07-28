@@ -17,6 +17,9 @@
   functions = "netlify/functions"
 
 [build.environment]
+  # Content tooling imports node:fs.globSync, which requires Node 22+.
+  # Keep the build runtime aligned with GitHub Actions and Netlify plugins.
+  NODE_VERSION = "22.23.1"
   HUGO_VERSION = "0.145.0"
   HUGO_EXTENDED = "true"
   SECRETS_SCAN_OMIT_PATHS = ".obsidian/**"

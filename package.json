@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Blog E2E tests with Playwright",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev:stop": "bash scripts/stop-netlify-dev.sh",
     "tags:check": "node scripts/normalize-tags.mjs --check",
