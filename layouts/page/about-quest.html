@@ -44,6 +44,33 @@
     <span class="bq-cloud bq-cloud--3"></span>
   </div>
 
+  <!-- The upper half is narrative space, not empty sky. This lightweight
+       scene layer gives every chapter a title, objective and movement cue
+       while keeping the road itself unobstructed. -->
+  <div class="bq-scene" id="bqScene" aria-hidden="true">
+    <div class="bq-scene-copy">
+      <span class="bq-scene-index" id="bqSceneIndex">00</span>
+      <p class="bq-scene-kicker" id="bqSceneKicker">{{ if $isZH }}序章 · 个人存档{{ else }}PROLOGUE · PLAYER SAVE{{ end }}</p>
+      <p class="bq-scene-title" id="bqSceneTitle">{{ if $isZH }}一段正在发生的人生{{ else }}A life in motion{{ end }}</p>
+      <p class="bq-scene-line" id="bqSceneLine">{{ if $isZH }}向前走，故事会自己出现。{{ else }}Move forward. The story will meet you there.{{ end }}</p>
+    </div>
+    <div class="bq-mission">
+      <span class="bq-mission-label">{{ if $isZH }}30 秒认识我{{ else }}MEET ME IN 30 SECONDS{{ end }}</span>
+      <strong id="bqMission">{{ if $isZH }}收集三个身份线索{{ else }}Collect three identity signals{{ end }}</strong>
+      <span class="bq-identity-map" id="bqIdentityMap">
+        <i data-signal="0">{{ if $isZH }}开源{{ else }}OPEN SOURCE{{ end }}</i>
+        <i data-signal="1">{{ if $isZH }}远行{{ else }}THE ROAD{{ end }}</i>
+        <i data-signal="2">{{ if $isZH }}AI 产品{{ else }}AI BUILDER{{ end }}</i>
+      </span>
+      <span class="bq-mission-meta"><i id="bqProgressFill"></i></span>
+    </div>
+  </div>
+  <div class="bq-drive" id="bqDrive" aria-hidden="true">
+    <span class="bq-drive-key">→</span>
+    <span><b id="bqDriveMode">{{ if $isZH }}巡航{{ else }}CRUISE{{ end }}</b><small>{{ if $isZH }}按住冲刺 · 松开滑行{{ else }}hold to sprint · release to glide{{ end }}</small></span>
+    <i class="bq-drive-meter"><em id="bqDriveFill"></em></i>
+  </div>
+
   <!-- parallax hills -->
   <div class="bq-far" id="bqFar" aria-hidden="true">
     <svg preserveAspectRatio="none" width="100%" height="100%">
@@ -270,10 +297,15 @@ $ gh repo view openim
   <!-- START — life, played as a game -->
   <div class="bq-start" id="bqStart">
     <p class="bq-start-kicker">BEAR QUEST</p>
-    <p class="bq-start-title">{{ if $isZH }}人生如戏{{ else }}Life, played{{ end }}</p>
-    <p class="bq-start-tag">{{ if $isZH }}游戏人生——观察世界，观察自己；理解世界，理解自己。这一页是我的存档。{{ else }}Play life as a game — watch the world, watch yourself; understand both. This page is my save file.{{ end }}</p>
+    <p class="bq-start-title">{{ if $isZH }}边走，边认识我{{ else }}Meet me in motion{{ end }}</p>
+    <p class="bq-start-tag">{{ if $isZH }}我是熊鑫伟：开源贡献者、AI 产品构建者，也是在 9 个国家走过 400 多公里的长期旅行者。这不是一份简历，是一段可以亲自走过的故事。{{ else }}I'm Xinwei Xiong: an open-source contributor, AI product builder, and long-term traveler who crossed 400+ km through nine countries. This isn't a résumé. It's a story you can walk through.{{ end }}</p>
+    <div class="bq-start-profile" aria-label="{{ if $isZH }}身份摘要{{ else }}Identity summary{{ end }}">
+      <span>{{ if $isZH }}开源建设者{{ else }}OPEN-SOURCE BUILDER{{ end }}</span>
+      <span>{{ if $isZH }}AI 产品创造者{{ else }}AI PRODUCT MAKER{{ end }}</span>
+      <span>{{ if $isZH }}长期旅行者{{ else }}LONG-TERM TRAVELER{{ end }}</span>
+    </div>
     <p class="bq-start-meta">{{ if $isZH }}约 90 秒 · 7 个章节 · 随时暂停或跳过{{ else }}About 90 seconds · 7 chapters · pause or skip anytime{{ end }}</p>
-    <button class="bq-start-btn" id="bqStartBtn" type="button">▶ START</button>
+    <button class="bq-start-btn" id="bqStartBtn" type="button">▶ {{ if $isZH }}进入故事{{ else }}PLAY MY STORY{{ end }}</button>
     <button class="bq-start-restart" id="bqStartRestart" type="button" hidden>{{ if $isZH }}从头开始{{ else }}Start over{{ end }}</button>
     <p class="bq-start-hint">{{ if $isZH }}滚动推进剧情 · <kbd>←</kbd><kbd>→</kbd> 行走 · <kbd>空格</kbd> 跳跃（可二段跳）{{ else }}Scroll to advance · <kbd>←</kbd><kbd>→</kbd> walk · <kbd>Space</kbd> to jump (double-jump works){{ end }}</p>
     <a class="bq-start-skip" id="bqStartSkip" href="#start-here">{{ if $isZH }}直接看文字版 ↓{{ else }}Straight to the text ↓{{ end }}</a>
@@ -324,6 +356,16 @@ $ gh repo view openim
   var chaptersNav = document.getElementById('bqChapters');
   var wordsHud = document.getElementById('bqWords');
   var startOv = document.getElementById('bqStart');
+  var scene = document.getElementById('bqScene');
+  var sceneIndex = document.getElementById('bqSceneIndex');
+  var sceneKicker = document.getElementById('bqSceneKicker');
+  var sceneTitle = document.getElementById('bqSceneTitle');
+  var sceneLine = document.getElementById('bqSceneLine');
+  var mission = document.getElementById('bqMission');
+  var identityMap = document.getElementById('bqIdentityMap');
+  var progressFill = document.getElementById('bqProgressFill');
+  var driveMode = document.getElementById('bqDriveMode');
+  var driveFill = document.getElementById('bqDriveFill');
   var lvNum = document.getElementById('bqLvNum');
   var lvTotalEl = document.getElementById('bqLvTotal');
   var skipBtn = document.getElementById('bqSkip');
@@ -334,13 +376,13 @@ $ gh repo view openim
   var BEAR_AT = 0.34;            /* bear's screen x as viewport fraction */
   var KM_TOTAL = 412;
   var CHAPTERS = [
-    { x: 0,     zh: '起点',   en: 'Start'    },
-    { x: 1800,  zh: '2001',   en: '2001'     },
-    { x: 3200,  zh: '开源',   en: 'Open src' },
-    { x: 4640,  zh: '远行',   en: 'The road' },
-    { x: 12350, zh: '在造',   en: 'Building' },
-    { x: 15750, zh: '三个词', en: '3 words'  },
-    { x: 18150, zh: '营地',   en: 'Camp'     }
+    { x: 0,     zh: '起点',   en: 'Start',    kzh: '序章 · 个人存档', ken: 'PROLOGUE · PLAYER SAVE', tzh: '熊鑫伟，正在路上', ten: 'Xinwei Xiong, in motion', lzh: '开源贡献者 · AI 产品构建者 · 长期旅行者', len: 'Open-source contributor · AI product builder · long-term traveler', mzh: '收集三个身份线索', men: 'Collect three identity signals' },
+    { x: 1800,  zh: '2001',   en: '2001',     kzh: '第一章 · 普通起点', ken: 'CHAPTER 01 · AN ORDINARY START', tzh: '没有光环，就让好奇心带路', ten: 'No prestige. Curiosity led instead.', lzh: '2001 年出生，普通本科；越普通的起点，越早学会主动寻找资源。', len: 'Born in 2001, from an ordinary university — so I learned early to seek resources instead of waiting for them.', mzh: '找到驱动我的东西', men: 'Find what keeps me moving' },
+    { x: 3200,  zh: '开源',   en: 'Open src', kzh: '第二章 · 公开建造', ken: 'CHAPTER 02 · BUILD IN PUBLIC', tzh: '在开源世界建立坐标', ten: 'I found my coordinates in open source', lzh: 'OpenIM 头号贡献者。白天写代码，晚上写博客，把学习过程留给后来的人。', len: 'Top OpenIM contributor. Code by day, blog by night — leaving a trail others can follow.', mzh: '身份线索 1/3 · 开源建设者', men: 'Signal 1/3 · Open-source builder' },
+    { x: 4640,  zh: '远行',   en: 'The road', kzh: '第三章 · 远行', ken: 'CHAPTER 03 · THE ROAD', tzh: '12 个月 · 9 个国家', ten: '12 months · 9 countries', lzh: '走过 400 多公里、翻过 5416 米山口；地图开始于向外走，也终于向内看。', len: 'Over 400 km and a 5,416 m summit — the map went outward, while the journey turned inward.', mzh: '身份线索 2/3 · 长期旅行者', men: 'Signal 2/3 · Long-term traveler' },
+    { x: 12350, zh: '在造',   en: 'Building', kzh: '第四章 · 现在正在做', ken: 'CHAPTER 04 · WHAT I BUILD NOW', tzh: '一个人，也能造完整的产品', ten: 'One person can still build complete products', lzh: 'Solo Compass、DayPage、Telepace：用 AI 延伸人的判断，而不是替代。', len: 'Solo Compass, DayPage, Telepace — using AI to extend human judgment, not replace it.', mzh: '身份线索 3/3 · AI 产品创造者', men: 'Signal 3/3 · AI product maker' },
+    { x: 15750, zh: '三个词', en: '3 words',  kzh: '第五章 · 收集', ken: 'CHAPTER 05 · COLLECT', tzh: '真实 · 好奇 · 连接者', ten: 'Authentic · Curious · Connector', lzh: '如果只能留下三个词，就留下这三个。', len: 'If only three words remain, let them be these.', mzh: '收集三颗果子', men: 'Collect the three berries' },
+    { x: 18150, zh: '营地',   en: 'Camp',     kzh: '终章 · 营地', ken: 'FINAL CHAPTER · CAMP', tzh: '我们算认识了', ten: 'Now we have met', lzh: '路走到这里，对话可以从这里开始。', len: 'The road ends here. The conversation can start.', mzh: '抵达篝火，完成旅程', men: 'Reach the fire and clear the run' }
   ];
   /* elevation profile [worldX, px above flat ground]: hike up, one
      steep climbing pitch, the 5,416 m summit, then back down */
@@ -350,7 +392,9 @@ $ gh repo view openim
     [8300, 110], [9400, 40], [10300, 0], [21600, 0]
   ];
   var isZH = document.documentElement.lang.indexOf('zh') === 0;
-  var SAVE_KEY = 'bear-quest-v2:' + (isZH ? 'zh' : 'en');
+  /* v3 resets the old journey once so returning visitors see the new
+     identity-first opening instead of resuming halfway through it. */
+  var SAVE_KEY = 'bear-quest-v3:' + (isZH ? 'zh' : 'en');
   var toastEl = document.getElementById('bqToast');
   var toastTimer = 0;
 
@@ -519,6 +563,7 @@ $ gh repo view openim
   var dragging = false, dragStartX = 0, dragStartY = 0, dragStartWorld = 0, dragVel = 0,
       lastDragX = 0, lastDragY = 0, lastDragT = 0;
   var inertia = 0;
+  var boost = 0;
   var vw = stage.clientWidth;
   var AUTO = 120, FAST = 460, BACK = -380;
   var visible = true;
@@ -527,11 +572,60 @@ $ gh repo view openim
   var lastPrint = 0;
   var last = performance.now();
   var lastSave = 0;
+  var activeChapter = -1;
+  var driveState = '';
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function maxX() { return Math.max(0, L - vw); }
-  function userTouched() { manualUntil = performance.now() + 3200; }
+  function userTouched() {}
   function tweenTo(t) { tweenTarget = clamp(t, 0, maxX()); }
+
+  function setChapter(i) {
+    if (i === activeChapter) return;
+    var previousChapter = activeChapter;
+    activeChapter = i;
+    var c = CHAPTERS[i];
+    if (sceneIndex) sceneIndex.textContent = String(i).padStart(2, '0');
+    if (sceneKicker) sceneKicker.textContent = isZH ? c.kzh : c.ken;
+    if (sceneTitle) sceneTitle.textContent = isZH ? c.tzh : c.ten;
+    if (sceneLine) sceneLine.textContent = isZH ? c.lzh : c.len;
+    if (mission) mission.textContent = isZH ? c.mzh : c.men;
+    if (identityMap) {
+      [].forEach.call(identityMap.querySelectorAll('[data-signal]'), function (chip) {
+        var signal = Number(chip.getAttribute('data-signal'));
+        var unlocked = (signal === 0 && i >= 2) || (signal === 1 && i >= 3) || (signal === 2 && i >= 4);
+        chip.classList.toggle('is-unlocked', unlocked);
+      });
+    }
+    if (scene) {
+      scene.classList.remove('bq-scene-enter');
+      void scene.offsetWidth;
+      scene.classList.add('bq-scene-enter');
+    }
+    stage.setAttribute('data-chapter', String(i));
+    if (previousChapter >= 0 && i > previousChapter && (i === 2 || i === 3 || i === 4)) {
+      var labelsZH = ['开源建设者', '长期旅行者', 'AI 产品创造者'];
+      var labelsEN = ['Open-source builder', 'Long-term traveler', 'AI product maker'];
+      var signalIndex = i - 2;
+      toast('身份线索解锁 · ' + labelsZH[signalIndex], 'Identity signal unlocked · ' + labelsEN[signalIndex]);
+    }
+  }
+
+  function setDriveState(next, power) {
+    if (next !== driveState) {
+      driveState = next;
+      if (driveMode) {
+        driveMode.textContent = next === 'sprint'
+          ? (isZH ? '冲刺' : 'SPRINT')
+          : next === 'glide'
+            ? (isZH ? '滑行' : 'GLIDE')
+            : (isZH ? '巡航' : 'CRUISE');
+      }
+    }
+    stage.classList.toggle('bq-sprinting', next === 'sprint');
+    stage.classList.toggle('bq-gliding', next === 'glide');
+    if (driveFill) driveFill.style.transform = 'scaleX(' + clamp(power, 0.08, 1).toFixed(3) + ')';
+  }
 
   function start() {
     if (started) return;
@@ -761,10 +855,31 @@ $ gh repo view openim
         x += (tweenTarget - x) * Math.min(1, dt * 6);
         if (Math.abs(tweenTarget - x) < 2) { x = tweenTarget; tweenTarget = -1; }
       } else {
-        if (keyR) { vx = FAST; userTouched(); }
-        else if (keyL) { vx = BACK; userTouched(); }
-        else if (Math.abs(inertia) > 8) { vx = inertia; inertia *= Math.pow(0.9, dt * 60); }
-        else if (auto) { inertia = 0; vx = AUTO * speed; }
+        var cruise = AUTO * speed;
+        var sprint = Math.max(FAST * Math.sqrt(speed), cruise * 2.2);
+        if (keyR) {
+          boost = clamp(boost + dt * 2.6, 0, 1);
+          vx = cruise + (sprint - cruise) * (0.58 + boost * 0.42);
+          setDriveState('sprint', 0.58 + boost * 0.42);
+        }
+        else if (keyL) {
+          vx = BACK;
+          boost = Math.max(0, boost - dt * 0.9);
+          setDriveState('cruise', 0.12);
+        }
+        else if (Math.abs(inertia) > 8) {
+          vx = inertia;
+          inertia *= Math.pow(0.9, dt * 60);
+          setDriveState(Math.abs(inertia) > cruise * 1.25 ? 'glide' : 'cruise', Math.abs(inertia) / sprint);
+        }
+        else if (auto) {
+          inertia = 0;
+          /* Releasing → preserves momentum, then eases back to the selected
+             cruise speed. There is deliberately no idle/cooldown state. */
+          vx = cruise + (sprint - cruise) * boost;
+          boost = Math.max(0, boost - dt * 0.58);
+          setDriveState(boost > 0.04 ? 'glide' : 'cruise', vx / sprint);
+        }
         else vx = 0;
         x += vx * dt;
       }
@@ -872,8 +987,10 @@ $ gh repo view openim
       /* km + chapter */
       var kmVal = Math.round(x / maxX() * KM_TOTAL) || 0;
       if (kmNum.textContent !== String(kmVal)) kmNum.textContent = kmVal;
+      if (progressFill) progressFill.style.transform = 'scaleX(' + (x / maxX()).toFixed(4) + ')';
       var ci = 0;
       for (var k = 0; k < CHAPTERS.length; k++) if (bearWorld >= CHAPTERS[k].x) ci = k;
+      setChapter(ci);
       for (var d = 0; d < dots.length; d++) dots[d].classList.toggle('bq-dot-on', d === ci);
       if (started && !finished) saveState(false);
     }
@@ -899,7 +1016,10 @@ $ gh repo view openim
     else if (k === ' ') { jump(); e.preventDefault(); }
   });
   window.addEventListener('keyup', function (e) {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'd' || e.key === 'D') keyR = false;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'd' || e.key === 'D') {
+      keyR = false;
+      boost = Math.max(boost, 0.68);
+    }
     if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keyL = false;
   });
 

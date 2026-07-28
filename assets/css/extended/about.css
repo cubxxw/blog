@@ -41,6 +41,23 @@
   overflow: hidden;
   touch-action: pan-y;
   cursor: grab;
+  background:
+    radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--color-accent-soft) 72%, transparent) 0 8rem, transparent 24rem),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--color-paper) 82%, var(--color-accent-soft)) 0%,
+      var(--color-paper) 66%);
+}
+.bq.bq-js::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-rule) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-rule) 34%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
 }
 /* until the run is cleared, swipes drive the game instead of the page */
 .bq.bq-js:not(.bq-done) { touch-action: pan-y; }
@@ -103,10 +120,244 @@ body.dark .bq-sun {
   pointer-events: none;
   will-change: transform;
 }
-.bq-js .bq-far { height: 220px; }
-.bq-js .bq-mid { height: 140px; }
-.bq-hill-far { fill: var(--color-rule); opacity: 0.45; }
-.bq-hill-mid { fill: var(--color-accent-soft); opacity: 0.55; }
+.bq-js .bq-far { height: clamp(280px, 44vh, 520px); }
+.bq-js .bq-mid { height: clamp(180px, 29vh, 340px); }
+.bq-hill-far { fill: var(--color-rule); opacity: 0.62; }
+.bq-hill-mid { fill: var(--color-accent-soft); opacity: 0.78; }
+
+/* ── Chapter stage: the upper viewport carries story and intent ── */
+.bq-scene,
+.bq-drive { display: none; }
+.bq-js .bq-scene {
+  display: grid;
+  grid-template-columns: minmax(260px, 620px) minmax(210px, 280px);
+  align-items: end;
+  gap: clamp(32px, 8vw, 140px);
+  position: absolute;
+  z-index: 2;
+  top: clamp(42px, 8vh, 88px);
+  left: clamp(24px, 8vw, 154px);
+  right: clamp(24px, 8vw, 154px);
+  pointer-events: none;
+}
+.bq-scene-copy {
+  position: relative;
+  padding: 20px 34px 20px 28px;
+  border-left: 2px solid color-mix(in srgb, var(--color-accent) 72%, var(--color-ink));
+  border-radius: 0 18px 18px 0;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--color-paper) 88%, transparent) 0%,
+    color-mix(in srgb, var(--color-paper) 66%, transparent) 72%,
+    transparent 100%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+.bq-scene-index {
+  position: absolute;
+  z-index: -1;
+  left: -14px;
+  top: -60px;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 11vw, 10rem);
+  line-height: 1;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--color-ink) 7%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+.bq-scene-kicker {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+.bq-scene-title {
+  max-width: 720px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+.bq-scene-line {
+  max-width: 560px;
+  margin: 14px 0 0;
+  font-family: var(--font-prose);
+  font-size: clamp(0.9rem, 1.15vw, 1.08rem);
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+}
+.bq-mission {
+  padding: 16px 17px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 24%, var(--color-rule));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-paper) 72%, transparent);
+  box-shadow: 4px 5px 0 color-mix(in srgb, var(--color-ink) 8%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.bq-mission-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-ink-muted);
+}
+.bq-mission strong {
+  display: block;
+  min-height: 2.6em;
+  font-family: var(--font-meta);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--color-ink);
+}
+.bq-identity-map {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+.bq-identity-map i {
+  position: relative;
+  overflow: hidden;
+  padding: 4px 7px;
+  border: 1px dashed var(--color-rule);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted);
+  opacity: 0.5;
+  white-space: nowrap;
+  transition: color 0.35s var(--ease-out), border-color 0.35s var(--ease-out),
+              background 0.35s var(--ease-out), opacity 0.35s var(--ease-out),
+              transform 0.35s var(--ease-out);
+}
+.bq-identity-map i::before {
+  content: '◇';
+  margin-right: 4px;
+}
+.bq-identity-map i.is-unlocked {
+  color: var(--color-ink);
+  border-style: solid;
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent-soft) 44%, transparent);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.bq-identity-map i.is-unlocked::before {
+  content: '◆';
+  color: var(--color-accent);
+}
+.bq-mission-meta {
+  display: block;
+  height: 4px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-rule);
+}
+.bq-mission-meta i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.bq-scene-enter .bq-scene-copy,
+.bq-scene-enter .bq-mission {
+  animation: bq-scene-in 0.62s var(--ease-out) both;
+}
+.bq-scene-enter .bq-mission { animation-delay: 80ms; }
+@keyframes bq-scene-in {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+.bq-js .bq-drive {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  z-index: 3;
+  right: clamp(22px, 4vw, 72px);
+  bottom: 112px;
+  width: 210px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, var(--color-rule));
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--color-paper) 80%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.bq-drive-key {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border: 1px solid var(--color-ink);
+  border-bottom-width: 3px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: var(--color-ink);
+}
+.bq-drive > span:nth-child(2) {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 1px;
+}
+.bq-drive b {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+.bq-drive small {
+  font-family: var(--font-meta);
+  font-size: 0.62rem;
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+}
+.bq-drive-meter {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 5px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-rule);
+}
+.bq-drive-meter em {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0.08);
+  transform-origin: left center;
+}
+.bq-sprinting .bq-drive {
+  transform: translateX(-5px);
+  border-color: var(--color-accent);
+}
+.bq-sprinting .bq-drive-key {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+}
+.bq-gliding .bq-drive { border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-rule)); }
 
 /* ── Ground ── */
 .bq-ground { display: none; }
@@ -824,6 +1075,11 @@ body.dark .bq-sun {
   gap: 18px;
   padding: 0 22px;
   z-index: 4;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 18%, var(--color-rule));
+  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  box-shadow: 0 -14px 40px -30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .bq-km {
@@ -1314,20 +1570,37 @@ body.dark .bq-sun {
   color: var(--color-ink);
 }
 .bq-start-tag {
-  max-width: 460px;
+  max-width: 620px;
   margin: 0;
   font-family: var(--font-prose);
   font-size: 1rem;
   line-height: 1.9;
   color: var(--color-ink-muted);
 }
-
 .bq-start-meta {
   margin: 10px 0 18px;
   color: var(--color-ink-muted);
   font-family: var(--font-meta);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
+}
+.bq-start-profile {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 680px;
+}
+.bq-start-profile span {
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 24%, var(--color-rule));
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--color-paper) 78%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-ink);
 }
 .bq-start-btn {
   appearance: none;
@@ -1450,6 +1723,28 @@ body.dark .bq-sun {
   .bq-js .bq-far, .bq-js .bq-mid { bottom: 76px; }
   .bq-js .bq-ground { bottom: 74px; }
   .bq-js .bq-world { bottom: 76px; }
+  .bq-js .bq-scene {
+    display: block;
+    top: 24px;
+    left: 20px;
+    right: 20px;
+  }
+  .bq-scene-copy { padding: 10px 18px; }
+  .bq-scene-index { top: -30px; left: 0; font-size: 5rem; }
+  .bq-scene-kicker { margin-bottom: 5px; font-size: 0.58rem; }
+  .bq-scene-title { max-width: 92%; font-size: clamp(1.6rem, 8.5vw, 2.6rem); }
+  .bq-scene-line { max-width: 90%; margin-top: 7px; font-size: 0.78rem; line-height: 1.45; }
+  .bq-mission { display: none; }
+  .bq-js .bq-drive {
+    right: 12px;
+    bottom: 84px;
+    width: auto;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  .bq-drive-key { width: 30px; height: 30px; }
+  .bq-drive > span:nth-child(2),
+  .bq-drive-meter { display: none; }
   .bq-js .bq-hud { height: 74px; padding: 0 14px; gap: 10px; }
   .bq-dot span { display: none; }
   .bq-dot { padding: 6px 5px; }
@@ -1466,7 +1761,9 @@ body.dark .bq-sun {
   .bq-clear-card { padding: 22px 18px 18px; }
   .bq-clear-title { font-size: 1.25rem; }
   .bq-skip { font-size: 0.72rem; }
-  .bq-speed button { padding: 5px 7px; font-size: 0.6rem; }
+  /* The three text buttons collapse into unreadable vertical labels on a
+     phone. Touch already drives speed directly, so keep the game readable. */
+  .bq-speed { display: none; }
   .bq-toast { bottom: 86px; font-size: 0.68rem; }
 
   .bq-level { --lift: 120px; }
@@ -1475,6 +1772,8 @@ body.dark .bq-sun {
 
   .bq-start-tag { font-size: 0.92rem; max-width: 320px; }
   .bq-start-meta { max-width: 300px; margin-inline: auto; }
+  .bq-start-profile { max-width: 330px; gap: 5px; }
+  .bq-start-profile span { padding: 5px 7px; font-size: 0.52rem; }
   .bq-start-btn { font-size: 0.85rem; padding: 11px 28px; }
   .bq-start-hint { font-size: 0.7rem; }
 
