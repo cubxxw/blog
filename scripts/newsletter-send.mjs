@@ -123,7 +123,19 @@ async function createEmail(item, feed) {
     subject: item.title,
     body: buildBody(item, feed),
     status: MODE === 'send' ? 'about_to_send' : 'draft',
-    included_tags: [feed.tag],
+    // Buttondown removed included_tags/excluded_tags from the email schema.
+    // Audience targeting now uses a filter group.
+    filters: {
+      predicate: 'and',
+      filters: [
+        {
+          field: 'subscriber.tags',
+          operator: 'contains',
+          value: feed.tag,
+        },
+      ],
+      groups: [],
+    },
     metadata: { source: 'newsletter-send', post_url: item.link },
   };
   if (DRY_RUN) {
