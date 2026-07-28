@@ -43,7 +43,7 @@
   cursor: grab;
 }
 /* until the run is cleared, swipes drive the game instead of the page */
-.bq.bq-js:not(.bq-done) { touch-action: none; }
+.bq.bq-js:not(.bq-done) { touch-action: pan-y; }
 .bq.bq-js.bq-drag { cursor: grabbing; }
 .bq.bq-js.bq-drag .bq-world { user-select: none; }
 
@@ -943,6 +943,28 @@ body.dark .bq-sun {
   background: var(--color-accent);
 }
 
+.bq-pause {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background: var(--color-paper);
+  color: var(--color-ink-muted);
+  padding: 7px 10px;
+  font-family: var(--font-meta);
+  font-size: 0.66rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.bq-pause span { color: var(--color-accent); font-size: 0.72rem; }
+.bq-pause b { font-weight: 500; }
+.bq-pause[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  color: var(--color-ink);
+}
+
 .bq-toast {
   position: absolute;
   left: 50%;
@@ -1299,6 +1321,14 @@ body.dark .bq-sun {
   line-height: 1.9;
   color: var(--color-ink-muted);
 }
+
+.bq-start-meta {
+  margin: 10px 0 18px;
+  color: var(--color-ink-muted);
+  font-family: var(--font-meta);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
 .bq-start-btn {
   appearance: none;
   margin-top: 10px;
@@ -1319,6 +1349,22 @@ body.dark .bq-sun {
   color: var(--color-paper);
   animation-play-state: paused;
 }
+
+.bq-start-restart {
+  appearance: none;
+  display: block;
+  margin: 10px auto 0;
+  padding: 5px 8px;
+  border: 0;
+  border-bottom: 1px dashed var(--color-rule);
+  background: transparent;
+  color: var(--color-ink-muted);
+  font-family: var(--font-meta);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.bq-start-restart:hover { color: var(--color-accent); }
+.bq-start-restart[hidden] { display: none; }
 @keyframes bq-start-pulse {
   0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 35%, transparent); }
   50%      { box-shadow: 0 0 0 12px transparent; }
@@ -1411,9 +1457,12 @@ body.dark .bq-sun {
   .bq-words i { display: none; font-size: 0.62rem; padding: 3px 8px; }
   .bq-words i.bq-word-on { display: inline-block; }
   .bq-km { display: none; } /* lv chip + skip need the room */
+  .bq-coinhud { display: none; }
   .bq-lv { font-size: 0.66rem; padding: 5px 10px; }
-  .bq-coinhud { font-size: 0.66rem; padding: 5px 9px; gap: 5px; }
-  .bq-coinhud-dot { width: 9px; height: 9px; }
+  .bq-chapters { margin: 0 auto; gap: 1px; }
+  .bq-pause { padding: 7px 9px; }
+  .bq-pause b { display: none; }
+  .bq-speed { display: none; }
   .bq-clear-card { padding: 22px 18px 18px; }
   .bq-clear-title { font-size: 1.25rem; }
   .bq-skip { font-size: 0.72rem; }
@@ -1425,6 +1474,7 @@ body.dark .bq-sun {
   .bq-level-card { width: 220px; left: -87px; padding: 12px 13px 10px; }
 
   .bq-start-tag { font-size: 0.92rem; max-width: 320px; }
+  .bq-start-meta { max-width: 300px; margin-inline: auto; }
   .bq-start-btn { font-size: 0.85rem; padding: 11px 28px; }
   .bq-start-hint { font-size: 0.7rem; }
 
