@@ -109,11 +109,32 @@
 {{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $growthCSS) }}
 {{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
 {{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
+{{- $isNarrativeAbout := eq .Layout "about" -}}
+{{- if $isNarrativeAbout }}
+  {{- $aboutShellFiles := slice
+    (resources.Get "css/extended/tokens.css")
+    (resources.Get "css/extended/nav-elegant.css")
+    (resources.Get "css/extended/zzz-start-here.css")
+    (resources.Get "css/extended/zzz-nav-menu-motion.css")
+    (resources.Get "css/extended/zzz-nav-tap-feedback.css")
+    (resources.Get "css/extended/zzz-theme-toggle-reveal.css")
+    (resources.Get "css/extended/zz-theme-toggle-fx.css")
+  -}}
+  {{- $extended = $aboutShellFiles | resources.Concat "assets/css/about-shell.css" | resources.Minify -}}
+{{- end }}
 
 {{- /* About's interaction reset lives in the global zzz-* layers. Load the
        page stylesheet first so those later global rules keep winning on touch
        and reduced-motion devices exactly as before the split. */}}
 {{- if or (eq .Layout "about") (eq .Layout "about-quest") }}
+{{- if eq .Layout "about" }}
+{{- $aboutParts := split $aboutCSS.Content "/* ============================================================\n   About Studio" -}}
+{{- $aboutStudioSource := printf "/* About Studio%s" (index $aboutParts 1) -}}
+{{- $aboutPageCSS := $aboutStudioSource | resources.FromString "css/extended/about-studio.css" | resources.Minify -}}
+<style>{{ $aboutPageCSS.Content | safeCSS }}</style>
+{{- $aboutCalibrationCSS := resources.Get "css/about-calibration.css" | resources.Minify -}}
+<style>{{ $aboutCalibrationCSS.Content | safeCSS }}</style>
+{{- else }}
 {{- $aboutPageCSS := $aboutCSS | resources.Minify }}
 {{- if not site.Params.assets.disableFingerprinting }}
 {{- $aboutPageCSS = $aboutPageCSS | fingerprint }}
@@ -122,12 +143,16 @@
 <link crossorigin="anonymous" href="{{ $aboutPageCSS.RelPermalink }}" rel="preload stylesheet" as="style">
 {{- end }}
 {{- end }}
+{{- end }}
 
 {{- /* bundle all required css */}}
 {{- /* Add extended css after theme style */ -}}
-{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat "assets/css/stylesheet.css"  }}
+{{- $stylesheetTarget := cond $isNarrativeAbout "assets/css/about-stylesheet.css" "assets/css/stylesheet.css" -}}
+{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat $stylesheetTarget  }}
 
-{{- if not site.Params.assets.disableFingerprinting }}
+{{- if $isNarrativeAbout }}
+<style>{{ $stylesheet.Content | safeCSS }}</style>
+{{- else if not site.Params.assets.disableFingerprinting }}
 {{- $stylesheet := $stylesheet | fingerprint }}
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
 {{- else }}

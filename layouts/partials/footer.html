@@ -22,7 +22,8 @@
 
 {{- /* Reading Progress Bar (only on single pages) */ -}}
 {{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
-<div class="reading-progress-bar" id="reading-progress-bar" aria-label="Reading progress"></div>
+<div class="reading-progress-bar" id="reading-progress-bar" role="progressbar"
+     aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 {{- end -}}
 
 {{- partial "extend_footer.html" . }}
@@ -121,6 +122,7 @@
             const scrolled = window.scrollY;
             const progress = (scrolled / windowHeight) * 100;
             progressBar.style.width = progress + '%';
+            progressBar.setAttribute('aria-valuenow', String(Math.max(0, Math.min(100, Math.round(progress)))));
             // One-shot "you've reached the end" cue. The class is toggled
             // (not re-added every frame) so the pulse plays once on arrival
             // and replays only if the reader leaves the end and returns.
@@ -266,4 +268,4 @@
         }
     });
 </script>
-{{- end }} 
+{{- end }}

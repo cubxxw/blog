@@ -1,5 +1,7 @@
 {{- /* Remove old blog-ai.js, use new inline version */ -}}
 {{- /* <script src="{{ "/js/blog-ai.js" | relURL }}" defer></script> */ -}}
+{{- $isLeanAbout := or (eq .Layout "about") (eq .Layout "about-quest") -}}
+{{- if not $isLeanAbout }}
 <script src="{{ "/js/micro-interactions.js" | relURL }}" defer></script>
 <script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>
 {{- /* newsletter.js removed: it only served [data-newsletter-form] inside
@@ -35,3 +37,4 @@
 {{- end }}
 {{ partial "search-palette.html" . }}
 {{ partial "wechat-contact.html" . }}
+{{- end }}

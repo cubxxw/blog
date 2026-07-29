@@ -190,7 +190,7 @@
                 {{ $currentLang := .Lang }}
                 {{ $allTranslations := .Translations }}
 
-                <ul class="lang-switch" role="group" aria-label="Language">
+                <ul class="lang-switch" aria-label="Language">
                     {{ range $anySiteLang := .Site.Home.AllTranslations }}
                         {{ $code := .Lang }}
                         {{ $glyph := cond (eq $code "zh") "中" (.Lang | upper) }}

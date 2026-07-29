@@ -2,15 +2,17 @@
 title: "关于我"
 menuTitle: "关于"
 layout: "about"
-description: "熊鑫伟（cubxxw）的自我介绍：旅居、写作与产品，都是理解世界、理解自己，并把理解变成作品的方式。"
-summary: "理解世界，也理解自己。"
+description: "认识熊鑫伟（cubxxw）：独立产品创造者、开源贡献者与旅居者。浏览他的日常工作区、正在构建的 AI 产品、真实旅行照片，以及关于写作、成长和人的判断的长期思考。"
+summary: "把走过的路，做成可以使用的东西。"
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
 ShowBreadCrumbs: false
 ShowCodeCopyButtons: false
+disableHLJS: true
 ShowWordCount: false
 ShowRssButtonInSectionTermList: false
+hideFooter: true
 cover:
     hidden: true
 date: 2025-01-09T00:00:00+08:00
@@ -24,7 +26,7 @@ keywords: ["About", "Self", "Identity", "个人介绍", "关于我", "阅读地�
 tldr:
   - "熊鑫伟（cubxxw）通过旅居观察世界，通过写作理解自己，再把理解做成产品。"
   - "他持续关心一个问题：AI 越来越懂我们时，一个人怎样保存自己的经历、判断和成长轨迹。"
-  - "页面提供两种继续认识他的方式：走进 Bear Quest，或查看正在构建的产品。"
+  - "页面展示他的日常工作区、正在构建的产品、旅行照片与精选阅读路径。"
 ---
 
 <!-- ── 尾 · 阅读地图（/start-here 301 落点，保留锚点）。
