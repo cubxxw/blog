@@ -1,14 +1,16 @@
 ---
-title: 'GoReleaser 教程：写好 goreleaser.yaml 并用 GitHub Actions 自动发布'
+title: 'GoReleaser v2 教程：用 GitHub Actions 自动发布 Go'
 ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:07:39+08:00
+lastmod: 2026-07-29T14:05:00+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: '熊鑫伟，我'
 keywords: ['GoReleaser', 'goreleaser.yaml', 'GoReleaser 配置', 'Go release', 'CI/CD', '自动化发布', 'GitHub Actions', 'Golang']
-tags: ["DevOps", "Go"]
+tags: ["Go", "DevOps", "GitHub", "Automation", "Deployment"]
+categories: ["Development"]
 description: '手把手带你写 .goreleaser.yaml：builds、archives、Docker 镜像、签名到 GitHub Release 逐段讲清楚，最后接入 GitHub Actions，推一个 tag 就能自动多平台发布，不用再手动打包传附件。'
 tldr:
   - "GoReleaser通过defaulting、building、releasing、announcing四个步骤完全自动化Go项目的软件发布流程，支持多平台构建、Docker镜像推送、GitHub发布等功能。"
@@ -46,7 +48,7 @@ goreleaser init
 然后，我们运行一个“仅限本地”版本，看看它是否可以使用 [release](https://goreleaser.com/cmd/goreleaser_release/) 命令运行：
 
 ```
-goreleaser release --snapshot --rm-dist
+goreleaser release --snapshot --clean
 ```
 
 此时，您可以 [自定义](https://goreleaser.com/customization/) 生成的 `.goreleaser.yaml` 文件，或保持原样，这取决于您。最佳做法是将 `.goreleaser.yaml` 文件放入版本控制系统中。
@@ -101,20 +103,20 @@ jobs:
   goreleaser:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - run: git fetch --force --tags
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
           go-version: stable
       # 更多设置可能需要，如 Docker 登录、GPG 等。这些都取决于您的需求。
-      - uses: goreleaser/goreleaser-action@v4
+      - uses: goreleaser/goreleaser-action@v7
         with:
           # 可以选择 'goreleaser'（默认）或 'goreleaser-pro'
           distribution: goreleaser
-          version: latest
-          args: release --rm-dist
+          version: "~> v2"
+          args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # 如果你正在使用 'goreleaser-pro' 发行版，你需要 GoReleaser Pro 的密钥：
@@ -146,10 +148,11 @@ yaml
 
 ```yaml
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@v7
         with:
           version: latest
-          args: release --rm-dist
+          version: "~> v2"
+          args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 ```

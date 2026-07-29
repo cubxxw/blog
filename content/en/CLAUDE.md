@@ -1,3 +1,9 @@
+---
+_build:
+  render: never
+  list: never
+---
+
 ### Translation Article Processing
 
 **When creating a translated article:**

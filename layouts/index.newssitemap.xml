@@ -8,11 +8,15 @@
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   {{- $cutoff := now.AddDate 0 0 -2 -}}
   {{- $excludedLayouts := slice "search" "archives" "categories" -}}
+  {{- $newsPages := slice -}}
   {{- range site.RegularPages -}}
     {{- if .Date.Before $cutoff }}{{ continue }}{{ end -}}
     {{- if .Params.private }}{{ continue }}{{ end -}}
     {{- if .Params.robotsNoIndex }}{{ continue }}{{ end -}}
     {{- if in $excludedLayouts .Layout }}{{ continue }}{{ end -}}
+    {{- $newsPages = $newsPages | append . -}}
+  {{- end -}}
+  {{- range $newsPages }}
   <url>
     <loc>{{ .Permalink }}</loc>
     <news:news>
@@ -29,6 +33,14 @@
       <news:keywords>{{ delimit . ", " }}</news:keywords>
       {{- end }}
     </news:news>
+  </url>
+  {{- end }}
+  {{- /* Google Search Console rejects an entirely empty urlset as a missing
+         <url> tag. Keep the submitted endpoint valid between publication
+         windows without falsely marking old articles as Google News items. */ -}}
+  {{- if eq (len $newsPages) 0 }}
+  <url>
+    <loc>{{ site.Home.Permalink }}</loc>
   </url>
   {{- end }}
 </urlset>

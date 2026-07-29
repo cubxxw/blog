@@ -11,6 +11,10 @@ const outputPaths = [
 
 const defaultLanguage = "en";
 const ignoredDirs = new Set([".obsidian", "_redirects"]);
+// Repository instructions may live under content/ so they apply to nearby
+// editorial files, but they are not publishable content and must never leak
+// into search or AI retrieval indexes.
+const ignoredFiles = new Set(["AGENTS.md", "CLAUDE.md"]);
 
 function walkMarkdownFiles(dir) {
   const results = [];
@@ -27,7 +31,11 @@ function walkMarkdownFiles(dir) {
       continue;
     }
 
-    if (entry.isFile() && entry.name.endsWith(".md")) {
+    if (
+      entry.isFile() &&
+      entry.name.endsWith(".md") &&
+      !ignoredFiles.has(entry.name)
+    ) {
       results.push(fullPath);
     }
   }

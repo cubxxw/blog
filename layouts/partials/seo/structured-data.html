@@ -18,6 +18,10 @@
 
 {{- /* Article Schema */ -}}
 {{- if $isPost -}}
+{{- $dateModified := .Lastmod -}}
+{{- with .Params.lastmod -}}
+  {{- $dateModified = time.AsTime . -}}
+{{- end -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,7 +36,7 @@
   "image": {{ $schemaImage | absURL }},
   "url": {{ .Permalink }},
   "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }},
-  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }},
+  "dateModified": {{ $dateModified.Format "2006-01-02T15:04:05Z07:00" }},
   {{- $postAuthor := "Xinwei Xiong" -}}
   {{- with .Params.author -}}
     {{- if reflect.IsSlice . -}}{{- $postAuthor = index . 0 | string -}}
@@ -190,35 +194,32 @@
 
 {{- /* BreadcrumbList Schema */ -}}
 {{- if .Parent -}}
-{{- $ancestors := slice -}}
-{{- $p := .Parent -}}
-{{- range seq 10 -}}
-  {{- if $p -}}
-    {{- if $p.Title -}}{{- $ancestors = $ancestors | append $p -}}{{- end -}}
-    {{- $p = $p.Parent -}}
+{{- $breadcrumbItems := slice -}}
+{{- range .Ancestors.Reverse -}}
+  {{- if and .Permalink .LinkTitle -}}
+    {{- $breadcrumbItems = $breadcrumbItems | append (dict
+      "@type" "ListItem"
+      "position" (add (len $breadcrumbItems) 1)
+      "name" (.LinkTitle | plainify)
+      "item" .Permalink
+    ) -}}
   {{- end -}}
 {{- end -}}
-{{- $ancestors = collections.Reverse $ancestors -}}
+{{- with (.LinkTitle | default .Title) -}}
+  {{- $breadcrumbItems = $breadcrumbItems | append (dict
+    "@type" "ListItem"
+    "position" (add (len $breadcrumbItems) 1)
+    "name" (. | plainify)
+    "item" $.Permalink
+  ) -}}
+{{- end -}}
+{{- if gt (len $breadcrumbItems) 0 -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    {{- range $index, $ancestor := $ancestors -}}
-    {
-      "@type": "ListItem",
-      "position": {{ add $index 1 }},
-      "name": {{ $ancestor.Title }},
-      "item": {{ $ancestor.Permalink }}
-    },
-    {{- end -}}
-    {
-      "@type": "ListItem",
-      "position": {{ add (len $ancestors) 1 }},
-      "name": {{ .Title }},
-      "item": {{ .Permalink }}
-    }
-  ]
+  "itemListElement": {{ $breadcrumbItems | jsonify | safeJS }}
 }
 </script>
+{{- end -}}
 {{- end -}}
