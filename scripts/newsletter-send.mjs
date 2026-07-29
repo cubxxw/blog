@@ -24,14 +24,18 @@
 // State: config/newsletter-state.json (committed) — { sent: { url: {at, id} } }
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import {
+  buildSubscriberTagFilter,
+  fetchButtondownTagIds,
+} from './lib/buttondown-tags.mjs';
 
 const SITE = 'https://cubxxw.com';
 const API = 'https://api.buttondown.com/v1/emails';
 const STATE_PATH = new URL('../config/newsletter-state.json', import.meta.url).pathname;
 
 const FEEDS = {
-  zh: { url: `${SITE}/zh/index.xml`, tag: 'lang:zh', readMore: '继续阅读全文 →', footer: `你收到这封信，是因为你在 [cubxxw.com](${SITE}/zh/) 订阅了新文章通知。` },
-  en: { url: `${SITE}/index.xml`, tag: 'lang:en', readMore: 'Continue reading →', footer: `You are receiving this because you subscribed to new-post updates on [cubxxw.com](${SITE}/).` },
+  zh: { url: `${SITE}/zh/index.xml`, tagName: 'lang:zh', readMore: '继续阅读全文 →', footer: `你收到这封信，是因为你在 [cubxxw.com](${SITE}/zh/) 订阅了新文章通知。` },
+  en: { url: `${SITE}/index.xml`, tagName: 'lang:en', readMore: 'Continue reading →', footer: `You are receiving this because you subscribed to new-post updates on [cubxxw.com](${SITE}/).` },
 };
 
 const args = process.argv.slice(2);
@@ -48,9 +52,15 @@ const RECENT_DAYS = parseInt(val('--recent', '7'), 10);
 const MAX_PER_RUN = parseInt(val('--max', '3'), 10);
 const RESEND_URL = val('--resend', null);
 const TOKEN = process.env.BUTTONDOWN_API_KEY;
+const feedKeys = FEED_SEL === 'all' ? Object.keys(FEEDS) : [FEED_SEL];
+let tagIdsByName = {};
 
 if (!['draft', 'send'].includes(MODE)) {
   console.error(`❌ --mode must be draft|send, got "${MODE}"`);
+  process.exit(1);
+}
+if (feedKeys.some((key) => !FEEDS[key])) {
+  console.error('❌ --feed must be zh|en|all');
   process.exit(1);
 }
 if (!TOKEN && !DRY_RUN) {
@@ -119,27 +129,18 @@ function buildBody(item, feed) {
 }
 
 async function createEmail(item, feed) {
+  const tagId = tagIdsByName[feed.tagName] || `dry-run:${feed.tagName}`;
   const payload = {
     subject: item.title,
     body: buildBody(item, feed),
     status: MODE === 'send' ? 'about_to_send' : 'draft',
     // Buttondown removed included_tags/excluded_tags from the email schema.
     // Audience targeting now uses a filter group.
-    filters: {
-      predicate: 'and',
-      filters: [
-        {
-          field: 'subscriber.tags',
-          operator: 'contains',
-          value: feed.tag,
-        },
-      ],
-      groups: [],
-    },
+    filters: buildSubscriberTagFilter(tagId),
     metadata: { source: 'newsletter-send', post_url: item.link },
   };
   if (DRY_RUN) {
-    console.log(`  [dry-run] would create ${payload.status} email "${item.title}" → tag ${feed.tag}`);
+    console.log(`  [dry-run] would create ${payload.status} email "${item.title}" → tag ${feed.tagName}`);
     return { id: 'dry-run' };
   }
   const res = await fetch(API, {
@@ -155,13 +156,23 @@ async function createEmail(item, feed) {
 }
 
 /* ── main ── */
+// GitHub dry-runs still receive the API token, so they validate the real tag
+// lookup without creating an email. Tokenless local dry-runs use placeholders.
+if (TOKEN) {
+  try {
+    tagIdsByName = await fetchButtondownTagIds({
+      token: TOKEN,
+      requiredNames: feedKeys.map((key) => FEEDS[key].tagName),
+    });
+    console.log(`🏷️  Resolved Buttondown audience tags: ${feedKeys.map((key) => FEEDS[key].tagName).join(', ')}`);
+  } catch (error) {
+    console.error(`❌ Buttondown tag preflight failed: ${error.message}`);
+    process.exit(1);
+  }
+}
+
 const now = Date.now();
 const windowMs = RECENT_DAYS * 24 * 3600 * 1000;
-const feedKeys = FEED_SEL === 'all' ? Object.keys(FEEDS) : [FEED_SEL];
-if (feedKeys.some((k) => !FEEDS[k])) {
-  console.error(`❌ --feed must be zh|en|all`);
-  process.exit(1);
-}
 
 let state = loadState();
 const bootstrap = state === null;

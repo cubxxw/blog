@@ -53,6 +53,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Test newsletter integration
+        run: npm run newsletter:test
+
       - name: Wait for deploy to propagate (push runs only)
         if: github.event_name == 'push'
         run: |
