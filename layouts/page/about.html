@@ -4,38 +4,54 @@
 <div class="about-page about-page--narrative">
   <article class="about-content about-narrative">
     <header class="about-hero about-hero--narrative">
-      <div class="about-intro">
-        <div class="about-identity">
-          <img
-            class="about-avatar"
-            src="/images/cubxxw-image.jpg"
-            width="112"
-            height="112"
-            alt="{{ if $isZH }}熊鑫伟{{ else }}Xinwei Xiong{{ end }}"
-            decoding="async">
-          <div>
-            <p class="about-version">ABOUT · CUBXXW</p>
-            <p class="about-hello">{{ if $isZH }}你好，我是熊鑫伟。{{ else }}Hello, I'm Xinwei.{{ end }}</p>
+      <div class="about-hero-grid">
+        <div class="about-intro">
+          <div class="about-identity">
+            <img
+              class="about-avatar"
+              src="/images/cubxxw-image.jpg"
+              width="112"
+              height="112"
+              alt="{{ if $isZH }}熊鑫伟{{ else }}Xinwei Xiong{{ end }}"
+              decoding="async">
+            <div>
+              <p class="about-version">ABOUT · CUBXXW</p>
+              <p class="about-hello">{{ if $isZH }}你好，我是熊鑫伟。{{ else }}Hello, I'm Xinwei.{{ end }}</p>
+            </div>
           </div>
+
+          <h1 class="about-name">
+            {{ if $isZH }}
+            我在理解世界，<br>也在理解自己。
+            {{ else }}
+            I am learning the world,<br>and learning myself.
+            {{ end }}
+          </h1>
+
+          <p class="about-lead">
+            {{ if $isZH }}
+            毕业以后，我开始旅居。我想离开熟悉的答案，看看世界真正怎样运转；也看看换一个环境之后，我会成为谁。
+            {{ else }}
+            After graduation, I began living on the road. I wanted to leave familiar
+            answers behind, see how the world really works, and find out who I become
+            when the setting changes.
+            {{ end }}
+          </p>
         </div>
 
-        <h1 class="about-name">
-          {{ if $isZH }}
-          我在理解世界，<br>也在理解自己。
-          {{ else }}
-          I am learning the world,<br>and learning myself.
-          {{ end }}
-        </h1>
-
-        <p class="about-lead">
-          {{ if $isZH }}
-          毕业以后，我开始旅居。我想离开熟悉的答案，看看世界真正怎样运转；也看看换一个环境之后，我会成为谁。
-          {{ else }}
-          After graduation, I began living on the road. I wanted to leave familiar
-          answers behind, see how the world really works, and find out who I become
-          when the setting changes.
-          {{ end }}
-        </p>
+        <figure class="about-portrait">
+          <img
+            src="/images/about/journey/02-g318.webp"
+            width="675"
+            height="900"
+            alt="{{ if $isZH }}川藏 318 国道旁，熊鑫伟坐在雪山前的越野车顶{{ else }}Xinwei sitting on a vehicle beneath the snow mountains along G318{{ end }}"
+            decoding="async"
+            fetchpriority="high">
+          <figcaption>
+            <span>{{ if $isZH }}川藏 318 · 中国{{ else }}G318 · China{{ end }}</span>
+            {{ if $isZH }}雪山一直在窗外。{{ else }}Snow peaks stayed outside the window.{{ end }}
+          </figcaption>
+        </figure>
       </div>
     </header>
 
@@ -65,14 +81,17 @@
 
       <div class="about-paths" aria-label="{{ if $isZH }}我理解世界的三种方式{{ else }}Three ways I make sense of the world{{ end }}">
         <p>
+          <b aria-hidden="true">01</b>
           <span>{{ if $isZH }}行走{{ else }}Walking{{ end }}</span>
           {{ if $isZH }}让我靠近真实的世界。{{ else }}brings me closer to the real world.{{ end }}
         </p>
         <p>
+          <b aria-hidden="true">02</b>
           <span>{{ if $isZH }}写作{{ else }}Writing{{ end }}</span>
           {{ if $isZH }}让我靠近自己。{{ else }}brings me closer to myself.{{ end }}
         </p>
         <p>
+          <b aria-hidden="true">03</b>
           <span>{{ if $isZH }}产品{{ else }}Products{{ end }}</span>
           {{ if $isZH }}让我把理解变成可以被使用的东西。{{ else }}turn understanding into something others can use.{{ end }}
         </p>
@@ -92,6 +111,32 @@
       </div>
     </section>
 
+    <section class="about-evidence" aria-labelledby="about-evidence-title">
+      <header>
+        <p>{{ if $isZH }}一些真实坐标{{ else }}A FEW REAL COORDINATES{{ end }}</p>
+        <h2 id="about-evidence-title">
+          {{ if $isZH }}不是身份标签，是我走过的路。{{ else }}Not identity labels. Evidence from the road.{{ end }}
+        </h2>
+      </header>
+      <div class="about-evidence-list">
+        <article>
+          <strong>{{ if $isZH }}开源{{ else }}Open source{{ end }}</strong>
+          <p>{{ if $isZH }}OpenIM 头号贡献者。通过公开建造学习，也把踩过的坑留给后来的人。{{ else }}Top contributor to OpenIM. I learn by building in public and leave the hard-won context for whoever comes next.{{ end }}</p>
+          <a href="https://github.com/openimsdk/open-im-server" target="_blank" rel="noopener">{{ if $isZH }}查看 OpenIM{{ else }}View OpenIM{{ end }} ↗</a>
+        </article>
+        <article>
+          <strong>{{ if $isZH }}远行{{ else }}The road{{ end }}</strong>
+          <p>{{ if $isZH }}12 个月、9 个国家、35 多座城市、徒步 400 多公里。地图向外延伸，旅程最终指向内心。{{ else }}Twelve months, nine countries, more than 35 cities, and over 400 km on foot. The map went outward while the journey turned inward.{{ end }}</p>
+          <a href="{{ "travel/" | relLangURL }}">{{ if $isZH }}进入旅行地图{{ else }}Open the travel map{{ end }} →</a>
+        </article>
+        <article>
+          <strong>{{ if $isZH }}正在构建{{ else }}Building now{{ end }}</strong>
+          <p>{{ if $isZH }}Solo Compass、DayPage 与 Telepace，都从一个真实问题出发：怎样让 AI 延伸人的判断，而不是替代人。{{ else }}Solo Compass, DayPage, and Telepace all begin with a real question: how can AI extend human judgment instead of replacing it?{{ end }}</p>
+          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}查看全部产品{{ else }}See all products{{ end }} →</a>
+        </article>
+      </div>
+    </section>
+
     <blockquote class="about-question">
       <p class="about-question-label">{{ if $isZH }}我持续关心的问题{{ else }}THE QUESTION I KEEP RETURNING TO{{ end }}</p>
       <p>
@@ -103,6 +148,10 @@
         {{ end }}
       </p>
     </blockquote>
+
+    <div class="about-reading-map">
+      {{ .Content | safeHTML }}
+    </div>
 
     <section class="about-closing" aria-labelledby="about-closing-title">
       <h2 id="about-closing-title">
@@ -127,10 +176,54 @@
       </div>
     </section>
 
+    <section class="about-share" aria-labelledby="about-share-title">
+      <div class="about-share-copy">
+        <p class="about-share-label">{{ if $isZH }}分享这张名片{{ else }}SHARE THIS CARD{{ end }}</p>
+        <h2 id="about-share-title">
+          {{ if $isZH }}如果这段经历让你想起了某个人，就把它递给他。{{ else }}If this story brought someone to mind, pass it along.{{ end }}
+        </h2>
+        <p>
+          {{ if $isZH }}这不是一份完整简历，只是一张关于我正在走向哪里的名片。{{ else }}This is not a complete résumé. It is a small card about where I am heading.{{ end }}
+        </p>
+        <div class="about-share-actions">
+          <button type="button" class="about-share-button about-share-button--native" data-about-share>
+            {{ if $isZH }}分享 About Me{{ else }}Share About Me{{ end }}
+          </button>
+          <button type="button" class="about-share-button" data-about-copy>
+            {{ if $isZH }}复制页面链接{{ else }}Copy page link{{ end }}
+          </button>
+        </div>
+        <p class="about-share-status" data-about-share-status aria-live="polite"></p>
+      </div>
+
+      <article class="about-share-card" aria-label="{{ if $isZH }}熊鑫伟的个人分享名片{{ else }}Xinwei Xiong's share card{{ end }}">
+        <div class="about-share-card__top">
+          <img
+            src="/images/cubxxw-image.jpg"
+            width="112"
+            height="112"
+            alt=""
+            loading="lazy"
+            decoding="async">
+          <p>cubxxw.com</p>
+        </div>
+        <p class="about-share-card__statement">
+          {{ if $isZH }}我在理解世界，<br>也在理解自己。{{ else }}I am learning the world,<br>and learning myself.{{ end }}
+        </p>
+        <div class="about-share-card__footer">
+          <div>
+            <strong>{{ if $isZH }}熊鑫伟{{ else }}Xinwei Xiong{{ end }}</strong>
+            <span>{{ if $isZH }}开源贡献者、旅居者、独立产品创造者{{ else }}Open-source contributor, traveler, independent builder{{ end }}</span>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </div>
+      </article>
+    </section>
+
     <footer class="about-contact">
       <p class="about-contact-note">
         {{ if $isZH }}
-        如果你也在重新理解世界，或者重新认识自己——很高兴在这里遇见你。
+        如果你也在重新理解世界，或者重新认识自己，很高兴在这里遇见你。
         {{ else }}
         If you are also making sense of the world, or meeting yourself again,
         I am glad our paths crossed here.
@@ -143,11 +236,50 @@
         <a href="https://www.zhihu.com/people/3293172751" target="_blank" rel="noopener">{{ if $isZH }}知乎{{ else }}Zhihu{{ end }}</a>
       </nav>
     </footer>
-
-    <div class="about-reading-map">
-      {{ .Content | safeHTML }}
-    </div>
   </article>
 </div>
+
+<script>
+  (function () {
+    var shareButton = document.querySelector('[data-about-share]');
+    var copyButton = document.querySelector('[data-about-copy]');
+    var status = document.querySelector('[data-about-share-status]');
+    var url = {{ .Permalink | jsonify | safeJS }};
+    var title = {{ (cond $isZH "关于熊鑫伟 | cubxxw" "About Xinwei Xiong | cubxxw") | jsonify | safeJS }};
+    var text = {{ (cond $isZH "我在理解世界，也在理解自己。" "I am learning the world, and learning myself.") | jsonify | safeJS }};
+    var copied = {{ (cond $isZH "链接已复制，可以分享给朋友了。" "Link copied. It is ready to share.") | jsonify | safeJS }};
+
+    function copyLink() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          status.textContent = copied;
+        });
+        return;
+      }
+      var field = document.createElement('textarea');
+      field.value = url;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand('copy');
+      field.remove();
+      status.textContent = copied;
+    }
+
+    if (!navigator.share && shareButton) {
+      shareButton.hidden = true;
+    }
+    if (shareButton) {
+      shareButton.addEventListener('click', function () {
+        navigator.share({ title: title, text: text, url: url }).catch(function () {});
+      });
+    }
+    if (copyButton) {
+      copyButton.addEventListener('click', copyLink);
+    }
+  })();
+</script>
 
 {{- end }}

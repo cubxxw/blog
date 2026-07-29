@@ -11,6 +11,19 @@
   margin: 0 0 20px;
 }
 
+/* Long titles step down before they turn the entire first viewport into a
+   title block. The template assigns these classes by Unicode character count,
+   with separate EN and ZH thresholds. Short titles keep the original scale. */
+html:lang(en) .post-title--long {
+  font-size: clamp(2.45rem, 4.2vw, 3.8rem);
+  line-height: 1.1;
+}
+
+html:lang(en) .post-title--very-long {
+  font-size: clamp(2.15rem, 3.6vw, 3.25rem);
+  line-height: 1.12;
+}
+
 /* ZH title: weight 700, not 900 — the 900 request resolved per-glyph to
    Songti/Source Han Black for Latin but a lighter cut for CJK (or vice
    versa depending on installed weights), producing visibly mismatched
@@ -22,6 +35,16 @@ html:lang(zh) .post-title {
   font-weight: 700;
   letter-spacing: 0.03em;
   line-height: 1.25;
+}
+
+html:lang(zh) .post-title--long {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  line-height: 1.3;
+}
+
+html:lang(zh) .post-title--very-long {
+  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+  line-height: 1.34;
 }
 
 /* ─── Post Description — editorial lead-in, no box ───────────── */

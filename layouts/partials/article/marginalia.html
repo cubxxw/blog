@@ -123,39 +123,14 @@
     {{- $sColumnURL := printf "/columns/%s/" $sSlug }}
     {{- if eq $page.Lang "zh" }}{{ $sColumnURL = printf "/zh/columns/%s/" $sSlug }}{{ end }}
   <div class="marginalia-group marginalia-group--series">
-    <details class="marginalia-series-disclose" {{ if false }}open{{ end }}>
-      <summary class="marginalia-series-summary">
-        <span class="marginalia-label">{{ if $sIsZh }}系列{{ else }}Series{{ end }}</span>
-        <span class="marginalia-series-summary-row">
-          <a class="marginalia-series-name marginalia-series-name--link" href="{{ $sColumnURL | relURL }}" title="{{ if $sIsZh }}进入专栏{{ else }}Open column{{ end }}">{{ $seriesP.name }}</a>
-          <span class="marginalia-series-badge">{{ $sOrder }}<span class="marginalia-series-badge-sep">/</span>{{ $sTotal }}</span>
-          <svg class="marginalia-series-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="9 6 15 12 9 18"/>
-          </svg>
-        </span>
-      </summary>
-      {{- if $sOrdered }}
-      <ol class="marginalia-series-list">
-        {{- range $sOrdered }}
-          {{- $isCurrent := eq .RelPermalink $page.RelPermalink }}
-          {{- $ord := .Params.series.order | default 0 }}
-          <li class="marginalia-series-item{{ if $isCurrent }} is-current{{ end }}">
-            {{- if $isCurrent }}
-            <span class="marginalia-series-link" aria-current="page">
-              <span class="marginalia-series-num">{{ $ord }}</span>
-              <span class="marginalia-series-title">{{ .Title }}</span>
-            </span>
-            {{- else }}
-            <a class="marginalia-series-link" href="{{ .RelPermalink }}">
-              <span class="marginalia-series-num">{{ $ord }}</span>
-              <span class="marginalia-series-title">{{ .Title }}</span>
-            </a>
-            {{- end }}
-          </li>
-        {{- end }}
-      </ol>
-      {{- end }}
-    </details>
+    <span class="marginalia-label">{{ i18n "marginalia.series" | default "Series" }}</span>
+    <span class="marginalia-series-summary-row">
+      <a class="marginalia-series-name marginalia-series-name--link" href="{{ $sColumnURL | relURL }}"
+         title="{{ if $sIsZh }}进入专栏{{ else }}Open column{{ end }}">{{ $seriesP.name }}</a>
+      <span class="marginalia-series-badge" aria-label="{{ if $sIsZh }}第 {{ $sOrder }} 篇，共 {{ $sTotal }} 篇{{ else }}Part {{ $sOrder }} of {{ $sTotal }}{{ end }}">
+        {{ $sOrder }}<span class="marginalia-series-badge-sep">/</span>{{ $sTotal }}
+      </span>
+    </span>
   </div>
   {{- end }}
 

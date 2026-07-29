@@ -24,11 +24,19 @@
     {{/* Compact marginalia for mobile (< 1024px): line1 author · date; line2 reading time · words · lang */}}
     <div class="article-marginalia-mobile">
       <div class="marginalia-mobile-row1">
-        {{- if .Params.author }}
-        <span class="marginalia-author">{{ .Params.author }}</span>
-        {{- else if site.Params.author }}
-        <span class="marginalia-author">{{ site.Params.author }}</span>
-        {{- end }}
+        {{- $mobileAuthorRaw := .Params.author | default site.Params.author -}}
+        {{- $mobileAuthor := "" -}}
+        {{- if reflect.IsSlice $mobileAuthorRaw -}}
+          {{- range $mobileAuthorRaw -}}
+            {{- $candidate := trim . " " -}}
+            {{- if and (not $mobileAuthor) $candidate (not (in (slice "Me" "me" "我" "我自己") $candidate)) -}}
+              {{- $mobileAuthor = $candidate -}}
+            {{- end -}}
+          {{- end -}}
+        {{- else if $mobileAuthorRaw -}}
+          {{- $mobileAuthor = trim (replaceRE "[，,]\\s*(我|Me|me)\\s*$" "" (printf "%v" $mobileAuthorRaw)) " " -}}
+        {{- end -}}
+        {{- with $mobileAuthor }}<span class="marginalia-author">{{ . }}</span>{{- end }}
         <span class="marginalia-sep">·</span>
         <span class="marginalia-date">
           {{- if eq .Lang "zh" -}}
@@ -64,7 +72,10 @@
 
     <header class="post-header">
       {{ partial "breadcrumbs.html" . }}
-      <h1 class="post-title">
+      {{- $titleLength := strings.RuneCount .Title -}}
+      {{- $longTitleThreshold := cond (eq .Lang "zh") 22 54 -}}
+      {{- $veryLongTitleThreshold := cond (eq .Lang "zh") 34 82 -}}
+      <h1 class="post-title{{ if gt $titleLength $longTitleThreshold }} post-title--long{{ end }}{{ if gt $titleLength $veryLongTitleThreshold }} post-title--very-long{{ end }}">
         {{ .Title }}
         {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
       </h1>
@@ -106,6 +117,11 @@
       {{- partial "anchored_headings.html" $content -}}
       {{- else }}{{ $content | safeHTML }}{{ end }}
     </div>
+    {{- $useDropCap := or (eq .Section "growth") (eq .Section "travel") -}}
+    {{- if isset .Params "dropcap" -}}
+      {{- $useDropCap = .Params.dropcap -}}
+    {{- end }}
+    {{- if $useDropCap }}
     <script>
     (function(){
       var c = document.currentScript.closest('.article-main');
@@ -114,6 +130,7 @@
       if (firstP) firstP.classList.add('drop-cap');
     })();
     </script>
+    {{- end }}
     {{- end }}
 
     {{- partial "article/faq.html" . -}}

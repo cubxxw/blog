@@ -164,6 +164,18 @@
 - id: marginalia.dialect
   translation: "语言"
 
+- id: marginalia.series
+  translation: "系列"
+
+- id: marginalia.topics
+  translation: "主题"
+
+- id: marginalia.tags
+  translation: "标签"
+
+- id: marginalia.share
+  translation: "分享"
+
 - id: marginalia.suggest
   translation: "建议修改"
 

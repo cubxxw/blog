@@ -164,6 +164,18 @@
 - id: marginalia.dialect
   translation: "Dialect"
 
+- id: marginalia.series
+  translation: "Series"
+
+- id: marginalia.topics
+  translation: "Topics"
+
+- id: marginalia.tags
+  translation: "Tags"
+
+- id: marginalia.share
+  translation: "Share"
+
 - id: marginalia.suggest
   translation: "Suggest Changes"
 

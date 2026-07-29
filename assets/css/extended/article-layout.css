@@ -95,6 +95,20 @@
   .article-main {
     width: 100%;
   }
+
+  /* Compact Marginalia above the title is the mobile metadata source.
+     The regular PaperMod meta row repeats the same date, author, reading
+     time and language, so keep only the compact version. */
+  .article-main .post-header .post-meta {
+    display: none;
+  }
+
+  /* Contents, series and sharing remain available through the mobile
+     Bottom Sheet. Keeping the full inline TOC here delayed the first
+     paragraph by another viewport on long articles. */
+  .article-main .toc-inline {
+    display: none;
+  }
 }
 
 /* ─── Mobile compact marginalia (inline at article top) ─────── */

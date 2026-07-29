@@ -132,6 +132,22 @@ a.series-nav__title:hover {
   font-size: 0.625rem;
 }
 
+/* On wide desktop the complete series map already lives in the right
+   Editorial Tools panel and the current part is identified in Marginalia.
+   On mobile the same map lives in the Bottom Sheet. Keep the centre banner
+   only at 1024-1279px, where both of those interfaces are unavailable. */
+@media (min-width: 1280px) {
+  .series-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .series-nav {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .series-nav {
     padding: 0.75rem 0.9rem;
