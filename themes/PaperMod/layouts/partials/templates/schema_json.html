@@ -18,41 +18,28 @@
 </script>
 {{- else if (or .IsPage .IsSection) }}
 {{/* BreadcrumbList */}}
-{{- $url := replace .Parent.Permalink ( printf "%s" site.BaseURL) "" }}
-{{- $lang_url := strings.TrimPrefix ( printf "%s/" .Lang) $url }}
-{{- $bc_list := (split $lang_url "/")}}
-
-{{- $scratch := newScratch }}
+{{- $breadcrumbItems := slice -}}
+{{- range .Ancestors.Reverse -}}
+  {{- if and .Permalink .LinkTitle -}}
+    {{- $breadcrumbItems = $breadcrumbItems | append (dict
+      "@type" "ListItem"
+      "position" (add (len $breadcrumbItems) 1)
+      "name" (.LinkTitle | plainify)
+      "item" .Permalink
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $breadcrumbItems = $breadcrumbItems | append (dict
+  "@type" "ListItem"
+  "position" (add (len $breadcrumbItems) 1)
+  "name" (.LinkTitle | default .Title | plainify)
+  "item" .Permalink
+) -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-  {{- range $index, $element := $bc_list }}
-
-    {{- $scratch.Add "path" (printf "%s/" $element ) | safeJS }}
-    {{- $bc_pg := site.GetPage ($scratch.Get "path") -}}
-
-    {{- if (and ($bc_pg) (gt (len . ) 0))}}
-    {{- if (and $index)}}, {{end }}
-    {
-      "@type": "ListItem",
-      "position": {{ add 1 $index  }},
-      "name": {{ $bc_pg.Name }},
-      "item": {{ $bc_pg.Permalink | safeHTML }}
-    }
-    {{- end }}
-
-  {{- end }}
-  {{- /*  self-page addition  */ -}}
-  {{- if (ge (len $bc_list) 2) }}, {{end }}
-    {
-      "@type": "ListItem",
-      "position": {{len $bc_list}},
-      "name": {{ .Name }},
-      "item": {{ .Permalink | safeHTML }}
-    }
-  ]
+  "itemListElement": {{ $breadcrumbItems | jsonify | safeJS }}
 }
 </script>
 {{- if .IsPage }}

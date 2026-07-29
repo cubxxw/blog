@@ -1,15 +1,18 @@
 ---
-title: 'GoReleaser Tutorial: Automate Go Releases with GitHub Actions'
+title: 'GoReleaser v2 + GitHub Actions: Go Release Guide'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:07:39+08:00'
+lastmod: 2026-07-29T14:05:00+08:00
 draft: false
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ['GoReleaser', 'goreleaser.yaml', 'GoReleaser configuration', 'name_template', 'Go release automation', 'GitHub Actions', 'Continuous Integration', 'Continuous Deployment']
-tags: ["Blog", "Go", "DevOps"]
+tags: ["Go", "DevOps", "GitHub", "Automation", "Deployment"]
+categories: ["Development"]
 description: >
-    Step-by-step GoReleaser guide: write .goreleaser.yaml covering builds, archives, Docker images, and signing, then wire it into GitHub Actions so pushing a tag ships a multi-platform GitHub Release automatically — no more manual packaging.
+    Learn GoReleaser v2 with a production-ready .goreleaser.yaml and GitHub Actions workflow that builds, signs, packages, and publishes Go releases automatically.
 tldr:
   - "GoReleaser automates software release workflows for Go projects through four stages: defaulting, building, releasing, and announcing, with sensible defaults and extensive customization options."
   - "The tool builds multi-platform binaries, creates archives and packages, generates Docker images, and produces checksums while supporting GPG/Cosign signing for security verification."
@@ -46,7 +49,7 @@ goreleaser init
 We then run a "local only" build to see if it works using the [release](https://goreleaser.com/cmd/goreleaser_release/) command:
 
 ```
-goreleaser release --snapshot --rm-dist
+goreleaser release --snapshot --clean
 ```
 
 At this point, you can [customize](https://goreleaser.com/customization/) the generated `.goreleaser.yaml` file, or leave it as-is, it's up to you. Best practice is to put the `.goreleaser.yaml` file into your version control system.
@@ -101,20 +104,20 @@ jobs:
    goreleaser:
      runs-on: ubuntu-latest
      steps:
-       - uses: actions/checkout@v3
+       - uses: actions/checkout@v4
          with:
            fetch-depth: 0
        - run: git fetch --force --tags
-       - uses: actions/setup-go@v4
+       - uses: actions/setup-go@v5
          with:
            go-version: stable
        # More settings may be required, such as Docker login, GPG, etc. These all depend on your needs.
-       - uses: goreleaser/goreleaser-action@v4
+       - uses: goreleaser/goreleaser-action@v7
          with:
            # You can choose 'goreleaser' (default) or 'goreleaser-pro'
            distribution:goreleaser
-           version: latest
-           args: release --rm-dist
+           version: "~> v2"
+           args: release --clean
          env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            # If you are using the 'goreleaser-pro' distribution, you will need the GoReleaser Pro key:
@@ -146,10 +149,11 @@ yaml
 
 ```yaml
        - name: Run GoReleaser
-         uses: goreleaser/goreleaser-action@v4
+         uses: goreleaser/goreleaser-action@v7
          with:
            version: latest
-           args: release --rm-dist
+           version: "~> v2"
+           args: release --clean
          env:
            GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 ```

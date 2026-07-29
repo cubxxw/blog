@@ -48,6 +48,43 @@
   HUGO_ENABLEGITINFO = "true"
 
 # ---------------------------------------------------------------------------
+# Historical taxonomy redirects
+# ---------------------------------------------------------------------------
+# Tag normalization intentionally removed many one-off/alias term pages. Keep
+# the strongest historical URLs useful instead of spending crawl budget on
+# avoidable 404s.
+
+[[redirects]]
+  from = "/zh/tags/argo-rollouts/"
+  to = "/zh/tags/kubernetes/"
+  status = 301
+
+[[redirects]]
+  from = "/zh/tags/automated-release/"
+  to = "/zh/tags/devops/"
+  status = 301
+
+[[redirects]]
+  from = "/zh/tags/schema/"
+  to = "/zh/tags/geo/"
+  status = 301
+
+[[redirects]]
+  from = "/zh/tags/wisdom-accumulation/"
+  to = "/zh/tags/personal-growth/"
+  status = 301
+
+[[redirects]]
+  from = "/zh/tags/智慧积累-wisdom-accumulation/"
+  to = "/zh/tags/personal-growth/"
+  status = 301
+
+[[redirects]]
+  from = "/zh/tags/老挝旅行-laos-travel/"
+  to = "/zh/tags/travel/"
+  status = 301
+
+# ---------------------------------------------------------------------------
 # Cache-Control headers
 # ---------------------------------------------------------------------------
 # Hugo fingerprints CSS/JS with a SHA-256 hash — these are immutable, 1-year TTL.
