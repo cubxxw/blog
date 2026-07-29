@@ -16,6 +16,7 @@
     "covers": "node --env-file-if-exists=.env scripts/generate-covers.mjs",
     "covers:write": "node --env-file-if-exists=.env scripts/generate-covers.mjs --write",
     "covers:test": "node --test scripts/generate-covers.test.mjs",
+    "newsletter:test": "node --test scripts/buttondown-tags.test.mjs",
     "mcp:server": "node scripts/mcp-server.mjs",
     "baidu:push": "node scripts/baidu-push.mjs",
     "baidu:push:all": "node scripts/baidu-push.mjs --all",
