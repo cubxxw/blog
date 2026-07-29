@@ -401,7 +401,7 @@ body.dark .nav-search-trigger:hover {
 }
 
 .nav-search-trigger:hover .nav-search-trigger__keys {
-    opacity: 0.75;
+    opacity: 1;
 }
 
 .nav-search-trigger kbd {
@@ -512,8 +512,12 @@ body.dark #theme-toggle:hover {
     background: transparent;
     box-shadow: none;
     text-decoration: none;
-    opacity: 0.75;
+    opacity: 1;
     transition: color 180ms ease, opacity 180ms ease;
+}
+
+.lang-switch__item > a {
+    color: #5f554d !important;
 }
 
 /* Chinese glyph (中) gets a serif face for character feel */
@@ -565,6 +569,10 @@ body.dark .lang-switch__item > span {
     color: var(--color-ink-muted, var(--secondary));
 }
 
+body.dark .lang-switch__item > a {
+    color: #d1cbc4 !important;
+}
+
 body.dark .lang-switch__item > a:hover,
 body.dark .lang-switch__item > a:focus-visible {
     color: var(--color-ink, var(--primary));
@@ -613,6 +621,12 @@ body.dark .lang-switch__item--active > span {
     #theme-toggle {
         min-width: 44px;
         min-height: 44px;
+    }
+
+    .lang-switch__item > a {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0;
     }
 
     .nav-search-trigger:hover {

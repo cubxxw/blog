@@ -1,285 +1,536 @@
 {{- define "main" }}
-{{- $isZH := eq .Language.Lang "zh" }}
+{{- $isZH := eq .Language.Lang "zh" -}}
+{{- $products := site.Data.products.products -}}
+{{- $heroSlides := slice
+  (dict "image" "/images/about/journey/10-taprohm.webp" "zhLabel" "在路上" "enLabel" "FIELD NOTES" "zh" "换一个地方，也换一种看问题的角度。" "en" "Change the place. Change the angle.")
+  (dict "image" "/images/about/journey/06-kumano.webp" "zhLabel" "持续行走" "enLabel" "KEEP MOVING" "zh" "走得更远，才能看见问题真正的形状。" "en" "Walk farther. See the problem clearly.")
+  (dict "image" "/images/about/journey/09-vangvieng.webp" "zhLabel" "正在创造" "enLabel" "BUILD IN PUBLIC" "zh" "把沿途的观察，做成别人可以使用的产品。" "en" "Turn observations into products people can use.")
+-}}
+{{- $journey := slice
+  (dict "image" "/images/about/journey/01-nantaihang.webp" "zh" "南太行，中国" "en" "South Taihang, China")
+  (dict "image" "/images/about/journey/02-g318.webp" "zh" "川藏 318，中国" "en" "G318, China")
+  (dict "image" "/images/about/journey/03-prayer-flags.webp" "zh" "川西，中国" "en" "Western Sichuan, China")
+  (dict "image" "/images/about/journey/04-thorong-la.webp" "zh" "托龙垭口，尼泊尔" "en" "Thorong La, Nepal")
+  (dict "image" "/images/about/journey/05-fuji.webp" "zh" "富士山，日本" "en" "Mount Fuji, Japan")
+  (dict "image" "/images/about/journey/06-kumano.webp" "zh" "熊野古道，日本" "en" "Kumano Kodo, Japan")
+  (dict "image" "/images/about/journey/07-sakura-bar.webp" "zh" "樱花季，日本" "en" "Sakura season, Japan")
+  (dict "image" "/images/about/journey/08-vientiane.webp" "zh" "万象，老挝" "en" "Vientiane, Laos")
+  (dict "image" "/images/about/journey/09-vangvieng.webp" "zh" "万荣，老挝" "en" "Vang Vieng, Laos")
+  (dict "image" "/images/about/journey/10-taprohm.webp" "zh" "塔普伦寺，柬埔寨" "en" "Ta Prohm, Cambodia")
+  (dict "image" "/images/about/journey/11-danang.webp" "zh" "岘港，越南" "en" "Da Nang, Vietnam")
+-}}
 
-<div class="about-page about-page--narrative">
-  <article class="about-content about-narrative">
-    <header class="about-hero about-hero--narrative">
-      <div class="about-hero-grid">
-        <div class="about-intro">
-          <div class="about-identity">
-            <img
-              class="about-avatar"
-              src="/images/cubxxw-image.jpg"
-              width="112"
-              height="112"
-              alt="{{ if $isZH }}熊鑫伟{{ else }}Xinwei Xiong{{ end }}"
-              decoding="async">
-            <div>
-              <p class="about-version">ABOUT · CUBXXW</p>
-              <p class="about-hello">{{ if $isZH }}你好，我是熊鑫伟。{{ else }}Hello, I'm Xinwei.{{ end }}</p>
-            </div>
-          </div>
-
-          <h1 class="about-name">
-            {{ if $isZH }}
-            我在理解世界，<br>也在理解自己。
-            {{ else }}
-            I am learning the world,<br>and learning myself.
-            {{ end }}
-          </h1>
-
-          <p class="about-lead">
-            {{ if $isZH }}
-            毕业以后，我开始旅居。我想离开熟悉的答案，看看世界真正怎样运转；也看看换一个环境之后，我会成为谁。
-            {{ else }}
-            After graduation, I began living on the road. I wanted to leave familiar
-            answers behind, see how the world really works, and find out who I become
-            when the setting changes.
-            {{ end }}
+<div class="about-page about-studio" data-about-studio>
+  <article class="about-content about-studio__inner">
+    <header class="studio-hero">
+      <div class="studio-hero__copy">
+        <div class="studio-signature">
+          <span class="studio-signature__mark" aria-hidden="true">XX</span>
+          <p>
+            <span>{{ if $isZH }}熊鑫伟 · 独立创造者{{ else }}Xinwei Xiong · Independent builder{{ end }}</span>
+            {{ if $isZH }}写代码，也写下生活{{ else }}Building software and recording a life{{ end }}
           </p>
         </div>
 
-        <figure class="about-portrait">
-          <img
-            src="/images/about/journey/02-g318.webp"
-            width="675"
-            height="900"
-            alt="{{ if $isZH }}川藏 318 国道旁，熊鑫伟坐在雪山前的越野车顶{{ else }}Xinwei sitting on a vehicle beneath the snow mountains along G318{{ end }}"
-            decoding="async"
-            fetchpriority="high">
-          <figcaption>
-            <span>{{ if $isZH }}川藏 318 · 中国{{ else }}G318 · China{{ end }}</span>
-            {{ if $isZH }}雪山一直在窗外。{{ else }}Snow peaks stayed outside the window.{{ end }}
-          </figcaption>
-        </figure>
+        <h1>
+          {{ if $isZH }}
+          把走过的路，<br>做成<span>可以使用的东西。</span>
+          {{ else }}
+          Turning the road I travel<br>into <span>things people can use.</span>
+          {{ end }}
+        </h1>
+        <p class="studio-hero__lead">
+          {{ if $isZH }}
+          我通过旅居观察世界，通过写作理解自己，再把真实问题做成产品。
+          {{ else }}
+          I travel to observe the world, write to understand myself, and turn real questions into products.
+          {{ end }}
+        </p>
+        <nav class="studio-hero__actions" aria-label="{{ if $isZH }}页面导航{{ else }}Page navigation{{ end }}">
+          <a href="#workbench">{{ if $isZH }}进入我的工作台{{ else }}Enter my workbench{{ end }}</a>
+          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}查看全部产品{{ else }}View all products{{ end }}</a>
+        </nav>
+      </div>
+
+      <div class="studio-hero__carousel" data-hero-carousel
+        role="region" aria-roledescription="carousel"
+        aria-label="{{ if $isZH }}关于我的个人故事轮播{{ else }}Personal story carousel{{ end }}">
+        <div class="studio-hero__viewport">
+          {{- range $index, $slide := $heroSlides }}
+          {{- $heroImage := printf "%s-hero.webp" (strings.TrimSuffix ".webp" $slide.image) }}
+          <figure class="studio-hero__visual" data-hero-slide
+            data-hero-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else }}prev{{ end }}"
+            aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}">
+            <img src="{{ $heroImage }}" width="640" height="853"
+              alt="{{ if $isZH }}熊鑫伟的旅行与创造现场{{ else }}Xinwei travelling and building in the field{{ end }}"
+              loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}"
+              fetchpriority="{{ if eq $index 0 }}high{{ else }}low{{ end }}"
+              decoding="{{ if eq $index 0 }}sync{{ else }}async{{ end }}" draggable="false">
+            <figcaption>
+              <span>{{ if $isZH }}{{ $slide.zhLabel }}{{ else }}{{ $slide.enLabel }}{{ end }}</span>
+              {{ if $isZH }}{{ $slide.zh }}{{ else }}{{ $slide.en }}{{ end }}
+            </figcaption>
+          </figure>
+          {{- end }}
+        </div>
+        <div class="studio-hero__controls">
+          <span role="status" aria-live="polite" aria-atomic="true"><b data-hero-current>01</b> / 03</span>
+          <button type="button" data-hero-prev aria-label="{{ if $isZH }}上一张个人故事{{ else }}Previous personal story{{ end }}">←</button>
+          <button type="button" data-hero-toggle aria-pressed="false"
+            aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}">
+            <span aria-hidden="true">Ⅱ</span>
+          </button>
+          <button type="button" data-hero-next aria-label="{{ if $isZH }}下一张个人故事{{ else }}Next personal story{{ end }}">→</button>
+        </div>
       </div>
     </header>
 
-    <section class="about-story" aria-labelledby="about-story-title">
-      <h2 class="about-visually-hidden" id="about-story-title">
-        {{ if $isZH }}关于我的故事{{ else }}My story{{ end }}
-      </h2>
-
-      <div class="about-prose">
-        <p>
-          {{ if $isZH }}
-          我曾经把人生看作一场游戏。后来我慢慢发现，所谓“玩家”，也只是我们扮演的一个角色。
-          {{ else }}
-          I used to see life as a game. Over time, I realized that even “the player”
-          is one of the roles we learn to inhabit.
-          {{ end }}
-        </p>
-        <p class="about-prose-emphasis">
-          {{ if $isZH }}
-          真正重要的或许不是赢下每一关，而是在不断变化里，仍然知道自己为什么出发。
-          {{ else }}
-          What matters is not clearing every level. It is remembering why you began,
-          even as everything changes.
-          {{ end }}
-        </p>
-      </div>
-
-      <div class="about-paths" aria-label="{{ if $isZH }}我理解世界的三种方式{{ else }}Three ways I make sense of the world{{ end }}">
-        <p>
-          <b aria-hidden="true">01</b>
-          <span>{{ if $isZH }}行走{{ else }}Walking{{ end }}</span>
-          {{ if $isZH }}让我靠近真实的世界。{{ else }}brings me closer to the real world.{{ end }}
-        </p>
-        <p>
-          <b aria-hidden="true">02</b>
-          <span>{{ if $isZH }}写作{{ else }}Writing{{ end }}</span>
-          {{ if $isZH }}让我靠近自己。{{ else }}brings me closer to myself.{{ end }}
-        </p>
-        <p>
-          <b aria-hidden="true">03</b>
-          <span>{{ if $isZH }}产品{{ else }}Products{{ end }}</span>
-          {{ if $isZH }}让我把理解变成可以被使用的东西。{{ else }}turn understanding into something others can use.{{ end }}
-        </p>
-      </div>
-
-      <div class="about-prose">
-        <p>
-          {{ if $isZH }}
-          所以，我做的产品大多从自己的问题里长出来：怎样记录生活，不让经历悄悄蒸发；怎样借助 AI 更了解自己，同时保留人的判断；怎样在快速变化的世界里，持续成为自己。
-          {{ else }}
-          Most things I build grow from questions in my own life: how to record a
-          life without letting experience quietly disappear; how to use AI to know
-          ourselves better while keeping human judgment; and how to keep becoming
-          ourselves in a fast-changing world.
-          {{ end }}
-        </p>
-      </div>
-    </section>
-
-    <section class="about-evidence" aria-labelledby="about-evidence-title">
-      <header>
-        <p>{{ if $isZH }}一些真实坐标{{ else }}A FEW REAL COORDINATES{{ end }}</p>
-        <h2 id="about-evidence-title">
-          {{ if $isZH }}不是身份标签，是我走过的路。{{ else }}Not identity labels. Evidence from the road.{{ end }}
+    <section class="studio-manifesto" aria-labelledby="studio-manifesto-title">
+      <div class="studio-manifesto__content" data-manifesto>
+        <h2 id="studio-manifesto-title">
+          {{ if $isZH }}不经营标签。<br>建立一种生活。{{ else }}Not collecting labels.<br>Building a life.{{ end }}
         </h2>
+        <div class="studio-manifesto__loop" role="group"
+          aria-label="{{ if $isZH }}我的生活方法{{ else }}My way of living{{ end }}">
+          <button type="button" aria-pressed="true" data-manifesto-tab="0" data-step="01">
+            {{ if $isZH }}行走{{ else }}Move{{ end }}
+          </button>
+          <i aria-hidden="true">→</i>
+          <button type="button" aria-pressed="false" data-manifesto-tab="1" data-step="02">
+            {{ if $isZH }}写作{{ else }}Write{{ end }}
+          </button>
+          <i aria-hidden="true">→</i>
+          <button type="button" aria-pressed="false" data-manifesto-tab="2" data-step="03">
+            {{ if $isZH }}创造{{ else }}Build{{ end }}
+          </button>
+        </div>
+        <p class="studio-manifesto__insight" role="status" aria-live="polite" data-manifesto-insight
+          data-insights="{{ if $isZH }}走近现场，才有资格形成判断。|写下来，模糊的经验才会变成判断。|交到用户手里，判断才开始接受现实检验。{{ else }}Get close to reality before forming a judgment.|Writing turns blurred experience into judgment.|A judgment becomes real only when users can test it.{{ end }}">
+          {{ if $isZH }}走近现场，才有资格形成判断。{{ else }}Get close to reality before forming a judgment.{{ end }}
+        </p>
+      </div>
+    </section>
+
+    <section class="studio-workbench" id="workbench" aria-labelledby="studio-workbench-title"
+      role="region" aria-roledescription="carousel" data-card-carousel>
+      <header>
+        <div>
+          <p>{{ if $isZH }}我的日常工作区{{ else }}MY DAILY WORKSPACE{{ end }}</p>
+          <h2 id="studio-workbench-title">{{ if $isZH }}每天，我在这三个空间之间切换。{{ else }}Every day, I move between these three spaces.{{ end }}</h2>
+        </div>
+        <div class="studio-deck-controls">
+          <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / 03</span>
+          <button type="button" data-card-prev aria-label="{{ if $isZH }}上一个工作区{{ else }}Previous workspace{{ end }}">←</button>
+          <button type="button" data-card-next aria-label="{{ if $isZH }}下一个工作区{{ else }}Next workspace{{ end }}">→</button>
+        </div>
       </header>
-      <div class="about-evidence-list">
-        <article>
-          <strong>{{ if $isZH }}开源{{ else }}Open source{{ end }}</strong>
-          <p>{{ if $isZH }}OpenIM 头号贡献者。通过公开建造学习，也把踩过的坑留给后来的人。{{ else }}Top contributor to OpenIM. I learn by building in public and leave the hard-won context for whoever comes next.{{ end }}</p>
-          <a href="https://github.com/openimsdk/open-im-server" target="_blank" rel="noopener">{{ if $isZH }}查看 OpenIM{{ else }}View OpenIM{{ end }} ↗</a>
+
+      <div class="studio-workbench__grid" data-card-track>
+        <article class="workspace-panel workspace-panel--build" data-card data-card-position="active" aria-hidden="false">
+          <img src="/images/products/telepace.jpg" width="1440" height="900"
+            srcset="/images/products/telepace-720.webp 720w, /images/products/telepace.jpg 1440w"
+            sizes="(max-width: 640px) 82vw, 720px"
+            alt="{{ if $isZH }}Telepace 产品界面{{ else }}Telepace product interface{{ end }}" loading="lazy" decoding="async"
+            draggable="false">
+          <div>
+            <span>{{ if $isZH }}构建{{ else }}Build{{ end }}</span>
+            <h3>{{ if $isZH }}把模糊的问题做成可验证的产品{{ else }}Turn unclear problems into testable products{{ end }}</h3>
+            <p>{{ if $isZH }}产品、代码、用户访谈，以及一次次更小的实验。{{ else }}Product, code, user interviews, and smaller experiments each time.{{ end }}</p>
+          </div>
         </article>
-        <article>
-          <strong>{{ if $isZH }}远行{{ else }}The road{{ end }}</strong>
-          <p>{{ if $isZH }}12 个月、9 个国家、35 多座城市、徒步 400 多公里。地图向外延伸，旅程最终指向内心。{{ else }}Twelve months, nine countries, more than 35 cities, and over 400 km on foot. The map went outward while the journey turned inward.{{ end }}</p>
-          <a href="{{ "travel/" | relLangURL }}">{{ if $isZH }}进入旅行地图{{ else }}Open the travel map{{ end }} →</a>
+
+        <article class="workspace-panel workspace-panel--write" data-card data-card-position="next" aria-hidden="true">
+          <img src="/images/blog/rebuild-2026/article-three-column.jpeg" width="1389" height="868"
+            srcset="/images/blog/rebuild-2026/article-three-column-720.webp 720w, /images/blog/rebuild-2026/article-three-column.jpeg 1389w"
+            sizes="(max-width: 640px) 82vw, 720px"
+            alt="{{ if $isZH }}cubxxw 博客文章阅读界面{{ else }}Article reading interface on cubxxw.com{{ end }}" loading="lazy" decoding="async"
+            draggable="false">
+          <div>
+            <span>{{ if $isZH }}写作{{ else }}Write{{ end }}</span>
+            <h3>{{ if $isZH }}把经验整理成别人可以继续走的路{{ else }}Turn experience into a path others can continue{{ end }}</h3>
+          </div>
         </article>
-        <article>
-          <strong>{{ if $isZH }}正在构建{{ else }}Building now{{ end }}</strong>
-          <p>{{ if $isZH }}Solo Compass、DayPage 与 Telepace，都从一个真实问题出发：怎样让 AI 延伸人的判断，而不是替代人。{{ else }}Solo Compass, DayPage, and Telepace all begin with a real question: how can AI extend human judgment instead of replacing it?{{ end }}</p>
-          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}查看全部产品{{ else }}See all products{{ end }} →</a>
+
+        <article class="workspace-panel workspace-panel--move" data-card data-card-position="prev" aria-hidden="true">
+          <img src="/images/about/journey/06-kumano-hero.webp" width="640" height="853"
+            alt="{{ if $isZH }}熊野古道上的森林与行者{{ else }}Forest and walker on the Kumano Kodo{{ end }}" loading="lazy" decoding="async"
+            draggable="false">
+          <div>
+            <span>{{ if $isZH }}移动{{ else }}Move{{ end }}</span>
+            <h3>{{ if $isZH }}换一个地方，也换一种看问题的角度{{ else }}Change the place, then change the angle{{ end }}</h3>
+          </div>
         </article>
       </div>
     </section>
 
-    <blockquote class="about-question">
-      <p class="about-question-label">{{ if $isZH }}我持续关心的问题{{ else }}THE QUESTION I KEEP RETURNING TO{{ end }}</p>
+    <section class="studio-products" aria-labelledby="studio-products-title"
+      role="region" aria-roledescription="carousel" data-card-carousel>
+      <div class="studio-products__intro">
+        <h2 id="studio-products-title">{{ if $isZH }}正在构建的产品，不是作品集摆设。{{ else }}Products in motion, not portfolio decoration.{{ end }}</h2>
+        <p>{{ if $isZH }}它们都从我自己遇到的问题开始，也都在真实用户手里继续变化。{{ else }}Each began with a problem I faced and keeps changing in the hands of real users.{{ end }}</p>
+        <div class="studio-products__actions">
+          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}打开完整产品工作区{{ else }}Open the full product workspace{{ end }} →</a>
+          <div class="studio-deck-controls">
+              <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / {{ printf "%02d" (len $products) }}</span>
+            <button type="button" data-card-prev aria-label="{{ if $isZH }}上一个产品{{ else }}Previous product{{ end }}">←</button>
+            <button type="button" data-card-next aria-label="{{ if $isZH }}下一个产品{{ else }}Next product{{ end }}">→</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="studio-products__track" role="list" data-card-track>
+        {{- range $index, $product := $products }}
+        <article class="studio-product" role="listitem" data-card
+          data-card-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else if eq $index (sub (len $products) 1) }}prev{{ else }}hidden{{ end }}"
+          aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}">
+          <a href="{{ $product.url }}" target="_blank" rel="noopener">
+            <img src="/images/products/{{ $product.id }}.jpg" width="1440" height="900"
+              srcset="/images/products/{{ $product.id }}-720.webp 720w, /images/products/{{ $product.id }}.jpg 1440w"
+              sizes="(max-width: 640px) 82vw, 760px"
+              alt="{{ $product.name }} {{ if $isZH }}产品界面{{ else }}product interface{{ end }}" loading="lazy" decoding="async"
+              draggable="false">
+            <div class="studio-product__body">
+              <p><span>{{ printf "%02d" (add $index 1) }}</span>{{ if $isZH }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</p>
+              <h3>{{ $product.name }}</h3>
+              <p>{{ if $isZH }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
+              <span>{{ $product.stack }}</span>
+            </div>
+          </a>
+        </article>
+        {{- end }}
+      </div>
+    </section>
+
+    <section class="studio-road" aria-labelledby="studio-road-title"
+      role="region" aria-roledescription="carousel" data-road-carousel>
+      <div class="studio-road__copy">
+        <p class="studio-road__counter" role="status" aria-live="polite" aria-atomic="true"><span data-road-current>01</span> / {{ printf "%02d" (len $journey) }}</p>
+        <h2 id="studio-road-title">{{ if $isZH }}路不是生活的间隙。<br>路就是生活本身。{{ else }}The road is not a break from life.<br>It is life itself.{{ end }}</h2>
+        <p>{{ if $isZH }}12 个月，9 个国家，35 多座城市，徒步 400 多公里。旅行让我持续拆掉那些未经检验的答案。{{ else }}Twelve months, nine countries, more than 35 cities, and over 400 km on foot. Travel keeps undoing my untested answers.{{ end }}</p>
+        <div class="studio-road__controls">
+          <button type="button" data-road-prev aria-label="{{ if $isZH }}上一张旅行照片{{ else }}Previous travel photo{{ end }}">←</button>
+          <button type="button" data-road-next aria-label="{{ if $isZH }}下一张旅行照片{{ else }}Next travel photo{{ end }}">→</button>
+          <a href="{{ "travel/" | relLangURL }}">{{ if $isZH }}进入旅行地图{{ else }}Explore the travel map{{ end }}</a>
+        </div>
+      </div>
+
+      <div class="studio-road__viewport">
+        <div class="studio-road__track" data-road-track>
+          {{- range $index, $item := $journey }}
+          {{- $journeySmall := printf "%s-480.webp" (strings.TrimSuffix ".webp" $item.image) }}
+          <figure class="studio-road__slide" data-road-slide
+            data-road-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else if eq $index (sub (len $journey) 1) }}prev{{ else }}hidden{{ end }}"
+            aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}">
+            <img src="{{ $item.image }}" width="900" height="900"
+              srcset="{{ $journeySmall }} 480w, {{ $item.image }} 675w"
+              sizes="(max-width: 640px) 68vw, 340px"
+              alt="{{ if $isZH }}{{ $item.zh }}的旅行照片{{ else }}Travel photograph from {{ $item.en }}{{ end }}"
+              loading="lazy" fetchpriority="low" decoding="async" draggable="false">
+            <figcaption>{{ if $isZH }}{{ $item.zh }}{{ else }}{{ $item.en }}{{ end }}</figcaption>
+          </figure>
+          {{- end }}
+        </div>
+      </div>
+    </section>
+
+    <blockquote class="studio-question">
+      <p>{{ if $isZH }}我持续关心的问题{{ else }}A QUESTION I KEEP RETURNING TO{{ end }}</p>
       <p>
         {{ if $isZH }}
-        在 AI 越来越懂我们的时代，一个人怎样保存自己的经历、判断和成长轨迹，而不被机器替自己定义？
+        当 AI 越来越懂我们，一个人怎样保存自己的经历、判断和成长轨迹，而不被机器替自己定义？
         {{ else }}
-        As AI learns more about us, how can a person preserve their experience,
-        judgment, and path of growth without letting a machine define who they are?
+        As AI learns more about us, how do we preserve our experience, judgment, and growth without letting a machine define us?
         {{ end }}
       </p>
     </blockquote>
 
+    <section class="studio-coda" aria-labelledby="studio-coda-title">
+      <div>
+        <h2 id="studio-coda-title">{{ if $isZH }}我还没有最终答案。{{ else }}I do not have a final answer.{{ end }}</h2>
+        <p>{{ if $isZH }}所以我继续走，继续写，也继续做。{{ else }}So I keep walking, writing, and building.{{ end }}</p>
+      </div>
+      <nav aria-label="{{ if $isZH }}联系方式{{ else }}Contact links{{ end }}">
+        <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="mailto:3293172751nss@gmail.com">Email ↗</a>
+        <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X ↗</a>
+        <a href="{{ "about/quest/" | relLangURL }}">{{ if $isZH }}Bear Quest{{ else }}Bear Quest{{ end }} →</a>
+      </nav>
+    </section>
+
     <div class="about-reading-map">
       {{ .Content | safeHTML }}
     </div>
-
-    <section class="about-closing" aria-labelledby="about-closing-title">
-      <h2 id="about-closing-title">
-        {{ if $isZH }}我还没有最终答案。{{ else }}I do not have a final answer.{{ end }}
-      </h2>
-      <p>
-        {{ if $isZH }}
-        所以我继续走，继续写，也继续做。
-        {{ else }}
-        So I keep walking, writing, and building.
-        {{ end }}
-      </p>
-
-      <div class="about-actions">
-        <a class="about-action about-action--primary" href="{{ "about/quest/" | relLangURL }}">
-          {{ if $isZH }}走进我的故事{{ else }}Walk into my story{{ end }}
-          <span aria-hidden="true">→</span>
-        </a>
-        <a class="about-action about-action--secondary" href="{{ "projects/" | relLangURL }}">
-          {{ if $isZH }}看看我正在做的产品{{ else }}See what I am building{{ end }}
-        </a>
-      </div>
-    </section>
-
-    <section class="about-share" aria-labelledby="about-share-title">
-      <div class="about-share-copy">
-        <p class="about-share-label">{{ if $isZH }}分享这张名片{{ else }}SHARE THIS CARD{{ end }}</p>
-        <h2 id="about-share-title">
-          {{ if $isZH }}如果这段经历让你想起了某个人，就把它递给他。{{ else }}If this story brought someone to mind, pass it along.{{ end }}
-        </h2>
-        <p>
-          {{ if $isZH }}这不是一份完整简历，只是一张关于我正在走向哪里的名片。{{ else }}This is not a complete résumé. It is a small card about where I am heading.{{ end }}
-        </p>
-        <div class="about-share-actions">
-          <button type="button" class="about-share-button about-share-button--native" data-about-share>
-            {{ if $isZH }}分享 About Me{{ else }}Share About Me{{ end }}
-          </button>
-          <button type="button" class="about-share-button" data-about-copy>
-            {{ if $isZH }}复制页面链接{{ else }}Copy page link{{ end }}
-          </button>
-        </div>
-        <p class="about-share-status" data-about-share-status aria-live="polite"></p>
-      </div>
-
-      <article class="about-share-card" aria-label="{{ if $isZH }}熊鑫伟的个人分享名片{{ else }}Xinwei Xiong's share card{{ end }}">
-        <div class="about-share-card__top">
-          <img
-            src="/images/cubxxw-image.jpg"
-            width="112"
-            height="112"
-            alt=""
-            loading="lazy"
-            decoding="async">
-          <p>cubxxw.com</p>
-        </div>
-        <p class="about-share-card__statement">
-          {{ if $isZH }}我在理解世界，<br>也在理解自己。{{ else }}I am learning the world,<br>and learning myself.{{ end }}
-        </p>
-        <div class="about-share-card__footer">
-          <div>
-            <strong>{{ if $isZH }}熊鑫伟{{ else }}Xinwei Xiong{{ end }}</strong>
-            <span>{{ if $isZH }}开源贡献者、旅居者、独立产品创造者{{ else }}Open-source contributor, traveler, independent builder{{ end }}</span>
-          </div>
-          <span aria-hidden="true">↗</span>
-        </div>
-      </article>
-    </section>
-
-    <footer class="about-contact">
-      <p class="about-contact-note">
-        {{ if $isZH }}
-        如果你也在重新理解世界，或者重新认识自己，很高兴在这里遇见你。
-        {{ else }}
-        If you are also making sense of the world, or meeting yourself again,
-        I am glad our paths crossed here.
-        {{ end }}
-      </p>
-      <nav class="about-links" aria-label="{{ if $isZH }}联系方式{{ else }}Contact links{{ end }}">
-        <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:3293172751nss@gmail.com">Email</a>
-        <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X</a>
-        <a href="https://www.zhihu.com/people/3293172751" target="_blank" rel="noopener">{{ if $isZH }}知乎{{ else }}Zhihu{{ end }}</a>
-      </nav>
-    </footer>
   </article>
 </div>
 
 <script>
   (function () {
-    var shareButton = document.querySelector('[data-about-share]');
-    var copyButton = document.querySelector('[data-about-copy]');
-    var status = document.querySelector('[data-about-share-status]');
-    var url = {{ .Permalink | jsonify | safeJS }};
-    var title = {{ (cond $isZH "关于熊鑫伟 | cubxxw" "About Xinwei Xiong | cubxxw") | jsonify | safeJS }};
-    var text = {{ (cond $isZH "我在理解世界，也在理解自己。" "I am learning the world, and learning myself.") | jsonify | safeJS }};
-    var copied = {{ (cond $isZH "链接已复制，可以分享给朋友了。" "Link copied. It is ready to share.") | jsonify | safeJS }};
+    var root = document.querySelector('[data-about-studio]');
+    if (!root) return;
 
-    function copyLink() {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(function () {
-          status.textContent = copied;
-        });
-        return;
+    var carousel = root.querySelector('[data-road-carousel]');
+    var track = root.querySelector('[data-road-track]');
+    var slides = Array.prototype.slice.call(root.querySelectorAll('[data-road-slide]'));
+    var current = root.querySelector('[data-road-current]');
+    var index = 0;
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, slideIndex) {
+        var delta = slideIndex - index;
+        if (delta > slides.length / 2) delta -= slides.length;
+        if (delta < -slides.length / 2) delta += slides.length;
+        var position = 'hidden';
+        if (delta === 0) position = 'active';
+        if (delta === -1) position = 'prev';
+        if (delta === 1) position = 'next';
+        if (delta === -2) position = 'far-prev';
+        if (delta === 2) position = 'far-next';
+        slide.dataset.roadPosition = position;
+        slide.setAttribute('aria-hidden', delta === 0 ? 'false' : 'true');
+      });
+      current.textContent = String(index + 1).padStart(2, '0');
+    }
+
+    root.querySelector('[data-road-prev]').addEventListener('click', function () { show(index - 1); });
+    root.querySelector('[data-road-next]').addEventListener('click', function () { show(index + 1); });
+
+    var startX = 0;
+    var startY = 0;
+    var roadPointer = null;
+    carousel.addEventListener('pointerdown', function (event) {
+      if (event.target.closest('.studio-road__controls')) return;
+      startX = event.clientX;
+      startY = event.clientY;
+      roadPointer = event.pointerId;
+      carousel.setPointerCapture(event.pointerId);
+    });
+    carousel.addEventListener('pointerup', function (event) {
+      var distance = event.clientX - startX;
+      var vertical = event.clientY - startY;
+      if (roadPointer === event.pointerId && Math.abs(distance) > 48 && Math.abs(distance) > Math.abs(vertical) * 1.2) {
+        show(index + (distance < 0 ? 1 : -1));
       }
-      var field = document.createElement('textarea');
-      field.value = url;
-      field.setAttribute('readonly', '');
-      field.style.position = 'fixed';
-      field.style.opacity = '0';
-      document.body.appendChild(field);
-      field.select();
-      document.execCommand('copy');
-      field.remove();
-      status.textContent = copied;
+      roadPointer = null;
+    });
+    carousel.addEventListener('pointercancel', function () { roadPointer = null; });
+
+    root.querySelectorAll('[data-card-carousel]').forEach(function (carousel) {
+      var cards = Array.prototype.slice.call(carousel.querySelectorAll('[data-card]'));
+      var counter = carousel.querySelector('[data-card-current]');
+      var deckIndex = 0;
+      var deckStartX = 0;
+      var deckStartY = 0;
+      var deckPointer = null;
+
+      function renderDeck(next) {
+        deckIndex = (next + cards.length) % cards.length;
+        cards.forEach(function (card, cardIndex) {
+          var delta = cardIndex - deckIndex;
+          if (delta > cards.length / 2) delta -= cards.length;
+          if (delta < -cards.length / 2) delta += cards.length;
+          var position = 'hidden';
+          if (delta === 0) position = 'active';
+          if (delta === -1) position = 'prev';
+          if (delta === 1) position = 'next';
+          if (delta <= -2) position = 'far-prev';
+          if (delta >= 2) position = 'far-next';
+          card.dataset.cardPosition = position;
+          card.setAttribute('aria-hidden', delta === 0 ? 'false' : 'true');
+          var link = card.querySelector('a');
+          if (link) link.tabIndex = delta === 0 ? 0 : -1;
+        });
+        counter.textContent = String(deckIndex + 1).padStart(2, '0');
+      }
+
+      carousel.querySelector('[data-card-prev]').addEventListener('click', function () { renderDeck(deckIndex - 1); });
+      carousel.querySelector('[data-card-next]').addEventListener('click', function () { renderDeck(deckIndex + 1); });
+      carousel.addEventListener('pointerdown', function (event) {
+        if (event.target.closest('[data-card-prev], [data-card-next]')) return;
+        deckStartX = event.clientX;
+        deckStartY = event.clientY;
+        deckPointer = event.pointerId;
+        carousel.setPointerCapture(event.pointerId);
+      });
+      carousel.addEventListener('pointerup', function (event) {
+        var deckDistance = event.clientX - deckStartX;
+        var deckVertical = event.clientY - deckStartY;
+        if (deckPointer === event.pointerId && Math.abs(deckDistance) > 56 && Math.abs(deckDistance) > Math.abs(deckVertical) * 1.2) {
+          renderDeck(deckIndex + (deckDistance < 0 ? 1 : -1));
+        }
+        deckPointer = null;
+      });
+      carousel.addEventListener('pointercancel', function () { deckPointer = null; });
+      renderDeck(0);
+    });
+
+    var heroCarousel = root.querySelector('[data-hero-carousel]');
+    if (heroCarousel) {
+      var heroSlides = Array.prototype.slice.call(heroCarousel.querySelectorAll('[data-hero-slide]'));
+      var heroCurrent = heroCarousel.querySelector('[data-hero-current]');
+      var heroToggle = heroCarousel.querySelector('[data-hero-toggle]');
+      var heroIndex = 0;
+      var heroTimer = null;
+      var heroHasStarted = false;
+      var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var reduceMotion = reduceMotionQuery.matches;
+      var userPaused = false;
+      var heroStartX = 0;
+      var heroStartY = 0;
+      var heroPointer = null;
+
+      function renderHero(next) {
+        heroIndex = (next + heroSlides.length) % heroSlides.length;
+        heroSlides.forEach(function (slide, slideIndex) {
+          var delta = slideIndex - heroIndex;
+          if (delta > 1) delta -= heroSlides.length;
+          if (delta < -1) delta += heroSlides.length;
+          slide.dataset.heroPosition = delta === 0 ? 'active' : (delta === 1 ? 'next' : 'prev');
+          slide.setAttribute('aria-hidden', delta === 0 ? 'false' : 'true');
+        });
+        heroCurrent.textContent = String(heroIndex + 1).padStart(2, '0');
+      }
+
+      function stopHeroAutoplay() {
+        if (heroTimer) {
+          window.clearInterval(heroTimer);
+          window.clearTimeout(heroTimer);
+        }
+        heroTimer = null;
+      }
+
+      function syncHeroToggle() {
+        heroToggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+        heroToggle.setAttribute('aria-label', userPaused
+          ? '{{ if $isZH }}继续自动轮播{{ else }}Resume automatic carousel{{ end }}'
+          : '{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}');
+        heroToggle.querySelector('span').textContent = userPaused ? '▶' : 'Ⅱ';
+      }
+
+      function startHeroAutoplay(force) {
+        if (reduceMotion || userPaused || document.hidden || heroTimer) return;
+        if (!force && (heroCarousel.matches(':hover') || heroCarousel.contains(document.activeElement))) return;
+        if (!heroHasStarted && !force) {
+          heroTimer = window.setTimeout(function () {
+            heroTimer = null;
+            if (reduceMotion || userPaused || document.hidden) return;
+            renderHero(heroIndex + 1);
+            heroHasStarted = true;
+            startHeroAutoplay(true);
+          }, 5200);
+          return;
+        }
+        heroHasStarted = true;
+        heroTimer = window.setInterval(function () { renderHero(heroIndex + 1); }, 2800);
+      }
+
+      heroCarousel.querySelector('[data-hero-prev]').addEventListener('click', function () {
+        stopHeroAutoplay();
+        renderHero(heroIndex - 1);
+        startHeroAutoplay(true);
+      });
+      heroCarousel.querySelector('[data-hero-next]').addEventListener('click', function () {
+        stopHeroAutoplay();
+        renderHero(heroIndex + 1);
+        startHeroAutoplay(true);
+      });
+      heroToggle.addEventListener('click', function () {
+        userPaused = !userPaused;
+        syncHeroToggle();
+        if (userPaused) stopHeroAutoplay();
+        else startHeroAutoplay(true);
+      });
+      heroCarousel.addEventListener('pointerenter', stopHeroAutoplay);
+      heroCarousel.addEventListener('pointerleave', function () { startHeroAutoplay(); });
+      heroCarousel.addEventListener('focusin', stopHeroAutoplay);
+      heroCarousel.addEventListener('focusout', function () { startHeroAutoplay(); });
+      heroCarousel.addEventListener('pointerdown', function (event) {
+        if (event.target.closest('.studio-hero__controls')) return;
+        heroStartX = event.clientX;
+        heroStartY = event.clientY;
+        heroPointer = event.pointerId;
+        heroCarousel.setPointerCapture(event.pointerId);
+        stopHeroAutoplay();
+      });
+      heroCarousel.addEventListener('pointerup', function (event) {
+        var heroDistance = event.clientX - heroStartX;
+        var heroVertical = event.clientY - heroStartY;
+        if (heroPointer === event.pointerId && Math.abs(heroDistance) > 48 && Math.abs(heroDistance) > Math.abs(heroVertical) * 1.2) {
+          renderHero(heroIndex + (heroDistance < 0 ? 1 : -1));
+        }
+        heroPointer = null;
+        startHeroAutoplay(true);
+      });
+      heroCarousel.addEventListener('pointercancel', function () {
+        heroPointer = null;
+        startHeroAutoplay();
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stopHeroAutoplay();
+        else startHeroAutoplay();
+      });
+      window.addEventListener('pagehide', stopHeroAutoplay);
+      window.addEventListener('pageshow', function () { startHeroAutoplay(); });
+      reduceMotionQuery.addEventListener('change', function (event) {
+        reduceMotion = event.matches;
+        if (reduceMotion) stopHeroAutoplay();
+        else startHeroAutoplay();
+      });
+      renderHero(0);
+      syncHeroToggle();
+      startHeroAutoplay();
     }
 
-    if (!navigator.share && shareButton) {
-      shareButton.hidden = true;
+    var revealSections = Array.prototype.slice.call(root.querySelectorAll(
+      '.studio-manifesto, .studio-workbench, .studio-products, .studio-road, .studio-question, .studio-coda'
+    ));
+    revealSections.forEach(function (section) { section.setAttribute('data-about-section', ''); });
+
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            sectionObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+      revealSections.forEach(function (section) { sectionObserver.observe(section); });
+    } else {
+      revealSections.forEach(function (section) { section.classList.add('is-visible'); });
     }
-    if (shareButton) {
-      shareButton.addEventListener('click', function () {
-        navigator.share({ title: title, text: text, url: url }).catch(function () {});
+
+    var manifesto = root.querySelector('[data-manifesto]');
+    if (manifesto) {
+      var manifestoTabs = Array.prototype.slice.call(manifesto.querySelectorAll('[data-manifesto-tab]'));
+      var manifestoInsight = manifesto.querySelector('[data-manifesto-insight]');
+      var manifestoInsights = manifestoInsight.dataset.insights.split('|');
+
+      function selectManifesto(nextIndex) {
+        manifestoTabs.forEach(function (tab, tabIndex) {
+          tab.setAttribute('aria-pressed', tabIndex === nextIndex ? 'true' : 'false');
+        });
+        manifestoInsight.textContent = manifestoInsights[nextIndex];
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          manifestoInsight.animate([
+            { opacity: .2, transform: 'translate3d(0, 6px, 0)' },
+            { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+          ], { duration: 220, easing: 'cubic-bezier(.2, .76, .2, 1)' });
+        }
+      }
+
+      manifestoTabs.forEach(function (tab, tabIndex) {
+        tab.addEventListener('click', function () { selectManifesto(tabIndex); });
+        tab.addEventListener('keydown', function (event) {
+          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+          event.preventDefault();
+          var nextIndex = (tabIndex + (event.key === 'ArrowRight' ? 1 : -1) + manifestoTabs.length) % manifestoTabs.length;
+          manifestoTabs[nextIndex].focus();
+          selectManifesto(nextIndex);
+        });
       });
     }
-    if (copyButton) {
-      copyButton.addEventListener('click', copyLink);
-    }
+
   })();
 </script>
-
 {{- end }}

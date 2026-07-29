@@ -8,7 +8,7 @@
 <footer class="sf" role="contentinfo" aria-label="{{ if $isZh }}站点导航{{ else }}Site navigation{{ end }}">
   <div class="sf-grid">
     <div class="sf-col">
-      <h4 class="sf-heading">{{ if $isZh }}继续读{{ else }}Keep Reading{{ end }}</h4>
+      <p class="sf-heading">{{ if $isZh }}继续读{{ else }}Keep Reading{{ end }}</p>
       <ul class="sf-list">
         <li><a href="{{ "/columns/" | relLangURL }}">{{ if $isZh }}专栏{{ else }}Columns{{ end }}</a></li>
         <li><a href="{{ "/ai-agent/" | relLangURL }}">AI Agent</a></li>
@@ -20,7 +20,7 @@
       </ul>
     </div>
     <div class="sf-col">
-      <h4 class="sf-heading">{{ if $isZh }}产品{{ else }}Products{{ end }}</h4>
+      <p class="sf-heading">{{ if $isZh }}产品{{ else }}Products{{ end }}</p>
       <ul class="sf-list">
         {{- range site.Data.products.products }}
         <li><a href="{{ "/projects/" | relLangURL }}#{{ .id }}">{{ .name }}</a></li>
@@ -29,7 +29,7 @@
       </ul>
     </div>
     <div class="sf-col">
-      <h4 class="sf-heading">{{ if $isZh }}订阅与联系{{ else }}Subscribe &amp; Connect{{ end }}</h4>
+      <p class="sf-heading">{{ if $isZh }}订阅与联系{{ else }}Subscribe &amp; Connect{{ end }}</p>
       <ul class="sf-list">
         <li><a href="{{ "/about/" | relLangURL }}">{{ if $isZh }}关于 · 阅读地图{{ else }}About · Start Here{{ end }}</a></li>
         <li><a href="{{ "/index.xml" | relLangURL }}">RSS</a></li>

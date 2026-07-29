@@ -2,15 +2,17 @@
 title: "About Me"
 menuTitle: "About"
 layout: "about"
-description: "Meet Xinwei Xiong (cubxxw): living on the road, writing to understand himself, and building products that turn understanding into something useful."
-summary: "Learning the world, and learning myself."
+description: "Meet Xinwei Xiong (cubxxw), an independent product builder, open-source contributor, and traveler. Explore his daily workspace, AI products in progress, travel photography, and writing on growth and human judgment."
+summary: "Turning the road I travel into things people can use."
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
 ShowBreadCrumbs: false
 ShowCodeCopyButtons: false
+disableHLJS: true
 ShowWordCount: false
 ShowRssButtonInSectionTermList: false
+hideFooter: true
 cover:
     hidden: true
 date: 2025-01-09T00:00:00+08:00
@@ -24,7 +26,7 @@ keywords: ["About", "Self", "Identity", "Personal Introduction", "About Me", "Re
 tldr:
   - "Xinwei Xiong (cubxxw) walks to observe the world, writes to understand himself, and builds products that turn understanding into something useful."
   - "He keeps returning to one question: as AI learns more about us, how can a person preserve their experience, judgment, and path of growth?"
-  - "The page offers two ways to continue: enter Bear Quest or see the products he is building."
+  - "The page opens his daily workspace, products in progress, travel photography, and curated reading paths."
 ---
 
 <!-- ── Coda · Reading atlas (#start-here 301 target).
