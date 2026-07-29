@@ -73,6 +73,11 @@ params:
     - 技术博客
   shortTitle: "cubxxw"
   author: 熊鑫伟 (Xinwei Xiong)
+  # Public Telepace embed configuration. The campaign id is intentionally
+  # empty in git: set HUGO_PARAMS_TELEPACEABOUTCAMPAIGNID in Netlify after
+  # publishing the dedicated About feedback study.
+  telepaceEmbedBaseURL: https://telepace.cubxxw.com
+  telepaceAboutCampaignID: ""
   images:
     - /assets/og-image.png
     - /assets/cubxxw-image.jpg
