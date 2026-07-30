@@ -2,6 +2,8 @@
 {{- $isZH := eq .Language.Lang "zh" -}}
 {{- $products := site.Data.products.products -}}
 {{- $telepaceBaseURL := site.Params.telepaceEmbedBaseURL | default "https://telepace.cubxxw.com" -}}
+{{- $telepaceApiURL := site.Params.telepaceApiBaseURL | default "https://api.telepace.cubxxw.com" -}}
+{{- $telepaceWsURL := site.Params.telepaceWsBaseURL | default "wss://api.telepace.cubxxw.com" -}}
 {{- $telepaceCampaignID := site.Params.telepaceAboutCampaignID | default "" -}}
 {{- $telepaceConfigured := ne $telepaceCampaignID "" -}}
 {{- $heroSlides := slice
@@ -245,6 +247,9 @@
     <section class="studio-interview" id="tell-me"
       aria-labelledby="studio-interview-title" data-telepace-section>
       <div class="studio-interview__intro">
+        <p class="studio-interview__eyebrow">
+          {{ if $isZH }}开放访谈 / 约 4 分钟{{ else }}OPEN INTERVIEW / ABOUT 4 MIN{{ end }}
+        </p>
         <h2 id="studio-interview-title">
           {{ if $isZH }}告诉我，我还没看见的东西。{{ else }}Show me what I have not seen.{{ end }}
         </h2>
@@ -257,41 +262,42 @@
         </p>
       </div>
 
-      <telepace-interview
-        class="studio-interview__embed"
-        base-url="{{ $telepaceBaseURL }}"
-        campaign-id="{{ $telepaceCampaignID }}"
-        locale="{{ if $isZH }}zh{{ else }}en{{ end }}"
-        source="about-me"
-        title="{{ if $isZH }}给熊鑫伟的建议 AI 访谈{{ else }}AI interview with feedback for Xinwei{{ end }}"
-        data-sdk-src="{{ $telepaceBaseURL }}/embed/telepace-interview.js?v=1">
-        <div class="studio-interview__launch">
+      <div class="studio-interview__native"
+        data-telepace-native
+        data-state="idle"
+        data-campaign-id="{{ $telepaceCampaignID }}"
+        data-api-url="{{ $telepaceApiURL }}"
+        data-ws-url="{{ $telepaceWsURL | safeURL }}"
+        data-sdk-src="{{ $telepaceBaseURL }}/embed/telepace-interview-headless.js?v=3"
+        data-locale="{{ if $isZH }}zh{{ else }}en{{ end }}"
+        data-copy-loading="{{ if $isZH }}正在读取访谈问题{{ else }}Loading the interview{{ end }}"
+        data-copy-connecting="{{ if $isZH }}正在连接我的 AI 访谈员{{ else }}Connecting to my AI interviewer{{ end }}"
+        data-copy-thinking="{{ if $isZH }}我在根据你的回答继续追问{{ else }}I am shaping the next question from your answer{{ end }}"
+        data-copy-question="{{ if $isZH }}问题{{ else }}Question{{ end }}"
+        data-copy-send="{{ if $isZH }}发送回答{{ else }}Send answer{{ end }}"
+        data-copy-sending="{{ if $isZH }}正在思考{{ else }}Thinking{{ end }}"
+        data-copy-default-welcome="{{ if $isZH }}先选一个你最想说的具体感受。{{ else }}Start with the most concrete reaction you had.{{ end }}"
+        data-copy-error-title="{{ if $isZH }}这次对话暂时没有接通。{{ else }}This conversation did not connect.{{ end }}"
+        data-copy-error-body="{{ if $isZH }}页面内容都还在这里。可以原地重试。{{ else }}The page remains in place. You can retry here.{{ end }}">
+
+        <section class="studio-interview__stage studio-interview__launch"
+          data-interview-stage="launch" aria-labelledby="studio-interview-prompt">
           <div class="studio-interview__prompt">
-            <p>{{ if $isZH }}你可以从一个具体感受开始{{ else }}Start with one concrete reaction{{ end }}</p>
+            <p id="studio-interview-prompt">{{ if $isZH }}你可以从一个具体感受开始{{ else }}Start with one concrete reaction{{ end }}</p>
             <div class="studio-interview__topics" role="group"
               aria-label="{{ if $isZH }}选择访谈主题{{ else }}Choose an interview topic{{ end }}">
-              {{- if $telepaceConfigured }}
-              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/r/{{ $telepaceCampaignID }}?source=about-me-first-impression"
-                target="_blank" rel="noopener" data-telepace-open
+              <button type="button" data-telepace-open
                 data-telepace-topic="first-impression">
                 {{ if $isZH }}哪里让我想继续看{{ else }}What kept me looking{{ end }}
-              </a>
-              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/r/{{ $telepaceCampaignID }}?source=about-me-trust-gap"
-                target="_blank" rel="noopener" data-telepace-open
+              </button>
+              <button type="button" data-telepace-open
                 data-telepace-topic="trust-gap">
                 {{ if $isZH }}哪里让我不相信{{ else }}What weakened trust{{ end }}
-              </a>
-              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/r/{{ $telepaceCampaignID }}?source=about-me-product-bet"
-                target="_blank" rel="noopener" data-telepace-open
+              </button>
+              <button type="button" data-telepace-open
                 data-telepace-topic="product-bet">
                 {{ if $isZH }}哪个产品值得继续{{ else }}Which product deserves more{{ end }}
-              </a>
-              {{- else }}
-              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/demo"
-                target="_blank" rel="noopener">
-                {{ if $isZH }}体验 Telepace 访谈{{ else }}Try a Telepace interview{{ end }}
-              </a>
-              {{- end }}
+              </button>
             </div>
           </div>
           <div class="studio-interview__signal" aria-hidden="true">
@@ -300,15 +306,98 @@
           <p class="studio-interview__privacy">
             {{ if $isZH }}匿名参与，可随时退出{{ else }}Anonymous, leave at any time{{ end }}
           </p>
-        </div>
-      </telepace-interview>
+        </section>
 
-      <p class="studio-interview__status" role="status" aria-live="polite"
-        data-telepace-status>
-        {{ if not $telepaceConfigured }}
-          {{ if $isZH }}正式访谈正在准备中，当前可先体验 Telepace。{{ else }}The live study is being prepared. You can try Telepace now.{{ end }}
-        {{ end }}
-      </p>
+        <section class="studio-interview__stage studio-interview__consent"
+          data-interview-stage="consent" aria-labelledby="studio-interview-consent-title" hidden>
+          <button class="studio-interview__back" type="button" data-interview-back>
+            {{ if $isZH }}返回主题{{ else }}Back to topics{{ end }}
+          </button>
+          <div class="studio-interview__skeleton" data-interview-skeleton aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div data-interview-consent-content hidden>
+            <h3 id="studio-interview-consent-title">
+              {{ if $isZH }}开始前，先说清楚。{{ else }}Before we begin.{{ end }}
+            </h3>
+            <p data-interview-welcome></p>
+            <label class="studio-interview__consent-check" data-interview-consent-wrap hidden>
+              <input type="checkbox" data-interview-consent>
+              <span data-interview-consent-copy></span>
+            </label>
+            <button class="studio-interview__primary" type="button" data-interview-start>
+              {{ if $isZH }}开始对话{{ else }}Begin conversation{{ end }}
+            </button>
+          </div>
+        </section>
+
+        <section class="studio-interview__stage studio-interview__chat"
+          data-interview-stage="chat" aria-label="{{ if $isZH }}AI 访谈对话{{ else }}AI interview conversation{{ end }}" hidden>
+          <header class="studio-interview__chat-header">
+            <p data-interview-progress>{{ if $isZH }}正在开始{{ else }}Starting{{ end }}</p>
+            <button type="button" data-interview-close>
+              {{ if $isZH }}结束{{ else }}Close{{ end }}
+            </button>
+          </header>
+          <ol class="studio-interview__messages" data-interview-messages
+            aria-live="polite" aria-relevant="additions"></ol>
+          <p class="studio-interview__thinking" data-interview-thinking hidden></p>
+          <form class="studio-interview__composer" data-interview-form>
+            <label for="studio-interview-answer">
+              {{ if $isZH }}你的回答{{ else }}Your answer{{ end }}
+            </label>
+            <div>
+              <textarea id="studio-interview-answer" rows="2" maxlength="2400"
+                placeholder="{{ if $isZH }}写一个具体时刻、感受或建议{{ else }}Share one specific moment, reaction, or suggestion{{ end }}"
+                data-interview-answer required></textarea>
+              <button type="submit" data-interview-send>
+                {{ if $isZH }}发送回答{{ else }}Send answer{{ end }}
+              </button>
+            </div>
+            <p>{{ if $isZH }}Enter 发送，Shift + Enter 换行{{ else }}Enter sends. Shift + Enter adds a line.{{ end }}</p>
+          </form>
+        </section>
+
+        <section class="studio-interview__stage studio-interview__complete"
+          data-interview-stage="complete" aria-labelledby="studio-interview-complete-title" hidden>
+          <p>{{ if $isZH }}已进入 Telepace 分析{{ else }}Sent to Telepace analysis{{ end }}</p>
+          <h3 id="studio-interview-complete-title" data-interview-complete-title>
+            {{ if $isZH }}谢谢你看见这些。{{ else }}Thank you for seeing this closely.{{ end }}
+          </h3>
+          <p data-interview-complete-copy>
+            {{ if $isZH }}你的回答会成为下一次改进的证据。{{ else }}Your answer becomes evidence for the next iteration.{{ end }}
+          </p>
+          <button class="studio-interview__secondary" type="button" data-interview-restart>
+            {{ if $isZH }}再说一个问题{{ else }}Share another point{{ end }}
+          </button>
+        </section>
+
+        <section class="studio-interview__stage studio-interview__error"
+          data-interview-stage="error" aria-labelledby="studio-interview-error-title" hidden>
+          <h3 id="studio-interview-error-title" data-interview-error-title>
+            {{ if $isZH }}这次对话暂时没有接通。{{ else }}This conversation did not connect.{{ end }}
+          </h3>
+          <p data-interview-error-copy>
+            {{ if $isZH }}页面内容都还在这里。可以原地重试。{{ else }}The page remains in place. You can retry here.{{ end }}
+          </p>
+          <div>
+            <button class="studio-interview__primary" type="button" data-interview-retry>
+              {{ if $isZH }}原地重试{{ else }}Retry here{{ end }}
+            </button>
+            <a href="{{ if $telepaceConfigured }}{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/r/{{ $telepaceCampaignID }}?source=about-me-fallback{{ else }}{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/demo{{ end }}"
+              target="_blank" rel="noopener" data-interview-fallback>
+              {{ if $isZH }}在 Telepace 中打开{{ else }}Open in Telepace{{ end }}
+            </a>
+          </div>
+        </section>
+
+        <p class="studio-interview__status" role="status" aria-live="polite"
+          data-telepace-status>
+          {{ if not $telepaceConfigured }}
+            {{ if $isZH }}正式访谈正在准备中。{{ else }}The live study is being prepared.{{ end }}
+          {{ end }}
+        </p>
+      </div>
     </section>
 
     <section class="studio-coda" aria-labelledby="studio-coda-title">
@@ -598,73 +687,9 @@
       });
     }
 
-    var telepace = root.querySelector('telepace-interview[data-sdk-src]');
-    if (telepace && telepace.getAttribute('campaign-id')) {
-      var telepaceStatus = root.querySelector('[data-telepace-status]');
-      var telepaceScriptPromise = null;
-
-      function loadTelepaceSDK() {
-        if (window.customElements && customElements.get('telepace-interview')) {
-          return Promise.resolve();
-        }
-        if (telepaceScriptPromise) return telepaceScriptPromise;
-        telepaceScriptPromise = new Promise(function (resolve, reject) {
-          var script = document.createElement('script');
-          script.type = 'module';
-          script.src = telepace.dataset.sdkSrc;
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
-        return telepaceScriptPromise;
-      }
-
-      telepace.addEventListener('click', function (event) {
-        var trigger = event.target.closest('[data-telepace-open]');
-        if (!trigger) return;
-        var topic = trigger.dataset.telepaceTopic;
-        if (topic) telepace.setAttribute('source', 'about-me-' + topic);
-        if (window.customElements && customElements.get('telepace-interview')) return;
-        event.preventDefault();
-        loadTelepaceSDK().then(function () {
-          telepace.open();
-        }).catch(function () {
-          window.location.assign(trigger.href);
-        });
-      });
-
-      telepace.addEventListener('telepace-started', function () {
-        if (telepaceStatus) {
-          telepaceStatus.textContent = '{{ if $isZH }}正在倾听。请说具体一点。{{ else }}Listening now. Specific moments are most useful.{{ end }}';
-        }
-      });
-      telepace.addEventListener('telepace-ready', function () {
-        if (telepaceStatus) telepaceStatus.textContent = '';
-      });
-      telepace.addEventListener('telepace-complete', function () {
-        telepace.classList.add('is-complete');
-        if (telepaceStatus) {
-          telepaceStatus.textContent = '{{ if $isZH }}谢谢。你的回答已进入 Telepace 分析。{{ else }}Thank you. Your answers are now in Telepace analysis.{{ end }}';
-        }
-      });
-      telepace.addEventListener('telepace-error', function () {
-        if (telepaceStatus) {
-          telepaceStatus.textContent = '{{ if $isZH }}暂时无法连接访谈，可在新标签页继续。{{ else }}The interview could not connect. You can continue in a new tab.{{ end }}';
-        }
-      });
-
-      if ('IntersectionObserver' in window) {
-        var telepaceLoader = new IntersectionObserver(function (entries) {
-          if (!entries[0].isIntersecting) return;
-          loadTelepaceSDK().catch(function () {});
-          telepaceLoader.disconnect();
-        }, { rootMargin: '600px 0px' });
-        telepaceLoader.observe(telepace);
-      } else {
-        loadTelepaceSDK().catch(function () {});
-      }
-    }
-
   })();
 </script>
+{{- $aboutInterview := resources.Get "js/about-native-interview.js" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) -}}
+{{- if hugo.IsProduction }}{{- $aboutInterview = $aboutInterview | fingerprint -}}{{- end }}
+<script type="module" src="{{ $aboutInterview.RelPermalink }}"{{ with $aboutInterview.Data.Integrity }} integrity="{{ . }}" crossorigin="anonymous"{{ end }}></script>
 {{- end }}
