@@ -46,6 +46,65 @@ roots.forEach((root) => {
     status.textContent = value || "";
   }
 
+  function publicErrorCopy(error) {
+    const code = String(error?.code || "");
+    const detail = String(error?.message || "");
+
+    if (code === "campaign_not_configured") {
+      return {
+        title: locale === "zh" ? "正式访谈还没有发布。" : "The live interview is not published yet.",
+        body:
+          locale === "zh"
+            ? "页面内容都还在这里。访谈准备好后，可以直接在这里开始。"
+            : "The page remains here. You can begin in place once the interview is ready.",
+      };
+    }
+
+    if (detail.includes("embed_origin_not_allowed")) {
+      return {
+        title:
+          locale === "zh"
+            ? "当前页面地址还没有获得访谈授权。"
+            : "This page address is not authorized for the interview yet.",
+        body:
+          locale === "zh"
+            ? "无需离开页面。来源配置更新后，刷新或原地重试即可继续。"
+            : "You do not need to leave. Refresh or retry here after the origin is authorized.",
+      };
+    }
+
+    if (
+      code === "session_unavailable" &&
+      (detail.includes("request failed (404)") || detail.includes("Not Found"))
+    ) {
+      return {
+        title:
+          locale === "zh"
+            ? "当前环境的访谈服务还没有部署完成。"
+            : "The interview service is not deployed in this environment yet.",
+        body:
+          locale === "zh"
+            ? "页面内容不会丢失。服务上线后，可以直接在这里重新开始。"
+            : "Your place on the page is safe. Retry here after the service is deployed.",
+      };
+    }
+
+    if (code.endsWith("_timeout") || code === "connection_lost") {
+      return {
+        title: locale === "zh" ? "连接刚刚中断了。" : "The connection was interrupted.",
+        body:
+          locale === "zh"
+            ? "已保留当前页面位置。网络恢复后，可以原地重试。"
+            : "Your place on the page is preserved. Retry here when the network returns.",
+      };
+    }
+
+    return {
+      title: root.dataset.copyErrorTitle,
+      body: root.dataset.copyErrorBody,
+    };
+  }
+
   function cleanupClient() {
     unsubscribe?.();
     unsubscribe = null;
@@ -157,11 +216,12 @@ roots.forEach((root) => {
         }),
       );
     } else if (state.phase === "error") {
+      const copy = publicErrorCopy(state.error);
       setStage("error");
-      errorTitle.textContent = root.dataset.copyErrorTitle;
-      errorCopy.textContent = root.dataset.copyErrorBody;
+      errorTitle.textContent = copy.title;
+      errorCopy.textContent = copy.body;
       fallback.hidden = false;
-      setStatus(state.error?.message || root.dataset.copyErrorBody);
+      setStatus(copy.body);
       root.dispatchEvent(
         new CustomEvent("telepace-error", {
           detail: state.error || { code: "unknown_error" },
