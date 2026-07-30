@@ -14,19 +14,14 @@
   min-height: calc(100svh - var(--header-height, 60px));
 }
 
-.studio-signature__mark {
-  display: inline-grid;
+.studio-signature img.studio-signature__portrait {
+  display: block;
   flex: 0 0 auto;
-  place-items: center;
   width: 52px;
   height: 52px;
   border: 1px solid var(--color-rule);
   border-radius: 50%;
-  color: var(--studio-accent);
-  background: color-mix(in srgb, var(--color-paper) 92%, var(--studio-accent));
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  font-weight: 800;
+  object-fit: cover;
 }
 
 .studio-hero__carousel {
@@ -554,5 +549,299 @@ html[lang="zh"] .studio-manifesto h2 {
   .studio-manifesto__loop button {
     transition: none;
     will-change: auto !important;
+  }
+}
+
+/* About closes with a real conversation, not another portfolio statement. */
+.studio-interview {
+  --tp-embed-accent: var(--studio-accent);
+  --tp-embed-bg: color-mix(in srgb, var(--color-paper) 97%, var(--color-ink));
+  --tp-embed-ink: var(--color-ink);
+  --tp-embed-muted: var(--color-ink-muted);
+  --tp-embed-rule: var(--color-rule);
+  --tp-embed-radius: var(--studio-radius);
+  --tp-embed-shadow: 0 30px 80px -58px color-mix(in srgb, var(--color-ink) 72%, transparent);
+  --tp-embed-min-height: clamp(480px, 62vh, 620px);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, .68fr) minmax(0, 1.32fr);
+  gap: clamp(44px, 7vw, 96px);
+  align-items: center;
+  box-sizing: border-box;
+  min-height: calc(100svh - var(--header-height, 60px));
+  padding: clamp(64px, 8vw, 92px) 0;
+  border-top: 1px solid var(--color-rule);
+  content-visibility: auto;
+  contain-intrinsic-size: auto calc(100svh - var(--header-height, 60px));
+}
+
+.studio-interview__intro {
+  align-self: center;
+}
+
+.studio-interview__intro::before {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--studio-accent);
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  content: "OPEN INTERVIEW · 04 MIN";
+}
+
+.studio-interview__intro h2 {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 3.65vw, 3.55rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+html[lang="zh"] .studio-interview__intro h2 {
+  max-width: 10ch;
+  font-size: clamp(2.25rem, 3.2vw, 3.15rem);
+  line-height: 1.18;
+}
+
+.studio-interview__intro > p {
+  max-width: 36ch;
+  margin: 24px 0 0;
+  color: var(--color-ink-muted);
+  font-family: var(--font-prose);
+  font-size: clamp(.94rem, 1.3vw, 1.04rem);
+  line-height: 1.75;
+}
+
+.studio-interview__embed {
+  min-width: 0;
+  transition: border-color 180ms ease, transform 240ms cubic-bezier(.2, .76, .2, 1);
+}
+
+.studio-interview__embed:not(:defined) {
+  overflow: hidden;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--studio-radius);
+  background:
+    radial-gradient(circle at 84% 12%, color-mix(in srgb, var(--studio-accent) 12%, transparent), transparent 34%),
+    var(--tp-embed-bg);
+  box-shadow: var(--tp-embed-shadow);
+}
+
+.studio-interview__embed::part(surface) {
+  background:
+    radial-gradient(circle at 84% 12%, color-mix(in srgb, var(--studio-accent) 12%, transparent), transparent 34%),
+    var(--tp-embed-bg);
+}
+
+.studio-interview__embed[data-state="ready"]::part(surface),
+.studio-interview__embed.is-complete::part(surface) {
+  border-color: color-mix(in srgb, var(--studio-accent) 54%, var(--color-rule));
+}
+
+.studio-interview__launch {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  min-height: var(--tp-embed-min-height);
+  padding: clamp(34px, 5vw, 58px);
+}
+
+.studio-interview__prompt {
+  align-self: center;
+}
+
+.studio-interview__prompt > p {
+  margin: 0 0 22px;
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: .67rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.studio-interview__topics {
+  border-top: 1px solid var(--color-rule);
+}
+
+.studio-interview__topics a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 68px;
+  padding: 12px 52px 12px 0;
+  border-bottom: 1px solid var(--color-rule);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-weight: 560;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+  transition: color 160ms ease, padding-left 180ms cubic-bezier(.2, .76, .2, 1);
+}
+
+.studio-interview__topics a::after {
+  position: absolute;
+  right: 4px;
+  color: var(--studio-accent);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  content: "↗";
+  transition: transform 180ms cubic-bezier(.2, .76, .2, 1);
+}
+
+.studio-interview__topics a:hover {
+  padding-left: 8px;
+  color: var(--studio-accent);
+}
+
+.studio-interview__topics a:hover::after {
+  transform: translate3d(3px, -3px, 0);
+}
+
+.studio-interview__topics a:focus-visible {
+  outline: 2px solid var(--studio-accent);
+  outline-offset: 4px;
+}
+
+.studio-interview__signal {
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  height: 34px;
+  margin-top: 28px;
+}
+
+.studio-interview__signal span {
+  display: block;
+  width: 3px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--studio-accent);
+  opacity: .72;
+  transform-origin: center bottom;
+  animation: studio-interview-signal 1s ease-in-out infinite alternate;
+}
+
+.studio-interview__signal span:nth-child(2),
+.studio-interview__signal span:nth-child(4) {
+  height: 21px;
+  animation-delay: -420ms;
+}
+
+.studio-interview__signal span:nth-child(3) {
+  height: 30px;
+  animation-delay: -720ms;
+}
+
+.studio-interview__signal span:nth-child(5) {
+  animation-delay: -180ms;
+}
+
+.studio-interview__privacy,
+.studio-interview__status {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-family: var(--font-meta);
+  font-size: .68rem;
+  line-height: 1.5;
+}
+
+.studio-interview__status {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  width: min(66%, 740px);
+  min-height: 1.5em;
+  padding-inline: 2px;
+}
+
+@keyframes studio-interview-signal {
+  to {
+    opacity: .32;
+    transform: scaleY(.48);
+  }
+}
+
+@media (max-width: 820px) {
+  .studio-interview {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .studio-interview__intro h2,
+  html[lang="zh"] .studio-interview__intro h2 {
+    max-width: 13ch;
+  }
+
+  .studio-interview__intro > p {
+    max-width: 52ch;
+  }
+
+  .studio-interview__status {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .studio-interview {
+    --tp-embed-min-height: 390px;
+    gap: 24px;
+    min-height: calc(100svh - var(--header-height, 60px));
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .studio-interview__intro::before {
+    margin-bottom: 14px;
+  }
+
+  .studio-interview__intro h2,
+  html[lang="zh"] .studio-interview__intro h2 {
+    max-width: 12ch;
+    font-size: clamp(2rem, 9vw, 2.55rem);
+  }
+
+  .studio-interview__intro > p {
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+
+  .studio-interview__launch {
+    padding: 26px 22px 22px;
+  }
+
+  .studio-interview__topics a {
+    min-height: 54px;
+    padding-right: 40px;
+    font-size: clamp(1.05rem, 5.4vw, 1.35rem);
+  }
+
+  .studio-interview__signal {
+    height: 26px;
+    margin-top: 18px;
+    transform: scale(.82);
+    transform-origin: left bottom;
+  }
+
+  .studio-interview__status {
+    bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-interview__embed,
+  .studio-interview__topics a,
+  .studio-interview__topics a::after {
+    transition: none;
+  }
+
+  .studio-interview__signal span {
+    animation: none;
   }
 }

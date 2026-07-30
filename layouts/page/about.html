@@ -1,6 +1,9 @@
 {{- define "main" }}
 {{- $isZH := eq .Language.Lang "zh" -}}
 {{- $products := site.Data.products.products -}}
+{{- $telepaceBaseURL := site.Params.telepaceEmbedBaseURL | default "https://telepace.cubxxw.com" -}}
+{{- $telepaceCampaignID := site.Params.telepaceAboutCampaignID | default "" -}}
+{{- $telepaceConfigured := ne $telepaceCampaignID "" -}}
 {{- $heroSlides := slice
   (dict "image" "/images/about/journey/10-taprohm.webp" "zhLabel" "在路上" "enLabel" "FIELD NOTES" "zh" "换一个地方，也换一种看问题的角度。" "en" "Change the place. Change the angle.")
   (dict "image" "/images/about/journey/06-kumano.webp" "zhLabel" "持续行走" "enLabel" "KEEP MOVING" "zh" "走得更远，才能看见问题真正的形状。" "en" "Walk farther. See the problem clearly.")
@@ -25,7 +28,10 @@
     <header class="studio-hero">
       <div class="studio-hero__copy">
         <div class="studio-signature">
-          <span class="studio-signature__mark" aria-hidden="true">XX</span>
+          <img class="studio-signature__portrait" src="/images/cubxxw-avatar-96.webp"
+            width="96" height="96"
+            alt="{{ if $isZH }}熊鑫伟的头像插画{{ else }}Illustrated portrait of Xinwei Xiong{{ end }}"
+            loading="eager" decoding="async">
           <p>
             <span>{{ if $isZH }}熊鑫伟 · 独立创造者{{ else }}Xinwei Xiong · Independent builder{{ end }}</span>
             {{ if $isZH }}写代码，也写下生活{{ else }}Building software and recording a life{{ end }}
@@ -58,10 +64,13 @@
         <div class="studio-hero__viewport">
           {{- range $index, $slide := $heroSlides }}
           {{- $heroImage := printf "%s-hero.webp" (strings.TrimSuffix ".webp" $slide.image) }}
+          {{- $heroSmall := printf "%s-hero-400.webp" (strings.TrimSuffix ".webp" $slide.image) }}
           <figure class="studio-hero__visual" data-hero-slide
             data-hero-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else }}prev{{ end }}"
             aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}">
             <img src="{{ $heroImage }}" width="640" height="853"
+              srcset="{{ $heroSmall }} 400w, {{ $heroImage }} 640w"
+              sizes="(max-width: 640px) calc(100vw - 48px), min(39vw, 460px)"
               alt="{{ if $isZH }}熊鑫伟的旅行与创造现场{{ else }}Xinwei travelling and building in the field{{ end }}"
               loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}"
               fetchpriority="{{ if eq $index 0 }}high{{ else }}low{{ end }}"
@@ -233,25 +242,83 @@
       </div>
     </section>
 
-    <blockquote class="studio-question">
-      <p>{{ if $isZH }}我持续关心的问题{{ else }}A QUESTION I KEEP RETURNING TO{{ end }}</p>
-      <p>
-        {{ if $isZH }}
-        当 AI 越来越懂我们，一个人怎样保存自己的经历、判断和成长轨迹，而不被机器替自己定义？
-        {{ else }}
-        As AI learns more about us, how do we preserve our experience, judgment, and growth without letting a machine define us?
+    <section class="studio-interview" id="tell-me"
+      aria-labelledby="studio-interview-title" data-telepace-section>
+      <div class="studio-interview__intro">
+        <h2 id="studio-interview-title">
+          {{ if $isZH }}告诉我，我还没看见的东西。{{ else }}Show me what I have not seen.{{ end }}
+        </h2>
+        <p>
+          {{ if $isZH }}
+          和我的 AI 访谈 4 分钟。你的回答会进入 Telepace，成为下一次改进的依据。
+          {{ else }}
+          Talk with my AI interviewer for four minutes. Your answers become evidence for the next iteration.
+          {{ end }}
+        </p>
+      </div>
+
+      <telepace-interview
+        class="studio-interview__embed"
+        base-url="{{ $telepaceBaseURL }}"
+        campaign-id="{{ $telepaceCampaignID }}"
+        locale="{{ if $isZH }}zh{{ else }}en{{ end }}"
+        source="about-me"
+        title="{{ if $isZH }}给熊鑫伟的建议 AI 访谈{{ else }}AI interview with feedback for Xinwei{{ end }}"
+        data-sdk-src="{{ $telepaceBaseURL }}/embed/telepace-interview.js?v=1">
+        <div class="studio-interview__launch">
+          <div class="studio-interview__prompt">
+            <p>{{ if $isZH }}你可以从一个具体感受开始{{ else }}Start with one concrete reaction{{ end }}</p>
+            <div class="studio-interview__topics" role="group"
+              aria-label="{{ if $isZH }}选择访谈主题{{ else }}Choose an interview topic{{ end }}">
+              {{- if $telepaceConfigured }}
+              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/r/{{ $telepaceCampaignID }}?source=about-me-first-impression"
+                target="_blank" rel="noopener" data-telepace-open
+                data-telepace-topic="first-impression">
+                {{ if $isZH }}哪里让我想继续看{{ else }}What kept me looking{{ end }}
+              </a>
+              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/r/{{ $telepaceCampaignID }}?source=about-me-trust-gap"
+                target="_blank" rel="noopener" data-telepace-open
+                data-telepace-topic="trust-gap">
+                {{ if $isZH }}哪里让我不相信{{ else }}What weakened trust{{ end }}
+              </a>
+              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/r/{{ $telepaceCampaignID }}?source=about-me-product-bet"
+                target="_blank" rel="noopener" data-telepace-open
+                data-telepace-topic="product-bet">
+                {{ if $isZH }}哪个产品值得继续{{ else }}Which product deserves more{{ end }}
+              </a>
+              {{- else }}
+              <a href="{{ $telepaceBaseURL }}/{{ if $isZH }}zh{{ else }}en{{ end }}/demo"
+                target="_blank" rel="noopener">
+                {{ if $isZH }}体验 Telepace 访谈{{ else }}Try a Telepace interview{{ end }}
+              </a>
+              {{- end }}
+            </div>
+          </div>
+          <div class="studio-interview__signal" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <p class="studio-interview__privacy">
+            {{ if $isZH }}匿名参与，可随时退出{{ else }}Anonymous, leave at any time{{ end }}
+          </p>
+        </div>
+      </telepace-interview>
+
+      <p class="studio-interview__status" role="status" aria-live="polite"
+        data-telepace-status>
+        {{ if not $telepaceConfigured }}
+          {{ if $isZH }}正式访谈正在准备中，当前可先体验 Telepace。{{ else }}The live study is being prepared. You can try Telepace now.{{ end }}
         {{ end }}
       </p>
-    </blockquote>
+    </section>
 
     <section class="studio-coda" aria-labelledby="studio-coda-title">
       <div>
-        <h2 id="studio-coda-title">{{ if $isZH }}我还没有最终答案。{{ else }}I do not have a final answer.{{ end }}</h2>
-        <p>{{ if $isZH }}所以我继续走，继续写，也继续做。{{ else }}So I keep walking, writing, and building.{{ end }}</p>
+        <h2 id="studio-coda-title">{{ if $isZH }}也在做 AI 产品、用户研究或开源工具？{{ else }}Building AI products, user research, or open-source tools?{{ end }}</h2>
+        <p>{{ if $isZH }}带着一个具体问题来找我。{{ else }}Bring one concrete problem.{{ end }}</p>
       </div>
       <nav aria-label="{{ if $isZH }}联系方式{{ else }}Contact links{{ end }}">
+        <a href="mailto:3293172751nss@gmail.com">{{ if $isZH }}聊一个问题{{ else }}Talk through a problem{{ end }} ↗</a>
         <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="mailto:3293172751nss@gmail.com">Email ↗</a>
         <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X ↗</a>
         <a href="{{ "about/quest/" | relLangURL }}">{{ if $isZH }}Bear Quest{{ else }}Bear Quest{{ end }} →</a>
       </nav>
@@ -482,7 +549,7 @@
     }
 
     var revealSections = Array.prototype.slice.call(root.querySelectorAll(
-      '.studio-manifesto, .studio-workbench, .studio-products, .studio-road, .studio-question, .studio-coda'
+      '.studio-manifesto, .studio-workbench, .studio-products, .studio-road, .studio-interview, .studio-coda'
     ));
     revealSections.forEach(function (section) { section.setAttribute('data-about-section', ''); });
 
@@ -529,6 +596,73 @@
           selectManifesto(nextIndex);
         });
       });
+    }
+
+    var telepace = root.querySelector('telepace-interview[data-sdk-src]');
+    if (telepace && telepace.getAttribute('campaign-id')) {
+      var telepaceStatus = root.querySelector('[data-telepace-status]');
+      var telepaceScriptPromise = null;
+
+      function loadTelepaceSDK() {
+        if (window.customElements && customElements.get('telepace-interview')) {
+          return Promise.resolve();
+        }
+        if (telepaceScriptPromise) return telepaceScriptPromise;
+        telepaceScriptPromise = new Promise(function (resolve, reject) {
+          var script = document.createElement('script');
+          script.type = 'module';
+          script.src = telepace.dataset.sdkSrc;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+        return telepaceScriptPromise;
+      }
+
+      telepace.addEventListener('click', function (event) {
+        var trigger = event.target.closest('[data-telepace-open]');
+        if (!trigger) return;
+        var topic = trigger.dataset.telepaceTopic;
+        if (topic) telepace.setAttribute('source', 'about-me-' + topic);
+        if (window.customElements && customElements.get('telepace-interview')) return;
+        event.preventDefault();
+        loadTelepaceSDK().then(function () {
+          telepace.open();
+        }).catch(function () {
+          window.location.assign(trigger.href);
+        });
+      });
+
+      telepace.addEventListener('telepace-started', function () {
+        if (telepaceStatus) {
+          telepaceStatus.textContent = '{{ if $isZH }}正在倾听。请说具体一点。{{ else }}Listening now. Specific moments are most useful.{{ end }}';
+        }
+      });
+      telepace.addEventListener('telepace-ready', function () {
+        if (telepaceStatus) telepaceStatus.textContent = '';
+      });
+      telepace.addEventListener('telepace-complete', function () {
+        telepace.classList.add('is-complete');
+        if (telepaceStatus) {
+          telepaceStatus.textContent = '{{ if $isZH }}谢谢。你的回答已进入 Telepace 分析。{{ else }}Thank you. Your answers are now in Telepace analysis.{{ end }}';
+        }
+      });
+      telepace.addEventListener('telepace-error', function () {
+        if (telepaceStatus) {
+          telepaceStatus.textContent = '{{ if $isZH }}暂时无法连接访谈，可在新标签页继续。{{ else }}The interview could not connect. You can continue in a new tab.{{ end }}';
+        }
+      });
+
+      if ('IntersectionObserver' in window) {
+        var telepaceLoader = new IntersectionObserver(function (entries) {
+          if (!entries[0].isIntersecting) return;
+          loadTelepaceSDK().catch(function () {});
+          telepaceLoader.disconnect();
+        }, { rootMargin: '600px 0px' });
+        telepaceLoader.observe(telepace);
+      } else {
+        loadTelepaceSDK().catch(function () {});
+      }
     }
 
   })();
