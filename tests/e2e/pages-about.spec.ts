@@ -25,7 +25,8 @@ test.describe('About Page Visual Regression', () => {
 
     await interview.getByRole('button', { name: '哪里让我不相信' }).click();
 
-    await expect(interview.getByRole('heading', { name: '这次对话暂时没有接通。' })).toBeVisible();
+    await expect(interview.getByRole('heading', { name: '正式访谈还没有发布。' })).toBeVisible();
+    await expect(interview.getByRole('status')).not.toContainText('campaign_not_configured');
     await expect(interview.getByRole('link', { name: '在 Telepace 中打开' })).toBeVisible();
     await expect(interview.locator('iframe')).toHaveCount(0);
     await expect(page).toHaveURL(originalURL);
