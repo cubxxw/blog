@@ -12,7 +12,6 @@ tags:
   - SEO
   - AI Search
   - Content Strategy
-  - Performance
   - Blog
 categories:
   - Development

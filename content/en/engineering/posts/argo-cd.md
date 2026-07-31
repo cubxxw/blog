@@ -3,7 +3,6 @@ title: 'Argo CD in Production: GitOps Sync, ApplicationSets, Rollbacks, and Secu
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T20:45:39+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

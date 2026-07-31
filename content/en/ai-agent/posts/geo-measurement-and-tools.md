@@ -13,7 +13,6 @@ tags:
   - SEO
   - AI Search
   - Content Strategy
-  - Performance
   - LLM
 categories:
   - Development

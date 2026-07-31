@@ -3,7 +3,6 @@ title: 'Argo CD 实战指南：Kubernetes GitOps、同步策略与生产安全'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T20:45:39+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts
