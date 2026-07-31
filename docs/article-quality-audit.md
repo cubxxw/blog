@@ -20,7 +20,7 @@ can be marked complete.
 | Article | Score | Result | Revision |
 |---|---:|---|---|
 | `content/en/ai-agent/posts/UFO.md` | 18 → 97 | Passed after revision | Complete |
-| `content/zh/ai-agent/posts/UFO.md` | 59 | Failed | Queued |
+| `content/zh/ai-agent/posts/UFO.md` | 59 → 94 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/agent-engineering-the-98-percent-harness.md` | 73 → 95 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/agent-engineering-the-98-percent-harness.md` | 82 → 95 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/agent-identity-from-locke-to-openclaw.md` | 53 → 94 | Passed after revision | Complete |
@@ -45,8 +45,8 @@ can be marked complete.
 | `content/zh/ai-agent/posts/designing-valuable-agent-skills.md` | 84 → 95 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/devbox-doctor-design.md` | 74 → 96 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/devbox-doctor-design.md` | 81 → 95 | Passed after revision | Complete |
-| `content/en/ai-agent/posts/dissecting-open-lovable.md` | 56 | Failed | In progress |
-| `content/zh/ai-agent/posts/dissecting-open-lovable.md` | 64 | Failed | In progress |
+| `content/en/ai-agent/posts/dissecting-open-lovable.md` | 56 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/dissecting-open-lovable.md` | 64 → 96 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/emerging-challenges-and-trends-in-2024.md` | 28 → 97 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/emerging-challenges-and-trends-in-2024.md` | 42 → 96 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/engineering-discipline-ai-workflow.md` | 61 → 96 | Passed after revision | Complete |
@@ -65,15 +65,48 @@ can be marked complete.
 | `content/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide.md` | 38 → 97 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/independent-developer.md` | 44 → 97 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/independent-developer.md` | 45 → 96 | Passed after revision | Complete |
-| `content/en/ai-agent/posts/jina.md` | 14 | Failed | In progress |
-| `content/zh/ai-agent/posts/jina.md` | 47 | Failed | In progress |
+| `content/en/ai-agent/posts/jina.md` | 14 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/jina.md` | 47 → 96 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/langchain.md` | 61 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/langchain.md` | 82 → 99 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/langgraph.md` | 81 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/langgraph.md` | 54 | Failed | Queued after English revision |
+| `content/en/ai-agent/posts/markItdown.md` | 72 → 94 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/markItdown.md` | 65 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/mem0.md` | 66 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/mem0.md` | 49 → 97 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/notebooklm.md` | 15 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/notebooklm.md` | 43 | Failed | Queued after English revision |
+| `content/en/ai-agent/posts/open-design.md` | 64 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/open-design.md` | 52 → 97 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/open-model-cost-collapse-agent-fleet.md` | 73 → 94 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/open-model-cost-collapse-agent-fleet.md` | 58 → 97 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/proactive-agent-it-prompts-you.md` | 84 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/proactive-agent-it-prompts-you.md` | 70 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/prompt-loop-engineering-practice.md` | 81 → 99 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/prompt-loop-engineering-practice.md` | 70 → 99 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/relay-agent-architecture-design.md` | 60 → 95 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/relay-agent-architecture-design.md` | 68 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/solo-creator-video-pipeline.md` | 84 → 94 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/solo-creator-video-pipeline.md` | 82 → 94 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers.md` | 22 → 98 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers.md` | 27 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/tdd.md` | 21 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/tdd.md` | 43 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/trusting-unattended-ai-agent.md` | 86 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/trusting-unattended-ai-agent.md` | 81 | Failed | Queued after English revision |
+| `content/en/ai-agent/posts/use-auto-gpt.md` | 29 | Failed | Queued |
+| `content/zh/ai-agent/posts/use-auto-gpt.md` | 27 | Failed | Queued after English revision |
 
 ## Repository baseline
 
 - Formal article roots: `content/{en,zh}/{ai-agent,engineering,growth}/posts/`
   and `content/{en,zh}/projects/`.
-- The first inventory found 146 English and 147 Chinese article files.
-- `content/zh/ai-agent/posts/demo-steps-preview.md` has no English counterpart.
+- The current inventory contains 156 English and 158 Chinese article files
+  (314 language-specific files in total).
+- Two Chinese articles currently lack an English counterpart:
+  `content/zh/ai-agent/posts/demo-steps-preview.md` and
+  `content/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy.md`.
 - The 2025 annual review is a valid bilingual pair even though the Chinese
   version is a page bundle (`index.md`) and the English version is a single
   Markdown file.

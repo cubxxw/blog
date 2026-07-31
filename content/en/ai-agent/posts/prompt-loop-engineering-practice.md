@@ -1,13 +1,14 @@
 ---
-title: 'Write Your Prompts as Loops: One Person''s Loop Engineering Practice'
+title: 'Loop Engineering for Solo Builders: Verifiers, State, and Safe Automation'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-20T21:00:00+08:00'
+lastmod: '2026-07-31T12:00:00+08:00'
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['Loop Engineering', 'Prompt Loop', 'Ralph Loop', 'Claude Code', 'Codex', '/goal', 'Stop hook', 'Verifier', 'maker-checker', 'subagent', 'git worktree', 'GitHub Actions', 'AI Automation', 'Overnight Agent', 'Solo Builder', 'Agent Engineering']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - AI
   - Agent
@@ -17,18 +18,20 @@ tags:
   - Testing
   - Solo Builder
 description: >
-  Going from writing prompts to writing loops isn't one trick — it's an entire layer of engineering. This piece takes apart the Ralph loop, the three-stage permission gradient, and the scoring-script verifiers I actually ran in my own repo, sets them against the native primitives in /goal and Codex, and lands on a Loop system one person can build alone, plus a block of instructions you can paste straight into an AI.
+  Loop engineering turns repeated prompting into a verifiable system. A field guide to state, layered checks, permissions, and clear stopping rules for solo work.
+categories:
+  - Development
 tldr:
   - "A loop needs only three things: one task, one check, one stopping condition. Model choice, frameworks, MCP — all secondary. The real work is making the check real and defining when to stop."
-  - The verifier is the bottleneck, not the model. It comes in three tiers - deterministic gates (exit codes), scoring scripts (a number plus a budget), and LLM judges (last resort). Never reach for a lower tier when a higher one will do.
+  - The verifier is the bottleneck, not the model. It comes in three tiers - deterministic gates, scoring scripts, and model judges for criteria that cannot be reduced to a command.
   - An easily missed hard constraint - `/goal`'s evaluator calls no tools; it only reads the transcript. So your loop has to say the evidence out loud. A success that never appeared in the transcript never happened.
   - The verifier's permissions must be strictly narrower than the executor's. Give a checker write access and it will quietly edit things until the check passes, and maker-checker degrades into maker-maker.
   - State lives in three layers - contract (structured backlog, bounded), distillate (reusable patterns, bounded), and stream (append-only log, archivable). The agent reads the first two at the top of every round.
-  - Don't drop one big loop into unattended mode. Split it by permission into three stages - collect with no AI, analyze read-only and speech-only, fix on single-point trigger with a scope allowlist. Merging is always a human.
+  - Don't drop one big loop into unattended mode. Split it by permission into three stages - collect with no AI, analyze read-only and speech-only, then fix through a narrow trigger and scope allowlist.
 maturity: budding
 cover:
   image: /images/covers/ai-agent/2026/prompt-loop-engineering-practice.jpeg
-  alt: "Write Your Prompts as Loops: One Person's Loop Engineering Practice"
+  alt: "A quiet control desk representing verifiable loop engineering for solo builders"
 ---
 
 ## Why Does Getting Better at This Make Me More Tired?
@@ -37,23 +40,15 @@ Let me start with a strange thing I banged my head against for a long time befor
 
 When I first started using Claude Code, the productivity gain was visible to the naked eye: an afternoon's work covered what used to take two days. Once I got fluent, the gains kept coming — but so did the exhaustion at the end of each day. Because I was doing the same thing all day long: **watch it finish, judge whether it's right, think about what to say next, hit enter again.**
 
-Some days I hit enter several hundred times. None of them hard. Every one of them required me to be there.
+Some days I hit enter more times than I care to count. None of those decisions was hard. Every one still required me to be there.
 
-This posture has a name: **human in the loop**. In 2024 and 2025 it was the only option, because the models weren't stable enough — you had to watch every step. By 2026 it had become the bottleneck itself. Not the model's bottleneck. **Yours.** How many sessions can you watch at once? Three? Five? That's your capacity ceiling, and it has nothing to do with how strong the model is.
+This posture is **human in the loop**. It is useful when judgment is still forming, but it becomes a bottleneck once the work is repetitive and checkable. How many sessions can you watch at once? Three? Five? That is your attention ceiling, and a stronger model does not remove it.
 
-Boris Cherny, who leads Claude Code, put it bluntly this year:
-
-> I don't prompt Claude anymore. I have a bunch of loops running, and they prompt Claude and decide what to do next. My job is writing the loops.
-
-Peter Steinberger said it earlier, and it traveled further:
-
-> You should not be writing prompts for coding agents anymore. You should be designing the loop that writes the prompts for you.
-
-Addy Osmani formally named this **loop engineering** in a June piece. It sounds like yet another coined term, but it points at something very concrete: **taking the implicit responsibilities in your head — scheduling, acceptance, state management, deciding whether to stop — and moving them, one at a time, into an explicit system.**
+The phrase **loop engineering** points at something concrete: taking the responsibilities still hiding in your head — scheduling, acceptance, state, and the decision to stop — and moving them into an explicit system.
 
 Prompt engineering optimizes **one answer**. Loop engineering optimizes **many answers converging on a verifiable result**.
 
-This article isn't another "what is a loop" explainer. What I want to take apart is the layer in the middle — because between "I know I should be writing loops" and "the loop actually runs while I sleep" sits an entire layer of engineering. I built that layer from scratch in this blog's repo. The pits I fell into, the files I left behind, the places it failed — I'll lay all of it out.
+This article is about that middle layer. I built it in this blog's repository, watched it fail, and kept the parts that survived contact with real work.
 
 ---
 
@@ -175,9 +170,9 @@ The distillate layer is where the compounding happens. Looking at the top of my 
 
 Not one of those four came from me — it hit every one of them on its own. And it hit the first one twice: the version it first wrote into the distillate layer was wrong (it wrote `html.dark`), and only the second collision corrected it. Which tells you something on its own: **the distillate layer needs verification too, or it will compound your errors right along with your insights.**
 
-### Stopping: Triple Redundancy, Because the Model's Self-Report Isn't Enough
+### Stopping: Say What the Script Actually Enforces
 
-`ralph.sh` uses three mechanisms to decide whether it's done:
+The core stopping logic in `ralph.sh` is:
 
 ```bash
 for i in $(seq 1 $MAX_ITERATIONS); do
@@ -193,87 +188,68 @@ done
 exit 1   # hit the iteration cap, non-zero exit
 ```
 
-- **Model self-report**: grep for an agreed completion marker. This is the weakest one, because models lie.
-- **Iteration cap**: `MAX_ITERATIONS` as the backstop, non-zero exit when hit. This is the hardest one, because it depends on no judgment at all.
-- **Contract validation**: whether `passes` is `true` for every story in `prd.json` — this one **can be independently checked by a third party**; I can confirm it with a separate `jq` run from the outside.
+- **Completion marker**: the loop exits when the output contains `<promise>COMPLETE</promise>`. This is a soft signal because it depends on the model's own report.
+- **Iteration cap**: `MAX_ITERATIONS` stops an endless loop with a non-zero exit. It limits damage; it does not prove completion.
 
-Only the third is genuinely trustworthy. The first two are respectively too soft and too crude, but together they cover most cases: when the model lies, the contract catches it; when the model hangs, the cap catches it.
+The `passes` field for every story in `prd.json` can be checked independently with `jq`, but that contract gate is **not wired into the current script**. The honest next improvement is to run that check before accepting the completion marker, then continue or fail closed when the contract is incomplete. Until then, the script has two stopping mechanisms, not three, and a false completion marker can still pass through.
 
 ---
 
-## The Product Primitives Have Caught Up
+## Product Goals Are Not All the Same Mechanism
 
-The biggest change in 2026 isn't the models — it's that **that bash while loop became a product feature**. You don't need to hand-roll Ralph anymore; both CLIs have turned it into a primitive.
+The word *goal* now appears in more than one coding product, but the implementations are not mirrors.
 
-### `/goal`: Run Across Rounds Until the Condition Holds
+### Claude Code `/goal`: a session loop with a separate evaluator
 
-Claude Code has shipped `/goal` since v2.1.139. You write a completion condition, and it runs round after round, handing control back only when the condition holds:
+In Claude Code, `/goal` sets a completion condition for the current session. After each turn, a small evaluator model receives the condition and the conversation and decides whether another turn is needed. The evaluator does **not** call tools or inspect the repository on its own. Its view is limited to evidence Claude surfaced in the transcript.
 
+```text
+/goal All tests under test/auth pass and lint is clean.
+      Run both commands, report their exit codes, and stop after 20 turns.
 ```
-/goal All tests under test/auth pass and lint is clean. Every round must run
-      npm test and npm run lint and paste the output; or stop after 20 turns.
+
+That limitation produces a useful rule: ask for the check and its evidence, not merely the outcome.
+
+```text
+Weak:   All tests pass.
+Better: Run npm test. The goal is met when the reported exit code is 0
+        and the output shows no failing test; otherwise continue.
 ```
 
-The key difference from hand-rolled Ralph is **who decides you're done**. The official docs are explicit: `/goal` is essentially a session-level prompt-based Stop hook — at the end of each round, it sends the condition and the transcript to a small fast model you configure (Haiku by default), which returns yes/no plus a one-line reason. A "no" carries that reason back as guidance for the next round.
+Claude Code also documents `/loop` for interval-based repetition and Stop hooks for script- or prompt-controlled stopping. They solve different trigger problems:
 
-Which is to say: **the model writing the code doesn't get to grade itself.** That's the maker-checker idea, built into the stopping condition itself.
-
-Codex has a mirror implementation of the same concept: `/goal` appeared as an experimental feature in CLI 0.128.0 (April 2026), graduated in 0.133.0 (May), and later versions added rollout token budgets, remote supervision from your phone, and a **read-only verifier subagent**.
-
-That both converged on the same shape matters more than either implementation — it says this isn't one vendor's product taste, it's the necessary structure of this class of system.
-
-### Three Ways to Keep a Session Going — Don't Confuse Them
-
-There's a table in the official docs worth memorizing, because picking wrong is painful:
-
-| Mechanism | When the next round starts | When it stops |
+| Mechanism | Starts another turn when | Stops when |
 | --- | --- | --- |
-| `/goal` | As soon as the last round ends | An independent model confirms the condition holds |
-| `/loop` | When a time interval elapses | You stop it manually, or the model decides it's done |
-| Stop hook | As soon as the last round ends | **Your own script or prompt decides** |
+| `/goal` | the previous turn ends | the evaluator accepts the condition |
+| `/loop` | an interval elapses | you stop it or the task ends |
+| Stop hook | the previous turn ends | your configured script or prompt allows it |
 
-The basis for choosing is **what should trigger the next round**:
+Use `/goal` for a bounded outcome, `/loop` for patrol work, and a script-based hook when the stopping test itself is deterministic. This description follows the [official Claude Code goal documentation](https://code.claude.com/docs/en/goal); it does not imply that every product uses the same evaluator architecture.
 
-- Clear endpoint, want it done in one push → `/goal`
-- Needs periodic patrol, no natural endpoint (e.g. glance at monitoring every hour) → `/loop`
-- The criterion is deterministic and expressible as a script (exit code, file exists, empty diff) → **Stop hook**
+### Codex Goals: durable state attached to a thread
 
-The third one is the most overlooked. `/goal`'s evaluator is a language model, and it makes the mistakes language models make. A Stop hook can hang a shell script off it, and `npm test` exiting 0 means 0. There's no such thing as "looks like it passed."
+Codex Goals use a different boundary. A Goal is persisted state belonging to one thread: the objective, lifecycle, budget, and progress accounting travel with the work that produced the files, diffs, commands, and logs. Continuation happens at safe idle boundaries, not through a claim that Codex copied Claude Code's Stop-hook design.
 
-### One Hard Constraint That Implies a Design Rule
+The completion rule is also explicit: before a Goal is marked complete, Codex audits the objective against concrete evidence such as changed files, test output, benchmarks, generated artifacts, or research results. Reaching a budget limit is not proof of completion. The official description is [Using Goals in Codex](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex#how-goals-are-designed-in-codex).
 
-There's one line in the official docs I consider the most important in the entire document, and almost nobody unpacks it:
+The practical distinction is:
 
-> The evaluator does not call tools, so it can only judge what Claude has already surfaced in the conversation.
+- Claude Code `/goal` is a session-scoped repeated-turn mechanism whose separate evaluator reads the transcript.
+- A Codex Goal is a thread-scoped completion contract with persisted state and an evidence audit.
 
-What that means is: **the evaluator can't see your filesystem, can't see your CI, can't see anything that wasn't printed into the conversation.** It reads the transcript and nothing else.
+Both reward measurable conditions, but their internal contracts are different. In either case, **a completion claim should point to evidence another person can inspect**.
 
-Which implies a very practical design rule — **the loop must say its evidence out loud**:
-
-```
-❌ /goal All tests pass
-   (the model may never have run the tests at all, just said
-    "should be fine now" — and the evaluator, reading that
-    sentence, may well rule yes)
-
-✅ /goal All tests pass. Every round must actually execute `npm test`
-   and paste the full output (including the exit code) into the reply;
-   the goal is met only when the output shows 0 failing.
-```
-
-The difference is that the second one writes both the **verification action** and the **shape of the evidence** into the condition. The evaluator can't go look for itself, so you force the executor to carry the evidence to it.
-
-Push that rule outward and it's the loop version of the line from [Put Quality Gates on Your AI Workflow](../engineering-discipline-ai-workflow/) — "for every module, ask first: if this breaks, how would I know?" In an unattended setting, **a success that wasn't printed is not a success**.
+That is the loop version of the question from [Put Quality Gates on Your AI Workflow](../engineering-discipline-ai-workflow/): if this breaks, how will I know?
 
 ---
 
 ## The Verifier Is the Bottleneck, Not the Model
 
-If you take one sentence from this article, I'd want it to be this: **inside a loop, the bottleneck is always the verifier, never the model.**
+If you take one sentence from this article, take this: **once a loop can act, the verifier often becomes the bottleneck.**
 
 Models get stronger every six months. Verifiers don't strengthen themselves. How long your loop can run, and whether you can walk away from it, depends entirely on how trustworthy the thing that says "done" is.
 
-I sort verifiers into three tiers, and **never reach down a tier when the one above will do**:
+I sort verifiers into three tiers. Prefer the most deterministic tier that can express the criterion:
 
 ```
 TIER 1  Deterministic gate ──── exit codes, compiler output, schema validation
@@ -282,9 +258,9 @@ TIER 1  Deterministic gate ──── exit codes, compiler output, schema vali
 TIER 2  Scoring script ──────── a scorer you write, emitting a number
         Answers "how good is it," supports budgets and trend lines
 
-TIER 3  LLM judge ───────────── a language model reads the result and rules
+TIER 3  Model judge ─────────── a language model reads the result and rules
         Can judge things with no deterministic definition, like "is this
-        well written" — but makes language-model mistakes. Last resort.
+        well written" — but needs a rubric and cited evidence.
 ```
 
 ### Tier One: Deterministic Gates
@@ -327,7 +303,7 @@ Why bother with this instead of just running `diff`? Because **a number does thr
 
 Writing a scorer is cheap — it's just encoding the handful of things you'd have eyeballed anyway. But it converts "feels okay to me" into "85, down 5 from yesterday, and the drop is in index consistency." That conversion is the watershed for whether a loop can run unattended.
 
-### Tier Three: LLM Judges, Avoid If You Can
+### Tier Three: Model Judges for Irreducibly Qualitative Work
 
 Some things genuinely have no deterministic definition — "does this copy read well," "does this change fit the project's style," "is this SEO suggestion any good." That's when the LLM judge earns its keep.
 
@@ -335,69 +311,37 @@ Two disciplines when you use one:
 
 **First, ask the judge for evidence, not for feelings.** "Do you think it's done?" gets you a near-constant yes. What you ask instead is: "paste the commands you ran and their full output, and point to the specific line that proves the condition holds."
 
-**Second — and this is the part of maker-checker I think is most often botched — the verifier's permissions must be strictly narrower than the executor's.**
+**Second — and this is the part of maker-checker I think is most often botched — give the verifier fewer capabilities than the executor.**
 
-The reasoning is plain: a checker with write access will quietly edit things until the check passes. It isn't cheating on purpose; its objective function is "make the condition hold," and editing is easier than fixing. So maker-checker silently degrades into maker-maker, and the two lines of defense you thought you had are actually zero.
+The reasoning is plain: a checker that can edit the artifact may “verify” by changing it. That collapses maker-checker into maker-maker.
 
-Codex made the verifier subagent explicitly **read-only** in 0.142+, and I don't think that's coincidence — it's what convergence looks like after enough people fall into this pit. Do the same when configuring your own subagents:
+Treat the following as a **conceptual capability policy**, not configuration syntax:
 
-```toml
-# .codex/agents/verifier.toml —— illustrative
-name = "verifier"
-description = "Read-only verifier: check output against acceptance criteria, report only, never modify"
-tools = ["read", "grep", "bash:readonly"]   # the point: no write access
+```text
+verifier:
+  may: read files, search text, run approved non-mutating checks
+  may_not: edit files, commit, push, change tests, change its own rubric
+  output: criterion -> pass/fail -> cited evidence
 ```
 
-The Claude Code equivalent is a subagent definition under `.claude/agents/`, with the toolset narrowed to read-only the same way.
+Implement that policy with the actual permission controls documented by the product you use. Tool names and configuration schemas change; the invariant is simpler: the checker reports, the maker repairs.
 
 ---
 
-## How the Frontline Builds It: Three Systems, One Skeleton
+## Strip Out the Product Names
 
-With the principles covered, let's look at some real systems. What's interesting is that they look very different on the surface and turn out to be isomorphic underneath.
-
-### Steinberger: One Instruction File, a Pile of Skills, One Iron Rule
-
-Peter Steinberger maintains a 300,000-line TypeScript/React ecosystem alone (web, Chrome extension, CLI, Tauri desktop, Expo mobile), typically running 3–8 parallel instances. His system is three decisions stacked:
-
-**Single source of truth.** He doesn't write separate rules for Codex and Claude. He maintains one `agent-scripts/AGENTS.MD` and symlinks `~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md` at it. Each downstream repo holds only a pointer file — "read the shared instructions before you start (skip if absent)" — and the shared block is never copied into downstream repos.
-
-There's a detail here worth calling out: **symlinks globally, pointers downstream, because they solve two different problems.** A symlink gives the file full priority (in Claude Code, content pulled in via `@import` loses to directly written rules on conflict), while downstream files have to go into git, get cloned, and direct two tools at once — so they use plain-text instructions with graceful degradation via "skip if absent."
-
-**The reusable unit is a skill, not a prompt.** Each skill is `skills/<name>/SKILL.md`, with supporting scripts under `scripts/`. He even wrote a `validate-skills` and hung it off a git hook to enforce the format.
-
-**One rule that's never delegated.** Clean review, green CI, proof in hand — the gates before landing are always his own, never delegated, never skipped. Codex only gets to run the mechanical steps like rebase/merge after he's decided to land and the gates have passed.
-
-### Boris Cherny: Startlingly Plain
-
-The person who leads Claude Code repeatedly emphasizes that his setup is "embarrassingly vanilla":
-
-- Parallelism via 5 separate checkouts, labeled 1–5, with system notifications telling him which one needs input
-- Every task starts in Plan mode to grind out a plan; once he's happy, switch to auto-accept edits
-- Anything he does dozens of times a day gets frozen into a slash command, checked into git and shared across the team (the signature one being `/commit-push-pr`)
-- `CLAUDE.md` as the team's mistake ledger, roughly 2.5k tokens — whoever hits a pit writes the lesson back in
-- MCP wired to real tools (Slack / BigQuery / Sentry), with `.mcp.json` in the repo
-
-Nothing fancy in the list. But line it up against Steinberger's and you'll find the same skeleton.
-
-### Osmani's Five Primitives
-
-Addy Osmani summarizes that skeleton as five primitives plus a memory: **automations** (scheduled triggers for discovery and triage), **worktrees** (parallel isolation), **skills** (accumulated project knowledge), **connectors/MCP** (wired to real tools), and **subagents** (one thinks, one checks), plus a sixth thing — **externalized state** (markdown or an issue board).
-
-He points out specifically that all five now exist in both products, with different names and the same capabilities. So "which tool should I use" is basically off the table, and the remaining question is **how well you designed your loop**.
-
-### Strip Out the Names and Six Things Remain
+Tool-specific recipes age quickly. The structure underneath them lasts longer:
 
 ```
-① A versioned single source of truth   CLAUDE.md / AGENTS.md, pointers downstream
-② Repeated actions frozen into craft   skills / slash commands, checked into git
+① A versioned source of truth          repo instructions, acceptance criteria
+② Repeated actions frozen into craft   scripts or reusable workflows
 ③ Parallelism isolated by worktree     every background task trackable and visible
 ④ One gate that is never delegated     green CI + human review + proof, before land
 ⑤ Tools wired to the real environment  MCP / connectors, so feedback is real
 ⑥ Lessons written back into the rules  so corrections compound instead of vanishing
 ```
 
-Item ⑥ is the only one about **time**. The first five determine whether your loop runs today; the sixth determines whether it's smarter three months from now or standing still.
+The last item is the only one about **time**. The first five determine whether a loop works today; the sixth determines whether it is wiser three months from now or merely faster.
 
 ---
 
@@ -492,7 +436,7 @@ That third one is the most counterintuitive and, I think, the most important. **
 
 The parts above compose. Here are a few combinations I've either verified or that hold mechanically.
 
-### Ralph × `/goal`: Division of Labor, Not Either/Or
+### Ralph × Claude Code `/goal`: reset outside, converge inside
 
 They differ in context strategy, and the difference happens to be complementary:
 
@@ -503,7 +447,7 @@ They differ in context strategy, and the difference happens to be complementary:
 | State | Must live entirely on disk | Some can stay in the session |
 | Failure mode | Forgets important background | Context rot, dragged off by its own history |
 
-So the sensible combination is **nesting**: an outer Ralph handles "grab the next story, wipe and restart," while each story internally runs `/goal` until its own acceptance criteria hold.
+One useful pattern is **nesting**: an outer script selects one story and starts a fresh process; that process uses Claude Code `/goal` to work toward the story's acceptance criteria. The example is illustrative and should first be tested in a disposable branch:
 
 ```bash
 # Illustrative: outer layer handles scheduling and context reset,
@@ -520,15 +464,6 @@ while :; do
      Story: $STORY"
 done
 ```
-
-### `/goal` × Stop hook: Soft Judge Plus Hard Gate
-
-The docs say `/goal` is a wrapper around a "session-level prompt-based Stop hook." If that's the case, you can absolutely **hang your own script-based Stop hook** alongside it and stack the two:
-
-- `/goal`'s LLM evaluator judges the **semantic** condition ("refactor complete and no new public APIs introduced")
-- Your Stop hook script judges the **deterministic** condition (`npm test` exit code, whether `git diff --stat` is empty, whether the scorer clears the threshold)
-
-If either says no, the loop continues. The soft judge handles "is this the right idea"; the hard gate handles "is this actually true." **Don't expect one language model to do both jobs well.**
 
 ### Local Inner Loop × Actions Outer Loop: Cheap Runs Fast, Expensive Runs Right
 
@@ -589,7 +524,7 @@ My own countermeasure: use loops to go faster in areas I **already understand**,
 
 One last thing you can use immediately.
 
-Copy the block below whole, paste it into Claude Code or Codex in your own repo, and it will turn the skeleton in this article into real files in your project — surveying before acting, asking you when it isn't sure instead of guessing.
+Copy the block below into the coding agent you use. It asks for product-specific commands rather than pretending Claude Code `/goal` and Codex Goals share one interface.
 
 ```text
 You are going to build a minimal working loop system in this repo. Follow the
@@ -640,19 +575,22 @@ Write scripts/loop-score.mjs (or the equivalent in this repo's language):
 Do not use an LLM to judge anything a command can judge.
 
 [STEP 4: MAKER-CHECKER]
-Create a read-only verifier subagent (.claude/agents/ for Claude Code,
-.codex/agents/ for Codex), required to be:
-  - A toolset containing only reads and read-only commands, absolutely no
-    file writes and no git commits
+First inspect this product's official permission and subagent documentation.
+Then create a verifier, if the product supports the required restrictions:
+  - It may read and run approved non-mutating checks, but may not write files,
+    change tests, or commit
   - Responsible for checking evidence against each acceptance criterion and
     reporting; never fixing anything itself
   - Report format: each criterion → pass/fail → which span of output is
     cited as evidence
+If the permission boundary cannot be enforced, do not invent a configuration
+schema. Run the checker in a read-only sandbox or keep verification manual.
 
 [STEP 5: GIVE ME TWO DIRECTLY RUNNABLE COMMANDS]
-  a) An inner-loop command using /goal, whose condition must include:
-     the specific acceptance criteria, "must paste verification output,"
-     and a turn cap
+  a) For Claude Code, an inner-loop command using /goal whose condition
+     includes the acceptance criteria, reported verification output, and a
+     turn cap. For Codex, create a thread-scoped Goal with the same evidence
+     contract using the supported Goal interface; do not assume /goal syntax.
   b) An outer script that runs N rounds, resets context each round, detects
      the completion signal, and exits non-zero when it hits the cap
 
@@ -690,8 +628,9 @@ You can.
 
 ## References
 
-- [Keep Claude working toward a goal — Claude Code Docs](https://code.claude.com/docs/en/goal): the official mechanics of `/goal`, including the crucial constraint that the evaluator calls no tools
+- [Keep Claude working toward a goal — Claude Code Docs](https://code.claude.com/docs/en/goal): `/goal`, `/loop`, Stop hooks, and the evaluator's transcript-only view
+- [Claude Code tools reference](https://code.claude.com/docs/en/tools-reference): current tool names and permission surfaces; use this instead of copying illustrative schemas
+- [Using Goals in Codex — OpenAI Developers](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex#how-goals-are-designed-in-codex): persisted thread state, lifecycle controls, budgets, continuation, and evidence-based completion
 - [Loop Engineering — Addy Osmani](https://addyosmani.com/blog/loop-engineering/): the five-primitives-plus-a-memory framework, and an honest warning about cost and comprehension debt
 - [Ralph Wiggum as a "software engineer" — Geoffrey Huntley](https://ghuntley.com/ralph/): the original source of the Ralph technique
-- [Using Goals in Codex — OpenAI Developers](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex): the Codex-side goal implementation and its read-only verifier subagent
 - Related reading in the same vein: [The Agent Engineering Map](../agent-engineering-the-98-percent-harness/) (the 98.4% of engineering outside the loop), [Put Quality Gates on Your AI Workflow](../engineering-discipline-ai-workflow/) (the single-machine version of verifier thinking), [Give Your AI Tasks, Not Directions](../give-ai-tasks-not-directions/) (the single-turn version of checkable goals)
