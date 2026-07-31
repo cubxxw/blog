@@ -2261,7 +2261,7 @@ body.dark .bq-mountain::after {
 
 html[lang="zh"] .studio-hero h1 {
   max-width: 650px;
-  font-size: clamp(3rem, 4.7vw, 4.7rem);
+  font-size: clamp(3rem, 4vw, 4.5rem);
 }
 
 .studio-manifesto h2 {
@@ -2399,7 +2399,7 @@ html[lang="zh"] .studio-manifesto h2 {
 
 html[lang="zh"] .studio-hero h1 {
   max-width: 650px;
-  font-size: clamp(3rem, 4.7vw, 4.7rem);
+  font-size: clamp(3rem, 4vw, 4.5rem);
 }
 
 .studio-manifesto h2 {
@@ -3452,7 +3452,7 @@ html[lang="zh"] .about-name {
 }
 
 html[lang="zh"] .studio-hero h1 {
-  font-size: clamp(3rem, 5.4vw, 5.45rem);
+  font-size: clamp(3rem, 4vw, 4.5rem);
   line-height: 1.06;
   letter-spacing: -0.045em;
 }
