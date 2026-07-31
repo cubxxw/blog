@@ -1,7 +1,6 @@
 ---
 title: '当远方不再改变你：探索失效以后，人生靠什么继续向前'
 date: 2026-07-31T00:40:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

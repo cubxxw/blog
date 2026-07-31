@@ -2,7 +2,6 @@
 title: 'Layer Three · Knowledge: Your Knowledge Base Is Not a Bookmark Folder, It Is Your Capability Sediment Zone'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

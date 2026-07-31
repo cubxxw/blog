@@ -1,7 +1,6 @@
 ---
 title: 'From Language Models to RAG: Capabilities, Limits, and Engineering'
 date: 2024-05-15T20:12:29+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

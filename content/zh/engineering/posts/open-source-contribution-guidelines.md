@@ -2,7 +2,6 @@
 title: '一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）'
 ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:40:54+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

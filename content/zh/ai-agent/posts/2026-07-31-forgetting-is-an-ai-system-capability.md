@@ -1,7 +1,6 @@
 ---
 title: 'AI 时代，遗忘比记忆更难：一个活系统为什么必须会放下'
 date: 2026-07-31T01:10:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'AutoGPT in 2026: From the Classic Experiment to the Platform'
 date: 2023-03-18T16:28:30+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 url: "/zh/ai-agent/posts/ai-recommend/"
 title: "LLM 推荐系统工程指南：语义召回、排序、强化学习与评估"
 date: 2025-04-23T10:39:05+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

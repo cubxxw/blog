@@ -2,7 +2,6 @@
 title: '一个人带一队 Agent，把 120 多篇文章的博客重新组装了一遍'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-17T17:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: '超级个体的情报系统：用 Agent 和 MCP 搭一条从信息采集到行动的个人流水线'
 date: 2026-07-15T14:30:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

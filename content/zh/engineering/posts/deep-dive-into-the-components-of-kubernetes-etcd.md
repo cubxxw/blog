@@ -2,7 +2,6 @@
 title: '深入了解Kubernetes等组件之ETCD'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-26T12:03:38+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

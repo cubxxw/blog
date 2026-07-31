@@ -2,7 +2,6 @@
 title: "Relay Agent Architecture in 2026: A Local Implementation Audit"
 date: 2026-06-24T10:00:00+08:00
 lastmod: 2026-07-31T18:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

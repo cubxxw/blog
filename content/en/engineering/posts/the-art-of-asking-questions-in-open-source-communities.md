@@ -3,7 +3,6 @@ title: 'The Art of Asking Questions in Open Source Communities'
 description: Master the art of asking questions in open source communities, including how to ask good questions, etiquette, and best practices.
 ShowRssButtonInSectionTermList: true
 date: 2023-09-17T03:35:17+08:00
-draft : false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

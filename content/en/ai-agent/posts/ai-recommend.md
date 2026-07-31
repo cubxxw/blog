@@ -2,7 +2,6 @@
 url: "/ai-agent/posts/ai-recommend/"
 title: "LLM Recommendation Systems: Retrieval, Ranking, RAG, and Evaluation"
 date: 2025-04-23T10:39:04+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

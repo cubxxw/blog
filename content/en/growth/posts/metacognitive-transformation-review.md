@@ -1,7 +1,6 @@
 ---
 title: 'How I Learned to Observe My Own Thinking: A Four-Month Metacognitive Shift'
 date: 2025-06-02T08:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

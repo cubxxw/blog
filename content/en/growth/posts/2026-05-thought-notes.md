@@ -2,7 +2,6 @@
 title: '2026 May Thought Notes: On the Edge, I Recognize Myself Through Action'
 ShowRssButtonInSectionTermList: true
 date: 2026-05-31T23:59:59+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

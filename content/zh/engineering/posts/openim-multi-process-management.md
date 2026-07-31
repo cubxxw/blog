@@ -3,7 +3,6 @@ title: '我是如何优雅设计 OpenIM 多进程管理策略的'
 description: '本文详述了在 OpenIM 中实施多进程管理的策略和技术，OpenIM 的 System 部署设计； 探讨如何通过进程隔离和资源控制来提升系统稳定性和扩展性。'
 ShowRssButtonInSectionTermList: true
 date: 2023-08-16T15:55:39+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

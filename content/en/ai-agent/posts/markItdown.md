@@ -2,7 +2,6 @@
 url: "/projects/markitdown/"
 title: "Microsoft MarkItDown 0.1.6: A Practical Document-to-Markdown Guide"
 date: 2025-04-21T15:41:21+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

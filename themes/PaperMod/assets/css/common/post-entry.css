@@ -80,8 +80,7 @@
     bottom: 0;
 }
 
-.entry-cover,
-.entry-isdraft {
+.entry-cover {
     font-size: 14px;
     color: var(--secondary);
 }

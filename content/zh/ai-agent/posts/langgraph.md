@@ -3,7 +3,6 @@ url: "/zh/projects/langgraph/"
 title: "2026 LangGraph 架构指南：StateGraph、持久化与故障恢复"
 date: 2025-04-19T15:19:20+08:00
 lastmod: 2026-07-31T18:11:30+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

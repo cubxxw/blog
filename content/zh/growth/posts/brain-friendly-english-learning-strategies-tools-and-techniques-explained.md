@@ -2,7 +2,6 @@
 title: '脑友好型英语学习策略：工具与技巧解析'
 ShowRssButtonInSectionTermList: true
 date: '2024-02-16T13:34:36+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: '从语言模型到 RAG：理解大模型的能力、边界与工程方法'
 date: 2024-05-15T20:12:29+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

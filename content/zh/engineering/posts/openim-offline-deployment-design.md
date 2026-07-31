@@ -3,7 +3,6 @@ title: 'OpenIM离线部署设计'
 description: '本文详细介绍了 OpenIM 社区版的离线部署设计方案及其实施策略，旨在帮助读者理解和应用于实际部署过程中。'
 ShowRssButtonInSectionTermList: true
 date: 2023-05-19T15:20:59+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

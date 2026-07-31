@@ -2,7 +2,6 @@
 title: 'GEO 生成式引擎优化完全指南：当搜索从"给链接"变成"给答案"'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-10T22:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

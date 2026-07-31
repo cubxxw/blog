@@ -2,7 +2,6 @@
 title: 'Kubernetes Kustomize 学习指南'
 ShowRssButtonInSectionTermList: true
 date: 2023-10-31T21:30:19+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

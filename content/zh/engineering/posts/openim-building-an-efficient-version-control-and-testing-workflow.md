@@ -2,7 +2,6 @@
 title: 'OpenIM：构建高效的版本控制和测试工作流程'
 ShowRssButtonInSectionTermList: true
 date: '2024-01-15T21:13:07+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

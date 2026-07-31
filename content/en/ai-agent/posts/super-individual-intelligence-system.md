@@ -1,7 +1,6 @@
 ---
 title: "The Super Individual's Intelligence System: Building a Personal Pipeline From Information to Action With Agents and MCP"
 date: 2026-07-15T14:30:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

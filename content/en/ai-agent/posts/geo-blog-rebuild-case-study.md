@@ -2,7 +2,6 @@
 title: 'GEO Blog Rebuild Case Study: Running the Five-Layer Model on Real Data'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T11:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

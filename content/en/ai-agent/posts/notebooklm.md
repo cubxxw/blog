@@ -3,7 +3,6 @@ url: "/projects/notebooklm/"
 title: "Gemini Notebook (Formerly NotebookLM): A Source-Grounded Research Workflow"
 date: 2025-04-21T22:59:57+08:00
 lastmod: 2026-07-31T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

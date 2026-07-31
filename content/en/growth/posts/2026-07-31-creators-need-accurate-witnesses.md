@@ -1,7 +1,6 @@
 ---
 title: 'Creators Don’t Lack Applause—They Lack an Accurate Witness'
 date: 2026-07-31T01:20:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Kubernetes Port Config via Config Files'
 ShowRssButtonInSectionTermList: true
 date: 2023-09-18T22:49:14+08:00
-draft : false
 showtoc: true
 tocopen: false
 type: posts

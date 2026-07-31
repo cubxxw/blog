@@ -1,7 +1,6 @@
 ---
 title: 'open-lovable 源码拆解：Agentic Search、文本协议与双沙箱'
 date: 2026-06-29T09:30:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -3,7 +3,6 @@ title: 'Openim Offline Deployment Design'
 description: "OpenIM community offline deployment design scheme, and implementation scheme"
 ShowRssButtonInSectionTermList: true
 date: 2023-05-19T15:20:58+08:00
-draft: false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

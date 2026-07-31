@@ -2,7 +2,6 @@
 title: 'GEO: The Complete Guide to Generative Engine Optimization (When Search Stops Giving Links and Starts Giving Answers)'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-10T22:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

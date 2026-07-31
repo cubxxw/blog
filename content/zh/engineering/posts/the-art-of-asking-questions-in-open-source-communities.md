@@ -3,7 +3,6 @@ title: '在开源社区中学会如何提问'
 description: '在开源社区中，提问的艺术'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-17T03:35:18+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

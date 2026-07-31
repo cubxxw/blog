@@ -1,7 +1,6 @@
 ---
 title: 'Ignite and Settle (Part 3): Anxious Attachment — Why We Keep Seeking Reassurance in Love'
 date: 2026-06-28T20:20:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

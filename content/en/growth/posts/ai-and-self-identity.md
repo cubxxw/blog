@@ -2,7 +2,6 @@
 title: 'AI and Self-Identity: Who Am I in the AI Age'
 ShowRssButtonInSectionTermList: true
 date: 2026-03-01T20:15:00+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

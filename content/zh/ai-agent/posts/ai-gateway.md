@@ -1,7 +1,6 @@
 ---
 title: 'AI Gateway 选型指南：LiteLLM、Kong、APISIX、Cloudflare 与 Portkey 怎么选'
 date: 2025-04-16T17:36:12+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

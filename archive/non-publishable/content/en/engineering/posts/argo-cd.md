@@ -2,7 +2,6 @@
 title: 'Argo Cd'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T20:45:39+08:00
-draft: true
 showtoc: true
 tocopen: false
 type: posts

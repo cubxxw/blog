@@ -2,7 +2,6 @@
 title: "对开源商业化的思考 & 全球流量大会（GTC）学习以及总结"
 ShowRssButtonInSectionTermList: true
 date: '2023-12-07T11:33:15+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: '摩擦即成长：当 AI 替你消除一切阻力，请主动留下一些'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T16:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

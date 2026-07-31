@@ -2,7 +2,6 @@
 title: 夜里跑十个 agent，早上收十个 PR，然后我卡住了
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T09:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -2,7 +2,6 @@
 title: 你的产品一夜就能被抄走，你的读者不能
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T10:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

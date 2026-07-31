@@ -2,7 +2,6 @@
 title: "Relay Agent 架构审计：从设计承诺到本地实现"
 date: 2026-06-24T10:00:00+08:00
 lastmod: 2026-07-31T18:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

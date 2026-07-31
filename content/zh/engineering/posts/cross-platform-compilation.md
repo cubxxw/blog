@@ -2,7 +2,6 @@
 title: '跨平台以及多架构编译设计'
 ShowRssButtonInSectionTermList: true
 date: '2023-02-13T16:21:53+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

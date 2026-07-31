@@ -2,7 +2,6 @@
 title: '一个人养得起多大的 Agent 舰队：2026 年低价 API 与开放权重模型的成本账'
 date: 2026-07-15T14:00:00+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

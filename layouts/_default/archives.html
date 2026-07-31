@@ -79,7 +79,6 @@
                 </time>
                 <span class="archives-post__title">
                   {{ .Title | markdownify }}
-                  {{- if .Draft }}<span class="archives-post__draft">draft</span>{{- end }}
                 </span>
                 {{- with .Params.tags }}
                 <span class="archives-post__tags">

@@ -2,7 +2,6 @@
 title: '底层思维：跨学科学习的核心原则'
 ShowRssButtonInSectionTermList: true
 date: 2024-05-07T22:22:59+08:00
-draft: true
 showtoc: true
 tocopen: false
 type: posts

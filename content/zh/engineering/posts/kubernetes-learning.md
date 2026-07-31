@@ -2,7 +2,6 @@
 title: 'Kubernetes 资源与学习路径总结'
 ShowRssButtonInSectionTermList: true
 date: '2024-08-06T20:29:30+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

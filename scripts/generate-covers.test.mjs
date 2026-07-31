@@ -84,7 +84,6 @@ test('round trip: rewriting a real-shaped document keeps it parseable', () => {
   const doc = `---
 title: '超级个体的情报系统'
 date: 2026-07-15T14:30:00+08:00
-draft: false
 tags:
   - AI
   - MCP

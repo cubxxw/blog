@@ -1,7 +1,6 @@
 ---
 title: 'Environment as the Hidden Author: Why Moving Cities Feels Like Becoming Someone Else'
 date: 2026-07-31T00:50:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -10,7 +10,6 @@ timeout: 180s
 # https://github.com/adityatelange/hugo-PaperMod/wiki/Variables
 enableRobotsTXT: true
 enableGitInfo: true
-buildDrafts: false
 buildFuture: false
 buildExpired: true
 

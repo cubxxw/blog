@@ -2,7 +2,6 @@
 title: 'How AI Agents Rebuilt My 120-Post Blog From Scratch'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-17T17:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

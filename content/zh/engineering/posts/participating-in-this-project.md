@@ -2,7 +2,6 @@
 title: '参与我们的区块链学习平台项目'
 ShowRssButtonInSectionTermList: true
 date: '2022-02-01T10:26:53+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

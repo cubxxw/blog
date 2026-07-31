@@ -1,7 +1,6 @@
 ---
 title: '2026 AI Agent 红海与蓝海：垂直工作流、支付协议与责任护城河'
 date: 2026-07-15T18:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Claude Code 实战手册：从验证闭环到并行代理的 10 个配置'
 ShowRssButtonInSectionTermList: true
 date: 2026-07-20T23:30:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -2,7 +2,6 @@
 title: '双剑合璧：结合GitHub与Google Workspace的项目管理艺术'
 ShowRssButtonInSectionTermList: true
 date: '2024-02-22T14:22:21+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

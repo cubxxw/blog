@@ -256,7 +256,6 @@ export function buildIndex() {
         tags: Array.isArray(data.tags) ? data.tags.slice(0, 12) : [],
         categories: Array.isArray(data.categories) ? data.categories.slice(0, 12) : [],
         date: typeof data.date === "string" ? data.date : "",
-        draft: data.draft === "true" || data.draft === true,
         headings: getHeadings(body),
         excerpt: getExcerpt(body),
         // GEO answer-first summary — the strongest grounding signal for the
@@ -272,7 +271,6 @@ export function buildIndex() {
         body: getBody(body),
       };
     })
-    .filter((doc) => !doc.draft)
     .sort((a, b) => a.relativePath.localeCompare(b.relativePath));
 
   const byLanguage = {};

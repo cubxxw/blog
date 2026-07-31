@@ -2,7 +2,6 @@
 title: 'Designing devbox-doctor: A Safer Mac Toolchain Audit'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-18T13:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

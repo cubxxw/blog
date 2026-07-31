@@ -5,7 +5,6 @@ cover:
     image: '/images/blog/vector-database.png'
     caption: '向量数据库学习'
 date: '2024-01-20T12:57:15+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

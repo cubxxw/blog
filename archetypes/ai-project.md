@@ -1,7 +1,6 @@
 ---
 title: '{{ replace .Name "-" " " | title }} 开源项目深度学习'
 date: {{ .Date }}
-draft: true
 showtoc: true
 tocopen: true
 type: posts
@@ -16,7 +15,7 @@ tags:
 categories:
   - Development
 description: >
-  说明该 AI 开源项目解决的问题、适合的读者、实践路径与核心结论。完成正文与双语版本后再将 draft 改为 false。
+  说明该 AI 开源项目解决的问题、适合的读者、实践路径与核心结论。在工作分支完善内容，达到发布标准后再合并。
 ---
 
 > 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力。并且记录。

@@ -2,7 +2,6 @@
 url: "/projects/langgraph/"
 title: "LangGraph Architecture in 2026: StateGraph, Persistence, and Recovery"
 date: 2025-04-19T15:19:20+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

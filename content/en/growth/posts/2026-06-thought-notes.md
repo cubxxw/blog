@@ -2,7 +2,6 @@
 title: '2026 June Thought Notes: The Pushing-Away Comes Before the Reason for Pushing Away'
 ShowRssButtonInSectionTermList: true
 date: 2026-06-30T23:59:59+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

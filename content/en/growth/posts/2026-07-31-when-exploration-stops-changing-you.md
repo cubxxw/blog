@@ -1,7 +1,6 @@
 ---
 title: 'When Distance No Longer Changes You: What Keeps Life Moving After Exploration Fails'
 date: 2026-07-31T00:40:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

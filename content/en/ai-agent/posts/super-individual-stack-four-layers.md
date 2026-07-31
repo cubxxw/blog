@@ -2,7 +2,6 @@
 title: Your Gear Is Arming Your Competitors Too
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T09:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -12,7 +12,7 @@
 
 {{- $travelPages := slice }}
 {{- range .Site.RegularPages }}
-  {{- if and (not .Draft) .Params.tags (ne .Permalink $.Permalink) }}
+  {{- if and .Params.tags (ne .Permalink $.Permalink) }}
     {{- if gt (len (intersect .Params.tags $allMatch)) 0 }}
       {{- $travelPages = $travelPages | append . }}
     {{- end }}

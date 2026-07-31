@@ -2,7 +2,6 @@
 title: '你的 Mac 上有几套工具在打架？我设计了一个开发机体检 Skill'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-18T13:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

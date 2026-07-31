@@ -3,7 +3,6 @@ url: "/projects/langchain/"
 title: "LangChain 1.x in Production: Choosing Models, Agents, and LangGraph"
 date: 2025-04-16T17:36:45+08:00
 lastmod: 2026-07-31T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

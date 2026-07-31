@@ -2,7 +2,6 @@
 title: 'GEO 原理篇：AI 是怎么把你"检索 → 重排 → 引用"的'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T10:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

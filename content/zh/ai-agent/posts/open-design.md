@@ -2,7 +2,6 @@
 title: "Open Design 0.16.1：给 Coding Agent 一张可复用的设计工作台"
 date: 2026-07-22T20:30:00+08:00
 lastmod: 2026-07-31T16:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Go 源码里的这些 go: 指令 && go 自动化工具'
 ShowRssButtonInSectionTermList: true
 date: '2024-01-25T15:22:36+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

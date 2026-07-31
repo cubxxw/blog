@@ -2,7 +2,6 @@
 title: '深入了解 Kubernetes kube-apiserver 组件架构'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-28T20:12:51+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

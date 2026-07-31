@@ -3,7 +3,6 @@ url: "/ai-agent/posts/gpt-researcher/"
 title: 'GPT Researcher Guide: Python, Docker, MCP, Costs & Limits'
 date: 2025-04-14T16:17:27+08:00
 lastmod: 2026-07-31T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

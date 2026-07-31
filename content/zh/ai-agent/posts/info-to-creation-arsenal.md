@@ -2,7 +2,6 @@
 title: '番外·实践：我把「知识层」建成了一座兵工厂'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-17T21:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

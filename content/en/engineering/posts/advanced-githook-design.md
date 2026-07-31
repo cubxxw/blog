@@ -2,7 +2,6 @@
 title: 'Advanced Githook Design'
 ShowRssButtonInSectionTermList: true
 date: '2023-06-16T16:24:59+08:00'
-draft: false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

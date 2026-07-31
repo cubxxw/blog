@@ -183,7 +183,7 @@ brain、DayPage 的 file-system vault、`hot.md`、cct 会话捕获、provider �
 - Answer-First：首屏给出一句判断、40—100 字展开和至少一个证据。
 - `description` 只写纯文本；补 `tldr` 与 3—5 个真实搜索问句式 FAQ，使每个答案可以脱离正文独立理解。
 - 完稿后运行 `node scripts/check-ai-flavor.mjs <文章路径>`，E 级问题清零；再按仓库约定使用 `netlify dev` 验证页面，不用 `make`。
-- 本任务只要求产出并验证草稿，不自动发布。
+- 本任务只要求产出并验证成稿，不自动合并或发布。
 
 ## 验收标准
 
@@ -197,7 +197,7 @@ brain、DayPage 的 file-system vault、`hot.md`、cct 会话捕获、provider �
 - [ ] 有两幅紧凑 ASCII 图；无多余框架堆叠。
 - [ ] 结尾给出删除、承诺、反馈三个检验问题，不给工具推荐清单。
 - [ ] 遵守 AI 味句式上限，`check-ai-flavor` E 级清零。
-- [ ] 按 blog 仓库规范完成本地验证；草稿未被自动发布。
+- [ ] 按 blog 仓库规范完成本地验证；文章分支未被自动合并或发布。
 
 ---
 

@@ -2,7 +2,6 @@
 title: '信息、记录、知识、创作：AI 时代，我把笔记拆成了四种东西'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

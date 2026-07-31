@@ -3,7 +3,6 @@ title: 'Go 调试测试以及调试工具 dlv 学习'
 description: '本文深入介绍 Go 语言的调试过程，测试方法以及如何使用调试工具 dlv 来优化代码。'
 ShowRssButtonInSectionTermList: true
 date: '2023-06-19T16:38:39+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

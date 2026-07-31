@@ -1,7 +1,6 @@
 ---
 title: '观察者的代价：看得越明白，为什么反而越难进入生活'
 date: 2026-07-31T01:30:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

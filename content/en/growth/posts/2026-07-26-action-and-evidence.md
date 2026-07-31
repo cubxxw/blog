@@ -1,7 +1,6 @@
 ---
 title: 'Action Does Not Automatically Lead to Truth'
 date: 2026-07-26T16:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

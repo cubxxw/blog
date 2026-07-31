@@ -3,7 +3,6 @@ title: 'Use Go Tools Dlv'
 description: Learn how to use Delve (dlv) for Go program debugging, including local and remote debugging with VSCode, breakpoint management, and goroutine analysis.
 ShowRssButtonInSectionTermList: true
 date: 2023-02-24T16:38:39+08:00
-draft : false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

@@ -2,7 +2,6 @@
 title: 'Agent Fleet Economics in 2026: Testing Low-Cost APIs and Open-Weight Options'
 date: 2026-07-15T14:00:00+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

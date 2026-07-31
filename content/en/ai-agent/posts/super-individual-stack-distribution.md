@@ -2,7 +2,6 @@
 title: Your Product Can Be Copied Overnight. Your Readers Can't.
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T10:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

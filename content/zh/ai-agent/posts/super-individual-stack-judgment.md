@@ -2,7 +2,6 @@
 title: AI 提需求不要钱，这才是最危险的地方
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T10:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -2,7 +2,6 @@
 title: 'LangChain 1.x in Practice: A Developer Guide to Reliable Agents'
 date: 2024-05-22T21:37:34+08:00
 lastmod: 2026-07-31T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -4,7 +4,6 @@ description: "一段横版滚动的人生旅程，经过熊鑫伟的旅行、开
 layout: "about-quest"
 url: "/zh/about/quest/"
 date: 2026-07-25T00:00:00+08:00
-draft: false
 showtoc: false
 type: page
 author: ["Xinwei Xiong", "Me"]

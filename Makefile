@@ -95,6 +95,7 @@ chroma-css:
 ## run: Run hugo server.
 .PHONY: content-index
 content-index:
+	@node scripts/check-frontmatter-fields.mjs
 	@node scripts/generate-content-index.mjs
 
 ## content-fix: Normalize safe, mechanical Markdown formatting issues.
@@ -102,16 +103,17 @@ content-index:
 content-fix:
 	@node scripts/clean-empty-blockquotes.mjs --write
 
-## content-check: Validate canonical tags and Markdown formatting before publishing.
+## content-check: Validate front matter, canonical tags, and Markdown formatting before publishing.
 .PHONY: content-check
 content-check:
+	@node scripts/check-frontmatter-fields.mjs
 	@node scripts/clean-empty-blockquotes.mjs
 	@node scripts/normalize-tags.mjs --check
 
 .PHONY: run
 run: tools.verify.hugo module-check content-index
 	@$(HUGO)
-	@$(HUGO) server -D --gc -p $(HUGO_DEV_PORT) --config config.yml
+	@$(HUGO) server --gc -p $(HUGO_DEV_PORT) --config config.yml
 
 ## new-post: Create a new content file and automatically add the current date.
 POST_NAME ?=
@@ -178,10 +180,10 @@ netlify-dev: module-check content-index
 netlify-dev-stop:
 	@bash scripts/stop-netlify-dev.sh
 
-## build-preview: Build site with drafts and future posts enabled
+## build-preview: Build the preview site with future posts enabled
 .PHONY: build-preview
 build-preview: tools.verify.hugo module-check content-index
-	@$(HUGO) --cleanDestinationDir --buildDrafts --buildFuture --environment preview
+	@$(HUGO) --cleanDestinationDir --buildFuture --environment preview
 
 ## deploy-preview: Deploy preview site via netlify
 .PHONY: deploy-preview

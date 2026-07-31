@@ -1,7 +1,6 @@
 ---
 title: 'AI News Pipelines: Automation Limits and Human Judgment'
 date: 2026-07-15T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

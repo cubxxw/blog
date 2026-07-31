@@ -5,7 +5,6 @@ aliases:
 title: 'UFO² 桌面 AgentOS：从 Windows 自动化到 UFO³ Galaxy'
 date: 2025-05-09T21:30:15+08:00
 lastmod: 2026-07-31T01:41:06+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

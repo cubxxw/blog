@@ -52,7 +52,6 @@ tags: [en, first]  # 无意义标签
 ---
 title: '文章标题'
 date: 2026-03-28T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -73,7 +72,8 @@ description: >
 - 不要混用 `+07:00`、UTC、或省略时区的本地时间
 - `description` 必须是纯文本，不含 `**`, `*`, `#` 等 Markdown 符号
 - `keywords` 建议默认保留为空数组 `[]`，只有在确实需要精细 SEO 补充时再填写
-- 双语文章设置 `draft: true` 直到翻译完成
+- 不使用 `draft` 字段；`content/` 中的文件一律视为可发布内容
+- 未完成内容只能留在未合并分支；空占位页和内部 fixture 不得提交到 `content/`
 
 **推荐的文章 meta baseline**：
 
@@ -81,7 +81,6 @@ description: >
 ---
 title: '文章标题'
 date: 2026-03-28T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -135,7 +134,7 @@ content/
 1. 复制原文到对应语言目录
 2. 翻译 `title`, `description`, `tags`
 3. 翻译正文内容
-4. 原文设置为 `draft: true` 如果翻译未完成
+4. 翻译完成后再合并对应语言文件，不要提交空占位
 5. 更新 `config/tags-mapping.json` 如果需要新标签
 
 ### 5. SEO 规范
@@ -180,7 +179,7 @@ make new-ai-project PROJECT_NAME="my-project"
 2. 用对应命令创建文件，不要手工新建到错误目录
 3. 先补完整 front matter，再写正文
 4. `date` 一律写上海时间 `+08:00`
-5. 如果计划稍后发布，不要把 `date` 写到未来，优先用 `draft: true`
+5. 如果计划稍后发布，把工作保留在未合并分支；不要用 front matter 隐藏文章
 6. 内容改完后刷新索引并本地验证
 
 ```bash
@@ -202,7 +201,7 @@ make envbuild
 
 ```bash
 # 本地开发
-hugo server -D
+hugo server
 
 # 生产构建
 hugo --minify
@@ -287,7 +286,7 @@ hugo --minify
 **常见原因**: `date` 写成了未来时间，且使用了上海时区之外的偏移或错误时间
 **修复**:
 - 优先把 `date` 改成已经到达的 `+08:00` 时间
-- 如果只是暂存文章，改用 `draft: true`
+- 确认文章分支已经合并并完成部署
 - 不要依赖“本地机器当前时区”和 Hugo 自己猜测
 
 ### Q1: 文章元信息显示 HTML 代码
@@ -304,7 +303,7 @@ hugo --minify
 
 ### Q4: 翻译文章内容为空
 **原因**: 创建了占位文章但未翻译
-**修复**: 设置 `draft: true` 或补充翻译内容
+**修复**: 补充完整翻译，或把占位文件移出 `content/`
 
 ---
 

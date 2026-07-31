@@ -2,7 +2,6 @@
 title: 你的装备，同时也在武装你的对手
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T09:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

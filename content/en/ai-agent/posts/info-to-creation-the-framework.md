@@ -2,7 +2,6 @@
 title: 'Information, Records, Knowledge, Creation: In the AI Era, I Split My Notes Into Four Different Things'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: 'Records Are Not Mirrors, But Scissors: What Tool You Use Ultimately Shapes Who You Become'
 date: 2026-07-31T01:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

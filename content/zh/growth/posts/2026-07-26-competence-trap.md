@@ -1,7 +1,6 @@
 ---
 title: '聪明人的逃跑方式：把能力用在不该解决的问题上'
 date: 2026-07-26T15:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

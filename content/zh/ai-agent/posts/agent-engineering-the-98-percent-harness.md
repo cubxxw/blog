@@ -1,7 +1,6 @@
 ---
 title: "Agent Engineering 全景地图：98.4% 只是 Harness 的叙事锚点"
 date: 2026-06-17T09:30:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

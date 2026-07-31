@@ -1,7 +1,6 @@
 ---
 title: 'Maintaining Self-Worth in the Age of AI'
 date: 2026-04-04T22:00:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

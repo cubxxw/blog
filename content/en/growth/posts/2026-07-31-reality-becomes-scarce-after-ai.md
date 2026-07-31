@@ -1,7 +1,6 @@
 ---
 title: 'When Generation Becomes Infinite, Authentic Experiences Begin to Command Value'
 date: 2026-07-31T01:50:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'AI 工作流质量门禁：把软件工程的纪律搬进个人系统'
 ShowRssButtonInSectionTermList: true
 date: 2026-07-11T15:30:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

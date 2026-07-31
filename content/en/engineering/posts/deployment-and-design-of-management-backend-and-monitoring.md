@@ -2,7 +2,6 @@
 title: 'Deployment and Design of Management Backend and Monitoring'
 ShowRssButtonInSectionTermList: true
 date: 2023-11-15T11:25:54+08:00
-draft : false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: '2026年6月思考笔记：推开的动作，先于推开的理由'
 ShowRssButtonInSectionTermList: true
 date: 2026-06-30T23:59:59+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

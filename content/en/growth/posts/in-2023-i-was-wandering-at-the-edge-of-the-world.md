@@ -3,7 +3,6 @@ title: 'In 2023, I Was Wandering at the Edge of the World'
 ShowRssButtonInSectionTermList: true
 date: 2024-03-03T20:00:46+08:00
 weight: 1
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: '2024 AI Field Notes, Reassessed: From Emergence to Production RAG'
 date: 2024-01-14T22:52:24+08:00
 lastmod: 2026-07-30T22:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Github Actions 的高级使用技巧'
 ShowRssButtonInSectionTermList: true
 date: '2023-06-14T16:17:02+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

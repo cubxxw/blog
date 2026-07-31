@@ -2,7 +2,6 @@
 title: '塑造职业道路：开源简历生成器与专业简历技巧指南'
 ShowRssButtonInSectionTermList: true
 date: '2024-04-19T00:24:22+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

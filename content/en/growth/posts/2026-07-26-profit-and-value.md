@@ -1,7 +1,6 @@
 ---
 title: 'What Does Profit Actually Prove?'
 date: 2026-07-26T14:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

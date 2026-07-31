@@ -2,7 +2,6 @@
 title: '第四层·创作：把知识重组成别人愿意接收的东西'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:40:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

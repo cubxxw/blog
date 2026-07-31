@@ -1151,22 +1151,6 @@ body.dark .growth-list-tags,
   color: var(--color-ink-muted, #b4bcb2);
 }
 
-/* ── 34. Archives "draft" badge in dark (AA repair) ──────────────
-   The Archives list flags unpublished entries with a draft badge:
-   .archives-post__draft paints amber #b45309 on a faint amber chip
-   (background rgba(234,179,8,0.15)), un-gated. In dark the chip is a faint
-   amber wash over the near-black paper and the #b45309 text lands at just
-   3.68:1 (EN) / 3.49:1 (ZH) — under the AA floor for this small uppercase
-   label. Lift the text to amber-400 #fbbf24 — the exact tint §27 already
-   uses for the dark "warning" state — so the badge keeps its amber semantic
-   while clearing AA at 11.08:1 (EN) / 10.48:1 (ZH) over the paper, and reads
-   crisply against its own faint chip. body.dark-scoped, loaded last — light
-   mode keeps #b45309, provably unchanged. */
-body.dark .archives-post__draft,
-[data-theme="dark"] .archives-post__draft {
-  color: #fbbf24;
-}
-
 /* ── 35. Quiet-UI text on lifted chip surfaces in dark (AA repair) ─
    PaperMod's dark secondary text token is --secondary: rgb(155,156,157)
    (#9b9c9d). It clears AA comfortably where it sits straight on the dark

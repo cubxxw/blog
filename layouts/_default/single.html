@@ -77,7 +77,6 @@
       {{- $veryLongTitleThreshold := cond (eq .Lang "zh") 34 82 -}}
       <h1 class="post-title{{ if gt $titleLength $longTitleThreshold }} post-title--long{{ end }}{{ if gt $titleLength $veryLongTitleThreshold }} post-title--very-long{{ end }}">
         {{ .Title }}
-        {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
       </h1>
       {{- if .Description }}
       <p class="post-description">

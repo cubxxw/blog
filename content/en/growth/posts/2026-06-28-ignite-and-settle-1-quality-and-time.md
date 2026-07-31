@@ -1,7 +1,6 @@
 ---
 title: 'Ignite and Settle (Part 1): The Quality and Time of Companionship — and Why We Turn Away Just as We Come Close'
 date: 2026-06-28T20:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

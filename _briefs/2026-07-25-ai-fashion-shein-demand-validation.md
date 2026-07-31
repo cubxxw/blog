@@ -3,7 +3,7 @@ title: AI 能设计一万件衣服，为什么还是做不出下一个 SHEIN？
 target: blog
 language: zh
 section: ai-agent
-status: ready-for-draft
+status: ready
 created_at: 2026-07-25T00:00:00+08:00
 ---
 

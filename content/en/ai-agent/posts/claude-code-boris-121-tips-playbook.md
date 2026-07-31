@@ -2,7 +2,6 @@
 title: 'Claude Code Playbook: 10 Configurations for Reliable Agent Workflows'
 ShowRssButtonInSectionTermList: true
 date: 2026-07-20T23:30:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

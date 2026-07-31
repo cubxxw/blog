@@ -1,7 +1,6 @@
 ---
 title: 'What Should I Do Next? A Debate About Money, Action, and Ideals'
 date: 2026-07-26T13:25:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

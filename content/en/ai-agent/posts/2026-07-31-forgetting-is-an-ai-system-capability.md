@@ -1,7 +1,6 @@
 ---
 title: 'Forgetting Is Harder Than Remembering: Why a Living System Must Know When to Let Go'
 date: 2026-07-31T01:10:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

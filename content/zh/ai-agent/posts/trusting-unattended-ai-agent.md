@@ -2,7 +2,6 @@
 title: '如何建立对无人值守 AI Agent 的真实信任'
 date: 2026-07-15T16:00:00+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

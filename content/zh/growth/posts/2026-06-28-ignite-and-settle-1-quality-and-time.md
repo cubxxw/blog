@@ -1,7 +1,6 @@
 ---
 title: '点火与沉底（上）：陪伴的质量与时间，和我们为什么总在快要靠近时转身'
 date: 2026-06-28T20:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

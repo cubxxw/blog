@@ -1,7 +1,6 @@
 ---
 title: '环境是隐藏的作者：为什么换一座城，像换了一个自己'
 date: 2026-07-31T00:50:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

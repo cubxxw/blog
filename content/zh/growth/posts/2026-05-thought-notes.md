@@ -2,7 +2,6 @@
 title: '2026年5月思考笔记：在边缘上，用行动认出自己'
 ShowRssButtonInSectionTermList: true
 date: 2026-05-31T23:59:59+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

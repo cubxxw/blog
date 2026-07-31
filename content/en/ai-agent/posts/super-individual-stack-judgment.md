@@ -2,7 +2,6 @@
 title: AI Writes Requirements for Free, and That's the Most Dangerous Part
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T10:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

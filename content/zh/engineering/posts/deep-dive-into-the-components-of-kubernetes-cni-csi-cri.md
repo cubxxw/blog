@@ -4,7 +4,6 @@ ShowRssButtonInSectionTermList: true
 cover:
   image: ""
 date: '2023-09-28T20:29:30+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

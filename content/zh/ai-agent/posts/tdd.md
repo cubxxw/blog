@@ -3,7 +3,6 @@ url: "/zh/projects/tdd/"
 title: "AI 与大模型应用的测试驱动开发：从确定性测试到风险化评测"
 date: 2025-04-21T15:52:34+08:00
 lastmod: 2026-07-31T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

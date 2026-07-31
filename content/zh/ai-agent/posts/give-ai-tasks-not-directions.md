@@ -2,7 +2,6 @@
 title: '给 AI 任务，不只给方向：用完成态把协作落到结果'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T16:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

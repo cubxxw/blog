@@ -1,7 +1,6 @@
 ---
 title: '利润到底证明了什么'
 date: 2026-07-26T14:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts
