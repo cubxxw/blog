@@ -12,6 +12,13 @@
 
 ### 0. 项目级写作约束
 
+- 博客选题默认由上游 `brain` 下发到 `_briefs/`；当前仓库只负责博客原生写作、公开研究、SEO/GEO、封面、验证与发布
+- 执行 brief 前必须阅读 `_briefs/README.md` 与 `docs/blog-editorial-workflow.md`
+- 从 brief 写文章、扫描并执行选题或完成整套发布前加工时，必须使用 `.claude/skills/write-blog-from-brief/SKILL.md`
+- 新写或重写文章第一段、开篇 Hook、楔子或首屏时，必须使用 `.claude/skills/craft-article-opening/SKILL.md`
+- 使用 `npm run briefs:next` 选择待处理任务；每次最多认领一篇
+- 旧 `writing-pipeline/` 已停用，不再承担母版或跨平台分发职责
+- 自动化最多推进到 `ready-to-publish`，未经作者确认不得发布
 - 本仓库的正式内容目录是 `content/{lang}/{section}/...`
 - 聚合入口使用 `articles`，不是根级 `posts`
 - 普通文章只放在：

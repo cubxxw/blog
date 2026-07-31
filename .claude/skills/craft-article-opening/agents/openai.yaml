@@ -1,0 +1,4 @@
+interface:
+  display_name: "Craft Article Opening"
+  short_description: "为博客设计具有在场感、诚实张力与三秒吸引力的第一段"
+  default_prompt: "Use $craft-article-opening to create or improve the opening paragraph of this blog article."

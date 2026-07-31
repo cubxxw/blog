@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Blog from Brief"
+  short_description: "从上游选题完成深度研究、原生写作、独立审核与发布前验证"
+  default_prompt: "Use $write-blog-from-brief to process the next ready blog brief into a researched, independently reviewed, SEO-ready article."

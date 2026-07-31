@@ -18,8 +18,20 @@ This document contains critical information about working with this codebase. Fo
 
 ### 创建新文章
 
+博客选题默认来自 `_briefs/`。执行下发任务前先读
+`_briefs/README.md` 和 `docs/blog-editorial-workflow.md`，用
+`npm run briefs:next` 选择下一篇。当前仓库不负责作者定位、上游母版或其他平台分发；
+自动流程到 `ready-to-publish` 为止，未经作者确认不发布。
 `content/` 中的文件一律视为可发布内容，不使用 `draft` front matter；未完成内容只能
 留在未合并分支，空占位和内部 fixture 必须留在发布目录之外，最终发布由分支合并和部署控制。
+
+从 brief 写文章、扫描并执行选题或完成整套发布前加工时，必须使用
+`.claude/skills/write-blog-from-brief/SKILL.md`。该 skill 统一编排公开研究、原生写作、
+独立 agent 审读、AI 味清理、SEO/GEO、内链、封面、评分与确定性验证。
+
+新写或重写文章第一段、开篇 Hook、楔子或首屏时，必须使用
+`.claude/skills/craft-article-opening/SKILL.md`。开篇必须从真实材料建立在场感和张力，
+不得用标题党、虚构经历或泛化的“AI 时代”开场。
 
 ```bash
 # AI Agent 文章（Agent 工程、上下文工程、LLM 应用、GEO）
