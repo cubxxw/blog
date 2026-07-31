@@ -27,7 +27,6 @@ tldr:
 
 > July 1st, 2025 - 11:39:24
 > In Agent development, "The Bitter Lesson" remains equally important. Excessive human experience injection might actually limit AI performance and lock in product possibilities.
-> 
 
 - **Embrace Agent Patterns**: Agent mode is mature; what we need is training agents' thinking patterns. We can focus more on ideas and design, becoming architects rather than coders.
 - **Beware Over-Prescription**: Excessive rule-setting (like fixed testing processes) may prevent AI from utilizing the latest model capabilities. We should let AI self-select more often.
@@ -43,7 +42,6 @@ This insight challenges traditional software engineering approaches in the AI er
 
 > July 1st, 2025 - 15:19:47
 > Why do we bookmark?
-> 
 
 1. **Memory Aid**: Convenient for future possible retrieval.
 2. **Psychological Comfort**: Adding to ourselves, even if it doesn't truly add much.
@@ -65,7 +63,6 @@ The real question isn't "Will I use this?" but "What does choosing to save this 
 
 > July 4th, 2025 - 09:15:33
 > Stop looking for the secret to focus. Start looking for the question that keeps you awake at night.
-> 
 
 **Focus might just be a byproduct of obsession.** When we're truly captivated by something, concentration becomes effortless. The struggle for focus often indicates we're working on the wrong problems or approaching the right problems from the wrong angle.
 
@@ -87,7 +84,6 @@ Instead of fighting distraction, **cultivate obsession.** Find work so compellin
 
 > July 5th, 2025 - 14:22:18
 > The Tale of Genji didn't just reflect Japanese culture—it helped create it.
-> 
 
 **Mono no Aware (物哀)**: The pathos of things, bittersweet awareness of impermanence. Not sadness about endings, but appreciation for the preciousness that impermanence creates. Cherry blossoms are beautiful precisely because they fall.
 
@@ -107,7 +103,6 @@ In our contemporary context, these Japanese aesthetics offer counterpoints to We
 
 > July 8th, 2025 - 16:45:29
 > Japanese coffee culture perfects the art of being alone together.
-> 
 
 Japanese coffee shops offer something unique: **"packaged solitude."** Unlike Western cafes that encourage socializing, or Chinese tea houses built for conversation, Japanese kissaten create spaces for beautiful aloneness.
 
@@ -131,7 +126,6 @@ This reflects broader Japanese cultural wisdom about **finding beauty in states 
 
 > July 21st, 2025 - 20:18:44
 > Martin Buber's distinction between two fundamental ways of relating: treating others as subjects or objects.
-> 
 
 **"I-It" relationships**: Functional, transactional, instrumental. We interact with others as means to ends—the barista who makes our coffee, the driver who takes us places, the colleague who provides information.
 
@@ -156,7 +150,6 @@ This philosophy becomes especially relevant in AI-augmented work environments wh
 
 > July 15th, 2025 - 11:33:17
 > Ho Chi Minh City feels like a city in its wild adolescence—chaotic, energetic, full of possibility and contradictions.
-> 
 
 **Urban lifecycle theory**: Cities, like organisms, have developmental phases:
 
@@ -185,7 +178,6 @@ For young professionals and entrepreneurs, **being in a city during its growth p
 
 > July 13th, 2025 - 22:47:15
 > "My base color is resilience" — a moment of self-recognition.
-> 
 
 **The moment of clarity**: Sometimes self-understanding arrives not through analysis but through simple recognition. Like looking in a mirror and suddenly seeing yourself clearly.
 
@@ -214,7 +206,6 @@ For young professionals and entrepreneurs, **being in a city during its growth p
 
 > July 18th, 2025 - 09:24:51
 > Memory isn't a recording—it's a reconstruction. And that's a feature, not a bug.
-> 
 
 **The fluency bias**: Our brains are designed for efficiency, not accuracy. We prefer smooth, confident recall over hesitant but accurate memory. **This creates systematic distortions in how we remember events, decisions, and even our own past preferences.**
 
@@ -245,7 +236,6 @@ This insight becomes crucial as we integrate AI systems with perfect memory into
 
 > July 31st, 2025 - 23:58:42
 > As we close July, reflecting on how AI coding assistance is reshaping what it means to be a programmer.
-> 
 
 **What we're losing**:
 - **Syntax mastery**: Deep knowledge of language quirks and edge cases

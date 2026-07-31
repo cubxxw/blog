@@ -64,6 +64,9 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f netlify/functions/package-lock.json ]] && npm ci --prefix netlify/functions || true"
 
+      - name: Auto-fix empty blockquote markers
+        run: node scripts/clean-empty-blockquotes.mjs --write
+
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
