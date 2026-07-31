@@ -12,7 +12,6 @@ tags:
   - AI
   - LLM
   - RAG
-  - Performance
   - Monitoring
   - Project Learning
 categories:
