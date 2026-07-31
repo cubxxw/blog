@@ -1,12 +1,12 @@
 ---
-title: 'The Red Ocean Is Full: Where the Blue Ocean for AI Agents Is in Late 2026'
+title: 'Where AI Agents Still Have a Blue Ocean'
 date: 2026-07-15T18:00:00+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: [AI agent startups, vertical agents, red ocean blue ocean, AI agent opportunities, vertical AI, agent moat, enterprise memory, AI startup directions 2026, horizontal SaaS, end-to-end accountability, agent payment infrastructure, proprietary data flywheel, super individual, LLM applications]
+keywords: []
 tags:
   - AI
   - LLM
@@ -14,16 +14,18 @@ tags:
   - Product Strategy
   - Solo Builder
   - Super Individual
+categories:
+  - Development
 description: >
-  In late 2026, general-purpose and horizontal AI agents (coding, support, sales, scheduling) are a red ocean that foundation model labs can replicate within a single product cycle. The real blue ocean sits in two places: vertical, regulated workflows where someone takes end-to-end accountability, and infrastructure built for agents themselves (runtimes, payment rails, evals). This piece explains why feature moats cannot hold, what a real moat looks like (proprietary data flywheels, domain depth, end-to-end accountability), and offers a red-blue test table, a direction self-check, and an anti-pattern list, with separate bets for solo builders and founders. It closes out the entire 2026 review-and-forecast column.
+  A practical map of defensible AI agent businesses: vertical workflows, accountable delivery, agent infrastructure, and moats that survive model progress.
 tldr:
-  - "General-purpose and horizontal agents are already a red ocean: the differentiation is too thin, and foundation model labs erase it within one product cycle."
-  - "Only three moats are left standing: a proprietary data flywheel, domain depth, and end-to-end accountability. Not an assistant — something that owns a regulated process to the finish."
+  - "General-purpose and horizontal agents are crowded: when differentiation lives mainly in prompts and orchestration, model and platform progress keeps compressing it."
+  - "My framework tests three durable moats: a proprietary learning loop, domain depth, and bounded accountability for an outcome."
   - There is one cold test for red versus blue. Ask why nobody has killed this opportunity yet. If the answer is "everyone just noticed," it is red. If the answer is "because it is hard, dirty, slow, and somebody has to be liable," it might be blue.
-  - "End-to-end accountability lives or dies in the contract: an SLA that names an accuracy floor, money paid out when you are wrong, and insurance you can actually buy. If you cannot afford to pay, you are not accountable."
-  - The blue ocean is in vertical regulated workflows (legal compliance, healthcare operations, financial audit, research orchestration, construction and manufacturing) plus infrastructure for agents (runtimes, payment rails, evals).
-  - Forecast for the second half - vertical agents eat horizontal SaaS; enterprise memory becomes the core moat; payment infrastructure built for agents starts to take shape.
-  - The blue ocean is blue precisely because it is hard, dirty, and slow. The soft layer gets steamrolled from above; the hard layer will not budge. Do not throw your weakness at someone else's strength.
+  - "Accountability lives or dies in the contract: define the outcome, exclusions, review gates, remedies, and who decides a dispute."
+  - "My blue-ocean shortlist is vertical regulated workflows plus agent infrastructure: runtimes, delegated payments, governance, and evals."
+  - Agent payments already have serious entrants; the unfinished work is interoperability, delegated authority, risk controls, reconciliation, and disputes.
+  - The difficult layer can be more defensible because domain context, controls, and accountability improve more slowly than a model feature.
 maturity: budding
 columns:
   - ai-2026-review-forecast
@@ -34,23 +36,23 @@ series:
   total: 5
 cover:
   image: /images/covers/ai-agent/2026/ai-agent-red-ocean-blue-ocean-2026.jpeg
-  alt: 'The red ocean is full — where the blue ocean for AI agents is in late 2026'
+  alt: 'A narrow blue passage beyond a crowded red ocean, representing defensible AI agent businesses'
 ---
 
 Suppose you had to place a bet today on one direction in AI agents. What is the first question you should ask?
 
-Most people ask whether the thing can be built. But in the second half of 2026, model capability is no longer the bottleneck, and "can it be built" is very nearly always true. The question worth asking is colder: **why hasn't anyone killed this opportunity yet?**
+Most people ask whether the thing can be built. By mid-2026, that is often the least interesting part. The colder question is: **why has nobody made this opportunity routine yet?**
 
-The answer to that question usually tells you whether you are looking at a red ocean or a blue one. If nobody has killed it because everyone just noticed it, you are almost certainly in a red ocean, and rushing in only adds one more body to the water. If nobody has killed it because it is hard, because it is dirty, because it is slow, because somebody has to be liable for it — then you may have stumbled onto something genuinely rare.
+The answer is a useful filter. If nobody has solved it because everyone just noticed it, competition is probably coming. If nobody has solved it because the work is dirty, slow, and carries consequence, there may be something defensible—or there may be no market. The rest of the article is how I try to separate the two.
 
-After scanning a lot of agent products, startup pitches, primary sources, and industry analysis, I keep landing on the same conclusion: **general-purpose and horizontal agents are a red ocean that is already scabbing over, and the blue ocean is hiding in exactly the places people instinctively don't want to touch.**
+After following agent products and the infrastructure beneath them, I keep returning to a narrower thesis: **general-purpose agents are crowded, while defensibility collects around work that is specific, accountable, and operationally unpleasant.** This is an author's framework, not a law of the market. "Red" and "blue" describe competitive pressure, not product quality.
 
 ## A Map of the Battlefield: The Red Ocean Is Full, the Blue Ocean Is Hard to Enter
 
 Let's draw the terrain first.
 
 ```
-                    AI Agent Battlefield · Late 2026
+                       AI Agent Battlefield · 2026
    Easy to replicate ←──────────────────────────────→ Hard to replicate
    (soft layer / general capability)        (hard layer / domain + liability)
 
@@ -58,11 +60,11 @@ Let's draw the terrain first.
   │  coding agent   support agent   sales agent   scheduling │
   │       ▲             ▲              ▲             ▲       │
   │       │             │              │             │       │
-  │   Foundation labs: one product cycle and you're erased   │
-  │   (feature as moat = no moat)                            │
+  │   Model and platform progress keeps compressing features │
+  │   (a feature alone is a shallow moat)                    │
   └──────────────────────────────────────────────────────────┘
                           │
-        Moat migrates from "features" to "data + domain + liability"
+      Defensibility shifts toward "learning + domain + accountability"
                           │
                           ▼
   ┌─────────────── BLUE OCEAN (hard to enter) ───────────────┐
@@ -70,8 +72,8 @@ Let's draw the terrain first.
   │      +                                                   │
   │  Infrastructure for agents: runtime · rails · eval       │
   │                                                          │
-  │  Moat = data flywheel · domain depth · liability         │
-  │  Price = hard, dirty, slow, and you're on the hook       │
+  │  Moat = learning loop · domain depth · accountability    │
+  │  Price = hard, dirty, slow, and bounded by contract      │
   └──────────────────────────────────────────────────────────┘
 ```
 
@@ -81,58 +83,36 @@ I could list the red ocean column with my eyes closed: **coding agents, support 
 
 I wrote earlier in this column about how the soft layer gets steamrolled from above (see [From Chatbot to Agent to Skill](/ai-agent/posts/from-chatbot-to-agent-to-skill/)): the closer a feature sits to general language capability, and the less it depends on proprietary assets, the more easily it gets flattened by the layer upstream. The tragedy of the red ocean is written into that rule.
 
-**First, feature moats are being erased by AI itself.** The thing you're proud of today — it drafts the weekly report, it schedules the meeting, it follows up with the customer — is fundamentally a prompt and a bit of orchestration wrapped as a product. But orchestration is not a barrier, and a prompt certainly isn't. Any clever trick you thought of, someone else thinks of next quarter, and one notch up in model capability means nobody has to think of it at all.
+**First, feature moats are compressed by model progress.** A weekly-report drafter or scheduling assistant may be useful, but if most of its differentiation is a prompt, fallback rules, and orchestration, each upstream improvement removes some of the scaffolding customers once paid for. Orchestration can still be excellent engineering; it is simply not durable by itself.
 
-There's a mechanism here that rarely gets named: **the core asset of a red ocean product is exactly the part that the next model upgrade eats.** The prompt engineering you spent six months tuning, the pile of fallback rules, the layer of format constraints — all of it exists to patch the weaknesses of today's model. And patching that same set of weaknesses is precisely what the labs ship next. In other words, **the scaffolding you built so carefully is the thing upstream plans to tear down next year.** You are taping gauze over a wound that is healing on its own, and hoping to make a living selling gauze.
+**Second, platforms have structural advantages.** They may have lower unit costs, existing distribution, and the ability to bundle a feature into a product customers already use. Their marginal cost is not negative—compute, support, and risk still cost money—but their *incremental* economics can be better than those of an API-dependent startup. A thin product can therefore be squeezed even when nobody copies it line for line.
 
-**Second, a foundation model lab needs one product cycle to replicate you.** This is the cruelest part of the red ocean. When your entire product happens to sit inside the range of what a model lab can do offhand, you aren't competing with your peers — you're competing with the people who supply your electricity. From what I've been tracking, any direction that amounts to a thin wrapper over general capability tends to get absorbed by an official Copilot or an official agent mode; it's mostly a matter of time. The market you spent so much educating turns out to be tuition you paid on someone else's behalf.
-
-And the asymmetry runs much deeper than "big companies have more money." Three things are the actually lethal ones. Their marginal cost is negative — for the same agent feature, you pay API fees on every call while they run their own GPUs, and shipping it also makes their subscription stickier. Their distribution is free — you buy users one at a time, they add a button to an entry point that already exists. And their iteration requires convincing nobody — you have to ship a release, educate the market, wait for the customer to nod, while they flip a default and it's live. **You're in a price war against an opponent with lower costs, free distribution, and no need for your consent.**
-
-**Third, the differentiation is so thin that users won't stay for it.** The difference between red ocean products is often small enough that it has to be manufactured with marketing spend. No switching costs, no accumulated data, users come and go freely. That business can make money, but it cannot build a **moat**.
+**Third, shallow differentiation produces shallow switching costs.** A crowded product can make money; it just needs a better answer than interface habit when asked what a customer loses by leaving.
 
 Here's a plain self-test: **if all your users migrated to a competitor tomorrow, what would they lose?** If the answer is "they'd have to learn a new interface," you don't have a moat, you have a habit. If the answer is "everything they accumulated over two years, which exists only inside your product, is gone" — that's a switching cost. For red ocean products, the answer is almost uniformly the former.
 
 In one line: **when features are your entire moat, you don't have one.**
 
-## Only Three Real Moats Are Left
+## My Three-Moat Test
 
-So what still stands? I'd narrow the things that still count as moats in late 2026 down to three, and they usually have to stack to be deep enough.
+So what still stands? I use three tests. They are not the only possible moats, and they are not proof of a good business. But when two or three stack together, they expose where model progress helps a product instead of erasing it.
 
 **One: the proprietary data flywheel — it gets better the more it's used.** This is one of the few old moats that still holds in the AI era. The key isn't that you have data; it's that **every single use of your product generates data nobody else can get, which makes your next run better**. Once that loop is closed, a latecomer with an equally strong model still has to spend the time from zero. Which echoes something I say often: **information itself isn't worth much. What's worth something is the ability to process it — and what settles out of that processing that nobody can copy.**
 
-But "data flywheel" has been abused so badly it's in every deck, so it's worth pulling apart the **conditions required to start one**. A flywheel that actually turns needs four things, and it needs all four:
+But "data flywheel" appears in too many decks without a loop behind it. A real learning loop needs four things:
 
 1. **The output has to be judgeable as right or wrong.** After a user finishes, the system needs to know whether this run was correct. Drafting a weekly report has no right or wrong, only "eh, fine" — so it will never spin. But "did this regulatory filing get rejected" has a crisp verdict. **A rejection is a free label.** A direction with no verdict signal is accumulating logs, not data, no matter the volume.
 2. **The verdict has to flow back as input to training or rules.** Knowing you were wrong isn't enough; you need an engineering path that turns "where it went wrong" into the next version's improvement. Lots of teams stall right here: the feedback sits in support tickets and never enters the pipeline.
 3. **The data has to be exclusively yours.** If the same data can be scraped off the public web, or walks out the door when the customer switches vendors tomorrow, that's not a flywheel — it's a rented warehouse.
 4. **The improvement has to be perceptible to users.** Otherwise they churn before the flywheel has turned enough times, and it stops before it ever spun up.
 
-Here's where each of those four tends to break:
-
-```
-   usage ──→ output ──→ ①verdict ──→ ②feedback pipeline ──→ model/rule improvement
-      ▲                     │                │                        │
-      │                     ✗                ✗                        │
-      │            no right/wrong      feedback stuck in              ▼
-      │              ("eh, fine")      tickets, never piped   ④users perceive it
-      │                                                               │
-      └───────────────────────────────────────────────────────────────┘
-                     ③data exclusivity (or the whole loop is rented)
-
-   Break at ① → you're collecting logs, not data
-   Break at ② → you have a gold mine and no shaft
-   Break at ③ → you're doing charity work for your industry
-   Break at ④ → users left before the flywheel spun up
-```
-
 **To judge whether a direction can start a flywheel, look for a natural, cheap, high-frequency verdict signal.** That lens is a hundred times more useful than "we have a lot of data."
 
-**Two: domain depth — does the team actually know the business?** Blue ocean directions almost all have a thick layer of industry jargon, implicit rules, and edge cases that appear in no document and live only in practitioners' heads. A team that has actually walked a hospital's process, pulled all-nighters at a law firm, been through the grinder of audit season, builds a different species of agent than a team that read Wikipedia. Domain depth can't be bought or copied, and it doesn't depreciate when the model improves.
+**Two: domain depth — does the team actually know the business?** The directions I find most defensible have industry language, implicit rules, and edge cases that appear in no document. A team that has walked a hospital process, worked through a legal matter, or survived audit season starts with context a generalist must earn. Domain depth can be hired or copied over time; it is costly because the learning curve includes real exceptions and trust.
 
 The most valuable part of domain depth isn't knowing a lot — it's **knowing which step must not be automated**. Someone who hasn't lived in the industry cannot make that call. They'll hand every step to the model with equal confidence, and then get it wrong at exactly the place where being wrong is unaffordable.
 
-**Three: end-to-end accountability — not an assistant, but the party that owns the outcome.** This is the one I think is most underrated. Nearly every red ocean agent is positioned as an assistant: I give you a recommendation, and whether you act on it, whether it's wrong, is on you. The real blue ocean products do the opposite — **they take a regulated process and own it end to end.** Not "helps you draft the compliance report" but "does the regulatory filing and stands behind the result." Liability is the hard layer that the soft layer can never steamroll.
+**Three: bounded accountability — not merely an assistant, but a party that stands behind a defined outcome.** The contract may still require human approvals and cap remedies. The important difference is that the vendor names what it owns, what it excludes, and what happens when it fails. Responsibility is harder for a general capability layer to bundle than a feature.
 
 ## What "Hard, Dirty, Slow" Actually Means: Take One Process Apart
 
@@ -141,35 +121,36 @@ The most valuable part of domain depth isn't knowing a lot — it's **knowing wh
 Take one of the most common jobs in compliance and audit: a regulated institution has to file a periodic data return with its regulator. Sounds like "pull the numbers from the database, drop them into a template" — an afternoon's work. Anyone who has actually done it knows the process looks more like this:
 
 ```
-  ①extract ──→ ②reconcile ──→ ③judgment ──→ ④cross-foot ──→ ⑤sign ──→ ⑥file ──→ ⑦Q&A
-   ✅auto       ⚠️semi-auto     ❌barely      ⚠️semi-auto     ❌never   ✅auto    ❌never
+  ①extract ──→ ②reconcile ──→ ③judgment ──→ ④cross-foot ──→ ⑤approve ──→ ⑥file ──→ ⑦Q&A
+   ✅auto       ⚠️semi-auto     ⚠️review      ⚠️semi-auto     👤gate     ✅auto    👤lead
 
   ① Extract: pull from a dozen systems. Dirty because the systems are old and the
      interfaces are bad — but not hard. AI can do this.
   ② Reconcile: the same field is called "net amount" in system A and "net amount"
      in system B, but one is tax-inclusive and one isn't. The discrepancy is buried
      in meeting minutes from five years ago. AI can raise the question, not settle it.
-  ③ Judgment: does this transaction belong to that account? The regulation is vague,
-     and the industry runs on precedent like "the regulator said so verbally last
-     year" — precedent with no text. AI has no input here at all.
+  ③ Judgment: does this transaction belong to that account? AI can retrieve policy,
+     compare precedent, and draft a rationale. A qualified owner still reviews
+     material ambiguity because the missing context may never have been recorded.
   ④ Cross-foot: this table's total must equal the sum of certain rows in that table.
      The rule is writable; the exceptions are endless, and each one has a specific
      historical reason behind it.
-  ⑤ Sign: a human has to take personal liability for this filing. This step is
-     legally not automatable.
+  ⑤ Approve: the applicable rule, role, and jurisdiction decide who may attest or
+     sign. Automation can prepare the evidence, but it does not erase the named
+     person's or institution's responsibility.
   ⑥ File: call the API. AI can do this.
-  ⑦ Q&A: the regulator comes back with three questions, and you have three days to
-     explain where every number came from. Can't explain = filing void. This step
-     needs an audit trail, not generation.
+  ⑦ Q&A: when a regulator asks where a number came from, the agent can assemble
+     evidence. A responsible owner should lead the answer. This needs an audit
+     trail, not confident generation.
 ```
 
 Once you can see the process, a lot of things click.
 
-**First, the hard part is never at the ends — it's in the middle.** ① and ⑥ (extract, file) are pure engineering; any wrapper team finishes them in a week. That's why red ocean demos always look beautiful: the demo is ① and ⑥. Meanwhile ②③④⑦, the steps that eat 80% of a practitioner's time, are all stuck on tacit knowledge with no written record and on someone needing to be liable. **The gap between demo and production is the one I called the eval gap in [Trusting an Unattended Agent](/ai-agent/posts/trusting-unattended-ai-agent/); here its name is domain depth. They're two faces of the same gap.**
+**First, the hard part tends to sit in the middle.** Extraction and submission are visible in a demo; reconciliation, judgment, exceptions, and response work carry the context and consequence. The gap between demo and production is the one I called the eval gap in [Trusting an Unattended Agent](/ai-agent/posts/trusting-unattended-ai-agent/); here its other name is domain depth.
 
 **Second, what "dirty" concretely means is: rules have exceptions, and exceptions have histories.** Write a rule down, run it in an industry for ten years, and it grows dozens of exceptions — each one a specific incident, a specific piece of regulator feedback, a specific internal compromise. None of it is in any document. You can only accumulate it with time and people, which is exactly why it's slow.
 
-**Third, step ⑦ explains why this class of product must build an audit trail.** It's not enough for your agent to produce a number; you have to be able to answer which rows of which three tables, under which definition, produced it. Which means the whole chain has to be replayable and attributable. The engineering for that is often an order of magnitude larger than "have the AI generate the report." And it's exactly what a red ocean player will never build — **it can't appear in a demo, and it only matters on the day the regulator asks.**
+**Third, step ⑦ explains why this class of product must build an audit trail.** A number needs a replayable lineage: source rows, transformation, definition, reviewer, and version. That engineering is less cinematic than generation and more useful on the day a regulator asks.
 
 So "hard, dirty, slow" isn't a set of adjectives. It's a construction drawing. **Red ocean players see this drawing and walk around it. That's precisely why it's blue.**
 
@@ -183,17 +164,17 @@ Real end-to-end accountability looks like the following, and it comes in gradati
 |---|---|---|---|---|
 | L0 assistant | "Output is for reference only" | Customer, entirely | Per seat / per token | None |
 | L1 tool with SLA | Guarantees uptime, not correctness | Customer, entirely | Per usage | Shallow |
-| L2 accuracy floor | States an accuracy floor, refunds if missed | Capped at refund | Usage + outcome | Medium |
-| L3 pays for errors | Direct losses from product error are compensated | You pay, up to a cap | Per outcome | Deep |
-| L4 insurable | An insurer will underwrite this process | Insurance backstops | Outcome + premium | Deepest |
+| L2 measured outcome | Defines a measurable result and service credit | Capped remedy | Usage + outcome | Medium |
+| L3 bounded indemnity | Covers specified direct losses, with exclusions and a cap | Vendor within the contract | Per outcome | Potentially deep |
+| L4 risk-transfer ready | Controls and loss history support a tailored insurance discussion | Contract plus policy terms | Outcome + risk cost | Evidence, not proof |
 
 The part of this table worth chewing on is **the jump from L2 to L3**. It isn't a copy upgrade; it's an upgrade of the entire company:
 
 - You have to be able to **define "wrong" precisely**. If the contract says 99% accuracy, you must answer: what's the denominator? Is one filing one item or a hundred? Who adjudicates? Who arbitrates a dispute? — **If you can't answer these, the SLA is an empty sentence.** And being able to answer them requires exactly the verdict signal described above. You'll notice that **the conditions for starting a data flywheel and the conditions for landing end-to-end accountability are the same conditions.** That isn't a coincidence.
-- You have to be **able to afford the payout**. That means risk control, capital reserves, and legal — all heavy. A two-person team can't sign that contract, which is exactly how it keeps the light wrapper crowd out.
-- You have to get an **insurer to say yes**. L4 is the most interesting tier: when an insurance company is willing to underwrite your process, it means a professional third party whose business is paying out claims has run the numbers on your error rate and judged it manageable. **That's a harder endorsement than any benchmark.** I'd argue one signal worth watching in the second half is whether this kind of "AI outcome delivery insurance" starts to appear at all — once it does, it means the reliability of some vertical has been actuarially priced for the first time.
+- You have to be **able to fund the remedy**. That means controls, reserves, legal review, and clear exclusions. A small team may accept bounded liability, but promising uncapped loss absorption would usually be reckless.
+- You need a credible **risk-transfer conversation**. This is not purely hypothetical: Munich Re's [aiSure](https://www.munichre.com/en/solutions/for-industry-clients/insure-ai.html) describes cover for specified contractual liabilities, financial losses, and legal liabilities caused by AI performance errors, and publishes cases such as an insured model-performance warranty for lending. Insurance availability still depends on wording, jurisdiction, exclusions, controls, loss history, and appetite. A policy proves that a defined risk was underwritten under defined terms; it does not certify the whole product.
 
-But the migration in pricing logic is where the real value sits: **L0 to L1 sells capability, billed by headcount or by token; L3 to L4 sells outcomes, billed by outcome.** The ceiling on the former is what a customer will pay for a tool. The ceiling on the latter is what the thing was already costing them (labor plus risk). Those two numbers often differ by an order of magnitude.
+But the migration in pricing logic is where the value may sit: **L0 to L1 sells capability; L3 to L4 can sell a bounded outcome.** The former is compared with tool budgets. The latter can be compared with the cost of the process and the portion of risk actually transferred. That distinction is material, but the multiple is a matter for evidence, not rhetoric.
 
 Back to the hard math of compounding error — I ran the numbers in [the trust engineering piece](/ai-agent/posts/trusting-unattended-ai-agent/): 95% per-step accuracy across 20 steps leaves you around 36%. It has a direct corollary here: **the precondition for daring to sign an L3 contract is that you've already decomposed the process so humans only review a few critical nodes, rather than running end-to-end autonomy.** Taking accountability is not the same as full automation. Quite the opposite — **the teams willing to be liable tend to be the most willing to keep humans on the critical steps**, because they know exactly which step costs them money when it's wrong. Which is why "taking accountability" and "human in the loop" aren't in tension. They're two sides of one thing.
 
@@ -201,14 +182,16 @@ Back to the hard math of compounding error — I ran the numbers in [the trust e
 
 Trace back along those three moats and the coordinates get clear.
 
-**Blue ocean one: vertical regulated workflows.** From what I've tracked, the directions drawing the most conviction cluster into a few categories — **legal compliance, healthcare operations, financial audit, research orchestration, and the high-compliance, high-coordination-cost parts of construction and manufacturing**. What they share: the cost of an error is enormous, the process is long and filthy, and somebody is willing to pay a lot for a party that will be liable. Some analysts argue that **vertical AI agents are eating horizontal SaaS** — where you used to buy a general tool and assemble the process yourself, you now buy an agent that knows your industry and finishes the job. I broadly agree: horizontal SaaS sells capability, vertical agents sell outcomes, and outcomes are what the customer always wanted.
+**Blue ocean one: vertical, consequential workflows.** My shortlist includes legal compliance, healthcare operations, financial audit, research orchestration, and high-compliance parts of construction and manufacturing. These are hypotheses to test, not certified blue oceans. The attraction is that value depends on workflow evidence, exceptions, review rights, and accountability—not just fluent output.
 
-You can already see early forms of this. Some teams describe themselves outright as building the most accurate financial-reporting AI agents, taking over something as hard and dirty as a bank's regulatory filing end to end — not as an assistant to the finance team, but as the process itself. That approach is exactly what red ocean players least want to touch: too heavy, too slow, too easy to be liable for. Which is exactly why it's blue.
+The honest product shape is usually narrower than "replace the department." It might own evidence collection and reconciliation, preserve lineage, route ambiguous cases to a qualified reviewer, and submit only after the required approval. That is still an end-to-end service if the handoffs and remedy are explicit. Accountability does not require pretending the human disappeared.
 
 **Blue ocean two: infrastructure for agents.** In a gold rush, the people selling shovels often last longest. When thousands of agents start actually running, start being trusted with unattended work (I wrote about how hard that is in [Trusting an Unattended AI Agent](/ai-agent/posts/trusting-unattended-ai-agent/)), they need a whole foundation that was built for humans and now has to be rebuilt for agents:
 
-- **Runtime**: keeping agents running for long stretches, stably, observably, with rollback — especially once open model costs collapse and everyone can spin up a whole fleet (see [The Open Model Cost Collapse and the Agent Fleet](/ai-agent/posts/open-model-cost-collapse-agent-fleet/)), which only raises the value of scheduling and governance. There's an easily missed corollary here: **when your agent count goes from single digits to triple digits, "what did those 200 agents do last night, what did it cost, which ones went off the rails" stops being a curiosity and becomes an operations problem.** Tooling for one agent and tooling for a fleet are not the same product.
-- **Payment rails**: the most obvious vacuum I see right now. From what I've tracked, dedicated payment infrastructure for autonomous agents is essentially still blank — every existing payment system presupposes that a human is paying. That assumption is buried deeper than most people think. **One of the core features fraud models use is whether the behavior looks human** — 3am, one transaction per second, amounts precise to the cent, no hesitation and no browsing. In today's risk systems that's a textbook fraud profile, and it's also the exact behavioral fingerprint of a perfectly normal agent. The same mismatch is everywhere. Authorization presupposes one person, one card, one limit, but an agent needs fine-grained authorization scoped to this task, this time window, this ceiling, this class of merchant. Reconciliation presupposes that a human remembers what they bought, but an agent produces thousands of micro-charges overnight — who attributes them to which task? Dispute handling presupposes a cardholder who can explain their intent, but where does an agent's intent live? In its prompt? **When the payer isn't human, all four — risk, authorization, reconciliation, disputes — have to be rewritten.** Whoever gets that rail working holds a position at the entrance.
+- **Runtime**: this is already an ecosystem, not untouched ground. [Amazon Bedrock AgentCore](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/) is a concrete first-party example: it provides runtime isolation, identity, memory, versioning, and observability across models and frameworks. The remaining opportunities are narrower—fleet policy, cost attribution, cross-platform governance, domain-specific traces, and incident response. Tooling for one agent and tooling for two hundred are different products.
+- **Payment infrastructure**: this is also no longer blank. [Visa's Trusted Agent Protocol](https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications/) lets merchants verify approved agents and their commerce intent. [Mastercard Agent Pay](https://www.mastercard.com/news/press/2025/april/mastercard-unveils-agent-pay-pioneering-agentic-payments-technology-to-power-commerce-in-the-age-of-ai) introduced registered agents, agentic tokens, and consumer controls; its 2026 [Agent Pay for Machines](https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html) extends the idea toward high-frequency machine transactions. [Coinbase's x402](https://www.coinbase.com/developer-platform/discover/launches/x402) embeds stablecoin payment requests in HTTP for APIs, apps, and agents. These are real rails and protocols, not slideware.
+
+  The unfinished layer is coordination. How does authority travel across protocols? Which consent artifact proves a task, merchant class, time window, and spending ceiling? How are transactions reconciled to the agent run that caused them? Who carries evidence into a chargeback or service dispute? Visa's own materials say its product is still being deployed, while the networks continue to align with standards bodies and other protocols. The opportunity is therefore not "invent agent payments." It is to mature interoperable standards, risk controls, reconciliation, and dispute handling around an ecosystem that already exists.
 - **Evals**: the more autonomous an agent is, the more expensive and difficult "did it actually do this right" becomes to answer. Trustworthy, reproducible evaluation is a business in itself. And note how this rhymes with the flywheel's starting conditions above — **evals supply exactly that verdict signal.** Whoever defines an evaluation standard the industry accepts within a vertical simultaneously holds the flywheel's starting point for every player in that vertical. That's a much bigger position than "building an eval tool."
 
 These two blue oceans share something: **neither is in the soft layer; both are in the hard layer.** The soft layer gets steamrolled from above. The hard layer only yields to grinding.
@@ -224,7 +207,7 @@ Everything above is terrain. What you actually need is a ruler you can hold up a
 | **One notch stronger model: worth more or useless** | Useless (you were patching its gaps) | Worth more (the model was never your bottleneck) | Is upstream progress your tailwind or headwind |
 | **Is there a natural right/wrong signal** | No ("eh, fine") | Yes (rejected / denied / incident) | No verdict signal, no flywheel, ever |
 | **What does a user lose by leaving tomorrow** | Relearning an interface | Years of accumulation that exists only here | Separates "habit" from "switching cost" |
-| **Would you promise the outcome in a contract** | No — "for reference only" | Yes — with a payout clause | Liability is the one wall the soft layer can't breach |
+| **Would you define the outcome in a contract** | No — "for reference only" | Yes — scope, review gates, and remedy | Contractual accountability is harder to bundle than a feature |
 | **Could two people build it in three months** | Yes — so can everyone else | No — so neither can anyone else | Low barriers are bad news, not good news |
 
 That last row deserves its own note, because it's the most counterintuitive: **"easy to pick up, fast to demo" is a danger signal today, not good news.** Anything you can build in a weekend means anyone can build it in a weekend, and it means a model lab can build it in an afternoon. **The height of the barrier is the height of your future moat** — however hard the door was for you to open, that's how hard it'll be for whoever chases you.
@@ -300,17 +283,17 @@ Making that actionable too:
 - **Write your first contract at L2 or above.** Even if the customer didn't ask. Because signing L2 forces you to answer "what counts as wrong," and the process of answering that question is exactly how you install a verdict signal on your flywheel. **A contract isn't a legal matter; it's a product design matter.**
 - **Do the math on how many years of potholes your cash covers.** Blue ocean payback is measured in years. If your runway is 18 months, you shouldn't pick a direction that takes 36 months to accumulate a moat — the direction isn't wrong, you and the direction are mismatched. **Count your ammunition before you pick the battlefield.**
 
-## Forecast for the Second Half
+## What I Would Watch Next
 
-Pulling the lens back to late 2026 through 2027, here are three structural calls. I'm framing all of them as "I lean toward thinking" — don't take them as law.
+Pulling the lens back through 2027, here are three structural calls. They are bets, not laws.
 
-**Forecast one: vertical agents will visibly take share from horizontal SaaS.** Not that horizontal SaaS disappears, but that the center of value migrates — customers grow less willing to pay for "general capability plus assemble the process yourself" and more willing to pay a premium for a vertical agent that knows the business and delivers the outcome. SaaS valuation logic gets repriced along the way. The old model charged per seat because value scaled with how many people used it. A vertical agent's value scales with how much labor it replaces and how much risk it absorbs — under which per-seat pricing is self-contradictory: **the better you do your job, the fewer seats the customer needs, and the less revenue you make.** I lean toward thinking that internal contradiction forces pricing to migrate from seats to outcomes, and that migration is itself the red-blue divide projected onto a financial statement.
+**Forecast one: vertical agents take some workflow value from horizontal SaaS.** Horizontal systems of record will not disappear. But where a vendor can measure a completed process and accept bounded responsibility, pricing can move from seats toward usage or outcomes. Whether that happens depends on procurement, margins, and proof—not on the label "agent."
 
 **Forecast two: enterprise memory becomes the core moat.** When model capability is thoroughly commoditized, the structured "memory and data" an enterprise accumulates itself — the kind an agent can call efficiently — becomes one of the few moats still standing in the AI era. Whoever turns their domain knowledge into memory an agent can consume becomes irreplaceable on their own turf. This is really the organizational version of the proprietary data flywheel.
 
 Worth naming is how it relates to the process diagram above: **what enterprise memory actually has to hold is the stuff in steps ②③④ — why the definition was set this way, which year this exception was added and after what incident, what the regulator said verbally last time.** Today that lives in senior employees' heads and in meeting minutes from five years ago. Whoever turns it into a structure an agent can retrieve, cite, and audit has digitized an organization's least replaceable asset. Which also explains why enterprise memory isn't "a better knowledge base" — a knowledge base stores documents; enterprise memory has to store **judgments and their reasons**.
 
-**Forecast three: payment infrastructure for agents starts to take shape.** I lean toward thinking the second half sees the first batch of payment, authorization, and reconciliation designs seriously rebuilt for "the payer is an agent." It won't explode overnight, but the direction is no longer blank. The signal I'll watch is specific: does a primitive emerge like "an authorization credential for an agent, carrying a task-level limit and a merchant allowlist" — **not issuing an agent a human's card, but issuing one task a credential that can only do that one thing.** Once that primitive standardizes, reconciliation and risk control can grow on top of it.
+**Forecast three: agent payments move from launches to interoperability.** The primitives already exist across Visa, Mastercard, Coinbase, and others. The signal I will watch is whether a task-bound authorization—agent identity, user consent, merchant scope, expiry, and spending ceiling—can travel across networks and survive reconciliation and dispute review. A credential is useful; a credential that different parties interpret the same way is infrastructure.
 
 ## An Honest Caveat
 
@@ -328,71 +311,14 @@ So don't treat "blue ocean" as a get-out-of-jail card. All it does is swap your 
 
 This is where the column ends.
 
-Looking back at these five pieces — they appear to cover five different things: the limits of information automation, a shift in interaction paradigm, the collapse of cost, the engineering of trust, the map of opportunity. Stack them, and one very straight line appears:
+The five pieces in this column now form one line. [The news pipeline](/ai-agent/posts/ai-auto-news-pipeline-limits/) asked what remains when information becomes cheap. [The proactive agent](/ai-agent/posts/proactive-agent-it-prompts-you/) showed that delegated judgment spends trust, not just tokens. [The agent fleet](/ai-agent/posts/open-model-cost-collapse-agent-fleet/) made capability abundant. [The trust engineering piece](/ai-agent/posts/trusting-unattended-ai-agent/) argued that guardrails, evaluation, and human review can make that abundance usable.
 
-```
-① The ceiling on information automation
-   "Where an AI News Pipeline Finally Breaks"
-   → the information layer goes to zero; nobody takes over the judgment layer
-   → conclusion: once capability gets cheap, judgment is what's scarce
-                     │
-                     ▼
-② The shift in interaction paradigm
-   "The AI Agent Starts Prompting You"
-   → it begins judging, for you, what most deserves doing right now
-   → conclusion: judgment is partly handed over; the price is interruption,
-     the wager is trust
-                     │
-                     ▼
-③ The collapse of cost
-   "Open Models Got ~90% Cheaper: How Big a Fleet Can One Person Run"
-   → the floor under intelligence fell out; one person can afford a fleet
-   → conclusion: capability is oversupplied, leverage grows, but "how much you
-     dare use" now caps "how much you can run"
-                     │
-                     ▼
-④ The engineering of trust
-   "How to Hand Work to an AI Agent Nobody Is Watching"
-   → guardrails + evals + HITL; compounding error is hard math
-   → conclusion: the bottleneck moves from building agents to trusting them;
-     trust can be engineered
-                     │
-                     ▼
-⑤ The map of opportunity  ← you are here
-   "The Red Ocean Is Full, Where Is the Blue Ocean"
-   → wherever responsibility can be trustworthily carried, that's the moat
-   → conclusion: the red ocean culls the movers of features; the blue ocean
-     rewards the bearers of responsibility
+This final piece asks what to carry once trust has been earned. My answer is modest: carry a well-defined part of the responsibility. Define the boundary, preserve the evidence, keep the right human at the irreversible gate, and accept a remedy you can actually fund.
 
-   ┌────────────────────────────────────────────────────────┐
-   │ One line: cheaper capability → pricier judgment →      │
-   │ judgment must be trusted → trust must be engineered →  │
-   │ whoever can be liable wins                             │
-   └────────────────────────────────────────────────────────┘
-```
-
-In the first piece, [the limits of an AI news pipeline](/ai-agent/posts/ai-auto-news-pipeline-limits/), I worked out a funnel: automation compressed 800 items to 240, a ratio of 3.3x; going from those 240 to the one item that actually changed something I did was a ratio of 240x — all of it cut by a human's eyes and brain. That piece's conclusion was that information isn't worth much; the ability to process it is.
-
-The second piece, [the agent that prompts you](/ai-agent/posts/proactive-agent-it-prompts-you/), was really about a machine touching that 240x human compression ratio for the first time — it starts judging, for you, what most deserves doing right now. And the price it immediately pays is interruption: the cost of one wrong interruption is roughly the benefit of six to ten correct prompts. **Once judgment is handed over, the cost stops being tokens and becomes trust.**
-
-The third piece, [an agent fleet](/ai-agent/posts/open-model-cost-collapse-agent-fleet/), removed the constraint on how much you can run — after costs collapsed by nearly 90%, one person can afford a fleet. But it exposed a new constraint at the same time: **being able to run a hundred agents doesn't mean you dare use the output of a hundred agents.** Once supply is abundant, the bottleneck simply relocates.
-
-Hence the fourth piece, [trusting an unattended agent](/ai-agent/posts/trusting-unattended-ai-agent/): guardrails, evals, HITL, and the compounding error nobody gets around. Its most important line was this — **trust doesn't come from a model's good intentions; it comes from engineering. Trust can be built.**
-
-And this piece is where the first four inevitably land. If trust can be engineered, the next question surfaces on its own: **once you've built trust, what should you carry with it?** The answer is what this piece is about — **carry the responsibility nobody else dares to.** You'll notice that L4, "an insurer will underwrite this," is the commercial endpoint of the fourth piece's trust trio: guardrails plus evals plus HITL taken to their limit has a name, and the name is **insurable**.
-
-So all five pieces have been circling one question:
-
-**As capability gets cheaper and more general, what remains scarce, and what still stands?**
-
-The first half's answer was model capability, so everyone crowded into the soft layer competing on features. The second half's answer changed. What stands isn't what you can do — it's **what you understand that others don't, what you're liable for that others won't be, and what you've accumulated that others can't take.**
-
-The red ocean culls the movers of features. The blue ocean rewards the bearers of responsibility and the cultivators of data.
-
-Those three things happen to be exactly where the column's five pieces land: **understand** (domain depth — what's left over inside the first piece's 240x compression ratio), **be liable** (end-to-end accountability — the commercial form of trust from pieces two and four), and **accumulate** (the data flywheel — the only asset that still doesn't depreciate after the third piece's cost collapse).
+As capability gets cheaper and more general, what remains scarce is not magic. It is accumulated context, practiced judgment, and a counterparty willing to stand behind a bounded outcome.
 
 So back to that cold question from the start — why hasn't anyone killed this opportunity yet?
 
-If you find a direction whose only reason for still being alive is that it's hard, it's dirty, it's slow, and somebody has to be liable for it — congratulations. **That isn't anyone's oversight. That's a ticket left for whoever is willing to eat the hardship.** The red ocean is full. The blue ocean is never in short supply; what's in short supply is people willing to jump into cold water and swim long enough.
+If a direction remains awkward because the exceptions matter and responsibility cannot be hand-waved away, look closer. It may be a moat; it may also be a bad market. Find the people already paying for the pain, then decide whether you can stay in the water longer than the work takes.
 
 See you in the second half.

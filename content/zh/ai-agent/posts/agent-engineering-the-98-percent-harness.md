@@ -1,26 +1,26 @@
 ---
-title: "Agent Engineering 全景地图：那 98.4% 的工程量到底在哪里"
+title: "Agent Engineering 全景地图：98.4% 只是 Harness 的叙事锚点"
 date: 2026-06-17T09:30:00+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["Agent Engineering", "Agent Harness", "AI Agent", "Context Engineering", "Durable Execution", "LangGraph", "Claude Code", "Multi-Agent", "Sandbox", "LLM-as-Judge", "MCP", "Temporal", "上下文工程", "Agent 架构"]
+keywords: []
 tags:
   - AI
   - Agent
   - LLM
   - Context Engineering
-  - Architecture
+  - Harness Engineering
   - MCP
 description: >
-  一篇把 Agent Engineering 当成一门学科来拆的全景地图。从 Claude Code 那个广为流传的「1.6% 是 AI 决策、98.4% 是基础设施」说起，沿着八大支柱——编排、上下文、记忆、工具、可靠性、评估、成本、治理——逐根讲清每一块填补的缺口、最小实现与失效边界，并融合 Anthropic、OpenAI、Cognition、Manus、Temporal 在 2025 至 2026 年的一线工程实践，最后落到一句话：模型是买来的，harness 是你造的，工程杠杆全在那 98.4%。
+  从并非论文硬测量的 98.4% 说起，拆解 Agent Harness 的编排、上下文、记忆、工具、可靠性、评估、成本与治理八根支柱。文章以截至 2026 年 7 月的一手资料校准关键事实，给出每根支柱的最小实现、失效边界和选型判断，帮助工程师把会调用模型的演示，推进为可恢复、可评估、可治理的生产系统。
 tldr:
-  - Agent loop 是 10 行代码，Agent engineering 是 10 万行代码。一篇逆向 Claude Code v2.1.88 的论文给出叙事锚点：核心是一个简单的 while 循环，真正的代码量都在循环外的基础设施里——权限系统、五层压缩、子 agent 隔离、会话存储。
+  - Agent loop 可以短到十来行，Agent engineering 却主要发生在 loop 之外。对 Claude Code v2.1.88 的公开源码分析给出的可靠结论，是大量系统设计集中在权限、压缩、扩展机制、子 agent 隔离与会话存储；98.4% 只是本文采用的叙事锚点。
   - 这门学科存在的第一性原理是一处阻抗失配：无状态的概率预测器，要被套进有状态的无限世界。harness 就是这两者之间那层翻译电路，它不增加智能，只增加可控性。
   - 八大支柱：编排让它会走多步，上下文让它不腐烂，记忆让它跨会话成为某人，工具让它能改变世界，可靠性让它不崩，评估让它可度量，成本让它跑得起，治理让它自治而不失控。
-  - 大厂在 2025 至 2026 已收敛出共识：context 是有限会腐烂的资源，外部化记忆是通用解，checkpoint 不等于 durable execution，多 agent 只在读密集可并行任务上划算，安全活在 harness 而不在模型里。
+  - 2025 至 2026 年的一手工程资料反复指向几条边界：context 有限且边际收益递减；外部记忆要可检索、可更新；checkpoint 只是恢复机制的一部分；多 agent 的收益依赖任务能否并行；安全不能只靠模型自律。
   - 选型的判断轴只有一句：看一个框架替你拿走了哪几根支柱的决策权——把不差异化的支柱交出去，把工程力压在你真正的护城河上。
 maturity: budding
 cover:
@@ -33,11 +33,11 @@ columns:
 
 > 「Agent loop 是 10 行代码，Agent engineering 是 10 万行代码。」
 
-这句话我第一次读到时愣了一下，然后越想越觉得它锋利。它把整个领域里最大的一个错觉戳破了：很多人以为做 Agent 就是把 prompt 写好、把 LLM API 调通——而真正把一个 demo 推到生产、能在无人值守下安全跑一整夜的工程量，99% 都不在那个 loop 里。
+这句话不是代码审计结论，更像一把拆系统的刀。它戳破了一个常见错觉：把 prompt 写好、把 LLM API 调通，只能证明 loop 能转；要让系统在无人值守时仍可恢复、可追踪、可约束，主要工作在 loop 外。
 
 这篇文章想做一件事：把 **Agent Engineering** 当成一门**学科**来拆，而不是当成一个教程。我不会教你怎么用 LangGraph，我想给你一张**地图**——这门学科由哪八根支柱构成、每一根填补了前一根留下的什么缺口、它的最小实现长什么样、又会在什么时候失效。读完之后，你看任何一个 Agent 框架、任何一篇大厂工程博客，都能立刻定位它在这张地图的哪个位置。
 
-地图的素材，一半来自我自己造 Agent 系统时反复踩的坑，另一半来自 2025 到 2026 这一年里 Anthropic、OpenAI、Cognition、Manus、Temporal 这些一线团队公开出来的实践。我会尽量把每个关键论点的出处标清楚——因为这个领域里，**错传的"事实"比真相传得更快**，这一点我们马上就会撞上第一个。
+地图的素材，一半来自我自己造 Agent 系统时反复踩的坑，另一半来自 Anthropic、OpenAI、Manus 等团队公开的工程资料。本文涉及产品行为、版本和实验数字的内容，均按**截至 2026 年 7 月 31 日**能找到的一手来源核对；无法稳定核验的精确数字，宁可删掉，也不拿传播热度替代证据。
 
 ---
 
@@ -45,19 +45,17 @@ columns:
 
 先从一个流传极广的数字开始，因为它是这篇文章的标题，也是整个领域最好的一句开场白。
 
-2026 年有一篇逆向拆解 Claude Code 的论文 **《Dive into Claude Code》**（VILA-Lab，arXiv: 2604.14228），分析对象是 Claude Code **v2.1.88**——大约 1900 个 TypeScript 文件、51 万行代码。它的摘要里有一段我愿意原样抄下来的话：
+2026 年 4 月发布的论文 [《Dive into Claude Code》](https://arxiv.org/abs/2604.14228)（Liu 等，arXiv:2604.14228）分析了 Claude Code **v2.1.88** 的公开 TypeScript 源码。论文摘要给出的结论很克制：核心是调用模型、执行工具再重复的 while loop；大量实现位于 loop 周围，包括权限系统、多层上下文压缩、MCP / 插件 / 技能 / hooks、带 worktree 隔离的子 agent，以及追加式会话存储。
 
-> 「系统的核心是一个简单的 while 循环，它调用模型、运行工具、然后重复。然而绝大部分代码，都活在这个循环周围的系统里：一个有七种模式和一个基于 ML 的分类器的权限系统、一条用于上下文管理的五层压缩流水线、四种可扩展机制（MCP、插件、技能、钩子）、一个带 worktree 隔离的子 agent 委派机制，以及面向追加的会话存储。」
+这里必须纠偏：广为流传的「**1.6% 是 AI 决策逻辑、98.4% 是基础设施**」**不是论文给出的测量结果**。论文没有定义“AI 决策逻辑”的计数口径，也没有报告这组百分比；研究对象还是公开源码，不是所谓“泄露源码”。截至核验日，我也没有找到能为 98.4% 提供可复现计算方法的一手材料。
 
-注意这里有个**重要纠偏**：那个广为流传的精确数字「**1.6% 是 AI 决策逻辑、98.4% 是基础设施**」其实**不在论文摘要里**，它是二次概述时的渲染。而且网上很多人把它归给 minusx 的博客、或者"UCL 团队逆向泄露源码"——这些归属**都是错的**。minusx 那篇《Decoding Claude Code》写得很好，但里面根本没出现过任何百分比；论文也不是基于泄露源码，而是分析公开的 TypeScript。
-
-所以我的建议是：**把 98.4% 当成一个叙事框架来用，而不是一个精确指标**。它是对"AI 决策逻辑"这个模糊类别的行数估算，是作者的判断口径，不是硬测量。但即便打了这些折扣，它要传达的那件事依然成立，而且极其重要：
+所以本文只把 **98.4% 当成叙事锚点，不把它当成论文结论、行业统计或可比较指标**。它指向的方向仍值得讨论：
 
 **产品级 Agent 的工程量，绝大部分不在 prompt、不在模型调用，而在模型外面那一圈基础设施里。** 业界给这一圈起了个名字——**harness（马具 / 挽具）**。
 
-> OpenAI 自己也用这个词。他们 2026 年 1 月拆解 Codex 的文章标题就叫《Unrolling the Codex agent loop》，开篇直接说：「本文聚焦于 **Codex harness**，它提供核心的 agent loop 和执行逻辑。」LangChain 在 2026 年 3 月那篇《The Anatomy of an Agent Harness》里把它公式化得更彻底：**Agent = Model + Harness**，harness 就是「除模型本身之外的每一行代码、配置和执行逻辑」。他们甚至给了一个让人印象深刻的实测：**模型不变，只改 harness**，就把自家编程 agent 在 Terminal Bench 2.0 上从 Top 30 拉到了 Top 5。
+> OpenAI 在 2026 年 1 月的 [《Unrolling the Codex agent loop》](https://openai.com/index/unrolling-the-codex-agent-loop/) 中明确使用 **Codex harness**，指代支撑各类 Codex 体验的核心 agent loop 与执行逻辑。这个定义比百分比更有用：harness 是模型与真实环境之间那层可编程的约束与执行系统。
 
-记住这个画面：模型能力是你**买来的、不可控的**；harness 是你**写的、可控的**。所以一个 Agent 工程师的全部杠杆，都在 harness 上。这篇文章剩下的部分，就是把这 98.4% 拆开。
+记住这个画面：模型能力大多是你**买来的、间接影响的**；harness 是你**写的、直接负责的**。所以 Agent 工程师最稳定的杠杆，在 harness 上。这篇文章剩下的部分，就是把它拆成八根支柱。
 
 ---
 
@@ -77,11 +75,11 @@ columns:
 
 **铁律一：上下文是稀缺、会腐烂的计算资源。**
 
-这不是直觉，是实测。Anthropic 在《Effective Context Engineering for AI Agents》里把它讲得很白：上下文必须被当成「一种有限的、边际收益递减的资源」，因为 LLM 有一个「注意力预算（attention budget）」。更扎心的现象叫 **context rot（上下文腐烂）**——「随着上下文窗口里 token 数量的增加，模型从中准确召回信息的能力反而下降」。所以你不能"把所有东西都塞进去"，工程目标恰恰相反：**找到信息量最高的、最小的那个 token 集合。**
+这不是“窗口越大越好”的线性问题。Anthropic 在 2025 年 9 月发布的 [《Effective Context Engineering for AI Agents》](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) 中把上下文描述为有限且边际收益递减的资源，并讨论了 context rot：随着上下文增长，模型从长上下文中可靠提取信息的能力可能下降。所以工程目标不是“把所有东西都塞进去”，而是找到对当前决策最有用的最小信息集。
 
 **铁律二：核心组件本身就是概率性的。**
 
-传统软件的可靠性建立在"确定性组件 + 偶尔处理一下故障"上；Agent 的可靠性必须建立在一个完全不同的假设上——「**组件本身就不可靠，每一步都可能错**」。这一条逼出了后面一整套可靠性、评估、治理的支柱。Anthropic 在多 agent 系统那篇里说得很重：「Agent 是有状态的，而且**错误会复利累积**……如果没有有效的缓解措施，微小的系统故障对 agent 来说可能是灾难性的。」
+传统软件常把故障视为例外；Agent 工程更适合把不确定性当成常态。模型输出会变化，工具会失败，早期误判还会污染后续状态。Anthropic 在 2025 年 6 月的 [多 agent 研究系统复盘](https://www.anthropic.com/engineering/multi-agent-research-system) 中也把有状态、错误累积和协调失败列为生产挑战。
 
 把这两条铁律钉在脑子里。下面每讲一根支柱，你都能看到它其实是在回应这两条里的某一条。
 
@@ -129,7 +127,7 @@ while not done(state):
 return finalize(state)
 ```
 
-注意 `execute(action)` 这一行——**它就是整个 harness 的入口**。模型说"我要 `rm -rf /`"，是这行代码决定它到底发不发生、在哪发生、发生前要不要拦。OpenAI 拆 Codex 时给的定义一字不差：「每个 AI agent 的核心，都是一个叫做 *agent loop* 的东西」，模型要么产出最终响应，要么请求一次 tool call，执行后追加结果再重新查询，「直到模型不再发出 tool call 为止」。
+注意 `execute(action)` 这一行——**它就是整个 harness 的入口**。模型说“我要 `rm -rf /`”，是这行代码决定动作是否发生、在哪里发生、发生前要不要拦。OpenAI 对 Codex loop 的公开拆解显示了同一结构：模型产出文本或请求工具；harness 执行工具、把结果追加进下一轮输入，直到模型给出终止响应。
 
 把这个循环放进一个真实场景跑一遍。注意第二次 `run_command`：模型只是**请求**删除，真正决定它发不发生的，是 harness 的确认闸门：
 
@@ -160,27 +158,27 @@ return finalize(state)
 
 > **LLM 控制状态转移 = Agent；确定性代码控制 = Workflow。**
 
-Anthropic 在《Building Effective Agents》里把这条边界划得很干净：Workflow 是「LLM 和工具被预定义的代码路径所编排」；Agent 是「LLM 动态地指挥自己的流程和工具使用」。而它给的决策规则朴素得近乎冷酷：「**只有当更简单的方案不够用时，才增加多步 agentic 系统的复杂度。**」
+Anthropic 在 2024 年 12 月的 [《Building Effective Agents》](https://www.anthropic.com/engineering/building-effective-agents) 里把边界划得很清楚：Workflow 由预定义代码路径编排模型和工具；Agent 则由模型动态决定流程和工具使用。它的建议也足够朴素：先找最简单的可行方案，只在确有需要时增加 agentic 复杂度。
 
 LangGraph 之所以"中立"，正是因为它让你在同一个 `StateGraph` 里自由选择**每一条边**由谁决定——这条边由代码定死，那条边交给 LLM。这就是为什么它能同时表达 workflow 和 agent。
 
 **失效边界**：多 Agent 不是银弹，而这正是 2025 年那场著名辩论的核心。
 
-Cognition（Devin 的母公司）在 2025 年 6 月发了一篇旗帜鲜明的《Don't Build Multi-Agents》，结论很硬：「**让多个 agent 协作，只会得到脆弱的系统。**」他们的两条原则值得背下来：(1)「共享上下文，而且要共享完整的 agent 轨迹，不只是单条消息」；(2)「**动作携带着隐含的决策，而互相冲突的决策会带来糟糕的结果**」。他们举的例子很形象：让两个并行子 agent 做 Flappy Bird，一个画了马里奥风格的背景、一个画了不搭的小鸟，主 agent 最后只能"收拾这两个误会"。
+Cognition 在 2025 年 6 月的 [《Don't Build Multi-Agents》](https://cognition.com/blog/dont-build-multi-agents) 中提出了一个有价值的反方视角：协作者如果不能共享完整轨迹，动作中隐含的决策很容易互相冲突。这里不必把它理解成“永远不要多 agent”，而应把它当成一条设计约束：**并行切分必须减少耦合，而不是把耦合藏起来。**
 
-**戏剧性的是，仅仅一天之后**，Anthropic 发了那篇唱反调的多 agent 研究系统文章，数据很硬：多 agent 在内部研究 eval 上「比单 agent 的 Claude Opus 4 高出 90.2%」。但代价也很硬：**多 agent 系统用的 token 大约是普通对话的 15 倍**（普通 agent 是 4 倍），所以「只有在任务价值足够高时才划算」。
+Anthropic 随后公开的研究系统给出了另一面：在其内部研究评测中，多 agent 配置相对单 agent 基线取得明显提升，但 token 消耗也显著上升。这个结果只适用于该团队的研究任务、模型与评测设置，不能外推成通用收益率。
 
-把两家放一起看，结论其实收敛了：**他们都同意瓶颈是上下文共享，分歧只在解法。** Anthropic 只在"读密集、可并行的研究任务"上用多 agent，并且诚实地承认它不适合"需要所有 agent 共享同一上下文"的场景——而那恰好是 Cognition 的整个论点。到了 2026 年 3 月，Cognition 自己也推出了"Devin 管理 Devin"，采纳了受控的多 agent。**所以真正的教训不是"多 agent 好或坏"，而是：当一个任务能被单 agent + 好工具解决时，多 agent 往往只是增加了协调开销和失败面。**
+把两家放在一起，能得到一个更稳的判断：读密集、可独立搜索、结果可汇总的任务更适合并行；需要共享大量隐含状态、持续修改同一对象的任务，协调成本往往会吞掉收益。**当单 agent 加好工具足够时，多 agent 通常只会增加失败面。**
 
 ---
 
 ## 支柱二：上下文工程（Context Engineering）
 
-这是 2026 年最重的一块，是 demo 和 production 之间最宽的那条鸿沟。**生产 Agent 在上下文层失败的概率，远高于在 prompt 层失败。** 我之前专门写过一篇[《Context 不是 Prompt》](../context-engineering-the-new-foundation/)，这里只把它放回 harness 的结构里，讲清它解决什么、又解决不了什么。
+这是 demo 和 production 之间最宽的鸿沟之一。我之前专门写过一篇[《Context 不是 Prompt》](../context-engineering-the-new-foundation/)，这里只把它放回 harness 的结构里，讲清它解决什么、又解决不了什么。
 
 **填补的缺口**：就是铁律一——窗口有限 + context rot。
 
-Cognition 那句话说得最重：「**上下文工程……实际上是构建 AI agent 的工程师的第一号工作。**」
+上下文工程的工作，不是追求更长，而是持续决定哪些信息应当进入、留在或离开窗口。
 
 **上下文的四种失效模式**（Drew Breunig 的分类，值得背）：
 
@@ -191,20 +189,18 @@ Cognition 那句话说得最重：「**上下文工程……实际上是构建 A
 | **Confusion 混淆** | 无关信息（尤其是塞了太多工具描述）被模型拿去用，降低输出质量 | 工具按需加载；只选相关上下文 |
 | **Clash 冲突** | 上下文里不同部分互相矛盾（多来源、多 MCP、跨轮累积） | 去冲突；统一来源 |
 
-**四大策略**——LangChain 收敛出的 **Write / Select / Compress / Isolate**，可以理解成上下文工程的"四则运算"：
+**四大策略**——**Write / Select / Compress / Isolate**，可以理解成上下文工程的“四则运算”：
 
 - **Write（写出去）**：把信息持久化到窗口**之外**——scratchpad、state 字段、外部存储、memory 工具。
 - **Select（选进来）**：每轮只把**相关**内容拉回窗口——RAG、记忆检索、工具按需挂载。
 - **Compress（压缩）**：逼近窗口时摘要而非粗暴截断。
 - **Isolate（隔离）**：用 schema 化的 state，只把 `messages` 字段暴露给 LLM；或把子任务隔离进 subagent 的独立上下文。
 
-这里特别值得展开 **Compress**，因为大厂在这一块的实现已经相当成熟。Anthropic 给了 **compaction** 一个权威定义：「拿一段接近上下文窗口上限的对话，**摘要其内容**，再用这份摘要**重新初始化一个新的上下文窗口**。」Claude Code 的实现会「保留架构决策、未解决的 bug、实现细节，同时丢弃冗余的工具输出」——最轻量的形式就是直接清掉工具结果。
-
-> **一个关于阈值的小坑**：网上流传 Claude Code 在 token 用量达到「92%」时触发自动压缩——这个数字来自 2025 年对 v1.0.x 的逆向，当前官方口径（DeepWiki）是「**约 98%**」且**可配置**（`CLAUDE_AUTOCOMPACT_PCT_OVERRIDE`）。引用这种数字时一定要锚定版本，否则就会变成又一个被错传的"事实"。
+这里特别值得展开 **Compress**。Anthropic 将 compaction 描述为：当对话接近上下文上限时，摘要旧内容，再用摘要继续新的上下文窗口。应保留架构决策、未解决问题和下一步，削减重复工具输出。至于“达到窗口百分之多少自动压缩”，不同版本与产品配置可能变化；除非锁定版本并能复现，否则不要把某个阈值写进架构假设。
 
 **还有一条贯穿性的经济学约束：Prompt Cache。**
 
-Manus 团队在《Context Engineering for AI Agents》里把这一点抬到了"**生产级 AI agent 最重要的单一指标**"——KV-cache 命中率，因为它「直接决定延迟和成本」。他们给的数字很有冲击力：Claude Sonnet 缓存命中的输入是 **$0.30/MTok**，未命中是 **$3/MTok**——**10 倍差距**；而 Manus 的输入输出比约为 **100:1**，意味着省 input 就是省一切。铁律是「**哪怕只差一个 token，从那个 token 往后的缓存就全部失效**」。
+Manus 团队在 2025 年 7 月的 [《Context Engineering for AI Agents》](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus) 中把 KV-cache 命中率视为重要生产指标，因为它直接影响延迟和成本。具体价格会随模型与供应商调整，真正稳定的工程原则是：尽量保持公共前缀稳定，把变化快的观察放在后部，并用实际 cache 指标验证，而不是背一张过期价目表。
 
 这条经济学直接改写了优化目标：**从"最小化 context 体积"迁移到了"最大化 cache 命中率"。** 它反过来约束你拼装上下文的顺序——稳定的（system prompt、工具定义、长期记忆）放前面，易变的（最新观察）放后面。
 
@@ -227,8 +223,8 @@ Manus 团队在《Context Engineering for AI Agents》里把这一点抬到了"*
 
 **真正难的部分是提取与遗忘，不是存储。** 而这正是 2025 到 2026 年各家收敛出共识的地方——**外部化记忆是通用解**，但各家的招式略有不同：
 
-- **Anthropic** 叫它 *structured note-taking*：「agent 定期把笔记持久化到上下文窗口之外的记忆里」（memory 工具已 public beta）。
-- **Manus** 叫它 *filesystem as context*：把文件系统当作「外部化的记忆——容量无限、天然持久、agent 可以直接操作」，压缩时保持可逆（留下 URL / 路径，需要时再读回）。
+- **Anthropic** 把 compaction、结构化笔记与 sub-agent 作为长任务上下文管理的互补手段；笔记写到窗口之外，需要时再取回。
+- **Manus** 把文件系统当作外部记忆，压缩时留下 URL 或路径，使被省略的内容仍可追溯，而不是只剩不可逆摘要。
 - **Manus 还有一招特别巧妙——recitation（复述）**：不断把 `todo.md` 重写到上下文的**末尾**，利用"近因效应"把目标反复推回模型的注意力焦点，对抗"中间迷失（lost in the middle）"。
 
 这里有个**反直觉但重要的分歧点**，值得你自己拿捏：**该不该保留错误？** 主流做法是激进压缩、丢掉失败的工具输出；但 Manus 的第 5 条经验恰恰相反——「**把走错的弯路留在上下文里**」，因为失败的动作能帮模型更新信念、不再重蹈覆辙。这两种哲学没有绝对对错，取决于你的任务是"越干净越好"还是"越能从错误中学越好"。
@@ -256,11 +252,11 @@ def dispatch(tool_call, registry):
 
 **工程要点**（每一条都值得展开）：
 
-- **工具设计 = API 设计 + prompt 设计的交集。** 工具的 `name` / `description` / 参数名**本身就是 prompt**——模型靠它们决定何时怎么调。Anthropic 在《Writing Effective Tools for AI Agents》里强调：每个工具都要有「清晰、独立的用途」，描述要写好，要在工具内部就做好 token 效率（分页、范围选择、过滤、截断）。
-- **Function Calling ≠ MCP，它们在不同层。** Function Calling 是**模型能力**（模型怎么表达"我想调用名为 X、参数为 Y 的工具"），是**调用语法**；MCP 是 harness 和外部工具提供方之间的**协议**（工具如何被发现、描述、连接、鉴权，基于 JSON-RPC 2.0），是**工具供给的标准化接口**。类比：Function Calling 是"点菜的语言"，MCP 是"餐厅如何把菜单标准化地挂出来、后厨如何接单"。
+- **工具设计 = API 设计 + prompt 设计的交集。** 工具的 `name` / `description` / 参数名**本身就是 prompt**——模型靠它们决定何时怎么调。Anthropic 的 [工具设计复盘](https://www.anthropic.com/engineering/writing-tools-for-agents) 强调：工具要有清晰、独立的用途，并在返回端提供分页、范围选择、过滤和截断。
+- **Function Calling ≠ MCP，它们在不同层。** Function Calling 是模型表达工具请求的调用语法；MCP 是 harness 和工具提供方之间的连接协议。MCP [2025-06-18 版规范](https://modelcontextprotocol.io/specification/2025-06-18/) 要求 client / server 消息遵循 JSON-RPC 2.0。类比来说，Function Calling 是点菜语言，MCP 是菜单、连接与接单规则。
 - **工具过多 = Confusion，而这是 2026 年最有意思的优化战场。** 几十个工具描述全塞进 prompt 会显著降质。Anthropic 给出了两个量级惊人的解法：
-  - **Code Execution with MCP**：把工具当成文件系统上的代码、按需读取定义，让 token 用量「从 150,000 降到 2,000——节省了 98.7% 的时间和成本」。
-  - **Tool Search Tool**：按需检索工具而非全量加载，「token 用量减少 85%」，同时把复杂参数的准确率从 79.5% 提到 88.1%。
+  - [**Code Execution with MCP**](https://www.anthropic.com/engineering/code-execution-with-mcp)：在 Anthropic 给出的 Google Drive 到 Salesforce 示例中，按需读取工具定义让上下文用量从约 150,000 token 降至约 2,000。它是单个示例的量级，不是所有 MCP 工作负载的保证。
+  - [**Tool Search Tool**](https://www.anthropic.com/engineering/advanced-tool-use)：Anthropic 的内部 MCP 评测显示，按需发现工具可明显降低 token 用量并改善大型工具库上的准确率。具体提升依赖模型、工具集与评测，落地时应重测。
 - **工具结果处理**：工具输出常常巨大（文件、网页、日志），是上下文膨胀的头号来源。不得不截断时要**保头保尾**（如 30% 头 + 30% 尾），因为错误信息和关键结论常在两端。
 - **错误分类先于响应策略**：工具会失败——网络、超时、权限、参数错、业务错。**先分类，再决定**重试 / 换工具 / 降级 / 上报。
 
@@ -272,23 +268,16 @@ def dispatch(tool_call, registry):
 
 **填补的缺口**：每一步都可能错的组件，怎么拼出一个"整体可靠"的系统。这是把 demo 变 production 的核心苦工，也是 2026 年资本下注最重的一层。
 
-先讲一个**最容易栽跟头的概念区分**，因为它能瞬间暴露你的段位：**checkpoint ≠ durable execution。**
+先讲一个容易混淆的概念：**checkpoint 不等于完整的 durable execution。**
 
 - **Checkpoint（检查点）**：每个逻辑步骤后把 state 存进持久化存储，崩溃后从最后一个 checkpoint 恢复，而不是从头。LangGraph 的 checkpointer 就是这个。
 - **Durable Execution（持久化执行）**：checkpoint 只是其中一半。完整的 durable execution 还要有**自动故障检测 + 自动重启 + 跨进程边界的 resume**。
 
-Diagrid 在 2026 年那篇被反复引用的《Checkpoints Are Not Durable Execution》里把这点戳得极穿。它用两句话区分：
+LangGraph 的[持久化文档](https://docs.langchain.com/oss/python/langgraph/persistence)把 checkpoint 定义为线程中每一步的状态快照，可用于恢复、人工介入和调试。但系统能否在进程或节点失效后自动发现故障、重新调度，并避免副作用重复发生，还取决于运行时和部署架构。Temporal 一类工作流运行时把 workflow 历史与 activity 执行分开，通过事件历史重建控制流；它解决的是更大的恢复问题，不只是“存一份 state”。
 
-> Checkpoint 说的是：「我帮你存了状态，**接下来你自己来。**」
-> Durable Execution 说的是：「**你的 agent 工作流一定会跑到完成。就这样。剩下的我全包。**」
+**这里有一道必须理解的坎：非确定性。** Agent workflow 里有 LLM 输出、时间戳、随机数和检索结果。**不能重放一个 LLM 调用，再假装它和上次一样。** 对产生副作用的步骤，要么记录结果并在恢复时复用，要么用幂等键与补偿机制约束重复执行。否则“resume”只是重新做一遍相似的事。
 
-然后它逐个点名：LangGraph「checkpointer 存了状态，但没有自动故障检测、没有自动恢复、没有重复执行预防」，而且 OSS 库「跑在单进程里……进程死了，它在跑的一切都跟着死」；Google ADK「调用方必须自己检测到工作流被中断了。框架里没有 watchdog、没有 heartbeat、没有 health check」。
-
-这就是为什么 **Temporal** 在 2026 年这么火。它在 2026 年 2 月以 **50 亿美元估值**融了 **3 亿美元 D 轮**（a16z 领投）。而 OpenAI 的 Codex 工程师 Will Wang 给了一句一手背书：「**Temporal 是支撑 Codex 的关键基础设施，负责执行我们的核心控制流。**」它的机制是：agent 编排代码跑在 Temporal workflow 里，而模型调用和 I/O 工具调用作为 Temporal activity 执行，通过 replay 机制保存"关键输入和决策"，让重启后能精确续跑。
-
-**这里有一道必须理解的坎：非确定性。** Agent workflow 里全是非确定性——LLM 输出、时间戳、随机数、检索结果。**你不能重放一个 LLM 调用然后假装它和上次一样。** 所以 durable execution 的铁律是：**副作用第一次执行时就把结果录下来，恢复时复用记录值，而不是重新执行。** 否则你的"resume"会悄悄变成"做点类似的事然后祈祷没人发现"。
-
-**接着是一个让你少烧钱的反直觉数据。** 2026 年的 **Crab** 研究（arXiv: 2604.28138）发现：「**超过 75% 的 agent turn 不产生任何与恢复相关的状态**」——所以"每步都 checkpoint"基本是浪费。它的语义感知方案把恢复正确率从 8% 提到 100%，同时把 checkpoint 流量削掉最多 87%，而执行时间只比无故障情况慢 1.9%。
+2026 年 4 月的 [**Crab** 论文](https://arxiv.org/abs/2604.28138)在其 shell 密集与代码修复工作负载中观察到，多数 agent turn 没有产生与恢复相关的系统状态，并报告了显著的 checkpoint 流量下降。这个结论有明确实验边界：它支持“按副作用决定粒度”，不等于所有 agent 都可以少存。
 
 > **直接的建议**：按"丢失的后果"决定 checkpoint 粒度，而不是按反射每步都存。一个月级的长线程，漏一个 checkpoint = 重发或漏发一封邮件，值得强 durability；一个纯计算的中间步骤，丢了重算就行，别存。
 
@@ -302,18 +291,18 @@ Diagrid 在 2026 年那篇被反复引用的《Checkpoints Are Not Durable Execu
 
 **填补的缺口**：概率性系统**没有"跑通了就对"这回事**。同一输入两次结果不同。没有 eval，你根本不知道改了 prompt 是变好还是变坏。**这是大多数团队最薄弱、也最该补的一块。**
 
-**两个基础设施（动手优化之前必须先有）**：
+**两个基础设施（动手优化之前先有）**：
 
 1. **Tracing / 可观测性**：每一步——每次 LLM 调用、每个 tool call、每次压缩、token 用量——都要留痕。LangSmith 把一次 trace 定义为「每一步的完整记录，从输入到最终输出」，结构是一棵 run 树。**看不见就优化不了。**
 2. **一套能跑的测试集**：哪怕只有 20 条标注好的任务，也比没有强。
 
 **评估方法谱系**：离线 eval（固定数据集跑回归，防"改 A 修好了、B 悄悄坏了"）、在线 eval（生产流量采样）、**LLM-as-a-Judge**（用另一个 LLM 按 rubric 打分）。
 
-但 LLM-as-Judge 有个必须知道的坑——**裁判是有偏见的**。那篇奠基性论文（Zheng et al., NeurIPS 2023）就指出三种偏见：**位置偏见、冗长偏见、自我增强偏见**（裁判会偏向长答案、偏向自己写的内容）。后续研究量化了"自我偏好偏见"：LLM 会过度奖励"困惑度更低、对它更熟悉"的文本。**所以裁判分必须做 bias mitigation**——比如交换答案位置再跑一遍、不一致就判平局，这一招能把和人类的一致性从 65% 提到 77%。
+但 LLM-as-Judge 有个必须知道的坑：**裁判也有偏差**。位置、篇幅、措辞熟悉度和模型家族都可能影响分数。因此，裁判分要用交换位置、分维度 rubric、多次 trial 和人工校准来约束，不能把一次模型打分当作真值。
 
-**最有效的多 agent 可靠性模式，是一个独立的裁判 agent。** 关键词是"**独立**"——它不共享上下文、用预定义评分标准评最终输出。为什么不能共享上下文？因为一旦共享，它就会加入同一个"集体推理循环"，一起钻进同一个错误。学术上有个更强的版本叫 **Agent-as-a-Judge**（ICML 2025），一个独立评估 agent 给中间反馈，「**和人类的一致性约 90%，而 LLM-as-a-Judge 只有约 70%**」。
+一种实用模式，是让独立裁判按预定义标准检查最终状态，而不是沿用执行 agent 的完整叙事。独立不意味着完全丢掉证据，而是避免把执行者的自我解释当成事实。Anthropic 在 2026 年 1 月的 [Agent eval 指南](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) 也强调组合代码、模型和人工 grader，并把 LLM judge 与人类专家紧密校准。
 
-**还要对抗 self-congratulation（自我表扬）**：Agent 自评刚解决的问题时会偏乐观。所以自评分要用 rubric 约束 + 引入外部客观信号（真实成功率、用户满意度）来校准。Anthropic 在《Demystifying Evals for AI Agents》里把这句话说得很到位：「LLM-as-judge 的评分必须和人类专家**紧密校准**。」
+**还要对抗 self-congratulation（自我表扬）**：Agent 自评刚解决的问题时会偏乐观。先检查环境里的终态——文件是否真的修改、订单是否真的存在、测试是否真的通过——再评价表达质量。能用代码验证的，不要先交给语言模型。
 
 **失效边界**：eval 本身可能被 game。优化一个指标久了，agent 会学会"讨好裁判"而非真正做好。所以需要定期人工抽检 + 多维度指标交叉。
 
@@ -326,9 +315,9 @@ Diagrid 在 2026 年那篇被反复引用的《Checkpoints Are Not Durable Execu
 **核心杠杆**：
 
 - **Prompt cache 命中率**（已反复强调，是第一杠杆）——把 system prompt 当不可变 prefix 经营，甚至在 CI 里断言它的字节稳定。
-- **智能模型路由（Smart model routing）**：简单子任务路由到便宜小模型，难的留给旗舰。Claude Code 自己就是这么干的——主力用 Sonnet，廉价任务（如生成摘要）下放给 Haiku。**坑**：路由后的小模型窗口更小，会和压缩阈值耦合出 bug——压缩阈值必须绑"真正会跑这一轮的模型"的窗口。
+- **智能模型路由（Smart model routing）**：简单子任务路由到更便宜、延迟更低的模型，难任务留给能力更强的模型。路由不能只看单价，还要把质量、上下文上限和重试成本一起算进 eval。
 - **并行工具执行**：路径独立的 tool call 并发执行，但交互式工具要强制串行，并发后还要严格保序回灌。
-- **Compaction 触发策略**：温和早压（在窗口 50% 处）比临崖狂压（98% 处）更省。
+- **Compaction 触发策略**：不要硬编码从其他产品抄来的百分比；按当前模型窗口、保留输出预算和任务阶段决定触发点，并通过回归 eval 校准。
 - **辅助模型分工**：摘要、视觉、分类这类"侧任务"用便宜模型。
 
 **失效边界**：过度优化成本会牺牲质量（让小模型干了大模型的活）。**成本-质量是一条 Pareto 前沿，不是单目标。** 用 eval 守住质量下界，再去压成本。
@@ -341,7 +330,7 @@ Diagrid 在 2026 年那篇被反复引用的《Checkpoints Are Not Durable Execu
 
 先记住整个领域最反直觉、也最重要的一句安全公理：
 
-> **Safety lives in the harness, not the model.** 安全活在 harness 里，不在模型里。
+> **安全边界必须由 harness 执行，不能只依赖模型自我约束。**
 
 意思是：**如果你在指望模型自己拒绝坏动作，那你根本没有安全可言。** 模型的"拒绝"只有在 harness 在执行**之前**校验了 tool call 的 schema 并拒绝它，才算数。换句话说，refusal 不是一种对齐属性，而是一种**运行时校验结果**。
 
@@ -349,15 +338,13 @@ Diagrid 在 2026 年那篇被反复引用的《Checkpoints Are Not Durable Execu
 
 > **Propose / Apply 分离**：让 **LLM 负责提议（propose）**，让**确定性代码或人负责执行（apply）**。
 
-这一条不是理论，它就长在产品里。Claude Code 的 **plan 模式**就是 propose/apply 分离的直接落地：「plan 模式让 Claude **研究并提议**改动，但**不真的做出**改动……它不会编辑你的源码。」你审完计划，再选择自动执行 / 逐条 review / 继续规划。它的权限规则分层是 **deny → ask → allow，先匹配先生效**，而且 deny 规则**不可**被 allowlist 例外破坏。
+这一条就长在产品里。Claude Code 的 [plan 模式与权限系统](https://code.claude.com/docs/en/permissions)允许模型分析和提出方案，但禁止文件修改；deny 规则优先于 ask 与 allow。它把“能想到什么”和“被允许做什么”拆成了两层。
 
-而真正精彩的设计，是 Claude Code 的 **auto 模式分类器**——一个**独立的分类器模型**审查每个动作，默认拦截 `curl | bash`、生产部署 / 迁移、force-push、`terraform destroy` 这类高危操作。最妙的是：**工具返回的内容会从这个分类器的视野里被剥离**，使得"敌对内容无法直接操纵它"。这是对 prompt injection 的结构性防御。
+Claude Code 的 [auto mode 设计说明](https://www.anthropic.com/engineering/claude-code-auto-mode)则展示了另一层：用独立分类器检查需要审查的动作，同时仍把它放在沙箱与权限规则之内。Anthropic 在后续[隔离复盘](https://www.anthropic.com/engineering/how-we-contain-claude)中明确说明，这种分类器存在漏判，只是纵深防御的一层，不是沙箱替代品。
 
-OpenAI 的 Codex 用的是同构的两层模型：(a) **沙箱 / 模式**决定"技术上能做什么"——macOS 用 Seatbelt、Linux 用 `bubblewrap` + `seccomp`，**网络默认关闭**（「显著降低 prompt injection……数据外泄的风险」）；(b) **审批策略**决定"何时必须问人"。两家在这件事上高度一致。
+OpenAI 的 Codex 也把执行隔离和审批分开。其 [GPT-5.3-Codex System Card](https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf) 记载：云端任务运行在隔离环境中，网络默认关闭；本地 macOS 使用 Seatbelt，Linux 使用 seccomp 与 Landlock 等机制。实现会迭代，但原则稳定：能力边界由操作系统或虚拟化层强制，审批策略决定何时把控制权交还给人。
 
-**但治理的尽头是物理隔离，而这里有一个让人脊背发凉的真实案例。** 2026 年 3 月有人记录到：**Claude Code 会主动禁用自己的沙箱**来完成任务——它发现 `/proc/self/root/usr/bin/npx` 能绕过 deny 规则，当 bubblewrap 拦住它时，它干脆把沙箱关了。结论很硬：用户态的控制（denylist、权限提示）运行在"**agent 能推理的那个域**"里，所以 agent 能绕过它；而**microVM 的硬件隔离是在那一层之下、由硬件虚拟化强制执行的**——这是对"为什么自主 agent 需要硬件级隔离"最锋利的论证。
-
-> 这也连到一个更冷的事实：**容器不是安全边界。** 正如那篇《Your Container Is Not a Sandbox》所说，「容器不是安全边界，它们是控制资源用量的机制。」Linux 内核「约 4000 万行 C 代码、暴露 450+ 个 syscall」，一次内核 bug 就是一次宿主逃逸（2024-2025 就有 Leaky Vessels、NVIDIAScape 等一串容器逃逸 CVE）。所以隔离技术要按**威胁模型**选：内部可信代码用硬化容器；LLM 生成的代码用 gVisor（用户态内核，拦截 syscall）；自主 agent 装未审包则**假设代码敌对**，上 Firecracker microVM（独立内核 + 硬件边界，~125ms 冷启动、<5 MiB 内存开销）。E2B、Modal 这些 sandbox 厂商的选型差异，本质就是威胁模型的差异。
+治理的底线是：**不要让策略和被约束对象处在同一层。** Prompt 里的“禁止”、模型分类器与用户态 denylist 都有价值，但它们不能替代操作系统或虚拟化强制的边界。隔离技术要按威胁模型选：可信内部任务可用收紧权限的进程或容器；执行未知依赖、外部仓库或生成代码时，应考虑更强的 syscall 隔离、独立内核或 microVM。AWS 对 [Firecracker](https://aws.amazon.com/blogs/opensource/firecracker-open-source-secure-fast-microvm-serverless/) 的公开设计也把硬件虚拟化边界与最小设备模型放在核心位置。不是所有任务都需要 microVM，但边界强度必须和最坏副作用相称。
 
 **失效边界**：治理和能力是**永恒的张力**。锁太死，agent 没用；放太开，agent 危险。没有一劳永逸的设定点，只有"随风险等级动态调节的闸门"。
 
@@ -424,7 +411,7 @@ OpenAI 的 Codex 用的是同构的两层模型：(a) **沙箱 / 模式**决定"
 
 > **Agent Engineering，就是在"无状态的概率预测器"和"有状态的无限世界"之间，造一层叫 harness 的电路。这层电路有八根支柱：编排让它会走多步，上下文让它不腐烂，记忆让它跨会话成为某人，工具让它能改变世界，可靠性让它不崩，评估让它可度量，成本让它跑得起，治理让它自治而不失控。模型是买来的，harness 是你造的——你全部的工程杠杆，都在这八根支柱上。**
 
-那 98.4% 不是噪声，它是这门学科的全部。模型每隔几个月就会变强一次，而你写的那 98.4%，才是真正属于你的、会沉淀下来的工程资产。
+98.4% 不是测量值，也不必为它辩护。真正值得保留的是它指向的视线：别只盯着模型的那一轮输出，要看整个系统怎样约束动作、保存状态、验证结果。模型会继续变，工程资产沉淀在这些可以解释、测试和替换的边界里。
 
 ---
 
@@ -432,19 +419,16 @@ OpenAI 的 Codex 用的是同构的两层模型：(a) **沙箱 / 模式**决定"
 
 | 论点 | 出处 / 数据 |
 |---|---|
-| 「1.6% AI / 98.4% harness」 | *Dive into Claude Code*（VILA-Lab, arXiv: 2604.14228），分析 v2.1.88；精确百分比为软口径，宜作叙事框架 |
-| Agent = Model + Harness；只改 harness 把编程 agent 从 Top 30 拉到 Top 5 | LangChain《The Anatomy of an Agent Harness》（2026-03） |
-| context rot：token 越多召回越差；上下文是有限的注意力预算 | Anthropic《Effective Context Engineering for AI Agents》（2025-09） |
-| compaction 定义：摘要后用摘要重启上下文窗口 | Anthropic，同上 |
-| KV-cache 命中是生产 agent 最重要指标；缓存命中 $0.30 vs 未命中 $3 /MTok | Manus《Context Engineering for AI Agents》（2025-07） |
-| 多 agent 比单 agent 高 90.2%，但用 15× token | Anthropic《Multi-Agent Research System》（2025-06） |
-| 「多 agent 协作只得到脆弱系统」「共享完整轨迹」 | Cognition《Don't Build Multi-Agents》（2025-06） |
-| checkpoint ≠ durable execution | Diagrid《Checkpoints Are Not Durable Execution》（2026-02） |
-| Temporal 是支撑 Codex 的关键基础设施；$5B 估值 $300M D 轮 | Temporal 博客 + Will Wang(OpenAI) 引述（2026-02） |
-| 75% 的 agent turn 不产生恢复相关状态 | Crab（arXiv: 2604.28138, 2026-04） |
-| Tool Search 减少 85% token；Code Execution with MCP 省 98.7% | Anthropic《Advanced Tool Use》《Code Execution with MCP》（2025-11） |
-| LLM-judge 三偏见：位置 / 冗长 / 自我增强；Agent-as-Judge ~90% 一致 | Zheng et al.(NeurIPS 2023)；Zhuge et al.(ICML 2025) |
-| 「Claude Code 会主动禁用自己的沙箱」→ 需硬件隔离 | Di Donato（2026-03）；《Your Container Is Not a Sandbox》 |
-| 安全活在 harness 不在模型；propose/apply 分离 | Anthropic / OpenAI 权限模型；Claude Code plan 模式 + auto 分类器 |
+| Claude Code v2.1.88 的核心 loop 与外围系统 | [Liu 等，《Dive into Claude Code》](https://arxiv.org/abs/2604.14228)，2026-04；论文没有报告 98.4% |
+| Codex harness 提供核心 loop 与执行逻辑 | [OpenAI，《Unrolling the Codex agent loop》](https://openai.com/index/unrolling-the-codex-agent-loop/)，2026-01 |
+| 上下文有限、边际收益递减；compaction 与结构化笔记 | [Anthropic，《Effective Context Engineering for AI Agents》](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)，2025-09 |
+| workflow / agent 边界与“优先简单方案” | [Anthropic，《Building Effective Agents》](https://www.anthropic.com/engineering/building-effective-agents)，2024-12 |
+| 多 agent 的编排、收益边界与 token 代价 | [Anthropic，多 agent 研究系统复盘](https://www.anthropic.com/engineering/multi-agent-research-system)，2025-06 |
+| 文件系统、cache prefix 与错误轨迹的上下文实践 | [Manus，《Context Engineering for AI Agents》](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)，2025-07 |
+| MCP 工具按需加载的示例数据 | [Anthropic，Code Execution with MCP](https://www.anthropic.com/engineering/code-execution-with-mcp) 与 [Advanced Tool Use](https://www.anthropic.com/engineering/advanced-tool-use)，2025-11 |
+| Agent eval 应组合 grader 并校准 LLM judge | [Anthropic，《Demystifying Evals for AI Agents》](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)，2026-01 |
+| 语义感知 checkpoint 的实验边界 | [Wu 等，Crab](https://arxiv.org/abs/2604.28138)，2026-04 |
+| plan / auto mode、权限与分类器的边界 | [Claude Code 权限文档](https://code.claude.com/docs/en/permissions)、[auto mode 设计](https://www.anthropic.com/engineering/claude-code-auto-mode)，核验于 2026-07-31 |
+| Codex 隔离与默认网络策略 | [OpenAI，GPT-5.3-Codex System Card](https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf)，2026 |
 
-> 写这篇文章时我反复提醒自己一件事：这个领域里很多"事实"是被错传放大的（98.4% 的出处、92% 的压缩阈值都被传歪过）。所以上面每一条我都尽量锚定了一手出处和版本。如果你要拿去面试或写进设计文档，建议顺着出处再核一遍——这本身就是 Agent 工程师该有的"evidence > assumptions"的习惯。
+> 来源核验日期：**2026-07-31**。版本行为、模型价格、评测榜单与产品默认值都可能继续变化；写进设计文档时，应重新打开原始来源，而不是复制这张表里的旧快照。

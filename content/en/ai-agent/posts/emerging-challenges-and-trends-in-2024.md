@@ -1,7 +1,7 @@
 ---
-title: 'Emerging Challenges and Trends in 2024'
-ShowRssButtonInSectionTermList: true
+title: '2024 AI Field Notes, Reassessed: From Emergence to Production RAG'
 date: 2024-01-14T22:52:24+08:00
+lastmod: 2026-07-30T22:00:00+08:00
 draft: false
 showtoc: true
 tocopen: false
@@ -9,318 +9,224 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - Blog
+  - AI
+  - LLM
+  - RAG
+  - Agent
+  - Monitoring
+categories:
+  - Development
 description: >
-  Explore the latest trends and challenges in 2024 in the world of technology and development.
+  A 2026 reassessment of 2024 AI field notes, covering model emergence, Prefix LM, LoRA, QLoRA, agents, and the engineering required for reliable RAG today.
+cover:
+  image: "/images/covers/ai-agent/2024/emerging-challenges-and-trends-in-2024.png"
+  alt: "From 2024 AI field notes to a reliable production RAG system"
+  caption: "Models change. The reliability bill does not disappear."
+  relative: false
+aliases:
+  - /en/growth/posts/emerging-challenges-and-trends-in-2024/
 tldr:
-  - "Large language models understand human interaction patterns better through RLHF training and emergence phenomena enable unexpected capabilities at scale."
-  - "Fine-tuning approaches like Adapter, LoRA, and QLoRA enable efficient model adaptation with reduced computational costs, making specialized AI deployment more accessible."
-  - "Domain-specific question-answering systems combining fine-tuning with retrieval-augmented knowledge bases address enterprise requirements for accuracy without hallucinations."
+  - "The 2024 bets on parameter-efficient fine-tuning, retrieval, and agents still hold; the center of gravity has moved from capability demos to permissions, evaluation, and observability."
+  - "Emergence may reflect genuine changes in model behavior, but discrete metrics can exaggerate a smooth curve. Treat it as an observation to investigate, not proof that a model has awakened."
+  - "Production RAG is not a vector database with a chat box. It is an evidence pipeline: access control, hybrid retrieval, reranking, grounded citations, calibrated abstention, evaluation, and traces."
 ---
 
-# Large language model sharing meeting on January 6, 2024
-
-**Limitations of the model:**
-
-- Deep learning
-- Pre-trained model
-- Large language model
-
-**The emergent power of large language models:**
-
-<aside>
-💡 Relevant research on emergence phenomena has been done for a long time in the discipline of complex systems. So, what is “emergent phenomenon”? When a complex system is composed of many tiny individuals, these tiny individuals come together and interact with each other. When the number is large enough, they exhibit special phenomena that cannot be explained by the microscopic individuals at the macro level. This can be called an "emergent phenomenon."
-
-</aside>
-
-> Link:
+> This article began as notes from a large-language-model meetup in January 2024. Back then, the question was what a model could do. Two years later, the harder question is why anyone should trust the system around it.
 >
+> I have not polished the old notes into a story in which every early judgment was right. Mistakes are useful sediment. They remind us that a technical opinion is not a prophecy; it is a bet with an expiry date. Each section therefore keeps the 2024 observation and adds a 2026 reassessment: **still true**, **changed**, or **wrong at the time**.
 
-[The Mystery of the Evolution of Large Language Models: Challenges and Controversies of Emergent Phenomenon_AI_Zhang Junlin_InfoQ Selected Articles](https://www.infoq.cn/article/gjljp08ihuud8shahhz3)
+## 1. Emergence: a leap in capability, or a mark on the ruler?
 
-**Changes in the characteristics and trends of large language models:**
+### What I thought in 2024
 
-Big language understands human habits better than people.
+Once model scale, data, and compute crossed some threshold, abilities that were barely visible in smaller models seemed to appear abruptly. The industry called these *emergent abilities*.
 
-- Training with RLHF
-- Interact in the way humans are accustomed to
+### The 2026 reassessment: real question, unsettled answer
 
-**The development history of large language models:**
+Wei and colleagues described emergent abilities as capabilities absent from smaller models but present in larger ones. Schaeffer and colleagues later argued that some apparent jumps can be artifacts of nonlinear or discrete metrics. Replace exact-match pass/fail with a continuous measure, and a cliff may become a slope.
 
-- There are more and more open source models, and the proportion is getting larger and larger.
-- There are still a lot of pre-trained models, but the proportion of fine-tuning is getting higher and higher.
+Those positions do not have to cancel each other out. A model's behavior may change meaningfully with scale while our chosen ruler amplifies or hides that change. For engineering work, the useful response is restraint:
 
-### How to learn large language models
+- Do not turn a benchmark jump into a claim that a model suddenly “understands.”
+- Inspect continuous scores, failure categories, and variance across repeated runs.
+- Test on the distribution that matters to the product; a public leaderboard is not an acceptance test.
 
-- Configuration of the model structure
-- Fine-tuning of large language models
-- skills
+**Verdict: still true, but cooler language is warranted.** Scale can produce new behavior. “Emergence” names an observation that still needs explanation; it is not permission to skip evaluation.
 
-### Train the model yourself
+Papers: [Emergent Abilities of Large Language Models](https://arxiv.org/abs/2206.07682) and [Are Emergent Abilities of Large Language Models a Mirage?](https://arxiv.org/abs/2304.15004).
 
-It doesn’t have to be just a single data, it can also be a mixture of data (including business documents or code provided by yourself)
+## 2. Model architecture: Prefix LM does not peek at the future
 
-**Training data source:**
+### What I thought in 2024
 
-<aside>
-💡 For data security and deduplication of duplicate data, data filtering is very important (how to do this step?)
+The original notes contrasted a causal decoder with a “prefix decoder” and claimed that the latter could see both preceding and following text, much like BERT. That confused a **Prefix LM** with masked-language modeling.
 
-</aside>
+### The 2026 reassessment: wrong at the time
 
-When processing and preparing data for machine learning model training, it is important to ensure the quality, security, and deduplication of the data. Here are some key steps and methods to help you achieve this goal:
+Under UniLM's unified attention-mask formulation:
 
-1. **Quality Filtering**:
-     - Ensure data accuracy: remove or correct any erroneous, incomplete or inaccurate data.
-     - Ensure data consistency: Ensure that all data follows the same format and standards.
-2. **Data Deduplication**:
-     - Identify and remove duplicate data: Use algorithms or tools to identify identical or highly similar data items and merge or delete them.
-     - For text data, you can use hashing algorithms or content-based deduplication methods.
-3. **Privacy Removal**:
-     - Ensure that the data does not contain any personally identifiable information (PII), such as name, address, phone number, etc.
-     - In some cases, data desensitization techniques, such as anonymization or pseudo-anonymization, can be used to protect user privacy.
-4. **Tokenization**:
-     - For text data, tokenization is the process of splitting continuous text into smaller units such as words, phrases, or characters.
-     - Word segmentation methods depend on the grammatical and lexical structure of the specific language. For Chinese, a specific word segmentation tool may be needed because Chinese is a non-space separated language.
+- A **causal language model** lets each position attend only to tokens on its left, which supports autoregressive generation.
+- A **bidirectional language model** lets tokens attend to context on both sides, which suits understanding tasks.
+- A **sequence-to-sequence model**, often discussed as a Prefix LM, allows bidirectional attention *within the conditioning prefix*. Output tokens are still generated causally and may attend to the full prefix.
 
-### Decoder structure
+A Prefix LM does not inspect answer tokens that have not been generated. The difference lies in its attention mask: the input condition can understand itself fully while the answer remains autoregressive.
 
-"causal decoder" and "prefix decoder" are two different decoder structures that play an important role in processing sequence data, especially in text generation tasks. Here's a comparison of the two decoders:
+**Verdict: the old explanation was wrong.** To know whether a position can see another token, read the attention mask rather than reasoning from the word “decoder.”
 
-### Causal Decoder
+Paper: [Unified Language Model Pre-training for Natural Language Understanding and Generation](https://arxiv.org/abs/1905.03197).
 
-1. **Definition and Application**:
-     - The causal decoder, as used in the GPT family of models, is a one-way decoder.
-     - When generating text, it only considers the context that has already been generated or given (i.e. it only sees the context on the left).
-2. **Working Principle**:
-     - When processing each new word, the causal decoder only uses the previous words as context.
-     - This model simulates the way humans generate natural language, which is to sequentially generate new information based on known information.
-3. **Use**:
-     - Suitable for text generation tasks such as storytelling, automatic writing, chatbots, etc.
-4. **Features**:
-     - Ensures that the generated text is coherent and logically follows the previous context.
-     - Unable to look back or consider future vocabulary or sentence structure.
+## 3. Fine-tuning: LoRA and QLoRA lower the hardware barrier, not the cost of judgment
 
-### Prefix Decoder (prefix decoder)
+### What I thought in 2024
 
-1. **Definition and Application**:
-     - The prefix decoder is a decoder that can consider both the preceding and following contexts, similar to the masked language model (MLM) in BERT.
-     - It can consider both prefix and suffix information in the sequence when processing data.
-2. **Working Principle**:
-     - When processing each word, the prefix decoder uses the preceding word and some following placeholders or masks as context.
-     - This method allows the decoder to take into account the structure of the entire sequence when generating a certain word.
-3. **Use**:
-     - Commonly used for tasks that require two-way context understanding, such as text blank filling, sentence improvement, language model training, etc.
-4. **Features**:
-     - Ability to take into account more comprehensive contextual information when generating text.
-     - Better for understanding the structure and meaning of an entire sentence or paragraph.
+Adapters, LoRA, and QLoRA made domain adaptation possible without updating every parameter in a model. A snapshot of `nvidia-smi` from an RTX 4090 felt wonderfully concrete at the time. It did not answer the questions that mattered: should we fine-tune at all, and will the result be more reliable?
 
-### Optimization of model structure
+### The 2026 reassessment: still true, with clearer boundaries
 
-Model structure optimization has always been a fancy job. Excellent model structure design can greatly improve the efficiency of model parameters, and even the effect of small models can exceed that of large models. In this article, we take XLNet, ALBERT, and ELECTRA as examples for analysis. Although they can also be considered as work on pre-training task optimization and model lightweighting, given the strong innovation in model structure, we still analyze them in the model structure optimization section.
+LoRA freezes pretrained weights and injects trainable low-rank matrices into selected layers. QLoRA goes further by keeping the frozen base model at 4-bit precision and reducing memory pressure with NormalFloat 4, double quantization, and paged optimizers. Both techniques improve **training efficiency**. Neither keeps facts current, enforces document permissions, or supplies citations.
 
-- **XLNet**
-    
-     [xlnet.pdf](https://prod-files-secure.s3.us-west-2.amazonaws.com/75a5484a-0cd7-4657-9986-f815c6264948/8ae97691-bde6-472c-9fed-12fc527fc843/xlnet. pdf)
-    
-     - Github source code: ‣
+A practical dividing line looks like this:
 
-### Fine-tuning
+| Need | Start with | Why |
+|---|---|---|
+| Stable tone, output format, or task behavior | LoRA, QLoRA, or instruction tuning | Behavior can be learned in parameters |
+| Frequently changing policies, prices, or product documents | RAG | Knowledge remains updateable and citable |
+| Private terminology plus current factual answers | Fine-tuning and RAG | Govern behavior and knowledge separately |
 
-Factors to consider when fine-tuning:
+Training data still needs deduplication, quality filtering, license review, and personal-data handling. “Cleaned” is not the same as “authorized.” Record provenance, allowed uses, deletion obligations, and the training version. Split training and evaluation data by source or time where possible; near-duplicate leakage can manufacture a reassuring score.
 
-- Effect: Customization - local knowledge base search, question and answer in specific fields, etc.
-- Cost: training cost - graphics card and other costs (the United States now restricts Chinese graphics cards)
+**Verdict: still true.** Parameter-efficient fine-tuning is now ordinary infrastructure. Data governance, evaluation, and regression testing remain the expensive work.
 
-What data needs to be retained for fine-tuning?
+Papers: [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685) and [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314).
 
-```jsx
-(base) root@openim-System-Product-Name:/home/openim# nvidia-smi
-Sat Jan 6 14:39:30 2024
-+------------------------------------------------- -----------------------------------------------+
-| NVIDIA-SMI 535.129.03 Driver Version: 535.129.03 CUDA Version: 12.2 |
-|-----------------------------------------+------ ---------------+----------------------+
-| GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC |
-| Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. |
-| | | MIG M. |
-|=========================================+======= ===============+======================|
-| 0 NVIDIA GeForce RTX 4090 Off | 00000000:01:00.0 Off | Off |
-| 0% 33C P8 17W / 450W | 33MiB / 24564MiB | 0% Default |
-| | | N/A |
-+----------------------------------------+------ ---------------+----------------------+
-                                                                                         
-+------------------------------------------------- -----------------------------------------------+
-| Processes: |
-| GPU GI CI PID Type Process name GPU Memory |
-| ID ID Usage |
-|================================================== ======================================|
-| 0 N/A N/A 2960548 G /usr/lib/xorg/Xorg 9MiB |
-| 0 N/A N/A 2960714 G /usr/bin/gnome-shell 10MiB |
-+------------------------------------------------- -----------------------------------------------+
+## 4. The LangChain ecosystem: three responsibilities, not one blurred label
+
+### What I thought in 2024
+
+LangChain was often used as shorthand for the entire LLM application stack. Chains, retrieval, agents, tracing, and deployment appeared in one architecture diagram. That was convenient during exploration, but it hid operational boundaries.
+
+### The 2026 reassessment: changed
+
+The current official documentation draws a more useful separation:
+
+- **LangChain** provides high-level abstractions for models, messages, tools, and agents. It is useful for assembling an application quickly.
+- **LangGraph** provides graph execution and persistence for long-running, stateful workflows that may pause, resume, or involve human approval.
+- **LangSmith** handles traces, datasets, evaluation, experiment comparison, and production observability.
+
+They can work together; they do not have to travel as a bundle. A small question-answering endpoint may not need a graph. A multi-tool process that can pause for approval should not disguise its state machine as an ever-growing prompt.
+
+**Verdict: changed.** Framework branding matters less than responsibility. High-level abstractions buy speed, explicit state buys reliability, and tracing plus evaluation makes failure visible.
+
+Official documentation: [LangChain overview](https://docs.langchain.com/oss/python/langchain/overview), [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview), and [LangSmith observability](https://docs.langchain.com/langsmith/observability).
+
+## 5. Early agent projects: a prototype's importance is not a production promise
+
+### What I thought in 2024
+
+ChatDev and AutoGPT made model planning, tool use, and role-based collaboration tangible. They opened a door: natural language could be more than generated output; it could become an interface for controlling a software process.
+
+### The 2026 reassessment: historically useful, operationally changed
+
+- **ChatDev** is a research prototype for multi-agent collaboration in software development. Its roles, communication chain, and simulation of a development process are instructive, but a demo workflow is not a production engineering standard.
+- **AutoGPT** later grew into a broader agent platform. The autonomous-loop agent popular in 2024 was one stage in that history, so old tutorials are poor evidence for its current interfaces or maintenance model.
+- **Langchain-Chatchat**, **FinGLM**, and **FastChat** preserve distinct experiments in Chinese knowledge-base question answering, financial tasks, and model-serving infrastructure. They address different layers and should not be presented as interchangeable “QA products.”
+
+The best way to read an older project is not to ask whether it is still fashionable. Ask whether we have solved the failure modes it exposed: runaway loops, tool misuse, lost state in long tasks, uncontrolled cost, and permissions that dissolve at the model boundary. Those constraints have not aged out.
+
+**Verdict: changed.** Agent design has moved away from “more autonomy is always better” toward completing work inside explicit boundaries. An agent that can stop, request approval, and explain a failure is often more capable than one that takes ten more steps.
+
+Primary sources: the [ChatDev paper](https://arxiv.org/abs/2307.07924), [ChatDev repository](https://github.com/OpenBMB/ChatDev), [AutoGPT repository](https://github.com/Significant-Gravitas/AutoGPT), [Langchain-Chatchat repository](https://github.com/chatchat-space/Langchain-Chatchat), [FinGLM repository](https://github.com/MetaGLM/FinGLM), and [FastChat repository](https://github.com/lm-sys/FastChat).
+
+## 6. RAG: from an attached knowledge base to a verifiable evidence system
+
+### What I thought in 2024
+
+The first notes set a sensible goal for domain question answering: support Chinese and English, preserve conversational context, understand paraphrases, combine evidence across documents, and decline to invent an answer. The direction was right. “Vector search + LLM + a prompt that says do not hallucinate” is nowhere near enough for finance, health care, legal work, or internal knowledge.
+
+### The 2026 reassessment: still true, with a much higher engineering bar
+
+The original RAG paper combined parametric memory with an external, non-parametric memory. In production, that idea must become a reviewable chain of evidence:
+
+```text
+identity and permissions
+  → query understanding
+  → permission-aware hybrid retrieval
+  → reranking and deduplication
+  → evidence-grounded generation
+  → citation verification and abstention
+  → feedback, evaluation, and tracing
 ```
 
-- ChatGpt parsing
-    
-     ```jsx
-     (base) root@openim-System-Product-Name:/home/openim# nvidia-smi
-     Sat Jan 6 14:39:30 2024
-     +------------------------------------------------- -----------------------------------------------+
-     | NVIDIA-SMI 535.129.03 Driver Version: 535.129.03 CUDA Version: 12.2 |
-     | (NVIDIA system management interface version) (Graphics card driver version) (CUDA version) |
-     +----------------------------------------+------------- ----------+--------------------------+
-     | GPU Name Persistence-M | Bus-Id Disp.A | Volatile Uncorr. ECC |
-     | (GPU number and name) (persistence mode status) | (bus ID) (show activity or not) | (uncorrected volatile error check) |
-     |Fan Temp Perf Pwr:Usage/Cap | Memory-Usage | GPU-Util Compute M. |
-     | (Fan Speed) (Temperature) (Performance Status) (Power Usage/Cap) | (Video Memory Usage) | (GPU Utilization) (Compute Mode) |
-     | | | MIG M. |
-     | | | (MIG mode status) |
-     +----------------------------------------+------ ---------------+----------------------+
-     | 0 NVIDIA GeForce RTX 4090 Off | 00000000:01:00.0 Off | Off |
-     | (GPU number) (GPU model) (persistence mode) | (bus ID) (show activity) | (volatile error checking) |
-     | 0% 33C P8 17W / 450W | 33MiB / 24564MiB | 0% Default |
-     | (Fan Speed) (Current Temperature) (Performance Status) (Current/Maximum Power) | (Current/Total Video Memory) | (GPU Utilization) (Compute Mode) |
-     | | | N/A |
-     +----------------------------------------+------ ---------------+----------------------+
-                                                                                             
-     +------------------------------------------------- -----------------------------------------------+
-     | Processes: |
-     | (process list) |
-     | GPU GI CI PID Type Process name GPU Memory |
-     | (GPU number) (GI) (CI) (Process ID) (Type) (Process name) (GPU memory usage) |
-     |================================================== ======================================|
-     | 0 N/A N/A 2960548 G /usr/lib/xorg/Xorg 9MiB |
-     | (GPU number) (N/A) (N/A) (Process ID) (Graphics process) (Process name) (Video memory usage) |
-     | 0 N/A N/A 2960714 G /usr/bin/gnome-shell 10MiB |
-     | (GPU number) (N/A) (N/A) (Process ID) (Graphics process) (Process name) (Video memory usage) |
-     +------------------------------------------------- -----------------------------------------------+
-     ```
-    
+### 6.1 Permission checks belong before retrieval
 
-**Fine-tuning-Adapter:**
+Document access rules must apply during retrieval. Fetching forbidden content and then asking the model not to mention it is not access control.
 
-The **Adapter** module is added to each layer of the pre-trained model. During fine-tuning, only the parameters of the **Adapter** are updated. The **Adapter** is 2 linear layers, which reduces the dimension now and then increases the dimension. Fine-tuning for different tasks.
+Store tenant, group, and document- or passage-level ACL metadata with the index, then filter by caller identity. Treat source files, parsed text, embeddings, caches, and traces as one security boundary. Sensitive material can leak from any layer, not only from the final answer.
 
-[Finetuning LLMs Efficiently with Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters)
+### 6.2 Use hybrid retrieval, then rerank
 
-**Fine-tuning-lora:**
+Dense retrieval is good at semantic similarity. Lexical retrieval is good at exact entities, policy numbers, and error codes. Merge both result sets, then rank the candidates with a cross-encoder or another reranker. That is usually more dependable than increasing `top_k` until the context is full.
 
-[Practical Tips for Finetuning LLMs Using LoRA (Low-Rank Adaptation)](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms)
+Chunking should also preserve structure: headings, tables, code blocks, page numbers, and parent-child relationships. Fixed character windows throw away the shape of a document.
 
-**Fine-tuning-qlora:**
+The *Lost in the Middle* study found that models can use relevant information less effectively when it sits in the middle of a long context. A larger context window is not an invitation to paste in every retrieved passage.
 
-> Compare lora:
->
+### 6.3 A citation must lead back to evidence
 
-[LoRA and QLoRA- Effective methods to Fine-tune your LLMs in detail.](https://medium.com/@levxn/lora-and-qlora-effective-methods-to-fine-tune-your-llms-in -detail-6e56a2a13f3c)
+Every consequential claim should map to a stable `document_id`, version, page, or passage anchor. After generation, verify that:
 
-github:
+- the cited passage supports the nearby claim;
+- the document version is still valid;
+- the current user can open the citation;
+- conflicting sources are surfaced rather than silently blended.
 
-[GitHub - artidoro/qlora: QLoRA: Efficient Finetuning of Quantized LLMs](https://github.com/artidoro/qlora?tab=readme-ov-file)
+Citations are not decoration. They let readers verify an answer and let maintainers distinguish a retrieval failure from a ranking or generation failure.
 
-blog:
+### 6.4 Abstention is a policy, not a sentence in the prompt
 
-[QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314)
+“The available sources do not answer this” should be triggered by measurable conditions: no permission-approved candidate, a top reranker score below a calibrated threshold, conflicting evidence, failed citation verification, or a query beyond the declared scope.
 
-## LangChain-AI
+When the system abstains, it can say what evidence is missing and suggest a narrower question or an additional document. It should not use fluent prose to plaster over an evidence gap.
 
-https://github.com/langchain-ai/langchain
+Thresholds need data, not intuition. Calibrate them on a validation set that includes answerable, unanswerable, adversarial, and permission-denied queries, while accounting for the cost of a false answer.
 
-**Architectural Design:**
+### 6.5 Connect offline evaluation to online observation
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/75a5484a-0cd7-4657-9986-f815c6264948/cffb91d2-ba01-4b2d-a872-e50d673d1e67/Untitled.png )
+A useful minimum evaluation set records the question, expected answer or grading rule, supporting documents, answerability, caller identity, permissions, and time/version context. Measure each layer separately:
 
-LangChain-Core is the core function
+| Layer | What to measure |
+|---|---|
+| Retrieval | Recall@k, MRR or nDCG, permission-filter accuracy |
+| Generation | Faithfulness, answer relevance, citation completeness and correctness |
+| Abstention | Recall on unanswerable queries and false-refusal rate |
+| System | End-to-end success, P95 latency, token and retrieval cost, error rate |
 
-**LangChain Hub:**
+RAGAS introduced ways to evaluate RAG pipelines without a human-written reference answer for every sample. Automated judges still need calibration against human-labeled examples.
 
-<aside>
-💡 LangSmith also supports privatized deployment and provides full life cycle observability capabilities
+In production, a trace should preserve query rewrites, retrieved passages, reranker scores, model and prompt versions, citations, and user feedback. The point is not to accumulate logs. It is to make one bad answer reproducible.
 
-</aside>
+**Verdict: the direction still holds; the definition has matured.** RAG is not merely a way for a model to know more. It is a way for a system to know where an answer came from, who may see it, when to remain silent, and how to find the fault afterward.
 
-[LangSmith](https://smith.langchain.com/hub?organizationId=757a0f72-774c-5d23-8e2a-61e730f41b20)
+Papers: [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401), [Lost in the Middle](https://arxiv.org/abs/2307.03172), and [RAGAS: Automated Evaluation of Retrieval Augmented Generation](https://arxiv.org/abs/2309.15217).
 
-> Langsmith’s invite code needs to be obtained from others, github issue or mail
->
+## 7. A production acceptance checklist for 2026
 
-LangChain Chat:
+If I were rebuilding the domain QA system imagined in 2024, I would write the acceptance criteria before choosing a model or framework:
 
-https://chat.langchain.com/
+- [ ] Every indexed item has provenance, a version, an update time, a parse status, and access rules.
+- [ ] Evaluation covers Chinese and English, acronyms, ambiguity, cross-document questions, stale material, and questions with no answer.
+- [ ] Retrieved passages are inspectable; hybrid retrieval and reranking can be evaluated independently.
+- [ ] Consequential claims have passage-level citations that open the source the current user is allowed to read.
+- [ ] Permission filtering happens during retrieval; caches and traces do not bypass the boundary.
+- [ ] Abstention conditions are calibrated with data rather than delegated to a prompt.
+- [ ] Model, embedding, reranker, index, and prompt versions are traceable.
+- [ ] Every upgrade runs the same regression suite and compares quality, latency, and cost.
+- [ ] High-risk actions require deterministic controls or human approval; the model cannot grant itself authority.
 
-## AI Agent
+## Conclusion: when the tide recedes, boundaries remain
 
-Although everyone from Bill Gates to OpenAI is talking about AI Agent, it does not yet have a precise definition. At present, the consensus reached in the industry about AI Agent mainly comes from a blog post by OpenAI. It defines AI Agent as: a large language model serves as the brain. Agent has the ability to perceive, remember, plan and use tools, and can automatically achieve the user's complex goals. This actually lays the basic framework of AI Agent.
+In 2024, I was more interested in which abilities a model might acquire next. Looking back in 2026, I care more about whether the surrounding system can admit what it does not know.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/75a5484a-0cd7-4657-9986-f815c6264948/97a4bb6e-5bc5-4b45-8dbf-2c61e6c7447b/Untitled.png )
+Emergence tells us not to underestimate what scale may change; the debate around emergence tells us not to overestimate our ruler. LoRA and QLoRA lower the training barrier but do not perform data governance for us. Agents extend the boundary of programs into natural language, then return the old problems of permission and state in a sharper form. RAG attaches external knowledge to a model, but only citations, abstention, evaluation, and observability can turn “it knows” into “we can trust the answer.”
 
-**Wall-Facing Intelligence (ModelBest)** A large model full-process automated software development framework OpenBME/ChatDev jointly developed with the NLP Laboratory of Tsinghua University
-
-https://github.com/OpenBMB/ChatDev
-
-https://chatdev.toscl.com/zh
-
-Install the plugin using:
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/75a5484a-0cd7-4657-9986-f815c6264948/590b5b0d-cf4b-4052-9ec6-c28f7ce88833/Untitled.png )
-
-**Classic projects of AI Agent:**
-
-https://github.com/Significant-Gravitas/AutoGPT
-
-## Build a question and answer system using large models
-
-Traditional search systems are based on keyword matching. When facing business scenarios such as game guides, technical maps, and knowledge bases, they lack the ability to understand user questions and secondary processing of answers.
-
-Large Language Model (LLM), through its ability to understand and generate natural language, can figure out user intentions, summarize and integrate original knowledge points, and generate more appropriate answers. About basic ideas, verification effects and expansion directions
-
-**Large model building question and answer model:**
-
-1. Use fine-tuning method (MedGPT, medical large model, ChatMed)
-2. Use fine-tuning combined with plug-in knowledge base (large legal model, ChatLaw)
-3. Leverage the capabilities of general large models and use plug-in knowledge bases.
-
-**Excellent open source projects:**
-
-https://github.com/chatchat-space/Langchain-Chatchat
-
-https://github.com/MetaGLM/FinGLM
-
-https://github.com/lm-sys/FastChat
-
-> Requirements: For the same type of question and answer system, similar to the OpenKF project http://github.com/OpenIMSDK/openkf
-Implement a local knowledge base (the underlying knowledge base LLM model can be replaced or even connected to the API):
->
->
-> ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/75a5484a-0cd7-4657-9986-f815c6264948/4ec213b0-dac3-48fa-a077-26d5486eab48/Untitled. png)
->
-
-To create a **Domain-specific Knowledge** **Question and Answer** system, the specific requirements are:
-
-- Interact with users through natural language question and answer, supporting both Chinese and English.
-- Understand users' different forms of questions and find matching answers. Secondary processing of answers can be performed, such as deduplication and aggregation of multiple associated knowledge points.
-- Support context. Some questions may be complex or cannot be covered by original knowledge and require information to be extracted from historical conversations.
-- precise. Don't appear [plausible]Or meaningless](https://link.zhihu.com/?target=https%3A//www.entrepreneur.com/growth-strategies/the-advantages-and-disadvantages-of-chatgpt/450268)’s answer. (Especially important for the financial industry)
-
-Some questions don't necessarily need to be answered with large models, either. For some questions, such as computer-related questions and questions with reasoning, the output of the model is prone to problems. We use the method of directly building templates to answer, or use the FAQ question and answer system.
-
-> FAQ question and answer system project:
-https://github.com/wzzzd/FAQ_system
->
-
-[Build a FAQ intelligent question and answer system](https://zhuanlan.zhihu.com/p/602337390)
-
-**resource:**
-
-> Organize open source Chinese language models, focusing on smaller models that can be deployed privately and have lower training costs, including base models, fine-tuning and applications in vertical fields, data sets and tutorials, etc.
->
-
-https://github.com/HqWu-HITCS/Awesome-Chinese-LLM
-
-## FAQ
-
-- Core competitiveness under the big language model
-- Training data for large language models (including code OR issue)
-- The impact of the construction format of the knowledge base on accuracy: There is no standardized paradigm for data analysis. What is defined is a collection of questions, and then starts from the structure of the data (slices and document blocks)
-- Recall rate questions: Record questions and recall answers in one-to-one correspondence;
-- Large model hallucination phenomenon: Do not answer unfamiliar and uncertain questions, process from the prompt words, and return to recall
-- Multiple knowledge bases of the enterprise: How to choose the specified knowledge base to answer the large model, and use the large model to do fine-tuning and classification tasks
-- Special data (picture) processing of PDF, and processing of redundant information
+Technology waves reward the first people to name a new idea. Systems that last usually belong to those willing to define failure precisely.

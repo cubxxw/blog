@@ -1,5 +1,5 @@
 ---
-title: 'One Person and a Crew of Agents Rebuilt a 120-Post Blog From the Ground Up'
+title: 'How AI Agents Rebuilt My 120-Post Blog From Scratch'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-17T17:30:00+08:00'
 draft: false
@@ -7,7 +7,7 @@ showtoc: true
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ['AI blog', 'rebuild blog with AI', 'Claude Code', 'Codex', 'MCP', 'Skills', 'AI workflow', 'blog automation', 'GEO', 'generative engine optimization', 'AI cover generation', 'GitHub Actions', 'Hugo', 'solo builder', 'cubxxw']
+keywords: []
 tags:
   - AI
   - Agent
@@ -15,27 +15,28 @@ tags:
   - Automation
   - Harness Engineering
   - GEO
-  - Hugo
   - Blog
+categories:
+  - Technology
 description: >
-  I rebuilt a four-year-old blog of 120+ posts with a crew of agents: a master-source writing pipeline, a skills library, a self-hosted MCP server, a two-stage cover factory, an AI on duty inside GitHub Actions, and five layers of GEO infrastructure. This is the full retrospective — how each layer was built, how I actually talk to the models, what I delegate and what I never will, and what the new site looks like.
+  I rebuilt a 120-post Hugo blog with AI agents, human review, MCP, GitHub Actions, a cover pipeline, and a measured GEO experiment. Here is what held up.
 tldr:
-  - The new site is at cubxxw.com. What got rebuilt was not the skin but the whole production line — a master-source writing pipeline, a skills library, a self-hosted MCP server, a two-stage cover factory, an AI on duty inside GitHub Actions, and five layers of GEO infrastructure.
+  - As of July 2026, the new site is at cubxxw.com. What got rebuilt was not the skin but the production line — a master-source writing pipeline, seven Claude skills, a self-hosted MCP server, a two-stage cover factory, four `seo-` GitHub Actions workflows, and a five-layer GEO experiment.
   - Talking to AI comes down to a few patterns that keep proving themselves — give tasks not directions (every task has a definition of done), send plans through adversarial review before execution, ask "how would I find out if this breaks?" of every module, and fence permissions with an allowlist rather than an adjective.
   - The engineering discipline behind Claude and Codex is "structure is constraint" — CLAUDE.md/AGENTS.md hold only the version-sensitive traps, craft lives in single-purpose skills, and permissions get granted narrow-to-wide over time.
   - Cover generation is deliberately two-stage — reading the piece and imagining the image goes to a language model (or me), and the image model receives exactly one concrete scene, because every abstraction you feed it comes back misspelled and painted onto the picture.
-  - The automation boundary is drawn sharply — the AI reads the data and files a daily report, opens a PR when named, but the merge is always human. 98.4% of the scaffolding can be handed off; the 1.6% that is judgment cannot.
+  - The automation boundary is drawn sharply — AI reads the data and files a daily report, then prepares a PR when asked, but a human decides whether to merge. The scaffolding can be delegated; judgment and authorship cannot.
 maturity: budding
 cover:
   image: /images/covers/ai-agent/2026/ai-native-blog-rebuild.jpeg
-  alt: "One Person and a Crew of Agents Rebuilt a 120-Post Blog From the Ground Up"
+  alt: "How AI agents rebuilt a 120-post Hugo blog with a human editor"
 ---
 
 ## What actually happened here
 
 How large a team does it take to rebuild a four-year-old blog with 120+ posts — content architecture, operations, all of it?
 
-My answer, delivered over the first half of this year: **one person and a crew of agents with clearly divided jobs.** The human owns judgment and direction; the agents own nearly all the execution. The result is the site you're reading — [cubxxw.com](https://cubxxw.com/). It isn't a redesign. It turned "a blog" from a static site into **a system that writes its own daily report, files its own fix proposals, and exposes its own API.**
+My answer, delivered over the first half of this year: **one person and a crew of agents with clearly divided jobs.** “Crew” is a working metaphor, not a fixed headcount of digital employees. As of July 2026, the repository contains seven Claude skills and four workflows whose names begin with `seo-`; Claude Code, Codex, the Claude jobs inside GitHub Actions, and temporary review sessions are started only when a task calls for them. The human owns judgment, boundaries, and the final signature. Agents own scoped work that can be tested. The result is the site you're reading — [cubxxw.com](https://cubxxw.com/). It isn't merely a redesign. It turned “a blog” from a static site into **a system that generates a daily report, prepares fix proposals, and exposes its own search interface.**
 
 ![The new home page: identity and signals on the left, BEAR_AI — a digital counterpart you can talk to — on the right](/images/blog/rebuild-2026/home-light.jpeg)
 
@@ -91,13 +92,13 @@ All five collapse into one sentence: **direction, standards, and boundaries are 
 
 Question patterns solve "how to ask well once." The real leverage is **making a good way of asking reusable.** That's what skills are in my system: every skill under `.claude/skills/` is a verified work instruction that the AI follows each time, so it no longer depends on me re-describing it.
 
-Six skills live in this repo now: `article-covers` (cover generation), `apple-design` and `emil-design-eng` (design taste and implementation standards), `animation-vocabulary`, `review-animations`, and `improve-animations` (a vocabulary, a review standard, and an improvement process for motion) — plus a `/check-posts` command, the pre-publish QA checklist that walks front-matter timezones, future timestamps, tag conventions, and bilingual completeness, item by item.
+Seven Claude skills live in this repo as of July 2026: `article-covers` (cover generation), `apple-design` and `emil-design-eng` (design taste and implementation standards), `animation-vocabulary`, `review-animations`, and `improve-animations` (a vocabulary, a review standard, and an improvement process for motion), plus `seo-autofix`. The separate `/check-posts` command is the pre-publish QA checklist that walks front-matter time zones, future timestamps, tag conventions, and bilingual completeness item by item.
 
 Let me take apart the most representative one, `article-covers`, since it also answers the "how are the images made?" question.
 
 ### The cover factory: two-stage image generation
 
-All hundred-plus posts need covers (a post without one produces an identical preview card everywhere it's shared). My solution is a script pipeline, `scripts/generate-covers.mjs`, sitting on two image models: Doubao Seedream (default, direct domestic connection, roughly three cents an image) and Gemini (fallback).
+All hundred-plus posts need covers (a post without one produces an identical preview card everywhere it's shared). My solution is a script pipeline, `scripts/generate-covers.mjs`, sitting on two image models: Doubao Seedream by default and Gemini as a fallback. Provider prices and retry rates move, so the useful fact is not a permanent per-image quote: as of July 2026, a successful cover usually costs me only a few Chinese yuan or less, while rejected generations cost extra.
 
 But the script isn't the valuable part. The valuable part is that the process is forcibly split into **two stages**:
 
@@ -111,7 +112,7 @@ Why the split? Because I've paid cash for both failure modes:
 
 So the division has to be: **understanding goes to the thing that can read, drawing goes to the thing that can draw, and exactly one sentence of plain language passes between them.** Then a few non-negotiable rules: one style anchor site-wide (flat editorial magazine illustration, low saturation, no more than four colors, generous white space), no faces, no logos, no text of any kind in the image, and the Chinese and English versions share the same picture. Once generated, I open it and look before deciding whether to use it — the one stage in this pipeline that can't be automated, and shouldn't be.
 
-Getting this working the first time cost me an evening. Every new post's cover since then costs one scene description and three cents. **That's what a skill is for — you pay tuition once.**
+Getting this working the first time cost me an evening. Each new post since then starts with one scene description, followed by however many generations it takes to make an image I am willing to publish. **That's what a skill is for — you pay tuition once, then keep the judgment in the loop.**
 
 ---
 
@@ -177,7 +178,13 @@ The last piece of the rebuild is GEO — generative engine optimization. As more
 
 ![The GEO column landing page: six pieces, from principles through practice to measurement](/images/blog/rebuild-2026/column-geo.jpeg)
 
-A few of the concrete moves that landed in this rebuild: robots explicitly welcomes GPTBot, ClaudeBot, and the PerplexityBots; `llms.txt` sits at the site root; every post's front matter carries a structured `tldr` field — exactly the paragraph-level extractable conclusion an AI wants when it's pulling an answer; four kinds of JSON-LD structured data are in place. The more painful cut was to the index: across four years the blog had accumulated tag pages where seven in ten tags had a single post underneath, and those thin pages made up more than half the sitemap. Once they were uniformly noindexed and kicked out, the URL count submitted to search engines nearly halved, handing the crawl budget back to the actual writing. And then there's the domain migration (cubxxw.com → cubxxw.com), the kind of thing where one wrong step wastes all of it: 301s that preserve paths, old and new assets coexisting under monitoring, old-domain redirects kept at least 180 days.
+A few concrete moves landed in this rebuild. The generated `robots.txt` allows the documented OpenAI, Anthropic, and Perplexity user agents, including OAI-SearchBot, GPTBot, ClaudeBot, and PerplexityBot. Those names do not all serve the same purpose: [OpenAI distinguishes OAI-SearchBot, used for ChatGPT search visibility, from GPTBot, used for potential model training](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq); [Anthropic](https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) and [Perplexity](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) publish their own crawler controls. Allowing them removes one access barrier. It does not prove that a page will be fetched, selected, or cited.
+
+The site also publishes `llms.txt`, many of the rebuilt posts carry a structured `tldr` field used by this site's templates and content index, and the templates emit several JSON-LD types. Here too, the boundary between implementation and evidence matters. As of July 2026, [`llms.txt` remains a proposal](https://llmstxt.org/), so I treat it as a cheap interoperability experiment, not a ranking switch. `tldr` is a local field, not a search-engine ranking factor. [Google's documentation makes the narrower case for structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data): it can help Google understand a page and make the page eligible for certain search features, but it guarantees neither display nor citation.
+
+The more painful cut was to the index. Across four years the blog had accumulated tag pages where roughly seven in ten tags had only one post underneath, and those thin pages occupied a large share of the sitemap. I marked the tag aggregates I do not want in search results as `noindex` and removed them from the sitemap. [`noindex` keeps a crawled page out of Google Search](https://developers.google.com/search/docs/crawling-indexing/block-indexing), while a [sitemap is a signal about the canonical URLs a site considers important](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview). Neither action proves that saved crawling will be reassigned to articles. Google's [crawl-budget guidance](https://developers.google.com/crawling/docs/crawl-budget) is aimed mainly at million-page sites or rapidly changing sites with tens of thousands of URLs, and it explicitly notes that Google must crawl a page before it can see `noindex`. For a personal blog with a little over 120 posts, this was chiefly an index-quality and site-structure cleanup.
+
+The site did move domains once. The repository history identifies the old domain as `nsddd.top` and the current one as `cubxxw.com`. The migration uses path-preserving permanent redirects and monitoring across the old and new properties. My earlier note said to keep redirects for 180 days; that was too short. [Google recommends keeping site-move redirects for as long as possible, generally at least one year](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes).
 
 The complete methodology is in the column; the real-data retrospective on my own site (why 870k impressions bought only 852 clicks, and how to strip the vanity out of a metric) is its own piece, [the rebuild case study](../geo-blog-rebuild-case-study/). One sentence is worth keeping here: **a perfect technical score only buys you a ticket in. What decides whether you get cited is structure, evidence, and endorsement.**
 
@@ -191,7 +198,7 @@ The reorganized content is in service of citation too: every multi-part long-for
 
 An honest retrospective has to include this section.
 
-The English side lags the Chinese — the adapters can derive a first draft, but I haven't established a stable rhythm for English polish. Covers are backlogged: the two-stage factory runs fine, but the red line requiring human eyes on every image turns backfilling old posts into slow work, and I accept that pace. Indexing is still climbing — the new domain's index rate remains ugly, transferring authority after a domain migration takes patience measured in months, and GEO's off-site endorsement layer (L5) is essentially untouched. And the radius of automation stops at "suggestion to PR" — I've tried imagining fully automatic merges, and I stop at the same question every time: when it goes wrong, who notices? Until that has a reliable answer, the signature stays in-house.
+As of July 2026, the English side still lags the Chinese — the adapters can derive a first draft, but I haven't established a stable rhythm for English polish. Covers are backlogged: the two-stage factory runs fine, but the red line requiring human eyes on every image turns backfilling old posts into slow work, and I accept that pace. Indexing is still climbing, and search visibility can fluctuate during a domain move; GEO's off-site endorsement layer (L5) is essentially untouched. The radius of automation also stops at “suggestion to PR.” I've tried imagining fully automatic merges, and I stop at the same question every time: when it goes wrong, who notices? Until that has a reliable answer, the signature stays in-house.
 
 These are logged here as both a reminder and the backlog for the next round.
 
@@ -203,7 +210,7 @@ These are logged here as both a reminder and the backlog for the next round.
 A: Yes. The master-source pipeline, the question patterns, the two-stage cover factory, the AI on duty, and the GEO checklist don't depend on Hugo. Only the concrete scripts (index generation, front-matter parsing) need rewriting for your system — which is precisely the kind of task with a clean definition of done that you should hand to an AI.
 
 **Q: What does the whole system cost per month?**
-A: The bulk is Claude subscription plus API usage; covers bill at roughly three cents each; GitHub Actions stays inside the free tier; Netlify's free tier is enough. For a personal site the total is about the price of a meal out — provided your own time investment bought leverage rather than one more pile of toys that need tending.
+A: As of July 2026, my largest cash costs are the Claude subscription and API usage. A cover usually costs a few Chinese yuan or less, with retries billed again. This repository's GitHub Actions usage and Netlify deployment had not exceeded the allowances available on my accounts, so their incremental bill was close to zero. That is a record of my usage, not a promise that either platform will remain free or that a high-frequency team will fit inside the same limits. The expensive part is still time: if automation does not reduce rework, it is only another pile of tools that needs tending.
 
 **Q: Why not let the AI write the posts and publish automatically?**
 A: Because I tried letting AI chase information and produce content end to end, and I took apart where its limits are [here](../ai-auto-news-pipeline-limits/): collection, organization, and derivation it handles fine, but "is this worth writing, what's the argument, does it deserve my name on it" is judgment. Outsource the judgment and the blog has no reason to exist. The agents assembled this place, but the one who lives in it has to be me.

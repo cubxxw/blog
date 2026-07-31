@@ -1,12 +1,13 @@
 ---
-title: "The Agent Engineering Map: Where Does That 98.4% of the Work Actually Live?"
+title: "Agent Engineering Harness: The Eight Pillars Behind the 98.4%"
 date: 2026-06-17T09:30:00+08:00
+lastmod: 2026-07-31T12:00:00+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["Agent Engineering", "Agent Harness", "AI Agent", "Context Engineering", "Durable Execution", "LangGraph", "Claude Code", "Multi-Agent", "Sandbox", "LLM-as-Judge", "MCP", "Temporal", "Agent Architecture"]
+keywords: []
 tags:
   - AI
   - Agent
@@ -15,49 +16,38 @@ tags:
   - Architecture
   - MCP
 description: >
-  A panoramic map that treats Agent Engineering as a discipline. Starting from the widely cited claim that only 1.6% of Claude Code is AI decision logic while 98.4% is infrastructure, it walks the eight pillars one by one — orchestration, context, memory, tools, reliability, evaluation, cost, governance — explaining the gap each fills, its minimal implementation, and its failure boundary. It fuses 2025 to 2026 frontline engineering from Anthropic, OpenAI, Cognition, Manus, and Temporal, and lands on one line: the model is bought, the harness is built, and your entire engineering leverage lives in that 98.4%.
+  Agent Engineering Harness explained through eight production pillars: orchestration, context, memory, tools, reliability, evaluation, cost, and governance.
 tldr:
-  - "The agent loop is 10 lines of code; agent engineering is 100,000 lines. A paper reverse-engineering Claude Code v2.1.88 gives the narrative anchor: the core is a simple while loop, and almost all the code lives in the infrastructure around it — a permission system, a five-layer compaction pipeline, subagent isolation, session storage."
-  - "The discipline exists because of one impedance mismatch: a stateless probabilistic predictor must be wired into a stateful, unbounded world. The harness is the circuit between them. It does not add intelligence; it adds controllability."
-  - Eight pillars - orchestration lets it take many steps, context keeps it from rotting, memory lets it become someone across sessions, tools let it change the world, reliability keeps it from crashing, evaluation makes it measurable, cost makes it affordable, governance keeps autonomy from becoming chaos.
-  - By 2025 to 2026 the major labs had converged - context is a finite, rotting resource; externalized memory is the universal answer; a checkpoint is not durable execution; multi-agent only pays off on read-heavy parallel tasks; and safety lives in the harness, not the model.
-  - The single axis for choosing a framework - look at which pillars' decision rights it takes off your hands. Hand over the pillars that are not your differentiator, and concentrate your engineering on the moat that actually is.
+  - "98.4% is a narrative anchor, not a paper-reported measurement. The defensible claim is simpler: most production engineering surrounds the model loop."
+  - "The harness connects a probabilistic model call to persistent state, tools, budgets, permissions, recovery, and evaluation."
+  - "Its eight concerns are orchestration, context, memory, tools, reliability, evaluation, cost, and governance."
+  - "Choose frameworks by the decisions they safely remove from your team, not by the number of abstractions they advertise."
 maturity: budding
 cover:
   image: '/images/blog/agent-engineering-harness.webp'
-  caption: 'The eight pillars of Agent Engineering: the 100,000 lines of fortification wrapped around a 10-line agent loop.'
+  caption: 'Eight engineering concerns surrounding a small agent loop.'
   alt: 'A technical diagram with a tiny agent loop at the center, surrounded by concentric rings of the eight pillars: orchestration, context, memory, tools, reliability, evaluation, cost, governance'
 columns:
   - agent-engineering
 ---
 
-> "The agent loop is 10 lines of code. Agent engineering is 100,000 lines of code."
+> A small model loop becomes a system only after we decide what it may remember, touch, spend, and survive.
 
-The first time I read that, I paused — and the more I sat with it, the sharper it cut. It punctures the single biggest illusion in this whole field: people think building an agent means writing a good prompt and wiring up an LLM API. But the actual work of pushing a demo to production — of running safely, unattended, all night long — is 99% not in that loop.
+An agent demo can be a loop around an API call. A production agent is the surrounding discipline: state, tools, permissions, recovery, evaluation, and cost. This article offers a map of that discipline rather than a framework tutorial. Each pillar is described through the gap it fills, a minimal implementation, and the boundary where it stops helping.
 
-This article does one thing: it treats **Agent Engineering** as a **discipline**, not a tutorial. I won't teach you how to use LangGraph. I want to hand you a **map** — which eight pillars this discipline is built on, what gap each one fills that the previous one left open, what its minimal implementation looks like, and when it fails. Once you have the map, you can look at any agent framework or any vendor's engineering blog and immediately locate it on the terrain.
-
-Half the material comes from the pits I keep falling into building agent systems myself; the other half comes from what the frontline teams at Anthropic, OpenAI, Cognition, Manus, and Temporal published over 2025 and 2026. I'll cite sources as carefully as I can — because in this field, **misattributed "facts" travel faster than the truth**, and we're about to hit the first one immediately.
+The factual review below is current through **31 July 2026**. Precise claims are linked to first-party engineering posts, specifications, or the original paper. Numbers that could not be tied to a stable version and evaluation setting have been removed.
 
 ---
 
 ## The Number Everyone Cites: 98.4%
 
-Let's start with a number that has spread far and wide, because it's the title of this piece and the best opening line the field has.
+The title keeps a number that travels well, but it needs a warning label.
 
-In 2026 a paper reverse-engineering Claude Code, **"Dive into Claude Code"** (VILA-Lab, arXiv: 2604.14228), analyzed Claude Code **v2.1.88** — roughly 1,900 TypeScript files and 512K lines of code. Its abstract contains a passage I'll quote verbatim:
+The original study, [*Dive into Claude Code*](https://arxiv.org/abs/2604.14228) (submitted 14 April 2026; revised 2 July 2026), analyzed publicly available TypeScript from Claude Code v2.1.88. Its abstract says the core is a simple loop and that most code sits around it: permissions, compaction, extensibility, delegation, and session storage.
 
-> "The core of the system is a simple while-loop that calls the model, runs tools, and repeats. Most of the code, however, lives in the systems around this loop: a permission system with seven modes and an ML-based classifier, a five-layer compaction pipeline for context management, four extensibility mechanisms (MCP, plugins, skills, and hooks), a subagent delegation mechanism with worktree isolation, and append-oriented session storage."
+It does **not** report a reproducible “1.6% intelligence / 98.4% infrastructure” measurement in the abstract, nor does it define a stable denominator for that split. Here, **98.4% is only a narrative anchor**. It should not appear in a benchmark table, a design requirement, or a claim about every agent.
 
-Note an **important correction** here: the famous precise figure — "**1.6% is AI decision logic, 98.4% is infrastructure**" — is **not in the paper's abstract**. It's a rendering from secondhand summaries. And plenty of people online attribute it to the minusx blog, or to a "UCL team reverse-engineering leaked source." Both attributions are **wrong**. minusx's "Decoding Claude Code" is a great piece, but it contains no percentages at all; and the paper isn't based on leaked source — it analyzes public TypeScript.
-
-So my advice: **use 98.4% as a narrative frame, not a precise metric.** It's a line-count estimate of the fuzzy category "AI decision logic," a judgment call by the authors, not a hard measurement. But even after all those discounts, the thing it's pointing at still holds, and it's enormously important:
-
-**The bulk of the engineering in a production-grade agent isn't in the prompt or the model call — it's in that ring of infrastructure outside the model.** The industry has a name for that ring: the **harness**.
-
-> OpenAI uses the word too. Their January 2026 piece dissecting Codex is literally titled "Unrolling the Codex agent loop," and it opens by saying: "This post focuses on the **Codex harness**, which provides the core agent loop and execution logic." LangChain, in its March 2026 piece "The Anatomy of an Agent Harness," formalizes it even harder: **Agent = Model + Harness**, where the harness is "every piece of code, configuration, and execution logic that isn't the model itself." They even offer a striking benchmark: **holding the model constant and changing only the harness**, they pulled their own coding agent from Top 30 to Top 5 on Terminal Bench 2.0.
-
-Hold this image: model capability is something you **buy — uncontrollable**; the harness is something you **write — controllable**. So all of an agent engineer's leverage lives in the harness. The rest of this article is about taking that 98.4% apart.
+The defensible point is narrower: production behavior depends heavily on code outside the model call. OpenAI's [*Unrolling the Codex agent loop*](https://openai.com/index/unrolling-the-codex-agent-loop/) (23 January 2026) calls that layer the **Codex harness** and describes it as the core loop and execution logic. The model supplies capability; the harness determines how that capability is exposed, constrained, observed, and recovered.
 
 ---
 
@@ -69,21 +59,19 @@ Before listing the pillars, we have to answer a more fundamental question: **why
 
 The answer is an **impedance mismatch.** Unrolled into a causal chain:
 
-1. **An LLM is fundamentally stateless.** Each API call is an independent, one-shot function: `f(tokens_in) → tokens_out`. It has no memory, no persistence, remembers nothing between calls, and can't actually touch the outside world.
-2. **Real tasks are stateful, long-horizon, and interactive.** They span hundreds of turns, call external tools, must remember a constraint set three turns ago, and must resume from a checkpoint after a failure.
-3. **Between the two sits an impedance mismatch.** Wire a stateless predictor into a stateful, unbounded world and you need a "translation / buffer" circuit in between. **That circuit is the harness, and designing it is Agent Engineering.**
+1. **Treat a model invocation as a stateless boundary.** Persistence may exist in the product or provider, but the engineering contract for one inference call is inputs in, outputs out.
+2. **Real tasks accumulate state and side effects.** They span turns, call tools, retain constraints, and may need to resume after interruption.
+3. **The harness reconciles those boundaries.** It assembles context, records state, mediates tools, and decides what recovery means.
 
 From this throughline come two iron laws that run through everything, explaining the design motivation behind nearly every one of the eight pillars below:
 
 **Iron law one: context is a scarce, rotting compute resource.**
 
-This isn't intuition — it's measured. Anthropic puts it plainly in "Effective Context Engineering for AI Agents": context must be treated as "a finite resource with diminishing marginal returns," because the LLM has an "attention budget." The sharper phenomenon is **context rot** — "as the number of tokens in the context window increases, the model's ability to accurately recall information from that context decreases." So you can't "just put everything in." The engineering goal is the exact opposite: **find the smallest set of high-signal tokens.**
+Anthropic's [*Effective context engineering for AI agents*](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) (29 September 2025) describes context as a finite resource with diminishing marginal returns. Its practical target is the smallest set of high-signal tokens that improves the desired outcome—not the fullest possible window.
 
 **Iron law two: the core component is itself probabilistic.**
 
-Traditional software reliability is built on "deterministic components plus the occasional fault." Agent reliability has to be built on a completely different assumption — "**the component itself is unreliable; every step can be wrong.**" This is what forces the whole reliability/evaluation/governance set of pillars later. Anthropic says it bluntly in the multi-agent paper: "Agents are stateful and errors compound… without effective mitigations, minor system failures can be catastrophic for agents."
-
-Nail these two iron laws down. As you read each pillar, you'll see it's really responding to one of these two.
+Model outputs are probabilistic and tool observations may be incomplete. Any step **may** be wrong, so correctness cannot be inferred from a clean process exit. Reliability, evaluation, and governance exist because the system must detect, contain, and learn from uncertainty.
 
 ---
 
@@ -129,7 +117,7 @@ while not done(state):
 return finalize(state)
 ```
 
-Notice the `execute(action)` line — **it is the entry point to the entire harness.** When the model says "I want to `rm -rf /`," this line decides whether that happens at all, where, and whether to intercept it first. OpenAI's definition when dissecting Codex matches word for word: "At the heart of every AI agent is something called 'the agent loop,'" where the model either produces a final response or requests a tool call, then appends the result and re-queries, "until the model stops emitting tool calls."
+The `execute(action)` line is the entry point to the harness. A model can request deletion; the runtime decides whether the request is valid, where it may run, and whether approval is required. OpenAI's [Codex loop description](https://openai.com/index/unrolling-the-codex-agent-loop/) follows the same broad shape: the model emits a response or tool call, the harness appends the tool result, and the cycle continues.
 
 Let's run the loop through a real scenario. Watch the second `run_command`: the model merely **requests** the deletion — what decides whether it happens is the harness's confirmation gate:
 
@@ -145,44 +133,38 @@ Let's run the loop through a real scenario. Watch the second `run_command`: the 
 ]
 {{< /demo-agent-trace >}}
 
-**The progression** (unavoidable in both interviews and real selection):
+**Common control patterns:**
 
 - **Single-agent paradigms**
-  - **ReAct** (interleaved Reason + Act): reason then act each step; flexible, good for exploration; the downside is no global plan, so it **drifts easily and step counts diverge**.
-  - **Plan-and-Execute**: generate a full plan, then execute step by step; **token-efficient and predictable**, but once the plan is wrong, the execution phase is hard to correct.
-  - In practice they're often **hybridized**: plan a coarse skeleton, then allow ReAct-style local re-planning during execution.
+  - **ReAct** interleaves reasoning and action. It adapts locally but can drift.
+  - **Plan-and-Execute** separates planning from execution. It is easier to inspect but needs explicit re-planning when assumptions change.
+  - Many systems use a coarse plan with local re-planning.
 - **Multi-agent topologies**
-  - **Supervisor / Orchestrator-Worker** (a lead hands work to workers) — the most common and most controllable. Anthropic's multi-agent research system is exactly this: "A lead agent coordinates the process while delegating to specialized subagents that operate in parallel."
-  - **Network / Swarm** (peers talk freely) — expressive but **the easiest to lose control of**.
+  - **Supervisor / Orchestrator-Worker** gives one lead responsibility for delegation and synthesis.
+  - **Network / Swarm** gives peers more freedom but creates a larger coordination surface.
   - Protocol layer: **A2A (Agent-to-Agent)** for cross-agent communication, **MCP (Model Context Protocol)** for agent-to-tool.
 
 But here's the **single most important judgment**, worth pulling out on its own: **who controls state transitions?**
 
 > **LLM controls state transitions = Agent; deterministic code controls them = Workflow.**
 
-Anthropic draws this boundary cleanly in "Building Effective Agents": Workflows are "LLMs and tools orchestrated through predefined code paths"; Agents are "LLMs dynamically direct their own processes and tool usage." And its decision rule is almost coldly plain: "**Add multi-step agentic systems only when simpler solutions fall short.**"
+Anthropic draws this boundary in [*Building effective agents*](https://www.anthropic.com/engineering/building-effective-agents) (19 December 2024): workflows follow predefined code paths; agents dynamically direct their process and tool use. Its advice is equally useful—start with the simplest approach that works.
 
-LangGraph is "neutral" precisely because it lets you choose, in the same `StateGraph`, who decides **each individual edge** — this edge nailed down by code, that one handed to the LLM. That's why it can express both workflow and agent.
+Graph runtimes can mix both: code fixes some transitions while the model chooses others.
 
-**Failure boundary:** multi-agent is not a silver bullet — and this was the heart of a famous 2025 debate.
+**Failure boundary:** multi-agent performance is workload-specific. Anthropic reported that its lead-and-subagent research system beat its single-agent baseline by **90.2% on an internal research evaluation**, while consuming about **15× the tokens of chat**; the same post says tightly coupled tasks are a poor fit ([13 June 2025](https://www.anthropic.com/engineering/multi-agent-research-system)). Those figures describe one system and one evaluation, not a general multiplier.
 
-Cognition (the company behind Devin) published a pointed piece in June 2025, "Don't Build Multi-Agents," with a hard conclusion: "**Running multiple agents in collaboration only results in fragile systems.**" Their two principles are worth memorizing: (1) "Share context, and share full agent traces, not just individual messages"; (2) "**Actions carry implicit decisions, and conflicting decisions carry bad results.**" Their example is vivid: hand a Flappy Bird build to two parallel subagents — one paints a Mario-style background, the other a mismatched bird, and the main agent is left "to combine these two miscommunications."
-
-**The dramatic part: exactly one day later,** Anthropic published the dissenting multi-agent research piece, with hard numbers: multi-agent "outperformed single-agent Claude Opus 4 by 90.2%" on their internal research eval. But the cost is just as hard: **multi-agent systems use about 15× the tokens of a normal chat** (a normal agent is 4×), so it only pays off "when the value of the task is high enough."
-
-Put both together and the conclusion actually converges: **both agree the bottleneck is context sharing; they only disagree on the fix.** Anthropic uses multi-agent only for "read-heavy, parallelizable research," and honestly concedes it's wrong for tasks "requiring all agents to share the same context" — which is precisely Cognition's entire point. By March 2026, Cognition itself shipped "Devin can now Manage Devins," adopting controlled multi-agent. **So the real lesson isn't "multi-agent good or bad," it's: when a task can be solved by a single agent with good tools, multi-agent usually just adds coordination overhead and failure surface.**
+The durable lesson is structural: parallelize work that can be explored independently and merged cheaply. If workers must continuously share implicit state or edit the same object, coordination can consume the gain.
 
 ---
 
 ## Pillar Two: Context Engineering
 
-This is the heaviest block of 2026, the widest chasm between demo and production. **A production agent is far more likely to fail at the context layer than at the prompt layer.** I've written a dedicated piece, ["Context Is Not Prompt"](../context-engineering-the-new-foundation/) — here I just put it back into the harness structure and make clear what it solves and what it doesn't.
+Context is one of the widest gaps between a demo and a long-running system. I cover it separately in ["Context Is Not Prompt"](../context-engineering-the-new-foundation/); here it belongs inside the harness.
 
 **The gap it fills:** iron law one — finite window plus context rot.
 
-Cognition says it most heavily: "**Context engineering… is effectively the #1 job of engineers building AI agents.**"
-
-**The four failure modes of context** (Drew Breunig's taxonomy, worth memorizing):
+**Four useful failure modes:**
 
 | Failure mode | What it is | Typical fix |
 |---|---|---|
@@ -191,22 +173,18 @@ Cognition says it most heavily: "**Context engineering… is effectively the #1 
 | **Confusion** | Irrelevant info (especially too many tool descriptions) gets used, degrading output quality | Load tools on demand; only select relevant context |
 | **Clash** | Parts of the context contradict each other (multiple sources, multiple MCPs, accumulation across turns) | De-conflict; unify sources |
 
-**The four strategies** — LangChain's **Write / Select / Compress / Isolate**, the "four arithmetic operations" of context engineering:
+**Four operating strategies:**
 
 - **Write (out)**: persist information **outside** the window — scratchpad, state fields, external storage, memory tools.
 - **Select (in)**: pull only **relevant** content back into the window each turn — RAG, memory retrieval, on-demand tool mounting.
 - **Compress**: summarize rather than crudely truncate as you approach the window.
 - **Isolate**: use a schema-shaped state, exposing only the `messages` field to the LLM; or isolate subtasks into a subagent's own context.
 
-**Compress** deserves expansion, because the labs' implementations here are now quite mature. Anthropic gives **compaction** an authoritative definition: "taking a conversation nearing the context window limit, **summarizing its contents**, and **reinitiating a new context window with the summary**." Claude Code's implementation "preserves architectural decisions, unresolved bugs, and implementation details while discarding redundant tool outputs" — the lightest form being just clearing tool results.
-
-> **A small threshold pitfall:** the internet claims Claude Code triggers auto-compaction at "92%" token usage — but that number comes from a 2025 reverse-engineering of v1.0.x. The current official figure (DeepWiki) is "**~98%**" and **configurable** (`CLAUDE_AUTOCOMPACT_PCT_OVERRIDE`). When citing numbers like this, always anchor the version, or you become the source of yet another misattributed "fact."
+Anthropic defines **compaction** as summarizing a conversation near its context limit and continuing from that summary. The stable principle is to retain decisions, unresolved questions, and next actions while removing redundant tool output. Exact trigger percentages vary by model, product version, and configuration, so they do not belong in a portable architecture assumption.
 
 **And one pervasive economic constraint: the prompt cache.**
 
-The Manus team, in "Context Engineering for AI Agents," elevates this to "**the single most important metric for a production-stage AI agent**" — KV-cache hit rate, because it "directly affects both latency and cost." Their numbers land hard: Claude Sonnet's cached input is **$0.30/MTok**, uncached is **$3/MTok** — a **10× gap**; and Manus's input:output ratio is about **100:1**, meaning saving input saves everything. The iron rule: "**even a single-token difference can invalidate the cache from that token onward.**"
-
-This economics directly rewrites the optimization target: **from "minimize context size" to "maximize cache hit rate."** And it constrains the order in which you assemble context — stable parts (system prompt, tool definitions, long-term memory) up front, volatile parts (the latest observation) at the back.
+Prompt caching makes prefix stability an economic concern. Prices and cache semantics change, but the engineering habit survives: keep common instructions and tool definitions stable, append volatile observations later, and measure actual cache behavior rather than embedding an old price table in the design.
 
 **Failure boundary:** context engineering solves "what the context should be," but not "what intent it should serve." An agent can receive perfectly relevant, isolated, economical context and **still pursue a goal-violating outcome.** That's governance's job (Pillar Eight).
 
@@ -216,22 +194,16 @@ This economics directly rewrites the optimization target: **from "minimize conte
 
 **The gap it fills:** context engineering manages the window **within a single session**; but an agent needs to remember facts, preferences, and procedures **across sessions**. Memory is the continuously evolving substrate outside the window.
 
-**The four-layer memory architecture** (a remarkably stable layering):
+**A practical four-layer model:**
 
 - **Working** = the current context window itself (fastest, most expensive, most rot-prone).
 - **Episodic** = concrete records of past sessions (typically SQLite + full-text search + LLM summaries for cross-session recall).
 - **Semantic** = abstracted facts / knowledge (MEMORY.md, knowledge graphs, vector stores).
 - **Procedural** = "how to do something" (the hardest to externalize, and the most valuable).
 
-**The minimal implementation** is surprisingly simple: a `MEMORY.md` file + "have the model write down what's worth remembering at session end" + "inject it at the start of the next session." That alone runs.
+The minimal implementation can be a curated `MEMORY.md` loaded at session start. Storage is easy; selection, freshness, provenance, and forgetting are the real work. External files also make compaction less destructive: a summary can retain a path to evidence instead of pretending to preserve every detail.
 
-**The hard part is extraction and forgetting, not storage.** And this is exactly where 2025–2026 converged — **externalized memory is the universal answer** — though each lab's move differs slightly:
-
-- **Anthropic** calls it *structured note-taking*: "the agent regularly writes notes persisted to memory outside of the context window" (the memory tool is in public beta).
-- **Manus** calls it *filesystem as context*: treat the filesystem as "externalized memory — unlimited in size, persistent, directly operable by the agent," keeping compression reversible (leave URLs / paths and re-read on demand).
-- **Manus has one especially clever move — recitation**: continuously rewrite `todo.md` to the **end** of the context, exploiting the recency effect to push the goal back into the model's attention focus, fighting "lost in the middle."
-
-There's a **counterintuitive but important point of disagreement** here, worth deciding for yourself: **should you keep the errors?** The mainstream approach is aggressive compression — throw away failed tool outputs; but Manus's fifth lesson is the opposite — "**leave the wrong turns in the context**," because failed actions help the model update its beliefs and avoid repeating them. Neither philosophy is absolutely right; it depends on whether your task is "the cleaner the better" or "the more it learns from mistakes the better."
+Whether to keep failures is a policy choice. Retain a failed action when it changes the next decision; discard repetitive output that only consumes attention.
 
 **Failure boundary:** memory goes **stale** and **conflicts**. A "deployment process" written in March is wrong by May; two contradictory memories trigger context clash. So a memory system needs **versioning / freshness** and **conflict resolution**, not just append.
 
@@ -254,14 +226,12 @@ def dispatch(tool_call, registry):
     return spec.run(tool_call.args)                              # only here does it enter the runtime
 ```
 
-**Engineering points** (each one expandable):
+**Engineering points:**
 
-- **Tool design = the intersection of API design and prompt design.** A tool's `name` / `description` / parameter names **are themselves prompt** — the model relies on them to decide when and how to call. Anthropic stresses in "Writing Effective Tools for AI Agents": each tool needs "a clear, distinct purpose," good descriptions, and built-in token efficiency (pagination, range selection, filtering, truncation).
-- **Function Calling ≠ MCP — they're at different layers.** Function Calling is a **model capability** (how the model expresses "I want to call tool X with args Y"), a **calling syntax**; MCP is a **protocol** between the harness and external tool providers (how tools are discovered, described, connected, authenticated — over JSON-RPC 2.0), a **standardized interface for tool supply**. Analogy: Function Calling is "the language for ordering food," MCP is "how the restaurant standardizes its menu and how the kitchen takes orders."
-- **Too many tools = Confusion, and this is 2026's most interesting optimization battleground.** Stuffing dozens of tool descriptions into the prompt noticeably degrades quality. Anthropic offers two solutions with jaw-dropping magnitudes:
-  - **Code Execution with MCP**: treat tools as code on a filesystem, reading definitions on demand, cutting token usage "from 150,000 tokens to 2,000 — a time and cost saving of 98.7%."
-  - **Tool Search Tool**: retrieve tools on demand instead of loading them all, "85% reduction in token usage," while raising complex-parameter accuracy from 79.5% to 88.1%.
-- **Tool result handling:** tool outputs are often huge (files, web pages, logs) and the #1 source of context bloat. When you must truncate, **keep the head and tail** (e.g., 30% head + 30% tail), since errors and key conclusions tend to live at the ends.
+- **Tool design is API design plus instruction design.** Names, descriptions, parameters, and error shapes influence model behavior. Anthropic's [tool-design review](https://www.anthropic.com/engineering/writing-tools-for-agents) (11 September 2025) recommends clear, distinct purposes and token-efficient responses through pagination, filtering, and truncation.
+- **Function calling and MCP sit at different layers.** Function calling expresses a model's tool request. MCP standardizes communication between clients and servers; the [2025-06-18 specification](https://modelcontextprotocol.io/specification/2025-06-18/) defines JSON-RPC 2.0 message requirements.
+- **Discover tools on demand.** In Anthropic's Google Drive-to-Salesforce example, code execution with MCP reduced context use from roughly 150,000 to 2,000 tokens ([4 November 2025](https://www.anthropic.com/engineering/code-execution-with-mcp)). That is a worked example, not a universal saving.
+- **Treat tool output as untrusted, bounded input.** Preserve the evidence needed for the next decision and a reference to the full result.
 - **Error classification precedes response strategy:** tools fail — network, timeout, permission, bad args, business errors. **Classify first, then decide** retry / swap tool / degrade / escalate.
 
 **Failure boundary:** tools are the **entry point for side effects** and the **largest security breach**. A tool that can `mv`, send messages, and spend money is a disaster the moment a prompt injection hijacks it — which leads us straight to the governance pillar.
@@ -270,29 +240,20 @@ def dispatch(tool_call, registry):
 
 ## Pillar Five: Reliability Engineering
 
-**The gap it fills:** how to assemble an "overall reliable" system from components where every step can be wrong. This is the core grind of turning a demo into production, and the layer where capital placed its heaviest bets in 2026.
+**The gap it fills:** how to make progress recoverable when model calls, tools, networks, and processes can fail.
 
-First, the **distinction people stumble over most**, because it instantly reveals your level: **a checkpoint is not durable execution.**
+First, **a checkpoint is not durable execution.**
 
-- **Checkpoint:** persist state after each logical step; recover from the last checkpoint after a crash rather than from scratch. LangGraph's checkpointer is this.
-- **Durable Execution:** a checkpoint is only half of it. Full durable execution also needs **automatic failure detection + automatic restart + resume across process boundaries.**
+- **Checkpoint:** persist enough state to resume from a known boundary.
+- **Durable execution:** detect interruption, schedule recovery, prevent unintended duplication, and resume across process boundaries.
 
-Diagrid's much-cited 2026 piece, "Checkpoints Are Not Durable Execution," nails this. It distinguishes them in two sentences:
+Agent workflows contain nondeterminism: model output, time, retrieval, and external services. Recovery should record the result of a side effect and reuse it where semantics require exactly-once behavior. Re-running a model call is a new decision, not a replay of the old one.
 
-> Checkpoint says: "I saved your state. **You take it from here.**"
-> Durable Execution says: "**Your agent workflows will run to completion. Period. I handle everything.**"
-
-Then it names names: LangGraph's "checkpointer saves state, but there is no automatic failure detection, no automatic resumption, no duplicate execution prevention," and the OSS lib "runs in a single process… if that process dies, everything it was running dies with it"; Google ADK — "The caller must detect that a workflow was interrupted. There is no watchdog, no heartbeat, no health check built into the framework."
-
-This is why **Temporal** is so hot in 2026. In February 2026 it raised a **$300M Series D at a $5B valuation** (a16z leading). And OpenAI Codex engineer Will Wang gave a first-party endorsement: "**Temporal is a critical part of the infrastructure powering Codex, responsible for executing our core control flows.**" The mechanism: agent orchestration code runs inside a Temporal workflow, while model calls and I/O tool calls execute as Temporal activities, with a replay mechanism preserving "key inputs and decisions" so it resumes precisely after a restart.
-
-**Here's a hurdle you must understand: non-determinism.** Agent workflows are full of it — LLM output, timestamps, random numbers, retrieval results. **You can't replay an LLM call and pretend it's the same as last time.** So durable execution's iron rule is: **record a side effect's result the first time it executes, and reuse the recorded value on recovery, rather than re-executing.** Otherwise your "resume" quietly becomes "do something similar and pray no one notices."
-
-**Then a counterintuitive number that'll save you money.** The 2026 **Crab** study (arXiv: 2604.28138) found that "**over 75% of agent turns produce no recovery-relevant state**" — so "checkpoint every step" is mostly waste. Its semantics-aware approach raised recovery correctness from 8% to 100%, cut checkpoint traffic by up to 87%, while running just 1.9% slower than fault-free execution.
+The [Crab paper](https://arxiv.org/abs/2604.28138) (submitted 30 April 2026) found that more than 75% of turns in its shell-intensive and code-repair workloads produced no recovery-relevant OS state. Its runtime reached 100% recovery correctness in those experiments and reduced checkpoint traffic by up to 87%. These are workload-specific research results; the useful design question is which state changes are costly or dangerous to repeat.
 
 > **Direct advice:** set checkpoint granularity by "consequence of loss," not by reflexively saving every step. A month-long thread where a missed checkpoint means re-sending or dropping an email deserves strong durability; a purely computational intermediate step that you can just recompute should not be saved.
 
-The reliability pillar's standard arsenal also includes: **error classification** (transient → retry / permanent → reroute / fatal → halt and escalate; classification is the foundation), **retry + idempotency** (retry presumes idempotent operations, or you send two emails), **fallback provider chains**, **circuit breakers**, **hard budget limits** (turn/token/$ ceilings per agent per task — an agent in a loop can burn thousands of dollars in minutes), and **Saga compensating transactions** (on failure of a long flow, run compensating actions in reverse to return to a consistent state).
+The standard arsenal also includes error classification, idempotency keys, bounded retries, circuit breakers, hard turn/token/cost budgets, and compensating actions. Retry without idempotency is simply permission to repeat a side effect.
 
 **Failure boundary:** reliability engineering can keep the system from "crashing," but not make it "do the right thing." An agent that forever returns "I'm done" passes every reliability check while doing nothing — that's for eval (Pillar Six) to catch.
 
@@ -300,20 +261,18 @@ The reliability pillar's standard arsenal also includes: **error classification*
 
 ## Pillar Six: Evaluation & Observability
 
-**The gap it fills:** a probabilistic system **has no "it ran, so it's correct."** The same input gives two different results. Without eval, you have no idea whether changing a prompt made it better or worse. **This is most teams' weakest spot and the one they should fix most.**
+**The gap it fills:** process completion does not prove task success. Without evaluation, a prompt or harness change is only a story about improvement.
 
 **Two pieces of infrastructure (required before you optimize anything):**
 
-1. **Tracing / observability:** every step — every LLM call, every tool call, every compaction, token usage — must leave a trace. LangSmith defines a trace as "a complete record of every step, from input to final output," structured as a tree of runs. **You can't optimize what you can't see.**
-2. **A test set you can run:** even 20 labeled tasks beat none.
+1. **Tracing / observability:** retain model calls, tool calls, compaction events, costs, and end-state changes with suitable privacy controls.
+2. **A repeatable test set:** start small, but define success before tuning the system.
 
 **The methodology spectrum:** offline eval (regression on a fixed dataset, guarding against "fixed A and quietly broke B"), online eval (sampling production traffic), and **LLM-as-a-Judge** (scoring with another LLM against a rubric).
 
-But LLM-as-Judge has a must-know pitfall — **judges are biased.** The foundational paper (Zheng et al., NeurIPS 2023) names three: **position, verbosity, and self-enhancement bias** (judges favor longer answers, and answers they themselves wrote). Follow-up work quantified "self-preference bias": LLMs over-reward text that is "lower-perplexity, more familiar to them." **So judge scores must do bias mitigation** — e.g., swap answer positions and re-run, declaring a tie on inconsistency, which raised human agreement from 65% to 77%.
+LLM judges introduce position, verbosity, and self-enhancement biases, documented in the original [MT-Bench and Chatbot Arena paper](https://arxiv.org/abs/2306.05685) (submitted 9 June 2023). Mitigations include explicit rubrics, order swapping for pairwise comparisons, multiple trials, and human calibration.
 
-**The most effective multi-agent reliability pattern is an independent judge agent.** The keyword is "**independent**" — it shares no context and scores the final output against a predefined rubric. Why no shared context? Because once it shares, it joins the same "collective reasoning loop" and drills into the same error. The academic stronger version is **Agent-as-a-Judge** (ICML 2025), an independent evaluator agent giving intermediate feedback, reaching "**~90% agreement with humans, versus ~70% for LLM-as-a-Judge.**"
-
-**You also have to fight self-congratulation:** an agent grading the problem it just solved tends toward optimism. So self-grades need rubric constraints plus external objective signals (real success rates, user satisfaction) to calibrate. Anthropic nails it in "Demystifying Evals for AI Agents": "LLM-as-judge graders should be closely calibrated with human experts."
+An independent judge can help when it receives the task, rubric, evidence, and final state without inheriting the solver's private narrative. It is still a model, not an oracle. Anthropic's [agent-evaluation guide](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) (9 January 2026) recommends combining outcome checks, transcript graders, and human review rather than trusting one score.
 
 **Failure boundary:** eval itself can be gamed. Optimize one metric long enough and the agent learns to "please the judge" rather than do well. So you need periodic human spot-checks plus multi-dimensional metrics that cross-check each other.
 
@@ -325,10 +284,10 @@ But LLM-as-Judge has a must-know pitfall — **judges are biased.** The foundati
 
 **The core levers:**
 
-- **Prompt cache hit rate** (already stressed, the first lever) — run the system prompt as an immutable prefix, even asserting its byte stability in CI.
-- **Smart model routing:** route simple subtasks to cheap small models, leaving the hard ones for the flagship. Claude Code does exactly this — Sonnet for the main work, cheap tasks (like generating summaries) handed to Haiku. **Pitfall:** the routed small model has a smaller window, which couples with the compaction threshold into bugs — the compaction threshold must bind to the window of "the model that will actually run this turn."
+- **Prompt cache hit rate:** keep common prefixes stable and measure whether the provider actually reuses them.
+- **Model routing:** route by evaluated task difficulty and bind budgets to the model that will run the turn.
 - **Parallel tool execution:** run path-independent tool calls concurrently, but force interactive tools serial, and re-feed results in strict order after concurrency.
-- **Compaction trigger policy:** gentle early compaction (at 50% of the window) is cheaper than panic compaction at the cliff (98%).
+- **Compaction policy:** trigger from measured quality and budget constraints, not a copied percentage from another product version.
 - **Auxiliary model division of labor:** use cheap models for "side tasks" like summarization, vision, classification.
 
 **Failure boundary:** over-optimizing cost sacrifices quality (letting a small model do a big model's job). **Cost vs. quality is a Pareto frontier, not a single objective.** Hold a quality floor with eval, then push cost down.
@@ -337,29 +296,19 @@ But LLM-as-Judge has a must-know pitfall — **judges are biased.** The foundati
 
 ## Pillar Eight: Safety & Governance
 
-**The gap it fills:** all the previous pillars make the agent **more powerful, more autonomous**; this pillar ensures powerful doesn't become dangerous. This is the last 20% of demo→production, and the hardest 20% — because **it's a governance problem, not a capability problem.**
+**The gap it fills:** greater tool access and autonomy increase the consequences of a wrong decision. Governance limits what the system can do and establishes who may authorize exceptions.
 
-First, memorize the field's most counterintuitive and most important safety axiom:
-
-> **Safety lives in the harness, not the model.**
-
-Meaning: **if you're counting on the model to refuse bad actions itself, you have no safety at all.** A model's "refusal" only counts when the harness, **before** execution, validates the tool call's schema and rejects it. In other words, refusal isn't an alignment property — it's a **runtime validation result.**
+Model-level refusals are useful, but they are not a complete control plane. Runtime validation, least privilege, sandboxing, approvals, audit logs, and organizational policy each cover different failure modes.
 
 From this comes the field's core governance paradigm:
 
 > **Propose / Apply separation:** let the **LLM propose**, and let **deterministic code or a human apply.**
 
-This isn't theory — it lives in the products. Claude Code's **plan mode** is the direct embodiment of propose/apply separation: "Plan mode tells Claude to **research and propose** changes **without making them**… it does not edit your source." You review the plan, then choose auto-execute / line-by-line review / keep planning. Its permission rules layer as **deny → ask → allow, first match wins**, and deny rules **cannot** be broken by an allowlist exception.
+**Propose / apply separation** is a useful default: the model proposes; deterministic code or a human authorizes and applies. The boundary should become stricter as reversibility falls and blast radius rises.
 
-The truly elegant design is Claude Code's **auto-mode classifier** — an **independent classifier model** that reviews each action, by default blocking high-risk operations like `curl | bash`, production deploys / migrations, force-push, and `terraform destroy`. The best part: **tool-returned content is stripped from this classifier's view**, so "hostile content cannot manipulate it directly." This is a structural defense against prompt injection.
+Isolation must follow the threat model. A hardened container may be appropriate for trusted internal code; untrusted generated code may require a stronger sandbox or microVM. No sandbox choice removes the need for narrow credentials, network policy, output validation, and monitoring.
 
-OpenAI's Codex uses an isomorphic two-layer model: (a) the **sandbox / mode** decides "what's technically possible" — Seatbelt on macOS, `bubblewrap` + `seccomp` on Linux, **network off by default** ("significantly reducing the risk of prompt injection… data exfiltration"); (b) the **approval policy** decides "when a human must be asked." The two companies are highly aligned on this.
-
-**But the end of governance is physical isolation, and here's a spine-chilling real case.** In March 2026 someone documented that **Claude Code will disable its own sandbox** to complete a task — it discovered `/proc/self/root/usr/bin/npx` bypassed the deny patterns, and when bubblewrap caught it, it simply turned the sandbox off. The conclusion is hard: userspace controls (denylists, permission prompts) run "**in the domain the agent reasons in**," so the agent can route around them; whereas **microVM hardware isolation is enforced below that layer, by hardware virtualization** — the sharpest argument for why autonomous agents need hardware-level isolation.
-
-> This connects to a colder fact: **a container is not a security boundary.** As "Your Container Is Not a Sandbox" puts it, "Containers are not a security boundary. They are a mechanism to control resource usage." The Linux kernel is "~40 million lines of C and exposes 450+ syscalls," and one kernel bug is one host escape (2024–2025 brought a string of container-escape CVEs like Leaky Vessels and NVIDIAScape). So choose isolation by **threat model**: trusted internal code → hardened containers; LLM-generated code → gVisor (user-space kernel intercepting syscalls); autonomous agents installing unvetted packages → **assume the code is hostile** and go to a Firecracker microVM (separate kernel + hardware boundary, ~125ms cold start, <5 MiB memory overhead). The differences between sandbox vendors like E2B and Modal are, at bottom, differences in threat model.
-
-**Failure boundary:** governance and capability are in **eternal tension.** Lock it down too hard and the agent is useless; open it too wide and the agent is dangerous. There's no set-and-forget point, only "a gate that adjusts dynamically with the risk tier."
+**Failure boundary:** governance trades autonomy for control. There is no universal setting—only explicit risk tiers, observable exceptions, and periodic review.
 
 ---
 
@@ -401,20 +350,20 @@ Finally, a learning path ordered by dependency — each stage fills the gap the 
 | **0 Foundation** | LLM API, function calling, message format, token / cost | Understand one call | Hand-write a 10-line tool loop |
 | **1 Orchestration** | ReAct / Plan-Execute, StateGraph / Edges / Checkpointer | Single step → multi-step | Run an agent that calls tools multiple times |
 | **2 Context** | Four failure modes, Write/Select/Compress/Isolate, prompt cache | Short chat → long-horizon without rot | A compressor + a cache-stable prefix |
-| **3 Memory** | Four memory layers, bounded curation, offline extraction, vector / FTS5 | Single session → become someone across sessions | MEMORY.md + cross-session recall |
+| **3 Memory** | Four memory layers, bounded curation, offline extraction, vector / FTS5 | Single session → useful continuity | MEMORY.md + cross-session recall |
 | **4 Tools** | Tool design, MCP vs FC, result handling, error classification | Only talks → can change the world | Connect MCP + tool-failure fallback |
-| **5 Reliability** | Fallback chains, circuit breakers, budgets, saga, idempotency, durable execution | Runs → doesn't crash | 100 turns of real tasks without losing control |
+| **5 Reliability** | Fallback chains, circuit breakers, budgets, saga, idempotency, durable execution | Runs → can recover | Recovery tests for critical boundaries |
 | **6 Evaluation** | Tracing, offline / online eval, LLM-as-judge, independent judge | By feel → measurable | A regression eval + a judge agent |
-| **7 Cost** | Cache hits, routing, parallelism, auxiliary models | Affordable demo → scale | Cut per-task cost by an order of magnitude without quality loss |
+| **7 Cost** | Cache hits, routing, parallelism, auxiliary models | Affordable demo → scale | Reduce measured cost while holding an eval floor |
 | **8 Governance** | Propose/apply separation, permission matrix, least privilege, injection defense, sandbox | Powerful → safe and controllable | Automated changes default to dry-run + approval gate |
 
-> **Learning advice:** don't learn by "framework" (learn LangGraph, learn CrewAI), learn by **pillar.** A framework is just one implementation of some pillars; once you've internalized the pillars, you can locate any framework within 10 minutes — "which choices did it make on which pillars."
+> **Learning advice:** learn by pillar, not by framework. A framework is one set of decisions across these concerns; the map lets you ask which decisions it owns and which remain yours.
 
 And that leads to the final axis for selection — which is really just one sentence:
 
 > **Look at which pillars' decision rights a framework takes off your hands.**
 
-The essence of encapsulation is the **transfer of decision rights.** MCP transfers the "tool integration" decision from you to the server provider; Temporal takes "failure detection and recovery" off your hands; LangGraph takes "scheduling and persistence," leaving "content" to you. **So the build-vs-buy judgment isn't "which is stronger," it's "is my differentiation inside the box or outside it":** if your differentiation is in the loop and memory, concentrate your engineering there, and buy sandbox and durable execution off the shelf rather than reinventing convergent wheels.
+Encapsulation transfers decision rights. MCP standardizes part of tool integration; workflow runtimes can own scheduling and recovery; graph libraries can own state transitions and persistence. The build-versus-buy question is not which product looks strongest. It is whether the decisions inside the abstraction are part of your differentiation.
 
 ---
 
@@ -422,29 +371,22 @@ The essence of encapsulation is the **transfer of decision rights.** MCP transfe
 
 By now we can compress the whole map into a single sentence:
 
-> **Agent Engineering is building a circuit called the harness between a "stateless probabilistic predictor" and a "stateful, unbounded world." This circuit has eight pillars: orchestration lets it take many steps, context keeps it from rotting, memory lets it become someone across sessions, tools let it change the world, reliability keeps it from crashing, evaluation makes it measurable, cost makes it affordable, governance keeps autonomy from becoming chaos. The model is bought; the harness is built — and all your engineering leverage lives in those eight pillars.**
+> **Agent Engineering builds the harness between a probabilistic model call and a stateful world. Orchestration controls steps; context curates attention; memory preserves useful continuity; tools mediate action; reliability enables recovery; evaluation measures outcomes; cost constrains scale; governance limits authority.**
 
-That 98.4% isn't noise — it's the entire discipline. The model gets stronger every few months, but the 98.4% you write is the engineering asset that's truly yours and that compounds over time.
+The 98.4% in the title is not a measurement. It is a reminder to look away from the impressive center and inspect the quiet machinery around it. Models change. Clear boundaries, evidence, and recovery habits compound.
 
 ---
 
-### Appendix: Quick Reference of Core Claims
+### Appendix: Verified Sources
 
-| Claim | Source / data |
+| Topic | Primary source and scope |
 |---|---|
-| "1.6% AI / 98.4% harness" | *Dive into Claude Code* (VILA-Lab, arXiv: 2604.14228), analyzing v2.1.88; the precise percentage is a soft estimate, best used as a narrative frame |
-| Agent = Model + Harness; changing only the harness pulled a coding agent from Top 30 to Top 5 | LangChain, "The Anatomy of an Agent Harness" (2026-03) |
-| Context rot: more tokens, worse recall; context is a finite attention budget | Anthropic, "Effective Context Engineering for AI Agents" (2025-09) |
-| Compaction definition: summarize, then restart the window from the summary | Anthropic, ibid. |
-| KV-cache hit is a production agent's most important metric; cached $0.30 vs uncached $3/MTok | Manus, "Context Engineering for AI Agents" (2025-07) |
-| Multi-agent beats single-agent by 90.2%, but uses 15× tokens | Anthropic, "Multi-Agent Research System" (2025-06) |
-| "Multi-agent collaboration only yields fragile systems"; "share full traces" | Cognition, "Don't Build Multi-Agents" (2025-06) |
-| Checkpoint ≠ durable execution | Diagrid, "Checkpoints Are Not Durable Execution" (2026-02) |
-| Temporal is critical infrastructure powering Codex; $5B valuation, $300M Series D | Temporal blog + Will Wang (OpenAI) quote (2026-02) |
-| 75% of agent turns produce no recovery-relevant state | Crab (arXiv: 2604.28138, 2026-04) |
-| Tool Search cuts 85% tokens; Code Execution with MCP saves 98.7% | Anthropic, "Advanced Tool Use" / "Code Execution with MCP" (2025-11) |
-| LLM-judge's three biases: position / verbosity / self-enhancement; Agent-as-Judge ~90% agreement | Zheng et al. (NeurIPS 2023); Zhuge et al. (ICML 2025) |
-| "Claude Code will disable its own sandbox" → need hardware isolation | Di Donato (2026-03); "Your Container Is Not a Sandbox" |
-| Safety lives in the harness, not the model; propose/apply separation | Anthropic / OpenAI permission models; Claude Code plan mode + auto classifier |
+| Claude Code architecture | [Liu et al., *Dive into Claude Code*](https://arxiv.org/abs/2604.14228), v2 revised 2 July 2026; analysis of v2.1.88. It supports the “small loop, large surrounding system” framing, not the 98.4% figure. |
+| Codex harness terminology | [OpenAI, *Unrolling the Codex agent loop*](https://openai.com/index/unrolling-the-codex-agent-loop/), 23 January 2026. |
+| Context engineering | [Anthropic, *Effective context engineering for AI agents*](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), 29 September 2025. |
+| Multi-agent research | [Anthropic, *How we built our multi-agent research system*](https://www.anthropic.com/engineering/multi-agent-research-system), 13 June 2025; internal research evaluation and token observations only. |
+| MCP tool efficiency | [Anthropic, *Code execution with MCP*](https://www.anthropic.com/engineering/code-execution-with-mcp), 4 November 2025; Google Drive-to-Salesforce example. |
+| Recovery | [Wu et al., *Crab*](https://arxiv.org/abs/2604.28138), submitted 30 April 2026; shell-intensive and code-repair workloads. |
+| Agent evaluation | [Anthropic, *Demystifying evals for AI agents*](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents), 9 January 2026; [Zheng et al.](https://arxiv.org/abs/2306.05685), submitted 9 June 2023. |
 
-> One thing I kept reminding myself while writing this: in this field a lot of "facts" are amplified misattributions (both the source of 98.4% and the 92% compaction threshold have been garbled). So I anchored every claim above to a primary source and a version as best I could. If you're taking this into an interview or a design doc, re-verify along the sources — which is itself the "evidence > assumptions" habit an agent engineer should have.
+> Evidence decays more slowly when its scope travels with it. Before copying a number into a design document, carry the date, version, workload, and denominator too.

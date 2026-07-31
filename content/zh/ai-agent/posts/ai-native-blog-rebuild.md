@@ -7,7 +7,7 @@ showtoc: true
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ['AI 博客', 'AI 重构博客', 'Claude Code', 'Codex', 'MCP', 'Skills', 'AI 工作流', '博客自动化', 'GEO', '生成式引擎优化', '封面生成', 'GitHub Actions', 'Hugo', '超级个体', 'cubxxw']
+keywords: []
 tags:
   - AI
   - Agent
@@ -15,10 +15,11 @@ tags:
   - Automation
   - Harness Engineering
   - GEO
-  - Hugo
   - Blog
+categories:
+  - Technology
 description: >
-  我把写了四年、120 多篇文章的博客用 AI 重新组装了一遍：写作流水线、Skills、MCP、封面工厂、GitHub Actions 里的 AI 值班员、GEO 基建。这篇复盘讲清每一层怎么搭、我和 AI 怎么对话、哪些放权哪些绝不放，以及新版博客长什么样。
+  我在 2026 年把维护四年、积累 120 多篇文章的 Hugo 博客改造成由人把关、Agent 执行的内容系统。本篇复盘母版流水线、Skills、自建 MCP、两段式封面、GitHub Actions SEO 日报与 GEO 实验，也交代权限边界、成本、失败案例和未完成事项，供维护知识库或内容站点的独立创作者参考。
 tldr:
   - 新版博客在 cubxxw.com。重组的不是皮肤，是整条生产线：母版写作流水线、Skills 手艺库、自建 MCP、两段式封面工厂、GitHub Actions 里的 AI 值班员、GEO 五层基建。
   - 和 AI 对话只靠几个反复验证的模式：给任务不给方向（每个任务有完成态）、方案先过对抗评审再执行、每个模块问一句"出问题我怎么知道"、用白名单而不是描述来圈权限。
@@ -35,7 +36,7 @@ cover:
 
 把一座写了四年、积累了 120 多篇文章的博客，从内容架构到运营方式全部重新组装一遍，需要多大的团队？
 
-我今年上半年给出了自己的答案：**一个人，带一队分工明确的 Agent。** 人负责判断和方向，Agent 负责几乎全部执行。新版就是你现在看到的 [cubxxw.com](https://cubxxw.com/zh/)——它不只是一次改版，而是把"博客"这个东西从一个静态网站，改造成了一个**会自己写日报、自己提修复建议、自己对外提供接口的系统**。
+我今年上半年给出了自己的答案：**一个人，带一队分工明确的 Agent。** 这里的"一队"不是一个固定数字，也不是七八个永远在线的数字员工；它是我对 Claude Code、Codex、GitHub Actions 中的 Claude 任务，以及临时评审会话的统称。截至 2026 年 7 月，仓库里能数清的是七个 Claude skills、四条以 `seo-` 命名的工作流和若干按需启动的会话。人负责判断、边界和签字，Agent 承担范围明确、可以验收的执行。新版就是你现在看到的 [cubxxw.com](https://cubxxw.com/zh/)——它不只是一次改版，而是把"博客"这个东西从一个静态网站，改造成了一个**会生成日报、准备修复 PR、对外提供检索接口的系统**。
 
 ![新版博客首页：左侧是身份与信号，右侧是可以直接对话的数字分身 BEAR_AI](/images/blog/rebuild-2026/home-light.jpeg)
 
@@ -91,13 +92,13 @@ cover:
 
 对话模式解决"一次怎么问好"，但真正的杠杆在于**让好的问法可以复用**。这就是 skills 在我系统里的角色：`.claude/skills/` 下的每一个技能，都是一段被验证过的工序说明书，AI 每次执行都照着走，不再依赖我重新描述。
 
-现在这个仓库里长驻的技能有六个：`article-covers`（封面生成）、`apple-design` 与 `emil-design-eng`（设计审美与实现规范）、`animation-vocabulary`、`review-animations`、`improve-animations`（动效的词汇表、评审标准与改进流程），外加一个 `/check-posts` 命令——发布前的文章质检清单，front matter 时区、未来时间、标签规范、双语完整性，逐项过。
+截至 2026 年 7 月，这个仓库里有七个 Claude skills：`article-covers`（封面生成）、`apple-design` 与 `emil-design-eng`（设计审美与实现规范）、`animation-vocabulary`、`review-animations`、`improve-animations`（动效的词汇表、评审标准与改进流程），以及后来补上的 `seo-autofix`。此外还有一个 `/check-posts` 命令——发布前的文章质检清单，front matter 时区、未来时间、标签规范、双语完整性，逐项过。这个数只是当时仓库的快照；我更在意的是每项手艺有没有清楚的输入、输出和验收方式。
 
 拿最有代表性的 `article-covers` 拆开讲，因为它同时回答了"图片怎么生成"这个问题。
 
 ### 封面工厂：两段式图片生成
 
-博客一百多篇文章都需要封面（没有封面的文章，分享到微信、X、小红书时的预览图全长一个样）。我的方案是一条脚本流水线 `scripts/generate-covers.mjs`，底层接了两个图像模型：豆包 Seedream（默认，国内直连，约两毛钱一张）和 Gemini（备选）。
+博客一百多篇文章都需要封面（没有封面的文章，分享到微信、X、小红书时的预览图全长一个样）。我的方案是一条脚本流水线 `scripts/generate-covers.mjs`，截至 2026 年 7 月底层接了两个图像模型：豆包 Seedream（默认）和 Gemini（备选）。费用按供应商、模型、分辨率和重试次数变化，下面提到的数字只代表我当时批量生成时的个人账单经验，不是长期报价。
 
 但真正值钱的不是脚本，是流程被强制拆成了**两段**：
 
@@ -111,7 +112,7 @@ cover:
 
 所以分工必须是：**理解交给读得懂的，绘制交给画得出的，两边中间只传一句人话。** 再配几条不可谈判的规则：全站统一一行风格锚点（扁平杂志编辑插画、低饱和不超过四色、大面积留白），图里不出现人脸、logo 和任何文字，中英文版本共用同一张图。生成后必须打开看一眼再决定用不用——这是整条流水线里唯一无法自动化的环节，也不该自动化。
 
-这套东西第一次跑通花了我一个晚上，之后每篇新文章的封面成本是：一句场景描述加两毛钱。**这就是 skill 的意义——学费只交一次。**
+这套东西第一次跑通花了我一个晚上。按我截至 2026 年 7 月的几次批量任务估算，一张通过验收的封面通常落在几毛钱量级；重试会把成本直接叠上去，准确金额仍应以供应商当期价目与账单为准。**这就是 skill 的意义——真正被摊薄的不是某个永远不变的单价，而是每次重新摸索流程的时间。**
 
 ---
 
@@ -161,7 +162,7 @@ cover:
                             └──────────────┘
 ```
 
-每天下午，一个跑在 GitHub Actions 里的 Claude 会读当天和前一天的 Search Console、PageSpeed、CrUX 快照，对比出关键变化——哪个页面性能掉了五分以上、哪些查询词排在 8 到 20 名是便宜的标题改写机会、哪些页面曝光不少但点击率异常——然后把观察写进当天的《站点日报》issue。Lighthouse 的巡检结果也汇入同一张 issue，一天一张，绝不刷屏。
+截至 2026 年 7 月的工作流配置，每天下午，一个跑在 GitHub Actions 里的 Claude 任务会读当天和前一天的 Search Console、PageSpeed、CrUX 快照，对比出关键变化——哪个页面性能掉了五分以上、哪些查询词排在 8 到 20 名可能值得改写标题、哪些页面曝光不少但点击率偏低——然后把观察写进当天的《站点日报》issue。这些阈值是我为个人站设置的排查规则，不是搜索平台给出的通用因果标准。Lighthouse 的巡检结果也汇入同一张 issue，一天一张，绝不刷屏。
 
 我觉得某条建议值得做，就手动触发 `seo-fix`，把那条建议的原文和文件白名单传进去。AI 开一个分支、只改白名单内的文件、跑一遍完整构建确认不破站、开一个 PR，并回到日报 issue 里留一句"处理建议 X → PR #NN"，留下完整的纸面轨迹。
 
@@ -177,7 +178,11 @@ cover:
 
 ![GEO 专栏落地页：六篇成组，从原理到实操到度量](/images/blog/rebuild-2026/column-geo.jpeg)
 
-落到这次重组里的实操，捡几件说：robots 明确欢迎 GPTBot、ClaudeBot、PerplexityBot 们来抓；站点根下放了 `llms.txt`；每篇文章的 front matter 都带结构化的 `tldr` 字段——AI 摘答案时最喜欢这种段落级可提取的结论；四类 JSON-LD 结构化数据补齐。更疼的一刀是砍索引：博客攒了四年的标签页里，七成标签底下只有一篇文章，这些薄页占掉了 sitemap 的一大半——统一 noindex 并踢出 sitemap 之后，提交给搜索引擎的 URL 几乎砍半，把抓取预算还给正文。还有域名迁移（cubxxw.com → cubxxw.com）这种一步走错前功尽弃的事：301 保路径、新旧资源并存监控、旧域重定向至少保 180 天。
+落到这次重组里的实操，捡几件说：robots 规则明确允许 GPTBot、ClaudeBot、PerplexityBot 等已知爬虫访问；站点根下放了 `llms.txt`；多数重点文章和这轮重写的新版文章在 front matter 里加入 `tldr`；四类 JSON-LD 结构化数据也补齐了。这里必须把愿望和证据分开：允许爬虫只代表没有主动挡路，不能推出一定会抓取或引用；[`llms.txt` 的原始说明](https://llmstxt.org/)截至 2026 年 7 月仍把它称为一项 proposal，我把它当作低成本实验，不把它当排名按钮；`tldr` 是本站模板和内容索引使用的字段，不是搜索引擎公布的排名因子。[Google 的一手文档](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)能支持的说法更克制：结构化数据有助于 Google 理解页面，并可能让页面获得富媒体展示资格，但展示并不保证发生。
+
+更疼的一刀是整理索引：博客攒了四年的标签页里，约七成标签底下只有一篇文章，这些薄页占了 sitemap 的很大一部分。我把不希望出现在搜索结果里的标签聚合页设为 `noindex`，并从 sitemap 移除。按照 Google 的说明，[`noindex` 的作用是阻止页面进入搜索结果](https://developers.google.com/search/docs/crawling-indexing/block-indexing)，[sitemap 表达的是站长认为重要、希望被发现的规范 URL](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview)；两者都不能证明省下的抓取会自动转给正文。事实上，Google 的[抓取预算指南](https://developers.google.com/crawling/docs/crawl-budget)主要面向百万级站点，或更新极快的万级站点，还明确指出 `noindex` 页面仍要先被抓取才能看到规则。对这个只有一百多篇文章的个人博客，这次改动首先是清理索引信号和站点结构，"把抓取预算还给正文"只能算过度乐观的旧说法。
+
+域名迁移也做过一次，Git 历史可以确认旧域是 `nsddd.top`，新域是 `cubxxw.com`。我采用逐 URL 保路径的永久重定向，并同时检查新旧站点资源和 Search Console 状态。旧稿写"至少保 180 天"太短：Google 当前的[站点迁移文档](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes)建议重定向尽可能长期保留，通常至少一年；迁移期间搜索可见性短期波动也属正常。
 
 这套东西的完整方法论在专栏里，我自己站点的真实数据复盘（87 万曝光为什么只换来 852 次点击、虚荣指标怎么祛魅）单独写在[改造复盘篇](../geo-blog-rebuild-case-study/)。这里只留一句最重要的：**技术满分只是入场券，真正决定被不被引用的，是结构、证据和背书。**
 
@@ -203,7 +208,7 @@ cover:
 A：能。母版流水线、询问模式、两段式封面、AI 值班员、GEO 清单都不依赖 Hugo。只有具体脚本（索引生成、front matter 解析）需要按你的系统重写——这正是适合丢给 AI 的带完成态任务。
 
 **Q：整套系统的月成本大概多少？**
-A：大头是 Claude 的订阅和 API 用量；封面按张计费约两毛一张；GitHub Actions 在免费额度内；Netlify 免费档够用。对一个个人站点，总成本大致是"一顿饭钱"的量级——但前提是你自己的时间投入换来了杠杆，而不是又多了一堆需要你照看的玩具。
+A：截至 2026 年 7 月，我自己的大头仍是 Claude 订阅与 API 用量；封面单张通常是几毛钱量级，但重试另算。这个仓库当时的 GitHub Actions 用量和 Netlify 部署尚未超出我账户可用额度，因此账单增量接近零；这只是个人使用记录，不代表两个平台长期免费，也不适合直接外推到高频团队。真正昂贵的仍是时间：如果自动化没有减少返工，它只是多了一组需要照看的玩具。
 
 **Q：为什么不让 AI 直接写文章、全自动发布？**
 A：因为我试过让 AI 全自动追信息、写内容，它的能力边界我在[这篇](../ai-auto-news-pipeline-limits/)里拆过：采集、整理、派生它都行，但"值不值得写、观点是什么、对不对得起署名"是判断，判断外包出去，博客就没有存在的理由了。AI 组装这座博客，但住在里面的得是我。

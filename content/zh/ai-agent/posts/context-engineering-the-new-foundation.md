@@ -1,25 +1,27 @@
 ---
-title: "Context 不是 Prompt：为什么「上下文工程」正在成为 AI 的新地基"
+title: "Context 不是 Prompt：上下文工程如何成为 AI Agent 的新地基"
 date: 2026-06-22T03:30:00+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["Context Engineering", "上下文工程", "Prompt Engineering", "AI Agent", "Memory", "MCP", "Local-First", "LLM"]
+keywords: []
 tags:
   - Context Engineering
   - AI
   - LLM
   - Agent
   - MCP
+categories:
+  - Development
 description: >
-  上下文工程正在从一句口号变成一门独立学科。这篇文章从 Anthropic、Karpathy、LangChain、Sourcegraph 与 Manus 的一线实践出发，拆解上下文工程与提示词工程的本质区别、两套四支柱分类法、以及装配检索压缩淘汰这些具体设计模式，再回到我自己的判断：上下文远不止是工具的参数，它是 AI 与你之间那条共享的世界线。
+  本文从 Anthropic 与 Sourcegraph 的代表性框架出发，解释上下文工程与提示词工程的边界，并核对上下文腐烂、检索重排、Claude Code 自动压缩、服务端 compaction 与记忆系统。面向 AI Agent 工程师；核心结论是上下文并非越多越好，关键是让高信号信息在正确时刻进入窗口。
 tldr:
   - 提示词工程是把一句话写好；上下文工程是在每一次推理时，决定整扇上下文窗口里装什么、按什么顺序、淘汰什么。重心从「措辞」转向了「布线」。
-  - 上下文是有限资源，存在「上下文腐烂」：token 越多，模型对其中信息的召回反而越差。工程目标是找到信息量最高的最小 token 集合。
-  - 行业已收敛出两套互补的四支柱：LangChain 的 Write / Select / Compress / Isolate，与 Sourcegraph 的 Instructions / Retrieval / Memory / Tools。
-  - 记忆系统是与上下文工程并列的独立概念：上下文工程优化当下这一窗，记忆是窗外那条持续演化的底层基质。
+  - 上下文是有限资源，存在「上下文腐烂」：token 增多时，模型对其中信息的召回可能变差。工程目标是找到信息量最高的最小充分上下文。
+  - 两套有代表性的框架提供了互补视角：LangChain 的 Write / Select / Compress / Isolate 描述动作，Sourcegraph 的 Instructions / Retrieval / Memory / Tools 描述对象；它们不是行业标准。
+  - 记忆与上下文工程紧密相关但需要区分：上下文工程整理当前输入，记忆研究还关心信息如何形成、演化并在跨轮次或跨会话中被取回。
   - 我的判断：真正稀缺的从来是「世界线」，而非模型——只有你的上下文能让 AI 知道你是谁、在哪、要什么。这条线值得 local-first 地长在你自己手里。
 maturity: budding
 faq:
@@ -28,9 +30,9 @@ faq:
   - q: "上下文工程和提示词工程有什么区别？"
     a: "提示词工程优化的是「一句话的措辞」，上下文工程优化的是「整扇窗口的布线」。Sourcegraph 给过一个可操作的判据：如果你在替换名词和形容词，是提示词工程；如果你在改变 agent 检索什么数据、以什么顺序、用什么重排、窗口满了淘汰什么，就是上下文工程。"
   - q: "什么是上下文腐烂（Context Rot）？"
-    a: "指随着上下文窗口内 token 数量增加，模型准确召回其中信息的能力反而下降的现象。原因在于注意力是 n² 的两两关系，窗口越长每个 token 分到的注意力越稀薄。因此工程目标是找到信息量最高的最小 token 集合，而非塞满窗口——这里的最小指信号密度最高，不等于最短。"
+    a: "指随着上下文窗口内 token 数量增加，模型准确召回其中信息的能力可能下降的现象。Transformer 的 n² 两两注意力关系是 Anthropic 提到的一种机制，训练序列分布、位置编码与信息位置等因素也会影响结果，不能把它写成唯一原因。因此工程目标是寻找高信号的最小充分上下文，而不是默认塞满窗口。"
   - q: "上下文工程有哪些主流方法框架？"
-    a: "行业收敛出两套互补的四支柱：LangChain（Lance Martin）的 Write / Select / Compress / Isolate——写出窗口外、按需选进来、压缩到必需、多 agent 隔离；以及 Sourcegraph 的 Instructions / Retrieval / Memory / Tools。两套标签不同，但在生产实践中彼此印证。"
+    a: "可以参考两套有代表性的框架：LangChain（Lance Martin）的 Write / Select / Compress / Isolate——写出窗口外、按需选进来、压缩到必需、多 agent 隔离；以及 Sourcegraph 的 Instructions / Retrieval / Memory / Tools。前者描述动作，后者描述对象，但它们不是经过标准组织认证的行业共识。"
 cover:
   image: '/images/blog/context-engineering-desk.webp'
   caption: '上下文工程：把模型的房间布置好——Write / Select / Compress / Isolate，和那条 local-first 的世界线。'
@@ -75,7 +77,7 @@ Andrej Karpathy 在 2025 年 6 月那条被反复转发的推文里说得更直�
 
 Anthropic 的原话是：「上下文必须被当作一种有限资源来对待，它的边际收益是递减的。」以及——「好的上下文工程，意味着找到那个信息量最高的、最小的 token 集合，去最大化某个期望结果的可能性。」[^anthropic]
 
-支撑这个判断的，是一个叫 **Context Rot（上下文腐烂）** 的现象：**随着上下文窗口里 token 数量的增加，模型从中准确召回信息的能力反而下降。**[^anthropic] 这背后有一个「注意力预算」的论证——注意力是 n² 的两两关系，窗口越长，每个 token 能分到的注意力越稀薄；Chroma 那份针对性的「针在草堆里」基准研究，也独立佐证了这一点。[^chroma]
+支撑这个判断的，是一个叫 **Context Rot（上下文腐烂）** 的现象：**随着上下文窗口里 token 数量增加，模型从中准确召回信息的能力可能下降。**[^anthropic] Anthropic 给出的解释里，Transformer 对 n 个 token 建立 n² 个两两注意力关系，因此上下文越长，捕捉远距离关系越困难；但这只是可能机制之一。训练数据里长序列较少、位置编码、信息所在位置、任务类型和模型差异都会影响表现，不能把「n²」写成唯一因果。Chroma 的长上下文实验给出了跨模型、跨长度的经验观察，但它仍是基准测试，不是对所有真实任务的定律。[^chroma]
 
 这里有个反直觉但关键的细节，Anthropic 自己也强调了：**最小，不一定等于短。** 你要把上下文砍到「信息密度最高」，而非砍到最短——留下高信号的，扔掉低信号的。
 
@@ -83,9 +85,9 @@ Anthropic 的原话是：「上下文必须被当作一种有限资源来对待�
 
 ---
 
-## 两套四支柱：行业是怎么收敛的
+## 两套代表性框架：从动作与对象看同一扇窗
 
-一门学科成熟的标志，是大家开始用同一套词汇。2025 到 2026 年间，上下文工程收敛出了两套**互补**的四支柱框架——注意，是两套，标签不同，但彼此印证。
+上下文工程仍在快速演化，还没有被某个标准组织定成一张唯一地图。2025 到 2026 年间，有两套**有代表性、且互补**的四分法值得借来思考——注意，它们是作者和公司的实践框架，不等于行业已经收敛出的标准答案。
 
 ### 第一套（LangChain / Lance Martin）：Write / Select / Compress / Isolate
 
@@ -115,9 +117,9 @@ Sourcegraph 用一个明确的标题「上下文工程的四大支柱」给出�
 
 抽象框架之外，真正让我兴奋的是——这一年，上下文工程的设计模式已经从「经验谈」变成了**第一方 API 原语**和**可复现的工程做法**。
 
-### 检索后重排：50 → top-5，而不是把 50 块全塞进去
+### 检索后重排：从 50 → top-5 的经验示意说起
 
-Sourcegraph 给的例子很具体：「一个先用高召回检索出 50 个候选、再重排到精确 top-5 的管道，通常比把全部 50 块直接倒进提示词的做法更好。」重排器往往是一个更小的 cross-encoder 或便宜模型，给每个候选打分，只留 top-k。[^sourcegraph]
+Sourcegraph 给了一个便于理解的经验示意：先用高召回检索取 50 个候选，再重排到 top-5，往往比把 50 块全部塞进提示词更合适。这里的 **50 → 5 不是通用最优参数，也不是跨数据集基准结论**；真实的候选数和 top-k 仍要按召回率、延迟、成本与离线评测来定。它真正说明的是两阶段思路：先尽量别漏，再用 cross-encoder 或更便宜的模型排序，只把当前任务所需的高信号片段送进窗口。[^sourcegraph]
 
 这正是 Context Rot 的工程解药：**宁可少而准，不要多而糊。**
 
@@ -125,21 +127,21 @@ Sourcegraph 给的例子很具体：「一个先用高召回检索出 50 个候�
 
 Sourcegraph 把 token 预算管理定义为「在低信号内容**进入**上下文窗口之前就把它砍掉的纪律，而不是进去之后」。具体手段包括：截断工具输出、把旧对话压缩成滚动摘要、丢掉相关度低于阈值的块、给重排器设硬上限。[^sourcegraph]
 
-### 压缩式 compaction：Claude Code 的 95% 自动压缩
+### 压缩式 compaction：Claude Code 在窗口将满时自动收束
 
-一个被反复印证的例子：**Claude Code 在你用掉超过 95% 的上下文窗口后会触发 auto-compact，把整段用户-agent 的交互轨迹总结成摘要。**[^lance]（注：95% 这个阈值与窗口大小、版本相关，会变动，引用时请带日期。）
+一个直观例子是 Claude Code 的 auto-compact：它默认开启，在上下文接近上限时把较早的交互轨迹压成摘要。常见版本的默认触发点约在窗口使用量的 **95%**，但这不是跨版本不变的常数；模型、上下文窗口和版本都会改变实际边界。Claude Code 也允许用 `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` 把触发比例调低，或用 `CLAUDE_CODE_AUTO_COMPACT_WINDOW` 调整用于计算的窗口容量。当前官方文档进一步说明，某些本地模型会在模型上下文上限触发，部分模型与云会话则会主动提前压缩。[^claude-code-env]
 
-### Anthropic 把三个原语做进了 API
+### Anthropic 把上下文管理做进了 API
 
-这是我觉得最有信号意义的一步——上下文管理不再是你自己手搓的脚本，而是平台级的能力。Anthropic 的 API 现在暴露了三个针对不同瓶颈的第一方原语：[^cookbook][^context-editing]
+这是我觉得最有信号意义的一步——上下文管理不再只是客户端自己手搓的脚本，而是平台级能力。Anthropic 当前把几类不同策略做成了第一方原语：[^cookbook][^context-editing][^server-compaction]
 
-- **Compaction（`compact_20260112`）**：对话长到一定程度时，压缩整扇窗口。
+- **Server-side Compaction（`compact_20260112`）**：对话达到可配置 token 阈值时，由服务端生成摘要块；Anthropic 目前把它列为长会话与 agent 工作流的推荐策略。
 - **Tool-Result Clearing（`clear_tool_uses_20250919`）**：清掉窗口内那些「可以重新取回」的陈旧工具结果。
 - **Memory tool（`memory_20250818`）**：把信息移到窗口**之外**，让它跨会话存活。
 
 其中 Memory tool 的设计哲学很对我的胃口：它是**客户端实现**的——API 只提供协议、并自动注入一段「检查记忆」的系统提示，而**数据存在哪、怎么存，由你这个客户端决定；模型只决定什么时候存、存什么。** 这恰好把「存什么」（模型的决策）和「怎么存」（客户端的实现）解耦开了。[^cookbook]
 
-（这些版本标识符是带日期的，会随版本演进，别当成永恒真理。）
+还要补一条截至本文复核时很容易被旧示例遮住的变化：Python、TypeScript 与 Ruby SDK `tool_runner` 的客户端 `compaction_control` 参数已经被标记为弃用，未来会移除。除非确实需要在客户端控制摘要过程，否则官方建议迁移到服务端 compaction；工具结果清理与 thinking block 清理则仍属于服务端 context editing 的细粒度策略。[^context-editing] 这些带日期的版本标识符会继续演进，别把示例代码当成永恒真理。
 
 ### KV-cache 命中率：生产环境里被低估的那条命脉
 
@@ -171,15 +173,13 @@ Sourcegraph 把 token 预算管理定义为「在低信号内容**进入**上下
 
 ## 上下文 vs 记忆：一扇窗，和窗外那条河
 
-到这里必须澄清一个常被混为一谈的关系：**记忆（Memory）和上下文工程，是两个并列的概念，不是同一件事。**
+到这里必须澄清一个常被混为一谈的关系：**记忆（Memory）和上下文工程紧密相关，但分析时需要区分。** 它们并非毫无交集的两条平行线：外部记忆通常要经过检索、筛选与压缩才能进入当前上下文；而上下文里的经历，也可能被提炼成新的记忆。
 
-一份 2025 年 12 月的综述《Memory in the Age of AI Agents》（arXiv 2512.13564，约 50 位作者）开宗明义地把 agent 记忆与「LLM 记忆、RAG、上下文工程」明确区分开，并主张把记忆当作未来 agent 智能的**一等公民**。[^survey]
+一份 2025 年 12 月提交、2026 年 1 月更新的综述《Memory in the Age of AI Agents》（arXiv 2512.13564，47 位作者）在摘要里明确说，它会把 agent memory 与 LLM memory、RAG、context engineering 等相关概念划开，再从**形式、功能与动态**三个维度梳理记忆；论文也把记忆称为未来 agent 智能设计中的「first-class primitive」。[^survey]
 
-它给出的区分，干净得让我想抄进笔记：
+更准确地说，这篇综述并没有在摘要里给出「RAG 只访问外部知识、上下文工程只优化当前窗口、记忆负责持续身份」那段常见转述；把它写成论文原话会越界。它真正支持的是：这些概念相关，却不能混用；agent memory 还要讨论信息以 token、参数或潜在状态等形式存在，承担事实、经验或工作记忆等功能，并且如何随时间形成、演化与取回。[^survey]
 
-> 「像 RAG 这样的技术提供了对外部知识的访问，上下文工程优化了当下的输入窗口，但二者都没有完全解决一个需求：一个**持续的、演化的身份**，它从交互中学习。」[^survey]
-
-我把它翻译成一个画面：**上下文工程管的是「此刻这一扇窗里装什么」；记忆管的是「窗外那条一直在流、一直在变的河」。** 窗会被反复擦干净、重新布置；河却记得你走过的每一程。
+我愿意把这个区分翻译成一个画面，但先声明这是**我的比喻**：上下文工程更像整理「此刻这一扇窗里装什么」；记忆更像维护「窗外那条会继续流动的河」。窗里的水可能来自河，窗里发生的事也会汇回河里。两者不能合并成一个词，也不该被切成互不相干的两个系统。
 
 开源世界里，Mem0（arXiv 2504.19413）是一个具体的对照点：它是一个以记忆为中心的架构，从持续的对话里**动态地抽取、整合、检索**关键信息，正是为了解决「LLM 固定的上下文窗口无法在长期多会话对话里维持一致性」这个根本困难。[^mem0]（我刻意没有引用 Mem0 自报的那几个跑分数字——同样的纪律：未独立验证的数字，谨慎对待。）
 
@@ -234,6 +234,8 @@ Sourcegraph 把 token 预算管理定义为「在低信号内容**进入**上下
 [^chroma]: Chroma Research, "Context Rot." https://www.chroma.research/context-rot
 [^cookbook]: Anthropic Claude Cookbook, "Context engineering with tools." https://platform.claude.com/cookbook/tool-use-context-engineering-context-engineering-tools
 [^context-editing]: Anthropic Docs, "Context editing." https://platform.claude.com/docs/en/build-with-claude/context-editing
+[^server-compaction]: Anthropic Docs, "Compaction." https://platform.claude.com/docs/en/build-with-claude/compaction
+[^claude-code-env]: Claude Code Docs, "Environment variables." https://code.claude.com/docs/en/env-vars
 [^manus]: Manus, "Context Engineering for AI Agents: Lessons from Building Manus." https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
 [^databricks]: Databricks, "Introducing Genie One, Genie Ontology, and Genie Agents." https://www.databricks.com/blog/introducing-genie-one-genie-ontology-and-genie-agents
 [^survey]: "Memory in the Age of AI Agents," arXiv:2512.13564. https://arxiv.org/pdf/2512.13564

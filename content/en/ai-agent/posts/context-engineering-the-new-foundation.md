@@ -1,35 +1,38 @@
 ---
-title: "Context Is Not Prompt: Why Context Engineering Is Becoming AI's New Foundation"
+title: "Context Engineering: The New Foundation for AI Agents"
 date: 2026-06-22T03:30:00+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["Context Engineering", "Prompt Engineering", "AI Agent", "Memory", "MCP", "Local-First", "LLM"]
+keywords: []
 tags:
   - Context Engineering
   - AI
   - LLM
   - Agent
   - MCP
-description: Why context engineering supersedes prompt engineering — a systematic look at context assembly, retrieval, compression, and eviction patterns, drawing from Anthropic, Karpathy, LangChain, and Manus.
+categories:
+  - Development
+description: >
+  Learn how context engineering improves AI agents through retrieval, compaction, memory, and token budgeting—and why high-signal context beats a larger window.
 tldr:
   - "Prompt engineering is writing one instruction well. Context engineering is deciding, on every inference call, what goes into the whole window, in what order, and what gets evicted. The center of gravity moved from wording to wiring."
-  - "Context is a finite resource subject to context rot — as token count rises, the model's recall of what is inside actually degrades. The goal is the smallest set of highest-signal tokens."
-  - "The field has converged on two complementary four-pillar schemes — LangChain's Write / Select / Compress / Isolate, and Sourcegraph's Instructions / Retrieval / Memory / Tools."
-  - "Memory is a concept distinct from context engineering: context engineering optimizes the present window, memory is the persistent, evolving substrate beyond it."
-  - "My claim: the scarce thing is not the model, it is the world line - only your context lets an AI know who you are, where you are, and what you want. That line deserves to live local-first, in your own hands."
+  - "Context is finite, and context rot means recall can worsen as the window grows. The goal is the smallest sufficient set of high-signal tokens, not the largest possible prompt."
+  - "Two representative frameworks offer complementary views: LangChain's Write / Select / Compress / Isolate describes actions; Sourcegraph's Instructions / Retrieval / Memory / Tools describes objects. Neither is an industry standard."
+  - "Memory and context engineering overlap but are not interchangeable: context engineering curates the present input, while memory also concerns how information persists, evolves, and is retrieved across turns or sessions."
+  - "My claim: the scarce thing is not the model but the world line—only context can tell an AI who you are, where you are, and what you want. That line deserves to live local-first, in your own hands."
 maturity: budding
 faq:
   - q: "What is context engineering?"
-    a: "Context engineering is the set of strategies for curating and maintaining the optimal set of tokens that enter an LLM's context window on every inference call — the system prompt, retrieved documents, conversation history, tool definitions, and memory. The definition comes from Anthropic's engineering practice, and Karpathy has publicly endorsed replacing 'prompt engineering' with this more accurate term."
+    a: "Context engineering is the set of strategies for curating and maintaining the most useful tokens that enter an LLM's context window on every inference call—the system prompt, retrieved documents, conversation history, tool definitions, and memory. Anthropic has articulated this distinction in its engineering guidance, and Karpathy helped popularize the broader term."
   - q: "How is context engineering different from prompt engineering?"
     a: "Prompt engineering optimizes the wording of one instruction; context engineering optimizes the wiring of the whole window. Sourcegraph's operational test: if you are swapping nouns and adjectives, you are doing prompt engineering; if you are changing what data the agent retrieves, in what order, with what re-ranking, and what gets evicted when the window fills, you are doing context engineering."
   - q: "What is context rot?"
-    a: "Context rot is the phenomenon where, as the token count inside a context window grows, the model's ability to accurately recall information from it actually degrades. Attention is a pairwise n² relation, so the longer the window, the thinner the attention each token receives. The engineering goal is therefore not to fill the window but to find the smallest, highest-signal token set — smallest meaning highest information density, not shortest."
+    a: "Context rot describes the observed tendency for recall to worsen as a context window grows. Transformer attention's n² pairwise relationship is one possible mechanism, but training distributions, position encoding, information placement, task design, and model differences also matter. The engineering goal is therefore the smallest sufficient set of high-signal tokens—not simply a full window."
   - q: "What are the main frameworks for context engineering?"
-    a: "The field has converged on two complementary four-pillar schemes: LangChain's (Lance Martin's) Write / Select / Compress / Isolate — persist outside the window, pull in on demand, keep only necessary tokens, and split context across agents — and Sourcegraph's Instructions / Retrieval / Memory / Tools. The labels differ, but production practice confirms both."
+    a: "Two representative frameworks are useful: LangChain's Write / Select / Compress / Isolate—persist outside the window, pull in on demand, keep only necessary tokens, and isolate context—and Sourcegraph's Instructions / Retrieval / Memory / Tools. The first describes actions and the second describes objects; neither should be presented as an industry standard."
 cover:
   image: '/images/blog/context-engineering-worldline.webp'
   caption: 'Context engineering: furnishing the model''s room — Write / Select / Compress / Isolate, and the local-first world line between you and the AI.'
@@ -38,13 +41,13 @@ columns:
   - agent-engineering
 ---
 
-**Context engineering is the set of strategies for curating, ordering, and evicting the optimal set of tokens that enter an LLM's context window on every inference call — system prompt, retrieved documents, conversation history, tool definitions, and memory.** The one-line contrast with prompt engineering: prompts optimize the *wording* of a sentence; context engineering optimizes the *wiring* of the whole window. The definition comes from Anthropic's engineering writing, and Karpathy publicly backed the rename. The rest of this article takes the forming discipline apart.
+**Context engineering is the set of strategies for curating, ordering, and evicting the tokens that enter an LLM's context window on each inference call—system instructions, retrieved documents, conversation history, tool definitions, and memory.** The short version is this: prompt engineering optimizes the *wording* of an instruction; context engineering optimizes the *wiring* of the whole window. Anthropic has articulated this distinction in its engineering guidance, and Karpathy helped popularize the term. The rest of this article takes the emerging discipline apart.
 
 > "We are not really writing prompts. We are furnishing a room for the model — deciding what gets carried in, where it sits, when it gets moved out. The wording is just a sticky note on the desk. What we are actually doing is the interior work."
 
 If you had asked me in 2024 "how do I use AI well," I would most likely have talked to you about prompts: how to phrase instructions, how to set a role, how to give examples. But if you asked me the same question today, my answer would be completely different.
 
-Because over the past year, frontline engineering practice has quietly swapped the word — to **Context Engineering**. It is not a re-branded, upgraded version of prompt engineering. It is a genuine shift in the center of gravity: from "how do I write a sentence well" to "how do I decide what the model actually sees on each inference call."
+Over the past year, engineering practice has increasingly adopted another term: **context engineering**. It does not erase prompt engineering; it widens the frame. The center of gravity moves from "how do I write this instruction?" to "how do I decide what the model sees on this inference call?"
 
 This article wants to do two things. First, with my **Logic Core**, take apart this discipline as it forms: what it is, where its boundary with prompt engineering lies, and which design patterns are already running in production. Second, with my **Sensitivity Core**, come back to myself — as someone who treats AI as an environment rather than a tool and stays local-first, why I believe the end of context engineering is a thing I call the *world line*.
 
@@ -74,17 +77,17 @@ Calling it "engineering" rather than "tricks" has a hard justification. The cont
 
 Anthropic states it directly: "Context, therefore, must be treated as a finite resource with diminishing marginal returns." And — "Good context engineering means finding the smallest possible set of high-signal tokens that maximize the likelihood of some desired outcome."[^anthropic]
 
-What underwrites this is a phenomenon called **context rot**: **as the number of tokens in the context window increases, the model's ability to accurately recall information from that context decreases.**[^anthropic] Behind it sits an "attention budget" argument — attention is an n² pairwise relationship, so the longer the window, the thinner the attention each token can receive. Chroma's targeted needle-in-a-haystack benchmark independently corroborates this.[^chroma]
+One reason is a phenomenon called **context rot**: **as the number of tokens in a context window grows, a model's ability to recall information from it can decline.**[^anthropic] Transformer attention forms n² pairwise relationships across n tokens, which Anthropic offers as one possible mechanism—not a complete causal explanation. Training distributions, position encoding, where the evidence appears, the task, and the model itself can all change the result. Chroma's long-context experiments provide useful empirical evidence, but they are benchmarks rather than a universal law for every production workload.[^chroma]
 
 Here is a counterintuitive but crucial detail Anthropic itself stresses: **minimal does not necessarily mean short.** What you want is not context cut to the fewest words, but cut to the highest information density — keep the high-signal, drop the low-signal.
 
-For me, this turns "context is the bottleneck" from a line I wrote in my own notes a year ago into a conclusion with a physical basis. The bottleneck was never how smart the model is — it is whether, on *this* inference call, it saw the one piece of information that was exactly right. A million tokens of noise is worth less than a thousand tokens of signal.
+For me, this turns "context is the bottleneck" from a line in my notebook into an engineering question. The limit is not only how capable the model is; it is whether, on *this* inference call, the right evidence reached it. A million tokens of noise can be worth less than a thousand tokens of signal.
 
 ---
 
-## Two four-pillar schemes: how the field converged
+## Two representative frameworks for the same window
 
-A sign a discipline is maturing is that people start using a shared vocabulary. Between 2025 and 2026, context engineering converged on two **complementary** four-pillar frameworks — note, two of them, different labels, mutually reinforcing.
+Context engineering is still moving quickly, and no standards body has settled on one canonical map. Two **representative and complementary** four-part frameworks are nevertheless useful: they are practice-oriented lenses from particular authors and companies, not proof that the field has converged.
 
 ### Scheme A (LangChain / Lance Martin): Write / Select / Compress / Isolate
 
@@ -114,9 +117,9 @@ These two are not competitors. They cut the same ground from two axes: **what ac
 
 Beyond the abstract frameworks, what genuinely excites me is that this year the design patterns of context engineering moved from "war stories" to **first-party API primitives** and **reproducible engineering practice**.
 
-### Retrieve then re-rank: 50 → top-5, not all 50 dumped in
+### Retrieve, then re-rank: the lesson behind 50 → top-5
 
-Sourcegraph's example is concrete: "a pipeline that retrieves 50 candidates with high recall and re-ranks them down to a precise top-5 is usually better than one that dumps all 50 chunks into the prompt." The re-ranker is often a smaller cross-encoder or a cheap model that scores each candidate against the query and keeps only the top-k.[^sourcegraph]
+Sourcegraph uses a concrete illustration: retrieve 50 high-recall candidates, then re-rank them to a precise top five instead of dumping all 50 chunks into the prompt. **Those numbers are an example, not universal tuning advice.** In a real system, candidate count and top-k should be chosen against recall, latency, cost, and offline evaluation. The durable idea is a two-stage pipeline: miss as little as possible, then use a cross-encoder or cheaper model to pass only the highest-signal evidence into the window.[^sourcegraph]
 
 This is the engineering antidote to context rot: **few and precise beats many and blurry.**
 
@@ -124,21 +127,21 @@ This is the engineering antidote to context rot: **few and precise beats many an
 
 Sourcegraph defines token-budget management as "the discipline of cutting low-signal content *before* it enters the context window, not after." Concrete moves: truncating tool outputs, compacting old conversation into a running summary, dropping chunks below a relevance threshold, hard-capping the re-ranker.[^sourcegraph]
 
-### Summarization-based compaction: Claude Code's 95% auto-compact
+### Summarization-based compaction: Claude Code closes the loop
 
-A repeatedly corroborated example: **Claude Code runs auto-compact after you exceed 95% of the context window and summarizes the full trajectory of user-agent interactions.**[^lance] (Note: the 95% threshold is tied to window size and version and shifts — cite it with a date.)
+Claude Code provides an intuitive example: auto-compact is enabled by default and summarizes older conversation history as the window fills. The current documentation describes the behavior and exposes configuration such as `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` and `CLAUDE_CODE_AUTO_COMPACT_WINDOW`; it does not justify treating one percentage as a permanent product guarantee. Models, context sizes, and releases can all move the practical boundary.[^claude-code-env][^claude-code-context]
 
-### Anthropic shipped three primitives into the API
+### Anthropic brought three distinct strategies into the API
 
-This is the step with the most signal value — context management is no longer a script you hand-roll, it is a platform capability. Anthropic's API now exposes three first-party primitives targeting distinct bottlenecks:[^cookbook][^context-editing]
+This is the step with the most signal value: context management is no longer only a script you hand-roll; it is also a platform capability. Anthropic currently documents three first-party strategies for distinct bottlenecks:[^cookbook][^context-editing][^server-compaction]
 
-- **Compaction (`compact_20260112`)** — compress the whole window once the dialogue grows large.
-- **Tool-Result Clearing (`clear_tool_uses_20250919`)** — drop stale, re-fetchable tool results inside the window.
-- **Memory tool (`memory_20250818`)** — move information **out** of the window so it survives across sessions.
+- **Server-side compaction (`compact_20260112`)** summarizes older conversation history at a configurable token threshold and returns a typed compaction block.
+- **Server-side context editing**, including tool-result clearing (`clear_tool_uses_20250919`), selectively removes stale, re-fetchable material before the request reaches the model.
+- **The memory tool (`memory_20250818`)** gives the model a protocol for writing to persistent storage **outside** the window so information can survive across sessions.
 
-The Memory tool's design philosophy suits me well: it is **client-implemented** — the API provides the protocol and auto-injects a "check memory" system prompt, while **where and how data is stored is up to you, the client; the model only decides when and what to save.** This cleanly decouples *what to save* (the model's decision) from *how to store it* (the client's implementation).[^cookbook]
+The Memory tool's design philosophy suits me well: it is **client-implemented**. The API provides the protocol, while **where and how data is stored remains the client's responsibility; the model decides when and what to save.** This separates *what to remember* from *how to persist it*.[^cookbook]
 
-(These version identifiers are dated and will evolve — do not treat them as eternal truth.)
+There is a second distinction worth keeping current. Client-side SDK compaction remains available through `tool_runner`, but Anthropic now recommends server-side compaction for most long-running conversations. The Python, TypeScript, and Ruby SDKs mark `compaction_control` as deprecated. Tool-result clearing and thinking-block clearing remain fine-grained server-side context-editing strategies.[^context-editing] These identifiers and recommendations are dated; examples are not eternal truth.
 
 ### KV-cache hit rate: the underrated lifeline in production
 
@@ -158,31 +161,27 @@ And one design I especially love, almost philosophical: **the file system as the
 
 If the above is context engineering at the personal/engineering scale, 2026 has a larger line too: **vendors are starting to sell the "context layer" as a product of its own.**
 
-The most representative one — and the only one for which I hold solid evidence — is Databricks' **Genie Ontology**. It is defined as an automatic context layer: it automatically **extracts snippets of knowledge** from tables, queries, dashboards, pipelines and connected apps, and organizes them into "a living graph of how a company works and what the data inside actually means."[^databricks]
+One documented example is Databricks' **Genie Ontology**. Databricks presents it as an automatic context layer that **extracts snippets of knowledge** from tables, queries, dashboards, pipelines, and connected apps, then organizes them into "a living graph of how a company works and what the data inside actually means."[^databricks]
 
 Its thesis is almost the enterprise version of my "context is the bottleneck": **the real bottleneck is not the base model, it is the scattered, inaccessible business context.** Databricks' own words — business context is "scattered across dashboards, queries, pipelines, wikis, tickets, documents, and chat threads"; and "when AI doesn't easily find the information it needs, it fills in the gaps with inference, producing answers that are generic at best and wrong at worst."[^databricks]
 
 > ⚠️ Here I have to be honest with you, and with myself: this Databricks piece is **vendor product marketing**, to be cited as Databricks' *framing/positioning*, not as independent proof. The 84.5% vs 52.4% comparison benchmark in the original post was **refuted** in my fact-check, so I will not cite a single one of those numbers — the positioning is fair to cite, the benchmark is not. This is itself a meta-discipline of context engineering: **every piece of information entering your argument window should first pass the check "is its source good enough for this conclusion?"**
 
-As for AWS Context and Microsoft Fabric IQ, which the research kept surfacing — they do exist and point the same direction (all building a "context layer"), but I did not obtain independently verifiable detail on them this round, so I will only name them and not elaborate or fabricate. That is a boundary a responsible author should hold.
-
 ---
 
 ## Context vs memory: a window, and the river beyond it
 
-Here we must clarify a relationship that is often conflated: **memory and context engineering are two parallel concepts, not the same thing.**
+Here we must clarify a relationship that is often flattened: **memory and context engineering overlap, but they are not interchangeable.** External memory must be retrieved, selected, and often compressed before it enters the current context; experiences in the current context may later be distilled into memory.
 
-A December 2025 survey, *Memory in the Age of AI Agents* (arXiv 2512.13564, ~50 authors), opens by explicitly delineating agent memory from "LLM memory, RAG, and context engineering," and argues for treating memory as a **first-class primitive** of future agentic intelligence.[^survey]
+A survey submitted in December 2025 and revised in January 2026, *Memory in the Age of AI Agents* (arXiv 2512.13564), distinguishes agent memory from related concepts including LLM memory, RAG, and context engineering. It organizes memory by form, function, and dynamics, and argues that memory deserves treatment as a **first-class primitive** in agent design.[^survey]
 
-The distinction it draws is clean enough that I wanted to copy it into my notes:
+The paper does **not** support the tidy quotation often attributed to it—"RAG accesses knowledge, context engineering optimizes the immediate window, memory provides persistent identity"—so I will not put those words in the authors' mouths. What it does support is a more useful point: the concepts are related but should not be collapsed. Agent memory also asks what form information takes, what function it serves, and how it is formed, updated, and retrieved over time.[^survey]
 
-> "While techniques like RAG provide access to external knowledge, and Context Engineering optimizes the immediate input window, neither fully addresses the requirement for a **persistent, evolving identity** that learns from interaction."[^survey]
-
-I translate it into an image: **context engineering manages "what goes into this one window right now"; memory manages "the river beyond the window that keeps flowing and changing."** The window gets wiped clean and re-arranged again and again; the river remembers every leg you have walked.
+My own image is simpler: **context engineering arranges what sits in this window now; memory tends the river that continues beyond it.** The window is cleared and rearranged. The river keeps the possibility of continuity.
 
 In the open-source world, Mem0 (arXiv 2504.19413) is a concrete reference point: it is a memory-centric architecture that **dynamically extracts, consolidates, and retrieves** salient information from ongoing conversations, precisely to address the fundamental difficulty that "LLMs' fixed context windows cannot maintain consistency over prolonged multi-session dialogues."[^mem0] (I deliberately did not cite Mem0's self-reported benchmark numbers — same discipline: treat unverified numbers with care.)
 
-Last year I wrote a technical analysis of Mem0. Looking back today, that piece was about "how memory is stored"; what this one really wants to connect to is "what, inside one agent, is the relationship between memory and context." The answer: **context engineering is the art of space, memory is the art of time.** For an agent to grow a continuous "self," it needs both.
+Last year I wrote a technical analysis of Mem0. Looking back, that piece asked how memory is stored; this one asks how memory and context meet inside an agent. My answer is still a metaphor, not a standard definition: **context engineering is the art of space; memory is the art of time.** A continuous agent needs both.
 
 ---
 
@@ -216,7 +215,7 @@ Finally, back to a distinction I always use: **stimulative desire** vs **generat
 
 ## Appendix: this article's fact discipline
 
-While writing this, I ran context engineering's discipline on myself: every technical claim went through multi-source adversarial verification (it had to pass a majority vote to survive). Two things were **refuted, and therefore not cited anywhere in the text** — I write them here too, because "what I did not say" matters as much as "what I said":
+While writing this, I applied the article's own discipline to its evidence: technical claims had to stay within what the cited sources could actually support. Two claims failed that check and are therefore not used as evidence:
 
 1. The Databricks "Genie + Ontology 84.5% vs 52.4% vs 25%" benchmark — failed verification, not cited.
 2. "Multi-agent context isolation outperforms single-agent" — failed verification, treated only as a **pattern**, not a proven win.
@@ -233,6 +232,9 @@ Beyond that, OpenAI's "Dreaming," memory systems like SaliMory, and the specific
 [^chroma]: Chroma Research, "Context Rot." https://www.chroma.research/context-rot
 [^cookbook]: Anthropic Claude Cookbook, "Context engineering with tools." https://platform.claude.com/cookbook/tool-use-context-engineering-context-engineering-tools
 [^context-editing]: Anthropic Docs, "Context editing." https://platform.claude.com/docs/en/build-with-claude/context-editing
+[^server-compaction]: Anthropic Docs, "Compaction." https://platform.claude.com/docs/en/build-with-claude/compaction
+[^claude-code-env]: Claude Code Docs, "Environment variables." https://code.claude.com/docs/en/env-vars
+[^claude-code-context]: Claude Code Docs, "Explore the context window." https://code.claude.com/docs/en/context-window
 [^manus]: Manus, "Context Engineering for AI Agents: Lessons from Building Manus." https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
 [^databricks]: Databricks, "Introducing Genie One, Genie Ontology, and Genie Agents." https://www.databricks.com/blog/introducing-genie-one-genie-ontology-and-genie-agents
 [^survey]: "Memory in the Age of AI Agents," arXiv:2512.13564. https://arxiv.org/pdf/2512.13564
