@@ -4,6 +4,8 @@ import * as fs from 'fs';
 
 const EN_URL = 'http://localhost:1313/engineering/posts/use-go-tools-dlv/';
 const ZH_URL = 'http://localhost:1313/zh/engineering/posts/use-go-tools-dlv/';
+const EN_DROPCAP_URL = 'http://localhost:1313/growth/posts/friction-is-growth/';
+const ZH_DROPCAP_URL = 'http://localhost:1313/zh/growth/posts/friction-is-growth/';
 
 const SNAPSHOTS_DIR = path.join(__dirname, '__screenshots__', 'us029');
 
@@ -80,7 +82,7 @@ test('EN: post-description is italic', async ({ page }) => {
 // EN: first paragraph has drop-cap class
 test('EN: first paragraph has drop-cap class', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
-  await page.goto(EN_URL);
+  await page.goto(EN_DROPCAP_URL);
   const firstP = page.locator('.post-content p.drop-cap');
   await expect(firstP).toHaveCount(1);
 });
@@ -88,7 +90,7 @@ test('EN: first paragraph has drop-cap class', async ({ page }) => {
 // ZH: first paragraph has drop-cap class
 test('ZH: first paragraph has drop-cap class', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
-  await page.goto(ZH_URL);
+  await page.goto(ZH_DROPCAP_URL);
   const firstP = page.locator('.post-content p.drop-cap');
   await expect(firstP).toHaveCount(1);
 });
