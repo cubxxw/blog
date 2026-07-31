@@ -1,295 +1,300 @@
 ---
-title: 'Sora Ease Guide: Mastering Sora AI for Developers'
-ShowRssButtonInSectionTermList: true
+title: 'SoraEase After Sora: A Prompt Archive and Developer Migration Guide'
 date: 2024-03-14T08:44:13+08:00
-draft : false
+lastmod: 2026-07-31T16:00:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["Sora AI", "Development Guide", "AI Modeling", "OpenAI", "Developer Tools"]
+keywords: []
 tags:
-  - Blog
   - AI
-  - Git
+  - Development
+  - Open Source
+  - Automation
+  - Testing
+  - Content Strategy
+categories:
+  - Development
 description: >
-    This comprehensive guide introduces Sora AI, offering developers an accessible, automated, and swift path to harnessing its potential. Dive into various scenarios, master commanding Sora, and explore the multi-faceted applications of this AI model trained to understand and simulate the physical world in motion. Whether you're seeking the latest Sora news, development projects, or open-source contributions, this article is your gateway to the expansive world of Sora AI development.
+  A 2024 SoraEase prompt archive, updated after Sora’s shutdown, with a verified timeline and practical migration lessons for developers leaving the Videos API.
+cover:
+  image: /images/covers/ai-agent/2024/sora-ease-guide-mastering-sora-ai-for-developers.png
+  alt: 'An abandoned film strip crossing a bridge toward a new modular video workflow'
 tldr:
-  - "Sora AI generates realistic and imaginative videos from text instructions by understanding and simulating physical world motion."
-  - "Effective Sora prompts combine photography techniques, visual styles, technical effects, and emotional expressions to produce desired video outputs."
-  - "SoraEase provides developers with automated tools, prompt collections, and community resources to simplify Sora video creation."
+  - 'Sora moved from a February 2024 research preview to a December product launch, then Sora 2, before its web and app experiences closed on April 26, 2026.'
+  - 'The Videos API and sora-2 models are scheduled to shut down on September 24, 2026; OpenAI has not named a replacement in its discontinuation notice.'
+  - 'The durable part of the old SoraEase collection is not model-specific wording, but a testable description of subject, action, camera, light, timing, audio, constraints, and acceptance criteria.'
 ---
 
-**Copyright: [SoraEase](https://github.com/SoraEase/sora-prompt), please indicate the source when forwarding.**
+In March 2024, this page was a long collection of Sora prompts. It belonged to the brief season when a research preview could become a small open-source movement before most people had touched the product. We copied examples, named camera movements, and tried to infer a grammar from a handful of remarkable clips.
 
-This article from the [https://github.com/SoraEase/sora-prompt](https://github.com/SoraEase/sora-prompt) open source project,SoraEase wants to provide automated, easy, and quick to use tools and guidelines for SORa-related developers.
+That guide can no longer honestly call itself a guide to “mastering Sora.” The Sora web and app experiences closed on April 26, 2026. OpenAI says its Sora API will be discontinued on September 24, 2026. A page that still teaches Sora as a growing platform would turn search traffic into misinformation.
 
-Sora Prompt Collection, a repository dedicated to inspiring AI-driven video creation with Sora. Structured Prompt | Sora Collection of prompt words, a repository designed to inspire AI-driven video creation using Sora.
+So this is now an archive with a practical second life. It preserves a few representative prompts from the 2024 [SoraEase prompt collection](https://github.com/SoraEase/sora-prompt), explains what those prompts taught us, and turns the lesson into a migration method for developers leaving the Videos API.
 
-[Sora | Sora](https://openai.com/sora) is an AI model that can create realistic and imaginative scenes from OpenAI's text instructions. OpenAI is teaching AI to understand and simulate the physical world in motion, with the goal of training models to help people solve problems that require real-world interaction.
+The larger lesson is not about one model. A prompt is temporary syntax around a more durable creative intention. Products disappear; the ability to state what a scene must communicate should survive them.
 
-If you are a sora learner and want to get the latest sora consulting and related development projects, as well as SORA-related open source projects,Here [awesome-sora](https://github.com/awesome-sora/awesome-sora) provides sora related sora English guide, instruction guides, application development guide, select resource list,Sora Developer selection tool framework.
+## What changed: the verified Sora timeline
 
-**Sola offers the following features:**
+The dates matter because four different things were often collapsed into one name: a research model, a consumer product, a later video-and-audio model, and an API.
 
-+ text to video
-+ animation
-+ Extension generated video
-+ video to video editing
-+ Connect video
-+ Image generation (text to image)
+### February 15, 2024: research preview
 
-In this repository you'll find a variety of tips that you can use with Sora. We assign different tags according to the style of the video, so that you can quickly find the prompt examples (Prompt) and the generated video based on the tags, and modify them as needed.
+OpenAI published [Video generation models as world simulators](https://openai.com/index/video-generation-models-as-world-simulators/) on February 15, 2024. The report described Sora as a text-conditional diffusion model using spacetime patches, capable in the showcased research setting of generating up to a minute of high-definition video.
 
-While Sola isn't officially released yet, we're rounding up tips to help you quickly start using Sola to generate the videos you want.
+This was research, not a public developer platform. The report explicitly focused on representation and qualitative results, while withholding model and implementation details. Many early prompt collections—including SoraEase—were therefore acts of observation. They studied the examples that OpenAI had published and tried to find repeatable patterns.
 
-## Prompt word
+### December 9, 2024: Sora became a product
 
-### Official prompt word generator
+OpenAI announced [Sora is here](https://openai.com/index/sora-is-here/) on December 9, 2024, moving the model out of research preview. Sora Turbo launched through a standalone web experience for eligible ChatGPT Plus and Pro users. The product supported text, image, and video inputs, along with storyboard, remix, blend, and extend workflows.
 
-## Video generation tips
-### Official video generation tips
+That launch also documented limitations that prompt enthusiasts sometimes ignored: unrealistic physics, difficulty with complex actions over time, cost, and safety constraints. A good workflow could improve the probability of a useful result; it could not convert a probabilistic generator into a deterministic renderer.
 
-<details>
-<summary>Click to see more examples</summary>
+### September 30, 2025: Sora 2
+
+[Sora 2 is here](https://openai.com/index/sora-2/) introduced a new video-and-audio generation model on September 30, 2025. OpenAI described improved physical accuracy, control, world-state persistence, synchronized dialogue, and sound effects. The initial product experience arrived through the Sora app and sora.com, with API availability following later.
+
+Sora 2 changed the surface area of a useful prompt. Audio intent, dialogue timing, and shot continuity became first-class concerns. It did not erase the older craft; it made the need for explicit structure more obvious.
+
+### April 26 and September 24, 2026: two different endings
+
+OpenAI's [Sora discontinuation notice](https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation) separates the shutdown into two dates:
+
+- The Sora web and app experiences were discontinued on **April 26, 2026**.
+- The Sora API will be discontinued on **September 24, 2026**.
+
+As of this update, the API date is still ahead. That makes the present moment a migration window, not a reason to start a new dependency.
+
+OpenAI's notice does **not** name a replacement video product or replacement API. This article will not invent one. If you are choosing another provider, treat that as your own product decision and verify its current documentation, data policy, safety behavior, pricing, and regional availability.
+
+## What this archive is—and what it is not
+
+The original [SoraEase/sora-prompt](https://github.com/SoraEase/sora-prompt) repository is now a read-only public archive. Its README asks people to credit SoraEase when forwarding the material, and the repository carries a CC0-1.0 license. The short examples below are preserved or lightly formatted from that collection with the source named here.
+
+They are historical specimens, not guaranteed commands. I have deliberately removed the old page's empty sections, repeated social-media links, misspelling of Sora as “Sola,” and unsupported feature claims about green screens, VR panoramas, interactive media, or editing operations. Some of those phrases describe post-production techniques, but their presence in a prompt list did not prove that Sora implemented them as product features.
+
+Nor should the examples be read as portable incantations. Different models tokenize, plan, moderate, and render differently. Moving the same paragraph to another system may change composition, motion, duration, identity consistency, or simply fail. What transfers is the scene specification and the evaluation method.
+
+## Five prompts worth keeping
+
+The original collection was useful because it exposed several kinds of visual intent. Five examples are enough to recover that range without preserving hundreds of fragile links.
+
+### 1. Environment, wardrobe, and reflected light
 
 > A stylish woman walks down a Tokyo street filled with warm glowing neon and animated city signage. She wears a black leather jacket, a long red dress, and black boots, and carries a black purse. She wears sunglasses and red lipstick. She walks confidently and casually. The street is damp and reflective, creating a mirror effect of the colorful lights. Many pedestrians walk about.
 
-[Generate video link](https://cdn.openai.com/sora/videos/tokyo-walk.mp4) 
+This prompt works as a study in coordinated details. Wardrobe establishes a color anchor; wet pavement makes the light legible; background pedestrians give the subject a social scale; “walks confidently and casually” suggests rhythm rather than merely position.
 
-> Several giant wooly mammoths approach treading through a snowy meadow, their long wooly fur lightly blows in the wind as they walk, snow covered trees and dramatic snow capped mountains in the distance, mid afternoon light with wispy clouds and a sun high in the distance creates a warm glow, the low camera view is stunning capturing the large furry mammal with beautiful photography, depth of field.
+Its weakness is the absence of a shot plan. Is the camera tracking, locked, or handheld? How long must the walk remain continuous? What counts as success besides visual richness? Those omissions matter in production.
 
-[Generate video link](https://cdn.openai.com/sora/videos/wooly-mammoth.mp4) 
+### 2. Scale, atmosphere, and camera height
 
-> A movie trailer featuring the adventures of the 30 year old space man wearing a red wool knitted motorcycle helmet, blue sky, salt desert, cinematic style, shot on 35mm film, vivid colors.
+> Several giant woolly mammoths approach through a snowy meadow. Their long fur moves lightly in the wind; snow-covered trees and dramatic mountains sit in the distance. Mid-afternoon light and wispy clouds create a warm glow. A low camera view emphasizes the animals' scale, with shallow depth of field.
 
-[Generate video link](https://cdn.openai.com/sora/videos/mitten-astronaut.mp4) 
+The durable phrase here is not “cinematic.” It is “low camera view emphasizes scale.” That connects a camera decision to a narrative purpose. Wind in the fur, distant mountains, and atmospheric light provide multiple depth cues.
 
-> Drone view of waves crashing against the rugged cliffs along Big Sur’s garay point beach. The crashing blue waters create white-tipped waves, while the golden light of the setting sun illuminates the rocky shore. A small island with a lighthouse sits in the distance, and green shrubbery covers the cliff’s edge. The steep drop from the road down to the beach is a dramatic feat, with the cliff’s edges jutting out over the sea. This is a view that captures the raw beauty of the coast and the rugged landscape of the Pacific Coast Highway.
+The likely failure mode is crowd coherence: legs may intersect, spacing may drift, and individual animals may change. A modern test case should name how many mammoths must remain visible and which one is the hero subject.
 
-[Generate video link](https://cdn.openai.com/sora/videos/big-sur.mp4) 
+### 3. Surreal scale with one clean contradiction
 
-> Animated scene features a close-up of a short fluffy monster kneeling beside a melting red candle. The art style is 3D and realistic, with a focus on lighting and texture. The mood of the painting is one of wonder and curiosity, as the monster gazes at the flame with wide eyes and open mouth. Its pose and expression convey a sense of innocence and playfulness, as if it is exploring the world around it for the first time. The use of warm colors and dramatic lighting further enhances the cozy atmosphere of the image.
+> Photorealistic close-up video of two pirate ships battling each other as they sail inside a cup of coffee.
 
-[Generate video link](https://cdn.openai.com/sora/videos/monster-with-melting-candle.mp4) 
+This may be the best prompt in the archive. It gives the generator one impossible relationship—ships inside a cup—and otherwise asks for familiar physical evidence: liquid, vessels, battle, and close-up photography. The contradiction is simple enough to read in a glance.
 
-> A gorgeously rendered papercraft world of a coral reef, rife with colorful fish and sea creatures.
+Surreal prompts often fail when every noun is strange. One impossible premise surrounded by ordinary visual rules is easier to direct and easier to judge.
 
-[Generate video link](https://cdn.openai.com/sora/videos/origami-undersea.mp4) 
+### 4. Material style as world logic
 
-> This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage and red chest. Its crest is made of delicate, lacy feathers, while its eye is a striking red color. The bird’s head is tilted slightly to the side, giving the impression of it looking regal and majestic. The background is blurred, drawing attention to the bird’s striking appearance.
+> A gorgeously rendered papercraft world of a coral reef, filled with colorful fish and sea creatures.
 
-[Generate video link](https://cdn.openai.com/sora/videos/victoria-crowned-pigeon.mp4) 
+“Papercraft” should affect everything: edges, folds, translucency, movement, lighting, and the stiffness of the fish. If only the first frame looks like paper while motion behaves like soft tissue, the style has not survived time.
 
-> Photorealistic closeup video of two pirate ships battling each other as they sail inside a cup of coffee.
+This example teaches us to test material consistency, not just screenshot beauty. A video is a sequence of obligations.
 
-[Generate video link](https://cdn.openai.com/sora/videos/ships-in-coffee.mp4) 
+### 5. Camera movement and temporal persistence
 
-> A young man at his 20s is sitting on a piece of cloud in the sky, reading a book.
+> The camera rotates around a large stack of vintage televisions in a New York museum gallery. Every screen shows a different program—1950s science fiction, horror, news, static, and a 1970s sitcom.
 
-[Generate video link](https://cdn.openai.com/sora/videos/man-on-the-cloud.mp4) 
+This is a compact stress test. The orbit demands changing perspective; the television stack demands stable geometry; many screens demand local motion without destroying the whole. It also reveals why a prompt alone is not a specification. We need to decide whether every program must remain semantically distinct, whether text is allowed, and whether the orbit must complete a particular angle.
 
-> Historical footage of California during the gold rush.
+## A portable scene contract
 
-[Generate video link](https://cdn.openai.com/sora/videos/gold-rush.mp4) 
+Instead of saving provider-specific prompt prose, store a scene contract. I use eight fields:
 
-> A close up view of a glass sphere that has a zen garden within it. There is a small dwarf in the sphere who is raking the zen garden and creating patterns in the sand.
+1. **Subject** — What must the viewer recognize? Include count, identity anchors, wardrobe, material, and relative scale.
+2. **Action** — What changes during the clip? Prefer one primary action and name its start and end state.
+3. **Camera** — Define framing, lens character if relevant, camera height, movement, and what that movement is meant to reveal.
+4. **Light** — State source, direction, time of day, contrast, and the visual evidence the light should create.
+5. **Timing** — Give the duration and divide important beats into ranges rather than relying on vague words such as “then.”
+6. **Audio** — Specify dialogue, ambience, effects, silence, and synchronization only when the target system supports audio.
+7. **Constraints** — List things that must not drift: subject count, logo absence, readable hands, continuous direction of travel, or no cuts.
+8. **Acceptance** — Describe the conditions under which a human reviewer or automated test will accept the result.
 
-[Generate video link](https://cdn.openai.com/sora/videos/zen-garden-gnome.mp4) 
+Here is the pirate-ship idea rewritten as a model-neutral contract:
 
-> Extreme close up of a 24 year old woman’s eye blinking, standing in Marrakech during magic hour, cinematic film shot in 70mm, depth of field, vivid colors, cinematic
+```yaml
+scene_id: ships-in-coffee-v1
+duration_seconds: 8
+subject:
+  hero: two miniature wooden pirate ships
+  count_must_remain: 2
+  scale_cue: both ships fit inside one ceramic coffee cup
+action:
+  primary: ships circle and exchange one cannon volley
+  end_state: both remain afloat and visually distinct
+camera:
+  framing: macro close-up
+  movement: slow clockwise arc of about 30 degrees
+  purpose: reveal the cup rim and prove the miniature scale
+light:
+  source: soft morning window light from camera left
+  evidence: warm rim on the cup and specular highlights on coffee
+timing:
+  - "0-3s: establish cup, both ships, and scale"
+  - "3-6s: one volley; coffee ripples from impact"
+  - "6-8s: smoke clears; both ships remain visible"
+audio:
+  ambience: quiet kitchen room tone
+  effects: one distant miniature cannon volley and liquid splash
+constraints:
+  - no text or logos
+  - no additional ships
+  - cup geometry remains stable
+  - no camera cut
+acceptance:
+  - viewer identifies the container as a coffee cup in the first 2 seconds
+  - exactly two ships are visible at the end
+  - arc movement does not cross or clip through the cup
+```
 
-[Generate video link](https://cdn.openai.com/sora/videos/closeup-of-womans-eye.mp4) 
+No provider will consume this YAML identically. That is intentional. The contract belongs to your application; an adapter translates it into the provider's request format. The fields remain stable while endpoints and prompt conventions change.
 
-> A cartoon kangaroo disco dances.
+## Do not confuse prompt quality with system reliability
 
-[Generate video link](https://cdn.openai.com/sora/videos/dancing-kangaroo.mp4) 
+A generated clip can be attractive and still fail the job. For production, evaluate at three levels.
 
-> A beautiful homemade video showing the people of Lagos, Nigeria in the year 2056. Shot with a mobile phone camera.
+### Frame quality
 
-[Generate video link](https://cdn.openai.com/sora/videos/lagos.mp4) 
+Check composition, exposure, subject clarity, unwanted text, anatomical artifacts, and brand-safety requirements. Sample the first, middle, and last frame rather than choosing the prettiest thumbnail.
 
-> A petri dish with a bamboo forest growing within it that has tiny red pandas running around.
+### Temporal quality
 
-[Generate video link](https://cdn.openai.com/sora/videos/petri-dish-pandas.mp4) 
+Check identity persistence, object count, geometry, direction of travel, motion continuity, and whether actions happen in the intended order. Many defects appear only between frames.
 
-> The camera rotates around a large stack of vintage televisions all showing different programs — 1950s sci-fi movies, horror movies, news, static, a 1970s sitcom, etc, set inside a large New York museum gallery.
+### Product quality
 
-[Generate video link](https://cdn.openai.com/sora/videos/stack-of-tvs.mp4) 
+Check whether the clip serves its actual slot: correct aspect ratio, safe margins for captions, edit handles, audio levels, duration tolerance, provenance requirements, and rights review. A beautiful 16:9 clip is still a failed result if the product needs a 9:16 opening with space for a title.
 
-> 3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest.
+Keep generation settings, provider, model identifier, timestamp, input assets, request ID, and evaluation results together. Without that record, “this prompt used to work” becomes impossible to investigate.
 
-[Generate video link](https://cdn.openai.com/sora/videos/big-eyed-fluff-ball.mp4) 
+## A developer exit checklist for the Videos API
 
-> The camera follows behind a white vintage SUV with a black roof rack as it speeds up a steep dirt road surrounded by pine trees on a steep mountain slope, dust kicks up from it’s tires, the sunlight shines on the SUV as it speeds along the dirt road, casting a warm glow over the scene. The dirt road curves gently into the distance, with no other cars or vehicles in sight. The trees on either side of the road are redwoods, with patches of greenery scattered throughout. The car is seen from the rear following the curve with ease, making it seem as if it is on a rugged drive through the rugged terrain. The dirt road itself is surrounded by steep hills and mountains, with a clear blue sky above with wispy clouds.
+The September 24 deadline is an engineering event. Treat it like the retirement of any external service.
 
-[Generate video link](https://cdn.openai.com/sora/videos/suv-in-the-dust.mp4) 
+### 1. Stop creating new dependency
 
-> Reflections in the window of a train traveling through the Tokyo suburbs.
+Do not add new features whose only implementation path is the retiring Sora API. Mark Sora-backed code as deprecated internally. Put a date on the migration issue and assign an owner.
 
-[Generate video link](https://cdn.openai.com/sora/videos/train-window.mp4) 
+This does not mean shutting down a working feature today. It means refusing to make the eventual cutover larger.
 
-> A drone camera circles around a beautiful historic church built on a rocky outcropping along the Amalfi Coast, the view showcases historic and magnificent architectural details and tiered pathways and patios, waves are seen crashing against the rocks below as the view overlooks the horizon of the coastal waters and hilly landscapes of the Amalfi Coast Italy, several distant people are seen walking and enjoying vistas on patios of the dramatic ocean views, the warm glow of the afternoon sun creates a magical and romantic feeling to the scene, the view is stunning captured with beautiful photography.
+### 2. Export user content now
 
-[Generate video link](https://cdn.openai.com/sora/videos/amalfi-coast.mp4) 
+OpenAI recommends exporting Sora content as soon as possible. Its help article directs users to `sora.chatgpt.com/sunset` and warns that associated data will be permanently deleted after discontinuation and any final export window.
 
-> A large orange octopus is seen resting on the bottom of the ocean floor, blending in with the sandy and rocky terrain. Its tentacles are spread out around its body, and its eyes are closed. The octopus is unaware of a king crab that is crawling towards it from behind a rock, its claws raised and ready to attack. The crab is brown and spiny, with long legs and antennae. The scene is captured from a wide angle, showing the vastness and depth of the ocean. The water is clear and blue, with rays of sunlight filtering through. The shot is sharp and crisp, with a high dynamic range. The octopus and the crab are in focus, while the background is slightly blurred, creating a depth of field effect.
+For application-owned assets, inventory what is stored by OpenAI, what is already in your object storage, and what retention terms apply. Preserve original files, generated outputs, metadata, captions, and provenance records when you are authorized to do so. An exported MP4 without its prompt, model, consent record, or project association may be nearly useless.
 
-</details>
+### 3. Find every coupling
 
-### Prompt words and video display on official Twitter
+Search beyond the obvious API client:
 
-<details>
-<summary>Click to see more examples</summary> 
+- model names and endpoint paths;
+- request and response schemas;
+- polling and webhook handlers;
+- moderation assumptions;
+- duration, aspect-ratio, and file-size limits;
+- retry, timeout, and cancellation behavior;
+- cost calculations and quotas;
+- dashboards, alerts, runbooks, and support copy;
+- database enums and analytics events;
+- fixtures, snapshots, and golden test assets.
 
-1. a red panda and a toucan are best friends taking a stroll through santorini during the blue hour
-[Generate video link](https://x.com/_tim_brooks/status/1761236971186438178?s=20)
-2. a scuba diver discovers a hidden futuristic shipwreck, with cybernetic marine life and advanced alien technology
-[Generate video link](https://x.com/billpeeb/status/1761235907330400640?s=20)
-3. Close-up of a majestic white dragon with pearlescent, silver-edged scales, icy blue eyes, elegant ivory horns, and misty breath. Focus on detailed facial features and textured scales, set against a softly blurred background
-[Generate video link](https://x.com/hr98w/status/1761752242406019524?s=20)
-4. in a beautifully rendered papercraft world, a steamboat travels across a vast ocean with wispy clouds in the sky. vast grassy hills lie in the distant background, and some sealife is visible near the papercraft ocean's surface
-[Generate video link](https://x.com/billpeeb/status/1761235818515968314?s=20)
-5. a man BASE jumping over tropical hawaii waters. His pet macaw flies alongside him
-[Generate video link](https://x.com/_tim_brooks/status/1761235778875883810?s=20)
-6. a dark neon rainforest aglow with fantastical fauna and animals
-[Generate video link](https://x.com/_tim_brooks/status/1761235759464329278?s=20)
-7. a tortoise whose body is made of glass, with cracks that have been repaired using kintsugi, is walking on a black sand beach at sunset
-[Generate video link](https://x.com/model_mechanic/status/1761198301482021084?s=20)
-8. cinematic trailer for a group of samoyed puppies learning to become chefs
-[Generate video link](https://x.com/hr98w/status/1761752613111152977?s=20)
-9. Cinematic trailer for a group of adventurous puppies exploring ruins in the sky
-[Generate video link](https://x.com/_tim_brooks/status/1760168890959888818?s=20)
-10. nighttime footage of a hermit crab using an incandescent lightbulb as its shell
-[Generate video link](https://x.com/model_mechanic/status/1759343673484165262?s=20)
-11.minecraft with the most gorgeous high res 8k texture pack ever
-[Generate video link](https://x.com/_tim_brooks/status/1759125570825453785?s=20)
-12. this close-up shot of a futuristic cybernetic german shepherd showcases its striking brown and black fur...
-[Generate video link](https://x.com/billpeeb/status/1759123245821817083?s=20)
-13. pov footage of an ant navigating the inside of an ant nest
-[Generate video link](https://x.com/model_mechanic/status/1759068809867166129?s=20)
-14. macro shot of a leaf showing tiny trains moving through its veins
-[Generate video link](https://x.com/model_mechanic/status/1758993960956219476?s=20)
-15. a white and orange tabby alley cat is seen darting across a back street alley in a heavy rain, looking for shelter...
-[Generate video link](https://x.com/_tim_brooks/status/1758967853498450396?s=20)
-16. a photorealistic video of a butterfly that can swim navigating underwater through a beautiful coral reef
-[Generate video link](https://x.com/_tim_brooks/status/1758959726933774489?s=20)
-17. a giant duck walks through the streets in Boston
-[Generate video link](https://x.com/_tim_brooks/status/1758959404974760042?s=20)
-18. The camera lowers and widens to a grand panoramic view overlooking the beautiful ocean and the historical buildings along the a stunning coastal picturesque town perched on the cliffs...
-[Generate video link](https://x.com/billpeeb/status/1758958132615619005?s=20)
-19. a walking figure made out of water tours an art gallery with many beautiful works of art in different styles
-[Generate video link](https://x.com/_tim_brooks/status/1758666264032280683?s=20)
-20. a green blob and an orange blob are in love and dancing together
-[Generate video link](https://x.com/_tim_brooks/status/1758662698190229643?s=20)
-21. a spooky haunted mansion, with friendly jack o lanterns and ghost characters welcoming trick or treaters to the entrance, tilt shift photography
-[Generate video link](https://x.com/billpeeb/status/1758658884582142310?s=20)
-22. a giant cathedral is completely filled with cats. there are cats everywhere you look. a man enters the cathedral and bows before the giant cat king sitting on a throne.
-[Generate video link](https://x.com/_tim_brooks/status/1758655677864845707?s=20)
-23. realistic video of people relaxing at beach, then a shark jumps out of the water halfway through and surprises everyone
-[Generate video link](https://x.com/_tim_brooks/status/1758655323576164830?s=20)
-
-</details>
-
-### Official TikTok prompt words and video display
-
-<details>
-<summary>Click to see more examples</summary> 
-
-1. Tiny potato kings wearing majestic crowns, sitting on thrones, overseeing their vast potato kingdom filled with potato subjects and potato castles.
-[Generate video link](https://www.tiktok.com/@openai/video/7336623342721486122)
-2. A minimap diorama of a cafe adorned with indoor plants. Wooden beams crisscross above, and a cold brew station stands out with tiny bottles and glasses.
-[Generate video link](https://www.tiktok.com/@openai/video/7336623342721486122)
-3. an image of a realistic cloud that spells “SORA.”
-[Generate video link](https://www.tiktok.com/@openai/video/7336623342721486122)
-4. monkey playing chess in a park.
-[Generate video link](https://www.tiktok.com/@openai/video/7336976814272695598)
-5. macro shot of a leaf showing tiny trains moving through its veins
-[Generate video link](https://www.tiktok.com/@openai/video/7337337783700360494)
-6. a computer hacker labrador retreiver wearing a black hooded sweatshirt sitting in front of the computer with the glare of the screen emanating on the dog's face as he types very quickly.
-[Generate video link](https://www.tiktok.com/@openai/video/7337475894115700011)
-7. a computer hacker labrador retreiver wearing a black hooded sweatshirt sitting in front of the computer with the glare of the screen emanating on the dog's face as he types very quickly.
-[Generate video link](https://www.tiktok.com/@openai/video/7337532544491130158)
-8. leaning tower of pizza
-[Generate video link](https://www.tiktok.com/@openai/video/7337782565870357803)
-9. a low-quality, visually disappointing superbowl commercial
-[Generate video link](https://www.tiktok.com/@openai/video/7337862463951654190)
-
-</details>
-
-### How to make prompt words
-
-##### **Photography Technology/Equipment**
-
-- Shot on 35mm film
-- Shot on 70mm film
-- Take pictures using your phone camera
-
-##### **Visual style**
-
-- Cinematic feel
-- 3D digital rendering art style
-- wide lens
-- black and white tones
-- Old movie style grainy feel
-- golden sunset time
-- Star trail long exposure
-- Street documentary style
-- HDR high dynamic range
-- Slow motion shooting
-- Time lapse photography
-- Creative light painting
-- Virtual reality panorama
-- Macro photography
-
-**Photography Tips**
-
-- Depth of field
-- Close-up
-- Clear and sharp images with shallow depth of field
-- Bright colors
-
-##### **Technical Effect**
-
-- **Stabilized Lens**: Remove shake and keep the picture stable.
-- **Color Correction**: Adjust the color temperature, saturation, contrast, etc. of the video.
-- **Light Effect**: Simulate natural light, backlight or special light source effects.
-- **Green Screen Cutout**: Replace a background of a specific color (usually green or blue) with another screen.
-- **Video Transitions**: Smoothly or creatively transition between two shots.
-- **Text Animation**: The appearance, disappearance or movement effect of text.
-- **Timeline Editing**: Crop, splice, speed adjust, etc. video clips.
-
-##### **Visual style**
-
-- **VINTAGE STYLE**: Mimics the visuals of old movies or a certain era.
-- **Anime Style**: Process the video into an artistic style similar to animation or hand-drawing.
-- **Science Fiction Style**: Give the video the visual characteristics of a futuristic or science fiction movie.
-- **Dream Effect**: Use blur, halo and other effects to create a dreamlike visual experience.
-- **Documentary Style**: imitates documentary photography and editing techniques.
-
-##### **Emotional Expression**
-
-- **Cheerful**: Convey happy emotions through bright colors and fast-paced editing.
-- **Nostalgia**: Reminisce about the past with warm tones and retro transitions.
-- **Tension**: Create a tense atmosphere through fast editing and abrupt sound effects.
-- **Romantic**: Use soft light, slow motion and warm background music to create a romantic atmosphere.
-
-##### **Special effect**
-
-- **VR/360 Degree Video**: Supports creating or editing virtual reality videos.
-- **AR Effect**: Add augmented reality elements and layers.
-- **Audio Effects**: background music, sound mixing, audio filtering and effects processing.
-- **Interactive Video**: Allows creators to add interactive elements, such as click-to-jump, questionnaires, etc.
-
-#### **related articles**
-
-- [**Guesses about structured prompt words**](https://github.com/ling6614/sora-prompt-zh/blob/main/docs/structured_prompt_words.md)
-
-## Community Resources
-
-**SoraEase** provides development tools and resources to simplify Sora's AI video technology for everyone. Developers can better use our various tools for Sora development, and users can more conveniently use our tools to complete manual work with us. Smart video creation.
-
-- **GitHub address**: [SoraEase GitHub](https://github.com/SoraEase)
-- **Join our community**: Add Wechat **cubxxwAI** and reply `sora` to join the group. In our WeChat community, you can get Sora's latest consultation and technology sharing, and it is also a communication platform for Sora enthusiasts and developers.
-
-We look forward to your joining and exploring the infinite possibilities of Sora technology!
+The dangerous dependency is often not the HTTP call. It is a business rule that silently assumes a particular provider's behavior.
+
+### 4. Put the provider behind an adapter
+
+Expose an application-level interface, not a Sora-shaped interface:
+
+```ts
+type VideoJob = {
+  scene: SceneContract;
+  inputAssets: AssetRef[];
+  policyContext: PolicyContext;
+};
+
+type VideoResult = {
+  status: "queued" | "running" | "succeeded" | "failed";
+  artifacts: GeneratedAsset[];
+  providerTrace: ProviderTrace;
+  safety: SafetyRecord;
+};
+
+interface VideoGenerator {
+  submit(job: VideoJob): Promise<{ jobId: string }>;
+  inspect(jobId: string): Promise<VideoResult>;
+  cancel(jobId: string): Promise<void>;
+}
+```
+
+Keep provider-native fields inside the adapter and record them for debugging. Do not pretend providers are identical: capabilities should be explicit, and unsupported features should fail clearly. The adapter gives you a controlled boundary; it does not guarantee interchangeable output.
+
+### 5. Build a migration evaluation set
+
+Select representative jobs from real usage, with permission and sensitive data removed. Include easy scenes, high-motion scenes, multiple subjects, image-conditioned work, text-sensitive shots, audio/dialogue cases, and known failure cases.
+
+For each job, store the scene contract and acceptance criteria. Compare candidates on:
+
+- task success rate, not demo appeal;
+- temporal consistency;
+- policy rejection and false-positive rates;
+- latency distribution and timeout rate;
+- cost per accepted clip, including retries;
+- output rights, data handling, and deletion controls;
+- accessibility and provenance metadata;
+- operational behavior under rate limits and partial failure.
+
+Run blinded human review where aesthetic judgment matters. A vendor demo reel is not a migration test.
+
+### 6. Design the cutover and rollback
+
+Introduce the new implementation behind a feature flag. Test with internal traffic, then a small cohort. Maintain an explicit fallback—perhaps a queued manual workflow or a temporary feature pause—rather than silently returning lower-quality output.
+
+Define the final Sora submission date before September 24, allowing time for in-flight jobs, retries, downloads, reconciliation, and incident response. After cutover, revoke unused credentials, remove Sora-specific secrets, update documentation, and verify that no scheduled job can still submit work.
+
+### 7. Communicate uncertainty honestly
+
+Tell users what will change: available formats, generation time, price, old project access, and whether prior prompts will render differently. Do not market a migration as invisible if creative output changes.
+
+Most importantly, do not present an unofficial substitute as “the new Sora API.” OpenAI's discontinuation notice names no replacement. Your chosen provider is your integration, with its own contract and risks.
+
+## What survived the SoraEase experiment
+
+The old page assumed that collecting enough magic phrases would give developers control. That was understandable in 2024. We were watching a closed research preview through the keyhole, and every published prompt looked like evidence.
+
+Two years later, the archive teaches something quieter. The nouns were never the durable part. “35mm,” “cinematic,” and “HDR” can influence a result, but they do not tell us why a shot exists or how to know it succeeded. Durable creative work begins when taste becomes a contract: this subject, doing this action, seen from here, under this light, across this time, with these constraints.
+
+A model can interpret that contract. It cannot own it for us.
+
+SoraEase is worth remembering precisely because its original purpose has ended. It captured the first attempts to make an unfamiliar medium legible. The responsible way to preserve it is not to keep pretending the door is open. It is to carry the useful grammar through the door that closes.
+
+## Sources and archive note
+
+- OpenAI, [Video generation models as world simulators](https://openai.com/index/video-generation-models-as-world-simulators/), February 15, 2024.
+- OpenAI, [Sora is here](https://openai.com/index/sora-is-here/), December 9, 2024.
+- OpenAI, [Sora 2 is here](https://openai.com/index/sora-2/), September 30, 2025.
+- OpenAI Help Center, [What to know about the Sora discontinuation](https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation).
+- OpenAI API documentation, [Sora 2 model](https://developers.openai.com/api/docs/models/sora-2), marked deprecated at the time of this update.
+- SoraEase, [sora-prompt public archive](https://github.com/SoraEase/sora-prompt), CC0-1.0; representative prompt wording above is credited to this collection.
+
+This article was last checked on July 31, 2026. Shutdown status is time-sensitive; verify the official discontinuation notice before acting on it.

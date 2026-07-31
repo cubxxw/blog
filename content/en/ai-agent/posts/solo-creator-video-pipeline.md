@@ -1,12 +1,13 @@
 ---
-title: "AI Can't Edit a Shot You Never Filmed: A Solo Creator's Video Pipeline for 2026"
+title: "A Solo Creator's AI Video Editing Pipeline That Actually Works"
 date: 2026-07-19T22:00:00+08:00
+lastmod: 2026-07-31T20:00:00+08:00
 draft: false
 showtoc: true
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ['AI video editing', 'video pipeline', 'super individual', 'content distribution', 'ffmpeg', 'PySceneDetect', 'faster-whisper', 'auto-editor', 'EDL', 'screen recording', 'automated publishing', 'AI content labeling', 'solo creator', 'digital nomad']
+keywords: []
 tags:
   - AI
   - Automation
@@ -14,18 +15,20 @@ tags:
   - Content Strategy
   - Solo Builder
   - Harness Engineering
+categories:
+  - Development
 description: >
-  When one person makes videos, the thing that most deserves automation is never the editing itself. After splitting my four content lines — AI product teardowns, screen demos, cafés and cities, hiking — into one reproducible pipeline, I found AI can take over the deterministic haul from footage to timeline, but the hook, the pacing, and the conclusion can't be handed off at all. This is how that pipeline is built, how to standardize the shooting end, how to pick a platform angle, and what automated publishing can actually do in 2026.
+  A practical AI video editing pipeline for solo creators: structure shoots, automate rough cuts, keep judgment human, and publish safely across platforms.
 tldr:
-  - For a super individual, video belongs to the distribution layer, not the production layer. So the metric isn't "does it look good" — it's "did it carry across the thing only you have."
-  - One-click AI auto-edit necessarily produces a 60-point cut, because it takes the mean of your footage. In a year of exploding supply, mean content has exactly zero distribution value.
-  - The real leverage sits at the shooting end. Freeze each content line into a fixed shot list and editing downgrades from creation to filling in a template — which is the only thing AI can deterministically take over.
+  - For a solo creator, video is mainly a distribution layer. The useful question is not whether a cut looks expensive, but whether it carries something only you could have learned.
+  - In my tests, one-click AI auto-edit produced serviceable rough cuts but flattened the choices that made the footage specific.
+  - The highest leverage sits at the shooting end. A repeatable shot list turns much of editing from invention into a template that software can reliably assist.
   - "A programmable pipeline (split / transcribe / de-silence / LLM-generated EDL / ffmpeg render) is a structural advantage for developers: it turns repeated labor into a versioned asset instead of a fresh act of willpower every episode."
-  - Automated publishing in 2026 tops out at semi-automatic. YouTube's official upload API has loosened, TikTok requires an audit and rate-limits you, Douyin and Bilibili demand a business entity, and Xiaohongshu has no publishing API for ordinary developers.
+  - "In my July 2026 review, publishing still worked best as a semi-automatic system: automate the package, then use only verified official delivery paths."
 maturity: budding
 cover:
   image: /images/covers/ai-agent/2026/solo-creator-video-pipeline.jpeg
-  alt: "AI Can't Edit a Shot You Never Filmed: A Solo Creator's Video Pipeline for 2026"
+  alt: "A solo creator's AI video editing pipeline from camera to publication"
 ---
 
 Last winter I ran a very ugly set of numbers.
@@ -70,19 +73,15 @@ So the first judgment: **on video, optimize picture quality until it stops being
    ← spend your hours here        good enough is enough →
 ```
 
-## Why one-click AI auto-edit is structurally a 60
+## Why one-click AI auto-edit kept giving me an average cut
 
 This is the pit I fell into hardest, and it deserves its own section, because the failure isn't "the tools aren't good enough yet." It's structural.
 
 Auto-edit features do three things: detect shot boundaries, score each shot for quality, then order and assemble them against a generic pacing template. They're honestly not bad — the ones I tried produce a structurally complete, editable rough cut, faster than starting from an empty timeline.
 
-The problem is the objective function. **It takes the mean of your footage, and its template is the mean of the whole platform's footage.** Stack two means and you get a cut that is nowhere ugly and nowhere distinctive.
+The problem is the objective function. **It smooths footage toward a generic pacing template.** In my small sample, that produced competent rough cuts with no obvious mistake and no memorable decision. That is useful as a starting point, not a finished editorial judgment.
 
-In an era of scarce content supply, 60 points survives. 2026 is not that era. When everyone can produce a 60 with one click, the distribution value of a 60 isn't 60 — it's zero, because algorithms and audiences both select the head of the distribution, never the mean.
-
-There's an implication I think matters: **AI driving the marginal cost of content production toward zero necessarily raises the real cost of content distribution.** Supply explodes, total attention doesn't, so the unit price of attention goes up. Which makes "use AI to raise output" mathematically self-cancelling. Ten times the volume, but expected reach per piece falls faster than ten times.
-
-The version that works is the inverse: **use AI to crush the fixed cost per piece, then pour every hour you saved into the part only you have.** Not ten times the volume — ten times the density of information nobody else could have supplied.
+The version that works for me is the inverse: **use AI to lower the fixed cost per piece, then spend the saved time on evidence and judgment only I can supply.** The goal is not ten times the volume. It is a denser account of what actually happened.
 
 ## Cut apart what AI can and can't do
 
@@ -111,9 +110,9 @@ I run this tier as scripts, not in a GUI. The reason is the next section.
 
 The operative word is *candidate*. I never take the output directly; I only choose from it. The value of this tier isn't that AI picks well — it's that it converts "start from nothing" into "pick one of twenty," and the second costs an order of magnitude less cognitively.
 
-**Tier three: judgment you cannot outsource. Not one inch.**
+**Tier three: judgment I still keep.**
 
-- The first three seconds. The only place that truly decides the outcome, and the place AI is most mediocre — because a good hook is by definition counter-expectation, and a model generates what meets expectation.
+- The opening. In my own short-video sample, early exits cluster here, but no universal three-second rule explains every platform or audience.
 - Pacing and silence. AI knows where a cut *can* happen, not where it *should*. Whether a pause reads as awkward or as tension lives in the context, not in the waveform.
 - Music.
 - The final color identity.
@@ -149,13 +148,13 @@ One concrete technique: **don't cut out the parts where the demo fails.** I used
 
 The goal here is atmosphere plus persona. Information density can be low, but the demand on authenticity is high.
 
-Capture settings (iPhone + Blackmagic Camera, free):
+Capture settings I use (iPhone + Blackmagic Camera, free):
 
 | Setting | Value | Why |
 | --- | --- | --- |
-| Frame rate | 4K 24fps | The physical source of "cinematic." 30/60fps reads as news footage |
+| Frame rate | 4K 24fps | My preferred cadence; 30/60fps can be better for other subjects |
 | Shutter | Locked 1/48s (180° rule) | Sets the amount of motion blur; too fast and the image goes brittle |
-| Color | Apple Log (Log 2 on newer bodies) | An order of magnitude more grading latitude |
+| Color | [Apple Log on supported iPhone Pro models](https://support.apple.com/en-euro/109041) | More room for a deliberate grade than a baked-in look |
 | ISO | Lowest usable | In dim cafés raise ISO, never touch the shutter |
 | WB / focus | Manually locked | Auto's constant brightness drift is the single biggest "cheap phone video" tell |
 | Stabilization | Optical only, enhanced modes off | See below |
@@ -167,7 +166,7 @@ The stabilization line deserves elaboration because it runs against instinct. **
 
 Shoot moving shots on the 0.5x ultra-wide — wide-angle distortion absorbs shake far better than 1x, at the cost of edge warping you can crop out. Use the 1x main camera for close-ups, disable digital zoom, and physically walk closer.
 
-Fixed shot list — eleven shots, 5–10 seconds each, under fifteen minutes total:
+My fixed shot list is eleven shots, usually 5–10 seconds each:
 
 ```
 1  storefront / sign (include the door push, useful as a transition)
@@ -196,7 +195,7 @@ I force only four shots and leave the rest to chance:
 3. One "person tiny inside the landscape" long shot — this class of shot performs everywhere.
 4. The look back from the end.
 
-Other traps: bring a power bank, cold drains batteries fast. Hiking footage is naturally long and eventless, so pacing has to come from speed ramps and music in post. And don't try to document the whole route — documenting the whole route reliably produces something nobody finishes.
+I bring a power bank and resist documenting the whole route. A few anchor moments give me a story; continuous footage usually gives me a storage problem.
 
 ## The programmable pipeline
 
@@ -236,7 +235,7 @@ ffmpeg -i raw/IMG_0001.MOV -c:v libx264 -crf 18 -r 24 \
 
 Worth noting: faster-whisper's release cadence slowed noticeably after late 2025. I read that as *mature and stable* rather than abandoned — it works and people use it, but don't expect rapid iteration.
 
-**Split.** PySceneDetect cuts long takes into discrete clips on content change and emits a timecoded manifest. Note it shipped a breaking release in mid-2026 (timestamp internals reworked, variable frame rate support added) — if you have old scripts, test before upgrading.
+**Split.** PySceneDetect cuts long takes into discrete clips on content change and emits a timecoded manifest. [Version 0.7 is a breaking release](https://www.scenedetect.com/docs/latest/api/migration_guide.html): timestamp handling was overhauled for variable-frame-rate video and several APIs moved. I checked the migration guide on 2026-07-31; pin your current version and test old scripts before upgrading.
 
 **De-silence.** auto-editor handles screen recordings and talking segments, stripping silence and filler. It can emit a cut mp4 directly, or a timeline file for a professional NLE. It's the most actively maintained link in this chain and the one I worry about least.
 
@@ -272,11 +271,11 @@ Open-source "LLM writes an EDL" projects have proliferated since 2025, but none 
 
 The pipeline stops at rough cut. Final color, music, caption styling, and pacing trims I do by hand.
 
-I grade in DaVinci Resolve; the free version is entirely adequate for one person. Worth knowing: the batch of AI features added over the last two years (script-aligned auto-assembly, searching footage by object or spoken line) are **Studio-only — the free version doesn't have them**. Studio is a one-time purchase and the price hasn't moved in years; once your volume is up, it's one of the better one-off spends available.
+I grade in DaVinci Resolve because I know its controls; that is a workflow preference, not a claim that it is the best or cheapest choice in July 2026. Product tiers and included features change, so I verify them on Blackmagic Design's current product page before recommending a purchase.
 
 Grading order for Log footage: apply a conversion LUT to restore, balance with color wheels, pull saturation down 5–10%, push shadows slightly cyan-green and highlights slightly warm, then add film grain last (20–30% strength, don't max it). On export, turn off any "smooth motion" or frame interpolation option — shot at 24fps, export at 24fps; interpolation erases everything you did to earn that cadence.
 
-I use CapCut for vertical versions and captions, because its auto-caption and templates genuinely are fast. One caution: **its terms grant a very broad license over content uploaded to its cloud.** If you care about rights in your footage, edit and export locally and leave cloud sync off. This matters especially if you handle client footage or unreleased material.
+I currently use CapCut for some vertical versions and captions because it is quick in my hands. I keep client and unreleased footage in a local workflow; I have not completed a jurisdiction-by-jurisdiction legal review of CapCut's current terms, so I do not turn that personal boundary into legal advice.
 
 ## The four content lines are one persona
 
@@ -284,27 +283,7 @@ This section is about platform angle, but it has to start from positioning, beca
 
 My initial mistake was treating the four lines as four subjects and hunting for "an angle nobody's covered" within each. That road doesn't go anywhere, because the empty slots in every subject are being filled fast.
 
-The reframe: **the four lines aren't four subjects. They're four exposure levels of one person.**
-
-```
-                     one persona
-      "one person running a fleet of agents, working from anywhere"
-                          │
-      ┌────────────┬──────┴───────┬────────────┐
-      │            │              │            │
-  AI teardowns  screen demos    cafés        hiking
-      │            │              │            │
-  highest       proof of        texture of   the human part
-  information   process         a life       (proof you're real)
-  density
-      │            │              │            │
-  builds        builds          builds       builds
-  expertise     credibility     closeness    memorability
-```
-
-The middle two are the mainline; the outer two are support. Teardowns establish what you know, screen demos prove you actually built it, cafés and hiking prove that the person saying all this is a specific human being and not an account.
-
-The benefit of this structure: **content on any line tops up the other three.** The screen shot you filmed in a café shows the audience you writing code; a throwaway line in a technical demo — "I rewrote this in a café in Chiang Mai" — feeds the persona line for free. Treat them as four independent subjects and you get four separate cost centers instead.
+The reframe: **the four lines aren't four subjects. They're four exposure levels of one person.** Teardowns establish what I know, screen demos prove I built it, and cafés and hiking give that work a place and a human scale. A screen shot filmed in a café can serve two lines at once; treating every line as an independent brand creates four cost centers.
 
 ### The angle: don't crowd into reviews
 
@@ -312,7 +291,7 @@ AI tool reviews are the reddest ocean of 2026, precisely because AI itself has f
 
 My judgment: **shift from "how is this tool" to "I actually finished something with it."**
 
-The difference is that the first is replicable information and the second is non-replicable process evidence. AI can generate the first and not the second, because the second requires you to have genuinely spent time failing. And both audiences and algorithms are rapidly getting better at telling whether you actually did the thing.
+The first is replicable information; the second is process evidence. The second requires me to have spent time failing, and the details are usually more useful than another feature list.
 
 Three formats I now prioritize:
 
@@ -320,16 +299,18 @@ Three formats I now prioritize:
 2. **Costs and ledgers.** "What this stack costs me a month." "Which subscription I cancelled and why." Extremely hard to fabricate, because it requires actual invoices.
 3. **Counterintuitive negative conclusions.** "I used this feature for three months and then turned it off." Negative conclusions are naturally scarce, because they require enough long-term use to be willing to state one.
 
-### Platform differences
+### Platform differences in my own workflow
 
-| Platform | Form | My role for it | Angle |
+This table is a record of how I use the platforms, not a claim about their ranking, audience, or account eligibility:
+
+| Platform | Form I publish | My role for it | Angle I test |
 | --- | --- | --- | --- |
-| Bilibili | Long | Home base, full process | Technical depth and complete narrative; the audience tolerates length |
+| Bilibili | Long | Home base, full process | Technical depth and complete narrative |
 | YouTube | Long + Shorts | English content, long-tail compounding | Search long tail in the English technical audience, plus nomad content |
-| Xiaohongshu | Vertical short + photo posts | Lifestyle line and light technical | Search-driven; titles must carry long-tail keywords |
+| Xiaohongshu | Vertical short + photo posts | Lifestyle line and light technical | Concrete place and problem terms in titles |
 | Douyin | Vertical short | Acquisition, not home base | Strong hook, low information density but a memorable beat |
 
-One point worth emphasizing: **on Xiaohongshu, search now accounts for a large share of traffic, and search traffic converts markedly better than recommendation traffic.** That means titles and tags should be written for keywords, not as copy. "A café in Shenzhen's Longhua where you can sit all afternoon" beats "today's vibe" by a wide margin, because the first one can be found.
+I have not found a public first-party source that quantifies Xiaohongshu search share or conversion. My narrower observation, from my own posts, is simply that concrete titles keep earning discovery longer than mood copy. "A café in Shenzhen's Longhua where you can sit all afternoon" also tells a human what the post contains; "today's vibe" does not.
 
 Long and short are not two sets of footage. My approach: **make the long one first, then cut shorts out of it.** The reverse doesn't work, because short-form material lacks the context to support a long piece. This has to be decided at capture time — shoot to the long-form standard and the shorts are a free byproduct.
 
@@ -337,17 +318,15 @@ Long and short are not two sets of footage. My approach: **make the long one fir
 
 This is the area where I found the online information least reliable. Plenty of articles read as if you plug in an API and get one-click cross-platform distribution. The reality is a good distance from that.
 
-Here's roughly where things stand as I checked them:
+Here is what I could prove from first-party documentation, checked on 2026-07-31:
 
-**YouTube is the only one that's friendly to individual developers.** The official Data API offers an upload endpoint, and the quota loosened twice over the past year — first the per-upload quota cost dropped substantially, then uploads were split into their own daily bucket instead of competing with reads and searches for the same pool. For personal automation that's basically enough. (Check Google's quota docs yourself for the current numbers; this area moves.)
+**YouTube separates channel permission, API-project verification, and quota.** The [official `videos.insert` method](https://developers.google.com/youtube/v3/docs/videos/insert) can upload a video, but uploads from unverified API projects created after 28 July 2020 are restricted to private visibility until the project passes a compliance audit. That is an app-project restriction, not a statement that the creator's channel is ineligible. Google's [quota calculator](https://developers.google.com/youtube/v3/determine_quota_cost) currently lists a separate Video Uploads bucket, one unit per `videos.insert` call, and a default limit of 100 uploads per day. Those are defaults, not a promise that every channel should publish 100 times.
 
-**TikTok has an official direct-post endpoint, but the barrier is the audit.** The API supports direct publishing, but you must pass a separate content-posting review; until you do, everything posted through the API is forced to self-only visibility. After approval there are still rate limits (a few calls per minute per token, tens of videos per day per account). Workable for an individual, but budget one to two weeks for review.
+**TikTok also separates creator authorization from developer-client review.** The creator grants the app permission to post, while the developer's API client has its own audit status. TikTok's [Content Sharing Guidelines](https://developers.tiktok.com/doc/content-sharing-guidelines/) say an unaudited client can post only with `SELF_ONLY` visibility and can serve at most five users in a 24-hour window; audited and unaudited clients remain subject to creator and posting caps, with the latter typically around 15 posts per creator per day. The exact cap can vary. That is an API capability and client-review rule, not blanket eligibility for every creator account.
 
-**Douyin and Bilibili require a business entity.** Both open platforms have publishing capability, but registration requires a company — a business license, and in Bilibili's case a stamped letter of authorization. There's essentially no path for an individual developer.
+**For Douyin, Bilibili, and Xiaohongshu, I could not substantiate a universal rule from public first-party documentation.** My 2026-07-31 survey did not establish that every individual is barred, that every business is approved, or that a stable general-purpose server-side publishing endpoint is available to ordinary developers. Their creator-account programs, developer-app reviews, and actual API scopes are separate questions. I therefore keep these destinations manual unless the platform grants a specific application the documented scope it needs.
 
-**Xiaohongshu has no official publishing channel for ordinary developers.** I checked this one carefully because it contradicts a lot of what's written online. The open platform's public capabilities are mostly commerce and data; on the content side it's mainly read access. Those third-party services advertising a "Xiaohongshu publishing API" work by taking your content and generating a QR code that you still scan with your phone to complete the post in the app — which is itself proof that no pure server-side path exists.
-
-**On browser-automation projects.** There is a set of open-source tools that do multi-platform one-click publishing through simulated login and browser automation. They cover a lot of platforms and they do work. But the risk needs stating plainly: they bypass official authentication, they generally violate both developer and user agreements, and the exposure includes risk-control bans, cookie leakage, and compliance liability under the relevant data laws. **My own choice is not to run them on my main account.** If you do use them, at least don't point them at the account you spent years building — your audience is the one asset actually compounding, and gambling it to save a few minutes of manual upload doesn't price out.
+**On browser automation.** I found projects that simulate login and publishing, but I did not audit each tool or each platform's current agreement. My decision is simpler: I do not give an unofficial publisher the session cookies for my main account. That security boundary matters even before a terms-of-service analysis.
 
 ### So the real architecture is semi-automatic
 
@@ -368,31 +347,30 @@ My conclusion: **split publishing into "prepare" and "deliver." Fully automate p
   └───────────────────────────────────────────┘
          │
          ├──► YouTube   : official API, automatic
-         ├──► TikTok    : official API (after audit)
-         ├──► Bilibili / Douyin : manual upload, paste
+         ├──► TikTok    : official API, within granted scope
+         ├──► Bilibili / Douyin : manual unless my app has
+         │                        a verified publishing scope
          │                        the copy from manifest
          └──► Xiaohongshu : manual, from the phone
 ```
 
-The value of this architecture is that **the manual part is compressed into pure mechanical motion.** At publish time I'm not inventing titles, re-cropping aspects, or writing tags — the manifest already has them. What's left is "open app, pick file, paste copy," under two minutes per platform.
+The value of this architecture is that **the manual part is compressed into pure mechanical motion.** At publish time I'm not inventing titles, re-cropping aspects, or writing tags — the manifest already has them. What's left is "open app, pick file, paste copy." In my current routine that is brief, though the time varies with each platform's checks.
 
 One judgment I want to make explicit: **chasing 100% automation here is net negative.** That last manual upload is a forced review window — more than once I've caught a wrong title, a bad cover, or simply decided a piece shouldn't go out at all. Full automation deletes that window. This is one of the few places I keep a human in the loop deliberately, not because the technology can't do it, but because it's worth it.
 
 ## Compliance: don't skip this
 
-In 2026, if you make AI-assisted content, labeling rules are a hard constraint, not an option.
+In 2026, AI labeling is part of the publishing design, not a checkbox to remember at the end.
 
-**China's Measures for Labeling AI-Generated Synthetic Content took effect on 1 September 2025.** The core requirement is dual labeling: explicit labels (text, audio, or graphic cues the user can clearly perceive — and downloaded or exported files must carry them too) and implicit labels (content attributes, service provider information, and a content ID embedded in file metadata). Coverage spans text, audio, images, video, and virtual scenes — **AI-written copy and AI-generated cover images are in scope, and partial AI use must be labeled too.** Responsibility is three-way: service providers apply labels, app distribution platforms verify them at review, and users must proactively declare and use the platform's labeling function when posting. Deleting, altering, forging, or concealing labels is explicitly prohibited.
+**China's Measures for Labeling AI-Generated Synthetic Content took effect on 1 September 2025.** The [official text](https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm), which I rechecked on 2026-07-31, defines generated or synthetic text, images, audio, video, and virtual scenes, and distinguishes visible from metadata-based labels. The detailed duties differ by role: generation-service providers add required labels; distribution services inspect or add notices; users publishing generated or synthetic content must declare it and use the platform's labeling feature. The text also prohibits malicious removal, alteration, forgery, or concealment of required labels. It does not support my earlier shortcut that every use of AI assistance triggers an identical label, so I follow the platform flow and preserve provenance instead of inventing a universal rule.
 
-In practice that's three things: tick the declaration when you've used AI-generated visuals or voice; don't strip metadata on export; label AI-generated covers the same way.
+**YouTube has two separate policies.** Its [altered or synthetic content guidance](https://support.google.com/youtube/answer/14328491) requires disclosure for meaningfully altered or generated content that looks realistic, such as a fabricated real event or place. It explicitly says minor edits and production assistance such as outlines, captions, titles, or thumbnails do not require that disclosure. The same page says disclosure itself does not limit audience or monetization.
 
-**Two things on the YouTube side.** First, synthetic content disclosure: content realistic enough to be mistaken for real people, places, or events must be flagged in Studio. Second, the old "repetitious content" policy was renamed and broadened; it now targets mass templated production — mechanical TTS over stock slideshows, word-for-word script reading, stacking with no narrative structure — on a three-strike path from warning to suspension to permanent removal from the partner program.
-
-One widely repeated misconception worth clearing up: **applying an AI disclosure label does not itself affect monetization.** What gets penalized is low-quality mass production, not AI assistance. If the content has original value and isn't an assembly-line copy, using AI doesn't affect eligibility. (Everything I found on this point was secondhand; I couldn't pull the official help-center text, so verify it yourself.)
+Separately, YouTube's [channel monetization policy](https://support.google.com/youtube/answer/1311392?hl=en-GB&p=reused_content) renamed “repetitious content” to “inauthentic content” in July 2025 to clarify that repetitive or mass-produced work is ineligible. The reused-content policy remains distinct and evaluates whether borrowed material has meaningful original commentary or transformation. Neither page describes the fictional automatic three-strike sequence I had previously repeated here; enforcement depends on the applicable policy and review.
 
 **On generative video.** My advice is conservative: **don't use it to fabricate real scenes.** Don't generate a café that doesn't exist or a place you've never been. It gets recognized, and once it does, what you lose is credibility across all your content — a cost far larger than the shooting time you saved. The two legitimate uses are abstract transition textures and clearly-presented effects shots.
 
-One fact that must be updated in passing: OpenAI's Sora shut down in the first half of 2026 — web and app first, with an announced end date for the API as well. If you find a tutorial that still lists it in the toolchain, that article is out of date. Which incidentally makes a point: **don't bind a critical stage of your pipeline to a single closed-source service.** The core of mine — ffmpeg, scene detection, transcription, de-silencing — is all local open source. That isn't purism; it's that they won't tell me one morning they're shutting down next month.
+One timeline needs exact dates. OpenAI's [Sora discontinuation notice](https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation), checked on 2026-07-31, says the web and app experiences ended on 26 April 2026 and the API will end on 24 September 2026. That is a useful architectural warning: **do not bind a critical stage of the pipeline to one hosted service.** My core stages — ffmpeg, scene detection, transcription, de-silencing — can run locally.
 
 ## A startup checklist you can follow
 
@@ -426,4 +404,4 @@ So the real question was never "which AI editing tool should I use." It's **whet
 
 ---
 
-**Some notes.** I checked tool status, pricing, and platform policy while writing, but this area moves extremely fast — the past year alone brought Sora's shutdown, Topaz ending perpetual licenses in favor of subscription-only, and CapCut's international tiers being restructured upward. Any tutorial written six months ago has stale clauses in it. Verify against vendor sites before committing. Specific numbers on quotas and review rules (YouTube's daily upload ceiling, TikTok's rate limits) came mostly from secondhand sources; the direction is reliable, the exact figures should come from official docs. And on the claim that Xiaohongshu has no general official publishing API — I couldn't get positive confirmation from official documentation and inferred it from indirect evidence. If you have first-hand information to the contrary, I'd like to hear it.
+**Source horizon.** Tool versions, prices, quotas, and review rules can move faster than this essay. The dated first-party links above are the evidence for the claims I make; where public documentation did not prove a conclusion, I kept the statement limited to my own workflow.

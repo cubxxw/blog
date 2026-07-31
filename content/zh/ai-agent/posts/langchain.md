@@ -1,432 +1,512 @@
 ---
 url: "/zh/projects/langchain/"
-title: "LangChain 开源项目深度学习"
+title: "LangChain 1.x 生产实践：模型、Agent 与 LangGraph 如何选"
 date: 2025-04-16T17:36:46+08:00
-lastmod: 2026-07-07T10:00:00+08:00
+lastmod: 2026-07-31T10:00:00+08:00
 draft: false
 showtoc: true
-tocopen: true
-tags: ["AI", "Project Learning", "LangChain", "Agent", "RAG"]
+tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
-description: LangChain 开源框架深度学习：从 LCEL、链式调用、RAG 管道到 LangChain 1.0 的 create_agent 与中间件（middleware）体系，配套上手案例、前沿进展与面试高频题，持续记录学习过程与关键实践。
+keywords: []
+tags:
+  - AI
+  - Open Source
+  - LangChain
+  - Agent
+  - RAG
+  - Python
+  - LLM
+categories:
+  - Development
+description: >
+  这是一份面向生产环境的 LangChain 1.x 工程指南：从直接调用模型、create_agent 到 LangGraph，给出清晰选型边界、可运行的 RAG 与智能体示例、人机审批设计，以及评估、权限、状态和可观测性检查清单，帮助团队避开旧 API、过度抽象与不可控的自动化，引入框架时为长期维护保留清晰路径。
+cover:
+  image: "/images/covers/ai-agent/2025/langchain.png"
+  alt: "模型、智能体与图工作流沿三条路径汇合的克制编辑插画"
+  relative: false
 aliases:
   - /zh/posts/ai-projects/langchain/
 tldr:
-  - "LangChain 已从早期单体式 LLM 框架演进为模块化生态：langchain-core 承载 LCEL 与 Runnable 抽象，LangGraph 负责有状态复杂 Agent，LangSmith 提供可观测与评估，LangGraph Platform 负责部署。"
-  - "2025 年 10 月 LangChain 1.0 与 LangGraph 1.0 同步 GA：核心收敛到 create_agent 的 Agent 主循环 + middleware（中间件）体系，引入标准 content blocks，遗留能力迁往 langchain-classic，要求 Python 3.10+。"
-  - "本文在原调研报告基础上补充了三部分实战内容：可直接运行的上手案例（LCEL、RAG、create_agent、中间件 HITL、LangGraph）、2025–2026 前沿进展，以及面试高频问答。"
+  - "从能暴露问题的最小抽象开始：一次推理直接调用模型，标准工具循环使用 create_agent，只有控制流本身成为产品需求时才引入 LangGraph。"
+  - "LangChain 1.x 的主线是构建在 LangGraph 之上的 Agent 框架；langchain-core 提供消息、模型、工具和 Runnable 接口，旧式 Chain API 已移入 langchain-classic。"
+  - "生产质量来自明确契约、检索评估、受限工具、持久状态、关键操作的人类审批，以及能同时解释输出与成本的追踪，而不是更厚的框架抽象。"
 ---
 
-> 本项目是一个持续的过程，以日拱一卒的态度去学习 AI 开源项目，通过实践真实项目，结合 AI 工具，提升解决复杂问题的能力，并且记录下来。
-> [notion List](https://traveling-thistle-a0c.notion.site/Open-Source-Project-Learn-1d2a444a6c008030a24efaa0e3bf5f5c?pvs=4)
+过去介绍 LangChain，常会列出 Chain、Memory、Prompt、Loader 和各种集成。那段历史没有错，却已经不适合指导今天的项目。
 
-**基本信息：**
+截至 2026 年 7 月，理解 LangChain 1.x 可以简单得多：
 
-- **项目名称**：LangChain（含 LangGraph、LangSmith、deepagents 等生态）
-- **GitHub 地址**：<https://github.com/langchain-ai/langchain>
-- **官方文档**：<https://docs.langchain.com>（2025 年起 Python / JavaScript 文档统一到此站点）
-- **许可证**：MIT（LangChain、LangGraph、deepagents 均为开源；LangGraph Platform 为商业闭源）
-- **主要语言 / 技术栈**：Python 与 TypeScript 双实现，底层依赖 LangGraph 运行时、Pydantic（数据校验）、FastAPI（LangServe 部署）
-- **当前版本**：LangChain 1.0 与 LangGraph 1.0 于 **2025-10-22** 正式 GA，承诺在 2.0 之前不引入破坏性变更
-- **社区规模**：GitHub 约 12.4 万 stars、2 万+ forks，PyPI 月下载约 90M+（全生态口径），被 Uber、LinkedIn、Klarna、摩根大通、Cisco 等公司用于生产
+- 任务只是一次输入明确、输出可校验的推理，**直接调用模型**。
+- 模型确实需要在若干工具中选择，并根据工具结果继续判断，使用 **`create_agent`**。
+- 业务要求持久状态、显式分支、重试、并行、长时等待或人工决策，使用 **LangGraph**。
 
----
+这不仅是 API 分类，更是一条工程原则：每增加一层框架，就会在产品旁边再造一个执行系统——新的心智模型、新的术语，也多一个藏住故障的地方。抽象只有在让真实系统更容易理解和运维时，才值得存在。
 
-## 导读：LangChain 是什么，为什么值得学
+本文只讲 LangChain 1.x。`LLMChain`、`ConversationChain`、`AgentExecutor`、旧 Memory 层次和早期 PaLM 集成仍会出现在搜索结果里，但新项目不应从那里起步。
 
-LangChain 是当下构建大语言模型（LLM）应用最主流的框架之一。它的核心价值在于提供一套**标准化接口**与**可组合的构件（building blocks）**，把 LLM 与外部数据源、算力和各类工具的集成过程大幅简化。最初的目标是让开发者能轻松构建既「数据感知（data-aware）」又「具备行动能力（agentic）」的应用。
+## 先建立 1.x 的心智模型
 
-随着框架演进和社区反馈积累，LangChain 经历了三次关键转型：
+LangChain 1.x 是高层 Agent 框架，默认入口 `create_agent` 运行在 LangGraph 之上。生态中的每一层各有边界：
 
-1. **架构模块化**——从早期「大而全」的单体 `Chain` 类，拆分为职责清晰的多个包（`langchain-core` / `langchain` / `langchain-community` / 各集成包）。
-2. **声明式组合**——引入 LangChain 表达式语言（LCEL）与统一的 Runnable 接口，让「原型即生产」成为可能。
-3. **面向 Agent 与生产**——推出 LangGraph（复杂有状态 Agent 编排）、LangSmith（可观测与评估）、LangGraph Platform（部署基础设施），并在 **1.0 版本**把核心收敛到 `create_agent` 的 Agent 主循环加中间件体系。
+| 层次 | 适合做什么 | 不适合做什么 |
+|---|---|---|
+| 模型 SDK 或 `init_chat_model` | 单次模型调用、结构化输出、分类、抽取、改写 | 需要工具选择或持久状态的流程 |
+| `langchain-core` | 消息、工具、文档、模型接口、Runnable | 完整应用架构 |
+| `langchain` / `create_agent` | 带中间件的标准模型—工具循环 | 有许多显式状态和分支的业务流程 |
+| LangGraph | 可持久化、可恢复、状态明确的工作流 | 一次提示加一次模型回复 |
+| LangSmith | 追踪、数据集、评估与监控 | 替代应用日志、权限控制或业务指标 |
 
-一句话概括权衡：**LangChain 极擅长快速原型和广泛集成，但抽象层带来了学习曲线陡峭、调试复杂等代价；进入生产往往需要配合生态工具（LangSmith / LangGraph）。**
+模型提供方通常在独立包中，例如 `langchain-openai`。部分社区集成位于 `langchain-community`；若存在提供方维护的合作包，生产项目应优先选它。拆包让核心依赖更小，也让集成可以独立发版。
 
-## 框架总览与核心理念
+“LangChain 有很多连接器”已不足以成为采用它的理由。连接器也许省下一下午，执行模型却可能塑造未来几年的代码结构。
 
-### 使命、目标与演进
+## 真正重要的选型
 
-LangChain 立足于一个核心信念：真正强大、有差异化的 LLM 应用，不只是通过 API 调用一次模型，而需要两种关键能力——**数据感知**（把模型连接到其他数据源）与**行动能力**（让模型与环境交互）。
+### 1. 直接调用模型
 
-早期版本被认为相对「单体化」，核心 `Chain` 类封装了大量逻辑。随着社区快速增长、用户遭遇「灵活性不足、难以调试」等真实痛点，LangChain 转向更**模块化**的架构，并陆续推出针对生产挑战与高级 Agent 需求的专门工具。这条演进路线映射了整个行业从「探索式 LLM 开发」走向「工程化、可维护、可生产部署」的趋势。
+同时满足以下条件时，用提供方 SDK，或 LangChain 的统一模型接口：
 
-今天，LangChain 把自己定位为覆盖 LLM 应用全生命周期的**产品套件**：用 LangChain / LangGraph **构建（Build）**，用 LangGraph Platform **运行（Run）**，用 LangSmith **管理（Manage）**。其核心目标之一是通过模型与工具的互操作性，帮助开发者构建「面向未来（future-proof）」的应用——底层 LLM 或向量库可以相对轻松地替换，即所谓「厂商可选性（vendor optionality）」。
+- 应用只进行一次边界清楚的推理；
+- 所需输入已经准备好；
+- 输出能用 schema 校验；
+- 不需要模型选择并执行副作用；
+- 重试只是普通请求重试，而不是推理循环。
 
-### 主要用例
+分类、实体抽取、翻译、查询改写，以及根据已给上下文起草答案，都属于这类任务。直接调用的栈最短、依赖最少，成本也最容易解释。
 
-- **问答（尤其是 RAG）**：让 LLM 基于外部（通常是私有或领域）文档回答问题，而非仅依赖训练数据。LangChain 提供完整的 RAG 构件：文档加载器、文本分块器、嵌入模型、向量库、检索器。
-- **聊天机器人**：构建能记住此前交互、连贯对话的机器人，记忆（Memory）组件是关键。
-- **智能体（Agent）**：以 LLM 作为推理与决策引擎，调用工具与外部环境交互；1.0 之后以 `create_agent` 与 LangGraph 为主力。
-- **结构化信息抽取**：从非结构化文本中抽取符合特定 schema 的 JSON 等结构化数据。
-- **摘要**：为长文本（文章、会议记录）生成简洁摘要。
-- **查询结构化数据**：用自然语言查询 SQL、CSV 等表格数据。
-- **调用 API / 理解代码**：让 LLM 调用外部 API 获取实时信息，或分析、查询代码库。
-
-覆盖如此广的用例，必然要求提供一套全面（也因此复杂）的组件与集成选项——这是 LangChain 强大的根基，也是其「学习曲线陡峭」批评的主要来源。
-
-## 架构与核心组件拆解
-
-### 模块化包结构
-
-为解决早期版本耦合紧、依赖臃肿的问题，LangChain 把框架拆成多个职责清晰的包：
-
-- **`langchain-core`**：整个生态的基石，包含最基础的抽象——Runnable 接口、LLM / ChatModel / Embeddings 基础接口、消息类型（HumanMessage、AIMessage 等）以及 LCEL 的实现。刻意保持极小依赖。
-- **`langchain-community`**：第三方集成的聚集地，容纳大量社区贡献与维护的集成组件。质量、文档完备度与更新频率因社区维护而参差。
-- **`langchain`**：包含构成应用「认知架构」的核心逻辑组件——各类预置 Chain、Agent 实现、通用检索策略。**1.0 后这里的重心是 `create_agent` 与中间件。**
-- **集成包**（如 `langchain-openai`、`langchain-anthropic`、`langchain-google-genai`）：对重要且广泛使用的集成，官方与合作方共同维护独立轻量包，仅依赖 `langchain-core`，便于按需安装、更快迭代。
-- **`langchain-classic`**（1.0 新增）：承接从主包中剥离的遗留功能，保证向后兼容。
-
-### LCEL 与 Runnable 接口
-
-LangChain 表达式语言（**LCEL**）是现代 LangChain 开发的核心，提供**声明式**方式组合各类组件，目标是让原型无需改动即可部署到生产。它不只是语法糖，而是强大的组合机制。
-
-LCEL 的核心是 **Runnable 接口**。几乎所有核心组件（模型、提示模板、检索器、输出解析器）都实现了这一统一接口，定义了标准方法：
-
-- `invoke`：对单个输入调用组件
-- `batch`：对一批输入调用
-- `stream`：对单个输入流式返回
-- `astream_events`：流式返回更细粒度的事件（含中间步骤）
-- 以及对应的异步方法（`ainvoke`、`abatch`、`astream` 等）
-
-任何实现 Runnable 的组件都能用管道运算符 `|` 与其他组件轻松组合。LCEL 的关键优势包括：**一等的流式支持**（最小化首 token 延迟）、**同步/异步双原生**、**自动并行优化**、**可配置的重试与回退（fallback）**、**可访问中间结果**、**自动推断输入/输出 schema**、以及**与 LangSmith 的无缝集成**（每一步自动上报，便于调试）。
-
-### 核心构件速览
-
-- **模型（Models）**：`LLM`（字符串进、字符串出的旧接口）、`Chat Model`（消息列表进出的现代接口，支持工具调用等高级能力）、`Embeddings`（把文本转为向量，是 RAG 与语义检索的基础）。核心目标是**模型互操作性**。
-- **提示（Prompts）**：`PromptTemplate` 生成字符串提示，`ChatPromptTemplate` 生成消息列表；支持 few-shot 与 Example Selector（按长度、语义相似度、MMR 动态选例）。
-- **数据连接（Data Connection）**：Document Loaders 从各种来源加载数据；Text Splitters 按字符、递归、token、Markdown 标题、代码结构或语义切分长文档。
-- **检索（Retrieval）**：Vector Stores 存储嵌入并做相似度检索（Chroma、FAISS、Pinecone、Milvus、Weaviate、pgvector 等）；Retrievers 接收查询、返回相关片段，支持 MultiQuery、上下文压缩等策略。
-- **记忆（Memory）**：跨多轮对话保存与管理历史，让 LLM「记得」此前对话。
-- **链（Chains）**：把多个组件按顺序或逻辑组合完成任务。旧版大量使用继承 `Chain` 基类的 legacy chain（`LLMChain`、`ConversationalRetrievalChain`），今天首选 LCEL。
-- **智能体（Agents）**：以 LLM 为「大脑」决定调用哪些工具达成目标。旧版 `AgentExecutor` 因处理复杂逻辑、循环、状态、人机协同能力有限，已被 `create_agent`（基于 LangGraph）取代。
-
-> LCEL 标准化了组件「如何连接」，但每个组件本身（不同分块器、检索器配置、记忆策略）仍需深入理解——这正是 LangChain 学习曲线陡峭的重要原因。
-
-## 生态：从原型到生产
-
-### LangSmith：可观测与评估
-
-LangSmith 用于**调试、测试、评估、监控** LLM 应用，目标是弥合原型与生产之间的鸿沟。关键能力：
-
-- **追踪与调试（Tracing）**：对 LLM 调用、Agent 决策、链执行提供实时、细粒度可见性；通常只需设置环境变量即可开启；**框架无关**，非 LangChain 应用也可通过 SDK 或 OpenTelemetry 接入。
-- **评估（Evals）**：创建数据集、定义评估目标、用 Evaluator 打分，支持规则式、启发式与强大的 **LLM-as-Judge**，并可收集**人类反馈**。
-- **监控（Monitoring）**：跟踪延迟、token 成本、错误率、用户反馈等生产指标。
-- **提示工程与 Hub**：提供 Playground 交互试验，支持提示版本管理与团队共享。
-
-追踪为异步，官方声称不给应用增加延迟，且承诺不将用户 trace 数据用于训练模型。提供云 SaaS 与企业自托管两种形态。
-
-### LangGraph：高级 Agent 编排
-
-LangGraph 是生态中用于构建复杂、**有状态**、**多角色** LLM 应用（尤其是 Agent）的库。核心思想是把应用执行流建模为**图**：节点（Nodes）表示计算步骤，边（Edges）表示转移逻辑。核心组件为 **StateGraph**（初始化时定义贯穿全图的状态 schema）、**Nodes**、**Edges**（含起始边、普通边、条件边——实现分支与循环）。
-
-主要特性：**环与分支**（支持反思重试）、**持久化与状态管理**、**人机协同（Human-in-the-Loop）**、**时间旅行（Time Travel，回溯到历史状态调试）**、**细粒度控制与可扩展性**、**一等流式**。相较旧版 `AgentExecutor` 更透明可控，避免「黑盒」。**LangGraph 库本身开源（MIT），免费使用。**
-
-### 部署：LangServe 与 LangGraph Platform
-
-- **LangServe**：把 LCEL 构建的 Runnable 快速部署为 REST API 的 Python 库，集成 FastAPI，自动推断 schema，提供 `/invoke`、`/batch`、`/stream` 等标准端点。**主要面向简单 Runnable，不直接支持 LangGraph 应用**，且目前处于维护模式。
-- **LangGraph Platform**：专为部署 LangGraph Agent 设计的**商业闭源**方案，提供可扩展容错基础设施、长期记忆 API、状态回溯、长时后台任务、LangGraph Studio 可视化调试，以及与 LangSmith 的深度集成。提供 Self-Hosted Lite（免费但需 LangSmith key）、Cloud SaaS、BYOC、Self-Hosted Enterprise 等选项。
-
-### 集成生态与社区
-
-LangChain 的核心优势之一是**庞大的集成生态**，覆盖模型提供方（OpenAI、Anthropic、Google、Cohere、Meta Llama、Mistral、Hugging Face、Ollama 本地模型等）、嵌入模型、向量库、文档加载器、工具与工具包（搜索、计算器、Python REPL、SQL、文件系统、各类 API）。配合活跃的开源社区（官方文档、LangChain Hub、Discord、LangChain Academy、博客、模板），大幅降低上手门槛。
-
-这一生态是精心布局的整体：核心库提供构建能力、LangGraph 处理复杂逻辑、LangSmith 提供可观测与评估、Platform 负责部署与扩容。这也揭示了 LangChain Inc. 的「开放核心（open core）」商业模式：以强大开源库吸引社区，再以关键生产能力（Platform、LangSmith 高级功能）变现。需要留意的是：尽管组件层强调可替换，但一旦深度依赖 LangSmith 的追踪与 Platform 的部署，**运维层面的锁定风险**会上升。
-
-## 竞争格局
-
-### LangChain vs LlamaIndex
-
-- **LangChain**：定位**通用、广泛**的 LLM 应用开发框架，组件模块化、集成广、擅长复杂链与 Agent（尤其借助 LangGraph），并有 LangSmith 生态。代价是抽象层多、学习曲线陡、链式调用可能引入延迟。
-- **LlamaIndex**（前身 GPT Index）：**专注数据索引、检索与 RAG**，在数据摄取、索引构建、查询效率与精度上更深入、更精简；但通用性弱、Agent 能力相对不如 LangGraph 成熟。
-
-两者并非互斥——可把 LlamaIndex 作为强大的数据索引/检索组件，嵌入到更广的 LangChain 工作流中。随着双方能力边界扩张，选择日益取决于具体项目需求与团队熟悉度。
-
-### LangGraph vs CrewAI / AutoGen / Semantic Kernel
-
-| 维度 | LangChain (create_agent/LCEL) | LlamaIndex | LangGraph | CrewAI | AutoGen |
-|------|-------------------------------|------------|-----------|--------|---------|
-| 核心范式 | 通用组件组合 + Agent 主循环 | 数据索引与 RAG | 图式 Agent/工作流编排 | 角色制多智能体协作 | 对话式多智能体交互 |
-| 主要优势 | 灵活、集成广、生态完整 | RAG 性能、数据处理 | 控制力、状态管理、复杂流程 | 协作任务定义简单直观 | 动态对话、异步通信 |
-| 上手难度 | 中（组件多） | RAG 场景相对简单 | 较陡 | 高（高层抽象） | 中 |
-| 可控性 | 高（中间件 + LCEL） | 中（聚焦 RAG） | 极高（低层控制） | 中（较有主见/opinionated） | 高 |
-| 典型场景 | 通用 LLM 应用、快速原型 | RAG、知识库问答 | 复杂 Agent、有状态流程、HITL | 研究/写作等协作任务 | 研究、模拟、动态多方对话 |
-
-关键结论：Agent 框架尚未出现单一「最佳实践」。LangGraph 适合需要精确流程与状态控制的复杂任务；CrewAI 适合结构化的多智能体协作；AutoGen 更适合模拟动态多方对话；Semantic Kernel 则更贴合微软技术栈的企业场景。抽象层次的取舍（低层控制 vs 高层易用）在框架选择中反复出现。
-
-## 批判性评估
-
-**优势**：可组合与灵活（LCEL/Runnable）、集成广度、快速原型、生态完整（LangSmith/LangGraph/Platform）、庞大社区与资源、对流式/异步/批处理/回退等常见模式的标准化。
-
-**局限与批评**：
-
-- **复杂度与学习曲线**：概念、组件、抽象层众多，掌握全貌需要时间。
-- **抽象开销**：多层抽象有时使底层不透明、调试困难、限制深度定制。
-- **性能**：多次链式调用/API 请求不可避免引入延迟；默认配置未必对成本/延迟最优。
-- **文档质量**：文档虽广，但部分存在滞后、示例过时、随快速迭代难以同步的问题。
-- **可靠性与调试**：组件交互复杂、部分逻辑隐藏在抽象后，复杂链/Agent 行为难以追踪——LangSmith 正是对此的回应。
-- **快速演进与维护成本**：更新频繁，偶有破坏性变更；依赖管理易冲突。
-- **安全**：与所有 LLM 应用一样面临提示注入等风险，需开发者自行加固。
-
-这些批评彼此关联：使 LangChain 快速原型的抽象与集成广度，恰恰也是复杂度与调试难度的来源——这是框架设计中的经典权衡。
-
-## 2025–2026 前沿进展（重点补充）
-
-> 这是原报告写于 2025 年 4 月后最重要的更新。2025 年 10 月 22 日，LangChain 1.0 与 LangGraph 1.0 同步 GA，是两个框架的首个正式大版本，承诺 2.0 前不引入破坏性变更。
-
-### 分工再定位：LangChain 与 LangGraph
-
-- **LangChain**：构建 Agent 最快的方式——标准工具调用架构、厂商无关设计、以中间件做定制。
-- **LangGraph**：更底层的框架与运行时，面向高度定制、可控、生产级的长时 Agent。
-- 二者关系：**LangChain 的 Agent 建在 LangGraph 之上**，可从 LangChain 高层 API 起步，需要时无缝下沉到 LangGraph，且可把 `create_agent` 生成的 Agent 嵌入自定义 LangGraph 工作流。
-
-### `create_agent`：新的 Agent 入口
-
-`create_agent`（TypeScript 为 `createAgent`）围绕核心 Agent 主循环设计，是 1.0 的标准入口，**取代了旧版 `AgentExecutor` 与 `langgraph.prebuilt.create_react_agent`**。主循环为：选模型 → 给工具与提示 → 发请求 → 模型返回工具调用（执行并回填）或最终答案（返回）→ 循环。
+若团队看重统一消息接口与模型可替换性，可以使用 `init_chat_model`：
 
 ```python
-from langchain.agents import create_agent
+from pydantic import BaseModel, Field
+from langchain.chat_models import init_chat_model
 
-weather_agent = create_agent(
-    model="openai:gpt-5",
-    tools=[get_weather],
-    system_prompt="Help the user by fetching the weather in their city.",
-)
 
-result = weather_agent.invoke(
-    {"messages": [{"role": "user", "content": "what's the weather in SF?"}]}
+class Triage(BaseModel):
+    category: str = Field(description="billing, technical, or account")
+    urgency: int = Field(ge=1, le=5)
+    reason: str
+
+
+model = init_chat_model("openai:gpt-4.1-mini", temperature=0)
+classifier = model.with_structured_output(Triage)
+
+result = classifier.invoke(
+    "I was charged twice and need the duplicate payment reversed today."
 )
+print(result)
 ```
 
-### 中间件（Middleware）体系：最大的新增
+这是符合 LangChain 1.x 结构的完整示例，需要有效的提供方密钥，以及账号可用的模型。真实服务还应锁定依赖版本，在系统边界再次校验结果，并记录模型名、延迟、token 用量和 schema 失败。
 
-中间件定义了一组**钩子（hooks）**，可在 Agent 主循环的每一步做细粒度定制——这是 `create_agent` 相对其他「不允许在核心循环外定制」的 Agent 构建器的核心差异。内置钩子包括 `before_agent`、`before_model`、`wrap_model_call`、`wrap_tool_call`、`after_model`、`after_agent`。官方随附几类开箱即用的中间件：
+不要因为产品文档里出现了“智能”二字就添加 Agent。如果代码已经知道下一步做什么，就把那一步写成代码。
 
-- **Human-in-the-loop**：在工具执行前暂停，让用户批准 / 编辑 / 拒绝——对涉及外部系统、发送通信、敏感交易的 Agent 至关重要。
-- **Summarization**：消息历史接近上下文上限时压缩较早内容，保留近期消息，避免 token 溢出。
-- **PII redaction**：基于模式匹配识别并脱敏邮箱、电话、身份证号等敏感信息，帮助满足合规要求。
+### 2. 使用 `create_agent`
 
-此外，1.0 把**结构化输出生成**并入主「模型↔工具」循环，省去过去额外的一次 LLM 调用，降低延迟与成本；开发者可通过工具调用或提供方原生结构化输出两种方式精细控制。
+只有当模型确实需要选择工具、读取结果，再决定是否继续调用工具时，`create_agent` 才合适。例如：
 
-### 标准内容块（Standard Content Blocks）
+- 回答前需要检索政策文档的客服助手；
+- 查询多个只读系统的运维助手；
+- 在外部搜索和内部数据之间选择的研究助手；
+- 偶尔需要计算器或数据库查询的写作助手。
 
-`langchain-core` 升到 1.0 并新增消息上的 `.content_blocks` 属性，提供跨提供方一致的内容类型，支持**推理轨迹（reasoning）、引用（citations）、工具调用（含服务端工具调用）**，并保持完全向后兼容。这解决了「切换模型/提供方就打断流式、前端与记忆存储」的痛点，让抽象跟上现代 LLM 能力。
+它的循环并不神秘：消息进入，模型可能请求工具，运行时执行工具，再把结果交还模型，直到模型给出最终答案。1.x 的中间件可在循环周围实现日志、模型路由、动态提示、工具过滤、摘要和人工审批。
 
-### 瘦身与迁移
+但 `create_agent` 绝不等于把整个基础设施账号暴露成工具。工具设计仍然是普通的安全工程：
 
-- 核心包收敛到最必要的抽象，**遗留功能迁往 `langchain-classic`**。
-- `create_react_agent` 在 `langgraph.prebuilt` 中弃用；LangGraph 的 `langgraph.prebuilt` 模块整体弃用，增强能力迁到 `langchain.agents`。
-- 因 Python 3.9 于 2025 年 10 月 EOL，**1.0 要求 Python 3.10+**（3.14 支持在路上）。
-- 安装：`uv pip install --upgrade langchain` / 需要遗留能力再装 `langchain-classic`。
+- 每个工具只承担一个可读懂的职责；
+- 参数有明确类型；
+- 权限在工具内部校验，绝不依赖提示词；
+- 读工具与写工具分开；
+- 写操作尽可能幂等；
+- 返回紧凑结果，不倾倒整张数据库表；
+- 设置超时和输出上限；
+- 把工具描述当作面向模型的 API 文档。
 
-### deepagents：面向长时复杂任务的「Agent 骨架」
+### 3. 使用 LangGraph
 
-`deepagents` 是构建于 LangChain 之上、基于 LangGraph 运行时的独立库，面向研究、编码等**长时、多步**任务，架构灵感来自 Deep Research 与 Claude Code。三大核心能力：
+当工作流本身成为产品规格的一部分，才引入 LangGraph。典型信号包括：
 
-- **规划（Planning）**：内置 `write_todos` 工具，把大任务拆成可管理的小步并跟踪进度。
-- **上下文管理（Context Management）**：用 `ls / read_file / write_file / edit_file` 等文件工具把信息存到短期记忆之外，避免上下文溢出。
-- **子智能体（Sub-Agents）**：内置 `task` 工具，把专门子任务委派给聚焦的小 Agent。
+- 某一步要暂停数分钟或数天，之后恢复；
+- 不同状态允许不同操作；
+- Agent 前后必须运行确定性代码；
+- 失败要按状态恢复，而不是整条链重跑；
+- 多个任务要并行执行再汇合；
+- 审核者可以批准、编辑或拒绝；
+- 系统需要检查或回放历史状态；
+- Agent 循环只是更大流程中的一个节点。
 
-默认使用 Claude Sonnet 4.5，但可自由切换 OpenAI、Gemini、Anthropic 等任意 LangChain 支持的模型。
+LangGraph 提供节点、边、状态、持久化、中断与恢复。它比 `create_agent` 更底层，这种控制力只有在确实需要时才有价值。两节点的直线流程，普通 Python 函数通常更清楚。
 
-### 平台侧演进
+我在评审里采用一个朴素规则：**先画状态，再导入 LangGraph**。图中若真的存在有意义的分支、等待点和恢复路径，图模型可能让设计更清晰；若只有一条直线，图只是装饰。
 
-LangSmith 已发展为更完整的「Agent 工程平台」，除可观测与评估外，还扩展出部署、沙箱（安全运行 Agent 生成的代码）、以及面向全公司的无代码 Agent（Fleet）等能力；整体战略仍是把开源框架与商业平台协同，覆盖 Agent 的构建—运行—改进闭环。
+## 一套一致的最小环境
 
-## 最佳上手案例（Hands-On）
+下面示例面向 Python 1.x 这一代包：
 
-> 以下示例基于 LangChain 1.0（Python 3.10+）。先安装依赖：`uv pip install -U langchain langchain-openai langchain-community langgraph`，并设置 `OPENAI_API_KEY`。开启 LangSmith 追踪只需 `export LANGSMITH_TRACING=true` 与 `LANGSMITH_API_KEY`。
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install \
+  "langchain>=1,<2" \
+  "langchain-openai>=1,<2" \
+  "langgraph>=1,<2"
 
-### 案例 1：最小 LCEL 链（提示 → 模型 → 解析）
+export OPENAI_API_KEY="your-key"
+```
+
+版本范围只是为了说明这些导入属于同一代架构。生产项目应锁定解析后的精确版本，并通过经过测试的依赖升级来更新。模型标识和账号可用性会独立变化，所以模型名应放进配置，而不是散落在代码里。
+
+## 不要把 RAG 仪式化
+
+RAG 默认不是 Agent。应用已经知道步骤：检索证据、整理上下文、让模型依据证据回答。让模型判断“是否需要检索”，往往只是增加成本，让 grounding 更难预测。
+
+下面使用内存向量库，方便看清结构。它可以在安装上述依赖、配置有效凭证后运行，但不是生产索引：
 
 ```python
 from langchain.chat_models import init_chat_model
+from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableLambda
+from langchain_openai import OpenAIEmbeddings
+from langchain_core.vectorstores import InMemoryVectorStore
 
-model = init_chat_model("openai:gpt-4o-mini")
-prompt = ChatPromptTemplate.from_messages([
-    ("system", "你是一名简洁的技术翻译。"),
-    ("user", "把这句话翻译成英文：{text}"),
-])
 
-chain = prompt | model | StrOutputParser()   # 用管道符组合 Runnable
-print(chain.invoke({"text": "日拱一卒，功不唐捐"}))
-```
+documents = [
+    Document(
+        page_content=(
+            "Refund requests are accepted within 30 days of purchase. "
+            "Approved refunds return to the original payment method."
+        ),
+        metadata={"source": "refund-policy", "revision": "2026-06"},
+    ),
+    Document(
+        page_content=(
+            "Enterprise plans include priority support. The target first "
+            "response time for critical incidents is one hour."
+        ),
+        metadata={"source": "support-policy", "revision": "2026-05"},
+    ),
+]
 
-要点：`|` 组合的每一环都是 Runnable，天然支持 `invoke / batch / stream / ainvoke`。
-
-### 案例 2：一个最小 RAG 管道
-
-```python
-from langchain_community.document_loaders import WebBaseLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.output_parsers import StrOutputParser
-
-# 1) 加载 → 2) 分块 → 3) 嵌入入库
-docs = WebBaseLoader("https://docs.langchain.com/oss/python/langchain/overview").load()
-chunks = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150).split_documents(docs)
-retriever = FAISS.from_documents(chunks, OpenAIEmbeddings()).as_retriever(search_kwargs={"k": 4})
-
-prompt = ChatPromptTemplate.from_template(
-    "仅根据以下上下文回答问题。\n\n上下文:\n{context}\n\n问题: {question}"
+store = InMemoryVectorStore.from_documents(
+    documents=documents,
+    embedding=OpenAIEmbeddings(model="text-embedding-3-small"),
 )
+retriever = store.as_retriever(search_kwargs={"k": 2})
+
+
+def format_documents(docs: list[Document]) -> str:
+    return "\n\n".join(
+        f"[{doc.metadata['source']}]\n{doc.page_content}" for doc in docs
+    )
+
+
+prompt = ChatPromptTemplate.from_messages(
+    [
+        (
+            "system",
+            "Answer only from the supplied context. If the context is "
+            "insufficient, say what information is missing. Cite source ids.",
+        ),
+        ("human", "Question: {question}\n\nContext:\n{context}"),
+    ]
+)
+model = init_chat_model("openai:gpt-4.1-mini", temperature=0)
+
 rag = (
-    {"context": retriever, "question": RunnablePassthrough()}
-    | prompt | ChatOpenAI(model="gpt-4o-mini") | StrOutputParser()
+    {
+        "context": retriever | RunnableLambda(format_documents),
+        "question": RunnableLambda(lambda question: question),
+    }
+    | prompt
+    | model
+    | StrOutputParser()
 )
-print(rag.invoke("LangChain 1.0 的 create_agent 有什么用？"))
+
+print(rag.invoke("How long do I have to request a refund?"))
 ```
 
-要点：RAG = 加载 → 分块 → 嵌入 → 检索 top-k → 拼进提示 → 交给 LLM。生产中重点在分块策略、检索质量与重排。
+示例省略了文档加载、分块、持久化存储和访问控制。这些不是无关紧要的细节，恰恰构成了生产系统的大部分。
 
-### 案例 3：`create_agent` + 工具调用
+### 换模型前，先知道坏在哪里
+
+RAG 的失败至少有六种：
+
+1. **语料失败**：来源缺失、过期、重复或本不该被访问。
+2. **分块失败**：答案与标题、表格或例外条件被切开。
+3. **检索失败**：正确片段没有进入前几名。
+4. **上下文失败**：大量弱证据稀释了关键证据。
+5. **生成失败**：模型忽略或误读了正确上下文。
+6. **引用失败**：答案看似有据，实际指向错误来源。
+
+应从真实问题构建一个小型评估集，并标注支撑答案的文档。检索召回率与答案质量要分开测。如果正确证据从未进入提示词，继续雕刻提示词只是在布置舞台。
+
+生产系统还要保留文档标识、版本、租户和权限元数据，并在检索前或检索中执行授权。检索后再过滤未授权结果，不仅可能让有效材料不足，还可能通过分数或时间差泄露信息。
+
+## 一个带中间件的标准 Agent
+
+下面的示例给 Agent 一个边界明确的只读工具，并用中间件记录模型请求：
 
 ```python
+import logging
 from langchain.agents import create_agent
-from langchain_core.tools import tool
+from langchain.agents.middleware import wrap_model_call
+from langchain.tools import tool
+
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("support-agent")
+
 
 @tool
-def get_weather(city: str) -> str:
-    """返回指定城市的天气。"""
-    return f"{city} 今天晴，26°C"
+def lookup_order(order_id: str) -> str:
+    """Return the status of one order visible to the current customer."""
+    # 真实项目中替换为经过授权的 repository 调用。
+    sample = {"A-100": "shipped", "A-101": "processing"}
+    return sample.get(order_id, "not found")
+
+
+@wrap_model_call
+def log_model_request(request, handler):
+    logger.info(
+        "model_call messages=%s tools=%s",
+        len(request.state["messages"]),
+        len(request.tools),
+    )
+    return handler(request)
+
 
 agent = create_agent(
-    model="openai:gpt-4o-mini",
-    tools=[get_weather],
-    system_prompt="你是一个天气助手，需要时调用工具。",
+    model="openai:gpt-4.1-mini",
+    tools=[lookup_order],
+    middleware=[log_model_request],
+    system_prompt=(
+        "You help customers check order status. Never invent an order state. "
+        "Ask for an order id when it is missing."
+    ),
 )
-result = agent.invoke({"messages": [{"role": "user", "content": "北京天气怎么样？"}]})
+
+result = agent.invoke(
+    {"messages": [{"role": "user", "content": "Where is order A-100?"}]}
+)
 print(result["messages"][-1].content)
 ```
 
-### 案例 4：带中间件的人机协同（HITL）Agent
+字典里的订单状态是刻意构造的假数据，Agent 机制本身是真实的。生产环境应通过可信运行时上下文注入客户身份，并在 `lookup_order` 内部验证访问权；绝不能让模型提供用于授权的身份。
+
+中间件适合承载横切策略：动态提示、上下文裁剪、模型回退、用量统计、工具筛选、防护与审批。业务规则仍应放在普通函数和领域服务里。若中间件栈复杂到没有人能在脑中执行，它只是在框架内部又造了一个遗留框架。
+
+## 对关键工具做真正的人类审批
+
+Human-in-the-loop 不是让模型生成一句“请确认”，而是在运行时阻止工具执行，直到有权限的人作出可记录的决定。
+
+下面是一个 **1.x 的结构示意**。Agent 配置和恢复方式遵循 1.x 中间件与 LangGraph `Command` 模型，但中断数据如何呈现在界面中取决于具体应用；这段代码并不假装终端就是审批系统。
 
 ```python
 from langchain.agents import create_agent
-from langchain.agents.middleware import HumanInTheLoopMiddleware, SummarizationMiddleware
+from langchain.agents.middleware import HumanInTheLoopMiddleware
+from langchain.tools import tool
+from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.types import Command
+
+
+@tool
+def send_refund(order_id: str, amount_cents: int) -> str:
+    """Issue an approved refund for an order."""
+    # 真实实现必须校验权限并保证幂等。
+    return f"refund queued for {order_id}: {amount_cents} cents"
+
 
 agent = create_agent(
-    model="openai:gpt-4o-mini",
-    tools=[send_email],  # 假设已定义一个会发邮件的敏感工具
+    model="openai:gpt-4.1-mini",
+    tools=[send_refund],
     middleware=[
-        HumanInTheLoopMiddleware(),      # 敏感工具执行前暂停，等待人工批准
-        SummarizationMiddleware(),        # 历史过长时自动压缩
+        HumanInTheLoopMiddleware(
+            interrupt_on={
+                "send_refund": {
+                    "allowed_decisions": ["approve", "edit", "reject"]
+                }
+            }
+        )
     ],
+    checkpointer=InMemorySaver(),
 )
+
+config = {"configurable": {"thread_id": "refund-case-42"}}
+pending = agent.invoke(
+    {
+        "messages": [
+            {
+                "role": "user",
+                "content": "Refund 1999 cents for order A-100.",
+            }
+        ]
+    },
+    config=config,
+)
+
+# 应用读取 pending["__interrupt__"]，把拟执行的操作展示给
+# 有权限的审核者，并记录审核决定。
+
+resumed = agent.invoke(
+    Command(resume={"decisions": [{"type": "approve"}]}),
+    config=config,
+)
+print(resumed["messages"][-1].content)
 ```
 
-要点：中间件让你无需改动主循环即可插入审批、脱敏、摘要等横切逻辑，是 1.0 生产化的核心手段。
+持久工作应使用数据库支持的 checkpointer；`InMemorySaver` 只适合本地开发。恢复时必须沿用同一个 `thread_id`。审批界面要展示规范化后的精确参数、受影响资源、执行身份和预期副作用。高风险操作还应在恢复后重新验证权限和当前状态，因为等待期间世界可能已经改变。
 
-### 案例 5：LangGraph 显式状态机（分支 + 循环）
+审批是一道控制，不是万能药。疲惫的人面对不透明 JSON 机械地点击“同意”，只是一套更慢的自动系统。
 
-```python
-from typing import TypedDict, Annotated
-from langgraph.graph import StateGraph, START, END
-from langgraph.graph.message import add_messages
+## 什么时候值得显式使用 LangGraph
 
-class State(TypedDict):
-    messages: Annotated[list, add_messages]
+假设内容发布流程需要调研、起草、规则检查、等待编辑审核，然后发布或退回修改：
 
-def call_model(state: State):
-    return {"messages": [model.invoke(state["messages"])]}
-
-builder = StateGraph(State)
-builder.add_node("model", call_model)
-builder.add_edge(START, "model")
-builder.add_edge("model", END)
-graph = builder.compile()          # 可接入 checkpointer 实现持久化/断点续跑
+```text
+research -> draft -> policy_check
+                      | pass
+                      v
+                 editor_review --approve--> publish
+                      |
+                    revise
+                      v
+                    draft
 ```
 
-要点：当流程需要显式分支、循环、持久化状态或 HITL 时，下沉到 LangGraph 用节点/边显式建模，比隐式 Agent 更可控。
+这是一个真正符合 LangGraph 形状的问题。节点可以混合确定性代码与模型调用，条件边编码规则结果，持久化允许编辑审核长时间等待，中断则建立人类边界。
 
-## 面试高频问题（Q&A）
+图的价值尤其体现在局部恢复。若发布失败，应从发布节点恢复，而不是重新调研后悄悄生成另一篇稿子；若规则检查失败，应保存证据和原因。持久执行不是为了画漂亮的图，而是为了知道哪些工作已经发生，哪些工作可以安全地再次发生。
 
-**1. LangChain 里的 Chain 和 Agent 有什么区别？**
-Chain 是**预定义的固定流程**（设计期确定步骤），更快、可预测、易调试；Agent 由 LLM 在**运行期动态决定**采取什么行动、调用哪个工具，更灵活但更难预测、更耗成本。
+在构图前，先回答这些问题：
 
-**2. 什么是 LCEL？为什么用它而不是旧版 Chain？**
-LCEL 是声明式的组合语法，用管道符 `|` 把实现 Runnable 接口的组件串起来。相比继承 `Chain` 基类的旧写法，它统一了 `invoke/batch/stream/async`，原生支持流式、并行、重试回退、自动 schema 推断与 LangSmith 追踪，且「原型即生产」。
+- 状态 schema 是什么，每个字段由哪个节点负责；
+- 转移前必须成立哪些不变量；
+- 哪些操作是幂等的；
+- 每个节点怎样超时和重试；
+- 部署升级后如何迁移状态；
+- 哪些数据允许持久化；
+- 谁能恢复一个中断的运行；
+- 如何取消流程并补偿已经发生的副作用。
 
-**3. Runnable 接口的核心方法有哪些？**
-`invoke`（单输入）、`batch`（批输入）、`stream`（单输入流式）、`astream_events`（细粒度事件流），以及对应异步版本 `ainvoke/abatch/astream`。
+如果这些问题显得过于正式，这也是重要信号：流程可能还不适合自治。
 
-**4. 完整描述一个 RAG 管道的步骤。**
-文档加载（Loader）→ 分块（Text Splitter）→ 嵌入（Embeddings）→ 存入向量库（Vector Store）→ 按查询检索 top-k（Retriever）→ 把检索到的上下文拼进提示 → 交给 LLM 生成。进阶点：分块策略、MultiQuery / 上下文压缩 / 重排、评估检索质量。
+## LCEL 去了哪里
 
-**5. LangChain 有哪些记忆（Memory）方式？如何在多轮对话保持上下文？**
-通过存储与回放对话历史实现。常见有完整历史、窗口（近 N 轮）、摘要式（超限压缩）等。1.0 中长历史可用 `SummarizationMiddleware` 自动压缩；LangGraph 用 state + checkpointer 提供短期与跨会话长期记忆。
+Runnable 接口和 LCEL 仍然适合在 LangChain Core 中组合确定性的模型数据流。提示、模型和解析器可以继续用 `|` 连接，Runnable 也支持同步、异步、批处理和流式执行。
 
-**6. LangChain、LangGraph、LangSmith、LangServe 各自解决什么问题？**
-LangChain 构建（组件 + `create_agent`）；LangGraph 编排复杂有状态 Agent（图/节点/边/持久化）；LangSmith 可观测与评估（追踪、Evals、监控）；LangServe 把 Runnable 部署为 REST API（LangGraph 应用用 LangGraph Platform）。
+但 LCEL 不再是所有架构问题的答案。应用控制顺序的数据流适合 LCEL；标准 Agent 循环适合 `create_agent`；显式有状态编排适合 LangGraph。
 
-**7. 什么时候该用 LangGraph 而不是 `create_agent`？**
-需要显式分支/循环、混合确定性与 Agent 步骤、长时业务流程、强人机协同/审计、需精细控制延迟与成本、或高度定制的复杂工作流时，选 LangGraph；能套进「模型→工具→回复」默认循环、只需中间件定制、追求快速交付时，用 `create_agent`。
+弄清这个边界，可以避免把分支、记忆、审批和重试硬塞进一条 Chain，直到它悄悄长成一台工作流引擎。
 
-**8. LangChain 1.0 相对旧版最大的变化是什么？**
-核心收敛到 `create_agent` 的 Agent 主循环 + **中间件体系**；引入标准 content blocks；遗留能力迁到 `langchain-classic`；`create_react_agent` / `AgentExecutor` 被取代；要求 Python 3.10+。
+## LangServe 已不是未来路径
 
-**9. 中间件（middleware）能做什么？举几个内置例子。**
-在 Agent 主循环各步插入横切逻辑（`before/after_model`、`wrap_tool_call` 等）。内置：Human-in-the-loop（工具执行前审批）、Summarization（压缩历史）、PII redaction（脱敏）。
+LangServe 曾能方便地把 Runnable 暴露为 FastAPI 端点。如今官方仓库已经归档，项目也不再是新开发的推荐方案。已有服务可以继续维护，但 2026 年的新架构不应再把 LangServe 当作部署基础。
 
-**10. Tool 是怎么定义并被 Agent 调用的？**
-用 `@tool` 装饰器把函数变成工具，函数 docstring 作为给模型的说明。Agent 由 LLM 决定是否调用、生成参数，运行时执行后把结果回填进对话，循环直到得到最终答案。
+简单模型或 RAG 接口，应使用团队已经理解的 Web 框架和运维栈。对于有状态 LangGraph 应用，则需要按照持久化、网络、数据驻留、可观测性、成本和锁定风险评估当前部署选项。开源 LangGraph 库与商业托管产品是两项独立决策。
 
-**11. 如何得到严格的结构化输出（如固定 JSON schema）？**
-用 Pydantic 模型定义 schema，配合 `with_structured_output` 或 `create_agent(response_format=ToolStrategy(Model))`。1.0 把结构化输出并入主循环，省去额外 LLM 调用。
+这次弃用提醒我们：生成端点一直是容易的部分。生产部署还包括认证、配额、schema 演进、取消、流式背压、发布、审计日志和故障响应。框架辅助工具能缩短起步时间，却不能替团队承担这些责任。
 
-**12. LCEL 链如何做流式和异步？**
-只要组件实现 Runnable，直接调用 `stream/astream` 即可流式；用 `ainvoke/abatch/astream` 走异步。原型可用同步在 Notebook 里跑，生产切异步处理高并发，无需改核心逻辑。
+## 生产检查清单
 
-**13. LangChain 常被诟病的缺点有哪些？如何缓解？**
-抽象层过重、调试困难、性能/成本不透明、文档滞后、破坏性变更。缓解：尽早接入 LangSmith 追踪与评估、必要时下沉到 LangGraph 或直接调用底层 API、锁定依赖版本、区分原型与生产。
+### 契约与状态
 
-**14. LangChain 与 LlamaIndex 如何取舍？**
-纯 RAG / 检索优化优先且追求索引与查询性能 → LlamaIndex；需要通用组合、广泛集成、复杂 Agent → LangChain。二者可组合：LlamaIndex 做检索层，嵌入 LangChain 工作流。
+- 用 schema 校验模型输出，不要用充满希望的正则解析散文。
+- 为提示词、工具 schema 和状态 schema 建立版本。
+- 持久业务状态不要藏在聊天记录里。
+- 通过明确的保留或摘要策略限制上下文增长。
+- 把持久化的 Agent 状态视为敏感应用数据。
 
-**15. 如何评估一个 LLM/Agent 应用的质量？**
-在 LangSmith 中建数据集（输入 + 可选期望输出），定义 Evaluator（规则式、启发式、LLM-as-Judge），对目标（单次调用或整应用）打分，并结合人类反馈持续迭代。
+### 工具与副作用
 
-**16. deepagents 解决了什么问题？**
-面向长时、多步的复杂任务，提供开箱即用的规划（`write_todos`）、上下文管理（文件工具把信息移出短期记忆）与子智能体委派（`task`），架构参考 Deep Research 与 Claude Code。
+- 每次工具调用都在代码中授权。
+- 优先使用窄工具，不暴露通用 Shell、SQL、HTTP 或文件系统能力。
+- 对可能重试的写操作使用幂等键。
+- 昂贵或不可逆操作应把规划与执行分开。
+- 关键操作要求运行时审批。
+- 长时间暂停后重新检查外部状态。
 
-**17. LangGraph 的持久化 / 断点续跑是怎么实现的？**
-通过 checkpointer 把执行状态自动持久化，服务器重启或长流程被中断后能从中断点恢复，无需自写数据库逻辑；这也是跨天审批、后台长任务、跨会话记忆的基础。
+### 可靠性
 
-## 未来方向与选型建议
+- 为模型、工具和端到端流程设置超时。
+- 限制迭代次数、token、检索文档数和工具输出。
+- 明确定义可重试错误，不重试非法请求或策略拒绝。
+- 只在行为经过评估时引入回退，不要因为框架支持就启用。
+- 支持取消，并诚实展示部分进度。
 
-**趋势**：持续押注 Agent（LangGraph、deepagents、中间件），强化生产支持（LangSmith / Platform），LCEL 与 content blocks 持续成熟，扩展集成与多模态，企业级安全/合规/成本管理。战略上，LangChain 的未来与 LangGraph、商业平台的成功高度绑定，核心库的角色更偏向「支撑高级编排的组件库」。
+### 评估与可观测性
 
-**选型建议**：
+- 追踪模型调用、工具调用、检索、延迟、token 和错误。
+- 导出 trace 前清除密钥与个人数据。
+- 从真实故障中建设回归数据集。
+- 分别评估检索与生成。
+- 让在线质量检查与产品指标同时存在。
+- 特别复盘那些“答案正确但理由错误”的 trace。
 
-1. **先明确用例**：简单 RAG？复杂交互聊天机器人？多步 Agent？
-2. **按复杂度选工具**：简单链/基础 RAG/原型 → LangChain + LCEL；纯 RAG 且重检索优化 → 评估 LlamaIndex；复杂有状态/需循环或 HITL 的 Agent → 直接从 LangGraph 或 `create_agent` + 中间件起步，同时评估 CrewAI / AutoGen 是否更契合协作模式。
-3. **正视学习曲线**：新手可借抽象快速上手，资深团队重视底层控制、需准备深入内部或写自定义逻辑。
-4. **尽早拥抱生态**：项目一开始就接 LangSmith 做调试/追踪/评估。
-5. **紧跟迭代**：该领域变化快，持续关注官方文档、博客与社区。
-6. **区分原型与生产**：批判性评估抽象层对性能、成本、维护的影响，必要时绕过部分框架约束、写自定义代码。
+LangSmith 可以追踪和评估 LangChain、LangGraph，也能接入非 LangChain 应用。它很有用，但不能替代服务指标、安全日志和数据治理决策。哪些数据可以离开环境，必须由团队明确决定。
 
-**结语**：LangChain 已从先驱式 LLM 框架成长为涵盖核心库、可观测平台、Agent 编排引擎与部署方案的完整生态。它的核心优势是广泛集成与通过 LCEL 的灵活组合，显著加速原型开发；代价是复杂度与过度抽象带来的陡峭曲线。1.0 通过 `create_agent` + 中间件、标准 content blocks 与瘦身包结构，正面回应了多年的社区批评。对使用者而言，最佳实践永远是：**根据项目需求、复杂度与团队经验，清醒地选择合适的组件与生态工具，既用好它的强大，也认清它的局限。**
+## 我会避开的五种失败模式
 
-## 补充相关文章
+### 一开始就使用 Agent
 
-- [开源的阶段性成长指南](/zh/growth/posts/stage-growth-of-open-source/)
-- [一份完整的开源贡献指南（提供给第一次踏入开源伙伴秘籍）](/zh/engineering/posts/open-source-contribution-guidelines/)
-- [我的实践总结：开源社区的规范设计思路](/zh/engineering/posts/advanced-githook-design/)
-- [在开源社区中学会如何提问](/zh/engineering/posts/the-art-of-asking-questions-in-open-source-communities/)
+Agent 让演示显得有生命力，于是团队很容易从它起步。后来才发现，大多数步骤其实完全确定：读取账户、检查规则、计算结果、请求审批。把这些步骤改回代码，系统更便宜也更容易测试；只有存在语言歧义的地方才需要模型。
 
-## 参考资料
+### 把对话当成记忆
 
-- LangChain & LangGraph 1.0 里程碑（LangChain 官方博客，2025-10-22）：<https://www.langchain.com/blog/langchain-langgraph-1dot0>
-- What's new in LangChain v1（官方文档）：<https://docs.langchain.com/oss/python/releases/langchain-v1>
-- Deep Agents 概览（官方文档）：<https://docs.langchain.com/oss/python/deepagents/overview>
-- deepagents 仓库：<https://github.com/langchain-ai/deepagents>
-- LangGraph 1.0 GA 公告：<https://changelog.langchain.com/announcements/langgraph-1-0-is-now-generally-available>
-- LangChain 主仓库：<https://github.com/langchain-ai/langchain>
-- LlamaIndex vs LangChain（IBM）：<https://www.ibm.com/think/topics/llamaindex-vs-langchain>
-- 开源 AI Agent 框架对比（Langfuse）：<https://langfuse.com/blog/2025-03-19-ai-agent-comparison>
+消息列表只是上下文，不是完整的记忆架构。生产记忆必须有归属、过期、来源、更正和删除机制。事实放在领域系统中，只为当前任务检索必要部分。
+
+### 用 import 掩盖迁移
+
+旧教程中的类可能已迁入 `langchain-classic`，或被新入口替代。把它们复制进 1.x 项目，会制造一套意外的混合架构。应阅读当前迁移文档，选择同一代 API，并隔离仍无法移除的旧路径。
+
+### 只评估最终答案
+
+答案可能正确，却检索了错误文档；Agent 可能完成任务，却多调用五次工具；图可能从错误中恢复，却重复执行了副作用。评估的不只是终点，还有抵达终点的路径。
+
+### 把模型可替换性当作免费能力
+
+统一接口只让替换模型在语法上更容易，不代表行为等价。提供方在工具调用、结构化输出、流事件、分词、安全策略和失败方式上都不同。换模型需要一轮评估，而不是只改配置。
+
+## 一条稳健的采用顺序
+
+新团队可以按这个顺序引入生态：
+
+1. 用直接模型调用和结构化输出，完成最小但有价值的路径。
+2. 在增加编排前，先加入 trace 和回归数据集。
+3. 只有任务需要外部证据时才引入检索，并单独评估检索。
+4. 只有模型选择工具能改善任务时才引入 `create_agent`。
+5. 用中间件承载 Agent 循环中的公共策略。
+6. 在关键工具上线前加入持久 checkpoint 和人工审批。
+7. 当状态转移与恢复路径已成为领域概念，再迁移到显式 LangGraph。
+
+这条路线刻意保守，因为它在每一步都保留退路。经过测试的普通函数，随时可以被包进图节点；要从不透明的 Agent 循环里重新抽取可靠业务逻辑，困难得多。
+
+## 结语
+
+当我们不再问“项目是否使用 LangChain”，转而追问“哪一层值得存在”，LangChain 1.x 反而变得简单。
+
+一次直接调用往往足够；`create_agent` 适合有边界的工具循环；当持久状态和显式控制流是需求，而不是装饰时，LangGraph 才是正确基础。LangSmith 可以让这些系统更可观察，但生产质量仍来自那些普通而坚硬的工程工作：契约、权限、测试、预算和恢复。
+
+框架变化快，因为它贴近一条不断移动的边界。真正耐久的能力，不是记住框架表面所有 API，而是把不确定性安放在清楚的边界里。
+
+Agent 不该让系统更神秘。它应当让一个困难的决定成为可能，并留下足够证据，让下一个工程师知道这个决定为何发生。
+
+## 官方资料
+
+- [LangChain 概览](https://docs.langchain.com/oss/python/langchain/overview)
+- [LangChain Agents](https://docs.langchain.com/oss/python/langchain/agents)
+- [LangChain 中间件](https://docs.langchain.com/oss/python/langchain/middleware)
+- [Human-in-the-loop 中间件](https://docs.langchain.com/oss/python/langchain/human-in-the-loop)
+- [LangGraph 概览](https://docs.langchain.com/oss/python/langgraph/overview)
+- [LangGraph 持久化](https://docs.langchain.com/oss/python/langgraph/persistence)
+- [LangChain 1.x 迁移指南](https://docs.langchain.com/oss/python/migrate/langchain-v1)
+- [已归档的 LangServe 仓库](https://github.com/langchain-ai/langserve)
+- [LangSmith 文档](https://docs.langchain.com/langsmith/home)
+
+## 延伸阅读
+
+- [LangChain 语言模型应用开发指南](/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
+- [LangGraph：构建有状态 Agent 工作流](/zh/projects/langgraph/)
+- [向量数据库学习笔记](/zh/ai-agent/posts/vector-database-learning/)
