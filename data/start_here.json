@@ -154,7 +154,7 @@
     },
     "colophon": {
       "label": "关于本站",
-      "entity": "cubxxw.com 是熊鑫伟（Xinwei Xiong，网名 cubxxw）的个人博客。他生于 2001 年，是一名 AI 创业者、开源贡献者与数字游民，活跃于 OpenIM、OpenKF、Sealos 等开源项目。博客写作围绕四条主线：AI Agent（LLM 应用、智能体工程、GEO，以及 MarkItDown、LangGraph、NotebookLM 等开源项目的源码深读）、工程与开源（Kubernetes、Go、DevOps 与开源实践）、成长与思考（年度复盘、元认知、心流），以及旅行与观察（9 个国家、35+ 城市、400+ 公里徒步）。",
+      "entity": "cubxxw.com 是熊鑫伟（Xinwei Xiong，网名 cubxxw）的公开实践与思想档案。内容来自真实项目、工程选择与生活经验，长期记录 AI 工作流、智能体工程、开源实践、系统思维、个人成长、哲学与人生。作者参与过 OpenIM、OpenKF、Sealos 等开源项目，也持续把实践中的方法、失败与判断完整公开。",
       "facts": [
         {
           "k": "作者",
@@ -162,11 +162,11 @@
         },
         {
           "k": "身份",
-          "v": "AI 创业者 · 开源贡献者 · 数字游民"
+          "v": "实践者 · 写作者 · 开源贡献者"
         },
         {
           "k": "主题",
-          "v": "AI Agent / 工程与开源 / 成长与思考 / 旅行与观察"
+          "v": "AI 系统 / 工程方法 / 真实项目 / 成长与哲学"
         },
         {
           "k": "足迹",
@@ -348,7 +348,7 @@
     },
     "colophon": {
       "label": "About this site",
-      "entity": "cubxxw.com is the personal blog of Xinwei Xiong (known online as cubxxw). Born in 2001, he is an AI founder, open-source contributor, and digital nomad, active in projects such as OpenIM, OpenKF, and Sealos. The blog follows four threads: AI agents (LLM applications, agent engineering, GEO, and source-level deep dives into MarkItDown, LangGraph, NotebookLM, and more), engineering & open source (Kubernetes, Go, DevOps), growth & thinking (annual reviews, metacognition, flow), and travel & observation (9 countries, 35+ cities, 400+ km on foot).",
+      "entity": "cubxxw.com is Xinwei Xiong's open archive of practice and thought. Its writing grows from real projects, engineering choices, and lived experience, covering AI workflows, agent engineering, open-source practice, systems thinking, personal growth, philosophy, and life. Xinwei has contributed to projects including OpenIM, OpenKF, and Sealos, and openly documents the methods, failures, and judgment formed through practice.",
       "facts": [
         {
           "k": "Author",
@@ -356,11 +356,11 @@
         },
         {
           "k": "Identity",
-          "v": "AI founder · Open-source contributor · Digital nomad"
+          "v": "Practitioner · Writer · Open-source contributor"
         },
         {
           "k": "Threads",
-          "v": "AI Agent / Engineering & Open Source / Growth & Thinking / Travel"
+          "v": "AI systems / Engineering methods / Real projects / Growth & philosophy"
         },
         {
           "k": "Footprint",
