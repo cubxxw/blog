@@ -2,7 +2,6 @@
 title: 'AI Workflow Quality Gates: A Practical Engineering Guide'
 ShowRssButtonInSectionTermList: true
 date: 2026-07-11T15:30:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: 'The Scoreboard You Choose Will Eventually Choose You: How Incentives Reshape an Organization'
 date: 2026-07-31T02:10:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

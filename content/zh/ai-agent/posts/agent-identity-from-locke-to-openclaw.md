@@ -1,7 +1,6 @@
 ---
 title: 'Agent 的自我：从洛克到 OpenClaw'
 date: 2026-04-05T20:00:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: 'AI 解决问题以后，问题会搬到哪里'
 date: 2026-07-26T18:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

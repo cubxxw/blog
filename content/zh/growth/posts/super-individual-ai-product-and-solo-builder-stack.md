@@ -1,7 +1,6 @@
 ---
 title: '超级个体的栈：2026 年 AI 原生 Solo Builder 的产品方向与运营全图'
 date: 2026-06-24T14:55:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

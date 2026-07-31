@@ -1,7 +1,6 @@
 ---
 title: '让 AI 自动帮你追全网资讯，最后会卡在哪里'
 date: 2026-07-15T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Argo CD: Declarative GitOps for Kubernetes Continuous Delivery'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T20:45:39+08:00
-draft: false
 showtoc: true
 tocopen: false # Users typically prefer the TOC closed by default, can be set to true if desired
 type: posts

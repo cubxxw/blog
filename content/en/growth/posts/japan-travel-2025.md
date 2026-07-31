@@ -2,7 +2,6 @@
 title: 'Japan Travel Notes — Learning to Be with Time Through Wood, Fire, and Gaps'
 ShowRssButtonInSectionTermList: true
 date: 2025-12-15T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Kubernetes Resources and Learning Path Summary'
 ShowRssButtonInSectionTermList: true
 date: '2024-08-06T20:29:30+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

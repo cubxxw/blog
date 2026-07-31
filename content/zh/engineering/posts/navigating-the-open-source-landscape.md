@@ -2,7 +2,6 @@
 title: '探索开源以及开源商业模式研究'
 ShowRssButtonInSectionTermList: true
 date: 2024-04-13T20:29:22+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

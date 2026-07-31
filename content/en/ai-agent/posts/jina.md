@@ -3,7 +3,6 @@ url: "/ai-agent/posts/jina/"
 title: "Jina AI in 2026: Embeddings, Reranking, Reader, and Jina Serve"
 date: 2025-04-12T13:01:59+08:00
 lastmod: 2026-07-31T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

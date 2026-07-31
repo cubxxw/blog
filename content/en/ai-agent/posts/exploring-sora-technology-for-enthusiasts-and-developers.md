@@ -2,7 +2,6 @@
 title: 'Sora Retrospective: From Research Preview and Sora 2 to Shutdown'
 date: 2024-02-24T13:30:15+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -3,7 +3,6 @@ url: "/projects/tdd/"
 title: "Test-Driven Development for AI and LLM Applications: A Practical 2026 Guide"
 date: 2025-04-21T15:52:34+08:00
 lastmod: 2026-07-31T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

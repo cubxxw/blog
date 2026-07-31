@@ -2,7 +2,6 @@
 title: 'Sora 完整复盘：从视频生成技术预览、Sora 2 到产品与 API 停止'
 date: 2024-02-24T13:30:15+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -24,9 +24,10 @@ find content/ -name "*.md" -newer <(date -v-7d +%Y-%m-%d) 2>/dev/null | head -20
 
 #### Front Matter 检查
 - **格式正确**：确认存在 `---` 开头的 YAML front matter
+- **字段约束**：不得出现 `draft` 字段
 - **date 时区**：`date` 字段必须包含 `+08:00`（上海时区），不得缺失偏移
-- **发布时间**：`date` 不能是未来时间（除非 draft: true）
-- **draft 状态**：翻译未完成的文章应设置 `draft: true`
+- **发布时间**：`date` 不能是未来时间
+- **发布边界**：`content/` 中不得放未完成翻译、空占位或内部 fixture
 
 #### 内容质量检查
 - **description 无 Markdown**：description 字段不含 `**`、`#`、`_`、`` ` `` 等符号

@@ -3,7 +3,6 @@ title: '自动化的高级追求： Prow 是什么？Kubernetes 为什么需要�
 description: 'Prow 是一个基于 Kubernetes 的 CI/CD 系统，它可以在 Kubernetes 集群中运行，用于管理和执行 CI/CD 流程。'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:46:15+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

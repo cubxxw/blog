@@ -1,7 +1,6 @@
 ---
 title: '点火与沉底（中）：回避型依恋——为什么靠近时我们想逃'
 date: 2026-06-28T20:10:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

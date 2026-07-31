@@ -3,7 +3,6 @@ title: 'Loop Engineering for Solo Builders: Verifiers, State, and Safe Automatio
 ShowRssButtonInSectionTermList: true
 date: '2026-07-20T21:00:00+08:00'
 lastmod: '2026-07-31T12:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

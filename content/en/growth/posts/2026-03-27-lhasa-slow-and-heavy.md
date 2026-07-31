@@ -1,7 +1,6 @@
 ---
 title: 'Lhasa: Slow and Heavy'
 date: 2026-03-27T13:00:00+08:00
-draft: false
 showtoc: false
 tocopen: false
 type: posts

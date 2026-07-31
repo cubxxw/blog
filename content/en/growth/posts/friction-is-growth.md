@@ -2,7 +2,6 @@
 title: 'Friction Is Growth: When AI Removes All Resistance for You, Deliberately Keep Some'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T16:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

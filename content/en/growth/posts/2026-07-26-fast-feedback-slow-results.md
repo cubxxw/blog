@@ -1,7 +1,6 @@
 ---
 title: 'The Fastest Numbers Are Often Furthest from the Outcome'
 date: 2026-07-26T17:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Deep Dive Into the Components of Kubernetes Etcd'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-28T20:03:35+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

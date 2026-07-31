@@ -2,7 +2,6 @@
 title: 'Concurrent Type Checking and Cross-Platform Development in Go'
 ShowRssButtonInSectionTermList: true
 date: 2024-01-24T22:40:15+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Layer One · Information: What to Show AI, What to Skim Yourself, and Pure Noise'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:10:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -2,7 +2,6 @@
 title: 'Go 语言中的并发类型检查与跨平台开发'
 ShowRssButtonInSectionTermList: true
 date: '2024-01-24T22:40:15+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

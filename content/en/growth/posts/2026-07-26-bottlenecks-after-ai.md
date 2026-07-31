@@ -1,7 +1,6 @@
 ---
 title: 'After AI Solves a Problem, Where Does the Bottleneck Move?'
 date: 2026-07-26T18:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

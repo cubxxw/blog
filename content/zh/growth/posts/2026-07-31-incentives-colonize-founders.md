@@ -1,7 +1,6 @@
 ---
 title: '你选择的计分板，最后会选择你：激励怎样改写一个组织'
 date: 2026-07-31T02:10:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

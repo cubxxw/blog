@@ -1,7 +1,6 @@
 ---
 title: '创造者缺的不是掌声，是一个准确的见证者'
 date: 2026-07-31T01:20:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

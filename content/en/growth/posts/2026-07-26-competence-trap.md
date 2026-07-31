@@ -1,7 +1,6 @@
 ---
 title: 'The Escape Routes of Smart People: Applying Ability to the Wrong Problem'
 date: 2026-07-26T15:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

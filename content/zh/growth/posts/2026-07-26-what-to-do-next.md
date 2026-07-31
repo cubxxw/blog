@@ -1,7 +1,6 @@
 ---
 title: '下一步做什么：一场关于赚钱、行动与理想的争论'
 date: 2026-07-26T13:25:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

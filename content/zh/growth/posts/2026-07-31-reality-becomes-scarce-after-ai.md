@@ -1,7 +1,6 @@
 ---
 title: '当生成变得无限，真实经历开始升值'
 date: 2026-07-31T01:50:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

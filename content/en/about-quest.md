@@ -4,7 +4,6 @@ description: "A small side-scrolling journey through Xinwei Xiong's life, travel
 layout: "about-quest"
 url: "/about/quest/"
 date: 2026-07-25T00:00:00+08:00
-draft: false
 showtoc: false
 type: page
 author: ["Xinwei Xiong", "Me"]

@@ -2,7 +2,6 @@
 title: 'January 2026 Thought Notes'
 ShowRssButtonInSectionTermList: true
 date: 2026-01-31T23:59:59+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

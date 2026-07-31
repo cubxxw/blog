@@ -2,7 +2,6 @@
 title: 'LangChain 1.x 实战指南：从模型调用到可观测 Agent'
 date: 2024-05-22T21:37:34+08:00
 lastmod: 2026-07-31T10:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

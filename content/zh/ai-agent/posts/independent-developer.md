@@ -2,7 +2,6 @@
 title: '独立开发者技术栈指南：从问题验证到可维护 MVP'
 date: 2025-04-15T20:53:12+08:00
 lastmod: 2026-07-31T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

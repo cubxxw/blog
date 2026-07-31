@@ -2,7 +2,6 @@
 title: 当东西人人做得出来，「这是他做的」就成了信号
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T11:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

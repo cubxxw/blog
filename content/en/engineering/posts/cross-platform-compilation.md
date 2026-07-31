@@ -2,7 +2,6 @@
 title: 'Cross Platform Compilation'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:21:52+08:00'
-draft: false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

@@ -2,7 +2,6 @@
 title: 'Go Directives & Automation Tools Deep Dive'
 ShowRssButtonInSectionTermList: true
 date: 2024-01-25T15:22:36+08:00
-draft : false
 showtoc: true
 tocopen: false
 type: posts

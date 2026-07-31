@@ -3,7 +3,6 @@ title: "独立创作者的 AI 视频剪辑流水线：拍摄、粗剪与多平�
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T22:00:00+08:00'
 lastmod: 2026-07-31T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

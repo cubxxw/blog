@@ -1,7 +1,6 @@
 ---
 title: '我如何学会观察自己的思考：四个月的元认知转变复盘'
 date: 2025-06-02T08:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -3,7 +3,6 @@ title: '在AI时代 - 精益团队的企业文化和远程工作指南 v2.0'
 description: '详细介绍 OpenIM 远程工作团队协作协议的最新版本 v1.3，探讨其如何促进团队协作和提高工作效率。'
 ShowRssButtonInSectionTermList: true
 date: '2023-03-29T16:02:31+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: '拆到最后，剩下的才是你：一场关于无我、痛苦与"怎么说都可以"的追问'
 date: 2026-07-14T21:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

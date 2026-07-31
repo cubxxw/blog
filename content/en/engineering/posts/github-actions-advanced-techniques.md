@@ -3,7 +3,6 @@ title: 'Github Actions Advanced Techniques'
 description: Build custom GitHub Actions with Docker or composite steps, wire up concurrency groups, GITHUB_TOKEN permissions, and dependency caching, then automate packaging, Docker image deploys, and project-board updates end to end.
 ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:17:02+08:00
-draft : false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

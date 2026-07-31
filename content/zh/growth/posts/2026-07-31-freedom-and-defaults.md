@@ -1,7 +1,6 @@
 ---
 title: '自由的反面不是约束，是默认值替你活完一天'
 date: 2026-07-31T02:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'Kubernetes 控制平面 - Kubectl 详细讲解'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-28T20:29:30+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

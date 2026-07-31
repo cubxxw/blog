@@ -3,7 +3,6 @@ title: '2023年，我的旅行起点 - 2023年的我漫步在世界边缘'
 ShowRssButtonInSectionTermList: true
 date: 2024-03-03T20:00:46+08:00
 # weight: 1
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: '关于我的 Hugo 博客 (教程)'
 date: 2023-09-12T14:26:20+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

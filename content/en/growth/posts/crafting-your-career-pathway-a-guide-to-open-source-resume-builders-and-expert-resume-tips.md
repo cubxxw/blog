@@ -2,7 +2,6 @@
 title: 'Open Source Resume Builders & Career Tips'
 ShowRssButtonInSectionTermList: true
 date: 2024-04-19T00:24:22+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

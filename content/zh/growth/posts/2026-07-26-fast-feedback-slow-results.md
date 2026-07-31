@@ -1,7 +1,6 @@
 ---
 title: '越快看到的数字，往往离结果越远'
 date: 2026-07-26T17:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

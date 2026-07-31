@@ -2,7 +2,6 @@
 title: 'Give AI Tasks, Not Just Direction: Define Done First'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T16:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

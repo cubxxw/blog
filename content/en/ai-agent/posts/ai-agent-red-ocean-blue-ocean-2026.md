@@ -1,7 +1,6 @@
 ---
 title: 'Where AI Agents Still Have a Blue Ocean'
 date: 2026-07-15T18:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

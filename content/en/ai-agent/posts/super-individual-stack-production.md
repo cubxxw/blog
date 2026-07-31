@@ -2,7 +2,6 @@
 title: I Ran Ten Agents Overnight, Woke Up to Ten PRs, and Then I Got Stuck
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T09:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

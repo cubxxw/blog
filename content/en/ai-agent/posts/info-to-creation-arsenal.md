@@ -2,7 +2,6 @@
 title: 'Field Notes: I Built My Knowledge Layer into an Arsenal'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-17T21:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

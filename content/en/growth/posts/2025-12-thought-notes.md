@@ -2,7 +2,6 @@
 title: 'December 2025 Thought Notes'
 ShowRssButtonInSectionTermList: true
 date: 2025-12-31T23:59:59+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

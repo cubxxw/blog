@@ -1,7 +1,6 @@
 ---
 title: '第二大脑保存的，是一个人的决策函数'
 date: 2026-07-31T02:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

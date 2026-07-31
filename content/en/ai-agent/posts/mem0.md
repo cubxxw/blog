@@ -3,7 +3,6 @@ url: "/projects/mem0/"
 title: 'Mem0 OSS v3 in Practice: Memory Architecture, Retrieval, and Trade-offs'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T21:33:46+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

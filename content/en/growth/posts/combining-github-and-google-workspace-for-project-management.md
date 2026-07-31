@@ -2,7 +2,6 @@
 title: 'Combining GitHub and Google Workspace for Effective Project Management'
 ShowRssButtonInSectionTermList: true
 date: 2024-02-22T14:22:21+08:00
-draft: false
 showToc: true
 tocopen: false
 type: post

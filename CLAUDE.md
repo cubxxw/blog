@@ -18,6 +18,9 @@ This document contains critical information about working with this codebase. Fo
 
 ### 创建新文章
 
+`content/` 中的文件一律视为可发布内容，不使用 `draft` front matter；未完成内容只能
+留在未合并分支，空占位和内部 fixture 必须留在发布目录之外，最终发布由分支合并和部署控制。
+
 ```bash
 # AI Agent 文章（Agent 工程、上下文工程、LLM 应用、GEO）
 hugo new content content/zh/ai-agent/posts/my-article.md

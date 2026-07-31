@@ -2,7 +2,6 @@
 title: 'AI 第二大脑实操：Obsidian、Agent 与微信入口'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T15:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -2,7 +2,6 @@
 title: 'Agent Skill 与 SKILL.md 设计：我拆了一个敢删文件的插件'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-18T00:30:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

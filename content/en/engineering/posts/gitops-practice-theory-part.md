@@ -2,7 +2,6 @@
 title: 'GitOps & Kubernetes Deployment Strategies'
 ShowRssButtonInSectionTermList: true
 date: 2023-11-25T18:00:31+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

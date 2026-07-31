@@ -2,7 +2,6 @@
 title: 'Hugo 的高级教程'
 ShowRssButtonInSectionTermList: true
 date: 2023-11-06T13:44:09+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

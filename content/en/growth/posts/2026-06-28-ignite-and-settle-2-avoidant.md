@@ -1,7 +1,6 @@
 ---
 title: 'Ignite and Settle (Part 2): Avoidant Attachment — Why We Want to Run When Someone Gets Close'
 date: 2026-06-28T20:10:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

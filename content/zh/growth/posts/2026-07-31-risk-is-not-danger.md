@@ -1,7 +1,6 @@
 ---
 title: '风险偏好不是喜欢危险：真正让人敢下注的是什么'
 date: 2026-07-31T01:40:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

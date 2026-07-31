@@ -2,7 +2,6 @@
 title: '设计 OpenIM 使用 Harbor 构建企业镜像仓库'
 ShowRssButtonInSectionTermList: true
 date: '2023-10-25T10:45:38+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

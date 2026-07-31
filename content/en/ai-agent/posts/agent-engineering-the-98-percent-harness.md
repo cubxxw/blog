@@ -2,7 +2,6 @@
 title: "Agent Engineering Harness: The Eight Pillars Behind the 98.4%"
 date: 2026-06-17T09:30:00+08:00
 lastmod: 2026-07-31T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

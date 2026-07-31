@@ -5,7 +5,6 @@ cover:
     image: /images/blog/sm202309161719007.webp
     caption: '关于2023年'
 date: '2023-12-31T22:26:20+08:00'
-draft: false
 # weight: 2
 showtoc: true
 tocopen: false

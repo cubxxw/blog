@@ -2,7 +2,6 @@
 title: 'OpenIM 的集群化设计 | Kubernetes 部署 | 方案讨论 | 会议总结'
 ShowRssButtonInSectionTermList: true
 date: 2023-09-17T09:51:54+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: '自动化测试的学习(一)'
 ShowRssButtonInSectionTermList: true
 date: '2023-10-14T10:27:43+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

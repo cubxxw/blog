@@ -2,7 +2,6 @@
 title: '管理后台和监控的部署与设计'
 ShowRssButtonInSectionTermList: true
 date: '2023-11-15T11:25:54+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

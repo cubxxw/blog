@@ -1,7 +1,6 @@
 ---
 title: 'The Super-Individual Stack: AI-Native Product Directions and Solo Builder Ops in 2026'
 date: 2026-06-24T14:55:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -1,7 +1,6 @@
 ---
 title: 'What Remains When You Take It All Apart: On No-Self, Suffering, and "You Could Say It Either Way"'
 date: 2026-07-14T21:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

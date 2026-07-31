@@ -1,7 +1,6 @@
 ---
 title: '拉萨——一座城市的慢与重'
 date: 2026-03-27T13:00:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

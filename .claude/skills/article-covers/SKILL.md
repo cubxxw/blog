@@ -147,7 +147,7 @@ title already sits above the cover in the page template; the image only carries 
 ## How it decides what to generate
 
 Targets are posts under `content/{zh,en}/{ai-agent,engineering,growth,projects}/` that:
-have a `title`, are not `draft: true`, are not `_index`/`index`, and have no `cover.image`
+have a `title`, are not `_index`/`index`, and have no `cover.image`
 (unless `--force`).
 
 The body is never read — front matter is the whole semantic input for stage 1, so **a good

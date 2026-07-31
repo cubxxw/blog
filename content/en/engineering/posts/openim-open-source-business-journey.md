@@ -2,7 +2,6 @@
 title: "Open Source Business: From Community to Revenue"
 ShowRssButtonInSectionTermList: true
 date: '2023-09-17T09:51:54+08:00'
-draft: false
 showtoc: true
 tocopen: false
 author: ["Xinwei Xiong", "Me"]

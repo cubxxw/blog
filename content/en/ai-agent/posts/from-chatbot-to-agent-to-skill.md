@@ -2,7 +2,6 @@
 title: 'From Chatbot to Agent to Skill: Turning Judgment into a System'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-14T10:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

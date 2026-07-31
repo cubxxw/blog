@@ -1,7 +1,6 @@
 ---
 title: 'The Cost of Observation: Why the More You Understand, the Harder It Is to Enter Life'
 date: 2026-07-31T01:30:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

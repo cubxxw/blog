@@ -10,6 +10,7 @@
     "dev:stop": "bash scripts/stop-netlify-dev.sh",
     "blockquotes:check": "node scripts/clean-empty-blockquotes.mjs",
     "blockquotes:fix": "node scripts/clean-empty-blockquotes.mjs --write",
+    "frontmatter:check": "node scripts/check-frontmatter-fields.mjs",
     "articles:audit": "node scripts/audit-article-inventory.mjs",
     "tags:check": "node scripts/normalize-tags.mjs --check",
     "tags:fix": "node scripts/normalize-tags.mjs --write",

@@ -52,7 +52,6 @@
           <h3 class="entry-title">
             <a href="{{ .Permalink }}">
               {{- .Title | markdownify }}
-              {{- if .Draft }}<sup class="entry-isdraft">[draft]</sup>{{- end }}
             </a>
           </h3>
           {{- if .Params.tags }}
@@ -214,15 +213,6 @@
 
 .entry-title a:hover {
   color: #667eea;
-}
-
-.entry-isdraft {
-  font-size: 0.7rem;
-  background: #f59e0b;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 10px;
-  margin-left: 8px;
 }
 
 .entry-tags {

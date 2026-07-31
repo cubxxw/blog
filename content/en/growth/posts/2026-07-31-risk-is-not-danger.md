@@ -1,7 +1,6 @@
 ---
 title: "Risk Preference Isn't About Enjoying Danger: What Truly Enables Taking a Bet"
 date: 2026-07-31T01:40:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

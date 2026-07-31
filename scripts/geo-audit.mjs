@@ -35,7 +35,6 @@ function analyze(text) {
 
   const hasTldr = /^tldr:/m.test(front);
   const hasDesc = /^\s*description:/m.test(front);
-  const isDraft = /^draft:\s*true/m.test(front);
 
   // Lead-in: text before the first markdown heading in the body.
   const firstHeading = body.search(/^#{1,6}\s/m);
@@ -51,14 +50,14 @@ function analyze(text) {
 
   // Score: weight a missing answer-first signal highest.
   const score = (hasTldr ? 0 : 3) + (hasDesc ? 0 : 2) + (leadWords > LEAD_IN_WORD_LIMIT ? 2 : 0);
-  return { issues, score, isDraft, bodyWords };
+  return { issues, score, bodyWords };
 }
 
 const files = globSync('content/**/*.md', { cwd: ROOT }).map((f) => join(ROOT, f));
 const rows = [];
 for (const f of files) {
   const r = analyze(readFileSync(f, 'utf8'));
-  if (r && r.score > 0 && !r.isDraft) rows.push({ f: f.replace(ROOT + '/', ''), ...r });
+  if (r && r.score > 0) rows.push({ f: f.replace(ROOT + '/', ''), ...r });
 }
 rows.sort((a, b) => b.score - a.score);
 

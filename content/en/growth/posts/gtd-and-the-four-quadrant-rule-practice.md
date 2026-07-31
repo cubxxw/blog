@@ -2,7 +2,6 @@
 title: 'GTD and the Quadrant Method Practice'
 ShowRssButtonInSectionTermList: true
 date: 2024-02-12T23:34:11+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

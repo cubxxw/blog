@@ -1,7 +1,6 @@
 ---
 title: "Context Engineering: The New Foundation for AI Agents"
 date: 2026-06-22T03:30:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

@@ -2,7 +2,6 @@
 title: 'AI 越来越聪明，我却越来越不知道自己是谁'
 ShowRssButtonInSectionTermList: true
 date: 2026-03-01T20:15:00+08:00
-draft: false
 showtoc: true
 weight: 1
 tocopen: true

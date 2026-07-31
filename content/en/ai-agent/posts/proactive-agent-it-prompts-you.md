@@ -2,7 +2,6 @@
 title: 'When the AI Agent Starts Prompting You, What Has Actually Changed'
 date: 2026-07-15T12:00:00+08:00
 lastmod: 2026-07-31T00:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

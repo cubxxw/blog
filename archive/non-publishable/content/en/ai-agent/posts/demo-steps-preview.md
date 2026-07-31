@@ -1,7 +1,6 @@
 ---
 title: "demo-steps Component Preview (Do Not Publish)"
 date: 2026-07-23T18:00:00+08:00
-draft: true
 showtoc: false
 tocopen: false
 type: posts

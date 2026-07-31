@@ -3,7 +3,6 @@ url: "/zh/projects/markitdown/"
 title: "MarkItDown 文档转 Markdown 实战：0.1.6 机制基线与 0.1.7 状态"
 date: 2025-04-21T15:41:21+08:00
 lastmod: 2026-07-31T16:30:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

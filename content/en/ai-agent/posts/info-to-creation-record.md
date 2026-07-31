@@ -2,7 +2,6 @@
 title: 'Layer Two · Records: The Highest-Conversion Semi-Finished Product Between Information and Knowledge'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:20:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

@@ -2,7 +2,6 @@
 title: '我的实践总结：开源社区的规范设计思路'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:25:00+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

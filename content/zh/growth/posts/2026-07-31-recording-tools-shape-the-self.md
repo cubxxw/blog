@@ -1,7 +1,6 @@
 ---
 title: '记录不是镜子，是剪刀：你用什么工具，最后就会成为什么样的人'
 date: 2026-07-31T01:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

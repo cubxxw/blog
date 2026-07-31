@@ -280,7 +280,6 @@ function collectTargets() {
     const text = readFileSync(abs, 'utf8');
     const parsed = splitFrontMatter(text);
     if (!parsed) continue;
-    if (String(scalar(parsed.fm, 'draft')).toLowerCase() === 'true') continue;
     if (hasCover(parsed.fm) && !args.force) continue;
 
     const title = scalar(parsed.fm, 'title');

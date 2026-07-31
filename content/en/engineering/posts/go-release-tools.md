@@ -3,7 +3,6 @@ title: 'GoReleaser v2 + GitHub Actions: Go Release Guide'
 ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:07:39+08:00'
 lastmod: 2026-07-29T14:05:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

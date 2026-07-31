@@ -6,7 +6,6 @@ aliases:
 title: 'Jina 2026：搜索底座模型、API 与 Jina Serve 实战指南'
 date: 2025-04-12T13:01:59+08:00
 lastmod: 2026-07-31T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

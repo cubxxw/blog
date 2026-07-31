@@ -1,7 +1,6 @@
 ---
 title: 'Every Path Has a Price'
 date: 2026-07-26T19:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

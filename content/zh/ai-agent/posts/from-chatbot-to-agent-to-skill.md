@@ -2,7 +2,6 @@
 title: '从 Chatbot 到 Agent 到 Skill：AI 落地传统行业的真正分水岭'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-14T10:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: false
 type: posts

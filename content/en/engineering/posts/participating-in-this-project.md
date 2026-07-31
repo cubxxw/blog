@@ -4,7 +4,6 @@ ShowRssButtonInSectionTermList: true
 cover:
   image:
 date: 2023-02-01T10:26:53+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

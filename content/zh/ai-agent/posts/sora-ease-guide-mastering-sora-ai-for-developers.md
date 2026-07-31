@@ -2,7 +2,6 @@
 title: 'Sora 停服之后：SoraEase 提示词档案与开发者迁移指南'
 date: 2024-03-14T08:44:13+08:00
 lastmod: 2026-07-31T16:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

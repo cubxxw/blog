@@ -4196,18 +4196,6 @@ body.nav-hidden { --sticky-offset: 0px; }
     flex: 1;
 }
 
-.archives-post__draft {
-    display: inline-block;
-    margin-left: 6px;
-    padding: 1px 8px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    background: rgba(234, 179, 8, 0.15);
-    color: #b45309;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
 .archives-post__tags {
     display: flex;
     gap: 4px;

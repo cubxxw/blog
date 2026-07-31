@@ -1,7 +1,6 @@
 ---
 title: "demo-steps 组件预览（勿发布）"
 date: 2026-07-23T18:00:00+08:00
-draft: true
 tags: ["AI Agents"]
 description: "demo-steps shortcode 的内部预览页。"
 ---

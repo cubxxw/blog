@@ -17,7 +17,6 @@ cover:
     hidden: true
 date: 2025-01-09T00:00:00+08:00
 weight: 1
-draft: false
 showtoc: false
 tocopen: false
 type: page

@@ -1,7 +1,6 @@
 ---
 title: 'The Opposite of Freedom Isn’t Constraint—It’s the Defaults That Live Your Day for You'
 date: 2026-07-31T02:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

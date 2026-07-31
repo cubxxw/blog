@@ -2,7 +2,6 @@
 title: 'SoraEase After Sora: A Prompt Archive and Developer Migration Guide'
 date: 2024-03-14T08:44:13+08:00
 lastmod: 2026-07-31T16:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

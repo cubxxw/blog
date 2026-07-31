@@ -34,7 +34,6 @@ tags: [en, first]  # 无意义标签
 ---
 title: '文章标题'
 date: 2026-03-28T12:00:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

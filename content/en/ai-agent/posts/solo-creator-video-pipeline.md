@@ -2,7 +2,6 @@
 title: "A Solo Creator's AI Video Editing Pipeline That Actually Works"
 date: 2026-07-19T22:00:00+08:00
 lastmod: 2026-07-31T20:00:00+08:00
-draft: false
 showtoc: true
 tocopen: true
 type: posts

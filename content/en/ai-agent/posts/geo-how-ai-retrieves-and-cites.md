@@ -2,7 +2,6 @@
 title: 'GEO Mechanics: How AI Retrieves, Re-ranks, and Cites You'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T10:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

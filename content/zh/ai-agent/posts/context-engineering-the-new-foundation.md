@@ -1,7 +1,6 @@
 ---
 title: "Context 不是 Prompt：上下文工程如何成为 AI Agent 的新地基"
 date: 2026-06-22T03:30:00+08:00
-draft: false
 showtoc: true
 tocopen: false
 type: posts

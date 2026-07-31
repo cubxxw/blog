@@ -2,7 +2,6 @@
 title: When Anyone Can Build the Thing, "He Built It" Becomes the Signal
 ShowRssButtonInSectionTermList: true
 date: '2026-07-19T11:00:00+08:00'
-draft: false
 showtoc: true
 tocopen: true
 type: posts

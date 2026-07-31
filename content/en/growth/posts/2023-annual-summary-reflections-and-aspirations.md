@@ -5,7 +5,6 @@ cover:
     image: /images/blog/sm202309161719007.webp
     caption: 'about 2023 year'
 date: 2023-12-30T20:56:20+08:00
-draft: false
 showtoc: true
 # weight: 2
 tocopen: false
