@@ -9,7 +9,39 @@ on:
 env:
   HUGO_VERSION: 0.147.0
 
+permissions:
+  contents: read
+
 jobs:
+  autofix:
+    name: Auto-fix content formatting
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "20"
+
+      - name: Fix empty blockquote markers
+        run: node scripts/clean-empty-blockquotes.mjs --write
+
+      - name: Commit content formatting fixes
+        run: |
+          if git diff --quiet -- 'content/*/growth/posts/*-thought-notes.md'; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- 'content/*/growth/posts/*-thought-notes.md'
+          git commit -m "style(content): clean empty blockquotes"
+          git push
+
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -28,6 +60,17 @@ jobs:
 
       - name: Install Node.js dependencies
         run: npm ci
+
+      - name: Auto-fix empty blockquote markers
+        run: npm run blockquotes:fix
+
+      - name: Verify content formatting is committed
+        if: github.event_name != 'push'
+        run: |
+          if ! git diff --exit-code -- 'content/*/growth/posts/*-thought-notes.md'; then
+            echo "::error::Empty blockquote markers were auto-fixed. Run 'npm run blockquotes:fix' and commit the result."
+            exit 1
+          fi
 
       - name: Install Hugo CLI
         run: |

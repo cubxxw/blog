@@ -97,9 +97,15 @@ chroma-css:
 content-index:
 	@node scripts/generate-content-index.mjs
 
-## content-check: Validate canonical tags before publishing.
+## content-fix: Normalize safe, mechanical Markdown formatting issues.
+.PHONY: content-fix
+content-fix:
+	@node scripts/clean-empty-blockquotes.mjs --write
+
+## content-check: Validate canonical tags and Markdown formatting before publishing.
 .PHONY: content-check
 content-check:
+	@node scripts/clean-empty-blockquotes.mjs
 	@node scripts/normalize-tags.mjs --check
 
 .PHONY: run
