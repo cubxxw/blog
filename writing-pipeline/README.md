@@ -1,4 +1,19 @@
-# ✍️ Writing Pipeline — 单一母版，多平台分发
+# Writing Pipeline — 已停用
+
+> 本目录是旧版“仓库内母版 + 多平台适配”实验，不再是当前博客的有效工作流。
+
+选题、作者定位、长期思考和跨平台编排已经上移到私有 `brain` 仓库。当前博客仓库只消费 [`_briefs/`](../_briefs/) 中的博客任务，并负责研究、原生写作、SEO/GEO、封面、质量检查和 Hugo 发布。
+
+不要继续向本目录添加母版、笔记或其他平台适配器。现有文件暂时保留用于迁移审计，待确认没有引用后再删除。
+
+有效协议：
+
+- [`_briefs/README.md`](../_briefs/README.md)
+- [`docs/blog-editorial-workflow.md`](../docs/blog-editorial-workflow.md)
+
+---
+
+## 以下为历史设计
 
 > 一句话：**博客不是源头，母版才是。** 内容只写一次（母版），其余平台全部由母版派生。
 
