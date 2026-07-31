@@ -16,7 +16,6 @@ tags:
   - Automation
   - Development
   - Open Source
-  - Windows
 categories:
   - Development
 description: >

@@ -20,7 +20,7 @@ tags:
   - AI
   - Agent
   - Automation
-  - Windows
+  - Development
   - MCP
   - Open Source
   - Project Learning
