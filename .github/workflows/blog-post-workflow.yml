@@ -1,4 +1,4 @@
-name: Update README with latest blog posts
+name: 更新 README 最新文章
 
 on:
   schedule:
@@ -7,45 +7,25 @@ on:
   push:
     branches: ["main"]
 
+permissions:
+  contents: write
+
 jobs:
   update-readme:
-    name: Update README (${{ matrix.lang }})
+    name: 从中文 RSS 更新最近文章
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - lang: EN
-            tag: My-Blog-EN
-            feed: "https://cubxxw.com/index.xml"
-          - lang: ZH
-            tag: My-Blog-ZH
-            feed: "https://cubxxw.com/zh/index.xml"
 
     steps:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Pull in ${{ matrix.lang }} posts
+      - name: 更新最近 8 篇中文文章
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          comment_tag_name: ${{ matrix.tag }}
-          feed_list: ${{ matrix.feed }}
+          comment_tag_name: BLOG-POST-LIST
+          feed_list: "https://cubxxw.com/zh/index.xml"
           gh_token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          max_post_count: 100
-          commit_message: "🔥docs(main): update with latest blog feed from ${{ matrix.lang }}"
+          max_post_count: 8
+          commit_message: "docs: update latest Chinese blog posts"
           committer_username: "kubbot"
           disable_html_encoding: true
-
-      - name: Auto green commit
-        run: |
-          git config --local user.email "3293172751ysy@gmail.com"
-          git config --local user.name "kubbot"
-          git remote set-url origin https://${{ secrets.BOT_GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull --rebase
-          if git diff --cached --quiet && git diff --quiet; then
-            echo "No changes to commit, skipping."
-            exit 0
-          fi
-          git commit -a -s -m "🌟 You never lose, either you win or you learn! 💪"
-          git push
