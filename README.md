@@ -151,6 +151,16 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [The Scoreboard You Choose Will Eventually Choose You: How Incentives Reshape an Organization](https://cubxxw.com/growth/posts/2026-07-31-incentives-colonize-founders/)
+- [The Opposite of Freedom Isn’t Constraint—It’s the Defaults That Live Your Day for You](https://cubxxw.com/growth/posts/2026-07-31-freedom-and-defaults/)
+- [When Generation Becomes Infinite, Authentic Experiences Begin to Command Value](https://cubxxw.com/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/)
+- [Risk Preference Isn't About Enjoying Danger: What Truly Enables Taking a Bet](https://cubxxw.com/growth/posts/2026-07-31-risk-is-not-danger/)
+- [The Cost of Observation: Why the More You Understand, the Harder It Is to Enter Life](https://cubxxw.com/growth/posts/2026-07-31-the-observer-cannot-enter-life/)
+- [Creators Don’t Lack Applause—They Lack an Accurate Witness](https://cubxxw.com/growth/posts/2026-07-31-creators-need-accurate-witnesses/)
+- [Forgetting Is Harder Than Remembering: Why a Living System Must Know When to Let Go](https://cubxxw.com/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability/)
+- [Records Are Not Mirrors, But Scissors: What Tool You Use Ultimately Shapes Who You Become](https://cubxxw.com/growth/posts/2026-07-31-recording-tools-shape-the-self/)
+- [Environment as the Hidden Author: Why Moving Cities Feels Like Becoming Someone Else](https://cubxxw.com/growth/posts/2026-07-31-environment-is-the-hidden-author/)
+- [When Distance No Longer Changes You: What Keeps Life Moving After Exploration Fails](https://cubxxw.com/growth/posts/2026-07-31-when-exploration-stops-changing-you/)
 - [Every Path Has a Price](https://cubxxw.com/growth/posts/2026-07-26-every-path-has-a-price/)
 - [After AI Solves a Problem, Where Does the Bottleneck Move?](https://cubxxw.com/growth/posts/2026-07-26-bottlenecks-after-ai/)
 - [The Fastest Numbers Are Often Furthest from the Outcome](https://cubxxw.com/growth/posts/2026-07-26-fast-feedback-slow-results/)
@@ -241,16 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [2025 March Thought Notes](https://cubxxw.com/growth/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://cubxxw.com/growth/posts/2024-annual-review/)
 - [Travel · The World Game](https://cubxxw.com/travel/)
-- [About Me](https://cubxxw.com/about/)
-- [Kubernetes Resources and Learning Path Summary](https://cubxxw.com/engineering/posts/kubernetes-learning/)
-- [LangChain: Building LLM Applications](https://cubxxw.com/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [Large Language Models: How LLMs Work](https://cubxxw.com/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
-- [Open Source Resume Builders & Career Tips](https://cubxxw.com/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
-- [Troubleshooting Guide for OpenIM](https://cubxxw.com/engineering/posts/troubleshooting-guide-for-openim/)
-- [Navigating the Open Source Landscape](https://cubxxw.com/engineering/posts/navigating-the-open-source-landscape/)
-- [Sora Ease Guide: Mastering Sora AI for Developers](https://cubxxw.com/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
-- [In 2023, I Was Wandering at the Edge of the World](https://cubxxw.com/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
-- [Exploring Sora Technology for Enthusiasts and Developers](https://cubxxw.com/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
 <!-- My-Blog-EN:END -->
 
 
@@ -259,6 +259,17 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 这里你可以看到Xinwei Xiong(cubxxw)的最新和最有趣的中文博客文章。
 
 <!-- My-Blog-ZH:START -->
+- [你选择的计分板，最后会选择你：激励怎样改写一个组织](https://cubxxw.com/zh/growth/posts/2026-07-31-incentives-colonize-founders/)
+- [自由的反面不是约束，是默认值替你活完一天](https://cubxxw.com/zh/growth/posts/2026-07-31-freedom-and-defaults/)
+- [第二大脑保存的，是一个人的决策函数](https://cubxxw.com/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy/)
+- [当生成变得无限，真实经历开始升值](https://cubxxw.com/zh/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/)
+- [风险偏好不是喜欢危险：真正让人敢下注的是什么](https://cubxxw.com/zh/growth/posts/2026-07-31-risk-is-not-danger/)
+- [观察者的代价：看得越明白，为什么反而越难进入生活](https://cubxxw.com/zh/growth/posts/2026-07-31-the-observer-cannot-enter-life/)
+- [创造者缺的不是掌声，是一个准确的见证者](https://cubxxw.com/zh/growth/posts/2026-07-31-creators-need-accurate-witnesses/)
+- [AI 时代，遗忘比记忆更难：一个活系统为什么必须会放下](https://cubxxw.com/zh/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability/)
+- [记录不是镜子，是剪刀：你用什么工具，最后就会成为什么样的人](https://cubxxw.com/zh/growth/posts/2026-07-31-recording-tools-shape-the-self/)
+- [环境是隐藏的作者：为什么换一座城，像换了一个自己](https://cubxxw.com/zh/growth/posts/2026-07-31-environment-is-the-hidden-author/)
+- [当远方不再改变你：探索失效以后，人生靠什么继续向前](https://cubxxw.com/zh/growth/posts/2026-07-31-when-exploration-stops-changing-you/)
 - [每条路都要收费](https://cubxxw.com/zh/growth/posts/2026-07-26-every-path-has-a-price/)
 - [AI 解决问题以后，问题会搬到哪里](https://cubxxw.com/zh/growth/posts/2026-07-26-bottlenecks-after-ai/)
 - [越快看到的数字，往往离结果越远](https://cubxxw.com/zh/growth/posts/2026-07-26-fast-feedback-slow-results/)
@@ -348,17 +359,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [独立开发者必备技能及现代工具 & 分别的上手指导](https://cubxxw.com/zh/projects/independent-developer/)
 - [GPT Researcher 是什么？开源 AI 深度研究代理架构解析](https://cubxxw.com/zh/projects/gpt-researcher/)
 - [Jina 开源项目深度学习](https://cubxxw.com/zh/projects/jina/)
-- [2025年3月思考笔记](https://cubxxw.com/zh/growth/posts/2025-03-thought-notes/)
-- [2024 年度回顾](https://cubxxw.com/zh/growth/posts/2024-annual-review/)
-- [旅行 · 世界这场游戏](https://cubxxw.com/zh/travel/)
-- [关于我](https://cubxxw.com/zh/about/)
-- [Kubernetes 资源与学习路径总结](https://cubxxw.com/zh/engineering/posts/kubernetes-learning/)
-- [利用 LangChain 框架的语言模型应用：开发者指南](https://cubxxw.com/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [探索大型语言模型（llm）：人工智能在理解与生成人类语言方面的先锋](https://cubxxw.com/zh/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
-- [塑造职业道路：开源简历生成器与专业简历技巧指南](https://cubxxw.com/zh/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
-- [这是一篇我职业生涯总结的 OpenIM 故障排查指南](https://cubxxw.com/zh/engineering/posts/troubleshooting-guide-for-openim/)
-- [探索开源以及开源商业模式研究](https://cubxxw.com/zh/engineering/posts/navigating-the-open-source-landscape/)
-- [Sora Ease 指南：开发者掌握 Sora AI 的全面指南](https://cubxxw.com/zh/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
 <!-- My-Blog-ZH:END -->
 
 
