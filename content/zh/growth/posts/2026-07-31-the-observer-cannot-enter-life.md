@@ -1,7 +1,7 @@
 ---
 title: '观察者的代价：看得越明白，为什么反而越难进入生活'
-date: 2026-07-31T10:50:00+08:00
-draft: true
+date: 2026-07-31T01:30:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Growth
 description: >
   观察能带来清醒、边界与控制，也可能把爱、创造和行动变成永远不会开始的研究对象。本文通过与现象学研究者和心理治疗师的模拟访谈，讨论高认知需求者为何容易退到解释层，怎样区分觉察与防御，以及如何在不放弃判断的前提下允许现实真正触碰自己。文末提出感受、命名、接触、返回的四步实践新节奏，让思考重新接上行动。
+cover:
+  image: /images/covers/growth/2026/deep-interviews/the-observer-cannot-enter-life.jpeg
+  alt: "观察者穿过分析线条覆盖的玻璃，迈向温暖而真实的生活"
 ---
 
 > 本文是一场思想实验式模拟访谈。受访者由现象学与心理治疗视角组合而成，不代表任何真实人物的原话，也不构成心理诊断或治疗建议。

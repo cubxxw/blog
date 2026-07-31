@@ -1,7 +1,7 @@
 ---
 title: '环境是隐藏的作者：为什么换一座城，像换了一个自己'
-date: 2026-07-31T10:10:00+08:00
-draft: true
+date: 2026-07-31T00:50:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Growth
 description: >
   在万荣会主动探险，在万象会随热闹起落，回到深圳却可能昼夜颠倒。本文通过与环境心理学家和城市研究者的模拟访谈，追问性格究竟有多少属于个人、多少由场域临时生成，并讨论如何不靠自责和蛮力，设计一个更容易长出理想行为的生活环境。文章也区分环境解释与个人责任，给出一份可连续观察整整两周的个人行为出现条件表。
+cover:
+  image: /images/covers/growth/2026/deep-interviews/environment-is-the-hidden-author.jpeg
+  alt: "同一个人在街市、山洞与都市房间中呈现不同状态"
 ---
 
 > 本文是一场思想实验式模拟访谈。两位受访者是综合环境心理学、行为科学和城市研究而成的虚构角色，不代表真实人物观点。

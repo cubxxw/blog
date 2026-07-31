@@ -1,7 +1,7 @@
 ---
 title: '创造者缺的不是掌声，是一个准确的见证者'
-date: 2026-07-31T10:40:00+08:00
-draft: true
+date: 2026-07-31T01:20:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Growth
 description: >
   作品发布后没有回应，创造者失去的不只流量，也失去判断自己是否抵达他人的证据。本文把十篇草稿的首轮测试写进模拟访谈，讨论为什么准确见证有时不会鼓励作者，反而先拆掉作品的完整感；并让领域读者、目标读者、异议读者和长期读者提供四种无法合并的判断，避免少数懂你的人变成封闭的品味圈，也记录作者实际接受与拒绝了哪些反馈。
+cover:
+  image: /images/covers/growth/2026/deep-interviews/creators-need-accurate-witnesses.jpeg
+  alt: "一位读者的光准确照亮创作者手稿，远处掌声仍然模糊"
 ---
 
 > 本文是一场思想实验式模拟访谈。受访者由社会心理学、编辑实践和创作者研究视角组合而成，不代表任何真实人物的原话。

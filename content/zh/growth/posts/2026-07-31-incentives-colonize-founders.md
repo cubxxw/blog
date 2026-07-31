@@ -1,7 +1,7 @@
 ---
 title: '你选择的计分板，最后会选择你：激励怎样改写一个组织'
-date: 2026-07-31T11:30:00+08:00
-draft: true
+date: 2026-07-31T02:10:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Growth
 description: >
   商业计分板不仅决定收入，也会持续训练组织成员的注意力、耐心、道德边界和彼此关系。本文借富国银行交叉销售案、组织研究与十篇草稿的测试过程，讨论指标如何从测量工具变成行为环境，为什么使命口号抵不过每日奖励，以及 Solo Builder 到底该怎样避免让 Agent 把个人偏见批量复制成虚假的组织共识。
+cover:
+  image: /images/covers/growth/2026/deep-interviews/incentives-colonize-founders.jpeg
+  alt: "发光计分板把团队拉进统一动作，创始人开始审视它的阴影"
 ---
 
 > 本文是一场思想实验式模拟访谈。受访者由组织心理学与组织经济学研究视角组合而成，不代表任何真实人物的原话。

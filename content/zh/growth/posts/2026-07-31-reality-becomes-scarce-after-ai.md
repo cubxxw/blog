@@ -1,7 +1,7 @@
 ---
 title: '当生成变得无限，真实经历开始升值'
-date: 2026-07-31T11:10:00+08:00
-draft: true
+date: 2026-07-31T01:50:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Growth
 description: >
   AI 可以迅速生成文章、图像、攻略和观点，却不能替人承担一次摔伤、等待、误解或关系承诺。本文通过与田野人类学家和纪录片导演的模拟访谈，讨论内容过剩后“真实”究竟意味着什么，为什么身体在场不是新的优越感，以及创作者怎样把经历转化为可验证而非表演性的表达。文章审视“原始生活”的浪漫化，给出观察、体验、解释和边界四层写法。
+cover:
+  image: /images/covers/growth/2026/deep-interviews/reality-becomes-scarce-after-ai.jpeg
+  alt: "无限生成的图像方格消融进一段有身体代价的真实山水经历"
 ---
 
 > 本文是一场思想实验式模拟访谈。受访者由田野人类学与纪录片实践视角组合而成，不代表任何真实人物的原话。

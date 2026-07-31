@@ -1,7 +1,7 @@
 ---
 title: '当远方不再改变你：探索失效以后，人生靠什么继续向前'
-date: 2026-07-31T10:00:00+08:00
-draft: true
+date: 2026-07-31T00:40:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Growth
 description: >
   旅居最初让城市、身份和人生可能性一起松动，后来远方却逐渐只剩背景切换。本文让发展心理学家与田野人类学家争论探索究竟服务个人成长，还是把当地人再次变成自我材料；并用“有没有欠下关系”替代新鲜感强度，回看那些离开后仍要求回应的人与承诺，判断远方是否真正进入了现在，也追问短住与久居为何都不能自动产生真正承诺。
+cover:
+  image: /images/covers/growth/2026/deep-interviews/when-exploration-stops-changing-you.jpeg
+  alt: "旅人站在重复城市的岔路前，身后仍连着未完成的关系"
 ---
 
 > 本文是一场思想实验式模拟访谈。受访者是由发展心理学、田野人类学与作者个人经验组合而成的虚构角色，不代表任何真实专家的原话。

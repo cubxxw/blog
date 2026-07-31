@@ -1,7 +1,7 @@
 ---
 title: 'AI 时代，遗忘比记忆更难：一个活系统为什么必须会放下'
-date: 2026-07-31T10:30:00+08:00
-draft: true
+date: 2026-07-31T01:10:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Technology
 description: >
   当存储和检索越来越便宜，个人知识库与 Agent 更难解决的是信息过期与身份判断越权。本文通过与认知神经科学家和 AI 记忆工程师的模拟访谈，讨论遗忘为何是一种判断能力，以及怎样为长期运行的智能系统设计可审计的衰减机制。文章区分降温、归档和撤销，并解释哪些记忆可以自治淘汰、哪些必须保留人的最终授权。
+cover:
+  image: /images/covers/ai-agent/2026/deep-interviews/forgetting-is-an-ai-system-capability.jpeg
+  alt: "分层记忆系统让活跃节点升温、旧信息沉降并保留审计轨迹"
 ---
 
 > 本文是一场思想实验式模拟访谈。受访者由认知神经科学与 AI 记忆系统工程视角组合而成，不代表任何真实专家的原话。

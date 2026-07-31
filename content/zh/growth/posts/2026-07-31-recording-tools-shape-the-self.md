@@ -1,7 +1,7 @@
 ---
 title: '记录不是镜子，是剪刀：你用什么工具，最后就会成为什么样的人'
-date: 2026-07-31T10:20:00+08:00
-draft: true
+date: 2026-07-31T01:00:00+08:00
+draft: false
 showtoc: true
 tocopen: false
 type: posts
@@ -18,6 +18,9 @@ categories:
   - Growth
 description: >
   笔记工具看似忠实保存生活，实际上会通过提醒、格式与反馈选择什么值得被看见。本文从停用 flomo 一个月和一条推翻当前叙事的旧笔记出发，与认知科学家、产品设计师讨论记录怎样编辑体验。文章把流程缩成在场记录与延迟解释两道工序，让事实留下时间戳，也让日落可以在没有产出时自然结束，并保留旧解释被后来证据纠正的明确入口。
+cover:
+  image: /images/covers/growth/2026/deep-interviews/recording-tools-shape-the-self.jpeg
+  alt: "笔记本与剪刀把完整日落裁成一张张记录卡片"
 ---
 
 > 本文是一场思想实验式模拟访谈。受访者由认知科学、档案学和产品设计视角组合而成，不代表任何真实专家的原话。
