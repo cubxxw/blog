@@ -23,7 +23,7 @@ tags:
 categories:
   - Development
 description: >
-  Elastic 收购 Jina AI 后，Jina 已从云原生神经搜索框架转向搜索底座模型品牌。本文按 2026 年现状厘清托管 API 与开源 Jina Serve 的边界，比较 v4、v5 text/omni、reranker v3.5 的上下文、维度和许可证，并给出 API、MCP、Flow 示例与生产选型矩阵。
+  Elastic 收购 Jina AI 后，Jina 已从云原生神经搜索框架转向搜索底座模型品牌。本文按 2026 年现状厘清托管 API 与开源 Jina Serve 的边界，比较 v4、v5 text/omni、reranker v3.5 的上下文、维度和许可证，并给出 API、MCP、Flow 示例与选型矩阵。
 cover:
   image: /images/covers/ai-agent/2025/jina.png
   alt: "Jina 搜索底座模型、托管 API 与 Jina Serve 的两层架构"
