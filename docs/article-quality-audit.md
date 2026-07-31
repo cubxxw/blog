@@ -19,6 +19,32 @@ can be marked complete.
 
 | Article | Score | Result | Revision |
 |---|---:|---|---|
+| `content/en/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability.md` | 92 | Passed | Complete |
+| `content/zh/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability.md` | 94 | Passed | Complete |
+| `content/en/ai-agent/posts/geo-blog-rebuild-case-study.md` | 60 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/geo-blog-rebuild-case-study.md` | 62 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/geo-generative-engine-optimization-guide.md` | 55 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/geo-generative-engine-optimization-guide.md` | 57 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/geo-how-ai-retrieves-and-cites.md` | 55 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/geo-how-ai-retrieves-and-cites.md` | 56 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/geo-measurement-and-tools.md` | 46 → 96 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/geo-measurement-and-tools.md` | 46 → 96 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/geo-structured-content-tactics.md` | 48 → 94 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/geo-structured-content-tactics.md` | 48 → 94 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/geo-trust-and-endorsement.md` | 49 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/geo-trust-and-endorsement.md` | 49 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/info-to-creation-arsenal.md` | 78 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/info-to-creation-arsenal.md` | 78 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/info-to-creation-creation.md` | 73 → 98 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/info-to-creation-creation.md` | 74 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/info-to-creation-information.md` | 67 → 98 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/info-to-creation-information.md` | 68 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/info-to-creation-knowledge.md` | 64 → 98 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/info-to-creation-knowledge.md` | 65 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/info-to-creation-record.md` | 66 → 98 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/info-to-creation-record.md` | 67 → 98 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/info-to-creation-the-framework.md` | 60 → 99 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/info-to-creation-the-framework.md` | 61 → 99 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/UFO.md` | 18 → 97 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/UFO.md` | 59 → 94 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/agent-engineering-the-98-percent-harness.md` | 73 → 95 | Passed after revision | Complete |
@@ -45,6 +71,8 @@ can be marked complete.
 | `content/zh/ai-agent/posts/designing-valuable-agent-skills.md` | 84 → 95 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/devbox-doctor-design.md` | 74 → 96 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/devbox-doctor-design.md` | 81 → 95 | Passed after revision | Complete |
+| `archive/non-publishable/content/en/ai-agent/posts/demo-steps-preview.md` | 95 | Passed as internal fixture | Archived |
+| `archive/non-publishable/content/zh/ai-agent/posts/demo-steps-preview.md` | 95 | Passed as internal fixture | Archived |
 | `content/en/ai-agent/posts/dissecting-open-lovable.md` | 56 → 97 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/dissecting-open-lovable.md` | 64 → 96 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/emerging-challenges-and-trends-in-2024.md` | 28 → 97 | Passed after revision | Complete |
@@ -76,7 +104,7 @@ can be marked complete.
 | `content/en/ai-agent/posts/mem0.md` | 66 → 96 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/mem0.md` | 49 → 97 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/notebooklm.md` | 15 → 97 | Passed after revision | Complete |
-| `content/zh/ai-agent/posts/notebooklm.md` | 43 | Failed | Queued after English revision |
+| `content/zh/ai-agent/posts/notebooklm.md` | 43 → 97 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/open-design.md` | 64 → 96 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/open-design.md` | 52 → 97 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/open-model-cost-collapse-agent-fleet.md` | 73 → 94 | Passed after revision | Complete |
@@ -96,19 +124,24 @@ can be marked complete.
 | `content/en/ai-agent/posts/trusting-unattended-ai-agent.md` | 86 → 97 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/trusting-unattended-ai-agent.md` | 81 → 97 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/use-auto-gpt.md` | 29 → 96 | Passed after revision | Complete |
-| `content/zh/ai-agent/posts/use-auto-gpt.md` | 27 | Failed | Queued after English revision |
+| `content/zh/ai-agent/posts/use-auto-gpt.md` | 27 → 97 | Passed after revision | Complete |
+| `content/en/engineering/posts/argo-cd.md` | 97 | Passed after translation | Complete |
+| `content/zh/engineering/posts/argo-cd.md` | 41 → 96 | Passed after revision | Complete |
+| `content/en/growth/posts/2026-07-31-second-brain-as-survival-strategy.md` | 98 | Passed after translation | Complete |
+| `content/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy.md` | 94 → 98 | Passed after metadata revision | Complete |
 
 ## Repository baseline
 
 - Formal article roots: `content/{en,zh}/{ai-agent,engineering,growth}/posts/`
   and `content/{en,zh}/projects/`.
-- The current inventory contains 156 English and 157 Chinese article files
-  (313 language-specific files in total).
-- One Chinese article currently lacks an English counterpart:
-  `content/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy.md`.
+- The current inventory contains 155 English and 155 Chinese article files
+  (310 language-specific files in total).
+- Every formal article currently has a bilingual counterpart. The former
+  front-matter-only English Argo CD stub remains archived; its replacement is a
+  complete, independently scored English article.
 - The 2025 annual review is a valid bilingual pair even though the Chinese
   version is a page bundle (`index.md`) and the English version is a single
   Markdown file.
-- The initial cover audit found 141 language-specific article files without a
-  `cover.image` field. Existing bilingual pairs may share one visual asset, but
-  every article must reference a valid cover.
+- The current cover audit finds 112 language-specific article files without a
+  `cover.image` field and no broken cover paths. Existing bilingual pairs may
+  share one visual asset, but every article must reference a valid cover.

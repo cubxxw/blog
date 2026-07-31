@@ -13,6 +13,10 @@ tldr:
   - "Go语言的int类型在32位和64位系统上大小不同，需要通过packages工具进行跨平台类型检查以发现整数溢出等隐患"
   - "通过设置GOOS和GOARCH环境变量结合构建标签实现跨平台编译，利用goroutines和channel并发执行多平台类型检查提高效率"
   - "Go的并发编程特性包括sync.WaitGroup用于同步、throttle机制控制并发数量、sync.Mutex保护共享资源实现类型检查工具的可靠运行"
+cover:
+  image: /images/covers/engineering/2024/concurrent-type-checking-and-cross-platform-development-in-go.png
+  alt: '多条并行传送带让相同积木穿过不同架构尺寸的量规，其中一个跨平台类型错误被准确拦下'
+  caption: '可移植性，始于不再允许一台机器替所有机器发言。'
 ---
 
 # OpenIM 跨平台源代码类型检查工具

@@ -13,6 +13,10 @@ tldr:
   - "Docker buildx 通过 QEMU 和 binfmt_misc 支持在 x86/amd64 机器上交叉编译多架构镜像，可同时构建 arm、arm64、amd64 等平台的容器镜像。"
   - "复杂的编译任务应在目标架构的实际机器上执行，交叉编译仅适合简单构建步骤，因为 QEMU 模拟在运行复杂程序时可能出现无响应。"
   - "Dockerfile 需根据目标架构调整基础镜像和依赖文件下载地址，确保所有组件支持目标架构，可通过 docker buildx imagetools inspect 和实际运行验证多平台镜像构建成果。"
+cover:
+  image: /images/covers/engineering/2023/cross-platform-compilation.png
+  alt: '同一个模块经过适配器进入三种架构外壳，并在终点接受真机检验'
+  caption: '构建是否可移植，最后一票应由目标机器来投。'
 ---
 
 

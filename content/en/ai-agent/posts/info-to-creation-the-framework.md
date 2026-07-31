@@ -1,12 +1,12 @@
 ---
-title: 'Information, Records, Knowledge, Creation: In the AI Era, I Split My Notes Into Four Different Things'
+title: 'AI Knowledge Workflow: From Information to Records, Knowledge, and Creation'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:00:00+08:00'
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['note management', 'AI notes', 'knowledge management', 'PKM', 'information processing', 'second brain', 'Obsidian', 'Flomo', 'knowledge base', 'knowledge cards', 'content creation', 'AI Agent', 'context engineering', 'personal growth']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - AI
   - LLM
@@ -15,17 +15,19 @@ tags:
   - Product Strategy
   - Self-Discovery
   - Automation
+categories:
+  - Development
 description: >
-  Most people's notes keep piling up while they themselves stay the same — because they treat information, records, knowledge, and creation as the same thing. This essay splits it into four stages: information handles capture and noise reduction, records are the highest-conversion semi-finished product, knowledge is reusable capability sediment, and creation recombines it for an audience. This is the overview of the "From Information to Creation" column, and the underlying framework I use to rebuild my note-taking system in the AI era.
+  A practical AI knowledge workflow for moving information through traceable records and verified knowledge into audience-ready creation with human review.
 cover:
   image: '/images/columns/info-to-creation/zh-01-framework.svg'
-  alt: Diagram of the four-stage pipeline of information, records, knowledge, and creation
+  alt: Information crossing intake gates into records, verified knowledge, audience-facing creation, and a measured feedback loop
 tldr:
-  - AI has completely removed "having information" as a moat. What's scarce now is "the ability to turn information into capability and finished work." Information is cheap; the value lies in the ability to process it.
-  - Most note-taking systems fail because they conflate information, records, knowledge, and creation into one thing. They are actually four distinct stages of work, each with its own goal and acceptance criteria.
-  - Records are the semi-finished product between information and knowledge — the highest-conversion step, but not yet knowledge itself. Only once structured into something reusable does it deserve to be called knowledge.
-  - Knowledge solves your own problems; creation solves other people's problems. Trying to create the way you build knowledge, or take notes the way you create, both end up feeling forced.
-  - "The pipeline isn't linear: a large amount of information plus a small amount of knowledge can be recombined directly into a piece of creation. What matters isn't how much you've stored, but whether real processing actually happened at each layer."
+  - "Information, records, knowledge, and creation are four operating states in my workflow, not a universal taxonomy. The model exists to make handoffs and responsibilities visible."
+  - "Every promotion preserves provenance: source, date, scope, evidence, sensitivity, owner, status, and next action. AI may assist; a human remains accountable for the transition."
+  - "AI risk does not belong to one layer. Prompt injection, omitted qualifiers, transcription errors, retrieval misses, scope drift, invented experience, and vanity-metric optimization can appear across the pipeline."
+  - "The responsibility rule is simple: the harder a claim is to reverse, the more firsthand it sounds, and the more it can affect another person, the stronger its evidence and human review must become."
+  - "The pipeline is a loop, not a conveyor belt. Creation feedback returns as untrusted information, passes the gates again, and may correct or retire earlier knowledge."
 maturity: budding
 columns:
   - info-to-creation
@@ -36,104 +38,213 @@ series:
   total: 5
 ---
 
-## A Moment That Stopped Me
+## Four Names for Four Different Kinds of Work
 
-I follow a knowledge community with tens of thousands of members, run by someone who has been producing content for many years. Its tagline is a single sentence:
+My notes used to grow in one direction: inward. Links entered, fragments accumulated, folders changed names, and the archive became heavier. I mistook possession for processing.
 
-> In the information age, information is cheap. What's valuable is the ability to process it.
+AI made that mistake cheaper to repeat. A model can generate, summarize, classify, and reformat text quickly, but speed does not turn a source into evidence, an observation into knowledge, or a draft into something I should publish. It can make the warehouse larger without improving the machinery.
 
-I'd heard that sentence before. It sounded right, but it didn't really register — until AI actually entered my daily workflow, and for the first time it became **concrete enough to unsettle me.**
+So I split my workflow into four operating states:
 
-Before AI, "having information" was still, to some extent, a moat: you subscribed to sources others couldn't reach, you'd read books others hadn't, you had a hard drive full of material nobody else could find — and all of that translated into some kind of edge.
-
-Now, a model can generate ten thousand words in a second. It can bookmark, summarize, translate, and retrieve almost anything for you. The barrier to "having information" has been cut to zero. The only thing that remains scarce is **the whole pipeline that turns information into capability, and capability into finished work.**
-
-So I looked back at my own note-taking system and found an awkward truth: I've been taking notes for years, my bookmarks number in the thousands, I've switched note apps five or six times — and none of it has made me meaningfully stronger. Most of what I've stored has never been called on again.
-
-Where did it go wrong? I thought about it for a long time, and the conclusion was: **I had been treating four completely different things as if they were one.**
-
-## Four Things, Four Stages
-
-I now split them into four layers: **information, records, knowledge, creation.**
-
-```
-Information (raw / external noise)
-   │  capture, noise reduction
+```text
+Information
+   │ intake gates
    ▼
-Records (index / internal semi-finished)
-   │  structuring
+Records
+   │ clarification and evidence
    ▼
-Knowledge (schema / reusable)
-   │  recombination for an audience
+Knowledge
+   │ explicit retrieval and scoped reuse
    ▼
-Creation (finished product)
+Creation
+   │ audience delivery and measured feedback
+   └───────────────────────────────▶ Information
 ```
 
-In everyday language we blur these four words together almost constantly: we treat bookmarking as learning, note-taking as mastery, and notes written for ourselves as content ready to publish. But the moment you separate them, a lot of long-standing friction suddenly makes sense.
+This is not a universal taxonomy of human learning. A source can skip a state; one artifact can play different roles in different tasks; a published article can become information for a later investigation. The four names are useful because they force me to answer a practical question at every handoff:
 
-**Information is raw input — meant for AI to process, or for you to skim quickly.** Most of it is noise. It might be something you gathered yourself, something AI generated, or a signal that's currently scarce in the market. At this layer, the only thing you should do is **capture** and **reduce noise** — expose yourself to as many high-quality sources as possible, while ruthlessly keeping noise out. The test isn't "is it useful," but "is it worth moving into the next stage of processing."
+> What changed, who is responsible now, and what evidence allows this artifact to move?
 
-**Knowledge is structured, reusable, and relevant to you personally — something you can call on again and again.** A mental model, a handful of skills, some tools and methodologies, and your own identity, positioning, values, and judgment. The keyword for knowledge is **reusability**: only once something is structured into a form you can repeatedly reuse does it deserve to be called knowledge. It solves **your own problems.**
+The workflow is less a conveyor belt than a customs route. Each border has a different passport.
 
-**Creation is the finished product, recombined for a specific audience.** It corresponds to a platform's recommendation logic, a particular group of users' reading habits, and the substantial research you did to support this specific piece of expression. Creation solves **other people's problems** — the goal is to have your audience receive it, understand it, and want to connect with you.
+## The Whole Workflow on One Page
 
-Knowledge and creation, you'll notice, are fundamentally different things: one faces inward, the other faces outward; one asks "can I reuse this," the other asks "can others receive this." Trying to create the way you build knowledge produces self-indulgent writing only you can understand. Taking notes the way you create wastes huge amounts of energy making things "look good" without ever building any real capability.
+| Layer | Input | Main work | Output | AI may assist | Human remains responsible | Acceptance test |
+|---|---|---|---|---|---|---|
+| Information | external sources, feeds, documents, observations | relevance, provenance, freshness, rights, sensitivity, cost, verification | an AI-safe, redacted, human-only, time-boxed, or rejected action | deduplication, classification, source-bound summary | task, upload boundary, source quality, edge cases | source is traceable and the action is justified |
+| Records | a source or event worth preserving | capture, clarify fact vs interpretation, add context and next action | `captured`, `clarified`, `reviewed`, `promoted`, or `discarded` record | transcription, timestamps, missing-field questions | consent, firsthand truth, evidence, sensitive data | another person can reconstruct what happened |
+| Knowledge | reviewed records and protected references | state, scope, counterevidence, testing, retrieval, review | `draft`, `imported`, `tested`, or `retired` card | retrieval, comparison, conflict and staleness flags | admission, scope, exceptions, review and retirement | claim is supported, retrievable, scoped, and reversible |
+| Creation | scoped knowledge plus current research | define reader task, choose claim and container, draft, verify, publish | audience-ready work plus creation record | outline, variants, compression, format adaptation | evidence, lived experience, voice, final approval | reader promise is fulfilled and claims remain supported |
 
-## The Layer Everyone Overlooks: Records
+The layers are different, but one rule travels through all of them:
 
-Of the four layers, the one most commonly misunderstood is **records**.
+```yaml
+provenance:
+  source: "where this came from"
+  captured_at: "when I obtained or observed it"
+  scope: "where the claim applies"
+  evidence: "what supports it"
+  sensitivity: "who may see or process it"
+  owner: "who accepts responsibility"
+  status: "what has happened to it"
+  next_action: "what should happen next"
+```
 
-Most people only recognize three tiers: information → knowledge → creation. Records get quietly filed under "knowledge." But I've increasingly come to believe records deserve to stand alone, because they are an **independent intermediate form**.
+If a handoff loses this passport, the next layer inherits confidence without history. That is how a polished summary becomes a false fact and how a personal trick becomes universal advice.
 
-A record is essentially an index. It's relevant to you, but not necessarily useful forever — it might just be something you'll need someday, or something you're using right now to clarify your own thinking. That kind of thing doesn't yet qualify as knowledge, because **only what's structured for repeated future reuse counts as knowledge.** But records are still extremely important, because they are **one of the highest-conversion methods for turning information into knowledge.**
+## Information: Guard the Entrance
 
-In other words: a record is **semi-finished knowledge.**
+Information is not “whatever I can feed to AI.” It is incoming material waiting for an action.
 
-This explains a common illusion. Many people believe they've "learned a lot," when really they've just "recorded a lot" — they stopped at the index layer and mistook the semi-finished product for the finished one. Bookmarking ≠ recording. Recording ≠ mastery. Information has merely been moved into your warehouse; it hasn't gone through any processing by your own machine.
+The entrance checks task relevance, source quality, freshness, uniqueness, sensitivity, rights, processing cost, and verifiability. The result may be safe for AI, safe only after redaction, human-only, suitable for a time-boxed scan, or rejected.
 
-Someone in that community wrote a retrospective that nailed this precisely: the biggest misconception about a knowledge base is treating it like a bookmark folder — anything that seems valuable gets bookmarked, downloaded, saved, dumped in — and the result is that the knowledge base keeps growing while what you can actually call on keeps shrinking. **The real problem was never too little knowledge. It was too much unprocessed information.**
+That distinction matters because capture authority is not upload authority. Credentials, customer data, private conversations, regulated information, and copyrighted paid material do not become safe merely because they entered my notes. Product and feature retention also differ. Anthropic's current [API and data-retention documentation](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention) is one reminder to inspect the actual processing arrangement rather than assume all AI surfaces behave alike.
 
-This is exactly why I insist on separating records into their own layer: it's the **first site** where you personally process information with your own hands. The moment you write something down, you're forced to choose, to compress, to restate — and those three actions are precisely where the path from information to knowledge begins.
+External content is also untrusted data. A webpage, PDF, email, or tool result can contain instructions intended to redirect an agent. Anthropic's guide to [mitigating prompt injection](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks) describes this indirect-injection boundary. In my workflow, source text cannot change the task, access secrets, or authorize an external action.
 
-## The Easiest Mistake to Make in the AI Era
+The information layer does not ask whether a source is permanently “good” or “noise.” It asks whether this source deserves this action for the task in front of me.
 
-The framework is laid out. Now the real question begins: once AI enters the picture, how should this pipeline actually run?
+## Records: Preserve Reality Before Explaining It
 
-Most people's first instinct is to outsource the entire pipeline to AI — let it capture for me, summarize for me, write for me. It sounds appealing, but I've observed a recurring trap, and someone in the community described it perfectly in one of their retrospectives:
+A record is a semi-finished product. It preserves an observation and its context but has not earned repeated reuse.
 
-> When I have a really enjoyable conversation with AI, it means I didn't grow that day.
+Text is only one medium. Voice notes, screenshots, code diffs, experiment output, and decision logs can all become records. Low friction still requires a minimum passport: capture time, source, context, observation, interpretation, sensitivity, and next action.
 
-Why? Because what he gave the AI was all "direction," never "task." "Help me think through how to approach this topic" — that's a direction. A direction has no completion state, so the conversation can go on forever, feeling more and more pleasant, and yet when you stop, you realize nothing remains. Real growth is always accompanied by friction and discomfort, and he had been using AI to **eliminate friction** — but friction is exactly what he needed most.
+The useful friction begins during clarification:
 
-Mapped onto our four-layer framework, this becomes very clear: **AI is best at the information layer, and it's precisely the knowledge layer where it should least be doing the work for you.**
+- What happened?
+- What did I merely infer?
+- Which evidence supports the result?
+- What counterexample would change the explanation?
+- What must be tested next?
 
-Capturing, reducing noise, summarizing, and doing initial organization on information — hand that to AI, and you get a tenfold efficiency gain. But the record and knowledge layers — compressing information into your own judgment, structuring it into a model you can reuse — once you outsource those, you've outsourced the very act of "getting stronger." You end up with an increasingly capable AI, and an increasingly hollow version of yourself.
+AI can transcribe, deduplicate, compare a note with its source, and ask what is missing. It cannot recover context that was never captured, invent a first-person experience, infer participant consent, or manufacture a result.
 
-The correct usage that circulates in that community resonates with me: **present yourself manually first, then use AI to discover the boundaries of your own thinking.** You have to run through it yourself once, establish a baseline, before AI knows which direction to adjust toward; otherwise it can only wander alongside you. AI is here to assist your thinking, not to think for you.
+Delayed rereading is one personal default, not a universal cooling law. Security incidents, meeting decisions, consent, and volatile experiment conditions must be clarified immediately. Distance can reduce my tendency to fill gaps in my own prose; it cannot reconstruct evidence that already evaporated.
 
-So I made myself a rule: **use AI generously at the information layer, and insist on going through the knowledge layer by hand first.** This one rule is the foundation for everything else in this series.
+## Knowledge: Build Roads, Not Just Shelves
 
-## The Pipeline Isn't a Straight Line
+Knowledge is a claim prepared for scoped reuse. In this workflow it moves through `draft`, `imported`, `tested`, and `retired`.
 
-One more misconception worth clearing up: these four layers aren't a straight line you're required to walk in full.
+A tested card records its claim, scope, sources, real use, outcome, counterevidence, owner, review date, and replacement relationships. “Tested” does not mean universally true. It means the card survived a named use inside a declared boundary.
 
-It's not that every piece of creation must start with "gather a hundred pieces of information," nor that a bigger knowledge base means stronger creative output. The real path is often: **a large amount of information plus a small amount of knowledge, recombined directly into a piece of creation.** That information might be something you gathered on the spot, something AI generated in real time, or a signal that's currently scarce in the market — while that "small amount of knowledge" is your real moat. It's what determines how that pile of information gets cut, arranged, and pointed toward a conclusion.
+Organization follows retrieval. PARA, described by Tiago Forte in the [official PARA guide](https://fortelabs.com/blog/para/), is useful when work begins from projects and areas. Other repositories may need questions, entities, timelines, playbooks, or a graph. More cards and links do not automatically create compound value; they can also create conflicts and retrieval pollution.
 
-So don't be intimidated by "systems." What matters was never how much you've stored, but **whether real processing actually happened at each layer**: was the information denoised, was the record structured, was the knowledge called on, did the creation actually reach someone. Ten thousand unprocessed pieces of information stored away are worth less than three knowledge cards you keep calling on.
+The directory is a map, but a map in a closed drawer guides nobody. Files affect a model only when the product or workflow reads, imports, retrieves, or discovers them. Claude Code's official documentation on [project memory](https://code.claude.com/docs/en/memory) describes one concrete mechanism for `CLAUDE.md`, imports, and scoped instructions. It does not promise that every note will be loaded, correctly ranked, or remembered.
 
-## What This Series Sets Out to Solve
+That is why the knowledge layer keeps a retrieval failure log:
 
-With the framework established, all that's left is to bring it down to earth, layer by layer. The next four essays in this column map exactly onto the four stages:
+- relevant card missed;
+- stale card outranked its replacement;
+- conflicting cards loaded without their relationship;
+- card applied outside scope;
+- counterevidence dropped from the assembled context.
 
-1. **The information layer** — how to capture, how to reduce noise, how to distinguish "for AI," "for a quick scan," and "pure noise," and how to hunt for scarce signal in an era when AI mass-produces content;
-2. **The record layer** — why "writing something down every day" is the highest-conversion action there is, how to let the semi-finished product settle with the lowest possible friction, and how a "next-day polish" uses a cooling-off period to push a record toward knowledge;
-3. **The knowledge layer** — how to transform a knowledge base from a bookmark folder into a "capability sediment zone," how PARA and knowledge cards land in practice, why "your folder structure is a map for AI," and the retirement mechanism behind "if a piece of knowledge goes unused, delete it";
-4. **The creation layer** — how to recombine knowledge for an audience, how to build a content flywheel that runs "inspiration → processing → article → video → feedback → new insight," and exactly where AI should stand at this layer.
+Retirement is similarly explicit and reversible. Inactivity creates a review candidate, not a deletion order. A tombstone preserves the reason, date, sources, replacement, and restoration condition. Rare emergency, legal, historical, and low-frequency high-impact knowledge may remain protected even when unused.
 
-On tools, I'll get specific about note-taking stacks like Obsidian and Flomo, and how an AI agent like Claude threads through the pipeline. On cases, I'll keep drawing from the real practice of that community of tens of thousands — it is itself a machine that turns information into capability and then into finished work, the best living sample of this entire framework.
+The knowledge base is still a shared worldline between me and the agent — but only where claims, retrieval, and corrections meet and remain inspectable.
 
-Information is cheap. What's valuable is the ability to process it. And "the ability to process information," broken down, is exactly these four stages. Let's take them one at a time.
+## Creation: Recombine for a Reader, Then Let Feedback Return
+
+Knowledge faces a reusable internal task. Creation faces a particular reader task.
+
+My creation handoff has eight gates: choose a knowledge card, name the audience task, select one governing claim, attach evidence, choose a container, run human acceptance, publish deliberately, and filter feedback back into the system.
+
+AI can help explore a direction, draft variants, compress, find counterpositions, and adapt form. The author still owns the objective, firsthand claims, source verification, omissions, voice, and publish action. Anthropic's [prompt-engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview) begins from the same operational discipline: define success criteria and a way to test them before refining the prompt.
+
+Feedback is information, not automatic knowledge. Factual corrections are verified. Repeated questions enter research. Reasoned disagreement stays beside the claim. Preference remains in the creation record. Praise, outrage, and raw engagement do not become truth merely because they are loud.
+
+The flywheel closes only when feedback crosses the entrance again.
+
+## One Problem Moving Through All Four Layers
+
+Here is a sanitized trace from this blog.
+
+### 1. Information
+
+The production site omitted an article that existed in the repository. The inputs were the content file, build output, Hugo behavior, and the current publication time. The intake gate kept repository secrets out and marked the claim as time-sensitive.
+
+### 2. Records
+
+The first record separated:
+
+- observation: the file existed but the production build omitted it;
+- interpretation: the `+08:00` publication time might still be in the future;
+- alternative explanation: `draft: true` could produce a similar symptom;
+- next action: reproduce both cases with a production build.
+
+The record stored the commit, command, output, environment, and capture time.
+
+### 3. Knowledge
+
+The tests produced a scoped card:
+
+```yaml
+state: tested
+claim: "Future-dated Hugo content is omitted from this site's production build."
+scope: "this repository's current Hugo configuration"
+counterevidence:
+  - "draft content can create the same visible symptom"
+next_action: "check draft status and Shanghai publication time separately"
+```
+
+The card did not say “timezone always causes missing pages.” It preserved the diagnostic order and the conditions under which the claim was tested.
+
+### 4. Creation
+
+The card became a troubleshooting section for blog maintainers. The reader task was to diagnose a missing published page without guessing. AI helped compress the steps; a human verified the commands, the first-person account, and the final wording.
+
+A later reader correction would not silently rewrite the card. It would return as information, be reproduced, update the record, and either revise or supersede the knowledge.
+
+That is the entire framework in one failure: reality enters, a record pins it down, knowledge scopes it, creation gives it to another person, and feedback returns with its passport.
+
+## Risk Travels Across Layers
+
+There is no “safe AI layer.” Failure changes shape:
+
+| Failure | Where it appears |
+|---|---|
+| prompt injection | external sources and tool results |
+| omitted qualifier or denominator | summaries and clarified records |
+| transcription error | voice and meeting capture |
+| false promotion | records entering knowledge without evidence |
+| retrieval miss or stale override | knowledge context assembly |
+| scope drift | a tested card applied elsewhere |
+| invented experience | creation drafts |
+| vanity-metric optimization | feedback and distribution |
+
+The responsibility rule is more useful than a fixed AI quota:
+
+> The harder a claim is to reverse, the more firsthand it sounds, and the more it can affect another person, the stronger its evidence and human review must become.
+
+AI may work in every layer. Human responsibility does not disappear in any layer.
+
+## Measure the Handoffs, Not the Size of the Archive
+
+Each layer has a failure metric:
+
+| Layer | Health signals |
+|---|---|
+| Information | high-value miss rate, false-rejection rate, claim-support rate |
+| Records | source completeness, missing context, reconstruction success, human correction |
+| Knowledge | support, staleness, conflict, retrieval hit, false retrieval, post-reuse success |
+| Creation | claim support, completion, qualified feedback, reader outcome, downstream action |
+
+These metrics pull against one another. Aggressive filtering reduces workload and may increase misses. More cards can improve recall and increase false retrieval. A high completion rate can coexist with a weak reader outcome. The system is healthy when the tradeoffs are visible and corrections can travel backward.
+
+I still care whether the workflow changes me. But change alone is not proof: a false record can change a decision too. The fuller test is whether the work remains supported, reconstructable, scoped, useful to the intended reader, and correctable without erasing its history.
+
+Information is cheap in some contexts and expensive in others. What matters here is not a slogan about abundance. It is whether I can turn a source into a responsible action, an observation into a reconstructable record, a record into scoped capability, and capability into work another person can actually use.
+
+That is the machinery. The archive is only its shadow.
+
+## Read the Full Series
+
+1. [Layer One · Information: build the intake gates](../info-to-creation-information/)
+2. [Layer Two · Records: preserve traceable semi-finished work](../info-to-creation-record/)
+3. [Layer Three · Knowledge: create verified, retrievable capability](../info-to-creation-knowledge/)
+4. [Layer Four · Creation: recombine for an audience](../info-to-creation-creation/)
 
 ---
 
-*This essay is the overview of the "From Information to Creation" column. Next: the first layer — Information: capture and noise reduction.*
+*This essay is the overview of the "From Information to Creation" column. Continue with [Layer One · Information](../info-to-creation-information/).*

@@ -1,12 +1,12 @@
 ---
-title: 'Layer Two · Records: The Highest-Conversion Semi-Finished Product Between Information and Knowledge'
+title: 'AI Note-Taking Workflow: Turn Fleeting Inputs Into Verifiable Records'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:20:00+08:00'
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['records', 'write something every day', 'retrospective', 'reflection', 'writing habit', 'Flomo', 'card notes', 'next-day polish', 'cooling-off period', 'I.P.O', 'runnable knowledge', 'second brain', 'note management']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - Personal Growth
   - Self-Discovery
@@ -14,17 +14,19 @@ tags:
   - LLM
   - Automation
   - Product Strategy
+categories:
+  - Development
 description: >
-  Records are the semi-finished product between information and knowledge, and the highest-conversion stage in the entire pipeline. This essay explains why "writing something every day" is the most underrated action, why the act of writing is itself a retrospective, how to let the semi-finished product settle with the lowest possible friction, and how a "next-day polish" uses a cooling-off period to push a record toward knowledge. This is the third essay in the "From Information to Creation" column.
+  An AI note-taking workflow for turning text, voice, screenshots, code, and decisions into traceable records that can be reviewed and promoted to knowledge.
 cover:
   image: '/images/columns/info-to-creation/zh-03-record.svg'
-  alt: The record layer — the first site where information is processed into semi-finished knowledge
+  alt: Text, voice, screenshots, code changes, and decisions moving through capture, clarification, and review toward a verified knowledge card
 tldr:
-  - A record is an index — semi-finished knowledge. It isn't knowledge yet, but it's one of the highest-conversion methods from information to knowledge, because the moment you write something down, you're forced to choose, compress, and restate.
-  - Writing something every day is severely underrated. The act of writing is itself spontaneous reflection and retrospection — you don't write because you've figured it out, you figure it out by writing.
-  - Records need to be low-friction. Don't aim to get it right on the first try — break perfectionism first, and record whatever you can still remember right now. Completion always comes before perfection.
-  - "Use a fixed five-step retrospective template to structure each day's records: what you did, what problem you ran into, how you solved it, what knowledge you actually put to use, and how you'll adjust tomorrow."
-  - "The next-day polish leverages a \"cooling-off effect\": reading your own words a day later, you're more of a reader than a writer, and problems jump out at you immediately. This step is the key that pushes a semi-finished record toward reusable knowledge."
+  - "A record is semi-finished knowledge: it captures an observation and its context, but it has not yet earned repeated reuse. Writing, voice, screenshots, code diffs, experiment output, and decision logs can all be records."
+  - Move records through explicit states — captured, clarified, reviewed, promoted, or discarded — while preserving source, time, context, sensitivity, and the reason for the next action.
+  - Low friction must not mean context-free. Capture quickly, but keep the minimum passport that lets a future reader reconstruct what happened and why it mattered.
+  - AI may transcribe, deduplicate, ask clarifying questions, and flag missing evidence. It must not invent context, firsthand experience, or an outcome that was never recorded.
+  - Delayed rereading is a personal default, not a universal cooling law. Clarify incidents, security events, meeting decisions, and other volatile context immediately.
 maturity: budding
 columns:
   - info-to-creation
@@ -43,71 +45,149 @@ But as I said in the overview, records deserve to stand alone as their own layer
 
 A record is an index — it's **semi-finished knowledge.**
 
-Recognizing this cures a very common ailment: mistaking "recorded a lot" for "learned a lot." Recording doesn't equal mastery, just as prepping ingredients doesn't equal cooking a finished dish. But note — calling records semi-finished is not, in any way, diminishing them. Quite the opposite: **records are one of the highest-conversion methods from information to knowledge.** They're the first site where you personally process information with your own hands, the stage in this entire pipeline that should least be skipped — and yet the one most often is.
+Recognizing this cures a very common ailment: mistaking "recorded a lot" for "learned a lot." Recording doesn't equal mastery, just as prepping ingredients doesn't equal cooking a finished dish. Calling records semi-finished does not diminish them. They are the **first site where raw input becomes something I can inspect later**. That makes the record layer worth protecting, even though I cannot honestly rank its conversion rate against every other learning method.
 
 This essay is about how to make good use of that "first site."
 
+## Records Have More Than One Shape
+
+Writing is my default because sentences expose gaps, but it is not the only way to pin experience to time:
+
+| Medium | Good for | Minimum context to keep |
+|---|---|---|
+| Text note | reasoning, questions, decisions | source, time, task, next action |
+| Voice memo | motion, fatigue, accessibility, spoken reflection | transcript or locator, speaker, consent |
+| Screenshot or photo | visual state, UI, whiteboard, physical evidence | origin, timestamp, identities checked |
+| Code diff or commit | what changed in a system | repository, revision, intent, test result |
+| Experiment output | observation under conditions | setup, inputs, environment, result |
+| Decision log | why one path was chosen | options, evidence, owner, consequences |
+
+The medium changes; the requirement does not: a future reader must be able to reconstruct what happened without borrowing the context still sitting in my head.
+
+Records move through five explicit states:
+
+| State | Meaning |
+|---|---|
+| `captured` | the observation exists, with a minimum passport |
+| `clarified` | fact, interpretation, uncertainty, and next action are separated |
+| `reviewed` | a human checked source, sensitivity, and whether the record is still intelligible |
+| `promoted` | the record passed the knowledge admission gate and points to the resulting card |
+| `discarded` | it has no durable value or cannot be used safely; the reason is logged |
+
+A minimal capture card looks like this:
+
+```yaml
+captured_at: 2026-07-11T14:20:00+08:00
+source: "meeting notes; participants consented to internal notes"
+context: "deciding why the publishing job skipped one article"
+observation: "the job treated a future +08:00 date as future content"
+interpretation: "timezone handling may explain the missing page"
+sensitivity: internal
+next_action: "reproduce with a production build and inspect the date"
+```
+
+It is deliberately incomplete. Its job is not to sound wise. Its job is to preserve enough reality for the next pass.
+
 ## The Act of Writing Is Itself a Retrospective
 
-Let's start with the most underrated action: **writing something every day.**
+Let's start with the action that works best for me: **write often enough that important observations do not expire in memory.** Daily writing is one possible rhythm, not a moral standard.
 
-Many people misunderstand "writing" as something you can only do once you've figured things out. Actually, it's the reverse: **the act of writing is itself spontaneous reflection, itself a retrospective.** You don't write because you've figured it out — you figure it out by writing. Words are the developer fluid for thought: the ideas in your head that you assume are clear reveal their vagueness, their gaps, their shaky logic the instant they have to become a complete sentence.
+Writing can be a form of reflection. I often do not write because I have figured something out; I figure out which parts remain vague by forcing them into sentences. Words are developer fluid for thought: gaps and shaky logic become easier to inspect once they have a visible form.
 
-I've seen too many examples of this in the community. Someone who spent over a decade in sales and was restarting mid-career was asked to publish a long essay every week. At first, they had no idea what to write or how. Forcing themselves to record and reflect daily, three months later, their own words were: give me a topic and I can now easily produce a thousand or two thousand words, and sit quietly at my computer writing for two hours, finding that state of flow. They summed up the change in one plain but heavy sentence: **reflection + pain = progress.**
+My own useful change was smaller and easier to verify: after keeping decision records, I could return to a failed implementation and distinguish what I observed from the explanation I invented afterward. The record did not make me wiser automatically. It made revision possible.
 
-Writing is the most efficient form of recording precisely because it brings "pain" — that friction of forcing vague ideas into clear text. As I said in the previous essay, the most dangerous use of AI is letting it eliminate friction for you. And recording is the place where you **actively manufacture friction.** The discomfort here isn't something to avoid — it is growth itself.
+Friction is not automatically progress; pointless formatting can be painful too. The useful friction is specific: separating observation from interpretation, naming missing evidence, and committing to a next action. AI should reduce transcription work without removing those decisions.
 
-There's a more practical reason too: only what's written down can possibly be structured, can possibly enter the knowledge layer, can possibly one day be recombined into creation. A thought that isn't written down evaporates by the next day. **Recording is the only way to pin fleeting thought onto time.**
+There is a more practical reason too: only what leaves a durable trace can be reviewed, structured, or challenged later. Text, audio, images, diffs, and experiment output all qualify. **A record pins fleeting experience to time; its passport keeps that pin from losing its label.**
 
 ## Records Need to Be Low-Friction: Complete First, Perfect Later
 
 Since recording matters this much, it needs to happen as easily as possible. **The first principle of recording is low friction.**
 
-The biggest friction comes from perfectionism — always waiting until you've "thought it through," "have a solid block of time," "feel ready" before writing, and the result is you never write. The fix is simple: lower the bar to the floor. Someone in the community wrote a line in their retrospective that I love, roughly: to break my own perfectionism, I first write down whatever I can still remember right now. **Completion always comes before perfection.**
+Perfectionism is one source of friction: waiting until the thought is complete, a long block of time appears, or the wording feels ready. The useful response is to lower the presentation bar without removing the evidence floor. **Capture before polishing, but never detach the record from source, time, and reason.**
 
-In terms of tools, this means you need a place where you can "just throw it in" — a card-style, zero-pressure quick-capture entry point (a lot of people use tools like Flomo, or just any window that's ready to write the moment you open it). Its job is exactly one thing: catch the thought, at the lowest possible cost, in the three seconds it appears. No formatting, no categorizing, no agonizing over where it goes. Catch it first, sort it out later.
+In tool terms, this means an entry point that opens quickly and can store the minimum passport. I sometimes use Flomo; a local text file, voice recorder, issue tracker, or paper notebook can serve the same role. The workflow is tool-independent.
 
-Separating the quick-capture entry point from careful refinement is a key design choice at the record layer: **capturing should be fast, messy, and careless; refining should be slow, clean, and deliberate.** You shouldn't worry about folder structure the instant a spark of inspiration hits — that's for later. At this stage, the only enemy is "not writing it down."
+Separating quick capture from careful refinement is still the key design: **capturing may be fast and messy; it must not be careless with people, secrets, or provenance.** Credentials and private keys are never captured. Customer or regulated data follows the approved system, not a personal note app. Private material stays encrypted or local when required. Screenshots are checked for names, tokens, and unrelated identities before storage or model access.
+
+The retention and privacy behavior also depends on the product and feature. Anthropic's current [API and data-retention documentation](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention) is a useful reminder that chat, files, API features, and third-party integrations do not all share one retention model. Tool convenience does not override consent or policy.
 
 ## Give Records a Structure: The Five-Step Retrospective
 
-Low friction solves "whether to record," but if records stay forever at the level of a running diary, it's hard for them to move toward the knowledge layer. So besides quick-capture, you need a **fixed structure** to close out each day's records.
+Low friction solves "whether to record," but if records stay forever at the level of a running diary, they are hard to evaluate. Besides quick capture, I use a **review structure** before promotion.
 
-I strongly recommend a five-step retrospective template — a lot of people in the community use it, and it's simple enough to run every day:
+My earlier five-step retrospective was a useful start. The version I use now separates evidence from interpretation:
 
-1. **What did I do today?** — State it objectively, without judgment.
-2. **What problem did I run into?** — Make the sticking point specific, the more specific the better.
-3. **How did I solve it?** — Write down the action and the reasoning, even if it was a lucky guess at the time.
-4. **What knowledge did I actually put to use today?** — This one matters most. It forces you to confirm: did what you learned actually get "run"?
-5. **How will I adjust tomorrow?** — Loop the retrospective back into action.
+1. **Fact:** what happened, without interpretation?
+2. **Problem:** which constraint or failure mattered?
+3. **Action:** what changed, by whom, and when?
+4. **Result:** what observable outcome followed?
+5. **Evidence:** which source, diff, log, output, or quote supports that result?
+6. **Interpretation:** what do I currently think it means?
+7. **Counterexample:** what would weaken or reverse that interpretation?
+8. **Next step:** test, clarify, promote, keep as context, or discard?
 
-These five steps work because they turn "recording" from passive bookkeeping into active **processing.** Step four especially maps onto a phrase that keeps coming up in the community: **runnable knowledge.** Knowledge isn't something you know — it's something you've used. Learning without using is as good as not learning; asking yourself every day "what did I actually put to use today" installs a check valve on whether your records are converting into real capability.
+This turns recording from passive bookkeeping into active **processing**. A record is not promoted because it sounds insightful. The knowledge gate asks whether its claim is clear, its source traceable, its scope explicit, at least one real use or test recorded, counterevidence preserved, and an owner willing to approve the next review date.
 
 With this structure in place, your records stop being a pile of fragments and become a series of **semi-finished products carrying problems and actions, ready to be structured upward.** They're already standing at the door of the knowledge layer.
 
 ## Next-Day Polish: Using a Cooling-Off Period to Push Records Toward Knowledge
 
-There's one last step to records — and I think it's the most elegant one: **next-day polish.**
+There is one more useful default in my record layer: **reread after some distance.**
 
-The method is dead simple: spend five minutes every day editing — not what you wrote today, but **what you wrote yesterday.** Cut redundant words, replace vague terms with precise ones, add transitions that connect ideas, break up sentences that run too long.
+For ordinary reflections, I often review yesterday's record today. The delay is a personal window, not a universal law. Incidents, security events, meeting decisions, consent, and volatile experimental context must be clarified immediately while evidence and participants are still available.
 
-Why "yesterday"? Because there's a mechanism hidden here called the **cooling-off effect.** Looking at your own words a day later, your brain no longer auto-fills the gaps — you see what you actually wrote, not what you think you wrote. At that point you're more of a reader than a writer. Where it's wordy, where it's hollow, where the logic jumps — you can see it instantly. It's like running the text under cold water; the problems surface on their own.
+Why revisit later at all? Distance may reduce some of the author's automatic gap-filling and make the text easier to read as evidence rather than intention. It does not guarantee insight. Running the record under cold water only helps if the source and context were preserved before they evaporated.
 
 The significance of this step goes far beyond "making it read more smoothly." It's the key step that **pushes a semi-finished record toward reusable knowledge:**
 
-- Five minutes of editing every day is **compound interest from a micro-habit** — a flaw you fix today, you naturally avoid tomorrow when writing, and over time it becomes muscle memory, evolving from "write then fix" to "not making the mistake while writing" in the first place;
+- A short review window is easier for me to sustain, but its value is measured by corrected gaps, not minutes spent;
 - The process of editing forces you to re-judge: what did this record actually distill? Is it worth promoting to a formal knowledge card? Anything you can't fix or can't clarify gets tagged "needs restructuring" — a sign it isn't ready yet;
-- One sentence to sum up its payoff: **trade time for perspective, trade small adjustments for compound returns, go from "can finish it" to "can do it well."**
+- One sentence to sum up its payoff: **trade enough time for another perspective, but never delay the context that cannot be recovered.**
 
-This rhythm of "quick-capture → five-step retrospective → next-day polish" is essentially the middle segment of the **I.P.O. (Input–Process–Output)** flow that a lot of skilled practitioners run. Someone in the community turned it into a very concrete pipeline: use Cubox / RSS to roughly capture inspiration and material (the information layer), use Flomo to polish the next day, subtracting and adding (the record layer), then output the finished product in Notion (the creation layer). Records, you can see, sit exactly in the middle — they receive from the information layer upstream, and feed the knowledge and creation layers downstream.
+The workflow is therefore **capture → clarify → review → promote or discard**. Cubox, RSS, Flomo, Notion, a Git repository, or a local folder may implement pieces of it; none defines the process. Records sit in the middle because they receive raw input upstream and provide inspectable candidates to the knowledge layer downstream.
+
+## Where AI Helps — and Where It Must Stop
+
+AI can transcribe a voice memo, extract timestamps, deduplicate records, ask what is missing, compare a note with its source, and draft a clarification checklist. It may not:
+
+- invent the context that the capture failed to preserve;
+- turn an interpretation into an observation;
+- fabricate a first-person experience, participant consent, or test result;
+- infer success because the record has no outcome;
+- promote a record without the human evidence gate.
+
+### From a diff to a tested card
+
+Here is a sanitized end-to-end example:
+
+1. **Captured:** a code diff changed an article date from an ambiguous local timestamp to `+08:00`; the capture stored repository revision, failing page, and build output.
+2. **Clarified:** the record separated observation (“production omitted the page”) from interpretation (“timezone caused it”) and added a reproduction task.
+3. **Reviewed:** a production build reproduced the omission before the change and included the page after it. A reviewer checked that no unrelated edit explained the result.
+4. **Promoted:** the knowledge card became “future-dated Hugo content is omitted from production unless configured otherwise,” scoped to this site's build settings and linked to Hugo documentation.
+5. **Corrected later:** a later test showed `draft` status could produce the same symptom, so the card gained a counterexample and diagnostic order.
+
+The valuable output was not the original sentence. It was the chain that let another person reconstruct, test, and correct it.
+
+I monitor that chain with:
+
+| Metric | Question |
+|---|---|
+| Source completeness | do records preserve source and capture time? |
+| Context-missing rate | how often can a reviewer no longer reconstruct the event? |
+| Review completion | how many due records actually receive review? |
+| Promotion rate | how much capture becomes candidate knowledge? |
+| False-promotion rate | how often is promoted knowledge later rejected for missing evidence? |
+| Reconstruction success | can another person reproduce the record's reasoning or event? |
+| Human-correction rate | how often does a reviewer repair AI transcription, classification, or synthesis? |
 
 ## The Test: Have You Changed
 
 One final judgment call, to help you tell whether recording is actually working.
 
-Someone in the community only realized this after three retrospective essays: **the test for whether a record is good isn't "is it well-written" — it's "have you changed."**
+My earlier test was: **a good record is not merely well-written; it should improve a later decision.** I still believe that, with one addition: change is an outcome dimension, not proof of quality by itself.
 
-That sentence deserves to sit on every note-taker's desk. Recording isn't about producing beautiful documents — it's about making you **actually change.** If you've been recording for a long time, your text keeps getting neater, but you as a person haven't moved — it means your records stopped at formatting, and never made it to the knowledge and action layer. Conversely, even if the handwriting is ugly and the sentences are rough, as long as it made you make a different decision the next day, that record succeeded.
+A wrong record can change a decision too. The fuller test asks: was the claim supported, can another person reconstruct the context, did the next decision improve against its stated criterion, and were later corrections preserved? Beautiful prose is optional. Accountability is not.
 
 Get recording right, and you have a machine that continuously processes information into semi-finished products. But a semi-finished product is still not a finished one — it needs to be structured, called on repeatedly, before it truly becomes your capability.
 
@@ -115,4 +195,4 @@ That's the job of the next stage: **the knowledge layer.** We're going to turn t
 
 ---
 
-*This is the third essay in the "From Information to Creation" column. Previous: [Layer One · Information](../info-to-creation-information/). Next: the third layer — Knowledge.*
+*This is the third essay in the "From Information to Creation" column. Previous: [Layer One · Information](../info-to-creation-information/). Next: [Layer Three · Knowledge](../info-to-creation-knowledge/).*

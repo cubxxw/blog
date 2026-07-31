@@ -1,28 +1,33 @@
 ---
-title: 'GEO Trust & Endorsement: Why Reddit and Wikipedia Make Up Half of AI Citations'
+title: 'Off-Site Trust for GEO: Identity, Evidence, and Ethical Distribution'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-11T11:00:00+08:00'
+date: 2026-07-11T11:00:00+08:00
+lastmod: 2026-07-31T12:00:00+08:00
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['GEO', 'E-E-A-T', 'off-site endorsement', 'third-party citations', 'Reddit', 'Wikipedia', 'entity consistency', 'sameAs', 'digital PR', 'community distribution', 'backlinks', 'AI citations', 'topical authority']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - GEO
-  - Content Strategy
   - AI Search
-  - Community
+  - Content Strategy
+  - SEO
+  - AI
+  - LLM
+categories:
+  - Development
 description: >
-  Your technical base and structure are right — so why still no AI citations? Because the final gate is trust, and most trust comes from off-site. This chapter covers operationalizing E-E-A-T, building entity consistency, why Reddit + Wikipedia are 66% of AI citations, and how a personal blog builds off-site endorsement pragmatically. Chapter 4 of the GEO series.
+  A practical 2026 guide to off-site GEO trust: author identity, third-party evidence, ethical community distribution, and repeatable citation measurement.
 cover:
   image: '/images/columns/geo/en-04-trust.svg'
-  alt: GEO trust and endorsement cover showing entity consistency and community proof
+  alt: 'A verifiable network connecting an author, original work, independent evidence, and reader communities'
 tldr:
-  - Retrieved and top-ranked still don't mean cited - citation hinges on trust, and most trust comes from how others talk about you, not how you talk about yourself.
-  - Hard data - Wikipedia and Reddit together account for 66.4% of all AI citations; Reddit is the single most-cited domain. Off-site corpora are the substrate of AI answers.
-  - But don't blindly chase Reddit/Wikipedia. Engines differ - Perplexity leans heavily on Reddit; Claude rarely cites Reddit/Wikipedia in the top slot, favoring brand domains and institutional sources. The real driver is being genuinely, authoritatively mentioned.
-  - E-E-A-T must become visible signals - a real author page, first-hand experience, a clear About, and consistent cross-platform identity (sameAs) - these feed AI and earn human trust.
-  - A personal blog's pragmatic play - distribute core content sincerely to the right communities (Zhihu/Juejin/WeChat in China; Reddit/HN/dev.to globally), build backlinks via GitHub projects - not mass-produced spam.
+  - "E-E-A-T is a Google self-assessment concept, not a single ranking factor and not a disclosed cross-platform citation algorithm."
+  - "Author pages and sameAs markup can help people and Google disambiguate identity; they do not guarantee that an answer engine will cite you."
+  - "Third-party sources dominate some brand-answer datasets, but source mixes vary by language, market, platform, prompt, and date. Prevalence is not proof of causal trust."
+  - "Distribute work where the intended readers already gather, disclose your relationship, follow community rules, and never manufacture endorsements or edit Wikipedia for promotion."
+  - "Measure owned, earned, community, and institutional evidence separately with a fixed prompt set, repeated runs, citation support checks, and reader outcomes."
 maturity: budding
 columns:
   - geo
@@ -33,121 +38,350 @@ series:
   total: 6
 ---
 
-## The answer first: the final gate is trust, not content
+## The answer first: trust is evidence, not a platform trick
 
-**You can max out your technical base and turn every paragraph into extractable LEGO — and AI may still not cite you. Because the final citation gate hinges on trust, and most trust comes from off-site: how others talk about you, where you're mentioned on high-credibility platforms. This chapter turns that invisible trust into operable signals.**
+A technically healthy page can be crawlable, clear, and quotable and still receive no visible citation from an answer engine. That does not prove a hidden “trust gate” rejected it. The page may never have been selected, another source may have matched the prompt better, the answer may have absorbed its facts without linking it, or the platform may have behaved differently on that run.
 
-The first three chapters solved crawlable, understandable, and quotable (layers L1–L4 of the model). This one is the hardest and most differentiating: **L5, Endorsed.**
+Off-site evidence still matters — first for people, and sometimes for the systems that retrieve information about a person, project, or brand. The careful claim is:
 
-> This is **Chapter 4 (Trust & Endorsement)** of the *Generative Engine Optimization* series. The last chapter was on-site structure; this one is off-site reputation; the next (Chapter 5) lands the whole model on my own blog with real data.
+> Make identity and evidence easy to verify, earn independent discussion by doing useful work, and measure whether that changes source selection or reader behavior.
 
----
+This is **Chapter 4 (Trust & Endorsement)** of the *Generative Engine Optimization* series. The [previous chapter](/ai-agent/posts/geo-structured-content-tactics/) focused on on-site structure. This chapter asks what happens beyond the domain without turning community participation into a ranking scheme.
 
-## E-E-A-T: turning "trustworthy" into visible signals
+## E-E-A-T: useful guidance, not a citation score
 
-Google and the AI engines decide whether to trust you via **E-E-A-T** — Experience, Expertise, Authoritativeness, Trust. It's not mysticism; it's a set of signals you can operationalize:
+Google describes E-E-A-T as **Experience, Expertise, Authoritativeness, and Trustworthiness**. Its [people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) says automated systems use a mix of factors that can identify aspects of E-E-A-T, with trust the most important. It also says something many marketing summaries omit:
 
-- **Experience (first-hand)**: write what you've actually done and actually broken. "I cut a build from 18s to 6s on a 1,100-page site" beats "Hugo is said to be fast" a hundredfold. First-hand experience is the original signal AI favors — and a personal blog's biggest moat.
-- **Expertise**: depth, accurate terminology, internal consistency. Back key claims with data and sources (echoing Princeton's +22–41%).
-- **Authoritativeness**: who you're "considered to be" in the field. This one is mostly **off-site** — see sections 3 and 5.
-- **Trust**: clear author info, About page, contact, privacy policy, HTTPS, no deceptive content. Trust is E-E-A-T's foundation.
+> E-E-A-T is not a specific ranking factor.
 
-**Action**: attribute every post to a real author, link to a detailed author page; make that page say who you are, what you've done, and why you're credible.
+Google's quality raters use the concept to evaluate whether ranking systems produce helpful results. Rater judgments do not directly set the ranking of a page. And Google does not say E-E-A-T is a shared citation score used by Perplexity, ChatGPT, Claude, or every other answer engine.
 
----
+That boundary leaves plenty of useful work.
 
-## Entity consistency: help AI recognize "the same person"
+### Experience
 
-To cite you, AI must first recognize the scattered "you" as a single **entity**. The more consistent your name, title, bio, and field are across platforms, the stronger the entity signal.
+Show what you actually did:
 
-- **Unify identity**: use the same name and a consistent bio across your site, GitHub, Zhihu, Bilibili, LinkedIn — don't be "Xinwei Xiong" in one place and something else elsewhere.
-- **`sameAs` structured data**: in `Person` schema, use `sameAs` to string all your official profiles together — telling machines "these accounts are all me."
-- **Knowledge graph / entity databases**: as influence grows, aim to be listed in Wikidata, industry wikis, and authoritative directories — high-trust sources AI uses to build its entity→attribute picture.
+- the environment and version;
+- the decision you made;
+- the failure you observed;
+- the before-and-after measurement;
+- the part that did not work;
+- the date the observation was still true.
 
-> **My blog's state**: article pages' `Person` schema already carries `sameAs`, linking GitHub, Zhihu, Bilibili, YouTube. That's right; the work is keeping name/bio consistent across all four and expanding the `sameAs` list as influence grows.
+“I reduced a Hugo build from 18 seconds to 6 seconds on a 1,100-page site” is useful only when those conditions are real and visible. A number without its setup is decoration.
 
----
+### Expertise
 
-## Off-site endorsement is the hidden variable: the hard data
+Use terms accurately, distinguish fact from inference, cite original evidence, and correct the page when the field changes. Expertise is not the number of acronyms in a paragraph. It is the reader's ability to follow the reasoning and test the claim.
 
-Many optimize only their own site and miss that AI's "trust" mostly comes from **other people's turf**. The 2026 citation data is blunt:
+### Authoritativeness
 
-> **Wikipedia and Reddit together account for 66.4% of all AI citations; Reddit is the single most-cited domain, followed by YouTube and LinkedIn. Reddit and YouTube combined make up 78.2% of AI social citations.** ([Search Engine Land](https://searchengineland.com/ai-search-engines-cite-reddit-youtube-and-linkedin-most-study-473138), [Everything-PR](https://everything-pr.com/ai-platform-citation-source-index-2026))
+Authority is contextual. An official specification is authoritative for an API contract. A maintainer may be authoritative about a project's release process. A long-time user may be the best source for a failure mode the manual omits. No single directory or social platform confers authority across every question.
 
-Why them? Because **AI weighs both "perceived authority" and "authentic user input"**: Reddit captures real discussion; Wikipedia is structured, neutral, multilingual, CC-licensed — treated by AI as a "high-trust, low-risk" safe source. ([Bowen Craggs](https://www.bowencraggs.com/our-thinking/latest-articles/what-to-know-about-reddit-and-wikipedia-in-the-ai-search-age/))
+### Trust
 
-**Implication**: even if your blog isn't cited directly, being genuinely discussed, mentioned, and linked on these high-trust platforms puts you into the substrate of AI answers.
+Trust begins with ordinary publishing discipline:
 
----
+- a visible author and a useful author page;
+- clear dates and update history;
+- contact and correction paths;
+- HTTPS and non-deceptive behavior;
+- sources that support the nearby claim;
+- disclosure of incentives, sponsorship, and affiliation;
+- privacy practices appropriate to what the site collects.
 
-## But don't blindly chase Reddit: engines differ
+These practices help a reader decide whether to rely on the page. That alone is enough reason to do them.
 
-Reacting to that data by mass-posting on Reddit/Wikipedia is another trap. Two things to stay clear on:
+## Identity consistency: what author markup can and cannot do
 
-1. **Engines have very different tastes**: Perplexity's Reddit citation concentration runs 20–24%; whereas **Claude rarely cites Reddit/Wikipedia/YouTube in the top slot, favoring brand domains, educational institutions, and compliance-grade sources.** ([Search Engine Land](https://searchengineland.com/reddit-wikipedia-what-drives-ai-recommendations-472580)) So which engine your readers use decides which channel to weight.
-2. **The real driver is being genuinely mentioned, not appearing on a domain.** The industry already has sober voices: "stop blindly chasing Reddit and Wikipedia" — appearing is just entry; being naturally, positively, authoritatively discussed is the true cause of citation. ([Search Engine Land](https://searchengineland.com/reddit-wikipedia-what-drives-ai-recommendations-472580))
+Google's [Article structured data documentation](https://developers.google.com/search/docs/appearance/structured-data/article) recommends identifying an author with the correct `Person` or `Organization` type and a valid `url` or `sameAs` property. Its purpose is author disambiguation: helping Google understand who created the content.
 
-This returns us to [Chapter 1](/ai-agent/posts/geo-generative-engine-optimization-guide/)'s floor: **black-hat "poisoning" (mass fabricated articles to fake presence) may work briefly, but platforms patch it, regulators punish it, and reputation collapses with interest.** White-hat endorsement is slow but compounds — and is safe.
+That supports a clean identity graph:
 
----
+```text
+article author
+    ↓
+canonical author page
+    ↓
+official profiles and work
+```
 
-## A personal blog's pragmatic distribution play
+It does not support the stronger promise that adding another social URL increases AI citation probability.
 
-A personal blog has no PR budget, but something scarcer: **real first-hand experience.** Sincerely delivering it to the right places is the best endorsement.
+For my blog, the current canonical `Person` node lists **seven** `sameAs` URLs:
 
-**Pick channels by where your readers are:**
+1. cubxxw.com;
+2. GitHub;
+3. X;
+4. LinkedIn;
+5. Zhihu;
+6. Bilibili;
+7. YouTube.
 
-| Scenario | Priority channels |
+The right maintenance work is not to make that list as long as possible. It is to ensure:
+
+- every URL actually belongs to me;
+- the visible author name matches the markup;
+- profile descriptions do not contradict one another;
+- obsolete accounts are removed;
+- the author page explains relevant experience rather than only listing icons;
+- structured data matches what a user can see.
+
+Identity markup reduces ambiguity. Reputation still has to come from work and evidence.
+
+## What off-site citation research actually shows
+
+The previous version of this article claimed that Wikipedia and Reddit made up 66.4% of all AI citations, that Reddit and YouTube made up 78.2% of social citations, and that particular engines had fixed platform preferences. Those numbers were not tied to a primary dataset and methodology strong enough to carry the universal wording. They are gone.
+
+A better example is the 2026 preprint [*How Large Language Models Source Brand Reputation Across Languages and Markets*](https://arxiv.org/abs/2606.25787). In its dataset, 85.7% of citations used for brand-reputation answers pointed to third-party sites rather than brand-owned sites.
+
+That finding is useful and bounded:
+
+- it concerns brand-reputation questions, not every informational query;
+- it measures a particular set of platforms, brands, languages, prompts, and dates;
+- a third-party citation can be positive, negative, neutral, accurate, or wrong;
+- citation prevalence does not reveal a platform's private ranking feature;
+- the source mix varied by market — the paper reports YouTube leading for its Polish brand sample and local careers sites exceeding Polish Wikipedia.
+
+The durable observation is **source ecology varies by market**. The dangerous shortcut is “put my brand on Reddit and Wikipedia because models trust those domains.”
+
+### Citation frequency is not causal endorsement
+
+Suppose Reddit is frequently cited in a dataset. Several explanations can coexist:
+
+- the prompts ask for user experience;
+- relevant discussions are abundant and indexable;
+- the platform ranks well in upstream search;
+- answers seek viewpoint diversity;
+- the dataset overrepresents categories where Reddit is useful;
+- current product partnerships or experiments affect retrieval.
+
+The count alone cannot tell us which explanation caused a specific citation.
+
+“Mentioned often” is also not the same as “endorsed.” A safety incident, lawsuit, outage, or hostile review can generate abundant third-party references. Measure sentiment and claim support separately from domain frequency.
+
+## A source-type model that is more useful than a domain leaderboard
+
+I group off-site evidence by relationship, not by a supposedly magical hostname.
+
+| Source type | Examples | What it can establish | Main risk |
+|---|---|---|---|
+| **Owned** | Blog, docs, GitHub organization, official release notes | What you claim, publish, and maintain | Self-description without independent support |
+| **Earned editorial** | Independent article, newsletter, podcast, conference report | Another party considered the work worth covering | Incentives, shallow summaries, copied claims |
+| **Community** | Forum thread, issue discussion, Q&A, user review | Lived experience, objections, edge cases | Brigading, unverifiable anecdotes, manipulation |
+| **Institutional** | Standards body, university, regulator, professional society | Formal definitions, evidence, policy, credentials | Scope mismatch and outdated documents |
+| **Reference/directory** | Wikidata, registries, curated catalogs | Identity, identifiers, discoverability | Incorrect records, notability and conflict-of-interest rules |
+
+No row automatically outranks another. Match the source to the claim:
+
+- use an official release note for a version;
+- use an incident report for a failure;
+- use an independent benchmark for a comparison;
+- use a community discussion to discover a problem, then verify it;
+- use a registry for an identifier, not an opinion.
+
+Trust is not “how many famous domains mention me.” It is whether the right kind of evidence supports the question being asked.
+
+## Distribution is for readers first
+
+A personal blog has no newsroom or PR budget. It does have something large sites often struggle to preserve: the exact texture of doing the work.
+
+Distribution begins by finding where the intended readers already talk:
+
+| Reader and task | Possible channels |
 |---|---|
-| Chinese readers | Zhihu, WeChat, Juejin, V2EX, Bilibili, CSDN |
-| English readers | Reddit (the right subreddit), Hacker News, dev.to, Lobsters, official docs / Awesome lists |
-| Developers / open source | **GitHub** (project READMEs, Awesome listings, issues/discussions), Stack Overflow |
+| Chinese engineering discussion | Zhihu, Juejin, V2EX, Bilibili, relevant WeChat communities |
+| Global developer discussion | Project forums, Hacker News, Lobsters, dev.to, a relevant subreddit |
+| Open-source implementation | GitHub README, release notes, issues, discussions, curated lists |
+| Research or standards work | Conference community, field newsletter, institutional repository |
 
-**A few rules so it isn't spam:**
+This table is an **audience heuristic**, not a ranking-factor map. A different project may need none of these channels.
 
-- **Be useful first, link second**: sincerely answer questions and add value in communities, citing your in-depth posts along the way. Ads get removed; value gets upvoted.
-- **Repurpose (one fish, many dishes)**: one pillar post can become a Zhihu answer, a Juejin short, a Reddit discussion, a Bilibili video script — adapted per platform, all pointing back to the same authoritative source.
-- **GitHub is a developer's natural authority venue**: distill the tools/practices you write about into repos, READMEs, and Awesome listings — both backlinks and strong E-E-A-T signals.
-- **Earn third-party mentions**: being mentioned in others' articles, newsletters, and podcasts beats self-promotion — research repeatedly shows AI favors earned media over self-praise.
+### Adapt, do not spray
 
-> **My blog's state**: the `sameAs` identity matrix is in place, but technical posts have **thin off-site discussion and backlinks**. The pragmatic next step: pick 3–5 core technical posts (Hugo, AI tools, Go), distribute to Zhihu/Juejin/HN, and backlink from the corresponding GitHub project pages.
+One strong article can become:
 
----
+- a concise answer to a community question;
+- a reproducible repository;
+- a demo video;
+- a failure-focused postmortem;
+- a conference proposal;
+- a short note that invites critique.
 
-## Back to my blog: the trust-layer checklist
+Each version should fit the norms of its venue. Copy-pasting the same promotional paragraph everywhere is not distribution. It is noise with a backlink.
 
-- [ ] Flesh out the author/About page: "who you are, what you've done, why you're credible" (Experience + Trust).
-- [ ] Verify name/bio consistency across the four profiles (site/GitHub/Zhihu/Bilibili); expand `Person.sameAs`.
-- [ ] Foreground first-hand experience and real data in every core post (Experience + Expertise).
-- [ ] Pick 3–5 core posts and distribute sincerely to matching communities (Zhihu/Juejin/HN/the right subreddit).
-- [ ] Distill tools/practices from posts into GitHub repos / Awesome listings for backlinks and authority.
-- [ ] Note which engines (Doubao/Perplexity/ChatGPT) your readers favor, and prioritize channels accordingly.
+### GitHub is evidence when the artifact is real
 
----
+A repository can make a technical claim inspectable: code, tests, release history, issues, and reproduction steps are stronger than a sentence saying “I have experience.”
+
+That does not make every GitHub link a strong E-E-A-T signal. An empty repository created for a backlink proves almost nothing. Build an artifact because readers can run it; let any citation benefit remain an outcome to measure.
+
+## Community ethics are part of trust
+
+If the strategy requires hiding your relationship to a page, it is already consuming trust rather than building it.
+
+### Disclose affiliation
+
+When sharing your article or project, say that you wrote or maintain it. A reader can evaluate self-reference honestly; they cannot evaluate an undisclosed campaign.
+
+### Follow venue rules
+
+Some communities welcome project posts on specific days, some require substantive participation, and some prohibit self-promotion. Read the rules before posting. A link removed for violating community norms is not an endorsement failure. It is a distribution failure.
+
+### Do not manufacture discussion
+
+No sockpuppets, purchased comments, coordinated fake questions, fabricated reviews, or mass-generated “independent” articles. Besides being deceptive, manufactured consensus contaminates the evidence other people rely on.
+
+### Treat Wikipedia as an encyclopedia, not a channel
+
+Wikipedia has notability, reliable sourcing, neutrality, and conflict-of-interest rules. Do not create or edit an article about yourself or your project as a GEO tactic. If independent coverage eventually supports notability, uninvolved editors decide what belongs there.
+
+### Preserve criticism
+
+An honest issue thread that finds a bug may look less flattering than a polished launch post, but it creates evidence about how the project responds. Deleting valid criticism to keep a clean “entity footprint” destroys exactly the trust the strategy claims to seek.
+
+## A repeatable off-site measurement protocol
+
+The goal is not to prove that one mention caused one answer. It is to detect changes without lying about uncertainty.
+
+### 1. Define the question families
+
+Use a fixed set such as:
+
+```text
+branded:
+- What is cubxxw?
+- Who writes cubxxw.com?
+
+category:
+- Independent technical blogs about Hugo and AI agents
+- Practical sources for building agent harnesses
+
+comparison:
+- cubxxw versus [relevant alternative] for [specific task]
+
+evidence:
+- What projects or publications support cubxxw's experience with [topic]?
+```
+
+Some small personal sites will not deserve an answer to broad recommendation prompts. “No answer” is valid data.
+
+### 2. Record the environment
+
+For every run, retain:
+
+- platform and product mode;
+- visible model, if exposed;
+- exact prompt;
+- date, language, country, and login state;
+- answer and citation URLs;
+- whether each source is owned, earned, community, institutional, or reference;
+- whether the citation supports the attached claim;
+- sentiment: positive, negative, neutral, or mixed.
+
+### 3. Separate the outcomes
+
+Following the measurement model from [Chapter 2](/ai-agent/posts/geo-how-ai-retrieves-and-cites/), track:
+
+- **selection**: was a source visibly selected or cited?
+- **absorption**: did the answer use a distinctive fact, phrase, or piece of evidence?
+- **identity accuracy**: did it connect the correct person, site, and project?
+- **claim support**: did the cited page entail the answer?
+- **reader outcome**: did referrals lead to useful engagement?
+
+Do not merge them into a single “trust score” before inspecting each component.
+
+### 4. Establish a baseline and control
+
+Run the prompt set repeatedly across several days before an intervention. Then change one distribution variable:
+
+- publish a real repository for one article;
+- contribute a substantive answer in one community;
+- correct identity inconsistencies;
+- add an author page with verifiable experience;
+- earn one independent review or podcast discussion.
+
+Keep unrelated pages as controls. Repeat the same prompts. Report the numerator, denominator, time window, and uncertainty.
+
+### 5. Set a review and stop condition
+
+There is no universal “trust takes three months” rule. Choose a review date based on the publishing cadence and expected discovery delay. Stop an experiment when:
+
+- the channel sends no relevant readers after the agreed window;
+- participation requires repeated self-promotion;
+- citation changes cannot be separated from platform drift;
+- maintaining the channel costs more than the reader value it creates;
+- the intervention conflicts with community rules or editorial integrity.
+
+Slow does not automatically mean compounding. Sometimes slow means the channel is wrong.
+
+## What I would change on this blog
+
+The existing foundation is better than the old article described:
+
+- the canonical `Person` entity connects seven verified profiles;
+- articles already point to a real author;
+- technical posts often include first-hand commands, failures, and artifacts;
+- the bilingual site creates opportunities to test market and language differences.
+
+The next work is small and observable:
+
+- make the author page explain relevant projects and current roles, not merely list profiles;
+- audit that visible biographies match structured data;
+- choose three technical posts with runnable artifacts;
+- share each only in communities where the answer fits an existing conversation;
+- disclose authorship on every share;
+- record referral quality and fixed-prompt citation behavior;
+- keep negative and neutral mentions in the evidence ledger.
+
+I would not open seven new social accounts, chase a Wikipedia page, or turn every article into ten copies. Identity becomes clearer through consistency. Reputation becomes stronger through useful work that other people have reasons to discuss.
 
 ## FAQ
 
-**Q: I'm a solo blogger — how can I have "authority"?**
-A: Authority ≠ big institution. In a niche, consistently publishing real, deep, community-recognized content *is* authority. A personal blog's first-hand experience is exactly the original signal big sites lack.
+### Can a solo author have authority?
 
-**Q: Since Reddit/Wikipedia are 66%, should I spam those two?**
-A: Don't. Perplexity does lean on Reddit, but Claude rarely cites them in the top slot, favoring brand and institutional sources. First see which engine your readers use; more importantly, be genuinely mentioned rather than faking presence. ([Search Engine Land](https://searchengineland.com/reddit-wikipedia-what-drives-ai-recommendations-472580))
+Yes, within a bounded subject and claim. Authority is not a permanent rank attached to a person. Repeated first-hand work, correct explanations, inspectable artifacts, corrections, and independent use can make an author a useful source for a particular question.
 
-**Q: Is off-site distribution "poisoning"?**
-A: No — as long as it's real, valuable, non-fabricated, non-spammy. Poisoning is "fabricated content + mass articles to manipulate models"; white-hat distribution is "real content in front of the right people." The line is truthfulness.
+### Should I post every article to Reddit?
 
-**Q: How long until it works?**
-A: Trust is a slow variable, usually measured in months. It's not as instant as rewriting a title, but once built it's the hardest moat for competitors to copy.
+No. Use a subreddit only when the article answers a real question there and the rules allow self-authored links. The same principle applies to every community.
 
----
+### Does `sameAs` improve AI citations?
 
-## Summary and what's next
+Google documents `sameAs` and author URLs as identity-disambiguation aids. It does not promise an AI-citation lift. Implement accurate markup, then measure outcomes rather than announcing a causal signal.
 
-The five-layer model is now complete: **Crawlable → Understandable → Trustworthy → Quotable → Endorsed.** Technical, structural, and trust layers are all covered. Next, instead of "how you should do it," I'll take the whole model and run a full diagnose-to-rebuild review using my blog's **real GSC/PSI data**.
+### Are backlinks irrelevant now?
 
-- **Previous**: [GEO Structured Tactics — Answer-First, Schema, internal-link clusters](/ai-agent/posts/geo-structured-content-tactics/)
-- **Next (Chapter 5 · Blog Rebuild Case Study)**: landing the five-layer model on cubxxw.com with real data — noise vs cluster, the lessons of markitdown and my-hugo, the domain migration, and what's been changed and what's still to change.
+No. Links can help readers discover material and remain part of the broader web and search ecosystem. But a link's meaning depends on context. A genuine citation from a relevant document is not equivalent to a directory entry or a manufactured profile.
 
----
+### How long does off-site trust take?
 
-*Data and viewpoints: Search Engine Land and Everything-PR 2026 AI citation-source research, Bowen Craggs' analysis of Reddit/Wikipedia, and the Princeton GEO study. Links cited inline.*
+There is no universal duration. Set a baseline, an intervention, a review window, and a stop condition. Report what changed and what did not.
+
+## What endorsement really means
+
+The old article reduced endorsement to a domain leaderboard: get mentioned on the sites models cite, then wait for trust to flow back. It was attractive because it turned reputation into a shopping list.
+
+Real endorsement is harder:
+
+```text
+useful work
+    ↓
+inspectable evidence
+    ↓
+independent use, discussion, or criticism
+    ↓
+accurate identity and claim linkage
+    ↓
+measured reader and citation outcomes
+```
+
+You cannot command the middle of that chain. You can make the work worth testing, make your relationship transparent, and preserve the evidence when other people respond.
+
+Trust is not what a profile says about itself.
+
+Trust is how well a claim survives the trip through other people's hands.
+
+- **Previous**: [GEO Structured Tactics](/ai-agent/posts/geo-structured-content-tactics/)
+- **Next**: [Blog Rebuild Case Study](/ai-agent/posts/geo-blog-rebuild-case-study/)

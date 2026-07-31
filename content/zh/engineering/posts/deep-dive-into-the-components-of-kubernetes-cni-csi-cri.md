@@ -2,7 +2,9 @@
 title: 'Kubernetes 的 CNI，CRI，CSI 详解'
 ShowRssButtonInSectionTermList: true
 cover:
-  image: ""
+  image: /images/covers/engineering/2023/deep-dive-into-the-components-of-kubernetes-cni-csi-cri.png
+  alt: '运行时、网络和存储三个可替换模块通过标准接口连接到同一编排底座'
+  caption: '成熟的平台不消灭差异，而是给差异一个稳定的接口。'
 date: '2023-09-28T20:29:30+08:00'
 showtoc: true
 tocopen: false

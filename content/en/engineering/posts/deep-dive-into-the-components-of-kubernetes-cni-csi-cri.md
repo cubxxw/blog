@@ -2,7 +2,9 @@
 title: 'Deep Dive into Kubernetes CNI, CRI, CSI Components'
 ShowRssButtonInSectionTermList: true
 cover:
-  image: ""
+  image: /images/covers/engineering/2023/deep-dive-into-the-components-of-kubernetes-cni-csi-cri.png
+  alt: 'Three interchangeable runtime, network, and storage modules connect to one orchestration chassis through standardized couplings'
+  caption: 'A durable platform does not erase difference; it gives difference a stable interface.'
 date: '2023-09-28T20:29:30+08:00'
 showtoc: true
 tocopen: false

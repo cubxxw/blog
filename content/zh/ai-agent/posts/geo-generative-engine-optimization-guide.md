@@ -1,39 +1,43 @@
 ---
-title: 'GEO 生成式引擎优化完全指南：当搜索从"给链接"变成"给答案"'
-ShowRssButtonInSectionTermList: true
-date: '2026-07-10T22:00:00+08:00'
+title: '2026 GEO 实证指南：证据、边界与可执行工作流'
+date: 2026-07-10T22:00:00+08:00
+lastmod: 2026-07-31T18:43:21+08:00
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['GEO', '生成式引擎优化', 'Generative Engine Optimization', 'AI搜索优化', 'AEO', 'SEO', 'AI Overviews', 'ChatGPT优化', 'Perplexity', '豆包', 'DeepSeek', '零点击搜索', 'llms.txt', 'E-E-A-T', 'AI引用', '大模型投毒']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - GEO
   - SEO
   - AI Search
   - Content Strategy
   - LLM
+categories:
+  - Development
 description: >
-  当 68% 的 Google 搜索不再产生点击、AI 直接把答案端到用户面前，传统 SEO 争的"排名"正在失效。GEO（生成式引擎优化）争的是另一件事：让 AI 在生成答案时理解你、信任你、引用你。这是一篇从原理到方法论、再到我用自己博客做的真实案例复盘的支柱长文，也是「GEO 系列」的总纲。
+  一份以证据为边界的 2026 GEO 实践指南：根据 Google、OpenAI、Perplexity 官方文档和 Pew、Bain、KDD 原始研究，说明生成式搜索的技术基础、crawler 权限、内容证据与测量方法，区分可见度、引用、访问和转化，避免把 llms.txt、Schema 或二手统计包装成排名捷径。
 cover:
-  image: '/images/columns/geo/zh-01-guide.svg'
-  alt: GEO 完全指南封面，展示从 SEO 排名到 AI 引用的五层模型
+  image: /images/columns/geo/zh-01-guide.svg
+  alt: "把访问、独特价值、证据、可摘录性和度量分开的五层 GEO 工作流"
 tldr:
-  - GEO（生成式引擎优化）不是取代 SEO，而是新增一层：SEO 争链接排名，GEO 争"被 AI 生成时引用"。二者共用同一套内容资产。
-  - 2026 年美国 68% 的搜索零点击，AI Overviews 出现时点击率再降约 60%；流量入口正从"蓝色链接"迁移到"AI 答案框"，这是 GEO 突然火起来的根本原因。
-  - 普林斯顿的 GEO 研究用 1 万条查询证明：加统计数据、加引用来源、加权威引语，能把内容在 AI 答案中的可见度提升 22%–41%——这是目前最硬的、可复现的方法论基石。
-  - 我把 GEO 拆成五层可操作模型：可抓取 → 可理解 → 可信任 → 可引用 → 可背书。技术底座只是入场券，真正的护城河在信任与站外背书。
-  - 黑帽"AI 投毒"（批量软文喂大模型）已被 315 曝光、正在被监管收紧。白帽长效路线才是个人与品牌该走的路。
+  - "GEO 是一个有用的工作标签，不是独立的 Google 排名系统。Google 明确说明，生成式搜索仍依赖核心 Search 系统，不需要特殊 AI 标记。"
+  - "2024 年 GEO 论文在其实验环境中观察到最高约 40% 的可见度提升，但 visibility 不等于引用率，效果因领域而异，Perplexity 实验也只用了 200 个文件上传样本。"
+  - "crawler 必须按用途区分：OAI-SearchBot 与 PerplexityBot 服务搜索发现，GPTBot 涉及潜在训练，Google-Extended 对 Google Search 没有影响。"
+  - "优先建设一手经验、可抓取页面和可核验证据；把 Answer-First、Schema、站外提及与 prompt 监测当作待验证实践，而不是普遍排名定律。"
+  - "平台报告、真实引用、转介访问和最终转化必须分开度量；高曝光低点击不能证明页面被 AI 搬走。"
 maturity: budding
 faq:
-  - q: "GEO 是什么？和 SEO 有什么区别？"
-    a: "GEO（Generative Engine Optimization，生成式引擎优化）是通过内容、结构与站外信誉的系统性优化，让 ChatGPT、Perplexity、Google AI Overviews、豆包、DeepSeek 等生成式 AI 在回答问题时更容易理解、信任并引用你的内容。它不取代 SEO：SEO 争的是链接排名与点击，GEO 争的是被 AI 生成答案时点名引用，二者共用同一套内容资产。"
-  - q: "为什么 2026 年需要做 GEO？"
-    a: "因为流量入口正从蓝色链接迁移到 AI 答案框：2026 年前四个月美国 68% 的 Google 搜索以零点击结束，AI Overviews 出现时自然结果点击率下降近 60%。但被 AI 引用的网站自然点击反而多 35%、转化率高 4–9 倍——红利集中流向被点名的少数内容源，这正是 GEO 要争的位置。"
-  - q: "怎么让 AI 更容易引用我的内容？"
-    a: "普林斯顿的 GEO 研究用 1 万条查询验证：在内容中加入统计数据、引用来源和权威引语，可把内容在 AI 答案中的可见度提升 22%–41%。落地时可按五层模型推进：先保证可抓取、可理解（技术底座与结构化写作），再积累可信任、可引用、可背书（作者信誉与站外提及）。"
-  - q: "黑帽 GEO（AI 投毒）有什么风险？"
-    a: "AI 投毒指批量发布虚构软文投喂大模型来操纵推荐结果，已被 2026 年 315 晚会曝光。它短期可能见效，但依赖大模型来源判断的漏洞，正被平台惩罚与监管收紧——2026 年 2 月 AIIA 已发起 GEO 专项安全承诺，市场监管总局把 AI 生成广告列入整治重点。个人与品牌唯一可持续的是白帽路线：用真实、权威、结构清晰的内容赢得引用。"
+  - q: "什么是生成式引擎优化？"
+    a: "生成式引擎优化（GEO）是改善内容在 AI 辅助搜索中被发现、理解、选择和归因方式的工作标签，它不是一个统一算法。对 Google Search 而言，官方建议仍是做好普通 SEO 并创造原创、有用的内容；其他系统则有各自的 crawler 与发布者控制。"
+  - q: "GEO 原论文是否证明统计和引语能把引用率提高 40%？"
+    a: "没有。论文测量的是 position-adjusted word count 和主观 impression 等来源可见度指标。部分方法在实验中最高提升约 40%，且有明显领域差异；Perplexity 实验只包含 200 个通过文件上传提供来源的样本，因此它是早期证据，不是通用引用率承诺。"
+  - q: "Google AI Overviews 需要 llms.txt 或特殊 Schema 吗？"
+    a: "不需要。Google 当前文档说明 Search 忽略 llms.txt，生成式搜索没有专用标记，也不要求 structured data。Schema 仍可服务普通搜索功能；llms.txt 只应为明确声明会读取它的具体消费者维护。"
+  - q: "发布者应该允许哪些 AI crawler？"
+    a: "应按目的与自身政策选择。OAI-SearchBot 帮助内容进入 ChatGPT 搜索，GPTBot 控制潜在训练使用；PerplexityBot 用于 Perplexity 搜索索引；Google Search 使用 Googlebot，而 Google-Extended 只是部分 Gemini 训练与 grounding 的控制 token，不影响 Search。"
+  - q: "小型网站怎样度量 GEO？"
+    a: "先使用平台自己提供的报告和转介分析，再用带日期、版本和重复次数的固定 prompt 集审计引用是否出现、是否真的支持答案。记录引擎、模式、地区、账户状态和运行次数，不能仅凭 Search Console 高曝光低点击推断 AI 使用了页面。"
 columns:
   - geo
 series:
@@ -43,268 +47,276 @@ series:
   total: 6
 ---
 
-## 一句话先给答案（这就是 GEO 本身）
+## 先给短答案
 
-**GEO（Generative Engine Optimization，生成式引擎优化）是指：通过内容、结构与站外信誉的系统性优化，让 ChatGPT、Perplexity、Google AI Overviews、豆包、DeepSeek 等生成式 AI 在回答用户问题时，更容易理解、信任并引用你的内容。**
+**生成式引擎优化（GEO）是一个工作标签：当 AI 辅助搜索生成答案时，让内容具备被访问、被理解、被选择和被正确归因的条件。它不是一个统一的排名算法，也不是一套特殊标记技巧。**
 
-它不取代 SEO，而是叠加在 SEO 之上的一层。传统 SEO 争的是"在结果页排到前面、被点击"；GEO 争的是"当 AI 直接把答案端给用户时，答案里有你、并注明来源是你"。([Search Engine Land](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142)、[Frase](https://www.frase.io/blog/what-is-generative-engine-optimization-geo))
+Google 的官方立场很克制：AI Overviews 与 AI Mode 建立在核心 Search
+排名和质量系统上，没有额外技术门槛，也不需要特殊优化。其他产品使用不同的检索链路与 crawler 控制，因此，负责任的 GEO 实践应该先说清楚具体系统，而不是把所有产品笼统称为“AI”。
 
-你正在读的这一段，就是一次 GEO 实践：开门见山、40–100 字给出可被直接摘录的完整定义。为什么这么写，后文会拆开讲。
+我现在用 GEO 审视五个问题：
 
-> 这是「GEO 生成式引擎优化」系列的**支柱篇（第 1/6 篇）**，负责把整张地图铺开。后续每一篇会钻进一个具体战场——原理、结构化实战、信任与背书、本博客深度复盘、度量与工具。
+1. 相关系统能否访问页面？
+2. 页面是否提供了独特而有用的内容？
+3. 关键结论能否核验？
+4. 一段内容被摘录后，是否仍保留使它成立的条件？
+5. 我能否度量实际发生的事，而不虚构因果关系？
 
----
+这没有“改三个标题就赢得 AI 搜索”那么刺激，却更接近证据真正能够承担的结论。
 
-## 为什么流量在 2026 年"凭空消失"了
+> 这是「GEO 生成式引擎优化」系列第 1/6 篇，负责建立证据边界与工作模型。后续章节可以深入机制与实践，但不应把早期研究扩大成普遍定律。
 
-先看三个把人打醒的数字：
+## 搜索改变了什么，又没有改变什么
 
-- **2026 年前四个月，美国 68.01% 的 Google 搜索以"零点击"结束**——用户看完就走，一个链接都没点。这个数字 2024 年还是 60.45%，两年涨了 12.5%。([Omnibound](https://www.omnibound.ai/blog/zero-click-search-statistics)、[SparkToro](https://sparktoro.com/blog/in-2026-less-than-one-third-of-google-searches-still-send-a-click/))
-- **AI Overviews（Google 的 AI 概览）已经出现在约 20%–48% 的查询里，一旦出现，自然结果的点击率下降近 60%**；当 AI Overviews 出现时，零点击率飙到 83%。([Omnibound](https://www.omnibound.ai/blog/ai-seo-statistics))
-- **贝恩（Bain）2025 年 2 月的研究：80% 的消费者至少 40% 的搜索已经依赖 AI 生成结果**，多个行业的自然流量因此下滑 15%–25%。([Contently](https://contently.com/2026/04/27/ai-overview-traffic-impact/))
+点击确实受到压力，但每个数字都必须带着分母和日期。
 
-换句话说：**搜索的默认交付物，正在从"一串蓝色链接"变成"一段 AI 写好的答案"。** 你辛苦写的文章，可能被 AI 读过、消化过、总结给用户了，但用户从没来过你的站——除非 AI 在答案里点了你的名。
+[Pew Research Center 的 2025 年 3 月研究](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)
+分析了 900 名同意分享浏览活动的美国成年人产生的 68,879 次 Google 搜索。其中约
+18% 出现 AI summary；出现 summary 时，用户在 8% 的访问中点击传统结果，没有 summary
+时则是 15%。用户点击 summary 内部来源链接的比例只有 1%。
 
-这不全是坏消息。同一批研究也显示：**被 AI Overviews 引用的网站，自然点击反而多了 35%，转化率高出 4–9 倍。** AI 带来的转介流量（referral）增长很快，且质量更高。([Omnibound](https://www.omnibound.ai/blog/ai-seo-statistics)) 也就是说，被引用者拿走了大部分红利。GEO 要解决的核心问题只有一个：**如何成为那个"被点名"的人。**
+这组数据支持一个有限结论：在该样本和时间段里，AI summary 的出现与更少的外部点击相关。它不能证明所有查询类型、国家与后续版本都遵循相同比例。
 
-### 用我自己的博客数据佐证
+[Bain 在 2025 年 2 月发布的分析](https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing/)
+来自另一组调查：约 80% 的受访者会在至少 40% 的搜索中依赖 zero-click result，Bain
+估计相关场景的自然流量可能下降 15%–25%。其底层 Bain–Dynata 调查于 2024 年 12 月进行，样本量为 1,117。
 
-在写这篇之前，我刚把 [cubxxw.com](https://cubxxw.com) 的 Google Search Console 数据翻了个底朝天（老域名近三个月）：**852 次点击，87.8 万次曝光，平均点击率 0.1%，平均排名 13.2（第二页）。**
+它们证明用户行为正在改变，却不能推出“只要被 AI 引用，网站就会获得某个固定转化倍数”。旧稿里 68.01%、35% 和 4–9 倍等数字来自营销资料的二手汇总，我无法核验统一口径，因此不再保留。
 
-最扎心的是：曝光最高的那批关键词，全是和博客主题毫无关系的长问句（MBTI 测试、脑震荡、地方历史……），单词曝光两三千次、点击是 0。它们把整站 CTR 稀释到了 0.1%。而真正带来点击的，是精准的技术词：`hugo 博客`、`langgraph 架构`、`gpt researcher`、`go directives`。
+没有改变的部分同样重要。搜索仍需发现、索引并评估页面。Google 明确说明，其生成式功能使用包括 RAG 与 query fan-out 在内的核心 Search 系统；页面必须已被索引，并且有资格显示 snippet。原创、有用、以人为先的内容，仍然比某种“AI 格式”重要。
 
-这正是 GEO 时代的典型症状：**你有海量曝光，却没有"被选中"。** 曝光是站在人群里，被引用才是被点名发言。
+至少要把四个结果分开：
 
----
+- 内容出现在生成答案中的可见度；
+- 页面获得明确归因或链接；
+- 用户通过归因产生访问；
+- 访问最终形成业务结果。
 
-## GEO 为什么突然火，以及它的"阴暗面"
+它们可能相关，却不能互相替代。
 
-### 热度：一条新赛道
+## GEO 原论文真正证明了什么
 
-2026 年国内 AI 搜索用户规模突破 13 亿，DeepSeek 累计访问 12.8 亿、字节豆包月活超 1.2 亿。([IT之家](https://www.ithome.com/0/964/402.htm)) 用户获取信息的路径被彻底改写——从"主动检索网页"变成"AI 直接给答案"。于是 GEO 成了营销与内容行业公认的新蓝海，工具、服务商、白皮书、甚至概念股，一拥而上。
+Aggarwal 等人的 KDD 2024 论文《[GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735)》正式提出了这个术语。论文构建包含 10,000 条多领域查询的 GEO-bench，并测试了九类来源文本修改方法。
 
-### 乱象：315 曝光的"AI 投毒"
+标题级结论是真实的：在作者构造的生成式引擎实验中，部分方法让来源**可见度最高提升约 40%**。加入引用、引语或统计数据经常有效，而且不同领域的效果差异明显。
 
-但新赛道也长杂草。2026 年 3·15 晚会曝光了 **"AI 投毒"灰产链**：部分 GEO 服务商通过自媒体批量发布虚构软文"投喂"大模型，操纵推荐结果。一个完全不存在的"Allo-9 智能手环"，靠 11 篇虚构软文（8 篇"专家测评"、2 篇"行业排名"、1 篇"用户测评"）就在多个 AI 推荐里排到了前面。([量子位](https://www.qbitai.com/2026/03/388387.html)、[21经济网](https://www.21jingji.com/article/20260316/herald/8cf9afdb3bc8ba06b10b2f89aef3bc17.html))
+但边界同样重要：
 
-这暴露了两件事：一是**大模型对内容来源的权威性/真实性判断仍有高危漏洞**；二是**行业标准与监管一度处于真空**。好在治理在跟上——2025 年 11 月 14 家企业发起《中国 GEO 行业发展倡议》，2026 年 2 月中国人工智能产业发展联盟（AIIA）发起《人工智能安全承诺：GEO 专项》，市场监管总局也把 AI 生成广告列入整治重点。([搜狐](https://www.sohu.com/a/997686348_460335))
+- visibility 使用 position-adjusted word count 与模型评分的 subjective impression 等指标衡量，不等于“当前产品引用此页面的概率”。
+- 主实验通过检索来源并由 `gpt-3.5-turbo` 生成答案；2026 年的生产系统并不共享一条固定流水线。
+- Perplexity 实验只有 200 个样本。研究者无法指定线上检索 URL，因此通过文件上传提供来源。quotation addition 在一个指标上提升 22%，statistics addition 在另一个指标上最高提升 37%。
+- 组合实验同样只使用 200 个样本。最佳组合比最佳单一策略高约 5.5%；包含 cite sources 的组合在所选指标上平均提升 31.4%。
+- 论文没有评估这些改写对普通搜索排名的影响，并明确提醒：生成引擎与查询分布变化后，方法也需要调整。
 
-### 结论：白帽 vs 黑帽的分野
+这是一组有价值的早期证据，但它没有授权我们承诺“增加三条权威引语，就能把 ChatGPT、Gemini 或 Perplexity 引用率提高 40%”。
 
-黑帽 GEO（批量投毒、虚构内容）短期或许有效，但**风险高、不稳定、且正在被平台惩罚和监管收紧**。对个人博客和长期品牌来说，唯一可持续的是白帽长效路线：**用真实、权威、结构清晰的高质量内容，去赢得 AI 的引用。** 这也是本文之后所有方法的底线。
+我的实践结论更克制：可核验证据与相关引语可能让来源在答案合成阶段更有用，但效果必须按领域和产品重新测试。论文给出的是假设与评估方式，不是永不过期的配方。
 
----
+## Crawler 是产品控制，不是排名魔法
 
-## 原理：AI 是怎么决定"引用谁"的
+旧稿把 GPTBot、OAI-SearchBot、ChatGPT-User、PerplexityBot 和
+Google-Extended 放进同一张清单，称为把内容运进 AI 答案的卡车。这个比喻抹掉了重要的政策差异。
 
-要优化，先得懂机制。现代 AI 搜索（无论 Perplexity、AI Overviews 还是带联网的 ChatGPT）大致是一套 **RAG（检索增强生成）** 流程：
+### Google
 
-```mermaid
-flowchart LR
-    A[用户提问] --> B[查询理解/改写]
-    B --> C[检索：从索引/网络召回候选内容]
-    C --> D[重排：按相关性+权威性+可提取性打分]
-    D --> E[生成：LLM 综合多源写出答案]
-    E --> F[引用：挑选可信来源标注出处]
-    F --> G[呈现给用户]
-```
+Google Search 使用 Googlebot。`Google-Extended` 不是独立 HTTP crawler，而是一个
+robots token，用来控制已抓取内容能否用于部分 Gemini 模型训练，以及 Gemini Apps 与
+Vertex AI 中的 grounding。[Google crawler 官方文档](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)
+明确说明，它不影响 Google Search，也不是 Search 排名信号。
 
-这条链里，有三个你能施加影响的关口：
+### OpenAI
 
-1. **检索（Retrieval）**：你的内容得先能被抓到、被索引。技术底座（可抓取、结构化）决定你有没有资格进候选池。
-2. **重排（Ranking）**：AI 会偏爱**结构清晰、有数据、有来源、易于摘录**的内容。这是 GEO 方法论发力的主战场。
-3. **引用（Citation）**：在多个来源里，AI 更愿意点名**权威、可信、且提供了"可机读证据"**的那个。
+[OpenAI 发布者指南](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq)
+把搜索发现与潜在训练分开：希望内容进入 ChatGPT 搜索摘要和 snippet 的发布者，不应阻止
+`OAI-SearchBot`；希望排除潜在训练使用的页面，则通过 `GPTBot` 表达政策。允许其中一个，不等于同意另一个。
 
-### 最硬的实证：普林斯顿 GEO 研究
+### Perplexity
 
-GEO 这个词的"出生证明"，是普林斯顿等机构 2024 年发表于 KDD 的论文《GEO: Generative Engine Optimization》(Aggarwal et al.)。他们用 **GEO-bench** 框架、约 **1 万条查询、9 个数据集**，系统测试了 9 种内容改写策略对"在 AI 答案中可见度"的影响。([Princeton](https://collaborate.princeton.edu/en/publications/geo-generative-engine-optimization/)、[Stackmatix](https://www.stackmatix.com/blog/generative-engine-optimization-paper))
+[Perplexity crawler 文档](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
+把 `PerplexityBot` 定义为用于搜索结果索引与链接的 crawler；`Perplexity-User`
+服务用户主动发起的页面访问，并因用户请求而通常不遵循 robots 规则。两者用途和执行方式不同。
 
-核心结论（记住这三个词，后面全靠它）：
+正确的 `robots.txt` 可以保留准入资格，也可以表达发布政策。它不能让低质量页面自动获得权威；允许训练 crawler 也买不到一条引用。
 
-| 最有效的优化手法 | 可见度提升 |
-|---|---|
-| **Statistics Addition**（加入统计数据） | 约 +25%~40% |
-| **Cite Sources**（引用可信来源） | 约 +25%~40% |
-| **Quotation Addition**（加入权威引语） | 约 +25%~40% |
-| 综合运用 | 整体可见度提升 **22%–41%** |
+## Google 明确说不需要什么
 
-一句话翻译：**AI 偏爱"带着可机读证据"的内容。** 数字、出处、引语——这些恰恰是 AI 在生成答案时最方便直接搬运、也最能给答案"背书"的零件。这条规律，是本文整个方法论的地基。
+Google 当前的[生成式搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+直接澄清了几类常见 GEO 说法：
 
----
+- Google Search 忽略 `llms.txt`；它既不提高，也不降低 Search 可见度与排名。
+- AI Overviews 与 AI Mode 不需要特殊 Schema.org 类型。
+- structured data 不是生成式搜索的必要条件。
+- 不需要为了让 AI 理解而把文章拆成极小的“内容块”。
+- 不需要把文字改成某种专供 AI 的句式。
+- 伪造站外提及与为操纵生成结果批量制造页面，仍属于垃圾内容，而不是长效捷径。
 
-## 方法论框架：GEO 的五层模型
+Structured data 依然有普通用途。有效的 `Article`、`Person` 或面包屑标记，可以服务已有搜索功能，也有利于维护站点语义；它们只是不应被包装成直接打开 AI 引用的开关。
 
-把零散技巧整理成一个能落地、能自查的框架。我把 GEO 拆成五层，从底到顶，**下层是上层的前提**：
+FAQ 和 HowTo 也需要同样的克制。Google 在 2023 年已经[弃用 HowTo rich result，并把 FAQ rich result 基本限制在权威政府和健康站点](https://developers.google.com/search/blog/2023/08/howto-faq-changes)。真实 FAQ 仍然可以帮助读者，但个人博客增加 `FAQPage` 并没有被证明能提高 AI Overview 引用率。
+
+我只会在能说出明确消费者、且对方文档承诺读取时维护 `llms.txt`。“反正便宜”不是充分理由，因为它又增加了一份需要保持正确的内容资产。
+
+## 一个五层工作模型
+
+下面是我的工程检查表，不是经证明的排名因素清单：
 
 ```mermaid
 flowchart TB
-    L1[L1 可抓取 · 技术底座] --> L2[L2 可理解 · 内容结构]
-    L2 --> L3[L3 可信任 · 权威与证据]
-    L3 --> L4[L4 可引用 · 可提取性]
-    L4 --> L5[L5 可背书 · 站外与分发]
-    style L1 fill:#e8f0fe
-    style L5 fill:#fce8e6
+    L1["1. 可访问"] --> L2["2. 独特且有用"]
+    L2 --> L3["3. 有证据"]
+    L3 --> L4["4. 摘录后不失真"]
+    L4 --> L5["5. 可度量并修正"]
 ```
 
-### L1 · 可抓取（技术底座 —— 入场券）
+### 第一层：可访问
 
-如果 AI 爬虫抓不到、解析不了，后面全白搭。要点：
+先做好普通技术 SEO：返回成功状态，主要内容无需登录即可访问，避免意外 `noindex`，发布 sitemap，保持 canonical URL 稳定，并让真实设备上的页面可用。再按产品和用途分别决定 crawler 权限。
 
-- **放行 AI 爬虫**：在 `robots.txt` 里显式允许 GPTBot、OAI-SearchBot、ChatGPT-User、ClaudeBot、PerplexityBot、Google-Extended，以及国内的 Baiduspider、Bytespider（豆包）、Sogou、YisouSpider。它们是你进入 AI 答案的"运货车"。
-- **服务端渲染（SSR）优先**：很多 AI 抓取器不执行 JS。重度前端渲染的内容，在爬虫眼里可能是一片空白。静态站（如 Hugo）在这点上天然占优。
-- **结构化数据（Schema/JSON-LD）**：`Article`/`BlogPosting`、`Organization`、`Person`、`BreadcrumbList`、`FAQPage`、`HowTo`，帮 AI 精确理解"这是什么、谁写的、讲什么"。
-- **Sitemap 与新鲜度**：提交 `sitemap.xml`，重要内容保持更新并标注"最后更新时间"——AI 明显偏爱新鲜内容。([SEOTuners](https://seotuners.com/blog/generative-engine-optimization/generative-engine-optimization-best-practices/))
+### 第二层：独特且有用
 
-**关于 `llms.txt` 的冷静判断（2026 现状）**：这是个被高估的话题。Google 官方明确表态 Search 不使用 `llms.txt`，John Mueller 把它类比为早已作废的 keywords meta 标签；Ahrefs 对 13.7 万站点的研究发现 **97% 的 `llms.txt` 从没被 AI 爬虫读过**。**但**——Chrome 的 Lighthouse 13.3 已把 `llms.txt` 审计移入默认的"Agentic Browsing"类别，而它在**开发者工具链**（Cursor、Claude Code、Copilot、MCP）里确实被真实读取。([Search Engine Journal](https://www.searchenginejournal.com/google-says-llms-txt-is-purely-speculative-for-now/577576/)、[Ahrefs](https://ahrefs.com/blog/llmstxt-study/)) 结论：**`llms.txt` 现在对"搜索排名"几乎无用，但对"AI 工具/代理读你的文档"有用，成本又低，放着无妨，别指望它救命。**
+Google 当前最明确的建议，是创造 non-commodity、people-first 的内容：原创分析、亲手测试，或者普通摘要无法复制的经验与视角。
 
-### L2 · 可理解（内容结构 —— 让 AI 一眼看懂）
+清楚的开头和描述性标题通常也帮助读者，我仍会使用。但我不再把它们称为普遍引用因素，也不再宣称问句标题“被引用得更多”。那需要受控实验，而不是 agency 博客的口号。
 
-- **Answer-First / 开门见山**：每篇、每个小节的开头，先用 40–100 字给出可被直接摘录的完整答案，再展开。那段话往往就是被 AI 一字不差搬走的内容。（本文每一节都在这么做。）
-- **问题式标题**：把 H2/H3 写成用户会问的原话——"GEO 是什么？""怎么让 ChatGPT 引用我？"AI 会把标题和查询做模式匹配，问题式标题的被引概率显著更高。这是对存量文章 ROI 最高的一处改动。([Search Engine Land](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142))
-- **语义清晰、实体明确**：品牌名、人名、专业领域、地点写清楚，别用模糊指代。帮 AI 建立"实体—属性"的稳定认知。
+### 第三层：有证据
 
-### L3 · 可信任（权威与证据 —— GEO 的护城河）
+把内容分为三类：
 
-这一层直接对应普林斯顿研究的结论，是最容易被忽视、也最能拉开差距的地方：
+- 外部可核验事实，链接到最接近的一手来源；
+- 自己的测量，写清采集日期、范围和方法；
+- 经验或解释，明确标成作者判断。
 
-- **加统计数据**："根据某机构 202X 年数据，增长 X%"，并附真实链接。
-- **引用可信来源**：给关键论断标注出处（就像本文密集的引用链接）。
-- **加权威引语与一手经验**：真实作者信息、专家观点、你的第一手实践与踩坑。研究一再显示：**AI 更偏爱"第三方背书"胜过你自卖自夸的内容。** ([2Point Agency](https://www.2pointagency.com/blog/generative-engine-optimization-strategies/))
-- **E-E-A-T**：经验（Experience）、专业（Expertise）、权威（Authoritativeness）、可信（Trust）。清晰的作者页、About 页、跨平台一致的身份信息，都是信任信号。
+没有总体、时间和采集方式的数字只是装饰。不能支持相邻句子的引用更糟，因为它借来了权威，却没有传递证据。
 
-### L4 · 可引用（可提取性 —— 把内容做成"乐高零件"）
+### 第四层：摘录后不失真
 
-让 AI 能"抠出一块就用"：
+表格、列表、定义和短摘要，可以让人和软件更容易浏览复杂材料；KDD 论文也为“让证据在合成阶段清晰可见”提供了有限实验支持。
 
-- **列表、表格、步骤、对比**：结构化呈现比大段散文更容易被摘录。
-- **独立答案块（standalone answer）**：每个小结论都能脱离上下文单独成立。
-- **FAQ / HowTo schema**：把"问答"和"操作步骤"结构化，争取 SERP 富媒体与 AI 直接调用。
-- **TL;DR 摘要**：文章头部放要点清单（我的博客用 `tldr` 字段实现，见下文案例）。
+可摘录不等于碎片化。一段文字只有保留使结论成立的条件，才真正可用。“某实验可见度指标最高约 40%”不能被缩成“引用增加 40%”。
 
-### L5 · 可背书（站外与分发 —— RAG 的隐藏变量）
+### 第五层：可度量并修正
 
-AI 的"信任"很大程度来自**你在别处被怎么谈论**：
+发现、归因、流量和业务结果必须分开记录。先保存基线，再改变一类因素，并留下足够上下文解释后续比较。引擎发生重大变化时，应把它视为新的数据阶段，而不是悄悄接在旧平均值后面。
 
-- **第三方引用与数字 PR**：媒体报道、行业提及、优质外链。
-- **社区讨论**：Reddit、知乎、Hacker News、V2EX、掘金——AI 训练与检索都在吃这些语料。
-- **多平台一致性**：官网、百科、社交、GitHub 的身份与描述保持一致，强化实体识别。
-- **持续监控与迭代**：用提示词在各 AI 上测试自己的被引率，反哺内容（见第七节工具）。
+第五层的任务，是防止前四层变成仪式。
 
----
+## 不虚构因果地复盘我的博客
 
-## 以我的博客为例：把五层模型落到 cubxxw.com
+旧稿使用了老域名的一份私有 Google Search Console 快照：滚动三个月里有 852 次点击、878,000 次曝光、平均 CTR 0.1%、平均排名 13.2。高曝光查询里有不少与博客目标无关的 MBTI、医疗和地方历史问题；更相关的点击来自 Hugo、LangGraph、GPT Researcher 与 Go directives 等技术搜索。
 
-理论讲完，上真家伙。我用自己的技术博客 [cubxxw.com](https://cubxxw.com)（Hugo + Netlify，中英双语）做一次逐层对照——**哪些已经做对、哪些还欠着**。
+这是一份关于本站查询构成的一手观察，不是 AI 系统搬运页面的证据。Search Console 的普通曝光与点击率不能说明模型是否检索或引用过页面。更准确的结论是：旧站可见范围很广，但其中相当一部分不属于我想服务的读者。
 
-### 已经做对的（L1 技术底座基本满分）
+一次 Lighthouse 浏览器审计也曾得到 SEO 100 和 Best Practices 100。它只是一项配置冒烟测试，不是 GEO 分数；它能发现部分技术错误，不能证明权威、原创性、引用选择或用户价值。
 
-在最近一次真实浏览器实测里，博客的 Lighthouse SEO 跑到了 **100 分**、Best Practices **100 分**。对照五层模型，L1 这层我确实下过功夫：
+更可靠的博客经验来自编辑选择：一小组技术页面持续吸引相关读者。
 
-- **robots.txt 面向 AI 时代**：显式欢迎 GPTBot、OAI-SearchBot、ClaudeBot、PerplexityBot、Google-Extended，以及百度、字节（Bytespider/豆包）、搜狗、神马等国内爬虫。把 AI 当"新流量渠道"主动迎进来，而不是默认拦在门外。
-- **四类结构化数据**：文章页同时输出 `BlogPosting`、`WebSite`（含站内搜索 `SearchAction`）、`Person`（含 `sameAs` 社交矩阵）、`BreadcrumbList`。
-- **hreflang 正确**：`en / zh / x-default` 齐全，中英双语内容各自可被对应语言的 AI 检索。
-- **多重出口**：`sitemap.xml` + `news-sitemap.xml` + `llms.txt` / `llms-full.txt` + JSON Feed + OPML。（`llms.txt` 我保留着，但按第五节的判断，不对它抱幻想。）
-- **`tldr` 前置摘要字段**：我的文章 frontmatter 里有 `tldr` 数组，正文顶部渲染成要点清单——这本身就是 L2「Answer-First」+ L4「可提取性」的落地。你现在看到的这篇开头那串要点，就是它。
+- Hugo：[博客搭建记录](/zh/engineering/posts/my-hugo/)与[进阶 Hugo 笔记](/zh/engineering/posts/hugo-advanced-tutorial/)
+- AI 工具与工程：[MarkItDown](/zh/projects/markitdown/)、[mem0](/zh/projects/mem0/)、[LangGraph](/zh/projects/langgraph/)、[GPT Researcher](/zh/ai-agent/posts/gpt-researcher/)、[NotebookLM](/zh/projects/notebooklm/)
+- 工程实践：[自动化指令](/zh/engineering/posts/directives-and-the-use-of-automation-tools/)与[TDD](/zh/projects/tdd/)
 
-### 还欠着的（L2–L5 才是真战场）
+下一步不是为每个关键词变体制造新页面，而是继续改进真正有直接经验的少数主题，修正过时结论，建立清晰内链，再观察读者与外部系统是否确实觉得它有用。
 
-技术底座满分，不代表 GEO 就赢了——它只是入场券。真实的 GSC 数据（平均排名 13.2、CTR 0.1%）说明：**我卡在"有曝光、没被选中"。** 对照模型，缺口在上面四层：
+## 怎样度量 GEO 而不欺骗自己
 
-- **L2 结构**：不是每篇都严格「Answer-First」。要给核心技术文章的开头补 40–100 字的直接答案段（像本文这样）。
-- **L3 信任**：很多技术笔记有一手经验，但缺少统计数据与外部引用的"证据密度"。按普林斯顿的结论，这正是 +25%~40% 可见度的来源。
-- **L4 可引用**：需要给 How-to / "是什么" / 对比类文章补 **FAQPage / HowTo schema**，把已经写好的问答结构暴露给 AI。
-- **L5 背书**：我在 GitHub、知乎、B 站有身份，但技术文章的站外讨论与外链偏少。核心文章需要主动去社区分发、沉淀讨论。
+### 1. 优先使用平台自己的报告
 
-### 一个具体打法：区分"核心集群"与"噪声"
+Google 2026 指南要求发布者通过 Search Console 的 **Generative AI performance report**
+观察 Google Search 与 Discover 中的生成式表现，不应再从普通高曝光页面间接猜测。
 
-GSC 数据给了我一个反直觉的教训：**别被 87 万曝光冲昏头。** 那些高曝光的 MBTI / 脑震荡 / 地方史查询是噪声，不是机会。真正该重仓的是已经在被点击的技术集群：
+对于外部访问，可以在分析工具里分别记录 ChatGPT、Perplexity 等 referrer，并独立观察后续行为。referral 只能证明一次访问，不能还原具体答案和引用。
 
-- **Hugo 建站**：[《我的 Hugo 博客搭建》](/zh/engineering/posts/my-hugo/)（CTR 高达 10.4%，是我的标杆）、[《Hugo 进阶教程》](/zh/engineering/posts/hugo-advanced-tutorial/)
-- **AI 工具与工程**：[MarkItDown](/zh/projects/markitdown/)（7.2 万曝光的英文流量王）、[mem0](/zh/projects/mem0/)、[LangGraph](/zh/projects/langgraph/)、[GPT-Researcher](/zh/ai-agent/posts/gpt-researcher/)、[NotebookLM](/zh/projects/notebooklm/)
-- **Go 与工程实践**：[《自动化工具与 directives》](/zh/engineering/posts/directives-and-the-use-of-automation-tools/)、[TDD](/zh/projects/tdd/)
+### 2. 用重复 prompt 审计答案
 
-**策略：围绕这几个已验证有需求的主题做"主题集群"——一篇支柱长文 + 若干子文章 + 相互内链**，形成主题权威（topical authority），而不是四处撒网追噪声词。这也是我把这篇 GEO 文章设计成"支柱 + 系列"的原因：**用文章结构本身去示范 GEO。**
+固定 prompt 集很有用，但一次运行不构成测量。至少保存：
 
----
+- 完整 prompt 与目标意图；
+- 产品、可见的模型或模式、地区、账户状态与日期；
+- 多次重复结果；
+- 本站是否被检索、是否被引用、是否被准确表达；
+- 被引用的段落，以及它是否真的支持生成结论。
 
-## 怎么知道 GEO 到底有没有效（度量与工具）
+模型与索引变化会造成数据断点。应该报告断点，而不是把它藏进平均值。
 
-GEO 最反直觉的一点：**传统的"排名 + 点击"指标会失灵**，因为很多价值发生在"用户没来你站"的地方。得换一套度量：
+### 3. 把改变写成可推翻的假设
 
-1. **提示词测试法（最朴素也最直接）**：在 ChatGPT、Perplexity、豆包、DeepSeek 上，用真实用户会问的话去问（如"推荐几个把文档转 Markdown 的开源工具""Hugo 博客怎么做 SEO"），看答案里**有没有你、引没引用你**。定期跑一批固定提示词，追踪被引率变化。
-2. **AI 转介流量（referral）**：在 GA4 里看来自 `chatgpt.com`、`perplexity.ai`、`gemini.google.com` 等来源的流量与转化。这是 AI 已经在替你导流的直接证据。
-3. **GSC 交叉验证**：虽然 GSC 不直接报"AI 引用"，但"高曝光低点击"的页面，往往正是被 AI 摘走答案的页面——反过来提示你哪些内容该做 Answer-First 与 schema。
-4. **专业 GEO 监测工具**：如 **Profound**（企业级，监测 ChatGPT/Claude/Perplexity/AI Overviews/Gemini/Copilot/DeepSeek/Grok 等 10+ 引擎，红杉 3500 万美元 B 轮）、**Peec AI**（德国，prompt 级可见度追踪，多语言）等，能规模化追踪跨平台被引率与"声量份额（share of voice）"。([Frase](https://www.frase.io/blog/the-10-best-ai-visibility-tools-in-2026)、[Stackmatix](https://www.stackmatix.com/blog/geo-tools-guide)) 个人博客未必要付费，但了解它们量的是什么，能帮你自建土办法。
+“增加直接摘要”“替换二手来源”“发布亲手基准”都是可测试的干预。只修改有限页面，保存修改前状态，并提前说明什么结果会反对这条假设。
 
-**核心心态**：GEO 的效果因行业、竞争、模型更新而波动，**不是一劳永逸**。它是"持续测量—迭代内容"的循环，不是一次性工程。
+第三方 visibility 工具可以自动采集，却无法访问平台私有排名系统。使用之前要检查其抽样、重复次数与归一化方式，不能把 share-of-voice 图表当作真相。
 
----
+## 30 / 60 / 90 天工作流
 
-## 风险、伦理与长效主义
+### 第 1–30 天：准入与证据盘点
 
-一句话立场：**别投毒。**
+- [ ] 检查索引、canonical URL、sitemap 覆盖与页面渲染。
+- [ ] 按 Search、用户主动 fetch 和训练三种目的审查 crawler 政策。
+- [ ] 找出已经服务目标读者的十篇核心页面。
+- [ ] 标记无来源数字、过时产品说法和二手引用。
+- [ ] 从平台一手报告保存带日期的基线。
 
-黑帽 GEO（批量虚构软文、操纵大模型）在 315 之后已经是明牌的高危区。平台在补漏洞、监管在收紧、行业在立规。更重要的是：**投毒得来的"可见度"建立在虚假之上，一旦模型更新或被识别，会连本带利地崩掉，还可能连累你的真实身份信誉。**
+### 第 31–60 天：先改善内容本身
 
-白帽 GEO 慢，但复利。真实的一手经验、扎实的数据与引用、清晰的结构、跨平台一致的身份——这些既是给 AI 的信号，也是给人的价值。**当你把"值得被引用"这件事本身做扎实，GEO 只是水到渠成的副产品。**
+- [ ] 把重要二手结论换成一手来源。
+- [ ] 增加普通摘要无法复制的亲手经验。
+- [ ] 重写含混段落，让结论被摘录时仍带着边界。
+- [ ] 围绕两三个真实主题改善站内链接。
+- [ ] 建立带版本、可重复运行的小型 prompt 审计集。
 
----
+### 第 61–90 天：暴露并学习
 
-## 30 / 60 / 90 天落地清单
+- [ ] 发布改进后的页面并记录发布日期。
+- [ ] 把内容交给真实社区质疑，而不是制造虚假提及。
+- [ ] 分别审查生成式报告、已验证引用、referral 与读者行为。
+- [ ] 修正错误引用和过时结论。
+- [ ] 停止无法产生可解释证据的动作。
 
-把方法变成动作。以下是我给自己排的表，你可以照抄改数字：
+这份时间表不承诺排名，只负责让实验可以审计。
 
-**第 1–30 天 · 打地基 + 立即止血**
-- [ ] 核对 `robots.txt` 放行全部主流 AI 爬虫（国内外）。
-- [ ] 给 Top 10 流量文章补「Answer-First」开头（40–100 字直接答案）。
-- [ ] 给 3–5 篇 How-to / "是什么" 文章加 `FAQPage` / `HowTo` schema。
-- [ ] 重写高曝光低 CTR 页面的标题与 description（含数字/结果承诺）。
+## 伦理：先让来源值得引用
 
-**第 31–60 天 · 加证据 + 提信任（L3）**
-- [ ] 给核心文章补统计数据 + 外部引用来源（对标普林斯顿的 +25%~40%）。
-- [ ] 完善作者页 / About 页 / 跨平台身份一致性（实体信号）。
-- [ ] 建立一份"固定提示词清单"，每周在 ChatGPT/Perplexity/豆包 上测被引率。
+虚构评测、合成共识和批量页面，不是更高级的 GEO，而是在污染检索系统和人共同依赖的证据。它也可能违反平台垃圾内容与广告规则。
 
-**第 61–90 天 · 做集群 + 铺背书（L4/L5）**
-- [ ] 围绕 2–3 个已验证主题（如 Hugo / AI 工具 / Go）建"支柱 + 子文 + 内链"集群。
-- [ ] 把核心文章主动分发到知乎 / Reddit / Hacker News / 掘金，沉淀外部讨论与外链。
-- [ ] 复盘 AI 转介流量与被引率曲线，砍掉噪声、加码有效主题。
+更持久的路径很慢：写下真实发生的经验，说明限制，链接一手证据，主动纠错，并在不制造讨论的前提下获得独立讨论。
 
----
+我现在的标准很简单：如果一句话被单独摘进答案就会误导，它还没有准备好发布。优化首先是让来源足够诚实，能够承受摘录。
 
-## 常见问题（FAQ）
+## 常见问题
 
-**Q：GEO 会取代 SEO 吗？**
-A：不会。GEO 是 SEO 之上的新增层。强自然排名仍是被 Gemini / AI Overviews 引用的前提。二者共用同一套内容资产，是"补充"而非"替代"。([GenOptima](https://www.gen-optima.com/geo/generative-engine-optimization-best-practices-2026/))
+### GEO 会取代 SEO 吗？
 
-**Q：GEO、AEO、AI Search Optimization 是一回事吗？**
-A：高度重叠。AEO（Answer Engine Optimization）更强调"回答引擎"，GEO 更强调"生成式引擎"，实践手法（Answer-First、schema、权威证据）基本一致。不必纠结命名，抓住"让 AI 理解、信任、引用你"这个内核即可。
+不会。对 Google Search 而言，官方指南把生成式搜索优化仍视为 SEO，因为 AI 功能依赖核心 Search 系统。在更广泛的产品市场中，GEO 仍可作为管理不同产品发现、归因和度量工作的总称。
 
-**Q：最快见效的一件事是什么？**
-A：把重点文章的开头改成「Answer-First + 问题式标题」。这是对存量内容 ROI 最高、成本最低的一处改动。([Search Engine Land](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142))
+### 每篇文章都应该用 40–100 字直接回答开头吗？
 
-**Q：`llms.txt` 到底要不要做？**
-A：可以做，成本低，但别抱幻想。对 Google Search 排名当前几乎无用；对 AI 开发者工具（Cursor、Claude Code、Copilot）读你的文档有用。属于"顺手就做、不做也不亏大"的项。
+不应把它当成排名仪式。简洁开头能帮助读者，也能明确文章范围；有直接答案时可以使用，面对探索性问题或个人叙事时，不必为了制造可摘录块而压平复杂性。
 
-**Q：个人博客做 GEO 有意义吗？**
-A：非常有。个人博客往往有稀缺的一手经验与真实踩坑——这正是 AI 偏爱引用的"原创信号"。你不需要大预算，需要的是真实、结构化、可被引用。
+### 个人博客要维护 `llms.txt` 吗？
 
----
+只有在能指出明确消费者，且对方文档声明读取它时才需要。Google Search 会忽略它。决定发布后应持续保持正确，也不要把它算作排名工作。
 
-## 结语与系列预告
+### Structured data 会提高 AI 引用率吗？
 
-搜索的形态在变，但底层规律没变：**价值会流向那些真正值得被信任、被引用的内容。** GEO 不是一套投机取巧的黑话，而是"把好内容做得让机器也能读懂、也愿意背书"的工程。
+没有通用证据支持这条结论。为普通搜索功能与可维护语义使用受支持的 structured data 即可；Google 明确说明，其生成式搜索不需要特殊 Schema。
 
-这是「GEO 生成式引擎优化」系列的支柱篇。接下来我会分篇钻进每一层，并用我博客的真实改造数据持续复盘：
+### 最快的有效改变是什么？
 
-- **第 2 篇 · 原理**：AI 到底怎么检索、重排、引用——把 RAG 与被引信号讲透。
-- **第 3 篇 · 结构化实战**：Answer-First、schema、`llms.txt` 的正确姿势与代码。
-- **第 4 篇 · 信任与背书**：E-E-A-T 与站外分发的具体打法。
-- **第 5 篇 · 本博客深度复盘**：用 GSC 数据驱动的一次 GEO 改造全过程。
-- **第 6 篇 · 度量与工具**：搭一套低成本的"被引率"监测。
+找出页面最重要却缺乏支持的结论，用一手证据替换，或者诚实写出不确定性。即使任何引擎都没有改变答案，这也已经改善了内容。
 
-如果你在做个人博客、开源项目或品牌内容，欢迎顺着这个系列一起把 GEO 从概念做成动作。
+## 结语
 
----
+GEO 还很年轻，信心却经常跑在证据前面。本文旧版就犯了这个错误：它把一篇有潜力的论文、若干营销汇总、私有分析数据和产品传闻拼成了来源无法支撑的确定性。
 
-*本文数据与结论来源：普林斯顿 GEO 研究（KDD 2024）、SparkToro / Omnibound / Bain 的零点击与 AI 流量研究、Search Engine Land / Frase / Ahrefs 的 2026 GEO 与 llms.txt 分析、央视 315 及国内 GEO 治理报道，以及我对 cubxxw.com 的 Google Search Console 与 PageSpeed Insights 真实实测。相关链接均已在文中标注。*
+纠正错误并不意味着放弃这个主题，而是实践这个主题声称重视的纪律：让页面可访问，写出独特内容，展示证据，保留限制，再分别测量每种结果，不假装它们彼此构成因果。
+
+搜索界面还会继续改变。界面改变以后仍对人有用的来源，才是我愿意相信会复利的优化。
+
+## 一手资料
+
+1. [Google：生成式 AI 搜索优化指南](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+2. [Google：AI features 与网站](https://developers.google.com/search/docs/appearance/ai-features)
+3. [Google：crawler 与 Google-Extended](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)
+4. [OpenAI：发布者与开发者 FAQ](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq)
+5. [Perplexity crawler 文档](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
+6. [Pew：Google AI summary 出现时的点击行为](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)
+7. [Bain：zero-click 搜索与 AI summary](https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing/)
+8. [Aggarwal 等：GEO，KDD 2024](https://arxiv.org/abs/2311.09735)
+9. [Google：FAQ 与 HowTo rich result 调整](https://developers.google.com/search/blog/2023/08/howto-faq-changes)
