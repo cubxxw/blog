@@ -1,762 +1,323 @@
 ---
-title: "Building a Production-Grade AI Agent System from Scratch: A Full Architecture Breakdown of Relay"
+title: "Relay Agent Architecture in 2026: A Local Implementation Audit"
 date: 2026-06-24T10:00:00+08:00
+lastmod: 2026-07-31T18:00:00+08:00
 draft: false
 showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["AI Agent", "LangGraph", "Multi-Agent", "HITL", "Agent Architecture", "ReAct", "TypeScript", "Python", "Hono", "OpenRouter", "LLM Router", "Job Search AI", "Agent System Design"]
+keywords: []
 tags:
   - AI
   - Agent
   - LLM
-  - Architecture
-  - Development
   - Python
+  - Security
+  - Development
+categories:
+  - Development
 description: >
-  Using the Relay open-source job-search Agent project as a case study, this article fully breaks down every key design decision in a production-grade multi-agent system: why split a single Agent into 5, how to implement HITL checkpoints with LangGraph, how a three-tier LLM router precisely tracks costs, how a fabrication guard validates at runtime, and how a hybrid backend (Hono/Bun + FastAPI/Python) decouples cleanly. Whether you are building your first Agent PoC or pushing toward production, there are design patterns here you can take away.
+  A source-based audit of Relay’s coordinator, five domain agents, LangGraph HITL, browser delivery, durability gaps, and remaining 2026 migration debt.
 tldr:
-  - Multi-agent does not mean parallelism. The real reasons to split are different trigger modes, model-tier requirements, data flywheel independence, and divergent prompt evolution cadences.
-  - HITL (Human-in-the-Loop) is not a safety net — for irreversible actions like submitting applications or sending emails it is the trust foundation. LangGraph interrupt() + Command resume implements this cleanly.
-  - A three-tier LLM router (Heavy / General / Fast) plus cost tracking down to four decimal places in cents is a prerequisite for making AI engineering produce real ROI.
-  - The fabrication guard is runtime validation, not a prompt constraint. Extract entities from AI output, compare against source data, and regenerate on mismatch.
-  - "The key to decoupling a hybrid backend (TypeScript API + Python Agent) is sharing data, not sharing processes: HTTP + Redis + the same PG tables."
+  - "This is an audit of a private local implementation, not a review of a publicly accessible open-source repository."
+  - "Relay now contains a coordinator, five domain-agent modules, a Harness, API routes, event consumers, and a Playwright MCP browser path; the old “code has not started” description is no longer true."
+  - "LangGraph resumes an interrupted graph by re-running the node from its beginning, so anything before interrupt() must be idempotent or moved after approval."
+  - "Browser-assisted application is a privileged workflow: domain allowlists, indirect-prompt-injection defenses, sensitive-field blocking, human approval, and audit trails matter more than autofill coverage."
+  - "The code still uses create_react_agent, while LangChain’s current public API recommends create_agent; that is migration debt, not an emergency rewrite."
 maturity: budding
 cover:
   image: '/images/blog/relay-agent-architecture.webp'
-  caption: 'Relay five-layer Agent architecture: the complete data flow from user conversation to client-side job application'
-  alt: 'Technical diagram showing the five-layer architecture of the Relay job-search Agent system: UI layer, API orchestration layer, Agent execution layer, shared services layer, and data and integration layer'
+  caption: 'Relay architecture as an implementation audit: evidence, boundaries, and unfinished edges'
+  alt: 'Editorial architecture diagram of Relay with a coordinator, five domain agents, safeguards, browser delivery, and audit boundaries'
 columns:
   - agent-engineering
 ---
 
-> "Most Agent projects die in the unmapped wilderness between PoC and production."
+> An architecture diagram is a promise. A code audit asks which parts of that promise have acquired weight.
 
-I wrote that line while reading through the Relay project documentation. Relay is an open-source AI Agent system for job searching — not a demo built on three lines of LangChain plus GPT-4, but a project with complete architectural documentation, 172 engineering tasks, a hybrid tech stack, and explicit counterexamples for every major design decision.
+My first version of this article treated Relay as a public open-source proposal whose Agent layer had not yet been built. Both claims are now wrong.
 
-It is not fully running yet. The Agent layer code is still being written. That is exactly why I think this article is worth writing: **this is a system that has thought very deeply at the design level**, and those deep thoughts — regardless of where this project ultimately lands — are valuable references for everyone doing Agent engineering.
+As of **July 31, 2026**, the public GitHub URL previously cited by this article returns 404, while I can inspect a private local checkout. This piece is therefore a **private/local implementation audit**, fixed to local commit `22586e17ccd43cfaff0512511e71a100c5341608`. Readers should not assume that repository or commit is publicly downloadable.
 
-This article is not a product overview. It is an architectural breakdown.
+The distinction matters. I can report what exists in the checkout. I cannot turn private evidence into a public reproducibility claim.
 
----
+## How to Read the Status Labels
 
-## Why Job Search Is Uniquely Suited to an Agent System
+Every substantial claim below carries one of four labels:
 
-Before discussing architecture, I want to answer a more fundamental question: **why is job searching a domain for Agents rather than just AI tools?**
+- **Implemented** — corresponding production-path code exists in the audited checkout.
+- **Tested** — focused automated tests exist and were run during this audit.
+- **Design** — documented intent or an identified requirement, not a completed guarantee.
+- **Illustrative** — an example for reasoning, not a statement about Relay's exact code or performance.
 
-Job searching is a multi-stage, multi-tool, cognitively intensive workflow:
+This is deliberately stricter than “documented.” Documentation records intent; executable paths reveal commitments.
 
-```
-Resume prep → Job search → Resume tailoring → Form fill → Application tracking
-     ↑                                                           ↓
-     └─────────── Interview prep ← Interview invite ←───────────┘
-```
+## Audit Snapshot
 
-Every node involves enormous amounts of low-value mechanical work — searching, copying, pasting, formatting, filling forms. At the same time, every node's high-value judgments — is this role right for me? how should I frame this experience? how should I practice this interview question? — are highly personal and deeply context-dependent.
+The local checkout contains more than a proposal:
 
-That is exactly where an Agent system should intervene: **automate mechanical labor, assist high-value judgment, and make irreversible actions transparent**.
+| Area | Audit finding | Status |
+|---|---|---|
+| Coordinator | Ask Vantage router and ReAct dock entry exist | **Implemented** |
+| Domain agents | Resume, job match, interview, application preparation, and trend modules exist | **Implemented** |
+| Harness | Cost tracking, guards, context compaction, checkpointer, permissions, audit, and event support exist | **Implemented** |
+| Agent API | FastAPI routes for streaming, resumes, applications, mock interviews, and resume building exist | **Implemented** |
+| TypeScript API | 16 non-test TypeScript route modules exist; 14 are mounted directly and 2 are used as nested routes | **Implemented** |
+| Events | Redis-backed event bus plus consumers and handlers exist | **Implemented** |
+| Browser path | Playwright MCP client and approval-gated browser tools exist | **Implemented; tested** |
+| Database evolution | Migrations are numbered `001` through `022`; the SQL contains 21 `CREATE TABLE` statements | **Implemented** |
+| Public availability | The formerly cited GitHub URL is not publicly reachable | **Not public** |
 
-Relay's north star is: "quality over quantity — one precise shot beats a hundred blind sprays."
+For this audit, the focused router, browser-tool, and cost-tracker suites completed with **47 passing tests**. That result supports those paths only; it is not a substitute for an end-to-end production test.
 
-This positioning alone determines that the architecture cannot be "one-click mass apply." It must be "every application goes through user review."
+**Status: Tested on the audited local commit.**
 
----
+The useful story is no longer “look at this ambitious design.” It is “look at the distance between a design and its current failure boundaries.”
 
-## Overall Architecture: Five Layers
+## One Coordinator, Five Domain Agents
 
-Relay's architecture has five layers, from the bottom up:
+Relay separates conversation routing from five domain modules:
 
-```
-+----------------------------------------------------------+
-|  Layer 5: UI                                             |
-|  Next.js 16 web console + Manifest V3 browser extension  |
-+----------------------------------------------------------+
-|  Layer 4: API + Orchestration                            |
-|  Hono/Bun TypeScript API + Redis Event Bus               |
-+----------------------------------------------------------+
-|  Layer 3: Agent Execution                                |
-|  Python FastAPI + LangGraph (5 domain agents)            |
-+----------------------------------------------------------+
-|  Layer 2: Shared Services                                |
-|  Auth, Notification, Audit, LLM Router                   |
-+----------------------------------------------------------+
-|  Layer 1: Data + External Integrations                   |
-|  PostgreSQL + pgvector, Redis, MinIO, OpenRouter          |
-+----------------------------------------------------------+
-```
+1. `ResumeAgent` parses, analyzes, optimizes, and tailors résumés.
+2. `JobMatchAgent` ingests and matches jobs.
+3. `InterviewAgent` runs interview preparation and evaluation flows.
+4. `AppPrepAgent` prepares application material and browser actions.
+5. `TrendAgent` extracts and summarizes market signals.
 
-The most central design decision is the **hybrid backend**: TypeScript (Hono + Bun) for the API layer, Python (FastAPI + LangGraph) for the Agent layer, connected via HTTP + Redis + a shared PostgreSQL instance.
+**Status: Implemented.**
 
-This is not a compromise. It is an intentional division of labor:
-- **TypeScript/Hono**: rapid iteration, type safety, small bundle, ideal for CRUD + middleware + routing
-- **Python/LangGraph**: mature AI ecosystem, complex reasoning, state management, multi-turn dialogue, deep community support
+This split is defensible without pretending that multi-agent systems are automatically faster or smarter. A useful boundary usually follows one of four pressures:
 
-The two layers **do not share a process, only data**. The TypeScript API calls the Python FastAPI via HTTP; the Python Agent writes to PG, and the TypeScript API reads from it. No RPC framework, no gRPC. The simplest decoupling approach is often the most reliable.
+- trigger mode differs — conversation, event, scheduled job, or explicit user action;
+- model and latency requirements differ;
+- data ownership differs;
+- prompts and evaluation suites evolve at different speeds.
 
----
+That is more precise than the old claim that coordination cost grows as \(O(N^2)\). No benchmark in this checkout supports such a complexity statement. Coordination cost depends on the topology, shared state, tool contracts, and number of cross-agent handoffs.
 
-## Agent Layer: Why 5 Agents Instead of 1
+The coordinator itself still builds its dock graph with `langgraph.prebuilt.create_react_agent`.
 
-This is the most worthwhile design decision to dig into.
+**Status: Implemented, with migration debt.**
 
-### Failure Modes of a Single Agent
+LangChain's current [agent documentation](https://docs.langchain.com/oss/python/langchain/agents) presents `langchain.agents.create_agent` as the supported high-level API, and its [v1 migration guide](https://docs.langchain.com/oss/python/migrate/langchain-v1) shows the move away from `create_react_agent`. Relay does not need a cosmetic rewrite today, but new middleware and agent-runtime work should avoid deepening the old dependency.
 
-Many teams' first instinct when building an Agent system is "one Agent does everything." The reasoning is straightforward: fewer services means fewer failure modes; context stays complete inside one Agent; no inter-agent communication needed.
+### The Classifier Is Smaller Than the Old Article Claimed
 
-But this intuition runs into fundamental problems as the system grows:
+The source still defines `REGEX_ACCEPT_THRESHOLD = 0.85`, not 0.95. A regex hit at or above that threshold can be accepted by `classify_intent()`.
 
-**Coordination cost scales as O(N squared)**. When one Agent must simultaneously handle "parse a PDF resume," "match jobs," "generate interview questions," and "scrape market trends," the prompt grows unboundedly, the model must switch between radically different tasks, errors cannot be isolated, and debugging becomes nearly impossible.
+**Status: Implemented in the classifier module.**
 
-**Model tier requirements conflict**. Parsing a PDF needs a fast, cheap model. Deeply evaluating an interview performance needs a model with strong reasoning. Batch ETL needs the lowest possible cost. A single Agent either uses the most expensive model for everything, or introduces extremely complex model-switching logic.
+However, the former Layer-2 LLM classifier is gone: below-threshold or unmatched input currently falls back to `other`. The production dock removed its old general regex fast path on July 8, 2026, because that path emitted an event vocabulary incompatible with the AG-UI consumer. General requests now go through the ReAct loop, while a narrower deterministic fast path added on July 13 handles pasted-job-description tailoring.
 
-**Prompt evolution cadences differ**. The "resume optimization" prompt might update weekly. The "trend report" prompt might update quarterly. The "interview question generation" prompt needs continuous iteration based on crowdsourced data. Mixed together, any update to one can affect the others.
+**Status: Layer 2 not implemented; the old general dock fast path is removed, with one narrow tailoring path retained.**
 
-**Data flywheels cannot grow independently**. The value of the interview question database needs to aggregate from all users' interview records — that is independent business logic that should not be mixed with resume parsing.
+This is a good example of why architecture descriptions rot. A component may still exist in a module while no longer sitting on the active request path.
 
-### Relay's 5-Agent Design
+## HITL Is a Transaction Boundary
 
-Relay splits responsibility into 5 single-purpose agents:
+Relay's most important principle survives the code audit: write-like browser actions require user approval.
 
-| Agent | Core Responsibility | Trigger | Primary Model |
-|-------|---------------------|---------|---------------|
-| **ResumeAgent** | Parse / optimize / tailor resume | User upload / click | GLM-4.7 (optimize) + V4Flash (parse) |
-| **JobMatchAgent** | Scrape / parse / match jobs | Cron + events | V4Flash + Embeddings |
-| **InterviewAgent** | Generate questions / evaluate answers | User-initiated conversation | V4Pro (evaluate) + GLM-4.7 (generate) |
-| **AppPrepAgent** | Prepare application package | Coordinator call | GLM-4.7 + V4Flash |
-| **TrendAgent** | ETL / skill extraction / reports | Daily cron | V4Flash + DuckDB |
+The browser tools classify snapshot as read-only notification, while navigate, click, and form fill are wrapped by an approval decorator.
 
-Every split maps to at least one of the four dimensions above: different triggers, different model tiers, different data flywheels, different prompt evolution cadences. Not splitting for its own sake.
+**Status: Implemented.**
 
-### The Coordinator: The Agent That Orchestrates All Agents
+LangGraph's `interrupt()` and `Command(resume=...)` are a natural fit, but the semantics are easy to describe incorrectly. Resume does **not** continue from the exact Python line as though a suspended stack frame had been restored. The [official interrupt guide](https://docs.langchain.com/oss/python/langgraph/interrupts) says the node starts again from its beginning, and the resume value becomes the return value of `interrupt()`.
 
-Above the five domain agents sits a Coordinator — "Ask Vantage" — the entry point for user conversations.
-
-The Coordinator's core job is **intent recognition + tool routing**, implemented as a LangGraph `create_react_agent` with 12 registered tools:
+That changes how the node must be written:
 
 ```python
-tools = [
-    # Propose plan (HITL)
-    propose_plan,
-
-    # Call domain agents
-    tailor_resume, find_jobs, start_mock_interview, draft_cover_letter,
-
-    # Memory recall
-    recall_user_memory, recall_past_applications, recall_weak_points,
-
-    # Admin operations
-    list_my_applications, build_resume_from_scratch, trends_today,
-
-    # Narrate
-    narrate,
-]
-```
-
-One detail worth highlighting: **fast-path and slow-path separation**.
-
-For simple intents ("show my applications," "what are today's trends"), a regex + V4Flash classifier runs first. If confidence is 95% or higher, the full ReAct reasoning loop is bypassed and the request is routed directly. This drops latency for the vast majority of simple requests by an order of magnitude while reserving expensive reasoning capacity for genuinely complex problems.
-
----
-
-## HITL: Human-in-the-Loop Is Not Optional
-
-Relay repeats one design principle throughout its documentation: **the user must personally click Submit before any application is created**.
-
-This is not a product UI choice. It is an architectural commitment.
-
-### Why Irreversible Actions Require HITL
-
-Submitting an application is irreversible. Sending an email is irreversible. Deleting data is irreversible.
-
-An Agent system without HITL for these actions is "a proxy with no undo key." Users not trusting it — no matter how intelligent it is — is completely rational.
-
-Relay splits tool permission into four tiers:
-
-```python
-class Permission(Enum):
-    AUTO    = "auto"     # Execute silently, no notification
-    NOTIFY  = "notify"   # Execute then send WebSocket notification
-    APPROVE = "approve"  # Pause and wait for user confirmation
-    BLOCK   = "block"    # Not registered, never executed
-```
-
-`APPROVE` is the critical tier. `submit_form`, `send_email`, `delete_*`, and similar operations all live here.
-
-### LangGraph's interrupt() Implementation
-
-LangGraph provides the `interrupt()` primitive to implement HITL checkpoints:
-
-```python
-from langgraph.types import interrupt, Command
-
-@tool
-def submit_form(job_url: str, fields: dict) -> str:
-    # Pause before executing, wait for user confirmation
+def approval_node(state):
     decision = interrupt({
-        "action": "submit_form",
-        "job_url": job_url,
-        "fields": fields,
-        "message": "Agent wants to submit to this position. Review the form and approve.",
+        "action": "fill_form",
+        "fields": state["proposed_fields"],
     })
 
-    if decision.get("type") == "approve":
-        # User may modify fields before approving
-        return do_submit(job_url, decision.get("fields", fields))
+    if decision["type"] != "approve":
+        return {"status": "cancelled"}
 
-    return "User cancelled this application."
+    # The irreversible action is after approval.
+    return perform_idempotent_fill(
+        key=state["operation_id"],
+        fields=decision.get("fields", state["proposed_fields"]),
+    )
 ```
 
-When `interrupt()` is called, LangGraph persists the current graph state to PostgreSQL via `PostgresSaver` checkpointer and then pauses execution. After the user confirms in the frontend, the API layer sends `Command(resume={"type": "approve", ...})` back to the graph, and execution resumes precisely from the pause point:
+Anything before `interrupt()` may run again. Database inserts need an idempotency key or upsert; messages need deduplication; external calls are safer in a separate post-approval node. LangGraph's [persistence guide](https://docs.langchain.com/oss/python/langgraph/persistence) also makes the other half explicit: durable human review needs a checkpointer and stable thread ID.
 
-```python
-# After user approves
-graph.invoke(
-    Command(resume={"type": "approve", "fields": modified_fields}),
-    config={"configurable": {"thread_id": session_id}},
-)
-```
+**Status in Relay: persistent checkpointer support implemented; every side effect still requires case-by-case idempotency review.**
 
-**The most important technical detail here is the checkpointer**. Without a checkpointer, `interrupt` cannot pause across process boundaries because state only exists in memory. A PostgreSQL checkpointer lets the pause-resume cycle span any amount of time. A user coming back tomorrow to confirm an application is no problem.
+HITL is not a decorative confirmation modal. It is a transaction boundary joining four things:
 
-### HITL as a Trust Interface
+- a complete preview of the proposed action;
+- an editable decision payload;
+- durable state keyed to the correct user and thread;
+- an idempotent execution path after approval.
 
-From a higher vantage point, HITL is not just a safety mechanism — it is the **trust interface between the user and the Agent**.
+Remove any one, and “human in the loop” becomes theatre.
 
-When a user sees "Agent wants to do X, details below, approve?", several things happen:
-- The user understands what the Agent intends to do
-- The user can modify parameters such as adjusting form fields
-- The user has a chance to refuse
-- The user's approval act itself becomes a training signal
+## The Harness: Where Reliability Actually Lives
 
-This is a fundamentally different trust relationship than "Agent did X in the background and told you afterward."
+Relay wraps the graph runtime with a Harness containing model selection, cost accounting, budget guards, context compaction, permissions, persistence, audit logging, and event emission.
 
-Relay's design position is: for irreversible actions, **transparency and a sense of control matter more than efficiency**.
+**Status: Implemented.**
 
----
+This is the part of agent engineering I trust most. Prompts describe desired behavior; a Harness limits the damage when behavior drifts.
 
-## Three-Tier LLM Routing: Cost Is an Engineering Problem
+For a deeper treatment, see [Agent Engineering: The 98% Is the Harness](/ai-agent/posts/agent-engineering-the-98-percent-harness/) and [Context Engineering: The New Foundation](/ai-agent/posts/context-engineering-the-new-foundation/).
 
-"Use the best model for everything" is common PoC thinking. In production, it shows up directly on the bill.
+### Cost Tracking Is Observable, Not Magical
 
-Relay's approach is a three-tier LLM router with precise cost tracking.
+The current code tracks model usage through a context-local tally and applies budget checks around model calls.
 
-### Three-Tier Model Breakdown
+**Status: Implemented.**
 
-```
-Heavy (reasoning tier)
-  Model: DeepSeek V4 Pro
-  Cost: $0.435 / 1M input, $0.87 / 1M output
-  Uses: Deep interview evaluation, complex reasoning, scenes needing reasoning traces
+The previous article quoted exact model prices, a $0.50 session ceiling, and an automatic tier downgrade as though those were timeless product facts. Provider prices and model identifiers change; source configuration can change faster than an essay. The durable lesson is narrower:
 
-General (general-purpose tier)
-  Model: GLM-4.7
-  Cost: $0.40 / 1M input, $1.75 / 1M output
-  Uses: Resume optimization/tailoring, Coordinator main loop, medium-complexity tasks
+1. record the actual model identifier and token usage returned by the provider;
+2. attach cost and latency to the request trace;
+3. enforce limits in code, not in a system prompt;
+4. test failure behavior when a budget is exhausted.
 
-Fast (batch tier)
-  Model: DeepSeek V4 Flash
-  Cost: $0.098 / 1M input, $0.196 / 1M output
-  Uses: JD parsing, intent classification, batch ETL, simple extraction
-```
+Any price table in application code also needs a freshness owner. Precision to four decimal places does not compensate for stale prices.
 
-Each tier corresponds to specific scenarios, chosen based on reasoning complexity and call frequency — not assigned randomly.
+### Audit Writes Are Currently Best-Effort
 
-### Precise Cost Calculation
+Relay's audit context manager schedules its database insert with `asyncio.create_task()`. It now retains strong references to pending tasks, avoiding one documented weak-reference failure mode.
 
-```typescript
-// Cost calculation in api/llm.ts
-const PRICE_TABLE: Record<string, { in: number; out: number }> = {
-  "deepseek/deepseek-chat-v4-pro":   { in: 0.435, out: 0.87 },
-  "zhipu/glm-4.7":                   { in: 0.40,  out: 1.75 },
-  "deepseek/deepseek-chat-v4-flash": { in: 0.098, out: 0.196 },
-}
+**Status: Implemented as best-effort telemetry.**
 
-function computeCostCents(
-  model: string,
-  promptTokens: number,
-  completionTokens: number,
-): number {
-  const p = PRICE_TABLE[model]
-  if (!p) return 0
-  const usd =
-    (promptTokens / 1_000_000) * p.in +
-    (completionTokens / 1_000_000) * p.out
-  // Convert to cents, four decimal places
-  return Math.round(usd * 100 * 10_000) / 10_000
-}
-```
+But “scheduled” is not “durably committed.” A process crash or abrupt event-loop shutdown can still lose an audit row. Python's [task documentation](https://docs.python.org/3/library/asyncio-task.html) recommends retaining task references; it does not turn a background task into a durable queue.
 
-**Why track down to four decimal places in cents?** A single call may cost less than $0.0001, but dozens of calls within a session accumulate quickly. Precise tracking is a prerequisite for cost observability.
+If the audit record is legally, financially, or operationally required, use a transactional outbox, a persistent queue, or an awaited write on the critical path.
 
-### Dynamic Downgrade
+**Status: durable audit delivery is a design requirement, not an implemented guarantee.**
 
-The Agent layer has a `post_model_hook` that accumulates token usage after each model call. When session cost approaches the $0.50 cap, a downgrade is automatically triggered:
+The same caution applies to event consumers launched with background tasks. They are useful plumbing, but delivery semantics come from acknowledgements, retries, deduplication, and persisted offsets—not from `create_task()` itself.
 
-```python
-def post_model_hook(state: CoordinatorState, model_output) -> CoordinatorState:
-    usage = model_output.usage_metadata
-    cost = compute_cost(current_model, usage.input_tokens, usage.output_tokens)
-    new_total = state["total_cost_cents"] + cost
+## Fabrication Guard: A Narrow Detector, Not a Truth Machine
 
-    if new_total > 40.0:  # Approaching the 50 cents cap
-        trigger_model_downgrade(state)  # V4 Pro -> GLM-4.7 -> V4 Flash
+Relay's résumé guard compares selected named and quantitative entities in generated content against the source résumé. It covers company, role, institution, degree, project names, percentages, money, years, and larger standalone numbers. It also annotates change-log rows as safe, needs review, or unsupported.
 
-    return {**state, "total_cost_cents": new_total}
-```
+**Status: Implemented.**
 
-This mechanism gives each session a cost ceiling while delivering the highest quality service for as long as possible on the more expensive models.
+That is a meaningful runtime backstop. It is not proof that a résumé is truthful.
 
----
+The guard can catch “increased throughput by 40%” when 40% is absent from the source. It may miss an ungrounded qualitative claim such as “owned the migration strategy,” a rearranged causal relationship, a misleading synonym, or a smaller number outside its heuristic.
 
-## Fabrication Guard: Runtime Validation, Not Prompt Constraint
+The honest contract is:
 
-This is the single design in Relay that I believe has the most engineering value, and the one least often implemented in other systems.
+- the guard reduces a defined class of unsupported entities;
+- false negatives remain possible;
+- generated claims still require human review;
+- blocked or ambiguous changes should preserve source evidence in the UI.
 
-### The Root Problem
+**Status: limited detector implemented; full semantic grounding is a design goal.**
 
-Letting AI optimize a resume has one fundamental risk: **AI may invent things you never did**.
+“Never fabricates” is not a defensible product promise. “Shows its evidence and blocks known unsupported patterns” is.
 
-"Improved team efficiency by 30%" — that 30% was made up by the AI.
-"Led a team of 5 engineers" — that 5 was added because the AI thought it "sounded good."
+## Browser Delivery Is a Security Boundary
 
-A pure prompt constraint ("do not fabricate content") is insufficient. The model will obey, until it does not.
+Relay can connect to a user's existing browser through Playwright MCP. It can request snapshots and, after approval, navigate, click, or fill fields. The implementation drops credential-like names—including password, PIN, SSN, and credit-card fields—before calling MCP.
 
-### Runtime Validation Mechanism
+**Status: MCP path, write-action HITL, and a limited sensitive-field denylist are implemented.**
 
-Relay's solution is to extract all verifiable entities from the AI output after resume optimization, then compare against the original resume:
+The earlier article claimed that a user's own browser would make assisted behavior indistinguishable from manual use and would “bypass” account bans and CAPTCHAs. Those claims were both unverified and unsafe. Browser automation can be detected through behavior, timing, DOM interaction, extension signals, or platform-side controls. A user session is not permission to automate every site.
 
-```python
-FABRICATION_PATTERNS = [
-    r'\b\d{4}\b',           # Years
-    r'\b\d+%\b',            # Percentages
-    r'\$[\d,]+',            # Dollar amounts
-    r'\b\d+\s+people\b',    # Headcounts
-    r'\b\d+\s+engineers\b', # Engineer counts
-]
+A production browser agent needs at least:
 
-async def fabrication_guard(
-    original: ResumeContent,
-    optimized: str,
-    max_retries: int = 2,
-) -> str:
-    for attempt in range(max_retries + 1):
-        entities = extract_entities(optimized, FABRICATION_PATTERNS)
-        violations = find_violations(entities, original)
+| Control | Required posture | Audit status |
+|---|---|---|
+| Domain allowlist | Only approved ATS and career domains may be visited | **Design gap** |
+| Terms and policy check | Do not automate flows prohibited by the target service | **Design gap** |
+| Indirect prompt injection defense | Treat page text as untrusted data, never authority | **Design gap** |
+| Sensitive-field policy | Block credentials and regulated or self-identification fields by policy | **Partly implemented** |
+| Write-action approval | Preview each navigation, fill, and click with exact target and values | **Implemented** |
+| Submit boundary | User performs or explicitly approves final submission | **Implemented by policy; verify per path** |
+| CAPTCHA | Stop and return control to the user; never evade it | **Required policy** |
+| Behavioral rate limits | Cap retries, navigation frequency, and repeated applications | **Design gap** |
+| Audit trail | Record actor, target domain, proposed values, decision, and result | **Partly implemented** |
 
-        if not violations:
-            return optimized  # Passed validation
+OWASP's [prompt-injection guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) calls out indirect injection through external sources such as websites and files. An ATS page can contain text that tries to redirect the agent, reveal data, or invoke another tool. Accessibility snapshots make pages easier for models to read; they do not make page content trustworthy.
 
-        if attempt == max_retries:
-            # Exceeded retries — fail loudly
-            await audit_log("fabrication_guard_failed", violations)
-            raise FabricationDetected(
-                f"Could not eliminate fabricated content in {max_retries} attempts: {violations}"
-            )
+The safe mental model is simple: **the browser is a loaded tool, and the page is an untrusted caller**.
 
-        # Regenerate with specific violations attached
-        optimized = await regenerate_with_violations(original, optimized, violations)
+## Data and Events: What Exists, What Remains
 
-    return optimized
-```
+The audited migration directory runs from `001` to `022`, with forward and rollback files in the newer sequence. Across those migrations, there are 21 table-creation statements. That replaces the old, stale claim of 17 tables.
 
-**Key design**: on failure, do not silently degrade by returning the original content. Instead **raise an explicit exception and write to the audit log**. This lets the engineering team track the fabrication guard's trigger rate and continuously improve prompts.
+**Status: Implemented in migration SQL.**
 
-### Why This Matters
+The schema includes users, files, résumé versions, jobs, application drafts, conversations, memories, interviews, agent configuration and tasks, resume suggestions, trend snapshots, and persisted stream events.
 
-From a product perspective, this is the fundamental difference from "AI polishing" tools: Relay's promise to users is that **AI only restates your own experiences and will never add things you never did**.
+Relay also has a Redis event bus with consumers for cross-agent reactions.
 
-Whether that promise can be trusted does not depend on how well the prompt is written. It depends on whether there is runtime validation as a backstop.
+**Status: Implemented.**
 
----
+What the source does not justify is a claim of guaranteed event delivery. To make a resume update reliably trigger downstream matching after crashes, the system needs explicit durability semantics:
 
-## API Layer: Middleware-First Design
+- producer-side transactional outbox or equivalent atomicity;
+- consumer acknowledgements;
+- bounded retries and a dead-letter path;
+- idempotency keyed by event ID;
+- replay and lag observability.
 
-Relay's API layer is built on Hono + Bun, but the more important story is not the framework choice — it is **how the middleware is composed**.
+**Status: reliability hardening remains design work.**
 
-### Core Middleware Stack
+Event-driven systems are not decoupled merely because they use Redis. They are decoupled when failure ownership is explicit.
 
-```typescript
-app.use(
-  security(),     // CORS allowlist + CSP + 1MB body limit
-  requestId(),    // Auto-inject UUID trace ID
-  rateLimiter(),  // Redis sliding window rate limit (per IP)
-  auth(),         // JWT validation + X-User-Id header
-  idempotency(),  // 24h duplicate request dedup (Redis)
-  validation(),   // Zod unified validation (body + query)
-)
-```
+## Claims This Audit Retires
 
-The **idempotency middleware** is the most interesting design here. The frontend attaches an `Idempotency-Key` header on retries (typically a request UUID). The server caches the first response in Redis for 24 hours. Subsequent requests with the same key return the cached result without triggering business logic.
+Several numbers in the earlier article looked precise without having evidence:
 
-This is especially important for Agent systems: if a user approves a HITL checkpoint and a network hiccup causes the frontend to retry, without idempotency the same application could be submitted twice.
+- 70/25/5 percent field-coverage splits;
+- $0.003 LLM cost per application;
+- 98% theoretical gross margin;
+- an order-of-magnitude latency improvement;
+- a 23-role recommendation uplift;
+- weighted matching quality presented as “outperforming” without a benchmark.
 
-### IDOR Protection Matrix
+These have been removed. They may be useful hypotheses for an experiment, but they are not implementation facts.
 
-Relay has a dedicated `routes/idor.test.ts` file with 15 IDOR (Insecure Direct Object Reference) test scenarios:
+An honest measurement would publish:
 
-```typescript
-// User A attempts to access User B's resume
-test("GET /resumes/:id — cannot access another user's resume", async () => {
-  const { id } = await createResumeForUserB()
-  const res = await request(app)
-    .get(`/api/resumes/${id}`)
-    .set("Authorization", `Bearer ${tokenA}`)
+- dataset and sampling window;
+- task success definition;
+- human-review protocol;
+- p50, p95, and error rates;
+- model and provider versions;
+- full cost distribution, including retries;
+- baseline and confidence intervals.
 
-  expect(res.status).toBe(403)
-})
-```
+**Status: illustrative evaluation plan.**
 
-For a system handling resumes, cover letters, and interview records, IDOR protection is not optional. The 15-case matrix covers combinations of different resource types and different roles, providing a continuous regression baseline.
+Without that envelope, a percentage is typography wearing a lab coat.
 
----
+## A 2026 Engineering Checklist
 
-## Data Model: Schema Designed for Agent Systems
+When reviewing an agent architecture, I now ask these questions in order:
 
-Relay's database has 17 tables. Here are three designs with specific Agent-oriented characteristics.
+1. **What irreversible action can the system take?**
+2. **Where is the durable approval boundary?**
+3. **What runs twice after retry or resume?**
+4. **Which model output is checked against source evidence?**
+5. **Which external content can issue an indirect instruction?**
+6. **Which event or audit record can be lost during process death?**
+7. **Which claim is measured, and which is merely designed?**
+8. **Which framework API is current, and which is tolerated migration debt?**
 
-### Dual-Track Resume Model
-
-```sql
--- resumes table has a track axis
-ALTER TABLE resumes ADD COLUMN track text NOT NULL DEFAULT 'original'
-  CHECK (track IN ('original', 'optimized', 'tailored'));
-
--- Original resumes are immutable (trigger protection)
-CREATE TRIGGER prevent_original_mutation
-  BEFORE UPDATE ON resumes
-  FOR EACH ROW
-  WHEN (OLD.track = 'original')
-  EXECUTE FUNCTION raise_mutation_error();
-```
-
-Three-track logic:
-- `original`: what the user uploaded, never modifiable (trust contract)
-- `optimized`: AI's general optimization of the original
-- `tailored`: a version customized for a specific JD (per-job)
-
-Each bullet point has a stable `bullet_index`, enabling line-by-line diff editing. This is the gap between "AI edited your resume" and "you know exactly what AI changed."
-
-### Agent Task Audit Table
-
-```sql
-CREATE TABLE agent_tasks (
-    id          uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-    user_id     uuid NOT NULL REFERENCES users(id),
-    agent_name  text NOT NULL,
-    action      text NOT NULL,
-    payload     jsonb,
-    -- HITL fields
-    hitl_action    text,
-    hitl_payload   jsonb,
-    hitl_decision  text,     -- 'approve' | 'reject' | 'modify'
-    decided_at     timestamptz,
-    -- Cost tracking
-    cost_cents  numeric(10,4),
-    tokens_in   int,
-    tokens_out  int,
-    -- Status
-    status      text DEFAULT 'pending',
-    error       text,
-    started_at  timestamptz DEFAULT now(),
-    ended_at    timestamptz
-);
-```
-
-This table does two things:
-1. **Audit log**: every Agent action is recorded and traceable
-2. **HITL state**: `hitl_decision` + `decided_at` records the user's approval result for each action
-
-This gives a reliable answer to "why did the Agent take this action."
-
-### pgvector Semantic Matching
-
-```sql
--- jobs table has an embedding column
-ALTER TABLE jobs ADD COLUMN embedding vector(1536);
-CREATE INDEX jobs_embedding_idx ON jobs USING ivfflat (embedding vector_cosine_ops);
-
--- Match query
-SELECT j.*, 1 - (j.embedding <=> $1) as score
-FROM jobs j
-WHERE 1 - (j.embedding <=> $1) > 0.7
-ORDER BY score DESC
-LIMIT 20;
-```
-
-JobMatchAgent generates embeddings after scraping new positions and uses cosine similarity for semantic matching. Match model weights: skills (45%) + level (25%) + location (20%) + salary (10%).
-
-Pure vector search plus weighted scoring outperforms keyword matching on both recall and precision.
-
----
-
-## The Harness Layer: Engineering Wrapper Around LangGraph
-
-Relay wraps a layer called the "Harness" around LangGraph. This is the most production-minded design in the entire Python Agent layer.
-
-```
-+-------------------------------------------------+
-|  Relay Harness (business logic layer)            |
-|  - Cost tracking + token budget                  |
-|  - Loop Guards (runaway prevention)              |
-|  - Context Window management (auto-compress)     |
-|  - Audit logging (async insert agent_tasks)      |
-|  - Permission system (AUTO/NOTIFY/APPROVE/BLOCK) |
-+-------------------------------------------------+
-|  LangGraph (underlying engine)                   |
-|  - create_react_agent ReAct loop                 |
-|  - StateGraph + interrupt HITL                   |
-|  - PostgresSaver checkpointer                    |
-+-------------------------------------------------+
-```
-
-### Loop Guards
-
-One of the biggest engineering risks in Agent systems is runaway loops — an Agent spiraling into tool calls until tokens are exhausted or the bill explodes.
-
-Relay's Loop Guards:
-
-```python
-GUARDS = {
-    "max_iterations":    20,    # Over 20 rounds: force summarize and stop
-    "token_budget":  80_000,    # Over 80k tokens: compress history
-    "cost_limit_cents": 50.0,   # Over $0.50: pause and notify user
-    "timeout_seconds":  300,    # Over 5 minutes: abort
-    "consecutive_errors": 3,    # 3 consecutive errors: abort
-}
-```
-
-`max_iterations` is enforced via LangGraph's `recursion_limit=40` (double the actual limit as a buffer). The Harness catches the resulting `GraphRecursionError`, generates a summary, and exits gracefully.
-
-### Context Window Compression
-
-When a session's token usage exceeds 60k, older conversation history is automatically compressed:
-
-```python
-async def compress_if_needed(state: CoordinatorState) -> CoordinatorState:
-    total_tokens = sum(count_tokens(m) for m in state["messages"])
-
-    if total_tokens < 60_000:
-        return state
-
-    messages = state["messages"]
-    recent = messages[-10:]   # Keep most recent 5 turns (user + assistant each)
-    old = messages[:-10]
-
-    summary = await summarize(old)  # V4Flash compresses old history
-    return {
-        **state,
-        "messages": [SystemMessage(summary)] + recent,
-    }
-```
-
-This design lets the Coordinator maintain very long sessions — helping you find a job might span weeks — without crashing from context window overflow.
-
-### Audit Context Manager
-
-```python
-@asynccontextmanager
-async def audit(user_id: UUID, agent: str, action: str):
-    task_id = uuid4()
-    try:
-        yield
-        # Write asynchronously — does not block the main flow
-        asyncio.create_task(
-            insert_agent_task(task_id, user_id, agent, action, "success")
-        )
-    except Exception as e:
-        asyncio.create_task(
-            insert_agent_task(task_id, user_id, agent, action, "error", error=str(e))
-        )
-        raise
-
-# Usage
-async with audit(user_id, "resume_agent", "parse"):
-    result = await parse_resume(raw_text)
-```
-
-`asyncio.create_task()` is the key: writing the audit log does not block the main flow but guarantees eventual consistent writes.
-
----
-
-## Client-Side Delivery: The Core Differentiating Architecture
-
-Relay has what it calls its "core differentiator": **applications happen in the user's own browser, not on Relay's servers**.
-
-### Why Not Build Server-Side Auto-Apply
-
-Server-side auto-apply has three systemic risks:
-1. **Account bans**: unfamiliar IP + unfamiliar device fingerprint is easily detected by ATS platforms
-2. **Credential security**: storing users' ATS account passwords is a security nightmare
-3. **CAPTCHA arms race**: an endless maintenance loop with no exit
-
-Client-side execution fundamentally bypasses all three: **the user's own browser, own IP, own authenticated session** — platforms cannot distinguish "manual application" from "AI-assisted application."
-
-### Three-Layer Delivery Architecture
-
-```
-Layer 1 (~70% of fields): Local rules engine
-  Common fields (name / email / phone / company / title) -- direct mapping, $0 cost
-
-Layer 2 (~25% of fields): Cloud LLM field mapping
-  POST /api/map-fields
-  in:  { unknown_field: "current_compensation_type", user_profile }
-  out: { field -> value }
-  Cost ~$0.001 / job
-
-Layer 3 (~5% of fields): Cloud LLM open-ended questions
-  POST /api/answer-q
-  in:  { question, jd, resume }
-  out: personalized_answer
-  Cost ~$0.002 / job
-```
-
-Total LLM cost per application is approximately $0.003, implying a theoretical gross margin near 98% on a $15/month subscription.
-
-### Plan B+: Playwright MCP Chrome Extension
-
-The longer-term design is to let the server-side Agent operate the user's already-logged-in browser directly via MCP:
-
-```
-Server Agent (LangGraph) <-- MCP --> Playwright MCP Chrome Extension
-                                       - Connect to user's logged-in ATS tab
-                                       - accessibility snapshot (structured DOM)
-                                       - Fill fields (visible to user)
-                                       - User personally clicks Submit
-```
-
-Playwright's `accessibility snapshot` converts any page into a tree representation an Agent can understand, letting the Agent handle ATS forms it has never seen before. This is the most elegant "AI form-filling" architecture currently known: the browser extension needs no DOM manipulation code, and the Agent side needs no ATS-specific adapters.
-
----
-
-## Data Flywheel: The Mechanism That Gets Better With Use
-
-Relay's product moat is not the single-session experience — it is the **data flywheel**, the mechanism by which the system improves as more users use it.
-
-### InterviewAgent Crowdsourced Question Bank
-
-```
-User A completes a Google L5 backend interview
-  -> records questions + answers + AI evaluation
-
-User B also does a Google L5 backend interview
-  -> system surfaces "related real questions"
-
-User C opts into crowdsourcing
-  -> aggregated insight: "top 10 questions at Google L5 backend"
-```
-
-With each new user, the interview question bank becomes richer. This is classic network effects — applied to knowledge accumulation rather than social graphs.
-
-### Event-Driven Cross-Agent Coordination
-
-```
-Resume updated -> 'resume:updated' event
-                      |
-                      v
-JobMatchAgent subscribes -> recompute all open job matches
-                      |
-                      v
-'job:matched' event -> real-time frontend notification
-
-Job scraped -> 'job:created' event
-                      |
-                      v
-JobMatchAgent -> find matching users
-                      |
-                      v
-Notification Service -> push message
-```
-
-This event-driven architecture decouples the agents — no direct calls, only event subscriptions. Each Agent grows independently and subscribes independently to the events it cares about.
-
-### TrendAgent Personalized Skill Gaps
-
-At 2:00 AM daily, TrendAgent extracts skill requirements from job data, compares against the user's resume, and generates a personalized gap report:
-
-```
-"Top 5 backend job demands this week:
-  Rust +34% (your resume: none)
-  Ray/distributed training +28% (your resume: some related experience)
-  Graph RAG +22% (your resume: none)
-
-Suggestion: add a Rust side project bullet -- could match 23 more roles."
-```
-
-This turns trend data into actionable personal recommendations rather than just a market report.
-
----
-
-## A Design Checklist for Agent Engineers
-
-From Relay's architecture I have distilled several design decision points you can apply to your own projects:
-
-### Four Dimensions for Splitting Agents
-
-Before deciding how many agents to create, ask these four questions:
-- Are trigger modes different? (user interaction vs cron vs event subscription)
-- Do model tier requirements conflict? (reasoning vs general-purpose vs batch)
-- Is there an independently growing data flywheel?
-- Are prompt evolution cadences different?
-
-If any one of these is "yes," the split has a valid justification.
-
-### Three Requirements for HITL
-
-HITL is not as simple as adding a "Confirm" button. You need:
-1. **Persistent checkpointer**: paused state must be recoverable across processes and across time
-2. **Sufficient context**: users see not just "approve/reject" but "what the Agent wants to do and with what parameters"
-3. **Support for modification**: users should be able to modify parameters before approving
-
-### Three Layers of Cost Engineering
-
-- **Precise tracking**: down to session level and individual API call level
-- **Tiering**: different complexity tasks use different model tiers
-- **Ceiling**: set a per-session cost cap with dynamic downgrade
-
-### Runtime Validation Over Prompt Constraints
-
-For any "AI should not do X" requirement, first ask: "Is there runtime validation as a backstop?"
-
-Prompt constraints are probabilistic. Runtime validation is deterministic. Use both, but runtime validation is the last line of defense.
-
-### Audit Logs Are Infrastructure, Not Debugging Tools
-
-Not optional:
-
-- Every Agent action: log when, what, how many tokens, how much cost
-- Every HITL decision: log what the user approved, rejected, or modified
-- Every error: log which Guard triggered and why
-
-Without audit logs, an Agent system is a black box. When something goes wrong, there is no trail to follow.
-
----
-
-## Current Status and Open-Source Value
-
-Relay's current completion:
-- Infrastructure (database, Redis, MinIO): **complete**
-- TypeScript API layer: **~30%** (endpoint stubs + middleware complete)
-- Next.js web layer: **~35%** (core page prototypes + design system complete)
-- Python Agent layer: **0%** (architecture design complete, code not started)
-- Browser extension: **0%**
-
-The Agent layer code has not been started — but the design documentation is extremely complete. For anyone who wants to deeply understand multi-agent system architecture, this is a rare opportunity: design intent is clear and unspoiled by historical implementation details.
-
-Project: [github.com/cubxxw/apply-agent](https://github.com/cubxxw/apply-agent)
-
-The `docs/architecture/` directory contains five systematic architecture documents covering the system overview, Agent architecture, Harness design, client-side delivery approach, and data model. If you are designing a similar Agent system, these are worth reading carefully.
-
----
+If you are building a similar system, [Trusting an Unattended AI Agent](/ai-agent/posts/trusting-unattended-ai-agent/) explores the operational trust boundary, while [LangGraph: Building Stateful Agent Workflows](/projects/langgraph/) covers the graph primitives beneath it.
 
 ## Conclusion
 
-The scarcest resource in Agent engineering right now is not intelligence — it is **accumulated production engineering**: how to prevent runaway loops, how to control costs, how to backstop AI mistakes, how to maintain user trust in the system.
+Relay has crossed the line from architectural proposal into working implementation. The coordinator, five domain agents, Harness, routes, events, migration history, and MCP browser tools all exist in the audited local checkout.
 
-Every architectural choice in Relay — the HITL interrupt design, the fabrication guard's runtime validation, the three-tier LLM router, the Dual-Track resume model — answers a specific production problem. None of them are chasing the latest framework feature.
+That does not make it production-grade by declaration.
 
-That "production-problem-driven architecture" mindset is what I believe is the most valuable thing to learn from this project.
+The next layer of work is quieter: migrate deliberately from `create_react_agent`, make critical audit and event delivery durable, harden the browser boundary against untrusted pages, widen grounding beyond numeric and named entities, and prove performance claims with repeatable evaluations.
 
----
+The philosophical lesson is not “design less.” It is this:
 
-*This article was written based on Relay's public code and architecture documentation. If you are building an Agent system, feel free to explore the project repo and consider contributing. The architecture design is open, and the code is waiting to be written.*
+> A design becomes trustworthy when every beautiful arrow has a retry policy, an owner, and an honest status label.
+
+That is the architecture worth carrying forward.
