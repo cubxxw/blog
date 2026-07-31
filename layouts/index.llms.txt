@@ -7,7 +7,8 @@
 
 > {{ site.Params.description | plainify }}
 
-Author: Xinwei Xiong (熊鑫伟, cubxxw) — AI Builder, open-source contributor, digital nomad.
+Author: Xinwei Xiong (熊鑫伟, cubxxw), practitioner, writer, and open-source builder.
+Editorial identity: An open archive of lived practice and long-term thought, covering AI workflows, real projects, engineering judgment, systems thinking, personal growth, philosophy, and life.
 Primary domain: {{ site.BaseURL }}
 Available languages: English ({{ site.BaseURL }}), Simplified Chinese ({{ site.BaseURL }}zh/).
 

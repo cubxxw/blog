@@ -27,7 +27,7 @@
   {{- /* 降级 / no-JS / no-WebGL 时展示这份静态版本 */ -}}
   <noscript>
     <div class="kg-fallback">
-      <p>{{ if $isZH }}我是 <strong>熊鑫伟（cubxxw）</strong> —— AI 创业者、开源贡献者、数字游民。{{ else }}I'm <strong>Xinwei Xiong (cubxxw)</strong> — AI founder, open-source contributor, digital nomad.{{ end }}</p>
+      <p>{{ if $isZH }}我是 <strong>熊鑫伟（cubxxw）</strong>，一名实践者、写作者与开源贡献者。{{ else }}I am <strong>Xinwei Xiong (cubxxw)</strong>, a practitioner, writer, and open-source contributor.{{ end }}</p>
     </div>
   </noscript>
 </div>
@@ -40,9 +40,9 @@
     "url" (printf "%s/about/" $prefix)
     "color" "#ffffff")
   "nodes" (slice
-    (dict "label" (cond $isZH "AI 创业者" "AI Founder")   "url" (printf "%s/ai-agent/" $prefix)                                                              "color" "#667eea")
+    (dict "label" (cond $isZH "AI 系统" "AI Systems")     "url" (printf "%s/ai-agent/" $prefix)                                                              "color" "#667eea")
     (dict "label" (cond $isZH "开源贡献" "Open Source")    "url" "https://github.com/cubxxw"                                                                       "color" "#764ba2" "external" true)
-    (dict "label" (cond $isZH "数字游民" "Digital Nomad") "url" (printf "%s/travel/" $prefix)                                                                     "color" "#17a2b8")
+    (dict "label" (cond $isZH "实践现场" "Field Notes")   "url" (printf "%s/travel/" $prefix)                                                                     "color" "#17a2b8")
     (dict "label" "Kubernetes"                            "url" (printf "%s/engineering/posts/kubernetes-an-article-to-get-started-quickly/" $prefix)          "color" "#326ce5")
     (dict "label" "Go"                                    "url" (printf "%s/engineering/posts/go-release-tools/" $prefix)                                       "color" "#00add8")
     (dict "label" (cond $isZH "心流状态" "Flow State")    "url" (printf "%s/growth/posts/flow-state/" $prefix)                                                    "color" "#28a745")

@@ -3,24 +3,12 @@ hero:
   nameLast: "Xiong"
   nameZh: "熊鑫伟"
   nickZh: "BEAR"
-  # Persona tagline — replaces the old "AI BUILDER / OPEN SOURCE / DIGITAL NOMAD"
-  tagline:
-    - "风险偏好者"
-    - "徒步"
-    - "创造者"
-  taglineEn:
-    - "RISK-TAKER"
-    - "HIKER"
-    - "BUILDER"
-  # Poetic motto line under the name
-  mottoZh: "脚踏泥地，也仰望星辰"
-  mottoEn: "Feet on the mud, eyes on the stars"
-  # English signature line
-  publicLine: "All is builder. Builder is public."
-  bioEn: "I build <strong>AI products</strong> and contribute to <strong>open source</strong> while wandering the world. Capturing raw signals from each day — code, thoughts, places — and compiling them into something durable."
-  bioZh: "构建 <strong>AI 产品</strong>，贡献<strong>开源代码</strong>，在世界的褶皱里慢慢走。每天捕捉原始信号——代码、念头、地方——让它们结晶成能留下来的东西。"
-  footerBioEn: "Xinwei Xiong — AI builder, open source contributor and digital nomad. Kubernetes, Go, AI agents & travel."
-  footerBioZh: "熊鑫伟 — AI 构建者、开源贡献者、数字游民。在中国与世界之间慢慢走的探索者。"
+  mottoZh: "把真实实践，沉淀成能穿越时间的知识。"
+  mottoEn: "Turning lived practice into knowledge that compounds over time."
+  bioEn: "I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>."
+  bioZh: "这里公开我的 <strong>AI 工作流</strong>、真实项目与工程方法，也记录关于<strong>个人成长、哲学与人生</strong>的长期思考。"
+  footerBioEn: "Xinwei Xiong. An open archive of AI systems, engineering practice, projects, growth, and philosophy."
+  footerBioZh: "熊鑫伟的公开实践与思想档案。记录 AI 系统、工程方法、真实项目、个人成长与哲学。"
   siteVersion: "v3.0"
 
 # Section tiles under "Writing" — rendered by homepage-daypage.html .hp-cat-row

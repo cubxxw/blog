@@ -17,14 +17,6 @@
            Stays empty (transparent) on phones / reduced-motion / no-WebGL. */}}
       <div class="hp-hero-field" id="hp-hero-field" aria-hidden="true"></div>
       <div>
-        <div class="hp-hero-meta-row">
-          <span class="hp-status-pill" id="hp-status-pill">
-            <span class="hp-live-dot"></span>
-            <span id="hp-status-text">{{ if $isZh }}在线 · 漫游中{{ else }}Online · Roaming{{ end }}</span>
-          </span>
-          <span class="hp-entry-label">ENTRY · <span id="hp-entry-date">{{ now.Format "2006/01/02" }}</span></span>
-        </div>
-
         <h1>
           <span class="hp-hero-name-row">
             <span class="hp-hero-name-text">
@@ -53,11 +45,6 @@
           <span class="hp-hero-name-zh">{{ if $isZh }}{{ $d.hero.nameZh }} · {{ $d.hero.nickZh }}{{ else }}熊 · {{ $d.hero.nickZh }}{{ end }}</span>
         </h1>
 
-        <div class="hp-hero-tag">
-          {{- $tags := cond $isZh $d.hero.tagline $d.hero.taglineEn -}}
-          {{- range $i, $tag := $tags }}{{ if $i }}<span class="hp-sep">/</span>{{ end }}<span>{{ $tag }}</span>{{ end }}
-        </div>
-
         <p class="hp-hero-motto">
           {{ if $isZh }}{{ $d.hero.mottoZh }}{{ else }}{{ $d.hero.mottoEn }}{{ end }}
         </p>
@@ -66,18 +53,16 @@
           {{ if $isZh }}{{ $d.hero.bioZh | safeHTML }}{{ else }}{{ $d.hero.bioEn | safeHTML }}{{ end }}
         </p>
 
-        <p class="hp-hero-public">{{ $d.hero.publicLine }}</p>
-
         <a class="hp-hero-cta" href="{{ "/about/" | relLangURL }}">
-          <span>{{ if $isZh }}关于我{{ else }}About Me{{ end }}</span>
+          <span>{{ if $isZh }}了解这个博客{{ else }}About this blog{{ end }}</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
         {{- if site.Params.socialIcons }}
         <div class="hp-hero-socials">
           {{- range site.Params.socialIcons }}
+          {{- $platform := lower .name -}}
           {{- if or (eq .name "wechat") (eq .name "xhs") }}
-          {{- $platform := cond (eq .name "wechat") "wechat" "xhs" -}}
           {{- $asset := cond (eq .name "wechat") "wechat.jpg" "xiaohongshu.jpg" -}}
           {{- $contactID := cond (eq .name "wechat") .wechatID .xhsID -}}
           {{- $contactURL := cond (eq .name "xhs") (trim .url " ") "" -}}
@@ -102,7 +87,7 @@
             {{ partial "svg.html" . }}
           </button>
           {{- else }}
-          <a class="hp-social-icon" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ .name | title }}">
+          <a class="hp-social-icon hp-social-icon--{{ $platform }}" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ .name | title }}">
             {{ partial "svg.html" . }}
           </a>
           {{- end }}
@@ -1164,66 +1149,6 @@
       renderYear(thisYear);
     })();
 
-    // 2. RSS fetch only for latest post title → status pill
-    (function() {
-      var rssUrl = isZh ? '/zh/index.xml' : '/index.xml';
-      var CACHE_KEY = 'hp_rss_pill_' + (isZh ? 'zh' : 'en');
-      var CACHE_TTL = 30 * 60 * 1000;
-
-      function applyLatest(item) {
-        var statusEl = document.getElementById('hp-status-text');
-        var dateEl   = document.getElementById('hp-entry-date');
-        if (statusEl && item.title) {
-          var short = item.title.length > 28 ? item.title.slice(0,26) + '…' : item.title;
-          statusEl.textContent = (isZh ? '最新 · ' : 'Latest · ') + short;
-          var pill = document.getElementById('hp-status-pill');
-          if (pill && item.href && item.href !== '#') {
-            pill.style.cursor = 'pointer';
-            pill.onclick = function() { window.open(item.href, '_blank'); };
-            pill.title = item.title;
-          }
-        }
-        if (dateEl && item.date) {
-          var d = item.date;
-          dateEl.textContent = d.getFullYear() + '/' +
-            String(d.getMonth()+1).padStart(2,'0') + '/' +
-            String(d.getDate()).padStart(2,'0');
-        }
-      }
-
-      function parseFirst(xml) {
-        var m = xml.match(/<item[\s\S]*?<\/item>/);
-        if (!m) return null;
-        var item = m[0];
-        var pubM  = item.match(/<pubDate>([^<]+)<\/pubDate>/);
-        var titleM = item.match(/<title>([^<]+)<\/title>/);
-        var linkM  = item.match(/<link>([^<]+)<\/link>/);
-        if (!pubM) return null;
-        return {
-          date:  new Date(pubM[1]),
-          title: titleM ? titleM[1].replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>') : '',
-          href:  linkM ? linkM[1].trim() : '#'
-        };
-      }
-
-      try {
-        var cached = sessionStorage.getItem(CACHE_KEY);
-        if (cached) {
-          var obj = JSON.parse(cached);
-          if (Date.now() - obj.ts < CACHE_TTL) { applyLatest(obj.item); return; }
-        }
-      } catch(e) {}
-
-      fetch(rssUrl)
-        .then(function(r) { return r.text(); })
-        .then(function(xml) {
-          var item = parseFirst(xml);
-          if (!item) return;
-          try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), item: item })); } catch(e) {}
-          applyLatest(item);
-        })
-        .catch(function() {});
-    })();
   })();
 
 

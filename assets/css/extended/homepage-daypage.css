@@ -113,6 +113,7 @@ body.dark .hp-city-sep {
   background: var(--bg-warm);
   color: var(--fg-primary);
   font-family: var(--font-body);
+  font-size-adjust: 0.52;
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -257,51 +258,6 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   padding: 72px 0 80px;
 }
 
-.hp-hero-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.hp-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 12px;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-border);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.hp-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4ade80;
-  animation: hp-blink 2s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-@keyframes hp-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
-}
-
-.hp-entry-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--fg-subtle);
-}
-
 .hp-hero h1 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -312,7 +268,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
      with the clamp so the display name stays optically tight at every size. */
   letter-spacing: -0.02em;
   color: var(--fg-primary);
-  margin: 0 0 16px;
+  margin: 0;
 }
 
 .hp-hero-name-row {
@@ -349,33 +305,18 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   50% { transform: translateY(-4px); }
 }
 
-.hp-hero-tag {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-}
-
-.hp-hero-tag .hp-sep { color: var(--border-default); }
-
 .hp-hero-bio {
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.65;
   color: var(--fg-muted);
-  max-width: 460px;
-  margin: 0;
+  max-width: 520px;
+  margin: 16px 0 0;
 }
 
 .hp-hero-bio strong { color: var(--fg-primary); font-weight: 600; }
 
-/* Poetic motto line — the human statement under the persona tagline */
+/* Editorial statement under the author's name. */
 .hp-hero-motto {
   font-family: var(--font-display);
   font-size: clamp(20px, 2.6vw, 30px);
@@ -383,17 +324,8 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   line-height: 1.35;
   letter-spacing: 0.4px;
   color: var(--fg-primary);
-  margin: 16px 0 0;
-}
-
-/* English signature line */
-.hp-hero-public {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 14px 0 0;
+  max-width: 620px;
+  margin: 28px 0 0;
 }
 
 /* About Me CTA — subtle inline link, not a heavy pill */
@@ -2349,7 +2281,12 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
   .hp-page { padding: 0 20px; }
   .hp-topbar-inner { padding: 0 20px; gap: 16px; }
   .hp-nav { display: none; }
-  .hp-hero { grid-template-columns: 1fr; padding: 48px 0 56px; gap: 40px; }
+  .hp-hero {
+    grid-template-columns: 1fr;
+    min-height: 33.5rem;
+    padding: 48px 0 56px;
+    gap: 40px;
+  }
   .hp-posts-grid { grid-template-columns: 1fr; }
   /* Channel rail: the track scrolls horizontally; tabs grow to a
      comfortable touch height. */
@@ -2406,6 +2343,11 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
      they wrapped 6 + 1 with an orphan icon on its own row. */
   .hp-hero-socials {
     gap: 6px;
+  }
+  .hp-hero-socials .hp-social-icon--buymeacoffee,
+  .hp-hero-socials .hp-social-icon--instagram,
+  .hp-hero-socials .hp-social-icon--facebook {
+    display: none;
   }
   .hp-social-icon {
     width: 42px;
