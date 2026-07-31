@@ -151,6 +151,16 @@ https://rss.starerror.com/${RSS_ADDRESS}
 Here you'll find the latest and most interesting blog posts in English from Xinwei Xiong(cubxxw).
 
 <!-- My-Blog-EN:START -->
+- [The Scoreboard You Choose Will Eventually Choose You: How Incentives Reshape an Organization](https://cubxxw.com/growth/posts/2026-07-31-incentives-colonize-founders/)
+- [The Opposite of Freedom Isn’t Constraint—It’s the Defaults That Live Your Day for You](https://cubxxw.com/growth/posts/2026-07-31-freedom-and-defaults/)
+- [When Generation Becomes Infinite, Authentic Experiences Begin to Command Value](https://cubxxw.com/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/)
+- [Risk Preference Isn't About Enjoying Danger: What Truly Enables Taking a Bet](https://cubxxw.com/growth/posts/2026-07-31-risk-is-not-danger/)
+- [The Cost of Observation: Why the More You Understand, the Harder It Is to Enter Life](https://cubxxw.com/growth/posts/2026-07-31-the-observer-cannot-enter-life/)
+- [Creators Don’t Lack Applause—They Lack an Accurate Witness](https://cubxxw.com/growth/posts/2026-07-31-creators-need-accurate-witnesses/)
+- [Forgetting Is Harder Than Remembering: Why a Living System Must Know When to Let Go](https://cubxxw.com/ai-agent/posts/2026-07-31-forgetting-is-an-ai-system-capability/)
+- [Records Are Not Mirrors, But Scissors: What Tool You Use Ultimately Shapes Who You Become](https://cubxxw.com/growth/posts/2026-07-31-recording-tools-shape-the-self/)
+- [Environment as the Hidden Author: Why Moving Cities Feels Like Becoming Someone Else](https://cubxxw.com/growth/posts/2026-07-31-environment-is-the-hidden-author/)
+- [When Distance No Longer Changes You: What Keeps Life Moving After Exploration Fails](https://cubxxw.com/growth/posts/2026-07-31-when-exploration-stops-changing-you/)
 - [Every Path Has a Price](https://cubxxw.com/growth/posts/2026-07-26-every-path-has-a-price/)
 - [After AI Solves a Problem, Where Does the Bottleneck Move?](https://cubxxw.com/growth/posts/2026-07-26-bottlenecks-after-ai/)
 - [The Fastest Numbers Are Often Furthest from the Outcome](https://cubxxw.com/growth/posts/2026-07-26-fast-feedback-slow-results/)
@@ -241,16 +251,6 @@ Here you'll find the latest and most interesting blog posts in English from Xinw
 - [2025 March Thought Notes](https://cubxxw.com/growth/posts/2025-03-thought-notes/)
 - [2024 Annual Review](https://cubxxw.com/growth/posts/2024-annual-review/)
 - [Travel · The World Game](https://cubxxw.com/travel/)
-- [About Me](https://cubxxw.com/about/)
-- [Kubernetes Resources and Learning Path Summary](https://cubxxw.com/engineering/posts/kubernetes-learning/)
-- [LangChain: Building LLM Applications](https://cubxxw.com/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide/)
-- [Large Language Models: How LLMs Work](https://cubxxw.com/ai-agent/posts/exploring-large-language-models-llms-pioneering-ai-understanding-generation-human-language/)
-- [Open Source Resume Builders & Career Tips](https://cubxxw.com/growth/posts/crafting-your-career-pathway-a-guide-to-open-source-resume-builders-and-expert-resume-tips/)
-- [Troubleshooting Guide for OpenIM](https://cubxxw.com/engineering/posts/troubleshooting-guide-for-openim/)
-- [Navigating the Open Source Landscape](https://cubxxw.com/engineering/posts/navigating-the-open-source-landscape/)
-- [Sora Ease Guide: Mastering Sora AI for Developers](https://cubxxw.com/ai-agent/posts/sora-ease-guide-mastering-sora-ai-for-developers/)
-- [In 2023, I Was Wandering at the Edge of the World](https://cubxxw.com/growth/posts/in-2023-i-was-wandering-at-the-edge-of-the-world/)
-- [Exploring Sora Technology for Enthusiasts and Developers](https://cubxxw.com/ai-agent/posts/exploring-sora-technology-for-enthusiasts-and-developers/)
 <!-- My-Blog-EN:END -->
 
 
