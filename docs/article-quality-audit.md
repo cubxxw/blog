@@ -125,6 +125,10 @@ can be marked complete.
 | `content/zh/ai-agent/posts/trusting-unattended-ai-agent.md` | 81 → 97 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/use-auto-gpt.md` | 29 → 96 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/use-auto-gpt.md` | 27 → 97 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/super-individual-intelligence-system.md` | 66 → 95 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/super-individual-intelligence-system.md` | 97 | Passed after bilingual revision | Complete |
+| `content/en/ai-agent/posts/super-individual-stack-four-layers.md` | 66 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/super-individual-stack-four-layers.md` | 98 | Passed after bilingual revision | Complete |
 | `content/en/engineering/posts/argo-cd.md` | 97 | Passed after translation | Complete |
 | `content/zh/engineering/posts/argo-cd.md` | 41 → 96 | Passed after revision | Complete |
 | `content/en/growth/posts/2026-07-31-second-brain-as-survival-strategy.md` | 98 | Passed after translation | Complete |
