@@ -27,7 +27,6 @@ tldr:
 
 > August 1st, 2025 - 07:23:45
 > Socrates said "the unexamined life is not worth living." But what does examination actually require in practice?
-> 
 
 **Self-examination isn't just introspection—it's systematic analysis of our own patterns, motivations, and decision-making processes.** Like debugging code, but for consciousness.
 
@@ -54,7 +53,6 @@ The examined life requires **both the courage to look honestly at our patterns a
 
 > August 7th, 2025 - 14:17:22
 > Why do some things strike us as beautiful while others don't? A framework for understanding aesthetic judgment.
-> 
 
 **Layer 1: Evolutionary Aesthetics** (Universal)
 What all humans tend to find beautiful due to evolutionary programming:
@@ -90,7 +88,6 @@ What resonates with your unique experience and identity:
 
 > August 12th, 2025 - 09:45:18
 > The most powerful educational applications of AI aren't about information delivery—they're about personalized Socratic dialogue.
-> 
 
 **Traditional education model**: Teacher presents information → Student memorizes → Student regurgitates on test
 
@@ -122,7 +119,6 @@ This represents a fundamental shift: **from AI as answer-provider to AI as quest
 
 > August 15th, 2025 - 16:32:07
 > Language shapes reality. Vietnamese concepts that don't translate directly into English reveal different ways of understanding relationships and obligations.
-> 
 
 **Tình Cảm (情感)**: Often translated as "emotion" or "feeling," but the concept is richer:
 - **Emotional connection**: The bond that develops through shared experiences
@@ -153,7 +149,6 @@ The synthesis: **Conscious relationship building (tình cảm) balanced with per
 
 > August 20th, 2025 - 11:15:33
 > Buddhism isn't about eliminating all desires—it's about understanding the mechanism of suffering and finding skillful ways to relate to it.
-> 
 
 **First Noble Truth: Dukkha (Suffering exists)**
 Suffering is inherent in existence, manifesting as:
@@ -197,7 +192,6 @@ Practical steps to reduce suffering:
 
 > August 23rd, 2025 - 15:47:29
 > One of Buddhism's most counterintuitive concepts: there is no fixed, permanent "self" to find or protect.
-> 
 
 **What "no-self" doesn't mean**:
 - You don't exist at all (nihilism)
@@ -234,7 +228,6 @@ Practical steps to reduce suffering:
 
 > August 26th, 2025 - 12:08:44
 > Wu wei is often translated as "non-action," but it's better understood as "natural action" or "effortless effort."
-> 
 
 **Wu wei principles**:
 - **Flow with natural rhythms**: Work with circumstances rather than against them
@@ -273,7 +266,6 @@ Practical steps to reduce suffering:
 
 > August 28th, 2025 - 18:25:17
 > Wang Yangming (1472-1529) revolutionized Chinese philosophy with "mind is principle" and "unity of knowledge and action."
-> 
 
 **Core concepts**:
 
@@ -313,7 +305,6 @@ Practical steps to reduce suffering:
 
 > August 30th, 2025 - 20:14:36
 > Modern neuroscience reveals that "wanting" and "liking" are controlled by different brain systems—which explains many puzzling aspects of human behavior.
-> 
 
 **Two separate systems**:
 

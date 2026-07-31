@@ -449,5 +449,5 @@ AI 也不行。
 ## 参考阅读
 
 - [2025 年 3 月思考笔记](/zh/growth/posts/2025-03-thought-notes/)
-- [四个月的一些思考片段整理](/zh/growth/posts/metacognitive-transformation-review/)
+- [我如何学会观察自己的思考：四个月的元认知转变复盘](/zh/growth/posts/metacognitive-transformation-review/)
 - [心流状态的魔力：专注与幸福感提升指南](/zh/growth/posts/flow-state/)
