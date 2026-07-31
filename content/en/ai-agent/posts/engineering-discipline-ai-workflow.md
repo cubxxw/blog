@@ -1,13 +1,13 @@
 ---
-title: 'Installing Quality Gates Into Your AI Workflow: Bringing Software Engineering Discipline Into Your Personal System'
+title: 'AI Workflow Quality Gates: A Practical Engineering Guide'
 ShowRssButtonInSectionTermList: true
-date: '2026-07-11T15:30:00+08:00'
+date: 2026-07-11T15:30:00+08:00
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['AI workflow', 'quality gate', 'observability', 'code review', 'SOP', 'AI Agent', 'CLAUDE.md', 'AGENTS.md', 'software engineering', 'determinism', 'Harness Engineering', 'personal system']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - AI
   - LLM
@@ -15,99 +15,197 @@ tags:
   - Harness Engineering
   - Testing
   - DevOps
+categories:
+  - Development
 description: >
-  Most people's personal AI systems stop at "it runs," and then get bitten by unreliable output. Software engineering has already accumulated a set of disciplines for making systems reliable, decades in the making- observability, quality gates, structure as constraint, and SOPs. This essay brings all four into your personal AI workflow — so your system doesn't just run, it can also alert, self-check, and reliably reproduce.
+  A practical framework for reliable AI workflows: separate claims from logs, preserve evidence, run evals, set failure thresholds, and escalate risk to humans.
 cover:
   image: '/images/blog/engineering-discipline-ai-workflow.svg'
-  alt: 'Four engineering disciplines for installing quality gates into an AI workflow'
+  alt: 'Five quality gates surrounding an AI workflow, from evidence to human review'
 tldr:
-  - "\"It runs\" does not equal \"it's reliable.\" AI will consistently give you output that \"looks correct\" — the biggest risk in a personal system is having no mechanism at all to notice when it's wrong."
-  - "Observability: before building any module, ask 'if this breaks, how would I know?' The goal of a system isn't just to produce results — it's to be able to raise an alarm."
-  - "Quality gates: don't execute an AI-produced plan directly. Run it through a round of adversarial review first (an 'advisory panel'). Slowing down isn't procrastination — it's making sure the direction is right before moving on."
-  - "Structure as constraint: your folder structure is literally a set of constraints and a map for AI. Split a bloated CLAUDE.md / AGENTS.md into single-responsibility, dedicated folders, and AI becomes more obedient, not less."
-  - "SOPs and staged rollout: break down what you run every day into standard actions, get it working yourself first, then hand it to AI to accelerate, then hand it to a team/automation to execute — every step becomes a fixed action, and that's where determinism comes from."
+  - A workflow is not reliable because its output sounds certain. Reliability comes from external evidence, runtime records, and repeatable evaluations.
+  - A second model may expose some blind spots, but shared bias and high-impact decisions still require independent evidence or human judgment.
+  - Session instructions, project instruction files, and persistent memory are different mechanisms. Treating them as one creates false confidence.
+  - A useful gate records its evidence, checks, failure thresholds, unknowns, and escalation path—not merely a pass or fail label.
+  - The article ends with a five-part template covering the task contract, evidence ledger, automated checks, stop conditions, and retrospective evals.
 maturity: budding
 ---
 
-## "It Runs" Does Not Equal "It's Reliable"
+## “It Runs” Is Not a Reliability Standard
 
-Most people's acceptance criterion for a personal AI system is exactly one thing: **does it run?** If it produces a result, gives a reasonable-sounding answer, that counts as success.
+Most personal AI workflows begin with one acceptance test: **did it produce something?**
 
-But the moment you actually rely on it to do real work for a while, you'll hit a second problem: **it runs, sure, but how do I know it ran correctly?**
+A draft appears, a patch compiles, ten pages become one, and the task feels finished. After enough repetitions, however, the costly failures are rarely dramatic. They arrive quietly: a polished paragraph built on a stale source, a tool call that never completed, a plausible plan that solved the wrong problem.
 
-This is exactly the most hidden risk of a personal AI system. AI doesn't crash with an error — it will stably, confidently give you output that "**looks very correct**" — neatly structured, assertively worded, but possibly pointed in the wrong direction entirely. A traditional program's bug shows a red screen, throws an exception; AI's "bug" is a fluent, wrong paragraph. If your system has no mechanism at all for detecting when it's wrong, you'll charge full speed ahead on incorrect output.
+Traditional software often fails loudly. A model can fail fluently. That changes the question:
 
-Interestingly, software engineering has spent decades figuring out how to make a system "run and also be reliable," and has accumulated an entire discipline for it: **observability, code review, architectural constraints, standardized processes.** And this discipline can be transplanted almost unchanged into your personal AI workflow.
+> When the workflow is wrong, how soon can I know—and when I cannot know, will it stop?
 
-This essay covers how to transplant all four. The inspiration comes from an in-person retrospective in an AI community — someone's biggest shock after attending wasn't "how powerful AI is," but discovering that what skilled practitioners do when building a system is exactly these engineering moves.
+Software engineering already has language for this problem: observability, tests, review, change records, rollback, and incident escalation. An AI output should therefore be treated as a **candidate result**, not a verdict that takes effect simply because it reads well.
 
-## One: Observability — a System Shouldn't Just Run, It Should Be Able to Alert
+The point is not to bury a personal system under enterprise ceremony. The point is to give uncertainty a name, a record, and an exit.
 
-The line that struck me most in that retrospective was this: after building each module, a skilled practitioner doesn't rush to add the next feature — they stop and ask:
+## Observability Starts with an Evidence Ledger
 
-> If this breaks, how would I know?
+It can be useful to ask a model to list its sources, assumptions, or confidence. But that list remains a **model self-report**. It does not prove that a tool ran, that a URL was opened, or that the returned data supported the conclusion.
 
-That single sentence is the soul of **observability.** In operations, we add monitoring, alerting, and logging to a service not to make it run, but to make sure that when it breaks, **it can be detected.** The same applies to a personal AI system: what you want isn't just "AI produced a plan" — it's "when this plan has a problem, I have a way to notice."
+A reliable workflow separates three kinds of record:
 
-In practice:
+1. **Model self-report** records what the model says it did and where it believes uncertainty remains. This is a clue for review, not proof.
+2. **Runtime logs** record what the surrounding system actually observed: input identifiers, tool calls, source URLs or file paths, timestamps, statuses, errors, and request IDs.
+3. **Evaluation results** compare outputs against a declared dataset and graders. They tell us how a version behaved across cases, rather than whether one answer sounded convincing.
 
-- Have AI **provide its reasoning and its uncertainties** alongside its output — "what is this conclusion based on? which step am I least confident about?" This is effectively adding logging to its output.
-- Set **acceptance signals** for key outputs: what counts as correct, what should raise suspicion. For data-related output, for instance, ask "why does this number deserve attention, what does it indicate, where's the anomaly" — rather than using the number the moment you get it.
-- Turn "silently accepting output" into "actively checking output." A system producing something isn't the finish line — **whether what it produced can be self-verified/validated is.**
+OpenAI's Evals API reflects this separation: an eval defines testing criteria and a data-source schema, while runs execute that definition against model configurations and report statuses and result counts. OpenAI also recommends pinned model versions and evals when consistent behavior matters, because model outputs and prompting behavior can vary across snapshots.
 
-In one line: don't just build a system that produces work — build a system **that calls out to you when something's wrong.**
+For consequential work, I keep a small evidence card:
 
-## Two: Quality Gates — Review AI's Plan Before You Use It
+```yaml
+task_id: article-review-2026-07-31
+model: provider/model-version
+instructions_version: git-sha-or-v3
+sources:
+  - url-or-file-path
+tools:
+  - name: web-search
+    status: success
+checks:
+  factual_claims: 8/8 sourced
+  broken_links: 0
+unknowns:
+  - "The market figure has only one primary source."
+reviewer: human-or-eval-name
+```
 
-The second thing to transplant is **code review** — in engineering, even the most senior person's code goes through review before merging, no exceptions.
+This ledger does not ask for hidden reasoning. It preserves facts that another person can inspect: **which version ran, what it read, which actions occurred, what was checked, and what remains unresolved.**
 
-Mapped onto an AI workflow, this becomes a **quality gate**: don't execute a plan AI gives you directly. Someone in the community calls this step their "advisory panel" — take the plan AI produced, hand it to a second AI (or play the reviewer role yourself), and have it review the plan first, specifically hunting for flaws, gaps, and dissenting opinions, before you move forward.
+There is a moral difference between “the model says it checked” and “the system retained evidence of the check.” Engineering begins in that gap.
 
-The value here is identical to code review:
+## Quality Gates: A Second Model Is Not a Second Truth
 
-- **It doesn't catch trivial mistakes — it catches wrong direction.** A passage that reads smoothly doesn't mean its premise is correct. A second pair of eyes (even a role played by another AI) often surfaces a perspective you hadn't considered at all.
-- **It forces you to slow down.** That retrospective put it well: stopping to run a review round "isn't procrastination — it's making sure the direction is right before moving forward." Even when a plan feels particularly good in the moment, make sure it goes through review first — often it's exactly the opinions that make you uncomfortable that force you to rethink.
+An adversarial model review can be useful. It may catch missing requirements, internal contradictions, formatting defects, or counterexamples the first pass ignored. But it is not automatically an independent witness.
 
-This is very cheap to implement: have the first AI produce a plan, hand that plan as-is to a second AI and tell it to "play the most nitpicking reviewer, list three reasons this plan might fail," then look at both sets of conclusions together. One gate blocks most "confident mistakes."
+Two models may share training biases. Two prompts sent to the same model may reproduce the same mistaken premise. A reviewer model can also issue a confident “pass” without verifying the underlying world.
 
-## Three: Structure as Constraint — Your Folder Structure Is a Map for AI
+The gate should therefore match the failure mode:
 
-The third thing is **architectural constraint** — a good system stays orderly through clear module boundaries and conventions, not through a human staring at it constantly.
+| Possible failure | Preferred evidence or check | Failure threshold | Response |
+|---|---|---|---|
+| Incorrect or stale fact | Primary documentation, database, reproducible query | A material claim lacks a primary source, or primary sources conflict | Stop publication; human verification |
+| Incorrect code behavior | Unit and integration tests, static analysis | Any required check fails | Block merge or deployment |
+| Missing requirement or contradiction | Independent rubric, adversarial model review | Any hard requirement is unmet | Return for revision |
+| Privacy, security, legal, or financial harm | Qualified human, permission policy, sandbox, approval | Impact is irreversible or the boundary is uncertain | Escalate before action |
+| Voice or readability drift | Reader sample, editorial review | Score falls below the agreed rubric | Edit and re-evaluate |
 
-The person in that retrospective spent an entire week, after going home, doing exactly this: **restructuring their folder layout.** Their system had previously been "feature-driven" — content generation, data collection, AI analysis — and the more features got added, the messier AI's behavior became. They eventually realized: it wasn't a lack of features, it was that **structure never told AI "who you are."** Their conclusions were blunt:
+A gate also needs a richer result than “pass”:
 
-- The folder structure you give AI is, in essence, **a map.** A messy map produces messy movement from the AI.
-- What format each file is in, how each piece of knowledge is categorized, how each process is chained together — **these aren't obsessive tidying habits, they are constraints.**
-- **AI has no intuition. It only has rules.** Tell it the rule, and it follows the rule; when it drifts, repeat the correction, and it will remember.
+```yaml
+decision: conditional_pass
+evidence_coverage: 0.86
+failed_checks: []
+unknowns:
+  - "The vendor documentation does not specify boundary behavior."
+risk: medium
+next_action: human_review
+```
 
-So they did something very "engineering": they split an overstuffed `CLAUDE.md` and `AGENTS.md` — previously everything got dumped in, and AI got confused reading through it once — into multiple **single-responsibility** dedicated folders, each handling exactly one thing. The result: fewer files, and AI became more obedient, not less.
+The number `0.86` is not truth. It is a rubric-derived trigger. The rubric exposes uncertainty; the threshold prevents wishful thinking; the human escalation path assigns responsibility.
 
-This is exactly **single responsibility** and **separation of concerns** from software engineering, transplanted one-to-one onto AI configuration. Your `CLAUDE.md`/`AGENTS.md` isn't a junk drawer — it's the system's architecture document; the folder structure itself is the strongest kind of instruction. (This is the same principle as organizing a knowledge base, which I also discussed in the [knowledge essay](../info-to-creation-knowledge/).)
+## Keep Instructions, Project Files, and Persistent Memory Separate
 
-## Four: SOPs and Staged Rollout — Get It Working First, Then Accelerate, Then Let Go
+“Put every rule into `CLAUDE.md` or `AGENTS.md` and it will persist automatically” is attractive because it turns a difficult systems problem into a filing problem. The mechanism is more specific.
 
-The fourth thing is **standard operating procedures (SOPs) and staged rollout** — in engineering, we codify reliable practices into processes and pipelines, so results don't depend on any one person's improvisation in the moment.
+- **Session instructions** arrive through the product's instruction hierarchy and current context. Their priority depends on their source; a lower-trust instruction should not displace a higher-trust constraint.
+- **Project instruction files** are repository artifacts that a particular tool discovers and loads within a defined scope. They are good places for build commands, architectural boundaries, naming rules, and verification steps.
+- **Persistent memory** carries selected facts or preferences across sessions through a product feature or external store. It needs provenance, correction, deletion, and scope rules of its own.
 
-Someone else in the community (who runs a physical business) put this in remarkably grounded terms. Their methodology: **break down whatever you run every day into a standard SOP — step one does this, step two does this, step three does this, broken down finely enough and stated clearly enough. Then get it working yourself first, hand it to AI to accelerate, then hand it to your team to execute. Every step becomes a fixed action, and that's where determinism comes from.**
+The official loading behavior matters. Codex discovers `AGENTS.md` (or an override) from global and project scopes, walking from the project root toward the working directory; nearer files appear later in the combined guidance. Claude Code reads `CLAUDE.md`, not `AGENTS.md` directly. Its documentation recommends importing an existing shared file with `@AGENTS.md` when both tools should use it. `CLAUDE.md` can also import other files with `@path/to/import`, while Claude Code's auto memory is a separate, machine-local mechanism.
 
-This three-stage progression — **get it working yourself first → hand it to AI to accelerate → hand it to a team/automation to execute** — is the correct order for scaling a personal AI workflow:
+That means a project file can create the *appearance* of memory because the tool loads it again in a later session. The model itself has not acquired a dependable permanent recollection. Both products provide ways to verify what was loaded: inspect Codex's active instruction chain or use Claude Code's `/memory` view instead of assuming a file took effect.
 
-- **Get it working yourself first**: you need firsthand experience with this thing, you need to have hit the pitfalls, you need to know what's right and what's wrong, before you're qualified to let AI help you. The order can't be reversed — turn yourself into the "reference implementation" of this process first.
-- **Hand it to AI to accelerate**: write the working process into a prompt/skill, and have AI repeat it as a standard action (this is exactly the "turn methods into skills" from [Building an AI Second Brain](../ai-second-brain-build/)).
-- **Hand it to a team/automation**: once it's stable, let it become a routine action that no longer needs your attention.
+Directory structure still matters, but as a boundary for maintenance—not as magic:
 
-There's also a mindset hidden here, which that retrospective called **"accept uncertainty, manufacture certainty"**: you'll never reach the day when you're "fully ready" (accept uncertainty), but you can break down every repeated task into standard actions, get them working, and codify them (manufacture certainty). The essence of engineering is converting uncertainty into certainty, bit by bit.
+- Keep only stable, repository-wide rules at the root.
+- Put specialized constraints close to the subtree they govern.
+- Store volatile facts in sourced data with an update date.
+- Separate personal preferences from team policy.
+- Give every important rule a check that can reveal whether it was followed.
 
-## Bring in the Discipline, Don't Make the System Complicated
+A rule without an observable check eventually becomes a sentence on a wall.
 
-One last misconception to guard against: transplanting engineering discipline does not mean making your personal system as heavy as large-scale software.
+## SOPs and Staged Release: Prove, Accelerate, Delegate
 
-What these four things — observability, quality gates, structural constraints, SOPs — have in common is that they're **cheap**: ask one more question about "how would I know if this broke," let one more AI run a review pass, clean up your config files, write your process into fixed steps. They don't add much cost, but they lift your system from "it runs" to "it's reliable."
+A process is ready for automation only after someone can say what “done” means.
 
-And they're consistent with [layered validation](../ai-second-brain-build/): small steps, each verifiable, each self-evident. This is both a method for building a system and the underlying posture for using AI to do anything — **let AI accelerate you, while a pair of eyes (even one played by AI) keeps watch over the direction on your behalf.**
+I prefer this sequence:
 
-Because at the end of the day, AI will give you increasingly strong execution power, but **the one making decisions, setting direction, and bearing the consequences is always you.** The reason quality gates exist is to hold that line.
+1. **Run it yourself.** Preserve inputs, judgment calls, and failure examples. Write the success criteria.
+2. **Let AI accelerate it.** Delegate retrieval, drafting, classification, and repetitive checks while keeping consequential judgment with a person.
+3. **Evaluate it repeatedly.** Maintain ordinary cases, boundary cases, and regressions collected from real failures.
+4. **Release autonomy gradually.** Automate only low-risk, reversible actions that pass declared thresholds.
+5. **Recycle corrections.** Turn each human correction into a test case instead of leaving it as “remember next time” in a chat.
+
+Anthropic's evaluation guidance begins by defining success criteria that are specific, measurable, achievable, and relevant. It also recommends task-specific evals that include edge cases, and it distinguishes code-based, human, and model-based grading. OpenAI's Evals API similarly separates the evaluation definition, data source, graders, and runs.
+
+The shared lesson is plain: **define good before automating the judgment of good.**
+
+Engineering discipline does not eliminate uncertainty. It stops uncertainty from travelling anonymously.
+
+## A Five-Part Minimum Gate You Can Copy
+
+You do not need an evaluation platform to begin. Put this in the task template:
+
+```markdown
+## 1. Task contract
+- Objective:
+- Hard requirements:
+- Explicitly out of scope:
+- Rollback method:
+
+## 2. Evidence ledger
+- Source URLs / file paths:
+- Access time:
+- Tools and observed results:
+- Model / prompt / project-instruction version:
+- Unverified assumptions:
+
+## 3. Automated checks
+- [ ] Formatting, links, tests, or static checks pass
+- [ ] Material factual claims trace to primary sources
+- [ ] Ordinary, boundary, and historical failure cases ran
+
+## 4. Failure thresholds and escalation
+- Stop when any hard check fails
+- Send conflicting or missing critical sources to human verification
+- Require human approval for privacy, security, legal, financial, or irreversible actions
+- Permit unattended execution only for low-risk, reversible work
+
+## 5. Retrospective and evals
+- Decision: pass / conditional pass / fail
+- Failure category and captured example:
+- Quality, cost, and latency versus the previous version:
+- Test cases to add or update:
+```
+
+It is quieter than an “AI advisory board,” but closer to engineering: inputs, evidence, checks, brakes, and a person who can take the wheel.
+
+## Bring in Discipline, Not Bureaucracy
+
+The weight of a gate should match the cost of being wrong.
+
+A private, disposable draft may need only a link check and an editorial pass. A client-facing recommendation deserves primary-source verification. Production access, money, private data, or irreversible changes deserve isolation, rollback, and explicit human approval.
+
+I no longer believe that a longer prompt manufactures certainty. Reliable systems are usually less mystical. They know what ran. They retain what was checked. They expose what remains unknown. Most importantly, they know when not to proceed.
+
+AI gives us more execution. It does not transfer the burden of consequence. Engineering discipline is not a cage around that power; it is the riverbed that lets power move without pretending there are no banks.
+
+## Official References
+
+- [OpenAI: Custom instructions with AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
+- [OpenAI API: Evals](https://platform.openai.com/docs/api-reference/evals)
+- [OpenAI API: Backward compatibility](https://platform.openai.com/docs/api-reference/backward-compatibility)
+- [Anthropic: How Claude remembers your project](https://code.claude.com/docs/en/memory)
+- [Anthropic: Define success criteria and build evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 
 ---
 
-*Further reading: for hands-on building, see [Handing Your Notes Over to AI](../ai-second-brain-build/); for the methodology overview, see [From Information to Creation](../info-to-creation-the-framework/).*
+*Further reading: for a hands-on system, see [Handing Your Notes Over to AI](../ai-second-brain-build/); for the broader method, see [From Information to Creation](../info-to-creation-the-framework/).*

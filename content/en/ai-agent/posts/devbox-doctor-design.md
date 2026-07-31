@@ -1,13 +1,13 @@
 ---
-title: 'How Many of Your Mac Tools Are Fighting Each Other? I Designed a Dev-Machine Checkup Skill'
+title: 'Designing devbox-doctor: A Safer Mac Toolchain Audit'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-18T13:30:00+08:00'
 draft: false
 showtoc: true
 tocopen: true
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['devbox-doctor', 'dev machine checkup', 'Claude Code', 'Skills', 'Agent Skills', 'developer tools', 'zombie apps', 'bloatware', 'toolchain audit', 'Homebrew', 'Spotlight', 'mdls', 'software alternatives', 'agent engineering', 'SKILL.md']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - AI
   - LLM
@@ -15,168 +15,220 @@ tags:
   - Context Engineering
   - Automation
   - DevOps
+categories:
+  - Development
 description: >
-  A programmer's computer is a graveyard of tools: editors once tried, container runtimes running side by side, three Python version managers, uninstalled apps that left gigabytes of residue behind. This article is the full design document for devbox-doctor - a dev-machine checkup skill for programmers. It uses Spotlight usage records as evidence to identify zombie apps, uses the model's world knowledge to detect toolchain stack conflicts and low-value software, then offers modern same-niche alternatives, all landing in a shareable checkup report. The article covers the complete repository structure, the data and judgment layer design, the restraint rules that keep recommendations from becoming shilling, and viral mechanics designed in as a first-class citizen.
+  A design for auditing Mac developer tools with read-only evidence, bounded AI judgments, privacy safeguards, graceful fallbacks, and false-positive tests.
 tldr:
-  - Three chronic diseases of a developer machine - zombie apps (installed, never opened again), stack conflicts (Docker Desktop coexisting with OrbStack, pyenv plus conda plus uv in parallel), and uninstall residue (app gone, gigabytes of data left). All three diagnoses require world knowledge, which is exactly the model's niche.
-  - macOS Spotlight has been keeping books all along - mdls reads out every app's last-used date and use count, fully read-only. But null does not mean never used - zombie verdicts require multi-source evidence, not model gut feeling.
-  - devbox-doctor inherits the code-model-code sandwich - read-only scans produce a facts JSON, the model does niche judgment and emits tiered proposals, and an allowlisted server plus a confirming human execute. Beyond the three lights there is a fourth zone, Upgrade Suggestions - not a deletion decision, but same-niche better options.
-  - Recommendations are the easiest zone to fumble, so its rules are the strictest - only same-niche actively maintained tools, migration cost must be stated, a reason not to switch must be given, and never suggest replacing a paid tool in heavy use. A recommendation is intelligence, not a decree.
-  - Tool-ecosystem knowledge rots, so judgment references live in a date-stamped stacks.md instead of being frozen into the prompt. That is the fundamental difference between a skill and an article - an article freezes at publish time, a skill's knowledge layer stays alive.
+  - >-
+    Developer machines accumulate three kinds of debt: tools that appear dormant, overlapping toolchains that may or may not conflict, and data left behind after an uninstall. None can be judged safely from a filename alone.
+  - >-
+    `mdls` can expose Spotlight metadata, but Apple only documents `kMDItemLastUsedDate` in the context of items opened through Launch Services. A missing value means no value is available from that source; it does not prove that an app was never used.
+  - >-
+    The design follows a code-model-code boundary: a read-only collector emits facts, the model writes evidence-backed proposals, and a narrow executor acts only after confirmation.
+  - >-
+    Alternative-tool cards cite official project documentation or release pages, record when they were checked, and state migration costs and reasons to stay. They are research notes, not verdicts.
+  - >-
+    The system is evaluated primarily on false positives. Missing permissions and unavailable tools reduce coverage and confidence; they must never make a machine look healthier.
 maturity: seedling
 columns:
   - agent-engineering
 faq:
-  - q: "How do I check when a Mac app was last used?"
-    a: "Use the built-in mdls command to read Spotlight metadata: mdls -name kMDItemLastUsedDate -name kMDItemUseCount /Applications/SomeApp.app shows the last-used date and cumulative use count, fully read-only with nothing to install. Note that null does not mean never used - some apps are not launched through Launch Services, so cross-check with other evidence such as the modification time of the app's data directories."
-  - q: "What are zombie apps and stack conflicts on a developer machine?"
-    a: "Zombie apps are software installed and then never opened again, still occupying disk and login items - typically editors tried once and forgotten, or old runtime versions. Stack conflicts are multiple functionally overlapping tools installed in the same niche, all consuming resources - typically Docker Desktop coexisting with OrbStack, pyenv plus conda plus uv managing Python in parallel, or nvm and n both claiming Node versions. Both accumulate gradually: every individual install had a reason, and the pile becomes debt that slows the machine down."
-  - q: "How do you keep AI software recommendations from becoming irresponsible shilling?"
-    a: "Constrain the conditions under which a recommendation may be produced instead of banning recommendations: only same-niche, actively maintained tools with a migration cost that can be concretely stated; every suggestion must also state a reason not to switch, so the user sees the trade-off rather than a verdict; and never suggest replacing a paid tool in heavy use - usage evidence outranks popularity. The recommendation's role is intelligence gathering: it lays out the current state of the category, and the decision stays with the human."
+  - q: "How can I check when a Mac app was last used?"
+    a: "The built-in mdls command can read Spotlight attributes such as kMDItemLastUsedDate and kMDItemUseCount when those attributes exist. They are not a complete app-launch history. A missing value may reflect indexing, launch path, migration, or metadata coverage, so it must not be interpreted as proof that an app was never used."
+  - q: "What is the difference between an overlapping toolchain and a conflict?"
+    a: "Overlap means that two installed tools serve a similar purpose. Conflict requires evidence that they compete for something concrete, such as a PATH shim, shell initialization block, default file association, port, proxy, or runtime. Coexistence alone is not a defect."
+  - q: "How should an AI recommend replacement software responsibly?"
+    a: "Treat each recommendation as a dated, reviewable research note. Use official sources, compare only verified capabilities, show local constraints and migration cost, and include a reason to keep the current tool. A recommendation must never enter the cleanup queue automatically."
 cover:
   image: /images/covers/ai-agent/2026/devbox-doctor-design.jpeg
-  alt: "How Many of Your Mac Tools Are Fighting Each Other? I Designed a Dev-Machine Checkup Skill"
+  alt: "Designing devbox-doctor, a safer Mac toolchain audit"
 ---
 
-I have decided to build a dev-machine checkup skill for programmers, codename **devbox-doctor**. It scans your Mac read-only, uses Spotlight usage records and package-manager data as evidence, has the model diagnose three classes of problems — zombie apps, stack conflicts, uninstall residue — then offers modern same-niche alternatives, and finally produces a checkup report that is tiered in three lights, actionable with one click, and screenshot-shareable. This article is its complete design document: how the need was validated, how the data and judgment layers are divided, how to do recommendations without fumbling, and what the repository looks like.
+I am building a developer-machine checkup skill called **devbox-doctor**. The idea sounds simple: inventory a Mac, identify tools that may no longer earn their keep, find actual toolchain conflicts, and trace data left behind by uninstalled apps.
 
-[Last time](../designing-valuable-agent-skills/) I dissected a storage-cleanup skill that dared to delete my files and distilled a design methodology out of it. A methodology that never lands is just another bookmark — this article is its first full application, and the need was not invented. It grew out of my own machine.
+The dangerous word in that sentence is *identify*. A scanner can prove that two tools are installed. It cannot prove that one is useless. A directory can resemble an app's name. That does not make the directory safe to delete. Spotlight can return no last-used date. That does not mean the app was never opened.
 
-## The Need Was Dug Out of My Own Disk
+So this is not a design for an AI janitor with a large broom. It is a design for a cautious investigator: collect facts locally, state what each fact can and cannot prove, ask the model for bounded hypotheses, and leave consequential decisions to the person who owns the machine.
 
-It started with that disk cleanup. After scanning 296 GB of used space, beyond the expected caches, a few report entries made me sit up:
+[In the previous article](../designing-valuable-agent-skills/) I studied a storage-cleanup skill and arrived at a simple division of labor: code handles repeatable facts; the model handles contextual judgment; code enforces the final safety boundary. devbox-doctor is where that principle meets a messier question: not “how large is this file?” but “why is this tool still here?”
 
-- **Docker Desktop and OrbStack coexisting** — one holding a 4.4 GB virtual disk, the other 12 GB of data. Both are container runtimes; I use exactly one of them daily. The other is pure "forgot to see the predecessor out after switching tools";
-- **Trae editor residue**: the app itself was uninstalled long ago, yet `Application Support` still held 2.5 GB and `~/.marscode` another 1.2 GB — the uninstall only ever finished halfway;
-- **3.6 GB of Pythons hoarded inside pyenv**, while all my new projects this year have moved to uv;
-- and a whole row of "installed, tried, never opened again" tools: several AI editors, several terminals, assorted utilities.
+## The Need Came Out of My Own Disk
 
-Put these together and a pattern surfaces: **a programmer's computer is a graveyard of tools.** We are the population that installs software the most eagerly and uninstalls it the most lazily. Every tech-stack decision, every tooling hype wave, every "this changed my workflow" post leaves a corpse on the machine: old runtimes, superseded CLIs, trial apps forgotten, half-migrated predecessors. Each individual install had its reason; the accumulation is tens of gigabytes of disk, a row of login items, and a you who can no longer quite say what is installed on your own machine.
+The idea began during a 296 GB disk audit. Four findings kept bothering me:
 
-And the problem has a subtle property: **it cannot be solved by "cleanup."** Clearing caches is manual labor; judging "should this tool still live on my machine" is brain work — it requires knowing what the tool is, whether its niche has produced something better, and whether I actually still use it. Which makes it the perfect test case for last article's thesis: deterministic work to code, judgment to the model.
+- Docker Desktop and OrbStack were both present, with sizeable data stores, although I used only one in my daily work;
+- Trae had been removed, but its support data still occupied several gigabytes;
+- pyenv still held multiple Python installations while newer projects used a different workflow;
+- several editors, terminals, and utilities looked as though they had been installed for an experiment and then forgotten.
 
-## Three Gates: This Need Deserves a Skill
+The pattern was familiar. Developers install tools quickly because trying a tool is part of the job. Uninstalling is different: it is deferred maintenance with little immediate reward. Every framework migration and every “this changed my workflow” recommendation leaves sediment—old runtimes, duplicate CLIs, login items, caches, and half-migrated configuration.
 
-Following the methodology, run the gates first.
+A cleanup utility can count bytes. It cannot answer the more interesting question: **is this duplication deliberate, transitional, or accidental?** That question needs context, but context is precisely where an overconfident model can cause damage. The product has to make useful judgment possible without pretending that uncertainty has disappeared.
 
-**Recurring?** Installing software is a programmer's daily action, while auditing the inventory almost never happens — not for lack of will, but because the cost is absurd: recalling "when did I last open this" app by app is unrealistic. High-frequency debt accumulation plus never-executed audits equals exactly the kind of workflow a skill should take over.
+## Why This Deserves a Skill
 
-**Model-only judgment?** This is where devbox-doctor leans on the model even harder than storage cleanup did. "`OrbStack` and `Docker Desktop` are same-niche competitors," "`fnm` is the modern replacement for `nvm`," "this thing calling itself a cleaner-master is an ad container disguised as a utility" — every one of these is world knowledge that cannot be written into a rules table. Especially the increment this skill promises: **not just what to remove, but what in the same category is better now** — an alternative suggestion is a miniature tech-selection consultation, pure model territory.
+I use three gates before turning an idea into a skill.
 
-**Concrete deliverable?** A checkup report: a three-light disposal list, a fourth zone of upgrade suggestions, and one shareable stats card. Acceptable (every item verifiable) and iterable (bad judgments get fixed in the reference docs).
+**Does the debt recur?** Yes. Installing software is routine; auditing the inventory is rare. The debt grows one reasonable decision at a time.
 
-All three gates pass. Time to build.
+**Is there real judgment involved?** Yes, but the model's role needs careful wording. Rules can detect that OrbStack and Docker Desktop coexist, or that two shell initializers both edit `PATH`. A model can explain likely intent, ask for missing context, and distinguish a migration from an ongoing conflict. It should not label software “good,” “bad,” or “obsolete” from popularity and memory.
 
-## Data Layer: Your Mac Has Been Keeping Books All Along
+**Is there a concrete deliverable?** Yes: an evidence-backed report with facts, proposals, uncertain findings, and a separate upgrade-watch section. Every local conclusion should link back to observed evidence. Every time-sensitive ecosystem claim should link to an official source and a verification date.
 
-The first principle carries over unchanged: **the scan is read-only, end to end.** But the data surface is far richer than directory sizes — judging "still in use?" needs usage evidence, and macOS happens to have been keeping books that nobody reads:
+The skill passes all three gates. The safety design starts with the collector.
 
+## The Data Layer: Evidence, Not Surveillance
+
+Scanning is read-only by default. More importantly, the design does not pretend macOS contains one complete, auditable usage ledger. It contains several partial sources with different failure modes.
+
+```text
+scan.py collects facts in layers
+├── System baseline (available without a package manager)
+│   ├── /Applications, ~/Applications, and app Info.plist data
+│   ├── read-only output from mdls, du, ps, and launchctl
+│   └── LaunchAgents and LaunchDaemons file inventories
+├── Optional probes (run only when their commands exist)
+│   ├── Homebrew: list, leaves, and autoremove --dry-run
+│   ├── npm, pipx, cargo, and other global package inventories
+│   └── pyenv, nvm, rustup, and other manager state
+└── Corroborating evidence
+    ├── bundle IDs, receipts, code signatures, and paths
+    ├── Containers, Application Support, and Caches directories
+    └── current processes, login items, daemons, and listening ports
 ```
-scan.py collects six classes of facts, read-only
-├── App inventory    /Applications + mdls per app
-│                    (kMDItemLastUsedDate / kMDItemUseCount /
-│                     size / version)
-├── Package managers brew list, brew leaves (orphan deps),
-│                    brew autoremove --dry-run, npm -g, pipx list
-├── Version managers pyenv versions, nvm ls, rustup toolchain list —
-│                    how many managers per niche, hoarding how much
-├── Autostart        LaunchAgents / LaunchDaemons / login items —
-│                    who quietly resurrects at boot
-├── Residue matching Application Support / Containers directories
-│                    diffed against installed apps → orphan data
-└── Runtime evidence current process table — which "unused" things
-                     are in fact resident in the background
-```
 
-`mdls` is the delight of the whole data layer. Verified on my own machine: `Discord.app` returns "last used July 15, count 2" — **system-level usage records, read-only, zero dependencies.**
+That division matters. `mdls`, `ps`, and `launchctl` are part of the macOS baseline. Homebrew is not. If `brew`, `npm`, or a version manager is absent, the corresponding probe is skipped and the baseline report still completes. The tool must never recommend installing a package manager merely to improve its own scan.
 
-But verification also exposed a trap immediately: `Xcode.app` and `Pages.app` return `null`, and I use Xcode constantly. Some apps are not launched through Launch Services (spawned from the command line, resident in the background), so Spotlight never books them. That trap became a design rule written straight into the SKILL.md: **`null` does not mean unused. A zombie verdict requires multi-source evidence — usage records, data-directory modification times, the process table, invocation traces in shell history — at least two sources pointing the same way before an app may be called "suspected zombie," and a single source never convicts.** When evidence falls short, the item goes to "under observation," never to the deletion list.
+Homebrew also has two easily confused concepts. The [official Homebrew manpage](https://docs.brew.sh/Manpage) defines `brew leaves` as installed formulae that are not dependencies of another installed formula or cask. A leaf can be a tool the user explicitly installed and still relies on; it is not an “orphan dependency” list. `brew autoremove --dry-run` is the relevant preview for formulae that were installed as dependencies but are no longer needed. Even that output remains a proposal. The report shows the exact candidates and asks for confirmation before any later execution.
 
-The essence of this rule is pushing last article's "the model only proposes" one step further: **the model's proposals must themselves carry an evidence chain** — it does not get to sentence an app to death because its name sounds dated.
+Spotlight metadata needs the same discipline. Apple's documentation says [`kMDItemLastUsedDate`](https://developer.apple.com/documentation/coreservices/kmditemlastuseddate) is updated when an item is opened through Launch Services. That does not promise coverage for command-line launches, background activation, remote calls, or every kind of in-app activity. `kMDItemUseCount` may be present, but the design does not call it an authoritative lifetime launch counter.
 
-## Judgment Layer: Three Lights Plus an Upgrade Zone
+Therefore, `null` has one defensible meaning: **this metadata source has no value to return**. Indexing settings, index rebuilds, migration, launch path, or the metadata importer can all affect what is available. A directory modification time is not proof of human use either; an updater or background sync may have touched it.
 
-Once the scan JSON reaches the model, judgment proceeds in four steps:
+devbox-doctor can call an app “possibly dormant” only when independent sources point the same way—for example, old Spotlight metadata, no running process or service, and no recent activity in a strongly associated app-data directory. Contradictory or single-source evidence goes to **uncertain**, never to an action queue. Shell history is not used by default: the privacy cost and accidental secret exposure outweigh the weak evidence it would add.
 
-**Step one, identify every niche.** What each app and CLI is, and which category it belongs to (editor / terminal / container runtime / version manager / notes / utilities). Pure world knowledge.
+## “Installed Together” Is Not the Same as “In Conflict”
 
-**Step two, diagnose the three chronic diseases.** Zombie apps (multi-source evidence, as above); stack conflicts (two or more same-niche tools all showing recent use → list them for the user to pick one; only one in use → the other is processed as a zombie); uninstall residue (the diff set comes straight out of residue matching — the closest thing to deterministic in the whole pipeline).
+Once the collector emits facts, the model classifies them into four distinct conditions:
 
-**Step three, low-value and bloatware verdicts.** Bundled family-suite installs, ad containers disguised as system utilities, tools with clean open-source equivalents that nag with resident paywalls — this class is the most sensitive, so its evidence bar is the highest: an item only gets a light when it hits both **behavioral evidence** (autostart, resident processes, nag records) and **niche evidence** (a recognized clean alternative exists), and the report must state the grounds.
+- **Overlapping tools:** two products occupy a similar niche. This is an inventory fact, not a problem by itself.
+- **Configuration conflicts:** two tools compete for a concrete resource such as a `PATH` shim, shell initialization, default file association, proxy, port, or runtime. The report must show the contested resource.
+- **Resident resources:** login items, LaunchAgents, daemons, menu-bar processes, and background services. Residency is measured separately; it is not treated as evidence of harm.
+- **Possible uninstall residue:** the original application is absent, while related data remains. The relationship needs its own confidence score.
 
-**Step four — the differentiating increment — upgrade suggestions.** For every tool that is "in use and healthy," the model answers one question: **within the same niche, is there now something more popular, faster, or better value?** Still on nvm? `fnm` and `mise` start an order of magnitude faster. Still on Postman? `Bruno` is offline-first and versions its config in git. Three Python toolchains? `uv` replaces five tools with one.
+This distinction prevents an easy but costly mistake. Docker Desktop and OrbStack being installed together may be intentional. pyenv, conda, and uv have overlapping capabilities, but they are not interchangeable in every project. A conflict exists only when the machine provides evidence of contested configuration or when the user's stated goal requires consolidation.
 
-The report shape grows accordingly from three lights to "three lights plus one zone":
+Residue matching is similarly bounded:
 
-| Zone | Meaning | Action |
+| Confidence | Evidence | Report behavior |
 |---|---|---|
-| 🟢 Clear directly | Uninstall residue, orphan deps, caches | One-click Trash / show brew commands |
-| 🟡 Needs a decision | Stack conflicts, suspected zombies | Show evidence, open in Finder, user decides |
-| 🔴 Guide only | Big items needing proper uninstall, autostart die-hards | Reveal the app, step-by-step uninstall guidance |
-| ⬆️ Upgrade suggestions | Same-niche better options for in-use tools | Pure intelligence cards, no delete buttons |
+| High | Exact bundle-ID or declared container match; receipt payload identifies the path | Add to a review list, never delete automatically |
+| Medium | Team ID, vendor, and path structure agree, with no installed app known to reference it | Show the evidence and suggest a Finder review |
+| Low | Only a directory name, icon name, or fuzzy string resembles the app | Display only; no delete control |
+| Uncertain | Shared vendor directory, missing signature, incomplete receipt, or conflicting evidence | Mark “cannot attribute” and keep by default |
 
-The upgrade zone has one iron boundary with the lights: **it is not a deletion decision and never appears in the disposal list.** It is a tech-radar sweep you get for free — read it, then feel entirely free to ignore it.
+Shared directories deserve special suspicion. Homebrew's own manpage warns that cask `zap` artifacts may remove resources shared with other applications. A matching vendor name is not enough to establish ownership.
 
-## Recommendations Fumble Easiest, So Their Rules Are Strictest
+The report uses four sections rather than traffic lights that imply certainty:
 
-At this point in the design I stopped for a long think — not about tech, but about a product-ethics question: **what separates an AI recommending software from an influencer shilling it?**
+| Section | Meaning | Action |
+|---|---|---|
+| Facts | Installed tools, resident services, disk use, and configuration claims | Read-only |
+| Proposals | High-confidence residue, reproducible conflicts, or well-supported dormancy | Evidence and counter-evidence; user confirms |
+| Uncertain | Single-source, shared, or contradictory findings | Keep by default; explain how to gather more evidence |
+| Upgrade watch | Same-niche options verified against official material | Research only; never part of cleanup |
 
-The constraints on how a recommendation may be produced. I gave the upgrade zone four rules, written into the SKILL.md's iron-rules section:
+## Recommendations Need Receipts and Expiry Dates
 
-1. **Only same-niche, actively maintained tools.** No cross-category evangelism ("you should try Rust" is not an upgrade suggestion), no abandoned projects;
-2. **Migration cost must be stated.** "fnm reads .nvmrc, ten-minute migration" and "switching build systems, a week minimum" are entirely different suggestions — a recommendation without its cost is malpractice;
-3. **A reason not to switch must be given.** Every card carries a "when to stay put" field — a recommendation's job is presenting the trade-off, not concluding for the user;
-4. **Never suggest replacing a paid tool in heavy use.** Usage evidence outranks popularity: the JetBrains suite you live in daily does not belong in the upgrade zone no matter what the internet is hyping. Paid for and in use is the strongest selection evidence there is.
+Recommendations are the easiest place for a useful audit to turn into generic tool hype. The remedy is not a more confident model. It is a stricter output contract:
 
-One sentence to close it: **a recommendation is intelligence, not a decree.** The model's job is laying the category's current state on the table; the gavel stays in human hands — the same separation of powers as before, extended from "delete or not" to "switch or not."
+1. **Cite only first-party material:** the project's official site, documentation, repository, or release page. Rankings and model memory may suggest what to investigate, but they cannot support the final card.
+2. **Record local version, candidate version, source, and checked date.** Unknown information stays explicitly unknown. An expired card falls back to “needs re-verification.”
+3. **Compare capabilities, not slogans.** Claims such as “ten times faster,” “more modern,” or “replaces five tools” are excluded unless the card includes a reproducible benchmark and scope.
+4. **State migration cost and a reason to stay.** Configuration, plugins, licenses, team conventions, CI, private registries, and lockfiles are all part of the cost.
+5. **Default to staying put for heavily used, paid, or organization-managed tools.** Existing constraints outrank trendiness unless the user has named a problem they want to solve.
 
-## Knowledge Rots, So the References Carry Date Stamps
+For example, the official [uv documentation](https://docs.astral.sh/uv/) describes Python version, environment, package, and project-management capabilities. That makes uv relevant to several workflows; it does not prove that uv replaces pyenv, pipx, or conda on this particular machine. A useful card would first inspect the real project's lockfile, private indexes, CI, platform matrix, and environment requirements, then propose a reversible trial.
 
-Upgrade suggestions carry a difficulty the three lights never had: **tool-ecosystem knowledge is perishable.** Today's "modern replacement" is next year's zombie. Freeze "fnm beats nvm" into the prompt and this skill rots at a visible rate.
+The same rule applies to fnm and mise. Their official documentation can establish supported behavior. It cannot establish universal startup speed or a painless migration on an unknown shell setup. devbox-doctor may present either as a dated candidate for a stated constraint; it may not announce a winner.
 
-The fix is extracting perishable knowledge out of the SKILL.md into a standalone reference where **every entry carries its judgment date**:
+**A recommendation is perishable intelligence, not a decree.** The decision remains with the person who will live with the migration.
 
-```
+## Privacy and Permissions: Read-Only Can Still Leak
+
+“It does not delete files” is not the same as “it is safe.” An inventory can reveal usernames, client names, private repository paths, internal domains, installed security products, and project structure. Process arguments and shell history may contain tokens or database credentials. A local report can leak if it binds to every interface or lands in a synced folder.
+
+The default permission budget is deliberately small:
+
+- do not request Full Disk Access;
+- do not read Keychain, browsers, mail, chat data, file contents, full shell history, or full process arguments;
+- redact paths before they enter a remote model, using stable placeholders when correlation is needed;
+- keep raw scan JSON in a user-chosen local location and do not upload it by default;
+- request an additional directory separately, explaining which judgment needs it and how long its data will be retained;
+- bind any report server to loopback only, use an unguessable session token, and avoid writing reports into sync folders without explicit choice.
+
+Graceful degradation is part of the product, not an error-message afterthought:
+
+- if Spotlight is unavailable, app-use status becomes unknown while signatures, receipts, install dates, and current-runtime evidence remain;
+- if Homebrew is absent, the package-manager section is skipped;
+- without administrator privileges, the report still renders and privileged actions disappear;
+- offline mode disables upgrade cards that need freshness checks and retains local facts;
+- denied permissions reduce the displayed coverage and widen uncertainty; they never improve the health score.
+
+The code-model-code boundary then limits execution. The collector emits facts. The model emits structured proposals, never shell commands. A narrow executor accepts only fixed operations on exact paths observed during the scan, rechecks identity before acting, and moves recoverable items to Trash only after confirmation. Shared, system, and uncertain paths never enter its allowlist.
+
+## Measure False Positives Before Inventing a Health Score
+
+“Two sources agree” sounds careful, but without an evaluation set it is only a slogan. I would test the system against human-reviewed machine snapshots covering at least:
+
+- a normal single-tool setup;
+- intentional coexistence and machines mid-migration;
+- projects pinned to multiple runtime versions;
+- shared vendor directories and renamed applications;
+- disabled Spotlight and incomplete indexes;
+- remote-development workflows;
+- organization-managed software.
+
+Reviewers must annotate the evidence behind each decision, not merely “keep” or “remove.” The primary metric is false-positive control:
+
+| Task | Primary measure | Release gate |
+|---|---|---|
+| Actionable residue | Precision | 99% on the reviewed set; zero automatic actions on system or shared paths |
+| Configuration conflict | Precision and reproducibility | Every claim names a resource the reviewer can verify |
+| Long-term dormancy | False-positive rate | No single-source finding enters the proposal section |
+| Upgrade recommendation | Source validity and freshness | 100% first-party sources; expired cards automatically downgraded |
+
+Every collector, rule, or model change reruns the fixed set and preserves its failure cases. A health score is computed only from covered, explainable dimensions. Where coverage is incomplete, the report shows coverage and a confidence interval instead of laundering missing evidence into a perfect score.
+
+## Keep the Workflow Stable and the Knowledge Alive
+
+Tool ecosystems age faster than audit principles. A replacement that looks sensible today may be abandoned next year. So the volatile knowledge belongs outside the main instruction:
+
+```text
 devbox-doctor/
-├── SKILL.md              # flow and iron rules (stable, rarely edited)
+├── SKILL.md              # stable workflow and hard boundaries
 ├── references/
-│   ├── macos.md          # how to read the data: mdls traps,
-│   │                     # residue-matching rules (stable)
-│   ├── stacks.md         # niche map: mainstream picks and stack
-│   │                     # patterns per category
-│   │                     # (PERISHABLE - every entry date-stamped)
-│   └── judging.md        # verdict standards: zombie evidence chain,
-│                         # bloatware conditions, the four
-│                         # recommendation rules (stable)
+│   ├── macos.md          # metadata limits and residue rules
+│   ├── stacks.md         # capabilities, official sources, versions,
+│   │                     # and per-entry verification dates
+│   └── judging.md        # evidence and recommendation standards
 ├── scripts/
-│   ├── scan.py           # read-only scan of six fact classes → JSON
-│   ├── build_report.py   # analysis JSON → static report
-│   └── server.py         # local server: allowlisted one-click
-│                         # disposal (inherits the seven locks)
+│   ├── scan.py           # read-only facts → JSON
+│   ├── build_report.py   # proposals → static report
+│   └── server.py         # loopback-only review and allowed actions
 └── assets/
     └── report_template.html
 ```
 
-The SKILL.md instruction becomes: "when judging stacks and alternatives, read `stacks.md`, **mind each entry's date stamp, and flag entries older than a year as possibly stale in the report**." This design happens to answer a bigger question — **what is the fundamental difference between a skill and a blog post?** A post freezes at publish time; a skill's knowledge layer stays alive: spot a stale line in `stacks.md`, change one line, and every subsequent checkup benefits immediately. Last article said "a Skill is a frozen workflow"; this one adds the missing half: **the workflow is frozen, the knowledge stays alive.**
+`SKILL.md` tells the model to read `stacks.md`, validate the source and checked date, and suppress cards beyond their freshness window. There should be no single universal expiry period: a fast-moving runtime or security tool may need review in 90 days, while a stable operating-system fact may remain useful for a year.
 
-## Viral Mechanics Are a First-Class Citizen, Not Post-Launch Marketing
+This is the distinction I missed when I first called a skill “a frozen workflow.” **The workflow can be stable while the knowledge stays alive.**
 
-Last article analyzed storage-analyzer's viral gears: screenshot-able results, universal relevance, a surprise factor, zero dependencies. devbox-doctor builds all four straight into the product:
+## A Blueprint, Not a Launch Announcement
 
-**Screenshot-able**: the report opens with a "checkup card" — N stack conflicts, N zombie apps, N GB of residue, N upgrade suggestions, four numbers plus a machine health score. **The card carries only statistics — no paths, no app names** — safe to drop into any group chat with zero privacy anxiety. That constraint goes into the SKILL.md output spec, exactly like "the three tier statistics must begin with parseable numbers."
+This article describes a design, not a finished product. The system-level probes have been explored, and their blind spots have shaped the boundaries above. The difficult parts—classification accuracy, recommendation quality, permission UX, and false-positive behavior—still need repeated testing on real machines.
 
-**Surprise factor**: a programmer who reads "your Mac has been recording every app's use count all along" reaches for the terminal to run `mdls` immediately — the fact itself is viral material. "Three Python version managers fighting on one machine" and "an editor uninstalled six months ago still squatting on 3.7 GB" are ready-made conversation pieces.
+The upgrade section worries me most. Rules can filter unsafe or stale claims, but they cannot guarantee relevance. A technically correct suggestion can still waste an afternoon. The only honest answer is to read less by default, ask for purpose before widening the scan, and treat “stay with what already works” as a successful result.
 
-**Universal relevance**: a narrower circle than everyone-has-a-full-disk cleanup, but far denser — every programmer owns a tool graveyard, and programmers are the population most willing to post terminal screenshots.
-
-**Zero dependencies**: inheriting the standard-library principle — `mdls`, `brew`, `osascript` are all built-in or already installed.
-
-## Cold Water: A Blueprint Is Not a Product
-
-Two buckets over my own head, as usual.
-
-First bucket: **this is a design document, not a launch announcement.** The last military rule from the methodology piece — "a workflow you have not completed by hand does not deserve freezing" — applies to me too. Every collection point in the data layer has been verified (the `mdls` null trap is a trophy of that verification), but the judgment layer's accuracy, the recommendation zone's fumble rate, and the report's actual feel all wait on enough real-machine rounds. When it ships I will come back with a field-test article, and the designs reality slaps down will be shown as-is.
-
-Second bucket: **the upgrade zone is the part I am least sure of.** Four iron rules guard against malice, not mediocrity — the model can perfectly well produce a pile of correct-but-useless suggestions (yes, I know uv is great; I switched six months ago). The fix is probably making it read the machine's actual versions and configs before speaking, but that widens the scan surface significantly. I have not resolved that trade-off, so it gets recorded honestly here.
-
-**Everyone owns a tool graveyard. As of today, the groundskeeper position can finally be outsourced to AI.** See you when the repository breaks ground.
+Every developer machine becomes a small archaeology site. The goal of devbox-doctor is not to bulldoze it. The goal is to label the layers, admit what cannot be known, and help its owner decide what still belongs.

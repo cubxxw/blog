@@ -1,88 +1,202 @@
 ---
-title: 'Give AI Tasks, Not Directions: One Principle That Changes How You Work With AI'
+title: 'Give AI Tasks, Not Just Direction: Define Done First'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T16:30:00+08:00'
 draft: false
 showtoc: true
 tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['AI collaboration', 'prompting', 'task decomposition', 'completion state', 'Definition of Done', 'AI Agent', 'acceptance criteria', 'AI efficiency', 'deep thinking', 'prompt']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - AI
   - LLM
   - Agent
   - Context Engineering
-  - Product Strategy
-  - Automation
+  - Productivity
+  - Learning
+categories:
+  - Development
 description: >
-  Why does a three-hour conversation with AI, one that felt more and more enjoyable the whole way through, leave you with nothing when you stop? Because you gave it a "direction," not a "task." A direction has no completion state and can be discussed forever; a task has clear acceptance criteria and produces something usable in one pass. This short essay lays out that one operating principle in full — it might be the single most important habit to build when working with AI.
+  Explore direction with AI, then define the finish line yourself. A six-part task card turns open-ended conversation into work you can test, review, and trust.
 cover:
   image: '/images/blog/give-ai-tasks-not-directions.svg'
-  alt: Give AI tasks, not directions — from an endless ramble with no completion state to output with acceptance criteria
+  alt: A six-part AI task card connecting an open direction to a verifiable result
 tldr:
-  - "Talking to AI nonstop and yet producing nothing comes down to one root cause: you gave it a 'direction,' not a 'task.'"
-  - A direction has no completion state ("help me think through how to do this") so it can be discussed forever; a task has clear acceptance criteria ("cut this down to 400 words, keeping these three points") so it produces something usable in one pass.
-  - "Directions are addictive: they constantly give you the illusion of \"making progress,\" and because they're painless and frictionless, they trick you into thinking you're growing."
-  - How to cut a direction into tasks - decide the direction and standard yourself first, then break it into a series of concrete actions each with a "completion state," and hand those to AI.
-  - Keep direction for yourself, hand tasks to AI. Deciding which way to go is your job (and where your growth happens); executing it well is AI's job.
+  - Explore direction with AI, but let a person own the value trade-offs, accountability, and Definition of Done before execution begins.
+  - A useful task states its goal, inputs, constraints, output, acceptance criteria, and stop conditions.
+  - Important AI work needs multiple trials, deterministic checks where possible, and human review where judgment or risk remains.
+  - A conversation earns its time when it changes a decision or leaves behind something that can be inspected.
 maturity: budding
 ---
 
-## Why a Three-Hour Conversation With AI Leaves You With Nothing
+## After Three Hours, What Is Left on the Table?
 
-Let's start with an experience a lot of people have had but can't quite put into words: you open AI meaning to solve one problem, and end up getting more and more into it, one thread leading to the next, three hours gone, feeling like you've talked a lot and learned a lot — but when you actually try to produce something concrete, you find your hands empty. Nothing landed.
+I have had evenings that began with a modest intention: settle the angle of an essay. Soon I was discussing titles with AI, then business models, then the meaning of work. The conversation flowed beautifully. When I closed the window, the page was still blank.
 
-Someone who uses AI heavily nailed the root cause of this in one sentence:
+That does not make the conversation worthless. It reveals that **exploration and execution are different kinds of work**.
 
-> Why does talking to AI, no matter how much, accomplish nothing? Because what I give AI is all "direction," never "task."
+During exploration, an open question is useful. I want AI to challenge an assumption, offer another frame, compare possibilities, or list what I have failed to notice. At that point, insisting on a fixed destination too early can make the work smaller than it needs to be.
 
-This might be the single most important habit to build when using AI — and one of the least explicitly stated.
+But once I commit to producing something, another round of “What else could we do?” often creates more branches when I need a path. The work now needs a finish line.
 
-## Direction vs. Task: The Difference Is "Completion State"
+The rule I use is simple:
 
-The fundamental difference between direction and task comes down to one thing: **completion state** (Definition of Done).
+> Direction can be explored together. The Definition of Done cannot be outsourced.
 
-- **Direction**: an open-ended topic with no clear endpoint. Things like "help me think through how to approach this topic," "what should I do about this," "help me improve this article." It has no completion state — what counts as "figured out"? What counts as "improved"? There's no standard, so it can be **discussed forever.**
-- **Task**: a concrete action with clear boundaries and acceptance criteria. Things like "cut this 800-word draft down to 400 words, keeping these three points," "give me five punchier titles for this article," "find the three most likely failure points in this plan." It has a completion state — you can confirm at a glance whether it's done, so it **produces something usable in one pass.**
+## The Boundary Is Not “Humans Think, AI Executes”
 
-The same thing, framed as a direction versus a task, produces wildly different results. "Help me fix up this article" is a direction — you'll go back and forth with AI for many rounds and still not be satisfied. "Turn the passive sentences in the second paragraph into active voice, and break up any sentence over 30 words" is a task — it gives you something usable in one shot.
+“Give AI tasks, not directions” is useful because it is memorable. Taken literally, however, it draws the wrong boundary.
 
-## Why Direction Is So Addictive
+AI can help shape direction. It can organize evidence, expose blind spots, compare approaches, and suggest a route I would not have found alone. I do not need to pretend that I always know the answer before the conversation begins.
 
-Understanding the difference is only half of it — you also need to understand why direction is so tempting. Because it satisfies two illusions at once:
+What AI cannot do on my behalf is decide what is worth pursuing, accept the consequences of publication, or declare that the work is good enough. When exploration becomes commitment, three responsibilities return to the human:
 
-**First, the illusion of "making progress."** Because there's no completion state, every round of conversation feels like moving forward — you keep feeling "almost there, a bit more discussion and it'll be clear." But progress with no endpoint is, in essence, spinning in place.
+- **Value trade-offs:** Who is this for? What may be sacrificed, and what must survive?
+- **Accountability:** Who owns factual errors, copyright risks, and the final judgment?
+- **Definition of Done:** What observable evidence will count as complete, and what should make the work stop?
 
-**Second, the illusion of "growing."** Chatting fluidly with AI about direction feels good — no friction, no need to grind through hard thinking. But it's exactly that comfort that deceives you. There's a line that stings- **when you have a really enjoyable conversation with AI, it often means you didn't grow that day**, because you didn't hit any friction. Direction-style rambling is using pleasure to mask the fact that nothing got done. (I explored this separately in [Friction Is Growth](/growth/posts/friction-is-growth/).)
+Good collaboration is closer to navigation than to operating a machine. We can read the weather together. Someone still has to choose the harbor and answer for where the ship lands.
 
-So "giving direction" isn't just inefficient — it also tricks you into believing you're thinking deeply, when you're actually just enjoying a conversation that produces nothing.
+## The Six-Part Task Card
 
-## How to Cut Direction Into Tasks
+Before opening the chat, I now try to fill in six fields:
 
-So what's the right approach? **It's not "don't have a direction" — it's that you decide the direction, then cut it into tasks and hand those to AI.**
+```text
+Goal:
+  What problem should this task solve, for whom, and why does it matter?
 
-Three concrete steps:
+Inputs:
+  Which drafts, data, links, and background may the AI use?
+  Which items are context rather than evidence?
 
-1. **Think through the direction and the standard yourself first.** What you're going to write, for whom, what effect you want, what counts as good — this is direction, this is your judgment, and you must have the answer yourself. Don't ask AI "what do you think" at this step — that's outsourcing the direction too.
-2. **Break the direction into concrete tasks, each with a completion state.** One big direction gets broken into a string of small tasks, each with clear acceptance criteria. "Write a good article" breaks down into: outline it → draft the introduction (under 150 words) → add a concrete example to each point → replace colloquial words with precise ones → generate three titles.
-3. **Assign tasks one at a time, and check each one off.** Once each task is done, check whether it meets that standard, then move to the next. This way, AI is always doing "work with an endpoint," and you're always holding the steering wheel.
+Constraints:
+  What facts, tone, length, scope, and boundaries must not change?
 
-You'll find that once you start doing this, your conversations with AI suddenly get shorter and more concrete — because every round has a clear start and end, instead of an endlessly expanding ramble.
+Output:
+  What exactly should be delivered, in what format, and where?
 
-## Keep Direction for Yourself, Hand Tasks to AI
+Acceptance criteria:
+  What observable checks determine whether the result passes?
+  Which checks are mechanical, and which require judgment?
 
-Behind this principle is actually a bigger division of labor:
+Stop conditions:
+  When must the AI pause and ask?
+  How many attempts are allowed, and what happens when evidence is missing?
+```
 
-**Direction — deciding which way to go, what trade-offs to make, being accountable for the outcome — is your job, and it's precisely where your growth happens.**
-**Task — executing a decided direction efficiently — is AI's job, and it does this fast and well.**
+The field I used to omit was the last one. Without stop conditions, an agent can travel a long way on a bad assumption. With them, “I do not know” is not a failure. It is a timely return of control.
 
-Hold that line, and you get two benefits at once: you get to use AI's execution power, without outsourcing "thinking and judgment" — the very thing that makes you stronger. Conversely, if you hand direction over to AI too, you'll end up with an assistant that gets better and better at conversation, and a version of yourself that gets worse and worse at making up its own mind.
+This small card is not a substitute for conversation. It is the bridge between conversation and commitment. It turns an intention in my head into a contract that both sides can inspect.
 
-So next time you open AI, don't rush to ask "what should I do about this." Decide the direction yourself first, then ask yourself: **is what I'm about to assign it a task with a completion state, or a direction with no endpoint?**
+## Before and After: Editing One Essay
 
-Give it tasks, not directions. This one habit alone will make every collaboration with AI actually land something real.
+Suppose I have a 1,800-word reflection about working with AI and want to turn it into a short, practical essay.
+
+My old request might have been:
+
+```text
+Improve this essay. Make it deeper and sound more like me.
+```
+
+There is nothing malicious or foolish about that prompt. It is simply impossible to verify. “Deeper” and “more like me” ask the model to guess. When the result feels wrong, my only response is another feeling: “Try again.”
+
+Here is the same assignment after the judgment has been made explicit:
+
+```text
+Goal:
+  Turn the attached 1,800-word reflection into a 1,000–1,200-word essay.
+  A software engineer using an agent for the first time should finish
+  able to write a task card of their own.
+
+Inputs:
+  Use only the attached draft. You may retain personal experiences from it.
+  Do not add external claims or invented examples.
+
+Constraints:
+  Preserve the judgment: “Direction can be explored together;
+  the Definition of Done cannot be outsourced.”
+  Do not present personal observations as universal psychological causes.
+  Avoid corporate filler such as “leverage,” “paradigm,” and “unlock.”
+  Keep each paragraph under 120 words.
+
+Output:
+  Deliver a Markdown essay in this order:
+  scene, boundary, six-part task card, complete before-and-after example,
+  verification, conclusion.
+  Add a separate change log after the essay.
+
+Acceptance criteria:
+  The essay is 1,000–1,200 words.
+  All six task-card fields appear.
+  It contains one complete before-and-after assignment.
+  Every factual claim is supported by the source draft.
+  I will review voice, judgment, and publication risk.
+
+Stop conditions:
+  If the draft cannot support a conclusion, write “author evidence needed”
+  instead of filling the gap.
+  If two constraints conflict, stop and list the conflict.
+  Make at most two revision attempts; after that, return the work for
+  human resolution.
+```
+
+A good response should also report against the contract instead of merely announcing that it is finished:
+
+```text
+Result:
+  - Main text: 1,086 words; length check passed.
+  - All six task-card fields and one complete before-and-after example included.
+  - Two trend claims unsupported by the source draft were removed.
+  - Author voice still requires human review.
+
+Decision needed:
+  Keep the navigation metaphor in the ending, or replace it with a
+  more restrained direct statement?
+```
+
+The improvement is not that the prompt became longer. Longer prompts can be just as vague as short ones. The improvement is that there is less hidden guessing. The AI knows what to deliver, I know what to inspect, and both of us know when the task should return to me.
+
+## A Finish Line Is Not Proof of Reliability
+
+Defining done does not make a model deterministic. The same task can produce a strong result in one run and miss a requirement in the next. Open-ended research and writing are especially variable because several answers may be reasonable.
+
+Anthropic's official guide, [Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents), offers a useful vocabulary for this problem. It defines a **task** as a test with specified inputs and success criteria, a **trial** as one attempt at that task, and a **grader** as the logic used to score an aspect of performance. Because model outputs vary between runs, Anthropic recommends multiple trials for more dependable results and combining grader types according to the work: code-based checks where an answer can be verified, model-based graders for flexible rubrics, and human graders for expert or subjective judgment.
+
+I translate that into three layers for ordinary work:
+
+1. **Deterministic checks.** Count words, validate links, lint formats, run tests, and confirm required fields. If a script can answer the question, do not replace it with a feeling.
+2. **Multiple trials.** Run important tasks more than once. Look for repeated failures and unstable requirements instead of treating one elegant answer as proof.
+3. **Human review.** A person signs off on facts, voice, value judgments, and risk. For higher-stakes work, keep the sources and change history as well.
+
+Not every grocery list needs an evaluation harness. The effort should rise with the cost of failure. But even a small writing task benefits from separating “the heading exists” from “the argument is honest.” One is mechanically checkable; the other remains a human responsibility.
+
+The deeper lesson from evals is not to turn life into a benchmark. It is to stop confusing a plausible output with a reliable process.
+
+## Why Open-Ended Conversation Can Feel Like Progress
+
+I used to tell myself a harsher story: if a conversation with AI felt effortless, perhaps I had learned nothing. I no longer think that claim can carry so much weight.
+
+What I can say is narrower and more honest. In my own work, fluent conversation sometimes gives me the sensation of movement before I have made a decision or produced an artifact. Each reply opens another door, so continuing feels easier than choosing. That is an observation about my behavior, not a law of human psychology.
+
+The test is not whether the conversation was long or enjoyable. The test is what changed.
+
+Perhaps I discarded a weak assumption. Perhaps I discovered that the question itself was wrong. Perhaps I wrote a task card and produced a draft. Exploration can leave behind a better decision even when it does not leave behind a file.
+
+What deserves suspicion is a conversation that changes neither judgment nor reality, yet leaves me feeling that the work has already been done.
+
+## Let the Conversation Acquire Weight
+
+Before I ask AI for another answer, I now ask two questions:
+
+**Am I exploring, or am I executing?**
+
+**If I am executing, what evidence would let me say this is complete?**
+
+During exploration, I welcome disagreement and surprise. During execution, I write down the goal, inputs, constraints, output, acceptance criteria, and stop conditions. Then I test what can be tested, repeat what must be reliable, and review what still belongs to judgment.
+
+Direction does not have to be lonely. It can be discovered in dialogue. But value, responsibility, and the final sentence—“this is done”—remain in human hands.
 
 ---
 
-*Related reading: [Friction Is Growth](/growth/posts/friction-is-growth/) | [Installing Quality Gates Into Your AI Workflow](../engineering-discipline-ai-workflow/) | Series overview: [From Information to Creation](../info-to-creation-the-framework/).*
+*Related reading: [Friction Is Growth](/en/growth/posts/friction-is-growth/) | [Installing Quality Gates Into Your AI Workflow](../engineering-discipline-ai-workflow/) | [From Information to Creation](../info-to-creation-the-framework/).*
