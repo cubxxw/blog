@@ -29,7 +29,6 @@ tldr:
 
 > June 2nd, 2025 - 06:28:12
 > In a Korean fried chicken restaurant, unexpectedly surrounded by Chinese people.
-> 
 
 The meal sets were all for two people, so I ordered two combo meals for myself. When ordering, I asked if I could pay by card, wanting to avoid using cash as I felt my cash wasn't quite enough.
 
@@ -53,7 +52,6 @@ This experience taught me that **maintaining personal boundaries doesn't require
 
 > June 2nd, 2025 - 08:51:22
 > There are many things in this world that cannot be explained by logic, such as why I go hiking.
-> 
 
 When chatting with a friend recently, he asked why I enjoy hiking and mountain climbing despite how tiring it is. I could certainly analyze it rationally: enjoying the joy after overcoming difficulties, appreciating the breathtaking scenery that can only be seen step by step, or savoring the state of focusing on the present moment during the hike. These are answers I gave him, but I also knew they weren't sufficient to capture the real feeling.
 
@@ -73,7 +71,6 @@ In our hyperconnected, always-on world, this kind of unstructured, purposeless "
 
 > June 2nd, 2025 - 09:27:09
 > Yesterday while hiking, I thought a lot about the balance between simplicity and complexity.
-> 
 
 I'm increasingly drawn to "simplicity," whether it's pure simplicity or abstracted conciseness.
 
@@ -98,7 +95,6 @@ This insight reflects a mature understanding that **intellectual sophistication 
 
 > June 2nd, 2025 - 10:42:06
 > A few months ago, and for a long time since I became self-aware, I was influenced by some sensational internet content and had no good feelings toward Korea as a country. The most fundamental reason behind this might be anxiety about national identity and cultural sovereignty. Even before coming to Jeju Island, I thought visiting the Olle Trail once in this lifetime would be enough.
-> 
 
 When we see Korea emphasizing "national cultural independence," it's national pride within their country, but from our perspective, it might trigger a collective anxiety of "losing cultural authority."
 
@@ -122,7 +118,6 @@ This cultural analysis reveals how **beauty standards often reflect deeper socie
 
 > June 2nd, 2025 - 10:56:14
 > Recently I read Li Jigang's philosophy of prompt design, combined with my own understanding.
-> 
 
 One word can make a large model understand—this is the power of compression. Essentially, it's optimizing input simplification to help LLMs better understand requirements.
 
@@ -150,7 +145,6 @@ This insight anticipates a future where **human-AI collaboration becomes more so
 
 > June 2nd, 2025 - 12:16:04
 > Perfectionist refinement and moving refinement are two completely different experiences. Why do we often have deeper impressions of the latter?
-> 
 
 **Perfectionist refinement** pursues the "standard" itself. For example, absolutely perfect ceramic surfaces without flaws, or a pianist's precise accuracy with every note. It points toward technical excellence.
 
@@ -171,7 +165,6 @@ This distinction illuminates why we're often more moved by "imperfect" art—**a
 
 > June 5th, 2025 - 07:12:33
 > Last night, I suddenly understood why young people in the post-AI era might be more valuable precisely because they return to sensibility.
-> 
 
 When AI can handle most logical processing work, **what humans are responsible for is experience, and AI is responsible for expression, but the soul remains human.**
 
@@ -191,7 +184,6 @@ This shift suggests that **education and personal development should emphasize c
 
 > June 8th, 2025 - 14:23:17
 > Why do some products create healthy long-term engagement while others create destructive compulsion? The difference lies in which neurotransmitters they target.
-> 
 
 **Two approaches to user retention:**
 
@@ -213,7 +205,6 @@ Social media platforms optimized for dopamine create anxiety and comparison. Cre
 
 > June 12th, 2025 - 11:45:29
 > Observing young people today, I notice a curious paradox: we have unprecedented access to information and tools, yet seem more anxious about competence than previous generations.
-> 
 
 Perhaps it's because **ease of access creates the illusion that everything should be easy**. When information is instantly available and AI can generate solutions, we expect rapid mastery of complex skills. When reality doesn't match this expectation, we feel inadequate.
 
@@ -233,7 +224,6 @@ This means being intentional about where we use AI assistance and where we devel
 
 > June 20th, 2025 - 16:08:41
 > Walking through a traditional Japanese garden, I was struck by how the aesthetic embraces transience rather than fighting it.
-> 
 
 **Western aesthetics often pursue permanence**—monuments that last millennia, artworks preserved in controlled environments, beauty captured and frozen. **Eastern aesthetics, particularly Japanese mono no aware, find beauty in impermanence itself.**
 
@@ -253,7 +243,6 @@ In our age of digital preservation and life optimization, **rediscovering the be
 
 > June 30th, 2025 - 23:45:17
 > On the last day of June, reflecting on a month of observations, I realize the deepest illusion might be thinking I'm simply observing the world, when the world is equally observing me.
-> 
 
 Every time I think I'm studying someone else's behavior, analyzing a cultural phenomenon, or reflecting on a social interaction, **I'm simultaneously revealing my own patterns, biases, and ways of being.** The observer cannot be separated from the observed.
 

@@ -8,6 +8,8 @@
   },
   "scripts": {
     "dev:stop": "bash scripts/stop-netlify-dev.sh",
+    "blockquotes:check": "node scripts/clean-empty-blockquotes.mjs",
+    "blockquotes:fix": "node scripts/clean-empty-blockquotes.mjs --write",
     "tags:check": "node scripts/normalize-tags.mjs --check",
     "tags:fix": "node scripts/normalize-tags.mjs --write",
     "flavor:check": "node scripts/check-ai-flavor.mjs --changed --check",
