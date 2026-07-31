@@ -63,8 +63,10 @@ can be marked complete.
 | `content/zh/ai-agent/posts/gpt-researcher.md` | 71 → 96 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide.md` | 21 → 97 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/harnessing-language-model-applications-with-langchain-a-developer-is-guide.md` | 38 → 97 | Passed after revision | Complete |
-| `content/en/ai-agent/posts/independent-developer.md` | 44 | Failed | In progress |
-| `content/zh/ai-agent/posts/independent-developer.md` | 45 | Failed | In progress |
+| `content/en/ai-agent/posts/independent-developer.md` | 44 → 97 | Passed after revision | Complete |
+| `content/zh/ai-agent/posts/independent-developer.md` | 45 → 96 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/jina.md` | 14 | Failed | In progress |
+| `content/zh/ai-agent/posts/jina.md` | 47 | Failed | In progress |
 
 ## Repository baseline
 
