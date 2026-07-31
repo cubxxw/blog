@@ -33,6 +33,9 @@ howto:
       text: "将 .env.template 重命名为 .env，在其中填入 OPENAI_API_KEY，以及 PineCone 控制台生成的 PINECONE_API_KEY 和 PINECONE_ENV。"
     - name: "运行 Auto-GPT"
       text: "执行 python3 -m autogpt，依次为 AI 命名、设定角色和目标；每一步行动按 y 加回车授权，它就会自主联网检索并循环执行直到完成目标。"
+cover:
+  image: /images/covers/ai-agent/2023/use-auto-gpt.png
+  alt: "自动化小车依次通过工具、检查与人工闸口"
 ---
 
 **Auto-GPT 是一个基于 GPT-4 的开源自主 AI 工具：给它一个目标，它会自行拆解任务、联网检索信息并循环执行，直到目标完成。** 本地安装只需五步——准备 Git、Python 3.8+ 与 OpenAI、PineCone 两个 API 密钥，克隆仓库，`pip install -r requirements.txt` 装依赖，配置 `.env`，最后 `python3 -m autogpt` 运行。完整步骤和截图见下文。

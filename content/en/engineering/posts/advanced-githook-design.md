@@ -13,6 +13,9 @@ tldr:
   - "Git hooks enforce standardized commit formats and file size limits, making developers consider best practices before committing"
   - "Pre-commit, commit-msg, and pre-push hooks can be installed globally or per-project using GitHub Gists, Husky, or Makefile automation"
   - "File size limits default to 5MB but remain overridable via environment variables or --no-verify flag, requiring developers to intentionally bypass protections"
+cover:
+  image: /images/covers/engineering/2023/advanced-githook-design.png
+  alt: "A mechanical quality-control line inspecting and approving changes before release"
 ---
 
 ## What to do if the community is not standardized

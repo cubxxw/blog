@@ -1,310 +1,280 @@
 ---
-title: 'Use Auto Gpt'
-description: Learn how to install and use Auto-GPT for autonomous AI task automation, including setup, configuration, and practical use cases.
-ShowRssButtonInSectionTermList: true
+title: 'AutoGPT in 2026: From the Classic Experiment to the Platform'
 date: 2023-03-18T16:28:30+08:00
-draft : false
+lastmod: 2026-07-31T00:00:00+08:00
+draft: false
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - Blog
   - AI
   - Agent
+  - Automation
+  - LLM
+  - Python
+  - Docker
+  - Open Source
+categories:
+  - Development
+description: >
+  Learn what changed between AutoGPT Classic and the 2026 AutoGPT Platform, why the old tutorial is unsafe, and how to migrate workflows with clear controls.
 tldr:
-  - "Auto-GPT leverages GPT-4 to autonomously automate diverse tasks like content creation, translation, and data analysis with high precision and efficiency."
-  - "Auto-GPT connects to the internet to retrieve latest information and can be extended with plugins for Twitter, email, Telegram, and analytics integrations."
-  - "Future LLMs will revolutionize work automation while raising concerns about bias, but freeing humans to focus on complex creative tasks instead of repetitive work."
-howto:
-  name: "How to install and run Auto-GPT locally"
-  totalTime: PT30M
-  supplies:
-    - "Git"
-    - "Python 3.8 or later"
-    - "OpenAI API key"
-    - "PineCone API key"
-  steps:
-    - name: "Prepare the environment"
-      text: "Install Git and Python 3.8 or later, and obtain an OpenAI API key and a PineCone API key (a free PineCone account is enough)."
-    - name: "Clone the repository"
-      text: "Run git clone https://github.com/Significant-Gravitas/Auto-GPT and change into the Auto-GPT project directory."
-    - name: "Install dependencies"
-      text: "Inside the project directory, run pip install -r requirements.txt to install all Python dependencies."
-    - name: "Configure API keys"
-      text: "Rename .env.template to .env, then fill in OPENAI_API_KEY plus the PINECONE_API_KEY and PINECONE_ENV values generated in the PineCone console."
-    - name: "Run Auto-GPT"
-      text: "Execute python3 -m autogpt, then name the AI, define its role, and set its goals; authorize each action with y and Enter, and it will autonomously search the web and loop until the goals are done."
+  - "The 2023 AutoGPT loop was an influential experiment, but AutoGPT Classic is now unsupported and its dependencies will not be updated; do not use the old setup in production."
+  - "The maintained product is AutoGPT Platform, which models automation as blocks, workflows, triggers, deployments, credentials, and observable runs rather than one unconstrained prompt loop."
+  - "A sound migration preserves the original job, not the old commands: define inputs, tools, permissions, budgets, approval gates, tests, and failure paths before choosing an agent."
+cover:
+  image: /images/covers/ai-agent/2023/use-auto-gpt.png
+  alt: 'A clockwork cart passing through controlled gates, representing the evolution from AutoGPT Classic to a governed agent platform'
+  caption: 'Useful autonomy is not the absence of gates; it is movement through gates we can understand.'
 ---
 
-**Auto-GPT is an open-source autonomous AI tool built on GPT-4: give it a goal and it decomposes the task, searches the web, and loops through actions until the goal is done.** Installing it locally takes five steps — prepare Git, Python 3.8+, and OpenAI plus PineCone API keys; clone the repo; install dependencies with `pip install -r requirements.txt`; configure `.env`; then run `python3 -m autogpt`. Full steps and screenshots below.
+> **Status note, verified July 31, 2026:** this article originally explained how to install the 2023 stand-alone Auto-GPT agent. Those commands are obsolete. The official project now says that **AutoGPT Classic is unsupported**, its dependencies will not be updated, and it has known security issues. Treat Classic as a historical laboratory, not a production tool. For new work, use the maintained AutoGPT Platform or another actively maintained workflow system.
 
-## Preface
+In the spring of 2023, Auto-GPT made a compelling promise: describe an objective, give a model some tools, and watch it plan its own way forward. I installed it because the idea felt less like a chatbot feature and more like a change in the shape of software.
 
-🔮 In my Slack workspace, multiple AIs are integrated, including ChatGPT 4, ChatGPT 3.5, Claude...
+The demo was memorable. The lesson I carried forward was wrong.
 
-We can interact with AI for free and without restrictions through Slack. Everyone is welcome to join Slack. Here is the link:
+I thought autonomy meant letting the loop run longer. Three years later, I think autonomy means designing a smaller space in which the loop can run safely. The interesting work is no longer naming an agent and giving it five ambitious goals. It is deciding which tools it may call, which credentials it may touch, how much it may spend, when a human must approve, and what evidence proves the run succeeded.
 
-[https://join.slack.com/t/kubecub/shared_invite/zt-1se0k2bae-lkYzz0_T~BYh3rjkvlcUqQ](https://join.slack.com/t/kubecub/shared_invite/zt-1se0k2bae-lkYzz0_T~BYh3rjkvlcUqQ)
+This guide explains what happened to the original project, what the current AutoGPT Platform is, and how to migrate an old Auto-GPT idea without preserving its obsolete assumptions.
 
-![image-20230514215132365](https://sm.cubxxw.com/sm202305142151717.png)
+## The short answer
 
+Do not follow an old tutorial that asks you to install Python 3.8, run `pip install -r requirements.txt`, rename `.env.template`, configure Pinecone, and start the agent with `python3 -m autogpt`. That was a snapshot of the 2023 codebase, not a durable interface.
 
+Today there are two different things behind the AutoGPT name:
 
-## introduce
+| Area | AutoGPT Classic | AutoGPT Platform |
+|---|---|---|
+| Purpose | Historical autonomous-agent experiment | Maintained system for building and operating agent workflows |
+| Project status | Unsupported; dependencies will not be updated | Active development, with beta releases in the official repository |
+| Main abstraction | A stand-alone agent repeatedly plans and acts | Blocks connected into workflows, then tested, deployed, triggered, and monitored |
+| Appropriate use | Reading, research, controlled local experiments | New automations and operational workflows |
+| License | MIT for Classic and other code outside `autogpt_platform` | Polyform Shield for code and content inside `autogpt_platform` |
 
-I learned about Auto-GPT a long time ago. As the fastest growing project on GitHub in recent times (one of them), Auto-GPT is well known in the open source community. It has even quickly surpassed Kubernetes. Currently, there are `125k stars`.
+The distinction matters. “AutoGPT is open source” is no longer a precise description of the whole repository. The official license separates the Platform directory from Classic, Forge, the benchmark, and the older frontend.
 
-Thanks to Auto-GPT’s outstanding technology, many tasks can be automated with high precision and efficiency. It leverages the powerful natural language processing capabilities of GPT-4.
+## What the 2023 experiment got right
 
-We can even use it to achieve more automated work, such as the previous section "Developing an AI automatic cloud native project automatic launch tool on Sealos"
+Auto-GPT arrived before the vocabulary around agents had settled. Its rough edges made several ideas visible:
 
+1. A useful model needs tools, not only a longer prompt.
+2. A long objective must become smaller actions.
+3. The result of one action must return to the next decision.
+4. Memory, browsing, files, and code execution introduce state—and state introduces risk.
+5. A model that can act also needs a way to stop.
 
+Those ideas survived. The original implementation did not need to.
 
-## What is AutoGPT
+My first article praised Auto-GPT for producing content, translating, analyzing data, writing reports, and coding. That list was technically imaginable but operationally misleading. A model can attempt all of those jobs; it does not follow that the output is correct, economical, or safe. The missing words were *under constraints*.
 
-Its GitHub address:
+The 2023 interface asked for a name, a role, and several goals. It displayed thoughts, proposed an action, and often waited for the user to press `y`. This made agency visible, but it did not make the work reliable. A persuasive plan could still be based on weak evidence. A successful tool call could still move the task in the wrong direction. Repeating the loop multiplied both progress and error.
 
-+ [GitHub](https://github.com/Significant-Gravitas/Auto-GPT)
+That is the historical value of Classic: it showed the possibility and the failure mode in the same terminal.
 
-Essentially, Auto-GPT leverages the versatility of OpenAI’s latest artificial intelligence models to interact with software and services online, enabling them to “autonomously” perform tasks such as X and Y. But as we learn with large language models, this ability seems as wide as the ocean but as deep as a puddle.
+## What replaced the old mental model
 
-AutoGPT is an AI-driven application that leverages the power of LLMs like GPT-4 to autonomously create and process a variety of jobs. By using Auto GPT, organizations and individuals can streamline processes such as report authoring, content creation, and data analysis to save time and reduce errors.
+The maintained AutoGPT Platform is built around workflows. In the official project description, the frontend provides an agent builder, workflow management, deployment controls, ready-to-use agents, run interaction, and monitoring. The server executes deployed agents and supports continuous operation and external triggers.
 
-AutoGPT is a game changer in task automation, allowing organizations and individuals to focus on other critical tasks while leaving repetitive and menial tasks to programs.
+The important shift is not graphical versus command line. It is implicit behavior versus explicit structure.
 
-As LLM continues to evolve, we can expect to see increasingly powerful software like Auto GPT capable of performing increasingly complex tasks.
+In a workflow, a block performs one bounded action. One block may receive a trigger, another may retrieve data, another may call a model, and another may send an approved result. The connections show where data moves. Credentials can be attached to the integration that needs them. A run can be inspected instead of reconstructed from a stream of improvised reasoning.
 
-AutoGPT offers a new direction in terms of how AI-driven technologies will change the way we operate and interact with AI systems in the future.
+This does not magically make an agent correct. It makes correction possible.
 
+### A practical example: a research digest
 
+Suppose the old goal was:
 
-## How it works
+> Find the most important agent-engineering news every morning, summarize it, and send it to me.
 
-Auto GPT uses the latest developments in LLM, specifically GPT-4, to automatically generate cohesive and relevant content. The program learns from large amounts of data, which allows it to identify patterns and connections between words and sentences.
+The 2023 version encourages one agent to interpret the whole sentence and improvise. A maintainable version turns it into an observable pipeline:
 
-Using this information, Auto GPT generates text in response to prompts or input. This input may come in the form of instructions, tasks, or a set of guidelines.
+1. A schedule creates a run.
+2. Search connectors retrieve candidates from an allowlist of sources.
+3. A deterministic filter removes duplicates and items outside the date window.
+4. A model extracts the claim, publication date, and supporting URL from each candidate.
+5. A second step rejects entries without usable evidence.
+6. A model writes a short digest from the surviving records.
+7. A human approval gate is required when the digest will be published externally.
+8. The delivery block sends the approved artifact.
+9. The run stores costs, failures, and source links for review.
 
-After receiving input, Auto GPT uses its cutting-edge algorithms and natural language processing skills to create contextually appropriate and logically consistent content. Auto GPT is an important resource for organizations and people looking to automate processes and save time because it generates text that is nearly indistinguishable from human written language.
+This pipeline may look less autonomous than “go research the news.” It is more useful precisely because each uncertainty has a place to be observed.
 
-The strength of Auto GPT is its ability to learn from large amounts of data and generate relevant and logical text, making it a key tool in the field of job automation.
+## How to migrate an old Auto-GPT idea
 
-Unlike the free version of ChatGPT, **Auto-GPT can connect to the Internet** and find the latest information on any topic. Therefore, you can use it to access any web page and capture information.
+Do not migrate commands. Migrate intent, boundaries, and evidence.
 
+### 1. Recover the actual job
 
+Old Auto-GPT prompts often mix an outcome with a fantasy of unlimited competence:
 
-### What can be done
+> Research a market, build a product, grow it, and earn fifty million dollars.
 
-Auto GPT is a flexible program that can be used for a variety of activities, including report creation and data analysis. In this section, we'll look at some of the functions that Auto GPT can perform, and how it performs them automatically.
+Replace that with one job whose success can be inspected:
 
-**Content Creation**
+> Every Monday, collect product changes from ten official sources, produce a cited comparison, and save a draft for review.
 
-Content for websites, blogs, and social media posts can be created using Auto GPT. If you give it a theme or a set of guidelines, Auto GPT can produce high-quality, relevant, and interesting material.
+Write down:
 
-**translate**
+- the trigger;
+- the required inputs;
+- the artifact that should exist at the end;
+- the sources or systems the workflow may access;
+- the maximum time and cost per run;
+- the decisions that require a human.
 
-You can use Auto GPT to perform translation tasks. By using Auto GPT with input text in one language, you can translate the text into another language. It can be of great help to businesses that do business in different countries and need quick translation of documents or communications.
+If the success condition cannot be stated, adding an agent will not clarify it.
 
-**customer service**
+### 2. Turn capabilities into narrow blocks
 
-Customer support duties, such as responding to frequent inquiries and resolving issues, can be automated with Auto GPT. Auto GPT can use natural language processing to understand customer queries and provide relevant solutions.
+Separate retrieval, transformation, model reasoning, side effects, and delivery. A block that reads a document is easier to test than an agent that may browse, edit files, send email, and execute code from the same context.
 
-**data analysis**
+Prefer deterministic code for deterministic work:
 
-You can use Auto GPT to perform data analysis activities. Data input allows Auto GPT to analyze the information and generate insights that can be used for decision-making.
+- parse dates with code;
+- validate schemas with code;
+- deduplicate identifiers with code;
+- use a model where language or ambiguous judgment is actually required.
 
-**Writing reports**
+The model should sit at the uncertain edge of the system, not replace the whole system.
 
-Businesses and researchers can use Auto GPT to generate reports based on data input. By entering data, Auto GPT can analyze the information and produce accurate and instructive results.
+### 3. Design permissions before prompts
 
-**coding**
+List every credential and side effect. Give each integration the smallest scope that completes its step. Separate read operations from write operations. Never paste a production secret into a prompt or commit an environment file.
 
-Auto GPT can be used in coding jobs to generate complete programs or code snippets. Auto GPT can generate effective and efficient code by taking programming parameters or requirements into account. Developers who need to write code accurately and quickly will find this feature very helpful.
+An approval gate belongs before an irreversible action:
 
-*Use your imagination, there is nothing you can’t think of~*
+- publishing;
+- sending a message to a customer;
+- modifying production data;
+- purchasing a service;
+- executing generated code outside a sandbox.
 
+Prompt wording is not a security boundary. Permissions are.
 
+### 4. Add budgets and stop conditions
 
-## Build and set up the environment
+An agent loop needs explicit limits:
 
-If you can **[use GPT-4](https://www.wbolt.com/how-to-use-gpt-4-free.html) API**, Auto-GPT works best because it Better at thinking and drawing conclusions. It's also less prone to hallucinations. If you don't have access yet, you can [use the link here](https://www.wbolt.com/go?_=18a71268abaHR0cHM6Ly9vcGVuYWkuY29tL3dhaXRsaXN0L2dwdC00LWFwaQ%3D%3D) to join the waitlist for GPT-4 API access. However, you can also use the normal OpenAI API with GPT-3.5 models.
+- maximum model calls;
+- maximum tool calls;
+- maximum elapsed time;
+- maximum cost;
+- maximum retries per failing step;
+- a terminal state for missing evidence;
+- a terminal state for denied permission.
 
-**Preparation:**
+“Continue until the goal is complete” is not a stop condition. It is an invitation to reinterpret failure as more work.
 
-1. Git
+### 5. Test the seams
 
-2.Python 3.8 or later
+Create fixtures for ordinary inputs, empty inputs, malformed responses, expired credentials, rate limits, and partial outages. Verify the artifact, not the fluency of the intermediate text.
 
-3. OpenAI API key
+For a research workflow, useful assertions include:
 
-4.PineCone API key
+- every factual item has a source URL;
+- every source falls inside the permitted date range;
+- the same item appears only once;
+- the output schema is valid;
+- no delivery occurs when approval is absent.
 
+Run the workflow with a small budget before increasing frequency or reach.
 
+### 6. Deploy in widening circles
 
-Use git clone:
+Start with manual runs and read-only tools. Then add a schedule. Then add one reversible side effect. Only after the run history is boring should the workflow touch a larger audience or a more valuable system.
+
+The goal is not a dramatic first run. It is a hundred uneventful runs and one failure that stops in the right place.
+
+## Self-hosting the current Platform
+
+The official repository maintains the authoritative setup instructions. As of this verification, it describes self-hosting as a technical process and provides an installer for macOS/Linux and Windows. The documented environment includes Docker Engine, Docker Compose, Git, Node.js, npm, and a suitable editor; hardware and network requirements are listed separately.
+
+Use the [official AutoGPT repository](https://github.com/Significant-Gravitas/AutoGPT) and its linked [self-hosting documentation](https://docs.agpt.co/platform/getting-started/) rather than copying a command from a dated blog post. Read an installation script before executing it, pin the version you intend to run, and review the release notes before upgrading. Hosted availability, beta status, requirements, and pricing can change faster than this article.
+
+After installation:
+
+1. open the Platform locally;
+2. build or import a small workflow;
+3. configure only the credentials required by its blocks;
+4. test it with disposable data;
+5. inspect the run output and cost;
+6. add triggers and external side effects only after the manual path is stable.
+
+This article intentionally does not duplicate a one-line installer. An installation command is easy to copy and easy to outlive; the official setup page is the right source for a moving interface.
+
+## If you still want to study Classic
+
+Classic remains valuable as source material. Its current official README describes the original experiment, Forge, the benchmark, the agent protocol server, workspaces, and a layered permission system. It also gives a current educational setup based on Python 3.12+ and Poetry:
 
 ```bash
-❯ git clone https://github.com/Significant-Gravitas/Auto-GPT
-❯ cd Auto-GPT
+git clone https://github.com/Significant-Gravitas/AutoGPT.git
+cd AutoGPT/classic
+poetry install
+cp .env.example .env
+poetry run autogpt
 ```
 
-Install:
+These commands are included for repository study, not as a production recommendation. The same README warns that Classic is unsupported, has known dependency vulnerabilities, and should be used for educational purposes only.
 
-> The requirements.txt file is a text file, usually used in Python projects, which contains all dependency packages and their version information required by the project.
->
-> When we were studying the buildpacks project before, how it solved the python environment judgment problem was through the requirements.txt file.
+If you run it:
 
-```bash
-❯ pip install -r requirements.txt
-```
+- use a disposable workspace;
+- use low-limit credentials created for the experiment;
+- deny access to personal files and production services;
+- keep generated code inside a sandbox;
+- set provider spending limits;
+- assume web content can contain hostile instructions;
+- destroy the credentials when the experiment ends.
 
-After that, rename `.env.template` to `.env` and populate the fields with OpenAI and PineCone API keys.
+The current Classic layout also differs from the 2023 tutorial:
 
-```bash
-❯ mv .env.template .env
-```
+| Old tutorial instruction | Current historical-repo equivalent |
+|---|---|
+| Python 3.8 or later | Python 3.12+ |
+| `pip install -r requirements.txt` | `poetry install` inside `classic/` |
+| rename `.env.template` | copy `.env.example` |
+| Pinecone key required | not part of the baseline required variables in the current Classic README |
+| `python3 -m autogpt` | `poetry run autogpt` |
+| install a catalog of Classic plugins | model integrations as Platform blocks or implement a bounded block |
 
-After that, go to VIM and paste the API in the `OPENAI_API_KEY` section. You can refer to the picture below to find out.
+This table will eventually age too. When the repository and a tutorial disagree, trust the repository.
 
-```bash
-❯ cat .env | grep -i OPENAI_API_KEY
-## OPENAI_API_KEY - OpenAI API Key (Example: my-openai-api-key)
-OPENAI_API_KEY=your-openai-api-key
-```
+## The license boundary
 
+The official repository contains code under two different licenses:
 
+- code and content inside `autogpt_platform` use the Polyform Shield License;
+- the other portions of the repository—including the original stand-alone agent, Forge, the benchmark, and the Classic GUI—use the MIT License.
 
-Next, open [pinecone.io](https://www.wbolt.com/go?_=baa37b74edaHR0cHM6Ly93d3cucGluZWNvbmUuaW8v) and create a free account. It will allow LLM to retrieve relevant information from memory for use in AI applications.
+This matters if you plan to redistribute, embed, or build a commercial service. Read the actual [repository license](https://github.com/Significant-Gravitas/AutoGPT/blob/master/LICENSE); this paragraph is orientation, not legal advice.
 
-Here, click on `API Keys` in the left sidebar and click on `Create API Key` in the right pane
+It also matters philosophically. A project can keep a famous open-source lineage while its maintained product uses a different license. Names preserve continuity more easily than architectures or terms do.
 
-Give a name like `autogpt` and click `Create Key`
+## What I would build now
 
-![image-20230503171039991](https://sm.cubxxw.com/sm202305031712718.png)
+I would not start with a general-purpose autonomous agent. I would start with a workflow that has one recurring pain, one visible artifact, and one person who cares whether it is correct.
 
-Copy the Key Value, open it with `vim` and paste it next to `PINECONE_API_KEY`.
+Then I would ask four questions:
 
-Likewise, copy the value under `Environment`.
+1. Which part is genuinely ambiguous enough to need a model?
+2. Which facts can be checked before the result leaves the system?
+3. Which action would hurt if it happened twice?
+4. Who can stop the run when the world differs from the prompt?
 
-Now, paste it next to PINECONE_ENV.
+This is less cinematic than the terminal demos of 2023. It is also the point where an agent stops being a performance and starts becoming infrastructure.
 
+Auto-GPT’s lasting contribution was not proving that a model could run forever. It was making us confront what happens when language acquires tools. The answer, after the excitement settles, is the same answer engineering gives elsewhere: define the boundary, observe the state, and make failure cheap.
 
+## Official references
 
-## Run
-
-Open a terminal to execute the `main.py` Python script.
-
-```bash
-❯ python3 -m autogpt
-```
-
-**Name the AI:**
-
-On the first run, Auto-GPT will ask you to name the AI. If you don't want to create an AI for a specific use case, you can leave this field blank and hit enter. It loads the Entrepreneur-GPT name by default.
-
-**Define the role of artificial intelligence~**
-
-After that, **set goals one by one for autonomous AI**. This is where you tell the AI what you want to achieve. You can ask it to save the information in a text or PDF file. You can also ask it to close after retrieving all information.
-
-**Define AI Role:**
-
-Give it a name and role based on what you want your AI to do, such as “researcher,” “content generator,” or “personal coder.” For more successful results, be clear about what you want your AI to achieve.
-
-**set a goal:**
-
-Outline the goals of artificial intelligence in detail, such as obtaining information, storing data in files, executing code, or modifying text. Include information about the output file to use, and any other operations required to complete the job.
-
-The goals are as follows:
-
-1. Develop products
-
-2. Optimize products
-
-3. Expand product scale
-
-4. Generate more than $50 million in revenue
-
-5. Maintain this consistency
-
-Auto-GPT will start thinking. During the action, it will ask you to authorize the action. **Press "y"** and then press **Enter** to confirm. It may connect to the website and collect information.
-
-You can read **what the AI is thinking, reasoning and planning**. It also provides criticism (a negative cue) so that it comes up with the right information. Finally, it performs the action.
-
-
-
-## AutoGPT plugin
-
-You can tailor AutoGPT to your unique needs
-
-They do not require significant changes to the core code of the main application because they are designed to extend or improve its functionality.
-
-The plug-in list is as follows:
-
-1. Twitter plugin
-
-2. Email plugin
-
-3. Telegram plugin
-
-4. Google Analytics plugin
-
-5. Youtube plugin, and many more.
-
-
-
-## The future of Auto GPT and LLM
-
-While LLMs like GPT-4 offer great promise for revolutionizing work automation, there may be dangers and drawbacks that need to be considered. The potential for bias and stereotypes in the data used to train models is one of the key reasons for concern. A biased LLM can lead to unfair and discriminatory results.
-
-As Auto-GPT and ChatGPT demonstrate, LLM can be taught to learn from huge amounts of data and independently perform a wide range of activities, from content production to coding. Automated operations have the power to completely transform the industry and the way we operate.
-
-But for LLM, Auto-GPT is just the beginning. As technology develops further, the power of LLMs will increase. The LLMs of the future will be better at completing complex tasks and understanding context and complexity.
-
-Automating LLM tasks may also open up new markets and job opportunities. If businesses and people could automate many mundane tasks, they would be able to focus on more difficult and imaginative projects.
-
-
-
-## Auto-GPT Alternative: Automate tasks with AgentGPT
-
-If you don't want to set up Auto-GPT locally and want an easy-to-use solution for automating and deploying tasks, you can use AgentGPT. It's built on Auto-GPT, but you can access it directly in your browser. No need to fiddle with terminals and commands. Here's how it works.
-
-> Disadvantage: Cannot access local ~
-
-
-
-### Open and use+ [https://agentgpt.reworkd.ai/zh](https://agentgpt.reworkd.ai/zh)
-
-Here, add your OpenAI API key. You can get the API key from [here](https://www.wbolt.com/go?_=e7e2fef44aaHR0cHM6Ly9wbGF0Zm9ybS5vcGVuYWkuY29tL2FjY291bnQvYXBpLWtleXM%3D)**. If you don't have access to the [GPT-4](https://www.wbolt.com/how-to-use-gpt-4-free.html) API, select `gpt-3.5-turbo` as the model and click ` Save`
-
-![image-20230503174431508](https://sm.cubxxw.com/sm202305031744911.png)
-
-Next, give your AI agent a name and set the goals you want to achieve. Now, click Auto-GPT AI’s `Deploy Agent` to start considering your investment.
-
-I found that I have no money~
-
-![image-20230503175554002](https://sm.cubxxw.com/sm202305031755504.png)
-
-Once the task is completed, you can click "**Save**" or "Copy" to get the final result.
-
-
-
-## END link
-
-### Reference article
-
-+ [How to install and use the autonomous artificial intelligence tool Auto-GPT](https://www.wbolt.com/auto-gpt.html)
-+ [Eight ways to use Auto-GPT](https://juejin.cn/post/7226665757882449978)
-+ [Zhihu: Install and use Auto-GPT](https://zhuanlan.zhihu.com/p/621854926)
-+ [Auto-GPT-ZH independent GPT4 experiment](https://github.com/kaqijiang/Auto-GPT-ZH)
-+ [Advanced LLMOps Architecture](https://matt-rickard.com/a-high-level-llmops-architecture)
-
-
-
-Some of the resources I used to create this project:
-
-+ [Significant-Gravitas/Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT) is the main inspiration for this project.
-+ [tiktoken-go/tokenizer](https://github.com/tiktoken-go/tokenizer) to count tokens before sending the prompt to OpenAI.
-+ [pavel-one/EdgeGPT-Go](https://github.com/pavel-one/EdgeGPT-Go) to connect to Bing Chat.
-+ [PullRequestInc/go-gpt3](https://github.com/PullRequestInc/go-gpt3) to send requests to OpenAI.
-+ [Danny-Dasilva/CycleTLS](https://github.com/Danny-Dasilva/CycleTLS) to mimic the browser when connecting to Bing Chat.
-+ [chromedp/chromedp](https://github.com/chromedp/chromedp) to control the browser from golang code.
+- [AutoGPT repository and current Platform overview](https://github.com/Significant-Gravitas/AutoGPT)
+- [AutoGPT Classic status, requirements, security warning, and commands](https://github.com/Significant-Gravitas/AutoGPT/blob/master/classic/README.md)
+- [AutoGPT repository license](https://github.com/Significant-Gravitas/AutoGPT/blob/master/LICENSE)
+- [AutoGPT Platform documentation](https://docs.agpt.co/platform/)
+- [AutoGPT Platform block SDK guide](https://docs.agpt.co/platform/block-sdk-guide/)
+- [AutoGPT releases](https://github.com/Significant-Gravitas/AutoGPT/releases)

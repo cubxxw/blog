@@ -100,9 +100,9 @@ UIA 负责语义和层级，视觉解析负责补足自定义控件，两路结�
 
 ### 2. GUI 与 API 的统一动作层
 
-UFO² 论文把这层称作统一 GUI–API Action Orchestrator，代码与文档中常见的执行接口名是 Puppeteer。它不是浏览器自动化项目 Puppeteer 的简单复用，而是 UFO 内部对不同 Automator 与 Receiver 的调度抽象。
+UFO² 论文把这层称作统一 GUI–API Action Orchestrator，代码与文档中常见的执行接口名是 Puppeteer。这里的 Puppeteer 与同名浏览器自动化项目不同，指的是 UFO 内部调度不同 Automator 与 Receiver 的抽象层。
 
-API 动作通常更稳定，GUI 动作通常覆盖面更广。统一动作层允许 AppAgent 根据应用能力选择路径，并让执行结果回到同一套状态与日志系统。真正重要的不是动作有多少种，而是不同动作可以被同一套任务控制逻辑观察和约束。
+API 动作通常更稳定，GUI 动作通常覆盖面更广。统一动作层允许 AppAgent 根据应用能力选择路径，并让执行结果回到同一套状态与日志系统。动作种类多少并非关键，关键在于它们都能被同一套任务控制逻辑观察和约束。
 
 ### 3. 持续知识集成
 

@@ -221,7 +221,7 @@ AI 的"信任"很大程度来自**你在别处被怎么谈论**：
 GSC 数据给了我一个反直觉的教训：**别被 87 万曝光冲昏头。** 那些高曝光的 MBTI / 脑震荡 / 地方史查询是噪声，不是机会。真正该重仓的是已经在被点击的技术集群：
 
 - **Hugo 建站**：[《我的 Hugo 博客搭建》](/zh/engineering/posts/my-hugo/)（CTR 高达 10.4%，是我的标杆）、[《Hugo 进阶教程》](/zh/engineering/posts/hugo-advanced-tutorial/)
-- **AI 工具与工程**：[MarkItDown](/zh/projects/markitdown/)（7.2 万曝光的英文流量王）、[mem0](/zh/projects/mem0/)、[LangGraph](/zh/projects/langgraph/)、[GPT-Researcher](/zh/projects/gpt-researcher/)、[NotebookLM](/zh/projects/notebooklm/)
+- **AI 工具与工程**：[MarkItDown](/zh/projects/markitdown/)（7.2 万曝光的英文流量王）、[mem0](/zh/projects/mem0/)、[LangGraph](/zh/projects/langgraph/)、[GPT-Researcher](/zh/ai-agent/posts/gpt-researcher/)、[NotebookLM](/zh/projects/notebooklm/)
 - **Go 与工程实践**：[《自动化工具与 directives》](/zh/engineering/posts/directives-and-the-use-of-automation-tools/)、[TDD](/zh/projects/tdd/)
 
 **策略：围绕这几个已验证有需求的主题做"主题集群"——一篇支柱长文 + 若干子文章 + 相互内链**，形成主题权威（topical authority），而不是四处撒网追噪声词。这也是我把这篇 GEO 文章设计成"支柱 + 系列"的原因：**用文章结构本身去示范 GEO。**

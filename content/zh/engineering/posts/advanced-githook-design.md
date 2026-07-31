@@ -14,6 +14,9 @@ tldr:
   - "虽然写了详尽的贡献者文档，但开发者很少严格遵循规范，导致维护开源社区面临巨大阻碍，需要通过自动化工具强制执行规范。"
   - "利用Git Hook（pre-commit和commit-msg）结合Makefile配置，可以自动检查提交文件大小和规范化commit消息格式，确保所有提交符合统一标准。"
   - "通过GitHub Gist发布可复用的安装脚本和推送脚本，使任何项目都能一键快速部署和维护Git规范化流程，同时提供社区交流和定期维护的平台。"
+cover:
+  image: /images/covers/engineering/2023/advanced-githook-design.png
+  alt: "在变更发布前执行检查、校验与批准的机械质量控制线"
 ---
 
 ## 社区不规范怎么办
