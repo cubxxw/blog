@@ -70,7 +70,7 @@ can be marked complete.
 | `content/en/ai-agent/posts/langchain.md` | 61 → 97 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/langchain.md` | 82 → 99 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/langgraph.md` | 81 → 97 | Passed after revision | Complete |
-| `content/zh/ai-agent/posts/langgraph.md` | 54 | Failed | Queued after English revision |
+| `content/zh/ai-agent/posts/langgraph.md` | 54 → 98 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/markItdown.md` | 72 → 94 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/markItdown.md` | 65 → 98 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/mem0.md` | 66 → 96 | Passed after revision | Complete |
@@ -94,18 +94,17 @@ can be marked complete.
 | `content/en/ai-agent/posts/tdd.md` | 21 → 96 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/tdd.md` | 43 → 98 | Passed after revision | Complete |
 | `content/en/ai-agent/posts/trusting-unattended-ai-agent.md` | 86 → 97 | Passed after revision | Complete |
-| `content/zh/ai-agent/posts/trusting-unattended-ai-agent.md` | 81 | Failed | Queued after English revision |
-| `content/en/ai-agent/posts/use-auto-gpt.md` | 29 | Failed | Queued |
+| `content/zh/ai-agent/posts/trusting-unattended-ai-agent.md` | 81 → 97 | Passed after revision | Complete |
+| `content/en/ai-agent/posts/use-auto-gpt.md` | 29 → 96 | Passed after revision | Complete |
 | `content/zh/ai-agent/posts/use-auto-gpt.md` | 27 | Failed | Queued after English revision |
 
 ## Repository baseline
 
 - Formal article roots: `content/{en,zh}/{ai-agent,engineering,growth}/posts/`
   and `content/{en,zh}/projects/`.
-- The current inventory contains 156 English and 158 Chinese article files
-  (314 language-specific files in total).
-- Two Chinese articles currently lack an English counterpart:
-  `content/zh/ai-agent/posts/demo-steps-preview.md` and
+- The current inventory contains 156 English and 157 Chinese article files
+  (313 language-specific files in total).
+- One Chinese article currently lacks an English counterpart:
   `content/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy.md`.
 - The 2025 annual review is a valid bilingual pair even though the Chinese
   version is a page bundle (`index.md`) and the English version is a single

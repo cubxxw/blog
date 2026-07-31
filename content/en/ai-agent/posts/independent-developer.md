@@ -9,7 +9,6 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - Indie Hacker
   - Solo Builder
   - Product Strategy
   - Development

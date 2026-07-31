@@ -199,4 +199,4 @@ Direction does not have to be lonely. It can be discovered in dialogue. But valu
 
 ---
 
-*Related reading: [Friction Is Growth](/en/growth/posts/friction-is-growth/) | [Installing Quality Gates Into Your AI Workflow](../engineering-discipline-ai-workflow/) | [From Information to Creation](../info-to-creation-the-framework/).*
+*Related reading: [Friction Is Growth](/growth/posts/friction-is-growth/) | [Installing Quality Gates Into Your AI Workflow](../engineering-discipline-ai-workflow/) | [From Information to Creation](../info-to-creation-the-framework/).*
