@@ -2,8 +2,8 @@
 title: "关于我"
 menuTitle: "关于"
 layout: "about"
-description: "认识熊鑫伟（cubxxw）：独立产品创造者、开源贡献者与旅居者。浏览他的日常工作区、正在构建的 AI 产品、真实旅行照片，以及关于写作、成长和人的判断的长期思考。"
-summary: "把走过的路，做成可以使用的东西。"
+description: "认识熊鑫伟（cubxxw），以及这份公开的实践与思想档案。这里沉淀 AI 工作流、真实项目、工程方法，以及关于个人成长、哲学与人生的长期思考。"
+summary: "把真实实践，沉淀成能穿越时间的知识。"
 ShowReadingTime: false
 ShowShareButtons: false
 ShowPostNavLinks: false
@@ -23,9 +23,9 @@ type: page
 author: ["Xinwei Xiong"]
 keywords: ["About", "Self", "Identity", "个人介绍", "关于我", "阅读地图", "Start Here"]
 tldr:
-  - "熊鑫伟（cubxxw）通过旅居观察世界，通过写作理解自己，再把理解做成产品。"
-  - "他持续关心一个问题：AI 越来越懂我们时，一个人怎样保存自己的经历、判断和成长轨迹。"
-  - "页面展示他的日常工作区、正在构建的产品、旅行照片与精选阅读路径。"
+  - "cubxxw.com 是熊鑫伟公开沉淀实践、判断与长期思考的个人知识档案。"
+  - "内容来自真实项目，覆盖 AI 工作流、工程方法、系统思维、个人成长、哲学与人生。"
+  - "这里不追逐短期热点，文章会随新的实践与证据持续修订，并全部公开。"
 ---
 
 <!-- ── 尾 · 阅读地图（/start-here 301 落点，保留锚点）。

@@ -1,5 +1,5 @@
 baseURL: https://cubxxw.com
-title: 熊鑫伟 (cubxxw) 的博客 - AI Builder · Open Source Contributor · Digital Nomad
+title: 熊鑫伟 (cubxxw) 的博客 · 公开的实践与思想档案
 theme: PaperMod
 # Raise the per-template timeout above the 30s default: a cold build has to
 # generate every image variant (resize + WebP) on first render, which can
@@ -58,20 +58,23 @@ minify:
 params:
   env: production
   title: 熊鑫伟 (cubxxw) 的博客
-  description: AI Builder、开源贡献者、数字游民的技术博客：Kubernetes、Go、AI 开源项目与成长思考。
+  description: 熊鑫伟的公开实践与思想档案，记录 AI 工作流、真实项目、工程方法、系统思维，以及关于个人成长、哲学与人生的长期思考。
   keywords:
     - cubxxw
     - 熊鑫伟
-    - AI 创业
+    - AI 工作流
+    - AI 系统
     - 开源项目
     - Kubernetes
     - Go 语言
     - 云原生
     - 个人成长
-    - 数字游民
-    - 技术博客
+    - 系统思维
+    - 哲学
+    - 实践档案
   shortTitle: "cubxxw"
   author: 熊鑫伟 (Xinwei Xiong)
+  whatsappURL: "https://wa.me/8618672749565"
   # Public Telepace Headless SDK configuration. The campaign id is
   # intentionally empty in git: set HUGO_PARAMS_TELEPACEABOUTCAMPAIGNID in
   # Netlify after publishing the dedicated About feedback study.
@@ -306,7 +309,7 @@ languages:
     disabled: false
     languageCode: "en-us"
     languageDirection: "ltr"
-    title: "Xinwei Xiong (cubxxw) - AI, Open Source & Nomad Blog"
+    title: "Xinwei Xiong (cubxxw) · An Open Archive of Practice and Thought"
     contentDir: "content/en"
     languageName: English
     weight: 1
@@ -361,14 +364,14 @@ languages:
           pageRef: /about
           weight: 30
     params:
-      description: "Tech blog by Xinwei Xiong — AI Builder, open source contributor and digital nomad sharing Kubernetes, Go, AI projects and travel."
+      description: "Xinwei Xiong's open archive of AI workflows, real projects, engineering methods, systems thinking, personal growth, philosophy, and life."
       profileMode:
         # Enabled or not
         enabled: true
         title: Hi there 👋
         subtitle: |
-          My name is Xinwei (bear) Xiong 🤖 — AI Builder, Open Source Contributor, Digital Nomad.
-          Building AI products with Go & Kubernetes while exploring the world one adventure at a time ☀️.
+          I am Xinwei Xiong, a practitioner and writer.
+          This is my open archive of AI systems, engineering practice, real projects, growth, philosophy, and life.
         imageUrl: ../assets/cubxxw-image.jpg
         imageWidth: 120
         imageHeight: 120
@@ -395,7 +398,7 @@ languages:
     languageDirection: "ltr" # Left to Right for Chinese as well
     # Count CJK characters as words so WordCount / ReadingTime are correct
     hasCJKLanguage: true
-    title: "熊鑫伟（cubxxw）的简体中文博客 🇨🇳"
+    title: "熊鑫伟（cubxxw）· 公开的实践与思想档案"
     languageName: 简体中文
     contentDir: "content/zh"
     weight: 2
@@ -457,8 +460,8 @@ languages:
         enabled: true
         title: 你好 👋
         subtitle: |
-          我叫 Xinwei (bear) Xiong 🤖 — AI Builder、开源贡献者、数字游民。
-          我正在环游世界的路上，用代码和文字记录每一次冒险与思考 ☀️。
+          我是熊鑫伟，一名实践者与写作者。
+          这里是我的公开实践与思想档案，记录 AI 系统、工程实践、真实项目、个人成长、哲学与人生。
         imageUrl: ../assets/cubxxw-image.jpg
         imageWidth: 120
         imageHeight: 120

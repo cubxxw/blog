@@ -1,8 +1,8 @@
 <div class="profile profile-home">
     {{- with site.Params.profileMode }}
-    {{- $heroLine := cond (eq site.Language.Lang "zh") "在这里阅读我的 AI 技术、成长思考与旅行见闻。" "Read my writing on AI technology, personal growth, and travel adventures." -}}
+    {{- $heroLine := cond (eq site.Language.Lang "zh") "一份关于 AI 系统、工程实践、真实项目与个人成长的公开档案。" "An open archive of AI systems, engineering practice, real projects, and personal growth." -}}
     {{- $statusText := cond (eq site.Language.Lang "zh") "状态：在线探索中" "STATUS: ONLINE & EXPLORING" -}}
-    {{- $roleText := cond (eq site.Language.Lang "zh") "AI 创业者 / 开源贡献者 / 数字游民" "AI Entrepreneur / Open Source Contributor / Digital Nomad" -}}
+    {{- $roleText := cond (eq site.Language.Lang "zh") "实践者 / 写作者 / 开源贡献者" "Practitioner / Writer / Open Source Contributor" -}}
     {{- $startHereText := cond (eq site.Language.Lang "zh") "从哪里开始" "Start Here" -}}
     {{- $aboutMeText := cond (eq site.Language.Lang "zh") "我是谁" "Who I Am" -}}
     {{- $latestPostsText := cond (eq site.Language.Lang "zh") "最近写了什么" "Latest Posts" -}}
@@ -32,7 +32,7 @@
                         <span>{{ $statusText }}</span>
                     </a>
                     <div class="profile_quick_links">
-                        <button class="profile_quick_link" type="button" onclick="triggerQuickAsk(this)" data-question="{{ if eq site.Language.Lang "zh" }}你是谁？介绍一下你自己，附上关于页面链接{{ else }}Who are you? Introduce yourself with a link to your about page{{ end }}" data-page="{{ "/about/" | absLangURL }}">
+                        <button class="profile_quick_link" type="button" onclick="triggerQuickAsk(this)" data-question="{{ if eq site.Language.Lang "zh" }}你是谁？介绍一下你自己，附上关于页面链接{{ else }}Who are you? Introduce yourself with a link to your about page{{ end }}" data-page="{{ "/about/" | relLangURL }}">
                             <span class="profile_quick_link__icon">👤</span>
                             <span>{{ $aboutMeText }}</span>
                         </button>
@@ -197,7 +197,7 @@
                     <span class="profile_panel__icon profile_panel__icon--travel">🌍</span>
                     <h3>{{ $travelLabel }}</h3>
                 </div>
-                <p>{{ if eq site.Language.Lang "zh" }}数字游民生活、9 国 35+ 城市旅行见闻与文化探索{{ else }}Digital nomad life across 9 countries, 35+ cities and cultural exploration{{ end }}</p>
+                <p>{{ if eq site.Language.Lang "zh" }}9 国 35+ 城市的旅行现场、徒步记录与文化观察{{ else }}Field notes, long walks, and cultural observations across 9 countries and 35+ cities{{ end }}</p>
                 <a href="{{ "travel/" | relLangURL }}" class="profile_view_all">{{ $viewAllText }}</a>
             </article>
 
@@ -242,7 +242,7 @@
                 <div class="profile_panel__topline">
                     <div>
                         <h2>Growth & Life</h2>
-                        <p>{{ if eq site.Language.Lang "zh" }}成长复盘与数字游民见闻{{ else }}Personal Growth & Nomad Life{{ end }}</p>
+                        <p>{{ if eq site.Language.Lang "zh" }}个人成长、认知方法与人生观察{{ else }}Personal growth, mental models, and reflections on life{{ end }}</p>
                     </div>
                 </div>
                 {{- $growthPages := where (where site.RegularPages "Section" "growth") "Lang" site.Language.Lang -}}

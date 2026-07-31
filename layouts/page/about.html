@@ -6,10 +6,17 @@
 {{- $telepaceWsURL := site.Params.telepaceWsBaseURL | default "wss://api.telepace.cubxxw.com" -}}
 {{- $telepaceCampaignID := site.Params.telepaceAboutCampaignID | default "" -}}
 {{- $telepaceConfigured := ne $telepaceCampaignID "" -}}
+{{- $languagePages := where site.RegularPages "Lang" .Language.Lang -}}
+{{- $archivePages := where $languagePages "Type" "posts" -}}
+{{- $practicePages := where $archivePages "Section" "in" (slice "ai-agent" "engineering") -}}
+{{- $projectPages := where $languagePages "Section" "projects" -}}
+{{- $thoughtPages := where $archivePages "Section" "growth" -}}
+{{- $monthlyPages := where $thoughtPages "File.BaseFileName" "like" `^[0-9]{4}-[0-9]{2}-thought-notes$` -}}
+{{- $practiceCount := add (len $practicePages) (len $projectPages) -}}
 {{- $heroSlides := slice
-  (dict "image" "/images/about/journey/10-taprohm.webp" "zhLabel" "在路上" "enLabel" "FIELD NOTES" "zh" "换一个地方，也换一种看问题的角度。" "en" "Change the place. Change the angle.")
-  (dict "image" "/images/about/journey/06-kumano.webp" "zhLabel" "持续行走" "enLabel" "KEEP MOVING" "zh" "走得更远，才能看见问题真正的形状。" "en" "Walk farther. See the problem clearly.")
-  (dict "image" "/images/about/journey/09-vangvieng.webp" "zhLabel" "正在创造" "enLabel" "BUILD IN PUBLIC" "zh" "把沿途的观察，做成别人可以使用的产品。" "en" "Turn observations into products people can use.")
+  (dict "image" "/images/about/journey/10-taprohm.webp" "zhLabel" "深入现场" "enLabel" "GET CLOSE" "zh" "离真实问题更近，判断才有根。" "en" "Judgment needs contact with reality.")
+  (dict "image" "/images/about/journey/06-kumano.webp" "zhLabel" "持续实践" "enLabel" "KEEP TESTING" "zh" "让每个结论接受现实与时间的检验。" "en" "Let reality and time test every conclusion.")
+  (dict "image" "/images/about/journey/09-vangvieng.webp" "zhLabel" "公开沉淀" "enLabel" "MAKE IT OPEN" "zh" "把个人经验整理成他人可以复用的路径。" "en" "Turn personal experience into reusable paths.")
 -}}
 {{- $journey := slice
   (dict "image" "/images/about/journey/01-nantaihang.webp" "zh" "南太行，中国" "en" "South Taihang, China")
@@ -35,28 +42,28 @@
             alt="{{ if $isZH }}熊鑫伟的头像插画{{ else }}Illustrated portrait of Xinwei Xiong{{ end }}"
             loading="eager" decoding="async">
           <p>
-            <span>{{ if $isZH }}熊鑫伟 · 独立创造者{{ else }}Xinwei Xiong · Independent builder{{ end }}</span>
-            {{ if $isZH }}写代码，也写下生活{{ else }}Building software and recording a life{{ end }}
+            <span>{{ if $isZH }}熊鑫伟 · 实践者与写作者{{ else }}Xinwei Xiong · Practitioner and writer{{ end }}</span>
+            {{ if $isZH }}构建系统，也理解人{{ else }}Building systems and understanding people{{ end }}
           </p>
         </div>
 
         <h1>
           {{ if $isZH }}
-          把走过的路，<br>做成<span>可以使用的东西。</span>
+          把真实实践，<br>沉淀成<span>长期有用的知识。</span>
           {{ else }}
-          Turning the road I travel<br>into <span>things people can use.</span>
+          Turning lived practice<br>into <span>knowledge that stays useful.</span>
           {{ end }}
         </h1>
         <p class="studio-hero__lead">
           {{ if $isZH }}
-          我通过旅居观察世界，通过写作理解自己，再把真实问题做成产品。
+          我构建 AI 系统和真实产品，公开其中的工作流、工程方法与判断，也写个人成长、哲学与人生。
           {{ else }}
-          I travel to observe the world, write to understand myself, and turn real questions into products.
+          I build AI systems and real products, document the workflows and engineering judgment behind them, and write about growth, philosophy, and life.
           {{ end }}
         </p>
         <nav class="studio-hero__actions" aria-label="{{ if $isZH }}页面导航{{ else }}Page navigation{{ end }}">
-          <a href="#workbench">{{ if $isZH }}进入我的工作台{{ else }}Enter my workbench{{ end }}</a>
-          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}查看全部产品{{ else }}View all products{{ end }}</a>
+          <a href="#blog-definition">{{ if $isZH }}理解这个博客{{ else }}Understand this blog{{ end }}</a>
+          <a href="{{ "articles/" | relLangURL }}">{{ if $isZH }}开始阅读{{ else }}Start reading{{ end }}</a>
         </nav>
       </div>
 
@@ -96,29 +103,69 @@
       </div>
     </header>
 
-    <section class="studio-manifesto" aria-labelledby="studio-manifesto-title">
-      <div class="studio-manifesto__content" data-manifesto>
-        <h2 id="studio-manifesto-title">
-          {{ if $isZH }}不经营标签。<br>建立一种生活。{{ else }}Not collecting labels.<br>Building a life.{{ end }}
+    <section class="studio-archive" id="blog-definition" aria-labelledby="studio-archive-title">
+      <header class="studio-archive__intro">
+        <h2 id="studio-archive-title">
+          {{ if $isZH }}从这里，看见我公开过的实践与思想。{{ else }}A map of everything I have made public.{{ end }}
         </h2>
-        <div class="studio-manifesto__loop" role="group"
-          aria-label="{{ if $isZH }}我的生活方法{{ else }}My way of living{{ end }}">
-          <button type="button" aria-pressed="true" data-manifesto-tab="0" data-step="01">
-            {{ if $isZH }}行走{{ else }}Move{{ end }}
-          </button>
-          <i aria-hidden="true">→</i>
-          <button type="button" aria-pressed="false" data-manifesto-tab="1" data-step="02">
-            {{ if $isZH }}写作{{ else }}Write{{ end }}
-          </button>
-          <i aria-hidden="true">→</i>
-          <button type="button" aria-pressed="false" data-manifesto-tab="2" data-step="03">
-            {{ if $isZH }}创造{{ else }}Build{{ end }}
-          </button>
-        </div>
-        <p class="studio-manifesto__insight" role="status" aria-live="polite" data-manifesto-insight
-          data-insights="{{ if $isZH }}走近现场，才有资格形成判断。|写下来，模糊的经验才会变成判断。|交到用户手里，判断才开始接受现实检验。{{ else }}Get close to reality before forming a judgment.|Writing turns blurred experience into judgment.|A judgment becomes real only when users can test it.{{ end }}">
-          {{ if $isZH }}走近现场，才有资格形成判断。{{ else }}Get close to reality before forming a judgment.{{ end }}
+        <p>
+          {{ if $isZH }}
+          项目、工作方法、成长记录和年度总结，都按主题与时间整理在这里。
+          {{ else }}
+          Projects, working methods, personal reflections, and annual reviews, organized by subject and time.
+          {{ end }}
         </p>
+      </header>
+
+      <div class="studio-archive__map">
+        <article class="studio-archive__axis studio-archive__axis--practice">
+          <p><span>{{ if $isZH }}实践与项目{{ else }}Practice and projects{{ end }}</span><b>{{ $practiceCount }}</b></p>
+          <h3>{{ if $isZH }}从真实问题出发，留下系统、代码与取舍。{{ else }}Systems, code, and tradeoffs that began with real problems.{{ end }}</h3>
+          <nav aria-label="{{ if $isZH }}实践主题{{ else }}Practice topics{{ end }}">
+            <a href="{{ "ai-agent/" | relLangURL }}">AI Agent</a>
+            <a href="{{ "engineering/" | relLangURL }}">{{ if $isZH }}工程方法{{ else }}Engineering{{ end }}</a>
+            <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}开源项目{{ else }}Open projects{{ end }}</a>
+          </nav>
+        </article>
+
+        <article class="studio-archive__axis studio-archive__axis--thought">
+          <p><span>{{ if $isZH }}思想与成长{{ else }}Thought and growth{{ end }}</span><b>{{ len $thoughtPages }}</b></p>
+          <h3>{{ if $isZH }}关于成长、关系、选择，以及怎样理解自己。{{ else }}Growth, relationships, choices, and ways of understanding oneself.{{ end }}</h3>
+          <a class="studio-archive__axis-link" href="{{ "growth/" | relLangURL }}">
+            {{ if $isZH }}阅读思想与成长{{ else }}Read thought and growth{{ end }} <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <section class="studio-archive__reviews" aria-labelledby="studio-archive-reviews">
+          <div>
+            <p id="studio-archive-reviews">{{ if $isZH }}年度总结{{ else }}Annual reviews{{ end }}</p>
+            <span>{{ if $isZH }}每一年，重新检查生活的方向。{{ else }}A yearly check on the direction of life.{{ end }}</span>
+          </div>
+          <nav class="studio-archive__annual-links" aria-label="{{ if $isZH }}年度总结列表{{ else }}Annual review list{{ end }}">
+            <a href="{{ "growth/posts/2025-annual-review/" | relLangURL }}">2025 <span>↗</span></a>
+            <a href="{{ "growth/posts/2024-annual-review/" | relLangURL }}">2024 <span>↗</span></a>
+            <a href="{{ "growth/posts/2023-annual-summary-reflections-and-aspirations/" | relLangURL }}">2023 <span>↗</span></a>
+          </nav>
+
+          <div class="studio-archive__monthly">
+            <div>
+              <p>{{ if $isZH }}最近月记{{ else }}Recent monthly notes{{ end }}</p>
+              <span>{{ if $isZH }}六个月，六个思考现场。{{ else }}Six months, six fields of thought.{{ end }}</span>
+            </div>
+            <nav aria-label="{{ if $isZH }}最近六篇月度总结{{ else }}Six latest monthly notes{{ end }}">
+              {{- range first 6 $monthlyPages.ByDate.Reverse }}
+              <a href="{{ .RelPermalink }}" title="{{ .Title }}" aria-label="{{ .Title }}">
+                <b>{{ .Date.Format "01" }}</b>
+                <span>{{ .Date.Format "2006" }}</span>
+              </a>
+              {{- end }}
+            </nav>
+            <a class="studio-archive__monthly-all" href="{{ "tags/monthly-notes/" | relLangURL }}">
+              {{ if $isZH }}全部月记{{ else }}All monthly notes{{ end }} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
       </div>
     </section>
 
@@ -126,8 +173,8 @@
       role="region" aria-roledescription="carousel" data-card-carousel>
       <header>
         <div>
-          <p>{{ if $isZH }}我的日常工作区{{ else }}MY DAILY WORKSPACE{{ end }}</p>
-          <h2 id="studio-workbench-title">{{ if $isZH }}每天，我在这三个空间之间切换。{{ else }}Every day, I move between these three spaces.{{ end }}</h2>
+          <p>{{ if $isZH }}长期写作主线{{ else }}LONG-TERM THREADS{{ end }}</p>
+          <h2 id="studio-workbench-title">{{ if $isZH }}三个彼此相连的世界。{{ else }}Three connected worlds.{{ end }}</h2>
         </div>
         <div class="studio-deck-controls">
           <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / 03</span>
@@ -144,9 +191,9 @@
             alt="{{ if $isZH }}Telepace 产品界面{{ else }}Telepace product interface{{ end }}" loading="lazy" decoding="async"
             draggable="false">
           <div>
-            <span>{{ if $isZH }}构建{{ else }}Build{{ end }}</span>
-            <h3>{{ if $isZH }}把模糊的问题做成可验证的产品{{ else }}Turn unclear problems into testable products{{ end }}</h3>
-            <p>{{ if $isZH }}产品、代码、用户访谈，以及一次次更小的实验。{{ else }}Product, code, user interviews, and smaller experiments each time.{{ end }}</p>
+            <span>{{ if $isZH }}AI 与项目{{ else }}AI and projects{{ end }}</span>
+            <h3>{{ if $isZH }}把深度工作流做成真实、可验证的系统{{ else }}Turn deep workflows into real, testable systems{{ end }}</h3>
+            <p>{{ if $isZH }}公开项目过程、AI 协作方式、代码与关键取舍。{{ else }}Openly documenting project process, AI collaboration, code, and key tradeoffs.{{ end }}</p>
           </div>
         </article>
 
@@ -157,8 +204,8 @@
             alt="{{ if $isZH }}cubxxw 博客文章阅读界面{{ else }}Article reading interface on cubxxw.com{{ end }}" loading="lazy" decoding="async"
             draggable="false">
           <div>
-            <span>{{ if $isZH }}写作{{ else }}Write{{ end }}</span>
-            <h3>{{ if $isZH }}把经验整理成别人可以继续走的路{{ else }}Turn experience into a path others can continue{{ end }}</h3>
+            <span>{{ if $isZH }}工程与方法{{ else }}Engineering and methods{{ end }}</span>
+            <h3>{{ if $isZH }}把隐性的判断整理成可复用的方法{{ else }}Turn tacit judgment into reusable methods{{ end }}</h3>
           </div>
         </article>
 
@@ -167,8 +214,8 @@
             alt="{{ if $isZH }}熊野古道上的森林与行者{{ else }}Forest and walker on the Kumano Kodo{{ end }}" loading="lazy" decoding="async"
             draggable="false">
           <div>
-            <span>{{ if $isZH }}移动{{ else }}Move{{ end }}</span>
-            <h3>{{ if $isZH }}换一个地方，也换一种看问题的角度{{ else }}Change the place, then change the angle{{ end }}</h3>
+            <span>{{ if $isZH }}人与世界{{ else }}People and the world{{ end }}</span>
+            <h3>{{ if $isZH }}在成长、哲学与人生中理解系统背后的人{{ else }}Understand the person behind the systems through growth, philosophy, and life{{ end }}</h3>
           </div>
         </article>
       </div>
@@ -407,6 +454,7 @@
       </div>
       <nav aria-label="{{ if $isZH }}联系方式{{ else }}Contact links{{ end }}">
         <a href="mailto:3293172751nss@gmail.com">{{ if $isZH }}聊一个问题{{ else }}Talk through a problem{{ end }} ↗</a>
+        <a href="{{ site.Params.whatsappURL | safeURL }}" target="_blank" rel="noopener">{{ if $isZH }}WhatsApp 联系我{{ else }}WhatsApp{{ end }} ↗</a>
         <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub ↗</a>
         <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X ↗</a>
         <a href="{{ "about/quest/" | relLangURL }}">{{ if $isZH }}Bear Quest{{ else }}Bear Quest{{ end }} →</a>
@@ -573,11 +621,11 @@
             renderHero(heroIndex + 1);
             heroHasStarted = true;
             startHeroAutoplay(true);
-          }, 5200);
+          }, 3600);
           return;
         }
         heroHasStarted = true;
-        heroTimer = window.setInterval(function () { renderHero(heroIndex + 1); }, 2800);
+        heroTimer = window.setInterval(function () { renderHero(heroIndex + 1); }, 2400);
       }
 
       heroCarousel.querySelector('[data-hero-prev]').addEventListener('click', function () {
@@ -638,7 +686,7 @@
     }
 
     var revealSections = Array.prototype.slice.call(root.querySelectorAll(
-      '.studio-manifesto, .studio-workbench, .studio-products, .studio-road, .studio-interview, .studio-coda'
+      '.studio-archive, .studio-workbench, .studio-products, .studio-road, .studio-interview, .studio-coda'
     ));
     revealSections.forEach(function (section) { section.setAttribute('data-about-section', ''); });
 
@@ -654,37 +702,6 @@
       revealSections.forEach(function (section) { sectionObserver.observe(section); });
     } else {
       revealSections.forEach(function (section) { section.classList.add('is-visible'); });
-    }
-
-    var manifesto = root.querySelector('[data-manifesto]');
-    if (manifesto) {
-      var manifestoTabs = Array.prototype.slice.call(manifesto.querySelectorAll('[data-manifesto-tab]'));
-      var manifestoInsight = manifesto.querySelector('[data-manifesto-insight]');
-      var manifestoInsights = manifestoInsight.dataset.insights.split('|');
-
-      function selectManifesto(nextIndex) {
-        manifestoTabs.forEach(function (tab, tabIndex) {
-          tab.setAttribute('aria-pressed', tabIndex === nextIndex ? 'true' : 'false');
-        });
-        manifestoInsight.textContent = manifestoInsights[nextIndex];
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          manifestoInsight.animate([
-            { opacity: .2, transform: 'translate3d(0, 6px, 0)' },
-            { opacity: 1, transform: 'translate3d(0, 0, 0)' }
-          ], { duration: 220, easing: 'cubic-bezier(.2, .76, .2, 1)' });
-        }
-      }
-
-      manifestoTabs.forEach(function (tab, tabIndex) {
-        tab.addEventListener('click', function () { selectManifesto(tabIndex); });
-        tab.addEventListener('keydown', function (event) {
-          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-          event.preventDefault();
-          var nextIndex = (tabIndex + (event.key === 'ArrowRight' ? 1 : -1) + manifestoTabs.length) % manifestoTabs.length;
-          manifestoTabs[nextIndex].focus();
-          selectManifesto(nextIndex);
-        });
-      });
     }
 
   })();
