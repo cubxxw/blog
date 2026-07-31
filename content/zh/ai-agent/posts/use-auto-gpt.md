@@ -1,312 +1,276 @@
 ---
-title: '如何安装和使用自主人工智能工具Auto-GPT'
-description: '本文详细解释了如何安装和配置 Auto-GPT，一个先进的自主人工智能工具，以及如何有效地利用它来改善业务流程和用户体验。'
-ShowRssButtonInSectionTermList: true
-date: '2023-07-16T16:28:31+08:00'
+title: 'AutoGPT 2026：从 Classic 实验到 Platform 的迁移指南'
+date: 2023-07-16T16:28:31+08:00
+lastmod: 2026-07-31T00:00:00+08:00
 showtoc: true
 tocopen: false
 type: posts
-author: '熊鑫伟，我'
-keywords: ['Auto-GPT', '人工智能', '安装教程', '自主AI工具', '技术指南', '智能自动化']
-tags: ["Blog", "AI", "Agent"]
+author: ["Xinwei Xiong", "Me"]
+keywords: []
+tags:
+  - AI
+  - Agent
+  - Automation
+  - LLM
+  - Python
+  - Docker
+  - Open Source
+categories:
+  - Development
+description: >
+  本文重新审视 2023 年 AutoGPT Classic 的自治实验，说明它为何已停止维护、旧安装教程为何不再安全，并以 2026 年 AutoGPT Platform 为基线，给出从目标拆解、工作流分块、权限与凭据隔离、成本止损、人工审批到测试部署的完整迁移方法，帮助开发者保留实验价值，同时避开过时命令和生产风险。
 tldr:
-  - "Auto-GPT利用GPT-4通过自然语言处理能力自主执行内容创建、翻译、数据分析等多种复杂任务，可连接互联网获取最新信息。"
-  - "安装Auto-GPT需要准备Python环境、Git、OpenAI API密钥和PineCone API密钥，通过克隆项目、安装依赖和配置环境变量即可在本地运行。"
-  - "Auto-GPT和AgentGPT等工具代表LLM任务自动化的开始，未来将能完成更复杂的工作，帮助组织专注创意项目而将重复琐事交由程序自动处理。"
-howto:
-  name: "如何在本地安装并运行 Auto-GPT"
-  totalTime: PT30M
-  supplies:
-    - "Git"
-    - "Python 3.8 或更高版本"
-    - "OpenAI API 密钥"
-    - "PineCone API 密钥"
-  steps:
-    - name: "准备环境"
-      text: "安装 Git 与 Python 3.8 或更高版本，并申请 OpenAI API 密钥和 PineCone API 密钥（PineCone 免费账户即可）。"
-    - name: "克隆仓库"
-      text: "运行 git clone https://github.com/Significant-Gravitas/Auto-GPT 并进入 Auto-GPT 项目目录。"
-    - name: "安装依赖"
-      text: "在项目目录内运行 pip install -r requirements.txt 安装全部 Python 依赖。"
-    - name: "配置 API 密钥"
-      text: "将 .env.template 重命名为 .env，在其中填入 OPENAI_API_KEY，以及 PineCone 控制台生成的 PINECONE_API_KEY 和 PINECONE_ENV。"
-    - name: "运行 Auto-GPT"
-      text: "执行 python3 -m autogpt，依次为 AI 命名、设定角色和目标；每一步行动按 y 加回车授权，它就会自主联网检索并循环执行直到完成目标。"
+  - "2023 年的 AutoGPT 循环是一次重要实验，但官方已经停止支持 Classic，也不会继续更新它的依赖；旧安装方式不应再用于生产。"
+  - "当前维护的 AutoGPT Platform 把自动化表达为 block、工作流、触发器、部署与可观测运行，重点已从无约束循环转向可治理的执行系统。"
+  - "迁移时应保留任务目标，而不是保留旧命令；先定义输入、工具、权限、预算、审批门、测试与失败路径，再决定哪些环节需要 Agent。"
 cover:
   image: /images/covers/ai-agent/2023/use-auto-gpt.png
-  alt: "自动化小车依次通过工具、检查与人工闸口"
+  alt: '一辆发条小车穿过层层受控门框，象征 AutoGPT 从 Classic 自治实验走向可治理的工作流平台'
+  caption: '真正有用的自治，不是没有门，而是每一道门都知道为何打开。'
 ---
 
-**Auto-GPT 是一个基于 GPT-4 的开源自主 AI 工具：给它一个目标，它会自行拆解任务、联网检索信息并循环执行，直到目标完成。** 本地安装只需五步——准备 Git、Python 3.8+ 与 OpenAI、PineCone 两个 API 密钥，克隆仓库，`pip install -r requirements.txt` 装依赖，配置 `.env`，最后 `python3 -m autogpt` 运行。完整步骤和截图见下文。
+> **状态说明（核验于 2026 年 7 月 31 日）：** 本文最初是一篇 2023 年的 Auto-GPT 本地安装教程。那些命令已经过时。官方现在明确说明：**AutoGPT Classic 已停止支持，依赖不会再更新，并且存在已知安全问题**。它适合研究历史，不适合生产使用。新项目应从仍在维护的 AutoGPT Platform，或其他活跃的工作流系统开始。
 
-## 前言
+2023 年第一次运行 Auto-GPT 时，我盯着终端里不断出现的计划、批评和行动，感觉软件正在跨过一道门：过去我们告诉程序每一步怎么做，现在似乎只要告诉它想去哪里。
 
-🔮 在我的 Slack 工作区中，集成了多个 AI，分别有 ChatGPT 4、ChatGPT 3.5、Claude ……
+那一刻很真实，但我从中得到的第一个结论并不准确。
 
-我们可以通过 Slack 免费并且无限制的和 AI 交互，欢迎大家加入到 Slack，这里是 链接：
+当时我以为，自治就是让模型把循环跑得更久。三年后再看，自治真正困难的部分，恰恰是决定这个循环可以在哪里运行：它能调用哪些工具，能接触哪些凭据，最多花多少钱，何时必须停下，哪一步一定要有人签字。
 
-[https://join.slack.com/t/kubecub/shared_invite/zt-1se0k2bae-lkYzz0_T~BYh3rjkvlcUqQ](https://join.slack.com/t/kubecub/shared_invite/zt-1se0k2bae-lkYzz0_T~BYh3rjkvlcUqQ)
+所以这次更新不再教你复活一个 2023 年的命令行演示。我们要回答三个更有价值的问题：
 
-![image-20230514215132365](http://sm.cubxxw.com/sm202305142151717.png)
+1. AutoGPT Classic 留下了什么？
+2. 2026 年的 AutoGPT Platform 到底变成了什么？
+3. 如何把旧设想迁移成一条可观察、可停止、可负责的工作流？
 
+## 先说结论：不要再照旧教程安装
 
+如果一篇教程仍要求你准备 Python 3.8、执行 `pip install -r requirements.txt`、把 `.env.template` 改成 `.env`、配置 Pinecone，再用 `python3 -m autogpt` 启动，它描述的是 2023 年某个时间点的 Auto-GPT，而不是今天稳定的使用入口。
 
-## 介绍
+现在 AutoGPT 这个名字背后至少有两件不同的东西：
 
-很早之前就了解到了 Auto-GPT，作为 GitHub 上近期增长速度最快的项目（没有之一），Auto-GPT 在开源社区可谓是人尽皆知，甚至 star 已经很快就超过 Kubernetes，目前有 `125k star`。
+| 维度 | AutoGPT Classic | AutoGPT Platform |
+|---|---|---|
+| 定位 | 早期自主 Agent 实验 | 构建和运行 Agent 工作流的平台 |
+| 官方状态 | 已停止支持，依赖不再更新 | 持续开发，官方仓库仍发布 beta 版本 |
+| 核心抽象 | 单个 Agent 反复规划与行动 | block、工作流、触发器、部署与运行监控 |
+| 合适用途 | 阅读源码、研究、隔离环境实验 | 新的自动化与持续运行任务 |
+| 许可证 | Classic 及 `autogpt_platform` 之外部分使用 MIT | `autogpt_platform` 内代码与内容使用 Polyform Shield |
 
-得益于 Auto-GPT 的出色技术，可以高精度和高效率地自动执行许多任务。 它利用了 GPT-4 强大的自然语言处理功能。
+“AutoGPT 是一个开源 Agent”已经不是完整说法。它保留了开源实验的谱系，但当前 Platform 与 Classic 存在清楚的许可证边界。
 
-我们甚至可以通过它来实现更多的自动化的工作，比如说前一节 「在 Sealos 上开发一款 AI 自动云原生化项目自动上线工具」
+## 2023 年的实验，真正留下了什么
 
+Auto-GPT 出现得很早，早到当时我们甚至还没有稳定的语言去描述 Agent。它用一个粗糙但直观的循环，把几件后来成为常识的事摆到了桌面上：
 
+- 模型要完成工作，只有提示词不够，还需要工具；
+- 一个模糊目标必须拆成可以执行的动作；
+- 上一步的结果需要回到下一轮决策；
+- 浏览器、文件、记忆和代码执行一旦接入，系统就有了状态；
+- 有状态就有风险，能行动的模型也必须知道如何停止。
 
-## 什么是 AutoGPT
+这些问题一直存在。消失的是当时那套实现。
 
-它的 GitHub 地址：
+旧文曾经列举内容创作、翻译、数据分析、报告生成和编码，仿佛把目标写进去，结果就会自然发生。技术上，模型确实可以尝试这些任务；工程上，“可以尝试”与“值得信任”之间隔着证据、权限、预算和验收。
 
-+ [GitHub](https://github.com/Significant-Gravitas/Auto-GPT)
+早期界面让用户给 AI 起名字、定义角色、写下五个目标，然后一次次按 `y` 批准行动。它让自治看起来很具体，却没有让结果因此可靠。计划可以很流畅，依据仍可能是错的；工具调用可以成功，方向仍可能偏离；循环每多跑一次，进展和误差都会一起累积。
 
-从本质上讲，Auto-GPT 利用 OpenAI 最新人工智能模型的多功能性与软件和服务进行在线互动，使其能够 “自主 “执行X和Y等任务。但正如我们在大型语言模型方面的学习，这种能力似乎像海洋一样宽广，但却像水坑一样深。
+Classic 最有价值的地方，是在同一块终端里同时展示了可能性与失败方式。
 
-AutoGPT 是一个由人工智能驱动的应用程序，利用 GPT-4 等 LLM 的强大功能自主创建和处理各种工作。通过使用 Auto GPT，组织和个人可以简化报告创作、内容创建和数据分析等流程，以节省时间并减少错误。
+## Platform 改变的不是界面，而是责任边界
 
-AutoGPT 改变了任务自动化的游戏规则，使组织和个人能够专注于其他关键任务，同时将重复和琐碎的工作留给程序。
+官方对当前 AutoGPT Platform 的描述包括 Agent Builder、工作流管理、部署控制、现成 Agent、运行交互与监控；服务端负责执行已部署的工作流，并支持持续运行和外部触发。
 
-随着 LLM 的不断发展，我们可以期待看到像 Auto GPT 这样功能越来越强大的软件能够执行越来越复杂的任务。
+表面看，这是从命令行走向可视化画布。更深一层的变化，是从隐式行为走向显式结构。
 
-就人工智能驱动的技术将如何改变我们未来的操作方式和与人工智能系统的互动方式而言，AutoGPT 提供了一个新方向。
+在工作流中，一个 block 只负责一个相对清楚的动作：接收触发、读取数据、调用模型、验证结果、写入系统或发送通知。连接线说明数据如何移动，凭据只交给需要它的组件，失败也能落在一个具体节点，而不是淹没在长长的思考日志里。
 
+这不会自动让 Agent 变正确，却让我们有机会知道它错在了哪里。
 
+### 例子：每天生成一份 Agent 领域简报
 
-## 它是如何工作的
+旧式目标通常写成：
 
-Auto GPT 使用 LLM 的最新发展，特别是 GPT-4，自动生成具有凝聚力和相关性的内容。该程序从大量的数据中学习，这使它能够识别单词和句子之间的模式和联系。
+> 每天早上找到最重要的 Agent 新闻，总结后发给我。
 
-使用这些信息，Auto GPT 会生成文本以响应提示或输入。这种输入可能以指令、任务或一套指导方针的形式出现。
+这句话把“重要”“找到”“总结”“发送”全部交给一个模型临场理解。更稳健的实现会把它拆开：
 
-Auto GPT 在收到输入后，使用其尖端的算法和自然语言处理技能，创建上下文适当且逻辑一致的内容。对于希望自动化流程和节省时间的组织和人员来说，Auto GPT 是一种重要的资源，因为它生成的文本几乎与人类书面语言无法区分。
+1. 定时器创建一次运行；
+2. 搜索连接器只从允许的来源收集候选项；
+3. 确定性代码过滤日期并去重；
+4. 模型提取每条消息的核心主张、发布日期和证据链接；
+5. 校验步骤拒绝没有证据或日期不明的条目；
+6. 模型根据结构化记录生成简报；
+7. 对外发布前进入人工审批；
+8. 发送组件只处理已经批准的成品；
+9. 系统留下成本、来源和失败记录。
 
-Auto GPT 的优势在于它能够从大量数据中学习，并生成相关和合乎逻辑的文本，使其成为作业自动化领域的关键工具。
+它看起来没有“让 Agent 自己想办法”那么浪漫，却更接近真正可用的软件。每一处不确定性都有一个可以被看见的位置。
 
-与免费版的ChatGPT不同，**Auto-GPT可以连接到互联网**，找到任何主题的最新信息。因此，你可以用它来访问任何网页并捕获信息。
+## 如何把旧 Auto-GPT 设想迁移到今天
 
+不要迁移命令，要迁移的是任务意图、约束与证据。
 
+### 第一步：找回真正要完成的工作
 
-### 可以做哪些事情
+早期 Auto-GPT 提示经常把目标与全能幻想混在一起：
 
-Auto GPT是一个灵活的程序，可用于各种活动，包括创建报告和数据分析。在这一部分中，我们将了解 Auto GPT可以执行的一些功能，以及它是如何自动执行这些功能的。
+> 调研市场，开发产品，扩大规模，创造五千万美元收入。
 
-**内容创建**
+这不是一个可以验收的任务。可以把它缩成：
 
-网站、博客和社交媒体帖子的内容可以使用 Auto GPT 创建。如果你给它一个主题或一套指导方针，Auto GPT 可以产生高质量、相关性和趣味性的材料。
+> 每周一读取十个官方来源的产品更新，生成一份带引用的差异报告，并保存为待审草稿。
 
-**翻译**
+开始搭建之前，先写清：
 
-你可以使用 Auto GPT 执行翻译任务。通过使用 Auto GPT 以一种语言作为输入文本，可以将文本翻译成另一种语言。在不同国家/地区开展业务并需要快速文档或通信翻译的企业可以提供非常大帮助。
+- 什么事件触发运行；
+- 必须提供哪些输入；
+- 最后应该留下什么可检查的产物；
+- 可以访问哪些来源与系统；
+- 单次运行的时间和成本上限；
+- 哪些决定必须由人作出。
 
-**客户服务**
+如果成功条件无法被描述，接入 Agent 只会把模糊放大。
 
-客户支持职责，如响应频繁的查询和解决问题，可以通过 Auto GPT 实现自动化。Auto GPT 可以使用自然语言处理来理解客户查询并提供相关的解决方案。
+### 第二步：把能力拆成窄而清楚的 block
 
-**数据分析**
+将检索、转换、模型推理、副作用和交付分开。一个只读取文档的组件，比一个同时能够浏览网页、修改文件、发送邮件和执行代码的 Agent 更容易测试。
 
-可以使用 Auto GPT 执行数据分析活动。数据输入允许 Auto GPT 分析信息并产生可用于决策的见解。
+确定性的工作尽量交给确定性代码：日期用代码解析，数据结构用 schema 校验，标识符用代码去重。只有语言理解和模糊判断真正需要模型。
 
-**撰写报告**
+模型应该站在系统的不确定边缘，而不是替代整个系统。
 
-企业和研究人员可以使用 Auto GPT 根据数据输入生成报告。通过输入数据，Auto GPT可以分析信息并产生准确和有指导意义的结果。
+### 第三步：先设计权限，再写提示词
 
-**编码**
+列出所有凭据和可能产生副作用的动作。每个集成只获得完成当前步骤所需的最小权限；读取与写入使用不同的凭据；生产密钥不能进入提示词，也不能提交到仓库。
 
-Auto GPT 可用于编码作业生成完整的程序或代码片段。Auto GPT 可以通过考虑编程参数或需求来生成有效且高效的代码。需要精确快速地编写代码的开发人员会发现这种功能非常有帮助。
+不可逆动作之前需要审批门，例如：
 
-*发挥你的想象力，只有你想不到的，没有它做不到的~*
+- 对外发布内容；
+- 给客户发送消息；
+- 修改生产数据；
+- 购买付费服务；
+- 在沙箱之外执行生成的代码。
 
+提示词里的“请不要”不是安全边界，权限才是。
 
+### 第四步：给循环预算和停止条件
 
-## 搭建和设置环境
+一条 Agent 工作流至少要明确：
 
-如果你可以**[使用GPT-4](https://www.wbolt.com/how-to-use-gpt-4-free.html) API**，Auto-GPT的效果最好，因为它更善于思考并得出结论。它也不太容易产生幻觉。如果你还没有访问权限，你可以[使用这里的链接](https://www.wbolt.com/go?_=18a71268abaHR0cHM6Ly9vcGVuYWkuY29tL3dhaXRsaXN0L2dwdC00LWFwaQ%3D%3D)加入GPT-4 API访问的等待名单。然而，你也可以使用普通的OpenAI API与GPT-3.5模型。
+- 最大模型调用次数与工具调用次数；
+- 最长运行时间与单次成本上限；
+- 每个失败步骤最多重试几次；
+- 找不到证据时如何结束；
+- 权限被拒绝时如何结束。
 
-**准备工作：**
+“直到完成目标为止”不是停止条件，它只是允许系统把失败解释成继续消耗资源的理由。
 
-1. Git
+### 第五步：测试接口处，而不是欣赏过程
 
-2. Python 3.8 or later
+为正常输入、空输入、格式错误、凭据过期、限流和局部服务中断准备测试样例。验收最终产物，不要因为中间文字像是在认真思考，就误以为任务已经成功。
 
-3. OpenAI API key
+对于研究简报，可以检查：
 
-4. PineCone API key
+- 每条事实是否都有来源链接；
+- 来源日期是否处于允许窗口；
+- 同一事件是否只出现一次；
+- 输出是否符合约定 schema；
+- 没有审批时是否绝不会发送。
 
+先在低预算下运行，再逐步提高频率与影响范围。
 
+### 第六步：一圈一圈扩大部署范围
 
-用 git clone:
+先手动运行，只给读取权限；稳定后再加定时触发；然后增加一个可撤销的写操作。只有当运行记录已经无聊到没有惊喜，才让工作流接触更大的受众或更重要的系统。
+
+目标不是第一次运行多么惊艳，而是一百次平静运行，以及某一次失败能够停在正确的位置。
+
+## 2026 年如何自托管 Platform
+
+安装入口应以官方仓库链接的文档为准。核验本文时，官方将 Platform 自托管描述为一项需要一定技术基础的工作，并为 macOS/Linux 与 Windows 提供安装程序；文档列出的环境包括 Docker Engine、Docker Compose、Git、Node.js、npm 以及合适的编辑器，硬件和网络要求另有说明。
+
+请从 [AutoGPT 官方仓库](https://github.com/Significant-Gravitas/AutoGPT) 进入其最新的[自托管文档](https://docs.agpt.co/platform/getting-started/)，不要复制一篇旧博客里的“一行命令”。执行安装脚本前先读脚本，固定准备使用的版本，升级前查看 release notes。云端开放状态、beta 阶段、系统要求与价格都可能比文章更新得更快。
+
+安装后建议按这个顺序开始：
+
+1. 在本地打开 Platform；
+2. 新建或导入一条很小的工作流；
+3. 只配置对应 block 真正需要的凭据；
+4. 使用可丢弃的数据测试；
+5. 检查运行结果和成本；
+6. 手动路径稳定后，再增加触发器与外部副作用。
+
+这里刻意不复制官方的一键安装命令。命令很容易复制，也很容易过期；不断变化的入口应该回到维护者自己的文档。
+
+## 如果仍想研究 Classic
+
+Classic 仍然值得阅读。当前官方 README 记录了原始实验、Forge、benchmark、Agent Protocol 服务、workspace 与分层权限系统，也给出了基于 Python 3.12+ 和 Poetry 的研究环境：
 
 ```bash
-❯ git clone https://github.com/Significant-Gravitas/Auto-GPT
-❯ cd Auto-GPT
+git clone https://github.com/Significant-Gravitas/AutoGPT.git
+cd AutoGPT/classic
+poetry install
+cp .env.example .env
+poetry run autogpt
 ```
 
-安装：
+这些命令只用于阅读仓库和隔离实验，不是生产建议。同一份 README 已经明确警告：Classic 不受支持，依赖存在已知漏洞，也不会继续更新。
 
-> requirements.txt 文件是一个文本文件，通常用于 Python 项目中，其中包含了该项目所需的所有依赖包及其版本信息。
->
-> 我们之前在学习 buildpacks 项目的时候，它如何解决 python 的环境判断问题，就是通过 requirements.txt 文件。
+如果一定要运行：
 
-```bash
-❯ pip install -r requirements.txt
-```
+- 使用可以随时删除的 workspace；
+- 创建低额度、实验专用的凭据；
+- 禁止访问个人文件和生产服务；
+- 让生成代码始终留在沙箱；
+- 在模型提供商侧设置消费上限；
+- 假设网页内容可能包含恶意指令；
+- 实验结束后销毁凭据。
 
-之后，将`.env.template` 重命名为 `.env`，并使用 OpenAI 和 PineCone API 密钥填充字段。
+旧教程与当前历史仓库的差异如下：
 
-```bash
-❯ mv .env.template .env
-```
+| 2023 年旧指令 | 当前 Classic 仓库中的对应方式 |
+|---|---|
+| Python 3.8 或更高 | Python 3.12+ |
+| `pip install -r requirements.txt` | 在 `classic/` 内执行 `poetry install` |
+| 重命名 `.env.template` | 复制 `.env.example` |
+| Pinecone 密钥是必需项 | 当前 Classic README 的基础必需变量中没有 Pinecone |
+| `python3 -m autogpt` | `poetry run autogpt` |
+| 安装 Classic 插件目录 | 在 Platform 中使用集成 block，或编写边界清楚的 block |
 
-之后，转到 VIM ，在 `OPENAI_API_KEY` 部分粘贴API。你可以参考下面的图片来了解一下。
+这张表以后也会过时。仓库与教程冲突时，以仓库为准。
 
-```bash
-❯ cat .env | grep -i OPENAI_API_KEY
-## OPENAI_API_KEY - OpenAI API Key (Example: my-openai-api-key)
-OPENAI_API_KEY=your-openai-api-key
-```
+## 不要忽略许可证边界
 
+AutoGPT 官方仓库同时包含两种许可证：
 
+- `autogpt_platform` 目录内的代码与内容使用 Polyform Shield；
+- 其他部分，包括原始 stand-alone Agent、Forge、benchmark 与 Classic GUI，使用 MIT。
 
-接下来，打开[pinecone.io](https://www.wbolt.com/go?_=baa37b74edaHR0cHM6Ly93d3cucGluZWNvbmUuaW8v)并创建一个免费账户。它将允许LLM从内存中检索相关信息，用于AI应用。
+如果计划二次分发、嵌入产品或提供商业服务，应直接阅读[仓库 LICENSE](https://github.com/Significant-Gravitas/AutoGPT/blob/master/LICENSE)。这里是在指出边界，不是法律建议。
 
-在这里，点击左侧边栏的 `API Keys`，并点击右侧窗格的 `Create API Key`
+这件事也提醒我：一个名字可以延续项目的故事，却不代表架构、维护状态和使用条款没有改变。看到熟悉的名字时，仍要重新检查脚下的地面。
 
-给一个名字，如 `autogpt`，然后点击 `Create Key`
+## 如果今天重新开始，我会怎么做
 
-![image-20230503171039991](http://sm.cubxxw.com/sm202305031712718.png)
+我不会先做一个通用自主 Agent。我会先选一件反复出现的痛苦：它有一个明确产物，也有一个真正关心结果是否正确的人。
 
-复制 Key Value，用 `vim` 打开，将其粘贴在 `PINECONE_API_KEY` 旁边。
+然后问四个问题：
 
-同样地，复制 `Environment` 下的数值。
+1. 哪一部分真的模糊到需要模型？
+2. 结果离开系统之前，哪些事实可以先验证？
+3. 哪个动作一旦执行两次就会造成伤害？
+4. 当真实世界与提示词不一致时，谁有权让它停下？
 
-现在，把它粘贴到`PINECONE_ENV`旁边。
+这没有 2023 年终端演示那么戏剧化，却是 Agent 从表演走向基础设施的起点。
 
+Auto-GPT 最持久的贡献，不是证明模型可以无限循环，而是让我们第一次认真面对：当语言拥有工具之后，会发生什么。热闹散去，答案仍然是工程里最朴素的几件事——划清边界、观察状态、让失败足够便宜。
 
+## 官方资料
 
-## 运行
-
-打开一个终端来执行 `main.py` Python 脚本。
-
-```bash
-❯ python3 -m autogpt
-```
-
-**为 AI 命名：**
-
-在第一次运行时，Auto-GPT会要求你**为AI命名**。如果你不想为一个特定的用例创建一个人工智能，你可以把这个字段留空并点击回车。它默认加载的是Entrepreneur-GPT名称。
-
-**定义人工智能的作用~**
-
-之后，**为自主AI逐一设定目标**。这是你告诉人工智能你想实现的目标的地方。你可以要求它将信息保存在一个文本或PDF文件中。你也可以要求它在检索完所有信息后关闭。
-
-**定义 AI 角色：**
-
-根据你希望 AI 发挥的功能，为其命名和角色，例如“研究人员”、“内容生成器”或“个人编码器”。为了获得更成功的结果，明确你希望人工智能实现的目标。
-
-**设定目标：**
-
-详细概述人工智能的目标，例如获取信息、将数据存储在文件中、执行代码或修改文本。包括要使用的输出文件的信息，以及完成作业所需的任何其他操作。
-
-目标如下：
-
-1. 开发产品
-
-2. 优化产品
-
-3. 扩大产品规模
-
-4. 创造5000万美元以上的收入
-
-5. 保持这种一致性
-
-Auto-GPT将开始思考。在行动过程中，它将要求你授权行动。**按 “y”**，然后按**回车键**确认。它可能会连接到网站并收集信息。
-
-你可以读懂**人工智能在思考、推理和计划什么**。它还提供批评（一种负面的提示），以便它拿出正确的信息。最后，它执行行动。
-
-
-
-## AutoGPT 插件
-
-你可以根据自己的独特需求调整 AutoGPT
-
-它们不需要对主要应用程序的核心代码进行重大更改，因为它们是为了扩展或改进其功能而设计的。
-
-插件列表如下：
-
-1、Twitter plugin
-
-2、Email plugin
-
-3、Telegram plugin
-
-4、Google Analytics plugin
-
-5、Youtube plugin, and many more.
-
-
-
-## Auto GPT 和 LLM 的未来
-
-尽管像 GPT-4 这样的 LLM 为工作自动化的革新提供了很大的希望，但也可能存在需要考虑的危险和缺点。用于训练模型的数据中可能存在的偏见和成见是令人担忧的关键原因之一。有偏见的LLM可能会出现不公平和歧视性的结果。
-
-正如 Auto-GPT 和 ChatGPT 所展示的那样，可以教导 LLM 从巨大的数据量中学习，并独立开展广泛的活动，从内容制作到编码。自动化操作有能力完全改变行业和我们的运作方式。
-
-但对于 LLM 来说，Auto-GPT 只是一个开始。随着技术的进一步发展，LLM 的权力将会增加。未来的 LLM 将更善于完成复杂的任务，理解背景和复杂性。
-
-LLM 任务自动化也可能开辟新的市场和就业机会。如果企业和人们能够将许多平凡的琐事自动化，他们将能够专注于更困难和富有想象力的项目。
-
-
-
-## Auto-GPT替代品： 用AgentGPT实现任务自动化
-
-如果你不想在本地设置Auto-GPT，并希望有一个易于使用的解决方案来自动化和部署任务，你可以使用AgentGPT。它建立在Auto-GPT上，但你可以在浏览器中直接访问它。不需要摆弄终端和命令。以下是它的工作原理。
-
-> 缺点：就是不能访问本地 ~ 
-
-
-
-### 打开使用
-
-+ [https://agentgpt.reworkd.ai/zh](https://agentgpt.reworkd.ai/zh)
-
-在这里，添加你的OpenAI API密钥。你可以从[这里](https://www.wbolt.com/go?_=e7e2fef44aaHR0cHM6Ly9wbGF0Zm9ybS5vcGVuYWkuY29tL2FjY291bnQvYXBpLWtleXM%3D)**获得API密钥**。如果你不能访问[GPT-4](https://www.wbolt.com/how-to-use-gpt-4-free.html) API，选择 `gpt-3.5-turbo` 作为模型，然后点击 `Save`
-
-![image-20230503174431508](http://sm.cubxxw.com/sm202305031744911.png)
-
-接下来，给你的人工智能代理起个名字，并设定你希望实现的目标。现在，点击Auto-GPT AI的 `Deploy Agent`，开始考虑你的投入。
-
-我发现我没钱了~
-
-![image-20230503175554002](http://sm.cubxxw.com/sm202305031755504.png)
-
-一旦任务完成，你可以点击 “**Save**“或 “Copy” 来获得最终结果。
-
-
-
-## END 链接
-
-### 参考文章
-
-+ [如何安装和使用自主人工智能工具Auto-GPT](https://www.wbolt.com/auto-gpt.html)
-+ [使用 Auto-GPT 的八种方法](https://juejin.cn/post/7226665757882449978)
-+ [知乎：安装和使用 Auto-GPT](https://zhuanlan.zhihu.com/p/621854926)
-+ [Auto-GPT-ZH 自主 GPT4 实验](https://github.com/kaqijiang/Auto-GPT-ZH)
-+ [高级 LLMOps 架构](https://matt-rickard.com/a-high-level-llmops-architecture)
-
-
-
-Some of the resources I used to create this project:
-
-+ [Significant-Gravitas/Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT) is the main inspiration for this project.
-+ [tiktoken-go/tokenizer](https://github.com/tiktoken-go/tokenizer) to count tokens before sending the prompt to OpenAI.
-+ [pavel-one/EdgeGPT-Go](https://github.com/pavel-one/EdgeGPT-Go) to connect to Bing Chat.
-+ [PullRequestInc/go-gpt3](https://github.com/PullRequestInc/go-gpt3) to send requests to OpenAI.
-+ [Danny-Dasilva/CycleTLS](https://github.com/Danny-Dasilva/CycleTLS) to mimic the browser when connecting to Bing Chat.
-+ [chromedp/chromedp](https://github.com/chromedp/chromedp) to control the browser from golang code.
+- [AutoGPT 官方仓库与 Platform 概览](https://github.com/Significant-Gravitas/AutoGPT)
+- [AutoGPT Classic 状态、环境、安全警告与命令](https://github.com/Significant-Gravitas/AutoGPT/blob/master/classic/README.md)
+- [AutoGPT 仓库许可证](https://github.com/Significant-Gravitas/AutoGPT/blob/master/LICENSE)
+- [AutoGPT Platform 文档](https://docs.agpt.co/platform/)
+- [AutoGPT Platform Block SDK 指南](https://docs.agpt.co/platform/block-sdk-guide/)
+- [AutoGPT Releases](https://github.com/Significant-Gravitas/AutoGPT/releases)

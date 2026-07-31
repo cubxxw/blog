@@ -16,6 +16,10 @@ tldr:
   - "Go's integer type varies by architecture—int is int32 on 32-bit systems and int64 on 64-bit systems, causing overflow bugs that require platform-specific type checking."
   - "Concurrent type checking tool uses goroutines and channels to simultaneously verify code on multiple platforms—Linux, Windows, Darwin, and various architectures—improving detection efficiency significantly."
   - "Go natively supports cross-platform building through GOOS/GOARCH environment variables, conditional compilation with build tags, and the packages.Load API for runtime type verification."
+cover:
+  image: /images/covers/engineering/2024/concurrent-type-checking-and-cross-platform-development-in-go.png
+  alt: 'Parallel conveyor lanes pass identical blocks through architecture-sized gauges, catching one cross-platform type mismatch'
+  caption: 'Portability begins where one machine stops being allowed to speak for every machine.'
 ---
 
 # OpenIM cross-platform source code type checking tool

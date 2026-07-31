@@ -1,12 +1,12 @@
 ---
-title: 'Layer Three · Knowledge: Your Knowledge Base Is Not a Bookmark Folder, It Is Your Capability Sediment Zone'
+title: 'AI Knowledge Base Workflow: Turn Notes Into Verified, Reusable Capability'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:30:00+08:00'
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['knowledge base', 'knowledge management', 'knowledge cards', 'PARA', 'Obsidian', 'second brain', 'capability sediment', 'folder structure', 'CLAUDE.md', 'context engineering', 'AI Agent', 'knowledge retirement', 'reusable', 'note management']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - AI
   - LLM
@@ -14,17 +14,19 @@ tags:
   - Context Engineering
   - RAG
   - Automation
+categories:
+  - Development
 description: >
-  Knowledge is structured, repeatedly reusable capability sediment that solves your own problems. This essay explains how to transform a knowledge base from a "bookmark folder" into a "capability sediment zone": separating the production zone from the sediment zone, only admitting validated content, using PARA and knowledge cards for structure, treating your folder structure as a map for AI, and the retirement mechanism of "if it's unused, delete it." This is the fourth essay in the "From Information to Creation" column, and the one most tightly bound to context engineering.
+  An AI knowledge base workflow that turns notes into verified, reusable capability through evidence gates, retrieval, review, and reversible retirement.
 cover:
   image: '/images/columns/info-to-creation/zh-04-knowledge.svg'
-  alt: The knowledge layer — turning validated output into reusable capability
+  alt: Draft records passing an evidence gate into retrievable knowledge cards, then returning through a review and retirement loop
 tldr:
   - The biggest misconception about a knowledge base is treating it like a bookmark folder. Its real role is a "capability sediment zone" — it only sediments validated output, and only keeps knowledge that's actually been used.
-  - Separate the production zone, the experimentation zone, and the sediment zone. Thinking, discussing with AI, and trial and error all happen outside the knowledge base; only what's been validated and can be reliably reused enters it.
-  - Organize with PARA, and use knowledge cards as the atomic unit. A single card has limited value on its own — compound returns only appear once the volume grows and cards start connecting to each other.
-  - In the AI era, your folder structure is literally a map for AI. Structure tells AI who you are and how it should work for you; a messy structure produces a messy AI. This is where the knowledge base directly touches context engineering.
-  - Give your knowledge a retirement mechanism — "if a piece of knowledge goes unused after being stored, it should be deleted." Use a fixed cycle to archive cards that haven't been called on in a long time, keeping the knowledge base alive and functional.
+  - "Separate production from sediment, and move cards through explicit states: draft, imported, tested, and retired. Each transition needs scoped evidence and an accountable owner."
+  - PARA is one optional action-oriented index, not a universal best structure. Projects, questions, entities, timelines, and graphs may be better depending on how knowledge is retrieved.
+  - A folder becomes part of AI context only when instructions or tools explicitly load, import, retrieve, or discover its files. Structure improves routing; it does not make a model remember or understand you automatically.
+  - Retirement is a reversible review decision, not deletion by inactivity. Preserve a tombstone, reason, replacement link, and legal or low-frequency high-value exceptions.
 maturity: budding
 columns:
   - info-to-creation
@@ -62,54 +64,171 @@ Behind these two responsibilities is a zoning awareness you must establish:
 
 Many people's knowledge systems get more and more clogged precisely because they merge these two zones — dumping everything from the production site straight into the sediment zone, unfiltered. **The knowledge base's cleanliness isn't obsessive-compulsive behavior — it's the precondition for it to actually function.**
 
+Clean does not mean certain. It means every card declares its status:
+
+| State | Meaning | Evidence required to enter |
+|---|---|---|
+| `draft` | my own unfinished claim or synthesis | an owner and a question worth resolving |
+| `imported` | a claim learned elsewhere but not tested by me | traceable source, date, scope, and license |
+| `tested` | used in a named context with a recorded outcome | test or real use, result, counterevidence, and reviewer |
+| `retired` | no longer active because it is stale, replaced, disproved, or out of scope | review reason, date, tombstone, and `superseded_by` when applicable |
+
+Status is not prestige. An imported law reference may be more reliable than my tested writing trick. The state only tells the next user what kind of evidence exists and what happened inside this system.
+
+Here is a complete sanitized card:
+
+```yaml
+---
+id: review-before-promotion
+state: tested
+claim: "A card should not enter the active index until one real task has used it."
+scope: "my private content-method repository"
+source:
+  - "retro/2026-07-knowledge-lint.md"
+evidence:
+  tested_in: "three article-planning sessions"
+  outcome: "two useful retrievals; one missed edge case"
+counterevidence:
+  - "rare compliance references may need admission before first use"
+owner: xinwei
+reviewed_at: 2026-07-17
+review_due: 2026-10-17
+supersedes: null
+superseded_by: null
+---
+
+Do not apply this rule to legal retention, emergency runbooks, or rare
+high-impact knowledge. Those enter a protected reference class.
+```
+
+A card enters the active sediment zone only when:
+
+1. its claim can be stated without hiding behind a topic label;
+2. sources and firsthand evidence can be traced;
+3. scope and exclusions are explicit;
+4. at least one real use or test is recorded, unless a protected reference exception applies;
+5. counterevidence and known failure modes are preserved;
+6. an owner accepts the review date and consequence of use.
+
 ## Building the Skeleton with PARA and Knowledge Cards
 
-Once the positioning is right, we can talk about structure. There are two proven anchors here: **PARA** and **knowledge cards.**
+Once the positioning is right, we can talk about structure. **PARA** and knowledge cards are two useful options, not proven universal anchors.
 
-**PARA** is a simple top-level classification: Projects (ongoing), Areas (long-term responsibilities), Resources (topic materials), Archives (archived). Its advantage is that it's **action-centered** rather than topic-centered — where a piece of knowledge lives depends on which project or area it serves, not "which discipline it belongs to." This naturally ties knowledge to "use." Someone in the community had Claude deploy a PARA structure into their Obsidian, and had the skeleton set up in minutes — a very typical AI-era move: you decide the structure, and hand the building to AI.
+**PARA**, documented by its creator Tiago Forte in the [official PARA guide](https://fortelabs.com/blog/para/), groups material into Projects, Areas, Resources, and Archives. Its advantage is that it is **action-centered** rather than discipline-centered. That makes it a good fit when retrieval starts from current commitments.
 
-**Knowledge cards** are the atomic unit within the sediment zone. One card covers exactly one reusable point, restated in your own words, with the context in which it applies attached. There's an expectation you need to set here: **the value of a single card is limited, sometimes even seemingly negligible.** Its power only shows up once volume grows and cards start forming connections with each other — like neurons, meaningless alone, producing intelligence only once networked. People in the community keep emphasizing this: don't expect a qualitative leap from your first few dozen cards. It's a compounding game, and early on you have to tolerate the feeling of "nothing seems to be happening."
+**Knowledge cards** are one possible atomic unit. One card covers one reusable claim in my own words and carries the context in which it applies. Volume alone does not create compound returns. More cards can also create more conflicts, stale links, and retrieval pollution. A small card is valuable when it answers a real question with adequate evidence; links matter only when they improve retrieval or reveal a relationship worth testing.
 
-PARA manages the **order of storage**; knowledge cards manage the **granularity of knowledge**. Together, they make your sediment zone something you can both find your way around and actually put to work.
+PARA is not the only map. A repository may be better organized by project, recurring question, entity, timeline, or graph:
+
+| Retrieval starts from… | A useful primary structure |
+|---|---|
+| current deliverables | projects / areas |
+| recurring decisions | questions / playbooks |
+| people, systems, products | entities |
+| incidents and changing facts | timeline / event log |
+| relationships across domains | graph plus typed links |
+
+I use the structure that matches the retrieval path, then keep other views as indexes rather than duplicating the knowledge itself.
 
 ## The Most Critical Leap in the AI Era: Your Folder Structure Is a Map for AI
 
 Everything above already exists in plenty of classic note-taking methodologies. What genuinely makes the "knowledge layer" different in the AI era is the leap below — **your knowledge base is no longer just for you to look at. It's simultaneously something AI uses.**
 
-A retrospective from someone in the community, I think, touches the very core of this. They went to an in-person event expecting to learn "how to tune an AI system to be more powerful," but the first thing the presenter did wasn't write code — it was **plan structure**, asking them: how should your files ultimately be stored? In what form is your knowledge kept? — because **the way you store things exists so AI can work based on that structure.**
+The map metaphor needs one technical correction: a map in a closed drawer guides nobody. A file affects a model only when the product or workflow **explicitly loads, imports, retrieves, or discovers it**. A directory name is useful routing metadata for a tool; it is not an instruction by itself.
 
-They went home and spent an entire week restructuring their folders, then summed it up in a few sentences I think are genuinely important:
+Claude Code's official documentation on [project memory](https://code.claude.com/docs/en/memory) describes one concrete mechanism: project-level `CLAUDE.md` files can provide instructions, imports can reference other files, and nested instructions are loaded according to where Claude works. Other tools use different discovery and retrieval rules. None of these mechanisms guarantees that an arbitrary note is loaded, correctly ranked, or remembered across sessions.
 
-- The folder structure you give AI is, in essence, **a map.** A messy map produces messy movement from the AI.
-- What format each file is saved in, how each piece of knowledge is categorized, how each process is chained together — these aren't obsessive tidying habits, they are **constraints.**
-- **AI has no intuition. It only has rules.** Tell it the rule, and it follows the rule; when it drifts, repeat the correction, and it will remember.
-- So they split an overstuffed `CLAUDE.md` and `AGENTS.md` into multiple dedicated folders, each responsible for exactly one thing — **the folder structure itself became a kind of instruction.** Fewer files, and the AI became more obedient, not less.
+This is **context engineering** applied to personal knowledge management. As I wrote in [Context Is Not Prompt](../context-engineering-the-new-foundation/), the practical question is what enters the context window, in what order, for which task, and what gets left out. Structure can improve routing and make intended paths inspectable. It cannot, on its own, tell a model who I am or make its output sound like me.
 
-This, essentially, is **context engineering** applied to personal knowledge management. I wrote in [Context Is Not Prompt](../context-engineering-the-new-foundation/) that the center of gravity in context engineering is deciding, at every inference step, what gets loaded into the context window, in what order, and what gets evicted. Your knowledge base's structure is exactly that base map determining "what AI can load in each time." **Structure tells AI who you are, what you care about, and how it should work for you.**
+The map is still useful; it simply needs roads and a transport policy:
 
-So in the AI era, organizing your knowledge base is no longer a small private matter of "making myself feel comfortable looking at it." It becomes something with real leverage: every bit you structure your knowledge base, your AI understands you one bit more, and what it produces for you gets one bit closer to actually being usable, actually being *you*. **The knowledge base is the shared worldline between you and your AI.**
+```text
+task
+  → read project instructions
+  → query active-card index
+  → filter by state, scope, and review date
+  → retrieve source locators and counterevidence
+  → assemble bounded context
+  → produce an answer with card IDs
+  → log misses and corrections
+```
 
-This also warns, from the opposite direction, against a trap: if you outsource the entire knowledge layer to AI — let it collect for you, judge for you, structure for you — what you hand over isn't just organizing work, it's the opportunity for "AI to actually understand you." A line from the community puts it well: **present yourself manually first, then use AI to discover the boundaries of your own thinking.** You have to build the skeleton yourself first, give it a baseline first, before AI knows which direction to grow toward.
+That last line matters. My retrieval failure log currently tracks:
+
+- a relevant card was not recalled because its wording did not match the query;
+- an old card outranked the newer replacement;
+- conflicting cards were loaded without their relationship;
+- the model applied a card outside its stated scope;
+- the answer cited a card ID but dropped its counterevidence.
+
+Those failures are not proof that the knowledge base is useless. They are evidence that the road between storage and context needs repair.
+
+This is why I still call the knowledge base a **shared worldline** between me and the agent — but shared does not mean automatically understood. I supply claims, evidence, scope, and corrections; the workflow supplies retrieval and logs; the model supplies a candidate synthesis. The worldline exists only where those three meet and remain inspectable.
 
 ## Give Knowledge a Retirement Mechanism
 
 The last piece, and the one most people miss: **a knowledge base needs to be able to forget.**
 
-A knowledge base that only takes in and never lets go is destined to degrade back into a bookmark folder. So you need to install a retirement valve. A line from the community's founder that a lot of people copied down as a rule: **"If a piece of knowledge goes unused after being stored, it should be deleted."**
+A knowledge base that only takes in and never reviews will drift toward a bookmark folder. But “unused means delete” confuses retrieval frequency with value. A disaster-recovery procedure, legal obligation, or rare security lesson may be both unused and essential. A frequently retrieved card may only be winning because the index over-ranks it.
 
-Behind this rule is a complete **feedback loop.** Someone in the community had AI review their own learning pipeline, and it immediately pointed out a gap: you're only "learning it, storing it," and calling on it via AI when needed — but there's **no feedback loop for whether a card is alive or dead after it's been used.** So they added that piece — set a cycle (they chose 60 days, since their cards were still few and still in the accumulation phase), and had an automated tool run every last week of the month, moving cards that hadn't been called on in a long time into an archive.
+So inactivity creates a **review candidate**, not a deletion order. My first experiment used a sixty-day inactivity window because the repository was small and changing quickly. That number is a local parameter, not a recommendation.
 
-That closed their entire loop: **input → digest → save as a card → get called on → judge whether it's worth keeping.** The knowledge base stays "alive" this way — what remains inside is genuinely knowledge still working for you.
+The review weighs:
 
-I really like this design, because it's consistent with every stage before it: the information layer stays clean through "noise reduction," the knowledge layer stays sharp through "retirement." A good knowledge system isn't one that keeps accumulating more — it's one with **metabolism**: validated semi-finished products keep getting promoted in, dormant cards keep getting shown out.
+- last verification date and source freshness;
+- successful and failed uses, not retrieval count alone;
+- whether a newer card supersedes the claim;
+- conflict and correction history;
+- legal, contractual, historical, or emergency-retention requirements;
+- low-frequency, high-impact value;
+- the cost of keeping it active versus discoverable in an archive.
 
-While we're at it, if you want to go a step further, you can add a "quality gate" to admission: newly sedimented knowledge, or a plan AI gives you, goes through a round of review first (someone in the community calls this their "advisory panel" — having another group of AIs, or yourself, play the role of a reviewer hunting for flaws) before it's let through. This step will force you to slow down, and it often surfaces perspectives you hadn't considered at all. **Slowing down isn't for the sake of delay — it's to make sure the direction is right before you keep going.**
+Retirement is reversible. The active card moves out, but a tombstone remains:
+
+```yaml
+id: old-platform-hook-rule
+state: retired
+retired_at: 2026-07-17
+reason: "platform format changed; two later tests contradicted the rule"
+superseded_by: hook-specific-tension-v2
+previous_sources:
+  - retro/2026-04-hook-test.md
+restore_when: "the older format returns or a historical comparison needs it"
+```
+
+That closes the loop without erasing history: **input → digest → draft → import or test → retrieve → observe outcome → review → keep, supersede, protect, or retire.**
+
+This design is consistent with every stage before it: the information layer stays clean through noise reduction; the knowledge layer stays sharp through review. A good knowledge system has **metabolism**: supported cards are promoted, contradicted cards are superseded, protected references stay available, and retired claims leave a trace.
+
+A second model can help hunt for omissions, but it is not independent evidence. Models from the same family may share training data, defaults, and blind spots; several confident answers can repeat the same error. Factual admission still needs an original source, a reproducible test, or an accountable domain expert. **Slowing down isn't for the sake of delay — it is to make the next step auditable before momentum hides the mistake.**
+
+The dashboard I use to watch this metabolism includes:
+
+| Metric | Question |
+|---|---|
+| Claim-support rate | are sampled active claims supported by their evidence? |
+| Stale-card rate | how many active cards are past review due? |
+| Conflict rate | how many active cards disagree without a recorded relationship? |
+| Retrieval hit rate | did the workflow recall the card needed for the task? |
+| False-retrieval rate | did it load irrelevant or out-of-scope cards? |
+| Post-reuse success | did using the card help the named task meet its criterion? |
+| Human-correction rate | how often did a reviewer repair the retrieved context or conclusion? |
+
+No single metric is the goal. Aggressive archiving can improve freshness while destroying recall. More links can improve discovery while raising false retrieval. Health lives in the tradeoff.
+
+### One card's full life
+
+A draft note from a failed publishing review began as: “remove every card unused for two months.” It entered as `draft`, with no source and one observed clutter problem. After the first review run, I promoted a narrower claim to `tested`: inactivity should trigger review in my fast-changing content-method repository.
+
+The test then surfaced counterevidence: an unused crisis checklist was still valuable. I added a protected-reference exception and a risk field. A later workflow revision replaced raw retrieval count with successful-use evidence. The old card became `retired`, pointed to the new card, and kept its failure history.
+
+The capability was not the original rule. The capability was the system learning exactly where that rule stopped working.
 
 ## Summary: From "I Know" to "I Can Call On It"
 
-Let's wrap up this layer. What the knowledge layer does is take these semi-finished records and, through "validate — distill — structure — retire on schedule," turn them into repeatedly callable capability sediment. Its test comes down to one word: **use.** Will it get called on once it's stored? Is it alive or dead after being called on? — everything revolves around "runnability."
+Let's wrap up this layer. The knowledge layer takes semi-finished records through **state — evidence — scope — retrieval — outcome — review**, turning some of them into reusable capability sediment. Use matters, but retrieval count is not the verdict. The stronger test is whether the right card can be found, applied within scope, checked against evidence, and corrected without erasing history.
 
-And in the AI era, the value of this layer doubles: the knowledge you've structured is simultaneously the context you're feeding to AI. The more clearly you sediment yourself, the more AI can work on your behalf. The knowledge base is no longer just your second brain — it's the first site shared between you and AI.
+In the AI era, structured knowledge can become model context when the workflow actually retrieves it. Clear structure makes that path easier to inspect; it does not guarantee recall or understanding. The knowledge base is no longer just a second brain. It is a shared worksite with gates, roads, and a repair log.
 
 But no matter how thick your knowledge grows, it still solves **your own** problems. To make it produce value for others — to have it received, understood, connected with — it needs to go through one final stage: recombining knowledge **for an audience** into creation.
 

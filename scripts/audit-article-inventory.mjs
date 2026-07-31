@@ -87,9 +87,11 @@ const missingChinese = [...pairMaps.en]
 
 const missingCover = [];
 const brokenCover = [];
+const coverByFile = new Map();
 for (const file of [...byLanguage.en, ...byLanguage.zh]) {
   const fm = frontMatter(readFileSync(join(ROOT, file), 'utf8'));
   const image = coverImage(fm);
+  coverByFile.set(file, image);
   if (!image) {
     missingCover.push(file);
     continue;
@@ -100,6 +102,23 @@ for (const file of [...byLanguage.en, ...byLanguage.zh]) {
     brokenCover.push({ article: file, image });
   }
 }
+
+const shareableCover = missingCover.flatMap((article) => {
+  const language = article.startsWith('content/en/') ? 'en' : 'zh';
+  const counterpartLanguage = language === 'en' ? 'zh' : 'en';
+  const counterpart = pairMaps[counterpartLanguage].get(pairingKey(article));
+  if (!counterpart) return [];
+
+  const image = coverByFile.get(counterpart);
+  const diskPath = diskPathForCover(image);
+  if (!image || !diskPath || !existsSync(diskPath)) return [];
+  return [{ article, counterpart, image }];
+});
+const generationNeededKeys = new Set(
+  missingCover
+    .filter((article) => !shareableCover.some((item) => item.article === article))
+    .map(pairingKey),
+);
 
 const auditPath = join(ROOT, 'docs/article-quality-audit.md');
 const audit = existsSync(auditPath) ? readFileSync(auditPath, 'utf8') : '';
@@ -125,6 +144,10 @@ const report = {
   covers: {
     missingCount: missingCover.length,
     missing: missingCover,
+    shareableCount: shareableCover.length,
+    shareable: shareableCover,
+    generationNeededArticleCount: missingCover.length - shareableCover.length,
+    generationNeededVisualCount: generationNeededKeys.size,
     brokenCount: brokenCover.length,
     broken: brokenCover,
   },
@@ -142,6 +165,9 @@ if (process.argv.includes('--json')) {
   console.log(`Missing English counterparts: ${missingEnglish.length}`);
   console.log(`Missing Chinese counterparts: ${missingChinese.length}`);
   console.log(`Missing cover.image: ${missingCover.length}`);
+  console.log(`Shareable from counterpart: ${shareableCover.length}`);
+  console.log(`Articles needing new cover generation: ${missingCover.length - shareableCover.length}`);
+  console.log(`Unique new visuals needed: ${generationNeededKeys.size}`);
   console.log(`Broken cover.image: ${brokenCover.length}`);
   console.log(`Audited: ${auditedFormal.length}`);
   console.log(`Unaudited: ${unaudited.length}`);

@@ -1,39 +1,43 @@
 ---
-title: 'GEO: The Complete Guide to Generative Engine Optimization (When Search Stops Giving Links and Starts Giving Answers)'
-ShowRssButtonInSectionTermList: true
-date: '2026-07-10T22:00:00+08:00'
+title: 'GEO in 2026: Evidence, Limits, and a Practical Workflow'
+date: 2026-07-10T22:00:00+08:00
+lastmod: 2026-07-31T18:39:47+08:00
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['GEO', 'Generative Engine Optimization', 'AI search optimization', 'AEO', 'SEO', 'AI Overviews', 'ChatGPT optimization', 'Perplexity', 'zero-click search', 'llms.txt', 'E-E-A-T', 'AI citations', 'LLM']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - GEO
   - SEO
   - AI Search
   - Content Strategy
   - LLM
+categories:
+  - Development
 description: >
-  When 68% of Google searches no longer produce a click and AI hands the answer straight to the user, the "rankings" that classic SEO fights for are quietly losing value. GEO (Generative Engine Optimization) fights for something else: getting the AI to understand, trust, and cite you when it writes the answer. A pillar-length guide from first principles to methodology to a real case study on my own blog — and the opening chapter of the GEO series.
+  An evidence-led guide to generative engine optimization in 2026: what Google, OpenAI, Perplexity, Pew, Bain, and the original GEO paper actually support.
 cover:
-  image: '/images/columns/geo/en-01-guide.svg'
-  alt: GEO complete guide cover showing the five-layer model from SEO ranking to AI citation
+  image: /images/columns/geo/en-01-guide.svg
+  alt: "A five-layer GEO workflow separating access, usefulness, evidence, extraction, and measurement"
 tldr:
-  - GEO doesn't replace SEO; it adds a layer. SEO fights for links and rankings; GEO fights for being cited when AI generates an answer. Both draw on the same content assets.
-  - In 2026, 68% of US searches are zero-click, and when AI Overviews appear, click-through drops by ~60%. The traffic entry point is migrating from "blue links" to "the AI answer box" — that's why GEO suddenly matters.
-  - Princeton's GEO study used 10,000 queries to prove that adding statistics, citing sources, and adding authoritative quotations can lift a page's visibility inside AI answers by 22%–41% — the hardest, most reproducible foundation we have.
-  - "I break GEO into a five-layer operational model: Crawlable → Understandable → Trustworthy → Quotable → Endorsed. The technical base is just the entry ticket; the real moat is trust and off-site endorsement."
-  - Black-hat "AI poisoning" (mass-producing fake articles to feed models) has been exposed and is being regulated. The white-hat, compounding path is the one individuals and brands should take.
+  - "GEO is a useful operating label, not a separate Google ranking system. Google says its generative search features still rely on core Search systems and require no special AI markup."
+  - "The 2024 GEO paper found visibility gains of up to 40% in its experimental setting, but visibility was not the same as citation probability, results varied by domain, and the live Perplexity test used only 200 file-upload examples."
+  - "Crawler controls have different jobs: OAI-SearchBot and PerplexityBot support search discovery, GPTBot concerns potential training, and Google-Extended does not affect Google Search."
+  - "Use first-party evidence, distinct experience, crawlable pages, and normal SEO. Treat answer-first writing, schema, off-site mentions, and prompt monitoring as testable practices rather than universal ranking laws."
+  - "Measure platform reports, verified citations, and referral outcomes separately. High impressions with low clicks do not prove that an AI copied a page."
 maturity: budding
 faq:
-  - q: "What is GEO and how is it different from SEO?"
-    a: "GEO (Generative Engine Optimization) is the systematic optimization of content, structure, and off-site reputation so that generative AI systems — ChatGPT, Perplexity, Google AI Overviews, Doubao, DeepSeek — can more easily understand, trust, and cite your content when answering a question. It doesn't replace SEO: SEO fights for link rankings and clicks, GEO fights for being cited inside AI-generated answers, and both draw on the same content assets."
-  - q: "Why does GEO matter in 2026?"
-    a: "Because the traffic entry point is migrating from blue links to the AI answer box: 68% of US Google searches in the first four months of 2026 ended with zero clicks, and click-through on organic results drops by roughly 60% when AI Overviews appear. Yet sites that do get cited by AI Overviews see 35% more organic clicks and 4–9x higher conversion — the upside concentrates in the few sources that get named, which is exactly the position GEO competes for."
-  - q: "How do I make AI more likely to cite my content?"
-    a: "Princeton's GEO study validated it across 10,000 queries: adding statistics, citing sources, and including authoritative quotations lifts a page's visibility inside AI answers by 22%–41%. In practice, work through a five-layer model: first make content crawlable and understandable (technical base and structured writing), then build trustworthiness, quotability, and off-site endorsement (author reputation and third-party mentions)."
-  - q: "What are the risks of black-hat GEO (AI poisoning)?"
-    a: "AI poisoning means mass-publishing fabricated articles to feed large models and manipulate their recommendations; it was exposed on China's 2026 3·15 consumer-rights show. It may work short-term, but it exploits model source-credibility gaps that platforms are patching and regulators are tightening — AIIA launched a GEO-specific safety pledge in February 2026, and AI-generated advertising is now an enforcement priority. The only sustainable path for individuals and brands is white-hat: earning citations with genuine, authoritative, well-structured content."
+  - q: "What is generative engine optimization?"
+    a: "Generative engine optimization, or GEO, is a practical label for improving how content is discovered, understood, selected, and attributed in AI-assisted search. It is not one universal algorithm. For Google Search, the official guidance is to apply normal SEO and create useful, original content; other systems expose their own crawler and publisher controls."
+  - q: "Did the original GEO paper prove that statistics and quotations increase citations by 40%?"
+    a: "No. The paper measured source visibility with metrics such as position-adjusted word count and subjective impression. Some methods improved visibility by up to 40% in its test setup, with strong domain variation. Its Perplexity experiment used 200 examples supplied as uploaded files, so the result is promising evidence, not a universal citation-rate guarantee."
+  - q: "Do I need llms.txt or special schema for Google AI Overviews?"
+    a: "No. Google's current documentation says Search ignores llms.txt, requires no special AI markup, and does not require structured data for generative search. Keep valid structured data when it serves ordinary search features, and publish llms.txt only for a specific consumer that documents using it."
+  - q: "Which AI crawlers should a publisher allow?"
+    a: "Choose by purpose and policy. OAI-SearchBot helps content appear in ChatGPT search, while GPTBot controls potential training use. PerplexityBot indexes content for Perplexity search. Google Search uses Googlebot; Google-Extended is a control token for some Gemini training and grounding uses and has no effect on Google Search."
+  - q: "How should a small site measure GEO?"
+    a: "Start with platform-owned reports and referral analytics, then use a dated, repeated prompt set to audit whether citations appear and whether they support the answer. Record engine, model, locale, account state, and run count. Do not infer AI use merely from high Search Console impressions and low click-through."
 columns:
   - geo
 series:
@@ -43,268 +47,420 @@ series:
   total: 6
 ---
 
-## The answer, first (this paragraph is GEO itself)
+## The Short Answer
 
-**GEO (Generative Engine Optimization) is the systematic optimization of your content, structure, and off-site reputation so that generative AI systems — ChatGPT, Perplexity, Google AI Overviews, Doubao, DeepSeek — can more easily understand, trust, and cite you when answering a user's question.**
+**Generative engine optimization (GEO) is a useful name for the work of making
+content eligible, useful, well-supported, and attributable when an AI-assisted
+search system builds an answer. It is not one ranking algorithm, and it is not
+a bag of markup tricks.**
 
-It doesn't replace SEO; it layers on top of it. Classic SEO fights to rank high and get clicked. GEO fights so that when the AI hands the answer directly to the user, you're *in* that answer, credited as the source. ([Search Engine Land](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142), [Frase](https://www.frase.io/blog/what-is-generative-engine-optimization-geo))
+For Google, the official position is deliberately unexciting: AI Overviews and
+AI Mode are rooted in the same core Search ranking and quality systems, and
+there are no additional technical requirements or special optimizations for
+inclusion. Other products have different retrieval stacks and crawler controls,
+so a responsible GEO practice begins by naming the system rather than speaking
+about “the AI” as if it were one machine.
 
-The paragraph you just read is itself a GEO move: lead with the answer, give a complete, quotable definition in 40–100 words. Why that works is the rest of this article.
+I use GEO as an operating label for five questions:
 
-> This is the **pillar chapter (1 of 6)** of the *Generative Engine Optimization* series. It lays out the whole map; later chapters drill into each battlefield — mechanics, structured tactics, trust and endorsement, a deep case study on my own blog, and measurement.
+1. Can the relevant system access the page?
+2. Does the page contain something distinct and useful?
+3. Can its claims be checked?
+4. Can a passage be attributed without losing its meaning?
+5. Can I measure what happened without inventing causality?
 
----
+That is less exciting than “rewrite three headings and win AI search.” It is
+also much closer to what the evidence can carry.
 
-## Why traffic "vanished" in 2026
+> This is chapter 1 of 6 in my GEO series. It provides the evidence boundary and
+> operating model; later chapters can go deeper without turning early findings
+> into universal laws.
 
-Three numbers that wake you up:
+## What Changed in Search—and What Did Not
 
-- **In the first four months of 2026, 68.01% of US Google searches ended zero-click** — the user read and left without clicking anything. That was 60.45% in 2024: +12.5% in two years. ([Omnibound](https://www.omnibound.ai/blog/zero-click-search-statistics), [SparkToro](https://sparktoro.com/blog/in-2026-less-than-one-third-of-google-searches-still-send-a-click/))
-- **AI Overviews now appear on ~20%–48% of queries, and when they do, organic click-through falls by nearly 60%**; zero-click jumps to 83% on those queries. ([Omnibound](https://www.omnibound.ai/blog/ai-seo-statistics))
-- **Bain (Feb 2025): 80% of consumers now rely on AI-generated results for at least 40% of their searches**, and organic traffic has fallen an estimated 15%–25% across many sectors. ([Contently](https://contently.com/2026/04/27/ai-overview-traffic-impact/))
+Clicks are under pressure, but the numbers need a denominator and a date.
 
-In short: the default deliverable of search is shifting from "a list of blue links" to "an answer the AI already wrote." Your article may be read, digested, and summarized to the user — while the user never visits you, unless the AI names you.
+A [Pew Research Center study from March
+2025](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)
+examined 68,879 Google searches from 900 consenting US adults. About 18% of
+those searches produced an AI summary. Users clicked a traditional result after
+8% of visits with a summary, compared with 15% without one. They clicked a link
+inside the summary in only 1% of visits.
 
-It's not all bad. The same research shows sites **cited in AI Overviews get 35% more organic clicks and 4–9x higher conversion**. AI referral traffic is growing fast and converts better. ([Omnibound](https://www.omnibound.ai/blog/ai-seo-statistics)) The cited party takes the spoils. GEO's core problem is exactly one thing: **how to become the one who gets named.**
+Those results support a narrow statement: in that sample and period, the
+presence of an AI summary was associated with fewer outbound clicks. They do
+not tell us that every query class, country, or later version of Google behaves
+the same way.
 
-### Evidence from my own blog
+[Bain's February 2025
+analysis](https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing/)
+reported a different survey: about 80% of respondents relied on zero-click
+results for at least 40% of their searches, and Bain estimated a 15%–25%
+reduction in organic traffic across affected contexts. The underlying
+Bain–Dynata survey was conducted in December 2024 with 1,117 respondents.
+Again, it is evidence of a broad change in user behavior, not a conversion
+guarantee for sites that receive an AI citation.
 
-Before writing this, I dug through the Google Search Console data for [cubxxw.com](https://cubxxw.com) (old domain, last three months): **852 clicks, 878K impressions, 0.1% average CTR, average position 13.2 (page two).**
+What did not change is equally important. Search still needs to discover,
+index, and assess pages. Google explicitly says its generative features use
+core Search systems, including retrieval-augmented generation and query
+fan-out. A page must be indexed and eligible to show a snippet. Helpful,
+original, people-first content remains more important than a special “AI
+format.”
 
-The painful part: the highest-impression queries were all irrelevant long questions (MBTI tests, medical trivia, local history) — thousands of impressions each, zero clicks. They diluted the whole site's CTR to 0.1%. The clicks that *did* land came from precise technical queries: `hugo blog`, `langgraph architecture`, `gpt researcher`, `go directives`.
+The useful conclusion is not that links have stopped mattering. It is that a
+publisher should distinguish at least three outcomes:
 
-That is the signature symptom of the GEO era: **you have massive impressions but you aren't being *chosen*.** Impressions mean standing in the crowd; a citation means being called on to speak.
+- visibility inside a generated answer;
+- an attributed link or citation;
+- a visit or conversion after that attribution.
 
----
+They are related, but they are not interchangeable.
 
-## Why GEO exploded — and its dark side
+## What the Original GEO Paper Actually Demonstrated
 
-### The hype: a new lane
+The term was formalized in the KDD 2024 paper [*GEO: Generative Engine
+Optimization*](https://arxiv.org/abs/2311.09735) by Aggarwal and colleagues.
+The paper introduced GEO-bench, with 10,000 queries across multiple domains,
+and evaluated nine ways of modifying source text.
 
-By 2026, China's AI-search user base passed 1.3 billion; DeepSeek reached 1.28 billion cumulative visits and ByteDance's Doubao surpassed 120 million MAU. ([IT Home](https://www.ithome.com/0/964/402.htm)) The way people get information flipped — from "actively searching web pages" to "the AI just gives the answer." GEO became the consensus new frontier for marketing and content, and tools, agencies, whitepapers, even stock plays piled in.
+The headline result is real: some strategies improved source **visibility by up
+to 40%** in the authors' experimental generative engine. Adding citations,
+quotations, or statistics often helped, and the effectiveness varied
+substantially by domain.
 
-### The mess: "AI poisoning" exposed on 3·15
+The qualifications matter:
 
-But a new lane grows weeds. In March 2026, China's 3·15 gala exposed an **"AI poisoning" gray-market chain**: some GEO vendors mass-published fabricated articles across self-media to "feed" the models and manipulate recommendations. A completely nonexistent "Allo-9 smart band" climbed to the top of multiple AI recommendations on the back of 11 fake articles (8 "expert reviews," 2 "industry rankings," 1 "user review"). ([QbitAI](https://www.qbitai.com/2026/03/388387.html), [21jingji](https://www.21jingji.com/article/20260316/herald/8cf9afdb3bc8ba06b10b2f89aef3bc17.html))
+- Visibility was measured with constructs such as position-adjusted word count
+  and a model-graded subjective impression. It was not simply “the probability
+  that a current product cites this page.”
+- The main engine retrieved sources and generated answers with
+  `gpt-3.5-turbo`; production systems in 2026 do not share one fixed pipeline.
+- The live Perplexity experiment used 200 examples and supplied source text
+  through file uploads because the researchers could not choose the retrieved
+  URLs. Quotation addition improved one visibility metric by 22%; statistics
+  improved another by as much as 37%.
+- The combination experiment also used a 200-example subset. Its best pair
+  exceeded the best individual strategy by about 5.5%, while combinations
+  involving cited sources averaged a 31.4% improvement in the selected metric.
+- The authors did not evaluate effects on ordinary search rankings and warned
+  that methods would need to adapt as engines and query distributions changed.
 
-This exposed two things: models still have dangerous gaps in judging source authority and truthfulness, and industry standards/regulation were briefly a vacuum. The good news: governance is catching up — a 14-company *China GEO Industry Initiative* (Nov 2025), an AIIA *AI Safety Commitment: GEO track* (Feb 2026), and AI-generated advertising named a regulatory priority. ([Sohu](https://www.sohu.com/a/997686348_460335))
+This is valuable early evidence. It is not permission to promise that adding
+three quotations will raise a page's ChatGPT, Gemini, or Perplexity citation
+rate by 40%.
 
-### The takeaway: white-hat vs black-hat
+My practical reading is modest: verifiable evidence and relevant quotations
+can make a source more useful during synthesis, but the effect must be tested
+by domain and product. The paper gives us hypotheses and an evaluation pattern,
+not a timeless recipe.
 
-Black-hat GEO (mass poisoning, fabricated content) may work briefly, but it's **high-risk, unstable, and increasingly penalized and regulated**. For a personal blog or a long-lived brand, the only sustainable path is white-hat and compounding: **win the citation with real, authoritative, clearly-structured, high-quality content.** That's the floor under every method below.
+## Crawler Controls Are Product Controls, Not Ranking Magic
 
----
+The earlier version of this article put GPTBot, OAI-SearchBot,
+ChatGPT-User, PerplexityBot, and Google-Extended in one list and called them
+trucks carrying content into AI answers. That metaphor concealed important
+policy choices.
 
-## Mechanics: how AI decides who to cite
+### Google
 
-To optimize, understand the machine. Modern AI search (Perplexity, AI Overviews, connected ChatGPT) is broadly a **RAG (retrieval-augmented generation)** pipeline:
+Google Search uses Googlebot. `Google-Extended` is not a separate HTTP crawler;
+it is a robots token controlling whether already-crawled content may be used
+for some Gemini model training and grounding in Gemini Apps and Vertex AI.
+[Google's crawler
+documentation](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)
+states that it has no effect on Google Search and is not a Search ranking
+signal.
 
-```mermaid
-flowchart LR
-    A[User question] --> B[Query understanding / rewrite]
-    B --> C[Retrieval: recall candidates from index/web]
-    C --> D[Re-rank: score by relevance + authority + extractability]
-    D --> E[Generation: LLM synthesizes an answer from multiple sources]
-    E --> F[Citation: pick trustworthy sources to attribute]
-    F --> G[Present to user]
-```
+### OpenAI
 
-There are three gates you can influence:
+[OpenAI's publisher
+guidance](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq)
+distinguishes search discovery from potential model training. A publisher that
+wants content included in ChatGPT search summaries and snippets should not
+block `OAI-SearchBot`. `GPTBot` is the control for pages a publisher wants to
+exclude from potential training. Allowing one does not imply consenting to the
+other.
 
-1. **Retrieval** — your content must be crawlable and indexed to even enter the candidate pool. The technical base decides eligibility.
-2. **Re-ranking** — AI favors content that is **well-structured, data-backed, sourced, and easy to extract**. This is where GEO methodology does its real work.
-3. **Citation** — among candidates, AI prefers the one that is **authoritative, trustworthy, and supplies machine-readable evidence.**
+### Perplexity
 
-### The hardest evidence: the Princeton GEO study
+[Perplexity's crawler
+documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
+describes `PerplexityBot` as the crawler used to surface and link websites in
+search results. `Perplexity-User` supports fetches initiated by user requests
+and generally ignores robots rules because the user requested the access.
+Their purposes and enforcement behavior differ.
 
-The birth certificate of the term is the 2024 KDD paper *GEO: Generative Engine Optimization* (Aggarwal et al., Princeton et al.). Using the **GEO-bench** framework, **~10,000 queries across 9 datasets**, they systematically tested 9 content strategies for their effect on "visibility inside AI answers." ([Princeton](https://collaborate.princeton.edu/en/publications/geo-generative-engine-optimization/), [Stackmatix](https://www.stackmatix.com/blog/generative-engine-optimization-paper))
+A correct `robots.txt` can preserve eligibility or express a policy. It cannot
+make an unhelpful page authoritative, and allowing a training crawler does not
+buy a citation.
 
-The core finding (memorize these three moves):
+## What Google Says You Do Not Need
 
-| Most effective tactic | Visibility lift |
-|---|---|
-| **Statistics Addition** | ~+25–40% |
-| **Cite Sources** | ~+25–40% |
-| **Quotation Addition** | ~+25–40% |
-| Combined | overall visibility **+22%–41%** |
+Google's current [guide to generative AI features in
+Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+is unusually direct about several popular GEO claims:
 
-Translation: **AI loves content that carries machine-readable evidence.** Numbers, sources, quotations — exactly the parts an AI can lift directly and use to *back up* its answer. This rule is the bedrock of the whole methodology.
+- Google Search ignores `llms.txt`; it neither helps nor hurts visibility or
+  ranking there.
+- There is no special schema.org type required for AI Overviews or AI Mode.
+- Structured data is not required for generative search.
+- Pages do not need to be split into tiny “AI-readable chunks.”
+- Publishers do not need to rewrite text into a special style for AI systems.
+- Inauthentic off-site mentions and scaled pages designed to manipulate
+  generative results remain spam, not a durable shortcut.
 
----
+Structured data still has ordinary uses. Valid `Article`, `Person`, or
+breadcrumb markup can support Search features and make site semantics easier
+to maintain. It just should not be sold as a direct AI-citation switch.
 
-## The framework: GEO's five-layer model
+The same restraint applies to FAQ and HowTo markup. Google [deprecated HowTo
+rich results and restricted FAQ rich results](https://developers.google.com/search/blog/2023/08/howto-faq-changes)
+to well-known government and health sites in 2023. A real FAQ can still help a
+reader. Adding `FAQPage` to an ordinary personal blog does not create a
+documented advantage in AI Overviews.
 
-Turning scattered tips into a model you can execute and self-audit. Five layers, bottom to top — **each lower layer is the prerequisite for the one above:**
+I keep an `llms.txt` only when I can name a consumer that documents using it.
+“It is cheap” is not enough if the file becomes another artifact I must keep
+accurate.
+
+## A Five-Layer Working Model
+
+The following model is my engineering checklist, not a list of proven ranking
+factors:
 
 ```mermaid
 flowchart TB
-    L1[L1 Crawlable · Technical base] --> L2[L2 Understandable · Content structure]
-    L2 --> L3[L3 Trustworthy · Authority & evidence]
-    L3 --> L4[L4 Quotable · Extractability]
-    L4 --> L5[L5 Endorsed · Off-site & distribution]
-    style L1 fill:#e8f0fe
-    style L5 fill:#fce8e6
+    L1["1. Accessible"] --> L2["2. Distinct and useful"]
+    L2 --> L3["3. Evidenced"]
+    L3 --> L4["4. Extractable without distortion"]
+    L4 --> L5["5. Measured and corrected"]
 ```
 
-### L1 · Crawlable (the entry ticket)
+### 1. Accessible
 
-If AI crawlers can't fetch or parse you, nothing above matters.
+Use normal technical SEO: return a successful response, expose the main
+content without authentication, avoid accidental `noindex`, publish a sitemap,
+use stable canonical URLs, and make the page work for users on real devices.
+Then choose crawler permissions separately for each product and purpose.
 
-- **Allow AI crawlers** in `robots.txt`: GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended — plus Baiduspider, Bytespider (Doubao), Sogou, YisouSpider for China. They are the trucks that carry you into AI answers.
-- **Server-side rendering first**: many AI fetchers don't run JS. Heavy client-rendered content can look blank to them. Static sites (like Hugo) win here by default.
-- **Structured data (Schema/JSON-LD)**: `Article`/`BlogPosting`, `Organization`, `Person`, `BreadcrumbList`, `FAQPage`, `HowTo` — tell AI precisely *what this is, who wrote it, what it covers*.
-- **Sitemap & freshness**: submit `sitemap.xml`, keep key content updated with a visible "last updated" date — AI clearly favors fresh content. ([SEOTuners](https://seotuners.com/blog/generative-engine-optimization/generative-engine-optimization-best-practices/))
+### 2. Distinct and useful
 
-**A cool-headed take on `llms.txt` (2026 reality):** it's an over-hyped topic. Google says Search does *not* use `llms.txt`; John Mueller likened it to the discredited keywords meta tag; an Ahrefs study of 137K sites found **97% of `llms.txt` files are never read by AI crawlers**. **However** — Chrome's Lighthouse 13.3 moved `llms.txt` auditing into the default "Agentic Browsing" category, and it *is* genuinely read by **developer tooling** (Cursor, Claude Code, Copilot, MCP). ([Search Engine Journal](https://www.searchenginejournal.com/google-says-llms-txt-is-purely-speculative-for-now/577576/), [Ahrefs](https://ahrefs.com/blog/llmstxt-study/)) Verdict: **`llms.txt` does almost nothing for search ranking today, but helps AI dev tools read your docs, and it's cheap — keep it, but don't expect it to save you.**
+Google's strongest current recommendation is to publish non-commodity,
+people-first work: original analysis, first-hand testing, or a point of view
+that a generic summary cannot reproduce.
 
-### L2 · Understandable (let AI grasp it at a glance)
+A clear opening and descriptive headings often help readers. I still use them.
+I no longer call them universal citation factors or promise that question-form
+headings are “cited far more often.” That claim needs a controlled test, not an
+agency blog.
 
-- **Answer-First**: open every article and section with a complete, quotable answer in 40–100 words, then expand. That block is often what gets lifted verbatim. (Every section here does this.)
-- **Question-based headings**: write H2/H3 as the user's actual question — "What is GEO?", "How do I get ChatGPT to cite me?" AI pattern-matches headings to queries; question headings are cited far more often. It's the highest-ROI change to existing content. ([Search Engine Land](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142))
-- **Clear semantics and entities**: spell out brand, person, domain, place — no vague references. Help AI build a stable entity→attribute map.
+### 3. Evidenced
 
-### L3 · Trustworthy (the moat)
+Separate three kinds of material:
 
-This layer maps directly onto the Princeton finding and is the most-overlooked, highest-differentiation work:
+- externally verifiable claims, linked to the closest primary source;
+- measurements with collection date, scope, and method;
+- experience or interpretation, labeled as such.
 
-- **Add statistics**: "According to [org], 202X data, +X%," with a real link.
-- **Cite credible sources** for key claims (like the dense citations in this piece).
-- **Add authoritative quotations and first-hand experience**: real author info, expert views, your own hands-on lessons. Research repeatedly shows **AI favors third-party endorsement over your own self-promotion.** ([2Point Agency](https://www.2pointagency.com/blog/generative-engine-optimization-strategies/))
-- **E-E-A-T**: Experience, Expertise, Authoritativeness, Trust. A clear author page, About page, and consistent cross-platform identity are all trust signals.
+A statistic without its population and date is decoration. A citation that
+does not support the adjacent sentence is worse than no citation because it
+borrows authority without transferring evidence.
 
-### L4 · Quotable (make content into LEGO bricks)
+### 4. Extractable Without Distortion
 
-Let AI "pull one block and use it":
+Tables, lists, definitions, and short summaries can make complex material
+easier for both people and software to navigate. The KDD study gives limited
+experimental support to making evidence visible during synthesis.
 
-- **Lists, tables, steps, comparisons** are more extractable than long prose.
-- **Standalone answers**: each conclusion should stand without its context.
-- **FAQ / HowTo schema** to expose Q&A and step structures for rich results and direct AI use.
-- **TL;DR summaries** at the top (my blog does this via the `tldr` field — see the case study).
+Extractability should not become fragmentation. A passage is useful only if it
+retains the conditions that make it true. “Up to 40% in one experimental
+visibility metric” must not be shortened to “40% more citations.”
 
-### L5 · Endorsed (the hidden RAG variable)
+### 5. Measured and Corrected
 
-Much of AI's "trust" comes from **how you're talked about elsewhere:**
+Keep discovery, attribution, traffic, and business outcomes separate. Record a
+baseline, make one class of change, and preserve enough context to explain a
+later comparison. If an engine changes, treat the series as a new regime
+rather than splicing it silently into the old one.
 
-- **Third-party citations and digital PR**: press, industry mentions, quality backlinks.
-- **Community discussion**: Reddit, Hacker News, Zhihu, V2EX, Juejin — AI training and retrieval both feed on these.
-- **Cross-platform consistency**: keep identity and descriptions aligned across site, wiki, socials, GitHub to reinforce entity recognition.
-- **Continuous monitoring and iteration**: test your citation rate across AIs with prompts and feed it back (see tools below).
+The fifth layer protects the first four from becoming ritual.
 
----
+## Revisiting My Own Blog Without Inventing Causality
 
-## Case study: applying the five layers to cubxxw.com
+The original draft used a private Google Search Console snapshot from the old
+domain: a rolling three-month view with 852 clicks, 878,000 impressions, 0.1%
+average click-through, and average position 13.2. High-impression queries
+included unrelated MBTI, medical, and local-history questions; more relevant
+clicks came from technical searches around Hugo, LangGraph, GPT Researcher, and
+Go directives.
 
-Theory done — time for the real thing. I'll walk my own bilingual Hugo blog [cubxxw.com](https://cubxxw.com) through the model, layer by layer: **what's already right, what's still owed.**
+That is useful first-party evidence about this site's query mix. It is not
+evidence that an AI system copied those pages. Search Console impressions and
+click-through do not reveal whether a model retrieved or cited a page. The
+proper conclusion is narrower: the old site's visibility was broad, but much of
+it did not match the audience I wanted to serve.
 
-### Already right (L1 technical base ≈ full marks)
+A one-run Lighthouse audit also returned SEO 100 and Best Practices 100. That
+is a configuration smoke test, not a GEO score. It can catch technical
+mistakes; it cannot prove authority, originality, citation selection, or user
+value.
 
-In a recent real-browser test, the blog scored **Lighthouse SEO 100** and **Best Practices 100**. Against the model, L1 is where I've put in the work:
+The stronger insight from the blog is editorial. A small set of technical pages
+has repeatedly attracted relevant readers:
 
-- **AI-era robots.txt**: explicitly welcomes GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, plus Baidu, ByteDance (Bytespider/Doubao), Sogou, Shenma. Treat AI as a new distribution channel and invite it in, rather than block it by default.
-- **Four structured-data types**: articles emit `BlogPosting`, `WebSite` (with `SearchAction`), `Person` (with `sameAs` social graph), and `BreadcrumbList`.
-- **Correct hreflang**: `en / zh / x-default`, so bilingual content is retrievable by AI in each language.
-- **Multiple outlets**: `sitemap.xml` + `news-sitemap.xml` + `llms.txt` / `llms-full.txt` + JSON Feed + OPML. (I keep `llms.txt`, but per L1, I hold no illusions about it.)
-- **A `tldr` front-matter field**: my articles carry a `tldr` array rendered as a bullet summary at the top — that *is* L2 "Answer-First" + L4 "extractability" in practice. The bullet list at the top of this post is exactly that.
+- [the Hugo build](/engineering/posts/my-hugo/) and [advanced Hugo
+  notes](/engineering/posts/hugo-advanced-tutorial/);
+- [MarkItDown](/projects/markitdown/), [mem0](/projects/mem0/),
+  [LangGraph](/projects/langgraph/), [GPT Researcher](/projects/gpt-researcher/),
+  and [NotebookLM](/projects/notebooklm/);
+- [automation directives](/engineering/posts/directives-and-the-use-of-automation-tools/)
+  and [TDD](/projects/tdd/).
 
-### Still owed (L2–L5 are the real battlefield)
+My next step is not to manufacture dozens of query variants. It is to improve
+the few clusters where I have direct experience, correct stale claims, link the
+work coherently, and see whether readers and external systems find it useful.
 
-A perfect technical base doesn't win GEO — it's just the ticket. The real GSC data (avg position 13.2, CTR 0.1%) says I'm stuck at "impressions without being chosen." The gaps are the upper four layers:
+## How to Measure GEO Without Fooling Yourself
 
-- **L2 structure**: not every post is strictly Answer-First. Add a 40–100 word direct-answer opener to core technical posts (like this one).
-- **L3 trust**: many technical notes have first-hand experience but lack the "evidence density" of statistics and external citations. Per Princeton, that's exactly the +25–40% visibility lever.
-- **L4 quotable**: add `FAQPage` / `HowTo` schema to how-to / "what is" / comparison posts, exposing the Q&A structure I already wrote.
-- **L5 endorsement**: I have identity on GitHub, Zhihu, Bilibili, but technical posts have thin off-site discussion and backlinks. Core posts need active distribution and discussion.
+### 1. Use Platform-Owned Reports
 
-### A concrete play: separate the "core cluster" from the "noise"
+Google's 2026 guidance points publishers to the **Generative AI performance
+report in Search Console** for Google Search and Discover. Use that report for
+Google's own generative surfaces rather than inferring them from ordinary
+high-impression pages.
 
-The GSC data taught me a counterintuitive lesson: **don't be dazzled by 878K impressions.** The high-impression MBTI / medical / local-history queries are noise, not opportunity. What deserves doubling down is the technical cluster already earning clicks:
+For incoming visits, record referrers such as ChatGPT or Perplexity in analytics
+and measure downstream behavior separately. A referral proves a visit, not the
+exact answer or citation that caused it.
 
-- **Hugo**: [My Hugo blog build](/engineering/posts/my-hugo/) (a standout 10.4% CTR — my benchmark), [Advanced Hugo tutorial](/engineering/posts/hugo-advanced-tutorial/)
-- **AI tools & engineering**: [MarkItDown](/projects/markitdown/) (a 72K-impression traffic leader), [mem0](/projects/mem0/), [LangGraph](/projects/langgraph/), [GPT-Researcher](/projects/gpt-researcher/), [NotebookLM](/projects/notebooklm/)
-- **Go & engineering practice**: [Automation tools & directives](/engineering/posts/directives-and-the-use-of-automation-tools/), [TDD](/projects/tdd/)
+### 2. Audit Answers with Repeated Prompts
 
-**Strategy: build topic clusters around these validated demands — one pillar post + several child posts + internal links** — to earn topical authority, instead of scattering shots at noise. That's exactly why I designed this GEO piece as "pillar + series": **use the article's structure itself to demonstrate GEO.**
+A fixed prompt set is useful, but one run is not a measurement. Store:
 
----
+- the exact prompt and target intent;
+- product, model or mode when visible, locale, account state, and date;
+- several repetitions;
+- whether the site was retrieved, cited, and accurately represented;
+- the cited passage and whether it actually supports the generated claim.
 
-## How to know whether GEO is working (measurement & tools)
+Model and index changes create discontinuities. Report them instead of hiding
+them inside an average.
 
-The counterintuitive part: **the classic "rank + click" metrics fail**, because much of the value happens where the user never reaches your site. Use a different toolkit:
+### 3. Test Changes as Hypotheses
 
-1. **Prompt testing (simplest and most direct)**: on ChatGPT, Perplexity, Doubao, DeepSeek, ask what real users would ask ("recommend open-source tools to convert docs to Markdown", "how to do SEO for a Hugo blog") and check whether you appear and are cited. Run a fixed prompt set periodically and track citation rate.
-2. **AI referral traffic**: in GA4, watch traffic and conversions from `chatgpt.com`, `perplexity.ai`, `gemini.google.com`. Direct evidence AI is already sending you users.
-3. **GSC cross-check**: GSC won't report "AI citations," but "high-impression, low-click" pages are often the ones whose answers AI lifted — a hint about which content needs Answer-First and schema.
-4. **Dedicated GEO monitors**: **Profound** (enterprise; tracks 10+ engines incl. ChatGPT/Claude/Perplexity/AI Overviews/Gemini/Copilot/DeepSeek/Grok; $35M Series B from Sequoia) and **Peec AI** (Germany; prompt-level, multilingual) track cross-platform citation rate and share of voice at scale. ([Frase](https://www.frase.io/blog/the-10-best-ai-visibility-tools-in-2026), [Stackmatix](https://www.stackmatix.com/blog/geo-tools-guide)) A personal blog needn't pay, but knowing what they measure helps you roll your own.
+“Add a direct summary,” “replace secondary sources,” or “publish a first-hand
+benchmark” are testable interventions. Change a bounded set of pages, preserve
+the before state, and decide in advance which observation would count against
+the hypothesis.
 
-**Mindset**: GEO results fluctuate with industry, competition, and model updates. It is **not one-and-done** — it's a measure-then-iterate loop, not a one-time project.
+Third-party visibility tools can automate collection, but they do not have
+access to proprietary ranking systems. Evaluate their sampling and
+normalization before treating a share-of-voice chart as ground truth.
 
----
+## A 30 / 60 / 90-Day Workflow
 
-## Risk, ethics, and playing the long game
+### Days 1–30: eligibility and evidence inventory
 
-One-line stance: **don't poison the well.**
+- [ ] Verify indexability, canonical URLs, sitemap coverage, and page rendering.
+- [ ] Review crawler policy by purpose: Search, user fetch, or training.
+- [ ] List the ten pages that already serve the intended audience.
+- [ ] Mark unsupported statistics, stale product claims, and secondary citations.
+- [ ] Capture a dated baseline from first-party platform reports.
 
-Black-hat GEO (mass fabricated articles, model manipulation) is, after 3·15, an openly high-risk zone. Platforms are patching gaps, regulators are tightening, the industry is writing rules. More importantly: **visibility built on falsehood collapses — with interest — the moment a model updates or you're caught, and it can drag your real reputation down with it.**
+### Days 31–60: improve the work itself
 
-White-hat GEO is slow but compounds. Real first-hand experience, solid data and citations, clean structure, consistent cross-platform identity — these are signals to the AI *and* value to humans. **Make "worth citing" true, and GEO becomes a byproduct.**
+- [ ] Replace important secondary claims with primary sources.
+- [ ] Add first-hand examples that a commodity summary cannot supply.
+- [ ] Rewrite ambiguous passages so their conditions travel with the conclusion.
+- [ ] Improve internal links among two or three genuine topic clusters.
+- [ ] Create a small, versioned prompt audit with repeated runs.
 
----
+### Days 61–90: expose and learn
 
-## The 30 / 60 / 90-day checklist
+- [ ] Publish the improved pages and record the release date.
+- [ ] Share them where a real community can challenge the work—not to seed fake
+      mentions.
+- [ ] Review Search Console's generative report, verified citations, referrals,
+      and reader behavior as separate series.
+- [ ] Correct misquotations and stale claims.
+- [ ] Stop any tactic that produces no interpretable evidence.
 
-Turn method into motion. Here's the table I set for myself — copy it and change the numbers:
+The schedule is not a promise of ranking. It is a way to make the experiment
+auditable.
 
-**Days 1–30 · Foundation + immediate bleeding-stop**
-- [ ] Verify `robots.txt` allows all major AI crawlers (global + China).
-- [ ] Add an Answer-First opener (40–100 words) to your top 10 traffic posts.
-- [ ] Add `FAQPage` / `HowTo` schema to 3–5 how-to / "what is" posts.
-- [ ] Rewrite titles and descriptions of high-impression, low-CTR pages (with numbers / outcome promises).
+## Ethics: Make the Source Worth Citing
 
-**Days 31–60 · Add evidence + build trust (L3)**
-- [ ] Add statistics + external citations to core posts (aim for Princeton's +25–40%).
-- [ ] Polish author / About pages and cross-platform identity (entity signals).
-- [ ] Build a fixed prompt set; test citation rate weekly on ChatGPT/Perplexity/Doubao.
+Fabricated reviews, synthetic consensus, and mass-produced pages are not a
+clever GEO tier. They pollute the evidence that retrieval systems and people
+depend on. They also violate the spirit—and often the letter—of platform spam
+and advertising rules.
 
-**Days 61–90 · Build clusters + earn endorsement (L4/L5)**
-- [ ] Build "pillar + child + internal-link" clusters around 2–3 validated topics (Hugo / AI tools / Go).
-- [ ] Distribute core posts to Zhihu / Reddit / Hacker News / Juejin to seed discussion and backlinks.
-- [ ] Review AI referral traffic and citation-rate curves; cut noise, double down on what works.
+The durable alternative is slower: publish experience that happened, state the
+limits, link the primary evidence, correct mistakes, and earn independent
+discussion without manufacturing it.
 
----
+My standard is now simple: if a passage would become misleading when lifted
+into an answer, the passage is not ready. Optimization begins by making the
+source true enough to survive extraction.
 
 ## FAQ
 
-**Q: Will GEO replace SEO?**
-A: No. GEO is a new layer on top of SEO. Strong organic rankings remain a prerequisite for Gemini / AI Overviews citations. They share the same content assets — additive, not a replacement. ([GenOptima](https://www.gen-optima.com/geo/generative-engine-optimization-best-practices-2026/))
+### Does GEO Replace SEO?
 
-**Q: Are GEO, AEO, and AI Search Optimization the same thing?**
-A: Heavily overlapping. AEO (Answer Engine Optimization) stresses "answer engines," GEO stresses "generative engines," but the tactics (Answer-First, schema, authoritative evidence) are essentially identical. Don't fuss over naming; hold the core: make AI understand, trust, and cite you.
+No. For Google Search, official guidance treats generative search optimization
+as SEO because AI features rely on core Search systems. Across the wider market,
+GEO remains a useful umbrella for product-specific discovery, attribution, and
+measurement work.
 
-**Q: What's the single fastest win?**
-A: Rewrite the opening of key posts to "Answer-First + question headings." Highest ROI, lowest cost change to existing content. ([Search Engine Land](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142))
+### Should Every Article Start with a 40–100 Word Answer?
 
-**Q: Should I bother with `llms.txt`?**
-A: You can — it's cheap — but hold no illusions. Near-useless for Google Search ranking today; useful for AI dev tools (Cursor, Claude Code, Copilot) reading your docs. A "do it in passing" item.
+Not as a ranking ritual. A concise opening can help a reader and make the
+article's scope explicit. Use it when the question has a direct answer; do not
+flatten an essay or an uncertain investigation merely to create an extractable
+block.
 
-**Q: Does GEO matter for a personal blog?**
-A: Very much. Personal blogs often hold scarce first-hand experience and real war stories — exactly the original signal AI loves to cite. You don't need a big budget; you need real, structured, quotable content.
+### Should a Personal Blog Publish `llms.txt`?
 
----
+Only for a known consumer whose documentation says it reads the file. Google
+Search ignores it. Keep it accurate if you publish it, and do not count it as
+ranking work.
 
-## Closing, and what's next
+### Does Structured Data Improve AI Citation Rate?
 
-Search is changing shape, but the underlying law isn't: **value flows to content genuinely worth trusting and citing.** GEO isn't a bag of tricks; it's the engineering of making good content machine-legible and machine-endorsable.
+There is no general evidence for that claim. Use supported structured data for
+ordinary Search features and maintainable semantics. Google says no special
+schema is required for its generative Search features.
 
-This is the pillar chapter of the *Generative Engine Optimization* series. Next, I'll drill into each layer and keep reviewing the real numbers from rebuilding my own blog:
+### What Is the Fastest Useful Change?
 
-- **Ch. 2 · Mechanics**: how AI retrieves, re-ranks, and cites — RAG and citation signals in depth.
-- **Ch. 3 · Structured tactics**: Answer-First, schema, and the right way to do `llms.txt`, with code.
-- **Ch. 4 · Trust & endorsement**: concrete plays for E-E-A-T and off-site distribution.
-- **Ch. 5 · Deep blog review**: a full, data-driven GEO rebuild using GSC data.
-- **Ch. 6 · Measurement & tools**: a low-cost "citation rate" monitoring setup.
+Correct the most important unsupported claim on a page and replace it with
+first-party evidence or an honest statement of uncertainty. That improves the
+work even if no engine changes its answer.
 
-If you run a personal blog, an open-source project, or brand content, follow along and let's turn GEO from a concept into motion.
+## Closing
 
----
+GEO is young enough that confidence often travels faster than evidence. The
+original version of this guide made that mistake: it combined one promising
+paper, several marketing summaries, private analytics, and product folklore
+into a certainty the sources did not justify.
 
-*Sources and data: the Princeton GEO study (KDD 2024); zero-click and AI-traffic research from SparkToro / Omnibound / Bain; 2026 GEO and llms.txt analysis from Search Engine Land / Frase / Ahrefs; China's 3·15 coverage and GEO-governance reporting; and my own real measurements of cubxxw.com via Google Search Console and PageSpeed Insights. All links are cited inline.*
+The correction is not to abandon the subject. It is to practice the discipline
+the subject claims to reward: make pages accessible, publish something
+distinct, show the evidence, preserve the limits, and measure each outcome
+without pretending it proves the next one.
+
+Search interfaces will keep changing. A source that remains useful after the
+interface changes is the only optimization I trust to compound.
+
+## Primary Sources
+
+1. [Google: optimizing for generative AI features in Search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+2. [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
+3. [Google: common crawlers and Google-Extended](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)
+4. [OpenAI: publishers and developers FAQ](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq)
+5. [Perplexity crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers)
+6. [Pew Research Center: clicks when Google AI summaries appear](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/)
+7. [Bain: zero-click search and AI summaries](https://www.bain.com/insights/goodbye-clicks-hello-ai-zero-click-search-redefines-marketing/)
+8. [Aggarwal et al.: GEO, KDD 2024](https://arxiv.org/abs/2311.09735)
+9. [Google: changes to FAQ and HowTo rich results](https://developers.google.com/search/blog/2023/08/howto-faq-changes)

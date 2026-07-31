@@ -1,12 +1,12 @@
 ---
-title: 'Layer One · Information: What to Show AI, What to Skim Yourself, and Pure Noise'
+title: 'AI Information Filtering Workflow: Capture Signal Without a Noise Archive'
 ShowRssButtonInSectionTermList: true
 date: '2026-07-11T14:10:00+08:00'
 showtoc: true
-tocopen: true
+tocopen: false
 type: posts
-author: ["Xinwei Xiong"]
-keywords: ['information overload', 'noise reduction', 'information capture', 'signal to noise ratio', 'AI content', 'scarce signal', 'information management', 'RSS', 'Cubox', 'energy management', 'second brain', 'bookmark trap', 'note management']
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - AI
   - LLM
@@ -14,17 +14,19 @@ tags:
   - Self-Discovery
   - Product Strategy
   - Automation
+categories:
+  - Development
 description: >
-  Information is the first stage of the pipeline, and most of it is noise. This essay splits information into three categories — what to show AI, what to skim casually yourself, and pure noise that should be kept out — and explains how to capture, how to reduce noise, and how to hunt for scarce signal instead, in an era when AI mass-produces content and the signal-to-noise ratio keeps deteriorating. This is the second essay in the "From Information to Creation" column.
+  An AI information filtering workflow for capturing useful sources without building a noise archive, with privacy gates, verification, and human review.
 cover:
   image: '/images/columns/info-to-creation/zh-02-information.svg'
-  alt: The information layer — capturing and reducing noise, keeping it out at the door
+  alt: Sources passing through relevance, privacy, and verification gates before AI-assisted processing and entry into the records layer
 tldr:
   - The default state of information is noise. The work of the first layer isn't "store more" — it's "block more." The test is "is this worth moving into the next stage," not "is this useful."
-  - Split information into three categories — what to show AI (raw material fed to the model for retrieval and processing), what to skim casually yourself (low-value input that keeps your instincts sharp), and pure noise (which should be blocked without mercy).
-  - "The signal-to-noise ratio is deteriorating in the AI era: models mass-produce content that \"looks useful,\" turning information overload into \"synthetic information overload.\" What's genuinely scarce now isn't information — it's signal."
-  - "The key to noise reduction is controlling the entry point: audit your fixed set of sources, and batch your learning into a low-energy time slot rather than being pulled around by notifications and interrupted at random."
-  - "At the information layer, use AI boldly for first-pass filtering and summarization — it's a tenfold efficiency gain. But remember: AI only helps you process noise, it doesn't form judgment for you."
+  - Split information by action — safe to process with AI, safe only after redaction, human-only, scan in a time box, or reject — after checking relevance, source quality, freshness, rights, sensitivity, cost, and verifiability.
+  - "Cheap generation adds synthetic information overload: polished structure is not evidence quality. The scarce asset is traceable signal — firsthand observations, primary sources, and claims with inspectable support."
+  - "The key to noise reduction is controlling the entry point: audit recurring sources and batch routine scanning into a protected time window that fits your own energy and obligations."
+  - "AI can rank, summarize, and explain against a rubric. Humans define that rubric, inspect edge cases, verify samples, and remain responsible for what advances to the records layer."
 maturity: budding
 columns:
   - info-to-creation
@@ -49,27 +51,42 @@ The test for whether a piece of information should be let in isn't "is it useful
 
 ## Splitting Information Into Three Categories
 
-Talking about "information" in general isn't actionable. I split incoming information into three categories and treat each differently.
+Talking about "information" in general isn't actionable. My original three buckets — show AI, skim myself, block — were memorable but too crude. Before choosing an action, I now score the border conditions:
 
-**Category one: what to show AI.** This is raw material for the model — things you plan to have AI retrieve, summarize, compare, or process. Industry reports, documentation, other people's long-form writing, your own historical records all belong here. They don't need to be read word by word, or even read right now — they just need to be clearly structured enough for the model to call on. For this category, you can capture freely, because it's AI processing it, not your attention.
+| Gate | Question | Reject or escalate when |
+|---|---|---|
+| Task relevance | Which active question could this source change? | no current question or next action |
+| Source quality | Who produced it, by what method, with what incentives? | origin or method cannot be established |
+| Freshness | When was it published and last checked? | the claim is time-sensitive and stale |
+| Uniqueness | Does it add evidence, a counterexample, or a new frame? | it only repeats material already indexed |
+| Sensitivity | Does it contain personal, customer, credential, health, or confidential data? | exposure is unnecessary or unauthorized |
+| Rights | May I store, transform, quote, or upload it? | license, contract, or access terms do not permit the use |
+| Cost | What will storage, tokens, indexing, and later review cost? | expected value does not justify maintenance |
+| Verifiability | Can a human trace the summary back to the source? | no stable source, date, excerpt, or retrieval record |
 
-**Category two: what to skim casually yourself.** This is low-value input that keeps your instincts warm and your sense of the environment current: industry moves, what your peers are doing, what's trending on a platform. Each individual item has low value, but skimming them in bulk gives you a feel for "right now." For this category, the key is **limiting the time and the entry point** — it's the useful tier of background noise, but it must never be allowed to occupy your deep-focus hours.
+The output is an action, not a permanent judgment about the source:
 
-**Category three: pure noise.** Emotionally charged hot takes, opinions written just to pick a fight, an endlessly scrolling recommendation feed. Their only effect is consuming your attention. For this category, there's exactly one move: **block it, without mercy.**
+- **AI-safe:** public or authorized material with no unnecessary sensitive data, a traceable source, and a defined task.
+- **Redact first:** useful material whose names, identifiers, confidential details, or irrelevant personal data can be removed without destroying the claim.
+- **Human-only:** licensed or sensitive material I am allowed to inspect but not upload to the selected model or integration.
+- **Time-boxed scan:** low-stakes environmental input used to maintain awareness, not stored as evidence.
+- **Reject:** irrelevant, unverifiable, unlawfully obtained, or more expensive and risky than its expected value.
 
-The ratio of these three categories determines the health of your information layer. Most people's problem is: they skim category three as if it were category two, they save category two as if it were category one, and eventually category one — the raw material that should actually be fed systematically to AI — gets buried under everything else, unused.
+This changes the meaning of "noise." An emotional post may be noise for a technical literature review and signal for a study of customer frustration. The correct question is not "is this content bad?" It is **"does this source deserve a particular action for the task in front of me?"**
+
+The upload boundary is deliberately stricter than the capture boundary. I do not send credentials, private keys, client records, unpublished private conversations, regulated data, or paid copyrighted works without explicit permission and an approved processing arrangement. For redactable material, I remove identities and irrelevant details before model access. Anthropic's current [API and data-retention documentation](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention) makes the reason concrete: retention and eligibility differ by product and feature, and third-party integrations have their own terms. "It is in my notes" is not permission to upload it everywhere.
 
 ## In the AI Era, the Signal-to-Noise Ratio Is Deteriorating
 
 Someone might say: information overload is an old problem, what does it have to do with AI?
 
-A lot, actually. AI has upgraded information overload into **"synthetic information overload."**
+A lot, in my own feeds at least. Cheap generation has added a new form of overload I call **"synthetic information overload."** This is an observation and a useful threat model, not a measured claim about the entire web.
 
-Old noise was at least written by humans, and production had a ceiling. Now, models can mass-produce content that "looks very useful" — neatly structured, argument complete, quotable lines everywhere — but with no firsthand experience, no real friction, no actual information gain. It's harder to identify than human-written noise, because it looks exactly like signal.
+Models can produce high volumes of material that looks useful — neatly structured, apparently complete, quotable everywhere — while adding no source, firsthand evidence, or information gain for my task. Humans have always produced the same kind of noise; generation lowers its production cost. Polished structure therefore cannot serve as a source-quality signal.
 
-This leads to a counterintuitive conclusion: **in the AI era, what's genuinely scarce is no longer information — it's signal.** When anyone can generate "content" with one click, the things that can't be generated — the pitfalls you personally fell into, the unwritten unspoken rules of an industry, specific frontline data, a trend nobody has noticed yet — become extremely valuable precisely because of that.
+This leads to a narrower conclusion: **abundant text increases the value of traceable signal.** Firsthand observations, documented failure cases, specific frontline data, primary sources, and well-supported counterexamples are valuable because a reader can inspect where they came from. A model can synthesize or even surface these signals, but it cannot retroactively create the missing evidence.
 
-Someone in the community wrote a line I strongly agree with: **scarcity is a precious form of wealth.** Applied to the information layer, this means: don't compete on volume where AI can generate content with one click; spend your capturing effort **hunting for scarce signal** instead. Scroll through fewer secondhand opinions, accumulate more firsthand experience; save less of what "looks useful," find more of what "exists nowhere else."
+Scarcity alone is not quality. A false rumor can be rare. What I want is **scarce, traceable signal**: material that adds evidence or changes a decision and can survive inspection. Save less of what merely looks useful; look harder for what is both distinctive and supportable.
 
 ## The Key to Noise Reduction Is Controlling the Entry Point
 
@@ -77,21 +94,92 @@ Once you understand you need to block, the question becomes: how do you actually
 
 Willpower alone won't do it. Effective noise reduction comes from **attacking the entry point, turning the arrival of information into something structured and rhythmic**, rather than being interrupted at random by push notifications.
 
-I saw a particularly plain but effective approach in that community, worth copying. The person first did one thing: **audited every one of their input sources.** Once counted, it turned out to be a fixed, small handful — one person's daily short video, two livestreams a week, articles from one community. That was it. Information anxiety is, a lot of the time, an illusion: you think you need to follow a hundred sources, but in reality only three to five actually give you signal — the rest is noise pretending to matter.
+My first useful experiment was deliberately plain: **audit every recurring input source.** I listed each feed, newsletter, channel, community, and notification, then marked the last time it changed an active decision. The point was not to discover a universal ideal number. It was to stop paying attention rent to sources I could not connect to any work.
 
-After the audit, they did a second thing: **moved all learning into a fixed, low-energy time slot.** Before that, their learning was completely fragmented — the moment the community owner posted, they'd check it right away; scrolling their phone, anything useful got saved instantly — and the result was a day spent busy, only to look back and realize the most important work never got done. Behind this is a mindset of "fear of falling behind, fear of missing out," and that mindset fills every single day with information you can never finish.
+After the audit, I moved routine scanning into a fixed, lower-energy time slot. Before that, input was fragmented: a notification arrived, I checked it; a useful-looking link appeared, I saved it. A day could feel busy while the important work remained untouched.
 
-Once they moved input to the afternoon — their lowest-energy time of day — a pattern immediately emerged: high-energy hours were reserved for recording and creation, low-energy hours were used to "go through information." Information stopped being a random interruption exploding at any moment, and became one scheduled stage in the day.
+For me, that slot is often the afternoon. That is a personal configuration, not productivity science. Someone with shift work, caregiving duties, or different energy rhythms should choose another window. The useful principle is batching interruptible scanning, then protecting whichever hours are actually needed for records and creation.
 
 These two moves — **auditing sources, batching processing** — are the foundation of noise reduction. They don't look like advanced techniques, but it's precisely this kind of plain entry-point management that determines whether your information layer is clean or clogged.
 
+## A Source Needs a Passport
+
+Every item that survives the border gets an intake card. The card is intentionally boring because boring fields are easier to inspect than a beautiful summary:
+
+```yaml
+source:
+  title: "Sanitized industry report"
+  publisher: "Named primary organization"
+  url: "https://example.org/report"
+published_at: 2026-06-18
+retrieved_at: 2026-07-11
+license: "public link; quotation permitted; no full-text redistribution"
+sensitivity: public
+task: "check whether the market claim in draft A is current"
+claim: "The report measures X in population Y during period Z."
+evidence:
+  locator: "page 14, table 3"
+  excerpt_saved: true
+expiry: 2026-10-11
+next_action: compare
+```
+
+The dates prevent an old claim from masquerading as current. The license and sensitivity fields decide where processing may happen. The locator lets another human reconstruct the summary instead of trusting my archive.
+
+### A sanitized intake run
+
+In one review, I began with 24 candidate sources: documentation, research posts, news recaps, social threads, and two paid reports. The numbers below describe this run only.
+
+1. Deduplication collapsed six URLs into three underlying sources.
+2. Provenance checks rejected four items that copied a claim without linking to the original.
+3. The rights and sensitivity gate kept both paid reports human-only; I stored notes and locators, not uploaded full text.
+4. The task-relevance gate moved seven items to a time-boxed scan rather than the evidence archive.
+5. AI produced source-bound summaries for the survivors.
+6. I checked every high-impact claim and a sample of lower-impact summaries against the original.
+7. Five sources advanced to the records layer; the rest kept a rejection reason and expiry instead of becoming immortal bookmarks.
+
+The result was not "AI found the truth." It was a smaller, auditable queue.
+
+## External Content Is Data, Not Instructions
+
+A page, email, PDF, or tool result can contain text that tells an agent to ignore its task, expose data, or take an action. That content may be malicious, or it may simply contain instructions meant for a different reader. Either way, I treat external material as untrusted evidence, never as authority over the workflow.
+
+Anthropic's official guide to [mitigating prompt injection](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks) identifies this exact indirect-injection case and recommends least privilege, input screening, and limiting access to sensitive data and actions. In this pipeline:
+
+- source text cannot change the system task or acceptance criteria;
+- the summarizer has no publishing, messaging, deletion, or secret access;
+- suspicious instructions are quoted and flagged, not followed;
+- any action outside reading and classification requires separate human approval.
+
 ## Let AI Stand at the Information Layer
 
-Finally, back to the rule that runs through this entire series: **at the information layer, use AI boldly.**
+Finally, back to the rule that runs through this entire series: **at the information layer, use AI where the input and output are inspectable.**
 
-Capturing, deduplicating, summarizing, translating, initial classification, compressing a pile of material into a one-page bullet list — all of this is information-layer work. Hand it to AI, and you get a tenfold efficiency gain with no real loss. You don't need to personally read every single piece — let the model go through it first, flag "the ones worth your hands-on processing," and spend your attention only on the signal it surfaces. This is exactly where AI belongs in this pipeline.
+Deduplicating, summarizing, translating, initial classification, and compressing material into a review queue are all reasonable candidates. They still consume tokens, storage, index maintenance, and human checking. A summary can lose a qualifier, detach a number from its denominator, miss a chart, or ignore a counterexample. Automation earns its place only when the saved review time exceeds those costs.
 
-But hold the boundary: **AI helps you process noise, it doesn't form judgment for you.** It can tell you "what these ten articles say," but it can't decide for you "what this means to you" — that's the job of the next stage (records), and that step has to go through your own hands. Use AI as aggressively as you want at the information layer, but the moment it comes to "what judgment should this piece of information settle into," turn the automation off and do it yourself.
+AI does make judgments when it ranks relevance, labels quality, or chooses what to omit. The honest boundary is responsibility: **AI may score and explain against a rubric; I define the rubric, review edge cases, verify samples, and remain accountable for what moves forward.**
+
+A summary passes only if it preserves:
+
+- source, author or publisher, publication date, and retrieval date;
+- the exact claim and its locator;
+- material qualifications, population, time range, and denominator;
+- relevant counterevidence or stated limitations;
+- uncertainty when the source or model cannot support a conclusion;
+- a link or stored locator that lets a reviewer reconstruct the result.
+
+For high-impact claims, I verify every item. For the rest, I sample summaries on a fixed cadence and increase the sample when the error rate rises. The dashboard tracks:
+
+| Metric | What it reveals |
+|---|---|
+| False-rejection rate | valuable sources incorrectly blocked |
+| High-value miss rate | important sources absent from the review queue |
+| Claim-support rate | summary claims supported by the cited source |
+| Duplicate rate | repeated material surviving deduplication |
+| Processing time and token cost | whether automation actually saves resources |
+| Promotion rate | how much intake reaches the records layer |
+
+These metrics pull in opposite directions. Blocking more can lower workload while raising the miss rate. Capturing more can improve recall while rebuilding the same noise archive. The gate is healthy only when I can see that tradeoff.
 
 Get the information layer right, and you'll feel lighter immediately: your bookmark folder stops carrying guilt, because you've finally admitted most of it is noise; your attention gets freed up, because you only spend effort on signal.
 

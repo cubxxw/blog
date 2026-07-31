@@ -12,6 +12,10 @@ tldr:
   - "Docker buildx enables cross-platform Docker image compilation from X86/AMD64 machines to ARM architectures using QEMU emulation without native ARM hardware."
   - "Base images and Dockerfile dependencies must support target architectures; architecture-specific binaries and downloads must be explicitly changed or ARM images may fail at runtime."
   - "QEMU-emulated ARM containers run simple commands but can hang on complex programs; actual ARM hardware testing is essential for reliability verification."
+cover:
+  image: /images/covers/engineering/2023/cross-platform-compilation.png
+  alt: 'One modular core passes through adapters into three architecture-specific housings before final inspection'
+  caption: 'A build is portable only after the target machine has had the last word.'
 ---
 
 ## Preface
