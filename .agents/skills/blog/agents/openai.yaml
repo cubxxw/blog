@@ -1,6 +1,4 @@
 interface:
-  display_name: "Blog"
-  short_description: "Repo-specific patterns and workflows for blog"
-  default_prompt: "Use the blog repo skill to follow existing architecture, testing, and workflow conventions."
-policy:
-  allow_implicit_invocation: true
+  display_name: "Blog Repository"
+  short_description: "Maintain and publish the cubxxw Hugo blog"
+  default_prompt: "Use $blog to make and validate this change in the cubxxw blog repository."

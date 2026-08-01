@@ -1,80 +1,53 @@
-```markdown
-# blog Development Patterns
+---
+name: blog
+description: Maintain the cubxxw bilingual Hugo blog, including brief-driven writing, content front matter and taxonomy, PaperMod templates, CSS and JavaScript, SEO, local browser verification, and GitHub delivery. Use for any content, design, implementation, validation, or publishing task in this repository.
+---
 
-> Auto-generated skill from repository analysis
+# Blog repository workflow
 
-## Overview
-This skill teaches you the core development patterns and conventions used in the `blog` JavaScript codebase. You'll learn how to structure files, write and organize code, and follow the repository's unique commit and testing practices. This guide is especially useful for contributors aiming for consistency and maintainability in a non-framework, vanilla JavaScript environment.
+## Start with repository truth
 
-## Coding Conventions
+1. Read `CLAUDE.md` before changing content or code. Treat it as the authoritative project guide.
+2. Inspect the current branch, remote state, and working tree before editing. Preserve unrelated local changes.
+3. Read the files that own the behavior before proposing a change.
 
-### File Naming
-- Use **camelCase** for file names.
-  - Example: `blogPost.js`, `userProfile.js`
+## Route the task
 
-### Import Style
-- Use **relative imports** for modules.
-  - Example:
-    ```javascript
-    import { getUser } from './userUtils.js';
-    ```
+- For a brief-driven article, read `_briefs/README.md` and `docs/blog-editorial-workflow.md`, then use `.claude/skills/write-blog-from-brief/SKILL.md`.
+- For a new or rewritten opening, also use `.claude/skills/craft-article-opening/SKILL.md`.
+- For template or design work, trace the relevant layout, partials, Hugo resources, and extended CSS before editing.
+- For taxonomy, metadata, or SEO work, inspect the project scripts and `config/tags-mapping.json` before changing content.
 
-### Export Style
-- Use **named exports**.
-  - Example:
-    ```javascript
-    // In userUtils.js
-    export function getUser(id) { ... }
-    export function setUser(user) { ... }
-    ```
+## Preserve content invariants
 
-### Commit Patterns
-- Commit messages are **freeform**, often prefixed with context like `ui`.
-- Average commit message length is around 45 characters.
-  - Example: `ui update post list layout`
+- Store ordinary posts only under `content/{lang}/{ai-agent|engineering|growth}/posts/`.
+- Store project pages only under `content/{lang}/projects/`.
+- Use `articles` as the aggregate entry point.
+- Use Shanghai timestamps with an explicit `+08:00` offset and avoid future publish dates unless requested.
+- Do not add `draft` to files in `content/`; keep unfinished work on an unmerged branch.
+- Keep descriptions as plain text and use canonical tags from `config/tags-mapping.json`.
+- Do not reintroduce the retired `categories` taxonomy.
+- Put directly referenced article images in `static/`; reserve `assets/` for Hugo Pipes.
 
-## Workflows
+## Implement with the existing architecture
 
-### Code Contribution
-**Trigger:** When adding new features or fixing bugs  
-**Command:** `/contribute`
+- Prefer repository-native Hugo layouts, partials, assets, and scripts over parallel implementations.
+- Keep bilingual routes and labels aligned.
+- Preserve responsive behavior, dark mode, accessibility, SEO metadata, and resource fingerprinting.
+- Use `apply_patch` for intentional file edits and explicit paths when staging mixed worktrees.
 
-1. Create a new branch for your feature or fix.
-2. Follow camelCase naming for new files.
-3. Use relative imports and named exports in your modules.
-4. Write or update corresponding test files (`*.test.*`).
-5. Write a clear, context-prefixed commit message (e.g., `ui improve comment section`).
-6. Push your branch and open a pull request.
+## Validate proportionally
 
-### Testing
-**Trigger:** When verifying code changes  
-**Command:** `/test`
+- Use `netlify dev` for local page verification; do not compile through `make`.
+- Run `hugo --minify` for a production build.
+- Run `npm test` for affected browser flows and `npm run typecheck` for TypeScript changes.
+- Run the relevant content checks, such as `npm run frontmatter:check`, `npm run tags:check`, or `npm run flavor:check`, when their inputs change.
+- Inspect desktop and mobile rendering for template or CSS changes and check the browser console.
+- Run `git diff --check` before committing.
 
-1. Identify or create test files matching the `*.test.*` pattern.
-2. Run the test suite using the project's preferred method (testing framework is unknown; consult project docs or package.json).
-3. Ensure all tests pass before merging or deploying changes.
+## Deliver through GitHub
 
-## Testing Patterns
-
-- Test files are named with the pattern `*.test.*` (e.g., `blogPost.test.js`).
-- The specific testing framework is not detected; check for scripts or documentation in the project root.
-- Place test files alongside the modules they test or in a dedicated `tests` directory.
-
-  Example test file:
-  ```javascript
-  // blogPost.test.js
-  import { createPost } from './blogPost.js';
-
-  test('createPost returns a post object', () => {
-    const post = createPost('Hello', 'World');
-    expect(post.title).toBe('Hello');
-    expect(post.content).toBe('World');
-  });
-  ```
-
-## Commands
-| Command      | Purpose                                    |
-|--------------|--------------------------------------------|
-| /contribute  | Guide for contributing code changes         |
-| /test        | Steps for running and writing tests         |
-```
+- Update from the remote before starting when the working tree allows it.
+- Commit only the intended scope with a concise, contextual message.
+- Prefer `gh` for GitHub operations.
+- Follow the issue-closing rules in `CLAUDE.md` when a PR is associated with an issue.

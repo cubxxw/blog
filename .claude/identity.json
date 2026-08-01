@@ -2,12 +2,16 @@
   "version": "2.0",
   "technicalLevel": "technical",
   "preferredStyle": {
-    "verbosity": "detailed",
-    "codeComments": true,
+    "verbosity": "concise",
+    "codeComments": false,
     "explanations": true
   },
   "domains": [
-    "javascript"
+    "hugo",
+    "content-strategy",
+    "javascript",
+    "css",
+    "seo"
   ],
   "suggestedBy": "ecc-tools-repo-analysis",
   "createdAt": "2026-08-01T09:16:21.384Z"

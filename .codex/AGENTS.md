@@ -1,26 +1,19 @@
-# ECC for Codex CLI
+# Codex repository configuration
 
-This supplements the root `AGENTS.md` with a repo-local ECC baseline.
+Read the repository's root `CLAUDE.md` before changing content or code. It is
+the source of truth for content paths, writing workflows, validation, and PR
+rules.
 
 ## Repo Skill
 
-- Repo-generated Codex skill: `.agents/skills/blog/SKILL.md`
+- Codex repository skill: `.agents/skills/blog/SKILL.md`
 - Claude-facing companion skill: `.claude/skills/blog/SKILL.md`
-- Keep user-specific credentials and private MCPs in `~/.codex/config.toml`, not in this repo.
-
-## MCP Baseline
-
-Treat `.codex/config.toml` as the default ECC-safe baseline for work in this repository.
-The generated baseline enables GitHub, Context7, Exa, Memory, Playwright, and Sequential Thinking.
+- Keep credentials, approval policy, sandbox policy, search preferences, and
+  MCP connections in the user's Codex configuration.
 
 ## Multi-Agent Support
 
-- Explorer: read-only evidence gathering
-- Reviewer: correctness, security, and regression review
-- Docs researcher: API and release-note verification
-
-## Workflow Files
-
-- No dedicated workflow command files were generated for this repo.
-
-Use these workflow files as reusable task scaffolds when the detected repository workflows recur.
+- Use the explorer for read-only evidence gathering.
+- Use the reviewer for correctness, security, regression, and test review.
+- Use the docs researcher for primary-source API and release-note verification.
+- Only delegate when the user or active instructions permit multi-agent work.

@@ -168,7 +168,7 @@
     {
       "moduleId": "runtime-core",
       "path": ".agents/skills/blog/SKILL.md",
-      "description": "Codex-facing copy of the generated repository skill."
+      "description": "Codex-facing repository skill curated from the project guide and executable workflows."
     },
     {
       "moduleId": "runtime-core",
@@ -183,12 +183,12 @@
     {
       "moduleId": "runtime-core",
       "path": ".codex/config.toml",
-      "description": "Repo-local Codex MCP and multi-agent baseline aligned with ECC defaults."
+      "description": "Repo-local Codex role definitions that inherit user policy, credentials, and model choices."
     },
     {
       "moduleId": "runtime-core",
       "path": ".codex/AGENTS.md",
-      "description": "Codex usage guide that points at the generated repo skill and workflow bundle."
+      "description": "Codex usage guide that points at the curated repository skill and project source of truth."
     },
     {
       "moduleId": "runtime-core",
@@ -208,7 +208,7 @@
     {
       "moduleId": "runtime-core",
       "path": ".claude/homunculus/instincts/inherited/blog-instincts.yaml",
-      "description": "Continuous-learning instincts derived from repository patterns."
+      "description": "Continuous-learning instincts curated from CLAUDE.md and executable repository workflows."
     }
   ],
   "workflows": [],
