@@ -8,6 +8,8 @@
 {{- $telepaceConfigured := ne $telepaceCampaignID "" -}}
 {{- $languagePages := where site.RegularPages "Lang" .Language.Lang -}}
 {{- $archivePages := where $languagePages "Type" "posts" -}}
+{{- $writingPages := where $languagePages "Section" "in" (slice "ai-agent" "engineering" "growth" "projects") -}}
+{{- $writingCount := len $writingPages -}}
 {{- $practicePages := where $archivePages "Section" "in" (slice "ai-agent" "engineering") -}}
 {{- $projectPages := where $languagePages "Section" "projects" -}}
 {{- $thoughtPages := where $archivePages "Section" "growth" -}}
@@ -61,9 +63,21 @@
           I build AI systems and real products, document the workflows and engineering judgment behind them, and write about growth, philosophy, and life.
           {{ end }}
         </p>
-        <nav class="studio-hero__actions" aria-label="{{ if $isZH }}页面导航{{ else }}Page navigation{{ end }}">
-          <a href="#blog-definition">{{ if $isZH }}理解这个博客{{ else }}Understand this blog{{ end }}</a>
-          <a href="{{ "articles/" | relLangURL }}">{{ if $isZH }}开始阅读{{ else }}Start reading{{ end }}</a>
+        <nav class="studio-hero__actions" aria-label="{{ if $isZH }}开始阅读{{ else }}Start reading{{ end }}">
+          <a class="studio-hero__action studio-hero__action--primary" href="#blog-definition">
+            <span class="studio-hero__action-copy">
+              <strong>{{ if $isZH }}按主题开始{{ else }}Choose a topic{{ end }}</strong>
+              <small>{{ if $isZH }}AI、工程、产品与成长{{ else }}AI, engineering, products, and life{{ end }}</small>
+            </span>
+            <span class="studio-hero__action-arrow" aria-hidden="true">↓</span>
+          </a>
+          <a class="studio-hero__action studio-hero__action--secondary" href="{{ "articles/" | relLangURL }}">
+            <span class="studio-hero__action-copy">
+              <strong>{{ if $isZH }}浏览全部文章{{ else }}Browse all articles{{ end }}</strong>
+              <small>{{ if $isZH }}{{ $writingCount }} 篇，按时间浏览{{ else }}{{ $writingCount }} articles, newest first{{ end }}</small>
+            </span>
+            <span class="studio-hero__action-arrow" aria-hidden="true">→</span>
+          </a>
         </nav>
       </div>
 

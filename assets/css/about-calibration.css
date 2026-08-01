@@ -793,19 +793,15 @@ html[lang="zh"] .studio-archive__axis h3 {
   }
 
   .studio-hero__actions {
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 12px;
+    grid-template-columns: 1fr;
+    max-width: none;
+    gap: 10px;
     margin-top: 24px;
   }
 
   .studio-hero__actions a {
-    white-space: nowrap;
-  }
-
-  .studio-hero__actions a:last-child {
-    font-size: .78rem;
+    min-height: 74px;
+    padding: 14px 16px;
   }
 
   .studio-workbench,
