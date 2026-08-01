@@ -25,6 +25,7 @@
 
 - 一篇候选文章一个文件：`YYYY-MM-DD-<slug>.md`。
 - 新 brief 使用 [`_TEMPLATE.md`](./_TEMPLATE.md)。
+- 进入队列的任务必须使用 `schema: blog-brief/v1`；legacy 文件和缺少必填区块的任务不会被执行。
 - `content/` 只存放可发布文章；未完成内容留在工作分支或 brief，不创建隐藏占位页。
 - `source_refs` 使用 `brain://` 标识，不写机器绝对路径，也不复制 private 内容。
 - 上游引用只是溯源线索。真正允许进入公开文章的内容必须同时出现在 brief 的“已批准素材包”中。
@@ -61,13 +62,31 @@ ready / blocked → cancelled
 npm run briefs:list
 npm run briefs:next
 npm run briefs:check
+npm run briefs:dispatch -- --brief _briefs/YYYY-MM-DD-slug.md
 ```
 
 - `briefs:list`：查看所有可执行和进行中的 brief。
 - `briefs:next`：按优先级和下发时间选择下一篇，但不自动修改状态。
-- `briefs:check`：校验采用 `blog-brief/v1` 的新任务卡。
+- `briefs:check`：严格校验 `blog-brief/v1` 的字段、必填区块、隐私边界、本机路径与同 slug 重复文章。
+- `briefs:dispatch`：校验并认领指定 brief，然后用 `codex exec --ephemeral` 启动一个不继承 brain 对话的干净执行上下文。
+
+预演 dispatch，不认领也不启动 executor：
+
+```bash
+npm run briefs:dispatch -- --brief _briefs/YYYY-MM-DD-slug.md --dry-run
+```
 
 定期自动化每次最多认领一篇。找不到 `ready` 时正常退出，不为了维持产量自行创造选题。
+
+## 干净 executor 契约
+
+- executor 的工作目录只能是当前 blog 仓库；不得添加 brain 为可写目录。
+- executor 只接收目标 brief 的相对路径，不继承上游对话、研究草稿或 brain 全量上下文。
+- `brain://` 保持为回溯标识，executor 不读取其目标。
+- dispatch 前 blog 工作树除目标 brief 外必须干净，避免覆盖作者或其他任务的改动。
+- dispatch 先原子认领目标 brief；同一时间存在其他 active brief 时拒绝启动。
+- executor 若在认领后、正式开工前异常退出，调度器把 `claimed` 释放回 `ready`；进入 `drafting` 后的失败保留现场，等待人工恢复。
+- executor 不 commit、不 push、不部署，最高只推进到 `ready-to-publish`。
 
 ## 消费流程
 

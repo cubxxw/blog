@@ -29,6 +29,11 @@ This document contains critical information about working with this codebase. Fo
 `.claude/skills/write-blog-from-brief/SKILL.md`。该 skill 统一编排公开研究、原生写作、
 独立 agent 审读、AI 味清理、SEO/GEO、内链、封面、评分与确定性验证。
 
+brain 自动下发时使用
+`npm run briefs:dispatch -- --brief _briefs/<file>.md`。该命令启动全新的 ephemeral
+executor，只传任务卡路径，不继承 brain 对话，也不得读取 `brain://` 指向的私有文件。
+定向任务已经由 dispatcher 认领，executor 不再运行 `briefs:next`。
+
 新写或重写文章第一段、开篇 Hook、楔子或首屏时，必须使用
 `.claude/skills/craft-article-opening/SKILL.md`。开篇必须从真实材料建立在场感和张力，
 不得用标题党、虚构经历或泛化的“AI 时代”开场。

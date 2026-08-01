@@ -1,10 +1,16 @@
 ---
+schema: blog-brief/v1
+id: 2026-07-31-second-brain-as-survival-strategy
 title: 第二大脑保存的是一个人的决策函数
-status: ready
-platform: blog
+status: published
+priority: normal
 language: zh
 section: growth
+brief_type: thinking
 dispatched_at: 2026-07-31T01:50:37+08:00
+source_refs:
+  - brain://topics/second-brain-as-survival-strategy.md
+  - brain://figures/lu-yuqi/index.md
 ---
 
 # 写作任务：第二大脑保存的是一个人的决策函数
@@ -202,3 +208,12 @@ brain、DayPage 的 file-system vault、`hot.md`、cct 会话捕获、provider �
 ---
 
 平台侧必须依据本仓库 `CLAUDE.md` 与内容规范原生写作。不要把这张 brief 或任何 brain 原文直接当成成品发布；不要把同一稿复制到其他平台。
+
+## 执行回执
+
+- article: `content/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy.md`
+- public_url: `https://cubxxw.com/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy/`
+- score: legacy workflow，未按当前 100 分 rubric 留存
+- checks: 文章已存在并发布；本次迁移只修正重复队列状态
+- published_at: 2026-07-31T11:30:50+08:00
+- retro_notes: 旧 brief 曾保持 `ready`，导致已发布文章重复进入队列；已迁移为 `published`。
