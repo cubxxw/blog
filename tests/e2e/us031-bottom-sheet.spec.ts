@@ -85,7 +85,9 @@ test('EN 375px: bottom sheet closes on overlay click', async ({ page }) => {
   await page.waitForTimeout(300);
 
   const overlay = page.locator('#article-sheet-overlay');
-  await overlay.click({ force: true });
+  // Click the visible area above the 70vh sheet. The overlay's geometric
+  // centre is covered by the sheet and is not a real outside-click target.
+  await overlay.click({ position: { x: 20, y: 20 } });
   await page.waitForTimeout(300);
 
   const sheet = page.locator('#article-bottom-sheet');
@@ -121,7 +123,7 @@ test('FAB hidden on desktop (1680px)', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(EN_URL);
   const fab = page.locator('#article-fab');
-  // CSS sets display:none on >= 1024px
+  // CSS sets display:none once the persistent tools sidebar fits (>= 1200px)
   await expect(fab).toBeHidden();
 });
 

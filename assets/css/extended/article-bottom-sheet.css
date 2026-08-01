@@ -1,6 +1,6 @@
-/* ─── US-031: Mobile Bottom Sheet + FAB ──────────────────────── */
+/* ─── US-031: Compact-layout Bottom Sheet + FAB ──────────────── */
 
-/* Only visible on mobile (<1024px) */
+/* Used whenever the persistent editorial-tools sidebar has stepped away. */
 
 /* ── Floating Action Button ──────────────────────────────────
    The single mobile floating control (the back-to-top orb is gone on
@@ -52,6 +52,13 @@
   pointer-events: none;
 }
 
+/* The delegated ripple effect adds `.has-ripple { position: relative }` on
+   pointerdown. Preserve the FAB's viewport anchoring so it cannot jump to the
+   bottom of the article before the click event completes. */
+.article-fab.has-ripple {
+  position: fixed;
+}
+
 .article-fab--hidden {
   opacity: 0;
   pointer-events: none;
@@ -60,17 +67,18 @@
 
 /* ── FAB visibility ──────────────────────────────────────────
    The bottom sheet (Contents / AI / Share) is the ONLY path to
-   these tools below 1280px — the desktop editorial-tools sidebar
-   renders only on the ≥1280px sticky right column. The FAB was
+   these tools below 1200px — the desktop editorial-tools sidebar
+   renders only once the reading column and tools both fit comfortably.
+   The FAB was
    previously hard-disabled, which left phone/tablet readers with
    no way to reach the TOC, the AI companion or the share actions
    (the AI panel's behaviour is wired up in article-bottom-sheet.js
-   but was unreachable). Re-enable it on the phone layout only — it
+   but was unreachable). Re-enable it on compact reading layouts — it
    is not a persistent nag: article-bottom-sheet.js auto-fades it
    near the very top and bottom of the page, so it only sits over
-   the live read while there's somewhere to jump to. The ≥1024px
+   the live read while there's somewhere to jump to. The ≥1200px
    rule below still force-hides it on desktop. */
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .article-fab {
     display: flex;
   }
@@ -93,7 +101,7 @@
   pointer-events: auto;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .abs-overlay {
     display: block;
   }
@@ -129,7 +137,19 @@
   transition: none;
 }
 
-@media (min-width: 1024px) {
+/* On tablets and compact desktop windows the sheet becomes a contained
+   reading tray instead of stretching edge to edge. It stays bottom-aligned
+   so the existing drag-to-dismiss interaction remains spatially correct. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .article-bottom-sheet {
+    width: calc(100% - 32px);
+    max-width: 720px;
+    height: min(70vh, 720px);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1200px) {
   .article-bottom-sheet,
   .abs-overlay,
   .article-fab {

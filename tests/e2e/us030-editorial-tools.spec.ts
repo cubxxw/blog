@@ -89,7 +89,7 @@ test('ZH: AI textarea placeholder is in Chinese', async ({ page }) => {
   expect(placeholder).toMatch(/向 AI 提问|AI/);
 });
 
-// <1280px: article-tools hidden
+// <1200px: article-tools hidden
 test('tools hidden at 1024px viewport', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto(EN_URL);

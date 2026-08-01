@@ -1,4 +1,4 @@
-/* US-031: Mobile bottom sheet for article tools (<1024px) */
+/* Compact-window bottom sheet for article tools (<1200px) */
 (function () {
   'use strict';
 
@@ -44,6 +44,27 @@
     // Keyboard: Escape closes the sheet; Tab is trapped inside it while open
     // (the sheet is aria-modal) so focus can't wander to the page behind.
     sheet.addEventListener('keydown', onSheetKeydown);
+
+    // If the window grows into the persistent-sidebar layout while the sheet
+    // is open, clear the modal state and its body scroll lock immediately.
+    // CSS alone can hide the sheet, but it cannot restore document scrolling.
+    var persistentTools = window.matchMedia('(min-width: 1200px)');
+    var onLayoutChange = function (event) {
+      if (!event.matches || !sheet.classList.contains('abs--open')) return;
+      sheet.classList.remove('abs--open', 'abs--dragging');
+      sheet.style.transform = '';
+      overlay.style.opacity = '';
+      overlay.classList.remove('abs-overlay--visible');
+      fab.classList.remove('article-fab--hidden');
+      fab.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      lastFocused = null;
+    };
+    if (persistentTools.addEventListener) {
+      persistentTools.addEventListener('change', onLayoutChange);
+    } else if (persistentTools.addListener) {
+      persistentTools.addListener(onLayoutChange);
+    }
 
     // FAB auto-fade via scroll position
     window.addEventListener('scroll', onScroll, { passive: true });
