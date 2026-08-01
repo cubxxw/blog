@@ -1,0 +1,116 @@
+# Curated repository instincts for https://github.com/cubxxw/blog
+# Derived from CLAUDE.md and the repository's executable workflows.
+
+---
+id: blog-read-project-guide
+trigger: "when starting a task in this repository"
+confidence: 1.0
+domain: workflow
+source: curated-project-guide
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Read the project guide
+
+## Action
+
+Read `CLAUDE.md` before changing content or code and preserve unrelated working-tree changes.
+
+## Evidence
+
+- `CLAUDE.md` defines the repository's content, implementation, validation, and PR rules.
+
+---
+id: blog-content-location
+trigger: "when creating or moving published content"
+confidence: 1.0
+domain: content-architecture
+source: curated-project-guide
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Keep content in canonical sections
+
+## Action
+
+Place ordinary posts under `content/{lang}/{ai-agent|engineering|growth}/posts/` and project pages under `content/{lang}/projects/`. Use `articles` for the aggregate route.
+
+## Evidence
+
+- `CLAUDE.md` documents the bilingual v3 content architecture and retired paths.
+
+---
+id: blog-publish-metadata
+trigger: "when editing article front matter"
+confidence: 1.0
+domain: publishing
+source: curated-project-guide
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Preserve publishing metadata
+
+## Action
+
+Use an explicit Shanghai `+08:00` timestamp, avoid future dates unless requested, omit `draft` and retired `categories`, keep descriptions plain, and use canonical tags from `config/tags-mapping.json`.
+
+## Evidence
+
+- `CLAUDE.md` defines the production publishing and taxonomy invariants.
+
+---
+id: blog-brief-workflow
+trigger: "when writing an article from a brief or changing its opening"
+confidence: 1.0
+domain: editorial
+source: curated-project-guide
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Follow the editorial workflow
+
+## Action
+
+Read `_briefs/README.md` and `docs/blog-editorial-workflow.md`; use `.claude/skills/write-blog-from-brief/SKILL.md`, and also use `.claude/skills/craft-article-opening/SKILL.md` for a new or rewritten opening.
+
+## Evidence
+
+- `CLAUDE.md` makes these workflows mandatory for brief-driven writing and openings.
+
+---
+id: blog-validate-changes
+trigger: "when finishing a content or code change"
+confidence: 1.0
+domain: testing
+source: curated-project-guide
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Validate through repository commands
+
+## Action
+
+Use `netlify dev` for local page checks, `hugo --minify` for a production build, relevant npm content checks for changed inputs, and `npm test` for affected browser flows. Do not compile through `make`.
+
+## Evidence
+
+- `CLAUDE.md` and `package.json` define the local server, production build, content checks, typecheck, and Playwright test commands.
+
+---
+id: blog-route-assets
+trigger: "when adding images or SVG files"
+confidence: 1.0
+domain: assets
+source: curated-project-guide
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Route assets by delivery path
+
+## Action
+
+Put directly referenced article assets in `static/`. Put assets that require Hugo Pipes fingerprinting, minification, or SRI in `assets/`.
+
+## Evidence
+
+- `CLAUDE.md` documents the static and Hugo Pipes asset routing rules.

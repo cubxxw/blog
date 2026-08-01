@@ -1,0 +1,18 @@
+{
+  "version": "2.0",
+  "technicalLevel": "technical",
+  "preferredStyle": {
+    "verbosity": "concise",
+    "codeComments": false,
+    "explanations": true
+  },
+  "domains": [
+    "hugo",
+    "content-strategy",
+    "javascript",
+    "css",
+    "seo"
+  ],
+  "suggestedBy": "ecc-tools-repo-analysis",
+  "createdAt": "2026-08-01T09:16:21.384Z"
+}
