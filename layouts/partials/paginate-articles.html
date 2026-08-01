@@ -1,0 +1,24 @@
+{{- /* Keep the aggregate archive light on first paint. The same partial is
+     called from head.html before any code reads .Paginator, because Hugo locks
+     the collection and page size on first access. */ -}}
+{{- $pages := where site.RegularPages "Lang" .Lang -}}
+{{- $pages = where $pages "Section" "in" (slice "ai-agent" "engineering" "growth" "projects") -}}
+{{- $aiPages := where $pages "Section" "in" (slice "ai-agent" "engineering" "projects") -}}
+{{- $aiPages = $aiPages.ByDate.Reverse -}}
+{{- $lifePages := where $pages "Section" "growth" -}}
+{{- $lifePages = $lifePages.ByDate.Reverse -}}
+{{- $orderedPages := slice -}}
+{{- $maxCount := len $aiPages -}}
+{{- if gt (len $lifePages) $maxCount -}}
+  {{- $maxCount = len $lifePages -}}
+{{- end -}}
+{{- range seq $maxCount -}}
+  {{- $index := sub . 1 -}}
+  {{- if lt $index (len $aiPages) -}}
+    {{- $orderedPages = $orderedPages | append (index $aiPages $index) -}}
+  {{- end -}}
+  {{- if lt $index (len $lifePages) -}}
+    {{- $orderedPages = $orderedPages | append (index $lifePages $index) -}}
+  {{- end -}}
+{{- end -}}
+{{- return .Paginate $orderedPages 12 -}}

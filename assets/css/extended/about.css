@@ -3471,39 +3471,85 @@ html[lang="zh"] .studio-hero h1 {
 }
 
 .studio-hero__actions {
-  display: flex;
-  align-items: center;
-  gap: 12px 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 600px;
+  gap: 12px;
   margin-top: 34px;
 }
 
 .studio-hero__actions a {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 10px 18px;
+  gap: 16px;
+  min-height: 82px;
+  padding: 16px 18px;
   border: 1px solid var(--color-ink);
-  border-radius: 999px;
+  border-radius: 18px;
   color: var(--color-paper);
   background: var(--color-ink);
   font-family: var(--font-meta);
-  font-size: 0.86rem;
-  font-weight: 700;
+  text-align: left;
+  transition:
+    transform 180ms var(--ease-out),
+    color 180ms var(--ease-out),
+    background 180ms var(--ease-out),
+    border-color 180ms var(--ease-out);
+}
+
+.studio-hero__action-copy {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+}
+
+.studio-hero__action-copy strong {
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.studio-hero__action-copy small {
+  overflow: hidden;
+  color: currentColor;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.35;
+  opacity: 0.68;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  transition: transform 180ms var(--ease-out), color 180ms var(--ease-out), background 180ms var(--ease-out);
+}
+
+.studio-hero__action-arrow {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  opacity: 0.72;
+  transition: transform 180ms var(--ease-out), opacity 180ms ease;
 }
 
 .studio-hero__actions a + a {
-  padding-inline: 0;
-  border-color: transparent;
-  border-radius: 0;
+  border-color: var(--color-rule);
   color: var(--color-ink);
   background: transparent;
 }
 
 .studio-hero__actions a:hover {
   transform: translateY(-2px);
+}
+
+.studio-hero__actions a:active {
+  transform: scale(0.985);
+}
+
+.studio-hero__actions a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--studio-accent) 32%, transparent);
+  outline-offset: 3px;
 }
 
 .studio-hero__actions a:first-child:hover {
@@ -3514,6 +3560,16 @@ html[lang="zh"] .studio-hero h1 {
 
 .studio-hero__actions a + a:hover {
   color: var(--studio-accent);
+  border-color: color-mix(in srgb, var(--studio-accent) 52%, var(--color-rule));
+}
+
+.studio-hero__actions a:hover .studio-hero__action-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.studio-hero__actions a:first-child:hover .studio-hero__action-arrow {
+  transform: translateY(2px);
 }
 
 .studio-hero__visual {
@@ -4159,8 +4215,14 @@ body.dark .workspace-panel {
   }
 
   .studio-hero__actions {
-    align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    max-width: none;
+    gap: 10px;
+  }
+
+  .studio-hero__actions a {
+    min-height: 76px;
+    padding: 14px 16px;
   }
 
   .studio-hero__visual {

@@ -266,6 +266,8 @@ document.addEventListener('click', function(event) {
 
 // Auto-hide navbar on scroll down, reveal on scroll up (Medium-style)
 // 显示导航栏需要「累积向上滚动」超过 REVEAL_THRESHOLD，避免轻微上滑就弹出。
+{{ $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") }}
+{{ if not $isArticlesLibrary }}
 (function () {
     var headerWrapper = document.querySelector('.header-wrapper');
     if (!headerWrapper) return;
@@ -374,4 +376,5 @@ document.addEventListener('click', function(event) {
     // mid-page via an anchor or a restored scroll position).
     update();
 })();
+{{ end }}
 </script>

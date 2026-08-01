@@ -35,10 +35,16 @@
          covers sit lower in a grid and stay lazy. */ -}}
     {{- $isHero := (not $.IsHome) }}
     {{- $loadAttr := cond $isHero "eager" "lazy" }}
+    {{- with $.loading }}{{ $loadAttr = . }}{{ end }}
+    {{- $fetchPriority := or $isHero $.fetchPriority }}
+    {{- $revealOnLoad := $.revealOnLoad | default false }}
     {{- if $cover -}}{{/* i.e it is present in page bundle */}}
         {{- if $addLink }}<a href="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" target="_blank"
             rel="noopener noreferrer">{{ end -}}
         {{- $sizes := (slice "360" "480" "720" "1080" "1500") }}
+        {{- with $.responsiveWidths }}{{ $sizes = . }}{{ end }}
+        {{- $sizesAttr := "(min-width: 768px) 720px, 100vw" }}
+        {{- with $.sizesAttr }}{{ $sizesAttr = . }}{{ end }}
         {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
         {{- if hugo.IsExtended -}}
             {{- $processableFormats = $processableFormats | append "webp" -}}
@@ -55,25 +61,25 @@
              duplicate width descriptor in the srcset. */ -}}
         {{- range $size := $sizes -}}
             {{- if (gt $cover.Width (int $size)) -}}
-                {{- $origSet = $origSet | append (printf "%s %sw" ($cover.Resize (printf "%sx" $size)).Permalink $size) -}}
-                {{- if $canWebp -}}{{- $webpSet = $webpSet | append (printf "%s %sw" ($cover.Resize (printf "%sx webp" $size)).Permalink $size) -}}{{- end -}}
+                {{- $origSet = $origSet | append (printf "%s %sw" ($cover.Resize (printf "%sx" $size)).RelPermalink $size) -}}
+                {{- if $canWebp -}}{{- $webpSet = $webpSet | append (printf "%s %sw" ($cover.Resize (printf "%sx webp" $size)).RelPermalink $size) -}}{{- end -}}
             {{- end -}}
         {{- end -}}
-        {{- $origSet = $origSet | append (printf "%s %dw" $cover.Permalink $cover.Width) -}}
-        {{- if $canWebp -}}{{- $webpSet = $webpSet | append (printf "%s %dw" ($cover.Resize (printf "%dx webp" $cover.Width)).Permalink $cover.Width) -}}{{- end -}}
+        {{- $origSet = $origSet | append (printf "%s %dw" $cover.RelPermalink $cover.Width) -}}
+        {{- if $canWebp -}}{{- $webpSet = $webpSet | append (printf "%s %dw" ($cover.Resize (printf "%dx webp" $cover.Width)).RelPermalink $cover.Width) -}}{{- end -}}
         <picture>
-            {{- with $webpSet }}<source type="image/webp" srcset="{{ delimit . ", " }}" sizes="(min-width: 768px) 720px, 100vw">{{ end }}
-            <img srcset="{{ delimit $origSet ", " }}" sizes="(min-width: 768px) 720px, 100vw"
-                src="{{ $cover.Permalink }}" alt="{{ $alt }}" width="{{ $cover.Width }}" height="{{ $cover.Height }}"
-                loading="{{ $loadAttr }}" decoding="async"{{ if $isHero }} fetchpriority="high"{{ end }}>
+            {{- with $webpSet }}<source type="image/webp" srcset="{{ delimit . ", " }}" sizes="{{ $sizesAttr }}">{{ end }}
+            <img srcset="{{ delimit $origSet ", " }}" sizes="{{ $sizesAttr }}"
+                src="{{ $cover.RelPermalink }}" alt="{{ $alt }}" width="{{ $cover.Width }}" height="{{ $cover.Height }}"
+                loading="{{ $loadAttr }}" decoding="async"{{ if $fetchPriority }} fetchpriority="high"{{ end }}{{ if $revealOnLoad }} class="library-cover-image" onload="this.classList.add('is-loaded')" onerror="this.classList.add('is-loaded')"{{ end }}>
         </picture>
         {{- else }}{{/* Unprocessable image or responsive images disabled */}}
-        <img loading="{{ $loadAttr }}" decoding="async"{{ if $isHero }} fetchpriority="high"{{ end }} src="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" alt="{{ $alt }}">
+        <img loading="{{ $loadAttr }}" decoding="async"{{ if $fetchPriority }} fetchpriority="high"{{ end }} src="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" alt="{{ $alt }}"{{ if $revealOnLoad }} class="library-cover-image" onload="this.classList.add('is-loaded')" onerror="this.classList.add('is-loaded')"{{ end }}>
         {{- end }}
     {{- else }}{{/* For absolute urls and external links, no img processing here */}}
         {{- if $addLink }}<a href="{{ (.Params.cover.image) | absURL }}" target="_blank"
             rel="noopener noreferrer">{{ end -}}
-            <img loading="{{ $loadAttr }}" decoding="async"{{ if $isHero }} fetchpriority="high"{{ end }} src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}">
+            <img loading="{{ $loadAttr }}" decoding="async"{{ if $fetchPriority }} fetchpriority="high"{{ end }} src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}"{{ if $revealOnLoad }} class="library-cover-image" onload="this.classList.add('is-loaded')" onerror="this.classList.add('is-loaded')"{{ end }}>
     {{- end }}
     {{- if $addLink }}</a>{{ end -}}
     {{/*  Display Caption  */}}

@@ -1,0 +1,60 @@
+{{- $page := .page -}}
+{{- $isFeatured := .isFeatured | default false -}}
+{{- $section := $page.Section -}}
+{{- $sectionDisplay := "AI Projects" -}}
+{{- if eq $section "ai-agent" -}}
+  {{- $sectionDisplay = "AI Agent" -}}
+{{- else if eq $section "engineering" -}}
+  {{- $sectionDisplay = "Engineering" -}}
+{{- else if eq $section "growth" -}}
+  {{- $sectionDisplay = "Growth & Life" -}}
+{{- end -}}
+{{- $title := $page.Title | replaceRE "[—–]" "-" -}}
+{{- $summary := $page.Summary | plainify | htmlUnescape | replaceRE "[—–]" "-" | truncate 148 -}}
+{{- $hasCover := and $page.Params.cover $page.Params.cover.image -}}
+<article class="library-card{{ if $hasCover }} library-card--with-cover{{ end }}{{ if $isFeatured }} library-card--featured{{ end }}"
+  data-library-card
+  data-section="{{ $section }}"
+  data-tags="{{ delimit $page.Params.tags "," }}"
+  data-date="{{ $page.Date.Format "2006-01-02" }}">
+  <div class="library-card__body">
+    <div class="library-card__meta">
+      <span class="library-card__section">{{ $sectionDisplay }}</span>
+      <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006-01-02" }}</time>
+    </div>
+    <h3 class="library-card__title">{{ $title }}</h3>
+    {{- if and (ne ($page.Param "hideSummary") true) $summary }}
+    <p class="library-card__summary">{{ $summary }}</p>
+    {{- end }}
+    {{- with $page.Params.tags }}
+    <div class="library-card__tags" aria-label="{{ if eq $page.Lang "zh" }}文章标签{{ else }}Article tags{{ end }}">
+      {{- range first 2 . }}
+      <span>{{ . | replaceRE "[—–]" "-" }}</span>
+      {{- end }}
+    </div>
+    {{- end }}
+    <span class="library-card__action" aria-hidden="true">
+      {{- if eq $page.Lang "zh" }}阅读文章{{ else }}Read article{{ end }}
+    </span>
+  </div>
+  {{- if $hasCover }}
+  <div class="library-card__media">
+    {{- $priority := $isFeatured -}}
+    {{- partial "cover.html" (dict
+      "cxt" $page
+      "IsHome" true
+      "isHidden" false
+      "loading" (cond $priority "eager" "lazy")
+      "fetchPriority" $priority
+      "revealOnLoad" (not $priority)
+      "responsiveWidths" (slice "360" "720" "1080")
+      "sizesAttr" (cond $isFeatured
+        "(min-width: 1400px) 620px, (min-width: 768px) 48vw, calc(100vw - 32px)"
+        "(min-width: 1400px) 280px, (min-width: 768px) 22vw, calc(100vw - 32px)")
+    ) }}
+  </div>
+  {{- end }}
+  <a class="library-card__link"
+    aria-label="{{ if eq $page.Lang "zh" }}阅读《{{ $title }}》{{ else }}Read {{ $title }}{{ end }}"
+    href="{{ $page.RelPermalink }}"></a>
+</article>

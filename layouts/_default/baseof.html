@@ -21,11 +21,18 @@
          that partial is cached by Layout/Kind, and the exclusions below
          depend on .Section/.IsHome which are not in its cache key. The
          homepage ships its own hp-footer; travel and /projects/ are
-         full-screen immersive layouts that a nav footer would break. */}}
-    {{- if and (not .IsHome) (ne .Layout "travel") (not (and (eq .Kind "section") (eq .Section "projects"))) (not (.Param "hideFooter")) }}
+         full-screen immersive layouts that a nav footer would break; the
+         aggregate archive keeps only the compact copyright footer. */}}
+    {{- if and
+        (not .IsHome)
+        (ne .Layout "travel")
+        (not (and (eq .Kind "section") (eq .Section "projects")))
+        (not (and (eq .Kind "section") (eq .Section "articles")))
+        (not (.Param "hideFooter"))
+    }}
     {{ partial "site-footer.html" . }}
     {{- end }}
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    {{ partialCached "footer.html" . .Layout .Kind .Section .Lang (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
 </body>
 
 </html>

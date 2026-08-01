@@ -3,10 +3,19 @@
      sections paginate a date-sorted set, not the default ordering. */}}
 {{- if and (eq .Kind "section") (in (slice "ai-agent" "engineering" "growth") .Section) }}
   {{- $_ := partial "paginate-section.html" . }}
+{{- else if and (eq .Kind "section") (eq .Section "articles") }}
+  {{- $_ := partial "paginate-articles.html" . }}
 {{- end }}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{- /* The skip link is the first visible body node, so its hidden state must
+     not depend on an external stylesheet finishing. Keeping this tiny rule
+     inline prevents a desktop/mobile flash while preserving keyboard access. */}}
+<style>
+.skip-link{position:fixed;top:8px;left:16px;z-index:10000;padding:8px 16px;border:2px solid var(--primary,#111);border-radius:4px;background:var(--theme,#fff);color:var(--primary,#111);font:600 14px/1.4 system-ui,sans-serif;text-decoration:none;opacity:0;pointer-events:none;transform:translateY(calc(-100% - 16px))}
+.skip-link:focus,.skip-link:focus-visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+</style>
 {{- if partial "seo/should-noindex.html" . }}
 <meta name="robots" content="noindex, nofollow">
 {{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
@@ -54,6 +63,8 @@
 
 {{- /* Styles */}}
 
+{{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
+
 {{- /* includes */}}
 {{- $includes := slice }}
 {{- $includes = $includes | append (" " | resources.FromString "assets/css/includes-blank.css")}}
@@ -69,14 +80,26 @@
 {{- $reset := (resources.Get "css/core/reset.css") }}
 {{- $media := (resources.Get "css/core/zmedia.css") }}
 {{- $license_css := (resources.Get "css/core/license.css") }}
-{{- $common := (resources.Match "css/common/*.css") | resources.Concat "assets/css/common.css" }}
+{{- $commonFiles := resources.Match "css/common/*.css" }}
+{{- if $isArticlesLibrary }}
+  {{- /* The archive owns its feed styles. Keep only the PaperMod shell
+       primitives that its header, main element, and footer actually use. */ -}}
+  {{- $commonFiles = slice
+    (resources.Get "css/common/header.css")
+    (resources.Get "css/common/main.css")
+    (resources.Get "css/common/footer.css")
+  -}}
+{{- end }}
+{{- $commonTarget := cond $isArticlesLibrary "assets/css/articles-common.css" "assets/css/common.css" -}}
+{{- $common := $commonFiles | resources.Concat $commonTarget }}
 
 {{- /* include `an-old-hope` if hljs is on */}}
 {{- $isHLJSdisabled := (site.Params.assets.disableHLJS | default false) }}
-{{- $hljs := (cond ($isHLJSdisabled) (".chroma { background-color: unset !important;}" | resources.FromString "assets/css/hljs-blank.css") (resources.Get "css/hljs/an-old-hope.min.css")) }}
+{{- $hljs := (cond (or $isHLJSdisabled $isArticlesLibrary) (".chroma { background-color: unset !important;}" | resources.FromString "assets/css/hljs-blank.css") (resources.Get "css/hljs/an-old-hope.min.css")) }}
 
 {{- /* order is important */}}
-{{- $core := (slice $theme_vars $reset $common $hljs $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
+{{- $coreTarget := cond $isArticlesLibrary "assets/css/articles-core.css" "assets/css/core.css" -}}
+{{- $core := (slice $theme_vars $reset $common $hljs $includes_all $media) | resources.Concat $coreTarget | resources.Minify }}
 {{- /* Page-scoped extended CSS: files whose (uniquely namespaced) selectors
        render on exactly one page or section are pulled OUT of the site-wide
        bundle and loaded only where they apply — the same split already used
@@ -106,7 +129,8 @@
 {{- $travelCSS   := resources.Get "css/extended/zzz-travel-world.css" }}
 {{- $projectsCSS := resources.Get "css/extended/products.css" }}
 {{- $growthCSS   := resources.Get "css/extended/section-growth.css" }}
-{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $growthCSS) }}
+{{- $articlesCSS := resources.Get "css/extended/section-articles.css" }}
+{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $growthCSS $articlesCSS) }}
 {{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
 {{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
 {{- $isNarrativeAbout := eq .Layout "about" -}}
@@ -121,6 +145,17 @@
     (resources.Get "css/extended/zz-theme-toggle-fx.css")
   -}}
   {{- $extended = $aboutShellFiles | resources.Concat "assets/css/about-shell.css" | resources.Minify -}}
+{{- else if $isArticlesLibrary }}
+  {{- /* The aggregate archive is intentionally a lean shell. Article-only,
+       homepage, product, travel, and section CSS accounted for most of the
+       previous 424 KB stylesheet while matching nothing on this page. */ -}}
+  {{- $articlesShellFiles := slice
+    (resources.Get "css/extended/tokens.css")
+    (resources.Get "css/extended/nav-elegant.css")
+    (resources.Get "css/extended/zz-theme-toggle-fx.css")
+    $articlesCSS
+  -}}
+  {{- $extended = $articlesShellFiles | resources.Concat "assets/css/articles-shell.css" | resources.Minify -}}
 {{- end }}
 
 {{- /* About's interaction reset lives in the global zzz-* layers. Load the
@@ -147,8 +182,11 @@
 
 {{- /* bundle all required css */}}
 {{- /* Add extended css after theme style */ -}}
-{{- $stylesheetTarget := cond $isNarrativeAbout "assets/css/about-stylesheet.css" "assets/css/stylesheet.css" -}}
-{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat $stylesheetTarget  }}
+{{- $stylesheetTarget := cond $isNarrativeAbout
+      "assets/css/about-stylesheet.css"
+      (cond $isArticlesLibrary "assets/css/articles-stylesheet.css" "assets/css/stylesheet.css")
+-}}
+{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat $stylesheetTarget | resources.Minify }}
 
 {{- if $isNarrativeAbout }}
 <style>{{ $stylesheet.Content | safeCSS }}</style>
@@ -302,14 +340,17 @@
             gtag('config', gaId, { anonymize_ip: true, send_page_view: true });
         };
     }
-    // Load after first user interaction (scroll, click, touch) or after 4s idle
-    var events = ['scroll', 'click', 'keydown', 'touchstart', 'mousemove'];
+    // Load after first user interaction, with a page-specific idle fallback.
+    var events = ['scroll', 'click', 'keydown', 'touchstart'];
     function onInteraction() {
         events.forEach(function(e) { document.removeEventListener(e, onInteraction, { passive: true, once: true }); });
         loadGA();
     }
     events.forEach(function(e) { document.addEventListener(e, onInteraction, { passive: true, once: true }); });
-    setTimeout(loadGA, 4000);
+    // Archive visitors trigger analytics as soon as they browse or filter.
+    // Keep a long fallback for a completely idle tab so analytics never
+    // competes with the cover-led first paint.
+    setTimeout(loadGA, {{ cond $isArticlesLibrary 60000 4000 }});
 })();
 </script>
 {{- end }}

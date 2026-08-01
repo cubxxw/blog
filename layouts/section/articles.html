@@ -2,14 +2,12 @@
 
 {{- $lang := .Lang }}
 {{- $isZh := eq $lang "zh" }}
-
-{{/* Aggregate ALL articles across all sections */}}
 {{- $allPages := where site.RegularPages "Lang" $lang }}
 {{- $allPages = where $allPages "Section" "in" (slice "ai-agent" "engineering" "growth" "projects") }}
 {{- $allPages = $allPages.ByDate.Reverse }}
 {{- $totalCount := len $allPages }}
+{{- $paginator := partial "paginate-articles.html" . }}
 
-{{/* Build tag frequency map */}}
 {{- $tagCounts := dict }}
 {{- range $allPages }}
   {{- range .Params.tags }}
@@ -17,179 +15,183 @@
     {{- $tagCounts = merge $tagCounts (dict . (add $count 1)) }}
   {{- end }}
 {{- end }}
-
-{{/* Sort tags by frequency - collect top 15 */}}
 {{- $tagPairs := slice }}
 {{- range $tag, $count := $tagCounts }}
   {{- $tagPairs = $tagPairs | append (dict "tag" $tag "count" $count) }}
 {{- end }}
-{{- $sortedTags := sort $tagPairs "count" "desc" }}
-{{- $topTags := first 15 $sortedTags }}
+{{- $topTags := first 15 (sort $tagPairs "count" "desc") }}
 
-{{/* Section counts */}}
-{{- $aiAgentCount := 0 }}
-{{- $engineeringCount := 0 }}
-{{- $growthCount := 0 }}
-{{- $projectsCount := 0 }}
-{{- range $allPages }}
-  {{- if eq .Section "ai-agent" }}
-    {{- $aiAgentCount = add $aiAgentCount 1 }}
-  {{- else if eq .Section "engineering" }}
-    {{- $engineeringCount = add $engineeringCount 1 }}
-  {{- else if eq .Section "growth" }}
-    {{- $growthCount = add $growthCount 1 }}
-  {{- else if eq .Section "projects" }}
-    {{- $projectsCount = add $projectsCount 1 }}
-  {{- end }}
+{{- $aiAgentCount := len (where $allPages "Section" "ai-agent") }}
+{{- $engineeringCount := len (where $allPages "Section" "engineering") }}
+{{- $growthCount := len (where $allPages "Section" "growth") }}
+{{- $projectsCount := len (where $allPages "Section" "projects") }}
+{{- $aiLaneCount := add (add $aiAgentCount $engineeringCount) $projectsCount }}
+{{- $pageAI := where $paginator.Pages "Section" "in" (slice "ai-agent" "engineering" "projects") }}
+{{- $pageLife := where $paginator.Pages "Section" "growth" }}
+
+{{- $filterAllLabel := cond $isZh "全部" "All" }}
+{{- $filterCategoryLabel := cond $isZh "主题" "Topics" }}
+{{- $filterTagsLabel := cond $isZh "标签" "Tags" }}
+{{- $filterSortLabel := cond $isZh "时间" "Date" }}
+{{- $filterNewest := cond $isZh "最新优先" "Newest first" }}
+{{- $filterOldest := cond $isZh "最早优先" "Oldest first" }}
+{{- $filterClear := cond $isZh "清除筛选" "Clear filters" }}
+{{- $filterMore := cond $isZh "筛选" "Filters" }}
+{{- $noResults := cond $isZh "没有匹配的文章，可以清除筛选后继续浏览。" "No articles match. Clear the filters to keep browsing." }}
+{{- $articlesLabel := cond $isZh "篇文章" "articles" }}
+{{- $loadedLabel := cond $isZh "已显示" "Showing" }}
+{{- $loadNext := cond $isZh "加载下一组" "Load the next set" }}
+{{- $laneCountLabel := cond $isZh "篇" "articles" }}
+{{- $aiLaneTitle := cond $isZh "AI 技能与工程" "AI Skills & Engineering" }}
+{{- $aiLaneDescription := cond $isZh "工具、Agent 与工程实践" "Tools, agents, and engineering practice" }}
+{{- $lifeLaneTitle := cond $isZh "成长与生活" "Growth & Life" }}
+{{- $lifeLaneDescription := cond $isZh "成长、观察与真实生活" "Growth, reflection, and lived experience" }}
+{{- $pageURLs := slice }}
+{{- range $paginator.Pagers }}
+  {{- $pageURLs = $pageURLs | append .URL }}
 {{- end }}
 
-{{/* i18n labels */}}
-{{- $filterAllLabel := cond $isZh "全部" "All" }}
-{{- $filterCategoryLabel := cond $isZh "分类" "Category" }}
-{{- $filterTagsLabel := cond $isZh "标签" "Tags" }}
-{{- $filterSortLabel := cond $isZh "排序" "Sort" }}
-{{- $filterNewest := cond $isZh "最新优先" "Newest" }}
-{{- $filterOldest := cond $isZh "最早优先" "Oldest" }}
-{{- $filterClear := cond $isZh "清除筛选" "Clear" }}
-{{- $noResults := cond $isZh "没有匹配的文章" "No articles match your filters" }}
-{{- $articlesLabel := cond $isZh "篇文章" "articles" }}
-
-<div class="posts-page">
-
-  {{/* Hero Header */}}
-  <header class="posts-hero">
-    <div class="posts-hero__content">
-      <h1 class="posts-hero__title">{{ .Title }}</h1>
-      {{- if .Description }}
-      <p class="posts-hero__desc">{{ .Description }}</p>
+<div class="library-page">
+  <header class="library-hero">
+    <div class="library-hero__copy">
+      <h1>{{ .Title | replaceRE "[—–]" "-" }}</h1>
+      {{- with .Description }}
+      <p>{{ . | replaceRE "[—–]" "-" }}</p>
       {{- end }}
-      <div class="posts-hero__stats">
-        <span class="posts-hero__count" id="posts-visible-count">{{ $totalCount }}</span>
-        <span class="posts-hero__label">{{ $articlesLabel }}</span>
-      </div>
+    </div>
+    <div class="library-hero__total" aria-label="{{ $totalCount }} {{ $articlesLabel }}"
+      data-articles-label="{{ $articlesLabel }}">
+      <span id="posts-result-count">{{ $totalCount }}</span>
+      <span>{{ $articlesLabel }}</span>
     </div>
   </header>
 
-  {{/* Filter Bar — sentinel lets JS detect the sticky "stuck" state */}}
-  <div class="posts-filter-sentinel" aria-hidden="true"></div>
-  <div class="posts-filter" id="posts-filter">
-
-    {{/* Category Chips — the always-visible primary row */}}
-    <div class="posts-filter__section posts-filter__section--primary">
-      <span class="posts-filter__label">{{ $filterCategoryLabel }}</span>
-      <div class="posts-filter__chips" id="filter-categories">
-        <button class="posts-filter__chip posts-filter__chip--active" data-category="all" aria-pressed="true">
-          {{ $filterAllLabel }} <span class="posts-filter__chip-count">{{ $totalCount }}</span>
+  <section class="library-filter" id="library-filter" aria-label="{{ if $isZh }}文章筛选{{ else }}Article filters{{ end }}">
+    <div class="library-filter__primary">
+      <span class="library-filter__label">{{ $filterCategoryLabel }}</span>
+      <div class="library-filter__topics" id="filter-categories">
+        <button class="library-filter__chip is-active" data-category="all" aria-pressed="true">
+          {{ $filterAllLabel }} <span>{{ $totalCount }}</span>
         </button>
-        <button class="posts-filter__chip" data-category="ai-agent" aria-pressed="false">
-          AI Agent <span class="posts-filter__chip-count">{{ $aiAgentCount }}</span>
+        <button class="library-filter__chip" data-category="ai-agent" aria-pressed="false">
+          AI Agent <span>{{ $aiAgentCount }}</span>
         </button>
-        <button class="posts-filter__chip" data-category="engineering" aria-pressed="false">
-          Engineering <span class="posts-filter__chip-count">{{ $engineeringCount }}</span>
+        <button class="library-filter__chip" data-category="engineering" aria-pressed="false">
+          Engineering <span>{{ $engineeringCount }}</span>
         </button>
-        <button class="posts-filter__chip" data-category="growth" aria-pressed="false">
-          Growth & Life <span class="posts-filter__chip-count">{{ $growthCount }}</span>
+        <button class="library-filter__chip" data-category="growth" aria-pressed="false">
+          Growth & Life <span>{{ $growthCount }}</span>
         </button>
-        {{- /* Only surface a section chip when it actually holds articles —
-               an empty bucket (e.g. AI Projects at 0) would filter to a blank
-               grid, a dead end (apple-design §16: don't offer paths to nowhere). */}}
         {{- if gt $projectsCount 0 }}
-        <button class="posts-filter__chip" data-category="projects" aria-pressed="false">
-          AI Projects <span class="posts-filter__chip-count">{{ $projectsCount }}</span>
+        <button class="library-filter__chip" data-category="projects" aria-pressed="false">
+          AI Projects <span>{{ $projectsCount }}</span>
         </button>
         {{- end }}
       </div>
-      <button type="button" class="posts-filter__toggle" id="filter-toggle"
-              aria-expanded="false" aria-controls="filter-collapsible" hidden>
-        <span class="posts-filter__toggle-badge" id="filter-active-count" hidden></span>
-        <span class="posts-filter__toggle-text">{{ if $isZh }}筛选{{ else }}Filters{{ end }}</span>
-        <svg class="posts-filter__toggle-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      <button type="button" class="library-filter__toggle" id="filter-toggle"
+        aria-expanded="false" aria-controls="filter-collapsible">
+        <span id="filter-active-count" hidden></span>
+        {{ $filterMore }}
+        <span class="library-filter__chevron" aria-hidden="true">⌄</span>
       </button>
     </div>
 
-    {{/* Tags + Sort — collapses to keep the stuck bar compact */}}
-    <div class="posts-filter__collapsible" id="filter-collapsible">
-      <div class="posts-filter__collapsible-inner">
-        <div class="posts-filter__section">
-          <span class="posts-filter__label">{{ $filterTagsLabel }}</span>
-          <div class="posts-filter__chips posts-filter__chips--tags" id="filter-tags">
+    <div class="library-filter__collapsible" id="filter-collapsible" aria-hidden="true" inert>
+      <div class="library-filter__collapsible-inner">
+        <div class="library-filter__row">
+          <span class="library-filter__label">{{ $filterTagsLabel }}</span>
+          <div class="library-filter__tags" id="filter-tags">
             {{- range $topTags }}
-            <button class="posts-filter__chip posts-filter__chip--tag" data-tag="{{ .tag }}" aria-pressed="false">
-              {{ .tag }}
+            <button class="library-filter__chip library-filter__chip--tag" data-tag="{{ .tag }}" aria-pressed="false">
+              {{ .tag | replaceRE "[—–]" "-" }}
             </button>
             {{- end }}
           </div>
         </div>
-
-        <div class="posts-filter__section posts-filter__section--controls">
-          <div class="posts-filter__sort">
-            <label for="filter-sort" class="posts-filter__label">{{ $filterSortLabel }}</label>
-            <select id="filter-sort" class="posts-filter__select">
+        <div class="library-filter__controls">
+          <label class="library-filter__sort">
+            <span class="library-filter__label">{{ $filterSortLabel }}</span>
+            <select id="filter-sort">
               <option value="newest">{{ $filterNewest }}</option>
               <option value="oldest">{{ $filterOldest }}</option>
             </select>
-          </div>
-          <button class="posts-filter__clear" id="filter-clear" style="display:none;" aria-label="{{ $filterClear }}">
-            {{ $filterClear }}
-          </button>
+          </label>
+          <button class="library-filter__clear" id="filter-clear" hidden>{{ $filterClear }}</button>
         </div>
       </div>
     </div>
-  </div>
+    <p class="library-filter__status" id="library-filter-status" aria-live="polite"></p>
+  </section>
 
-  {{/* Posts Grid */}}
-  <div class="posts-grid" id="posts-grid" data-no-results="{{ $noResults }}">
-    {{- range $allPages }}
-    {{- $section := .Section }}
-    {{- $sectionDisplay := "AI Projects" }}
-    {{- $sectionClass := "posts-badge--projects" }}
-    {{- if eq $section "ai-agent" }}
-      {{- $sectionDisplay = "AI Agent" }}
-      {{- $sectionClass = "posts-badge--ai" }}
-    {{- else if eq $section "engineering" }}
-      {{- $sectionDisplay = "Engineering" }}
-      {{- $sectionClass = "posts-badge--ai" }}
-    {{- else if eq $section "growth" }}
-      {{- $sectionDisplay = "Growth & Life" }}
-      {{- $sectionClass = "posts-badge--growth" }}
-    {{- else if eq $section "projects" }}
-      {{- $sectionDisplay = "AI Projects" }}
-      {{- $sectionClass = "posts-badge--projects" }}
-    {{- end }}
-    <article class="post-entry"
-      data-section="{{ $section }}"
-      data-tags="{{ delimit .Params.tags "," }}"
-      data-date="{{ .Date.Format "2006-01-02" }}">
-      <header class="entry-header">
-        <div class="post-entry__top">
-          <span class="posts-badge {{ $sectionClass }}">{{ $sectionDisplay }}</span>
-          <time class="post-entry__date">{{ .Date.Format "2006-01-02" }}</time>
+  <div class="library-feed" id="posts-grid"
+    data-total="{{ $totalCount }}"
+    data-page-number="{{ $paginator.PageNumber }}"
+    data-page-urls="{{ delimit $pageURLs "|" }}"
+    data-no-results="{{ $noResults }}"
+    data-loading-all="{{ if $isZh }}正在载入完整索引…{{ else }}Loading the full index…{{ end }}">
+    <section class="library-lane library-lane--ai" data-library-lane="ai"
+      data-lane-total="{{ $aiLaneCount }}" aria-labelledby="library-lane-ai-title">
+      <header class="library-lane__header">
+        <div>
+          <h2 id="library-lane-ai-title">{{ $aiLaneTitle }}</h2>
+          <p>{{ $aiLaneDescription }}</p>
         </div>
-        <h2>
-          {{ .Title }}
-        </h2>
+        <span class="library-lane__count">
+          <strong data-lane-result>{{ $aiLaneCount }}</strong> {{ $laneCountLabel }}
+        </span>
       </header>
-      {{- if (ne (.Param "hideSummary") true) }}
-      <div class="entry-content">
-        <p>{{ .Summary | plainify | htmlUnescape | truncate 120 }}</p>
-      </div>
-      {{- end }}
-      <footer class="entry-footer">
-        {{- with .Params.tags }}
-        <div class="post-entry__tags">
-          {{- range first 3 . }}
-          <span class="post-tag">{{ . }}</span>
-          {{- end }}
-        </div>
+      <div class="library-lane__feed" data-lane-feed="ai">
+        {{- range $index, $page := $pageAI }}
+          {{- partial "articles/card.html" (dict
+            "page" $page
+            "index" $index
+            "isFeatured" (and (eq $paginator.PageNumber 1) (eq $index 0))
+          ) }}
         {{- end }}
-      </footer>
-      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-    </article>
-    {{- end }}
+      </div>
+    </section>
+
+    <section class="library-lane library-lane--life" data-library-lane="life"
+      data-lane-total="{{ $growthCount }}" aria-labelledby="library-lane-life-title">
+      <header class="library-lane__header">
+        <div>
+          <h2 id="library-lane-life-title">{{ $lifeLaneTitle }}</h2>
+          <p>{{ $lifeLaneDescription }}</p>
+        </div>
+        <span class="library-lane__count">
+          <strong data-lane-result>{{ $growthCount }}</strong> {{ $laneCountLabel }}
+        </span>
+      </header>
+      <div class="library-lane__feed" data-lane-feed="life">
+        {{- range $index, $page := $pageLife }}
+          {{- partial "articles/card.html" (dict
+            "page" $page
+            "index" $index
+            "isFeatured" (and (eq $paginator.PageNumber 1) (eq $index 0))
+          ) }}
+        {{- end }}
+      </div>
+    </section>
   </div>
 
+  <div class="library-loading" id="library-loading" hidden aria-hidden="true">
+    <div></div><div></div>
+  </div>
+
+  <nav class="library-pagination" id="library-pagination"
+    aria-label="{{ if $isZh }}文章分页{{ else }}Article pagination{{ end }}">
+    <span id="library-load-progress">
+      {{ $loadedLabel }} <strong>{{ len $paginator.Pages }}</strong> / {{ $totalCount }}
+    </span>
+    {{- with $paginator.Next }}
+    <a href="{{ .URL }}" data-posts-next>{{ $loadNext }}</a>
+    {{- end }}
+    <span class="library-load-sentinel" id="library-load-sentinel" aria-hidden="true"></span>
+  </nav>
 </div>
 
-<script src="{{ "js/articles-filter.js" | relURL }}" defer></script>
+{{- $articlesJS := resources.Get "js/articles-filter.js" | resources.Minify | fingerprint }}
+<script defer crossorigin="anonymous" src="{{ $articlesJS.RelPermalink }}"
+  integrity="{{ $articlesJS.Data.Integrity }}"></script>
 
 {{- end }}

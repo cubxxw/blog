@@ -8,7 +8,8 @@
 </footer>
 {{- end }}
 
-{{- if (not site.Params.disableScrollToTop) }}
+{{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
+{{- if and (not site.Params.disableScrollToTop) (not $isArticlesLibrary) }}
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg class="top-link-ring" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
         <circle class="top-link-ring-track" cx="22" cy="22" r="20" />
@@ -29,6 +30,7 @@
 {{- partial "extend_footer.html" . }}
 
 <script>
+    {{- if not $isArticlesLibrary }}
     let menu = document.getElementById('menu')
     if (menu) {
         menu.scrollLeft = localStorage.getItem("menu-scroll-position");
@@ -36,6 +38,7 @@
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
     }
+    {{- end }}
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
@@ -63,7 +66,7 @@
 
 </script>
 
-{{- if (not site.Params.disableScrollToTop) }}
+{{- if and (not site.Params.disableScrollToTop) (not $isArticlesLibrary) }}
 <script>
     var mybutton = document.getElementById("top-link");
     var ringProgress = mybutton ? mybutton.querySelector('.top-link-ring-progress') : null;

@@ -1,7 +1,9 @@
 {{- /* Remove old blog-ai.js, use new inline version */ -}}
 {{- /* <script src="{{ "/js/blog-ai.js" | relURL }}" defer></script> */ -}}
 {{- $isLeanAbout := or (eq .Layout "about") (eq .Layout "about-quest") -}}
+{{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
 {{- if not $isLeanAbout }}
+{{- if not $isArticlesLibrary }}
 <script src="{{ "/js/micro-interactions.js" | relURL }}" defer></script>
 <script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>
 {{- /* newsletter.js removed: it only served [data-newsletter-form] inside
@@ -35,6 +37,9 @@
 <script src="{{ "/js/footnote-preview.js" | relURL }}" defer></script>
 <script src="{{ "/js/link-preview.js" | relURL }}" defer></script>
 {{- end }}
+{{- end }}
 {{ partial "search-palette.html" . }}
+{{- if not $isArticlesLibrary }}
 {{ partial "wechat-contact.html" . }}
+{{- end }}
 {{- end }}
