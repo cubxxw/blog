@@ -1,13 +1,20 @@
 ---
+schema: blog-brief/v1
+id: 2026-07-26-cross-border-30-day-experiment
 title: 我为什么没有转行做跨境，而是设计了一场 30 天实验
-target: blog
+status: blocked
+priority: normal
 language: zh
 section: growth
-status: ready
-created_at: 2026-07-26T00:00:00+08:00
+brief_type: thinking
+dispatched_at: 2026-07-26T00:00:00+08:00
+source_refs:
+  - brain://topics/cross-border-30-day-experiment.md
 ---
 
 # 写作任务卡：用 30 天实验进入跨境
+
+> **blocked**：仍需作者确认实验是否启动、预算披露边界与 30 天最小行动。确认前不得创建文章文件。
 
 ## 目标
 

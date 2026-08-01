@@ -1,13 +1,20 @@
 ---
+schema: blog-brief/v1
+id: 2026-07-25-ai-fashion-shein-demand-validation
 title: AI 能设计一万件衣服，为什么还是做不出下一个 SHEIN？
-target: blog
+status: blocked
+priority: normal
 language: zh
 section: ai-agent
-status: ready
-created_at: 2026-07-25T00:00:00+08:00
+brief_type: research
+dispatched_at: 2026-07-25T00:00:00+08:00
+source_refs:
+  - brain://ventures/cross-border-ecommerce/vault/04-案例库/跨境品牌/SHEIN.md
 ---
 
 # 写作任务卡：AI、服装 C2M 与需求验证
+
+> **blocked**：旧任务卡缺少 `blog-brief/v1` 的已批准素材包与作者第一人称增量确认。补齐后再改回 `ready`，不能让平台侧自行补造。
 
 ## 目标
 

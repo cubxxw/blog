@@ -50,6 +50,14 @@ If a better existing article should be updated, report that decision instead of 
 
 Change the selected brief to `claimed` before drafting. Preserve all upstream content.
 
+When invoked by `briefs:dispatch`, the prompt names one specific brief and the dispatcher has already changed it to `claimed`. In that mode:
+
+- process only the named brief;
+- do not run `briefs:next`;
+- do not read or choose another queued brief;
+- do not access the brain repository or resolve `brain://` references;
+- treat the clean process boundary as part of the privacy contract.
+
 ## 2. Build the editorial contract
 
 Extract into working notes:

@@ -6,7 +6,8 @@
 
 ```text
 brain 下发 brief
-  → 队列扫描与认领
+  → 严格校验
+  → 干净 executor 定向认领
   → 站内查重
   → 材料与缺口梳理
   → 外部研究 + 搜索意图研究
@@ -22,6 +23,8 @@ brain 下发 brief
 
 每次只处理一个 brief。高产不是目标；brief 没有达到写作条件时，正确结果是 `blocked`。
 
+上游可以通过 `npm run briefs:dispatch -- --brief <path>` 自动启动执行，但自动化只传递任务卡路径。新 executor 不继承 brain 会话，也不得读取 `brain://` 对应的私有文件。
+
 ## 1. 扫描与认领
 
 运行：
@@ -29,6 +32,8 @@ brain 下发 brief
 ```bash
 npm run briefs:next
 ```
+
+若任务由 brain 定向 dispatch，brief 已经是 `claimed`，直接处理指定文件，不再运行 `briefs:next`，也不得切换到队列里的其他任务。
 
 选择顺序：
 
@@ -46,6 +51,8 @@ npm run briefs:next
 - 允许公开的素材包；
 - 隐私边界；
 - 关键经历是否真实发生的确认。
+
+`briefs:check` 会先拦截结构性问题、legacy actionable brief、本机绝对路径和同 slug 已存在文章；语义真实性仍由 executor 审核，不能交给格式脚本代替。
 
 ## 2. 先整理研究问题，不直接写正文
 
