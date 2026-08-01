@@ -1,0 +1,278 @@
+# Instincts generated from https://github.com/cubxxw/blog
+# Generated: 2026-08-01T09:16:21.384Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: blog-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Blog Commit Length
+
+## Action
+
+Keep commit messages concise (~45 characters)
+
+## Evidence
+
+- Average commit message length: 45 chars
+- Based on 1 commits
+
+---
+id: blog-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Blog Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: blog-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Blog Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: blog-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Blog Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: blog-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/cubxxw/blog
+---
+
+# Blog Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: blog-instinct-file-naming-camelcase
+trigger: "When creating a new JavaScript file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct File Naming Camelcase
+
+## Action
+
+Name the file using camelCase format
+
+## Evidence
+
+- Pattern in namingConventions.files: camelCase
+
+---
+id: blog-instinct-function-naming-camelcase
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Function Naming Camelcase
+
+## Action
+
+Name the function using camelCase format
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: blog-instinct-class-naming-pascalcase
+trigger: "When defining a new class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Class Naming Pascalcase
+
+## Action
+
+Name the class using PascalCase format
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: blog-instinct-constant-naming-screaming-snake-case
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Constant Naming Screaming Snake Case
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE format
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: blog-instinct-import-style-relative
+trigger: "When importing modules"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Import Style Relative
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: blog-instinct-export-style-named
+trigger: "When exporting modules or functions"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Export Style Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: blog-instinct-git-commit-prefix-ui
+trigger: "When committing UI-related changes"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Git Commit Prefix Ui
+
+## Action
+
+Prefix the commit message with 'ui:'
+
+## Evidence
+
+- Seen in commit: 'ui: improve article discovery and about entry'
+- Pattern in commit prefixes: ui
+
+---
+id: blog-instinct-git-commit-length
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Git Commit Length
+
+## Action
+
+Keep the commit message concise, around 45 characters on average
+
+## Evidence
+
+- Pattern in averageLength: 45
+
+---
+id: blog-instinct-test-location-separate
+trigger: "When adding new tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/blog
+---
+
+# Blog Instinct Test Location Separate
+
+## Action
+
+Place test files in a separate location from source files
+
+## Evidence
+
+- Pattern in testLocation: separate
+
