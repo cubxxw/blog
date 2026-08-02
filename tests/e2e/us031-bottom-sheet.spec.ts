@@ -127,6 +127,29 @@ test('FAB hidden on desktop (1680px)', async ({ page }) => {
   await expect(fab).toBeHidden();
 });
 
+test('open sheet clears modal state when resized to desktop', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto(EN_URL);
+  await page.evaluate(() => window.scrollTo(0, 300));
+  await page.waitForTimeout(300);
+
+  const fab = page.locator('#article-fab');
+  const sheet = page.locator('#article-bottom-sheet');
+  const overlay = page.locator('#article-sheet-overlay');
+
+  await fab.click();
+  await expect(sheet).toHaveClass(/abs--open/);
+  await expect(fab).toHaveAttribute('aria-expanded', 'true');
+  await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe('hidden');
+
+  await page.setViewportSize({ width: 1200, height: 768 });
+
+  await expect(sheet).not.toHaveClass(/abs--open/);
+  await expect(overlay).not.toHaveClass(/abs-overlay--visible/);
+  await expect(fab).toHaveAttribute('aria-expanded', 'false');
+  await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe('');
+});
+
 // ── Mobile compact marginalia visible ───────────────────────────
 
 test('EN 375px: mobile compact marginalia visible', async ({ page }) => {
