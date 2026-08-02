@@ -1,0 +1,14 @@
+{{- /*
+  Return a paginator only for routes whose body template actually paginates.
+  Reading .Paginator on any other page makes Hugo generate synthetic /page/N/
+  URLs even when the body has no pagination.
+*/ -}}
+{{- $paginator := false -}}
+{{- if and (eq .Kind "section") (in (slice "ai-agent" "engineering" "growth") .Section) -}}
+  {{- $paginator = partial "paginate-section.html" . -}}
+{{- else if and (eq .Kind "section") (eq .Section "articles") -}}
+  {{- $paginator = partial "paginate-articles.html" . -}}
+{{- else if and (eq .Kind "term") (eq .Data.Plural "tags") -}}
+  {{- $paginator = .Paginate (union .RegularPages .Sections) -}}
+{{- end -}}
+{{- return $paginator -}}

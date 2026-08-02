@@ -6,17 +6,9 @@ Disallow: /
 {{- end }}
 Disallow: /admin/
 Disallow: /private/
-{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 
-# Crawl budget. Paginated list pages carry no unique content and accounted for
-# 543 of the site's 1,258 built URLs — GSC showed 445 of them sitting in
-# "Discovered – currently not indexed", i.e. Google spending its budget queueing
-# list pages while real articles waited. Blocking them costs nothing in
-# discovery: /archives/ is a complete, unpaginated index of every post, and
-# sitemap.xml carries all of them.
-Disallow: /page/
-Disallow: /*/page/
-{{- end }}
+# Paginated lists are crawlable so bots can read their self-canonical and
+# noindex,follow directives. They remain excluded from sitemap.xml.
 
 # NOTE: there is deliberately no `User-agent: Googlebot` or `User-agent: Bingbot`
 # group below. A crawler obeys exactly ONE group — the most specific match — so a

@@ -63,8 +63,9 @@
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{- if not .Lastmod.IsZero }}
-      <atom:updated>{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</atom:updated>
+      {{- $semanticLastmod := partial "seo/semantic-lastmod.html" . }}
+      {{- if not $semanticLastmod.IsZero }}
+      <atom:updated>{{ $semanticLastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</atom:updated>
       {{- end }}
       {{- with site.Params.email }}
       <author>{{ . }}{{ with site.Params.author }} ({{ . }}){{ end }}</author>

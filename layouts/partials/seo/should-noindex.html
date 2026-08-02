@@ -5,15 +5,14 @@
        Rules:
          - 404 pages
          - any page with `robotsNoIndex: true` front matter
-         - THIN tag term pages: a tag grouping fewer than 3 posts. ~70% of
-           tags on this site have a single post; that long tail wastes crawl
-           budget and reads as thin/duplicate content without ranking for
-           anything. noindex,follow lets Google keep crawling the links while
-           dropping the page from the index.
+         - tag terms not admitted by data/seo/indexable_tags.yml
 
-       Stays INDEXABLE: strong tag hubs (>=3 posts), the /tags/ list page
-       itself (Kind "taxonomy"), and every `columns` page. Threshold lives
-       here so it can be tuned in one place. */ -}}
-{{- $thinTagMin := 3 -}}
-{{- $thinTag := and (eq .Kind "term") (eq .Data.Plural "tags") (lt (len .Pages) $thinTagMin) -}}
-{{- return (or (eq .Kind "404") .Params.robotsNoIndex $thinTag) -}}
+       Article count alone is not evidence that a tag page answers a search
+       intent. The allowlist keeps the sitemap focused on editorial topic
+       hubs while all other tag pages remain available for site navigation. */ -}}
+{{- $unapprovedTag := false -}}
+{{- if and (eq .Kind "term") (eq .Data.Plural "tags") -}}
+  {{- $tagSlug := .Data.Term | urlize -}}
+  {{- $unapprovedTag = not (isset site.Data.seo.indexable_tags.tags $tagSlug) -}}
+{{- end -}}
+{{- return (or (eq .Kind "404") .Params.robotsNoIndex $unapprovedTag) -}}

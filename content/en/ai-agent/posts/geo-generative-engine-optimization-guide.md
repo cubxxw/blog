@@ -312,7 +312,7 @@ has repeatedly attracted relevant readers:
 - [the Hugo build](/engineering/posts/my-hugo/) and [advanced Hugo
   notes](/engineering/posts/hugo-advanced-tutorial/);
 - [MarkItDown](/projects/markitdown/), [mem0](/projects/mem0/),
-  [LangGraph](/projects/langgraph/), [GPT Researcher](/projects/gpt-researcher/),
+  [LangGraph](/projects/langgraph/), [GPT Researcher](/ai-agent/posts/gpt-researcher/),
   and [NotebookLM](/projects/notebooklm/);
 - [automation directives](/engineering/posts/directives-and-the-use-of-automation-tools/)
   and [TDD](/projects/tdd/).

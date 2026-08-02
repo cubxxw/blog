@@ -11,7 +11,7 @@ tags:
   - Blog
   - OpenIM
 description: >
-    <You can switch to the specified language>
+  Centralize Kubernetes port settings in config files while preserving argument overrides, environment variables, deployment flexibility, and compatibility.
 tldr:
   - "Configuration files simplify Kubernetes port management by centralizing port definitions instead of passing multiple ports directly as arguments."
   - "A three-tier precedence system allows direct arguments to override environment variables, which override configuration file values, ensuring maximum deployment flexibility."
