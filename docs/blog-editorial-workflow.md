@@ -260,6 +260,8 @@ npm run tags:check
 git diff --check
 ```
 
+显式 `<article...>` 命令只检查指定文章，并在 E 级错误时失败；检测器只分析中文内容。若要覆盖相对 `HEAD` 的 staged、unstaged 和 untracked 中文文章，使用 `npm run flavor:check`（`--changed --check`）。不要用会扫描全部中文语料且不进入 check mode 的 `npm run flavor:scan` 替代提交门。
+
 直接检查文章路径、front matter、标题层级、行内引用、文末参考资料、内链和封面路径。普通文章默认不截图、不启动浏览器、不跑本地全量 `npm test` 或 Hugo 生产构建；全站构建、E2E 和视觉回归由 CI/CD 承担。
 
 只有文章引入 raw HTML、shortcode、新路由、特殊媒体或其他渲染风险时，才补充本地 Hugo/页面验证。模板、CSS、JavaScript、配置等共享实现变更只跑受影响的定向检查；截图仅在需要视觉基线或前后对比时使用。文档检查全部通过、语义评分达到 90，brief 才能进入 `ready-to-publish`；合并前等待必要 CI 检查。

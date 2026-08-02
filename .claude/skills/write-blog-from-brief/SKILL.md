@@ -194,6 +194,8 @@ npm run tags:check
 git diff --check
 ```
 
+The explicit article-path form checks only the named files and `--check` fails on E-level errors. The detector analyzes Chinese content; passing an English counterpart is harmless but does not lint English prose. Use `npm run flavor:check` instead when the intended scope is every staged, unstaged, and untracked Chinese article changed from `HEAD`. Do not use `npm run flavor:scan` for this gate because it scans the full Chinese corpus without check mode.
+
 Inspect the changed article files directly and confirm:
 
 - the path, front matter, Shanghai timestamp, description, and canonical tags are correct;

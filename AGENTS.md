@@ -196,6 +196,8 @@ npm run tags:check
 git diff --check
 ```
 
+`node scripts/check-ai-flavor.mjs <article...> --check` 只检查显式传入的文章并在 E 级错误时失败；检测器只分析中文内容。需要覆盖相对 `HEAD` 的 staged、unstaged 和 untracked 中文文章时使用 `npm run flavor:check`（即 `--changed --check`）。`npm run flavor:scan` 会扫描全部中文文章且不进入 check mode，不作为普通文章提交门。
+
 ### 检查标签
 
 ```bash

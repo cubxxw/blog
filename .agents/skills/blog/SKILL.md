@@ -44,7 +44,8 @@ Choose the lowest-cost validation layer that covers the changed surface.
 For a standard article-only change using existing Markdown, front matter, routes, and cover conventions:
 
 - inspect the changed document directly;
-- run `npm run frontmatter:check`, `npm run tags:check`, `npm run flavor:check`, and `git diff --check`;
+- run `npm run frontmatter:check`, `npm run tags:check`, and `git diff --check`;
+- run `npm run flavor:check` for the changed Chinese Markdown set; it expands to `--changed --check`, includes staged, unstaged, and untracked files under `content/zh`, and fails on E-level errors. Do not substitute `npm run flavor:scan`, which scans the full Chinese corpus without check mode;
 - verify the path, Shanghai timestamp, description, canonical tags, headings, inline citations, final reference section, internal links, and referenced asset paths;
 - check both documents when the article is bilingual;
 - do not launch a browser, take screenshots, run `npm test`, or run a full local production build by default.
