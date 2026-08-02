@@ -88,6 +88,7 @@
 下面只保留最近发布的 8 篇中文文章，由 GitHub Actions 从博客 RSS 自动更新。这个列表会变化，仓库也会继续生长。
 
 <!-- BLOG-POST-LIST:START -->
+- [常识不是本质：AI 时代如何从需求、约束与稀缺性重构行业](https://cubxxw.com/zh/ai-agent/posts/common-sense-ai-industry-reconstruction/)
 - [2026年7月的一些思考笔记：工程、内容与现金流](https://cubxxw.com/zh/growth/posts/2026-07-thought-notes/)
 - [你选择的计分板，最后会选择你：激励怎样改写一个组织](https://cubxxw.com/zh/growth/posts/2026-07-31-incentives-colonize-founders/)
 - [自由的反面不是约束，是默认值替你活完一天](https://cubxxw.com/zh/growth/posts/2026-07-31-freedom-and-defaults/)
@@ -95,7 +96,6 @@
 - [当生成变得无限，真实经历开始升值](https://cubxxw.com/zh/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/)
 - [风险偏好不是喜欢危险：真正让人敢下注的是什么](https://cubxxw.com/zh/growth/posts/2026-07-31-risk-is-not-danger/)
 - [观察者的代价：看得越明白，为什么反而越难进入生活](https://cubxxw.com/zh/growth/posts/2026-07-31-the-observer-cannot-enter-life/)
-- [创造者缺的不是掌声，是一个准确的见证者](https://cubxxw.com/zh/growth/posts/2026-07-31-creators-need-accurate-witnesses/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 一套公开运行的内容系统
