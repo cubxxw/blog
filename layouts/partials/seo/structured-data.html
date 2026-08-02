@@ -18,10 +18,7 @@
 
 {{- /* Article Schema */ -}}
 {{- if $isPost -}}
-{{- $dateModified := .Lastmod -}}
-{{- with .Params.lastmod -}}
-  {{- $dateModified = time.AsTime . -}}
-{{- end -}}
+{{- $dateModified := partial "seo/semantic-lastmod.html" . -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

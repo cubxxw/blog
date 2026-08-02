@@ -64,6 +64,9 @@ jobs:
       - name: Auto-fix empty blockquote markers
         run: npm run blockquotes:fix
 
+      - name: Validate redirect graph
+        run: npm run redirects:check
+
       - name: Verify content formatting is committed
         if: github.event_name != 'push'
         run: |
@@ -85,3 +88,6 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
         run: hugo --gc --minify --baseURL "http://localhost/"
+
+      - name: Validate generated SEO signals
+        run: npm run seo:output:check

@@ -1,0 +1,27 @@
+{{- /*
+  Search-facing modification time. GitInfo is useful elsewhere, but a bulk
+  metadata commit must not tell crawlers that every article was substantively
+  rewritten. Prefer an explicit front-matter lastmod; otherwise use the
+  publication date. For list pages, use the newest semantic child timestamp
+  because their visible contents change when a child is published or updated.
+*/ -}}
+{{- $modified := .Date -}}
+{{- with .Params.lastmod -}}
+  {{- $modified = time.AsTime . -}}
+{{- end -}}
+{{- if not .IsPage -}}
+  {{- $children := .RegularPages -}}
+  {{- if or .IsHome (and (eq .Kind "section") (eq .Section "articles")) (eq .Kind "taxonomy") -}}
+    {{- $children = where site.RegularPages "Section" "in" site.Params.mainSections -}}
+  {{- end -}}
+  {{- range $children -}}
+    {{- $candidate := .Date -}}
+    {{- with .Params.lastmod -}}
+      {{- $candidate = time.AsTime . -}}
+    {{- end -}}
+    {{- if $candidate.After $modified -}}
+      {{- $modified = $candidate -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $modified -}}

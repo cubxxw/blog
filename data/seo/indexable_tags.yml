@@ -1,0 +1,67 @@
+# Only these topic pages are eligible for indexing. The list is intentionally
+# editorial: article count alone does not make a useful search landing page.
+tags:
+  ai:
+    description:
+      en: Research and practical notes on AI systems, models, products, evaluation, and the engineering choices behind reliable applications.
+      zh: 关于 AI 系统、模型、产品、评测与工程实践的专题文章，聚焦如何把模型能力转化为可靠、可验证、可维护的应用。
+  agent:
+    description:
+      en: Architecture, workflows, memory, tools, evaluation, and production lessons for building AI agents that can complete real work reliably.
+      zh: 围绕 AI Agent 的架构、工作流、记忆、工具调用、评测与生产实践，讨论如何让智能体可靠地完成真实任务。
+  llm:
+    description:
+      en: Engineering guides and analysis of large language models, from prompting and retrieval to deployment, cost, safety, and product design.
+      zh: 大语言模型的工程指南与实践分析，覆盖提示、检索、部署、成本、安全以及面向真实用户的产品设计。
+  context-engineering:
+    description:
+      en: Practical context engineering for agents and LLM applications, including memory, retrieval, compression, orchestration, and state design.
+      zh: 面向 Agent 与 LLM 应用的上下文工程实践，覆盖记忆、检索、压缩、编排与状态设计等关键环节。
+  kubernetes:
+    description:
+      en: Kubernetes architecture, components, deployment, operations, troubleshooting, and production lessons from cloud-native engineering.
+      zh: Kubernetes 架构、核心组件、部署运维与故障排查专题，沉淀来自云原生生产实践的工程经验。
+  openim:
+    description:
+      en: OpenIM architecture and engineering notes covering deployment, DevOps, release workflows, observability, community, and open-source growth.
+      zh: OpenIM 架构与工程实践，覆盖部署、DevOps、发布流程、可观测性、开源社区和项目成长经验。
+  go:
+    description:
+      en: Go engineering guides covering tooling, concurrency, debugging, cross-platform builds, releases, and maintainable backend systems.
+      zh: Go 工程实践专题，覆盖工具链、并发、调试、跨平台构建、自动发布以及可维护的后端系统设计。
+  open-source:
+    description:
+      en: Field notes on open-source contribution, governance, community collaboration, project maintenance, and sustainable product strategy.
+      zh: 开源贡献、治理、社区协作、项目维护与可持续产品策略的实践记录，关注代码之外的长期建设。
+  automation:
+    description:
+      en: Automation systems for software delivery and knowledge work, including CI/CD, agents, workflows, testing, and operational guardrails.
+      zh: 面向软件交付与知识工作的自动化系统，覆盖 CI/CD、Agent 工作流、测试以及保障长期可靠运行的护栏。
+  devops:
+    description:
+      en: DevOps and delivery practices for repeatable builds, CI/CD, observability, deployment safety, and reliable production operations.
+      zh: DevOps 与持续交付实践，聚焦可重复构建、CI/CD、可观测性、部署安全以及可靠的生产运维。
+  geo:
+    description:
+      en: Generative Engine Optimization research and experiments on how AI search retrieves, evaluates, cites, and measures web content.
+      zh: 生成式引擎优化专题，研究 AI 搜索如何检索、评估与引用网页，并记录可复现的内容结构和测量方法。
+  rag:
+    description:
+      en: Retrieval-augmented generation architecture, evaluation, vector search, evidence handling, and production implementation patterns.
+      zh: 检索增强生成的架构、评测、向量检索、证据处理与生产实现模式，关注答案质量与可追溯性。
+  mcp:
+    description:
+      en: Model Context Protocol guides, integrations, tools, security boundaries, and practical patterns for connecting agents to real systems.
+      zh: Model Context Protocol 的接入指南、工具集成、安全边界与工程模式，帮助 Agent 连接真实系统和数据。
+  personal-growth:
+    description:
+      en: Long-form reflections on learning, decisions, habits, careers, relationships, and building a life that can keep correcting itself.
+      zh: 关于学习、决策、习惯、职业与关系的长期思考，记录个人如何在行动和复盘中持续校准自己的生活。
+  self-discovery:
+    description:
+      en: Essays on self-knowledge, metacognition, emotion, attachment, and the difficult work of turning reflection into durable change.
+      zh: 关于自我认知、元认知、情绪与依恋的文章，关注如何把反思转化为能够长期维持的真实改变。
+  product-strategy:
+    description:
+      en: Product strategy for AI and open-source builders, covering judgment, positioning, distribution, business models, and evidence-based bets.
+      zh: 面向 AI 与开源创造者的产品策略，覆盖判断、定位、分发、商业模式以及如何依据证据控制下注规模。

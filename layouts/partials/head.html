@@ -1,11 +1,7 @@
-{{- /* Must run before anything reads .Paginator (title suffix below,
-     seo.html): first touch locks the paginator's collection, and these
-     sections paginate a date-sorted set, not the default ordering. */}}
-{{- if and (eq .Kind "section") (in (slice "ai-agent" "engineering" "growth") .Section) }}
-  {{- $_ := partial "paginate-section.html" . }}
-{{- else if and (eq .Kind "section") (eq .Section "articles") }}
-  {{- $_ := partial "paginate-articles.html" . }}
-{{- end }}
+{{- /* First touch locks a paginator's collection. The shared partial only
+     initializes routes whose body templates genuinely paginate. */}}
+{{- $paginator := partial "seo/paginator.html" . -}}
+{{- $isPaginated := and $paginator (gt $paginator.PageNumber 1) -}}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,8 +12,8 @@
 .skip-link{position:fixed;top:8px;left:16px;z-index:10000;padding:8px 16px;border:2px solid var(--primary,#111);border-radius:4px;background:var(--theme,#fff);color:var(--primary,#111);font:600 14px/1.4 system-ui,sans-serif;text-decoration:none;opacity:0;pointer-events:none;transform:translateY(calc(-100% - 16px))}
 .skip-link:focus,.skip-link:focus-visible{opacity:1;pointer-events:auto;transform:translateY(0)}
 </style>
-{{- if partial "seo/should-noindex.html" . }}
-<meta name="robots" content="noindex, nofollow">
+{{- if or (partial "seo/should-noindex.html" .) $isPaginated }}
+<meta name="robots" content="noindex, follow">
 {{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 {{- else }}
@@ -29,16 +25,11 @@
 {{- $baseTitle := .Title -}}
 {{- if hasPrefix .Title "http" -}}{{- $baseTitle = cond .Parent .Parent.Title site.Title -}}{{- end -}}
 {{- $pagerSuffix := "" -}}
-{{- /* Only touch .Paginator on kinds whose templates genuinely paginate.
-     `not .IsPage` used to include the 404 page: merely *reading* .Paginator
-     makes Hugo build one, so the 404 page got paginated over site.RegularPages
-     and emitted /404/page/1..13 — real 200-status URLs that Google discovered
-     and burned crawl budget on. Gate on Kind instead. */ -}}
-{{- if and (in (slice "home" "section" "taxonomy" "term") .Kind) .Paginator (gt .Paginator.PageNumber 1) -}}
+{{- if $isPaginated -}}
   {{- if eq .Language.Lang "zh" -}}
-    {{- $pagerSuffix = printf " - 第 %d 页" .Paginator.PageNumber -}}
+    {{- $pagerSuffix = printf " - 第 %d 页" $paginator.PageNumber -}}
   {{- else -}}
-    {{- $pagerSuffix = printf " - Page %d" .Paginator.PageNumber -}}
+    {{- $pagerSuffix = printf " - Page %d" $paginator.PageNumber -}}
   {{- end -}}
 {{- end -}}
 {{- /* len counts BYTES, but substr counts runes — a 40-char Chinese title is
