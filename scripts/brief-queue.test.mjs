@@ -130,3 +130,26 @@ test('ready brief is rejected when an article with the same slug exists', () => 
   assert.equal(result.status, 1);
   assert.match(result.stderr, /possible duplicate article/);
 });
+
+test('ready-to-publish brief accepts the article recorded in its receipt', () => {
+  const { briefs, content, env } = setup();
+  const file = join(briefs, '2026-08-01-test-brief.md');
+  writeFileSync(
+    file,
+    `${fixture('ready-to-publish')}
+
+## 执行回执
+
+- article: content/zh/growth/posts/test-brief.md
+`,
+  );
+  mkdirSync(join(content, 'zh', 'growth', 'posts'), { recursive: true });
+  writeFileSync(join(content, 'zh', 'growth', 'posts', 'test-brief.md'), '---\n---\n');
+
+  const output = execFileSync(
+    process.execPath,
+    [SCRIPT, '--check'],
+    { encoding: 'utf8', env },
+  );
+  assert.match(output, /0 error/);
+});

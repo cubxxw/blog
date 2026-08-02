@@ -158,9 +158,24 @@ function duplicateArticles(brief) {
   }
 
   const duplicates = [];
+  const receiptArticle = brief.article.replaceAll('\\', '/');
+  const isReceiptArticle = (file) => {
+    const rootRelative = relative(ROOT, file).split(sep).join('/');
+    const contentRelative = `content/${relative(CONTENT_DIR, file).split(sep).join('/')}`;
+    return (
+      brief.status === 'ready-to-publish' &&
+      receiptArticle &&
+      (receiptArticle === rootRelative || receiptArticle === contentRelative)
+    );
+  };
+
   if (brief.article) {
     const article = resolve(ROOT, brief.article);
-    if (article.startsWith(`${ROOT}${sep}`) && existsSync(article)) {
+    if (
+      brief.status !== 'ready-to-publish' &&
+      article.startsWith(`${ROOT}${sep}`) &&
+      existsSync(article)
+    ) {
       duplicates.push(relative(ROOT, article));
     }
   }
@@ -168,7 +183,9 @@ function duplicateArticles(brief) {
   const slug = brief.id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
   const expected = `${slug}.md`;
   for (const file of markdownFiles(CONTENT_DIR)) {
-    if (basename(file) === expected) duplicates.push(relative(ROOT, file));
+    if (basename(file) === expected && !isReceiptArticle(file)) {
+      duplicates.push(relative(ROOT, file));
+    }
   }
   return [...new Set(duplicates)];
 }
