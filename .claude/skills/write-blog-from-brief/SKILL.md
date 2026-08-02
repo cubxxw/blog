@@ -119,6 +119,16 @@ Read and apply `../craft-article-opening/SKILL.md`. Build the first screen from 
 
 Place citations next to the claims they support. Distinguish source fact, source opinion, author observation, and article inference. Never fabricate quotations, experience, motives, metrics, or results.
 
+End every researched article with a final second-level reference section:
+
+```markdown
+## 参考资料
+
+- [Descriptive source title](https://example.com) — publisher or institution
+```
+
+Use `## References` for English. Include every public source cited in the article exactly once, prefer the primary source, and keep the title descriptive enough to identify it. The end list complements inline citations; it does not replace claim-adjacent attribution. Do not list sources that the article never uses.
+
 Delete generic paragraphs that would survive unchanged under another author's name.
 
 ## 6. Run independent review
@@ -159,7 +169,7 @@ npm run geo:audit
 
 Read and follow `../article-covers/SKILL.md`.
 
-Design a concrete visual metaphor from the finished article, generate 2–3 candidates, inspect the images, and reject text, logos, malformed people, generic AI imagery, and compositions that fail as thumbnails. Reuse the chosen cover for the later English counterpart.
+Design a concrete visual metaphor from the finished article, generate 2–3 candidates, inspect the image assets directly, and reject text, logos, malformed people, generic AI imagery, and compositions that fail as thumbnails. A page screenshot is not required for a standard article. Reuse the chosen cover for the later English counterpart.
 
 ## 9. Score and revise
 
@@ -175,20 +185,37 @@ Do not inflate the article merely to increase a score.
 
 ## 10. Run deterministic gates
 
-Run at minimum:
+For a standard article that uses existing Markdown, front matter, routes, and cover conventions, optimize for document correctness. Run:
 
 ```bash
-node scripts/check-ai-flavor.mjs <article> --check
+node scripts/check-ai-flavor.mjs <article...> --check
 npm run frontmatter:check
 npm run tags:check
-node scripts/generate-content-index.mjs
-npm run covers:test
-hugo --minify --environment production
+git diff --check
 ```
 
-Preview the actual page with `netlify dev` when the environment is available. Check the article, mobile layout, dark mode, internal links, cover, and `og:image`.
+Inspect the changed article files directly and confirm:
 
-If any required check fails, keep the brief in `review` or mark it `blocked`.
+- the path, front matter, Shanghai timestamp, description, and canonical tags are correct;
+- headings and Markdown structure are valid;
+- factual external claims have adjacent citations;
+- the final `## 参考资料` or `## References` section exists and accounts for every cited public source without decorative entries;
+- internal links and referenced cover/media paths are plausible and the files exist;
+- bilingual articles preserve the same claim, source support, and cover.
+
+Do not run `npm test`, take page screenshots, start `netlify dev`, or run a full local Hugo production build for an ordinary article by default. CI/CD owns the full build, full E2E suite, and cross-site visual regression.
+
+Escalate local validation only when risk warrants it:
+
+- raw HTML, shortcodes, generated markup, a new content type or route, or unusual media: run the relevant Hugo build or page preview;
+- template, CSS, JavaScript, configuration, or shared rendering changes: run targeted tests and inspect the affected rendering;
+- cover tooling changes: run `npm run covers:test`;
+- content-index behavior changes or a consumer explicitly needs a refreshed local index: run `node scripts/generate-content-index.mjs`;
+- CI is unavailable, the user requests deeper local testing, or CI reports a failure: reproduce only the affected check locally.
+
+Screenshots are optional evidence for a meaningful visual comparison, not a publication gate. Before merging, wait for required CI checks and let CI/CD supply the full-site confidence.
+
+If a required document check fails, keep the brief in `review` or mark it `blocked`. If CI fails, determine whether the failure belongs to the article before changing unrelated code or snapshots.
 
 ## 11. Handoff
 
@@ -197,6 +224,6 @@ When all gates pass:
 - set the brief to `ready-to-publish`;
 - fill `article`, score breakdown, source/check summary, and unresolved caveats in its execution receipt;
 - leave the branch unmerged until the author explicitly signs off;
-- report the files changed, research performed, review findings resolved, score, checks, and remaining human decisions.
+- report the files changed, research performed, review findings resolved, score, local document checks, CI status, and remaining human decisions.
 
 Do not translate until the Chinese article is approved. After approval, create an idiomatic English rewrite, verify the same claims and citations, reuse the cover, and rerun the relevant gates.

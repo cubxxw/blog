@@ -11,6 +11,7 @@ Any hard fail blocks publication regardless of score:
 - core claim differs from the brief without author confirmation;
 - decisive factual claim lacks support or misrepresents its source;
 - citation does not support the adjacent claim;
+- a researched article lacks the final `参考资料` / `References` section, or a cited public source is missing from it;
 - fact, author observation, and inference are presented as the same thing;
 - E-level AI-flavor error remains;
 - broken production build, article route, cover, or required link.
@@ -21,7 +22,7 @@ Any hard fail blocks publication regardless of score:
 |---|---:|---|
 | Claim and argument | 20 | One clear claim, complete reasoning, no hidden premise or logical jump |
 | Author contribution and presence | 20 | Specific lived material changes the article; another author could not substitute |
-| Evidence and citations | 20 | Strong sources, precise attribution, current facts checked, citation fit is exact |
+| Evidence and citations | 20 | Strong sources, precise attribution, current facts checked, citation fit is exact, final reference list is complete |
 | Counterargument and boundary | 10 | Strongest alternative is treated fairly; cost, limit, and falsifier are visible |
 | Durable value and original synthesis | 10 | Goes beyond news or summary; produces a reusable way to see or decide |
 | Search, SEO/GEO, and internal links | 10 | Search promise is accurate; metadata, extractability, and links help without distortion |

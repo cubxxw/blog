@@ -112,6 +112,13 @@ npm run briefs:next
 
 引用数量没有最低要求。一个准确的一手来源胜过十个互相转载的链接。
 
+公开研究型文章同时使用两层引用：
+
+- 在事实或判断旁边放支持该句的行内链接；
+- 把 `## 参考资料`（英文为 `## References`）作为最后一个二级标题，去重列出正文实际引用的全部公开来源。
+
+文末参考资料不能替代行内归因，也不要收录正文没有使用的装饰性链接。
+
 ### B. 搜索意图研究
 
 目标是让需要这篇文章的人找到它，不是让关键词决定作者观点。
@@ -234,6 +241,7 @@ npm run covers:write -- --file <article> --variants 3
 - 编造作者经历、动机、对话、数据或项目结果；
 - 关键事实无来源且正文把它当确定事实；
 - 引用与相邻结论不匹配；
+- 研究型文章缺少文末 `参考资料` / `References`，或正文已引用来源未进入清单；
 - 核心命题不是 brief 已确认的判断；
 - 泄露 brief 中的隐私或可识别第三方信息；
 - E 级 AI 味检查未清零；
@@ -243,17 +251,18 @@ npm run covers:write -- --file <article> --variants 3
 
 ## 9. 确定性质量门
 
-至少运行：
+标准 Markdown 文章本地至少运行文档级检查：
 
 ```bash
-node scripts/check-ai-flavor.mjs <article> --check
+node scripts/check-ai-flavor.mjs <article...> --check
 npm run frontmatter:check
 npm run tags:check
-node scripts/generate-content-index.mjs
-hugo --minify --environment production
+git diff --check
 ```
 
-根据文章类型补充链接、代码和页面验证。确定性检查全部通过、语义评分达到 90，brief 才能进入 `ready-to-publish`。
+直接检查文章路径、front matter、标题层级、行内引用、文末参考资料、内链和封面路径。普通文章默认不截图、不启动浏览器、不跑本地全量 `npm test` 或 Hugo 生产构建；全站构建、E2E 和视觉回归由 CI/CD 承担。
+
+只有文章引入 raw HTML、shortcode、新路由、特殊媒体或其他渲染风险时，才补充本地 Hugo/页面验证。模板、CSS、JavaScript、配置等共享实现变更只跑受影响的定向检查；截图仅在需要视觉基线或前后对比时使用。文档检查全部通过、语义评分达到 90，brief 才能进入 `ready-to-publish`；合并前等待必要 CI 检查。
 
 ## 10. 发布与回执
 

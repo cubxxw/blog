@@ -206,3 +206,23 @@ DVD delivery, streaming, and original content were provisional solutions under d
 ### Why should a recruiting agent not make final hiring decisions autonomously?
 
 Hiring changes people's opportunities, while evidence is shaped by unequal resources, networks, and history. An agent can organize evidence and recommend tests. Job definition, fairness oversight, appeals, and the final decision still require a person with authority to accept the consequences.
+
+## References
+
+- [Leverage Points: Places to Intervene in a System](https://donellameadows.org/archives/leverage-points-places-to-intervene-in-a-system/) — Donella Meadows Project
+- [Netflix.com Transforms DVD Business, Eliminating Late Fees and Due Dates](https://about.netflix.com/en/news/netflix-com-transforms-dvd-business-eliminating-late-fees-and-due-dates-from) — Netflix
+- [Thanks for Watching](https://about.netflix.com/en/news/thanks-for-watching) — Netflix
+- [Netflix 2025 Form 10-K](https://www.sec.gov/Archives/edgar/data/1065280/000106528026000034/nflx-20251231.htm) — U.S. Securities and Exchange Commission
+- [Netflix Culture Memo](https://jobs.netflix.com/culture) — Netflix
+- [Foundation Model for Personalized Recommendation](https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39) — Netflix TechBlog
+- [Netflix Aborts Plan to Separate DVD, Streaming Services](https://www.foxbusiness.com/features/netflix-aborts-plan-to-separate-dvd-streaming-services) — Fox Business
+- [Harness Engineering: Leveraging Codex in an Agent-First World](https://openai.com/index/harness-engineering/) — OpenAI
+- [Continually Improving the Agent Harness](https://cursor.com/blog/continually-improving-agent-harness) — Cursor
+- [The Agent Development Life Cycle](https://sierra.ai/blog/agent-development-life-cycle) — Sierra
+- [Introducing BigLaw Bench](https://www.harvey.ai/blog/introducing-biglaw-bench) — Harvey
+- [Greenhouse 2025 Workforce & Hiring Report](https://www.greenhouse.com/blog/greenhouse-2025-workforce-hiring-report) — Greenhouse
+- [The Future of Recruiting 2025](https://business.linkedin.com/hire/resources/future-of-recruiting) — LinkedIn
+- [Regulation (EU) 2024/1689: Artificial Intelligence Act](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32024R1689) — EUR-Lex
+- [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202601744) — EUR-Lex
+- [Automated Employment Decision Tools](https://home4.nyc.gov/site/dca/about/automated-employment-decision-tools.page) — New York City Department of Consumer and Worker Protection
+- [Employment Discrimination and AI for Workers](https://www.eeoc.gov/sites/default/files/2024-04/20240429_Employment%20Discrimination%20and%20AI%20for%20Workers.pdf) — U.S. Equal Employment Opportunity Commission

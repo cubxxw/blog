@@ -187,11 +187,13 @@ make new-ai-project PROJECT_NAME="my-project"
 3. 先补完整 front matter，再写正文
 4. `date` 一律写上海时间 `+08:00`
 5. 如果计划稍后发布，把工作保留在未合并分支；不要用 front matter 隐藏文章
-6. 内容改完后刷新索引并本地验证
+6. 标准 Markdown 文章改完后只做文档级检查；全量构建与 E2E 交给 CI/CD
 
 ```bash
-node scripts/generate-content-index.mjs
-make envbuild
+node scripts/check-ai-flavor.mjs <article...> --check
+npm run frontmatter:check
+npm run tags:check
+git diff --check
 ```
 
 ### 检查标签
@@ -207,12 +209,14 @@ make envbuild
 ### 构建测试
 
 ```bash
-# 本地开发
+# 模板、样式、脚本或特殊渲染变更的本地开发
 hugo server
 
-# 生产构建
+# 涉及构建行为、模板、shortcode、路由或配置时的生产构建
 hugo --minify
 ```
+
+普通文章默认不启动浏览器、不截图、不跑本地全量 `npm test` 或 Hugo 生产构建。直接检查 Markdown、front matter、引用、内链和资源路径即可；全站构建、E2E 与视觉回归由 CI/CD 承担。只有 raw HTML、shortcode、新路由、特殊媒体或共享渲染实现发生变化时，才按风险补充定向检查。
 
 ---
 
@@ -227,6 +231,7 @@ hugo --minify
 - [ ] 发布时间不是未来时间，除非明确要延迟发布
 - [ ] 使用标准标签名（检查 tags-mapping.json）
 - [ ] description 无 Markdown 语法
+- [ ] 外部事实有相邻行内引用，文章最后有完整去重的 `参考资料` / `References`
 - [ ] 有 cover image（可选但推荐）
 - [ ] 双语文章翻译完整
 - [ ] keywords 自动生成

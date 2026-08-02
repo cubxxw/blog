@@ -1,6 +1,6 @@
 ---
 name: blog
-description: Maintain the cubxxw bilingual Hugo blog, including brief-driven writing, content front matter and taxonomy, PaperMod templates, CSS and JavaScript, SEO, local browser verification, and GitHub delivery. Use for any content, design, implementation, validation, or publishing task in this repository.
+description: Maintain the cubxxw bilingual Hugo blog, including brief-driven writing, content front matter and taxonomy, PaperMod templates, CSS and JavaScript, SEO, proportional validation, and GitHub delivery. Use for any content, design, implementation, validation, or publishing task in this repository.
 ---
 
 # Blog repository workflow
@@ -28,6 +28,7 @@ description: Maintain the cubxxw bilingual Hugo blog, including brief-driven wri
 - Keep descriptions as plain text and use canonical tags from `config/tags-mapping.json`.
 - Do not reintroduce the retired `categories` taxonomy.
 - Put directly referenced article images in `static/`; reserve `assets/` for Hugo Pipes.
+- Cite factual external claims next to the supported sentence and end every researched article with `## 参考资料` or `## References`. List each cited public source once with a descriptive link; do not add decorative or uncited sources.
 
 ## Implement with the existing architecture
 
@@ -38,12 +39,26 @@ description: Maintain the cubxxw bilingual Hugo blog, including brief-driven wri
 
 ## Validate proportionally
 
-- Use `netlify dev` for local page verification; do not compile through `make`.
-- Run `hugo --minify` for a production build.
-- Run `npm test` for affected browser flows and `npm run typecheck` for TypeScript changes.
-- Run the relevant content checks, such as `npm run frontmatter:check`, `npm run tags:check`, or `npm run flavor:check`, when their inputs change.
-- Inspect desktop and mobile rendering for template or CSS changes and check the browser console.
-- Run `git diff --check` before committing.
+Choose the lowest-cost validation layer that covers the changed surface.
+
+For a standard article-only change using existing Markdown, front matter, routes, and cover conventions:
+
+- inspect the changed document directly;
+- run `npm run frontmatter:check`, `npm run tags:check`, `npm run flavor:check`, and `git diff --check`;
+- verify the path, Shanghai timestamp, description, canonical tags, headings, inline citations, final reference section, internal links, and referenced asset paths;
+- check both documents when the article is bilingual;
+- do not launch a browser, take screenshots, run `npm test`, or run a full local production build by default.
+
+Escalate only when the article introduces raw HTML, shortcodes, a new content type or route, unusual media, generated markup, or another rendering risk.
+
+For template, CSS, JavaScript, configuration, or shared rendering changes:
+
+- run only the relevant targeted tests and `npm run typecheck` when TypeScript changes;
+- run `hugo --minify` when build behavior, templates, shortcodes, routes, or configuration change;
+- use `netlify dev` and inspect the affected viewport and console only when rendering could have changed;
+- use screenshots only when a visual baseline or before/after comparison materially helps; screenshots are not a default gate.
+
+Leave the full Hugo build, full `npm test` suite, and cross-site visual regression to CI/CD. Repeat them locally only when CI is unavailable, the user requests it, a cross-cutting release is unusually risky, or a CI failure needs diagnosis. Wait for required CI checks before merging.
 
 ## Deliver through GitHub
 
