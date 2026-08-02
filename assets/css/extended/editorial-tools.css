@@ -568,6 +568,13 @@ body.dark .editorial-tools-panel .rc-ai-chip:hover {
   -webkit-font-smoothing: antialiased;
 }
 
+/* The message list is the scroll container. Its children must retain their
+   intrinsic height; otherwise Flexbox shrinks a long answer to the height of
+   its header and the answer body's overflow is clipped out of view. */
+.editorial-tools-panel .rc-ai-messages > * {
+  flex: 0 0 auto;
+}
+
 html:lang(zh) .editorial-tools-panel .rc-ai-messages {
   font-size: 13.5px;
   letter-spacing: 0.015em;

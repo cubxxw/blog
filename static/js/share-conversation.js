@@ -19,39 +19,39 @@
   var THEMES = {
     classic: {
       labelZh: '纸白', labelEn: 'Paper',
-      bgFrom: '#e6e6e1', bgTo: '#d9dcd7', card: '#f8f8f5',
-      accent: '#862122', ink: '#1d201e',
-      muted: 'rgba(29,32,30,0.52)', subtle: 'rgba(29,32,30,0.10)',
-      border: 'rgba(29,32,30,0.12)', context: 'rgba(29,32,30,0.035)',
-      answer: 'rgba(29,32,30,0.82)',
-      qrFg: '#1d201e', qrBg: '#f8f8f5',
+      bgFrom: '#e9e9e6', bgTo: '#dedfdb', card: '#fbfbf9',
+      accent: '#8d2d2e', ink: '#242624',
+      muted: 'rgba(36,38,36,0.56)', subtle: 'rgba(36,38,36,0.105)',
+      border: 'rgba(36,38,36,0.13)', context: 'rgba(36,38,36,0.04)',
+      answer: 'rgba(36,38,36,0.84)',
+      qrFg: '#242624', qrBg: '#fbfbf9',
     },
     midnight: {
       labelZh: '石墨', labelEn: 'Graphite',
-      bgFrom: '#111513', bgTo: '#222925', card: '#1c211e',
-      accent: '#a9c8ba', ink: '#eef1ed',
-      muted: 'rgba(225,233,228,0.56)', subtle: 'rgba(225,233,228,0.12)',
-      border: 'rgba(225,233,228,0.14)', context: 'rgba(225,233,228,0.055)',
-      answer: 'rgba(225,233,228,0.84)',
-      qrFg: '#171b19', qrBg: '#eef1ed',
+      bgFrom: '#141715', bgTo: '#222622', card: '#1d201e',
+      accent: '#a7c9b8', ink: '#f0f2ef',
+      muted: 'rgba(232,237,233,0.58)', subtle: 'rgba(232,237,233,0.12)',
+      border: 'rgba(232,237,233,0.15)', context: 'rgba(232,237,233,0.055)',
+      answer: 'rgba(232,237,233,0.86)',
+      qrFg: '#1d201e', qrBg: '#f0f2ef',
     },
     dusk: {
       labelZh: '晨雾', labelEn: 'Mist',
-      bgFrom: '#dce7ed', bgTo: '#ccd9df', card: '#f3f7f8',
-      accent: '#3a6075', ink: '#18272e',
-      muted: 'rgba(24,39,46,0.52)', subtle: 'rgba(24,39,46,0.10)',
-      border: 'rgba(24,39,46,0.12)', context: 'rgba(58,96,117,0.055)',
-      answer: 'rgba(24,39,46,0.82)',
-      qrFg: '#18272e', qrBg: '#f3f7f8',
+      bgFrom: '#dde7eb', bgTo: '#ced9dd', card: '#f7f9f9',
+      accent: '#416778', ink: '#1c2a30',
+      muted: 'rgba(28,42,48,0.55)', subtle: 'rgba(28,42,48,0.105)',
+      border: 'rgba(28,42,48,0.13)', context: 'rgba(65,103,120,0.055)',
+      answer: 'rgba(28,42,48,0.84)',
+      qrFg: '#1c2a30', qrBg: '#f7f9f9',
     },
     ink: {
       labelZh: '墨白', labelEn: 'Minimal ink',
-      bgFrom: '#ececea', bgTo: '#d9dad7', card: '#fafaf8',
-      accent: '#242725', ink: '#202321',
-      muted: 'rgba(32,35,33,0.48)', subtle: 'rgba(32,35,33,0.10)',
-      border: 'rgba(32,35,33,0.12)', context: 'rgba(32,35,33,0.035)',
-      answer: 'rgba(32,35,33,0.82)',
-      qrFg: '#202321', qrBg: '#fafaf8',
+      bgFrom: '#efefed', bgTo: '#e2e3df', card: '#fdfdfb',
+      accent: '#343735', ink: '#202321',
+      muted: 'rgba(32,35,33,0.52)', subtle: 'rgba(32,35,33,0.105)',
+      border: 'rgba(32,35,33,0.13)', context: 'rgba(32,35,33,0.035)',
+      answer: 'rgba(32,35,33,0.84)',
+      qrFg: '#202321', qrBg: '#fdfdfb',
     },
   };
   var THEME_ORDER = ['classic', 'midnight', 'dusk', 'ink'];
@@ -61,7 +61,15 @@
     return document.body.classList.contains('dark') ? 'midnight' : 'classic';
   }
 
-  var FONT = '-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Hiragino Sans GB",sans-serif';
+  // Canvas text does not inherit CSS font variables. Keep language-specific
+  // stacks here so exported cards match the reading surface: PingFang first for
+  // Chinese rhythm, Inter / SF Pro first for Latin metrics.
+  var FONT_ZH = '"PingFang SC","Noto Sans SC","Source Han Sans SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif';
+  var FONT_EN = '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif';
+
+  function cardFont(isZh) {
+    return isZh ? FONT_ZH : FONT_EN;
+  }
 
   // ── Inject styles once ──────────────────────────────────────────────────────
   (function injectStyles() {
@@ -226,22 +234,25 @@
     var url = qrTarget(options);
     var siteName = shareSiteName(options);
     var isZh = isZhLang(options);
+    var font = cardFont(isZh);
     var rounds = conversationPairs(messages);
     var latest = rounds[rounds.length - 1] || { question: '', answer: '' };
-    var W = 1080, H = 1350, PAD = 78;
+    var W = 1080, H = 1350, PAD = 96;
     var DPR = Math.min(window.devicePixelRatio || 1, 2);
     var measure = document.createElement('canvas').getContext('2d');
-    var answerStartY = 310;
+    var answerStartY = 358;
     var hasQuestion = !!mdToPlainText(latest.question);
     var answerOpts = {
       x: PAD, y: answerStartY, maxWidth: W - PAD * 2,
-      baseFont: '28px ' + FONT, boldFont: '650 28px ' + FONT,
-      leadFont: '560 34px ' + FONT, leadBoldFont: '680 34px ' + FONT,
-      headingFont: '680 32px ' + FONT, quoteFont: '560 30px ' + FONT,
-      lineH: 47, leadLineH: 53, headingLineH: 50, paraGap: 24,
+      baseFont: '400 27px ' + font, boldFont: '650 27px ' + font,
+      listFont: '650 30px ' + font, listBoldFont: '680 30px ' + font,
+      markerFont: '620 20px ' + font,
+      headingFont: '680 31px ' + font, quoteFont: '520 29px ' + font,
+      lineH: 43, listLineH: 46, headingLineH: 47, quoteLineH: 45,
+      paraGap: 23, listGap: 13, listBodyIndent: 48,
       color: theme.answer, muted: theme.muted, accent: theme.accent,
-      maxLines: hasQuestion ? 11 : 14,
-      maxY: hasQuestion ? 900 : 1040,
+      maxLines: hasQuestion ? 15 : 17,
+      maxY: hasQuestion ? 930 : 1070,
     };
     var layout = layoutRichAnswer(measure, latest.answer, answerOpts);
 
@@ -254,28 +265,39 @@
     paintBackground(ctx, theme, W, H);
     paintHeader(ctx, theme, {
       W: W, PAD: PAD, title: title, siteName: siteName, isZh: isZh,
-      label: isZh ? '阅读札记' : 'READING NOTE',
+      label: isZh ? '阅读札记' : 'Reading note', font: font,
     });
 
-    ctx.font = '680 34px ' + FONT;
+    ctx.font = '700 42px ' + font;
     ctx.fillStyle = theme.ink;
-    ctx.fillText(isZh ? '阅读洞察' : 'Reading insight', PAD, 250);
-    ctx.fillStyle = theme.accent;
-    ctx.fillRect(PAD, 271, 42, 4);
+    ctx.fillText(isZh ? '阅读洞察' : 'Reading insight', PAD, 276);
+    ctx.font = '450 17px ' + font;
+    ctx.fillStyle = theme.muted;
+    ctx.fillText(
+      isZh ? '从文章与对话中留下值得重读的部分' : 'Ideas from the article worth returning to',
+      PAD, 310
+    );
 
     paintRichAnswer(ctx, layout);
+    var contextTop = Math.min(Math.max(layout.endY + 26, 972), 1032);
     if (layout.clipped) {
-      ctx.font = '500 13px ' + FONT;
+      ctx.font = '500 13px ' + font;
       ctx.fillStyle = theme.muted;
-      ctx.fillText(isZh ? '已节选适合分享的长度，扫码继续阅读' : 'Edited to fit the card. Scan to keep reading.', PAD, hasQuestion ? 932 : 1072);
+      ctx.fillText(
+        isZh ? '内容已节选，扫码阅读全文' : 'Excerpted for the card. Scan to read the article.',
+        PAD, hasQuestion ? contextTop - 14 : 1092
+      );
     }
 
     if (hasQuestion) {
       paintContext(ctx, theme, {
-        W: W, PAD: PAD, top: 958, question: mdToPlainText(latest.question), isZh: isZh,
+        W: W, PAD: PAD, top: contextTop, question: mdToPlainText(latest.question),
+        isZh: isZh, font: font,
       });
     }
-    paintFooter(ctx, theme, { W: W, H: H, PAD: PAD, url: url, isZh: isZh, qrSize: 116 });
+    paintFooter(ctx, theme, {
+      W: W, H: H, PAD: PAD, url: url, isZh: isZh, qrSize: 104, font: font,
+    });
     return canvas;
   }
 
@@ -288,22 +310,31 @@
       var isLi = block.type === 'li';
       var isHeading = block.type === 'heading';
       var isQuote = block.type === 'quote';
-      var indent = isLi ? 30 : (isQuote ? 22 : 0);
+      var followsList = block.type === 'p' && bi > 0 && blocks[bi - 1].type === 'li';
+      var indent = isLi || followsList ? o.listBodyIndent : (isQuote ? 24 : 0);
       var textX = o.x + indent;
-      var isLead = bi === 0 && block.type === 'p';
-      var baseFont = isHeading ? o.headingFont : (isQuote ? o.quoteFont : (isLead ? o.leadFont : o.baseFont));
-      var boldFont = isHeading ? o.headingFont : (isLead ? o.leadBoldFont : o.boldFont);
-      var lineH = isHeading ? o.headingLineH : (isLead ? o.leadLineH : o.lineH);
+      var baseFont = isHeading ? o.headingFont : (isQuote ? o.quoteFont : (isLi ? o.listFont : o.baseFont));
+      var boldFont = isHeading ? o.headingFont : (isLi ? o.listBoldFont : o.boldFont);
+      var lineH = isHeading ? o.headingLineH : (isQuote ? o.quoteLineH : (isLi ? o.listLineH : o.lineH));
       var lines = wrapRuns(ctx, block.runs, o.maxWidth - indent, baseFont, boldFont);
       var quoteStartY = y;
+      if (isQuote) {
+        ops.push({
+          type: 'rule', x: o.x, y: quoteStartY - 24, width: 3,
+          height: Math.max(30, lines.length * lineH + 12), color: o.accent || o.color,
+        });
+      }
       for (var li = 0; li < lines.length; li++) {
         if (lineCount >= o.maxLines || (o.maxY && y + lineH > o.maxY)) {
-          ops.push({ x: textX, y: y, text: '…', font: o.baseFont, color: o.muted });
+          appendEllipsis(ops);
           clipped = true;
           break;
         }
         if (isLi && li === 0) {
-          ops.push({ x: o.x, y: y, text: block.marker, font: o.boldFont, color: o.accent || o.color });
+          ops.push({
+            x: o.x, y: y - 2, text: block.marker,
+            font: o.markerFont, color: o.accent || o.color,
+          });
         }
         var cx = textX;
         lines[li].forEach(function (seg) {
@@ -315,15 +346,20 @@
         y += lineH;
         lineCount++;
       }
-      if (isQuote && y > quoteStartY) {
-        ops.unshift({
-          type: 'rule', x: o.x, y: quoteStartY - 24, width: 3,
-          height: Math.max(28, y - quoteStartY + 14), color: o.accent || o.color,
-        });
+      if (!clipped && bi < blocks.length - 1) {
+        var next = blocks[bi + 1];
+        y += isLi && next.type === 'p' ? o.listGap : o.paraGap;
       }
-      if (!clipped && bi < blocks.length - 1) y += o.paraGap;
     }
     return { ops: ops, endY: y, clipped: clipped };
+  }
+
+  function appendEllipsis(ops) {
+    for (var i = ops.length - 1; i >= 0; i--) {
+      if (ops[i].type === 'rule') continue;
+      ops[i].text = String(ops[i].text || '').replace(/\s+$/, '') + '…';
+      return;
+    }
   }
 
   function paintRichAnswer(ctx, layout) {
@@ -347,7 +383,8 @@
     var url = qrTarget(options);
     var siteName = shareSiteName(options);
     var isZh = isZhLang(options);
-    var W = 1080, H = 1350, PAD = 78;
+    var font = cardFont(isZh);
+    var W = 1080, H = 1350, PAD = 96;
     var DPR = Math.min(window.devicePixelRatio || 1, 2);
     var allRounds = conversationPairs(messages);
     var clipped = allRounds.length > 3;
@@ -362,55 +399,60 @@
     paintBackground(ctx, theme, W, H);
     paintHeader(ctx, theme, {
       W: W, PAD: PAD, title: title, siteName: siteName, isZh: isZh,
-      label: isZh ? '阅读札记' : 'READING NOTE',
+      label: isZh ? '阅读札记' : 'Reading note', font: font,
     });
 
-    ctx.font = '650 36px ' + FONT;
+    ctx.font = '700 40px ' + font;
     ctx.fillStyle = theme.ink;
-    ctx.fillText(isZh ? '观点合集' : 'Insight collection', PAD, 244);
-    ctx.font = '500 13px ' + FONT;
+    ctx.fillText(isZh ? '观点合集' : 'Insight collection', PAD, 276);
+    ctx.font = '450 16px ' + font;
     ctx.fillStyle = theme.muted;
-    ctx.textAlign = 'right';
-    ctx.fillText(isZh ? rounds.length + ' 个阅读切面' : rounds.length + ' reading lenses', W - PAD, 242);
-    ctx.textAlign = 'left';
+    ctx.fillText(
+      isZh ? '最近 ' + rounds.length + ' 个阅读切面' : 'The latest ' + rounds.length + ' reading lenses',
+      PAD, 310
+    );
 
-    var y = 306;
-    var blockHeight = 260;
+    var y = 372;
+    var blockHeight = 244;
     rounds.forEach(function (round, index) {
+      ctx.font = '620 14px ' + font;
       ctx.fillStyle = theme.accent;
-      ctx.fillRect(PAD, y - 19, 30, 3);
-      ctx.font = '650 30px ' + FONT;
+      ctx.fillText(String(index + 1).padStart(2, '0'), PAD, y);
+      ctx.font = '620 27px ' + font;
       ctx.fillStyle = theme.ink;
       var answer = mdToPlainText(round.answer);
-      var allAnswerLines = wrapText(ctx, answer, W - PAD * 2);
-      var answerLines = allAnswerLines.slice(0, 4);
+      var answerX = PAD + 52;
+      var allAnswerLines = wrapText(ctx, answer, W - PAD * 2 - 52);
+      var answerLines = allAnswerLines.slice(0, 3);
       answerLines.forEach(function (line, lineIndex) {
         var suffix = lineIndex === answerLines.length - 1 && allAnswerLines.length > answerLines.length ? '…' : '';
-        ctx.fillText(line + suffix, PAD, y + lineIndex * 44);
+        ctx.fillText(line + suffix, answerX, y + lineIndex * 42);
       });
       var question = mdToPlainText(round.question);
       if (question) {
-        ctx.font = '500 17px ' + FONT;
+        ctx.font = '450 16px ' + font;
         ctx.fillStyle = theme.muted;
         var context = (isZh ? '阅读切口  ' : 'Reading lens  ') + question;
-        var contextLine = wrapText(ctx, context, W - PAD * 2)[0] || '';
-        if (ctx.measureText(context).width > W - PAD * 2) contextLine += '…';
-        ctx.fillText(contextLine, PAD, y + 196);
+        var contextLine = wrapText(ctx, context, W - PAD * 2 - 52)[0] || '';
+        if (ctx.measureText(context).width > W - PAD * 2 - 52) contextLine += '…';
+        ctx.fillText(contextLine, answerX, y + 154);
       }
       if (index < rounds.length - 1) {
         ctx.fillStyle = theme.subtle;
-        ctx.fillRect(PAD, y + 232, W - PAD * 2, 1);
+        ctx.fillRect(answerX, y + 194, W - PAD - answerX, 1);
       }
       y += blockHeight;
     });
 
     if (clipped) {
-      ctx.font = '500 13px ' + FONT;
+      ctx.font = '500 13px ' + font;
       ctx.fillStyle = theme.muted;
-      ctx.fillText(isZh ? '卡片保留最近 3 个观点' : 'The card keeps the latest 3 insights.', PAD, 1092);
+      ctx.fillText(isZh ? '卡片保留最近 3 个观点' : 'The card keeps the latest 3 insights.', PAD, 1104);
     }
 
-    paintFooter(ctx, theme, { W: W, H: H, PAD: PAD, url: url, isZh: isZh, qrSize: 116 });
+    paintFooter(ctx, theme, {
+      W: W, H: H, PAD: PAD, url: url, isZh: isZh, qrSize: 104, font: font,
+    });
     return canvas;
   }
 
@@ -419,47 +461,48 @@
     var bg = ctx.createLinearGradient(0, 0, W, H);
     bg.addColorStop(0, theme.bgFrom); bg.addColorStop(1, theme.bgTo);
     ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-    roundRect(ctx, 28, 28, W - 56, H - 56, 28);
+    ctx.save();
+    ctx.shadowColor = 'rgba(25,29,26,0.08)';
+    ctx.shadowBlur = 28;
+    ctx.shadowOffsetY = 12;
+    roundRect(ctx, 42, 42, W - 84, H - 84, 18);
     ctx.fillStyle = theme.card;
     ctx.fill();
+    ctx.restore();
+    roundRect(ctx, 42, 42, W - 84, H - 84, 18);
     ctx.strokeStyle = theme.border;
     ctx.lineWidth = 1;
     ctx.stroke();
   }
 
   function paintHeader(ctx, theme, o) {
-    ctx.font = '650 14px ' + FONT;
+    ctx.font = '620 14px ' + o.font;
     ctx.fillStyle = theme.accent;
     ctx.fillText(o.label, o.PAD, 88);
-    ctx.font = '500 13px ' + FONT;
+    ctx.font = '500 13px ' + o.font;
     ctx.fillStyle = theme.muted;
     ctx.textAlign = 'right';
     ctx.fillText(o.siteName, o.W - o.PAD, 88);
     ctx.textAlign = 'left';
-    ctx.font = '560 17px ' + FONT;
+    ctx.font = '600 20px ' + o.font;
     ctx.fillStyle = theme.ink;
-    wrapText(ctx, o.title, o.W - o.PAD * 2).slice(0, 2).forEach(function (line, index) {
-      ctx.fillText(line, o.PAD, 132 + index * 25);
-    });
+    paintTextLines(ctx, o.title, o.PAD, 134, o.W - o.PAD * 2, 2, 28);
     ctx.fillStyle = theme.subtle;
-    ctx.fillRect(o.PAD, 194, o.W - o.PAD * 2, 1);
+    ctx.fillRect(o.PAD, 210, o.W - o.PAD * 2, 1);
   }
 
   function paintContext(ctx, theme, o) {
-    roundRect(ctx, o.PAD, o.top, o.W - o.PAD * 2, 92, 15);
-    ctx.fillStyle = theme.context;
-    ctx.fill();
-    ctx.strokeStyle = theme.border;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    ctx.font = '650 12px ' + FONT;
+    ctx.fillStyle = theme.subtle;
+    ctx.fillRect(o.PAD, o.top, o.W - o.PAD * 2, 1);
+    ctx.font = '620 13px ' + o.font;
     ctx.fillStyle = theme.accent;
-    ctx.fillText(o.isZh ? '阅读切口' : 'READING LENS', o.PAD + 18, o.top + 27);
-    ctx.font = '500 15px ' + FONT;
+    ctx.fillText(o.isZh ? '阅读切口' : 'Reading lens', o.PAD, o.top + 38);
+    ctx.font = '450 16px ' + o.font;
     ctx.fillStyle = theme.muted;
-    var lines = wrapText(ctx, o.question, o.W - o.PAD * 2 - 36).slice(0, 2);
+    var questionX = o.PAD + 112;
+    var lines = wrapText(ctx, o.question, o.W - o.PAD - questionX).slice(0, 2);
     lines.forEach(function (line, index) {
-      ctx.fillText(line, o.PAD + 18, o.top + 55 + index * 21);
+      ctx.fillText(line, questionX, o.top + 38 + index * 23);
     });
   }
 
@@ -468,23 +511,50 @@
     var W = o.W, H = o.H, PAD = o.PAD, qrSize = o.qrSize || 140;
     var qrX = W - PAD - qrSize;
     var qrY = H - PAD - qrSize;
-    var footLineY = qrY - 30;
+    var footLineY = qrY - 26;
 
     ctx.fillStyle = theme.subtle; ctx.fillRect(PAD, footLineY, W - PAD * 2, 1);
 
-    var textY = footLineY + 40;
-    ctx.font = '650 14px ' + FONT; ctx.fillStyle = theme.accent;
-    ctx.fillText(o.isZh ? '阅读全文' : 'READ THE ARTICLE', PAD, textY);
-    ctx.font = '500 13px ' + FONT; ctx.fillStyle = theme.muted;
-    var shortUrl = o.url.length > 56 ? o.url.slice(0, 53) + '…' : o.url;
+    var textY = footLineY + 44;
+    ctx.font = '620 14px ' + o.font; ctx.fillStyle = theme.accent;
+    ctx.fillText(o.isZh ? '阅读全文' : 'Read the article', PAD, textY);
+    ctx.font = '450 13px ' + o.font; ctx.fillStyle = theme.muted;
+    var shortUrl = compactUrl(o.url, 58);
     ctx.fillText(shortUrl, PAD, textY + 29);
 
     var hasQR = drawQR(ctx, o.url, qrX, qrY, qrSize, theme.qrFg, theme.qrBg);
     if (hasQR) {
-      ctx.font = '500 11px ' + FONT; ctx.fillStyle = theme.muted; ctx.textAlign = 'right';
-      ctx.fillText(o.isZh ? '扫码打开' : 'SCAN TO OPEN', W - PAD, qrY - 10);
+      ctx.font = '500 11px ' + o.font; ctx.fillStyle = theme.muted; ctx.textAlign = 'right';
+      ctx.fillText(o.isZh ? '扫码打开' : 'Scan to open', W - PAD, qrY - 9);
       ctx.textAlign = 'left';
     }
+  }
+
+  function paintTextLines(ctx, text, x, y, maxWidth, maxLines, lineHeight) {
+    var lines = wrapText(ctx, text, maxWidth);
+    var shown = lines.slice(0, maxLines);
+    if (lines.length > maxLines && shown.length) {
+      shown[shown.length - 1] = fitTextWithEllipsis(ctx, shown[shown.length - 1], maxWidth);
+    }
+    shown.forEach(function (line, index) {
+      ctx.fillText(line, x, y + index * lineHeight);
+    });
+  }
+
+  function fitTextWithEllipsis(ctx, text, maxWidth) {
+    var value = String(text || '').replace(/\s+$/, '');
+    while (value && ctx.measureText(value + '…').width > maxWidth) value = value.slice(0, -1);
+    return value + '…';
+  }
+
+  function compactUrl(value, limit) {
+    var display = String(value || '');
+    try {
+      var parsed = new URL(display, window.location.origin);
+      display = parsed.hostname.replace(/^www\./, '') + parsed.pathname;
+    } catch (err) {}
+    if (display.length > limit) display = display.slice(0, limit - 1) + '…';
+    return display;
   }
 
   // ── Markdown → rich blocks (for the answer body) ────────────────────────────
