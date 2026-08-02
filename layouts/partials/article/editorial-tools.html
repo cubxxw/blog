@@ -127,10 +127,13 @@
   <div class="rc-panel" id="rc-panel-ai" role="tabpanel" aria-labelledby="rc-tab-ai" hidden>
     <div class="rc-ai-panel">
       {{- $isZh := eq $page.Lang "zh" -}}
-      <div class="rc-ai-quick-label">{{ if $isZh }}快速开始{{ else }}Quick start{{ end }}</div>
+      <div class="rc-ai-intro">
+        <div class="rc-ai-quick-label">{{ if $isZh }}选择阅读角度{{ else }}Choose a reading lens{{ end }}</div>
+        <p class="rc-ai-intro-copy">{{ if $isZh }}从文章出发，提炼、解释或挑战一个观点。{{ else }}Extract, explain, or challenge an idea from this article.{{ end }}</p>
+      </div>
       <div class="rc-ai-quick" id="rc-quick-actions">
-        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}用 3-5 句话精炼地概括这篇文章的核心观点。{{ else }}Summarize the key points of this article in 3–5 sentences.{{ end }}">
-          {{ if $isZh }}一句话总结{{ else }}Summary{{ end }}
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}用 3-5 句话精炼地概括这篇文章的核心观点。{{ else }}Summarize the key points of this article in 3-5 sentences.{{ end }}">
+          {{ if $isZh }}核心摘要{{ else }}Summary{{ end }}
         </button>
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。{{ else }}List the 3 most memorable sentences from this article, and briefly explain why they stand out.{{ end }}">
           {{ if $isZh }}精彩金句{{ else }}Highlights{{ end }}
@@ -159,16 +162,18 @@
         </button>
         {{- end }}
       </div>
-      <div class="rc-ai-messages" aria-live="polite"></div>
-      <div class="rc-ai-loading" hidden>
-        <span class="rc-ai-dot"></span>
-        <span class="rc-ai-dot"></span>
-        <span class="rc-ai-dot"></span>
-        <span class="rc-ai-loading-text">{{ if eq $page.Lang "zh" }}AI 思考中…{{ else }}AI is thinking…{{ end }}</span>
+      <div class="rc-ai-messages" aria-live="polite" aria-label="{{ if $isZh }}文章解读{{ else }}Article insights{{ end }}"></div>
+      <div class="rc-ai-loading" role="status" hidden>
+        <span class="rc-ai-loading-mark" aria-hidden="true">AI</span>
+        <span class="rc-ai-loading-body">
+          <span class="rc-ai-loading-text">{{ if $isZh }}正在梳理文章脉络{{ else }}Reading the article{{ end }}</span>
+          <span class="rc-ai-loading-line" aria-hidden="true"></span>
+          <span class="rc-ai-loading-line rc-ai-loading-line--short" aria-hidden="true"></span>
+        </span>
       </div>
       <div class="rc-ai-input-area">
         <textarea class="rc-ai-textarea" rows="2" maxlength="500"
-          placeholder="{{ if eq $page.Lang "zh" }}{{ i18n "tools.ai_placeholder" | default "向 AI 提问…" | safeHTML }}{{ else }}{{ i18n "tools.ai_placeholder" | default "Ask about this article..." | safeHTML }}{{ end }}"
+          placeholder="{{ if eq $page.Lang "zh" }}{{ i18n "tools.ai_placeholder" | default "继续追问这篇文章…" | safeHTML }}{{ else }}{{ i18n "tools.ai_placeholder" | default "Ask a follow-up about this article..." | safeHTML }}{{ end }}"
           aria-label="{{ i18n "tools.ai" | default "AI Companion" | safeHTML }}"></textarea>
         <button class="rc-ai-send" aria-label="{{ i18n "ai_send_label" | default "Send" | safeHTML }}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

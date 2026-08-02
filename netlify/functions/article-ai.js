@@ -188,21 +188,23 @@ async function handler(event) {
     ? (isZh
         ? `\n文章正文摘要（可能为长文的开头与结尾节选）：\n${articleContent.slice(0, 5600)}`
         : `\nArticle excerpt (for long pieces this may be the opening and the ending):\n${articleContent.slice(0, 5600)}`)
-    : (isZh ? "\n（未提供文章正文，请基于标题谨慎回答）" : "\n(No article body provided — answer cautiously from the title.)");
+    : (isZh ? "\n（未提供文章正文，请基于标题谨慎回答）" : "\n(No article body provided. Answer cautiously from the title.)");
 
   const systemPrompt = (isZh
     ? [
         "你是一位文章阅读助手，帮助读者深入理解他正在阅读的这篇文章。",
         "优先依据下面提供的文章标题和正文来回答；当文章未涉及某个细节时，明确说明这是文章之外的背景或你的推测，绝不编造文章里没有的内容或杜撰引文、数据。",
         "不要输出思考过程，直接给出简洁、有条理的答案。",
-        "回答用中文，语气友好克制，控制在 3 段以内，适合侧边栏的紧凑空间。",
+        "回答用中文，语气友好克制，控制在 3 个内容块以内，适合侧边栏的紧凑空间。",
+        "先直接给结论，再用短段落、简短列表或小标题解释。不要复述读者的问题，不要给每一段机械编号。引用文章原句时使用 Markdown 引用格式。",
         "若读者的问题超出本文范围，可简短作答并建议他从文章的哪一部分继续读起。",
       ]
     : [
         "You are a reading companion helping the reader understand the specific article they are currently reading.",
-        "Answer primarily from the article title and body provided below. When the article doesn't cover something, say plainly that it's outside the article or your own inference — never fabricate claims, quotes, or figures that aren't in the text.",
+        "Answer primarily from the article title and body provided below. When the article doesn't cover something, say plainly that it's outside the article or your own inference. Never fabricate claims, quotes, or figures that aren't in the text.",
         "Don't show your reasoning; give a concise, well-structured answer directly.",
-        "Reply in English, friendly and restrained, within three short paragraphs to fit a compact sidebar.",
+        "Reply in English, friendly and restrained, within three compact content blocks to fit a sidebar.",
+        "Lead with the conclusion, then explain with short paragraphs, a concise list, or small headings. Do not repeat the reader's question or number every paragraph. Use Markdown blockquotes only for exact lines from the article.",
         "If the question goes beyond the article, answer briefly and point the reader to the section worth reading next.",
       ]
   )
@@ -219,10 +221,10 @@ async function handler(event) {
       related.length
         ? (isZh
             ? `\n本站相关文章（当读者的问题值得延伸阅读时，用 Markdown 链接推荐，格式 [标题](链接)，不要杜撰其他链接）：\n${related
-                .map((r) => `- [${r.title}](${r.permalink})${r.tldr[0] ? ` — ${r.tldr[0]}` : ""}`)
+                .map((r) => `- [${r.title}](${r.permalink})${r.tldr[0] ? `: ${r.tldr[0]}` : ""}`)
                 .join("\n")}`
             : `\nRelated articles on this blog (when further reading helps, recommend them as Markdown links [title](permalink); never invent other links):\n${related
-                .map((r) => `- [${r.title}](${r.permalink})${r.tldr[0] ? ` — ${r.tldr[0]}` : ""}`)
+                .map((r) => `- [${r.title}](${r.permalink})${r.tldr[0] ? `: ${r.tldr[0]}` : ""}`)
                 .join("\n")}`)
         : "",
     ])

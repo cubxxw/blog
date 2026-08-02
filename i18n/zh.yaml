@@ -198,7 +198,7 @@
   translation: "分享"
 
 - id: tools.ai_placeholder
-  translation: "向 AI 提问…"
+  translation: "继续追问这篇文章…"
 
 - id: tools.annotations_empty
   translation: "即将上线"

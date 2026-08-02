@@ -14,13 +14,22 @@
 {{- /* qrcode + share loaded on-demand when share panel opens, not on every page */ -}}
 <script>
 (function(){
+  var loading=false,callbacks=[];
+  function flush(){
+    window.__shareScriptsLoaded=true;loading=false;
+    callbacks.splice(0).forEach(function(cb){try{cb();}catch(_){}});
+  }
   function loadShareScripts(cb){
     if(window.__shareScriptsLoaded){cb&&cb();return;}
+    if(cb)callbacks.push(cb);
+    if(loading)return;
+    loading=true;
     var pending=2;
-    function done(){if(!--pending){window.__shareScriptsLoaded=true;cb&&cb();}}
-    var s1=document.createElement('script');s1.src='{{ "/js/qrcode-generator.js" | relURL }}';s1.onload=done;document.body.appendChild(s1);
-    var s2=document.createElement('script');s2.src='{{ "/js/share-conversation.js" | relURL }}';s2.onload=done;document.body.appendChild(s2);
+    function done(){if(!--pending)flush();}
+    var s1=document.createElement('script');s1.src='{{ "/js/qrcode-generator.js" | relURL }}';s1.onload=done;s1.onerror=done;document.body.appendChild(s1);
+    var s2=document.createElement('script');s2.src='{{ "/js/share-conversation.js" | relURL }}';s2.onload=done;s2.onerror=done;document.body.appendChild(s2);
   }
+  window.loadShareScripts=loadShareScripts;
   document.addEventListener('click',function h(e){
     if(e.target.closest('[data-share-trigger],[class*="share"],.share-btn')){
       loadShareScripts();document.removeEventListener('click',h,true);
