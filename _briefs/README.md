@@ -7,7 +7,9 @@
 上游 `brain` 负责：
 
 - 从对话、threads 和 topics 中判断什么值得写；
+- 选择 `thinking`、`research`、`field-note` 或 `maintenance`；
 - 给出唯一命题、作者一手增量、已确认素材与隐私边界；
+- 思考型文章先比较三种形态，由本人选择一个；
 - 附上可公开的参考方向、上游引用标识和待验证问题；
 - 将状态为 `ready` 的 brief 写入本目录。
 
@@ -17,14 +19,17 @@
 - 检查站内已有内容，避免重复选题；
 - 在公开网络上补充研究、反方材料、时效事实和权威引用；
 - 判断搜索意图，但不让关键词反向篡改文章命题；
-- 原生撰写博客文章，完成 SEO/GEO、站内链接和封面；
-- 独立进行逻辑、证据、作者声音和 AI 味审读；
+- 原生撰写博客文章，并按文体决定是否需要 SEO/GEO、FAQ、站内链接和封面；
+- 先做发展编辑，再做事实、隐私和行文审读；
 - 本地运行文章级文档检查；全量生产构建与 E2E 由 CI/CD 承担，交付等待作者签字的成稿。
+
+brief 默认是 800–1500 个中文字符的轻量编辑契约，不是小标题、FAQ、最终标题和逐段结论齐全的文章预制件。已批准原话与必要事实附件可以更长，但只保留会改变文章的材料。
 
 ## 文件约定
 
 - 一篇候选文章一个文件：`YYYY-MM-DD-<slug>.md`。
 - 新 brief 使用 [`_TEMPLATE.md`](./_TEMPLATE.md)。
+- `brief_type` 可用 `thinking`、`research`、`field-note`、`maintenance`。
 - 进入队列的任务必须使用 `schema: blog-brief/v1`；legacy 文件和缺少必填区块的任务不会被执行。
 - `content/` 只存放可发布文章；未完成内容留在工作分支或 brief，不创建隐藏占位页。
 - `source_refs` 使用 `brain://` 标识，不写机器绝对路径，也不复制 private 内容。
@@ -42,7 +47,7 @@ ready
   → published
 
 任意处理中状态 → blocked
-ready / blocked → cancelled
+任意未发布状态 → cancelled
 ```
 
 | 状态 | 所有者 | 含义 |
@@ -50,11 +55,11 @@ ready / blocked → cancelled
 | `ready` | brain | 上游材料已达到下发门槛，等待博客认领 |
 | `claimed` | blog | 已认领；同一时间只处理一篇 |
 | `drafting` | blog | 正在研究、写作或制作封面 |
-| `review` | blog | 正在独立评分、修订和构建验证 |
+| `review` | blog | 正在发展编辑、事实审读、修订和构建验证 |
 | `ready-to-publish` | blog | 质量门已通过，等待作者最终签字 |
 | `published` | blog | 已发布，填写成品 URL 与日期 |
 | `blocked` | blog | 缺作者确认、关键证据或隐私裁决 |
-| `cancelled` | 任一侧 | 明确不再执行，保留原因 |
+| `cancelled` | 任一侧 | 明确不再执行，或发展编辑给出 `KILL`；保留原因 |
 
 ## 队列命令
 
@@ -95,8 +100,10 @@ npm run briefs:dispatch -- --brief _briefs/YYYY-MM-DD-slug.md --dry-run
 - brief 是选题契约，不是可直接发布的文章；
 - 不得从 `source_refs` 读取未获批准的 private 内容；
 - 缺少作者一手增量时转为 `blocked`，不让 AI 补造经历；
+- 思考型 brief 缺本人选择的文章形态时转为 `blocked`；
 - 外部研究必须区分事实、来源观点和本文推论；
-- SEO、FAQ 和标题都服务于已经确认的命题；
+- SEO、FAQ 和标题都服务于已经确认的命题；思考型文章不强制使用；
+- 发展编辑可以给出 `KEEP`、`REBUILD` 或 `KILL`，不为了进入队列完成态而强行成文；`KILL` 时记录 verdict 与原因，并把状态改为 `cancelled`；
 - 质量门通过后停在 `ready-to-publish`，未经作者确认不自动发布。
 
 发布后在 brief 末尾填写“执行回执”，供上游 `retro` 使用。

@@ -153,17 +153,15 @@ test('buildPrompt: canvas rule is positive-first with a negative backup, in both
 });
 
 // Regression: spelling out the site palette by hex code produced a literal
-// swatch chart. The fixed style anchor names a medium, a colour budget, and a
-// composition — never a colour, never a code. "16:9" stays out of the text too;
-// the aspect ratio travels in the API `size` parameter, and digits in the
-// prompt are digits the model can draw.
-test('buildPrompt: the style anchor names no colours, hex codes, or digits', () => {
+// swatch chart. The quality baseline keeps codes out but deliberately avoids
+// pinning every article to one medium, palette, and composition.
+test('buildPrompt: the quality baseline is safe without forcing one visual template', () => {
   const p = buildPrompt({ title: 'x', description: 'y', tags: [], scene: '一张桌子。' });
   assert.ok(!/#[0-9A-Fa-f]{6}/.test(p), 'no hex codes reach the model');
-  assert.ok(!/(靛蓝|青色|大地色|石墨|暖白|palette)/i.test(p), 'no colour vocabulary either');
   assert.ok(!/16:9|\d+x\d+/.test(p), 'aspect ratio lives in the size param, not the text');
-  assert.ok(/横构图/.test(p), 'orientation is still stated, in words');
-  assert.ok(/留出安静的空间/.test(p), 'upper region stays calm for crops and overlays');
+  assert.ok(/横向博客封面/.test(p), 'orientation is still stated, in words');
+  assert.ok(/缩略图/.test(p), 'thumbnail legibility remains a shared quality rule');
+  assert.ok(!/扁平的杂志编辑插画|低饱和|纸纹|主体偏下/.test(p), 'medium and composition are not fixed globally');
 });
 
 test('buildPrompt: tolerates missing fields in fallback mode', () => {
@@ -220,6 +218,7 @@ test('buildScenePrompt: demands a drawable scene and blacklists the clichés', (
   assert.ok(p.includes('标题：超级个体的情报系统'), 'the reading model gets the title');
   assert.ok(p.includes('摘要：'), 'and the description');
   assert.ok(/具象的、可以直接画出来/.test(p), 'the answer must be a paintable scene');
+  assert.ok(/媒介或材质|光线或色彩逻辑/.test(p), 'the reading model chooses an art direction, not only objects');
   assert.ok(/电路|机器人|网络节点图/.test(p), 'the tech-cliché blacklist is present');
   assert.ok(/只输出画面描述/.test(p), 'the answer format is pinned');
 });

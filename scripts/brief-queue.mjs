@@ -33,7 +33,7 @@ const VALID_V1_STATUSES = new Set([
   'blocked',
   'cancelled',
 ]);
-const VALID_BRIEF_TYPES = new Set(['thinking', 'research', 'maintenance']);
+const VALID_BRIEF_TYPES = new Set(['thinking', 'research', 'field-note', 'maintenance']);
 const PRIORITY_RANK = new Map([
   ['high', 0],
   ['normal', 1],

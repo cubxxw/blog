@@ -1,61 +1,47 @@
 # Research Protocol
 
-## Two research tracks
+Research should change confidence or help a reader act. It should not decorate a predetermined essay.
 
-### Epistemic track
+## Choose the depth
 
-Answer:
+- `thinking`: verify decisive facts and find one serious challenge or alternative explanation. Stop when further sources would only add defensive completeness.
+- `research`: investigate the evidence and the reader's search/task language.
+- `field-note`: verify unstable external facts; preserve the note's provisional status.
+- `maintenance`: verify only changed claims and links.
 
-- Which brief facts are externally verifiable?
-- What is the strongest primary evidence?
-- What is the strongest counterargument or alternative explanation?
-- Which recent facts could invalidate the brief?
-- What boundary prevents overgeneralization?
+There is no minimum source count.
 
-Prioritize sources:
+## Epistemic questions
 
-1. standards, laws, official documentation, original datasets;
-2. peer-reviewed or original research;
-3. first-party company reports and repositories;
-4. reputable reporting with named sources;
-5. expert analysis;
-6. aggregators and SEO summaries only as discovery aids.
+- Which claims are externally verifiable?
+- What is the strongest primary source?
+- What evidence narrows or overturns the claim?
+- What boundary matters to the reader's decision?
 
-For technical research, rely on primary sources for final support. Verify publication date, event date, version, geography, sample, and conflicts of interest.
+Prefer standards, laws, official documentation, original data, peer-reviewed research, repositories, and direct first-party records. Use secondary sources for discovery or context when a primary source is unavailable.
 
-### Search-intent track
+For current, technical, legal, financial, medical, product, or statistical claims, verify publication date, event date, version, geography, sample, and conflicts of interest.
 
-Answer:
+## Reader-task research
 
-- What full questions would a reader search?
-- Is the dominant intent explanation, tutorial, comparison, decision, or reflection?
-- What do current results repeat?
-- What important experience, counterargument, or evidence is missing?
-- Which site articles provide prerequisites, evidence, or follow-up?
+Use for `research` articles and only when helpful elsewhere:
 
-Do not estimate search volume without a real data source. Do not convert a durable essay into a keyword-shaped article when intent is weak.
+- What is the reader trying to decide or complete?
+- How do they phrase the question?
+- What do existing results answer well?
+- What material would make this article genuinely more useful?
+- Which internal page is a prerequisite or next step?
 
-## Source ledger
+Do not estimate demand without data. Do not reshape an essay around a weak keyword.
 
-For every retained source record:
+## Retained-source note
 
-| Field | Requirement |
-|---|---|
-| URL | Direct page, not a search-results URL |
-| Authority | Why this source is competent |
-| Claim | Exact article claim it supports or challenges |
-| Support | What the source establishes |
-| Limit | What it does not establish |
-| Date | Publication/event date and verification date |
-| Placement | Planned paragraph or section |
+For each source that remains in the article, record:
 
-Remove sources not used in the final reasoning. Place Markdown links immediately beside supported claims; avoid detached bibliography dumping unless the article genuinely needs one.
+```text
+source → supported/challenged claim → what it proves → what it cannot prove → checked date
+```
 
-## Synthesis rules
+Remove decorative sources. Place links next to the claims they support. Keep source fact, source interpretation, author observation, and article inference distinct.
 
-- Keep source fact, source interpretation, author observation, and article inference visibly distinct.
-- Never treat multiple articles repeating one origin as independent confirmation.
-- Do not infer causality from sequence or correlation without evidence.
-- Prefer a smaller number of strong, relevant links.
-- Preserve uncertainty when sources disagree.
-- If research overturns the brief's central claim, stop and return it upstream instead of quietly changing the article.
+If research overturns the brief's central claim, stop and return the decision upstream instead of quietly repairing it with caveats.
