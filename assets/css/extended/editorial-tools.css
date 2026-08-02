@@ -396,39 +396,71 @@ html:lang(zh) body.dark .editorial-tools-panel .toc-item.toc-section-current > a
 }
 
 /* ────────────────────────────────────────────────────────────────
-   AI PANEL — Notion/ChatGPT hybrid, airy & readable
+   AI PANEL — editorial reading tool with Apple-like materiality.
+   The glass treatment is a web approximation, not Apple UI code.
    ──────────────────────────────────────────────────────────────── */
 .editorial-tools-panel .rc-ai-panel {
+  --rc-ai-radius: 14px;
+  --rc-ai-control-radius: 11px;
+  --rc-ai-border: rgba(30, 35, 30, 0.11);
+  --rc-ai-border-strong: rgba(30, 35, 30, 0.18);
+  --rc-ai-surface: rgba(255, 255, 255, 0.34);
+  --rc-ai-surface-soft: rgba(30, 35, 30, 0.035);
+  --rc-ai-shadow: 0 12px 28px rgba(52, 45, 38, 0.055);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 13px;
   padding: 0;
   position: relative;
   z-index: 1;
 }
 
-/* "Quick start" label */
+body.dark .editorial-tools-panel .rc-ai-panel {
+  --rc-ai-border: rgba(226, 227, 225, 0.13);
+  --rc-ai-border-strong: rgba(226, 227, 225, 0.22);
+  --rc-ai-surface: rgba(226, 227, 225, 0.045);
+  --rc-ai-surface-soft: rgba(226, 227, 225, 0.055);
+  --rc-ai-shadow: 0 14px 32px rgba(0, 0, 0, 0.13);
+}
+
+.editorial-tools-panel .rc-ai-intro {
+  display: grid;
+  gap: 4px;
+  padding: 1px 2px 0;
+}
+
 .editorial-tools-panel .rc-ai-quick-label {
+  margin: 0;
+  color: var(--color-ink, #1a1c1b);
   font-family: var(--font-body);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-ink-muted, #5e5e63);
-  font-weight: 600;
-  opacity: 0.5;
-  margin: 0 0 -2px 2px;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
   -webkit-font-smoothing: antialiased;
 }
 
 html:lang(zh) .editorial-tools-panel .rc-ai-quick-label {
-  font-size: 11.5px;
-  letter-spacing: 0.18em;
-  text-transform: none;
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
 }
 
-/* Chip grid — 2 columns, quiet hairline pills.
-   No emoji, no fills: the labels are short enough to carry
-   themselves; accent color only surfaces on intent (hover). */
+.editorial-tools-panel .rc-ai-intro-copy {
+  margin: 0;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  line-height: 1.55;
+  opacity: 0.7;
+}
+
+html:lang(zh) .editorial-tools-panel .rc-ai-intro-copy {
+  font-size: 12px;
+  letter-spacing: 0.015em;
+}
+
+/* Compact tool tiles keep six entry points scannable without making
+   the sidebar look like a wall of chat pills. */
 .editorial-tools-panel .rc-ai-quick {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -436,164 +468,455 @@ html:lang(zh) .editorial-tools-panel .rc-ai-quick-label {
   margin: 0;
 }
 
+/* Once a question is sent, the reading tools recede so the answer gains the
+   full sidebar canvas. Continued exploration stays available below the answer. */
+.editorial-tools-panel .rc-ai-panel--engaged .rc-ai-intro,
+.editorial-tools-panel .rc-ai-panel--engaged .rc-ai-quick {
+  display: none;
+}
+
 .editorial-tools-panel .rc-ai-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0;
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  line-height: 1.3;
-  font-weight: 450;
-  padding: 7px 10px;
-  border: 1px solid rgba(30, 35, 30, 0.12);
-  border-radius: 999px;
-  background: transparent;
-  color: color-mix(in oklab, var(--color-ink, #1a1c1b) 72%, transparent);
+  justify-content: flex-start;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: var(--rc-ai-control-radius);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.44), rgba(255, 255, 255, 0.12)),
+    var(--rc-ai-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    0 1px 2px rgba(45, 39, 33, 0.035);
+  color: color-mix(in oklab, var(--color-ink, #1a1c1b) 78%, transparent);
   cursor: pointer;
-  transition: background-color 180ms ease, border-color 180ms ease,
-              color 180ms ease, transform 120ms ease;
-  text-align: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 520;
+  line-height: 1.3;
+  text-align: left;
   user-select: none;
-  pointer-events: auto;
-  min-height: 32px;
+  transition:
+    background-color 180ms cubic-bezier(.22, 1, .36, 1),
+    border-color 180ms cubic-bezier(.22, 1, .36, 1),
+    box-shadow 180ms cubic-bezier(.22, 1, .36, 1),
+    color 180ms ease,
+    transform 120ms ease;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 html:lang(zh) .editorial-tools-panel .rc-ai-chip {
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  font-weight: 400;
+  font-size: 12.5px;
+  font-weight: 480;
+  letter-spacing: 0.035em;
 }
 
 .editorial-tools-panel .rc-ai-chip:hover {
-  background: color-mix(in oklab, var(--color-accent, #862122) 5%, transparent);
-  border-color: color-mix(in oklab, var(--color-accent, #862122) 45%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent, #862122) 34%, var(--rc-ai-border));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.18)),
+    color-mix(in oklab, var(--color-accent, #862122) 5%, var(--rc-ai-surface));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 5px 14px rgba(52, 45, 38, 0.06);
   color: var(--color-accent, #862122);
-  box-shadow: none;
+  transform: translateY(-1px);
 }
 
 .editorial-tools-panel .rc-ai-chip:active {
-  transform: scale(0.97);
+  box-shadow: inset 0 1px 2px rgba(30, 35, 30, 0.06);
+  transform: translateY(0) scale(0.985);
 }
 
 body.dark .editorial-tools-panel .rc-ai-chip {
-  background: transparent;
-  border-color: rgba(226, 227, 225, 0.14);
-  color: color-mix(in oklab, var(--color-ink, #e2e3e1) 75%, transparent);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+    var(--rc-ai-surface);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: color-mix(in oklab, var(--color-ink, #e2e3e1) 80%, transparent);
 }
 
 body.dark .editorial-tools-panel .rc-ai-chip:hover {
-  background: color-mix(in oklab, var(--color-accent, #ff6b6b) 8%, transparent);
-  border-color: color-mix(in oklab, var(--color-accent, #ff6b6b) 45%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent, #ff6b6b) 40%, var(--rc-ai-border));
+  background: color-mix(in oklab, var(--color-accent, #ff6b6b) 8%, var(--rc-ai-surface));
   color: var(--color-accent, #ff6b6b);
 }
 
 .editorial-tools-panel .rc-ai-chip--used,
 .editorial-tools-panel .rc-ai-chip:disabled {
-  opacity: 0.38;
+  opacity: 0.34;
   cursor: default;
   pointer-events: none;
-  background: transparent;
+  transform: none;
 }
 
-/* Messages — prose-like, airy */
+/* The question is context. The answer is the reading artifact. */
 .editorial-tools-panel .rc-ai-messages {
-  font-family: var(--font-body);
-  font-size: 13.5px;
-  line-height: 1.72;
-  max-height: 340px;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
+  max-height: min(44vh, 430px);
   margin: 0;
+  padding: 1px 2px 2px 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
 }
 
 html:lang(zh) .editorial-tools-panel .rc-ai-messages {
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  line-height: 1.85;
+  font-size: 13.5px;
+  letter-spacing: 0.015em;
+  line-height: 1.78;
+}
+
+.editorial-tools-panel .rc-ai-messages::-webkit-scrollbar {
+  width: 3px;
+}
+
+.editorial-tools-panel .rc-ai-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editorial-tools-panel .rc-ai-messages::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--rc-ai-border-strong);
 }
 
 .editorial-tools-panel .rc-ai-msg {
-  padding: 10px 12px;
-  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .editorial-tools-panel .rc-ai-msg--user {
-  background: rgba(30, 35, 30, 0.05);
-  color: var(--color-ink, #1a1c1b);
-  align-self: flex-end;
-  max-width: 92%;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  max-width: none;
+  padding: 4px 3px 4px 10px;
+  border-left: 2px solid var(--rc-ai-border-strong);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 11.5px;
+  line-height: 1.55;
+  opacity: 0.72;
 }
 
-.editorial-tools-panel .rc-ai-msg--ai {
-  color: var(--color-ink, #1a1c1b);
-  padding: 4px 0;
+.editorial-tools-panel .rc-ai-user-label {
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 9.5px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  line-height: 1.9;
 }
 
-body.dark .editorial-tools-panel .rc-ai-msg--user {
-  background: rgba(226, 227, 225, 0.08);
+.editorial-tools-panel .rc-ai-user-text {
+  margin: 0;
+}
+
+.editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: var(--rc-ai-radius);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.12)),
+    var(--rc-ai-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    var(--rc-ai-shadow);
+  color: var(--color-ink, #1a1c1b);
+  animation: rc-ai-answer-in 320ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting) {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
+    var(--rc-ai-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.085),
+    var(--rc-ai-shadow);
   color: var(--color-ink, #e2e3e1);
 }
 
-body.dark .editorial-tools-panel .rc-ai-msg--ai {
+.editorial-tools-panel .rc-ai-answer-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 7px 9px 7px 12px;
+  border-bottom: 1px solid var(--rc-ai-border);
+}
+
+.editorial-tools-panel .rc-ai-answer-mark {
+  color: var(--color-accent, #862122);
+  font-size: 10px;
+  font-weight: 720;
+  letter-spacing: 0.055em;
+}
+
+.editorial-tools-panel .rc-ai-answer-title {
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 10.5px;
+  font-weight: 580;
+  letter-spacing: 0.02em;
+  opacity: 0.78;
+}
+
+.editorial-tools-panel .rc-ai-answer-context {
+  margin-left: auto;
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 9.5px;
+  opacity: 0.55;
+}
+
+.editorial-tools-panel .rc-ai-answer-body {
+  padding: 12px 13px 14px;
+}
+
+.editorial-tools-panel .rc-ai-answer-body > :first-child {
+  margin-top: 0;
+}
+
+.editorial-tools-panel .rc-ai-answer-body > :last-child {
+  margin-bottom: 0;
+}
+
+.editorial-tools-panel .rc-ai-answer-body p {
+  margin: 0 0 10px;
+}
+
+.editorial-tools-panel .rc-ai-answer-body h3,
+.editorial-tools-panel .rc-ai-answer-body h4 {
+  margin: 14px 0 6px;
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 680;
+  letter-spacing: 0.01em;
+  line-height: 1.45;
+}
+
+body.dark .editorial-tools-panel .rc-ai-answer-body h3,
+body.dark .editorial-tools-panel .rc-ai-answer-body h4 {
   color: var(--color-ink, #e2e3e1);
 }
 
-/* Composer — generous, with breathing room above */
+.editorial-tools-panel .rc-ai-answer-body strong {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 660;
+}
+
+body.dark .editorial-tools-panel .rc-ai-answer-body strong {
+  color: var(--color-ink, #e2e3e1);
+}
+
+.editorial-tools-panel .rc-ai-answer-body em {
+  color: color-mix(in oklab, var(--color-ink, #1a1c1b) 82%, transparent);
+}
+
+.editorial-tools-panel .rc-ai-list {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 11px;
+  padding-left: 1.35em;
+}
+
+.editorial-tools-panel .rc-ai-list li {
+  padding-left: 3px;
+}
+
+.editorial-tools-panel .rc-ai-list li::marker {
+  color: var(--color-accent, #862122);
+  font-size: 0.88em;
+  font-weight: 650;
+}
+
+.editorial-tools-panel .rc-ai-answer-body blockquote {
+  margin: 10px 0;
+  padding: 8px 10px;
+  border-left: 2px solid color-mix(in oklab, var(--color-accent, #862122) 66%, transparent);
+  border-radius: 0 9px 9px 0;
+  background: color-mix(in oklab, var(--color-accent, #862122) 5%, transparent);
+  color: color-mix(in oklab, var(--color-ink, #1a1c1b) 82%, transparent);
+}
+
+.editorial-tools-panel .rc-ai-answer-body blockquote p {
+  margin: 0;
+}
+
+.editorial-tools-panel .rc-ai-answer-body code {
+  padding: 0.1em 0.34em;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: 5px;
+  background: var(--rc-ai-surface-soft);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.88em;
+}
+
+.editorial-tools-panel .rc-ai-answer-body pre {
+  max-width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  overflow-x: auto;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: 9px;
+  background: var(--rc-ai-surface-soft);
+}
+
+.editorial-tools-panel .rc-ai-answer-body pre code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.editorial-tools-panel .rc-ai-greeting {
+  padding: 11px 12px;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: var(--rc-ai-radius);
+  background: var(--rc-ai-surface-soft);
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 11.5px;
+  line-height: 1.65;
+  opacity: 0.78;
+}
+
+html:lang(zh) .editorial-tools-panel .rc-ai-greeting {
+  font-size: 12px;
+}
+
+.editorial-tools-panel .rc-ai-msg--error {
+  border-color: color-mix(in oklab, #c0392b 38%, var(--rc-ai-border)) !important;
+}
+
+.editorial-tools-panel .rc-ai-msg--error .rc-ai-answer-context {
+  display: none;
+}
+
+.editorial-tools-panel .rc-ai-msg--error .rc-ai-answer-body {
+  color: #a23a30;
+}
+
+.editorial-tools-panel .rc-ai-msg--error .ai-retry-btn {
+  display: block;
+  margin-top: 9px;
+  padding: 5px 9px;
+  border: 1px solid currentColor;
+  border-radius: 7px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  opacity: 0.76;
+}
+
+.editorial-tools-panel .ai-sources {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 9px 2px 0;
+  border-top: 1px solid var(--rc-ai-border);
+  font-size: 10.5px;
+  opacity: 1;
+}
+
+.editorial-tools-panel .ai-sources-label {
+  margin: 0 6px 2px;
+  color: var(--color-ink-muted, #5e5e63);
+  font-weight: 620;
+  letter-spacing: 0.04em;
+  opacity: 0.62;
+}
+
+.editorial-tools-panel .ai-source-link {
+  display: block;
+  margin: 0;
+  padding: 6px 7px;
+  border-radius: 8px;
+  background: transparent;
+  color: color-mix(in oklab, var(--color-ink, #1a1c1b) 78%, transparent);
+  line-height: 1.45;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.editorial-tools-panel .ai-source-link:hover {
+  background: color-mix(in oklab, var(--color-accent, #862122) 5%, transparent);
+  color: var(--color-accent, #862122);
+}
+
+/* Composer sits on the page as one quiet glass-like control. */
 .editorial-tools-panel .rc-ai-input-area {
   position: relative;
   display: flex;
-  gap: 6px;
+  gap: 7px;
   align-items: flex-end;
-  padding: 8px 8px 8px 12px;
-  border: 1px solid rgba(30, 35, 30, 0.1);
-  border-radius: 10px;
-  background: var(--color-paper, #f9f9f7);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
-  margin-top: 6px;
+  margin-top: 1px;
+  padding: 8px 8px 8px 11px;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: var(--rc-ai-radius);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.16)),
+    var(--rc-ai-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 5px 18px rgba(52, 45, 38, 0.045);
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  transition:
+    border-color 180ms ease,
+    box-shadow 220ms cubic-bezier(.22, 1, .36, 1),
+    transform 220ms cubic-bezier(.22, 1, .36, 1);
 }
 
 .editorial-tools-panel .rc-ai-input-area:focus-within {
-  border-color: rgba(30, 35, 30, 0.3);
-  box-shadow: 0 0 0 3px rgba(30, 35, 30, 0.04);
+  border-color: color-mix(in oklab, var(--color-accent, #862122) 48%, var(--rc-ai-border));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 0 0 3px color-mix(in oklab, var(--color-accent, #862122) 9%, transparent),
+    0 10px 26px rgba(52, 45, 38, 0.065);
+  transform: translateY(-1px);
 }
 
 body.dark .editorial-tools-panel .rc-ai-input-area {
-  background: rgba(226, 227, 225, 0.03);
-  border-color: rgba(226, 227, 225, 0.12);
-}
-
-body.dark .editorial-tools-panel .rc-ai-input-area:focus-within {
-  border-color: rgba(226, 227, 225, 0.3);
-  box-shadow: 0 0 0 3px rgba(226, 227, 225, 0.05);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
+    var(--rc-ai-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .editorial-tools-panel .rc-ai-textarea {
   flex: 1;
   min-width: 0;
   box-sizing: border-box;
-  font-family: var(--font-body);
-  font-size: 13.5px;
-  line-height: 1.55;
-  font-weight: 400;
+  padding: 5px 0;
   border: none;
-  background: transparent;
-  padding: 6px 0;
-  resize: none;
-  color: var(--color-ink, #1a1c1b);
   outline: none;
-  transition: none;
+  resize: none;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 420;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
 html:lang(zh) .editorial-tools-panel .rc-ai-textarea {
-  font-size: 14px;
-  letter-spacing: 0.02em;
+  font-size: 13px;
+  letter-spacing: 0.015em;
 }
 
 body.dark .editorial-tools-panel .rc-ai-textarea {
@@ -602,63 +925,46 @@ body.dark .editorial-tools-panel .rc-ai-textarea {
 
 .editorial-tools-panel .rc-ai-textarea::placeholder {
   color: var(--color-ink-muted, #5e5e63);
-  opacity: 0.55;
+  opacity: 0.62;
 }
 
 .editorial-tools-panel .rc-ai-send {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  background: var(--color-accent, #862122);
-  color: var(--color-paper, #f9f9f7);
+  width: 31px;
+  height: 31px;
   border: none;
-  border-radius: 6px;
+  border-radius: 9px;
+  background: var(--color-accent, #862122);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  color: var(--color-paper, #f9f9f7);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 150ms ease, transform 120ms ease;
+  transition: opacity 150ms ease, transform 120ms ease, box-shadow 150ms ease;
 }
 
-.editorial-tools-panel .rc-ai-send:hover { opacity: 0.9; }
-.editorial-tools-panel .rc-ai-send:active { transform: scale(0.94); }
+.editorial-tools-panel .rc-ai-send:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    0 4px 10px color-mix(in oklab, var(--color-accent, #862122) 22%, transparent);
+  transform: translateY(-1px);
+}
 
-/* Dimmed when there's nothing to send (empty composer or mid-request) */
+.editorial-tools-panel .rc-ai-send:active {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.16);
+  transform: translateY(0) scale(0.96);
+}
+
 .editorial-tools-panel .rc-ai-send--empty {
-  opacity: 0.4;
+  opacity: 0.34;
   cursor: default;
 }
-.editorial-tools-panel .rc-ai-send--empty:hover { opacity: 0.4; }
-.editorial-tools-panel .rc-ai-send--empty:active { transform: none; }
 
-/* Remaining-character hint — surfaces only near the cap, pinned to the
-   composer's top-right so it never reflows the textarea or send button. */
-.editorial-tools-panel .rc-ai-charcount {
-  position: absolute;
-  top: -7px;
-  right: 10px;
-  padding: 0 5px;
-  font-size: 0.62rem;
-  line-height: 1.4;
-  color: var(--color-ink-muted, #5e5e63);
-  background: var(--color-paper, #f9f9f7);
-  border-radius: 4px;
-  pointer-events: none;
-}
-body.dark .editorial-tools-panel .rc-ai-charcount {
-  color: rgba(226, 227, 225, 0.5);
-  background: #23261f;
-}
-.editorial-tools-panel .rc-ai-charcount--warn {
-  color: var(--color-accent, #862122);
-  font-weight: 600;
-}
-body.dark .editorial-tools-panel .rc-ai-charcount--warn {
-  color: #e8a0a0;
-}
-
-html:lang(en) .editorial-tools-panel .rc-ai-send {
-  background: var(--color-accent, #2e352e);
+.editorial-tools-panel .rc-ai-send--empty:hover,
+.editorial-tools-panel .rc-ai-send--empty:active {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transform: none;
 }
 
 .editorial-tools-panel .rc-ai-send svg {
@@ -666,61 +972,136 @@ html:lang(en) .editorial-tools-panel .rc-ai-send {
   height: 13px;
 }
 
+.editorial-tools-panel .rc-ai-charcount {
+  position: absolute;
+  top: -7px;
+  right: 11px;
+  padding: 0 5px;
+  border-radius: 5px;
+  background: var(--color-paper, #f9f9f7);
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 0.62rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+body.dark .editorial-tools-panel .rc-ai-charcount {
+  background: var(--color-paper, #121413);
+  color: rgba(226, 227, 225, 0.58);
+}
+
+.editorial-tools-panel .rc-ai-charcount--warn {
+  color: var(--color-accent, #862122);
+  font-weight: 650;
+}
+
+/* Sharing belongs to the answer header, not the input composer. */
 .editorial-tools-panel .rc-ai-share-btn {
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  border: 1px solid rgba(30, 35, 30, 0.12);
-  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 24px;
+  margin-left: auto;
+  padding: 3px 7px;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: 8px;
+  background: var(--rc-ai-surface-soft);
   color: var(--color-ink-muted, #5e5e63);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
-  padding: 0;
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 580;
+  line-height: 1;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 120ms ease;
 }
 
 .editorial-tools-panel .rc-ai-share-btn:hover {
-  background: rgba(30, 35, 30, 0.06);
-  border-color: rgba(30, 35, 30, 0.2);
-  color: var(--color-ink, #1a1c1b);
+  border-color: color-mix(in oklab, var(--color-accent, #862122) 35%, var(--rc-ai-border));
+  background: color-mix(in oklab, var(--color-accent, #862122) 6%, var(--rc-ai-surface-soft));
+  color: var(--color-accent, #862122);
+  transform: translateY(-1px);
 }
 
-body.dark .editorial-tools-panel .rc-ai-share-btn {
-  border-color: rgba(226, 227, 225, 0.14);
-  color: rgba(226, 227, 225, 0.5);
+.editorial-tools-panel .rc-ai-share-btn:active {
+  transform: translateY(0) scale(0.97);
 }
 
-body.dark .editorial-tools-panel .rc-ai-share-btn:hover {
-  background: rgba(226, 227, 225, 0.08);
-  border-color: rgba(226, 227, 225, 0.24);
-  color: var(--color-ink, #e2e3e1);
+.editorial-tools-panel .rc-ai-share-btn svg {
+  width: 11px;
+  height: 11px;
 }
 
 .editorial-tools-panel .rc-ai-loading {
   display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  font-size: 0.7rem;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px 11px 11px;
+  border: 1px solid var(--rc-ai-border);
+  border-radius: var(--rc-ai-radius);
+  background: var(--rc-ai-surface);
   color: var(--color-ink-muted, #5e5e63);
 }
 
-.editorial-tools-panel .rc-ai-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--color-ink-muted, #5e5e63);
-  animation: rc-dot-pulse 1.2s infinite ease-in-out;
+.editorial-tools-panel .rc-ai-loading-mark {
+  flex: none;
+  padding-top: 1px;
+  color: var(--color-accent, #862122);
+  font-size: 9.5px;
+  font-weight: 720;
+  letter-spacing: 0.05em;
 }
 
-.editorial-tools-panel .rc-ai-dot:nth-child(2) { animation-delay: 0.2s; }
-.editorial-tools-panel .rc-ai-dot:nth-child(3) { animation-delay: 0.4s; }
+.editorial-tools-panel .rc-ai-loading-body {
+  flex: 1;
+  display: grid;
+  gap: 6px;
+}
 
-@keyframes rc-dot-pulse {
-  0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-  40% { transform: scale(1); opacity: 1; }
+.editorial-tools-panel .rc-ai-loading-text {
+  font-size: 10.5px;
+  font-weight: 560;
+  line-height: 1.25;
+  opacity: 0.72;
+}
+
+.editorial-tools-panel .rc-ai-loading-line {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--rc-ai-surface-soft);
+  position: relative;
+}
+
+.editorial-tools-panel .rc-ai-loading-line--short {
+  width: 68%;
+}
+
+.editorial-tools-panel .rc-ai-loading-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
+  transform: translateX(-100%);
+  animation: rc-ai-skeleton 1.25s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+
+body.dark .editorial-tools-panel .rc-ai-loading-line::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+@keyframes rc-ai-answer-in {
+  from { opacity: 0; transform: translateY(7px) scale(0.992); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes rc-ai-skeleton {
+  to { transform: translateX(100%); }
 }
 
 /* ── Share panel ── */
@@ -804,20 +1185,14 @@ body.dark .editorial-tools-panel .rc-ai-share-btn:hover {
   flex: none;
 }
 
-/* ── Follow-up suggestion chips (post-reply, chat-agent feel) ── */
+/* ── Follow-up reading paths ── */
 .editorial-tools-panel .rc-ai-followups {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin-top: 2px;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(30, 35, 30, 0.1);
+  display: grid;
+  gap: 2px;
+  margin-top: 1px;
+  padding: 9px 2px 0;
+  border-top: 1px solid var(--rc-ai-border, rgba(30, 35, 30, 0.1));
   animation: rc-followup-in 260ms cubic-bezier(.22, 1, .36, 1);
-}
-
-body.dark .editorial-tools-panel .rc-ai-followups {
-  border-top-color: rgba(226, 227, 225, 0.12);
 }
 
 @keyframes rc-followup-in {
@@ -827,82 +1202,86 @@ body.dark .editorial-tools-panel .rc-ai-followups {
 
 .editorial-tools-panel .rc-ai-followups__label {
   font-family: var(--font-body);
-  font-size: 10.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.035em;
+  font-weight: 620;
   color: var(--color-ink-muted, #5e5e63);
-  opacity: 0.5;
-  width: 100%;
-  margin-bottom: 1px;
+  opacity: 0.62;
+  margin: 0 7px 3px;
 }
 
 html:lang(zh) .editorial-tools-panel .rc-ai-followups__label {
-  text-transform: none;
-  letter-spacing: 0.12em;
-  font-size: 11px;
+  letter-spacing: 0.06em;
+  font-size: 10.5px;
 }
 
 .editorial-tools-panel .rc-ai-followup {
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  line-height: 1.3;
-  font-weight: 400;
-  padding: 5px 11px;
-  border: 1px solid rgba(30, 35, 30, 0.12);
-  border-radius: 14px;
+  position: relative;
+  width: 100%;
+  padding: 6px 22px 6px 7px;
+  border: 0;
+  border-radius: 8px;
   background: transparent;
-  color: var(--color-ink, #1a1c1b);
+  color: color-mix(in oklab, var(--color-ink, #1a1c1b) 78%, transparent);
   cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 430;
+  line-height: 1.45;
   text-align: left;
-  transition: background-color 160ms ease, border-color 160ms ease,
-              color 160ms ease, transform 120ms ease;
+  transition: background-color 160ms ease, color 160ms ease, transform 120ms ease;
   -webkit-font-smoothing: antialiased;
 }
 
+.editorial-tools-panel .rc-ai-followup::after {
+  content: "›";
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 15px;
+  line-height: 1;
+  opacity: 0.42;
+  transform: translateY(-52%);
+  transition: opacity 160ms ease, transform 160ms cubic-bezier(.22, 1, .36, 1);
+}
+
 html:lang(zh) .editorial-tools-panel .rc-ai-followup {
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-size: 12px;
+  letter-spacing: 0.01em;
 }
 
 .editorial-tools-panel .rc-ai-followup:hover {
-  background: rgba(134, 33, 34, 0.06);
-  border-color: var(--color-accent, #862122);
+  background: color-mix(in oklab, var(--color-accent, #862122) 5%, transparent);
   color: var(--color-accent, #862122);
 }
 
-html:lang(en) .editorial-tools-panel .rc-ai-followup:hover {
-  background: rgba(46, 53, 46, 0.06);
-  border-color: var(--color-accent, #2e352e);
-  color: var(--color-accent, #2e352e);
+.editorial-tools-panel .rc-ai-followup:hover::after {
+  opacity: 0.82;
+  transform: translate(2px, -52%);
 }
 
 .editorial-tools-panel .rc-ai-followup:active {
-  transform: scale(0.97);
+  transform: scale(0.985);
 }
 
-/* Tapped follow-up: solid accent fill, so the choice reads clearly in the
-   moment between click and the next turn replacing the row. */
 .editorial-tools-panel .rc-ai-followup--active,
 .editorial-tools-panel .rc-ai-followup--active:hover {
-  background: var(--color-accent, #862122);
-  border-color: var(--color-accent, #862122);
-  color: var(--color-paper, #f9f9f7);
+  background: color-mix(in oklab, var(--color-accent, #862122) 9%, transparent);
+  color: var(--color-accent, #862122);
 }
-/* Siblings recede so the eye lands on the chosen one. */
+
 .editorial-tools-panel .rc-ai-followup--dim {
-  opacity: 0.4;
+  opacity: 0.32;
 }
 
 body.dark .editorial-tools-panel .rc-ai-followup {
-  border-color: rgba(226, 227, 225, 0.14);
-  color: var(--color-ink, #e2e3e1);
+  color: color-mix(in oklab, var(--color-ink, #e2e3e1) 78%, transparent);
 }
 
 body.dark .editorial-tools-panel .rc-ai-followup:hover {
-  background: rgba(226, 227, 225, 0.08);
-  border-color: rgba(226, 227, 225, 0.3);
-  color: var(--color-ink, #e2e3e1);
+  background: color-mix(in oklab, var(--color-accent, #ff6b6b) 8%, transparent);
+  color: var(--color-accent, #ff6b6b);
 }
 
 /* ── Quick-start collapse (after all chips are used) ── */
@@ -915,7 +1294,33 @@ body.dark .editorial-tools-panel .rc-ai-followup:hover {
    loading affordance, not content, so freezing the dots is safe.
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .editorial-tools-panel .rc-ai-dot {
+  .editorial-tools-panel .rc-ai-msg--ai,
+  .editorial-tools-panel .rc-ai-followups,
+  .editorial-tools-panel .rc-ai-loading-line::after {
     animation: none !important;
+  }
+
+  .editorial-tools-panel .rc-ai-chip,
+  .editorial-tools-panel .rc-ai-input-area,
+  .editorial-tools-panel .rc-ai-send,
+  .editorial-tools-panel .rc-ai-share-btn,
+  .editorial-tools-panel .rc-ai-followup {
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .editorial-tools-panel .rc-ai-input-area,
+  .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting),
+  .editorial-tools-panel .rc-ai-chip {
+    background: var(--color-paper, #f9f9f7);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  body.dark .editorial-tools-panel .rc-ai-input-area,
+  body.dark .editorial-tools-panel .rc-ai-msg--ai:not(.rc-ai-greeting),
+  body.dark .editorial-tools-panel .rc-ai-chip {
+    background: #242522;
   }
 }

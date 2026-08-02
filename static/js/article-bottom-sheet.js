@@ -199,6 +199,7 @@
   function initMobileAi() {
     var panel = document.getElementById('abs-panel-ai');
     if (!panel) return;
+    var surface = panel.querySelector('.abs-ai-panel') || panel;
     var messagesEl = panel.querySelector('.abs-ai-messages');
     var textarea   = panel.querySelector('.abs-ai-textarea');
     var sendBtn    = panel.querySelector('.abs-ai-send');
@@ -206,77 +207,89 @@
 
     var language = ((document.documentElement.getAttribute('lang') || 'en').toLowerCase().indexOf('zh') === 0) ? 'zh' : 'en';
     var T = {
-      zh: { greeting: '我已读完这篇文章，问我任何关于它的问题吧。', timeout: '请求超时，请稍后重试。', error: '请求失败，请稍后重试。', empty: '（未收到回复）' },
-      en: { greeting: "I've read this article — ask me anything about it.", timeout: 'Request timed out. Please try again.', error: 'Request failed. Please try again.', empty: '(No answer received)' }
+      zh: { greeting: '文章已就绪。选择一个阅读角度，或继续追问你在意的细节。', timeout: '请求超时，请稍后重试。', error: '请求失败，请稍后重试。', empty: '（未收到回复）' },
+      en: { greeting: 'The article is ready. Choose a reading lens or ask about a detail that matters to you.', timeout: 'Request timed out. Please try again.', error: 'Request failed. Please try again.', empty: '(No answer received)' }
     }[language];
 
     var endpoint = '/.netlify/functions/article-ai';
     var history = [], busy = false;
 
-    // Share-conversation button — mirrors desktop. Injected into the input
-    // area, revealed after the first reply, reuses the shared ShareConversation
-    // module so mobile readers can share AI chats too.
+    // The share action is attached to the latest answer so its scope is clear.
     var shareBtn = document.createElement('button');
     shareBtn.type = 'button';
     shareBtn.className = 'abs-ai-share-btn';
-    var shareLbl = language === 'zh' ? '分享对话' : 'Share conversation';
+    var shareLbl = language === 'zh' ? '生成分享卡' : 'Share insight';
     shareBtn.setAttribute('aria-label', shareLbl);
     shareBtn.setAttribute('title', shareLbl);
     shareBtn.hidden = true;
-    shareBtn.style.cssText = 'flex-shrink:0;width:34px;height:34px;border-radius:8px;' +
-      'border:1px solid rgba(30,35,30,0.14);background:transparent;color:inherit;' +
-      'cursor:pointer;display:inline-flex;align-items:center;justify-content:center;opacity:0.72;';
-    shareBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
-    var inputArea = panel.querySelector('.abs-ai-input-area');
-    if (inputArea) inputArea.appendChild(shareBtn);
+    shareBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>' + shareLbl + '</span>';
     shareBtn.addEventListener('click', function () {
-      if (typeof ShareConversation === 'undefined' || !history.length) return;
-      ShareConversation.show(history, { lang: language, title: document.title, url: window.location.href });
+      if (!history.length) return;
+      function openShareCard() {
+        if (typeof ShareConversation === 'undefined') return;
+        ShareConversation.show(history, { lang: language, title: articleTitle(), url: window.location.href });
+      }
+      if (typeof ShareConversation !== 'undefined') openShareCard();
+      else if (typeof window.loadShareScripts === 'function') window.loadShareScripts(openShareCard);
     });
+
+    function attachShareToLatestAnswer() {
+      var answers = messagesEl.querySelectorAll('.abs-ai-msg--ai:not(.abs-ai-greeting):not(.abs-ai-msg--error)');
+      if (!answers.length) return;
+      var head = answers[answers.length - 1].querySelector('.abs-ai-answer-head');
+      if (!head) return;
+      shareBtn.hidden = false;
+      head.appendChild(shareBtn);
+    }
 
     if (!messagesEl.children.length) {
       var greet = document.createElement('div');
       greet.className = 'abs-ai-msg abs-ai-msg--ai abs-ai-greeting';
-      greet.style.opacity = '0.62';
-      greet.style.fontStyle = 'italic';
       greet.textContent = T.greeting;
       messagesEl.appendChild(greet);
     }
 
-    // Quick-start chips, mirroring the desktop companion so mobile readers
-    // get the same one-tap entry points. Injected (no HTML template change).
+    var intro = document.createElement('div');
+    intro.className = 'abs-ai-intro';
+    intro.innerHTML =
+      '<strong>' + (language === 'zh' ? '选择阅读角度' : 'Choose a reading lens') + '</strong>' +
+      '<span>' + (language === 'zh' ? '从文章出发，提炼、解释或挑战一个观点。' : 'Extract, explain, or challenge an idea from this article.') + '</span>';
+    surface.insertBefore(intro, messagesEl);
+
     var QUICK = language === 'zh'
-      ? [['📝', '一句话总结', '用 3-5 句话精炼地概括这篇文章的核心观点。'],
-         ['✨', '精彩金句', '从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。'],
-         ['💡', '关键概念', '这篇文章里有哪些容易被忽略但重要的概念？请列出并解释。'],
-         ['🤔', '反方视角', '帮我挑出这篇文章里最值得质疑或反驳的观点，并给出反方视角。']]
-      : [['📝', 'Summary', 'Summarize the key points of this article in 3–5 sentences.'],
-         ['✨', 'Highlights', 'List the 3 most memorable sentences from this article, and briefly explain why they stand out.'],
-         ['💡', 'Key concepts', 'What are the overlooked but important concepts in this article? List and explain.'],
-         ['🤔', 'Counter-argument', 'Which claims in this article are most worth challenging? Give me a counter-argument.']];
+      ? [['核心摘要', '用 3-5 句话精炼地概括这篇文章的核心观点。'],
+         ['精彩金句', '从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。'],
+         ['关键概念', '这篇文章里有哪些容易被忽略但重要的概念？请列出并解释。'],
+         ['反方视角', '帮我挑出这篇文章里最值得质疑或反驳的观点，并给出反方视角。'],
+         ['小白讲解', '如果我是第一次接触这个主题的读者，请用最简单的比喻帮我理解这篇文章。'],
+         ['延伸阅读', '基于这篇文章的主题和内容，推荐 3 个延伸阅读方向或相关话题。']]
+      : [['Summary', 'Summarize the key points of this article in 3-5 sentences.'],
+         ['Highlights', 'List the 3 most memorable sentences from this article, and briefly explain why they stand out.'],
+         ['Key concepts', 'What are the overlooked but important concepts in this article? List and explain.'],
+         ['Counter-argument', 'Which claims in this article are most worth challenging? Give me a counter-argument.'],
+         ['ELI5', 'Explain this article to a complete beginner using the simplest analogy possible.'],
+         ['Further reading', 'Based on this article, suggest 3 directions for further reading or related topics.']];
     var quickWrap = document.createElement('div');
     quickWrap.className = 'abs-ai-quick';
-    quickWrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px;';
     QUICK.forEach(function (item) {
       var chip = document.createElement('button');
       chip.type = 'button';
       chip.className = 'abs-ai-chip';
-      chip.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:7px 11px;' +
-        'border:1px solid rgba(30,35,30,0.12);border-radius:15px;background:transparent;' +
-        'font:inherit;font-size:13px;cursor:pointer;color:inherit;';
-      chip.innerHTML = '<span aria-hidden="true">' + item[0] + '</span>' + item[1];
+      chip.textContent = item[0];
       chip.addEventListener('click', function () {
         if (busy) return;
         chip.disabled = true;
-        chip.style.opacity = '0.4';
-        textarea.value = item[2];
+        textarea.value = item[1];
         send();
         var allUsed = Array.prototype.every.call(quickWrap.children, function (c) { return c.disabled; });
-        if (allUsed) quickWrap.style.display = 'none';
+        if (allUsed) {
+          quickWrap.hidden = true;
+          intro.hidden = true;
+        }
       });
       quickWrap.appendChild(chip);
     });
-    messagesEl.parentNode.insertBefore(quickWrap, messagesEl.nextSibling);
+    surface.insertBefore(quickWrap, messagesEl);
 
     function articleText() {
       var el = document.querySelector('.post-content');
@@ -294,27 +307,117 @@
       return el ? el.innerText.trim() : document.title;
     }
     function escapeHtml(s) {
-      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
     // Escaped text → HTML with Markdown [label](url) links rendered as safe
     // anchors (http(s)/site-relative only) so AI-recommended articles are
     // tappable on mobile too.
     function renderAiText(text) {
-      return escapeHtml(text)
-        .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
+      function inline(value) {
+        return escapeHtml(value)
+          .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
           if (!/^https?:\/\//i.test(url) && !/^\//.test(url)) return label;
           var ext = /^https?:\/\//i.test(url) && url.indexOf(window.location.origin) !== 0;
-          return '<a href="' + url + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + ' style="color:inherit;text-decoration:underline;text-underline-offset:2px;">' + label + '</a>';
-        })
-        .replace(/\n/g, '<br>');
+            return '<a href="' + url + '" class="abs-ai-link"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
+          })
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.+?)\*/g, '<em>$1</em>')
+          .replace(/`(.+?)`/g, '<code>$1</code>');
+      }
+      var lines = text.split('\n');
+      var html = '', i = 0;
+      while (i < lines.length) {
+        var line = lines[i];
+        var fence = /^\s*```(?:\w+)?\s*$/.exec(line);
+        if (fence) {
+          var codeLines = [];
+          i++;
+          while (i < lines.length && !/^\s*```\s*$/.test(lines[i])) {
+            codeLines.push(lines[i]);
+            i++;
+          }
+          if (i < lines.length) i++;
+          html += '<pre><code>' + escapeHtml(codeLines.join('\n')) + '</code></pre>';
+          continue;
+        }
+        var quote = /^\s*>\s?(.*)$/.exec(line);
+        if (quote) {
+          var quoteLines = [];
+          while (i < lines.length) {
+            var qm = /^\s*>\s?(.*)$/.exec(lines[i]);
+            if (!qm) break;
+            quoteLines.push(qm[1]);
+            i++;
+          }
+          html += '<blockquote><p>' + inline(quoteLines.join(' ')) + '</p></blockquote>';
+          continue;
+        }
+        var ul = /^\s*[-*]\s+(.+)$/.exec(line);
+        var ol = /^\s*\d+[.)]\s+(.+)$/.exec(line);
+        if (ul || ol) {
+          var ordered = !!ol;
+          var tag = ordered ? 'ol' : 'ul';
+          html += '<' + tag + ' class="abs-ai-list">';
+          while (i < lines.length) {
+            var match = ordered ? /^\s*\d+[.)]\s+(.+)$/.exec(lines[i]) : /^\s*[-*]\s+(.+)$/.exec(lines[i]);
+            if (!match) break;
+            html += '<li>' + inline(match[1]) + '</li>';
+            i++;
+          }
+          html += '</' + tag + '>';
+          continue;
+        }
+        var heading = /^#{1,3}\s+(.+)$/.exec(line);
+        if (heading) {
+          html += '<h3>' + inline(heading[1]) + '</h3>';
+          i++;
+          continue;
+        }
+        if (!line.trim()) { i++; continue; }
+        var paragraph = [];
+        while (i < lines.length && lines[i].trim()
+               && !/^\s*```(?:\w+)?\s*$/.test(lines[i])
+               && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+[.)]\s+/.test(lines[i])
+               && !/^#{1,3}\s+/.test(lines[i]) && !/^\s*>\s?/.test(lines[i])) {
+          paragraph.push(inline(lines[i]));
+          i++;
+        }
+        html += '<p>' + paragraph.join(' ') + '</p>';
+      }
+      return html;
     }
     function addMsg(text, role) {
       var g = messagesEl.querySelector('.abs-ai-greeting');
       if (g) g.remove();
       var d = document.createElement('div');
       d.className = 'abs-ai-msg abs-ai-msg--' + role;
-      if (role === 'ai') { d.innerHTML = renderAiText(text); }
-      else { d.textContent = text; }
+      if (role === 'ai') {
+        var head = document.createElement('div');
+        head.className = 'abs-ai-answer-head';
+        head.innerHTML =
+          '<span class="abs-ai-answer-mark">AI</span>' +
+          '<span class="abs-ai-answer-title">' + (language === 'zh' ? '文章解读' : 'Article insight') + '</span>' +
+          '<span class="abs-ai-answer-context">' + (language === 'zh' ? '基于本文' : 'From this article') + '</span>';
+        var body = document.createElement('div');
+        body.className = 'abs-ai-answer-body';
+        body.innerHTML = renderAiText(text);
+        d.appendChild(head);
+        d.appendChild(body);
+      } else {
+        var label = document.createElement('span');
+        label.className = 'abs-ai-user-label';
+        label.textContent = language === 'zh' ? '问题' : 'ASK';
+        var question = document.createElement('p');
+        question.className = 'abs-ai-user-text';
+        question.textContent = text;
+        d.appendChild(label);
+        d.appendChild(question);
+      }
       messagesEl.appendChild(d);
       messagesEl.scrollTop = messagesEl.scrollHeight;
       return d;
@@ -360,15 +463,14 @@
       if (!items.length) return;
       var wrap = document.createElement('div');
       wrap.className = 'abs-ai-followups';
-      wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:4px;padding-top:8px;border-top:1px dashed rgba(30,35,30,0.12);';
       var label = document.createElement('span');
+      label.className = 'abs-ai-followups__label';
       label.textContent = followLabel;
-      label.style.cssText = 'width:100%;font-size:11px;font-weight:600;opacity:0.5;text-transform:uppercase;letter-spacing:0.08em;';
       wrap.appendChild(label);
       items.forEach(function (text) {
         var b = document.createElement('button');
         b.type = 'button';
-        b.style.cssText = 'padding:5px 11px;border:1px solid rgba(30,35,30,0.14);border-radius:14px;background:transparent;font:inherit;font-size:12.5px;cursor:pointer;color:inherit;text-align:left;';
+        b.className = 'abs-ai-followup';
         b.textContent = text;
         b.addEventListener('click', function () {
           if (busy) return;
@@ -384,13 +486,16 @@
     function send() {
       var q = textarea.value.trim();
       if (!q || busy) return;
+      surface.classList.add('abs-ai-panel--engaged');
       busy = true;
       sendBtn.disabled = true;
       var oldFollow = messagesEl.querySelector('.abs-ai-followups');
       if (oldFollow) oldFollow.remove();
       addMsg(q, 'user');
       textarea.value = '';
-      var replyEl = addMsg('…', 'ai');
+      var replyEl = addMsg('', 'ai');
+      var replyBody = replyEl.querySelector('.abs-ai-answer-body');
+      replyEl.classList.add('abs-ai-msg--streaming');
 
       var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
       var timer = setTimeout(function () { if (controller) controller.abort(); }, 25000);
@@ -409,7 +514,8 @@
         }
         return res.json().then(function (data) {
           var answer = (data && data.answer) || T.empty;
-          replyEl.innerHTML = renderAiText(answer);
+          replyEl.classList.remove('abs-ai-msg--streaming');
+          replyBody.innerHTML = renderAiText(answer);
           return answer;
         });
       }).then(function (answer) {
@@ -417,11 +523,13 @@
         history.push({ role: 'assistant', content: answer || replyEl.textContent });
         if (history.length > 20) history = history.slice(-20);
         renderFollowups();
-        shareBtn.hidden = false;
+        attachShareToLatestAnswer();
       }).catch(function (err) {
         clearTimeout(timer);
         var msg = (err && err.name === 'AbortError') ? T.timeout : T.error;
-        replyEl.innerHTML = '<span style="color:#ef4444">⚠ ' + escapeHtml(msg) + '</span>';
+        replyEl.classList.remove('abs-ai-msg--streaming');
+        replyEl.classList.add('abs-ai-msg--error');
+        replyBody.textContent = msg;
       }).then(function () {
         busy = false;
         sendBtn.disabled = false;
@@ -447,7 +555,8 @@
               var j = JSON.parse(raw);
               if (j.delta) {
                 answer += j.delta;
-                replyEl.innerHTML = renderAiText(answer);
+                replyEl.classList.remove('abs-ai-msg--streaming');
+                replyEl.querySelector('.abs-ai-answer-body').innerHTML = renderAiText(answer);
                 messagesEl.scrollTop = messagesEl.scrollHeight;
               }
             } catch (e) {}
@@ -456,7 +565,10 @@
         });
       }
       return pump().then(function (a) {
-        if (!a) replyEl.textContent = T.empty;
+        if (!a) {
+          replyEl.classList.remove('abs-ai-msg--streaming');
+          replyEl.querySelector('.abs-ai-answer-body').textContent = T.empty;
+        }
         return a;
       });
     }

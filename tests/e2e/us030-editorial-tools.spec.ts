@@ -86,7 +86,7 @@ test('ZH: AI textarea placeholder is in Chinese', async ({ page }) => {
   await aiTab.click();
   const textarea = page.locator('.article-tools .rc-ai-textarea');
   const placeholder = await textarea.getAttribute('placeholder');
-  expect(placeholder).toMatch(/向 AI 提问|AI/);
+  expect(placeholder).toMatch(/继续追问|向 AI 提问|AI/);
 });
 
 // <1200px: article-tools hidden

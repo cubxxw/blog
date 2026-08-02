@@ -12,7 +12,7 @@
       genericError: '请求失败，请稍后重试。',
       retry: '↺ 重试',
       sourcesLabel: '相关阅读',
-      greeting: '我已读完这篇文章，可以帮你总结、追问或挑战其中的观点。点上面的快捷入口，或直接提问。',
+      greeting: '文章已就绪。选择一个阅读角度，或继续追问你在意的细节。',
       followupLabel: '继续追问',
       topicTemplate: function (h) { return '「' + h + '」这部分能展开讲讲吗？'; },
       followups: [
@@ -35,7 +35,7 @@
       genericError: 'Request failed. Please try again.',
       retry: '↺ Retry',
       sourcesLabel: 'Related reading',
-      greeting: "I've read this article — I can summarize it, dig into details, or challenge its claims. Tap a shortcut above, or just ask.",
+      greeting: "The article is ready. Choose a reading lens or ask about a detail that matters to you.",
       followupLabel: 'Keep asking',
       topicTemplate: function (h) { return 'Can you expand on the "' + h + '" part?'; },
       followups: [
@@ -238,8 +238,14 @@
 
   // ─── 4. Minimal Markdown → HTML ───────────────────────────────────────────
   function parseMarkdown(text) {
-    // Inline formatting applied per line; block structure (lists) handled by
-    // grouping consecutive bullet/numbered lines into real <ul>/<ol>.
+    function escapeHtml(s) {
+      return s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
     function safeHref(url) {
       // Only http(s) and site-relative targets become real links; anything
       // else (javascript:, data:, …) is rendered as plain text.
@@ -247,8 +253,7 @@
       return null;
     }
     function inline(s) {
-      return s
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      return escapeHtml(s)
         .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
           var href = safeHref(url);
           if (!href) return label;
@@ -263,6 +268,30 @@
     var html = '', i = 0;
     while (i < lines.length) {
       var line = lines[i];
+      var fence = /^\s*```(?:\w+)?\s*$/.test(line);
+      if (fence) {
+        var code = [];
+        i++;
+        while (i < lines.length && !/^\s*```\s*$/.test(lines[i])) {
+          code.push(lines[i]);
+          i++;
+        }
+        if (i < lines.length) i++;
+        html += '<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>';
+        continue;
+      }
+      var quoteMatch = /^\s*>\s?(.*)$/.exec(line);
+      if (quoteMatch) {
+        var quote = [];
+        while (i < lines.length) {
+          var qm = /^\s*>\s?(.*)$/.exec(lines[i]);
+          if (!qm) break;
+          quote.push(qm[1]);
+          i++;
+        }
+        html += '<blockquote><p>' + inline(quote.join(' ')) + '</p></blockquote>';
+        continue;
+      }
       var ulMatch = /^\s*[-*]\s+(.+)$/.exec(line);
       var olMatch = /^\s*\d+[.)]\s+(.+)$/.exec(line);
       if (ulMatch || olMatch) {
@@ -279,17 +308,29 @@
         continue;
       }
       var h = /^#{1,3}\s+(.+)$/.exec(line);
-      if (h) { html += '<p><strong>' + inline(h[1]) + '</strong></p>'; i++; continue; }
+      if (h) {
+        var headingTag = h[0].indexOf('### ') === 0 ? 'h4' : 'h3';
+        html += '<' + headingTag + '>' + inline(h[1]) + '</' + headingTag + '>';
+        i++;
+        continue;
+      }
+      if (/^\s*(?:---+|\*\*\*+)\s*$/.test(line)) {
+        html += '<hr>';
+        i++;
+        continue;
+      }
       if (line.trim() === '') { i++; continue; }
-      // Gather a paragraph (consecutive non-list, non-blank lines)
+      // Soft-wrap plain lines into one readable paragraph. Hard <br> tags made
+      // streamed Markdown look like a transcript instead of editorial prose.
       var para = [];
       while (i < lines.length && lines[i].trim() !== ''
              && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+[.)]\s+/.test(lines[i])
-             && !/^#{1,3}\s+/.test(lines[i])) {
+             && !/^#{1,3}\s+/.test(lines[i]) && !/^\s*>\s?/.test(lines[i])
+             && !/^\s*```/.test(lines[i]) && !/^\s*(?:---+|\*\*\*+)\s*$/.test(lines[i])) {
         para.push(inline(lines[i]));
         i++;
       }
-      html += '<p>' + para.join('<br>') + '</p>';
+      html += '<p>' + para.join(' ') + '</p>';
     }
     return html;
   }
@@ -320,10 +361,6 @@
     if (messagesEl && !messagesEl.children.length) {
       var greetEl = document.createElement('div');
       greetEl.className = 'rc-ai-msg rc-ai-msg--ai rc-ai-greeting';
-      // Inline-styled (no new CSS) so the greeting reads as a soft hint, not
-      // a real answer.
-      greetEl.style.opacity = '0.62';
-      greetEl.style.fontStyle = 'italic';
       greetEl.textContent = t('greeting');
       messagesEl.appendChild(greetEl);
     }
@@ -332,30 +369,41 @@
       if (g) g.remove();
     }
 
-    // Share button — injected into input area, shown after first AI reply
+    // The share action belongs to the latest answer, where its scope is clear.
     var shareBtn = document.createElement('button');
     shareBtn.className = 'rc-ai-share-btn';
-    var shareLabel = language === 'zh' ? '分享对话' : 'Share conversation';
+    shareBtn.type = 'button';
+    var shareLabel = language === 'zh' ? '生成分享卡' : 'Share insight';
     shareBtn.setAttribute('aria-label', shareLabel);
-    // title gives the icon-only button a hover tooltip so its purpose is discoverable
     shareBtn.setAttribute('title', shareLabel);
     shareBtn.setAttribute('hidden', '');
     shareBtn.innerHTML =
       '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
         '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>' +
         '<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>' +
-      '</svg>';
-    var inputArea = panel.querySelector('.rc-ai-input-area');
-    if (inputArea) inputArea.appendChild(shareBtn);
+      '</svg><span>' + shareLabel + '</span>';
 
     shareBtn.addEventListener('click', function () {
-      if (typeof ShareConversation === 'undefined') return;
-      ShareConversation.show(history, {
-        lang:  language,
-        title: document.title,
-        url:   window.location.href,
-      });
+      function openShareCard() {
+        if (typeof ShareConversation === 'undefined') return;
+        ShareConversation.show(history, {
+          lang: language,
+          title: getArticleTitle(),
+          url: window.location.href,
+        });
+      }
+      if (typeof ShareConversation !== 'undefined') openShareCard();
+      else if (typeof window.loadShareScripts === 'function') window.loadShareScripts(openShareCard);
     });
+
+    function attachShareToLatestAnswer() {
+      var answers = messagesEl.querySelectorAll('.rc-ai-msg--ai:not(.rc-ai-greeting):not(.rc-ai-msg--error)');
+      if (!answers.length) return;
+      var head = answers[answers.length - 1].querySelector('.rc-ai-answer-head');
+      if (!head) return;
+      shareBtn.removeAttribute('hidden');
+      head.appendChild(shareBtn);
+    }
 
     // Reflect whether there's something to send on the button: dim it when
     // the composer is empty so the affordance matches send()'s guard.
@@ -400,8 +448,8 @@
         var allUsed = Array.prototype.every.call(chips, function (c) { return c.disabled; });
         if (allUsed && quickRow) {
           quickRow.classList.add('rc-ai-quick--collapsed');
-          var qLabel = panel.querySelector('.rc-ai-quick-label');
-          if (qLabel) qLabel.classList.add('rc-ai-quick--collapsed');
+          var intro = panel.querySelector('.rc-ai-intro');
+          if (intro) intro.classList.add('rc-ai-quick--collapsed');
         }
       });
     });
@@ -445,9 +493,26 @@
       var div = document.createElement('div');
       div.className = 'rc-ai-msg rc-ai-msg--' + role;
       if (role === 'ai') {
-        div.innerHTML = parseMarkdown(text);
+        var head = document.createElement('div');
+        head.className = 'rc-ai-answer-head';
+        head.innerHTML =
+          '<span class="rc-ai-answer-mark">AI</span>' +
+          '<span class="rc-ai-answer-title">' + (language === 'zh' ? '文章解读' : 'Article insight') + '</span>' +
+          '<span class="rc-ai-answer-context">' + (language === 'zh' ? '基于本文' : 'From this article') + '</span>';
+        var body = document.createElement('div');
+        body.className = 'rc-ai-answer-body';
+        body.innerHTML = parseMarkdown(text);
+        div.appendChild(head);
+        div.appendChild(body);
       } else {
-        div.textContent = text;
+        var label = document.createElement('span');
+        label.className = 'rc-ai-user-label';
+        label.textContent = language === 'zh' ? '问题' : 'ASK';
+        var question = document.createElement('p');
+        question.className = 'rc-ai-user-text';
+        question.textContent = text;
+        div.appendChild(label);
+        div.appendChild(question);
       }
       messagesEl.appendChild(div);
       // The reader's own question always scrolls into view; AI bubbles only
@@ -545,6 +610,7 @@
     function setLoading(on) {
       if (on) { loadingEl.removeAttribute('hidden'); }
       else    { loadingEl.setAttribute('hidden', ''); }
+      panel.setAttribute('aria-busy', on ? 'true' : 'false');
       sendBtn.disabled = on;
       busy = on;
       syncSendState();
@@ -557,6 +623,7 @@
       // fills (quick chips, paste edge cases) from over-long request bodies.
       if (q.length > MAX_INPUT) q = q.slice(0, MAX_INPUT);
       lastQuestion = q;
+      panel.classList.add('rc-ai-panel--engaged');
 
       clearGreeting();
       // Clear any follow-up chips from the prior reply before the new turn.
@@ -606,6 +673,7 @@
           // Streaming SSE response — true progressive rendering
           setLoading(false);
           var streamDiv = addMessage('', 'ai');
+          var streamBody = streamDiv.querySelector('.rc-ai-answer-body');
           var reader = res.body.getReader();
           var decoder = new TextDecoder();
           var sseBuffer = '';
@@ -630,7 +698,7 @@
                     if (delta) {
                       var follow = isNearBottom();
                       answer += delta;
-                      streamDiv.innerHTML = parseMarkdown(answer);
+                      streamBody.innerHTML = parseMarkdown(answer);
                       if (follow) scrollToBottom();
                     }
                   }
@@ -681,7 +749,7 @@
         history.push({ role: 'user', content: q });
         history.push({ role: 'assistant', content: answer });
         if (history.length > 20) history = history.slice(-20);
-        shareBtn.removeAttribute('hidden');
+        attachShareToLatestAnswer();
         renderFollowups();
 
       } catch (err) {
@@ -691,8 +759,10 @@
         // a successful retry leaves a dead "⚠ …" message stranded in the thread.
         errMsg.classList.add('rc-ai-msg--error');
         var message = err && err.name === 'AbortError' ? t('timeout') : ((err && err.message) || t('genericError'));
-        errMsg.innerHTML = '<span style="color:#ef4444">⚠ ' +
-          message.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
+        var errorBody = errMsg.querySelector('.rc-ai-answer-body');
+        if (errorBody) {
+          errorBody.textContent = message;
+        }
         var retryBtn = document.createElement('button');
         retryBtn.className = 'ai-retry-btn';
         retryBtn.textContent = t('retry');
@@ -709,7 +779,7 @@
           textarea.value = lastQuestion;
           send();
         });
-        errMsg.appendChild(retryBtn);
+        (errorBody || errMsg).appendChild(retryBtn);
       } finally {
         setLoading(false);
         textarea.focus();

@@ -324,7 +324,7 @@
     {{/* Panel 2: AI Companion */}}
     <div class="abs-panel" id="abs-panel-ai" role="tabpanel" aria-labelledby="abs-tab-ai" hidden>
       <div class="abs-ai-panel">
-        <div class="abs-ai-messages" aria-live="polite"></div>
+        <div class="abs-ai-messages" aria-live="polite" aria-label="{{ if eq .Lang "zh" }}文章解读{{ else }}Article insights{{ end }}"></div>
         <div class="abs-ai-input-area">
           <textarea class="abs-ai-textarea" rows="2"
             placeholder="{{ if eq .Lang "zh" }}{{ i18n "tools.ai_placeholder" | default "向 AI 提问…" | safeHTML }}{{ else }}{{ i18n "tools.ai_placeholder" | default "Ask about this article..." | safeHTML }}{{ end }}"

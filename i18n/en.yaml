@@ -198,7 +198,7 @@
   translation: "Share"
 
 - id: tools.ai_placeholder
-  translation: "Ask about this article..."
+  translation: "Ask a follow-up about this article..."
 
 - id: tools.annotations_empty
   translation: "Coming soon"
