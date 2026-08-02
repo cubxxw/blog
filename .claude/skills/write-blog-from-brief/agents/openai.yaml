@@ -1,4 +1,4 @@
 interface:
   display_name: "Write Blog from Brief"
-  short_description: "从上游选题完成深度研究、原生写作、独立审核与发布前验证"
-  default_prompt: "Use $write-blog-from-brief to process the next ready blog brief into a researched, independently reviewed, SEO-ready article."
+  short_description: "按文体把 brief 写成可终审文章，并允许重做或不发"
+  default_prompt: "Use $write-blog-from-brief to turn one ready brief into the right article mode and stop at an evidence-backed editorial verdict."

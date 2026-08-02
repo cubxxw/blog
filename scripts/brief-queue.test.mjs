@@ -82,6 +82,20 @@ test('strict validation accepts a complete v1 brief', () => {
   assert.match(output, /0 error/);
 });
 
+test('strict validation accepts a field-note brief', () => {
+  const { briefs, env } = setup();
+  writeFileSync(
+    join(briefs, '2026-08-01-test-brief.md'),
+    fixture().replace('brief_type: thinking', 'brief_type: field-note'),
+  );
+  const output = execFileSync(
+    process.execPath,
+    [SCRIPT, '--check'],
+    { encoding: 'utf8', env },
+  );
+  assert.match(output, /0 error/);
+});
+
 test('legacy ready briefs fail instead of entering the queue', () => {
   const { briefs, env } = setup();
   writeFileSync(

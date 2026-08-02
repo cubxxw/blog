@@ -1,4 +1,4 @@
 interface:
   display_name: "Craft Article Opening"
-  short_description: "为博客设计具有在场感、诚实张力与三秒吸引力的第一段"
-  default_prompt: "Use $craft-article-opening to create or improve the opening paragraph of this blog article."
+  short_description: "按文章轨道设计真实、有前进感且不模板化的博客首屏开篇"
+  default_prompt: "Use $craft-article-opening to create or improve an honest first screen that matches this article mode."

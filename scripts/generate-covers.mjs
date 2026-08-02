@@ -67,14 +67,13 @@ const args = parseArgs(process.argv.slice(2));
 //    upstream (buildScenePrompt → Claude/an LLM → one concrete scene) and the
 //    image model is asked only to paint a scene already described.
 //
-// The style anchor is fixed and identical across every cover so the set coheres:
-// medium + colour discipline + composition, no named colours, no hex. The
-// composition clause keeps the upper region calm so the image survives being
-// cropped or overlaid in share cards.
+// Keep only a quality baseline here. Medium, palette, light, and composition
+// belong to the upstream art direction so covers can cohere without becoming
+// one repeated template.
 
-const STYLE_LINE =
-  '风格：扁平的杂志编辑插画，低饱和，整幅画面不超过四种颜色，大面积留白，带细腻的纸纹质感。' +
-  '横构图，主体偏下，上方留出安静的空间。';
+const QUALITY_LINE =
+  '横向博客封面，视觉层次清楚，缩略图尺寸下主体仍然容易辨认。' +
+  '媒介、色彩、光线与构图服从给定画面，不套用固定站点模板。';
 
 // Audience targeting, per section. A cover is a share card first: it should
 // signal to its own audience what kind of content sits behind the link — a
@@ -143,8 +142,8 @@ export function buildScenePrompt({ title, description, section }) {
     '',
     meta,
     '',
-    ...(brief ? [`这是一篇${brief.audience}。${brief.material}。`] : []),
-    '用一到两句话描述一个具体画面：有什么物体、什么样的构图。必须是具象的、可以直接画出来的场景。',
+    ...(brief ? [`这是一篇${brief.audience}。${brief.material}。${brief.mood}`] : []),
+    '用一到三句话描述一个具体画面：主体、媒介或材质、构图、光线或色彩逻辑。必须是具象的、可以直接画出来的场景。',
     '禁止科技陈词滥调：电路、发光、机器人、大脑、齿轮、网络节点图。',
     // Objects that inevitably render as glyphs or figures (movable type,
     // marionettes, keyboards, open printed pages) break the no-text/no-face
@@ -160,7 +159,7 @@ export function buildScenePrompt({ title, description, section }) {
 // they add no comprehension and are the densest source of drawable jargon.
 export function buildPrompt({ title, description, scene, section }) {
   const brief = SECTIONS[section];
-  const style = brief ? `${STYLE_LINE}${brief.mood}` : STYLE_LINE;
+  const fallbackStyle = brief ? `${QUALITY_LINE}${brief.mood}` : QUALITY_LINE;
 
   if (scene) {
     return [
@@ -168,7 +167,7 @@ export function buildPrompt({ title, description, scene, section }) {
       '',
       `画面：${scene}`,
       '',
-      style,
+      QUALITY_LINE,
       CANVAS_LINE,
     ].join('\n');
   }
@@ -184,7 +183,7 @@ export function buildPrompt({ title, description, scene, section }) {
     '',
     ...(brief ? [`这是一篇${brief.audience}。${brief.material}。`] : []),
     '读懂文章在讲什么，画一个贴合主题的具体画面。以上信息只用于理解主题。',
-    style,
+    fallbackStyle,
     CANVAS_LINE,
   ].join('\n');
 }

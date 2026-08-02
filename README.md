@@ -12,6 +12,12 @@
   <a href="https://cubxxw.com/zh/index.xml">订阅 RSS</a>
 </p>
 
+<p align="center">
+  <a href="https://app.netlify.com/sites/cubxxw/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/10e9c8fc-0201-4d41-9240-5c35f10ee952/deploy-status" alt="Netlify Status">
+  </a>
+</p>
+
 <!-- 👋 交个朋友 · Let's connect — 双平台扫码 / copyable ID, mirrors the on-site contact cards -->
 <div align="center">
   <br>

@@ -1,61 +1,84 @@
-# Article Review Rubric
+# Editorial Review
 
-Score the Chinese article independently from the drafting process. Cite lines or exact passages for every deduction.
+Review in two stages. Developmental editing comes before correctness polish. Do not use a percentage score.
 
-## Hard fails
+## Stage 1: Should this article exist in this shape?
 
-Any hard fail blocks publication regardless of score:
+### Publication hard fails
 
-- invented author experience, dialogue, motive, metric, or result;
+Any of these blocks publication:
+
+- invented author experience, dialogue, motive, metric, chronology, or result;
 - unapproved private or identifiable third-party material;
-- core claim differs from the brief without author confirmation;
-- decisive factual claim lacks support or misrepresents its source;
-- citation does not support the adjacent claim;
-- a researched article lacks the final `参考资料` / `References` section, or a cited public source is missing from it;
-- fact, author observation, and inference are presented as the same thing;
-- E-level AI-flavor error remains;
-- broken production build, article route, cover, or required link.
+- an author judgment that the author did not confirm;
+- a decisive factual claim that is false, unsupported, or misrepresented;
+- a citation that does not support the adjacent claim;
+- a title or opening promise the body does not repay;
+- broken route, media, or required production behavior.
 
-## Score
+### Developmental tests
 
-| Dimension | Points | Full-score standard |
-|---|---:|---|
-| Claim and argument | 20 | One clear claim, complete reasoning, no hidden premise or logical jump |
-| Author contribution and presence | 20 | Specific lived material changes the article; another author could not substitute |
-| Evidence and citations | 20 | Strong sources, precise attribution, current facts checked, citation fit is exact, final reference list is complete |
-| Counterargument and boundary | 10 | Strongest alternative is treated fairly; cost, limit, and falsifier are visible |
-| Durable value and original synthesis | 10 | Goes beyond news or summary; produces a reusable way to see or decide |
-| Search, SEO/GEO, and internal links | 10 | Search promise is accurate; metadata, extractability, and links help without distortion |
-| Structure, language, and voice | 10 | Natural Xinwei voice, concise structure, no templated polish or repeated conclusion |
+Answer with evidence from the article:
 
-Passing threshold: 90/100 and no hard fail.
+1. **Necessity** — what specific value disappears if this is not published?
+2. **Reader contract** — what is the reader doing before reading, and what can they do or see afterward?
+3. **Only this author** — which scene, decision, artifact, failure, or judgment makes substitution impossible?
+4. **Movement** — where does the question, evidence, or judgment materially change?
+5. **Compression** — what 30% should be cut first? If nothing can be cut, identify why every part is necessary.
+6. **Memory** — what single scene, object, contradiction, or sentence is likely to survive a day later?
+7. **Ending consequence** — does the ending change a decision, experiment, cost, or open question rather than restate the opening?
 
-## Review output
+Apply mode-specific expectations:
+
+- `thinking`: protect tension, personal material, discovery, and consequence. Do not demand comprehensive coverage.
+- `research`: optimize correctness, task completion, comparison, and findability.
+- `field-note`: optimize specificity, timeliness, and honest incompleteness.
+
+### Developmental verdict
+
+- `KEEP` — the shape works; continue to accuracy and line editing.
+- `REBUILD` — the core is worth keeping, but sections need major cuts, movement, or reordering.
+- `KILL` — the article has no sufficient necessity or author contribution, duplicates a better piece, or would require inventing material to become alive.
+
+## Stage 2: Can this version publish safely?
+
+After a `KEEP` verdict, check:
+
+- fact, source opinion, author observation, and article inference remain distinct;
+- current facts, dates, versions, samples, and jurisdictions are accurate;
+- citations are adjacent and fit the claim;
+- each surviving case has one clear argumentative job, sufficient support, an explicit limit, and a visible return to the central claim;
+- privacy and third-party boundaries hold;
+- front-matter fields are not removed until their rendering, schema, search, and automation consumers are checked;
+- Markdown, front matter, links, reference list, and media are valid;
+- language is readable without sanding away uncertainty or voice.
+
+AI-flavor lint is supporting evidence only. Passing it does not improve the editorial verdict.
+
+## Output
 
 ```text
-Verdict: PASS | REVISE | BLOCK
+Verdict: KEEP | REBUILD | KILL
 Hard fail: none | description
-Score: N/100
 
-Dimension scores:
-- Claim and argument: N/20 — evidence
-- Author contribution and presence: N/20 — evidence
-- Evidence and citations: N/20 — evidence
-- Counterargument and boundary: N/10 — evidence
-- Durable value and synthesis: N/10 — evidence
-- Search/SEO/GEO/internal links: N/10 — evidence
-- Structure/language/voice: N/10 — evidence
+Why this should exist:
+Reader contract:
+Only-the-author evidence:
+Where the article moves:
+Where a reader may stop:
 
-Required revisions:
-1. file:line — problem — why it matters — revision direction
+Cut first:
+1. file:line — delete/combine/move — what remains
+2. ...
 
-Optional improvements:
+Fact/privacy issues:
+- file:line — issue — required correction
+
+Preserve:
+- strongest scene, uncertainty, or sentence
+
+Remaining human decision:
 - ...
-
-What should not be changed:
-- strongest authorial passage or important uncertainty to preserve
 ```
 
-Do not reward length, source count, FAQ count, or abstract vocabulary. Penalize unsupported certainty, generic completeness, repeated thesis statements, decorative citations, false binaries, symmetrical list-making, and conclusions that merely restate the introduction.
-
-For the opening, also run `../../craft-article-opening/SKILL.md`'s 30-point test. An opening below 26/30 prevents an overall pass even when the article total reaches 90.
+Do not reward length, citation count, FAQ count, abstract vocabulary, symmetrical frameworks, or rubric compliance itself.
