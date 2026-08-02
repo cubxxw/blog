@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-08-01-common-sense-ai-industry-reconstruction
 title: 常识不是本质：AI 时代如何从需求、约束与稀缺性重构行业
-status: ready-to-publish
+status: published
 priority: high
 language: zh
 section: ai-agent
@@ -384,21 +384,21 @@ grader → 小额下注 → 失败回流
 
 ## 验收标准
 
-- [ ] 全文能用一句话复述，且正是“先找稳定需求，再识别约束与稀缺性迁移，最后用 Agent 重构并由现实 grader 验证”。
-- [ ] 开头来自作者真实提问“常识就是本质吗”，第一屏回答问题，不用时代背景套话。
-- [ ] 清楚区分常识、共识、本质和第一性原理；每个概念有机制、边界或反例。
-- [ ] 中心图完整呈现“需求 → 供需/约束 → 稀缺性迁移 → 重构 → grader → 反馈”。
-- [ ] 奈飞是全文唯一主案例，按用户、商业、技术与供给端完整分析，并使用 Qwikster 或同等级反例。
-- [ ] 前沿 AI 公司只用于证明“如何把判断机制化”，每家公司最多保留一个动作，所有事实有官方公开来源。
-- [ ] 招聘案例严格复用前文框架，不另写成趋势盘点；覆盖 JD、简历维护、内推、匹配、入职反馈与人类责任。
-- [ ] 至少使用 8 个可访问的高质量公开来源，其中公司机制优先官方材料，招聘监管优先政府原文。
-- [ ] 事实、作者观察、文章推论清楚分层；不把公开作品链推断冒充公司内部流程。
-- [ ] 至少正面处理四个反方：共识伪装、任意公理、复杂系统反直觉、幸存者偏差。
-- [ ] 不使用任何 private 上游人物、对话或跨境战绩，不新增作者经历与动机。
-- [ ] 全文 5,500—8,000 中文字，最多两张必要 ASCII 图，不堆框架。
-- [ ] `tldr`、description 与 FAQ 均可独立回答读者问题，标题承诺在首屏兑现。
-- [ ] AI 味检查 E 级清零，禁用词和句式上限通过。
-- [ ] 完成本地构建与页面检查，最终状态停在 `ready-to-publish` 等待作者签字。
+- [x] 全文能用一句话复述，且正是“先找稳定需求，再识别约束与稀缺性迁移，最后用 Agent 重构并由现实 grader 验证”。
+- [x] 开头来自作者真实提问“常识就是本质吗”，第一屏回答问题，不用时代背景套话。
+- [x] 清楚区分常识、共识、本质和第一性原理；每个概念有机制、边界或反例。
+- [x] 中心图完整呈现“需求 → 供需/约束 → 稀缺性迁移 → 重构 → grader → 反馈”。
+- [x] 奈飞是全文唯一主案例，按用户、商业、技术与供给端完整分析，并使用 Qwikster 或同等级反例。
+- [x] 前沿 AI 公司只用于证明“如何把判断机制化”，每家公司最多保留一个动作，所有事实有官方公开来源。
+- [x] 招聘案例严格复用前文框架，不另写成趋势盘点；覆盖 JD、简历维护、内推、匹配、入职反馈与人类责任。
+- [x] 至少使用 8 个可访问的高质量公开来源，其中公司机制优先官方材料，招聘监管优先政府原文。
+- [x] 事实、作者观察、文章推论清楚分层；不把公开作品链推断冒充公司内部流程。
+- [x] 至少正面处理四个反方：共识伪装、任意公理、复杂系统反直觉、幸存者偏差。
+- [x] 不使用任何 private 上游人物、对话或跨境战绩，不新增作者经历与动机。
+- [x] 全文 5,500—8,000 中文字，最多两张必要 ASCII 图，不堆框架。
+- [x] `tldr`、description 与 FAQ 均可独立回答读者问题，标题承诺在首屏兑现。
+- [x] AI 味检查 E 级清零，禁用词和句式上限通过。
+- [x] 完成本地构建与页面检查；作者已签字授权发布，生产站验收完成。
 
 ---
 
@@ -408,8 +408,8 @@ grader → 小额下注 → 失败回流
 
 - article: `content/zh/ai-agent/posts/common-sense-ai-industry-reconstruction.md`
 - article_en: `content/en/ai-agent/posts/common-sense-ai-industry-reconstruction.md`
-- public_url: planned `https://cubxxw.com/zh/ai-agent/posts/common-sense-ai-industry-reconstruction/`
-- public_url_en: planned `https://cubxxw.com/ai-agent/posts/common-sense-ai-industry-reconstruction/`
+- public_url: `https://cubxxw.com/zh/ai-agent/posts/common-sense-ai-industry-reconstruction/`
+- public_url_en: `https://cubxxw.com/ai-agent/posts/common-sense-ai-industry-reconstruction/`
 - score: 中文声音编辑 98/100；英文声音编辑 96/100；逻辑证据 99/100；中英文 opening 29/30；均无 hard fail
 - checks:
   - 严格只使用 brief 已批准素材包与重新核验的公开来源；未访问任何 `brain://` 目标或上游私有文件
@@ -423,5 +423,7 @@ grader → 小额下注 → 失败回流
   - 独立复审：逻辑证据 PASS 99/100；中文声音 PASS 98/100；英文声音 PASS 96/100；均无 hard fail 或 required revision
   - 浏览器质量门：通过。主环境运行 `netlify dev` 后，检查 1440×1000 桌面端与 390×844 移动端的明暗主题；中英文标题、提要、封面、目录和正文布局正常，均无横向溢出
   - 浏览器元数据与资源：中英文均为单一 H1，canonical、`og:image` 和封面加载正常；控制台为 0 error、0 warning
-- published_at:
-- retro_notes: 封面采用“稳定需求轴—重组工作流—验收砝码”的具体物件隐喻。仓库封面提供方因受限网络返回 `fetch failed`，随后使用内置 imagegen 生成并人工筛检。作者已在 2026-08-02 明确授权完成到发布；当前在 `ready-to-publish` 完成最终质量门，待分支合并与线上部署。
+  - 发布检查：PR #311 的 Build、Playwright E2E、Netlify Deploy Preview、GitGuardian 与合并检查全部通过；合并后中英文生产 URL 均返回 HTTP 200
+  - 线上复核：中英文正式页面的 title、canonical、封面资源与 Regulation (EU) 2026/1744 更新均已确认生效
+- published_at: 2026-08-02T12:30:19+08:00
+- retro_notes: 封面采用“稳定需求轴—重组工作流—验收砝码”的具体物件隐喻。仓库封面提供方因受限网络返回 `fetch failed`，随后使用内置 imagegen 生成并人工筛检。作者在 2026-08-02 明确授权完成到发布；发布 PR #311 已合并，生产站中英文页面均完成验收，任务卡闭环为 `published`。
