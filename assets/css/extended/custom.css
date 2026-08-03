@@ -5584,11 +5584,45 @@ pre:hover .copy-code {
 .ai-source-link:hover { background: rgba(99,102,241,0.3); }
 
 .search-palette__ai-suggestions { display: flex; gap: 8px; flex-wrap: wrap; padding: 8px 0; }
-.search-palette__ai-suggestion { padding: 4px 12px; border-radius: 16px; border: 1px solid rgba(99,102,241,0.3); background: transparent; cursor: pointer; font-size: 0.85em; color: inherit; }
-.search-palette__ai-suggestion:hover { background: rgba(99,102,241,0.15); }
+.search-palette__ai-suggestion {
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(122, 92, 64, 0.35);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.85em;
+  color: #6a4c2a;
+}
+.search-palette__ai-suggestion:hover { background: rgba(122, 92, 64, 0.1); }
+.dark .search-palette__ai-suggestion {
+  border-color: rgba(200, 168, 112, 0.35);
+  color: #d4b987;
+}
+.dark .search-palette__ai-suggestion:hover { background: rgba(200, 168, 112, 0.12); }
 
-.ai-retry-btn { margin-top: 6px; padding: 3px 10px; border-radius: 8px; border: 1px solid currentColor; opacity: 0.7; cursor: pointer; background: transparent; font-size: 0.85em; }
+.ai-retry-btn { min-height: 44px; margin-top: 8px; padding: 6px 12px; border-radius: 4px; border: 1px solid currentColor; opacity: 0.85; cursor: pointer; background: transparent; font-size: 0.85em; }
 .ai-retry-btn:hover { opacity: 1; }
+
+.search-palette .ai-sources {
+  color: #6f5f4d;
+  opacity: 1;
+}
+.search-palette .ai-source-link {
+  min-height: 36px;
+  margin: 3px 2px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: rgba(122, 92, 64, 0.1);
+  color: #5f4328;
+}
+.search-palette .ai-source-link:hover { background: rgba(122, 92, 64, 0.18); }
+.dark .search-palette .ai-sources { color: #b7a58f; }
+.dark .search-palette .ai-source-link {
+  background: rgba(200, 168, 112, 0.12);
+  color: #d4b987;
+}
+.dark .search-palette .ai-source-link:hover { background: rgba(200, 168, 112, 0.2); }
 
 /* Contact-aware WeChat quick action under an AI answer */
 .ai-wechat-cta { margin: 10px 0 4px; }
@@ -5785,8 +5819,8 @@ html {
 /* ── Search palette: share conversation button ── */
 .search-palette__share-btn {
   flex-shrink: 0;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border: 1px solid rgba(140, 110, 75, 0.35);
   border-radius: 4px;
   background: rgba(120, 90, 55, 0.06);

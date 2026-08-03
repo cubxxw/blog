@@ -159,9 +159,13 @@
   transition: border-color var(--dur-hover) var(--ease-standard),
               box-shadow var(--dur-hover) var(--ease-standard);
 }
-.fsub-input::placeholder { color: var(--color-ink-muted); opacity: 0.7; }
+.fsub-input::placeholder { color: var(--color-ink-muted); opacity: 1; }
 .fsub-input:focus {
   outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+.fsub-input[aria-invalid="true"] {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
@@ -183,6 +187,8 @@
 .fsub-go svg { width: 20px; height: 20px; }
 .fsub-go:hover { background: var(--color-accent); }
 .fsub-go:active { transform: scale(0.94); }
+.fsub-go:disabled { cursor: wait; }
+.fsub.is-success .fsub-go:disabled { cursor: default; }
 .fsub.is-loading .fsub-go { opacity: 0.6; pointer-events: none; }
 @media (prefers-reduced-motion: no-preference) {
   .fsub.is-loading .fsub-go svg { animation: fsub-nudge 900ms ease-in-out infinite; }

@@ -50,6 +50,52 @@
   var tagBtns = Array.prototype.slice.call(
     document.querySelectorAll('#filter-tags .library-filter__chip--tag')
   );
+  var scrollShells = Array.prototype.slice.call(
+    panel.querySelectorAll('[data-filter-scroll]')
+  );
+
+  function syncScrollAffordance(shell) {
+    var track = shell.querySelector('[data-filter-scroll-track]');
+    var hint = shell.querySelector('[data-filter-scroll-hint]');
+    if (!track || !hint) return;
+    var overflowing = track.scrollWidth > track.clientWidth + 2;
+    var atEnd = !overflowing ||
+      track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    shell.classList.toggle('is-overflowing', overflowing);
+    shell.classList.toggle('is-at-end', atEnd);
+    hint.hidden = !overflowing || atEnd;
+  }
+
+  function syncAllScrollAffordances() {
+    scrollShells.forEach(syncScrollAffordance);
+  }
+
+  scrollShells.forEach(function (shell) {
+    var track = shell.querySelector('[data-filter-scroll-track]');
+    if (!track) return;
+    track.addEventListener('scroll', function () {
+      syncScrollAffordance(shell);
+    }, { passive: true });
+    track.addEventListener('keydown', function (event) {
+      if (event.target !== track ||
+          (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft')) return;
+      event.preventDefault();
+      track.scrollBy({
+        left: (event.key === 'ArrowRight' ? 1 : -1) * Math.max(120, track.clientWidth * 0.6),
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+    });
+  });
+
+  if ('ResizeObserver' in window) {
+    var filterResizeObserver = new ResizeObserver(syncAllScrollAffordances);
+    scrollShells.forEach(function (shell) {
+      var track = shell.querySelector('[data-filter-scroll-track]');
+      if (track) filterResizeObserver.observe(track);
+    });
+  } else {
+    window.addEventListener('resize', syncAllScrollAffordances, { passive: true });
+  }
 
   function normalizedPath(url) {
     return new URL(url, window.location.href).pathname.replace(/\/+$/, '/');
@@ -377,6 +423,8 @@
       collapsible.setAttribute('aria-hidden', open ? 'false' : 'true');
       collapsible.inert = !open;
     }
+    window.requestAnimationFrame(syncAllScrollAffordances);
+    window.setTimeout(syncAllScrollAffordances, 280);
   }
 
   if (toggleBtn) {
@@ -452,6 +500,7 @@
   applyFilters();
   setProgress();
   syncNextLink();
+  syncAllScrollAffordances();
 
   if (activeFilterCount() > 0 || state.sort === 'oldest') {
     loadCompleteIndex();

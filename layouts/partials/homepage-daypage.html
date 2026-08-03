@@ -79,6 +79,7 @@
             title="{{ .title | default .name }}"
             aria-label="{{ .title | default .name }}"
             aria-haspopup="dialog"
+            aria-expanded="false"
             data-contact-platform="{{ $platform }}"
             data-contact-id="{{ $contactID }}"
             data-contact-qr="{{ $qrSrc }}"
@@ -459,7 +460,7 @@
               {{- $qrSrc = (.Resize "440x q88").RelPermalink -}}
             {{- end -}}
           {{- end -}}
-          <li><button type="button" class="hp-footer-wechat hp-footer-wechat--{{ $platform }}" aria-haspopup="dialog"
+          <li><button type="button" class="hp-footer-wechat hp-footer-wechat--{{ $platform }}" aria-haspopup="dialog" aria-expanded="false"
             data-contact-platform="{{ $platform }}" data-contact-id="{{ $contactID }}" data-contact-qr="{{ $qrSrc }}"
             {{ with $contactURL }}data-contact-url="{{ . | safeURL }}"{{ end }}
             onclick="openContactCard(this)">{{ .title | default (.name | title) }}</button></li>

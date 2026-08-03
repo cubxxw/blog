@@ -1,72 +1,99 @@
-<div class="search-palette" id="search-command-palette" role="dialog" 
-     aria-modal="true" aria-label="搜索" hidden>
+{{- $isZh := eq .Lang "zh" -}}
+{{- $dialogLabel := cond $isZh "站内搜索" "Site search" -}}
+{{- $closeLabel := cond $isZh "关闭搜索" "Close search" -}}
+{{- $inputLabel := cond $isZh "搜索文章" "Search articles" -}}
+{{- $inputPlaceholder := cond $isZh "搜索文章、主题或关键词…" "Search articles, topics, or keywords…" -}}
+{{- $aiLabel := cond $isZh "问小熊 AI" "Ask Bear AI" -}}
+<div class="search-palette" id="search-command-palette" role="dialog"
+     aria-modal="true" aria-labelledby="search-palette-title"
+     aria-label="{{ $dialogLabel }}" hidden>
   <div class="search-palette__backdrop" aria-hidden="true"></div>
   <div class="search-palette__panel">
     <div class="search-palette__header">
       <div>
-        <p class="search-palette__eyebrow">{{ if eq .Lang "zh" }}The Quiet Collector / 静默收藏者{{ else }}The Quiet Collector / Global Repository{{ end }}</p>
-        <h2>{{ if eq .Lang "zh" }}在档案中寻找智慧…{{ else }}Seek wisdom within the archives…{{ end }}</h2>
+        <p class="search-palette__eyebrow">{{ if $isZh }}The Quiet Collector / 静默收藏者{{ else }}The Quiet Collector / Global Repository{{ end }}</p>
+        <h2 id="search-palette-title">{{ if $isZh }}搜索文章、笔记与关键词{{ else }}Search articles, notes, and keywords{{ end }}</h2>
       </div>
-      <button class="search-palette__close" aria-label="Close search">
+      <button type="button" class="search-palette__close" aria-label="{{ $closeLabel }}">
         <kbd>Esc</kbd>
       </button>
     </div>
+
     <div class="search-palette__input-wrap">
-      <span class="search-palette__input-icon">
+      <span class="search-palette__input-icon" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </span>
       <input class="search-palette__input" type="search"
-             placeholder="Search for articles..." autocomplete="off"
-             aria-label="Search articles" />
+             placeholder="{{ $inputPlaceholder }}" autocomplete="off"
+             role="combobox" aria-label="{{ $inputLabel }}"
+             aria-autocomplete="list" aria-controls="search-results-list"
+             aria-expanded="false" aria-activedescendant=""
+             aria-describedby="search-palette-keyboard-help"
+             aria-busy="false" />
       <div class="search-palette__input-actions">
-        <button class="search-palette__ai-trigger" id="search-ai-btn" title="Ask AI">
-          <span class="search-palette__ai-trigger-icon">✦</span>
-          <span class="search-palette__ai-trigger-text">Ask bear AI</span>
+        <button type="button" class="search-palette__ai-trigger" id="search-ai-btn"
+                title="{{ $aiLabel }}" aria-label="{{ $aiLabel }}"
+                aria-keyshortcuts="Meta+Enter Control+Enter" disabled>
+          <span class="search-palette__ai-trigger-icon" aria-hidden="true">✦</span>
+          <span class="search-palette__ai-trigger-text">{{ $aiLabel }}</span>
         </button>
-        <div class="search-palette__shortcut" title="启动 AI 搜索">
+        <div class="search-palette__shortcut"
+             title="{{ if $isZh }}使用 Command 或 Control 加回车询问 AI{{ else }}Use Command or Control plus Enter to ask AI{{ end }}"
+             aria-hidden="true">
           <kbd>⌘</kbd><kbd>↩</kbd>
         </div>
       </div>
     </div>
-    
-    <!-- AI Answer Section -->
-    <div class="search-palette__ai-box" id="search-ai-box" hidden>
+    <p class="search-palette__sr-only" id="search-palette-keyboard-help">
+      {{ if $isZh }}使用上下方向键选择结果，按回车打开；按 Command 或 Control 加回车询问 AI。{{ else }}Use the arrow keys to select a result and Enter to open it. Press Command or Control plus Enter to ask AI.{{ end }}
+    </p>
+
+    <div class="search-palette__ai-box" id="search-ai-box" aria-live="polite" hidden>
       <div class="search-palette__ai-header">
         <div class="search-palette__ai-title">
-          <span class="search-palette__ai-icon">✨</span>
-          <span>AI Answer</span>
+          <span class="search-palette__ai-icon" aria-hidden="true">✦</span>
+          <span>{{ if $isZh }}AI 回答{{ else }}AI answer{{ end }}</span>
         </div>
-        <button class="search-palette__ai-close" id="search-ai-close">&times;</button>
+        <button type="button" class="search-palette__ai-close" id="search-ai-close"
+                aria-label="{{ if $isZh }}关闭 AI 回答{{ else }}Close AI answer{{ end }}">&times;</button>
       </div>
       <div class="search-palette__ai-content" id="search-ai-content">
-        <div class="search-palette__ai-loading">
+        <div class="search-palette__ai-loading" aria-label="{{ if $isZh }}正在生成回答{{ else }}Generating answer{{ end }}">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
       </div>
-      <div class="search-palette__ai-suggestions" id="search-ai-suggestions">
-        {{ if eq .Lang "zh" }}
-        <button class="search-palette__ai-suggestion" data-q="推荐几篇适合入门 AI 的文章">📚 入门推荐</button>
-        <button class="search-palette__ai-suggestion" data-q="有哪些关于 AI Agent 的文章">🤖 AI Agent</button>
-        <button class="search-palette__ai-suggestion" data-q="最近更新了哪些新文章">✨ 最新文章</button>
+      <div class="search-palette__ai-suggestions" id="search-ai-suggestions"
+           aria-label="{{ if $isZh }}推荐问题{{ else }}Suggested questions{{ end }}">
+        {{ if $isZh }}
+        <button type="button" class="search-palette__ai-suggestion" data-q="推荐几篇适合入门 AI 的文章">入门推荐</button>
+        <button type="button" class="search-palette__ai-suggestion" data-q="有哪些关于 AI Agent 的文章">AI Agent</button>
+        <button type="button" class="search-palette__ai-suggestion" data-q="最近更新了哪些新文章">最新文章</button>
         {{ else }}
-        <button class="search-palette__ai-suggestion" data-q="Recommend beginner-friendly AI articles">📚 Getting Started</button>
-        <button class="search-palette__ai-suggestion" data-q="What articles are about AI Agents?">🤖 AI Agents</button>
-        <button class="search-palette__ai-suggestion" data-q="What are the latest posts?">✨ Latest Posts</button>
+        <button type="button" class="search-palette__ai-suggestion" data-q="Recommend beginner-friendly AI articles">Getting started</button>
+        <button type="button" class="search-palette__ai-suggestion" data-q="What articles are about AI Agents?">AI Agents</button>
+        <button type="button" class="search-palette__ai-suggestion" data-q="What are the latest posts?">Latest posts</button>
         {{ end }}
       </div>
       <div class="search-palette__ai-footer">
-        Based on blog content &bull; Powered by Qwen
+        {{ if $isZh }}基于博客内容 &middot; Qwen 提供支持{{ else }}Based on blog content &middot; Powered by Qwen{{ end }}
       </div>
     </div>
 
     <div class="search-palette__meta">
-      <span>Found <span id="search-result-count">0</span> results</span>
-      <a class="search-palette__full-link" id="search-full-link" href="{{ "search/" | absLangURL }}">Full Search →</a>
+      <span id="search-result-summary" aria-live="polite" aria-atomic="true">
+        {{ if $isZh }}找到 <span id="search-result-count">0</span> 条结果{{ else }}Found <span id="search-result-count">0</span> results{{ end }}
+      </span>
+      <a class="search-palette__full-link" id="search-full-link" href="{{ "search/" | absLangURL }}">
+        {{ if $isZh }}完整搜索 →{{ else }}Full search →{{ end }}
+      </a>
     </div>
-    <ul class="search-palette__results" id="search-results-list" role="listbox"></ul>
-    <p class="search-palette__empty" id="search-empty" hidden>No results found</p>
+    <ul class="search-palette__results" id="search-results-list" role="listbox"
+        aria-label="{{ if $isZh }}搜索结果{{ else }}Search results{{ end }}"></ul>
+    <p class="search-palette__empty" id="search-empty" role="status" hidden>
+      {{ if $isZh }}没有找到匹配结果{{ else }}No matching results{{ end }}
+    </p>
   </div>
 </div>

@@ -302,7 +302,7 @@ body:not(.dark) .osx {
   box-shadow: 0 40px 110px -30px rgba(0,0,0,.55), 0 0 0 1px color-mix(in srgb, var(--osx-accent) 18%, transparent);
   overflow: hidden;
   opacity: 0;
-  transform: translateY(26px) scale(.955);
+  transform: translateY(26px);
   transition: opacity .38s ease, transform .38s cubic-bezier(.2,.9,.3,1.08);
 }
 .osx-window[hidden] { display: none; }
@@ -321,14 +321,30 @@ body:not(.dark) .osx {
 }
 .osx-window__lights { display: inline-flex; align-items: center; gap: 7px; }
 .osx-window__close {
-  width: 13px; height: 13px; padding: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px; margin: -15.5px; padding: 0;
   border: 0; border-radius: 50%; cursor: pointer;
+  background: transparent;
+}
+.osx-window__close::before {
+  content: "";
+  width: 13px; height: 13px;
+  border-radius: 50%;
   background: #e0564f;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.osx-window__close:hover { transform: scale(1.18); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 0 4px rgba(224,86,79,.25); }
-.osx-window__close::after { content: "×"; display: grid; place-items: center; height: 100%; font: 700 10px/0 var(--font-mono); color: rgba(0,0,0,.45); opacity: 0; transition: opacity .15s ease; }
+.osx-window__close:hover::before {
+  transform: scale(1.18);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 0 4px rgba(224,86,79,.25);
+}
+.osx-window__close:focus-visible {
+  outline: 2px solid var(--osx-accent);
+  outline-offset: -8px;
+}
+.osx-window__close::after { content: "×"; position: absolute; inset: 0; display: grid; place-items: center; font: 700 10px/1 var(--font-mono); color: rgba(0,0,0,.45); opacity: 0; transition: opacity .15s ease; }
 .osx-window__close:hover::after { opacity: 1; }
 .osx-window__lights i { width: 13px; height: 13px; border-radius: 50%; background: #e5a93d; }
 .osx-window__lights i:last-child { background: #57b45f; }
@@ -561,7 +577,7 @@ body:not(.dark) .osx {
   .osx-clock__time { font-size: 2.4rem; }
   .osx-window { inset: 50px 8px 70px; border-radius: 18px; }
   .osx-dock { bottom: 12px; max-width: calc(100vw - 16px); overflow-x: auto; }
-  .osx-dock__app, .osx-dock__home { width: 40px; height: 40px; }
+  .osx-dock__app, .osx-dock__home { width: 44px; height: 44px; }
   .osx-progress__todo { grid-template-columns: 1fr; }
   .osx-progress__feedback { flex-direction: column; align-items: flex-start; gap: 6px; }
   .osx-window__actions { flex-direction: column; }

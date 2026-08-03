@@ -20,6 +20,19 @@
   --wx-green-strong: color-mix(in srgb, var(--wxc-accent) 82%, #000);
 }
 
+.wxc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
 /* ── Trigger button — sits inside .social-icons alongside the <a> chips ─── */
 .social-icons__wechat {
   -webkit-appearance: none;
@@ -31,6 +44,11 @@
   color: inherit;
   font: inherit;
   cursor: pointer;
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
   line-height: 0;
   -webkit-tap-highlight-color: transparent;
 }
@@ -56,8 +74,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   margin-inline-start: 0; /* profile anchors already carry margin-right */
   margin-right: 10px;
   border: 1px solid var(--border);
@@ -103,6 +121,7 @@
   border: none;
   background: none;
   display: inline-flex;
+  min-height: 44px;
   align-items: center;
   gap: 6px;
   font-family: var(--font-body);
@@ -167,6 +186,8 @@
   position: relative;
   width: 100%;
   max-width: 348px;
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
   padding: 30px 26px 24px;
   border-radius: 22px;
   background: var(--entry);
@@ -196,10 +217,10 @@
 
 .wxc-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
+  top: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -306,6 +327,10 @@
   background-size: 200% 100%;
   animation: wxc-shimmer 1.15s ease-in-out infinite;
 }
+.wxc-qr-frame.is-error:not(.is-loaded)::before {
+  background: #f4e8e8;
+  animation: none;
+}
 @keyframes wxc-shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
@@ -329,7 +354,7 @@
 }
 .wxc-qr-frame.is-loaded .wxc-scanline {
   opacity: 1;
-  animation: wxc-scan 2.6s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+  animation: wxc-scan 2.6s cubic-bezier(0.6, 0, 0.4, 1) 2;
 }
 @keyframes wxc-scan {
   0%   { transform: translateY(0); opacity: 0; }
@@ -360,7 +385,7 @@
   border-radius: 50%;
   background: var(--wx-green);
   box-shadow: 0 0 0 0 color-mix(in srgb, var(--wx-green) 60%, transparent);
-  animation: wxc-pulse 1.9s ease-out infinite;
+  animation: wxc-pulse 1.9s ease-out 3;
 }
 @keyframes wxc-pulse {
   0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--wx-green) 55%, transparent); }
@@ -422,6 +447,7 @@
   align-items: center;
   gap: 5px;
   flex: none;
+  min-height: 44px;
   padding: 7px 11px;
   border: none;
   border-radius: 9px;

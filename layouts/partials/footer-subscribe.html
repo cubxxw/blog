@@ -17,6 +17,7 @@
        • success / already-subscribed → bounce + happy-arc eyes
      ─────────────────────────────────────────────────────────────── */ -}}
 {{- $isZH := eq site.Language.Lang "zh" -}}
+{{- $statusID := printf "fsub-status-%s" site.Language.Lang -}}
 <section class="fsub" data-fsub aria-label="{{ if $isZH }}邮件订阅{{ else }}Email newsletter{{ end }}">
 
   {{- /* Wave edge — fill matches the band background */ -}}
@@ -72,7 +73,8 @@
       <label class="fsub-field">
         <span class="fsub-visually-hidden">{{ if $isZH }}邮箱地址{{ else }}Email address{{ end }}</span>
         <input class="fsub-input" type="email" name="email" inputmode="email"
-               placeholder="you@example.com" autocomplete="email" required>
+               placeholder="you@example.com" autocomplete="email" required
+               aria-describedby="{{ $statusID }}" aria-invalid="false">
       </label>
       <button class="fsub-go" type="submit" aria-label="{{ if $isZH }}订阅{{ else }}Subscribe{{ end }}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -82,7 +84,8 @@
       <input type="text" name="company" class="fsub-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
     </form>
 
-    <p class="fsub-status" data-fsub-status aria-live="polite"></p>
+    <p class="fsub-status" id="{{ $statusID }}" data-fsub-status
+       aria-live="polite" aria-atomic="true"></p>
 
     {{- /* Quiet feed row — the whole-site feed plus per-channel RSS,
          migrated from the homepage's old hp-subscribe-channels. Text
@@ -94,7 +97,7 @@
       <a class="fsub-chip" href="{{ .RelPermalink }}" target="_blank" rel="noopener" title="JSON Feed 1.1">JSON</a>
       {{- end }}
       {{- with (site.GetPage "/").OutputFormats.Get "OPML" }}
-      <a class="fsub-chip" href="{{ .RelPermalink }}" download title="{{ if $isZH }}OPML — 一键导入全部频道{{ else }}OPML — import all channels at once{{ end }}">OPML</a>
+      <a class="fsub-chip" href="{{ .RelPermalink }}" download title="{{ if $isZH }}OPML - 一键导入全部频道{{ else }}OPML - import all channels at once{{ end }}">OPML</a>
       {{- end }}
       <span class="fsub-feeds-sep" aria-hidden="true"></span>
       {{- range $section := site.Sections }}
@@ -117,17 +120,17 @@
     zh: {
       sending: '正在寄出…',
       success: '成功！去邮箱点一下确认，我们就正式认识了。',
-      dup: '这个邮箱已经在名单里了——我们已经认识啦。',
+      dup: '这个邮箱已经在名单里了，我们已经认识啦。',
       rate: '请求太频繁了，喝口水稍后再试。',
       invalid: '这个邮箱好像不太对，再看一眼？',
       error: '寄丢了…请稍后再试一次。'
     },
     en: {
       sending: 'Sending…',
-      success: 'Done! Check your inbox to confirm — then it’s official.',
-      dup: 'This address is already on the list — we’ve met!',
+      success: 'Done! Check your inbox to confirm. Then it’s official.',
+      dup: 'This address is already on the list. We’ve met!',
       rate: 'Too many attempts. Take a sip of water and retry.',
-      invalid: 'That email looks off — mind double-checking?',
+      invalid: 'That email looks off. Please double-check it.',
       error: 'Lost in the mail… please try again shortly.'
     }
   };
@@ -139,6 +142,7 @@
     var form = band.querySelector('[data-fsub-form]');
     var input = form.querySelector('input[name="email"]');
     var status = band.querySelector('[data-fsub-status]');
+    var submit = form.querySelector('button[type="submit"]');
 
     /* ── pupil tracking ─────────────────────────────── */
     if (!reduce && bear && window.matchMedia('(pointer: fine)').matches) {
@@ -184,24 +188,41 @@
     function setStatus(msg, state) {
       status.textContent = msg;
       status.dataset.state = state || '';
+      if (state === 'error') status.setAttribute('role', 'alert');
+      else status.removeAttribute('role');
+    }
+    function setBusy(busy) {
+      form.setAttribute('aria-busy', busy ? 'true' : 'false');
+      if (submit) submit.disabled = busy;
     }
     function celebrate() {
       band.classList.remove('is-loading');
       band.classList.add('is-success');
+      setBusy(false);
+      if (submit) submit.disabled = true;
       if (bear) { bear.style.setProperty('--ex', '0px'); bear.style.setProperty('--ey', '0px'); }
     }
+    input.addEventListener('input', function () {
+      if (input.getAttribute('aria-invalid') === 'true') {
+        input.setAttribute('aria-invalid', 'false');
+        if (status.dataset.state === 'error') setStatus('', '');
+      }
+    });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (band.classList.contains('is-loading') || band.classList.contains('is-success')) return;
       var email = String(input.value || '').trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        input.setAttribute('aria-invalid', 'true');
         setStatus(t.invalid, 'error');
         band.classList.add('is-shake');
         setTimeout(function () { band.classList.remove('is-shake'); }, 500);
         input.focus();
         return;
       }
+      input.setAttribute('aria-invalid', 'false');
       band.classList.add('is-loading');
+      setBusy(true);
       setStatus(t.sending, 'loading');
       fetch('/.netlify/functions/subscribe-email', {
         method: 'POST',
@@ -218,9 +239,11 @@
         if (res.ok) { celebrate(); setStatus(t.success, 'success'); return; }
         if (res.status === 409) { celebrate(); setStatus(t.dup, 'success'); return; }
         band.classList.remove('is-loading');
+        setBusy(false);
         setStatus(res.status === 429 ? t.rate : t.error, 'error');
       }).catch(function () {
         band.classList.remove('is-loading');
+        setBusy(false);
         setStatus(t.error, 'error');
       });
     });

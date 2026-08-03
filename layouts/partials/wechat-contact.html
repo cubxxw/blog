@@ -20,10 +20,10 @@
       accent:   "#07c160",
       logoPath: {{ "M8.5 3C4.36 3 1 5.9 1 9.5c0 2.04 1.04 3.86 2.67 5.07L3 17l2.7-1.35A8.9 8.9 0 0 0 8.5 16c.17 0 .34 0 .51-.01A5.96 5.96 0 0 1 9 14.5c0-3.31 2.91-6 6.5-6 .17 0 .33.01.5.02C15.27 5.6 12.2 3 8.5 3zm-2 4.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5.5 4C12.91 11.5 11 13.32 11 15.5s1.91 4 5 4c.64 0 1.25-.1 1.82-.28L20 20.5l-.5-2.14A3.97 3.97 0 0 0 21 15.5c0-2.18-1.91-4-5-4zm-1.5 2.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm3 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z" | jsonify | safeJS }},
       title:    {{ cond $zh "加我的微信" "Add me on WeChat" | jsonify | safeJS }},
-      titleSub: {{ cond $zh "Add me on WeChat" "加我的微信" | jsonify | safeJS }},
-      lead:     {{ cond $zh "扫一扫二维码，或搜索微信号加我为好友，一起聊 AI、开源与远程生活。" "Scan the QR code, or search my WeChat ID to add me — let’s talk AI, open source and the nomad life." | jsonify | safeJS }},
+      titleSub: {{ cond $zh "微信好友" "WeChat contact" | jsonify | safeJS }},
+      lead:     {{ cond $zh "扫一扫二维码，或搜索微信号加我为好友，一起聊 AI、开源与远程生活。" "Scan the QR code or search my WeChat ID. Let’s talk AI, open source and the nomad life." | jsonify | safeJS }},
       idLabel:  {{ cond $zh "微信号" "WeChat ID" | jsonify | safeJS }},
-      scanHint: {{ cond $zh "打开微信 →「扫一扫」" "Open WeChat · Scan" | jsonify | safeJS }},
+      scanHint: {{ cond $zh "打开微信，选择「扫一扫」" "Open WeChat and choose Scan" | jsonify | safeJS }},
       qrAlt:    {{ cond $zh "微信二维码" "WeChat QR code" | jsonify | safeJS }},
       openText: {{ cond $zh "打开主页" "Open profile" | jsonify | safeJS }}
     },
@@ -31,10 +31,10 @@
       accent:   "#ff2442",
       logoPath: {{ "M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm2.6 4.4a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8zm.9 3.1H6.7v5h1.8v-5zm3.2-3.1h-1.8v8.1h1.8v-2.3l.6-.7 1.5 3h2l-2.3-4.2 2.1-2.4h-2.1l-1.8 2.2V8.4zm5.2 3a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5c.5 0 1-.15 1.4-.4v.3h1.6v-4.8h-1.6v.3c-.4-.25-.9-.4-1.4-.4zm.2 1.6a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z" | jsonify | safeJS }},
       title:    {{ cond $zh "在小红书找到我" "Find me on RedNote" | jsonify | safeJS }},
-      titleSub: {{ cond $zh "Find me on RedNote" "在小红书找到我" | jsonify | safeJS }},
-      lead:     {{ cond $zh "扫码或搜索账号看我记录 AI、开源与旅居生活；也可直接打开我的小红书主页。" "Scan or search my ID to see my notes on AI, open source and the nomad life — or open my RedNote profile directly." | jsonify | safeJS }},
+      titleSub: {{ cond $zh "小红书主页" "RedNote profile" | jsonify | safeJS }},
+      lead:     {{ cond $zh "扫码或搜索账号看我记录 AI、开源与旅居生活；也可直接打开我的小红书主页。" "Scan or search my ID to see my notes on AI, open source and the nomad life. You can also open my RedNote profile directly." | jsonify | safeJS }},
       idLabel:  {{ cond $zh "小红书号" "RedNote ID" | jsonify | safeJS }},
-      scanHint: {{ cond $zh "打开小红书 →「扫一扫」" "Open RedNote · Scan" | jsonify | safeJS }},
+      scanHint: {{ cond $zh "打开小红书，选择「扫一扫」" "Open RedNote and choose Scan" | jsonify | safeJS }},
       qrAlt:    {{ cond $zh "小红书二维码" "RedNote QR code" | jsonify | safeJS }},
       openText: {{ cond $zh "打开小红书主页" "Open my RedNote profile" | jsonify | safeJS }}
     }
@@ -45,14 +45,61 @@
     copy:   {{ cond $zh "复制账号" "Copy ID" | jsonify | safeJS }},
     copied: {{ cond $zh "已复制 ✓" "Copied ✓" | jsonify | safeJS }},
     close:  {{ cond $zh "关闭" "Close" | jsonify | safeJS }},
-    viewQr: {{ cond $zh "查看大图" "View full size" | jsonify | safeJS }}
+    viewQr: {{ cond $zh "查看二维码大图" "View QR code at full size" | jsonify | safeJS }},
+    qrLoading: {{ cond $zh "二维码正在载入" "QR code is loading" | jsonify | safeJS }},
+    qrError: {{ cond $zh "二维码载入失败，请稍后重试" "The QR code failed to load. Please try again." | jsonify | safeJS }}
   };
 
-  var backdrop = null, lastFocus = null;
+  var backdrop = null, lastFocus = null, previousOverflow = "";
+  var inerted = [], qrPreloads = Object.create(null);
 
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
   }); }
+
+  function preloadQR(url) {
+    if (!url || qrPreloads[url]) return qrPreloads[url] || null;
+    var image = new Image();
+    image.decoding = "async";
+    image.src = url;
+    qrPreloads[url] = image;
+    if (image.decode) image.decode().catch(function () {});
+    return image;
+  }
+
+  function qrURLFromTrigger(trigger) {
+    if (!trigger || !trigger.getAttribute) return "";
+    return trigger.getAttribute("data-contact-qr") ||
+      trigger.getAttribute("data-wechat-qr") || "";
+  }
+
+  function warmFromEvent(event) {
+    var trigger = event.target && event.target.closest &&
+      event.target.closest("[data-contact-qr], [data-wechat-qr]");
+    if (trigger) preloadQR(qrURLFromTrigger(trigger));
+  }
+
+  function setPageInert(inert) {
+    if (inert) {
+      inerted = [];
+      Array.prototype.forEach.call(document.body.children, function (element) {
+        if (element === backdrop || element.inert) return;
+        element.inert = true;
+        inerted.push(element);
+      });
+      return;
+    }
+    inerted.forEach(function (element) { element.inert = false; });
+    inerted = [];
+  }
+
+  function focusableInCard() {
+    if (!backdrop) return [];
+    return Array.prototype.filter.call(
+      backdrop.querySelectorAll('a[href]:not([hidden]), button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+      function (element) { return element.getClientRects().length > 0; }
+    );
+  }
 
   function build(){
     backdrop = document.createElement("div");
@@ -60,7 +107,7 @@
     backdrop.className = "wxc-backdrop";
     backdrop.setAttribute("aria-hidden", "true");
     backdrop.innerHTML = [
-      '<div class="wxc-card" role="dialog" aria-modal="true" aria-labelledby="wxc-title">',
+      '<div class="wxc-card" role="dialog" aria-modal="true" aria-labelledby="wxc-title" aria-describedby="wxc-lead">',
         '<button class="wxc-close" type="button" aria-label="' + esc(T.close) + '" onclick="closeContactCard()">&#215;</button>',
         '<div class="wxc-head">',
           '<span class="wxc-logo" aria-hidden="true">',
@@ -73,20 +120,21 @@
             '<span class="wxc-title-sub"></span>',
           '</div>',
         '</div>',
-        '<p class="wxc-lead"></p>',
-        '<a class="wxc-qr" href="#" target="_blank" rel="noopener" title="' + esc(T.viewQr) + '">',
-          '<span class="wxc-qr-frame">',
-            '<img class="wxc-qr-img" src="" alt="" width="260" height="260" decoding="async" loading="lazy" />',
+        '<p class="wxc-lead" id="wxc-lead"></p>',
+        '<a class="wxc-qr" href="#" target="_blank" rel="noopener" title="' + esc(T.viewQr) + '" aria-label="' + esc(T.viewQr) + '">',
+          '<span class="wxc-qr-frame" aria-busy="true">',
+            '<img class="wxc-qr-img" src="" alt="" width="260" height="260" decoding="async" />',
             '<span class="wxc-scanline" aria-hidden="true"></span>',
+            '<span class="wxc-qr-status wxc-sr-only" role="status" aria-live="polite">' + esc(T.qrLoading) + '</span>',
           '</span>',
         '</a>',
         '<p class="wxc-scanhint"><span class="wxc-scanhint-dot" aria-hidden="true"></span><span class="wxc-scanhint-txt"></span></p>',
-        '<div class="wxc-id" role="button" tabindex="0" title="' + esc(T.copy) + '" onclick="copyContactID(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();copyContactID(this);}">',
+        '<div class="wxc-id">',
           '<span class="wxc-id-label"></span>',
           '<code class="wxc-id-value"></code>',
-          '<button class="wxc-copy" type="button" tabindex="-1" onclick="event.stopPropagation();copyContactID(this)">',
+          '<button class="wxc-copy" type="button" onclick="copyContactID(this)" aria-label="' + esc(T.copy) + '">',
             '<svg class="wxc-copy-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
-            '<span class="wxc-copy-txt">' + esc(T.copy) + '</span>',
+            '<span class="wxc-copy-txt" aria-live="polite">' + esc(T.copy) + '</span>',
           '</button>',
         '</div>',
         // Optional: direct link to the on-web profile (shown only when the
@@ -100,6 +148,12 @@
     backdrop.addEventListener("click", function (e) {
       if (e.target === backdrop) closeContactCard();
     });
+    var idRow = backdrop.querySelector(".wxc-id");
+    if (idRow) {
+      idRow.addEventListener("click", function (event) {
+        if (!event.target.closest(".wxc-copy")) window.copyContactID(idRow);
+      });
+    }
     document.body.appendChild(backdrop);
     return backdrop;
   }
@@ -116,6 +170,7 @@
     var card = backdrop.querySelector(".wxc-card");
     card.style.setProperty("--wxc-accent", cfg.accent);
     card.setAttribute("data-platform", platform);
+    card.setAttribute("aria-label", cfg.title);
     backdrop.querySelector(".wxc-logo-path").setAttribute("d", cfg.logoPath);
     backdrop.querySelector(".wxc-title").textContent = cfg.title;
     backdrop.querySelector(".wxc-title-sub").textContent = cfg.titleSub;
@@ -126,10 +181,38 @@
     var img = backdrop.querySelector(".wxc-qr-img");
     var frame = backdrop.querySelector(".wxc-qr-frame");
     var link = backdrop.querySelector(".wxc-qr");
-    frame.classList.remove("is-loaded");
-    img.onload = function () { frame.classList.add("is-loaded"); };
+    var qrStatus = backdrop.querySelector(".wxc-qr-status");
+    var alreadyLoaded = frame.dataset.loadedSrc === qr && img.naturalWidth > 0;
+    frame.dataset.requestedSrc = qr;
+    if (!alreadyLoaded) {
+      frame.classList.remove("is-loaded", "is-error");
+      frame.setAttribute("aria-busy", "true");
+      if (qrStatus) qrStatus.textContent = T.qrLoading;
+    }
+    img.onload = function () {
+      if (frame.dataset.requestedSrc !== qr) return;
+      frame.classList.add("is-loaded");
+      frame.classList.remove("is-error");
+      frame.setAttribute("aria-busy", "false");
+      frame.dataset.loadedSrc = qr;
+      if (qrStatus) qrStatus.textContent = "";
+    };
+    img.onerror = function () {
+      if (frame.dataset.requestedSrc !== qr) return;
+      frame.classList.add("is-error");
+      frame.classList.remove("is-loaded");
+      frame.setAttribute("aria-busy", "false");
+      delete frame.dataset.loadedSrc;
+      if (qrStatus) qrStatus.textContent = T.qrError;
+    };
     img.alt = cfg.qrAlt;
-    img.src = qr;
+    var warmImage = preloadQR(qr);
+    if (!alreadyLoaded) img.src = qr;
+    if (alreadyLoaded ||
+        (img.complete && img.naturalWidth) ||
+        (warmImage && warmImage.complete && warmImage.naturalWidth)) {
+      img.onload();
+    }
     link.setAttribute("href", qr);
 
     backdrop.querySelector(".wxc-id-value").textContent = id;
@@ -153,10 +236,16 @@
     var txt = backdrop.querySelector(".wxc-copy-txt");
     if (txt) txt.textContent = T.copy;
     var copyBtn = backdrop.querySelector(".wxc-copy");
-    if (copyBtn) copyBtn.classList.remove("is-done");
+    if (copyBtn) {
+      copyBtn.classList.remove("is-done");
+      copyBtn.setAttribute("aria-label", T.copy);
+    }
 
     backdrop.classList.add("is-open");
     backdrop.setAttribute("aria-hidden", "false");
+    if (lastFocus && lastFocus.setAttribute) lastFocus.setAttribute("aria-expanded", "true");
+    setPageInert(true);
+    previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     var closeBtn = backdrop.querySelector(".wxc-close");
     if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 60);
@@ -165,17 +254,11 @@
   // Back-compat alias: existing WeChat buttons still call openWechatContact().
   window.openWechatContact = function (btn) {
     if (btn && !btn.getAttribute("data-contact-platform")) {
-      // Legacy buttons carry data-wechat-id / data-wechat-qr. Bridge them.
-      var shim = {
-        getAttribute: function (k) {
-          if (k === "data-contact-platform") return "wechat";
-          if (k === "data-contact-id") return btn.getAttribute("data-wechat-id");
-          if (k === "data-contact-qr") return btn.getAttribute("data-wechat-qr");
-          return btn.getAttribute(k);
-        },
-        focus: btn.focus ? btn.focus.bind(btn) : null
-      };
-      return window.openContactCard(shim);
+      // Legacy buttons carry data-wechat-id / data-wechat-qr. Normalize them
+      // once so preload, dialog state and focus restoration share one path.
+      btn.setAttribute("data-contact-platform", "wechat");
+      btn.setAttribute("data-contact-id", btn.getAttribute("data-wechat-id") || "");
+      btn.setAttribute("data-contact-qr", btn.getAttribute("data-wechat-qr") || "");
     }
     return window.openContactCard(btn);
   };
@@ -184,7 +267,9 @@
     if (!backdrop) return;
     backdrop.classList.remove("is-open");
     backdrop.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
+    setPageInert(false);
+    document.body.style.overflow = previousOverflow;
+    if (lastFocus && lastFocus.setAttribute) lastFocus.setAttribute("aria-expanded", "false");
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
   };
   // Back-compat alias.
@@ -203,11 +288,13 @@
                 (backdrop && backdrop.querySelector(".wxc-id"));
       var txt = btn && btn.querySelector(".wxc-copy-txt");
       if (btn) btn.classList.add("is-done");
+      if (btn) btn.setAttribute("aria-label", T.copied);
       if (row) row.classList.add("is-done");
       if (txt) { txt.textContent = T.copied; }
       setTimeout(function () {
         if (txt) txt.textContent = T.copy;
         if (btn) btn.classList.remove("is-done");
+        if (btn) btn.setAttribute("aria-label", T.copy);
         if (row) row.classList.remove("is-done");
       }, 1800);
     };
@@ -228,9 +315,45 @@
   }
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && backdrop && backdrop.classList.contains("is-open")) {
+    if (!backdrop || !backdrop.classList.contains("is-open")) return;
+    if (e.key === "Escape") {
+      e.preventDefault();
       closeContactCard();
+      return;
+    }
+    if (e.key === "Tab") {
+      var focusable = focusableInCard();
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !backdrop.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !backdrop.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
+
+  document.addEventListener("pointerover", warmFromEvent, { passive: true });
+  document.addEventListener("focusin", warmFromEvent);
+  document.addEventListener("touchstart", warmFromEvent, { passive: true });
+
+  function warmVisibleContactQRs() {
+    Array.prototype.forEach.call(
+      document.querySelectorAll("[data-contact-qr], [data-wechat-qr]"),
+      function (trigger) { preloadQR(qrURLFromTrigger(trigger)); }
+    );
+  }
+  function scheduleQRWarmup() {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(warmVisibleContactQRs, { timeout: 1800 });
+    } else {
+      window.setTimeout(warmVisibleContactQRs, 1200);
+    }
+  }
+  if (document.readyState === "complete") scheduleQRWarmup();
+  else window.addEventListener("load", scheduleQRWarmup, { once: true });
 })();
 </script>

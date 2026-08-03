@@ -31,6 +31,14 @@
     padding: 12px 0;
 }
 
+.social-icons > a {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
 .social-icons a:not(:last-of-type) {
     margin-inline-end: 12px;
 }

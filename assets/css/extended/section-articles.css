@@ -168,11 +168,62 @@ body.dark:has(.library-page) {
   gap: 4px;
 }
 
+.library-filter__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+.library-filter__scroll-shell {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .library-filter__topics {
+  width: 100%;
   min-width: 0;
   overflow-x: auto;
   padding: 2px;
+  scroll-padding-inline: 8px;
   scrollbar-width: none;
+}
+
+.library-filter__topics:focus-visible,
+.library-filter__tags:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--library-accent) 28%, transparent);
+  outline-offset: 1px;
+  border-radius: 999px;
+}
+
+.library-filter__scroll-hint {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 1;
+  display: grid;
+  width: 38px;
+  place-items: center end;
+  padding-right: 7px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--library-surface) 94%, var(--library-canvas)) 58%
+  );
+  color: var(--library-ink);
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+.library-filter__scroll-hint[hidden] {
+  display: none;
 }
 
 .library-filter__topics::-webkit-scrollbar,
@@ -924,7 +975,7 @@ html:lang(en) .library-card--featured .library-card__title {
 
   .library-filter__chip,
   .library-filter__toggle {
-    min-height: 40px;
+    min-height: 44px;
     padding-inline: 12px;
     font-size: 0.78rem;
   }
@@ -953,9 +1004,11 @@ html:lang(en) .library-card--featured .library-card__title {
   }
 
   .library-filter__tags {
+    width: 100%;
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-bottom: 2px;
+    scroll-padding-inline: 8px;
     scrollbar-width: none;
   }
 
@@ -972,7 +1025,7 @@ html:lang(en) .library-card--featured .library-card__title {
   }
 
   .library-filter__clear {
-    min-height: 38px;
+    min-height: 44px;
     padding-inline: 12px;
   }
 
@@ -1006,7 +1059,7 @@ html:lang(en) .library-card--featured .library-card__title {
   .library-card,
   .library-card--featured {
     min-height: 0;
-    contain-intrinsic-size: 420px;
+    contain-intrinsic-size: 340px;
   }
 
   .library-lane .library-card__body,
@@ -1014,7 +1067,7 @@ html:lang(en) .library-card--featured .library-card__title {
     grid-column: 1;
     grid-row: 2;
     min-height: 0;
-    padding: 22px;
+    padding: 18px 18px 20px;
   }
 
   .library-lane .library-card__media,
@@ -1022,11 +1075,11 @@ html:lang(en) .library-card--featured .library-card__title {
     grid-column: 1;
     grid-row: 1;
     min-height: 0;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2.15 / 1;
   }
 
   .library-card__meta {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.62rem;
     font-size: 0.68rem;
   }
 
@@ -1034,16 +1087,16 @@ html:lang(en) .library-card--featured .library-card__title {
   .library-card--featured .library-card__title,
   html:lang(en) .library-card--featured .library-card__title {
     max-width: 22ch;
-    font-size: clamp(1.35rem, 6vw, 1.65rem);
+    font-size: clamp(1.24rem, 5.6vw, 1.48rem);
     letter-spacing: -0.032em;
     line-height: 1.18;
   }
 
   .library-card__summary,
   .library-card--featured .library-card__summary {
-    margin-top: 0.75rem;
-    font-size: 0.88rem;
-    line-height: 1.55;
+    margin-top: 0.62rem;
+    font-size: 0.84rem;
+    line-height: 1.5;
     -webkit-line-clamp: 2;
   }
 
@@ -1052,7 +1105,7 @@ html:lang(en) .library-card--featured .library-card__title {
   }
 
   .library-card__action {
-    padding-top: 1.1rem;
+    padding-top: 0.9rem;
     font-size: 0.76rem;
   }
 

@@ -37,6 +37,7 @@
 {{- $filterOldest := cond $isZh "最早优先" "Oldest first" }}
 {{- $filterClear := cond $isZh "清除筛选" "Clear filters" }}
 {{- $filterMore := cond $isZh "筛选" "Filters" }}
+{{- $filterScrollHint := cond $isZh "横向滑动查看更多" "Scroll sideways for more" }}
 {{- $noResults := cond $isZh "没有匹配的文章，可以清除筛选后继续浏览。" "No articles match. Clear the filters to keep browsing." }}
 {{- $articlesLabel := cond $isZh "篇文章" "articles" }}
 {{- $loadedLabel := cond $isZh "已显示" "Showing" }}
@@ -69,24 +70,30 @@
   <section class="library-filter" id="library-filter" aria-label="{{ if $isZh }}文章筛选{{ else }}Article filters{{ end }}">
     <div class="library-filter__primary">
       <span class="library-filter__label">{{ $filterCategoryLabel }}</span>
-      <div class="library-filter__topics" id="filter-categories">
-        <button class="library-filter__chip is-active" data-category="all" aria-pressed="true">
-          {{ $filterAllLabel }} <span>{{ $totalCount }}</span>
-        </button>
-        <button class="library-filter__chip" data-category="ai-agent" aria-pressed="false">
-          AI Agent <span>{{ $aiAgentCount }}</span>
-        </button>
-        <button class="library-filter__chip" data-category="engineering" aria-pressed="false">
-          Engineering <span>{{ $engineeringCount }}</span>
-        </button>
-        <button class="library-filter__chip" data-category="growth" aria-pressed="false">
-          Growth & Life <span>{{ $growthCount }}</span>
-        </button>
-        {{- if gt $projectsCount 0 }}
-        <button class="library-filter__chip" data-category="projects" aria-pressed="false">
-          AI Projects <span>{{ $projectsCount }}</span>
-        </button>
-        {{- end }}
+      <div class="library-filter__scroll-shell" data-filter-scroll>
+        <div class="library-filter__topics" id="filter-categories" data-filter-scroll-track
+             tabindex="0" aria-label="{{ $filterCategoryLabel }}">
+          <button class="library-filter__chip is-active" data-category="all" aria-pressed="true">
+            {{ $filterAllLabel }} <span>{{ $totalCount }}</span>
+          </button>
+          <button class="library-filter__chip" data-category="ai-agent" aria-pressed="false">
+            AI Agent <span>{{ $aiAgentCount }}</span>
+          </button>
+          <button class="library-filter__chip" data-category="engineering" aria-pressed="false">
+            {{ if $isZh }}工程{{ else }}Engineering{{ end }} <span>{{ $engineeringCount }}</span>
+          </button>
+          <button class="library-filter__chip" data-category="growth" aria-pressed="false">
+            {{ if $isZh }}成长与生活{{ else }}Growth &amp; Life{{ end }} <span>{{ $growthCount }}</span>
+          </button>
+          {{- if gt $projectsCount 0 }}
+          <button class="library-filter__chip" data-category="projects" aria-pressed="false">
+            {{ if $isZh }}AI 项目{{ else }}AI Projects{{ end }} <span>{{ $projectsCount }}</span>
+          </button>
+          {{- end }}
+        </div>
+        <span class="library-filter__scroll-hint" data-filter-scroll-hint hidden>
+          <span aria-hidden="true">›</span><span class="library-filter__sr-only">{{ $filterScrollHint }}</span>
+        </span>
       </div>
       <button type="button" class="library-filter__toggle" id="filter-toggle"
         aria-expanded="false" aria-controls="filter-collapsible">
@@ -100,12 +107,18 @@
       <div class="library-filter__collapsible-inner">
         <div class="library-filter__row">
           <span class="library-filter__label">{{ $filterTagsLabel }}</span>
-          <div class="library-filter__tags" id="filter-tags">
-            {{- range $topTags }}
-            <button class="library-filter__chip library-filter__chip--tag" data-tag="{{ .tag }}" aria-pressed="false">
-              {{ .tag | replaceRE "[—–]" "-" }}
-            </button>
-            {{- end }}
+          <div class="library-filter__scroll-shell library-filter__scroll-shell--tags" data-filter-scroll>
+            <div class="library-filter__tags" id="filter-tags" data-filter-scroll-track
+                 tabindex="0" aria-label="{{ $filterTagsLabel }}">
+              {{- range $topTags }}
+              <button class="library-filter__chip library-filter__chip--tag" data-tag="{{ .tag }}" aria-pressed="false">
+                {{ .tag | replaceRE "[—–]" "-" }}
+              </button>
+              {{- end }}
+            </div>
+            <span class="library-filter__scroll-hint" data-filter-scroll-hint hidden>
+              <span aria-hidden="true">›</span><span class="library-filter__sr-only">{{ $filterScrollHint }}</span>
+            </span>
           </div>
         </div>
         <div class="library-filter__controls">

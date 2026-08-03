@@ -16,15 +16,75 @@
   if (!palette) return;
   window.__searchPaletteReady = true;
 
+  const isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
+  const labels = isZh ? {
+    you: '你',
+    ai: 'AI',
+    aiFallback: '暂时没有找到答案。',
+    aiError: 'AI 回答失败，请稍后重试。',
+    aiTimeout: '请求超时，请再试一次。',
+    localDev: '<strong>本地开发模式</strong><br>Hugo 服务不包含 AI Functions，请使用 <code>netlify dev</code> 测试。',
+    configError: '<strong>配置错误</strong><br>AI 服务缺少 API 密钥，请检查 Netlify 环境变量。',
+    errorPrefix: '<strong>错误</strong>：',
+    retry: '重试',
+    sources: '参考来源：',
+    noResults: '没有找到匹配结果',
+    indexError: '搜索索引暂时无法载入，请稍后重试。'
+  } : {
+    you: 'You',
+    ai: 'AI',
+    aiFallback: 'Sorry, I could not find an answer.',
+    aiError: 'The AI answer failed. Please try again later.',
+    aiTimeout: 'The request timed out. Please try again.',
+    localDev: '<strong>Local development mode</strong><br>Hugo does not host AI Functions. Run <code>netlify dev</code> to test them.',
+    configError: '<strong>Configuration error</strong><br>The AI service is missing an API key. Check the Netlify environment variables.',
+    errorPrefix: '<strong>Error</strong>: ',
+    retry: 'Retry',
+    sources: 'Sources: ',
+    noResults: 'No matching results',
+    indexError: 'The search index could not be loaded. Please try again later.'
+  };
+
   let fuse, searchData;
   let isOpen = false;
   let isAiThinking = false;
   let conversationHistory = []; // Store conversation history
   let currentQuery = ''; // Store current query for follow-up
   let lastAiQuery = ''; // Store last query for retry
+  let activeIndex = -1;
+  let lastFocusedElement = null;
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, character => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[character]);
+  }
+
+  function safeHref(value) {
+    try {
+      const url = new URL(String(value || ''), window.location.origin);
+      if (url.protocol !== 'http:' && url.protocol !== 'https:') return '#';
+      return url.origin === window.location.origin
+        ? `${url.pathname}${url.search}${url.hash}`
+        : url.href;
+    } catch (error) {
+      return '#';
+    }
+  }
+
+  function updateAiTrigger() {
+    if (aiBtn) aiBtn.disabled = !input?.value.trim() || isAiThinking;
+  }
 
   // Open palette
   function openPalette() {
+    if (!isOpen && document.activeElement && !palette.contains(document.activeElement)) {
+      lastFocusedElement = document.activeElement;
+    }
     palette.removeAttribute('hidden');
     document.body.classList.add('search-palette-open');
     isOpen = true;
@@ -48,19 +108,31 @@
     document.body.classList.remove('search-palette-open');
     isOpen = false;
     triggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
-    input.value = '';
+    if (input) {
+      input.value = '';
+      input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
+    }
     resultsList.innerHTML = '';
     resultCount.textContent = '0';
     emptyMsg.hidden = true;
+    activeIndex = -1;
+    updateAiTrigger();
     hideAiBox();
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      try { lastFocusedElement.focus({ preventScroll: true }); } catch (error) {}
+    }
+    lastFocusedElement = null;
   }
 
   function hideAiBox() {
     aiBox.hidden = true;
     aiContent.innerHTML = '';
+    aiContent.removeAttribute('aria-busy');
     isAiThinking = false;
     conversationHistory = []; // Clear conversation history when closing
     currentQuery = '';
+    updateAiTrigger();
     // Bring the suggestion chips back for the next conversation
     const suggestions = document.getElementById('search-ai-suggestions');
     if (suggestions) suggestions.style.display = '';
@@ -83,7 +155,7 @@
       const isUser = msg.role === 'user';
       return `
         <div class="search-palette__conversation-message ${isUser ? 'user' : 'assistant'}">
-          <div class="search-palette__conversation-sender">${isUser ? '🧑 You' : '🤖 AI'}</div>
+          <div class="search-palette__conversation-sender">${isUser ? labels.you : labels.ai}</div>
           <div class="search-palette__conversation-content">${formatAiAnswer(msg.content)}</div>
         </div>
       `;
@@ -91,18 +163,17 @@
   }
 
   // Add follow-up input field
-  function renderFollowUpInput(lastQuery) {
-    const isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
+  function renderFollowUpInput() {
     return `
       <div class="search-palette__followup">
         <input
           class="search-palette__followup-input"
           type="text"
           placeholder="${isZh ? '继续追问… (Enter 发送)' : 'Ask a follow-up… (Enter to send)'}"
-          data-followup-query="${lastQuery}"
+          aria-label="${isZh ? '继续追问' : 'Ask a follow-up'}"
         />
-        <button class="search-palette__followup-send">${isZh ? '发送' : 'Send'}</button>
-        <button class="search-palette__share-btn" title="${isZh ? '分享对话' : 'Share conversation'}" aria-label="${isZh ? '分享对话' : 'Share conversation'}">
+        <button type="button" class="search-palette__followup-send">${isZh ? '发送' : 'Send'}</button>
+        <button type="button" class="search-palette__share-btn" title="${isZh ? '分享对话' : 'Share conversation'}" aria-label="${isZh ? '分享对话' : 'Share conversation'}">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
             <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
@@ -114,15 +185,18 @@
 
   // Load index.json and initialize Fuse.js
   function loadSearchData() {
-    const lang = document.documentElement.lang || 'en';
     // Load language-specific search index based on current page URL
     const currentPath = window.location.pathname;
     const langMatch = currentPath.match(/^\/(zh|en)/);
     const searchLang = langMatch ? langMatch[1] : 'en';
     const indexPath = searchLang !== 'en' ? `/${searchLang}/index.json` : '/index.json';
-    
+    input?.setAttribute('aria-busy', 'true');
+
     fetch(indexPath)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) throw new Error(`Search index error (${response.status})`);
+        return response.json();
+      })
       .then(data => {
         searchData = data;
         fuse = new Fuse(searchData, {
@@ -141,8 +215,17 @@
           tokenize: true,
           matchAllTokens: false
         });
+        input?.setAttribute('aria-busy', 'false');
+        if (input?.value.trim()) doSearch(input.value);
       })
-      .catch(err => console.error('Failed to load search index:', err));
+      .catch(err => {
+        input?.setAttribute('aria-busy', 'false');
+        resultsList.innerHTML = '';
+        resultCount.textContent = '0';
+        emptyMsg.textContent = labels.indexError;
+        emptyMsg.hidden = false;
+        console.error('Failed to load search index:', err);
+      });
   }
 
   // Tokenize a query for fallback search: latin/number words plus CJK
@@ -197,7 +280,9 @@
 
     isAiThinking = true;
     aiBox.hidden = false;
+    aiContent.setAttribute('aria-busy', 'true');
     lastAiQuery = query;
+    updateAiTrigger();
 
     // If this is a new conversation (not a follow-up), clear history
     if (!isFollowUp) {
@@ -271,7 +356,7 @@
         // Show conversation so far + a streaming message container
         aiContent.innerHTML = renderConversation() +
           `<div class="search-palette__conversation-message assistant">
-            <div class="search-palette__conversation-sender">🤖 AI</div>
+            <div class="search-palette__conversation-sender">${labels.ai}</div>
             <div class="search-palette__conversation-content" id="ai-streaming-target"></div>
           </div>`;
         const streamTarget = document.getElementById('ai-streaming-target');
@@ -317,11 +402,11 @@
 
         aiContent.removeEventListener('scroll', onAiScroll);
         keepAtBottom = pinToBottom;
-        if (!answer) answer = 'Sorry, I couldn\'t find an answer.';
+        if (!answer) answer = labels.aiFallback;
       } else {
         // Non-streaming JSON response (fallback)
         const data = await response.json();
-        answer = data.answer || 'Sorry, I couldn\'t find an answer.';
+        answer = data.answer || labels.aiFallback;
         candidates = data.candidates || [];
       }
 
@@ -334,7 +419,7 @@
       if (suggestionsRow) suggestionsRow.style.display = 'none';
 
       // Render full conversation with follow-up input and sources
-      aiContent.innerHTML = renderConversation() + renderSources(candidates) + renderFollowUpInput(query);
+      aiContent.innerHTML = renderConversation() + renderSources(candidates) + renderFollowUpInput();
 
       // Land at the end of the answer so sources + follow-up input are
       // visible — unless the user deliberately scrolled up to read.
@@ -349,22 +434,23 @@
     } catch (err) {
       clearTimeout(aiTimeoutId);
       console.error('AI Error:', err);
-      let errorMsg = 'Sorry, failed to get AI answer. Please try again later.';
+      let errorMsg = labels.aiError;
 
       if (err.name === 'AbortError') {
-        errorMsg = 'Request timed out. Please try again.';
+        errorMsg = labels.aiTimeout;
       } else if (err.message === 'LOCAL_DEV_404') {
-        errorMsg = `<strong>Local Dev Mode Detected</strong><br>Hugo server does not host AI functions. Please run <code>netlify dev</code> to test AI features locally.`;
+        errorMsg = labels.localDev;
       } else if (err.message.includes('Missing DASHSCOPE_API_KEY')) {
-        errorMsg = `<strong>Configuration Error</strong><br>The AI service is missing an API key. Please check your Netlify environment variables.`;
+        errorMsg = labels.configError;
       } else if (err.message) {
-        errorMsg = `<strong>Error</strong>: ${err.message}`;
+        errorMsg = labels.errorPrefix + escapeHtml(err.message);
       }
 
-      aiContent.innerHTML = `<div class="search-palette__ai-error" style="color: #ef4444; font-size: 0.9rem; line-height: 1.5;">${errorMsg}</div>`;
+      aiContent.innerHTML = `<div class="search-palette__ai-error">${errorMsg}</div>`;
       const retryBtn = document.createElement('button');
+      retryBtn.type = 'button';
       retryBtn.className = 'ai-retry-btn';
-      retryBtn.textContent = '↺ 重试';
+      retryBtn.textContent = labels.retry;
       retryBtn.addEventListener('click', () => {
         if (lastAiQuery) {
           input.value = lastAiQuery;
@@ -374,6 +460,8 @@
       aiContent.querySelector('.search-palette__ai-error').appendChild(retryBtn);
     } finally {
       isAiThinking = false;
+      aiContent.removeAttribute('aria-busy');
+      updateAiTrigger();
     }
   }
 
@@ -423,9 +511,9 @@
   function renderSources(candidates) {
     if (!candidates || candidates.length === 0) return '';
     const links = candidates.slice(0, 3).map(c =>
-      `<a href="${c.permalink}" class="ai-source-link" target="_blank">${c.title}</a>`
+      `<a href="${escapeHtml(safeHref(c.permalink))}" class="ai-source-link" target="_blank" rel="noopener noreferrer">${escapeHtml(c.title)}</a>`
     ).join('');
-    return `<div class="ai-sources"><span class="ai-sources-label">参考 / Sources: </span>${links}</div>`;
+    return `<div class="ai-sources"><span class="ai-sources-label">${labels.sources}</span>${links}</div>`;
   }
 
   // When an AI answer is about WeChat / contact, append a one-tap button that
@@ -459,12 +547,12 @@
 
   function formatAiAnswer(text) {
     if (!text) return '';
-    return text
+    return escapeHtml(text)
       .replace(/^### (.*$)/gim, '<h3>$1</h3>')
       .replace(/^## (.*$)/gim, '<h2>$1</h2>')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+      .replace(/\[([^\]]+)\]\(((?:https?:\/\/|\/)[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
       .replace(/\n/g, '<br>');
   }
 
@@ -475,23 +563,65 @@
     fullLink.href = query.trim() ? `${baseHref}?q=${encodeURIComponent(query.trim())}` : baseHref;
   }
 
+  function resultOptions() {
+    return Array.from(resultsList.querySelectorAll('[role="option"]'));
+  }
+
+  function setActiveResult(index, shouldScroll = true) {
+    const options = resultOptions();
+    if (!options.length || index < 0) {
+      activeIndex = -1;
+      options.forEach(option => option.setAttribute('aria-selected', 'false'));
+      input?.removeAttribute('aria-activedescendant');
+      return;
+    }
+
+    activeIndex = Math.max(0, Math.min(index, options.length - 1));
+    options.forEach((option, optionIndex) => {
+      option.setAttribute('aria-selected', optionIndex === activeIndex ? 'true' : 'false');
+    });
+    const activeOption = options[activeIndex];
+    input?.setAttribute('aria-activedescendant', activeOption.id);
+    if (shouldScroll) activeOption.scrollIntoView({ block: 'nearest' });
+  }
+
+  function openSelectedResult() {
+    const options = resultOptions();
+    if (options.length) {
+      const target = options[activeIndex >= 0 ? activeIndex : 0];
+      window.location.assign(target.href);
+      return;
+    }
+    if (input?.value.trim() && fuse && fullLink) {
+      window.location.assign(fullLink.href);
+    }
+  }
+
   // Execute search
   function doSearch(query) {
     updateFullSearchLink(query);
-    if (!fuse || !query.trim()) {
+    setActiveResult(-1, false);
+    if (!query.trim()) {
       resultsList.innerHTML = '';
       resultCount.textContent = '0';
       emptyMsg.hidden = true;
+      input?.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    if (!fuse) {
       return;
     }
     const results = searchWithFallback(query, 10);
     resultCount.textContent = results.length;
     if (results.length === 0) {
       resultsList.innerHTML = '';
+      emptyMsg.textContent = labels.noResults;
       emptyMsg.hidden = false;
+      input?.setAttribute('aria-expanded', 'false');
       return;
     }
     emptyMsg.hidden = true;
+    input?.setAttribute('aria-expanded', 'true');
     const stripHtml = (html) => {
       const tmp = document.createElement('div');
       tmp.innerHTML = html;
@@ -504,44 +634,103 @@
       const preview = rawPreview.length > 80 ? rawPreview.substring(0, 80) + '…' : rawPreview;
       const tags = Array.isArray(item.tags) ? item.tags.slice(0, 3) : [];
       const tagsHtml = tags.length
-        ? `<span class="search-palette__result-meta">${tags.map(t => `<span class="search-palette__result-tag">${t}</span>`).join('')}</span>`
+        ? `<span class="search-palette__result-meta">${tags.map(t => `<span class="search-palette__result-tag">${escapeHtml(t)}</span>`).join('')}</span>`
         : '';
       const dateHtml = date
-        ? `<span class="search-palette__result-date">${date}</span>`
+        ? `<span class="search-palette__result-date">${escapeHtml(date)}</span>`
         : '';
       const metaRow = (tagsHtml || dateHtml)
         ? `<span class="search-palette__result-footer">${tagsHtml}${dateHtml}</span>`
         : '';
+      const optionId = `search-result-option-${i}`;
       return `
-      <li class="search-palette__result" role="option">
-        <a class="search-palette__result-link" href="${item.permalink}">
-          <span class="search-palette__result-title">${item.title}</span>
-          ${preview ? `<span class="search-palette__result-preview">${preview}</span>` : ''}
+      <li class="search-palette__result" role="presentation">
+        <a class="search-palette__result-link" id="${optionId}" role="option"
+           aria-selected="false" tabindex="-1" href="${escapeHtml(safeHref(item.permalink))}">
+          <span class="search-palette__result-title">${escapeHtml(item.title)}</span>
+          ${preview ? `<span class="search-palette__result-preview">${escapeHtml(preview)}</span>` : ''}
           ${metaRow}
         </a>
       </li>`;
     }).join('');
 
-    // Auto-trigger AI for questions
-    const isQuestion = query.trim().endsWith('?') || 
-                       /^(what|how|why|who|where|when|什么是|如何|为什么)/i.test(query.trim());
-    if (isQuestion && !aiBox.hidden && !isAiThinking) {
-      // If AI box is already open, refresh it? Or maybe just let the user click.
-      // For now, let's only trigger via button or explicit intent.
-    }
+    resultOptions().forEach((option, optionIndex) => {
+      option.addEventListener('mouseenter', () => setActiveResult(optionIndex, false));
+      option.addEventListener('focus', () => setActiveResult(optionIndex, false));
+    });
   }
 
-  // Keyboard shortcuts: Cmd/Ctrl + K to open, Esc to close
+  function focusableElements() {
+    return Array.from(palette.querySelectorAll(
+      'a[href]:not([tabindex="-1"]), button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(element => !element.hidden && element.getClientRects().length > 0);
+  }
+
+  // Keyboard shortcuts and dialog focus management.
   document.addEventListener('keydown', function(e) {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    const key = e.key.toLowerCase();
+    const targetIsField = /input|textarea|select/i.test(e.target.tagName) || e.target.isContentEditable;
+    if ((e.metaKey || e.ctrlKey) && key === 'k') {
       e.preventDefault();
       isOpen ? closePalette() : openPalette();
+      return;
+    }
+    if (e.key === '/' && !isOpen && !targetIsField) {
+      e.preventDefault();
+      openPalette();
+      return;
     }
     if (e.key === 'Escape' && isOpen) {
+      e.preventDefault();
       closePalette();
+      return;
     }
-    if (e.key === 'Enter' && isOpen && input.value.trim() && !isAiThinking) {
-      askAI(input.value);
+    if (e.key === 'Tab' && isOpen) {
+      const focusable = focusableElements();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  input?.addEventListener('keydown', event => {
+    if (event.isComposing) return;
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      const options = resultOptions();
+      if (options.length) setActiveResult(activeIndex < 0 ? 0 : activeIndex + 1);
+      return;
+    }
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      const options = resultOptions();
+      if (options.length) setActiveResult(activeIndex < 0 ? options.length - 1 : activeIndex - 1);
+      return;
+    }
+    if (event.key === 'Home' && resultOptions().length) {
+      event.preventDefault();
+      setActiveResult(0);
+      return;
+    }
+    if (event.key === 'End' && resultOptions().length) {
+      event.preventDefault();
+      setActiveResult(resultOptions().length - 1);
+      return;
+    }
+    if (event.key === 'Enter' && input.value.trim()) {
+      event.preventDefault();
+      if ((event.metaKey || event.ctrlKey) && !isAiThinking) {
+        askAI(input.value);
+      } else if (!event.metaKey && !event.ctrlKey) {
+        openSelectedResult();
+      }
     }
   });
 
@@ -553,7 +742,10 @@
 
   closeBtn?.addEventListener('click', closePalette);
   backdrop?.addEventListener('click', closePalette);
-  aiClose?.addEventListener('click', hideAiBox);
+  aiClose?.addEventListener('click', () => {
+    hideAiBox();
+    input?.focus();
+  });
   aiBtn?.addEventListener('click', () => askAI(input.value));
 
   // Suggested questions
@@ -571,6 +763,10 @@
   let debounceTimeout;
   input?.addEventListener('input', (e) => {
     clearTimeout(debounceTimeout);
+    setActiveResult(-1, false);
+    updateAiTrigger();
     debounceTimeout = setTimeout(() => doSearch(e.target.value), 150);
   });
+
+  updateAiTrigger();
 })();

@@ -404,8 +404,8 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 8px;
   border: 1px solid var(--border-subtle);
   color: var(--fg-muted);
@@ -2338,9 +2338,8 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
     padding: 40px 0;
   }
 
-  /* Fix 6: Social icon touch targets. 42px (not 44) so all seven icons
-     fit one row on a 390px viewport: 7×42 + 6×6px gap = 330px — at 44px
-     they wrapped 6 + 1 with an orphan icon on its own row. */
+  /* Social icon touch targets. Secondary networks are hidden here, so the
+     primary row keeps a comfortable 44px target without wrapping. */
   .hp-hero-socials {
     gap: 6px;
   }
@@ -2350,8 +2349,8 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
     display: none;
   }
   .hp-social-icon {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
   }
 
   /* Fix 7: Bear chat button touch targets */

@@ -1,13 +1,14 @@
 {{- $page := .page -}}
 {{- $isFeatured := .isFeatured | default false -}}
+{{- $isZh := eq $page.Lang "zh" -}}
 {{- $section := $page.Section -}}
-{{- $sectionDisplay := "AI Projects" -}}
+{{- $sectionDisplay := cond $isZh "AI 项目" "AI Projects" -}}
 {{- if eq $section "ai-agent" -}}
   {{- $sectionDisplay = "AI Agent" -}}
 {{- else if eq $section "engineering" -}}
-  {{- $sectionDisplay = "Engineering" -}}
+  {{- $sectionDisplay = cond $isZh "工程" "Engineering" -}}
 {{- else if eq $section "growth" -}}
-  {{- $sectionDisplay = "Growth & Life" -}}
+  {{- $sectionDisplay = cond $isZh "成长与生活" "Growth & Life" -}}
 {{- end -}}
 {{- $title := $page.Title | replaceRE "[—–]" "-" -}}
 {{- $summary := $page.Summary | plainify | htmlUnescape | replaceRE "[—–]" "-" | truncate 148 -}}
