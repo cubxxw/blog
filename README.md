@@ -94,6 +94,7 @@
 下面只保留最近发布的 8 篇中文文章，由 GitHub Actions 从博客 RSS 自动更新。这个列表会变化，仓库也会继续生长。
 
 <!-- BLOG-POST-LIST:START -->
+- [我不缺执行力，我缺一个有权否决我的战场](https://cubxxw.com/zh/growth/posts/2026-08-03-a-battlefield-that-can-say-no/)
 - [我知道什么是 Agent，却说不出它的定义](https://cubxxw.com/zh/ai-agent/posts/2026-08-02-ai-era-conceptual-mobility/)
 - [如果蒙田有一个 AI：我为什么把 DayPage 做成一场自我实验](https://cubxxw.com/zh/projects/daypage-ai-metacognition-experiment/)
 - [常识不是本质：AI 时代如何从需求、约束与稀缺性重构行业](https://cubxxw.com/zh/ai-agent/posts/common-sense-ai-industry-reconstruction/)
@@ -101,7 +102,6 @@
 - [你选择的计分板，最后会选择你：激励怎样改写一个组织](https://cubxxw.com/zh/growth/posts/2026-07-31-incentives-colonize-founders/)
 - [自由的反面不是约束，是默认值替你活完一天](https://cubxxw.com/zh/growth/posts/2026-07-31-freedom-and-defaults/)
 - [第二大脑保存的，是一个人的决策函数](https://cubxxw.com/zh/growth/posts/2026-07-31-second-brain-as-survival-strategy/)
-- [当生成变得无限，真实经历开始升值](https://cubxxw.com/zh/growth/posts/2026-07-31-reality-becomes-scarce-after-ai/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 一套公开运行的内容系统
