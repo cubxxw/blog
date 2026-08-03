@@ -1,8 +1,8 @@
 ---
 schema: blog-brief/v1
 id: 2026-08-03-hongyi-quanzhou-game-of-life
-title: 在泉州的神明之间，我决定继续入世
-status: ready
+title: 在泉州读弘一：看破之后，继续把人生当真
+status: ready-to-publish
 priority: high
 language: zh
 section: growth
@@ -126,9 +126,9 @@ source_refs:
 
 <!-- 由博客仓库填写。 -->
 
-- article:
+- article: content/zh/growth/posts/2026-08-03-hongyi-quanzhou-game-of-life.md
 - public_url:
-- editorial_verdict:
-- checks:
+- editorial_verdict: KEEP
+- checks: PASS — 双语独立发展编辑与事实/隐私复核、10 条正文引用与参考资料一一对应、内链和资源路径、照片元数据、AI flavor、front matter、canonical tags、brief schema、Markdown whitespace。
 - published_at:
-- retro_notes:
+- retro_notes: 按作者终审将标题改为“在泉州读弘一：看破之后，继续把人生当真”，清除重复的“不是……而是……”与问题式悬置，把龟收回为几分钟的降噪，并将游戏之心和元认知合并为“行动后复盘”的单一节奏。新增弘一的南山律、华严、净土与普贤行愿边界，以“戒”深化游戏人生，同时保留家庭伦理追问和创业类比的限度；石塔照片移到双塔结尾，避免替代印度教石柱这一论证对象。完成等质英文版 content/en/growth/posts/2026-08-03-hongyi-quanzhou-game-of-life.md。两轮独立审读均为 KEEP/PASS；首图与石塔图仅含不可辨认的远距离人群。
