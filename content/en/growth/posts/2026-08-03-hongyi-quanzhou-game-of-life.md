@@ -101,7 +101,7 @@ A company continually re-situates its goals. The founder's first intention meets
 
 ## In the Game of Life, the Stress Falls on Consent
 
-In an earlier essay, [*You Think You're the Player—But "Player" Is Also a Role*](/en/growth/posts/2026-07-20-the-player-is-also-a-role/), I traced the phrase *yóuxì sānmèi*, often rendered "the samādhi of play," back through its Buddhist sources. That essay ended with a claim: in the texts, play is closer to unobstructed freedom, and the movement it names is entry. See through the world, then dare to mean the person and task in front of you.
+In an earlier essay, [*You Think You're the Player—But "Player" Is Also a Role*](/growth/posts/2026-07-20-the-player-is-also-a-role/), I traced the phrase *yóuxì sānmèi*, often rendered "the samādhi of play," back through its Buddhist sources. That essay ended with a claim: in the texts, play is closer to unobstructed freedom, and the movement it names is entry. See through the world, then dare to mean the person and task in front of you.
 
 Quanzhou moved the claim one step further. Entering requires boundaries. Hongyi's precepts and Kaiyuan's pillars both say that freedom of movement never cancels a load-bearing relation.
 
@@ -109,7 +109,7 @@ I am therefore willing to keep calling entrepreneurship a game, but the stress f
 
 I consent to a round with winning and losing, so I pursue the outcome seriously. I accept that the authority of any result is limited, so one set of numbers cannot judge the whole person. And I acknowledge that users and partners have lives of their own; their losses cannot be reduced to my experience points.
 
-I place metacognition after a round of action. While delivering, failing, and making promises, I bear consequences in the first person. Once reality has occurred, I step back far enough to examine the evidence. [Metacognition returns to life only when it changes the next choice](/en/growth/posts/metacognitive-transformation-review/).
+I place metacognition after a round of action. While delivering, failing, and making promises, I bear consequences in the first person. Once reality has occurred, I step back far enough to examine the evidence. [Metacognition returns to life only when it changes the next choice](/growth/posts/metacognitive-transformation-review/).
 
 The sequence matters. If I climb into the stands to explain my fear before every delivery, my self-understanding will grow while no product enters the world. A clumsier and more honest rhythm is to let reality happen, then return and distinguish learning from defence.
 

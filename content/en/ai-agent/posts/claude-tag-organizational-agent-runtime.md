@@ -21,7 +21,7 @@ tldr:
   - Claude Tag matters less as a Slack entry point than as an organizational agent runtime built from shared identity, durable memory, asynchronous execution, proactive triggers, and audit controls.
   - It turns a channel into a permission boundary, a thread into an execution session, and public discussion into workspace memory that a team can jointly use, observe, and correct.
   - Its hardest problems are shared channel authority, cross-channel memory, conflicting human instructions, indirect prompt injection, and notification overload. Governance will shape adoption more than model size.
-  - China already has adjacent forms: DingTalk's AI Xiaoding is closest to a resident group agent, Feishu Aily is an enterprise agent builder, and DingTalk DWS connects local agents to team chat.
+  - "China already has adjacent forms: DingTalk's AI Xiaoding is closest to a resident group agent, Feishu Aily is an enterprise agent builder, and DingTalk DWS connects local agents to team chat."
   - The next phase moves from mentions to event-driven work, task-scoped authority, governable organizational memory, and multi-agent coordination, leaving humans with decisions and exceptions.
 maturity: budding
 columns:
@@ -127,7 +127,7 @@ Organizational memory therefore needs more than vector retrieval. It needs prove
 
 Claude Tag supports scheduled routines, channel watches, and repository-event triggers. It can maintain digests, chase approvals, watch monitors, or process a backlog, returning only when human judgment is required. Anthropic's [routine documentation](https://claude.com/docs/claude-tag/users/proactivity) shows that a routine uses the same channel authority and execution loop as a human-triggered task.
 
-Initiative moves an agent from a tool that waits for a prompt toward a participant responsible for unresolved state. As I argued in [When the Agent Starts Prompting You](/en/ai-agent/posts/proactive-agent-it-prompts-you/), the important metric changes from answer quality to interruption precision: show up when useful and remain quiet otherwise.
+Initiative moves an agent from a tool that waits for a prompt toward a participant responsible for unresolved state. As I argued in [When the Agent Starts Prompting You](/ai-agent/posts/proactive-agent-it-prompts-you/), the important metric changes from answer quality to interruption precision: show up when useful and remain quiet otherwise.
 
 ## Capability boundaries: Claude Tag is already broader than coding
 
@@ -224,7 +224,7 @@ Chat permissions usually answer “may this person see and speak?” They do not
 
 Once agents work in parallel, production may stop being the limiting factor. Ten employees can each start five jobs, leaving a manager with fifty outputs to judge. Without automatic evaluation, risk tiers, and exception aggregation, a company gets a virtual team that drafts quickly and leaves all editorial work to humans.
 
-The guardrails, regression evaluations, and human gates in [How to Build Real Trust in Unattended AI Agents](/en/ai-agent/posts/trusting-unattended-ai-agent/) become more important in a shared environment. Completion counts prove activity. Human review minutes, rework, incident rate, and final adoption show whether the system returns attention.
+The guardrails, regression evaluations, and human gates in [How to Build Real Trust in Unattended AI Agents](/ai-agent/posts/trusting-unattended-ai-agent/) become more important in a shared environment. Completion counts prove activity. Human review minutes, rework, incident rate, and final adoption show whether the system returns attention.
 
 ## Five hard problems will determine how far Claude Tag can go
 
