@@ -106,3 +106,27 @@ products:
       - { zh: 公开测试, en: Public beta, done: true }
       - { zh: 岗位匹配 Agent, en: Role-matching agent, done: false }
       - { zh: ATS 自动填表（Greenhouse/Lever…）, en: ATS autofill (Greenhouse/Lever…), done: false }
+
+  - id: agent-diff-guard
+    name: Agent Diff Guard
+    stage_zh: 内部使用
+    stage_en: Dogfood
+    headline_zh: 看见哪个 Agent 在越界，哪个项目最烧 token。
+    headline_en: See which agent crossed the line—and which project is burning tokens.
+    desc_zh: 本地 Agent 治理工具，在 push 前拦截高风险改动；解析 session 日志，按 message.id 去重并汇总各项目与会话的 token 和估算成本排行。
+    desc_en: A local agent-governance tool that gates risky changes before push, deduplicates session usage by message ID, and ranks projects and sessions by token use and estimated cost.
+    audience_zh: 独立开发者 · Agent 操作者
+    audience_en: Solo builders · Agent operators
+    stack: Bun · TypeScript · Git · MCP
+    color: cobalt
+    mark: DG
+    url: https://github.com/cubxxw/agent-diff-guard
+    github: https://github.com/cubxxw/agent-diff-guard
+    related: []
+    tags: [agent, developer-tools, ai]
+    progress: 72
+    todo:
+      - { zh: "token / 成本聚合与项目排行", en: "Token / cost aggregation & project ranking", done: true }
+      - { zh: "pre-push + Hooks + MCP 接入", en: "Pre-push + Hooks + MCP", done: true }
+      - { zh: "npm 全局安装包", en: "Global npm package", done: false }
+      - { zh: "GitHub PR 评论与团队视图", en: "GitHub PR comments & team view", done: false }
