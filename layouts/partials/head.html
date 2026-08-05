@@ -55,6 +55,7 @@
 {{- /* Styles */}}
 
 {{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
+{{- $isProjectsLanding := and (eq .Kind "section") (eq .Section "projects") -}}
 
 {{- /* includes */}}
 {{- $includes := slice }}
@@ -72,24 +73,30 @@
 {{- $media := (resources.Get "css/core/zmedia.css") }}
 {{- $license_css := (resources.Get "css/core/license.css") }}
 {{- $commonFiles := resources.Match "css/common/*.css" }}
-{{- if $isArticlesLibrary }}
+{{- if or $isArticlesLibrary $isProjectsLanding }}
   {{- /* The archive owns its feed styles. Keep only the PaperMod shell
-       primitives that its header, main element, and footer actually use. */ -}}
+       primitives that the lean section shells actually use. */ -}}
   {{- $commonFiles = slice
     (resources.Get "css/common/header.css")
     (resources.Get "css/common/main.css")
     (resources.Get "css/common/footer.css")
   -}}
 {{- end }}
-{{- $commonTarget := cond $isArticlesLibrary "assets/css/articles-common.css" "assets/css/common.css" -}}
+{{- $commonTarget := cond $isArticlesLibrary
+      "assets/css/articles-common.css"
+      (cond $isProjectsLanding "assets/css/projects-common.css" "assets/css/common.css")
+-}}
 {{- $common := $commonFiles | resources.Concat $commonTarget }}
 
 {{- /* include `an-old-hope` if hljs is on */}}
 {{- $isHLJSdisabled := (site.Params.assets.disableHLJS | default false) }}
-{{- $hljs := (cond (or $isHLJSdisabled $isArticlesLibrary) (".chroma { background-color: unset !important;}" | resources.FromString "assets/css/hljs-blank.css") (resources.Get "css/hljs/an-old-hope.min.css")) }}
+{{- $hljs := (cond (or $isHLJSdisabled $isArticlesLibrary $isProjectsLanding) (".chroma { background-color: unset !important;}" | resources.FromString "assets/css/hljs-blank.css") (resources.Get "css/hljs/an-old-hope.min.css")) }}
 
 {{- /* order is important */}}
-{{- $coreTarget := cond $isArticlesLibrary "assets/css/articles-core.css" "assets/css/core.css" -}}
+{{- $coreTarget := cond $isArticlesLibrary
+      "assets/css/articles-core.css"
+      (cond $isProjectsLanding "assets/css/projects-core.css" "assets/css/core.css")
+-}}
 {{- $core := (slice $theme_vars $reset $common $hljs $includes_all $media) | resources.Concat $coreTarget | resources.Minify }}
 {{- /* Page-scoped extended CSS: files whose (uniquely namespaced) selectors
        render on exactly one page or section are pulled OUT of the site-wide
@@ -100,7 +107,7 @@
          homepage-daypage.css (~52 KB, .hp-*)  → home only
          about.css            (~40 KB, .about-/.bq-*) → About only
          zzz-travel-world.css  (~38 KB, .tw-*)  → travel page only
-         products.css          (~32 KB, .osx-*) → /projects/ landing only
+         products.css + products-bear.css → /projects/ landing only
          section-growth.css    (~15 KB, .gr-*)  → /growth/ landing only
 
        These three (.tw-/.osx-/.gr-) are provably independent of the
@@ -119,9 +126,10 @@
 {{- $aboutCSS    := resources.Get "css/extended/about.css" }}
 {{- $travelCSS   := resources.Get "css/extended/zzz-travel-world.css" }}
 {{- $projectsCSS := resources.Get "css/extended/products.css" }}
+{{- $projectsBearCSS := resources.Get "css/extended/products-bear.css" }}
 {{- $growthCSS   := resources.Get "css/extended/section-growth.css" }}
 {{- $articlesCSS := resources.Get "css/extended/section-articles.css" }}
-{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $growthCSS $articlesCSS) }}
+{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $projectsBearCSS $growthCSS $articlesCSS) }}
 {{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
 {{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
 {{- $isNarrativeAbout := eq .Layout "about" -}}
@@ -147,6 +155,19 @@
     $articlesCSS
   -}}
   {{- $extended = $articlesShellFiles | resources.Concat "assets/css/articles-shell.css" | resources.Minify -}}
+{{- else if $isProjectsLanding }}
+  {{- /* Products owns its two visual systems. Keep only the shared header,
+       theme, and mobile navigation layers instead of shipping the full
+       article/homepage stylesheet bundle behind the fullscreen OS. */ -}}
+  {{- $projectsShellFiles := slice
+    (resources.Get "css/extended/tokens.css")
+    (resources.Get "css/extended/nav-elegant.css")
+    (resources.Get "css/extended/zzz-nav-menu-motion.css")
+    (resources.Get "css/extended/zzz-nav-tap-feedback.css")
+    (resources.Get "css/extended/zzz-theme-toggle-reveal.css")
+    (resources.Get "css/extended/zz-theme-toggle-fx.css")
+  -}}
+  {{- $extended = $projectsShellFiles | resources.Concat "assets/css/projects-shell.css" | resources.Minify -}}
 {{- end }}
 
 {{- /* About's interaction reset lives in the global zzz-* layers. Load the
@@ -175,7 +196,9 @@
 {{- /* Add extended css after theme style */ -}}
 {{- $stylesheetTarget := cond $isNarrativeAbout
       "assets/css/about-stylesheet.css"
-      (cond $isArticlesLibrary "assets/css/articles-stylesheet.css" "assets/css/stylesheet.css")
+      (cond $isArticlesLibrary
+        "assets/css/articles-stylesheet.css"
+        (cond $isProjectsLanding "assets/css/projects-stylesheet.css" "assets/css/stylesheet.css"))
 -}}
 {{- $stylesheet := (slice $license_css $core $extended) | resources.Concat $stylesheetTarget | resources.Minify }}
 
@@ -194,7 +217,9 @@
 {{- $conditionalCSS := slice }}
 {{- if .IsHome }}{{ $conditionalCSS = $conditionalCSS | append $homepageCSS }}{{ end }}
 {{- if eq .Layout "travel" }}{{ $conditionalCSS = $conditionalCSS | append $travelCSS }}{{ end }}
-{{- if and (eq .Kind "section") (eq .Section "projects") }}{{ $conditionalCSS = $conditionalCSS | append $projectsCSS }}{{ end }}
+{{- if and (eq .Kind "section") (eq .Section "projects") }}
+  {{- $conditionalCSS = $conditionalCSS | append $projectsCSS $projectsBearCSS }}
+{{- end }}
 {{- if and (eq .Kind "section") (eq .Section "growth") }}{{ $conditionalCSS = $conditionalCSS | append $growthCSS }}{{ end }}
 {{- range $conditionalCSS }}
 {{- $c := . | resources.Minify }}
@@ -341,7 +366,7 @@
     // Archive visitors trigger analytics as soon as they browse or filter.
     // Keep a long fallback for a completely idle tab so analytics never
     // competes with the cover-led first paint.
-    setTimeout(loadGA, {{ cond $isArticlesLibrary 60000 4000 }});
+    setTimeout(loadGA, {{ if or $isArticlesLibrary $isProjectsLanding }}60000{{ else }}4000{{ end }});
 })();
 </script>
 {{- end }}

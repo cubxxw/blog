@@ -35,6 +35,32 @@ A numeric score is invalid if any of these fail:
 5. Check the deployed routes and CI after pushing.
 6. Record evidence for every deduction. Never award points for intent alone.
 
+## BEAR OS dual-view acceptance
+
+The Products landing page keeps **BEAR OS as its default experience**. Product
+Lab remains available as a secondary view, and the same persistent switch
+returns the reader to BEAR OS without reloading the page.
+
+Acceptance evidence recorded on 2026-08-05:
+
+| Requirement | Result | Evidence |
+| --- | --- | --- |
+| BEAR OS is the default | Passed | Both language routes render `data-product-view="bear"` server-side; BEAR OS is visible and its switch exposes `aria-pressed="true"` before interaction. |
+| Product Lab is still available | Passed | Activating Product Lab lazily mounts the existing lab, updates the URL to `#product-lab`, and preserves its product evidence and links. |
+| Switching is reversible | Passed | The shared switch returns to BEAR OS without navigation; the Lab panel becomes hidden and BEAR OS regains the active state. |
+| Browser and device coverage | Passed | English and Chinese routes were checked on desktop and mobile, in light and dark modes; keyboard open/close and 44px mobile targets were verified. |
+| Deterministic integration checks | Passed | `npm run products:check` covers both language outputs; Playwright covers the default state and the complete Lab-to-BEAR round trip. |
+
+Production Lighthouse mobile audit for `/zh/projects/`:
+
+| Performance | Accessibility | Best Practices | SEO | FCP | LCP | TBT | CLS |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| **99** | **100** | **100** | **100** | 1.7s | 1.7s | 0ms | 0 |
+
+The four-category floor is **99/100**, above the required 96/100 display
+quality gate. The audit used the minified production output, without Hugo
+LiveReload or development scripts.
+
 ## Talent Signal scorecard
 
 Final score: **98.5/100**. The production deployment and live-route checks

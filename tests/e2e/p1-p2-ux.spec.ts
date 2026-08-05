@@ -76,4 +76,33 @@ test.describe('P1-P2 UX regression', () => {
     expect(dockBox?.width).toBeGreaterThanOrEqual(44);
     expect(dockBox?.height).toBeGreaterThanOrEqual(44);
   });
+
+  test('products defaults to BEAR OS and switches to Product Lab and back', async ({ page }) => {
+    await page.goto('/zh/projects/');
+
+    const space = page.locator('[data-product-space]');
+    const bearButton = page.getByRole('button', { name: 'BEAR OS', exact: true });
+    const labButton = page.getByRole('button', { name: 'Product Lab', exact: true });
+    const bearPanel = page.locator('[data-product-panel="bear"]');
+
+    await expect(space).toHaveAttribute('data-product-view', 'bear');
+    await expect(bearButton).toHaveAttribute('aria-pressed', 'true');
+    await expect(bearPanel).toBeVisible();
+    await expect(page.locator('[data-product-panel="lab"]')).toHaveCount(0);
+
+    await labButton.click();
+    const labPanel = page.locator('[data-product-panel="lab"]');
+    await expect(space).toHaveAttribute('data-product-view', 'lab');
+    await expect(labButton).toHaveAttribute('aria-pressed', 'true');
+    await expect(bearPanel).toBeHidden();
+    await expect(labPanel).toBeVisible();
+    await expect(page).toHaveURL(/#product-lab$/);
+
+    await bearButton.click();
+    await expect(space).toHaveAttribute('data-product-view', 'bear');
+    await expect(bearButton).toHaveAttribute('aria-pressed', 'true');
+    await expect(bearPanel).toBeVisible();
+    await expect(labPanel).toBeHidden();
+    await expect(page).not.toHaveURL(/#product-lab$/);
+  });
 });

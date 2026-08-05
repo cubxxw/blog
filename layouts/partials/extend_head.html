@@ -3,11 +3,12 @@
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 {{- $isLeanAbout := or (eq .Layout "about") (eq .Layout "about-quest") -}}
 {{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
+{{- $isProjectsLanding := and (eq .Kind "section") (eq .Section "projects") -}}
 
 {{- /* Enable reveal-on-scroll states only when motion is allowed.
        Runs before <body> paints so there is no content flash and no
        layout shift for reduced-motion / no-JS visitors. */ -}}
-{{- if not (or $isLeanAbout $isArticlesLibrary) }}
+{{- if not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding) }}
 <script>
   (function () {
     try {
@@ -29,7 +30,7 @@
 
 {{- /* Preconnect hints for external resources */ -}}
 <link rel="preconnect" href="https://www.googletagmanager.com" />
-{{- if not (or $isLeanAbout $isArticlesLibrary) }}
+{{- if not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding) }}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 {{- end }}
@@ -47,7 +48,7 @@
        already triggers one). The tiny media-query mismatch guarantees
        the print vs screen conflict is harmless — anything that actually
        reads the print stylesheet will still render the fonts correctly. */ -}}
-{{- if not (or $isLeanAbout $isArticlesLibrary) }}
+{{- if not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding) }}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $baseFonts }}">
 <noscript><link rel="stylesheet" href="{{ $baseFonts }}" media="print" onload="this.media='all'"></noscript>
 {{- end }}
@@ -59,7 +60,7 @@
        so browsers still download only the slices a page actually uses.
        The version is baked into the path (immutable cache) — upgrading the
        font means bumping the directory name in static/fonts/. */ -}}
-{{- if and (eq .Lang "zh") (not (or $isLeanAbout $isArticlesLibrary)) }}
+{{- if and (eq .Lang "zh") (not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding)) }}
 {{- $zhFonts := "/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" | relURL -}}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
 <noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>

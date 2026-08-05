@@ -9,6 +9,8 @@ const routes = [
   {
     file: path.join(outputRoot, "projects", "index.html"),
     required: [
+      "BEAR OS",
+      "Product Lab",
       "Products are where ideas meet reality.",
       "Talent Signal",
       "In testing",
@@ -22,6 +24,8 @@ const routes = [
   {
     file: path.join(outputRoot, "zh", "projects", "index.html"),
     required: [
+      "BEAR OS",
+      "Product Lab",
       "产品，是判断接受现实检验的地方。",
       "Talent Signal",
       "测试中",
@@ -69,6 +73,25 @@ for (const route of routes) {
   const h1Count = (html.match(/<h1\b/gi) ?? []).length;
   if (h1Count !== 1) {
     failures.push(`${path.relative(root, route.file)} must render exactly one h1, found ${h1Count}`);
+  }
+
+  if (!/data-product-view=(?:"bear"|'bear'|bear)(?:\s|>)/i.test(html)) {
+    failures.push(`${path.relative(root, route.file)} must declare BEAR OS as the default view`);
+  }
+
+  const bearPanel = html.match(/<section\b[^>]*data-product-panel=(?:"bear"|'bear'|bear)(?:\s|>)[^>]*>/i)?.[0];
+  if (!bearPanel || /\shidden(?:\s|=|>)/i.test(bearPanel)) {
+    failures.push(`${path.relative(root, route.file)} must render BEAR OS as the default visible panel`);
+  }
+
+  const labPanel = html.match(/<section\b[^>]*data-product-panel=(?:"lab"|'lab'|lab)(?:\s|>)[^>]*>/i)?.[0];
+  if (!labPanel || !/\shidden(?:\s|=|>)/i.test(labPanel)) {
+    failures.push(`${path.relative(root, route.file)} must render Product Lab as the switchable secondary panel`);
+  }
+
+  const viewButtons = html.match(/data-product-view-button=(?:"(?:bear|lab)"|'(?:bear|lab)'|(?:bear|lab))(?:\s|>)/gi) ?? [];
+  if (viewButtons.length !== 2) {
+    failures.push(`${path.relative(root, route.file)} must render exactly two product view controls`);
   }
 
   if (/role=["']progressbar["']/i.test(html) || /osx-progress/i.test(html)) {

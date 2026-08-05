@@ -2,7 +2,8 @@
 {{- /* <script src="{{ "/js/blog-ai.js" | relURL }}" defer></script> */ -}}
 {{- $isLeanAbout := or (eq .Layout "about") (eq .Layout "about-quest") -}}
 {{- $isArticlesLibrary := and (eq .Kind "section") (eq .Section "articles") -}}
-{{- if not $isLeanAbout }}
+{{- $isProjectsLanding := and (eq .Kind "section") (eq .Section "projects") -}}
+{{- if not (or $isLeanAbout $isProjectsLanding) }}
 {{- if not $isArticlesLibrary }}
 <script src="{{ "/js/micro-interactions.js" | relURL }}" defer></script>
 <script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>

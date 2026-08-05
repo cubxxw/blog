@@ -4,13 +4,238 @@
 {{- $featuredProducts := where $products "featured" true -}}
 {{- $featured := index $featuredProducts 0 -}}
 {{- $featuredDomain := $featured.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
+{{- $live := 0 -}}
+{{- range $products -}}
+  {{- if eq .stage_en "Live" -}}{{- $live = add $live 1 -}}{{- end -}}
+{{- end -}}
 
-<div class="builds">
+<script>document.body.classList.add('products-view-bear');</script>
+<div class="product-space" data-product-space data-product-view="bear">
+  <h1 class="product-space__title" id="products-title">{{ if $isZh }}产品{{ else }}Products{{ end }}</h1>
+
+  <nav class="product-view-switch" aria-label="{{ if $isZh }}选择产品视图{{ else }}Choose product view{{ end }}">
+    <button type="button" data-product-view-button="bear" aria-pressed="true">BEAR OS</button>
+    <button type="button" data-product-view-button="lab" aria-pressed="false">Product Lab</button>
+  </nav>
+
+  <p class="product-view-status product-space__title" data-product-view-status aria-live="polite">
+    {{ if $isZh }}当前为 BEAR OS 视图{{ else }}BEAR OS view active{{ end }}
+  </p>
+
+  <section class="osx" data-product-panel="bear" data-osx aria-labelledby="products-title">
+    <div class="osx-bg" aria-hidden="true">
+      <span class="osx-bg__grid"></span>
+    </div>
+
+    <div class="osx-menubar">
+      <div class="osx-menubar__left">
+        <span class="osx-menubar__logo" aria-hidden="true">◆</span>
+        <strong>BEAR&nbsp;OS</strong>
+        <a class="osx-menubar__home" href="{{ "/" | relLangURL }}">{{ if $isZh }}返回博客{{ else }}Back to blog{{ end }}</a>
+      </div>
+      <div class="osx-menubar__right">
+        <span class="osx-menubar__stat">{{ len $products }} {{ if $isZh }}个产品，{{ $live }} 个已上线{{ else }}products, {{ $live }} live{{ end }}</span>
+        {{- range .Translations }}
+        <a class="osx-menubar__lang" href="{{ .RelPermalink }}" data-osx-lang hreflang="{{ .Lang }}">{{ if $isZh }}EN{{ else }}中文{{ end }}</a>
+        {{- end }}
+        <span class="osx-menubar__clock" data-osx-clock aria-hidden="true">--:--</span>
+      </div>
+    </div>
+
+    <div class="osx-desktop" data-osx-desktop>
+      <section class="osx-widget osx-widget--proc" style="--w:0" aria-labelledby="osx-processes">
+        <header id="osx-processes">PROC <span>{{ if $isZh }}产品进程{{ else }}product processes{{ end }}</span><b>{{ len $products }}</b></header>
+        {{- range $product := $products }}
+        <button type="button" class="osx-proc osx-proc--{{ $product.color }}" data-osx-open="{{ $product.id }}">
+          <span class="osx-proc__mark" aria-hidden="true">{{ $product.mark }}</span>
+          <span class="osx-proc__name">{{ $product.name }}<em>{{ $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}</em></span>
+          <span class="osx-proc__stage">{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+          <span class="osx-proc__go" aria-hidden="true">↵</span>
+        </button>
+        {{- end }}
+        <footer>$ products list --state=current</footer>
+      </section>
+
+      <section class="osx-widget osx-widget--focus" style="--w:1" aria-labelledby="osx-focus">
+        <header id="osx-focus">FOCUS <span>{{ if $isZh }}当前测试{{ else }}current test{{ end }}</span></header>
+        <div class="osx-focus__layout">
+          <div>
+            <button type="button" class="osx-focus osx-focus--{{ $featured.color }}" data-osx-open="{{ $featured.id }}">
+              <span class="osx-focus__mark" aria-hidden="true">{{ $featured.mark }}</span>
+              <span>
+                <strong>{{ $featured.name }}</strong>
+                <small>{{ if $isZh }}{{ $featured.stage_zh }}{{ else }}{{ $featured.stage_en }}{{ end }}</small>
+              </span>
+            </button>
+            <p>{{ if $isZh }}{{ $featured.question_zh }}{{ else }}{{ $featured.question_en }}{{ end }}</p>
+          </div>
+          <button type="button" class="osx-focus__preview" data-osx-open="{{ $featured.id }}" aria-label="{{ if $isZh }}在 BEAR OS 中查看 {{ $featured.name }}{{ else }}View {{ $featured.name }} in BEAR OS{{ end }}">
+            <img src="/images/products/{{ $featured.id }}.jpg" width="1440" height="900" alt="" loading="lazy" fetchpriority="low" decoding="async">
+          </button>
+        </div>
+        <footer>$ inspect {{ $featured.id }} --evidence</footer>
+      </section>
+
+      {{- $logs := slice -}}
+      {{- range $product := $products -}}
+        {{- range where site.RegularPages "Params.product" $product.id -}}
+          {{- $logs = $logs | append (dict "p" . "mark" $product.mark "color" $product.color) -}}
+        {{- end -}}
+        {{- range $product.related -}}
+          {{- with site.GetPage . -}}
+            {{- $logs = $logs | append (dict "p" . "mark" $product.mark "color" $product.color) -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $logs = sort ($logs | uniq) "p.Date" "desc" | first 6 -}}
+      <section class="osx-widget osx-widget--log" style="--w:2" aria-labelledby="osx-log">
+        <header id="osx-log">BUILD.LOG <span>{{ if $isZh }}相关写作{{ else }}related writing{{ end }}</span><b>{{ len $logs }}</b></header>
+        {{- range $logs }}
+        <a class="osx-log osx-log--{{ .color }}" href="{{ .p.RelPermalink }}">
+          <time datetime="{{ .p.Date.Format "2006-01-02" }}">{{ .p.Date.Format "2006.01.02" }}</time>
+          <span class="osx-log__mark">[{{ .mark }}]</span>
+          <span class="osx-log__title">{{ .p.Title }}</span>
+        </a>
+        {{- end }}
+        <footer>$ tail ~/products/build.log</footer>
+      </section>
+
+      <section class="osx-widget osx-widget--inbox" style="--w:3" aria-labelledby="osx-inbox">
+        <header id="osx-inbox">INBOX <span>{{ if $isZh }}公开反馈{{ else }}public feedback{{ end }}</span></header>
+        {{- range $product := $products }}
+        {{- with $product.feedback }}
+        <a class="osx-inbox osx-inbox--{{ $product.color }}" href="{{ . }}" target="_blank" rel="noopener">
+          <span class="osx-inbox__num">#{{ . | replaceRE `.*/(\d+)$` "$1" }}</span>
+          <span class="osx-inbox__name">{{ $product.name }}</span>
+          <b aria-hidden="true">↗</b>
+        </a>
+        {{- end }}
+        {{- end }}
+        <footer>$ gh issue list --label=feedback</footer>
+      </section>
+    </div>
+
+    <template data-osx-window-template>
+    {{- range $index, $product := $products }}
+    {{- $domain := $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
+    {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" $product.id) -}}
+    {{- $related := slice -}}
+    {{- range where site.RegularPages "Params.product" $product.id -}}{{- $related = $related | append . -}}{{- end -}}
+    {{- range $product.related -}}{{- with site.GetPage . -}}{{- $related = $related | append . -}}{{- end -}}{{- end -}}
+    {{- $related = $related | uniq | first 3 -}}
+    <section class="osx-window osx-window--{{ $product.color }}" id="bear-{{ $product.id }}" data-osx-window="{{ $product.id }}" hidden aria-label="{{ $product.name }}">
+      <header class="osx-window__bar">
+        <span class="osx-window__lights">
+          <button type="button" class="osx-window__close" data-osx-close aria-label="{{ if $isZh }}关闭 {{ $product.name }} 窗口{{ else }}Close {{ $product.name }} window{{ end }}"></button>
+          <i aria-hidden="true"></i><i aria-hidden="true"></i>
+        </span>
+        <span class="osx-window__url">{{ $domain }}</span>
+        <span class="osx-window__proc" aria-hidden="true">PID {{ printf "%02d" (add $index 1) }}</span>
+      </header>
+      <div class="osx-window__body">
+        <a class="osx-window__screen{{ if not $hasShot }} osx-window__screen--abstract{{ end }}" href="{{ $product.url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
+          {{- if $hasShot }}
+          <img src="{{ printf "/images/products/%s.jpg" $product.id }}" alt="{{ if and $isZh $product.image_alt_zh }}{{ $product.image_alt_zh }}{{ else if and (not $isZh) $product.image_alt_en }}{{ $product.image_alt_en }}{{ else }}{{ $product.name }} at {{ $domain }}{{ end }}" width="1440" height="900" loading="lazy" decoding="async">
+          {{- else }}
+          <span class="osx-window__mark" aria-hidden="true">{{ $product.mark }}</span>
+          {{- end }}
+          <span class="osx-window__launch">{{ if $isZh }}打开产品{{ else }}Open product{{ end }} ↗</span>
+        </a>
+        <div class="osx-window__info">
+          <div class="osx-window__meta osx-reveal" style="--r:0">
+            <span class="osx-window__status">{{ if $isZh }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</span>
+            <span>{{ if $isZh }}{{ $product.audience_zh }}{{ else }}{{ $product.audience_en }}{{ end }}</span>
+          </div>
+          <h2 class="osx-reveal" style="--r:1">{{ $product.name }}</h2>
+          <p class="osx-window__headline osx-reveal" style="--r:2">{{ if $isZh }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
+          <p class="osx-window__desc osx-reveal" style="--r:3">{{ if $isZh }}{{ $product.desc_zh }}{{ else }}{{ $product.desc_en }}{{ end }}</p>
+
+          {{- if $product.question_en }}
+          <div class="osx-evidence osx-reveal" style="--r:4">
+            <strong>{{ if $isZh }}当前验证{{ else }}Current test{{ end }}</strong>
+            <p>{{ if $isZh }}{{ $product.question_zh }}{{ else }}{{ $product.question_en }}{{ end }}</p>
+          </div>
+          {{- end }}
+
+          {{- if $product.boundary_en }}
+          <p class="osx-boundary osx-reveal" style="--r:5">
+            <strong>{{ if $isZh }}边界{{ else }}Boundary{{ end }}</strong>
+            <span>{{ if $isZh }}{{ $product.boundary_zh }}{{ else }}{{ $product.boundary_en }}{{ end }}</span>
+          </p>
+          {{- end }}
+
+          <div class="osx-window__actions osx-reveal" style="--r:6">
+            <a class="osx-window__primary" href="{{ $product.url }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }}</a>
+            {{- with $product.demo }}
+            <a class="osx-window__ghost" href="{{ . }}" target="_blank" rel="noopener">{{ if $isZh }}核对证据{{ else }}Review evidence{{ end }}</a>
+            {{- end }}
+            <a class="osx-window__ghost" href="{{ $product.github }}" target="_blank" rel="noopener">{{ if $isZh }}查看源码{{ else }}View source{{ end }}</a>
+          </div>
+
+          {{- if $product.contract }}
+          <ul class="osx-checkpoints osx-reveal" style="--r:7" aria-label="{{ if $isZh }}产品承诺{{ else }}Product contract{{ end }}">
+            {{- range $product.contract }}
+            <li>{{ if $isZh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</li>
+            {{- end }}
+          </ul>
+          {{- else if $product.todo }}
+          <div class="osx-roadmap osx-reveal" style="--r:7">
+            <strong>{{ if $isZh }}路线图检查点{{ else }}Roadmap checkpoints{{ end }}</strong>
+            <ul>
+              {{- range $product.todo }}
+              <li{{ if .done }} class="is-done"{{ end }}><span aria-hidden="true">{{ if .done }}✓{{ else }}○{{ end }}</span>{{ if $isZh }}{{ .zh }}{{ else }}{{ .en }}{{ end }}</li>
+              {{- end }}
+            </ul>
+          </div>
+          {{- end }}
+
+          <div class="osx-related">
+            <strong class="osx-related__label osx-reveal" style="--r:8">{{ if $isZh }}相关阅读{{ else }}Related writing{{ end }}</strong>
+            {{- if $related }}
+            {{- range $ri, $page := $related }}
+            <a class="osx-related__item osx-reveal" style="--r:{{ add 9 $ri }}" href="{{ $page.RelPermalink }}">
+              <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006.01" }}</time>
+              <span>{{ $page.Title }}</span>
+              <b aria-hidden="true">→</b>
+            </a>
+            {{- end }}
+            {{- else }}
+            <span class="osx-related__empty osx-reveal" style="--r:9">{{ if $isZh }}构建笔记正在整理{{ else }}Build notes are in progress{{ end }}</span>
+            {{- end }}
+          </div>
+        </div>
+      </div>
+    </section>
+    {{- end }}
+    </template>
+
+    <nav class="osx-dock" aria-label="{{ if $isZh }}切换产品窗口{{ else }}Switch product window{{ end }}">
+      <button type="button" class="osx-dock__home" data-osx-close aria-label="{{ if $isZh }}返回 BEAR OS 桌面{{ else }}Back to BEAR OS desktop{{ end }}">◆</button>
+      <span class="osx-dock__sep" aria-hidden="true"></span>
+      {{- range $products }}
+      <button type="button" class="osx-dock__app osx-dock__app--{{ .color }}" data-osx-open="{{ .id }}" aria-label="{{ .mark }} {{ .name }}">
+        <span aria-hidden="true">{{ .mark }}</span>
+        <b>{{ .name }}</b>
+        <i class="osx-dock__dot" aria-hidden="true"></i>
+      </button>
+      {{- end }}
+    </nav>
+
+    <noscript>
+      <div class="osx-noscript">
+        <p>{{ if $isZh }}启用 JavaScript 可使用 BEAR OS 窗口。你仍可直接打开产品：{{ else }}Enable JavaScript to use BEAR OS windows. You can still open each product:{{ end }}</p>
+        <ul>{{ range $products }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}</ul>
+      </div>
+    </noscript>
+  </section>
+
+<template data-product-lab-template>
+<section class="builds" data-product-panel="lab" aria-labelledby="products-title" hidden>
   <header class="builds-hero">
     <div class="builds-shell builds-hero__grid">
       <div class="builds-hero__copy">
         <p class="builds-kicker">{{ if $isZh }}产品实验室{{ else }}Product lab{{ end }}</p>
-        <h1>{{ if $isZh }}产品，是判断接受现实检验的地方。{{ else }}Products are where ideas meet reality.{{ end }}</h1>
+        <h2>{{ if $isZh }}产品，是判断接受现实检验的地方。{{ else }}Products are where ideas meet reality.{{ end }}</h2>
         <p class="builds-hero__lead">
           {{ if $isZh }}
           这里记录我正在构建的工具、它们要验证的问题，以及证据仍然不足的地方。
@@ -70,8 +295,8 @@
               width="1440"
               height="900"
               alt="{{ if $isZh }}{{ $featured.image_alt_zh }}{{ else }}{{ $featured.image_alt_en }}{{ end }}"
-              loading="eager"
-              fetchpriority="high"
+              loading="lazy"
+              fetchpriority="low"
               decoding="async">
           </a>
           <figcaption>
@@ -206,5 +431,212 @@
     <p>{{ if $isZh }}构建、记录、验证，再决定什么值得留下。{{ else }}Build, record, test, then decide what deserves to remain.{{ end }}</p>
     <a href="https://github.com/getyak" target="_blank" rel="noopener">getyak on GitHub</a>
   </footer>
+</section>
+</template>
 </div>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-product-space]');
+  if (!root) return;
+
+  var bear = root.querySelector('[data-product-panel="bear"]');
+  var lab = null;
+  var labTemplate = root.querySelector('[data-product-lab-template]');
+  var windowTemplate = root.querySelector('[data-osx-window-template]');
+  var windowsMounted = false;
+  var buttons = Array.prototype.slice.call(root.querySelectorAll('[data-product-view-button]'));
+  var status = root.querySelector('[data-product-view-status]');
+  var isZh = {{ if $isZh }}true{{ else }}false{{ end }};
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ids = Array.prototype.map.call(windowTemplate.content.querySelectorAll('[data-osx-window]'), function (windowElement) {
+    return windowElement.getAttribute('data-osx-window');
+  });
+  var current = null;
+  var labScrollY = 0;
+  var clockTimer = null;
+
+  function ensureLab() {
+    if (lab) return lab;
+    root.appendChild(labTemplate.content.cloneNode(true));
+    lab = root.querySelector('[data-product-panel="lab"]');
+    return lab;
+  }
+
+  function ensureWindows() {
+    if (windowsMounted) return;
+    var dock = bear.querySelector('.osx-dock');
+    bear.insertBefore(windowTemplate.content.cloneNode(true), dock);
+    windowsMounted = true;
+  }
+
+  function productWindow(id) {
+    ensureWindows();
+    return bear.querySelector('[data-osx-window="' + id + '"]');
+  }
+
+  function replaceHash(value) {
+    var next = location.pathname + location.search + (value ? '#' + value : '');
+    history.replaceState(null, '', next);
+  }
+
+  function setView(view, updateHistory) {
+    var next = view === 'lab' ? 'lab' : 'bear';
+    if (next === 'lab') ensureLab();
+    if (next === 'bear' && root.dataset.productView === 'lab') {
+      labScrollY = window.scrollY;
+    }
+
+    root.dataset.productView = next;
+    document.body.classList.toggle('products-view-bear', next === 'bear');
+    document.body.classList.toggle('products-view-lab', next === 'lab');
+    bear.hidden = next !== 'bear';
+    if (lab) lab.hidden = next !== 'lab';
+    buttons.forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.getAttribute('data-product-view-button') === next));
+    });
+    status.textContent = next === 'bear'
+      ? (isZh ? '当前为 BEAR OS 视图' : 'BEAR OS view active')
+      : (isZh ? '当前为 Product Lab 视图' : 'Product Lab view active');
+
+    if (next === 'lab') {
+      closeWindow(false);
+      if (updateHistory) replaceHash('product-lab');
+      requestAnimationFrame(function () {
+        window.scrollTo({ top: labScrollY, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    } else {
+      if (updateHistory) replaceHash('');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }
+
+  function openWindow(id, updateHistory) {
+    if (!productWindow(id)) return;
+    setView('bear', false);
+    ids.forEach(function (other) {
+      var windowElement = productWindow(other);
+      if (other === id) {
+        windowElement.hidden = false;
+        requestAnimationFrame(function () {
+          windowElement.classList.add('osx-window--open');
+        });
+      } else {
+        windowElement.classList.remove('osx-window--open');
+        windowElement.hidden = true;
+      }
+    });
+    current = id;
+    root.classList.add('product-space--app');
+    root.querySelectorAll('.osx-dock__app').forEach(function (button) {
+      button.classList.toggle('osx-dock__app--active', button.getAttribute('data-osx-open') === id);
+    });
+    if (updateHistory) replaceHash(id);
+    var closeButton = productWindow(id).querySelector('[data-osx-close]');
+    if (closeButton) closeButton.focus({ preventScroll: true });
+  }
+
+  function closeWindow(updateHistory) {
+    if (current === null) return;
+    var windowElement = productWindow(current);
+    var previous = current;
+    windowElement.classList.remove('osx-window--open');
+    root.classList.remove('product-space--app');
+    current = null;
+    window.setTimeout(function () {
+      if (current === null) windowElement.hidden = true;
+    }, reduceMotion ? 0 : 280);
+    root.querySelectorAll('.osx-dock__app').forEach(function (button) {
+      button.classList.remove('osx-dock__app--active');
+    });
+    if (updateHistory) replaceHash('');
+    var launcher = root.querySelector('.osx-widget--proc [data-osx-open="' + previous + '"]');
+    if (launcher) launcher.focus({ preventScroll: true });
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      setView(button.getAttribute('data-product-view-button'), true);
+    });
+  });
+
+  root.addEventListener('click', function (event) {
+    var opener = event.target.closest('[data-osx-open]');
+    if (opener) {
+      openWindow(opener.getAttribute('data-osx-open'), true);
+      return;
+    }
+    if (event.target.closest('[data-osx-close]')) {
+      closeWindow(true);
+      return;
+    }
+    if (
+      current !== null &&
+      event.target.closest('[data-product-panel="bear"]') &&
+      !event.target.closest('.osx-window') &&
+      !event.target.closest('.osx-dock') &&
+      !event.target.closest('.osx-menubar')
+    ) {
+      closeWindow(true);
+    }
+  });
+
+  root.querySelectorAll('[data-osx-lang]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      link.href = link.href.split('#')[0] + (current ? '#' + current : '');
+    });
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (root.dataset.productView !== 'bear') return;
+    if (event.key === 'Escape') {
+      closeWindow(true);
+      return;
+    }
+    var number = parseInt(event.key, 10);
+    if (number >= 1 && number <= ids.length && !event.metaKey && !event.ctrlKey && !event.altKey) {
+      var tag = document.activeElement && document.activeElement.tagName;
+      if (tag !== 'INPUT' && tag !== 'TEXTAREA') openWindow(ids[number - 1], true);
+      return;
+    }
+    if (current !== null && (event.key === 'ArrowRight' || event.key === 'ArrowLeft')) {
+      var index = ids.indexOf(current);
+      var offset = event.key === 'ArrowRight' ? 1 : ids.length - 1;
+      openWindow(ids[(index + offset) % ids.length], true);
+    }
+  });
+
+  function tick() {
+    var date = new Date();
+    var pad = function (number) { return String(number).padStart(2, '0'); };
+    var clock = root.querySelector('[data-osx-clock]');
+    if (clock) clock.textContent = pad(date.getHours()) + ':' + pad(date.getMinutes());
+  }
+
+  function startBear() {
+    tick();
+    clockTimer = window.setInterval(tick, 30000);
+  }
+
+  function applyLocation() {
+    var hash = location.hash.slice(1);
+    if (hash === 'product-lab') {
+      setView('lab', false);
+    } else if (ids.indexOf(hash) !== -1) {
+      openWindow(hash, false);
+    } else {
+      closeWindow(false);
+      setView('bear', false);
+    }
+  }
+
+  window.addEventListener('hashchange', applyLocation);
+  window.addEventListener('pagehide', function () {
+    if (clockTimer) window.clearInterval(clockTimer);
+  }, { once: true });
+
+  startBear();
+  applyLocation();
+})();
+</script>
 {{- end }}

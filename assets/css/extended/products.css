@@ -3,7 +3,7 @@
  * Buttons are pills; media and grouped product panels use the same soft radius.
  */
 
-body:has(.builds) {
+body.products-view-lab {
   --build-accent: #a94733;
   --build-accent-strong: #843321;
   --build-bg: #f4f2ed;
@@ -17,7 +17,7 @@ body:has(.builds) {
   background: var(--build-bg);
 }
 
-body.dark:has(.builds) {
+body.dark.products-view-lab {
   --build-accent: #d6765f;
   --build-accent-strong: #f0a28f;
   --build-bg: #151412;
@@ -29,13 +29,13 @@ body.dark:has(.builds) {
   --build-rule: rgba(240, 236, 228, 0.14);
 }
 
-body:has(.builds) .main {
+body.products-view-lab .main {
   width: 100%;
   max-width: none;
   padding: 0;
 }
 
-body:has(.builds) .footer {
+body.products-view-lab .footer {
   max-width: 1180px;
   color: var(--build-muted);
 }
@@ -77,7 +77,7 @@ body:has(.builds) .footer {
   color: var(--build-accent);
 }
 
-.builds-hero h1 {
+.builds-hero h2 {
   max-width: 820px;
   margin: 0;
   font: 720 clamp(3.25rem, 6.6vw, 6.4rem)/0.96 var(--font-display);
@@ -635,7 +635,7 @@ body:has(.builds) .footer {
     padding-block: 56px 72px;
   }
 
-  .builds-hero h1 {
+  .builds-hero h2 {
     font-size: clamp(2.75rem, 13vw, 4.1rem);
   }
 

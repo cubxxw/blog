@@ -29,6 +29,7 @@
 - 项目型文章只放在：
   - `content/zh/projects/`
   - `content/en/projects/`
+- Products（`/projects/`）默认保持 **BEAR OS** 模式；Product Lab 只作为可切换的次级视图，必须支持从任一视图双向切换，不得替换 BEAR OS 默认入口
 - 所有发布时间默认以中国上海时区为准，统一使用 `+08:00`
 - 如果发布时间晚于当前上海时间，Hugo 生产构建会把它当作 future content，不会发布
 
