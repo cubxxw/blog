@@ -37,8 +37,8 @@ A numeric score is invalid if any of these fail:
 
 ## Talent Signal scorecard
 
-Local preflight score: **98.5/100**. This remains provisional until the
-production deployment clears the final hard gate.
+Final score: **98.5/100**. The production deployment and live-route checks
+cleared the final hard gate.
 
 | Dimension | Score | Evidence |
 | --- | ---: | --- |
@@ -49,4 +49,7 @@ production deployment clears the final hard gate.
 | Interaction and accessibility | 14.5/15 | Semantic headings and regions, visible keyboard focus, 44-48px targets, AA contrast, explicit mobile collapse, and reduced-motion fallback. |
 | Performance and operational integrity | 10/10 | The production screenshot is 80KB; dimensions are reserved; full Hugo, metadata, tag, SEO, and product checks pass. |
 
-Normalized dimension floor: **96.7/100**. Production gate: **pending push**.
+Normalized dimension floor: **96.7/100**. Production gate: **passed** on
+2026-08-05 for commit `6ca4ce3`; the Pages deployment, blog build, and
+Lighthouse CI completed successfully, and both live language routes exposed
+the product state, boundary, demo, and source.
