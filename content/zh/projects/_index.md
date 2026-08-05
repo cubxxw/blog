@@ -1,8 +1,8 @@
 ---
 title: "产品"
-description: "熊鑫伟独立构建的产品组合：Solo Compass、DayPage、Telepace 与 Apply Agent，以及与这些产品直接相关的构建笔记。"
+description: "熊鑫伟的产品实验室：Talent Signal、Solo Compass、DayPage 等真实产品的当前状态、测试问题、公开入口与源码。"
 cascade:
   - type: "posts"
 ---
 
-这里只展示我真实构建并持续运营的产品。第三方开源项目研究统一归入 AI Agent 栏目。
+这里只展示我真实构建并持续维护的产品。每个入口保留当前状态、测试问题、产品边界和源码，不把测试阶段包装成完成。

@@ -1,4 +1,34 @@
 products:
+  - id: talent-signal
+    name: Talent Signal
+    featured: true
+    stage_zh: 测试中
+    stage_en: In testing
+    headline_zh: 知道现在谁需要你，以及为什么。
+    headline_en: Know who needs you now, and why.
+    desc_zh: 面向独立猎头的关系智能工具，把关键对话变成可核对的候选人动态、证据链和一个明确下一步，同时把最终判断留给猎头。
+    desc_en: Relationship intelligence for independent recruiters, turning meaningful conversations into reviewable momentum, source-linked evidence, and one clear next move.
+    audience_zh: 独立猎头 · 搜寻顾问
+    audience_en: Independent recruiters · Search partners
+    stack: Next.js · SwiftUI · Agent system
+    color: rust
+    mark: TS
+    url: https://gettalentsignal.com
+    github: https://github.com/getyak/talent-signal
+    demo: https://gettalentsignal.com/demo
+    image_alt_zh: Talent Signal 首页，左侧呈现产品主张，右侧用证据关系图展示四条确认事实汇聚成一个下一步行动
+    image_alt_en: Talent Signal homepage showing its product claim beside an evidence map where four confirmed facts converge on one next action
+    question_zh: 带来源的候选人动态与一个最小下一步，能否减少对话之间的上下文重建，同时保留猎头自己的关系判断？
+    question_en: Can source-linked candidate momentum and one smallest next move reduce reconstruction between conversations while preserving recruiter judgment?
+    boundary_zh: 当前使用合成数据验证产品语言、审阅状态和跨端流程，还不是生产候选人数据系统。
+    boundary_en: The current foundation uses synthetic data to test product language, review states, and the cross-platform loop. It is not yet a production candidate-data system.
+    contract:
+      - { zh: 每个重要判断都能回到来源, en: Every consequential claim resolves to its source }
+      - { zh: 每次状态变化都由人确认, en: Every state change remains human-confirmed }
+      - { zh: 每轮只推进一个明确下一步, en: Each cycle advances one clear next move }
+    related: []
+    tags: [agent, ai, career]
+
   - id: solo-compass
     name: Solo Compass
     stage_zh: TestFlight 准备中
@@ -6,7 +36,7 @@ products:
     headline_zh: 打开地图，找到附近真正值得去做的事。
     headline_en: Open the map. Find what is truly worth doing nearby.
     desc_zh: 面向独自旅行者的活地图：把附近地点变成具体、有故事感的体验，并用 AI 缩小选择范围，而不是替你做决定。
-    desc_en: A living map for solo travelers that turns nearby places into concrete, story-rich experiences and uses AI to narrow the field—not make the decision.
+    desc_en: A living map for solo travelers that turns nearby places into concrete, story-rich experiences and uses AI to narrow the field without making the decision.
     audience_zh: 独自旅行者 · 数字游民
     audience_en: Solo travelers · Digital nomads
     stack: SwiftUI · MapKit · AI
@@ -112,7 +142,7 @@ products:
     stage_zh: 内部使用
     stage_en: Dogfood
     headline_zh: 看见哪个 Agent 在越界，哪个项目最烧 token。
-    headline_en: See which agent crossed the line—and which project is burning tokens.
+    headline_en: See which agent crossed the line and which project is burning tokens.
     desc_zh: 本地 Agent 治理工具，在 push 前拦截高风险改动；解析 session 日志，按 message.id 去重并汇总各项目与会话的 token 和估算成本排行。
     desc_en: A local agent-governance tool that gates risky changes before push, deduplicates session usage by message ID, and ranks projects and sessions by token use and estimated cost.
     audience_zh: 独立开发者 · Agent 操作者

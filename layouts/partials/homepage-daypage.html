@@ -295,25 +295,24 @@
         {{- range site.Data.products.products }}
         {{- $domain := .url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}
         {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" .id) }}
-        <article class="hp-product hp-product--{{ .color }}">
-          <div class="hp-product__chrome" aria-hidden="true"><span class="hp-product__lights"><i></i><i></i><i></i></span><span class="hp-product__domain">{{ $domain }}</span></div>
+        <article class="hp-product hp-product--{{ .color }}{{ if .featured }} hp-product--featured{{ end }}">
           <a class="hp-product__main" href="{{ printf "/projects/#%s" .id | relLangURL }}" target="_blank" rel="noopener">
             {{- if $hasShot }}
             <span class="hp-product__shot">
-              <img src="{{ printf "/images/products/%s.jpg" .id }}" alt="{{ .name }} — {{ $domain }}" width="1440" height="900" loading="lazy" decoding="async">
-              <span class="hp-product__status"><i></i>{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span>
+              <img src="{{ printf "/images/products/%s.jpg" .id }}" alt="{{ .name }}, {{ $domain }}" width="1440" height="900" loading="lazy" decoding="async">
             </span>
             {{- else }}
-            <div class="hp-product__top"><span class="hp-product__mark">{{ .mark }}</span><span class="hp-product__status"><i></i>{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span></div>
+            <div class="hp-product__top"><span class="hp-product__mark">{{ .mark }}</span><span class="hp-product__status">{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span></div>
             {{- end }}
             <div class="hp-product__text">
+              {{- if $hasShot }}<span class="hp-product__status">{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span>{{- end }}
               <h3>{{ .name }}</h3>
               <p class="hp-product__headline">{{ if $isZh }}{{ .headline_zh }}{{ else }}{{ .headline_en }}{{ end }}</p>
               <p class="hp-product__desc">{{ if $isZh }}{{ .desc_zh }}{{ else }}{{ .desc_en }}{{ end }}</p>
-              <span class="hp-product__more">{{ if $isZh }}进入产品{{ else }}Enter product{{ end }} →</span>
+              <span class="hp-product__more">{{ if $isZh }}查看产品{{ else }}View product{{ end }}</span>
             </div>
           </a>
-          <div class="hp-product__foot"><span>{{ .stack }}</span><span class="hp-product__links"><a href="{{ .github }}" target="_blank" rel="noopener" aria-label="{{ .name }} GitHub">GitHub ↗</a><a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ .name }}{{ else }}Open {{ .name }}{{ end }}">{{ if $isZh }}打开{{ else }}Open{{ end }} ↗</a></span></div>
+          <div class="hp-product__foot"><span>{{ .stack }}</span><span class="hp-product__links">{{ if ne .url .github }}<a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ .name }}{{ else }}Open {{ .name }}{{ end }}">{{ if $isZh }}打开{{ else }}Open{{ end }}</a>{{ end }}<a href="{{ .github }}" target="_blank" rel="noopener" aria-label="{{ .name }} GitHub">GitHub</a></span></div>
         </article>
         {{- end }}
       </div>

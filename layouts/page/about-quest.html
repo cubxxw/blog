@@ -188,7 +188,9 @@ $ gh repo view openim
         <span class="bq-kiosk-stage">{{ if $isZH }}{{ $p.stage_zh }}{{ else }}{{ $p.stage_en }}{{ end }}</span>
       </div>
       <p class="bq-kiosk-line">{{ if $isZH }}{{ $p.headline_zh }}{{ else }}{{ $p.headline_en }}{{ end }}</p>
-      <div class="bq-kiosk-meter" aria-hidden="true"><i style="width:{{ $p.progress }}%"></i></div>
+      {{- with $p.progress }}
+      <div class="bq-kiosk-meter" aria-hidden="true"><i style="width:{{ . }}%"></i></div>
+      {{- end }}
       <a class="bq-kiosk-go" href="{{ $p.url }}" target="_blank" rel="noopener">{{ if $isZH }}去看看{{ else }}Visit{{ end }} ↗</a>
     </div>
     {{- end }}

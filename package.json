@@ -22,6 +22,7 @@
     "redirects:check": "node scripts/check-redirects.mjs",
     "redirects:fix": "node scripts/check-redirects.mjs --write",
     "seo:output:check": "node scripts/check-generated-seo.mjs",
+    "products:check": "node scripts/check-product-integration.mjs",
     "flavor:check": "node scripts/check-ai-flavor.mjs --changed --check",
     "flavor:scan": "node scripts/check-ai-flavor.mjs",
     "geo:audit": "node scripts/geo-audit.mjs",

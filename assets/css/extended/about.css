@@ -947,6 +947,7 @@ body.dark .bq-mountain::after {
 .bq-kiosk[data-color="cobalt"] .bq-kiosk-mark { background: #33518f; }
 .bq-kiosk[data-color="amber"]  .bq-kiosk-mark { background: #9a6a2f; }
 .bq-kiosk[data-color="sage"]   .bq-kiosk-mark { background: #4f7357; }
+.bq-kiosk[data-color="rust"]   .bq-kiosk-mark { background: #9f402d; }
 .bq-kiosk-name {
   font-family: var(--font-display);
   font-size: 1.1rem;

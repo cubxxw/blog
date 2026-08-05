@@ -2377,6 +2377,84 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
   }
 }
 
+/* Product integration: the current test earns a wider, evidence-first slot.
+ * Product screenshots stay real and unobstructed; state moves into the copy.
+ */
+.hp-product--rust {
+  --hp-product: #a94733;
+}
+
+.hp-product__text > .hp-product__status {
+  align-self: flex-start;
+  margin-bottom: 12px;
+  padding: 6px 9px;
+  border: 1px solid color-mix(in srgb, var(--hp-product) 35%, transparent);
+  border-radius: 999px;
+  background: transparent;
+}
+
+.hp-product--featured {
+  grid-column: 1 / -1;
+}
+
+.hp-product--featured .hp-product__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+}
+
+.hp-product--featured .hp-product__shot {
+  height: 100%;
+  min-height: 350px;
+  border-right: 1px solid color-mix(in srgb, var(--hp-product) 14%, var(--border-subtle));
+  border-bottom: 0;
+}
+
+.hp-product--featured .hp-product__text {
+  justify-content: center;
+  padding: clamp(28px, 4vw, 46px);
+}
+
+.hp-product--featured h3 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+.hp-product--featured .hp-product__headline {
+  max-width: 32ch;
+  margin-top: 16px;
+  font-size: 1rem;
+}
+
+.hp-product--featured .hp-product__desc {
+  max-width: 50ch;
+  margin-top: 4px;
+  font-size: 0.82rem;
+}
+
+.hp-product__shot .hp-product__status {
+  position: static;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body.dark .hp-product__shot .hp-product__status {
+  background: transparent;
+}
+
+@media (max-width: 760px) {
+  .hp-product--featured .hp-product__main {
+    grid-template-columns: 1fr;
+  }
+
+  .hp-product--featured .hp-product__shot {
+    min-height: 220px;
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--hp-product) 14%, var(--border-subtle));
+  }
+}
+
 /* ============================================================
    RESPONSIVE — 480px (extra-small / compact phones)
    ============================================================ */
