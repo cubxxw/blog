@@ -1,30 +1,30 @@
 products:
   - id: solo-compass
     name: Solo Compass
-    stage_zh: 已上线
-    stage_en: Live
-    headline_zh: 把人生方向，变成每天可以执行的一小步。
-    headline_en: Turn life direction into one clear step you can take today.
-    desc_zh: 一款安静、清晰的个人方向系统，帮助你梳理长期目标、当下优先级与下一步行动。
-    desc_en: A calm personal direction system for connecting long-term goals, present priorities, and the next meaningful action.
-    audience_zh: 个人成长 · 独立创作者
-    audience_en: Personal growth · Indie builders
-    stack: Next.js · AI
+    stage_zh: TestFlight 准备中
+    stage_en: TestFlight prep
+    headline_zh: 打开地图，找到附近真正值得去做的事。
+    headline_en: Open the map. Find what is truly worth doing nearby.
+    desc_zh: 面向独自旅行者的活地图：把附近地点变成具体、有故事感的体验，并用 AI 缩小选择范围，而不是替你做决定。
+    desc_en: A living map for solo travelers that turns nearby places into concrete, story-rich experiences and uses AI to narrow the field—not make the decision.
+    audience_zh: 独自旅行者 · 数字游民
+    audience_en: Solo travelers · Digital nomads
+    stack: SwiftUI · MapKit · AI
     color: cobalt
     mark: SC
-    url: https://solo.cubxxw.com
+    url: https://github.com/getyak/solo-compass
     github: https://github.com/getyak/solo-compass
     related:
       - /growth/posts/metacognitive-transformation-review
       - /growth/posts/2026-07-14-what-remains-when-taken-apart
-    tags: [personal-growth, self-discovery, gtd]
+    tags: [solo-travel, travel, ai]
     feedback: https://github.com/cubxxw/blog/issues/235
-    progress: 82
+    progress: 72
     todo:
-      - { zh: iOS 上架与地图核心体验, en: iOS launch & map-first core, done: true }
+      - { zh: 地图优先的核心体验, en: Map-first core experience, done: true }
       - { zh: Solo Score 场所评分体系, en: Solo Score rating system, done: true }
+      - { zh: TestFlight 内测, en: TestFlight beta, done: false }
       - { zh: 多语言与离线地图, en: i18n & offline maps, done: false }
-      - { zh: Android 版本, en: Android version, done: false }
 
   - id: daypage
     name: DayPage
