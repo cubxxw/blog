@@ -94,6 +94,7 @@
 下面只保留最近发布的 8 篇中文文章，由 GitHub Actions 从博客 RSS 自动更新。这个列表会变化，仓库也会继续生长。
 
 <!-- BLOG-POST-LIST:START -->
+- [Claude Tag 深度拆解：Slack 里的共享 AI，正在长成组织级 Agent 运行时](https://cubxxw.com/zh/ai-agent/posts/claude-tag-organizational-agent-runtime/)
 - [我不缺执行力，我缺一个有权否决我的战场](https://cubxxw.com/zh/growth/posts/2026-08-03-a-battlefield-that-can-say-no/)
 - [在泉州读弘一：看破之后，继续把人生当真](https://cubxxw.com/zh/growth/posts/2026-08-03-hongyi-quanzhou-game-of-life/)
 - [我知道什么是 Agent，却说不出它的定义](https://cubxxw.com/zh/ai-agent/posts/2026-08-02-ai-era-conceptual-mobility/)
@@ -101,7 +102,6 @@
 - [常识不是本质：AI 时代如何从需求、约束与稀缺性重构行业](https://cubxxw.com/zh/ai-agent/posts/common-sense-ai-industry-reconstruction/)
 - [2026年7月的一些思考笔记：工程、内容与现金流](https://cubxxw.com/zh/growth/posts/2026-07-thought-notes/)
 - [你选择的计分板，最后会选择你：激励怎样改写一个组织](https://cubxxw.com/zh/growth/posts/2026-07-31-incentives-colonize-founders/)
-- [自由的反面不是约束，是默认值替你活完一天](https://cubxxw.com/zh/growth/posts/2026-07-31-freedom-and-defaults/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 一套公开运行的内容系统
