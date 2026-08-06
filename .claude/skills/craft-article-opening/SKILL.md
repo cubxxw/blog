@@ -1,69 +1,23 @@
 ---
 name: craft-article-opening
-description: Create or revise the first screen of a blog article from real approved material. Use for a new opening, Hook, 楔子, first paragraph, or weak introduction. Match the entrance to the article mode, create forward movement without clickbait, and judge it qualitatively rather than forcing a numeric hook score.
+description: Create or revise the first screen of a blog article from real approved material. Use for an opening, Hook, 楔子, first paragraph, or weak introduction. Give the reader an immediate way into the author's experience or the article's real task without inventing a scene or forcing a formula.
 ---
 
 # Craft Article Opening
 
-An opening is an entrance into the article's movement, not a compressed summary or marketing device.
+Open with the strongest real material already available. The opening is an entrance, not a summary or advertisement.
 
-Announce this skill before changing an article.
+## Boundaries
 
-## Inputs
+- Never invent a scene, quotation, feeling, chronology, result, or certainty.
+- Match the article: lived moment for `thinking`, useful result or problem for `research`, current change for `field-note`.
+- Do not explain the whole article before the reader has entered it.
 
-Read the confirmed claim, chosen article shape, approved author material, and current body. Read `references/opening-patterns.md` when the best entrance is not obvious.
+## Two passes
 
-Never invent a scene, quotation, feeling, chronology, result, or certainty.
+1. Draft from one concrete anchor: an object, sentence, action, contradiction, observation, or result.
+2. Reread the first screen with the body. Keep it only if it creates a natural need to continue and sounds like this author.
 
-## Match the article mode
+When several entrances are genuinely possible, try two or three privately and select the one with the most truth and movement. Otherwise, write one and move on.
 
-- `thinking`: begin with the real scene, decision, contradiction, or object that contains the tension.
-- `research`: give the useful answer or verified result early, then name the unresolved limit.
-- `field-note`: begin with what changed in the project or experiment.
-
-Do not force a cinematic scene onto a tutorial or a thesis statement onto a personal essay.
-
-## Shape the first screen
-
-Identify:
-
-```text
-concrete anchor → unresolved tension → direction of travel
-```
-
-By the end of the first screen, the reader should know why the next section is necessary. The opening does not need to summarize every section or state every boundary.
-
-Choose one entrance mode:
-
-- scene;
-- anomaly;
-- decision and cost;
-- concrete result and limit;
-- specific question with an immediate provisional answer.
-
-If the direction is unsettled, privately draft three structurally different openings and compare them. If the brief already contains a chosen shape and one entrance is clearly strongest, write that one directly. Do not generate variants merely to satisfy a quota.
-
-## Review
-
-Use these questions:
-
-- Is something concrete or consequential present immediately?
-- Does the first paragraph create forward motion?
-- Does it belong to this author and this article?
-- Can the body repay the promise?
-- Is any sentence explaining the article before the reader has entered it?
-
-Verdict:
-
-```text
-KEEP | REWORK | REPLACE
-Anchor:
-Tension:
-Direction:
-Cut:
-Body payoff:
-```
-
-Reject generic era-setting, dictionary definitions, stacked rhetorical questions, fake suspense, unsupported numbers, search-keyword stuffing, and polished abstraction without an action, object, evidence, or consequence.
-
-After revising, reread the ending. Opening and ending should belong to the same movement, but they do not need to repeat the same sentence.
+Reject clickbait, generic era-setting, stacked questions, and polished abstraction with no lived or practical anchor.

@@ -1,169 +1,55 @@
 # Blog Editorial Workflow
 
-这份协议把一个上游 brief 变成一篇值得本人终审的博客文章。它优先保护真实性、作者选择和读者价值，不把“格式完整”当成“文章成立”。
+Turn one approved brief into an article worth the author's review. The workflow protects truth and publishing safety while leaving prose decisions to the writer.
 
-## 总流程
+## 1. Receive
 
-```text
-brief
-  → 语义门：值得写吗、是什么文体
-  → source_refs 谱系：继承、增量、开放问题
-  → 轻量研究
-  → 粗稿
-  → 发展编辑：KEEP / REBUILD / KILL
-  → 事实与隐私检查
-  → 行文、SEO/GEO、内链、封面
-  → 文档级验证
-  → ready-to-publish
-  → 本人签字
-```
+- Process one brief.
+- Confirm its mode: `thinking`, `research`, `field-note`, or `maintenance`.
+- Treat the brief as approved material and boundaries, not an outline.
+- Trace recurring `source_refs` through public repository material only.
+- Stop when author material, privacy permission, or decisive evidence is missing.
 
-每次只处理一个 brief。`blocked` 和 `KILL` 都是正常完成结果；`KILL` 对应 brief 的 `cancelled` 终态，不为了产量强行生成文章。
-
-## 1. 认领与文体分流
-
-运行：
-
-```bash
-npm run briefs:next
-npm run briefs:check
-```
-
-定向 dispatch 已经认领 brief 时，只处理指定文件，不访问 brain 或切换任务。
-
-`brief_type` 决定默认编辑方式：
-
-| 类型 | 目标 | 不要强制 |
-|---|---|---|
-| `thinking` | 让读者经历一次判断变化 | 完整框架、FAQ、面面俱到的研究综述 |
-| `research` | 帮读者完成解释、教程、比较或决策任务 | 私人叙事、虚构场景 |
-| `field-note` | 保存一个具体、及时、可继续验证的现场 | 永恒结论、成熟方法论 |
-| `maintenance` | 更新已有内容或结构 | 无理由新建文章 |
-
-思考型 brief 必须包含本人选择的文章形态。没有选择、没有作者一手材料或没有隐私裁决时，改为 `blocked`。
-
-认领前检查同一 slug、核心判断和读者任务。能更新旧文时，不创建重复文章。
-
-## 2. 把 brief 压缩成编辑契约
-
-只提取：
+The queue states remain:
 
 ```text
-读者正在做什么
-唯一命题或研究问题
-已选文章形态
-一到两个作者独有材料
-需要验证的事实
-隐私边界
-这次主动不讲什么
+ready → claimed → drafting → review → ready-to-publish → published
 ```
 
-brief 是输入与边界，不是文章蓝图。忽略为了显得完整而写入的逐节安排、FAQ、标题和封面隐喻。
+Use `blocked` when human input is required and `cancelled` when the article receives a `KILL`.
 
-### 先建立数据源谱系
+## 2. Write in three passes
 
-当 brief 含有 `source_refs` 时，运行：
+### First pass: author and material
 
-```bash
-npm run briefs:trace -- --file _briefs/YYYY-MM-DD-slug.md
-```
+Find what happened, what mattered to the author, what changed, and what stays private.
 
-精确串联相同 ref 对应的公开 brief、执行回执和仓库内成品，再写出三层：
+For `thinking`, begin with the author's lived account and uncertainty. For `research`, begin with the reader's task. For `field-note`, begin with the current observation. Do not use research to replace missing experience.
 
-```text
-既有判断：以前已经公开建立了什么
-本次增量：这次新增、修正或推翻什么
-开放问题：还缺什么证据，值得未来继续追踪
-```
+### Second pass: discovery and evidence
 
-`brain://` 只提供谱系键，不授予读取 private 数据的权限。没有当前增量时，优先更新旧文、退回上游或给出 `KILL`，不更换标题重复发布。
+Let the draft choose its own order and length. Research only what can change or protect the article. Brief headings, checklists, FAQ, frameworks, and tidy conclusions are optional.
 
-## 3. 按需要研究
+### Third pass: three rereads
 
-### `thinking`
+1. Author presence and voice.
+2. Movement and reader experience.
+3. Facts, citations, privacy, metadata, and links.
 
-只核验支撑文章的关键事实，寻找一个真正会改变判断的反方。研究若只会增加免责声明，就停止。
+Use `.claude/skills/write-blog-from-brief/references/review-rubric.md`. Choose `KEEP`, `REBUILD`, or `KILL`.
 
-### `research`
+## 3. Package only after the article lives
 
-同时研究：
+- Choose an accurate title and plain-text description.
+- Use canonical tags and a reached Shanghai `+08:00` timestamp.
+- Add SEO/GEO devices only when they serve the article.
+- Add adjacent citations and a deduplicated reference section when public sources are used.
+- Reuse existing routes, content directories, and cover conventions.
+- Finish the Chinese edition first. After author approval, use `.claude/skills/translate-and-format-blog/SKILL.md` for English translation and optional rendering polish in either language.
 
-- 最可靠的一手证据；
-- 读者正在完成的任务和常用问题；
-- 现有内容遗漏的关键解释、比较或步骤；
-- 可能推翻结论的新事实。
+## 4. Validate and hand off
 
-### `field-note`
-
-只核验时效事实和实验状态。未知项原样保留。
-
-引用数量没有最低要求。研究推翻命题时退回上游，不用更多段落保护原结论。
-
-## 4. 先写 movement，再写 sections
-
-动笔前写五行：
-
-```text
-读者带着什么进入
-哪件事改变了什么
-读者最后看见或能做什么
-必须保留什么
-主动省略什么
-```
-
-然后写中文粗稿：
-
-- `thinking`：真实入口 → 张力发展 → 判断变化 → 现实后果；
-- `research`：读者任务 → 最小必要解释/步骤/比较 → 边界；
-- `field-note`：发生了什么 → 当前理解 → 下一步验证。
-
-每节必须改变问题、证据、判断或行动。不要为了整齐增加框架、对称列表、反方、工具清单或总结。
-
-公开事实在相邻位置引用。使用了公开来源时，文末以 `## 参考资料` 去重列出正文真正使用的来源。
-
-## 5. 发展编辑先于润色
-
-使用 `.claude/skills/write-blog-from-brief/references/review-rubric.md`。
-
-发展编辑必须与起草分开，由未参与初稿的独立 reviewer 完成；事实与隐私检查再作为单独一遍执行。
-
-发展编辑回答：
-
-- 为什么这篇必须存在；
-- 哪些内容只有作者能写；
-- 读者可能在哪里离开；
-- 先删哪 30%；
-- 结尾是否回到现实；
-- verdict 是 `KEEP`、`REBUILD` 还是 `KILL`。
-
-`REBUILD` 允许大幅删改和重排。`KILL` 停止，不继续补引用、SEO 或封面；在回执记录 verdict 与原因，并把 brief 状态改为 `cancelled`，避免它继续占用 active 队列。
-
-## 6. 事实、隐私与行文检查
-
-只有 `KEEP` 后才检查：
-
-- 事实、来源观点、作者观察和本文推论是否分开；
-- 引用是否支持相邻句；
-- 日期、数字、版本、样本和产品状态是否准确；
-- private 和第三方边界是否保持；
-- 标题、开头和正文是否兑现同一承诺；
-- 哪些句子模板化、重复或过度解释。
-
-`check-ai-flavor.mjs` 只能发现少量句式，不是文章质量分。
-
-## 7. 最后处理发布包装
-
-- `research` 可按任务需要使用 Answer-First、`tldr`、FAQ 和 schema。
-- `thinking` 不强制摘要式开头或 FAQ。
-- `field-note` 保持短，不为了 evergreen 扩写。
-- 删除既有 `tldr`、FAQ 或其他 front matter 前，先确认模板、schema、搜索和自动化消费者；正文重复不等于元数据无用。
-- 内链按前因、证据和后续行动选择。
-- 标题和 description 准确即可，不由关键词重新定义文章。
-- 封面先比较三种不同 art direction，再生成所选方向的候选；一致但不统一。
-
-## 8. 确定性质量门
-
-标准 Markdown 文章运行：
+For ordinary Markdown:
 
 ```bash
 node scripts/check-ai-flavor.mjs <article...> --check
@@ -172,21 +58,4 @@ npm run tags:check
 git diff --check
 ```
 
-普通文章不默认跑全量测试或本地生产构建。只有 raw HTML、shortcode、新路由、特殊媒体、共享模板/CSS/JS 等引入对应风险时，才补定向验证。全站构建和 E2E 由 CI/CD 承担。
-
-压缩后重新确认：每个保留案例只承担一个论证任务，有相邻证据与边界，并明确回到中心命题；行内外链与文末参考资料一一对应，内链、canonical tags 和封面路径仍有效。
-
-## 9. 回执与发布
-
-进入 `ready-to-publish` 前必须同时满足：
-
-- 编辑 verdict 为 `KEEP`；
-- 事实、隐私和文档检查通过；
-- 已在回执中保存 `source_refs` 谱系、本次增量和后续开放问题；
-- 剩余需要本人决定的标题、判断或封面已经明确列出。
-
-回执记录 `editorial_verdict`、主要删改、事实检查和未决事项，不再用百分制代表主观质量。
-
-若 verdict 为 `KILL`，回执只需记录原因、保留价值与未来重启条件，状态停在 `cancelled`。
-
-未经本人确认不得发布。发布后回填 URL、日期和真实读者反馈，供 T+3/T+7 retro 使用。
+Record the article, source trail, meaningful revision, checks, and remaining human choices in the brief. Stop at `ready-to-publish` until the author separately approves publication.

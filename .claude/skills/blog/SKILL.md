@@ -15,6 +15,7 @@ description: Maintain the cubxxw bilingual Hugo blog, including brief-driven wri
 
 - For a brief-driven article, read `_briefs/README.md` and `docs/blog-editorial-workflow.md`, then use `.claude/skills/write-blog-from-brief/SKILL.md`. Trace recurring `source_refs` across public briefs and article receipts before drafting; never dereference `brain://`.
 - For a new or rewritten opening, also use `.claude/skills/craft-article-opening/SKILL.md`.
+- For an approved English translation or presentation polish in either language, use `.claude/skills/translate-and-format-blog/SKILL.md`.
 - For template or design work, trace the relevant layout, partials, Hugo resources, and extended CSS before editing.
 - For taxonomy, metadata, or SEO work, inspect the project scripts and `config/tags-mapping.json` before changing content.
 

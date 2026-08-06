@@ -4,12 +4,9 @@ _build:
   list: never
 ---
 
-### Translation Article Processing
+### English article processing
 
-**When creating a translated article:**
-
-1. Copy the original article to the corresponding language directory
-2. Translate the `title`, `description`, and `tags`
-3. Translate the main content
-4. Set the original article to `draft: true` if the translation is not complete
-5. Update `config/tags-mapping.json` if new tags are needed
+- Use `.claude/skills/translate-and-format-blog/SKILL.md` after the Chinese article is complete and approved.
+- Mirror the source path below `content/en/`, translate reader-visible text naturally, and preserve facts, citations, author voice, resources, and canonical tags.
+- Do not add `draft` or leave an incomplete translation in `content/`.
+- Use repository-supported rendering only when it improves comprehension; keep the semantic structure aligned with the Chinese edition.

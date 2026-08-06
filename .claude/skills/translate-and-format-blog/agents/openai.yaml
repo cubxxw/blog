@@ -1,0 +1,4 @@
+interface:
+  display_name: "Translate & Format Blog"
+  short_description: "Translate finished posts and polish bilingual rendering"
+  default_prompt: "Use $translate-and-format-blog to translate an approved Chinese post into English and polish both editions."

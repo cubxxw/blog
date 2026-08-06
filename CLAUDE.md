@@ -32,10 +32,11 @@ This document contains critical information about working with this codebase. Fo
 留在未合并分支，空占位和内部 fixture 必须留在发布目录之外，最终发布由分支合并和部署控制。
 
 从 brief 写文章、扫描并执行选题或完成整套发布前加工时，必须使用
-`.claude/skills/write-blog-from-brief/SKILL.md`。该 skill 统一编排公开研究、原生写作、
-独立 agent 审读、AI 味清理、SEO/GEO、内链、封面、评分与确定性验证。brief 含
+`.claude/skills/write-blog-from-brief/SKILL.md`。该 skill 只固定真实性、隐私、权限与
+确定性验证等硬边界；文章结构和表达由模型根据材料自行判断。写作分三遍完成：
+先找作者在场与真实张力，再让必要资料进入，最后分别复读声音、思想推进和事实安全。brief 含
 `source_refs` 时，先运行 `npm run briefs:trace -- --file <brief>`，沿相同引用串联公开
-brief、执行回执和既有文章，明确既有判断、本次增量与后续开放问题；不得读取
+brief、执行回执和既有文章，分别观察经历、情感与思想如何延续；不得读取
 `brain://` 背后的 private 内容。
 
 brain 自动下发时使用
@@ -46,6 +47,10 @@ executor，只传任务卡路径，不继承 brain 对话，也不得读取 `bra
 新写或重写文章第一段、开篇 Hook、楔子或首屏时，必须使用
 `.claude/skills/craft-article-opening/SKILL.md`。开篇必须从真实材料建立在场感和张力，
 不得用标题党、虚构经历或泛化的“AI 时代”开场。
+
+主写作流程只完成中文原稿。中文经本人确认后，英文翻译和中英文排版增强统一使用
+`.claude/skills/translate-and-format-blog/SKILL.md`；翻译只转换语言，不重新研究或改写
+文章命题。特殊渲染语法按内容需要选择，不为了装饰机械添加。
 
 ```bash
 # AI Agent 文章（Agent 工程、上下文工程、LLM 应用、GEO）

@@ -16,6 +16,7 @@
 - 执行 brief 前必须阅读 `_briefs/README.md` 与 `docs/blog-editorial-workflow.md`
 - 从 brief 写文章、扫描并执行选题或完成整套发布前加工时，必须使用 `.claude/skills/write-blog-from-brief/SKILL.md`
 - 新写或重写文章第一段、开篇 Hook、楔子或首屏时，必须使用 `.claude/skills/craft-article-opening/SKILL.md`
+- 主写作流程只完成中文原稿；中文稳定后，英文翻译和中英文排版增强使用 `.claude/skills/translate-and-format-blog/SKILL.md`
 - 使用 `npm run briefs:next` 选择待处理任务；每次最多认领一篇
 - 旧 `writing-pipeline/` 已停用，不再承担母版或跨平台分发职责
 - 自动化最多推进到 `ready-to-publish`，未经作者确认不得发布
@@ -137,13 +138,13 @@ content/
 
 ### 4. 翻译文章处理
 
-**当创建翻译文章时**：
+使用 `.claude/skills/translate-and-format-blog/SKILL.md`：
 
-1. 复制原文到对应语言目录
-2. 翻译 `title`, `description`, `tags`
-3. 翻译正文内容
-4. 翻译完成后再合并对应语言文件，不要提交空占位
-5. 更新 `config/tags-mapping.json` 如果需要新标签
+1. 中文文章稳定并经确认后再创建英文版
+2. 在 `content/en/` 下保持与 `content/zh/` 相同的相对路径
+3. 翻译可见文字，保留事实、引用、作者视角、资源路径和 canonical tags
+4. 只在有助理解时为中英文加入仓库已支持的特殊渲染语法
+5. 不使用 `draft`，不向 `content/` 提交未完成的英文占位文件
 
 ### 5. SEO 规范
 

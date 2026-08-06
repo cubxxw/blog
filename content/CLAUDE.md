@@ -7,7 +7,7 @@ _build:
 ### 要求
 - `date` 必须显式写上海时区时间，推荐格式：`YYYY-MM-DDTHH:mm:ss+08:00`
 - `description` 必须是纯文本，不含 `**`, `*`, `#` 等 Markdown 符号
-- 先撰写中文文章然后翻译为英文文章
+- 主写作流程只完成中文文章；中文稳定后使用 `.claude/skills/translate-and-format-blog/SKILL.md` 翻译英文并按需优化双语排版
 
 撰写文章必须使用标准标签名，如果有新的标签，必须注册进去（修改此文件）
 
@@ -66,4 +66,3 @@ howto:
 ```
 
 **Answer-First 开头（GEO）**：How-to /「是什么」类文章正文第一段直接给答案——一句可独立成立的结论 + 40–100 字展开 + 至少一个证据，再进入正文。`tldr` 是提要块，Answer-First 是正文首段，两者并存不冲突。
-

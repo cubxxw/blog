@@ -9,7 +9,7 @@
 - 从对话、threads 和 topics 中判断什么值得写；
 - 选择 `thinking`、`research`、`field-note` 或 `maintenance`；
 - 给出唯一命题、作者一手增量、已确认素材与隐私边界；
-- 思考型文章先比较三种形态，由本人选择一个；
+- 思考型文章提供可公开的经历、情感和思想材料，可以建议方向，但不预制文章结构；
 - 附上可公开的参考方向、上游引用标识和待验证问题；
 - 将状态为 `ready` 的 brief 写入本目录。
 
@@ -105,7 +105,7 @@ npm run briefs:dispatch -- --brief _briefs/YYYY-MM-DD-slug.md --dry-run
 - 不得从 `source_refs` 读取未获批准的 private 内容；
 - 动笔前先扫描 `source_refs` 谱系，明确“既有判断—本次增量—后续开放问题”，没有新增量时优先更新旧文、退回上游或 `KILL`；
 - 缺少作者一手增量时转为 `blocked`，不让 AI 补造经历；
-- 思考型 brief 缺本人选择的文章形态时转为 `blocked`；
+- 思考型 brief 缺少足够的作者在场材料时转为 `blocked`；
 - 外部研究必须区分事实、来源观点和本文推论；
 - SEO、FAQ 和标题都服务于已经确认的命题；思考型文章不强制使用；
 - 发展编辑可以给出 `KEEP`、`REBUILD` 或 `KILL`，不为了进入队列完成态而强行成文；`KILL` 时记录 verdict 与原因，并把状态改为 `cancelled`；

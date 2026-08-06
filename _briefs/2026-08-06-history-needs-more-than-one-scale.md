@@ -138,3 +138,7 @@ source_refs:
 - checks: 发展编辑 KEEP；事实/引用/隐私 PASS；8 个正文外链与 8 项参考资料一一对应；AI flavor、front matter、canonical tags、brief tests、skill validation、git diff 与封面检查通过。
 - published_at: 2026-08-06T10:48:12+08:00
 - retro_notes: 本次把 exact source_refs 作为谱系起点，没有宣称存在同 ref 前作；按已批准的公开原话串联三篇旧笔记。作者已确认发布；GitHub Pages 构建与部署成功，公开文章和封面均返回 200。
+- revision_pending:
+  - reason: 作者终审认为初版论证完整，但真实经历、情感和第一人称在场感被研究与框架遮住。
+  - change: 按精简后的三遍写作流程重写；保留夜谈和判断松动，移除“四问”框架，把正文外部资料从 8 项减为 5 项。
+  - human_choice: 确认改写是否更像本人；当前改稿尚未重新提交或发布。

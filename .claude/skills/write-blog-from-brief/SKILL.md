@@ -1,176 +1,84 @@
 ---
 name: write-blog-from-brief
-description: Turn one ready `_briefs/` task into a researched, authorial Hugo article and stop at `ready-to-publish`. Use for executing the blog queue, writing from a brain brief, or tracing a theme across recurring `source_refs`. Build a safe longitudinal source lineage from approved public packets, select the article mode first, preserve privacy and factual boundaries, and allow REBUILD or KILL instead of forcing every brief into a finished long-form essay.
+description: Turn one `_briefs/` task into an authorial Hugo article and stop for author review. Use when writing, rewriting, or deepening a blog article from a brief, including themes connected by recurring `source_refs`. Preserve the author's lived perspective, trace only approved public material, research in proportion to the article, and keep publication under the author's control.
 ---
 
 # Write Blog from Brief
 
-Produce one article from one brief. The brief controls approved material, privacy, and the confirmed claim; it does not prescribe every section or sentence.
+Write one article from one brief. Treat the brief as material and boundaries, not as a section plan.
 
-Announce this skill before acting. Process only one brief per invocation.
+## Read first
 
-## Read
+Read `AGENTS.md`, `_briefs/README.md`, `docs/blog-editorial-workflow.md`, the brief, and `config/tags-mapping.json`.
 
-Always read:
+When needed:
 
-1. `AGENTS.md`
-2. `_briefs/README.md`
-3. `docs/blog-editorial-workflow.md`
-4. the selected brief
-5. `config/tags-mapping.json`
+- `references/source-tracing.md` for `source_refs`;
+- `references/research-protocol.md` for research-led work;
+- `../craft-article-opening/SKILL.md` when writing the first screen;
+- `references/review-rubric.md` for the final rereads.
 
-Read conditionally:
+Never open the private target behind `brain://`.
 
-- `references/source-tracing.md` when `source_refs` are present or the user asks to deepen, revisit, or track a theme;
-- `references/research-protocol.md` when external claims need verification or `brief_type: research`;
-- `../craft-article-opening/SKILL.md` when creating or replacing the first screen;
-- `references/review-rubric.md` before editorial review;
-- `../article-covers/SKILL.md` only after title and body stabilize.
+## Keep only the hard boundaries
 
-Treat `brain://` as traceability, not permission to read upstream private files.
+- Use only approved author material. Never invent experience, dialogue, emotion, motive, chronology, or results.
+- Preserve privacy, attribution, and factual accuracy.
+- Process one brief at a time.
+- Do not publish, translate, commit, push, or deploy without separate authorization.
+- Stop as `blocked` when the article needs lived material or a privacy decision that the brief does not provide.
+- Allow `KILL`: a safe brief does not automatically deserve an article.
 
-## State and authority
+Everything else—shape, order, length, headings, amount of research, and ending—depends on the material.
 
-Follow:
+## Work in three passes
 
-```text
-ready → claimed → drafting → review → ready-to-publish
-```
+### Pass 1 — Find the living center
 
-Use `blocked` when approved author material, privacy permission, a selected essay direction, or decisive evidence is missing. Use an editorial `KILL` verdict when the material is safe but does not deserve an article; record the reason and move the brief to `cancelled` so it does not remain active.
-
-Do not publish, translate, commit, push, merge, or deploy without separate authorization.
-
-## 1. Select, claim, and identify the mode
-
-Run the relevant queue checks. In dispatch mode, process only the named, already claimed brief and do not access brain.
-
-Map `brief_type` to an editorial mode:
-
-- `thinking` — an essay or project philosophy piece. It needs a chosen shape, lived material, tension, and a real consequence.
-- `research` — a tutorial, explanation, comparison, or evidence-led analysis. It needs a valid reader task and reliable sources.
-- `field-note` — a project update, experiment log, or current observation. It may remain partial and short.
-- `maintenance` — update an existing artifact; do not create a new article unless the brief explicitly says so.
-
-Search for duplicate claims and search intent. Prefer updating an existing article when that serves the reader better.
-
-## 2. Trace the approved source lineage
-
-Read `references/source-tracing.md` and run:
-
-```bash
-npm run briefs:trace -- --file <brief>
-```
-
-Use exact `source_refs` to find related public briefs, completed article receipts, and existing repository articles. Record what the current brief inherits, what it changes, and which questions remain open.
-
-Never dereference `brain://` or treat a recurring ref as permission to import private content. If the current brief adds no publishable delta to an existing article, prefer maintenance, return upstream, or `KILL`.
-
-## 3. Extract a small editorial contract
-
-Write working notes containing only:
+Identify:
 
 ```text
-reader action
-confirmed claim or research question
-chosen shape
-one or two author-only materials
-inherited insight and current source-lineage delta
-facts that require verification
-privacy boundary
-what this article deliberately omits
+who is speaking to whom
+what actually happened or was observed
+what the author felt, believed, or could not resolve
+what changed in this source lineage
+what must stay private
 ```
 
-For a `thinking` brief, stop if the chosen shape is missing. Do not silently choose among several major interpretations after the author has delegated only execution.
+For `source_refs`, trace the related public briefs and articles. Look separately for continuity in experience, emotion, and thought. Do not force old material into the draft.
 
-Ignore a detailed section blueprint when it conflicts with the approved shape or makes the article mechanically complete. Preserve the claim and material boundaries, not upstream prose.
+Choose the mode:
 
-## 4. Research in proportion to the mode
+- `thinking`: let the reader enter the author's experience and follow a judgment changing;
+- `research`: help the reader understand or complete a concrete task;
+- `field-note`: preserve a specific observation before it becomes falsely complete;
+- `maintenance`: improve an existing artifact.
 
-- `thinking`: verify only facts that carry the argument and find the strongest relevant challenge. Do not turn the essay into a literature review.
-- `research`: run epistemic and search-intent research using `references/research-protocol.md`.
-- `field-note`: verify current external facts; leave open questions open.
-- `maintenance`: verify only what the update changes.
+For a thinking article, draft the author's account before doing broad research. If there is no authorial presence to write from, stop instead of filling the gap with explanation.
 
-Prefer a few primary sources. Research must be allowed to narrow, redirect, or stop the article. If it overturns the confirmed claim, return upstream instead of adding defensive paragraphs.
+### Pass 2 — Let the article discover its shape
 
-Change the brief to `drafting` once the material is sufficient.
+Write freely from the strongest approved material. Follow the natural movement of the experience or question; ignore brief headings and acceptance criteria that would make the prose mechanically complete.
 
-## 5. Choose movement, not coverage
+Research only claims that matter. Let evidence challenge the draft, but keep research in a supporting role unless the article is research-led.
 
-Before prose, write:
+Do not add a framework, checklist, FAQ, counterargument, or tidy conclusion by habit. An unresolved ending is valid when it is true.
 
-```text
-the reader enters with:
-the article changes:
-the reader leaves able to:
-keep:
-omit:
-```
+### Pass 3 — Reread three times
 
-Then shape by mode:
+1. **Presence:** Can the reader feel why this belongs to this author? Where did explanation hide the person?
+2. **Movement:** Does each surviving part deepen or change the experience, question, or judgment?
+3. **Integrity:** Are facts, citations, privacy, attribution, metadata, links, and assets correct?
 
-- `thinking`: one central tension; a scene, decision, or contradiction changes the author's judgment; the ending returns to reality.
-- `research`: organize around the reader's task and the minimum evidence needed to complete it.
-- `field-note`: what happened, what it currently suggests, what will be tested next.
+Rewrite as needed. Prefer cutting a well-written paragraph over keeping one that could appear unchanged under another author's name.
 
-Do not add a framework, table, counterargument, FAQ, or checklist merely because the format supports one. A `thinking` article normally uses at most one explicit framework.
+## Finish
 
-## 6. Draft with room to discover
+Use canonical tags, a reached Shanghai `+08:00` timestamp, plain-text description, adjacent citations for external claims, and a deduplicated `## 参考资料` / `## References` section when public sources are used.
 
-Create a rough Chinese draft before polishing. Let the prose find better order and compression; do not attempt to satisfy every possible review criterion while writing the first paragraph.
+Finish the Chinese article only. After author approval, delegate English translation and optional bilingual rendering to `../translate-and-format-blog/SKILL.md`; do not make this writing pass produce the English edition.
 
-For `thinking`:
-
-- enter through approved concrete material;
-- make every section change the problem, evidence, judgment, or action;
-- retain uncertainty that belongs to the author;
-- end with a decision, experiment, cost, or unresolved reality—not a summary of the introduction.
-
-For `research`:
-
-- answer the task early;
-- distinguish source fact, source opinion, author observation, and article inference;
-- cite decisive claims next to their sources;
-- use `tldr`, FAQ, schemas, and step lists only when they help the task.
-
-For `field-note`:
-
-- prefer a short honest note over an inflated evergreen essay;
-- state what is known now and what may change.
-
-Delete paragraphs that would survive unchanged under another author's name. Never fabricate experience, dialogue, motive, metrics, chronology, or results.
-
-When public sources are cited, end with `## 参考资料` and list only sources actually used.
-
-## 7. Review in the correct order
-
-Move the brief to `review` and use `references/review-rubric.md`.
-
-Use an independent reviewer that did not draft the article for the developmental pass. Run fact and safety checking as a separate pass:
-
-1. **Developmental editor** — decides `KEEP`, `REBUILD`, or `KILL`; can recommend cutting or moving large sections.
-2. **Fact and safety checker** — checks evidence, privacy, attribution, dates, and publication integrity.
-
-Do not ask either reviewer for a percentage score. Do not tell them the desired verdict. Save line-specific findings or record them in the brief receipt.
-
-Resolve structural findings before line editing. If the developmental verdict is `REBUILD`, permit one substantial rewrite. If it remains `KILL`, record the reason, set the brief to `cancelled`, and stop rather than polishing.
-
-## 8. Apply presentation after editorial stability
-
-- Finalize title and plain-text description.
-- Add Answer-First, `tldr`, FAQ, or HowTo schema only for content whose reader task benefits.
-- Before removing or changing existing `tldr`, FAQ, or other front-matter fields, inspect their template, schema, search, and rendering consumers. Narrative repetition does not prove metadata is unused.
-- Add internal links by argumentative role, not tag similarity.
-- Select canonical tags; do not fill `keywords` without a reason.
-- Use a reached Shanghai `+08:00` timestamp.
-- Treat `npm run geo:audit` as advisory.
-
-Read `../article-covers/SKILL.md`. Compare three different art directions before generating variants of the selected one. Inspect the actual images.
-
-## 9. Run deterministic gates
-
-For a standard Markdown article:
+For standard Markdown, run:
 
 ```bash
 node scripts/check-ai-flavor.mjs <article...> --check
@@ -179,26 +87,4 @@ npm run tags:check
 git diff --check
 ```
 
-The AI-flavor script detects a few phrase patterns; it is not an editorial grade.
-
-Confirm:
-
-- every inline external citation is represented once in the final reference list;
-- every internal link and cover/media path resolves;
-- canonical tags and front-matter consumers remain valid;
-- the article has a visible current delta and does not merely repackage an earlier item from the same source lineage;
-- after compression, each surviving case still has one argumentative job, nearby support, a visible limitation, and a return to the central claim.
-
-Escalate to targeted Hugo, browser, or shared-code tests only when the article introduces corresponding rendering risk. CI owns full-site confidence.
-
-## 10. Handoff
-
-When the article has a `KEEP` verdict and all factual/deterministic gates pass:
-
-- set the brief to `ready-to-publish`;
-- record `editorial_verdict`, key cuts, fact checks, article path, source lineage, current delta, follow-up questions, and unresolved human choices;
-- leave publication to the author.
-
-For a `KILL` verdict, record why the current shape should not publish and what evidence could justify reopening it, then leave the brief at `cancelled`.
-
-Report what changed and what still needs human judgment. Do not create the English version until the Chinese article is approved.
+Record the article path, source lineage, meaningful revision, checks, and unresolved human choices in the brief. Stop for author review; publication remains a separate decision.
