@@ -94,6 +94,7 @@
 下面只保留最近发布的 8 篇中文文章，由 GitHub Actions 从博客 RSS 自动更新。这个列表会变化，仓库也会继续生长。
 
 <!-- BLOG-POST-LIST:START -->
+- [n8n 入门：给超级个体搭一条会被结果改写的增长流水线](https://cubxxw.com/zh/growth/posts/super-individual-growth-os-n8n/)
 - [历史不能只活在一个尺度里：与 Archer 的一场夜谈](https://cubxxw.com/zh/growth/posts/history-needs-more-than-one-scale/)
 - [Claude Tag 深度拆解：Slack 里的共享 AI，正在长成组织级 Agent 运行时](https://cubxxw.com/zh/ai-agent/posts/claude-tag-organizational-agent-runtime/)
 - [我不缺执行力，我缺一个有权否决我的战场](https://cubxxw.com/zh/growth/posts/2026-08-03-a-battlefield-that-can-say-no/)
@@ -101,7 +102,6 @@
 - [我知道什么是 Agent，却说不出它的定义](https://cubxxw.com/zh/ai-agent/posts/2026-08-02-ai-era-conceptual-mobility/)
 - [如果蒙田有一个 AI：我为什么把 DayPage 做成一场自我实验](https://cubxxw.com/zh/projects/daypage-ai-metacognition-experiment/)
 - [常识不是本质：AI 时代如何从需求、约束与稀缺性重构行业](https://cubxxw.com/zh/ai-agent/posts/common-sense-ai-industry-reconstruction/)
-- [2026年7月的一些思考笔记：工程、内容与现金流](https://cubxxw.com/zh/growth/posts/2026-07-thought-notes/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 一套公开运行的内容系统
