@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-08-06-history-needs-more-than-one-scale
 title: 历史不能只活在一个尺度里：与 Archer 的一场夜谈
-status: ready-to-publish
+status: published
 priority: normal
 language: zh
 section: growth
@@ -127,7 +127,7 @@ source_refs:
 <!-- 由博客仓库填写。 -->
 
 - article: content/zh/growth/posts/history-needs-more-than-one-scale.md
-- public_url:
+- public_url: https://cubxxw.com/zh/growth/posts/history-needs-more-than-one-scale/
 - editorial_verdict: KEEP（一次 REBUILD 后通过）
 - source_trail:
   - refs: `brain://topics/history-needs-more-than-one-scale.md`; `brain://threads/history-memory-suffering-and-lived-experience.md`
@@ -136,5 +136,5 @@ source_refs:
   - current_delta: 远镜头也会把生命压成灾难统计，近镜头也能看见困顿中未被苦难用尽的日常；进一步整理为“发生—生活—记忆—回应”四问。
   - follow_up: 用后续历史阅读、电影与个人记忆案例检验四问在哪些情境会冲突；继续追踪“发心—后果—修复”之间不能互相冲销的边界。
 - checks: 发展编辑 KEEP；事实/引用/隐私 PASS；8 个正文外链与 8 项参考资料一一对应；AI flavor、front matter、canonical tags、brief tests、skill validation、git diff 与封面检查通过。
-- published_at:
-- retro_notes: 本次把 exact source_refs 作为谱系起点，没有宣称存在同 ref 前作；按已批准的公开原话串联三篇旧笔记。发布前仍需作者本人确认夜谈跳跃是否符合真实感受，以及“多个尺度同时成立”是否准确表达其判断。
+- published_at: 2026-08-06T10:48:12+08:00
+- retro_notes: 本次把 exact source_refs 作为谱系起点，没有宣称存在同 ref 前作；按已批准的公开原话串联三篇旧笔记。作者已确认发布；GitHub Pages 构建与部署成功，公开文章和封面均返回 200。
