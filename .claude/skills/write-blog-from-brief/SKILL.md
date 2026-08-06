@@ -1,6 +1,6 @@
 ---
 name: write-blog-from-brief
-description: Turn one ready `_briefs/` task into a researched, authorial Hugo article and stop at `ready-to-publish`. Use for executing the blog queue or writing from a brain brief. Select the article mode first, preserve privacy and factual boundaries, favor editorial judgment over checklist completeness, and allow REBUILD or KILL instead of forcing every brief into a finished long-form essay.
+description: Turn one ready `_briefs/` task into a researched, authorial Hugo article and stop at `ready-to-publish`. Use for executing the blog queue, writing from a brain brief, or tracing a theme across recurring `source_refs`. Build a safe longitudinal source lineage from approved public packets, select the article mode first, preserve privacy and factual boundaries, and allow REBUILD or KILL instead of forcing every brief into a finished long-form essay.
 ---
 
 # Write Blog from Brief
@@ -21,6 +21,7 @@ Always read:
 
 Read conditionally:
 
+- `references/source-tracing.md` when `source_refs` are present or the user asks to deepen, revisit, or track a theme;
 - `references/research-protocol.md` when external claims need verification or `brief_type: research`;
 - `../craft-article-opening/SKILL.md` when creating or replacing the first screen;
 - `references/review-rubric.md` before editorial review;
@@ -53,7 +54,19 @@ Map `brief_type` to an editorial mode:
 
 Search for duplicate claims and search intent. Prefer updating an existing article when that serves the reader better.
 
-## 2. Extract a small editorial contract
+## 2. Trace the approved source lineage
+
+Read `references/source-tracing.md` and run:
+
+```bash
+npm run briefs:trace -- --file <brief>
+```
+
+Use exact `source_refs` to find related public briefs, completed article receipts, and existing repository articles. Record what the current brief inherits, what it changes, and which questions remain open.
+
+Never dereference `brain://` or treat a recurring ref as permission to import private content. If the current brief adds no publishable delta to an existing article, prefer maintenance, return upstream, or `KILL`.
+
+## 3. Extract a small editorial contract
 
 Write working notes containing only:
 
@@ -62,6 +75,7 @@ reader action
 confirmed claim or research question
 chosen shape
 one or two author-only materials
+inherited insight and current source-lineage delta
 facts that require verification
 privacy boundary
 what this article deliberately omits
@@ -71,7 +85,7 @@ For a `thinking` brief, stop if the chosen shape is missing. Do not silently cho
 
 Ignore a detailed section blueprint when it conflicts with the approved shape or makes the article mechanically complete. Preserve the claim and material boundaries, not upstream prose.
 
-## 3. Research in proportion to the mode
+## 4. Research in proportion to the mode
 
 - `thinking`: verify only facts that carry the argument and find the strongest relevant challenge. Do not turn the essay into a literature review.
 - `research`: run epistemic and search-intent research using `references/research-protocol.md`.
@@ -82,7 +96,7 @@ Prefer a few primary sources. Research must be allowed to narrow, redirect, or s
 
 Change the brief to `drafting` once the material is sufficient.
 
-## 4. Choose movement, not coverage
+## 5. Choose movement, not coverage
 
 Before prose, write:
 
@@ -102,7 +116,7 @@ Then shape by mode:
 
 Do not add a framework, table, counterargument, FAQ, or checklist merely because the format supports one. A `thinking` article normally uses at most one explicit framework.
 
-## 5. Draft with room to discover
+## 6. Draft with room to discover
 
 Create a rough Chinese draft before polishing. Let the prose find better order and compression; do not attempt to satisfy every possible review criterion while writing the first paragraph.
 
@@ -129,7 +143,7 @@ Delete paragraphs that would survive unchanged under another author's name. Neve
 
 When public sources are cited, end with `## 参考资料` and list only sources actually used.
 
-## 6. Review in the correct order
+## 7. Review in the correct order
 
 Move the brief to `review` and use `references/review-rubric.md`.
 
@@ -142,7 +156,7 @@ Do not ask either reviewer for a percentage score. Do not tell them the desired 
 
 Resolve structural findings before line editing. If the developmental verdict is `REBUILD`, permit one substantial rewrite. If it remains `KILL`, record the reason, set the brief to `cancelled`, and stop rather than polishing.
 
-## 7. Apply presentation after editorial stability
+## 8. Apply presentation after editorial stability
 
 - Finalize title and plain-text description.
 - Add Answer-First, `tldr`, FAQ, or HowTo schema only for content whose reader task benefits.
@@ -154,7 +168,7 @@ Resolve structural findings before line editing. If the developmental verdict is
 
 Read `../article-covers/SKILL.md`. Compare three different art directions before generating variants of the selected one. Inspect the actual images.
 
-## 8. Run deterministic gates
+## 9. Run deterministic gates
 
 For a standard Markdown article:
 
@@ -172,16 +186,17 @@ Confirm:
 - every inline external citation is represented once in the final reference list;
 - every internal link and cover/media path resolves;
 - canonical tags and front-matter consumers remain valid;
+- the article has a visible current delta and does not merely repackage an earlier item from the same source lineage;
 - after compression, each surviving case still has one argumentative job, nearby support, a visible limitation, and a return to the central claim.
 
 Escalate to targeted Hugo, browser, or shared-code tests only when the article introduces corresponding rendering risk. CI owns full-site confidence.
 
-## 9. Handoff
+## 10. Handoff
 
 When the article has a `KEEP` verdict and all factual/deterministic gates pass:
 
 - set the brief to `ready-to-publish`;
-- record `editorial_verdict`, key cuts, fact checks, article path, and unresolved human choices;
+- record `editorial_verdict`, key cuts, fact checks, article path, source lineage, current delta, follow-up questions, and unresolved human choices;
 - leave publication to the author.
 
 For a `KILL` verdict, record why the current shape should not publish and what evidence could justify reopening it, then leave the brief at `cancelled`.

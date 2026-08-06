@@ -1,4 +1,4 @@
 interface:
   display_name: "Write Blog from Brief"
-  short_description: "按文体把 brief 写成可终审文章，并允许重做或不发"
-  default_prompt: "Use $write-blog-from-brief to turn one ready brief into the right article mode and stop at an evidence-backed editorial verdict."
+  short_description: "沿 source_refs 谱系把 brief 写成可终审文章"
+  default_prompt: "Use $write-blog-from-brief to trace approved source_refs and turn one ready brief into an evidence-backed article for final review."

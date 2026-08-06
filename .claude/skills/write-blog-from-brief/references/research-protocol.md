@@ -11,6 +11,16 @@ Research should change confidence or help a reader act. It should not decorate a
 
 There is no minimum source count.
 
+## Trace the topic before searching
+
+When a brief has `source_refs`, read `source-tracing.md` and run the exact-ref trace first. Separate:
+
+- what earlier approved material or published articles already established;
+- what the current brief changes or contradicts;
+- what is still an open question rather than a claim.
+
+Refresh evidence whose date, status, or interpretation may have changed. Do not carry an older article's citations forward without checking them. Do not search for a predetermined conclusion merely because it appeared earlier in the lineage.
+
 ## Epistemic questions
 
 - Which claims are externally verifiable?
@@ -43,5 +53,7 @@ source → supported/challenged claim → what it proves → what it cannot prov
 ```
 
 Remove decorative sources. Place links next to the claims they support. Keep source fact, source interpretation, author observation, and article inference distinct.
+
+In the source-trail note, also record whether each retained source confirms an inherited insight, establishes the current delta, or leaves an open branch for later work.
 
 If research overturns the brief's central claim, stop and return the decision upstream instead of quietly repairing it with caveats.

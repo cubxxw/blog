@@ -88,7 +88,10 @@ function sectionBody(text, headings) {
 
 function receiptValue(text, key) {
   const match = text.match(
-    new RegExp(`^-\\s+${key}:\\s*[\`'"]?([^\\n\`'"]*)[\`'"]?\\s*$`, 'm'),
+    new RegExp(
+      `^-\\s+${key}:[ \\t]*[\`'"]?([^\\n\`'"]*)[\`'"]?[ \\t]*$`,
+      'm',
+    ),
   );
   return match?.[1]?.trim() ?? '';
 }
@@ -139,6 +142,42 @@ function compareBriefs(a, b) {
     (PRIORITY_RANK.get(b.priority) ?? 1);
   if (priority !== 0) return priority;
   return a.dispatchedAt.localeCompare(b.dispatchedAt) || a.id.localeCompare(b.id);
+}
+
+function sourceTrail(target, briefs) {
+  return target.sourceRefs.map((sourceRef) => ({
+    sourceRef,
+    briefs: briefs
+      .filter((brief) => brief.sourceRefs.includes(sourceRef))
+      .sort(compareBriefs)
+      .map((brief) => ({
+        path: brief.path,
+        title: brief.title,
+        status: brief.status,
+        article: brief.article,
+        current: brief.file === target.file,
+      })),
+  }));
+}
+
+function printSourceTrail(target, briefs) {
+  console.log(`Source trail for ${target.path}`);
+  const trail = sourceTrail(target, briefs);
+  if (trail.length === 0) {
+    console.log('  No source_refs recorded.');
+    return;
+  }
+
+  for (const entry of trail) {
+    console.log(`\n- ${entry.sourceRef}`);
+    for (const brief of entry.briefs) {
+      const marker = brief.current ? ' (current)' : '';
+      const article = brief.article ? ` -> ${brief.article}` : '';
+      console.log(
+        `  - [${brief.status}] ${brief.path}${marker}${article}`,
+      );
+    }
+  }
 }
 
 function markdownFiles(directory) {
@@ -325,6 +364,15 @@ function main() {
   const checkFile = argumentValue(args, '--file');
   const claimFile = argumentValue(args, '--claim');
   const releaseFile = argumentValue(args, '--release');
+
+  if (args.includes('--trace')) {
+    if (!checkFile) {
+      throw new Error('--trace requires --file <brief>');
+    }
+    const brief = readBrief(resolveBriefPath(checkFile));
+    printSourceTrail(brief, briefs);
+    process.exit(0);
+  }
 
   if (args.includes('--check')) {
     const selected = checkFile

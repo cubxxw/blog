@@ -34,6 +34,8 @@ brief 默认是 800–1500 个中文字符的轻量编辑契约，不是小标�
 - `content/` 只存放可发布文章；未完成内容留在工作分支或 brief，不创建隐藏占位页。
 - `source_refs` 使用 `brain://` 标识，不写机器绝对路径，也不复制 private 内容。
 - 上游引用只是溯源线索。真正允许进入公开文章的内容必须同时出现在 brief 的“已批准素材包”中。
+- 相同 `source_refs` 会形成长期主题谱系：博客侧可以串联公开 brief、执行回执、既有文章与重新核验的公开证据，识别这次继承了什么、修正了什么、还值得追踪什么。
+- 主题谱系不等于素材授权。博客侧永远不得解析或读取 `brain://` 背后的 private 原文；新的作者材料仍须由上游复制进当前 brief 的“已批准素材包”。
 - brief 可以被提交到公开仓库，因此不得包含 private 原文、可识别的第三方信息、密钥或本机路径。
 
 ## 状态机
@@ -67,12 +69,14 @@ ready
 npm run briefs:list
 npm run briefs:next
 npm run briefs:check
+npm run briefs:trace -- --file _briefs/YYYY-MM-DD-slug.md
 npm run briefs:dispatch -- --brief _briefs/YYYY-MM-DD-slug.md
 ```
 
 - `briefs:list`：查看所有可执行和进行中的 brief。
 - `briefs:next`：按优先级和下发时间选择下一篇，但不自动修改状态。
 - `briefs:check`：严格校验 `blog-brief/v1` 的字段、必填区块、隐私边界、本机路径与同 slug 重复文章。
+- `briefs:trace`：按当前 brief 的精确 `source_refs` 列出相关公开 brief、状态和成品路径；只建立仓库内谱系，不读取 brain。
 - `briefs:dispatch`：校验并认领指定 brief，然后用 `codex exec --ephemeral` 启动一个不继承 brain 对话的干净执行上下文。
 
 预演 dispatch，不认领也不启动 executor：
@@ -99,6 +103,7 @@ npm run briefs:dispatch -- --brief _briefs/YYYY-MM-DD-slug.md --dry-run
 
 - brief 是选题契约，不是可直接发布的文章；
 - 不得从 `source_refs` 读取未获批准的 private 内容；
+- 动笔前先扫描 `source_refs` 谱系，明确“既有判断—本次增量—后续开放问题”，没有新增量时优先更新旧文、退回上游或 `KILL`；
 - 缺少作者一手增量时转为 `blocked`，不让 AI 补造经历；
 - 思考型 brief 缺本人选择的文章形态时转为 `blocked`；
 - 外部研究必须区分事实、来源观点和本文推论；

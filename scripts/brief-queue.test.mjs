@@ -167,3 +167,36 @@ test('ready-to-publish brief accepts the article recorded in its receipt', () =>
   );
   assert.match(output, /0 error/);
 });
+
+test('source trace finds briefs and article receipts that share an exact ref', () => {
+  const { briefs, env } = setup();
+  const current = join(briefs, '2026-08-01-test-brief.md');
+  const earlier = join(briefs, '2026-07-01-earlier-brief.md');
+  writeFileSync(current, fixture());
+  writeFileSync(
+    earlier,
+    `${fixture('published')
+      .replaceAll('2026-08-01-test-brief', '2026-07-01-earlier-brief')
+      .replace('title: 测试任务', 'title: 较早任务')
+      .replace(
+        'dispatched_at: 2026-08-01T12:00:00+08:00',
+        'dispatched_at: 2026-07-01T12:00:00+08:00',
+      )}
+
+## 执行回执
+
+- article: content/zh/growth/posts/earlier-brief.md
+`,
+  );
+
+  const output = execFileSync(
+    process.execPath,
+    [SCRIPT, '--trace', '--file', current],
+    { encoding: 'utf8', env },
+  );
+  assert.match(output, /brain:\/\/topics\/test-brief\.md/);
+  assert.match(output, /2026-07-01-earlier-brief\.md/);
+  assert.match(output, /content\/zh\/growth\/posts\/earlier-brief\.md/);
+  assert.match(output, /2026-08-01-test-brief\.md.*current/);
+  assert.doesNotMatch(output, /current.*->/);
+});

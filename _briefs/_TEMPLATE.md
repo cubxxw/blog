@@ -88,6 +88,7 @@ brief 是边界清楚的素材包，不是文章预制件。
 - article:
 - public_url:
 - editorial_verdict:
+- source_trail: <!-- 精确 refs；相关成品；本次增量；后续问题。不得复制 private 内容。 -->
 - checks:
 - published_at:
 - retro_notes:

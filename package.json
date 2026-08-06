@@ -15,6 +15,7 @@
     "briefs:list": "node scripts/brief-queue.mjs",
     "briefs:next": "node scripts/brief-queue.mjs --next",
     "briefs:check": "node scripts/brief-queue.mjs --check",
+    "briefs:trace": "node scripts/brief-queue.mjs --trace",
     "briefs:dispatch": "node scripts/dispatch-blog-executor.mjs",
     "briefs:test": "node --test scripts/brief-queue.test.mjs scripts/dispatch-blog-executor.test.mjs",
     "tags:check": "node scripts/normalize-tags.mjs --check",

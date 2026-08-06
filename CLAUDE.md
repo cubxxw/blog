@@ -33,7 +33,10 @@ This document contains critical information about working with this codebase. Fo
 
 从 brief 写文章、扫描并执行选题或完成整套发布前加工时，必须使用
 `.claude/skills/write-blog-from-brief/SKILL.md`。该 skill 统一编排公开研究、原生写作、
-独立 agent 审读、AI 味清理、SEO/GEO、内链、封面、评分与确定性验证。
+独立 agent 审读、AI 味清理、SEO/GEO、内链、封面、评分与确定性验证。brief 含
+`source_refs` 时，先运行 `npm run briefs:trace -- --file <brief>`，沿相同引用串联公开
+brief、执行回执和既有文章，明确既有判断、本次增量与后续开放问题；不得读取
+`brain://` 背后的 private 内容。
 
 brain 自动下发时使用
 `npm run briefs:dispatch -- --brief _briefs/<file>.md`。该命令启动全新的 ephemeral

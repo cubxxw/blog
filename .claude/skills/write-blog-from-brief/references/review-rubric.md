@@ -23,10 +23,11 @@ Answer with evidence from the article:
 1. **Necessity** — what specific value disappears if this is not published?
 2. **Reader contract** — what is the reader doing before reading, and what can they do or see afterward?
 3. **Only this author** — which scene, decision, artifact, failure, or judgment makes substitution impossible?
-4. **Movement** — where does the question, evidence, or judgment materially change?
-5. **Compression** — what 30% should be cut first? If nothing can be cut, identify why every part is necessary.
-6. **Memory** — what single scene, object, contradiction, or sentence is likely to survive a day later?
-7. **Ending consequence** — does the ending change a decision, experiment, cost, or open question rather than restate the opening?
+4. **Lineage delta** — what does this version add, revise, or overturn relative to earlier work tied to the same `source_refs`?
+5. **Movement** — where does the question, evidence, or judgment materially change?
+6. **Compression** — what 30% should be cut first? If nothing can be cut, identify why every part is necessary.
+7. **Memory** — what single scene, object, contradiction, or sentence is likely to survive a day later?
+8. **Ending consequence** — does the ending change a decision, experiment, cost, or open question rather than restate the opening?
 
 Apply mode-specific expectations:
 
@@ -64,6 +65,7 @@ Hard fail: none | description
 Why this should exist:
 Reader contract:
 Only-the-author evidence:
+Source-lineage delta:
 Where the article moves:
 Where a reader may stop:
 
