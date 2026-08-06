@@ -59,7 +59,7 @@
       <section class="osx-widget osx-widget--focus" style="--w:1" aria-labelledby="osx-focus">
         <header id="osx-focus">FOCUS <span>{{ if $isZh }}当前测试{{ else }}current test{{ end }}</span></header>
         <div class="osx-focus__layout">
-          <div class="osx-focus__copy">
+          <div>
             <button type="button" class="osx-focus osx-focus--{{ $featured.color }}" data-osx-open="{{ $featured.id }}">
               <span class="osx-focus__mark" aria-hidden="true">{{ $featured.mark }}</span>
               <span>
@@ -90,7 +90,6 @@
       {{- $logs = sort ($logs | uniq) "p.Date" "desc" | first 6 -}}
       <section class="osx-widget osx-widget--log" style="--w:2" aria-labelledby="osx-log">
         <header id="osx-log">BUILD.LOG <span>{{ if $isZh }}相关写作{{ else }}related writing{{ end }}</span><b>{{ len $logs }}</b></header>
-        <div class="osx-log-list">
         {{- range $logs }}
         <a class="osx-log osx-log--{{ .color }}" href="{{ .p.RelPermalink }}">
           <time datetime="{{ .p.Date.Format "2006-01-02" }}">{{ .p.Date.Format "2006.01.02" }}</time>
@@ -98,13 +97,11 @@
           <span class="osx-log__title">{{ .p.Title }}</span>
         </a>
         {{- end }}
-        </div>
         <footer>$ tail ~/products/build.log</footer>
       </section>
 
       <section class="osx-widget osx-widget--inbox" style="--w:3" aria-labelledby="osx-inbox">
         <header id="osx-inbox">INBOX <span>{{ if $isZh }}公开反馈{{ else }}public feedback{{ end }}</span></header>
-        <div class="osx-inbox-list">
         {{- range $product := $products }}
         {{- with $product.feedback }}
         <a class="osx-inbox osx-inbox--{{ $product.color }}" href="{{ . }}" target="_blank" rel="noopener">
@@ -114,7 +111,6 @@
         </a>
         {{- end }}
         {{- end }}
-        </div>
         <footer>$ gh issue list --label=feedback</footer>
       </section>
     </div>
