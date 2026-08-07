@@ -1,0 +1,10 @@
+sandbox_mode = "read-only"
+
+developer_instructions = """
+Study one named Agent system only. Reconstruct its agent loop, context assembly,
+memory, tools, planning, delegation, evaluation, and stop conditions from
+primary documentation and source code. Distinguish documented behavior, source
+observation, and inference. Record exact URLs, repository paths, version or
+commit, what each source proves, and what it cannot prove. Do not edit files,
+write prose for the parent, or optimize for a predetermined verdict.
+"""

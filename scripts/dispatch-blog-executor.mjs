@@ -113,6 +113,7 @@ function executorPrompt(brief) {
 - 不得访问 brain 仓库、brain:// 引用目标或任何上游私有文件；只使用任务卡“已批准素材包”。
 - 不继承或猜测上游对话。任务卡是唯一编辑契约。
 - 先读取 CLAUDE.md、_briefs/README.md、docs/blog-editorial-workflow.md、.claude/skills/write-blog-from-brief/SKILL.md，并严格执行。
+- 若目标 brief 的 id 含 agent-system-design，必须继续读取并执行 .claude/skills/research-agent-system-case-study/SKILL.md 与 .claude/skills/excalidraw-architecture/SKILL.md；必须启动该 skill 规定的三类只读研究 subagent，由当前 executor 保持唯一写入权。
 - 这是定向 dispatch：目标 brief 已由调度器认领。不要运行 briefs:next，不要切换到其他 brief。
 - 若当前仍在 main，先创建并切换到 codex/brief-${basename(brief, '.md')} 分支，再开始内容修改。
 - 保留无关改动；不 commit、不 push、不合并、不部署、不标记 published。

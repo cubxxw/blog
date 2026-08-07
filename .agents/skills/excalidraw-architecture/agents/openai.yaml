@@ -1,0 +1,4 @@
+interface:
+  display_name: "Excalidraw 架构图"
+  short_description: "生成可编辑、手绘感清晰且经过截图验收的专业系统架构图"
+  default_prompt: "用 $excalidraw-architecture 把这个系统整理成可编辑的 Excalidraw 架构图，并区分 V1 实线与后续虚线。"

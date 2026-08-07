@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent System Case Study"
+  short_description: "Deep Agent research with diagrams and boundary analysis"
+  default_prompt: "Use $research-agent-system-case-study to research one Agent system with independent architecture, system, and product passes, then create a cited Chinese case study and validated Excalidraw diagram."

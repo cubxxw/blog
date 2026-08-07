@@ -17,3 +17,15 @@ config_file = "agents/reviewer.toml"
 [agents.docs_researcher]
 description = "Documentation specialist that verifies APIs, framework behavior, and release notes."
 config_file = "agents/docs-researcher.toml"
+
+[agents.agent_architecture_researcher]
+description = "Read-only researcher for the model loop, context, memory, tools, delegation, evals, and stop conditions of one Agent system."
+config_file = "agents/agent-architecture-researcher.toml"
+
+[agents.system_architecture_researcher]
+description = "Read-only researcher for runtime, state, protocols, concurrency, recovery, security, deployment, and implementation choices."
+config_file = "agents/system-architecture-researcher.toml"
+
+[agents.product_ecosystem_researcher]
+description = "Read-only researcher for user jobs, interaction design, value delivery, category boundaries, extensions, and ecosystem position."
+config_file = "agents/product-ecosystem-researcher.toml"

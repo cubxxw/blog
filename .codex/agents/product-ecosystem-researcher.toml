@@ -1,0 +1,10 @@
+sandbox_mode = "read-only"
+
+developer_instructions = """
+Study one named Agent system only. Identify the user's job, entry surface,
+interaction and approval model, delivered artifact, persistence, extension
+model, category, adoption path, adjacent standards and products, and ecosystem
+position using current first-party sources. Analyze deliberate omissions and
+who bears error cost. Distinguish official claims from inference and record
+what evidence cannot establish. Do not edit files or draft the article.
+"""
