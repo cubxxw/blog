@@ -94,6 +94,7 @@
 下面只保留最近发布的 8 篇中文文章，由 GitHub Actions 从博客 RSS 自动更新。这个列表会变化，仓库也会继续生长。
 
 <!-- BLOG-POST-LIST:START -->
+- [不会让恐惧替我做决定](https://cubxxw.com/zh/growth/posts/2026-08-10-fear-does-not-decide-for-me/)
 - [Agent 不是一种产品：十套系统如何重新分配控制权、状态、身份与副作用](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-synthesis/)
 - [Conversation as Database：OpenHands 的无状态 Agent 与事件运行时](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-openhands/)
 - [多 Agent 辩论真的增加了信息吗：TradingAgents 的组织图与相关性风险](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-tradingagents/)
@@ -101,7 +102,6 @@
 - [拒绝成为 Agent：TaxHacker 为什么把 LLM 压缩成一个函数](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-taxhacker/)
 - [OpenClaw 的常驻网关：连续性不是把所有消息塞进同一会话](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-openclaw/)
 - [n8n 的确定性外骨骼：Queue、Worker 与副作用从不承诺 Exactly-Once](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-n8n/)
-- [给 Agent 一台电脑之后：Manus 如何把回复变成交付物](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-manus/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 一套公开运行的内容系统
