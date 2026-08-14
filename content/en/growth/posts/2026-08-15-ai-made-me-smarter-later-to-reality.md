@@ -43,7 +43,7 @@ Psychology offers an older warning. In their experiments, Rozenblit and Keil fou
 
 AI raises the ceiling of “speaking fluently.” It can continue an explanation before I get stuck. It can also lift my view whenever a local problem first resists. Looking upward is often valuable. But once the view rises, the small result that might force the entire explanation to contract can recede again.
 
-## What I Delayed Was Not Code, but Being Refuted
+## I Delayed the Moment Reality Could Refute Me
 
 Looking back, the late event was not the physical act of typing. It was the moment an external object gained veto power.
 
