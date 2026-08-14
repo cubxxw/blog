@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-08-15-ai-made-me-smarter-later-to-reality
 title: AI 让我更聪明，也让我更晚碰到现实
-status: ready-to-publish
+status: published
 priority: high
 language: zh
 section: growth
@@ -99,9 +99,9 @@ AI 的确让我更快地形成概念、架构和上层解法，但它也会流�
 ## 执行回执
 
 - article: content/zh/growth/posts/2026-08-15-ai-made-me-smarter-later-to-reality.md
-- public_url: pending — 未发布，等待作者终审与分支合并
+- public_url: https://cubxxw.com/zh/growth/posts/2026-08-15-ai-made-me-smarter-later-to-reality/
 - editorial_verdict: KEEP — 两轮独立逻辑/证据与声音/发展编辑审读均通过；成稿从“编码晚”推进到“外部对象取得否决权晚”，无需结构性重建
 - source_trail: 2026-08-15 运行 exact-ref trace，仅在当前公开仓库内连接到《我知道什么是 Agent，却说不出它的定义》及其 brief；另经站内查重承接《当生成变得无限，真实经历开始升值》。本篇继承“概念要下降到 eval 与现实反馈”，新增“第一次可反驳反馈何时抵达”和现实接触点的判据。保留 Rozenblit & Keil 2002（支持解释深度错觉，不证明 AI 因果）、Trope & Liberman 2010（支持心理距离与构念层级关系，不提供能力等级判断）、Reicherts et al. CHI 2025（21 人投资任务组内比较，支持交互方式会改变 AI 如何进入推理，不可普遍化）三项公开来源；400+ 公里长线徒步沿用已批准作者素材与站内公开自述。未解析任何 brain:// 目标。
-- checks: PASS — 定向与 changed AI flavor 均 0E/0W；front matter、6 个 canonical tags、brief schema、description 160 字、发布时间 `2026-08-15T01:52:45+08:00` 经 `2026-08-15T02:19:13+08:00` 复核已到达、3 个行内外部引用与 3 条参考资料一一对应、2 条站内链接、封面路径与 1280×720 JPEG、untracked Markdown whitespace、文章 inventory broken cover、git diff whitespace 均通过。GEO audit 仅提示无 tldr；经独立声音审读确认 tldr 会抢占真实开篇，作为 thinking 文章有意省略。
-- published_at: pending
-- retro_notes: 只使用本 brief 已批准的一手材料、公开站内谱系与公开研究；未新增公司、产品、同事、代码结构、交付结果、动机或人格诊断。保留四句批准原话，方法明确写成尚未经过多次交付验证。使用内置 imagegen 生成水彩/石墨编辑插画封面，以层叠透明蓝图和带红色失败标记的实体测试块表现“抽象先增长、现实后否决”。仍待作者确认标题、四句原话是否保持原貌、匿名化程度、“现实接触能力”措辞和封面；中文批准前不制作英文版，不发布。
+- checks: PASS — 定向与 changed AI flavor 均 0E/0W；front matter、6 个 canonical tags、brief schema、description 160 字、发布时间 `2026-08-15T01:52:45+08:00` 经 `2026-08-15T02:19:13+08:00` 复核已到达、3 个行内外部引用与 3 条参考资料一一对应、2 条站内链接、封面路径与 1280×720 JPEG、文章 inventory broken cover、git diff whitespace 均通过。英文版 description 150 字符，章节、引语、引用、链接与封面均和中文对齐。Hugo production build、generated SEO audit 与 Netlify production deploy 通过；Playwright 168 passed / 13 skipped / 2 flaky，唯一持续失败的既有 Products 移动端 44px 点击目标测试已在未改动的 `origin/main@f3d1964` 原样复现，与本次内容变更无关。GEO audit 仅提示无 tldr；经独立声音审读确认 tldr 会抢占真实开篇，作为 thinking 文章有意省略。
+- published_at: 2026-08-15T02:41:13+08:00
+- retro_notes: 只使用本 brief 已批准的一手材料、公开站内谱系与公开研究；未新增公司、产品、同事、代码结构、交付结果、动机或人格诊断。保留四句批准原话，方法明确写成尚未经过多次交付验证。使用内置 imagegen 生成水彩/石墨编辑插画封面，以层叠透明蓝图和带红色失败标记的实体测试块表现“抽象先增长、现实后否决”。作者于 2026-08-15 明确确认最终发布；随后创建完整英文版 `content/en/growth/posts/2026-08-15-ai-made-me-smarter-later-to-reality.md`，处理 CodeRabbit 的 blockquote 与标题反馈，经 PR #342 合并到 `main`，并在 Netlify production commit `fddcd9d` 上核验中英文正式页面。
