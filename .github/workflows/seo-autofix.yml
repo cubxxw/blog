@@ -46,7 +46,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: anthropics/claude-code-action@v1.0.185
+      - uses: anthropics/claude-code-action@v1.0.195
         # The section-writer scripts shell out to `gh` and need both of these;
         # neither is inherited by the action's tool sandbox automatically
         # (see the comment in seo-analyze.yml — same failure modes).
