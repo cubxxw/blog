@@ -1,0 +1,1138 @@
+{
+  "meta": {
+    "fetchedAt": "2026-09-01T11:00:08.912Z",
+    "runDate": "2026-09-01",
+    "strategies": [
+      "mobile",
+      "desktop"
+    ],
+    "categories": [
+      "performance",
+      "accessibility",
+      "best-practices",
+      "seo"
+    ],
+    "urls": 13,
+    "failures": 5
+  },
+  "failures": [
+    {
+      "url": "https://cubxxw.com/zh/",
+      "strategy": "mobile",
+      "error": "PSI mobile https://cubxxw.com/zh/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "strategy": "desktop",
+      "error": "PSI desktop https://cubxxw.com/zh/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "strategy": "mobile",
+      "error": "PSI mobile https://cubxxw.com/engineering/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "strategy": "mobile",
+      "error": "PSI mobile https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "strategy": "desktop",
+      "error": "PSI desktop https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/ → 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+    }
+  ],
+  "results": [
+    {
+      "url": "https://cubxxw.com/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/",
+      "fetchTime": "2026-09-01T10:50:21.827Z",
+      "categories": {
+        "performance": 0.91,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "3.3 s",
+          "numericValue": 3306,
+          "score": 0.69
+        },
+        "FCP": {
+          "displayValue": "1.8 s",
+          "numericValue": 1801,
+          "score": 0.89
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "2.7 s",
+          "numericValue": 2686,
+          "score": 0.97
+        },
+        "TTI": {
+          "displayValue": "3.3 s",
+          "numericValue": 3306,
+          "score": 0.94
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/",
+      "fetchTime": "2026-09-01T10:50:38.027Z",
+      "categories": {
+        "performance": 0.93,
+        "accessibility": 0.92,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 844,
+          "score": 0.97
+        },
+        "FCP": {
+          "displayValue": "0.5 s",
+          "numericValue": 482,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "70 ms",
+          "numericValue": 74,
+          "score": 0.99
+        },
+        "SI": {
+          "displayValue": "2.6 s",
+          "numericValue": 2585,
+          "score": 0.39
+        },
+        "TTI": {
+          "displayValue": "1.0 s",
+          "numericValue": 996,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/about/",
+      "fetchTime": "2026-09-01T10:52:07.663Z",
+      "categories": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "1.2 s",
+          "numericValue": 1209,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.9 s",
+          "numericValue": 929,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0.002",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "30 ms",
+          "numericValue": 33,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "3.2 s",
+          "numericValue": 3212,
+          "score": 0.92
+        },
+        "TTI": {
+          "displayValue": "2.9 s",
+          "numericValue": 2878,
+          "score": 0.96
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/about/",
+      "fetchTime": "2026-09-01T10:52:30.884Z",
+      "categories": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.3 s",
+          "numericValue": 333,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.3 s",
+          "numericValue": 257,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "60 ms",
+          "numericValue": 59,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "0.5 s",
+          "numericValue": 492,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "0.5 s",
+          "numericValue": 454,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/zh/about/",
+      "fetchTime": "2026-09-01T10:52:46.311Z",
+      "categories": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "1.2 s",
+          "numericValue": 1204,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.9 s",
+          "numericValue": 940,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "110 ms",
+          "numericValue": 114,
+          "score": 0.97
+        },
+        "SI": {
+          "displayValue": "1.9 s",
+          "numericValue": 1909,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "1.2 s",
+          "numericValue": 1204,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/zh/about/",
+      "fetchTime": "2026-09-01T10:53:03.881Z",
+      "categories": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.3 s",
+          "numericValue": 346,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.3 s",
+          "numericValue": 257,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "0.6 s",
+          "numericValue": 570,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "0.3 s",
+          "numericValue": 348,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/ai-agent/",
+      "fetchTime": "2026-09-01T10:53:20.400Z",
+      "categories": {
+        "performance": 0.93,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "3.2 s",
+          "numericValue": 3158,
+          "score": 0.74
+        },
+        "FCP": {
+          "displayValue": "1.7 s",
+          "numericValue": 1657,
+          "score": 0.93
+        },
+        "CLS": {
+          "displayValue": "0.032",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "1.7 s",
+          "numericValue": 1657,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "3.2 s",
+          "numericValue": 3158,
+          "score": 0.95
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/ai-agent/",
+      "fetchTime": "2026-09-01T10:53:39.209Z",
+      "categories": {
+        "performance": 0.92,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 818,
+          "score": 0.98
+        },
+        "FCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 818,
+          "score": 0.94
+        },
+        "CLS": {
+          "displayValue": "0.104",
+          "numericValue": 0,
+          "score": 0.89
+        },
+        "TBT": {
+          "displayValue": "160 ms",
+          "numericValue": 162,
+          "score": 0.87
+        },
+        "SI": {
+          "displayValue": "0.9 s",
+          "numericValue": 940,
+          "score": 0.98
+        },
+        "TTI": {
+          "displayValue": "1.1 s",
+          "numericValue": 1080,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/engineering/",
+      "fetchTime": "2026-09-01T10:54:24.913Z",
+      "categories": {
+        "performance": 0.99,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 807,
+          "score": 0.98
+        },
+        "FCP": {
+          "displayValue": "0.4 s",
+          "numericValue": 446,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "0.8 s",
+          "numericValue": 843,
+          "score": 0.99
+        },
+        "TTI": {
+          "displayValue": "0.8 s",
+          "numericValue": 807,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/zh/ai-agent/",
+      "fetchTime": "2026-09-01T10:54:36.275Z",
+      "categories": {
+        "performance": 0.94,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "2.9 s",
+          "numericValue": 2870,
+          "score": 0.81
+        },
+        "FCP": {
+          "displayValue": "1.8 s",
+          "numericValue": 1816,
+          "score": 0.89
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "1.9 s",
+          "numericValue": 1916,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "2.9 s",
+          "numericValue": 2870,
+          "score": 0.96
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/zh/ai-agent/",
+      "fetchTime": "2026-09-01T10:54:53.848Z",
+      "categories": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 806,
+          "score": 0.98
+        },
+        "FCP": {
+          "displayValue": "0.5 s",
+          "numericValue": 481,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "0.5 s",
+          "numericValue": 531,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "0.8 s",
+          "numericValue": 806,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": [
+          {
+            "id": "unused-css-rules",
+            "title": "Reduce unused CSS",
+            "wastedMs": 80,
+            "displayValue": "Est savings of 120 KiB"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/growth/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/growth/",
+      "fetchTime": "2026-09-01T10:55:16.029Z",
+      "categories": {
+        "performance": 0.82,
+        "accessibility": 0.96,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "3.2 s",
+          "numericValue": 3170,
+          "score": 0.73
+        },
+        "FCP": {
+          "displayValue": "1.8 s",
+          "numericValue": 1815,
+          "score": 0.89
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "12.9 s",
+          "numericValue": 12940,
+          "score": 0.02
+        },
+        "TTI": {
+          "displayValue": "3.2 s",
+          "numericValue": 3170,
+          "score": 0.95
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/growth/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/growth/",
+      "fetchTime": "2026-09-01T10:55:58.800Z",
+      "categories": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 846,
+          "score": 0.97
+        },
+        "FCP": {
+          "displayValue": "0.4 s",
+          "numericValue": 445,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "0.6 s",
+          "numericValue": 622,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "0.8 s",
+          "numericValue": 846,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/zh/growth/",
+      "fetchTime": "2026-09-01T10:56:22.705Z",
+      "categories": {
+        "performance": 0.6,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "7.0 s",
+          "numericValue": 6985,
+          "score": 0.06
+        },
+        "FCP": {
+          "displayValue": "6.9 s",
+          "numericValue": 6910,
+          "score": 0.01
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "6.9 s",
+          "numericValue": 6910,
+          "score": 0.33
+        },
+        "TTI": {
+          "displayValue": "7.0 s",
+          "numericValue": 6992,
+          "score": 0.53
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": [
+          {
+            "id": "unused-css-rules",
+            "title": "Reduce unused CSS",
+            "wastedMs": 450,
+            "displayValue": "Est savings of 121 KiB"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/zh/growth/",
+      "fetchTime": "2026-09-01T10:56:40.286Z",
+      "categories": {
+        "performance": 0.96,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "1.3 s",
+          "numericValue": 1323,
+          "score": 0.86
+        },
+        "FCP": {
+          "displayValue": "0.5 s",
+          "numericValue": 522,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "1.0 s",
+          "numericValue": 1026,
+          "score": 0.97
+        },
+        "TTI": {
+          "displayValue": "1.3 s",
+          "numericValue": 1323,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": [
+          {
+            "id": "unused-css-rules",
+            "title": "Reduce unused CSS",
+            "wastedMs": 120,
+            "displayValue": "Est savings of 121 KiB"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/projects/",
+      "fetchTime": "2026-09-01T10:56:53.699Z",
+      "categories": {
+        "performance": 0.98,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.9 s",
+          "numericValue": 902,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.9 s",
+          "numericValue": 902,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "3.8 s",
+          "numericValue": 3823,
+          "score": 0.83
+        },
+        "TTI": {
+          "displayValue": "0.9 s",
+          "numericValue": 902,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/projects/",
+      "fetchTime": "2026-09-01T10:57:09.526Z",
+      "categories": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.2 s",
+          "numericValue": 242,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.2 s",
+          "numericValue": 242,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "0.5 s",
+          "numericValue": 546,
+          "score": 1
+        },
+        "TTI": {
+          "displayValue": "0.2 s",
+          "numericValue": 242,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/archives/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/archives/",
+      "fetchTime": "2026-09-01T10:57:39.706Z",
+      "categories": {
+        "performance": 0.8,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "3.6 s",
+          "numericValue": 3607,
+          "score": 0.61
+        },
+        "FCP": {
+          "displayValue": "3.6 s",
+          "numericValue": 3607,
+          "score": 0.32
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "70 ms",
+          "numericValue": 71,
+          "score": 0.99
+        },
+        "SI": {
+          "displayValue": "4.9 s",
+          "numericValue": 4863,
+          "score": 0.66
+        },
+        "TTI": {
+          "displayValue": "3.9 s",
+          "numericValue": 3929,
+          "score": 0.88
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/archives/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/archives/",
+      "fetchTime": "2026-09-01T10:58:07.839Z",
+      "categories": {
+        "performance": 0.9,
+        "accessibility": 0.96,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.4 s",
+          "numericValue": 445,
+          "score": 1
+        },
+        "FCP": {
+          "displayValue": "0.4 s",
+          "numericValue": 445,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "5.1 s",
+          "numericValue": 5144,
+          "score": 0.03
+        },
+        "TTI": {
+          "displayValue": "0.4 s",
+          "numericValue": 445,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": []
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "strategy": "mobile",
+      "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "fetchTime": "2026-09-01T10:59:18.203Z",
+      "categories": {
+        "performance": 0.74,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "14.0 s",
+          "numericValue": 13952,
+          "score": 0
+        },
+        "FCP": {
+          "displayValue": "1.7 s",
+          "numericValue": 1656,
+          "score": 0.93
+        },
+        "CLS": {
+          "displayValue": "0",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "0 ms",
+          "numericValue": 0,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "2.1 s",
+          "numericValue": 2141,
+          "score": 0.99
+        },
+        "TTI": {
+          "displayValue": "14.0 s",
+          "numericValue": 13952,
+          "score": 0.1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": [
+          {
+            "id": "total-byte-weight",
+            "title": "Avoid enormous network payloads",
+            "wastedMs": 2811094,
+            "displayValue": "Total size was 2,745 KiB"
+          },
+          {
+            "id": "unused-css-rules",
+            "title": "Reduce unused CSS",
+            "wastedMs": 450,
+            "displayValue": "Est savings of 118 KiB"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "strategy": "desktop",
+      "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "fetchTime": "2026-09-01T10:59:41.901Z",
+      "categories": {
+        "performance": 0.99,
+        "accessibility": 0.94,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "displayValue": "0.8 s",
+          "numericValue": 801,
+          "score": 0.98
+        },
+        "FCP": {
+          "displayValue": "0.4 s",
+          "numericValue": 445,
+          "score": 1
+        },
+        "CLS": {
+          "displayValue": "0.001",
+          "numericValue": 0,
+          "score": 1
+        },
+        "TBT": {
+          "displayValue": "60 ms",
+          "numericValue": 63,
+          "score": 1
+        },
+        "SI": {
+          "displayValue": "1.0 s",
+          "numericValue": 1021,
+          "score": 0.97
+        },
+        "TTI": {
+          "displayValue": "1.0 s",
+          "numericValue": 1034,
+          "score": 1
+        }
+      },
+      "fieldData": null,
+      "originFieldData": null,
+      "diagnostics": {
+        "lcpElement": null,
+        "opportunities": [
+          {
+            "id": "unused-css-rules",
+            "title": "Reduce unused CSS",
+            "wastedMs": 90,
+            "displayValue": "Est savings of 118 KiB"
+          }
+        ]
+      }
+    }
+  ]
+}
