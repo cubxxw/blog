@@ -27,7 +27,7 @@ jobs:
           # the entire log.
           fetch-depth: 30
 
-      - uses: anthropics/claude-code-action@v1.0.185
+      - uses: anthropics/claude-code-action@v1.0.213
         # scripts/seo-section-to-issue.mjs shells out to `gh`, which needs both
         # of these: without GITHUB_REPOSITORY it exits 0 and silently writes
         # nothing, and without GH_TOKEN the gh call fails unauthenticated.
