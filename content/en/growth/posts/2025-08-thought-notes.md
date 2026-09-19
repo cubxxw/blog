@@ -1038,7 +1038,7 @@ Another part: environment has a huge influence. If a person moves to a new count
 
 If a person always keeps the right to choose, then in essence everyone can change — the premise is that the person is willing to bear the responsibility behind the choice.
 
----
+***
 
 Change the people around you? Change them according to your own ideas?
 
@@ -4120,7 +4120,7 @@ Then, how to reshape your own metacognitive system — that's a precious human a
 
 And then action: how to turn knowing into doing. This is very hard.
 
----
+***
 
 Maybe it's very complicated. Coming back to our own subjectivity: each of us only has two goals in learning.
 
@@ -4588,7 +4588,7 @@ Investigating things means that where your thoughts arise, you correct the selfi
 
 That's the concrete work of extending innate knowing.
 
----
+***
 
 Some new thoughts in the AI era: to me, investigating things to extend knowledge is more like
 
@@ -5994,7 +5994,7 @@ It satisfies immediacy and breadth, but it can hardly support deep understanding
 
 It suddenly hit me that when I usually pay attention to content forms, I'm mostly focused on the title, the conclusion, or a particular one-liner, and the result is that I only pick up scattered fragments of opinion, which are easy to forget and bad for knowledge accumulation — whereas systematizing is, relatively speaking, building a systematic, structured understanding.
 
----
+***
 
 I'm wondering what it takes to go from fragmented to structured, and what's hard about it.
 

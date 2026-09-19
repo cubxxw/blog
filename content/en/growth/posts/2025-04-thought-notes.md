@@ -155,7 +155,7 @@ What I didn't do in time (shortcomings): take photos/video, of the injuries, the
 
 After going to hospital, I made clear judgements about three injured parts of myself; for my right leg there was uncertainty, so I asked for an X-ray. The results came back fine. They applied some iodine. The doctor asked whether I was working, and whether I wanted to rest for a few days. I could hear the implication, and I said no need, I don't have a job. I'm a remote worker, I felt it hadn't affected my work and there was no need; the doctor sighed and I left. The doctor did more than their duty required, which moved me a little.
 
----
+***
 
 Cycling is like a mirror, reflecting the complexity of human nature.
 

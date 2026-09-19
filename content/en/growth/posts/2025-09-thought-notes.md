@@ -2150,7 +2150,7 @@ The magic of the market isn't greed, but that it greatly promotes specialized di
 
 A self-sufficient farmer, no matter how smart or hardworking, will never reach the living standard of a modern worker who only tightens screws. Because the latter is plugged into the global "collective brain," while the former relies only on his own
 
----
+***
 
 But ... what about AI?
 
@@ -2738,7 +2738,7 @@ A person's memory pattern is also a kind of narrative. When you tell or relive a
 
 Other people's feedback on your recall (like agreement, doubt, comfort) also gets embedded in this memory
 
----
+***
 
 How to control it rationally?
 
@@ -4912,7 +4912,7 @@ Actually, thinking carefully, an idea can also be expanded through a whole serie
 
 Or an agent could package the idea in a series of ways, unfolding it into a series of idea cards
 
----
+***
 
 What should the concrete interaction form look like?
 

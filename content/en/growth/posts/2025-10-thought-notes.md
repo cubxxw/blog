@@ -5404,7 +5404,7 @@ Sign vehicle ←→ object
 
 interpretant
 
----
+***
 
 A person who doesn't understand Chinese is locked in a room with a detailed rulebook for manipulating Chinese symbols. People outside pass Chinese questions into the room; the person inside follows the rules in the book, finds the corresponding combination of symbols, and passes it back out. To those outside, the room seems to understand Chinese and give perfect answers.
 
@@ -6250,7 +6250,7 @@ prompts, maintaining routes
 
 testing and documentation
 
----
+***
 
 Some problems in my own production process:
 
@@ -7573,7 +7573,7 @@ input, output, scenario = context + historical user habits, a sedimented system,
 
 Mind map?
 
----
+***
 
 New user story.
 
@@ -8161,7 +8161,7 @@ Went to a cafe; Amap's location was way off.
 
 Went to another cafe; the opening hours shown on Amap weren't in effect, I thought it had closed down, and was about to take a cab to the next one, then the owner showed up for work, so I cancelled the ride ...
 
----
+***
 
 On checkout day I forgot to pick up a package.
 

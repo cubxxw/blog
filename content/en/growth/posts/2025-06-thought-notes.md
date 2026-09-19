@@ -118,7 +118,7 @@ I feel real philosophy isn't about learning more concepts and understanding more
 
 Before all speculation, there is simple seeing ...
 
----
+***
 
 2025-6-6 addendum
 
@@ -366,7 +366,7 @@ This too is the process of sensibility after reason.
 
 Hermes is more like a religion. It defines a myth, and through ritual and sacred objects it draws in a large number of loyal consumers.
 
----
+***
 
 But why is it that only watches and bags more easily become luxury goods, and not other things?
 
@@ -432,7 +432,7 @@ The cost is that you've erased your own individuality.
 
 《Documentary》
 
----
+***
 
 Addendum:
 
@@ -574,7 +574,7 @@ Knowledge→narrative→information: for example, once you have the knowledge fr
 
 Narrative→information→knowledge: for example, your narrative of "growth" makes you more sensitive to catching the fragments of information that can trigger thinking.
 
----
+***
 
 I feel narrative may be the engine of the triangle?
 
@@ -876,7 +876,7 @@ More like pursuing a kind of authenticity, clarity and transparency
 
 This is the state I'm currently pursuing 🥹
 
----
+***
 
 Maybe beyond that there's the state of no-self; I haven't felt it yet.
 
@@ -940,7 +940,7 @@ Paul Graham, author of Hackers & Painters and YC founder: there are seven levels
 
 (Level seven) Falsifying the main thesis: the highest level, directly dismantling the other's core argument.
 
----
+***
 
 Understanding and tolerance are completely different — two separate things.
 
@@ -1283,7 +1283,7 @@ Deep fulfillment
 
 That's not addiction, it's attachment.
 
----
+***
 
 Create attachment, not addiction
 
@@ -1495,7 +1495,7 @@ Maybe I need to understand this middle-aged group, and predict myself six years 
 
 Put simply, the relationship is that experience of the world supplies the raw material for cognition, and cognition determines how to understand and apply it.
 
----
+***
 
 By definition:
 
@@ -2215,7 +2215,7 @@ Collecting will move from "fighting forgetfulness" to "fighting homogenization."
 
 Collecting may ultimately become humanity's last act of rebellion — in a world that's been predicted, insisting on unpredictable preferences.
 
----
+***
 
 Actually, going back to why we read, or why we collect, it's also just that you ran into some sentence that resonated with you, and why did that sentence resonate? It's nothing other than the process of you understanding yourself, piecing your own soul together.
 
@@ -2325,7 +2325,7 @@ The same design article means completely different things to a graphic designer 
 
 Users' needs change with their state of mind and the moment they're in.
 
----
+***
 
 SO
 
@@ -2860,7 +2860,7 @@ After the trip, back to the me of day after day
 📸️ iPhone
  📍 Rome / Florence
 
----
+***
 
 The body knows what's right earlier than the brain does.
 
@@ -3691,7 +3691,7 @@ PLUM café, mid-century-style tables and chairs, plants by the window, good for 
 
 Very much like those vintage cafés in Chiang Mai, with light music inside
 
----
+***
 
 ☕️：Plum (Luohu Road branch)
 

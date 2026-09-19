@@ -472,7 +472,7 @@ you miss the absent and belittle the present — the distant, ended relationship
 
 you find a "rational" reason to withdraw (moving away, changing cities, "we're not right for each other"), and that reason always arrives just in time. Why does this problem fundamentally arise?
 
----
+***
 
 The essence of the distinction is: first comes the act of pushing away, then comes the reason for pushing away — not first the reason, then the act.
 
@@ -712,7 +712,7 @@ Try to learn quickly in any field and quickly parse the important parts of the i
 
 Deeply think through and organize my own experience, to give my next stage some sense of direction
 
----
+***
 
 The confusion at this stage is really that I haven't recognized what I need, haven't recognized what kind of problems I need to solve, haven't recognized what I myself should do in the next stage
 

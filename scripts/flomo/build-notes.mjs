@@ -16,7 +16,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync, statSync } from 'node:fs';
 import { globSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
-import { renderZhNav } from './nav.mjs';
+import { renderZhNav, normalizeBody } from './nav.mjs';
 
 const isDirectory = (p) => statSync(p).isDirectory();
 
@@ -384,7 +384,10 @@ maturity: budding
 function renderCard(entry) {
   const { memo, title } = entry;
   const tags = memo.tags.length ? ` · ${memo.tags.map((t) => `\`#${t}\``).join(' ')}` : '';
-  let paragraphs = memo.text.split('\n\n').map((p) => p.trim()).filter(Boolean);
+  let paragraphs = normalizeBody(memo.text)
+    .split('\n\n')
+    .map((p) => p.trim())
+    .filter(Boolean);
   // flomo 里第一段往往就是标题本身，重复一遍会让文章变脏；
   // 但整条就这一句时不能删，否则会留下一个只有标题的空条目。
   if (paragraphs.length > 1 && cleanTitle(paragraphs[0]) === title) paragraphs = paragraphs.slice(1);

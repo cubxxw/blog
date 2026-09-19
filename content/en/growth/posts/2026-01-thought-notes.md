@@ -362,7 +362,7 @@ But nothingness is the most painful proposition in the whole human lifecycle; as
 
 Then it suddenly hit me: if it were an AI, how would it choose
 
----
+***
 
 This is a slightly sly question, but I'll answer it seriously
 
@@ -646,7 +646,7 @@ Is anyone accountable for this result
 
 Observe why I fail, why they fail ...
 
----
+***
 
 The difference between evaluation thinking and solving thinking
 

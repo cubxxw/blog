@@ -5508,7 +5508,7 @@ That fire burned away debts, principal and interest, that serfs' families could 
 
 Land belonging to rebel lords was confiscated, land belonging to non-rebel lords was bought out, and the land was distributed to landless tralpa and nangzan. Only with means of production (land, cattle and sheep) did serfs truly gain the ability to survive independently.
 
----
+***
 
 I keep thinking: how do you break the last one, religious fatalism? That is the biggest spiritual shackle.
 

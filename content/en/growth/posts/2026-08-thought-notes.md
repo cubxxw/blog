@@ -2517,7 +2517,7 @@ After it's done, which product or engineering decision can it support?
 
 Ailoha currently doesn't lack a general Eval platform; what it lacks is a minimal product Eval loop for "screenshot → person search → contact/meeting action card". The suggestion is to first build a baseline from all of kiwi's real cases, and then decide whether to build a platform after verifying.
 
----
+***
 
 Core background: the tools and prompts being modified right now carry very high risk — there's no way to stably answer whether search is more accurate, whether contacts/meetings are correctly created
 
@@ -3580,7 +3580,7 @@ Chinese and English names, exploration across each platform
 
 and when contact is the unit
 
----
+***
 
 Addendum: the pollution problem of wrong recall
 
@@ -4300,7 +4300,7 @@ Afterwards I wanted ailoha, when I asked, to explore this person's information a
 
 Then I found ailoha was researching contact B, who had appeared before, rather than exploring the current person's information ....
 
----
+***
 
 After the screenshot is uploaded, the system records this person's information and the screenshot information
 

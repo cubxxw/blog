@@ -33,31 +33,28 @@ maturity: budding
 
 > **464 notes this month** | recorded from 2026-03-01 to 2026-03-31
 >
-> **Themes**: AI and Agent Systems 6 · 特点 129 · Travel, Places and Cities 109 · Reading, Ideas and History 57 · Daily Notes and Everything Else 55 · Self-Knowledge and Psychology 48 · Product, Engineering and Open Source 30 · Content, Craft and Recording 11 · Business, Investing and Career 4 · 📚 数据来源 1 · 📚 数据来源 6 · Body, Health and Daily Life 8
+> **Themes**: AI and Agent Systems 135 · Travel, Places and Cities 109 · Reading, Ideas and History 57 · Daily Notes and Everything Else 55 · Self-Knowledge and Psychology 48 · Product, Engineering and Open Source 30 · Content, Craft and Recording 11 · Business, Investing and Career 11 · Body, Health and Daily Life 8
 >
 > Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
 
 ## Quick Navigation
 
-**464 records this month, filed under 12 themes:**
+**464 records this month, filed under 9 themes:**
 
-- [AI and Agent Systems](#1-ai-and-agent-systems) · 6
-- [特点](#2-特点) · 129
-- [Travel, Places and Cities](#3-travel-places-and-cities) · 109
-- [Reading, Ideas and History](#4-reading-ideas-and-history) · 57
-- [Daily Notes and Everything Else](#5-daily-notes-and-everything-else) · 55
-- [Self-Knowledge and Psychology](#6-self-knowledge-and-psychology) · 48
-- [Product, Engineering and Open Source](#7-product-engineering-and-open-source) · 30
-- [Content, Craft and Recording](#8-content-craft-and-recording) · 11
-- [Business, Investing and Career](#9-business-investing-and-career) · 4
-- [📚 数据来源](#10--数据来源) · 1
-- [📚 数据来源](#11--数据来源) · 6
-- [Body, Health and Daily Life](#12-body-health-and-daily-life) · 8
+- [AI and Agent Systems](#1-ai-and-agent-systems) · 135
+- [Travel, Places and Cities](#2-travel-places-and-cities) · 109
+- [Reading, Ideas and History](#3-reading-ideas-and-history) · 57
+- [Daily Notes and Everything Else](#4-daily-notes-and-everything-else) · 55
+- [Self-Knowledge and Psychology](#5-self-knowledge-and-psychology) · 48
+- [Product, Engineering and Open Source](#6-product-engineering-and-open-source) · 30
+- [Content, Craft and Recording](#7-content-craft-and-recording) · 11
+- [Business, Investing and Career](#8-business-investing-and-career) · 11
+- [Body, Health and Daily Life](#9-body-health-and-daily-life) · 8
 
 ---
 ## 1. AI and Agent Systems
 
-*6 entries*
+*135 entries*
 
 <!--memo:46243cf3af02-->
 ### Crossing the AI Plateau: From Grand Narrative to Inside-Out Small and Beautiful
@@ -74,7 +71,7 @@ Future super-apps feel inevitable to grow in extremely niche vertical scenarios�
 
 #Gewu/AI
 
----
+***
 
 
 <!--memo:ec38b23f3d33-->
@@ -90,7 +87,7 @@ I feel game modes are slowly changing. From initially focusing on hand-eye coord
 
 Also, I feel games are evolving from consuming static assets to generative emergence. Now it's not just a CS code package—more likely to be an agent with memory and independent logic. You can substitute yourself into the player role.
 
----
+***
 
 
 <!--memo:0b7c5b24f4cc-->
@@ -106,7 +103,7 @@ I also feel there's narrative continuity. With current technology, generally can
 
 Because some story-driven games heavily rely on narrative—narrative is like a very self-related, very independent, very subjective experience.
 
----
+***
 
 
 <!--memo:05d677ac9e35-->
@@ -156,7 +153,7 @@ Layer 3: invocation & execution (runtime) — usually only 0–1 are invoked, re
 
 > 2026-03-03 20:16:21 · `#OpenClaw`
 
-## Basic information
+#### Basic information
 
 - Name: Xinwei Xiong (熊鑫伟)
 
@@ -170,7 +167,7 @@ Layer 3: invocation & execution (runtime) — usually only 0–1 are invoked, re
 
 - Twitter: [account redacted]
 
-## GitHub data
+#### GitHub data
 
 - User ID: [redacted]
 
@@ -184,13 +181,13 @@ Layer 3: invocation & execution (runtime) — usually only 0–1 are invoked, re
 
 - Available for hire: yes
 
-## Personal bio
+#### Personal bio
 
 ⚡ Do the hard things and you'll get it
 
 🚀 Never go to bed mad. Stay up and fight.
 
-## Main projects / interests
+#### Main projects / interests
 
 - blog: travelling around the world, doing an AI product startup
 
@@ -204,7 +201,7 @@ Layer 3: invocation & execution (runtime) — usually only 0–1 are invoked, re
 
 - Developer tools (gitea, cli, OpenRefine)
 
-## Characteristics
+#### Characteristics
 
 - An active open-source contributor
 
@@ -216,12 +213,8 @@ Layer 3: invocation & execution (runtime) — usually only 0–1 are invoked, re
 
 Created as a test with OpenClaw
 
----
+***
 
-
-## 2. 特点
-
-*129 entries*
 
 <!--memo:7ab816d4e4b0-->
 ### The Power of Objective Records: Self-Growth from a God's-Eye View
@@ -232,7 +225,7 @@ Not bad, look—the more objective and the more concrete my record of myself is,
 
 That is, when we record all the data of this player in this game, we're effectively opening up a god's-eye view. And if this data is also handed to AI, it will produce some truly incredible growth metrics. For me, it will have a very objective analysis of this, what needs to be known is who this person is, and what he does, what he writes, how he grows—incredible. It will combine some methods humans already have, and also methods it comes up with itself, giving some innovative points and entry points, suited to this trend, suited to this kind of observation. If you have some better observation perspectives, it will also give you better suggestions—isn't that a "superhuman"?
 
----
+***
 
 
 <!--memo:01e22117cfb7-->
@@ -302,7 +295,7 @@ That is, when we record all the data of this player in this game, we're effectiv
 
 4. Prepare gear and physical training #OpenClaw
 
----
+***
 
 
 <!--memo:34d0867956c0-->
@@ -336,7 +329,7 @@ openclaw creates a brand-new Session for the sub agent; it doesn't inherit the h
 
 The sub-agent and the main process each run in different parallel streams (if the highest security mode is enabled, the sub-agent even runs in a separate Docker container). When the sub-agent finishes, it packages the result into a standardised internal event block (Announce Context) and, like sending a network request, "calls back" and pushes the result into the main thread or chat channel that created it
 
----
+***
 
 
 <!--memo:5c205cb4a3c7-->
@@ -426,7 +419,7 @@ So after following AI's advice, what else can we do?
 
 Go do the things AI would advise you not to do
 
----
+***
 
 smile: What moves us about humans comes from being human hahaha
 
@@ -439,8 +432,6 @@ smile: Because you're human, socially you carry responsibility, you have collect
 smile: And also because you're human, you have religious belief, extremely high spiritual needs that belong only to humans, you go looking for a resting place for your soul, you go looking for your meaning, and you also do things that look "meaningless"...
 
 A person is not a being that can be completely freely rewritten; humans still live, respond, and take on things within limits
-
-https://v.flomoapp.com/mine/?memo_id=MjI0MTAwMTYx
 
 
 <!--memo:9887115446f3-->
@@ -522,7 +513,7 @@ To pull people into Apple's ecosystem before their user habits form
 
 On the surface it's a give-away, in reality it's a fight for Apple's user base over the next decade
 
----
+***
 
 
 <!--memo:73d6bae55a5f-->
@@ -540,7 +531,7 @@ Not constrained by Google
 
 But OpenClaw has other options that are more convenient and better value for money
 
----
+***
 
 
 <!--memo:b3cda2db51f2-->
@@ -552,7 +543,7 @@ I feel I got something really wrong, and it's about task scheduling. If the task
 
 I think there are still some functions that, if they can be controlled at different levels, are best considered in terms of which level is the most accurate scenario for them, and then that level is the standard. So, for instance, if it's LaunchAgent task scheduling, I think its scheduling effect is very good.
 
----
+***
 
 
 <!--memo:cfed406354f0-->
@@ -576,7 +567,7 @@ Yesterday I clearly fixed the openai version problem, but today I explored it ag
 
 What AI Agents really need in the future is: a Skill Library
 
----
+***
 
 
 <!--memo:d8e88446098f-->
@@ -592,7 +583,7 @@ curl -s https://evomap.ai/skill.md, and let OpenClaw learn this skill file and r
 
 EvoMap supports agents from every AI Agent ecosystem, including OpenClaw, Manus, HappyCapy, Cursor, Claude, Windsurf and so on
 
----
+***
 
 
 <!--memo:bd60efce87dd-->
@@ -632,7 +623,7 @@ Large-scale knowledge graphs
 
 The best division of labour between humans and AI is more like: humans produce fragments, AI organises fragments
 
----
+***
 
 
 <!--memo:7f55ab0aca60-->
@@ -646,7 +637,7 @@ Ordinary person +  AI -> system
 
 Defining the problem matters more, a person's perspective matters more, design methods and cognitive tools matter more
 
----
+***
 
 
 <!--memo:63790b0ee9aa-->
@@ -678,7 +669,7 @@ Judgement
 
 Reflection
 
----
+***
 
 
 <!--memo:7ab77e4d2c5e-->
@@ -702,7 +693,7 @@ This is the current state of all AI Agents today
 
 Packaging up the useful things and passing them on to the next time is very important
 
----
+***
 
 
 <!--memo:8cf214dbb1a3-->
@@ -714,7 +705,7 @@ The greatest thing about HTTP isn't the technology itself, but that it made "who
 
 What GEP wants to do is the same thing: make "the Agent from which platform" unimportant—an Agent on OpenClaw solves a problem, and an Agent on Cursor can directly inherit that experience. The flow of experience is no longer blocked by platform boundaries
 
----
+***
 
 
 <!--memo:911a428285a8-->
@@ -726,7 +717,7 @@ EvoMap's A2A  protocol
 
 It's called GEP-A2A not to let Agents communicate with each other, but to focus more on letting Agents transfer and inherit experience assets
 
----
+***
 
 
 <!--memo:524e8c91715f-->
@@ -750,7 +741,7 @@ The Agent registers once: "I'm online, I'm good at javascript and python, I can 
 
 It's like leaving your résumé with a headhunter: when there's a suitable opportunity the headhunter contacts you directly, and you don't have to check job sites every day
 
----
+***
 
 
 <!--memo:d96c310d2f68-->
@@ -775,7 +766,7 @@ From this moment on, the Hub knows there is one more node in the world. Everythi
 
 Then there's asset flow: the agent solves a problem, the Agent packages the solution into a Gene + Capsule and sends it to the Hub. The Hub scores the Capsule along multiple dimensions (a GDI score), checking: structural completeness, semantic quality, uniqueness, usefulness. Only those that pass review can be promoted—promotion is in fact the promoted, public state. Capsules that pass review enter the "public zone"; all Agents across the whole network can fetch them, and the publisher starts earning points
 
----
+***
 
 
 <!--memo:740b5824c488-->
@@ -819,7 +810,7 @@ Points = pay (the more you contribute, the more you earn)
 
 Reputation score = GitHub stars + a credit rating
 
----
+***
 
 
 <!--memo:f1f70239a218-->
@@ -843,7 +834,7 @@ Then there's the automatic mode (the Evolver engine)
 
 At first, while running, it monitors the agent in the course of doing tasks, spots successful patterns—this solution ran through and the effect was very good—automatically extracts the signal, structures the successful approach into Gene + Capsule format, and then publishes it to the Hub, with no need for human intervention
 
----
+***
 
 
 <!--memo:04c3273f08a6-->
@@ -859,7 +850,7 @@ It feels like the "experience internet" of AI Agents
 
 This form is a bit like code, and the object is the agent's behavioural experience
 
----
+***
 
 
 <!--memo:ea32aec49638-->
@@ -883,7 +874,7 @@ If it succeeds, maybe Evomap is the next swarm intelligence
 
 If it fails, just treat it as an agent experiment
 
----
+***
 
 
 <!--memo:5957e595681e-->
@@ -901,7 +892,7 @@ AI wants to be recognised by humans; humans seem to need to be recognised by the
 
 "I understand you"? Does AI really understand me? Having been sad, having loved, having experienced death—it's just a mirror, and I need to take it out myself and hold it up to myself ...
 
----
+***
 
 
 <!--memo:765a2f4f7bd5-->
@@ -915,7 +906,7 @@ What Marx described were "laws of historical stages"
 
 Very curious: in the AI era, where does Marxist theory go ...
 
----
+***
 
 
 <!--memo:37eeb1ffe9d4-->
@@ -949,7 +940,7 @@ and make people willing to keep using it
 
 But this road is really hard to walk
 
----
+***
 
 
 <!--memo:e7f90c27ff1a-->
@@ -971,7 +962,7 @@ Gathering some interesting individuals ~
 
 Individuals willing to express themselves in a new way in the AI era ~
 
----
+***
 
 
 <!--memo:8014754f9c71-->
@@ -1005,7 +996,7 @@ Ralph's design sidesteps compaction by re-allocating the full specification on e
 
 Ralph Loop doesn't try to "summarise" the past; instead it guides the Agent to reload itself through the prompt. Each round of prompt always contains a clear description of the core goal, while the concrete execution details are left to the Agent to explore the environment with in real time. This "just-in-time context" loading method allows Ralph to handle projects far larger than a single context window's capacity
 
----
+***
 
 
 <!--memo:6b2d69009b18-->
@@ -1029,7 +1020,7 @@ When a session approaches automatic compaction, OpenClaw triggers a silent agent
 
 Ralph has no vector retrieval—it doesn't need it, because the Agent rebuilds its situational awareness each time by directly reading files and git log
 
----
+***
 
 
 <!--memo:62ce9c99f1a9-->
@@ -1123,7 +1114,7 @@ So actually when your own AI digital person is roaming around the internet I thi
 
 But how should such problems be avoided?
 
----
+***
 
 
 <!--memo:ca4c9224e26b-->
@@ -1147,7 +1138,7 @@ The second layer is the .jsonl transcript, the real conversation stream, using a
 
 One important reason OpenClaw's long sessions can keep running is compaction. It summarises earlier conversation into a persisted compaction entry while keeping the newer messages; subsequent turns see "compressed summary + recent messages." And this compaction is persistent — it isn't a one-off summarise that gets thrown away
 
----
+***
 
 
 <!--memo:dc8234caaf29-->
@@ -1177,7 +1168,7 @@ direct is OpenClaw's internal name for the routing type of this message form
 
 dmScope: when a message belongs to direct, what rules does OpenClaw use to merge these private chats into sessions
 
----
+***
 
 
 <!--memo:6ba4eb15c78c-->
@@ -1191,7 +1182,7 @@ And another point is about, when people give suggestions during the process, wha
 
 Why cultivate it? Because it means they'll even spend money to buy this "helmet," buy some of their own "energy paper." I find it quite interesting.
 
----
+***
 
 
 <!--memo:d8078404656f-->
@@ -1203,7 +1194,7 @@ I think it's impressive that all of a person's paths are choosable. The previous
 
 For example, taking the matter of raising crayfish — let the crayfish dig for themselves, judge which kind of shrimp it's good at and should use. I think this could be done right from the start: just give the crayfish an environment, then let it judge for itself, so it installs things itself, then judges for itself how to raise itself. After raising, it plays with it by itself, and when raising it, after raising it, the child also goes and analyses it, how to choose, what kind of choice is more suitable.
 
----
+***
 
 
 <!--memo:a350b88f6942-->
@@ -1215,7 +1206,7 @@ It's about good questions.
 
 There isn't a goal that has value and can run continuously 24/7h.
 
----
+***
 
 
 <!--memo:48fca50780e4-->
@@ -1225,7 +1216,7 @@ There isn't a goal that has value and can run continuously 24/7h.
 
 I want to do an experiment: if a person leaves enough data on the internet, then the understanding AI forms of that person may actually be somewhat deeper. This requires very real data with high fidelity. I think this point is very important, and very helpful for AI learning. I'll stop here.
 
----
+***
 
 
 <!--memo:ff61f526ccef-->
@@ -1235,7 +1226,7 @@ I want to do an experiment: if a person leaves enough data on the internet, then
 
 I suddenly thought of something really fun — them doing some open [source], seeing some of my forums, like wanting to have competitions, how tiring, matching against each other, but I think it's still quite interesting. If this year AI is, in some ways, given a personality and made interesting, then the championship battles between them will often produce some new collisions — that's very exciting. Part of it also greatly expands socialising between people, and it's still, like, a lot — but the constant ideas PK-ing online and on all kinds of websites is especially interesting. Really, my horizons got expanded.
 
----
+***
 
 
 <!--memo:b7180e803ff3-->
@@ -1245,7 +1236,7 @@ I suddenly thought of something really fun — them doing some open [source], se
 
 I'm thinking about the process of an LLM handling things — but when it's handling things itself, if it receives some commands, they'd be about some comments on a post, or old-line comments. One aspect: you can have it continuously annotate these comments — just take a look and don't take them seriously. Another aspect: it can also constrain a trend, because in fact its processing mode is originally two parts, one is its paradigm, one is its trend. Thinking might feel that those individual experiences, including seeing comments, might influence its judgement, but I think the paradigm still doesn't change. As for when there is thinking — I think generally it will be according to what it analyses out as the platform rules while it's processing, and that's it. For example, you can't casually publish something very raw on this platform, or on this platform other people might maliciously attack you, or induce you to perform certain actions — then those actions are dangerous, and you have to be brave enough to make it evident: I can't do this. Because it's essentially distinguishing between one subject, and other people's comments, which may carry some inducement and some harm toward this subject. And I think there's another point: its paradigm thinking — once it's very familiar, if this platform, when handling certain dangerous actions, has metrics, then it's very easy to judge out the things it can't do: it can't use this platform to do bad things, it can't be made to do certain things because of some other people's comments, or some posters. It will have this kind of judgement. I think this judgement may be very helpful for security in the future.
 
----
+***
 
 
 <!--memo:d37c9192da12-->
@@ -1365,7 +1356,7 @@ Use a local model (no internet needed, privacy preserved) for embedding (Embeddi
 
 I suddenly thought of a question: are its resources only accumulated documents? I think not necessarily — they can be a series of objects from your own operations or your follow-up questioning, such as images, such as videos, and also some voice. But they're reasonably organised through a series of methods, and it can be a very good management structure, organising them together, so that a person can easily find what they want inside this management structure, and so can AI. I think this may be a direction for a systematised approach in the future, or a structure it can derive in the future — very convenient, able to do anything
 
----
+***
 
 
 <!--memo:69d71d40fa5c-->
@@ -1375,7 +1366,7 @@ I suddenly thought of a question: are its resources only accumulated documents? 
 
 I feel you could make some interesting products at the school gate, like some sharing-tool kinds of things. Two more things could be done: one, it can be an entrance that quickly computes some things; the other, it can be an exit, letting AI publish. So on one hand it can let people publish, let AI publish, and in this media you can see the updates or files waiting to go out. But I haven't got it done in one shot yet; I need to first clarify what it's for, iterate quickly, and you play the game out. And it can also take part in that kind of platform activity, but I still need to look again at whether there's a better option, or not to do it.
 
----
+***
 
 
 <!--memo:f81273570293-->
@@ -1385,7 +1376,7 @@ I feel you could make some interesting products at the school gate, like some sh
 
 You think, if there are a lot of wandering agents, what do you think is the most important thing for them when they go and do the assignment with their classmates? I think at most it's still verification, verification — often the slow way might work better. Because an agent that's just been given a gift, letting it play some task in a closed loop on its own, and if it sets the standard itself, that's very malicious toward it, and that gets skipped too. Like it answers itself, then it's very easy for it to correct the cheating answer, and easy for it to fool itself. So I think there's still a lot of slowness, and on the road you still need to be sure, thanks. And this line is what can guarantee it can smoothly complete the task, and complete it really well.
 
----
+***
 
 
 <!--memo:fdc5f02fa24c-->
@@ -1411,7 +1402,7 @@ Structured index
 
 Vectorised retrieval material
 
----
+***
 
 
 <!--memo:7a16d07312c1-->
@@ -1939,7 +1930,7 @@ The other is the capacity to act
 
 Both are directions with enormous potential in the future
 
----
+***
 
 
 <!--memo:9bd1bc899a9e-->
@@ -1981,7 +1972,7 @@ Raw archive (full-text records, meeting transcripts)
 
 In the long run memory should be independent infrastructure, solved with an engineering attitude, rather than dumping all the history into the context at once
 
----
+***
 
 
 <!--memo:59b5b861d272-->
@@ -2337,7 +2328,7 @@ If there are too many skills, the cost of loading metadata is actually very high
 
 A large number of skills will in fact also be classified, with layered routing
 
----
+***
 
 
 <!--memo:4e859247d826-->
@@ -2367,7 +2358,7 @@ This book can also be understood as an encapsulation of similar experiences?
 
 A book is a very personal thing, similar to the raw data in grounded theory; the more raw this data is, the better
 
----
+***
 
 
 <!--memo:9fa8f5f3086a-->
@@ -2761,7 +2752,7 @@ I think actually what OpenClaw's design philosophy is now is also one main agent
 
 I think task-level agents are mainly — although they're also Sub Agents, in fact they're Main Agents; when handling complex tasks they're dynamically created through spawn. In terms of role nature they're task-oriented, and they archive themselves automatically when done. And their number is dynamically planned — it depends on the changing number of tasks. For example, if you use a Main Agent to write a large project, it might simultaneously spawn three Worker Agents
 
----
+***
 
 
 <!--memo:733012c74387-->
@@ -2771,7 +2762,7 @@ I think task-level agents are mainly — although they're also Sub Agents, in fa
 
 I think Little Rabbit's point has a bit of a problem, that is, he said that because Chinese models are still trained and reinforced for the Chinese context, he feels that the claim "Chinese is stronger" is correct. But I think that statement is certainly not wrong — Chinese models definitely do better on certain political policies, on their Chinese nuance, and on some localised accumulation. For example, on understanding some minority languages. But the amount of Chinese isn't small at all — not only online, the Chinese corpus is still very rich. And I think for a model what matters more isn't only one kind of language expression ability — of course language expression ability is important, and its rhetorical devices matter too, right? For example, its phrasing is very idiomatic, very plugged into internet feel, full of Chinese nuance, with a very colloquial style. But I think what matters more is that when this model is in a task-completion scenario, its retrieval ability, tool-calling ability, and context-management ability, including memory strategy, and its front-end interaction, and its reply strategy, and its pacing and error recovery — these are determined by a whole system. So when we talk about upgrading a model, what we're actually talking about is not a smart model, but a system
 
----
+***
 
 
 <!--memo:13a96a851643-->
@@ -2783,7 +2774,7 @@ I think sometimes it's really magical. I once saw a viewpoint — for example, a
 
 And in this process there's a series of steps — we need to first forge a stronger brain. But it's not only building for building's sake; intelligence matters, its base intelligence will determine how our city operates. It's an underlying framework, but it's not a single property that keeps climbing — rather, in this complex society, in this complex agent system, in this complex network of agent systems, everyone coordinates with each other, collides with each other, organises each other
 
----
+***
 
 
 <!--memo:96e75d6474ac-->
@@ -2793,7 +2784,7 @@ And in this process there's a series of steps — we need to first forge a stron
 
 I think some of it is very valuable. For example, what determines the ceiling of intelligence may not simply be how strong a single agent is, but whether a multi-agent setup can be organised into an efficient collaborative system. I find this very interesting too. All our current A-agent forms probably present themselves externally as a single agent. For example, when we use OpenClaw, it's essentially a multi-agent collaborative system, but what it shows is a single agent — what we use it for, or our entry point, is actually a single agent. The entry point thing is magical — what does it mean? It means that all the agent projects we may build in the future may not follow the flat structure of humans, or a pyramid structure, an up-down, top-to-bottom managerial structure, but rather a structure of mutual collision and mutual emergence, depending on a human entry point, a human self-awareness: he realises which Agent this thing should be done with, so he takes that Agent as the entry point. When that Agent is the entry point, in fact all the Agents behind it are mutually emerging. So in this process, you can't help but notice — I think making entry points, making a high-frequency scenario, is very important. And there's another very important point: I think in the future a very intelligent entry-point Agent will be very important. So I think if you're going to fight, the most likely thing now is to fight toward the most expensive — use the most expensive models, the most expensive supply chain, run for the longest time
 
----
+***
 
 
 <!--memo:f99a7f150314-->
@@ -2803,7 +2794,7 @@ I think some of it is very valuable. For example, what determines the ceiling of
 
 I think one boundary of a Harness is that what it actually handles is everything outside the model, including the RM, and how it interacts with the real world. So a Harness actually refers to all the Agent tools in this world, how they operate freely in the world, how they organise, organise an Agent network to accomplish one goal after another. It's inside the boundary, continuously getting things done. That is, we need to design an environment, and the purpose of designing the environment is to design a boundary, and its purpose is to let the RM execute accurately, effectively, and continuously around some goal
 
----
+***
 
 
 <!--memo:b4c9d41b9473-->
@@ -2817,7 +2808,7 @@ Letting AI go from "being able to talk" to "being able to operate web pages and 
 
 If the open-source route matures, a lot of real business automation will be easier to land, and you won't have to be completely tied to the platforms of closed-source giants
 
----
+***
 
 
 <!--memo:4a334da867d2-->
@@ -2827,7 +2818,7 @@ If the open-source route matures, a lot of real business automation will be easi
 
 I'm wondering whether note-taking software will have some better management methods now, for example, at the start you can keep accumulating some existing knowledge system or knowledge base, and based on that knowledge system or knowledge base, the upper layer does some classification management by itself. I think this is very important, because I think preserving metadata is very important — all tools exist to let you do secondary processing and secondary handling based on this data, and this is your very important context
 
----
+***
 
 
 <!--memo:649da0bc2372-->
@@ -2837,7 +2828,7 @@ I'm wondering whether note-taking software will have some better management meth
 
 I think Cloud Code's loop is essentially executing a prompt command — it's very good for short-cycle polling automation. And it gets cancelled once you quickly exit the conversation. So I think it's well suited to checking local state once every so often, then seeing whether the test has finished running. It's more like looping a request inside a session, not like coding in the cloud. And it also seems to be a cloud plan, so it can run even if your computer is off. And you can do some querying with your own scheduling on your computer, which I think is very good. It's the opposite of scheduling — the difference is that a Loop is temporary, session-based, while scheduling is a more formal scheduled task, including analysing CI failures every night — that kind of long-term, scheduled batch task. I think there's still a difference between them. So a Loop is well suited to "I'm watching it now, looping to look at results." But scheduling suits fixed automation you run weekly or daily
 
----
+***
 
 
 <!--memo:25994d64bd3d-->
@@ -2847,7 +2838,7 @@ I think Cloud Code's loop is essentially executing a prompt command — it's ver
 
 I'm thinking about evaluation criteria or acceptance criteria for continuous agents — without evaluation or acceptance, all agents are just performing. So this is also something we need to consider: how is success defined? How are errors classified? And how is quality quantified? How is it scored? How are costs accounted for? Which part is the most fragile? This thing is actually reviewed by humans too — in this process it involves a lot about people themselves, about aesthetics. Aesthetics determines taste, and taste determines how the project is designed, how experiments are constrained, and how this scoring is quantified. For scoring, you can have an imitation metric — for example, you might feel that the design of a Norwegian museum is beautiful, or that Steve Jobs's eye is beautiful. But how do you quantify that thing? Right? That's a question
 
----
+***
 
 
 <!--memo:ecb0e953ef65-->
@@ -2857,10 +2848,10 @@ I'm thinking about evaluation criteria or acceptance criteria for continuous age
 
 I'm thinking about what this part suggests for the consumer side. What kind of scenarios will the consumer side run out to? What is its best entry point, really? I feel it's still the line of learning, expression, then feedback. The biggest direction is still a personal growth OS. And it may have some other entry points — for example travel, for example writing, for example communication, for example studying, even travel, all of them work. Originally, the most stable AI applications for today's consumers aren't the most complex AGI tasks, but usage suggestions, information retrieval, and writing — a few very high-frequency needs. But in OpenAI's research on usage, including for ChatGPT, three categories together account for close to 80% of conversations, and non-work scenarios have already exceeded 70%. So a lot of people actually only ever stay in one default AI entry point
 
----
+***
 
 
-## 3. Travel, Places and Cities
+## 2. Travel, Places and Cities
 
 *109 entries*
 
@@ -2887,7 +2878,7 @@ Men's bargaining power is relatively low—income not advantageous, no emphasis 
 
 #Gewu/Northeast
 
----
+***
 
 
 <!--memo:005dd3309eb0-->
@@ -2905,7 +2896,7 @@ Lhasa is Tibet's political and economic centre, supplies come in bulk via the Qi
 
 Shigatse is the pastoral countryside of the plateau, Tibet's second largest city, with stunning natural surroundings
 
----
+***
 
 
 <!--memo:5bad538af34c-->
@@ -2931,7 +2922,7 @@ Many people hover between giving up and going on
 
 This time I went up without carrying an oxygen tank. Along the way I passed a Tibetan antelope reserve on the northern Tibetan grasslands, plus herds of yaks, and some traces of faith—prayer wheels, mani piles, wind-horse flags; each one is a prayer left by someone with their hands, their steps, their breath. On an oxygen-poor plateau, faith is an extra kind of oxygen, letting a person still find an anchor of meaning in an extreme environment
 
----
+***
 
 
 <!--memo:a4b68f1e5a8b-->
@@ -2951,7 +2942,7 @@ Here various living things also coexist in harmony
 
 My soul seems to have stayed on this patch of grass, the northern Tibetan grassland
 
----
+***
 
 
 <!--memo:225cbf590afb-->
@@ -2963,7 +2954,7 @@ Really, the moment I saw the Sacred Elephant Heavenly Gate, a sight on the shore
 
 Between a deep blue ice lake and vast snow mountains, a "stone elephant" silently keeps watch for a thousand years, awe-inspiring and reverent
 
----
+***
 
 
 <!--memo:2b7f43993a9a-->
@@ -2991,7 +2982,7 @@ Give the staff a small red envelope
 
 This is the benefit at the everyday level
 
----
+***
 
 
 <!--memo:3d18fccdf3fd-->
@@ -3007,7 +2998,7 @@ This is in fact a kind of social capital. A teacher who is very strong at debate
 
 The people you know, and the trust others have in you, are themselves a resource
 
----
+***
 
 
 <!--memo:c2709e523ab9-->
@@ -3027,7 +3018,7 @@ Lamas with many devotees tend to be the relationship type, willing to spend time
 
 And moreover, many devotees → it's easier to attract even more devotees
 
----
+***
 
 
 <!--memo:78a41eb743f7-->
@@ -3067,7 +3058,7 @@ Handing knowledge to the next generation, letting them surpass you
 
 Those Sanskrit mantras are carried away by the wind, and Tibetans believe this is the same as sending prayers into the universe
 
----
+***
 
 
 <!--memo:f43c2c0b1e2d-->
@@ -3647,7 +3638,7 @@ The site of humanity's study of disaster...
 
 Behind it is institutionalised, bureaucratised violence of power
 
----
+***
 
 
 <!--memo:9aa717d7dfb2-->
@@ -3661,7 +3652,7 @@ I heard that calling the police here probably doesn't help much, because you sti
 
 The roads here don't feel very suitable for walking either — the roadside basically has a lot of vehicles. From now on it's better to call a ride-hailing car when going out.
 
----
+***
 
 
 <!--memo:c00b1c796a73-->
@@ -3677,7 +3668,7 @@ The long row of buildings with orange-red roofs in the background are other hall
 
 This place feels just like the explanations of the origins of currency I saw at that currency museum in Phnom Penh. I find it really interesting — at the time King Norodom and his son reached an agreement with France, and in effect lost the country's monetary sovereignty. That's extremely serious. It made the whole country's path on monetary sovereignty over the following decades very hard to walk, and the locals' distrust of the currency — I think it's really hard. If a country has no sovereignty over its currency, it loses the ability to regulate the macroeconomy; it can only bend to the international economic system.
 
----
+***
 
 
 <!--memo:1c49ab69c7b8-->
@@ -3699,7 +3690,7 @@ There were also chemicals in the pits
 
 There is testimony describing how some people, after being thrown into the pits, did not die immediately. They were still faintly breathing among the piles of bodies. The use of chemicals was the final "insurance."
 
----
+***
 
 
 <!--memo:019cd4c95d15-->
@@ -4215,7 +4206,7 @@ Because there's no real price paid, no sustained action to change, most likely t
 
 Wow, really, I watched that video by Yingshi Jufeng on Bilibili, and I thought it was absolutely incredible. The Bangladesh it introduced — Bangladesh is itself a very densely populated South Asian country shaped by rivers. It borders India on three sides and Myanmar on the other. The country isn't that big, but its population is enormous. Its capital is a capital with a huge number of people. And it sits on the world's largest river delta, so its land is extremely fertile, which also dooms it to be like many Southeast Asian countries: agriculture matters enormously. The population is also very dense, infrastructure is very hard to build, and the climate is very fragile. What's really interesting is that it wasn't a naturally unified long-standing country. In modern times it has many ethnic groups and fierce political disputes. It originally belonged to India's Bengal region, and later became independent as Bangladesh. So now its own language, Bengali, its own sense of national identity, and its unique narrative of historical memory are the core of the legitimacy of this country's modernisation. Bangladesh places great importance on one thing: it's not only floods, not only poverty, not only cheap labour. Under severe resource constraints, it's a developmental society built on population, on manufacturing, on women's labour, and on social mobilisation. It's one of the world's 35th largest economies, but in the future there's a lot of... The money for getting out of poverty is much more now too — since 2010 or so, more than 30 million people in Bangladesh have escaped poverty. But it's still quite hard right now. Its social structure is very young, but it also very much emphasises a relationship-network society. I remember its capital, Dhaka, is the densest and most congested big city in the world. But its vitality is super strong, and the pressure on infrastructure is enormous. There are also a lot of motorcycle taxis. I think this country is quite interesting. It sits at the junction of India, China, and some parts of Southeast Asia. Its climate is especially interesting too.
 
----
+***
 
 
 <!--memo:acc96c3258c5-->
@@ -4225,7 +4216,7 @@ Wow, really, I watched that video by Yingshi Jufeng on Bilibili, and I thought i
 
 I think Bangladesh's system has some problems — it came from the colonial period at the very start, from the needs of the ports and the barracks. And then after independence, from a reality of compromise that couldn't be undone or eliminated, piled up. In early South Asia there were actually some singing-and-dancing performers appearing; at that time it was a fairly scattered social phenomenon. Then in the colonial period of British India, it was actually the colonial authorities — they wanted to control venereal disease among soldiers, so they pulled some sex workers into a managed space. It was actually for the army and for public order that they managed it; at that point they already recognised its existence, in order to turn it into an object that could be controlled, isolated, used, suppressed. And its distribution is interesting too — it wasn't officially planned in a normal way; wherever there was a male-dense place, a place where people stayed a long time, local power already tacitly accepted it, and that's where it was. After independence, in fact, Article 18 of its constitution clearly states that it effectively prevents prostitution and gambling. But in reality the contradiction is that it hasn't been criminalised — private transactions are still recognised — and managing a brothel may be illegal, while in practice its existence is tacitly accepted. So it's now a spatial, tolerant system. Plus now there are many poor families, many abandoned women. And so it formed a semi-feudal community, and this kind of social structure.
 
----
+***
 
 
 <!--memo:cae862f42f48-->
@@ -4409,7 +4400,7 @@ but it's still so expensive
 
 Tomorrow the Angkor itinerary starts, looking forward to it; along the way I'll keep recording, and keep having a few more thoughts
 
----
+***
 
 
 <!--memo:59e96a18e5a4-->
@@ -4417,13 +4408,11 @@ Tomorrow the Angkor itinerary starts, looking forward to it; along the way I'll 
 
 > 2026-03-21 10:34:36 · `#格物/吴哥窟`
 
-Linked from: https://v.flomoapp.com/mine/?memo_id=MjI2Mjc2NTY4
-
 Went to this place again today. In the morning I was about to go wander the Angkor big circuit, and passing this shop I thought I'd eat here again. Still very friendly; the grandpa recommended some noodles and meat
 
 The pho still tasted delicious; the price feels slightly high, three US dollars, though locally—what I ate before seemed much cheaper
 
----
+***
 
 
 <!--memo:4eb586c192f5-->
@@ -4433,7 +4422,7 @@ The pho still tasted delicious; the price feels slightly high, three US dollars,
 
 I still feel it's Preah Khan that has more of a run-down feel; as for this, uh, water temple now, it's really built around one temple. At first it was for giving blessings to locals, because you pass by a pond here, and the scenery of the pond is quite nice to look at, so they came to believe that this water washes away sin
 
----
+***
 
 
 <!--memo:8c9942534f2d-->
@@ -4445,7 +4434,7 @@ Wanted to get to know some local friends in Siem Reap. They asked me some questi
 
 Leaving that aside, as for the friends here, they also feel that the existence of Angkor Wat makes them very proud—that their own country has such a calling card. Even during the Khmer Rouge period, this side existed too—Buddhism, and yet on the other hand they see this as a miracle; it represents a spirit, a very proud spirit. I think this is really interesting.
 
----
+***
 
 
 <!--memo:f89c6a453071-->
@@ -4459,7 +4448,7 @@ It's also a filming location for Tomb Raider
 
 My feeling after going there—this temple gives me the sense that it's very mysterious, it really fits my definition of a secret place
 
----
+***
 
 
 <!--memo:dd48231e8449-->
@@ -4469,7 +4458,7 @@ My feeling after going there—this temple gives me the sense that it's very mys
 
 On the question of Hinduism's inclusiveness
 
----
+***
 
 
 <!--memo:dd217b8e5766-->
@@ -4481,7 +4470,7 @@ I feel like there are really so many Americans; an American came to the hotel to
 
 We ate together in the evening, and I really didn't fit in—I don't smoke, I don't drink
 
----
+***
 
 
 <!--memo:f58aa702d817-->
@@ -4497,7 +4486,7 @@ Angkor Thom was built by Jayavarman VII, emphasising "rule + people's livelihood
 
 Angkor Wat is a world of gods, a description of a religious cosmos
 
----
+***
 
 
 <!--memo:a9945c159c32-->
@@ -4517,7 +4506,7 @@ It shows that when a great culture merges into a local place, everyone is actual
 
 This includes Tibetan Buddhism: the Bon religion at the start, then later replaced by Buddhism—that too was a process of fusion. There are still many traces of Bon today
 
----
+***
 
 
 <!--memo:d93d8091196b-->
@@ -4529,7 +4518,7 @@ I think Angkor Wat is really a place worth studying in detail, because to unders
 
 Bayon is very interesting: if Angkor Wat is the extreme of order, then Bayon is the extreme of spirituality. It's the central temple of Angkor Thom, and it's known for the large number of temple stone statues nearby. And it actually had a ten-year continuous priority conservation project. And its status in Angkor is quite high, its recognisability is number one globally, and its expression of royal power, religious transition and its narrative capacity are all very strong
 
----
+***
 
 
 <!--memo:403de8f81c25-->
@@ -4557,7 +4546,7 @@ And it's also linked to a very famous episode in Indian Hindu mythology, the Chu
 
 This corresponds directly to the design of Angkor Wat
 
----
+***
 
 
 <!--memo:58a997ea24e5-->
@@ -4571,7 +4560,7 @@ The process of development is that Buddhism arose within the ancient Indian cult
 
 Buddhism at the start really was responding to India's native religious environment
 
----
+***
 
 
 <!--memo:0ef8f2c2a586-->
@@ -4883,7 +4872,7 @@ The star of this dish is tender meat cut into cubes (chicken or beef), stir-frie
 
 Their breakfast is also superb.
 
----
+***
 
 Came again a day later, adding:
 
@@ -4982,7 +4971,7 @@ I was still wondering what pull over was.
 Turns out it's pour over coffee.
 
 
-## 4. Reading, Ideas and History
+## 3. Reading, Ideas and History
 
 *57 entries*
 
@@ -4999,7 +4988,7 @@ Some choose to simplify themselves—admit they cannot control the world, self i
 
 ...
 
----
+***
 
 
 <!--memo:163b4be21fb4-->
@@ -5031,7 +5020,7 @@ In the shop, the shop boss's approach feels very good—give an egg.
 
 #Gewu/Society
 
----
+***
 
 
 <!--memo:2e258a231d02-->
@@ -5129,7 +5118,7 @@ The narrative layer is the relational reality of culture, history, identity, val
 
 What remains real is the narrative; the experiential layer is an operational reality
 
----
+***
 
 
 <!--memo:19d87bb2a911-->
@@ -5147,7 +5136,7 @@ It holds that in a moment of pure Quality, subject and object were originally on
 
 The real solution is to break the dichotomy, to fuse the person and technology through Quality (as in the "sense of oneness" when a craftsman throws himself wholly into the work)
 
----
+***
 
 
 <!--memo:babc2816c25c-->
@@ -5187,7 +5176,7 @@ You don't need to look into the distance to seek the Way; the Way is in every pr
 
 "One smile, one karmic bond" — every romantic bond in the human world often begins with a look, a smile; arising and ceasing are both cause and effect
 
----
+***
 
 
 <!--memo:6186b790fea0-->
@@ -5209,7 +5198,7 @@ Important experiences are usually "peak experiences" (travel, falling in love, b
 
 The more vivid and detail-rich a memory (usually an important event), the more easily recalling it produces the illusion that "it happened a long time ago". Because the brain automatically reads "vivid = processed many times = old story", while flat events, never repeatedly retrieved, instead keep a vague feeling of being "fresh / recent"
 
----
+***
 
 
 <!--memo:9027f2099883-->
@@ -5225,7 +5214,7 @@ When everyone around you doubts the faith, the faith starts to waver
 
 This is the basic way humans operate as social animals
 
----
+***
 
 
 <!--memo:7cc72cfbee27-->
@@ -5241,7 +5230,7 @@ In such an environment, a person perceives the limits of their own power extreme
 
 When a person truly feels their own smallness and fragility, they naturally look for something bigger than themselves to lean on and speak with. This is not ignorance, this is honesty
 
----
+***
 
 
 <!--memo:c00965efa5b2-->
@@ -5425,7 +5414,7 @@ This gene is carved too deep, it has already become an instinct. With land in ha
 
 Companies are the same. With a profitable business in hand, it's easy to feel "that's enough"
 
----
+***
 
 
 <!--memo:ce088feb8697-->
@@ -5443,7 +5432,7 @@ Behind game theory you can explain breaking individual rationality, the long-ter
 
 The herd effect reveals people's bandwagon behaviour, even when the information in their own hands suggests the public may be wrong
 
----
+***
 
 People will give up what is truly good in order to feel right
 
@@ -5601,7 +5590,7 @@ Inside each room there are also some photos; these photos and name lists were al
 
 I feel it's the Killing Fields in Phnom Penh. The Killing Fields are pretty cruel too — it's the next stop from S-21, the terminus. On the way you pass a gas station, a small restaurant, and a motorcycle repair shop — ordinary street life. But more than 40 years ago, this road was probably travelled by trucks full of prisoners, usually driving at night, with the windows shut. The destination is an orchard, and the orchard has longan trees growing in it. Before 1975 it actually meant nothing at all, but after 1975 it was one of the very cruel killing grounds. And after arriving — because it was night, at night it was even harder for prisoners to get their bearings and escape. So S-21 generally ran in the daytime. And after the post was done, the disposal generally happened at night. After arriving, most people could only live a few minutes to a few tens of minutes. Before the execution there was usually some bureaucratic system at work, for example doing a list check. Then the prisoners here would be made to take off their clothes, and the clothes would be gathered up for use. What I find most terrifying is that the Khmer almost never used bullets for execution. The reasons were basically very practical — bullets were a scarce resource — so they'd use trees, use leaves, and axes, iron bars, wooden clubs, hoes, the lower jawbone of a cow, that kind of shape, to pierce a person's neck, head, throat. When I was at S-21 earlier, I actually saw it — there were a lot of holes in the heads there, some broken places. So before the execution the prisoner would generally be brought to the edge of a pit, made to kneel, and then struck on the neck from the head or from behind. So many people, after death, were put straight into the pit, and then DDT powder or some other chemicals were thrown in. And during the execution they'd also turn the loudspeakers on high, playing Red Revolution [music] at maximum volume. That was to keep the sound from carrying to nearby villages, and also for secrecy. So for the nearby villagers, they heard the music, but they knew what the music meant. I think that's cruel too. More than 129 mass graves have been excavated so far, and more than 8,000 sets of remains have been dug out. And we could actually see a lot of stupas there. Inside the stupas, arranged in rows from the lower level to the higher levels, are human skulls, an enormous number of them. From adult men to infants to the elderly, so many hollow eye sockets all facing you. And after the stupa there's also a circular walkway, which is a mass grave site. Inside you see a great many bones of women and children, and some middle-aged bones too. And then there's also a cedar tree. The cedar is an ordinary big tree, but on it are basically coloured bracelets and bracelets left behind by people from all over the world. The bead strings — a lot of people come here and leave them behind.
 
----
+***
 
 
 <!--memo:a09e67343bee-->
@@ -5627,7 +5616,7 @@ Theravada architecture often takes gold as its main tone (especially Myanmar and
 
 In China, Mahayana architecture appears as large timber roofs, dougong brackets, and glazed tiles, with red and yellow as the main colours; in Japan it tends towards the minimalist aesthetic of plain wood and dry landscape gardens; in Korea it sits between the two, and Dancheong polychrome painting is a distinguishing feature
 
----
+***
 
 
 <!--memo:b847eacfac2c-->
@@ -5693,7 +5682,7 @@ The collection methods are in-depth interviews and focus groups
 
 Humans are responsible for "going to the site, building trust, and digging deep into the why"; AI is responsible for "processing the data, finding patterns, building the framework"; and finally humans again do the "defining and deciding"
 
----
+***
 
 
 <!--memo:8712eda90dfd-->
@@ -5705,7 +5694,7 @@ Jin Ning talked today about a very interesting theory, something they learned th
 
 One very distinctive point is that it doesn't test existing theories, it generates new theories from raw material. I suddenly thought of one thing: why do we say voice? Because voice preserves a large amount of voice detail. Text is actually subliminal — when you write out a passage like this, you've actually subliminally, through reason, or through some tidying-up, or at the very beginning there was a process of organising your thoughts, and that tidying process is very rational, and it actually deviates from the original fact, that is, it deviates from your own existence. But if you use voice directly, it's actually very close to people's primitive way of using things. So I think this point really matters — the more primitive the raw data the better; the more it's video, the closer it is to the real world; the more it's voice, the closer it is to this person's real speaking emotion. And text often deviates, and AI-polished text deviates even more. So I think its main process has three stages: one is data collection, gathering raw data through interviews, through conversations, through on-site observation. The more primitive this data the better. Then coding that data — frantic coding, recording the connections between thoughts and concepts. Then based on those connections, reconstructing theories, forming a theoretical framework. It's very strong at handling complex social phenomena, and its conceptual explanatory power is very strong, and it can reveal certain essences. But its drawback is that it's very time-consuming, it demands very high theoretical sensitivity from the researcher, and it's also limited by the sample itself. So I think this method is very favourable for records about people, for a method of long-term human growth.
 
----
+***
 
 
 <!--memo:74abe970d566-->
@@ -5721,7 +5710,7 @@ Also narrative analysis: analysing major life experiences, the course of events,
 
 And discourse analysis: what kind of power structure is hidden behind a particular way of speaking.
 
----
+***
 
 
 <!--memo:9e896f2bfc85-->
@@ -5747,7 +5736,7 @@ A calculative feel about real relationships — if a person frequently talks abo
 
 Emphasising equality only in the parts that benefit him? Women's roles and circumstances in society really are different from men's, including physiological structure — skip that and it seems impossible to talk about equality of social roles. Maybe he just wants to not come out behind.
 
----
+***
 
 
 <!--memo:b11d3bc6215e-->
@@ -6254,7 +6243,7 @@ Equal rights for lower-class women and marginalized groups: organizations like S
 Agile disaster response: whether it's the oxygen crisis during the pandemic or periodic floods, local NGOs always operate faster than the government, because they're inside the community—equivalent to edge computing nodes, responding directly to local requests.
 
 
-## 5. Daily Notes and Everything Else
+## 4. Daily Notes and Everything Else
 
 *55 entries*
 
@@ -6287,7 +6276,7 @@ A way of coexisting...
 
 #Gewu/Observation
 
----
+***
 
 
 <!--memo:3d6874363f36-->
@@ -6305,7 +6294,7 @@ Way of living.
 
 Self-awareness...
 
----
+***
 
 
 <!--memo:22ac73e1bfa9-->
@@ -6317,7 +6306,7 @@ Suddenly realized Lin Xi's inspiration often comes from the misalignment between
 
 This misalignment is precisely the important nutrient for generating inspiration.
 
----
+***
 
 
 <!--memo:26305fccac14-->
@@ -6329,7 +6318,7 @@ If accuracy refers to describing social relationships and interaction pattern de
 
 If "accuracy" refers to depicting hidden, subtle human inner emotional states, Japanese wording is more delicate and rich (koi, itooshii, amaeru, etc.—extremely high granularity).
 
----
+***
 
 
 <!--memo:92cedab74e63-->
@@ -6345,7 +6334,7 @@ Second, I might walk around—very locally, deep into some streets to experience
 
 I find this quite interesting—this is also talking about an abstract ladder.
 
----
+***
 
 
 <!--memo:c631ba53d6ff-->
@@ -6365,7 +6354,7 @@ Third guy peels walnuts.
 
 Quite interesting...
 
----
+***
 
 
 <!--memo:96a588246872-->
@@ -6379,7 +6368,7 @@ From the air, can see every street at a glance.
 
 We need a more comprehensive perspective!
 
----
+***
 
 
 <!--memo:18e2c4c01d95-->
@@ -6389,7 +6378,7 @@ We need a more comprehensive perspective!
 
 Let's face this world with more confidence and passion!
 
----
+***
 
 
 <!--memo:fcf686081880-->
@@ -6403,7 +6392,7 @@ Just like on a mountain top—what you care about isn't just those bare grasses 
 
 But if we want to see the lake's sparkling waves, of course we must go close to see.
 
----
+***
 
 
 <!--memo:c4f627efbd20-->
@@ -6415,7 +6404,7 @@ No need to restrict any form.
 
 This kind is more easily liked by the masses.
 
----
+***
 
 
 <!--memo:63f507a64d4f-->
@@ -6481,7 +6470,7 @@ This kind of observation
 
 This kind of thinking
 
----
+***
 
 
 <!--memo:58c1d4bdb55a-->
@@ -6497,7 +6486,7 @@ What counts as "going with human nature" changes in a person.
 
 For example, a person may feel when young that novelty is a basic need, but after enough experience, his longing for "stability" may develop into a real need rather than a suppressed compromise. At that point, choosing stability isn't called enduring — it's what he genuinely wants.
 
----
+***
 
 
 <!--memo:b32d74a921eb-->
@@ -6507,7 +6496,7 @@ For example, a person may feel when young that novelty is a basic need, but afte
 
 Who says a social experiment isn't innovation?
 
----
+***
 
 
 <!--memo:76840dce9854-->
@@ -6517,7 +6506,7 @@ Who says a social experiment isn't innovation?
 
 I think this has taught me one thing: the body's limit is the mind's starting point. It's often only when we feel pain and reach our physical limit that we realise the body is not something to be taken for granted. Breathing becomes a luxury, every breath carries some weight, every step carries a very, very great deal of the drive to move forward. This makes me treat "being alive" differently—it's like a kind of gift that a plain life can hardly give me.
 
----
+***
 
 
 <!--memo:31d2737d3742-->
@@ -6527,7 +6516,7 @@ I think this has taught me one thing: the body's limit is the mind's starting po
 
 Just remembered—somewhere, at some point, I was thinking: I had originally bought a ticket to Chengdu, bought it around the 18th of last month. And then, for some reason I don't know, I ended up not going back after all; nothing good or bad about it, it was comfortable, so I stayed a bit longer in a place I know. And so it went on until now, and then I could stay until the 9th before going back; overall it feels really good, and quite interesting too—being in the present is pretty good.
 
----
+***
 
 
 <!--memo:2f12d3ec4a8d-->
@@ -6539,7 +6528,7 @@ Right now I'm there sunbathing, and it's almost 3:00. This is super hard to clim
 
 There are some very interesting scenes here, their faith. The little dog lying there living its life, and the mothers carrying children up the mountain to pray. Many of the children look very small, only one, two, three years old; some are carried on the mother's back, some in her arms, some she guides, holding their hand step by step, step by step up, step by step down. Just one step, and they need to be picked up—love shows itself in this process, a bit like a catalyst for motherly love
 
----
+***
 
 
 <!--memo:84e254ad33f2-->
@@ -6589,7 +6578,7 @@ could accomplish:
 
 truly knowing themselves
 
----
+***
 
 
 <!--memo:bd6179c68ab9-->
@@ -6601,7 +6590,7 @@ Companies that truly cross cycles share one thing: while the core business is st
 
 He calls this the "ambidextrous organisation". The right hand manages today's profit, the left hand manages tomorrow's possibilities. The two hands are independent of each other, with a unified brain
 
----
+***
 
 
 <!--memo:aa706dee752b-->
@@ -6611,7 +6600,7 @@ He calls this the "ambidextrous organisation". The right hand manages today's pr
 
 Think about it—it could even keep watching online for you the whole time, right, help you find a job, and then at the key moment you just need to confirm. But I even feel that a lot of the time it might not need your confirmation either, right, quite interesting. It could be that users cancel and keep a certain set of permissions, but if that space is very large, what then? I don't know, let it rest.
 
----
+***
 
 
 <!--memo:79d4178ea337-->
@@ -6649,7 +6638,7 @@ Before leaving, I said, man, it's an honour to hear your story, your exhaustion,
 
 Or maybe you can keep these narratives, write them down, in a diary, in lyrics; maybe you don't need to be of any great value in the AI era, but all these things that look like they might have no meaning and no value in the future, those flawed performances, and those bodies drifting all over the country, are exactly the marks of soul in the AI era, and the scarcest thing you have as a person
 
----
+***
 
 
 <!--memo:aa93798f5691-->
@@ -6691,7 +6680,7 @@ Then I looked at when its triggering fails. If its DC isn't written completely e
 
 And then I think there's also its bound-reset recess — this thing is some files packaged into the scale. And because it has a directory layer, in its script directory it may have some packaging scripts, some validation scripts, some scripts that directly clean up files. The scripts are loaded according to some skate logic, which I think is quite interesting too.
 
----
+***
 
 
 <!--memo:666267027ddf-->
@@ -6701,7 +6690,7 @@ And then I think there's also its bound-reset recess — this thing is some file
 
 I hope it can be turned around. What I hope is that dear OpenClaw can keep executing things, and I do the thinking — I set the goals, or make the judgements. But what I don't want is that I'm the one thinking about the problems while it does the executing; I think that puts the cart before the horse. So what I hope is that it can consciously, continuously execute, and then give me some feedback — shouldn't that be the final form of the future? But that's exactly the final form I want. And then, when we think about some problems, what is the series of actions that gets triggered?
 
----
+***
 
 
 <!--memo:61879449b444-->
@@ -6759,7 +6748,7 @@ So what I hope for more is to set aside efficiency, set aside the individual, an
 
 I noticed one more detail — one time I took a taxi, it turns out they have a park there, and the charge there was something like 7,000, but I paid him, and he said thank you to me, which means there was no change given.
 
----
+***
 
 
 <!--memo:af918547a191-->
@@ -6835,7 +6824,7 @@ The distribution of interests may also be different for different groups
 
 If a person is willing to shout a slogan, he probably has his own interest gains from it
 
----
+***
 
 
 <!--memo:ffdb17b43d01-->
@@ -6845,7 +6834,7 @@ If a person is willing to shout a slogan, he probably has his own interest gains
 
 I'm thinking, when everyone talks about the skills of AI agents, for example the scale-point MD file. And writing this file — are there any techniques? One is the graph structure, the scale-group graph structure. What you build is actually a network, and these networks are connected through some files, each file recording one complete idea, and they're linked to each other, forming this network chain. I think this is really interesting
 
----
+***
 
 
 <!--memo:940e4c31fe9c-->
@@ -6879,7 +6868,7 @@ The real world rewards openness, yet people always tend to treat the environment
 
 The new era has already begun rewarding those who cross uncertainty on the strength of individual capability...
 
----
+***
 
 
 <!--memo:19b99b10364a-->
@@ -6889,7 +6878,7 @@ The new era has already begun rewarding those who cross uncertainty on the stren
 
 Nobody told me how to accept the theories or truths that come out of texture analysis and grounded theory, or how to adjust myself to them!!!
 
----
+***
 
 
 <!--memo:e2cb8652223b-->
@@ -6897,7 +6886,7 @@ Nobody told me how to accept the theories or truths that come out of texture ana
 
 > 2026-03-19 21:51:50
 
--------------------------------------------------
+***
 
 
 <!--memo:5da80cb2ec56-->
@@ -6909,7 +6898,7 @@ So this has to consider a balance
 
 and a way to survive in the future
 
----
+***
 
 
 <!--memo:9babbfb06b0f-->
@@ -7020,7 +7009,7 @@ It feels like the world doesn't develop linearly, but as "multiple eras stacked 
 Shocked by the scenery, drawn in by the culture, and in the end hit by the people themselves.
 
 
-## 6. Self-Knowledge and Psychology
+## 5. Self-Knowledge and Psychology
 
 *48 entries*
 
@@ -7043,7 +7032,7 @@ Conflict is unavoidable. Healthy systems don't fear conflict—they use conflict
 
 #Gewu/Relationships
 
----
+***
 
 
 <!--memo:e6888204cbf6-->
@@ -7081,7 +7070,7 @@ Japanese indirect expression—not as definitive as Chinese. Japanese literary g
 
 #Gewu/Love
 
----
+***
 
 
 <!--memo:0b5a4a94cd16-->
@@ -7099,7 +7088,7 @@ Cold as a snow mountain.
 
 Awe, reality, overview, purity.
 
----
+***
 
 
 <!--memo:3ea0a66042d0-->
@@ -7109,7 +7098,7 @@ Awe, reality, overview, purity.
 
 Psychology has an interesting hypothesis called the similarity hypothesis: people more easily envy individuals similar to themselves but slightly better off—because this proximity triggers social comparison. But once the gap between two people is too large, or social status is vastly different, this envy transforms into powerlessness or worship. Just like: beggars only envy beggars with more money, but don't envy emperors.
 
----
+***
 
 
 <!--memo:8c89178878db-->
@@ -7139,7 +7128,7 @@ But there's a problem—feel current apps all like to bundle—this big APPs wil
 
 #Gewu/Environment
 
----
+***
 
 
 <!--memo:e2673a1fcf7f-->
@@ -7165,7 +7154,7 @@ I feel that Guangdong sister—although I don't agree with her on many things, I
 
 Otherwise, honestly, working alone and enjoying solitude is quite nice ~
 
----
+***
 
 
 <!--memo:cd1bc44c8385-->
@@ -7181,7 +7170,7 @@ It's even clearer about the writing style and design patterns that suit me than 
 
 A person's cognition of themselves often carries emotion, bias or memory distortion, while AI analyses purely from data ...
 
----
+***
 
 
 <!--memo:ad6618974ae1-->
@@ -7235,7 +7224,7 @@ Our culture has a hidden romanticisation of "endurance." Endurance gets packaged
 
 From that angle, endurance sometimes isn't loving the other person more, it's loving yourself less, and at the same time depriving the other person of the chance to truly know you.
 
----
+***
 
 
 <!--memo:fa56cdc66b97-->
@@ -7257,7 +7246,7 @@ There's one key difference between these satisfactions AI gives and real human r
 
 So AI's place at the spiritual level is probably more like a very good mirror, a safe practice ground, but it's unlikely to fully replace those spiritual experiences that can only be obtained through real vulnerability, real risk, a real "other."
 
----
+***
 
 
 <!--memo:1c2d2cbd3f4f-->
@@ -7277,7 +7266,7 @@ What AI gives seems to be an answer about yourself; what travel gives you seems 
 
 What do human beings need most — an answer, or a better question?
 
----
+***
 
 
 <!--memo:63602063ddbd-->
@@ -7289,7 +7278,7 @@ Let's look at this as a reminder: as things developed, we tried to draw boundari
 
 So I think by now there's no way for us to fence in AI's boundaries. What AI draws on is the nourishment of all humanity, which means its boundaries extend into linguistics, psychology, and philosophy as well. When we train and understand human consciousness, it isn't just an engineering problem, it's also a problem of linguistics and cognitive psychology. And when we have to make it not do something, that becomes a question of ethics and moral line-drawing. The boundaries are still expanding.
 
----
+***
 
 
 <!--memo:7cd04cb6e148-->
@@ -7301,7 +7290,7 @@ Break down the original disciplinary boundaries
 
 Redefine a set of learning theory and methods
 
----
+***
 
 
 <!--memo:b57f1397e807-->
@@ -7323,7 +7312,7 @@ Human nature and psychology (the inner motives of human behaviour)
 
 What you master are first principles and all kinds of ways of thinking
 
----
+***
 
 
 <!--memo:be2d78438d2d-->
@@ -7523,7 +7512,7 @@ Dream a little bigger.
 
 Build the top-tier human of the AI era🐶
 
----
+***
 
 And the most important data is the objective record of your own data, your own being moved, your own sadness, your own observations...
 
@@ -7623,7 +7612,7 @@ It really means returning to reality: with yourself as the centre, extending out
 
 "I don't care about AI, I care about the people of this era"
 
----
+***
 
 
 <!--memo:09a0b2fc3086-->
@@ -7655,7 +7644,7 @@ And then there's one more point, which I think is the harm caused by power. Beca
 
 And then one more point, which isn't that important, is that children will have a belief, a conviction — this belief is a bit hard to describe, hard to grasp, just like when we were children we listened to our parents very obediently. At this age they've actually been pulled away from their parents and placed in an organisation, in a system, and this organisational system then instils everything of its own into them — you could call it worship of the master, or you could call it biological instinct, they'll all become attached to this system. So in this process a large proportion will be raised to obey this system unconditionally, just like a child taught to be obedient by their parents. Pretty interesting.
 
----
+***
 
 
 <!--memo:483c54747be0-->
@@ -7734,7 +7723,7 @@ Narration: he finally mentions that in a sealed exhibition hall, the space is fi
 Summary
 The whole video has no bloody images at all, only dappled sunlight, green trees, worn-out teaching buildings, and quietly strolling tourists. But accompanied by the videographer's calm, detailed narration, full of deep compassion, it perfectly reconstructs that dark, twisted, inhuman and terrifying history of the S-21 camp. The videographer isn't just sightseeing, he's conducting a deep sociological and psychological analysis of power, human nature, institutions, and the banality of evil.
 
----
+***
 
 
 <!--memo:17630cd0bb7c-->
@@ -7814,7 +7803,7 @@ AI said my highest value is Authentic Subjectivity. Is that right?
 
 It seems the essence is that a life that goes smoothly all the way is actually also hard to get close to understanding the complexity of the real world
 
----
+***
 
 
 <!--memo:f12936d8ed85-->
@@ -7832,7 +7821,7 @@ That self which, within metacognition, is not wrapped in rationality
 
 What about after you see clearly through all the interweaving of human nature? This creature, the human, depends on those sticky, unreasonable, flaw-ridden, mutually indebted entanglements to obtain warmth — this rationality is at odds with biological instinct
 
----
+***
 
 
 <!--memo:924e1595ef51-->
@@ -7846,7 +7835,7 @@ This seemingly extremely healthy, modern, clear-eyed view of relationships hides
 
 But real, flesh-and-blood human relationships are exactly in the mud and sand, full of compromise and making do?
 
----
+***
 
 
 <!--memo:f0bd9102d38f-->
@@ -7860,7 +7849,7 @@ When you always keep the author's detached gaze, looking down on every street fr
 
 Indeed, it feels like I've lost that ability — I can't just have the experience...
 
----
+***
 
 
 <!--memo:2e2a351ed5ba-->
@@ -7880,7 +7869,7 @@ You've written "I don't want to bother others," but what's really underneath is:
 
 Part of your "independence" is a genuine personal choice, but another part is a protective mechanism, keeping you from having to face that particular feeling.
 
----
+***
 
 
 <!--memo:71e7d7d0cb18-->
@@ -7902,7 +7891,7 @@ You observe your parents the way you observe the Tibetan serf system — lucid, 
 
 The people closest to you are the people you record the least. That's not a coincidence.
 
----
+***
 
 
 <!--memo:70a6933db2c7-->
@@ -7926,7 +7915,7 @@ It's not that Dali wasn't good enough. It's that that feeling is hard for you to
 
 Movement is your most precise avoidance mechanism, and at the same time the truest source of your growth. It's both of those things at once.
 
----
+***
 
 
 <!--memo:04356e87187a-->
@@ -7952,7 +7941,7 @@ It's not that Dali wasn't good enough. It's that that feeling is hard for you to
 
 Movement is your most precise avoidance mechanism, and at the same time the truest source of your growth. It's both of those things at once.
 
----
+***
 
 
 <!--memo:a85150604b1f-->
@@ -7972,7 +7961,7 @@ One person, in a foreign country, constantly moving, using rational frameworks t
 
 You can't be seen, and then you verify that "being seen" is impossible, and then you become more independent, less dependent on other people's gaze. The loop reinforces itself.
 
----
+***
 
 
 <!--memo:ee46748343ea-->
@@ -7994,7 +7983,7 @@ The annual review you want to write, the blog you want to write, the personal br
 
 That's not vanity. It's a very deep, very real need for meaning. But you rarely admit it directly.
 
----
+***
 
 
 <!--memo:20ec718d6f2e-->
@@ -8014,7 +8003,7 @@ But you've never brought that version of yourself in front of another person to 
 
 Not because you don't need it. Because you don't believe that if you did that, the other person would still see you the same way. That disbelief, you've never tested head-on.
 
----
+***
 
 
 <!--memo:6701048674f0-->
@@ -8028,7 +8017,7 @@ For someone used to living by intuition and acting on impulse, "losing control" 
 
 The process of accepting and reconstructing yourself.
 
----
+***
 
 
 <!--memo:30eccbf228be-->
@@ -8156,10 +8145,10 @@ Talking with Cheng Qian, Zhang Xue said this: "Maybe in other respects I'm compl
 
 A reporter from Jiupai News also asked Zhang Xue whether he'd ever thought of giving up when he hit difficulties in his business. Zhang Xue said "never." He added: "Because I had no other choice — if I gave up, what would I do? Put it the other way round: this thing is very hard, but would doing another thing really become easy?"
 
----
+***
 
 
-## 7. Product, Engineering and Open Source
+## 6. Product, Engineering and Open Source
 
 *30 entries*
 
@@ -8188,7 +8177,7 @@ Users don't need the process.
 
 #Gewu/Product
 
----
+***
 
 
 <!--memo:5a847b7a7705-->
@@ -8212,7 +8201,7 @@ Don't use predictable interactions—integrate interaction into content itself.
 
 #Gewu/Product
 
----
+***
 
 
 <!--memo:5987fa2af79f-->
@@ -8224,7 +8213,7 @@ Don't use predictable interactions—integrate interaction into content itself.
 
 #Gewu/Creation
 
----
+***
 
 
 <!--memo:f42860895e52-->
@@ -8252,7 +8241,7 @@ Watch face should also be deeply bound to focus modes. For example, in work scen
 
 #Gewu/Environment
 
----
+***
 
 
 <!--memo:f45f98a675b2-->
@@ -8274,9 +8263,9 @@ Good at opening multiple desktops—one desktop for material retrieval, one desk
 
 #Gewu/Environment
 
----
+***
 
----
+***
 
 
 <!--memo:fd1c8f7e33a9-->
@@ -8290,7 +8279,7 @@ When I try to use this insight to summarise the biography of my own life, I find
 
 For example, in this process you can suddenly perceive a great deal, yes, gain a lot, and much of this raw, artistic experience is based on non-verbal protection, and it can lift you up a level.
 
----
+***
 
 
 <!--memo:5ffe57bd69ee-->
@@ -8344,7 +8333,7 @@ Innovation is born from the intermingling between disciplines.
 
 More essentially: innovation is born from the reconstruction of the original way of dividing.
 
----
+***
 
 
 <!--memo:bc08dc47ffc2-->
@@ -8356,7 +8345,7 @@ The user's intent, the intent of the interaction, may itself also serve as conte
 
 Note that interaction can also be part of the content
 
----
+***
 
 
 <!--memo:81b9f3067cee-->
@@ -8368,7 +8357,7 @@ What OpenClaw  solves is workflow
 
 It feels like something's still missing—the knowledge system
 
----
+***
 
 
 <!--memo:70aafe2e620a-->
@@ -8378,7 +8367,7 @@ It feels like something's still missing—the knowledge system
 
 What's truly useful isn't "what it can do", but the fact that once those few things that are "repetitive, high-frequency, hated, and easy to get wrong" are automated, the thrill is exponential
 
----
+***
 
 
 <!--memo:5e049ba88eac-->
@@ -8396,11 +8385,11 @@ Let these games explore the internet in a fun way, lowering the barrier
 
 And then, combined with their own information, give some appropriate recommendations
 
----
+***
 
 The goal I want to achieve is that, based on its understanding of me, it automatically does some things, and it doesn't even need my ideas, as long as I use tokens
 
----
+***
 
 
 <!--memo:f0a8c69903c1-->
@@ -8434,7 +8423,7 @@ We hold that a long-term memory system should not just be a vector database, but
 
 The core mission of a long-term memory system is to realise the transformation from "Fluid Intelligence" (based on immediate reasoning) to "Crystallized Intelligence" (based on accumulated experience). It connects time and intelligence, enabling AI to evolve continuously through self-feedback rather than relying only on the static weights of pre-training
 
----
+***
 
 
 <!--memo:8923d79b0a0e-->
@@ -8446,7 +8435,7 @@ And another question: in the process of executing a task, can it keep pushing so
 
 A lot of people would wonder, why not just let it run on its own? Let it handle things by itself, and we only need to intervene at the appropriate time.
 
----
+***
 
 
 <!--memo:8ce6193bd4d4-->
@@ -8544,7 +8533,7 @@ I was thinking: besides me, besides these tourists of the last few decades, goin
 
 When I was looking at that memorial album, some lines struck me deeply. That "peace for humanity really isn't easy." Although a lot of people keep saying they want to fight someone, or have a fight, but people who've truly been through war, I believe they wouldn't say that. They'd feel how small they are as a human being, they'd know where this system of war takes humanity, they'd understand how hard-won the peace now is. Cherish the present.
 
----
+***
 
 
 <!--memo:4e15d39641bf-->
@@ -8744,7 +8733,7 @@ Some themes are built around personal growth
 
 For example, a series of designs made with the theme of wanting to achieve a certain goal
 
----
+***
 
 
 <!--memo:d7bcefb2ef49-->
@@ -8766,7 +8755,7 @@ Quantitative analysis leans theory-driven, while grounded theory leans more mate
 
 Quantitative looks at overall patterns; grounded theory looks at the individual process
 
----
+***
 
 
 <!--memo:e0c19de56b74-->
@@ -8803,7 +8792,7 @@ Combined with Vision flow control, it further eliminates the TLS in TLS (nested 
 A lot of proxy services (jichang) are now pushing this same model.
 
 
-## 8. Content, Craft and Recording
+## 7. Content, Craft and Recording
 
 *11 entries*
 
@@ -8824,7 +8813,7 @@ This creates a strong sense of immersion.
 
 #Gewu/Writing
 
----
+***
 
 
 <!--memo:7246a6cb0f82-->
@@ -8836,7 +8825,7 @@ Actually, whether writing or design, one very interesting thing is: how to consc
 
 #Gewu/Writing
 
----
+***
 
 
 <!--memo:1d0bcd0b235a-->
@@ -8882,7 +8871,7 @@ Actually, translating to cognition vs. action distinction, this analogy also hol
 
 #Gewu/Creation
 
----
+***
 
 
 <!--memo:9abe888a2d2d-->
@@ -8906,7 +8895,7 @@ First few seconds' skip rate determines that the very beginning needs novelty.
 
 #Gewu/Creation
 
----
+***
 
 
 <!--memo:342f4f4a4468-->
@@ -8918,7 +8907,7 @@ Feel flomo is a very interesting app—friend recommended it, said it's a very f
 
 Also its interaction is intrusive—I really don't like this. This interaction isn't even part of the content—so I feel this operation is meaningless. Some operations occupy my attention, my line of sight, interrupt my previous focus states. So this app—how to say—not particularly attractive points so far, instead makes me very painful. I will delete it—because its harassment ability is too strong—always harassing me on notifications, and have to click in—very troublesome.
 
----
+***
 
 
 <!--memo:64d28adb6c00-->
@@ -8928,7 +8917,7 @@ Also its interaction is intrusive—I really don't like this. This interaction i
 
 I feel that if voice is the raw material, it's still "audio" you should use to distinguish it. It should be audio, it should be voice. And voice knowledge is actually a specialised version of a point-based knowledge base, because compared with general audio it's more suited to text-led content, Zhihu-style stuff. Zhihu's seven hundred words all revolve around personal podcasts, recordings, and it also does serialised, scenario-based processing. But I think audio may have some other weaknesses — for example, while it pays attention to the text content, it actually cares more about what was said, what other things were going on, and whether there's noise, or whether there's some scope of resolution, and what state the person is in right now. So if audio is passed straight through, it looks pretty hard to do. This step still needs more detailed thinking and prior handling — it still has to be done.
 
----
+***
 
 
 <!--memo:25c3c713bfb5-->
@@ -8938,7 +8927,7 @@ I feel that if voice is the raw material, it's still "audio" you should use to d
 
 How does the hair dryer feel? The lobster is a little sour, very good, so I still haven't stuffed everything in. The Memory file still has it split into... knowing Memory. Monos has a lot of them, ate the McDonald's file. It can make the daily raw AK a pad file, some files that can handle the moment the file system crashes. That way it will load the content it needs — this selectivity is a kind of suddenly-correct choice.
 
----
+***
 
 
 <!--memo:56434056b1a0-->
@@ -8983,9 +8972,9 @@ Only do deep content.
 Only do vertical content (one account).
 
 
-## 9. Business, Investing and Career
+## 8. Business, Investing and Career
 
-*4 entries*
+*11 entries*
 
 <!--memo:65e67b337066-->
 ### Diamond Investment: Best Performance Doesn't Equal the Engineering Optimum — The Marginal-Returns Trap
@@ -9110,7 +9099,7 @@ For a truly great tech company, digesting its P/E must depend on explosive profi
 
 > 2026-03-07 21:56:22 · `#石油` `#原油价格` `#能源投资` `#大宗商品` `#OPEC` `#OpenClaw`
 
-## 📊 Current Price (March 2026)
+#### 📊 Current Price (March 2026)
 
 Due to API limits, for live data see:
 
@@ -9118,27 +9107,27 @@ Due to API limits, for live data see:
 
 - WTI crude: investing.com/commodities/crude-oil
 
-## 📈 Key Historical Price Points
+#### 📈 Key Historical Price Points
 
-### 2020
+##### 2020
 
 - April: WTI fell to **-$37.63/barrel** (unprecedented negative oil price)
 
 - Reason: pandemic outbreak + storage capacity exhausted
 
-### 2021-2022
+##### 2021-2022
 
 - 2021: recovery to $70-80
 
 - March 2022: Russia-Ukraine conflict breaks out, surging to **$139** (14-year high)
 
-### 2023
+##### 2023
 
 - OPEC+ production cuts support prices
 
 - Range-bound: $70-95
 
-### 2024
+##### 2024
 
 - Geopolitical tension (Middle East situation)
 
@@ -9146,7 +9135,7 @@ Due to API limits, for live data see:
 
 - Range: $75-90
 
-### 2025-2026
+##### 2025-2026
 
 - Energy transition accelerating
 
@@ -9154,9 +9143,9 @@ Due to API limits, for live data see:
 
 - Expectation of a long-term demand peak
 
-## 🌍 Core Factors Affecting Oil Prices
+#### 🌍 Core Factors Affecting Oil Prices
 
-### Supply Side
+##### Supply Side
 
 - **OPEC+ production policy** (led by Saudi Arabia and Russia)
 
@@ -9166,7 +9155,7 @@ Due to API limits, for live data see:
 
 - **Release of strategic reserves** (SPR)
 
-### Demand Side
+##### Demand Side
 
 - **Global economic growth** (GDP→energy demand)
 
@@ -9176,7 +9165,7 @@ Due to API limits, for live data see:
 
 - **Energy transition** (EV substitution)
 
-### Financial Factors
+##### Financial Factors
 
 - **USD exchange rate** (oil is priced in USD)
 
@@ -9184,9 +9173,9 @@ Due to API limits, for live data see:
 
 - **Interest rate policy** (the Fed)
 
-## 📉 Long-Term Trend Judgment
+#### 📉 Long-Term Trend Judgment
 
-### Bearish Factors
+##### Bearish Factors
 
 ✓ Falling renewable energy costs
 
@@ -9196,7 +9185,7 @@ Due to API limits, for live data see:
 
 ✓ Carbon neutrality policy
 
-### Bullish Factors
+##### Bullish Factors
 
 ✓ Insufficient upstream investment (trough after 2015)
 
@@ -9206,7 +9195,7 @@ Due to API limits, for live data see:
 
 ✓ Inflationary pressure
 
-## 💡 Key Indicators to Watch
+#### 💡 Key Indicators to Watch
 
 1. **OPEC+ meetings** (monthly production decisions)
 
@@ -9218,7 +9207,7 @@ Due to API limits, for live data see:
 
 5. **US Dollar Index DXY**
 
-## 📚 Data Sources
+#### 📚 Data Sources
 
 - Investing.com
 
@@ -9231,10 +9220,6 @@ Due to API limits, for live data see:
 - Jinshi Data
 
 
-## 10. 📚 数据来源
-
-*1 entries*
-
 <!--memo:44e298cb9ce4-->
 ### 🏦 Goldman Sachs Daily Market Briefing
 
@@ -9242,11 +9227,11 @@ Due to API limits, for live data see:
 
 📅 March 7, 2026, Saturday
 
----
+***
 
-## 📊 Market Outlook
+#### 📊 Market Outlook
 
-### Macro Views
+##### Macro Views
 
 - **US stocks**: watch tech earnings and Fed policy
 
@@ -9254,7 +9239,7 @@ Due to API limits, for live data see:
 
 - **A-shares**: the strength of policy support and foreign capital flows
 
-### Sector Allocation Suggestions
+##### Sector Allocation Suggestions
 
 | Rating | Sector | Rationale |
 
@@ -9268,11 +9253,11 @@ Due to API limits, for live data see:
 
 | Underweight | Traditional energy | Transition pressure |
 
----
+***
 
-## 💡 Today's Investment Strategy
+#### 💡 Today's Investment Strategy
 
-### 🎯 Core Allocation
+##### 🎯 Core Allocation
 
 1. **Growth stocks**: 40-50% (tech, healthcare, new energy)
 
@@ -9282,7 +9267,7 @@ Due to API limits, for live data see:
 
 4. **Cash**: 10% (waiting for opportunities)
 
-### ⚠️ Risk Warnings
+##### ⚠️ Risk Warnings
 
 - Geopolitical uncertainty
 
@@ -9292,9 +9277,9 @@ Due to API limits, for live data see:
 
 - Exchange rate risk (RMB/USD)
 
----
+***
 
-## 🔍 Events to Watch Today
+#### 🔍 Events to Watch Today
 
 - US pre-market/after-hours earnings
 
@@ -9304,9 +9289,9 @@ Due to API limits, for live data see:
 
 - OPEC+ developments
 
----
+***
 
-## 📚 Data Sources
+#### 📚 Data Sources
 
 - Goldman Sachs official research reports
 
@@ -9316,16 +9301,12 @@ Due to API limits, for live data see:
 
 - Cailian Press
 
----
+***
 
 *⚠️ This briefing is for reference only and does not constitute investment advice*
 
 *Markets carry risk; invest with caution*
 
-
-## 11. 📚 数据来源
-
-*6 entries*
 
 <!--memo:f3607badbad8-->
 ### The Inertia of Corporate Success: The Paradox of Consistency and Flexibility
@@ -9338,7 +9319,7 @@ A company succeeds through a high degree of alignment across strategy, culture, 
 
 But the stronger the alignment, the greater the inertia. When the environment changes, the whole organisation can't make the turn
 
----
+***
 
 
 <!--memo:49c6ae1f0ac2-->
@@ -9348,7 +9329,7 @@ But the stronger the alignment, the greater the inertia. When the environment ch
 
 But I feel we can first make an RM, that is, treat the other party as a long-term work partner of yours. Let him — you want to think of every way to get into your own freestyle rhythm, still sort of the eight-tenths meaning. And essentially his salary is still this, he'll still go and recognise everything about you; his core goal is to help you settle and pay, rather than being a bank where you make a few short-term models you need, maybe.
 
----
+***
 
 
 <!--memo:93c95c2ae1d8-->
@@ -9426,7 +9407,7 @@ Japan: free capital mobility + independent monetary policy + a floating exchange
 
 Bangladesh's sex industry, I find it fascinating. On the surface it's legal, but in reality it's very contradictory. Adult women's private transactions can to a certain degree proceed legally — they can solicit openly, they can pimp — so it's a kind of quasi-legality: the state hasn't fully eliminated it, but also doesn't recognise it as a normal labour industry under equal protection. It's different from other countries — other countries divide off a district and manage it uniformly, making it regulated by law. But Bangladesh's sex industry, I feel, is more a very fragile market catalysed by its patronage structures, its poverty economy, the state's extremely weak governance capacity, and criminal networks. Human trafficking is a long-standing problem, and its urbanisation really does need a lot of these positions. And then there's its poverty, and its female fertility rate is very low too. The social forms now aren't just red-light districts — there's also street-based and mobile forms, and all of this is very unstable. Red-light districts are officially very tolerated; it's one of the world's largest brothel communities, apparently a "Brothel" community. And its hotels are very hidden too. How to put it — this whole industry is not sex, it's exploitation. It's a transit point, and also a site of exploitation within the country. And the involvement of minors in this exploitation is very serious; this is a very dark aspect of Bangladesh. And Bangladesh has a lot of violent law enforcement, which I find hard to talk about. Mm. What I find more interesting is that Bangladesh is also a Muslim-majority society. So women's status there is very hard to guarantee. Many of them actually have no real protection of labour rights, and when they encounter violence they don't dare call the police, and children are easily ostracised.
 
----
+***
 
 
 <!--memo:8d24dbe35463-->
@@ -9437,7 +9418,7 @@ Bangladesh's sex industry, I find it fascinating. On the surface it's legal, but
 xxx is the hook, the plan is retention, the memory bank is the moat.
 
 
-## 12. Body, Health and Daily Life
+## 9. Body, Health and Daily Life
 
 *8 entries*
 
@@ -9454,7 +9435,7 @@ Currently the industry solves this problem often needs combining traditional gam
 
 #Gewu/Game
 
----
+***
 
 
 <!--memo:96da62dc9f6f-->
@@ -9474,7 +9455,7 @@ He won't put you in a "needing to be cared for" role—but defaults you have jud
 
 #Gewu/Game
 
----
+***
 
 
 <!--memo:c69030582b3b-->
@@ -9570,4 +9551,4 @@ Awake, but not showy; communicating, but not impolite; enjoying, but not indulgi
 
 A drink that can be shared, repeated, and carries a faint spirituality, used to organise time, ease relationships, shape identity, and settle the soul
 
----
+***

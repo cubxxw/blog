@@ -4437,7 +4437,7 @@ The choice of technology: if it were me a year ago in university, when AI was ju
 
 Quantifying behavior — this is a kind of taste, but not only taste; I don't know how to describe this feeling. I think I still need to throw myself entirely into one product and get really great feedback before I can deeply understand these questions. Quantification is a rational act, it can be understood as an experiment, and it can also be understood as a preconception obtained from past experience — note, a preconception, not a prejudice. It's not that I'm against quantification, it's just that before quantifying, in the process of creating, shouldn't we return to our own intuition and feeling
 
----
+***
 
 Actually, after saying so much, the core thing is that I want to truly clarify my own thinking. I keep wanting to ask myself what I should do. Maybe there is no answer, but I can't help wanting to know: if I don't do anything, will I also regret it?
 
@@ -4473,7 +4473,7 @@ Then it's thinking. This place is so beautiful, I want to know it, I want to und
 
 A snapshot — how to describe this? Imagine: what is our biggest Chinese trait? We always feel longing and yearning toward the sense of lack for what we cannot get. Compared with what's near us, we look more at what's far away. If we're unsatisfied with our current school, we stop caring about any of its petty business, and instead become infatuated with the next, better school. So a good environment stirs up in people: this is where I want to go. This is also why Shanghai, or even Barcelona, the atmosphere of the whole city, even its petty-bourgeois, refined quality, attracts these people to long for it, and then to have the idea of settling in that city. A friend of mine would move to Chengdu even with a pay cut, because Chengdu has snow mountains ... If a city is really crappy — like the city the author grew up in, which I really think isn't good: people talk harshly, they have no manners, there's a lot of trash on the roads; this part I feel especially strongly — so naturally I have no interest, and I don't even want to go again
 
----
+***
 
 What's the use of saying all this? What does it have to do with making products?
 
@@ -5603,7 +5603,7 @@ But there are also some scenarios that are just LLM scenarios. I'm wondering wha
 
 Whether the reading scenario really has anything new in it
 
----
+***
 
 AI-assisted analysis
 

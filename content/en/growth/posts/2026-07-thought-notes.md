@@ -403,7 +403,7 @@ Knowledge is related to yourself: some model of thinking, some skills, some tool
 
 Creation corresponds to the platform's recommendation logic, some users' logic, plus the large amount of information you've researched — the output that comes out
 
----
+***
 
 In this process, think about the positioning of the records. A record counts as an index — related to yourself, but not necessarily continuously useful; you can only say it might be usable in the future, or it clarifies yourself right now. Then it doesn't count as knowledge, because only what's structured for continuous reuse later is called knowledge. But recording is one of the highest-conversion methods, so a record is a form between information and knowledge — semi-finished knowledge, an index
 

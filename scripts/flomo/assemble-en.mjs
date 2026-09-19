@@ -15,7 +15,7 @@
  *   scripts/flomo/en-meta.json  英文 front matter（人工翻译，避免机翻腔）
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
-import { renderEnNav, enSectionName } from './nav.mjs';
+import { renderEnNav, enSectionName, normalizeBody } from './nav.mjs';
 import { dirname, join, resolve } from 'node:path';
 
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '../..');
@@ -150,7 +150,7 @@ const zhFront = (month) => {
 };
 
 function renderEnCard(card) {
-  return `### ${card.title}\n\n${card.quote}\n\n${card.body}\n`;
+  return `### ${card.title}\n\n${card.quote}\n\n${normalizeBody(card.body)}\n`;
 }
 
 function buildEnBody(month, cards) {

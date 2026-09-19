@@ -812,7 +812,7 @@ This isn't just a café; it's a meaningful social project, a shared home belongi
 
 Inside, the walls of one room — inside and out — are covered with notes recording visitors' worries and messages. It's like an open diary, holding the moments and feelings of countless people who paused here: Vietnamese, English, Chinese, Korean...
 
----
+***
 
 Background story
 
@@ -1136,7 +1136,7 @@ A kind of regret and reluctance about the ending.
 
 But…
 
----
+***
 
 Sister Xiaomei let me leave first, deliberately moving her ticket to the afternoon. I know it was so there wouldn't be another send-off this time. The one left behind is always the forlorn one, and the one leaving feels reluctance too; at this moment time is ruthless.
 
@@ -2390,7 +2390,7 @@ After landing there's no good way to get back to the city; you can only take Gra
 
 I drank a coffee and did some work at the airport café, and waited for a car back into the city; there were people smoking in front of me ...
 
----
+***
 
 The process of recording
 
@@ -2442,7 +2442,7 @@ Only those who feel out of place have any chance of actually changing something.
 
 Whether Tokyo or Vietnam, why can't it hold another face of this world, and why can it?
 
----
+***
 
 Let me first ask: why can't I live more truthfully?
 

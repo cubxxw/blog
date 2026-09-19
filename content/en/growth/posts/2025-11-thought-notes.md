@@ -2083,7 +2083,7 @@ First sort out your own must-do tasks, and with AI break tasks down into "minima
 
 Example: break "learn the electronic keyboard" into "use GarageBand to play one simple tune following a Bilibili tutorial," rather than "systematically learn the electronic keyboard."
 
----
+***
 
 Energy management notes
 
@@ -2093,7 +2093,7 @@ Generating targeted solutions: feed high-consumption scenarios back to the AI (s
 
 Energy replenishment planning: AI recommends suitable replenishment according to the model, e.g., schedule creative tasks in the morning when energy is abundant, and pair a walk or light leisure activity with the afternoon energy trough
 
----
+***
 
 State management notes
 

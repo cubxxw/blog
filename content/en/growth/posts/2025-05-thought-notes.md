@@ -655,7 +655,7 @@ No compromise, no internal churn, hahaha.
 
 At the very end: the auntie in front was practising baduanjin, there was also an auntie practising basketball in the court on the left, and I was lying flat in the park.
 
----
+***
 
 Addendum, June 1, 2025:
 
@@ -841,7 +841,7 @@ The goal of the reading source.
 
 An overview of the source.
 
----
+***
 
 The approach to reference cards for the internet age.
 
