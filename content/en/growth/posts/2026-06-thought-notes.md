@@ -29,6 +29,22 @@ tldr:
 maturity: budding
 ---
 
+## Quick Navigation
+
+**Start with the long read**: 12 sections in the body above.
+
+**34 archived notes this month, filed under 7 themes:**
+
+- [Self-Knowledge and Psychology](#self-knowledge-and-psychology) · 13
+- [Daily Notes and Everything Else](#daily-notes-and-everything-else) · 5
+- [Business, Investing and Career](#business-investing-and-career) · 5
+- [AI and Agent Systems](#ai-and-agent-systems) · 4
+- [Product, Engineering and Open Source](#product-engineering-and-open-source) · 3
+- [Content, Craft and Recording](#content-craft-and-recording) · 2
+- [Reading, Ideas and History](#reading-ideas-and-history) · 2
+
+---
+
 ## Prologue: A slack surface, and high density underneath
 
 In June I came back from Laos to Shenzhen.

@@ -34,8 +34,20 @@ maturity: budding
 >
 > Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
 
----
+## Quick Navigation
 
+**113 records this month, filed under 8 themes:**
+
+- [Self-Knowledge and Psychology](#1-self-knowledge-and-psychology) · 30
+- [AI and Agent Systems](#2-ai-and-agent-systems) · 30
+- [Product, Engineering and Open Source](#3-product-engineering-and-open-source) · 26
+- [Daily Notes and Everything Else](#4-daily-notes-and-everything-else) · 12
+- [Reading, Ideas and History](#5-reading-ideas-and-history) · 5
+- [Travel, Places and Cities](#6-travel-places-and-cities) · 4
+- [Business, Investing and Career](#7-business-investing-and-career) · 4
+- [Body, Health and Daily Life](#8-body-health-and-daily-life) · 2
+
+---
 ## 1. Self-Knowledge and Psychology
 
 *30 entries*

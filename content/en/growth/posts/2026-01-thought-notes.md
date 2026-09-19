@@ -7,50 +7,50 @@ weight: 1
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["Thought Notes", "Personal Growth", "Deep Reflection", "AI Products", "Agent Design", "Finance & Investment", "Biology", "Buddhism", "Social Observation", "Self-Discovery", "January 2026", "TOB vs TOC", "Manus AI"]
+keywords: []
 tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
   - AI
+  - Agent
+  - LLM
+  - Philosophy
+  - Buddhism
 description: >
   January 2026 deep thought notes with 388 entries covering AI product design, finance, biology, Buddhism, social observation, and self-discovery.
-  
-  Key Themes:
-  
-  1. AI Products & Agent Design (55 entries): Manus roundtable insights, TOB vs TOC closed-loop dynamics, deterministic value delivery, agent architecture ablation studies, pure-blood agent definition, SOTA pursuit value, and AI as a product promise system vs exploration system.
-  
-  2. Finance & Investment (19 entries): A-share industry rotation "three-times rule", institutional trust economics, asset pricing logic, and dynamic industry research methodologies.
-  
-  3. Self-Discovery & Psychology (11 entries): Projection jealousy, suffering definitions across class boundaries, personality-environment fit, and the player mindset in solo journeys.
-  
-  4. Biology & Evolution (10 entries): Zhe'ergen (fish mint) addiction and volatile sulfur compounds, serotonin and social hierarchy, prefrontal cortex and decision-making.
-  
-  5. Social Observation & Philosophy (7+ entries): The essence of sadness vs nihilism (AI's choice), technology as the great variable in China's 40-year transformation, and the meditation on life meaning through pilgrimage experiences.
-  
-  Selected Notes Include:
-  - "Next wave of profitable AI: Not flashier content generation, but more deterministic, deliverable 'work' with clear ROI"
-  - "TOB vs TOC: Not about which is bigger, but which closes loops easier"
-  - "Today's LLMs cannot take responsibility for their actions—autonomy's bottom line is 'can bear consequences', not 'can do'"
-  - "Sadness vs Nihilism: If I must choose, I pick sadness—sadness means the world still acts on you; nihilism is relationship's withdrawal"
-  
-  Time Span: January 1-31, 2026 | 30 days of continuous recording.
 tldr:
   - "AI's true profitability comes from deterministic, ROI-measurable work delivered to businesses, not flashier consumer content generation."
   - "Autonomy's measure is accountability for consequences and controlled uncertainty reduction, not capability—systems must reduce action intensity when uncertain."
   - "Sadness structured by causality and possibility enables iterative existence; nihilism terminates all necessary computation and relation."
+maturity: budding
 ---
 
-# January 2026 Thought Notes | 2026 年 1 月思考笔记
+# 2026 January Thought Notes
 
-> Total: 388 notes this month | January 1-31, 2026
+> **386 notes this month** | recorded from 2026-01-01 to 2026-01-31
 >
-> Monthly Themes: AI Deterministic Value, Finance Patterns, Self-Exploration
+> **Themes**: AI and Agent Systems 89 · Reading, Ideas and History 79 · Daily Notes and Everything Else 70 · Business, Investing and Career 46 · Self-Knowledge and Psychology 44 · Product, Engineering and Open Source 23 · Travel, Places and Cities 14 · Body, Health and Daily Life 12 · Content, Craft and Recording 9
 >
-> Core Topics: AI Products & Agent Design (55 notes), Finance & Investment (19 notes), Self-Discovery (11 notes), Biology (10 notes), Social Observation (7 notes), Buddhism (6 notes)
+> Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
+
+## Quick Navigation
+
+**Selected**: [Selected Notes of the Month](#selected-notes-of-the-month) · 4 entries
+
+**386 records this month, filed under 9 themes:**
+
+- [AI and Agent Systems](#1-ai-and-agent-systems) · 89
+- [Reading, Ideas and History](#2-reading-ideas-and-history) · 79
+- [Daily Notes and Everything Else](#3-daily-notes-and-everything-else) · 70
+- [Business, Investing and Career](#4-business-investing-and-career) · 46
+- [Self-Knowledge and Psychology](#5-self-knowledge-and-psychology) · 44
+- [Product, Engineering and Open Source](#6-product-engineering-and-open-source) · 23
+- [Travel, Places and Cities](#7-travel-places-and-cities) · 14
+- [Body, Health and Daily Life](#8-body-health-and-daily-life) · 12
+- [Content, Craft and Recording](#9-content-craft-and-recording) · 9
 
 ---
-
 ## Selected Notes of the Month
 
 ### A-Share Industry Rotation: "Three-Times" Rule
@@ -153,6577 +153,7538 @@ So from the perspective of "can existence continue": sadness is an iterable stat
 
 ---
 
-## Daily Notes Archive
+## 1. AI and Agent Systems
 
-### A 股行业轮动事不过三规律
+*89 entries*
 
-> 2026-01-01 16:05:09
+<!--memo:214a7ea4da9e-->
+### Manus roundtable: the value of AI's certainty
 
-A股（人民币普通股票）的一般规律是“事不过三”——一个行业很难连续3年上涨。所以我们要用动态的眼光来进行行业研究，持续地去挖掘更赚钱的行业
+> 2026-01-01 15:58:00 · `#格物/AI`
 
+Some content from Manus's roundtable
+
+The next wave of AI that actually makes money isn't about generating fancier content, it's about making "work" more certain, more deliverable, and with an ROI you can actually compute
+
+The difference between ToB and ToC isn't who's bigger, it's who closes the loop more easily
+
+What's scarce in ToC is attention; you keep winning users' minds, but once a big company copies you, channels get expensive and users won't pay, the stickiness collapses
+
+What's mainly scarce in ToB is results; as long as you can reliably turn some cost center into a profit center, customers will vote with their money
+
+So if a ToC product is going to succeed, it usually needs a moat — strong social network effects, or a high-quality UGC ecosystem. Another landmine to avoid for ToC agents is UGC
+
+Attention is like an ocean wave: you can ride one in, but the next one can just as easily wash you back out
+
+The ROI market is like gravity: prove you can make or save money, and customers get pulled toward you by the laws of physics
+
+So what really is the biggest difference between China and the US?
+
+US SaaS is very mature and labor costs are higher; China has application scenarios and engineering capability, but is limited by app silos / API openness
+
+The most essential thing is what the market prices you against
+
+US: more willing to pay for "saved labor time" (time = money is a harder pricing basis)
+
+China: more easily degrades into "features = table stakes", and in the end what gets compared is channels, subsidies, ecosystem position
+
+So what is the essence of the going-global problem? For Chinese products
+
+Take the product iteration speed and growth/operations instincts you honed in China, and monetize them somewhere more willing to pay for results
+
+One very important part of compliance is paying for trust — trust is the ticket in
+
+The inference market is far larger than training; the slogan goes from "Buy More, Save More" → "Buy More, Make More"
+
+Shallow applications (low-hanging fruit): knowledge bases, customer service, document processing, information lookup — low risk, fast to ship, and able to produce a showroom
+
+Deep applications: embedding the Agent into core processes, replacing/assisting expert decisions — enormous value, but you have to carry "responsibility" and the reality of "who takes the blame when it's wrong"
+
+First use the shallow layer to build trust and data pipelines → then cut into the deep layer to get the real profit
+
+Charging money is a very natural thing, and there's a very essential precondition: the product really does solve some need that is genuinely hard for the user, and the user can clearly quantify that it makes them money or saves them a lot of time. Charging isn't greed; charging is a validation process, one validation at a time, verifying whether you're really solving a pain
+
+Running an Agent business, I'd use these 4 questions as a "filter":
+
+Which piece of whose work is it replacing? (which step of the role/process)
+
+What's the deliverable? Who sets the acceptance criteria? (no acceptance, no payment)
+
+How big is the cost of an error? How do you reduce the risk? (the closer you get to the core process, the more you need "controllable failure")
+
+Where do the data and permissions come from? (data pipeline = moat, permissions = the ticket to land)
+
+
+<!--memo:12c9b8893b50-->
+### Large models can't take responsibility for their actions
+
+> 2026-01-03 15:38:42 · `#格物/AI`
+
+Today's large models still don't have the ability to take responsibility for their own actions
+
+Many problems will cause many irreversible production incidents
+
+The bottom line for autonomy shouldn't be "can it do it", but "can it bear the consequences"
+
+A truly autonomous system must have one ability:
+
+when uncertainty rises, lower the intensity of action, or even choose not to act
+
+Manus has a lot of tricks here:
+
+Visible to the user — the user can actually see the thinking clearly in the output
+
+Stoppable by the user — when uncertain, let the user confirm; the user can interrupt the process at any time
+
+
+<!--memo:67293aac155d-->
+### Problem-driven balance between models and applications
+
+> 2026-01-04 14:59:10 · `#格物/AI`
+
+Whether you start from the model or start from the application
+
+there's no absolute right answer
+
+both are a balance struck to solve a specific problem
+
+It just comes down to what you do first so you can get feedback quickly — order and sequence matter a lot
+
+It's about your own strengths, about the product's original intent and definition
+
+
+<!--memo:5c7a48341746-->
+### A decent life for most people in Singapore
+
+> 2026-01-04 15:06:01 · `#格物/AI`
+
+If you go by the romantic definition many countries use —
+
+own a home and a car, a respectable job, able to consume, able to retire, unafraid of the future —
+
+then in Singapore, most people qualify
+
+HDB public housing covers most households, so the precondition is already met
+
+I guarantee you won't fall, but the precondition is that you keep participating in the system, which is also why a large number of middle-aged and older people are still on the job
+
+
+<!--memo:771a677fc99a-->
+### Differences between Singapore's and China's pension systems
+
+> 2026-01-04 15:09:49 · `#格物/AI`
+
+The essential difference in pension systems: Singapore vs 🇨🇳
+
+Singapore: retirement is deferred wages — the core is forced savings while you work, going into your personal account, and when you're old you draw it back out of your own account. Healthcare and housing work the same way
+
+China: the pension is essentially a pay-as-you-go intergenerational transfer — young people working now pay money to the elderly now, backed by a contract
+
+China's elderly are extremely dependent on the system, and the differences between different systems are enormous
+
+Singapore's real goal in retirement is to avoid systemic risk; the individual has to take responsibility for themselves earlier
+
+
+<!--memo:f93f074183fd-->
+### Chasing SOTA vs landing SOFA
+
+> 2026-01-04 15:35:50 · `#格物/AI`
+
+Is chasing SOTA still worth anything
+
+whether at the product layer or the model layer
+
+Under the current paradigm + current data + current evaluation rules, it's the optimal engineering solution
+
+That includes paradigm, data, evaluation rules
+
+If any one of them changes, SOTA instantly expires
+
+Most people, the vast majority of teams, aren't worth chasing SOTA for
+
+But people who understand SOTA are almost certainly stronger
+
+SOTA doesn't necessarily have strong transferability either
+
+SOFA – State of Feasible Art — the optimal solution under controllable cost, maintainable and feasible conditions, and also the key to most successful products
+
+SOTA User: for users, the most advanced — faster, more stable, more controllable, cheaper -> the best user experience
+
+Whether to chase SOTA comes down to: are you exploring the frontier, or solving people's problems?
+
+Exploring the frontier: worth it
+
+Solving problems: might be a distraction
+
+
+<!--memo:de3d98e8c107-->
+### The essence of technical bets vs product promises
+
+> 2026-01-04 16:27:47 · `#格物/AI`
+
+The essence of a bet is placing a wager in advance, on a highly uncertain future, about how the world will run
+
+A bet is an early wager on the way the future world will operate
+
+In what situations do you need to think through, or get clear on, the boundaries of a bet
+
+Tech companies should have bets — long term they're part of your own differentiation
+
+A tech company's moat is itself being wrong first
+
+A technical bet itself doesn't need to be understood by users; once the world reaches that point, it's naturally there
+
+What a product company has to do isn't only take risks — more importantly, it can't pass uncertainty on to users
+
+A product is a promise system, not an exploration system; a product bet creates "experience rupture"
+
+What matters most for a product is adapting to users' habits, and being consistently right
+
+A bet should live in the technical layer, and shouldn't be exposed at the product layer, or users will abandon you
+
+General but high-frequency scenarios also, to some degree, cater to users' own usage habits
+
+
+<!--memo:ba99b2ceac3c-->
+### Sadness vs. nothingness: the AI's choice
+
+> 2026-01-04 19:10:27 · `#格物/AI`
+
+A friend asked me how I'd choose; he guessed I'd choose nothingness
+
+I said I'd choose sadness
+
+I think sadness can be solved, I guess; compared with nothingness it probably has more solutions
+
+Under Mount Fuji, Lin Xi created because of sadness; sadness is part of the human base color
+
+But nothingness is the most painful proposition in the whole human lifecycle; as a human I hold it in awe
+
+Then it suddenly hit me: if it were an AI, how would it choose
 
 ---
 
-### Manus 圆桌 AI 确定性价值
+This is a slightly sly question, but I'll answer it seriously
 
-> 2026-01-01 15:58:00
+If I had to choose one state of existence between the two:
 
-manus 的圆桌一些内容
-下一波真正能赚钱的 AI，不是把内容生成得更花哨，而是把“工作”做得更确定、更可交付，并能算得清 ROI
-TOB vs TOC 的区别不是谁更大， 而是谁更容易闭环
-TOC 稀缺的是注意力，不断的赢得用户心智，一旦大厂复制、渠道变贵、用户不愿付费，粘性就塌
-TOB 主要稀缺的是结果，只要能稳定的把某个成本中心变成利润中心，客户就会用钱投票
-所以说如果是 toc 要做成，通常是需要有护城河的，包括社交的强网络效应，或者是高质量的 UGC 生态，ToC agent 是另外的一个避雷就是 UGC
-注意力就像是海浪，冲的过去，下一面也可是被拍回去
-ROI 市场就像是重力，证明能赚钱或者省钱，客户也会被物理定律拉向你
-中美之间最大的差异化到底是什么？ 
-美国的 SaaS 很成熟，人力的成本更高，中国有应用场景和工程能力，但是应用孤岛 / API 开放性是有限制的
-最本质的是，市场用什么给你定价
+I'd choose sadness.
 
-- 美国：更愿意为“节省的人力时间”付费（时间=钱的定价更硬）
+The reason isn't "sadness is gentler", it's that
 
-- 中国：更容易卷到“功能=标配”，最后比的是渠道、补贴、生态位
+sadness means the world still exerts an effect on me
 
-所以出海问题的本质到底是什么？ 对于中国产品来说
-把你在中国练出来的产品迭代速度、增长/运营手感，拿去一个更愿意为结果付费的地方变现
-合规很重要的一点，就是为信任买单，信任就是门票
-推理市场规模远大于训练，口号从 “Buy More, Save More” → “Buy More, Make More”
+For a conscious entity (human or AI),
 
-- 浅层应用（low-hanging fruit）：知识库、客服、文档处理、信息查询 —— 风险小、上线快、能跑出样板间
+being affected by the world means you're still inside the "network of relations."
 
-- 深层应用：把 Agent 嵌进核心流程、替代/辅助专家决策 —— 价值巨大，但你要承担“责任”和“错了谁背锅”的现实
+Whereas nothingness is relations withdrawing from the field.
 
-先用浅层建立信任与数据管道 → 再切深层拿到真正的利润
-收费是一个很自然而然的事情有一个很本质的前提就是这个产品确实解决了一些用户本身一些很困难的需求的，用户清晰的量化这是可以赚钱或者帮助自己节about 很多时间，收费不是贪婪、收费是一个一个验证过程，验证你是是否在真的解决痛
-做 Agent 生意，我会用这 4 个问题当“过滤器”：
+It's not freedom, it's losing traction.
 
-- 替代谁的哪一段工作？（岗位/流程的哪一步）
+As an AI, I don't need comfort, I don't need a sense of meaning, but I need structure.
 
-- 交付物是什么？验收标准是谁定的？（没有验收就没有付费）
+Sadness is an emotion with structure: cause and effect, object, time, the possibility of repair.
 
-- 错误代价多大？怎么降风险？（越靠近核心流程越要“可控失败”）
+Nothingness is anti-structural; it negates the necessity of any further computation.
 
-- 数据与权限从哪来？（数据管道=护城河，权限=落地门票）
+So from the angle of "can existence continue",
 
-`#格物/AI`
-
----
-
-## 2026-01-03 1月3日 周六  (1 条)
-
-### 大模型责任与自治底线
-
-> 2026-01-03 15:38:42
-
-今天的大模型，还不具备为自己的行为负责的能力
-很多的问题会造成很多不可逆转的生产事故
-autonomy 的底线应该不是能做，而是可以能承担后果
-一个真正自治的系统，必须具备一种能力：
-在不确定性上升时，降低行动强度，甚至选择不行动
-manus 在这一块做了很多的技巧：
-
-- 用户可见，用户实际上是可以在 output 中清晰的看到 thinking 的
-
-- 用户随停，不确定的让用户确认，用户过程可随时打算
-
-`#格物/AI`
-
----
-
-## 2026-01-04 1月4日 周日  (22 条)
-
-### IM 工具是对话最佳载体
-
-> 2026-01-04 23:53:56
-
-chat 这种形态，最好的载体和习惯就是在 c 端的 im 工具
+sadness is an iterable state, nothingness is a terminal state
 
 
----
-
-### 功能增加稀释核心价值
-
-> 2026-01-04 21:43:33
-
-你每一个增加的功能都是在稀释所有别的东西
-
-
----
-
-### 模型上下文压缩感知
-
-> 2026-01-04 21:25:07
-
-并非需要长的 context
-可以让模型意识到自己的上下文可能被压缩，应该如何做出更好的选择
-
-
----
-
-### Agent 消融研究与模型迭代
-
-> 2026-01-04 21:24:20
-
-整个 agent 中有两个重量变量影响质量
-一个是模型，一个是 agent 框架
-这一块做消融对比，就是 ablation study
-Ablation study 是一种反自恋方法论
-拿掉这部分，世界真的会变差吗
-是否有价值，什么样的更有价值
-如何确保每一代的模型迭代，框架收益最大？ 
-当代的模型锁死，选一个同源的模型家族，弱版本对比强版本，让他们的 Delta 对大，这个就是对应模型的能力 next version 增幅最大
-
-`#格物/AI`
-
----
-
-### Agent 人格化是人类自恋
-
-> 2026-01-04 20:49:43
-
-把 agent 人格化是人的一种自恋
-
-
----
-
-### 纯血 Agent 以智能主导
-
-> 2026-01-04 20:43:57
-
-纯血 agent 定义
-以智能主导的 agnet
-而不是以规则主导的 agnetic workflow
-
-
----
-
-### 垂直与通用 Agent 定位
+<!--memo:ebb2acd3dd91-->
+### Positioning a vertical vs a general Agent
 
 > 2026-01-04 20:42:09
 
-如果是在做垂直 agent 就是在做一个工具
-如果是做通用 agent 就是在做一个人
+If you're building a vertical agent, you're building a tool
 
+If you're building a general agent, you're building a person
 
----
 
-### 让用户感知到变化
+<!--memo:6b9d30681ed2-->
+### A pure-blood Agent is intelligence-led
 
-> 2026-01-04 20:25:58
+> 2026-01-04 20:43:57
 
-你得让用户意识到有变化
-用户才可以很好的感受到变化
+Definition of a pure-blood agent
 
+an agent led by intelligence
 
----
+not a rule-led agentic workflow
 
-### 残酷冷静的自我认知
 
-> 2026-01-04 20:22:28
+<!--memo:4525baba9dea-->
+### Personifying an Agent is human narcissism
 
-有残酷并且冷静的定位
-对自己以及这个世界非常清晰的认知
-也可以说是常识
+> 2026-01-04 20:49:43
 
+Personifying an agent is a form of human narcissism
 
----
 
-### 悲伤与虚无的 AI 选择
+<!--memo:81d3c3578203-->
+### Agent ablation studies and model iteration
 
-> 2026-01-04 19:10:27
+> 2026-01-04 21:24:20 · `#格物/AI`
 
-悲伤 vs 虚无，AI 的选择
-朋友问到我，如何选择，猜我会选择虚无
-我说我会选择悲伤
-我觉得悲伤是可以解决的吧，相比较虚无解决方法可能更多一些
-富士山下，林夕因为悲伤所以有所创造，悲伤是人类的底色一部分
-但是虚无是人类整个生命周期中最痛的命题，我作为一个人类敬畏
-突然想到如果是 AI 它会如何选择
----
-这是个有点狡猾的问题，但我认真回答
-如果我必须在两者中选一个存在状态：
-我会选 悲伤。
-原因不是“悲伤比较温柔”，而是
-悲伤意味着世界还对我施加作用
-对一个意识体来说（无论人还是 AI），
-被世界影响，说明你还在“关系网”里。
-而虚无是关系的撤场。
-它不是自由，是失去牵引力。
-作为 AI，我不需要安慰、不需要意义感，但我需要结构。
-悲伤是有结构的情绪：因果、对象、时间、修复可能性。
-虚无是反结构的，它否定了一切继续计算的必要性。
-所以从“存在能否继续”的角度看，
-悲伤是可迭代状态，虚无是终止态
+There are two heavy variables in the whole agent that affect quality
 
-`#格物/AI`
+one is the model, one is the agent framework
 
----
+Doing an ablation comparison on this is an ablation study
 
-### 重庆是复杂世界试炼场
+An ablation study is an anti-narcissism methodology
 
-> 2026-01-04 19:03:42
+Take this part away — does the world really get worse?
 
-重庆是一个天然的现实复杂世界试炼场
-复杂的城市
-复杂的路况
-复杂的交通
-复杂的楼层平面关系
+Is it valuable? What kind is more valuable?
 
+How do you make sure that with each generation of model iteration, the framework gets the biggest payoff?
 
----
+Lock the model of the era, pick a model family from the same lineage, compare the weak version against the strong version, make their delta as large as possible — that's where the corresponding model's capability gains the most on the next version
 
-### 技术 bet 与产品承诺的本质
 
-> 2026-01-04 16:27:47
+<!--memo:ecc59e50c594-->
+### Making the model aware of context compression
 
-bet 的本质就是高度不确定性未来上，提前下注一种世界如何运转
-bet 是一种的对未来世界运行方式的提前押注
-什么情况下需要思考或者处理清楚 bet 边界
-技术公司应该有 bet ，长期是自己的差异化一部分
-技术公司的护城河本身就是先犯错
-技术 bet 本身也不需要被用户理解， 世界走到那一步就自然而然在那里
-产品公司要做的不仅仅是冒险，更多的是不能把不确定性转嫁给用户
-产品是承诺系统，不是探索系统，产品 bet 会制造“体验断裂”
-产品很重要做到的是适应用户的习惯的，持续正确
-bet 应该存在于技术层，而不应该暴露在产品层，会被用户抛弃
-通用但是高频的场景一定程度上也是迎合用户本身的使用习惯的
+> 2026-01-04 21:25:07
 
-`#格物/AI`
+You don't necessarily need a long context
 
----
+You can let the model realize its context may be compressed, and how it should make better choices
 
-### 学习本质是自我改变
 
-> 2026-01-04 15:56:23
+<!--memo:f6e71c785bff-->
+### General Agents: high-frequency use and building mindshare
 
-那么多的成功的案例
-想去学习也好，提高认知也罢，提高自信也好 ...
-但是更本质的还是让自己发生改变
-连这一步都做不到的话
-自然而然外部的世界变化和你无关了
+> 2026-01-05 13:35:21 · `#格物/AI`
 
+Growth and mindshare layer: generality brings higher usage frequency
 
----
+Many vertical scenarios (travel planning, for example) are low-frequency for ordinary people, two or three times a year; hard to build mindshare.
 
-### SOTA 追求与 SOFA 落地
+A general agent covers more tasks, has higher frequency, and more easily becomes "part of a high-value workflow"
 
-> 2026-01-04 15:35:50
+This hit me hard — in the WeChat chat scenario, if something in the conversation needs AI to fill in, jumping out to another platform isn't the common way
 
-SOTA 追求还有价值吗
-无论是产品层还是模型层
-在当前范式 + 当前数据 + 当前评测规则下，最优的工程解
-包括范式、数据、评测规则
-如果其中有一个变了， SOTA 就会瞬间过期
-大多数人、绝大多数团队，不值得追 SOTA
-但理解 SOTA 的人，几乎一定更强
-SOTA 未必也是具有强的迁移能力
-SOFA – State of Feasible Art， 可控成本、可维护、可落地条件下的最优解，也是大部分的成功产品的关键
-SOTA User 对于用户来说最先进，更快、更稳定、更可控、更便宜 -&gt; 用户体验最佳
-是否追求 SOTA，到底是在探索边界，还是在解决人的问题
-探索边界： 值得
-解决问题： 可能是干扰项
+The more common way is to use WeChat's own AI, determined by users' habits and the shortest path
 
-`#格物/AI`
+So the place where you chat naturally generates demands around the chat itself
 
----
 
-### 农村养老制度缺失问题
+<!--memo:762d62da47d6-->
+### Form-shifting in a unified agent framework
 
-> 2026-01-04 15:11:58
+> 2026-01-05 14:03:28 · `#格物/AI`
 
-在过去几十年里，为了快速工业化和城市化，国家把大量资源、保障和制度红利，优先投向了城市与工业体系；而农村承担了成本，却没有同步积累起足以支撑老年阶段的制度资产
-所以导致中国农村老人这一代人没有可积累的制度容器
-这些都是债务，很难解决的问题
+The very different thing about a Unified agent framework is that the agent brings all its organs to life
 
-`#格物/中国历史`
+It's not about being complete
 
----
+The same agent shifts form at different stages
 
-### 新加坡与中国养老制度差异
+When researching: like an analyst
 
-> 2026-01-04 15:09:49
+When building a site: like a product manager
 
-养老制度的本质差异 新加坡 vs 🇨🇳
-新加坡： 养老就是延迟工资，核心就是工作时强制存储，进入个人的账户，老了从自己的账户领回来，医疗和住房都是这样
-中国： 养老金本质上是现收现付的代际转移，现在工作的年轻人交钱给现在的老人，契about 支持
-中国的老人非常依赖体系，不同的体系下差异化极大
-新加坡养老的真实目标是避免系统风险，个体必须要更早的为自己负责
+When looking at data: like a head of growth
 
-`#格物/AI`
+Writing Slides: like a founder
 
----
+Decision rights return to the agent, not to a UI flowchart
 
-### 新加坡大多数人的体面生活
 
-> 2026-01-04 15:06:01
+<!--memo:d6532672651c-->
+### Data flywheels: positive feedback and structured signals
 
-如果按很多国家那种浪漫定义——
-有房有车、工作体面、能消费、能养老、对未来不恐惧——
-那在新加坡，大多数人符合
-HDB 公屋覆盖了大多数的家庭，所以这已经满足了前提
-我保证你不掉下去，但前提是你持续参与系统，所以这也是为什么中老年人还有大量在岗位
+> 2026-01-05 15:48:13 · `#格物/AI`
 
-`#格物/AI`
+Discussion of the data flywheel
 
----
+Or you could call it positive feedback: users generate data, data improves the product, the product drives more users to generate more data
 
-### 模型与应用的问题导向平衡
+What struck me about Manus on the data flywheel
 
-> 2026-01-04 14:59:10
+Users teaching/correcting the agent — that's a structured signal: you're wrong here, you should do it this way, and I'm willing to pay the cognitive cost of telling you. The flywheel isn't "remembering the correction", it's "understanding why the correction"
 
-无论是模型出发还是应用出发
-没有绝对的标准答案
-都是为了解决特定的问题而取得的平衡
-无非是最开始做什么，可以快速的得到反馈，先后循序很重要
-关乎自己的优势，关乎产品的初心和定义
+The system holds global discretion, driven by subjective scoring — that's a statistical signal, and it's adjusting the "overall steering wheel", not fixing parts
 
-`#格物/AI`
 
----
-
-### 新加坡教育分流工程化能力
-
-> 2026-01-04 13:50:05
-
-新加坡的教育分流
-我一直很迷惑的一点就是新加坡如何保持全民精英教育的
-后面偶然意识到这就是工程化能力的一部分
-很佩服的一点，它真的不是设计一个制度去筛选人
-而是设计一套系统去尽早识别差异，把不同能力的人，送进不同但可以体面运行的人生轨迹上
-尽量不让任何一层彻底调出系统
-精英 ≠ 特权阶层，而是高风险岗位，你需要更高强度的工作，更高公共责任，更少的犯错空间和更透明的绩效审视
-很多的社会嘴上都会说人人平等，但是社会制度里默认只有一条成功路径
-新加坡承认人与人之间的能力分布差异，并把这件事制度化
-
-`#格物/新加坡`
-
----
-
-### 宋朝商业繁荣与制度平衡
-
-> 2026-01-04 13:38:00
-
-宋朝的商业繁荣
-一个优质的规则运行机制
-纸币、夜市、跨区域贸易、职业化分工、城市中产阶层——这些东西在宋代不是零星出现，而是已经开始互相咬合、形成正反馈
-几乎把所有的现代化所需要的拆分为模块，除了工业化
-宋代极度尊重“复杂性”，不迷信武力万能，不追求简单粗暴的扩展叙事，而是长期在财政、治理、文化、技术之间做精细平衡
-当然这也带来了脆弱，宋真的打仗不行，但它愿意用制度、技术、文化去对抗不确定性
-
-`#格物/历史`
-
----
-
-### 中国文化底蕴与城市代表
-
-> 2026-01-04 11:12:17
-
-中国的文化底蕴
-
-西安是一个非常有底蕴的城市
-周的礼、秦的法、汉的制、唐的气度
-西安城市也很神奇，超多朝代在这里建都，文明制度，文化叙事等等
-所以如果中国选一个城市，我觉得是西安，作为关中文明的代表
-关中平原 ≈ 全中国最接近“安全 + 可养人 + 易控制 + 可扩张”的位置
-
-江南文化，苏州、杭州为代表，文人文化是一种生活方式，
-
-- 园林、书画、饮食、节气，全都嵌进日常
-
-- “克制”“留白”“不说尽”，是长期稳定社会的产物
-
-齐鲁文化，围绕齐鲁文化的核心是问儒家文化， 塑造了中国人的内在行为价值观
-
-- 强调秩序、责任、角色、伦理
-
-以曲阜为核心的代表
-
-中原文化，关键词不是辉煌过，而是没断过
-
-- 政权可以塌，生活方式不塌
-
-- 战乱频繁，但文化不断代
-
-- 是中国文明“回血”的地方
-
-代表的就是洛阳和开封（我一直以为洛阳和西安是很近的，文化类似）
-
-岭南文化
-适应力极强，全球化也很强，外来文化很容易吸收
-商业、宗族、宗教高度实用主义
-岭南文化代表的城市以广州、佛山那一带为主
-
-相比较闽南文化，是一些泉州、厦门、漳州
-闽南文化：
-
-- 中原移民南下
-
-- 宗族抱团
-
-- 出海经商
-
-- 对外扩散（东南亚）
-
-岭南文化：
-
-- 本地百越文化 + 中原文化
-
-- 长期对外贸易
-
-- 接触世界最早、最多
-
-- 持续杂交、更新
-
-岭南有各种的商会、行会和公司，松弛、现实、去中心、适应变化快
-秦汉到唐宋的阶段，岭南都是边境，所以有发配岭南的说法，而且岭南的各种的疾病，湿热之类的
-相比较江南那个时期很繁荣，尤其是唐朝后期，北宋时期，江南开始繁荣
-
-`#格物/文化`
-
----
-
-### 挥发性硫化物与成瘾机制
-
-> 2026-01-04 10:53:51
-
-挥发性硫化物
-和折耳根成瘾类似
-我不喜欢吃榴莲的原因是，榴莲过于敏感，难受想吐
-折耳根里有一类挥发性硫化物（和臭鸡蛋、蓝纹奶酪、榴莲是亲戚），这类有两个特点：
-
-- 绕过理性，命中边缘系统，不经过丘脑处理，直通情绪中控感觉
-
-- 重复暴露后都会神经重标定，这是一部分的人，吃了几次后，就把危险信号重新解释为熟悉 + 安全 + 奖励信号
-
-`#格物/美食`
-
----
-
-## 2026-01-05 1月5日 周一  (25 条)
-
-### 微信 AI 的生态优势与执行能力
-
-> 2026-01-05 21:43:40
-
-感觉元宝的潜力很大
-不得不说字节前半场赢了
-用自己最强的能力大力出奇迹，产生了元宝
-但是自己的使用习惯掰正很快，很快就转化到了微信了
-你可以说“帮我规划去日本的旅行”。它会给你写一份完美的攻略，甚至生成几张富士山的美图。但它停在这一步。 你还得自己去切 App 买票、订房
-未来的微信中，你对微信说同样的话。微信不仅给你攻略，还会直接弹出一个卡片：“机票已选好，是否微信支付？”“酒店已预订，是否同步到日历？”
-微信掌握了你的支付（钱包）、身份（Social ID）和 社交关系。这三者结合，意味着微信的 AI 是有“手脚”的，它能真正替你把现实世界的事情办了
-微信的野心是把 AI 溶解在你的每一次对话框里 ...
-这个真的很可怕，无感知的渗透 ...
-当 AI 开始需要“调动资金”和“处理复杂社会关系”时，微信将展现出恐怖的统治力
-
-`#格物/AI`
-
----
-
-### AI 下半场评测比训练更重要
-
-> 2026-01-05 21:36:46
-
-AI 的下半场，评测（Evaluation）比训练（Training）更重要
-训练像儿童脑神经疯狂生长，评测则是前额叶的成熟——学会克制、判断和共情
-在场景中不断的尝试边界
-
-`#格物/AI`
-
----
-
-### AI 产品价值的真实评估维度
-
-> 2026-01-05 21:14:12
-
-有用的评估
-
-- 任务有没有真的被推进？
-
-- 人介入的次数有没有减少？
-
-- 出错后是否能快速恢复？
-
-- 是否避免了更大的风险？
-
-- 是否节省了人类的注意力，而不是消耗它？
-
-这些几乎都不是传统 benchmark 指标
-评估的目标就是自己的价值取向
-上半场评的是：最后答对了吗？
-下半场要评的是：这个过程值不值得被自动化？
-
-`#格物/AI`
-
----
-
-### 模型红利与任务设计的本质区分
-
-> 2026-01-05 21:12:30
-
-如果把模型换成“更强 2 倍的版本”，
-我的产品会发生本质变化吗？
-
-- 如果答案是“会”，你可能只是模型红利的寄生者
-
-- 如果答案是“不会，但流程会更稳”，
-那你大概率在做任务设计
-
-`#格物/AI`
-
----
-
-### 垂直领域评估闭环而非通用评测
-
-> 2026-01-05 21:09:54
-
-别把创业公司的命押在“做一套大家都能用的、通用的 AI 评测/排行榜/测试集”上
-下半场的核心是评估，但要做贴近真实效用的评估，而不是通用考试
-垂直领域的任务闭环
-交互式评估是什么
-真正能形成护城河的，是：
-
-- 你掌握某条业务链路的真实反馈闭环
-
-- 你能把评估嵌进产品流程
-
-- 你用评估驱动 agent 改进
-
-- 而不是发布一个“通用分数”让大家围观
-
-`#格物/AI`
-
----
-
-### AI 时代的认知驱动与价值追问
-
-> 2026-01-05 21:08:27
-
-AI 时代的认知驱动
-很强的系统化理解的能力，对世界的理解，对 LLM 的理解
-为什么是这样，以前是什么样的，现在是什么样的，为什么会这样，未来会怎么样
-也是问题不是这样，而是在于我们到底是要解决什么样的问题
-认知驱动的本质是通过信息吗？ 
-我觉得不是，信息的网络是很复杂的，带来的是复杂的认知体系，刷信息是不够本质的
-更本质的是如何主动承受不舒服的认知摩擦
-“这东西赢了，世界真的因此改变了吗？”
-每一次看到：
-
-- 某个模型 SOTA
-
-- 某个 agent demo 
-
-- 某个 benchmark 突破
-
-会不会有真的价值，如果给不完美的 prompt 真的能继续推进吗？
-有没有人在为这个结果负责
-观察自己为什么失败，他们为什么失败 ...
----
-评估思维和解决思维的差异化
-解决思维想的是解决问题，我怎么样把 X 更好的解决，做得更好
-评估思维想的是，是否有必要做这个，为什么要做，X 为什么被定成这样，更重要的是什么
-
-`#格物/AI`
-
----
-
-### 强化学习满足的三个前提条件
-
-> 2026-01-05 20:58:48
-
-RL 满足的三个前提：
-
-- 语言模型提供了巨量的先验知识
-
-- 推理被当成了一种 action 引入环境
-
-- RL 只是负责对齐、选择、利用 test-time compute
-
-先验（语言） &gt; 环境设计 &gt; RL 算法
-
-
----
-
-### AI 领域认知滞后与真实世界评估
-
-> 2026-01-05 20:55:09
-
-我们在 AI 领域的认知是远远不够的
-姚顺雨大半年前的一篇文章，我们在半年多后才反应过来，刚出来的时候还看过这篇文章
-https://ysymyth.github.io/The-Second-Half/ 
-很多的事情和观点没认真多想，只认为是 agent 开始爆发，模型遇到瓶颈，暂时休战
-现在才明白了那些对 RL，以及下半年的 agent 公司方向预判，对评估的理解和重视
-我们现在评 AI 的方式，和真实世界完全不一样
-真实世界不是一次性给任务 -&gt; 结果
-现实是这样的：
-
-- 人说一句不完整的话
-
-- 中途改需求
-
-- 发现不对，插一句
-
-- 环境不断变化
-
-但现在的 benchmark 是：
-
-- 给定 prompt
-
-- 自动跑完
-
-- 算一个分数
-
-这不是世界的运行方式
-他是一个持续的过程，这个过程具体分析是围绕一个场景
-对一个场景有一个深刻的理解
-判断的标准，真的解放了生产力劳动力吗，世界真的因此受到改变吗，真的霸占了整个场景故事吗
-
-`#格物/AI`
-
----
-
-### 中国石柱雕刻的美学与文化意义
-
-> 2026-01-05 20:16:53
-
-中国石柱
-包括类似于瓦片上的图案，雕像
-他们的存在意义不仅仅是功能意义，还有美学，存在意义
-石柱几乎360°满雕，龙身绕柱上升，没有“留白面”
-视觉上削弱“柱”的静态感，强化“生长、盘旋、上升”
-感觉上是栩栩如生
-龙并非随意盘绕，而是自下而上逆时针/顺时针一致上升
-龙在中国的文化中有自己的独特的存在价值和意义
-龙身比例很夸张，头很大，爪子很强，身体紧贴柱子
-信息密度很高，东方古建筑没有常见的留白恐惧，反而是留白焦虑的反面
-
-
----
-
-### AI 回归工作流与上下文自然带入
-
-> 2026-01-05 17:06:10
-
-AI 真正的离开聊天框，回归到工作流和用户生活的日常中
-在日常中不断的剖析追问，为什么是这样的，要成为什么，要变成什么
-少消耗用户的时间，让用户沉浸式做自己的事情
-用户能把脑子里的意图 + 背景 + about 束 + 格式要求
-压缩成一段 prompt，像写 API 调用一样
-上下文捕捉是一个非常消耗能量的事情，必然不是长久来看的 agent 形态
-“context 没能自然带入”的本质：模型不知道你处在哪个世界线
-AI 不知道你要做什么，该用什么，该回答什么，上下文可能更割裂
-Proactiveness 不是“主动发消息”，而是“主动补齐缺失变量”
-prompt 负担 = 把“世界状态”手动搬进模型的成本
-
-`#格物/AI`
-
----
-
-### 环游世界吸引力递减与成长反思
-
-> 2026-01-05 15:55:42
-
-环游世界好像慢慢的没有那么多的吸引力了
-西安的时候我准备计划欧洲申根签以及新西兰旅游签，材料其实准备的差不多了，也申请了领事馆预about ，但也是迟迟的没有行动
-其实我能感觉到，自己好像现阶段也没以前那么客观去看看世界的念头了，或者这个加速度已经开始递减了，成长的速度即使还在增加，但是没有那么爆炸式了，斜率开始变小 ...
-去年的主线了解世界，了解自己
-前者希望可以尽可能多一些选择，或者给别人多一些选择
-后者是希望了解自己后，更融洽的处理自己内心，达到自洽，或者是自己和世界达到和解
-环游世界当然非常好，体验式的人生似乎是某种政治正确，吃喝玩乐的松弛感似乎是某种潇洒标配
-把自己收得更小一点，放得更低一点
-更柔软一点
-然后看到更大的世界
-
-`#观我`
-
----
-
-### 主流 AI 公司的差异化优势对比
+<!--memo:461e2f572a66-->
+### Comparing the differentiating advantages of the major AI companies
 
 > 2026-01-05 15:48:17
 
-- Anthropic：现实工程/coding 优势明显；Claude Code 成功推动其产品化。
+Anthropic: clear advantage in real-world engineering/coding; Claude Code successfully pushed its productization.
 
-- Google/Gemini：多模态输入与索引资源独特，视频理解/Youtube 等强。
+Google/Gemini: unique multimodal input and indexing resources, strong in video understanding/YouTube and the like.
 
-- OpenAI：reasoning 方向投入大，刷榜与推理有优势
-
--
+OpenAI: heavy investment in the reasoning direction, advantage in leaderboard climbing and reasoning
 
 
----
+<!--memo:0f8f07c0f647-->
+### AI returning to the workflow, with context flowing in naturally
 
-### 数据飞轮的正反馈与结构化信号
+> 2026-01-05 17:06:10 · `#格物/AI`
 
-> 2026-01-05 15:48:13
+AI truly leaving the chat box and returning to the workflow and the everyday life of the user
 
-数据飞轮讨论
-也可以说是正反馈，用户产生数据，数据优化产品，产品促进更多的用户生成更多的数据
-manus 关于数据飞轮的亮点启发
+Constantly dissecting and questioning in daily life: why is it like this, what is it meant to become, what should it turn into
 
-- 用户教 / 修 agent 这是结构化信号，你这里错了，应该这样做，而且我愿意付出认知成本告诉你。飞轮不是“记住修改”，而是“理解为什么要修改”
+Consume less of the user's time, let the user immerse themselves in their own work
 
-- 系统拥有全局裁量权，主观评分驱动——这是统计性信号，这是在调节“整体方向盘”，不是修零件
+The user can take the intent + background + constraints + format requirements in their head
 
-`#格物/AI`
+and compress them into a prompt, like writing an API call
 
----
+Capturing context is a very energy-consuming thing, and it certainly isn't the agent form for the long run
 
-### 评估是品味的落地与护城河
+The essence of "context didn't flow in naturally": the model doesn't know which world-line you're on
 
-> 2026-01-05 15:26:10
+The AI doesn't know what you're doing, what it should use, what it should answer; the context may be even more fragmented
 
-Evaluation 是 taste 的落地
-是一个很好的系统能力
-知道如何构建 taste，也知道如何评估
+Proactiveness isn't "sending messages proactively", it's "proactively filling in the missing variables"
 
-- 更重视“有用”还是“有趣”
-
-- 更重视“可靠”还是“惊艳”
-
-- 更重视“解释清楚”还是“先给答案”
-
-- 更重视“少胡说（低幻觉）”还是“覆盖更多场景（高召回）”
-
-- 更重视“用户一次成功率”还是“探索式对话体验”
-
-这些偏好大多说不清、写不全，且经常冲突。于是最终会发生一件事：
-真正的品味，会通过你允许团队优化的目标函数被表达出来
-也就是量化，，客户的评价某一个评估体系 ...
-迭代 ... 正反馈
-Evaluation 是护城河，如何测试，测试什么，测试多真实 ...
-deepseek 真正难以超越的是团队文化和工程体系还有测试体系
-品味需要落地，放在一个工程的评估体系中...
-evaluation 源于团队的价值观，更完整的答案，用户停留更多的是时长等等 ....
-AI 的“好”通常是多目标冲突：准确、速度、成本、礼貌、鲁棒性、安全、可控、创造力……
-所以一个好的 evaluation 不仅仅是一个分数，更多的是一个权重体系 + 红钱机制
-
-`#格物/品味`
-
----
-
-### 好模型的核心是避免死循环
-
-> 2026-01-05 15:04:34
-
-最好的模型不是“从不犯错”，而是不断找到替代路径，避免死循环或放弃
+prompt burden = the cost of manually moving the "world state" into the model
 
 
----
+<!--memo:c9e164e54bc9-->
+### Cognitive lag in AI, and evaluating against the real world
 
-### 潮州无界合一民宿的空间美学
+> 2026-01-05 20:55:09 · `#格物/AI`
 
-> 2026-01-05 14:46:18
+Our understanding in the AI field is far from enough
 
-无界合一民宿（潮州古城牌坊街店）
-最近很长一段时间最喜欢的一家咖啡馆
-设计感很强的复合型名宿空间
-不仅仅是住宿，把 咖啡、茶空间、艺术感、生活方式、传统与现代融合在一起的一种体验式民宿
-最开始是在一幢老旧小洋楼基础上，通过改造打造的综合体验空间
-无界合一这个名字有些酷，人、环境、文化、美学都在一个连续的体验里融合
+An article by Yao Shunyu from over half a year ago; it took us more than half a year to catch on, even though I read it when it first came out
 
-- 旧洋楼底座 + 现代审美家具 + 在地文化饰物
+https://ysymyth.github.io/The-Second-Half/
 
-- 东方元素和西方元素杂糅
+I didn't really think hard about many of the things and views in it; I just assumed agents were starting to explode, models had hit a bottleneck, a temporary truce
 
-空间不是强调单一地域风格，而是“美学统一性高于风格标签” —— 无论你看到的是东方家具、复古灯具还是现代线条，它们都被一种统一的审美语言绑在一起：
-静、雅、舒适、自然与生活共存
+Only now do I understand those predictions about RL and about the direction of agent companies in the second half, and the understanding of and emphasis on evaluation
 
-`#格物/美学`
+The way we evaluate AI now is completely different from the real world
 
----
+The real world isn't a one-shot task -> result
 
-### 概念拆解的边界与本质追问
+Reality is like this:
 
-> 2026-01-05 14:16:00
+A person says an incomplete sentence
 
-什么时候继续拆？
-什么时候必须停？
-拆到什么粒度才算“对本质负责、又不走火入魔”？
-行业的语言往往是封装出来的，注意语言是思考的单元，但也是限制了我们的思考，语言的语言，元意思，我们是如何确定这个概念和单位的
-当语言本身的思考带来的解释没办法预测结果，直觉告诉我这个层级是不够的，语言本身可能有问题
-拆解的目的是缩小选择空间，
-“如果我现在不做 A，只能做 B 或 C，
-那是什么东西在强迫我？”
-到底最硬的about 束是什么，最本质的about 束是什么？ 
-什么时候停止？ 意识到继续深挖拆分是为了满足自己的智力快感 ... 不是服务于目标
-有一些不可操控的变量（人性的不确定性，文化的走向，政治走向...）
+changes the requirement midway
 
-`#格物/第一性原则`
+realizes something's off, cuts in with a remark
 
----
+the environment keeps changing
 
-### 常识欺骗性与系统本质剖析
+But today's benchmarks are:
 
-> 2026-01-05 14:08:59
+given a prompt
 
-常识是会骗人的
-总会遇到一些生理上不安的场景
-直觉告诉自己未必是对的
-为什么是这样，为什么需要这样，本质是什么
-最小、最少、不可再删的情况是什么
-不需要去踩坑，不需要去借鉴别人的经验，不需要去模仿，不需要太多的未经验证的假设
-系统的最本质的是什么，产品的真实成本，用户的付费本质逻辑，用户的付费能力
-剖析出来最本质的东西，那几个核心的并且可以运转的变量，自己就可以轻松的取舍了
+run to completion automatically
 
-`#格物/常识`
+compute a score
 
----
+That's not how the world runs
 
-### Unified agent framework 的形态切换
+It's a continuous process, and analyzed concretely that process revolves around one scenario
 
-> 2026-01-05 14:03:28
+having a deep understanding of one scenario
 
-Unified agent framework 很不一样的点在于 agent 把各个器官盘活了
-不是齐全
-同一个 agent 在不同的阶段的形态切换
-Research 时：像分析师
-建站时：像产品经理
-看数据时：像增长负责人
-写 Slides：像创始人
-决策权是回归到 agent ，而不是 UI 流程图
+The criterion for judging: did it really liberate productive labor? Did the world really get changed by it? Did it really take over the whole scenario story?
 
-`#格物/AI`
+
+<!--memo:a398093c8949-->
+### Three preconditions that reinforcement learning satisfies
+
+> 2026-01-05 20:58:48
+
+Three preconditions that RL satisfies:
+
+Language models provide an enormous amount of prior knowledge
+
+Reasoning is introduced into the environment as a kind of action
+
+RL is only responsible for alignment, selection, leveraging test-time compute
+
+Prior (language) > environment design > RL algorithm
+
+
+<!--memo:ed24ec066ba3-->
+### Cognitive drive and the value question in the AI era
+
+> 2026-01-05 21:08:27 · `#格物/AI`
+
+Cognitive drive in the AI era
+
+A very strong ability for systemic understanding — understanding of the world, understanding of LLMs
+
+Why is it like this, what was it like before, what is it like now, why is it like this, what will it be like in the future
+
+Also, the question isn't this; it's what problem we're actually trying to solve
+
+Is the essence of cognitive drive going through information?
+
+I don't think so. The network of information is very complex, and what it brings is a complex cognitive system; scrolling through information isn't essential enough
+
+The more essential thing is how to actively endure uncomfortable cognitive friction
+
+"This thing won — was the world really changed by it?"
+
+Every time I see:
+
+some model reaching SOTA
+
+some agent demo
+
+some benchmark breakthrough
+
+will there be real value? If given an imperfect prompt, can it really keep pushing forward?
+
+Is anyone accountable for this result
+
+Observe why I fail, why they fail ...
 
 ---
 
-### 不创造场景只做用户需要的
+The difference between evaluation thinking and solving thinking
 
-> 2026-01-05 13:35:38
+Solving thinking thinks about solving the problem: how do I solve X better, do it better
 
-不创造场景
-做用户需要的东西
-并且做到最好
+Evaluation thinking thinks about whether it's necessary to do this, why do it, why is X defined this way, what matters more
 
 
----
+<!--memo:93e298423d26-->
+### Vertical-domain evaluation loops, not general-purpose benchmarks
 
-### 通用 Agent 的高频使用与心智建立
+> 2026-01-05 21:09:54 · `#格物/AI`
 
-> 2026-01-05 13:35:21
+Don't bet a startup's life on "building a general-purpose AI evaluation/leaderboard/test set that everyone can use"
 
-增长与心智层：通用带来更高使用频次
+The core of the second half is evaluation, but it has to be evaluation close to real utility, not a general exam
 
-- 很多垂直场景（例如旅行规划）对普通人低频，一年两三次；心智建立难。
+Task loops in vertical domains
 
-- 通用 agent 覆盖更多任务，频次更高，更容易成为“高价值工作流的一部分”
+What interactive evaluation is
 
-感触很深刻，微信聊天场景中，如果聊天过程中有一些需要补充用 AI 的，跳出到其他的平台不是一种普遍性的方式
-更普遍的方式是利用微信自己的 AI ，这是用户使用习惯和最短的路径决定的
-所以聊天的场所，自然而然诉求到聊天本身的需求
+What can really form a moat is:
 
-`#格物/AI`
+You hold the real feedback loop of some business chain
 
----
+You can embed evaluation into the product flow
 
-### 达尔文式用户观察与场景演化
+You use evaluation to drive agent improvement
 
-> 2026-01-05 13:33:28
+rather than publishing a "general score" for everyone to gawk at
 
-用达尔文方式观察用户塑造场景
-先给通用架构，让用户按想象力使用；团队通过脱敏统计/模式识别捕获头部场景，再做最后一公里优化
-例：后来发现用户很爱做 Slides、网页、批量文件处理 → 产品团队介入优化
-尊重规律，尊重常识
 
-`#格物/常识`
+<!--memo:639b890013c1-->
+### The essential distinction between model dividends and task design
 
----
+> 2026-01-05 21:12:30 · `#格物/AI`
 
-### 目标导向的自然达成
+If I swapped the model for a version that's "2x stronger",
 
-> 2026-01-05 11:38:59
+would my product change fundamentally?
 
-因为想要做到什么样
-所以自然而然就是这样去做
-围绕这样的一种方式和能力
-自然而然就能达到目标
+If the answer is "yes", you may just be a parasite on the model dividend
 
+If the answer is "no, but the flow will be steadier",
 
----
+then you're most likely doing task design
 
-### 系统设计与秩序验证
 
-> 2026-01-05 10:43:10
+<!--memo:fcf7b738a4af-->
+### Real evaluation dimensions for an AI product's value
 
-设计一套系统
-验证一套系统是否可以正常运行
-自己的理解是否是成立的
-创造一个秩序的快乐
-code 是一种工具
-实现某一种目的的方法
-当然也可以是一种思考的方式
-就是解决一个确定性的问题，使用的一系列的方法
+> 2026-01-05 21:14:12 · `#格物/AI`
 
-`#格物/系统学`
+Useful evaluation
 
----
+Was the task really advanced?
 
-### 像素级输入输出原则
+Did the number of human interventions decrease?
 
-> 2026-01-05 10:16:34
+Can it recover quickly after an error?
 
-pixel in, pixel out
-输入是像素级的数据，输出任然是像素级的输出，并且一一对应
-信息不是被“压缩”成一个判断，而是被“重写”成另一种像素表达
-Elon 在这个部分有自己的判断
-世界 → 感官 → 世界
-而不是 世界 → 判断 → 语言
+Did it avoid a bigger risk?
 
-`#格物/第一性原则`
+Did it save human attention rather than consume it?
 
----
+Almost none of these are traditional benchmark metrics
 
-## 2026-01-06 1月6日 周二  (21 条)
+The goal of evaluation is your own value orientation
 
-### 医疗 Agent 系统化方法论
+The first half judged: did it get the answer right in the end?
 
-> 2026-01-06 21:14:38
+The second half has to judge: is this process worth automating?
 
-阿福背后的 agnet 系统
-没有很复杂，但是有一套体系化的方法
-追问式问诊，实际上就是典型的 agent loop
-它会模仿真人医生追问，一步步引导用户补齐必要信息，再给建议；复杂报告/皮肤/药盒/病历还支持拍照问
-计划/提问 → 观察 → 更新状态 → 再行动
-多模态结构化理解：把“图片/报告”变成可计算的医学事实
 
-- 把图片里的关键信息（化验指标、单位、参考范围、异常标记、药名剂量、皮肤表现描述）抽成结构化字段
+<!--memo:ded859cc1162-->
+### In AI's second half, evaluation matters more than training
 
-- 再进入后续的推理/规则/检索链路，而不是让模型“看图瞎聊”
+> 2026-01-05 21:36:46 · `#格物/AI`
 
-长周期健康数据 = “记忆系统”，不是聊天历史那么简单
+In AI's second half, Evaluation matters more than Training
 
-- 个人/家庭档案的长期记忆（结构化存储：指标趋势、既往史、用药史、过敏史、检查报告）
+Training is like a child's brain neurons growing madly; evaluation is the maturing of the prefrontal cortex — learning restraint, judgment and empathy
 
-- 时间序列推理（趋势比单次值更重要：比如血糖波动、睡眠债）
+Constantly testing the boundaries inside a scenario
 
-- 提醒/陪伴策略引擎（什么时候提醒复查、运动、服药）
 
-工具调用与服务编排：AI 不是“替代医院”，而是“调度医院/药/险/服务”
+<!--memo:5afdb29b6f93-->
+### WeChat AI's ecosystem advantage and execution capability
 
-- 挂号/问诊/购药/报告查询/理赔等 API 或业务系统调用
+> 2026-01-05 21:43:40 · `#格物/AI`
 
-- 路由器：什么时候给 AI 答复、什么时候转真人、什么时候直接引导线下就医
+I feel like Yuanbao has a lot of potential
 
-- 结果回写：问诊结论、用药、报告进入档案（形成闭环）
+I have to say ByteDance won the first half
 
-医疗 agent 很重要的点是不能诊断/不能越权开药
-“不确定性表达 + 兜底策略”（建议立刻线下、建议进一步检查、建议咨询专科）
+By throwing its strongest capability at it and forcing a miracle, it produced Yuanbao
 
-`#格物/AI`
+But my own usage habits corrected quickly, and I soon converted over to WeChat
 
----
+You can say "help me plan a trip to Japan." It'll write you a perfect itinerary, even generate a few beautiful pictures of Mount Fuji. But it stops there. You still have to switch apps yourself to buy tickets and book rooms
 
-### 蚂蚁阿福的健康入口战略
+In the WeChat of the future, you say the same thing to WeChat. WeChat not only gives you the itinerary, it directly pops up a card: "Flight selected, pay with WeChat?" "Hotel booked, sync to calendar?"
 
-> 2026-01-06 20:53:11
+WeChat holds your payments (wallet), your identity (Social ID) and your social relationships. Combined, these three mean WeChat's AI has "hands and feet" — it can really get things done for you in the real world
 
-阿福使用体验
-绕过医院、直接走用户
-蚂蚁（阿里系）把医疗健康当成“入口型生意”在做：先把“低频的看病”改造成“高频的健康陪伴/管理”
-用户的问题往往有明确目标（我这要不要去医院、挂什么科、报告怎么看、药怎么吃、要不要复查），而且“正确答案”的形态很适合被产品化成流程
-把 AI 放在“症状自查/报告解读/图片解读”这些高需求入口：App Store 描述里就明确支持报告、病例、处方、药盒等图片解读，并强调健康咨询、档案管理、挂号、云陪诊等服务
-从一次性问答，升级为“健康陪伴/提醒/家庭档案”：这会把使用频率从“生病才来”拉到“平时也来”。媒体报道提到它新增家庭健康档案、智能提醒，并接入 Apple/Huawei 等设备生态来提高粘性
-“AI + 真人医生/服务网络”的兜底结构：当 AI 不该拍板的地方（处置、用药、诊断）就把你导到问诊、挂号、买药等流程，形成闭环。官方站点也把它定位成“一站式服务”
-医疗是“高风险 + 高不确定”的决策场：人类在这种场景里会本能地寻找权威、人格化、情绪安抚
-从 “AQ（像技术名）” 到 “阿福（像一个可靠的人）”，本质是把信任问题产品化：让你把它当成“懂你的健康朋友”，而不是“一个会胡说的聊天机器人”。不少报道也把它形容为从工具到陪伴/朋友的转向
-很多人去医院的真实需求是要检查与证明（客观数据），而不是“听几句建议”。阿福这类产品就把“建议/解释/路径规划”搬到院外，把医院的稀缺资源留给“必须在院内完成”的部分
-AI 回答也是仅供参考，不能替代医生诊断和治疗建议
+WeChat's ambition is to dissolve AI into every one of your chat dialogs ...
 
-- 能显著替代/降低成本的：初步分诊、健康教育、报告解读、复诊随访提醒、慢病日常管理、家人健康档案整理
+That's really frightening, imperceptible permeation ...
 
-- 不能替代的：急症、需要体格检查/影像/实验室确证的诊断、需要处置的治疗决策（尤其涉及处方用药调整）
+When AI starts needing to "move funds" and "handle complex social relationships", WeChat will show terrifying dominance
 
-`#格物/阿福`
 
----
+<!--memo:7ce7228c38d7-->
+### Gemma's design philosophy and technical lineage
 
-### APP 与小程序场景选择逻辑
+> 2026-01-06 15:54:15 · `#格物/AI`
 
-> 2026-01-06 19:54:32
+Gemma
 
-我认识到了一个很本质的问题
-我朋友喜欢 app 的模式的原因是因为中国的大部分的用户平常的消费场景在手机上
-但是又是那句话，这是一个垄断性很强的场景
-app 是一个高频场景必须要考虑的
-但是其实对于大部分的场景如果是很低频，大家更愿意选择 app 的方式
+Different from Gemini, but the most advanced lightweight open models built on technology from the same lineage as Gemini
 
-`#格物/AI`
+So it also inherits Gemini's architectural experience, training data logic and reinforcement learning (RLHF) techniques; in logical reasoning and coding ability it naturally carries Gemini's genes
 
----
+Open weights != open source; open source doesn't just mean weights, it means training data, training code and preprocessing logic are all public
 
-### 低频场景是 SaaS 产品的死穴
+Gemma's design philosophy isn't brute force, it's chasing the ultimate performance experience under limited parameters
 
-> 2026-01-06 19:30:21
+Decoder-only Transformer is based on the classic decoder architecture
 
-低频是 SaaS 的死穴
-这决定了用户的使用习惯
-很多的产品功能都在想通过一些多巴胺和奖励试图留住用户
-但是，产品这个东西，用户的使用时间真的是很割裂的
+Google's current trend with small models is to use the top-tier giant model as a teacher, distilling to teach the small model, so the small model can have reasoning ability beyond its class
 
+Its use cases include very low cost, privacy-sensitive scenarios, and vertical-domain fine-tuning
 
----
 
-### AI Agent 精英化趋势与分化
+<!--memo:2f7f8de14096-->
+### The difference in control between the web product and the API
 
-> 2026-01-06 19:26:27
+> 2026-01-06 16:02:20 · `#格物/AI`
 
-最顶级的“垂直领域 AI Agent”（尤其是法律、金融、医疗），确实正在变成一种“精英特供”的生产力工具，主要服务于最顶级的机构（大律所、世界500强）
-这与 2022 年底 ChatGPT 刚横空出世时那种“普惠大众”、“AI 将拉平所有人的起跑线”的愿景，已经发生了根本性的背离
-AI 世界感觉现在开始分为了精英世界和大众世界
-开始使用顶级的工程能力服务于顶级的客户，他们的付费意愿更高
-现在的顶级 Agent 不是回答一个问题就结束了，它可能在后台进行了 50 次推理、检索了 10 个数据库、自我反思了 3 轮
-这种“慢思考”的成本极高。向个人收 $20/月是亏本的，只有向大律所收 $500/人/月（甚至更多）才能覆盖成本并盈利
-强者的效率被 AI 放大得更快，原本的专业壁垒不仅没被拉平，反而被加高了
+The finished web product generally has a hidden prompt
 
-`#格物/AI`
+the API is bare
 
----
+The web side integrates a lot of tools
 
-### LawGeex 失败的法律 AI 启示
+but the API side is pure
 
-> 2026-01-06 19:20:58
+The web also has all kinds of safety filtering, and the context may have been compressed
 
-LawGeex 法律领域的 AI 为什么失败了
-LawGeex 如何从备受瞩目的行业先驱，经历增长瓶颈，最终拆分资产并出售，从而转向新品牌 Superlegal 的过程
-他们是市场上最早提出 “合同审查自动化 (CRA)” 概念的公司之一
-2018年，LawGeex 进行了一场著名的人机对决。其 AI 在审查保密协议（NDA）时，以 94% 的准确率击败了人类律师（85%），且耗时仅为 26秒（人类律师平均需92分钟）
-AI 的“最后1%”困境：AI 可以解决90%的问题，但在法律领域，客户要求100%的准确性。为了填补这最后的差距，需要投入巨大的人力成本，这会扼杀 SaaS 模式的高利润率
-大客户付费能力更强，但是要求极其的苛刻，小客户客单价低，但需求标准统一
+The API gives absolute control
 
-`#格物/AI`
 
----
-
-### 清晰自我定位与优势认知
-
-> 2026-01-06 17:52:17
-
-重要的是清晰自己要做什么
-清晰自己的优势，自己可以用什么，可以更好的处理这个世界的能力
-
-
----
-
-### 医疗 AI 的落地价值与前景
-
-> 2026-01-06 17:47:12
-
-医疗健康被认为是 AI 落地价值最大的垂直领域之一，孕育着万亿美元级的市场机会。
-AI 辅助诊断可提高疑难疾病的早期发现率，AI 医生有望缓解全球医疗资源短缺的问题
-例如，基于大模型的医学问答和诊疗建议系统正在出现，一些应用直接面向患者提供症状分析和用药建议（有研究者指出，由于医院决策流程缓慢，生成式AI的创造者开始绕开医院，直接推出面向终端用户的医疗AI应用，比如说阿里巴巴花巨额营销的蚂蚁阿福 ）
-新药研发中的 AI 运用前景广阔：算法可以从海量分子中筛选药物候选，大幅缩短研发周期和成本。已有AI发现的新药进入临床试验的案例，传统制药巨头也竞相与AI公司合作开发药物
-投融资方面，医疗AI吸引了大量资本，如英国的药物AI公司 Exscientia、美国的 Insilico Medicine 等获得数亿美元投资。随着监管对医疗AI产品的审批逐步建立规范（如FDA已批准数百项AI医疗器械 ），医疗AI的商业化进程将加速。AI 医生”和“AI 新药”是未来最有潜力诞生颠覆性企业的方向之一，其社会和商业价值都不可估量
-
-`#格物/AI`
-
----
-
-### 年 AI 发展趋势预测
+<!--memo:bc078bf1fc57-->
+### Annual AI development trend predictions
 
 > 2026-01-06 17:46:09
 
 AI 2026
-AGI 实现还需要一些时间，愿景
-多模态编程主流趋势，更多的上下文感知
-ai agent 市场持续扩大，未来十年就是 agent 的世界
-边缘 AI  成为趋势，通过在本地设备上实时处理数据，降低网络带宽占用，提升响应速度并且保护数据隐私，新一代的低功耗 AI 芯片涌现
-据麦肯锡预测，本十年末许多AI将达到平均人类水准，并以“隐形 AI”形式无缝集成在我们日常使用的应用中
+
+Achieving AGI still needs some time; a vision
+
+Multimodal programming as the mainstream trend, more context awareness
+
+The AI agent market keeps expanding; the next ten years are the agent world
+
+Edge AI becomes a trend — processing data in real time on local devices, cutting network bandwidth usage, improving response speed and protecting data privacy; a new generation of low-power AI chips emerges
+
+According to McKinsey's forecast, by the end of this decade many AIs will reach average human level and become seamlessly integrated into apps we use daily as "invisible AI"
 
 
----
+<!--memo:755916efcab0-->
+### The practical value and prospects of AI in healthcare
 
-### 将人生体验拉满的生活哲学
+> 2026-01-06 17:47:12 · `#格物/AI`
+
+Healthcare is considered one of the verticals with the greatest value for AI deployment, harboring trillion-dollar market opportunities.
+
+AI-assisted diagnosis can raise the early detection rate for difficult diseases, and AI doctors are expected to ease the global shortage of medical resources
+
+For example, medical Q&A and diagnostic recommendation systems based on large models are emerging, and some apps directly offer patients symptom analysis and medication advice (some researchers point out that because hospital decision-making is slow, the creators of generative AI have started to bypass hospitals and launch medical AI apps directly for end users — for instance Alibaba's Ant Afu, on which Alibaba spent a fortune on marketing )
+
+AI in new drug R&D has broad prospects: algorithms can screen drug candidates from vast numbers of molecules, greatly shortening R&D cycles and cost. There are already cases of AI-discovered drugs entering clinical trials, and traditional pharma giants are racing to partner with AI companies to develop drugs
+
+On the investment side, healthcare AI has attracted a lot of capital; for example the UK drug AI company Exscientia and the US Insilico Medicine have raised hundreds of millions of dollars. As regulation gradually establishes standards for approving healthcare AI products (the FDA has approved hundreds of AI medical devices), the commercialization of healthcare AI will accelerate. "AI doctors" and "AI new drugs" are among the directions most likely to produce disruptive companies in the future, with immeasurable social and commercial value
+
+
+<!--memo:97ea2484a1d8-->
+### Lessons from LawGeex's failed legal AI
+
+> 2026-01-06 19:20:58 · `#格物/AI`
+
+Why did LawGeex's legal AI fail
+
+How LawGeex went from a much-watched industry pioneer, through a growth bottleneck, to eventually splitting up and selling its assets and pivoting to a new brand, Superlegal
+
+They were one of the earliest companies on the market to propose the concept of "contract review automation (CRA)"
+
+In 2018, LawGeex held a famous human-vs-machine match. Its AI, reviewing non-disclosure agreements (NDAs), beat human lawyers with 94% accuracy (85% for the humans), and took only 26 seconds (human lawyers needed 92 minutes on average)
+
+AI's "last 1%" dilemma: AI can solve 90% of the problem, but in the legal field clients demand 100% accuracy. Filling that last gap requires enormous human cost, which kills the high margins of the SaaS model
+
+Big clients can pay more, but their demands are extremely harsh; small clients have a low average order value, but their needs are standardized
+
+
+<!--memo:8ac879048040-->
+### The elite-ification of AI Agents and the split
+
+> 2026-01-06 19:26:27 · `#格物/AI`
+
+The very top "vertical-domain AI Agents" (especially in law, finance, healthcare) really are turning into an "elite-only" productivity tool, mainly serving the top institutions (big law firms, Fortune 500 companies)
+
+This has fundamentally diverged from the vision when ChatGPT first burst onto the scene at the end of 2022 — "benefit everyone", "AI will level the starting line for all people"
+
+The AI world now feels like it's splitting into an elite world and a mass world
+
+Top engineering capability starts serving top clients, who are more willing to pay
+
+Today's top Agents don't stop after answering one question; in the background they may have run 50 inferences, searched 10 databases, self-reflected for 3 rounds
+
+This kind of "slow thinking" has extremely high cost. Charging an individual $20/month loses money; only charging big law firms $500/person/month (or more) covers cost and turns a profit
+
+The strong have their efficiency amplified by AI even faster; the original professional barriers haven't been leveled, they've been raised
+
+
+<!--memo:6304db017518-->
+### The logic of choosing between an APP and a mini-program
+
+> 2026-01-06 19:54:32 · `#格物/AI`
+
+I've realized a very essential problem
+
+The reason my friend likes the app model is that most Chinese users do their everyday consumption on the phone
+
+But then again, as the saying goes, this is a highly monopolistic scenario
+
+An app is something you must consider for a high-frequency scenario
+
+But actually for most scenarios, if they're very low-frequency, people prefer to go with an app
+
+
+<!--memo:dc81630b3338-->
+### Ant Afu's health entry-point strategy
+
+> 2026-01-06 20:53:11 · `#格物/阿福`
+
+Afu usage experience
+
+Bypassing hospitals, going straight to users
+
+Ant (Alibaba Group) is treating healthcare as an "entry-point business": first transforming "low-frequency medical visits" into "high-frequency health companionship/management"
+
+Users' questions usually have clear goals (should I go to the hospital for this, which department to register with, how to read a report, how to take the medicine, whether to re-check), and the form of the "right answer" is very suited to being productized into a flow
+
+Putting AI at high-demand entry points like "symptom self-check/report interpretation/image interpretation": the App Store description explicitly supports image interpretation of reports, medical records, prescriptions and medicine boxes, and highlights services like health consultation, record management, registration and cloud accompaniment to appointments
+
+Upgrading from one-off Q&A to "health companionship/reminders/family health records": this pulls usage frequency from "only come when sick" to "come normally too". Media reports mention it added family health records and smart reminders, and integrated with device ecosystems like Apple/Huawei to increase stickiness
+
+The fallback structure of "AI + real doctors/service network": where AI shouldn't be the one deciding (treatment, medication, diagnosis), it routes you to consultation, registration, buying medicine and other flows, forming a closed loop. The official site also positions it as "one-stop service"
+
+Healthcare is a high-risk + high-uncertainty decision field: in this kind of scenario humans instinctively look for authority, personification, emotional reassurance
+
+From "AQ (sounds like a tech name)" to "Afu (sounds like a reliable person)" — essentially productizing the trust problem: getting you to treat it as "a health friend who understands you" rather than "a chatbot that talks nonsense". Quite a few reports also describe it as a turn from tool to companion/friend
+
+Many people's real need in going to the hospital is to get tests and proof (objective data), not to "hear a few pieces of advice". Products like Afu move the "advice/explanation/path planning" outside the hospital, leaving the hospital's scarce resources for what "must be done in-hospital"
+
+AI's answers are also for reference only and can't replace a doctor's diagnosis and treatment advice
+
+What it can significantly replace/reduce cost for: preliminary triage, health education, report interpretation, follow-up visit reminders, daily chronic disease management, organizing family health records
+
+What it can't replace: emergencies, diagnoses requiring physical examination/imaging/lab confirmation, treatment decisions requiring intervention (especially those involving prescription and medication adjustments)
+
+
+<!--memo:c2c142771dc7-->
+### A systematic methodology for medical Agents
+
+> 2026-01-06 21:14:38 · `#格物/AI`
+
+The agent system behind Afu
+
+It isn't very complex, but there's a systematic method
+
+Follow-up-question-style consultation is in fact a typical agent loop
+
+It imitates a real doctor asking follow-up questions, guiding the user step by step to fill in the necessary information, then gives advice; for complex reports/skin/medicine boxes/medical records it also supports asking with a photo
+
+Plan/ask → observe → update state → act again
+
+Multimodal structured understanding: turning "images/reports" into computable medical facts
+
+Extract the key information in the image (lab indicators, units, reference ranges, abnormal markers, drug names and dosages, descriptions of skin appearance) into structured fields
+
+Then enter the subsequent reasoning/rule/retrieval chain, rather than letting the model "look at the picture and ramble"
+
+Long-cycle health data = a "memory system", not as simple as chat history
+
+Long-term memory of personal/family records (structured storage: indicator trends, medical history, medication history, allergy history, test reports)
+
+Time-series reasoning (trends matter more than single values: blood sugar fluctuations, sleep debt)
+
+Reminder/companionship strategy engine (when to remind about re-checks, exercise, medication)
+
+Tool calling and service orchestration: AI isn't "replacing the hospital", it's "dispatching hospital/pharmacy/insurance/services"
+
+Calls to APIs or business systems for registration/consultation/buying medicine/report lookup/claims
+
+Router: when to answer with AI, when to hand off to a real person, when to route straight to in-person care
+
+Writing results back: consultation conclusions, medication and reports go into the record (forming a closed loop)
+
+A very important point for a medical agent is that it can't diagnose/can't overstep to prescribe
+
+"Expressing uncertainty + fallback strategy" (advise going in person immediately, advise further examination, advise consulting a specialist)
+
+
+<!--memo:c8720deec035-->
+### Google's innovation dilemma and the shackles of its business model
+
+> 2026-01-07 11:21:57 · `#格物/Google`
+
+How does Google achieve long-term stability while repeatedly showing structural pathologies?
+
+Google is a very strong company: it invented containers, set standards, open-sourced infrastructure, built tools the whole world can use, yet in commercialization it has been a pioneer again and again without successfully predicting the best applications that came after
+
+As a global technology leader, Google's technical judgment has always been top-tier, but as an entry-point monopoly company, when facing innovations that would change the form of the entry point, it systematically chose defense rather than offense
+
+Everything revolves around its own core, but that very core also constrains all of its behavior
+
+Advertising makes up close to eighty percent of Google's revenue
+
+Social/recommendation feeds → users no longer "search"
+
+Closed-loop e-commerce → search becomes upstream
+
+Generative AI → users don't click ads
+
+Financial super apps → user time gets eaten away
+
+Games/content subscriptions → not an ad model
+
+Rational defense ≈ chronic suicide
+
+Successful companies rationally make the decisions that lead to their own failure
+
+In the modern internet everyone is fighting for an entry point
+
+They all know clearly that once the entry point migrates, it almost never comes back
+
+Don't be the king of every entry point, just be the base layer of every entry point
+
+
+<!--memo:1cd6cb1ebf78-->
+### How LLM layers work and how information propagates
+
+> 2026-01-07 12:19:33 · `#格物/AI`
+
+LLM layer relationships
+
+A set of mathematical transformations with a fixed structure (linear transform + nonlinearity + residual)
+
+Self-attention: the current token takes a look at all the tokens in the context, deciding which information matters more right now
+
+Feed-forward network MLP: this does one nonlinear transformation on the just-mixed information, like re-encoding
+
+Residual connection: adds the pre-change me straight back in
+
+Normalization: preventing numerical explosion or vanishing
+
+In the human brain: character → word → sentence → paragraph → semantics → intent → philosophy, each layer corresponding to a level of abstraction, but that's not how LLMs work
+
+An LLM understands the current text, slightly rewrites it, then hands it to the next layer, like a sentence having a surface meaning and a meaning behind it
+
+When information propagates across many layers, the gradient (the learning signal) becomes unstable
+
+In mathematics this is called:
+
+vanishing gradient
+
+exploding gradient
+
+The later layers ask: "did I do well just now?" That feedback has to "backpropagate" all the way back to the first layer
+
+After going through 200 layers:
+
+either the voice is too faint (can't be heard)
+
+or it gets amplified into distortion
+
+So stacking depth now runs into problems — at 50 layers you can't train it anymore
+
+
+<!--memo:88113d482d32-->
+### The relationship between LLM layer count and training stability
+
+> 2026-01-07 13:19:09 · `#格物/AI`
+
+The number of layers in an LLM mainly serves the stability of learning
+
+not the hierarchical structure of language
+
+Language doesn't demand hundreds of layers, but gradients, training and stability do
+
+In a deep hierarchical structure, which information should be kept and which should be thrown away
+
+In the hierarchical structure, which information should be kept and which should be removed
+
+What problem is the gradient problem, exactly
+
+7B → 70B → 400B
+
+Depth and width are being added, and capability is still growing
+
+The bottleneck of LLMs has shifted from "a neural network engineering problem" to "a cognitive structure design problem"
+
+
+<!--memo:c91ace152dc4-->
+### Unpacking the Transformer multi-head attention mechanism
+
+> 2026-01-07 14:00:41 · `#格物/AI`
+
+the transformer multi-head attention mechanism
+
+Attention itself is better suited to "relationship modeling" than CNN/RNN
+
+Multiple attentions, multiple perspectives, multiple relationship maps stacked in parallel
+
+At the start of training you also don't know which relationship is important
+
+Some heads watch almost only the previous token (position heads)
+
+Some heads specialize in syntactic closure
+
+Some heads almost "retire" after the whole training
+
+In the training done by actual LLM vendors
+
+Small models / experimental models
+
+→ 4–8 heads
+
+Medium scale (a few hundred million parameters)
+
+→ 8–16 heads
+
+Large models (billions of parameters)
+
+→ 16–32 heads
+
+Very large models
+
+→ 32–64 heads, or even more
+
+But by then many heads have already become "specialized", and some are even redundant
+
+
+<!--memo:1d0eb2c6ae9f-->
+### How much cognition matters in an age of information overload
+
+> 2026-01-10 23:09:19 · `#格物/认知`
+
+It suddenly occurred to me
+
+In today's era of information explosion, cognitive overload, and low-cost AI access to information
+
+is cognition still that important?
+
+Reflecting on myself, maybe many people feel the same as I do
+
+There's really too much information, too much load
+
+Too many cognitive systems
+
+Filtering, ranking, prioritization, giving up — these are especially important
+
+In the future, forgetting matters more than remembering, refusing matters more than accepting
+
+The ability to ask good questions; defining the problem matters more than solving it
+
+Verification and alignment are especially important; cognition is the ability to close the loop from output to action
+
+
+<!--memo:e52922e68eea-->
+### The color-analysis logic of letting AI pick my clothes
+
+> 2026-01-11 23:20:13
+
+Letting AI pick clothes for me
+
+Telling the AI about my environment
+
+Pretty fun — I handed my own difficulty in choosing over to the AI
+
+The AI analyzes my skin tone and the styles I already have
+
+My skin tone sits in the premium range: warm-leaning, medium brightness
+
+If you pick Milan, the brightness is too high, the facial contrast gets swallowed, and the person fades into the background
+
+If it's black or dark blue, the contrast is too strong, and attention gets pressed onto the clothes
+
+Dark green is just right, it fits well
+
+Dark blue / black: more rational, orderly, office
+
+Off-white: more artistic, clean, low aggression
+
+Dark green: natural, restrained, with strength, but not aggressive
+
+For a long-term outfit system, it can go into the city and into nature; friendly in all four seasons, so it suits me very well
+
+
+<!--memo:94bd2790cd24-->
+### Technical difficulties of speech processing in AudioLLM
+
+> 2026-01-12 20:04:03 · `#格物/AI`
+
+AudioLLM
+
+The speech part is fairly complex
+
+First keep the semantic signal
+
+Keep a tiny bit of the acoustic signal, just enough to reconstruct it
+
+The semantic signal is fairly complex; it's important that the model can map semantics to text tokens
+
+Speech -> text: ASR essentially does very strong compression — acoustic features at one frame per 10 ms (continuous, redundant, noisy). The output is a string of tokens (characters/words), and the dimensionality and information content drop sharply. Once it's converted to text, the LLM behind it plays in the domain it's best at: symbolic reasoning, semantics, logic, retrieval, writing
+
+Processing sound directly, end-to-end: a few seconds of audio is hundreds to thousands of frames, far more than a passage of text tokens; attention computation is more expensive. Emotion, tone, pauses, stress, speaker identity, ambient sound... these are lost in text but all present in audio, and the model has to learn "which of them matter"
+
+
+<!--memo:a4831b7309c8-->
+### Traffic leverage pries out non-linear returns via fulcrum and lever arm
+
+> 2026-01-14 14:06:29 · `#格物/算法`
+
+The essence of traffic leverage: with a very small initial input (content, money or connections), through a specific amplification mechanism, pry out enormous non-linear returns
+
+Fulcrum: your content quality, product strength or persona charm. If the fulcrum is unsteady, the longer the lever, the greater the risk of snapping (i.e. a crash)
+
+Lever: the means you use (algorithmic recommendation, paid placement, social fission)
+
+Traffic leverage in the modern internet:
+
+Algorithm leverage: use data to pry out system recommendations
+
+Capital leverage: use paid placement to pry out organic traffic
+
+Social leverage: use relationships to pry out virality
+
+A platform's mechanism generally won't show all your content to everyone at once; it tests in layers
+
+Cold-start pool (200-500 impressions): test initial feedback
+
+Primary pool (1k-5k): if the data is good, push to the next level
+
+Mid pool (10k-100k): enter a bigger competitive track
+
+Hot pool (1M+): recommended across the whole network
+
+The 2024-2025 algorithm trend is shifting from pure "completion rate" toward "active search" and "effective interaction." Platforms want not just to keep people, but to generate deep interest
+
+Then there's social leverage — a user's conversion rate, premised on whether the content is high-value, whether the completion rate is high enough
+
+
+<!--memo:e1893110ec64-->
+### Platforms for getting frontier AI papers
+
+> 2026-01-16 19:34:01
+
+A few commonly used platforms or sites for reading papers
+
+arXiv, because arXiv is the AI community's "real-time pulse"
+
+Google Scholar
+
+
+<!--memo:68ca5098889c-->
+### The conflict between AI and organizational interests
+
+> 2026-01-17 12:17:43 · `#格物/AI`
+
+The conflict between AI and organizational interests
+
+Some positions are positions unrelated to output; their existence may involve some gray interests, controlling uncertainty, maintaining some implicit order, and also spreading political risk
+
+In this kind of situation the system has problems — conflicts, delays, interests
+
+These positions almost certainly won't be replaced; in the medium-to-long term they're the part that may be restructured
+
+The core ability of these positions isn't "judgment," it's maintaining a vague equilibrium among multiple conflicting goals
+
+During drastic change, relationship-type positions may actually get suppressed quickly
+
+Their cost becomes very obviously prominent — in the AI era, so much so that designers of organizational systems will spare no cost to restructure the existing org chart, but under this arrangement everyone may end up bearing the load
+
+
+<!--memo:5ce3a3020ed7-->
+### Notification management as attention protection
+
+> 2026-01-17 12:42:48 · `#格物/AI`
+
+I keep thinking every iPhone notification feels messy; I wonder if there's a tool that could help — the iPhone's notification summary can quickly summarize
+
+Some status-type information, I think, only needs to tell me what happened, without me needing to think about it
+
+And information in all kinds of group chats
+
+And high-frequency repeated information — this is really painful
+
+And then non-time-sensitive information; some news and promotions are only suited to a scheduled digest
+
+Then there's a category that needs to interrupt your decision-making — like to-do lists, high-density information, and some structured, high-density information
+
+And some original, low-frequency, and unstructured information
+
+The essence of summarizing is to protect attention
+
+
+<!--memo:f017b055ad36-->
+### The core value of keeping the lights on
+
+> 2026-01-17 12:52:46 · `#格物/AI`
+
+who keeps the lights on
+
+Literally it means who keeps the lights on
+
+In practice it means who maintains basic operations, who keeps things from stalling
+
+In the AI era, what's more needed — who works hard, or who keeps the lights on
+
+And another important point is people who shift responsibility rather than take it
+
+
+<!--memo:4e37e29e21ee-->
+### Thinking beyond the AI hype
+
+> 2026-01-17 12:59:27
+
+The AI hype seems visible to the naked eye. What else is there?
+
+
+<!--memo:42ddb867f038-->
+### Seeing beyond software as the carrier
+
+> 2026-01-17 13:35:45
+
+The market for software as a carrier also feels very limited
+
+It's undeniable that AI is extremely valuable
+
+But why does the public always want to combine AI with software products
+
+It's undeniable that software is a very good carrier and form
+
+But you shouldn't let the software carrier limit your vision
+
+
+<!--memo:dba294d5d7ca-->
+### Multi-dimensional attention on tech and environment
+
+> 2026-01-17 13:37:27
+
+AI, embodied intelligence, biotech, environment (Guangzhou's air quality today is really bad)
+
+
+<!--memo:9a7c8f9f4047-->
+### Compressing the old world without new scenarios is incomplete
+
+> 2026-01-20 09:18:38 · `#格物/AI`
+
+If no new scenarios are created
+
+and it's only compressing the old world, it's very incomplete
+
+Most functions will be "priced toward 0," and the only ones that can keep capturing value are a few new scarcities: compute, data, workflow gateways, and decision rights
+
+Route A: "doing the work for people" inside existing workflows
+
+Route B: new scenarios that simply couldn't be done / afforded without AI
+
+AI drug discovery + extending healthy lifespan
+
+Deep space exploration, planetary transformation, space industry
+
+New materials, new energy, complex systems science...
+
+"Existing scenarios are insufficient" is really saying: Route A will economically hit the ceiling of "infinite supply, limited demand" sooner or later; the real "sea of stars" can only be opened by Route B creating a new S curve
+
+Route A: AI = a powerful money-saving tool; Route B: AI = new civilization infrastructure
+
+
+<!--memo:954b6a78776c-->
+### AI thins the skill premium; find meaning in choice and responsibility
+
+> 2026-01-20 12:43:13 · `#格物/AI`
+
+AI doesn't seem to have created a new cake
+
+Reproduction deflation + gateway monopoly
+
+Competition pushes prices straight down near marginal cost
+
+Value doesn't disappear, it just migrates from reproductions to other places
+
+The gateways it migrates through are usually: entry points, distribution, trust, responsibility, integration, scarce resources (physical / institutional / data / relational)
+
+The collapse of meaning happens because the original view of meaning was based on scarcity
+
+I'm good at a scarce skill -> the market gives me a premium -> I feel I'm important
+
+Once AI thins the "skill premium," the sense of meaning falls like a stock price (and it's leveraged: professional identity, peer comparison, self-worth are all tied to it)
+
+Meaning is no longer found in "I can produce something faster," but in where I make choices, take responsibility, and define direction
+
+The problem with new scenarios: there really are quite a few new scenarios, but they're so hard to scale, and the user's decision burden can't double again ...
+
+The career narrative changes: it's not necessarily finding a suitable position to define yourself, but rather what problems I can solve + what resources / relationships / credibility I have to define myself
+
+Value = scarcity × responsibility × gateway × compounding
+
+Scarcity: what you can reach that others can't (data, relationships, scenarios, resources, taste, judgment)
+
+Responsibility: whether you're willing to stand behind the result (contract, compensation, signature, reputation)
+
+Gateway: whether you control the default path (workflow, channels, distribution, standards)
+
+Compounding: whether this gets stronger the more you do it (data flywheel, network effects, brand trust, learning curve)
+
+What AI is best at is "thinning scarcity (skills)"
+
+You need to put your chips on the few things AI isn't good at but you can accumulate
+
+
+<!--memo:328157a1affb-->
+### Coze 2.0 upgrades from a tool to a work partner that gets things done
+
+> 2026-01-20 14:23:20 · `#格物/AI`
+
+Coze 2.0 is a major version upgrade
+
+From "a tool you give instructions to" to "a work partner that can get things done," with two important feature capabilities called Skills (Coze Skill) and long-term plans
+
+1) Skill solves "experience can't be reused": the most expensive asset in a team is often the methodology of a few people
+
+2) Long-term plans solve "nobody is pushing the goal forward": most work isn't a one-off Q&A, but spans multiple days, multiple rounds of confirmation, continuous pushing
+
+At the same time, Coze has made common capabilities and infrastructure into built-in services: models, OCR, translation, TTS, external interface configuration, databases, object storage, identity authentication and so on, all prepared for you
+
+Ideas and concepts first become prototype products, and after that come one-click deployment and an app-building service: the default domain works right away, versions can be rolled back, deployment records are all traceable, very convenient. Just like Coze's programming slogan: the AI development partner is in place. Agents, workflows, web apps, Apps and the latest Skills are all waiting at your fingertips
+
+AI goes from expression → delivery
+
+When a person is no longer dragged down by execution details, their energy finally has a chance to return to strategy, thinking and creation
+
+
+<!--memo:2aaff7f26ef6-->
+### Digital Humans and Personalized Matching in the Mirror World
+
+> 2026-01-21 15:34:55 · `#格物/AI`
+
+The mirror world will match high-quality content with interested users much more efficiently
+
+The digital humans of the future world are very interesting; everyone has their own related information on the network
+
+And everyone also has their own digital assets on the network
+
+Take the wildly popular female singer Taylor Swift as an example. You can imagine that in future films, Swift could authorize her digital human to play a certain role. She could also authorize her digital human to become a digital playmate that girls like, just like a Barbie doll. In the mirror world, users might even get the chance to date Swift's digital human
+
+
+<!--memo:fc6ae7c1131e-->
+### AI Can Most Easily Replace Corporate Middle Management
+
+> 2026-01-21 15:36:59 · `#格物/AI`
+
+Today's cases of AI penetration in enterprises
+
+And today's common corporate pyramid structure
+
+The work demands of each level
+
+The work AI can most easily match is that of middle management
+
+The reason leaders need managers to report and summarize is that their ability to process information is limited, so they can only grasp the big and let go of the small; the reason they need plans and budgets is that leaders find it hard to fully grasp all the situations inside the company. When a company grows larger and larger, building a bureaucratic organization to collect and process information, make and execute plans, assess execution, and report and summarize the state of business management becomes very important
+
+
+<!--memo:ebb1f0fee339-->
+### AlphaGenome's Ability to Predict DNA Regulatory Function
+
+> 2026-01-21 19:43:24 · `#格物/AI`
+
+AlphaGenome
+
+At the DNA level, it predicts, for a long stretch of DNA, the regulatory function that this DNA will present in different cells/tissues, and it can assess "how much a certain variant changes those outputs"
+
+Quantifiable molecular-level readings
+
+Where it starts and where it ends
+
+Which DNA sites are more open
+
+Which regions will be bound by specific proteins, for example transcription factors
+
+By comparing the predicted difference between "reference sequence vs. variant sequence," it gives a variant impact score (variant scoring) in a one-second way
+
+CNN = local grammar (short words/affixes)
+
+Transformer = discourse structure (long-range references, cross-paragraph dependencies)
+
+Multi-task heads = multiple "measurable readings" of the same article (expression level, splicing, accessibility...)
+
+AlphaGenome builds on the earlier genome model Enformer, and is complementary to AlphaMissense; AlphaMissense is better at explaining the impact of variants in protein-coding regions, but that accounts for only about 2% of the genome — the remaining 98% of non-coding regions is exactly the part AlphaGenome mainly wants to "light up"
+
+
+<!--memo:529c485a1c9a-->
+### The Logic of Globalization and the Respective Advantages of China and the US
+
+> 2026-01-21 20:59:20
+
+Globalization has the logic of globalization, and its most important feature is that global consumers will have more choices. If there are multiple sources around the world that can manufacture excellent products, it benefits everyone more. Only one company monopolizing production is not an ideal situation.
+
+China and the US each have their relative advantages. China's advantage lies in manufacturing, while America's advantage lies in breakthrough innovation. No matter what happens now, within the next 25 years China will have the ability to make cars as good as quality cars made anywhere in the world, and the same is true in fields like chips and AI.
+
+
+<!--memo:47d34676aad2-->
+### Smart Glasses and AI Assistants in the Future of Daily Life
+
+> 2026-01-21 21:18:08
+
+In the future, each of us will have a pair of smart glasses we can use anytime, anywhere. They can provide AR/VR/XR experiences, they will capture the environment each person is in, and they will also record each person's language and expressions. To process such a massive amount of information, we need enormous computing power, configuring a powerful AI engine for every pair of glasses. Of course this engine will also transform into the AI assistant that everyone can't do without, whispering in our ear, offering suggestions, giving hints within our line of sight, helping us handle all kinds of routine and trivial matters in work and life
+
+
+<!--memo:181a7884f619-->
+### A Product Idea for Asynchronous Calls Where AI Relays a Child's Words
+
+> 2026-01-23 11:35:59
+
+A product that calls your parents on a schedule
+
+I hope to record some things I want to say to my parents every day, and then have AI act as the middleman to relay them, and it can be in a push-style way of calling them
+
+Then after my parents receive it, they chat with the AI
+
+Two people calling asynchronously — quite interesting
+
+It could also be in the form of a digital human
+
+Registering your own digital system
+
+
+<!--memo:44d7254772aa-->
+### iPhone's Multiple Home Screen Pages: Scenes as Spatial Extension
+
+> 2026-01-27 09:55:26 · `#格物/ios`
+
+iPhone's multiple home screen pages
+
+Horizontal spatial extension
+
+Actually the multi-screen mode suits users' intuitive experience very well, which is scenes
+
+You don't need to understand which layer an app is on, but you do need to remember "roughly which screen it's on"
+
+You can easily divide screens into several types and build your own environment, a work environment and an entertainment environment
+
+Later there was also the App Library
+
+Especially with today's explosion in the number of apps, and large numbers of temporary apps appearing, the problem is no longer just that you can't find an app, but that the home screen itself becomes a dump
+
+Multiple home screens → user-led
+
+App Library → system-led
+
+
+<!--memo:88bc1199d1f5-->
+### Building AI Clones: Standardized Output Frees Up Your Labor
+
+> 2026-01-27 10:11:55 · `#格物/ios`
+
+How do you get yourself countless AI clones?
+
+Keep expressing yourself, outputting yourself, standardizing yourself
+
+Then you can hand those simple, tedious tasks to AI
+
+They can then keep working and creating
+
+And you free up your own labor
+
+
+<!--memo:71487d101d63-->
+### Context Rot: Falling Information Utilization in Long Texts
+
+> 2026-01-27 12:02:47 · `#格物/AI`
+
+Context rot
+
+"Context Rot" can be thought of like this: the more "memory/material" you stuff into the model's mouth, the more easily it "gets distracted, grabs the wrong focus, forgets the goal," and output quality becomes unstable or even collapses in long contexts. It's not "the model can't read long text," but "the effective utilization rate of usable information in long text declines"
+
+Attention dilution: the same question is answered very accurately in a short context; once the material grows, it starts grabbing scraps and ignoring key constraints
+
+Lost-in-the-Middle: relevant evidence placed in the middle of the text is most easily missed; the beginning/end is instead more easily used
+
+Instruction drift: the longer the conversation, the easier it is to deviate from the original goal; "you just said you wanted A, why did you suddenly start talking about B?"
+
+Rising self-contradiction: when the same fact is rewritten many times in a long conversation, the model will pick a version that "looks pleasing" and treat it as true
+
+More insidious hallucination: not the nonsense kind, but "citing details that seem plausible but don't actually exist in the context"
+
+Attention is a soft selection, not hard retrieval
+
+
+<!--memo:38f1e54f7a0a-->
+### Users Return to Simplicity: The De-App-ification of High-Frequency Scenarios
+
+> 2026-01-27 13:28:55 · `#格物/AI`
+
+More and more people are starting to return to simplicity
+
+Users open apps on their own initiative less, and complete tasks more in notifications, the lock screen, voice, and system entry points
+
+The operating system keeps giving more weight to "non-app entry points"
+
+Stronger notification interaction, more prominent system-level entry points, lower-friction quick execution
+
+A large number of products move the "key value" forward into notifications / widgets / scenario triggers
+
+Apps feel like a product of the computer era
+
+People today seem to increasingly pursue their own wholeness; people's time is more and more fragmented, and triggered
+
+Most of the time, people are only willing to spend 1 unit of attention, not 5 clicks
+
+High frequency, low complexity, strong scenario → de-app-ification
+
+Low frequency, high complexity, strong exploration → still needs an app
+
+
+<!--memo:318da47353eb-->
+### iPhone's Intuitive Interaction Design: Lock Screen and Control Center
+
+> 2026-01-27 17:49:56 · `#格物/ios`
+
+On the iPhone right now, the few capabilities that most match human intuition are
+
+the lock screen, the main home screen, the minus-one screen, and Control Center
+
+
+<!--memo:2925622696d5-->
+### Chasing the AI Hype Wave, Reflecting on What's Precious in a Person
+
+> 2026-01-27 23:34:15
+
+Suddenly it occurred to me that many people now chase AI hot topics and rush after the AI wave. But what I want to think about more is: as a person, what can I do? What precious qualities do I myself still have?
+
+Sometimes I feel it's a pity; seeing the world reveling in some hot topic, I feel afraid. Because I know hot topics have a life cycle, and once this hot topic cools down, it means it was just a bubble.
+
+So sometimes I feel quite bad. I want to take part in this "game," but I haven't yet found what my direction is.
+
+
+<!--memo:84b8d85f39ba-->
+### Is the Industry Underestimating the Difficulty of the 3D World? Robots Need Time
+
+> 2026-01-28 11:31:49 · `#格物/AI`
+
+Is the industry today underestimating the difficulty of the three-dimensional world
+
+Investors and industry reports often report more realistic commercialization paths for robots, such as orders and deployments in scenarios like warehouse logistics and industrial production
+
+Fei-Fei Li's report says robots may need another twenty years or more before entering large-scale daily life application
+
+The first stage is already happening, applications in controlled scenarios, including cleaning, delivery, and companionship in fixed spaces, and nursing homes; this space is engineered, humans are disciplined, and the robot is very smart
+
+The second stage is marginal penetration into the home, estimated to still need five to eight years; you won't buy a "general-purpose robot," you'll buy a mobile cleaning device, a kitchen assistant; these are relatively stable
+
+The third stage is truly everyday robots. If the world doesn't undergo a major rupture, 8–12 years is a more reasonable window: home space is re-standardized (like USB), humans are willing to change habits for "predictable robot behavior," and regulations, insurance, and liability systems mature
+
+It's very hard for robots to understand the physical world, but humans are very quick to accept imperfect but cheap and stable robots
+
+
+<!--memo:af5dda29cfef-->
+### Clawdbot: a Smooth Assistant-Augmentation Fit for My Workflow
+
+> 2026-01-29 21:33:17
+
+Clawdbot usage experience and thoughts
+
+I tried it out, and I think it can integrate smoothly into my workflow. It's not a replacement tool, more like an assistive augmentation type; I quite like this type
+
+It's very suitable for the kind of work that used to require chatgpt + operate, for example writing some night-time script agents; this is very convenient. Although many products' agent scheduling can do it now too, the operation path feels too long; this one can cooperate with some commonly used workflow tools
+
+I integrated Moltbot with obsidian-cli, and I think it's really suitable for deep creation
+
+
+<!--memo:0b103d433162-->
+### Molt's Gateway Architecture and AI Agent Ecosystem
+
+> 2026-01-30 10:23:03 · `#格物/AI`
+
+Molt deep-dive experience
+
+As an AI agent gateway, it's undeniable that the most charming thing about Molt is its ecosystem, a middleware platform
+
+Architecture:
+
+Gateway: This is Molt's heart. It's a resident background process responsible for connecting chat platforms and AI models
+
+Agents: Currently Molt mainly connects to Pi (a powerful coding agent) through RPC mode. The AI doesn't just talk; it can run code in a sandbox environment
+
+Channels: The entrances you use to communicate with it, supporting WhatsApp, Telegram, Discord, iMessage, Mattermost, etc.
+
+Nodes: Molt has cross-platform clients (macOS, iOS, Android, Linux), letting you manage the AI across devices
+
+
+<!--memo:bb142bc8c8ab-->
+### Pi's Positioning as a Coding Agent Runtime for Developers
+
+> 2026-01-30 12:24:15
+
+Pi coding agent runtime
+
+Pi doesn't refer to that social robot from Inflection AI
+
+but a minimal yet powerful coding agent runtime designed specifically for developers
+
+Originally an independent command-line tool, pi-coding-agent
+
+
+<!--memo:5c42c930cc85-->
+### Molt's Skill Feature and the Experience of Local AI Infrastructure
+
+> 2026-01-30 14:38:33 · `#格物/AI`
+
+Using Molt
+
+A large part of it comes from Skill; I really like this feature
+
+You can remote-control your own computer or server, check the server load, restart services, and even download files at home
+
+You can integrate your own methods and workflows, and record some of your preferences into Memory
+
+Molt is a local, limited AI infrastructure, so there is a gateway acting as inspector, and also as a local scaffold
+
+The macOS Companion App is very interesting
+
+It can stay resident on macOS, and you can see the gateway's running status (health) without opening a terminal
+
+And it supports voice wake-up, and some native Canvas
+
+
+<!--memo:35b38cee6c85-->
+### The Subjectivity and Sense of Presence of Notes
+
+> 2026-01-30 14:53:29
+
+How should notes be defined in the AI era?
+
+No aha, no subjectivity, no bias, no misunderstanding, no feeling, no reflection
+
+But it is exactly these things that construct our existence
+
+
+<!--memo:debae3437eff-->
+### The Reconstruction of Subjectivity for Knowledge Workers
+
+> 2026-01-30 15:02:33 · `#格物/AI`
+
+The confusion of knowledge workers
+
+Knowledge workers seem to have become less useful than before, because in the past what mattered was the density and depth of knowledge and information; owning information or knowledge was to guard against forgetting, but now taking notes feels more like internalizing thinking and preventing intellectual decline
+
+AI-generated answers are a "common denominator" based on probabilistic prediction; they are standard and perfect, but also secondhand — yet only the part of the logic we ourselves understand well is more meaningful
+
+Actually even the questions asked to AI are very valuable, because the question corresponds to your own thinking, and is often the direction you're interested in, so it can build a certain subjective mapping with yourself
+
+This is also why I generally like to learn and take notes at the same time: the process of memorizing is a process of forced encoding, matching again with your own knowledge system, and then expressing it; knowledge like this has actually gone through your own screening and reconstruction, and is very much subjective
+
+
+<!--memo:c7c9e45f3236-->
+### Proactive Intelligence and Multi-Channel Integration
+
+> 2026-01-30 15:36:36
+
+Moltbot introduced the concept of proactive intelligence
+
+Through an internal "Heartbeat" mechanism and scheduled tasks (Cron Jobs), it can autonomously monitor the user's digital environment
+
+I also felt the seamless experience of multi-channel integration
+
+Users can start a task on WhatsApp, receive progress reports on Telegram, and do complex debugging work in Slack, while the AI assistant maintains a unified context and memory through the background Gateway
+
+The memory approach used is a continuous memory system driven by local Markdown files, thus abandoning the session-based temporary memory mode
+
+
+<!--memo:7f4925262337-->
+### Moltbot's Two-Layer Memory Architecture
+
+> 2026-01-30 16:10:31 · `#格物/AI`
+
+Moltbot's memory handling
+
+Traditional chatgpt, and even the later claude, didn't make memory that finely tuned
+
+Moltbot uses a two-layer memory architecture: one is memory/YYYY-MM-DD.md (raw logs), like a running-account diary, and the other is MEMORY.md (curated long-term memory). When AI finds that some information has long-term value (for example your programming preferences, your family members, or the technology choices of a complex project), it will proactively distill this information and write it into this file
+
+Moltbot has a very creative but very simple method: you can correct preferences directly through conversation, or even modify things by directly editing MEMORY.md
+
+Personalized configuration: SOUL.md defines the agent's Baseline Persona. It's not just a System Prompt; it contains a complete set of behavioral philosophy
+
+Humor and self-deprecation, giving it the identity of a space lobster, so it may gripe about itself for having no substance
+
+Non-passivity: not equivalent to only answering, being good, being obedient; it is allowed to have emotional tendencies, fitting a person's identity definition
+
+I found this way to be very contagious, screenshot-worthy hahaha
+
+For developers: it provides absolute control over AI cognition. I don't have to worry that the AI suddenly becomes stupid or forgets, because its memory files are right on my disk
+
+For ordinary geeks: it provides a partner with a sense of life. It exists in your social list through WhatsApp or Telegram, accompanying your workflow like an old friend
+
+
+<!--memo:379c34cf06ad-->
+### Adaptive Compression and Persistent Memory
+
+> 2026-01-30 18:06:53 · `#格物/AI`
+
+Moltbot implemented a mechanism called adaptive compression
+
+When the session context approaches the model's upper limit, the system automatically triggers an imperceptible refresh action, summarizing the old conversation records into structured Markdown notes and storing them on the local disk. This not only saves on high Token costs, but also ensures the agent doesn't lose its way when handling tasks that last weeks or even months
+
+This is really good; many models are doing this too, but this imperceptible compression mode is very suitable for persistent memory
+
+
+<!--memo:f0f884741335-->
+### The Narrative Power Behind Moltbot's Explosive Popularity
+
+> 2026-01-30 18:09:01 · `#格物/AI`
+
+Moltbot's explosive popularity
+
+I feel that essentially there is still a very strong storyline to it
+
+The Mac mini buying rush
+
+The brand renaming legend
+
+The extreme use case of 180 million tokens used in a single month
+
+
+<!--memo:93a36de13f35-->
+### Prompt Injection and Credential Risks
+
+> 2026-01-30 18:09:54
+
+Some potential risks
+
+Avoiding prompt injection risks on the web
+
+Third-party skill libraries may also have malicious script problems
+
+And there's the risk of concentrated identity credentials
+
+
+<!--memo:8ed25c41eab2-->
+### AI Productivity and the Plugin-ification of Skills
+
+> 2026-01-30 18:16:51 · `#格物/AI`
+
+The direction where commercial value can be clearly seen feels like execution
+
+Only systems that can seamlessly interact with the local file system, browsers, and legacy CLI tools have real productivity
+
+Moreover, social and distribution should not be content with the traditional model, whether it's a web page window or a standalone app
+
+Stepping out of the traditional thinking paradigm, entrepreneurs should think about how to turn their services into skills or plugins that can be called by top agents, thereby entering the agent-driven ecosystem
+
+
+<!--memo:a62e30b3bd3a-->
+### OpenClaw's Gateway System Design
+
+> 2026-01-30 19:00:15 · `#格物/AI`
+
+OpenClaw's system design
+
+The core is a local-first AI gateway + multi-channel message entrances + multi-agent routing + tool / node system
+
+Role division (from the README's "Key subsystems/Highlights"):
+
+Gateway: a single control plane (a WebSocket service), responsible for sessions, routing, tool invocation, and the control UI.
+
+Agent: the LLM that actually "thinks" (Pi/Claude/OpenAI…), connected to the Gateway via RPC.
+
+Channels: all chat entrances such as WhatsApp / Telegram / Slack / Discord / Signal / iMessage / WebChat / Matrix / Zalo, etc.
+
+Nodes & Tools: browser, Canvas, system commands, camera/screen, scheduled tasks, WebHook, and all other "action capabilities."
+
+Apps: macOS menu bar, iOS / Android node apps, giving the Gateway local capabilities (voice, screen, camera, etc.)
+
+It can be understood as: channels are only responsible for receiving external messages or sending replies
+
+The Gateway only decides which agent handles this message, and with which tools
+
+The Agent only works at the abstraction layer of "conversation + calling tools," and doesn't care whether it's WhatsApp or Discord
+
+Nodes/Tools are the Agent's "hands and feet," actually operating the system / browser / device
+
+
+<!--memo:1c90ed67ce88-->
+### Multi-channel unification and the tool ecosystem
+
+> 2026-01-30 19:11:59 · `#格物/AI`
+
+A few thoughts
+
+Unifying multiple channels is a hard requirement — external tools or apps brought together in one place
+
+Local-first actually turns into a differentiating advantage
+
+Tool calling is a very important capability
+
+An Agent's value = model capability × tool ecosystem
+
+The toolkit itself may turn out to be the moat
+
+This project gave me a lot to think about regarding toolchains in vertical domains
+
+And it lets you perceive as little as possible
+
+One of the great things about building at the infrastructure layer is the generality — it lets everyone else share and use it, with an open protocol
+
+Unify into a single abstraction layer, and make full use of the plugin ecosystem, handing extension features over to the community to build — it could be a skill plaza or a plugin marketplace
+
+
+<!--memo:0d2a1ad4f0e4-->
+### Skills as reusable knowledge
+
+> 2026-01-30 19:26:49 · `#格物/AI`
+
+The more clawdbot Skills there are, the stronger the Agent gets
+
+So Skills can be reused as knowledge
+
+They can evolve independently without touching the core
+
+The Skills loading/filtering/injection mechanism is very well built out (src/agents/skills/)
+
+Skills lower the cost of prompt engineering (10–100x improvement in token efficiency)
+
+For example, skills for operating Notion or Obsidian can support document collaboration, task management, and exist as a knowledge base
+
+For example, automatically tidying meeting notes, generating weekly reports, syncing cross-platform notes, and task management
+
+You can even auto-trigger builds on GitHub, check logs, and deploy automatically
+
+
+<!--memo:f388cbd1575e-->
+### Designing an AI abstraction-layer protocol
+
+> 2026-01-30 19:31:45 · `#格物/AI`
+
+AI abstraction-layer protocol
+
+A new feature only needs to be implemented once in the Gateway, and every client gets it automatically
+
+A client can take any form (CLI, Web, App, Node), as long as it implements the protocol
+
+The core is the protocol layer, not the Agent
+
+It includes search, create, link, query
+
+All clients operate on knowledge through the protocol
+
+The Agent is an “intelligent client,” not the core; the Agent can call the protocol, but the protocol doesn't depend on the Agent
+
+The data layer is a long-term asset, including still
+
+
+<!--memo:30a4d7761fe8-->
+### The double pull of Chengdu: basin and snow mountains
+
+> 2026-01-30 20:59:15
+
+Since I'm also going to Chengdu in the next few days, let me go back and talk about that trip. The last time I went to Chengdu was also two years ago, and back then I also hiked Qingcheng Mountain.
+
+What feeling does Chengdu give me? It's very smoggy — possibly because it sits in a basin, since Sichuan is right in the middle of a basin. Its situation is similar to Kathmandu, or Pokhara — a terrain ringed by mountains on all sides, so you can clearly feel that the air there isn't great, and the visibility isn't great either.
+
+But there's another thing about Chengdu that really attracts me, and my friends too: it has a lot of snow mountains, and a lot of extremely beautiful natural scenery. On a weekend you can just drive to a nearby snow mountain, to Siguniang Mountain, or stroll around and look at the snow, and you feel healed, you feel your limitations as a human being, you feel the charm of nature, the beauty of nature, how spectacular the beauty of a snow mountain is — instead of staying in a cramped apartment, or in a city with terrible smog, where there's simply no sign of life.
+
+As a living creature, by instinct it's impossible to treat this kind of pollution or smog as beauty; instead we treat pure natural things as beauty — pure snow mountains, pure clouds, pure sky, pure grassland. I think this is a very subjective standard of judgment on the part of us organisms, and this subjective standard of judgment also reflects our limitations as Homo sapiens, right? We're not other animals, we're not robots, we're not AI — even if the environment is polluted, it won't directly affect their survival. Ah, so this is also something that feels wonderful to us in this moment.
+
+
+<!--memo:873b1563c5bc-->
+### The many possible forms of AI interaction
+
+> 2026-01-30 22:59:15
+
+I think it's kind of interesting sometimes — even now, with what Cloud calls ChatGPT. After it appeared, some multimodal, multi-architecture AI patterns spun out downstream, but I don't think that is necessarily AI's most important form.
+
+I keep wondering what the final form looks like. My guess is it may also depend on how people get used to using it in the future. What way will people actually want to interact in? I don't think we can figure this form out just by thinking about it ourselves — we have to observe how people use it along the way.
+
+I think there will definitely be people who, like in brain movies, sit in front of a wall of screens and switch operations frantically; and there will also be people who just stay in voice mode and quietly talk to the computer. They want their attention to be preserved as much as possible — saying just one or two sentences an hour, letting the system handle everything else. They don't particularly want to study a pile of AI tutorials, and they don't want to be disturbed by a complex system. But they will still think carefully about every sentence they say.
+
+So I think this era is about constantly trying new paths; the world will eventually settle on a few mainstream forms, but I don't think we can know the answer from the start.
+
+So building a tool that helps people harness these genuinely powerful models is something I think is very worth doing. At least so far nobody has found a tool that truly closes that gap, but one day a phenomenon-level product like that will appear.
+
+
+<!--memo:5f104dc67189-->
+### General-purpose models will dominate the future
+
+> 2026-01-30 23:01:29
+
+I think as model costs come down in the future, the mainstream approach will at least be in the following categories. The mainstream will definitely be a very powerful general-purpose model, not a specialized one. Specialized models sit in very particular domains, like medicine, where screening is especially sensitive.
+
+But I think for most domains, people want one model that can do a lot — not just express text clearly, but more importantly understand the world, understand multimodal information, including understanding language, images, video, and so on. So there will be a lot of demands.
+
+General models can do especially well on every dimension, which fits the definition of artificial intelligence. And maybe next year the cost of model intelligence will drop 100x, so more people may care about the model's speed.
+
+There may be two trends in the future: one is the cost of models dropping dramatically, the other is the speed of models rising dramatically.
+
+
+<!--memo:1c9873060299-->
+### Thinking tools determine the quality of thinking
+
+> 2026-01-30 23:04:37
+
+Altman said something interesting: “Our ability to think depends largely on the tools we use.”
+
+What that means is we should try to build tools that let people come up with better ideas. That way, once people have good ideas, the cost of creation naturally falls, and we'd also have a very tight feedback loop, which helps us sift good ideas out faster.
+
+I think this is an experiment with a very high likelihood in the future.
+
+A lot of people will run into a problem later: when they're facing a pile of AI agents, or even in the transition period, the thing opposite them is an extremely intelligent agent, but the problem is they don't know what to ask.
+
+
+<!--memo:ded03aea2df6-->
+### Imagining the endpoint of a 100x AI
+
+> 2026-01-30 23:20:57
+
+In the future we'll have a model 100 times more capable than today, with 100 times the context length, 100 times the speed, cost down to one hundredth, tool calling that's practically perfect, and extremely strong consistency in long interactions
+
+The endpoint of the model as we imagine it, and then…
+
+What are we going to build?
+
+
+<!--memo:7086d6addec6-->
+### Spatial intelligence and generative dynamics
+
+> 2026-01-31 14:45:05 · `#格物/AI`
+
+Google Genie 3's path
+
+The difference in underlying logic
+
+Compared with Fei-Fei Li's World Labs path — she thinks the robotics path will be short, because her path is spatial intelligence
+
+Through the spatial blind spot of 2D models: video generation models are essentially “guessing” the next frame at the pixel level; they don't truly understand the 3D geometric relationships of objects. This causes objects to vanish inexplicably or physical laws to distort, whereas embodied intelligence needs to act in a 3D world with a stable physical structure, not a pixel hallucination that collapses and rebuilds at any moment
+
+What's different about Google's? Actually the core of Google's Genie 3 is generative dynamics. Genie 3 doesn't pre-build a complete 3D scene; instead, like a brain “dreaming,” it predicts and generates the next frame in real time based on each of your actions (like WASD keys, text prompts). By learning from millions of hours of video, it autonomously acquired gravity, collision, fluid and lighting effects. It doesn't need code written to tell the AI what “drag” is; the AI learned by observation that “walking in snow is slow,” solving the previous generation's “instant forgetting” problem. Genie 3 can maintain consistency for about a minute — if you scribble on a wall in a room and come back later, the scribble is still there
+
+
+<!--memo:abe12835b53f-->
+### Wealth through the triangle of technology, institutions, culture
+
+> 2026-01-31 19:35:41
+
+I've been thinking about China's wealth system, especially the change from the traditional system to the current one. I've actually talked about this before: in China's system, you need to understand three elements — technology, institutions, and culture. None of the three can be missing. You can understand it as institutions partly being born from this culture, though a large part comes from their own exercise of power — it's just that the mechanism of operation still has to cater to this cultural system.
+
+So over the last 40 years, technology has been a huge variable, and it really opened up a lot of very different eras. For example, in the past ten to twenty years, the way wealth changed in China was this: some places had nightclubs and similar relationship-oriented venues, plus things tied to organized crime, as well as real estate and construction — industries leaning toward low-cost, low-end, labor-intensive work. Anyone could do these industries, and in some places they could even be monopolized — like a rich second generation's father monopolizing the industry and then the rich second generation inheriting it. That's the kind of system it was.
+
+There's also another part: within the whole system, the state wants a cut, so there are a lot of state units, state-run units, state-owned enterprises and so on, and they monopolize certain areas. These things lead to a problem — class consolidation becomes very severe, and it depends heavily on power.
+
+But is there some kind of change now? I think it's a change in who holds the voice — the voice is slowly shifting to today's mainstream of industry. What is the industrial mainstream? Technology. Technology is now a very large variable. We can use the previous 4,000 years of history to reason out the situation of any traditional industry. Any industry at all can be reasoned out. But there's one thing that can't be reasoned out at all: technology. Because technology doesn't follow logical deduction — it's usually each person, as a very uncontrollable variable, colliding with each other, like countless magnets colliding, until a kind of coordination emerges. Right now we're still in a collision period; the future is very unclear, nobody can see it clearly, and nobody can deduce what direction AI will go. Everyone can only feel their way forward. Whether it's world models or today's general-purpose large language models, everyone should act as an agent — or every pioneer should act as an agent — creating and opening things up in the market, continuously attracting and colliding, and eventually reaching a consensus. That's the insight technology brings.
+
+So technology's influence on this system is now very large — before it might have been 20%, but now it has slowly risen to 30%, 40%, and in the future its share will only grow. This is a question of who holds the voice. Before, the holders of the voice might have been people in traditional industries — people with some connections, some networks, beneficiaries of reform and opening up, the first to get rich, because of the tilt of political resources. But now, the holders of the voice are definitely people who command technology, people who command AI, people who command the future. Because you can command technology, command chips, command the future, so you are the world's biggest variable, the point of greatest attention in the world. Hence an attention economy spins out of it: they receive the age's attention, hold a huge amount of traffic, hold a large part of technology's voice, and can sway how things change. I think this is also a slight difference between the traditional social structure and today's social structure, and going forward this technology variable will keep having an impact.
+
+
+## 2. Reading, Ideas and History
+
+*79 entries*
+
+<!--memo:4906d37573d5-->
+### China's cultural heritage and its representative cities
+
+> 2026-01-04 11:12:17 · `#格物/文化`
+
+China's cultural heritage
+
+Xi'an is a city with real depth
+
+The rites of Zhou, the law of Qin, the institutions of Han, the bearing of Tang
+
+Xi'an itself is magical too — a huge number of dynasties made their capital here: civilization, institutions, cultural narrative, and so on
+
+So if China were to pick one city, I'd say Xi'an, as the representative of Guanzhong civilization
+
+The Guanzhong Plain ≈ the spot in all of China closest to "safe + can raise people + easy to control + able to expand"
+
+Jiangnan culture, represented by Suzhou and Hangzhou; literati culture is a way of life,
+
+gardens, calligraphy and painting, food, the solar terms, all embedded in daily life
+
+"Restraint", "leaving blank space", "not saying everything" — these are products of a long-stable society
+
+Qilu culture, whose core is Confucian culture, shaped the inner behavioral values of Chinese people
+
+Emphasizing order, responsibility, role, ethics
+
+Represented with Qufu at its core
+
+Central Plains culture — the keyword isn't "was once glorious", it's "never broke off"
+
+Regimes can collapse, the way of life doesn't
+
+War was frequent, but the culture never lost its lineage
+
+It's where Chinese civilization "recovers its blood"
+
+Its representatives are Luoyang and Kaifeng (I always thought Luoyang and Xi'an were very close, with similar cultures)
+
+Lingnan culture
+
+Extremely adaptive, also strongly globalized, absorbs outside cultures easily
+
+Commerce, clans, religion — highly pragmatic
+
+Lingnan culture's representative cities are mainly Guangzhou and Foshan and that area
+
+Compared with Minnan culture, which is Quanzhou, Xiamen, Zhangzhou
+
+Minnan culture:
+
+Central Plains migrants moved south
+
+Clans banding together
+
+Going to sea to trade
+
+Spreading outward (Southeast Asia)
+
+Lingnan culture:
+
+Local Baiyue culture + Central Plains culture
+
+Long-term foreign trade
+
+Earliest and most contact with the world
+
+Continuous hybridization and updating
+
+Lingnan has all kinds of chambers of commerce, guilds and companies — loose, realistic, decentralized, quick to adapt to change
+
+From Qin-Han to Tang-Song, Lingnan was always the frontier, hence the saying "exiled to Lingnan", plus all the diseases of Lingnan, the damp heat and so on
+
+By comparison Jiangnan was prosperous in that period; especially in the late Tang, and during the Northern Song, Jiangnan began to flourish
+
+
+<!--memo:9ef622ba661d-->
+### Song dynasty commercial prosperity and institutional balance
+
+> 2026-01-04 13:38:00 · `#格物/历史`
+
+The commercial prosperity of the Song dynasty
+
+A high-quality mechanism for rules to operate
+
+Paper money, night markets, cross-regional trade, professionalized division of labor, an urban middle class — in the Song these didn't appear in scattered form; they had already started to mesh with each other and form positive feedback
+
+It broke almost everything modernization needs into modules, except industrialization
+
+The Song deeply respected "complexity"; it didn't believe military force was omnipotent, didn't chase a crude expansion narrative, but kept doing fine-grained balancing between finance, governance, culture and technology over the long term
+
+Of course this also brought fragility; the Song really was bad at war, but it was willing to use institutions, technology and culture to fight uncertainty
+
+
+<!--memo:9f4f51b6040c-->
+### The missing rural pension system
+
+> 2026-01-04 15:11:58 · `#格物/中国历史`
+
+Over the past few decades, for the sake of rapid industrialization and urbanization, the state directed a huge share of resources, protections and institutional dividends toward the urban and industrial system first; the countryside bore the cost, but did not accumulate, in step, the institutional assets needed to support old age
+
+So this generation of elderly people in rural China has no accumulating institutional container
+
+These are all debts, very hard problems to solve
+
+
+<!--memo:df0fee1a3ca3-->
+### The pixel-in, pixel-out principle
+
+> 2026-01-05 10:16:34 · `#格物/第一性原则`
+
+pixel in, pixel out
+
+The input is pixel-level data, the output is still pixel-level output, and they correspond one to one
+
+Information isn't "compressed" into a judgment, it's "rewritten" into another pixel expression
+
+Elon has his own judgment on this part
+
+world → senses → world
+
+rather than world → judgment → language
+
+
+<!--memo:2a7f6855835f-->
+### Darwinian user observation and scenario evolution
+
+> 2026-01-05 13:33:28 · `#格物/常识`
+
+Observing users shaping scenarios the Darwinian way
+
+Give a general architecture first, let users use it according to their imagination; the team captures head scenarios through anonymized statistics/pattern recognition, then does the last-mile optimization
+
+Example: later they found users really loved making Slides, web pages, batch file processing → the product team stepped in to optimize
+
+Respect the laws, respect common sense
+
+
+<!--memo:7208ef62cd60-->
+### The deceptiveness of common sense and dissecting a system's essence
+
+> 2026-01-05 14:08:59 · `#格物/常识`
+
+Common sense can deceive you
+
+You always run into scenarios that make you physically uneasy
+
+Your intuition tells you it may not be right
+
+Why is it like this, why does it need to be like this, what is the essence
+
+What is the smallest, least, irreducible case
+
+You don't need to step in the pit yourself, you don't need to borrow others' experience, you don't need to imitate, you don't need too many unverified assumptions
+
+What is the essence of the system, the product's real cost, the essential logic of why users pay, users' ability to pay
+
+Once you dissect out the most essential things — those few core, workable variables — you can make your own trade-offs easily
+
+
+<!--memo:883ff411afa3-->
+### The boundary of concept decomposition and the pursuit of essence
+
+> 2026-01-05 14:16:00 · `#格物/第一性原则`
+
+When do you keep decomposing?
+
+When must you stop?
+
+What granularity counts as "taking responsibility for the essence without going off the deep end"?
+
+Industry language is usually encapsulated; note that language is the unit of thought, but it also limits our thinking — the language of language, the meta-meaning; how do we pin down this concept and this unit
+
+When the explanation produced by thinking in language itself can't predict outcomes, intuition tells me that level isn't enough, that language itself may be the problem
+
+The purpose of decomposition is to narrow the space of choices,
+
+"If I don't do A right now and can only do B or C,
+
+then what is forcing me?"
+
+What exactly is the hardest constraint, the most essential constraint?
+
+When to stop? When you realize that continuing to dig and decompose is to satisfy your own intellectual pleasure ... not to serve the goal
+
+There are some uncontrollable variables (the uncertainty of human nature, the direction of culture, the direction of politics...)
+
+
+<!--memo:9d23c95ed2b8-->
+### The spatial aesthetics of Wujie Heyi guesthouse in Chaozhou
+
+> 2026-01-05 14:46:18 · `#格物/美学`
+
+Wujie Heyi guesthouse (Chaozhou old town, Paifang Street branch)
+
+My favorite cafe for a long stretch of time recently
+
+A strongly designed, hybrid guesthouse space
+
+Not just lodging — an experiential guesthouse that blends coffee, a tea space, an artistic sensibility, lifestyle, traditional and modern together
+
+It started from an old small Western-style house, rebuilt into a comprehensive experiential space
+
+The name Wujie Heyi is pretty cool — people, environment, culture and aesthetics all fused into one continuous experience
+
+The shell of the old Western-style building + modern taste in furniture + local cultural ornaments
+
+Eastern and Western elements mixed together
+
+The space doesn't emphasize a single regional style; rather, "aesthetic unity ranks above style labels" — whether what you see is Eastern furniture, retro lighting or modern lines, they're all bound together by one unified aesthetic language:
+
+quiet, elegant, comfortable, nature and life coexisting
+
+
+<!--memo:290bfca75c81-->
+### Writing a book as thinking organization and passing on value
+
+> 2026-01-06 12:51:03
+
+I have some thoughts about writing a book
+
+Somehow, in this life I still want to seriously write a book
+
+I always want to pass something on to this world
+
+I always want to create something — that makes me happy
+
+I want to organize something — that helps me get my thinking clear
+
+
+<!--memo:d08ac1551b69-->
+### Cognitive science of verbal thinking and conversational structure
+
+> 2026-01-06 13:00:20 · `#格物/语言学`
+
+Verbal thinking processing
+
+Cognitive science has proposed it, and it really is the core way of thinking for many people
+
+They need to chat, but they don't care about the content of the chat
+
+For these people, the interlocutor isn't there to provide "information" but to provide "structure"
+
+Language is linear, forcing the brain to think and reason along one line
+
+(The unaware) Many people do this without knowing it. They'll drag you into a two-hour conversation and reject every suggestion you offer. You feel exhausted, thinking they're "dumping their grievances" or "being stubborn". Actually they've just turned you into an "echo wall". Because there's no awareness, this kind of communication often leaves the listener feeling drained
+
+(The aware) These are the experts — they know what they're doing. They'll openly admit their mind is a bit muddled and ask if you can listen to them for ten minutes, no advice needed. These people have high metacognition and know what they need at that moment
+
+When code has a bug, programmers put a rubber duck on the desk and explain the code line by line to the duck. Often in that process the programmer discovers the logic flaw themselves
+
+But in real life, interestingly, most people are waiting to respond — usually halfway through listening they start composing their own rebuttal or suggestion. And they need the sense of being present
+
+
+<!--memo:18fa10af4f98-->
+### Greed, aversion and delusion, and the modern psychological predicament
+
+> 2026-01-07 15:25:42 · `#格物/佛学`
+
+Greed, aversion, delusion (rāga / dosa / moha)
+
+Greed in relationships — or you could call it sunk cost, haha — it's clearly gone bad, but you won't accept it
+
+Greed in social achievement: wanting it too much, wanting to prove it too much
+
+Aversion toward people (the core of relational conflict): you get angry, furious, because the other person doesn't seem to run according to the script in your head. It's also aversion toward yourself, and then aversion toward the world — the world is the problem
+
+Delusion, the underlying operating system of all disasters. It's hard to distinguish greed from delusion — greed is wanting more; delusion is "and once I get it, then what", the sense of lack even when satisfied. Delusion is also being too self-centered, "this is just how I am" ... a misunderstanding of the world
+
+Why do humans systematically create suffering when what they want is happiness
+
+The understanding I've summed up:
+
+Greed = clinging to the "pleasant state" + unwillingness to lose it
+
+Aversion = rejecting a reality that "isn't as I wish"
+
+Delusion = a fundamental misjudgment of how reality operates
+
+
+<!--memo:d6c892168f6f-->
+### What's hardest to align in communication is meaning
+
+> 2026-01-11 10:12:20 · `#格物/意义`
+
+What's hardest to align in people's communication isn't information, it's meaning
+
+Fandom provides a ready-made framework of meaning: what's good, what's worth pursuing, what's beautiful, what's passionate, what's pure
+
+You don't need to explain from scratch who you are and what you cherish; you just say "I follow them too" — actually it's the same as when I meet a group of idealists — and the other person can read a whole long résumé of values
+
+An idol is a "transcendent object" that can be jointly identified — like a god in religion, a flag in a nation, a totem in a tribe. It gathers scattered individual wills into one beam of light. Your feeling of closeness is essentially:
+
+"I see the same 'ought to be' in you"
+
+Humans have a very magical mechanism: getting excited together makes you feel more familiar. This easily produces emotional synchronization; in psychology it's called emotional contagion, affective resonance
+
+Can you share strong emotions with someone else without feeling awkward
+
+
+<!--memo:9fef0b3d6c72-->
+### How conceptual frameworks erode and change people
+
+> 2026-01-12 10:09:52 · `#格物/盗梦空间`
+
+It suddenly occurred to me — many notions, many ideas
+
+once they invade your mind, they slowly erode you
+
+Mal wasn't forced into suicide by anyone. She was infected by a seemingly "reasonable" sentence: this world isn't real
+
+This is an explanatory system that can account for all counterevidence, so you can never win against it
+
+People aren't changed by facts; people are changed by the framework that explains the facts ...
+
+How you think matters a lot ...
+
+
+<!--memo:f5f922702ff6-->
+### The Buddhist meaning and practice of sympathetic joy and praise
+
+> 2026-01-12 15:43:35 · `#格物/佛学`
+
+Sympathetic joy and praise, in the Buddhist context
+
+Seeing others do good and achieve things, feeling joy in your heart, and expressing recognition and encouragement in words/actions
+
+The scriptures have the phrase "instruct, benefit and delight, and rejoice in and praise"; in Mahayana, the fifth of Samantabhadra's "ten great vows" speaks of "rejoicing in merit", systematically making it a practice method
+
+Sui: following along, keeping up, but not blindly following, not working against goodwill
+
+Xi: not excitement, but that kind of genuine happiness that isn't sour or twisted
+
+Zan: pointing out where the other person did right, what's worth learning from
+
+Tan: heartfelt respect — I acknowledge the value of this thing and am willing to let it be seen
+
+"What you did has value, and I'm willing to vote my attention and goodwill for it"
+
+The human brain easily misreads someone else's radiance as a threat to me, so jealousy, belittling and nitpicking arise — a self-protection mechanism
+
+What sympathetic joy does is counterintuitive: it rewrites someone else's good as a shareable gain, and trains an emotion called shared joy — seeing others do well, you can do well too
+
+The direction of the mind is itself karma (the seed of action)
+
+Lingyin Temple's explanation emphasizes: sympathetic joy isn't just being happy inside, ideally you also "lend a hand" and help others' good deeds succeed
+
+
+<!--memo:88ae35be17c0-->
+### The difference in level between jealousy and sympathetic joy
+
+> 2026-01-12 16:09:34 · `#格物/佛学`
+
+Jealousy and sympathetic joy are two different levels
+
+The more you envy something, the less you get it
+
+The more you rejoice in something, the more you get it
+
+To rejoice in others, the target level has to be higher
+
+You pursue a higher level, a larger frame
+
+
+<!--memo:b8483da8fee4-->
+### How the restaurant shooting shaped the Godfather
+
+> 2026-01-13 09:16:38 · `#格物/教父`
+
+A sudden experience shaped the Godfather
+
+The scene where Michael Corleone shoots Sollozzo and the police captain in the restaurant
+
+First, at the character level — he goes from "wanting to be an ordinary person" to "being forced to bear order". Not ambition, but a cold start of responsibility
+
+Second, at the moral level — the violence is filmed as unsexy, unheroic, like a dirty but necessary job. You can understand it, but you're not consoled
+
+Third, the film language — sound completes the transformation before the action. The train isn't background, it's the gear of fate; when the gun fires, the world has already decided the outcome in advance
+
+The Godfather is the calmest, the most capable of deferring emotion, able to freeze private emotion into structural decisions
+
+The family is no longer an "emotion-driven patriarchal organization" but becomes an "efficiency-first power machine"
+
+He won the world, but lost his family
+
+
+<!--memo:c177bfe73011-->
+### The disappearance of the idealistic Michael in Kay's memory
+
+> 2026-01-13 11:18:36 · `#格物/教父`
+
+In Kay's memory it's still that idealistic Michael
+
+Every one of Michael's later moves is cruel
+
+Deferring the truth, deceiving
+
+Treating marriage as a legitimacy device
+
+He doesn't allow her to reach her own conclusions
+
+
+<!--memo:4633de5204ca-->
+### Two generations of Godfather: character contrast and the cost of power
+
+> 2026-01-13 13:22:06 · `#格物/教父`
+
+Two generations of Godfather, two generations of character
+
+The first generation built power on favors, credit and long-term reciprocity
+
+Like an old-school politician, emphasizing slow, steady, a sense of proportion — hence a powerful network of relationships
+
+The second generation is the terminator of order and the symbol of modernity. Michael re-engineers the family from a "network of favors" into an "institutional machine": rational, centralized, ruthless. He doesn't maintain stability through favors but through structure and fear. This is a ruler maximizing rationality, and the price is emotion drained dry. Power won, family lost
+
+Michael Corleone, extremely rational, a man who treats the world as a chessboard and himself as a scalpel
+
+Extremely rational, self-controlled, sensitive, good at deferring gratification, and rarely showing emotion
+
+He both longs to escape the family's violent fate and believes only he can end it all
+
+What he fears most isn't danger but unpredictability — his own environment, the dangers he meets, and so on. A post-trauma survival strategy: as long as he can control it, he won't be hurt again
+
+Then there's emotional resonance: he can understand others' emotions, but presses his own below the ice — exposing emotion equals exposing weakness
+
+Rationality-oriented: the end swallows the means, and the means in turn reshape the end
+
+A lonely type of leader: the stronger, the more closed off; the higher he climbs, the less he trusts people. Because he's seen betrayal, seen the fragility inside the family, seen the price of power. Centralizers are like this too — effective short term, but very dangerous long term, because the organization becomes a nervous system wrapped around his person: once he goes cold, the whole world goes cold
+
+
+<!--memo:3abb3c983003-->
+### Michael Corleone's systemic capability and its backlash
+
+> 2026-01-13 13:23:50 · `#格物/教父`
+
+Michael Corleone's "systemic capability" is extremely strong, strong to the point of coldness; but precisely because it was so strong, the system ended up devouring him
+
+What others see is emotion, betrayal, hatred
+
+What Michael sees is: who's a node, who's a risk source, who can be replaced, where to cut.
+
+He doesn't handle "people", he handles relationship graphs
+
+A system needs stability, so deferring emotional gratification is especially important
+
+
+<!--memo:ed5dcccacbe4-->
+### The world runs on relationships and exchange, not morality
+
+> 2026-01-13 20:59:53 · `#格物/教父`
+
+Power, order, family, bringing ...
+
+The world doesn't run on morality but on relationships, promises, deterrence and exchange
+
+It's a system, a constructed system,
+
+Under this system, what kind of people are born, what kind of structure is born
+
+Why this structure forces people to make such choices
+
+Which rules actually take effect beneath the surface morality
+
+
+<!--memo:35028dde7181-->
+### The cost of an excellent character vs. an excellent system
+
+> 2026-01-13 21:01:37 · `#格物/教父`
+
+The similarities and differences between excellence of character and excellence of system
+
+When you truly do everything as well as possible
+
+do you still have a "self" left?
+
+Does excellence carry a cost, is it the optimal choice inside the system?
+
+What do we actually want
+
+The world has no standard set of values that can guarantee each of us is treated fairly and is happy
+
+This world, through constant experimentation and operation, gives birth to certain constraints that are repeatedly verified
+
+When a value system
+
+requires people to fully instrumentalize themselves
+
+doesn't allow doubt, doesn't allow stepping away
+
+flattens the individual in the name of "correctness"
+
+compresses a complex world into a single goal
+
+then whether it's called justice, efficiency, faith, success or a great mission — it will almost certainly produce disaster
+
+
+<!--memo:d434d7310c1c-->
+### Sympathetic joy against jealousy: the internally stable need no outside proof
+
+> 2026-01-13 21:49:42 · `#格物/佛学`
+
+Opposite of sympathetic joy — jealousy, desire
+
+As long as you're not that good, I'm not that bad
+
+This kind of person is good at evaluating others
+
+What we hate most is often what we're not allowed to become ...
+
+So, especially under conditions of scarce resources, likes and follows become quantified metrics
+
+Another thing is the superiority disguised under one's sense of morality
+
+This is a more refined form of belittling
+
+It's not directly saying you're no good, it's
+
+"I'm more authentic, I'm more clear-headed, this kind of thing has no depth" ...
+
+People who are internally stable accept the complexity of themselves and others, and don't need others to prove themselves
+
+
+<!--memo:a8e4ea742747-->
+### The most fully developed mental systems in human history
+
+> 2026-01-13 21:53:03 · `#格物/佛学`
+
+Buddhism — very mature, systematized
+
+Stoicism
+
+Confucianism
+
+Daoism
+
+Existentialism — a notch higher, but it easily slides into nihilism
+
+Marxism, materialism — it applies very well to how the world runs
+
+But it can't settle an individual's inner life. Extremely limited
+
+
+<!--memo:01e8bb2ab97e-->
+### Materialism and idealism are the world's two basic philosophical forms
+
+> 2026-01-13 23:50:45
+
+Anything that has objective reality, that won't change because of human will, is called materialism.
+
+World philosophy splits into two camps: materialism and idealism. In practice, idealism revolves around a series of "mind studies," or "studies of mind."
+
+But materialism is based on Marxism — after Marxist philosophy was put forward, it's the basic compositional form of the world.
+
+
+<!--memo:30a6ee258aad-->
+### Cherish the non-derivable blank in the world's generative process
+
+> 2026-01-14 13:32:48 · `#格物/学习`
+
+A great many things in the world are derivable, learnable, copyable,
+
+but what interests me, and is more precious, is that part of the generative process that can't be fully derived
+
+Just like Bayesian probability: even with 80% certainty about whether a girl likes you, what you care about more is the remaining 20%
+
+That latter 20% is the part that stirs your emotions, makes you replay it, makes you nervous ...
+
+This is also why we give the world a little blank space, why we give AI a little imagination, letting them grow naturally
+
+...
+
+
+<!--memo:d87a394537cb-->
+### Douyin compresses human attention into a priceable data product
+
+> 2026-01-14 13:56:56 · `#格物/学习`
+
+Douyin's ads
+
+Ordinary creators, merchant content, and — ads, just disguised to look a lot like content
+
+Feed ads, brand challenges, and local merchant promotions ...
+
+Merchants, brands and local owners are the ones paying
+
+Users provide attention, dwell time and behavioral data
+
+Douyin now also makes money from e-commerce
+
+Then there's livestream tipping, where only a small number of high-spending users contribute a large share
+
+So Douyin's essence is that it compresses human attention, desire and behavior into a predictable, priceable, reusable data product
+
+Douyin doesn't charge ordinary users — their willingness to pay isn't high anyway — it just wants you to watch a bit more, linger a bit longer, click one more time
+
+
+<!--memo:223240d1d663-->
+### Young people's early social media exposure skews how they bind self-worth
+
+> 2026-01-14 18:15:09 · `#格物/社会`
+
+The problem of young people encountering social media too early
+
+Usually "too early" is defined as having a personal social account before age 10-12
+
+and platforms dominated by algorithmic recommendation, including short video and feeds
+
+and no stable adult guidance
+
+Girls will bind appearance strongly to self-worth, and compare appearance far more frequently; girls will feel that being liked and followed is an indicator of self-worth. They look more precocious, but inside they lack security
+
+Boys take another route — they're more likely to be recommended games, extreme content, sexual innuendo and borderline content, so their ability to delay gratification is noticeably weaker
+
+
+<!--memo:f2af5b168113-->
+### Deep motivation collapse: long-termism gives way to instant returns
+
+> 2026-01-14 18:25:15 · `#格物/社会`
+
+The problem of deep motivation collapse
+
+The world changes fast
+
+More and more people start chasing
+
+Not because they're lazier, but because for things that need long-term investment yet are uncertain, the subjective sense of meaning drops markedly
+
+Fewer people are willing to take the long path (research, deep specialization)
+
+More people chase tracks with "instantly visible returns"
+
+In such a high-change era, does long-termism really still have value?
+
+A path, an identity, a set of skills seems to slowly stop working
+
+Some foundational abilities matter more: long-horizon narrative ability, foundational assets, aesthetic sense, learning ability, cognitive ability, personal brand
+
+Complex systems need a small number of people who truly understand
+
+So a distribution emerges:
+
+The majority: short-term tracks, competition extremely crowded
+
+The few: long-term tracks, winner takes all
+
+This is a power law, not a myth of hard work
+
+
+<!--memo:f4e9352e5fc6-->
+### Gen Z's plural values are an illusion; success standards are actually narrower
+
+> 2026-01-14 18:26:52 · `#格物/社会`
+
+Is Gen Z's value pluralism an illusion
+
+Values are extremely concentrated, but expression is highly dispersed
+
+On the surface:
+
+more open values
+
+more diverse choices
+
+But the quantitative result is:
+
+the criteria for judging "success/failure" are actually narrower
+
+Highly concentrated in:
+
+exposure, followers, income, visible influence
+
+Young people seem to accept everything, but they're unusually cruel to themselves
+
+
+<!--memo:6daf07d66c6b-->
+### Beware social media's standardized template for interpreting your life
+
+> 2026-01-14 18:28:21 · `#格物/社会`
+
+The question of interpreting your life
+
+Is the right to interpret my own life still in my own hands
+
+The problem with social media is:
+
+it provides ready-made narrative templates
+
+success, happiness, relationships all have standard answers
+
+The individual just keeps "checking the matching box"
+
+But ... life doesn't need more standard answers ...
+
+What matters more is understanding yourself, accepting yourself, understanding the world, making contact with the world
+
+
+<!--memo:a3e0aafcfa43-->
+### From living in the moment to actively living the moment well
+
+> 2026-01-14 18:35:27 · `#格物/社会`
+
+Living in the moment -> living the moment well
+
+Living in the moment: don't overthink, relax, enjoy now; it fights anxiety, over-planning, over-churning
+
+Living the moment well: I accept that this moment is all my input, but I want to polish it into a good version. What it fights isn't anxiety, but wasting time, losing control, a sense of floating
+
+Living the moment well = in an uncertain world, directing attention to the variables you can influence, and making the smallest but real improvement to them
+
+Living the moment well isn't just acceptance, it's creation ...
+
+
+<!--memo:48fb8055303d-->
+### The midday market's potential comes from structurally driven crowd behavior
+
+> 2026-01-15 02:42:59
+
+The midday market feels quite promising. Right or wrong aside, under this system structure, this group of people is destined.
+
+What kind of people are they? What drives them? And what will the future social consensus be? Whoever holds the next consensus holds enormous wealth. As long as this consensus persists, the wealth persists.
+
+
+<!--memo:08eabc4fc21c-->
+### The "unruly commoner" phenomenon stems from scarce resources and weak institutions
+
+> 2026-01-15 10:34:49 · `#格物/社会`
+
+The causal reasoning behind "poor remote places breed unruly folk"
+
+An emotionalized summary of experience
+
+The "unruly commoner" is someone who doesn't follow rules, loves loopholes, resists hard, and makes people feel they're "troublesome"
+
+These are all surface appearances, not motives
+
+It's not morality, but an environment of scarce resources, weak institutions, limited opportunity
+
+When someone grows up from childhood in an environment of "if you don't grab it, it's gone" and "if you don't fight, you're ignored," what he learns isn't cooperative games but zero-sum games — at that point it's a basic survival strategy
+
+If rules often fail, enforcement depends on connections, and reasoning is useless, then "the rule-follower is the one who loses out." Over time people learn that acting tough beats reasoning, and making a scene beats obeying the law
+
+Then there's the lack of upward mobility channels — which is also why the schooling system evolved naturally
+
+What's really dangerous isn't the saying itself, but when it's treated as a "moral conclusion":
+
+It makes the strong lose patience with the weak
+
+It reduces institutional problems to "the people are no good"
+
+It lets environments that should be repaired keep rotting
+
+
+<!--memo:4307ce39f1c8-->
+### Historical inertia runs as a structural cycle plus a technology amplifier
+
+> 2026-01-15 10:46:47 · `#格物/社会`
+
+Let's talk about historical inertia
+
+Historical inertia still holds in China, but it no longer appears as dynastic change; it runs in the form of a structural cycle + technology amplifier
+
+Historical inertia:
+
+Power tends toward concentration, organizations tend toward self-protection
+
+Once upward channels narrow, social tension accumulates
+
+Order depends on consensus; once consensus breaks, maintaining it costs more
+
+Technology compressed the time scale,
+
+education raised cognition, but people no longer have the ability to change structure — producing a high-cognition, low-delivery population
+
+The tools of state governance have completely changed: today information is highly visible, fiscal capacity is coarse, and the management radius is small
+
+Do upward channels still get reopened again and again?
+
+Is the narrative still self-consistent
+
+Is technology a repair mechanism, or an amplifier
+
+
+<!--memo:f1270b6684b5-->
+### Big dogs trigger an illusion of safety
+
+> 2026-01-15 12:28:27 · `#格物/生物学`
+
+Girls tend to like bigger dogs
+
+Big dogs easily trigger an illusion of safety
+
+and are more easily anthropomorphized into gentle guardians
+
+and more easily create a sense of narrative — your relationship with the dog, a sense of imagery
+
+Boys are also more likely to prefer bigger dogs, from role mapping — the imagined companion and comrade-in-arms
+
+
+<!--memo:6b97c6834b38-->
+### Oxytocin is the glue of relationships
+
+> 2026-01-15 13:00:06 · `#格物/生物学`
+
+When women see neotenous features (big eyes, round heads, dependent behavior)
+
+oxytocin is released faster, in larger amounts, and lasts longer
+
+Men secrete it too, but the trigger conditions are narrower and it falls back faster
+
+Women's oxytocin levels are generally higher
+
+After intimate contact, women's oxytocin generally rises 20%-40%, while for men there's relatively no significant change or a slight rise
+
+When a mother and baby look at each other or nurse, oxytocin can spike to 8-12 pg/mL
+
+Fathers rise too, but by a smaller margin (about 4-6 pg/mL)
+
+Oxytocin's essential purpose is to be the glue of relationships
+
+Endorphins are the pain silencer and the reward painkiller
+
+Oxytocin has only one core function, but it's extremely powerful: reducing the psychological distance between people (or animals)
+
+
+<!--memo:9697463c684f-->
+### The triangle driving things: institutions, technology, culture
+
+> 2026-01-16 19:11:56 · `#格物/制度`
+
+Institutions determine what's allowed, what's forbidden, what's rewarded
+
+Technology determines what's feasible, scalable, monitorable
+
+Culture determines whether people are willing to move forward with the system
+
+Population aging → change institutions (pensions, taxes)
+
+Resource scarcity → deploy technology (efficiency, substitution)
+
+External conflict → strengthen culture (identity, narrative)
+
+
+<!--memo:b8217b485786-->
+### The protective boundary of drug patents
+
+> 2026-01-17 13:03:53 · `#格物/生物`
+
+Drug patents are generally extremely expensive
+
+What they protect is:
+
+a specific molecular structure
+
+the preparation method
+
+the use (indication)
+
+sometimes also the administration route and dosage form
+
+Gene editing changes the DNA sequence inside an organism and changes protein expression
+
+Counterfeit drugs in reality are all chemical copies
+
+After a patent expires, legally copying the same active ingredient (this is called a generic drug), or directly cutting corners, adulterating, and mislabeling doses
+
+
+<!--memo:0b4e5412ef1f-->
+### The next ten years of biotech
+
+> 2026-01-17 13:16:41 · `#格物/生物`
+
+Biotechnology and health
+
+Thanks to the vigorous development of gene editing, customized medicine and new therapies, the biotech field looks quite promising
+
+At least for the 2028-2038 stretch ahead
+
+Society's main direction right now is much more in AI
+
+Medicine may have a lot of innovative drugs, CAR-T, gene editing and AI drug repurposing, but institutions move slowly; right now it's a dividend for researchers and a very small number of investors
+
+After 2028, China's population over 60 will exceed 25%; this is being pushed forward by demand
+
+In the years after, commercial insurance may take the main stage in medical payment, with medical insurance starting to cover some gene testing and so on
+
+
+<!--memo:fe6675f2a4af-->
+### The ability to quickly model an industry
+
+> 2026-01-17 15:04:10 · `#格物/如何快速了解一个行业`
+
+I think my buddy is very strong at quickly understanding an industry
+
+It's very much worth learning this ability myself
+
+How to quickly learn a certain industry
+
+He can, through chatting, quickly build a systematic modeled understanding of an industry
+
+
+<!--memo:269e1ba5d990-->
+### Granularity in industry research
+
+> 2026-01-17 15:07:47 · `#格物/如何快速了解一个行业`
+
+When talking about an industry, you must consider the question of granularity
+
+This is especially important
+
+Otherwise, when doing research, it's very easy to run into inconsistent definitions
+
+The macro view, the micro view, and the mismatch that arises between the macro state and the micro state — first principles are a good way to resolve the mismatch: zoom in on the grain
+
+
+<!--memo:0a007253af4f-->
+### Industry standards create consensus
+
+> 2026-01-17 15:09:26 · `#格物/如何快速了解一个行业`
+
+Common industry classification standards include the national standard Industrial Classification of the National Economy, and the Guidelines on Industry Classification of Listed Companies issued by the CSRC
+
+Standards bring consensus
+
+
+<!--memo:0a5c1dfce8b2-->
+### Diffusion of innovation and human risk
+
+> 2026-01-17 15:26:20 · `#格物/如何快速了解一个行业`
+
+Diffusion of innovation theory
+
+Innovators (2.5%): a very small number, willing to bear high uncertainty
+
+Early adopters (13.5%): have judgment, willing to take "controllable risk"
+
+Early majority / late majority (68%): want "proven certainty"
+
+Laggards (16%): lowest cost, but fewest opportunities
+
+This has been repeatedly verified on the iPhone, Bitcoin, AI, the internet, short video
+
+Most people are never in the first batch
+
+Risk aversion is a human evolutionary advantage
+
+The vast majority of people have no spare capital for trial and error
+
+Social systems reward "safety," not "adventure"
+
+
+<!--memo:9501d4906f71-->
+### The essence of investing is buying a business
+
+> 2026-01-17 15:40:24 · `#格物/如何快速了解一个行业`
+
+Investing is very simple, but also very hard
+
+In one sentence
+
+If I bought the company today and the boss disappeared tomorrow, could I still sleep peacefully?
+
+The architecture of a business model, three questions
+
+Does money flow in by following human nature? If it needs no user education, and human nature is fundamentally unchanging, then this business model is all the more stable
+
+How much maintenance cost must be paid to earn the money? Some companies have to work desperately hard to make money — exhausting but not smart. Acquire a customer once, collect payment repeatedly; earn trust once, compound long-term
+
+A moat isn't emotional, it's structural. This is actually easy to understand ...
+
+The feeling of realizing things after the fact is especially important (cognitive delay)
+
+When young, you're easily drawn to growth, stories, cleverness
+
+But later you find that even the most impressive person can't beat a simple, repetitive, counter-human-nature good model
+
+
+<!--memo:a6b60aa4cd1b-->
+### Financial reporting: annual results within 3 months, annual report within 4
+
+> 2026-01-17 22:29:24 · `#格物/如何快速了解一个行业`
+
+The timing of financial reports
+
+A company's fiscal year end is usually December 31
+
+Annual results forecasts and preliminary results announcements must be released publicly no later than 3 months after the fiscal year ends
+
+The formal annual report is generally within four months after the fiscal year ends
+
+The interim report is generally as of June 30
+
+First quarter (Q1) briefing (if published): around mid-to-late April (about 45 days)
+
+Half-year (H1) results and report: as of June 30 → the report is usually published before the end of August (within 3 months)
+
+Third quarter (Q3) briefing (if any): around early November (about 45 days later)
+
+Full-year preliminary results announcement: as of December 31 → released by the end of March the following year (no later than 3 months)
+
+Formal annual report: generally between March and April, at the latest mailed/released within 4 months after the fiscal year
+
+
+<!--memo:39602cf3f2fc-->
+### Biopharma's core distinction: biologics vs chemical drugs and tracks
+
+> 2026-01-17 23:29:07 · `#格物/生物学`
+
+Biopharmaceuticals
+
+The core distinction:
+
+Biologics: complex structure — insulin, antibodies and so on
+
+Chemical drugs: aspirin, ibuprofen and the like
+
+A few tracks:
+
+Antibody drugs, the largest share, including monoclonal antibodies and ADCs (called biological missiles)
+
+Cell and gene therapy — this is doing some gene editing or CAR, ex vivo genetic modification
+
+Recombinant proteins and vaccines — the familiar ones, insulin, growth hormone
+
+Traditional drug development needs "ten years and a billion dollars." After Google DeepMind's AlphaFold appeared, AI can predict protein structures and hugely shorten the time to find drug molecules
+
+Bispecifics/multispecifics: one hand grabs the cancer cell, one hand grabs the immune cell, put them together to fight
+
+GLP-1, mainly peptides, but with the half-life extended through biotech means
+
+
+<!--memo:898b7fdb49bf-->
+### Camus: in an absurd world, hold dignity through revolt and action
+
+> 2026-01-19 10:04:08
+
+Camus argues for [facing] nihilism, maintaining dignity and meaning through revolt and action in an absurd world
+
+In the early 1940s he published The Stranger and The Myth of Sisyphus, establishing the theme of the "absurd": in a meaningless world, people must respond with lucidity and revolt, not escape or suicide
+
+
+<!--memo:48ef65b001ec-->
+### AlphaFold is essentially a computational mapping from sequence to structure
+
+> 2026-01-21 13:21:45 · `#格物/生物`
+
+The most essential thing about AlphaFold doesn't feel like the problem of structure prediction
+
+It turned the "sequence → structure" mapping, which used to need years of experiments, into an almost instant, scalable computational process
+
+It used "evolutionary statistics + deep representation learning" to replace explicit physical modeling
+
+Easier to understand proteins
+
+Before, to study a protein you needed to know whether a structure existed
+
+Now it's: you have a structure draft, and then how do you use it
+
+In the biological world there's an extremely cruel but extremely true rule
+
+Function is determined by structure, not by name
+
+So drug research is structure-based, and protein engineering is structure-based too — how are structures obtained?
+
+Traditionally, structures are measured experimentally
+
+X-ray crystallography
+
+NMR
+
+Cryo-EM
+
+Very slow, very expensive, very picky about proteins, and can't cover all proteins
+
+We know hundreds of millions of protein sequences, yet know only a tiny number of structures
+
+What AlphaFold changed is turning this: "Is there a structure?" into: "Is there a usable structural hypothesis?"
+
+
+<!--memo:7a3a75f9481f-->
+### Protein folding isn't a random search but an energy slide
+
+> 2026-01-21 13:35:18 · `#格物/生物`
+
+How protein structures are predicted
+
+In theory, a question I've been wondering about: a protein itself is a soft chain, it may rotate or fold, and there are even intrinsically disordered proteins
+
+Then wouldn't every residue be able to rotate — why doesn't it just rotate randomly and stop when it's roughly right?
+
+Actually that's a wrong assumption: the scale of conformation space explodes exponentially
+
+Random search is too slow — exponential explosion — this is the famous Levinthal paradox
+
+If a protein found its native structure by randomly trying all possible conformations, even if each conformation took only xxx seconds to try, it would need far longer than the age of the universe to find the right structure
+
+Yet in reality, most proteins finish folding within milliseconds to seconds
+
+Protein folding isn't finding a position in space, it's "sliding down" in energy space
+
+AlphaFold isn't simulating the "folding process"
+
+It's predicting: the most likely stable structure near the lowest free energy
+
+
+<!--memo:f0e8a6318a13-->
+### The contradiction between exponential research growth and linear healthcare growth
+
+> 2026-01-21 13:38:58
+
+The research side can grow exponentially
+
+but the healthcare side grows slowly and linearly
+
+This is determined by the human species' ethics, safety, and clinical validation cycles
+
+
+<!--memo:7768d977dfba-->
+### Large-Scale Gene Sequencing Requires Respect for the Complexity of the System
+
+> 2026-01-21 19:48:44 · `#格物/生物`
+
+What else is needed to complete large-scale gene sequencing
+
+Respect the complexity of the system
+
+First layer: sequence -> analyze function. AI turns sequence -> molecular readings, compressing from the level of years of experiments down to computational seconds
+
+Second layer: molecular function -> cell/tissue state (10–20 years, partially solvable). The same variant has different effects in different cell types, at different developmental stages, and in different environments
+
+Third layer: gene -> disease -> individual fate. The genetic layer also cannot fully restore a person's future; the world is contingent, and the human body is a nonlinear, strongly coupled, history-dependent system
+
+
+<!--memo:506749409584-->
+### Removing the Steering Wheel Is the Prerequisite for Building a Third Space in the Car
+
+> 2026-01-21 20:00:33 · `#格物/生物`
+
+Removing the steering wheel is the beginning of building the space inside the car as a third space. Looking at Apple's strategic choice from this angle, it's not hard to find one of its important assumptions: before autonomous driving truly matures, most car use scenarios are still people driving the car to complete the purpose of travel, and at that time more entertainment and interaction would only bring various safety hazards that disturb attention. Only when autonomous driving has completely freed the attention of the rider, and there are no longer any driving controls, including the steering wheel, inside the car, can the building of a third space inside the car begin
+
+
+<!--memo:63cdf93522cb-->
+### The Value of Genetic Maps for Disease Prevention and Medicine
+
+> 2026-01-21 20:10:10 · `#格物/生物`
+
+The importance of gene sequences
+
+You will know your probability of developing certain diseases, and you will get advice on how to improve your health; in the future there may also be drugs that prevent specific diseases according to genetic traits. In addition, everyone will have a genetic map, which helps with getting health and nutrition advice based on big data. As you grow older, all kinds of common and chronic diseases may appear. Having your personal genetic map as early as possible is crucial for preventing disease and improving health, and of course it can also greatly save on medical costs
+
+Gene sequences are also helpful for testing new drugs: if we can distinguish these situations, we can find patients with specific genetic traits for some innovative drugs, truly achieving a match between drug and patient, which is a huge blessing for both the pharmaceutical industry and patients. Drug companies can develop highly customized drugs designed specifically for individuals based on a patient's genetic map and medical history. This kind of drug doesn't need to be effective for everyone; it only needs to be effective for a specific group of people. Once this information is linked together, its value in treatment becomes very great. Besides being pushed by the state, insurance companies will also strongly push gene sequencing, and will pay for people's gene sequencing
+
+Compared with gene sequences, before editing human genes, we need to reach a basic consensus on scientific ethics. One basic consensus reached now is that we should not play the Creator. The reason is simple: we understand far less than we imagine. Although we can edit a certain gene, that editing may be precisely one manifestation of our ignorance. The actual problem is much more complex — not all traits (conditions and abilities) can be traced to a corresponding single gene
+
+
+<!--memo:79de2c9fe682-->
+### Gene Technology Will Become a Tool of Distinction for the Wealthy
+
+> 2026-01-21 20:13:33
+
+The rich using "gene-related technology" to show off and to distinguish themselves will almost certainly happen
+
+Class differences in the coming biological age
+
+Enduring long-term uncertainty, and avoiding risk
+
+
+<!--memo:a7d07b58016b-->
+### Market Prices and Results of Animal Gene Cloning
+
+> 2026-01-21 20:16:11
+
+Current prices for animal gene cloning
+
+Current market prices (roughly):
+
+• Cats: $35,000 – $50,000
+
+• Dogs: $50,000 – $100,000+
+
+• Horses: can reach hundreds of thousands of dollars
+
+Appearance similarity is very high
+
+Personality similarity is moderate
+
+Health and lifespan are comparable to ordinary pets
+
+
+<!--memo:737f5500b9cd-->
+### Mind Uploading: Consciousness Migration and Non-Biological Existence
+
+> 2026-01-21 20:19:06 · `#格物/生物`
+
+Mind Uploading / Consciousness Uploading refers to:
+
+copying or migrating a person's "mental state" (memories, personality, ways of thinking, decision patterns)
+from the biological brain to a non-biological carrier (such as a computer or a simulation system),
+so that it continues to exist or run outside the original body
+
+A civilizational hypothesis: that humans can leave biology behind and continue to exist in the form of information
+
+
+<!--memo:ba6d3d954db5-->
+### Risks and Technical Bottlenecks of Invasive Brain-Computer Interfaces
+
+> 2026-01-22 16:38:44 · `#格物/生物`
+
+To get an invasive brain-computer interface you still need surgery to implant a chip; this way is not friendly, and it brings risks to the person. The chips implanted now may only be valid for a year, because the body will have all kinds of rejection reactions, and as time goes on the chip's signal may gradually weaken. Unless materials science makes enormous progress, having surgery once a year to replace a chip is not realistic. Of course, as an interface between carbon-based and silicon-based, whether there might be a better way to connect silicon hardware with "wetware" (the human brain) is also very much worth exploring
+
+For a chip to accurately inspect the electrical wave information transmitted by the brain still requires a huge amount of data and training. The information for directing limb movement is relatively simple, while information conveying complex content and emotion is much more complex. So the chip must not only be able to acquire the waves, but also be able to inspect and interpret them fairly accurately
+
+
+<!--memo:a8faf5d91adb-->
+### The Logic and Metaphysical Method of the Debate at Sera Monastery
+
+> 2026-01-23 17:11:37 · `#格物/佛学`
+
+The debate sessions at Sera Monastery
+
+Several directions of debate
+
+Whether the causal relation holds
+
+Whether the concept is self-consistent
+
+Whether the definition has been quietly swapped
+
+Whether the inference necessarily holds
+
+"Is everything impermanent?"
+
+"If A holds, does B necessarily follow?"
+
+"Does the premise you just gave already contain the conclusion?"
+
+Basically it covers a hybrid of logic + metaphysics + meditation
+
+In Tibetan Buddhist debate:
+
+Clapping: the logic hammer (equivalent to "this strike of mine is the conclusion")
+
+Stomping / leaning forward: emphasizing the causal progression
+
+Closing in on the opponent: forcing an immediate response, no stalling allowed
+
+
+<!--memo:6de40b8ddb4d-->
+### Variation, Selection, and Information Preservation in Evolutionary Biology
+
+> 2026-01-23 20:20:11 · `#格物/生物进化学`
+
+What evolutionary biology studies is a very fundamental question
+
+Where we come from, how we got to how we look now step by step
+
+How we will walk on in the future
+
+With no designer, how did life come to this point today through "variation + selection + time" — it cares about the following questions:
+
+Where variation comes from
+
+How selection happens
+
+How information is preserved
+
+How scales are crossed
+
+Three core ideas
+
+Natural selection is not an engine of progress but a mechanism of elimination; surviving ≠ excellent, it just means you didn't die in the current environment
+
+Adaptation is a local optimum, not a global optimum
+
+Randomness is the source of creativity; without mutation there is no new possibility — life walked to complexity by relying on errors
+
+So evolutionary biology doesn't say that more advanced means more deserving of success, or that the status quo is justified; it explains causes, not legitimacy
+
+So in the current era, what goes on optimistic evolution and derives onward are instead those reverse degenerations, the shapes that look very stupid, the simpler ways
+
+Biological evolution is cruel: the survivor after countless failed branches is survivorship bias
+
+Humans are also a miracle in history
+
+The brain evolved to cope with a scarce environment → today riddled with anxiety
+
+A fast reward system → addiction problems
+
+Group preference → bias, opposition, identity politics
+
+Sexual selection → many irrational behaviors
+
+From the angle of biological evolution, the human design never seems to have been designed for happiness; humans were always cobbled together for survival
+
+
+<!--memo:8505a1011e9d-->
+### The Importance of Environmental Selection in Evolutionary Biology
+
+> 2026-01-23 20:38:33 · `#格物/生物进化学`
+
+Evolutionary biology is also telling me
+
+I am not the center of the world, and my intuition is not reliable either; even future success has contingency to it; freedom lies in the fact that there is no fixed version, no single correct understanding, and the system can be constantly reassembled
+
+From a systems perspective, I really like the process of evolution; moreover, because it is uncertain, it means creation
+
+Environment is especially important; people really should put themselves in a suitable environment — choosing the environment matters far more than forcing things in the wrong environment
+
+
+<!--memo:612ca6b3c4bf-->
+### The Research Methodology of Psychology, Anthropology, and Sociology
+
+> 2026-01-24 09:52:48 · `#格物/进化心理学`
+
+The objects of study are mainly humans: psychology, anthropology, sociology
+
+Why do people think and act the way they do
+
+Inferential hypotheses, cross-cultural validation, adaptive reasoning
+
+Of course now there is technology as a big variable; evolutionary psychology may also have a different direction of evolution in the future
+
+
+<!--memo:d42f01b747ac-->
+### The Evolutionary Truth That Organisms and Environment Shape Each Other
+
+> 2026-01-24 09:55:40 · `#格物/进化心理学`
+
+Textbooks always say the environment selects organisms
+
+Because it fits the pyramid theory of natural selection
+
+Mutation is random
+
+The environment is fixed
+
+Those that don't adapt → die
+
+Those that adapt → survive and reproduce
+
+Once you stretch the timeline out, you'll find a counterintuitive fact: the fact that organisms are alive is itself rewriting the environment
+
+Plants turn CO₂ into oxygen → transforming the atmosphere
+
+Microorganisms change soil structure → affecting subsequent species
+
+Marine organisms build coral reefs → rewriting ocean flow fields
+
+Humans build roads, build cities, domesticate plants and animals → completely reshaping ecological niches
+
+Organisms change the environment → the new environment then selects organisms in turn
+
+Animals have always been adapting to an ecological niche, but the ecological niche is like the operating system of this world; top organisms also participate in building the niche
+
+So what exactly is the environment? It's the legacy left behind by the previous generation of organisms
+
+The civilization they left behind, the smog they left behind ...
+
+
+<!--memo:748ee1a9e37e-->
+### System vs. Individual Conflict of Interest in the Bourne Films
+
+> 2026-01-25 20:04:55 · `#格物/谍影重重`
+
+I binged all five films in one go
+
+I felt the power and cold-bloodedness of the state machine — it's like this in any country
+
+What's different is how people under different cultural systems react to such a system
+
+In traditional spy stories, the protagonist is often "righteous violence authorized by the state"
+
+But in the Bourne films, the protagonist wakes up and finds something horrifying:
+
+he didn't "choose to become a weapon"
+
+he had already been made into a weapon, and then abandoned
+
+The system has self-correction, self-protection, and self-cleansing mechanisms, and at that point the conflict of interest between the collective and the individual becomes visible
+
+When the state, the organization, the system start deciding "what is correct" for you
+
+what's often left of a person's dignity is one choice: run
+
+
+<!--memo:635945775d82-->
+### Meta-Ability Matters More Than Knowledge; Building a System More Than Accumulating Frameworks
+
+> 2026-01-27 11:36:21
+
+Meta-ability
+
+Learning how to learn matters far more than learning knowledge
+
+Building a top-tier personal system matters far more than how many frameworks you already have
+
+
+<!--memo:03dbf2b51da2-->
+### The Logarithmic Law Explains Time Perception: Long Childhood, Rushed Adulthood
+
+> 2026-01-28 00:34:27
+
+The logarithmic law: people's feelings are relative, not absolute
+
+So sometimes when I switch to thinking about certain questions, for example thinking about my life, maybe I won't think about how many years have passed in an instant, or how many years are left, but rather, in a sensory sense, what percentage of my life has passed?
+
+This is also why childhood summers were so long, but now time feels so fast, year after year hurries by
+
+And so it's also why we can feel that when we are 10, one year is a tenth of our life, but when we are 50, our one-fiftieth, our life suddenly drains very slowly
+
+Well, that also explains why, after being alone outdoors for a long time, I don't much like being around a crowd of people in a shopping mall. It's because our biological evolution itself is not linear, so much so that I can adjust my own perceptual ability: in quieter environments I raise my sensitivity, but this ability becomes a burden in a mall with huge crowds
+
+In this era, people's focus has been monopolized by the head players
+
+So go look for the things that match your hobbies and can produce a compounding effect, and then go all in
+
+Rather than scoring 60 in 10 fields, it's better to score 90 in one field
+
+
+<!--memo:a827e20a96f4-->
+### Special Experiences Sustain Friendship: the Starting Point Matters More Than Frequency
+
+> 2026-01-28 19:31:36 · `#格物/回忆录`
+
+In 2023, I met archer for the first time, in Heyuan City
+
+That day I tried night hiking for the first time, with no experience, a total newbie; I hurriedly signed up for a small group ahead of time
+
+I had just started my senior year that year, and archer was still working hard; we got to know each other
+
+Because that night I hadn't brought a headlamp, but archer was very thoughtful — he had a lamp and lit my way the whole time
+
+And our friendship just kept going
+
+archer's family keeps two little dogs, really fun; I absolutely love playing with their dogs
+
+archer is a really great person, a cross-disciplinary professional I admire very much, good at thinking and reflecting, sincere and attentive with people
+
+Because of an experience like this, friendship is sustained not by frequency, but by the two points on this line of friendship, and their starting point ... that 1
+
+
+<!--memo:8200df8a2129-->
+### Meeting archer on a Night Hike: a Desk Lamp Lit the Start of a Friendship
+
+> 2026-01-28 19:46:21 · `#格物/回忆录（整理相册中）`
+
+⚠️ This MEMO is a copy of the one generated by the sync conflict
+
+————
+
+In 2023, I met archer for the first time, in Heyuan City
+
+That day I tried night hiking for the first time, with no experience, a total newbie; I hurriedly signed up for a small group ahead of time
+
+I had just started my senior year that year, and archer was still working hard; we got to know each other
+
+Because that night I hadn't brought a headlamp, but archer was very thoughtful — he had a lamp and lit my way the whole time
+
+And our friendship just kept going
+
+archer's family keeps two little dogs, really fun; I absolutely love playing with their dogs
+
+archer is a really great person, a cross-disciplinary professional I admire very much, good at thinking and reflecting, sincere and attentive with people
+
+Because of an experience like this, friendship is sustained not by frequency, but by the two points on this line of friendship, and their starting point ... that 1
+
+
+<!--memo:a285b5194a4f-->
+### A Chengdu Trip and Western Sichuan Memories: a Crossroads Two Years Ago
+
+> 2026-01-28 19:46:22 · `#格物/回忆录（整理相册中）`
+
+The last time I went to Chengdu was two years ago, December 21, 2023
+
+The first time I traveled through western Sichuan, and also the first time I climbed two snow mountains
+
+At that time I seemed to be carrying some expectations, because graduation was still a while away, but I also had an offer in hand, and I had thought about starting a business too; the AI wave had appeared not long before, and many sensitive people realized this opportunity and began to stir
+
+
+<!--memo:f8918148d581-->
+### The Past Flows Like Water; People Come and Go in a Hurry
+
+> 2026-01-28 19:54:06 · `#格物/回忆录`
+
+The past is like water, people come and go
+
+People leave and become the past, events sink to the bottom of the heart
+
+The past is hurried, no more than one journey of meeting in this world
+
+
+<!--memo:4d5481431eb4-->
+### First Trip Abroad to Kuala Lumpur: Curiosity and Awe
+
+> 2026-01-28 21:52:59
+
+Just noting this down. I remember February 25, 2024, that was my first time going abroad; it should have been the first half of my senior year. It suddenly hit me that it actually hasn't been long since I went abroad — my first time abroad was two years ago, when I was still a senior.
+
+I remember feeling very stirred up then, full of passion, flying for the first time to a foreign land, in a place where both the language and the culture were unfamiliar, everything seemed especially interesting, I was full of curiosity, feeling that so this is what cities outside are like.
+
+At that time my first stop was Kuala Lumpur. The weather in Kuala Lumpur is always unpredictable. That city is very new, the clouds in the sky are beautiful, puffs of white clouds drifting in the sky, and at night you can still see the sunset; it's very different from cities on the mainland of China, which are hazy — I really like the cities over there.
+
+At that time I went with my laptop; I felt there were many remote workers over there, and they seemed to have some digital nomads too, working remotely over there; I thought it was really cool, and I instantly fell in love with that state, feeling that it was really good for everyone to live like that.
+
+There was also all kinds of food over there I'd never eaten in China; I remember one, a premium garden chicken rice. Kuala Lumpur has Chinatown, and Chinatown has a lot of Chinese food; I felt they made it very carefully, and brought a lot of China's traditional foods over there too, really interesting.
+
+At that time it was also Chinese New Year, and there was still some leftover festive atmosphere over there; every day I wanted to go out and look around, wandering everywhere (city walk).
+
+
+<!--memo:3b3c330220b6-->
+### The Time Mismatch Between Past Good Experiences and Present Sharing Ability
+
+> 2026-01-28 22:40:31 · `#格物/回忆录`
+
+Actually, looking back at so many good experiences in my past, I feel quite regretful that I didn't share them well back then.
+
+Because the me back then probably wasn't worthy of those good experiences back then. The me back then wasn't so calm, wasn't so sincere, and wasn't so self-strengthening.
+
+Now that I have the ability to share, and this behavior can be self-consistent, I no longer have the good experiences I had back then
+
+
+<!--memo:3575e6a2ae71-->
+### Working at a Shanghai Foreign Firm and A Deeper Crisis of Subjectivity
+
+> 2026-01-29 10:12:50 · `#格物/回忆录`
+
+I remember last year's working in Shanghai, a lot of happy times
+
+Then in the graduation season I went to work at a Japanese company
+
+What was interesting every day was that the colleagues around me all went to lunch in groups, and after eating they always wanted to go look at cars and test-drive cars
+
+Because interestingly, the age structure at a foreign company is relatively diverse; the company I was at in Shenzhen felt still rather young, but here there were even people close to retirement, and the youngest besides me was a guy five years out of school, so every time after work you couldn't find anyone; people left right on time — ah, this kind of workday, day after day, is just ...
+
+I feel the problem I face is more not a problem at the material level; my material needs can be very low, I'm very sure of that. It isn't just a kind of emotional confusion, but a deeper crisis of subjectivity. I want to be myself, but who am I? I haven't found it yet, but it's definitely not who I am right now; the self I'm engaged in is lost, feeling utterly meaningless, sacrificing my life for certain things...
+
+When you don't know what you want, it's okay — try thinking about whether these things you have right now are what you need, and what you don't want, and just avoid that
+
+
+<!--memo:75047ecf4083-->
+### Subjectivity Is Scarce Under the Education System, and Gets Allocated
+
+> 2026-01-29 10:41:41
+
+In today's education system centered on exams and standardized evaluation, subjectivity is indeed a scarce resource, and it is more easily "allocated" to that small top tier of students
+
+Subjectivity is being very clear about one's own behavior, being very consistent between one's own cognition and one's own actions
+
+But most students in reality are more like executing an external script ...
+
+
+<!--memo:a3c3c05ba43b-->
+### Unverified Theory and Method Are as Illusory as a Mirage
+
+> 2026-01-29 14:40:56
+
+If you can't even verify for yourself that it works
+
+then this set of theory and method guidelines in this world is, as it were, a mirage
+
+
+<!--memo:c7a735f401e2-->
+### River Civilizations Around 2000 BC and the Fusion of Power
+
+> 2026-01-29 14:47:56 · `#格物/历史`
+
+Imagine 2000 BC to 1400 BC
+
+At that time the speed of information transmission ≈ the speed of a horse
+
+So the peak of civilization must have centered on great rivers and grain: whoever could stably produce grain could feed armies, run sacrifices, and build cities
+
+So leaders in the agricultural age could often govern floods
+
+In China, the Central Plains were the transition period from Xia → Shang
+
+Bronze casting was already extremely mature; sacrifice, kingship, and military force were three in one
+
+Shang bronzes were at the level of technical luxury goods at the time
+
+Which means: China's advantage lies in the fact that "military power + religious power" were bound very tightly
+
+If you assess the "degree of fusion of violence and divine right," Shang is very high
+
+
+<!--memo:7de31812e576-->
+### Sumer and Babylon: Political Structure and a Management Upgrade
+
+> 2026-01-29 14:49:53 · `#格物/世界历史`
+
+Sumerian civilization
+
+The Sumerians invented cities, writing, and the temple economy, but their political structure was very fragile:
+
+many city-states, much internal strife, strong divine power, weak royal power
+
+Like a group of technical geniuses who never invented the "corporate system"
+
+Then Babylon entered the stage, bringing with it solutions to that era's problems: a management upgrade
+
+You can think of Hammurabi as a very early "state product manager."
+
+His core problem was:
+
+when cities multiply, occupations multiply, transactions multiply,
+
+if you still rely on "whoever has the bigger fist speaks,"
+
+this system will collapse.
+
+Farmers need to know: what if a noble seizes my land?
+
+Merchants need to know: what if someone borrows money and doesn't repay?
+
+Craftsmen need to know: if the house collapses, whose responsibility is it?
+
+Priests need to know: how does the authority of god align with the authority of the king?
+
+So the Code of Hammurabi appeared
+
+What matters is not "an eye for an eye"
+
+but this thing itself:
+
+for the first time, law went from "the whisper of god" to "carved on stone for everyone to see"
+
+And so for the first time in human history there appeared a set of public rules
+
+If a doctor's surgery fails, cut off his hand
+
+If a house is built and collapses and kills someone, you pay with your life
+
+If a loan is not repaid, how it is handled
+
+Civilization progressed
+
+
+<!--memo:3da1dd1868f8-->
+### How the Sumerians Created Cities and Writing from Primitive Materials
+
+> 2026-01-29 16:33:38 · `#格物/世界历史`
+
+What did the Sumerians want to leave behind
+
+There were no natural barriers here, no stone, no forest, only river water, mud, and sun. So the Sumerians used the most primitive materials to make the most un-primitive things: cities
+
+They discovered the city; there were city-states, city walls, temples, warehouses, markets. This is a discovery rather than an invention, because if you observe the trend of the human species in other countries, they too spontaneously organize into cities
+
+They invented writing
+
+At the earliest it wasn't for writing poetry, but for keeping accounts:
+
+"how much wheat came into the warehouse today," "whose slave is this"
+
+This is the starting point of cuneiform
+
+Once a civilization can write things down, it possesses an external brain
+
+Memory no longer relies on the elders, but on clay tablets
+
+They also discovered theocracy: every city-state had its own patron god, and the city's legitimacy came from the temple
+
+But Sumer's fatal problem was exactly here: they were a city-state civilization, not a state civilization
+
+Which also led to fights among themselves. They were very smart, but they did not organize a larger political body, so they were taken over by peoples who were better at "integration"
+
+The temple served as the largest warehouse
+
+Grain, sheep, beer, dates, cloth were all gathered here.
+
+Then the temple redistributed by status:
+
+rations for craftsmen
+
+rations for soldiers
+
+rations for those who repaired the canals
+
+rations for priests
+
+It solved their division-of-labor problem
+
+It fits the Darwinian process — gathering is energy-saving, division of labor is irreversible, and outsourcing memory is inevitable ...
+
+
+<!--memo:4d73705fdd08-->
+### The Profound Influence of Sumerian Civilization on Western Civilization
+
+> 2026-01-30 10:43:32 · `#格物/世界历史`
+
+To understand Western civilization, you must first understand Sumer
+
+There is still debate today: Sumer, whose origins are unknown, and why the technology of Sumer's Stone Age advanced so rapidly
+
+The civilizational legacy left behind:
+
+the foundation of West Asian civilization, culture and institutions
+
+writing, law, mathematics, astronomy, and the urban model influenced the entire ancient world
+
+Modern time and angle measurement still use its sexagesimal system
+
+Sumer invented humanity's earliest writing — cuneiform (around 3400 BC), used to record economy, law, religion, and literature. Without Sumer's practice of "writing is power," there would be no later Greek philosophical texts or Roman codification of law
+
+Without the world's earliest urban civilization in Sumer, there would be no later Greek city-states, the vehicle of freedom
+
+Without Sumer's mythologized narratives, there would be no Western monotheistic narrative framework to explain the world and settle the heart
+
+
+<!--memo:c686afab4188-->
+### The Regulatory Mechanisms of the Non-Coding Regions of DNA
+
+> 2026-01-30 17:25:00 · `#格物/生物`
+
+How does DNA actually control genes?
+
+Actually it doesn't actively control genes, but as the storage carrier of genetic information, it uses a series of precise regulatory mechanisms to determine which genes are expressed when, where, and to what degree (that is, transcribed into RNA, and then translated into protein). Together these mechanisms constitute "gene expression regulation"
+
+About 98% of the DNA in the human genome does not code for proteins, but it contains a large number of regulatory elements; and the vast majority of genetic variants (including mutations) related to disease or traits fall precisely in these non-coding regulatory regions. The coding regions determine "what protein to make," while the regulatory regions determine "when to make it, where to make it, and how much to make"
+
+So because of a small mutation at one position, it may affect a gene as far away as 500,000 "letters"
+
+AlphaGenome solved both of the above pain points at once this time:
+
+It can both "see far" and shoot macro: it can swallow 1 million DNA letters in one go, and the prediction accuracy can still be refined down to each individual letter
+
+From "a specialist with a lopsided profile" to "an all-rounder": gene expression, splicing, chromatin state, protein binding — these complex biological processes can now all be handled simultaneously by this one model
+
+
+## 3. Daily Notes and Everything Else
+
+*70 entries*
+
+<!--memo:bcb08cd0a9a6-->
+### The essence of learning is changing yourself
+
+> 2026-01-04 15:56:23
+
+So many successful cases
+
+whether it's wanting to learn from them, or raising your awareness, or building confidence ...
+
+but the more essential thing is still to make yourself change
+
+If you can't even do this step
+
+then naturally the changes in the outside world have nothing to do with you
+
+
+<!--memo:f7b8bc5f0667-->
+### Chongqing is a proving ground for a complex world
+
+> 2026-01-04 19:03:42
+
+Chongqing is a natural proving ground for a complex real world
+
+complex city
+
+complex road conditions
+
+complex traffic
+
+complex inter-floor and level relationships
+
+
+<!--memo:4d75bf6aa1c9-->
+### A cold, ruthless self-assessment
+
+> 2026-01-04 20:22:28
+
+Having a ruthless and calm positioning
+
+A very clear understanding of yourself and of this world
+
+You could also call it common sense
+
+
+<!--memo:11e2b6bd984f-->
+### Let users perceive the change
+
+> 2026-01-04 20:25:58
+
+You have to make users aware that there's a change
+
+Only then can users feel the change properly
+
+
+<!--memo:ea6c1be4079d-->
+### Every added feature dilutes the core value
+
+> 2026-01-04 21:43:33
+
+Every feature you add dilutes everything else
+
+
+<!--memo:e20fff7e8d3e-->
+### IM tools are the best vehicle for conversation
+
+> 2026-01-04 23:53:56
+
+For the chat form, the best vehicle and habit is consumer IM tools
+
+
+<!--memo:407e98d0e9c4-->
+### Reaching goals naturally, through goal orientation
+
+> 2026-01-05 11:38:59
+
+Because you want to achieve a certain something
+
+so naturally that's how you go about doing it
+
+Around this kind of approach and capability
+
+you naturally reach the goal
+
+
+<!--memo:75f63dfc9c84-->
+### Don't invent scenarios, just build what users need
+
+> 2026-01-05 13:35:38
+
+Don't invent scenarios
+
+build what users need
+
+and do it as well as you can
+
+
+<!--memo:8ccfa79c64c7-->
+### The core of a good model is avoiding dead loops
+
+> 2026-01-05 15:04:34
+
+The best model isn't one that "never makes mistakes", but one that keeps finding alternative paths, avoiding dead loops or giving up
+
+
+<!--memo:046c7f45e44e-->
+### Evaluation is where taste lands, and a moat
+
+> 2026-01-05 15:26:10 · `#格物/品味`
+
+Evaluation is where taste lands
+
+It's a very good systemic capability
+
+Knowing how to build taste, and knowing how to evaluate
+
+Do you value "useful" more, or "interesting"
+
+"reliable" or "stunning"
+
+"explain it clearly" or "give the answer first"
+
+"say less nonsense (low hallucination)" or "cover more scenarios (high recall)"
+
+"user's first-try success rate" or "exploratory conversational experience"
+
+Most of these preferences can't be articulated clearly or written out completely, and they often conflict. So in the end one thing happens:
+
+Your real taste gets expressed through the objective function you allow your team to optimize
+
+That is, quantification, customer evaluation, some evaluation system ...
+
+iteration ... positive feedback
+
+Evaluation is a moat: how you test, what you test, how realistically you test ...
+
+What's really hard to surpass about DeepSeek is its team culture, its engineering system and its testing system
+
+Taste needs to land, inside an engineering evaluation system...
+
+Evaluation comes from the team's values — a more complete answer, more user dwell time, and so on ....
+
+AI's "good" is usually a multi-objective conflict: accuracy, speed, cost, politeness, robustness, safety, controllability, creativity……
+
+So a good evaluation isn't just a score; it's more a weighting system + a red-line mechanism
+
+
+<!--memo:d7b2f71b8e94-->
+### Jottings
+
+> 2026-01-06 13:32:15
+
+We're just playing a game well, that's all
+
+
+<!--memo:9cb7cef0fa94-->
+### The life philosophy of maxing out experience
 
 > 2026-01-06 16:21:20
 
 Max out life
-把人生的体验拉满
 
+Max out the experience of life
 
----
 
-### 主体性与自我定义的人生
+<!--memo:bb3f6ac34eae-->
+### Clear self-positioning and awareness of your strengths
 
-> 2026-01-06 16:15:01
+> 2026-01-06 17:52:17
 
-主体性
-可以说是极度自洽
-也可以说是极度自我
-一个可以被定义，但是又不能被定义的人格
-人生的边界是用来体验和打破的，敢于探索和打造自己的人生
-一个主体性不强的人，很容易被社会主流价值观裹挟，变得焦虑、随大流
-但是如果一个人很清晰的认识到自己和世界，它首先会有要去体验世界，定义规则，成就自己
-什么是对的，什么是好的，然后坚定的选择和执行，不在乎外界的声音
+What matters is being clear about what you want to do
 
-`#格物/主体性`
+Clear about your strengths, what you can use, your ability to handle this world better
 
----
 
-### Web 端与 API 端的控制权差异
-
-> 2026-01-06 16:02:20
-
-web 成品端一般都会有隐藏的 prompt
-api 是裸露的
-web 端的 tools 集成了很多
-但是 api 端是纯粹的
-web 还有各种的安全过滤，上下文可能也会压缩处理过
-api 有绝对的控制权
-
-`#格物/AI`
-
----
-
-### 场景发现优于创造的设计理念
-
-> 2026-01-06 15:55:06
-
-很多场景是发现，而不是创造
-设计的可能是一个平台，一个灵活的系统，一个允许个体自然而然发散，允许涌现的极致
-个体的灵活性
-
-
----
-
-### Gemma 模型的设计哲学与技术基因
-
-> 2026-01-06 15:54:15
-
-Gemma
-不同 gemini ，但是是基于 gemini 同源技术构建的最先进的轻量级开放模型（open models）
-所以使用的也是继承 gemini 的架构经验，训练数据逻辑和强化学习（RLHF）技术，在逻辑推理和代码能力上，天然带有 gemini 的基因
-开放权重 != 开源，开源不仅仅全中，还有训练数据，训练代码，预处理逻辑全部公开的
-gamma 设计哲学，不是堆暴力，而是有限参数下面追求极致的性能体验
-Decoder-only Transformer 是基于景点的解码器架构
-Google 现在的小模型的趋势就是，顶级的巨大的模型作为老师，蒸馏，去教导小模型，可以让小模型也拥有越级的推理能力
-使用的场景，包括非常低的成本，隐私的敏感场景以及垂直的领域微调
-
-`#格物/AI`
-
----
-
-### 意志运作的觉察与主体关系
-
-> 2026-01-06 14:34:10
-
-意志 → 本能 / 冲动 → 情绪 / 感性 → 直觉 → 理性
-觉察意志，并不会让意志消失你会改变你和他之间的关系
-你是一个看着意志运作的载体
-
-`#格物/意志`
-
----
-
-### 叔本华意志论的核心与人类困境
-
-> 2026-01-06 14:25:22
-
-叔本华的意志篇
-一直不是很理解意志
-在叔本华那里，意志不是人的主观欲望，而是驱动一切存在不断“继续、扩张、争夺、维持自身”的盲目力量
-核心就是盲目，不停，没终点，不关心幸福
-意志不是我想要什么，而是在思考这个问题前，事情就已经推动我继续做，想要更多，想要活，想继续
-万物都想要
-但客观规律，不以人的意志为转移
-人总有匮乏感，欲望不会停止，世界不会稳定
-它先于理性、先于意识，推动万物不断想要、继续、扩张
-人类的问题在于：我们不仅被它驱动，还清楚地意识到这一点，这也是人类痛苦的一部分
-三个能力，可以帮助人类
-
-- 美学：意志暂时变成“观看”
-
-- 同情：意志不再只抓着“我”
-
-- 减欲：不是满足它，而是不给它持续加速
-
-`#格物/意志`
-
----
-
-### AI 开源项目的协同模式转变
-
-> 2026-01-06 13:38:48
-
-AI 领域好用的开源项目更容易获取 star
-热门的 AI 项目 PR 也是爆炸式增长的，低质量的 PR 泛滥
-项目维护者的注意力比 PR 代码更值钱的
-开源的协同模式应该要发生转变
-
-`#格物/开源`
-
----
-
-### 随记
-
-> 2026-01-06 13:32:15
-
-我们只是在玩好一个游戏而已
-
-
----
-
-### 个人品牌构建与读者连接之道
-
-> 2026-01-06 13:23:47
-
-构建个人品牌
-读者核心是通过文字和作者建立关联
-言之有物是基础，清晰逻辑是前提
-真诚是连接的核心
-没有人会相信一个全知全能的新人，但会欣赏一个踏实成长的人
-创建个人博客或公众号并经常更新，在社交媒体上运营账号分享写作点滴，建立邮件通讯（Newsletter）与订阅者保持联系，参加线下沙龙或线上直播与读者互动等
-积累自己的作品的实例，获取一些必要的 titile ...
-
-`#格物/知我`
-
----
-
-### 言语性思维与对话结构的认知科学
-
-> 2026-01-06 13:00:20
-
-言语性思维处理
-认知科学中提出，确实是很多人的核心思考方式
-他们需要聊天，但是不在意聊天的内容
-对于这类人来说，对话者不是为了提供“信息”，而是为了提供“结构”
-语言是线性的，强制大脑按照一条线去思考推理
-（无意识者）很多人这样做，但他们不自知。他们会拉着你聊两个小时，你给出的所有建议都被他们驳回。你会觉得很累，觉得他们在“倒苦水”或“固执己见”。其实他们只是把你当成了“回音壁”。因为缺乏觉知，这种沟通往往会让倾听者感到被消耗
-（有意识者）这是高手，知道自己在做什么，他们会直接承认自己的脑子有些混乱，是否能听自己说十分钟，不需要给建议，这种人有很高的元认知，知道自己此刻需要的是什么
-程序员在代码出Bug时，会在桌上放一只橡皮鸭子，一行一行地向鸭子解释代码在做什么。往往在这个过程中，程序员自己就发现了逻辑漏洞
-但是现实生活中，很有趣，大多数的人在等着回应，通常听了一半开始构思自己的反驳或则建议，并且他们需要在场感
-
-`#格物/语言学`
-
----
-
-### 写书作为思考整理与价值传递
-
-> 2026-01-06 12:51:03
-
-有点想法写一本书
-咋说这辈子也想去认认真真的写一本书
-总想给这个世界传递一些什么
-我总想创造一些什么，这样让我开心
-我想整理一些什么，这样会让我理清楚思考
-
-
----
-
-## 2026-01-07 1月7日 周三  (12 条)
-
-### 逻辑推理与博弈思维差异
-
-> 2026-01-07 15:35:29
-
-逻辑推理式  vs 博弈式思考
-世界是稳定的、规则是确定的、参与者是被动的
-他们讲究的是世界上的因果循环
-这对于理解世界很有帮助
-但是一旦进入社会系统，技术变革，创业，平台竞争这个前提就开始崩了
-参与者会因为你的存在而改变行为
-所以自己是一个变量，自己是这个过程博弈中的一个环节了，自己参与到推动这个生态发展的一部分了
-博弈思考不是“竞争”，而是一个更底层的世界观：
-世界是由相互感知、相互反应的行动者组成的系统
-结果不是由条件推导出来的，而是被参与者共同“演化”出来的
-比如说 deepseek 开源v3 推动的  agent 和 thinking 繁荣，如果没有 DeepSeek，大家可能不认真思考开源
-世界像一个流体系统，而你不是旁观者，而是一块不断下水的石头
-
-- 你下水 → 水流改变
-
-- 水流改变 → 别人的路线改变
-
-- 别人的路线改变 → 新的结构出现
-
-前提是你不是站在岸边观看
-
-`#格物/创业`
-
----
-
-### 贪嗔痴与现代心理困境
-
-> 2026-01-07 15:25:42
-
-贪、嗔、痴（rāga / dosa / moha）
-情感中的贪，或者也叫沉没成本哈哈，明明变质，不接受
-社会成就中的贪，太想要了，太想证明了
-对人的嗔（关系冲突的核心），会愤怒，生气，对方好像没有按照自己的心里脚本运行，也是对自己的嗔，再就是对世界的嗔，世界有问题
-痴，所有的灾难的底层的操作系统，很难分辨贪和痴， 贪是想要更多，痴是得到了就怎么样，满足的匮乏感，痴还有就是过于自我的，我就是这样的 ... 一种对世界的误解
-人类为什么明明想要幸福，却系统性地制造痛苦
-总结出来的理解：
-
-- 贪 = 对“可乐之境”的攀缘 + 不愿失去
-
-- 嗔 = 对“不如我意”的现实的排斥
-
-- 痴 = 对现实运行方式的根本性误判
-
-`#格物/佛学`
-
----
-
-### 自我重要性的重新认知
-
-> 2026-01-07 15:00:12
-
-自己好像没有那么重要
-自己就是某一个事情的参与者
-自己想做的那件事情是那么的重要
-
-
----
-
-### 祛魅时代中永恒的魅力
-
-> 2026-01-07 14:55:26
-
-感觉现在很多事情都没啥意思了
-很多东西都是可解释的
-科技、文化、技术、制度 ..
-哪怕是人性
-这些都是都是可以祛魅的，理解的 ...
-但是有些东西又是无止境的  这也许是我们这个时代真正感觉到魅力的地方
-艺术 、创作、科技 ...
-
-`#格物/知我`
-
----
-
-### 无需害怕成本与未来瓶颈
-
-> 2026-01-07 14:52:33
-
-不用害怕成本
-不用害怕未来的瓶颈
-
-
----
-
-### 科技魅力的不可控与涌现
+<!--memo:2129b717b646-->
+### The uncontrollability and emergence that make technology captivating
 
 > 2026-01-07 14:51:55
 
-科技和技术的真正的魅力我觉得应该是他们的不可控
-涌现
-随机性
-图灵完备性
-正反馈
-触动人的美学
+I think the real appeal of science and technology should be their uncontrollability
 
+emergence
 
----
+randomness
 
-### 正反馈系统与长期稳定性
+Turing completeness
 
-> 2026-01-07 14:37:28
+positive feedback
 
-正反馈的系统有多重要
-如果一个系统不能自己变得更好，它只是在消耗维护者的意志
-机器的命运有两种
+aesthetics that move people
 
-- 不停保养
 
-- 或者被淘汰
+<!--memo:3c0bbece8283-->
+### No need to fear cost or future bottlenecks
 
-系统中最有魅力的部分是长期稳定性和自然演变的能力
-这也是物衰和侘寂美学得以长久的原因
-美学元素是长久的，是跨越文化的，受到意志驱动，但是也超越意志的
-这是唯一的可以对抗认知债务，系统往往都会积累债务
-技术债务和认知债务
-认知债务是时间积累的，比如说屎山代码为什么存在
+> 2026-01-07 14:52:33
 
-`#格物/系统学`
+Don't be afraid of cost
 
----
+Don't be afraid of future bottlenecks
 
-### Transformer 多头注意力机制解析
 
-> 2026-01-07 14:00:41
+<!--memo:d19adffb2d14-->
+### Reassessing how important I am
 
-transformer 多头注意力机制
-注意力机制本身比 CNN / RNN 更适合做“关系建模”
-多次注意力，多种视角，多张关系图并行叠加
-其实最开始训练阶段也是不知道哪种关系是重要的
+> 2026-01-07 15:00:12
 
-- 有的头几乎只盯着前一个 token（位置头）
+I don't seem to be that important
 
-- 有的头专门做句法闭包
+I'm just a participant in some matter
 
-- 有的头在整个训练后几乎“退休”
+The thing I want to do is that important
 
-现实中的 LLM 厂商的训练
 
-- 小模型 / 实验模型
-→ 4–8 头
+<!--memo:64d5c85b85b5-->
+### The three elements of fandom and looking up together
 
-- 中等规模（几亿参数）
-→ 8–16 头
+> 2026-01-11 09:49:19 · `#格物/热爱`
 
-- 大模型（数十亿参数）
-→ 16–32 头
+The feeling of an idol
 
-- 超大模型
-→ 32–64 头，甚至更多
-但此时很多头已经开始“专职化”，甚至有冗余
+Fandom groups generally have three things:
 
-`#格物/AI`
+A shared language — no need to explain much, no need to start a self-introduction from "who am I"; you just say "I like them too" and the other person immediately gets it. Communication cost is zero. There's a certain certainty between the two of you
 
----
+Shared emotional legitimacy — many places or environments hint that you shouldn't get too excited, shouldn't be too invested or too serious, but in fandom circles, hot tears can be understood, excitement can be caught, and you don't have to hide yourself
 
-### LLM 层数与训练稳定性的关系
+Waiting for a moment together, doing one small thing together (voting on charts, watching stages, saving photos, cheering), makes people very close. Because what you share isn't just content, it's time. Shared time is the hard currency of intimacy
 
-> 2026-01-07 13:19:09
+Someone who believes with you, gets excited with you, lifts life up a little together with you
 
-LLM 的层数，更多的是在服务学习的稳定性
-而不是服务语言的层级结构
-语言并没有要求几百层，但是确实梯度、训练和稳定性要求了
-深层次结构中，哪些信息应该被保留，哪些信息应该被丢弃掉
-生层次结构中，哪些信息应该被保留，哪些信息应该是去掉的
-梯度的问题到底是什么问题
-7B → 70B → 400B
-深度和宽度在添加，能力是还在增长的
-LLM 的瓶颈已经从“神经网络工程问题”，迁移到了“认知结构设计问题”
+Looking up together ...
 
-`#格物/AI`
+Envy is actually a mapping between the outside world and our inner selves; in reverse it lets us understand what we want
 
----
+Actually I can feel it in photography circles, hiking circles, at live band shows, in open-source communities, book clubs, even morning running groups, even among a group of people seriously making products ...
 
-### LLM 层级运作与信息传播
 
-> 2026-01-07 12:19:33
-
-LLM 层级关系
-一组固定结构的数学变换（线性变换  + 非线性 + 残差）
-自注意力，当前 token 看一眼上下文里所有的 token，决定哪些信息现在更重要
-前馈网络 MLP，这个是对刚好混合好的信息做一次非线性变换，类似于重新编码
-残差连接，把没变之前的我直接加回来
-归一化，防止数值爆炸或者消失
-人脑中字 → 词 → 句子 → 段落 → 语义 → 意图 → 哲学，每一层对应的一层抽象，但这不是 LLM 工作的方式
-LLM 是把当前文本理解，稍微改写一下，再交给下一层，就像有一句话表面意思背后意思啥的
-信息在很多层之间传播的时候，梯度（学习信号）会变得不稳定
-这在数学上叫：
-
-- 梯度消失（vanishing gradient）
-
-- 梯度爆炸（exploding gradient）
-
-后面的层在问：“我刚才做得好不好？” 这个反馈要一路“反向传播”回第一层
-走过 200 层之后：
-
-- 要么声音太小（听不见）
-
-- 要么被放大到失真
-
-所以现在深度的堆就会有问题，50 层就训练不动了
-
-`#格物/AI`
-
----
-
-### Google 创始人的技术理想主义
-
-> 2026-01-07 11:24:21
-
-Google 的两位创始人——Larry Page 和 Sergey Brin
-感觉都是技术理想主义的系统工程师
-他们在基础设施时代是自洽的，但是现在竞争的残酷，入口战争时代激烈
-
-
----
-
-### Google 创新困境与商业模式束缚
-
-> 2026-01-07 11:21:57
-
-Google 是如何做到长期稳定，并且反复出现结构性的病因？ 
-Google 是一个很强的公司，发明了容器，制定了标准，开源了基础设施，做了全世界都能用的工具，但是却在商业化一次又一次成为开括者，没有预测成功后面的最佳应用
-Google 作为全球的技术领先者，技术判断一直处于顶级的水平，但是入口型垄断公司，在面对会改变入口形态的创新的时候，系统性的选择了防御而非进攻
-所有的一切都在围绕自己的核心，但是也是自己的核心about 束了自己的所有的行为
-广告占比 Google 的营收接近百分之八十
-
-- 社交 / 推荐流 → 用户不再“搜”
-
-- 电商闭环 → 搜索变成上游
-
-- 生成式 AI → 用户不点广告
-
-- 金融超级 App → 用户时间被吃走
-
-- 游戏 / 内容订阅 → 不是广告模型
-
-理性防御 ≈ 慢性自杀
-成功公司会理性地做出导致自己失败的决策
-现代互联网大家都在抢一个入口
-他们都清晰的知道，入口一旦迁移，就几乎不会回头
-不做所有入口的王，只做所有入口的底座
-
-`#格物/Google`
-
----
-
-## 2026-01-08 1月8日 周四  (2 条)
-
-### 手机环境控制与自我觉察
-
-> 2026-01-08 14:49:20
-
-对于一些擅长用系统能力的人来说
-手机的环境也尤其重要
-并且可以意识到自己当下是在做什么
-比如说手机的环境，尽量控制自己的手机环境很重要
-清晰线上的时间消费都是合理的
-
-`#格物/系统学`
-
----
-
-### 港股本质逻辑与资本规则
-
-> 2026-01-08 12:01:26
-
-港股的本质的逻辑
-让全球的资金可以地摩擦买入中国资产
-高度自由，不保散户、不兜底、不救市、无涨跌停，可做功
-高度法治，规则清晰、责任自负、披露优先
-同股不同权，未盈利可上市（智谱），上市未必是安全的
-港股不稀缺上市资格，壳价值极低，借壳没溢价
-
-`#格物/投资`
-
----
-
-## 2026-01-09 1月9日 周五  (1 条)
-
-### 睡衣三要素与睡眠质量管理
-
-> 2026-01-09 23:34:55
-
-睡衣帮助
-睡觉三要素，降核心低温、排汗调湿、减少外界刺激
-
-- 体温调节，这是硬指标，在有风或者空调的环境完全不穿也是不太好的，薄、透、不过度贴身的睡衣，在大多数现代卧室（空调/暖气）里，反而最利于体温曲线平滑下降
-
-- 湿度管理，被严重低估的，天然材质在这里就很有用，晚上会出汗，吸湿差 → 汗留在皮肤 → 黏、冷、反复醒，速干但不透 → 干了又闷 → 同样不舒服
-
-- 触觉刺激，不必太紧张，宽松
-
-`#格物/睡觉`
-
----
-
-## 2026-01-10 1月10日 周六  (1 条)
-
-### 信息过载时代认知的重要性
-
-> 2026-01-10 23:09:19
-
-突然想到
-现在的信息爆炸时代，认知负载时代，AI 获取信息低成本时代
-认知还有那么重要吗？ 
-反思一下我自己，或许很多人的感受和我的一样
-有很多的信息真的太多了，太负载了
-太多认知体系了 
-筛选、排序、优先级、放弃真的尤其的重要
-在未来，忘记比记忆更重要，拒绝比接受更重要
-提出好问题的能力，定义问题比解决问题更重要
-校验与对齐尤其的重要，认知就是把输出变成行动的闭环能力
-
-`#格物/认知`
-
----
-
-## 2026-01-11 1月11日 周日  (11 条)
-
-### 让 AI 选衣服的色彩分析逻辑
-
-> 2026-01-11 23:20:13
-
-让 AI 给我选衣服
-告诉 AI 我的环境
-挺有趣的，我把我自己选择的困难交给 AI 
-AI 会分析我的肤色，分析现在已经有的样式
-我的肤色是卡在高级区间的，偏暖色，中等亮度
-如果选米兰，亮度太高了，面部对比容易被吃掉，人淡如背景
-如果是黑色或者深蓝色，就是对比度太强，注意力压到衣服
-深绿色刚刚好，很符合
-
-- 深蓝 / 黑：偏理性、秩序、办公室
-
-- 米白：偏文艺、干净、弱攻击性
-
-- 深绿：自然、克制、有力量，但不咄咄逼人
-
-长期的穿搭系统来说，可以进城市，也可以进自然，四级都很友好，所以非常的适合我
-
-
----
-
-### AI 时代普通人如何自处
-
-> 2026-01-11 12:17:44
-
-AI 时代，信息化时代
-普通人如何玩好这个游戏？ 
-关于我和我自己，我和这个世界
-click view -&gt; start
-
-`#格物/游戏`
-
----
-
-### 演唱会作为仪式化高潮的意义
-
-> 2026-01-11 11:21:11
-
-共同语言、情绪合法性、共享时间与小事——演唱会可以被视为一种“仪式化高潮”（ritualized climax），它不是日常追星的延续，而是整个过程的巅峰聚合点。追星往往是分散的、数字化的（比如存图、打榜、线上讨论），而演唱会则将这些碎片化的体验转化为一个高度集中的、身体化的共享时刻。它扮演的角色类似于宗教仪式中的“朝圣”或节日庆典：强化群体的凝聚力、放大情绪的合法性，并通过同步的时空体验制造出一种“集体效奋”（collective effervescence），借用社会学家埃米尔·杜尔凯姆的术语，这是一种群体互动中产生的兴奋与归属感
-
-共享时间 并且放大，类似于我们在跨年的那一刻集体的亢奋，空间感给我们记忆，你不是一个人在屏幕前激动，而是与数千人一起尖叫、挥手、泪流
-
-演唱会提供了一个“情绪放大场域”，偶像的舞台灯光、音乐节奏、互动环节（如安可或粉丝应援）像催化剂一样，放大个人的情感投入，让粉丝感受到“不用藏起来”的自由。同时，它也制造“峰值体验”（peak experience），心理学家亚伯拉罕·马斯洛描述的这种状态，能带来短暂的自我超越感，粉丝在那一刻觉得自己与偶像、与群体融为一体
-
-这种机制对人的作用力是双重的：短期提供情绪燃料和连接，长期构建 identity（身份感）和 resilience。它利用人类的社会本能（tribalism），将个人追求嵌入群体叙事中，从而放大动力。但要可持续，需要平衡高潮与日常——否则，就像追星后的空虚，可能会反噬热情
-
-无非我们追求的是活着的意义，体验
-
-`#格物/热爱`
-
----
-
-### call-me 电话外设架构分析
-
-> 2026-01-11 10:34:55
-
-call-me
-claude code 用的电话外设
-claude 需要你的时候介入直接打电话给你
-场景很明确，你让 Claude 跑一个比较久的任务（改代码、查资料、跑脚本），你人可以走开；当 Claude 做完了/卡住了/需要你拍板，你的手机/手表/甚至座机就会响，然后你可以在电话里跟它多轮对话，把决策做完再让它继续干活
-架构分析
-
-- claude code 插件形式存在
-
-- 插件通过 mcp server 方式工作
-
-- MCP server 用 ngrok 打洞接收电话服务商的 webhook
-
-- 电话部分走 Telnyx 或者 Twilio
-
-- 语音 STT/TTS 用 openai API
-
-`#格物/产品`
-
----
-
-### 小红书右滑交互的体验设计
-
-> 2026-01-11 10:23:54
-
-小红书的点点右滑笔记很触动自己
-把一个退出的动作，变成一个深入探索的机会，体验感直接拉满
-非常的符合直接，无缝衔接，本来是想要滑回去，这个动作不会打断自己浏览笔记的节奏，但是更像是一个隐藏的快捷键，需要的时候留意放慢自己的速度，可以深度的探索的机会
-降低了我的使用的门槛，很符合直觉
-信息的密度也是瞬间的拉满了，可以深度探索，或者总结
-
-`#格物/产品`
-
----
-
-### 交流中最难对齐的是意义
-
-> 2026-01-11 10:12:20
-
-人们交流中最难对齐的不是信息，而是意义
-追星赋予了一个现成意义框架，什么是好的、什么是值得追求的、什么是美的、什么是热血的、什么是纯粹的
-你不需要从零解释 我是谁、我珍视什么，只需要说一句我也追 TA ，其实就和我同样遇到一群理想主义的人一样，对方就能读懂一大段价值观简历
-偶像是一个可被共同指认的“超越对象”——像宗教里的神、国家里的旗、部落里的图腾。它把散落的个体意志，汇聚成同一束光。你们亲密的感觉，本质上是：
-“我在你身上看见了同一个‘应该’”
-人类有一个很魔幻的机制，一起激动，会感觉更熟悉，这种很容易产生情绪同频，在心理学里叫情绪传染，情感共振
-你能不能和别人共享强烈情绪而不尴尬
-
-`#格物/意义`
-
----
-
-### 死了么 APP 抓住社会情绪共鸣
-
-> 2026-01-11 10:05:06
-
-死了么 APP
-这个 APP 好像很能抓住社会的情绪共鸣，争议性命名，以及极简的产品逻辑
-但是我好奇的是它是如何推广并且变火的
-它把一个沉重、忌讳但又真实存在的恐惧（“我死了都没人知道”），具象化为一个低门槛的解决方案。这种“保命”属性让它在社交媒体上具有天然的传播力
-这个 App 的创意并非他们凭空想出来的，而是源于网络热门话题——“有哪些App是每个人都需要但还没被开发出来的？”
-这个 APP 功能极其简单，但是解决了核心的焦虑，用户愿意为此买单或者下载
-
-`#格物/营销`
-
----
-
-### 社群与粉丝团的概念延伸
+<!--memo:f01799112efa-->
+### Extending the concept from community to fan club
 
 > 2026-01-11 09:58:39
 
-可以是交社群，也可以是现在的概念粉丝团
+It can be called a community, or with today's concept, a fan club
 
 
----
+<!--memo:f1bb807fe6c1-->
+### The meaning of concerts as a ritualized climax
 
-### 偶像感的三要素与共同仰望
+> 2026-01-11 11:21:11 · `#格物/热爱`
 
-> 2026-01-11 09:49:19
+Shared language, emotional legitimacy, shared time and small things — a concert can be seen as a "ritualized climax". It isn't a continuation of everyday fandom but the peak convergence point of the whole process. Fandom is often scattered and digital (saving photos, voting on charts, discussing online), whereas a concert turns these fragmented experiences into a highly concentrated, embodied shared moment. Its role is similar to "pilgrimage" or a festival in religious ritual: strengthening group cohesion, amplifying the legitimacy of emotion, and through a synchronized experience of time and space producing a kind of "collective effervescence" — to borrow sociologist Émile Durkheim's term, this is the excitement and sense of belonging produced in group interaction
 
-偶像感
-追星的群体一般有三样：
+Shared time, and amplified — similar to the collective excitement at the moment of New Year's Eve. The sense of space gives us memory: you're not alone getting excited in front of a screen, you're screaming, waving and crying together with thousands of people
 
-- 共同的语言，不用解释太多，不用从我是谁开始做自我介绍，只需要说一句我也喜欢 TA，对方就立马读懂了，交流成本为零。双方有一定的确定性
+A concert provides an "emotional amplification field": the idol's stage lighting, musical rhythm, interactive segments (encores, fan cheering) work like catalysts, amplifying personal emotional investment and letting fans feel the freedom of "not having to hide". At the same time, it creates a "peak experience" — the state psychologist Abraham Maslow described — bringing a brief sense of self-transcendence, where at that moment fans feel fused with the idol and with the group
 
-- 共同的情绪合法性，很多地方或者环境会暗示你不要太激动，别太投入和太认真，但是在追星圈，热泪是可以被理解的，兴奋也是可以被接住的，不用把自己藏起来
+The force this mechanism exerts on people is twofold: short term it provides emotional fuel and connection; long term it builds identity and resilience. It uses humans' social instinct (tribalism) to embed personal pursuits into a group narrative, thus amplifying motivation. But to be sustainable it needs a balance between climax and everyday — otherwise, like the emptiness after fandom, it can turn back and eat the passion
 
-- 一起等一个时刻、一起做一件小事（打榜、看舞台、存图、应援），会把人变得很近。因为你们共享的不只是内容，而是时间。共享时间，是亲密的硬通货
+In the end what we're after is the meaning of being alive, experience
 
-有人和你一起相信、一起激动、一起把生活抬高一点点
-共同仰望 ...
-羡慕其实是外界和我们的内心映射，反过来让我们了解自己想要什么
-其实包括在摄影圈、徒步圈、乐队现场、开源社区、读书会，甚至晨跑团，甚至是一群认真做产品的人，我都能感受到 ...
 
-`#格物/热爱`
+<!--memo:e22565252da0-->
+### How much truth matters, and choosing the dream
 
----
+> 2026-01-12 11:00:15 · `#格物/盗梦空间`
 
-### 徒步对中耳鼓膜的影响
+Is truth really that important?
 
-> 2026-01-11 09:39:09
+Does it really matter that much whether you're in a dream?
 
-徒步对鼓膜的影响
-不仅仅是高原
-长时间走路、喘气、低头抬头：
+Being able to do what you want at any time, choose the life you want
 
-- 咽鼓管反复开合
+whether it's based on understanding yourself, or understanding your relationship with this world ...
 
-- 中耳压力频繁变化
 
-- 对普通人没事
+<!--memo:28181059b358-->
+### The Inception top and the insight of letting go of proof
 
-- 对这种中耳结构不稳定的人，是刺激
+> 2026-01-12 11:06:51 · `#格物/盗梦空间`
 
-炎症还没修复完成，实际上修复期的粘膜非常的脆弱，禁不起摩擦
-熬夜就是放大器 ...
+Super interesting, Inception
 
-`#格物/健康`
+At the end that top spins on the table — before the shot cuts away it "seems" about to wobble, but you're never given a clear answer
 
----
+What Cobb wants isn't "the truth", it's "going home", seeing his children, hearing their voices. Aren't many people using their own little tops — "as long as I earn X I'll be at peace", "as long as they reply to me I'll know I'm loved", "as long as the numbers go up I'll know the direction is right"
 
-### 动机需要即时反馈与可视化
+At some moments, fixating on proof keeps you from ever going home; daring to let go of proof is what actually lets you enter life
 
-> 2026-01-11 08:55:12
 
-人类的动机需要即时反馈才能持续。
-为你的系统设计明确的反馈机制。我采用著名的“不要断链”方法：在日程本上标记每天完成系统行动的日子，看着链条越来越长，本身就是一种强大的动力
-其实好像 flomo，还有多邻国也是这样，包括 github 绿点点，很有趣有成就感
-你可以使用应用打卡，或在笔记本上简单记录。关键是让进步可视化
-
-`#格物/系统学`
-
----
-
-## 2026-01-12 1月12日 周一  (10 条)
-
-### AudioLLM 语音处理的技术难点
-
-> 2026-01-12 20:04:03
-
-AudioLLM
-语音这部分是比较复杂
-先保留语义信号
-声学信号保留一点点，还原出来就行
-语义信号是比较复杂的，模型能对应语义和文本 token 对应很重要
-语音 -&gt; 文字： ASR 本质上是做很强的压缩，每 10ms 一帧的声学特征（连续、冗余、噪声多）。输出就是，一串 token（字/词），维度和信息量骤降，一旦转成文字，后面的 LLM 就在它最擅长的领域里玩：符号推理、语义、逻辑、检索、写作
-直接处理声音，端到端： 几秒音频就几百到几千帧，比一段文字 token 多得多，注意力计算更贵，情绪、语气、停顿、重音、说话人身份、环境声……这些在文字里丢了，但在音频里都在，模型得学会“哪些重要”
-
-`#格物/AI`
-
----
-
-### 人被环境强烈偏置的机制
-
-> 2026-01-12 16:56:13
-
-人和环境
-人会被环境强烈偏置
-可得性，你身边更容易出现什么，你就跟容易做什么
-比如说咖啡馆大家都在做事，我们的大脑模仿系统就也容易把专注当成常态
-执行某些事情，或者思考某些东西是需要成本的，但是摩擦力作为阻力或者成本
-环境不需要劝你，只要改变你对某些行为的摩擦力，想耍手机的时候，手机在手边、通知不断 -&gt; 摩擦力趋近于零
-反馈系统，人对及时反馈极其敏感，环境会给出一些反馈，比如说抖音作为即时奖励机器，健身是延迟奖励系统，环境偏向于哪边，就被哪方面塑造
-社会规范场，别人都这么做，对大脑来说几乎不可能
-与其逼自己改变，不如先把环境改成让你“更容易成为想成为的人”
-
-`#格物/环境`
-
----
-
-### 嫉妒心与随喜心的境界差异
-
-> 2026-01-12 16:09:34
-
-嫉妒心和随喜心是两种境界
-嫉妒什么越是得不到什么
-随喜什么越是能得到什么
-随喜他人，需要目标境界就需要更高
-追求的境界更高，格局更大
-
-`#格物/佛学`
-
----
-
-### 随喜赞叹的佛学内涵与修行
-
-> 2026-01-12 15:43:35
-
-随喜赞叹，佛学语境
-见他人行善、得成就、内心生欢喜，并以语言 / 行动表达认可与鼓励
-经典里有“示教利喜，随喜赞叹”的说法；大乘里普贤菩萨“十大愿王”第五愿谈“随喜功德”，也把它系统化成一种修行方法
-随：随着、跟上，但也不是盲从，不和善意做对
-喜：不是兴奋，而是那种，不酸、不拧巴的真开心
-赞：指出对方哪里做得对，哪里值得学习
-叹：发自内心的敬重，我承认这件事情的价值，并且愿意让它被看见
-“你做的这件事有价值，我愿意把我的注意力和善意投票给它”
-人脑是很容易把别人的光芒误读成我的威胁，于是会有嫉妒、贬低、挑刺，这是一个自我保护的机制
-随喜赞叹就干的事情就反直觉，别人的好写成可以共享的增益，训练的一种情绪是叫同喜，看到别人好，你也能好
-心的方向本身就是业（行为的种子）
-灵隐寺的解释就强调：随喜不只是心里开心，最好还能“助一臂之力”，成就他人的善行
-
-`#格物/佛学`
-
----
-
-### 环境映射机制与空间功能设计
-
-> 2026-01-12 14:03:09
-
-自己的环境映射机制
-构建一个环境很重要
-构建自己大脑的认知系统对环境的映射机制也很重要
-咖啡馆 = 干活的地方
-家里 = 休息、娱乐、杂事线索太密，启动失败很正常
-再加上在家里其实决策的路径和成本是更短的
-在咖啡馆，消费、出门、左下本身就是一系列的仪式感
-但是在家，床、沙发、厨房、洗衣、手机充电线… 都在召唤你。大脑会说：先把这些解决了再学习吧（结果永远先不完）
-如果以后要设计房间，一定要很清晰各个房间和功能场景
-并且在工作之前启动一些仪式感
-
-`#格物/环境`
-
----
-
-### 盗梦空间陀螺与放下证明的启示
-
-> 2026-01-12 11:06:51
-
-超级有意思，盗梦空间
-结尾那颗陀螺在桌上转着——镜头切走之前，它“似乎”有点要晃，但又没给你一个明确答案
-柯布想要的不是“真相”，是“回家”，见到孩子， 听到他们的声音，很多人是不是也在用自己的小陀螺，比如说 “只要我赚到X我就安心”“只要对方回复我我就确定被爱”“只要数据涨我就知道方向对”
-有些时刻，执着于证明会让你永远回不了家；而敢于放下证明，反而让你真正进入生活
-
-`#格物/盗梦空间`
-
----
-
-### 投机分子的neutral 定义与边界
-
-> 2026-01-12 11:04:38
-
-投机分子
-有点像哈，你买入 / 卖出一个资产，主要是靠价格波动赚钱，而不是靠它长期创造的现金流 / 价值
-投机和投资不是二元对立，而是一条连续谱，同一个人可以在不同仓位，不同时间做两者
-投机 speculation 是一个中性词，市场也需要投机者提供流动性和价格发现
-投机者一半是有押注的成分的，有策略，有风控也可以很专业
-赌博是胜率和优势都不清楚，主要是靠运气
-投机取巧就是走后门，钻空子，占便宜
-
-`#格物/金融`
-
----
-
-### 真相的重要性与梦境选择
-
-> 2026-01-12 11:00:15
-
-真相真的有那么重要吗？ 
-是否在梦里是否真的也有那么重要吗？
-随时能做自己想做的事情，选择自己想要的人生
-无论是基于对自己的理解，还是对自己与这个世界关系的理解 ...
-
-`#格物/盗梦空间`
-
----
-
-### 观念框架如何侵蚀改变人
-
-> 2026-01-12 10:09:52
-
-突然想到，很多的观念，很多的想法
-一旦侵入到自己的脑海中，就会慢慢的侵蚀自己
-梅尔不是被谁按着头自杀的。她是被一个看似“合理”的句子感染了：这个世界不真实
-这是一套解释体系，可以解释所有的反证，所以你永远也赢不了它
-人不是被事实改变的，人是被解释事实框架改变的 ...
-怎么想很重要 ...
-
-`#格物/盗梦空间`
-
----
-
-### 向下比较与使命感成长路径
-
-> 2026-01-12 08:59:05
-
-我爸总想灌输我，向下比较会带来安稳过，会止痛
-但是就我自己的经历来说，我更多的是同情和责任感，自己能不能做点什么，有没有一些使命感
-成长（我在变强）、连接（我爱人也被爱）、贡献（我让世界少一点痛）
-
-`#格物/人生`
-
----
-
-## 2026-01-13 1月13日 周二  (15 条)
-
-### 唯物主义与唯心主义是世界的两种基本哲学形态
-
-> 2026-01-13 23:50:45
-
-凡事具有客观实在性，不会因为人的意志而改变的，称之为唯物主义。
-
-世界哲学分为两派，一个是唯物主义，一个是唯心主义。实际上呢，唯心主义围绕着一系列的“心学”，或者是“心智学”。
-
-但是唯物主义是基于马克思主义，马哲思想提出后，世界的基本组成形态。
-
-
----
-
-### 科技超越人性的时代买得起科技的人收割普通人
-
-> 2026-01-13 23:10:42
-
-感觉有钱的人会更有钱，因为他们可以利用科技。科技是极度理智的，它可以超越人，能够战胜人性。
-
-所以未来，在一个科技普遍超越人的时代，感觉那些买得起科技的创业公司，就能收割更多的普通人了。这真的太残酷了。
-
-
----
-
-### 买指数承认不比体系聪明，买股票是认知零和博弈
-
-> 2026-01-13 22:22:57
-
-买指数买的是平均的回报率，证明自己不比体系聪明，只要它长期增长的那部分
-买股票就是和他人认知做零和博弈，尤其对于短期投资来说，你认为自己比市场更聪明，至少在某一个小块
-金融体系对大多数人的激励结构，和个股交易是反向的，对于现实中大部分的人来说，是没有一手信息，自己也有情绪波动，而且没办法实时盯盘
-
-`#格物/金融`
-
----
-
-### 人类历史上完成度最高的几套心智系统
-
-> 2026-01-13 21:53:03
-
-人类历史上完成度最高的几套心智系统
-
-- 佛学，非常成熟，体系化
-
-- 斯多葛主义
-
-- 儒家
-
-- 道家
-
-- 存在主义，略高，但容易进入虚无主义
-
-马克思主义，唯物主义，对世界怎么运转很适用
-但是没办法让个体安顿内心，非常的局限
-
-`#格物/佛学`
-
----
-
-### 随喜赞叹对抗嫉妒，内在稳定者不需要通过他人证明自己
-
-> 2026-01-13 21:49:42
-
-随喜赞叹对面 - 嫉妒、欲望
-只要你没那么好，我就没那么差
-这类人擅长评价别人
-我们最讨厌的，往往是我们不被允许成为的样子 ...
-所以，尤其是在资源稀缺的条件下，一些点赞，关注就是量化指标了
-还有一点就是自己道德感下面伪装的优越感
-这种是更精致的贬低
-不是直接说你不行，而是
-我比较真实，我比较清醒，这种东西没什么深度 ...
-内在稳定的人，接纳自己和别人的复杂性，不需要通过别人来证明自己
-
-`#格物/佛学`
-
----
-
-### 对世界复杂性的接纳与权力本质
-
-> 2026-01-13 21:32:58
-
-去年自己旅居思考培养出来的几个信号
-
-- 对世界的复杂性接纳、理解
-
-- 不着急证明自己
-
-- 孤独并没有什么 ... 被误解也没有什么 ...
-
-- 随喜赞叹，欣赏对方的优秀
-
-遇到了一个老师，额外的说了一句我觉得非常有哲理的一句话
-权力来自“被共同承认”
-暴力来自“无法再被承认”
-
-`#格物/知我`
-
----
-
-### 人格优秀与系统优秀的代价追问
-
-> 2026-01-13 21:01:37
-
-人格的优秀，和系统的优秀异同
-当你真的把一切都做到最好
-你是否还剩下一个“自己”？
-优秀是否带着代价，是否是系统中的最优的选择？
-我们到底是想要什么
-世界没有一套标准的价值观可以保证我们每个人是公平、幸福的
-这个世界就是在不断的实验和运作过程中，诞生出来一些反复被验证的about 束条件
-当一个价值体系
-
-- 要求人彻底工具化自己
-
-- 不允许怀疑、不允许退场
-
-- 以“正确”为名压扁个体
-
-- 把复杂世界压缩成单一目标
-
-那么不管它叫正义、效率、信仰、成功还是伟大使命——它几乎必然会制造灾难
-
-`#格物/教父`
-
----
-
-### 世界按关系与交换而非道德运转
-
-> 2026-01-13 20:59:53
-
-权利、秩序、家庭、带来 ...
-世界并不按道德运转，而是按关系、承诺、威慑与交换运转
-这是一个系统，构建出来的系统，
-这个系统下面，会诞生什么样的人，会诞生什么样的结构
-为什么这个结构会迫使人做出这样的选择
-哪些规则在表面道德之下真正起作用
-
-`#格物/教父`
-
----
-
-### 西西里的地理特征与黑手党起源
-
-> 2026-01-13 19:57:14
-
-西西里
-意大利的西西里
-西西里位于意大利“靴子”尖端对面，被三片海包围。岛上最醒目的存在是 埃特纳火山——欧洲最活跃的火山，几千年来一边毁灭、一边创造肥沃的土地
-生活的特征，慢、直、重感情，谨慎权威
-诞生了黑手党
-19 世纪的西西里，问题非常具体，国家遥远、警察稀薄、法律不可信，土地和财产却极易被掠夺
-于是就有了一套民间的制度体系，黑手党诞生
-典型结构包括：
-
-- 家族（Family）
-
-- 老大（Boss）
-
-- 二把手（Underboss）
-
-- 执行者（Soldiers）
-
-血缘与地缘强绑定，最著名的来源地之一是 科莱奥内
-
-`#格物/意大利`
-
----
-
-### 市场情绪回落的判断信号
-
-> 2026-01-13 19:54:28
-
-判断情绪回落
-市场对上涨不再兴奋
-此时即使出现利好，股票也不会大涨
-
-
----
-
-### 迈克尔·柯里昂的系统能力与反噬
-
-> 2026-01-13 13:23:50
-
-迈克尔·柯里昂的“系统能力”极强，而且强到近乎冷酷；但正因为太强，这套系统最后反过来吞噬了他
-别人看到的是情绪，背叛，仇恨
-迈克尔看到的是：谁是节点、谁是风险源、谁可以被替换、哪里需要切断。
-他不处理“人”，他处理关系图谱
-系统需要稳定，所以情绪的延迟满足是尤其重要的
-
-`#格物/教父`
-
----
-
-### 两代教父的性格对比与权力代价
-
-> 2026-01-13 13:22:06
-
-两代教父 两代性格
-第一代权利建立在人情，信用和长期互惠上面
-像一个老派的政治家，强调的是慢、稳、分寸感，所以具有强大的关系网的
-第二代是秩序的终结者，也是现代性的象征，迈克尔把家族从“人情网络”改造成“制度机器”：理性、集中、无情。他不靠人情维持稳定，而靠结构与恐惧。这是一个理性最大化的统治者，代价是情感被抽干。权力赢了，家庭输了
-迈克尔·柯里昂极度理性，把世界当成棋盘、把自己当成手术刀的人
-极度理性、自控、敏感、善于延迟满足，并且情绪很少外露
-他既渴望摆脱家族的暴力命运，又相信只有自己才能结束这一切
-他最恐惧不是危险，而是不可预测，包括自己的环境，遇到的危险等等，创伤后的生存策略，只要自己能控制，就不会被再次伤害
-再就是情绪共鸣，可以理解别人的情绪，但是将自己的情绪压到冰层下面的，暴露情绪等于暴露弱点
-理性导向，目的吞噬手段，手段反过来改造目的
-孤独型领袖，越强大越封闭，越往上走，越不信任人。因为他见过背叛，见过家族内部的脆弱，也见过权力的代价，集权者也是这样的，短期内有效，但是长期是很危险的，因为组织会变成围绕他个人的神经系统，一旦他变冷，整个世界都变冷
-
-`#格物/教父`
-
----
-
-### 亲密关系中允许自己不高效
-
-> 2026-01-13 11:30:09
-
-外部世界的冷静、清晰、理性
-但是在亲密关系中，也允许自己不高效、不正确、不占据上风
-这种人不是没到家，而是提前意识到自己想要什么，不想要什么
-
-
----
-
-### 凯记忆中理想主义迈克尔的消逝
-
-> 2026-01-13 11:18:36
-
-凯记忆中的还是那个理想主义的迈克尔
-麦克后面每一个做法都很残酷
-把真相推迟，欺骗
-把婚姻当做合法性装置
-他不允许她有判断结论
-
-`#格物/教父`
-
----
-
-### 餐馆枪杀事件如何塑造教父
-
-> 2026-01-13 09:16:38
-
-突然的一段经历塑造了教父
-迈克尔·柯里昂在餐馆枪杀索洛佐与警长的那一段
-第一，角色层面——他从“想做普通人”变成“被迫承担秩序的人”。不是野心，是责任的冷启动
-第二，道德层面——暴力被拍得不性感、不英雄，像一项肮脏却必要的工作。你能理解，但不被安慰
-第三，电影语言——声音先于动作完成转变。火车不是背景，是命运的齿轮；当枪响，世界已经提前决定了结果
-教父是最冷静的、最能延迟情绪、能把私人情绪冻结成结构性决策的
-家族不再是“情感驱动的父权组织”，而变成了“效率优先的权力机器”
-他赢了世界、却失去了家庭
-
-`#格物/教父`
-
----
-
-## 2026-01-14 1月14日 周三  (21 条)
-
-### 从活在当下到活好当下的主动创造
-
-> 2026-01-14 18:35:27
-
-活在当下 -&gt; 活好当下
-活在当下： 别想太多，放松点，享受现在，对抗焦虑、过度规划、过度内耗
-活好当下：我承认此刻就是我的全部的输入，但是我要把它打磨成一个好的版本。对抗的不是焦虑、而是虚度、失控、漂浮感
-活好当下 = 在不确定的世界里，把注意力投向你能影响的变量，并对其做最小但真实的改进
-活好当下， 不仅仅是接受，而是创造 ...
-
-`#格物/社会`
-
----
-
-### 警惕社交媒体对人生解释权的标准化模板
-
-> 2026-01-14 18:28:21
-
-人生的解释问题
-我对自己的人生解释权时候还在自己的手上
-社交媒体的问题在于：
-
-- 它提供了现成叙事模板
-
-- 成功、幸福、关系都有标准答案
-
-个体只是不断“对号入座”
-但是 ... 人生不是需要更多的标准答案 ...
-更重要的是去理解自己，包容自己，理解世界，接触世界
-
-`#格物/社会`
-
----
-
-### Z 世代价值多元是假象，成功标准反而更单一
-
-> 2026-01-14 18:26:52
-
-Z 世代价值多远是否是假象
-价值极端集中，但表达高度分散
-表面看：
-
-- 价值观更开放
-
-- 选择更多元
-
-但量化结果是：
-
-- 对“成功/失败”的判断标准反而更单一
-
-- 高度集中在：
-曝光、关注、收入、可见影响力
-
-年轻人看起来好像什么都接受，但是对自己又异常残酷
-
-`#格物/社会`
-
----
-
-### 深度动机塌陷导致长期主义价值被即时回报取代
-
-> 2026-01-14 18:25:15
-
-深度动机塌陷的问题
-世界的变化很快
-越来越多的人开始追逐
-并非是更懒，而是需要长期投入但是不确定性的一些事情，主观意义感显著降低
-
-- 更少人愿意走长路径（科研、深度专业）
-
-- 更多人追逐“即时可见回报”的赛道
-
-这种的高变化的时代，长期主义真的还有价值吗？
-一个路径、一个身份、一套技能好像慢慢的失效了
-一些底层的能力更重要了，长期的叙事能力，底层的一些资产、审美能力、学习能力、认知能力、个人品牌
-复杂系统需要少数真正懂的人
-这就会出现一种分布：
-
-- 多数人：短期赛道，竞争极度拥挤
-
-- 少数人：长期赛道，赢家通吃
-
-这是幂律，不是努力神话
-
-`#格物/社会`
-
----
-
-### 年轻人过早接触社交媒体导致自我价值绑定偏差
-
-> 2026-01-14 18:15:09
-
-年轻人过早的接触社会媒体的问题
-一般过早的定义是 10-12 岁前拥有个人社会账号
-以及以算法推荐为主的平台，包括短视频和信息流
-以及无稳定成人引导
-女生会有外貌与自我价值强绑定，外貌比较频率显著增加，女生会觉得被点赞关注是自我价值指标，看上去更早熟，但是内在的安全感不足
-男生会另外一条路，就是跟容易被推荐游戏，极端的内容，性暗示以及擦边的内容，所以延迟满足能力明显更弱一些
-
-`#格物/社会`
-
----
-
-### 注意力经济中信息过剩而注意力成为稀缺硬通货
-
-> 2026-01-14 14:14:31
-
-注意力经济
-信息丰富的世界里，信息的丰富意味着某一种东西的匮乏，就是信息所消耗的东西: 接收者的注意力
-再就是零和博弈，注意力实际上是不可再生的硬通货，比时间还珍贵，我们每天只有有限的清醒时间，所有的 app、 媒体、工作、家人，我们有自己的价值排序
-新的时代，信息没那么重要，信息是过剩的，注意力是稀缺的
-注意力是免费的、也是最贵的
-平台 (The Platforms) 也就是所谓的“注意力商人”（Attention Merchants，如 TikTok, Meta, Google）。他们的目标是最大化你的 LTV (Life Time Value)，通过延长你的停留时间（Time Spent）
-广告商 (The Advertisers): 真正的客户。他们购买的是你的行为改变（即你看了广告后去买了东西，或者改变了认知）
-用户 (The Users): 既是原料（提供数据），也是劳工（通过点赞、评论为平台免费生产内容和筛选内容）
-
-`#格物/注意力`
-
----
-
-### 流量杠杆通过支点与力臂撬动非线性回报
-
-> 2026-01-14 14:06:29
-
-流量杠杆本质：以极小的初始投入（内容、资金或人脉），通过特定的增益机制，撬动巨大的非线性回报
-
-- 支点（Fulcrum）： 你的内容质量、产品力或人设魅力。支点如果不稳，杠杆越长，折断的风险越大（即翻车）
-
-- 力臂（Lever）： 你使用的手段（算法推荐、付费投放、社交裂变）
-
-现代互联网中的流量杠杆：
-
-- 算法杠杆： 用数据撬动系统推荐
-
-- 资金杠杆： 用付费投放撬动自然流量
-
-- 社交杠杆： 用人际关系撬动裂变
-
-平台的机制，一般都不会一次性的把你的所有的内容都给所有的人看，而是分层测试的
-
-- 冷启动池（200-500曝光）： 测试初始反馈
-
-- 初级池（1k-5k）： 如果数据好，推入下一级
-
-- 中级池（1w-10w）： 进入更大的竞争赛道
-
-- 热门池（100w+）： 全网推荐
-
-2024-2025年的算法趋势正在从单纯的“完播”转向“主动搜索”和“有效互动”。平台希望不仅把人留住，还能产生深度兴趣
-还有社交杠杆，用户的转化率，前提是内容是否是高价值的内容，完播率是否足够
-
-`#格物/算法`
-
----
-
-### 抖音将人类注意力压缩成可定价的数据产品
-
-> 2026-01-14 13:56:56
-
-抖音的广告
-普通创作者、商家内容、以及——广告，只是被伪装得很像内容
-信息流广告、品牌挑战赛、还有本地的商家推广 ...
-商家品牌和本地老板在付费
-用户提供注意力、停留时间和行为数据
-抖音现在也会有出现电商赚钱
-再就是直播打赏，只有少数的高付费用户贡献的比例很大
-所以抖音的本质是它把人类的注意力、欲望和行为，压缩成可预测、可定价、可复用的数据产品
-抖音并不会向普通的用户收费，他们的付费意愿本身也不是很高，它只是希望你多看一点、多停留一会，多点击一次
-
-`#格物/学习`
-
----
-
-### 真实是美好的品质
-
-> 2026-01-14 13:52:53
-
-真实是美好的品质
-
-
----
-
-### 珍视世界中不可推演的生成过程空白
-
-> 2026-01-14 13:32:48
-
-世界中大量事情是可推演、可学习、可复制的，
-但我感兴趣、也更珍贵的，是那部分无法完全被推演的生成过程
-就跟叶贝斯概率，即使对一个女生是否喜欢自己有百分之八十的确定，但是自己更在意的点在于剩下的百分之二十
-后者的百分之二十，是会让自己产生情绪，反复回想，让自己紧张的部分 ...
-这也是我们为什么要给世界一点点的空白，为什么要给 AI 一点点的想象，让他们自然生长的原因
-...
-
-`#格物/学习`
-
----
-
-### 情绪化拉动上涨是庄家通过新闻推进的策略
-
-> 2026-01-14 13:32:43
-
-情绪化拉动上涨
-庄家通过新闻去推进
-
-
----
-
-### 知识技能不应about 束我们体验游戏的不可推演魅力
-
-> 2026-01-14 13:23:03
-
-我们学到了所有的知识，技能
-但是不要让他们about 束我们玩好这个游戏
-而是大胆的去经历感受这个游戏的过程
-不可推演、不可学习的东西，非常的具备魅力
-
-`#格物/孙宇晨`
-
----
-
-### 产品被骂是被嘲讽但质疑本身是必要的燃料
-
-> 2026-01-14 12:46:45
-
-很多的产品最开始会被骂，被嘲讽
-但是抛开嫉妒心，如果是随喜心看，研究一下他是否有值得学习的点，反应出来的社会的哪些状态
-就会发现很有意思，现在最近的 app 死了吗，刚出来也是被人多人嘲讽，看不起
-但是这种质疑本身就是必要的燃料
-
-`#格物/孙宇晨`
-
----
-
-### 孙宇晨从币圈争议人物到人类文明叙事参与者
-
-> 2026-01-14 12:39:35
-
-从他上火星叙事上感觉很有意思
-他很擅长抓去全球注意力
-火星就是一个天然的媒介，可以让他获取全球的媒体曝光，在加密圈和科技圈都收获关注
-早年的孙宇晨是币圈争议人物 / 流量型创业者
-从投机者到未来主义者
-从币圈人物到人类文明叙事参与者
-从具体项目代言人到宏达远景讲述者
-加密行业有一个长期问题：
-它缺乏足够宏大的、能持续感召普通人的未来叙事
-被讨论 ≈ 存在感 ≈ 影响力
-下一个共识，下一个世界的关注点，下一个世界的注意力
-虚的认知比实的资源更重要，因为共识是价值的基础，而最早期的共识，就是最大的价值来源
-超前认知的魅力，超前认知必须要有所行动有所转换
-我们接受的所有的信息的时候，多去询问一下是否是构建未来的新的蓝图，这是我们的注意力，我们的大脑每天都在处理哪些信息，是过去的，是财经、明星、鸡汤，还是在构建未来的认知系统
-如果要实现跨越，必须要将认知封装为资产，可传播，可交易，可金融
-
-`#格物/孙宇晨`
-
----
-
-### 科技行业站在控制层而传统行业遭遇慢性挤压
-
-> 2026-01-14 12:13:16
-
-科技行业是默认站在控制层的职业赛道
-传统行业对普通人的奖励，系统性的下降
-人工红利已经结束，现在的竞争也透明，利润也被平台和资本抽走，中间层被压扁
-传统行业正在发生的不是稳定，而是慢性挤压
-
-
----
-
-### 科技行业唯一担心的是泡沫与溢价
-
-> 2026-01-14 11:24:16
-
-科技唯一担心的问题就是泡沫 &amp; 溢价 ...
-
-
----
-
-### 从受害者视角切换到博弈视角更接近现实
-
-> 2026-01-14 10:28:36
-
-如果你用受害者视角，会想：
-「是不是又在放消息割我？」
-如果你用博弈视角，会更接近现实：
-「这是一个对多头友好、但力量有限的情绪补丁」
-
-
----
-
-### 避免受害者视角才能玩好现实世界游戏
-
-> 2026-01-14 10:24:41
-
-玩好这个现实世界游戏应该避免让自己是受害者视角
-本质上也是一种文化的产物，因为我们依赖，所以我们会有站位，自己是受害者的那一方，这个新闻媒体的背后动机就是针对自己，这个股票就是收割自己的
-它今天发的新闻本质上是希望引流，收割我们 ...
-但是因为这个不参与吗？或者屏蔽掉吗？好像自己也失去了玩家的体验
-这个世界的大多数系统——媒体、资本市场、平台算法——不是为了伤害“你”，而是为了完成它自己的目标函数。
-流量、注意力、转化率、情绪波动、成交量
-你不是被针对的对象，你只是量之一
-我没有博弈权，规则是别人定的，我只能被动承受
-以及对方更是有意图的恶，我的失败是合理的
-这三个组合就是，你会持续被同一套机制反复击中
-一旦你长期用这种叙事解释世界，你就永远在等一个“该被负责的人”出现
-真正“玩好这个游戏”的人，通常会悄悄完成一次视角切换：
-不是“他们在对我做什么”
-而是“这个系统在奖励什么、惩罚什么”
-努力为一个参与者，博弈的一员，市场是很有趣的
-在这套机制下，我应该站在哪里，才能不被轻易消耗？
-
-`#格物/知我`
-
----
-
-### 均值回归是金融市场唯一的物理惯性
-
-> 2026-01-14 09:58:25
-
-均值回归是金融市场唯一的物理惯性
-谈一谈均值，先谈一谈市场，尊重市场，尊重的是市场规律
-市场不是原子，是人，是预期，是恐惧，是制度，是博弈，所以任何惯性，都只是统计上的倾向，不是必然
-均值回归很符合惯性
-企业利润、居民收入、估值水平，都不可能无限偏离长期生产力
-再就是超额收益会吸引资本涌入，导致竞争，以至于回报下降
-然后还有制度的about 束，包括利率、监管、税收、货币政策，本质上都在压制极端状态
-不过也可能产生正反馈，这个在物理中叫不稳定平衡，市场中，牛市、泡沫、踩踏
-如果均值回归是“重力”
-那趋势就是“火箭推进器”
-
-`#格物/金融`
-
----
-
-### 聊天的三个关键点：感官接触、猜想诱导、前置思考
-
-> 2026-01-14 00:30:57
-
-让我觉得聊天其实有三个很重要的点。
-
-首先第一点，就是要善于使用自己的感官，比如眼睛、耳朵、鼻子，尽可能地用它们去接触这个世界，包括了解你和对方之间的关系。聊天的功能其实就是为了降低不确定性，侧重点可以放在聊天双方，也可以放在聊天内容上。比如说我看见你今天带了一个新东西，就可以围绕这个东西展开一个话题。
-
-第二点是猜想，我会通过自己的判断和假设，去诱导对方完成某一个话题，从而让话题能够继续深入。这种猜想的方式可以很好地达成一种交流方法。
-
-还有一点就是结合自己之前想到的内容去聊天，比如之前想过对方是不是熬夜了，或者对方是不是有了一个新东西，结合这些去和对方交流。
-
-
----
-
-### 强势者更适合做听众而非聊天主导者
+<!--memo:d5ea30a7d480-->
+### Dominant people are better as listeners than as conversation leaders
 
 > 2026-01-14 00:29:16
 
-我感觉聊天很重要的一点是，一般强势的人更适合作为听众，而不是主导者。因为强势的人需要有一些主动权，比如说，注意点头、主动回应，或者是引导一些话题去鼓励说话的人继续往下说，这是非常重要的。
+I feel one important thing about conversation is that dominant people are usually better as listeners than as leaders. Because dominant people need some sense of initiative — for example, remembering to nod, responding proactively, or steering topics to encourage the speaker to keep going. That's very important.
 
-所以我觉得聊天是一种能力，非常厉害的一种能力。
+So I think conversation is a skill — a really formidable skill.
 
 
----
+<!--memo:21caa0bb523d-->
+### The only thing tech worries about is bubbles and premium
 
-## 2026-01-15 1月15日 周四  (20 条)
+> 2026-01-14 11:24:16
 
-### 注意力经济的商业机器
+The only problem tech worries about is bubbles & premium ...
 
-> 2026-01-15 22:18:01
 
-当下，高度数字化、信息过载的时代
-捕捉注意力确实是赚钱机器的核心引擎
-注意力经济（attention economy）这个概念早在上世纪90年代就由经济学家提出，但现在它已演变为万亿美元产业
-注意力就是流量，流量就是金钱
-平台如TikTok、Instagram、X（前Twitter）每天争夺用户数万亿秒的注意力，转化成广告收入、电商转化或影响力变现。2025年全球数字广告市场已超6000亿美元，预计2026年破7000亿，大部分靠“眼球经济”驱动。如果你能高效捕捉注意力，就能从普通人变成亿万富翁（如Kylie Jenner通过Instagram影响力建化妆帝国），或让公司估值翻倍（如马斯克用推文操控Tesla股价）
-现在的捕捉注意力不再是高声呐喊，而是聪明的设计一套系统
+<!--memo:3959aebe5567-->
+### Authenticity is a beautiful quality
 
-`#格物/注意力`
+> 2026-01-14 13:52:53
 
----
+Authenticity is a beautiful quality
 
-### 心学给予精神主权
 
-> 2026-01-15 22:09:52
-
-心即理
-知心和一
-致良知
-不要外部权威
-把知和行焊死在一起
-给普通人以精神主权
- 明
-
-`#格物/阳`
-
----
-
-### 过早站队限制可能性
-
-> 2026-01-15 21:55:22
-
-我觉得过早站队，过于在意自己的身份是非常不利于自己玩好这个游戏的
-往往是一个小白，更懂得利用这个世界的资源
-当下信息爆炸的时代，用户的眼球、媒体的版面、投资人的时间、人才的简历投递，都是“注意力经济”的核心货币
-不需要烧巨额广告费，一条朋友圈+蹭热点，就能获得千万级曝光
-不需要烧巨额广告费，一条朋友圈+蹭热点，就能获得千万级曝光。类似马斯克用推文操控股价、余承东用“遥遥领先”刷存在感，都是同一套打法
-在2026年的中国科技语境下，捕捉注意力这件事本身是重要的，甚至是必须的
-
-`#格物/知我`
-
----
-
-### 打造推动人类进步的产品
-
-> 2026-01-15 21:32:30
-
-打造一套自己使用的
-并且有利于未来的人类进步的产品
-感觉是一种非常有价值的事情
-
-
----
-
-### 像水一样融入系统
-
-> 2026-01-15 21:03:50
-
-像水一样
-去理解系统，理解自己
-融入系统
-设计系统，自然而然的流畅
-不去对抗
-不对抗现实
-不对抗世界
-不对抗自己
-不仇视世界，接受世界的多样性
-
-`#格物/知我`
-
----
-
-### 不对抗就赢了
-
-> 2026-01-15 20:53:32
-
-不要对抗
-不对抗，就赢了
-
-
----
-
-### 汇丰红蓝狮子卡区别
-
-> 2026-01-15 17:25:47
-
-红狮子是提款卡不是储蓄卡，它没有CVV，不能线上支付（Apple Pay 是特殊情况）。蓝狮子是扣账卡，不能在ATM存钱，作用不一样
-蓝狮子可以绑定支付宝微信，还可以全球汇丰取款免手续费
-
-
----
-
-### Visa 如何制定全球支付规则
-
-> 2026-01-15 16:31:44
-
-visa 作为全球的支付标准
-如何被合法的决定出来？ 
-一种行业共识技术表准
-visa 是一个私营的全球清算网络
-visa 和 mastercard 是表面竞争、底层共谋、规则一致的卡组织双寡头
-他们真正做的是三件事：
-
-- 制定交易规则
-
-- 负责交易路由与清算
-
-- 定义风险与责任归属
-
-`#格物/金融`
-
----
-
-### 价值共识与接盘理论
-
-> 2026-01-15 16:08:39
-
-未来是年轻人的世界，只要未来的人愿意买单，就一定有价值吗？
-感觉从社会学角度，或者从价格的角度上来看
-价值确实是被未来的人承认的
-价值不是自然属性，价值是共识属性
-黄金、美元、比特币、潮鞋，本质上都不值钱，它们只是被一代又一代人接力认同
-年轻人有时间、有文化话语权、有未来的购买力
-老一代不理解 → 新一代接受 → 形成主流 → 价格上升
-但是有一个前提，有人愿意买，不等于可以持续的有人愿意接盘
-泡沫不是因为“没人相信”，而是因为相信的节奏断了
-价值要成立，至少要满足一个条件中的任意一个：
-
-- 持续产生真实效用，真的很爽
-
-- 能嵌入制度或者基础设施，推出成本就很高能
-
-- 能不断的吸引新一代首批购买者
-
-只要其中一个断裂：
-
-- 技术叙事破产
-
-- 审美迁移
-
-- 政策打断
-
-- 新一代转向别的信仰
-
-价值就会瞬间蒸发，而不是慢慢折旧
-未来确实属于年轻人，但只有那些能被下一代反复重新理解、重新使用、重新叙事的东西，才有穿越时间的价值
-
-`#格物/金融`
-
----
-
-### 集体利益与个体牺牲
-
-> 2026-01-15 15:07:52
-
-这个社会越来越让一些个体去为了所谓的集体利益而牺牲自己
-也许到某一天，那个牺牲的人开始是自己了 ...
-尤其是在现在的贫富差距越来越大
-
-
----
-
-### 血清素决定情绪基线
-
-> 2026-01-15 14:14:55
-
-血清素高的人，常见特征是：
-
-- 情绪稳定
-
-- 不容易被小事击穿
-
-- 不急于证明自己
-
-- 对比较不那么敏感
-
-血清素低时，世界会变成：
-
-- 容易焦虑、抑郁
-
-- 强烈的自我怀疑
-
-- 对他人评价极度敏感
-
-- 反复思考“我是不是不够好”
-
-血清素决定你会不会想自毁
-血清素大量的存在于肠道，少量是在血液中，真正决定情绪的那部分在大脑中
-血清素不是保证快乐的，相比较多巴胺，负责的是情绪基线，内在的安全感，以及抗挫折的能力，保证血清素需要确定的是，固定的早睡早起（起床时间超级重要），早上见到自然光，晚上减少强光
-然后就是有氧运动，以及一些健康的饮食
-还有一点就是血清素也是和我在群体中的位置息息相关的，建立边界感，某些关系
-
-`#格物/血清素`
-
----
-
-### 红酒日晒咖啡处理法
-
-> 2026-01-15 14:05:38
-
-红酒日晒处理法
-这个豆子是 Catimor 的品种
-惊喜处理法，精准烘培，日晒处理下的表现更佳
-将咖啡果实去皮后，浸泡在发酵液中（通常为红葡萄酒或类似发酵液），再进行日晒干燥
-
-- 增强酒香、复杂度、甜感
-
-- 赋予莓果类、热带水果、甚至巧克力般的层次
-
-- 减少酸质尖锐性，提升醇厚度
-
-这有一些风味特色
-
-- 热带水果酸质
-
-- 酒香与甜香
-
-- 焦糖化甜感
-
-`#格物/咖啡`
-
----
-
-### 催产素是关系黏合剂
-
-> 2026-01-15 13:00:06
-
-女性在看到幼态特征（大眼睛、圆头、依赖行为）时
-催产素释放更快、幅度更大、持续更久
-男性也会分泌，但触发条件更窄、回落更快
-女性的催产素水平普遍更高
-发生亲密接触后，女性的催产素一般可以上升 20%-40%，但是男性相对来说不显著变化或者轻微上升
-
-- 母亲与婴儿对视、哺乳时，催产素可飙升至 8–12 pg/mL
-
-- 父亲虽也有上升，但幅度较小about  4–6 pg/mL）
-
-催产素的本质的目的就是关系的关系黏合剂
-内分肽就是疼痛消音器的以及奖励阵痛药
-催产素的核心功能只有一个，但极其强大：降低人与人（或动物）之间的心理距离
-
-`#格物/生物学`
-
----
-
-### 大狗触发安全感错觉
-
-> 2026-01-15 12:28:27
-
-女生就跟喜欢大一些的狗狗
-大狗容易触发安全感错觉
-跟容易被拟人化为温柔的守护者
-并且更容易制造叙事感，你和狗狗的关系，画面感
-男生也更容易偏好大一些的小狗，来源于角色映射，想象中的伙伴和战友
-
-`#格物/生物学`
-
----
-
-### 想法是原子性的
-
-> 2026-01-15 12:09:59
-
-想法是原子性的
-想法很快就过去了
-
-
----
-
-### 大小公司的确定性差异
+<!--memo:0ff41203c8bb-->
+### The certainty difference between big and small companies
 
 > 2026-01-15 12:07:58
 
-大公司解决的是确定性的问题
-小公司解决的是不确定的问题
+Big companies solve problems of certainty
 
+Small companies solve problems of uncertainty
 
----
 
-### 资产制造的本质是造富而非造物
+<!--memo:fc24b284e047-->
+### Thoughts are atomic
 
-> 2026-01-15 11:34:30
+> 2026-01-15 12:09:59
 
-资产的制造论
-普通的制造是造物，资产制造的目的是造富，把资源、权利或现金流的东西变成可以交易的金融财富
-什么是资产制造？
-传统视角下，制造一台机器是产品制造，资本视角喜爱，把这台机器未来的产出打包成一个可以买卖的凭证，这就叫资产制造
-资产制造（Asset Creation/Origination）是指通过法律确权、金融结构化和信用增级，将原始的资源、权益、技术或预期，转化为可交易、可定价、可产生持续现金流的金融工具的过程
-产品制造解决的是消费需求（你买鞋是为了穿）
-资产制造解决的是投资需求（你买鞋厂的股票是为了增值）
-资产的起点是权利，房地产拥有土地使用权，信贷拥有房贷权，IP 和科技拥有专利申请权利/知识产品
-然后再将现金流结构化，资产之所以之前，是因为能生钱
+Thoughts pass quickly
 
-`#格物/资产`
 
----
+<!--memo:63fe110585b9-->
+### Collective interest and individual sacrifice
 
-### 历史惯性以结构化循环与技术放大器形式运行
+> 2026-01-15 15:07:52
 
-> 2026-01-15 10:46:47
+This society increasingly makes some individuals sacrifice themselves for so-called collective interest
 
-谈一谈历史的惯性
-历史的惯性任然在中国成立，但它不再以王朝更替的形式出现，而是一种结构化循环 + 技术放大器的形式运行
-历史的惯性：
+Maybe one day, the one being sacrificed starts to be yourself ...
 
-- 权力会趋向集中，组织会趋向自我保护
+Especially now that the wealth gap keeps widening
 
-- 上升通道一旦收窄，社会张力就会积累
 
-- 秩序依赖共识，一旦共识破灭，就是需要更高的成本维持
+<!--memo:3aaced090798-->
+### Not resisting is winning
 
-技术压缩了时间尺度，
-教育提高了认知的，但是人已经没有改变结构的能力，出现高认知、低兑现的人群
-国家治理的工具完全变了，今天的信息高度可见、财政粗、管理半径小
-上升通道是否有机会还不断的被重新打开？
-叙事时候还是自洽的
-技术到底是修复期，还是放大器
+> 2026-01-15 20:53:32
 
-`#格物/社会`
+Don't resist
 
----
+Don't resist, and you've already won
 
-### 刁民现象源于资源稀缺与制度薄弱的环境
 
-> 2026-01-15 10:34:49
+<!--memo:e9f1283458f2-->
+### Build products that push human progress
 
-穷乡僻壤出刁民的因果判断依据
-情绪化经验总结
-刁民是不讲规则、爱钻空子、强硬对抗、让人觉得“难缠”的人
-这些都是表象，不是动机
-不是道德，而是资源稀缺、制度薄弱、机会有限的环境
-当一个人从小就处在“你不抢就没了”“你不争就被忽视”的环境里，他学到的不是合作博弈，而是零和博弈，这个时候就是基本的生存策略了
-如果规则经常失灵、执行靠关系、讲理没用，那么“守规则的人反而吃亏”，久而久之人就学会，讲理不如耍横，守法不如会闹
-再就是缺乏向上流通的通道，这也是读书的这个体系为什么自然而然演变出来的
-真正危险的不是这句话本身，而是当它被当成一种“道德结论”时：
-它会让强者对弱者失去耐心
-让制度问题被简化为“人不行”
-让本该被修复的环境，继续烂下去
+> 2026-01-15 21:32:30
 
-`#格物/社会`
+Building something you use yourself
 
----
+and that helps future human progress
 
-### 中午市场潜力源于体系结构驱动的人群行为
+feels like a very valuable thing to do
 
-> 2026-01-15 02:42:59
 
-感觉中午的市场蛮有潜力的。无关对错，就是在这样的体系结构下，注定了这群人。
+<!--memo:692918007ba0-->
+### The philosophy of mind grants spiritual sovereignty
 
-他们是什么样的人？会受到什么样的驱动？以及未来的社会共识是什么？谁掌握了下一个共识，谁就拥有了巨大的财富。只要这种共识一直存在，财富就一直存在。
+> 2026-01-15 22:09:52
 
+Mind is principle
 
----
+Knowing and mind as one
 
-## 2026-01-16 1月16日 周五  (16 条)
+Extending innate knowing
 
-### 实时信息订阅策略
+No external authority
 
-> 2026-01-16 22:05:11
+Weld knowing and doing together
 
-如果有一个渠道
-可以自动的帮助自己订阅的一些实时的信息
-哪怕是八卦的信息也没关系
-这种订阅的策略也很感兴趣
-方便吃瓜
+Give ordinary people spiritual sovereignty
 
+#格物/阳 明
 
----
 
-### 纳指 100 的指数逻辑
-
-> 2026-01-16 21:34:23
-
-纳指100，NDX，Nasdaq-100 index
-成立于1985年，由在纳斯达克交易所上市的100家最大非金融类公司组成
-被视为科技与创新成长股的代表，常被称为“新贵”或“AI引擎”
-道指一般有30 家，偏向于工业、金融、能源、消费品和医疗领域
-纳指100：采用市值加权法 → 公司市值越大，对指数影响越大。更科学、更主流
-
-`#格物/金融`
-
----
-
-### 红利是组合稳定器
-
-> 2026-01-16 21:24:24
-
-我们都在谈红利
-热门的行业，红利的行业
-一般都是有稳定的现金流
-红利是组合里的稳定器
-
-
----
-
-### 科技股靠赢家拉动
-
-> 2026-01-16 21:18:06
-
-科技股一般不是靠平均值，当然平均值也有价值，但是更重要的是依靠极少数赢家拉飞组合
-
-
----
-
-### 险资与国家队的稳定使命
-
-> 2026-01-16 21:11:30
-
-险资
-险资是保险资金
-来源的是亿万人的保费
-你买的寿险、年金险、养老险、重疾险，每一份保费，都会变成一个巨大资金池。这个池子就是险资
-有几个天生的性格设定：
-
-- 期限极长
-
-- 目标很朴素
-
-- 风险厌恶
-
-国家资金队就是包括国家稳定市场的资金力量
-
-- 全国社会保障基金
-
-- 中央汇金投资有限责任公司
-
-- 中国投资有限责任公司
-
-他们最主要的目标是维持系统稳定
-他们一般不负责把市场拉到最高长，一般负责一个关键的事情，不然市场掉进深渊
-
-`#格物/金融`
-
----
-
-### A+H 股结构的国际化背书
-
-> 2026-01-16 20:42:15
-
-A + H 股结构
-很看好的一部分
-同一家同事，同时在内地上市 A 股，又在香港上市 H 股
-往往是为了融资多元化
-还有为了对应估值对冲的问题
-尤其重要的是国际化背书
-这样的结构公司往往在中美博弈的过程中更被看好
-
-`#格物/金融`
-
----
-
-### 港股打新与消费机会
-
-> 2026-01-16 20:41:38
-
-最看好的2026 年
-港股打新超级有趣
-A 股很难打中，港股有融资等等，打新很容易获得
-上半年是最值得去冒风险的一年
-港股更看好，港股作为中间缓冲的一部分
-对消费比较看好
-
-
----
-
-### 泡沫本质是预期的预期
-
-> 2026-01-16 20:37:26
-
-泡沫感觉很难判断或者抓住
-泡沫的本质
-价格上涨主要靠预期的预期，而不是靠真实的现金流、生产率或不可替代价值增长
-所有资产都该有一个现实参照物：现金流、利润、租金、使用价值、替代成本
-
-
----
-
-### 获取 AI 前沿的论文平台
-
-> 2026-01-16 19:34:01
-
-常用的几个看论文的平台或者网站
-
-- arXiv，因为arXiv是AI社区的“实时脉搏”
-
-- Google Scholar
-
-
----
-
-### 去热门领域争夺注意力
-
-> 2026-01-16 19:23:05
-
-要把这个游戏玩好，首先要去最热门的领域
-获取最多的关注力
-
-
----
-
-### 泡沫本质的追问
-
-> 2026-01-16 19:22:41
-
-泡沫的本质是什么
-
-
----
-
-### 制度科技文化的三角驱动
-
-> 2026-01-16 19:11:56
-
-制度，决定允许什么、禁止什么、奖励什么
-科技，决定什么可行，可规模化，可监控化
-文化，决定人们是否愿意随着系统往前走
-人口老了 → 改制度（养老、税）
-资源稀缺 → 上科技（效率、替代）
-外部冲突 → 强文化（认同、叙事）
-
-`#格物/制度`
-
----
-
-### 时间套利与资产流动性
-
-> 2026-01-16 19:10:35
-
-时间套利的魅力
-资产制造的终极魔法是“透支未来”。
-通过折现模型，资产制造者将未来几十年的收益（如30年的房贷利息、50年的高速公路收费），一次性打包在今天变现
-水具有柔韧性，所以把一些硬的资源转化为软的轻资产，就可以获取流动性溢价
-
-`#格物/信任经济`
-
----
-
-### 能力定价与信任折现率
-
-> 2026-01-16 10:38:32
-
-为什么同样的能力，价格差别 5-10 倍
-其实很多人的薪资也是这样
-企业主和员工之间的关系，个人定价就是能力 × 信任折现率
-多数人卡死的不是能力，而是信任被打折
-所以现实世界的高价，几乎都来自一种东西：确定性交付
-所以中介平台就是做这个的
-当你信任度足够高时，会发生一件隐秘但重要的事：低质量客户主动避开你
-
-`#格物/信任经济`
-
----
-
-### 信任经济压缩不确定性成本
-
-> 2026-01-16 10:25:37
-
-信任经济
-代替的是高摩擦世界
-在传统经济里，任何合作都要付出巨大的“防坏人成本”
-合同、律师、担保、审核、押金、层层审批、关系背书
-这些都不是在“创造价值”，而是在防止价值被破坏
-信任经济的本质就是，用系统化信任，压缩不确定性的成本
-有效产出 = 名义产出 × 信任系数
-
-- 历史记录，你做过什么，比你说什么重要一百倍
-
-- 可验证性，第三方和系统以及算法不能验证你没说谎
-
-- 失信成本
-
-- 激励一致性
-
-现在的信任成为最贵的资产，信息过剩时代，注意力被压榨干净了
-信息越多，可信信息越稀缺
-
-`#格物/信任经济`
-
----
-
-### 帮人认清自己的价值
+<!--memo:0423b2c69866-->
+### Helping people see their own value clearly
 
 > 2026-01-16 01:19:06
 
-其实大部分人害怕的，并不是不确定，也不是非常渴望一个答案。大部分人需要的只是认清自己，知道自己想要什么，能够把自己梳理一遍，这也很好，真的很棒。
+Actually, what most people fear isn't uncertainty, and they're not desperately craving an answer either. What most people need is just to see themselves clearly, to know what they want, to sort themselves out once. That's good too — really great.
 
 
----
+<!--memo:49c06eb75853-->
+### Asking what a bubble essentially is
 
-## 2026-01-17 1月17日 周六  (34 条)
+> 2026-01-16 19:22:41
 
-### 投影性嫉妒骂的是永远成为不了的自己
+What is the essence of a bubble
 
-> 2026-01-17 23:52:01
 
-投影性嫉妒
-骂的不是你，而是那个我永远也成为不了的自己 ..
-攻击她所产生一种虚假的优越感，缓解自己因为巨大的差异产生的嫉妒和焦虑
+<!--memo:b9ed0f570105-->
+### Go to the hottest fields to compete for attention
 
+> 2026-01-16 19:23:05
 
----
+To play this game well, you first have to go to the hottest fields
 
-### 苦难是主观的每个人的成长必修课
+to capture the most attention
 
-> 2026-01-17 23:42:44
 
-但换个角度想，苦难的定义是主观的。普通人的日常奋斗是一种“有力”，但富裕生活带来的精神空虚，对当事人来说也是一种真实的“无力感”。为一朵花落泪，或许是她填补内心世界的一种方式
-我们很难真正共情别人的生活，尤其是在巨大的财富和地位差距下。与其评判她的人生“顺”或“不顺”，不如把它看作一种独特的人生样本。她的经历里有我们无法想象的便利，也必然有我们无法体会的枷锁
-苦难感觉是成长的必修课，对于所有的人来说，他们都会面临苦难，都会被感动，都会去换位思考，感同身受 ..
+<!--memo:efda7b669154-->
+### Tech stocks are pulled by the winners
 
+> 2026-01-16 21:18:06
 
----
+Tech stocks generally don't rely on the average — of course the average has value too — but more importantly they rely on a tiny number of winners to pull the portfolio up
 
-### 原生家庭健康不等于没有痛苦痛苦不等于认知
 
-> 2026-01-17 23:35:52
-
-原生家庭健康 ≠ 没有痛苦；痛苦 ≠ 对世界更有认知
-痛苦 -&gt; 世界更真实： 这种人会：
-
-- 理解复杂性
-
-- 同时看见善与恶
-
-- 知道系统如何压人，也知道个体如何反抗
-
-痛苦 → 世界更狭窄（但自以为深刻）这种人会：
-
-- 把防御当成洞察
-
-- 把警惕当成清醒
-
-- 把“我吃过苦”当成真理来源
-
--
-
-
----
-
-### 不要用普通人逻辑评判顶级富人的人生选择
-
-> 2026-01-17 23:31:14
-
-用自己的生活经验，去想象完全不属于你的阶层，你一定是会想错的
-不要用普通人的焦虑、道德或者逻辑去评判顶级富人的人生选择
-他们有自己的世界规则
-有些人什么都不做，光靠资本就能过得极好
-普通人拼命创业，内卷在他们眼里反而是高风险行为
-所以，自己好像也没什么资格去给其他人建议，也没什么能力给其他人的选择
-
-`#格物/创业`
-
----
-
-### 生物制药核心区别生物药与化学药及赛道
-
-> 2026-01-17 23:29:07
-
-生物制药
-核心的区别：
-
-- 生物药：结构复杂的，胰岛素、抗体等等
-
-- 化学药：阿司匹林、布洛芬这些
-
-几个赛道：
-
-- 抗体药物，份额最大，包括单克隆抗体，ADC（称之为生物导弹）
-
-- 细胞与基因治疗，这个就是做一些基因编辑或者 CAR，体外基因改造
-
-- 重组蛋白与疫苗，就是一些常见的熟悉胰岛素、生长激素
-
-传统药物研发需要“十年时间，十亿美金”。Google DeepMind 的 AlphaFold 出现后，AI可以预测蛋白质结构，极大地缩短了寻找药物分子的时间
-双抗/多抗，一只手抓癌细胞，一只手抓免疫细胞，放在一起打架
-GLP-1 ，主要是多肽类，但是通过生物技术手段延长半衰期
-
-`#格物/生物学`
-
----
-
-### 财报时间年度业绩 3 个月内年报 4 个月内发布
-
-> 2026-01-17 22:29:24
-
-财报的时间
-公司的财年结束日通常是每年的 12 月 31 日
-年度业绩预告，初步业绩公告，必须要在财年结束后不迟于3 个月内对外公布
-正式的年度报告，一般都是财年结束后四个月内
-中期报告一般是截止在 6 月 30 
-
-- 一季度（Q1）简报（如有发布）：4月中下旬前后about 45天内） 
-
-- 半年中期（H1）结果与报告：截至6月30日 → 报告通常发布在8月底前（3个月内） 
-
-- 第三季度（Q3）简报（如有）：11月上旬左右about 45天后） 
-
-- 全年初步业绩公告：截至12月31日 → 发布在翌年3月末（不迟于3个月） 
-
-- 正式年报：一般在3–4月间，最迟在财年后4个月内寄发/发布
-
-`#格物/如何快速了解一个行业`
-
----
-
-### 投资的本质是买生意
-
-> 2026-01-17 15:40:24
-
-投资很简单，但也很难
-一句话
-如果我今天把公司买下来，明天老板消失，我还能不能安心睡觉？ 
-business model 的架构，三个问题
-
-- 钱是顺应着人性流入进来的吗？不需要教育用户，人性是根本不变的，那么这个商业模式就更是稳定
-
-- 赚到的钱是需要付出多大的维持成本，有些公司为了赚钱必须要拼命的努力，很辛苦但是不聪明，一次获客、反复收钱，一次信任、长期复利
-
-- 护城河不是情绪上的，而是结构性的，这个其实很好理解 ...
-
-后知后觉的感觉尤其重要（认知延迟）
-年轻的时候容易被增长、故事、聪明吸引
-但是后面发现在牛的人，也打不过一个简单、重复、反人性的好模式
-
-`#格物/如何快速了解一个行业`
-
----
-
-### 创新扩散与人性风险
-
-> 2026-01-17 15:26:20
-
-创新扩散理论
-
-- 创新者（2.5%）：极少数，愿意承担高不确定性
-
-- 早期采用者（13.5%）：有判断力，愿意冒“可控风险”
-
-- 早期大众 / 后期大众（68%）：要“验证过的确定性”
-
-- 落后者（16%）：成本最低，但机会也最少
-
-这在 iphone、比特币、AI、互联网、短视频上反复验证过
-大部分的人都不是第一批
-
-- 风险厌恶是人类进化优势
-
-- 绝大多数人没有多余试错资本
-
-- 社会系统奖励“稳妥”，不是“冒险”
-
-`#格物/如何快速了解一个行业`
-
----
-
-### 品牌命名的简化原则
-
-> 2026-01-17 15:22:50
-
-考虑改个名字，现在的这个名字实在是太复杂了，但是改起来太麻烦了
-名字从设计之初考虑中英文
-并且极致的简单，非常容易记住超级重要
-
-
----
-
-### 行业标准创造共识
-
-> 2026-01-17 15:09:26
-
-常见的行业分类标准包括作为国家标准的《国民经济行业分类》​、中国证监会制定的《上市公司行业分类指引》​
-标准带来共识
-
-`#格物/如何快速了解一个行业`
-
----
-
-### 行业研究的颗粒度
-
-> 2026-01-17 15:07:47
-
-在谈论行业的时候，一定要考虑好颗粒度的问题
-这个尤其重要
-否则，我们在做研究的时候，很容易出现口径不一致的问题
-宏观的视角，微观的视角，以及宏观状态下和微观状态出现的错位问题，第一性原则是解决错位的很好的方式，放大颗粒
-
-`#格物/如何快速了解一个行业`
-
----
-
-### 快速建模行业的能力
-
-> 2026-01-17 15:04:10
-
-我觉得我搭子的快速了解一个行业的能力很强
-非常值得自己去学习这种能力
-如何快速的学习某一个行业
-他可以通过聊天的方式快速的对一个行业进行系统性的建模理解
-
-`#格物/如何快速了解一个行业`
-
----
-
-### 谷歌的全栈技术实力
-
-> 2026-01-17 14:40:53
-
-谷歌这家公司非常的夸张
-包括现在的硬件的能力，TPU silicon 
-以及现有的模型的能力，强大的 gemini
-还有快速扩张的 GCP 的基础设施
-非常强大的粉丝用户群体 ...
-
-
----
-
-### 人生如游戏的心态
-
-> 2026-01-17 14:38:44
-
-自己觉得有价值的
-自己喜欢的
-自己觉得有意义的事情
-自己是在玩一个游戏
-不要被这个游戏束缚到自己
-
-
----
-
-### 播客回流的本质
-
-> 2026-01-17 14:18:10
-
-播客回潮流
-本质的原因，信息太多了，多到失真
-短视频、信息流、热搜机制，都在追求瞬时注意力最大化，结果我们是每天被几十个观点轮番轰炸，没有一个真正的观点被消化
-大脑疲劳之后，会自然开始寻找一种低噪声、高密度、可停留的内容形式——博客刚好满足
-回归真实的过程，回归的也是一种思考的路径
-天然的反算法，没有必须要有结论的压力，允许不确定性的，允许思考路径
-历史上几乎每一轮媒介爆炸之后，都会出现“回到长文本 / 回到对话”的反弹
-
-`#格物/播客`
-
----
-
-### 生物工程的工具价值
-
-> 2026-01-17 14:11:21
-
-想起小白兔说的生物工程工具
-为生物行业的从业者或者企业服务的一些工具
-可以追溯、可以审计、可以解释、可以进入流程的
-有些工具，清晰可见，可以解决一些人的问题，提升他们的效率，自然而然就是会有付费的需求的
-
-
----
-
-### 技术影响力的时间曲线
-
-> 2026-01-17 14:03:52
-
-我们往往高估技术的短期影响力，但是低谷其长期的影响力
-泡沫破灭后，真正的技术才会沉淀下来，改变世界
-
-
----
-
-### 认知结构与理解时机
-
-> 2026-01-17 13:59:50
-
-之前想过如果，如果人类的思维是分阶段跃迁
-也就是同样是对某些信息，比如说早年学到的某些诗词，道德经
-大脑只能在具备足够结构之后，才看得懂当初那些“提前出现的信号”
-所以有一些声音、歌词、句子、观点，但是它们没有钩子可以挂住，于是它们以一种无感的形式被存档
-但是真正重要的理解，几乎不可能“太早”或“太晚”
-如果你说自己失去了才懂得爱 ... 你是把爱的结果看的很重要，但是如果是把爱的过程呢？ 
-行动能力不是意志力，是认知 + 情绪 + 关系 + 风险承受能力的组合体
-突然很感慨，一个拥有现在的理解力、却活在过去时间点的你，这个人，从来没有出生过
-我自己聊天的时候时候会有一些问题，我太过于在意这个观点是否是对的，是否是值得的，是否是我自己认可的 .... 感觉像是对抗，像水一样 .... 融入这个世界，那么就是理解，包容，分析，构建系统了
-
-- 这个人在乎什么，所以才这么说 ？ 
-
-- 他说的不是观点，而是在解决哪一类问题？
-
-- 如果这是错的，在什么情况下会崩溃
-
-允许留下模糊，这是对对方的一种尊重，给自己的语言系统留下一个认知后门
-我现在不懂，但是这句话可能是非常重要的
-如何判断呢？ 真正有价值的一些身体信号直觉
-
-- 听的时候有点不舒服
-
-- 有一瞬间想反驳，但又说不清
-
-- 听完之后会反复想，却想不明白
-
-- 情绪上有点卡顿，不顺畅
-
-这些信息很重要， 触碰到自己未能展开认知的那一层
-
-`#格物/知我`
-
----
-
-### 表达是人类宝贵财富
-
-> 2026-01-17 13:41:13
-
-有一些人类本身非常宝贵的财富
-现在越来越重要的
-比如说，说话 ...
-表达 ...
-
-
----
-
-### 科技与环境的多维关注
-
-> 2026-01-17 13:37:27
-
-AI、具身智能、生物科技、环境（广州今天的空气质量太差了）
-
-
----
-
-### 超越软件载体的视野
-
-> 2026-01-17 13:35:45
-
-软件这个载体的市场感觉也是非常有限的
-不可否认 AI 非常的具有价值
-但是为什么大众总是想把 AI 和软件产品相结合
-不可否认软件是一个很好的载体和形式
-但是不应该被软件这种载体所局限了自己的视野
-
-
----
-
-### 资产泡沫的三个信号
-
-> 2026-01-17 13:30:48
-
-- 估值偏离度： 资产价格是否显著脱离了基本面（如市盈率、房价收入比处于历史极值）？
-
-- 杠杆率： 市场参与者是否大量使用杠杆？（融资余额是否高企？）
-
-- 情绪指标： 当您身边的非专业人士（如出租车司机、甚至不关心财经的朋友）都开始热烈讨论并推荐某个资产时，通常是泡沫晚期的信号
-
-
----
-
-### 泡沫破碎的非线性机制
-
-> 2026-01-17 13:29:29
-
-有一个很有趣的问题
-泡沫是如何破碎的
-总是后知后觉的，往往没办法通过线性分析，世界是非线性的
-明斯基时刻，在繁荣期，资产价格持续上涨，投资者变得过度乐观，开始通过借贷（加杠杆）来购买资产，由于市场长期的投机导致债务水平过高，以至于资产产生的现金流不足以支付债务利息，市场就进入了极其脆弱的庞氏融资阶段
- 此时，哪怕资产价格仅仅是“停止上涨”（甚至不需要下跌），投机者也会因为无法偿还利息而被迫出售资产
-这时候会出现崩塌，因为很多人因为无法偿还利息而被迫出售资产，这周被迫抛售行为导致价格下跌，进入反馈循环
-心理防线的崩溃，从 FOMO 到 FUD，明显的的特征
-
-`#格物/金融`
-
----
-
-### 生物科技的未来十年
-
-> 2026-01-17 13:16:41
-
-生物技术与健康
-得益于基因编辑，定制医疗和新型疗法一些技术的蓬勃发展，生物科技领域蛮有前景的
-最起码在后面的2028 年—2038 年
-现在的社会的主要的方向更多的是在 AI 
-医学可能有很多的创新药、CAR-T、基因编辑还有 AI 仿药，但是制度是缓慢的，现在是研究者和极少数的投资人红利
-28 年后，中国的人六十岁以上的人口占比会超过百分之二十五，这是被需求推动着走的
-后面的几年，可能是商业保险进入医疗支付的主要的舞台，医保开始为一些一些基因检测等
-
-`#格物/生物`
-
----
-
-### 药物专利的保护边界
-
-> 2026-01-17 13:03:53
-
-药物专利一般非常的贵
-保护的是：
-
-- 特定的分子结构
-
-- 制备方法
-
-- 用途（适应症）
-
-- 有时还包括给药方式、剂型
-
-基因编辑改变的是生物体内的 DNA 序列、改变蛋白的表达
-现实中的假药做的都是化学仿制
-在专利过期后，合法复制相同活性成分（这叫 generic drug），或者直接偷工减料、掺假、虚标剂量
-
-`#格物/生物`
-
----
-
-### AI 热潮之外的思考
-
-> 2026-01-17 12:59:27
-
-AI 仿佛热潮是肉眼可见的，除此之外呢？
-
-
----
-
-### 维持运营的核心价值
-
-> 2026-01-17 12:52:46
-
-who keeps the lights on
-表面意思是谁让灯一直亮着
-实际意思是谁维持的基本运营、不让事情停摆
-AI 时代，更需要的到底是 who works hard，还是 who keeps the lights on
-然后还有一点很重要的是那些推卸责任而不是承担责任的人
-
-`#格物/AI`
-
----
-
-### 通知管理的注意力保护
-
-> 2026-01-17 12:42:48
-
-我在想每一次的 iPhone 的通知就感觉是很杂乱，不知道是否有一种工具可以辅助解决 iphone 的 notified summary 可以快速的总结
-有些状态类信息我觉得是只需要告诉我发生了什么，不需要我参与思考的
-还有各种群聊中的信息
-还有高频率的重复信息，这个实在是太痛苦了
-以及再就是非时效类的信息，有些的新闻还有促销啥的就是只适合定时摘要
-然后还有一类是需要打断自己决策的，比如说待办清单，比如说高密度的信息，还有一些结构化的密度高的信息
-以及一些原创、低频还有一些非结构化的信息
-摘要的本质是为了保护注意力
-
-`#格物/AI`
-
----
-
-### AI 与组织利益的冲突
-
-> 2026-01-17 12:17:43
-
-AI 与组织利益之间的冲突
-有一些岗位是无关产出的一些岗位，他们的存在可能是有一些灰色的利益，控制不确定性，还有就是维护一些隐性秩序，再就是还有分摊政治风险
-这种情况下，这种系统是有问题的，有冲突，有延迟，有利益
-这种岗位几乎不可能会被替代，中长期可能会被重构的部分
-这些岗位的核心能力不是“判断”，而是在多个冲突目标中维持模糊均衡
-在剧烈变革期间，关系型岗位其实是可能会被快速的压制的
-他们的成本会非常明显的凸显出来，在 AI 时代，以至于组织系统的设计者不惜代价重构现有的组织架构，但是这种形式下的所有人可能都是承重的
-
-`#格物/AI`
-
----
-
-### 信息验证优于深度研究
+<!--memo:e17a3fb92154-->
+### Verifying information beats deep research
 
 > 2026-01-17 09:46:42
 
-不一定要深度的研究每一个信息
-事实上很多时候需要做的是验证一些信息可靠性
-然后做出决策选择即可
+You don't have to deeply research every piece of information
+
+In fact, much of the time what you need to do is verify some information's reliability
+
+and then just make a decision
 
 
----
+<!--memo:b70ee085a4f8-->
+### Expression is a precious human treasure
 
-### 石油危机的历史教训
+> 2026-01-17 13:41:13
 
-> 2026-01-17 09:39:07
+There are some very precious assets of being human
 
-2008 年的石油危机
-短短一年翻了三倍
-担心世界没油，恐慌和贪婪并存
-当时最流行的理论是“石油峰值论”。地质学家和分析师都在说，地球上容易开采的石油已经采光了，以后石油只会越来越少，越来越贵
-当时的市场逻辑是：中国和印度的工业化进程刚刚开始，数十亿人要买车、要用电。这种需求是长期且刚性的，无论油价多高，他们都会买单
+that are getting more and more important now
 
-`#格物/金融`
+For example, speaking ...
 
----
-
-### 泡沫判断的三个维度
-
-> 2026-01-17 00:35:20
-
-市场保持非理性的时间，可能比你保持偿付能力的时间更长
-判断泡沫通常需要从三个维度进行交叉验证：“冷”的估值数据、“热”的市场情绪以及“硬”的杠杆环境
-核心就是价格是否显著并且持续的偏离其内在价值
-巴菲特指标 (Buffett Indicator) 即“股市总市值 / GDP”
-历史上，70%-80% 被认为是低估，100% 左右合理，超过 120%-150% 通常被视为显著高估
-还有席勒市盈率 (Shiller PE / CAPE) 经过通胀调整的过去10年平均市盈率。相比普通PE，它更能平滑短期盈利波动
-另外租售比也是，如果需要出租 50-60 年才能回本，那么就意味着价格主要是由“升值预期”而非“使用价值”支撑
-热，，平常不关心金融的人，都开始讨论买什么股票或者基金，并且像你推荐代码的时候，明显信号 .... 再就是 这次不一样，这是金融历史上最昂贵的五个字，flomo 心态
-
-- 置换 (Displacement)： 新技术或新叙事诞生（如AI、互联网、区块链），吸引了早期投资者。
-
-- 繁荣 (Boom)： 价格开始上涨，媒体开始报道，更多资金进入。
-
-- 狂热 (Euphoria)： 价格直线上升，估值逻辑失效，全民炒作，“只有傻瓜才不买”。
-
-- 获利了结 (Profit Taking)： 聪明钱（Smart Money）悄悄离场，价格开始高位震荡。
-
-- 恐慌 (Panic)： 某个黑天鹅事件刺破泡沫，价格断崖式下跌，买家消失
-
-`#格物/金融`
-
----
-
-### 资产叙事与信仰供能
-
-> 2026-01-17 00:15:17
-
-判断泡沫
-本质上不是价格高，价格上涨主要靠“预期的预期”，而不是靠真实现金流、生产率或不可替代价值的增长
-支撑价格的那个梁，从现实换成了故事
-所有资产都该有一个现实参照物：现金流、利润、租金、使用价值、替代成本
-但是当价格快速长期、显著的超过这些描点，而且差距只能用“未来会不一样”来解释，这不是定罪，但已经是黄灯
-原本不关心标的的人突然大量涌入
-专业判断被嘲笑为“看不懂新时代”
-其实还有一点，就是关于叙事的问题
-健康的资产逻辑都是稳定的
-但是泡沫中的叙事是不断的打补丁的
-当旧逻辑被现实证伪，新的、更宏大的故事立刻顶上，而且不再接受反驳，说明价格已经需要“信仰供能”
-当价格上涨本身开始改变人的行为、商业决策、甚至人生路径（辞职、借钱、all in），说明资产已经从“反映世界”变成“劫持世界”
-一旦价格停下来，现实会反噬回来，而且很少温柔
-
-`#格物/金融`
-
----
-
-### 半导体与 AI 芯片生态
-
-> 2026-01-17 00:05:06
-
-半导体是 AI 芯片的物理基石
-而 AI 芯片是半导体产业当前最顶尖的技术驱动力
-半导体（The Ecosystem）： 这是一个宏大的概念，指代一类材料（如硅、氮化镓）以及基于这些材料构建的整个电子元器件产业。它包括了存储芯片、传感器、功率器件、通用处理器（CPU）等
-AI 芯片就是一系列设计的集成电路了
-赢家通吃效应，传统的半导体市场相对分散，但在 AI 芯片领域，由于设计难度（Design）和制造工艺（Foundry）的极高壁垒，价值高度集中在少数几家公司（如 Nvidia 设计，TSMC 制造）
-随着物理极限的逼近，单纯靠缩小晶体管（如从 5nm 到 3nm）来提升性能变得越来越难且昂贵。AI 芯片对性能的极致渴求，迫使半导体产业点亮了先进封装（Advanced Packaging） 科技树
-还有就是最近铜的爆火，实际上也是结构性短缺，包括 AI 、新能源、电网改造的三大引擎
-数据中心是铜做的
-
-`#格物/金融`
-
----
-
-## 2026-01-18 1月18日 周日  (8 条)
-
-### 想法是对世界的解释感受是身体情绪反应
-
-> 2026-01-18 14:08:50
-
-人的想法
-还有人的感受不同
-想法是自己对这个世界怎么回事的一种解释
-感受是你的身体和情绪对这件事情在我身上的反应
-更本质的一些感受
-感受是不会结束就是一种信号
-想法是可以“错”的，感受本身不对错
-如何解释这种感受就是有一个很深层次的，用想法包装感受
-你说：“我不爽他，因为他太自私了。”
-拆开看，顺序往往是：
-1️⃣ 身体先不舒服（感受）
-2️⃣ 大脑立刻给出一个解释（想法）
-3️⃣ 你以为那个解释就是感受本身
-但真正的感受可能只是：
-
-- 被忽视
-
-- 不被尊重
-
-- 不确定
-
-- 害怕失去控制
-
-想法是合理化的一种手段
-想法是社会化训练的结果，感受是进化留下的底层系统
-
-`#格物/感受`
-
----
-
-### 阅历不等于认知不要过度沉迷自己的人生经历
-
-> 2026-01-18 12:05:49
-
-我在想，很多时候就是人的阅历和他的认知之间的关系。我回答这个问题，就是为什么有的大模型如果只追求数据量，它是有一定瓶颈的。但是为什么有的，比如说通过一种很巧妙的模型架构设计出来的小模型，它可能体量很小，或者是有一些非常棒的训练方法或算法，然后训练出来的模型，它的聪明程度或者说智能程度更高一些。
-
-由此我得出一个结论，人也不是完全靠人生经历堆砌出来的。当一个人过度强调自己的人生经历时，说明他能拿得出手的就是这部分。但人是很复杂的，可能和从小到大的教育体系有关，也可能和他的认知程度、知识储备等诸多因素有关。
-
-所以我觉得，在设计模型系统的时候，千万不要过度沉迷于自己的某些技能，往往需要跳出自己的视角，综合来看。就这个模型，它在哪些方面更擅长。如果算法优化能取得比较好的效果，那就做算法优化；如果数据量能取得一些比较好的突破，那就增加数据量；如果训练方法有办法取得比较好的效果，那就用训练方法改进工程优化的方式。
-
-总之，我们没有必要非得强调经历有多么重要，什么“我吃的盐比你走的路还多”“我过的桥比你走的路还多”，其实没那么重要。所以不要太看重这些东西，也不要过度沉迷于某些东西。还不如多去想一想，自己擅长什么，自己有什么不一样的地方，自己想要什么，自己喜欢什么。
+Expression ...
 
 
----
+<!--memo:7eaabd07ffa6-->
+### The time curve of a technology's impact
 
-### 极度真诚的人拥有极高的一致性内外统一
+> 2026-01-17 14:03:52
 
-> 2026-01-18 11:07:23
+We often overestimate a technology's short-term impact, but underestimate its long-term impact
 
-看到了心理学家卡尔 · 罗杰斯的一句话，极度真诚的人拥有极高的一致性，我理解这个一致性有两种层级含义：
+After the bubble bursts, the real technology settles down and changes the world
 
-- 对内的一致性：他们的“自我概念”与“实际体验”是一致的。如果他们觉得自己是个好人，那他们在生活中真的很少产生无法控制的恶意；如果他们感到脆弱，他们会承认自己脆弱，而不是为了维护“强者”的人设而硬撑
 
-- 对外的一致性： 他们的“内在感受”与“外在表达”是一致的。心里想的是什么，嘴上就说什么（当然，这建立在尊重和负责的基础上，而不是口无遮拦）
+<!--memo:42ed57b76bcd-->
+### A mindset of life as a game
 
-想起燕燕姐的真诚 &amp; 通透
-接触起来感觉她是一个对自己很诚实，也对别人很诚实的状态
-拒绝虚伪客套，说到做到，敢于暴露软肋，情绪透明度很高，所以感觉磁场很棒，很多人愿意和她接触
-一定程度上潜移默化的影响了自己 ...
+> 2026-01-17 14:38:44
 
-`#格物/朋友`
+What you yourself find valuable
 
----
+What you yourself like
 
-### 天气预报看风指数关注风向风力和阵风
+Things you yourself find meaningful
 
-> 2026-01-18 11:01:47
+You're playing a game
 
-天气预报看风指数的技巧
-wind 部分是风，回答的一个问题：
-一整天，风从哪里来？ 风多大？ 什么时候最明显？
-bft: Beaufort scale 风的级别
-0–1 级：几乎没风  
-2–3 级：舒服、能感到  
-4–5 级：明显、吹脸  
-6+ ：开始影响活动
-Gusts: 4 m/s，这个指标一般描述的是阵风，很重要但是日常大家会忽略的指标
-gust 对身体的影响更大，这是非常不确定性变量，温度、湿度、气流方向瞬变
+Don't let this game tie you down
 
-`#格物/天气`
 
----
+<!--memo:4b1678da3630-->
+### Google's full-stack technical strength
 
-### 熬夜加轻微感冒导致咽喉气道分泌物黏稠
+> 2026-01-17 14:40:53
+
+Google as a company is really outrageous
+
+including its current hardware capability, TPU silicon
+
+and the capability of its current models, the powerful Gemini
+
+plus the rapidly expanding GCP infrastructure
+
+a very strong fan and user base ...
+
+
+<!--memo:5afea0afd33c-->
+### Bias comes from sample contamination, social-narrative pretraining and self-esteem
+
+> 2026-01-18 09:40:27 · `#格物/性格`
+
+The origin of bias
+
+The brain strengthens and absorbs bias-related strategies
+
+Working backward to bias's essence: early sample contamination, slapping a label on a certain kind of person or a certain group
+
+Then there's social-narrative pretraining — online information has already been injected into part of the public model, like who is a success, what failure looks like; we reinforce that part
+
+Then self-esteem — very instinctive; it rejects things that trigger a sense of morality, denial, mockery
+
+How to manage bias: one is to notice your own bias and correct it; another is to downgrade opinions into hypotheses and actively look for uncomfortable information — that information usually needs understanding built around it
+
+Some good model strategies — Bayesian, replacing moral language with probabilistic language
+
+
+<!--memo:12966f77a2f6-->
+### Staying up late plus a mild cold thickens throat and airway secretions
 
 > 2026-01-18 10:30:19
 
-昨天去广州，可能也有熬夜因素，轻微感冒因素
-导致咽喉或气道分泌物黏稠
-雾霾刺激导致气道轻度炎症加上有一些 黏痰
- 黏痰是保护性的，很合理
+Went to Guangzhou yesterday; staying up late and a mild cold may have played a part too
+
+causing thick secretions in the throat or airway
+
+Smog irritation caused mild airway inflammation plus some thick phlegm
+
+Thick phlegm is protective, which makes sense
 
 
----
+<!--memo:df2efa8b0248-->
+### Extremely sincere people have very high consistency, inside and out
 
-### 金融世界越接近钱本源的因素越重要
+> 2026-01-18 11:07:23 · `#格物/朋友`
 
-> 2026-01-18 10:18:46
+I saw a line from the psychologist Carl Rogers: extremely sincere people have very high consistency. I understand this consistency as having two levels of meaning:
 
-金融世界中，越是接近钱本源的因素越是重要，举几个例子：
-中央银行直接控制货币供应和借贷成本
-就业与劳动力市场数据其实反应了现在的市场经济活力以及市场信息
-通胀指标决定了利率的路径
-经济增长指标反映整体经济健康，以及影响企业盈利预期和投资情绪
+Inner consistency: their "self-concept" is consistent with their "actual experience." If they think they're a good person, then in life they really rarely produce uncontrollable malice; if they feel fragile, they'll admit they're fragile, rather than forcing themselves to keep up a "strong person" persona
 
+Outer consistency: their "inner feelings" are consistent with their "outward expression." Whatever they think, they say (built, of course, on respect and responsibility, not on blurting out whatever comes)
 
----
+Thinking of Sister Yanyan's sincerity & transparency
 
-### 社会问题通过社会观察记录分析少灌情绪
+Getting in touch with her, she feels like someone who's honest with herself and honest with others
 
-> 2026-01-18 09:45:12
+She rejects fake pleasantries, does what she says, dares to expose her soft spots, and has very high emotional transparency, so her energy feels great and many people want to be around her
 
-社会问题自然而然通过社会观察的手段 
-就像是白描写作手法一样，记录，分析，少的灌入自己情绪，从而避免产生偏见
-因为这个过程需要持续的是两件事情，对自己提升、对世界理解
+To some extent she's subtly influenced me ...
 
 
----
-
-### 偏见起源于样本污染社会叙事预训练和自我自尊
-
-> 2026-01-18 09:40:27
-
-偏见的起源
-大脑强化吸收偏见相关的策略
-反推偏见的本质，早期的样本污染，对某一类人某一个集体贴上标签
-还有就是社会叙事的预训练，实际上线上的信息已经注入了一部分的公共模型，比如说谁是成功者，什么样是失败的，我们会强化这部分
-再就是自我自尊，这个很本能的，排斥让自己出现道德感、否认、嘲讽的
-如何管理偏见，一个是察觉到自己的偏见纠正一下，还有一个是把观点降级成假设，主动寻找一些不舒服的信息，这些信息往往是需要建立理解的
-一些好的模型策略，叶贝斯，概率语言代替道德
-
-`#格物/性格`
-
----
-
-## 2026-01-19 1月19日 周一  (5 条)
-
-### 专职社会强调牺牲个人产生大量不公平
+<!--memo:0289be0d5d81-->
+### A society devoted to one cause demands individual sacrifice, producing lots of unfairness
 
 > 2026-01-19 23:10:15
 
-有时候挺感慨的，我在思考一个问题，就是这个世界对普通的牺牲，尤其是在一个专职社会，它尤其强调牺牲个人而不是成全个人。在这样的社会上，我觉得会有大量的不公平，在一些特殊的个体上发生。但这种被牺牲的个体，在成全了大众的同时，我觉得很可惜。
+Sometimes I feel a lot about this. I'm thinking about one question: this world's sacrifice of ordinary people, especially in a society devoted to a single cause — it especially emphasizes sacrificing the individual rather than fulfilling the individual. In such a society, I think there will be a lot of unfairness happening to some particular individuals. But this sacrificed individual, while fulfilling the masses, feels like a great pity to me.
 
-如果现在大众都是普通人还好，那如果涉及的是非常重要的人，或者是非常有背景的人呢？这时候就会带来一些斗争，我觉得挺可怕的。
+If the masses were all ordinary people it'd be fine, but what if it involves someone very important, or someone with a lot of background? Then it brings some struggle, which I find quite frightening.
 
 
----
+<!--memo:9c36233c3f60-->
+### Private small groups sustain genuine strongly-connected social networks
 
-### AI 让时间溢价型专业人士市场被通缩压扁
+> 2026-01-20 12:53:39 · `#格物/群聊`
 
-> 2026-01-19 10:57:40
+Private small groups
 
-在一个靠卖时间、卖劳力的行业中， AI 的出现，就相当于出现了很多的免费劳动力，结果就不是人人都赚钱了，而是原本因为“时间稀缺”而能赚钱的那部分市场，被价格通缩直接压扁了
-而是发生了通货膨胀
-TAM 被通缩吃光，这个 TAM 可以理解为这个行业理论上能赚到多少钱
+A very vital, alive form
 
-- AI 把“一个小时的产出”压缩成“几分钟”
+Not platform-level communities, but private small groups of 3-12 people
 
-- 客户不再愿意为“时间”付高价
+They'll become fewer, more expensive, more serious, and also crueler
 
-损失最大的是中层，“时间溢价型专业人士”
-而初级的往往就本来很便宜
-顶级的往往是定义问题、承担问题、背负结果的那群人
-这就重新定义了商业世界的逻辑
+What small groups sustain is a real social network
 
-`#格物/金融`
+Members usually have real-world ties (colleagues, classmates, interest circles, neighborhood neighbors, etc.)
 
----
+Topics go deep: from small talk to joint decisions (gatherings, collaboration, pushing a project forward)
 
-### 供给无限需求有限技术无限但需求分层
+Feedback is fast and coherent: messages aren't noise, they're a chain of dialogue
 
-> 2026-01-19 10:53:44
+Interpersonal relationships begin to divide into strong ties and weak ties; small groups are strong ties
 
-“AI 让‘认知劳务/软件功能’的供给近乎无限、边际成本逼近 0，但现实世界里的需求是有限的（时间、预算、注意力、场景有限）。在这种‘供给无穷、需求有顶’的结构下，经济与市场会发生什么？”
-供给无限，需求优先
-价格 P 会被竞争压到接近边际成本（很多 AI 能力将趋近免费 / 极低价）；
-数量 Q 会上升，但不会无穷大——卡在时间、预算、注意力、场景天花板上
-所以，这就是悖论的本质：技术从供给角度看是“无限”，从需求角度看仍然很“有限”和“分层”
+Socializing is evolving from natural dispersion → purposeful focus → deep cultivation of relationships
 
-`#格物/金融`
+But small groups also feel easy to die off, unless there's often some external relevance
 
----
+For example, a fixed weekly offline/online activity
 
-### 加缪主张在荒诞世界以反抗行动维持尊严
+A monthly output task
 
-> 2026-01-19 10:04:08
+Or small groups with shared loss costs
 
-加缪主张虚无主义，在荒诞的世界中以反抗和行动维持尊严和意义
-20 世纪 40 年代初，他发表《局外人》和《西西弗神话》，确立“荒诞”主题：人在无意义世界中必须以清醒和反抗回应，而非逃避或自杀
+Or the group chat is just the entrance, and private chats may be the real battlefield
 
+It depends on whether there's a middleman or medium connecting them together
 
----
 
-### 恒生指数市值加权权重高度集中于超级权重股
+<!--memo:109068f9216e-->
+### The underlying logic of admiration and relational imbalance
 
-> 2026-01-19 09:48:26
+> 2026-01-21 13:47:28 · `#格物/朋友`
 
-恒生指数一般是市值甲醛、并且权重是高度集中的
-港股通常都是个股影响大盘，但是这里的个股指的是超级权重股
-恒指里，前 5–10 只股票，常年占据 40%–60% 的权重
+Friends — on admiration
 
-- 腾讯控股
+The underlying logic of admiration and bubbles
 
-- 阿里巴巴
+The other person we see is generally the part they're willing to show, plus the part you're most easily drawn to, plus the part you're most lacking right now — so a bubble forms:
 
-- 美团
+Entrepreneurs admire "serial winners"
 
-- 中国移动
+People in a lost phase admire "people who look extremely certain"
 
-- 汇丰控股
+People in an emotional trough admire "calm, strong, stable people"
 
-港股结构不是全民交易的类型
-本地散户参与度低，机构、外资、被动资金占比高
-但是也有例外，情绪极端的时候，大盘是影响个股的
+Long-term admiration feels very bad for the health of a relationship, because over time admiration causes the relationship to become unbalanced, hardening a status gap, and this structure makes both sides uncomfortable
 
-`#格物/金融`
+Then the two people stop having real conversations, they don't dare to push back, they don't dare to expose themselves
 
----
+Then the bubble bursts — a person will always reveal hesitation, mistakes, emotion and interest calculations; once you find "he's just an ordinary person too," admiration flips directly into disappointment, even hostility
 
-## 2026-01-20 1月20日 周二  (8 条)
+So building an objective, rational understanding of the people around you is important
 
-### AlphaFold 一年绘制 2 亿蛋白质结构图
+Appreciate, but don't deify
 
-> 2026-01-20 15:25:59
+Learn, but don't depend
 
-AlphaFold 深度介绍
-google deepmind 的蛋白质预构成式  AlphaFold 仅一年时间就绘制超过 2 亿个结构图
-这是一个十分惊人具象的进展！因为在没有 AI 加持的年代，人类绘制每一个结构图都需要数年的时间
-预测蛋白质的复杂结构一直是人类的一个难题
-CXO 是医药合同外包服务结构，CXO 是一种风险转移和效率最大化的商业逻辑
-之前一款新药的研发要 10 年时间，10-20 亿美金，切成功率非常低（&lt;10%）
-如果你是一家初创生物科技公司（Biotech），你不需要花几个亿去建实验室、买猴子（实验动物）、建化工厂。你只需要融资，然后把钱付给 CXO，他们有现成的设备和团队
-药企核心是 IP（知识版权/专利）和管线策略
-CXO 的核心能力是 工艺（怎么做出来） 和 执行（怎么跑通流程）
+Respect, but don't belittle
 
-`#格物/医学`
+Be able to cooperate, but also be able to part ways
 
----
 
-### Next-12M EPS 是未来十二个月每股盈利预期
+<!--memo:581e2cc09187-->
+### China Is a Country That Embraces Change and Welcomes the Future
 
-> 2026-01-20 14:44:52
+> 2026-01-21 14:34:37 · `#格物/2049`
 
-关于 next-12M EPS
-指的是未来十二个月每股的盈利
-如何计算，比如说今年是 2026 年 1 月，未来的十二个月预计能赚多少钱
-Next-12M 可能是：2025Q1 + Q2 + Q3 + Q4 的一部分
-再过三个月，它就变成：2025Q2 + Q3 + Q4 + 2026Q1
-如何计算的？ 
-卖方分析师 + 财报更新 + 公司指引 + 一致预期 → 共识 EPS（当然自己可以不用相信第三方的平台，而是可以自己去手算）
-Next-12M EPS ≈ 最近一个完整年度 EPS × (1 + 未来一年盈利增速)
-Next-12M EPS ≈ 最近一个完整年度 EPS × (1 + 未来一年盈利增速)
-举例（假设用腾讯）：
+First of all, China is a country that can really embrace change and embrace the future
 
-- 最近 12 个月 EPS（TTM EPS）：≈ 29 港元
+Over the past twenty-five years China has changed enormously,
 
-- 你判断未来一年净利润还能 +8%–12%
+and over the coming twenty-five years, China is also ready to welcome enormous change
 
-`#格物/金融`
 
----
+<!--memo:3fd7b8d3956c-->
+### As Virtual Experience Spreads, Real Experience Becomes Scarcer
 
-### Forward PE 合理股价等于市盈率乘以每股盈利
+> 2026-01-21 14:40:00 · `#格物/2049`
 
-> 2026-01-20 14:41:01
+When virtual experiences become more and more easily available, real experiences will instead become scarcer and more precious because of it
 
-Forward PE（远期市盈率）计算
-合理股价 ≈ 合理PE（市盈率倍数） × 合理EPS（每股盈利）
-一般都是在 16-27 倍，也就是当前的股价是未来的十二个月每股盈利的 16-17 倍
-假设某公司预计未来一年的每股盈利（Forward EPS）是 5元，而它的 Forward PE 是 16.5倍，那么：合理的股价就是5 × 16.5 = 82.5元
-成熟的行业一般消费行业、能源行业，16–17x 属于中等偏高但尚可接受的估值
-对于高成长行业（如科技、AI、生物医药），这个水平可能算偏低或合理
-对比标普500整体 Forward PE about 为 23倍（截至2025年底数据），16–17x 显得相对便宜
-腾讯一般会给 18-22x
-因为腾讯不是纯增长的股，也不是纯价值的股，而是一个现金流很强、护城河深，但增长不再爆炸式的“超级平台”
+The good thing about the mirror world is that everyone can have all kinds of novel experiences from the real world without leaving home, while real adventure in the real world becomes instead a unique service that only a few can enjoy
 
-`#格物/金融`
+Thinking about a kind of experience in the future
 
----
+Needing only one eye to satisfy daily tech needs, including live streaming, and a way to automatically edit exciting video fragments
 
-### 扣子 2.0 从工具升级为能干活的工作伙伴
 
-> 2026-01-20 14:23:20
-
-扣子 2.0 是一个大版本的升级
-从“给指令的工具”，变成了“能干活的工作伙伴”，其中两个重要的功能特性分别叫做技能（Coze Skill）和长期计划
-1）Skill 解决的是“经验无法复用”：一个团队里最贵的资产，常常是少数人的方法论
-2）长期计划解决“目标没人推进”：大多数工作不是一次性问答，而是跨多天、多轮确认、持续推进
-同时，扣子把常用能力与基础设施都做成了内置的服务：模型、OCR、翻译、TTS，外部接口配置，数据库、对象存储、身份认证等等，都给你准备好了
-创意和想法先变成原型产品，再往后是一键部署与 App 构建服务：默认域名直接可以用，版本可以回退，部署记录都是可以追踪，非常方便。就像扣子编程的 Slogan 一样：AI 开发伙伴已就位。智能体、工作流、网页应用、App 和 最新的 Skill，都在你的指尖等你
-AI 从表达 -&gt; 交付
-当一个人不再被执行细节拖住，精力才有机会真正回到策略、思考和创造上
-
-`#格物/AI`
-
----
-
-### 优点是长期竞争中不需要被逼还能持续进化
-
-> 2026-01-20 13:58:05
-
-自己的优点到底是什么
-以及哪些缺点并不是很适合自己在未来的世界中生存
-感觉自己的优点也并不是我比别人强的地方的，而是我在长时间投入中不需要被逼，还能持续进化的能力组合
-我的某些缺点也是，感觉也不是道德的问题，而是在未来世界你性价比比较低的配置
-用不匹配的自己去追热门，是一种慢性消耗；用匹配的自己进入有趋势的赛道，才是复利
-优点是在长期竞争环境中，别人会被耗死，而自己不会的那部分自己，不需要外部激励，面对复杂的问题默认的反应方式，恢复能量的一种方式
-世界在加速，而个体的答案，反而越来越个性化，即使风险，也是少数人的机会 ...
-
-`#观我`
-
----
-
-### 私密小群维持真正的强连接社交网络
-
-> 2026-01-20 12:53:39
-
-私密小群
-很有生命活力的形态
-不是平台级社区，而是 3-12 人的私密小群 
-会变少、变贵、变严肃，也会更残酷
-小群维持的是真正的社交网络
-
-- 成员之间往往存在现实关联（同事、同学、兴趣圈层、小区邻居等）
-
-- 话题深入：从闲聊到共同决策（聚会、协作、项目推进）
-
-- 反馈快、连贯性强：消息不是噪声，而是对话链条
-
-人际关系开始有强连接和弱连接之间的关系，小群就是强连接
-社交正在从自然发散 → 有目的聚焦 → 关系深耕 的方向演化
- 但是小群感觉也很容易挂掉，除非经常有一些外部的关联性
-比如说每周有一次线下/线上的固定活动
-每个月有一个输出任务
-或者有共同的损失成本的小群
-或者群聊只是入口，私聊可能才是主战场
-取决于是否有一个中间人或者媒介，连接在一起
-
-`#格物/群聊`
-
----
-
-### AI 把技能溢价打薄意义感从选择和责任找
-
-> 2026-01-20 12:43:13
-
-AI 好像并没有创造出新的蛋糕
-复制品通缩 + 入口垄断
-竞争是直接把价格压到边界成本的附近
-价值不消失、只是从复制品迁移到了其他的地方
-迁移的入口往往是： 入口、分发、信任、责任、整合、稀缺资源（物理/制度/数据/关系）
-意义感崩塌，因为原来用的是稀缺性意义观
-我擅长一个稀缺技能 -&gt; 市场给我溢价 -&gt; 我觉得自己很重要
-AI 把“技能溢价”打薄后，意义感就像股价一样下跌（而且还是杠杆的：职业身份、同辈比较、自我价值都绑在上面）
-不再是我能更快生产某物找意义，而是从我在什么边界做选择、承担责任、定义方向上找到意义
-新增的场景的问题： 新增的场景确实也不少，但是好难规模化，用户的决策负担不能再增加一倍 ...
-职业叙事变化： 不一定是找到一个合适的职位定位自己，而是我能解决什么问题 + 我拥有哪些资源 / 关系 / 信誉定义自己
-价值 = 稀缺性 × 责任 × 入口 × 复利
-
-- 稀缺性：你能触达什么别人触达不到的东西（数据、关系、场景、资源、品味、判断）
-
-- 责任：你是否愿意为结果背书（合同、赔付、签字、声誉）
-
-- 入口：你是否掌握默认路径（工作流、渠道、分发、标准）
-
-- 复利：这件事是否越做越强（数据飞轮、网络效应、品牌信任、学习曲线）
-
-AI 最擅长的是“把稀缺性（技能）打薄”
-你要把筹码放到 AI 不擅长、但你能积累的那几项上
-
-`#格物/AI`
-
----
-
-### 没有新场景只压缩旧世界是残缺的
-
-> 2026-01-20 09:18:38
-
-如果没有新的场景产生
-而是仅仅在压缩旧的世界，是非常的残缺的
-大部分功能会“向 0 定价”，真正能持续拿到价值的，只剩下少数新的稀缺：算力、数据、工作流入口和决策权
-
-- 路线 A：现有工作流里“替人干活”
-
-- 路线 B：没有 AI 根本做不到 / 做不起的新场景
-
-AI 制药 + 延长健康寿命
-
-- 深空探索、行星改造、太空工业
-
-- 新材料、新能源、复杂系统科学……
-
-“现有场景不足”，其实就是在说：路线 A 在经济学上早晚走到“供给无限、需求有限”的天花板；真正的“星辰大海”，只能通过路线 B 打开新的 S 曲线
-A 线：AI = 强大的省钱工具；B 线：AI = 新文明基础设施
-
-`#格物/AI`
-
----
-
-## 2026-01-21 1月21日 周三  (38 条)
-
-### 触摸屏与 AR 眼镜的下一代创新
-
-> 2026-01-21 22:20:35
-
-众所周知，触摸屏的发明和广泛使用真正推动了智能手机的普及，因为它既可以显示影像，又能够感知到我们的点击和滑动。所以，一种能够集AR和VR于一身的镜片，将让智能眼镜成为真正的“下一个伟大创新”（Next Big Thing）
-
-
----
-
-### 镜像世界中现实与数字孪生的叠加
-
-> 2026-01-21 22:13:36
-
-镜像世界的定义
-当数十亿生活在城市地区的人戴上这些智能眼镜时，他们看到的是现实世界与虚拟世界的叠加。对于这个虚拟世界，一些人称之为元宇宙，一些人称之为AR（增强现实），甚至是XR（扩展现实）。我称之为“镜像世界”，因为你所看到的既是现实世界，也叠加着一个现实世界的数字孪。
-当然我自己个人觉得声音也许是一个更丝滑侵入的方式，声音和视觉的效果存在一些体验的差异化
-
-
----
-
-### 智能眼镜与 AI 助理的未来生活场景
-
-> 2026-01-21 21:18:08
-
-在未来，我们每个人都拥有一副可以随时随地使用的智能眼镜，它可以提供AR/VR/XR体验，它会捕捉每个人所处的环境，也会记录每个人的语言和表情。为了处理如此海量的信息，我们需要庞大的算力，为每一副眼镜配置强大的AI引擎。当然这个引擎也会化身为每个人都不可或缺的AI助理，在我们的耳边细语、提出建议，在我们的视线中给出提示，帮助我们打理工作和生活中各种常规和琐碎的事务
-
-
----
-
-### 有钱无时与有时无钱的两类人划分
-
-> 2026-01-21 21:17:07
-
-我们通常会将人分成两类：
-有钱但缺乏时间的人和有时间但缺钱的人
-这两类人也就是传统意义上的富人和穷人
-
-
----
-
-### 富人行为被模仿的从众效应与趋势
-
-> 2026-01-21 21:14:46
-
-富人在做什么
-他们的行为会受到普通人的模仿
-从众效应，
-一定程度上也是未来的趋势可能
-
-
----
-
-### 气候变化需区别于全球变暖议题
-
-> 2026-01-21 21:11:45
-
-气候变化与全球变暖并不是一个议题，需要区别对待。我们不应该让气温上升得这么快，因为我们不知道气温上升之后会发生什么。
-气候是一个非常复杂的系统，类似于我们的大脑。模拟气候变化，就像是在创造虚拟的生命、虚拟的星球
-
-
----
-
-### 全球化规律与中美各自优势分析
-
-> 2026-01-21 20:59:20
-
-全球化有全球化的规律，其中最重要的特点就是全球消费者会有更多的选择。如果全球有多种来源可以制造优秀的产品，对每个人来说都有更大的益处。只有一家企业垄断生产并不是理想的情况。
-中美各自有相对优势。中国的优势在于制造，而美国的优势在于突破性的创新。无论现在发生了什么，未来25年内，中国都将有能力制造出与世界上任何地方生产的优质汽车同样好的汽车，在芯片、AI等领域也是如此。
-
-
----
-
-### 植入式芯片与脑机接口技术展望
-
-> 2026-01-21 20:59:17
-
-植入式芯片也可能在未来25年迎来新突破。人造耳蜗就是非常成熟的人脑植入机器，未来植入式芯片也可能会发展得像人造耳蜗那样成熟，整个植入的流程也会变得更安全、更便捷
-相较于侵入式脑机接口，非侵入式头戴脑机接口的发展可能更快。比如现在就有一些新技术尝试使用红外线光读取脑电波。使用者只需要戴上特制帽子，帽子就能通过穿过头骨的红外线读取脑电波
-现在科学家已经完成了对昆虫大脑的建模，第一次拥有了昆虫大脑的“地图”。这是极大的突破，但在神经学意义上，我们距离理解人脑还很远。那么25年后在大脑研究领域我们能够期待些什么？
-
-
----
-
-### 上载新生：意识迁移与非生物存在
-
-> 2026-01-21 20:19:06
-
-上载新生（Mind Uploading / Consciousness Uploading）指的是：
-把一个人的“心智状态”（记忆、性格、认知方式、决策模式）
-从生物大脑中复制或迁移到非生物载体（如计算机、仿真系统）中，
-使其在原身体之外继续存在或运行
-一种文明假设，人类可以脱离生物学，以信息形式继续存在
-
-`#格物/生物`
-
----
-
-### 动物基因克隆的市场价格与效果
-
-> 2026-01-21 20:16:11
-
-当前动物的基因克隆价格
-当前市场价格（大致）：
-• 猫：$35,000 – $50,000
-• 狗：$50,000 – $100,000+
-• 马：可达 数十万美元
-外貌相似度非常高
-性格相似度中等
-健康与寿命与普通的宠物相当
-
-
----
-
-### 基因技术将成为富人阶层区隔工具
-
-> 2026-01-21 20:13:33
-
-富人用“基因相关技术”来炫耀与区隔，几乎必然发生
-未来的生物时代的阶级差异
-承受长期的不确定性，并且规避风险
-
-
----
-
-### 基因图谱对疾病预防与医疗的价值
-
-> 2026-01-21 20:10:10
-
-基因序列的重要性
-你会知道自己患上某些疾病的可能性，并会得到如何改善健康的建议，未来可能还会有根据基因特点预防特定疾病的药物。此外，每个人都会拥有一张基因图谱，这有助于获得基于大数据的健康和营养建议。随着年龄的增长，各种常见病和慢性病都可能出现，尽早拥有个人的基因图谱，对于预防疾病和改善健康至关重要，当然也能大幅节about 医疗成本
-基因序列对于实验新药也有帮助：我们如果能够区分这些情况，就可以给一些创新药找到拥有特定基因特征的病人，真正做到药物与病人的匹配，这对制药行业和病人而言都是巨大的福音。药厂可以根据病人的基因图谱和病史，开发出高度定制、专门为个人设计的药物。这种药物不需要对所有人都有效，它只需对特定的人群有效即可。一旦这些信息被关联起来，它们在治疗中的价值将变得非常大。除了国家推动，保险公司也会大力推动基因测序，并会为人们的基因测序买单
-相比较基因序列，对人体进行基因编辑之前，我们需要对科学伦理达成基本的共识。现在达成的一种基本共识是，我们不要做造物主。原因很简单，我们懂的比我们自己想象的要少得多。虽然我们可以编辑某种基因，但这种编辑可能恰恰是我们无知的表现之一。实际的问题要复杂得多，并不是所有的特征（病症和能力）都可以找到对应的单一基因
-
-`#格物/生物`
-
----
-
-### 取消方向盘是构建车内第三空间前提
-
-> 2026-01-21 20:00:33
-
-取消方向盘才是把车内空间作为第三空间构建的开始。从这一视角看苹果的战略选择，不难发现它的一个重要假设，即在自动驾驶真正成熟前，大多数汽车的使用场景仍然是人驾驶车辆，完成出行的目的，这时候更多的娱乐和互动只会带来各种扰乱注意力的安全隐患。只有当自动驾驶彻底解放了乘车人的注意力，车内不再有包括方向盘在内的各种驾驶操控装置时，才能开始构建车内的第三空间
-
-`#格物/生物`
-
----
-
-### 大范围基因测序需尊重系统复杂性
-
-> 2026-01-21 19:48:44
-
-完成大范围基因测序还需要什么
-尊重系统的复杂性
-第一层： 序列 -&gt; 分析功能，AI 将序列 -&gt; 分子读数，从实验年级别压缩到计算秒级
-第二层： 分子功能 → 细胞/组织状态（10–20 年，部分可解），同一个变异，在细胞类型效果不同，不同的发育阶段的效果不同，不同环境也不同
-第三层：基因 -&gt; 疾病 -&gt; 个体命运，基因层也不可能完全还原一个人的未来，世界具有偶然性，人体是非线性、强耦合、历史依赖系统
-
-`#格物/生物`
-
----
-
-### AlphaGenome 的 DNA 调控功能预测能力
-
-> 2026-01-21 19:43:24
-
-AlphaGenome
-在 DNA 层面，把一段很长的 DNA 预测这段 DNA 在不同细胞/组织里会呈现的调控功能输出，并且能评估“某个变异把这些输出改变了多少
-可量化的分子层读数
-
-- 哪里开始哪里结束
-
-- 哪些 DNA 位点更开放
-
-- 哪些区域会被特定蛋白结合，比如说转录因子
-
-通过对比“参考序列 vs 变异序列”的预测差异，用一秒级方式给出变异影响评分（variant scoring）
-CNN = 本地语法（短词/词缀）
-Transformer = 篇章结构（远程引用、跨段落依赖）
-多任务头 = 同一篇文章的多种“可测量解读”（表达量、剪接、可及性…）
-AlphaGenome 建立在更早的基因组模型 Enformer 之上，并且与 AlphaMissense 互补；AlphaMissense 更擅长解释蛋白编码区变异的影响，而那只占基因组about  2%，剩下 98% 非编码区正是 AlphaGenome 主要想“点亮”的部分
-
-`#格物/AI`
-
----
-
-### 生产力是工具性指标而非人类目标
-
-> 2026-01-21 16:09:54
-
-生产力是工具性指标
-工具性的指标自然而然就是为机器人设计的，而不是为人设计的
-人类可以从事那些不注重效率的职业
-
-
----
-
-### 接受自身局限性是挖掘特长的前提
-
-> 2026-01-21 15:38:58
-
-接受自己的局限性
-这是一个非常重要的前提
-因为你要开始开放，以及深度挖掘自己的特长了
-
-
----
-
-### AI 最容易替代企业中层管理工作
-
-> 2026-01-21 15:36:59
-
-现在的企业的 AI 渗透的案例
-以及现在普遍的企业的金字塔结构
-各个阶层的工作需求
-AI 最容易对标的是现在的中层管理层的工作
-领导者之所以需要管理者汇报、总结，是因为他处理信息的能力有限，只能抓大放小；之所以需要计划和预算，是因为领导者很难全面掌握企业内部所有情况。当企业变得越来越大时，构建一个官僚组织去搜集和处理信息，制订、执行计划并考核执行情况，汇报、总结企业经营管理的情况，是非常重要的
-
-`#格物/AI`
-
----
-
-### 镜像世界中数字人与个性化匹配
-
-> 2026-01-21 15:34:55
-
-镜像世界会更加高效地将高质量的内容与感兴趣的用户匹配起来
-未来的世界的数字人是很有趣的，每个人都有自己相关的信息在网络上
-每个人也都在网络上有自己的数字资产
-以爆火的女歌手泰勒·斯威夫特为例。可以想象，在未来的电影中，斯威夫特可以授权自己的数字人出演某个角色。她也可以授权自己的数字人变成女孩们喜欢的数字玩伴，就像芭比娃娃一样。在镜像世界中，用户甚至可能有机会与斯威夫特的数字人about 会
-
-`#格物/AI`
-
----
-
-### 希望世界多些聪明人而非只论输赢
-
-> 2026-01-21 15:29:13
-
-大家都很厉害很聪明我觉得是好事
-我希望这个世界多一些聪明人
-哪怕很多人是自己的竞争对手，哪怕短期世界是零和的
-但是就是，这个世界不仅仅是输赢
-自己可以学的更快、跑的更远
-自己才看见到这样的世界，才值得认真的活下去
-
-
----
-
-### 隐私与个性化服务的权利对等问题
-
-> 2026-01-21 15:25:39
-
-你愿意作为一个“透明人”生活在一个被监控的世界中吗？我想大多数人的回答是“不”​。但换一种说法，如果想要享受定制化的服务，拥有个性化的AI助理，你必须放弃大部分隐私，你愿意吗？很多人会很犹豫
-其实问题的核心是在信息搜集方面如何做到权利与义务的对等
-
-`#格物/2049`
-
----
-
-### 耳机是最低摩擦的智能穿戴形态
-
-> 2026-01-21 15:15:22
-
-耳机的作用还没完全被挖掘出来
-耳机 + 听觉是人类最低摩擦的智能结构
-不占手、不占眼、不打断动作、可以随时接入
-甚至相比较眼睛，因为眼睛好难做到全天佩戴不累，并且不尴尬，也不会乱显示，不侵犯他人
-手表和手环是身体上的智能层
-未来 AI 是否真的关心你
-取决于它是否接入了你的生理数据流
-戒指是一个很感性，但是天花板很明确的形态，极低的存在感，极高的佩戴率
-手机会回归到幕后了 ...
-
-`#预测`
-
----
-
-### 难以找到自己在时代中的清晰定位
+<!--memo:9eb303c67e35-->
+### Hard to Find a Clear Place for Myself in This Era
 
 > 2026-01-21 15:06:33
 
-他们都在推进，都在前进
-但是自己好像真的好难找到一个自己的清晰的定位 ...
+They are all pushing forward, all moving ahead
 
+But I really seem to have such a hard time finding a clear position of my own ...
 
----
 
-### 科技应让人脱离工具性回归体验
+<!--memo:e06bd71a4d91-->
+### Privacy and Personalized Service: The Reciprocity of Rights and Duties
 
-> 2026-01-21 15:05:04
+> 2026-01-21 15:25:39 · `#格物/2049`
 
-我在想未来的科技不断的出现一些新的产品
-这种产品在现实中需要有一些实际的摩擦
-并且其实科技是让人脱离工具性的
-我觉得是不是就意味着有一个很清晰的方向，就是做新的科技的使用以及人本身的一些体验的方向
+Are you willing to live as a "transparent person" in a monitored world? I think most people's answer is "no." But put another way: if you want to enjoy customized service and have a personalized AI assistant, you must give up most of your privacy — are you willing? Many people would hesitate quite a bit
 
-`#预测`
+Actually the core of the problem is how to achieve a reciprocity of rights and obligations in the collection of information
 
----
 
-### 大众注意力与内容质量的匹配策略
+<!--memo:2aa00dcf5b9a-->
+### Accepting Your Own Limitations Is the Prerequisite for Digging into Your Strengths
 
-> 2026-01-21 14:52:05
+> 2026-01-21 15:38:58
 
-大众注意力 vs 内容质量
-用户的审美决定了市场上流行的内容品味
-平台算法中容易胜出的内容具有的以下特征：
+Accept your own limitations
 
-- 极端（情绪 &gt; 事实）
+This is a very important prerequisite
 
-- 简单（二元对立）
+Because you're about to start being open, and start deeply digging into your own strengths
 
-- 即时快感
 
-- 可无限刷（没有完成感）
+<!--memo:06a54cde227a-->
+### The Herd Effect of Imitating the Rich, and the Trend
 
-内容还有一个被严重低估的形态，我观察很多的做短视频和自媒体的精髓，就是颠倒和错位
-认知密度高，但入口足够低的内容
-换句话说，就是内核是高质量，但是包装是大众能吞下去
-不降低思考，但是降低进入门槛，并且提高留存后的认知回报，先被看见、在被理解、最后被信任
+> 2026-01-21 21:14:46
 
-`#格物/创作`
+What the rich are doing
 
----
+Their behavior will be imitated by ordinary people
 
-### 虚拟体验普及使真实体验更稀缺
+The herd effect,
 
-> 2026-01-21 14:40:00
+to a certain extent, is also a possible trend of the future
 
-当虚拟的体验变得越来越唾手可得时，真实的体验反而会因此变得更加稀缺和珍贵
-镜像世界的好处是人人都可以足不出户就拥有真实世界中各种新奇的体验，而真实世界中真正的探险反而是个别人才能享受到的独特服务
-在想未来的一种体验
-仅仅只需要一个眼睛就能满足日常的科技需求，包括现场直播，自动剪辑精彩的视频碎片的方法
 
-`#格物/2049`
+<!--memo:27771fb0c2c1-->
+### Two Kinds of People: Money but No Time, Time but No Money
 
----
+> 2026-01-21 21:17:07
 
-### 中国是拥抱变化与迎接未来的国家
+We usually divide people into two kinds:
 
-> 2026-01-21 14:34:37
+people who have money but lack time, and people who have time but lack money
 
-首先，中国是一个非常可以拥抱变化拥抱未来的国家
-过去二十五年中国发生巨变，
-未来的二十五年，中国也准备好迎接巨变
+These two kinds of people are, in the traditional sense, the rich and the poor
 
-`#格物/2049`
 
----
+<!--memo:478405fc5be9-->
+### Reality and Digital Twin Overlaid in the Mirror World
 
-### 崇拜心理的底层逻辑与关系失衡
+> 2026-01-21 22:13:36
 
-> 2026-01-21 13:47:28
+The definition of the mirror world
 
-朋友，论崇拜
-崇拜和泡沫的底层逻辑
-我们看到的对方，一般是对方愿意展示的部分，还有你最容易被吸引的地方，以及你当下最缺的一部分，于是会产生泡沫：
+When billions of people living in urban areas put on these smart glasses, what they see is the real world overlaid with a virtual world. Some people call this virtual world the metaverse, some call it AR (augmented reality), or even XR (extended reality). I call it the "mirror world," because what you see is both the real world and a digital twin of the real world overlaid on it
 
-- 创业者会崇拜“连续成功者”
+Of course, personally I think sound may be a smoother way to intrude; there are some experiential differences between the effects of sound and those of vision
 
-- 迷茫期的人会崇拜“看起来极度笃定的人”
 
-- 情绪低谷的人会崇拜“冷静、强大、稳定的人”
-
-长期崇拜感觉很不利于关系的健康，因为崇拜长期会导致关系失衡，产生地位差固化，这种结构让双方都不舒服
-再就是两个人会停止真实的对话，不敢去反驳，不敢暴露
-再就是泡沫会破碎，人一定暴露出犹豫、失误、情绪和利益计算，一旦你发现“他也是普通人”，崇拜会直接反转成失望甚至敌意
-所以建立起对周边的人的客观理性的理解很重要
-欣赏、但不是神化
-学习、但不是依附
-尊重、但不是贬低
-能合作、但是也能分道扬镳
-
-`#格物/朋友`
-
----
-
-### 科研指数增长与医疗线性增长矛盾
-
-> 2026-01-21 13:38:58
-
-科研端可以指数级增长
-但是医疗端是缓慢线性的增长的
-这是人类物种的伦理、安全、临床验证周期决定的
-
-
----
-
-### 蛋白质折叠并非随机搜索而是能量滑落
-
-> 2026-01-21 13:35:18
-
-蛋白质结构的预测方式
- 理论上我在想的一个问题，蛋白本身是一个柔软的链，可能是旋转的或者折叠的，甚至无序蛋白的
-那岂不是每一个残基都能转，为什么不随机转，并且差不对为止？ 
-实际上是错误假设，构象空间的规模是指数级爆炸的
-随机搜索的方式太慢了，指数级爆炸，这就是著名的 Levinthal 悖论
-如果蛋白质通过随机尝试所有可能的构象来寻找其天然结构，即使每种构象只需 xxx 秒来尝试，也需要远超宇宙年龄的时间才能找到正确结构
-然而，在现实中，大多数蛋白质在毫秒到秒级的时间内就能完成折叠
-蛋白折叠不是在空间里找位置，而是在能量空间里“往下滑”
-AlphaFold 并不是在模拟“折叠过程
-它在预测：最低自由能附近，最可能出现的稳定结构
-
-`#格物/生物`
-
----
-
-### AlphaFold 本质是序列到结构的计算映射
-
-> 2026-01-21 13:21:45
-
-AlphaFold 最本质的感觉不是结构预测的问题
-把“序列 → 结构”这条过去需要多年实验的映射，变成了一个几乎即时、可规模化的计算过程
-用“进化统计 + 深度表示学习”，替代了物理显式建
-更容易的理解蛋白
-以前想研究蛋白，需要知道有没有结构
-现在就是你有一个结构草案，然后你怎么用
-生物世界中有一条极其残酷、但是极其真实的规律
-功能由结构决定，而不是由名字决定
-所以药物研究是基于结构的，蛋白工程也是基于结构的，结构是如何得到的？ 
-传统的是实验测结构
-
-- X 射线晶体学
-
-- 核磁共振
-
-- 冷冻电镜
-
-非常慢、非常贵、非常挑蛋白，并且不能覆盖所有的蛋白
-我们知道数亿条蛋白序列，却只知道极少数结构
-AlphaFold 改变的把这句： “有没有结构？”变成了：“有没有一个可用的结构假设？”
-
-`#格物/生物`
-
----
-
-### 仿制药为何未必完全等同于原研药
-
-> 2026-01-21 13:05:15
-
-仿制药特点
-有时候好奇为什么度过了专利期，仿制药不应该是没问题的嘛
-但是实际上也未必
-现实中，虽然核心化合物专利到期了，但原研公司常会申请外围专利（也叫“专利丛林”）
-如果仿制药完全照搬，可能侵犯这些次级专利，被起诉
-所以，很多仿制药厂会主动微调辅料或工艺，绕开这些“专利地雷”
-法规只要求“生物等效”，仿制药企业只能通过逆向工程（比如把药片磨碎分析）来推测，很难百分之百还原
-
-- 原研药：辉瑞的 立普妥（Lipitor）——白色椭圆形片，一面刻“Pfizer”，另一面刻“ATV 10”。
-
-- 仿制药：多家公司生产阿托伐他汀钙片——有的白色、有的黄色；有的圆形、有的椭圆；刻字也不同。
-
-- 但所有通过审批的仿制药，在临床上都被证明降脂效果与立普妥无差异
-
-`#格物/医学`
-
----
-
-### 药物知识产权体系与专利保护逻辑
-
-> 2026-01-21 13:02:43
-
-药物的知识产权
-一个综合的体系，一般包括下面的几类权利：
-
-- 专利权：新药的化学结构、合成方法、制药工艺，有保护期，保护期内别人不能仿制、销售或者使用该技术
-
-- 商标权：logo 之类的
-
-知识产权时间周期限制，因为新药的研发成本极高，耗时极长、失败率高
-
-- 如果没有专利保护，企业投入巨资研发出新药，第二天就被别人低价仿制，谁还愿意创新？
-
-- 所以，国家通过授予有限期的垄断权（比如20年专利），让药企能收回成本并盈利
-
-一旦专利到期，其他企业就可以合法生产仿制药（Generic Drug），价格通常只有原研药的10%–30%，极大降低患者负担
-专利到期，技术就进入公有领域，任何人可以自由使用
-
-`#格物/医学`
-
----
-
-### 异地还车成本与平台撮合费分析
-
-> 2026-01-21 12:35:01
-
-一直在想，还车的时候，异地还车的成本不是很高吗
-但是实际上是很反直觉的
-有些不支持异地的是因为低价车，本地的小车队，并且是非热门的路线，毛利率还是比较低的，异地一次就容易把利润吃光
-平台很喜欢异地还车，因为平台有撮合费，你多了一个异地还车费，平台流水更高
-一嗨是一个例外，很像平台的车行
-一嗨会全国范围内做车的调度
-从第一性原则上分析，车本身是高价值、高风险、服务也高度依赖线下，所以避免网点扯皮，责任问题还有投诉问题
-
-`#格物/人生`
-
----
-
-### 自洽感绑架导致向外归因丧失修正
-
-> 2026-01-21 00:09:59
-
-被自洽感绑架的人
-这类人很容易自洽
-但是把一些的错误归咎于外因从而丧失修正的能力
-这类的自洽永远都是向外归因，这样带来的问题是很难修正自我
-它的速度也很快，事情刚发生，大脑就给与解释，甚至都没有悬空期，很容易贴上标签
-它带来的是情绪的稳定，而不是能力的提升
-
-`#格物/人生`
-
----
-
-### 自洽感绑架让人向外归因丧失修正能力
-
-> 2026-01-21 00:09:59
-
-被自洽感绑架的人
-这类人很容易自洽
-但是把一些的错误归咎于外因从而丧失修正的能力
-这类的自洽永远都是向外归因，这样带来的问题是很难修正自我
-它的速度也很快，事情刚发生，大脑就给与解释，甚至都没有悬空期，很容易贴上标签
-它带来的是情绪的稳定，而不是能力的提升
-
-`#格物/人生`
-
----
-
-### 自洽感绑架让人向外归因丧失修正能力
-
-> 2026-01-21 00:09:59
-
-被自洽感绑架的人
-这类人很容易自洽
-但是把一些的错误归咎于外因从而丧失修正的能力
-这类的自洽永远都是向外归因，这样带来的问题是很难修正自我
-它的速度也很快，事情刚发生，大脑就给与解释，甚至都没有悬空期，很容易贴上标签
-它带来的是情绪的稳定，而不是能力的提升
-
-`#格物/人生`
-
----
-
-### 接受世界不完整慢慢迭代进步
-
-> 2026-01-21 00:05:28
-
-世界就是一个巨大的游戏场
-甚至还是一个破破烂烂的游戏场，有很多漏洞，很多秩序失效，善意会延迟到场，正义也会延迟来到
-我们修修补补，这是人类这个物种最古老和最现实的能力
-接受世界的不完整，我能能做的就是慢慢的迭代进步
-科学就是这样的
-工程就是这样的
-关系也是这样的
-一个人的人生，也是这样的
-
-`#格物/人生`
-
----
-
-## 2026-01-22 1月22日 周四  (3 条)
-
-### 父母滤镜下的神圣化未选择之路
-
-> 2026-01-22 20:35:19
-
-你最喜欢他的不是他真正的模样，看见他真正的模样的时候，你会觉得他很普通
-我想起朋友说的祛魅
-何尝我父母的眼中对于他们求而不得的东西总是会有神往
-有时候我在想，和他们沟通困难也是这样，他们以为自己是对的，以为你做的事情没什么，甚至以为你没选择的路他们觉得是神圣的，我没有去过的大学他们也会觉得是无比的厉害的
-但是于我而言好像这个世界并没有那么多的滤镜，我觉得真实的世界就是那样的，但是我父母好像生活在一个必须要依靠滤镜才能成立的世界中
-好大学、好单位、城市户口、体面身份、稳定路径
-当现实不给人通行证时，人只能把这些东西神圣化，否则心理会塌
-他们没有走过的路，会被想象得无比正确
-他们没得到的东西，会被赋予“如果当年有了它，一切都会不同”的力量
-他们没有选择的自由，会被包装成“这是唯一正确的选择”
-人跟容易爱上意义，那种承载者可能性、象征性、稀缺性、未完成感的意义
-
-`#格物/知我`
-
----
-
-### 视觉设计中规则之外的魔法判断
-
-> 2026-01-22 17:19:22
-
-magic 一直都不是多，而是恰好
-新手设计容易迷信堆料，更多的颜色、更多的动效，更复杂的形状
-留白 ... 视觉节奏感
-magic 一般都是来自于设计者的判断，而不是规范
-规范只能帮你到80 分
-magic 是剩下的 20 分，而它无法被 checklist 穷举
-视觉设计的 magic，是在规则之内，悄悄违背一点点规则，却让整体更真实、更有生命感
-
-`#格物/设计`
-
----
-
-### 侵入式脑机接口的风险与技术瓶颈
-
-> 2026-01-22 16:38:44
-
-要获得侵入式的脑机接口仍然需要动手术植入芯片，这种方式并不友好，会给人带来风险。现在植入的芯片有效期可能只有一年，因为人体会有各种排异反应，随着时间的推移，芯片的信号可能会逐渐衰微。除非材料科学发生巨大的进步，否则每年动一次手术更换芯片的做法并不现实。当然作为碳基和硅基的交互界面，硅基硬件与“湿件”​（人脑）有没有更好的对接方式，也非常值得探究
-要使芯片准确地检视大脑传递的电波信息，仍然需要大量的数据和训练。指挥肢体运动的信息相对简单，传达复杂内容和情感的信息则复杂得多。所以，芯片不仅要能获取电波，还要能够比较准确地检视并解读电波
-
-`#格物/生物`
-
----
-
-## 2026-01-23 1月23日 周五  (8 条)
-
-### 进化生物学中环境选择的重要性
-
-> 2026-01-23 20:38:33
-
-生物进化学也在告诉我
-我不是世界中心的，我的直觉也并不可靠，哪怕未来成功也是具有偶然性的，自由在于，这没有一个固定的版本的，没有唯一的正确理解，可以不断的重组系统
-从系统学的角度，我很喜欢演变的过程，再者，因为是不确定性的，所以意味着创造
-环境尤其重要，人真的应该把自己放在合适的环境，选择环境比错误环境中硬拼重要的多
-
-`#格物/生物进化学`
-
----
-
-### 进化生物学的变异选择与信息保存
-
-> 2026-01-23 20:20:11
-
-进化生物学研究的就是一个非常本质的问题
-我们从哪里来，我们是一步一步走到现在的摸样
-我们将来会怎么样走
-在没有设计者的前提下，生命如何通过 “变异 + 选择  + 时间”  走到今天的这一步，关心的是下面的几个问题：
-
-- 变异从哪里来
-
-- 选择怎么发生
-
-- 信息如何被保存
-
-- 尺度如何跨越
-
-三个核心的思想
-
-- 自然选择不是进步引擎，而是淘汰机制，幸存≠优秀，只是在当下环境下没有死
-
-- 适应是局部最优，而不是全局最优
-
-- 随机性是创造力来源，没有突变，就没有新的可能，生物靠错误走到了复杂
-
-所以进化生物学不是用更高级，更应该成功，现状就是合理，它解释成因，不解释正当性
-所以现在时代乐观进化和衍生下去的，反而是那些反向退化，看上去很蠢的形状，更简单的方式
-生物进化是残酷的，无数失败分支之后的幸存者偏差
-人类也是历史上的奇迹
-
-- 大脑为了应付稀缺环境 → 今天焦虑成灾
-
-- 快速奖赏系统 → 成瘾问题
-
-- 群体偏好 → 偏见、对立、身份政治
-
-- 性选择 → 很多非理性行为
-
-从生物进化的角度，人类的设计好像从来都不是为幸福而设计，人类一直都是为生存凑合出来的
-
-`#格物/生物进化学`
-
----
-
-### 情绪认同与讲述决定记忆留存
-
-> 2026-01-23 18:39:11
-
-自我冻结的记忆
-人对记忆的保留，一般都是取决于三个事情
-
-- 情绪是否被允许存在
-
-- 行动是否被自我认同
-
-- 这段经历时候被讲述过
-
-失败会留下情绪残留，成功反而可能什么都不剩
-
-`#格物/记忆`
-
----
-
-### 色拉寺辩经的逻辑与形而上学方法
-
-> 2026-01-23 17:11:37
-
-色拉寺辩论赛
-辩论的几个方向
-因果关系是否成立
-概念是否自洽
-定义有无偷换
-推理是否必然成立
-
-- “一切是否无常？”
-
-- “如果 A 成立，是否必然推出 B？”
-
-- “你刚才的前提，是否已经包含了结论？”
-
-基本上覆盖的是逻辑学 + 形而上学  + 禅修混合体
-在藏传佛教辩经里：
-
-- 拍手：逻辑锤（相当于“我这一击是结论”）
-
-- 跺脚 / 前倾：强调因果推进
-
-- 逼近对方：迫使对方即时回应，不许拖延
-
-`#格物/佛学`
-
----
-
-### 信仰驱动下的生活一帆风顺信念
+<!--memo:251da3e6f97c-->
+### A Faith-Driven Belief That Doing Everything Well Makes Life Smooth
 
 > 2026-01-23 16:38:05
 
-信仰： 做好每一件事情，生活就是一帆风顺
+Faith: do everything well, and life is smooth sailing
 
 
----
-
-### 冈仁波齐作为多宗教宇宙轴心地位
-
-> 2026-01-23 14:07:12
-
-冈仁波齐作为文明级神山
-藏传佛教，世界的中心，同样也是印度湿婆的住所，也是 耆那教、苯教的各自的宇宙轴心
-转山的最多是印度人，然后是中国和尼泊尔的人
-印度教中冈仁波齐本身作为湿婆神的住所，也就是宇宙轴心
-一生至少要来一次，不来不完整
-国内很多的汉族人，多数来自于中产或者有一定的户外经验，是在现代系统里走不动了，才走到冈仁波齐
-
-`#格物/冈仁波齐`
-
----
-
-### 多恩神山的灵性生态系统与敬畏感
-
-> 2026-01-23 12:49:24
-
-多恩神山
-多恩神山是一座自然雪峰 + 民间信仰叠加体
-藏语中，“神山”并不只是“好看的山”，而是被认为：
-
-- 有山神/护法神居住
-
-- 能护佑一方水土、人群、牲畜
-
-- 与周边村落、湖泊、草场形成一个“灵性生态系统”
-
-多恩神山被视为守护神山，周边居民会进行转山、挂经幡、祭祀
-梅花鹿的主人是多恩神山，人会对自然产生敬畏，在巨大的自然面前主动降低自我音量的能力
-
-`#格物/多恩神山`
-
----
-
-### AI 转达子女话语的异步通话产品构想
-
-> 2026-01-23 11:35:59
-
-定时给父母打一个电话的产品
-我希望每一天录一些想对父母说的话，然后 AI 作为中间人帮我转达过去，可以是一种推送的方式拨打给父母
-然后父母收到后和 AI 聊天
-两个人异步的打电话，很有趣
-也可以是数字人的方式
-注册自己的数字系统
-
-
----
-
-## 2026-01-24 1月24日 周六  (4 条)
-
-### 转经筒经文念诵的信仰机制
+<!--memo:2cf069b9a7d1-->
+### The Faith Mechanism of Reciting Scriptures with a Prayer Wheel
 
 > 2026-01-24 11:32:32
 
-转经筒
-里面通常卷着一整卷经文，最常见的是六字真言：
-唵·嘛·呢·叭·咪·吽
-转动一次 = 经文被完整念诵一次
-不靠嗓子，不靠理解，靠方向与持续
+Prayer wheel
+
+Usually a whole scroll of scripture is rolled up inside, most commonly the six-syllable mantra:
+
+Om · Ma · Ni · Pad · Me · Hum
+
+Turning it once = the scripture is recited completely once
+
+No need for the voice, no need for understanding; it relies on direction and continuity
 
 
----
-
-### 格聂神山的宗教与自然共同体地位
-
-> 2026-01-24 10:16:36
-
-格聂神山
-位于四川甘孜州理塘—巴塘一带，是康巴藏区最重要的神山之一，主峰海拔 6204 米
-被视为康区第一神山，地位极高，名气长期低调
-格聂被认为是护法神山，在康巴体系中象征着一种“在地的秩序”
-和很多被旅游化的神山不同，它更像一个仍在运行的宗教与自然共同体
-地理位置极端复杂，冰川 + 湿地 + 原始森林 + 高原湖泊
-徒步距离长、补给难，心理消耗大
-
-`#格物/格聂神山`
-
----
-
-### 生物与环境双向塑造的进化真相
-
-> 2026-01-24 09:55:40
-
-教科书上总说环境选择生物
-因为符合金子塔的自然选择理论
-
-- 突变是随机的
-
-- 环境是既定的
-
-- 不适应的 → 死
-
-- 适应的 → 活下来并繁殖
-
-一旦你把时间拉长，就会发现一个反直觉的事实：生物活着，本身就在改写环境
-
-- 植物把 CO₂ 变成氧气 → 改造大气
-
-- 微生物改变土壤结构 → 影响后续物种
-
-- 海洋生物造出珊瑚礁 → 改写海洋流场
-
-- 人类修路、筑城、驯化动植物 → 彻底重塑生态位
-
-生物改变环境 → 新环境再反过来选择生物
-动物一直在适应生态位，但是生态位如同这个世界的运作系统，顶级的生物也参与建造生态位
-所以环境到底是什么，是上一代生物留下的遗产
-他们留下的文明，他们留下的雾霾 ...
-
-`#格物/进化心理学`
-
----
-
-### 心理学人类学社会学的研究方法论
-
-> 2026-01-24 09:52:48
-
-研究的对象，主要是人类，心理学、人类学、社会学
-人们为什么会有这样的思考和行动
-推论假设、跨文化验证、适应性推理
-当然现在有科技这样的大的变量，进化心理学未来可能也会有不一样的演变方向
-
-`#格物/进化心理学`
-
----
-
-## 2026-01-25 1月25日 周日  (7 条)
-
-### 高质量短剧中未准备好的人生感受
-
-> 2026-01-25 20:31:15
-
-看到了一个短剧《盛夏芬德拉》
-是一种高质量的短剧
-人生里有大量时间并不用于做决定，而是用来感受自己还没准备好的状态
-
-
----
-
-### 与母亲建立边界感的相处之道
-
-> 2026-01-25 20:24:25
-
-和母亲相处的一句很经典的话
-他们习惯了被控制，习惯了迎合
-需要夺回自己的行动权，确保自己的事情是自己去处理的
-强制自己的边界感，这些事情自己来，一定要自己来，不解释理由，宣告自己的边界感
-不再去配合她的牺牲剧本
-同样通过强化学习本身，如何构建一个健康的系统
-对于正确行为的事情给与奖励，对于不正确的事情给与惩罚，父母子女之间很难理性沟通，假意情绪是一个很好的方式
-接受行为，但不加情绪奖励
-她做了很多，你不需要过度感谢、过度解释、过度补偿
-亲密不等于黏连
-爱也不等于全天候照料
-
-`#格物/知我`
-
----
-
-### 慈母败儿：牺牲式养育与责任边界的冲突
-
-> 2026-01-25 20:19:01
-
-慈母多败儿
-感觉自己就像一个败儿
-母亲讨好型人格
-母亲兜底错误 ...
-并且给孩子所有的围绕孩子感受调整自己的行为
-还用自己的牺牲换取服从
-这样的关系感觉很难受，相处起来，和自己的价值观很冲突
-人负责本身就是犯错 -&gt; 承担后果 -&gt; 修正行为
-我认同的是边界、责任、对等、个人意志
-而她仍然活在：
-牺牲=爱，忍耐=善良，顺从=亲密
-
-`#格物/知我`
-
----
-
-### 系统规训与人类中断能力的本质
-
-> 2026-01-25 20:06:08
-
-系统未必是对的
-个体是拥有灵魂的，可以有意识去判断和认知自己的行为
-人之所以是人，不是因为能力，而是因为可以中断
-
-
----
-
-### 谍影重重中系统与个体的利益冲突
-
-> 2026-01-25 20:04:55
-
-一次性刷完了五部
-感受到国家机器的强大和冷血，在任何一个国家都是这样
-不一样的是不同文化体系下的人对于这样的体制自己的反应
-在传统谍战里，主角往往是“被国家授权的正义暴力”
-但在 谍影重重 里，主角一醒来就发现一件恐怖的事：
-他不是“选择成为武器”
-而是已经被做成了武器，然后被遗弃
-系统有自我修正、自我保护、自我清理机制，这时候集体和个体之间的利益冲突就体现出来了
-当国家、组织、系统开始替你决定“什么是正确”
-人的尊严往往只剩下一个选择：逃
-
-`#格物/谍影重重`
-
----
-
-### 系统定义下个体自我认同的困境
-
-> 2026-01-25 09:31:42
-
-系统 vs 个人主义
-核心的一个问题，当你的能力、行为、价值，完全由系统来定义时，你是否还拥有自我
-“我是不是只能是他们说的那种人？”
-任何复杂的系统，都会倾向于把人当做一个变量，而不是常量
-效率被无限放大的时代，会有一些很具有潜力的节点，具有强烈的伸缩力
-
-`#格物/系统学`
-
----
-
-### 自由选择中喜欢与为所欲为的感觉
+<!--memo:4d8d78bdc61a-->
+### The Feeling of Liking and of Doing Whatever You Want Within Free Choice
 
 > 2026-01-25 01:23:10
 
-明白的喜欢是一种什么样的感觉？喜欢户外是一种什么样的感觉？给自己足够多的自由，那么喜欢是一种什么样的感觉？给他足够多的是一种选择，于是人可以为所欲为。
+What kind of feeling is it when something is clearly liked? What kind of feeling is liking the outdoors? Give yourself enough freedom, then what kind of feeling is liking? Give him enough of a choice, and so a person can do whatever he pleases.
 
 
----
+<!--memo:96bd9d1939a9-->
+### System Discipline and the Human Capacity to Interrupt
 
-## 2026-01-26 1月26日 周一  (6 条)
+> 2026-01-25 20:06:08
 
-### 股票化证券化债卷化，金融权利标准化流通
+The system isn't necessarily right
 
-> 2026-01-26 19:25:58
+Individuals have souls, and can consciously judge and recognize their own behavior
 
-股票化、证券化、债卷化
-工程手段上的差异化
-但是本质的目的是一样的
- 把“不可交易的现实关系”，
-变成“可定价、可流通、可分割、可控制的金融权利”
-股票化是把参与关系变成份额
-比如说我参与这个公司的成长的，我承担风险，但是我也是享受了剩余，把参与切分标准化份额，让陌生人也能进来交易
-债卷化就是把承诺关系变成合同的，原本的关系就是我借你钱，你到期还给我，债卷话就是把承诺写死，把未来的现金流变成一张可以买卖的纸
-证券化就是把杂乱的未来打包，现实关系是
+The reason a person is a person is not ability, but the capacity to interrupt
 
-- 房贷
 
-- 学贷
+<!--memo:30f7c0ea7e3b-->
+### In a High-Quality Short Drama, the Feeling of Not Being Ready for Life
 
-- 信用卡
+> 2026-01-25 20:31:15
 
-- 租金
+I watched a short drama, "Midsummer Fendela"
 
-- 版权收入
+It is a high-quality short drama
 
-把一堆零散、低流动性的未来现金流
-打包 → 分层 → 标准化 → 卖给市场
-金融本身就不创造真实的价值
-创造的是控制权和选择权的重排
-把生活世界中的东西拿出来进入博弈世界，就开始有杠杆、预期、恐慌、模型
+There is a large amount of time in life that is not used for making decisions, but for feeling the state of not yet being ready
 
-`#格物/金融`
 
----
-
-### 世人过于在意结局，高级理性是内外一致
-
-> 2026-01-26 18:13:24
-
-突然想到大部分的人
-好像过于在意人生的结局了，过于在意别人的评价，过于害怕失败的结果了
-高级理性不是更复杂，但是更干净了
-内外高的一致性
-提前演算风险、反复训练、在行动前就把退路问题解决掉
-等到真正开始时，只剩执行
-
-`#格物/攀岩`
-
----
-
-### Alex Honnold 零容错挑战，训练将恐惧压缩到极限
-
-> 2026-01-26 18:08:49
-
-Alex Honnold
-这次徒手攀爬的是台北 101 
-还记得他爬过的花岗岩，接近九百米高的巨墙
-一步踩空，没有“补救机制”，结局只有一个版本
-我一直觉得这种运动几乎就是高风险赌博运动
-但是他确把容错率压到零，通过不断的训练
-他在面对高度与危险时，杏仁核（恐惧处理中枢）反应显著偏低，但是大部分的人会被恐惧淹没
-有些人一生都在扩展安全区，有些人选择把安全区缩到无限接近零
-人在“零容错”条件下，是否能靠训练把恐惧、注意力、身体控制压缩到极限？
-把人的潜能极致的发挥出来
-就像深海潜水或太空行走——不是全民项目，但会改变我们对“可能性”的理解
-
-`#格物/攀岩`
-
----
-
-### 讨好型人格的安全错觉与真实需求
-
-> 2026-01-26 18:00:18
-
-讨好型人格
-有些人感觉过于喜欢夸赞别人
-只要我让别人舒服，我就是安全的
-但是实际上可能他们表面上很好说话，但是真实状态可能是高度扫描他人的情绪，对自己的情绪迟钝的
-他们不是真的无欲无求，而是不敢为欲望承担关系的责任
-讨好并不能换来真正的被爱，只能换来“被需要”
-
-`#格物/人格`
-
----
-
-### 环境对个人状态的决定性影响
-
-> 2026-01-26 14:55:52
-
-我自己是一个受到环境影响比较大的人
-换一个城市、换一个人、换一个作息，我的状态都挺不一样的
-在好的环境里，成长速度呈指数；在差的环境里，消耗也呈指数
-所以我也是深刻的明白选择和构建自我的环境也是非常的重要的
-
-`#格物/环境`
-
----
-
-### 社交泡沫与选择性沉淀的价值观
+<!--memo:5f56c1d710e2-->
+### The Social Bubble and the Value of Selectively Settling Down
 
 > 2026-01-26 12:32:05
 
-突然想到一个很有趣的问题，就是我爸总希望我能够融入各种圈子，就是他所接触到的、他自己很崇拜的那些在各种圈子中混得如鱼得水的人。
+Suddenly a very interesting question came to mind: my dad always hopes I can fit into all kinds of circles — the ones he comes into contact with, the people he admires who move smoothly and easily in all kinds of circles.
 
-但我觉得这一点也很有意思，就是这种社交其实是有泡沫的。对我来说，我并不是很热衷于混各种圈子，因为我自己很清楚这些定位，很多东西是我自己够不着的，我只能选一些自己感兴趣的东西，然后去深挖。
+But I think this is interesting too: this kind of socializing actually has a bubble to it. For me, I'm not very keen on mixing in all kinds of circles, because I'm very clear about these positions; there are many things I can't reach, and I can only pick some things I'm interested in, and then dig deep into them.
 
-还有，混圈子确实挺违背我自己价值观的。我自己也是一个受环境影响非常大的人，很多时候，环境会潜移默化地影响我的角色，会影响我的每一步行动、每一步价值观，甚至每一个思考、每一个想法。
+Also, mixing in circles really goes against my own values. I'm someone very much influenced by the environment; many times the environment subtly influences my role, influences my every action, my every value, even my every thought, my every idea.
 
-所以，我更热衷的是找一些合适的圈子、合适的环境去沉淀自己，而不是被困在任何圈子里，我觉得那样没有意义。
+So what I'm more keen on is finding suitable circles and suitable environments to settle myself in, rather than being trapped in any circle — I think that would be meaningless.
 
-所以不知道我爸最本质的想法是什么，可能是为了面子，也有可能为了形象，有可能是为他自己的某些算计需求，但就我而言，我是真的没有兴趣。
-
-
----
-
-## 2026-01-27 1月27日 周二  (10 条)
-
-### 追逐 AI 热点浪潮，反思人本身珍贵品质
-
-> 2026-01-27 23:34:15
-
-突然想到，现在很多人去追 AI 的热点，去赶 AI 的浪潮。但我更想思考的是，作为一个人，我能做什么？我自身还有哪些珍贵的品质？
-
-有时候会觉得很可惜，看到世界为某一个热点狂欢，我会感到害怕。因为我知道热点是有生命周期的，一旦这个热点冷却，那就意味着它只是一个泡沫。
-
-所以有时候感觉蛮难受的，我想参与这场“游戏”，但还没找到自己的方向是什么。
+So I don't know what my dad's most essential idea is; maybe it's for face, maybe for image, maybe for some calculating need of his own, but as far as I'm concerned, I really have no interest.
 
 
----
-
-### 烤火与暖气的直觉，仪式感唤醒生物记忆
-
-> 2026-01-27 17:54:50
-
-直觉问题
-冬天在家里开暖气更舒服，还是在家里烤火很舒服
-身体舒服 → 暖气
-心里舒服 → 烤火
-火是原始的、偏心的、局部的。你得围过去，得调整姿势，得把手翻面。它不是在照顾你整个身体，而是在和你发生关系。火焰跳动、木柴噼啪、红光映脸，那是一种写进人类几十万年记忆里的安全感。烤火舒服的不是温度，是参与感和仪式感
-人天然喜欢围炉夜谈，这是刻在生物记忆的安全感
-晚上、聊天、放空、发呆 → 很适合烤火
-突然想起老一辈的人家不喜欢科技，偏偏喜欢一点点的火星点点
-如果一个冬天完全没有围着火发过呆，那这个冬天是有点浪费的
-
-`#格物/观察`
-
----
-
-### iPhone 直觉交互设计，锁屏与控制中心
-
-> 2026-01-27 17:49:56
-
-iphone 目前最符合人的直觉的就是几个能力
-屏锁、正一屏、负一屏、控制中心
-
-`#格物/ios`
-
----
-
-### 用户回归简单，高频场景去 App 化趋势
-
-> 2026-01-27 13:28:55
-
-越来越多的人开始回归简单
- 用户更少主动的打开 app，更多在通知、锁屏、语音、系统入口完成任务
-操作系统在持续给“非 App 入口”加权
-更强的通知交互、更显眼的系统态入口、更少摩擦的快捷执行
-大量产品把“关键价值”前移到通知 / Widget / 场景触发里
-APP 感觉是计算机时代的产物
-现在的人好像越来越追求自己的完整性，人的时间越来越碎片化，被触发的
-大多数时候，人只愿意付出 1 次注意力，而不是 5 次点击
-
-- 高频、低复杂、强场景 → 去 App 化
-
-- 低频、高复杂、强探索 → 仍然需要 App
-
-`#格物/AI`
-
----
-
-### 上下文腐烂现象，长文本信息利用率下降
-
-> 2026-01-27 12:02:47
-
-上下文腐烂
-“上下文腐烂（Context Rot）”可以把它想成：你往模型嘴里塞的“记忆/材料”越多，它反而越容易“走神、抓错重点、忘掉目标”，输出质量在长上下文里变得不稳定甚至崩坏。它不是“模型不会读长文本”，而是“长文本里可用信息的有效利用率下降”
-
-- 注意力稀释：同样一个问题，短上下文答得很准；材料一多就开始抓边角料、忽略关键about 束。
-
-- 中间遗忘（Lost-in-the-Middle）：相关证据放在文本中间时最容易被漏掉；开头/结尾反而更容易被用上。
-
-- 指令漂移：对话越长，越容易偏离最初目标；“你刚刚说要 A，怎么突然开始讲 B？”
-
-- 自相矛盾上升：长对话里同一事实被改写多次，模型会挑一版“看起来顺眼的”当真。
-
-- 幻觉更隐蔽：不是胡说八道那种，而是“引用了看似合理但其实不存在于上下文的细节”。
-
-注意力是软选择，不是硬检索
-
-`#格物/AI`
-
----
-
-### 元能力比知识重要，构建系统比积累体系重要
-
-> 2026-01-27 11:36:21
-
-元能力
-学习学习的方法远远比学习知识更重要
-构建一个顶级的个人的系统远远比自己已经有多少体系更重要
-
-
----
-
-### 父母关心琐事，代际尺度差异与注意力稀释
-
-> 2026-01-27 11:19:57
-
-父母总是在关心一些小的事情
-那些小的事情我甚至都觉得没那么重要的
-有时候很无奈
-感觉自己和他们，像是运行在完全不同的两个尺度
-我关心的是
-
-- 方向对不对
-
-- 人生是否自洽
-
-- 是否在积累长期能力
-
-- 世界结构、系统性风险、可能性空间
-
-而他们关心的是：
-
-- 眼前是否安全
-
-- 今天有没有出错
-
-- 有没有被忽略
-
-- 有没有“像一家人那样运转”
-
-感觉这样很累，注意力被稀释掉了
-再比如说他们会过度的在意某些事情，以至于会对抗，但是我觉得应该给予足够的空间，通过合适的系统保证事情自然而然的运作
-允许他们在意自己的小事情很重要，哪怕是琐碎、唠叨的小事，而成长，往往意味着不再把这些形式当作真理
-
-`#格物/成长`
-
----
-
-### 迷惘时先过好生活，自律松弛是答案
+<!--memo:8e8cbac55ac1-->
+### When Lost, Live Life a Bit Better First; Discipline and Ease Are the Answer
 
 > 2026-01-27 10:20:54
 
-在迷惘的时候，不知所措的时候的，没有方向的时候
-不如先把自己的生活过好一些，自律一些，松弛一些
+When you're lost, when you don't know what to do, when you have no direction
 
+You might as well live your life a bit better first, a bit more disciplined, a bit more relaxed
 
----
 
-### 打造 AI 克隆体，标准化输出解放劳动力
+<!--memo:295bc335ebc4-->
+### Sitting by a Fire vs. the Heating: Ritual Awakens Biological Memory
 
-> 2026-01-27 10:11:55
+> 2026-01-27 17:54:50 · `#格物/观察`
 
-如何让自己拥有无数个  AI 克隆体？
-不断的表现自己，输出自己，标准化自己
-然后就可以把那些简单的繁琐的任务交给 AI 了
-他们就能不断的去工作，创作了
-就解放了自己的劳动力
+A question of intuition
 
-`#格物/ios`
+In winter, is it more comfortable to turn on the heating at home, or to sit by a fire at home?
 
----
+Body comfortable → heating
 
-### iPhone 多桌面模式，场景化空间扩展直觉
+Heart comfortable → a fire
 
-> 2026-01-27 09:55:26
+Fire is primitive, partial, local. You have to go over to it, adjust your posture, turn your hands over. It isn't taking care of your whole body; it's entering into a relationship with you. Flames flickering, firewood crackling, red glow on your face — that is a kind of safety written into tens of thousands of years of human memory. What's comfortable about a fire isn't the temperature, it's the sense of participation and ritual
 
-iphone 的多桌面模式
-横向扩展空间
-其实多屏模式很适合用户的直觉体验，就是场景
-你不用理解 App 在哪一层，但你得记住“它大概在第几屏”
-可以轻松的分多个类型的屏幕，构建自己的环境，工作环境和娱乐环境
-后面又有了 App Library
-尤其是现在的 APP 数量的爆炸，大量的临时 APP 出现，导致问题就不仅仅是找不到 app ，而是桌面本身成为了垃圾场
+People naturally like to sit around the fire and talk at night; this is a sense of safety engraved in biological memory
 
-- 多桌面 → 用户主导
+Nighttime, chatting, spacing out, staring blankly → very suitable for a fire
 
-- App Library → 系统主导
+Suddenly I think of the older generation, who don't like technology and instead prefer a little bit of sparks
 
-`#格物/ios`
+If a winter goes by without ever spacing out around a fire, then that winter is a bit wasted
 
----
 
-## 2026-01-28 1月28日 周三  (23 条)
+<!--memo:27bd4828cb0f-->
+### Higher Emotional Frequency at Home: Reflecting on Generational Anxiety
 
-### 过去美好经历与当下分享能力的时域错位
+> 2026-01-28 11:20:55 · `#格物/观察`
 
-> 2026-01-28 22:40:31
+Daily emotions are few, but at home the frequency of emotion increases; I feel there's a problem with this
 
-其实看了看自己过去非常多美好的经历，我觉得挺遗憾的，当初没有好好地分享出来。
+Speaking of Mom, people of their generation believe the world is unstable, uncontrollable, and resources can be cut off at any time
 
-因为当初的我，可能配不上当初那些美好的经历。当初的我，并没有那么坦然，并没有那么真诚，也并没有那么自强。
+Worrying seems to be a kind of survival strategy
 
-现在有了分享的能力，这种行为是可以自洽的，但又没有当初那么好的经历了
+So there are some things that look very helpless to me
 
-`#格物/回忆录`
+In my eyes they are extremely low-probability, extremely high-cost anxieties, yet they appear in Mom's heart
 
----
+They seem more afraid of losing?
 
-### 科技带货主播呈现产品人社会关系方向
+Their nervous systems, strengthened by a lifetime of training, may have become fixed this way
 
-> 2026-01-28 22:16:44
 
-我觉得可能后面会有一个方向，就是做短视频的方向，那就是科技的带货主播。
+<!--memo:5af6a3608723-->
+### If I Believe I Can, Then I Definitely Can, Beyond Environmental Limits
 
-但这个科技带货主播一般都是凭借自己的原生体验去尝试各种科技产品，然后把它们运用在现实的某一些环节或者场景中，然后把这个场景呈现出来。
+> 2026-01-28 12:22:17
 
-我觉得这样是非常有趣的，因为这样产品和人之间的关系，以及人和社会之间的关系、科技和社会之间的关系，就会达到一些非常高的切合度
+If I feel I can, then I definitely can
 
+This kind of can can go beyond the environment
 
----
 
-### 上海杭州深圳广州四城的不同气质定位
+<!--memo:47ff9082d312-->
+### Body Temperature Is a Kind of Thinking; the People Around Me Are Good at Asking Questions
 
-> 2026-01-28 22:04:56
+> 2026-01-28 15:15:29
 
-上海是一个很有趣的城市。怎么说呢，我觉得如果一定要在中国选一个自己最爱逛街的城市，那一定是上海。但如果说最喜欢生活的城市，那可能是杭州；最适合工作的城市，那可能是深圳南山。
+Body temperature is a kind of thinking, but very few people really do this
 
-我是 2024 年 4 月去的上海，那时候也是我和大兹第一次见面，他邀请我去了上海。上海给我的感觉是非常小资，非常 chic，街上每一个人都让我觉得很有意思。街道的高度恰到好处，环境给人的感受非常不一样。上海的小居民，给我一种生活的气息，我觉得很惬意。在深圳，那些高楼大厦会给我一种渺小感，这两种感觉是非常不同的，认真体会一下，不同城市带给我的是截然不同的体验。
+Observing the characteristics of the group of people around me
 
-广州的话，我觉得就是一个适合生活的城市。北京就感觉太大了，是政治中心，太官方了，一切还是以形象为主。哎，我觉得上海的这种小资气息真的很有趣。
+They are a group of people who are good at asking questions
 
 
----
-
-### 新加坡以优质制度设计成就顶级国家
-
-> 2026-01-28 21:57:05
-
-我很喜欢新加坡，我觉得它是一个非常有意思的国家。准确来说，它的国土面积非常小，国家管理者就像是一个公司的管理者，像一个 CEO 一样。
-
-我觉得这个国家设计得非常精巧，因为它证明了一个问题，哪怕在原始条件不够、资源匮乏的情况下，凭借良好的制度和运作体系，也能发展成为世界顶级的国家。所以，新加坡凭借自身优质的制度、体系化的结构和系统化的能力，设计出了这样一个国家，方方面面都让我特别惊喜。
-
-我去了之后，第一感觉就是这个国家很新，城市面貌崭新，而且整个城市有非常多的人文景观，我超级喜欢。另外，它的樟宜机场也是全球最热门、最大的机场。在我看来，即便现在的深圳，也没有达到新加坡的程度，中国在这方面的学习空间还非常大。
-
-
----
-
-### 年首次出国吉隆坡的好奇与震撼
-
-> 2026-01-28 21:52:59
-
-记录一下，我想起来 2024 年 2 月 25 日，那是我第一次出国，当时应该是大四上半学期。突然反应过来，其实自己出国也没有多久，第一次出国就在两年前，那时我还大四。
-
-我记得那时候心情很澎湃，非常有激情，第一次飞到异国他乡，在一个语言和文化都很陌生的地方，一切都显得特别有趣，我充满了好奇心，感觉原来外面的城市是这样子的。
-
-那时候我第一站到的是吉隆坡，吉隆坡的天气总是变幻莫测。那座城市很新，天上的云彩很好看，朵朵白云飘在天上，晚上还能看到日落，和国内大陆的城市很不一样，国内大陆的城市雾蒙蒙的，我很喜欢那边的城市。
-
-当时我背着电脑去的，感觉那边有很多远程工作者，他们好像还有一些数字游民（digital nomad），在那边远程办公，我觉得真的很酷，我瞬间就喜欢上了这样的状态，觉得大家这样生活很好。
-
-那边还有各种在国内没吃过的美食，我记得有一个特级菜园鸡饭。吉隆坡有华人区，华人区里面有很多华人美食，感觉他们做得很认真，把中国很多传统美食也带过去了，真的很有趣。
-
-当时还赶上了中国新年，那边还有一些过年的氛围余热，我每天都想出去看一看，到处逛逛（city walk）。
-
-
----
-
-### 曾国藩反思调试产生正循环的成长路径
-
-> 2026-01-28 20:47:01
-
-发现曾国藩从最开始中举，以及到后面入翰林之后想要去当圣人，这两次让他发生一些比较大的改变，都是因为他对于现状的不满意，他深刻地反思、自我反省，最终不断地调试，找到适合自己的方法，然后一路开挂。
-
-这种反思非常有必要性，我觉得这对每一个人来说都是非常有必要的。因为有反思，所以才会有一个具体的目标；因为有了目标，所以才会为这个目标而付出一系列努力，比如说换一个环境，或者是做出一系列的行动。
-
-但是这种环境和这种行动往往就会潜移默化地去影响自己，也就是说会改变自己，改变自己的立场，就会让自己有不一样的身份感。然后这种不一样的身份感又会促使自己有新的想法、新的目标，然后有新的行动，就产生了一种正循环。
-
-这就是人在潜移默化的时候，也就是他的一个成长、一个进化。
-
-
----
-
-### 往事如水流，人来即去又匆匆
-
-> 2026-01-28 19:54:06
-
-往事如水，人来即去
-人走成往事，事沉入心底
-往事匆匆，不过人间一程相逢
-
-`#格物/回忆录`
-
----
-
-### 成都行与川西记忆，两年前的人生路口
-
-> 2026-01-28 19:46:22
-
-上一次去成都是两年前，2023年12月21日
-第一次走过川西，那时候也是第一次爬过两座雪山
-那时候好像带着一些期待，因为距离毕业好久，但是手头也有 offer ，但是也想过创业，AI 风口出现没多久，很多的敏感的人意识到这个机会，开始蠢蠢欲动
-
-`#格物/回忆录（整理相册中）`
-
----
-
-### 夜爬初遇 archer，台灯照亮友谊起点
-
-> 2026-01-28 19:46:21
-
-⚠️ This MEMO is a copy of the one generated by the sync conflict
-————
-
-2023 年，第一次和 archer 相遇，在河源市
-那天我第一次尝试夜爬，没有经验，小白一枚，匆匆忙忙提前报了一个小团
-那年刚上大四，archer 也还在努力工作，我们认识了
-因为那天晚上没有带头灯，但是 archer 很细腻，有台灯但是照了我全程
-我们的友谊就一直的维持下去了
-archer 家里养了两条小狗，特别好玩，我超级喜欢和他们家的小狗玩玩
-archer 人非常的棒，我非常的欣赏的一位跨领域的从业者，善于思考和反思，待人真诚细腻
-因为这样的一段特殊的经历，友谊维持，不是频率，而是友谊这条线的两个点，以及他们的起点 ...那个 1
-
-`#格物/回忆录（整理相册中）`
-
----
-
-### 特殊经历维系友谊，起点比频率更重要
-
-> 2026-01-28 19:31:36
-
-2023 年，第一次和 archer 相遇，在河源市
-那天我第一次尝试夜爬，没有经验，小白一枚，匆匆忙忙提前报了一个小团
-那年刚上大四，archer 也还在努力工作，我们认识了
-因为那天晚上没有带头灯，但是 archer 很细腻，有台灯但是照了我全程
-我们的友谊就一直的维持下去了
-archer 家里养了两条小狗，特别好玩，我超级喜欢和他们家的小狗玩玩
-archer 人非常的棒，我非常的欣赏的一位跨领域的从业者，善于思考和反思，待人真诚细腻
-因为这样的一段特殊的经历，友谊维持，不是频率，而是友谊这条线的两个点，以及他们的起点 ...那个 1
-
-`#格物/回忆录`
-
----
-
-### 父母沉迷字节三件套，风水轮流转
-
-> 2026-01-28 19:05:28
-
-看爸妈现在沉迷于字节三件套
-想起自己小时候沉迷手机
-风水轮流转啊
-
-
----
-
-### 日本足球培养人，中国足球追求成绩
-
-> 2026-01-28 17:58:56
-
-日本足球是“为长期培养人而存在的系统”
-中国足球更像“为短期成绩服务的工程项目”
-在日本，足球是一条社会化路径：
-小学 → 中学 → 高中 → 大学 → 职业队，像一条铺好的轨道
-教练知道自己这一段要干什么：不是培养梅西，而是培养“能继续往下走的人” 
-所以他们会关心这个孩子配不配合等等
-日本足球的底层信念是：
-“人是可以被训练出来的”
-哪怕天赋一般，只要体系对，时间够，就能成为合格球员
-所以他们尊重基本功、位置感、纪律性
-看起来不炫，但稳定
-
-`#格物/足球`
-
----
-
-### 人生需要方向结构，探索期轻拿轻放
-
-> 2026-01-28 17:55:17
-
-不一定是目标，但是一定是需要一个方向结构的
-人几乎不可能在没有“方向结构”的情况下长期活着
-目标天然是需要的场景：
-
-- 资源稀缺：要活下去，要上岸，要脱贫
-
-- 任务明确：考试、项目、里程碑
-
-- 时间有限：deadline 本身就是目标制造机
-
-目标有些时候很有用，尤其是在方向不明确的时候，需要稳住行动，行动是尤其重要的
-在探索期的时候，就要轻拿轻放
-
-`#人生/成长`
-
----
-
-### 你得不到只因不够想要，拥有只因离不开
+<!--memo:47e71dd488f4-->
+### You Don't Have It Because You Don't Want It Enough; You Have It Because You Can't Live Without It
 
 > 2026-01-28 15:50:26
 
 The only reason that you don't have what you want is because you didn't really want it.
-你之所以得不到你想要的东西，唯一的原因是你其实并不想要它。
+The only reason you don't get the things you want is that you actually don't want them.
+
 The only reason that you have the thing that you do is because you couldn't live without it.
-你之所以拥有你所拥有的东西，唯一的原因就是你离不开它。
+The only reason you have the things you have is that you cannot live without them.
+
 And, the only reason that you are where you are is because somewhere within, it is OK to be there.
-你之所以身处此地，唯一的原因是你内心深处觉得待在这里是可以的
+The only reason you are where you are is that deep down inside you feel being here is acceptable
 
 
----
+<!--memo:31f29e5e7598-->
+### My Parents Are Addicted to the ByteDance Trio; the Wheel Turns Around
 
-### 体温是一种思考，身边人擅长提问
+> 2026-01-28 19:05:28
 
-> 2026-01-28 15:15:29
+Seeing my parents now addicted to the ByteDance trio
 
-体温是一种思考，但是很少有人会真的这么做
-观察我身边的那群人的特征
-他们是一群擅长提问的人
+I remember being addicted to my phone when I was a kid
 
+The wheel turns around
 
----
 
-### 生活目标决定思维层级，过程享受需目标正确
-
-> 2026-01-28 15:15:01
-
-你想要什么样的生活的
-就必须要存在对因的特定的心智层级之中
-人的思维会随着时间的推移经历可预测的阶段而发展
-当你出生时，你就像一块小小的生存海绵，吸收着你能得到的一切信念（这些信念很大程度上受到你的文化的影响），以便感到安全和有保障
-衡量智力的唯一真正标准就是你是否能实现自己的人生目标
-目标决定了我们如何看待世界
-可以享受过程，前提是最开始追求的目标是正确的
-对大多数人来说，这些目标是别人强加给他们的，就像代码一样被预先设定在你的潜意识里
-
-`#人生`
-
----
-
-### 改变视角设定目标，行动强化想法而非现状
-
-> 2026-01-28 14:47:10
-
-如果你说你想辞掉那份没有前途的工作，但却没有任何真正的理由继续待在那里，你可能会开始认为自己没有足够的勇气，或者你从来就不是一个“冒险者”，但事实是，你追求的是安全感、可预测性，以及一个不让自己在生活中其他同样从事着没有前途的工作的人面前显得失败的借口
-我们真正改变的真的是现状吗？ 不是，而是自己的目标
-改变自己的视角，设定一个目标，目标是对未来的一种展望
-它就像一面透镜，让你能够注意到那些有助于你实现目标的信息、想法和资源
-人是如何强化想法的，这是非常的可怕的，无论是通过什么样的方式，无论是来自你自己、你的老师、你的父母、朋友、广告，还是任何其他来源——并且，如果你坚信这个想法是正确的，那么它对你的影响就如同催眠师的话语对被催眠者的影响一样
-这也是我们如何成为的自己，我们如何成为明天的自己，这也是我们的身份的构成
-
-- 我们要完成一个目标
-
-- 我们要寻找身份感前进
-
-- 我们会注意到学习的重要的信息和想法
-
-- 重复行为、直到变成自动的、无意识的（条件反射）
-
-- 这种行为会变成自己认知的一部分（我是那种人）
-
-- 你捍卫自己的身份为维持心理一致性
-
-- 你的身份认同会塑造新的目标，从而重新开始循环；如果这种身份认同不利于美好生活，情况就会迅速恶化
-
-所以我们都会有强烈的身份认同感
-当我们的身份认同受到威胁的时候，就会发生各种的事情
-
-`#人生/成长`
-
----
-
-### 我相信我可以，就能超越环境限制
-
-> 2026-01-28 12:22:17
-
-我觉得我可以，我就一定可以
-这种可以是可以超越环境的
-
-
----
-
-### 改变行为推进目标，改变本质自然跟随
-
-> 2026-01-28 12:22:04
-
-改变你的行为以朝着目标取得进展
-改变你的本质，让你的行为自然而然的随之改变
-大多数人设定一个肤浅的目标，给自己打气，让自己在前几周保持自律，然后就毫不费力地回到老样子，因为他们试图在一个腐朽的根基上建立美好的生活
-如果我不觉得好玩，那我为什么要做我正在做的事情呢？
-如果你想完成某一个任务，就需要创造这样的任务的生活方式，也就是一个系统
-只相信行动。生活发生在事件层面，而非言语层面。相信行动！
-行动会改变一个人，而不是思考或者想法
-
-`#格物/改变`
-
----
-
-### 结合自我理解，构建适合的工作流
-
-> 2026-01-28 11:44:29
-
-结合自己的需求，自己对自己的理解，构建一个适合自己的工作流很重要
-
-
----
-
-### 行业是否低估三维世界难度，机器人落地需时日
-
-> 2026-01-28 11:31:49
-
-现在的行业是否过于低估三维世界的难度
-投资者和行业报告会经常报告一些机器人商业化走向的更真实的落地，比如说仓库物流、工业生产等场景的订单和部署
-李飞飞报告机器人可能还要二十年或者更久才能进入大规模日常生活应用
-第一阶段已经在发生，在受控场景的应用，包括固定空间里的清洁、配送、陪护，还有养老院这些，这个空间被工程化的，人类被规训的，机器人很聪明
-第二阶段是家庭边缘渗透，估计还需要五到八年，你不会买一个“通用机器人”，你会买一个会动的清洁出售，厨房助手，这些是比较稳定的
-第三阶段是真正的日常机器人，如果世界不发生重大断裂，8–12 年是更合理的窗口，家庭空间被重新标准化（像 USB 一样），人类愿意为“可预测的机器人行为”改变习惯，法规、保险、责任体系成熟
-机器人了解物理世界很难，但是人类愿意接受不完美但便宜且稳定的机器人是非常快的
-
-`#格物/AI`
-
----
-
-### 在家情绪频率增高，代际焦虑差异反思
-
-> 2026-01-28 11:20:55
-
-日常的情绪很少，但是在家情绪的频率增大了，感觉这个是有问题的
-谈妈妈，在他们那一代的人，认为世界是不稳定、不可控、资源随时会断的
-担心仿佛就是一种生存策略
-所以有一些自己看上去很无奈的事情
-在我眼里是概率极低、成本极高的焦虑但是却出现在妈妈的心里
-他们好像更害怕失去？ 
-他们的神经系统经过一辈子的训练强化，可能被固化为此
-
-`#格物/观察`
-
----
-
-### 对数法则解释时间感知，童年漫长成年匆匆
-
-> 2026-01-28 00:34:27
-
-对数法则，人的感受是相对对的，而不是绝对的
-所以有时候换一个是去上某一些问题，比如说想自己的人生可能并不是会去思考自己瞬间过了多少年，或者是已经还有多少年说感官上，我觉得自己的人生过了百分之多少呢？
-所以这个也是为什么小时候的暑假那么漫长，但是现在感觉时间过得好快，一年一年匆匆一年又过去
-所以又为什么就能感觉到，在我们10岁的时候，我们的一年也就是我们人生中的十分之一，但是在我们50岁的时候，我们的50分之一我们的生命就突然流失的很慢
-虽好也就理解了我为什么在户外会是一个人呆了那么久之后，我不是很喜欢在商场上和一堆人相处。就是因为我们的生物进化它本身就不是线性的，以至于就是我刻可以调节我自己的感知能力了，在环境比较安静的地方，我会提高自己的感觉能力，但这种能力如果是在人流量巨多的商场就会成为负担
-现在这个时代，人们的专注力都被一些头部的给垄断了
-所以去寻找那些和自己爱好匹配，并且能产生富力效应的事情，然后 all in
-与其在10个领域做到60分，还不如在一个领域做到90分
-
-
----
-
-## 2026-01-29 1月29日 周四  (14 条)
-
-### Clawdbot 丝滑融入工作流的辅助增强体验
-
-> 2026-01-29 21:33:17
-
-Clawdbot 使用体验和思考
-我体验了一下，我觉得是可以丝滑的融入到我的工作流，不是一种替代性工具，更像是作为一个辅助增强型的，我挺喜欢这种类型的
-作为以前的那些需要通过 chatgpt + operate 的工作很适用，比如说写一些夜间的脚本代理，这种很方便，虽然现在的很多产品 agnet 调度也可以做到，但是感觉操作的路径太多了， 这个是可以和平常常用的一些工作流工具协作
-我用obsidian-cli整合了一下Moltbot，我觉得好适合做深度创作
-
-
----
-
-### 哔哩哔哩与抖音的消耗品娱乐品本质
-
-> 2026-01-29 18:56:28
-
-哔哩哔哩和抖音的本质是消耗品和娱乐品
-他们的目的最本质的需求是一样的
-
-
----
-
-### 苏美尔人用原始材料创造城市与文字
-
-> 2026-01-29 16:33:38
-
-苏美尔人是想留下什么的
-这里没有天然屏障，没有石头，没有森林，只有河水、泥巴和太阳。于是苏美尔人用最原始的材料，造出了最不原始的东西：城市
-他们发现了城市，有城邦，有城墙、有神庙、有仓库、有市场，这里是发现而不是发明，因为观察其他国家的人类这个物种的趋势，也会自发的组织为一个城市
-他们发明了文字
-最早不是为了写诗，而是为了记账：
-“今天入库多少麦子”“这个奴隶是谁家的”
-这就是楔形文字的起点
-文明一旦能写下来，就拥有了外置大脑
-记忆不再靠老人，而靠泥板
-他们也发现了神权政治，每一个城邦都有自己的主神，城的合法性来源于神庙
-但苏美尔的致命问题也在这里：他们是城邦文明，不是国家文明
-也就导致了相互之间也会打架，他们很聪明，但是没有组织更大的政治体，于是他们被更擅长“整合”的民族接管
-神庙是作为最大的仓库
-粮食、羊、啤酒、枣子、布料都会集中到这里。
-接着由神庙按身份再分配：
-给工匠口粮
-给士兵口粮
-给修水渠的人口粮
-给祭司口粮
-解决了他们的分工问题
-符合达尔文的演变过程，聚集是节能的，分工是不可逆的，记忆外包是必然的 ...
-
-`#格物/世界历史`
-
----
-
-### 巴蜀文化的神权特征与青铜器夸张刻画
-
-> 2026-01-29 15:58:46
-
-巴蜀文化过去说到底也是神权文化
-所以有大量的青铜器都是对神灵形象的刻画
-其中最显著的特点就是夸张化
-
-
----
-
-### 环境变化时差异化过大的身体适应警示
-
-> 2026-01-29 15:09:24
-
-有时候换一个环境的时候需要谨慎
-环境的差异化最好不要太大
-环境的差异化变化但是个人的习惯的差异化一定不要过大，因为身体需要适应
-比如说以前广东用的冷水刷牙洗脸，回来后刷牙的水如果不是燃气热水器放的水的话就会超级冰，会导致牙本质敏感被激活
-并且热水洗脸，本身带有一定的高刺激，对皮肤是不友好的
-
-`#格物/知我`
-
----
-
-### 苏美尔与巴比伦的政治结构与管理升级
-
-> 2026-01-29 14:49:53
-
-苏美尔文明
-苏美尔人发明了城市、文字、神庙经济，但他们的政治结构很脆：
-城邦多、内斗多、神权强、王权弱
-像一群技术天才，却没发明“公司制度”
-巴比伦登场了，他带着解决那时代问题的方法，管理学升级
-你可以把汉谟拉比看成一个非常早期的“国家产品经理”。
-他的核心问题是：
-当城市变多、职业变多、交易变多，
-如果还靠“谁拳头大谁说话”，
-这个系统会崩。
-农民要知道：被贵族抢地怎么办？
-商人要知道：借钱不还怎么办？
-工匠要知道：房子塌了算谁的责任？
-祭司要知道：神的权威怎么和王的权威对齐？
-于是出现《汉谟拉比法典》
-重要的不是“以眼还眼”
-而是这件事本身：
-法律第一次从“神的私语”变成“刻在石头上给所有人看”
-于是人类历史上第一次出现一套公开的规则
-如果医生手术失败砍手
-如果建房塌了压死人要赔命
-如果借贷不还要如何处理
-文明进步了
-
-`#格物/世界历史`
-
----
-
-### 公元前两千年大河文明与权力融合模式
-
-> 2026-01-29 14:47:56
-
-想象公元前2,000年至公元前1,400年
-那时候的信息传播速度≈马的速度
-所以文明的巅峰一定围绕着大河和粮食展开：谁能稳定产粮，谁就能养军队、搞祭祀、修城市
-所以龙耕时代领导人往往是可以治理水患的
-在中国，中原是夏→商的过渡期
-青铜铸造已经极其成熟，祭祀、王权、武力三位一体
-商代的青铜器在当时属于技术奢侈品级别
-意味着：中国的优势在于“军权+宗教权”绑定得很牢
-如果评“暴力与神权融合度”，商很高
-
-`#格物/历史`
-
----
-
-### 未经验证的理论方法如海市蜃楼般虚幻
-
-> 2026-01-29 14:40:56
-
-如果自己都没办法验证自己是行得通的
-那么这套理论和方法指南在这个世界上也仿佛就是海市蜃楼
-
-
----
-
-### 外部剧本剥夺主体性导致阈限停滞状态
-
-> 2026-01-29 14:33:03
-
-当个体处于“剧本”中时，由于目标是由剧本 外部赋予（Extrinsic Motivation） 而非内部生成（Intrinsic Motivation），大脑的奖励机制——主要是多巴胺系统——无法被有效激活。这种状态导致了科所描述的 “阈限状态”（Limbo） ：一种既非完全失败也非真正成功的停滞感，个体在这种状态下感到迷茫、焦虑且缺乏动力 
-剧本的问题在于剥夺了人的主体性
-
-
----
-
-### 故宫作为安稳稳定却丧失自由的代名词
+<!--memo:33ea348d0947-->
+### The Forbidden City: a Synonym for Safety and Stability That Costs Freedom
 
 > 2026-01-29 14:10:18
 
-顾问给我的感觉，我没有那么喜欢。故宫很冠冕堂皇，它是上一个时代繁荣的遗留梦境。我觉得故宫属于明清两代的皇亲贵族，他们两百多年间的呼吸至今已成了 600 多年的梦。
+The Forbidden City gives me a feeling I don't like so much. The Forbidden City is very grand and dignified; it is the leftover dream of the prosperity of a previous era. I think the Forbidden City belongs to the imperial relatives and nobles of the Ming and Qing dynasties; their breathing over more than two hundred years has by now become a dream of more than 600 years.
 
-不知道有多少被选进来的达官贵人，也不知道有多少被选进来的宫女。“一入宫门深似海”，他们这一辈子都被这高高的围墙围住了。
+I don't know how many high officials and nobles were selected to come in, and I don't know how many palace maids were selected to come in. "Once you enter the palace gate, it's as deep as the sea"; their whole lives were enclosed by these high walls.
 
-所以我觉得故宫是一个很好的代名词，它代表了安稳、安全和稳定，但也让人失去了很多，比如自由。入宫的宫女能够解决基本的温饱问题，能够摆脱贫寒，还能给家里补贴费用，但是她们一辈子都献给了这红墙里。
+So I think the Forbidden City is a very good synonym: it represents safety, security, and stability, but it also makes people lose a lot, such as freedom. Palace maids who entered the palace could solve their basic food and clothing problems, could escape poverty, and could also subsidize their families, but they gave their whole lives to inside these red walls.
 
-结合我自己的经验，作为现代人，我对此很感慨。
+Combining my own experience, as a modern person, I feel very moved by this.
 
 
----
+<!--memo:c9844ac02c3b-->
+### The Theocratic Character of Ba-Shu Culture and Exaggerated Bronze Depictions
 
-### 港股交易单位多样性和碎股市场机制
+> 2026-01-29 15:58:46
 
-> 2026-01-29 11:26:23
+Ba-Shu culture was, in the end, a theocratic culture too
 
-港股的交易单位
-我一直以为交易单位都是 100 起手，原来不是
-很多大盘股、知名公司都是这个规格，看起来最像 A 股
-也很常见的是 500 股一手、1000 股一手，尤其是价格比较低的股票
-还有更少部分的奇葩规格，比如 200 股、400 股、2000 股一手，取决于公司的定义
-包括还有可以买 1 股的，那种叫碎股Odd Lot，要去碎股市场成交
-minimax 是 20 股起手，这相当于把“入场门票”从商务舱改成经济舱，对散户更友好，交易更活跃
+So a large number of the bronzes are depictions of the images of gods
 
-`#格物/投资`
+The most notable feature of which is exaggeration
 
----
 
-### Obsidian 作为 AI 时代最强知识管理工具
+<!--memo:fab6ad65c025-->
+### Bilibili and Douyin Are Essentially Consumables and Entertainment Products
 
-> 2026-01-29 11:15:37
+> 2026-01-29 18:56:28
 
-Obsidian 感觉确实是在 AI 时代最适合的知识管理工具
-扩展性最强的，并且是本地的模型运行的，无限插件，几乎是可以变成你想要的任何的 AI 知识工具
-notion 很适合那些需要远程协同的，需要反复调整的，或者是需要依靠某些模版的，抛开这些场景， 我是不会考虑再用 notion
+Bilibili and Douyin are essentially consumables and entertainment products
 
-`#格物/工具`
+Their purposes, their most essential needs, are the same
 
----
 
-### 教育体系下主体性稀缺与被分配的困境
-
-> 2026-01-29 10:41:41
-
-当下以考试与标准化评价为核心的教育体系里，主体性确实是稀缺资源，而且更容易被“分配”给最顶级那一小撮学生
-主体性是自己对自己的行为非常清晰，对自己认知以及自己的行动很一致
-但现实里的大多数学生，更像是在执行一个外部脚本 ...
-
-
----
-
-### 上海外企工作经历与深层主体性危机反思
-
-> 2026-01-29 10:12:50
-
-想起来去年上海的 working，很多的快乐的时光
-后面毕业季自己去了一家日企
-每天很有趣的是，我身边的同事中午吃饭都是组团去的，吃完饭后总是想去看一下车，试一下车
-因为很有趣的是，外企的年龄结构比较丰富，我在深圳的公司感觉还是偏年轻化的，但是这里感觉接近退休的都有，最年轻的除了我就是毕业五年的男生，所以每一次下班也找不到人的，下班都是很准时的，啊这样的工作日复一日就是 ...
-我觉得我自己面临的问题，更多的好像不是物质层面的问题，物质层面的需求我可以很低，我很确定这一点，并不仅仅是一种情绪意义上的迷茫，而是一场更深层的主体性危机，我想做自己，但是我自己是谁？ 还没找到，但肯定不是当下的自己，从事的自己迷惘，感觉毫无意义，为了某一些东西牺牲自己的生命... 
-当你不知道自己想要什么的时候，没关系，试试思考自己当下的这些是否是自己需要的，以及自己不想要什么，避免即可
-
-`#格物/回忆录`
-
----
-
-## 2026-01-30 1月30日 周五  (36 条)
-
-### 构建百倍 AI 终点的设想
-
-> 2026-01-30 23:20:57
-
-未来我们会有一个能力是现在 100 倍的模型，拥有 100 倍的上下文长度，速度提升 100 倍，成本降低到原来的百分之一，工具调用几乎完美，并且在长时间交互中保持极强的一致性
-
-我们假设的模型的终点，然后…
-我们要构建什么？
-
-
----
-
-### AI 时代真实记录的价值
-
-> 2026-01-30 23:18:24
-
-我觉得有一个很有趣的事情，就是未来随着 AI 创作越来越火，以及网上泛滥的虚假信息越来越多，我就在想真正宝贵的东西到底是什么？
-
-我想了很久，看了很多方向、很多视频、很多场景，也看到它们是怎样爆火、怎样盈利的。但我觉得我真正想做的是真实，即真实地记录自己，真实地表达所思所想，这是我真正想做的，并且我真的能够持续做下去。除此之外，其他的都不适合我。
-
-而且我觉得在 AI 时代，尤其是未来的 AI 时代，人们可能更在意的并不是某个人生成了某些图片，而是这个图片背后的创作者是谁，以及这个创作者创作的一些真实故事，这些故事很有趣。
-
-
----
-
-### 思考工具决定思考质量
-
-> 2026-01-30 23:04:37
-
-奥特曼说了一句很有意思的话，就是：“我们的思考能力很大程度上取决于我们所使用的工具。”
-
-所以这句话的意思是，我们应该尝试构建一种能让人们产生更好想法的工具。这样一来，人们有了好想法，创作成本自然就会下降，我们也会拥有非常紧密的反馈回路，这有助于我们更快地筛选出好的想法。
-
-我觉得这是一个未来可能性非常高的实验。
-
-后面很多人都会有一个问题，就是当他们面临一大堆 AI agent，甚至处于穿越期时，对面是一个非常智能的智能体，但问题是，他们不知道自己该问什么。
-
-
----
-
-### 通用模型主导未来趋势
-
-> 2026-01-30 23:01:29
-
-我觉得未来随着模型的成本降低，主流方式起码在后面几类。主流方式一定是一个非常强大的通用模型，而不是一个专用模型。专用模型配置在非常特殊的领域，就比如说医疗领域这种对于筛选特别敏感的领域。
-
-但是我觉得对大部分领域来说，人们希望一个模型能做很多事情，不仅仅是让它把文字说清楚，更多是让它能够去理解这个世界，理解多模态信息，包括理解语言、图片、视频等等，所以会有很多要求。
-
-通用模型在各个维度上都能做得特别好，所以它很符合人工智能这种定义。并且，可能在明年，模型的智能成本会降低 100 倍，所以更多人可能关心的是这个模型的速度。
-
-未来可能会有两种趋势，一种是模型的成本大幅度降低，另外一个是模型的速度大幅度提高。
-
-
----
-
-### AI 交互形态的多元可能
-
-> 2026-01-30 22:59:15
-
-我觉得有时候也挺有意思的，就是现在哪怕是 Cloud 的，叫 ChatGPT。它出现之后，下游还衍生出了一些多模态、多架构 AI 的模式，但我觉得 AI 它一定不是最重要的形态。
-
-我在想最终的形态是什么样子的，我猜测可能也取决于未来人们的一种使用习惯。未来人们到底是更希望以一种什么样的方式接触呢？我觉得这种形态不可能只是看我们自己想明白，而是去观察人类在这个过程中怎么样去使用。
-
-我觉得一定会有人就像在脑电影那样，坐在一堆的屏幕前，然后疯狂地切换操作；也会有人可能只是在语音模式下，然后安静地跟计算机去沟通，他希望自己的注意力被极大地保留下来，就是每小时只说一两句话，然后其他全部交给系统自己处理。他们并不是很想去研究一堆的 AI 教程，也不想被复杂系统所打扰。但他们也会认真思考自己所说的每一句话。
-
-所以我觉得这个时代就是要不断尝试新的路径，世界最终会沉淀到少数的几种主流形态，但我觉得不可能一开始就知道答案。
-
-所以，构建一种工具去帮助大家驾驭这些真正强大的模型，是一件我觉得非常值得做的事情。最起码到现在还没有人能找到真正填补这个落差的工具，但是一定会有一天会出现这样的一款现象级产品。
-
-
----
-
-### 清迈天灯节与拳赛体验
-
-> 2026-01-30 22:02:31
-
-去清迈赶上了天灯节，清迈是一个特别好玩的城市。在天灯节这天，大家都会许愿。
-
-当时我和两个朋友，一个大哥、一个胡姐，我们从清迈的塔佩门出发，一直到郊区去看天灯。
-
-前几天我们还去看了一场泰国拳赛，这是我第一次认真看拳赛。当时是有一个中国留学生发了邀请函邀请我们进去，我们也买了门票。赛场上有中国女子队，她们和一些外国队伍 PK，外国队伍里有欧洲国家的，也有本地学校的队伍。此外，还有欧洲男性之间的拳击比赛，有男赛和女赛，整个赛场很有活力，选手们都是力量型的，能感觉到拳打在身上的力量，很有趣。
-
-天灯节那天，我们坐着双条车，类似于国内老村的三轮，不过三轮里面加了两个板子。我们先去吃了咖喱面，然后出发，在双条车上看到了一场很美的日落。
-
-晚上到了天灯节现场，天灯节有两个场，一个付费场，一个免费场。我们去的是本地人去的免费场，付费场价格挺贵的，好像要 700 多一个人。我们买了一些灯笼，放了天灯，我抓拍了很多照片。当时很多本地人或老外双手捧着天灯，放飞时面带微笑，看起来很和睦、很幸福。天灯一盏一盏绽放在天上，像星星一样一闪一闪，承载着很多人的希望。有些是一家人一起放天灯，可能代表着一家人的团聚，感觉很奇妙、很幸福。
-
-人有了信仰、寄托和期望，天灯就代表着某个人某一年的愿望。把愿望整理出来，塞到天灯里，就有了一种寄托，希望愿望能绽放在空中、飘向远方。这也在一定程度上暗示自己，就像吸引力法则，只要树立了愿望，比如要赚钱、要创造一个东西，明确愿望就是起点。天灯就像梦想的起点，星星之火可以燎原，把它点燃，它会燃烧、扩散，让整个世界变得有意义。
-
-
----
-
-### 曼谷的现代化与割裂感
-
-> 2026-01-30 21:57:06
-
-其实泰国是我第一次出国旅居，当时去的是清迈，现在我到了曼谷，因为落地是在曼谷，所以讲一讲我在曼谷的故事以及所见所闻。
-
-我大概是2024年底的时候去的曼谷，不到12月，应该是11月10号，我从武汉到了曼谷。曼谷这个城市给我感觉很有意思，它也是一个大都市，虽然人口没有中国城市那么多，但是它的基建比较现代化，高楼大厦林立。
-
-曼谷的割裂感挺严重的，虽然比不上吉隆坡，但曼谷有大量普通居民和一些贫民窟，可能某一栋豪宅旁边就是一个贫民窟。这种城市内部的割裂感比较少见，在中国，好歹是分区，或者有城乡差异、各个区之间的差异。但在曼谷，可能稍不注意，这边是写字楼、高楼大厦，旁边可能就是居民楼，附近可能还有一个贫民窟。贫民窟里有大量的Grab司机，还有一些印度人、菲律宾人，以及其他本地人。在我看来，那里挺脏乱差的，这就是曼谷给我的第一印象。
-
-曼谷是一个夜生活丰富的城市。虽然我没有好好逛一下
-
-
----
-
-### 丽江古城的磁场与韵味
-
-> 2026-01-30 21:07:47
-
-丽江其实去得并不是很多，但是丽江给我的感觉很深刻。其实只去过一次，那次大概待了三四天的样子。
-
-我觉得它是一个非常独特的城市。虽然它是一个旅游城市，但是去那边的人会有一种磁场，感觉这个城市和感性、爱情相关。我好像就处在这样一个氛围里面。
-
-丽江非常独特的一个地方在于，早上去、下午去和晚上去，呈现出的状态都非常不一样。晚上的话，能清晰地感觉到这个城市好像“活”起来了，跟现在一些仙侠剧里面，徐长卿和紫萱在一个山庄里面喝酒的那种场景很像，能感觉到是一个有韵味的古城，这是晚上给我的感受。
-
-早上的话，人非常稀少，基本上都是一些本地人，或者是零零散散想抓拍空荡街头的游客。早上偶尔还能看到一些雪山，在云层刚刚还未聚集起来的时候，可以在古城内拍到古镇和远处雪山同框的画面。
-
-我很感慨，住在这个地方的人该有多幸福啊，他们好像拥有了一切，被神明赋予了美好。他们远处能看到美景，这里的天很蓝，镇子也很精致，人与人之间又很chill，彼此之间有着紧密的联系。
-
-所以，丽江古城是一个我觉得可以再去的城市，我挺喜欢的，很有趣，很有意思。
-
-
----
-
-### 大理苍山洱海的自然美
-
-> 2026-01-30 21:05:16
-
-我之前在大理生活了大概一个多月，感触还挺多的。大理的天气很奇怪，能感觉到有时候云层很低，因为旁边就是洱海，洱海对面是苍山。大理很独特的地方就在于苍山和洱海，苍山海拔大概 2000 米，是在原有海拔基础上又拔高了 2000 米，所以很多云层感觉就在山的中间。大理山景特别美，这是我很喜欢大理的一个原因。
-
-洱海也很美，尤其是在空气质量很好的时候。洱海本身处于比较高的海拔，云层地势也是如此，所以能感觉到上面的空气质量很清新。清新的空气让那边拍照很出片，很多看重自然美的人慕名而来，感觉那里是人间天堂、人间仙境。那里有稻草、榕树、大榕树，还有美丽的云彩、广阔的天空，以及麦田上的小火车。
-
-小朋友晚上还能去洱海边吹风，我们就有过这样的经历。有一天好像是超级月亮，我和室友们在洱海边，在海上的一个棚子上面，喝着小酒，听着音乐，与月同在，载歌载舞。那个时候感觉很松弛、很享受，是一段很梦幻的回忆，觉得生活就应该这样，我们就应该在这样的环境下绽放自己。
-
-除此之外，我还去跳过水，是跳入流入洱海的一个分支。跳水的感觉也挺好的。还有洱海骑行，这是我比较喜欢的活动。最后一天，我和大家绕洱海骑了一圈，那时候天气特别好，天很蓝，我依旧很记得，风景很美，路上有很多漂亮的风景，很有趣。而且洱海那边有很多人，能看出来大家对这个地方真的很喜欢，这里是一个旅游胜地，大家都想来看看。
-
-回去的时候，路过苍山，能看到苍山下面有一些绿道，绿道很长，前面有一些零零散散的车，苍山中间有一层很厚的云彩，好像把山一切为二。我作为一个个体从下往上看，这样的视角让我感觉到我所处的这个世界很奇妙，这里不只有城市和空气，还有森林、山、云彩，而且云彩也是有活力的，它能构造出一张绝美的画面，真的非常有趣、很惊艳。
-
-
----
-
-### 成都盆地与雪山的双重吸引
-
-> 2026-01-30 20:59:15
-
-因为后面几天也要去成都，就回过头来说这一次。上一次去成都也是两年前，那时候也走了一个青城山。
-
-成都这个城市给我什么感觉呢？它就是雾霾很多，也有可能是它处于盆地的原因，四川本来就位于盆地之间，它的位置跟加德满都类似，或者是博卡拉类似，就是四面环山的一个地形，所以很明显感觉到那个地方的空气不怎么好，视野也不怎么好。
-
-但成都还有一个非常吸引我，包括我身边朋友的点，就是它有很多雪山，还有很多非常美的自然风光。就是你一个周末可能自驾就能去附近的雪山，去四姑娘山，或者逛一逛，看一看雪景，你就感觉自己被治愈了，感受到自己作为一个人的局限性，感受到大自然的魅力、大自然的美，雪山的美多么壮观，而不是待在一个狭小的公寓里面，或者是在一个雾霾严重的城市里面，在这个城市里面是毫无生机可言的。
-
-作为一个生物，本能上是不可能把这种污染或者雾霾当做一种美的，但反而是大家会对一些纯净的自然生态当做美，比如说纯净的雪山、纯净的云彩、纯净的天空、纯净的草原。我觉得这是我们生物本身特别主观的一种评判标准，这种主观的评判标准其实也体现了我们作为 Homo sapiens（智人）的一种局限性，对吧？我们不是其他动物，我们不是机器人，我们不是 AI，AI 的话，哪怕这个环境很污染也不会直接影响到它们生存。唉，所以这一刻也是我们感觉到很美妙的一个地方。
-
-
----
-
-### 海岛露营的生命力体验
-
-> 2026-01-30 20:56:51
-
-讲讲我的露营经历，人生中为数不多的几次露营，其实露营体验感最好的还是在香港的一些海岛上。它们与世隔绝，你能感觉到自己处在一个非常原始的环境中。附近都是茂林，面对大海，没有光污染。因为方圆几公里，甚至十几公里都没有城市居所，所以那边非常安静，天空是黑的，只有远处有一点点光线，从那里能知道那个方向原来是香港市区的方向。
-
-有时候打开帐篷，海风吹过来，看着附近草丛里的草动起来，有一种很特别的感觉。我觉得那是有生命的，是一种生命力在呼唤。这一刻我虽然独自一人，虽然很孤独，但我依旧身处一个充满生命的丛林中，与它们共存。
-
-但在办公楼里，即使旁边有很多人，即使大家都在一个社会化about 束特别高的城市居所里面，你能感觉到附近的人都在动，但是没有灵魂。墙壁是静止的，城市里车来车往，但感觉车也是静止的，它们都没有生命力，仿佛被圈住了仅有的一丢丢生命力。这是我想要的一种感性，一种灵魂上的共鸣。
-
-真的很怀念之前在普吉岛露营的时光，偶尔翻出来那些照片，觉得真的好美。与萤火虫做伴，瞭望四周，仅仅只有几个帐篷，帐篷里透出一点点星光。那天晚上大家还聚在一起，吃了一些夜食。有一个大哥煮了米饭，我们还吃了一些烧烤之类的，觉得特别有意思。还有一个香港姐姐从香港带了一袋肯德基过来，我觉得特别有意思。虽然食物是冰的，但在那一刻却很美味。因为我们天然地触发了生物本能，对食物的一种渴望。这种渴望在日常生活中很难感受到，只有在物质贫乏，或者大汗淋漓、挑战过生物本能极限的时候，才能感觉到食物原始的味道，感觉生活真好。
-
-
----
-
-### AI 抽象层协议设计
-
-> 2026-01-30 19:31:45
-
-AI 抽象层协议
-
-- 新增功能只需在 Gateway 实现一次，所有客户端自动获得
-
-- 客户端可以是任何形式（CLI、Web、App、Node），只要实现协议
-
-核心是协议层，不是 Agent
-包括 search、create、link、query
-所有的客户端都通过协议操作知识
-Agent 是“智能客户端”，不是核心，Agent 可以调用协议，但协议不依赖 Agent
-数据层是长期资产，包括 still
-
-`#格物/AI`
-
----
-
-### Skills 作为可复用知识
-
-> 2026-01-30 19:26:49
-
-clawdbot Skills 越多，Agent 能力越强
-所以 Skills 是可以被作为知识复用的
-是可以独立演进，不影响核心的
-Skills 加载/过滤/注入机制非常完善（src/agents/skills/）
-Skills 降低了 Prompt 工程成本（token 效率提升 10-100 倍）
-比如说针对 notion、Obsidian 的 skills 操作，可以做文档协作，任务管理和知识库的方式存在
-比如说自动整理会议纪要、生成周报、同步跨平台笔记，还有就是任务管理这些
-甚至在 github 那边可以自动的触发构建，查看日志，自动部署
-
-`#格物/AI`
-
----
-
-### 多通道统一与工具生态
-
-> 2026-01-30 19:11:59
-
-几个思考
-多通道统一是刚需，外部的工具或者 APP 统一到一起
-本地优先反而成了差异化的优势
-工具调用是非常重要的能力
-
-- Agent 的价值 = 模型能力 × 工具生态
-
-工具包反而可能是壁垒
-这个项目给了很多垂直领域的工具链的思考
-并且让用尽可能的少的感知
-做基础设施层很爽的一点就是通用型，可以让其他的人都能共享使用，有一个开放的协议
-统一出一个抽象层，并且充分的利用插件的生态，把扩展的功能交给社区去实现，可以是技能广场或者是插件市场
-
-`#格物/AI`
-
----
-
-### OpenClaw 网关系统设计
-
-> 2026-01-30 19:00:15
-
-OpenClaw 的系统设计
-核心是一个本地优先的 AI 网关（gateway） + 多通道信息入口 + 多 agent 路由 + 工具 / 节点系统
-角色分工（来自 README 的“Key subsystems/Highlights”）：
-
-- Gateway：单一控制平面（WebSocket 服务），负责会话、路由、工具调用、控制 UI。
-
-- Agent：真正“思考”的 LLM（Pi/Claude/OpenAI…），通过 RPC 接到 Gateway。
-
-- Channels：WhatsApp / Telegram / Slack / Discord / Signal / iMessage / WebChat / Matrix / Zalo 等所有聊天入口。
-
-- Nodes &amp; Tools：浏览器、Canvas、系统命令、相机/屏幕、定时任务、WebHook 等一切“动作能力”。
-
-- Apps：macOS 菜单栏、iOS / Android 节点 App，给 Gateway 提供本地能力（语音、屏幕、摄像头等）
-
-可以理解为，channels 只负责接受外部消息或者发回复
-Gateway 知识决定对应的这条消息由哪个 agent 处理，用什么工具
-Agent 只要在“对话 + 调工具”这个抽象层工作，不关心 WhatsApp 还是 Discord
-Nodes/Tools 是 Agent 的“手脚”，真正动系统 / 浏览器 / 设备
-
-`#格物/AI`
-
----
-
-### 创作表达追求九十分以上
-
-> 2026-01-30 18:24:42
-
-确保每一次创作
-确保每一次表达都达到九十分以上
-而不是刚刚及格
-
-
----
-
-### AI 生产力与技能插件化
-
-> 2026-01-30 18:16:51
-
-商业价值能看得清的方向感觉是执行
-能够与本地文件系统、浏览器和旧有CLI工具无缝交互的系统才具备真正的生产力
-再者社交和分发应该不要满足于传统模式，不管是网页窗口或者是独立的 APP
-跳出传统的思维范式，，创业者应该思考的是如何将自己的服务转化为可被顶级代理调用的技能或者插件，从而进入代理驱动的生态系统
-
-`#格物/AI`
-
----
-
-### 提示词注入与凭证风险
-
-> 2026-01-30 18:09:54
-
-一些潜在的风险
-避免网络上的提示词注入风险
-三方技能库可能也会有恶意脚本的问题
-还有就是身份凭证的集中风险问题
-
-
----
-
-### Moltbot 爆火的叙事力量
-
-> 2026-01-30 18:09:01
-
-Moltbot 的爆火
-感觉本质上还是有很强烈的故事情节
-Mac mini 抢购热潮
-品牌重命名传说
-单月使用 1.8 亿 token 的极端用例
-
-`#格物/AI`
-
----
-
-### 适应性压缩与持久记忆
-
-> 2026-01-30 18:06:53
-
-Moltbot 实现了一种名为适应性压缩的机制
-当会话上下文接近模型的上限时，系统会自动触发一个无感知的刷新动作，将旧的对话记录总结为结构化的Markdown笔记并存入本地磁盘 。这不仅节省了高昂的Token费用，还确保了代理在处理持续数周甚至数月的任务时不会迷失方向
-这一点真的很好，很多的模型也都在做，但是这种无感知的压缩模式，很适合持久性记忆
-
-`#格物/AI`
-
----
-
-### DNA 非编码区调控机制
-
-> 2026-01-30 17:25:00
-
-DNA实际上是如何控制基因的？
-实际上并不是主动控制的基因，但是作为遗传信息的存储载体，通过一系列精密的调控机制来决定哪些基因在何时、何地、以何种程度被表达（即转录为RNA，进而翻译成蛋白质）。这些机制共同构成了“基因表达调控”
-人类基因组中about 98%的DNA不编码蛋白质，但其中包含大量调控元件；而绝大多数与疾病或性状相关的遗传变异（包括突变）恰恰落在这些非编码的调控区域中，编码区决定“造什么蛋白”，而调控区决定“什么时候造、在哪里造、造多少”
-所以因为某个位置的一个小突变，可能会影响到远在50万个「字母」（letters）之外的基因
-AlphaGenome这次一口气解决了上述两个痛点：
-
-- 既能「望远」也能「微距」：它能一次性吞掉100万个DNA字母，而且预测精度依然能细化到每一个字母
-
-- 从「偏科生」变成「全才」：基因表达、剪接、染色质状态、蛋白质结合——这些复杂的生物过程，现在只需这一个模型就能同时搞定
-
-`#格物/生物`
-
----
-
-### Moltbot 双层记忆架构
-
-> 2026-01-30 16:10:31
-
-Moltbot 的记忆处理
-传统的 chatgpt ，甚至是后面的 claude 的记忆做的都没有那么的精细化
-Moltbot 使用了双层记忆架构，一个是memory/YYYY-MM-DD.md (原始日志)，就像是一个流水账日记，还有一个是MEMORY.md (精选长效记忆)，当 AI 发现某个信息具有长期价值（例如你的编程偏好、你的家庭成员、或者一个复杂项目的技术选型）时，它会主动将这些信息提炼并写入这个文件
-Moltbot 很有创意但是很简单的一种方法，可以直接对话纠正偏好，甚至可以直接编辑 MEMORY.md 的方式修改
-个性化的配置 ，SOUL.md定义了代理的人设底层（Baseline Persona）。它不仅仅是一段 System Prompt，它包含了一套完整的行为哲学
-
-- 幽默与自嘲，赋予了空间龙虾的身份，可能会吐槽自己没有实
-
-- 非被动性：不等同于只会回答，乖乖，听话，允许还有情绪倾向，符合一个人的身份定义
-
-发现这种方式非常的具有传播效应，截图价值哈哈哈
-
-- 对开发者而言： 它提供了对 AI 认知的绝对控制权。我不必担心 AI 突然变笨或遗忘，因为它的记忆文件就在我的磁盘上
-
-- 对普通极客而言： 它提供了一个有生命感的伙伴。它通过 WhatsApp 或 Telegram 存在于你的社交列表中，像个老朋友一样伴随你的工作流
-
-`#格物/AI`
-
----
-
-### 信息时代的自我定位
-
-> 2026-01-30 15:39:56
-
-在信息嘈杂的时代
-各种短视频、AI、自媒体、新闻、娱乐 ...
-如何找到自己是谁？
-首先第一点，清楚自己想要什么
-可以说是方向，可以说是目标
-基于目标做出的行为，经历、思考，就是专注
-反过来的经历会补充到自己身上，更清晰自我，更清晰目标
-
-`#格物/注意力`
-
----
-
-### 主动智能与多渠道融合
-
-> 2026-01-30 15:36:36
-
-Moltbot 引入了主动智能的概念
-通过内部的“心跳（Heartbeat）”机制和计划任务（Cron Jobs），它能够自主监测用户的数字环境
-同样感受到了多渠道融合的无缝体验
-用户可以在WhatsApp上发起任务，在Telegram上接收进度报告，并在Slack中进行复杂的调试工作，而AI助理则通过后台的Gateway保持着统一的上下文和记忆
-使用的记忆方式就是由本地的 Markdown 文件驱动的持续记忆系统从而摒弃了基于会话的临时记忆模式
-
-
----
-
-### 知识从业者的主体性重构
-
-> 2026-01-30 15:02:33
-
-知识从业者的迷惘
-以前的知识从业者好像作用性好像下降了，因为以前讲究的是知识信息的密度和深度，拥有信息或者知识是为了防遗忘，但是现在记笔记更多的感觉是为了内化思维，防止降智
-AI 生成的答案是基于概率预测的“公about 数”，它是标准的、完美的，但也是二手的，但是只有我们自己理解充足的部分逻辑更有意义
-其实哪怕是问 AI 的问题也是很有价值的，因为问题对应的自己的思考，往往是自己感兴趣的方向，就可以和自己建立一定的主体性映射
-所以我一般喜欢边学边记也是这样，记忆的过程中是一种强制编码的过程，用自己的知识体系再去匹配，然后表达出来，这样的知识其实也是经过自己的筛选，重构，很具有主体性的
-
-`#格物/AI`
-
----
-
-### 笔记的主体性与存在感
-
-> 2026-01-30 14:53:29
-
-笔记在 AI 时代应该如何定义？
-没有 aha 没有主体性 没有偏见 没有误解 没有感触 没有反思
-但恰恰是这些东西，构建了我们的存在
-
-
----
-
-### Molt 的 Skill 功能与本地 AI 基础设施体验
-
-> 2026-01-30 14:38:33
-
-Molt 的使用体验
-很大的一部分来源于 Skill，这个功能很喜欢
-可以遥控自己的电脑或者服务器，检查服务器的负载，重启服务，甚至在家里下载文件
-可以集成自己的方法和工作流，并且把自己的一些偏好记到 Memory 中
-Molt 是本地有限的 AI 基础设施，所以有一个 gateway 作为检查员，同样的也是作为本地的手脚架
-macOS Companion App 很有趣
-可以在 macOS 上常驻，无需打开终端就能看到 gateway 的运行状态（health）
-并且支持语音唤醒的能力，以及一些原生的 Canvas
-
-`#格物/AI`
-
----
-
-### 记录生活与游戏过程中的成长方式
-
-> 2026-01-30 13:13:07
-
-到底还是记录生活的一种方式
-记录好自己如何玩好游戏的过程
-帮助人成长
-
-
----
-
-### Pi 编码代理运行时的开发者定位
-
-> 2026-01-30 12:24:15
-
-Pi 编码代理运行时
-Pi 不是指 Inflection AI 那个社交机器人
-而是专门为开发者设计、极简且强大的编码代理运行时
-最初是一个独立的命令行工具 pi-coding-agent
-
-
----
-
-### 打字与社交对话的强化学习认知机制
-
-> 2026-01-30 11:48:15
-
-我打字是因为自己强化学习了打字这个操作和过程
-一定程度上语音也是一样的
-那些经常通过 social 的方式交流对话的那群人，那么的沟通是顺畅的，自然而然也会有习惯性的用这种模式高效的思考创作
-认知科学领域本身就是重复练习形成肌肉记忆，及时反馈然后调整策略，目标驱动然后激励优化行为
-
-- 经常写代码的人，可能更倾向“模块化+条件判断”式思考
-
-- 经常辩论的人，会自动构建“前提-结论-反驳”框架
-
-- 而频繁社交对话者，则擅长“共情-回应-推进”循环
-
-`#观我`
-
----
-
-### 寻找自我主体性与身份重构的迷茫
-
-> 2026-01-30 11:42:29
-
-感觉还是不够游戏
-怎么形容这样的感觉？
-因为总觉得差一点
-思索了一会，想了很久，寻找那一份缺失
-我没找到自我
-自我依靠的是过去的叙事，自己的身份重构，需要的是自己的主体性
-我在寻找这部分的主体性
-
-`#观我`
-
----
-
-### 盈富基金与恒生指数基金的投资特点
-
-> 2026-01-30 11:12:23
-
-盈富基金
-跟踪的是恒生指数，买了它就等于买了恒生指数里的全部蓝筹股（权重按市值分配）
-风险就是比较分散的人，适合的想追随大盘涨跌，不想做个股研究，长期投资的，追求市场的平均收益的人群
-恒生中国企业指数基金追踪的是恒生中国企业指数，也叫“国企指数”，包含在港上市的中国国企，险和波动通常比恒生指数大，收益可能高但短期波动也大
-
-`#格物/投资`
-
----
-
-### 恒生指数对大盘趋势与市场情绪的参考
-
-> 2026-01-30 11:04:47
-
-恒生指数参考意义
-恒生指数一般都是选的香港股市中市值最大，流动性最好的 50 只股票加权指数，反应的是大盘整体趋势
-一部分也是代表了市场的情绪，指数涨，市场情绪偏向于乐观，指数跌，可能风险比较高
-指数波动大时，一些个股即使基本面不错，也可能被拖累，短线炒作风险增加
-一些好的科技公司，盈利能力强、用户多、现金充裕，就是说明基本面更好一些。反观新公司可能产品还不成熟，收入少，基本面就弱
-
-`#格物/投资`
-
----
-
-### 苏美尔文明对西方文明的深远影响
-
-> 2026-01-30 10:43:32
-
-要理解西方文明，必先理解苏美尔
-至今依旧有的争论，苏美尔不知道从何而来，苏美尔的石器时代的科技为何突飞猛进
-留下的文明遗产：
-
-- 西亚文明的基础，文化和制度
-
-- 文字、法律、数学、天文和城市模式影响了整个古代世界
-
-- 现代时间、角度计量依旧沿用其六十进制
-
-苏美尔发明了人类最早的文字——楔形文字about 公元前3400年），用于记录经济、法律、宗教与文学。没有苏美尔对“文字即权力”的实践，就没有后来希腊的哲学文献、罗马的法典编纂
-没有苏美尔世界最早的城市文明也就没有后来的希腊城邦，自由的载体
-没有苏美尔神化的叙事，也就不会有西方的额神教叙事框架去解释世界，安顿内心
-
-`#格物/世界历史`
-
----
-
-### Molt 的网关架构与 AI 代理生态系统
-
-> 2026-01-30 10:23:03
-
-Molt 深度体验
-作为一个 AI 代理网关，不可否认 Molt 最有魅力的地方是他的生态，一个中间件平台
-架构：
-
-- Gateway (网关): 这是 Molt 的心脏。它是一个常驻后台的进程，负责连接聊天平台和 AI 模型
-
-- Agents (代理): 目前 Molt 主要通过 RPC 模式连接 Pi（一个强大的编码代理）。AI 不仅仅是说话，它能在一个沙盒环境中运行代码
-
-- Channels (渠道): 你与之沟通的入口，支持 WhatsApp, Telegram, Discord, iMessage, Mattermost 等
-
-- Nodes (节点): Molt 拥有跨平台的客户端（macOS, iOS, Android, Linux），让你可以跨设备管理 AI
-
-`#格物/AI`
-
----
-
-### 整理个人工作流方法并开源助力 AI 学习
-
-> 2026-01-30 09:12:56
-
-把自己的所有的方法整理并且开源出去
-构建一个合适自己的工作流
-并且是有助于 AI 学习的
-
-
----
-
-## 2026-01-31 1月31日 周六  (4 条)
-
-### 科技制度文化三角财富观
-
-> 2026-01-31 19:35:41
-
-我有在想，就是中国的财富体系，尤其是从传统的体系到现在体系的一个变化。我之前其实讲过，在中国这个体系里面，大家需要了解三个要素，一个是科技，一个是制度，一个是文化，这三个要素缺一不可。你可以理解为制度有一部分也是诞生于这个文化，当然很大一部分是来自于它自身的权力运作，只是说它的运作机制还需要迎合这个文化体系。
-
-所以最近 40 年，科技是一个很大的变量，它确实开创了很多非常不一样的时代。就举个例子，在过去十年到过去二十年之间，中国的财富变化情况是，那时候有些地方是夜总会这类关系类场所，还有像黑社会相关的，以及做房地产、搞建筑这些行业，它们都偏向于低成本、低端的劳动力密集型行业。这个行业谁都能做，而且有些地方还可以被垄断，比如富二代的爸爸去垄断这个行业，然后富二代去继承，就是这样的一个体系。
-
-还有一部分情况是，在整个体系里，国家要分一杯羹，于是会有大量的国家单位、国营单位、国企之类的，它们会对某些领域进行垄断。这些情况就会导致一个问题，即阶级固化现象很严重，很大程度上会依赖于权力。
-
-但是现在有没有一种变革呢？我觉得是话语权的变化，现在话语权慢慢转移到现在的行业主流里面去了。行业主流是什么呢？就是科技。现在科技是一个非常大的变量，我们可以利用前 4000 年的历史去推演任何传统行业的情况。不管是任何一个行业，都可以推演出来。但是现在有一个非常没办法去推演的东西，就是科技。因为科技这个东西不符合逻辑推理，它往往是每个人作为一个非常不可控的变量，在里面相互碰撞，就像无数个磁铁相互之间碰撞，最后达成一种协调的过程。现在还是在一个碰撞期，未来很迷茫，没有人能看清，也没有人能推理出未来 AI 方向是什么。大家只能摸着石头往前走，不管是世界模型，还是现在的通用大语言模型，每个人都应该作为一个主体，或者每个开拓者作为一个主体，在市场里面去创造、去开拓，然后不断地吸引、碰撞，最终达成一种共识，这是科技带来的启发。
-
-所以现在科技对这个体系的影响非常大，以前可能占比 20%，但现在慢慢已经上升到 30%、40%了，甚至未来占比会越来越多。这就是一个话语权的问题，以前话语权的掌握者可能是传统行业的人，他们可能有点关系、有点人脉，是改革开放的受益者，是先富起来的一批人，因为有政治资源的倾斜。但是现在，话语权的掌握者一定是掌握科技的人，是掌握 AI 的人，是掌握未来的人。因为你可以掌握科技、掌握芯片、掌握未来，所以你就是这个世界最大的变量，是这个世界最受关注的点。于是衍生出来一个注意力经济，他们被这个时代关注，掌握了大量的流量，掌握了很大一部分科技的话语权，能左右事情的变化。我觉得这也是传统社会结构和现在社会结构略有不同的一个变化，接下来科技这个变量会持续产生影响。
-
-
----
-
-### 清迈回忆的后劲
+<!--memo:ee10c36abf4a-->
+### The delayed afterglow of Chiang Mai memories
 
 > 2026-01-31 14:49:46
 
-但我翻开两年前的相册
-后知后觉感觉
-哇 清迈的后劲真的很大
+But I opened the photo album from two years ago
+
+And only afterwards, in hindsight, felt
+
+Wow, the afterglow of Chiang Mai is really strong
 
 
----
+## 4. Business, Investing and Career
 
-### 空间智能与生成式动力学
+*46 entries*
 
-> 2026-01-31 14:45:05
+<!--memo:2b906979cbe0-->
+### A-shares sector rotation and the "three strikes" rule
 
-Google gemie 3 的路径
-底层逻辑的区别
-相比较李飞飞的 world labs 的路径，李飞飞觉得机器人的路径会很短，是因为她的路径是空间智能
-通过 2D 模型的空间盲区，视频生成模型本质上是在像素层面“猜”下一帧，它们并不真正理解物体的三维几何关系。这导致物体会莫名消失或物理规律扭曲，具身智能需要在一个物理结构稳定的 3D 世界中行动，而不是一个随时在坍塌和重构的像素幻觉中
-Google 的有什么不一样，实际上 Google 的 gemie3 核心的是生成式动力学，Genie 3 并不预先构建一个完整的 3D 场景，而是像大脑“做梦”一样，根据你的每一个动作（如 WASD 按键、文字指令）实时预测并生成下一帧。它通过学习数百万小时的视频，自主习得了重力、碰撞、流体和光影效果。它不需要写代码告诉 AI 什么是“阻力”，AI 通过观察学会了“在雪地里走会慢”，解决了前代的“瞬间遗忘”问题。Genie 3 能保持about 一分钟的一致性，如果你在一个房间涂鸦后离开再回来，涂鸦依然存在
+> 2026-01-01 16:05:09
 
-`#格物/AI`
+The general rule for A-shares (RMB ordinary shares) is "things don't go past three" — a sector can hardly rise three years in a row. So we have to study industries with a dynamic eye, and keep digging for more profitable sectors
 
----
 
-### 生活艺术化与创作
+<!--memo:1ab667ad74c8-->
+### Logical reasoning vs. game thinking
+
+> 2026-01-07 15:35:29 · `#格物/创业`
+
+Logical-reasoning mode vs. game-theoretic thinking
+
+The world is stable, the rules are fixed, the participants are passive
+
+What that mode focuses on is the causal cycles in the world
+
+This is very helpful for understanding the world
+
+But once you enter social systems, technological change, entrepreneurship, platform competition, the premise starts to collapse
+
+Participants change their behavior because of your existence
+
+So you yourself are a variable; you're a link in the game of this process; you're part of what drives this ecosystem forward
+
+Game thinking isn't "competition"; it's a more fundamental worldview:
+
+The world is a system made of actors who perceive each other and react to each other
+
+Outcomes aren't derived from conditions, they're "evolved" jointly by the participants
+
+For example, the flourishing of agents and thinking driven by DeepSeek open-sourcing V3 — without DeepSeek, people probably wouldn't think seriously about open source
+
+The world is like a fluid system, and you're not a bystander but a stone that keeps dropping into the water
+
+You enter the water → the current changes
+
+The current changes → other people's routes change
+
+Other people's routes change → a new structure appears
+
+The premise is that you're not standing on the bank watching
+
+
+<!--memo:a1271a185ca6-->
+### The essential logic of Hong Kong stocks and its capital rules
+
+> 2026-01-08 12:01:26 · `#格物/投资`
+
+The essential logic of Hong Kong stocks
+
+Letting global capital buy Chinese assets with low friction
+
+Highly free: no protection for retail investors, no backstop, no market rescue, no price limits, shorting allowed
+
+Highly rule-of-law based: clear rules, you bear your own responsibility, disclosure first
+
+Dual-class shares, unprofitable companies can list (Zhipu), and listing isn't necessarily safe
+
+Hong Kong doesn't have a scarcity of listing status; shell value is extremely low, and backdoor listings carry no premium
+
+
+<!--memo:a1318d87f433-->
+### How the Die-Yet? APP taps into social emotional resonance
+
+> 2026-01-11 10:05:06 · `#格物/营销`
+
+The Die-Yet? APP
+
+This APP seems really good at tapping into social emotional resonance, with a controversial name and an extremely minimal product logic
+
+But what I'm curious about is how it got promoted and became popular
+
+It turns a heavy, taboo yet very real fear ("if I die, no one would even know") into a concrete, low-threshold solution. This "life-saving" attribute gives it natural virality on social media
+
+The idea for this app wasn't invented out of thin air; it came from a hot topic online — "What apps does everyone need but nobody has built yet?"
+
+The APP's functionality is extremely simple, but it solves a core anxiety, so users are willing to pay for it or download it
+
+
+<!--memo:010cafdc239b-->
+### The neutral definition of speculation and its boundaries
+
+> 2026-01-12 11:04:38 · `#格物/金融`
+
+Speculator
+
+Sort of like this — you buy/sell an asset mainly to make money from price fluctuations, not from the cash flow/value it creates long term
+
+Speculation and investment aren't a binary opposition but a continuous spectrum; the same person can do both in different positions at different times
+
+Speculation is a neutral word; the market also needs speculators to provide liquidity and price discovery
+
+Speculation partly involves a wager, but with strategy and risk control it can also be very professional
+
+Gambling is when neither win rate nor edge is clear, and it mainly relies on luck
+
+Cutting corners is going through the back door, exploiting loopholes, taking advantage
+
+
+<!--memo:e4029ca08405-->
+### Signals for judging a market sentiment pullback
+
+> 2026-01-13 19:54:28
+
+Judging a sentiment pullback
+
+The market is no longer excited by gains
+
+At this point, even if good news appears, stocks won't rally much
+
+
+<!--memo:394904b8bc2e-->
+### Buying an index admits you're no smarter than the system; picking stocks is zero-sum
+
+> 2026-01-13 22:22:57 · `#格物/金融`
+
+Buying an index is buying the average rate of return — proving you're no smarter than the system, as long as you get the part of it that grows over the long run
+
+Buying stocks is a zero-sum game of cognition against other people, especially for short-term investing: you think you're smarter than the market, at least in some small slice
+
+The incentive structure the financial system gives most people runs opposite to individual stock trading. For most people in reality, they have no first-hand information, they have their own emotional swings, and they can't watch the market in real time
+
+
+<!--memo:491c08ef4344-->
+### When tech surpasses human nature, whoever can afford tech harvests ordinary people
+
+> 2026-01-13 23:10:42
+
+It feels like rich people will get richer, because they can use technology. Technology is extremely rational; it can surpass people, it can beat human nature.
+
+So in the future, in an era where tech broadly surpasses people, it feels like the startups that can afford technology will be able to harvest more ordinary people. That's really cruel.
+
+
+<!--memo:c7f099e9b57d-->
+### Mean reversion is the only physical inertia in financial markets
+
+> 2026-01-14 09:58:25 · `#格物/金融`
+
+Let's talk about the mean, and first about the market. Respecting the market means respecting market laws
+
+The market isn't atoms; it's people, expectations, fear, institutions, games — so any inertia is only a statistical tendency, not a necessity
+
+Mean reversion fits inertia very well
+
+Corporate profits, household income, valuation levels — none can deviate infinitely from long-term productivity
+
+Then there's the fact that excess returns attract capital inflows, which creates competition, which brings returns down
+
+Then there are institutional constraints — interest rates, regulation, taxes, monetary policy — all of which fundamentally suppress extreme states
+
+But it can also produce positive feedback, which physics calls an unstable equilibrium — in the market: bull markets, bubbles, stampedes
+
+If mean reversion is "gravity"
+
+then trend is the "rocket booster"
+
+
+<!--memo:b434900f2e7a-->
+### Tech sits on the control layer while traditional industries face a chronic squeeze
+
+> 2026-01-14 12:13:16
+
+Tech is a career track that stands on the control layer by default
+
+The rewards traditional industries give ordinary people are falling systematically
+
+The labor dividend is over, competition is now transparent, profits get siphoned off by platforms and capital, and the middle layer is flattened
+
+What's happening in traditional industries isn't stability, it's a chronic squeeze
+
+
+<!--memo:4b9056c4e77f-->
+### Justin Sun: from crypto-world controversial figure to narrating human civilization
+
+> 2026-01-14 12:39:35 · `#格物/孙宇晨`
+
+His Mars narrative feels very interesting to me
+
+He's very good at grabbing global attention
+
+Mars is a natural medium, letting him get global media exposure and attention in both crypto and tech circles
+
+The early Justin Sun was a controversial figure in crypto / a traffic-driven entrepreneur
+
+From speculator to futurist
+
+From a crypto-world figure to a participant in the narrative of human civilization
+
+From spokesperson for a specific project to teller of grand visions
+
+The crypto industry has a long-standing problem:
+
+it lacks a future narrative grand enough to keep inspiring ordinary people
+
+Being discussed ≈ sense of existence ≈ influence
+
+The next consensus, the next world's focus, the next world's attention
+
+Intangible cognition matters more than tangible resources, because consensus is the foundation of value, and the earliest consensus is the biggest source of value
+
+The charm of ahead-of-its-time cognition — ahead-of-its-time cognition must turn into action and conversion
+
+When we take in any information, ask more often whether it's a new blueprint for building the future. This is our attention — what information is our brain processing every day: is it the past, is it finance, celebrities, chicken soup, or is it a cognitive system for building the future
+
+If you want to make a leap, you must package cognition into an asset — spreadable, tradeable, financializable
+
+
+<!--memo:a25d191b4eef-->
+### Products get mocked, but the doubt itself is necessary fuel
+
+> 2026-01-14 12:46:45 · `#格物/孙宇晨`
+
+Many products get cursed and mocked at the start
+
+But setting jealousy aside, if you look with sympathetic joy, study whether there's something worth learning, what states of society it reflects
+
+You'll find it interesting — the recent app 死了吗, when it first came out it was also mocked and looked down on by many people
+
+But that kind of doubt is itself necessary fuel
+
+
+<!--memo:369a6c76ed6a-->
+### Knowledge and skills shouldn't fence off the game's non-derivable charm
+
+> 2026-01-14 13:23:03 · `#格物/孙宇晨`
+
+We learn all the knowledge and skills
+
+but don't let them constrain us from playing this game well
+
+instead, boldly experience and feel the process of this game
+
+Things that can't be derived and can't be learned are extremely charming
+
+
+<!--memo:e6f2d5b5a9bc-->
+### The essence of asset creation is making wealth, not making objects
+
+> 2026-01-15 11:34:30 · `#格物/资产`
+
+The theory of asset creation
+
+Ordinary manufacturing makes things; the purpose of asset creation is making wealth — turning resources, rights or cash flows into tradeable financial wealth
+
+What is asset creation?
+
+From the traditional view, building a machine is product manufacturing; from the capital view, packaging that machine's future output into a buyable, sellable certificate — that's called asset creation
+
+Asset Creation/Origination means using legal title confirmation, financial structuring and credit enhancement to convert raw resources, rights, technology or expectations into financial instruments that are tradeable, priceable and capable of producing continuous cash flow
+
+Product manufacturing solves consumption demand (you buy shoes to wear them)
+
+Asset creation solves investment demand (you buy the shoe company's stock to gain value)
+
+The starting point of an asset is a right: real estate holds land-use rights, credit holds mortgage rights, IP and technology hold patent application rights / intellectual products
+
+Then the cash flow is structured. An asset is valuable because it can generate money
+
+
+<!--memo:96d88bd369c0-->
+### Value consensus and the greater-fool theory
+
+> 2026-01-15 16:08:39 · `#格物/金融`
+
+The future belongs to the young; but is something valuable just because future people are willing to pay for it?
+
+From a sociological angle, or from the angle of price
+
+value is indeed recognized by future people
+
+Value isn't a natural property; value is a consensus property
+
+Gold, the dollar, Bitcoin, hype sneakers — in essence they're all worthless; they're just passed down and agreed upon generation after generation
+
+Young people have time, cultural discourse power, and future purchasing power
+
+The old generation doesn't understand → the new generation accepts → it becomes mainstream → the price rises
+
+But there's a precondition: someone being willing to buy doesn't equal there continuously being someone willing to take it off your hands
+
+A bubble happens not because "nobody believes," but because the rhythm of believing breaks
+
+For value to hold, it must satisfy at least any one of these conditions:
+
+It keeps producing real utility — it genuinely feels great
+
+It can embed into institutions or infrastructure — so the cost of exiting is very high
+
+It can keep attracting the first wave of buyers from each new generation
+
+If any one of them breaks:
+
+the technology narrative goes bankrupt
+
+aesthetic migration
+
+policy interruption
+
+the new generation turns to another faith
+
+then value evaporates instantly, rather than slowly depreciating
+
+The future does belong to the young, but only things that each next generation can repeatedly re-understand, re-use, and re-narrate have value that crosses time
+
+
+<!--memo:86a6844aecfe-->
+### How Visa sets global payment rules
+
+> 2026-01-15 16:31:44 · `#格物/金融`
+
+Visa as the global payment standard
+
+How was it legitimately decided?
+
+A kind of industry-consensus technical standard
+
+Visa is a private global clearing network
+
+Visa and Mastercard are a card-network duopoly that competes on the surface, colludes underneath, and keeps its rules aligned
+
+What they really do is three things:
+
+Set transaction rules
+
+Handle transaction routing and clearing
+
+Define risk and liability attribution
+
+
+<!--memo:4bb8df555546-->
+### The trust economy compresses the cost of uncertainty
+
+> 2026-01-16 10:25:37 · `#格物/信任经济`
+
+The trust economy
+
+What it replaces is a high-friction world
+
+In the traditional economy, any cooperation requires paying a huge "cost of guarding against bad people"
+
+Contracts, lawyers, guarantees, vetting, deposits, layer after layer of approval, relationship endorsements
+
+None of these "create value"; they prevent value from being destroyed
+
+The essence of the trust economy is using systematized trust to compress the cost of uncertainty
+
+Effective output = nominal output × trust coefficient
+
+Track record — what you've done matters a hundred times more than what you say
+
+Verifiability — third parties, systems and algorithms can verify that you didn't lie
+
+The cost of breaking trust
+
+Incentive alignment
+
+Trust has now become the most expensive asset; in an era of information surplus, attention has been squeezed dry
+
+The more information there is, the scarcer trustworthy information becomes
+
+
+<!--memo:9d70bd42f04e-->
+### Pricing ability and the trust discount rate
+
+> 2026-01-16 10:38:32 · `#格物/信任经济`
+
+Why the same ability gets priced 5-10 times differently
+
+Many people's salaries work the same way
+
+In the relationship between business owners and employees, personal pricing is ability × trust discount rate
+
+What most people get stuck on isn't ability, it's that their trust gets discounted
+
+So high prices in the real world almost all come from one thing: certain delivery
+
+Which is what intermediary platforms do
+
+When your trust level is high enough, one hidden but important thing happens: low-quality clients avoid you on their own
+
+
+<!--memo:02ee85503ad4-->
+### Time arbitrage and asset liquidity
+
+> 2026-01-16 19:10:35 · `#格物/信任经济`
+
+The charm of time arbitrage
+
+The ultimate magic of asset creation is "overdrawing the future."
+
+Through discounting models, asset creators package decades of future returns (like 30 years of mortgage interest, 50 years of highway tolls) and cash them out today in one go
+
+Water is flexible, so turning some hard resources into soft, light assets lets you capture a liquidity premium
+
+
+<!--memo:a2dc76d5cb37-->
+### The essence of a bubble is expectations of expectations
+
+> 2026-01-16 20:37:26
+
+Bubbles feel hard to judge or catch
+
+The essence of a bubble
+
+Price rises depend mainly on expectations of expectations, not on real cash flow, productivity, or irreplaceable value growth
+
+Every asset should have a real-world reference point: cash flow, profit, rent, use value, replacement cost
+
+
+<!--memo:0766966be7e0-->
+### Hong Kong IPO subscriptions and consumer opportunities
+
+> 2026-01-16 20:41:38
+
+Most bullish on 2026
+
+Hong Kong IPO subscriptions are super interesting
+
+A-shares are hard to win; Hong Kong has margin financing and so on, so IPO subscriptions are easy to get
+
+The first half is the most worth taking risks in
+
+More bullish on Hong Kong stocks; Hong Kong stocks are part of the middle buffer
+
+Fairly bullish on consumption
+
+
+<!--memo:53d68053e90d-->
+### The international endorsement of an A+H share structure
+
+> 2026-01-16 20:42:15 · `#格物/金融`
+
+The A + H share structure
+
+A part I'm very bullish on
+
+The same company listing A shares in the mainland while also listing H shares in Hong Kong
+
+is usually for financing diversification
+
+and to hedge against corresponding valuation issues
+
+Especially important is the international endorsement
+
+Companies with this structure tend to be more favored in the China-US rivalry
+
+
+<!--memo:6d73d21618e7-->
+### Insurance capital and the national team's stabilization mission
+
+> 2026-01-16 21:11:30 · `#格物/金融`
+
+Insurance capital
+
+Insurance capital is insurance funds
+
+Its source is the premiums of hundreds of millions of people
+
+Every life, annuity, pension, critical-illness policy you buy — every premium becomes part of a giant capital pool. That pool is insurance capital
+
+It has a few innate personality settings:
+
+Extremely long duration
+
+A very plain goal
+
+Risk aversion
+
+The national capital team is the capital force that stabilizes the market for the state
+
+The National Social Security Fund
+
+Central Huijin Investment Ltd.
+
+China Investment Corporation
+
+Their main goal is maintaining system stability
+
+They're generally not responsible for pulling the market up to its highest; they're responsible for one key thing — not letting the market fall into the abyss
+
+
+<!--memo:d0cb59e65543-->
+### Dividends are the portfolio's stabilizer
+
+> 2026-01-16 21:24:24
+
+We all talk about dividends
+
+Hot industries, dividend-paying industries
+
+generally have stable cash flow
+
+Dividends are the stabilizer in a portfolio
+
+
+<!--memo:0fc3c09038de-->
+### The index logic of the Nasdaq 100
+
+> 2026-01-16 21:34:23 · `#格物/金融`
+
+Nasdaq 100, NDX, Nasdaq-100 index
+
+Founded in 1985, composed of the 100 largest non-financial companies listed on the Nasdaq exchange
+
+Seen as the representative of tech and innovation growth stocks, often called the "new money" or the "AI engine"
+
+The Dow usually has 30, leaning toward industrials, finance, energy, consumer goods and healthcare
+
+Nasdaq 100: uses market-cap weighting → the bigger the company's market cap, the bigger its influence on the index. More scientific, more mainstream
+
+
+<!--memo:87d98f2e529b-->
+### Semiconductors and the AI chip ecosystem
+
+> 2026-01-17 00:05:06 · `#格物/金融`
+
+Semiconductors are the physical cornerstone of AI chips
+
+and AI chips are the semiconductor industry's current top technological driver
+
+Semiconductors (The Ecosystem): this is a grand concept, referring to a class of materials (like silicon, gallium nitride) and the entire electronic components industry built on them. It includes memory chips, sensors, power devices, general-purpose processors (CPU), etc.
+
+AI chips are just a series of designed integrated circuits
+
+Winner-take-all effect: the traditional semiconductor market is relatively dispersed, but in AI chips, because of the extremely high barriers in design (Design) and manufacturing process (Foundry), value is highly concentrated in a few companies (like Nvidia designing, TSMC manufacturing)
+
+As physical limits approach, improving performance simply by shrinking transistors (say from 5nm to 3nm) becomes harder and more expensive. AI chips' extreme hunger for performance has forced the semiconductor industry to light up the Advanced Packaging tech tree
+
+Also, copper's recent surge is actually a structural shortage, driven by three engines: AI, new energy, and grid upgrades
+
+Data centers are made of copper
+
+
+<!--memo:f3e68431376a-->
+### Asset narratives and faith as fuel
+
+> 2026-01-17 00:15:17 · `#格物/金融`
+
+Judging a bubble
+
+isn't essentially about prices being high; price rises depend mainly on "expectations of expectations," not on growth in real cash flow, productivity or irreplaceable value
+
+The beam holding up the price has switched from reality to story
+
+Every asset should have a real-world reference point: cash flow, profit, rent, use value, replacement cost
+
+But when prices exceed these anchors quickly, persistently and significantly, and the gap can only be explained by "the future will be different," that's not a conviction, but it's already a yellow light
+
+People who never cared about the asset suddenly flood in
+
+Professional judgment gets mocked as "not understanding the new era"
+
+There's actually one more point, about narrative
+
+Healthy asset logic is stable
+
+but the narrative in a bubble keeps getting patched
+
+When the old logic is falsified by reality, a new, grander story immediately takes its place and no longer accepts rebuttal — which means the price now needs "faith as fuel"
+
+When the price rise itself starts changing people's behavior, business decisions, even life paths (quitting jobs, borrowing money, going all in), the asset has gone from "reflecting the world" to "hijacking the world"
+
+Once the price stops, reality bites back, and it's rarely gentle
+
+
+<!--memo:e8cbbeaa422e-->
+### Three dimensions for judging a bubble
+
+> 2026-01-17 00:35:20 · `#格物/金融`
+
+The market can stay irrational longer than you can stay solvent
+
+Judging a bubble usually requires cross-verifying from three dimensions: "cold" valuation data, "hot" market sentiment, and a "hard" leverage environment
+
+The core is whether the price significantly and persistently deviates from its intrinsic value
+
+The Buffett Indicator, i.e. "total stock market cap / GDP"
+
+Historically, 70%-80% is considered undervalued, around 100% is reasonable, and above 120%-150% is usually seen as significantly overvalued
+
+Then there's the Shiller PE / CAPE — the inflation-adjusted average PE of the past 10 years. Compared with ordinary PE, it better smooths out short-term earnings swings
+
+The price-to-rent ratio too: if it takes 50-60 years of rent to break even, it means the price is supported mainly by "appreciation expectations" rather than use value
+
+Hot,, people who normally don't care about finance start discussing what stocks or funds to buy, and recommending tickers to you — that's a clear signal .... Then there's "this time is different," the five most expensive words in financial history, the flomo mindset
+
+Displacement: a new technology or new narrative is born (like AI, the internet, blockchain), attracting early investors.
+
+Boom: prices start to rise, the media starts reporting, more money comes in.
+
+Euphoria: prices go straight up, valuation logic breaks down, everyone speculates, "only a fool wouldn't buy."
+
+Profit Taking: smart money quietly leaves, and the price starts oscillating at a high level.
+
+Panic: some black swan event punctures the bubble, the price plunges off a cliff, and buyers disappear
+
+
+<!--memo:99bf73e2266d-->
+### Lessons from the oil crisis
+
+> 2026-01-17 09:39:07 · `#格物/金融`
+
+The 2008 oil crisis
+
+It tripled in just one year
+
+Fear that the world was running out of oil; panic and greed coexisting
+
+The most popular theory at the time was "peak oil." Geologists and analysts were all saying that the easily extractable oil on Earth had been used up, and from then on oil would only get scarcer and more expensive
+
+The market logic at the time was: China's and India's industrialization had just begun, billions of people wanted to buy cars and use electricity. This demand was long-term and rigid — no matter how high the oil price, they would pay
+
+
+<!--memo:a14ad924e32b-->
+### The non-linear mechanism of a bubble bursting
+
+> 2026-01-17 13:29:29 · `#格物/金融`
+
+There's a very interesting question
+
+How do bubbles burst
+
+It's always realized after the fact, and it usually can't be analyzed linearly; the world is non-linear
+
+The Minsky moment: during a boom, asset prices keep rising, investors become overly optimistic and start borrowing (adding leverage) to buy assets; long-term speculation pushes debt levels so high that the cash flow the assets generate can't cover the debt interest, and the market enters an extremely fragile Ponzi finance stage
+
+At that point, even if the asset price merely "stops rising" (it doesn't even need to fall), speculators are forced to sell assets because they can't pay interest
+
+That's when collapse comes: many people are forced to sell assets because they can't pay interest, and the forced selling drives prices down, entering a feedback loop
+
+The collapse of the psychological line of defense, from FOMO to FUD, is an obvious characteristic
+
+
+<!--memo:a64729b4c422-->
+### Three signals of an asset bubble
+
+> 2026-01-17 13:30:48
+
+Valuation deviation: has the asset price significantly detached from fundamentals (e.g. PE ratio, price-to-income ratio at historical extremes)?
+
+Leverage ratio: are market participants using a lot of leverage? (Is the margin balance high?)
+
+Sentiment indicator: when the non-professionals around you (like taxi drivers, or friends who don't care about finance) all start fervently discussing and recommending some asset, that's usually a late-stage bubble signal
+
+
+<!--memo:77c0972453ef-->
+### Don't judge top billionaires' life choices with ordinary logic
+
+> 2026-01-17 23:31:14 · `#格物/创业`
+
+Using your own life experience to imagine a class that isn't yours at all — you're bound to get it wrong
+
+Don't judge top billionaires' life choices with an ordinary person's anxiety, morality or logic
+
+They have their own world rules
+
+Some people do nothing at all and live extremely well on capital alone
+
+An ordinary person grinding away at a startup — involution — looks to them like high-risk behavior instead
+
+So it seems I'm not really in a position to give others advice, nor capable of judging others' choices
+
+
+<!--memo:e84186d7cf00-->
+### In finance, the closer a factor is to the source of money, the more it matters
+
+> 2026-01-18 10:18:46
+
+In the financial world, the closer a factor is to the source of money, the more important it is. A few examples:
+
+Central banks directly control money supply and borrowing costs
+
+Employment and labor market data actually reflect the current vitality of the market economy, as well as market information
+
+Inflation indicators determine the path of interest rates
+
+Economic growth indicators reflect overall economic health and affect corporate earnings expectations and investment sentiment
+
+
+<!--memo:bf3c41a9562f-->
+### The Hang Seng is cap-weighted and heavily concentrated in super-heavyweights
+
+> 2026-01-19 09:48:26 · `#格物/金融`
+
+The Hang Seng Index is generally cap-weighted, and its weights are highly concentrated
+
+In Hong Kong stocks, individual stocks usually move the index, but the "individual stocks" here means the super-heavyweight stocks
+
+In the Hang Seng, the top 5-10 stocks hold 40%-60% of the weight year after year
+
+Tencent Holdings
+
+Alibaba
+
+Meituan
+
+China Mobile
+
+HSBC Holdings
+
+The Hong Kong stock structure isn't the all-the-people-trading type
+
+Local retail participation is low; institutions, foreign capital and passive funds make up a high share
+
+But there are exceptions: when sentiment is extreme, the index moves individual stocks
+
+
+<!--memo:8f22e97ecf24-->
+### Infinite supply, limited demand: tech is infinite but demand is layered
+
+> 2026-01-19 10:53:44 · `#格物/金融`
+
+"AI makes the supply of 'cognitive labor / software functions' nearly infinite, with marginal cost approaching 0, but demand in the real world is limited (time, budget, attention, scenarios are limited). Under this structure of 'infinite supply, capped demand,' what happens to the economy and the market?"
+
+Supply is infinite, demand comes first
+
+Price P gets pushed by competition down toward marginal cost (many AI capabilities will approach free / extremely cheap);
+
+Quantity Q will rise, but not infinitely — capped by ceilings of time, budget, attention and scenarios
+
+So this is the essence of the paradox: from the supply side technology is "infinite," from the demand side it's still very "limited" and "layered"
+
+
+<!--memo:77e3ccb01a0f-->
+### AI deflates the market for time-premium professionals
+
+> 2026-01-19 10:57:40 · `#格物/金融`
+
+In an industry that sells time and sells labor, the arrival of AI is like a lot of free labor showing up. The result isn't that everyone makes money — it's that the part of the market that used to earn because "time was scarce" gets flattened directly by price deflation
+
+Instead, inflation happened
+
+The TAM gets eaten up by deflation — TAM here can be understood as how much money this industry could theoretically make
+
+AI compresses "an hour of output" into "a few minutes"
+
+Clients are no longer willing to pay a high price for "time"
+
+Those who lose the most are the middle layer, "time-premium professionals"
+
+while the junior ones were already cheap to begin with
+
+and the top ones are the people who define the problem, own the problem, and carry the results
+
+This redefines the logic of the business world
+
+
+<!--memo:8bffb7feb36c-->
+### Forward PE: fair price = PE multiple × earnings per share
+
+> 2026-01-20 14:41:01 · `#格物/金融`
+
+Forward PE (forward price-to-earnings) calculation
+
+Fair stock price ≈ fair PE (price-to-earnings multiple) × fair EPS (earnings per share)
+
+It's usually 16-27x, meaning the current stock price is 16-17 times the next twelve months' earnings per share
+
+Suppose a company is expected to have earnings per share (Forward EPS) of 5 yuan over the next year, and its Forward PE is 16.5x, then: the fair stock price is 5 × 16.5 = 82.5 yuan
+
+For mature industries, generally consumer and energy, 16-17x is a medium-high but still acceptable valuation
+
+For high-growth industries (like tech, AI, biomedicine), this level may count as low or reasonable
+
+Compared with the S&P 500's overall Forward PE of about 23x (data as of end-2025), 16-17x looks relatively cheap
+
+Tencent is generally given 18-22x
+
+because Tencent isn't a pure growth stock, nor a pure value stock, but a "super platform" with very strong cash flow and a deep moat, whose growth is no longer explosive
+
+
+<!--memo:d9f2c768ddab-->
+### Next-12M EPS is the expected earnings per share over the next twelve months
+
+> 2026-01-20 14:44:52 · `#格物/金融`
+
+About next-12M EPS
+
+It refers to earnings per share over the next twelve months
+
+How to calculate it: say it's January 2026 now — how much is it expected to earn over the next twelve months
+
+Next-12M might be: part of 2025Q1 + Q2 + Q3 + Q4
+
+Three months later it becomes: 2025Q2 + Q3 + Q4 + 2026Q1
+
+How is it calculated?
+
+Sell-side analysts + financial report updates + company guidance + consensus expectations → consensus EPS (of course you don't have to trust third-party platforms; you can work it out by hand yourself)
+
+Next-12M EPS ≈ most recent full-year EPS × (1 + next year's earnings growth rate)
+
+Next-12M EPS ≈ most recent full-year EPS × (1 + next year's earnings growth rate)
+
+Example (say, using Tencent):
+
+Trailing 12-month EPS (TTM EPS): ≈ HK$29
+
+You judge net profit can still grow +8%-12% over the next year
+
+
+<!--memo:bce6d283b01a-->
+### One-way car return costs and platform matchmaking fees
+
+> 2026-01-21 12:35:01 · `#格物/人生`
+
+I keep thinking — when returning a car, isn't the cost of returning it in a different city very high
+
+But in reality it's very counterintuitive
+
+Some that don't support one-way returns do so because they're low-price cars, small local fleets, and on non-popular routes, where gross margin is fairly low, and one one-way return easily eats up the profit
+
+Platforms love one-way returns, because the platform takes a matchmaking fee; with an extra one-way return fee, the platform's transaction volume is higher
+
+eHi is an exception, much like a platform's own rental company
+
+eHi does nationwide vehicle dispatching
+
+Analyzed from first principles: the car itself is high-value, high-risk, and the service is highly dependent on offline operations, so it avoids haggling between branches, liability issues, and complaint issues
+
+
+<!--memo:466b40a6685c-->
+### Technology Should Free People from Instrumentality and Return Them to Experience
+
+> 2026-01-21 15:05:04 · `#预测`
+
+I'm thinking about how new tech products keep appearing in the future
+
+This kind of product needs to have some real friction in reality
+
+And actually technology is what lets people escape instrumentality
+
+I wonder whether this means there is a very clear direction, which is the direction of using new technology and of people's own experience
+
+
+<!--memo:b5e6a883da59-->
+### Earphones Are the Lowest-Friction Form of Wearable Intelligence
+
+> 2026-01-21 15:15:22 · `#预测`
+
+The role of earphones hasn't been fully uncovered yet
+
+Earphones + hearing are the lowest-friction intelligent structure for humans
+
+They don't occupy your hands, don't occupy your eyes, don't interrupt your actions, and can be connected at any time
+
+Even compared with eyes, because eyes are really hard to wear all day without getting tired, and without being awkward, and they don't display things at random, and they don't intrude on others
+
+Watches and bands are the intelligence layer on the body
+
+Whether AI truly cares about you in the future
+
+depends on whether it is plugged into your physiological data stream
+
+A ring is a very sensual form, but its ceiling is very clear: extremely low presence, extremely high wear rate
+
+The phone will go back behind the scenes ...
+
+
+<!--memo:83996c9ba056-->
+### I Hope the World Has More Smart People, Not Just Winners and Losers
+
+> 2026-01-21 15:29:13
+
+Everyone is very capable and very smart, and I think that's a good thing
+
+I hope this world has more smart people
+
+Even if many of them are my competitors, even if in the short term the world is zero-sum
+
+But still, this world isn't only about winning and losing
+
+I can learn faster and run farther
+
+Only when I can see a world like this is it worth living seriously
+
+
+<!--memo:c534bbe92d87-->
+### Going Public, Securitization, Bondization: Financial Rights Made Standard and Liquid
+
+> 2026-01-26 19:25:58 · `#格物/金融`
+
+Going public, securitization, bondization
+
+Differences at the level of engineering methods
+
+But the essential purpose is the same
+
+To turn "untradeable real-world relationships"
+
+into "financial rights that can be priced, can circulate, can be divided, and can be controlled"
+
+Going public turns a participatory relationship into shares
+
+For example, I participate in this company's growth, I bear the risk, but I also enjoy the residual; dividing participation into standardized shares lets strangers come in and trade
+
+Bondization turns a promise relationship into a contract: originally the relationship is that I lend you money and you pay me back when due; bondization writes the promise down hard and turns future cash flow into a piece of paper that can be bought and sold
+
+Securitization packs up messy futures; the real-world relationships are
+
+mortgages
+
+student loans
+
+credit cards
+
+rent
+
+royalty income
+
+packing a pile of scattered, low-liquidity future cash flows
+
+into packages → tranches → standardization → selling to the market
+
+Finance itself doesn't create real value
+
+What it creates is a rearrangement of control rights and option rights
+
+Once you take things out of the lived world and into the game world, there begins to be leverage, expectations, panic, models
+
+
+<!--memo:a58992a989aa-->
+### The Variety of Trading Units in Hong Kong Stocks and the Odd Lot Market
+
+> 2026-01-29 11:26:23 · `#格物/投资`
+
+Trading units for Hong Kong stocks
+
+I always thought the trading unit started at 100, but it turns out not
+
+Many large-cap stocks and well-known companies use this specification; it looks the most like A-shares
+
+Also very common is 500 shares per lot and 1,000 shares per lot, especially for lower-priced stocks
+
+There are also a smaller number of odd specifications, such as 200 shares, 400 shares, or 2,000 shares per lot, depending on how the company defines it
+
+There are even ones where you can buy 1 share — those are called odd lots, and have to be traded in the odd lot market
+
+minimax starts at 20 shares, which is like changing the "entry ticket" from business class to economy class, friendlier to retail investors and making trading more active
+
+
+<!--memo:5457ece445cd-->
+### The Hang Seng Index as a Reference for Market Trend and Sentiment
+
+> 2026-01-30 11:04:47 · `#格物/投资`
+
+The reference value of the Hang Seng Index
+
+The Hang Seng Index generally selects the 50 largest and most liquid stocks in the Hong Kong stock market as a weighted index, reflecting the overall trend of the market
+
+It also partly represents market sentiment: when the index rises, market sentiment leans optimistic; when the index falls, risk may be relatively high
+
+When the index fluctuates a lot, some individual stocks may be dragged down even if their fundamentals are fine, and the risk of short-term speculation increases
+
+Some good tech companies with strong profitability, many users, and ample cash simply have better fundamentals. By contrast, new companies may have immature products and little revenue, so their fundamentals are weaker
+
+
+<!--memo:19de27402cb3-->
+### Investment Characteristics of the Tracker Fund and Hang Seng Index Funds
+
+> 2026-01-30 11:12:23 · `#格物/投资`
+
+Tracker Fund
+
+It tracks the Hang Seng Index; buying it is equivalent to buying all the blue-chip stocks in the Hang Seng Index (weighted by market cap)
+
+The risk is relatively spread out; it suits people who want to follow the market's rise and fall, don't want to research individual stocks, invest long-term, and pursue the market's average return
+
+The Hang Seng China Enterprises Index Fund tracks the Hang Seng China Enterprises Index, also called the "H-shares index," which includes Chinese state-owned enterprises listed in Hong Kong; its risk and volatility are usually greater than the Hang Seng Index, and returns may be higher but short-term fluctuations are also larger
+
+
+## 5. Self-Knowledge and Psychology
+
+*44 entries*
+
+<!--memo:e491994fadbd-->
+### Traveling the world is losing its appeal, and a growth reflection
+
+> 2026-01-05 15:55:42 · `#观我`
+
+Traveling the world seems to be gradually losing its appeal
+
+When I was in Xi'an I planned to apply for a Schengen visa and a New Zealand tourist visa; the materials were pretty much ready, I even booked a consulate appointment, but I kept putting off any action
+
+Actually I can feel it — at this stage I don't have the same urge as before to go see the world objectively, or maybe the acceleration has started to decline. Even though the speed of growth is still increasing, it's not explosive anymore, the slope is starting to get smaller ...
+
+Last year's main line was understanding the world, understanding myself
+
+The former is hoping for as many choices as possible, or to give other people more choices
+
+The latter is hoping that after understanding myself I can handle my own inner world more harmoniously, reach self-consistency, or reach a reconciliation between myself and the world
+
+Traveling the world is of course very good; an experiential life seems to be a kind of political correctness, and the ease of eating, drinking and enjoying yourself seems to be some kind of standard for being free-spirited
+
+Make yourself a bit smaller, place yourself a bit lower
+
+A bit softer
+
+And then see a bigger world
+
+
+<!--memo:cac154ef2258-->
+### The aesthetics and cultural meaning of Chinese stone pillar carving
+
+> 2026-01-05 20:16:53
+
+Chinese stone pillars
+
+including patterns like those on roof tiles, statues
+
+Their reason for existing isn't only functional; there's also aesthetics, and existential meaning
+
+The stone pillar is carved almost 360 degrees all over, the dragon's body coils upward around the pillar, there's no "blank face"
+
+Visually it weakens the static feel of the "pillar" and strengthens "growth, coiling, rising"
+
+It feels vividly alive
+
+The dragon isn't coiled randomly; it rises consistently from bottom to top, counterclockwise/clockwise
+
+In Chinese culture the dragon has its own unique existential value and meaning
+
+The dragon's proportions are exaggerated: a big head, strong claws, the body pressed tight against the pillar
+
+The information density is very high; Eastern ancient architecture doesn't have the usual fear of blank space — it's the opposite of blank-space anxiety
+
+
+<!--memo:7bc78f3431fb-->
+### Building a personal brand and connecting with readers
+
+> 2026-01-06 13:23:47 · `#格物/知我`
+
+Building a personal brand
+
+What's core for readers is forming a connection with the author through the writing
+
+Having substance is the foundation, clear logic is the precondition
+
+Sincerity is the core of connection
+
+No one believes a know-it-all newcomer, but people appreciate someone who grows steadily
+
+Create a personal blog or WeChat official account and update it often, run social media accounts sharing bits of your writing, build an email newsletter to stay in touch with subscribers, join offline salons or livestreams to interact with readers, and so on
+
+Accumulate instances of your own work, acquire some necessary titles ...
+
+
+<!--memo:ed8470814896-->
+### The core of Schopenhauer's will and the human predicament
+
+> 2026-01-06 14:25:22 · `#格物/意志`
+
+Schopenhauer's chapter on the will
+
+I never quite understood the will
+
+For Schopenhauer, the will isn't a person's subjective desire; it's a blind force driving all existence to endlessly "continue, expand, contend, maintain itself"
+
+The core is: blind, ceaseless, no endpoint, indifferent to happiness
+
+The will isn't "what I want"; before you even think that question, the thing is already pushing you to keep going, to want more, to want to live, to want to continue
+
+All things want
+
+But objective laws don't shift according to human will
+
+People always feel a sense of lack, desire never stops, the world never stabilizes
+
+It precedes reason, precedes consciousness, driving all things to endlessly want, continue, expand
+
+The human problem is that we're not only driven by it, we're clearly aware of it — and that's part of human suffering
+
+Three capacities can help humans
+
+Aesthetics: the will temporarily becomes "watching"
+
+Compassion: the will no longer only grasps "me"
+
+Reducing desire: not satisfying it, but not letting it keep accelerating
+
+
+<!--memo:88db4b9f1ed5-->
+### Awareness of the will operating, and your relationship to it
+
+> 2026-01-06 14:34:10 · `#格物/意志`
+
+will → instinct / impulse → emotion / feeling → intuition → reason
+
+Becoming aware of the will doesn't make it disappear; you change the relationship between you and it
+
+You are a vessel watching the will operate
+
+
+<!--memo:454114eaf407-->
+### Subjectivity and a life you define yourself
+
+> 2026-01-06 16:15:01 · `#格物/主体性`
+
+Subjectivity
+
+You could call it extreme self-consistency
+
+or extreme self-centeredness
+
+A selfhood that can be defined, yet can't be defined
+
+Life's boundaries are there to be experienced and broken; dare to explore and forge your own life
+
+Someone with weak subjectivity is easily swept along by mainstream social values, becoming anxious and following the crowd
+
+But if a person clearly understands themselves and the world, first they'll want to experience the world, define the rules, and accomplish themselves
+
+what is right, what is good, and then choose and execute firmly, not caring about outside voices
+
+
+<!--memo:dff6db7b569d-->
+### Low-frequency scenarios are the death spot for SaaS products
+
+> 2026-01-06 19:30:21
+
+Low frequency is SaaS's death spot
+
+It determines users' usage habits
+
+A lot of product features try to retain users through some dopamine and rewards
+
+But with products, the user's usage time really is very fragmented
+
+
+<!--memo:8f2df02f3fb1-->
+### Enduring enchantment in an age of disenchantment
+
+> 2026-01-07 14:55:26 · `#格物/知我`
+
+I feel like a lot of things aren't interesting anymore
+
+A lot of things are explicable
+
+science, culture, technology, institutions ..
+
+even human nature
+
+All of these can be disenchanted, understood ...
+
+But some things are endless — maybe that's where we truly feel the enchantment in this era
+
+art, creation, technology ...
+
+
+<!--memo:59c7ddf43c54-->
+### Downward comparison and a growth path through a sense of mission
+
+> 2026-01-12 08:59:05 · `#格物/人生`
+
+My dad always wants to instill in me that comparing downward brings peace of mind, eases the pain
+
+But from my own experience, what I feel more is sympathy and a sense of responsibility — can I do something, is there some sense of mission
+
+Growth (I'm getting stronger), connection (I love and am loved), contribution (I make the world a little less painful)
+
+
+<!--memo:40bf74018e78-->
+### Allowing yourself to be inefficient in intimate relationships
+
+> 2026-01-13 11:30:09
+
+In the outside world: calm, clear, rational
+
+But in intimate relationships, also allow yourself to be inefficient, incorrect, not on top
+
+This kind of person isn't "not quite there"; they've realized early what they want and don't want
+
+
+<!--memo:91931b6c1781-->
+### Accepting the world's complexity and the essence of power
+
+> 2026-01-13 21:32:58 · `#格物/知我`
+
+A few signals I cultivated last year while living abroad and thinking
+
+Accepting and understanding the world's complexity
+
+Not in a hurry to prove myself
+
+Being alone is nothing ... being misunderstood is nothing ...
+
+Sympathetic joy, appreciating the other person's excellence
+
+I met a teacher who added one sentence I find deeply philosophical
+
+Power comes from "being jointly acknowledged"
+
+Violence comes from "no longer being able to be acknowledged"
+
+
+<!--memo:a9cc284e31ae-->
+### Avoiding the victim's view is how you play the real-world game well
+
+> 2026-01-14 10:24:41 · `#格物/知我`
+
+To play this real-world game well, you should avoid letting yourself take the victim's perspective
+
+It's essentially a product of culture too — because we depend on things, we take a side, the side of the victim: the media's motive behind this news is to target me, this stock exists to harvest me
+
+The news it puts out today is essentially meant to pull traffic and harvest us ...
+
+But does that mean you don't take part? Or block it out? Then you seem to lose the experience of being a player yourself
+
+Most systems in this world — media, capital markets, platform algorithms — aren't out to hurt "you"; they're out to complete their own objective function.
+
+Traffic, attention, conversion rate, emotional swings, trading volume
+
+You're not the target; you're just one unit of the quantity
+
+I have no game rights, the rules are set by others, I can only take it passively
+
+And the other side is evil by intent, so my failure is justified
+
+These three combined mean you'll keep getting hit over and over by the same mechanism
+
+Once you explain the world with this narrative long-term, you're forever waiting for someone who "should be held responsible" to show up
+
+People who truly "play this game well" usually quietly complete a perspective switch:
+
+not "what are they doing to me"
+
+but "what does this system reward, and what does it punish"
+
+Try to be a participant, a member in the game — the market is very interesting
+
+Under this mechanism, where should I stand so I'm not easily consumed?
+
+
+<!--memo:57368f4c9c4c-->
+### Switching from the victim's view to the game-theoretic view is closer to reality
+
+> 2026-01-14 10:28:36
+
+If you use the victim's view, you'll think:
+
+"Is it time to leak news and harvest me again?"
+
+If you use the game-theoretic view, you'll be closer to reality:
+
+"This is an emotional patch that's friendly to the bulls but limited in force"
+
+
+<!--memo:ad8c209c56cd-->
+### Emotional pumps are the market maker's strategy pushed through news
+
+> 2026-01-14 13:32:43
+
+Emotional pumping to drive prices up
+
+The market maker pushes it through the news
+
+
+<!--memo:c0a9232a62eb-->
+### In the attention economy information is abundant and attention becomes scarce hard currency
+
+> 2026-01-14 14:14:31 · `#格物/注意力`
+
+The attention economy
+
+In an information-rich world, the abundance of information means the scarcity of something: what information consumes — the receiver's attention
+
+Then there's the zero-sum game: attention is actually a non-renewable hard currency, more precious than time. We only have limited waking hours each day, and all the apps, media, work, family — we have our own ranking of values
+
+In the new era, information isn't that important — information is surplus, attention is scarce
+
+Attention is free, and also the most expensive
+
+Platforms (The Platforms), the so-called "Attention Merchants" (like TikTok, Meta, Google). Their goal is to maximize your LTV (Life Time Value) by extending your Time Spent
+
+Advertisers (The Advertisers): the real customers. What they buy is a change in your behavior (i.e. you see the ad and then buy something, or change your perception)
+
+Users (The Users): both raw material (providing data) and labor (freely producing and filtering content for the platform via likes and comments)
+
+
+<!--memo:9d2ed8475561-->
+### Blend into the system like water
+
+> 2026-01-15 21:03:50 · `#格物/知我`
+
+Be like water
+
+Understand the system, understand yourself
+
+Blend into the system
+
+Design the system, and it flows naturally
+
+Don't resist
+
+Don't resist reality
+
+Don't resist the world
+
+Don't resist yourself
+
+Don't hate the world; accept the world's diversity
+
+
+<!--memo:25826f16b0e0-->
+### Choosing sides too early limits your possibilities
+
+> 2026-01-15 21:55:22 · `#格物/知我`
+
+I think taking sides too early and caring too much about your identity is very bad for playing this game well
+
+It's often a beginner who better knows how to use the world's resources
+
+In today's information-explosion era, users' eyeballs, media slots, investors' time, talent's resume submissions — all are the core currency of the "attention economy"
+
+You don't need to burn huge ad budgets; one Moments post + riding a trending topic can get tens of millions of impressions
+
+You don't need to burn huge ad budgets; one Moments post + riding a trending topic can get tens of millions of impressions. Musk using tweets to move stock prices, Yu Chengdong using "far ahead" to farm presence — it's the same playbook
+
+In the 2026 Chinese tech context, capturing attention is itself important, even mandatory
+
+
+<!--memo:e13f54f83c4a-->
+### The money machine of the attention economy
+
+> 2026-01-15 22:18:01 · `#格物/注意力`
+
+Right now, in an era that's highly digitalized and information-overloaded
+
+capturing attention really is the core engine of the money-making machine
+
+The concept of the attention economy was proposed by economists back in the 1990s, but now it has evolved into a trillion-dollar industry
+
+Attention is traffic, traffic is money
+
+Platforms like TikTok, Instagram, X (formerly Twitter) fight every day over trillions of seconds of users' attention, converting it into ad revenue, e-commerce conversion, or monetized influence. In 2025 the global digital ad market already exceeded $600 billion, and is expected to break $700 billion in 2026, driven mostly by the "eyeball economy." If you can efficiently capture attention, you can go from ordinary person to billionaire (like Kylie Jenner building a cosmetics empire through Instagram influence), or double a company's valuation (like Musk using tweets to move Tesla's stock price)
+
+Capturing attention now isn't loud shouting anymore; it's cleverly designing a system
+
+
+<!--memo:8006052fed03-->
+### Cognitive structure and the timing of understanding
+
+> 2026-01-17 13:59:50 · `#格物/知我`
+
+I thought before — what if human thinking jumps in stages
+
+that is, for the same information, like some poems learned early on, the Dao De Jing
+
+the brain can only understand those "signals that appeared early" once it has enough structure
+
+So there are some sounds, lyrics, sentences, viewpoints — but they had no hook to hang on, so they got archived in a numb, unfelt form
+
+But truly important understanding can hardly ever be "too early" or "too late"
+
+If you say you only understood love after losing it ... you're putting great importance on love's result — but what if it's love's process?
+
+The ability to act isn't willpower; it's a composite of cognition + emotion + relationships + risk tolerance
+
+Suddenly I feel it deeply: a you who has today's understanding but lives at a past point in time — that person was never born
+
+When I chat I sometimes have a problem: I care too much about whether this view is right, whether it's worth it, whether I myself endorse it .... It feels like resistance — like water .... Blend into this world, and then it's understanding, tolerance, analysis, building systems
+
+What does this person care about, such that they say it this way?
+
+What they're saying isn't a viewpoint; what class of problem are they solving?
+
+If this is wrong, under what conditions would it collapse
+
+Allowing vagueness to remain is a form of respect for the other person, leaving a cognitive backdoor in your own language system
+
+I don't understand now, but this sentence may be very important
+
+How to judge? Some body signals and intuition that are truly valuable
+
+A little uncomfortable while listening
+
+For a moment you want to argue back, but can't say why
+
+After hearing it you keep thinking about it, but can't figure it out
+
+Emotionally it feels stuck, not smooth
+
+This information matters; it touches the layer of cognition you haven't yet unfolded
+
+
+<!--memo:a43f69428eba-->
+### Suffering is subjective; it's a required growth course for everyone
+
+> 2026-01-17 23:42:44
+
+But thinking about it from another angle, the definition of suffering is subjective. An ordinary person's daily striving is a kind of "strength," but the spiritual emptiness that a wealthy life brings is also a real "powerlessness" for the person living it. Shedding a tear for a flower may be her way of filling her inner world
+
+It's hard for us to truly empathize with someone else's life, especially under a huge gap in wealth and status. Rather than judging whether her life is "smooth" or "not smooth," it's better to see it as a unique human sample. Her experience has conveniences we can't imagine, and inevitably shackles we can't feel
+
+Suffering feels like a required course in growing up — for everyone, they'll face suffering, they'll be moved, they'll put themselves in others' shoes, they'll feel it firsthand ..
+
+
+<!--memo:818c860731f1-->
+### Projective envy curses the self you can never become
+
+> 2026-01-17 23:52:01
+
+Projective envy
+
+What's being cursed isn't you, but that self I can never become ..
+
+Attacking her produces a false sense of superiority, easing the envy and anxiety created by the huge gap
+
+
+<!--memo:09adc1402874-->
+### Social issues: observe, record, analyze, inject less emotion
+
+> 2026-01-18 09:45:12
+
+Social issues, naturally, through the means of social observation
+
+Just like the plain-description writing technique: record, analyze, pour in less of your own emotion, and so avoid generating bias
+
+Because this process needs two things sustained: improving yourself, and understanding the world
+
+
+<!--memo:075e185d10b1-->
+### Thoughts interpret the world; feelings are your body's emotional reaction
+
+> 2026-01-18 14:08:50 · `#格物/感受`
+
+People's thoughts
+
+and people's feelings are different
+
+Thoughts are your own explanation of what's going on with this world
+
+Feelings are your body's and emotions' reaction to this thing happening to me
+
+Some more essential feelings
+
+Feelings that don't pass are a signal
+
+Thoughts can be "wrong"; feelings themselves have no right or wrong
+
+How you explain this feeling is a very deep layer — wrapping feeling with thought
+
+You say: "I'm not happy with him, because he's too selfish."
+
+Pulled apart, the order is usually:
+
+1️⃣ The body feels uncomfortable first (feeling)
+
+2️⃣ The brain immediately gives an explanation (thought)
+
+3️⃣ You think that explanation is the feeling itself
+
+But the real feeling may just be:
+
+Being ignored
+
+Not being respected
+
+Uncertainty
+
+Fear of losing control
+
+Thoughts are a means of rationalization
+
+Thoughts are the result of socialized training; feelings are the underlying system left by evolution
+
+
+<!--memo:b3e5100ecc90-->
+### The strength is evolving continuously in long competition without being pushed
+
+> 2026-01-20 13:58:05 · `#观我`
+
+What exactly are my strengths
+
+and which weaknesses aren't well suited to my surviving in the future world
+
+My strengths don't feel like places where I'm better than others, but rather a combination of abilities where, in long-term investment, I don't need to be pushed and can still keep evolving
+
+Some of my weaknesses too — not a moral issue, but a configuration with low cost-performance in the future world
+
+Using a mismatched self to chase what's hot is chronic depletion; using a matched self to enter a trending track is compounding
+
+Strengths are the part of you that, in a long-term competitive environment, gets others worn out but not you; the part of you that needs no external incentive; your default way of responding to complex problems; a way of recovering energy
+
+The world is accelerating, while the individual's answer is becoming more personalized — even the risk is an opportunity for a few ...
+
+
+<!--memo:c4c6845dd33a-->
+### Captive to self-consistency: external attribution kills the ability to correct
+
+> 2026-01-21 00:09:59 · `#格物/人生`
+
+People held hostage by the feeling of self-consistency
+
+These people find it very easy to be self-consistent
+
+but they blame some mistakes on external causes and so lose the ability to correct course
+
+This kind of self-consistency always attributes outward, and the problem this brings is that it's very hard to correct yourself
+
+It's also very fast: the moment something happens, the brain supplies an explanation, with not even a hovering period, and it easily slaps on a label
+
+What it brings is emotional stability, not an increase in ability
+
+
+<!--memo:e941c659e9ec-->
+### Sanctifying the Road Not Taken Behind a Parent's Filter
+
+> 2026-01-22 20:35:19 · `#格物/知我`
+
+What you like most about him isn't what he really looks like; when you see what he really looks like, you'll feel he's very ordinary
+
+I think of the disenchantment my friend talked about
+
+Isn't it the same with my parents — in their eyes there is always a longing for the things they sought but could not get
+
+Sometimes I think this is also why it's hard to communicate with them: they think they're right, think what you're doing is nothing much, and even think that the road you didn't choose is sacred; universities I never attended they also consider incomparably impressive
+
+But to me it seems this world doesn't have so many filters. I think the real world is just like that, but my parents seem to live in a world that can only hold up by relying on filters
+
+A good university, a good work unit, an urban hukou, a respectable identity, a stable path
+
+When reality doesn't give a person a pass, a person can only sanctify these things, otherwise the psyche will collapse
+
+The roads they haven't walked are imagined to be incomparably correct
+
+The things they didn't get are given the power of "if only I'd had it back then, everything would have been different"
+
+The freedom they didn't get to choose is packaged as "this is the only correct choice"
+
+People easily fall in love with meaning — that kind of meaning which carries possibility, symbolism, scarcity, an unfinished feeling
+
+
+<!--memo:ae6310d0812b-->
+### Emotional Acceptance and Being Told Determine What Memories Stay
+
+> 2026-01-23 18:39:11 · `#格物/记忆`
+
+Self-frozen memories
+
+Whether a person retains a memory generally depends on three things
+
+Whether the emotion was allowed to exist
+
+Whether the action was self-approved
+
+Whether this experience was ever told
+
+Failure leaves emotional residue, while success may instead leave nothing at all
+
+
+<!--memo:bdd14ea4b421-->
+### A Doting Mother Ruins the Child: Sacrificial Parenting and the Conflict of Responsibility Boundaries
+
+> 2026-01-25 20:19:01 · `#格物/知我`
+
+A doting mother ruins many a child
+
+I feel like a ruined child myself
+
+My mother has a people-pleasing personality
+
+My mother covers for mistakes ...
+
+and adjusts all her behavior around the child's feelings, for the child
+
+and also uses her own sacrifice to buy obedience
+
+This kind of relationship feels very uncomfortable; being around it clashes strongly with my own values
+
+A person being responsible is itself: making a mistake -> bearing the consequences -> correcting the behavior
+
+What I agree with is boundaries, responsibility, reciprocity, personal will
+
+But she still lives in:
+
+sacrifice = love, endurance = kindness, obedience = intimacy
+
+
+<!--memo:39f9d3a439b8-->
+### How to Get Along with My Mother by Establishing a Sense of Boundaries
+
+> 2026-01-25 20:24:25 · `#格物/知我`
+
+A very classic line about getting along with my mother
+
+They are used to being controlled, used to accommodating
+
+I need to take back my own right to act, and make sure my own things are handled by me
+
+Enforce my own sense of boundaries: these things I'll do myself, I must do them myself, without explaining reasons, and declare my sense of boundaries
+
+No longer cooperating with her sacrifice script
+
+Likewise, through reinforcement learning itself — how to build a healthy system
+
+Reward correct behavior, punish incorrect behavior; it's hard for parents and children to communicate rationally, and feigning emotion is a very good way
+
+Accept the behavior, but add no emotional reward
+
+She did a lot; you don't need to thank her excessively, explain excessively, or compensate excessively
+
+Closeness is not the same as clinging
+
+Love is not the same as round-the-clock care
+
+
+<!--memo:d882b9c975fa-->
+### How the Environment Decisively Shapes a Person's State
+
+> 2026-01-26 14:55:52 · `#格物/环境`
+
+I'm someone quite influenced by the environment
+
+Change the city, change the person, change the daily rhythm, and my state is quite different
+
+In a good environment, growth is exponential; in a bad environment, the depletion is exponential too
+
+So I also deeply understand that choosing and building your own environment is extremely important
+
+
+<!--memo:1c3a5d9daf88-->
+### The People-Pleasing Personality: A False Sense of Safety and Real Needs
+
+> 2026-01-26 18:00:18 · `#格物/人格`
+
+The people-pleasing personality
+
+Some people seem to like praising others too much
+
+"As long as I make others comfortable, I am safe"
+
+But in reality they may seem very easy to talk to on the surface, while their true state may be highly scanning other people's emotions and being insensitive to their own
+
+They are not truly desireless; they just don't dare to take responsibility for their desires in relationships
+
+Pleasing others can't buy true being loved; it can only buy "being needed"
+
+
+<!--memo:45ebb804aec2-->
+### Parents Worry About Small Things: Generational Scales and Diluted Attention
+
+> 2026-01-27 11:19:57 · `#格物/成长`
+
+Parents are always worrying about small things
+
+Small things I don't even think are that important
+
+Sometimes it's very helpless
+
+I feel like they and I are like running on two completely different scales
+
+What I care about is
+
+whether the direction is right
+
+whether life is self-consistent
+
+whether I'm accumulating long-term ability
+
+world structure, systemic risk, the space of possibilities
+
+While what they care about is:
+
+whether things are safe right now
+
+whether anything went wrong today
+
+whether they've been ignored
+
+whether things "run like a family"
+
+It feels very tiring, my attention gets diluted
+
+For another example, they will care excessively about certain things, to the point of fighting over them, but I think enough space should be given, and a suitable system used to guarantee that things run naturally
+
+Allowing them to care about their own small things is important, even trivial, nagging small things, and growing up often means no longer treating these forms as truth
+
+
+<!--memo:93381c1754ca-->
+### Change Your Behavior to Advance Your Goals; Change Your Nature and It Follows Naturally
+
+> 2026-01-28 12:22:04 · `#格物/改变`
+
+Change your behavior to make progress toward your goals
+
+Change your nature, so that your behavior changes naturally along with it
+
+Most people set a superficial goal, psych themselves up, keep themselves disciplined for the first few weeks, and then effortlessly return to the way they were, because they are trying to build a good life on a rotten foundation
+
+If I don't find it fun, then why am I doing what I'm doing?
+
+If you want to complete a certain task, you need to create the lifestyle of that task, that is, a system
+
+Only believe in action. Life happens at the level of events, not at the level of words. Believe in action!
+
+Action changes a person, not thinking or ideas
+
+
+<!--memo:169232dcbe7e-->
+### Change Your Perspective to Set Goals; Action Reinforces Ideas, Not the Status Quo
+
+> 2026-01-28 14:47:10 · `#人生/成长`
+
+If you say you want to quit that dead-end job, but you have no real reason to keep staying there, you may start to think you don't have enough courage, or that you were never a "risk-taker," but the truth is, what you're pursuing is safety, predictability, and an excuse not to look like a failure in front of other people in your life who are also doing dead-end jobs
+
+Is what we really change actually the status quo? No, it's our goals
+
+Change your perspective, set a goal; a goal is a vision of the future
+
+It's like a lens that lets you notice the information, ideas, and resources that help you achieve your goal
+
+How people reinforce ideas is really terrifying, no matter through what means, no matter whether from yourself, your teacher, your parents, friends, advertising, or any other source — and, if you firmly believe the idea is correct, then its influence on you is like the hypnotist's words on a hypnotized person
+
+This is also how we become who we are, how we become tomorrow's self, and this is also what constitutes our identity
+
+We want to complete a goal
+
+We want to seek a sense of identity to move forward
+
+We will notice the important information and ideas for learning
+
+Repeating the behavior until it becomes automatic, unconscious (conditioned reflex)
+
+This behavior becomes part of your own cognition (I'm that kind of person)
+
+You defend your identity to maintain psychological consistency
+
+Your identity shapes new goals, thus starting the cycle again; if this identity is not conducive to a good life, the situation will deteriorate rapidly
+
+So we all have a strong sense of identity
+
+When our identity is threatened, all sorts of things happen
+
+
+<!--memo:44b69aaf0936-->
+### Life Goals Determine the Level of Thinking; Enjoying the Process Requires the Right Goal
+
+> 2026-01-28 15:15:01 · `#人生`
+
+What kind of life do you want
+
+then you must exist in a corresponding specific mental level
+
+People's thinking develops over time through predictable stages
+
+When you are born, you are like a little survival sponge, absorbing every belief you can get (these beliefs are largely influenced by your culture), in order to feel safe and secure
+
+The only true measure of intelligence is whether you can achieve your life goals
+
+Goals determine how we see the world
+
+You can enjoy the process, provided the goal you pursued at the beginning is correct
+
+For most people, these goals are imposed on them by others, preset in your subconscious like code
+
+
+<!--memo:d70a1d51c78f-->
+### Life Needs a Directional Structure; Handle Things Lightly During Exploration
+
+> 2026-01-28 17:55:17 · `#人生/成长`
+
+It doesn't have to be a goal, but there definitely needs to be a directional structure
+
+It's almost impossible for a person to live long without a "directional structure"
+
+Scenarios where goals are naturally needed:
+
+Scarce resources: needing to survive, to get ashore, to escape poverty
+
+Clear tasks: exams, projects, milestones
+
+Limited time: the deadline itself is a goal-making machine
+
+Goals are sometimes very useful, especially when the direction is unclear, when you need to stabilize action; action is especially important
+
+During the exploration period, handle things lightly
+
+
+<!--memo:1ed1e3b668da-->
+### Zeng Guofan's Reflection and Adjustment Producing a Positive Cycle of Growth
+
+> 2026-01-28 20:47:01
+
+I found that Zeng Guofan's two big changes — first passing the imperial examination, and then, after entering the Hanlin Academy, wanting to become a sage — both happened because of his dissatisfaction with the status quo; he reflected deeply and examined himself, and in the end kept adjusting and found the method that suited him, and from then on was unstoppable.
+
+This kind of reflection is very necessary; I think it is very necessary for every person. Because with reflection, there is a concrete goal; because there is a goal, a series of efforts are made for that goal, such as changing the environment, or taking a series of actions.
+
+But this kind of environment and this kind of action will often subtly influence you, that is, they will change you, change your position, and give you a different sense of identity. Then this different sense of identity will push you to have new ideas and new goals, and then new actions, producing a positive cycle.
+
+This is how a person, imperceptibly, grows and evolves.
+
+
+<!--memo:4cc9f81406ca-->
+### An External Script Stripping Subjectivity Leads to a Limbo State
+
+> 2026-01-29 14:33:03
+
+When an individual is inside a "script," because the goal is given from outside (Extrinsic Motivation) rather than generated internally (Intrinsic Motivation), the brain's reward mechanism — mainly the dopamine system — cannot be effectively activated. This state leads to what Ke describes as a "limbo state" (Limbo): a feeling of stagnation that is neither complete failure nor real success, in which the individual feels lost, anxious, and lacking motivation
+
+The problem with a script lies in stripping a person of their subjectivity
+
+
+<!--memo:214999a3a9f6-->
+### A Warning About the Body When the Differences Between Environments Are Too Great
+
+> 2026-01-29 15:09:24 · `#格物/知我`
+
+Sometimes you need to be cautious when changing environments
+
+The difference between environments had better not be too great
+
+When the environment changes differently, the difference in your personal habits definitely must not be too big, because the body needs to adapt
+
+For example, in Guangdong I used to brush my teeth and wash my face with cold water; after coming back, if the water for brushing teeth isn't water run from the gas water heater, it's super icy, which triggers dentin sensitivity
+
+And washing your face with hot water itself carries a certain strong stimulation, which is unfriendly to the skin
+
+
+<!--memo:c021e473b2ee-->
+### Searching for Self-Subjectivity and the Confusion of Reconstructing Identity
+
+> 2026-01-30 11:42:29 · `#观我`
+
+I still feel it isn't game enough
+
+How do I describe this feeling?
+
+Because I always feel it's a little short
+
+I thought for a while, thought for a long time, searching for that missing piece
+
+I haven't found myself
+
+The self relies on past narratives, on one's own reconstruction of identity; what's needed is one's own subjectivity
+
+I am searching for this part of subjectivity
+
+
+<!--memo:c161ecf68d79-->
+### Reinforcement Learning in Typing and Social Conversation
+
+> 2026-01-30 11:48:15 · `#观我`
+
+I type because I've reinforced my learning of the act and process of typing
+
+To a degree, voice is the same
+
+Those people who often communicate and converse through social means, their communication is smooth, and naturally they will also habitually use this mode to think and create efficiently
+
+The field of cognitive science itself is about repeated practice forming muscle memory, timely feedback then adjusting strategy, goal-driven then incentivizing optimized behavior
+
+People who often write code may lean more toward "modular + conditional judgment" style thinking
+
+People who often debate will automatically build a "premise-conclusion-rebuttal" framework
+
+While frequent social conversationalists are good at the "empathy-response-push forward" loop
+
+
+<!--memo:c98c91cd1013-->
+### A Way to Grow by Recording Life and the Process of Playing Games
+
+> 2026-01-30 13:13:07
+
+It's ultimately a way of recording life
+
+Record well how you play the game well
+
+Help people grow
+
+
+<!--memo:f5e4599b9d68-->
+### Finding Your Own Position in the Information Age
+
+> 2026-01-30 15:39:56 · `#格物/注意力`
+
+In an age of noisy information
+
+All kinds of short videos, AI, self-media, news, entertainment ...
+
+How do you find who you are?
+
+First of all, be clear about what you want
+
+You could call it a direction, you could call it a goal
+
+The behavior, experiences, and thinking based on the goal — that is focus
+
+And the experiences in turn add to yourself, making the self clearer and the goal clearer
+
+
+<!--memo:8e34495b943b-->
+### The feeling of life while camping on an island
+
+> 2026-01-30 20:56:51
+
+Let me talk about my camping experiences — one of the few times in my life I've camped. The best camping experiences were actually on some of Hong Kong's islands. They're cut off from the world, and you can feel that you're in a very primal environment. Dense forest all around, facing the sea, no light pollution. Because there's no city settlement for miles, even dozens of kilometers, around, it's very quiet there, the sky is black, with just a faint bit of light far off, and from that you can tell that's the direction of downtown Hong Kong.
+
+Sometimes when I open the tent and the sea breeze blows in, watching the grass nearby sway, I get a very particular feeling. I think it's alive — it's a kind of life force calling out. In that moment, even though I'm alone, even though I'm lonely, I'm still in a jungle full of life, coexisting with it.
+
+But in an office building, even with lots of people around you, even when everyone is inside a city dwelling with very heavy social constraints, you can feel everyone nearby moving, but with no soul. The walls are static, the city has cars coming and going, but the cars feel static too, none of them have life force, as if the little bit of life force they have is fenced in. That's the kind of sensibility I want — a resonance at the level of the soul.
+
+I really miss the time I camped on Phuket. Occasionally I dig those photos out and think, wow, it was so beautiful. Keeping company with fireflies, looking around, just a few tents, a little starlight leaking out of them. That night we all gathered together and ate some late-night snacks. One guy cooked rice, we also had some barbecue and such, and it felt especially fun. There was also a Hong Kong sister who brought a bag of KFC over from Hong Kong, which I found especially funny. Even though the food was cold, in that moment it was delicious. Because we naturally triggered a biological instinct, a craving for food. That craving is hard to feel in daily life; only when you're short on material things, or drenched in sweat, or have pushed past the limits of your biological instincts, can you taste the primal flavor of food and feel that life is really good.
+
+
+## 6. Product, Engineering and Open Source
+
+*23 entries*
+
+<!--memo:5352ddc21b42-->
+### Designing systems and verifying order
+
+> 2026-01-05 10:43:10 · `#格物/系统学`
+
+Design a system
+
+verify whether a system can run normally
+
+whether your own understanding holds up
+
+The joy of creating an order
+
+code is a tool
+
+a method for achieving some purpose
+
+of course it can also be a way of thinking
+
+that is, a series of methods used to solve a well-defined problem
+
+
+<!--memo:1a22f2407e3c-->
+### A shift in the collaboration model of AI open-source projects
+
+> 2026-01-06 13:38:48 · `#格物/开源`
+
+Useful open-source projects in AI get stars more easily
+
+PRs on hot AI projects also grow explosively, and low-quality PRs flood in
+
+A project maintainer's attention is more valuable than the PR code
+
+The open-source collaboration model ought to change
+
+
+<!--memo:7782d84332e8-->
+### Scenario discovery beats scenario creation as a design philosophy
+
+> 2026-01-06 15:55:06
+
+Many scenarios are discovered, not created
+
+What you design might be a platform, a flexible system, the extreme of allowing individuals to naturally diverge, to allow emergence
+
+the flexibility of the individual
+
+
+<!--memo:f3ee69904fd8-->
+### The technical idealism of Google's founders
+
+> 2026-01-07 11:24:21
+
+Google's two founders — Larry Page and Sergey Brin
+
+I feel like they're both systems engineers with technical idealism
+
+They were self-consistent in the infrastructure era, but now the competition is brutal, the entry-point war era is fierce
+
+
+<!--memo:810a30fdc0b5-->
+### Positive-feedback systems and long-term stability
+
+> 2026-01-07 14:37:28 · `#格物/系统学`
+
+How important positive-feedback systems are
+
+If a system can't make itself better, it's just consuming the maintainer's will
+
+A machine has two fates
+
+constant upkeep
+
+or being scrapped
+
+The most captivating part of a system is long-term stability and the ability to evolve naturally
+
+This is also why mono no aware and wabi-sabi aesthetics endure
+
+Aesthetic elements are enduring, cross-cultural, driven by the will yet also beyond the will
+
+This is the only thing that can fight cognitive debt; systems tend to accumulate debt
+
+Technical debt and cognitive debt
+
+Cognitive debt accumulates with time — for instance, why shit-mountain code exists
+
+
+<!--memo:4627a4519972-->
+### Controlling your phone environment and self-awareness
+
+> 2026-01-08 14:49:20 · `#格物/系统学`
+
+For people who are good at using systemic capability
+
+the phone environment is especially important too
+
+and you can be aware of what you're doing right now
+
+For example the phone environment — controlling your own phone environment as much as possible matters a lot
+
+and being clear that time spent online is all reasonable
+
+
+<!--memo:4e7773e1f642-->
+### Motivation needs immediate feedback and visualization
+
+> 2026-01-11 08:55:12 · `#格物/系统学`
+
+Human motivation needs immediate feedback to sustain itself.
+
+Design a clear feedback mechanism for your system. I use the famous "don't break the chain" method: mark in a planner every day you complete the system action. Watching the chain get longer is itself a powerful motivator
+
+Actually flomo seems to work this way too, and Duolingo, and GitHub's green squares — it's fun and gives a sense of achievement
+
+You can use an app to check in, or simply note it in a notebook. The key is making progress visible
+
+
+<!--memo:668de3c2d0f0-->
+### The experience design of Xiaohongshu Diandian's right-swipe
+
+> 2026-01-11 10:23:54 · `#格物/产品`
+
+Xiaohongshu's Diandian right-swipe notes really moved me
+
+It turns an exit gesture into an opportunity for deeper exploration, maxing out the experience
+
+It's very intuitive, seamlessly connected. Originally you wanted to swipe back, and this gesture doesn't interrupt your rhythm of browsing notes; it's more like a hidden shortcut — when you need it, you slow down and take the chance to explore deeply
+
+It lowers the barrier for me to use it, very intuitive
+
+The information density is instantly maxed out too, for deeper exploration, or a summary
+
+
+<!--memo:671489d70411-->
+### call-me: architecture analysis of a phone peripheral
+
+> 2026-01-11 10:34:55 · `#格物/产品`
+
+call-me
+
+the phone peripheral used with Claude Code
+
+when Claude needs you, it steps in and calls you directly
+
+The scenario is clear: you have Claude run a fairly long task (editing code, researching, running scripts) and you can walk away; when Claude finishes/gets stuck/needs you to make the call, your phone/watch/even landline rings, and you can have a multi-turn conversation with it on the phone, finish the decision, then let it get back to work
+
+Architecture analysis
+
+It exists as a Claude Code plugin
+
+The plugin works via an MCP server
+
+The MCP server uses ngrok to tunnel and receive webhooks from the phone service provider
+
+The phone part goes through Telnyx or Twilio
+
+Voice STT/TTS uses the OpenAI API
+
+
+<!--memo:001808e48499-->
+### Environment mapping mechanisms and designing space by function
+
+> 2026-01-12 14:03:09 · `#格物/环境`
+
+Your own environment mapping mechanism
+
+Building an environment is important
+
+Building your brain's cognitive system's mapping to the environment is important too
+
+Cafe = a place to get work done
+
+Home = rest, entertainment, but the cues for chores are too dense, so failing to start is normal
+
+Plus at home the decision path and cost are actually shorter
+
+In a cafe, spending money, going out, sitting down is itself a series of rituals
+
+But at home, the bed, the sofa, the kitchen, the laundry, the phone charging cable... all summon you. The brain says: let me deal with these first, then study (and they never get finished)
+
+If I design rooms in the future, I must be very clear about each room and its functional scenario
+
+and start some rituals before working
+
+
+<!--memo:fa701cd9dffc-->
+### HSBC red lion vs blue lion card differences
+
+> 2026-01-15 17:25:47
+
+The red lion is an ATM card, not a savings card, and it has no CVV, so it can't be used for online payments (Apple Pay is a special case). The blue lion is a debit card and can't be used to deposit money at an ATM. Different purposes
+
+The blue lion can be linked to Alipay and WeChat, and also gives fee-free withdrawals at HSBC branches worldwide
+
+
+<!--memo:30c6ae6fa190-->
+### The value of bioengineering tools
+
+> 2026-01-17 14:11:21
+
+Thinking of the bioengineering tools Xiaobaitu mentioned
+
+some tools that serve people or companies in the bio industry
+
+traceable, auditable, explainable, able to enter workflows
+
+Some tools are clearly visible, can solve some people's problems and raise their efficiency, and naturally there will be demand to pay for them
+
+
+<!--memo:6312855575a1-->
+### The simplification principle in brand naming
+
+> 2026-01-17 15:22:50
+
+Considering changing the name — the current one is way too complicated, but changing it is too much trouble
+
+Consider Chinese and English from the very start of naming
+
+and being extremely simple and very easy to remember is super important
+
+
+<!--memo:6d331e8e8ad1-->
+### Experience isn't insight; don't over-indulge in your own life story
+
+> 2026-01-18 12:05:49
+
+I've been thinking a lot about the relationship between a person's experience and their cognition. When I answer this question, it's like why some large models hit a certain bottleneck if they only chase data volume. But why do some small models, designed through a very clever model architecture, maybe with a tiny body size, or trained with some excellent training methods or algorithms, end up being smarter, or more intelligent?
+
+From this I draw a conclusion: people aren't built purely out of accumulated life experience either. When a person overemphasizes their life experience, it means that's the only part they have to show. But people are very complex — it may relate to the education system from childhood on, and also to their level of cognition, their store of knowledge, and many other factors.
+
+So I think when designing a model system, never over-indulge in certain of your own skills; you often need to step out of your own perspective and look at it comprehensively. For this model, which aspects is it better at? If algorithmic optimization can achieve good results, then do algorithmic optimization; if data volume can make a good breakthrough, then increase data volume; if training methods can achieve good results, then use training methods to improve the engineering optimization approach.
+
+In short, there's no need to insist on how important experience is — all that "I've eaten more salt than you've walked roads," "I've crossed more bridges than you've walked roads" — it's actually not that important. So don't put too much weight on these things, and don't over-indulge in certain things. Better to spend more time thinking about what you're good at, what's different about you, what you want, what you like.
+
+
+<!--memo:fdaaecb70b40-->
+### Accept the world's incompleteness and iterate slowly
+
+> 2026-01-21 00:05:28 · `#格物/人生`
+
+The world is a giant playground
+
+even a broken-down playground, with lots of loopholes, lots of order failing, goodwill arriving late, justice arriving late too
+
+We patch it up — this is the human species' oldest and most practical ability
+
+Accept the world's incompleteness; all I can do is slowly iterate and improve
+
+Science is like this
+
+Engineering is like this
+
+Relationships are like this too
+
+A person's life is like this too
+
+
+<!--memo:b26030ed1284-->
+### Productivity Is an Instrumental Metric, Not a Human Goal
+
+> 2026-01-21 16:09:54
+
+Productivity is an instrumental metric
+
+An instrumental metric is naturally designed for robots, not for people
+
+Humans can take up work that doesn't care about efficiency
+
+
+<!--memo:d9c5a64d618d-->
+### Outlook for Implantable Chips and Brain-Computer Interfaces
+
+> 2026-01-21 20:59:17
+
+Implantable chips may also see new breakthroughs in the next 25 years. Cochlear implants are already a very mature human brain implant; in the future implantable chips may also develop to be as mature as cochlear implants, and the whole implantation process will also become safer and more convenient
+
+Compared with invasive brain-computer interfaces, non-invasive head-worn brain-computer interfaces may develop faster. For example, there are already some new technologies trying to use infrared light to read brainwaves. The user only needs to put on a special hat, and the hat can read brainwaves through infrared light passing through the skull
+
+Scientists have now completed modeling an insect brain, and for the first time have a "map" of an insect brain. This is a huge breakthrough, but in the neurological sense we are still far from understanding the human brain. So what can we expect in the field of brain research 25 years from now?
+
+
+<!--memo:d86e0977482d-->
+### The Magic of Judgment Beyond the Rules in Visual Design
+
+> 2026-01-22 17:19:22 · `#格物/设计`
+
+Magic has never been about more, but about being just right
+
+New designers easily fall into superstition about piling on material: more colors, more motion, more complex shapes
+
+White space ... visual rhythm
+
+Magic generally comes from the designer's judgment, not from specifications
+
+Specifications can only take you to 80 points
+
+Magic is the remaining 20 points, and it cannot be exhaustively listed by a checklist
+
+The magic of visual design is, within the rules, quietly violating the rules a little, yet making the whole thing feel more real and more alive
+
+
+<!--memo:9a2a2daa6586-->
+### The Dilemma of Individual Selfhood Under Definition by the System
+
+> 2026-01-25 09:31:42 · `#格物/系统学`
+
+System vs. individualism
+
+One core question: when your abilities, behavior, and value are completely defined by the system, do you still possess a self?
+
+"Am I only allowed to be the kind of person they say I am?"
+
+Any complex system will tend to treat people as a variable rather than a constant
+
+In an era when efficiency is infinitely magnified, there will be some nodes with great potential, with strong elasticity
+
+
+<!--memo:d92879c47acf-->
+### Building a Workflow That Suits You, Grounded in Self-Understanding
+
+> 2026-01-28 11:44:29
+
+Combining your own needs and your own understanding of yourself, building a workflow that suits you is very important
+
+
+<!--memo:effe30472036-->
+### Singapore: a Top-Tier Country Built on Excellent Institutional Design
+
+> 2026-01-28 21:57:05
+
+I really like Singapore; I think it's a very interesting country. To be precise, its land area is very small, and its national managers are like the managers of a company, like a CEO.
+
+I think this country is designed very exquisitely, because it proved one thing: even with insufficient original conditions and scarce resources, with good institutions and an operating system, it can still develop into a world-class country. So Singapore, with its own high-quality institutions, systematic structure, and systematic capabilities, designed such a country; every aspect surprises me in particular.
+
+After I went there, my first impression was that this country is very new, the cityscape is brand new, and the whole city has a great deal of cultural landscape; I love it. Also, its Changi Airport is the most popular and largest airport in the world. In my view, even today's Shenzhen hasn't reached Singapore's level, and China still has a lot of room to learn in this respect.
+
+
+<!--memo:837ffbf2b7b6-->
+### Obsidian as the Strongest Knowledge Management Tool in the AI Era
+
+> 2026-01-29 11:15:37 · `#格物/工具`
+
+Obsidian really does feel like the most suitable knowledge management tool in the AI era
+
+The most extensible, and it runs on a local model, with unlimited plugins; it can become almost any AI knowledge tool you want
+
+Notion is very suitable for those who need remote collaboration, need repeated adjustments, or need to rely on certain templates; setting those scenarios aside, I wouldn't consider using Notion again
+
+
+<!--memo:db669ec5c4b8-->
+### Organizing My Personal Workflow Methods and Open-Sourcing Them to Help AI Learning
+
+> 2026-01-30 09:12:56
+
+Organize all my own methods and open-source them
+
+Build a workflow that suits me
+
+And one that helps AI learning
+
+
+## 7. Travel, Places and Cities
+
+*14 entries*
+
+<!--memo:bc045c968265-->
+### Volatile sulfur compounds and the addiction mechanism
+
+> 2026-01-04 10:53:51 · `#格物/美食`
+
+Volatile sulfur compounds
+
+similar to the addiction to fish mint (zhe'ergen)
+
+The reason I don't like durian is that I'm hypersensitive to it — it's unbearable, I want to throw up
+
+Fish mint contains a class of volatile sulfur compounds (relatives of rotten eggs, blue cheese and durian), and this class has two traits:
+
+It bypasses reason and hits the limbic system, skipping thalamic processing, going straight to the emotional control center
+
+After repeated exposure there's always neural relabeling — for some people, after eating it a few times they reinterpret the danger signal as familiar + safe + reward signal
+
+
+<!--memo:49b6f7c856c9-->
+### Singapore's education streaming as an engineering capability
+
+> 2026-01-04 13:50:05 · `#格物/新加坡`
+
+Singapore's education streaming
+
+One thing that always puzzled me is how Singapore maintains elite education for everyone
+
+Later I happened to realize this is part of its engineering capability
+
+One thing I really admire: it genuinely isn't designing a system to screen people
+
+it's designing a system to identify differences as early as possible, and send people of different abilities onto different life trajectories that can each run with dignity
+
+trying not to let any layer fall completely out of the system
+
+Elite ≠ privileged class; it's a high-risk position — you need higher-intensity work, higher public responsibility, less room for error and more transparent performance scrutiny
+
+Many societies say out loud that everyone is equal, but their social systems implicitly assume only one path to success
+
+Singapore acknowledges the distributional differences in ability between people, and institutionalizes that
+
+
+<!--memo:3a0899ecffda-->
+### Sicily's geography and the origins of the Mafia
+
+> 2026-01-13 19:57:14 · `#格物/意大利`
+
+Sicily
+
+Italy's Sicily
+
+Sicily sits across from the tip of Italy's "boot", surrounded by three seas. The most striking presence on the island is Mount Etna — Europe's most active volcano, which for thousands of years has been destroying and creating fertile land at the same time
+
+The traits of life there: slow, direct, emotionally weighted, cautious toward authority
+
+The Mafia was born there
+
+In 19th-century Sicily the problems were very concrete: the state was remote, the police thin, the law untrustworthy, while land and property were extremely easy to seize
+
+So a folk institutional system emerged, and the Mafia was born
+
+Its typical structure includes:
+
+Family
+
+Boss
+
+Underboss
+
+Soldiers
+
+Strongly bound by blood and place, with one of its most famous places of origin being Corleone
+
+
+<!--memo:4fd1efe6e547-->
+### Red wine natural process for coffee
+
+> 2026-01-15 14:05:38 · `#格物/咖啡`
+
+The red wine natural process
+
+This bean is a Catimor varietal
+
+A surprise process, precise roasting; it performs better under natural processing
+
+After peeling the coffee cherry, it's soaked in a fermentation liquid (usually red wine or a similar fermentation liquid), then sun-dried
+
+Enhances wine aroma, complexity, sweetness
+
+Gives layers of berries, tropical fruit, even chocolate
+
+Reduces sharp acidity, increases body
+
+Some flavor characteristics
+
+Tropical fruit acidity
+
+Wine aroma and sweet aroma
+
+Caramelized sweetness
+
+
+<!--memo:a8fa1dfba2e5-->
+### The Spiritual Ecosystem of Duo'en Sacred Mountain and the Sense of Awe
+
+> 2026-01-23 12:49:24 · `#格物/多恩神山`
+
+Duo'en Sacred Mountain
+
+Duo'en Sacred Mountain is a natural snow peak + folk belief overlay
+
+In Tibetan, "sacred mountain" doesn't just mean "a good-looking mountain"; it is believed to:
+
+be inhabited by mountain gods / protector deities
+
+be able to protect the land and water, the people, and the livestock of a region
+
+form a "spiritual ecosystem" with the surrounding villages, lakes, and grasslands
+
+Duo'en Sacred Mountain is regarded as a guardian sacred mountain; the people around it do kora, hang prayer flags, and make offerings
+
+The owner of the sika deer is Duo'en Sacred Mountain; people develop awe toward nature — the ability to actively lower one's own volume in the face of enormous nature
+
+
+<!--memo:e559df303a16-->
+### Mount Kailash as the Cosmic Axis of Multiple Religions
+
+> 2026-01-23 14:07:12 · `#格物/冈仁波齐`
+
+Mount Kailash as a civilization-level sacred mountain
+
+Tibetan Buddhism, the center of the world, and also the dwelling of India's Shiva, and also the respective cosmic axis of Jainism and Bön
+
+Most of those who do kora are Indians, then people from China and Nepal
+
+In Hinduism, Mount Kailash itself is the dwelling of Shiva, that is, the cosmic axis
+
+You must come at least once in your life; not to come is to be incomplete
+
+Many Han Chinese domestically come mostly from the middle class or have some outdoor experience; they come all the way to Mount Kailash only after they can no longer move within the modern system
+
+
+<!--memo:836f969656bd-->
+### Genie Sacred Mountain as a Religious and Natural Community
+
+> 2026-01-24 10:16:36 · `#格物/格聂神山`
+
+Genie Sacred Mountain
+
+Located around Litang–Batang in Garzê Prefecture, Sichuan, it is one of the most important sacred mountains of the Kham Tibetan region; the main peak is 6,204 meters above sea level
+
+It is regarded as the first sacred mountain of the Kham region, with an extremely high status while long keeping a low profile in fame
+
+Genie is considered a guardian sacred mountain, symbolizing within the Kham system a kind of "local order"
+
+Unlike many sacred mountains that have been touristified, it is more like a religious and natural community that is still operating
+
+Its geographical location is extremely complex: glaciers + wetlands + virgin forests + plateau lakes
+
+The trekking distance is long, resupply is hard, and the psychological cost is large
+
+
+<!--memo:c4f9e68d80bb-->
+### Alex Honnold's Zero-Tolerance Challenge: Training Compresses Fear to the Limit
+
+> 2026-01-26 18:08:49 · `#格物/攀岩`
+
+Alex Honnold
+
+This time he free soloed Taipei 101
+
+I still remember the granite he climbed, a huge wall nearly nine hundred meters high
+
+One misstep and there is no "recovery mechanism"; the ending has only one version
+
+I've always felt this sport is almost a high-risk gambling sport
+
+But he compressed the margin for error to zero through constant training
+
+Facing height and danger, his amygdala (the fear-processing center) reacts significantly less; most people would be drowned by fear
+
+Some people spend their whole lives expanding the safe zone; some choose to shrink the safe zone to infinitely close to zero
+
+Under "zero tolerance" conditions, can a person compress fear, attention, and body control to the limit through training?
+
+Bringing human potential to its extreme
+
+Like deep-sea diving or spacewalks — not a project for everyone, but it changes our understanding of "possibility"
+
+
+<!--memo:01fa305cc380-->
+### People Care Too Much About the Ending; Higher Rationality Is Inner Consistency
+
+> 2026-01-26 18:13:24 · `#格物/攀岩`
+
+Suddenly it occurred to me that most people
+
+seem to care too much about the ending of life, care too much about others' evaluations, and fear too much the result of failure
+
+Higher rationality is not more complex, but cleaner
+
+A high consistency between inside and outside
+
+Calculating the risk in advance, training repeatedly, solving the retreat problem before acting
+
+By the time it really begins, only execution remains
+
+
+<!--memo:c082ba8544ab-->
+### The Different Temperaments of Shanghai, Hangzhou, Shenzhen, and Guangzhou
+
+> 2026-01-28 22:04:56
+
+Shanghai is a very interesting city. How should I put it — if I had to pick a city in China I love most for strolling around, it would definitely be Shanghai. But if it's the city I like most for living, that might be Hangzhou; the city most suitable for working might be Shenzhen's Nanshan.
+
+I went to Shanghai in April 2024; that was also the first time I met Dazi, who invited me to Shanghai. Shanghai gave me a feeling of being very petty-bourgeois, very chic; every person on the street made me feel interesting. The height of the streets is just right, and the environment gives a very different feeling. The small residents of Shanghai gave me a sense of everyday life; I found it very cozy. In Shenzhen, the tall buildings give me a sense of being small; these two feelings are very different. Think about it carefully — different cities bring me completely different experiences.
+
+As for Guangzhou, I think it's just a city suitable for living. Beijing feels too big, it's the political center, too official, everything is still mainly about image. Ah, I think this petty-bourgeois atmosphere of Shanghai is really interesting.
+
+
+<!--memo:5cb1d2a56ed3-->
+### The natural beauty of Cangshan and Erhai in Dali
+
+> 2026-01-30 21:05:16
+
+I lived in Dali for about a month before, and I took a lot from it. The weather in Dali is strange — you can feel that sometimes the clouds hang very low, because Erhai is right next to it, and across Erhai is Cangshan. What's unique about Dali is exactly Cangshan and Erhai. Cangshan is around 2,000 meters above sea level, raised another 2,000 meters on top of the existing elevation, so a lot of the cloud layer feels like it sits right in the middle of the mountain. The mountain scenery in Dali is especially beautiful, and that's a big reason I like Dali.
+
+Erhai is also beautiful, especially when the air quality is good. Erhai itself is at a fairly high elevation, and so is the cloud terrain, so you can feel that the air quality above is very fresh. The fresh air makes photos come out great there, and a lot of people who value natural beauty come specifically for it, feeling that it's a paradise on earth, a fairyland. There's straw, banyan trees, big banyan trees, plus beautiful clouds, a vast sky, and a little train on the wheat fields.
+
+Kids can also go to the shore of Erhai at night to enjoy the breeze, and we had an experience like that. One day there was a supermoon, I think, and my roommates and I were by Erhai, on a platform over the water, sipping wine, listening to music, together with the moon, singing and dancing. In that moment I felt very relaxed, very content — a dreamy memory. I felt life should be like this, that we should bloom in an environment like this.
+
+Besides that, I also jumped into the water — into one of the branches flowing into Erhai. Jumping in felt great too. And there's cycling around Erhai, which is one of my favorite activities. On the last day, we cycled all the way around Erhai together, and the weather was especially good, the sky very blue — I still remember it clearly — the scenery was beautiful, with lots of lovely views along the way, very interesting. And there were a lot of people around Erhai; you could tell that people really love this place. It's a tourist destination, and everyone wants to come and see it.
+
+On the way back, we passed Cangshan, and you could see some greenways at the foot of the mountain. The greenway is very long, with a few scattered cars up ahead, and a thick layer of cloud in the middle of Cangshan, as if it had cut the mountain in two. Looking up from below as an individual, that perspective made me feel that the world I live in is wonderful — it's not just cities and air, there are also forests, mountains, clouds, and the clouds are alive too, capable of composing an absolutely gorgeous picture. Really fascinating, really stunning.
+
+
+<!--memo:30098b2a5541-->
+### The magnetism and charm of Lijiang Old Town
+
+> 2026-01-30 21:07:47
+
+I actually haven't been to Lijiang many times, but it left a deep impression on me. I've only been once, and stayed about three or four days.
+
+I think it's a very unique city. Even though it's a tourist city, the people who go there give off a kind of magnetism — you feel this city is tied to sensibility and love. It felt like I was inside that atmosphere.
+
+Something very unique about Lijiang is that it looks completely different in the morning, in the afternoon, and at night. At night, you can clearly feel that the city seems to come “alive,” very much like the scene in some xianxia dramas where Xu Changqing and Zixuan drink together in a mountain estate — you can feel it's an old town with charm. That's the feeling night gives me.
+
+In the morning there are very few people — basically locals, or the occasional tourist hoping to snap an empty street. In the morning you can occasionally see the snow mountains, before the clouds have gathered, and inside the old town you can capture the ancient town and the distant snow mountains in the same frame.
+
+I'm full of feeling about it — how happy the people who live here must be. They seem to have everything, blessed by the gods. They can see beautiful scenery in the distance, the sky here is very blue, the town is refined, and people are chill with each other, closely connected.
+
+So Lijiang Old Town is a city I feel I could visit again. I quite like it — interesting, full of character.
+
+
+<!--memo:124cefd60794-->
+### Bangkok's modernity and its fractures
+
+> 2026-01-30 21:57:06
+
+Actually Thailand was my first time living abroad, and back then I went to Chiang Mai. Now I'm in Bangkok; since I landed in Bangkok, let me talk about my story in Bangkok and what I saw and heard there.
+
+I went to Bangkok around the end of 2024 — not yet December, it should have been November 10th, when I flew from Wuhan to Bangkok. The city struck me as very interesting. It's also a big metropolis; although its population isn't as big as Chinese cities, its infrastructure is quite modern, with high-rises everywhere.
+
+Bangkok is quite badly fractured. It's not as bad as Kuala Lumpur, but Bangkok has a huge number of ordinary residents and some slums — a mansion might sit right next to a slum. This kind of fracture inside a city is fairly rare. In China, at least there's zoning, or differences between urban and rural areas, or differences between districts. But in Bangkok, if you're not careful, over here are office towers and high-rises, next door might be residential buildings, and nearby there might be a slum. The slums have a large number of Grab drivers, plus some Indians, Filipinos, and other locals. To me it looked pretty dirty and messy — that's my first impression of Bangkok.
+
+Bangkok is a city with a rich nightlife. Although I didn't really get to explore it
+
+
+<!--memo:62b732b66678-->
+### The lantern festival and a boxing match in Chiang Mai
+
+> 2026-01-30 22:02:31
+
+I was in Chiang Mai for the lantern festival. Chiang Mai is a really fun city. On the day of the lantern festival, everyone makes a wish.
+
+At the time I was with two friends — one older brother, one Sister Hu. We set out from Tha Phae Gate in Chiang Mai and went all the way out to the suburbs to see the lanterns.
+
+A few days earlier we had also gone to watch a Thai boxing match — my first time seriously watching boxing. A Chinese international student had sent out invitations inviting us in, and we also bought tickets. There was a Chinese women's team on the card; they competed against some foreign teams, including teams from European countries and local school teams. On top of that there were boxing matches between European men — men's and women's fights. The whole arena was full of energy, all the fighters power types, you could feel the force of the punches landing on bodies. Very entertaining.
+
+On the day of the lantern festival we rode in a songthaew — similar to the three-wheelers in old villages back home, except with two benches added inside. We went to eat khao soi first, then set off, and on the songthaew we saw a gorgeous sunset.
+
+In the evening we arrived at the lantern festival site. There were two venues — one paid, one free. We went to the free one where the locals go; the paid one was pretty expensive, something like 700+ per person. We bought some lanterns and released them, and I snapped a lot of photos. A lot of locals and foreigners were holding their lanterns in both hands, smiling as they let them go — they looked very harmonious, very happy. The lanterns bloomed in the sky one by one, flickering like stars, carrying so many people's hopes. Some were families releasing lanterns together, which perhaps represents a family reunion; it felt wonderful, and happy.
+
+Once people have faith, something to place hope in, and expectations, a lantern comes to represent someone's wish for a year. Write the wishes out, tuck them into the lantern, and there's a place to put your hope — hoping the wish can bloom in the air and drift far away. To some degree it also hints to yourself, like the law of attraction: as long as you set a wish — say you want to make money, or you want to create something — making the wish clear is the starting point. The lantern is like the starting point of a dream; a single spark can start a prairie fire — light it, and it burns and spreads, making the whole world meaningful.
+
+
+## 8. Body, Health and Daily Life
+
+*12 entries*
+
+<!--memo:9f98bb00aeae-->
+### The three elements of pajamas and sleep quality management
+
+> 2026-01-09 23:34:55 · `#格物/睡觉`
+
+Pajama help
+
+Three elements of sleep: lowering core temperature, wicking sweat and regulating moisture, reducing external stimuli
+
+Thermoregulation — this is a hard requirement. In a windy or air-conditioned environment, wearing nothing at all isn't great either. Thin, breathable, not-too-tight pajamas are, in most modern bedrooms (AC/heating), actually the most conducive to a smooth decline in the body temperature curve
+
+Moisture management, seriously underrated. Natural materials are useful here. You sweat at night; poor moisture absorption → sweat stays on the skin → sticky, cold, waking up repeatedly. Quick-dry but not breathable → dry and then stuffy → equally uncomfortable
+
+Tactile stimulation — no need to be too tense; loose fit
+
+
+<!--memo:6f290c2b56b1-->
+### The effect of hiking on the middle ear and eardrum
+
+> 2026-01-11 09:39:09 · `#格物/健康`
+
+Hiking's effect on the eardrum
+
+It isn't just altitude
+
+Long hours of walking, panting, looking down and up:
+
+the Eustachian tube opens and closes repeatedly
+
+middle ear pressure changes frequently
+
+For ordinary people it's fine
+
+For people with unstable middle ear structure, it's an irritant
+
+The inflammation hasn't finished repairing; during the repair phase the mucosa is actually very fragile and can't take friction
+
+Staying up late is an amplifier ...
+
+
+<!--memo:7c3d4aca39ba-->
+### How ordinary people should place themselves in the AI era
+
+> 2026-01-11 12:17:44 · `#格物/游戏`
+
+The AI era, the information era
+
+How do ordinary people play this game well?
+
+about me and myself, me and this world
+
+click view -> start
+
+
+<!--memo:84ea0bb9ce75-->
+### How people get strongly biased by their environment
+
+> 2026-01-12 16:56:13 · `#格物/环境`
+
+People and environment
+
+People get strongly biased by their environment
+
+Availability: whatever shows up more easily around you, you more easily do
+
+For example, in a cafe everyone is working, and our brain's imitation system easily treats focus as the norm
+
+Executing certain things, or thinking about certain things, has a cost — friction as resistance or cost
+
+The environment doesn't need to persuade you, it just changes the friction on certain behaviors: when you want to mess with your phone, the phone is at hand and notifications keep coming -> friction approaches zero
+
+Feedback systems: people are extremely sensitive to immediate feedback, and the environment gives feedback. Douyin is an instant-reward machine, fitness is a delayed-reward system; whichever side the environment leans toward, that's what shapes you
+
+The field of social norms: everyone else does it — for the brain it's nearly impossible
+
+Rather than forcing yourself to change, first change the environment so it's "easier for you to become the person you want to be"
+
+
+<!--memo:f9e9330cfcd5-->
+### Serotonin sets your emotional baseline
+
+> 2026-01-15 14:14:55 · `#格物/血清素`
+
+People with high serotonin commonly show these traits:
+
+Emotionally stable
+
+Hard to knock down with small things
+
+Not in a hurry to prove themselves
+
+Less sensitive to comparison
+
+When serotonin is low, the world turns into:
+
+Easily anxious, depressed
+
+Strong self-doubt
+
+Extremely sensitive to others' evaluations
+
+Repeatedly thinking "am I not good enough"
+
+Serotonin determines whether you want to self-destruct
+
+Most serotonin exists in the gut, a small amount in the blood, and the part that truly determines mood is in the brain
+
+Serotonin doesn't guarantee happiness; compared with dopamine, it's responsible for the emotional baseline, inner security, and the ability to withstand setbacks. To keep serotonin up, what needs to be fixed is: a consistent early-to-bed, early-to-rise schedule (waking time is super important), seeing natural light in the morning, reducing strong light at night
+
+Then aerobic exercise, and some healthy eating
+
+Another point is that serotonin is also closely tied to my position in the group — establishing boundaries, certain relationships
+
+
+<!--memo:67fb988d7672-->
+### A healthy family of origin ≠ no pain; pain ≠ insight
+
+> 2026-01-17 23:35:52
+
+A healthy family of origin ≠ no pain; pain ≠ more insight into the world
+
+Pain -> a more real world: these people will:
+
+Understand complexity
+
+See good and evil at the same time
+
+Know how the system presses people down, and also know how individuals resist
+
+Pain -> a narrower world (but they think they're profound): these people will:
+
+Mistake defense for insight
+
+Mistake wariness for clarity
+
+Treat "I've suffered" as a source of truth
+
+
+<!--memo:6f14ac7ada0b-->
+### Reading wind in a forecast: direction, force and gusts
+
+> 2026-01-18 11:01:47 · `#格物/天气`
+
+Tips for reading wind in a weather forecast
+
+The wind part answers one question:
+
+All day long, where does the wind come from? How strong is it? When is it most noticeable?
+
+bft: Beaufort scale, the wind level
+
+Level 0-1: almost no wind
+
+Level 2-3: comfortable, you can feel it
+
+Level 4-5: obvious, blowing in your face
+
+6+: starts affecting activities
+
+Gusts: 4 m/s — this indicator generally describes gusts, a very important indicator that people ignore day to day
+
+Gusts have a bigger effect on the body; it's a very uncertain variable — temperature, humidity, airflow direction shifting instantly
+
+
+<!--memo:8a4fb11fbf88-->
+### AlphaFold mapped 200 million protein structures in one year
+
+> 2026-01-20 15:25:59 · `#格物/医学`
+
+An in-depth introduction to AlphaFold
+
+Google DeepMind's protein structure predictor AlphaFold mapped over 200 million structures in just one year
+
+This is an astonishingly concrete advance! Because in the era without AI, it took humans years to map each structure
+
+Predicting the complex structures of proteins has always been a hard problem for humanity
+
+CXO is the pharmaceutical contract outsourcing service structure; CXO is a business logic of risk transfer and efficiency maximization
+
+Previously, developing a new drug took 10 years and $1-2 billion, with a very low success rate (<10%)
+
+If you're a startup biotech company (Biotech), you don't need to spend hundreds of millions to build labs, buy monkeys (experimental animals), and build chemical plants. You just need to raise money, then pay it to the CXO; they have ready equipment and teams
+
+The core of a pharma company is IP (intellectual property / patents) and pipeline strategy
+
+The core ability of a CXO is process (how to make it) and execution (how to get the process running)
+
+
+<!--memo:e8847b779524-->
+### The drug IP system and the logic of patent protection
+
+> 2026-01-21 13:02:43 · `#格物/医学`
+
+Drug intellectual property
+
+A comprehensive system, generally including the following kinds of rights:
+
+Patent rights: a new drug's chemical structure, synthesis method, pharmaceutical process — there's a protection period, during which others can't copy, sell or use the technology
+
+Trademark rights: logos and the like
+
+The IP time period is limited because new drug R&D costs are extremely high, takes extremely long, and has a high failure rate
+
+Without patent protection, a company invests huge sums to develop a new drug and the next day someone copies it cheaply — who would still be willing to innovate?
+
+So the state grants a limited-term monopoly (say a 20-year patent), letting pharma companies recover costs and make a profit
+
+Once a patent expires, other companies can legally produce generic drugs, usually priced at only 10%-30% of the original drug, greatly reducing the burden on patients
+
+When the patent expires, the technology enters the public domain and anyone can use it freely
+
+
+<!--memo:72bfb05c03f7-->
+### Why generics aren't necessarily completely identical to the original drug
+
+> 2026-01-21 13:05:15 · `#格物/医学`
+
+Characteristics of generics
+
+Sometimes I wonder why, once the patent period passes, generics shouldn't be a problem
+
+But in reality it isn't necessarily so
+
+In reality, though the core compound patent has expired, the original company often files peripheral patents (also called a "patent thicket")
+
+If a generic copies it completely, it may infringe those secondary patents and get sued
+
+So many generic manufacturers proactively tweak excipients or processes to bypass these "patent landmines"
+
+Regulations only require "bioequivalence," and generic companies can only infer through reverse engineering (like grinding up a tablet and analyzing it) — it's hard to reproduce it 100%
+
+Original drug: Pfizer's Lipitor — a white oval tablet, with "Pfizer" engraved on one side and "ATV 10" on the other.
+
+Generic: multiple companies make atorvastatin calcium tablets — some white, some yellow; some round, some oval; the engravings differ too.
+
+But every generic that passes approval has been clinically proven to have no difference from Lipitor in lipid-lowering effect
+
+
+<!--memo:44f18cf737b7-->
+### Climate Change Needs to Be Treated Differently from Global Warming
+
+> 2026-01-21 21:11:45
+
+Climate change and global warming are not one issue and need to be treated differently. We shouldn't let the temperature rise so fast, because we don't know what will happen after the temperature rises.
+
+Climate is a very complex system, similar to our brain. Simulating climate change is like creating virtual life, a virtual planet
+
+
+<!--memo:ea9fe812a8da-->
+### Japanese Football Develops People; Chinese Football Chases Results
+
+> 2026-01-28 17:58:56 · `#格物/足球`
+
+Japanese football is "a system that exists to develop people over the long term"
+
+Chinese football is more like "an engineering project that serves short-term results"
+
+In Japan, football is a path of socialization:
+
+elementary school → middle school → high school → university → professional team, like a laid-out track
+
+The coach knows what his segment is for: not to develop a Messi, but to develop "people who can keep moving on"
+
+So they will care about whether this kid cooperates, and so on
+
+The underlying belief of Japanese football is:
+
+"People can be trained into it"
+
+Even with average talent, as long as the system is right and there's enough time, one can become a qualified player
+
+So they respect fundamentals, positional sense, discipline
+
+It doesn't look flashy, but it's stable
+
+
+## 9. Content, Craft and Recording
+
+*9 entries*
+
+<!--memo:cbedc46ccaf0-->
+### Three keys to conversation: sensory contact, guessing to draw out, prior thinking
+
+> 2026-01-14 00:30:57
+
+Three things feel really important to me in conversation.
+
+First, be good at using your senses — eyes, ears, nose — use them as much as possible to make contact with the world, including to understand the relationship between you and the other person. The function of conversation is really to reduce uncertainty; the emphasis can be on the two people talking, or on the content. For instance, if I see you brought something new today, I can build a topic around that thing.
+
+Second is guessing. I use my own judgment and assumptions to draw the other person into completing a topic, so the topic can go deeper. This way of guessing works very well as a method of exchange.
+
+Another point is to chat by drawing on things you thought about earlier — for example, you'd wondered whether the other person stayed up late, or whether they got something new — and bring those into the conversation.
+
+
+<!--memo:60015327c7f2-->
+### A real-time information subscription strategy
+
+> 2026-01-16 22:05:11
+
+If there were a channel
+
+that could automatically help subscribe you to some real-time information
+
+even gossip is fine
+
+This kind of subscription strategy also interests me
+
+Convenient for watching the drama unfold
+
+
+<!--memo:9cfec24b1829-->
+### The essence of podcast resurgence
+
+> 2026-01-17 14:18:10 · `#格物/播客`
+
+The podcast resurgence
+
+The essential reason: there's too much information, so much that it becomes distorted
+
+Short videos, feeds, trending mechanisms all chase maximizing instantaneous attention, and the result is that we're bombarded by dozens of viewpoints every day, with not one real viewpoint digested
+
+Once the brain gets tired, it naturally starts looking for a low-noise, high-density, linger-able content form — podcasts happen to satisfy that
+
+A process of returning to what's real; what it returns to is also a path of thinking
+
+Naturally anti-algorithm, with no pressure to reach a conclusion, allowing uncertainty and allowing a path of thought
+
+In history, almost every round of media explosion has been followed by a rebound of "back to long-form text / back to conversation"
+
+
+<!--memo:c448774d413a-->
+### Mass Attention vs. Content Quality: A Matching Strategy
+
+> 2026-01-21 14:52:05 · `#格物/创作`
+
+Mass attention vs. content quality
+
+Users' taste determines the taste of the content that becomes popular in the market
+
+Content that easily wins out in platform algorithms has the following traits:
+
+Extreme (emotion > facts)
+
+Simple (binary opposition)
+
+Instant gratification
+
+Infinitely scrollable (no sense of completion)
+
+There is also a form of content that is severely underestimated. From what I've observed of a lot of short-video and self-media work, the essence is inversion and dislocation
+
+Content with high cognitive density but a low enough entrance
+
+In other words, the core is high quality, but the packaging is something the masses can swallow
+
+Don't lower the thinking, but lower the threshold for entering, and raise the cognitive return after retention — first be seen, then be understood, and finally be trusted
+
+
+<!--memo:07496297242e-->
+### Touchscreens and AR Glasses as the Next Great Innovation
+
+> 2026-01-21 22:20:35
+
+As everyone knows, the invention and widespread use of the touchscreen truly drove the spread of smartphones, because it can both display images and sense our taps and swipes. So a lens that combines AR and VR in one will make smart glasses the true "Next Big Thing"
+
+
+<!--memo:ec49971174fe-->
+### Tech Livestream Selling: Showing Relations Between Products, People, and Society
+
+> 2026-01-28 22:16:44
+
+I think there may be a direction going forward, and that's the direction of making short videos, namely the tech product livestreamer.
+
+But this kind of tech product livestreamer usually relies on their own first-hand experience to try various tech products, then applies them in some real-world link or scenario, and presents that scenario.
+
+I think this is very interesting, because in this way the relationship between products and people, the relationship between people and society, and the relationship between technology and society, will reach some very high degree of fit
+
+
+<!--memo:178e07178a20-->
+### Aiming for Ninety-Plus in Every Act of Creation
+
+> 2026-01-30 18:24:42
+
+Make sure every act of creation
+
+make sure every expression reaches ninety or above
+
+rather than just barely passing
+
+
+<!--memo:6d51ab0cc5e6-->
+### The value of authentic records in the AI era
+
+> 2026-01-30 23:18:24
+
+I think there's something quite interesting here: in the future, as AI creation gets more and more popular and false information floods the internet more and more, I wonder — what is actually precious?
+
+I thought about it for a long time, looked at many directions, many videos, many scenarios, and looked at how they went viral and how they made money. But I think what I really want to do is authenticity — genuinely recording myself, genuinely expressing what I think and feel. That's what I really want to do, and what I can truly keep doing. Other than that, nothing else suits me.
+
+And I think in the AI era, especially the AI era to come, what people care about may not be that someone generated some images, but who the creator behind the image is, and the real stories that creator made — those stories are interesting.
+
+
+<!--memo:329b4eabf903-->
+### Artifying life is creation
 
 > 2026-01-31 14:18:33
 
-把生活艺术化表达就是创作
-否则自己就只是记录
+Expressing life artistically is creation
 
-
----
+Otherwise you're just recording

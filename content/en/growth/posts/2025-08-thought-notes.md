@@ -34,8 +34,21 @@ maturity: budding
 >
 > Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
 
----
+## Quick Navigation
 
+**332 records this month, filed under 9 themes:**
+
+- [Self-Knowledge and Psychology](#1-self-knowledge-and-psychology) · 94
+- [Daily Notes and Everything Else](#2-daily-notes-and-everything-else) · 74
+- [AI and Agent Systems](#3-ai-and-agent-systems) · 47
+- [Reading, Ideas and History](#4-reading-ideas-and-history) · 43
+- [Travel, Places and Cities](#5-travel-places-and-cities) · 25
+- [Business, Investing and Career](#6-business-investing-and-career) · 17
+- [Product, Engineering and Open Source](#7-product-engineering-and-open-source) · 16
+- [Content, Craft and Recording](#8-content-craft-and-recording) · 9
+- [Body, Health and Daily Life](#9-body-health-and-daily-life) · 7
+
+---
 ## 1. Self-Knowledge and Psychology
 
 *94 entries*
@@ -1793,32 +1806,6 @@ When someone tries to persuade you, first put down the "reasoning" they're offer
 
 
 <!--memo:d9fb8e6dfc73-->
-### The gap between knowing and doing is very, very far
-
-> 2025-08-25 00:33:59
-
-It suddenly occurred to me as an example: why products try as hard as possible to shorten the shortest execution path — because the user's patience may be worn out along the way.
-
-Wang Yangming said knowledge and action are one, yet between them lies a thousand miles.
-
-We understand the reasoning, but not deeply enough — our cognitive obstacle.
-
-Our psychological obstacles: fear, inertia, desire.
-
-And a whole series of emotional obstacles.
-
-And obstacles in the real environment, like rain or venue problems affecting exercise.
-
-Between knowing and doing there may also need to be skills, and some bridge of habit.
-
-The distance between is very far.
-
-Understanding → internalization → psychological readiness → environment/skill readiness → action.
-
-This process is extending innate knowing, that is, exploring the meaning of the thing.
-
-
-<!--memo:df505e13ccfd-->
 ### The gap between knowing and doing is very, very far (2)
 
 > 2025-08-25 00:33:59
@@ -1842,6 +1829,32 @@ Between knowing and doing there may also need to be skills, and some bridge of h
 The distance between is very far.
 
 Understanding → internalization → psychological readiness → environment/skill readiness → action.
+
+
+<!--memo:df505e13ccfd-->
+### The gap between knowing and doing is enormous
+
+> 2025-08-25 00:33:59
+
+The gap between knowing and doing is enormous.
+
+An example just came to mind: this is why products try to shorten the shortest execution path as much as possible — because a user's patience can be worn away somewhere along the way.
+
+Wang Yangming's unity of knowing and doing — but between knowing and doing lie a thousand miles.
+
+We understand the principle, but we don't understand it deeply enough. There are the obstacles in our cognition.
+
+There are the psychological obstacles: fear, inertia, desire.
+
+And a whole series of emotional obstacles.
+
+And obstacles in the real environment — rain, for instance, or a venue problem that stops you from training.
+
+Between knowing and doing you may also need skill, and some bridge made of habit.
+
+What sits in between is very far.
+
+Understanding → internalising → mental preparation → environment/skill preparation → action
 
 
 <!--memo:ef052142abd9-->

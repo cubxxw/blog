@@ -22,6 +22,22 @@ tldr:
 maturity: budding
 ---
 
+## Quick Navigation
+
+**Start with the long read**: 9 sections in the body above.
+
+**17 archived notes this month, filed under 7 themes:**
+
+- [Daily Notes and Everything Else](#daily-notes-and-everything-else) · 6
+- [AI and Agent Systems](#ai-and-agent-systems) · 4
+- [Self-Knowledge and Psychology](#self-knowledge-and-psychology) · 2
+- [Content, Craft and Recording](#content-craft-and-recording) · 2
+- [Business, Investing and Career](#business-investing-and-career) · 1
+- [Travel, Places and Cities](#travel-places-and-cities) · 1
+- [Reading, Ideas and History](#reading-ideas-and-history) · 1
+
+---
+
 For most of July I was in Shenzhen, and I also stopped briefly for a few days in other cities in Guangdong.
 
 The work on my laptop was dense: the blog published 55 Chinese articles, and GitHub's July contribution calendar recorded 733 contributions. The other side of the ledger was dense too: AI subscriptions at over three thousand yuan a month, plus servers, cloud services and other tool costs. The first set of numbers is perfect for screenshotting, to prove how productive a solo developer can be with AI's help; the second set is what explains why this way of living is putting real pressure on me.

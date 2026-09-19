@@ -27,6 +27,16 @@ tldr:
 maturity: budding
 ---
 
+## Quick Navigation
+
+**Start with the long read**: 9 sections in the body above.
+
+**1 archived notes this month, filed under 1 themes:**
+
+- [Daily Notes and Everything Else](#daily-notes-and-everything-else) · 1
+
+---
+
 ## Prologue: A May Without flomo
 
 For the entire month of May, I did not write a single flomo note. I barely posted to my feed either.

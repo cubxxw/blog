@@ -34,8 +34,20 @@ maturity: budding
 >
 > Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
 
----
+## Quick Navigation
 
+**484 records this month, filed under 8 themes:**
+
+- [AI and Agent Systems](#1-ai-and-agent-systems) · 212
+- [Daily Notes and Everything Else](#2-daily-notes-and-everything-else) · 118
+- [Product, Engineering and Open Source](#3-product-engineering-and-open-source) · 96
+- [Self-Knowledge and Psychology](#4-self-knowledge-and-psychology) · 36
+- [Business, Investing and Career](#5-business-investing-and-career) · 9
+- [Content, Craft and Recording](#6-content-craft-and-recording) · 6
+- [Reading, Ideas and History](#7-reading-ideas-and-history) · 4
+- [Travel, Places and Cities](#8-travel-places-and-cities) · 3
+
+---
 ## 1. AI and Agent Systems
 
 *212 entries*
