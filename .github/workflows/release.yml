@@ -70,7 +70,7 @@ jobs:
         with:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/setup-qemu-action@96fe6ef7f33517b61c61be40b68a1882f3264fb8 # v2
+      - uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v2
       - uses: actions/cache@v6
         with:
           path: |
