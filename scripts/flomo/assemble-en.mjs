@@ -183,6 +183,10 @@ function buildEnBody(month, cards) {
 function renderEnFrontMatter(month, metaEntry, zh) {
   const tags = zh.tags.length ? zh.tags : ['Blog', 'Monthly Notes', 'Personal Reflection'];
   const date = zh.date || `${month}-28T23:59:59+08:00`;
+  // 日期必须是可解析的上海时间：写成 undefinedTundefined 之类时 Hugo 会直接构建失败
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+08:00$/.test(date)) {
+    throw new Error(`${month}: unparsable date inherited from the Chinese article: ${date}`);
+  }
   const lines = [
     '---',
     `title: '${metaEntry.title.replace(/'/g, '’')}'`,

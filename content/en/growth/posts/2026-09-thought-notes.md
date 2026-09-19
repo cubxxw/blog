@@ -1,7 +1,7 @@
 ---
 title: 'September 2026 Thought Notes: Architecture, Temples and First Principles'
 ShowRssButtonInSectionTermList: true
-date: undefinedTundefined+08:00
+date: 2026-09-19T10:31:35+08:00
 showtoc: true
 weight: 1
 tocopen: true

@@ -13,8 +13,11 @@
  * - 标题优先复用已发布文章里已经写好的标题（按 date+time 精确匹配），新条目才由脚本生成。
  * - 覆盖优先：每条 memo 都必须出现在某一篇月度笔记里（脱敏清单里的除外）。
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync, statSync } from 'node:fs';
+import { globSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+
+const isDirectory = (p) => statSync(p).isDirectory();
 
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '../..');
 const WRITE = process.argv.includes('--write');
@@ -307,11 +310,17 @@ const pad = (n) => String(n).padStart(2, '0');
 
 function frontMatter(month, entries, stats, prev) {
   const [y, m] = month.split('-');
-  const lastMemo = entries[entries.length - 1];
+  const lastEntry = entries[entries.length - 1];
+  const lastMemo = lastEntry.memo ?? lastEntry;
   const lastDay = new Date(Date.UTC(Number(y), Number(m), 0));
   const monthEnd = `${month}-${pad(lastDay.getUTCDate())}`;
   const isFutureEnd = new Date(`${monthEnd}T23:59:59+08:00`) > new Date();
+  // 当月还没结束时，月末时间戳会被 Hugo 当成 future content 而不发布，
+  // 所以退回最后一条笔记的真实时间。
   const date = isFutureEnd ? `${lastMemo.date}T${lastMemo.time}+08:00` : `${monthEnd}T23:59:59+08:00`;
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+08:00$/.test(date)) {
+    throw new Error(`${month}: generated an unparsable date: ${date}`);
+  }
 
   const titleDirs = stats.slice(0, 3).map((s) => s.direction.zh.replace(/^[^、]*、/, ''));
   const title = `${y}年${Number(m)}月思考笔记：${titleDirs.join('、')}`;
@@ -392,7 +401,7 @@ function renderArchive(entries, { numbered = true } = {}) {
     lines.push(numbered ? `## ${NUMERALS[i] ?? i + 1}、${s.direction.zh}` : `## ${s.direction.zh}`, '', `*${s.count} 条记录*`, '');
     for (const e of s.list) lines.push(renderCard(e), '');
   }
-  return { stats, body: lines.join('\n').trimEnd() + (withHeader ? '' : '\n') };
+  return { stats, body: lines.join('\n').trimEnd() };
 }
 
 /** 去掉此前生成的补录/附录段，让重复运行不会叠加两份。 */
@@ -419,8 +428,14 @@ const keyIndex = {};
 // placed = 最终一定会出现在公开文章里的 memo key（含此前已经发布过的完整月份）。
 const placed = new Set();
 
+// 只清掉脚本自己生成的中间件：`.en.md` 是翻译成果（贵且不可再生），永远不删。
 rmSync(join(OUT, 'zh'), { recursive: true, force: true });
-rmSync(join(OUT, 'en'), { recursive: true, force: true });
+if (EMIT_CHUNKS) {
+  for (const f of globSync(join(OUT, 'en', '**', '*.zh.md'))) rmSync(f, { force: true });
+  for (const d of globSync(join(OUT, 'en', '*'))) {
+    if (isDirectory(d) && readdirSync(d).length === 0) rmSync(d, { recursive: true, force: true });
+  }
+}
 mkdirSync(join(OUT, 'zh'), { recursive: true });
 
 for (const month of months) {
@@ -457,7 +472,7 @@ for (const month of months) {
     const { stats, body } = renderArchive(appendixEntries, { numbered: false });
     const heading = mode === 'appendix-all' ? '## 附录：本月原始记录' : '## 补录：本月其他记录';
     const intro = `*下面 ${appendixEntries.length} 条是当月的原始记录，按主题归档。*`;
-    const zhOut = `\n\n---\n\n${heading}\n\n${intro}\n\n${body}\n`;
+    const zhOut = `\n\n---\n\n${heading}\n\n${intro}\n\n${body.trimEnd()}\n`;
     writeFileSync(join(OUT, 'zh', `${month}.md`), zhOut.trimStart());
 
     if (WRITE && prev) {
@@ -503,7 +518,7 @@ for (const month of months) {
     '',
   ].join('\n');
 
-  const article = frontMatter(month, entries, stats, prev) + intro + '\n' + body + '\n';
+  const article = `${frontMatter(month, entries, stats, prev) + intro}\n${body.trimEnd()}\n`;
   writeFileSync(join(OUT, 'zh', `${month}.md`), article);
   if (WRITE) writeFileSync(join(ROOT, `content/zh/growth/posts/${month}-thought-notes.md`), article);
 

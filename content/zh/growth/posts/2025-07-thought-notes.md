@@ -865,7 +865,7 @@ A great way to understand yourself is to seriously reflect on everything you fin
 
 
 <!--memo:240b1af6e8fc-->
-### 想起来之前朋友说的，如果最终还是会离去，
+### 想起来之前朋友说的，如果最终还是会离去
 
 > 2025-07-26 18:11:01
 
@@ -891,7 +891,7 @@ A great way to understand yourself is to seriously reflect on everything you fin
 
 
 <!--memo:7793d9f37888-->
-### Franz Kafka, “Don't bend;
+### Franz Kafka, “Don't bend
 
 > 2025-07-27 17:18:40
 

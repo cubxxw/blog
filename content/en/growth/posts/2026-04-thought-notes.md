@@ -2248,11 +2248,6 @@ really will stay in my heart forever.
 Goodbye Angkor Wat! Goodbye Siem Reap.
 
 
-## II. Daily life and other things
-
-*1 record*
-
-
 ## Daily Notes and Everything Else
 
 *1 entries*

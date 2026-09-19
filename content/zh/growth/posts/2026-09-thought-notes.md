@@ -1,7 +1,7 @@
 ---
 title: '2026年9月思考笔记：AI 与 Agent 系统、日常与其他、工程与开源'
 ShowRssButtonInSectionTermList: true
-date: undefinedTundefined+08:00
+date: 2026-09-19T10:31:35+08:00
 showtoc: true
 weight: 1
 tocopen: true
@@ -805,7 +805,7 @@ LLM 打分标准要经常拿人类专家的判断来校准，避免 LLM 走偏
 
 
 <!--memo:403fd5116241-->
-### 其实理清边界是一个很难的事情，尤其在AI时代
+### 理清边界是一个很难的事情，尤其在AI时代
 
 > 2026-09-08 16:24:51
 
