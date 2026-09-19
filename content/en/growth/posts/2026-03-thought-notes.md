@@ -3926,7 +3926,7 @@ Trade (exports and imports of goods and services) can reach several times GDP, a
 
 > 2026-03-15 23:43:27 · `#格物/柬埔寨`
 
-Today in Siem Reap I checked into a hotel booked through Booking, called a hotel in Siem Reap.
+Today in Siem Reap I checked into a hotel I booked through Booking. I won't write the name down.
 
 When I placed the order, my first reaction was that I might have gotten a bargain. The photos on the page looked decent, the price wasn't high, and it felt like I'd found a new place with good value. It was just that at the time, looking at the Booking page, the overall feeling was a bit dodgy — not like a very mature, very solid hotel. But I booked it anyway.
 

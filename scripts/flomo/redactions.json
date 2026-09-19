@@ -69,8 +69,12 @@
       "reason": "点名具体酒店并推断其经营动机，可能伤害到具体的经营者，隐去店名",
       "patterns": [
         {
+          "find": "，名字叫 Amma Hotel",
+          "replace": "（店名不写了）"
+        },
+        {
           "find": "Amma Hotel",
-          "replace": "一家暹粒的酒店"
+          "replace": "这家酒店"
         }
       ]
     },
