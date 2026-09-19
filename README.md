@@ -94,14 +94,14 @@
 下面只保留最近发布的 8 篇中文文章，由 GitHub Actions 从博客 RSS 自动更新。这个列表会变化，仓库也会继续生长。
 
 <!-- BLOG-POST-LIST:START -->
+- [2026年9月思考笔记：AI 与 Agent 系统、日常与其他、工程与开源](https://cubxxw.com/zh/growth/posts/2026-09-thought-notes/)
+- [2026年8月思考笔记：AI 与 Agent 系统、日常与其他、工程与开源](https://cubxxw.com/zh/growth/posts/2026-08-thought-notes/)
 - [AI 让我更聪明，也让我更晚碰到现实](https://cubxxw.com/zh/growth/posts/2026-08-15-ai-made-me-smarter-later-to-reality/)
 - [不会让恐惧替我做决定](https://cubxxw.com/zh/growth/posts/2026-08-10-fear-does-not-decide-for-me/)
 - [Agent 不是一种产品：十套系统如何重新分配控制权、状态、身份与副作用](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-synthesis/)
 - [Conversation as Database：OpenHands 的无状态 Agent 与事件运行时](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-openhands/)
 - [多 Agent 辩论真的增加了信息吗：TradingAgents 的组织图与相关性风险](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-tradingagents/)
 - [Instructions as Code：OpenMontage 如何用工件契约编排视频生产](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-openmontage/)
-- [拒绝成为 Agent：TaxHacker 为什么把 LLM 压缩成一个函数](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-taxhacker/)
-- [OpenClaw 的常驻网关：连续性不是把所有消息塞进同一会话](https://cubxxw.com/zh/ai-agent/posts/agent-system-design-openclaw/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 一套公开运行的内容系统
