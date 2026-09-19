@@ -78,3 +78,26 @@ npm run frontmatter:check && npm run tags:check && npm run blockquotes:check && 
 - **英文**：以上所有月份都按中文逐条翻译，`2026-07` 原本没有英文版，这次连同长文一起补齐。
 
 当月的月份（例如 2026-09）在导出时还没结束，文章 `date` 取最后一条 memo 的准确时间，避免被 Hugo 当成 future content 不发布；下个月再跑一次即可把它补成完整月份。
+
+## 发布前本地验证清单
+
+普通文章只需要文档级检查，但这一批同时动了当月文章的 `date`、章节序号和中英对照，
+所以按风险多跑了几步：
+
+```bash
+# 结构 / 元数据
+npm run frontmatter:check && npm run tags:check && npm run blockquotes:check && npm run flavor:check
+# 覆盖与双语一致性
+node scripts/flomo/coverage.mjs && node scripts/flomo/verify-bilingual.mjs
+# 真正能拦住问题的构建（CI 用 Hugo 0.147.0，Netlify 用 netlify.toml 里的 0.145.0）
+hugo --gc --minify --baseURL https://cubxxw.com/          # 生产
+hugo --gc --minify --buildFuture -b http://localhost:1313/ # 预览（Netlify deploy-preview 同款命令）
+make production-build                                      # Netlify 生产用的完整链路
+```
+
+`date` 写坏过一次（当月分支取错了字段，写成 `undefinedTundefined+08:00`），
+Hugo 只在构建时报 `the "date" front matter field is not a parsable date`，
+所以现在生成器里直接断言格式，写完就报错，而不是等 CI。
+
+`scripts/check-ai-flavor.mjs` 对逐字归档的豁免依据是 `<!--memo:...-->` 来源标记，
+所以这些月度笔记不会因为作者本人的口头重复而被判成 AI 味。
