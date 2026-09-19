@@ -126,3 +126,6 @@ deno.lock
 
 # Hugo js.Build (esbuild) auto-generates this for editor IntelliSense
 assets/jsconfig.json
+
+# flomo 导出与中间产物（含私人笔记原文，永不入库）
+/.flomo/
