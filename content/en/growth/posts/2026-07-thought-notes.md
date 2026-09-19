@@ -9,9 +9,14 @@ type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
-  - Blog
   - Monthly Notes
   - Personal Reflection
+  - AI
+  - Solo Builder
+  - Product Strategy
+  - Content Strategy
+  - Career
+  - Personal Growth
 description: >
   A complete record of July 2026: a long essay on engineering loops, content and cash flow, plus the 17 raw notes behind it. 55 Chinese articles shipped, a dense GitHub month, roughly three thousand RMB a month of AI and infrastructure cost, and a cash-flow problem that no productivity metric can settle.
 tldr:
