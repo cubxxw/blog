@@ -42,6 +42,9 @@ for (const rel of zhFiles) {
   const onlyZh = [...z].filter((k) => !e.has(k));
   const onlyEn = [...e].filter((k) => !z.has(k));
   const ordered = zhKeys.length === enKeys.length && zhKeys.every((k, i) => k === enKeys[i]);
+  // 英文版不该大段留中文（旧英文文件曾有整段未翻译的情况）
+  const cjk = (readFileSync(enFile, 'utf8').match(/[\u4e00-\u9fa5]/g) ?? []).length;
+  if (cjk > 1500) problems.push(`${month}: English article contains ${cjk} Chinese characters — likely untranslated`);
   if (onlyZh.length || onlyEn.length) {
     problems.push(
       `${month}: marker mismatch — zh ${zhKeys.length} vs en ${enKeys.length}` +

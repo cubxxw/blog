@@ -15,6 +15,7 @@
  *   scripts/flomo/en-meta.json  英文 front matter（人工翻译，避免机翻腔）
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
+import { renderEnNav, enSectionName } from './nav.mjs';
 import { dirname, join, resolve } from 'node:path';
 
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '../..');
@@ -28,17 +29,6 @@ const keysIndex = JSON.parse(readFileSync(join(ROOT, '.flomo/out/keys.json'), 'u
 const meta = JSON.parse(readFileSync(join(ROOT, 'scripts/flomo/en-meta.json'), 'utf8'));
 const OUT = join(ROOT, '.flomo/out/en-out');
 
-const SECTION_EN = {
-  'AI 与 Agent 系统': 'AI and Agent Systems',
-  '产品、工程与开源': 'Product, Engineering and Open Source',
-  '商业、投资与职业': 'Business, Investing and Career',
-  '自我认知与心理': 'Self-Knowledge and Psychology',
-  '阅读、思想与历史': 'Reading, Ideas and History',
-  '旅行、地理与城市': 'Travel, Places and Cities',
-  '身体、健康与日常': 'Body, Health and Daily Life',
-  '内容、创作与记录': 'Content, Craft and Recording',
-  '日常与其他': 'Daily Notes and Everything Else',
-};
 const HEADING_EN = {
   '## 附录：本月原始记录': '## Appendix: raw notes from this month',
   '## 补录：本月其他记录': '## Addendum: other notes from this month',
@@ -167,7 +157,7 @@ function buildEnBody(month, cards) {
   const { sections, appendix } = readStructure(month);
   const out = [];
   for (const [i, s] of sections.entries()) {
-    const name = SECTION_EN[s.heading.replace(/^[一二三四五六七八九十]、/, '')] ?? s.heading;
+    const name = enSectionName(s.heading);
     // 补录段不编号：长文自身已经有编号，再排一次会撞号
     out.push(appendix ? `## ${name}` : `## ${i + 1}. ${name}`, '', `*${s.keys.length} entries*`, '');
     for (const key of s.keys) {
@@ -180,7 +170,7 @@ function buildEnBody(month, cards) {
 }
 
 /** 英文 front matter：标题/描述/tldr 来自人工翻译，其余字段沿用中文版的规范值。 */
-function renderEnFrontMatter(month, metaEntry, zh) {
+function renderEnFrontMatter(month, metaEntry, zh, cover = '') {
   const tags = zh.tags.length ? zh.tags : ['Blog', 'Monthly Notes', 'Personal Reflection'];
   const date = zh.date || `${month}-28T23:59:59+08:00`;
   // 日期必须是可解析的上海时间：写成 undefinedTundefined 之类时 Hugo 会直接构建失败
@@ -197,6 +187,7 @@ function renderEnFrontMatter(month, metaEntry, zh) {
     'tocopen: true',
     'type: posts',
     'author: ["Xinwei Xiong", "Me"]',
+    ...(cover ? [cover] : []),
     'keywords: []',
     'tags:',
     ...tags.map((t) => `  - ${t}`),
@@ -211,8 +202,48 @@ function renderEnFrontMatter(month, metaEntry, zh) {
   return lines.join('\n');
 }
 
+/** 从既有英文正文的 front matter 里读出可直接沿用的标题/描述/tldr。 */
+function legacyMeta(month) {
+  const file = join(ROOT, `content/en/growth/posts/${month}-thought-notes.md`);
+  if (!existsSync(file)) return null;
+  const fm = (readFileSync(file, 'utf8').match(/^---\n([\s\S]*?)\n---/) ?? [])[1] ?? '';
+  const title = (fm.match(/^title:\s*['"]?(.*?)['"]?\s*$/m) ?? [])[1];
+  const descBlock = fm.match(/^description:\s*>\n([\s\S]*?)\n(?=[a-z_]+:|$)/m);
+  const description = (descBlock?.[1] ?? fm.match(/^description:\s*(.+)$/m)?.[1] ?? '')
+    .trim()
+    .split(/\n\s*\n/)[0]
+    .replace(/\s+/g, ' ')
+    .trim();
+  const tldr = [];
+  const tldrBlock = fm.match(/^tldr:\n((?:\s*-\s*.*\n?)+)/m);
+  if (tldrBlock) {
+    for (const line of tldrBlock[1].split('\n')) {
+      const item = line.replace(/^\s*-\s*/, '').trim().replace(/^["']|["']$/g, '');
+      if (item) tldr.push(item);
+    }
+  }
+  if (!title || !description) return null;
+  return { title, description, tldr };
+}
+
+/** 旧英文版里人工挑的封面与「Selected Notes」段，重排时保留下来。 */
+function readLegacy(text) {
+  const fm = (text.match(/^---\n([\s\S]*?)\n---/) ?? [])[1] ?? '';
+  const cover = (fm.match(/^cover:\n((?:[ \t]+.*\n?)+)/m) ?? [])[0]?.trimEnd() ?? '';
+  const lines = text.replace(/^---\n[\s\S]*?\n---\n?/, '').split('\n');
+  const kept = [];
+  for (const [i, line] of lines.entries()) {
+    if (!/^##\s*Selected Notes of the Month/.test(line)) continue;
+    let end = i + 1;
+    while (end < lines.length && !/^##\s/.test(lines[end])) end += 1;
+    kept.push(lines.slice(i, end).join('\n').trimEnd());
+  }
+  return { cover, kept };
+}
+
 // ---------------------------------------------------------------- 校验
 
+const CJK_LIMIT = 1500;
 const problems = [];
 const results = [];
 
@@ -252,6 +283,11 @@ for (const month of months) {
   results.push({ month, expected: expected.length, translated: cards.size, files: files.length, missing, empty, cjk, cjkLines, quoteBroken });
 
   if (missing.length) problems.push(`${month}: ${missing.length} memos not translated yet (e.g. ${missing.slice(0, 3).join(', ')})`);
+  // 英文版必须真的是英文。历史上这里踩过坑：旧「英文」文件其实整段是中文，
+  // 只有精选部分翻译过。所以残留中文超过阈值就直接判阻塞。
+  if (cjk > CJK_LIMIT) {
+    problems.push(`${month}: English body still contains ${cjk} Chinese characters (limit ${CJK_LIMIT}) — it is not translated`);
+  }
   if (quoteBroken.length) problems.push(`${month}: ${quoteBroken.length} entries lost the timestamp line`);
 
   if (CHECK_ONLY || missing.length) continue;
@@ -295,15 +331,16 @@ for (const month of months) {
     continue;
   }
 
-  const metaEntry = meta[month];
+  const zh = zhFront(month);
+  // 没有专门写过的英文 front matter 时，沿用既有英文版已有的 title/description/tldr
+  const metaEntry = meta[month] ?? legacyMeta(month);
   if (!metaEntry) {
-    problems.push(`${month}: no en front matter in scripts/flomo/en-meta.json`);
+    problems.push(`${month}: no en front matter (neither scripts/flomo/en-meta.json nor an existing English article)`);
     continue;
   }
-  const zh = zhFront(month);
   const entries = expected.length;
   const counts = readStructure(month)
-    .sections.map((s) => `${SECTION_EN[s.heading.replace(/^[一二三四五六七八九十]、/, '')] ?? s.heading} ${s.keys.length}`)
+    .sections.map((s) => `${enSectionName(s.heading)} ${s.keys.length}`)
     .join(' · ');
   const first = cards.get(expected[0])?.quote.match(/\d{4}-\d{2}-\d{2}/)?.[0] ?? '';
   const last = cards.get(expected[expected.length - 1])?.quote.match(/\d{4}-\d{2}-\d{2}/)?.[0] ?? '';
@@ -317,14 +354,34 @@ for (const month of months) {
     '>',
     '> Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.',
     '',
-    '---',
-    '',
   ].join('\n');
+  const target = join(ROOT, 'content/en/growth/posts', `${month}-thought-notes.md`);
+  const legacy = existsSync(target) ? readLegacy(readFileSync(target, 'utf8')) : { cover: '', kept: [] };
+
+  // 英文导航：结构照抄中文，标题换成英文主题名
+  const sections = readStructure(month).sections;
+  const navCounts = sections.map((sec, i) => ({
+    name: enSectionName(sec.heading),
+    heading: `${i + 1}. ${enSectionName(sec.heading)}`,
+    count: sec.keys.length,
+  }));
+  const navExtras = legacy.kept.map((block) => ({
+    label: block.split('\n')[0].replace(/^##\s*/, '').trim(),
+    heading: block.split('\n')[0].replace(/^##\s*/, '').trim(),
+    count: (block.match(/^###\s/gm) ?? []).length,
+  }));
+  const nav = renderEnNav({ counts: navCounts, total: entries, extras: navExtras });
+
   const body = buildEnBody(month, cards);
-  const article = `${renderEnFrontMatter(month, metaEntry, zh)}\n${intro}\n${body}\n`;
+  const kept = legacy.kept.join('\n\n');
+  const article =
+    renderEnFrontMatter(month, metaEntry, zh, legacy.cover) +
+    `\n${intro}\n${nav}` +
+    (kept ? `${kept}\n\n` : '') +
+    `${body}\n`;
   const outPath = join(OUT, `${month}.md`);
   mkdirSync(OUT, { recursive: true });
-  if (WRITE) writeFileSync(join(ROOT, 'content/en/growth/posts', `${month}-thought-notes.md`), article);
+  if (WRITE) writeFileSync(target, article);
   writeFileSync(outPath, article);
   results.at(-1).wrote = WRITE
     ? `content/en/growth/posts/${month}-thought-notes.md`

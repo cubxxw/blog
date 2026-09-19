@@ -16,6 +16,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync, statSync } from 'node:fs';
 import { globSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { renderZhNav } from './nav.mjs';
 
 const isDirectory = (p) => statSync(p).isDirectory();
 
@@ -301,7 +302,21 @@ function existingArticle(month, lang = 'zh') {
     }
   }
   const title = (fm.match(/^title:\s*['"]?(.*?)['"]?\s*$/m) ?? [])[1] ?? '';
-  return { titles, tldr, title, file };
+  // cover 是人工挑的图，重建正文时不能丢
+  const cover = (fm.match(/^cover:\n((?:[ \t]+.*\n?)+)/m) ?? [])[0]?.trimEnd() ?? '';
+  // 「月度精选」是当年一条条挑出来的阅读入口，保留下来放在大类归档之前
+  const keptHeadings = lang === 'zh'
+    ? [/^##\s*月度精选/]
+    : [/^##\s*Selected Notes of the Month/];
+  const kept = [];
+  const bodyLines = body.split('\n');
+  for (const [i, line] of bodyLines.entries()) {
+    if (!keptHeadings.some((re) => re.test(line))) continue;
+    let end = i + 1;
+    while (end < bodyLines.length && !/^##\s/.test(bodyLines[end])) end += 1;
+    kept.push(bodyLines.slice(i, end).join('\n').trimEnd());
+  }
+  return { titles, tldr, title, file, cover, kept };
 }
 
 // ---------------------------------------------------------------- 组装
@@ -353,7 +368,7 @@ weight: 1
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: []
+${prev?.cover ? `${prev.cover}\n` : ''}keywords: []
 tags:
 ${tagList.slice(0, 8).map((t) => `  - ${t}`).join('\n')}
 description: >
@@ -416,9 +431,9 @@ const EN_MODES = {
   '2025-02': 'full', '2025-03': 'full', '2025-04': 'full', '2025-05': 'full',
   '2025-06': 'full', '2025-07': 'full', '2025-08': 'full', '2025-09': 'full',
   '2025-10': 'full', '2025-11': 'full', '2026-08': 'full', '2026-09': 'full',
-  '2026-03': 'appendix-missing', '2026-04': 'appendix-missing',
+  '2025-12': 'full', '2026-01': 'full', '2026-02': 'full',
+  '2026-03': 'full', '2026-04': 'full',
   '2026-05': 'appendix-all', '2026-06': 'appendix-all', '2026-07': 'appendix-all',
-  '2025-12': 'none', '2026-01': 'none', '2026-02': 'none',
 };
 
 const allMonths = [...new Set(memos.map((m) => m.month))].sort();
@@ -514,11 +529,27 @@ for (const month of months) {
     '>',
     '> 以下是这个月的全部记录，按主题归档，条目内保留原始时间戳。',
     '',
-    '---',
-    '',
   ].join('\n');
 
-  const article = `${frontMatter(month, entries, stats, prev) + intro}\n${body.trimEnd()}\n`;
+  // 开头的大类导航：先给目录，读者不用从第一条读到最后一条
+  const navCounts = stats.map((s, i) => ({
+    name: s.direction.zh,
+    heading: `${NUMERALS[i] ?? i + 1}、${s.direction.zh}`,
+    count: s.count,
+  }));
+  const navExtras = (prev?.kept ?? []).map((block) => ({
+    label: block.split('\n')[0].replace(/^##\s*/, '').split('|')[0].trim(),
+    heading: block.split('\n')[0].replace(/^##\s*/, '').trim(),
+    count: (block.match(/^###\s/gm) ?? []).length,
+  }));
+  const nav = renderZhNav({ counts: navCounts, total: entries.length, extras: navExtras });
+
+  const kept = (prev?.kept ?? []).join('\n\n');
+  const article =
+    frontMatter(month, entries, stats, prev) +
+    `${intro}\n${nav}` +
+    (kept ? `\n${kept}\n\n` : '\n') +
+    `${body.trimEnd()}\n`;
   writeFileSync(join(OUT, 'zh', `${month}.md`), article);
   if (WRITE) writeFileSync(join(ROOT, `content/zh/growth/posts/${month}-thought-notes.md`), article);
 
@@ -526,7 +557,14 @@ for (const month of months) {
     action: 'build',
     enMode: mode,
     entries: entries.length,
-    stats: stats.map((s) => ({ id: s.direction.id, count: s.count })),
+    total: entries.length,
+    extras: navExtras,
+    stats: stats.map((s, i) => ({
+      id: s.direction.id,
+      count: s.count,
+      en: s.direction.en,
+      heading: `${NUMERALS[i] ?? i + 1}、${s.direction.zh}`,
+    })),
   };
   keyIndex[month] = entries.map((e) => e.memo.key);
   for (const e of entries) placed.add(e.memo.key);
