@@ -2,9 +2,9 @@
 title: '2026年2月思考笔记：思想与历史、日常与其他、AI 与 Agent 系统'
 ShowRssButtonInSectionTermList: true
 date: 2026-02-28T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 cover:

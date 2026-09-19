@@ -2,9 +2,9 @@
 title: 'July 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering'
 ShowRssButtonInSectionTermList: true
 date: 2025-07-31T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

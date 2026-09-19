@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2026-06-30T23:59:59+08:00
 showtoc: true
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["avoidant attachment", "amygdala", "love", "attachment", "Agent", "Manus", "distribution", "commercial validation", "incentive structure", "unity of knowing and doing", "self-knowledge"]

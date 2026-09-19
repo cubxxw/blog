@@ -2,9 +2,9 @@
 title: '2025年10月思考笔记：思想与历史、日常与其他、自我认知与心理'
 ShowRssButtonInSectionTermList: true
 date: 2025-10-31T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

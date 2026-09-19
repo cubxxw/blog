@@ -363,9 +363,9 @@ function frontMatter(month, entries, stats, prev) {
 title: '${title.replace(/'/g, '’')}'
 ShowRssButtonInSectionTermList: true
 date: ${date}
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 ${prev?.cover ? `${prev.cover}\n` : ''}keywords: []

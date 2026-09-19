@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2026-05-31T23:59:59+08:00
 showtoc: true
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["老挝", "万荣", "万象", "知行合一", "自我认知", "风险偏好", "数字游民", "intent compiler", "flomo", "缘起"]

@@ -78,10 +78,16 @@ for (const month of MONTHS) {
   const zhBody = `\n${zhNav}\n${stripNav(zhBodyRaw).replace(/^\n+/, '')}`;
   const enBody = `\n${enNav}\n${stripNav(enBodyRaw).replace(/^\n+/, '')}`;
 
+  // 长文月份目录只有十几项，留着但默认收起：读者先看到大类导航
+  const relaxToc = (front) =>
+    front
+      .replace(/^showtoc:.*$/m, 'showtoc: true')
+      .replace(/^tocopen:.*$/m, 'tocopen: false');
+
   console.log(`${month}: zh nav with ${sections.length} categories, essay sections=${essaySections}`);
   if (WRITE) {
-    writeFileSync(zhPath, zhFront + zhBody);
-    writeFileSync(enPath, enFront + enBody);
+    writeFileSync(zhPath, relaxToc(zhFront) + zhBody);
+    writeFileSync(enPath, relaxToc(enFront) + enBody);
   }
   touched += 1;
 }

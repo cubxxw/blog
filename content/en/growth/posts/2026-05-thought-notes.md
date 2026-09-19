@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2026-05-31T23:59:59+08:00
 showtoc: true
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["Laos", "Vang Vieng", "Vientiane", "unity of knowing and doing", "self-knowledge", "risk appetite", "digital nomad", "intent compiler", "flomo", "dependent origination"]

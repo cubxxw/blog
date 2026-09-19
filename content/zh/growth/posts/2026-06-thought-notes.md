@@ -4,7 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: 2026-06-30T23:59:59+08:00
 showtoc: true
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["回避型依恋", "杏仁核", "爱情", "依恋", "Agent", "Manus", "分发", "商业验证", "激励结构", "知行合一", "自我认知"]

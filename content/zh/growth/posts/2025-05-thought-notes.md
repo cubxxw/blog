@@ -2,9 +2,9 @@
 title: '2025年5月思考笔记：自我认知与心理、工程与开源、AI 与 Agent 系统'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-31T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

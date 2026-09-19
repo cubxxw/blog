@@ -2,9 +2,9 @@
 title: 'September 2025 Thought Notes: Self-Knowledge, Ideas and History, Cities'
 ShowRssButtonInSectionTermList: true
 date: 2025-09-30T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

@@ -2,9 +2,9 @@
 title: 'March 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering'
 ShowRssButtonInSectionTermList: true
 date: 2025-03-31T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

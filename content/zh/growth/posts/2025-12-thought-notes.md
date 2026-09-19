@@ -2,9 +2,9 @@
 title: '2025年12月思考笔记：思想与历史、地理与城市、工程与开源'
 ShowRssButtonInSectionTermList: true
 date: 2025-12-31T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 cover:

@@ -2,9 +2,9 @@
 title: '2026年9月思考笔记：AI 与 Agent 系统、日常与其他、工程与开源'
 ShowRssButtonInSectionTermList: true
 date: 2026-09-19T10:31:35+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []

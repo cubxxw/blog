@@ -2,9 +2,9 @@
 title: 'April 2026 Thought Notes: Living in Laos, Borders, AI and Agents'
 ShowRssButtonInSectionTermList: true
 date: 2026-04-30T23:59:59+08:00
-showtoc: true
+showtoc: false
 weight: 1
-tocopen: true
+tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
 cover:
