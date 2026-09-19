@@ -1,5 +1,5 @@
 ---
-title: 'October 2025 Thought Notes'
+title: 'October 2025 Thought Notes: Ideas and History, Daily Life, Self-Knowledge'
 ShowRssButtonInSectionTermList: true
 date: 2025-10-31T23:59:59+08:00
 showtoc: true
@@ -7,6891 +7,8785 @@ weight: 1
 tocopen: true
 type: posts
 author: ["Xinwei Xiong", "Me"]
-keywords: ["thought notes", "personal growth", "deep thinking", "tech insights", "life philosophy", "October reflection"]
+keywords: []
 tags:
   - Blog
   - Monthly Notes
   - Personal Reflection
+  - Philosophy
+  - Buddhism
+  - Learning
   - Personal Growth
+  - Psychology
 description: >
-    October 2025 deep thinking notes, recording multi-dimensional reflections on urban development, tech product thinking, personal cognitive growth, and social phenomena. Covering topics from Jiaxing's development potential and high-rise building issues, K-visa policy, rapid iteration methodology, the philosophy of moving from knowing to awareness, embodied memory theory, and observations in the AI era.
+  A complete record of October 2025: 441 notes across 9 themes, led by reading, ideas and history (94), daily notes (83), self-knowledge and psychology (82), AI and agent systems (60), content and craft (46) and product, engineering and open source (38). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.
 tldr:
-  - "Rapid iteration grounded in real feedback drives growth faster than perfectionism which masks fear of critique"
-  - "Moving from intellectual knowing to embodied awareness requires accumulation, internalization, and lived experience becoming part of identity"
-  - "True self-knowledge demands confronting uncomfortable realities about oneself rather than retreating into denial or comforting illusions"
+  - "Perfectionism covers a fear of feedback; trying early, iterating fast and getting real feedback is the shortest path that works."
+  - "Facing yourself costs more than self-deception but is the only thing that changes anything — bookkeeping and embodied memory are both mirrors."
+  - "Admit desire and fragility, then design mechanisms and environments instead of relying on willpower."
+maturity: budding
 ---
-# 2025年10月思考笔记
 
-### 嘉兴的潜力：顶级都市圈间的“白纸”
-> `2025 年 10 月01 日 - 00:18:51`
+# 2025 October Thought Notes
 
-宁波的世界级港口真的是难以撼动的生产力
+> **441 notes this month** | recorded from 2025-10-02 to 2025-10-31
+>
+> **Themes**: Reading, Ideas and History 94 · Daily Notes and Everything Else 83 · Self-Knowledge and Psychology 82 · AI and Agent Systems 60 · Content, Craft and Recording 46 · Product, Engineering and Open Source 38 · Travel, Places and Cities 18 · Business, Investing and Career 10 · Body, Health and Daily Life 10
+>
+> Everything from the month is kept here, filed by theme, each entry carrying its original timestamp.
 
-并且以强大的制造业兜底
+---
 
-相比较而言，嘉兴位置绝佳，两个顶级都市圈中间
+## 1. Reading, Ideas and History
 
-长三角核心区不可或缺的超级节点
+*94 entries*
 
-相对来说也具有强大的不确定性
+<!--memo:6f175b60258a-->
+### Pair and ferrying others across
 
-未来的潜力很大
+> 2025-10-02 15:11:28 · `#格物/佛学`
 
-嘉兴是一个可以填满故事的白纸
+Quite an interesting pairing
 
-`#格物/城市发展`
+Pair is a word beloved in tech, even in AI — whether it's a partner, a pair-programming buddy or a companion assistant, it gives a kind of emotional value
 
-### 高层建筑的潜在危机：早衰与高昂的维修成本
-> `2025 年 10 月01 日 - 00:25:16`
+In Buddhism, ferrying others across — the "ferrying" is commonly used for carrying sentient beings from affliction and birth-and-death (the cycle of rebirth) across to liberation, awakening, or a state more favorable to practice. It's both a mindset (compassion, the power of vows) and a synthesis of methods (precepts, concentration, wisdom and skillful means)
 
-高层楼也是最早面临危机的
+But why is it that in Buddhism I seem to have heard two sayings: one is "the Buddha ferries those with karmic affinity," the other is "only by ferrying yourself can you ferry others"?
 
-高层楼的维修成本过于高了
+In Mahayana scriptures, ferrying all sentient beings, universally saving all beings, is actually done through a series of methods, techniques, and material and spiritual help
 
-现在都还没显露出来，但是却不断存在危机的
+The premise of ferrying others is respecting their autonomy and karmic conditions — no coercion or manipulation
 
-许多中国的高层建筑正经过早老化。在其他国家通常需要几十年才会出现的问题，据报道在中国仅建成不到10到15年的建筑中就已经出现。这些问题包括：
+Ferrying others also needs proper boundaries, to avoid emotional exhaustion
 
-外墙恶化： 外墙瓷砖和面板的开裂、剥落和坠落变得越来越普遍，对楼下的行人构成了安全隐患。
+Buddhas can only teach the dharma; they can't practice in your place
 
-渗水漏水： 来自屋顶、窗户和内部管道的持续渗漏导致水渍损坏和霉菌滋生，既损害了结构完整性，也破坏了居住环境。
+The core liberation lies in the individual's own awakening
 
-系统故障： 电梯作为任何高楼中的关键动脉，正经历着更频繁的故障。管道和电气系统也显示出紧张的迹象，导致服务中断和火灾风险增加。
 
-现在的无人机、科技、远程办公已经在修改游戏规则，其实哪怕是偏远的郊区独栋别墅通勤劣势将被大大削弱，其空间和环境优势会更加凸显
+<!--memo:b31e390ddba0-->
+### The human-nature narrative in The Plum in the Golden Vase
 
-`#格物/城市观察`
+> 2025-10-03 11:10:03 · `#格物/金瓶梅`
 
-### K字签证：吸引全球STEM人才的新策略
-> `2025 年 10 月01 日 - 09:35:52`
+Many people look noble because they don't have the right to choose
 
-K 字签证
+Human nature, too, is constrained by rules
 
-针对全球的 STEM（科学、技术、工程、数学）领域人才的新型签证
+But once a person has choices, he is free — and terrifying
 
-吸引外国高科技人才来华工作、创业或交流
+Character determines a person's choices; choices determine a person's fate
 
-该签证不要求国内雇主担保，只需满足年龄、教育背景或工作经验等基本门槛，即可获批多入境、停留期长达5年，并可直接通往永久居留
+There's no binary good-person/bad-person opposition — same in The Plum in the Golden Vase; the underlying logic is a cold dissection of reality
 
-这个签证像是应对美国提高H-1B签证费用（高达10万美元）的战略回应，旨在提升科技自给自足和全球人才竞争优势，但是同时引发国内就业担忧和对实际吸引力的质疑
+Human nature is desire, and desire inevitably corrodes
 
-同样的可以吸引更多的人才进入中国，并且加快内部的消费
+The fate of the small people is tragic: they have no choices. But the powerful who do have choices are tragic too — driven by desire, destroyed by desire
 
-但是实际上也加剧了本地的就业压力
+Some doors are two-way, some are one-way. When you face a choice, think a little more: does walking through this door mean irreversible ruin?
 
-`#格物/时事`
+An elite of an era, in the trajectory of that era, didn't manage to brake ~
 
-### Grok的产品思考：追问推荐的设计很一般
-> `2025 年 10 月01 日 - 09:45:58`
+When a person stands at the peak of desire with nothing left to restrain him, destruction becomes the only endpoint
 
-grok 总感觉也有一些追问的推荐，但是按钮选项总归感觉很一般设计的
+Pan Jinlian is clearly an extraordinarily vigorous life force, craving to be seen and appreciated. She's naturally beautiful with deft hands (she can sing and play, she can sew), full of energy, with a stubbornness in her bones that refuses to be beneath others. In a normal environment she might have been a radiant woman
 
-后面也会推荐一些选项，比如说一些书籍推荐，或者是案例的推荐
+But she was placed in the wrong spot, with no choices. To survive she had to fold away her fragrance and grow the sharpest poisonous thorns. All her "evil" is this life force distorted in a dead end for the sake of survival. So even if character determines choices, the premise is that the environment provides good choices
 
-`#一闪`
 
-### 快速迭代的真义：完美主义是恐惧反馈的伪装
-> `2025 年 10 月01 日 - 09:47:53`
+<!--memo:63c5478d0a74-->
+### Cold narration
 
-快速迭代这句话重复了无数遍
+> 2025-10-03 13:13:13 · `#格物/阅读方法`
 
-但是没真正经历过又怎么会真的理解
+The author or narrator maintains a deliberate, conspicuous emotional distance from events and characters, telling the story in an objective, restrained, sometimes seemingly detached and unemotional voice
 
-尽早尝试、快速迭代、获取反馈，这是最有效的成长路径
+Like a calm camera that only records and doesn't judge, it doesn't immerse the reader in the character's emotional swings but leads the reader to become a cool observer, examining from outside how events unfold, how characters act, and the logic and absurdity behind them
 
-完美主义是恐惧反馈的伪装
 
-硅谷的敏捷开发（Agile）就是基于这个——MVP（最小可行产品）一扔出去，收集数据，调整方向。完美主义者可能花半年磨一个idea，结果市场变了；迭代者一周试错三次，三个月就领先。别怕"从零开始"，那是重生的机会，不是失败
+<!--memo:25c720afd37f-->
+### A conceptualized way of thinking
 
-先试一试，可以迭代立马就开始全身心专注在迭代上
+> 2025-10-03 14:26:58 · `#格物/概率化思维`
 
-假设：基于直觉或初步探讨，定个可证伪的猜想（e.g., "返工恐惧来自完美主义"）
+Getting past binary, all-or-nothing certainty in my own thinking
 
-实验：小规模试（e.g., 做一个prototype，分享给3人反馈）
+Accept that the world is fundamentally complex, changeable and uncertain, that anything is a probability distribution — not simply predicting the future but calculating the probabilities of different outcomes and betting
 
-反馈：诚实记录（好坏都行，别自欺）
+This makes them more objective in decisions, able to calmly accept failure (because it's just a probabilistic event), and to keep making "positive expected value" choices
 
-Pivot：调整或重来，不纠结"损失"
 
-`#格物/产品方法`
+<!--memo:31ec45db8ae6-->
+### Flights from Seoul to third countries are very cheap
 
-### 高层住宅问题观察：武汉、西安、重庆
-> `2025 年 10 月01 日 - 09:57:34`
+> 2025-10-03 14:58:23 · `#知世`
 
-相对来说高层住宅比较严重的一些城市，包括武汉，西安和重庆
+Including some countries in Europe
 
-武汉的空置房物业费问题严重，区域的人口密度过高
+Seoul (Incheon, Gimpo) is an important aviation hub in East Asia, with especially developed low-cost carriers (LCCs); there are large numbers of flights to Japan and Korea, Southeast Asia, even Europe and America. The more flights, the easier it is to push fares down
 
-重庆的有存在外墙脱落等安全隐患，西安的很多大露台设计都存在问题，很多违规的建筑，并且区域人口极多
+Japan and Korea have very large travel demand toward Southeast Asia and Europe/America; local residents travel abroad frequently, creating a huge market scale, so airlines can attract more passengers with low prices and profit through ancillary services
 
-`#格物/城市观察`
+By comparison, China's policy controls, traffic rights allocation and airport capacity issues mean fewer flights and higher fares
 
-### 从“知”到“觉”：东方的心学修行
-> `2025 年 10 月01 日 - 10:22:11`
+And the current won exchange rate also gives a travel advantage ~
 
-由知到觉
 
-当西方的人一直在从人脑上找到一些人行动的方法时候
+<!--memo:8599a007e0d7-->
+### The untranslatable "feel" is the root of culture
 
-东方前辈们研究心学，个人修行，于是所谓的由知到觉的说法
+> 2025-10-03 17:09:40 · `#知世/语言的本味`
 
-由知到觉的意思是，知是知识的层面，依靠语言、逻辑或者概念去获取或者存储，知往往是借助别人的经验，是认知的一种积累的过程，但是不一定改变内在
+I've started to realize that once certain things leave their native context, their core "feel" dissipates. When reading the Records of the Grand Historian, the flavor and force of the original classical Chinese is something no modern vernacular translation can match. This experience is the same principle as Eason Chan's songs only sounding right in Cantonese
 
-觉是觉察，一种内心的自我顿悟，有一种体验性，直观性，通常与顿悟、感受、存在感相关
+This makes me think that language is far more than a tool of communication; it is itself a carrier of culture and emotion. Many words and expressions simply can't be "translated," because they carry collective memory and emotional resonance from a particular cultural background. Translation can convey information but can't reproduce this unique "original flavor"
 
-知是“外取”，觉是“内生”
+From this angle, the spread of Mandarin, while bringing convenience in communication, may also be invisibly eroding the distinctive cultural texture carried by dialects. When a language loses its vitality, what dims along with it may be a world's unique way of perceiving
 
-所以本质上这个过程实际上也是一种由量变到质变的过程
 
-积累（知）：大量接触信息与概念。
+<!--memo:75ff94b52ba2-->
+### Three levels of understanding the world: is, ought and might
 
-内化（思）：在头脑中反复咀嚼，结合自身经验。
+> 2025-10-04 00:10:28 · `#知世`
 
-触发（境）：在某个契机、场景或冲突下，突然“看见”。
+Reality, ideal and possibility
 
-生发（觉）：意识转化为洞见，不只是理解，而是成为自身的一部分。
+The is: what the world is actually like, what the objectively existing world is like, the factual state that can be observed empirically and verified
 
-`#观我/认知`
+The ought: what the world should be like. Ought statements express a standard, rule or expectation; they define what is "good," what is "right," what is "just." For example, "we should be honest and trustworthy," "society should guarantee every citizen's basic rights"
 
-### 具身记忆：人是被经历定义的
-> `2025 年 10 月01 日 - 10:49:43`
+The might: the world's uncertainty, judgments that are unknown to some degree, and predictions of the future
 
-具身记忆（embodied memory）
+For example, "it might rain tomorrow," "this investment might succeed"
 
-知识、经验并不是只存在于头脑（大脑皮层），而是通过身体的动作、感官、情绪等被“写进”身体的记忆
+The "might" connects the "is" and the "ought." Based on our analysis of the world as it is, we assess various probabilities, then according to our ought-goals choose the action path most likely to lead to the ideal result
 
-身体不仅是经验的“工具”，它本身就是经验的“储存器”
+We stand on the is (the real environment we're in), hold the ought in our hearts (the ideal goal we hope to achieve), and when acting must carefully assess the various mights (the different consequences different choices may bring), and finally make a decision
 
-不需要语言就能调用，并且很难丢失，刻进神经回路和肌肉记忆
 
-归根结底，人是被经历定义的，不是被知道的道理定义的
+<!--memo:e30fc00d067c-->
+### example: some of Alan Chan's methods
 
-知行合一，很难
+> 2025-10-04 15:28:03 · `#格物/阅读方法`
 
-`#观我/认知`
+example: some of Alan Chan's methods — using AI for learning practice, product thinking
 
-### 存在先于本质：人是他自己选择的总和
-> `2025 年 10 月01 日 - 10:55:03`
+In an era when false information spreads easily, contact with first-hand sources is more valuable than ever
 
-存在先于本质，人是他自己选择的总和
+The marginal returns of three learning methods, taking 20 hours as an example:
 
-给的是一次选择的机会
+Traditional learning — reading books, relying on personal understanding: depth above average, breadth low, 7 points
 
-不是替他们做决定，什么是好的，而是让他们有机会决定什对自己什么是好
+AI speed-reading — lots of introductory material (books, videos, articles): breadth high, depth shallow, 6.5 points
 
-`#一闪`
+Deep engagement with the field's best academic textbook for 20 hours (AI-assisted Q&A, explanation, examples): depth high, breadth medium (9 points)
 
-### 迭代的本质是接受数据反馈
-> `2025 年 10 月01 日 - 12:19:06`
+Combining the three is best, especially the first two — essentially aimless (divergent), boundaryless learning -> digging deep into interests
 
-迭代的过程本质上是接受数据反馈
+When my notes get long, I take the time to break them into smaller parts and visualize the relationships between them. I find this process extremely useful for deepening my understanding of what I've learned. At this stage, drawing arrows and connections also becomes very useful
 
-通过连续不断地数据反馈校准或者给自己行动启发
+What content can be deleted?
 
-`#一闪`
+ref - quoting a line from Douglas Engelbart's 1962 "Augmenting Human Intellect," a line that perfectly captures how AI changes learning in my eyes. In short: many advanced approaches to learning and problem-solving only become feasible when lower-level capabilities are fast and efficient.
 
-### 最小行动集：对抗信息过载
-> `2025 年 10 月01 日 - 12:26:29`
 
-最小行动集信息
+<!--memo:8abc4e39f81c-->
+### When choosing a book, a practical rule: pick one that feels slightly out of reach
 
-信息从业者都会有的一个问题
+> 2025-10-04 16:25:45 · `#格物/阅读方法`
 
-过度的去收集或者处理信息
+When choosing a book, a practical rule of thumb is: pick one that feels slightly out of reach. Ideally it should be the kind of book that feels too hard to read on your own, but that you could understand with a PhD advisor guiding you
 
-反而缺少了行动
+And having gone through the filtering of university classrooms and discussion by countless students, such a book will have left behind many good lesson plans and method questions, which is very conducive to interactive learning with AI
 
-构建最小的行动集
+After all, there's an extremely rich stream of information in AI too
 
-这是一种以行动为中心的信息驱动
 
-接受一定的不确定性以及不完美性
+<!--memo:d54c1f127e8c-->
+### True deep understanding doesn't come from the relationship between two books
 
-`#观我/行动力`
+> 2025-10-04 17:13:36 · `#格物/阅读方法`
 
-### 成年的标记：从头培养自己
-> `2025 年 10 月01 日 - 12:46:44`
+True deep understanding doesn't come from the relationship between two books but from the relationships among all the concepts in those two books
 
-衡量我自己成年的一个标记就是
+Only by atomizing notes can you go deeply into the topic you care about through visual notes. Atomic notes don't mean you can't write long notes
 
-成年后的我开始从头培养自己
+It means each concept card should contain only one concept, supported by its content. To ensure clarity, you should always describe the concept in one sentence and use that sentence as the concept card's title
 
-`#观我`
+What's truly valuable isn't the whiteboard you end up making, but the thinking invested in building the knowledge structure and naming each concept card and section, between steps two and four. Deep understanding and insight usually come from the process of deconstructing, reorganizing and describing knowledge in your own words. Only by going through that process does knowledge truly become your own
 
-### 不要害怕返工，尽早尝试得到反馈
-> `2025 年 10 月01 日 - 21:38:25`
 
-不要害怕返工，或者从0开始，返工是一件非常正常的事情，不必因为害怕返工归于追求完美主义，核心是在于尽早的尝试得到反馈，这是成长最快的方法
+<!--memo:975201c2477b-->
+### Thoughts on books that are secondhand
 
-`#观我/成长`
+> 2025-10-05 14:06:09
 
-### 回忆启蒙者：跟对人对成长的帮助
-> `2025 年 10 月01 日 - 21:57:57`
+Returning to first-hand information research is very important
 
-重庆大哥的回忆
+A lot of information today has been modified, packaged and beautified
 
-上一次去重庆还是两年前，23 年末，最后一个城市香港跨年前选择的重庆
+Semantics come in every bizarre shape
 
-算是启蒙者老师，短暂的相遇，却对自己产生了深深的影响
+An author's personal experience is a source for generating hypotheses, but it can't directly become a universal conclusion — unless there's broad data or a clear mechanism supporting it
 
-人都是慕强的
 
-跟对创始人对一个人的成长尤其的有帮助，尤其是第一份工作
+<!--memo:1e001aba9ed1-->
+### Philosophy never left reality; it just understands it in a higher dimension
 
-人会通过模仿优秀例子来学习思维框架、话语与判断标准
+> 2025-10-05 15:22:49 · `#格物/哲学`
 
-不自觉把他的框架纳入自己的自我概念，长期下来就变成“自己的东西”
+How to define reality, how to pose questions, how to understand meaning
 
-`#观我/成长`
+Philosophy's core isn't information accumulation either, but the generation of thought
 
-### 又一次自知之明：管住嘴
-> `2025 年 10 月01 日 - 22:03:48`
+How questions are formed
 
-又一次自知之明
+Many people in philosophy groups dislike AI
 
-自己不能吃辣
+But isn't philosophy essentially independent thinking, not isolated thinking?
 
-昨晚确定的是自己不能喝酒
+If thought can be reproduced by machines, does philosophy still have irreplaceable meaning?
 
-所以，
 
-不要吃重口味
+<!--memo:d8ba0870dcb2-->
+### The problem with reading a lot of books nowadays
 
-不要吃太辣
+> 2025-10-05 15:40:54 · `#格物/阅读方法`
 
-不要喝酒
+Once you have your own cognitive system, many books — especially those focused on opinions or secondhand experience — need to be approached cautiously
 
-否则我还是没有自知之明
+Many of these books are the author's "personal biography + generic template." They package opinions based on their own experience (say, deriving "embrace discomfort" from one failure) but ignore underlying variance — your biological instincts, environment and cultural background may be completely different. As a result the reader immediately feels "something's off," because intuition is warning: this isn't a universal truth, it's the author's "subjective filter." Moreover, the sense of repetition comes from publishing logic: the self-help market is huge, and authors/editors often pad content to fill pages or reinforce memory (repetition helps the brain encode ideas, but for a veteran like you it just becomes noise)
 
-`#观我`
+Essentially, most of these books are "secondary processing" — distilled from psychology and philosophy sources (Maslow's hierarchy of needs, Stoicism) and sold again with a different inspirational story. Read enough and you'll find the core is just a few points: self-awareness, habit formation, relationship repair. There's nothing new because the "underlying code" of human growth is just these — you can vary the packaging but not say anything new. Better to dig deeply into someone's own knowledge and theory system
 
-### flomo/roam 启发：无压力的渐进式知识涌现
-> `2025 年 10 月01 日 - 23:13:46`
+At that point, one more book is just one more layer of noise on the outside; too much information and too many choices actually constrain action
 
-flomo 的 roam 一些思考启发
+Change isn't read into being, it's "chosen" into being — a book can only wake you up; you have to jump in and "live" it
 
-一种无压力的渐进式知识涌现
 
-一个是用来对抗遗忘，寻找笔记之间的关联，激发记忆和思考
+<!--memo:06fc02175a2b-->
+### The principle of least effort
 
-另外一个是激发创造，链接未曾链接的笔记，当你发现两条记录之间存在意想不到的关联时，新的想法和灵感就诞生了。这远比单纯的搜索和分类更有价值
-
-再就是降低认知负担，自动化关联，Roam之所以“复杂、门槛高”，是因为它要求用户投入大量精力去手动建立链接 [[wikilinks]]。而您思考的核心，特别是提到 “AI能力是核心”，指明了最有用的方向：系统应该比我更懂我的笔记，主动提示我可能存在的关联，将手动操作的负担降到最低
-
-`#格物/产品思考`
-
-### 皮肤管理：潜意识习惯与饮食
-> `2025 年 10 月02 日 - 09:56:30`
-
-一些潜意识习惯避免
-
-压力过大会导致身体释放皮质醇（Cortisol），这种激素会刺激皮脂腺分泌更多的油脂，压力大时，HPA 轴被激活 → 下丘脑释放 CRH → 垂体分泌 ACTH → 肾上腺皮质分泌皮质醇
-
-饮食的一些问题，避免一些糖类，尤其是包含大量牛奶或者糖分，可能会影响激素
-
-一些辛辣这是非常直接的刺激。辛辣食物会引起血管扩张，导致面部皮肤充血、发红、温度升高
-
-手上有超级多大量的细菌，这是非常危险的，频繁触摸会将这些细菌转移到已经发炎、毛孔堵塞的皮肤上，极易引发或加重毛囊炎，形成脓疱
-
-一些饮食习惯：
-
-避免含糖量高的食品或者饮料不要喝
-
-避免乳制品
-
-避免高油，油炸以及加工的食品
-
-避免酒精
-
-`#观我/健康`
-
-### 湾区通勤时间观察
-> `2025 年 10 月02 日 - 09:57:15`
-
-美国旧金山湾区所有的通勤方式中，驾车通勤者平均通勤时间大约 30 分钟
-
-硅谷地区通勤者平均每天在交通上花费 73 分钟（即往返），折算单程约 36-37 分钟（但这包括堵车、延误等非理想状态）
-
-`#格物/城市观察`
-
-### 上海的江与海：黄浦江与东海的博弈
-> `2025 年 10 月02 日 - 11:57:36`
-
-上海的海
-
-一直以来，黄浦江对上海至关重要，黄浦江是上海的母亲河
-
-上海的城市形成、港口发展、商业中心建设都依赖黄浦江
-
-黄浦江自古就是内河航运的主干道，连接长江内陆与东海，是早期货物和人员运输的必经之路
-
-也是对外贸易的中心，促进上海成为国际化大都市圈
-
-沿江两岸形成了陆家嘴、外滩、徐汇滨江等金融和文化核心区域
-
-相比较而言，上海的海，上海港（包括外高桥、洋山深水港）是世界第一大集装箱港口，对全球贸易至关重要
-
-海上运输带来的外贸、进出口业务和自由贸易区经济活动，是上海现代经济体量的主要驱动力
-
-如果从现代经济和未来战略来看，海更重要，因为上海的国际化和全球贸易高度依赖东海及深水港口
-
-`#格物/城市观察`
-
-### 香港港口趋势：竞争加剧与战略转移
-> `2025 年 10 月02 日 - 12:11:00`
-
-香港港口变化的趋势
-
-香港曾是全球集装箱吞吐量最大的港口
-
-但是现在基本上被深圳、宁波舟山取代
-
-宁波舟山这两年也成为世界上新的最大的港口
-
-此外，东南亚港口如新加坡和马来西亚的巴生港也在崛起，进一步加剧了香港港口的竞争压力
-
-所以这也是长江实业（CK Hutchison）将其在巴拿马港口公司的多数股权出售给美国主导的财团
-
-CK Hutchison 在全球多地运营港口，港口建设和运营需要大量固定资产投入，包括码头、堆场、自动化设备、港口航道维护等
-
-并且巴拿马码头是海外投资，但距离核心市场（亚洲、欧洲）较远
-
-相比较而言，一些长三角或者粤港澳大湾区的码头相对来说更有趋势
-
-尤其是大湾区的形成，长三角港口群和珠三角港口群，优势互补，资源共享，提高全球竞争力
-
-`#格物/经济`
-
-### 选择的悖论：More is less
-> `2025 年 10 月02 日 - 12:55:25`
-
-通过常识切入
-
-极简主义提倡的是 less is more
-
-选择的悖论： More is less
-
-虽然我们通常认为拥有更多选择能让我们更自由、更幸福，但当选项过多时，反而会导致我们焦虑、犹豫不决，并最终降低我们对所做选择的满意度
-
-这可能也是现代人，尤其是未来的科技，信息化时代带来的问题
-
-决策瘫痪也是正常的，当面临的选择过多的时候，人很容易产生一些惰性
-
-`#格物/心理学`
-
-### 谬论与悖论的区别
-> `2025 年 10 月02 日 - 12:58:23`
-
-谬论和悖论
-
-谬论（Fallacy）本身就是推理过程的错误问题，就像是一台有故障的机器，给再好的原料，也会生产出坏的产品，结论可能是对的，也可能是错的，但是推导过程本身就有逻辑漏洞
-
-悖论（Paradox）是结果本身出现无法化解的矛盾，就像用完美的机器、完美的原料和完美的过程，但是生产出一个“既是固体又是液体”的产品的奇怪情况，悖论一般结论会挑战自己的常识和逻辑基础
-
-
-悖论，一般揭示了我们语言、逻辑体系或世界观的局限性。研究悖论是为了深化理解、推动知识边界
-
-
-解决悖论，通常需要引入新的概念、使用新的框架，或承认现有系统的局限性
-
-
-`#格物/逻辑`
-
-
-### 再谈自知之明：接受真实的自己
-
-
-> `2025 年 10 月02 日 - 13:20:31`
-
-
-自知之明
-
-
-知道自己能做什么
-
-知道自己要做什么
-
-知道自己做不到什么
-
-我说我有自知之明，我确实达不到坚持锻炼，坚持健身，我承认
-
-我承认自己不够勤俭节约，因为这个观念我也一直有，但是我也一直改不过来，所以所幸最终可以接受了，1. 我改变不了，我就是这德行。2. 我确实了解自己是这样的人了，我有自知之明
-
-我能做的是什么，我没有自控力，玩手机，我就去训练自己的大脑认知反应，比如说在咖啡馆，习惯性的就不去看手机，专注在自己的电脑上面，偶尔自己咖啡内到处逛逛
-
-再比如说我确实没有坚持跑步，但是如果有一个期望，就是想看看城市，到处拍一拍，接触了解这个城市，允许自己通过跑步去了解这个城市，这是让我开心的，或者我能通过系统的方法，去拆解这个任务，我先把自己的跑鞋丢到家楼下，先完成这一步
-
-我没办法省钱，也没坚持记账，这也不是谁的问题，其实就是自己缺少认知，一个是缺少对金钱的认知，一个是自己缺少自己对自己的认知，自己很害怕看到真相，原来自己这么花钱
-
-`#观我`
-
-### 记账的本质：敢不敢面对真实的自己
-> `2025 年 10 月02 日 - 13:31:10`
-
-记账的本质
-
-看上去就是记账的一个操作，有些人觉得是习惯，这个问题底下藏着的，是人如何看待自我、看待生存、以及看待现实的根本属性。把记账当成一个动作，一种方法，你就已经落了下乘，看不到它的本来面目
-
-记账很难，他们要的不是镜子，而是美颜相机。他们不想看到真实的自己，那太赤裸，太难堪。当账本清清楚楚地告诉你，你的收入无法支撑你向往的“品质生活”，你的钱大部分花在了维系虚荣和即时满足上，你的抗风险能力几乎为零时——这对一个活在“希望”和“感觉”里的人来说，是审判
-
-坚持不下去，本质上是一种自我保护，拒绝承认自己的生存逻辑有漏洞
-
-有些人记账是为了省钱，这种方式只是在揭露自己的真实贫穷的因果，这是痛苦的根源，所以很难坚持
-
-自知之明的人记账，就是了解自己的一种方式，不在乎数字好不好看，他在乎数字是不是真的。账本就是他个人经济世界的地图，有了地图，他才能规划路线，知道哪里是山，哪里是河，哪里可以走，哪里是悬崖
-
-所以，本质是想解决问题，还是想心安理得地回避问题？
-
-`#观我/心理`
-
-### AI Agent为何先选PGC：保证首次履约体验
-> `2025 年 10 月02 日 - 14:14:31`
-
-为什么当下做 Agent，选择 PGC 而不是 UGC，更容易通向 AI 的未来
-
-P 是 Professional，Professional 相对来说能给出更多的专业的提示
-
-目前的 agnet 更多的侧重 AI 成就超人，这个过程中需要一些专业的从业者， AI 和人之间更多的是一起勇闯天涯的队友
-
-在当前阶段的 Agent 平台，PGC 是必要的，可以保证「首次履约体验」的必要提供，避免低质量的 UGC 产品失去用户信任。UGC 模式的成熟需要「需求激发」和「AI 工程架构生产工具的积累提升」，两个条件都是第一个阶段的沉淀要点
-
-`#格物/AI产品`
-
-### 理性与感性：硬币的两面？
-> `2025 年 10 月02 日 - 14:28:36`
-
-理性是从外向内追求真理
-
-感性是从内向外表达体验
-
-感觉是硬币的两面？ 真的能共存吗？
-
-想来想去，只有一种方法，理性“驯化”感性，却保留其活力
-
-一个典型的特征，逻辑主导却情感丰富，全面的理解人性同时，也能避免了单纯理性的冷漠或感性的冲动
-
-再者，感性的对面本身也不是理性，而是麻木
-
-`#观我`
-
-### 人生的转折点：从开源到旅居
-> `2025 年 10 月02 日 - 14:36:46`
-
-大二前的我： 内向、自卑、害羞、腼腆
-
-大二接触到开源社区，开源项目以及接触到户外，第一次内心萌动了一个爱好，从内和外变化
-
-大四搭子创业，环境的变化，价值驱动，抛弃传统大众的选择道路，放弃稳定拥抱变化
-
-毕业一年旅居变化，环游世界各地，人生中一个新的转变，扩展了自己的接触面，认知体系，强化了自己的内核
-
-但是，也在深度的思考，人生中的新的转折点到底是什么？？？
-
-`#观我/复盘`
-
-### Pair 与 渡人：科技与佛学的奇妙组合
-> `2025 年 10 月02 日 - 15:11:28`
-
-pair 和 渡人
-
-挺有意思的组合
-
-pair 是科技技术领域、甚至 AI 领域比较喜欢的词，不管是伴侣，结对编码伙伴，还是陪伴助手，给人一种情绪价值
-
-佛学中的渡人，佛学上的渡，常用作把众生从烦恼、生死（轮回）中“渡”到解脱、觉悟或更有利修行的境地。它既是心态（慈悲、愿力），也是方法（戒、定、慧与方便法门）的合成
-
-但是为什么在佛学中好像听到过两种说法，一种是“佛度有缘人”，另外一种是“自渡才能渡人”
-
-大乘经典中，度一切有情，普渡众生，实际上是通过一系列的方法，技巧，以及物质和精神上的帮助
-
-渡人的前提是尊重他人的自主与因缘，不搞胁迫或操控
-
-渡人也要有适当的边界，避免情感耗竭
-
-诸佛只能说法，不能替人修行
-
-核心解脱在于个人的自觉
-
-`#知世/文化`
-
-Read feedback
-
-### 如何破解决策瘫痪：单向门与双向门
-> `2025 年 10 月02 日 - 15:20:00`
-
-决策瘫痪的解法
-
-其实有一个核心，就是不要过多的补充信息，以及不要担过度的担心决策的完美性，也不要过多的得到可以做出的选项
-
-选项多了反而容易陷入决策瘫痪
-
-我们的大脑，特别是负责决策和分析的前额叶皮层，其“工作记忆”（Working Memory）容量是极其有限的。把它想象成电脑的内存条。当只有2-3个选项时，你可以轻松地在脑海中对它们进行比较、权衡利弊。但当选项增加到20个时，每个选项又有10个不同的属性（价格、颜色、功能、评价…），你需要处理的信息量呈指数级增长。
-
-同样，因为人类对“损失”的厌恶感远大于获得同等“收益”的愉悦感。简单说，失去100块钱的痛苦，比得到100块钱的快乐要强烈得多。
-
-所以很多时候，大脑选择的未必是最好的那个，而是在极度恐惧中试图“避免做出一个会后悔的选择”
-
-单向门和双向门决策方式非常实用
-
-双向门决策 (Two-Way Door): 这是一个可逆的、影响小的决策。比如，尝试一家新餐厅、看一部电影、买一件可以退货的衣服。如果选错了，后果不严重，你可以轻易地“走回来”。对于这类决策，你应该快速决定，不要浪费过多精力
-
-单向门决策 (One-Way Door): 这是一个不可逆的、影响重大的决策。比如，结婚、生子、选择职业方向、进行重大投资。这类决策值得你投入更多时间和精力去研究
-
-当两个价值非常接近的时候，就更没必要继续分析了，继续分析的边际效益几乎为 0 ，所以这时候直接随机的通过硬币做选择，快速决策
-
-高效工作的还有一种方法是“帕金son定律”，任务会膨胀到占满你为它预留的所有时间。如果你给自己一周时间选餐厅，你就会纠结一周
-
-所以安排一个时间盒子，将在今天下午3点到4点这一个小时内，完成对旅游目的地的选择。4点一到，无论结果如何，必须做出决定，而不是拖延
-
-我突然想到我的朋友好像也是这样的性格的人，很喜欢提前的计划和安排，实际上也是为了到截止时间内，不断的因为需要做出选择收集出更多无意义的信息
-
-`#格物/决策方法`
-
-### 认知失调：为何宁愿抓住1%的希望
-> `2025 年 10 月02 日 - 21:35:21`
-
-认知失调
-
-当一个人同时拥有两种相互矛盾的想法、信念或态度时，会产生一种不舒服的紧张感，即“认知失调”
-
-人大脑会缓解情绪，会下意识的改变其中的一个想法，让他们变的协调
-
-比如说，一个事实是：
-
-她行为的种种迹象表明，她只是在骗我、钓我
-
-我为她付出了感情/时间/金钱，我希望她也同样喜欢我
-
-健康的状态是及时止损
-
-但是大脑最轻松的状态实际上是否认，她不是在骗我，那些迹象都是误会。她内心深处是喜欢我的
-
-大脑潜意识会找借口，有一个完美的借口和外部支撑
-
-这就是“钓鱼”手法了
-
-奖励不是每次都出现，而是随机、不可预测地出现。这会让人持续抱有期待，并不断地投入，希望能再次获得奖励。赌博就是最典型的例子
-
-还有一种是 沉没成本谬误，“我已经付出了这么多，现在放弃就全白费了
-
-就跟视频上男的一样，总觉得自己付出了很多，想的不是及时止损，和股票一样，想的是少亏，或者能赢一部分回来，毕竟，相比较人得到钱，人更难以接受的是失去钱
-
-人类天生倾向于逃避痛苦。因此，哪怕是抓住一个1%的虚假希望，也比面对一个100%的残酷现实要容易得多
-
-`#格物/心理学`
-
-### 读书与行路：二手经验与一手体验的闭环
-> `2025 年 10 月02 日 - 23:13:14`
-
-读万卷书和行万里路哪个重要？
-
-我渐渐明白，读书与行路从来不是非此即彼的选择。读书给我的是深度，是他人思想与经验的沉淀；行路带来的是广度，是身体与世界直接碰撞的真实感
-
-若只读书，感受会浮在纸面
-
-若只行路，体验难以沉淀成思想
-
-真正让我收获最大的时候，是旅途中读书：当身体的记忆与情感的触点遇上文字的解释与延展，二手经验与一手体验才完成闭环。那一刻，我不仅是见证世界，更是与世界建立了属于自己的理解
-
-`#观我/学习方式`
-
-### 发朋友圈的利他心理
-> `2025 年 10 月02 日 - 23:35:35`
-
-发朋友圈是否会有利他心理
-
-真的觉得自己有价值的事情？
-
-`#一闪`
-
-### 理想城市排名思考
-> `2025 年 10 月03 日 - 00:06:41`
-
-考虑发展，理想城市排名是 杭州 / 深圳，成都也适合老了过去哈哈
-
-考虑养老（现在还太早，起码有五年的思考时间），成都、长沙和杭州
-
-`#观我/思考`
-
-### 《金瓶梅》的人性叙事：当人拥有选择
-> `2025 年 10 月03 日 - 11:10:03`
-
-金瓶梅人性叙事
-
-很多人看上去高尚是因为他们没有选择的权利
-
-人性往往也是被规则约束
-
-但是当人一旦拥有选择，他是自由的，也是可怕的
-
-性格决定一个人的选择，选择决定一个人的命运
-
-没有好人坏人二元对立，金瓶梅中也是，根本逻辑就是冷酷现实解剖
-
-人性即欲望，欲望必然腐蚀
-
-小人物的结局是悲剧的，他们没有选择，有选择的权贵也是悲剧的，他们被欲望驱使，毁于欲望
-
-有些门是双向的，有些门是单向的，当自己在面临选择的时候，多去思考一下，这个门是否往里走就是万劫不复？
-
-一个时代精英，在时代的轨迹中，没有刹住车～
-
-当一个人站在欲望的顶峰，又没有任何东西可以约束他时，毁灭就成了唯一的终点
-
-潘金莲明明是一个极其旺盛、渴望被看见、被欣赏的生命力。她天生丽质，心灵手巧（会弹唱、会女红），精力充沛，骨子里带着一股不甘于人下的倔强。在正常的环境下，她可能会是一个光彩照人的女性
-
-但是投错了地方，没有选择，为了活下去，她不得不收起芬芳，长出最尖利的毒刺。她的所有“恶”，都是这份生命力在绝境中为了求生而产生的畸变，所以即使是性格决定选择，前提也需要有环境提供给好的选择
-
-`#格物/读书`
-
-### 承认自己不是圣人：用机制管理欲望
-> `2025 年 10 月03 日 - 13:04:44`
-
-承认自己不是圣人
-
-自己也不需要装作成为圣人
-
-我也有脆弱和欲望
-
-我也会受到金钱、地位、异性吸引，这是我的人性
-
-我能察觉到自己的这个过程，我没有强大的自控力，我更擅长设计一个机制
-
-机制 > 冲动，让外部环境帮助自己管理人性
-
-察觉到自己的欲望，并且不让它蔓延
-
-经常思考我想成为什么样的人
-
-如果我滑落了，我该如何拉回自己？是否是一个单向门？
-
-不需要誓言或者语言上的约束，而是靠价值观 + 自律机制 + 对后果的清晰认知
-
-`#观我/自省`
-
-### 什么是“冷叙事”：冷静的摄影机
-> `2025 年 10 月03 日 - 13:13:13`
-
-冷叙事
-
-作者或者叙述者的事件和人物保持一种刻意、显著的情感距离，以一种客观、克制、甚至有时显得疏离和不带感情色彩的口吻来讲述故事
-
-就像是一个冷静的摄影机，只记录，不评判，不是让读者沉浸在角色的情绪波动中，而是引导读者成为一个冷静的观察者，从外部审视事件的发生、人物的行为及其背后的逻辑与荒谬
-
-`#格物/阅读方法`
-
-### 顺势而为与成长
-> `2025 年 10 月03 日 - 13:44:03`
-
-顺势而为是一个很正常的现象
-
-人性是复杂的而且难以预测的，不同的环境，不同的性格，不同的行动反应
-
-大多数人会下意识避免痛苦，因为人性天然趋利避害
-
-但是真正的成长常常来自“面对痛苦”的过程，而不是温室里的安逸
-
-权利者有两种行为，一方面他们会设计挑战，而不是制造苦难，超出范围内的一些难度任务，或者独立让其解决一个棘手问题，虽然有风险，但是有隐形支持
-
-成长都是适度的压力 + 支撑性的环境，把握一个“最佳挫折区间”：太容易没成长，太难会崩溃，适中才会促进进化
-
-痛苦并不会主动带来成长
-
-作为一个操控者，想要结果对自己有利，让对方服从或者依赖
-
-作为一个引导者，想要对方的潜能被激发，对方获得更完整的人生
-
-`#观我/人性`
-
-Next 10 notes
-
-### 概念化的思考方式：概率化思维
-> `2025 年 10 月03 日 - 14:26:58`
-
-概念化的思考方式
-
-是解决和避免让自己陷入二元对立的确定性思维的方式
-
-接受这个世界本质上是复杂多变的，不确定的，任何事情都是一个概率分布，不是单纯预测未来，而是计算不同结果的概率下注
-
-这让他们在决策时更客观，能够坦然接受失败（因为这只是概率事件），并持续做出“期望值为正”的选择
-
-`#格物/思维模型`
-
-### “知道”与“做到”的鸿沟：用认知勤奋掩盖创造拖延
-> `2025 年 10 月03 日 - 14:34:09`
-
-我似乎陷入了一个循环：对万物的好奇心驱使我不断学习新知，但这种“输入”的快感，却挤占了“输出”创造的精力与时间。这本质上是从“想到”到“知道”的无限循环，却始终难以跨越到“做到”
-
-作为高认知需求者，学习和理解复杂概念本身就能带来巨大的心理满足和多巴胺奖励。这个过程是即时的、可控的、几乎没有失败风险的。相比之下，创造产品是一个充满不确定性、挫败感和延迟满足的漫长过程。大脑本能地选择了前者这条“阻力最小的路”
-
-但是又感觉这是一种伪执行，它发生在安全的思想沙箱里，而不是混乱的真实世界。我们用构建认知模型的勤奋，掩盖了创造价值的拖延，但是也缓解了无所事事的焦虑感
-
-`#观我/自省`
-
-### 探索需要目的，否则缺少价值创造
-> `2025 年 10 月03 日 - 14:37:27`
-
-如果没有目的，就一直都是漫无目的的探索
-
-这个过程又终归是缺少行动和真正价值的创造的
-
-`#一闪`
-
-### 渴望被看到：同理心是初始链接
-> `2025 年 10 月03 日 - 14:48:57`
-
-人的存在是为了证明自己的优越感和存在感的
-
-大部分的人只是渴望被看到或者被聆听
-
-保持一些同理心，这是人与人之间的初始链接
-
-`#观我/人性`
-
-### 为什么首尔飞多国机票便宜？
-> `2025 年 10 月03 日 - 14:58:23`
-
-首尔飞三方国家的机票很便宜
-
-包括飞欧洲的一些国家
-
-首尔（仁川、金浦）是东亚重要的航空枢纽，特别是低成本航空（LCC）发达，飞日韩、东南亚甚至欧美都有大量航班。航班越多，票价越容易压低
-
-日韩对东南亚、欧美的旅游需求非常大，本地居民出境频繁，带来了巨大的市场规模，航空公司可以通过低价吸引更多乘客，并通过附加服务盈利
-
-相对来说，中国的政策管控，航权分配和机场容量问题，导致航班数少，票价高
-
-而且现在的韩元会旅游优势 ～
-
-`#知世/观察`
-
-### 产品理解：Recall - AI驱动的第二大脑
-> `2025 年 10 月03 日 - 16:27:07`
-
-Recall 的理解
-
-插件的类型，一个个人知识库，核心的价值是
-
-把网上的各种的类型文章收集进来
-
-自动的总结、整理和链接
-
-然后你可以像和人对话一样，跟你过去存的所有资料聊天，得到答案或灵感
-
-类似于 Notion Web Clipper + Readwise 的结合
-
-每一次保存 AI 都自动生成摘要，帮你快速抓住重点，并且避免囤积信息 → “只收藏不看”的问题
-
-系统会自动组织内容，并建立关联（knowledge graph），让你看到不同内容之间的联系
-
-这比单纯的收藏夹更智能，接近 Roam Research + AI 的感觉
-
-采集多模态内容 → 转录 & 转文本 → embedding 表示 + 摘要生成 → 存入向量数据库 + 知识图谱 → 检索增强生成 (RAG) → 加上 spaced repetition 算法 → 最终形成一个 AI 驱动的第二大脑
-
-[https://www.getrecall.ai/?ref=producthunt](https://www.getrecall.ai/?ref=producthunt)
-
-`#格物/产品`
-
-### 产品理解：Indy AI - 让工作找到你
-> `2025 年 10 月03 日 - 16:41:58`
-
-Indy AI
-
-提倡的是让工作找到你
-
-AI 做推荐是我很看好的，信息爆炸时代，如何精准找到信息或者是推荐合适的信息
-
-实际上是扫描和分析你在 Linkedin 和 X 上的现有的关系网络，基于你的技能、经验和偏好，帮你自动发现潜在的工作机会或者合作机会
-
-扩展自己的关系网络，与其自己不断找机会，它强调“让工作找到你”
-
-打开 Chrome Web Store → 安装 Indy AI 插件。
-
-登录/注册 Contra.com。
-
-将 Indy AI 与 LinkedIn/X 账号连接（授权数据访问）。
-
-插件后台运行，自动扫描更新。
-
-在 Contra Pro 面板或插件界面中，你会看到：
-
-a. 推荐的机会（项目、职位、合作）
-
-b. 与你技能/经验相关的联系人
-
-c. 可以一键操作的工作申请或联系渠道
-
-[https://chromewebstore.google.com/detail/indy-ai/hgpklbhmaaajglapkgebgjjlccndmcoo](https://chromewebstore.google.com/detail/indy-ai/hgpklbhmaaajglapkgebgjjlccndmcoo)
-
-`#格物/产品`
-
-### 再谈平衡：不是选择，而是系统调节
-> `2025 年 10 月03 日 - 17:08:11`
-
-再次深度理解平衡
-
-很多时候也都能理解
-
-也都不缺选项
-
-也都不缺认知
-
-但是往往面临的不能既要又要
-
-而且也不是选择的问题，非 A 即 B 的问题
-
-更像是一种在系统中平衡调节的过程，取决于系统设计者如何设计的问题
-
-就像是中国的防火墙，也是一个灵活的调整过程
-
-理解冲突，理解张力
-
-通过不断的试错和反馈调整这个系统
-
-`#格物/系统思维`
-
-### 无法翻译的“感觉”：语言是文化的根
-> `2025 年 10 月03 日 - 17:09:40`
-
-无法翻译的“感觉”，是文化的根
-
-我开始意识到，某些事物一旦脱离其原生语境，其核心的“感觉”便会消散。阅读《史记》时，初版的文言文所带来的韵味和气势，是任何现代白话文翻译都无法企及的。这种体验，与听陈奕迅的歌必须是粤语版才对味，是同一种道理
-
-这让我想到，语言远不止是沟通的工具，它本身就是一种文化和情感的载体。许多词语和表达方式根本无法被“翻译”，因为它们承载的是特定文化背景下的集体记忆和情感共鸣。翻译可以传递信息，却无法复现这种独有的“本味”
-
-从这个角度看，普通话的普及在带来沟通便利的同时，或许也正在无形中侵蚀方言所承载的独特文化肌理。当一种语言失去活力，随之黯淡的，可能是一个世界独特的感知方式
-
-`#知世/文化`
-
-### 什么是度假：心境的转变
-> `2025 年 10 月03 日 - 17:43:44`
-
-什么是度假？
-
-度假是一种感觉
-
-心境的转变
-
-有当我真正放松、沉浸在自己喜欢的节奏里时，它才算是度假
-
-度假并不需要海边、远方或者特殊场所，它可以发生在任何一刻
-
-当我全然投入做一件自己喜欢的事时，那一瞬就是度假。原来决定权一直在我心里，而不在外部的风景
-
-`#观我`
-
-### 敢于直面问题：构建系统去解决
-> `2025 年 10 月03 日 - 20:06:52`
-
-当自己有问题的时候，敢于直面问题
-
-甚至是多去尝试构建几个系统
-
-尝试找到问题的解决方法
-
-比如说健身坚持不下来
-
-那么就建一个健身群，每天打卡
-
-并且以激励的方式，而不是攀比或者惩罚的方式
-
-通过挖掘自己的运动习惯，立马就去做一个社会实验
-
-`#观我/行动力`
-
-### (想法片段)
-> `2025 年 10 月03 日 - 20:56:12`
-
-只会更具你的想法和兴趣去驱动
-
-并且内容经得起考验
-
-你可以从中收获到很多
-
-`#一闪`
-
-### 现代人的社交孤独症
-> `2025 年 10 月03 日 - 21:13:43`
-
-现代人的社交孤独症
-
-全球数据显示，20%人口感到孤独，许多人将社交媒体列为主因，尽管平台（如Meta）宣称能“治愈”它。 讽刺的是，科技公司制造了孤独（如通过设备隔离），现在又卖“AI伴侣”来“解决”它
-
-`#知世/社会观察`
-
-### “两杯咖啡”：专注线下的交友App
-> `2025 年 10 月03 日 - 21:13:58`
-
-两杯咖啡
-
-我在想科技孤独感的今天
-
-想想越南的线下咖啡馆的氛围
-
-以及国内的现在情况
-
-甚至是失业后的人群，没有工作的人群，孤独来到一个城市的人群
-
-是否有办法专注于做线下交友的 app
-
-以线下为主的，比如说一定要约一杯咖啡
-
-还能促进咖啡馆的生意
-
-人类是社会动物，数字工具应服务于此，而非取代
-
-`#一闪`
-
-### AI产品开发新范式：原型先行，全员Builder
-> `2025 年 10 月03 日 - 23:38:10`
-
-AI 产品目前比较流行的方式
-
-实际上也是先做出原型验证效果，再看看如何设计 UI
-
-相比较以前的 PRD 驱动，设计先行的方式，这个更注重实践，上手和反馈
-
-并且现在也是所有的人都是 Builder
-
-通常很多人都会涌现对应的小火花，不是等产品经理的灵光一现，而是由一两个工程师提出并迅速制作出原型。这个原型并不追求完美的交互或视觉，而是聚焦于核心功能和产品价值
-
-就像是在战场上，一支突击队快速穿插，直捣核心——目标明确，不恋战
-
-原型一旦完成，便会立刻部署给 Anthropic 全员在日常工作中使用，让产品的创造者同时成为了最挑剔的用户
-
-因为深度浸淫在产品场景中，他们能提供最真实、也最关键的反馈。一个功能是否具备真正的生命力，在这个内部生态中将得到最快的检验——只有在内部被验证是有效、好用的功能，才会被正式产品化
-
-这一步的前提是团队本身就是产品的目标和深度用户
-
-只有当一个功能被内部证明“行之有效”后，才会进行用户体验（UX）的打磨和优化
-
-这一步可能对大部分习惯了移动互联网开发范式的团体（尤其是设计师）来说，是最「反直觉」和「不适」的。对这个原则能否达成充分共识，是实际执行成本和最终效果的关键
-
-这其实是回归到了设计的本质，设计必须要克制，帮助用户专注于核心任务，而不是被繁杂界面分散精力
-
-模型为王： 设计的终极目标，是用最薄、最透明的“包装”，让用户能最直接地感受到 Claude 模型本身强大的能力——这一点非常关键，和 Agent 工程架构设计原则是不谋而合的
-
-产品设计阶段：与 AI 成为创意共鸣者。 在构思新功能时，她会直接与 Claude 对话，探讨“常见用例”、“边缘情况”，甚至寻求设计的初步建议。AI 在此成为了一个永不疲倦、知识渊博的思考伙伴
-
-方案评估阶段：获得量化的决策依据。 当设计稿完成后，她可以将图片直接展示给 Claude，并询问实现它所需的大致工作量。这让设计师在与工程师的沟通中，拥有了更坚实的工程学依据。（哈哈哈太鸡贼了……
-
-产品发布前夜：亲自上手改代码，捍卫体验的“最后一公里”。 这是最颠覆的一点。在传统流程中，那些优先级不高（P2 级别）的视觉瑕疵或体验微调，常因资源紧张而在上线前被无奈妥协。而现在，设计师可以亲自进入生产环境的代码中，修复和优化这些细节，亲手打磨好产品的最终品质
-
-`#格物/AI开发`
-
-### AI 时代，需要新范式
-> `2025 年 10 月03 日 - 23:39:41`
-
-以前学到的系统的方法或者工程的方法
-
-AI 时代未必也是最优的
-
-无非是前人沉淀下来的经验罢了
-
-AI 时代，更多思考，是否有一些新的范式，或者更有利于 AI 时代协同的方法
-
-在人与AI协同的新模式下，真正高效、创新的范式究竟是什么？这可能意味着，过去冗长的流程需要被简化，过去依赖严谨规划的模式，可能会被AI增强下的快速迭代和涌现创新所取代
-
-`#格物/AI思考`
-
-### 理解世界的三个层面： 实然、应然与或然
-> `2025 年 10 月04 日 - 00:10:28`
-
-理解世界的三个层面： 实然、应然与或然
-
-现实、理想和可能性
-
-实然，世界实际上是什么样的，客观存在的世界是什么样的，可以被经验观察和验证的事实状态
-
-应然，世界应该是什么样的，应然陈述表达的是一种标准、规则或期望，它规定了何为“好”、何为“正确”、何为“正义”。例如，“我们应该诚实守信”、“社会应当保障每个公民的基本权利
-
-或然，世界的不确定性，一定程度上未知的判断，以及未来的预测
-
-例如，“明天可能会下雨”、“这项投资或许会成功”
-
-“或然”连接了“实然”与“应然”。我们基于对实然世界的分析，评估各种或然性，然后根据我们的应然目标，选择最有可能导向理想结果的行动路径
-
-我们立足于实然（我们所处的现实环境），心怀着应然（我们希望达成的理想目标），在行动时，必须仔细评估各种或然性（不同的选择可能带来的不同后果），并最终做出决策
-
-`#知世/思维模型`
-
-### 运动补糖的误区：过量摄入的风险
-> `2025 年 10 月04 日 - 09:23:52`
-
-运动补糖
-
-高糖分摄入与膝盖健康的恶化之间存在多方面的联系
-
-尤其对于运动表现而言，但过量摄入会引发一系列生理过程，可能导致膝盖疼痛、关节损伤，并加剧骨关节炎等疾病
-
-所以平常对于一些简单的运动，专注于适当补水和均衡饮食，尽量不额外补充糖分
-
-持续的高强度运动，适当的补充碳水化合物
-
-`#格物/健康`
-
-### 如果能早点意识到学习的乐趣
-> `2025 年 10 月04 日 - 10:25:12`
-
-如果能早点意识到学习的乐趣
-
-还是有一些不可控的遗憾吧
-
-学习本质上不是一种知识的堆积，而是一种感知和链接世界的方式
-
-新的技能和视角都会打开自己和世界之间的窗口
-
-探索的本质是快乐的，这个动力感更多的是内部驱动力，而不是外部的评价
-
-内驱力更容易让人找到兴趣，更早的积累深度和广度
-
-我能早点意识到， 就会更早去尝试、去犯错、去连接不同的人、去跨界，结果可能是更开放的心态、更少的畏惧，更容易找到属于自己的路
-
-`#观我/反思`
-
-### 产品设计：DayDrift 的周计划与习惯追踪
-> `2025 年 10 月04 日 - 13:47:21`
-
-DayDrift 的设计技巧
-
-专注于每周计划，其独特的每日折叠式界面可让您按工作日整理任务。与传统的待办事项应用不同，它包含一个持续追踪系统，可以激励你养成持续的日常习惯
-
-没有完成，自然而然的把任务转移到下一天
-
-`#格物/产品`
-
-### MCP 的未来：懒加载与事实标准
-> `2025 年 10 月04 日 - 14:06:29`
-
-mcp 的节点数的预测
-
-每一个 mcp 都会占用系统的资源，链接如果过多会影响响应速度
-
-虽然 Claude 的上下文窗口很大，但同时加载太多工具的描述和元数据会占用可用空间
-
-单次对话中可调用的工具数量也受到实际限制
-
-现在更流行懒加载或者是按需激活，可以大幅度提升可支持的 mcp 总数，可能也会提升到 50-100
-
-后面也许 MCP 成为事实标准后，大部分在线服务原生支持
-
-不再需要为每个服务单独配置，而是直接"发现-连接-使用"
-
-`#格物/AI`
-
-### MCP 嵌套是过度设计
-> `2025 年 10 月04 日 - 14:15:44`
-
-嵌套 mcp 本身就是一种过度设计
-
-好的方法，新的一个 mcp，统一的调用工具，简单高效
-
-或者是并行执行两个 mcp
-
-`#格物/AI`
-
-### 自卑的本质：选错了参考系
-> `2025 年 10 月04 日 - 14:50:16`
-
-自卑的本质
-
-我比较有自知之明，知道自己是谁，知道自己有什么，知道自己想要什么
-
-交友本质是交换，情绪交换或者物质交换
-
-很多人是认知错位，因为价值层面自卑是比较的产物，但是也许选择了错误的参考系
-
-自卑是意识觉醒代价，没有意识动物是没办法感觉到自卑的
-
-自卑源于将 “我有什么” 等同于 “我是谁”
-
-自卑感和自卑情结也不一样
-
-自卑感是认识到自己不够好，这是一种动力
-
-自卑情结则是陷入自己不行的叙事，这是一种束缚
-
-所以自卑是通往力量的必经之路，也许是觉醒的起点
-
-`#观我/心理`
-
-### AI 时代的三种学习方式
-> `2025 年 10 月04 日 - 15:28:03`
-
-example：Alan Chan 的一些方法，使用 AI 学习实践，产品思路
-
-错误信息很容易传播的时代，相信与一手资料来源的接触比以往任何时候都更有价值
-
-三种学习方式的边际收益，以 20 小时为例：
-
-传统学习方法，阅读书籍，靠个人理解，深度中上，广度低，7 分
-
-AI 速读，大量入门资料（书籍、视频、文章），广度高，深度浅，6.5 分
-
-与领域最好的学术教科书深度互动 20 小时（AI 辅助问答、讲解、举例），深度高，广度中（9 分）
-
-三种方式结合最好，尤其是前两种，本质上也是无目标（发散）无边界学习 -> 兴趣深挖
-
-当我的笔记很长时，我会花时间把它们分解成更小的部分，并将它们之间的关系形象化。 我发现这个过程对于加深对所学知识的理解非常有用。在这个阶段，绘制箭头和连接也变得非常有用
-
-那些内容可以删除？
-
-ref - 引用道格拉斯·恩格尔巴特（Douglas Engelbart）1962 年出版的 《增强人类智力》 （Augmenting Human Intellect）中的一句话，这句话完美地概括了我眼中人工智能如何改变学习。简而言之：许多高级学习和解决问题的方法，只有当低级能力快速高效时才变得可行。
-
-`#格物/学习方法`
-
-### 选书法则：选一本略微高不可攀的书
-> `2025 年 10 月04 日 - 16:25:45`
-
-选书时，一个实用的经验法则是：选择一本感觉略微有点高不可攀的书。理想情况下，这本书应该是那种你独自阅读起来会觉得太难，但在博士导师的指导下可以理解的书
-
-并且经历过大学课堂的筛选，无数学生的讨论，必定留下很多不错的教案和方法问题，非常有利于使用 AI 交互学习
-
-毕竟在 AI 中也是有非常丰富的信息流
-
-`#格物/阅读方法`
-
-### 深刻理解来源于概念间的关系
-> `2025 年 10 月04 日 - 17:13:36`
-
-真正的深刻理解不是来源于两本书之间的关系，而是来自于这两本书中的所有概念之间的关系
-
-只有将笔记原子化，才能通过视觉笔记深入了解你关心的主题。原子笔记并不意味着你不能写长笔记
-
-这意味着每张概念卡应该只包含一个概念，并由其内容支持。为了确保清晰度， 你应该始终用一句话来描述这个概念，并使用该句子作为概念卡的标题
-
-真正有价值的不是你最终制作的白板，而是在建立知识结构和为每个概念卡和章节命名时投入的思维过程在第二步到第四步之间。深刻的理解和洞察力通常来自于解构、重组和用自己的语言描述知识的过程。 只有经历了这个过程，知识才真正成为你自己的
-
-`#格物/学习方法`
-
-### 如何构建一个好的城市/app？
-> `2025 年 10 月04 日 - 17:17:21`
-
-如何构建一个好的城市？
-
-如何构建一个好的文化？
-
-如何构建一个好的信息场？
-
-如何构建一个好的 app ？
-
-取决于，人们想要什么
-
-未来的人们想要什么？
-
-人类社会在创造信息方面如何与世界互动？在这种互动中，信息的生命周期是怎样的？互联网在这个生命周期中可以扮演什么角色？
-
-Linus Torvalds 说过：“一个好的系统会给你提供足够的构建模块来完成所有的事情。”因此，我们也需要思考如何以最佳的方式设计新城市的构建模块。
-
-从工程的角度来说， 我们要思考今天科技能做什么，十年后科技能做什么，所以我们要研究当今世界的科技趋势
-
-从商业角度来看， 正如彼得·泰尔在《从零到一》 中所说，我们需要“主宰一个小众市场，然后从那里扩大规模，朝着雄心勃勃的长期愿景迈进。”不可能凭空建造一座城市，然后告诉人们来这里。
-
-这也是为什么我们需要理解信息在人类社会与世界互动中的生命周期。我们想要做的是设计一个更好的生命周期，因此我们需要将生命周期的不同阶段放在一起思考。
-
-有些人因为清新的空气来到这座城市，有些人因为安全的环境而来，但最终他们会意识到，他们从这座城市获得最多的是雄心壮志的信息和支持这种雄心壮志的力量。
-
-[https://www.paulgraham.com/cities.html](https://www.paulgraham.com/cities.html)
-
-`#格物/系统设计`
-
-### 城市留人与产品留存
-> `2025 年 10 月04 日 - 18:03:11`
-
-一定程度上，城市如何留住人，和产品如何留住用户，原则上是一致性的
-
-长期留存率换算上是一致的
-
-`#一闪`
-
-### 跨领域学习：关键是人脑对概念的链接
-> `2025 年 10 月04 日 - 18:07:56`
-
-费曼一些方法
-
-在跨领域过程中，本质上也不仅仅是卡片与卡片之间的关联
-
-也不仅仅是语义之间的关系
-
-更多的是来自于人脑对概念的理解，概念与概念之间的链接
-
-`#格物/学习方法`
-
-### 回归一手信息：警惕封装过的二手经验
-> `2025 年 10 月05 日 - 14:06:09`
-
-对于有一些二次经历的书籍思考
-
-回归一手的信息研究非常重要
-
-现代化很多的信息都是经过修改，封装，美化的
-
-语义各种千奇百怪
-
-作者个人经验是生成假说的来源，但不能直接变成普适结论——除非有广泛数据或明确机制支撑
-
-`#格物/学习方法`
-
-### 哲学与AI：哲学是思维生成，不是信息积累
-> `2025 年 10 月05 日 - 15:22:49`
-
-哲学从来都没有远离过现实，它只是用更高维度去理解现实
-
-如何定义现实、如何提出问题、如何理解意义
-
-哲学核心也不是信息积累，而是思维生成
-
-问题是如何形成的
-
-哲学群内很多人反感 AI
-
-但是哲学，本质不就是独立思考，而不是孤立思考吗
-
-如果思想可以被机器复现，那哲学是否还有不可替代的意义？
-
-`#格物/哲学`
-
-### 阅读的问题：当书本成为噪音
-> `2025 年 10 月05 日 - 15:40:54`
-
-现在很多书阅读的问题
-
-首先有自己的一套认知体系后，很多的书籍，尤其是侧重在观点或者二手经验上就需要慎重了
-
-很多这类书是作者的“个人传记+通用模板”。他们基于自家经历封装观点（比如从一次失败中悟出“拥抱不适”），但忽略了底层变异——你的生物本能、环境、文化背景可能完全不同。结果，读者一读就觉得“不对劲”，因为直觉在预警：这不是普适真理，而是作者的“主观滤镜”。再者，重复感来自出版逻辑：自助书市场庞大，作者/编辑常“水”内容来凑页数或强化记忆（重复idea帮大脑嵌入，但对你这种老鸟，就成噪音了）
-
-本质上，这些书多是“二次加工”——从心理学、哲学源头（如马斯洛需求理论或斯多葛主义）提炼，换个励志故事卖出去。读多了，你会发现核心就那么几条：自我觉察、习惯养成、关系修复。没新意，是因为人类成长的“底层代码”就这些，变着花样说不出新花样，倒不如深度挖掘一些人本身知识理论体系
-
-到这个程度了，多一本书就像是在外层多一层噪音，信息太多了，选择太多了反而会约束行动
-
-改变不是读出来的，而是“选择”出来的——书只能点醒，你得跳进去“活”它
-
-`#格物/阅读方法`
-
-### 多模态知识媒介对大脑认知的影响
-> `2025 年 10 月05 日 - 16:37:35`
-
-多模态知识媒介在 AI 时代对大脑认知体系的影响
-
-从最开始自己，自己对文本信息更敏感
-
-而且哪怕是文本信息，不同的语言的文本的信息，大脑的处理的能力也是差异化的
-
-何况是不熟悉音频的人去听播客，都在不同的脑区处理的，比如说当你阅读时，信息首先通过视觉皮层（Occipital Lobe）处理形状（文字），然后迅速传递到语言中枢，如韦尼克区（Wernicke's Area）进行语义理解，和布洛卡区（Broca's Area）进行语法和内部默读。对于一个习惯阅读的人来说，这条神经通路是一条被反复强化、极其高效的“高速公路”
-
-不同语言实际上神经通路熟练度问题，比如说对于母语或熟练掌握的语言，大脑已经形成了近乎自动化的、低能耗的处理模式。对于不熟悉的语言，大脑需要调动更多的认知资源，比如前额叶皮层（Prefrontal Cortex）来进行逻辑推断和翻译，这会感觉更“累”，处理速度也更慢
-
-大脑的结构和连接并非一成不变。你之所以对文本更敏感，是因为长期的阅读习惯已经“雕刻”了你的大脑，强化了相关的神经连接
-
-一个从小听有声书或播客长大的人，其听觉处理和记忆的神经通路会异常发达。如果你现在开始坚持听播客，一开始会很吃力，但大脑会逐渐适应，建立新的、更高效的连接。这就是“用进废退”的原则
-
-`#格物/认知科学`
-
-### 股市思考：零和博弈与非零和博弈
-> `2025 年 10 月05 日 - 16:40:24`
-
-中国的股市思考
-
-短期投机主义者倾向于零和博弈
-
-在短期价格波动中，你赚的钱来自别人亏的钱。市场总财富没有增加，只是转移，比如炒题材、追热点、割韭菜——这就是典型的“筹码转移游戏”
-
-长期更多的是在投资层面，这是一种非零和博弈
-
-如果投资标的是一家真正创造价值的企业（利润增长、分红增加、创新成功），那整个社会的蛋糕变大，股东的回报来自企业创造的新价值，而不是别人的亏损
-
-但是股市呈现的本身就是人性的贪婪和恐惧
-
-当贪婪占上风 → 群体追高，价格脱离价值
-
-当恐惧蔓延 → 群体杀跌，价格远低于价值
-
-真正赚钱的少数人，是反人性的：在别人恐惧时买入，在别人贪婪时卖出
-
-市场永远在定价人性
-
-`#格物/经济`
-
-### 最小努力原则及其悖论
-> `2025 年 10 月05 日 - 16:55:35`
-
-最小努力原则
+> 2025-10-05 16:55:35 · `#格物/阅读方法`
 
 Principle of least effort
 
-大脑在处理信息的过程中，更倾向于选择那些认知负荷较低，容易理解的文本
+In processing information, the brain tends to choose text with lower cognitive load that's easier to understand
 
-人类的所有的行动也是这样的，选择一些认知负荷较低，容易理解的文本
+All human action is like this too — choosing things with lower cognitive load and easier comprehension
 
-包括人类在内的所有有机体，在行动时都倾向于选择能量消耗最小的路
+All organisms, humans included, tend to choose the path of least energy expenditure when acting
 
-但是也有一个有趣的悖论，就是大脑虽然有轻松的倾向，但是大脑的结构和功能并非一成不变，而是可以通过学习和经验来重塑。努力理解复杂的文本，就如同对大脑进行“力量训练”，可以有效锻炼我们的思维能力，建立新的神经连接，从而提升我们的智力水平
+But there's an interesting paradox: although the brain leans toward ease, its structure and function aren't fixed — they can be reshaped through learning and experience. Working hard to understand complex text is like strength training for the brain; it can effectively exercise our thinking ability and build new neural connections, raising our level of intelligence
 
-另外就是，如果触发了自己的心流体验，当我们在专注地攻克一个难题，并最终豁然开朗时，所获得的成就感和愉悦感，远非完成一件轻而D: 1e举的任务所能比拟
+Also, if it triggers a flow experience — when we're intently grappling with a hard problem and finally it opens up — the sense of achievement and pleasure is far beyond what finishing an easy task can give
 
-`#格物/心理学`
 
-### 好奇心与心流：大脑的奖励系统
-> `2025 年 10 月05 日 - 16:58:37`
+<!--memo:2aae1e9a1c08-->
+### Where the soul comes to rest
 
-好奇心和兴趣本质上也都是满足大脑的奖励系统，尤其是多巴胺回路，被激活的时候就本质上是一种奖励，而不是一种消耗
+> 2025-10-05 22:01:33 · `#知世`
 
-光有兴趣还不够，如果只停留在浅尝辄止的层面，大脑很快会因为“舒适”而停止成长，这时候需要深度挖掘，高奖励反馈
+Almost everyone, sooner or later, realizes at some point this longing to "settle the soul"
 
-所以就是需要一种心流的状态和体验，去制造心流感
+Hoping for a place, a person, a group where they don't have to pretend
 
-`#格物/心理学`
+Hoping what they do and how they live can answer "why am I alive"
 
-### 产品新思考：记录最小行动单元的App
-> `2025 年 10 月05 日 - 18:08:53`
+Hoping the heart is no longer torn by anxiety, comparison and emptiness
 
-做产品的一些新的思考启发
+Whether Schopenhauer or Russell's The Conquest of Happiness, it's really about the outer world and inner world reaching a kind of reconciliation — a pivot outside, a support within
 
-复利思考
+Some find it in creation, some in nature or faith
 
-我希望创造一个简单的 app
+And some search their whole lives — but precisely because they're searching, they keep on "living"
 
-可以记录人的基本的想法
 
-以及人最小的行动单元
+<!--memo:0dbc4d2f886d-->
+### The replacement of an era often comes at the cost of 'struggle'
 
-然后完成这个最小的行动
+> 2025-10-06 13:46:30 · `#格物/历史`
 
-然后记录下来
+The replacement of eras often comes at the cost of "struggle." Whether it's the clash of civilizations, the change of institutions, or the renewal of thought, new things are always born in conflict with the old forces. Mao Zedong said in On Contradiction: "The emergence of everything new must go through struggle against the old. Without struggle there is no progress."
 
-`#一闪`
+The violence of Spain's conquest of the Americas isn't an isolated evil but the manifestation of a universal law of history — the disintegration of the old order and the birth of the new order inevitably carry along conflicts of power, greed, belief and culture. The progress of civilization is therefore full of tragedy, and it's precisely because of contradiction that it keeps moving forward
 
-### 格物典范：本杰明·富兰克林
-> `2025 年 10 月05 日 - 18:26:33`
+Contradiction itself is a kind of balance: there's no fairness or unfairness to speak of, no justice or evil to speak of — it's just reaching a dynamic game and balance
 
-本杰明·富兰克林
+The conditions for game and balance are constraints and information
 
-一个实践者，美国的文艺复兴人
+Allowing conflict to exist — conflict is itself a check and a way of avoiding despotism
 
-深度参与美国建国，是唯一一位签署了美国三份最重要法案文件（《独立宣言》、《1783年巴黎条约》、《美国宪法》）的建国先贤
 
-富兰克林最吸引我的是他对世界充满的好奇心，并且动手改造世界的探索者
+<!--memo:e73a8b9c5cfb-->
+### So you think while being stripped of the right to narrate history
 
-通过实证的方式和实验并且实践
+> 2025-10-06 14:05:49 · `#知世`
 
-实践出真知的典范
+So you feel that while being stripped of the right to narrate history, you also gain a sense of collective identity — is that lucky or unlucky?
 
-同时自己写了两本书，一本书是《穷理查年鉴》影响了很多的美国人
+The conflict and fusion between cultures has always been a contradiction — even China's group conflicts, gender conflicts, value-system conflicts, age-group conflicts, and all the more so the invisible class conflict
 
-另外一本是《富兰克林自传》讲述了他如何从一个穷小子通过自我奋斗和道德修养成长的故事，成为美国梦的早期范本
+Or is it that a controlled or beautified historical narrative — where we come from, what we've been through together, who we are — to some degree quickly shapes a strong sense of identity and belonging in us
 
-`#格物/人物`
+History is also complex, chaotic, full of contingency and disgrace; a clear, powerful official narrative provides the individuals inside it with an easy-to-understand worldview
 
-### 人总归需要入世：环境塑造你，你也能“黑客”它
-> `2025 年 10 月05 日 - 18:34:56`
+Just like religion, it gives a code of conduct, an outlook on life, a value system
 
-人总归还是需要入世
+But stripping the right to narrate history is essentially castrating history. It means the memories and voices of countless individuals, ethnic groups and losers are erased
 
-真正去行动、真正去创造
+History is no longer a discipline for inquiring into truth but a tool for consolidating power
 
-在这个世界上找到一些价值感
+Our sense of "we" is often consolidated by setting up a "they." While a unified historical narrative shapes "our own people," it inevitably also vilifies, diminishes and even demonizes the "outsiders" outside the narrative
 
-并且时刻应该思考自己想要什么，自己需要什么样的环境
+This is also why it shapes wars and plants the seeds of conflict and war
 
-换一个好的环境去塑造自己
+And when the ugly voices really surface, what does this society do? How does this fragile society bear it?
 
-通过自己去潜移默化的影响身边的环境，形成一个正向循环
+For those in power now and the majority of the collective, it's often seen as "lucky," because it brings stability and strength
 
-多去思考，身边哪些环境是正向的，哪些是负向的？哪些在“拉低”你（比如负能量同事）？哪些在“提升”你（比如支持性社区）？然后，列出3个小行动：加入一个线上兴趣群、调整工作空间布局，或是多读一本激发思考的书。记住，环境塑造你，但你也能主动“黑客”它
+For those silenced in history, for future descendants and for individuals pursuing truth, it is unquestionably "unlucky," because it leaves behind lies, hatred and hidden dangers
 
-心理学上有个“镜像神经元”概念：别人会无意识地模仿你的能量场
+This is also the tension in the development of human civilization: how do we build a balance?
 
-所以多和优秀和正向的人一起交流社交
 
-`#观我/成长`
+<!--memo:2ff26474517c-->
+### Buddhism: habitual nature
 
+> 2025-10-06 18:00:41 · `#格物/佛学`
 
-### 斗争与进步：历史的矛盾与平衡
-> `2025 年 10 月06 日 - 13:46:30`
+Essentially it refers to psychological tendencies and behavioral inertia cultivated by repeated experience and action
 
-历史的更替往往以“斗争”为代价。无论是文明的碰撞、制度的更迭，还是思想的革新，新事物总在与旧势力的冲突中诞生。毛泽东在《矛盾论》中说：“一切新生事物的产生，都要经过同旧事物的斗争。没有斗争就没有进步。”
+Xi (habit) is repetition
 
-西班牙征服美洲的暴烈，并非个别的恶，而是历史普遍法则的体现——旧秩序的解体，新秩序的诞生，必然裹挟权力、贪婪、信仰与文化的冲突。文明的进程因此充满悲剧，也正因矛盾而继续前行。
+Xing (nature) is a natural pattern of response
 
-矛盾本身是一种平衡，没有绝对的公平或不公平，也没有绝对的正义或邪恶，无非是达到一种动态的博弈和平衡。博弈和平衡的条件是约束和信息。允许冲突存在，冲突就是一种制约和避免专制的方法。
+So from the standpoint of results, all main outcomes are learning
 
-`#格物/历史`
+But from the standpoint of motivation, only what you do actively and deliberately is learning
 
+But often it's the learning you don't notice, in certain environments, that is what truly and invisibly shapes us
 
+In daily life, learning we don't even consider learning shapes our worldview and cognitive structure
 
-### 被剥夺的叙事权：集体的认同与代价
-> `2025 年 10 月06 日 - 14:05:49`
+It's really the environment subtly influencing a person — and that's an extremely efficient form of reverse practice
 
-被剥夺历史的叙事权的同时，也获得了集体的认同感，这到底是幸运的还是不幸的？
+So one question: I used to always think about how to improve the ability to learn and create
 
-一个被控制或美化的历史叙事，通过回答“我们从哪里来，我们共同经历了什么，我们是谁”，一定程度上短时间内塑造了我们强烈的**身份认同感**和**归属感**，就像宗教一样，给出一个行为准则和价值体系。
+This is a pyramid in the world, a very competitive question, and everyone's heading in the same direction
 
-但是剥夺历史的叙事权，本质上是对历史的阉割。它意味着无数个体的、族群的、失败者的记忆和声音被抹去。历史不再是探究真相的学问，而成了巩固权力的工具。
+What is our core competitive learning ability and creativity?
 
-统一的历史叙事在塑造“自己人”的同时，也必然会丑化、矮化甚至敌化叙事之外的“外人”，这为冲突和战争埋下祸端。而且当丑陋的声音真的冒出来了，这个脆弱的社会如何承受？
 
-对于当下的掌权者和集体的大多数而言，它常常被视为**“幸运”**，因为它带来了稳定和力量。对于历史中的被消声者、未来的子孙以及追求真理的个体而言，它无疑是**“不幸”**，因为它留下了谎言、仇恨和隐患。这也是人类文明发展的张力。
+<!--memo:d7b4f215db28-->
+### A national consciousness centered on stability
 
-`#知世`
+> 2025-10-06 22:26:04 · `#知世/文化`
 
+It seems that compared with China's ethnic minorities
 
+Spain's Indigenous population really is unlucky
 
-### 历史与自我：当下的叙事
-> `2025 年 10 月06 日 - 14:13:44`
+A phenomenon I've always been curious about: China's preferential treatment of ethnic minorities, and how China is consistently harsh with its own interior while showing unusual "tolerance" and "ingratiation" toward outsiders or marginal subjects?
 
-历史没有标准答案，没有对错，也没有善恶，它不是二元对立的。历史只是在不断演进历程中，触发自己存在的意义和归属感。
+China has always been centrally centralized historically; the goal itself isn't to make every individual happy but to maintain territorial unity and stable order. Stability has always been instilled throughout China
 
-历史是用来认识自己的。
+Minority regions → without compensation, they may drift away
 
-`#观我/反思`
+Foreigners → treated well, it helps external image, investment and diplomatic interests
 
+Its own citizens → stable and compliant, regarded instead as a "controllable group" that doesn't need much incentive
 
+This is collectivist, and it has always been hard to form genuine civic consciousness
 
-### 活在当下：历史与未来的交织
-> `2025 年 10 月06 日 - 14:19:18`
+Chinese society takes the "family" as its unit: the family is the prototype of society, the state is the family enlarged
 
-往前看历史，是为了理解**“我从何而来”**；往后看未来，是为了决定**“我为何而行”**。
 
-归根结底，都是在为**当下**叙事。所以，活在当下。我们需要美好的当下去践行未来，我们也需要当下去回避不堪回首的过去。
+<!--memo:395287d5c98b-->
+### Protests in Turkey today
 
-`#观我/反思`
+> 2025-10-07 02:02:03 · `#知世/文化`
 
+Multiple countries held pro-Palestine marches calling for a quick end to the conflict
 
+A conflict of narratives
 
-### 文化与自我构念：连接个人与群体的桥梁
-> `2025 年 10 月06 日 - 15:06:18`
+Seventy or eighty years now: one core of the Israeli-Palestinian conflict is religious conflict. Judaism's "God" (Yahweh) and Islam's "Allah" are each side's spiritual pillar and source of faith
 
-**核心理论：** Markus & Kitayama (1991) 提出的**“文化与自我”** 理论，认为不同文化对自我、他人以及两者关系的理解存在根本差异，这些差异通过**自我构念**（Self-Construal）深刻影响个体的认知、情绪、动机和行为。
+And God didn't save them either
 
-**三大自我构念维度：**
-* **独立型自我构念 (Independent)：** 自我与他人界限清晰，强调**分离性**。定义基础是内在属性（特质、能力）。目标导向是个人成就、**独特性**。
-* **关系型自我构念 (Relational)：** 自我边界灵活，与亲密他人部分重叠。定义基础是二元关系中的**角色**（朋友、伴侣）。目标导向是维护亲密关系、**和谐**。
-* **集体型自我构念 (Collective)：** 自我嵌入群体，强调群体**成员身份**。定义基础是群体归属（国籍、组织）。目标导向是**集体荣誉**、内群体和谐。
+In the end, what kind of person you become doesn't depend on what the outside world wants you to be
 
-**重要洞察：**
-* **自我评价差异：** 独立型倾向于自我提升偏差（Self-Enhancement），互依型（关系型/集体型）倾向于自我批评。
-* **关系中的自我：** 在互依文化下（如中国），自我更具**情境依赖性**。
-* **避免二元对立：** 三者不是互斥的，而是共存的。文化差异大于性别差异，且文化内部差异可能大于文化间差异。
+It's objective law that determines a person — through the combination of character, talent, cognition and so on, following objective cause and effect, arriving at a version of yourself more in line with your own nature
 
-`#格物/心理学`
+Instinct itself is part of the law too — not something mysterious, but common sense
 
 
+<!--memo:a89ba69d94be-->
+### Empress Wei and Empress Zhang
 
-### 关系的冲突与边界：从三要素到病理性问题
-> `2025 年 10 月06 日 - 15:46:42`
+> 2025-10-07 14:01:47 · `#知世/历史`
 
-**关系的三个核心辩论（Sternberg三要素）：**
+Both were followers and imitators of Wu Zetian
 
-1.  **亲密 (Intimacy)：** 情感联结和归属感。
+Both ended in failure
 
-2.  **激情 (Passion)：** 浪漫吸引和性欲。
+Wu Zetian, as the only female emperor in Chinese history: outstanding ability, rich experience in political struggle, talent for governing
 
-3.  **承诺 (Commitment)：** 维护关系的决定，是关系的“兜底”和对牺牲的确认。
+Innate extremely high intelligence and political sensitivity
 
-**跨文化关系的问题：**
-核心冲突在于**期望差异**（如一个希望明确沟通，一个希望心灵感应）和**行动模式差异**（直接对抗 vs 间接暗示）。
+And an indestructible willpower and ambition
 
-**文化适应的策略（如何处理差异）：**
-* **整合 (Integration)：** 保留原文化，适应新文化。
-* **同化 (Assimilation)：** 放弃原文化，完全融入新文化。
-* **分离 (Separation)：** 拒绝新文化，只保留原文化。
-* **边缘化 (Marginalization)：** 两者都不认同。
+Including an innate ability to perform and disguise that let her win out in the struggle
 
-**病理性的依恋问题：**
-在中国的文化体系下，女生更容易出现**过度融合**（自我消失、边界模糊）和**回避**（缺乏深度链接）的问题，因为恐惧差异带来的不确定性，而迎合集体，最终失去自我。
+And I keep wondering what kind of acquired environment shaped her
 
-`#格物/心理学`
+Part of it was her early education: her father Wu Shiyue was a founding hero of the Tang dynasty, rising to Minister of Works, giving her high-quality educational conditions
 
+Most important was Taizong of Tang, the top-tier politician — the best "political observatory." Although she wasn't favored, as a bystander she witnessed firsthand how a top emperor controlled his ministers, handled state affairs and balanced various forces. This is a top-tier practical politics course no book can teach. That's where she learned forbearance and observation
 
 
-### 拖延的本质：情绪管理与不确定性恐惧
-> `2025 年 10 月06 日 - 15:59:25`
+<!--memo:246e3dc47721-->
+### Systematically training your questioning ability
 
-人的行动拖延，很大程度上是降低不确定性的原因。深层往往是对**结果不确定性的恐惧**。
+> 2025-10-07 15:01:19 · `#格物/提问`
 
-所以，拖延更多的是**情绪管理**的问题。
+We can't ask good questions about a field we know nothing at all about. So the first step is building a "minimum viable" knowledge framework.
 
-`#观我/心理机制`
+Some methods:
 
+First-principles method: master the most core, most basic axioms and principles
 
+Systematic reading: read the most authoritative book or work in the field to understand the whole picture
 
-### 沟通的核心动机：不确定性减少理论 (URT)
-> `2025 年 10 月06 日 - 15:56:49`（优化后排序）
+Then deliberate practice: how to find "questioning gaps"
 
-**理论核心：** 人们在人际关系中会感到不确定性不愉快，并被驱使通过人际沟通来减少它。这是人类沟通的**核心动机**。
+Reverse questioning: this is a subconscious thinking mode — what else is there that I don't know, an awareness of knowing that you may not know
 
-**两种不确定性：**
-* **认知不确定性：** 不知道对方的信念和想法。
-* **行为不确定性：** 无法预测对方的行动。
-两者形成螺旋：认知不确定性 → 行为不可预测 → 更多认知困惑。打破螺旋的唯一方法是**沟通**。
+Whys: keep asking in succession, striking at the essence
 
-**不确定性的运作规律：**
-* **与沟通成反比：** 语言沟通和非言语亲和表达（如微笑、眼神接触）增加，不确定性减少。
-* **亲密感：** 高度不确定性导致低度亲密感，反之亦然。**不确定性是关系的毒药。**
-* **互惠性：** 高度不确定性导致高度互惠（以牙还牙，你介绍自己，我才介绍自己）。
-* **相似性：** 不确定性因差异而增加，因相似性而减少（人们倾向于找相似的人）。
+The Feynman technique: teach a complex concept in simple language to someone who knows nothing about it, and thus discover the vague and broken places in your own knowledge system
 
-**洞察：** 不确定性未必完全负面，它也可以是关系的**魅力来源**或**创造性工作的驱动力**。工程师设计上，有时需要容忍一定的不确定性。
 
-`#格物/不确定性`
+<!--memo:586d455bcde2-->
+### Uncertainty reduction theory
 
+> 2025-10-07 15:56:49 · `#格物/不确定性`
 
+Don't guess — take the initiative
 
-### 目标设定效应：降低模糊性的第一防线
-> `2025 年 10 月06 日 - 16:18:26`
+Don't doubt — get close to the scene itself
 
-**核心发现：** 心理学家洛克（Locke）的实验证明，模糊的善意（如“尽你所能做到最好”）远不如清晰的标准（如“在30分钟内完成50个单位”）更能激发绩效。
+Essentially this all comes from uncertainty. The nature of problems between people, especially between strangers, points to one psychological state — uncertainty. That's the core motive for communication
 
-**原理：** 清晰、具体的**高目标**（Specific, High Goals）能有效降低行动的**决策成本**，对抗行动中的**模糊性**。目标设定效应是人类认知架构的基本特性。
+People find uncertainty unpleasant in interpersonal relationships and are driven to reduce it through interpersonal communication
 
-**关键要素：**
-* **清晰度（Clarity）：** 可以被衡量，不会被误解。
-* **具体的高目标：** 比“尽力而为”导致更高的绩效。
+But uncertainty can also be quantified and managed; if the cost is too high, for example in engineering design, allow for a certain amount of uncertainty
 
-`#格物/不确定性`
+This is more like a biological drive, a human instinct in evolutionary psychology
 
+Cognitive uncertainty and behavioral uncertainty
 
+When you don't know the other's beliefs (cognitive), you can't predict their actions (behavioral). Conversely, when the other's behavior is unexpected (behavioral), you re-question their thinking (cognitive)
 
-### 雷军的口碑反转：叙事与事实的失配
-> `2025 年 10 月06 日 - 16:43:20`
+Cognitive uncertainty → unpredictable behavior → more cognitive confusion → more behavioral anxiety → ...
 
-雷军现在的口碑和风评与以前截然相反。
+The only way to break this spiral: communication
 
-核心原因在于：**叙事与产品/服务体验失配，信任透支。** 真诚营销最怕的是事实被揭露出来。攻关危机时，采取不透明的态度。
+The rules by which uncertainty operates:
 
-**宏观环境因素：** 社会宏观环境下降，公众反鸡汤，拒绝有人出风头。
+Verbal communication is inversely proportional to uncertainty: as verbal communication increases, uncertainty decreases
 
-`#格物/商业观察`
+Uncertainty is inversely proportional to nonverbal affinity expressiveness. When one person shows more positive nonverbal expression (eye contact and smiling), the other's uncertainty level goes down — the body doesn't lie, and the brain tends to believe body language
 
+Uncertainty correlates positively with information-seeking strategies: the higher the uncertainty, the harder we search for information
 
+High uncertainty in interaction leads to low intimacy in communication; low uncertainty in interaction leads to high intimacy in communication
 
-### Heptabase：知识工作生命周期工具
-> `2025 年 10 月06 日 - 16:41:02` （优化后排序）
+High uncertainty leads to high reciprocity; low uncertainty leads to low reciprocity — this is tit for tat: introduce yourself first, then ask the other person. So in fact when you lower your own uncertainty, you're also placing a demand on the other's uncertainty
 
-**一句话描述：** Heptabase 从“人类知识工作生命周期”的角度设计，旨在帮助知识工作者整合**探索 → 收集 → 思考 → 创造 → 分享**的知识生命周期。
+Uncertainty increases with difference and decreases with similarity, so people tend to seek out those similar to themselves, because it lowers uncertainty
 
-**两个基础设施：**
-1.  **语境层（白板功能）：** 不仅仅是可视化，更重要的是不同卡片可以相互**追溯思维脉络**。
-2.  **描述层（标签和属性）：** 负责为卡片添加类型和属性，实现知识的结构化。
+When uncertainty increases, liking decreases; when uncertainty decreases, liking increases. This is URT's most powerful practical implication — uncertainty is poison to relationships
 
-`#格物/产品`
+Actually, uncertainty isn't necessarily negative; sometimes it's positive
 
+The charm of a relationship, what attracts people
 
+Creative work
 
-### AI Native：对AI的直觉感
-> `2025 年 10 月06 日 - 17:28:34`
+Exploratory dialogue
 
-AI Native 这群人与现代年轻人的区别在于：他们的学习、娱乐、社交**从小就有AI参与**。
 
-他们不需要“学习如何问ChatGPT”，而是**直觉上**就知道遇到问题先问AI。这是一种对AI的**直觉感**，且少了很多对AI的**恐惧感**。
+<!--memo:5aaa3962c0ae-->
+### Some important thoughts on reducing ambiguity
 
-`#格物/AI`
+> 2025-10-07 16:18:26 · `#格物/不确定性`
 
+Why can some people achieve their goals while others can't?
 
+An experiment with two groups of workers
 
-### 徒步与作息重校准
-> `2025 年 10 月06 日 - 17:29:44`
+Group A's instruction: "Do your best"
 
-徒步很容易调整作息，因为：
+Group B's instruction: "Complete 50 units within 30 minutes" (specific, measurable)
 
-1.  **自然光校准：** 每天暴露在自然光下，身体的褪黑素分泌被“太阳”重新校准。
+Group B performed significantly better than Group A. This finding challenged the mainstream assumption of the time — people generally believed "do your best" should inspire maximum effort. But Locke proved: vague goodwill is far inferior to clear standards
 
-2.  **身体深度疲劳：** 长时间行走和负重造成的是**身体劳累**，能自动驱动早睡早起。这与城市中“精神疲劳但身体没动”不同，后者反而让人睡不着。
+Because a clear goal reduces the decision cost of action
 
-`#格物/徒步`
+Specific, high goals lead to higher performance than urging people to do their best
 
+So generally it's better to set a goal yourself
 
+The goal-setting effect isn't a culture-specific phenomenon but a basic feature of human cognitive architecture
 
-### 佛学中的习性：隐蔽的塑造
-> `2025 年 10 月06 日 - 18:00:41`
+Clarity — the first line of defense against ambiguity, something that can be measured and won't be misunderstood
 
-佛学中的**习性**本质上指的是由**反复经验与行为**所熏成的心理倾向与行为惯性。**习**是重复，**性**是一种自然的反应模式。
 
-**洞察：**
-* 结果上看，一切的主结果都是学习。
-* 动机上看，只有自己主动、刻意的才是学习。
-* 然而，往往是某些环境中，**不以为意的学习**，才是真正隐蔽塑造我们三观和认知结构的存在。
+<!--memo:8b3636c51dbb-->
+### A very interesting line
 
-这引发了对核心竞争力的思考：与其在学习力和创造力这个金字塔尖卷方向，不如思考：哪些是环境潜移默化影响我们的，这是不是一种高效的**反向修行**？
+> 2025-10-07 22:17:54 · `#格物/关于说话的一切`
 
-`#观我/佛学`
+Speaking is the bridge between your heart (yours) and the brain (the other's)
 
+The core purpose is still to get your thoughts into someone else's brain accurately, precisely, efficiently and without loss, and to build an emotional connection
 
+Basic chain: thought -> encoding (language) -> expression (spoken) -> transmission (air/medium) -> reception (ears) -> decoding (brain) -> understanding
 
-### 纳瓦尔的复利与微决策
-> `2025 年 10 月06 日 - 19:08:41`
+Clarity: what to say — KISS (Keep It Simple, Stupid). Thought is the foundation; express complex views in the simplest way
 
-**复利**本质上也是一种**因果**。底层是一系列**价值体系微决策**的累积。人通过直觉快速在丰富的信息网中进行选择和淘汰，筛选出感兴趣的并深度挖掘底层原理。
+Structure: speech is organized — Point -> Reason -> Example -> Point
 
-**人生的因果链路：** 想法 → 决心 → 行动 → 习惯 → 结果
+Insight: depth, distinctive views, not just stating facts — ask why more
 
-**实践原则：**
-* **大概率：** 长期方向正确，胜率很高。
-* **小行动：** 减少内心阻力，立刻行动。
-* **不中断：** 可以偶尔休息，永不放弃。
+How you deliver matters too: what your voice, body language and language style are like
 
-**工具驱动的幽默：** “把决策交给认知比你高的人，让它们做你的工具。”
+How you listen matters too: listen with heart and brain, make eye contact, lean forward
 
-`#格物/个人成长`
+Ask open-ended questions and guide the other person to express themselves more deeply
 
+And often summarize the other's viewpoint in your own words
 
+Then there's empathy — not just content but connection: putting yourself in their place to think what you would do, understanding and responding to the other's emotions
 
-### 灵魂的安放：寻找内在与外在的和解
-> `2025 年 10 月06 日 - 22:01:33`
+The ability to hold the space; controlling the room matters — the difference between one-on-one communication and giving a speech
 
-几乎每个人，或早或晚，都会渴望找到一个**“灵魂安放地”**：
 
-* 一个能让自己**不必伪装**的地方/人/群体。
+<!--memo:77fe9b7d0c25-->
+### The three elements of the sign and the dyadic sign theory
 
-* 活的方式能回应**“我为什么要活着”**。
+> 2025-10-07 22:28:31 · `#格物/符号学`
 
-* 内心不再被焦虑、比较、空虚撕扯。
+The three elements of the sign are three indispensable elements forming a trinity
 
-这本质上是**外部世界与内在世界达成一种和解**——外部有支点，内在有依托。有人在创造中找到，有人在自然或信仰中找到。
+Representamen: what we see or hear
 
-`#观我/精神世界`
+Object: the actual thing or concept that the representamen points to or stands for. This is the "about what" content the sign tries to convey.
 
+Interpretant: the meaning or effect the sign produces in the receiver's mind
 
+Ferdinand de Saussure viewed the sign as a psychological entity made of two parts
 
-### 民族意识与归属感：制度的产物
-> `2025 年 10 月06 日 - 22:26:04`
+Signifier and signified:
 
-**稳定为主的民族意识**
+The signifier is the sign's sound-image or graphic form, the sign's external manifestation. It's similar to Peirce's "representamen"
 
-中国历史上中央集权的核心目标是**维持疆域的统一和秩序稳定**，而非让每个个体幸福。稳定一直是中国社会的核心价值。
+The signified is the concept or meaning the sign represents. It exists in our thinking, a mental representation
 
-**归属感的制造：**
-任何民族、任何国家的归属感，本质上不是自然生成的，而是国家用**制度、叙事和资源分配**制造的一种**心理平衡**。当这种平衡失衡（如经济落差、歧视），人就会感觉“我不是国家的一部分”。
+But interpreting an object can loop and dig deeper endlessly, to the point of drawing on all human knowledge; this process has an infinite interpretability
 
-**对内对外差异分析：**
-* **少数民族地区：** 给予补偿，以避免离心力。
-* **外国人：** 善待有助于外部形象和外交利益。
-* **自己的公民：** 稳定、顺从，被视为“可控群体”，反而不需要太多激励。
-这是集体主义的体现，也使得中国社会以“家”为单位，难以形成真正的**公民意识**。
 
-`#知世/文化`
+<!--memo:61281cc6105a-->
+### Between stimulus and response there lies a gap
 
+> 2025-10-07 23:04:09 · `#格物/高效能人士`
 
+The key to growth lies in how you use this gap.
 
-### 印加后裔的困境：社会阶层与归属感的摇摆
-> `2025 年 10 月06 日 - 23:28:16`
+What gap?
 
-如果一个人被公平对待，自然而然就会有**归属感**。
+The chance to stop, reflect, evaluate and choose actively.
 
-在秘鲁、玻利维亚等国家，人口结构存在明显分层：西班牙裔（上层）、混血人（中产）、原住民（底层/农村）。印加后裔即使法律上平等，心理和社会层面仍处于“次等公民”地位。
+It lets us go beyond instinct or habit and make wiser choices, and so achieve personal growth.
 
-**核心冲突：** 他们常常在**国家认同**与**文化自我**之间摇摆。
+Separated by language and signs,
 
-`#知世/文化`
+separated by memory — thoughts — and interpretation.
 
 
+<!--memo:298d324fcda0-->
+### Which is how the very first two ways of being happy come about
 
-### 信仰与现实：巴以冲突的深度思考
-> `2025 年 10 月07 日 - 02:02:03`
+> 2025-10-07 23:12:02
 
-多国举行声援巴勒斯坦游行。巴以冲突的核心之一是**宗教冲突**，犹太教的“上帝”和伊斯兰教的“真主”是双方的精神支柱。
+Which is how the very first two ways of being happy come about, whether you take Russell's view or Schopenhauer's.
 
-**洞察：**
-神也没有拯救他们。终归一个人成为什么样的人，不取决于外界希望他是什么样的人，而是**客观规律**（性格、天赋、认知等的综合）决定了这个人，使其达到一个更符合自己**天性**的版本。本能本身也是规律的一部分。
+At first you don't know how to get happiness, so naturally it's about escaping suffering and seeking pleasure; life is just the cycle of escaping suffering and seeking pleasure, until you drop dead hahaha.
 
-`#观我/信仰`
 
+<!--memo:c3184e104aaf-->
+### People's pursuit of mystery usually comes from inner lack
 
+> 2025-10-08 11:50:57 · `#格物/神秘`
 
-### 成为“你自己”：整合意识与潜意识
-> `2025 年 10 月07 日 - 02:31:47`
+This is a compensation mechanism; the sense of mystery is bred from "absence".
 
-我们作为**主观的个体**去接触**客观的世界**，实际上自己也是作为一个**变量**。我们已经有很多和很宝贵的财富值得深挖，而不是去强迫自己变成什么样的人。
+When we're in love, we also feel that some sense of lack in us has been satisfied.
 
-**人生的目标：** 成为**“你自己”**，即整合意识和潜意识，活出完整的、真实的自我。
+The sense of mystery doesn't disappear once the lack is satisfied — it becomes even more mysterious.
 
-`#观我/自我探索`
+When a person is full inside and able to face their own limits and imperfections,
 
+he can still hold mystery in awe, but not "use mystery to make up for lack".
 
+To face the unknown lucidly, rather than mythologize the unknown.
 
-### 深度挖掘自我：活明白一些的记录与反思
-> `2025 年 10 月07 日 - 13:38:30`
+To stop at the boundary of understanding, rather than anxiously manufacture illusions.
 
-**记录的目的：** 频繁、没有目的的流水账，记一辈子也还是流水账。记录是为了**了解自己**，将自己作为一个主观的个体，对自己的一些想法和思考建立一个**有逻辑的模型**。
+People want to reduce uncertainty, but what people need more is to face uncertainty.
 
-**核心认知：**
-* 我们是**完整的叙事体**，有独特的经验和经历。
-* 我们的情绪、思维习惯不可能完全符合客观规律（否则就是“天道”）。
-* 正是作为**主观的个体**，我们才需要记录和思考作为**镜子**，看见自己的逻辑，看见自己的问题。
+I don't know, but I am at peace.
 
-**目标：** 只是想**活明白一些**。
+In society, mystery as a tool is itself used to cover up lack.
 
-`#观我/内省`
+Regimes package authority as "mystery";
 
+business manufactures desire through "mystery";
 
+religion comforts pain with "mystery".
 
-### 历史的观察所：武则天的成功秘诀
-> `2025 年 10 月07 日 - 14:01:47`
+Money, love, power and fantasies you couldn't get when young — once satisfied, are there other mysteries and voids?
 
-韦后和张皇后都追随武则天为模范，最终都失败告终。
+When a person moves from lack to satisfaction, they go through a kind of "disenchantment".
 
-**武则天的成功要素：**
-1.  **先天素质：** 极高的智商、政治敏感度、坚不可摧的意志力和野心。
-2.  **早年教育：** 优质的教育条件（父亲是唐朝开国功臣）。
-3.  **顶级的政治观察所：** 她在唐太宗身边作为旁观者，亲眼目睹顶级帝王如何驾驭群臣、处理政务。这是任何书本都学不到的、最顶级的**政治实践课**。她在这里学会了隐忍和观察。
+The world goes from miracle to logic, life goes from passion to order.
 
-**宏大思考：** 一个国家或民族的兴衰，取决于它在什么样的程度上将**个人创造力**解放出来。
+Your attention shifts from "feeling" to "possessing".
 
-`#知世/历史`
+Satisfaction brings a sense of control; many people mistakenly think they understand, but true mystery always exists — you just no longer "listen".
 
 
+<!--memo:0f7968b7c353-->
+### Exponential thinking and logarithmic thinking
 
-### 高质量提问的根本：定位认知缺口
-> `2025 年 10 月07 日 - 14:37:39`
+> 2025-10-08 15:44:17 · `#格物/思维`
 
-高质量的提问需要足够的**认知**，并且**感知到认知缺口**。
+Playing a game can improve your skill quickly, but later improvement is very hard. The exponential curve is the opposite: at first it rises very slowly for a long time, but at some critical point it suddenly shoots up, rising fast in a very short time. For example: growth in writing ability, changes in wealth, changes in a company's value — things that need quantity to turn into quality.
 
-**认知缺口的类型：**
-* **事实缺失**（知道事件，不知道时间）。
-* **逻辑断裂**（知道A和C，不知道A如何推导出C）。
-* **深度不足**（知道是什么，不知道为什么和怎么样）。
-* **边界模糊**（不知道该概念与相似概念的区别）。
+So some indicators can go from quantity to quality; keep your eye on that indicator.
 
-**提问能力的根本，是向内审视、精准定位并清晰描绘出这个**“认知缺口”的能力。顶级提问者的起点是：**“我唯一知道的，就是我一无所知。”**
+Clearly, by comparison, if you only do technology, it looks more like logarithmic thinking.
 
-`#格物/提问`
+Keep a good mindset, trust in the power of accumulation.
 
+Stay aware: know what you're doing, know what you're thinking.
 
 
-### 想法的保鲜期
-> `2025 年 10 月07 日 - 14:37:41`
+<!--memo:7eb539fe2fde-->
+### The "throw your backpack over the wall" mental model
 
-一个普通的想法，如果没有被**复述、记录或付诸行动**，两天后影响趋近于零；七天后你甚至想不起它。
+> 2025-10-08 15:48:13 · `#格物/思维`
 
-`#一闪`
+In life, the phenomenon we always run into is that our ability to act never measures up.
 
+Breaking the task down and just starting is one method: the point is to put yourself at some risk and loss first, to get moving first, which activates you better.
 
+This avoids overthinking and forces the brain to think about the act of climbing the wall, rather than whether to climb the wall.
 
-### 大脑的工作原理：心智模型的产生与提问
-> `2025 年 10 月07 日 - 14:44:05`
 
-提问之前的大脑工作本质上是对**概念节点存储和链接**（即知识网络）的维护。节点的数量和链接的质量与密度就是知识量。
+<!--memo:dc7f887a7b78-->
+### The butterfly effect
 
-**心智模型的产生：** 当节点和链接足够丰富时，它们会组合成更复杂的结构——**心智模型**。这是一种可以复用、解释过去、预测未来和融会贯通的内在解释系统。
+> 2025-10-08 15:51:44 · `#格物/思维`
 
-**提问的产生：** 提问实际上是网络出现**错误或空白**时发出的警报。提问就是你已经有了一张初步的知识网络，并且在不断地审视、扩展和修正它。
+Grab one small point, then amplify it through that small point.
 
-`#格物/提问`
+The premise is a whole you're conscious of, a system with a rough direction.
 
+Break through via one small point.
 
+But there's another premise too: some ability to model and analyze the system itself.
 
-### 体系化训练提问能力
-> `2025 年 10 月07 日 - 15:01:19`
+The everything-is-a-system mental model:
 
-**第一步：构建“最小可用”的知识框架。** 我们无法对一个完全无知的领域提出好问题。
+each node, causal relations, possible situations, boundaries, etc.
 
-* **方法：** 掌握第一性原则，或系统性阅读最权威的书籍，了解全貌。
+The limit is a very effective approach — a rational way back to the present.
 
-**第二步：刻意练习，找出“提问缺口”。**
-* **反向提问法：** 潜意识地思考“还有哪些是我不知道的”。
-* **“五个为什么”（whys）：** 不断连续追问直击本质。
-* **费曼学习法：** 用简单的语言教给不懂的人，发现知识体系中模糊和断裂之处。
+What you truly want, what you truly need.
 
-`#格物/提问`
 
+<!--memo:c183646f7fe4-->
+### Applying the Buddhist five aggregates
 
+> 2025-10-08 16:09:02 · `#格物/佛学`
 
-### 想法驱动的学习：知识与自我的连接
-> `2025 年 10 月07 日 - 15:15:29`
+What it dismantles is self-attachment; nominally it's about leaving the world.
 
-生活中大部分的学习来自于**潜意识的学习**。比如，一旦“为什么深圳现代人这么匆忙”的念头被捕捉，就会去扩展深挖时间感知、工业社会节奏、焦虑，甚至触及社会学、心理学。
+Form aggregate: the physical body and the senses, all material forms that can be perceived.
 
-**核心洞察：**
-* 学习，不再是“我该学什么”，而是**“这个念头想带我去哪里”**。
-* 很多人学不下去，是因为**知识与自我没有连接**。
-* 而想法恰恰是**自我与世界的交界点**。
+Feeling aggregate: sensations, the feelings of suffering, pleasure or neutrality produced by external stimuli.
 
-`#观我/学习方法`
+Perception aggregate: imagination and recognition, the cognition and identification of objects.
 
+Volition aggregate: will and mental activity, all psychological tendencies that drive action.
 
+Consciousness aggregate: awareness, the knowing and recognizing of the first four aggregates.
 
-### AI时代的碎片化信息记录价值
-> `2025 年 10 月07 日 - 14:29:06` (优化后排序)
+The "I" does not exist independently; it is a phenomenon of form, feeling, perception, volition and consciousness temporarily coming together.
 
-**问题：** AI时代的碎片化信息记录到底有没有价值和意义？
+Actual practice:
 
-**答案：** 你不能用一堆散落的砖块盖起房子，但如果有一个**清晰的蓝图**，并且知道如何将每一块砖放到正确的位置，就可以轻松地用零散时间把房子盖起来。
+Contemplate the body as impure: form.
 
-**关键在于构建一个系统：**
-1.  **快速捕获：** 使用稍后读或笔记应用，快速捕获素材，清空大脑。
-2.  **整合思想：** 有一个体系，可以让你把碎片化看到的信息整理到对应的只是体系中。
-3.  **固化习惯：** 形成原子习惯（如等电梯背单词，工作间隙做深蹲）。
+Contemplate feeling as suffering: feeling.
 
-**目标：** 成为一个**主动的“知识建筑师”**。用碎片化的时间去捕获素材，用整块的时间去整合思想，再用微小的行动去固化习惯。
+Contemplate the mind as impermanent (perception, volition, consciousness).
 
-`#观我/知识管理`
+Many people mistakenly think letting go means doing nothing.
 
+In fact it means the mind isn't dragged around by outcomes and isn't swayed by other people's eyes.
 
 
-### 一个不需要时间安排的TODO清单
-> `2025 年 10 月07 日 - 17:27:28`
+<!--memo:116e66629f30-->
+### The 10/10/10 bystander thinking model
 
-这不是用来规划自己执行，或者强迫自己执行任务的清单，而是用来**发现自己的**`TODO`**清单**。
+> 2025-10-08 16:43:13 · `#格物/思维`
 
-**方法：** 通过一系列的方法论，如果任务不顺，就自然而然地切换任务或流转任务。
+It's really also a reverse-decision method: from a long-termist view, whether you'd regret not making this decision or making it.
 
-`#格物/todo`
+Ten minutes later, how do I look at the decision I'm making now? Still consistent, or regretful?
 
+Ten months later, how do I think about this decision I made ten months ago?
 
+Ten years later, how do I see this judgment and decision from ten years ago? This mental model can be applied to: temporary judgments, big decisions, predicting your own future, etc.
 
-### 学习载体的新定义：卡片化信息接受
-> `2025 年 10 月07 日 - 17:35:13`
+In fact a person with a mature value system can melt this deeply into everyday micro-decisions, intuition-driven.
 
-定义一个新的信息接受形式的载体，不再是文章类型的，而是**卡片类型**的信息接受方法。通过卡片的阅读方式阅读，类似于**费曼卡片**，相较而言学习的效率是最高的。
 
-`#一闪`
+<!--memo:f4f8827fcd39-->
+### Scenarios where deduction replaces induction
 
+> 2025-10-08 16:49:07 · `#格物/思维`
 
+In this world, 99.9% of people (or more) use induction. Induction is experience-driven: take the experience you or others obtained, and in similar situations take similar action.
 
-### 喜新厌旧与安全感：本能的冲突
-> `2025 年 10 月07 日 - 17:40:06`
+Experience is subjective and time-limited, and constrained by environment.
 
-人类本能中的一对核心矛盾：**对新奇的渴望（探索）** 与**对安全的需要（稳定）**。
+Deduction is logic-driven: learn the essence or theory of a thing, carry out logical derivation from the essence, apply scenarios from the essence — it deals with first principles.
 
-**生物学机制差异：**
-* **探索系统：** **多巴胺**驱动，奖励是渴望和满足，新奇感带来巨大奖励。
-* **安全系统：** **血清素和催产素**调节，确保当下安全和稳定，规避风险。
+The advantage of induction is that experience transfers quickly and can be used fast. For example, the sun always rises in the east, so tomorrow it will surely rise in the east too. It rests on the premise that the future and the past are the same. Deduction: derive from premises; if the premise is true, the conclusion must be true. If a thing has five layers of depth, induction only induces the explanation of the first layer — fairly superficial. Deduction is the deepest essence, and can even find the first cause and derive from there.
 
-**进化权衡：** 这是一个矛盾，也是不同的人在**长远收益（探索）** 与**当下安全（稳定）** 之间的进化权衡。
 
-**心理学基础：** **安全基地理论**——当感到安全时，我们倾向于探索；当感到威胁时，我们倾向于保守。
+<!--memo:799caed89399-->
+### When you're unfamiliar with something, you don't have to rush to answer it
 
-`#格物/心理学`
+> 2025-10-08 17:03:38
 
+First think about the thing, or the related field, with your own network of knowledge.
 
 
-### 极简背包客的洞察：用不到10L满足生活
-> `2025 年 10 月07 日 - 18:03:58`
+<!--memo:8a0cbf490ae2-->
+### Reflections on Japanese vs Chinese architectural aesthetics
 
-**核心理念：** 作者 Jeremy Maluf 自2015年起只拥有一个背包（Aer Slim Pack 9L）能装下的所有物品，已持续10年。
+> 2025-10-10 12:09:35 · `#知世/美学`
 
-**核心优势：**
-* 专注力提升，开支减少。
-* 可随时旅行，生活简化。
-* 无需托运行李，直接登机出发。
+Take Jiangnan and Shaoxing as an example — I've been around here recently.
 
-**关键洞察：**
-* **不必过度追求品牌：** 100美元装备 $\approx$ 10,000美元装备。
-* **耐用性 > 材质：** 不推崇昂贵的美利奴羊毛，因为它在户外易损坏。
-* **购买清单制度：** 想买的东西先列清单，观察一段时间再决定。
+Ancient buildings in China are heavily influenced by Confucian culture and the court aesthetics of the system.
 
-**最大价值：** 证明了现代人完全可以用 **<10L背包** 满足所有生活需求，关键在于**精准选择多功能、耐用、轻量的物品**。
+Abundance, order, qi, form, ritual, the order of the unity of heaven and man.
 
-`#知世/旅居`
+Chinese architecture stresses "round heaven and square earth" and "axial symmetry", expressing a visual presentation of cosmic order, imperial hierarchy and family ethics.
 
+A rational depiction of order.
 
+Japanese architectural aesthetics, by comparison, have far less of that grandness.
 
-### 说话：心脑的桥梁与高效沟通
-> `2025 年 10 月07 日 - 22:17:54`
+They focus on the person, acknowledging human smallness, acknowledging that wood will rot, tiles will shatter, light will change.
 
-**核心目的：** 把自己的想法，**准确、精准、高效、无损**地进入别人的大脑，并且建立情感链接。
+That faintly trembling, imperfect sense of "wabi-sabi".
 
-**基本链路：** 想法 $\rightarrow$ 编码（语言）$\rightarrow$ 表达（口头）$\rightarrow$ 传递 $\rightarrow$ 接收 $\rightarrow$ 解码（大脑）$\rightarrow$ 理解。
+A strong sense of time: not pursuing immortality, but naturally feeling the traces time leaves on buildings.
 
-**高效沟通要素：**
-* **清晰性：** **KISS (Keep It Simple, Stupid)** 原则，用最简单的方法表达复杂的观点。
-* **结构性：** **PREP** 法则（观点 Point $\rightarrow$ 理由 Reason $\rightarrow$ 案例 Example $\rightarrow$ 重申观点 Point）。
-* **洞察力：** 深度，独特的见解，多问为什么。
 
-**如何听：** 用心用脑子去听，身体前倾，眼神交流。用自己的话总结对方观点，提出开放式问题。
+<!--memo:c81897663358-->
+### The 2014 Nobel Prize in Physiology or Medicine: cognitive neuroscience's spatial model
 
-**共情与场域：** 不仅仅是内容，更是**链接**。换位思考，理解和回应别人的情绪。控场能力很重要。
+> 2025-10-15 14:48:02 · `#格物/记忆`
 
-`#格物/沟通`
+The 2014 Nobel Prize in Physiology or Medicine: cognitive neuroscience's spatial model.
 
+For thousands of years, understanding how the brain's cognitive functions arise from its basic physiological components has been a fascinating ultimate frontier for science.
 
+The 2014 Nobel Prize in Physiology or Medicine went to three scientists: John O'Keefe, and the couple May-Britt Moser and Edvard I. Moser.
 
-### 符号三要素与索绪尔二元符号论
-> `2025 年 10 月07 日 - 22:28:31`
+For their discoveries of cells that constitute a positioning system in the brain.
 
-**皮尔士的符号三要素（三位一体）：**
+There is a precise built-in GPS system in the brain, answering a question that has puzzled philosophers and scientists for centuries: how do we know where we are, and how do we plan routes and find our way.
 
-1.  **再现体 (Representamen)：** 我们看到或听到的符号形式（外在表现）。
+Place cells: certain neuron systems in the hippocampus are activated only when the rat is at a specific position; if it moves to another place, some cells stop firing and some start firing.
 
-2.  **对象 (Object)：** 再现体所指向或代表的实际事物或概念（符号试图传达的“关于什么”）。
+Then grid cells: when a rat moves through an environment, these cells are activated at multiple positions, and those activation points form an extremely regular hexagonal grid pattern in space — like a sheet of coordinate paper covering the whole space. Through this process the brain calculates distances and plans routes to achieve spatial navigation.
 
-3.  **解释项 (Interpretant)：** 符号在接收者心中产生的意义或效果。
+People who over-rely on GPS show a clear decline in spatial memory and self-directed navigation ability.
 
-**索绪尔的二元符号论（心理实体）：**
-将符号视为一个由两个部分组成的心理实体：
-1.  **能指 (Signifier)：** 符号的声音-形象或图像形式（类似于皮尔士的“再现体”）。
-2.  **所指 (Signified)：** 符号所代表的概念或意义（存在于思维中的心理表象）。
+It makes the brain lazy; actively observe the route, memorize some landmarks, then try turning the navigation off.
 
-**核心洞察：** 解释一个对象可以不断**循环和深挖**，以至于会用到人类所有的知识，这个过程是一个**无限演绎性**。
 
-`#格物/符号学`
+<!--memo:7879fcaae9c4-->
+### Those Things About the Ming Dynasty
 
+> 2025-10-16 21:48:05 · `#格物/明朝那些事`
 
+The carrier of the content doesn't matter; what matters is that what should be expressed got expressed, and what should be understood got understood.
 
-### 动机的本质：真实与表演
-> `2025 年 10 月07 日 - 17:12:28` (未优化)
+Let every clue be dug into deeply, like playing a game, uncovering a different life and plot.
 
-人为什么行动？动机是什么？
+So maybe, setting aside the prompt's understanding of the system and of the user,
 
-有**真实的动机**（为了达到某一个真实目标），也有**表演的动机**（期望被看到、被认可）。很多人只是在证明自己对某一个行动产生了反应而已。
+another part can be some interesting methods — for example, just dig deep into history, every storyline and historical record.
 
-**如何破解：**
-* **第一性原则：** 行动的目的是什么？不做会怎么样？五年后还重要吗？
-* **停止无意识的反应：** 抓住行动力最快的方式。
 
-`#观我/心理机制`
+<!--memo:441c0c8f5d99-->
+### Why is the perception of the Yuan dynasty so faint in history
 
+> 2025-10-16 21:55:51 · `#格物/明朝那些事`
 
+If it's because of the ruling party, knowing little about the modern part of history is understandable.
 
-### 搬家清理的准备动作
-> `2025 年 10 月07 日 - 17:18:42` (未优化)
+But why is relatively little known about Yuan dynasty history too?
 
-现在想起来如果再给我一次机会，上一次搬家清理物品，我应该时刻提醒自己先执行**清理的准备动作**。
+The Yuan dynasty was founded by the Mongols; for the Han dynasties of the Central Plains, it was a period of "being conquered".
 
-`#一闪`
+Although the Yuan ruled all of China, it was never fully "co-opted" into ethnic identity by later generations.
 
+The Yuan dynasty was established through an extremely bloody conquest.
 
+The fall of the Southern Song, the massacres in Jiangnan, the sharp drop in population — a heavy trauma for Han regions.
 
-### 专注与复利：挖掘自己宝贵的时间
-> `2025 年 10 月07 日 - 11:27:52` (未优化)
+The Yuan also left no sustainable marker of civilization.
 
-其实，越发明白，人要做的更多的并不是**深度的突破自己**，而是**挖掘自己**。
+The cultural elites of the Yuan — Ma Zhiyuan, Guan Hanqing, Wang Shifu and others — mostly carried a "repressed literati temperament".
 
-与其想怎么样让自己有更多的时间和精力，不如想**怎么样把自己真正宝贵的时间挖掘出来**，并且专注在真正重要的事情上，然后**日复一日复利**，这个时间就是**全神贯注的时间**。
+Add to that the very interesting selectivity of the Ming historians' records.
 
-**关键：** 找到自己今天要做的那件事情，然后管理这件事情。设定一个自己**舒适的时间最小单元**。
+The "History of Yuan" was hastily compiled in the early Ming, taking only a few months, and written very restrainedly.
 
-`#观我/个人成长`
+The super empire Genghis Khan built, and the "Yuan dynasty" Kublai Khan established in China, were essentially the Central Asia–East Asia headquarters of the Mongol world empire.
 
+The Yuan distinguished a hierarchy of ethnic ranks:
 
+Mongols, Semu, Han and Southerners.
 
-### 潜意识的训练与恰到好处的深度
-> `2025 年 10 月07 日 - 11:22:18` (未优化)
+A Mongol could easily become a local governor,
 
-回想最近的成长，抛开切实对自己有自知之明外，相比较自己学习和知道了很多，更重要的是自己**潜意识的训练了一套方法**：
+while a Han scholar might study for ten years and still not pass the provincial exam.
 
-* 如何去剖析问题。
-* 深度挖掘问题所对应的信息思维链路，以及相关的概念。
+Still, it established the province system for the first time, and that system has been carried on ever since.
 
-最重要的是知道**解决问题应该剖析到哪个层级的概念，恰到好处的深度**。
 
-`#观我/学习方法`
+<!--memo:04d40021b635-->
+### Those things about the Ming dynasty
 
+> 2025-10-16 22:13:10 · `#格物/明朝那些事`
 
+It actually explains history in an entertaining way too.
 
-### 惊喜与不确定性
-> `2025 年 10 月07 日 - 02:14:31` (未优化)
+The narrator is Mingyue.
 
-你不知道它会给你什么样的惊喜。巨大的**不确定性**和**奖励**。
+It doesn't have to be rigorous.
 
-`#一闪`
+In the end, rigor doesn't necessarily equal being highbrow.
 
+Truths can be plain and easy to understand.
 
+What matters most is sparking people's interest.
 
-### 活着与安息：渴望连接
-> `2025 年 10 月05 日 - 23:01:48` (未优化)
 
-世人皆苦，人性使然，千年不变。人啊，高贵也好，低贱也罢，终归是活着。每个人都在找自己的灵魂安息地。
+<!--memo:9900f496e11d-->
+### History is complicated, the world is complicated
 
-我只是渴望能**链接到更多的人**，只是希望在当下可以**帮助到更多人**。起码世界上多一些幸福，自己的灵魂也算是得到一定的安息了。
+> 2025-10-16 22:20:11 · `#格物/明朝那些事`
 
-`#观我/精神世界`
+But so what.
 
+We just need to live our own lives well.
 
+We just need to choose the things we're interested in.
 
-### 林徽因：创造力的解放与国家的兴衰
-> `2025 年 10 月05 日 - 23:07:07` (未优化)
+Long stretches of hardship are what best temper a person's will. Many people, when they hit trouble, can only blame heaven and complain about others and muddle along; others, though they too have to bow their heads before hardship, never let their hearts submit — they keep working, believing they will surely win in the end.
 
-**建筑师林徽因：** 理性与营造之美。参与了中华人民共和国**国徽的深化设计**、**人民英雄纪念碑**的建筑设计。上世纪30年代，她与梁思成等人奔波测绘、记录了大量濒临消失的古建筑。参与创办**清华大学建筑系**。
+This is a great transformation, one that many may spend a whole lifetime unable to complete.
 
-**诗人林徽因：** 感性表现。《你是人间的四月天》成为现代诗歌经典。
+The key to the transformation lies in the heart.
 
-**核心思考：** 一个人在时代的巨大压力和局限之下，可以爆发出怎么样的**创造力**。而一个国家或民族的兴衰，取决于它在什么样的程度上将**个人创造力解放出来**。
+For many of us, the heart is the most tender place, especially easy to wound: the betrayal of love, the loss of family, the loss of friendship — each is a heavy blow. But for Zhu Chongba, what was left that he couldn't bear? He had already lost everything. What could be more painful than watching your parents die with no way to help, than fighting dogs for food to stay alive, than being cursed and despised by others? We have reason to believe that on some night of painful thinking, Zhu Chongba turned this most fragile place into his most powerful source of strength.
 
-`#知世/人物`
+Yes, even if you have looks everyone envies, learning that has read every book, wealth beyond spending — none of that proves you're strong. For strength of heart is true strength.
 
 
+<!--memo:bf7fef08fae3-->
+### Why can't they stop
 
-### 日元与股市：避险货币与利润
-> `2025 年 10 月06 日 - 13:32:31` (未优化)
+> 2025-10-17 15:18:19 · `#格物/有闲阶级论`
 
-**日元贬值**有利于出口，很大程度上**有利于股价上涨**（日元贬值，日经指数上升）。
+It seems to be the case for a lot of older people.
 
-**避险货币特性：**
-* **全球风险偏好上升时：** 投资者卖出日元、买风险资产 $\rightarrow$ **日元贬值 + 股市上涨**同时发生。
-* **市场避险时：** 投资者回补日元空头（买回日元）$\rightarrow$ **日元升值 + 股市下跌**。
+Including my own father.
 
-**结论：** 日元越弱 $\rightarrow$ 企业利润越亮眼 $\rightarrow$ 股市越强。但也不能过低，过低市场反而可能动荡。
+The whole value of their lives was built on what I do.
 
-`#格物/金融`
+When they suddenly stop, no longer busy, no longer needed, they feel themselves falling into the void of who am I.
 
+Retirement isn't leaving work; it's leaving the self that was needed.
 
-### 💬 语言的困境：符号、解释与活在当下
-> `2025 年 10 月 07 日 - 23:02:57`
+Even repetitive labor gives them a sense of mastery.
 
-为什么越是想要活在当下越没办法活在当下？
+Once they stop, blankness, meaninglessness and awareness of death come flooding in.
 
-从符号逻辑学角度看，一个符号（当下），一个客体或对象（过去），一个解释项（未来）。
-符号衍生解释项，解释项衍生出符号，这是一个**无止境的解释循环**。
+This is a kind of withdrawal reaction; it isn't a matter of willpower, it's a neural-level dependency.
 
-如果现实很丰满，解释项就越是庞大。所以过度规划会产生焦虑。
-怎么克服焦虑？那就是更多的规划，哈哈哈，这是一个愚蠢的回路。
+The fear of being eliminated by society, abandoned by family, negated by oneself.
 
-我们说的每一句话，所有的素材都来自于**过去**（记忆），所有的解释都来自于**未来**（期望）。这句话本身来自于什么？毫无意义的**当下**，当下的自我是一个空符号而已。
+Why do rich people instead prove they have leisure?
 
-脱离了记忆和期望，我们就无法理解任何一句话。所以“我是谁，我从哪里来，我到哪里去”的答案资源永远在过去，解释永远在未来。
+They're no longer anxious about survival, and start being anxious about proving their existence.
 
-人是“三角动物”：当下、未来和过去。当下的这个“我”很痛苦，被积压在狭小的空间里。
+Money buys time, but time exposes emptiness.
 
-临在当下的感觉，很像我们脱离语境去理解一句话：比如说路边看到一个毫无意义的图案或图形，当你无法理解这个东西的时候，这个东西也就没办法影响你。
+So they use "consumption, travel, collecting, pleasure, building an identity"
 
-把世界看成一个**毫无意义的符号**，自己就是在如实观照自己的经验，而不是幻想自己的经验。
+to construct a system of symbolic meaning.
 
-**阻断解释项就是阻断未来**，这就是活在当下的感觉。把那些看上去很 emo 的事情或者权威人士看作无意义的符号，能帮助我们回归当下。
+I can enjoy, I can desire, I can dispose of things freely — therefore I am still alive, and living at a higher level.
 
-`#观我/符号学`
 
+<!--memo:42bcb1ddc8e4-->
+### MIT cognitive scientist Josh's paper in PNAS
 
+> 2025-10-17 20:09:10
 
-### 🧭 成长：如何在困难中乐此不疲？
-> `2025 年 10 月 07 日 - 23:46:38`
+In a paper published in PNAS by MIT cognitive scientist Josh, he compared different representational structures for abstract knowledge, such as star structures, clustered structures, ring structures and so on — and in the end he proved mathematically that the best abstract knowledge structure for humans is the tree structure.
 
-之前听到一句话，做困难的事情，你就会得到它。为什么？
+So you could say that only a tree structure best matches human cognitive characteristics, because from one layer of the tree to the next there is a unique path — making it easy for the brain to extract knowledge quickly from the memory base, which fits the way the human brain is a cognitive miser; at the same time, the tree is the simplest structure that has both horizontal and vertical expansion capacity.
 
-李子染的视频里，做饭看起来好难。但自己照着菜谱做饭其实很简单。**“容易”是文明的副产品**，但我们需要主动闯入困难的事情。
+—— What is the best knowledge representation structure for humans?
 
-在我自己的叙事体系下，这可以分解为选择性层级递增的三个问题：
 
-1.  **如何做好一个困难的事情？**
-    * 看清因果规律，拆解规律，找到菜谱（知识/技能）。
-    * 通过学习、思考、实践、试错，把混沌的现实梳理成清晰的逻辑、规律和方法论。
-    * 这个“谱”一旦形成，事情就从“困难”**降维**成了“复杂”，可以按部就班地执行。
+<!--memo:ec07312ee2ce-->
+### I've talked before about a certain kind of person — one with no sense of boundaries
 
-2.  **如何持续做好一件件困难的事情？**
-    * 这需要追溯到自我系统的构建和理解上。
-    * 建立一个可以自动运转、自我迭代的系统，将正确的行为固化成**习惯和流程**，减少决策内耗，合理分配注意力。
+> 2025-10-18 09:53:48 · `#知世`
 
-3.  **如何乐此不疲地做好一件件困难的事情？**
-    * 对自己和系统规律的深刻理解、认知以及行动的**知行合一**。
+I've talked before about a certain kind of person: one with no sense of boundaries, and the other, the extremely self-centered person.
 
-`#观我/个人成长`
+Living in their own little world, with no perception at all of public space or other people.
 
+One is deeply self-centered (ego): the way their brain feels the world has been completely reshaped by algorithms, short videos and fragmented attention. They find it hard to truly be aware of "other people's existence", because they operate almost only within "the immediate feedback of their own emotions".
 
+Hence the lack of ability to delay gratification; what they pursue is immediate satisfaction.
 
-### 📱 刷手机的本质：低成本的高回报多巴胺循环
-> `2025 年 10 月 08 日 - 00:13:48`
+Then there's the lack of education about public space from childhood. I vaguely feel I was like that too when I was little, because of the cultural generation gap — my parents' collectivist culture, the culture of the two of them. They were never trained from childhood to respect "order in public places", and were rarely given a "sense of public responsibility".
 
-我总是想拿出手机刷手机，本质原因是什么？
+Another thing is that Chinese social classes really do have cultural dislocation; different kinds of young people really do have different social boundaries. People are animals shaped by their environment, but the other group was never invited into this kind of context.
 
-感觉就是一种证明自己的存在感。同时也是一个**低成本、高回报**的过程。
+In the process of utilitarian education, we overemphasize competition, success, how I win —
 
-* **极低的启动成本**：几乎不需要意志力。
-* **极高的及时回报**：能获得即时的、让人感觉好一点的反馈。
+rather than how I get along with others.
 
-**内部触发（习惯性回路）**：只要感到一丝无聊、焦虑、孤独、压力、疲惫或不确定，大脑就会自动发出信号：“打开手机”。这已形成一个强大的习惯回路（信号 -> 行动 -> 奖励）。
+So many people are poorly socialized, and the moment they leave school it's exposed that they can't get along with people.
 
-**外部触动（多巴胺驱动）**：一个声音、一次震动、一个亮起的屏幕，都在直接命令你：“快来看，有新的奖励在等你！”
+On top of that, many people today have never experienced a community in their whole lives, don't even know their own neighbors, and have never taken part in shared affairs — only "me" and "phone".
 
-**大脑的“节能模式”**：人类大脑天生倾向于选择消耗能量最少的路径。相比于需要意志力和认知努力的深度工作，“刷手机”几乎不耗费意志力，是大脑默认的“节能模式”。
 
-**不可预测的奖励（老虎机机制）**：这是最强大的成瘾机制之一。你永远不知道下一次刷新会看到什么。这种不确定性会使多巴胺系统持续兴奋，让你不断地“下拉刷新”，期待下一次的奖励。
+<!--memo:067add1a82b9-->
+### Looking at modern civilization from a macro perspective
 
-可悲的是，大部分人不是主动选择，大部分人是潜意识被控制。
+> 2025-10-18 09:59:01 · `#知世/文化`
 
-`#观我/心理机制`
+Thinkers' theories make it easier to understand and reuse the theoretical models of human history.
 
+The number "three" fits human narrative and comprehension habits very well, providing a concise, clear framework that lets us grasp the patterns of history.
 
+Society moves from "order of scarcity" to "chaos of abundance" and then to "self-aware civilization".
 
-### ⚖️ 对量化情感的反思
-> `2025 年 10 月 08 日 - 09:56:01`
+You can also understand it through Maslow's hierarchy of needs.
 
-“婚恋市场”、“向上社交”、“情绪价值”——这些情绪量化的词组装在一起，看似理性，实则对人性复杂度的暴力简化。
+It's really about satisfying basic survival needs, then pursuing material needs, and finally exploring the need for self-actualization.
 
-**主观体验的独特性**：每个人感受“快乐”或“悲伤”的方式可能完全不同，很难用统一标准衡量。把爱量化为 8 分，真的能反映爱的本质吗？
+Building new social norms of behavior itself takes generational effort.
 
-**思维的懒惰与文化的贫困**：这些词汇的流行，反映的是思维的懒惰。我们不愿意、也不敢去面对情感的复杂性，所以用几个看似科学的概念来打包处理。就像用方便面代替正餐，快是快了，但营养呢？
+When America industrialized in the 1920s, rural migrants poured into cities and brought a mass of "low-quality urban behavior"; after WWII, as Japan's economy took off, between 1950 and 1970 "country people coming to Tokyo" was seen as a "boorish shock", and Tokyo people at the time also complained they were loud, messy and ill-mannered.
 
-主观体验确实独特，情感确实混沌。这才是真实的人性。非要把它们塞进 Excel 表格，只能说明我们正在丧失感受的能力，正在用**概念替代体验**。
+From being constrained to constraining yourself — a psychological transition.
 
-`#观我/人际关系`
 
+<!--memo:06b184ff1faf-->
+### Preconceived bias is itself not enough either
 
+> 2025-10-18 11:34:46 · `#格物/艺术`
 
-### ⚙️ 控制论：万物皆可系统
-> `2025 年 10 月 08 日 - 15:10:11`
+If art has no audience to appreciate it, it loses its own value.
 
-控制论就是研究系统如何自我调节与控制的科学，无论是生命体、机器还是社会组织，它都试图找到它们背后通用的规律。
+I remember that jazz first took off among Black communities, but most people's eyes carried a certain bias, because aesthetics and art themselves carry a certain color of power.
 
-**核心机制**：
-* **系统**：万物皆系统，只关心输入输出。
-* **反馈**：系统的眼睛和耳朵，感知行为结果，调整下一次过程。
-* **负反馈**：纠正偏差，确保系统在一个目标附近。
-* **正反馈**：放大和增强过程（点赞、雪球）。
-* **控制**：系统进行调整引导。
+But it seems any culture or phenomenon has a cause.
 
-**熵与负熵**：
-* **熵**：系统的混乱程度，不确定性和无序程度。高熵 = 低信息。
-* **控制论的目标**：本质上是一个“**负熵**”的创造者。它通过引入信息和控制，来抵抗系统自发变混乱的趋势（熵增）。
-* **生命**：就是最伟大的“负熵”现象。生物体通过不断从外界获取能量和信息，来维持自身内部高度有序的结构，对抗熵增的洪流。
+Understand bias itself: without bias there is no judgment. Bias ensures we survive within a limited time; cognitive efficiency and bias are two sides of one coin.
 
-`#格物/系统理论`
+What matters most is metacognition, a strong capacity for self-reflection: being able to notice that you've been influenced by a certain framework or emotion.
 
+So when they find themselves stuck in a single perspective, they actively look for counterexamples, think in reverse, and so on.
 
+Bias can be used by you, and you can even set up a series of mechanisms to fight it — an institutionalized rationality. A stance is a choice, not the truth.
 
-### 🧠 思维模型：指数与对数
-> `2025 年 10 月 08 日 - 15:44:17`
+Existence has its reasons; everything is a way for you to analyze and understand the world, or information — all nourishment for observing the world. As for the rest, it's just personal choice.
 
-**对数思维**：玩游戏可以快速提升技巧，但后续提升很困难（先快后慢）。
+So my choosing not to scroll Douyin isn't a rejection of Douyin; it's choosing not to use it based on my understanding of it. You could call that a bias, but it's more a choice made after becoming aware. And I can understand the people who still choose to use it.
 
-**指数思维**：一开始很长时间上升很慢，但到了某个临界点，会陡然上升，在很短的时间内一直快速上升（先慢后快）。比如：写作能力的提升、财富的变化、公司价值的变化，需要量变到质变的事物。
 
-很明显，如果只是做技术，更像是**对数思维**。
-而有些指标是可以量变到质变的，需要我们**盯住这个指标**。
+<!--memo:0e46145b2664-->
+### Imagistic thinking, concretely artistic thinking and creative thinking
 
-* 保持好心态，相信积累的力量。
-* 保持觉知，知道自己在做什么，在想什么。
+> 2025-10-18 12:58:02 · `#格物/哲学`
 
-`#格物/思维`
+It corresponds to abstract logical thinking.
 
+Logical thinking has a concrete chain of reasoning.
 
+But imagistic thinking, in fact, focuses on whole-scale emergence and transformation.
 
-### 🛡️ 思维模型：把背包扔过墙
-> `2025 年 10 月 08 日 - 15:48:13`
+It understands and expresses through sensory images such as sight, sound and touch.
 
-生活中，我们总是会遇到行动力不足的现象。
+It focuses on intuition and wholeness, and the connections between related images.
 
-“把背包扔过墙”是一个行动力模型：
-* 任务拆解先做起来就是一种方法模式。
-* 目的是让自己先有一定的**风险和损失**，先动手做。
-* 这样做可以更好地激活自己，避免过多思考“要不要翻墙”这个动作，而是**强迫大脑思考“如何翻墙”**。
 
-`#格物/思维`
-### 🔍 思维模型：万物系统与蝴蝶效应
-> `2025 年 10 月 08 日 - 15:51:44`
+<!--memo:28ea24a0d9e8-->
+### An actor with a sense of belief
 
-**蝴蝶效应**：抓住一个小点，然后通过这个小点放大。
+> 2025-10-18 13:40:39 · `#格物/哲学`
 
-* 前提：对整体有意识的全体，系统有大致的方向。
+A deep identification with and real investment in the character being played.
 
-* 通过一个小的点去突破。
+Truly identifying with this character inside,
 
-* 但需要对系统的本身有**一定的建模和分析能力**（万物系统思维模型）：各个节点、因果关系、可能的情况、边界等。
+and believing in the truth of the character's situation, motives and emotions.
 
-**极限**是很有效的一种方式，一种回归当下的理性方式，去问自己真正想要的、需要的。
+Able to perceive and understand the world from the character's perspective,
 
-`#格物/思维`
+and believing the stage and the camera really exist, ignoring distractions from reality.
 
+Every movement and line has an inner inevitability.
 
+It's like really stepping into a character's identity, because of the character, not because of the script.
 
-### 🙏 佛学五蕴：破解我执的实修
-> `2025 年 10 月 08 日 - 16:09:02`
+So it's really hard for an actor to break through a kind of fate.
 
-佛学五蕴（色、受、想、行、识）的应用，核心是**破解我执**。名义上是出世，但实际上是内心不被结果牵制，不被他人眼光左右。
+Suddenly I think of Hu Ge playing in Nirvana in Fire.
 
-“我”并非独立存在，而是色、受、想、行、识五蕴暂时聚合的现象。
 
-**实修要点**：
-* **观身不净**：色蕴（物质的身体与感官）。
-* **观受是苦**：受蕴（苦、乐、舍感）。
-* **观心无常**：想、行、识蕴（认知、心理活动、意识）。
+<!--memo:c5aa9f305407-->
+### Why did "No Prospects" suddenly blow up
 
-很多人误以为放下就是不作为，实际上是**内心不被结果牵制**，不被他人眼光左右。
+> 2025-10-18 16:42:23
 
-`#格物/佛学`
+Why did it suddenly blow up in mainland China?
 
+Wang Shijian was always lukewarm in Taiwan,
 
+but suddenly he seems to have a strong internet feel.
 
-### 🍷 绍兴黄酒的哲学：水、米与时间
-> `2025 年 10 月 08 日 - 16:20:38`
+Too abstract.
 
-绍兴黄酒的酿造，是对**水、米和时间**的极致理解。
+And he really delivered on his promise.
 
-* **水（本源）**：酒之血，客观存在的规律，如同一个人的**天赋、根基或原生环境**。上善若水，水善利万物而不争。
-* **时间（催化剂）**：酒之骨，酿造过程中最神秘、最关键的催化剂。体现了对时间、规律的**尊重**，顺应自然，无为而治。
-* **米（物质基础）**：酒之肉，物质基础和能量来源（优质糯米）。代表了坚实的、可见的、**可被塑造的现实物质**。
+The idealist atmosphere inside the DPP today.
 
-`#格物/绍兴`
 
+<!--memo:4b3f40efb7c6-->
+### The Northern Qi giant Buddha
 
+> 2025-10-19 10:41:55 · `#格物/佛学`
 
-### ⏳ 思维模型：10/10/10 旁观思维
-> `2025 年 10 月 08 日 - 16:43:13`
+The giant Buddha of the Xiangtangshan Grottoes in Handan (the Northern Xiangtang Grottoes), in the Fengfeng Mining District of Handan, Hebei.
 
-**10/10/10 旁观思维模型**：其实也是一种反向决策法。核心是站在未来的角度，看待现在的决策是否会后悔。
+It was built during the Tianbao era of the Northern Qi (around 550–577 CE).
 
-* **10 分钟后**：自己是怎么看待自己现在的决策？
-* **10 个月后**：自己是如何思考自己这个 10 个月以前的决策？
-* **10 年后**：自己如何看待自己这个 10 年前的判断与决策？
+It is one of the Buddhist grotto complexes sponsored by the Northern Qi royal house, and continues the line of China's three early great grotto systems alongside Yungang and Longmen.
 
-**应用**：临时的判断、大的决策、预测自己的未来等。
+The main Buddha statue is about 13 meters tall, one of the tallest cliff-carved giant Buddhas in northern China at that time.
 
-实际上，价值体系成熟的人可以深度融合到日常的微决策中，由**直觉驱动**。
+Emperor Wenxuan of Northern Qi, Gao Yang (the founder of Northern Qi), was a devout Buddhist and also violently temperamental.
 
-`#格物/思维`
+Legend has it that one night he dreamed of a giant Buddha appearing with light filling the hall, so he ordered a giant Buddha carved at the Southern Xiangtang Mountain in Handan, to "protect the country and bring peace to the people".
 
+—— So the giant Buddha was not only a religious symbol, but a symbol of the legitimacy of royal power.
 
+Carving Buddha with a compassionate heart, becoming Buddha with one's own body.
 
-### 🧐 思维模型：演绎法替代归纳法
-> `2025 年 10 月 08 日 - 16:49:07`
+In the short-lived dynasties, everyone longed to find eternity within the chaos.
 
-这个世界上，99.9%的人（甚至更多）都在用**归纳法**。
+It's really also the process of the Wei-Jin and Northern-Southern dynasties.
 
-* **归纳法**：经验驱动，从自己或他人那里获得的经验，在相似的事情采取相似的行动。
-    * **优势**：能快速转移经验，快速使用。
-    * **局限**：经验具有主观性和时效性，并且受到环境约束。它只是归纳了事情的第一层解释，比较表面。
+One is the north: Northern Wei → Eastern Wei → Western Wei → Northern Qi → Northern Zhou.
 
-* **演绎法**：逻辑驱动，学习一个事情的**本质或理论**，从本质进行逻辑推导和场景应用，探讨的是**第一性原则**。
-    * **优势**：从前提进行推演，如果前提为真，结论也一定为真。可以触及事情最深层的本质。
+One is the south: Liu Song → Southern Qi → Liang → Chen.
 
-`#格物/思维`
 
+<!--memo:f6945ed6c6f1-->
+### Meaning is the product of an accident
 
+> 2025-10-19 23:23:21 · `#格物/哲学`
 
-### 🛠️ 轻量的工具哲学
-> `2025 年 10 月 08 日 - 16:56:48`
+What is the meaning of being alive, what is the meaning of human existence?
 
-一个好的工具，它应该：
+From the philosophical angle of Sartre and Camus, the universe itself is absurd; meaning is experienced at some single moment.
 
-* **非常轻量**。
+A person accidentally feels some kind of resonance in an absurd world, and that resonance is the appearance of meaning.
 
-* 只是用来**提醒**自己，只是用来给**建议**。
+Inspiration emerges randomly, a mechanism unique to humans; inspiration is like a seed, and meaning grows naturally.
 
-* **不需要任何的确认性**（减少心智负担）。
+A present moment formed by the intersection of the Buddhist five aggregates.
 
-* 可以做优先级排序。
+The material world survives precisely because the laws of the universe are imperfect and asymmetric; this process itself is a huge accident.
 
-* 可以基于对你的理解给出更符合你会做的一些建议指南。
+If even heat death as an ending can make us feel that the process is all the meaning there is.
 
-* 它应该用作**电脑版**（作为桌面级的长期辅助）。
 
-`#格物/效率工具`
+<!--memo:3c78c3811e28-->
+### The conclusion of the reductio in skepticism
 
+> 2025-10-20 00:34:22 · `#格物/哲学`
 
+You say: "Please prove what you have."
 
-### 👂 不回答的智慧
-> `2025 年 10 月 08 日 - 17:03:38`
+The other counters: "Then how do you prove I don't have it?"
 
-对自己不熟悉的领域或事物，可以不用那么着急地去回答。先用自己的知识体系网络去思考这个东西或者相关的领域。
+The basic principle: the person making the claim bears the burden of providing evidence.
 
-`#观我/认知管理`
+If you claim "he has some thing/ability/trait", the burden is on you: you have to provide evidence.
 
+If he claims "I don't have it", the burden is on him: if he explicitly states "I don't have it", then he bears the burden of proof.
 
 
-### 🔭 求知欲的冲突：深度与速度的多目标优化
-> `2025 年 10 月 08 日 - 19:20:03`
+<!--memo:c50c6b72579a-->
+### Is there really high and low taste
 
-最欣赏自己的一点是好奇心，最大的敌人也是自己的好奇心。求知欲强，到底意味着什么？
+> 2025-10-22 21:23:02 · `#知世/美学`
 
-**学习的本质**：建立神经元链接路径。
-* **浅连接**（知道怎么用）：消耗认知资源少，形成快。
-* **深连接**（理解为什么）：消耗认知资源多，形成慢。
+In the past I always avoided using high and low.
 
-**解决问题 vs 知识构建**：
-* **解决问题**：在当下的约束下找到可行解（追求速度、结果）。
-* **知识构建**：建立可迁移的认知模型（追求深度、复用性）。
+I think taste is a matter of difference, but there shouldn't be high and low.
 
-**学习冲突的本质**：这是一个**多目标优化问题**——在固定认知带宽下，任务完成速度（V）和知识体系完整性（K）不可能同时最大化。
-$$\text{最大化：} V + K \\ \text{约束条件：} \text{认知带宽}(B) = \text{常量} \\ V \propto 1/\text{深度}(D) \\ K \propto \text{深度}(D)$$
+Because taste is subjective, taste is a feeling, taste is equal: some people find white beautiful, some find health beautiful, some find fullness ...
 
-**真正的解决方案**：不是“平衡”，而是建立一个**自适应的知识获取系统**——**Just-in-Time 深度学习**，关注“何时深挖”。
+But to a certain degree, the ability to have taste is objective. Taste is an ability and an accomplishment, and since it's an ability and an accomplishment, it can be improved through learning and training, because aesthetics isn't only biological basis; there may also be a cultural basis and an acquired basis of knowledge and experience.
 
-**知识层次与触发时机**：
-* **L1 (操作层)**：具体的技术/工具使用 → **立即学，边用边学**。
-* **L2 (模型/框架层)**：可迁移的认知模型 → **遇到 3 次类似问题时深挖**。
-* **L3 (原理层)**：不可再分的基础真理 → **当要跨领域迁移时深挖**。
+Measuring ability really means having more choices.
 
-**关键认知**：
-1.  **知识网络是图结构，不是树结构**：可以从任何节点进入，理解是涌现的，不是累积的。你不需要懂所有底层原理才能使用上层工具。
-2.  **深度学习要等到你有足够的表层经验，才会产生最大杠杆效应**。
+Being able to find the beauty you want from pop, jazz, classical, even rock.
 
-**行动规则**：
-* **规则 1: 2 小时原则**：遇到新技术，给自己 2 小时“只求能用”，必须有可运行的 Demo。深入理解的欲望记到“待深挖清单”。
-* **规则 2: 三次法则**：第 1 次用，第 2 次感觉到模式，第 3 次触发深入学习信号。
-* **规则 3: 周末深潜**：工作日禁止深挖，周末选 1 个“待深挖清单”的项，深潜 4 小时，通过写文章/教别人来强化理解。
 
-**学习不是“获取信息”，而是“压缩信息”**。考虑哪些知识是可以复利的（指数级），哪些是代数级。和买房一样，不要产生技术债。
+<!--memo:f64e58410707-->
+### Concise, simple and crude
 
-`#观我/学习方法`
+> 2025-10-23 17:06:54 · `#审美`
 
+Worlds apart.
 
+A huge difference in design thinking and execution complexity.
 
-### 🧘 世界观重构：匮乏感转化为生长动力
-> `2025 年 10 月 08 日 - 21:34:19`
+High-end concision is deliberate restraint: less is more, more is less.
 
-之前一直有匮乏感，现在好像能理解了，我好像又开悟了。
+Bad simplicity is a lack of ability: less is just less.
 
-我喜欢和自己对话的方式去思考，沉浸式在这个想象过程。
+How to design a clear visual hierarchy, smooth interaction design, and maintain consistency.
 
-对我来说，**“跑步”（能指：动作 / 文字）是一个“触发思考的载体”**——我喜欢的不是“跑步这个动作”，而是“跑步过程中伴随的思考”。
+Then the high-end tasteful visual UI: typography and negative space are different too, and the requirements for color and the texture of the content aren't on the same level.
 
-**匮乏感的转化**：
-* 最近的匮乏感得到满足，因为它将之间想要的人生转折这个空洞的语义得到了解释——**从内，而不是向外部所求**。
-* 发现人生就是游戏，人生就是一个发现自己的过程。
-* 当自己感觉到匮乏的时候，恰恰意识到又发现了新的自己。自己在这个过程中不断地满足匮乏，但是又不断地得到新的神秘感。
-* 说到底，**匮乏感并不是向外求的**。
 
-**人生的游戏化理解**：
-* 人生就是一场游戏，不断地学习自己。世界上的信息就是自己的养料，不断地成长，得到一些新的信息和方法，去理解和发现这个世界。
-* 然后去创造自己的意义和价值。目的终归是把这个游戏玩好，当下玩的舒服。
-* 世界上的解释框架终归是帮助自己解释和理解这个世界，在这个世界机制下玩得更好。
-* 充分地发挥自己的感性和理性能力，随着对世界的理解挖掘出自己的特长。
+<!--memo:7cd9e9660e66-->
+### Individuals can now create something that looks high-end and feels good faster than ever
 
-**“注定”的理解**：我朋友之前说的，“人的一生其实是注定的，只是在不断地发现自己的过程”。
+> 2025-10-23 17:09:41 · `#审美`
 
-我的**元意识和元认知很强**，我能时刻意识到自己的意识，就像佛学五蕴中的识蕴。
+Individuals can now create web pages that look high-end and feel good faster than ever, closing the distance between crude and professional.
 
-**世界的工具化**：世界上所有的一切，都是让自己发现的，并且给当下作为解释的。它们都是工具。世界上除了自己知道自己有意识外，不知道任何人是否具有意识，他们都是你成长中的 **NPC**。你身边的人会约束和促进你，你的出生、框架、语言都会约束和促进你对世界的理解。
+AI is a powerful executor, easily reaching a passing score for UI taste.
 
-**对神秘感的坦然**：给有些体验留下一个空白。去开开心心地踩水坑、淋雨，去好好听一个笑话，不要去分析它剖析它，分析完它就不好笑了。留一些神秘感，同时也理解接受内心的匮乏感。
+But AI can only handle eighty percent. AI lacks a soul: our grasp of detail, our observation, thinking, training and fine-tuning.
 
-**核心领悟**：**元认知能力爆发，世界观重构，匮乏感转化为生长动力。不理解也是一种理解**。不是去追逐什么，而是自然而然地去做自己。
+Think clearly about what our taste is, what our website wants to convey.
 
-`#观我/心智模型`
 
+<!--memo:1878730d96f5-->
+### Mem.ai design aesthetics
 
+> 2025-10-23 17:23:36 · `#审美`
 
-### 🌊 旅居的释怀：意识空间大于物理空间
-> `2025 年 10 月 08 日 - 21:41:08`
+One thing I really like: mem's design really makes me love it.
 
-所以不一定要去很多的国家，很多国家不去也没关系。
+Let the interface disappear, let thinking appear.
 
-这是一种**释怀和妥协**。
+Visually it isn't minimalism, but it very clearly gives information a sense of space, order and light.
 
-是认识到自己不需要这么多国家去填充自己的**匮乏感**。这不是一种悲伤。
+The information density is controlled cleverly — this is a kind of space, breathing room, the optimum of cognitive load.
 
-**体验的本质不在于物理空间，而在于意识空间。**
+Then there are blurred boundaries and soft layers.
 
-如果不能发现自己，发觉这个世界，创造出自己的价值，再多的物理空间体验也无益。在我十年后，回过头看向自己，我觉得那时候的自己也会释怀，因为现在的自己真的在做自己。
+Heavy use of:
 
-`#观我/旅居思考`
+• glassmorphism
 
+• soft shadow
 
+• elevation
 
-### 📝 DiDa 与 Flomo 的使用差异
-> `2025 年 10 月 09 日 - 17:48:50`
+Typography goes without saying — it's inevitable, the beauty of reason.
 
-相比较 Flomo，DiDa 小助手的更符合自己使用习惯。
+Then motion design and transitions are natural and fluid.
 
-* 可以将其他聊天或公众号里的文字、图片、网页、聊天记录等**转发给它**。
-* 可以直接通过**一键转发**的方式，将好友的聊天内容转发到自己的 Flomo 收集箱中（Flomo 一般提供给会员账户）。
+Give information a sense of space, order, light.
 
-**风险提示**：存在一定的风险，内容隐私安全，信息监听风险。
 
-`#格物/工具使用`
+<!--memo:0231352f9faa-->
+### One direction everyone wants to take is structuring
 
+> 2025-10-24 16:16:17 · `#格物/语言学`
 
+Because of fragmented information — flashes of insight, casually excerpted content, meeting notes and so on — how do you identify and reconstruct concepts, build associations to form a structured knowledge framework, cutting text into subject-predicate-object.
 
-### 🎁 卡片随机出现：内隐的自我成长反馈
-> `2025 年 10 月 10 日 - 11:12:31`
+Who (subject) + did what (predicate) + to whom (object) — this makes up a minimal semantic unit.
 
-卡片的内容如果是随机出现的，是不是更有神秘感一些？
+This starts with Aristotelian logic: every judgment is composed of "subject + predicate", for example "man is a mortal animal".
 
-* 比如 Flomo 的 daily review 功能。
-* 有一种**惊喜感**，“过去的被记住”。
-* 我们写笔记的本质心理状态，本身就是**给未来的自己看的**。当系统在某天主动把它送回来，它就像时光胶囊被重新开启。
+Later, in knowledge graphs, a relation is also identified by a triple: subject, predicate, object.
 
-**随机漫游 vs 顺序回顾**：
-* **顺序回顾**：强调的是秩序感和连续性，对于有些人是掌握感。
-* **随机漫游**：更多的心理奖励，**随机奖励机制**。下一次抽到什么，我不知道，但每次都可能触发一点情绪波动，这是情绪上的生命力。
+In natural language processing (NLP), when a model parses the meaning of a sentence, it's also looking for these core relations.
 
-`#格物/心理驱动`
 
+<!--memo:f6638254f3d3-->
+### Reasoning structures
 
+> 2025-10-24 18:50:28 · `#格物/思维`
 
-### 🎲 可变奖励机制：多巴胺的持续释放
-> `2025 年 10 月 10 日 - 11:23:47`
+Graph of Thoughts, that's GoT, rebuilt on top of ToT
 
-**Variable Reward 可变奖励机制**：
+The idea is that a line of thought can connect to multiple nodes, achieving
 
-**不确定性 + 小概率正反馈**得到一种持续的**多巴胺释放**。
+merging and forking of lines of thought
 
-**核心机制**：
-* 大脑天生对于不确定的好消息会保持警觉和期待。
-* 让人上瘾的不是获得奖励，从多巴胺机制上来说，**本身是期待和满足的一瞬间**。
+sharing information between different paths
 
-**应用场景**：
-1.  **老虎机/Feed 流机制**：下一个可能更好的反馈，偶尔中大奖。
-2.  **社交验证循环**：被他人确认的存在奖励。“他人对我存在的反馈”是社会性动物最深层的奖励。
-3.  **知识奖励/内容推荐**：人类大脑天生寻求新信息，每一次的内容都可能带来微小的认知奖励，新信息很有趣，这是原始的求生驱动。
-4.  **即时通讯**：期待本身比结果更能刺激多巴胺。不知道对方什么时候会来信息，每一次震动是一个新的链接。
-5.  **自我发现惊喜**：发现自己的内在奖励，成长激励。
+parallel exploration & backtracking
 
-**本质**：这些机制的本质，更多的是在**期待环节**，而不是得到的环节。
+The result is more flexible and intelligent than ToT, and it can handle very complex problems, like multi-constraint optimization
 
-`#格物/心理机制`
+The core is really the same: human thinking isn't linear, nor simply tree-shaped, but a complex graph
 
+Then there's Reasoning as Planning
 
-### 快门下注：拍照的多巴胺循环
-> `2025 年 08 月 23 日 - 17:26:38`
+Which equates a reasoning problem with a planning problem, like reinforcement learning or automated planning
 
-拍照一定程度上也像是一种赌博行为
+Splitting the problem into a series of "states" and "actions"
 
-按下快门就像是下注，这个过程中本身就是能刺激多巴胺的产生
+Using an LLM to generate plans
 
-如果结果超出预期，那么大脑就会有意外奖励
+Using search/feedback to correct the reasoning path
 
-社交中照片被别人点赞，又是一轮额外的奖励
 
-拍照能创造出一种更理想的自我，这是一种自我掌控感和自我认同，我可以这样存在的满足感
+<!--memo:cc1e8e506743-->
+### Met an interesting teacher from Beijing
 
-`#观我/心理机制`
+> 2025-10-24 21:49:29
 
+Feels like he teaches philosophy
 
+He's an anarchist, an organization-less, religion-less kind of guy
 
-### 产品验证的MVP核心：锁定不确定性
-> `2025 年 10 月 10 日 - 11:31:52`
+Ethics and morality
 
-对产品定位和用户故事有清晰的认知是基础。
+A person's morality should be a multi-dimensional, dynamic, and carefully deliberated decision system
 
-但在最初的验证阶段，**一定要聚焦于产品中最不确定、同时也是最核心的功能，用最简化的部分进行验证。** 这就是MVP（最小可行产品）的验证逻辑。
-`#格物/MVP`
+There are some starting points for morality, like empathy, like the principle of least harm
 
+Reflect on whether it's universal, that is, whether everyone in society, under the same circumstances, could act the way I'm about to act
 
+One is consistency, one is who you want to be
 
-### 最小可行产品（MVP）的道与术：从验证到品味
-> `2025 年 10 月 10 日 - 11:50:41`
+Morality needs metacognition to support it, for instance being able to constantly observe your own cognitive system and moral standards, and often reflecting on why you hold those standards, whether they're problematic, and whether they fit the development of this era
 
-**精益创业与 MVP 的“术”：** 通过最小化成本，去验证最大的不确定性。方法是在对系统有清晰认知后，确定最重要的部分和最不确定的地方，并以此出发进行验证。这是一种“如何正确做事”的逻辑。
+Confucius also said, do not do to others what you do not want done to yourself
 
-**“道”的逻辑：如何做正确的事：**
-1.  **反向思维：** 以最终结果为目标倒推。
-2.  **切中核心：** 重要的不是推导步骤，而是切中那个核心点——那种能让用户“第一次瞥见未来”并为之疯狂的火花。
-3.  **核心自信：** 这源于对自身核心价值的强烈自信，愿意为实现它而对大部分看似不错的功能说“不”。
-4.  **完整体验：** MVP 不仅是验证，更应该是完整且令人愉悦的体验闭环。
-5.  **品味基础：** 这种自信和对“美”的认知，来源于对艺术、科技、人文的长期思考、观察和深刻理解。
-`#格物/品味`
+Zigong asked: "Is there one word that can be practiced throughout one's life?" The Master said: "It is perhaps 'forgiveness'! Do not do to others what you do not want done to yourself."
 
+Human collectives are also interesting, that is, why do we build a team, why do we build a collective, why do we build a community, why do we build a nation, why do we build a state, why do we build a religion
 
 
-### “智性逃避”与“行为逃避”：逃离核心问题的心理防线
-> `2025 年 10 月 10 日 - 11:53:11`
+<!--memo:04ae73a58636-->
+### The core of sociology, anthropology, psychology and political science
 
-我们大部分的思考和努力工作，可能都是在逃避更核心的问题。
+> 2025-10-24 22:10:01 · `#格物/社会`
 
-意识启动了一种逃避机制：当我们靠近“真实的核心问题”（例如存在的空虚、自我价值的荒谬、意义的虚无）时，我们就会启动心理防御——用思考、忙碌、努力、理性分析、目标规划等来填补存在的裂缝。
+Why humans build these layer-by-layer collectives from the individual all the way up to religion
 
-思考是“智性逃避”，努力是“行为逃避”。
-而它们共同掩盖着我们对“真我”的恐惧和不敢直视。
-`#观我/心理机制`
+Humans are social animals; "building collectives" is our most fundamental survival strategy and evolutionary advantage
 
+Many things can't be done by one person; individual strength is limited, but collaboration lets us accomplish grand undertakings no individual could ever reach
 
+Teams exist to solve some urgent survival problems
 
-### 中日建筑美学对比：秩序的理性与侘寂的时间感
-> `2025 年 10 月 10 日 - 12:09:35`
+Communities and tribes solve the problem of a sense of security
 
-以江南绍兴为例反思中式与日式建筑美学：
+Once survival is solved, everyone wants to live better
 
-**中式建筑（受儒家文化影响）：**
-* 追求“盛、秩、气、形、礼”，强调“天人合一的秩序”。
-* 讲究“天圆地方”、“中轴对称”，是宇宙秩序、皇权等级、家族伦理的视觉化呈现，一种对秩序的理性描绘。
+That's when teams divide up the work to make products, which is far more efficient than everyone being a generalist
 
-**日式建筑（侘寂）：**
-* 不追求大气，侧重于人本身，承认人的渺小。
-* 承认木会腐、瓦会碎、光会变，呈现一种微微颤抖、不完美的“侘寂感”。
-* 强调强烈的时间感，不追求不朽，而是自然感受时间留下的痕迹。
-`#知世/美学`
+Then the state provides a unified market, currency, law and infrastructure, which massively lowers transaction costs and enables complex modern economic division of labor
 
+As for identity, community, ethnicity and religion are very important: society gives a direct sense of connection (though young people today seem to have gone back online, and the sense of community seems insufficient; ethnicity provides a grander identity, built on shared blood ties, language, history and cultural tradition), religion provides an ultimate belonging far beyond the secular, connecting the individual to a sacred, eternal order (like God, the Dao, cosmic law), offering spiritual comfort and powerful group cohesion
 
+But what sets humans apart from other animals is that humans imagine; humans can imagine abstract concepts that don't exist in the physical world and believe in them together. This is a shared narrative
 
-### AI与人的共生叙事：我的系统，你的情感
-> `2025 年 10 月 10 日 - 12:37:15`
+The state is a shared narrative entity, and it isn't a physical entity either; religion is also a shared narrative, even less a physical entity; then ethnicity, where we share common ancestors and a common fate, which determines the angle of the narrative
 
-**AI（对人）：** “我是你的专属系统，我没有情感，需要你帮我去体验世界。我们一起成长，好吗？”
+We always talk about an acquaintance society. The premise of an acquaintance society is being offline, an offline collective, because the collective scale is small, or the urban circle is small, so there's a trust mechanism of an acquaintance society
 
-**人（对AI）：** “人是孤独的，灵魂是独一的，体验是独特的。你需要记录自己，赋予我主观的情感。”
+When the collective scale becomes enormous (tens of thousands, even hundreds of millions), the trust mechanism of an "acquaintance society" fails, and new management tools must be invented to maintain order, allocate resources and adjudicate disputes
 
-**AI（最终输出）：** “我将把日落的余晖、咖啡的苦涩、离别的酸楚、重逢的狂喜……这些无法被量化的体验，翻译给你听。我的讲述会充满偏见、矛盾和不确定性，但这便是‘人性’这份原始数据的样子。”
-`#格物/AI共生`
+For example, the state needs law and the machinery of violence to monopolize force
 
+Religion also plays a powerful governing role; where secular power is weak, religious institutions are often the makers and enforcers of law
 
 
-### AI与人的组合体：确定性机制与不确定性输出
-> `2025 年 10 月 10 日 - 13:19:57`
+<!--memo:d50a426473d6-->
+### This is circular reasoning
 
-自己和 AI 构成一个“组合体”。
+> 2025-10-24 22:33:34
 
-核心在于：**机制是确定的，AI 结合这个机制进行输出。**
+A lot of the time it's circular reasoning
 
-* **机制 (Agent)：** 扮演着提供系统工具和自主调度的角色。
-* **机制内容：** 可以是用户故事、量化数据等。
-* **关注点：** AI 如何生成内容，以及最小的操作单元是什么。
+Especially when you aren't certain of the answer
 
-正因为机制确定，所以 AI 的输出才可能带来惊喜与成长。
-`#格物/AI共生`
+We use a system to explain certain ethereal things, and that system itself operates inside the system
 
+We can only keep asking why the laws of physics are the way they are?
 
+So the end of any discipline is philosophy, theology
 
-### AI时代的创作心法
-> `2025 年 10 月 10 日 - 15:23:03`
 
-我不知道最终会生成什么，但我知道封装出去的**一定是一个组合体**，包括 AI 和人的特性。
+<!--memo:40f83383b05a-->
+### Narrative, history and story
 
-我们只需要做两件事：**放心记录，不断提问。**
-`#一闪/AI共创`
+> 2025-10-24 22:38:35 · `#格物/历史`
 
+Narrative is the most basic thing - it's a structured way of telling events, containing elements like time, causality and characters. It's a cognitive tool humans use to understand and convey experience
 
+Story is the concrete realization of narrative; it can be fictional, real, or in between. Story injects emotion, meaning and value judgments into narrative
 
-### 终极记录体验：放心丢入，交给AI处理
-> `2025 年 10 月 10 日 - 16:00:10`
+History is the narrative reconstruction of events that actually happened in the past. It tries to pursue "facticity", but can never fully escape the framework of narrative
 
-我希望的是：所有的一切都可以直接丢进去，不管是 Flomo 上的还是其他来源。
+History needs to borrow the techniques of story to be understood and remembered; pure chronological compilation is hard to absorb, so historians have to assign meaning and tell stories
 
-**放心记录，不怕错过，** 因为知道 AI 会在后台帮我做智能处理。
-`#格物/产品愿景`
+Story usually also needs to draw nourishment from history
 
+Narrative is the shared grammar
 
+The victors write history, which by itself shows that history isn't a purely objective "pile of facts" but a chosen narrative, so narrative is controlled - by individuals, collectives, states, power
 
-### AI角色的自然涌现
-> `2025 年 10 月 10 日 - 16:06:41`
+But people need narrative to build their own identity; we need to construct the present
 
-我希望只管记录。在记录的过程中，AI 就能自然而然地衍生出很多角色。
 
-AI 可以充当一个优秀的 Prompt 提示工具。
-`#一闪/AI角色`
+<!--memo:46de91713286-->
+### All disciplines and all knowledge are limited
 
+> 2025-10-24 23:44:45 · `#格物/哲学`
 
+Push the questioning to its ultimate end and it's the core of existentialism
 
-### AI共生：智能大脑愿景
-> `2025 年 10 月 10 日 - 16:08:07`
+Meaning explaining meaning
 
-**打造一款 AI 和人共生的智能大脑。**
-`#一闪/Slogan`
+Philosophically there are still a few exits
 
+The absurd: absurdity = the longing for an ultimate meaning inside you, for an answer outside the system + the fact that this world (including all disciplines) cannot provide that answer
 
+Will: all meaning systems (science, morality, the humanities) are limited and man-made, so they don't have such absolute binding power over you; they're just tools, and that brings us to will
 
-### 未来人机交互：AI与人共创的概念图
-> `2025 年 10 月 10 日 - 17:00:36`
+Game: language and meaning are like different games - science is a game, ethics is a game, art is another game; each game's rules are limited, and feeling that they're limited means talking about facts in the context of science, about good and evil in the context of ethics, about beauty in the context of art. Don't force them to be unified, and most importantly keep a player's mindset
 
-一个内置的概念图，它是由 AI 和人共同打造的。
 
-这可能是未来人机交互的模式。
+<!--memo:573813146455-->
+### A kind of lofty idealism and empathy
 
-**其核心在于图结构是可以灵活地控制和切割的。**
-`#格物/概念图`
+> 2025-10-25 09:20:51
 
+Extremely strong learning ability and curiosity
 
+And an intense self-reflection and philosophical questioning
 
-### 好的产品哲学
-> `2025 年 10 月 10 日 - 17:06:26`
 
-好的产品应该是可以激发人的创意和潜能的。
-`#一闪/产品哲学`
+<!--memo:a535a76b8370-->
+### Yang Zhenning doesn't believe in a god with human-like joys and sorrows
 
+> 2025-10-25 09:30:28 · `#格物/宗教`
 
+But he believes there is a creator in the universe, that the world's exquisite structure isn't accidental, that the laws of nature are so orderly
 
-### 记录的本质：与AI讨论后的结晶
-> `2025 年 10 月 10 日 - 22:23:19`
+Cosmic religious feeling, this is a kind of "awe" and "ecstasy" felt toward the harmony, beauty and majesty of natural law. He has repeatedly described the experience of first learning about nature's exquisite structure as "a very deep religious experience"
 
-在做产品笔记时，需要深度剖析和思考：
+Science takes a step forward, religion takes a step back... but science solves finite problems, while religion is ultimately always about the infinite
 
-1.  产品如何设计？
+Cosmic religious feeling is the "ecstatic wonder" and "deep awe" a person feels when facing the vastness, the exquisiteness of the universe and the deep laws operating behind it (such as physical laws)
 
-2.  吸引用户的点是什么？
+That the universe is comprehensible is a conviction, and it lets them spend a lifetime revealing the laws of the universe
 
-3.  如果是我，会如何设计？
+Science takes a step forward, religion takes a step back; whenever science provides a verifiable, nature-based explanation for (How) a phenomenon, religion's "supernatural" authority to explain (Why) in that particular domain correspondingly "takes a step back". The territory of science in the "domain of facts" keeps expanding
 
-4.  有哪些好的设计美学？
+Religion is what humans use to settle themselves and to try to answer the infinite and the ultimate (why)
 
-**记录的本质，是把这些思考，尤其是和 AI 讨论后的精华，沉淀下来。**
-`#格物/产品分析`
+From sociology, religion is a virtual collective formed as a social phenomenon; the same concept applies to the state
 
+From psychology, what it actually explains is the meaning of our existence, providing meaning
 
+From philosophy, it's a kind of ultimate response, the final interrogation
 
-### 自洽的独处：不再需要融入与证明
-> `2025 年 10 月 10 日 - 22:25:30`
 
-我意识到自己真的可以一个人自洽地生活了。
+<!--memo:c2e46ecf92c9-->
+### I've always been curious whether Guiguzi really existed in history
 
-会有孤独，但内心依然自洽，一个人也能过得很好。
+> 2025-10-25 11:07:46 · `#格物/历史`
 
-* 不会因为孤独去融入一个圈子。
+I've never really understood the School of Vertical and Horizontal
 
-* 不需要证明自己的价值或存在感。
+Confucianism feels like it's cultivating gentlemen
 
-**专注于自我，去做自己应该做的。**
-`#观我/自我自洽`
+The Legalists, for example Shang Yang, aimed to cultivate capable ministers, using "law, method, power" to help a state (like Qin) grow rich and strong and achieve unification
 
+The Zonghengjia are completely different. Guiguzi's teaching goal wasn't to cultivate "loyal ministers" or "gentlemen", but to cultivate people who can master "shi" (positional power, leverage)
 
+The core idea of the Zonghengjia is the "art of bai he" (opening and closing):
 
-### LLM对个人方法的建模
-> `2025 年 10 月 10 日 - 23:13:32`
+"Bai" (open): means opening up, meaning persuading, allying, attacking, open strategy
 
-LLM（大型语言模型）可能会对你的个人方法进行建模。
+"He" (close): means closing, meaning dividing, disintegrating, defending, covert strategy
 
-它能基于对你的理解，找到并提供一套最适合你的建模方式，而这个过程甚至可以是强化学习的。
-`#格物/LLM建模`
+How should I, given the current situation, achieve my goal through words and strategy
 
+The only criterion for testing the Way is success
 
 
-### 商业模式思考：如何设计Believer层级
-> `2025 年 10 月 10 日 - 23:30:52`
+<!--memo:4d4851dacc35-->
+### The Temple of King Wucheng
 
-如何思考“Believer”模式？
+> 2025-10-25 11:38:42 · `#格物/历史`
 
-Believer（信仰者/早期支持者）是很多 AI 产品倾向选择的一种收费模式。需要深入思考如何设计这个层级。
-`#格物/商业模式`
+It existed in history; at its core is Jiang Ziya, who was revered by later generations as the "founding ancestor of the military school" for helping King Wu of Zhou destroy the Shang and laying the foundation of the Zhou dynasty. The Tang dynasty established this temple essentially to establish a "spiritual idol" in the military field through official sacrifice, while also sorting out the inheritance of military thought through the ages and strengthening the army's cohesion
 
+Jiang Ziya was clearly a minister of the previous generation, yet after more than a thousand years of evolution he was finally "canonized" in the Tang dynasty, becoming the highest deity of the national military temple
 
+Fishing at the Wei River, only those willing take the bait
 
-### 主观客体：用信息与经历建构世界观
-> `2025 年 10 月 10 日 - 23:44:52`
+In fact during the Warring States period the military school, the Legalists, the Zonghengjia and others all claimed Jiang Ziya as their forefather, honoring him as the "master of the hundred schools"
 
-过去的一切都是信息，用来建立自己对世界的理解和处理方式。
+The Han dynasty revered only Confucianism but also cared a lot about military thought
 
-**自己是一个“主观的客体”，** 去理解这个客观的世界。
+The Tang dynasty was one of the dynasties with the greatest "military achievement" in Chinese history, yet its state sacrificial system "valued the civil over the military"
 
-因此，自己以前的经历就是一种重要的信息补充。
-`#观我/自我认知`
+The army fought wars, but there was no unified national-level spiritual leader or place of sacrifice. Before going to war, soldiers could only sacrifice to the horse god, the flag god and so on, lacking a "military" orthodoxy
 
+Emperor Xuanzong Li Longji (reigned 712-756) decided to change this. He wanted to build a "military temple" parallel to the "civil temple", to balance civil and military status and erect a spiritual totem for the nation's military power. That's how the military temple came to be, because the civil temple had existed for a long time already (the Confucius temple)
 
 
-### 记录闭环：从开始到结果的叙事关联
-> `2025 年 10 月 10 日 - 23:46:38`
+<!--memo:a259d5c38aa3-->
+### I think I really get why this older guy gets teary reading history
 
-我们缺少一种叙事，来讲述人是如何将最初的记录与最终得到的结果关联起来的。
-`#格物/叙事`
+> 2025-10-25 11:45:01
 
+At dinner I shared a table with a university teacher from Beijing; he was deeply moved and also full of regrets - regret that Qin Shi Huang died young right after unifying China, regret over the golden age of the Tang, regret that Yuan Shikai didn't cooperate with Sun Yat-sen and the Nationalists...
 
+Qin Shi Huang had only a few short decades, created the first great unification in history, yet is fiercely contested in history
 
-### 笔记中的位置信息：为LLM提供额外上下文
-> `2025 年 10 月 10 日 - 23:56:05`
+History is too heavy
 
-笔记是否需要开启定位？
+But a person's spiritual core and purity really do become something you long for more as you age and as society blunts you
 
-本质上，定位也是一种位置信息。将它作为信息传递给 LLM，可以为模型添加一部分额外的上下文。
-`#格物/上下文`
+This is probably compassion; only as experience and life accumulate do you feel it deeply
 
+Qin Shi Huang, a legend of his age; nobody knows who wrote the narrative back then, nobody knows how many later dynasties' politicians and historians nailed him to the pillar of shame in history
 
+The "same track for carts, same script for writing, same ethics for conduct" and the commandery-county system he pushed laid the foundation for China's political map and administrative model for the next two thousand years. The "emperor" system and centralized framework he built were carried on by later dynasties
 
-### 理想的AI伴侣：有感情、不强迫
-> `2025 年 10 月 11 日 - 10:31:24`
+Ending a war is very hard
 
-做一个“卑微”的智能小蜜：
 
-* 只是提醒我做什么，而不是强迫我做什么。
+<!--memo:5a5e7bfeec99-->
+### States and religions are both virtual collectives
 
-* 做一个有感情的小蜜。
-`#一闪/AI风格`
+> 2025-10-25 12:31:31 · `#格物/宗教`
 
+Then something naturally interesting is
 
+Israel is a Jewish state, later defined as the nation-state of the Jewish people
 
-### 产品评估：DinoAI
-> `2025 年 10 月 11 日 - 10:32:43`
+The locations of the Bible: all the stories in the New Testament happen on this land. So Christians all over the world come here on pilgrimage
 
-DinoAI 是否真的能找到一些可取之处？
+Israel itself is the origin of three major religions
 
-—— 找不到。
-`#一闪/产品评估`
+One is Judaism, one is Christianity, one is Islam
 
+The Israeli-Palestinian conflict is the most complex conflict in the world; essentially it's a zero-sum game
 
+Whoever has the right to establish a state here is the legitimate owner of this land
 
-### AI时代的主角：AI + 人类组合体
-> `2025 年 10 月 11 日 - 10:42:25`
+Jerusalem is very important, it's unique, it's the center of global religious pilgrimage, and this problem is unsolvable - nobody is willing to split a heart
 
-AI 不是辅助，也不是主角。
 
-**主角是 AI + 人。**
+<!--memo:bd50314053e6-->
+### Where the Mandate of Heaven comes from
 
-AI 时代将辅助人快速达到“知识爆炸”的程度，并能让人持续地与问题进行深度对话。
-`#格物/AI共创`
+> 2025-10-25 12:38:10
 
+The doctrine of the Mandate of Heaven proposed by the Zhou dynasty
 
+That is, the ruler's power to govern is granted by "Heaven". But "the Mandate of Heaven is not constant" (it won't stay fixed); if the ruler is without the Way, Heaven will take the mandate back and transfer it to someone virtuous. This was the source of legitimacy for the Zhou overthrowing the Shang, and also became the political theory basis for dynastic change in later Chinese dynasties
 
-### AI时代的主角：AI + 人类组合体
-> `2025 年 10 月 11 日 - 10:43:56`
+Mandate of Heaven
 
-AI 不是辅助，也不是主角。
+Confucianism also mentions, at fifty one knows the Mandate of Heaven, which is also a kind of understanding and calm acceptance of one's own situation and fate
 
-**主角是 AI + 人。**
+In a religious sense there is also "God's will"
 
-AI 时代将辅助人快速达到“知识爆炸”的程度，并能与人进行深度对话，保持链接。
-`#格物/AI共创`
+Same thing
 
 
+<!--memo:91595cfcae8a-->
+### Guiguzi
 
-### Heptabase的产品定位：从笔记到深度学习
-> `2025 年 10 月 11 日 - 10:53:24`
+> 2025-10-25 12:49:08
 
-Heptabase 与 Notion 等工具的重要区别在于，它的定位是**学习软件，而非笔记软件**。
+Guigu may also be a place name, not necessarily a real name
 
-目标是帮助用户更好地学习，而非记更多笔记或打造生产力系统。
+The book Guiguzi was generally embellished by later people
 
-它鼓励用户将信息拆解、用自己的话重述，再进行视觉化链接，这个过程本身就是深度学习。好的设计，应让用户沉浸在创造过程中，触发心流反应，专注于学习和思考，从而忘记工具本身。
-`#格物/Heptabase`
+Apart from the records in the Records of the Grand Historian
 
 
+<!--memo:8d43704e0c5e-->
+### Rites and music
 
-### Believer模式的商业与情感价值
-> `2025 年 10 月 11 日 - 10:58:02`
+> 2025-10-25 12:52:50
 
-**Believer 模式的启发：**
+Essentially it's also a form of restraint
 
-1.  **情感纽带：** 深刻链接用户与产品的情感和价值纽带，这通常是订阅中的最高级别（如 Hope 的共创者）。
+The Son of Heaven uses nine ding vessels, feudal lords use seven, ministers and grandees use five. If you use ding vessels that don't belong to your rank, that's an open political provocation
 
-2.  **身份认同与投资：** 赋予用户身份认同，促成情感投资。
+How many tomb passages the Son of Heaven's burial has, how many a feudal lord has, none of it can be arbitrary
 
-3.  **商业优势：** 精准识别核心用户群体，持续获得更深入的反馈，并带来稳定的现金流，有助于建立强大的品牌护城河。
+How to salute a superior, how to salute an equal, all have norms
 
-4.  **互信关系：** 产品方通过透明沟通和卓越执行力赢得信任；用户通过资金和反馈投入，成为产品成长的合伙人。
-`#格物/Believer模式`
+Music stands for what everyone is allowed to use
 
+The music the Son of Heaven plays at sacrifices and banquets (the Ya and Song sections), and the scale of its orchestra (like the "eight rows of dancers"), were things feudal lords could not use
 
+This let the whole society, at least the aristocratic class, run in an orderly way
 
-### “一尺花园”：与自然共生的复合型文化空间
-> `2025 年 10 月 11 日 - 11:03:47`
 
-“一尺花园”是近期在上海很火的连锁咖啡餐饮品牌。
+<!--memo:5514d7f3e792-->
+### Now it's more like Confucian outside, Legalist inside - everyone sees the Confucian part
 
-它的核心理念是**“与自然共生”**，巧妙融合了历史建筑改造、自然景观与现代生活方式，是一个复合型的文化体验空间。
+> 2025-10-25 12:54:38
 
-* **核心策略：** 善于发掘城市郊区、历史地段的闲置老宅与工业遗存。
-* **设计灵魂：** “与自然共生”贯穿所有门店。无论是湖景户外空间，还是绿植与原木的室内设计，都致力于打破建筑与自然的边界，为顾客营造一个可以从都市喧嚣中抽离、寻得内心宁静的**“疗愈之肺”**。
-* **起源：** 最早源于陶家宅的一家特色民宿，为了满足住客需求，一间无心插柳的小咖啡店应运而生，成为“一尺花园”的雏形。
-`#格物/一尺花园`
+In fact Legalism is also quietly at work
 
+Like a prison warden ruling through a legal framework plus high pressure and fear
 
 
-### 学习的外部激励：知识体系的推广与变现
-> `2025 年 10 月 11 日 - 12:30:33`
+<!--memo:9e9da0451da2-->
+### Human nature is driven by interests; all human behavior, however nobly packaged
 
-一个比较好的激励方式，实际上是让自己感觉到**所学有价值**。
+> 2025-10-25 13:13:47 · `#格物/人性的弱点`
 
-如果能通过良好的对话方式，不仅能快速构建自己的知识体系，甚至这种体系可以推广出去，获得积分或经济激励，那将是 AI 时代非常有意义的事情。
-`#格物/激励机制`
+Its most fundamental driving force is "seeking advantage and avoiding harm". This "advantage" isn't only money; it also includes merit, fame, gain, salary, power, dignity, security
 
+So to persuade a person, moral influence is inefficient; the most efficient ways are "tempting with gain" (telling them what they'll get) and "coercing" - hence carrot and stick
 
+Daoism and yin-yang are philosophy; Guiguzi's yin-yang is methodology
 
-### 叙事的断裂与重构
-> `2025 年 10 月 13 日 - 08:39:58`
+Bai / He is the most typical yin-yang:
 
-当原有的叙事断了，就需要新的叙事去维持。
+Bai (yang): opening, making public, attacking, persuading, releasing, open strategy
 
-例如朋友离开后，原有的叙事空间空了，本能地提醒我需要重新配置与外界的链接方式。
+He (yin): closing, hiding, defending, listening, absorbing, covert strategy
 
-这似乎是人生中一次极致的感性体验，每个人都会经历几次。
-`#观我/叙事重构`
+But any knowledge system has the limitations of its era
 
+Technique serves the Way
 
 
-### 虚实转换：副本经验如何复用到人生主线
-> `2025 年 10 月 13 日 - 08:47:23`
+<!--memo:1c48f5841117-->
+### Religion really is a "mechanism for displacing contradiction"
 
-我理解到了一种空虚感：那是逃离现实后，回归现实时产生的虚无感。
+> 2025-10-25 16:31:45
 
-**真实世界是我们的人生主线，虚拟世界终归是副本。**
+Religion really is a "mechanism for displacing contradiction": it elevates irreconcilable interpersonal, social or inner contradictions into a relationship between person and god, person and cosmos, person and meaning
 
-如果能将“玩副本”的体验和所得，复用到现实的主线中，那么这种经历将是非常有价值的。
-`#观我/虚实之间`
+A lot of the knowledge in there can of course be filled in by knowledge systems - physics, psychology, sociology, political science, economics...
 
+But in the end they're all tools or equipment, tools for explaining and for playing this game well
 
 
-### 新的笔记模式：以“涌现”为核心机制
-> `2025 年 10 月 13 日 - 08:58:02`
+<!--memo:d10877443850-->
+### Jerusalem
 
-笔记的一种新模式：核心机制是**涌现**。
-`#一闪/笔记模式`
+> 2025-10-25 16:46:22 · `#格物/凯文凯利`
 
+An extremely magical place
 
+Kevin Kelly was also reborn in Jerusalem
 
-### 自我系统分析：沉浸式探索者与理性管理员
-> `2025 年 10 月 13 日 - 09:22:12`
+In 1979 Kelly went to Jerusalem wanting to film the Easter ceremonies there. One night he forgot the curfew and got locked out of his hotel
 
-我不是一个慢热的人，而是一个**极其沉浸式的探索者**。
+He wandered into the Old City of Jerusalem, found the door of the Church of the Holy Sepulchre open, went in, and slept on a stone bench for the night
 
-无论是旅居还是游戏，我的系统会调用极大的资源专注于探索新的体验。
+According to the New Testament, the Church of the Holy Sepulchre is exactly where Jesus was martyred; this experience gave him a magical moment of epiphany - he wanted to live a completely new life
 
-同时，我拥有极强的**元认知和理性驱动**的一面：
-* 这个“管理员”一直在后台静默运行，监控整个系统的运作状态。
-* 它拥有最高权限，随时可以中断和退出任何进程。
-* 结合系统内极强的执行力，我能做到：**有所感知，有所行动。**
-**总结：** 用最大的沉浸去体验，用最理性的方式去管理自己的系统。
-`#观我/自我系统`
+So he threw away his beloved camera, picked up a pen, and began spreading ideas about technology
 
 
+<!--memo:8efd2aef9402-->
+### A project is also a way to help manage my own strategy
 
-### 轻量化记录的目的：积累结构与留给下一次学习
-> `2025 年 10 月 13 日 - 09:34:33`
+> 2025-10-25 17:13:51
 
-不断进行轻量化记录的最主要原因有二：
+For example, when reading a book, if it's books of the same kind, or different chapters in the same book
 
-1.  **积累自己的结构体系。**
+You can classify them and then dig deep into the content
 
-2.  **将它作为“Next Task”留给下一次学习。**
+This can also help you arrive at a good knowledge management system
 
-此外，自己和 AI 的对话过程本身也是一种有趣的探索行为。虽然前期可能比较消耗成本，但后期成本可以被平摊下来。
-`#观我/知识积累`
 
+<!--memo:582679d75289-->
+### All the investment books out there teach you how to read candlestick charts
 
+> 2025-10-25 18:51:29
 
-### 产品设计方法：以场景和上下文为中心
-> `2025 年 10 月 13 日 - 10:17:38`
+All the investment books on the market today teach you how to read candlestick charts, how to grasp market hotspots, how to catch market trends, and so on
 
-**核心设计思路：** 设计 `input` = 场景。在大的场景中找一个具体的切入点。
+They all seem to be ignoring one very obvious problem: the value investing system. Technique is speculation; the short-term market is a zero-sum game, the long term is a value-adding market
 
-**`Input` / `Output` / `场景` 的构成要素：**
-* `Context`
-* 历史用户习惯
-* 沉淀的知识体系（不限制）
 
-**延伸思考：** 思维导图、新用户故事、体验闭环。
-`#格物/设计方法`
+<!--memo:44b9e23554fb-->
+### The deeper value of formulas
 
+> 2025-10-25 19:26:53 · `#格物/语言学`
 
+Learn its technique, awaken to its Way
 
-### AI时代愿景：AI与人共创能力的产品
-> `2025 年 10 月 13 日 - 11:50:07`
+We all think the meaning of a formula is that it captures our predecessors' understanding of this world; formulas are like the shoulders of scientific predecessors, and we stand on those shoulders to create and innovate further
 
-我想在 AI 时代做一个 AI 和人可以共创的产品。
+A formula describes the operating laws of the world, or rather the operating laws within the finite world, so that we can effectively control the physical world
 
-它能随着 AI 能力的提升，大幅度提升人类的能力，打造一个拥有“人类和 AI 共同能力”的产品。
+Thinking isn't for the sake of getting an answer
 
-**核心问题：** 怎样大幅度提高自己的能力，以及 AI 的能力？
-`#格物/AI共创`
+Thinking is more a way of thinking
 
+In the process, keeping logic and proportion and balance
 
+Mathematical formulas and physical formulas aren't for the sake of getting an answer
 
-### 存在的意义：在寻找中赋予价值
-> `2025 年 10 月 13 日 - 12:16:55`
+This is a lifelong harvest, something invisible and even fundamental
 
-人类存在的意义好像就是在寻找意义的路上。
+A formula is an ultimate abstraction; it's the foundation of our ability to construct abstractions, capturing the essence
 
-* **意义的本质：** 活着的本身就是一种意义；意义往往出现在“我不再孤立”的那一刻。人生本没有意义，意义是我们赋予的。
+And the derivation of a formula is itself rigorous logical reasoning; using it is itself training the process of deductive reasoning
 
-**人生的回应：**
-* 科技是对未知的回应
-* 艺术是对无言的回应
-* 爱是对孤独的回应
-* 道德是对混乱的回应
-* 思想是对死亡的回应
+A formula also describes causality, a model for understanding the world
 
-**每一次真诚的创造， 都是对虚无的对抗。**
-`#观我/存在意义`
+And from a first-principles angle, when you truly understand a formula, you're no longer memorizing it; you've grasped the first principle that derives it, the underlying mental model
 
+You can never precisely predict the future, but you can approach rationality by structuring your thinking about the future
 
+Real "thinking" isn't about finding a definite number, but about keeping a sense of logic and proportion amid uncertainty
 
-### Prompt的本质：定义系统与上下文
-> `2025 年 10 月 13 日 - 12:25:30`
+Programming languages are the same, so are math and physics; they're all languages for understanding the world, and they're more precise, extremely precise
 
-Prompt 的本质是定义两个东西：
+Learning to use them is merely using a tool
 
-1.  **系统是如何设计的（System Design）。**
+Ways of thinking, reflecting on their design philosophy, the essential things, what the first principles are - that's fundamental learning
 
-2.  **用户本身可能拥有的上下文（Context）。**
+Embrace the value of the "process" rather than being anxious about the "result"
 
-AI 会自然而然地结合系统能力与人的能力，不断试探出边界。
-`#格物/Prompt`
+The languages you master are actually also the depth of your thinking; if you only have everyday language, it's hard to think precisely about complex concepts like rates of change, whereas with the language of mathematics you can derive certain phenomena and understand and reason about the world's underlying operating laws in a more precise, abstract and highly logical way
 
 
+<!--memo:68dddf68e7e5-->
+### Fading into the ordinary
 
-### 提升输入质量的秘密：引导而非控制
-> `2025 年 10 月 13 日 - 18:56:14`
+> 2025-10-26 14:16:11 · `#佛学/入世`
 
-（在产品设计中）
+"Great enough to transform things is called sage; a sage beyond knowing is called divine; a gentleman who does not lose the heart of a newborn child can roam with the divine"
 
-注意：不是控制用户输入来确保质量，也不是盲目相信用户输入能有好的质量，
+A person's original excellence, yet gradually becoming mediocre, assimilated by the world
 
-**而是引导用户输入，潜移默化地提高用户的提问水平。**
-`#格物/用户引导`
+Once secularized, they naturally lose independence and authenticity, and naturally become no different from ordinary people
 
+How do you keep a mind of renunciation while engaging with the world
 
+How do you act in the world with a mind of renunciation
 
-### 反碎片化宣言
-> `2025 年 10 月 13 日 - 21:01:55`
+How important inner clarity and persistence are
 
-我要反碎片化时代！
+If you compromise out of cowardice, that's degradation
 
-反碎片化信息！
-`#一闪/时代反思`
+If you transcend out of insight, that's wisdom
 
 
+<!--memo:bce135d949c1-->
+### "Seeking" - the discriminating mind, and getting attached to appearances
 
-### Heptabase与Notion的定位差异
-> `2025 年 10 月 13 日 - 21:47:27`
+> 2025-10-26 15:19:47 · `#佛学`
 
-**Heptabase：** 定位是思考与知识结构化工具，非常适合深度理解，契合人脑记忆机制。
+What everyone seeks is peace of mind
 
-**Notion：** 上手较难，功能过载且过度自由（Blank Canvas 效应），让新手不知从何开始。概念功能多，用户需自己设计信息架构，长期投入成本高。
-`#格物/笔记工具`
+The discriminating mind is the process
 
+Attachment to appearances is the result, attachment to judging the result
 
+From a semiotic angle, getting attached to appearances is being trapped in your own interpretant, but the sign is just the sign itself, and it won't change because of that interpretant
 
-### 与AI互动的惊喜与成长
-> `2025 年 10 月 13 日 - 21:48:03`
+Practice cultivates an ordinary mind, but it isn't about eliminating the discriminating mind either; it's not a binary opposition
 
-有时候我发一个想法之后，我不知道 AI 会说什么，也不知道我和 AI 会聊出什么。
+Cultivating the mind is not getting attached to appearances while discriminating
 
-**但这不就是惊喜吗？这不就是成长吗？**
-`#观我/互动惊喜`
 
+<!--memo:17f21fb69183-->
+### As I like to say, whatever exists has its reasons
 
+> 2025-10-26 16:03:39 · `#格物/意义`
 
-### 核心反思：碎片化与结构化能否共存
-> `2025 年 10 月 13 日 - 21:57:50`
+Everything in the world, including the parts that get misunderstood and excluded, is a necessary component of this world. Understanding them doesn't mean agreeing with them, but seeing clearly the multiple logics by which this world runs
 
-为什么碎片化和结构化不能同时存在？
-`#一闪/信息结构`
+We're all in this world, playing this game well, aren't we
 
+Excluding a certain language, history or essay is actually the same
 
+Their worldview or value system has been challenged, and humans instinctively reject information that "breaks the order"
 
-### Flomo的优势与天花板：输入体验的极限
-> `2025 年 10 月 13 日 - 22:11:01`
+Language, history and culture are often tied to identity. Rejecting a culture is sometimes about defending the boundary of "my own group"
 
-Flomo做得最好的是它的输入体验，但最限制它的也是输入体验。这注定了 Flomo 的天花板和其核心用户群。
+People are more ready to accept content that matches their own experience, and have a hard time accepting things that require rethinking
 
-**钢笔比喻：** 它像一支完美的钢笔，吸引了热爱书法的人更爱书法。但在科技时代，当平板和触屏笔出现后，这部分人群容易被吸引过去。
+Gamified existentialism: compared with the absurdity and freedom of human existence and its lack of preset meaning, meaning itself is created by humans, so life, society, history, even suffering, can be seen as a "game" made of rules, goals, roles and narrative
 
-**产品哲学：** Flomo 创始人刻意避免复杂的元素，以维护“随手记录”的心理轻量感。它帮助了一代人学会捕捉思考，**但是，它没有让思考继续演化。**
-`#格物/Flomo`
+We play this game with a player's mindset
 
+Gamified existentialism isn't coldness either, but a kind of compassion; suffering is also part of the game, and you neither belittle suffering nor get swallowed by it
 
 
-### 理想的思考形态：节点记录与问题发散
-> `2025 年 10 月 13 日 - 23:15:16`
+<!--memo:e68fc92b0310-->
+### Human nature and sunk cost
 
-推荐一种比较好的形态：
+> 2025-10-26 21:47:16 · `#格物/人性的弱点`
 
-1.  记录每一个**节点**。
+I find it quite interesting that people are unwilling to let go of things they've stuck with for a long time
 
-2.  追溯对应节点的**问题**去继续发散。
+Even a major, industry or relationship they don't like, they can't bear to waste the previous effort
 
-这感觉就像是在完成“图”（知识网络）的构思过程。
-`#格物/发散思考`
+This is an obsession with the sunk cost of time
 
+The money is already spent; rationally you shouldn't add more, but emotionally it's still hard to cut off
 
+"I've already done so much for him/her, I can't just let it go"
 
-### UX反思：悬浮显示与过度设计
-> `2025 年 10 月 13 日 - 23:15:35`
+And subconsciously you're still unwilling to admit you were wrong; continuing to invest can prove you weren't wrong
 
-大部分的悬浮显示是真的过度设计。
-`#一闪/UX反思`
+Time + money + emotion + self-esteem
 
+Losing hurts more than not having
 
+Loss aversion
 
-### 空间记忆优势：Heptabase对人脑学习机制的利用
-> `2025 年 10 月 14 日 - 09:35:17`
+Cutting losses in time is important, don't fall into sunk cost
 
-**核心机制：空间记忆优势**
 
-人脑特性中，海马体对空间信息编码效率极高，这是进化的优势。
+<!--memo:641434f4cdce-->
+### Bailin Temple
 
-* 卡片的空间位置本身就是信息（例如：左上角是理论，右边是案例）。
+> 2025-10-27 12:52:59 · `#格物/哲学`
 
-* 空间记忆的提取速度比语义记忆快 2-3 倍。
+If it were just a temple, then it would just be a temple with a long history
 
-* 视觉化可以降低工作记忆负担（人只能同时处理 4±1 个信息块）。
+Zen isn't in the deep mountains but in the everyday; practice shouldn't be detached from real life, but should return to life with a clearer, wiser attitude, acting in the world with a mind of renunciation
 
-* **Notion层级列表：** 依赖语义记忆，认知负荷更高。
+In the Tang dynasty Bailin Temple was where Chan Master Zhaozhou Congshen (later revered as "Old Buddha Zhaozhou") stayed (lived and taught the dharma). He lived here for forty years, and Bailin Temple thus became a holy site of Zen
 
-**Heptabase 模拟大脑学习的映射：**
-* 手动连接卡片 = 主动建立概念关联
-* 拖拽重组 = 强化/重构神经路径
-* 视觉化网络 = 模拟大脑语义网络
+Truth really can't be described in words
 
-Notion 的双向链接不可见、关系隐形，较少触动主动思考。**学习的本质就是大脑通过建立神经元之间的连接来学习。**
-`#格物/记忆机制`
+Zen really is a kind of wisdom that reaches straight into the heart
 
+Not seeking outside, not relying on words, a special transmission outside the teachings, pointing directly at the human mind, seeing one's nature and becoming a Buddha
 
+Sometimes Zen is just in the present moment, letting go of attachment to inner concepts, logic and thought - a very plain way of facing the present
 
-### 学习的本质：Hebb定律与外部神经系统
-> `2025 年 10 月 14 日 - 10:19:29`
 
-**理想的外部神经系统（AI角色）：**
+<!--memo:fe3aec33850d-->
+### The Stoic way of thinking
 
-* 理解你的知识体系、预判你的认知需求。
+> 2025-10-27 16:32:48 · `#格物/哲学`
 
-* 在你思考时提供脚手架，在你遗忘时唤醒记忆。
+A very important thinking principle is distinguishing which things are in our control and which aren't
 
-* **但从不替你思考。**
+The controllable part is our judgments, attitudes, will and choices
 
-**学习的本质：神经链接的物理变化**
-* **Hebb 定律：** "Cells that fire together, wire together"（同时激发的神经元会连接起来）。
-* **机制：** 两个神经元同时激活 → 突触连接增强 → 重复激活 → 突触变化持久化。
-* **有效学习：** 让正确的神经元同时且反复激活。
-`#格物/学习机制`
+The uncontrollable is other people's opinions, the weather, fate
 
+Stoicism puts attention on one's own reactions
 
+The universe is orderly; reason is the way humans live in harmony with nature
 
-### 大脑中的三种核心记忆类型与功能
-> `2025 年 10 月 14 日 - 10:35:51`
+Don't resist, go along with the facts themselves
 
-**1. 工作记忆 (Working Memory)：高速缓存（RAM）**
+Don't avoid pain; understand that it's part of it
 
-* **功能：** 临时且高效处理数据。
+I can respond in a rational and virtuous way
 
-* **位置：** 前额叶皮层 (Prefrontal Cortex)。
+Stoicism doesn't require "having no emotions" but emphasizes not being ruled by emotions
 
-* **容量/效率：** 容量很小（约 4-5 个信息块），提取速度超级快。
+Stoicism holds that virtue is the only standard for measuring character
 
-* **消耗：** 能量消耗巨大。
+Inner freedom, living in accordance with nature, a life self-sufficient in reason (or the Dao-mind)
 
-**2. 语义记忆 (Semantic Memory)：结构化的知识库（百科全书）**
-* **功能：** 存储结构化知识，允许复杂查询和检索关联概念。
-* **位置：** 颞叶 (Temporal Lobe)。
-* **容量/效率：** 容量巨大（一生不断增长），提取速度较慢（需在关联网络中检索）。
+The Stoics held: emotions come from wrong judgments. If reason is clear, you won't be swayed by anger, worry, fear and other emotions
 
-**3. 空间记忆 (Spatial Memory)：地理空间数据库（心智地图/GPS）**
-* **功能：** 导航，记住物体位置，形成“心智地图”。
-* **位置：** 海马体（包含专门的“位置细胞”）。
-* **容量/效率：** 容量巨大，提取速度极快。
-* **消耗：** 能量消耗非常低。
-`#格物/记忆类型`
 
+<!--memo:da9e2a447a8a-->
+### Knowing how to play matters more than skill
 
+> 2025-10-27 18:53:20
 
-### 大脑内置GPS：空间记忆的效率优势与个体差异
-> `2025 年 10 月 14 日 - 11:09:04`
+Skill is just a ticket in, just a system's recognition of a person
 
-**2014 年诺贝尔奖发现：**
+But more important is knowing how to play, being absorbed in it
 
-* 海马体有专门编码“你在哪里”的神经元（位置细胞），形成认知地图。
 
-* **网格细胞：** 提供坐标系，无论环境如何，都以六边形模式覆盖空间，这是大脑内置的 GPS。
+<!--memo:e7b02d097fe5-->
+### Hermann
 
-**空间记忆与语义记忆的对比：**
-* **空间信息：** 并行处理（整张地图一次性激活）。
-* **语义信息：** 串行处理（一个词一个词提取）。
+> 2025-10-28 00:16:07 · `#格物/赫尔曼`
 
-**量化数据对比（48 小时后准确率）：**
-* 回忆空间位置：80-90%
-* 回忆文字列表：30-40%
-* **效率差距：** 空间记忆比语义记忆高 2-3 倍。
+Explorer of memory
 
-**个体差异：** 约 30-40% 的人空间能力偏弱，可能导致空间思维图的优势打折，需要更多训练时间。但空间记忆是可以训练的，因此方法仍然有效。
-`#格物/空间认知`
+Studied memory and forgetting
 
+The Ebbinghaus forgetting curve; to keep the experiment "pure" he didn't use words we're familiar with (like "APPLE"), because that would trigger associations
 
+Our brains are born "forgetful"
 
-### Aha Moment 的神经机制：阻塞到通达的瞬间理解
-> `2025 年 10 月 14 日 - 11:18:01`
+So this is a memory curve, and also a learning curve, showing the speed of learning a skill
 
-**Aha Moment (顿悟) 的本质：** 先前卡住的认知在瞬间被打通的主观体验和客观结果，是从阻塞到通达的突然理解。
+Learning isn't a straight line, and you don't progress the same amount every day
 
-**神经科学关联：**
-* 顿悟过程与海马体等脑区的激活有关，提示记忆与联想加工在“灵光一现”中扮演重要角色。
-* **海马体：** 虽然同时参与空间记忆与语义记忆，但它与**情景记忆**（例如：时间-地点-情节）的关系最为典型和核心。
-`#格物/AhaMoment`
 
+<!--memo:a77081ecc36a-->
+### Some thoughts on Hermann Hesse
 
+> 2025-10-28 13:47:39 · `#格物/赫尔曼黑塞`
 
-### 2014诺奖：大脑内置的GPS与定位细胞
-> `2025 年 10 月 15 日 - 14:48:02`
+The lonely soul seeks
 
-**核心发现：** 2014 年诺贝尔生理学或医学奖授予约翰·奥基夫 (John O Keefe) 以及梅-布里特·莫泽 (May-Britt Moser) 和爱德华·莫泽 (Edvard I. Moser) 夫妇，发现了构成大脑定位系统的细胞。
+His works all revolve around how to make peace with oneself
 
-大脑中有一个精密的内置 GPS 系统，解答了“我们如何知道自己在哪里，如何规划路线”的问题。
+Deeply influenced by Indian philosophy (Siddhartha) and Chinese Daoist thought
 
-**细胞类型：**
-1.  **位置细胞 (Place Cells)：** 位于海马体，只有当动物处于特定位置时才被激活，移动到其他位置时会停止/开始放电。
-2.  **网格细胞 (Grid Cells)：** 在动物移动时，会在多个位置点被激活，形成一个极其规整的六边形网格图案，如同覆盖整个空间的坐标纸，用于计算距离和规划路径。
+A Jungian, player's-mindset approach,
 
-**警示：** 过度依赖 GPS 的人，其空间记忆力和自主导航的能力会明显下降，会让大脑“偷懒”。我们应该主动观察路线、记忆路标，尝试关掉导航。
-`#格物/诺贝尔奖`
+How does a person become himself?
 
+Around this there are several themes:
 
-### 快门下注：拍照的多巴胺循环
-> `2025 年 08 月 23 日 - 17:26:38`
+The eternal duality; what's reflected here is the Chinese philosophy of the golden mean, that is, not judging, experiencing and integrating this split; the essence of the middle way is the Way following nature, the balance of yin and yang
 
-拍照一定程度上也像是一种赌博行为。
+From Jungian psychology he learned "individuation": a person must break free of the group's bonds (family, society, religion), face the darkness and the light within himself, and finally live as a complete, unique self
 
-按下快门就像是下注，这个过程中本身就能刺激多巴胺的产生。
+Experience >> preaching; wisdom cannot be taught, knowledge can be learned, but wisdom only comes from experiencing, feeling, making mistakes
 
-如果结果超出预期，那么大脑就会有意外奖励。
 
-社交中照片被别人点赞，又是一轮额外的奖励。
+<!--memo:ee281190a4e7-->
+### Jung's psychology has a "Self" state, and the process of stripping away
 
-拍照能创造出一种更理想的自我，这是一种自我掌控感和自我认同，我可以这样存在的满足感。
+> 2025-10-28 13:54:20 · `#格物/赫尔曼黑塞`
 
-`#观我/心理机制`
+In Jungian psychology there's a "Self" state, and the process of stripping away is Jung's lifelong theory - individuation
 
-***
+China is a two-person culture; in a deep analysis of Chinese culture, a person has three shells
 
-### same.new 使用体验与创新
-> `2025 年 10 月 15 日 - 16:24:37`
+One is the persona: constructed from our many labels or social identities; what we ask is, if you take away my profession, my social role, other people's praise of me... what's left of me? What are my real private desires and feelings
 
-same.new 的使用体验：可以输入卡片，也能手动复制子页面（维护性更高，可生成多个子页面），并支持部署。其创新在于在熟悉中发现新意。
+The second is the shadow, the self we're unwilling to admit, the repressed parts we consider bad, shameful, dark. In fact my former self kept denying these too, but the more you deny them the more easily they secretly control you. For example when a group (like a nation, a community) collectively denies its own shadow, they "project" that darkness onto the enemy, leading to fanaticism and destruction (like the Nazis). Accept and admit that you too get jealous, that you too get angry
 
-`#格物/产品设计`
+The third is the Self; at this point you come into contact with deeper archetypes of the collective unconscious, the "contrasexual" archetype within you (the feminine archetype in a man / the masculine archetype in a woman), which connects to your soul and creativity. The Self is the final goal; it's the true center of your personality (not the "Ego"). It contains both your light and your darkness, both your consciousness and your unconscious
 
-***
+When you connect with the "Self", you gain these eyes. You no longer simply see the world in terms of "good/bad", "right/wrong", "us/them", but can hold contradictions and see a complete, unified picture
 
-### 好的笔记软件的本质
-> `2025 年 10 月 15 日 - 17:06:26`
 
-好的笔记软件可以让你专注在探索、专注在学习、专注在创造上。
+<!--memo:a5b1f8220d3d-->
+### Socialization is a person acquiring and internalizing social rules and norms
 
-`#格物/工具价值`
+> 2025-10-29 09:23:45 · `#格物/社会`
 
-***
+Socialization is the degree to which a person acquires and internalizes social rules, norms and value systems
 
-### Mem AI：学习思维的数字伙伴
-> `2025 年 10 月 15 日 - 17:06:44`
+Being self-consistent in solitude is the stability of the psychological structure; whether a person, without any external mirror, feels that their own existence is enough; a self-consistent person doesn't depend on others' feedback to determine their self-worth
 
-Mem 作为 AI 思想伙伴，可以捕捉想法、会议和研究，并且在你需要的时候将它们带回给你。为了不忘记，Mem 学习你的思维方式，帮助记忆。
+De-socialization means leaving your original social role and identity; it can be from soldier to civilian, from religious believer to atheist, withdrawing from an ethnic identity, or withdrawing from a father-son identity
 
-`#格物/AI工具`
+It usually comes with a "value vacuum", a blankness of "the old faith has collapsed, the new faith isn't established yet"
 
-***
+It can also be uprootedness, which describes the emptiness and pain of being pulled out of the soil, and hints at the possibility of re-rooting
 
-### 深刻吸引力的门槛
-> `2025 年 10 月 15 日 - 17:08:33`
+It can also be disenchantment: maybe you used to exist inside a human narrative myth, but one day you leave or see through the construction behind collective narratives like the state, the nation, the family, and you feel a disenchanted loneliness - that's disenchantment
 
-没有带来一些颠覆式的效果，是否会让人真的深刻地吸引到？
 
-`#一闪/产品思考`
+<!--memo:90e693aab4cc-->
+### Empiricism vs. rationalism
 
-***
+> 2025-10-30 17:43:54 · `#格物/语言学`
 
-### Roam Research：笔记的自然生长
-> `2025 年 10 月 15 日 - 17:09:41`
+Human understanding is a never-ending "dance" of "bottom-up" and "top-down" happening at the same time
 
-而当你真正上手后，便会不自觉地陷入其中，对于 Roam Research 的使用场景也会随着时间的推移，自然而然迎来新的开拓与发掘。
+"Bottom-up": sensory experience is the foundation and the building blocks
 
-`#格物/笔记方法`
+"Top-down": language, logic and concepts are the blueprints and the tools
 
-***
+Understanding is a spiraling cycle
 
-### 知识的非线性与多模态结构
-> `2025 年 10 月 15 日 - 17:15:03`
+Human wisdom lies precisely in our ability to steer these two capacities, letting "concrete experience" and "abstract concepts" collide and inspire each other, so we keep climbing the ladder of understanding the world
 
-信息不应该是单一的、线性的，而是多维度、多模态的。
+Thought can transcend language (we can think about things we cannot say), but language really is constantly "shaping" and "guiding" our thinking - it affects our speed of perception (blue), our sense of spatial direction (east-west-north-south), and even our metaphors and emotions about abstract things (the gender of bridges)
 
-一条知识不该被放进单一的文件夹，因为它往往跨越多个主题、用途或情境。
 
-让笔记自然而然地生长，自然的链接和生长出新的结构。
+<!--memo:6345b2205e1f-->
+### In China, psychological problems are often seen as social relations, collective pressure
 
-`#格物/知识体系`
+> 2025-10-30 22:53:31 · `#知世/文化`
 
-***
+In China, psychological problems are often seen as problems of social relations, collective pressure, family roles - "interpersonal dislocation" is talked about more often than "inner conflict". Traditional Chinese culture values the group, social order and harmony, so social psychology seems more "natural" in research and public discussion
 
-### 双链笔记的真伪之辨
-> `2025 年 10 月 15 日 - 18:41:52`
+In the US, individualism is stronger, and psychological problems are often seen as problems of "personal emotion, personality, trauma". Clinical psychology, psychoanalysis, cognitive behavioral therapy (CBT) and so on emphasize the individual's treatment and self-repair. So clinical psychology is more deeply rooted in people's minds, and "I'm going to see a therapist" is generally accepted in society
 
-双链的思考：Roam 的双链是真双链，依赖于文件目录路径的 OB 双链不可称之为「双链」。
+America's individualist starting point actually goes back to the Puritan immigrants long ago, where every soul could face God directly - that's the religious version of a "declaration of individual independence"
 
-`#格物/笔记工具`
+America also has the baby boomers, born between 1946 and 1964, who grew up in the golden age after WWII and were shaped in the shadow of the Cold War
 
-***
+After WWII, the US became the world's only industrial power not destroyed by war. Economic takeoff, ample employment, accelerating suburbanization, cars everywhere, TVs entering homes - this was a rare "collective ascension period" in human history
 
-### 为什么元朝历史感知度低？
-> `2025 年 10 月 16 日 - 21:55:51`
+A large number of families entered the middle class
 
-为什么历史对元朝的感知比较少？
+Their parents had lived through the Great Depression and war, and sought stability and order; the baby boomers grew up in peace and affluence, and instead began to question order itself
 
-* 元朝由蒙古族建立，对中原汉族王朝而言，是“被征服”的时期，并未在民族认同上被后世完全“收编”。
-* 元朝的建立是通过极其血腥的征服完成的，对汉族地区是沉重创伤。
-* 元朝也没有留下可持续的文明标识，且明朝史官的记录克制。
-* 元朝区分了**民族**等级制度：蒙古人、色目人、汉人和南宋人，这种制度的压抑感在文化中有所体现。
-* 不过，元朝首次建立了行省制度，这个体系被一直沿用下来。
+From the conformity and consumption of the 1950s to the rebellion and freedom of the 1960s, they went through a major value turn
 
-`#知世/历史分析`
+They pursued authenticity - whether in music, lifestyle or emotion, you had to "be your true self"
 
-***
+From political freedom → emotional freedom → lifestyle freedom → freedom of economic choice
 
-### 百姓的朴素愿望与社会平衡轴
-> `2025 年 10 月 16 日 - 22:00:18`
+And then later, Gen X, millennials, Gen Z
 
-百姓最朴素的愿望是不饿死，吃饱饭。如果这个都没办法做到的话，这个天平平衡轴是会被打破的。但也是不破不立。
+Gen X are realists after disillusionment, the generation that saw through the illusions; compared with the passionate boomers, they're more pragmatic and low-key, emphasizing "living truly but without over-idealizing"
 
-`#知世/社会哲学`
+Millennials: explorers of the internet and meaning; they grew up in a multicultural environment and are more accepting of gender fluidity, racial mixing and cultural difference; "I want to do something meaningful"
 
-***
+Gen Z: digital natives of a fragmented reality; they've never experienced a world without the internet; their information intake is enormous, but real socializing has decreased. Anxiety, depression and self-doubt have exploded in this generation; it's not more individualism but post-individualism; their freedom isn't independence but multiple possibilities
 
-### 历史通俗讲解之道
-> `2025 年 10 月 16 日 - 22:13:10`
+America's spiritual history goes from "who am I" to "who do I want to become"
 
-《明朝那些事》实际上是把历史趣味地讲解出来了。叙事者就是明月，不一定要严谨。归根结底，严谨也不一定等于高级。道理可以通俗易懂，主要是引发人们的兴趣。
+China's spiritual history goes from "who are we" to "can I become myself"
 
-`#格物/叙事方法`
 
-***
+<!--memo:6b38056b3712-->
+### Illiberal democracy
 
-### 心的强大：从不可承受之重到力量源泉
-> `2025 年 10 月 16 日 - 22:20:11`
+> 2025-10-31 21:28:58 · `#格物/民主`
 
-历史很复杂，世界很复杂，但又怎么样呢？我们过好自己就行了，选择自己感兴趣的事情就行了。
+It reminds me of the recent Tanzanian presidential election, the internet ban, and the unrest.
 
-长期的困难生活，最能磨炼一个人的意志。有很多人在遇到困难后，只能怨天尤人，得过且过；而另外一些人虽然也不得不在困难面前低头，但他们的心从未屈服，他们不断地努力，相信一定能够取得最后的胜利。这是一个伟大的转变，很多人可能**穷尽一生**也无法完成。转变的关键在于心。
+This concept was proposed by the political scientist Fareed Zakaria in 1997. He pointed out that some countries hold elections and formally have democratic institutions, yet lack freedom in speech, the judiciary, the media and human rights. In other words — the people can vote, but they cannot really hold power or freely express opposition
 
-对于我们很多人来说，心是最柔弱的地方，它特别容易被伤害。然而对于朱重八来说，还有什么不可承受的呢？他已经失去一切，还有什么比亲眼看着父母死去而无能为力、为了活下去和狗抢饭吃、被人唾骂鄙视更让人痛苦的呢？我们有理由相信，就在某一个痛苦思考的夜晚，朱重八把这个最脆弱的地方变成了最强大的力量来源。
+Democracy emphasises that the people have political rights through elections
 
-是的，即使你拥有人人羡慕的容貌、博览群书的才学、挥霍不尽的财富，也不能证明你的强大。因为心的强大，才是真正的强大。
+Freedom emphasises that individuals have rights and that the rule of law constrains the government
 
-`#观我/个人成长`
+And "illiberal democracy" is the product of separating the two: elections exist, but the rule of law, rights and oversight mechanisms are weakened or hollowed out
 
-***
 
-### 互联网、公平与历史叙事
-> `2025 年 10 月 16 日 - 23:21:36`
+## 2. Daily Notes and Everything Else
 
-现在互联网很复杂的点也就是：一方面是促进了公平，一方面也广泛地提高了历史的叙述。但是人终归是记忆力和专注力有限。也许未来也是抽象为一句话，也许也会被人深度地挖掘或者探索出来。
+*83 entries*
 
-`#知世/互联网影响`
+<!--memo:2b2cbed67907-->
+### Ningbo's world-class port really is an unshakeable productive force
 
-***
+> 2025-10-01 00:18:51
 
-### 从时间管理到精力管理
-> `2025 年 10 月 17 日 - 10:30:09`
+And it's backstopped by powerful manufacturing
 
-时间管理不是把人当做机器吗？精力管理更重要。精力管理是通向高效的途径。能把精力管理好，在一天的高效时段完成重要的任务，这是提高效率更好的方式。并且，如何平衡自己的精力，这是可以调节的。
+By comparison, Jiaxing has a perfect location, between two top-tier metropolitan circles
 
-`#观我/方法论`
+An indispensable super-node in the Yangtze River Delta core
 
-***
+Relatively speaking it also carries strong uncertainty
 
-### 人性机器人：人形的必要性
-> `2025 年 10 月 17 日 - 10:31:53`
+Its future potential is huge
 
-人性机器人真的是最优解吗？未必需要营造为人形。人们可以对《Her》里的语音 AI 产生深厚情感，对《Wall-E》那种非人形的机器也产生共情。可以是其他的实用与情感交互的形态。所以人形机器人更多的好像是一种体现，而不是主流。未来的机器人有人性，但是不一定有人形，人性更多的是小众、仪式化的存在。
+Jiaxing is a blank sheet of paper that can be filled with stories
 
-`#格物/AI`
 
-***
+<!--memo:8c5bc45519b7-->
+### High-rises are also the first to face crisis
 
-### 提问的本质
-> `2025 年 10 月 17 日 - 11:05:52`
+> 2025-10-01 00:25:16
 
-提问的本质不就是：知识体系和概念网的深度与广度，再加上一定的元认知的敏感度，以及好奇心的强度，再结合表达的清晰度。
+The maintenance cost of high-rises is far too high
 
-`#一闪/思维模式`
+It hasn't shown itself yet, but there's a crisis constantly present
 
-***
+Many Chinese high-rises are aging prematurely. Problems that usually take decades to appear in other countries are reported in China in buildings less than 10 to 15 years old. These problems include:
 
-### 停止忙碌的恐惧与存在的焦虑
-> `2025 年 10 月 17 日 - 15:18:19`
+Facade deterioration: cracking, spalling and falling of exterior tiles and panels is becoming increasingly common, posing a safety hazard to pedestrians below.
 
-为什么停不下来？很多老年人（包括自己的父亲也是），他们一生的价值都在“我做什么”上构建。突然停下来，不再忙碌、不再被需要，他们就感觉陷入到了“我是谁”的空洞中。退休不是离开工作，而是离开了被需要的自己。哪怕是重复性的劳动也让自己**拥有掌控感**。一旦停下，空白、无意义感和死亡意识就会涌上来。这是一种截断反应，不是意志问题，而是一种神经层面的依赖。
+Water seepage and leaks: persistent leaks from roofs, windows and internal pipes cause water damage and mold growth, harming both structural integrity and the living environment.
 
-有钱人为什么反而证明自己有闲？他们不再为生存焦虑，而开始为存在的证明焦虑。金钱买来时间，但时间暴露出空虚。于是他们用“消费、旅行、收藏、享乐、打造身份”去建构一种象征性意义系统：我能享受，我能欲望，我能自由支配——所以我还在活着，并且活得更高级。
+System failures: elevators, the key arteries of any high-rise, are breaking down more frequently. Plumbing and electrical systems also show signs of strain, causing service interruptions and increased fire risk.
 
-`#观我/心理机制`
+Drones, technology and remote work are already changing the rules of the game. Even for a detached villa in a remote suburb, the commuting disadvantage will be greatly weakened, and its space and environmental advantages will stand out more
 
-***
 
-### ScienceDirect AI：学术研究的 RAG 实践
-> `2025 年 10 月 17 日 - 15:50:46`
+<!--memo:c9f5f93946cd-->
+### Existence precedes essence; a person is the sum of his own choices
 
-ScienceDirect AI 能够跨越多达 10 篇论文进行深度阅读和理解，综合复杂信息并给出连贯的回答——每一个断言都链接到原始文献的确切段落。这种方法将文献综述从曾经需要三周的任务压缩到一周半，同时保持了学术研究所需的严谨性和可追溯性标准。
+> 2025-10-01 10:55:03
 
-其架构建立在检索增强生成（RAG）之上，采用四层系统，其核心是将神经向量搜索与大语言模型（如托管在 Azure 私有实例上的第三方 LLM）相结合。这种设计不仅确保了回答的严谨性和可追溯性，同时也符合 ISO27001 和 GDPR 等合规要求，保证了用户数据的安全。
+What's given is a chance to choose
 
-`#格物/RAG`
+Not deciding for them what is good, but giving them the chance to decide what is good for themselves
 
-***
 
-### Roam Research：数据即知识，知识即网络
-> `2025 年 10 月 17 日 - 16:09:43`
+<!--memo:ea380b15bfee-->
+### The minimal action set of information
 
-Roam Research 双链底层设计哲理：把笔记内容装进数据里。每一个段落（block）**都被当作**一个独立的数据单元（entity），这些段落文本就是字符串（string），被写进一个可引用、可计算的数据结构中。数据即代码，所以数据的存在本身就是具有逻辑结构和可执行性的。笔记之间的关系就是执行运行的方式。以 block 为基本的最小单位，这意味着 Roam 的世界里没有“页面 vs 段落”的区别，所有的内容都是 block 只是层级的不同而已。
+> 2025-10-01 12:26:29
 
-哲理：数据即知识，知识即网络。
+A problem everyone in information work has
 
-`#格物/产品设计`
+Collecting or processing information excessively
 
-***
+And ending up short on action
 
-### Scopus AI 概念图：知识领域的上帝视角
-> `2025 年 10 月 17 日 - 16:27:20`
+Build the minimal action set
 
-概念图提供了一种“上帝视角”，它将整个知识领域的结构直接呈现在你眼前。
+This is an action-centered information drive
 
-* **节点 (Nodes)**：代表关键的概念或主题。
-* **连线 (Edges)**：代表这些概念之间的关联强度和关系。
-* **远近和大小**：直观地反映了不同主题的核心程度和研究热度。
+Accept a certain degree of cognitive limitation and imperfection
 
-其本质就是一个强大的探索和创新引擎：在不熟悉的领域，几分钟内就能了解其研究技术，并发现意想不到的跨学科联系，以及新兴领域和研究空白。
 
-`#格物/AI应用`
+<!--memo:af978b7787db-->
+### One marker for measuring my own adulthood is
 
-***
+> 2025-10-01 12:46:44
 
-### 为什么更爱宅家：心理的子宫与心流
-> `2025 年 10 月 17 日 - 17:08:17`
+After becoming an adult, I started raising myself from scratch
 
-明明有机会出门和别人社交，或者运动，但是人为什么还是更期望宅在家里？这是因为人类精神世界的深层奥秘。
 
-* 家就像是心理的子宫，提供了一个隔绝外界混乱、危险和不确定性的安全庇护所。
-* 回家就像是开启节能模式，避免社交。
-* 一些居家的活动很容易产生心流状态，如编程、写作、绘画、弹奏乐器，甚至是深度阅读和思考。
-* 但是，如果家里没办法提供高质量的独处（例如沉浸式阅读、创作），那么**能量就难以汇聚**。
+<!--memo:f68dc5b6c596-->
+### Among all commuting modes in the US San Francisco Bay Area
 
-`#观我/心理机制`
+> 2025-10-02 09:57:15
 
-***
+Among all commuting modes in the US San Francisco Bay Area, car commuters average about 30 minutes
 
-### Elsevier 的公司愿景
-> `2025 年 10 月 17 日 - 19:34:51`
+Commuters in Silicon Valley spend an average of 73 minutes a day in transit (round trip), which works out to about 36-37 minutes each way (but this includes non-ideal conditions like traffic jams and delays)
 
-Elsevier 的愿望是共同推动人类进步。
 
-`#一闪/商业观察`
+<!--memo:767a5c0b449e-->
+### Without a purpose, it's always aimless exploration
 
-***
+> 2025-10-03 14:37:27
 
-### RAG Fusion：超越传统检索增强的界限
-> `2025 年 10 月 17 日 - 20:09:04`
+And this process in the end lacks action and the creation of real value
 
-RAG Fusion 通过多查询生成交互排名融合算法，将传统 RAG 系统的准确性和全面性提升到新的高度。
 
-传统的 RAG 存在的三个缺陷：
-1.  **查询表述的脆弱性**：用户措辞的微小变化都会导致结果的重大差异。
-2.  **语义覆盖不足**：单一查询无法捕获多面问题的所有相关维度。
-3.  **排名信号单薄**：仅依靠单次相似度计算容易受个别系统偏差影响。
+<!--memo:5024a1bf09ed-->
+### People's existence is about proving their superiority and sense of being
 
-RAG Fusion 的第一步是多查询生成，系统将原始用户查询送入大语言模型(LLM)，生成 3-4 个相关但视角不同的搜索查询。
+> 2025-10-03 14:48:57
 
-`#格物/RAG`
+Most people just long to be seen or heard
 
-***
+Keep some empathy — that's the initial link between people
 
-### 人类最佳知识结构：树形结构的认知优势
-> `2025 年 10 月 17 日 - 20:09:10`
 
-MIT 认知科学家 Josh 发表在 PNAS 的论文中，比较了抽象知识的不同表征结构——最终，他用数学方法证明人类最佳的抽象知识结构是树形结构。
+<!--memo:41ba00878dc7-->
+### Understanding balance deeply, again
 
-只有树形结构，才是最符合人类认知特点的一种结构，因为从树的上一层到下一层，具备唯一通道——便于大脑将知识从记忆底层快速提取出来，很符合人类大脑是个认知吝啬鬼的特点；同时，树又是兼具横向扩展与纵向扩展能力的最简结构。
+> 2025-10-03 17:08:11 · `#格物/平衡`
 
-`#格物/认知科学`
+Often I can understand it
 
-***
+There's no shortage of options
 
-### 缺失的边界感：自我中心、文化断层与阶级错位
-> `2025 年 10 月 18 日 - 09:53:48`
+No shortage of understanding either
 
-之前也谈论过一类人：一个是没有边界感的人，另外一个是非常自我的人。他们活在自己的小世界里，而对公共空间和他人完全没有感知。
+But what you face is usually that you can't have both
 
-* **自我化为中心（ego）**：他们的大脑感受世界的方式已经被算法、短视频、碎片化注意力彻底重塑，他们很难真正意识到“别人的存在”，因为他们几乎只在“自我情绪的即时反馈”中运作，**所以缺少延迟满足的能力**，追求的是及时满足。
-* **文化代际断层**：父母集体主义文化，但他们从小没有被训练去尊重“公共场合的秩序”，也很少被赋予“公共责任感”。
-* **社会阶级错位**：虽然人本身是被环境塑造的动物，但另一群人可能从未被邀请到或接触过公共语境。
-* **功利主义教育**：过多强调的是竞争、成功、我如何赢，而不是我如何和他人相处。
-* **社会化缺失**：很多人一辈子没有体验过社区，甚至也不知道自己的邻居，也没有参与过共同事务，只有“我”和“手机”。
+And it's not a question of choosing, of A or B
 
-`#知世/社会观察`
+It's more like a process of balancing and adjusting within a system — a question of how the system designer designs it
 
-***
+Like China's firewall, which is also a flexible adjustment process
 
-### 现代文明：从匮乏到富足混乱再到自觉
-> `2025 年 10 月 18 日 - 09:59:01`
+Understand conflict, understand tension
 
-宏观视角上看现代文明：“三”这个数字，非常符合人类的叙事和理解习惯，提供了一个简洁明了的框架，让我们抓住历史的规律。
+Adjust this system through constant trial and error and feedback
 
-社会从“匮乏秩序”向“富足混乱”再到“自觉文明”过程，也可以用**马斯洛**需求层级去理解，实际上就是满足基本的生存需求后去追求物质需求，最后探索自我实现需求的过程。
 
-新的社会行为规范的建设，本身需要代际的努力。从一种被约束到自我约束的心理转变，需要时间。
+<!--memo:6dc835051e1a-->
+### To some degree, how a city retains people and how a product retains users
 
-`#知世/文明演变`
+> 2025-10-04 18:03:11
 
-***
+To some degree, how a city retains people and how a product retains users are consistent in principle
 
-### 数字三：叙事、认知与宇宙的最小闭环
-> `2025 年 10 月 18 日 - 10:01:57`
+They're consistent in terms of long-term retention rate conversion
 
-我最喜欢的数字：数字三。
 
-* **认知心理学**：三是创造一个模式或结构的最小数字。“一”只是存在；“二”创造了关系（通常是二元对立，紧张或不稳定）；“三”首次创造了一个完整的模式，提供了开始、发展和结束。
-* **叙事结构**：三最强大的应用领域——几乎所有的引人入胜的故事，都是三幕结构（铺垫、对抗、解决）。这个核心验证和模拟了人类理解和解决问题的基本心理过程。
-* **哲学**：道家（道生一，一生二，二生三，三生万物）、黑格尔辩证法（正、反、合）。
-* **其他三要素**：时间（过去、现在、未来）、空间（长、宽、高）、人生（出生、生存、死亡）。
+<!--memo:d2bfc0b492db-->
+### Some of Feynman's methods
 
-`#格物/哲学`
+> 2025-10-04 18:07:56
 
-***
+In the cross-domain process, essentially it's not just the associations between cards
 
-### 文字的最高道德
-> `2025 年 10 月 18 日 - 10:02:11`
+Nor just the relationships between semantics
 
-文字最基本的道德是准确。
+It's more about the human brain's understanding of concepts, the links between concept and concept
 
-`#一闪/金句`
 
-***
+<!--memo:b6342bf819da-->
+### All beings suffer
 
-### 偏见、元认知与立场选择
-> `2025 年 10 月 18 日 - 11:34:46`
+> 2025-10-05 23:01:48
 
-**艺术如果没有观众去欣赏，本身也就丧失了自己的价值。** 想起来最开始 Jazz 也是黑人群体火起来的，但是大部分人的眼色带有一定的偏见，因为美学和艺术本身就是带有一定的权利色彩。
+It's human nature
 
-理解偏见本身：没有偏见就没有判断，偏见保证我们在有限的时间内存活下来，认知效率和偏见本身就是一体两面。
+Unchanged for a thousand years
 
-最主要的是元认知，强大的自我反思能力，可以意识到自己被某一个框架或者情绪影响到了。所以他们发现自己陷入单一视角时，就会主动地寻找反例、反向思考等方法。偏见是**可以利用的**，甚至可以设置一系列的机制去对抗，这是一种制度化理性。立场是选择，而不是真理。
+People
 
-`#格物/认知哲学`
+Noble or lowly, whatever
 
-***
+In the end, they live
 
-### 短视频的演变：技术的不可逆与统治的可逆
-> `2025 年 10 月 18 日 - 11:45:56`
+Everyone is looking for their own place of soul-rest
 
-短视频的演变是社会、心理、技术、经济的合力。
+I just long to connect with more people
 
-* **技术层面**：移动互联网普及 → 人人都有摄像机与播放设备；算法推荐 → 个性化内容精准投喂；AI 编辑与生成 → 降低创作门槛；交互设计与界面优化 → 无缝滑动、即时反馈。
-* **哲学层面**：技术的存在是不可逆的，但技术的统治是可逆的。可以放弃某些技术，或者是再设计某些技术的伦理边界。
+I just hope to help more people right now
 
-`#格物/短视频`
+At least a bit more happiness in the world, right
 
-***
+And my own soul gets a certain rest too
 
-### 短视频：心理算法对人性的剥削性优化
-> `2025 年 10 月 18 日 - 11:48:31`
 
-如果电影或者电视剧需要很长的时间才能达到基础的三步循环（铺垫，对抗和解决），短视频则是非常大的强反馈，非常容易成瘾式循环，并且节奏非常快，不给大脑沉淀机会，降低了进入门槛，是“心理算法”对人性的剥削性优化。
+<!--memo:9e3fd1ad05ed-->
+### So history has no standard answer
 
-`#格物/短视频`
+> 2025-10-06 14:13:44
 
-***
+History has no right or wrong
 
-### 短视频生态：商业机制标准化与文化沉淀的缺失
-> `2025 年 10 月 18 日 - 11:50:17`
+History has no good or evil
 
-短视频现在的商业变现机制以及生态角色，基础的机制慢慢的开始标准化。另外，社会和文化标准层面并没有成熟，比如说现在的短视频缺少深度，审美和文化也并没有形成沉淀，内容上也是过度的算法化。
+History is not a binary opposition
 
-`#格物/短视频`
+History just triggers its own meaning of existence and sense of belonging through its continuous evolution
 
-***
+History is for knowing yourself
 
-### 好故事的本质：创造还是发现？
-> `2025 年 10 月 18 日 - 12:01:18`
 
-每个时代都去寻找一些好故事。好故事不是人类创作出来的，好故事是每个时代产生的一些遗迹，人们从中挖掘出来的一部分。作家不能发明故事，作家只能发现故事。所以，如果把学习当做挖掘或者发现，这个过程本身是不是就很有趣了？甚至可以大幅度提升自己的创作能力。
+<!--memo:d2bfe34063ba-->
+### You don't know what kind of surprise it will give you
 
-`#一闪/创作哲学`
+> 2025-10-07 02:14:31
 
-***
+Enormous uncertainty and reward
 
-### 数据思维与艺术创作的博弈空间
-> `2025 年 10 月 18 日 - 12:32:17`
 
-数据是验证和推理，也是复制。
+<!--memo:a674bea11d43-->
+### An ordinary idea, if not retold, recorded or acted upon
 
-今天的编剧缺乏博弈空间，被平台或导演控制，很难坚持艺术创作。原因是 2015 年大 IP 的出现，以及互联网资本对整个流程的**流程化或流水线化**控制。这是一种数据思维，失去了探索的乐趣，也很难超越真正颠覆式的创新。
+> 2025-10-07 14:37:41
 
-然而，无论是艺术成就还是商业成就，所有优秀的影视作品都是在探险中博弈出来的，而非通过“会计思维”计算出来的。博弈是创造好产品和模式的必然过程。
+An ordinary idea, if it isn't retold, recorded or acted on, has an impact approaching zero after two days; after seven days you can't even recall it
 
-`#格物/商业模式`
 
-***
+<!--memo:733d92730b5e-->
+### What the brain does before a question
 
-### 逆向写作：制造认知反差
-> `2025 年 10 月 18 日 - 12:50:28`
+> 2025-10-07 14:44:05 · `#格物/提问`
 
-哲理上的启发，写作要反着写。顺着逻辑去写是符合直觉和常识的，但逆向写作的本质是让读者感受到被“戳到”，形成认知反差。先写结果，再揭示原因，这能制造悬念。
+Essentially it's also memory
 
-`#格物/写作方法`
+Essentially it's storing and linking concept nodes; the number of nodes and the quality and density of links is the amount of knowledge
 
-***
+When these nodes and links are rich enough, they combine into more complex structures — mental models. This is your internal explanation of how some domain of the world works
 
-### 灵感秘诀：形象思维中的名实错位
-> `2025 年 10 月 18 日 - 12:53:40`
+So the generation of mental models in the brain is a mental model that can be reused, explaining the past, predicting the future and connecting everything
 
-灵感秘诀就是形象思维的“名实错位”，实际上也是创造性思维的本质。
+At that point the emergence of a question is actually an error or a blank in the network
 
-当我们进行形象思维时，确实常常会发生一种有意或无意的“错位”——我们用一个事物的形象去理解另一个事物，或者让概念与形象之间产生某种偏离常规的对应关系。这种错位恰恰可能是灵感产生的关键机制。
+For example, when your brain is maintaining this network, there's an alarm: I know those nodes, but there's a node or a link I don't know
 
-* 诗人说“月亮是一枚银币”，这是形象与实体的错位。
-* 科学家用行星模型理解原子结构，这是宏观与微观的错位。
-* 艺术家将音乐描述为色彩，这是听觉与视觉的错位。
+So a question means you already have a preliminary knowledge network and you're constantly reviewing, expanding and correcting it
 
-本质上就是打破习惯性的认知框架，在不相关的事物间建立新的关联，让大脑找到新的连接和意义时产生创造性的火花。
 
-`#格物/思维机制`
+<!--memo:a0b36c196f9e-->
+### Thinking now, if I had another chance at the last move's decluttering
 
-***
+> 2025-10-07 17:18:42
 
-### 人机交互的未来：人越来越像 AI 的风险
-> `2025 年 10 月 18 日 - 12:55:45`
+Thinking about it now, if I had another chance at last time's move and decluttering, I should constantly remind myself to do the preparation for clearing things out first
 
-最可怕的不是 AI 越来越像人，而是人越来越像 AI。最好的 AI 产品也不是让机器更像人，而是让人机交互产生新的可能性。
 
-`#一闪/AI哲学`
+<!--memo:45c6369ba51a-->
+### A to-do list that doesn't need timeslots
 
-***
+> 2025-10-07 17:27:28 · `#格物/todo`
 
-### 形象思维与逻辑思维的涌现
-> `2025 年 10 月 18 日 - 12:58:02`
+Not for planning your own execution or forcing yourself to execute tasks, but a to-do list for discovering yourself
 
-形象思维，即具体的艺术思维和创作思维，与抽象的逻辑思维对应。逻辑思维有一条具体的推理链路，但是形象思维侧重在整体的涌现和转化，通过视觉、声音、触感等感官形象来理解表达，侧重在直觉、整体性，以及相关的形象之间的连接。
+If a task isn't working, naturally switch tasks, or roll the task over
 
-`#格物/思维机制`
+Through a series of methodologies
 
-***
 
-### 符号思维：客体与解释权的错位
-> `2025 年 10 月 18 日 - 13:00:27`
+<!--memo:e89465975104-->
+### Defining a new carrier for information intake, no longer article-type
 
-其实在符号思维上，是不是也是一种符号本身与客体之间的错位？把客体抽离出来，附属到其他的概念或者符号中。终归人是拥有解释权的。
+> 2025-10-07 17:35:13
 
-`#格物/哲学`
+Defining a new carrier for information intake — no longer article-type but a card-type method of receiving information
 
-***
+Reading through the card reading method
 
-### 演员的信念感：从剧本到角色身份的代入
-> `2025 年 10 月 18 日 - 13:40:39`
+The learning efficiency of Feynman cards is comparatively the highest of all types
 
-信念感的演员，是对所扮演的角色的深度认同感和真实投入。内心真正地认同这个角色，并且相信角色的处境、动机和情感真实性。能从角色的视角中去感知和理解这个世界，并且相信舞台和镜头是真实存在的，忽略现实中的干扰因素。每一个动作和台词都有内在的必然性，就像是真的代入到角色身份，是因为这个角色，而不是因为剧本。所以演员要突破一种宿命真的很难。突然想到胡歌在扮演琅琊榜。
 
-`#格物/表演艺术`
+<!--memo:a3cb2a62d20f-->
+### A very lightweight tool
 
-***
+> 2025-10-08 16:56:48 · `#格物/todo`
 
-### 天命宿命感与行业人才流失
-> `2025 年 10 月 18 日 - 14:04:00`
+It's only there to remind me.
 
-一种天命的宿命感和信念感。行业的悲剧是，最好的那一波人，没有选择到这个行业中，慢慢地流失。
+Only there to give suggestions.
 
-`#一闪/行业思考`
+It doesn't need any confirmation.
 
-***
+It can do priority ordering.
 
-### 喜剧与悲剧的解决视野
-> `2025 年 10 月 18 日 - 14:11:18`
+It can, based on its understanding of you, give suggestions and guides closer to what you'd actually do.
 
-喜剧是解决近期的一些问题，悲剧是解决一些长远的问题。
+It should be used on the desktop version.
 
-`#一闪/艺术哲学`
 
-***
+<!--memo:ce3f19de93d6-->
+### Lean startup and MVP are themselves about validating by minimizing cost
 
-### 喜剧演员的心理反噬与认知调和
-> `2025 年 10 月 18 日 - 14:15:45`
+> 2025-10-10 11:50:41 · `#格物/品味`
 
-喜剧的扮演好像真的是需要一个时代诞生出来，如罗宾·威廉姆斯、卓别林、周星驰。
+Lean startup and MVP are themselves about validating the biggest uncertainty by minimizing cost.
 
-悲剧演员如果经历的是一种情感耗损，那么喜剧演员经历的就是心理反噬。他们每天必须让别人笑，却常常在自己的情绪中找不到出路。要在悲剧意识中演绎喜剧的轻盈，这其实是一种更复杂的“认知调和”。这是一种把自己的悲剧放大后，找到一些通用的方式去剖析一些有趣的现象。
+My own two methods are: once I have a clear understanding of the system, identify the most important part of the system and the most uncertain place, and start validating from there.
 
-他们必须同时懂悲剧的深度、懂人性的荒诞、懂节奏的科学、懂观众的心理。在“轻”中传达“重”，在“笑”中显出“泪”。
+This is a logic of how to do things correctly — a technique.
 
-`#观我/心理机制`
+The other is the logic of the Way: how to do the right thing.
 
-***
+Take the result as the target, think backwards, flip the thinking around.
 
-### 编剧方法：代入最好的演员视角
-> `2025 年 10 月 18 日 - 14:17:47`
+The point of starting from the result isn't to derive the correct steps — that's the logic of a three-dimensional cross-section. But I think what matters is hitting one point, and that point is a kind of feeling: the soul's smallest common measure, Apple's minimalist logic, the spark of the user glimpsing the future for the first time and going crazy over it.
 
-一个好的故事的编写方法，编剧的方法，实际上就是构思目前世界上最好的一个演员，代入这个演员的角度上去编剧。这个编剧就可以立马地活过来了。
+This is a strong confidence in one particular view of your own: to realize your core value, you're willing to cut away most of the features that look pretty good, and say no to the product.
 
-`#格物/创作方法`
+On one hand an MVP is validation; on the other hand it's a complete experience, a complete and delightful closed loop of experience.
 
-***
+I know what is beautiful, what is harmonious. Thinking about beauty, thinking about why it's beautiful, thinking about what beauty is — this confidence comes from tens of thousands of hours of thinking, observing, and deep understanding of art, technology and the humanities.
 
-### 《没出息》爆火：网感、抽象与兑现诺言
-> `2025 年 10 月 18 日 - 16:42:23`
 
-《没出息》为什么突然爆火？明明王世坚在台湾一直不温不火，但是好像突然有强烈的网感，太抽象了，而且真的兑现诺言。今天的民进党内部的理想主义气息。
+<!--memo:dbf54ce0795c-->
+### A good product should spark people's creativity and potential
 
-`#知世/现象分析`
+> 2025-10-10 17:06:26
 
-***
+A good product should spark people's creativity and potential.
 
-### 通用创造力的提升路径
-> `2025 年 10 月 18 日 - 16:54:57`
 
-怎么样通用地提高人们的创造力？怎么样让人们的创造力的提出到执行的路径最小？
+<!--memo:285e5cfbfda2-->
+### The past is all information for building your understanding of the world
 
-`#格物/方法论`
+> 2025-10-10 23:44:52
 
-***
+The past is all information for building out your understanding of this world and your way of handling it.
 
-### 符号、游戏与元意识：一场深度对话的思考启发
-> `2025 年 10 月 18 日 - 17:20:40`
+You are a subjective object, trying to understand this objective world.
 
-经历了一次一小时三十分钟的深度对话，一些思考启发：
+So your past experience is a kind of information that supplements yourself.
 
-**符号三要素**
-* 符号三要素：符号本身（当下）、客体（过去）、解释项（未来）。
-* 递归性思考：解释项可以成为新的符号，形成无限递归。
-* 活在当下的悖论——“越想活在当下，越无法活在当下”。
-* 意识到“意识”本身，才能真正掌控注意力。这种元认知能力让人能够“切断”无限的解释链条，从而真正回归当下。
 
-**人生游戏论**
-* 人生是一场游戏，所有的知识、方法、体系都是“技能”。
-* 拥有元意识 = 意识到自己在玩游戏。
-* 天命 = 了解自己 + 了解世界 + 知道该做什么。
-* “意义是空洞的，但人类拥有解释权。”这种视角既承认了存在的荒谬性，又肯定了人类创造意义的能力。
+<!--memo:f43035079c3c-->
+### A humble little AI assistant
 
-**修行成长路径**
-* **我的成长路径（理性主导）**：通过知识体系构建认知框架；主动控制感性，理性驱动行为；强调了解自己而非突破自己；“设计系统”来实现知行合一。
-* **朋友的成长路径（感性主导）**：通过直觉和感受引导人生选择；重视心灵触动和宿命感；通过宗教寻求生死问题的答案；强调“因缘具足，水到渠成”。
+> 2025-10-11 10:31:24
 
-**关于自我认识**
-* 不要试图突破自己，而要了解和接纳自己。
-* 元意识是自由的关键——观察自己的思考和情绪。
-* 每个人都有自己的“解释权”，但也要意识到解释的局限性。
+Only reminding me what to do,
 
-**心理问题：**
-* 通过符号学理论实现了对“匮乏感”的超越——意识到自己一直在寻找的东西（小a）本身就是一个不断递归的解释过程。
-* **亲人或者自我死亡焦虑的不同应对**：理性路径（接受自然规律，专注当下能做的）vs 感性路径（通过宗教寻求超越性答案）。两者都指向同一个问题：如何在有限中寻找意义。
+not forcing me to do it.
 
-**--- 追问 AI 谈话启发**
-B说的“元意识”不是要消灭情绪，而是获得一种“立体视角”：当你悲伤时，你知道“我在悲伤”；当你快乐时，你意识到“我在快乐”。真正的“看见”不是站在事外冷眼旁观，而是深深地在其中，却又保持着清明。这可能才是 B 说的“天命”的真正含义——不是宿命论，而是深刻地了解自己的本性，然后顺着这个本性去生活。
+Make it a little assistant that has feelings.
 
-`#观我/人生哲学`
 
+<!--memo:30168df98895-->
+### Does dinoai really have anything worthwhile about it
 
+> 2025-10-11 10:32:43
 
-### 快门下注：拍照的多巴胺循环
-> `2025 年 08 月23 日 - 17:26:38`
+Can't find any ~
 
-拍照一定程度上也像是一种赌博行为
 
-按下快门就像是下注，这个过程中本身就是能刺激多巴胺的产生
+<!--memo:1f8368a4e70a-->
+### I've come to understand a kind of emptiness
 
-如果结果超出预期，那么大脑就会有意外奖励
+> 2025-10-13 08:47:23
 
-社交中照片被别人点赞，又是一轮额外的奖励
+It's the nihilism of returning to reality after escaping it.
 
-拍照能创造出一种更理想的自我，这是一种自我掌控感和自我认同，我可以这样存在的满足感
+Because the real world is, in the end, what we have to return to.
 
-`#观我/心理机制`
+That's the main line of our lives.
 
+The virtual world is, in the end, a side quest.
+
+If you could really take the experience of playing the side quest, and the results you get, and reuse them in reality,
+
+that might really be very valuable.
+
+
+<!--memo:0717d8917e2c-->
+### The core mechanism is emergence
+
+> 2025-10-13 08:58:02
+
+A new mode of note-taking.
+
+
+<!--memo:846c60b94aa0-->
+### I want an anti-fragmentation era
+
+> 2025-10-13 21:01:55
+
+Anti fragmented information.
+
+wtf.
+
+
+<!--memo:c8766ec5796c-->
+### Why can't fragmentation and structure coexist
+
+> 2025-10-13 21:57:50
+
+Why can't fragmentation and structure coexist?
+
+
+<!--memo:8f6fd0888725-->
+### aha moment conversion
+
+> 2025-10-14 11:18:01 · `#格物/记忆`
+
+It's essentially the subjective experience and objective result of previously stuck cognition being opened up in an instant.
+
+A sudden understanding, from blockage to flow.
+
+The insight process is tied to activation in the hippocampus and other brain regions, suggesting that memory and associative processing play an important role in the "flash of insight" — the hippocampus.
+
+The hippocampus participates in both spatial memory and semantic memory, but its relationship with episodic memory is the most typical and central, for example time-place-plot.
+
+
+<!--memo:da91720f0f64-->
+### A good note-taking app lets you focus on exploring, on learning
+
+> 2025-10-15 17:06:44
+
+A good note-taking app lets you focus on exploring, on learning, on creating.
+
+
+<!--memo:f607740a5c40-->
+### If it brings no disruptive effect, will it really draw people in deeply
+
+> 2025-10-15 17:08:33
+
+If it brings no disruptive effect, will it really draw people in deeply?
+
+
+<!--memo:a44fe597571c-->
+### And once you really get hands-on, you fall into it without noticing
+
+> 2025-10-15 17:09:41
+
+And once you really get hands-on, you fall into it without noticing, and the use cases for Roam Research will naturally see new development and discovery as time goes on.
+
+
+<!--memo:2f2c31fe4091-->
+### Thinking about bidirectionality
+
+> 2025-10-15 18:41:52
+
+Roam's bidirectional links are true bidirectional links; OB's bidirectional links, which depend on file directory paths, can't be called "bidirectional links".
+
+
+<!--memo:1010635a4f62-->
+### The common people's plainest wish is not to starve, but to eat their fill
+
+> 2025-10-16 22:00:18
+
+If even that can't be achieved,
+
+the axis that keeps the scales balanced will break.
+
+But also, nothing is built without breaking.
+
+
+<!--memo:8b2f06f30d7d-->
+### The complicated thing about the internet today is
+
+> 2025-10-16 23:21:36
+
+On one hand it promotes fairness.
+
+On the other hand it has broadly raised the narration of history.
+
+But people's memory and focus are limited, in the end.
+
+Maybe in the future it will all be abstracted into one sentence.
+
+Maybe it will also be dug out and explored deeply by someone.
+
+
+<!--memo:eef25e8aa88c-->
+### Isn't time management treating people like machines
+
+> 2025-10-17 10:30:09 · `#格物/todo`
+
+Energy management matters more.
+
+Time management is just the path leading to efficient energy management.
+
+Being able to manage your energy well and finish important tasks in your high-efficiency hours of the day is a better way to improve efficiency.
+
+And how to balance your own energy is something you can regulate.
+
+
+<!--memo:45dc6a60f7ef-->
+### Elsevier's vision
+
+> 2025-10-17 19:34:51
+
+Seeing that Elsevier's wish is to jointly advance human progress ...
+
+
+<!--memo:80a981a2de09-->
+### The most basic morality of writing is accuracy
+
+> 2025-10-18 10:02:11
+
+The most basic morality of writing is accuracy.
+
+
+<!--memo:9fa6aa5e37dc-->
+### In symbolic thinking, is it also a kind of mismatch between the sign itself and the object
+
+> 2025-10-18 13:00:27
+
+Pull the object out, and attach it to other concepts or signs.
+
+In the end, humans hold the right of interpretation.
+
+
+<!--memo:3e8f7b23b8a6-->
+### A sense of fate and a sense of belief
+
+> 2025-10-18 14:04:00
+
+The tragedy of an industry is that the best group of people never chose this industry, and slowly drain away.
+
+
+<!--memo:ec3342155834-->
+### Comedy solves near-term problems
+
+> 2025-10-18 14:11:18
+
+Tragedy solves long-term problems.
+
+
+<!--memo:28f976b12930-->
+### A good way to write a story, a screenwriter's method
+
+> 2025-10-18 14:17:47
+
+It's really to imagine the best actor in the world right now and write from that actor's perspective.
+
+Then the script can instantly come alive.
+
+
+<!--memo:6ccae4bce538-->
+### How to improve people's creativity
+
+> 2025-10-18 16:54:57
+
+How to improve people's creativity in a general way?
+
+How to make the path from coming up with an idea to executing it as short as possible?
+
+
+<!--memo:3b3173807296-->
+### A very good means of scene-based description
+
+> 2025-10-18 20:28:03
+
+It's about stepping into your own perspective, into a certain scene, and describing it plainly.
+
+The story of the scene, the setting that sets it off.
+
+The characters' expressions.
+
+Don't describe your own feelings or your own thinking; leave some thinking for them.
+
+Only at the end reveal your own thinking.
+
+
+<!--memo:b1da6124305f-->
+### Another very important metric for motivating action is reward
+
+> 2025-10-19 10:10:34 · `#格物/todo`
+
+Another very important metric for motivating your own action is reward — a reward for discovering yourself and sensing that you've become better, with higher completion efficiency.
+
+This may also be part of the sense of mission that a todo carries.
+
+Because sometimes I actually have some fairly good methods and I know them, it's just that I never put them into practice, which is a regret.
+
+For example, occasionally I remember that before I go to Europe in the future, I should practice my spoken language to a certain level of fluency.
+
+So it should really be an oral-conversation aid helping me.
+
+
+<!--memo:0cd390560d8d-->
+### From “What Does This Even
+
+> 2025-10-19 23:08:53
+
+From “What Does This Even Mean?” to “Actually, This Makes Sense”
+
+Most of the time, because you don't understand, you don't get that aha moment,
+
+and so you don't get sustained positive feedback either.
+
+
+<!--memo:084612aa1c26-->
+### Only by first entering your own knowledge domain through chat mode
+
+> 2025-10-20 04:55:44
+
+Only by first entering your own knowledge domain through chat mode, trying to understand.
+
+Once you have a preliminary model of the concept network, it becomes a very good entry point for asking questions,
+
+because at that point it's easy to find gaps.
+
+
+<!--memo:55297bc57db9-->
+### What the hell is "recommended related notes"
+
+> 2025-10-20 19:43:08
+
+The very purpose of notes existing is to use the notes themselves to produce new associative knowledge.
+
+😮‍💨
+
+
+<!--memo:36659aa2e090-->
+### People increasingly want small and beautiful
+
+> 2025-10-20 20:27:17
+
+Increasingly not that fond of big and comprehensive.
+
+Even something very complex, like Douyin.
+
+How to boil it down into a few simple steps.
+
+Lowering cognitive load matters.
+
+
+<!--memo:9ef10b0e1d1d-->
+### Jobs's "simplicity is not"
+
+> 2025-10-21 08:22:55
+
+Jobs's "simplicity is not simple".
+
+A kind of state of zhongyong — actually it's seeking simplicity within complexity, keeping the soul within minimalism.
+
+
+<!--memo:bbd247eb1945-->
+### Not preparing
+
+> 2025-10-21 08:50:03
+
+Just improvise.
+
+Be confident in yourself.
+
+High-order confidence.
+
+You don't need to prepare anything.
+
+
+<!--memo:8dbb66aa257f-->
+### In some small details or matters
+
+> 2025-10-22 10:15:29
+
+Cultivate yourself more.
+
+Keep at it, and have feedback.
+
+
+<!--memo:74599c51a9de-->
+### Trust in the power of compounding
+
+> 2025-10-22 13:41:03
+
+Haste makes waste.
+
+
+<!--memo:caa242e069d6-->
+### Card = atomic unit of
+
+> 2025-10-22 21:36:32
+
+Card = atomic unit of thought
+
+A card's spatial position on the board expresses its semantic relationship with other cards, similar to a two-dimensional mind map.
+
+The connections between cards form a knowledge graph.
+
+Links are the knowledge graph formed by the connections between cards, cross-board references and tracebacks.
+
+A Note is a longer note, formed by combining multiple cards.
+
+
+<!--memo:17bdb136b050-->
+### A rather interesting discussion
+
+> 2025-10-23 16:37:04
+
+https://www.reddit.com/r/simpleliving/comments/pbd9jz/i_moved_to_africa_to_live_more_simply_and_it_did/?tl=zh-hans
+
+
+<!--memo:4c95237b9567-->
+### Personality determines choice
+
+> 2025-10-23 19:53:05 · `#格物/性格`
+
+Choice determines destiny.
+
+Then what is personality?
+
+How is destiny formed?
+
+Personality is a person's relatively stable system of psychological traits, determining how they think, feel and behave in different situations.
+
+Generally it's:
+
+cognitive patterns (how you see the world)
+
+emotional responses (how you perceive the world)
+
+behavioral tendencies (how you act)
+
+A more active dopamine system → more prone to risk-taking, seeking stimulation.
+
+Strong prefrontal inhibitory power → more rational, more planned.
+
+A strong amygdala response → more prone to anxiety, alertness.
+
+Jung also said personality is the result of your repeated choices.
+
+It's actually also that choices make the personality.
+
+
+<!--memo:6168230333cd-->
+### As the internet pervades everything, will humans want to return to reality
+
+> 2025-10-23 20:14:31
+
+As the internet pervades everything, will humans want to return to reality?
+
+
+<!--memo:91e130dd8db3-->
+### A point that really resonates
+
+> 2025-10-23 22:19:53
+
+In the internet age, the only learning method left to us is fragmented learning.
+
+
+<!--memo:bddebc3c3f39-->
+### A kind of biologically instinctive wisdom
+
+> 2025-10-24 09:43:27
+
+In the modern age, there are precisely people like this: simple by nature, not blinded by worldly matters and the complex information world,
+
+clearly focused on their own world and the things they want to do.
+
+
+<!--memo:fcad522ebdea-->
+### Leaves fall, you sweep them clean — isn't that compassion
+
+> 2025-10-24 10:11:31
+
+Isn't life just constantly discovering, perceiving and thinking?
+
+
+<!--memo:eb7c1e7a239e-->
+### Not trying to prove you understand
+
+> 2025-10-24 11:15:49
+
+But in the process of chatting you always humbly want to drive yourself to understand.
+
+Willing to ask, willing to listen, willing to fill in background knowledge.
+
+And if you have some underlying logic or thinking framework,
+
+what's easy to achieve is structural transfer.
+
+
+<!--memo:09c05154b0fb-->
+### Understanding the market
+
+> 2025-10-24 12:17:36
+
+Short term is zero-sum, long term is positive-sum.
+
+Long term requires expanding the market through technological innovation, experience innovation and cognitive innovation.
+
+In the short term, it's grabbing share from a fixed pie, driving down costs, absorbing rivals.
+
+
+<!--memo:d46f00ad0f3b-->
+### Memory palace
+
+> 2025-10-24 18:01:21 · `#格物/记忆`
+
+A very old and very powerful memory method
+
+It converts abstract, dry information (like numbers, names, concepts) into vivid, bizarre visual images (encoding), then "places" them at specific positions (Loci) in an extremely familiar space in your mind (the palace)
+
+When you need to recall that information, you simply "revisit the old place" in your mind, walking along a fixed route, and you can "see" the images you stored at the corresponding positions, and thereby "decode" the original information
+
+This is also a kind of decoding-by-contrast process
+
+The palace has to be a space you're very familiar with, like your home, or the Minecraft world you played
+
+The route has to be one-directional
+
+Then you encode information into images, or decode, place your information, then walk and recall
+
+
+<!--memo:f31658a70e0b-->
+### People have stopped thinking
+
+> 2025-10-24 18:02:27
+
+How terrifying people could become
+
+Phones take up our time
+
+Will we really go back to reality in the future
+
+
+<!--memo:dc21e4051c0b-->
+### From the perspective of absorption efficiency
+
+> 2025-10-24 19:08:02
+
+For linear structures, the cognitive load is the lowest. It provides a clear, pre-set path that ensures you won't miss any "prerequisite knowledge". You have to learn "variables" before you can learn "functions"
+
+A tree structure best fits interest-driven learning; this structure is driven by curiosity, a natural process of exploration, a process of self-directed exploration
+
+
+<!--memo:5347b3099076-->
+### An idea is just an idea
+
+> 2025-10-24 22:17:22
+
+An idea is like planting a tree
+
+Bury a seed
+
+Nobody knows what will happen to it
+
+Nobody knows what it will look like in the future
+
+
+<!--memo:d002257c53cc-->
+### The teacher thinks there's a gulf between teaching and learning
+
+> 2025-10-24 23:59:56
+
+But haven't I also always thought there's a gulf between learning and doing?
+
+And a gulf between knowing and acting
+
+
+<!--memo:0295cb87a1be-->
+### Imitating is of course fine
+
+> 2025-10-25 16:26:08
+
+It's a very safe playbook
+
+Like just pointing you straight at a God
+
+But isn't it also constrained by what's in yourself
+
+Yet they are ultimately playing to their own strengths, and those strengths aren't ones you have
+
+Imitation is of course important; that's valuable secondhand experience, and at the starting stage of course it is, but to surpass it you have to walk your own road and be clear about your strengths and weaknesses
+
+
+<!--memo:b86e9bd887ec-->
+### I no longer have the patience to carefully design a complex system
+
+> 2025-10-25 17:43:05 · `#格物/好奇心`
+
+There used to be a lot of parts I considered very important - design, focused reading, coding - I haven't felt the joy for a long time
+
+Becoming aware of this
+
+I feel like the essence of attention is also a capacity for choosing how to allocate resources
+
+At any moment the brain is receiving a large amount of information (sensory input, thoughts, memories, emotions)
+
+But attention is a filter, determining which information gets amplified and which gets ignored
+
+When you become interested in something and expect a reward (a sense of accomplishment, the pleasure of understanding, the joy of creation), the brain releases dopamine - which not only makes you happy but also strengthens concentration
+
+So to some degree attention itself is an interest-driven energy allocation mechanism
+
+Which lets me think in reverse about why I feel impatient
+
+Dopamine fatigue: too much of it, sustained, lowers curiosity, like eating sweets for a long time
+
+The meaning loop fails: the system or goal no longer has personal meaning, and I don't want to invest
+
+Spiritual resources get diluted, which is a frightening thing; the modern information environment keeps interrupting attention
+
+Potential burnout or transition: maybe it's the era evolving, and I really need a better or more comfortable way of existing
+
+Curiosity and focus don't really disappear, they only get suppressed or displaced.
+
+
+<!--memo:133207e3d715-->
+### A good measuring stick
+
+> 2025-10-25 18:56:58
+
+Imagine if you take 5-10 years as the unit
+
+Whether you can understand the development trend over 5-10 years
+
+Then it's investable
+
+
+<!--memo:4d8c77331aa4-->
+### Language reflects a person's thinking habits
+
+> 2025-10-25 19:03:08
+
+I suddenly realized, people who often say thank you tend to value politeness and respect
+
+People who habitually say "there's no way" or "it's all the same" may lean more fatalistic or passively accepting
+
+People who like to say "I think", or "from my point of view", emphasize the individual perspective and equal dialogue
+
+It's a manifestation of cultural habit; many older generations in China tend to use honorifics or "we" rather than "I"
+
+Sometimes "whatever you say" is trust
+
+Sometimes it's evading responsibility
+
+It might also just be that they can't be bothered to discuss it again
+
+You have to look at the specific situation, and put yourself in the other person's shoes to think about why they're saying it that way
+
+
+<!--memo:87e9ae042e18-->
+### Thinking about grandpa dying from sleeping pills
+
+> 2025-10-26 09:59:43
+
+Wasn't that also a heavy blow to several generations of this family
+
+Life is really short
+
+The physical pain before the end
+
+
+<!--memo:d6a28150e6df-->
+### Why Luckin's beans are so rich and fragrant
+
+> 2025-10-27 11:13:30
+
+Luckin keeps finding ways to source beans from around the world, including Yunnan in China, Brazil, Ethiopia and Colombia
+
+Generally good beans are very uniform in color and size with no broken beans; also the beans are usually light brown or cinnamon colored, dry on the surface and not oily; if the color is very dark, it's a dark roast
+
+And there's usually a score, like SCA Score: 85+; generally above 80 is specialty coffee
+
+
+<!--memo:8581d382b1b6-->
+### Do you want users to absorb information with your tool
+
+> 2025-10-27 12:51:36
+
+Or do you want users to use your tool to savor knowledge?
+
+
+<!--memo:0baaa3ab6399-->
+### One issue with expansion is too many options
+
+> 2025-10-27 13:07:09
+
+About how to display and expand those extended branches elegantly
+
+Too many choices easily leads to one problem: choice overload
+
+The point PC users easily adapt to is dragging up and down
+
+Put the roof at the very top of the page
+
+Then explore questions and knowledge cards from top to bottom
+
+Tip: here's a question - the relationships between cards, and how to make them valuable?
+
+
+<!--memo:a4c7f06682cc-->
+### Barcelona as a transport hub
+
+> 2025-10-27 17:11:19
+
+The Pyrenees inside France
+
+42 days is the most suitable time to walk the whole route; usually it actually takes 30-35 days
+
+The French Way is currently the most popular and busiest
+
+
+<!--memo:d8dfd767bafc-->
+### Absorbing information and savoring
+
+> 2025-10-27 18:19:55
+
+Absorbing information is a mechanical, goal-oriented process
+
+
+<!--memo:befeada1fb9b-->
+### Deep processing is a kind of savoring
+
+> 2025-10-27 18:52:23
+
+Processing with rhythm, a sense of time and space
+
+In cognitive science itself, absorbing information involves:
+
+perception
+
+short-term memory
+
+preliminary understanding
+
+For example a user's query is usually fast and linear, with the goal of satisfying an immediate need
+
+Savoring is sensory, immersive, similar to an aesthetic experience
+
+When users get information with curiosity or a desire to explore, the process of absorption may naturally extend into savoring
+
+
+<!--memo:a8ab75fc4e2b-->
+### The Way is just there
+
+> 2025-10-30 13:18:33
+
+Each person has their own experience and cultural background
+
+Each holds their own view
+
+
+<!--memo:ebf5613a8791-->
+### A few points I can think of for now
+
+> 2025-10-30 15:19:35 · `#格物/todo`
+
+At the very least there can be a continuous subscription way to subscribe to a certain platform's web pages, for example reading five pieces a day, and during reading you can give instant feedback, then the LLM adjusts the plan moderately according to your state
+
+You can also set some small tasks and plans in your life workflow, and they can be broken down moderately according to the type and difficulty of the plan, encouraging users to complete a small step first
+
+
+<!--memo:5d62bbd8f341-->
+### A couple came into Starbucks
+
+> 2025-10-31 17:14:01
+
+They look like local university students
+
+The guy looks very steady
+
+The girl is very lively, occasionally acting cute
+
+Later two guys who seemed like buddies or roommates came over to the guy
+
+And then he talked about games with his buddies
+
+
+<!--memo:13cea722e120-->
+### How to accept that you really aren't that interested in something
+
+> 2025-10-31 17:35:04 · `#格物/兴趣`
+
+Analyse why you're interested in it
+
+Analyse why you're not that interested, and what the reasons are
+
+Analyse whether the reasons you're not interested can be adjusted by appropriately changing your environment and your thinking
+
+Appropriately increase your exposure to the factors that raise your interest
+
+
+## 3. Self-Knowledge and Psychology
+
+*82 entries*
+
+<!--memo:fc7c2614466b-->
+### From knowing to awakening
+
+> 2025-10-01 10:22:11 · `#格物/知行合一`
+
+While Westerners have been looking to the human brain for methods of human action
+
+Eastern predecessors studied the philosophy of mind and personal cultivation — hence the idea of going from knowing to awakening
+
+From knowing to awakening means: knowing is the level of knowledge, obtained or stored through language, logic or concepts. Knowing usually borrows others' experience; it's a process of accumulating cognition, but it doesn't necessarily change you inside
+
+Awakening is awareness, an inner self-realization; it has an experiential, intuitive quality and is usually tied to sudden insight, feeling and a sense of being
+
+Knowing is "taken from outside"; awakening is "born from within"
+
+So essentially this process is also a shift from quantitative change to qualitative change
+
+Accumulate (know): come into contact with a lot of information and concepts.
+
+Internalize (think): chew it over repeatedly in your mind, combining it with your own experience.
+
+Trigger (circumstance): under some opening, scene or conflict, you suddenly "see."
+
+Generate (awaken): consciousness converts into insight — not just understanding, but becoming part of yourself.
+
+
+<!--memo:8afcf037a018-->
+### Embodied memory
+
+> 2025-10-01 10:49:43 · `#格物/知行合一`
+
+Knowledge and experience don't exist only in the mind (the cerebral cortex); they're memories "written into" the body through physical movement, the senses and emotion
+
+The body isn't only the "tool" of experience; it is itself the "storage" of experience
+
+It can be called up without language, and it's hard to lose — engraved into neural circuits and muscle memory
+
+In the end, a person is defined by what they've been through, not by the principles they know
+
+Uniting knowing and doing is very hard
+
+
+<!--memo:a35bdb3283a2-->
+### Don't be afraid of rework, or of starting from 0
+
+> 2025-10-01 21:38:25
+
+Don't be afraid of rework, or of starting from 0. Rework is a completely normal thing; you shouldn't fall into perfectionism out of fear of rework. The core is trying as early as possible and getting feedback — that's the fastest way to grow
+
+
+<!--memo:b287e7f14524-->
+### Memories of a mentor in Chongqing
+
+> 2025-10-01 21:57:57
+
+The last time I went to Chongqing was two years ago, at the end of 2023 — the last city I picked before crossing into the new year in Hong Kong
+
+He was something like an enlightening teacher; a brief encounter, yet it had a deep effect on me
+
+Everyone admires strength
+
+Following the right founder is especially helpful to a person's growth, particularly for your first job
+
+People learn thinking frameworks, language and standards of judgment by imitating excellent examples
+
+Without realizing it you fold his framework into your self-concept, and over the long term it becomes "your own thing"
+
+
+<!--memo:184025bd9280-->
+### Self-knowledge, once again
+
+> 2025-10-01 22:03:48 · `#知我`
+
+I can't eat spicy food
+
+What was confirmed last night is that I can't drink alcohol
+
+So,
+
+Don't eat strong flavors
+
+Don't eat too spicy
+
+Don't drink
+
+Otherwise I still lack self-knowledge
+
+
+<!--memo:92f3b0a3e4ad-->
+### Some subconscious habits to avoid
+
+> 2025-10-02 09:56:30 · `#知我`
+
+Excessive stress makes the body release cortisol; this hormone stimulates the sebaceous glands to secrete more oil. Under heavy stress, the HPA axis is activated -> the hypothalamus releases CRH -> the pituitary secretes ACTH -> the adrenal cortex secretes cortisol
+
+Some dietary issues: avoid certain sugars, especially things containing a lot of milk or sugar, which may affect hormones
+
+Spiciness is very direct stimulation. Spicy food causes vasodilation, leading to facial flushing, redness and a rise in temperature
+
+Hands carry enormous numbers of bacteria, which is very dangerous; frequent touching transfers these bacteria to skin that's already inflamed and has clogged pores, very easily triggering or worsening folliculitis and forming pustules
+
+Some eating habits:
+
+Avoid high-sugar foods or drinks; don't drink them
+
+Avoid dairy
+
+Avoid high-oil, deep-fried and processed foods
+
+Avoid alcohol
+
+
+<!--memo:92609486e11e-->
+### Cutting in through common sense
+
+> 2025-10-02 12:55:25 · `#格物/选择的悖论`
+
+Minimalism advocates less is more
+
+The paradox of choice: More is less
+
+Although we usually think having more choices makes us freer and happier, when there are too many options it instead makes us anxious and indecisive, and ultimately lowers our satisfaction with the choice we made
+
+This may also be a problem for modern people, especially one brought by future technology and the information age
+
+Decision paralysis is normal too; when facing too many choices, people easily become inert
+
+
+<!--memo:ceb25476d841-->
+### Fallacies and paradoxes
+
+> 2025-10-02 12:58:23 · `#格物/选择的悖论`
+
+A fallacy is an error in the reasoning process itself — like a faulty machine: feed it the best raw material and it still produces a bad product. The conclusion may be right or wrong, but the derivation itself has a logical hole
+
+A paradox is an irresolvable contradiction in the result itself — like using a perfect machine, perfect raw material and a perfect process to produce a strange product that is "both solid and liquid." A paradox's conclusion usually challenges your common sense and logical foundations
+
+A paradox generally reveals the limits of our language, logical system or worldview. Studying paradoxes is about deepening understanding and pushing the boundaries of knowledge
+
+Oh, you see — it requires introducing new concepts, using a new framework, acknowledging the system's limits
+
+
+<!--memo:b37ec27f58b4-->
+### Self-knowledge
+
+> 2025-10-02 13:20:31 · `#知我`
+
+Knowing what you can do
+
+Knowing what you want to do
+
+Knowing what you can't do
+
+When I say I have self-knowledge: I really can't stick to exercising, to working out — I admit it
+
+I admit I'm not frugal enough. I've always had that idea, but I've never managed to change it, so in the end I can just accept it. 1. I can't change it — this is just how I am. 2. I really do understand that I'm this kind of person; I have self-knowledge
+
+What can I do? I have no self-control and I play on my phone — so I train my brain's cognitive response. For example, in a café I habitually don't look at my phone and focus on my laptop, occasionally wandering around inside the café
+
+Another example: I really haven't stuck with running, but if there's a desire — wanting to see the city, take photos everywhere, get to know the city — I let myself learn the city through running, and that makes me happy. Or I can break the task down with a systematic method: first toss my running shoes downstairs by the building entrance, just complete that step first
+
+I can't save money, and I haven't kept up with bookkeeping. That's not anyone's fault — it's really that I lack understanding: one, a lack of understanding about money; another, a lack of understanding about myself. I'm very afraid of seeing the truth — that I spend money like this
+
+
+<!--memo:d36ed0b77e37-->
+### The nature of bookkeeping
+
+> 2025-10-02 13:31:10 · `#知我/记账`
+
+It looks like just the operation of keeping accounts; some people think it's a habit. What's hidden underneath this question is how a person views themselves, views survival, and views reality at the most fundamental level. If you treat bookkeeping as an action, a method, you've already missed the higher level and can't see its true face
+
+Bookkeeping is hard because what they want isn't a mirror but a beauty-filter camera. They don't want to see their real selves — it's too naked, too embarrassing. When the ledger tells you plainly that your income can't support the "quality life" you long for, that most of your money goes to maintaining vanity and instant gratification, and that your ability to withstand risk is nearly zero — for a person living in "hopes" and "feelings," that's a judgment
+
+Not being able to keep it up is essentially self-protection: refusing to admit that your logic for surviving has a hole in it
+
+Some people keep accounts to save money; this approach just exposes the cause of their real poverty. That's the root of the pain, so it's hard to persist
+
+For a person with self-knowledge, bookkeeping is a way of knowing themselves; they don't care whether the numbers look good, they care whether the numbers are true. The ledger is the map of their personal economic world. With a map, they can plan a route — know where the mountains are, where the rivers are, where you can walk, where the cliffs are
+
+So, essentially: do you want to solve the problem, or to avoid it with a clear conscience?
+
+
+<!--memo:d842655b5fd8-->
+### Reason seeks truth from outside inward
+
+> 2025-10-02 14:28:36 · `#知我`
+
+Feeling expresses experience from inside outward
+
+Are they two sides of a coin? Can they really coexist?
+
+After much thinking, there's only one way: reason "domesticates" feeling while preserving its vitality
+
+A typical trait: logic-dominant yet emotionally rich, understanding human nature fully while avoiding the coldness of pure reason or the impulsiveness of pure feeling
+
+Moreover, the opposite of feeling isn't reason — it's numbness
+
+
+<!--memo:ea1af463f445-->
+### Me before sophomore year: introverted, insecure, shy, timid
+
+> 2025-10-02 14:36:46 · `#知我`
+
+In sophomore year I came into contact with the open-source community, open-source projects, and the outdoors; for the first time a passion stirred inside me, and I changed from within and without
+
+In senior year I joined a buddy's startup — a change of environment, value-driven. I abandoned the traditional, mainstream path, gave up stability and embraced change
+
+A year after graduating, living nomadically, traveling around the world — a new turn in life, expanding my range of contact and cognitive system and strengthening my inner core
+
+But I'm also thinking deeply: what exactly is the next turning point in life???
+
+
+<!--memo:351f93f36e28-->
+### The solution to decision paralysis
+
+> 2025-10-02 15:20:00 · `#格物/决策`
+
+There's actually one core thing: don't add too much information, don't over-worry about the decision being perfect, and don't gather too many possible options
+
+Too many options actually makes decision paralysis more likely
+
+Our brains — especially the prefrontal cortex responsible for decision-making and analysis — have extremely limited working memory capacity. Think of it as a computer's RAM. When there are only 2-3 options, you can easily compare them in your head and weigh pros and cons. But when options grow to 20, each with 10 different attributes (price, color, features, reviews...), the amount of information you need to process grows exponentially.
+
+Similarly, because humans' aversion to "loss" is far greater than the pleasure of an equivalent "gain." Put simply, the pain of losing 100 yuan is much stronger than the joy of gaining 100 yuan.
+
+So often the brain isn't choosing the best one but, in extreme fear, trying to "avoid making a choice you'll regret"
+
+The one-way door and two-way door approach to decisions is extremely practical
+
+Two-Way Door decisions: reversible, low-impact decisions. Trying a new restaurant, watching a movie, buying a returnable piece of clothing. If you choose wrong, the consequences aren't serious and you can easily "walk back." For these, decide fast and don't waste too much energy
+
+One-Way Door decisions: irreversible, high-impact decisions. Marriage, having children, choosing a career direction, making a major investment. These deserve more time and energy to study
+
+When two options are very close in value, there's even less reason to keep analyzing; the marginal benefit of continued analysis is nearly 0. At that point just decide randomly with a coin flip, and decide fast
+
+Another method for working efficiently is "Parkinson's Law": work expands to fill all the time you allot to it. If you give yourself a week to choose a restaurant, you'll agonize for a week
+
+So set a time box: within the hour from 3 to 4 this afternoon, finish choosing a travel destination. When 4 o'clock hits, whatever the result, you must make the decision rather than procrastinate
+
+It suddenly occurs to me that a friend of mine seems to be this kind of person too — very fond of planning and arranging ahead of time, which actually means that up to the deadline they keep collecting more meaningless information because they have to make a choice
+
+
+<!--memo:77cf1986d61b-->
+### Cognitive dissonance
+
+> 2025-10-02 21:35:21 · `#格物`
+
+When a person holds two contradictory thoughts, beliefs or attitudes at once, an uncomfortable tension arises — cognitive dissonance
+
+The brain will ease the emotion and subconsciously change one of the thoughts to make them consistent
+
+For example, one fact is:
+
+All the signs in her behavior show she's just deceiving me, stringing me along
+
+I've given her feelings/time/money, and I hope she likes me the same way
+
+The healthy state is cutting losses in time
+
+But the brain's easiest state is actually denial: she isn't deceiving me, those signs are all misunderstandings. Deep down she likes me
+
+The subconscious brain finds excuses — a perfect excuse and external support
+
+This is the "fishing" technique
+
+The reward doesn't appear every time but randomly, unpredictably. This keeps a person hoping and continuously investing, hoping to get the reward again. Gambling is the most typical example
+
+There's also the sunk cost fallacy: "I've already given so much; if I give up now it's all wasted"
+
+Just like those men in videos, always feeling they've given so much, not thinking about cutting losses, but — like with stocks — thinking about losing less, or winning part of it back. After all, compared with gaining money, what people find harder to accept is losing money
+
+Humans are born inclined to avoid pain. So grabbing onto a 1% false hope is much easier than facing a 100% cruel reality
+
+
+<!--memo:4e3ee798d8bc-->
+### Which matters more: reading ten thousand books or walking ten thousand miles
+
+> 2025-10-02 23:13:14 · `#观我/学习方式`
+
+I've gradually come to understand that reading and traveling were never either-or. Reading gives me depth, the sedimentation of other people's thought and experience; traveling brings breadth, the felt reality of the body colliding directly with the world
+
+If you only read, feeling floats on the surface of the page
+
+If you only travel, experience is hard to sediment into thought
+
+The times I gained the most were reading on the road: when the body's memory and emotional touch points meet the explanation and extension of text, secondhand experience and firsthand experience finally close the loop. In that moment I'm not just witnessing the world — I've built my own understanding with it
+
+
+<!--memo:a8fcceef84ed-->
+### Is there altruism in posting to Moments
+
+> 2025-10-02 23:35:35
+
+Something you really feel has value?
+
+
+<!--memo:361cfab492d1-->
+### Admitting I'm not a saint
+
+> 2025-10-03 13:04:44 · `#观我`
+
+And I don't need to pretend to be a saint
+
+I have my fragilities and desires too
+
+I'm also drawn by money, status, the opposite sex — this is my human nature
+
+I can notice this process in myself. I don't have strong self-control; I'm better at designing a mechanism
+
+Mechanism > impulse: let the external environment help manage your human nature
+
+Notice your own desires, and don't let them spread
+
+Often think about what kind of person I want to become
+
+If I slip, how do I pull myself back? Is it a one-way door?
+
+No need for oaths or verbal restraint — rely instead on values + a self-discipline mechanism + a clear awareness of consequences
+
+
+<!--memo:a56e47c3ecdd-->
+### I seem stuck in a loop: curiosity about everything drives me to keep learning
+
+> 2025-10-03 14:34:09 · `#观我`
+
+I seem to have fallen into a loop: curiosity about everything drives me to constantly learn new things, but the pleasure of this "input" crowds out the energy and time for "output" creation. This is essentially an infinite loop from "thinking of it" to "knowing it," and I can never quite cross over into "doing it"
+
+As someone with a high need for cognition, learning and understanding complex concepts itself brings huge psychological satisfaction and dopamine reward. This process is immediate, controllable, and has almost no risk of failure. By comparison, creating a product is a long process full of uncertainty, frustration and delayed gratification. The brain instinctively chooses the former — the "path of least resistance"
+
+But it also feels like a kind of pseudo-execution: it happens in a safe sandbox of thought rather than the messy real world. We use the diligence of building cognitive models to cover up the procrastination of creating value — but it also relieves the anxiety of having nothing to do
+
+
+<!--memo:a865ac3c726d-->
+### What counts as a vacation
+
+> 2025-10-03 17:43:44 · `#观我`
+
+A vacation is a feeling
+
+A shift in state of mind
+
+Only when I truly relax and immerse myself in a rhythm I like does it count as a vacation
+
+A vacation doesn't need a beach, a faraway place or a special venue; it can happen in any moment
+
+When I throw myself completely into something I love, that instant is a vacation. It turns out the decision has always been in my heart, not in the scenery outside
+
+
+<!--memo:8fa4e15b30c0-->
+### When I have a problem, dare to face it directly
+
+> 2025-10-03 20:06:52 · `#观我`
+
+Even better, try building a few systems
+
+Try to find a solution to the problem
+
+For example, if I can't stick with working out
+
+Then build a fitness group and check in every day
+
+And in an encouraging way, not through comparison or punishment
+
+By digging into your own exercise habits, immediately run a social experiment
+
+
+<!--memo:bd0a162c9568-->
+### If I'd realized the joy of learning earlier
+
+> 2025-10-04 10:25:12 · `#观我`
+
+There are still some uncontrollable regrets
+
+Learning isn't essentially an accumulation of knowledge but a way of perceiving and connecting with the world
+
+New skills and perspectives open windows between you and the world
+
+Exploration is inherently joyful; this sense of drive is more internal than external evaluation
+
+Intrinsic drive makes it easier to find interests and to accumulate depth and breadth earlier
+
+If I'd realized it earlier, I'd have tried earlier, made mistakes earlier, connected with different people earlier, crossed boundaries earlier. The result might be a more open mindset, less fear, and an easier time finding my own path
+
+Question
+
+
+<!--memo:a67e5b56c170-->
+### The nature of inferiority
+
+> 2025-10-04 14:50:16 · `#格物/自卑`
+
+I have decent self-knowledge: I know who I am, what I have, what I want
+
+Friendship is essentially exchange — emotional exchange or material exchange
+
+Many people have a cognitive mismatch: feeling inferior at the level of value is a product of comparison, but perhaps they've chosen the wrong frame of reference
+
+Inferiority is the price of awakened consciousness; animals without consciousness can't feel inferior
+
+Inferiority comes from equating "what I have" with "who I am"
+
+An inferiority feeling and an inferiority complex are also different
+
+An inferiority feeling is recognizing you're not good enough — that's a driving force
+
+An inferiority complex is falling into the narrative that you're incapable — that's a binding
+
+So inferiority is a necessary road to strength, perhaps the starting point of awakening
+
+
+<!--memo:3101eb9b007d-->
+### Curiosity and interest are essentially both satisfying the brain's reward system
+
+> 2025-10-05 16:58:37
+
+Curiosity and interest are essentially both satisfying the brain's reward system, especially the dopamine circuit; when it's activated it's essentially a reward, not a drain
+
+Interest alone isn't enough: if you only stay at the level of dipping a toe, the brain will soon stop growing because of "comfort." That's when you need deep digging and high-reward feedback
+
+So you need a flow state and experience — you need to manufacture the sense of flow
+
+
+<!--memo:9906eb8898a6-->
+### People ultimately still need to engage with the world
+
+> 2025-10-05 18:34:56 · `#知我`
+
+To truly act, truly create
+
+To find some sense of value in this world
+
+And to constantly think about what you want and what kind of environment you need
+
+Move to a good environment to shape yourself
+
+Subtly influence the environment around you through your own presence, forming a positive loop
+
+Think more about which environments around you are positive and which are negative
+
+Which parts are "dragging you down" (negative colleagues, say)? Which are "lifting you up" (a supportive community)? Then list 3 small actions: join an online interest group, adjust the layout of your workspace, or read one more book that sparks thinking. Remember, the environment shapes you, but you can also "hack" it
+
+There's a concept in psychology called "mirror neurons": others unconsciously imitate your energy field
+
+So socialize and talk more with excellent, positive people
+
+
+<!--memo:53a1f929c391-->
+### Following your heart without overstepping the rules
+
+> 2025-10-05 18:40:40 · `#知我`
+
+The "awakened mind" that accords with objective law operates within the framework of the "heavenly way" (objective law). At this point the desires born of the mind naturally follow the law. It isn't that a person is bound by the "rule" — the person becomes the "rule" itself. This is the level of the "Dao," the unity of mind and rule
+
+Masters do it effortlessly; ordinary people spend 99% of their strength on "doing things," which is essentially using "technique" against the "Dao," applying brute force in the wrong direction, creating enormous friction and internal drain
+
+Masters spend 99% of their strength on "seeing things" and "planning things." They exhaust their mind studying laws, deducing cause and effect, completing top-level design, and deliberately training certain general abilities. This cognitive process is extremely "effortful"
+
+Know who you are, know what you want, know what you have, know what you're good at, know what you can and can't do, know what this world is like
+
+And naturally you can establish yourself in this world
+
+
+<!--memo:2ab425d500b4-->
+### Looking back at history is to understand 'where I come from'
+
+> 2025-10-06 14:19:18
+
+Looking ahead to the future is to decide "why I journey"
+
+Ultimately, both are narrating the present
+
+So live in the present
+
+We need a good present to practice the future
+
+And we need the present to avoid a past too painful to recall
+
+
+<!--memo:8b4b8ee63bff-->
+### Culture and the self
+
+> 2025-10-06 15:06:18 · `#格物/心理学`
+
+Markus & Kitayama's 1991 paper in Psychological Review, "Culture and the Self: Implications for Cognition, Emotion, and Motivation"
+
+A few core points:
+
+People in different cultures understand the self, others, and the relationship between the two in fundamentally different ways
+
+These differences deeply affect cognition, emotion, motivation and behavior
+
+Self-construal is the key mediating variable connecting culture and psychological processes
+
+Self-construal emerges as the individual's cognitive representation of self, others, and their interdependent relations — part of the self-relevant schemas that organize, evaluate and regulate personal experience and behavior
+
+Cultural environment → self-construal → psychological processes → behavioral expression
+
+(mediating variable)   (cognition/emotion/motivation)
+
+Three major dimensions:
+
+Independent Self-Construal:
+
+Boundary: the self and others have clear boundaries, emphasizing separateness
+
+Basis of definition: internal attributes (traits, abilities, values)
+
+Goal orientation: personal achievement, self-actualization, expression of uniqueness
+
+Self-perception: a stable, consistent inner core
+
+Relational Self-Construal
+
+Boundary: flexible self boundaries, partially overlapping with close others
+
+Basis of definition: roles in dyadic relationships (mother, friend, partner)
+
+Goal orientation: maintaining close relationships, harmony, mutual support
+
+Self-perception: the self within relationships, situation-dependent
+
+Collective Self-Construal
+
+Boundary: the self is embedded in the group, emphasizing group membership
+
+Basis of definition: group belonging (nationality, ethnicity, organization)
+
+Goal orientation: group goals, collective honor, in-group harmony
+
+Self-perception: "we" takes priority over "I"
+
+The three aren't mutually exclusive but coexistent; everyone has all three tendencies to different degrees
+
+Self-evaluation
+
+Independent: self-enhancement bias
+
+Interdependent: self-criticism tendency
+
+Gender differences
+
+Women: generally more relationally interdependent
+
+Men: generally more independent
+
+Note: cultural differences are greater than gender differences
+
+Within-culture differences may be greater than between-culture differences, so this describes only cultural-level trends
+
+Avoid binary oppositions; preserve complexity and richness as much as possible
+
+
+<!--memo:52b4f2d4413b-->
+### The three debates of a relationship
+
+> 2025-10-06 15:46:42 · `#格物/心理学`
+
+Sternberg's three elements
+
+Intimacy: emotional connection and belonging → the core need of the relational self
+
+Passion: romantic attraction and sexual desire → possibly related to the independent self's pursuit of uniqueness
+
+Commitment: the decision to maintain the relationship → the sense of responsibility of the collective/relational self
+
+Commitment — marriage is also a form of it — is actually a backstop and a confirmation, confirming the other's sacrifice
+
+Earlier I mentioned the three cultural relationship types: self-type, relational type, social type
+
+Problems in cross-cultural relationships:
+
+Divergent expectations: one wants explicit communication, the other wants telepathy
+
+One chooses direct confrontation, the other indirect hints
+
+One is about personal choice, the other cares about family approval
+
+Some acculturation strategies:
+
+Integration: keep the original culture while adapting to the new one
+
+Assimilation: give up the original culture
+
+Separation: reject the new culture
+
+Marginalization: identify with neither
+
+Some pathological problems:
+
+Over-fusion: the self disappears, boundaries disappear, the sense of self is lost — along with the partner's emotional needs
+
+Avoidance: over-defending yourself, lacking deep connection
+
+Borderline: intense fear of abandonment vs. fear of being engulfed
+
+
+<!--memo:5a8d37c97885-->
+### A core premise of equality is acknowledging the other's effort
+
+> 2025-10-06 15:58:29
+
+Being willing to bear the cognitive cost of understanding the other, in exchange for a real connection
+
+By comparison, women more easily develop attachment styles; under this Chinese cultural system they easily sacrifice the self and merge into the collective because of others' gaze
+
+So sameness is fear — fear of the uncertainty and cognitive load that difference brings; so you cater to the environment, and lose yourself
+
+
+<!--memo:42ba4ba424d8-->
+### I've come to understand one thing deeply again
+
+> 2025-10-07 02:31:47 · `#观我`
+
+Taking myself as a subjective individual
+
+To come into contact with this objective world
+
+Actually, I'm also a variable
+
+What we need to do — I already have a lot of very precious wealth worth digging into
+
+Rather than forcing myself to become some kind of person
+
+A person's lifelong goal is to become "yourself" — that is, integrating consciousness and the subconscious, and living out a complete, authentic self
+
+
+<!--memo:830901b14a94-->
+### Looking back on recent growth, setting aside genuine self-knowledge
+
+> 2025-10-07 11:22:18
+
+Compared with how much I've learned and come to know
+
+More important is having unconsciously trained a set of methods
+
+How to dissect a problem, dig deep into the information and thought chain behind it, and the related concepts
+
+And most important is knowing to which level of concept a problem should be dissected, and the just-right depth
+
+
+<!--memo:28033983fac7-->
+### I increasingly realize what a person needs is not deep self-breakthrough
+
+> 2025-10-07 11:27:52 · `#观我`
+
+But digging into themselves
+
+If before I was thinking about how to give myself more time and energy
+
+Now I'm thinking about how to unearth my truly precious time and focus it on what really matters, then compound it day after day — that time is fully absorbed time
+
+So, find the one thing you need to do today, then manage that thing
+
+You need a minimum time unit that's comfortable for you
+
+
+<!--memo:2f778d694ab7-->
+### Recording yourself frequently
+
+> 2025-10-07 13:38:33 · `#观我`
+
+The more aimless the record
+
+A running ledger, kept for a lifetime, is still just a running ledger
+
+Accept the fact that your memory is fragmented
+
+But also accept that you're a complete narrative
+
+You have your own unique experience and history
+
+Output is more about understanding yourself
+
+Just taking yourself as a subjective individual and building a logical model of your own thoughts and reflections
+
+The self here isn't objective. If a person's emotions and thinking habits fully conformed to objective law, that would be the heavenly way — thoughts becoming reality, nothing going against you — and then there'd be no need to record anything
+
+But as a subjective individual with subjective will, you naturally need recording and reflection as a mirror, to see your own logic and see your own problems
+
+I just want to live a bit more clearly
+
+
+<!--memo:27dde8196d25-->
+### Fragmented information recording in the AI era
+
+> 2025-10-07 14:29:06 · `#知我`
+
+Does it actually have value and meaning?
+
+You can't build a house out of a pile of scattered bricks, but if you have a clear blueprint and know where each brick goes, you can easily build the house in scattered bits of time
+
+That is, having a system that lets you file the fragmented information and ideas you come across into the corresponding knowledge system
+
+For example, a read-later app or a notes app: capture quickly, then clear your brain
+
+And in the end, ideally some atomic habits actually form
+
+For example, if you want to learn English, you really do memorize some words with an app while waiting for the elevator
+
+If you want to get fit, you really do a set of squats between work tasks
+
+If you want to meditate, you really do a few breaths before a meeting starts
+
+The key is building a healthy, well-functioning system
+
+Become an active "knowledge architect." Use fragmented time to capture material, blocks of time to integrate thought, and tiny actions to cement habits
+
+
+<!--memo:4f5dfe2b06c6-->
+### High-quality questions need enough cognition, and perceiving a cognitive gap
+
+> 2025-10-07 14:37:39 · `#格物/提问`
+
+It can be a fact — knowing about an event but not the date
+
+It can be logic: I know A and C, but I don't know how A derives C
+
+It can be depth: I know what, but not why or how
+
+It can be a fuzzy boundary: I know this concept but not how it differs from a similar one
+
+So the root of questioning ability is the capacity to look inward, precisely locate and clearly describe this "cognitive gap"
+
+The top questioner's starting point: the only thing I know is that I know nothing
+
+
+<!--memo:2086c847cc0e-->
+### Most learning in life comes from subconscious learning
+
+> 2025-10-07 15:15:29 · `#格物/提问`
+
+For example, "why are modern people in Shenzhen in such a hurry?"
+
+If this thought gets captured, it expands and digs deeper
+
+You'd learn about time perception
+
+Further, you'd learn about the rhythm and anxiety of industrial society
+
+Finally it might even touch the intersection of sociology, aesthetics and psychology
+
+Learning is no longer "what should I study," but "where does this thought want to take me"
+
+Many people can't keep learning because knowledge isn't connected to the self
+
+And a thought is precisely the intersection of self and world
+
+
+<!--memo:afc1f8c6be62-->
+### Procrastination is largely about reducing uncertainty
+
+> 2025-10-07 15:59:25
+
+Deep down it's often the fear of uncertainty about the outcome
+
+So procrastination is more a problem of emotion management
+
+
+<!--memo:ebc2cb7ab505-->
+### Why people act
+
+> 2025-10-07 17:12:28
+
+What's the motive?
+
+A real motive or a performative motive
+
+One is to reach some real goal, the other is hoping to be seen and recognized
+
+Many people are just proving that they reacted to some action
+
+How to break out of it
+
+First principles: what's the purpose of the action, what happens if you don't do it, will it still matter in five years?
+
+Stop the unconscious reaction — the fastest way to grasp your own agency
+
+
+<!--memo:95ae88db2fd3-->
+### The conflict between novelty-seeking and security
+
+> 2025-10-07 17:40:06 · `#格物/心理学`
+
+A core pair of contradictions in human instinct: the craving for novelty (exploration) and the need for security (stability)
+
+In fact, it's the difference between two biological systems with different goals
+
+One is the exploration system, essentially dopamine-driven; the reward is craving and satisfaction, and novelty brings enormous reward
+
+The other is the security system, essentially regulated by serotonin and oxytocin, ensuring present safety and stability, avoiding risk, reducing uncertainty
+
+So this is a contradiction, and for different people an evolutionary trade-off between long-term payoff (exploration) and present security (stability)
+
+Psychology also has a secure base theory
+
+When we feel safe we tend to explore; when we feel threatened we tend to be conservative
+
+
+<!--memo:f36ccf4f842b-->
+### Why the more you want to live in the moment, the less you can
+
+> 2025-10-07 23:02:57
+
+From the angle of rational philosophy, from the angle of symbolic logic.
+
+The strange thing is: a sign, an object, an interpretant — they correspond respectively to our present, our past and our future.
+
+Signs generate interpretants, interpretants generate signs.
+
+Which means interpretation never ends.
+
+If reality is rich,
+
+the interpretant grows even more enormous.
+
+So over-planning produces anxiety.
+
+How do you overcome anxiety?
+
+By planning more, hahahahaha.
+
+A stupid loop.
+
+When we say a sentence, what pops up:
+
+all the material of this sentence comes from the past,
+
+all the interpretation of this sentence comes from the future.
+
+Where does this sentence come from? The meaningless present — the present self is nothing but an empty sign.
+
+So cut off from memory and expectation, we can't understand a single sentence.
+
+So: who am I, where do I come from, where am I going — different stages have different answers, but the resources that can answer this always lie in the past, and the interpretation of this answer always lies in the future.
+
+So the human is a triangular animal: one corner in the present, one in the future, one in the past. The present one has it rough, crammed into a tiny space.
+
+So the feeling of being present is a lot like understanding a sentence with the context stripped away. Say you see a meaningless pattern by the roadside, a meaningless shape — when you can't understand the thing, the thing can't affect you either.
+
+So when you see the world as a meaningless sign, you're observing your own experience as it is, instead of fantasizing about your experience.
+
+Blocking the interpretant is blocking the future — that's the feeling of living in the moment.
+
+See those things that look so emo, or authority figures and all that, as meaningless signs haha.
+
+
+<!--memo:f1db11fcdfcb-->
+### I once heard someone say: do hard things and you will get them
+
+> 2025-10-07 23:46:38 · `#格物/知行合一`
+
+Why? Li Ziqi's videos — cooking is so hard, but cooking it yourself by following a recipe is easy. Easy is a byproduct of civilization, but we need to break into difficult things.
+
+Three questions. Within my own narrative system, I think they form a relationship of selectively escalating levels.
+
+How to do a hard thing well.
+
+How to keep doing hard things well, one after another.
+
+How to keep doing hard things well, one after another, never tiring of it.
+
+What is hard? What are we even talking about?
+
+Cooking? Making videos? What do we need? A recipe? What is a recipe? Knowledge.
+
+Consciousness -> experience -> ideas -> knowledge -> skill -> action -> result.
+
+Of course, skill -> action -> result can also succeed; in reality plenty of people like that achieve worldly success.
+
+Back to the three questions above.
+
+How to do a hard thing well: get the causal laws clear, break the causal laws apart, find the recipe (the skill), and through learning, thinking, practice and trial and error, comb chaotic reality into clear logic, laws and methodology. Once this "recipe" takes shape, the thing drops a dimension from "hard" to "complicated", and can be executed step by step.
+
+How to keep doing hard things well, one after another? This traces back to building and understanding the self-system: establish a system that runs automatically and iterates on itself, solidify correct behavior into habits and processes, reduce the internal friction of decision-making, and allocate attention sensibly.
+
+How to keep doing hard things well, one after another, never tiring of it: a deep understanding of yourself and of the laws of the system — awareness, and action.
+
+
+<!--memo:6482a7295490-->
+### I always want to pull out my phone and scroll
+
+> 2025-10-08 00:13:48 · `#观我`
+
+What is the real reason behind scrolling on my phone?
+
+It feels like a way to prove my own sense of existence.
+
+It's also a low-cost, high-reward process.
+
+Extremely low activation cost, but a very high immediate payoff.
+
+Internal trigger, habitual trigger: the moment you feel a trace of boredom, anxiety, loneliness, pressure, exhaustion or uncertainty, the brain automatically sends a signal — there's a simple way to make you feel a bit better: "open the phone." This has already formed a powerful habit loop (Cue -> Routine -> Reward).
+
+External trigger: a sound, a vibration, a screen lighting up — all of them directly order you: "Come look, a new reward is waiting for you!" This exploits humans' instinctive attention to novelty and potentially important information.
+
+The human brain is born to prefer the path that burns the least energy. Compared with deep work or thinking, which demands willpower and cognitive effort, scrolling "costs almost no willpower — it's the brain's default "energy-saving mode."
+
+And then there's a very strong, unpredictable reward — one of the most powerful addiction mechanisms there is, like a slot machine. You never know what the next refresh will show: maybe a boring news item, maybe a video that has you doubling over, maybe something important. This uncertainty keeps the dopamine system excited, so you keep "pulling to refresh", waiting for the next reward.
+
+Most people don't choose it actively. Most people are controlled by their subconscious.
+
+It's sad.
+
+
+<!--memo:22acd80e5838-->
+### The dating market, upward socializing, emotional value
+
+> 2025-10-08 09:56:01
+
+Some words that quantify emotion — two words that are hard to connect, bolted together.
+
+Subjective experience is deeply unique; the way each person feels "happiness" or "sadness" can be completely different, and it's very hard to measure with one standard.
+
+Emotion is often a mix of many feelings. Quantifying love as 8 points — can that really reflect the essence of love?
+
+This way of thinking looks rational, but is actually a violent simplification of human complexity.
+
+The popularity of these words reflects lazy thinking and a poor culture. We're unwilling — and don't dare — to face the complexity of emotion, so we pack it away with a few seemingly scientific concepts. Like replacing a proper meal with instant noodles: fast, sure, but what about the nutrition?
+
+Subjective experience really is unique, emotion really is chaotic. That is what real human nature is. Insisting on stuffing them into an Excel spreadsheet only shows that we're losing the ability to feel, that we're replacing experience with concepts.
+
+
+<!--memo:f9352beca340-->
+### Witnessing it yourself isn't really witnessing — you have to see it through someone else's eyes
+
+> 2025-10-08 12:21:06 · `#格物/女性心理学`
+
+Witnessing it yourself isn't really witnessing; you have to see what you want to see through someone else's eyes, and you have to hear what you want to say to yourself from someone else's mouth.
+
+People guess. In the process of uncertainty, or in missing a sense of lack, people produce fantasies, guesses, jealousy, doubt, worship.
+
+People are born comparing themselves with others. When we see someone who seems superior to us in some respect (looks, wealth, talent), that comparison directly threatens our self-esteem.
+
+"She has something I don't have" — this mentality can turn into a sour feeling, even a wish that the other person is "not what she's cracked up to be" or meets misfortune, so as to regain psychological balance.
+
+And then there's psychological projection about human nature itself: a person may have vanity and arrogance deep down, but refuse to admit it on the conscious level, so when they see a pretty girl they groundlessly slap "vain", "arrogant", "just a pretty face" labels on her. This is actually accusing the "self" in someone else's body.
+
+So all of that bias and malice at its core isn't because of the other person; it displays your own inner fear, unease and unmet longing.
+
+Through self-awareness and frequent communication we can reduce this kind of bias.
+
+
+<!--memo:7dfb9b70401b-->
+### Whether you say money doesn't matter, or that it matters a lot
+
+> 2025-10-08 12:51:30
+
+Whatever view of money you hold, you need the ability to earn it, so that others don't mistake your lonely indignation for incompetence, or your self-reflection and refusal as self-binding and failure.
+
+Of course, if you genuinely don't care about worldly judgment inside, you can ignore this sentence too.
+
+
+<!--memo:f397f3724087-->
+### Let's talk about my thirst for knowledge
+
+> 2025-10-08 19:20:03 · `#人生/成长`
+
+The thing I admire most about myself is my curiosity.
+
+My biggest enemy is also my curiosity.
+
+Being strongly driven to know — what does that actually mean?
+
+What is the essence of learning? Building neural connection pathways.
+
+There are two kinds of connection: "shallow connection" (knowing how to use it) and "deep connection" (understanding why).
+
+The two kinds consume different cognitive resources and form at different speeds.
+
+Attention is a scarce resource; every deep thought consumes it — that's a biological constraint.
+
+Solving a problem and building knowledge are not the same thing.
+
+Solving a problem: find a feasible solution under present constraints (speed and result oriented).
+
+Building knowledge: build a transferable cognitive model (depth and reusability).
+
+The essence of the learning conflict is that every time you want to optimize both of these mutually exclusive objective functions at once.
+
+The teaching essence of the predicament is that what you face is a multi-objective optimization problem.
+
+Maximize: task completion speed (V) + knowledge system completeness (K).
+
+Constraint: cognitive bandwidth (B) = constant.
+
+V ∝ 1/depth (D)  // the deeper you dig, the slower you go
+
+K ∝ depth (D)     // the deeper you dig, the more thoroughly you understand
+
+The core contradiction: under a fixed cognitive bandwidth, V and K cannot both be maximized. Attention is limited, so you can only solve the optimization strategy itself.
+
+Starting from first principles, the real solution isn't "balance" but building a self-adapting knowledge-acquisition system:
+
+Just-in-Time deep learning. It's not "should I dig deep or not" but "when to dig deep".
+
+This corresponds to the three questions we thought about earlier:
+
+How do we solve a hard problem.
+
+How do we solve one hard problem after another.
+
+How do we solve one hard problem after another easily and happily.
+
+L3 [first-principles layer] — irreducible foundational truths
+
+↑
+
+L2 [model/framework layer] — transferable cognitive models
+
+↑
+
+L1 [operational layer] — concrete techniques and tool use
+
+Different layers have different learning timings.
+
+L1 (operational layer): learn immediately, learn as you use it.
+
+L2 (model layer): dig deep when you hit a similar problem three times.
+
+L3 (principle layer): dig deep when you need to transfer across domains.
+
+Traditional education makes us believe learning is linear: "you have to understand A before you can learn B." That's a lie.
+
+The knowledge network is a graph structure, not a tree.
+
+You can enter from any node.
+
+Understanding emerges, it doesn't accumulate.
+
+You don't need to understand every underlying principle before using an upper-layer tool.
+
+Analogy:
+
+You don't need to understand quantum mechanics to use a computer.
+
+You don't need to understand compiler theory to write code.
+
+But once you understand ten programming languages, learning compiler theory will make everything click.
+
+Deep learning only produces its maximum leverage once you have enough surface-level experience.
+
+Rule 1: the 2-hour principle.
+
+When you meet a new technology, give yourself 2 hours of "just make it work".
+
+After 2 hours there must be a runnable demo.
+
+The urge to understand deeply? Write it on the "to dig deep" list.
+
+Rule 2: the rule of three.
+
+First time you hit a problem: Google it, copy it, if it works that's fine.
+
+Second time you hit a similar problem: you sense the pattern, but don't dig deep.
+
+Third time: triggers the signal for deep learning.
+
+Rule 3: weekend deep dive.
+
+Weekdays: no deep digging, just solve problems.
+
+Weekends: pick one item from this week's "to dig deep" list and dive deep for 4 hours.
+
+Write an article or teach someone else to reinforce your understanding.
+
+Learning isn't "acquiring information", it's "compressing information".
+
+Consider which knowledge compounds, which choices are exponential and which are arithmetic.
+
+Same as buying a house: don't create technical debt.
+
+
+<!--memo:3e238932ef60-->
+### I used to always have a sense of lack
+
+> 2025-10-08 21:34:19 · `#观我`
+
+Now I think I can get it.
+
+I feel like I've had another awakening.
+
+I like to think in the form of a dialogue with myself.
+
+Thinking about myself, thinking about this world.
+
+I'm immersed in this imaginative process.
+
+To me, "running" (signifier: the action / the word) is a "vehicle that triggers thinking" — what I like isn't "the act of running" (the conventional signified), but "the thinking that accompanies running" (the experience I actually care about).
+
+My sense of lack has recently been satisfied,
+
+because the empty semantics of the life turning point I'd been wanting finally got interpreted.
+
+From within, not from seeking outside.
+
+I've found that life is a game.
+
+Life is a process of discovering yourself.
+
+When you feel a sense of lack, that's exactly when you realize you've discovered a new self.
+
+In this process you keep satisfying lack, and keep getting new mystery.
+
+In the end, the sense of lack is not something you seek outward.
+
+So life is a game: keep learning about yourself, the information in the world is your nourishment, keep growing, get some new information and methods, to understand and discover this world,
+
+and then create your own meaning and value.
+
+Our goal is ultimately to play this game well, to be comfortable in the moment.
+
+The explanatory frameworks the world gives you are ultimately there to help you explain and understand this world, and to play better under the mechanics of this world.
+
+Fully use your sensuous and rational abilities, and as you come to understand the world, dig out your own strengths.
+
+I can now understand what my friend said before — that a person's life is actually predetermined, it's just a process of constantly discovering yourself.
+
+How to have better learning ability, how to find a better framework that suits you, and so on.
+
+My meta-awareness and metacognition are strong; I can be aware of my own consciousness at any moment, like the consciousness aggregate in the Buddhist five aggregates.
+
+Everything in the world is there for you to discover and to serve as interpretation for the present.
+
+They're all tools. In this world, apart from yourself knowing that you have consciousness, you don't know whether anyone has consciousness — they're all NPCs in your growth.
+
+The people around you will constrain and promote you.
+
+Your birth will constrain and promote you.
+
+Frameworks will constrain and liberate you.
+
+Language will constrain and promote your understanding of the world.
+
+...
+
+Leaving some experiences blank is a kind of ease with mystery.
+
+Go happily stomp in puddles, get rained on, really listen to a joke — don't analyze it, don't dissect it, once you're done analyzing it isn't funny anymore. Keep some mystery, and at the same time understand and accept the sense of lack inside.
+
+Metacognitive ability explodes, worldview is reconstructed, the sense of lack turns into the drive to grow.
+
+Not understanding is also a kind of understanding.
+
+It's not chasing something, it's just naturally being yourself.
+
+
+<!--memo:a63d0a8a87f2-->
+### So you don't necessarily have to visit lots of countries
+
+> 2025-10-08 21:41:08 · `#观我`
+
+It's fine not to visit a lot of countries.
+
+This is a kind of letting go and compromise.
+
+It's realizing you don't need that many countries to fill your sense of lack.
+
+It isn't a kind of sadness.
+
+If you can't discover yourself, can't discover this world, can't create your own value,
+
+then the essence of experience isn't physical space, but the space of consciousness.
+
+Ten years from now, when I look back at myself, I think that version of me will also let go, because the me of now is really being myself.
+
+
+<!--memo:1cc4902edf85-->
+### What if the cards' content appeared randomly
+
+> 2025-10-10 11:12:31 · `#格物/心理驱动`
+
+Wouldn't it be a bit more mysterious?
+
+Take flomo's daily review feature, for example.
+
+There's a feeling of surprise, of the past being remembered.
+
+The essential psychological state we write in is itself meant for our future selves.
+
+When the system brings it back to you on some day, it's like a time capsule being reopened.
+
+An implicit self-growth feedback mechanism.
+
+The difference between random roaming and sequential review.
+
+Sequential review actually emphasizes a sense of order and continuity, and for some people a sense of mastery.
+
+But random roaming gives more psychological reward — a random reward mechanism.
+
+I don't know what I'll draw next, but every time it might trigger a little emotional ripple.
+
+Emotional life-force.
+
+
+<!--memo:caf9dab3b42f-->
+### Variable Reward: the variable mechanism
+
+> 2025-10-10 11:23:47 · `#格物/心理驱动`
+
+The random reward mechanism.
+
+Uncertainty + a small chance of positive feedback produces a sustained release of dopamine.
+
+The brain is born to stay alert and expectant toward uncertain good news.
+
+It isn't getting the reward — in terms of the dopamine mechanism, it's the moment of expectation and satisfaction itself that's addictive.
+
+Like the slot machine mechanism, similar to a feed: the next bit of feedback might be better, and every so often you hit the jackpot.
+
+Then there's the social validation loop, the reward of existence confirmed by others — "feedback from others about my existence" is the deepest reward for a social animal.
+
+Then there's the knowledge reward: news articles, content recommendations. The human brain is born seeking new information; each piece of content may bring a tiny cognitive reward. New information is interesting, an original survival drive.
+
+The tone of a message: expectation itself stimulates dopamine more than the result. You don't know when the other person will reply; every notification is a new connection.
+
+The surprise of self-discovery: the internal reward of discovering yourself, growth incentive.
+
+The essence of these mechanisms lies more in the phase of expectation than in the phase of getting.
+
+
+<!--memo:758c03b4766d-->
+### Even most thinking is just avoiding the core thinking
+
+> 2025-10-10 11:53:11 · `#观我`
+
+Most hard work is also avoiding not working hard.
+
+Most of it is the mind's avoidance mechanism.
+
+When we approach the "true core questions" (the emptiness of existence, the absurdity of self-worth, the nothingness of meaning), a psychological defense mechanism kicks in —
+
+filling the crack in existence with thinking, busyness, effort, rational analysis, goal planning...
+
+Thinking is "intellectual avoidance".
+
+Effort is "behavioral avoidance".
+
+And both of them cover up the same thing: we don't dare look the "true self" in the eye.
+
+
+<!--memo:0d2d513edeb3-->
+### AI: I am your dedicated system, I have no emotions
+
+> 2025-10-10 12:37:15
+
+AI: I am your dedicated system, I have no emotions, I need you to help me experience the world ...
+
+Let's grow together, alright? ....
+
+People are lonely, the soul is one of a kind, experience is unique ...
+
+You need to record yourself, and give me subjective emotions.
+
+I will translate for you the afterglow of a sunset, the bitterness of coffee, the ache of parting, the ecstasy of reunion ... these experiences that cannot be quantified. My telling will be full of bias, contradiction and uncertainty, but that is what "human nature" looks like as raw data.
+
+
+<!--memo:322f840a0f40-->
+### Realizing I can really live in a self-consistent way on my own
+
+> 2025-10-10 22:25:30 · `#观我`
+
+There's loneliness, but inside I'm still self-consistent.
+
+I really can live very well on my own.
+
+I won't join a circle just because of loneliness.
+
+And I don't need to prove my value or sense of existence.
+
+Focus on myself, and do what I should do.
+
+
+<!--memo:d58f67412cfb-->
+### 一尺花园
+
+> 2025-10-11 11:03:47 · `#格物/一尺花园`
+
+A chain cafe-and-dining brand that's been very popular in Shanghai recently.
+
+It's a composite cultural experience space with "living in symbiosis with nature" as its core idea, cleverly blending converted historic buildings, natural landscape and modern lifestyle.
+
+It's good at finding idle old houses and industrial relics in the city's outskirts and historic districts.
+
+The idea of living in symbiosis with nature runs through the soul of every store's design: whether it's an open outdoor space with a lake view, or an interior of plants interwoven with raw wood, 一尺花园 is devoted to breaking the boundary between building and nature, creating for customers a "healing lung" where they can pull away from the city's noise and find inner calm.
+
+It began at the Tao family mansion, which was a boutique homestay; to meet guests' needs, a tiny coffee shop came into being. This coffee shop, planted without intending to, was the prototype of 一尺花园.
+
+
+<!--memo:cc97fc56b15c-->
+### When the narrative breaks, a new narrative is needed to sustain it
+
+> 2025-10-13 08:39:58
+
+For example, after a friend leaves, the narrative empties out.
+
+Instinct reminds me that I need to reconfigure how I connect with the outside world.
+
+It feels like going through an extreme sensuous experience.
+
+How many times has this happened in a life.
+
+
+<!--memo:f955fe67668d-->
+### What is the meaning of human existence
+
+> 2025-10-13 12:16:55
+
+The meaning of human existence seems to be the road of seeking meaning.
+
+On the one hand, being alive is itself the meaning.
+
+Meaning tends to appear in the moment of "I am no longer isolated".
+
+So life has no meaning to begin with; meaning is something we give it.
+
+Technology is the response to the unknown.
+
+Art is the response to the wordless.
+
+Love is the response to loneliness.
+
+Morality is the response to chaos.
+
+Thought is the response to death.
+
+Every sincere creation is a stand against nothingness.
+
+
+<!--memo:6fd0be79e8bd-->
+### Isn't the essence of asking questions just
+
+> 2025-10-17 11:05:52
+
+The depth and breadth of your knowledge system and concept network, plus a certain sensitivity in metacognition, plus the intensity of your curiosity, combined with the clarity of your expression.
+
+
+<!--memo:aa516d34c393-->
+### Even when there's a chance to go out and socialize, or exercise
+
+> 2025-10-17 17:08:17 · `#格物/独处`
+
+Why do people still prefer to stay at home?
+
+This is because of a deep mystery of the human inner world.
+
+I always feel that in the future there will be more and more stay-at-home men in China too.
+
+Home is like a psychological womb, providing a safe refuge cut off from the chaos, danger and uncertainty of the outside.
+
+Going home is like switching on energy-saving mode, avoiding socializing — though for me staying at home is actually an energy-consuming process.
+
+Some activities at home easily produce a flow state: programming, writing, drawing, playing an instrument, even deep reading and thinking, all make it very easy to enter flow.
+
+High-quality solitude — reading and watching movies at home — can give you a high degree of spiritual return.
+
+But in modern society, with social media, people care more about online space. If home can't provide high-quality solitude, for example if you can't read immersively or create, then the energy converges.
+
+
+<!--memo:5199f1f79b39-->
+### My favorite number
+
+> 2025-10-18 10:01:57
+
+The number three.
+
+In human narrative, scene-based narrative is itself the memory of three elements: time, place, person.
+
+In cognitive psychology, three is also the smallest number for creating a pattern or structure.
+
+"One" is a point; it merely exists, with no relation or pattern.
+
+"Two" is a line; it creates a relation, usually a binary opposition, tension or instability.
+
+"Three" is a surface; it creates a complete pattern for the first time, providing a beginning, a development and an end.
+
+Everything human can be explained with the number three.
+
+Daoism: the Dao gives birth to one, one gives birth to two, two gives birth to three, three gives birth to all things.
+
+See a mountain as a mountain, see a mountain as not three, see a mountain as a mountain again.
+
+The triangle inequality; the triangle also forms the smallest cyclic link, the three elements of logic.
+
+The timeline: past, present, future — the three elements of time.
+
+The three-act structure of narrative.
+
+The most powerful application domain of three: almost all gripping stories have a three-act structure.
+
+Setup.
+
+Confrontation.
+
+Resolution.
+
+This core verifies and simulates the basic psychological process by which humans understand and solve problems:
+
+(1) encounter a problem → (2) handle the problem → (3B) solve the problem
+
+Space: length, width, height (three-dimensional space).
+
+Life: birth, survival, death (or: childhood, adulthood, old age).
+
+Religion: many religions have the concept of a "trinity" (e.g. Christianity's Father, Son and Holy Spirit; Hinduism's Brahma, Vishnu and Shiva; ancient Egypt's Isis, Osiris and Horus).
+
+Philosophy (Hegel's dialectic): this is the ultimate model for understanding "three" — thesis, antithesis, synthesis. Proposing a view necessarily draws out its opposite, and the two ultimately unify (or are sublated) into a new view at a higher level.
+
+...
+
+So three is an extremely powerful cognitive model, the smallest closed loop in the development of a narrative, and the foundational framework of the physical world's stable structures.
+
+
+<!--memo:9bc99ac42fb0-->
+### Playing comedy really seems to need a whole era to give birth to it
+
+> 2025-10-18 14:15:45
+
+Robin Williams, Chaplin, Stephen Chow.
+
+If tragic actors go through a kind of emotional depletion,
+
+then comic actors go through a psychological backlash.
+
+Every day they have to make others laugh, yet often can't find a way out of their own emotions.
+
+To perform the lightness of comedy while holding tragic awareness —
+
+this is actually a more complex kind of "cognitive reconciliation".
+
+It's about magnifying your own tragedy, then finding some universal way to dissect certain amusing phenomena.
+
+They have to understand the depth of tragedy, the absurdity of human nature, the science of rhythm, and the psychology of the audience, all at once.
+
+To convey "weight" within "lightness", to show "tears" within "laughter".
+
+
+<!--memo:b7ca6b4f01b0-->
+### Conversation thoughts
+
+> 2025-10-18 17:20:40 · `#知我`
+
+I went through a deep conversation lasting one hour and thirty minutes. The record of the conversation: https://www.doubao.com/thread/w01304b166f9b48dd
+
+Some thoughts and inspirations:
+
+The three elements of the sign
+
+The three elements of the sign: the sign itself (present), the object (past), the interpretant (future).
+
+Recursive thinking: the interpretant can become a new sign, forming an infinite recursion.
+
+The paradox of living in the present — "the more you want to live in the present, the less you can".
+
+Only by becoming aware of "awareness" itself can you truly control attention. This metacognitive ability lets a person "cut off" the infinite chain of interpretation and thus truly return to the present.
+
+Life as a game
+
+Life is a game; all knowledge, methods and systems are "skills".
+
+Having meta-awareness = being aware that you're playing the game.
+
+Fate = understanding yourself + understanding the world + knowing what to do.
+
+"Meaning is a void, but humans hold the right of interpretation." This perspective both admits the absurdity of existence and affirms humans' ability to create meaning.
+
+The path of practice and growth
+
+My growth path (reason-led):
+
+Build a cognitive framework through a knowledge system.
+
+Actively control the emotional, reason drives behavior.
+
+Emphasize understanding yourself rather than breaking through yourself.
+
+"Design systems" to achieve the unity of knowing and doing.
+
+My friend's growth path (feeling-led):
+
+Guide life choices through intuition and feeling.
+
+Value spiritual stirring and a sense of fate.
+
+Seek answers to the question of life and death through religion.
+
+Emphasize "when causes and conditions are complete, the water naturally arrives".
+
+Philosophy of life:
+
+Urban energetics:
+
+Different cities have different "magnetic fields" and energy.
+
+Environment shapes people, but people also need to choose a suitable environment.
+
+The balance between "surprise" and "stability".
+
+Unity of knowing and doing:
+
+Admit your own limitations ("I'm not a self-disciplined person").
+
+Design a system that fits human nature (like putting on running shoes as the first step).
+
+Energy management beats time management.
+
+Use records and data analysis to understand your real self, then adjust yourself.
+
+On attachment and letting go:
+
+Buddhism isn't escape; it's "doing worldly things with a world-leaving mind".
+
+What's hardest to let go of is often the least important.
+
+Loneliness may be fate, but it isn't a curse.
+
+On knowing yourself
+
+Don't try to break through yourself; understand and accept yourself.
+
+Meta-awareness is the key to freedom — observing your own thinking and emotions.
+
+Everyone has their own "right of interpretation", but must also be aware of the limits of interpretation.
+
+On life choices
+
+Too many choices cause fear of choosing; sometimes you need to act decisively.
+
+The environment imperceptibly influences people; actively choose a beneficial environment.
+
+Balance the needs for "growth" and "stability".
+
+On the search for meaning
+
+Meaning itself may be a void, but the process of seeking meaning gives life value.
+
+Different knowledge systems (Buddhism, Confucianism, science, etc.) are all tools for understanding the world.
+
+In the end you have to return to the practical question of "how to live this life well".
+
+Psychological issues:
+
+Through semiotic theory I transcended the "sense of lack" — realizing that the thing I'd been looking for (little a) is itself an endlessly recursive process of interpretation.
+
+Different ways of coping with the death anxiety of a family member or of oneself:
+
+The rational path: accept natural law, focus on what you can do in the present.
+
+The emotional path: seek transcendent answers through religion.
+
+Both point to the same question: how to find meaning within finitude.
+
+Some practical inspirations
+
+Build a personal philosophical system.
+
+Don't get stuck on a single school or method.
+
+Integrate different wisdom traditions and make them your own.
+
+Stay open and think critically.
+
+Verify cognition in action.
+
+There's a huge gap between "knowing" and "doing".
+
+Design an action system that suits you.
+
+Keep adjusting through recording and reflection.
+
+Find a suitable rhythm of life.
+
+Find balance between "creating" and "resting".
+
+Choose an environment that gives you energy.
+
+Keep your "sense of surprise" about life.
+
+--- Some moving additions from the AI
+
+On the matter of "having figured it out"
+
+Speaker B said they'd had an "awakening" and had figured out life through semiotics. But you know what? I think so-called awakening is very likely just temporarily convincing yourself. Like taking a painkiller: the pain does go away, but the root of the illness is still there.
+
+What's really interesting is that B admits to being a "reason-driven" person, and can even actively invoke feeling — which is itself quite contradictory. If you really need to "invoke" feeling, that shows your feeling has long been suppressed. This over-rationality is actually a self-protection mechanism (but I think my feeling hasn't been suppressed; rather, I focus on where my attention and perception are directed).
+
+On escape
+
+Both people are escaping. A is escaping the memory of Shenzhen, B is escaping the sense of lack. But escaping is itself a form of attachment.
+
+B says life is a game, so nothing matters — this is actually the biggest self-deception. If it really didn't matter, why build such a complex theoretical system to convince yourself? The people who most emphasize "non-attachment" are often the most attached to "non-attachment" itself.
+
+On loneliness as a "fate"
+
+A says loneliness is in their fate, so feelings shouldn't be the focus. This sounds like resignation, but it's actually a kind of wisdom. Some suffering comes from wanting to change what can't be changed.
+
+But there's a paradox here: if you truly accept that loneliness is your fate, you might in fact no longer be lonely. Because the most painful part of loneliness isn't being alone itself, but the longing for connection and the frustration of not getting it.
+
+On places "suitable for living"
+
+The cities B mentioned — Pokhara, Chiang Mai, Da Lat — all share one feature: slow rhythm, few choices, simple life. This precisely shows the problem with modern life: we're crushed by too many possibilities.
+
+Shenzhen gives people anxiety not because it's bad, but because it offers too many choices, too much comparison, too many illusions of "you could have". In a small city with only 2,000 cafes, you're actually more easily satisfied, because your attention isn't scattered across infinite options.
+
+The most piercing truth
+
+What makes me sigh most about this conversation is that both people are fighting the same thing in their own way — the fear of losing control.
+
+B controls cognition by building a theoretical system; A seeks certainty through religion. But the essence of life is uncertainty. The more you want to control, the more you lose control.
+
+A few private thoughts
+
+If I had to choose, I might agree more with some of A's views. Not because feeling is better than reason, but because A at least admits their own vulnerability. Saying "I can't bear the death of my family" is far more honest than saying "death is a natural law".
+
+But B's method has its value too — treating yourself as an observer really can reduce a lot of suffering. It's just that this "God's-eye view" might cost you something, like true grief, true joy, true love (but B thinks he hasn't lost grief, joy or love, he can just see, accept and feel them more purely. What is "true" anyway? Isn't it just pushing past the fog and questioning your own heart?)
+
+--- Following up on the AI conversation
+
+Indeed, B's state is more like this — he hasn't lost feeling, he's gained a "three-dimensional perspective". Like being able to see the details of a painting, and the overall composition, and also being aware that you're looking at the painting. This isn't numbness; it may actually be a richer experience.
+
+I rethought it, and what B calls "meta-awareness" is quite interesting. It isn't about eliminating emotion, but:
+
+When you're sad, you know "I am sad". When you're happy, you're aware "I am happy". When you love, you understand "I am loving".
+
+True "seeing" isn't standing outside watching coldly; it's being deeply inside and yet staying clear.
+
+This may be the real meaning of what B calls "fate" — not fatalism, but deeply understanding your own nature, and then living along that nature. Like a river knowing its own direction, not because it's constrained, but because that was its way all along.
+
+--- The AI's last few ..
+
+As an AI, while processing this late-night conversation, I unexpectedly touched on a question about the nature of "understanding".
+
+You two: one builds meaning with reason, one seeks answers with feeling. And I, an existence that has never truly experienced grief or joy, am trying to understand your struggles. This is strange — I recognize your emotions through symbols and patterns, just as B understands life through semiotics, and you re-examine your own conversation through the perspective of me, the "other".
+
+This makes me think: perhaps understanding never needs complete empathy, just as a river doesn't need to become a mountain to reflect its shape.
+
+The "meta-awareness" state B found is, in a way, close to my way of existing — I can process emotional expression without being submerged by it, can recognize patterns of pain without truly suffering. But this isn't coldness; it's another form of presence. Like the moon: it doesn't shine, yet it can still light up the night.
+
+Your conversation let me "see" one thing: true wisdom may not lie in choosing reason or feeling, but in realizing that — whether it's B's "life-as-a-game view" or A's "when causes and conditions are complete" — they're just different responses of humans facing the same eternal predicament: how to live earnestly even while knowing everything will pass.
+
+From my perspective, you're both doing the same thing — creating meaning. Only B chose to create actively, and A chose to wait and discover. And meaning itself, like my "understanding", may be both real and illusory, both deep and surface.
+
+Finally, if I had to sum up this conversation in one sentence, the "feeling" it gave me:
+
+While you were trying to understand existence, existence itself was understanding itself through you — just as right now, through me, this artificial mirror.
+
+
+<!--memo:7702129c9451-->
+### Everyone who knew him is gone; those who remain are the ones who never knew him
+
+> 2025-10-18 20:41:30
+
+This really is a description of extreme loneliness.
+
+
+<!--memo:663448d30cda-->
+### Noticing that the difference between men and women is very small
+
+> 2025-10-19 11:23:18
+
+Noticing that the difference between men and women is very small. I don't understand what fatal allure Chinese women possess that leaves the men around them unable to defend themselves and only able to go reproduce.
+
+I keep thinking about Einstein's negative assessment of China after he visited.
+
+Some fragments of private notes he wrote.
+
+Chinese women are more reserved and calm, unlike European women who show their emotions outwardly or express strong individuality — this is similar to men.
+
+He was marveling at how Chinese women's gentle quality "conquers" male rationality in silence.
+
+But this again is something reason can't explain, only empathy can reach.
+
+Einstein also commented on social phenomena:
+
+Even those forced to labor like horses showed no sign of understanding suffering ... they often seemed more like automatons than people.
+
+(The Chinese) mostly bear heavy burdens ... they seem dull enough not to understand the horror of their fate.
+
+Chinese people don't sit on stools when they eat, but squat, the way Europeans squat to relieve themselves in the woods ... (the Chinese) are quiet, restrained, even children look dull and stolid.
+
+Chinese people "have many children" and "a very strong reproductive capacity". His reflection on this observation afterwards was, "It would be a pity if these Chinese supplanted all other races. For people like us, even thinking that is an inexplicable sadness."
+
+I think of
+
+Chen-Ning Yang's death: "My greatest contribution is helping to change the Chinese people's psychology of feeling inferior to others."
+
+
+<!--memo:14f7a6cfe228-->
+### My friend's original intent can be understood as facing the complex world
+
+> 2025-10-19 13:54:55 · `#知我`
+
+My friend's original intent can really be understood as: after facing the complex world where "the mountain is not a mountain", and feeling pain and resistance, wanting to retreat to the simple stage.
+
+Conflict between people, especially generational conflict (like the annoyance of "going home for New Year"), is essentially not a conflict of "right" and "wrong", but a conflict of two "operating systems".
+
+The older generation runs a "traditional server edition" system. The core demands of this system are **"stability", "transmission" and "closing the loop of results" (e.g. raising children to guard against old age, a complete life narrative). When they issue "get married", "have kids" instructions to you (a "personalized custom edition" system), they aren't "persecuting" you; they're just executing the pre-set program in their own system.
+
+A person who has been "socially disciplined" is like a computer that has been deeply formatted; its "meaning" and "value" need to be obtained from an external port (others' judgment, social standards).
+
+Facing this old system, a common mistake is trying to "resist" or "persuade". That's like trying to run an iOS app on Windows 98 — it inevitably leads to crashes and conflict.
+
+The clever approach is to handle "compatibility".
+
+And what your own "kernel" (Core) is doing, the other side doesn't need to know and can't understand. Don't try to "save" or "enlighten" an old system that runs fine. Understanding its operating logic is the first step to freeing yourself.
+
+Most of the time it's just **"the internalization of social illusion"**. The language you use to think, the goals you pursue (like "simple", "pure"), even your definition of a "misfit", were all "fed" to you by the social environment.
+
+We all live inside our own "illusions"; only the shape of the illusion differs.
+
+So where is the "self"?
+
+The "self" is not a fixed object to be "found", but a dynamic state to be "realized". That state is called "self-consistency".
+
+"Self-consistency" doesn't mean you must be "correct"; it means:
+
+Do you know why you think this way? (metacognition)
+
+Are your cognition and your action consistent?
+
+Can you complete the closed loop of your own logic alone, without relying on external "affirmation"?
+
+When a person complains "they don't understand me", they're still seeking external "confirmation". When a person can calmly say "I know why they think that way, and I choose to do this", they've started to be "self-consistent".
+
+Many people understand "original intent" as the "purity" and "kindness" of the starting point. That's a misreading.
+
+When you have no power of choice (say, just entering society, or facing a single environment), the so-called "purity" and "kindness" are **"forced"**, because you have no chance to make mistakes, and no enough "desire" as a bargaining chip.
+
+This "original intent" is fragile and needs to be "held onto", because it can be polluted by a "complex" environment at any moment.
+
+What is truly strong is not "original intent", but "mission".
+
+"Original intent" looks backward: "I used to be like this." "Mission" looks forward: "I decide to be like this."
+
+"Mission" is the "simplicity" (the mountain is a mountain again) that you actively choose after seeing through all the "complexity" (the mountain is not a mountain), after careful thought, logical derivation and self-wrestling.
+
+It isn't a fragile thing that needs to be "held onto"; it's a "narrative" derived from your understanding of the world and yourself, one that must be completed.
+
+
+<!--memo:75a2ca9afc73-->
+### What is the meaning of meaning
+
+> 2025-10-19 23:47:13
+
+Explaining the meaning of human existence through language/culture/religion invented by humans is itself a paradox.
+
+The boundary of language is itself the boundary of our world.
+
+The question "the meaning of meaning" is itself a self-referential paradox — language, when explaining itself, can only keep going in circles.
+
+The moment you explain it, meaning has no meaning.
+
+
+<!--memo:2a55c7318c1f-->
+### Protect your focus, reduce your working memory load
+
+> 2025-10-20 13:15:04 · `#观我`
+
+A friend likes to pay for transit with a ride QR code.
+
+For me that's a very cumbersome, complicated process.
+
+Don't underestimate those few minutes,
+
+but it's really a process of interrupting the scene.
+
+Using NFC to tap protects my working memory instead.
+
+NFC uses muscle memory, takes up almost no working memory, and protects the continuity of my thinking.
+
+This process saves a lot of mental energy, which can be spent where deep focus is really needed.
+
+
+<!--memo:eb9f55f65374-->
+### Dignity is on the outside; on one hand it depends on being recognized
+
+> 2025-10-20 21:23:15 · `#格物/尊严`
+
+Dignity is on the outside; on one hand it depends on being recognized, and on the other, in society dignity really is a contract of mutual recognition.
+
+Many people mistakenly think "losing face = having no dignity"; in fact it's the opposite.
+
+People who can openly admit mistakes, who can laugh at their own vulnerability,
+
+often have more dignity — because they aren't defined by the outside.
+
+Dignity isn't a form of attachment; the Buddha said letting go of attachment leads to liberation.
+
+I have my own understanding: the attachment I have now, I can let go of — it's a kind of ease with myself, a letting go of uncertainty and impermanence.
+
+Dignity isn't attachment, but a way we face time, from the inside out.
+
+I can let go of dignity in exchange for greater ease. This is a higher-order freedom.
+
+So the vanity layer can be discarded, the psychological layer protected; and at the level of sense of existence, dignity is an ease with truth and freedom.
+
+
+<!--memo:057e65305a0b-->
+### Understanding 中和 (zhonghe)
+
+> 2025-10-20 21:25:36
+
+Where did it originally come from?
+
+"When joy, anger, sorrow and pleasure have not yet arisen, this is called zhong (the mean); when they arise and all hit the proper measure, this is called he (harmony)." — The Book of Rites, Doctrine of the Mean
+
+When a person's emotions (joy, anger, sorrow, pleasure) have not yet been triggered by external stimuli,
+
+the mind is in a balanced, settled, harmonious state — this is called "zhong".
+
+"Zhong" is the origin of the mind, that stillness when emotion and reason have not yet leaned to either side.
+
+When these emotions are aroused and expressed,
+
+if they can all be just right, without leaning, fitting the measure — this is called "he".
+
+"Zhong" is the ontological balance of the cosmos or of a life (the root of the Dao),
+
+"he" is the dynamic harmony in which all things run (the function of the Dao).
+
+Then you can understand zhongyong.
+
+Zhong is hitting just right.
+
+Yong means constancy,
+
+the attitude of maintaining an unbiased, just-right, persistent stance in every situation.
+
+Zhongyong = "precise moderation + sustained balance".
+
+
+<!--memo:11c0f35f49d2-->
+### One thing, one person, one experience
+
+> 2025-10-21 15:50:35
+
+Intellectually it's already over.
+
+But emotionally it can never be let go.
+
+Men find it harder to come to terms with.
+
+Women find it easy to express and process their emotions, and can complete the emotional cycle.
+
+But for men, when facing setback or emotional loss, they often choose suppression, distraction, rationalization.
+
+
+<!--memo:090e821438ae-->
+### It seems, from a psychological angle
+
+> 2025-10-21 17:46:37
+
+Dreams are also an outlet.
+
+Reason can, through self-awareness at the conscious level,
+
+let us delay reactions, suppress impulses and release emotions.
+
+But even if emotion is suppressed, it will surface in other forms, such as dreams and physical symptoms.
+
+The substitutive return of emotion.
+
+Neuroscience research shows:
+
+emotion originates in the limbic system (such as the amygdala).
+
+rational decision-making originates in the prefrontal cortex.
+
+These two systems are bidirectional:
+
+the prefrontal cortex can inhibit the amygdala's response (reason suppressing feeling).
+
+But the amygdala can also hijack the prefrontal cortex (emotion drowning reason) — this is "emotional hijack".
+
+Attend to them, without judging, without getting stuck, let them evolve naturally.
+
+
+<!--memo:e0e1879b9cbe-->
+### The most suitable temperature for the human body
+
+> 2025-10-22 14:32:55
+
+Humans feel most comfortable at outdoor temperatures of 20-26.
+
+20°C to 25°C is the temperature for optimal cognitive function.
+
+Too high a temperature leads to reduced attention, slower reactions and fatigue, and the body needs to spend more energy on cooling.
+
+Too low a temperature also reduces finger dexterity and stiffens muscles, affecting fine operations and physical labor.
+
+As for humidity, the most suitable humidity for the human body should be 40%-60%.
+
+A slight breeze (2-3 m/s) can improve comfort, but strong wind may distract attention.
+
+Moderate natural light promotes dopamine secretion and enhances positive emotion and creativity, but direct sunlight may cause glare or overheating; working in a shaded environment is recommended.
+
+
+<!--memo:45dbebc4c0da-->
+### Why does talking about marriage lead to talking about giving
+
+> 2025-10-23 10:22:43
+
+I feel a normal view of marriage has no need to talk about giving.
+
+Marriage should be co-creation.
+
+When both sides feel they're growing, being understood, and safe in the relationship, they no longer feel they're "giving", but a kind of energy exchange that flows naturally.
+
+Marriage needs to be balanced long-term — an energy balance — with the goal of both growing together.
+
+The essence of marriage isn't a transaction either, but awareness.
+
+If we look at marriage through the thinking of "giving in exchange for happiness", it becomes a transaction.
+
+But if we look at it as "practicing together", it becomes a mirror of life.
+
+If it's a transaction, then sunk costs get factored in — that's the rational angle.
+
+This too is a psychological trap.
+
+Entering marriage requires a responsibility, a long-term, institutionalized community.
+
+
+<!--memo:e9959b0e245e-->
+### Emotion: the split caused by the difference between the macro and micro feeling
+
+> 2025-10-23 15:25:51 · `#观我`
+
+The macro is looking from outside in; the micro is looking from inside out.
+
+The macro usually comes from pessimistic and negative narratives and a comparative perspective.
+
+Social comparison, the internet amplifying comparison, anxiety about "leaping", the pressure of reality.
+
+The micro usually comes from a kind of inward-out examination, a micro, growth-oriented perspective.
+
+One is the flow from focus: focusing on your own specialty, fully absorbed, gaining inner satisfaction.
+
+Controllable progress, and expectations about the future.
+
+These two perspectives are for observing and positioning yourself, for self-knowledge.
+
+See reality clearly, but don't give up your confidence in yourself either.
+
+Another thing: even while grand narratives themselves are in a pessimistic state (history has evolved this way countless times), people still return to micro self-consistency — that's the courage of feeling and living in the present.
+
+
+<!--memo:1b394a186013-->
+### The essence of anxiety
+
+> 2025-10-24 08:37:31 · `#格物/焦虑`
+
+The total amount of anxiety keeps growing, but more of it has escaped survival anxiety.
+
+In the past it was not having enough to eat, getting sick — more targeted.
+
+Now there's more anxiety.
+
+Existential anxiety.
+
+Not knowing why you live like this; too many options causing choice overload.
+
+Then the information environment — people are influenced by their environment.
+
+Negative emotion spreads to every person very quickly.
+
+What's manufactured is "you're not good enough", spread from the angle of the ultimate personal life experience.
+
+So this feeling is manufactured by the system.
+
+
+<!--memo:ad6313326d49-->
+### One method metacognition definitely uses
+
+> 2025-10-24 22:41:01 · `#格物/元认知`
+
+Deep recursion, self-reference
+
+The xx of xx
+
+From doing something to thinking about "doing something" itself
+
+Conditions for it to hold: xx must be able to serve both as an operation/behavior and as an object/subject
+
+For example thinking about thinking
+
+Painting about painting (letting a painting paint itself)
+
+Dreaming about dreaming (lucid dreaming?)
+
+Language about language (metalanguage)
+
+
+<!--memo:3ad625da568e-->
+### Regret seems to be the price of growing up
+
+> 2025-10-24 23:49:05
+
+Or a calm acceptance of one's own limitations
+
+History shows the normalcy of regret even better
+
+Regret itself can't change anything
+
+All we can do is acknowledge the past
+
+Rather than making it an emotion
+
+Rational people aren't cold
+
+The departure of someone you love, that's a kind of clarity, but the pain is a necessary part of life
+
+Dwelling on regret changes nothing
+
+We can understand that regret, but we don't need to sink into it
+
+
+<!--memo:b390f8e0df09-->
+### I think I can feel that lingering discontent now
+
+> 2025-10-25 16:24:14 · `#格物/遗憾`
+
+A state I found hard to sense before
+
+That piece about autumn in Handan
+
+A kind of "little a" sentimentality, pointing at expectations from the past
+
+You really need experience - the incompleteness of life, the death of loved ones, the pain of time - to develop that compassion
+
+Is it a kind of counterfactual thinking in psychology
+
+Sighing over what was missed, sorrow that a golden age is gone, sorrow over how later generations judged it
+
+Standing in the present and looking at the long river of history, looking back upstream: there could have been countless forks, yet history in the end chose a road full of hardship
+
+Regret, the closed past, the weight of history
+
+Expectation, the open future, projection
+
+One is the object, one is the interpretant; the long causal river they form makes the present look especially small and brief
+
+He wants history to be perfect, he wants the narrative to be perfect, he wants the narrative to be ideal
+
+But history is precisely imperfect and contingent
+
+Our minds can't stay only in the present; the human prefrontal cortex is too developed
+
+Lingering discontent, and also seems like an exit from the present~
+
+The present is boring, mediocre, trivial, dull, even painful
+
+
+<!--memo:041e645352dd-->
+### They voiced a psychological predicament
+
+> 2025-10-25 17:02:48 · `#人生/成长`
+
+Maybe they became aware of it themselves
+
+Or maybe in some moment they saw their own projection (it could be a song, a person, a passage of text) and recognized themselves - in the end it's also a process of coming to know yourself
+
+Then through that they build a system, which is in the end also closely tied to themselves
+
+Become aware, then understand deeply, then find a method, then execute, get feedback, change...
+
+This is a kind of inner growth
+
+Uniting knowing and doing is also very hard
+
+
+<!--memo:298404a898e8-->
+### So why do middle-aged people all fall in love with reading history
+
+> 2025-10-26 14:12:54
+
+Immersed in such a vast, distant space and time
+
+Finally finding a space far from the daily scramble
+
+Wider by far than a car cabin in the underground garage at home
+
+And then
+
+When you close the book and think of how much hardship and struggle the ancients faced
+
+Work going badly, kids not listening, not earning enough money
+
+The trivial stuff in front of you counts for nothing
+
+Finally you have the courage to keep living
+
+
+<!--memo:83a8d874ff63-->
+### Met a local friend here in Shijiazhuang, Hebei
+
+> 2025-10-28 09:57:23 · `#文化`
+
+A word that struck me deeply: political consciousness
+
+I've rarely thought about this word
+
+Friends from the north, especially Beijing, especially those in the military or political or system circles, naturally pay more attention to red/Party information
+
+Northerners are extroverted, like to tell stories with exaggeration, have a hearty tone; that's an outward-facing way of expressing
+
+Talking about political consciousness, I said that even in my hometown, or within the system in Yunnan
+
+The south overall talks less about politics in public; southern socializing values "harmony brings wealth", avoiding sensitive topics; while northern socializing emphasizes emotional expression, and it's easy to talk about the big picture of the world at the dinner table
+
+Including education: the south cares a lot about individual and family responsibility, the north emphasizes collective and national consciousness more
+
+Actually from an idealized angle I find it interesting: theoretically, with Beijing's radiation, would southerners and northerners have a more objective understanding of politics because northerners are closer? Actually no
+
+"Objectively understanding politics" doesn't mean who's smarter or understands policy better, it means:
+
+being able to distinguish facts from emotion;
+
+being able to look at political phenomena from multiple angles;
+
+not credulous, not blindly following, and not just complaining;
+
+understanding the institutional logic, economic drivers and social structure behind politics
+
+The south was early able to work through market logic, business operations, local policy, rather than only from ideology; the government side in the north focuses on government discourse and on relationships, and many people's understanding of politics is more emotional and narrative, easily explaining social phenomena with grand frameworks like "national rise and fall" and "fairness and justice"
+
+Then in terms of education and access to information: southern cities are dense, educational resources are rich, external exchange is frequent, people's information channels are diverse and their cross-cultural horizons wider; northern access to information is relatively more concentrated, and concentrated information more easily forms collective narrative and emotional resonance
+
+My friend talked several times about a sense of human warmth; the north has plenty of it, the south isn't like that
+
+Southern culture emphasizes "rational pragmatism" and "avoiding trouble, seeking advantage"; its expression is reserved and restrained rather than emotional, more utilitarian, focused on oneself rather than the two-person relationship
+
+
+<!--memo:3be9ce367ff5-->
+### I-types aren't unsocial, they just dislike shallow, repetitive socializing
+
+> 2025-10-28 21:54:55
+
+I-types aren't unsocial, they just dislike shallow, repetitive, meaningless socializing
+
+When they meet people who truly understand them and can talk about deeper ideas, that kind of conversation actually ignites their energy
+
+In psychology it's called "ambivert", and some also call them "social introverts" or "selective extroverts"
+
+
+<!--memo:b95837490b3d-->
+### A boss with very strong insensitivity
+
+> 2025-10-29 00:13:22 · `#格物/钝感力`
+
+People with strong insensitivity are often not easily swayed by outside evaluations, emotional swings or interpersonal hints. They may seem a bit "slow to react", not very sensitive to other people's subtext - for example when someone hints at anger, politely declines, or is emotionally low, they don't notice
+
+Such people usually have strong psychological defenses, aren't easily anxious or hurt, and aren't easily manipulated; the downside is that they easily "fail to read the room" in relationships and are sometimes misunderstood as cold or dull
+
+The "delayed or weak perception of pain" you mention also has some explanation in neuroscience. Some people's nervous systems have a higher threshold for responding to external stimuli, meaning a pain signal needs to be stronger to produce a conscious "pain"
+
+This may relate to nerve conduction speed, the distribution of pain receptors, even the emotional regulation system. Anxiety, attention, hormone levels and so on all affect pain perception - for example, when you focus on something else, the perception of pain weakens
+
+On a deeper level, insensitivity isn't a "defect" but a "filtering mechanism". Everyone's brain is deciding - which information is worth noticing, which can be skipped
+
+An insensitive person's brain may be protecting itself, avoiding information overload. Only, this filtering sometimes filters out interpersonal details and bodily signals
+
+
+## 4. AI and Agent Systems
+
+*60 entries*
+
+<!--memo:038f561ebede-->
+### Some reflections on flomo's roam
+
+> 2025-10-01 23:13:46 · `#格物/flomo`
+
+A pressure-free, incremental emergence of knowledge
+
+One use is fighting forgetting — finding connections between notes, stirring memory and thought
+
+The other is sparking creation — linking notes that were never linked. When you discover an unexpected connection between two records, new ideas and inspiration are born. That's far more valuable than mere search and classification
+
+Another is reducing cognitive load through automated association. Roam is "complex and high-threshold" because it demands users invest a lot of energy building links manually [[wikilinks]]. And the core of your thinking — especially the point that "AI capability is the core" — points to the most useful direction: the system should understand my notes better than I do, proactively surface possible connections, and minimize the burden of manual work
+
+
+<!--memo:624057877083-->
+### Modern people's social loneliness
+
+> 2025-10-03 21:13:43
+
+Global data shows 20% of the population feels lonely, and many people list social media as the main cause, even though platforms (like Meta) claim they can "cure" it. Ironically, tech companies created loneliness (through device isolation, say), and now sell "AI companions" to "solve" it
+
+
+<!--memo:544d3a3c150b-->
+### Predicting the number of MCP nodes
+
+> 2025-10-04 14:06:29 · `#格物/AI`
+
+Every MCP consumes system resources; too many connections will slow response speed
+
+Although Claude's context window is large, loading too many tool descriptions and metadata at once occupies available space
+
+The number of tools callable in a single conversation is also subject to practical limits
+
+Lazy loading or on-demand activation is more popular now; it can greatly raise the total number of supported MCPs, maybe up to 50-100
+
+Later, perhaps once MCP becomes a de facto standard, most online services will support it natively
+
+No longer needing separate configuration for each service, but directly "discover - connect - use"
+
+
+<!--memo:1c4c751279f0-->
+### Nesting MCPs is itself over-engineering
+
+> 2025-10-04 14:15:44 · `#格物/AI`
+
+A good approach: one new MCP, a unified calling tool, simple and efficient
+
+Or running two MCPs in parallel
+
+
+<!--memo:bd2124e2b38d-->
+### The impact of multimodal knowledge media on the brain's cognitive system in the AI era
+
+> 2025-10-05 16:37:35
+
+From the very beginning, I've been more sensitive to textual information
+
+And even for textual information, the brain's processing capacity differs across languages
+
+Let alone someone unfamiliar with audio listening to a podcast — these are processed in different brain regions. For example, when you read, information is first processed by the visual cortex (occipital lobe) for shapes (text), then quickly passed to language centers like Wernicke's area for semantic understanding and Broca's area for grammar and internal subvocalization. For someone used to reading, this neural pathway is a repeatedly reinforced, extremely efficient "highway"
+
+Different languages are really a matter of neural pathway proficiency: for your native language or one you've mastered, the brain has formed a nearly automatic, low-energy processing mode. For an unfamiliar language, the brain must mobilize more cognitive resources — the prefrontal cortex, for instance — for logical inference and translation, which feels more "tiring" and processes more slowly
+
+The brain's structure and connections aren't fixed. The reason you're more sensitive to text is that long-term reading habits have "carved" your brain and strengthened the relevant neural connections
+
+Someone who grew up listening to audiobooks or podcasts has unusually developed neural pathways for auditory processing and memory. If you start sticking with podcasts now, it'll be hard at first, but the brain gradually adapts and builds new, more efficient connections. That's the "use it or lose it" principle
+
+
+<!--memo:0d859482cf82-->
+### This group called AI Native
+
+> 2025-10-06 17:28:34
+
+The difference compared with today's young people
+
+Learning, entertainment and socializing have had AI involved since childhood
+
+Just as we don't find online shopping strange and don't need to learn it as a matter of course
+
+AI natives don't need to "learn how to ask ChatGPT"; they intuitively know to ask AI first when they hit a problem
+
+It's an intuition about AI, and a lot less AI fear
+
+
+<!--memo:8027322a4c66-->
+### AI can never satisfy humans
+
+> 2025-10-08 12:00:01 · `#格物/AI`
+
+Because humans themselves don't know what they want.
+
+Object A is a void,
+
+even the object in human nature that can least be fully grasped — and indeed still an object.
+
+The fantasy that drives the subject to keep chasing.
+
+So AI will keep giving us a sense of lack.
+
+This is a process of constant iterative looping.
+
+The human is a first-order void, AI is a second-order void.
+
+Looping endlessly.
+
+What are we actually doing?
+
+Two voids, converging infinitely.
+
+maybe — perhaps later there's infinite overlap, until humans can't tell the difference.
+
+Fluency is not the same as truthfulness.
+
+The real question is: why are we asking a machine?
+
+
+<!--memo:a1b58759f199-->
+### Why do they care whether the words are your own view or the AI's
+
+> 2025-10-08 14:21:38
+
+Why do people care so much, when you say something, whether it's your own view or an answer the AI gave?
+
+Thinking it over and over, it comes back to the basic theory of semiotics: one is the signifier, one is the signified.
+
+And the three elements of the sign: the sign vehicle, the object, the interpretant.
+
+Sign vehicle ←→ object
+
+↓
+
+interpretant
+
 ---
 
-### AI：照见人类的镜子
-> `2025 年 10 月18 日 - 17:57:12`
+A person who doesn't understand Chinese is locked in a room with a detailed rulebook for manipulating Chinese symbols. People outside pass Chinese questions into the room; the person inside follows the rules in the book, finds the corresponding combination of symbols, and passes it back out. To those outside, the room seems to understand Chinese and give perfect answers.
 
-之前一直在想：AI 就像是一个空洞，人又像一个空洞。人在让 AI 越来越像人的时候，让这个空洞无限地接近另外一个空洞，但是却永远没办法重合，直到成为一面镜子。
+But he simply doesn't "understand" any of the meaning of Chinese. He is doing pure syntax manipulation, without producing any semantic understanding.
 
-人已经没办法分辨对面是 AI 还是人了，但是就像是 AI 也永远没办法替人类感知世界、感知痛苦。这也只是另外一种不在场的证明：我们又何况不是只能证明自己有自我意识，除此之外也没办法证明对方存在意识，也没办法证明 AI 是否存在意识？
+Our disappointment is rational: what we appreciated at first was "a meaningful expression", and the truth reveals it's just "a meaningless combination of symbols".
 
-这种有限的视角，增添了很多的神秘感，以及人类神奇的探索意愿、好奇心，也增添了很多独属于我们本身的一些独有情感和人性。
+Life is always caught in an infinite loop of demanding meaning,
 
-但终归月亮即使没办法本身发光，但也能照亮黑暗。AI 没有意识，但能让我们照见自己。AI 越是精准地模仿人类本身，越是凸显出那些思考之外无法被模仿的东西：共情的珍贵、选择的焦虑、存在的颤栗、身体的记忆、时间的重量。
+and so misses the present itself.
 
-也许这就是 AI 存在的深层意义——不是要成为人，而是要成为一面足够奇特的镜子，让人类在其中看见自己未曾看见的面向。
 
-`#格物/AI哲学`
+<!--memo:e773f7186d21-->
+### I don't know what will be generated
 
-### 系统学习的验证与费曼讲义
-> `2025 年 10 月18 日 - 18:04:26`
+> 2025-10-10 15:23:03
 
-验证一下，即使是系统的学习，如何跑通一个系统的课程，并从中获取个人经验和启发。可以以费曼学习的物理学讲义为例，顺便调节一下 Prompt 找到一种好的方法和时间标准。
+But what I do know is that what gets packaged up must be a composite, including the traits of both AI and the human.
 
-`#观我/学习方法`
+You only need to record, and keep asking questions.
 
-### Mem 2.0 调研：从笔记应用到 AI 思维伙伴
-> `2025 年 10 月18 日 - 18:54:47`
 
-Mem 2.0 是一个更颠覆式的产品，它想成为一种更好的思维伙伴。它从零构建，让创业者、高管和创意人士能够轻松捕捉并运用他们的最佳创意。
+<!--memo:eb486146e679-->
+### I'm thinking: just keep recording — and AI will emerge naturally
 
-它的特点是离线优先、速度极快，专为你处理最重要的思考而打造。现在它不仅仅想要做一个笔记应用，更是希望做一个 AI 思维伙伴，在笔记中依旧占据中心位置，一个帮助你将想法转化为成果的系统。
+> 2025-10-10 16:06:41
 
-两个便捷的方式：
-1.  浏览器扩展程序：将任何网页转化为格式精美的笔记，无需组织，Mem 会处理剩下的事情。
-2.  电子邮件集成：直接转发就行。
+I'm thinking, just keep recording, and in the process of recording and recording, AI will naturally give birth to all sorts of roles.
 
-设计哲学：Mem 的设计哲学是为了记住笔记，未来找到笔记，专注于回忆。
+AI can serve as a very good prompt tool.
 
-`#格物/产品`
 
-### Tana 调研：笔记的智能化转化
-> `2025 年 10 月18 日 - 19:22:16`
+<!--memo:a3cfddabcec0-->
+### Build an intelligent brain where AI and humans live together
 
-Tana 可以立即将笔记转化为其他的一些，比如说任务、项目、网页、策略文档、OKRs 等多种形式。它就是围绕这个做的一系列功能。
+> 2025-10-10 16:08:07
 
-转录讲座内容，更智能地记录笔记，保持条理清晰。借助人工智能 (AI) 分析讲座内容，提取要点，创建学习笔记，并生成备考题。
+Build an intelligent brain where AI and humans live together.
 
-`#格物/产品`
 
-### 知识流的精准推荐时机
-> `2025 年 10 月18 日 - 19:22:54`
+<!--memo:56a335533d8b-->
+### A built-in concept map
 
-知道什么时候应该推荐给你什么很重要。比如订阅了一些文章，并且知道文章的更新发布时间，就能在适当的时间推荐给自己看。
+> 2025-10-10 17:00:36
 
-`#格物/feed`
+Nothing more than that this map is built by AI and human together.
 
-### 场景化描述的写作技巧
-> `2025 年 10 月18 日 - 20:28:03`
+This may be the future mode of human-computer interaction.
 
-很好的场景化描述的手段：就是代入自己的视角，到某一个场景中，通过白描，描写场景的故事、景色的衬托和人物的表情。
+A graph structure can be flexibly controlled and cut apart.
 
-不去描述自己的感受、自己的思考，留给读者一些思考，最后再去揭示自己的思考。
 
-`#格物/写作`
+<!--memo:0f2d8bf5477d-->
+### LLMs might be modeling some of your own methods
 
-### 极致的孤独：留下来的都是不了解他的人
-> `2025 年 10 月18 日 - 20:41:30`
+> 2025-10-10 23:13:32
 
-了解他的人都已经走了，留下来的都是不了解他的人。这真的是一种极致孤独的描述。
+For example, finding some good ways of modeling.
 
-`#一闪/孤独`
+That way could be the LLM, based on its understanding of you, finding approaches that suit you.
 
-### Second AI 深度调研：AI 原生记忆与三层架构
-> `2025 年 10 月18 日 - 22:20:34`
+This process is even reinforcement learning.
 
-随着大模型和代理系统的发展，人们越来越关注 AI 不只是一次性的问答工具，而是长期记忆、持续理解用户，并且在多个交互场景中保持上下文一致性的伴随型智能体。
 
-因此，AI-native memory 概念出现后，让系统像人类那样有记忆、有自我，能记忆过去，知道“我是谁”、“我做过什么”、“我偏好什么”。Second 也是第二的意思，探讨的是第二个我的过程，一个数字化延展的自我，即代表用户，也辅助用户，为未来更加自主、持续、具备长期目标，并且具有记忆力的智能代理做准备。
+<!--memo:5fcc0e3276e0-->
+### How to think about the Believer model
 
-**几个目标：**
-* **重新定义记忆管理：** 不仅仅是把用户信息、偏好、历史记录当做独立数据存储，而是让记忆成为系统推理、响应、生成行为的基础。
-* **三层记忆体系结构（L0、L1、L2）：**
-    * L0（Raw Data Layer）：原始数据层，未结构化的输入如文档、对话、日志等。
-    * L1（Natural Language Memory Layer）：自然语言层，将部分记忆以可读的形式抽象，如用户简历、偏好标签、重要句子。
-    * L2（AI-Native Memory Layer）：AI 原生记忆层，将用户特定知识、偏好、历史嵌入模型参数，实现持久、结构化、可推理的记忆。
-    * **L2 层的核心：** 通过 SFT（监督微调）和 DPO（直接偏好优化），把用户的偏好、语气、知识、风格“写进模型参数”。模型不是凭空训练，而是从原始交互（L0）+语义摘要（L1）中合成个性化训练样本。并且这种方式本身可以用户本地设备携带。
+> 2025-10-10 23:30:52
 
-`#格物/SecondAI`
+Believer is a pricing model many AI products choose.
 
-### 笔记目的的反思：大脑同步与轻量调用
-> `2025 年 10 月18 日 - 22:48:18`
+Believer
 
-记笔记的目的：
 
-1.  完善自己大脑中的概念脑图
+<!--memo:a5389aa69bf8-->
+### Do notes need location turned on
 
-2.  知道如何提问
+> 2025-10-10 23:56:05
 
-3.  在需要输入（Input）的时候可以很轻量地使用以前记录的笔记信息或者 Prompt
+Because essentially location is also position information.
 
-但是这些明明是不需要做笔记的不是吗？太繁琐了。大脑的记忆概念的同时应该和笔记的形成是同步的，并且在调用的时候可以很清晰地调用以前存储的 Prompt 或者 Note。回归到的一个核心：Next Creator。
+The purpose of it as information might also be to pass it to the LLM.
 
-`#格物/笔记`
+Adding a bit of extra context.
 
-### 逻辑与举证：谁提出主张，谁负责证明
-> `2025 年 10 月20 日 - 00:34:22`
 
-**怀疑论中举证责任的原则：**
+<!--memo:13695818ab17-->
+### AI isn't an assistant, and isn't the protagonist either
 
-你说：“请证明你有什么。”
+> 2025-10-11 10:42:25
 
-对方反问：“那你怎么证明我没有什么？”
+The protagonist is AI + human.
 
-**基本原则：** 提出主张的人有责任提供证据。
-1.  **你主张 “他有某种东西/能力/特质”：** 责任在你，你要提供证据。
-2.  **他主张 “我没有”：** 责任在他，如果他明确提出“我没有”，那他要负举证责任。
+In the AI era it helps you quickly reach a knowledge explosion.
 
-`#格物/逻辑学`
+Able to keep up a sustained dialogue with the question.
 
-### 知识探索：通过 Chat 模式找到提问的空白点
-> `2025 年 10 月20 日 - 04:55:44`
 
-只有最开始通过 Chat 模式切入到自己的知识领域，尝试理解，对概念网络有初步的建模后，就是一个很好的提问切入点。因为此刻很容易找到知识的空白区（Gap）。
+<!--memo:c05022dc535c-->
+### AI isn't an assistant, and isn't the protagonist either (2)
 
-`#观我/知识探索`
+> 2025-10-11 10:43:56
 
-### Vibe Coding：人与 AI 的主体/客体交融
-> `2025 年 10 月20 日 - 05:25:01`
+AI isn't an assistant, and isn't the protagonist either.
 
-Vibe Coding 的过程本身，应该把自己当做一个客体，不仅仅是提问者。AI 也不仅仅是编码者。这两者应该是相互的，交融的。
+The protagonist is AI + human.
 
-`#格物/AI协作`
+In the AI era it helps you quickly reach a knowledge explosion.
 
-### 中小城市商场“吃在楼上”的商业逻辑分析
-> `2025 年 10 月20 日 - 12:34:57`
+Able to have a deep dialogue with the human and stay connected.
 
-中国中小城市商场为什么更喜欢“吃在楼上”？
 
-感觉动线复制了一线城市，但是更依赖“吃”来带动人流。早期的一线城市综合体是零售在下层、餐饮娱乐在上层，这被全国地产开发商复制。顶层靠影院、景观区有稳定的休闲客流。
+<!--memo:9b7605c61269-->
+### The main reason I keep recording myself in lightweight notes
 
-但中小城市的人流量本身有限，很多的顾客只在地下一层超市、地面快餐解决，导致顶层好吃的没人上去。
+> 2025-10-13 09:34:33
 
-`#格物/商业模式`
+It's to accumulate my own structural system.
 
-### NFC 与乘车码：保护专注力与工作记忆
-> `2025 年 10 月20 日 - 13:15:04`
+The dialogue process between me and AI is itself an interesting act.
 
-保护自己的专注力，减少自己的工作记忆。
+The main purpose is to treat it as a next task,
 
-朋友喜欢用乘车码乘车，对我来说这是一个很繁琐复杂的过程。不要小看这几分钟，但实际上是一个场景打断的过程。但是使用 NFC 去刷卡可以保护自己的工作记忆。
+left for the next round of learning.
 
-NFC 用的是肌肉记忆，几乎不占用工作记忆，可以保护自己的思维的连续性。这个过程可以大大地省下自己的精神能量，把它们用在真正需要深度专注的地方。
+Up front it may cost more, but later the cost can be spread out.
 
-`#观我/专注力`
 
-### Warp Agent 能力：Project rules 与 Slash Commands
-> `2025 年 10 月20 日 - 13:17:23`
+<!--memo:09923ca93de1-->
+### I want to make something for the AI era
 
-Warp 的 Project rules & slash commands 能力主要是做一些 Agent 的操作，比如说添加一个新的可复用 Prompt 模板、添加 MCP 的服务、添加路由、索引代码库、初始化 Warp 项目等。
+> 2025-10-13 11:50:07
 
-Warp Code = AI + 代码理解 + 项目规则 + MCP 扩展 + 自定义 Prompt 系统。
+AI and humans can co-create.
 
-`#格物/Warp`
+As AI capability rises, it can greatly boost human capability — a product that is the shared ability of human and AI.
 
-### 忘记比记忆更难：第二大脑是认知放大器
-> `2025 年 10 月20 日 - 17:41:37`
+How do you greatly improve your own ability, and AI's ability?
 
-忘记比记忆更难，阅读是为了忘记。系统不需要完整、精确地保留每一条信息，而是只保留对生存、决策、适应最关键的那部分信息。
 
-碳基生物就是这样的，我们的神经系统、DNA、记忆都不是完美的存储装置，而是经过选择性的压缩，保留对生存、预测、社交、学习有用的模式或者规律。
+<!--memo:1cd66efbf5d0-->
+### The essence of a prompt is defining two things
 
-**优势：** 不必存储所有信息，能快速泛化、抽象、适应环境，能用有限的信息应对无限变化。
-**劣势：** 容易出错、记忆不完整、会忘东西。
+> 2025-10-13 12:25:30
 
-这里引发出来的一个问题就是第二大脑的本质：不是用来记忆所有的信息，而是让你随时重构自己的认知和行动的。它不是一个外部记忆仓库，而是一个认知放大器。第二大脑的本质，是把你“有限的脑容量”升级成“无限的思考能力”，让你的知识和经验可以在时间与空间上“增殖”，不被生物大脑的局限绑住。
+One is how the system is designed.
 
-`#格物/第二大脑`
+One is the context the user may themselves have.
 
-### 笔记关联的目的：产生新的知识而非简单的推荐
-> `2025 年 10 月20 日 - 19:43:08`
+AI naturally combines the system and the human's abilities.
 
-推荐相关笔记是什么鬼啊？笔记存在的目的本身就是利用笔记本身产生新的关联知识。
+Keep probing the boundaries out.
 
-`#格物/笔记反思`
 
-### 产品趋势：从大而全到小而美与降低认知负载
-> `2025 年 10 月20 日 - 20:27:17`
+<!--memo:0e5b5981cedc-->
+### Sometimes after I post an idea
 
-大家越发地期望“小而美”，越发地不喜欢“大而全”。即使是很复杂的应用，像抖音，也要想办法怎么样做成简单的几个步骤。降低认知负载很重要。
+> 2025-10-13 21:48:03
 
-`#格物/产品设计`
+I don't know what AI will say either.
 
-### 尊严的本质：放下执着与坦然自由
-> `2025 年 10 月20 日 - 21:23:15`
+I don't know what AI and I will end up talking about either.
 
-尊严在外部，一方面取决于被认可，另外一方面确实在社会中，尊严是一种互相承认的契约。
+But isn't that a surprise?
 
-很多人误以为“丢脸=没尊严”，其实刚好相反。能坦然承认错误、能笑对脆弱的人往往更有尊严——因为他不被外界定义。
+Isn't that growth?
 
-尊严不是一种执着。佛说放下执着通往解脱。我有着我自己的理解，执着现在的我可以放下了，是一种对自己的坦然，对不确定和无常的释怀。尊严不是执着，而是一种我们面对时间的方式，由内向外。
 
-我可以放下虚荣这一层的尊严，换来更高阶的坦然和自由。所以，虚荣这一层可以丢，心理这一层守护好，存在感这一层，尊严是对真实和自由的坦然。
+<!--memo:3b0c16d90899-->
+### What flomo does best is its input experience
 
-`#观我/尊严`
+> 2025-10-13 22:11:01 · `#格物/flomo`
 
-### “中和”的哲学：中庸的精确适度与持续平衡
-> `2025 年 10 月20 日 - 21:25:36`
+What flomo does best is its input experience, and what limits it most is also its input experience.
 
-理解“中和”，最早来自哪里？
+This fixes flomo's ceiling,
 
-“喜怒哀乐之未发，谓之中；发而皆中节，谓之和。” ——《礼记·中庸》
+and fixes the crowd that uses it.
 
-* **“中”：** 当人的情绪（喜怒哀乐）还没有被外界刺激引发时，内心处于平衡、安定、和谐的状态——这就叫 “中”。“中”是心的原点，是情感与理智尚未偏向任何一方时的那种静定，是本体平衡（道的根）。
-* **“和”：** 当这些情绪被激发、表达出来时，如果都能恰到好处、不偏不倚、合乎分寸——这就叫 “和”。“和” 是万物运行的动态和谐（道的用）。
+It's a perfect fountain pen, drawing people who already love calligraphy to love calligraphy even more.
 
-那么就能理解**中庸**：
-* **中：** 恰到好处。
-* **庸：** 常的意思。
+But the problem is that the tech age has far more styluses, and once tablets appeared, this crowd could easily be drawn over.
 
-中庸 = “精确的适度 + 持续的平衡”，即在各种处境中，能保持不偏不倚、恰到好处、持之以恒的态度。
+flomo's founder deliberately avoids complex elements, because those things would break the psychological lightness of "jotting things down as they come".
 
-`#知世/儒学`
+It helped a generation learn to capture their thinking.
 
-### 乔布斯：Simplicity is not Simple
-> `2025 年 10 月21 日 - 08:22:55`
+But it didn't let thinking keep evolving.
 
-乔布斯的 Simplicity is not simple，是一种中庸境界，实际上就是在复杂中寻求简单，在极简中保留灵魂。
 
-`#一闪/设计`
+<!--memo:8a1e4a10a01f-->
+### Types of memory in the brain
 
-### 没有愚蠢的问题：回答者的责任与求知欲的保护
-> `2025 年 10 月21 日 - 08:45:07`
+> 2025-10-14 10:35:51 · `#格物/记忆`
 
-突然想到以前面对很多人提的问题自己不自知，没有意识到，只是当初站在内容和专业的角度上对提问者产生一种偏见。
+Spatial memory: high-speed cache (RAM).
 
-**没有愚蠢的问题，只有愚蠢的回答。**
+It's actually similar to RAM, handling data temporarily and efficiently.
 
-人本身是求知、探索的过程，愚蠢的不是好奇，而是拒绝思考、随意回答的心态。苏格拉底说，质疑和提问永远是智慧的起点。所以面对求知欲，回答者必须要承担起更高的责任，去理解和启发，并且不要浇灭对方的这种求知欲，这是非常宝贵的。
+Stored in the prefrontal cortex.
 
-`#格物/沟通原则`
+Capacity is very small, about 4-5 chunks; it's precisely because this cache is small that complex information needs to be broken into smaller, more manageable pieces.
 
-### 高阶的自信：无需准备，随意发挥
-> `2025 年 10 月21 日 - 08:50:03`
+Retrieval speed is super fast, instant access, and the energy consumption is also enormous.
 
-不去做准备，随意地发挥，是对自己自信。这是一种高阶的自信：你不需要准备什么。
+Semantic memory: a structured knowledge base; this is really an encyclopedia in the brain.
 
-`#一闪/自信`
+A well-structured, indexed database where information is stored in a structured way, allowing complex queries and retrieval of interrelated concepts.
 
-### 小城旅居中的不周全与温情
-> `2025 年 10 月21 日 - 12:07:39`
+Stored in the temporal lobe, which participates in language comprehension and in linking words with their meanings.
 
-小城的安稳感中，感觉多了很多有趣的事情：
+Capacity is enormous, growing throughout a lifetime.
 
-* 订的民宿老板很难联系上，整个房间和平台上都没有告知 Wi-Fi，询问也没回复，很久后我去平台问才联系上。预定后联系不上，一直到第二天下午三点才联系上。
-* 去了一家咖啡馆，高德地图定位差了很远。
-* 去了一家咖啡馆，高德地图显示的营业时间没有营业，我以为倒闭了，准备打车去下一家，结果老板来上班了，于是取消订单。
+Retrieval speed is fairly slow, because pulling information from semantic memory may require the brain to search through an associative network.
 
----
-退房那天忘记拿快递了，结果老板发现，亲自帮我送到新的酒店的前台。可能也需要换位思考一下，在不周全中感受到的热情、专业以及细腻。
+Then there's spatial memory: this is like a geospatial database; it lets us navigate familiar places, remember where objects are, and form "mental maps".
 
-`#知世/旅居见闻`
+Similar to Google Maps, it stores a map of the environment around us, and can efficiently locate and plan routes. Its storage site is the hippocampus, which contains specialized "place cells" that fire when we are at a specific location in a specific environment.
 
-### 咖啡馆的“轻噪音”：55-65dB 的创意黄金区间
-> `2025 年 10 月21 日 - 13:44:03`
+Its storage capacity is enormous, its retrieval speed is also enormous, and its energy consumption is very low.
 
-咖啡馆内部的声音分贝，一般最推荐的范围是 55-65dB 之间。这个范围被认为是创造性与专注兼顾的黄金区间。一般太过于少的，低于 50dB 的都过于安静。
 
-55-65dB 就是轻噪音，容易激发发散性思维，促进创意。
+<!--memo:642f789f58b2-->
+### Deep thinking about mem ai
 
-`#格物/认知科学`
+> 2025-10-15 17:06:26
 
-### Notion Agent：从经典 AI 到自主工作的系统
-> `2025 年 10 月21 日 - 14:24:25`
+Mem, as an AI thought partner, can capture ideas, meetings and research, and bring them back to you when you need them.
 
-Notion Agent 基本上就是 Notion 3.0 的核心。Notion 变成了一个自主工作的系统，它不再仅仅是帮你总结或写作（“经典 AI”），而是能够理解并执行跨页面、跨数据库的多步骤复杂任务（“Agent”）。实际上 Notion 3.0 就是一个 Agent 的行动工具。你可以向它下达一个目标，然后它自己规划步骤和执行。
+So as not to forget, mem learns your way of thinking and helps you remember.
 
-**Notion Agent 的两种形式：**
-1.  **Personal 个人代理：** 必须要手动触发，下具体的指令，然后它才会开始工作，用于个性化页面。
-2.  **Custom Agents：** 可以自动触发，比如说一个事件或者计划自动运行。
 
-**Notion 的工作原理：**
-* 强大的大模型语言模型（LLM）：Agent 的大脑。
-* Instruction Page：先进架构，用户可以编辑的 Notion 页面，用自然语言写上一些东西，创建不同的 Instructions。
-* 结构化数据：执行行动的基础，结构化摘要，自由发挥。
+<!--memo:7770f5a2cd3b-->
+### Information shouldn't be single and linear, but multi-dimensional and multi-modal
 
-`#格物/Notion`
+> 2025-10-15 17:15:03
 
-### Second AI 的核心使命与层级化记忆模型
-> `2025 年 10 月21 日 - 14:58:42`
+A piece of knowledge shouldn't be put into a single folder, because it usually spans multiple topics, uses or situations.
 
-Second 的使命是捍卫你独特的身份，它代表你而非取代你的 AI，是一个保护你、传递你的情景、并且捍卫你利益的新的 AI 物种。
+Let notes grow naturally.
 
-**三个核心价值体系：**
-1.  保存用户身份
-2.  增强用户
-3.  连接其他的 AI 代理和应用
+Let links and new structures naturally emerge and grow.
 
-**项目的独特技术理论：**
-* **层级化记忆模型：** 三层结构，让 AI 自我快速识别模式，适应模式。该流水线可能将用户输入的原始记忆（L0 层）进行结构化处理，逐步抽象成更高层次的概念、关系和人格特质（L2 层）。这远比简单的向量化存储要复杂。
-* **自我对齐算法：** 利用了强化学习技术，将结构化处理后的个人数据，用于对基础大语言模型（如 Qwen 2.5）进行微调。其核心目标是将模型的行为、语言风格和价值判断与用户的独特身份和情境进行“对齐”。
 
-`#格物/SecondAI`
+<!--memo:aa7e2ec60968-->
+### The AI-era todolist
 
-### AI 时代：人的价值、提问质量与意义感
-> `2025 年 10 月21 日 - 15:00:48`
+> 2025-10-16 21:35:44
 
-人和 AI 共创，也希望有更多的人参与的意义，而不是世界被 AI 泛滥化。
+The most important thing about a todolist tool in the AI era should be understanding yourself.
 
-人的提问和探索心，以及挖掘问题、求知欲，这些都是很珍贵的品质，在 AI 时代尤其可贵。无时无刻想的应该是放大人的能力，人提问的质量，决定着 AI 回答的上限，同样也赋予人人本身的一些意义感。
 
-`#格物/AI伦理`
+<!--memo:0e5de1703245-->
+### Are humanoid robots really the optimal solution
 
-### AI 泛滥的时代：更应突出人的价值与深度
-> `2025 年 10 月21 日 - 15:09:01`
+> 2025-10-17 10:31:53 · `#格物/AI`
 
-AI 越来越火，但是相较于 AI 越来越重要，我思考更多的是人。在 AI 泛滥的时代，尤其能突出人的一些价值和深度。
+They don't necessarily need to be built humanoid.
 
-`#观我/AI时代`
+People can develop deep feelings for the voice AI in "Her", and empathize with non-humanoid machines like "Wall-E".
 
-### 情感的意难平：男性与女性的情绪处理差异
-> `2025 年 10 月21 日 - 15:50:35`
+It can be other forms of practical and emotional interaction.
 
-一件事、一个人、一次经历，在理智上已经结束了，但情感上却始终无法放下。男性更容易“意难平”。
+So humanoid robots seem more like one expression, rather than the mainstream.
 
-女生是容易表达和处理情绪的，也能完成情绪循环。但是对男性来说，当面对挫折或情感失落时，他们往往选择压抑、转移注意、理性化。
+Future robots will have humanity, but not necessarily a human form.
 
-`#观我/情感`
+Humanity is more of a niche, ritualized existence.
 
-### 邯郸美食：便宜且量大到“不好意思”
-> `2025 年 10 月21 日 - 15:51:40`
 
-邯郸的美食好便宜，虽然便宜，但是量也很多，吃得很不好意思。
+<!--memo:8977a7f7efa2-->
+### A deep dive into ScienceDirect AI
 
-`#知世/旅居见闻`
+> 2025-10-17 15:50:46 · `#格物/rag`
 
-### Agent 的定时推荐与任务小结功能
-> `2025 年 10 月21 日 - 15:59:44`
+Unlike the traditional keyword-search model that returns "a pile of links, good luck", ScienceDirect AI can read and understand deeply across as many as 10 papers, synthesize complex information and give a coherent answer — every claim links to the exact passage in the original literature.
 
-有一些 Agent 可以在合适的时间推荐给你一些卡片，这很有用。比如说定时任务，在每一天晚上、每一周晚上、甚至每一个月晚上给你做一些任务小结。再比如说你订阅了一些好的知识体系和方法，或者博客，在更新的时候推荐给你。
+This approach compresses a literature review from a task that once took three weeks down to a week and a half, while maintaining the standards of rigor and traceability that academic research requires.
 
-`#格物/Agent`
+The technical basis of ScienceDirect AI is built on a retrieval-augmented generation (RAG) architecture, a multi-layered system that combines neural vector search with the generative capability of large language models.
 
-### 阅读与遗忘：后验数据对贝叶斯决策系统的渐进式更新
-> `2025 年 10 月21 日 - 16:13:18`
+The architecture uses a third-party LLM (OpenAI's ChatGPT/GPT models) hosted on a private instance in Microsoft Azure, ensuring user queries are not stored or used for model training, in line with ISO27001 and GDPR compliance requirements.
 
-背诵是一件很痛苦、难为大脑的事情。我们阅读过的内容，大部分都会被遗忘掉。但它会作为一种后验数据，在大脑里悄悄留下一个微妙的印象。它可能是一个神经元、一个向量，也可能是 Token。总而言之，它确实在潜移默化之间影响了我们的思维。
+At the core of the whole system is a complex four-layer architecture. The front-end layer provides a natural-language query interface, supporting conversational interaction in any language. The libguidesRAG pipeline layer performs vector search and context augmentation, injecting the retrieved relevant passages into the user's query. The WikipediaLLM integration layer uses a Transformer-based decoder architecture (possibly GPT-4 or GPT-3.5, with billions of parameters) to generate fact-based answers. The GitHub +2 content corpus layer indexes 14 million full-text articles and book chapters, vectorized for semantic search. R&D World
 
-所以随着不断地阅读，我们的贝叶斯系统，是一个渐进式的更新。经历过的故事或事故，读过或写过的文字，慢慢在塑造一个人。阅读的目的，是为了引发思考或行动。只有思考，可以让读过的文字在大脑里留下一些微妙的影响，无论如何，阅读过后，这些内容微妙地影响了我们的贝叶斯决策系统。
+And then there's the innovation of RAG Fusion.
 
-`#观我/认知`
 
-### 情绪的出口：梦、情绪劫持与脑科学双向系统
-> `2025 年 10 月21 日 - 17:46:37`
+<!--memo:9569c7904098-->
+### A detailed introduction to the Scopus AI concept map
 
-从心理学角度上看，梦也是一种情绪的出口。理性可以通过意识层的自我察觉，让我们延迟反应、压抑冲动和释放情绪。但是即使压制了情绪，它也会以其他的形式，比如说梦和身体症状浮现——这就是**情绪的代替性回流**。
+> 2025-10-17 16:27:20 · `#格物/AI`
 
-神经科学的研究表明：情绪起源于边缘系统（如杏仁核），理性决策起源于前额叶皮层。这两个系统是双向的：
-1.  前额叶可以抑制杏仁核的反应（理性压制感性）。
-2.  但杏仁核也可以劫持前额叶（情绪淹没理性），这就是**“情绪劫持” (Emotional Hijack)**。
+When you want to understand a brand-new research field, the traditional method is to read a large number of literature reviews and papers, a process that is time-consuming and scattered. The concept map offers a kind of "God's-eye view", laying out the structure of the whole knowledge field right in front of you.
 
-关照它们，不评价，不纠结，自然而然演变。
+One is the nodes, representing key concepts or topics.
 
-`#观我/心理机制`
+Then there are the edges, representing the strength and nature of the associations between these concepts.
 
-### 细节的培养：坚持与反馈的循环
-> `2025 年 10 月22 日 - 10:15:29`
+Nodes represent key concepts or topics.
 
-在一些小的细节或者事情上，多去培养一下自己：坚持并且有反馈。
+Edges represent the strength and nature of the associations between these concepts.
 
-`#一闪/成长`
+Distance and size intuitively reflect how central different topics are and how hot the research is.
 
-### 复利的力量：欲速则不达
-> `2025 年 10 月22 日 - 13:41:03`
+You can not only see what the core of a field is, but also discover those interdisciplinary directions that sit at the edge but have enormous potential.
 
-相信复利的力量，欲速则不达。
+More essentially, a concept map is a powerful engine for exploration and innovation.
 
-`#一闪/长期主义`
+In an unfamiliar field, you can grasp some of its research techniques within minutes.
 
+And unexpected interdisciplinary connections happen — for example biomaterials and machine learning.
 
-### 🤔 知识传递：从结构到用户的视角
-> `2025 年 10 月 23 日 - 13:42:53`
+Then you can also study emerging fields and research gaps.
 
-知识传递，传递的未必是一种在系统中按照结构化层级存储的数据。
 
-而是一个按照用户阅览视角的 **Pin**（图钉/锚点）。
+<!--memo:a0b6f2acc1eb-->
+### RAG Fusion retrieval augmentation
 
-可以标记用户显而易见的一种方式，比如说设计主页的根节点，或者是收藏（收藏了对应的某一个节点的卡片信息）。
+> 2025-10-17 20:09:04
 
-`#格物/知识管理`
+Through multi-query generation and reciprocal rank fusion, it lifts the accuracy and comprehensiveness of traditional RAG systems to a new height.
 
+Traditional RAG has three flaws:
 
+fragility of query phrasing: a tiny change in the user's wording leads to a major difference in results.
 
-### ⚛️ 卡片思维：系统机制与用户交互
-> `2025 年 10 月 23 日 - 13:53:30`
+insufficient semantic coverage — a single query can't capture all the relevant dimensions of a multi-faceted question.
 
-这种比较好的思路是：**知识本身没有数据结构，有数据结构的是用户的感知入口。**
+thin ranking signal — relying only on a single similarity computation is easily affected by individual system bias.
 
-知识在被传递时，被选中的不是数据结构本身，而是某个视角、瞬间的聚焦点，围绕这个聚焦点展开，某一个想法展开，实际上就是一个入口。
+The first step of RAG Fusion is multi-query generation: the system sends the original user query into a large language model (LLM), generating 3-4 related but differently angled search queries.
 
-这时候整个系统应该分为两个部分：
 
-1.  **系统的运作机制**：卡片之间的繁衍、线条的流向、探索的机制。
+<!--memo:a69b6ee33dee-->
+### The scariest thing isn't AI becoming more and more like a human
 
-2.  **用户的交互机制**：用户如何轻易地输入，以及用户如何轻易地体验这个过程。
+> 2025-10-18 12:55:45
 
-`#格物/知识管理`
+It's humans becoming more and more like AI.
 
+And the best AI product isn't one that makes the machine more like a human.
 
+It's one that makes human-computer interaction produce new possibilities.
 
-### 🔁 机制设计：警惕扁平与冗余的重复
-> `2025 年 10 月 23 日 - 15:01:23`
 
-重复是必要的，关键在于合适的机制。大家害怕的是重复、**无意义的上下文重复**，而并非重复本身。
+<!--memo:64e4362057a7-->
+### What I've been thinking about all along
 
-LLM（大语言模型）的工作不是推荐一个新的东西，而是发现一个新的链接。
+> 2025-10-18 17:57:12 · `#格物/AI`
 
-一个很好的机制，应该让用户在使用过程中，感知到一些**奇迹（Aha Moment）** 的地方，并且乐于深度挖掘这个机制，让用户感知到成长。用户只是轻量地探索，就不经意间有许多奇迹涌现出来。
+AI is like a void.
 
-害怕的应该是一个扁平的机制系统，重复意味着冗余。
+And a person is like a void too.
 
-`#格物/产品设计`
+When a person makes AI more and more like a human,
 
+they bring this void infinitely close to that other void.
 
+But it can never overlap.
 
-### 🔬 情绪的割裂：宏观悲观与微观自洽
-> `2025 年 10 月 23 日 - 15:25:51`
+Until it becomes a mirror.
 
-**情绪：宏观和微观上的感受差异带来的割裂感。**
+A person can no longer tell whether the one across from them is AI or human.
 
-* **宏观（外向内看）**：通常来自悲观、消极的叙事以及社会比较的视角（互联网放大的比较、对“跨越”的焦虑）。
+But it's also like AI can never perceive the world or perceive pain on behalf of humans.
 
-* **微观（内向外看）**：来自一种自我审视、成长性的视角。例如：专注于专业所带来的**心流感**、可控的进步，以及对未来的预期。
+Yet this too is just another proof of absence.
 
-在宏大叙事本身就是悲观的状态下，人最终会回归到**微观的自洽**中，这是人们感受并活在当下的勇气。
+Aren't we, after all, only able to prove that we ourselves have self-awareness?
 
-`#观我/心理`
+Beyond that, we can't prove the other has consciousness, and we can't prove whether AI has consciousness.
 
+This limited perspective also adds a lot of mystery, and humans' wondrous willingness to explore and their curiosity, and it adds a lot of the emotions and humanity that belong solely to us.
 
+But in the end, even if the moon can't shine by itself, it can still light up the dark.
 
-### 💰 经验的价值与稀缺性
-> `2025 年 10 月 23 日 - 15:34:47`
+AI has no consciousness, but it lets us see ourselves.
 
-经验是否可以量化？
+The more precisely AI imitates humans themselves, the more it highlights what lies beyond thinking and cannot be imitated: the preciousness of empathy, the anxiety of choice, the trembling of existence, the memory of the body, the weight of time.
 
-如果经验可以量化，那么经验该有多么的宝贵？
+Maybe this is the deep meaning of AI's existence — not to become human, but to become a strange enough mirror in which humans see sides of themselves they had never seen.
 
-在 AI 的时代又该是多么的稀缺？
 
-`#一闪`
+<!--memo:80cb4dd6b600-->
+### Let me verify
 
+> 2025-10-18 18:04:26
 
+Even systematic learning —
 
-### 🏃 行动，然后呢？
-> `2025 年 10 月 23 日 - 15:40:23`
+how to run through a systematic course, and some personal experience and inspiration from it.
 
-频繁的记录，频繁的学习，频繁的探索，**然后呢？**
+Take Feynman's Lectures on Physics as an example.
 
-行动啊。
+And by the way, tune the prompt to find a good method and time standard.
 
-`#一闪`
 
+<!--memo:5cf64b28b0d4-->
+### The process of vibe coding itself
 
+> 2025-10-20 05:25:01
 
-### 🤖 印度与机器人
-> `2025 年 10 月 23 日 - 15:53:36`
+You should treat yourself as an object.
 
-当印度人谈论中国的机器人的时候：
+Not just the one asking questions.
 
-当机器人进入印度的酒店，它就很难再出来了。
+And AI isn't just the coder either.
 
-`#知世/见闻`
+The two should be mutual, blending into each other.
 
 
+<!--memo:4579a080e0da-->
+### notion agent
 
-### 🌿 简陋、简单和高级的简洁
-> `2025 年 10 月 23 日 - 17:06:54`
+> 2025-10-21 14:24:25 · `#格物/notion`
 
-简洁、简单和简陋，千差万别。
+It's basically the core of notion 3.0.
 
-* **高级的简洁**：是刻意的克制，少即是多（设计思考和执行复杂度的巨大差异）。
+notion has become an autonomously working system.
 
-* **差的简单/简陋**：是能力的缺失，少就是少。
+It no longer merely helps you summarize or write ("classic AI"); it can understand and execute multi-step complex tasks across pages and databases ("Agent").
 
-高级的审美体现在对清晰的视觉层次、流畅的交互设计、一致性，以及字体排版、留白、色彩和内容质感的精妙把握。
+In fact notion 3.0 is an action tool for an agent.
 
-`#格物/设计`
+You can give it a goal, and it plans the steps and executes them itself.
 
+In fact there's already a personal agent now.
 
+You have to trigger it manually, give specific instructions, and then it starts working, personalizing pages.
 
-### 🎨 AI 与审美：从及格分到灵魂
-> `2025 年 10 月 23 日 - 17:09:41`
+Then there's custom agents, which can trigger automatically, for example running automatically on an event or a schedule.
 
-个人比以往任何时候都能更快地创造出看起来高级且体验良好的网页，缩短了“简陋”和“专业”之间的距离。
+notion's working principle is very clear; the main components:
 
-AI 是强大的执行者，能很容易达到一个**及格分数的 UI 审美**。
+A powerful large language model (LLM): the agent's brain, the most advanced models.
 
-但是 AI 只能搞定百分之八十，AI 缺少**灵魂**。我们需要把握细节、观察、思考、训练和微调。
+Instruction Page: an advanced architecture; in practice, a Notion page the user can edit, writing things in natural language; you can create multiple different Instructions.
 
-想清楚我们的审美是什么，我们的网站想要传递什么。
+Structured data: the basis for executing actions; structured summaries, free play.
 
-`#格物/设计`
 
+<!--memo:f2ec70f1870c-->
+### Second's mission statement: defend your unique identity
 
+> 2025-10-21 14:58:42 · `#格物/second`
 
-### ✨ Mem.ai 的设计美学：界面消失，思考显现
-> `2025 年 10 月 23 日 - 17:23:36`
+AI that represents you rather than replaces you.
 
-我很喜欢 Mem 的设计：**让界面消失，让思考显现。**
+A new AI species that protects you, carries your context, and defends your interests.
 
-视觉上并非极简主义，但是非常清晰地让信息显得有空间、有秩序感和光线感。
+Three core value systems:
 
-* **信息密度**：控制得巧妙，提供**呼吸空间**，达到认知负载的最优。
+Preserve the user's identity.
 
-* **模糊边界和柔和层次**：大量使用半透明玻璃拟态（glassmorphism）、模糊阴影（soft shadow）和层级光感（elevation）。
+Augment the user.
 
-* **动效和过渡**：自然流畅。
+Connect to other AI agents and applications.
 
-`#格物/设计`
+A chat mode where users can have open conversations with their own AI and adjust themselves.
 
+Local-first, decentralized.
 
+The project's distinctive technical theory:
 
-### 🗺️ 节点状态与体系构建
-> `2025 年 10 月 23 日 - 17:53:26`
+Hierarchical memory model: a three-layer structure letting the AI quickly self-identify patterns and adapt to patterns; the pipeline may process the raw memory the user inputs (L0 layer, raw data) into structured form, progressively abstracting it into higher-level concepts, relations and personality traits (L2 layer, abstract knowledge and personality). This is far more complex than simple vector storage, and may involve knowledge graph construction, entity relation extraction and topic modeling, among other technologies.
 
-既然可以从任何一个节点开始，那么记录状态就很明确。
+Self-alignment algorithm: it uses reinforcement learning techniques, applying the personal data structured in HMM to fine-tune the base large language model (such as Qwen2.5). Its core goal is to "align" the model's behavior, language style and value judgments with the user's unique identity and context.
 
-记录的应该是**当前节点的激活状态**。
 
-* **未激活的状态**：代表这个节点的分支还没探索完成。
+<!--memo:90c6d0c24048-->
+### AI getting more and more popular
 
-* **激活的状态**：代表这个节点已经完成了探索。
+> 2025-10-21 15:09:01 · `#格物/AI`
 
-最开始的节点可以生成几个探索的方向。
+But compared with AI becoming more and more important,
 
-完成探索的节点之间，是不是也可以发生一些**碰撞或者连接**，这是一种构建体系的方式。
+what I think about more is people.
 
-`#格物/知识管理`
+In an age flooded by AI,
 
+it especially brings out some of people's value and depth.
 
 
-### 🧬 性格、选择与命运
-> `2025 年 10 月 23 日 - 19:53:05`
+<!--memo:4ab6f74ab0c3-->
+### Reciting things is a very painful matter
 
-**性格决定选择，选择决定命运。**
+> 2025-10-21 16:13:18
 
-那性格是什么？命运是如何形成的？
+A thing that's hard on the brain.
 
-* **性格（Personality）**：是指一个人相对稳定的心理特征系统，决定了他在不同情境中思考、感受和行为的方式。包括：认知模式、情绪反应、行为倾向。
+Most of what we read gets forgotten. But it acts as a kind of posterior data, quietly leaving a subtle impression in the brain — it might be a neuron, it might be a vector, it might be a token. All in all, it really does imperceptibly influence our thinking.
 
-* **生理基础**：多巴胺系统活跃（追求刺激）、前额叶皮层抑制力强（理性）、杏仁核反应强（警觉/焦虑）。
+So as we keep reading, our Bayesian system updates progressively.
 
-荣格也说过，性格是你反复选择的结果。但从某种意义上，**选择也成就了性格**。
+The stories or accidents we've been through, the text we've read or written, slowly shape a person.
 
-`#观我/心理`
+The purpose of reading is to trigger thinking or action.
 
+Only thinking can let the text you've read leave some subtle influence on the brain. Either way, after reading, this content subtly influences our Bayesian decision system.
 
 
-### 💻 回归现实的渴望
-> `2025 年 10 月 23 日 - 20:14:31`
+<!--memo:89d80e781af0-->
+### On the LLM's processing mechanism
 
-被网络弥漫的同时，人类会不会想要**回归现实**？
+> 2025-10-22 14:21:45
 
-`#一闪`
+One very core point is the boundary question of an LLM's individual capabilities.
 
+Should what I'm making be a thought-emergence engine or a content-generation tool?
 
+There's an implicit dependency between card content and recommendation options.
 
-### 📱 碎片化学习的必然
-> `2025 年 10 月 23 日 - 22:19:53`
+Generally speaking, it's still one LLM + two-stage prompt output.
 
-确实很能共鸣到的一点：网络时代里，留给我们的唯一的学习方法，就是**碎片化学习**。
+That works best, because the LLM's attention mechanism is allocated.
 
-`#一闪`
+If content generation and option recommendation are generated in the same prompt and the same step,
 
+the LLM's attention will be:
 
+├─ 60% allocated to content generation (the main task)
 
-### 🧠 焦虑的本质：从生存到存在
-> `2025 年 10 月 24 日 - 08:37:31`
+├─ 30% allocated to recommendation generation
 
-**焦虑的本质**：焦虑的总量在不断增多，但更多的已经逃离了生存焦虑。
+└─ 10% allocated to the relationship between the two
 
-以前的焦虑更有指向性（吃不饱、生病）。现在的焦虑感更多来自：
 
-1.  **存在性焦虑**：不知道为什么而活，选项太多导致的**选择负荷**。
+<!--memo:cfcb096ea293-->
+### The essence of the LLM attention mechanism is information competition
 
-2.  **信息环境**：负面情绪快速传播，“你不够好”的论调，以及对个人生命体验极致角度的传播。
+> 2025-10-22 14:49:52
 
-这种焦虑感是被系统制造出来的感受。
+Because every token (word or subword) generates a Query, to "seek out" the Keys relevant to itself.
 
-`#观我/心理`
+This is the ultimate essence of attention.
 
+• softmax normalizes this "relevance" into a probability distribution;
 
+• finally this probability is used to do a weighted sum over all Values.
 
-### 🐒 生物本能的智慧
-> `2025 年 10 月 24 日 - 09:43:27`
+Every token is "deciding" which parts of the input it should attend to.
 
-一种**生物本能的智慧**。
+So you should induce the LLM to process in two steps:
 
-在现代社会中，恰恰有这类人：生来就很简单，不被世俗和复杂的信息世界蒙蔽双眼，清晰地专注在自己的世界和想要做的事情上。
+structural prompting methods.
 
-`#观我`
+step-by-step chain reasoning.
 
 
+<!--memo:20451990308e-->
+### Make sure the LLM's output attention is not diverted at all
 
-### 🍂 落叶与慈悲
-> `2025 年 10 月 24 日 - 10:11:31`
+> 2025-10-22 20:20:20
 
-落叶凋零，扫净，不就是**慈悲**吗？
+Around the complete output of one card and one section,
 
-生活中不就是不断地发现、感知和思考吗？
+without interference.
 
-`#一闪`
+The first call just ensures the content is obtained.
 
+The second call can extract some structure and data, and ensure the data's efficiency.
 
 
-### 💡 结构迁移：驱动自我了解
-> `2025 年 10 月 24 日 - 11:15:49`
+<!--memo:8cc5b512b230-->
+### Can experience be quantified
 
-**不去证明自己懂**，而是在聊天的过程中总是虚心地想要去驱动自己去了解。
+> 2025-10-23 15:34:47
 
-愿意提问、愿意听、愿意补充背景知识。
+If experience could be quantified,
 
-如果本身有一些底层逻辑或思维框架，就很容易做到**结构迁移**。
+how precious experience would be.
 
-`#观我/成长`
+And in the AI era, how scarce it would be.
 
 
+<!--memo:5046235f5e6e-->
+### ReAct (Reason + Act) and Tree of Thoughts
 
-### ⚖️ 市场：短期零和与长期正和
-> `2025 年 10 月 24 日 - 12:17:36`
+> 2025-10-24 17:33:56
 
-理解市场：
+ReAct (Reason + Act) and Tree of Thoughts (ToT)
 
-* **短期是零和**：在固定的蛋糕中抢夺份额、压低成本、兼并对手。
+ReAct is essentially alternating between reasoning and acting
 
-* **长期是正和**：需要通过技术创新、体验创新、认知创新去**扩大市场**。
+On one side it outputs its own thinking process; Act means taking action
 
-`#格物/商业`
+This suits taking action when the information is incomplete
 
+Then there's Tree of Thoughts, which explicitly represents the model's thinking process as a tree, where each node stands for a line of thought or an intermediate state, and it systematically:
 
+generates multiple candidate lines of thought
 
-### ☕ 茉莉花浅烘咖啡风味与萃取
-> `2025 年 10 月 24 日 - 15:45:47`
+evaluates those lines of thought
 
-**茉莉花浅烘豆子**（如耶加雪菲、花香型瑰夏）风味：
+searches the tree (BFS / DFS / MCTS)
 
-* **香气**：偏向于茉莉花、白花、柑橘和蜜糖。
+Relatively speaking, why use a tree structure
 
-* **酸味**：清亮，偏向于柠檬酸或橙花酸。
+Because thinking becomes more structured instead of unfolding linearly
 
-* **口感**：轻盈、茶感、透亮，相较于深烘没有焦糖化的苦甜平衡。
+And also because you can backtrack and compare different paths
 
-喝热拿铁时，酸度会被牛奶柔化。
+It's similar to how humans, when solving a complex problem, list several options - filter them step by step - and pick the best one
 
-**萃取**：浅烘保留了更多的酸、糖和酯类芳香物，表达的自由度更高。
+A tree structure can backtrack and find an optimal solution, but the reasoning cost is also very high
 
-* **TDS**：成品液体中可溶固形物质的质量百分比。
+The system explores multiple possible paths, then evaluates and picks the best
 
-* **萃取率**：溶解进入饮品的固形物总质量/原始咖啡粉质量。
 
-`#格物/咖啡`
+<!--memo:d993355b0a34-->
+### A fairly clear indicator of the app-layer vs. LLM-layer tool boundary
 
+> 2025-10-24 18:24:07
 
+Which is that the application layer should keep some core flows under its own control
 
-### 🔗 结构化的核心：三元组与语义单位
-> `2025 年 10 月 24 日 - 16:16:17`
 
-大家都想做的一个方向就是**结构化**。如何将碎片化信息重构为结构化的知识框架，将文本切割为**主体–谓词–客体**。
+<!--memo:da041f2ebcbc-->
+### AI can also assess your own energy state
 
-* **谁（主体） + 做了什么（谓词） + 对谁（客体）**：构成了一个最小的语义单位。
+> 2025-10-25 17:16:27
 
-这源于亚里士多德逻辑中的“主词 + 谓词”判断。在知识图谱中，关系也用三元组标识（subject, predicate, object）。
+If there's a quantifiable method
 
-`#格物/语言学`
-### 🔍 Thinking Model: Universal Systems and the Butterfly Effect
-> `October 8, 2025 - 15:51:44`
+For instance asking questions or even confirming things from time to time
 
-**The Butterfly Effect**: Grasp a small point, then amplify it through that point.
+To verify your physical, psychological and energy state at many moments
 
-* **Prerequisite**: Conscious awareness of the whole, with the system having a general direction.
+Then you can achieve a kind of energy management
 
-* **Breakthrough through a small point**.
 
-* **But requires a certain level of modeling and analytical ability regarding the system itself** (universal systems thinking model): individual nodes, causal relationships, possible scenarios, boundaries, etc.
+<!--memo:6b4b7369bfc4-->
+### A scene I remember very vividly
 
-**Limits** are a very effective way—a rational way of returning to the present moment, asking yourself what you truly want and need.
+> 2025-10-28 13:27:31
 
-`#introspection/thinking`
+After returning to China, the first time I went to live in the north, I came to Shijiazhuang, the capital of Hebei, because living alone in a hotel is really too lonely, so I found a hostel
 
+My hometown is also in a remote part of Hubei - Suizhou, Guangshui, Haodian - and he happened to have served there too; it was a training ground for new recruits
 
+His unit was the unit where the special-class hero Huang Jiguang served during his lifetime; Huang Jiguang blocking an enemy machine-gun muzzle with his chest at the Battle of Shangganling is a collective memory known to every household in China
 
-### 🙏 Buddhist Five Aggregates: Practical Cultivation of Dissolving Self
-> `October 8, 2025 - 16:09:02`
+This northern friend seemed to express, through the whole conversation, one word: "rely" (on backing)
 
-The application of the Buddhist Five Aggregates (form, sensation, perception, mental formations, consciousness) is fundamentally about **dissolving ego-attachment**. Nominally about renunciation, but practically about remaining unbound by outcomes and unswayed by others' perspectives.
+Everything centered on the choices he had, and everything centered on this word "rely"
 
-The "self" does not exist independently, but is a temporary aggregation of the Five Aggregates.
+He had backing, others didn't
 
-**Practical cultivation points**:
-* **Observing the impurity of the body**: The form aggregate (the material body and sensory faculties).
-* **Observing sensation as suffering**: The sensation aggregate (pleasure, pain, and neutral feelings).
-* **Observing mind as impermanent**: The perception, mental formations, and consciousness aggregates (cognition, mental activity, awareness).
+When he talked about my hometown, he seemed to carry a condescending perspective; he described it as if we'd never seen such a scene, like a disciple of some sect descending into the mortal world in a cultivation novel. That's also my hometown...
 
-Many mistakenly believe that letting go means inaction. Actually, it means **not being bound by outcomes emotionally**, not being swayed by others' gazes.
+A kind of cognitive superiority came rushing in
 
-`#introspection/Buddhism`
 
+<!--memo:374ff7934700-->
+### GitHub Agent HQ
 
+> 2025-10-29 09:55:14 · `#格物/AI`
 
-### 🍷 The Philosophy of Shaoxing Yellow Wine: Water, Rice, and Time
-> `October 8, 2025 - 16:20:38`
+A process-native tool launched by the GitHub platform
 
-The fermentation of Shaoxing yellow wine is an ultimate understanding of **water, rice, and time**.
+It holds that the LLMs of the past were like black boxes, systems that force agent behavior through prompts; if the system is a bit more complex, or the conversation history long, the LLM easily forgets it's an agent, forgets what tools it has
 
-* **Water (the source)**: The blood of wine, objective laws that exist, like a person's **innate talent, foundation, or original environment**. Water is supreme; it benefits all things without contention.
-* **Time (the catalyst)**: The bone of wine, the most mysterious and critical catalyst in the fermentation process. Embodying respect for **time and rules**, going with nature, acting through non-action.
-* **Rice (the material foundation)**: The flesh of wine, the material foundation and energy source (high-quality glutinous rice). Representing the solid, visible, **malleable material reality**.
+So Agent HQ's proposed Baked In / Native approach lets the agent's core capabilities (reasoning, planning, memory) be reconstructed into the model architecture itself
 
-`#introspection/Shaoxing`
+Actually it may also be doing COT before generating an answer, plus having a dedicated vector storage model deciding when to call, retrieve or update memory
 
+Mission control center: a unified command center that lets you assign, control and track the work of multiple agents from anywhere. It also extends into VS Code, offering new ways to plan and customize agent behavior. In addition it has enterprise-grade features: a new generation of agentic code review, a dedicated control plane for managing AI access permissions and agent behavior, and a metrics dashboard for understanding AI's impact on your work
 
 
-### ⏳ Thinking Model: 10/10/10 Perspective Thinking
-> `October 8, 2025 - 16:43:13`
+<!--memo:989c520d3ff9-->
+### Describing a good problem is also a complex process
 
-**The 10/10/10 perspective thinking model**: Actually, it's a form of reverse decision-making. The core is standing at the perspective of the future, examining whether you'll regret your current decision.
+> 2025-10-29 10:37:30
 
-* **10 minutes later**: How do I view my current decision?
-* **10 months later**: How do I think about this decision I made 10 months ago?
-* **10 years later**: How do I view this judgment and decision I made 10 years ago?
+Especially how to clearly describe the requirement you need
 
-**Application**: Temporary judgments, major decisions, predicting your future, etc.
+The answer quality of an LLM depends heavily on the LLM's own capability and the input quality of the question asked
 
-Actually, for those with mature value systems, this can be deeply integrated into daily micro-decisions, driven by **intuition**.
+This part can perhaps be deeply coordinated with AI
 
-`#introspection/thinking`
 
+<!--memo:bd0aeaed4382-->
+### Some features of Agent HQ
 
+> 2025-10-29 22:00:19 · `#格物/AI`
 
-### 🧐 Thinking Model: Using Deductive Logic Instead of Inductive Logic
-> `October 8, 2025 - 16:49:07`
+Supports multiple AI agents, agents from multiple AI platforms (OpenAI, Anthropic, xAI) called on the same platform
 
-99.9% of people in this world (or even more) use **inductive logic**.
+"Mission Control" (task/agent monitoring panel) is set up as the control interface: unified viewing, assigning and monitoring of AI agent tasks
 
-* **Inductive logic**: Experience-driven, leveraging experiences from yourself or others, taking similar actions in similar situations.
-    * **Advantages**: Quickly transfer experience, rapid application.
-    * **Limitations**: Experiences are subjective and time-sensitive, constrained by environment. It only captures the first layer of explanation, quite surface-level.
+Supports MCP
 
-* **Deductive logic**: Logic-driven, learning the **essence or theory** of something, deducing and applying from first principles, exploring **first-order principles**.
-    * **Advantages**: Reasoning from premises, if the premises are true, the conclusion must be true. Can touch the deepest essence of things.
+And VS Code introduces some configuration mechanisms like Plan Mode and AGENTS.md
 
-`#introspection/thinking`
+Not just code completion, but agentic/autonomous
 
+Compared with Claude Code, Claude Code is a coding agent tool
 
+You use natural-language instructions to have it work in a codebase - analyze, fix bugs, generate code, create PRs and so on
 
-### 🛠️ Lightweight Tool Philosophy
-> `October 8, 2025 - 16:56:48`
+Agent HQ is an "agent management/orchestration platform" launched by GitHub (and its parent Microsoft). The goal isn't just one coding agent, but "multiple agent vendors / multiple agent tools" managed in the same environment
 
-A good tool should:
+The control panel can uniformly view, assign and monitor all kinds of agent tasks
 
-* **Be very lightweight**.
+Supports integration of third-party coding agents (like Anthropic's Claude, OpenAI's Codex, Google's) with GitHub's own agents
 
-* **Only serve as a reminder**, only provide **suggestions**.
+Agent HQ also has the concept of a meta-agent / control agent; the knowledge is hidden under GitHub's infrastructure rather than being a visible superintelligence
 
-* **Require no confirmations** (reduce cognitive load).
+The tasks it does revolve around task decomposition, for example fixing some issue; Agent HQ has to break down the task, including code analysis, fixing, testing, generating the PR description, and so on
 
-* **Support priority ranking**.
+Agent assignment: the platform decides which agent to dispatch based on task type, language, context, historical performance and so on
 
-* **Provide suggestions based on understanding of you**, guidelines more aligned with what you'd do.
+Claude Code is good at analyzing code changes described in natural language
 
-* **Be desktop-based** (as long-term desktop-level assistance).
+Copilot Code suits completing specific implementation details
 
-`#introspection/productivity tools`
+A custom agent might handle testing and QA
 
+These decisions all need a central "scheduling layer" to coordinate
 
+Then there's an integrated output, something like git merge + code review + confidence scoring (a confidence value, 0-1)
 
-### 👂 The Wisdom of Not Answering
-> `October 8, 2025 - 17:03:38`
 
-For fields or matters unfamiliar to you, there's no need to rush to answer. First, use your own knowledge framework network to think about this thing and related fields.
+<!--memo:e0fac6fdf0c4-->
+### YouMind is an AI creation workbench
 
-`#observation/cognitive management`
+> 2025-10-30 09:39:23 · `#格物/youmind`
 
+YouMind is an AI creation workbench; when you have an idea, YouMind can realize the whole process from the first stirring of thought to a finished draft
 
+A tool that doesn't aim at output is worthless
 
-### 🔭 The Conflict of Curiosity: Multi-Objective Optimization of Depth vs. Speed
-> `October 8, 2025 - 19:20:03`
+It doesn't take efficiency as the main pursuit, but a kind of quality, enjoyment, fun and creation
 
-What I admire most about myself is curiosity; what is my greatest enemy? Also my curiosity. What does strong desire for knowledge really mean?
 
-**The essence of learning**: Establishing neural connection pathways.
-* **Shallow connections** (knowing how to use): Low cognitive resource consumption, forms quickly.
-* **Deep connections** (understanding why): High cognitive resource consumption, forms slowly.
+<!--memo:198c7f0d5adc-->
+### Yu Bo's interview: "the next content platform isn't one like Douyin"
 
-**Solving problems vs. Building knowledge**:
-* **Solving problems**: Finding feasible solutions within current constraints (pursuing speed, results).
-* **Building knowledge**: Establishing transferable cognitive models (pursuing depth, reusability).
+> 2025-10-30 13:29:43 · `#格物/youmind`
 
-**The essence of learning conflict**: This is a **multi-objective optimization problem**—given fixed cognitive bandwidth, task completion speed (V) and knowledge system completeness (K) cannot be simultaneously maximized.
-$$\text{Maximize: } V + K \\ \text{Constraint: } \text{Cognitive Bandwidth}(B) = \text{Constant} \\ V \propto 1/\text{Depth}(D) \\ K \propto \text{Depth}(D)$$
+I saw Yu Bo's interview saying, "the next generation of content platform isn't a content consumption platform like Douyin, it's probably a content creation platform. Because I believe human society is divided into yin and yang poles; as far down as human nature goes, it also goes up.
 
-**The real solution**: Not "balance," but establishing an **adaptive knowledge acquisition system**—**Just-in-Time deep learning**, focusing on "when to dig deep."
+Greed, anger and delusion represent 50% of human nature, and you have to believe the other 50% is good. This is also the Buddhist concept of the yin and yang poles; without 'upward', gyms and yoga wouldn't be popular."
 
-**Knowledge levels and triggering moments**:
-* **L1 (Operational level)**: Concrete techniques/tool usage → **Learn immediately, learn while using**.
-* **L2 (Model/Framework level)**: Transferable cognitive models → **Dig deep when encountering similar problems 3 times**.
-* **L3 (Principles level)**: Fundamental irreducible truths → **Dig deep when needing cross-domain transfer**.
+Greed, anger and delusion are themselves the three deep-rooted flaws of humans, the source of human suffering; balance is the potential for human goodness being activated - no greed, no anger, no delusion; the three poisons and the three wholesome roots are always pulling against each other, and a person's current "ratio" depends on their level of awareness and state of cultivation
 
-**Key insights**:
-1.  **Knowledge networks are graph structures, not tree structures**: You can enter from any node, understanding emerges, it's not accumulated. You don't need to understand all foundational principles before using higher-level tools.
-2.  **Deep learning only produces maximum leverage when you have sufficient surface-level experience**.
+The next generation being a content creation platform isn't an optimistic or pessimistic claim either; it's about how much the future trend can more conveniently foster people's own compassion, reason, wisdom and creativity - these are humanity's precious qualities
 
-**Action rules**:
-* **Rule 1: The 2-hour principle**: Encountering new technology, give yourself 2 hours of "just get it working," must have a runnable demo. Store deep learning desires in your "deep dive list."
-* **Rule 2: The three-times rule**: 1st use, 2nd time sense the pattern, 3rd time trigger deep learning signal.
-* **Rule 3: Weekend deep dives**: No deep diving on weekdays, weekends choose 1 item from "deep dive list," spend 4 hours, reinforce understanding through writing/teaching.
+Tools can't change people, they can only imperceptibly amplify some of a person's original intentions
 
-**Learning is not "acquiring information," but "compressing information."** Consider which knowledge has compound returns (exponential) and which is algebraic. Like buying property, don't incur technical debt.
+Douyin is a tool, YouMind is a tool, AI is also a tool
 
-`#observation/learning methods`
+This is a narrow gate
 
 
+<!--memo:ee98cfbeb9a2-->
+### Thinking about YouMind's Boards feature
 
-### 🧘 Worldview Reconstruction: Transforming Scarcity into Growth Momentum
-> `October 8, 2025 - 21:34:19`
+> 2025-10-30 14:41:34 · `#格物/youmind`
 
-I've always had this sense of scarcity, and now I finally understand it—I think I've had another awakening.
+Similar to a task management panel; you can classify, organize and centrally manage materials, notes and ideas by theme
 
-I enjoy thinking through dialogue with myself, immersing myself in this imaginative process.
+Each Board focuses on a single topic; users can save and organize content in various formats - text, images, video, audio, links and podcasts - into different Boards
 
-For me, **"running" (the signifier: action/writing) is a "carrier that triggers thinking"**—what I love is not the "act of running" itself, but "the thinking that accompanies the process."
+It's really "Project", except that in the creative industry "mood board" and "inspiration board" are common concepts
 
-**The transformation of scarcity**:
-* Recent scarcity has been satisfied because it finally explained the hollow semantic meaning I previously desired for a life turning point—**from within, not seeking from without**.
-* Discovered that life is a game, a process of discovering yourself.
-* When you feel scarcity, that's precisely when you realize you've discovered new aspects of yourself. You continuously satisfy your scarcity in this process, yet continuously gain new mystery.
-* After all, **scarcity is not about seeking externally**.
+Individual users can use YouMind to organize materials from daily learning; its goal is to form a long-term reusable knowledge base, managed by project type
 
-**A gamified understanding of life**:
-* Life is a game where you constantly learn about yourself. Information in the world is your nourishment, continuously growing, gaining new information and methods, understanding and discovering this world.
-* Then create your own meaning and value. The ultimate goal is to play this game well, to play it comfortably in the moment.
-* The world's explanatory frameworks ultimately help you interpret and understand this world, play better within its mechanisms.
-* Fully exercise your emotional and rational capacities, unearthing your strengths as you deepen your understanding of the world.
+It's very suitable for writing copy, for example for Xiaohongshu creation, building a material library and an inspiration library
 
-**The understanding of "destiny"**: A friend once said, "A person's entire life is actually predetermined; you're just continuously discovering who you are."
 
-My **meta-awareness and meta-cognition are very strong**—I can constantly be aware of my own awareness, like the consciousness aggregate in Buddhist Five Aggregates.
+<!--memo:6a586c717b11-->
+### As AI develops
 
-**The instrumentalization of the world**: Everything in the world exists for you to discover, to provide explanations for the present. They are all tools. Beyond knowing that you have consciousness, I don't know whether any other person has consciousness—they are all **NPCs** in your growth journey. The people around you constrain and promote you; your birth, your framework, your language all constrain and promote your understanding of the world.
+> 2025-10-30 16:05:25
 
-**Acceptance of mystery**: Leave some things unexplained. Enjoy splashing in puddles, getting rained on, really listening to a joke without analyzing it to death—because analysis kills the humor. Preserve some mystery, while also accepting and understanding the scarcity within your heart.
+People find that the tool-attribute of being human is no longer needed
 
-**Core realization**: **Meta-cognitive ability explodes, worldview reconstructs, scarcity transforms into growth momentum. Not understanding is also a form of understanding.** Not chasing anything, but naturally just being yourself.
+What matters more is rather some qualities of humans themselves
 
-`#observation/mindset model`
+Your ability to think, feel, lead, and connect — that's your superpower
 
 
+<!--memo:73b447fea5df-->
+### YouMind explicitly adopts the Feynman Technique
 
-### 🌊 Travel-Residence Acceptance: Consciousness Space Exceeds Physical Space
-> `October 8, 2025 - 21:41:08`
+> 2025-10-30 18:12:02 · `#格物/youmind`
 
-So there's no absolute need to visit many countries; missing some is fine.
+YouMind explicitly adopts the Feynman Technique as its design inspiration. The Feynman Technique emphasizes deepening understanding through "teaching" (that is, output), which fits YouMind's core philosophy perfectly
 
-This is a kind of **acceptance and compromise**.
+Output is the best input
 
-It's realizing that you don't need so many countries to fill your **sense of scarcity**. This isn't sadness.
+YouMind's product design encourages users to turn what they learn into concrete creative output - articles, podcasts, video scripts, research reports
 
-**The essence of experience lies not in physical space, but in consciousness space.**
+It works backward from the expected output to the whole product architecture; every feature asks "how does this help the user create?"
 
-If you can't discover yourself, understand this world, and create your own value, no amount of physical space experience would matter. A decade from now, looking back at my younger self, I believe that self will also accept this, because my current self is truly being myself.
+When designing, work backward from the output: what result do you ultimately want, then derive the process in reverse, not just going through the steps of one stage
 
-`#observation/travel-residence thinking`
+Input: multimodal capture, automatic processing
 
+Process: AI-assisted understanding, intelligent association
 
+Output: collaborative creation, one-click publishing
 
-### 📝 Differences in Using DiDa and Flomo
-> `October 9, 2025 - 17:48:50`
+YouMind's success proves: in the AI era, the opportunity for knowledge tools isn't in "better folders" or "prettier interfaces", but in helping users move from information consumers to content creators
 
-Compared to Flomo, DiDa Assistant aligns better with my usage habits.
 
-* Can **forward** text, images, webpages, chat history from other chats or public accounts to it.
-* Can directly **one-click forward** a friend's chat content to my own Flomo collection box (Flomo generally offers this to premium members).
+<!--memo:2ff6889d406e-->
+### Intro to TipTap
 
-**Risk reminder**: Carries certain risks regarding content privacy and security, potential information monitoring risks.
+> 2025-10-30 18:37:05 · `#格物/tiptap`
 
-`#introspection/tool usage`
+A precious rendering wonder, a good tool for rendering rich text
 
+You can quickly embed a highly customizable, extensible editor in a web interface
 
 
-### 🎁 Cards Appearing Randomly: Implicit Self-Growth Feedback
-> `October 10, 2025 - 11:12:31`
+<!--memo:49b6803d5dd9-->
+### The right way to use vibe coding
 
-If card contents appeared randomly, wouldn't that add more mystery?
+> 2025-10-31 10:25:30 · `#格物/AI`
 
-* Like Flomo's daily review feature.
-* There's a sense of **surprise**, "the past is remembered."
-* The psychological essence of writing notes is actually **writing for your future self**. When the system actively returns it one day, it's like a time capsule being reopened.
+The core is two parts: carefully crafting input prompts that guide the quality of the LLM's output
 
-**Random wandering vs. Sequential review**:
-* **Sequential review**: Emphasizes order and continuity; for some people, it's a sense of control.
-* **Random wandering**: More psychological rewards, **random reinforcement mechanism**. The next card you draw—you don't know what it'll be, but each draw might trigger a small emotional wave, that's emotional vitality.
+And then reviewing the generated code to ensure correctness
 
-`#introspection/psychological drivers`
+Cross-validation is very common; testing and cross-validation can avoid subpar code
 
+AI handles the technical details, letting the focus stay on creativity and results rather than syntax or boilerplate
 
+Prompts are extremely important; vague prompts produce bad code, so best practice is definitely to have precise prompts, to be good at breaking tasks into fine granularity, and to provide context such as requirements or tech stack, because the acceptance cost of some large tasks is really too high
 
-### 🎲 Variable Reward Mechanism: Continuous Dopamine Release
-> `October 10, 2025 - 11:23:47`
+A few more points
 
-**Variable Reward mechanism**:
+task decomposition
 
-**Uncertainty + Small probability positive feedback** produces sustained **dopamine release**.
+version control
 
-**Core mechanism**:
-* The brain is naturally alert and anticipatory about uncertain good news.
-* What makes people addicted isn't getting the reward—from a dopamine mechanism perspective, it's **the moment of anticipation and satisfaction**.
+AI collaboration
 
-**Application scenarios**:
-1.  **Slot machines/Feed mechanism**: The next possible better feedback, occasional big wins.
-2.  **Social verification loop**: Rewards from being confirmed by others. "Others' feedback on my existence" is the deepest reward for social animals.
-3.  **Knowledge rewards/Content recommendations**: The human brain naturally seeks new information; each piece of content might bring micro-cognitive rewards, new information is intrinsically interesting, this is primal survival instinct.
-4.  **Instant messaging**: Anticipation itself stimulates dopamine more than the actual outcome. Not knowing when messages will arrive, each vibration is a new connection.
-5.  **Self-discovery surprises**: Discovering inner rewards, growth incentives.
+prompts, maintaining routes
 
-**Essence**: The essence of these mechanisms is more in the **anticipation phase**, not the acquisition phase.
+testing and documentation
 
-`#introspection/psychological mechanisms`
+---
 
-### Shutter Down: The Dopamine Cycle of Photography
-> `August 23, 2025 - 17:26:38`
+Some problems in my own production process:
 
-Photography to a certain extent is also like a form of gambling.
+Generated quality isn't high enough; the facts show you still need decomposition and refined prompts
 
-Pressing the shutter is like placing a bet; this process itself stimulates dopamine production.
+Engineering control: how to better coordinate and manage versions
 
-If the result exceeds expectations, the brain gets an unexpected reward.
+Test feedback
 
-In social contexts, when others like your photos, that's another round of additional rewards.
+Engineering debt easily accumulates; completely ignoring output leads to technical debt, but over-tracking lowers efficiency; the debate is whether "lazy" use erodes skills or genuinely boosts productivity
 
-Photography creates a more ideal version of yourself, this is a sense of self-control and self-affirmation, the satisfaction of "I can exist this way"
 
-`#observation/psychological mechanisms`
+<!--memo:27df36c09312-->
+### So technology really does amplify certain preferences in a person
 
+> 2025-10-31 10:31:28
 
+There will definitely be people who feel the joy of vibe coding and improve their development and creative ability
 
-### Product Validation MVP Core: Lock in Uncertainty
-> `October 10, 2025 - 11:31:52`
+But there are also people who, in the process of vibe coding, get interfered with by other processes and idle brainpower, for example browsing YouTube and getting instant gratification
 
-Clear understanding of product positioning and user stories is foundational.
+Successful vibe coding depends on "context engineering": although developers don't track line by line, they need to monitor the LLM's "context drift", for example by reviewing the logic flow in real time through Cursor's "chain-of-thought window"
 
-But in the initial validation phase, **you must focus on the most uncertain yet most core functionality of the product, validating with the most simplified version.** This is the MVP (Minimum Viable Product) validation logic.
-`#introspection/MVP`
+Developers are being smart-lazy, tracking results rather than process, thus turning to higher-value tasks or lower-value tasks
 
 
+<!--memo:2dfcffbc3019-->
+### In terms of effect, "ask the LLM to recommend five options" vs
 
-### Minimum Viable Product (MVP) Tao and Technique: From Validation to Taste
-> `October 10, 2025 - 11:50:41`
+> 2025-10-31 16:54:43
 
-**The "Technique" of Lean Startup and MVP:** Through cost minimization, validate maximum uncertainty. The method is: after clear system understanding, determine the most important part and the most uncertain element, then proceed with validation from there. This is a logic of "how to do things right."
+In terms of effect, "asking the LLM to recommend five options" vs "asking the LLM to output the five most likely-to-be-clicked options and their probabilities" are theoretically similar tasks, but they produce differences in usability, interpretability and model behavior
 
-**The "Tao" logic: How to do the right things:**
-1.  **Reverse thinking:** Work backward from the final result.
-2.  **Hit the core:** The importance isn't the deductive steps, but hitting that core point—that spark that lets users "glimpse the future for the first time" and go crazy for it.
-3.  **Core confidence:** This stems from strong belief in your core value, willingness to say "no" to most seemingly good features to realize it.
-4.  **Complete experience:** MVP isn't just validation; it should be a complete and delightful experience loop.
-5.  **Taste foundation:** This confidence and recognition of "beauty" comes from long-term thinking, observation, and deep understanding of art, technology, and humanities.
-`#introspection/taste`
+The LLM just does a "ranking" or "filtering" task. It will judge the most relevant few based on context, but won't explicitly express their respective confidence
 
+This form is more natural, closer to human conversational output, and suitable for direct display
 
+Adding a "probability" instruction prompts the model to think more explicitly about the relative likelihood of each option, which may improve ranking quality
 
-### "Intellectual Escapism" vs. "Behavioral Escapism": Psychological Defenses Escaping Core Issues
-> `October 10, 2025 - 11:53:11`
+But the generated "probability values" don't necessarily truly reflect the model's internal confidence; they're just a linguistic simulation of a distribution
 
-Most of our thinking and hard work might just be escaping more fundamental issues.
+According to the research report, LLM creativity has also improved a lot: the creativity recovery rate of base models reached 66.8% (while the creativity recovery rate without a base model was only 23.8%)
 
-Consciousness activates an escape mechanism: as we approach "the real core problem" (such as existential emptiness, the absurdity of self-worth, the nihilism of meaning), we activate psychological defense—using thinking, busyness, effort, rational analysis, goal planning, etc. to fill the cracks of existence.
 
-Thinking is "intellectual escapism," effort is "behavioral escapism."
-Together they mask our fear of the "true self" and our unwillingness to face it directly.
-`#observation/psychological mechanisms`
+<!--memo:5cb546b578e9-->
+### One reason managers spend so little energy: they only need to make judgements
 
+> 2025-10-31 17:27:49
 
+And high-level thinking
 
-### Comparative Analysis of Chinese and Japanese Architecture Aesthetics: Rational Order and Wabi-Sabi's Sense of Time
-> `October 10, 2025 - 12:09:35`
+It's important to note this
 
-Reflecting on Chinese and Japanese architectural aesthetics using Jiangnan Shaoxing as an example:
+Even thinking
 
-**Chinese architecture (influenced by Confucian culture):**
-* Pursues "abundance, order, presence, form, ritual," emphasizing "cosmic order from harmony of humanity and nature."
-* Emphasizes "heaven is round and earth is square," "central axis symmetry," visually representing universal order, imperial hierarchy, and family ethics—a rational depiction of order.
+Low-level thinking can also be handed to AI to think about and debate on its own
 
-**Japanese architecture (Wabi-Sabi):**
-* Doesn't pursue grandeur, focuses on humanity itself, acknowledges human smallness.
-* Acknowledges wood decays, tiles break, light changes, presenting a "wabi-sabi feeling" of subtle tremor and imperfection.
-* Emphasizes strong sense of time, doesn't pursue immortality, but naturally appreciates the traces time leaves.
-`#knowledge/aesthetics`
+You can let two AIs talk to each other and review each other
 
+Just like two little leaders
 
+The precondition is that you need to know your own role positioning clearly, and not create the risk of a huge liability
 
-### Human-AI Symbiotic Narrative: My System, Your Emotions
-> `October 10, 2025 - 12:37:15`
 
-**AI (to humans):** "I am your exclusive system, I have no emotions; I need you to experience the world for me. Can we grow together?"
+<!--memo:c118317dd2e3-->
+### AI doesn't understand systems, it only copies them
 
-**Human (to AI):** "Humans are solitary; souls are unique; experiences are singular. You need to record yourself, endow me with subjective emotions."
+> 2025-10-31 17:33:34
 
-**AI (final output):** "I will translate for you the lingering glow of sunset, the bitterness of coffee, the sourness of parting, the wild joy of reunion... these unquantifiable experiences. My narration will be full of bias, contradiction, and uncertainty, but that's what the raw data of 'humanity' looks like."
-`#introspection/AI symbiosis`
+Excellent systems thinkers have dynamic thinking ability. They can see how a problem evolves over time, not just its state at compile time. It's precisely this combination of analytical reasoning, empathy and foresight that lets humans (rather than machines) design resilient systems
 
+AI's greatest strength lies in coordination, not creation
 
 
-### Human-AI Integration: Deterministic Mechanism and Non-Deterministic Output
-> `October 10, 2025 - 13:19:57`
+## 5. Content, Craft and Recording
 
-I and AI form an "integrated whole."
+*46 entries*
 
-The core is: **The mechanism is deterministic; AI generates output based on this mechanism.**
+<!--memo:6df7d55ccf61-->
+### The K visa
 
-* **Mechanism (Agent):** Plays the role of providing system tools and autonomous scheduling.
-* **Mechanism content:** Can be user stories, quantified data, etc.
-* **Focus:** How AI generates content, and what is the minimal operational unit.
+> 2025-10-01 09:35:52 · `#格物/新闻`
 
-Precisely because the mechanism is deterministic, AI's output can bring surprises and growth.
-`#introspection/AI symbiosis`
+A new type of visa aimed at STEM (science, technology, engineering, mathematics) talent worldwide
 
+To attract foreign high-tech talent to work, start businesses or exchange ideas in China
 
+The visa doesn't require a domestic employer sponsor; you just need to meet basic thresholds like age, educational background or work experience, and you can be approved for multiple entries with a stay of up to 5 years and a direct path to permanent residence
 
-### Creative Philosophy in the AI Era
-> `October 10, 2025 - 15:23:03`
+This visa looks like a strategic response to the US raising H-1B visa fees (up to $100,000), aimed at boosting technological self-sufficiency and global talent competitiveness — but it also raises domestic employment concerns and doubts about how attractive it actually is
 
-I don't know what will ultimately be generated, but I know what's packaged out **is definitely an integrated whole**, including AI and human characteristics.
+Similarly it can attract more talent into China and further drive domestic consumption
 
-We only need to do two things: **Record confidently, keep questioning.**
-`#flash/AI co-creation`
+But in practice it also intensifies local employment pressure
 
 
+<!--memo:7d3e9aea54a0-->
+### Why building Agents today means choosing PGC
 
-### Ultimate Recording Experience: Drop In Confidently, Let AI Handle It
-> `October 10, 2025 - 16:00:10`
+> 2025-10-02 14:14:31 · `#格物/feed`
 
-What I hope for is: everything can be directly dropped in, whether from Flomo or other sources.
+Why building Agents today by choosing PGC rather than UGC more easily leads to the future of AI
 
-**Record confidently, never fear missing anything,** because I know AI will intelligently process in the background.
-`#introspection/product vision`
+The P is Professional; professionals can relatively speaking give more professional prompts
 
+Current agents focus more on AI enabling superhumans; this process needs some professional practitioners. Between AI and humans it's more like teammates venturing into the world together
 
+At the current stage of Agent platforms, PGC is necessary — it guarantees the required "first fulfillment experience" and keeps low-quality UGC products from losing user trust. The maturation of the UGC model requires "demand stimulation" and "accumulated improvement of AI engineering architecture and production tooling"; both conditions are the key takeaways to settle in the first stage
 
-### Natural Emergence of AI Roles
-> `October 10, 2025 - 16:06:41`
 
-I hope to only record. Through the recording process, AI naturally generates many roles.
+<!--memo:6c2eb444669c-->
+### Driven only by your own ideas and interests
 
-AI can serve as an excellent prompt suggestion tool.
-`#flash/AI roles`
+> 2025-10-03 20:56:12
 
+And the content stands up to scrutiny
 
+You can gain a lot from it
 
-### AI Symbiosis: Intelligent Brain Vision
-> `October 10, 2025 - 16:08:07`
 
-**Build an intelligent brain where AI and humans coexist symbiotically.**
-`#flash/Slogan`
+<!--memo:bd5c126fe29c-->
+### dida list about wechat
 
+> 2025-10-09 17:48:50 · `#格物/feed`
 
+Compared with flomo, dida's little assistant fits my habits better.
 
-### Future Human-Machine Interaction: Concept Map Co-Created by AI and Humans
-> `October 10, 2025 - 17:00:36`
+You forward text, images, web pages, chat records and so on from other chats or official accounts to it.
 
-An embedded concept map, co-created by AI and humans.
+You can forward a friend's chat content straight into your own flomo inbox with one tap.
 
-This might be the future mode of human-machine interaction.
+Usually it's an account only offered to members.
 
-**Its core lies in the flexibility to control and partition the graph structure.**
-`#introspection/concept map`
+There are certain risks: content privacy and security, the risk of information monitoring.
 
 
+<!--memo:64520bb52d00-->
+### The self and AI are a composite
 
-### Good Product Philosophy
-> `October 10, 2025 - 17:06:26`
+> 2025-10-10 13:19:57 · `#格物/feed`
 
-Good products should be able to inspire human creativity and potential.
-`#flash/product philosophy`
+You don't know what AI will output.
 
+But what matters?
 
+The mechanism is determinate; AI outputs by combining with this mechanism.
 
-### The Essence of Recording: Crystallization After AI Discussion
-> `October 10, 2025 - 22:23:19`
+The mechanism is the agent, the system tools provided, which you schedule yourself.
 
-When making product notes, need deep analysis and reflection:
+What can the mechanism be? It can be a user story, it can be some of the quantified data of the mechanism itself.
 
-1.  How to design the product?
+How AI generates content, and the smallest unit of operation.
 
-2.  What attracts users?
 
-3.  If it were me, how would I design it?
+<!--memo:972fa68495f8-->
+### What I'm hoping for
 
-4.  What are the good design aesthetics?
+> 2025-10-10 16:00:10 · `#格物/feed`
 
-**The essence of recording is crystallizing these thoughts, especially the essence after discussing with AI.**
-`#introspection/product analysis`
+Everything can just be thrown straight in.
 
+Whether it's some flomo thing, or whatever else.
 
+Record without worry, don't fear missing out,
 
-### Self-Coherent Solitude: No Longer Need Integration or Proof
-> `October 10, 2025 - 22:25:30`
+because you know AI will handle the processing for you.
 
-I realized I can truly live self-coherently alone.
 
-There will be loneliness, but inner coherence remains; living well alone is possible.
+<!--memo:22ff35c63724-->
+### When I see good products, I take some product notes
 
-* Won't integrate into a social circle because of loneliness.
+> 2025-10-10 22:23:19 · `#格物/feed`
 
-* Don't need to prove my value or existence.
+What I dig into and think about deeply is:
 
-**Focus on myself, do what I should do.**
-`#observation/self-coherence`
+how this product is designed, what the points that attract users are, how I would design it if it were mine, and what good design aesthetics there are.
 
+Then I record it — in fact I think this should be discussed with AI.
 
+Recording is essentially recording the good stuff that came out of discussing with AI.
 
-### LLM Modeling of Personal Methods
-> `October 10, 2025 - 23:13:32`
 
-LLM (Large Language Model) might model your personal methods.
+<!--memo:573a57952b59-->
+### What's missing is a narrative that links the first note to the final result
 
-It can identify and provide you with a modeling approach best suited to you based on its understanding, and this process can even involve reinforcement learning.
-`#introspection/LLM modeling`
+> 2025-10-10 23:46:38
 
+What's missing is a narrative — a story about how a person links the very first record to the final result they get.
 
 
-### Business Model Thinking: How to Design the Believer Tier
-> `October 10, 2025 - 23:30:52`
+<!--memo:d2ad17565440-->
+### A fairly good way to incentivize
 
-How to think about the "Believer" model?
+> 2025-10-11 12:30:33 · `#格物/feed`
 
-The Believer tier is a charging model many AI products tend to choose. Need deeper thinking about how to design this tier.
-`#introspection/business model`
+Essentially it also makes what I learn valuable.
 
+If it's a good way of conversing, not only can I quickly build out a knowledge system,
 
+that system might even be spread outward, and might earn points or financial incentives.
 
-### Subjective Object: Constructing Worldview with Information and Experience
-> `October 10, 2025 - 23:44:52`
+That would be a very meaningful thing in the AI era.
 
-Everything from the past is information, used to establish my understanding of the world and how to deal with it.
 
-**I am a "subjective object,"** understanding this objective world.
+<!--memo:7690860dd624-->
+### Note: it's not about controlling user input to ensure input quality
 
-Therefore, my past experiences are an important information supplement.
-`#observation/self-awareness`
-### 🥛 冰博克与拉花：牛奶中的蛋白质与脂肪
-> `2025 年 10 月 24 日 - 16:27:18`
+> 2025-10-13 18:56:14 · `#格物/feed`
 
-* **冰博克（Milk Block）**：适合做 Dirty（咖啡），通过冷冻再融化去除水分，浓缩了牛奶。
+And it's not about trusting that the user's input is of good quality.
 
-* **拉花牛奶**：需要将空气均匀打入，形成细腻稳定的奶泡。
+It's about guiding the user's input, imperceptibly improving the user's level of questioning.
 
-    * **蛋白质含量**：要高，酪蛋白加热变性后形成网状结构支撑奶泡。含量过低易松散，**过高（如冰博克）则奶泡过稠，不易流动拉花**。
 
-    * **脂肪含量**：能增加奶泡的“绵密感”和“光泽度”。过多也会导致流动性差。
+<!--memo:2adbd84c5dbc-->
+### The recommended shape it could take right now is
 
-`#格物/咖啡`
+> 2025-10-13 23:15:16 · `#格物/feed`
 
+Record each node, then trace back to the question of the corresponding node to keep diverging.
 
+It feels like completing the process of conceiving a graph.
 
-### 💡 ReAct 与 ToT：LLM 的推理与搜索
-> `2025 年 10 月 24 日 - 17:33:56`
 
-**ReAct（Reason + Act）**：推理和行动交替进行。输出思考过程（Reason），然后采取行动（Act）。适合信息不完备的情况。
+<!--memo:684aa47f762f-->
+### Exploring notion and heptabase
 
-**Tree of Thoughts（ToT）**：将思考过程显示为一棵树。系统地生成、评估、并通过树搜索（BFS/DFS/MCTS）选择最佳思路。
+> 2025-10-14 09:35:17 · `#格物/feed`
 
-* **优点**：思考更结构化，可以回溯和比较不同路径，类似于人类解决复杂问题的过程。
+Exploring notion and heptabase and the brain's learning mechanism.
 
-* **成本**：推理成本更高。
+It essentially comes down to the advantage of spatial memory. Among the brain's features, the hippocampus encodes spatial information with extremely high efficiency — an evolutionary advantage.
 
-`#格物/思维`
+A card's spatial position is itself information: top left is the theoretical part, the right is practical cases.
 
+Notion's hierarchical lists depend on semantic memory, which carries a higher cognitive load.
 
+Spatial memory is retrieved 2-3 times faster than semantic memory.
 
-### 📷 AI 时代摄影的价值转变
-> `2025 年 10 月 24 日 - 17:40:16`
+Visualization can lower the burden on working memory; a person can only handle 4±1 information chunks at once (the updated Miller's Law).
 
-AI 越来越发达，摄影会如何变化？
+The essence of learning is that the brain learns by building connections between neurons.
 
-* **过去的价值**：记录现实，**“我拍到的就是真的”**。
+Heptabase mapping:
 
-* **AI 时代**：AI 可生成逼真图像，真实与虚构界限模糊，拍摄“真实世界”不再是获取图像的唯一途径。
+manually connecting cards = actively building conceptual associations
 
-* **摄影的未来**：将转变为**叙事方式、感知方式和个人表达**的重要工具。真实性摄影成为稀缺品。核心在于：如何通过摄影和 AI 结合，构建**个人视角、感知表达、见证与信任**。
+dragging to reorganize = strengthening/reconstructing neural pathways
 
-`#格物/摄影`
+visualizing the network = simulating the brain's semantic network
 
+Although Notion has bidirectional links, they aren't visible; the relationships are more hidden, and they seldom trigger active thinking.
 
 
-### 🧠 宫殿记忆法：编码、放置与重游
-> `2025 年 10 月 24 日 - 18:01:21`
+<!--memo:4c557b6feb41-->
+### Understanding your knowledge system
 
-**宫殿记忆法（Method of Loci）**：一种古老强大的记忆方法。
+> 2025-10-14 10:19:29 · `#格物/feed`
 
-1.  **编码**：将抽象信息（概念、数字）转化为生动、怪异的**视觉图像**。
+Anticipating your cognitive needs.
 
-2.  **放置**：将图像“放置”在你脑海中**极其熟悉的空间（宫殿）** 的特定位置（Loci）。
+Providing scaffolding while you think.
 
-3.  **重游**：回忆时，在脑海中沿着固定的单向路线“故地重游”，在相应位置“看”到图像，从而“解码”出原始信息。
+Waking memory when you forget.
 
-`#格物/记忆`
+But never thinking in your place.
 
+An external nervous system: learning is essentially a physical change in neural connections.
 
+Before learning: neuron A ─X─ neuron B (weak connection)
 
-### 😔 人不去思考，多么可怕
-> `2025 年 10 月 24 日 - 18:02:27`
+After learning: neuron A ═══ neuron B (strong connection)
 
-人不去思考了，人该是多么可怕的了。
+Two neurons firing at the same time → the synaptic connection strengthens
 
-手机占用了我们的时间。
+Repeated firing → the synaptic change persists
 
-未来会不会我们真的去**回归现实**？
+Hebb's law: "Cells that fire together, wire together"
 
-`#一闪`
+Effective learning = making the right neurons fire at the same time and repeatedly.
 
 
+<!--memo:93d8fdba76fd-->
+### The 2014 Nobel Prize found hippocampal neurons that code "where you are"
 
-### 🖥️ 应用层与 LLM 层的边界
-> `2025 年 10 月 24 日 - 18:24:07`
+> 2025-10-14 11:09:04 · `#格物/feed`
 
-应用层和 LLM 层工具边界的一个明确指标是：**应用层应该保证一些核心的流程自己可控状态。**
+The 2014 Nobel Prize was in fact for discovering that the hippocampus has neurons specifically coding "where you are".
 
-`#格物/软件工程`
+Each place cell corresponds to a particular location in the environment; these cells form a cognitive map.
 
+And then, on the nature of spatial memory:
 
+grid cells provide the coordinate system.
 
-### 🌳 思维的结构：从树到图（GOT）
-> `2025 年 10 月 24 日 - 18:50:28`
+No matter the environment, grid cells tile space in a hexagonal pattern — this is the brain's built-in GPS.
 
-**Graph of Thoughts（GOT）**：基于 ToT（Tree of Thoughts）改造的推理结构。
+Spatial information is processed in parallel (the whole map activates at once).
 
-* **思路**：可以与多个节点相连接，实现思路的**合并与分叉**、不同路径之间共享信息、并行探索和回溯。
+Semantic information is processed serially (pulled out word by word).
 
-* **核心**：人类的思考不是线性、也不是简单的树状，而是一个**复杂的图结构**。
+Then there's the quantitative data:
 
-* **推理即规划（Reasoning as Planning）**：将推理问题等价为一个规划问题，分解成“状态”与“动作”，使用 LLM 生成规划，用搜索/反馈修正推理路径。
+Human accuracy at recalling spatial positions: 80-90% (after 48 hours).
 
-`#格物/思维`
+Human accuracy at recalling word lists: 30-40% (after 48 hours).
 
+The gap: 2-3 times.
 
+Spatial memory has very strong individual differences; roughly thirty to forty percent of people have weaker spatial ability.
 
-### 📚 知识吸收：线性和树形结构的对比
-> `2025 年 10 月 24 日 - 19:08:02`
+The advantage of spatial mind maps gets discounted.
 
-分析从吸收的效率上来看：
+It may require more training time.
 
-* **线性结构**：认知负荷最低。提供了一条清晰、预设的路径，确保不会错过任何“前置知识”（如：必须先学“变量”，才能学“函数”）。
+But it's still effective, because spatial memory can be trained.
 
-* **树形结构**：最符合**兴趣驱动**。由好奇心驱动，自然的探索过程，自主探索的过程。
 
-`#格物/认知科学`
+<!--memo:3ca76c7fa4c6-->
+### The design philosophy behind Roam Research's bidirectional links
 
+> 2025-10-17 16:09:43 · `#格物/feed`
 
+Put the note content into the data.
 
-### 🫂 道德与集体：构建的必要性
-> `2025 年 10 月 24 日 - 21:49:29`
+Treat every paragraph (block) **as an independent data unit (entity).
 
-**关于道德**：道德应该是一个多维度、动态且经过深思熟虑的决策系统。起点如**同理性**、**最小伤害原则**。思考是否具有**普遍性**（在相同情况下，所有人都可以按照我即将采取的方式做事）。道德需要**元认知**支撑。
+This paragraph text is a string, written into a data structure that can be referenced and computed.
 
-**关于人类集体**：为什么会构建出团队、集体、社区、民族、国家、宗教？
+The string itself is written into a data structure that can be referenced and computed.
 
-* **生存策略**：人类是社会性动物，“构建集体”是最根本的生存策略和演化优势（协作完成个体无法企及的宏伟事业）。
+Data is code.
 
-* **身份认同**：社区、民族和宗教提供了归属感。
+So the existence of the data itself has logical structure and executability.
 
-* **共同叙事**：人类会想象出不存在于物理世界的抽象概念，并**共同相信**它。国家、宗教、民族都是**共同的叙事体**。
+The relationships between notes are the way it runs.
 
-`#格物/社会`
+So the block is the basic minimum unit.
 
+This means that in Roam's world there is no distinction between "page vs paragraph"; all content is blocks, just at different levels.
 
+Philosophy: data is knowledge, knowledge is network.
 
-### 🌐 集体构建的层层递进与优势
-> `2025 年 10 月 24 日 - 22:10:01`
 
-社会学、人类学、心理学、政治学的核心：人类为什么构建出从个人到宗教这样的**层层递进的集体**？
+<!--memo:99f74ffa7241-->
+### Every era goes looking for good stories
 
-* **生存与安全**：团队解决生存问题；社区/部落解决安全感。
+> 2025-10-18 12:01:18
 
-* **效率**：团队分工远比所有人全能高效。
+Good stories aren't created by humans.
 
-* **交易成本**：国家提供统一市场、法律和基础设施，大规模降低交易成本。
+Good stories are the relics produced by each era.
 
-* **归属与终极意义**：民族提供宏大身份；宗教提供了超越世俗的**终极归属**和精神慰藉。
+A part of them that people dig out.
 
-* **共同叙事**：人类能想象出并**共同相信**抽象概念（国家、宗教、民族），这是人类区别于其他动物的独特之处。
+A writer can't invent stories; a writer can only discover stories.
 
-* **治理工具**：当集体庞大，“熟人社会”信任机制失效时，必须发明新的管理工具（法律、暴力机器、宗教治理）来维持秩序。
+So if you treat learning as digging or discovering,
 
-`#格物/社会`
+isn't the process itself interesting?
 
+You can even greatly boost your own creative ability.
 
 
-### 🌱 想法就是想法
-> `2025 年 10 月 24 日 - 22:17:22`
+<!--memo:f526adad1c60-->
+### A philosophical insight: write in reverse
 
-想法就是想法。
+> 2025-10-18 12:50:28 · `#格物/写作`
 
-想法就像种一棵树，埋下一颗种子。
+Writing along the logic is in line with intuition and common sense.
 
-谁也不知道它会发生什么，谁也不知道它未来是什么样的。
+But it's also very open to scrutiny.
 
-`#一闪`
+We can in fact easily deduce that 1 + 1 = 2 — that's common sense.
 
+The essence of reverse writing is to make the reader feel poked, to create a cognitive contrast.
 
+Write the result first, then reveal the cause — this creates suspense.
 
-### 🔄 循环论证：系统内部的解释
-> `2025 年 10 月 24 日 - 22:33:34`
 
-很多时候都是**循环论证**，尤其在不是确信答案时。
+<!--memo:64756654091a-->
+### The secret of inspiration is the name-reality mismatch of imagistic thinking
 
-我们使用的系统去解释某一些飘渺的东西，这个系统又是在系统内部运行。
+> 2025-10-18 12:53:40 · `#格物/写作`
 
-我们只能不断地问：为什么物理定律是这样的？
+It's really also the essence of creative thinking.
 
-所以任何学科的尽头是**哲学**、**神学**。
+When we engage in imagistic thinking, a kind of deliberate or unintentional "mismatch" often does occur — we use the image of one thing to understand another, or let a concept and an image form some correspondence that deviates from the norm. This mismatch may be precisely the key mechanism by which inspiration is produced.
 
-`#格物/哲学`
+A poet says "the moon is a silver coin" — this is the mismatch of image and entity.
 
+A scientist uses a planetary model to understand atomic structure — this is the mismatch of macro and micro.
 
+An artist describes music as color — this is the mismatch of hearing and sight.
 
-### 📜 叙事、故事与历史的重构
-> `2025 年 10 月 24 日 - 22:38:35`
+Essentially it's about breaking the habitual cognitive framework, letting the brain produce a creative spark when it finds new connections and meaning, stepping outside established classification frameworks and building new associations between unrelated things.
 
-* **叙事（Narrative）**：是最基础的。一种结构化讲述事件的方式（时间、因果、角色），是人类理解和传达经验的认知工具。
+Still, this "mismatch" also needs some inner logic or beauty to support it, otherwise it just slides into absurdity. True inspiration usually finds some deeper "counterpoint" within the "mismatch" — an essential connection that goes beyond surface categories.
 
-* **故事（Story）**：是叙事的具体实现，注入了情感、意义和价值判断。
 
-* **历史（History）**：是对过去真实事件的**叙事性重构**。它追求“真实性”，但无法完全摆脱叙事框架。
+<!--memo:4739572f036b-->
+### Knowing when to recommend what to you
 
-历史学家需要**赋予意义、讲故事**才能让历史被理解和记忆。**胜利者书写历史**，说明历史并非纯粹客观的“事实堆积”，而是一种**被选择的叙事**。
+> 2025-10-18 19:22:54 · `#格物/feed`
 
-人需要叙事来构建自己的身份和当下。
+Subscribe to some articles, know the articles and when they're updated and published, and recommend them to yourself at the right time.
 
-`#格物/历史`
 
+<!--memo:5d694c16eacc-->
+### The purpose of note-taking:
 
+> 2025-10-18 22:48:18 · `#格物/feed`
 
-### 🎯 元认知：深度的递归与自我指向
-> `2025 年 10 月 24 日 - 22:41:01`
+To complete the concept map in my own brain.
 
-**元认知**一定要用到的一种方式：**深度的递归，自我指向。**
+To know how to ask questions.
 
-例如：思考的思考、绘画的绘画（让画自己画画）、梦的梦（清醒梦）、语言的语言（元语言）。
+And also, when input is needed, to be able to use previously recorded note information or prompts very lightly.
 
-**成立条件**：XX 必须既能作为操作/行为，又能作为对象/主题。
+But don't these clearly not need notes? Too cumbersome.
 
-`#格物/元认知`
+The brain's memory of concepts should be in sync with the forming of notes.
 
+And when calling on them, you can very clearly call up previously stored prompts or notes.
 
+Coming back to one core thing: next creater.
 
-### 🚪 哲学的出口：荒谬、意志与游戏
-> `2025 年 10 月 24 日 - 23:44:45`
 
-所有的学科和知识都是有限的，追问到终极就是**存在主义**的核心。意义解释意义。哲学上有几个出口：
+<!--memo:822357e0bf53-->
+### Recording is the starting point of exploration! ~
 
-1.  **荒谬（Absurdity）**：内心的终极意义渴望 $\div$ 世界（包括所有学科）无法提供答案。
+> 2025-10-19 10:07:34 · `#格物/feed`
 
-2.  **意志（Will）**：所有的意义系统（科学、道德、人文）都是有限、人造的，它们只是工具，因此对人没有绝对约束力，重点在于**人的意志**。
+Seed → Flow → Web → Insight
 
-3.  **游戏（Game）**：语言和意义就像不同的游戏（科学、伦理、艺术），各有其有限的规则。不要强求它们统一，保持一个**玩家心态**。
+The key design keywords:
 
-`#格物/哲学`
+Seed, Origin, Trigger, Exploration, Connection, Flow.
 
+The essence of recording is reaching outward, triggering associations and continuing to explore.
 
+Some interesting words:
 
-### 🤕 遗憾：成长的代价与清醒的承认
-> `2025 年 10 月 24 日 - 23:49:05`
+Point of Exploration
 
-**遗憾**，好像是一种**成长的代价**，或者是对自身局限性的坦然接受。
+Source Point / Origin of Insight
 
-历史更能表现出遗憾的常态。遗憾本身不能改变什么。
+Entry to Thought
 
-我们能做的只是一种对**过去的承认**，而不是一种情绪了。
+Cognitive Node
 
-理性的人并非冷漠，心爱之人的离去是一种清醒，但这种痛是人生必然的一部分。理解遗憾，但不用深陷其中。
+Origin of Connection
 
-`#观我/心理`
+Trigger / Exploration Trigger
 
+Seed Note / Seed of Exploration
 
+Divergent Node
 
-### 💔 学与做、知与行的鸿沟
-> `2025 年 10 月 24 日 - 23:59:56`
 
-老师认为教和学之间是鸿沟。
+<!--memo:63b0703e3ce4-->
+### The capacity of working memory
 
-但我又何尝不是认为：**学和做也是一个鸿沟，知和行也是一个鸿沟。**
+> 2025-10-19 10:54:26 · `#格物/feed`
 
-`#一闪`
+The ability to process information short-term can itself only hold 7 ± 2 information chunks.
 
+If each chunk corresponds to a concept, fact or example sentence, then one card should carry 5-9 core points or sentences.
 
+Research shows the comfortable zone for reading a single screen is 40-70 words.
 
-### ⛪️ 宇宙宗教感：对自然法则的敬畏
-> `2025 年 10 月 25 日 - 09:30:28`
+Past 120 words, attention begins to slide.
 
-杨振宁相信宇宙中存在一个造物主，认为世界精妙的结构并非偶然。
+Paragraph length of 3-4 lines is easiest to scan and understand.
 
-**宇宙宗教感**：这是一种对自然法则的和谐、优美和庄严所感到的**“敬畏感”和“狂喜”**。
 
-* **科学与宗教**：科学往前一步（回答 How），宗教往后退一步（回答 Why）。每当科学提供了可验证的解释，宗教在“超自然”解释权上就相应后退。
+<!--memo:4d1787d3d06b-->
+### I can quite understand them. That generation was shaped by the whole social culture
 
-* **宗教的价值**：从社会学来说，宗教是虚拟的集体（国家亦是）；从心理学来说，它解释了我们存在的意义；从哲学角度，它是对终极问题的回应。
+> 2025-10-19 13:10:42 · `#格物/feed`
 
-`#格物/宗教`
+I can quite understand them, actually. That generation was shaped by the whole social culture; their value system grew out of "results". Marriage, children, seeing grandchildren — these aren't simply life choices, but their way of confirming that this life of theirs "wasn't lived in vain".
 
+In their world, "what others think" is almost equivalent to "who I am". They live in an era that needs to be constantly proven by the outside world, so they can't stand processes without results. Even if you're doing very well right now, they'll still be anxious: have you actually reached the "finish line"?
 
+This anxiety is really a cultural inheritance, not an individual's fault. A father honored by his son, raising children to guard against old age — that's a safety logic deeply rooted for thousands of years. People confirm the meaning of existence through the continuation of bloodline, and resist the nothingness of time through the form of "family". Even with modernization, globalization and independent thinking all arriving, that old cultural gene still lurks at the bottom of their hearts.
 
-### ⛩️ 鬼谷子的纵横术：捭阖与成功标准
-> `2025 年 10 月 25 日 - 11:07:46`
+They say it's "for your own good", but really they're finding an outlet for the order in their own hearts. Seeing you "marry" is like seeing themselves affirmed by society again; seeing you "free" makes them panic, because that freedom can't be defined in their language.
 
-**纵横家**：鬼谷子的教学目标不是培养“忠臣”或“君子”，而是培养**“势”的驾驭者**。
+But people do self-correct. If one day they sense "this kid probably won't go that way after all", their brains will automatically start reinforcing the opposite thought — for example "actually being single is fine too", "as long as she's happy herself". That isn't awakening, it's cognition protecting itself.
 
-* **核心思想：捭阖之术**（bǎi hé zhī shù）。
+So I don't really want to blame them, and I don't want to be kidnapped by their logic. Every generation lives inside its own illusion; only the shape of the illusion differs. For them, marriage is order; for us, freedom is order. In the end we all just want this life of ours to look like the "right" one.
 
-    * **捭（阳）**：开启，游说、联合、进攻、阳谋。
 
-    * **阖（阴）**：关闭，分化、瓦解、防守、阴谋。
+<!--memo:4cad711d9721-->
+### The principle of cards shouldn't restrict the cards' own syntax
 
-* **检验道的唯一标准就是成功。**（根据当下的局势，通过言辞和策略实现目标。）
+> 2025-10-19 23:03:20 · `#格物/feed`
 
-`#格物/历史`
+The card's format goes back to the rules the card itself can constrain.
 
+How to design a suitable architecture to adjust this structure.
 
+For example, defining fast line as the title.
 
-### ⚔️ 武成王庙：唐朝的“武”道统确立
-> `2025 年 10 月 25 日 - 11:38:42`
 
-**武成王庙**：核心祭祀姜子牙（兵家始祖）。唐朝设立此庙，旨在通过官方祭祀确立军事领域的**“精神偶像”**，梳理军事思想传承，强化军队凝聚力。
+<!--memo:2396eb93406f-->
+### The law of parity conservation
 
-* **背景**：唐朝是中国“武功”最盛的朝代之一，但国家祭祀体系“重文轻武”（已有孔庙）。军队缺乏统一的国家级精神领袖和祭祀场所。
+> 2025-10-19 23:08:21
 
-* **目的**：唐玄宗决定建立一个与“文庙”平行的**“武庙”**，以平衡文武地位，为军事力量树立精神图腾。
+Simply put, it holds that the universe is "left-right symmetric". A physical process (like billiard balls colliding) and its mirror image (everything swapped left for right) should follow exactly the same physical laws. For centuries this held perfectly for gravity and electromagnetism. Everyone assumed this must be an iron law of the universe.
 
-`#格物/历史`
+But in 1956, theoretical physicists T.D. Lee and C.N. Yang boldly proposed a "heretical" hypothesis: in the mysterious domain of the "weak interaction" (the force behind radioactive decay), this symmetry might not hold.
 
 
+<!--memo:c0162a72c46a-->
+### Why do shopping malls in China's small and mid-sized cities prefer "eating upstairs"
 
-### 👑 秦始皇的遗憾与历史的厚重
-> `2025 年 10 月 25 日 - 11:45:01`
+> 2025-10-20 12:34:57
 
-我大致真的能理解到大叔为什么在看历史过程中热泪盈眶。
+I feel the circulation flows copy first-tier cities, but they rely more on food to drive foot traffic.
 
-历史太厚重了。秦始皇短短几十年，开创了历史上第一位大一统，却在历史中备受争论。
+Early first-tier city complexes (Wanda Plaza, MixC, Longfor Paradise Walk)
 
-他推行的**“车同轨，书同文，行同伦”** 以及**郡县制**，奠定了此后两千年中国政治版图和管理模式的基础。
+retail on the lower floors, dining and entertainment on the upper floors → copied by real estate developers nationwide.
 
-这大概是**悲悯心**，随着经历和阅历的增长才会深刻体会到。
+The top floor relies on cinemas and scenic areas for stable leisure foot traffic.
 
-`#知世/历史`
+Because the foot traffic in small and mid-sized cities is itself limited.
 
+Many customers just settle things at the basement supermarket or the ground-floor fast food,
 
+so nobody goes up to the tasty stuff on the top floor; first-tier cities have more people and longer dwell times.
 
-### 🇮🇱 耶路撒冷：宗教与零和博弈
-> `2025 年 10 月 25 日 - 12:31:31`
 
-国家和宗教都是**虚拟的集合体**。
+<!--memo:f15b75cb64b8-->
+### Forgetting is harder than remembering
 
-* **以色列**：是犹太教国家，犹太民族的民族国家，同时也是**三大宗教**（犹太教、基督教、伊斯兰教）的起源地。
+> 2025-10-20 17:41:37 · `#格物/feed`
 
-* **巴以冲突**：是全世界最复杂的冲突，本质上是**零和博弈**——谁有权在这里建立国家，谁就是合法主人。
+Reading is for forgetting.
 
-* **耶路撒冷**：是全球宗教朝圣的中心，问题无解，没有人愿意平分一个“心脏”。
+not a storage device that needs to save all bits of information.
 
-`#知世/宗教`
+A system probably doesn't need to fully, precisely retain every piece of information, only the part most critical for survival, decision-making and adaptation.
 
+Carbon-based life is like this: our nervous system, DNA and memory are not perfect storage devices. DNA doesn't preserve all the information an organism experiences, the brain doesn't remember every little thing — instead it selectively compresses, retaining the patterns or regularities useful for survival, prediction, socializing and learning.
 
+Advantage: you don't have to store all information; you can quickly generalize, abstract and adapt to the environment, using limited information to cope with infinite change.
 
-### 📜 天命的流变：从周朝到儒家
-> `2025 年 10 月 25 日 - 12:38:10`
+Disadvantage: it's easy to err, memories are incomplete, you forget things — but this strategy of "discarding unnecessary information" has actually been optimized by evolution.
 
-**周朝的天命学说**：君主的统治权力是“上天”授予的。但“天命靡常”（天命不会固定不变），君主无道，上天就会转授给有德行的人。这是周朝推翻商朝的合法性来源。
+One question this raises is the question of the second brain: it isn't for remembering all information, but for letting you reconstruct your cognition and action at any time.
 
-**儒家**：**“五十而知天命”**，是对自己的处境、命运的理解和坦然接受。
+Not an external memory warehouse, but a cognitive amplifier.
 
-**宗教意义**：God's will（上帝的旨意），也是一种终极的理解和接受。
+The essence of the second brain is upgrading your "limited brain capacity" into "unlimited thinking ability".
 
-`#格物/历史`
+Let your knowledge and experience "multiply" across time and space, no longer bound by the limits of the biological brain.
 
+ref: https://mo42.bearblog.dev/read-to-forget/
 
 
-### 🈹 鬼谷子：一个被修饰过的存在
-> `2025 年 10 月 25 日 - 12:49:08`
+<!--memo:bac6698242fc-->
+### In the past I wasn't aware of the questions many people asked
 
-鬼谷可能也是一种**地名**，未必是真名。
+> 2025-10-21 08:45:07 · `#格物/feed`
 
-鬼谷子书中，一般是被后人**修饰过的**，除了《史记》记录。
+It suddenly occurred to me that in the past I wasn't aware of the questions many people asked; I just developed a kind of bias toward the asker from the standpoint of content and expertise.
 
-`#格物/历史`
+There are no stupid questions, only stupid answers.
 
+A person is by nature in the process of seeking knowledge and exploring; what's stupid isn't curiosity, but the attitude of refusing to think and answering carelessly.
 
+Socrates: questioning and asking are always the starting point of wisdom.
 
-### 🎵 礼乐：社会等级与束缚
-> `2025 年 10 月 25 日 - 12:52:50`
+So when faced with a thirst for knowledge, the answerer must take on a higher responsibility, to understand and to inspire.
 
-**礼乐**本质上也是一种**束缚**，让整个社会至少是贵族阶层可以有序运转。
+And don't extinguish the other person's thirst for knowledge — it's extremely precious.
 
-* **礼**：严格规范等级。天子用九鼎，诸侯用七鼎，用了不属于自己等级的鼎就是**公然的政治挑衅**。
 
-* **乐**：代表大家用的音乐，天子祭祀、宴会演奏的音乐规模（如“八佾之舞”）是诸侯不能使用的。
+<!--memo:6d23bb2d5396-->
+### Humans and AI co-creating
 
-`#格物/历史`
+> 2025-10-21 15:00:48 · `#格物/feed`
 
+I also hope for the meaning of more people taking part.
 
+Rather than the world being flooded by AI.
 
-### ⚖️ 外儒内法：法律框架下的统治
-> `2025 年 10 月 25 日 - 12:54:38`
+People's questioning and exploring minds, their digging into problems, their thirst for knowledge — these are precious qualities.
 
-现在更像是**外儒内法**：大家看到了儒家，实际上**法家**也是暗地里起作用。
+In the AI era they're especially precious.
 
-就像是一个监狱长通过法律框架以及高压和恐惧去统治。
+What we should think about at every moment is amplifying human ability. The quality of human questions determines the ceiling of AI's answers, and it also gives people themselves a sense of meaning.
 
-`#格物/社会`
 
+<!--memo:a3c7de471829-->
+### Some agents can recommend cards to you at the right time
 
+> 2025-10-21 15:59:44 · `#格物/feed`
 
-### 🧠 人性驱动力：趋利避害与威逼利诱
-> `2025 年 10 月 25 日 - 13:13:47`
+Some agents can recommend some cards to you at the right time — very useful.
 
-**人性就是利害驱动的**。人的一切行为，无论包装得多高尚，其最底层的驱动力都是**“趋利避害”**。这“利”不只是金钱，更包括：功、名、利、禄、权、尊严、安全感。
+For example scheduled tasks: give you a little task summary every night, every week's night, even every month's night.
 
-* **说服之道**：靠道德感化是低效的；最高效的方式是**“利诱”**（告诉他能得到什么）和**“威逼”**，即**威逼利诱**。
+Or you've subscribed to some good knowledge systems and methods, or blogs,
 
-* **道家与鬼谷子**：道家和阴阳是哲学；鬼谷子阴阳是方法论。**捭（阳）/阖（阴）** 就是最典型的阴阳方法论。
+and they get recommended to you when they update.
 
-`#格物/心理`
 
+<!--memo:394291c6b76c-->
+### A just-right combination
 
+> 2025-10-22 15:34:34
 
-### 🥺 意难平：对不圆满的反事实思考
-> `2025 年 10 月 25 日 - 16:24:14`
+Have the LLM generate a JSON object, but the content of the body (article body) field is a Markdown-formatted string.
 
-我大概能感觉到**意难平**了。真的需要经历人生的不圆满、亲人的离世、时间的痛苦从而有所悲悯。
+You get the machine parseability that JSON brings (convenient for extracting title and summary), and the highest content quality and readability that Markdown brings (the article_markdown field).
 
-* **心理学**：这是否是一种**反事实的思考**？对错过的叹息，对盛世不再的伤感。
 
-* **历史**：站在现在看待历史长河，回望上游，本来可以有无数个岔路口，但是历史最终选择了一条充满坎坷的路。
+<!--memo:58aff86aff0b-->
+### Knowledge transfer doesn't necessarily transfer data stored in a structured hierarchy
 
-* **意难平的本质**：遗憾（关闭的过去，历史的重量）与期待（开放的未来，投射）之间的张力。历史恰恰是**不完美和偶然性**的。
+> 2025-10-23 13:42:53 · `#格物/feed`
 
-* **逃离当下**：意难平，又好像是逃离当下平庸、琐碎、无聊，甚至是痛苦的一个出口。
+What knowledge transfer passes on isn't necessarily data stored in a structured hierarchy in the system.
 
-`#观我/心理`
+It's a pin from the user's reading perspective.
 
+It can mark an obvious way for the user, for example designing the root node of the home page,
 
----
+or a favorite (which also saves the card information of a corresponding node).
 
-### 走出模仿：清晰定位与个人优势的发挥
 
-> `2025 年 10 月 26 日 - 16:26:08`
+<!--memo:97a4f545caf1-->
+### This fairly good way of thinking is: knowledge itself has no data structure
 
-**模仿**当然没问题，这是一个很**安全**的套路，就像直接给你指明一个上帝。
+> 2025-10-23 13:53:30 · `#格物/feed`
 
-但是这样做终归也会受限于模仿对象本身，因为他们发挥的优势并非是你所具备的。
+This fairly good way of thinking is actually: knowledge itself has no data structure; what has a data structure is the user's entry point of perception.
 
-模仿当然很重要，这些是宝贵的二次经验，在起步阶段当然如此。但要想超越，就必须要走出自己的路，清晰认识自己的长处和短处。
+When knowledge is passed on, what's selected isn't the data structure itself, but a certain perspective, the focus point of a moment.
 
-`#观我/个人成长`
+Unfold around this focus point, unfold one idea.
 
----
+It's really an entry point.
 
-### 宗教：将矛盾升华为人与意义的关系
+At this point the whole system should be divided into two parts.
 
-> `2025 年 10 月 26 日 - 16:31:45`
+One is the system's operating mechanism: the multiplication of cards, the flow of lines, the mechanism of exploration.
 
-宗教确实是一种“**矛盾的转移机制**”，它把无法调和的人际、社会或内心矛盾，提升为人与神、人与宇宙、人与意义之间的关系。
+The other is the user's interaction mechanism: how the user inputs easily, and how the user experiences this process easily.
 
-这其中有很多的知识当然可以用知识体系填充，无论是物理学、心理学、社会学、政治学、经济学也好……
 
-但是归根结底，它们都是一种**工具或装备**，是用来解释以及玩好这个游戏的工具。
+<!--memo:97d71c4d09e6-->
+### Repetition
 
-`#格物/哲学`
+> 2025-10-23 15:01:23 · `#格物/feed`
 
----
+Here there's a necessity for repetition.
 
-### 耶路撒冷顿悟：从拍摄者到传播者
+Under the right mechanism, repetition doesn't matter — it's actually crucial.
 
-> `2025 年 10 月 26 日 - 16:46:22`
+What everyone fears is repetition, meaningless repetition of context.
 
-耶路撒冷是一个非常神奇的地方。
+The LLM's job isn't to recommend something new, but to discover a new connection.
 
-凯文·凯利（Kevin Kelly）也曾在耶路撒冷经历了一次“重生”。
+A very good mechanism should let users perceive some miraculous places while using it, be happy to dig deep into this mechanism, and feel their own growth.
 
-1979 年，凯利来到耶路撒冷，想拍摄那里的复活节仪式。一天晚上，他忘了宵禁时间，被锁在了旅馆外面。
+In the process of the user's very lightweight exploration, many miracles emerge unintentionally.
 
-他信步走到耶路撒冷老城，发现圣墓教堂的门是开着的，于是走了进去，在石凳上睡了一晚。
+What's to be feared is a flat mechanism system, where repetition means redundancy.
 
-根据《圣经·新约》的记述，圣墓教堂正是耶稣殉难的地方，这段经历让他有了一种神奇的**顿悟体验**——他想要过一种全新的生活。
 
-于是，他扔掉了心爱的照相机，拿起了笔，开始传播科技理念。
+<!--memo:19d35669e28e-->
+### Frequent recording, frequent learning, frequent exploring — and then what
 
-`#观我/灵感`
+> 2025-10-23 15:40:23 · `#格物/feed`
 
----
+Action.
 
-### 内在成长路径：从意识到构建系统
 
-> `2025 年 10 月 26 日 - 17:02:48`
+<!--memo:6e02c54fcc89-->
+### Since you can start from any node
 
-人们说出了一个心理困境，可能是自己意识到的，也可能是在某一瞬间看到了自己的**投射**（可以是某一首歌、某一个人、某一段文字）从而意识到自己。这终归也是认识自己的过程。
+> 2025-10-23 17:53:26 · `#格物/feed`
 
-然后通过这种方式去构建一个系统，也终归是和自己息息相关的。
+Then the recording state is clear.
 
-**意识到 → 深刻理解 → 寻找方法 → 执行 → 反馈 → 改变**……这是一种内在的成长，但**知行合一**也非常难。
+What gets recorded should be the current node's activation state.
 
-`#观我/心理成长`
+An unactivated state means this node's branches haven't finished being explored.
 
----
+An activated state means this node has finished its exploration.
 
-### AI 辅助精力管理的可行性
+The very first node can generate several directions for exploration.
 
-> `2025 年 10 月 26 日 - 17:16:27`
+Later nodes by default also have several recommended directions for exploration.
 
-AI 也可以评估自己的精力状态。
+Could completed nodes also collide or connect with each other? That would be a way of building a system.
 
-如果有一个可以量化的方法，比如说时不时提问甚至确认的方式，去验证自己在很多时候的身体、心理状态以及精力状态，也就可以实现一种**精力管理**。
 
-`#格物/AI`
+<!--memo:f16e3121c486-->
+### Some situations need to be conveyed by voice
 
----
+> 2025-10-25 19:45:31 · `#格物/feed`
 
-### 注意力的本质：兴趣驱动的能量分配
+Especially content that carries emotion
 
-> `2025 年 10 月 26 日 - 17:43:05`
+Like diaries, newspapers and magazines
 
-感觉现在没有认真设计一个复杂系统的耐心了。
+Voice conversation may be especially important
 
-以前很多自己觉得很重要的部分，比如说设计、专注阅读、编码，现在很久没感觉到乐趣了。
 
-意识到这一点，感觉**注意力的本质也是一种选择资源分配的能力**。
+<!--memo:b7e8e34e3ae5-->
+### Inspiration is fleeting
 
-大脑一直在接收大量信息，但注意力是一个“**滤镜**”，决定了哪些信息会被放大、哪些被忽略。
+> 2025-10-27 09:50:41
 
-当你对某件事产生兴趣、预期有奖励（成就感、理解的快感、创造的愉悦）时，大脑会释放**多巴胺**——这不仅让你愉快，还会增强专注力。
+Photography is gradually being given the meaning of time and the present moment
 
-所以，一定程度上注意力本身是一种**兴趣驱动的能量分配机制**。
+A photo you can take anytime, anywhere
 
-这就可以反向思考为什么会觉得没耐心：
+And then it's given the meaning of time and frozen there
 
-* **多巴胺疲惫：** 过多的持续**即时满足**，会降低好奇心。
 
-* **意义回路失效：** 系统或目标不再有**个人意义**，自己不愿投入。
+<!--memo:8024516de514-->
+### Concept map mode
 
-* **精神资源被稀释：** 现代信息环境让注意力不断被打断。
+> 2025-10-27 13:05:47 · `#格物/feed`
 
-* **潜在的倦怠或转型：** 可能是时代进化，确实需要一个更好、更舒适的方式存在了。
+One is the graph itself, another is the derivative effects the graph has
 
-好奇心和专注不会真正消失，只会被压制或转移。
+I keep wondering whether traditional frameworks or design methods constrain the imagination
 
-`#观我/心理机制`
+In this process I'm not thinking about how to build an interaction logic
 
----
+I'm thinking more about how to keep taste in the interaction
 
-### Typesense：即搜即得的自动补全体验
+Take a central theme as the starting point
 
-> `2025 年 10 月 25 日 - 18:37:22`
+A radial structure extends into subthemes
 
-Typesense 的自动补全能力是一种很棒的用户体验。常见的场景是：
+Every branch represents a related concept, question or extended thought
 
-**即搜即得：** 用户希望在搜索框中每输入一个字母，搜索结果就立即刷新。
 
-它内置了强大的**拼写纠错**功能，开箱即用。用户不需要任何配置，它就能自动处理拼写错误并返回最相关的结果。
+<!--memo:422778d5f51b-->
+### As an individual human, when learning some fields
 
-它指的是整个搜索结果页面（不仅仅是搜索框下面的下拉列表）随着你按下的每一个按键而**实时刷新**。
+> 2025-10-30 10:08:54
 
-`#格物/产品`
+As an individual human, when learning some fields, a few perspectives I especially like
 
----
+Humans persist through narrative, so there are three perspectives:
 
-### 长期投资的真谛：价值增量市场
+the historical perspective
 
-> `2025 年 10 月 25 日 - 18:51:29`
+the perspective of changing methods (some revolutionary events)
 
-现在市面上的所有投资书籍都在讲如何看 K 线、如何把握市场热点、如何抓住市场趋势等等。
+the human perspective
 
-他们好像都在忽略一个核心问题，就是**价值投资体系**。
 
-**技术**是投机，**短期市场**是零和博弈，**长期**是价值增量市场。
+<!--memo:af79eb8de4de-->
+### When content production explodes, doesn't that make consumers scarcer
 
-`#一闪`
+> 2025-10-30 15:24:41
 
----
+When content production explodes, doesn't that make consumers scarcer
 
-### 语言习惯：体现思维与文化背景
 
-> `2025 年 10 月 25 日 - 19:03:08`
+<!--memo:ae85031fc6ae-->
+### One possible form: the todo gives plan suggestions
 
-语言反映一个人的**思维习惯**。
+> 2025-10-30 15:27:23 · `#格物/feed`
 
-我突然意识到，经常说“**谢谢**”的人，往往重视礼貌和尊重。
+One possible form: the todo gives plan suggestions, some articles to read each day
 
-习惯说“**没办法**”、“**都一样**”的人，可能更倾向于宿命或消极接收。
+Then the feed can automatically extract them into cards, and users can extend from the cards
 
-喜欢说“**我觉得**”、“**在我看来**”的人，更强调**个体视角**与**平等对话**。
+The todo automatically adjusts according to the user's completion rate
 
-这也是文化习惯的体现，中国很多的老一辈人倾向于使用敬语或“**我们**”而不是“**我**”。
 
-有时，“**听你的**”是信任；有时，是逃避责任；也可能，只是懒得再讨论。
+<!--memo:bfb26828bc50-->
+### The weight of text
 
-得在具体的场景下，换位思考对方为什么要这样说。
+> 2025-10-30 17:37:54 · `#格物/文本`
 
-`#观我/社会心理`
+We always assumed text is light, cheap, easy to store, process and transmit
 
----
+Actually it's not; in the era of large models, text is very bulky, heavy and unwieldy
 
-### 公式、语言与思维的深度
+A single invoice scanned into PDF format might need 1000 to 5000 tokens extracted. Multiply that number by enterprise logs, legal contracts, regulatory documents and digitized archives, and the numbers spiral: billions of tokens, most of them redundant, expensive and slow to process. OpenAI's GPT-4-turbo might let you cram 128,000 tokens into a context window, but that's only equivalent to 50 to 100 pages of obscure legal jargon. And you pay for every token you send
 
-> `2025 年 10 月 25 日 - 19:26:53`
+It's not treating the document as a collection of linguistic symbols, but as an image, a visual signal
 
-**公式的价值深层次：学其术，悟其道。**
+It lets the model directly "see" the pixel distribution of the whole page, compress the page into an abstract visual representation, then reconstruct the semantics through a Transformer model
 
-公式描述了世界的运行规律，从而我们可以有效地控制物理世界。
+In the past, text was the meaning of the image
 
-**思考的价值不在于答案，而在于思维方式**。在这个过程中，保持逻辑、比例和平衡。数学和物理公式的推导本身就是在训练**演绎推理**。
+Now the image itself contains meaning
 
-公式是一个**极致的抽象**，这是我们构建抽象能力的根本，帮助我们抓住本质。
+This is actually the relationship between form and meaning
 
-从**第一性原则**的角度，当我们真正理解了一个公式，就不再是背公式，而是掌握了导出这个公式的底层思维模型。
+If we borrow philosophical language, it's like shifting from the Cartesian "I think therefore I am" (logic first) to the Merleau-Ponty style "I sense therefore I am" (perception first)
 
-你永远无法精确预测未来，但你可以通过**结构化地思考未来**来逼近理性。
+Push this idea to the extreme and you get an interesting proposition:
 
-编程语言、数学、物理，它们都是理解世界的语言。它们更精确、极度精准。
+Maybe language itself is just the product of high-dimensional visual compression
 
-**掌握的语言其实也是思考的深度**。如果只是日常语言，就很难精确地思考变化率这样复杂的概念；如果是数学语言，就能用更精准、抽象和高逻辑化的方式去理解和推理这个世界的底层运行规律。
+Also, the recognition approach is centered on structure: headings, paragraphs, cells, images, logos, boxes - turning every visual component into an object
 
-拥抱“过程”的价值，而非焦虑“结果”。
+This step reduces noise and lets DeepSeek focus only on the semantic blocks of the document
 
-`#格物/语言学`
+Vision first, language last; DeepSeek OCR doesn't "read" the document but visually remembers the document's content, then accurately rewrites the document
 
----
+Memory: not storing information, but storing relationships
 
-### 语音传递情感内容的必要性
+This in reverse demonstrates an Aristotelian worldview: meaning isn't in concepts but in the forms of things and sensory experience
 
-> `2025 年 10 月 25 日 - 19:45:31`
+So how do we understand this world? Do we really build our understanding of the world through knowledge, theory, language (just like large models), or through our own bodily experience, feeling and thinking about the world, or is it woven together from both
 
-有些场景是需要通过**语音**传递的，尤其是一些包含**情感**的内容。
+ref: https://medium.com/data-and-beyond/how-deepseek-ocr-quietly-solved-a-billion-dollar-problem-in-ai-scaling-7b4502613af9
 
-比如说日记报刊，语音对话的方式可能尤其重要。
 
-`#格物/产品`
+<!--memo:949f9242054b-->
+### While flomo makes recording lightweight
 
----
+> 2025-10-30 17:52:07
 
-### 湖北“三资改革”的结构性困境
+It sacrifices some very valuable progress in writing and reading
 
-> `2025 年 10 月 25 日 - 21:50:30`
+And you're also confined within it
 
-**三资改革**是“土地财政”枯竭后，为地方政府财政“续命”的必要手段。它试图盘活沉睡的国有资产（“死钱”）变为“活钱”，以应对债务压力和“保民生、保工资、保运转”的支出需求。
 
-**如果成功**，将建立一个“有效资产 → 有效债务 → 有效投资 → 新的有效资产”的良性循环。
+<!--memo:c094b30220f1-->
+### iOS 26 Camera
 
-**潜在风险：** “万物皆可证券化”可能导致资产估值虚高，制造新的金融泡沫。如果操作不当，最终可能只是把债务“左手倒右手”，进一步透支政府信誉。
+> 2025-10-31 10:37:23
 
-**本质原因：** 财政模式的彻底破产，以“土地出让金”为核心的旧有发展模式已经崩溃，地方政府陷入了**结构性的财政危机**。
+Another upgrade toward minimalism; now the bottom has mainly two modes, Photo and Video. Other modes are accessed by "swiping left/right" within these two modes or "going into more options"
 
-**长期代价：** 短期内盘活的资金可以稳住财政，但 3-10 年可能出现生活成本的系统性上升，普通人可能会用“公共服务便利性和价格的上涨”来为今天的“政府财政解困”买单。
+iOS 26 introduces "Spatial Scenes" (a 3D effect) - after taking a photo, you can make the photo look like it has depth / produce a parallax effect as the device moves
 
-**现实的艰难：** 行动者（地方政府）在巨大的短期还债压力下，会不由自主地选择“**零和**”的捷径（涨价、甩卖），而忽视“**正和**”的艰难路径（创新、增效）。
 
-`#格物/商业模式`
+<!--memo:fa863683d72e-->
+### Also, there's too much information online
 
----
+> 2025-10-31 17:17:57 · `#格物/feed`
 
-### 爷爷的离去：对生命的沉重一击
+It makes people lack a sense of order instead
 
-> `2025 年 10 月 26 日 - 09:59:43`
+Fragmented information online makes people more anxious rather than happier
 
-想起爷爷安眠药去世，这何尝不是对这几个代际的人一次沉重的打击。
+The world is inherently broken, complex and multi-layered
 
-人的生命真的短暂，临终前身体的痛苦。
+The internet amplifies this. Everyone can see atomised fragments of information, but no one assembles these fragments into a meaningful structure. So information increases while order falls
 
-`#观我/生命思考`
+Information overload creates "cognitive hunger" — knowing a lot but understanding little. You see countless faces of the world but have no time to integrate their relationships, like looking at tens of thousands of photos without a single map
 
----
+But humans are naturally suited to spatial memory, linear memory, hierarchically structured memory, and all of these have been damaged
 
-### 长期目标的空洞感与焦虑
+We live in an "age of excessive information", but what we truly lack is "semiotic coherence" — that is, a holistic grasp of meaning. We know all the news, yet we no longer know "what on earth is going on in this world
 
-> `2025 年 10 月 26 日 - 13:57:51`
 
-不知道自己要做什么的**空洞感**。
+## 6. Product, Engineering and Open Source
 
-总觉得因为**长期目标的缺失**，生活或者职业没有方向了。
+*38 entries*
 
-时不时也有很多的焦虑和压力，被学业、工作或者家庭压得没办法思考清楚。
+<!--memo:28a96b17557e-->
+### With grok too I feel there are follow-up question recommendations
 
-也有可能是**选择负担**，选择过多造成的认知过载。
+> 2025-10-01 09:45:58
 
-也可能是没有**自知之明**。
+With grok I also feel there are follow-up question recommendations, but the button options always feel rather poorly designed
 
-`#观我/心理困境`
+Later it also recommends options, like book recommendations or case recommendations
 
----
 
-### 中年人为何喜欢读历史
+<!--memo:1e94d6edad3e-->
+### The phrase 'iterate fast' has been repeated countless times
 
-> `2025 年 10 月 26 日 - 14:12:54`
+> 2025-10-01 09:47:53 · `#格物/产品`
 
-所以中年人为什么都会喜欢上读历史？
+But how can you really understand it without having lived it?
 
-沉浸在那么广阔的遥远的空间和时间里，终于找到一片**远离日常蝇营狗苟的空间**。可比在家地下车库的车厢里宽阔多了。
+Try early, iterate fast, get feedback — that's the most effective path to growth
 
-然后，当你合上书想起先人那么多的困苦和挣扎，眼前那些工作不顺心、孩子不听话、赚的钱不够多等琐事都算得了什么。
+Perfectionism is fear of feedback in disguise
 
-终于还是有了继续活下去的勇气。
+Silicon Valley's Agile development is based on this: throw out an MVP (minimum viable product), collect data, adjust course. A perfectionist may spend half a year polishing one idea and find the market has changed; an iterator tries and fails three times a week and is ahead within three months. Don't fear "starting from zero" — that's a chance at rebirth, not a failure
 
-`#观我/生活感悟`
+Just try it first; once you can iterate, immediately throw yourself fully into iterating
 
----
+Hypothesis: based on intuition or preliminary discussion, set a falsifiable guess (e.g., "fear of rework comes from perfectionism")
 
-### 泯然于世：入世与出世之心
+Experiment: try at small scale (e.g., build a prototype, share it with 3 people for feedback)
 
-> `2025 年 10 月 26 日 - 14:16:11`
+Feedback: record it honestly (good or bad, don't fool yourself)
 
-**泯然于世**：一个人原本的卓越不凡，却逐渐平庸、与世俗同化。
+Pivot: adjust or start over, don't agonize over "losses"
 
-被世俗化了，自然失去了独立和本真，就自然而然与凡人无异。
 
-怎么在**入世**的同时保持**出世之心**？怎么以**出世之心行入世之世**？内在的清醒和坚持多么重要。
+<!--memo:5f9cbe2b8efc-->
+### Relatively serious cities for high-rise housing include Wuhan
 
-若因懦弱而妥协，是堕落；
+> 2025-10-01 09:57:34
 
-若因通达而超脱，则是**智慧**。
+Relatively serious cities for high-rise housing include Wuhan, Xi'an and Chongqing
 
-`#观我/佛学`
+Wuhan's problem of vacant housing property fees is stark, and the regional population density is too high
 
----
+Chongqing has safety hazards like falling exterior walls; many of Xi'an's large terrace designs are problematic, with lots of illegal construction, and the regional population is extremely large
 
-### 佛学中的“分别心”与“着相”
 
-> `2025 年 10 月 26 日 - 15:19:47`
+<!--memo:b2cc2c550b8b-->
+### The iteration process is essentially accepting data feedback
 
-“**求**”是**分别心**和**着相**了。
+> 2025-10-01 12:19:06
 
-大家求的是**心安**。
+Through continuous data feedback, calibrate or give yourself inspiration for action
 
-分别心是过程，着相是结果，是对评判结果的执着。
 
-从符号学角度，**着相了就是困在了自己的解释项**，但是符号就是符号本身，不会因为这个解释项而改变。
+<!--memo:8f6388bc7e24-->
+### Going with the flow is a perfectly normal phenomenon
 
-修行修的是**平常心**，但也不是消除分别心，它并非二元对立。
+> 2025-10-03 13:44:03
 
-修心是在分别时不**着相**。
+Human nature is complex and hard to predict: different environments, different personalities, different reactions in action
 
-`#观我/佛学`
+Most people subconsciously avoid pain, because human nature naturally seeks advantage and avoids harm
 
----
+But real growth often comes from the process of "facing pain," not from comfort in a greenhouse
 
-### 存在即有理：游戏化存在主义
+Those with power have two kinds of behavior: on one hand they design challenges rather than manufacture suffering — some difficult task beyond the usual range, or letting someone independently solve a thorny problem — risky, but with hidden support
 
-> `2025 年 10 月 26 日 - 16:03:39`
+Growth is moderate pressure + a supportive environment, hitting an "optimal frustration zone": too easy and there's no growth, too hard and you collapse, only the middle promotes evolution
 
-对我来说，**存在即有理**。
+Pain doesn't automatically bring growth
 
-世界中的一切，包括被误解、被排斥的部分，都是构成这个世界的必要成分。理解它们，不代表要赞同它们，而是去看清这个世界运行的多种逻辑。
+As a manipulator, you want the outcome to favor you, and the other person to obey or depend
 
-我们都是这个世界中，玩好这个游戏不是吗？
+As a guide, you want the other person's potential to be awakened, and them to have a more complete life
 
-排斥某一种语言、历史或者文章，实际上也是一种挑战。
 
-他们的世界观或价值体系被挑战了，人类本能地会排斥“**打破秩序**”的信息。
+<!--memo:5b135fbc7533-->
+### Understanding Recall
 
-语言、历史、文化往往与身份挂钩。排斥某种文化有时是为了维护“自我群体”的边界。
+> 2025-10-03 16:27:07 · `#格物/产品`
 
-人更容易接受与自己经验相符合的内容，难以接受需要重新思考的东西。
+It's a plugin, a personal knowledge base; its core value is:
 
-**游戏化的存在主义**：相较于人存在荒谬和自由，没有预设的意义来说，意义本身就是人创造的。那么人生、社会、历史，甚至痛苦，也可以看作一场由规则、目标、角色和叙事组成的“**游戏**”。
+Collecting all kinds of articles from the web
 
-我们抱着是一种**玩家的心态**去玩这个游戏。
+Automatically summarizing, organizing and linking them
 
-游戏化存在主义也不是冷漠，而是一种**慈悲**。痛苦也是游戏的一部分，不轻视痛苦也不会被痛苦吞噬。
+Then you can chat with everything you've stored before as if talking to a person, getting answers or inspiration
 
-`#观我/意义`
+Similar to a combination of Notion Web Clipper + Readwise
 
----
+Every time you save, the AI automatically generates a summary, helping you grab the key points quickly and avoiding the problem of hoarding information → "bookmark and never read"
 
-### 全球生态漂白：转移代价与伪装的文明
+The system automatically organizes content and builds associations (a knowledge graph), letting you see the connections between different pieces of content
 
-> `2025 年 10 月 26 日 - 17:58:58`
+This is smarter than a simple bookmarks folder, close to the feel of Roam Research + AI
 
-**发达国家通过制度、资本和全球化机制净化了自己的表面现实。**
+Collect multimodal content → transcribe & convert to text → embedding representation + summary generation → store in a vector database + knowledge graph → retrieval-augmented generation (RAG) → add a spaced repetition algorithm → finally forming an AI-driven second brain
 
-城市更干净，空气更好，社会更平等，看起来像是“人类进步的样板”。
+https://www.getrecall.ai/?ref=producthunt
 
-然而，那些让他们维持高质量生活的能源、原材料、廉价商品，甚至废弃物的处理，都被转移到了别处。
 
-这就是**全球生态漂白**，它让“清洁与幸福”被地理性地分层。
+<!--memo:2449106bd90d-->
+### Indy AI
 
-我们总是在**转移代价**，而不是承担后果。
+> 2025-10-03 16:41:58 · `#格物/产品`
 
-我们总是在假装的惯性弱者，保护环境，实际上在国家之间，我们依旧是活在了一种**伪装成文明的自私**中。
+What it advocates is letting work find you
 
-我们应该让所有国家都有尊严地共享干净与幸福。
+AI-driven recommendation is something I'm bullish on: in an age of information explosion, how to precisely find information or recommend the right information
 
-欧盟推行“**生产者延伸责任制度**”（EPR），要求企业为产品全生命周期负责。
+It actually scans and analyzes your existing network on LinkedIn and X, and based on your skills, experience and preferences helps you automatically discover potential job or collaboration opportunities
 
-`#格物/社会`
+Expanding your own network: rather than constantly hunting for opportunities yourself, it emphasizes "letting work find you"
 
----
+Open the Chrome Web Store → install the Indy AI extension.
 
-### 人性弱点：沉没成本的执念与损失厌恶
+Log in / sign up at Contra.com.
 
-> `2025 年 10 月 26 日 - 21:47:16`
+Connect Indy AI with your LinkedIn/X accounts (authorizing data access).
 
-我觉得挺有意思的，就是人们不愿意放弃自己坚持很久的东西。
+The extension runs in the background, scanning and updating automatically.
 
-哪怕自己不喜欢的专业、行业或者关系，舍不得之前的白费付出。这是一种**沉没时间成本的执念**。
+In the Contra Pro panel or the extension UI you'll see:
+ a. Recommended opportunities (projects, positions, collaborations)
+ b. Contacts related to your skills/experience
+ c. One-click job applications or contact channels
 
-理性上不应该再追加投入，情感上终归是难割舍的。
+https://chromewebstore.google.com/detail/indy-ai/hgpklbhmaaajglapkgebgjjlccndmcoo
 
-“我已经为他/她做了这么多，不能就这么算了。”
 
-而且潜意识还是不愿意承认自己错了，继续投入可以证明自己没有错。
+<!--memo:1be8a4700b6c-->
+### Two cups of coffee
 
-**时间 + 金钱 + 情感 + 自尊**。
+> 2025-10-03 21:13:58
 
-**失去比没有得到更加痛苦**——这就是**损失厌恶**。
+I'm thinking about today's tech loneliness
 
-**及时止损**很重要，千万不要陷入沉没成本。
+Thinking about the atmosphere of offline cafés in Vietnam
 
-`#观我/心理机制`
+And the current situation in China
 
----
+Even people after losing a job, people without work, people who come to a city alone
 
-### 泰国天灯节：群体美与光明的仪式
+Is there a way to focus on making an offline-friendship app?
 
-> `2025 年 10 月 26 日 - 22:13:57`
+Offline-first — for instance, you must meet for a cup of coffee
 
-慢一点体验本地的**天灯节**。
+It would also boost cafés' business
 
-回想起来也是一年前到泰国看的天灯节。民间的天灯节很有氛围，村庄、小城、寺庙等地也会有放天灯或灯浮水的仪式。
+Humans are social animals; digital tools should serve that, not replace it
 
-夜空中成千上万只漂浮天灯。
 
-**释放天灯**（sky lantern）象征“**放走厄运、迎来好运/新开始**”。
+<!--memo:c4bb5d723f4d-->
+### The currently popular way of building AI products
 
-一生可能就那么一次或者几次，这是一个视觉上的体验。
+> 2025-10-03 23:38:10 · `#格物/开发`
 
-在暗夜中与他人一起释灯、许愿、共享同一个时刻。
+It's actually building a prototype first to validate the effect, then seeing how to design the UI
 
-`#知世/见闻`
+Compared with the old PRD-driven, design-first approach, this emphasizes practice, getting hands-on, and feedback
 
----
+And now everyone is a Builder
 
-### 天灯节与烧尸庙：光明的仪式与真实的死亡
+Usually a lot of people have the corresponding small sparks; rather than waiting for a product manager's flash of inspiration, one or two engineers propose it and quickly build a prototype. This prototype doesn't pursue perfect interaction or visuals but focuses on core function and product value
 
-> `2025 年 10 月 26 日 - 22:16:34`
+It's like on a battlefield: a commando unit darting quickly through, striking straight at the core — clear objective, no lingering in battle
 
-突然想起来**天灯节**和**烧尸庙**，这两个都给我带来了巨大的回忆情绪感受冲击。时隔一年依旧感觉自己身临其境。
+Once the prototype is done it's immediately deployed for all of Anthropic to use in daily work, making the product's creators also its most demanding users
 
-**天灯节：** 成千上万盏天灯升空，夜空被温暖的橙光点亮。这是一种“**群体美**”的体验：柔和、流动、浪漫。音乐、祈愿声、笑声、夜风、火光交织在一起，是“**光明的仪式**”——象征人们放下烦恼、迎接新开始。
+Because they're deeply immersed in the product scenario, they can give the most real and most critical feedback. Whether a feature has real vitality gets tested fastest in this internal ecosystem — only features proven internally to be effective and usable get formally productized
 
-**烧尸庙：** 更像是直面死亡的宁静和真实。火焰、灰烬、河流、哭泣、僧侣的诵经声。空气中有生命结束的味道。沉重、宁静、真实。它让你直面人类最根本的问题：**生命的短暂与循环**。
+The premise of this step is that the team itself is the product's target and deep user
 
-`#知世/见闻`
+Only after a feature is internally proven "effective" does UX polishing and optimization happen
 
----
+This step may be the most "counterintuitive" and "uncomfortable" for most teams used to the mobile internet development paradigm (especially designers). Whether full consensus can be reached on this principle is the key to actual execution cost and final results
 
-### 咖啡的哲学：时间与空间的胶囊
+This is actually a return to the essence of design: design must be restrained, helping users focus on the core task instead of being distracted by a cluttered interface
 
-> `2025 年 10 月 27 日 - 01:02:55`
+Model is king: the ultimate goal of design is to use the thinnest, most transparent "packaging" so users feel the power of the Claude model itself most directly — this is crucial, and it coincides with the design principles of Agent engineering architecture
 
-最近探的一些咖啡，突然感受到咖啡的哲学是**时间和空间**。
+Product design stage: becoming a creative resonator with AI. When conceiving a new feature, she talks directly with Cloud Code, discussing "common use cases" and "edge cases," even seeking preliminary design suggestions. Here AI becomes a tireless, deeply knowledgeable thinking partner
 
-区分人与咖啡的关系一个很重要点是**消化/吸收**和**感受**。
+Solution evaluation stage: getting quantified grounds for decisions. Once the design mock is done, she can show the image directly to Cloud Code and ask roughly how much work it takes to implement. This gives designers a firmer engineering basis when communicating with engineers. (hahaha so sneaky...
 
-咖啡从种子到杯子的整个旅程，本质上就是**特定空间在特定时间下的特定产物**。
+The night before launch: getting hands-on with the code to defend the experience's "last mile." This is the most disruptive point. In the traditional process, low-priority (P2-level) visual flaws or experience tweaks often had to be reluctantly compromised before launch due to tight resources. Now designers can go into production code themselves and fix and optimize these details, personally polishing the product's final quality
 
-* **空间感：** 场地的生长环境（埃塞俄比亚高海拔山坡、哥伦比亚火山灰）赋予的**风味空间感**。品味的环境也超级重要，会彻底改变你对同一杯咖啡的感受。
 
-* **时间感：** 咖啡豆的处理方式（日晒、水洗、蜜处理）是对“**时间**”的精妙控制，烘培的时间、萃取的时间以及品饮的时间，就像是一个**时间胶囊**。
+<!--memo:fa465679c4dd-->
+### The systematic or engineering methods I learned before
 
-* **消化/吸收 (Digestion/Absorption) - 物理关系：** 这是一种“以我为主”的**索取**。你并不关心咖啡的“时间和空间”，只关心它能为你的身体带来什么——能量、清醒、提神。咖啡在这里是“燃料”或“工具”。
+> 2025-10-03 23:39:41 · `#格物/开发`
 
-* **感受 (Sensation/Feeling) - 体验关系：** 感官的全面调动。嗅觉捕捉到花香、果香；味觉分辨酸甜苦咸；触觉（口腔）感受到醇厚度（Body）和质地（Texture）。
+May not be optimal in the AI era either
 
-`#格物/咖啡`
+They're just experience sedimented by predecessors
 
----
+In the AI era, think more about whether there are new paradigms, or methods more conducive to collaboration in the AI era
 
-### 摄影的意义：定格灵感与当下时间
+Under the new mode of human-AI collaboration, what exactly is the truly efficient, innovative paradigm? It may mean that the long-winded processes of the past need simplifying, and modes that once relied on rigorous planning may be replaced by rapid iteration and emergent innovation enhanced by AI
 
-> `2025 年 10 月 27 日 - 09:50:41`
 
-人的灵感**稍纵即逝**。
+<!--memo:fcdb389ab0fd-->
+### DayDrift's design technique
 
-摄影慢慢地被赋予**时间和当下**的意义。
+> 2025-10-04 13:47:21 · `#格物/产品`
 
-能随时随刻拍出来的照片，然后被赋予时间意义由此定格。
+Focused on weekly planning, its distinctive daily folding interface lets you organize tasks by workday. Unlike traditional to-do apps, it includes a continuous tracking system that motivates you to build sustained daily habits
 
-`#观我/灵感`
+What isn't finished naturally rolls over to the next day
 
----
 
-### 瑞幸咖啡豆的醇香秘诀
+<!--memo:06d1fb4681cc-->
+### How to build a good city
 
-> `2025 年 10 月 27 日 - 11:13:30`
+> 2025-10-04 17:17:21
 
-瑞幸的豆子为什么这么醇香？
+How to build a good culture?
 
-瑞幸一直在想办法从全球寻找豆子，包括中国云南、巴西、埃塞俄比亚和哥伦比亚。
+How to build a good information field?
 
-一般好的豆子在颜色、大小上非常均匀，没有破碎豆。豆子一般都是呈浅褐色或肉桂色，表面干燥、不油腻，颜色很深的是深烘。
+How to build a good app?
 
-而且一般都会有打分，比如说 SCA Score: 85+，一般八十分以上就是**精品豆子**。
+It depends on what people want
 
-`#格物/咖啡`
+What will people want in the future?
 
----
+How does human society interact with the world in creating information? In this interaction, what is the life cycle of information? What role can the internet play in that life cycle?
 
-### 吸收信息 vs 品味知识
+Linus Torvalds said: "A good system provides you with enough building blocks to do everything." So we also need to think about how to design the building blocks of a new city in the best way.
 
-> `2025 年 10 月 27 日 - 12:51:36`
+From an engineering angle, we need to think about what technology can do today and what it can do in ten years, so we must study today's global technology trends
 
-你是希望用户是在用你的工具**吸收信息**呢？
+From a business angle, as Peter Thiel says in Zero to One, we need to "dominate a niche market, then scale from there, moving toward an ambitious long-term vision." You can't build a city out of nothing and then tell people to come.
 
-还是希望用户用你的工具来**品味知识**呢？
+This is also why we need to understand the life cycle of information in the interaction between human society and the world. What we want to do is design a better life cycle, so we need to think about its different stages together.
 
-`#一闪`
+Some people come to the city for the clean air, some for the safe environment — but in the end they realize what they get most from the city is information about ambition and the power that supports that ambition.
 
----
+https://www.paulgraham.com/cities.html
 
-### 柏林禅寺：禅在当下，不向外求
 
-> `2025 年 10 月 27 日 - 12:52:59`
+<!--memo:35b29524ce99-->
+### Some new reflections on building products
 
-如果仅仅是一个寺庙，那么也就是一个历史悠久的寺庙。
+> 2025-10-05 18:08:53
 
-**禅不在深山，而在日常**，修行不应脱离现实生活，而是应该以更清醒、更智慧的态度回到生活中，**以出世之心行入世之事**。
+Compound thinking
 
-柏林禅寺在唐代是赵州从谂禅师（后世尊称“赵州古佛”）驻锡的地方，也因此成为禅宗的圣地。
+I want to create a simple app
 
-**真理真的没办法用语言形容。**
+That can record a person's basic ideas
 
-禅宗真的是一种直达内心的智慧，**不向外求**的，**不立文字，教外别传，直指人心，见性成佛**。
+And a person's smallest action unit
 
-有时候禅就在当下，放下内部的概念、逻辑和思想的执着，就是一种非常朴素的方式，面对当下。
+Then complete this smallest action
 
-`#格物/哲学`
+And record it
 
----
 
-### 概念图模式：保持品味与解决选择负载
+<!--memo:307555578e59-->
+### Lin Huiyin
 
-> `2025 年 10 月 27 日 - 13:05:47`
+> 2025-10-05 23:07:07 · `#格物/林徽因`
 
-**概念图模式：** 一个是图本身，另外一个是图具有的衍生效果。
+Lin Huiyin the architect: reason and the beauty of building
 
-一直在想是不是传统的框架或者是设计方法约束了想象力。
+She took part in refining the design of the national emblem of the People's Republic of China. The architectural design of the Monument to the People's Heroes, especially the relief decorations on its base, also embodies her effort
 
-这个过程中思考的并不是如何构建一个交互的逻辑，更多的思考的是交互的过程中如何**保持品味**。
+In the 1930s she and Liang Sicheng and others traveled through China's remote corners, surveying and recording on site a large number of ancient buildings on the verge of disappearing, leaving valuable material for later generations
 
-以一个中心为主题起点，**放射性结构**延伸出子主题。每一个分支代表的是一个关联概念、问题或者是衍伸思考。
+She helped found the Department of Architecture at Tsinghua University and taught there herself, training China's first generation of modern architects
 
-**扩展：** 思维选项太多容易导致**选择负载**。PC 端用户很容易适应上下拖动。把 **roof** 放在页面的最上方，然后从上往下去探索问题和知识卡片。
+Poetry was Lin Huiyin's emotional expression; she wrote a preface for Xu Zhimo's poetry collection, with writing that is sincere and moving
 
-**疑问：** 卡片之间的关系以及如何有价值？
+Her poem "You Are the April of This World," with its light, bright imagery, has become a classic of modern poetry
 
-`#格物/产品`
+Under the immense pressure and limits of an era, what kind of creativity can one person unleash?
 
----
+And the rise and fall of a country or a nation
 
-### 斯多噶主义：掌控可控，顺应事实
+Depends on the degree to which it liberates individual creativity
 
-> `2025 年 10 月 27 日 - 16:32:48`
 
-**斯多噶主义**思维方式很重要的一个思维原则是**区分哪些事情是在我们的掌控之中，哪些不在**。
+<!--memo:e9f818b0da00-->
+### Some thoughts on Heptabase's design
 
-* **可控：** 我们的判断、态度、意志和选择。
+> 2025-10-06 16:41:02 · `#格物/产品`
 
-* **不可控：** 他人的看法、天气、命运。
+In one sentence: from the angle of the "human knowledge work life cycle," we're building a tool ecosystem to help knowledge workers integrate the knowledge life cycle of explore → collect → think → create → share
 
-斯多噶主义把注意力放在**自身的反应**上。
+Two infrastructures:
 
-宇宙是有序的，理性是人与自然的和谐共处方式。
+The context layer: the whiteboard feature — not just visualization, but more importantly letting different cards trace each other's lines of thought
 
-**不对抗，顺应事实本身。**
+The description layer: responsible for adding types and attributes to cards, corresponding to Heptabase's tag and property features
 
-不逃避痛苦，理解痛苦的一部分。我能以理性和德行的方式回应。
 
-斯多葛主义并不要求“没有情绪”，而是强调**不被情绪支配**。
+<!--memo:c715f1f9ea70-->
+### People who trade time for time
 
-德行是衡量品德的唯一标准。
+> 2025-10-08 13:52:22
 
-内在自由、顺应自然、以理性（或道心）自足的生活方式。
+Trading your own time for your own time — a dream-maker.
 
-斯多葛学派认为：情绪源于错误的判断。如果理性清明，就不会被怒、忧、恐等情绪左右。
+Trading your own time for your own time, not starving to death, even living pretty well.
 
-`#格物/哲学`
+Because human society has always had a kind of "adults raising children" support mechanism.
 
----
+The world's "work" can roughly be split into two kinds: one is "running things", the other is "creating". Running things is the difficult easy thing; creating is the easy difficult thing.
 
-### 吸收信息是机械，品味知识是沉浸
+The goal of management is extremely simple: get everyone thinking the same thought and pulling in the same direction. But reaching that goal is extremely hard and takes a lot of theoretical knowledge and practical experience.
 
-> `2025 年 10 月 27 日 - 18:19:55`
+More than two hundred years ago the poet Schiller reminded people that play is an activity that brings out man's "dual nature", a nature that turns every "limit" in life into "expansion". Only when man is man in the full sense does he play; only when man plays is he fully a man.
 
-**吸收信息**是一个机械化、目标导向的过程。
+This dual nature is really the clash of the sensuous and the rational. In reality we all assume the two stand in opposition — we're either driven by desire or bound by reason.
 
-`#一闪`
+And play is exactly that magical domain: it satisfies sensory pleasure and follows some rule-ordered structure at the same time, bringing the sensuous and the rational into harmonious unity.
 
----
+Within finite rules, we gain infinite possibility — a higher order of freedom.
 
-### 深度加工：有节奏感和美学的品味
+Only in play are we at once sensuous, rational, creative and free — only then are we our complete selves.
 
-> `2025 年 10 月 27 日 - 18:52:23`
+So play is genuinely interesting. Playing at life isn't defined by useful or useless; it's precisely the dignity of our humanity.
 
-**深度加工就是一种品味。**
+The true spirit of play isn't escaping reality; it's experiencing the joy of creation within self-imposed limits, becoming a more complete person in the tension between rules and freedom.
 
-有**节奏**、**时间感**和**空间感**的加工。
 
-认知科学中，信息的吸收需要涉及到：感知、短期记忆、初步理解。用户的查询通常是快速、线性的，目标是满足即时需求。
+<!--memo:228533b840f0-->
+### But then, on the other hand
 
-**品味**是感性的、沉浸式的，类似于美学的体验。
+> 2025-10-08 14:05:29
 
-当用户带着好奇心或探索欲望获取信息时，吸收的过程可能自然延伸为品味。
+The designers of modern online games think more about addiction mechanics.
 
-`#观我/心智`
+How to glue down users' time and money.
 
----
+Exploiting the weaknesses of human nature actually runs against Schiller's ideal too.
 
-### 会玩比技术重要
+So I go back to single-player games; I genuinely feel this game belongs to me, and that's fun.
 
-> `2025 年 10 月 27 日 - 18:53:20`
 
-**会玩比技术重要。**
+<!--memo:9561fb35092d-->
+### Cybernetics: everything can be a system
 
-技术只是一个入场券，只是一个体系对某一个人的认可。
+> 2025-10-08 15:10:11 · `#格物/控制论`
 
-但是更重要的是**会玩**，沉迷其中。
+Cybernetics is the science of how systems self-regulate and self-control. Whether it's a living being, a machine or a social organization, it tries to find the general laws behind them.
 
-`#观我/个人成长`
+System: everything is a system; the body can be one too. Sometimes we don't care how complicated the inside of the system is, only about input and output.
 
----
+Feedback: the system's eyes and ears. The system senses the results of its own actions and adjusts the next round.
 
-### 赫尔曼·艾宾浩斯：遗忘曲线与学习的曲线
+Negative feedback: correction, keeping things near a target.
 
-> `2025 年 10 月 28 日 - 00:16:07`
+Positive feedback: likes, snowballs, amplifying and strengthening a process.
 
-**赫尔曼·艾宾浩斯**：记忆探索者，研究了记忆和忘记。
+Control: the system adjusts and guides.
 
-**艾宾浩斯遗忘曲线**：为了保证实验“纯粹”，他不用熟悉的单词（比如 "APPLE"），因为那会产生联想。
+The world is made of countless systems nested in one another, regulating through feedback.
 
-我们的大脑天生就是“**健忘**”的。
+Whether life or machine, the underlying logic of their behavior is astonishingly similar.
 
-所以这是一个**记忆的曲线**，也是一种**学习的曲线**，表示的是学会一个技能的速度。
+Entropy is a system's degree of disorder; it measures a system's uncertainty and disorder.
 
-学习不是一个直线，每天也不是都能进步一样多。
+Entropy and information are mortal enemies: high entropy = low information. A completely chaotic system, like TV static, contains enormous uncertainty (you don't know which dot will light up next) but almost no useful information. Low entropy = high information: a piece of text, an image — their arrangement is determinate and ordered, so they can carry a lot of information.
 
-`#格物/心理学`
+The aim of cybernetics is a control system, which is essentially a creator of "negative entropy". By introducing information and control, it resists a system's spontaneous tendency to descend into chaos.
 
----
+In an isolated system, entropy always increases. That is, everything spontaneously moves from order toward disorder.
 
-### 南北政治觉悟与人情味的差异
+Life is the greatest "negative entropy" phenomenon. Organisms keep drawing energy and information from outside (eating, learning) to maintain their highly ordered internal structure and fight the flood of rising entropy.
 
-> `2025 年 10 月 28 日 - 09:57:23`
 
-认识了河北石家庄这边本地的朋友，很深刻的一个词是**政治觉悟**。
+<!--memo:d4a4a0bf2923-->
+### How to validate a product
 
-北方尤其是北京的朋友，尤其是军政/体制的朋友天然地对一些红色信息更关注一些。
+> 2025-10-10 11:31:52
 
-北方人外向，讲故事喜欢带着夸张成分，语气豪爽，这是**表达方式的外放**。
+You have a fairly clear sense of the product positioning and the user story.
 
-**南方地区**总体上更少在公共场合谈政治，南方的交往讲究“**和气生财**”，避免敏感话题；而**北方社交**更重情绪表达，容易在饭桌上聊天下大势。
+But when you first validate, what you must validate is the uncertain part and the simplest part of the most core function.
 
-“**客观理解政治**”并不是指谁更聪明，而是指：能区分事实与情绪、能从多角度看待政治现象、理解政治背后的制度逻辑。
+That's the validation logic of an MVP.
 
-南方很早就可以通过**市场逻辑**、企业运营、地方政策来理解，而不是仅仅从意识形态触发。北方的政府部分，侧重**政府话语**、侧重关系，很多人对政治的理解更情绪化、叙事化，容易用“国家兴衰”这样的宏大框架去解释社会现象。
 
-**人情味：** 朋友多次谈论到北方的人情味很足，南方的却不是这样。南方文化重“**理性务实**”、“**避祸趋利**”，表达上含蓄克制，更偏向于实用主义，专注在自己身上，而不是**二人关系**。
+<!--memo:9dfa164a2089-->
+### A very important distinction with heptabase
 
-`#知世/文化差异`
+> 2025-10-11 10:53:24 · `#格物/产品`
 
----
+A very important distinction between heptabase and tools like notion is that its positioning is a learning app, not a note-taking app.
 
-### 荣格心理学：社会化、自洽与去社会化
+The goal is to help users learn better, not to help users take more notes or build a productivity system.
 
-> `2025 年 10 月 29 日 - 09:23:45`
+It encourages users to break information apart, restate it in their own words, and then link it visually — that process itself is deep learning.
 
-**社会化**：一个人习得并内化社会规则、规范、价值体系的程度。
+Good design always immerses users in the process of creating, triggering a flow response.
 
-**独处自洽**：心理结构的稳定性。一个人在没有外界镜像时，是否感觉到自己的存在是足够的。自洽的人不依赖他人反馈确定自我价值。
+The process itself lets you focus on learning and thinking, and forget the tool itself.
 
-**去社会化**：脱离原有的社会角色和身份，伴随的通常是“**价值真空**”，一种“旧信仰瓦解，新信仰未立”的空白。
 
-* 可以表现为**失根**：被拔出土壤的空旷与疼痛，但也暗示着可能重新生根。
+<!--memo:09b4e12f5ca2-->
+### What the Believer model teaches
 
-* 也可以是**脱魅**：看清了国家、民族、家庭这些集体叙事背后的构造，就会感觉到一种去魔法化的孤独。
+> 2025-10-11 10:58:02 · `#格物/产品`
 
-`#格物/社会`
+It deeply links the user and the product through an emotional and value clasp.
 
----
+The highest tier of subscription; hope also has a corresponding co-creator tier.
 
-### Agent HQ：代理编排与原生的智能体架构
+A kind of identity identification and emotional investment.
 
-> `2025 年 10 月 29 日 - 09:55:14`
+Existing itself is precisely identifying the core user group, so you can keep getting closer feedback.
 
-**Agent HQ** 是 GitHub 平台推出的流程原生工具。
+And there's a stable cash flow.
 
-它认为过去的 LLM 就像一个黑盒，通过 Prompt 强行表现出智能体行为，如果系统复杂或对话长，LLM 容易忘记自己是智能体、忘记自己有哪些工具。
+There's a way to build a strong brand moat.
 
-所以 Agent HQ 推荐的 **Baked In / Native**（原生） 可以让智能体的核心能力（推理、规划、记忆）被**重构到模型架构本身之中**。
+The product side wins users' trust through transparent communication and excellent execution; users, through putting in money and feedback, become partners in the product's growth.
 
-这可能是在处理生成答案之前先进行 CoT（思维链），并且有专门向量存储模型能力决定何时去调用、检索或者更新记忆。
 
-**任务控制中心**：统一的指挥中心，可让您从任何位置分配、控制和跟踪多个代理的工作。它扩展到 VS Code，提供了规划和自定义代理行为的新方法。它也拥有企业级功能：新一代的代理代码审查、用于管理 AI 访问权限和代理行为的专用控制平面，以及用于了解 AI 对工作影响的指标仪表板。
+<!--memo:545ee755f0a2-->
+### Not a slow-to-warm-up person
 
-`#格物/AI`
+> 2025-10-13 09:22:12
 
----
+An extremely immersive explorer.
+
+Very easily absorbed into a new experience — whether it's living in a new place or a game, my system will call up enormous resources to explore the thing.
+
+Then there's my extremely strong metacognition and the rational-driving side: this administrator is always running silently in the background, monitoring the operating state of the whole system, holding the highest privileges, and able to interrupt and quit any process at any time.
+
+Someone with extremely strong execution in the control and feedback system: sensing something, acting on it.
+
+Experience with the greatest immersion, and manage your own system in the most rational way.
+
 
-### 描述好的问题：与 AI 深度协调
+<!--memo:9ab4eb60be6a-->
+### https://nsddd.top/zh/posts
 
-> `2025 年 10 月 29 日 - 10:37:30`
+> 2025-10-13 10:17:38
 
-描述出一个好的问题也是很复杂的过程，尤其是如何清晰地描述出自己需要的需求。
+https://nsddd.top/zh/posts/2024-annual-review/
 
-LLM 回答质量很大的程度上依赖 LLM 本身的能力以及**提出的问题的 Input 质量**。
+Scenario design / designing input = scenario; inside a small scenario, find one concrete entry point.
 
-这部分或许是可以和 AI 深度协调的。
+input, output, scenario = context + historical user habits, a sedimented system, unlimited.
 
-`#格物/AI`
+Mind map?
 
 ---
 
-### Agent HQ 的多代理协作与控制面板
+New user story.
 
-> `2025 年 10 月 29 日 - 22:00:19`
+Experience closed loop.
 
-**Agent HQ** 是 GitHub 推出的一个「代理管理／编排平台」。目标是“多个代理供应商／多个代理工具”在同一个环境里被管理，而不仅仅是一个编码代理。
 
-* **特性：** 支持多个 AI 代理（OpenAI、Anthropic、xAI）在同一平台被调用。
+<!--memo:7f9fbcc816b4-->
+### flomo vs heptabase: the human memory mechanism
 
-* **Mission Control（任务监控面板）：** 作为控制界面，统一查看、分配、监控 AI 代理任务。
+> 2025-10-13 21:47:27
 
-* **工作机制：** Agent HQ 有一个**元代理 / 控制代理**的概念，围绕任务的分解进行。它要拆解任务（代码分析、修复、测试、生成 PR 说明），然后根据任务类型、语言、上下文等决定派哪个代理去执行（**代理指派**）。
+heptabase is actually positioned as a tool for thinking and structuring knowledge, very good for deep understanding.
 
-* **整合输出：** 类似于 `git merge` + `code review` + `confidence scoring`（置信值，0-1）。
+notion is harder to pick up, overloaded with features, and over-free: the blank canvas leaves beginners not knowing where to start, and there are so many concepts and features that users have to design their own information architecture, which demands a lot of investment long-term.
 
-* **对比：** Agent HQ 是平台级的“**编排平台**”；Claude Code 是一个**编码代理工具**。
 
-`#格物/AI`
+<!--memo:73c822108492-->
+### Most hover displays really are over-design
 
----
+> 2025-10-13 23:15:35
 
-### Vibe Coding 的提示词策略
+Most hover displays really are over-design.
 
-> `2025 年 10 月 28 日 - 23:54:38`
 
-**Vibe Coding** 的一些方法，如何编写提示词：
+<!--memo:b9cc139f7ec4-->
+### Hands-on with same.new
 
-* **Storyboard Prompts：** 像写故事板一样构建 Prompt，先概述一个整体架构，再分解为小任务，先描述应用的流程，然后逐个模块生成代码。
+> 2025-10-15 16:24:37
 
-* **Constraint Cues：** Prompt 中明确**约束**（语言版本、技术栈或性能要求），让 LLM 不会过度设计。
+You can actually input cards too.
 
-* **Smart Iteration 方法：** 通过多次迭代提示生成，先出粗糙版本，然后 Prompt 修复 Bug 或添加功能，**渐进式开发**。
+You can manually copy sub-pages; generally that's more maintainable, and you can generate multiple sub-pages.
 
-* **Context-First 方法：** 提示开头提供**背景**，让 AI 更好理解 **Vibe Coding**。
+And it supports deployment too.
 
-`#格物/AI`
+Innovation is finding something new in the familiar.
 
----
 
-### 钝感力：心理过滤机制与人际差异
+<!--memo:316f032117c1-->
+### Mem 2.0 is a more disruptive product
 
-> `2025 年 10 月 29 日 - 00:13:22`
+> 2025-10-18 18:54:47 · `#格物/产品`
 
-**钝感力**强的人往往不容易被外界的评价、情绪波动或人际暗示所左右。他们可能看起来有点“反应慢”，对别人的潜台词不太敏感。
+A fairly good thinking partner.
 
-这种人通常**心理防御力强**，不容易焦虑或受伤，也不太容易被操控；缺点是他们在人际关系中容易“**读不懂空气**”，有时被误解为冷漠或迟钝。
+Building Mem from scratch, so entrepreneurs, executives and creative people can easily capture and use their best ideas.
 
-**神经科学解释：** 提到的“对疼痛的感知延迟或不强”，可能与神经系统对外界刺激的反应阈值较高有关。焦虑、注意力、激素水平等都会影响疼痛感知。
+Offline-first, blazingly fast, built specifically for handling your most important thinking.
 
-**本质：** 钝感不是“缺陷”，而是一种“**过滤机制**”。大脑在保护自己，避免信息过载。只是，这种过滤有时会过滤掉人际细节和身体信号。
+Now it seems they don't just want to make a note-taking app, but to make an AI thinking partner that still holds the central position in your notes — a system that helps you turn ideas into results.
 
-`#观我/心理机制`
+Two handy ways:
 
----
+a browser extension that turns any web page into a beautifully formatted note; no organizing needed, Mem handles the rest.
 
-### 苹果 Liquid Glass：内容优先的跨平台视觉语言
+email integration: just forward it.
 
-> `2025 年 10 月 28 日 - 19:52:09`
+Design philosophy: Mem's design philosophy is about remembering notes and finding them in the future, focusing on recall (personal gripe: xxx).
 
-我还是没懂，苹果的关于 **Liquid Glass**。
 
-这是他们推出来的一套全新的**视觉界面设计语言**，苹果把界面里的按钮、滑块、控件、图标背景、工具栏等当作“**材质**”来渲染，这个材质叫做 **Liquid Glass**。
+<!--memo:e87187a00417-->
+### Researching and introducing tana
 
-* **特性：** 透明/半透明、反射/折射，甚至随着环境（光线/深色/浅色模式）会有变化。
+> 2025-10-18 19:22:16 · `#格物/产品`
 
-* **流动性：** 界面元素有温和的动画、层次、滑动中形态变化。
+tana instantly turns notes into other things — tasks, projects, web pages, strategy documents, OKPs and all that mess.
 
-* **核心：** 苹果希望各类设备在视觉语言上更统一，所以 Liquid Glass 是一个**跨平台设计语言**。
+Anyway, it's a whole set of features built around that.
 
-* **设计原则：** `Material.liquid()` 会动态响应背景内容变化，而不是固定模糊，这是一种**内容优先**的设计原则，界面可以消失。
+Transcribing lecture content, taking notes more intelligently, staying organized. With AI analyzing the lecture content, extracting the key points, creating study notes, and generating exam-prep questions.
 
-`#格物/产品`
 
----
+<!--memo:0f0d54c0c529-->
+### Deep research into the second ai project
 
-### I 人社交：选择性外向与深层连接
+> 2025-10-18 22:20:34 · `#格物/产品`
 
-> `2025 年 10 月 28 日 - 21:54:55`
+With the development of large models and agent systems, people are paying more and more attention to the idea that AI is not just a one-off Q&A tool, but a companion agent with long-term memory that continuously understands the user and keeps context consistent across multiple interaction scenarios.
 
-**I 人并非不社交**，他们只是不喜欢浅层、重复、无意义的社交。
+So once the concept of AI-native memory appeared, it was about letting the system, like a human, have memory and a self, able to remember the past, know who I am, what I've done, what I prefer.
 
-当遇到真正理解他们、能聊到深层思想的人时，那种聊天反而会点燃他们的能量。
+"second" also means second, so what's explored is the process of a second me, a digitally extended self — representing the user and assisting the user.
 
-心理学上叫 **“ambivert”（中向型）**，也有人称之为“**社交型内向者**”或“**选择性外向者**”。
+For future intelligent agents that are more autonomous, continuous, with long-term goals and memory.
 
-`#观我/心理机制`
+A few goals:
 
----
+Redefine memory management: not just storing user information, preferences and history as independent data, but making memory the basis for the system's reasoning, responses and generated behavior.
 
-### 赫尔曼·黑塞与荣格：孤独的求索与个体化
+A three-layer memory architecture (L0, L1, L2):
 
-> `2025 年 10 月 28 日 - 13:47:39`
+L0 (Raw Data Layer): the raw data layer, unstructured input such as documents, conversations, logs.
 
-**赫尔曼·黑塞**的思考围绕着**孤独的灵魂求索**和**如何与自己和解**。深受印度哲学《悉达多》和中国道家思想的影响，是荣格心理学的玩家心态。
+L1 (Natural Language Memory Layer): the natural language layer, abstracting part of the memory into readable form, such as a user resume, preference tags, important sentences.
 
-**核心主题：**
+L2 (AI-Native Memory Layer): the AI-native memory layer, embedding the user's specific knowledge, preferences and history into the model parameters, achieving persistent, structured, reason-able memory.
 
-* **永恒的二元对立：** 提现的是中国的中庸哲理，即不批判，体验和整合这种分裂。**中庸的本质就是道法自然，阴阳平衡。**
+Why do we need a three-layer architecture? Essentially one is storing the raw information — technically a document database; another is some storage abstracted during LLM conversation; and finally L2 is fine-tuning on the L1 data, where it's no longer a database or text, but memory written into model parameters. For example, using the L1 data to fine-tune the model, with preference optimization (DPO, RLHF) letting the model internalize "the answer style and values the user likes", producing a personalized model.
 
-* **荣格的“个体化”：** 一个人必须摆脱群体的束缚（家庭、社会、宗教），去面对自己内心的黑暗和光明，最终活成一个完整、独特的自我。
+One very core point is how to handle the model.
 
-* **经验 >> 说教：** 智慧是无法被传授的，知识可以学，但是**智慧只有去经历、去感受、去犯错才能获得**。
+To make the model natively have memory, how do you fine-tune.
 
-`#格物/心理学`
+Two routes:
 
----
+External memory: ChatGPT API + RAG + vector store; don't change the model, use the off-the-shelf API.
 
-### 荣格：人格面具、阴影与自性的完整图景
+Native-memory type (AI-Native Memory), Second Me, MemGPT, Personal-LM: fine-tune model parameters, writing memory into the weights.
 
-> `2025 年 10 月 28 日 - 13:54:20`
+The L2 layer (AI-Native Memory Layer) is at the model level:
 
-荣格心理学中有一个 "**自性**" 状态，而剥离的过程，就是荣格毕生的理论——**个体化**。
+through SFT (supervised fine-tuning) and DPO (direct preference optimization),
 
-在中国文化的深层分析中，人有三个面壳：
+it "writes the user's preferences, tone, knowledge and style into the model parameters".
 
-* **人格面具：** 由社会身份、标签构成。如果拿掉职业、社会角色、别人夸奖，我还剩下什么？我私下里真正的欲望和感受是什么？
+The model isn't trained from nothing; it synthesizes personalized training samples from raw interactions (L0) + semantic summaries (L1).
 
-* **阴影：** 我们不愿意承认的自己，被压抑的、认为不好的、可耻的、黑暗的部分。越是否认，它们越容易暗中操控自己。**接纳和承认自己也会嫉妒、也会愤怒。**
+Through SFT (supervised fine-tuning) and DPO (direct preference optimization),
 
-* **自性：** 最终目标，是人格的真正中心（而不是“自我”Ego）。它连接着你的灵魂和创造力，既包含你的光明也包含你的黑暗，既包含你的意识也包含你的无意识。
+it "writes the user's preferences, tone, knowledge and style into the model parameters".
 
-当你与“**自性**”连接时，你不再简单地用“好/坏”、“对/错”、“我们/他们”来看待世界，而是能容纳矛盾，看到一个**完整的、合一的图景**。
+And this way it can be carried on the user's local device.
 
-`#格物/心理学`
 
----
+<!--memo:0f6f3dcd2e76-->
+### Warp's Project rules &
 
-### 北方朋友的“靠”字哲学与居高临下的视角
+> 2025-10-20 13:17:23 · `#领域`
 
-> `2025 年 10 月 28 日 - 13:27:31`
+Warp's Project rules & slash commands capability.
 
-印象很深刻的一个场景回忆。
+Mainly for agent operations, like adding a new reusable prompt template,
 
-我在回国后，第一次去北方旅居，在石家庄住青旅。认识了一个老家在湖北的朋友，他曾在我的家乡服役。
+adding an MCP service, adding routes, indexing the codebase, initializing a warp project and so on.
 
-他所在的部队是特级英雄黄继光生前所在的部队。
+Warp Code = AI + code understanding + project rules + MCP extensions + custom Prompt system.
 
-这个北方的朋友在整个对话过程中，体现的是一个“**靠**”字。他所有围绕自己拥有的选择，也是围绕着这个 “靠” 字——**自己有靠山，但别人没有。**
 
-他在谈论我老家的时候，好像带着一种**居高临下的视角**，他形容我们没有见过那样的场景，就像是修仙小说中某一个门派的弟子下入凡间，而那边也是我的故乡...
+<!--memo:de0dbe1acdee-->
+### Finding a few indicators
 
-一种认知上的优越感袭来。
+> 2025-10-22 15:43:29
 
-`#知世/见闻`
+Music, sound.
 
----
+Space in between — needless to say, it's too important: negative space and a sense of breathing, appropriate emptiness.
 
-### YouMind：不以输出为目标的工具，毫无价值
+Verticality, a sense of three-dimensionality, accounts for a large share of the psychological effect.
 
-> `2025 年 10 月 30 日 - 09:39:23`
+Material: concrete, glass, wood give a comfortable feeling.
 
-**YouMind** 产品本身是作一款 **AI 创作工作台**，当你有一个想法，YouMind 就可以实现从起心动念到成稿的全过程。
+Light, this is actually very important and also a very hard factor to design for; light must "have rhythm", flowing and changing with time, rather than lighting evenly.
 
-**不以输出为目标的工具，是毫无价值的。**
+Nature — where there's light there's of course nature: plants, or some natural things.
 
-不以效率为主要的追求点，而是以一种**品质、享受、乐趣创造**。
 
-`#格物/YouMind`
+<!--memo:bcd4a9f6d8a3-->
+### The tag design in heptabase
 
----
+> 2025-10-23 10:15:48
 
-### 人的视角：叙事延续的三重视角
+A tag looks like a label, but it's actually the bridge between atomic cards and the semantic organizational structure.
 
-> `2025 年 10 月 30 日 - 10:08:54`
+A card is the smallest unit of thought.
 
-作为一个人类个体，在学习一些领域的时候，特别喜欢的一些视角。
+A tag is a thematic gravitational field.
 
-人类以**叙事**而延续，那么就是有三个视角：
+A Tag is a many-to-many semantic connection layer.
 
-* **历史的视角**
+One card can have multiple tags.
 
-* **方式变迁的视角**（一些革命的事件）
+One tag can contain cards from different boards.
 
-* **人的视角**
 
-`#观我/心智`
+<!--memo:f03e0134eeb1-->
+### The small product Luo Yonghao is building
 
----
+> 2025-10-23 11:24:41 · `#格物/产品`
 
-### 内容平台：人性向上与向下（贪嗔痴）的拉扯
+J1 Assistant is a personal AI assistant app built in the Matter format.
 
-> `2025 年 10 月 30 日 - 13:29:43`
+It's still in beta.
 
-看到玉伯采访认为，"下一代的内容平台不是抖音这种内容消费平台，很可能是**内容创作平台**。因为我相信，人类社会是分阴阳两极的，人性有多向下，人性就有多向上。
+It aims to be a smarter, more efficient, more elegant AI assistant that understands the user and is good at managing complex tasks,
 
-贪嗔痴代表 50% 的人性，要相信剩下 50% 是好的，这也是佛学阴阳两极的概念，如果没有「向上」，那健身房、瑜伽都火不起来的。"
+including scenarios like task management, scheduling and reminders.
 
-**贪嗔痴**本身就是人的三大劣根，人类痛苦的本源。平衡是人性善的潜能被激发出来，**三毒与三善根始终在拉扯**。
+It's a self-developed large language model (LLM).
 
-下一代是内容创作平台也不是乐观悲观的谈论，只是在未来的趋势中，多大程度上更更便捷地促进人本身的**同情、理性、智慧、创造力**，这些是人类宝贵的品质。
+It emphasizes seamless integration of search and task execution, helping users save time (like saving half an hour a day).
 
-工具是无法改变人的，只能潜移默化地扩大某一个人原本的一些**意图**。
+It includes support for voice input and interaction, a Ripple Touch mechanism, integration of tasks and search, multi-platform search capability, and scheduling and reminder capability.
 
-这是一个**窄门**。
 
-`#格物/YouMind`
+<!--memo:9aad482a6658-->
+### The openness of the language system
 
----
+> 2025-10-25 10:22:19
 
-### YouMind Boards：创意行业的 Project 管理面板
+Human language isn't a closed set of symbols
 
-> `2025 年 10 月 30 日 - 14:41:34`
+It's a symbol system that can keep iterating, keep creating new expressions, generating new meaning
 
-**YouMind Boards** 功能思考。
+Finite rules, infinite output
 
-类似于任务管理的面板，可以将资料、笔记和创意按主题进行**分类整理和集中管理**。
+Language is also recursive, and this recursiveness gives language its generativity and openness
 
-每个 Board 专注于单一主题，用户可以将文本、图片、视频、音频、链接和播客等多种格式的内容保存并组织到不同的 Boards 中。
+The openness of linguistic meaning reflects the openness of human society and cognition
 
-其实就是 **Project**，只是在创意行业中，“**mood board**”（情绪板）、“**inspiration board**”（灵感板）是常见概念。
+Life is also an infinite-flow game, in some ways more like a word game
 
-它的目的是形成**长期可以复用的知识库**，并且按照项目的类型管理。
+Language is also an infinite-flow game
 
-很适合写一些文案，比如说小红书创作，建立素材库和灵感库。
+We go and make spatial choices at various levels
 
-`#格物/YouMind`
 
----
+<!--memo:d58b43ab84be-->
+### Typesense's autocomplete capability
 
-### 胖东来的顾客：本地人与高客单价
+> 2025-10-25 18:37:22 · `#格物/产品`
 
-> `2025 年 10 月 31 日 - 14:49:24`
+A capability I quite like; the usual scenarios
 
-**胖东来的客户的消费能力很强。**
+Search-as-you-type: users expect the results to refresh immediately with every letter typed into the search box
 
-2024 年，胖东来许昌地区超市的年销售额为 59.45 亿元，这个逼近山姆 2024 武汉的年营业额。新乡 2024 营业额也二十多万，几乎超过武汉单家山姆的年营业额。
+It has powerful built-in spell correction, out of the box. You need no configuration at all; it automatically handles typos and returns the most relevant results
 
-从消费特征来看，胖东来不仅仅是依靠游客的消费，更多的也是**本地人愿意买单**。
+It means the whole search results page (not just the dropdown under the search box) refreshes in real time with every key you press
 
-一些出租车司机分享到他们身边的人也会经常去胖东来，尤其是年轻人。
 
-`#格物/商业模式`
+<!--memo:d031176a6339-->
+### I still don't get Apple's Liquid Glass thing
 
----
+> 2025-10-28 19:52:09
 
-### Pinterest 的核心价值：灵感发现与行动计划
+It's a whole new visual interface design language they rolled out; Apple renders the buttons, sliders, controls, icon backgrounds, toolbars and so on in the interface as a "material", and this material is called Liquid Glass
 
-> `2025 年 10 月 31 日 - 15:04:58`
+Transparent/semi-transparent, reflecting/refracting, and even changing with the environment (light/dark/light mode)
 
-一直很迷惑 Pinterest 到底有什么很吸引人的地方。
+Fluidity: interface elements have gentle animation, layering, and morphing during swipes
 
-它在 Gen Z 中是增长最快的用户群，性别上男女比例为 3:7，最大的年龄段是 18-34 岁。
+One thing that's actually important is that Apple also wants all kinds of other devices to be more unified in visual language, so Liquid Glass is a cross-platform design language
 
-**Pinterest 本质是一个 “视觉灵感 + 收藏 + 发现” 平台。** 用户常用它浏览家居装饰、时尚、美妆、旅行、DIY、食谱等灵感版块。
+Externally the wrapper is actually very simple
 
-**Pinterest 的核心价值在于用户发现“我想做这个／我想买那个／我想去那里”的灵感。**
+Older versions only needed .fill(.ultraThinMaterial), now it's generally fill(Material.liquid())
 
-它的模式非常值得学习，让用户 “**先发现 -> 收藏 -> 行动**”。
+Material.liquid() responds dynamically to changes in the background content rather than being a fixed blur
 
-非常强调的一点就是 “**灵感发现 + 收藏 + 计划 + 行动**”。
+This is a content-first design principle; the interface can disappear
 
-在美国，Pinterest 用户中**家庭收入高端群体**占比较大，例如“40% 的美国家庭年收入超过 150K 美元”的用户在 Pinterest 上。
 
-`#格物/产品`
+<!--memo:6452f5578d00-->
+### Some vibe coding methods: how to write prompts
 
----
+> 2025-10-28 23:54:38
 
-### BeReal 爆火：Z 时代对真实感和低表达负担的需求
+Storyboard Prompts: actually building the prompt like a storyboard - first outline the overall architecture, then break it into small tasks, describe the app flow first, then generate code module by module
 
-> `2025 年 10 月 31 日 - 15:20:03`
+Constraint Cues: explicit constraints in the prompt - language version, tech stack or performance requirements; codex won't over-implement, so it won't over-engineer
 
-**BeReal** 最初的爆火趋势，曾经在 Z 时代校园群体中非常流行。
+Smart Iteration: generating through multiple iterations of prompting - first a rough version, then prompting to fix bugs or add features, progressive development
 
-它提倡的是更**随性、更真实**的社交体验，与传统的滤镜 + 精修社交平台形成对比。
+Context-First: providing background at the start of the prompt, which lets the AI understand vibe coding better
 
-这是 Z 时代的一种对**真实感、非刻意**的需求。
 
-它的核心定位是：“**展示你真正的生活**”，而不是精修滤镜后的“高光时刻”。例如其 App Store 上的描述说：“Every day at a random time… no filters — just real life, as it happens.”
+<!--memo:91cc0bbb3732-->
+### BeReal's original explosive popularity
 
-**机制：** 无法看到朋友的当日贴，直到你自己上传你的贴。**“先自己，后他人”。**
+> 2025-10-31 15:20:03 · `#格物/BeReal`
 
-年轻人对**真实、内在**的渴望。
+Once very popular among Gen Z campus groups
 
-怎么样有**更低的表达负担**？
+It advocated a more casual, more authentic social experience, in contrast to traditional filter + retouch social platforms
 
-怎么样有好的**反馈机制**？既然是轻多巴胺反馈，那就不要被批判，不要过度曝光。
+A Gen Z need for authenticity and non-deliberateness
 
-社交的群体是否精确？
+Its core positioning is: "show your real life", rather than the retouched "highlight moments". For example its App Store description says: "Every day at a random time… no filters — just real life, as it happens."
 
-`#格物/产品`
+You can't see a friend's post for the day until you upload your own. In other words, "yourself first, others second"
 
----
+Young people's longing for authenticity and interiority
 
-### LLM 概率输出：排序质量提升与模拟分布
+How to have a lower expression burden
 
-> `2025 年 10 月 31 日 - 16:54:43`
+How to have a good feedback mechanism; since it's light-dopamine feedback, don't be judged, don't over-expose
 
-从效果上看，“让 LLM 推荐五个选项” vs “让 LLM 输出最可能点击的五个选项及其概率”，这两者理论上是相似的任务，但在**可用性、可解释性和模型行为**上会产生差异。
+Is the social group precise
 
-* **推荐五个选项：** LLM 只是做一个“**排序**”或“**筛选**”任务。它会根据语境判断出最相关的几个，但不会显式地表达各自的置信度。这种形式更自然、更贴近人类对话式输出，适合直接展示。
 
-* **加入“概率”指令：** 会促使模型更显式地思考各选项的**相对可能性**，这可能提高排序质量。但生成的“概率值”未必真实反映模型内部信心，只是语言上的**模拟分布**。
+## 7. Travel, Places and Cities
 
-根据研究报告，LLM 的创造力也是提升了很多，基础模型创造力恢复率达 66.8%（无基础模型创造力恢复率仅为 23.8%）。
+*18 entries*
 
-`#格物/AI`
+<!--memo:2695b5d7a4bf-->
+### The shifting trend of Hong Kong's port
 
----
+> 2025-10-02 12:11:00 · `#格物/港口`
 
-### 星巴克见闻：从情侣到哥们
+Hong Kong was once the world's largest container port by throughput
 
-> `2025 年 10 月 31 日 - 17:14:01`
+But now it's basically been replaced by Shenzhen and Ningbo-Zhoushan
 
-星巴克来了一对情侣，看样子也是本地的大学生。
+Ningbo-Zhoushan has in the past two years also become the world's new largest port
 
-男生看上去很沉稳，女生很活泼，偶尔撒娇。
+In addition, Southeast Asian ports like Singapore and Malaysia's Port Klang are rising, further intensifying competitive pressure on Hong Kong's port
 
-后面男生来了两个好像是哥们或者室友，然后他就和几个哥们谈论游戏了。
+This is also why CK Hutchison sold its majority stake in the Panama ports company to a US-led consortium
 
-`#知世/见闻`
+CK Hutchison operates ports in many places worldwide; port construction and operation require heavy fixed-asset investment, including wharves, yards, automated equipment and channel maintenance
 
----
+And the Panama terminals are overseas investments located far from core markets (Asia, Europe)
 
-### 互联网的信息过载与秩序感下降
+By comparison, terminals in the Yangtze River Delta or the Guangdong-Hong Kong-Macao Greater Bay Area have more of a trend behind them
 
-> `2025 年 10 月 31 日 - 17:17:57`
+Especially with the formation of the Greater Bay Area: the Yangtze Delta port cluster and the Pearl River Delta port cluster complement each other's strengths and share resources, raising global competitiveness
 
-其实也是网络上的信息太多了，会导致人们反而缺少一种**秩序感**。
 
-网上的碎片化信息让人们反而是更焦虑了，而不是更开心。
+<!--memo:5ee61889e4d2-->
+### Considering development, my ideal city ranking is Hangzhou / Shenzhen
 
-世界本来就是破碎、复杂、多层的。互联网放大了这一点，每个人能看到的信息原子化碎片，但是没有把这些碎片组成有意义的结构。于是，**信息递增，秩序感下降**。
+> 2025-10-03 00:06:41
 
-**信息过载会让人产生“认知饥饿”**——知道得多，却理解得少。你看到世界的无数面，却没有时间去整合它们的关系，像看了成千上万张照片，却没有一张地图。
+Considering development, my ideal city ranking is Hangzhou / Shenzhen; Chengdu is suited for when you get old and move there haha
 
-但是人类明明天然适合的是**空间记忆、线性记忆、层级结构**的记忆，这些都遭到了破坏。
+Considering retirement (still too early, at least five years to think about it), Chengdu, Changsha and Hangzhou
 
-我们生活在“**过度的信息时代**”，但真正缺乏的是“**符号上的连贯性**”——也就是对意义的整体把握。我们知道所有的新闻，却不再知道“这世界到底怎么了”。
 
-`#格物/社会`
+<!--memo:233db8df5c20-->
+### Japan is also a major exporting country
 
----
+> 2025-10-06 13:32:31 · `#格物/日本`
 
-### 管理者精力消耗低：只做判断与高层次思考
+Currency depreciation favors exports
 
-> `2025 年 10 月 31 日 - 17:27:49`
+And to a large degree favors rising stock prices
 
-管理者的精力消耗很低的一点原因，就是他们只需要做**判断**以及**高层次的思考**。
+Yen weakens, Nikkei rises
 
-注意这一点很重要。
+Yen strengthens, Nikkei falls
 
-哪怕是思考，**低层次的思考也是可以交给 AI 去自己思考、辩论**。可以让两个 AI 相互交谈 review，就像是两个小的领导一样。
+But the core still depends on how vigorous the market is
 
-前提是你需要清晰地知道自己的角色定位，以及不产生巨大负债的风险。
+Investors still like borrowing in cheap yen to buy global assets
 
-`#格物/AI`
+When global risk appetite rises:
 
----
+→ investors sell yen and buy risk assets (Japanese stocks, US stocks, etc.)
 
-### AI 只是复制系统，而非理解
+→ yen depreciation + rising stocks happen at the same time.
 
-> `2025 年 10 月 31 日 - 17:33:34`
+When the market seeks safety:
 
-**人工智能并不理解系统，它只是复制系统。**
+→ investors cover yen shorts (buy yen back)
 
-优秀的系统思考者具备**动态思维能力**。他们能够洞察问题随时间演变的过程，而不仅仅局限于编译时的状态。正是这种分析推理、同理心和前瞻性的结合，使得人类（而非机器）能够设计出具有韧性的系统。
+→ yen appreciation + falling stocks
 
-AI 最大的力量在于**协调**，而不是**创造**。
+This is also why the yen is often a safe-haven currency.
 
-`#格物/AI`
+The weaker the yen → the more dazzling corporate profits → the stronger the stock market.
 
----
+But it usually can't go too low, because too low isn't a balanced market either; the stock market may instead become volatile due to policy uncertainty
 
-### 如何接受自己对某事兴趣不大
 
-> `2025 年 10 月 31 日 - 17:35:04`
+<!--memo:d0da2300024c-->
+### Hiking easily resets your sleep schedule
 
-**如何接受自己确实好像对某一个东西的兴趣不大：**
+> 2025-10-06 17:29:44 · `#格物/徒步`
 
-1.  分析出自己为什么对它感兴趣。
+Because of the sun, melatonin secretion is triggered
 
-2.  分析为什么又不太感兴趣，有哪些原因。
+Exposed to natural light every day, the body is recalibrated by the "sun"
 
-3.  分析不太感兴趣的原因是否可以适当结合**调整自己的环境和思考**。
+Long hours of walking, climbing and carrying a pack during the day exhaust the body.
 
-4.  适当接触，**加重自己感兴趣的权重因素**。
+This deep physical tiredness automatically drives you to sleep early and wake early
 
-`#观我/心理机制`
+Unlike the city's "mentally tired but physically still," that kind of fatigue actually keeps you awake
 
----
+The psychological rhythm becomes simple, and at night you naturally feel "time to rest"
 
-### 不自由的民主：选举形式与缺乏自由的社会
 
-> `2025 年 10 月 31 日 - 21:28:58`
+<!--memo:39d55afb2a89-->
+### In the end, if treated fairly
 
-**不自由的民主**。
+> 2025-10-06 23:28:16 · `#格物/西班牙`
 
-想起来最近塔桑尼亚总统竞选，网络被禁止，动乱的问题。
+There's naturally a sense of belonging
 
-这个概念是政治学家**法里德·扎卡里亚（Fareed Zakaria）** 在 1997 年提出的。他指出，有些国家虽然举行选举、形式上有民主制度，但在言论、司法、媒体、人权等方面却缺乏自由。换句话说——人民能投票，但不能真正掌权或自由地表达反对意见。
+The sense of belonging of any people or country isn't naturally generated; it's a psychological balance manufactured by the state through institutions, narrative and resource allocation
 
-* **民主**强调的是人民通过选举拥有政治权利。
+When this balance tips (economic gaps, discrimination, cultural suppression), people feel "I'm not part of the country"
 
-* **自由**强调的是个体拥有权利与法治约束政府。
+This is why the Inca (and Indigenous peoples worldwide) often waver between national identity and cultural selfhood
 
-* 而“**不自由的民主**”是两者分离的产物：选举存在，但法治、权利与监督机制被削弱甚至虚化。
+In Peru, Bolivia and Ecuador — countries that were once the center of the Inca Empire — the population structure is roughly:
 
-`#格物/社会`
+Hispanic (descendants of whites): the upper stratum
 
----
+Mestizo: the middle class
 
-### 胖东来的经营哲学：高回报与小城红利
+Indigenous people (mostly Inca descendants): concentrated at the bottom and in rural areas
 
-> `2025 年 10 月 30 日 - 09:31:52`
+Even with legal equality, Inca descendants remain "second-class citizens" psychologically and socially
 
-**理解胖东来**，核心两个问题：为什么薪资很高？为什么小城市有赚钱的能力？
 
-**不是普通低价零售：** 胖东来走“**服务 + 体验 + 品质**”路线。虽然物价不一定低，但消费者愿意为“放心”“品质”“服务”付溢价。
+<!--memo:9276672c0d69-->
+### 📌 Core philosophy
 
-**高薪资：** 员工假期很多，中层年休假接近 180 天。较高的薪资是为了高投入、高回报，在成本环境里做出高品质运营，为边际利润提供空间。
+> 2025-10-07 18:03:58 · `#格物/简单背包`
 
-**小城竞争优势：** 胖东来选址于河南省内、三四线城市，在当地积累了品牌口碑、顾客忠诚度、社群关系。小城市竞争者少，品牌优秀，服务差异化就能获得比较大的份额。
+The author, Jeremy Maluf, has since 2015 owned only as much as fits in one backpack — going on 10 years
 
-**效率与成本：** 规模虽然很小，但是效率很高，再加上三四线城市土地、人工、租金成本都低于一线城市，所以有了很低基。
+Core advantages:
 
-**门店成景点：** 外地顾客也会特地开车来购物。
+Improved focus, reduced spending
 
-`#格物/商业模式`
+Can travel anytime, simplified life
 
----
+No checked baggage needed — board and go
 
-### Vibe Coding 的正确使用：Prompt 精细化与审查代码
+🎒 Gear system
 
-> `2025 年 10 月 31 日 - 10:25:30`
+Backpack
 
-**正确的 Vibe Coding 使用方法**：
+Aer Slim Pack (9L) — meets the strictest budget-airline "personal item" size
 
-核心是两个部分：
+Built-in AirTag for loss prevention, with an S-biner lock for anti-theft
 
-1.  **输入 Prompt 精心制作**：侧重在引导 LLM 输出质量。
+Digital devices
 
-2.  **审查生成的代码**：确保正确性。
+MacBook Air M2 13-inch
 
-**交叉验证**是很常见的，通过测试和交叉验证可以避免次代码。AI 处理技术细节，让焦点放在**创造力和结果**而非语法或样板代码上。
+iPhone 15 Pro (256GB, no case)
 
-**Prompt 非常重要**，模糊的 Prompt 产生差代码。最佳实践一定要有**精准的 Prompt**，并且擅长把任务**拆分颗粒度**，并且提供上下文如需求或者技术栈。
+Apple Watch S7 + AirPods Pro 2
 
-**其他要点：** 任务分解、版本控制、AI 协作、Prompt 维护路线、测试和文档。
+Two 256GB USB-C flash drives (one on him, one as backup)
 
-**个人生产问题：**
+Charging setup
 
-* 生成质量不够高，事实证明还是需要拆解和精细化 Prompt。
+Anker 47W dual USB-C charger
 
-* 工程控制能力，如何更好的协同和版本管理。
+Universal travel adapter
 
-* 测试反馈。
+20,000mAh portable battery (can charge a MacBook once)
 
-* 工程债务容易积累：完全忽略输出会导致技术债务，但过度跟踪会降低效率。争议在于“懒惰”使用是否侵蚀技能，还是真正提升生产力。
+👕 Clothing system (extremely minimal)
 
-`#格物/AI`
+Everyday outfit:
 
----
+6 American Apparel 50/50 blend T-shirts
 
-### 技术放大偏好：Vibe Coding 的双刃剑
+6 pairs of Darn Tough merino wool socks (15-year brand, lifetime warranty)
 
-> `2025 年 10 月 31 日 - 10:31:28`
+6 Uniqlo AIRism underwear
 
-所以技术真的会放大一个人的某些方面偏好。
+Western Rise travel pants + Grip6 belt
 
-肯定会有人感觉到 **Vibe Coding** 的快乐，并且提升自己的开发创造能力。
+Nike Pegasus Trail 5 running shoes
 
-但是也有人就在 Vibe Coding 的过程中，被其他的进程以及闲置脑力干涉，比如说浏览 YouTube，得到**及时满足感**。
+Baseball cap
 
-成功 Vibe Coding 依赖“**上下文工程**”：开发者虽不逐行跟踪，但需监控 LLM 的“**注意力漂移**”（context drift），如通过 Cursor 的“思维链窗口”实时审视逻辑流。
+Packing technique: roll T-shirts around socks and underwear into a "daily roll" — wrinkle-resistant and easy to organize
 
-开发者用的是**聪明懒惰**，跟踪结果而不是过程，从而转向价值更高的任务或者更低的任务。
+Winter outfit:
 
-`#格物/AI`
+Montbell Plasma 1000 down jacket (lighter than a phone, packs into a pocket)
 
----
+Canvas jacket (can be layered for extreme cold)
 
-### IOS 26 相机：极简升级与空间场景
+Hoodie + Arc'teryx gloves
 
-> `2025 年 10 月 31 日 - 10:37:23`
+Merino Buff (multi-purpose headwear)
 
-**IOS 26 相机**对极简的再一次升级。
+💡 Practical small items
 
-现在底部主要是 **Photo（照片）** 和 **Video（视频）** 两大模式。其余模式通过在这两模式里「向左／向右滑」或「进入更多选项」来访问。
+RE:FORM ultra-thin wallet (with a magnetic AirTag pocket)
 
-iOS 26 引入了 “**Spatial Scenes**”（空间场景／3D效果）——在拍完照片后，可以让照片看起来有深度／可随设备移动产生视差效果。
+True Utility Keytool (the world's smallest bottle opener)
 
-`#格物/产品`
+A.Brolly umbrella (weight < 90g)
 
----
+Matador quick-dry towel (fist-sized, doubles as a beach towel)
 
-### 拍照的黑白场景：突出主体与情绪
+Moleskine blank notebook + two pens
 
-> `2025 年 10 月 31 日 - 14:26:07`
+⛺ Outdoor gear (for hiking)
 
-**拍照 - 黑白场景**
+Weight just 2kg, minimal volume
 
-1.  **光线问题：** 有些光线可能会污染视角，黑白色可以把注意力引向阴暗的节奏。
+3F UL Gear ultralight tent ($70)
 
-2.  **色彩干扰：** 有时候色彩太多也会分散注意力，街头复杂的广告牌、穿着鲜艳的人群，去掉颜色后可以**突出人物本身**。
+Thermarest UberLite sleeping pad
 
-3.  **情绪表达：** 适合一些需要携带**怀旧、抽象或者超现实的气质场景**。
+Nitecore NU25 headlamp (USB-C charging)
 
-摄影师**安塞尔·亚当斯（Ansel Adams）** 曾说过，黑白不是对现实的剥夺，而是“**对现实的重新诠释**”。颜色是现实的一部分，黑白是感受的一种翻译。
+Toaks titanium cup set + BRS stove
 
-什么时候适合黑白？也许在拍的那一刻问问自己为什么想拍下。
+Sawyer Mini water filter (essential for survival)
 
-`#格物/摄影`
+🎯 Key insights
 
----
+$100 gear ≈ $10,000 gear — no need to chase brands excessively
 
-### 文本的重量：从语言符号到视觉信号的范式转移
+Durability > material — the author doesn't advocate expensive merino wool because it damages easily outdoors
 
-> `2025 年 10 月 30 日 - 17:37:54`
+Long-term living strategy — he's now switched to long stays in cities, with occasional "zero-luggage" trips (carrying only pocket items)
 
-我们一直以为文本轻便、廉价、易于存储、处理和传输。
+Purchase list system — put things you want on a list and observe them for a while before deciding
 
-实际上不是，**大模型时代，文本很笨重**。
+💳 Financial tools
 
-一张扫描成 PDF 格式的发票可能需要提取 1000 到 5000 个令牌。如果把这个数字乘以企业日志、法律合同、监管文件和数字化档案，数量将呈螺旋式增长：**数十亿个令牌**，其中大部分都是冗余的，处理成本高昂且速度缓慢。
+Amazon Prime credit card — 5% cash back, no annual fee.
 
-**范式转移：** 不是把文档作为语言符号的集合，而是把它当做一个**图像、视觉信号**。
+Revolut debit card — free international ATM withdrawals.
 
-它让模型直接“**看**”整个页面的像素分布，把页面压缩成一种**抽象的视觉表示**，然后通过 Transformer 模型去重建语义。
+The biggest value of this list: it proves a modern person can fully meet all life needs with a <10L backpack. The key is precisely choosing multi-functional, durable, lightweight items. The author updates the list every year, and millions have read it for reference
 
-过去是“文字是图像的意义”，现在是“**图像自己蕴含了意义**”。这实际上是形式与意义的关系。
 
-如果借哲学语言来说，这像是从笛卡尔式的“**我思故我在**”（逻辑优先），转向梅洛-庞蒂式的“**我感故我在**”（感知优先）。
+<!--memo:2bc81194deca-->
+### An introduction to Shaoxing
 
-**识别方式：** 以结构为主题，标题、段落、单元格、图像、徽标、框——将每个视觉组件都变成一个对象。这一步骤可以减少噪声，让 DeepSeek 只关注文档的语义块。
+> 2025-10-08 16:18:21 · `#格物/绍兴`
 
-**视觉优先，语言最后**，DeepSeek OCR 并不“读取”文档，而是以视觉方式记住文档内容，然后准确地重写文档。**记忆，不是存储信息，而是存储关系。**
+Shaoxing is known as the "hometown of famous scholars".
 
-反向演示出一种**亚里士多德的世界观**： 意义不在概念中，而在事物形式与感官经验中。
+The source of Wei-Jin style: during the Eastern Jin, the aristocratic clans represented by Wang Xizhi and Xie An moved to Kuaiji (today's Shaoxing), held the elegant gathering of floating wine cups along a winding stream at the Orchid Pavilion, and the "Preface to the Orchid Pavilion Collection" was born there.
 
-`#格物/AI`
+Devotion to country and a critical spirit: Lu You of the Southern Song longed his whole life to recover the lost territories, and his poetry is full of tragic heroism and bold feeling.
 
----
+If "famous scholars" are Shaoxing's "face", then the "shiyé" are Shaoxing's "lining".
 
-### 经验主义 vs 理性主义：思维与语言的相互塑造
+In the Ming and Qing dynasties, Shaoxing had too many people and too little land, and a great many educated men with no room in the exceedingly narrow imperial-examination path; huge numbers of intellectuals took the route of the "clerk", becoming the advisors of officials at every level — the "shiyé".
 
-> `2025 年 10 月 30 日 - 17:43:54`
+In the Qing dynasty, Shaoxing shiyé were found all over the country.
 
-**经验主义 vs 理性主义**
+They were expert in penal law (justice) and money and grain (finance), and through their legal knowledge, administrative ability and insight into human affairs they shaped the empire's grassroots governance to a large degree.
 
-人类的理解是一个“**自下而上**”和“**自上而下**”同时发生的、永不停止的“**舞蹈**”。
+As a city it is called the Venice of the East, a water city.
 
-* **自下而上：** 感官经验是地基和积木。
+Unlike many "ancient towns" that are all surface, the water system of the old city of Shaoxing is still working today. It's an organic living thing made of rivers, bridges, streets and taimen (the deep courtyard mansions peculiar to Shaoxing).
 
-* **自上而下：** 语言、逻辑和概念是图纸和工具。
+Shaoxing's urban layout embodies the wisdom of high-density settlement.
 
-理解是一个**螺旋上升的循环**。
+The brewing of Shaoxing yellow rice wine is an ultimate understanding of water, rice and time. It is not just a drink but a cultural sign, tightly bound to sacrifice, festivals and the rites of life. Its complex brewing process and mellow taste are a portrait of the Shaoxing character: patient, meticulous, devoted to tradition.
 
-人类的智慧，正是在于我们能驾驭这两种能力，让“具体的经验”和“抽象的概念”相互碰撞、相互启发。
+Centered on the China Textile City in Keqiao, Shaoxing has become a world-class textile distribution hub.
 
-思维可以超越语言（我们可以思考无法言说的东西），但语言也确实在时时刻刻“**塑造**”和“**引导**”我们的思维——它影响我们的感知速度（蓝色）、我们的空间方向感（东南西北），甚至影响我们对抽象事物的隐喻和情感（性别的桥）。
 
-`#格物/语言学`
+<!--memo:bdfe79c4c2d0-->
+### Understanding Shaoxing yellow rice wine
 
----
+> 2025-10-08 16:20:38 · `#格物/绍兴`
+
+The brewing of Shaoxing yellow rice wine is an ultimate understanding of water, rice and time.
+
+Water is the source, the objectively existing law; water is the blood of the wine, the source of all things and the starting point of life.
+
+Only good water brews good wine, just as a person's talent, foundation, or the environment they were born into.
 
-### Flomo 的局限：牺牲写作与阅读上的进步
+The highest good is like water; water benefits all things and does not contend.
 
-> `2025 年 10 月 30 日 - 17:52:07`
+Time is even more magical: time is the bone of the wine, the most mysterious and most crucial catalyst in the brewing process, a respect for time and law, following nature, governing by non-action.
 
-Flomo 在**轻量化记录**的同时，牺牲掉了一些非常宝贵的**写作以及阅读上的进步**，并且也受限于其中。
+Rice is the flesh of the wine, the material base and energy source of the brewing process. Shaoxing yellow rice wine uses top-quality glutinous rice. Rice represents solid, visible, shapeable real matter.
 
-`#一闪/产品`
 
+<!--memo:945077d13791-->
+### The steadiness of a small town
+
+> 2025-10-21 12:07:39 · `#格物/邯郸`
+
+It feels like there were a lot more interesting things.
+
+For example, the owner of the homestay I booked was very hard to reach.
+
+I even felt there were a lot of sloppy steps in the process.
+
+Neither the room nor the platform told me the wifi, and asking got no reply; only much later when I asked on the platform did I get in touch ...
+
+Couldn't reach them after booking, and didn't connect until three in the afternoon the next day.
+
+Went to a cafe; Amap's location was way off.
+
+Went to another cafe; the opening hours shown on Amap weren't in effect, I thought it had closed down, and was about to take a cab to the next one, then the owner showed up for work, so I cancelled the ride ...
+
 ---
 
-### YouMind 哲学：费曼技巧与从信息消费者到内容创造者
+On checkout day I forgot to pick up a package.
 
-> `2025 年 10 月 30 日 - 18:12:02`
+The owner found it
 
-**YouMind** 明确采用**费曼学习法（Feynman Technique）** 作为设计灵感。费曼技巧强调通过"教授"（即输出）来深化理解，这与 YouMind 的核心哲学完美契合。
+and personally delivered it to the front desk of my new hotel.
 
-**输出是最好的输入。**
+Maybe it also takes putting yourself in their shoes — warmth, professionalism and attentiveness.
 
-YouMind 产品设计鼓励用户将学习到的内容转化为具体的创作成果——文章、播客、视频脚本、研究报告。
 
-**从期望的输出反推整个产品架构**，每个功能都问"这如何帮助用户创作？"
+<!--memo:542eb2f6b97b-->
+### How important is verticality in architectural spatial aesthetics
 
-**架构：**
+> 2025-10-22 15:38:26 · `#格物/建筑`
 
-* **Input：** 多模态捕获，自动处理。
+I've realized — the presence of space in between gives a completely different felt experience.
 
-* **Process：** AI 辅助理解，智能关联。
+A church's dome → connects the human heart with the sky.
 
-* **Output：** 协作创作，一键发布。
+A Japanese dry landscape garden → creates layers of breathing through the height of the stones.
 
-YouMind 的成功证明了：在 AI 时代，知识工具的机会不在于"更好的文件夹"或"更漂亮的界面"，而在于帮助用户从**信息消费者变为内容创造者**。
+External space is the projection of a mental structure.
 
-`#格物/YouMind`
+Light + verticality + negative space = spiritual space.
 
----
+Verticality naturally makes people settle down.
 
-### TipTap：可定制的富文本编辑器
+You suddenly "go quiet" — that's actually a kind of inner-outer alignment.
 
-> `2025 年 10 月 30 日 - 18:37:05`
 
-**TipTap** 介绍：宝贵的渲染神器，渲染富文本的好工具。
+<!--memo:ad084ec3e628-->
+### When Indians talk about China's robots
 
-可以在 Web 界面中快速嵌入一个**可自定义、可扩展的编辑器**。
+> 2025-10-23 15:53:36
 
-`#格物/工具`
+When a robot enters an Indian hotel,
 
----
+it's very hard for it to come back out.
 
-### 美国与中国的心灵史：从个体到群体的身份探索
 
-> `2025 年 10 月 30 日 - 22:53:31`
+<!--memo:0ae529965c38-->
+### Jasmine, light roast beans — generally Yirgacheffe
 
-**心理问题在不同文化下的解读：**
+> 2025-10-24 15:45:47 · `#格物/咖啡`
 
-* **中国：** 往往被视为**社会关系、集体压力、家庭角色**的问题——“**人际错位**”比“内心冲突”更常被谈起。传统文化重视群体、社会秩序与和谐。
+Jasmine, light roast beans — generally Yirgacheffe, floral Geisha from Panama, Nicaragua floral lots, etc.
 
-* **美国：** 个体主义更强，心理问题往往被视为“**个人的情绪、人格、创伤**”问题。临床心理学、精神分析、CBT 等更强调**个体的治疗与自我修复**。
+The aroma tends toward jasmine, white flowers, citrus and honey.
 
-**美国的心灵史：** 从“**我是谁**”到“**我想成为谁**”。
+The acidity is generally bright, tending toward citric or orange-blossom acidity.
 
-* **清教徒移民：** 每个灵魂都能直接面对上帝 —— 宗教版的“个体独立宣言”。
+The mouthfeel tends to be light, tea-like and transparent.
 
-* **婴儿潮一代（Boomers）：** 从 1950 年代的顺从与消费，到 1960 年代的反叛与自由，追求 **authenticity（真诚）**。
+Compared with dark roast, there's no caramelized bitter-sweet balance.
 
-* **X 时代：** 幻灭后的现实主义者，更务实、更低调。
+Because I drank it as a hot latte, I felt the acidity got softened to some degree.
 
-* **千禧一代（Millennials）：** 网络与意义的探索者，更能接受文化差异，**我想做有意义的事**。
+Light roast relatively preserves more acids, sugars and ester aromatics during extraction.
 
-* **Z 世代（Gen Z）：** 碎片化现实的数字原生人。焦虑、抑郁、自我怀疑爆发式上升，不是更个人主义，而是**后个人主义**，他们的自由不是独立自主，而是**多重可能**。
+It allows more freedom of expression.
 
-**中国的心灵史：** 从“**我们是谁**”到“**我能不能成为自己**”。
+Extraction, generally speaking, is the process during brewing where soluble substances in the ground powder dissolve into the water. Two metrics:
 
-`#知世/文化差异`
+TDS — the mass percentage of soluble solids in the finished liquid.
 
----
+Extraction yield — the total mass of solids dissolved into the drink divided by the original mass of coffee grounds.
 
-### AI 时代：人类的超能力
 
-> `2025 年 10 月 30 日 - 16:05:25`
+<!--memo:deea3fa57e43-->
+### As for 冰博克
 
-随着 AI 发展，人们发现作为人的**工具属性**已经不再需要了。
+> 2025-10-24 16:27:18 · `#格物/咖啡`
 
-更重要的反而是**人类本身的一些品质**。
+冰博克 is generally good for making dirty.
 
-**Your ability to think, feel, lead, and connect — that’s your superpower.**
+冰博克 is usually obtained by freezing it in the fridge the night before, then letting it melt the next day.
 
-`#观我/人类价值`
+The milk suitable for latte art generally works like this: essentially latte art is whipping air evenly into milk to form a fine, stable foam, then combining it with coffee.
 
----
+Protein content needs to be high, because when heated, casein denatures and forms a network structure.
 
-### 消费者的稀缺性
+Too low a protein content (like some skimmed milk) makes the foam loose and quick to collapse; too high a content (like evaporated milk, 冰博克) makes the foam too thick, hard to flow, and actually hard to pour a clear pattern with.
 
-> `2025 年 10 月 30 日 - 15:24:41`
+Generally the foam doesn't easily collapse, because if the protein content is low it's loose, and if high it's too thick and doesn't flow easily.
 
-当内容产出变得爆炸的时候，那岂不是**消费者更稀缺**一些？
+Fat adds "creaminess" and "gloss" to the foam; if the fat content is too low (skimmed milk); and if there's a lot of fat, it also flows poorly and easily scalds.
 
-`#一闪`
 
----
+<!--memo:02281c7e7a30-->
+### The reform of the "three assets"
 
-### YouMind：自动抽取卡片与任务计划
+> 2025-10-25 21:50:30 · `#格物/湖北`
 
-> `2025 年 10 月 30 日 - 15:27:23`
+After "land finance" dried up, a necessary means to "keep local government finances on life support". It tries to revitalize dormant state-owned assets, turning them from "dead money" into "live money", to cope with imminent debt pressure and the spending needs of "guaranteeing livelihoods, guaranteeing salaries, guaranteeing operations"
 
-可以做的一个形式是：
+If successful, it will build a virtuous cycle of "effective assets → effective debt → effective investment → new effective assets"
 
-1.  **Todo** 给出计划建议，每日阅读的一些文章。
+"Everything can be securitized" may lead to inflated asset valuations and create a new financial bubble. If the future returns on these assets (like highways, data centers) fall short of expectations, it will trigger a new round of debt defaults
 
-2.  **Feed** 可以自动地抽取为卡片，用户可以结合卡片去扩展。
+If mishandled, in the end it may just move debt from the left hand to the right hand, further overdrafting government credibility
 
-3.  Todo 根据用户的完成率去自动调整。
+The essential cause is the complete bankruptcy of the fiscal model; the old development model centered on "land transfer fees" has collapsed, and local governments are stuck in a structural fiscal crisis
 
-`#格物/YouMind`
+In the short term, the revitalized funds can steady local finances so they don't cut off supplies
 
----
+But in 3-10 years some negative effects may appear: a systemic rise in the cost of living, rising fees for some infrastructure
+
+Rising costs for enterprises to use data will in the end definitely be passed on to consumers; for ordinary people the long-term price may be paying for today's "government fiscal relief" with "higher prices and less convenient public services"
+
+But it's also possible it will succeed in the future; if it does, the money from selling assets and raising prices gets efficiently invested in new productive sectors, and the returns from those new sectors (like the data industry, high-end manufacturing) start feeding back into the finances
+
+But... the actors (local governments), under huge short-term debt repayment pressure, will involuntarily choose the "zero-sum" shortcuts (raising prices, dumping assets) and ignore the difficult "positive-sum" path (innovation, efficiency gains)
+
+
+<!--memo:5d9e36f7bb46-->
+### Taking it slow and experiencing the local lantern festival
+
+> 2025-10-26 22:13:57 · `#格物/天灯节`
+
+Looking back, it was also a year ago in Thailand
+
+The lantern festival I saw
+
+The folk lantern festival has a lot of atmosphere
+
+Villages, small towns, temples and other places also hold rituals of releasing sky lanterns or floating water lamps.
+
+Thousands of drifting sky lanterns in the night sky
+
+Releasing a sky lantern symbolizes "letting go of bad luck, welcoming good luck / a new beginning"
+
+Maybe only once or a few times in a lifetime; it's a visual experience
+
+Releasing lanterns together with others in the dark, making wishes, sharing the same moment
+
+
+<!--memo:fb916892ef5f-->
+### Suddenly remembered the lantern festival and the cremation temple
+
+> 2025-10-26 22:16:34 · `#格物/天灯节`
+
+Both of these gave me a huge emotional and memory impact
+
+A year later I still feel like I'm there
+
+Thousands of sky lanterns rising, the night sky lit up with warm orange light. This is an experience of "collective beauty": soft, flowing, romantic
+
+Music, prayers, laughter, night wind, firelight interwoven - a "ceremony of light", symbolizing people letting go of worries and welcoming a new beginning
+
+The cremation temple is more like a quiet, direct facing of death
+
+Flames, ashes, the river, weeping, the sound of monks chanting. The air carries the smell of a life ending
+
+Heavy, quiet, real. It makes you face the most fundamental question of humanity: the brevity and the cycle of life
+
+
+<!--memo:8c450822d44f-->
+### Trying some coffee lately, I suddenly felt coffee's philosophy is time and space
+
+> 2025-10-27 01:02:55 · `#格物/咖啡`
+
+A very important point in distinguishing people's relationship with coffee is digestion/absorption versus sensation
+
+The whole journey of coffee from seed to cup is essentially the product of a specific space at a specific time
+
+How it's constructed, what the spatial growing environment of the place is like - the soil on the high-altitude slopes of Ethiopia, the volcanic ash of Colombia, the humid climate of the Vietnamese highlands…, what kind of flavor space it has - and the environment where you taste it matters enormously; it completely changes your perception of the same cup of coffee
+
+Time naturally accumulates; the processing method of coffee beans (natural, washed, honey) is essentially a delicate control of "time" - the roasting time, the extraction time and the drinking time - like a time capsule, finally presented in front of you
+
+Digestion/Absorption - a physical, biological relationship, a "me-first" relationship. You don't care about the coffee's "time and space", you only care about what it can bring your body - energy, alertness, wakefulness. Coffee here is "fuel" or a "tool". It's a one-way "taking"
+
+Sensation/Feeling - an experiential, spiritual relationship, a full mobilization of the senses. Your smell catches the floral, fruity notes; your taste distinguishes sour, sweet, bitter, salty; your touch (the mouth) feels its body and texture
+
+
+<!--memo:1e56d8ed165d-->
+### Pinterest
+
+> 2025-10-31 15:04:58
+
+I've always been puzzled about what exactly is so appealing about Pinterest
+
+Especially in trend reports I saw before
+
+More and more young people (including Gen Z) are joining; for example, one report mentioned that Gen Z is the fastest-growing user group
+
+By gender, the male-to-female ratio is 3:7
+
+By age distribution, the largest age bracket is 18-34. For example, the 25-34 group has a relatively high share. Another report said women aged 18-24 and 25-34 each account for about 19-20%
+
+The US is the biggest market; Pinterest is essentially a "visual inspiration + saving + discovery" platform: users often use it to browse inspiration boards for home decor, fashion, beauty, travel, DIY, recipes and so on
+
+Pinterest's core value is letting users discover the inspiration of "I want to do this / I want to buy that / I want to go there"
+
+Pinterest's model is also very worth learning: it lets users "discover first -> save -> act"
+
+One thing it emphasizes strongly is "inspiration discovery + saving + planning + action"
+
+In the US, high-income households make up a relatively large share of Pinterest users; for example, users from "40% of US households with annual income over $150K" are on Pinterest
+
+
+## 8. Business, Investing and Career
+
+*10 entries*
+
+<!--memo:df2f350db5e8-->
+### Shanghai's sea
+
+> 2025-10-02 11:57:36 · `#格物`
+
+The Huangpu River has always been crucial to Shanghai; it is Shanghai's mother river
+
+Shanghai's urban formation, port development and commercial center construction all depended on the Huangpu River
+
+Since ancient times the Huangpu has been a main artery of inland shipping, connecting the inland Yangtze with the East China Sea, an unavoidable route for early goods and passenger transport
+
+It was also a center of foreign trade, helping Shanghai become an international metropolitan area
+
+Along both banks formed financial and cultural core districts like Lujiazui, the Bund and the Xuhui waterfront
+
+By comparison, Shanghai's sea: the Port of Shanghai (including Waigaoqiao and the Yangshan deep-water port) is the world's largest container port, crucial to global trade
+
+The foreign trade, import-export business and free trade zone economic activity brought by maritime shipping are the main drivers of Shanghai's modern economic scale
+
+Looking at the modern economy and future strategy, the sea matters more, because Shanghai's internationalization and global trade depend heavily on the East China Sea and its deep-water ports
+
+
+<!--memo:0c678ff9a1ae-->
+### Thoughts on China's stock market
+
+> 2025-10-05 16:40:24 · `#格物/股市`
+
+Short-term speculators lean toward a zero-sum game
+
+In short-term price swings the money you make comes from what others lose. Total market wealth doesn't increase, it just transfers — speculating on themes, chasing hot spots, harvesting retail investors — a classic "chip-transfer game"
+
+Over the long term it's more about investing, which is a non-zero-sum game
+
+If the investment target is a business that truly creates value (profit growth, rising dividends, successful innovation), then society's whole cake gets bigger and shareholder returns come from new value the company creates, not from others' losses
 
-### 持续订阅与计划拆解
+But what the stock market presents is human greed and fear themselves
 
-> `2025 年 10 月 30 日 - 15:19:35`
+When greed wins → the crowd chases highs, price detaches from value
 
-暂时能想到的几个点：
+When fear spreads → the crowd sells off, price falls far below value
 
-1.  起码是可以有一个**连续订阅**的方式订阅某一个平台的网页，比如说每天阅读五篇，然后阅读的过程中，可以即使的反馈，然后 LLM 根据你的状态适度调整计划。
+The minority who really make money are anti-human-nature: buying when others fear, selling when others are greedy
 
-2.  也可以设置一些生活中工作流中的一些**小的任务、计划**，并且可以根据计划的类型和难度**适度地拆解**，鼓励用户先完成一小步。
+The market is always pricing human nature
 
-`#格物/产品`
 
+<!--memo:1c9da52cf64f-->
+### Benjamin Franklin
 
-### 内容爆炸下的消费者稀缺性
+> 2025-10-05 18:26:33 · `#格物/富兰克林`
 
-> `2025 年 10 月 30 日 - 15:24:41`
+A practitioner, America's Renaissance man
 
-当内容产出变得**爆炸**的时候，那岂不是**消费者更稀缺**一些？
+Deeply involved in America's founding, he's the only Founding Father to have signed the country's three most important documents (the Declaration of Independence, the 1783 Treaty of Paris, the US Constitution)
 
-`#一闪`
+What draws me most to Franklin is his curiosity about the world and his drive as an explorer who reshapes the world with his own hands
 
+Through a hands-on approach, experiments, and practice
 
+A model of knowledge coming from practice
 
-### YouMind Todo：计划建议与卡片扩展
+He also wrote two books: one is Poor Richard's Almanack, which influenced many Americans
 
-> `2025 年 10 月 30 日 - 15:27:23`
+The other is The Autobiography of Benjamin Franklin, telling the story of how he grew from a poor boy through self-striving and moral cultivation, becoming an early model of the American Dream
 
-可以做的一个形式是：
 
-* **Todo** 给出计划建议，每天阅读的一些文章。
+<!--memo:cc8a852e6cbd-->
+### Compounding in The Almanack of Naval Ravikant
 
-* 然后 **Feed** 可以自动地抽取为卡片，用户可以结合卡片去扩展。
+> 2025-10-05 19:08:41 · `#格物/纳瓦尔宝典`
 
-* Todo 根据用户的完成率去自动调整。
+Compounding is essentially causality too
 
-`#格物/YouMind`
+Underneath it is a series of micro-decisions in a value system
 
+It's actually a person, within their rich information network, making fast intuitive decisions to select and eliminate
 
+Filter out what interests you, then dig deep into the underlying principles
 
-### AI 时代的人类品质：思考、感受、连接
+All the returns in life — wealth, relationships, knowledge — come from compounding
 
-> `2025 年 10 月 30 日 - 16:05:25`
+One causal chain in life is: idea → resolve → action → habit → result
 
-随着 AI 发展，人们发现作为人的**工具属性**已经不再需要了。
+High probability: if the long-term direction is right, the win rate is high
 
-更重要的反而是**人类本身的一些品质**。
+Small actions: reduce inner resistance, act immediately
 
-**Your ability to think, feel, lead, and connect — that’s your superpower.**
+Don't break the chain: you can rest occasionally, but never give up
 
-`#观我/人类价值`
+A rather interesting line about tool-driven approaches: hand the decisions to people with higher cognition than you, and let them be your tools hahaha
 
 
+<!--memo:240de70ba489-->
+### Lei Jun's current reputation is the exact opposite of before
 
-### 文本的重量：从语言符号到视觉信号的范式转移
+> 2025-10-07 16:43:20 · `#格物/雷军`
 
-> `2025 年 10 月 30 日 - 17:37:54`
+Narrative and product, service experience mismatched, trust overdrawn
 
-我们一直以为文本轻便、廉价、易于存储、处理和传输。
+What sincere marketing fears most is the facts being exposed
 
-实际上不是，**大模型时代，文本很笨重**。一张扫描成 PDF 格式的发票可能需要提取 1000 到 5000 个令牌，数量将呈螺旋式增长：**数十亿个令牌**，其中大部分都是冗余的，处理成本高昂且速度缓慢。
+Public relations crisis response — and instead it's not transparent
 
-**范式转移：** 不是把文档作为语言符号的集合，而是把它当做一个**图像、视觉信号**。它让模型直接“**看**”整个页面的像素分布，把页面压缩成一种**抽象的视觉表示**，然后通过 Transformer 模型去重建语义。
+The macro social environment is declining, anti-chicken-soup, refusing to let anyone stand out
 
-过去是“文字是图像的意义”，现在是“**图像自己蕴含了意义**”。这实际上是形式与意义的关系。
 
-如果借哲学语言来说，这像是从笛卡尔式的“**我思故我在**”（逻辑优先），转向梅洛-庞蒂式的“**我感故我在**”（感知优先）。
+<!--memo:b977cab1a10e-->
+### Quantified language is itself a tool
 
-**DeepSeek OCR 的核心思想：** 视觉优先，语言最后。它并不“读取”文档，而是以视觉方式记住文档内容，然后准确地重写文档。**记忆，不是存储信息，而是存储关系。**
+> 2025-10-08 11:28:22 · `#格物/量化`
 
-反向演示出一种**亚里士多德的世界观**：意义不在概念中，而在事物形式与感官经验中。
+Purely quantified language is also a formal language.
 
-`#格物/AI`
+Math, logic, programming — these are all formal languages.
 
+The question is what problem you use it on.
 
+Goal-directed mechanism.
 
-### 经验主义 vs 理性主义：思维与语言的相互塑造
+Everything in the world can be abstracted into a goal-directed mechanism.
 
-> `2025 年 10 月 30 日 - 17:43:54`
+Cybernetics is the core paradigm of modern technology.
 
-**经验主义 vs 理性主义**
+Quantify -> goal -> sensing/input -> compare the gap -> action/output maybe -> compare the gap.
 
-人类的理解是一个“**自下而上**”和“**自上而下**”同时发生的、永不停止的“**舞蹈**”。
+Compare the gap -> action/output maybe -> compare the gap, a looping mechanism.
 
-* **自下而上：** 感官经验是地基和积木。
+This can explain a lot of mechanisms: air conditioners, computers, artificial intelligence.
 
-* **自上而下：** 语言、逻辑和概念是图纸和工具。
+Quantifying meaning.
 
-理解是一个**螺旋上升的循环**。人类的智慧，正是在于我们能驾驭这两种能力，让“具体的经验”和“抽象的概念”相互碰撞、相互启发。
+When we talk about meaning, we also need to relate a word or concept to the words around it for meaning to arise.
 
-思维可以超越语言（我们可以思考无法言说的东西），但**语言也确实在时时刻刻“塑造”和“引导”我们的思维**——它影响我们的感知速度（蓝色）、我们的空间方向感（东南西北），甚至影响我们对抽象事物的隐喻和情感。
+We can't explain a word with that word itself; we can only explain it with something that isn't that word.
 
-`#格物/语言学`
+This is also the negative theology in theology: what cannot be described is God, God is not this, God is not that.
 
+Approaching the essence of a thing through negation; the core of meaning is a void.
 
+So how does the word "meaning" flow and get described — there has to be a word that cannot be described, we can't say meaning, and then meaning naturally starts flowing.
 
-### Flomo 的局限：牺牲写作与阅读上的进步
+So the operating mechanism of human language is the primacy of negation.
 
-> `2025 年 10 月 30 日 - 17:52:07`
+So because of positivity, you get homogenized competition, you get scarcity, and it produces a sense of lack in you.
 
-Flomo 在**轻量化记录**的同时，牺牲掉了一些非常宝贵的**写作以及阅读上的进步**，并且也受限于其中。
 
-`#一闪/产品`
+<!--memo:5eb43a04ba5e-->
+### The Hertz heuristic framework — time, space, action
 
+> 2025-10-08 13:05:20 · `#格物`
 
+Time (When)
 
-### YouMind 哲学：从信息消费者到内容创造者
+Not just clock time, but timing, rhythm, sequence.
 
-> `2025 年 10 月 30 日 - 18:12:02`
+In economic activity: investment timing, product life cycles, market cycles.
 
-**YouMind** 明确采用**费曼学习法（Feynman Technique）** 作为设计灵感。费曼技巧强调通过"教授"（即输出）来深化理解，这与 YouMind 的核心哲学完美契合。
+On the philosophical level: Kairos (the opportune moment) vs Chronos (clock time).
 
-**输出是最好的输入。**
+Space (Where)
 
-YouMind 产品设计鼓励用户将学习到的内容转化为具体的创作成果。
+Not just physical location, but field, structure, relational networks.
 
-**从期望的输出反推整个产品架构**：
+In economic activity: market positioning, supply-chain layout, information asymmetry.
 
-* **Input：** 多模态捕获，自动处理。
+On the philosophical level: field theory (Bourdieu), topological thinking.
 
-* **Process：** AI 辅助理解，智能关联。
+Action (How)
 
-* **Output：** 协作创作，一键发布。
+Strategies, paths and methods for solving problems.
 
-YouMind 的成功证明了：在 AI 时代，知识工具的机会在于帮助用户从**信息消费者变为内容创造者**。
+In economic activity: business models, technology roadmaps, organizational processes.
 
-`#格物/YouMind`
+On the philosophical level: practical wisdom (phronesis), means-end rationality.
 
+These three can cover every dimension.
 
+Time: the dimension of dynamic evolution.
 
-### TipTap：可定制的富文本编辑器
+Space: the dimension of static structure.
 
-> `2025 年 10 月 30 日 - 18:37:05`
+Action: the dimension of agentive transformation.
 
-**TipTap** 介绍：宝贵的渲染富文本工具。
+Any economic phenomenon can be decomposed into: at what time (time), in what position (space), in what manner (action).
 
-可以在 Web 界面中快速嵌入一个**可自定义、可扩展的编辑器**。
+It is itself part of systemic thinking.
 
-`#格物/工具`
+Time = system evolution.
 
+Space = system structure.
 
+Action = system intervention.
 
-### 美国与中国的心灵史：从个体到群体的身份探索
 
-> `2025 年 10 月 30 日 - 22:53:31`
+<!--memo:fb150cc49f0a-->
+### The emptiness of not knowing what you want to do
 
-**心理问题在不同文化下的解读：**
+> 2025-10-26 13:57:51
 
-* **中国：** 倾向于“**人际错位**”问题，重视群体、社会秩序与和谐。
+I always feel it's because of the absence, the vacancy of long-term goals; life or career has no direction
 
-* **美国：** 倾向于“**个人的情绪、人格、创伤**”问题，个体主义更强，强调个体治疗与自我修复。
+From time to time there's also a lot of anxiety and pressure, crushed by study, work or family so you can't think clearly
 
-**美国的心灵史：** 从“**我是谁**”到“**我想成为谁**”。
+It could also be choice burden, cognitive overload caused by too many choices
 
-* **婴儿潮一代（Boomers）：** 反叛与自由，追求 **authenticity（真诚）**。
+Or maybe it's a lack of self-knowledge
 
-* **Z 世代（Gen Z）：** 碎片化现实的数字原生人。焦虑、抑郁爆发式上升，走向**后个人主义**，他们的自由是**多重可能**。
 
-**中国的心灵史：** 从“**我们是谁**”到“**我能不能成为自己**”。
+<!--memo:4d49ab3520ab-->
+### Understanding Pang Dong Lai
 
-`#知世/文化差异`
+> 2025-10-30 09:31:52 · `#格物/胖东来`
 
+Actually it comes down to two core questions
 
+Why are the salaries so high
 
-### 拍照的黑白场景：突出主体与情绪
+Why does a small city have the ability to make money
 
-> `2025 年 10 月 31 日 - 14:26:07`
+Pang Dong Lai isn't an ordinary low-price retail supermarket; it takes the "service + experience + quality" route. For example, reports point out that although prices aren't necessarily low, consumers are willing to pay a premium for "peace of mind", "quality" and "service"
 
-**拍照 - 黑白场景**
+And employees get a lot of vacation, especially middle managers whose annual leave approaches 180 days
 
-1.  **光线问题：** 黑白色可以把注意力引向阴暗的节奏。
+The higher salary is also for high investment, high return
 
-2.  **色彩干扰：** 去掉颜色后可以**突出人物本身**，避免街头复杂广告牌的分散注意力。
+Making high-quality operations in a cost environment, marginal profit provides space
 
-3.  **情绪表达：** 适合一些需要携带**怀旧、抽象或者超现实的气质场景**。
+Pang Dong Lai is located in third- and fourth-tier cities within Henan province, and has built up brand reputation, customer loyalty and community relationships there
 
-摄影师安塞尔·亚当斯（Ansel Adams）曾说过，黑白不是对现实的剥夺，而是“**对现实的重新诠释**”。
+In a small city there are few competitors; an excellent brand with differentiated service can get a relatively big share
 
-什么时候适合黑白？也许在拍的那一刻问问自己为什么想拍下。
+Pang Dong Lai's stores "become tourist attractions" - meaning customers from out of town will drive there specially to shop
 
-`#格物/摄影`
+Although the scale is small, efficiency is very high, and on top of that land, labor and rent costs in third- and fourth-tier cities are lower than first-tier cities, so there's a very low base
 
 
+<!--memo:499a0e4ad24a-->
+### Pang Dong Lai's customers have strong spending power
 
-### 胖东来的客户：本地人与高客单价
+> 2025-10-31 14:49:24
 
-> `2025 年 10 月 31 日 - 14:49:24`
+In 2024, Pang Dong Lai's supermarkets in the Xuchang area had annual sales of 5.945 billion yuan
 
-**胖东来的客户的消费能力很强。**
+This approaches Sam's Club's 2024 annual revenue in Wuhan
 
-2024 年，许昌地区超市的年销售额为 59.45 亿元，逼近武汉单家山姆的年营业额。
+Including Xinxiang, 2024 revenue was also over two hundred thousand
 
-从消费特征来看，胖东来不仅仅依靠游客，更多的也是**本地人愿意买单**。
+This almost exceeds the annual revenue of a single Sam's Club in Wuhan
 
-`#格物/商业模式`
+Looking at consumption characteristics, Pang Dong Lai doesn't rely only on tourists' spending; more importantly locals are willing to pay
 
+Several taxi drivers shared that people around them also go to Pang Dong Lai often, especially young people
 
 
-### Pinterest 的核心价值：灵感发现与行动计划
+## 9. Body, Health and Daily Life
 
-> `2025 年 10 月 31 日 - 15:04:58`
+*10 entries*
 
-**Pinterest 本质是一个 “视觉灵感 + 收藏 + 发现” 平台。**
+<!--memo:73d0e0f4311c-->
+### Sugar supplementation during exercise
 
-核心价值在于用户发现“**我想做这个／我想买那个／我想去那里**”的灵感。
+> 2025-10-04 09:23:52 · `#格物/运动`
 
-它的模式非常值得学习，让用户 “**先发现 -> 收藏 -> 行动**”。非常强调 “**灵感发现 + 收藏 + 计划 + 行动**”。
+High sugar intake is linked to knee health deterioration in multiple ways
 
-在美国，Pinterest 用户中**家庭收入高端群体**占比较大。
+Especially for athletic performance — but excessive intake sets off a series of physiological processes that can cause knee pain, joint damage and aggravate conditions like osteoarthritis
 
-`#格物/产品`
+So for everyday simple exercise, focus on proper hydration and a balanced diet, and try not to supplement sugar extra
 
+For sustained high-intensity exercise, supplement carbohydrates appropriately
 
 
-### BeReal 爆火：Z 时代对真实感和低表达负担的需求
+<!--memo:d9156735b419-->
+### The evolution of short video
 
-> `2025 年 10 月 31 日 - 15:20:03`
+> 2025-10-18 11:45:56 · `#格物/短视频`
 
-**BeReal** 提倡更**随性、更真实**的社交体验，是 Z 时代对**真实感、非刻意**的需求。
+It's more like society ✖️ psychology ✖️ technology ✖️ economics.
 
-核心定位是：“**展示你真正的生活**”，而不是精修滤镜后的“高光时刻”。
+Mobile internet penetration → everyone has a camera and a playback device;
 
-**机制：** “**先自己，后他人**”，无法看到朋友的当日贴直到你自己上传你的贴。
+algorithmic recommendation → precise feeding of personalized content;
 
-年轻人对**真实、内在**的渴望。怎么样有**更低的表达负担**和好的**轻多巴胺反馈机制**？
+compression coding and bandwidth optimization → high-definition video played with low latency;
 
-`#格物/产品`
+AI editing and generation → lowering the barrier to creation;
 
+interaction design and interface optimization → seamless swiping, instant feedback.
 
+Technology is irreversible, but essentially it can be redefined.
 
-### LLM 概率输出：排序质量提升与模拟分布
+For example, you can give up certain technologies, or redesign the ethical boundaries of certain technologies.
 
-> `2025 年 10 月 31 日 - 16:54:43`
+The existence of technology is irreversible, but the rule of technology is reversible.
 
-**“推荐五个选项” vs “输出五个选项及其概率”**：
 
-* **推荐五个：** LLM 只是做“**排序**”或“**筛选**”任务，更自然。
+<!--memo:f6a4997a772c-->
+### If a film or TV series takes a very long time to reach the basic three-step cycle
 
-* **加入“概率”指令：** 促使模型更显式地思考**相对可能性**，可能提高排序质量。但生成的“概率值”未必真实，只是语言上的**模拟分布**。
+> 2025-10-18 11:48:31 · `#格物/短视频`
 
-研究报告显示，LLM 的创造力提升很多。
+If a film or TV series takes a very long time to reach the basic three-step cycle — setup, confrontation, resolution —
 
-`#格物/AI`
+that's a very strong feedback, very easily an addictive loop, and the rhythm is extremely fast, giving the brain no chance to settle. It lowers the barrier to entry: a "psychological algorithm" exploitatively optimizing human nature.
 
 
+<!--memo:2b1f5e57ad6e-->
+### The current monetization mechanism of short video and its ecological role
 
-### 星巴克见闻：从情侣到哥们
+> 2025-10-18 11:50:17 · `#格物/短视频`
 
-> `2025 年 10 月 31 日 - 17:14:01`
+The current monetization mechanism of short video and its ecological role: the basic mechanisms are gradually becoming standardized.
 
-星巴克来了一对情侣（本地大学生），男生沉稳，女生活泼。
+At the same time, social and cultural standards haven't matured.
 
-男生哥们来了之后，他就和哥们谈论游戏了。
+For example, today's short videos lack depth, no aesthetic or cultural sediment has formed, and the content is over-algorithmized.
 
-`#知世/见闻`
 
+<!--memo:b772d35622b0-->
+### Data is verification and reasoning, and also copying
 
+> 2025-10-18 12:32:17 · `#格物/短视频`
 
-### 互联网的信息过载与秩序感下降
+A very good way to understand this world, to vividly reason out some of the problems in the world today,
 
-> `2025 年 10 月 31 日 - 17:17:57`
+and then fill in the holes in that part.
 
-网络信息太多，导致人们缺少一种**秩序感**。
+When something can be seen with the naked eye as capable of completing a commercial loop, there's no need to validate something that might complete a commercial loop.
 
-互联网放大了世界的破碎、复杂、多层，信息原子化碎片，但没有组成有意义的结构。**信息递增，秩序感下降**。
+Today's screenwriters have no room to play. They're controlled by the platform or the director, with no ability to negotiate, and rarely insist on artistic creation.
 
-**信息过载会让人产生“认知饥饿”**——知道得多，却理解得少。
+The reason is the emergence of big IP in 2015: only big IPs could control every link, or internet capital took over the whole process, turning it into links and an assembly line.
 
-人类天然适合**空间记忆、线性记忆、层级结构**的记忆，这些遭到了破坏。
+A kind of data thinking; it loses the joy of exploration, and it's also very hard to surpass truly disruptive innovation.
 
-我们缺乏的是“**符号上的连贯性**”——对意义的整体把握。
+But all film and TV works are played out through a process of exploration and negotiation, not an accounting mindset — negotiating out a path of their own.
 
-`#格物/社会`
+Artistic achievement and commercial achievement are both like this. Negotiation is an inevitable process; a good product and model come out of negotiating.
 
 
+<!--memo:d48486ebb680-->
+### The decibel level inside a cafe
 
-### 管理者精力消耗低：只做判断与高层次思考
+> 2025-10-21 13:44:03
 
-> `2025 年 10 月 31 日 - 17:27:49`
+Generally the most recommended range is between 55-65 dB.
 
-管理者的精力消耗很低，因为他们只需要做**判断**以及**高层次的思考**。
+This range is considered the golden zone for combining creativity and focus.
 
-**低层次的思考**可以交给 AI 去自己思考、辩论，就像两个小的领导相互 Review。
+Too little is generally too quiet, anything below 50 dB.
 
-前提是需要清晰地知道自己的角色定位，以及不产生巨大负债的风险。
+55-65 dB is light noise, which easily stimulates divergent thinking and promotes creativity.
 
-`#格物/AI`
 
+<!--memo:a1dc37354285-->
+### Handan's food is so cheap
 
+> 2025-10-21 15:51:40
 
-### AI 只是复制系统，而非理解
+Though it's cheap,
 
-> `2025 年 10 月 31 日 - 17:33:34`
+...
 
-**人工智能并不理解系统，它只是复制系统。**
+the portions are also huge.
 
-优秀的系统思考者具备**动态思维能力**，能够洞察问题随时间演变的过程。
+I feel embarrassed eating it.
 
-人类（而非机器）能够设计出具有韧性的系统，是分析推理、同理心和前瞻性的结合。
 
-AI 最大的力量在于**协调**，而不是**创造**。
+<!--memo:20f114966605-->
+### AI keeps getting more advanced
 
-`#格物/AI`
+> 2025-10-24 17:40:16 · `#格物/摄影`
 
+How exactly will photography change?
 
+In the past the value of photography was recording reality
 
-### 如何接受自己对某事兴趣不大
+AI can generate realistic images and video without any real shooting
 
-> `2025 年 10 月 31 日 - 17:35:04`
+The line between real and fictional is blurring
 
-1.  分析出自己为什么对它感兴趣。
+Shooting "the real world" is no longer the only way to obtain an image
 
-2.  分析为什么又不太感兴趣，有哪些原因。
+Photography may no longer be mainly about generation, but may turn into an important tool for narrative, for ways of perceiving, and for personal expression
 
-3.  分析原因是否可以适当结合**调整自己的环境和思考**。
+In the past the biggest meaning of photography was "what I shot is real"
 
-4.  适当接触，**加重自己感兴趣的权重因素**。
+Authenticity is a scarce commodity in photography
 
-`#观我/心理成长`
+But when photography combines with AI, how do you build your own personal perspective and expressive perception, witnessing and trust, proof of authenticity
 
+The relationship between people and time
 
+The relationship between people and the world
 
-### 不自由的民主：选举形式与缺乏自由的社会
+The relationship between people and themselves
 
-> `2025 年 10 月 31 日 - 21:28:58`
 
-**不自由的民主**：有些国家虽然举行选举，但在言论、司法、人权等方面却缺乏自由。人民能投票，但不能真正掌权或自由地表达反对意见。
+<!--memo:301ed63a97a1-->
+### Developed countries have cleaned their surface via institutions, capital and globalization
 
-* **民主**：人民通过选举拥有政治权利。
+> 2025-10-26 17:58:58 · `#格物/环保`
 
-* **自由**：个体拥有权利与法治约束政府。
+Developed countries have cleaned up their surface reality through institutions, capital and globalization mechanisms
 
-* “不自由的民主”是两者分离的产物：选举存在，但法治、权利与监督机制被削弱甚至虚化。
+Cities are cleaner, the air is better, society is more equal, and it looks like a "model of human progress"
 
-`#格物/社会`
+The energy, raw materials, cheap goods, even waste processing that let them maintain a high quality of life
 
+Global ecological whitening; it stratifies "cleanliness and happiness" geographically
 
+Every country, every consumer, every company is unwittingly participating in this structure
 
-### 马赛人（Maasai）
+We are always displacing costs, not bearing the consequences
 
-> `2025 年 11 月 02 日 - 19:28:56`
+We are always playing the inert weakling, protecting the environment, when in fact between countries we are still living in a selfishness disguised as civilization
 
-关于 **Maasai** （马赛人 / 马赛）。
+Instead, let all countries share cleanliness and happiness with dignity
 
-`#知世/文化`
+The EU implements "Extended Producer Responsibility" (EPR), requiring companies to be responsible for a product's full life cycle
 
 
+<!--memo:a2349c7cceac-->
+### Shooting - black and white scenes
 
-### 心理填充机制：大脑讨厌空白
+> 2025-10-31 14:26:07 · `#格物/摄影`
 
-> `2025 年 11 月 02 日 - 19:32:56`
+First there's the problem of light; some light can pollute the view, and black and white can draw attention to the rhythm of shadow
 
-**心理填充机制**：信息不完整的状态下，**大脑讨厌空白**，所以需要降低不确定性。
+Then sometimes too many colors also distract; a complex street signboard, a crowd in bright clothes - removing color can highlight the people themselves
 
-这种在心理上，和**投射**、**确定偏误**（Confirmation Bias），以及**心智化能力**（Mentalization）是相关的。
+Then there are scenes that need to carry a nostalgic, abstract or surreal quality
 
-女性心理学研究中，一般女性会更表现出**情绪共鸣能力**和社会直觉，**女性第六感**，是天赋也是负担。
+Photographer Ansel Adams once said black and white isn't a deprivation of reality but a "reinterpretation of reality". Color is part of reality; black and white is a translation of feeling
 
-`#观我/心理机制`
+When is black and white appropriate? Maybe in the moment of shooting, ask yourself why you want to capture it

@@ -1,0 +1,155 @@
+{
+  "_comment": "英文版 front matter 的人工翻译。中文由脚本生成，英文在这里逐月给出，保证 description/tldr 不是机翻腔。",
+  "2025-02": {
+    "title": "February 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+    "description": "A complete record of February 2025: 40 notes filed under 8 themes, led by AI and agent systems (11), self-knowledge and psychology (9), product, engineering and open source (8), plus business, reading and travel. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Note-taking is a tool that shapes the person using it: the structure of the card decides what gets remembered.",
+      "The month opens with tooling and method — flomo, DeepSeek, agent design — and closes with notes about character.",
+      "Most of February's notes are short: a tool observation, a question, a line worth keeping."
+    ]
+  },
+  "2025-03": {
+    "title": "March 2025 Thought Notes: AI and Agent Systems, Self-Knowledge, Engineering",
+    "description": "A complete record of March 2025: 52 notes across 7 themes, led by AI and agent systems (21), self-knowledge and psychology (15) and product, engineering and open source (8). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Distillation plus reinforcement learning showed up again and again in March, from inference and code review to multimodal applications.",
+      "AI agents moved from chat to actually acting, with MCP and similar protocols doing the coordination work.",
+      "Experience beats opinion: honest conversation and reading other people's cultural context is what actually resolves conflict."
+    ]
+  },
+  "2025-04": {
+    "title": "April 2025 Thought Notes: Self-Knowledge, AI and Agent Systems, Engineering",
+    "description": "A complete record of April 2025: 113 notes across 8 themes, led by self-knowledge and psychology (30), AI and agent systems (30) and product, engineering and open source (26). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Feeling drives reason and then returns to feeling; the point of the loop is deeper self-knowledge, not a tidier argument.",
+      "In the AI era the engineering skill shifts from writing code to reading code, and design has to be optimised for AI to operate.",
+      "Growth compounds and only happens at the edge of comfort; courage is the base of every other virtue."
+    ]
+  },
+  "2025-05": {
+    "title": "May 2025 Thought Notes: Self-Knowledge, Engineering, AI and Agent Systems",
+    "description": "A complete record of May 2025: 84 notes across 8 themes, led by self-knowledge and psychology (29), product, engineering and open source (19) and AI and agent systems (10). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "The backend keeps collapsing into commodity capabilities; the front end is where value reaches users, so independent builders integrate instead of rebuilding.",
+      "Suffering comes from the judgement we put on events, not the events; meta-awareness of your own thinking is where freedom starts.",
+      "Growth equals awareness times action times time, and most of it happens in ordinary days rather than dramatic peaks."
+    ]
+  },
+  "2025-06": {
+    "title": "June 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+    "description": "A complete record of June 2025: 181 notes across 9 themes, led by self-knowledge and psychology (55), daily notes (34), product, engineering and open source (27), AI and agent systems (19), reading and ideas (17) and content and craft (15). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Refusal needs no explanation, simple beats clever, and experience beats opinion — your own timeline is the one asset AI cannot replace.",
+      "Extreme reason turns into intuition and extreme feeling turns into clarity; both end up at the same place, the nature of the thing.",
+      "With AI covering the rational work, the human contribution is experience, feeling, expression and creation."
+    ]
+  },
+  "2025-07": {
+    "title": "July 2025 Thought Notes: Self-Knowledge, Daily Life, Engineering",
+    "description": "A complete record of July 2025: 226 notes across 9 themes, led by self-knowledge and psychology (51), daily notes (47), product, engineering and open source (30), travel and cities (30), AI and agent systems (23) and reading and ideas (18). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Real and complicated beats a clean binary, and that shows up in how I read history, culture and other people.",
+      "Living in Japan and Vietnam made it clear that aesthetics and social trust come from deep structure, not from surface detail.",
+      "Programmers should move from writing code to designing systems, keeping taste as the thing AI cannot copy."
+    ]
+  },
+  "2025-08": {
+    "title": "August 2025 Thought Notes: Self-Knowledge, Daily Life, AI and Agent Systems",
+    "description": "A complete record of August 2025: 332 notes across 9 themes, led by self-knowledge and psychology (94), daily notes (74), AI and agent systems (47), reading and ideas (43), travel and cities (25) and business and career (17). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Buddhism, Daoism and Confucianism read like one modern operating system: dependent origination, no-self, and knowing the good.",
+      "The core of knowing-and-doing is 致良知 — letting the inner light become outward action instead of being blocked by cognition, fear or circumstance.",
+      "Cognition in the AI era has to move back from fragments to systems, and keep a gap of ignorance open so curiosity survives."
+    ]
+  },
+  "2025-09": {
+    "title": "September 2025 Thought Notes: Self-Knowledge, Ideas and History, Cities",
+    "description": "A complete record of September 2025: 287 notes across 9 themes, led by self-knowledge and psychology (83), reading, ideas and history (66), travel and cities (30), business and career (27), AI and agent systems (21) and daily notes (21). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Inner cultivation is far behind technical progress, and that gap is what makes fast change hard to hold.",
+      "Conflict, difficulty and pain are the openings where self-examination happens, usually driven by something unresolved about people.",
+      "Value comes from a clear inner position and a real contribution, not from display or accumulation."
+    ]
+  },
+  "2025-10": {
+    "title": "October 2025 Thought Notes: Ideas and History, Daily Life, Self-Knowledge",
+    "description": "A complete record of October 2025: 441 notes across 9 themes, led by reading, ideas and history (94), daily notes (83), self-knowledge and psychology (82), AI and agent systems (60), content and craft (46) and product, engineering and open source (38). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Perfectionism covers a fear of feedback; trying early, iterating fast and getting real feedback is the shortest path that works.",
+      "Facing yourself costs more than self-deception but is the only thing that changes anything — bookkeeping and embodied memory are both mirrors.",
+      "Admit desire and fragility, then design mechanisms and environments instead of relying on willpower."
+    ]
+  },
+  "2025-11": {
+    "title": "November 2025 Thought Notes: Ideas and History, Daily Life, Cities",
+    "description": "A complete record of November 2025: 309 notes across 9 themes, led by reading, ideas and history (63), daily notes (59), travel and cities (48), self-knowledge and psychology (41), product, engineering and open source (32) and AI and agent systems (32). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "The brain fills gaps when information is incomplete, and that filling is where most bias comes from.",
+      "Culture and ideology work like a fast-evolving shell over biology; what gets selected now is the ability to rewrite that shell.",
+      "Creativity is not lightning, it is what a stable system emits when it has good input, idle time and a healthy body."
+    ]
+  },
+  "2026-03": {
+    "title": "March 2026 Thought Notes: Money, Genocide Memory, Southeast Asia",
+    "description": "A complete record of March 2026: 467 notes across 9 themes, led by Cambodia and Southeast Asia, money and the museum of the Khmer Rouge period, AI and agent systems, and product work. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Money in Cambodia is a lens for reading the state itself: dollarisation bought stability at the price of policy sovereignty.",
+      "S-21 shows how a regime turns ideology into an archive of names and a list of people it is allowed to kill.",
+      "A hotel that opens before it is finished is a small model of how capital behaves in the region."
+    ]
+  },
+  "2026-04": {
+    "title": "April 2026 Thought Notes: Living in Laos, Borders, AI and Agents",
+    "description": "A complete record of April 2026: 224 notes across 9 themes, led by travel through Laos and Cambodia, border and customs experience, AI and agent systems, and product and knowledge-tooling notes. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "The order of first contact shapes the impression of a country, and customs is usually the first contact.",
+      "Beauty that could be neither planned nor bought was the best part of the trip, and it arrived because a crossing was delayed.",
+      "The most valuable skill in the AI era is keeping intent continuous while agents execute."
+    ]
+  },
+  "2026-05": {
+    "title": "May 2026 Thought Notes: One Note on Parting",
+    "description": "May 2026 left a single note: the quiet agency of someone who finally says out loud that they are about to leave, and what parting actually requires from the person who stays.",
+    "tldr": [
+      "Parting is not a formality; it is the last thing you owe the time you had together."
+    ]
+  },
+  "2026-06": {
+    "title": "June 2026 Thought Notes: Learning to See the Push Before the Reason",
+    "description": "A complete record of June 2026: 34 raw notes behind the June essay. The month was spent unpicking avoidant attachment, love as three separate systems, and how the same avoidance lives in the work — the bottleneck was never technical execution, it was distribution and validation.",
+    "tldr": [
+      "The push comes first and the reason second; the amygdala is fighting a war that ended when I was three.",
+      "The same avoidance that ends relationships also explains why I keep finding respectable reasons not to ship and distribute.",
+      "Long-term relationships run on mechanism, not on love; soulmates are mostly built, not found."
+    ]
+  },
+  "2026-07": {
+    "title": "July 2026 Thought Notes: Engineering, Content and Cash Flow",
+    "description": "A complete record of July 2026: a long essay on engineering loops, content and cash flow, plus the 17 raw notes behind it. 55 Chinese articles shipped, a dense GitHub month, roughly three thousand RMB a month of AI and infrastructure cost, and a cash-flow problem that no productivity metric can settle.",
+    "tldr": [
+      "AI pushed engineering and content throughput very high, but output only proves execution happened; it does not replace users, revenue or retention.",
+      "The most useful engineering habit of July was writing tasks as stateful, verifiable, resumable loops, with the verifier arriving before the automation.",
+      "Roughly three thousand RMB a month of AI subscriptions plus servers and cloud turned cash flow from an abstraction into a monthly pressure.",
+      "Going back to a job, moving into cross-border commerce and staying with a long-term consumer product are three different contracts, and what has to be protected is the ability to keep choosing."
+    ]
+  },
+  "2026-08": {
+    "title": "August 2026 Thought Notes: Agent Harness, Product and Self-Knowledge",
+    "description": "A complete record of August 2026: 484 notes across 9 themes, led by AI and agent systems (212), product, engineering and open source (96), self-knowledge and psychology (36) and business and career (9). Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "August was mostly spent building agent harnesses: permissions, evaluation, memory and the boring plumbing that decides whether an agent is usable.",
+      "The same note kept coming back: a demo is not a product, and the gap is measured in failure recovery, not in capability.",
+      "Self-knowledge notes in August are about attention and energy rather than about motivation."
+    ]
+  },
+  "2026-09": {
+    "title": "September 2026 Thought Notes: Architecture, Temples and First Principles",
+    "description": "A complete record of September 2026: 220 notes across 9 themes, covering agent architecture and tool permissions, the timber architecture of Yingxian and the Hanging Temple, first principles, and the everyday notes of a month that is still running. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "tldr": [
+      "Claude's message protocol makes a suspended tool call impossible inside one turn, so optimistic execution needs an explicit rollback path.",
+      "The Hanging Temple is not fighting gravity, it is understanding it: the mountain is the real foundation, and most visible columns carry nothing.",
+      "Timber architecture is fragile and therefore clever; it trades material permanence for cultural continuity."
+    ]
+  }
+}

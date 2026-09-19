@@ -12,6 +12,11 @@
 //   warn   W1  「不是…而是」 density > 0.5 per 1000 chars (body text)
 //   warn   W2  filler phrase count over per-file threshold (本质上>3, 不仅仅是>3, 这意味着>3)
 //
+// Exemption: monthly thought-note archives reproduce the author's own verbatim
+// notes (each entry carries an `<!--memo:...-->` provenance marker). Those
+// repeats are quoted source material, not generated prose, so the file is
+// skipped entirely — the same reason blockquote-cited text is exempt from E3.
+//
 // Usage:
 //   node scripts/check-ai-flavor.mjs                     # scan all zh posts, report
 //   node scripts/check-ai-flavor.mjs <file...>           # scan specific files
@@ -76,8 +81,14 @@ function count(re, s) {
 
 // ---- analyze one file -----------------------------------------------------
 
+// 逐字归档（月度思考笔记）保留作者原话，不参与句式密度判定。
+const VERBATIM_ARCHIVE_MARKER = /<!--memo:[0-9a-f]{6,}-->/;
+
 function analyze(file) {
   const text = readFileSync(file, 'utf8');
+  if (VERBATIM_ARCHIVE_MARKER.test(text)) {
+    return { file, errors: [], warns: [], contrastCount: 0, density: 0, verbatim: true };
+  }
   const { fm, body } = splitFrontMatter(text);
   const clean = stripCode(body);
   const lines = clean.split('\n');
