@@ -950,15 +950,15 @@ iPhone/Apple Watch 改造计划、iOS 专注模式配置、MacBook 物理隔离�
 
 - 位置：上海
 
-- 邮箱：3293172751NSS@gmail.com
+- 邮箱：[已隐去邮箱]
 
 - 博客：https://cubxxw.com
 
-- Twitter: @cubxxw
+- Twitter: [已隐去账号]
 
 ## GitHub 数据
 
-- 用户 ID: 86140903
+- 用户 ID：[已隐去]
 
 - 创建时间：2021-06-19
 
@@ -1103,31 +1103,31 @@ AI 也许会比你更清楚你会什么
 
 1️⃣ SGTREK（新加坡）
 
-   📱 WhatsApp: +65 9270 0908
+   📱 WhatsApp: [已隐去号码]
 
-   📧 contact@sgtrek.com
+   📧 [已隐去邮箱]
 
    💰 4D3N SGD 1,200/人
 
 2️⃣ River Junkie Tours
 
-   📱 WhatsApp: +60 111 2658581
+   📱 WhatsApp: [已隐去号码]
 
-   📧 info@river-junkie.com
+   📧 [已隐去邮箱]
 
    ⭐ 4.9 分（268 评价）
 
 3️⃣ Mount Kinabalu 预订中心
 
-   📱 WhatsApp: +60 10-563-2009
+   📱 WhatsApp: [已隐去号码]
 
-   📧 info@mountkinabalu.com
+   📧 [已隐去邮箱]
 
    💰 标准套餐从 RM 1,740 起
 
 4️⃣ SabahTravel.com（实时查询）
 
-   📱 WhatsApp: +60 12-563 7009
+   📱 WhatsApp: [已隐去号码]
 
    🌐 https://www.sabahtravel.com/tour/mount-kinabalu-climb-packages-accommodation
 
@@ -1323,7 +1323,6 @@ smile: 而且还因为是人，所以有宗教信仰，极高并且独属于人�
 
 人不是一个可被彻底自由重写的存在，人类在限制之中仍然活着、回应、承担
 
-https://v.flomoapp.com/mine/?memo_id=MjI0MTAwMTYx
 
 ---
 
@@ -5645,11 +5644,11 @@ agent 不是真的忘性很大——是它的 memory system 设计的不对
 
 ---
 
-### Amma Hotel 惊魂夜：我是他们的第一个客人
+### 一家暹粒的酒店 惊魂夜：我是他们的第一个客人
 
 > 2026-03-15 22:43:27
 
-今天在暹粒住进了一家通过 Booking 订的酒店，名字叫 Amma Hotel
+今天在暹粒住进了一家通过 Booking 订的酒店，名字叫 一家暹粒的酒店
 
 我下单的时候，第一反应是自己可能占到便宜了。页面上的图片看起来还行，价格也不算高，像是碰到了一家性价比不错的新店。只是当时看 Booking 页面，整体给人的感觉就有一点不太正经，不像那种很成熟、很稳妥的酒店，但我还是订了
 
@@ -8411,11 +8410,8 @@ book 是一个很个人化的东西，类似于扎根理论中的 raw data ，�
 
 ---
 
-### Linked from: https://v.flomoapp.com/mine/?memo_id=MjI2Mjc...
-
+### 一条 flomo 记录
 > 2026-03-21 09:34:36
-
-Linked from: https://v.flomoapp.com/mine/?memo_id=MjI2Mjc2NTY4 
 
 今天又去了这家，早上准备去吴哥窟大圈逛逛，然后路过这家想着再来吃吃，依旧很友善，爷爷推荐了一些面条和肉
 
