@@ -242,3 +242,22 @@ Luang Prabang, Vang Vieng, Vientiane were just three vertebrae on that spine. I 
 In June I am still disoriented, still slack, still worrying about money, still rebuilding the broken feedback system. But May has already handed me the shape of the answer: **stop waiting for the turning point. Go do the scary, the near, the actively chosen act — the self will walk out from behind it.**
 
 > Written at the end of May 2026, Laos. Day 31 of life without flomo.
+
+---
+
+## Appendix: raw notes from this month
+
+*The 1 entries below are the raw notes from this month, filed by theme.*
+
+## Daily Notes and Everything Else
+
+*1 entries*
+
+<!--memo:27e599466581-->
+### Sis said she only fell in love with our group of friends today hahaha, but we're about to part ways
+
+> 2026-05-04 18:51:34
+
+Sis said she only fell in love with our group of friends today hahaha, but we're about to part ways; what a pity. I said this is fate being just right …
+
+It reminded me — the most important thing about parting is the goodbye

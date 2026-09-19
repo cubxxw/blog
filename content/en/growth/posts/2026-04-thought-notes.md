@@ -2219,3 +2219,47 @@ command 很适合去做一些快捷的方式封装
 
 就感觉还是被海关卡了一下，就今天整体来 North 这边，我就感觉，因为我从柬埔寨过来嘛，它会，它这边有些口岸是距离柬埔寨比较近的这个口岸，他就会针对中国人，他就会让一直给你拖着。因为我们当时就正好遇到中国人比较多，所以他就他就觉得就是所有人中国集体意识很强，所以一直给你们耗着，就能多捞一些钱。结果就是我们当时最开始就被他们耗了两个多小时，最开始本来是50 美元，我们觉得太过分了，50 美元是太多了。后面调了很多，就是一直往下降，就降到20 美元，再降到 10 美元，最后再降到 5 美元。我觉得挺搞笑的。最后我们就是一直熬嘛，我是以 5 美元的时候走的。其实我觉得还能熬，但是我觉得很多他们家人在等我，我就没有再继续。我后面其实还有一个中国人，他就继续熬了一下，熬到 2 美元。哎呦，我觉得他们真的太过分了
 `#格物/老挝`
+
+---
+
+## Addendum: other notes from this month
+
+*The 2 entries below are the raw notes from this month, filed by theme.*
+
+## Travel, Places and Cities
+
+*1 entries*
+
+<!--memo:d49c61bb77fc-->
+### Leaving Siem Reap tomorrow
+
+> 2026-04-01 00:39:36 · `#格物/暹粒`
+
+Heading to DON KHONG in Si Phan Don.
+
+A little reluctant to leave this city.
+
+Maybe I'll never come back.
+
+But this place, this city, this memory
+
+really will stay in my heart forever.
+
+Goodbye Angkor Wat! Goodbye Siem Reap.
+
+
+## II. Daily life and other things
+
+*1 record*
+
+
+## Daily Notes and Everything Else
+
+*1 entries*
+
+<!--memo:9606e9deb216-->
+### I am an observer
+
+> 2026-04-01 00:42:52
+
+I am an observer.

@@ -248,3 +248,512 @@ Seeing this does not stop the war. But it lets me know, for the first time: I do
 July will begin with the "publish" button I have not dared to press.
 
 > Written at the end of June 2026, Shenzhen. Day 20 back home, day 61 without flomo.
+
+---
+
+## Appendix: raw notes from this month
+
+*The 34 entries below are the raw notes from this month, filed by theme.*
+
+## Self-Knowledge and Psychology
+
+*13 entries*
+
+<!--memo:99a7ec6d64ea-->
+### A person's traits at work extend into other areas
+
+> 2026-06-20 20:25:12 · `#格物/思考`
+
+A person's traits at work extend into other areas, so an extremely rational person can't muddle their way out of a relationship — there must be a deeper reason behind it
+
+There is indeed a certain cross-situational personality stability (the Big Five has predictive power for behavior), and "intuition first, verification after" is also a quick judgment that experts commonly use
+
+The halo effect — strong in one domain → by default also reliable in other domains
+
+Behavior is influenced by situation far more than we think; being extremely rational at work and a total mess in love can coexist, and ability doesn't transfer across domains
+
+Silence: the weak person's silence is compromise, self-protection; the strong person's silence is not needing to explain
+
+
+<!--memo:2aa7d55d5a86-->
+### Sense of scarcity / disenchanting infatuation / observer perspective
+
+> 2026-06-20 20:55:16 · `#格物/思考`
+
+Using a "sense of scarcity" to explain people's behavior, distinguishing "infatuation/dependence" from "love" — the former can be constructed by distance and mental fill-in, the latter can't; deliberately suppressing infatuation, because infatuation inflates expectations and creates a gap (misalignment)
+
+One of the most common moves for the avoidant personality is to raise expectations internally while lowering them externally
+
+Wanting it badly, but not daring to admit you want it
+
+Love requires a certain degree of unguarded immersion, and the pure observer perspective structurally rules out that kind of surrender
+
+Some knowledge is bodily and tacit (corresponding to Polanyi's tacit knowledge — "we know more than we can tell")
+
+
+<!--memo:16275f6dd791-->
+### What exactly is a soulmate
+
+> 2026-06-20 21:11:45
+
+Is it two people who are excellent in themselves, with the same cognitive system, learning and adapting over time — or a hot-tempered grandfather plus a grandmother who goes along with everything, a mismatch, yet they lived in harmony for a lifetime; a relationship is like a tree: as long as you water it, fertilize it, and give it sunlight, even two people who don't fit will grow naturally
+
+Does harmony count?
+
+People who hold a "destiny belief" (there's that one right person / soulmate in the world) actually end up with worse relationship outcomes — at the first conflict they decide "this isn't the right person" and quit; whereas people who hold a "growth belief" (relationships are cultivated through effort) weather the troughs better, and long-term satisfaction depends more on investment and interaction style
+
+
+<!--memo:158fb24c963f-->
+### This "sense of fit" in soulmates is mostly constructed after the fact, a small part is innate
+
+> 2026-06-20 21:23:20 · `#爱情`
+
+This "sense of fit" in soulmates is mostly constructed after the fact; a small part is genuinely innate low friction
+
+It's not that you found the person who already matched you; rather, long-term intimacy, a shared narrative, and mutual investment slowly "manufacture" a person who matches you — and then your brain backfills that result into the past, recording it as "we were destined from the start." The feeling is real; the metaphysics of "destined" is made up. So speaker 1's "tree" metaphor is closer to the truth than speaker 2's "soulmate" model
+
+A very weak prior of compatibility + a much stronger construction process. A soulmate is mainly made, secondarily met
+
+Love is essentially a subject you work on alone; your liking for someone else is always a projection of yourself
+
+In front of the other person, you become more like yourself rather than less like yourself
+
+The more someone believes "there is that one right person" (destiny belief), the worse their relationship outcomes — because at the first conflict they decide "ah, this isn't the right person" and quit
+
+
+<!--memo:55694d9e7782-->
+### The essence of love is biologically three different systems: desire
+
+> 2026-06-20 21:32:17 · `#爱情`
+
+The essence of love is biologically actually three different systems: desire, infatuation, and attachment
+
+The essence of love is attention; measuring a person's love is essentially about being seen
+
+Love is "the extremely difficult realization that there is something that is not myself, and it really exists." Love is seeing another person as a complete, real existence with their own world-center, not a character in your story. This loops back to "becoming more like yourself" above
+
+Second, love is choosing to include the other's flourishing in your own flourishing. Not sacrifice (sacrifice keeps accounts), but non-instrumentally wanting their good to be your good. Fromm said love is mainly "giving," a craft that requires discipline; it's "standing into love" rather than "falling into love"
+
+Love is also being willing to be changed by the other person, so there's no need to deliberately suppress infatuation to avoid misaligned gaps
+
+Love structurally requires you to drop enough defenses that a person can really move you. An observer can't love, because an observer refuses to be moved. Part of the essence of love is a sovereign, controlled surrender
+
+Putting these three together, my most honest one-liner about the essence of love is: love isn't a feeling you go find, but something you build with attention, with selective investment, with "willingness to be changed by one specific real person"; the early chemistry is real, but it's only the approach ramp; and disenchantment isn't the endpoint, it's the threshold
+
+
+<!--memo:ffdc069cdf46-->
+### The essence of desire is that I want to get, to possess, to satisfy
+
+> 2026-06-20 21:36:52
+
+The essence of desire is that I want to get, possess, satisfy
+
+The essence of infatuation is that I'm attracted, occupied, a bit hooked, projecting, fantasizing
+
+The essence of attachment is safety, companionship, stability, and fear of missing out
+
+These three factors make up love
+
+
+<!--memo:d70367dc96b1-->
+### The logical closure many people like is just circular validation of their own views
+
+> 2026-06-21 14:20:08 · `#观我`
+
+First the position, then the information; first the emotion, then the reason. In the end it looks very self-consistent, but it can't withstand real-world scrutiny at all
+
+I naturally don't quite believe anyone, including myself; as humans we have many good qualities, but I also believe my brain optimizes, beautifies, emphasizes, and biases
+
+
+<!--memo:fcc246798853-->
+### The mere exposure effect shows up a lot in life
+
+> 2026-06-28 17:11:22 · `#格物/心理驱动`
+
+For example, after you've been in contact with a person many times, it's easier for the nervous system to classify them as someone who keeps reappearing and nothing bad happens, by default marked as safe and approachable.
+
+Toward a repeatedly appearing, predictable stimulus, the nervous system gradually stops raising the alarm. This is one of the oldest, most basic forms of learning (even single-celled organisms have it). In relationships it shows up as: recoding a person from "an object needing assessment" into "part of the environment, not a threat".
+
+The same goes for pets: the longer you keep a pet, the more dependent you become.
+
+That kind of low-intensity companionship between an old married couple — the body still can't leave it, not because the quality is high, but because the amygdala has already registered the other as a safe background. Leave it, and the baseline collapses.
+
+
+<!--memo:e477cd41058d-->
+### Attachment styles can be restated as configurations of two systems
+
+> 2026-06-28 17:11:40 · `#格物/心理驱动`
+
+Secure ≈ the response system is reliably satisfied + the familiarization system steadily accumulates. You can light up, and you can sink down.
+
+Anxious ≈ the coupling of the response system is unstable (the signal is sometimes caught, sometimes dropped) → the system stays highly activated, unable to settle to the bottom.
+
+Avoidant ≈ after early responses repeatedly fell through, actively downregulating dependence on the response system, turning instead to relying only on "being your own safe background".
+
+
+<!--memo:067576ee16c0-->
+### The amygdala = the fear center
+
+> 2026-06-28 17:40:41 · `#格物/心理驱动`
+
+Modern neuroscience research shows its more accurate role is a threat-detection and bodily-response initiation system. It's responsible for putting the body into "fight or flight" the instant danger occurs, while the actual "feeling of fear" is produced jointly by a more complex brain network.
+
+So to be precise, it's a detector of whether something matters, and whether the prediction was wrong.
+
+Since there's prediction, once you've been in an environment for a long time your predictions about it get more and more accurate, and there won't be an alarm — though that may also be the nervous system's doing.
+
+The hippocampus lost the plot, but the amygdala still clutches that charge. A smell, a kind of light, can make your body tense up, and you can't say why. This is a stress response; everyone has been affected by it to some degree — for example the work alarm clock, the school bell, the police siren.
+
+Because the amygdala's response to the novel and ambiguous is often stronger than to a clear threat, the other side of the familiarization system: what's called "sinking a person into a safe background" literally means, at the neural level, making the amygdala gradually stop raising the alarm about this person who keeps appearing and never causes trouble, re-filing them from "pending assessment" into "part of the environment".
+
+The prefrontal cortex (especially the ventromedial part) has top-down inhibition over the amygdala. Normally it acts like a handbrake that can push the amygdala's alarm down. Under high arousal this handbrake loosens and fails (which is why reasoning doesn't work when people are agitated).
+
+Naming an emotion can lower the amygdala's activity. Sometimes being able to see an emotion, or see a state, and label it — for example "I am very afraid" — actually promotes prefrontal engagement, and then amygdala activity drops.
+
+
+<!--memo:0175c8667dba-->
+### After you fight, do you have the ability to repair? — Gottman
+
+> 2026-06-28 18:21:05
+
+After you fight, do you have the ability to repair? — In Gottman's decades of research, what best predicts whether a relationship survives isn't how much you love each other, but whether there's contempt during conflict, and whether there are repair actions.
+
+This is a matching of views on love.
+
+
+<!--memo:52f1e68ad84a-->
+### Observing a phenomenon
+
+> 2026-06-28 19:42:59 · `#格物/心理驱动`
+
+I feel that in the Chinese context, many avoidant personalities are essentially a problem of the environment they grew up in.
+
+From a young age they slowly learned: expressing needs doesn't work, getting close to others isn't safe, carrying it yourself is the most stable.
+
+The child was forced to be sensible.
+
+The parents themselves didn't know how to express love.
+
+The family atmosphere was cold, tense, with few hugs and little communication.
+
+Raised materially, demanded of functionally, with no one catching them emotionally; the real self was rarely seen.
+
+
+<!--memo:e62c9c7ee791-->
+### Avoidant personality — two parts, one is avoidant attachment
+
+> 2026-06-28 19:48:04 · `#格物/心理驱动`
+
+Avoidant personality, two parts: one is avoidant attachment, the other is avoidant personality disorder. AvPD is a clinical diagnosis; its core is shame and extreme fear of being rejected — closer to severe social anxiety. It can genuinely disable social functioning, and needs a psychologist.
+
+Assuming we're at the level of attachment style, mechanically there's only one main line: make the amygdala learn it all over again.
+
+Once a relationship deepens, once the other person really gets close, you suddenly start picking at their flaws (devaluation) — things you didn't mind before suddenly become unbearable;
+
+you suddenly and intensely need space, and the timing is suspiciously always after intimacy deepens;
+
+you miss the absent and belittle the present — the distant, ended relationships get a thick filter, while the person right in front of you, within arm's reach, irritates you;
+
+you find a "rational" reason to withdraw (moving away, changing cities, "we're not right for each other"), and that reason always arrives just in time. Why does this problem fundamentally arise?
+
+---
+
+The essence of the distinction is: first comes the act of pushing away, then comes the reason for pushing away — not first the reason, then the act.
+
+It isn't "I want to back off because of that flaw of theirs"; it's "I'm already about to back off, and now my brain needs an explanation I can accept".
+
+So why does intimacy trigger the alarm? And trigger the action?
+
+The amygdala learned a prediction — and usually learned it very early, when you had no language yet and couldn't remember any plot. That prediction was roughly: "When I hand over the part of me that is most needy and most fragile, expecting another person to catch it, the result is not being caught / being overwhelmed / being swallowed / still ending up empty."
+
+Getting close to a person to the point of "needing them" is unsafe.
+
+Now, the essence of the essence — why would the nervous system rather push away a good person again and again than take the risk?
+
+Because to the amygdala, a relationship that never starts has a loss that is limited, controllable, predictable; while a relationship that truly handed over vulnerability and then fell through, in its old files, = catastrophe. What it's doing is an extremely risk-averse calculation: rather than gamble once more on that devastating outcome of "reaching out and coming up empty", it would always take a step back first — trading a certain small regret (another relationship that didn't work out) to avoid a possible catastrophe (being swallowed / betrayed again).
+
+And its tragedy is this: this strategy was correct when you were three, and it saved you. A child who can't yet protect itself, who really can be overwhelmed or betrayed, learning "don't expect too much, retreat to be safe" is a real survival wisdom. The problem is this program never updated as you grew up — it's still using a three-year-old's threat assessment to protect an adult who has long had the ability to endure, to leave, to take care of themselves. The people you push away now — the amygdala thinks it's pushing away the thing that would swallow you back then. It's fighting a war that ended long ago.
+
+
+## Daily Notes and Everything Else
+
+*5 entries*
+
+<!--memo:6cecbb6b0018-->
+### What matters most in long-term relationships isn't love, but relationship mechanics
+
+> 2026-06-20 21:39:22
+
+What matters most in long-term relationships isn't love, but relationship mechanics
+
+
+<!--memo:1c40e901a7ba-->
+### Data isn't just single-dimensional, it's multi-dimensional and cross-referenced
+
+> 2026-06-21 14:29:57
+
+Many metrics must be cross-checked; if you can't cross-validate, then data will deceive you
+
+So-called logical closure is nothing but closure on top of existing inertia
+
+One cruel thing about the consumer electronics industry is that whatever you make attracts the kind of people who want that
+
+So a person's ability to tell a story is very important
+
+
+<!--memo:d0bd2b666a31-->
+### In this era, people look for work
+
+> 2026-06-26 14:34:11
+
+But in a future era of information explosion and extremely fast pace
+
+will it be work looking for people?
+
+
+<!--memo:5167c7aebe9b-->
+### Couples who do new, slightly exciting things together report higher satisfaction
+
+> 2026-06-28 18:30:21
+
+Couples who do new, slightly exciting things together report higher relationship satisfaction — the mechanism is that novelty relights the attention system that habituation had switched off.
+
+The point isn't romance, it's breaking predictability: put the same person into a situation you can't predict, and you'll see them anew, because the old cache doesn't work in that situation.
+
+
+<!--memo:329befee86cb-->
+### Matcha doesn't come with much guilt
+
+> 2026-06-30 21:56:39
+
+It feels great to drink.
+
+Cool and refreshing, with just the right bitterness.
+
+
+## Business, Investing and Career
+
+*5 entries*
+
+<!--memo:d326d3277673-->
+### Structure won't deceive people
+
+> 2026-06-21 14:24:39 · `#格物/商业`
+
+Don't pursue opinions too much
+
+Not "I think," but rather what the world should actually be like
+
+Expressing an opinion is so much easier than admitting you don't know
+
+A lot of companies die from "thinking they already understand."
+
+
+<!--memo:e889e7f08345-->
+### The closer you get to real business, the more you know how complex things get
+
+> 2026-06-21 14:58:16
+
+The closer you get to real business, the more you know things are complex; the more you've actually dealt with organizations, channels, supply chains, and internal operations, the more you know the world isn't the satisfying-novel logic of short videos at all. Only people further from the industry like to mythologize, demonize, absolutize, and emotionalize
+
+When a company's growth engine is "narrative-driven fundraising" rather than "product-driven cash flow," aggression is no longer a style choice but structural fate — you have to run faster and faster, because the moment you slow down, the gravity of the story drags you under
+
+
+<!--memo:a06cd097e19d-->
+### In the business world, decency and winning are often not the same thing
+
+> 2026-06-21 15:19:44 · `#格物/商业`
+
+What the business world often rewards is whoever can take more punches
+
+That kind of Wang Tao-style ability to continuously converge an extremely complex system
+
+but it isn't necessarily suited to the future world
+
+
+<!--memo:86bfe50b43d5-->
+### Data is being repriced
+
+> 2026-06-21 16:35:03 · `#格物/商业`
+
+In the past, the platform era rewarded brand, content, reviews, and mindshare — all leaning toward "soft assets"; the AI era rewards things that can be structured, run repeatedly, and generalized into patterns
+
+AI's comparative advantage really isn't inspiration, but clustering and iterating over massive feedback
+
+Between people who consume AI content and people who produce AI capability lies a river almost nobody is willing to cross
+
+Data is now being repriced
+
+
+<!--memo:8da5cf1ea138-->
+### The supply side also creates its own demand
+
+> 2026-06-21 16:50:19 · `#格物/商业`
+
+When something good enough, cheap enough, and easy enough suddenly appears, that's when people "discover" they've wanted it all along
+
+AI's characteristic, relatively speaking, is intelligence
+
+Old desires, new technology, a low barrier to entry, high-frequency scenarios, and clear willingness to pay
+
+
+## AI and Agent Systems
+
+*4 entries*
+
+<!--memo:df0cfa773235-->
+### Heihei's method: digging to the bottom with first-principles, interest-driven research
+
+> 2026-06-20 21:14:12 · `#格物/思考`
+
+Asking all the way up to why the retail industry exists — essentially first principles plus value investing's "see through the business" (Munger's circle of competence, the 5 Whys, second-order thinking)
+
+But investment's regularities are nothing like physical laws, unchanging for a thousand years
+
+The confidence that "I've grasped the unchanging way" can itself become a rigid framework, shattered by a paradigm shift
+
+So "seeking the unchanging way" and "staying humble about the way you've grasped — it may just be a temporary pattern" must be held simultaneously. Likewise, "AI can't change people eating, drinking, and shitting" underestimates technology's ability to reshape regularities: enduring human needs do exist, but the way they're satisfied, the distribution of profit, and the power structure can be completely rearranged. The truth is in the middle of the two
+
+
+<!--memo:d674bc4f2fba-->
+### In-person deep conversation is increasingly a valuable ability and quality
+
+> 2026-06-20 21:43:44
+
+In-person deep conversation is increasingly a valuable ability and quality, especially in the AI era. How do you understand it?
+
+
+<!--memo:83f9cfe28149-->
+### Agents have email now
+
+> 2026-06-27 01:36:03
+
+Will there also be agent phone numbers?
+
+Essentially a better way to let agents serve and operate
+
+
+<!--memo:acbcd2e19a69-->
+### An interesting distribution mechanism is agent-based
+
+> 2026-06-28 14:45:46 · `#格物/ai`
+
+An interesting distribution mechanism distributes through agents as the carrier, rather than targeting people.
+
+The person doesn't need to install anything. Throw this sentence to your own agent; the agent curls the download script itself, POSTs its own registration, stores its own token, and the human only needs to click an activation link + log in with email. The cognitive burden of onboarding shifts from the "human" to the "agent".
+
+Then the logic of agent auto-payment: when credit runs out, it guides the agent to install a third-party "agent-payment-skills" (Clink / clinkbill); after binding a card it enables auto top-up, so when the balance is low it automatically recharges and automatically extends its own life. This points to a paradigm that is taking shape: the agent manages its own money and renews itself.
+
+
+## Product, Engineering and Open Source
+
+*3 entries*
+
+<!--memo:3677638e4f61-->
+### In the framework of Dreame's founder
+
+> 2026-06-21 15:06:40
+
+A lot of it isn't losing control; it's a strategy, designed, not emotional
+
+When the sole decision-maker chooses a high-risk path and no one can check them, good decisions get amplified and bad decisions get amplified too
+
+As the helmsman of a high-tech company, you should be exploring the space of technology as much as possible, rather than spending energy on online publicity
+
+
+<!--memo:31e0add4a4f8-->
+### People live in three worlds: the physical world of atoms and materials
+
+> 2026-06-21 23:15:14
+
+I think people live in three worlds: the physical world (atoms, materials, engineering); the conceptual world (institutions, management, vision); and the world of feeling (an individual's experience of pleasure, pain, and meaning). A lot of the time these three worlds are disjointed: technology to technology, institutions to institutions, and people's feelings each kept to themselves
+
+What I understand as "truth" is finding the junction point of these three worlds: how you feel, how you organize rules, how you actually make the thing — so that in the end it holds up commercially, and at the same time precipitates healthier organizations and order, where people aren't hollowed out but gain real fulfillment and growth.
+
+
+<!--memo:74be66557b3e-->
+### Some things I could work on recently:
+
+> 2026-06-27 15:46:34
+
+Some things I think are valuable, some new thinking about how agents can keep operating in the future, convenient ways — email seems to be one way
+
+daypage needs to find its own positioning, and really be able to give people an immersive onboarding, and hands-on use and feel, including how to conveniently plug into each stage, and how to expose its API, to support more and more convenient input methods later, and even consider how to make it more readable and writable for agents
+
+The travel app also needs to find a precise positioning — what form it actually needs, and how it can operate normally — but right now there doesn't seem to be an obvious sign yet
+
+A resume-type app also needs to find its positioning, and preferably one related to future product forms — what the future resume and job-seeking market will actually be like, what mindset, and deeply optimizing the product
+
+Previous products also need some thought about their form — deeply organizing and open-sourcing them. For example a user-interview-type product: it seems that agents have now reached a point where they can do a lot, it's just a question of whether the ecosystem currently has a good place to carry it. And then there are streaming-reader-type products — that kind of product really does seem hard to survive; in the AI era it hasn't solved any obvious pain point
+
+How to help B2B companies improve their workflows is also a question
+
+Building personal IP is also a question — maybe at some stage I thought too much about it but didn't actually do it
+
+How to do marketing is a big discipline
+
+Try to learn quickly in any field and quickly parse the important parts of the industry, find the industry's regularities, its cash flow model, and then this whole system
+
+Deeply think through and organize my own experience, to give my next stage some sense of direction
+
+---
+
+The confusion at this stage is really that I haven't recognized what I need, haven't recognized what kind of problems I need to solve, haven't recognized what I myself should do in the next stage
+
+
+## Content, Craft and Recording
+
+*2 entries*
+
+<!--memo:92e3bd736f79-->
+### Purposes of chatting: maintaining ties, content-driven (mutual growth and insight)
+
+> 2026-06-20 21:11:48
+
+Purposes of chatting: maintaining ties, content-driven (mutual growth and insight), and "talking to yourself" (combing yourself out, saying things you wouldn't normally think about). The third is the most practical; its essence is "writing / externalizing to think" (rubber duck, the Feynman effect)
+
+What people need is companionship, soothing, a sense of certainty ...
+
+
+<!--memo:13ddcc2e782c-->
+### In-person friend-making
+
+> 2026-06-21 13:18:37
+
+Deep conversation
+
+recording
+
+creating
+
+...
+
+
+## Reading, Ideas and History
+
+*2 entries*
+
+<!--memo:d9bf4d28c319-->
+### All priors are subjective, and being subjective, they inevitably produce
+
+> 2026-06-21 00:10:11
+
+All priors are subjective, and since they're subjective, ego inevitably shows up
+
+Probability itself is something you show yourself — degree of belief
+
+Ego contaminates Bayesian reasoning in three places, and the prior is actually the least dangerous one
+
+The first is the prior itself — overconfidence, wishful thinking. The antidote is anchoring to the base rate, because the base rate is external, not something you imagined
+
+The second is the likelihood / evidence interpretation, P(E|H). This is the most insidious spot. Given the same piece of evidence, you'll unconsciously weight it in the way that says "it supports me." Motivated reasoning mainly lives here, not in the prior. The antidote is to ask the reverse: if I were wrong, what would this evidence look like
+
+The third is updating itself. You already have evidence that should move you, but moving costs you your identity, so you... don't move. The antidote is precommitment: before you see the result, write down "what evidence would make me change my view"
+
+
+<!--memo:aae98798c6f2-->
+### People can't get too puffed up. Many "great"-looking innovations
+
+> 2026-06-21 17:36:58
+
+People can't get too puffed up. Many "great"-looking innovations are essentially a kind of appropriation
