@@ -1,0 +1,15 @@
+{{- /*
+  Resolve a product's destination for the current language.
+
+  Some products need a language hint in their own live URL (IMStage takes
+  `?lang=zh|en`), so a product may define `url_zh` / `url_en` next to `url`.
+  Products without those fields keep using `url`, which keeps every other
+  entry byte-identical to the previous behaviour.
+
+  Call:
+    {{ partial "products/url.html" (dict "product" $product "lang" "zh") }}
+*/ -}}
+{{- $product := .product -}}
+{{- $lang := .lang | default "en" -}}
+{{- $localized := index $product (printf "url_%s" $lang) -}}
+{{- return ($localized | default $product.url) -}}

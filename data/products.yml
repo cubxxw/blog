@@ -29,6 +29,33 @@ products:
     related: []
     tags: [agent, ai, career]
 
+  - id: imstage
+    name: IMStage
+    stage_zh: 已上线
+    stage_en: Live
+    headline_zh: 把对话做成可编辑的画面。
+    headline_en: Turn a conversation into an editable scene.
+    desc_zh: 从一句情节开始，生成对白、人物与照片。逐条编辑，复用模板，或在同一个项目里创作一组不同的故事，最后导出 PNG。
+    desc_en: Start with a premise. Generate dialogue, people and photos, edit each detail, reuse a template, or make a series of stories in one project. Export the result as a PNG.
+    audience_zh: 产品演示 · 教学 · 叙事创作
+    audience_en: Product demos · Teaching · Storytelling
+    stack: React · Node · MCP
+    color: rust
+    mark: IM
+    url: https://imstage.org
+    url_zh: https://imstage.org/?lang=zh
+    url_en: https://imstage.org/?lang=en
+    github: https://github.com/kubbot/imstage
+    image_fit: contain
+    image_zh: /images/products/imstage-zh.jpg
+    image_en: /images/products/imstage-en.jpg
+    image_alt_zh: IMStage 首页的场景输入框与微信聊天预览，展示虚构人物和 AI 合成照片
+    image_alt_en: The IMStage scene prompt beside a WhatsApp preview with fictional characters and an AI-generated photo
+    boundary_zh: 用于演示与虚构创作。AI 生成需要账号额度；参考截图重建为可编辑的近似布局。
+    boundary_en: For demos and fiction. AI generation uses account credits; screenshot reconstruction creates an approximate editable layout.
+    related: []
+    tags: [agent, ai, product-strategy]
+
   - id: solo-compass
     name: Solo Compass
     stage_zh: TestFlight 准备中

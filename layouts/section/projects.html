@@ -4,6 +4,8 @@
 {{- $featuredProducts := where $products "featured" true -}}
 {{- $featured := index $featuredProducts 0 -}}
 {{- $featuredDomain := $featured.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
+{{- $featuredUrl := partial "products/url.html" (dict "product" $featured "lang" .Lang) -}}
+{{- $featuredShot := partial "products/shot.html" (dict "product" $featured "lang" .Lang) -}}
 {{- $live := 0 -}}
 {{- range $products -}}
   {{- if eq .stage_en "Live" -}}{{- $live = add $live 1 -}}{{- end -}}
@@ -70,7 +72,7 @@
             <p>{{ if $isZh }}{{ $featured.question_zh }}{{ else }}{{ $featured.question_en }}{{ end }}</p>
           </div>
           <button type="button" class="osx-focus__preview" data-osx-open="{{ $featured.id }}" aria-label="{{ if $isZh }}在 BEAR OS 中查看 {{ $featured.name }}{{ else }}View {{ $featured.name }} in BEAR OS{{ end }}">
-            <img src="/images/products/{{ $featured.id }}.jpg" width="1440" height="900" alt="" loading="lazy" fetchpriority="low" decoding="async">
+            <img src="{{ $featuredShot.path }}" width="1440" height="900" alt="" loading="lazy" fetchpriority="low" decoding="async">
           </button>
         </div>
         <footer>$ inspect {{ $featured.id }} --evidence</footer>
@@ -117,8 +119,8 @@
 
     <template data-osx-window-template>
     {{- range $index, $product := $products }}
-    {{- $domain := $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
-    {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" $product.id) -}}
+    {{- $shot := partial "products/shot.html" (dict "product" $product "lang" $.Lang) -}}
+    {{- $productUrl := partial "products/url.html" (dict "product" $product "lang" $.Lang) -}}
     {{- $related := slice -}}
     {{- range where site.RegularPages "Params.product" $product.id -}}{{- $related = $related | append . -}}{{- end -}}
     {{- range $product.related -}}{{- with site.GetPage . -}}{{- $related = $related | append . -}}{{- end -}}{{- end -}}
@@ -129,13 +131,13 @@
           <button type="button" class="osx-window__close" data-osx-close aria-label="{{ if $isZh }}关闭 {{ $product.name }} 窗口{{ else }}Close {{ $product.name }} window{{ end }}"></button>
           <i aria-hidden="true"></i><i aria-hidden="true"></i>
         </span>
-        <span class="osx-window__url">{{ $domain }}</span>
+        <span class="osx-window__url">{{ $shot.domain }}</span>
         <span class="osx-window__proc" aria-hidden="true">PID {{ printf "%02d" (add $index 1) }}</span>
       </header>
       <div class="osx-window__body">
-        <a class="osx-window__screen{{ if not $hasShot }} osx-window__screen--abstract{{ end }}" href="{{ $product.url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
-          {{- if $hasShot }}
-          <img src="{{ printf "/images/products/%s.jpg" $product.id }}" alt="{{ if and $isZh $product.image_alt_zh }}{{ $product.image_alt_zh }}{{ else if and (not $isZh) $product.image_alt_en }}{{ $product.image_alt_en }}{{ else }}{{ $product.name }} at {{ $domain }}{{ end }}" width="1440" height="900" loading="lazy" decoding="async">
+        <a class="osx-window__screen{{ if not $shot.exists }} osx-window__screen--abstract{{ end }}" data-shot-fit="{{ $product.image_fit | default "cover" }}" href="{{ $productUrl }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
+          {{- if $shot.exists }}
+          <img src="{{ $shot.path }}" alt="{{ $shot.alt }}" width="1440" height="900" loading="lazy" decoding="async">
           {{- else }}
           <span class="osx-window__mark" aria-hidden="true">{{ $product.mark }}</span>
           {{- end }}
@@ -165,7 +167,7 @@
           {{- end }}
 
           <div class="osx-window__actions osx-reveal" style="--r:6">
-            <a class="osx-window__primary" href="{{ $product.url }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }}</a>
+            <a class="osx-window__primary" href="{{ $productUrl }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }}</a>
             {{- with $product.demo }}
             <a class="osx-window__ghost" href="{{ . }}" target="_blank" rel="noopener">{{ if $isZh }}核对证据{{ else }}Review evidence{{ end }}</a>
             {{- end }}
@@ -224,7 +226,7 @@
     <noscript>
       <div class="osx-noscript">
         <p>{{ if $isZh }}启用 JavaScript 可使用 BEAR OS 窗口。你仍可直接打开产品：{{ else }}Enable JavaScript to use BEAR OS windows. You can still open each product:{{ end }}</p>
-        <ul>{{ range $products }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}</ul>
+        <ul>{{ range $products }}{{- $noscriptUrl := partial "products/url.html" (dict "product" . "lang" $.Lang) -}}<li><a href="{{ $noscriptUrl }}">{{ .name }}</a></li>{{ end }}</ul>
       </div>
     </noscript>
   </section>
@@ -289,9 +291,9 @@
 
       <div class="builds-feature__layout">
         <figure class="builds-feature__visual">
-          <a href="{{ $featured.url }}" target="_blank" rel="noopener">
+          <a href="{{ $featuredUrl }}" target="_blank" rel="noopener">
             <img
-              src="/images/products/{{ $featured.id }}.jpg"
+              src="{{ $featuredShot.path }}"
               width="1440"
               height="900"
               alt="{{ if $isZh }}{{ $featured.image_alt_zh }}{{ else }}{{ $featured.image_alt_en }}{{ end }}"
@@ -327,7 +329,7 @@
           </ul>
 
           <div class="builds-actions builds-actions--product">
-            <a class="builds-button builds-button--primary" href="{{ $featured.url }}" target="_blank" rel="noopener">
+            <a class="builds-button builds-button--primary" href="{{ $featuredUrl }}" target="_blank" rel="noopener">
               {{ if $isZh }}打开产品{{ else }}Open product{{ end }}
             </a>
             {{- with $featured.demo }}
@@ -359,16 +361,16 @@
         {{- range $products }}
         {{- if not .featured }}
         {{- $product := . -}}
-        {{- $domain := $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
-        {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" $product.id) -}}
+        {{- $shot := partial "products/shot.html" (dict "product" $product "lang" $.Lang) -}}
+        {{- $productUrl := partial "products/url.html" (dict "product" $product "lang" $.Lang) -}}
         <article class="build-card" id="{{ $product.id }}">
-          <a class="build-card__visual{{ if not $hasShot }} build-card__visual--mark{{ end }}" href="{{ $product.url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
-            {{- if $hasShot }}
+          <a class="build-card__visual{{ if not $shot.exists }} build-card__visual--mark{{ end }}" href="{{ $productUrl }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ $product.name }}{{ else }}Open {{ $product.name }}{{ end }}">
+            {{- if $shot.exists }}
             <img
-              src="/images/products/{{ $product.id }}.jpg"
+              src="{{ $shot.path }}"
               width="1440"
               height="900"
-              alt="{{ $product.name }} at {{ $domain }}"
+              alt="{{ $shot.alt }}"
               loading="lazy"
               decoding="async">
             {{- else }}
@@ -387,8 +389,8 @@
               {{- range (split $product.stack " · ") }}<li>{{ . }}</li>{{- end }}
             </ul>
             <div class="build-card__links">
-              {{- if ne $product.url $product.github }}
-              <a href="{{ $product.url }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }}</a>
+              {{- if ne $productUrl $product.github }}
+              <a href="{{ $productUrl }}" target="_blank" rel="noopener">{{ if $isZh }}打开产品{{ else }}Open product{{ end }}</a>
               {{- end }}
               <a href="{{ $product.github }}" target="_blank" rel="noopener">{{ if $isZh }}查看源码{{ else }}View source{{ end }}</a>
             </div>

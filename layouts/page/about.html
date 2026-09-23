@@ -252,14 +252,16 @@
 
       <div class="studio-products__track" role="list" data-card-track>
         {{- range $index, $product := $products }}
+        {{- $shot := partial "products/shot.html" (dict "product" $product "lang" $.Lang) -}}
+        {{- $productUrl := partial "products/url.html" (dict "product" $product "lang" $.Lang) -}}
         <article class="studio-product" role="listitem" data-card
           data-card-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else if eq $index (sub (len $products) 1) }}prev{{ else }}hidden{{ end }}"
           aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}">
-          <a href="{{ $product.url }}" target="_blank" rel="noopener">
-            <img src="/images/products/{{ $product.id }}.jpg" width="1440" height="900"
-              srcset="/images/products/{{ $product.id }}-720.webp 720w, /images/products/{{ $product.id }}.jpg 1440w"
+          <a href="{{ $productUrl }}" target="_blank" rel="noopener">
+            <img src="{{ $shot.path }}" width="1440" height="900"
+              {{ if not (or $product.image_zh $product.image_en) }}srcset="/images/products/{{ $product.id }}-720.webp 720w, /images/products/{{ $product.id }}.jpg 1440w"{{ end }}
               sizes="(max-width: 640px) 82vw, 760px"
-              alt="{{ $product.name }} {{ if $isZH }}产品界面{{ else }}product interface{{ end }}" loading="lazy" decoding="async"
+              alt="{{ $shot.alt }}" loading="lazy" decoding="async"
               draggable="false">
             <div class="studio-product__body">
               <p><span>{{ printf "%02d" (add $index 1) }}</span>{{ if $isZH }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</p>

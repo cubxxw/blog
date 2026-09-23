@@ -437,7 +437,7 @@
           {{- /* Products come from data/products.yml — the single source of
                  truth shared with section 03 and /projects/ (BEAR OS). */}}
           {{- range site.Data.products.products }}
-          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+          <li><a href="{{ partial "products/url.html" (dict "product" . "lang" $.Lang) }}" target="_blank" rel="noopener">{{ .name }}</a></li>
           {{- end }}
         </ul>
       </div>

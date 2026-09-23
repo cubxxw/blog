@@ -1,0 +1,28 @@
+{{- /*
+  Resolve the screenshot used by a product card or window.
+
+  Returns a dict so both product directory views read the same decision:
+
+    path    locale-specific image when `image_zh` / `image_en` exist,
+            otherwise the conventional /images/products/<id>.jpg
+    exists  whether that file is present under static/
+    alt     locale-specific `image_alt_zh` / `image_alt_en` when present,
+            otherwise "<name> at <domain>"
+    domain  host shown in window chrome and captions
+
+  A product without any screenshot keeps its letter mark, exactly as before.
+
+  Call:
+    {{ $shot := partial "products/shot.html" (dict "product" $product "lang" "zh") }}
+*/ -}}
+{{- $product := .product -}}
+{{- $lang := .lang | default "en" -}}
+{{- $domain := $product.url | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
+{{- $localizedImage := index $product (printf "image_%s" $lang) -}}
+{{- $path := $localizedImage | default (printf "/images/products/%s.jpg" $product.id) -}}
+{{- $localizedAlt := index $product (printf "image_alt_%s" $lang) -}}
+{{- return (dict
+  "path" $path
+  "exists" (fileExists (printf "static%s" $path))
+  "alt" ($localizedAlt | default (printf "%s at %s" $product.name $domain))
+  "domain" $domain) -}}
