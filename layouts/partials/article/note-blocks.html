@@ -1,0 +1,31 @@
+{{- /* Monthly archives reserve h1/h2 for topic boundaries and mark each
+       original memo explicitly. Work on rendered HTML so Markdown, heading
+       IDs, images and code fences keep Hugo's normal rendering. No client-side
+       regrouping: blocks also exist before scripts run and in print. */ -}}
+{{- $content := . -}}
+{{- if findRE `<!--memo:[a-f0-9]+-->` $content 1 -}}
+  {{- $boundary := "<!--note-block-boundary-->" -}}
+  {{- $tokenized := replaceRE `(<!--memo:[a-f0-9]+-->|<h[12]\b)` (printf "%s${1}" $boundary) $content -}}
+  {{- $parts := slice -}}
+  {{- $open := false -}}
+  {{- range split $tokenized $boundary -}}
+    {{- if $open -}}
+      {{- $parts = $parts | append "</article>" -}}
+      {{- $open = false -}}
+    {{- end -}}
+    {{- $chunk := . -}}
+    {{- if hasPrefix $chunk "<!--memo:" -}}
+      {{- $key := replaceRE `(?s)^<!--memo:([a-f0-9]+)-->.*$` "${1}" $chunk -}}
+      {{- $chunk = replaceRE `^<!--memo:[a-f0-9]+-->\s*` "" $chunk -}}
+      {{- /* Only the timestamp immediately after the memo title is metadata;
+             quotations in the body remain real blockquotes. */ -}}
+      {{- $chunk = replaceRE `(?s)^(<h3\b[^>]*>.*?</h3>)\s*<blockquote>\s*<p>([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}.*?)</p>\s*</blockquote>` `${1}<div class="note-block-meta">${2}</div>` $chunk -}}
+      {{- $parts = $parts | append (printf `<article class="note-block" id="memo-%s">` $key) -}}
+      {{- $open = true -}}
+    {{- end -}}
+    {{- $parts = $parts | append $chunk -}}
+  {{- end -}}
+  {{- if $open -}}{{- $parts = $parts | append "</article>" -}}{{- end -}}
+  {{- $content = delimit $parts "" -}}
+{{- end -}}
+{{- return $content -}}

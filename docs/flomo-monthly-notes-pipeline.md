@@ -71,6 +71,18 @@ npm run frontmatter:check && npm run tags:check && npm run blockquotes:check && 
 锚点是照 Goldmark 的规则手算的，所以 `verify-nav.mjs` 会在构建产物上再验一次——
 手算规则一旦和渲染器不一致，读者点目录就会原地不动。
 
+## 页面上的笔记块
+
+文章模板通过 `layouts/partials/article/note-blocks.html` 把每个 `<!--memo:KEY-->`
+到下一个 memo 标记或一级、二级主题标题之前的内容包在独立的 `.note-block` 中。
+这是构建时的呈现处理，原始 Markdown、覆盖率标记和标题锚点保持不变；中文、英文
+和追加型归档共用同一规则。没有 memo 标记的文章保持原有排版。
+
+每条记录以三级标题开始，紧随其后的时间戳引用转换成紧凑的元信息行；正文中的
+真实引用仍保留。一级、二级标题保留给块外主题导航，笔记内小标题应使用三级或更低
+层级。样式在 `assets/css/extended/zzz-note-blocks.css` 中维护，块内段落间距小于
+块间距离，边框和底色使用现有明暗主题变量。长笔记完整展开，不产生卡片内滚动。
+
 ## 覆盖契约
 
 - 正文里每条 memo 都带一个 `<!--memo:KEY-->` HTML 注释（渲染后不可见），既是来源标记，也让覆盖率可以机器验证。

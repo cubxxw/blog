@@ -1,0 +1,88 @@
+/* One original memo = one reading unit. Scoped to archive source markers;
+   editorial introductions and ordinary essays keep their existing rhythm. */
+.post-content .note-block {
+  margin: 1.25rem 0;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-paper) 96%, var(--color-ink) 4%);
+  min-width: 0;
+  max-width: 760px;
+  overflow-wrap: anywhere;
+  scroll-margin-top: 6rem;
+}
+
+.post-content .note-block > h3:first-child {
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+.post-content .note-block .note-block-meta {
+  margin: 0 0 1.1rem;
+  font-family: var(--font-meta);
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--color-ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.post-content .note-block .note-block-meta code {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: inherit;
+  font-size: inherit;
+  white-space: normal;
+}
+
+html .post-content .note-block p,
+html .post-content .note-block li {
+  line-height: 1.85;
+}
+
+.post-content .note-block p,
+.post-content .note-block > ul,
+.post-content .note-block > ol {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+html .post-content .note-block blockquote {
+  margin: 1rem 0;
+}
+
+/* A quote inside a note stays a quote, without the oversized EN ornament. */
+html .post-content .note-block blockquote::before {
+  content: none;
+}
+
+.post-content .note-block > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .post-content .note-block {
+    margin: 1rem 0;
+    padding: 1.1rem 1rem;
+    border-radius: 6px;
+  }
+
+  .post-content .note-block > h3:first-child {
+    font-size: 1.1875rem;
+  }
+
+  html .post-content .note-block p,
+  html .post-content .note-block li {
+    line-height: 1.78;
+  }
+}
+
+@media print {
+  .post-content .note-block {
+    background: transparent;
+    box-decoration-break: clone;
+  }
+}
