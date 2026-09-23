@@ -12,8 +12,6 @@ tags:
   - MCP
   - Open Source
   - Product Strategy
-categories:
-  - Development
 product: imstage
 description: >
   IMStage 是开源聊天场景创作工具：从一句情节生成对白与画面，继续编辑、复用模板、制作项目变体，再导出 PNG。支持中英文、浏览器自动保存与登录后云端同步。

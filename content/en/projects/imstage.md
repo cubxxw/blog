@@ -12,8 +12,6 @@ tags:
   - MCP
   - Open Source
   - Product Strategy
-categories:
-  - Development
 product: imstage
 description: >
   Create editable chat scenes with IMStage. Generate dialogue and photos, reuse templates, make project variations, and export PNGs with automatic draft saving.

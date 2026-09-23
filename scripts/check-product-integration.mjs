@@ -123,6 +123,18 @@ for (const route of routes) {
   }
 }
 
+// These pages also consume the product catalog; localize their new IMStage cards.
+for (const lang of ["en", "zh"]) {
+  const prefix = lang === "zh" ? "zh/" : "";
+  for (const route of ["index.html", "about/index.html"]) {
+    const file = path.join(outputRoot, prefix, route);
+    const html = await readFile(file, "utf8");
+    for (const value of [`imstage-${lang}.jpg`, `https://imstage.org/?lang=${lang}`]) {
+      if (!html.includes(value)) failures.push(`${prefix}${route} is missing: ${value}`);
+    }
+  }
+}
+
 const screenshots = [
   { file: "talent-signal.jpg", label: "Talent Signal" },
   { file: "imstage-zh.jpg", label: "IMStage (zh)" },
