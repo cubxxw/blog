@@ -7,7 +7,8 @@ on:
     branches: ["main"]
 
 env:
-  HUGO_VERSION: 0.147.0
+  # Match the production renderer pinned in netlify.toml.
+  HUGO_VERSION: 0.145.0
 
 permissions:
   contents: read
