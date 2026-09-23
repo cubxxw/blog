@@ -13,7 +13,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.147.0
+      # Match the production renderer pinned in netlify.toml.
+      HUGO_VERSION: 0.145.0
     steps:
       - name: Checkout
         uses: actions/checkout@v7

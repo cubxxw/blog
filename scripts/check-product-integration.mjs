@@ -19,6 +19,15 @@ const routes = [
       "https://gettalentsignal.com",
       "https://gettalentsignal.com/demo",
       "https://github.com/getyak/talent-signal",
+      "IMStage",
+      "https://imstage.org/?lang=en",
+      "imstage-en.jpg",
+      "/projects/imstage/",
+      "IMStage: Editable Chat Scenes",
+    ],
+    forbidden: [
+      "imstage-zh.jpg",
+      "imstage.org/?lang=zh",
     ],
   },
   {
@@ -34,6 +43,15 @@ const routes = [
       "https://gettalentsignal.com",
       "https://gettalentsignal.com/demo",
       "https://github.com/getyak/talent-signal",
+      "IMStage",
+      "https://imstage.org/?lang=zh",
+      "imstage-zh.jpg",
+      "/zh/projects/imstage/",
+      "IMStage：可编辑的聊天场景",
+    ],
+    forbidden: [
+      "imstage-en.jpg",
+      "imstage.org/?lang=en",
     ],
   },
 ];
@@ -62,6 +80,12 @@ for (const route of routes) {
   for (const value of route.required) {
     if (!html.includes(value)) {
       failures.push(`${path.relative(root, route.file)} is missing: ${value}`);
+    }
+  }
+
+  for (const value of route.forbidden ?? []) {
+    if (html.includes(value)) {
+      failures.push(`${path.relative(root, route.file)} must not serve the other locale's asset: ${value}`);
     }
   }
 
@@ -99,14 +123,34 @@ for (const route of routes) {
   }
 }
 
-const screenshot = path.join(root, "static", "images", "products", "talent-signal.jpg");
-try {
-  const info = await stat(screenshot);
-  if (info.size > 180_000) {
-    failures.push(`Talent Signal screenshot exceeds 180 KB: ${info.size} bytes`);
+// These pages also consume the product catalog; localize their new IMStage cards.
+for (const lang of ["en", "zh"]) {
+  const prefix = lang === "zh" ? "zh/" : "";
+  for (const route of ["index.html", "about/index.html"]) {
+    const file = path.join(outputRoot, prefix, route);
+    const html = await readFile(file, "utf8");
+    for (const value of [`imstage-${lang}.jpg`, `https://imstage.org/?lang=${lang}`]) {
+      if (!html.includes(value)) failures.push(`${prefix}${route} is missing: ${value}`);
+    }
   }
-} catch {
-  failures.push("missing real Talent Signal product screenshot");
+}
+
+const screenshots = [
+  { file: "talent-signal.jpg", label: "Talent Signal" },
+  { file: "imstage-zh.jpg", label: "IMStage (zh)" },
+  { file: "imstage-en.jpg", label: "IMStage (en)" },
+];
+
+for (const { file, label } of screenshots) {
+  const screenshot = path.join(root, "static", "images", "products", file);
+  try {
+    const info = await stat(screenshot);
+    if (info.size > 180_000) {
+      failures.push(`${label} screenshot exceeds 180 KB: ${info.size} bytes`);
+    }
+  } catch {
+    failures.push(`missing real ${label} product screenshot`);
+  }
 }
 
 if (failures.length > 0) {

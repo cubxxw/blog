@@ -67,14 +67,13 @@ test.describe('P1-P2 UX regression', () => {
     await page.locator('.osx-widget--proc [data-osx-open]').first().click();
     const close = page.locator('.osx-window--open .osx-window__close');
     await expect(close).toBeVisible();
-    const closeBox = await close.boundingBox();
-    expect(closeBox?.width).toBeGreaterThanOrEqual(44);
-    expect(closeBox?.height).toBeGreaterThanOrEqual(44);
+    // Opening scales the window briefly; measure the settled hit targets.
+    await expect.poll(async () => (await close.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44);
+    await expect.poll(async () => (await close.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
 
     const dockTarget = page.locator('.osx-dock__app').first();
-    const dockBox = await dockTarget.boundingBox();
-    expect(dockBox?.width).toBeGreaterThanOrEqual(44);
-    expect(dockBox?.height).toBeGreaterThanOrEqual(44);
+    await expect.poll(async () => (await dockTarget.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44);
+    await expect.poll(async () => (await dockTarget.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
   });
 
   test('products defaults to BEAR OS and switches to Product Lab and back', async ({ page }) => {

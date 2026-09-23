@@ -122,7 +122,7 @@ jobs:
             Notes:
             - You are working in a fresh checkout on GitHub's Ubuntu
               runner. Hugo is not preinstalled; install it before step 4:
-              `wget -qO /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.147.0/hugo_extended_0.147.0_linux-amd64.deb && sudo dpkg -i /tmp/hugo.deb`.
+              `wget -qO /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.145.0/hugo_extended_0.145.0_linux-amd64.deb && sudo dpkg -i /tmp/hugo.deb`.
             - `git mv` preserves history when moving images into a page
               bundle. Prefer it over add/delete.
             - Do NOT skip the hugo build check. A broken build is the one

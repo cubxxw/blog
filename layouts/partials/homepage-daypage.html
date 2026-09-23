@@ -293,26 +293,26 @@
       </div>
       <div class="hp-products-grid">
         {{- range site.Data.products.products }}
-        {{- $domain := .url | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}
-        {{- $hasShot := fileExists (printf "static/images/products/%s.jpg" .id) }}
+        {{- $shot := partial "products/shot.html" (dict "product" . "lang" $lang) }}
+        {{- $productUrl := partial "products/url.html" (dict "product" . "lang" $lang) }}
         <article class="hp-product hp-product--{{ .color }}{{ if .featured }} hp-product--featured{{ end }}">
           <a class="hp-product__main" href="{{ printf "/projects/#%s" .id | relLangURL }}" target="_blank" rel="noopener">
-            {{- if $hasShot }}
+            {{- if $shot.exists }}
             <span class="hp-product__shot">
-              <img src="{{ printf "/images/products/%s.jpg" .id }}" alt="{{ .name }}, {{ $domain }}" width="1440" height="900" loading="lazy" decoding="async">
+              <img src="{{ $shot.path }}" alt="{{ $shot.alt }}" width="1440" height="900" loading="lazy" decoding="async">
             </span>
             {{- else }}
             <div class="hp-product__top"><span class="hp-product__mark">{{ .mark }}</span><span class="hp-product__status">{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span></div>
             {{- end }}
             <div class="hp-product__text">
-              {{- if $hasShot }}<span class="hp-product__status">{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span>{{- end }}
+              {{- if $shot.exists }}<span class="hp-product__status">{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span>{{- end }}
               <h3>{{ .name }}</h3>
               <p class="hp-product__headline">{{ if $isZh }}{{ .headline_zh }}{{ else }}{{ .headline_en }}{{ end }}</p>
               <p class="hp-product__desc">{{ if $isZh }}{{ .desc_zh }}{{ else }}{{ .desc_en }}{{ end }}</p>
               <span class="hp-product__more">{{ if $isZh }}查看产品{{ else }}View product{{ end }}</span>
             </div>
           </a>
-          <div class="hp-product__foot"><span>{{ .stack }}</span><span class="hp-product__links">{{ if ne .url .github }}<a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ .name }}{{ else }}Open {{ .name }}{{ end }}">{{ if $isZh }}打开{{ else }}Open{{ end }}</a>{{ end }}<a href="{{ .github }}" target="_blank" rel="noopener" aria-label="{{ .name }} GitHub">GitHub</a></span></div>
+          <div class="hp-product__foot"><span>{{ .stack }}</span><span class="hp-product__links">{{ if ne $productUrl .github }}<a href="{{ $productUrl }}" target="_blank" rel="noopener" aria-label="{{ if $isZh }}打开 {{ .name }}{{ else }}Open {{ .name }}{{ end }}">{{ if $isZh }}打开{{ else }}Open{{ end }}</a>{{ end }}<a href="{{ .github }}" target="_blank" rel="noopener" aria-label="{{ .name }} GitHub">GitHub</a></span></div>
         </article>
         {{- end }}
       </div>
@@ -437,7 +437,7 @@
           {{- /* Products come from data/products.yml — the single source of
                  truth shared with section 03 and /projects/ (BEAR OS). */}}
           {{- range site.Data.products.products }}
-          <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+          <li><a href="{{ partial "products/url.html" (dict "product" . "lang" $.Lang) }}" target="_blank" rel="noopener">{{ .name }}</a></li>
           {{- end }}
         </ul>
       </div>

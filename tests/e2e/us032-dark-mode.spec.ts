@@ -188,21 +188,21 @@ test('EN: dark class toggle changes --color-paper token', async ({ page }) => {
   expect(paperBack).toBe(paperLight); // toggle back = original
 });
 
-// ── US-032-06: ZH dark — accent for h2/drop-cap reflects token ───
+// ── US-032-06: ZH dark — quiet, readable heading hierarchy ────────
 
-test('ZH dark: h2 border-left color reflects --color-accent (#ff6b6b)', async ({ page }) => {
+test('ZH dark: h2 uses light ink with no decorative left border', async ({ page }) => {
   await page.setViewportSize({ width: 1680, height: 1050 });
   await page.goto(ZH_URL);
   await page.waitForLoadState('networkidle');
   await enableDark(page);
 
-  const h2Color = await page.evaluate(() => {
-    const h2 = document.querySelector('.post-content h2');
-    if (!h2) return '';
-    return getComputedStyle(h2).borderLeftColor;
-  });
-  // rgb(255,107,107) = #ff6b6b
-  expect(h2Color).toMatch(/255,\s*107,\s*107/);
+  const heading = page.locator('.post-content h2').first();
+  await expect(heading).toBeVisible();
+  // The current reading design carries hierarchy through type and spacing.
+  // Keep its dark-mode contrast and shared reading edge under regression test.
+  await expect(heading).toHaveCSS('color', 'rgb(245, 243, 238)');
+  await expect(heading).toHaveCSS('border-left-width', '0px');
+  await expect(heading).toHaveCSS('padding-left', '0px');
 });
 
 // ── US-032-07: 0 console errors ──────────────────────────────────
