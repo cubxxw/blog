@@ -69,6 +69,12 @@
 
 这批历史报告的 13 个 SEO category 分数均为 100，最低 accessibility 为 92。SEO 基础分已满并不代表收录、点击或读者体验已经达标。
 
+### 无 JavaScript 字体后备（#395，兼容性维护，待发布）
+
+Google 字体的 `noscript` 后备原先带 `media="print"`，依赖 `onload` 改为屏幕样式；禁用 JavaScript 时该处理器不会执行。现仅移除这两个属性，使用直接 stylesheet。正常 JS 的异步加载、自托管中文字体和 about / about-quest / articles / projects 排除条件保持原样；行为依据见 [HTML noscript 规范](https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element)。
+
+真实 Hugo 0.145 最小微站生成修改前后各 13 个 HTML，独立检查确认只有预期属性变化。现有 Chrome 153 独立临时 profile 完成 40 个前后、双语、页面类型和 JS 开关组合：禁用 JS 的普通页后备样式从未应用变为应用，启用 JS 的 Google CSS 请求数仍为 1，中文样式和排除条件不变。测试拦截字体 CSS 为可观察标记，没有下载真实字体；这证明样式表应用语义，不是字体视觉质量、全站构建或 LCP 改善的证据。独立审查无 P1/P2。
+
 ### 教程示例正确性（#394）
 
 在 page-query 证据到齐前，先修复两篇教程已有的可复现示例错误，中英文同步：

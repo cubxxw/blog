@@ -42,15 +42,12 @@
        from a render-blocking @import that used to live in
        homepage-daypage.css — one consolidated async request. */ -}}
 {{- $baseFonts := "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" -}}
-{{- /* Google Fonts — fully async via preload + noscript fallback.
-       Use media="print" on the noscript fallback to prevent Chrome's
-       speculative parser from issuing a duplicate request (the preload
-       already triggers one). The tiny media-query mismatch guarantees
-       the print vs screen conflict is harmless — anything that actually
-       reads the print stylesheet will still render the fonts correctly. */ -}}
+{{- /* Google Fonts — async with JavaScript; a direct stylesheet without it.
+       The noscript fallback must not rely on an onload handler to apply
+       screen styles when scripting is disabled. */ -}}
 {{- if not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding) }}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $baseFonts }}">
-<noscript><link rel="stylesheet" href="{{ $baseFonts }}" media="print" onload="this.media='all'"></noscript>
+<noscript><link rel="stylesheet" href="{{ $baseFonts }}"></noscript>
 {{- end }}
 {{- /* ZH serif (Noto Serif SC 400/700) — self-hosted woff2 slices under
        /fonts/, same-origin with the site. fonts.gstatic.com is unreliable
