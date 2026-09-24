@@ -2,142 +2,286 @@ name: SEO Analyze
 
 on:
   schedule:
-    # Daily at 07:00 UTC (15:00 Beijing). Runs one hour after seo-snapshot
-    # so the freshest gsc-/psi-/crux-*.json files are already on main.
+    # Daily at 07:00 UTC (15:00 Beijing), one hour after seo-snapshot so the
+    # committed gsc-/psi-/crux observations are on main.
     - cron: "0 7 * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
-  issues: write
-  id-token: write
 
 concurrency:
   group: seo-analyze
   cancel-in-progress: false
 
 jobs:
-  analyze:
+  # Minimal identity freeze BEFORE any fragile preparation: one UTC report
+  # date + evidence cutoff shared by every later job through job outputs.
+  context:
     runs-on: ubuntu-latest
+    outputs:
+      report_date: ${{ steps.ctx.outputs.report_date }}
+      as_of: ${{ steps.ctx.outputs.decision_at }}
+      window_start: ${{ steps.ctx.outputs.window_start }}
+      window_end: ${{ steps.ctx.outputs.window_end }}
     steps:
-      - name: Checkout
+      - name: Checkout (fresh, no persisted credentials)
         uses: actions/checkout@v7
         with:
-          # Enough history for Claude to eyeball trends without cloning
-          # the entire log.
-          fetch-depth: 30
+          ref: ${{ github.sha }}
+          persist-credentials: false
 
-      - uses: anthropics/claude-code-action@v1.0.231
-        # scripts/seo-section-to-issue.mjs shells out to `gh`, which needs both
-        # of these: without GITHUB_REPOSITORY it exits 0 and silently writes
-        # nothing, and without GH_TOKEN the gh call fails unauthenticated.
-        # Neither is inherited by the action's tool sandbox automatically.
+      - name: Freeze run context (UTC report date + evidence cutoff)
+        id: ctx
+        run: |
+          mkdir -p run
+          node scripts/seo-pipeline.mjs freeze \
+            --repository "$GITHUB_REPOSITORY" \
+            --source-commit "$GITHUB_SHA" \
+            --out run/run-context.json \
+            --github-output "$GITHUB_OUTPUT"
+
+  # Trusted preparation: deterministic evidence only — the versioned report
+  # and the bounded PUBLIC-SAFE prompt (no raw GSC query strings — the action
+  # logs the prompt unconditionally).
+  prepare:
+    needs: context
+    runs-on: ubuntu-latest
+    env:
+      AS_OF: ${{ needs.context.outputs.as_of }}
+      RUN_DATE: ${{ needs.context.outputs.report_date }}
+      WIN_START: ${{ needs.context.outputs.window_start }}
+      WIN_END: ${{ needs.context.outputs.window_end }}
+    outputs:
+      prompt: ${{ steps.prompt.outputs.prompt }}
+    steps:
+      - name: Checkout (fresh, no persisted credentials)
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Generate deterministic report
+        id: report
+        run: |
+          set +e
+          node scripts/seo-report.mjs --dir data/seo \
+            --start "$WIN_START" --end "$WIN_END" \
+            --as-of "$AS_OF" --run-date "$RUN_DATE" \
+            --out run/report.json --markdown-out run/section.md
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate report stage (generated vs failed; fresh vs degraded)
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs report \
+            --exit-code "${{ steps.report.outputs.code || '1' }}" \
+            --report run/report.json --markdown run/section.md \
+            --expect-as-of "$AS_OF" --expect-run-date "$RUN_DATE" \
+            --expect-start "$WIN_START" --expect-end "$WIN_END" \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" --attempt "$GITHUB_RUN_ATTEMPT" --report-date "$RUN_DATE" \
+            --out run/stage-report.json
+
+      - name: Build bounded public-safe interpretation prompt
+        id: prompt
+        run: |
+          node scripts/seo-pipeline.mjs prompt --report run/report.json \
+            --repository "$GITHUB_REPOSITORY" --run-date "$RUN_DATE" --as-of "$AS_OF" \
+            --out run/prompt.txt
+          {
+            echo 'prompt<<PROMPT_EOF'
+            cat run/prompt.txt
+            echo 'PROMPT_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Upload prepared evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: seo-prepare-${{ github.run_id }}-${{ github.run_attempt }}
+          path: run/**
+          retention-days: 14
+          if-no-files-found: warn
+
+  # Optional interpretation: tool-free, read-only, bounded. The verified action
+  # boundary (docs/seo-model-boundary-proof.json) is appended verbatim; its own
+  # read-only github.token is supplied explicitly so the action's optional
+  # GitHub App token flow never provides a broader token. No Google or
+  # publisher write token exists here. Structured output is consumed through
+  # the environment by trusted code — never interpolated into shell source.
+  interpret:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout (fresh, no persisted credentials)
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Optional bounded explanation (model, no tools)
+        id: model
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1.0.231
+        env:
+          # ACTIONS_STEP_DEBUG=true would override show_full_output=false in
+          # the current parser; force false AT action execution.
+          ACTIONS_STEP_DEBUG: "false"
+        with:
+          prompt: ${{ needs.prepare.outputs.prompt }}
+          github_token: ${{ github.token }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          show_full_output: "false"
+          display_report: "false"
+          claude_args: |
+            --tools= --disallowedTools "mcp__*" --strict-mcp-config --mcp-config '{"mcpServers":{}}' --safe-mode --disable-slash-commands --json-schema '{"type":"object","properties":{"explanation":{"type":"string","minLength":1,"maxLength":600}},"required":["explanation"],"additionalProperties":false}' --max-turns 2
+
+      - name: Record interpretation (allowlisted sanitized diagnostics only)
+        if: always()
+        env:
+          STRUCTURED_OUTPUT: ${{ steps.model.outputs.structured_output }}
+          EXECUTION_FILE: ${{ steps.model.outputs.execution_file }}
+        run: |
+          mkdir -p run
+          node scripts/seo-pipeline.mjs interpretation \
+            --action-outcome "${{ steps.model.outcome }}" \
+            --conclusion "${{ steps.model.outputs.conclusion }}" \
+            --structured-output-env STRUCTURED_OUTPUT \
+            --execution-file "$EXECUTION_FILE" \
+            --run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --repository "$GITHUB_REPOSITORY" \
+            --out run/interpretation.json
+
+      # The sanitized record ONLY: raw execution files are never uploaded.
+      - name: Upload interpretation record
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: seo-interpretation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: run/interpretation.json
+          retention-days: 14
+          if-no-files-found: warn
+
+  # Trusted publication: fresh checkout at the run's frozen SHA, regenerates
+  # the deterministic evidence, appends at most a literal bounded optional
+  # paragraph (withheld on failure) and writes the shared daily issue section.
+  # A publish failure is never green.
+  publish:
+    needs: [context, prepare, interpret]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: daily-report-publish
+      cancel-in-progress: false
+    env:
+      AS_OF: ${{ needs.context.outputs.as_of }}
+      RUN_DATE: ${{ needs.context.outputs.report_date }}
+      WIN_START: ${{ needs.context.outputs.window_start }}
+      WIN_END: ${{ needs.context.outputs.window_end }}
+    steps:
+      - name: Checkout (fresh at the frozen SHA, no persisted credentials)
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Ensure output directory
+        run: mkdir -p run
+
+      - name: Download interpretation record (optional)
+        continue-on-error: true
+        uses: actions/download-artifact@v7
+        with:
+          name: seo-interpretation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: run/
+
+      - name: Regenerate deterministic evidence
+        id: report
+        run: |
+          set +e
+          node scripts/seo-report.mjs --dir data/seo \
+            --start "$WIN_START" --end "$WIN_END" \
+            --as-of "$AS_OF" --run-date "$RUN_DATE" \
+            --out run/report.json --markdown-out run/section.md
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate regenerated report stage
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs report \
+            --exit-code "${{ steps.report.outputs.code || '1' }}" \
+            --report run/report.json --markdown run/section.md \
+            --expect-as-of "$AS_OF" --expect-run-date "$RUN_DATE" \
+            --expect-start "$WIN_START" --expect-end "$WIN_END" \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" --attempt "$GITHUB_RUN_ATTEMPT" --report-date "$RUN_DATE" \
+            --out run/stage-report.json
+
+      - name: Aggregate pre-publication status
+        if: always()
+        run: |
+          if [ -f run/interpretation.json ]; then INTERP_ARG="--interpretation run/interpretation.json"; else INTERP_ARG=""; fi
+          node scripts/seo-pipeline.mjs aggregate \
+            --stage run/stage-report.json $INTERP_ARG \
+            --out run/status.json
+
+      - name: Compose SEO section (deterministic first; model text literal/withheld)
+        if: always()
+        run: |
+          if [ -f run/report.json ]; then REPORT_ARG="--report run/report.json"; else REPORT_ARG=""; fi
+          if [ -f run/interpretation.json ]; then INTERP_ARG="--interpretation run/interpretation.json"; else INTERP_ARG=""; fi
+          node scripts/seo-pipeline.mjs compose --kind seo $REPORT_ARG $INTERP_ARG \
+            --status run/status.json --run-date "$RUN_DATE" --as-of "$AS_OF" \
+            --out run/section-final.md
+
+      - name: Publish SEO section to the daily issue
+        id: publish
+        if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set +e
+          node scripts/seo-section-to-issue.mjs run/section-final.md --date "$RUN_DATE"
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Record publish stage
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs stage --kind publish \
+            --exit-code "${{ steps.publish.outputs.code || '1' }}" \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" --attempt "$GITHUB_RUN_ATTEMPT" --report-date "$RUN_DATE" \
+            --out run/stage-publish.json
+
+      - name: Final required-stage status
+        if: always()
+        run: |
+          if [ -f run/interpretation.json ]; then INTERP_ARG="--interpretation run/interpretation.json"; else INTERP_ARG=""; fi
+          node scripts/seo-pipeline.mjs aggregate \
+            --stage run/stage-report.json \
+            --stage run/stage-publish.json $INTERP_ARG \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" --attempt "$GITHUB_RUN_ATTEMPT" --report-date "$RUN_DATE" \
+            --out run/status-final.json
+
+      - name: Upload publication evidence
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          # Dry-run mode: read the SEO snapshots, write findings to the
-          # tracking issue, do NOT touch the source tree. `contents: read`
-          # above already blocks writes at the token level; this prompt is
-          # the belt to that suspenders.
-          prompt: |
-            REPO: ${{ github.repository }}
-
-            You are the SEO analyst for a Hugo blog. Your job today is to
-            look at the freshest snapshots in `data/seo/` and post an
-            actionable-but-terse daily observation to the rolling tracking
-            issue.
-
-            ## Data inputs
-
-            - `data/seo/gsc-YYYY-MM-DD.json` — Google Search Console
-              snapshots. Each file has a `meta` block plus four dimension
-              slices: `date_query`, `date_page`, `query_device`,
-              `query_country`. Empty rows means the property is still fresh
-              (Google is processing) — say so plainly, don't invent data.
-            - `data/seo/psi-YYYY-MM-DD.json` — PageSpeed Insights, 12 URLs
-              × 2 strategies. Focus on `results[].categories.performance`,
-              `results[].metrics.LCP`, `results[].fieldData` (real-user
-              CrUX; often null on a small site — that's expected).
-            - `data/seo/crux-YYYY-MM-DD.json` — CrUX History for the whole
-              origin. `notEligible: true` means the origin doesn't have
-              enough real Chrome traffic yet — note it once, move on.
-
-            ## What to do
-
-            1. `ls data/seo/` and identify the two most recent dates. If
-               only one date is available, use it and say so.
-            2. Read the files for those dates. Compare today vs the prior
-               snapshot. Look for:
-               - PSI performance score deltas > 5 points (mobile OR desktop)
-                 on any URL — flag the URL + delta + likely metric to blame
-                 (LCP, TBT, CLS).
-               - New PSI failures — URLs that returned 500 today.
-               - GSC: new queries appearing that aren't landing on a strong
-                 page (impressions ≥ 10, position 8–20). These are cheap
-                 wins to rewrite title/meta for.
-               - GSC: pages with impressions ≥ 20 and CTR < 2%. Title/meta
-                 candidates.
-               - GSC: hreflang gaps hinted by only one language ranking for
-                 a query that clearly has both.
-            3. Compose a Markdown comment. Keep it under ~600 words.
-               Structure it as:
-
-               ```
-               ### 🔍 SEO
-               (Data window: ...)
-
-               #### 关键变化
-               - ...
-
-               #### 建议动作（本 issue 为 dry-run，不改代码）
-               1. **[分类]** 具体建议 — 影响文件路径 — 数据依据
-               2. ...
-
-               #### 数据状态
-               - GSC: ... rows, ...
-               - PSI: ... urls / ... failures
-               - CrUX: eligible / not eligible
-               ```
-
-               Categories to prefer: `[标题重写]` `[meta 描述]` `[内链]`
-               `[新内容机会]` `[性能]` `[hreflang]` `[结构化数据]`.
-
-               If nothing changed meaningfully today, still post a short
-               comment — even a heartbeat is signal.
-
-            4. Write the summary into TODAY'S daily report issue. Do NOT create
-               or comment on an issue yourself — a shared helper owns that, so
-               that Lighthouse and SEO land in one issue per day instead of two
-               endless comment threads.
-
-               - Write your Markdown to a file first, e.g. `/tmp/seo-section.md`.
-                 Use the `Write` tool for this — do NOT try to `cat`/heredoc it
-                 through Bash, since the content has backticks and newlines.
-               - Then run exactly:
-                 `node scripts/seo-section-to-issue.mjs /tmp/seo-section.md`
-               - That script resolves (or creates) the issue titled
-                 `站点日报 — YYYY-MM-DD`, replaces the `seo` section in place,
-                 and prints the issue number. Re-running OVERWRITES your section
-                 rather than appending, which is intended: the day's issue should
-                 show the latest read, and the trend lives across daily issues.
-               - If the script exits non-zero, report the error plainly. Do not
-                 fall back to creating an issue by hand.
-
-               Start your Markdown at the `### 🔍 SEO` heading level shown below
-               (it is a section inside a larger issue, not a standalone comment).
-
-            5. Do NOT edit any file in the source tree — `/tmp/seo-section.md`
-               is the only file you may write. Do NOT create branches or PRs.
-               Do NOT invoke the gh CLI at all: issue creation and editing
-               belong to seo-section-to-issue.mjs, and gh is not in your
-               allowedTools. If you think you need it, report why instead.
-
-            Data files live in the repo checked out at the workflow's
-            working directory; use `Read` for JSON files, `Bash(cat:*)`,
-            `Bash(ls:*)`, and `Bash(find:*)` for quick listings.
-
-          claude_args: |
-            --max-turns 25
-            --allowedTools "Read,Write,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(node scripts/seo-section-to-issue.mjs:*)"
+          name: seo-publish-${{ github.run_id }}-${{ github.run_attempt }}
+          path: run/**
+          retention-days: 14
+          if-no-files-found: warn

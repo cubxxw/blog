@@ -21,11 +21,19 @@
 //
 // Usage as a module:
 //   import { ensureDailyIssue, upsertSection, closeStaleDailyIssues } from './daily-report-issue.mjs';
+//
+// B2: every writer accepts a FROZEN UTC report date (dailyTitle(date)) so a run
+// crossing midnight never splits one day across two issues. Closing is
+// date-aware: a delayed older-day run never closes a NEWER daily issue. Every
+// helper takes an injectable `gh` (argv arrays only) so tests mock it instead
+// of performing live external writes.
 
 import { execFileSync } from 'node:child_process';
+import { realpathSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const DAILY_LABEL = 'daily-report';
+const DAILY_TITLE_RE = /^站点日报 — (\d{4}-\d{2}-\d{2})$/;
 
 // Every gh invocation goes through here with an ARGV array — never a shell
 // string. Report bodies are Markdown full of backticks, `$`, and newlines;
@@ -35,7 +43,7 @@ const DAILY_LABEL = 'daily-report';
 // load-bearing, not tidiness: with stdin hardcoded to 'ignore', execFileSync
 // silently DISCARDS `input`, so `gh issue edit --body-file -` reads nothing and
 // cheerfully writes an EMPTY body — wiping the issue with no error anywhere.
-const gh = (args, opts = {}) => {
+export const defaultGh = (args, opts = {}) => {
   const stdin = opts.input === undefined ? 'ignore' : 'pipe';
   return execFileSync('gh', args, {
     encoding: 'utf8',
@@ -50,16 +58,30 @@ const gh = (args, opts = {}) => {
  * UTC deliberately: the workflows that call this are driven by GitHub's cron,
  * which is UTC-only. Using local time would make the runner's timezone decide
  * which day a report lands on, and a runner crossing midnight mid-job could
- * open a second issue for "the same" day.
+ * open a second issue for "the same" day. B2 callers pass the run's FROZEN UTC
+ * date string (YYYY-MM-DD) so a run crossing midnight keeps one identity.
  */
 export function dailyTitle(date = new Date()) {
+  if (typeof date === 'string') {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      throw new Error(`dailyTitle: invalid frozen UTC date ${JSON.stringify(date)} (expected YYYY-MM-DD)`);
+    }
+    return `站点日报 — ${date}`;
+  }
   const y = date.getUTCFullYear();
   const m = String(date.getUTCMonth() + 1).padStart(2, '0');
   const d = String(date.getUTCDate()).padStart(2, '0');
   return `站点日报 — ${y}-${m}-${d}`;
 }
 
-function findIssueByTitle(repo, title) {
+// The UTC date a daily-report title belongs to; null for anything else (a
+// human issue is never adopted or reaped by title shape alone).
+export function dailyTitleDate(title) {
+  const m = DAILY_TITLE_RE.exec(String(title ?? ''));
+  return m ? m[1] : null;
+}
+
+function findIssueByTitle(repo, title, gh = defaultGh) {
   // Deliberately NOT using `--search`: GitHub's issue search is backed by an
   // eventually-consistent index, so an issue created seconds ago is routinely
   // absent from it. This helper's whole job is "create today's issue exactly
@@ -67,7 +89,10 @@ function findIssueByTitle(repo, title) {
   // same day when called twice in quick succession.
   //
   // Listing hits the issues API directly, which is read-your-writes consistent,
-  // so a just-created issue is always visible.
+  // so a just-created issue is always visible. ALL states are read: a delayed
+  // rerun of an already-CLOSED frozen date must adopt and update that issue
+  // instead of creating a duplicate title that splits the day's sections (the
+  // closed issue is edited in place, never reopened).
   //
   // The label filter is applied client-side rather than via `--label`: on a repo
   // where the label does not exist yet, `gh issue list --label` errors out, and
@@ -79,18 +104,22 @@ function findIssueByTitle(repo, title) {
     'issue',
     'list',
     '--repo', repo,
-    '--state', 'open',
-    '--json', 'number,title,labels',
+    '--state', 'all',
+    '--json', 'number,title,labels,state',
     '--limit', '100',
   ]);
   const list = JSON.parse(raw || '[]');
-  const hit = list.find(
+  const hits = list.filter(
     (i) => i.title === title && (i.labels || []).some((l) => l.name === DAILY_LABEL),
   );
-  return hit ? hit.number : null;
+  if (hits.length === 0) return null;
+  // Deterministic adoption: prefer an OPEN issue, else the newest closed one.
+  const open = hits.filter((i) => i.state === 'OPEN');
+  const pick = (open.length > 0 ? open : hits).reduce((a, b) => (b.number > a.number ? b : a));
+  return pick.number;
 }
 
-function ensureLabel(repo) {
+function ensureLabel(repo, gh = defaultGh) {
   try {
     gh(
       [
@@ -106,13 +135,13 @@ function ensureLabel(repo) {
   }
 }
 
-function createDailyIssue(repo, title) {
+function createDailyIssue(repo, title, gh = defaultGh) {
   const intro = [
     '这个 issue 由 `.github/workflows/` 下的定时任务自动维护，每天一条。',
     '',
     '- **Lighthouse**、**SEO** 与 **自动处置** 都写在这里，各自只覆盖自己的小节。',
     '- 每次运行是**覆盖**而不是追加，所以看到的永远是当天最新结果。',
-    '- SEO 小节给出建议动作；自动处置小节记录当天哪些建议已开成 PR、哪些留给人工。',
+    '- SEO 小节给出建议动作；自动处置小节记录当天的提案候选与安全跳过（proposal-only，apply 未开放，不自动开 PR）。',
     '- 次日的日报开出来时，这条会被自动关闭。',
   ].join('\n');
   const out = gh([
@@ -141,19 +170,19 @@ function createDailyIssue(repo, title) {
  * minutes apart, so that window is not realistically reachable.
  *
  */
-export function ensureDailyIssue({ repo, date = new Date() } = {}) {
+export function ensureDailyIssue({ repo, date = new Date(), gh = defaultGh } = {}) {
   if (!repo) throw new Error('ensureDailyIssue: repo is required');
   const title = dailyTitle(date);
 
-  const existing = findIssueByTitle(repo, title);
+  const existing = findIssueByTitle(repo, title, gh);
   if (existing) return existing;
 
   // Only needed on the create path; the lookup above does not depend on it.
-  ensureLabel(repo);
+  ensureLabel(repo, gh);
   try {
-    return createDailyIssue(repo, title);
+    return createDailyIssue(repo, title, gh);
   } catch (err) {
-    const raced = findIssueByTitle(repo, title);
+    const raced = findIssueByTitle(repo, title, gh);
     if (raced) return raced;
     throw err;
   }
@@ -194,7 +223,7 @@ export function applySection(body, marker, content) {
  * `input`): the body is Markdown with backticks and newlines, so it must never
  * pass through a shell or an argv length limit.
  */
-export function upsertSection({ repo, issueNumber, marker, content }) {
+export function upsertSection({ repo, issueNumber, marker, content, gh = defaultGh }) {
   if (!repo) throw new Error('upsertSection: repo is required');
   if (!issueNumber) throw new Error('upsertSection: issueNumber is required');
   if (!marker) throw new Error('upsertSection: marker is required');
@@ -225,32 +254,38 @@ export function upsertSection({ repo, issueNumber, marker, content }) {
 }
 
 /**
- * Close every open daily-report issue except today's.
+ * Close every OLDER open daily-report issue (strictly before the frozen date).
  *
  * Filtering by label (not by title shape) is the safety net: we only ever close
  * issues this script itself labelled, so a human issue can never be caught even
  * if it happens to be titled like a daily report. keepNumber is skipped
  * explicitly rather than relying on the query, in case a stale search index
  * returns it.
+ *
+ * Date-aware (B2): a delayed older-day run keeps today's and newer issues open —
+ * only strictly older daily issues are reaped, so a late run can never close a
+ * newer daily report. Unparseable titles are left alone.
  */
-export function closeStaleDailyIssues({ repo, keepNumber }) {
+export function closeStaleDailyIssues({ repo, keepNumber, date = new Date(), gh = defaultGh }) {
   if (!repo) throw new Error('closeStaleDailyIssues: repo is required');
   if (!keepNumber) throw new Error('closeStaleDailyIssues: keepNumber is required');
+  const keepDay = dailyTitleDate(dailyTitle(date));
 
   const raw = gh([
     'issue', 'list',
     '--repo', repo,
     '--state', 'open',
     '--label', DAILY_LABEL,
-    '--json', 'number,labels',
+    '--json', 'number,title,labels',
     '--limit', '50',
   ]);
   const list = JSON.parse(raw || '[]');
-  const stale = list.filter(
-    (i) =>
-      i.number !== Number(keepNumber) &&
-      (i.labels || []).some((l) => l.name === DAILY_LABEL),
-  );
+  const stale = list.filter((i) => {
+    if (i.number === Number(keepNumber)) return false;
+    if (!(i.labels || []).some((l) => l.name === DAILY_LABEL)) return false;
+    const day = dailyTitleDate(i.title);
+    return day !== null && day < keepDay; // strictly older only — never a newer day
+  });
 
   for (const issue of stale) {
     gh([
@@ -266,11 +301,33 @@ export function closeStaleDailyIssues({ repo, keepNumber }) {
 
 // Direct run: just make sure today's issue exists and print its number, so a
 // workflow step can capture it without pulling in a reporter.
-if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+function isMainModule() {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1]);
+  } catch {
+    return false;
+  }
+}
+
+if (isMainModule()) {
+  const argv = process.argv.slice(2);
+  let date = new Date();
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--date' && /^\d{4}-\d{2}-\d{2}$/.test(argv[i + 1] ?? '')) {
+      date = argv[i + 1];
+      i += 1;
+    } else {
+      console.error(`Unknown or invalid argument: ${argv[i]}`);
+      console.error('Usage: node scripts/daily-report-issue.mjs [--date YYYY-MM-DD]');
+      process.exit(1);
+    }
+  }
   const repo = process.env.GITHUB_REPOSITORY;
   if (!repo) {
-    console.error('GITHUB_REPOSITORY missing; skip daily issue sync.');
-    process.exit(0);
+    // Fail clearly: an unnoticed silent skip is how sections go missing.
+    console.error('GITHUB_REPOSITORY missing; cannot resolve the daily issue.');
+    process.exit(1);
   }
-  console.log(ensureDailyIssue({ repo }));
+  console.log(ensureDailyIssue({ repo, date }));
 }

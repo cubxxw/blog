@@ -8,9 +8,19 @@ on:
   workflow_dispatch:
     inputs:
       lookback:
-        description: "Days of history to fetch (default 2 → 3-day window; use 27 for 28-day, 89 for 90-day backfill)"
+        description: "Days of history to fetch (default 2 → 3-day window; 27 = 28-day; 55 = 56-day inclusive backfill)"
         required: false
         default: "2"
+      with_device:
+        description: "Opt-in page-based device cut (a SEPARATE slice — never a joint query×device×country dataset)"
+        required: false
+        default: false
+        type: boolean
+      with_country:
+        description: "Opt-in page-based country cut (a SEPARATE slice)"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -35,36 +45,152 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Freeze the UTC report date ONCE per run and bind EXACT unique artifact
+      # paths to this run attempt (runId+attempt). Every collector receives its
+      # path via --out; only that exact new file can prove this collection.
+      - name: Plan run (frozen date, exact artifacts per stage/run attempt)
+        id: plan
+        run: |
+          mkdir -p run
+          node scripts/seo-pipeline.mjs plan \
+            --repository "$GITHUB_REPOSITORY" \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+            --attempt "$GITHUB_RUN_ATTEMPT" \
+            --out run/plan.json \
+            --github-output "$GITHUB_OUTPUT"
+
       - name: Fetch Google Search Console snapshot
+        id: gsc
+        if: always()
         continue-on-error: true
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
           LOOKBACK: ${{ inputs.lookback || '2' }}
-        run: node scripts/gsc-fetch.mjs --lookback "$LOOKBACK"
+          GSC_OUT: ${{ steps.plan.outputs.gsc_out }}
+          WITH_DEVICE: ${{ inputs.with_device || 'false' }}
+          WITH_COUNTRY: ${{ inputs.with_country || 'false' }}
+        run: |
+          EXTRA=""
+          case "$WITH_DEVICE" in true) EXTRA="$EXTRA --with-device" ;; esac
+          case "$WITH_COUNTRY" in true) EXTRA="$EXTRA --with-country" ;; esac
+          set +e
+          node scripts/gsc-fetch.mjs --lookback "$LOOKBACK" --out "$GSC_OUT" $EXTRA
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate GSC stage (process outcome + exact new artifact)
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs stage --plan run/plan.json --kind gsc \
+            --exit-code "${{ steps.gsc.outputs.code || '1' }}" --out run/stage-gsc.json
 
       - name: Fetch PageSpeed Insights snapshot
+        id: psi
+        if: always()
         continue-on-error: true
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        run: node scripts/psi-fetch.mjs
-
-      - name: Fetch CrUX History snapshot
-        continue-on-error: true
-        env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        run: node scripts/crux-fetch.mjs
-
-      - name: Commit snapshot if changed
+          PSI_OUT: ${{ steps.plan.outputs.psi_out }}
         run: |
+          set +e
+          node scripts/psi-fetch.mjs --out "$PSI_OUT"
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate PSI stage (planned slots, never counts-only)
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs stage --plan run/plan.json --kind psi \
+            --exit-code "${{ steps.psi.outputs.code || '1' }}" --out run/stage-psi.json
+
+      # B2 owns only the unique safe --out binding here: the CrUX collector
+      # itself is unchanged. Its exact produced file is validated below.
+      - name: Fetch CrUX History snapshot
+        id: crux
+        if: always()
+        continue-on-error: true
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          CRUX_OUT: ${{ steps.plan.outputs.crux_out }}
+        run: |
+          set +e
+          node scripts/crux-fetch.mjs --out "$CRUX_OUT"
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate CrUX stage (no-sample is success; error/invalid rows fail)
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs stage --plan run/plan.json --kind crux \
+            --exit-code "${{ steps.crux.outputs.code || '1' }}" --out run/stage-crux.json
+
+      # Partial evidence is retained and committed even when a collector fails.
+      # Persistence is a REQUIRED stage: a failed commit/push can never produce
+      # an ok=true machine status.
+      - name: Commit snapshot if changed
+        id: persist
+        if: always()
+        run: |
+          set +e
+          code=0
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/seo/
-          if git diff --cached --quiet; then
+          git add data/seo/ || code=$?
+          if [ "$code" -eq 0 ] && git diff --cached --quiet; then
             echo "No new snapshot to commit."
-            exit 0
+          elif [ "$code" -eq 0 ]; then
+            DATE="${{ steps.plan.outputs.report_date }}"
+            git commit -m "chore(seo): daily SEO snapshot ${DATE}" || code=$?
+            # Retry once if main advanced during the run.
+            if [ "$code" -eq 0 ]; then git pull --rebase origin main || code=$?; fi
+            if [ "$code" -eq 0 ]; then git push origin main || code=$?; fi
           fi
-          DATE=$(date -u +%Y-%m-%d)
-          git commit -m "chore(seo): daily SEO snapshot ${DATE}"
-          # Retry once if main advanced during the run.
-          git pull --rebase origin main
-          git push origin main
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate persistence stage (required)
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs stage --kind publish --target snapshot-persist \
+            --exit-code "${{ steps.persist.outputs.code || '1' }}" \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --report-date "${{ steps.plan.outputs.report_date }}" \
+            --out run/stage-persist.json
+
+      # Explicit final pipeline status: never silently green because collectors
+      # ran with continue-on-error. Required stage failures stay nonzero.
+      - name: Aggregate stage status
+        if: always()
+        run: |
+          node scripts/seo-pipeline.mjs aggregate \
+            --stage run/stage-gsc.json \
+            --stage run/stage-psi.json \
+            --stage run/stage-crux.json \
+            --stage run/stage-persist.json \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+            --attempt "$GITHUB_RUN_ATTEMPT" \
+            --report-date "${{ steps.plan.outputs.report_date }}" \
+            --out run/status.json
+
+      # Durable per-run state PLUS the exact three planned new observations
+      # (never the historical directory): if persistence failed, the partial
+      # original evidence still exists here with its stage statuses.
+      - name: Upload run stage artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: seo-snapshot-run-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            run/**
+            ${{ steps.plan.outputs.gsc_out }}
+            ${{ steps.plan.outputs.psi_out }}
+            ${{ steps.plan.outputs.crux_out }}
+          retention-days: 14
+          if-no-files-found: warn

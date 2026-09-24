@@ -1,62 +1,84 @@
 ---
 name: seo-autofix
-description: Act on today's daily report (站点日报) SEO recommendations as small labeled PRs, then log what was taken and what was skipped back into the same issue's autofix section. Use when running the daily seo-autofix CI job, or when the user asks to process today's daily report recommendations / 处理今日日报建议.
+description: Produce and publish PROPOSAL-ONLY SEO repair candidates from today's daily report (站点日报) evidence using the deterministic gate, and log what was proposed and what was safely skipped back into the same issue's 提案 section. Use when running the daily seo-autofix CI job, or when the user asks to process today's daily report recommendations / 处理今日日报建议.
 ---
 
-# SEO Autofix — daily recommendation triage
+# SEO Autofix — proposal-only candidate triage
 
-Close the observe→act loop on the daily report issue. The SEO analyzer (dry-run) writes recommendations every day; this skill picks the safest, highest-impact ones, turns each into one small PR, and writes an honest processing log into the same issue. A human merging (or rejecting) the PRs is the only approval gate — never merge anything yourself.
+Turn the daily report's deterministic evidence into **bounded repair
+proposals** and an honest processing log in the same daily issue. This skill is
+PROPOSAL-ONLY: it never edits content, never opens branches or PRs, and never
+merges anything. **Apply is explicitly unavailable** until an independently
+authorized future implementation passes its own gates and repository review
+rules.
+
+Hard boundaries (non-negotiable):
+
+- Low CTR alone NEVER proves bad copy and never authorizes a rewrite — copy
+  changes require the target page's own real query×page evidence. When the
+  evidence is missing, say so and skip; do not generalize.
+- Targets resolve ONLY through the trusted page map (one URL, one sourcePath).
+  Model or prose suggestions of file paths are never evidence and cannot borrow
+  another page's data.
+- The numerical/status source of truth is the deterministic report
+  (`seo-report/1`) and the gate decision (`seo-autofix-gate/1`). Suggestion
+  text is untrusted bounded input; it never replaces metrics or gate reasons.
+- No `git write`, `gh pr`, `wget`, `sudo`, `hugo` or content edits in this
+  mode. The scheduled workflow has no model step and no write-capable tool.
 
 Inputs (from the invoking prompt; use defaults when absent):
 
-- `MAX_PRS` — maximum PRs to open this run. Default **2**.
+- `MAX_CANDIDATES` — proposal budget. Default **2** (hard maximum 5).
 
-## Step 1 — locate today's issue and read it
+## Step 1 — locate today's issue and the run evidence
 
-- `node scripts/daily-report-issue.mjs` prints today's issue number (creating the issue if absent — if it had to be created, the analyzers haven't run yet; write a section saying so and stop).
-- `gh issue view <number>` and read the `### 🔍 SEO` section's `建议动作` list. Each item follows `**[分类]** 建议 — 文件路径 — 数据依据`. Also skim the Lighthouse section for corroborating numbers.
+- `node scripts/daily-report-issue.mjs --date <frozen YYYY-MM-DD>` prints the
+  day's issue number (creating it if absent — if it had to be created, the
+  analyzers haven't run yet; write a section saying so and stop).
+- Prefer the workflow's own artifacts (`run/report.json`, `run/review.json`,
+  `run/page-map.json`, `run/gate.json`). When running locally, generate them
+  with `node scripts/seo-pipeline.mjs freeze …` (ONE decision instant shared as
+  Hugo clock / report as-of / gate decision-at) and the commands documented in
+  `docs/seo-observation-pipeline.md`.
 
-## Step 2 — backpressure and dedup (BEFORE any edit)
+## Step 2 — deterministic gate before any proposal
 
-- `gh pr list --label seo-auto --state open --json number,title,headRefName,url` — if 3 or more are already open, do NOT open new PRs today. Write the autofix section explaining the backlog and stop. Unreviewed PRs piling up means the bottleneck is review, not generation.
-- `gh pr list --label seo-auto --state all --limit 30 --json title,state,mergedAt,closedAt,headRefName,body` — skip any recommendation whose target files overlap an open PR, or overlap a PR closed WITHOUT merging in the last 14 days (a human already rejected that idea; don't re-litigate it daily).
+Run the accepted proposal-only gate (or read the workflow's `run/gate.json`):
 
-## Step 3 — pick what to act on
+```bash
+node scripts/seo-autofix-gate.mjs --report run/report.json --review-state run/review.json \
+  --page-map run/page-map.json --expected-source-commit <40-hex frozen SHA> \
+  --decision-at <UTC> --repository cubxxw/blog --out run/gate.json
+```
 
-Eligible categories, in priority order:
+It enforces, visibly: report freshness re-evaluated at the decision time,
+per-kind required evidence (a `meta-description` proposal needs the target's
+OWN current certified fresh measurement with the failing audit; a copy-intent
+proposal needs the page's real query×page coverage), review rules from ACTUAL
+changed-file evidence (backlog ≥ 3 blocks; overlapping open proposal blocks; a
+proposal closed without merge within 14 days blocks; merged/unrelated never
+block), a finite candidate budget and model-path isolation. Missing evidence is
+a safe skip with a reason — never a guess.
 
-1. `[标题重写]` / `[meta 描述]` — frontmatter-only edits to `content/**` (title, description). The bread and butter.
-2. `[内链]` — adding a relevant internal link inside an article body.
-3. `[结构化数据]` — only when it means frontmatter fields on content files.
-4. `[性能]` — ONLY when the fix is pure content: moving images into a page bundle, compressing an oversized image, fixing a missing image reference. (Precedent: PR #225.)
+## Step 3 — publish the proposal section (always, even on zero picks)
 
-NOT eligible — leave for a human and say so in your section:
+- Compose with trusted code (it keeps raw GSC query strings out of the issue
+  and publishes any untrusted summary as a literal block):
+  `node scripts/seo-pipeline.mjs compose --kind autofix --gate run/gate.json --run-date <D> --decision-at <UTC> --out /tmp/autofix-section.md`
+- Then run exactly:
+  `node scripts/report-section-to-issue.mjs autofix /tmp/autofix-section.md --date <frozen D>`
+- Do NOT edit the issue with `gh` yourself; the script owns issue writes (one
+  daily issue, marker-scoped sections, frozen UTC date). If it exits non-zero,
+  report the error plainly.
+- The section (heading `### SEO 提案`) lists: mode (proposal-only, apply
+  unavailable), review status, candidate proposals (kind, target URL, the
+  map-derived source file, bounded summary), safe skips with their exact gate
+  reasons, and the budget line. Zero candidates is a valid outcome — never
+  invent work to fill the quota.
 
-- Anything touching `layouts/**`, `assets/**`, `.github/**`, `scripts/**`, `config.yml`, `package.json`, `netlify.toml`, `data/seo/**`.
-- Anything speculative — "复测", "排查", "确认": investigations are not fixes.
-- Anything the analyzer itself flagged as possible noise.
+## What is explicitly NOT in scope
 
-Pick AT MOST `MAX_PRS`, favoring impact (impressions, persistence across days) and confidence. Zero picks is a valid outcome — never invent work to fill the quota.
-
-## Step 4 — make each fix (one branch + PR per pick)
-
-- Branch: `seo-autofix/YYYYMMDD-<short-slug>` (today's UTC date).
-- Bilingual discipline: when rewriting title/description, edit BOTH `content/zh/...` and `content/en/...` variants when both exist — each written natively in its own language, not translated word-for-word.
-- Chinese titles/descriptions must follow the anti-AI-flavor rules in the project CLAUDE.md: no 「不是 X，而是 Y」 in title/description, no filler like 「本质上」「不仅仅是」. Descriptions should promise the searcher a concrete payoff — these pages rank but get zero clicks precisely because the current text doesn't.
-- Keep each diff minimal: only the files that recommendation needs. No opportunistic clean-ups.
-- Build check before every PR. If `hugo` is not installed (CI runner), install it once:
-  `wget -qO /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.147.0/hugo_extended_0.147.0_linux-amd64.deb && sudo dpkg -i /tmp/hugo.deb`
-  Then `hugo --gc --minify --quiet` must exit 0.
-- PR body must contain: `## Source` (link to today's issue + exact recommendation text quoted), `## Change` (files touched and why), `## Verification` (the hugo command and result). Label `seo-auto` (create if missing: `gh label create seo-auto --color FBCA04 --description "AI-generated SEO fix"` — ignore errors).
-- Issue-linking rule: reference the daily report issue as a plain `#N` — NEVER with closing keywords (`Closes`/`Fixes`/`Resolves`). One daily issue maps to many PRs, and the daily-issue locator only searches open issues, so a keyword-triggered early close would spawn a duplicate report the same afternoon. If (and only if) a recommendation traces to a standalone issue of its own, close THAT one with `Closes #N` in the PR body.
-
-## Step 5 — write the autofix section (ALWAYS, even on zero picks)
-
-- Compose Markdown starting at `### 🤖 自动处置`, containing:
-  - 已开 PR：one line per PR — 建议原文的分类+对象 → PR 链接
-  - 跳过：each skipped recommendation and the one-line reason（不在安全范围 / 已有 PR / 此前被拒 / 疑似噪声 / 积压达上限）
-  - 状态：open `seo-auto` PR count.
-  - Keep it under ~300 words. Plain statements, no cheerleading.
-- Use the `Write` tool to save it to `/tmp/autofix-section.md` (do NOT heredoc through Bash — the content has backticks and newlines), then run exactly:
-  `node scripts/report-section-to-issue.mjs autofix /tmp/autofix-section.md`
-- Do NOT edit the issue with `gh` yourself; the script owns issue writes. If it exits non-zero, report the error plainly.
+- Applying proposals (content edits/branches/PRs), re-litigating rejected
+  targets within 14 days, title changes without the page's own query×page
+  evidence, and anything touching `layouts/**`, `assets/**`, `.github/**`,
+  `scripts/**`, `config.yml`, `package.json`, `netlify.toml`, `data/seo/**`.

@@ -9,24 +9,45 @@
 // agent only ever produces Markdown and a path; issue management stays here.
 //
 // Usage:
-//   node scripts/report-section-to-issue.mjs <marker> <path-to-markdown>
+//   node scripts/report-section-to-issue.mjs <marker> <path-to-markdown> [--date YYYY-MM-DD]
 //
 // Env (provided by GitHub Actions):
 //   GH_TOKEN            — token with `issues: write`
 //   GITHUB_REPOSITORY   — owner/repo
+//
+// `--date` is the run's FROZEN UTC report date (B2), shared with the SEO and
+// Lighthouse publishers so all three land in the same daily issue.
 
 import { existsSync, readFileSync } from 'node:fs';
 import { ensureDailyIssue, upsertSection } from './daily-report-issue.mjs';
 
 const repo = process.env.GITHUB_REPOSITORY;
 if (!repo) {
-  console.error('GITHUB_REPOSITORY missing; skip section sync.');
-  process.exit(0);
+  // Fail clearly (nonzero): a silent skip is how sections go missing.
+  console.error('GITHUB_REPOSITORY missing; cannot write the section.');
+  process.exit(1);
 }
 
-const [marker, path] = process.argv.slice(2);
+const args = process.argv.slice(2);
+let marker = null;
+let path = null;
+let date = new Date();
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--date' && /^\d{4}-\d{2}-\d{2}$/.test(args[i + 1] ?? '')) {
+    date = args[i + 1];
+    i += 1;
+  } else if (!args[i].startsWith('--') && !marker) {
+    marker = args[i];
+  } else if (!args[i].startsWith('--') && !path) {
+    path = args[i];
+  } else {
+    console.error(`Unknown or invalid argument: ${args[i]}`);
+    console.error('Usage: node scripts/report-section-to-issue.mjs <marker> <path-to-markdown> [--date YYYY-MM-DD]');
+    process.exit(1);
+  }
+}
 if (!marker || !path) {
-  console.error('Usage: node scripts/report-section-to-issue.mjs <marker> <path-to-markdown>');
+  console.error('Usage: node scripts/report-section-to-issue.mjs <marker> <path-to-markdown> [--date YYYY-MM-DD]');
   process.exit(1);
 }
 
@@ -52,7 +73,7 @@ if (!content) {
   process.exit(1);
 }
 
-const number = ensureDailyIssue({ repo });
+const number = ensureDailyIssue({ repo, date });
 upsertSection({ repo, issueNumber: number, marker, content });
 console.log(`Wrote "${marker}" section into daily issue #${number}`);
 console.log(number);

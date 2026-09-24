@@ -1,0 +1,63 @@
+name: SEO Contracts
+
+# Offline contract tests for the trusted SEO pipeline (A + B targeted suites,
+# including real-history regression at a fixed observation cutoff and semantic
+# workflow YAML bindings to the verified model boundary). No Google/model
+# credentials, no live provider calls, no Hugo/browser build — Node 22 and the
+# declared dev dependencies only. Later batches append their relevant tests to
+# this same job.
+
+on:
+  push:
+    paths:
+      - "scripts/**"
+      - ".github/workflows/seo-*.yml"
+      - ".github/workflows/lighthouse.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "docs/seo-observation-pipeline.md"
+      - "docs/seo-model-boundary-proof.json"
+  pull_request:
+    paths:
+      - "scripts/**"
+      - ".github/workflows/seo-*.yml"
+      - ".github/workflows/lighthouse.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "docs/seo-observation-pipeline.md"
+      - "docs/seo-model-boundary-proof.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (fresh, no persisted credentials)
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies (no lifecycle scripts, no audit)
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run targeted offline contract tests
+        run: |
+          node --test \
+            scripts/psi-fetch.test.mjs \
+            scripts/seo-report.test.mjs \
+            scripts/seo-pipeline.test.mjs \
+            scripts/seo-autofix-gate.test.mjs \
+            scripts/daily-report-issue.test.mjs \
+            scripts/lighthouse-report-to-issue.test.mjs \
+            scripts/gsc-fetch.test.mjs \
+            scripts/gsc-report.test.mjs

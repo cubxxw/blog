@@ -1,0 +1,50 @@
+{
+  "versions": {
+    "action": "v1.0.231",
+    "sdk": "0.3.278",
+    "cli": "2.1.278",
+    "shellQuote": "1.8.4"
+  },
+  "hashes": {
+    "actionParser": "b42cc8daa1d15fb00321784cec375b1c855bb2e41bf03b37dfd462385f9e5548",
+    "sdkBundle": "d768bb75542ea853a66c570bd82b010a7b843f4949ab3ebb20e9d1f2a27af881",
+    "actionLock": "e17cf5ec523a26d9e6dee490246206ef781c4d238939465e45e09e352bca9ab9",
+    "actionRun": "0027d8c663b406d465692bfcc76bf8a2d7526cd9254b0a357013b05e61d0688e",
+    "cliPackage": "0ddbbc1481de3a7437762c9b7414fde846f2e1b17cd1d291f3551b42660039dc",
+    "cliWrapper": "61ad63033d9c8155d5e60a29f45dc4665afa07631c0b108e62cc83bf45ba490e",
+    "sdkManifest": "d1bf63d94621d6aa6fb84297b235ddb8f5aaadc9252cef8020d170ef661b2f28",
+    "shellParser": "58716d1aa2d12a9fec6ba6f93eea17ab013927639adc63004d5fd10509f5660b",
+    "cliBinary": "bd245662fb8a0e321b3bf133e930371d6563c387527885f30b2613aef3ba14d6",
+    "cliOptionChunk": "309b086053d9899db61d24aab82cb1c2858a069c7a88dfed752d9b4983b4dab8",
+    "commanderRange": "fd439bbd7c508e210353ba51a62b937734b0e12dd2d9cc4edfa86e83bbadce98",
+    "toolSelection": "7e41d98a19144dfac6442a7bc849a0e477998e8ebfef261ef804c349f565c624"
+  },
+  "boundary": {
+    "flags": "--tools= --disallowedTools \"mcp__*\" --strict-mcp-config --mcp-config '{\"mcpServers\":{}}' --safe-mode --disable-slash-commands",
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "explanation": { "type": "string", "minLength": 1, "maxLength": 600 }
+      },
+      "required": ["explanation"],
+      "additionalProperties": false
+    },
+    "maxTurns": 2,
+    "notes": [
+      "--tools= is the explicit empty form; a quoted empty value makes the adapter pass a bare flag that consumes the next option",
+      "--safe-mode preserves OAuth; --bare skips OAuth and is never used",
+      "show_full_output and display_report stay false and ACTIONS_STEP_DEBUG is forced false at action execution"
+    ]
+  },
+  "expected": {
+    "tools": [""],
+    "strictMcpConfig": true,
+    "mcpConfig": ["{\"mcpServers\":{}}"],
+    "safeMode": true,
+    "disableSlashCommands": true,
+    "disallowedTools": ["mcp__*"],
+    "toolSelectionEmptyTools": [],
+    "emptyToolsCalledGetAllBaseTools": false,
+    "result": "empty tool list and strict empty MCP config parse exactly as intended; no operational tools, no MCP servers"
+  }
+}

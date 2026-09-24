@@ -11,7 +11,6 @@ on:
 
 permissions:
   contents: read
-  issues: write
 
 concurrency:
   # Two pushes in quick succession would otherwise race to write the same
@@ -23,12 +22,20 @@ concurrency:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    outputs:
+      # Frozen ONCE per run (UTC report date): the publisher below shares it,
+      # so a run crossing midnight keeps one daily-issue identity.
+      report_date: ${{ steps.date.outputs.report_date }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+
+      - name: Freeze UTC report date
+        id: date
+        run: echo "report_date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -50,30 +57,57 @@ jobs:
           echo "Waiting 120s for Netlify to publish ${GITHUB_SHA}…"
           sleep 120
 
+      # Per-push quality gate preserved (lighthouserc.json assertions unchanged).
       - name: Run Lighthouse CI
         run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-      # Push runs still execute lhci above — the assertions in lighthouserc.json
-      # remain a per-push quality gate. They just no longer write to the issue:
-      # reporting on every push is exactly what buried the old tracker. The
-      # daily schedule (and a manual dispatch) own the write.
-      - name: Sync report to daily issue
-        if: always() && github.event_name != 'push'
+      - name: Upload Lighthouse results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-results-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .lighthouseci/
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
+
+  # Minimal B2 publication integration: a small dedicated publish job in the
+  # SHARED daily-report-publish serialization group (running publishes are
+  # never cancelled). Measurement work stays parallel; publication writes the
+  # daily issue with the run's frozen UTC date, resolves LHR details only
+  # artifact-locally and publishes an honest missing-evidence section with a
+  # nonzero exit when no eligible measurement exists. Push runs never write
+  # the issue (reporting on every push buried the old tracker).
+  publish:
+    needs: lighthouse
+    if: always() && github.event_name != 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: daily-report-publish
+      cancel-in-progress: false
+    steps:
+      - name: Checkout (fresh, no persisted credentials)
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Download Lighthouse results
+        continue-on-error: true
+        uses: actions/download-artifact@v7
+        with:
+          name: lighthouse-results-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .lighthouseci/
+
+      - name: Sync report to daily issue (frozen UTC date)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_RUN_ID: ${{ github.run_id }}
           GITHUB_SHA: ${{ github.sha }}
-        run: node scripts/lighthouse-report-to-issue.mjs
-
-      - name: Upload Lighthouse results
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: lighthouse-results
-          path: .lighthouseci/**
-          include-hidden-files: true
-          if-no-files-found: warn
-          retention-days: 14
+        run: node scripts/lighthouse-report-to-issue.mjs --date "${{ needs.lighthouse.outputs.report_date }}"

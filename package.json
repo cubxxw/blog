@@ -58,6 +58,7 @@
     "@types/node": "^25.6.0",
     "mermaid": "^11.16.1",
     "netlify-plugin-critical-css": "^1.0.4",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "yaml": "2.9.1"
   }
 }

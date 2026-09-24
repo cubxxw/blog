@@ -1,73 +1,229 @@
-name: SEO Autofix (daily)
+name: SEO Autofix (proposal-only)
 
-# Closes the loop that seo-analyze deliberately leaves open. The daily report
-# issue accumulates recommendations; before this workflow, acting on them meant
-# a human dispatching seo-fix.yml by hand — which happened exactly once. This
-# job invokes the repo skill `.claude/skills/seo-autofix/SKILL.md`, which reads
-# TODAY'S daily issue, picks at most a couple of safe, content-only
-# recommendations, opens one small PR per pick, and records what it did (and
-# what it skipped, and why) in an `autofix` section of the same issue.
+# Deterministic proposal pipeline for the daily report's repair candidates.
+# There is NO model step and NO write-capable tool here: the accepted B1 gate
+# derives candidates from the deterministic report, resolves targets only
+# through the trusted Hugo page map and outputs bounded PROPOSALS. Apply is
+# explicitly unavailable until an independently authorized future
+# implementation passes its own gates and repository review rules.
 #
-# The processing logic lives entirely in the skill so it can be run and
-# iterated on locally (`/seo-autofix` in a Claude Code session) — this file
-# only owns scheduling, permissions, and the tool allowlist. The human stays
-# in the loop at exactly one place: PR review. Nothing merges itself.
-# seo-fix.yml remains the manual escape hatch for anything out of scope.
+# Order is frozen: read-only GitHub review state FIRST, then decisionAt is
+# frozen and shared as Hugo --clock, report --as-of and gate --decision-at.
+# The Google evidence is the immutable committed observation set (collected by
+# the Snapshot stage) and freshness is re-evaluated at the decision time.
 
 on:
   schedule:
     # Daily at 08:30 UTC (16:30 Beijing) — after seo-analyze (07:00) has
-    # written the SEO section and lighthouse (07:30) has written its numbers,
-    # so both inform the picks.
+    # written the SEO section and lighthouse (07:30) has written its numbers.
     - cron: "30 8 * * *"
   workflow_dispatch:
-    inputs:
-      max_prs:
-        description: "Max PRs to open this run"
-        required: false
-        default: "2"
 
 permissions:
-  contents: write
-  issues: write
-  pull-requests: write
-  id-token: write
+  contents: read
 
 concurrency:
   group: seo-autofix
   cancel-in-progress: false
 
 jobs:
-  autofix:
+  propose:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      # The run's UTC report date is frozen ONCE here, before any fragile work,
+      # and passed to the publisher by job output — never recomputed.
+      report_date: ${{ steps.date.outputs.report_date }}
     steps:
-      - name: Checkout
+      - name: Checkout frozen SHA (git metadata + theme submodule for Hugo)
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.sha }}
           fetch-depth: 0
+          submodules: true
+          persist-credentials: false
 
-      - uses: anthropics/claude-code-action@v1.0.231
-        # The section-writer scripts shell out to `gh` and need both of these;
-        # neither is inherited by the action's tool sandbox automatically
-        # (see the comment in seo-analyze.yml — same failure modes).
+      - name: Freeze UTC report date (once, before fragile work)
+        id: date
+        run: echo "report_date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
+      - name: Verify frozen clean checkout
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain)"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      # Small bounded READ-ONLY GitHub adapter (actual changed-file paths incl.
+      # rename old+new; incomplete reads stay visibly incomplete).
+      - name: Read review state (read-only)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p run
+          node scripts/seo-pipeline.mjs review-state --repository "$GITHUB_REPOSITORY" --out run/review.json
+
+      # decisionAt is frozen only AFTER the review read (and the earlier Google
+      # collection) completed. One instant drives clock/as-of/decision.
+      - name: Freeze decision time
+        id: ctx
+        run: |
+          node scripts/seo-pipeline.mjs freeze \
+            --repository "$GITHUB_REPOSITORY" \
+            --source-commit "$GITHUB_SHA" \
+            --report-date "${{ steps.date.outputs.report_date }}" \
+            --review-state run/review.json \
+            --out run/run-context.json \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Install pinned Hugo 0.145.0 (trusted prep, not a site build)
+        run: |
+          mkdir -p "$HOME/bin"
+          curl -fsSL -o /tmp/hugo.tar.gz \
+            https://github.com/gohugoio/hugo/releases/download/v0.145.0/hugo_extended_0.145.0_linux-amd64.tar.gz
+          tar -xzf /tmp/hugo.tar.gz -C "$HOME/bin" hugo
+          "$HOME/bin/hugo" version | grep -F '0.145.0'
+          echo "$HOME/bin" >> "$GITHUB_PATH"
+
+      # Verified argv: list published accepts neither --baseURL nor
+      # --enableGitInfo as flags; both are supplied explicitly via env.
+      - name: Produce trusted page map (hugo list published -> stdlib CSV->JSON)
+        env:
+          HUGO_BASEURL: "https://cubxxw.com/"
+          HUGO_ENABLEGITINFO: "true"
+          GOMAXPROCS: "1"
+          DECISION_AT: ${{ steps.ctx.outputs.decision_at }}
+        run: |
+          hugo list published --environment production --config config.yml \
+            --clock "$DECISION_AT" --noBuildLock > run/page-map.csv
+          python3 scripts/seo-page-map.py --csv run/page-map.csv --out run/page-map.json \
+            --repository "$GITHUB_REPOSITORY" --source-commit "$GITHUB_SHA" --clock "$DECISION_AT"
+
+      - name: Generate deterministic report (query×page rows for gate evidence)
+        id: report
+        env:
+          DECISION_AT: ${{ steps.ctx.outputs.decision_at }}
+          RUN_DATE: ${{ steps.ctx.outputs.report_date }}
+          WIN_START: ${{ steps.ctx.outputs.window_start }}
+          WIN_END: ${{ steps.ctx.outputs.window_end }}
+        run: |
+          set +e
+          node scripts/seo-report.mjs --dir data/seo \
+            --start "$WIN_START" --end "$WIN_END" \
+            --as-of "$DECISION_AT" --run-date "$RUN_DATE" --include-query-rows \
+            --out run/report.json --markdown-out run/report.md
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Validate report stage
+        if: always()
+        env:
+          DECISION_AT: ${{ steps.ctx.outputs.decision_at }}
+          RUN_DATE: ${{ steps.ctx.outputs.report_date }}
+          WIN_START: ${{ steps.ctx.outputs.window_start }}
+          WIN_END: ${{ steps.ctx.outputs.window_end }}
+        run: |
+          node scripts/seo-pipeline.mjs report \
+            --exit-code "${{ steps.report.outputs.code || '1' }}" \
+            --report run/report.json --markdown run/report.md \
+            --expect-as-of "$DECISION_AT" --expect-run-date "$RUN_DATE" \
+            --expect-start "$WIN_START" --expect-end "$WIN_END" \
+            --run-id "$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" --attempt "$GITHUB_RUN_ATTEMPT" --report-date "$RUN_DATE" \
+            --out run/stage-report.json
+
+      # Proposal-only gate: zero candidates is a safe outcome (exit 0).
+      - name: Run proposal gate
+        env:
+          DECISION_AT: ${{ steps.ctx.outputs.decision_at }}
+        run: |
+          node scripts/seo-autofix-gate.mjs \
+            --report run/report.json \
+            --review-state run/review.json \
+            --page-map run/page-map.json \
+            --expected-source-commit "$GITHUB_SHA" \
+            --decision-at "$DECISION_AT" \
+            --repository "$GITHUB_REPOSITORY" \
+            --out run/gate.json
+
+      - name: Upload proposal evidence (gate/page-map/report, no raw queries published)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: seo-autofix-run-${{ github.run_id }}-${{ github.run_attempt }}
+          path: run/**
+          retention-days: 14
+          if-no-files-found: warn
+
+  # Small dedicated publisher (shared daily-report-publish concurrency). The
+  # section is public-safe: candidates carry kind/target/files/summary only —
+  # raw GSC query strings stay in the machine artifact.
+  publish:
+    needs: propose
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: daily-report-publish
+      cancel-in-progress: false
+    env:
+      # Immutable original date from the propose job — never recomputed (a
+      # post-midnight publish must still land on the run's own day).
+      REPORT_DATE: ${{ needs.propose.outputs.report_date }}
+    steps:
+      - name: Checkout (fresh, no persisted credentials)
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Ensure output directory
+        run: mkdir -p run
+
+      - name: Download proposal evidence
+        continue-on-error: true
+        uses: actions/download-artifact@v7
+        with:
+          name: seo-autofix-run-${{ github.run_id }}-${{ github.run_attempt }}
+          path: run/
+
+      - name: Compose proposal section (or honest failure section)
+        id: compose
+        run: |
+          DATE="$REPORT_DATE"
+          if [ -z "$DATE" ]; then DATE="unknown"; fi
+          echo "report_date=$DATE" >> "$GITHUB_OUTPUT"
+          COMPLETE=false
+          if [ -f run/gate.json ] && [ -f run/run-context.json ] && \
+            DECISION_AT=$(node -e 'const c = require("./run/run-context.json"); if (c.schema !== "seo-run-context/1" || c.reportDate !== process.env.REPORT_DATE || typeof c.decisionAt !== "string") process.exit(1); process.stdout.write(c.decisionAt)' 2>/dev/null) && \
+            node scripts/seo-pipeline.mjs compose --kind autofix --gate run/gate.json \
+              --run-date "$DATE" --decision-at "$DECISION_AT" --out run/autofix-section.md; then
+            COMPLETE=true
+          else
+            node scripts/seo-pipeline.mjs compose --kind failure --failure-kind autofix \
+              --run-date "$DATE" --reason "proposal pipeline failed before a trustworthy gate decision existed" \
+              --out run/autofix-section.md
+          fi
+          echo "complete=$COMPLETE" >> "$GITHUB_OUTPUT"
+
+      - name: Publish proposals to the daily issue
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          branch_prefix: "seo-autofix/"
-          prompt: |
-            REPO: ${{ github.repository }}
-            MAX_PRS: ${{ inputs.max_prs || '2' }}
-
-            Invoke the repo skill `seo-autofix` (in `.claude/skills/seo-autofix/`)
-            with the Skill tool and follow it exactly — it owns the entire
-            procedure: locate today's daily report issue, dedup against prior
-            PRs, act on at most MAX_PRS safe recommendations as labeled PRs,
-            and write the autofix section back into the issue. Do not improvise
-            outside the skill; if the skill cannot be loaded, report that
-            plainly instead of reconstructing the procedure from memory.
-
-          claude_args: |
-            --max-turns 60
-            --allowedTools "Skill,Read,Edit,Write,Bash(ls:*),Bash(cat:*),Bash(find:*),Bash(head:*),Bash(tail:*),Bash(wc:*),Bash(grep:*),Bash(git:*),Bash(mkdir:*),Bash(mv:*),Bash(cp:*),Bash(rm:*),Bash(wget:*),Bash(sudo dpkg:*),Bash(hugo:*),Bash(node scripts/daily-report-issue.mjs:*),Bash(node scripts/report-section-to-issue.mjs:*),Bash(gh issue view:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh pr view:*),Bash(gh label create:*)"
+        run: |
+          node scripts/report-section-to-issue.mjs autofix run/autofix-section.md \
+            --date "${{ steps.compose.outputs.report_date }}"
+          # Publishing the honest failure section succeeds; the required
+          # pipeline itself stays failed without a trustworthy gate decision.
+          if [ "${{ steps.compose.outputs.complete }}" != "true" ]; then
+            echo "proposal evidence incomplete/invalid; required pipeline failed"
+            exit 1
+          fi

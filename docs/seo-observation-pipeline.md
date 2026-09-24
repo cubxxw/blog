@@ -1,16 +1,26 @@
-# SEO observation pipeline (B1): PSI observations, deterministic report, proposal-only gate
+# SEO observation pipeline (A+B1+B2): PSI observations, deterministic report, proposal-only gate, trusted workflow integration
 
-Status: B1 implemented with offline evidence (issue #392, batch B1). This
-document freezes the interfaces B2 consumes. **No live/production success is
-claimed here**: live Analyze read-back, three scheduled runs and the 56-day
-backfill remain parent-owned gates. A+B1+B2 release together so the old
-Analyze consumer never sees A's new schema alone.
+Status: A+B1+B2 implemented with offline evidence (issue #392, batches A/B1/B2).
+A+B1 freeze the interfaces; B2 owns the trusted workflow integration around
+them (stage validation, Snapshot/Analyze/proposal-only Autofix workflows,
+separate read-only interpretation and trusted publisher, shared daily-report
+concurrency/date handling, minimal Lighthouse publication integration and the
+offline SEO Contracts CI job). **No live/production success is claimed here**:
+live Analyze read-back, scheduled runs and the 56-day backfill remain
+parent-owned gates. A+B1+B2 release together so the old Analyze consumer never
+sees A's new schema alone.
 
-Scope boundary: B1 is the pure observation/report/gate layer — no workflow
-orchestration, model jobs, issue publishers, credentials/permissions or YAML
-CI tests (all B2). Verification reported here is offline. The observation
-collector makes the explicitly documented Google requests; report generation
-and candidate decisions do not call a network service or model.
+Scope boundary: A+B1 are the pure collector/observation/report/gate layer — no
+workflow orchestration, model jobs, issue publishers or YAML CI tests. B2 adds
+the trusted orchestration WITHOUT changing any collector/report/gate API: it
+reuses their CLIs and normalizers, adds small pure stage/adapter helpers
+(`scripts/lib/seo-run-context.mjs`, `scripts/lib/seo-stages.mjs`,
+`scripts/lib/seo-model-output.mjs`, `scripts/lib/seo-github-review.mjs`,
+`scripts/lib/seo-compose.mjs`), one adapter CLI (`scripts/seo-pipeline.mjs`)
+and the stdlib page-map producer (`scripts/seo-page-map.py`). Verification
+reported here is offline. The observation collectors make the explicitly
+documented Google requests; report generation and candidate decisions do not
+call a network service or model.
 
 ## Components and commands
 
@@ -371,35 +381,149 @@ Gate rules (all visible in `decisions[].reasons`):
 Output: `candidates[]` (bounded proposals: summary + target files only) and
 `skipped[]` (each with explicit reasons), plus `reviewState` status and notes.
 
-## Still pending (B2 / parent-owned — NOT claimed here)
+## B2 trusted pipeline adapter (implemented)
 
-1. Workflow orchestration for Snapshot/Analyze/Autofix; static YAML contract
-   tests and the read-only `seo-contracts.yml` offline CI job (A+B tests, real
-   history regression with a fixed cutoff).
-2. Trusted publication: separate read-only interpretation job (no write token,
-   `persist-credentials: false`, `show_full_output: false`, `execution_file`
-   output), fresh-checkout publisher at the frozen SHA that regenerates/loads
-   validated evidence, escapes optional model text and persists only
-   allowlisted sanitized diagnostics. One shared publish concurrency group
-   (cancel-in-progress: false) across SEO/Autofix/Lighthouse writers with the
-   minimal `lighthouse.yml` integration.
-3. Lighthouse manifest `jsonPath` → artifact-local resolution with
-   path-boundary validation; frozen UTC report date propagated through all
-   publishers; one-daily-issue identity/markers/closing semantics preserved.
-4. The small bounded read-only GitHub adapter producing `seo-review-state/1`
-   (incl. per-proposal `changedFiles` with old+new rename paths and consistent
-   state/closed/merged timestamps); proposal-mode workflow with minimum
-   permissions; `.claude/skills/seo-autofix/SKILL.md` alignment (remove the
-   false "low CTR proves bad copy" claim).
-5. Trusted page-map preparation: pinned Hugo 0.145.0 `hugo list published`
-   under the production config at the frozen clean checkout with the explicit
-   clock, stdlib CSV→JSON conversion, plus actual tracked-file/realpath proof
-   (B1 claims none). CrUX collector invocation with unique safe `--out` paths
-   tied to run ID/attempt (collector itself unchanged).
-6. Parent-owned live gates: one manual Analyze read-back into the daily issue,
-   three scheduled runs with complete status records, one manual 56-day
-   backfill (`--lookback 55`), GSC UI same-filter verification, and the
-   A+B1+B2 integrated release. Apply mode remains unavailable.
+```bash
+# Trusted orchestration (scripts/seo-pipeline.mjs) — no model calls, no issue writes
+node scripts/seo-pipeline.mjs plan --repository R --run-id ID --attempt N \
+  --out run/plan.json --github-output "$GITHUB_OUTPUT"   # frozen UTC date + exact artifact per stage/run attempt
+node scripts/seo-pipeline.mjs stage --plan run/plan.json --kind gsc|psi|crux \
+  --exit-code N --out run/stage-gsc.json                 # process outcome AND the exact new artifact
+node scripts/seo-pipeline.mjs stage --kind publish --exit-code N --out run/stage-publish.json
+node scripts/seo-pipeline.mjs report --exit-code N --report report.json --markdown section.md \
+  --expect-as-of TS --expect-run-date D [--expect-start D --expect-end D] --out run/stage-report.json
+node scripts/seo-pipeline.mjs interpretation --action-outcome X \
+  --structured-output-env STRUCTURED_OUTPUT --execution-file F --run-url U --out interpretation.json
+node scripts/seo-pipeline.mjs prompt --report report.json --repository R --run-date D --as-of TS --out prompt.txt
+node scripts/seo-pipeline.mjs compose --kind seo|autofix|failure … --out section.md
+node scripts/seo-pipeline.mjs review-state --repository R --out run/review.json   # read-only gh adapter
+node scripts/seo-pipeline.mjs freeze --review-state run/review.json --now … \
+  --out run/run-context.json --github-output "$GITHUB_OUTPUT"                     # ONE decision instant
+node scripts/seo-pipeline.mjs aggregate --stage … [--interpretation …] --out run/status.json
+
+# Trusted page-map preparation (stdlib csv -> seo-page-map/1; tracked-file proof)
+hugo list published --environment production --config config.yml \
+  --clock "$DECISION_AT" --noBuildLock > run/page-map.csv   # env: HUGO_BASEURL/HUGO_ENABLEGITINFO/GOMAXPROCS=1
+python3 scripts/seo-page-map.py --csv run/page-map.csv --out run/page-map.json \
+  --repository cubxxw/blog --source-commit "$GITHUB_SHA" --clock "$DECISION_AT"
+```
+
+Stage semantics (the frozen five-case matrix; both the process outcome and the
+exact new artifact must agree):
+
+| Case | Collector / artifact | Report | Interpretation | Publication | Aggregate |
+|---|---|---|---|---|---|
+| all fresh | exit 0 + exact new artifact | exit 0: generated/fresh | ok or explicitly skipped | deterministic report | required ok → 0 |
+| CrUX two certified `notEligible` | success/**no-sample** (unknown, never zero) | exit 2: generated/degraded | optional | no-sample status published | 0; never called API failure or fresh field data |
+| CrUX `results[].error` rows (even raw exit 0) | **failed/partial** | generation may still succeed | optional | facts preserved | **nonzero** |
+| CrUX HTTP-200 `record:null`/invalid | **invalid** | generated/degraded never fixes it | optional | invalid/gap published | **nonzero** |
+| no new file at the exact planned path | **unverified/failed** — old files never borrowed | — | — | honest gap | **nonzero** |
+| report exit 1/unknown or missing/invalid artifacts (JSON-only is NOT generated) | separate | **failed** | skipped (no trusted input) | minimal failure section | **nonzero** |
+| optional model failure / invalid output | unchanged | unchanged | **failed**, text withheld | deterministic evidence still published | may be 0 (optional), but the interpretation state stays failed |
+| trusted publication failure | preserved | preserved | unchanged | **failed** | **nonzero** always |
+
+Additional adapter rules (tested): PSI completeness comes from B1's
+planned-slot normalizer (summary counts over deleted rows are rejected as
+inconsistent); GSC `runStatus: degraded` (required slices complete, optional
+cut failures) is collection SUCCESS with a distinct `degraded` outcome; the
+report adapter requires the real minimum evidence shape, the expected
+window/identity, JSON↔Markdown correspondence and exit↔freshness consistency.
+
+## Optional model interpretation boundary (verified pin)
+
+The interpretation job is optional, read-only and tool-free. Verified boundary
+(slim proof: `docs/seo-model-boundary-proof.json`; a changed action pin or
+boundary argument FAILS the semantic workflow tests until explicitly
+re-verified):
+
+- `anthropics/claude-code-action@v1.0.231` → SDK 0.3.278 → CLI 2.1.278.
+- argv: `--tools= --disallowedTools "mcp__*" --strict-mcp-config
+  --mcp-config '{"mcpServers":{}}' --safe-mode --disable-slash-commands` plus
+  `--json-schema` (one bounded `explanation` string, `additionalProperties:false`)
+  and `--max-turns 2` under a job timeout. Never `--tools ""`, never `--bare`.
+- the job's own read-only `github.token` is supplied explicitly; checkout
+  `persist-credentials: false`; no Google or publisher write token exists there;
+  `show_full_output`/`display_report` stay false and `ACTIONS_STEP_DEBUG` is
+  forced false at action execution (the parser lets debug override the input).
+- the trusted prompt is a byte-bounded allowlisted public-safe summary whose
+  VALUES are validated (owned HTTPS URLs without query/fragment, strict dates,
+  finite aggregates, fixed enums); raw GSC query strings never enter it — the
+  action logs prompts unconditionally.
+- `structured_output` is consumed through the environment by trusted code and
+  strictly validated (exactly `{explanation}`, non-blank, ≤600 chars). Only
+  allowlisted sanitized diagnostics persist (action outcome, constant error
+  class, the result/init subtype / is_error / turns / model when recognized,
+  the run URL); raw execution files, transcripts and error text never persist
+  or upload. Model text is published ONLY as a fenced literal block (or
+  withheld) and never replaces metrics, status, markers or gate decisions.
+
+## Trusted workflows (actual YAML)
+
+- **Snapshot** (`seo-snapshot.yml`): plans exact artifacts per stage/run
+  attempt (unique safe `--out` for the unchanged collectors), validates each
+  stage against the exact new artifact, commits partial evidence even when a
+  collector fails, treats git PERSISTENCE as a required stage (a failed push
+  never yields ok=true) and ends with an explicit aggregate that stays nonzero
+  on any required failure. The durable upload covers per-run state PLUS the
+  exact three planned new observations (never the historical directory).
+  Manual `lookback` input preserved (`55` = 56-day inclusive backfill);
+  `with_device`/`with_country` are opt-in SEPARATE cuts.
+- **Analyze** (`seo-analyze.yml`): a minimal `context` job freezes the run's
+  UTC identity BEFORE fragile preparation and passes it by job outputs →
+  trusted prepare (deterministic report, bounded prompt) → separate read-only
+  interpretation job → trusted publisher (fresh checkout at the frozen SHA,
+  `run/` created unconditionally, regenerated deterministic evidence,
+  literal/withheld model paragraph, malformed optional interpretation
+  degraded to failed/withheld, a rejected report published as the minimal
+  failure block) writing the shared `seo` daily section with the frozen date.
+- **Autofix** (`seo-autofix.yml`): proposal-only and model-free. The UTC
+  report date freezes ONCE before fragile work and travels by job output (a
+  post-midnight publish still lands on the run's own day). Read-only review
+  state FIRST, then ONE frozen `decisionAt` shared as Hugo `--clock`, report
+  `--as-of` and gate `--decision-at`; trusted page map (pinned Hugo 0.145.0
+  `list published` → stdlib CSV→JSON with tracked-file/case/realpath proof),
+  report with query×page rows, B1 gate, public-safe proposal section.
+  Missing/malformed gate evidence publishes a truthful minimal failure section
+  AND keeps the required pipeline failed. Minimum permissions (`contents:
+  read`, `pull-requests: read` / `issues: write` in the publisher). Apply is
+  unavailable until independently authorized future implementation.
+- **Lighthouse** (`lighthouse.yml`): measurement unchanged (existing
+  lighthouserc assertions); publication moved to a small dedicated job in the
+  shared serialization group with the run's frozen UTC date. Manifest
+  `jsonPath` resolves ONLY artifact-locally (basename + path-boundary check);
+  zero eligible measurements publishes an honest missing-evidence section and
+  exits nonzero. Push runs never write the issue.
+- **Contracts** (`seo-contracts.yml`): offline Node 22 job
+  (`npm ci --ignore-scripts`) running the targeted A+B suites — including the
+  real-history regression at the fixed cutoff `2026-09-24T00:00:00Z`, semantic
+  workflow YAML contracts and the stdlib page-map fixtures. No
+  Google/model/browser/Hugo. Later batches append their tests to this job.
+
+Daily issue identity and concurrency: ONE issue per day
+(`站点日报 — YYYY-MM-DD`, UTC, frozen ONCE per run and passed via `--date` to
+all three publishers). `seo` / `lighthouse` / `autofix` sections overwrite in
+place; `ensureDailyIssue` reads ALL states so a delayed rerun of an already
+CLOSED frozen date updates that issue instead of duplicating it (never
+reopened); `closeStaleDailyIssues` closes only STRICTLY OLDER, labelled,
+parseable daily issues — a delayed older-day run can never close a newer one.
+All daily-report write paths share ONE GitHub Actions publish concurrency
+group `daily-report-publish` with `cancel-in-progress: false` (running
+publishes serialize and are never cancelled; GitHub keeps at most one PENDING
+run per group, so an older waiting publish can be superseded — per-run state
+therefore stays in durable workflow artifacts, not only in the issue).
+
+## Live acceptance (separate from offline implementation)
+
+Current release and run receipts are recorded in [#390](https://github.com/cubxxw/blog/issues/390#issuecomment-5813098179). The offline tests below do not establish these external outcomes:
+
+1. One manual Analyze dispatch with read-back of the same daily issue.
+2. Scheduled runs with complete status records (Snapshot/Analyze/Autofix).
+3. One manual 56-day backfill (`--lookback 55`) and GSC UI same-filter
+   verification.
+4. Real Linux action initialization/tool inventory/OAuth success and a live
+   structured-output readback for the model job (the offline proof used the
+   fixed Darwin package; no Linux/model test is claimed).
+5. The A+B1+B2 integrated release. Apply mode remains unavailable.
 
 ## Verification performed for B1 (offline)
 
@@ -415,3 +539,27 @@ Output: `candidates[]` (bounded proposals: summary + target files only) and
   `2026-09-24T00:00:00Z`: legacy PSI 15+11 / 26 and 22+4 / 26, real CrUX
   PHONE+DESKTOP `no-sample` (unknown, never zero), legacy GSC coverage honest
   (`not-comparable`, no false trend).
+
+## Verification performed for B2 (offline)
+
+- `node --test scripts/psi-fetch.test.mjs scripts/seo-report.test.mjs
+  scripts/seo-pipeline.test.mjs scripts/seo-autofix-gate.test.mjs
+  scripts/daily-report-issue.test.mjs scripts/lighthouse-report-to-issue.test.mjs
+  scripts/gsc-fetch.test.mjs scripts/gsc-report.test.mjs` — full targeted suite
+  (the contract's verify command): **273/273 passed** in the parent integrated tree.
+- `scripts/seo-pipeline.test.mjs` covers the five-case stage matrix (incl. the
+  PSI deleted-rows and report-shell counterexamples, A's `degraded` contract),
+  the model boundary (actual pretty-JSON-array execution file, blank/extra-key/
+  overlong/missing output, error subtype rejection, constant diagnostics,
+  literal fenced publication, public-safe prompt with value validation and an
+  inclusive byte cap), the bounded review adapter (31-sentinel list, rename
+  old+new paths, incomplete reads), publisher date/close semantics, the
+  stdlib page-map fixtures (Mem0/LangGraph-style overrides, uppercase UFO.md,
+  bundles, CSV quoting, conflicts, untracked/wrong-case/symlink rows, caps)
+  and semantic workflow YAML contracts bound to `docs/seo-model-boundary-proof.json`.
+- Parent-independent probe suites replayed green against these sources:
+  model boundary 10/10, stage semantics 12/12, publisher/compose 14/14 + 5/5.
+- `actionlint` 1.7.12 (shellcheck/pyflakes disabled) clean over the five
+  workflows. `git diff --check` clean.
+
+Parent integration also executes 14 actual workflow shell scenarios: successful/failed snapshot persistence with exact artifact retention, optional interpretation absence/corruption, rejected report publication, and valid/missing/malformed/empty proposal evidence across midnight. All 14 passed. Malformed optional interpretation remains failed/withheld without failing required stages; empty gate/context produces a failure section and a nonzero required outcome.

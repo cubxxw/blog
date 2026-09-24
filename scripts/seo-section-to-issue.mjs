@@ -9,11 +9,14 @@
 // workflow's allowedTools drop the gh write verbs entirely.
 //
 // Usage:
-//   node scripts/seo-section-to-issue.mjs <path-to-markdown>
+//   node scripts/seo-section-to-issue.mjs <path-to-markdown> [--date YYYY-MM-DD]
 //
 // Env (provided by GitHub Actions):
 //   GH_TOKEN            — token with `issues: write`
 //   GITHUB_REPOSITORY   — owner/repo
+//
+// `--date` is the run's FROZEN UTC report date (B2): the daily issue identity
+// is fixed once per run, so a run crossing midnight never splits in two.
 
 import { existsSync, readFileSync } from 'node:fs';
 import { ensureDailyIssue, upsertSection } from './daily-report-issue.mjs';
@@ -22,13 +25,29 @@ const SECTION_MARKER = 'seo';
 
 const repo = process.env.GITHUB_REPOSITORY;
 if (!repo) {
-  console.error('GITHUB_REPOSITORY missing; skip SEO section sync.');
-  process.exit(0);
+  // Fail clearly (nonzero): a silent skip is how sections go missing without
+  // anyone noticing.
+  console.error('GITHUB_REPOSITORY missing; cannot write the SEO section.');
+  process.exit(1);
 }
 
-const path = process.argv[2];
+const args = process.argv.slice(2);
+let path = null;
+let date = new Date();
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--date' && /^\d{4}-\d{2}-\d{2}$/.test(args[i + 1] ?? '')) {
+    date = args[i + 1];
+    i += 1;
+  } else if (!path && !args[i].startsWith('--')) {
+    path = args[i];
+  } else {
+    console.error(`Unknown or invalid argument: ${args[i]}`);
+    console.error('Usage: node scripts/seo-section-to-issue.mjs <path-to-markdown> [--date YYYY-MM-DD]');
+    process.exit(1);
+  }
+}
 if (!path) {
-  console.error('Usage: node scripts/seo-section-to-issue.mjs <path-to-markdown>');
+  console.error('Usage: node scripts/seo-section-to-issue.mjs <path-to-markdown> [--date YYYY-MM-DD]');
   process.exit(1);
 }
 
@@ -45,7 +64,7 @@ if (!content) {
   process.exit(1);
 }
 
-const number = ensureDailyIssue({ repo });
+const number = ensureDailyIssue({ repo, date });
 upsertSection({ repo, issueNumber: number, marker: SECTION_MARKER, content });
 console.log(`Wrote SEO section into daily issue #${number}`);
 // Intentionally NOT closing stale issues here: the Lighthouse reporter owns
