@@ -1,6 +1,6 @@
 ---
 name: blog
-description: Maintain the cubxxw bilingual Hugo blog, including brief-driven writing, content front matter and taxonomy, PaperMod templates, CSS and JavaScript, SEO, proportional validation, and GitHub delivery. Use for any content, design, implementation, validation, or publishing task in this repository.
+description: Maintain the cubxxw bilingual Hugo blog, including brief-driven writing, interactive explanations and instructional animation, content metadata, PaperMod templates, CSS and JavaScript, SEO, proportional validation, and GitHub delivery. Use for content, design, implementation, validation, or publishing tasks in this repository.
 ---
 
 # Blog repository workflow
@@ -16,6 +16,7 @@ description: Maintain the cubxxw bilingual Hugo blog, including brief-driven wri
 - For a brief-driven article, read `_briefs/README.md` and `docs/blog-editorial-workflow.md`, then use `.claude/skills/write-blog-from-brief/SKILL.md`. Trace recurring `source_refs` across public briefs and article receipts before drafting; never dereference `brain://`.
 - For a new or rewritten opening, also use `.claude/skills/craft-article-opening/SKILL.md`.
 - For an approved English translation or presentation polish in either language, use `.claude/skills/translate-and-format-blog/SKILL.md`.
+- When a passage could benefit from an interactive explanation or instructional animation, apply the selection guidance below and read [the component author guide](../../../docs/interactive-articles.md) before choosing a renderer.
 - For template or design work, trace the relevant layout, partials, Hugo resources, and extended CSS before editing.
 - For taxonomy, metadata, or SEO work, inspect the project scripts and `config/tags-mapping.json` before changing content.
 
@@ -38,9 +39,24 @@ description: Maintain the cubxxw bilingual Hugo blog, including brief-driven wri
 - Preserve responsive behavior, dark mode, accessibility, SEO metadata, and resource fingerprinting.
 - Use `apply_patch` for intentional file edits and explicit paths when staging mixed worktrees.
 
+## Interactive explanations and animation
+
+During planning, writing, or presentation review, proactively consider whether readers would understand a claim better by changing a condition, comparing outcomes, or stepping through state changes. When that teaching benefit exists, prefer the repository's **native Web Components + `interactive` shortcode + build-time data** approach. The author need not explicitly ask for animation each time; preserve the task's content and publication authorization.
+
+- Start with the question the reader should answer and the variable or state they can inspect. Place the figure beside the passage it explains, with a default result, a small set of controls, an interpretation, and explicit assumptions/sources.
+- Reuse an existing kind only when its semantics fit: `context-budget` models capacity allocation and overflow; `agent-loop` replays authored Agent/tool events and stop reasons. Add an instance through `data/interactive/<spec>.json` and a page-unique shortcode ID, without changing runtime code.
+- For a different teaching model, inspect existing renderers first. If new behavior is needed within the task's scope, extend the reviewed component registry, schema, static rendering, and tests together. Do not force an unrelated process into Agent-event fields or create a one-off inline script, framework app, or external embed for each article.
+- Motion should explain order, causality, or a state change. Start still, expose the controls the explanation needs (for example step/play/pause/reset), honor reduced motion, and retain keyboard/touch operation. Prefer an interactive figure over a GIF/video when readers need to control variables or inspect intermediate states; use actual footage when the point is to show a real interface or observed behavior.
+- Keep structural relationships in a static diagram when that is clearer, and keep ordinary prose when interaction adds no insight. Preserve working legacy `demo-*` uses unless the task calls for migration; this preference is not a site-wide rewrite.
+- Follow the author guide's shared-data static fallback, print, bilingual copy, scoped styles, and per-page resource rules. Reader interaction remains local and transient: no new backend, model calls, persistence, or third-party runtime. Label illustrative numbers and preset traces honestly; they do not measure real model quality or reveal private reasoning.
+
+Keep the field vocabulary, examples, limits, and detailed acceptance commands in [the author guide](../../../docs/interactive-articles.md) and [acceptance reference](../../../docs/interactive-articles-acceptance.md), rather than duplicating the schema in this skill. For data/shortcode additions run `npm run interactive:check` and inspect the affected localized pages; for shared component behavior changes also run `npm run interactive:test`. Add manual checks for the changed surface and report unrun checks honestly.
+
 ## Validate proportionally
 
 Choose the lowest-cost validation layer that covers the changed surface.
+
+For skill or workflow documentation only, validate skill metadata, linked paths, routing consistency, and `git diff --check`; a site build or browser run is unnecessary unless rendered content or code also changes.
 
 For a standard article-only change using existing Markdown, front matter, routes, and cover conventions:
 

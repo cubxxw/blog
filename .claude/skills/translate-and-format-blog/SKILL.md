@@ -23,10 +23,13 @@ Create the English file at the same path below `content/en/` as the source below
 
 Read [references/rendering.md](references/rendering.md). Improve either language only where presentation helps comprehension.
 
+When a passage benefits from changing a condition, comparing outcomes, or stepping through state changes, follow [the blog skill's interactive explanation guidance](../blog/SKILL.md#interactive-explanations-and-animation). Prefer the native component/data pathway for suitable instructional animation; a translation-only task preserves the existing teaching model rather than inventing a new one.
+
 - Keep the semantic structure aligned across a bilingual pair; translate visible labels while preserving shortcode names, parameters, IDs, code, and asset paths.
 - Prefer ordinary Markdown. Add a special renderer only when it makes a quote, optional detail, relationship, comparison, sequence, terminal transcript, or annotated image materially clearer.
 - Do not decorate by quota. Do not introduce raw HTML or legacy `<aside>` blocks.
 - Inspect the owning shortcode before using an unfamiliar parameter.
+- For `interactive`, localize the spec's `copy.zh` / `copy.en` and visible event/scenario text in `data/interactive/`; preserve schema fields, numerical assumptions, formulas, event order, IDs, and source URLs.
 
 ## Verify
 

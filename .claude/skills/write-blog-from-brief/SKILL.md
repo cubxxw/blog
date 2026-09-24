@@ -16,6 +16,7 @@ When needed:
 - `references/source-tracing.md` for `source_refs`;
 - `references/research-protocol.md` for research-led work;
 - `../craft-article-opening/SKILL.md` when writing the first screen;
+- [the blog skill's interactive explanation guidance](../blog/SKILL.md#interactive-explanations-and-animation) when manipulating a condition or stepping through a process would clarify the article; proactively consider this option, using the existing component/data path when it fits;
 - `references/review-rubric.md` for the final rereads.
 
 Never open the private target behind `brain://`.
