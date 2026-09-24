@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "agent-loop",
+  "id": "safety-strings-loop-v1",
+  "defaultScenario": "hostile-trace",
+  "model": { "maxSteps": 4 },
+  "scenarios": [
+    {
+      "id": "hostile-trace",
+      "outcome": "success",
+      "events": [
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "决策文本含 </script>、\"引号\"、<标签> 与换行：\n第二行。" },
+            "en": { "text": "Decision text with </script>, \"quotes\", <tags> and a newline:\nsecond line." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_command",
+          "args": "{\"cmd\":\"echo </script> \\\"quoted\\\"\"}",
+          "copy": {
+            "zh": { "text": "请求里的命令只是文本 </script>。" },
+            "en": { "text": "The command in the request is inert text </script>." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_command",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "</script><script>alert(4)</script>\n输出只是文本。" },
+            "en": { "text": "</script><script>alert(4)</script>\nThe output is text only." }
+          }
+        },
+        {
+          "kind": "stop",
+          "reason": "answered",
+          "copy": {
+            "zh": { "text": "停止原因 </script> \"quoted\" & <done>。" },
+            "en": { "text": "Stop reason </script> \"quoted\" & <done>." }
+          }
+        }
+      ]
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "安全夹具",
+      "title": "敌意轨迹 </script> 实验",
+      "question": "事件文本里的 HTML 会被执行吗？",
+      "assumption": "所有文本均为惰性文本：</script>、<, >, &、引号、中文与换行必须原样显示。",
+      "observe": "观察：没有脚本执行。",
+      "footerNote": "安全序列化夹具",
+      "referenceTitle": "查看全部预设轨迹 </script> \"引用\"",
+      "presetNotice": "预设轨迹 </script> · 教学示意",
+      "stepKinds": { "decision": "决策说明", "tool_call": "工具请求", "tool_result": "工具结果", "stop": "停止原因" },
+      "nodes": { "decision": "决策<", "tool": "工具&", "result": "结果\"", "stop": "停止`" },
+      "table": { "step": "步骤", "kind": "类型", "detail": "说明" },
+      "io": { "input": "输入<&>", "output": "输出\"\"" },
+      "scenarioLabels": { "hostile-trace": "敌意轨迹 </script> \"场景\"" }
+    },
+    "en": {
+      "figureLabel": "Safety fixture",
+      "title": "Hostile trace </script> experiment",
+      "question": "Does HTML in event text execute?",
+      "assumption": "All text is inert: </script>, <, >, &, quotes, Chinese and newlines must display verbatim.",
+      "observe": "Observe: nothing executes.",
+      "footerNote": "Safe serialization fixture",
+      "referenceTitle": "View all preset traces </script> \"quoted\"",
+      "presetNotice": "Preset trace </script> · teaching illustration",
+      "stepKinds": { "decision": "Decision note", "tool_call": "Tool request", "tool_result": "Tool result", "stop": "Stop reason" },
+      "nodes": { "decision": "Decide<", "tool": "Act&", "result": "Observe\"", "stop": "Stop`" },
+      "table": { "step": "Step", "kind": "Kind", "detail": "Detail" },
+      "io": { "input": "Input<&>", "output": "Output\"\"" },
+      "scenarioLabels": { "hostile-trace": "Hostile trace </script> \"scenario\"" }
+    }
+  },
+  "sourceRefs": [{ "url": "https://example.com/safety-loop", "title": "Safety loop fixture" }]
+}

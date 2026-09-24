@@ -68,6 +68,9 @@ jobs:
       - name: Auto-fix empty blockquote markers
         run: node scripts/clean-empty-blockquotes.mjs --write
 
+      - name: Validate interactive specs (before Hugo, issue #389)
+        run: node scripts/check-interactive-specs.mjs
+
       - name: Validate front matter
         run: npm run frontmatter:check
 

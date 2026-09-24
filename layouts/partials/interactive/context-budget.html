@@ -1,0 +1,138 @@
+{{- /* blog-context-budget — current-result stage + native <details> reference
+     (issue #389). The stage renders the default scenario's exact result from
+     the same spec data the runtime uses:
+       used = system + history + tools
+       remaining = max(0, capacity - used); overflow = max(0, used - capacity).
+     Non-current scenario panels are already hidden in SSR and stay hidden
+     until the reader selects them (one current scenario; no comparison
+     toggle). The <details> reference holds the complete read-only scenario
+     comparison table — same data, no runtime selectors, no ids, works
+     without JS and its open state is never touched by the upgrade.
+
+     Bar geometry uses explicit percentages of the FIXED capacity reference:
+     each segment is value/capacity of the bar width, so overflow genuinely
+     spills past the bar edge and is additionally marked by its own hatched
+     band (below the bar) at the same scale. Interactive controls swap into
+     same-sized visibility:hidden slots (zero layout shift on upgrade). */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+{{- $cap := $m.capacity -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+
+<blog-context-budget id="{{ .id }}" class="ib-figure ib-budget" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- range $i, $s := $ordered }}
+  {{- $history := $s.history -}}
+  {{- $tools := $s.tools -}}
+  {{- $used := add $m.system (add $history $tools) -}}
+  {{- $remaining := sub $cap $used -}}
+  {{- if lt $remaining 0 }}{{ $remaining = 0 }}{{ end -}}
+  {{- $overflow := sub $used $cap -}}
+  {{- if lt $overflow 0 }}{{ $overflow = 0 }}{{ end -}}
+  {{- $key := "plenty" -}}
+  {{- if $overflow }}{{ $key = "overflow" -}}
+  {{- else if le (mul 5 $remaining) $cap }}{{ $key = "tight" }}{{ end -}}
+  {{- $overPct := div (mul $overflow 100.0) $cap -}}
+  {{- if gt $overPct 100.0 }}{{ $overPct = 100.0 }}{{ end -}}
+  <section class="ib-panel" data-ib-panel="{{ $s.id }}" aria-labelledby="{{ $.id }}-{{ $s.id }}-label"{{ if gt $i 0 }} hidden{{ end }}>
+    <p class="ib-panel-title" id="{{ $.id }}-{{ $s.id }}-label">{{ index $c.scenarioLabels $s.id }}</p>
+
+    <div class="ib-viz">
+      <div class="ib-bar" data-ib-bar aria-hidden="true">
+        <div class="ib-seg ib-seg--system" data-ib-seg="system" style="width:{{ printf "%.4f" (div (mul $m.system 100.0) $cap) }}%"></div>
+        <div class="ib-seg ib-seg--history" data-ib-seg="history" style="width:{{ printf "%.4f" (div (mul $history 100.0) $cap) }}%"></div>
+        <div class="ib-seg ib-seg--tools" data-ib-seg="tools" style="width:{{ printf "%.4f" (div (mul $tools 100.0) $cap) }}%"></div>
+        <div class="ib-seg ib-seg--remaining" data-ib-seg="remaining" style="width:{{ printf "%.4f" (div (mul $remaining 100.0) $cap) }}%"></div>
+      </div>
+      <div class="ib-overrow">
+        <div class="ib-overbar" data-ib-overbar style="width:{{ printf "%.4f" $overPct }}%"{{ if not $overflow }} hidden{{ end }}></div>
+      </div>
+      <ul class="ib-legend">
+        <li class="ib-legend-item"><span class="ib-swatch ib-swatch--system" aria-hidden="true"></span>{{ $c.segments.system }} <span class="ib-legend-value" data-ib-seg-value="system">{{ $m.system }}</span></li>
+        <li class="ib-legend-item"><span class="ib-swatch ib-swatch--history" aria-hidden="true"></span>{{ $c.segments.history }} <span class="ib-legend-value" data-ib-seg-value="history">{{ $history }}</span></li>
+        <li class="ib-legend-item"><span class="ib-swatch ib-swatch--tools" aria-hidden="true"></span>{{ $c.segments.tools }} <span class="ib-legend-value" data-ib-seg-value="tools">{{ $tools }}</span></li>
+        <li class="ib-legend-item"><span class="ib-swatch ib-swatch--remaining" aria-hidden="true"></span>{{ $c.segments.remaining }} <span class="ib-legend-value" data-ib-seg-value="remaining">{{ $remaining }}</span></li>
+        <li class="ib-legend-item" data-ib-overflow-item{{ if not $overflow }} hidden{{ end }}><span class="ib-swatch ib-swatch--overflow" aria-hidden="true"></span>{{ $c.metrics.overflow }} <span class="ib-legend-value" data-ib-seg-value="overflow">{{ $overflow }}</span></li>
+      </ul>
+      <p class="ib-unit">{{ $c.capacityLabel }} {{ $cap }} {{ $c.unitLabel }}</p>
+    </div>
+
+    <dl class="ib-readout">
+      <div class="ib-metric"><dt>{{ $c.metrics.used }}</dt><dd><span data-ib-metric="used">{{ $used }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.remaining }}</dt><dd><span data-ib-metric="remaining">{{ $remaining }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.overflow }}</dt><dd><span data-ib-metric="overflow">{{ $overflow }}</span></dd></div>
+    </dl>
+
+    <p class="ib-explain" data-ib-explain>{{ index $c.explanations $key }}</p>
+
+    <div class="ib-controls">
+      <label class="ib-range-label" for="{{ $.id }}-{{ $s.id }}-range">
+        {{ $c.sliderLabel }}：<output class="ib-range-out" data-ib-range-out for="{{ $.id }}-{{ $s.id }}-range">{{ $tools }}</output>
+      </label>
+      <div class="ib-range-slot" data-ib-range-slot aria-hidden="true">
+        <span class="ib-range-slot-track"><span class="ib-range-slot-thumb" style="left:{{ printf "%.4f" (div (mul (sub $tools $m.toolMin) 100.0) (sub $m.toolMax $m.toolMin)) }}%"></span></span>
+      </div>
+      <input type="range" id="{{ $.id }}-{{ $s.id }}-range" data-ib-range hidden
+             min="{{ $m.toolMin }}" max="{{ $m.toolMax }}" step="{{ $m.toolStep }}" value="{{ $tools }}">
+    </div>
+
+    <p class="ib-live" data-ib-live aria-live="polite"></p>
+  </section>
+  {{- end }}
+
+  {{- /* Read-only reference from the same spec data. No runtime selectors,
+       no ids: the upgrade never touches this element or its open state, and
+       it works without JS. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    <table class="ib-ref-table">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.table.scenario }}</th>
+          <th scope="col">{{ $c.table.used }}</th>
+          <th scope="col">{{ $c.table.remaining }}</th>
+          <th scope="col">{{ $c.table.overflow }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $s := $ordered }}
+        {{- $history := $s.history -}}
+        {{- $tools := $s.tools -}}
+        {{- $used := add $m.system (add $history $tools) -}}
+        {{- $remaining := sub $cap $used -}}
+        {{- if lt $remaining 0 }}{{ $remaining = 0 }}{{ end -}}
+        {{- $overflow := sub $used $cap -}}
+        {{- if lt $overflow 0 }}{{ $overflow = 0 }}{{ end -}}
+        <tr>
+          <th scope="row">{{ index $c.scenarioLabels $s.id }}</th>
+          <td>{{ $used }}</td>
+          <td>{{ $remaining }}</td>
+          <td>{{ $overflow }}</td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
+    <p class="ib-unit">{{ $c.capacityLabel }} {{ $cap }} {{ $c.unitLabel }}</p>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-context-budget>

@@ -1,0 +1,4 @@
+{{- /* Page.Store can survive development rebuilds. A revision-scoped registry
+     makes removed shortcodes and changed data invisible to subsequent reads.
+     Both APIs are available in the pinned Hugo 0.145.0. */ -}}
+{{- return (printf "interactiveInstances-v1-%s-%s" (sha256 .RawContent) (sha256 (site.Data.interactive | jsonify))) -}}

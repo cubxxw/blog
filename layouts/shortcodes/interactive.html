@@ -1,0 +1,105 @@
+{{- /* interactive — the only entry point for the two interactive explainer
+     components (issue #389). A closed registry: `kind` maps to exactly one
+     custom element + static partial. Nothing here concatenates a script path
+     or an arbitrary template name from user input.
+
+       {{< interactive kind="context-budget" id="context-window" spec="context-window-v1" >}}
+
+     - kind: "context-budget" | "agent-loop" (allowlist; anything else fails build)
+     - id:   page-unique ^[a-z0-9]+(-[a-z0-9]+)*$ ; duplicates fail the build
+     - spec: ^[a-z0-9]+(-[a-z0-9]+)*$ stem of data/interactive/<spec>.json
+             (a local identifier — URLs, absolute paths and ".." fail the build)
+
+     The same validation runs in scripts/check-interactive-specs.mjs before
+     every Hugo build; these checks are the defensive layer that keeps a
+     hand-edited page from shipping an unsafe instance. */ -}}
+{{- $kind := .Get "kind" -}}
+{{- $id := .Get "id" -}}
+{{- $specName := .Get "spec" -}}
+{{- $slugRE := `^[a-z0-9]+(-[a-z0-9]+)*$` -}}
+{{- $pagePath := "" -}}
+{{- with .Page.File }}{{ $pagePath = .Path }}{{ end -}}
+
+{{- if not (in (slice "context-budget" "agent-loop") $kind) -}}
+  {{- errorf "interactive: kind %q is not in the allowlist (context-budget | agent-loop) [page %s]" $kind $pagePath -}}
+{{- end -}}
+{{- if not (findRE $slugRE $id) -}}
+  {{- errorf "interactive: id %q must match %s and be page-unique [page %s]" $id $slugRE $pagePath -}}
+{{- end -}}
+{{- if not (findRE $slugRE $specName) -}}
+  {{- errorf "interactive: spec %q must match %s (a local data identifier, not a URL or path) [page %s]" $specName $slugRE $pagePath -}}
+{{- end -}}
+
+{{- /* Hugo may render the same shortcode again during an asset-only rebuild.
+       Register occurrences, not invocations. Content/data revisions discard
+       stale claims after an author removes, moves or changes an instance. */ -}}
+{{- $registryKey := partial "interactive/registry-key.html" .Page -}}
+{{- $occurrence := partial "interactive/occurrence-key.html" . -}}
+{{- $instances := .Page.Store.Get $registryKey | default dict -}}
+{{- $ids := slice $id -}}
+
+{{- $spec := index site.Data.interactive $specName -}}
+{{- if not $spec -}}
+  {{- errorf "interactive: unknown spec %q — expected data/interactive/%s.json [page %s]" $specName $specName $pagePath -}}
+{{- end -}}
+{{- if ne (printf "%v" $spec.schemaVersion) "1" -}}
+  {{- errorf "interactive: spec %q has unsupported schemaVersion %v (supported: 1) [page %s]" $specName $spec.schemaVersion $pagePath -}}
+{{- end -}}
+{{- if ne $spec.kind $kind -}}
+  {{- errorf "interactive: spec %q is kind %q but the shortcode says %q [page %s]" $specName $spec.kind $kind $pagePath -}}
+{{- end -}}
+{{- if ne $spec.id $specName -}}
+  {{- errorf "interactive: spec %q has id %q which must equal its filename stem [page %s]" $specName $spec.id $pagePath -}}
+{{- end -}}
+
+{{- /* Reserve EVERY derived identifier the partials will emit (panel labels
+       and range inputs), so a derived id can never collide with another
+       instance's root id or derived ids. */ -}}
+{{- range $s := $spec.scenarios -}}
+  {{- range $suffix := slice "label" "range" -}}
+    {{- $derived := printf "%s-%s-%s" $id $s.id $suffix -}}
+    {{- if in $ids $derived -}}
+      {{- errorf "interactive: derived id %q of instance %q collides with another id on page %s" $derived $id $pagePath -}}
+    {{- end -}}
+    {{- $ids = $ids | append $derived -}}
+  {{- end -}}
+{{- end -}}
+
+
+{{- /* Serialize the final {id, lang, spec} payload ONCE and enforce the
+       acceptance byte budgets on that exact HTML-safe string (the same
+       string the config partial emits): ≤ 30 720 bytes per instance and
+       ≤ 102 400 bytes cumulative per page. Raw JSON file size cannot
+       substitute for this — HTML escaping can multiply <, >, & six-fold. */ -}}
+{{- $payload := dict "id" $id "lang" .Page.Lang "spec" $spec -}}
+{{- $json := $payload | jsonify -}}
+{{- $bytes := len $json -}}
+{{- if gt $bytes 30720 -}}
+  {{- errorf "interactive: serialized config is %d bytes (limit 30720) for spec %q instance %q [page %s]" $bytes $specName $id $pagePath -}}
+{{- end -}}
+{{- $total := $bytes -}}
+{{- range $position, $instance := $instances -}}
+  {{- if ne $position $occurrence -}}
+    {{- range $claimed := $ids -}}
+      {{- if in $instance.ids $claimed -}}
+        {{- if eq $claimed $id -}}
+          {{- errorf "interactive: duplicate id %q on page %s (component ARIA ids derive from it)" $id $pagePath -}}
+        {{- else -}}
+          {{- errorf "interactive: derived id %q of instance %q collides with another id on page %s" $claimed $id $pagePath -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $total = add $total $instance.bytes -}}
+  {{- end -}}
+{{- end -}}
+{{- if gt $total 102400 -}}
+  {{- errorf "interactive: serialized page config total is %d bytes (limit 102400) at instance %q of spec %q [page %s]" $total $id $specName $pagePath -}}
+{{- end -}}
+{{- .Page.Store.SetInMap $registryKey $occurrence (dict "ids" $ids "bytes" $bytes "kind" $kind) -}}
+
+{{- $ctx := dict "spec" $spec "id" $id "page" .Page "lang" .Page.Lang "json" $json -}}
+{{- if eq $kind "context-budget" -}}
+  {{- partial "interactive/context-budget.html" $ctx -}}
+{{- else if eq $kind "agent-loop" -}}
+  {{- partial "interactive/agent-loop.html" $ctx -}}
+{{- end -}}

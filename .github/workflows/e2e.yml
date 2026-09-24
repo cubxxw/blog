@@ -22,11 +22,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - name: Install Node.js dependencies
         run: npm ci
+
+      - name: Validate interactive specs (dependency-free gate, issue #389)
+        run: node scripts/check-interactive-specs.mjs
 
       - name: Install Hugo CLI
         run: |
@@ -36,6 +39,9 @@ jobs:
 
       - name: Install Dart Sass
         run: sudo snap install dart-sass
+
+      - name: Validate interactive specs and fixtures (needs Hugo, issue #389)
+        run: npm run interactive:check
 
       - name: Build Hugo site
         env:
@@ -68,5 +74,60 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: playwright-diff-screenshots
+          path: test-results/
+          retention-days: 7
+
+  interactive:
+    name: Interactive components (Chromium/Firefox/WebKit)
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.145.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb \
+            https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+
+      - name: Validate interactive specs and fixtures (needs Hugo, issue #389)
+        run: npm run interactive:check
+
+      - name: Install Playwright browsers (all three engines)
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Run cross-engine interactive suite (production output)
+        run: npm run interactive:test
+
+      - name: Upload interactive Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: interactive-playwright-report
+          path: playwright-report/interactive/
+          retention-days: 7
+
+      - name: Upload interactive test results on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: interactive-test-results
           path: test-results/
           retention-days: 7

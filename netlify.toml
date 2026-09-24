@@ -2,6 +2,8 @@
 [build]
   # Use the real production target so deploys run tag, robots and sitemap
   # guards. `envbuild` explicitly selects Hugo's development environment.
+  # make production-build validates interactive scenario specs before Hugo
+  # (interactive-check gate, issue #389).
   command = "npm install --prefix netlify/functions && make production-build"
   publish = "public"
 
@@ -36,14 +38,14 @@
   DASHSCOPE_MODEL = "qwen-turbo"
 
 [context.deploy-preview]
-  command = "npm install --prefix netlify/functions && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "npm install --prefix netlify/functions && node scripts/check-interactive-specs.mjs && hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
   HUGO_ENV = "development"
   HUGO_ENABLEGITINFO = "true"
 
 [context.branch-deploy]
-  command = "npm install --prefix netlify/functions && hugo --gc --minify -b $DEPLOY_PRIME_URL"
+  command = "npm install --prefix netlify/functions && node scripts/check-interactive-specs.mjs && hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
   HUGO_ENV = "development"

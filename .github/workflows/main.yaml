@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Fix empty blockquote markers
         run: node scripts/clean-empty-blockquotes.mjs --write
@@ -56,11 +56,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - name: Install Node.js dependencies
         run: npm ci
+
+      - name: Validate interactive specs (dependency-free gate, issue #389)
+        run: node scripts/check-interactive-specs.mjs
 
       - name: Auto-fix empty blockquote markers
         run: npm run blockquotes:fix
@@ -84,6 +87,9 @@ jobs:
 
       - name: Install Dart Sass
         run: sudo snap install dart-sass
+
+      - name: Validate interactive specs and fixtures (needs Hugo, issue #389)
+        run: npm run interactive:check
 
       - name: Build with Hugo
         env:

@@ -1,0 +1,12 @@
+{{- $c := index .spec.copy .lang -}}
+<footer class="ib-foot">
+  <p class="ib-note">{{ $c.assumption }}</p>
+  <p class="ib-disclosure">{{ $c.footerNote }}</p>
+  {{- with .spec.sourceRefs }}
+  <ul class="ib-sources">
+    {{- range . }}
+    <li><a href="{{ .url }}" rel="noopener noreferrer">{{ .title }}</a></li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</footer>

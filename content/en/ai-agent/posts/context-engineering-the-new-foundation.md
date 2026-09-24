@@ -82,6 +82,10 @@ Here is a counterintuitive but crucial detail Anthropic itself stresses: **minim
 
 For me, this turns "context is the bottleneck" from a line in my notebook into an engineering question. The limit is not only how capable the model is; it is whether, on *this* inference call, the right evidence reached it. A million tokens of noise can be worth less than a thousand tokens of signal.
 
+The small experiment below shows only the capacity relationship: how longer tool results squeeze the remaining room, and where the overflow appears. It is an **illustrative model** — it predicts neither answer quality nor real token counts.
+
+{{< interactive kind="context-budget" id="context-window" spec="context-window-v1" >}}
+
 ---
 
 ## Two representative frameworks for the same window

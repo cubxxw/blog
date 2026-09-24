@@ -110,6 +110,11 @@ content-check:
 	@node scripts/clean-empty-blockquotes.mjs
 	@node scripts/normalize-tags.mjs --check
 
+## interactive-check: Validate interactive scenario specs (issue #389 gate, runs before Hugo).
+.PHONY: interactive-check
+interactive-check:
+	@node scripts/check-interactive-specs.mjs
+
 .PHONY: run
 run: tools.verify.hugo module-check content-index
 	@$(HUGO)
@@ -208,7 +213,7 @@ module-update: tools.verify.hugo
 
 ## production-build: Build the production site and ensure that noindex headers aren't added
 .PHONY: production-build
-production-build: tools.verify.hugo module-check content-check content-index
+production-build: tools.verify.hugo module-check content-check interactive-check content-index
 	GOMAXPROCS=1 $(HUGO) --cleanDestinationDir --minify --environment production
 	@$(MAKE) check-production-output
 

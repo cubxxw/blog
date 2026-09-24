@@ -93,6 +93,9 @@ tests/e2e/visual/snapshots/
 /playwright/.cache/
 /dist/
 
+# Interactive component test artifacts (issue #389; env-overridable root)
+/tests/.artifacts/
+
 # Ralph iteration log
 iterations.jsonl
 

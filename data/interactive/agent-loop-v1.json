@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "kind": "agent-loop",
+  "id": "agent-loop-v1",
+  "defaultScenario": "success",
+  "model": { "maxSteps": 8 },
+  "scenarios": [
+    {
+      "id": "success",
+      "outcome": "success",
+      "events": [
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "要删文件。先看清楚有什么可删的，不能直接动手。" },
+            "en": { "text": "Files need deleting. First see what is actually there — never act blind." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_command",
+          "args": "{\"cmd\":\"ls dist/ build/\"}",
+          "copy": {
+            "zh": { "text": "请求工具列出构建目录。" },
+            "en": { "text": "Request the tool to list the build directories." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_command",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "dist/  14 files · 3.2 MB\nbuild/  7 files · 1.1 MB" },
+            "en": { "text": "dist/  14 files · 3.2 MB\nbuild/  7 files · 1.1 MB" }
+          }
+        },
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "目标明确了。删除属于危险动作，这次调用会先被 harness 的确认闸门拦下来。" },
+            "en": { "text": "Target confirmed. Deletion is dangerous, so this call goes through the harness confirmation gate first." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_command",
+          "args": "{\"cmd\":\"rm -rf dist build\"}",
+          "copy": {
+            "zh": { "text": "请求删除两个构建目录（只是文本，不会真实执行）。" },
+            "en": { "text": "Request deletion of both build directories (text only — nothing is executed)." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_command",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "[harness] rm -rf 命中确认规则 → 等待人工批准 → 已批准\n21 files deleted (4.3 MB)" },
+            "en": { "text": "[harness] rm -rf matched a confirmation rule → awaiting approval → approved\n21 files deleted (4.3 MB)" }
+          }
+        },
+        {
+          "kind": "stop",
+          "reason": "answered",
+          "copy": {
+            "zh": { "text": "停止原因：任务完成。已清理 dist/ 与 build/（21 个文件、4.3 MB）；删除动作先经过 harness 的确认闸门，模型自始至终只发出请求。" },
+            "en": { "text": "Stop reason: task complete. dist/ and build/ are cleaned (21 files, 4.3 MB); the deletion passed the harness confirmation gate and the model only ever issued requests." }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tool-recovery",
+      "outcome": "recovery",
+      "events": [
+        {
+          "kind": "tool_call",
+          "tool": "run_command",
+          "args": "{\"cmd\":\"cat dist/manifest.json\"}",
+          "copy": {
+            "zh": { "text": "请求读取构建清单。" },
+            "en": { "text": "Request the build manifest." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_command",
+          "status": "error",
+          "copy": {
+            "zh": { "text": "command failed: dist/manifest.json: No such file or directory" },
+            "en": { "text": "command failed: dist/manifest.json: No such file or directory" }
+          }
+        },
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "工具失败了。清单不在预期路径——先列出 dist/ 的实际内容，再决定下一步，而不是重复同样的请求。" },
+            "en": { "text": "The tool failed. The manifest is not where expected — list what is really in dist/ before deciding, instead of repeating the same request." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_command",
+          "args": "{\"cmd\":\"ls dist/\"}",
+          "copy": {
+            "zh": { "text": "改用列目录的请求（明确的恢复动作）。" },
+            "en": { "text": "Switch to a directory listing request (the explicit recovery action)." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_command",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "dist/  app.js  style.css" },
+            "en": { "text": "dist/  app.js  style.css" }
+          }
+        },
+        {
+          "kind": "stop",
+          "reason": "answered",
+          "copy": {
+            "zh": { "text": "停止原因：已恢复并完成。工具失败后先诊断、再换动作重试——失败被明确展示，没有被当成成功。" },
+            "en": { "text": "Stop reason: recovered and complete. After the tool failure the loop diagnosed, then retried with a different action — the failure is shown, never disguised as success." }
+          }
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "outcome": "budget-exhausted",
+      "events": [
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "第 1 轮决策：先探索目录结构。" },
+            "en": { "text": "Decision round 1: explore the directory structure." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_command",
+          "args": "{\"cmd\":\"find . -maxdepth 2 -type d\"}",
+          "copy": {
+            "zh": { "text": "请求列出目录。" },
+            "en": { "text": "Request the directory listing." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_command",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "./dist ./build ./logs ./src …" },
+            "en": { "text": "./dist ./build ./logs ./src …" }
+          }
+        },
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "第 2 轮决策：范围太大，继续细分。" },
+            "en": { "text": "Decision round 2: too broad — keep narrowing." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_command",
+          "args": "{\"cmd\":\"find ./logs -name '*.log'\"}",
+          "copy": {
+            "zh": { "text": "请求列出日志文件。" },
+            "en": { "text": "Request the log file listing." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_command",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "found 12 files" },
+            "en": { "text": "found 12 files" }
+          }
+        },
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "第 3 轮决策：还想继续读取更多内容……" },
+            "en": { "text": "Decision round 3: still wants to read more…" }
+          }
+        },
+        {
+          "kind": "stop",
+          "reason": "budget-exhausted",
+          "copy": {
+            "zh": { "text": "停止原因：步数预算耗尽（示意上限 8 个事件）。循环直接停止，不假装生成了答案——预算管理就是给它一个确定的终止条件。" },
+            "en": { "text": "Stop reason: the step budget is exhausted (illustrative limit of 8 events). The loop simply stops and does not pretend an answer exists — budgeting is what gives it a deterministic end." }
+          }
+        }
+      ]
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "Agent Loop 分步实验",
+      "question": "当工具失败或预算耗尽时，循环如何恢复或停下来？",
+      "assumption": "预设教学轨迹：决策说明是作者写的讲解，不是模型的内部思考；命令只是文本，不会真实执行，也不触发任何工具。",
+      "observe": "观察：三种序列分别靠什么结束？失败在哪一步被明确展示出来？",
+      "footerNote": "示意数据 · 模型假设 · 对应来源",
+      "referenceTitle": "查看全部预设轨迹",
+      "presetNotice": "预设轨迹 · 教学示意",
+      "stepKinds": {
+        "decision": "决策说明",
+        "tool_call": "工具请求",
+        "tool_result": "工具结果",
+        "stop": "停止原因"
+      },
+      "nodes": { "decision": "决策", "tool": "工具", "result": "结果", "stop": "停止" },
+      "table": { "step": "步骤", "kind": "类型", "detail": "说明" },
+      "io": { "input": "输入", "output": "输出" },
+      "scenarioLabels": {
+        "success": "成功",
+        "tool-recovery": "工具失败后恢复",
+        "budget": "预算耗尽"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Agent loop, step by step",
+      "question": "When a tool fails or the budget runs out, how does the loop recover or stop?",
+      "assumption": "Preset teaching trace: the decision notes are the author's explanations, not a model's inner thought; the commands are inert text — nothing is executed and no tool is invoked.",
+      "observe": "Observe: what ends each of the three sequences? Where does the failure show up explicitly?",
+      "footerNote": "Illustrative data · Model assumptions · Sources",
+      "referenceTitle": "View all preset traces",
+      "presetNotice": "Preset trace · teaching illustration",
+      "stepKinds": {
+        "decision": "Decision note",
+        "tool_call": "Tool request",
+        "tool_result": "Tool result",
+        "stop": "Stop reason"
+      },
+      "nodes": { "decision": "Decide", "tool": "Act", "result": "Observe", "stop": "Stop" },
+      "table": { "step": "Step", "kind": "Kind", "detail": "Detail" },
+      "io": { "input": "Input", "output": "Output" },
+      "scenarioLabels": {
+        "success": "Success",
+        "tool-recovery": "Recovery after tool failure",
+        "budget": "Budget exhausted"
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://openai.com/index/unrolling-the-codex-agent-loop/",
+      "title": "OpenAI — Unrolling the Codex agent loop"
+    },
+    {
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "title": "Anthropic — Building effective agents"
+    }
+  ]
+}

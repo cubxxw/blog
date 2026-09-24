@@ -133,6 +133,12 @@
     {{- end }}
     {{- end }}
 
+    {{- /* Interactive components (issue #389): load each used kind's
+         fingerprinted ESM + CSS exactly once, after .Content rendered (the
+         shortcodes have recorded their kinds in .Page.Store by now). Pages
+         without the shortcode emit nothing here. */}}
+    {{- partial "interactive/assets.html" . }}
+
     {{- partial "article/faq.html" . -}}
 
     {{- partial "article/column-outro.html" . -}}

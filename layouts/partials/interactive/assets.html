@@ -1,0 +1,29 @@
+{{- /* interactive/assets — one fingerprinted stylesheet + one ESM bundle per
+     component kind actually used on this page. Called from single.html AFTER
+     .Content has been rendered (the shortcodes record their kinds in
+     .Page.Store while the content renders; a head-time read would see an
+     empty Store). Pages without interactive shortcodes emit nothing.
+
+     js.Build output format is pinned to "esm" (the entries are ES modules
+     with shared pure helpers statically bundled in — no dynamic chunking in
+     V1). Integrity attributes follow the existing extend_head convention. */ -}}
+{{- $registryKey := partial "interactive/registry-key.html" . -}}
+{{- $kinds := slice -}}
+{{- range (.Store.Get $registryKey | default dict) -}}
+  {{- if not (in $kinds .kind) -}}
+    {{- $kinds = $kinds | append .kind -}}
+  {{- end -}}
+{{- end -}}
+{{- range $kinds -}}
+  {{- if eq . "context-budget" -}}
+    {{- $css := resources.Get "css/components/context-budget.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/context-budget.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "agent-loop" -}}
+    {{- $css := resources.Get "css/components/agent-loop.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/agent-loop.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- end -}}
+{{- end -}}

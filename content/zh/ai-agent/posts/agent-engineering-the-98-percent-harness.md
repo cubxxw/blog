@@ -128,19 +128,9 @@ return finalize(state)
 
 注意 `execute(action)` 这一行——**它就是整个 harness 的入口**。模型说“我要 `rm -rf /`”，是这行代码决定动作是否发生、在哪里发生、发生前要不要拦。OpenAI 对 Codex loop 的公开拆解显示了同一结构：模型产出文本或请求工具；harness 执行工具、把结果追加进下一轮输入，直到模型给出终止响应。
 
-把这个循环放进一个真实场景跑一遍。注意第二次 `run_command`：模型只是**请求**删除，真正决定它发不发生的，是 harness 的确认闸门：
+把这个循环放进一个预设的教学场景走一遍。下面的轨迹是**写作时编写的预设示意**——决策说明是讲解文本，不是模型的内部思考；命令只是文本，不会真实执行，也不会触发任何工具。注意第二次 `run_command`：示例里模型只是**请求**删除，真正决定它发不发生的，是 harness 的确认闸门：
 
-{{< demo-agent-trace title="Agent Loop × Harness 闸门" question="帮我把仓库里的构建产物清掉" >}}
-[
-  {"type":"think","text":"要删文件。先看清楚有什么可删的，不能直接动手。"},
-  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"ls dist/ build/\"}"},
-  {"type":"tool_result","text":"dist/  14 files · 3.2 MB\nbuild/  7 files · 1.1 MB"},
-  {"type":"think","text":"目标明确了。删除属于危险动作，这次调用会被 harness 拦下来要求确认。"},
-  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"rm -rf dist build\"}"},
-  {"type":"tool_result","text":"[harness] rm -rf 命中确认规则 → 等待人工批准 → 已批准\n21 个文件已删除（4.3 MB）"},
-  {"type":"answer","text":"已清理 dist/ 与 build/，共删除 21 个文件、4.3 MB。删除动作在执行前经过了 harness 的确认闸门——模型从头到尾只发出请求，没有碰过 shell。"}
-]
-{{< /demo-agent-trace >}}
+{{< interactive kind="agent-loop" id="harness-agent-loop" spec="agent-loop-v1" >}}
 
 **进阶谱系**（这是面试和选型都绕不开的）：
 

@@ -1,0 +1,8 @@
+{{- /* Ordinal is relative to the parent shortcode. Include the whole chain
+     to distinguish nested occurrences while staying stable when only front
+     matter line counts change (.Position would move in that case). */ -}}
+{{- $key := printf "%d" .Ordinal -}}
+{{- with .Parent -}}
+  {{- $key = printf "%s/%s" (partial "interactive/occurrence-key.html" .) $key -}}
+{{- end -}}
+{{- return $key -}}

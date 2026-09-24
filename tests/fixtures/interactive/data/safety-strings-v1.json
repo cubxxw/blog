@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "kind": "context-budget",
+  "id": "safety-strings-v1",
+  "defaultScenario": "hostile",
+  "model": { "capacity": 64, "system": 4, "toolMin": 0, "toolMax": 48, "toolStep": 1 },
+  "scenarios": [{ "id": "hostile", "history": 8, "tools": 4 }],
+  "copy": {
+    "zh": {
+      "figureLabel": "安全夹具",
+      "title": "</script><img src=x onerror=\"alert('xss')\"> 中文标题",
+      "question": "引号 \" 反引号 ` & <b>标签</b> 与换行：\n第二行是否只作为文本显示？",
+      "unitLabel": "k（示意单位）",
+      "capacityLabel": "容量上限<script>cap</script>",
+      "sliderLabel": "工具结果长度<script>alert(3)</script>",
+      "referenceTitle": "查看场景对照表 \"引用\"",
+      "assumption": "文本字段含 </script>、<, >, &、引号与中文换行：\n它们必须原样往返且永不执行。",
+      "observe": "观察：<script> 标签与 \" 引号必须是惰性文本。",
+      "footerNote": "安全序列化夹具 & <校验>",
+      "segments": { "system": "系统&<", "history": "历史\"", "tools": "工具`", "remaining": "剩余\n换行" },
+      "metrics": { "used": "总需求<&>", "remaining": "剩余\"\"", "overflow": "溢出`" },
+      "table": { "scenario": "场景", "used": "总需求", "remaining": "剩余", "overflow": "溢出" },
+      "explanations": { "plenty": "余量 </script> & \"。", "tight": "紧张 <b>。</b>", "overflow": "溢出\n换行 & 。" },
+      "scenarioLabels": { "hostile": "敌意文本 </script> \"场景\"" }
+    },
+    "en": {
+      "figureLabel": "Safety fixture",
+      "title": "</script><img src=x onerror=\"alert('xss')\"> English title",
+      "question": "Quotes \" backticks ` & <b>tags</b> and a newline:\nsecond line — text only?",
+      "unitLabel": "k (illustrative units)",
+      "capacityLabel": "Fixed capacity<script>cap</script>",
+      "sliderLabel": "Tool result length<script>alert(3)</script>",
+      "referenceTitle": "View the scenario comparison \"quoted\"",
+      "assumption": "Text fields carry </script>, <, >, &, quotes, Chinese and newlines:\nthey must round-trip verbatim and never execute.",
+      "observe": "Observe: <script> tags and \" quotes must stay inert text.",
+      "footerNote": "Safe serialization fixture & <check>",
+      "segments": { "system": "System&<", "history": "History\"", "tools": "Tools`", "remaining": "Remaining\nline" },
+      "metrics": { "used": "Used<&>", "remaining": "Remaining\"\"", "overflow": "Over `capacity`" },
+      "table": { "scenario": "Scenario", "used": "Used", "remaining": "Remaining", "overflow": "Over capacity" },
+      "explanations": { "plenty": "Plenty </script> & \".", "tight": "Tight <b>.</b>", "overflow": "Overflow\nnewline & ." },
+      "scenarioLabels": { "hostile": "Hostile text </script> \"scenario\"" }
+    }
+  },
+  "sourceRefs": [{ "url": "https://example.com/safety", "title": "Safety fixture & <source> \"title\"" }]
+}

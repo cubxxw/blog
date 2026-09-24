@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "kind": "context-budget",
+  "id": "broken-runtime-v1",
+  "defaultScenario": "broken",
+  "model": { "capacity": 64, "system": 4, "toolMin": 0, "toolMax": 48, "toolStep": 0 },
+  "scenarios": [{ "id": "broken", "history": 8, "tools": 4 }],
+  "copy": {
+    "zh": {
+      "figureLabel": "运行时损坏夹具",
+      "title": "损坏的配置夹具",
+      "question": "这个夹具的 toolStep 为 0，执行期校验必须拒绝它？",
+      "unitLabel": "k（示意单位）",
+      "capacityLabel": "容量上限",
+      "sliderLabel": "工具结果长度",
+      "referenceTitle": "查看场景对照表",
+      "assumption": "仅测试：构建期浅检查通过，运行期完整 schema 校验必须失败并回退静态视图。",
+      "observe": "观察：组件必须保持静态内容。",
+      "footerNote": "测试夹具",
+      "segments": { "system": "系统", "history": "历史", "tools": "工具", "remaining": "剩余" },
+      "metrics": { "used": "总需求", "remaining": "剩余", "overflow": "溢出" },
+      "table": { "scenario": "场景", "used": "总需求", "remaining": "剩余", "overflow": "溢出" },
+      "explanations": { "plenty": "余量。", "tight": "紧张。", "overflow": "溢出。" },
+      "scenarioLabels": { "broken": "损坏场景" }
+    },
+    "en": {
+      "figureLabel": "Broken runtime fixture",
+      "title": "Corrupt config fixture",
+      "question": "This fixture has toolStep 0 — the runtime schema must reject it.",
+      "unitLabel": "k (illustrative units)",
+      "capacityLabel": "Fixed capacity",
+      "sliderLabel": "Tool result length",
+      "referenceTitle": "View the scenario comparison",
+      "assumption": "Test only: shallow build checks pass; the full runtime schema must fail and fall back to the static view.",
+      "observe": "Observe: the component must keep its static content.",
+      "footerNote": "Test fixture",
+      "segments": { "system": "System", "history": "History", "tools": "Tools", "remaining": "Remaining" },
+      "metrics": { "used": "Used", "remaining": "Remaining", "overflow": "Over capacity" },
+      "table": { "scenario": "Scenario", "used": "Used", "remaining": "Remaining", "overflow": "Over capacity" },
+      "explanations": { "plenty": "Plenty.", "tight": "Tight.", "overflow": "Overflow." },
+      "scenarioLabels": { "broken": "Broken scenario" }
+    }
+  },
+  "sourceRefs": [{ "url": "https://example.com/fixture", "title": "Fixture source" }]
+}

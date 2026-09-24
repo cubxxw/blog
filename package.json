@@ -44,7 +44,10 @@
     "seo:psi:dry": "node scripts/psi-fetch.mjs --dry-run",
     "seo:crux": "node scripts/crux-fetch.mjs",
     "seo:crux:dry": "node scripts/crux-fetch.mjs --dry-run",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit --strict --esModuleInterop --skipLibCheck --module commonjs --moduleResolution node --target ES2020 --types node,@playwright/test playwright.interactive.config.ts",
+    "interactive:check": "node scripts/check-interactive-specs.mjs && node --test tests/interactive/*.test.mjs && node scripts/build-interactive-fixtures.mjs",
+    "interactive:test": "playwright test --config=playwright.interactive.config.ts",
+    "interactive:serve": "node scripts/serve-interactive-fixtures.mjs",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report"

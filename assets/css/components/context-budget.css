@@ -1,0 +1,527 @@
+/* context-budget.css — styles for <blog-context-budget> only (issue #389).
+ * Every selector is scoped under the custom-element root; nothing here styles
+ * global button/svg/p elements. Colours, fonts and easing come from
+ * assets/css/extended/tokens.css (both themes). Segments carry textures as
+ * well as colour so the bar is readable without colour vision.
+ *
+ * Bar geometry: explicit percentage widths against a FIXED capacity
+ * reference (widths are value/capacity of the bar). Overflow therefore
+ * genuinely spills past the bar edge (clipped there, never renormalised) and
+ * is additionally marked by its own hatched band at the same scale.
+ *
+ * Static (no-JS) and enhanced states share one geometry: interactive
+ * controls swap into same-sized static slots. */
+
+/* Author display must never defeat the hidden attribute (UA [hidden] loses
+ * to author display). Scoped to this root, and carefully re-enabled only in
+ * print. agent-loop.css carries the same rule for its own root (each kind's
+ * stylesheet loads only on pages that use it). */
+blog-context-budget [hidden] {
+  display: none !important;
+}
+
+blog-context-budget.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-context-budget .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-context-budget .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+blog-context-budget .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario strip: static chips swap for identical-height buttons ─── */
+blog-context-budget .ib-scenarios {
+  padding: 0.5rem 1.1rem 0.2rem;
+}
+blog-context-budget .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+}
+blog-context-budget .ib-scn-chip,
+blog-context-budget .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+blog-context-budget .ib-scn-chip {
+  border-color: transparent;
+}
+blog-context-budget .ib-scn-chip:first-child {
+  font-weight: 600;
+}
+blog-context-budget button.ib-scn {
+  cursor: pointer;
+}
+blog-context-budget button.ib-scn:hover {
+  color: var(--color-ink, #1a1c1b);
+  border-color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-scn[aria-pressed="true"] {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+  border-color: var(--color-accent, #2e352e);
+  background: var(--color-accent-soft, #dde5da);
+}
+blog-context-budget .ib-scn:focus-visible,
+blog-context-budget .ib-btn:focus-visible,
+blog-context-budget input[type="range"]:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── buttons + their static slot share one box size ─────────────────── */
+blog-context-budget .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 6px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+/* Swap slots reserve the exact box (localized text included, so baselines
+   align) but stay invisible — never a fake control. */
+blog-context-budget .ib-slot {
+  border-color: transparent;
+  visibility: hidden;
+}
+blog-context-budget .ib-btn--reset {
+  margin-left: auto;
+}
+blog-context-budget .ib-slot[data-ib-head-slot] {
+  margin-left: auto;
+}
+blog-context-budget .ib-btn:hover {
+  color: var(--color-ink, #1a1c1b);
+  border-color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+blog-context-budget .ib-panel {
+  padding: 0.5rem 1.1rem 0.9rem;
+}
+blog-context-budget .ib-panel + .ib-panel {
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-context-budget .ib-panel-title {
+  margin: 0.3rem 0 0.6rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── fixed-capacity bar (percent widths = value / capacity) ─────────── */
+blog-context-budget .ib-viz {
+  min-width: 0;
+}
+blog-context-budget .ib-viz-rows {
+  min-width: 0;
+}
+blog-context-budget .ib-bar {
+  display: flex;
+  height: 34px;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.18));
+  border-radius: 6px;
+  overflow: hidden;
+}
+blog-context-budget .ib-seg {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+blog-context-budget .ib-seg--system {
+  background: var(--color-accent-soft, #dde5da);
+}
+blog-context-budget .ib-seg--history {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-ink-muted, #5e5e63) 0 1px,
+    transparent 1px 6px
+  );
+}
+blog-context-budget .ib-seg--tools {
+  background-image: radial-gradient(
+    var(--color-ink-muted, #5e5e63) 1px,
+    transparent 1.2px
+  );
+  background-size: 6px 6px;
+}
+blog-context-budget .ib-seg--remaining {
+  background: var(--color-paper, #f9f9f7);
+}
+
+/* Overflow band: same scale as the bar (width = overflow / capacity). */
+blog-context-budget .ib-overrow {
+  overflow: hidden;
+  height: 14px;
+  margin-top: 3px;
+}
+blog-context-budget .ib-overbar {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-accent, #2e352e) 0 2px,
+    transparent 2px 6px
+  );
+  border: 1px solid var(--color-accent, #2e352e);
+  border-radius: 3px;
+}
+
+blog-context-budget .ib-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+blog-context-budget .ib-legend-value {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+}
+blog-context-budget .ib-swatch {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.3));
+  border-radius: 3px;
+}
+blog-context-budget .ib-swatch--system {
+  background: var(--color-accent-soft, #dde5da);
+}
+blog-context-budget .ib-swatch--history {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-ink-muted, #5e5e63) 0 1px,
+    transparent 1px 6px
+  );
+}
+blog-context-budget .ib-swatch--tools {
+  background-image: radial-gradient(
+    var(--color-ink-muted, #5e5e63) 1px,
+    transparent 1.2px
+  );
+  background-size: 5px 5px;
+}
+blog-context-budget .ib-swatch--remaining {
+  background: var(--color-paper, #f9f9f7);
+}
+blog-context-budget .ib-swatch--overflow {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-accent, #2e352e) 0 2px,
+    transparent 2px 6px
+  );
+}
+blog-context-budget .ib-unit {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── current result readout ─────────────────────────────────────────── */
+blog-context-budget .ib-readout {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  column-gap: 1.4rem;
+  row-gap: 0.5rem;
+  margin: 0.7rem 0 0;
+}
+blog-context-budget .ib-metric {
+  min-width: 0;
+}
+blog-context-budget .ib-metric dt {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted, #5e5e63);
+  white-space: nowrap;
+}
+blog-context-budget .ib-metric dd {
+  margin: 0.1rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 1.125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+blog-context-budget .ib-explain {
+  margin: 0.6rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+/* ── slider row: static track slot swaps for the native range input ─── */
+blog-context-budget .ib-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
+  margin-top: 0.7rem;
+}
+blog-context-budget .ib-range-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-range-out {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+}
+blog-context-budget input[type="range"] {
+  flex: 1 1 180px;
+  min-width: 0;
+  height: 44px;
+  margin: 0; /* UA margin would make the swap-in row 4px taller than the slot */
+  accent-color: var(--color-accent, #2e352e);
+}
+blog-context-budget .ib-range-slot {
+  flex: 1 1 180px;
+  min-width: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+blog-context-budget .ib-range-slot-track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.18));
+}
+blog-context-budget .ib-range-slot-thumb {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-accent, #2e352e);
+  border-radius: 50%;
+  background: var(--color-paper, #f9f9f7);
+  transform: translate(-50%, -50%);
+}
+
+/* Screen-reader-only live region: announces debounced results without
+   duplicating visible text or driving layout shifts. */
+blog-context-budget .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-reference > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── read-only reference (native details; upgrade never touches it) ─── */
+blog-context-budget .ib-reference {
+  margin: 0.4rem 1.1rem 0.8rem;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.5rem;
+}
+blog-context-budget .ib-reference > summary {
+  cursor: pointer;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+blog-context-budget .ib-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+}
+blog-context-budget .ib-ref-table th,
+blog-context-budget .ib-ref-table td {
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  font-weight: 400;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-ref-table td {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+}
+
+blog-context-budget .ib-observe {
+  margin: 0.2rem 1.1rem 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-context-budget .ib-foot {
+  padding: 0.6rem 1.1rem 0.9rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-context-budget .ib-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-disclosure {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-context-budget .ib-sources {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+}
+blog-context-budget .ib-sources li {
+  margin-top: 0.2rem;
+}
+blog-context-budget .ib-sources a {
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+/* ── desktop: figure / reading two columns (heading keeps its own row) ─ */
+@media (min-width: 720px) {
+  blog-context-budget .ib-panel {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-areas:
+      "title title"
+      "viz readout"
+      "viz explain"
+      "controls controls"
+      "live live";
+    column-gap: 1.2rem;
+    align-items: start;
+  }
+  blog-context-budget .ib-panel-title {
+    grid-area: title;
+  }
+  blog-context-budget .ib-viz {
+    grid-area: viz;
+  }
+  blog-context-budget .ib-readout {
+    grid-area: readout;
+    margin-top: 0.3rem;
+  }
+  blog-context-budget .ib-explain {
+    grid-area: explain;
+  }
+  blog-context-budget .ib-controls {
+    grid-area: controls;
+  }
+  blog-context-budget .ib-live {
+    grid-area: live;
+  }
+}
+
+/* ── motion / print ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  blog-context-budget .ib-scn,
+  blog-context-budget .ib-btn {
+    transition: none;
+  }
+}
+
+@media print {
+  blog-context-budget .ib-scenarios,
+  blog-context-budget .ib-controls,
+  blog-context-budget button,
+  blog-context-budget input {
+    display: none !important;
+  }
+  /* Print the complete static reference (comparison table) whether or not
+     the reader opened it. Cross-engine closed-details handling. */
+  blog-context-budget .ib-reference {
+    display: block !important;
+  }
+  blog-context-budget .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-context-budget .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

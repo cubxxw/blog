@@ -1,0 +1,397 @@
+/* agent-loop.css — styles for <blog-agent-loop> only (issue #389).
+ * Scoped under the custom-element root; design tokens only. The static (no-JS)
+ * state shows every scenario's complete step list; the enhanced state steps
+ * through one preset trace at a time (all steps stay visible; the current one
+ * is highlighted). Preset-trace labelling is always visible.
+ *
+ * Static and enhanced states share one geometry: the step controls swap into
+ * a same-sized static slot so the upgrade causes no layout shift. */
+
+/* Author display must never defeat the hidden attribute (UA [hidden] loses
+ * to author display). Scoped to this root; print re-enables the panels. */
+blog-agent-loop [hidden] {
+  display: none !important;
+}
+
+blog-agent-loop.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-agent-loop .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-agent-loop .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+blog-agent-loop .ib-preset {
+  margin-left: auto;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+}
+
+blog-agent-loop .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario strip: static chips swap for identical-height buttons ─── */
+blog-agent-loop .ib-scenarios {
+  padding: 0.5rem 1.1rem 0.2rem;
+}
+blog-agent-loop .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+}
+blog-agent-loop .ib-scn-chip,
+blog-agent-loop .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+blog-agent-loop .ib-scn-chip {
+  border-color: transparent;
+}
+blog-agent-loop .ib-scn-chip:first-child {
+  font-weight: 600;
+}
+blog-agent-loop button.ib-scn {
+  cursor: pointer;
+}
+blog-agent-loop button.ib-scn:hover {
+  color: var(--color-ink, #1a1c1b);
+  border-color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-scn[aria-pressed="true"] {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+  border-color: var(--color-accent, #2e352e);
+  background: var(--color-accent-soft, #dde5da);
+}
+blog-agent-loop .ib-scn:focus-visible,
+blog-agent-loop .ib-btn:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── buttons + static control slot share one box size ───────────────── */
+blog-agent-loop .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 6px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+blog-agent-loop .ib-btn--reset {
+  margin-left: auto;
+}
+/* Swap slots reserve the exact box (localized text included, so baselines
+   align) but stay invisible — never a fake control. */
+blog-agent-loop .ib-slot {
+  border-color: transparent;
+  visibility: hidden;
+}
+blog-agent-loop .ib-btn:hover {
+  color: var(--color-ink, #1a1c1b);
+  border-color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ── node strip (decorative mirror of the current step's kind) ──────── */
+blog-agent-loop .ib-nodes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0.45rem 1.1rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+}
+blog-agent-loop .ib-node {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-node.is-active {
+  border-color: var(--color-accent, #2e352e);
+  background: var(--color-accent-soft, #dde5da);
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+}
+blog-agent-loop .ib-node-arrow {
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-agent-loop .ib-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0 1.1rem;
+}
+/* The invisible SSR toolbar placeholder mirrors the enhanced toolbar row
+   exactly (same boxes, labels and wrapping → geometry-neutral swap). */
+blog-agent-loop .ib-ctrl-slot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+blog-agent-loop .ib-counter {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.2rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* Screen-reader-only live region: announces debounced state without
+   duplicating the visible current event or driving layout shifts. */
+blog-agent-loop .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-reference > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── current-event stage (the one working event of the selected trace) ─ */
+blog-agent-loop .ib-current {
+  margin: 0.2rem 1.1rem 0.6rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  border-radius: 8px;
+  background: var(--color-accent-soft, #dde5da);
+  min-width: 0;
+}
+
+/* ── step list (read-only reference traces) ─────────────────────────── */
+blog-agent-loop .ib-ref-title {
+  margin: 0.6rem 0 0.4rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-agent-loop .ib-step {
+  position: relative;
+  padding: 0.35rem 0.45rem 0.45rem 0.85rem;
+  min-width: 0;
+}
+blog-agent-loop .ib-step-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+}
+blog-agent-loop .ib-step-num {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-step-kind {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-tool,
+blog-agent-loop .ib-status,
+blog-agent-loop .ib-args {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+blog-agent-loop .ib-status {
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-step-text {
+  margin: 0.15rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+blog-agent-loop .ib-step--stop .ib-step-text {
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.5rem;
+}
+blog-agent-loop .ib-io {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+blog-agent-loop .ib-io-label {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── read-only reference (native details; upgrade never touches it) ─── */
+blog-agent-loop .ib-reference {
+  margin: 0.4rem 1.1rem 0.8rem;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.5rem;
+}
+blog-agent-loop .ib-reference > summary {
+  cursor: pointer;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+blog-agent-loop .ib-observe {
+  margin: 0.4rem 1.1rem 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-foot {
+  padding: 0.6rem 1.1rem 0.9rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-agent-loop .ib-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-disclosure {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-agent-loop .ib-sources {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+}
+blog-agent-loop .ib-sources li {
+  margin-top: 0.2rem;
+}
+blog-agent-loop .ib-sources a {
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-agent-loop .ib-scn,
+  blog-agent-loop .ib-btn,
+  blog-agent-loop .ib-step,
+  blog-agent-loop .ib-node {
+    transition: none;
+  }
+}
+
+@media print {
+  blog-agent-loop .ib-scenarios,
+  blog-agent-loop .ib-controls,
+  blog-agent-loop .ib-nodes,
+  blog-agent-loop .ib-live,
+  blog-agent-loop button,
+  blog-agent-loop input {
+    display: none !important;
+  }
+  /* Print the complete authored traces from the reference (the live stage
+     duplicates one event of them, so it is hidden to avoid double traces).
+     Cross-engine closed-details handling. */
+  blog-agent-loop .ib-current {
+    display: none !important;
+  }
+  blog-agent-loop .ib-reference {
+    display: block !important;
+  }
+  blog-agent-loop .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-agent-loop .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

@@ -1,0 +1,14 @@
+{{- $c := index .spec.copy .lang -}}
+<div class="ib-head">
+  <span class="ib-kicker">{{ $c.figureLabel }}</span>
+  <span class="ib-title">{{ $c.title }}</span>
+  {{- with .preset }}
+  <span class="ib-preset">{{ . }}</span>
+  {{- end }}
+  {{- /* Invisible slot with the localized reset label reserves the reset
+       button's exact box (baseline included) so the enhanced swap causes no
+       layout shift. visibility:hidden — not a fake button, never focusable. */}}
+  <span class="ib-btn ib-slot" data-ib-head-slot aria-hidden="true">{{ if eq .lang "zh" }}重置{{ else }}Reset{{ end }}</span>
+  <button type="button" class="ib-btn ib-btn--reset" data-ib-reset hidden></button>
+</div>
+<p class="ib-question">{{ $c.question }}</p>

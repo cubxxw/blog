@@ -1,0 +1,134 @@
+{{- /* blog-agent-loop — current-event stage + native <details> reference
+     (issue #389). The stage shows ONE current event of the selected preset
+     trace (default scenario, first event in SSR) with node highlight, step
+     counter and finite controls; the <details> reference holds all three
+     COMPLETE authored traces — same spec data, no runtime selectors, no ids,
+     works without JS and its open state is never touched by the upgrade.
+     Preset-trace labelling is visible in every state; tool names, args and
+     results are inert text (never executed). Interactive controls swap into
+     same-sized visibility:hidden slots (zero layout shift on upgrade). */ -}}
+{{- $c := index .spec.copy .lang -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+
+{{- $def := index $ordered 0 -}}
+{{- $first := index $def.events 0 -}}
+{{- $firstKind := $first.kind -}}
+{{- $firstText := (index $first.copy .lang).text -}}
+{{- $firstNode := "stop" -}}
+{{- if eq $firstKind "decision" }}{{ $firstNode = "decision" -}}
+{{- else if eq $firstKind "tool_call" }}{{ $firstNode = "tool" -}}
+{{- else if eq $firstKind "tool_result" }}{{ $firstNode = "result" }}{{ end -}}
+
+<blog-agent-loop id="{{ .id }}" class="ib-figure ib-loop" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang "preset" $c.presetNotice) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  <div class="ib-nodes" data-ib-nodes aria-hidden="true">
+    <span class="ib-node{{ if eq $firstNode "decision" }} is-active{{ end }}" data-ib-node="decision">{{ $c.nodes.decision }}</span>
+    <span class="ib-node-arrow">→</span>
+    <span class="ib-node{{ if eq $firstNode "tool" }} is-active{{ end }}" data-ib-node="tool">{{ $c.nodes.tool }}</span>
+    <span class="ib-node-arrow">→</span>
+    <span class="ib-node{{ if eq $firstNode "result" }} is-active{{ end }}" data-ib-node="result">{{ $c.nodes.result }}</span>
+    <span class="ib-node-arrow">→</span>
+    <span class="ib-node{{ if eq $firstNode "stop" }} is-active{{ end }}" data-ib-node="stop">{{ $c.nodes.stop }}</span>
+  </div>
+
+  <div class="ib-controls ib-controls--steps">
+    {{- /* Invisible SSR placeholder mirrors the exact enhanced toolbar
+         (three button boxes + counter, identical labels and wrapping), so
+         the swap is geometry-neutral at 320–1280px. Spans only — never
+         focusable, never fake controls. */}}
+    <span class="ib-ctrl-slot" data-ib-ctrl-slot aria-hidden="true">
+      <span class="ib-btn ib-slot">{{ if eq .lang "zh" }}上一步{{ else }}Prev{{ end }}</span>
+      <span class="ib-btn ib-slot">{{ if eq .lang "zh" }}播放{{ else }}Play{{ end }}</span>
+      <span class="ib-btn ib-slot">{{ if eq .lang "zh" }}下一步{{ else }}Next{{ end }}</span>
+      <span class="ib-counter ib-slot">1 / {{ len $def.events }}</span>
+    </span>
+    <button type="button" class="ib-btn" data-ib-prev disabled hidden></button>
+    <button type="button" class="ib-btn" data-ib-play hidden></button>
+    <button type="button" class="ib-btn" data-ib-next hidden></button>
+    <span class="ib-counter" data-ib-counter aria-hidden="true" hidden></span>
+  </div>
+
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  <article class="ib-current" data-ib-current data-ib-kind="{{ $firstKind }}" aria-label="{{ index $c.scenarioLabels $def.id }}">
+    <p class="ib-step-head">
+      <span class="ib-step-kind" data-ib-current-kind>{{ index $c.stepKinds $firstKind }}</span>
+      {{- with $first.tool }}
+      <code class="ib-tool" data-ib-current-tool>{{ . }}</code>
+      {{- else }}
+      <code class="ib-tool" data-ib-current-tool hidden></code>
+      {{- end }}
+      {{- if eq $firstKind "tool_result" }}
+      <code class="ib-status" data-ib-current-status>{{ $first.status }}</code>
+      {{- else if eq $firstKind "stop" }}
+      <code class="ib-status" data-ib-current-status>{{ $first.reason }}</code>
+      {{- else }}
+      <code class="ib-status" data-ib-current-status hidden></code>
+      {{- end }}
+    </p>
+    {{- if eq $firstKind "tool_result" }}
+    <p class="ib-io" data-ib-current-outlabel><span class="ib-io-label">{{ $c.io.output }}</span></p>
+    {{- else }}
+    <p class="ib-io" data-ib-current-outlabel hidden><span class="ib-io-label">{{ $c.io.output }}</span></p>
+    {{- end }}
+    <p class="ib-step-text" data-ib-current-text>{{ $firstText }}</p>
+    {{- with $first.args }}
+    <p class="ib-io" data-ib-current-inlabel><span class="ib-io-label">{{ $c.io.input }}</span> <code class="ib-args" data-ib-current-args>{{ . }}</code></p>
+    {{- else }}
+    <p class="ib-io" data-ib-current-inlabel hidden><span class="ib-io-label">{{ $c.io.input }}</span> <code class="ib-args" data-ib-current-args></code></p>
+    {{- end }}
+  </article>
+
+  {{- /* Complete read-only reference: all authored traces from the same spec
+       data. No runtime selectors, no ids — the upgrade never touches it. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    {{- range $s := $ordered }}
+    <section class="ib-ref-trace">
+      <p class="ib-ref-title">{{ index $c.scenarioLabels $s.id }}</p>
+      <ol class="ib-steps ib-steps--ref">
+        {{- range $i, $e := $s.events }}
+        {{- $text := (index $e.copy $.lang).text -}}
+        <li class="ib-step ib-step--{{ $e.kind }}">
+          <p class="ib-step-head">
+            <span class="ib-step-num" aria-hidden="true">{{ add $i 1 }}</span>
+            <span class="ib-step-kind">{{ index $c.stepKinds $e.kind }}</span>
+            {{- with $e.tool }}<code class="ib-tool">{{ . }}</code>{{ end }}
+            {{- if eq $e.kind "tool_result" }}<code class="ib-status">{{ $e.status }}</code>{{ end }}
+            {{- if eq $e.kind "stop" }}<code class="ib-status">{{ $e.reason }}</code>{{ end }}
+          </p>
+          {{- if eq $e.kind "tool_result" }}
+          <p class="ib-io"><span class="ib-io-label">{{ $c.io.output }}</span></p>
+          {{- end }}
+          <p class="ib-step-text">{{ $text }}</p>
+          {{- with $e.args }}
+          <p class="ib-io"><span class="ib-io-label">{{ $c.io.input }}</span> <code class="ib-args">{{ . }}</code></p>
+          {{- end }}
+        </li>
+        {{- end }}
+      </ol>
+    </section>
+    {{- end }}
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-agent-loop>

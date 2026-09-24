@@ -1,0 +1,9 @@
+{{- /* Embedded per-instance config (issue #389): the pre-measured, HTML-safe
+     serialized {id, lang, spec} string (measured for the byte budgets in
+     interactive.html — the EXACT string measured is the one emitted) with
+     safeJS so the template engine's script-context quoter cannot wrap it in
+     a JS string literal. JSON.parse of the text content returns the payload
+     OBJECT. Raw source JSON is never passed to safeHTML. Round-trips of
+     </script>, quotes, <, &, Chinese text and newlines are asserted against
+     built HTML in npm run interactive:check. */ -}}
+<script type="application/json" data-ib-config>{{ .json | safeJS }}</script>

@@ -118,19 +118,9 @@ return finalize(state)
 
 The `execute(action)` line is the entry point to the harness. A model can request deletion; the runtime decides whether the request is valid, where it may run, and whether approval is required. OpenAI's [Codex loop description](https://openai.com/index/unrolling-the-codex-agent-loop/) follows the same broad shape: the model emits a response or tool call, the harness appends the tool result, and the cycle continues.
 
-Let's run the loop through a real scenario. Watch the second `run_command`: the model merely **requests** the deletion — what decides whether it happens is the harness's confirmation gate:
+Let's walk the loop through a preset teaching scenario. The trace below is **authored for this article** — the decision notes are explanations, not a model's inner thought, and the commands are inert text that executes nowhere and touches no tool. Watch the second `run_command`: the model merely **requests** the deletion — what decides whether it happens is the harness's confirmation gate:
 
-{{< demo-agent-trace title="Agent Loop × Harness Gate" question="Clean the build artifacts out of this repo" >}}
-[
-  {"type":"think","text":"Files need deleting. First see what's actually there — never act blind."},
-  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"ls dist/ build/\"}"},
-  {"type":"tool_result","text":"dist/  14 files · 3.2 MB\nbuild/  7 files · 1.1 MB"},
-  {"type":"think","text":"Target confirmed. Deletion is a dangerous action — this call will be intercepted by the harness for approval."},
-  {"type":"tool_call","tool":"run_command","args":"{\"cmd\":\"rm -rf dist build\"}"},
-  {"type":"tool_result","text":"[harness] rm -rf matched a confirmation rule → awaiting approval → approved\n21 files deleted (4.3 MB)"},
-  {"type":"answer","text":"Cleaned dist/ and build/ — 21 files, 4.3 MB. The deletion passed through the harness's confirmation gate before executing; the model only ever issued requests and never touched the shell."}
-]
-{{< /demo-agent-trace >}}
+{{< interactive kind="agent-loop" id="harness-agent-loop" spec="agent-loop-v1" >}}
 
 **Common control patterns:**
 

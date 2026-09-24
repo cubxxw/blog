@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "kind": "context-budget",
+  "id": "context-window-v1",
+  "defaultScenario": "tool-heavy",
+  "model": { "capacity": 64, "system": 4, "toolMin": 0, "toolMax": 48, "toolStep": 1 },
+  "scenarios": [
+    { "id": "compact", "history": 8, "tools": 4 },
+    { "id": "long-history", "history": 36, "tools": 16 },
+    { "id": "tool-heavy", "history": 20, "tools": 32 }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "上下文预算实验",
+      "question": "工具返回的内容变多时，上下文窗口会发生什么变化？",
+      "unitLabel": "k（示意单位）",
+      "capacityLabel": "容量上限",
+      "sliderLabel": "工具结果长度",
+      "referenceTitle": "查看场景对照表",
+      "assumption": "只演示容量关系，不预测回答质量，也不代表真实 token 计数；模型本身不执行任何压缩或删除。",
+      "observe": "观察：改变这个条件后，哪些信息需要重新取舍？",
+      "footerNote": "示意数据 · 模型假设 · 对应来源",
+      "segments": { "system": "系统", "history": "历史", "tools": "工具", "remaining": "剩余" },
+      "metrics": { "used": "总需求", "remaining": "剩余", "overflow": "溢出" },
+      "table": { "scenario": "场景", "used": "总需求", "remaining": "剩余", "overflow": "溢出" },
+      "explanations": {
+        "plenty": "仍有余量：高信号信息还有空间进入窗口。",
+        "tight": "剩余空间紧张：需要在历史与工具结果之间重新取舍。",
+        "overflow": "已超出容量：下方标出的溢出部分必须被裁剪或移出窗口，图不会把它藏起来。"
+      },
+      "scenarioLabels": {
+        "compact": "精简输入",
+        "long-history": "长对话",
+        "tool-heavy": "大量工具结果"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Context budget experiment",
+      "question": "What happens to the context window when tool results grow?",
+      "unitLabel": "k (illustrative units)",
+      "capacityLabel": "Fixed capacity",
+      "sliderLabel": "Tool result length",
+      "referenceTitle": "View the scenario comparison",
+      "assumption": "Capacity relationships only — this model predicts neither answer quality nor real token counts, and it does not itself compress or remove content.",
+      "observe": "Observe: once this condition changes, which history or tool results would you keep, and which would you remove?",
+      "footerNote": "Illustrative data · Model assumptions · Sources",
+      "segments": { "system": "System", "history": "History", "tools": "Tools", "remaining": "Remaining" },
+      "metrics": { "used": "Used", "remaining": "Remaining", "overflow": "Over capacity" },
+      "table": { "scenario": "Scenario", "used": "Used", "remaining": "Remaining", "overflow": "Over capacity" },
+      "explanations": {
+        "plenty": "Room is left: high-signal information can still enter the window.",
+        "tight": "Space is tight: you must decide which history or tool results to keep or remove.",
+        "overflow": "Over capacity: the hatched overflow band below must be cut or moved out — the figure never hides it."
+      },
+      "scenarioLabels": {
+        "compact": "Compact input",
+        "long-history": "Long conversation",
+        "tool-heavy": "Large tool results"
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "title": "Anthropic — Effective context engineering for AI agents"
+    }
+  ]
+}
