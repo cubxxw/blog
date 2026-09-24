@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "kind": "flow-bottleneck",
+  "id": "flow-short-v1",
+  "defaultScenario": "review-bound",
+  "model": {
+    "demand": 6,
+    "capacityMax": 12,
+    "maxTicks": 2
+  },
+  "scenarios": [
+    {
+      "id": "review-bound",
+      "capacity": {
+        "generate": 6,
+        "review": 3,
+        "delivery": 5
+      },
+      "initial": {
+        "generate": 8,
+        "review": 0,
+        "delivery": 0
+      }
+    },
+    {
+      "id": "generation-surge",
+      "capacity": {
+        "generate": 10,
+        "review": 3,
+        "delivery": 5
+      },
+      "initial": {
+        "generate": 12,
+        "review": 0,
+        "delivery": 0
+      }
+    },
+    {
+      "id": "warm-start",
+      "capacity": {
+        "generate": 6,
+        "review": 3,
+        "delivery": 5
+      },
+      "initial": {
+        "generate": 8,
+        "review": 4,
+        "delivery": 2
+      }
+    },
+    {
+      "id": "balanced",
+      "capacity": {
+        "generate": 6,
+        "review": 6,
+        "delivery": 6
+      },
+      "initial": {
+        "generate": 0,
+        "review": 0,
+        "delivery": 0
+      }
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "串行流水线的瓶颈推演",
+      "question": "当某一环节提速、瓶颈仍在下游时，队列和累计交付会怎么变？",
+      "assumption": "固定需求与固定产能的示意推演，不是真实业务预测；模型不考虑质量下降、返工、价格变化或需求反弹。",
+      "observe": "观察：只提高生成环节的产能，交付速率为何不变？队列又堆在了哪里？",
+      "footerNote": "示意数据 · 确定性同步推演 · 对应来源",
+      "referenceTitle": "查看全部预设与前几拍推演",
+      "illustrationNotice": "示意流水线：固定输入与产能，不是真实业务预测",
+      "unitLabel": "件（示意单位）",
+      "diagramNote": "图：生成→审核→交付三段串行工位，方块表示各站队列中的作业，右下折线是每拍交付与在制总量。",
+      "tickLabel": "推进一拍",
+      "tickRule": "推演规则（每拍确定执行）：新需求先进入生成队列；随后按交付→审核→生成的顺序各处理一次，每站处理 min(产能, 队列) 件；当拍新完成的作业进入下一站队列，但下一站当拍已处理过，因此最早下一拍才被处理。已接纳的作业（含初始在制）永远等于三段队列与累计交付之和。",
+      "capacityLabel": "每拍产能",
+      "demandLabel": "每拍新到需求",
+      "stages": {
+        "generate": "生成",
+        "review": "审核",
+        "delivery": "交付"
+      },
+      "metrics": {
+        "tick": "拍数",
+        "queue": "队列",
+        "wip": "在制总量",
+        "delivered": "累计交付",
+        "throughput": "本拍交付",
+        "admitted": "累计接纳"
+      },
+      "explanations": {
+        "generate": "最窄处在生成：上游吃不下需求，队列堆在最前面，下游常常闲置。",
+        "review": "最窄处在审核：局部提速只会把在制推到审核前排队，完整交付并不会变快。",
+        "delivery": "最窄处在交付：前面做得再多，也会在交付前积压。",
+        "balanced": "三段产能一致（或并列最窄）：没有单一最窄处，队列随需求波动。",
+        "demand-limited": "每段产能都吃得下当前需求：队列保持简短，交付跟得上需求。此时单独提高任何一段的产能都不会增加交付。"
+      },
+      "scenarioLabels": {
+        "review-bound": "审核收窄",
+        "generation-surge": "生成提速",
+        "warm-start": "带初始在制",
+        "balanced": "三段均衡"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Bottleneck walk-through on a serial line",
+      "question": "When one stage speeds up but the constraint stays downstream, what happens to queues and cumulative delivery?",
+      "assumption": "An illustrative run with fixed demand and fixed capacities — not a real business forecast. The model ignores quality loss, rework, price changes and demand rebound.",
+      "observe": "Observe: raise only the generation capacity. Why does the delivery rate stay put? Where does the queue pile up?",
+      "footerNote": "Illustrative data · Deterministic synchronous run · Sources",
+      "referenceTitle": "View all presets and the first ticks",
+      "illustrationNotice": "Illustrative pipeline: fixed input and capacities, not a real business forecast",
+      "unitLabel": "jobs (illustrative)",
+      "diagramNote": "The figure shows the serial line generation → review → delivery; the squares are jobs waiting at each stage and the chart plots per-tick throughput against total WIP.",
+      "tickLabel": "Advance one tick",
+      "tickRule": "Tick rule (deterministic each tick): new demand enters the generation queue; then delivery → review → generation each serve once — min(capacity, queue) jobs. Jobs completed this tick join the next stage's queue but are served no earlier than the next tick. Every admitted job (including initial WIP) always equals the three queues plus cumulative delivery.",
+      "capacityLabel": "Capacity per tick",
+      "demandLabel": "Incoming demand per tick",
+      "stages": {
+        "generate": "Generation",
+        "review": "Review",
+        "delivery": "Delivery"
+      },
+      "metrics": {
+        "tick": "Tick",
+        "queue": "Queue",
+        "wip": "Total WIP",
+        "delivered": "Delivered",
+        "throughput": "Throughput this tick",
+        "admitted": "Admitted"
+      },
+      "explanations": {
+        "generate": "Generation is the narrowest stage: demand backs up at the front and downstream stages idle.",
+        "review": "Review is the narrowest stage: local speedups only push work in progress in front of review — completed delivery does not get faster.",
+        "delivery": "Delivery is the narrowest stage: whatever the front finishes piles up before delivery.",
+        "balanced": "Capacities are level (or tie for the minimum): no single narrowest stage, queues follow demand.",
+        "demand-limited": "Every stage absorbs the incoming demand: queues stay short and delivery follows demand. Speeding up any single stage now will not deliver more."
+      },
+      "scenarioLabels": {
+        "review-bound": "Review-bound",
+        "generation-surge": "Generation surge",
+        "warm-start": "Warm start",
+        "balanced": "Balanced line"
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Theory_of_constraints",
+      "title": "Theory of constraints — the system is limited by its narrowest constraint (Wikipedia)"
+    }
+  ]
+}

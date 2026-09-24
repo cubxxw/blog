@@ -19,7 +19,7 @@ const PORT = Number(process.env.INTERACTIVE_PORT || 4173);
 
 export default defineConfig({
   testDir: '.',
-  testMatch: ['tests/interactive/**/*.spec.ts', 'tests/e2e/interactive-articles.spec.ts'],
+  testMatch: ['tests/interactive/**/*.spec.ts', 'tests/e2e/interactive-articles.spec.ts', 'tests/e2e/interactive-expansion.spec.ts'],
   timeout: 45_000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

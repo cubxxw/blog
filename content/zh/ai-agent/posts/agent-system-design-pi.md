@@ -186,6 +186,12 @@ Context 因此是 durable session state 的投影。compaction 可以有损，�
 
 这正是最小内核没有拥有的复杂性：conversation recovery 有清晰数据结构，workspace rollback 交给 Git、container snapshot 或 extension。
 
+下面用一个简化会话演示这三层状态，规则取自正文的 Pi v0.84.1。点选树中的消息，或切换 compaction，比较当前分支路径与模型实际看到的上下文。图中使用预设数据，不会运行 Pi。
+
+{{< interactive kind="session-tree" id="session-tree" spec="session-tree-v1" >}}
+
+请盯住工作区那一层：无论把 active leaf 移回哪条旧分支，工作区快照都不动。分支恢复的是对话上下文，不是文件系统；compaction 也一样——它只改投影，完整树始终在。
+
 ## Resource loader 是启动控制面
 
 小内核若允许任意扩展，启动顺序本身就会变成安全问题。Pi 用 `DefaultResourceLoader` 统一发现：

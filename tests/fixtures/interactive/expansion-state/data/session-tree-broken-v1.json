@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "session-tree",
+  "id": "session-tree-broken-v1",
+  "defaultScenario": "root",
+  "model": {
+    "nodes": [
+      {
+        "id": "root",
+        "parentId": null,
+        "role": "root",
+        "copy": {
+          "zh": { "text": "根 entry。" },
+          "en": { "text": "Root entry." }
+        }
+      },
+      {
+        "id": "user-a",
+        "parentId": "root",
+        "role": "user",
+        "copy": {
+          "zh": { "text": "用户：这棵树在运行时校验会失败。" },
+          "en": { "text": "User: this tree fails runtime validation." }
+        }
+      }
+    ],
+    "compaction": {
+      "id": "compaction-entry",
+      "replaces": ["root", "user-a"],
+      "copy": {
+        "zh": { "text": "压缩摘要（示意）。" },
+        "en": { "text": "Compacted summary (illustrative)." }
+      }
+    },
+    "workspace": [
+      {
+        "id": "workspace-note",
+        "path": "notes.md",
+        "from": "user-a",
+        "copy": {
+          "zh": { "text": "notes.md：不变的工作区快照。" },
+          "en": { "text": "notes.md: the unchanged workspace snapshot." }
+        }
+      }
+    ]
+  },
+  "scenarios": [
+    { "id": "root", "activeLeaf": "not-a-node", "compaction": true }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "运行时校验失败样例",
+      "question": "配置损坏时会发生什么？",
+      "assumption": "这是失败回退 fixture：activeLeaf 引用了不存在的 entry，可执行 schema 必须拒绝它。",
+      "observe": "观察：静态视图必须保持完整。",
+      "footerNote": "测试 fixture",
+      "referenceTitle": "查看参考",
+      "fixtureNotice": "失败回退 fixture",
+      "layers": { "tree": "历史", "context": "模型上下文", "workspace": "工作区" },
+      "nodeRoles": { "root": "根", "user": "用户", "assistant": "助手" },
+      "activeLabel": "当前 leaf",
+      "pathLabel": "路径",
+      "compactionLabel": "压缩投影",
+      "projectionNotes": { "full": "完整投影。", "compacted": "压缩投影。" },
+      "projectionSummaryLabel": "compaction entry",
+      "workspaceNote": "工作区不变。",
+      "scenarioLabels": { "root": "根" }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Runtime validation failure sample",
+      "question": "What happens when the config is corrupt?",
+      "assumption": "Failure-fallback fixture: activeLeaf references a missing entry and the executable schema must reject it.",
+      "observe": "Observe: the static view must stay complete.",
+      "footerNote": "Test fixture",
+      "referenceTitle": "View reference",
+      "fixtureNotice": "Failure-fallback fixture",
+      "layers": { "tree": "History", "context": "Model context", "workspace": "Workspace" },
+      "nodeRoles": { "root": "Root", "user": "User", "assistant": "Assistant" },
+      "activeLabel": "Active leaf",
+      "pathLabel": "Path",
+      "compactionLabel": "Compaction projection",
+      "projectionNotes": { "full": "Full projection.", "compacted": "Compacted projection." },
+      "projectionSummaryLabel": "compaction entry",
+      "workspaceNote": "The workspace never changes.",
+      "scenarioLabels": { "root": "Root" }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://pi.dev/docs/latest/sessions",
+      "title": "Pi sessions documentation"
+    }
+  ]
+}

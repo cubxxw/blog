@@ -1,0 +1,212 @@
+{{- /* blog-session-tree — static stage + native <details> reference
+     (GROUP state / Pi "Session tree" explainer).
+     Three layers from one spec: the authored append-only tree (SVG with a
+     deterministic depth/row layout), the derived model-context projection
+     of the selected active entry (optionally folded through the authored
+     compaction entry), and an INDEPENDENT workspace snapshot the upgrade
+     never touches. SSR renders the default scenario's exact view; controls
+     sit in same-sized visibility:hidden slots until the element has
+     validated its config and rendered. The <details> reference holds all
+     three deterministic cases plus the complete entry list — no runtime
+     selectors, no ids, works without JS. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $model := .spec.model -}}
+{{- $nodes := $model.nodes -}}
+{{- $compaction := $model.compaction -}}
+
+{{- /* Node index, deterministic layout (depth column / appearance row) and
+       ancestor paths (parents appear before children in validated data). */ -}}
+{{- $byId := dict -}}
+{{- $pos := dict -}}
+{{- $pathOf := dict -}}
+{{- $rowCount := dict -}}
+{{- $maxD := 0 -}}
+{{- $maxR := 0 -}}
+{{- range $nodes -}}
+  {{- $byId = merge $byId (dict .id .) -}}
+  {{- $d := 0 -}}
+  {{- $p := slice -}}
+  {{- with .parentId -}}
+    {{- $pi := index $pos . -}}
+    {{- $d = add (index $pi "d") 1 -}}
+    {{- $p = index $pathOf . -}}
+  {{- end -}}
+  {{- $r := index $rowCount (printf "%d" $d) | default 0 -}}
+  {{- if gt $d $maxD }}{{ $maxD = $d }}{{ end -}}
+  {{- if gt $r $maxR }}{{ $maxR = $r }}{{ end -}}
+  {{- $pos = merge $pos (dict .id (dict "d" $d "r" $r)) -}}
+  {{- $pathOf = merge $pathOf (dict .id ($p | append .id)) -}}
+  {{- $rowCount = merge $rowCount (dict (printf "%d" $d) (add $r 1)) -}}
+{{- end -}}
+
+{{- $def := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $def = . }}{{ end }}{{ end -}}
+{{- $defView := partial "interactive/session-tree-view.html" (dict "pathOf" $pathOf "compaction" $compaction "scenario" $def "on" $def.compaction) -}}
+
+{{- $nodeW := 96 -}}
+{{- $nodeH := 44 -}}
+{{- $dx := 126 -}}
+{{- $dy := 56 -}}
+{{- $vw := add 120 (mul $maxD $dx) -}}
+{{- $vh := add 68 (mul $maxR $dy) -}}
+
+<blog-session-tree id="{{ .id }}" class="ib-figure ib-tree" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang "preset" $c.fixtureNotice) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range .spec.scenarios }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range .spec.scenarios }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="{{ if eq .id $.spec.defaultScenario }}true{{ else }}false{{ end }}">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- /* ── Layer 1: the complete append-only tree (geometry from the same
+          spec the runtime reads). Inert shapes in SSR; the element adds the
+          click targets only after successful enhancement. */}}
+  <section class="ib-tree-layer" data-ib-layer="tree">
+    <p class="ib-tree-layer-title">{{ $c.layers.tree }}</p>
+    <div class="ib-tree-scroll">
+    <svg class="ib-tree-svg" width="{{ $vw }}" height="{{ $vh }}" viewBox="0 0 {{ $vw }} {{ $vh }}" aria-hidden="true" focusable="false">
+      {{- range $nodes }}
+      {{- $node := . }}
+      {{- with .parentId }}
+      {{- $pi := index $pos . -}}
+      {{- $ci := index $pos $node.id -}}
+      {{- $x1 := add (add 12 (mul (index $pi "d") $dx)) $nodeW -}}
+      {{- $y1 := add (add 12 (mul (index $pi "r") $dy)) 22 -}}
+      {{- $x2 := add 12 (mul (index $ci "d") $dx) -}}
+      {{- $y2 := add (add 12 (mul (index $ci "r") $dy)) 22 -}}
+      <path class="ib-tree-edge" d="M {{ $x1 }} {{ $y1 }} H {{ add $x1 15 }} V {{ $y2 }} H {{ $x2 }}"></path>
+      {{- end }}
+      {{- end }}
+      {{- range $nodes }}
+      {{- $pi := index $pos .id -}}
+      {{- $x := add 12 (mul (index $pi "d") $dx) -}}
+      {{- $y := add 12 (mul (index $pi "r") $dy) -}}
+      <g class="ib-tree-node{{ if in $defView.chain .id }} is-path{{ end }}{{ if eq $def.activeLeaf .id }} is-active{{ end }}{{ if and $defView.applies (in $compaction.replaces .id) }} is-folded{{ end }}" data-ib-node="{{ .id }}">
+        <rect class="ib-tree-box" x="{{ $x }}" y="{{ $y }}" width="{{ $nodeW }}" height="{{ $nodeH }}" rx="8"></rect>
+        <text class="ib-tree-label" x="{{ add $x (div $nodeW 2) }}" y="{{ add $y 27 }}" text-anchor="middle">{{ index $c.nodeRoles .role }}</text>
+        <rect class="ib-tree-hit" x="{{ $x }}" y="{{ $y }}" width="{{ $nodeW }}" height="{{ $nodeH }}"></rect>
+      </g>
+      {{- end }}
+    </svg>
+    </div>
+    <p class="ib-tree-path"><span class="ib-tree-path-label">{{ $c.pathLabel }}：</span><span data-ib-path>{{ delimit $defView.chain " → " }}</span></p>
+    <p class="ib-tree-path"><span class="ib-tree-path-label">{{ $c.activeLabel }}：</span><span data-ib-active-label>{{ $def.activeLeaf }}</span></p>
+  </section>
+
+  {{- /* ── Layer 2: the current model-context projection (derived view). */}}
+  <section class="ib-tree-layer" data-ib-layer="context">
+    <p class="ib-tree-layer-title">{{ $c.layers.context }}</p>
+    <ol class="ib-tree-entries" data-ib-projection>
+      {{- range $defView.entries }}
+      {{- if eq .type "compaction" }}
+      <li class="ib-tree-entry ib-tree-entry--compaction">
+        <span class="ib-tree-entry-kind">{{ $c.projectionSummaryLabel }}</span>
+        <span class="ib-tree-entry-text">{{ (index $compaction.copy $.lang).text }}</span>
+      </li>
+      {{- else }}
+      {{- $n := index $byId .id }}
+      <li class="ib-tree-entry">
+        <span class="ib-tree-entry-kind">{{ index $c.nodeRoles $n.role }} · {{ $n.id }}</span>
+        <span class="ib-tree-entry-text">{{ (index $n.copy $.lang).text }}</span>
+      </li>
+      {{- end }}
+      {{- end }}
+    </ol>
+    <p class="ib-tree-note" data-ib-projection-note>{{ if $defView.applies }}{{ $c.projectionNotes.compacted }}{{ else }}{{ $c.projectionNotes.full }}{{ end }}</p>
+  </section>
+
+  {{- /* ── Layer 3: the independent workspace snapshot. NO runtime hooks
+          anywhere inside: switching leaves or folding compaction must never
+          touch filesystem state or this markup. */}}
+  <section class="ib-tree-layer" data-ib-workspace>
+    <p class="ib-tree-layer-title">{{ $c.layers.workspace }}</p>
+    <ul class="ib-tree-ws">
+      {{- range $model.workspace }}
+      <li class="ib-tree-ws-item"><code class="ib-tree-ws-path">{{ .path }}</code><span class="ib-tree-entry-kind">{{ .from }}</span><span class="ib-tree-entry-text">{{ (index .copy $.lang).text }}</span></li>
+      {{- end }}
+    </ul>
+    <p class="ib-tree-note">{{ $c.workspaceNote }}</p>
+  </section>
+
+  <div class="ib-controls ib-controls--tree">
+    {{- /* Same-sized invisible slots reserve the control boxes (zero layout
+         shift on upgrade); never fake controls, never focusable. */}}
+    <label class="ib-select-wrap">
+      <span class="ib-tree-path-label">{{ $c.activeLabel }}：</span>
+      <span class="ib-select ib-slot" data-ib-select-slot aria-hidden="true">{{ $def.activeLeaf }}</span>
+      <select class="ib-select" data-ib-select hidden>
+        {{- range $nodes }}
+        <option value="{{ .id }}"{{ if eq $def.activeLeaf .id }} selected{{ end }}>{{ index $c.nodeRoles .role }} · {{ .id }}</option>
+        {{- end }}
+      </select>
+    </label>
+    <span class="ib-btn ib-slot" data-ib-toggle-slot aria-hidden="true">{{ $c.compactionLabel }}</span>
+    <button type="button" class="ib-btn" data-ib-compaction aria-pressed="{{ if $defView.applies }}true{{ else }}false{{ end }}" hidden>{{ $c.compactionLabel }}</button>
+  </div>
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  {{- /* Complete read-only reference: all three cases from the same
+       computation, the full entry list and the workspace snapshot. No
+       runtime selectors and no ids — the upgrade never touches it. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    {{- range $s := .spec.scenarios }}
+    {{- $v := partial "interactive/session-tree-view.html" (dict "pathOf" $pathOf "compaction" $compaction "scenario" $s "on" $s.compaction) }}
+    <section class="ib-tree-ref-case">
+      <p class="ib-tree-ref-title">{{ index $c.scenarioLabels $s.id }}</p>
+      <p class="ib-tree-ref-line">{{ $c.pathLabel }}：{{ delimit $v.chain " → " }}</p>
+      <p class="ib-tree-ref-line">{{ $c.activeLabel }}：{{ $s.activeLeaf }}</p>
+      <p class="ib-tree-ref-line">{{ $c.layers.context }}：</p>
+      <ol class="ib-tree-entries">
+        {{- range $v.entries }}
+        {{- if eq .type "compaction" }}
+        <li class="ib-tree-entry ib-tree-entry--compaction">
+          <span class="ib-tree-entry-kind">{{ $c.projectionSummaryLabel }}</span>
+          <span class="ib-tree-entry-text">{{ (index $compaction.copy $.lang).text }}</span>
+        </li>
+        {{- else }}
+        {{- $n := index $byId .id }}
+        <li class="ib-tree-entry">
+          <span class="ib-tree-entry-kind">{{ index $c.nodeRoles $n.role }} · {{ $n.id }}</span>
+          <span class="ib-tree-entry-text">{{ (index $n.copy $.lang).text }}</span>
+        </li>
+        {{- end }}
+        {{- end }}
+      </ol>
+      <p class="ib-tree-note">{{ if $v.applies }}{{ $c.projectionNotes.compacted }}{{ else }}{{ $c.projectionNotes.full }}{{ end }}</p>
+    </section>
+    {{- end }}
+    <section class="ib-tree-ref-case">
+      <p class="ib-tree-ref-title">{{ $c.layers.workspace }}</p>
+      <ul class="ib-tree-ws">
+        {{- range $model.workspace }}
+        <li class="ib-tree-ws-item"><code class="ib-tree-ws-path">{{ .path }}</code><span class="ib-tree-entry-kind">{{ .from }}</span><span class="ib-tree-entry-text">{{ (index .copy $.lang).text }}</span></li>
+        {{- end }}
+      </ul>
+      <p class="ib-tree-note">{{ $c.workspaceNote }}</p>
+    </section>
+    <section class="ib-tree-ref-case">
+      <p class="ib-tree-ref-title">{{ $c.layers.tree }}</p>
+      <ol class="ib-tree-entries">
+        {{- range $nodes }}
+        <li class="ib-tree-entry">
+          <span class="ib-tree-entry-kind">{{ index $c.nodeRoles .role }} · {{ .id }}</span>
+          <span class="ib-tree-entry-text">{{ (index .copy $.lang).text }}</span>
+        </li>
+        {{- end }}
+      </ol>
+    </section>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-session-tree>

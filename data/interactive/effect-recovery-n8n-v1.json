@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "kind": "effect-recovery",
+  "id": "effect-recovery-n8n-v1",
+  "defaultScenario": "plain-provider",
+  "model": { "flow": "queue-retry", "maxSteps": 7 },
+  "scenarios": [
+    {
+      "id": "plain-provider",
+      "effectPlacement": "plain",
+      "provider": { "receiptQuery": false, "idempotencyKey": false },
+      "defaultCrash": "after-commit-before-receipt",
+      "defaultStrategy": "retry"
+    },
+    {
+      "id": "key-provider",
+      "effectPlacement": "plain",
+      "provider": { "receiptQuery": false, "idempotencyKey": true },
+      "defaultCrash": "after-commit-before-receipt",
+      "defaultStrategy": "idempotency-key"
+    },
+    {
+      "id": "queryable-provider",
+      "effectPlacement": "plain",
+      "provider": { "receiptQuery": true, "idempotencyKey": false },
+      "defaultCrash": "after-commit-before-receipt",
+      "defaultStrategy": "query-receipt"
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "崩溃窗口与恢复动作",
+      "question": "worker 崩溃之后，本地记录到底能证明什么？换一种恢复动作，同一次外部写入会发生几次？",
+      "assumption": "推演一次逻辑外部写入：数字按固定规则计算，不是真实供应商行为，也不含真实付款。重试不会给未决写入带来证据；unknown 不会被自动折叠成 failure。幂等键方案假设每一次发送（含首次）都携带稳定键。",
+      "observe": "观察：哪个崩溃窗口失去证据？哪种恢复动作能把未知收敛成恰好一次？",
+      "footerNote": "示意推演 · 规则假设 · 对应来源",
+      "referenceTitle": "查看全部结果对照表",
+      "scenarioLabels": {
+        "plain-provider": "裸 HTTP 写入",
+        "key-provider": "供应商支持幂等键",
+        "queryable-provider": "业务系统支持回执查询"
+      },
+      "traceNotice": "作者预设的教学推演 · 非真实执行",
+      "lanes": { "worker": "worker 进程", "local": "本地记录", "external": "外部服务" },
+      "steps": {
+        "start": "开始操作",
+        "intent": "记录意图 reserved",
+        "send": "发出请求",
+        "commit": "外部提交副作用",
+        "receipt": "收到回执",
+        "record": "回执写入本地记录",
+        "finish": "返回结果"
+      },
+      "crashLabel": "崩溃位置",
+      "strategyLabel": "恢复动作",
+      "crashOptions": {
+        "before-send": "发出请求之前",
+        "after-commit-before-receipt": "外部已提交、回执未落地",
+        "after-recorded-receipt": "回执已记录之后"
+      },
+      "strategyOptions": {
+        "retry": "直接重试",
+        "query-receipt": "查询回执",
+        "idempotency-key": "稳定幂等键重发"
+      },
+      "readout": {
+        "actions": "实际外部动作次数",
+        "knowledge": "本地知识",
+        "next": "下一步安全动作"
+      },
+      "knowledge": {
+        "confirmed-success": "确认成功（恰好一次）",
+        "confirmed-failure": "确认失败（可证明未生效，或可证明不止一次）",
+        "unknown": "未知（无法证明恰好一次）"
+      },
+      "next": {
+        "return-recorded": "记录并返回已有回执，不再发送",
+        "retry-safe": "可以安全重试",
+        "protected-retry": "先让副作用可安全重放（稳定幂等键），再重试",
+        "reconcile": "需要人工对账或补偿"
+      },
+      "table": {
+        "scenario": "场景",
+        "crash": "崩溃位置",
+        "strategy": "恢复动作",
+        "actions": "外部动作",
+        "knowledge": "本地知识",
+        "next": "下一步"
+      },
+      "explanations": {
+        "empty": "没有外部写入发生，本地证据确认为零：下一步动作取决于重跑是否会重放副作用。",
+        "clean": "恰好一次且可证明：记录并返回回执，不要再发送。",
+        "duplicate": "外部写入不止一次：重复已经进入外部系统，去对账并补偿。",
+        "ambiguous": "本地无法证明恰好一次：先查询或对账，别把 unknown 当成 failure。"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Crash windows and recovery actions",
+      "question": "After the worker crashes, what can the local record actually prove — and how many external writes does each recovery action cause?",
+      "assumption": "One logical external write, traced: numbers follow fixed rules, not real provider behaviour, and no real payment happens. A retry brings no evidence about the pending write; unknown is never folded into failure. The key strategy assumes a stable key on EVERY send, including the first.",
+      "observe": "Observe: which crash window loses the evidence? Which recovery action converges the unknown to exactly once?",
+      "footerNote": "Illustrative trace · model assumptions · sources",
+      "referenceTitle": "View the full outcome table",
+      "scenarioLabels": {
+        "plain-provider": "Plain HTTP write",
+        "key-provider": "Provider supports idempotency keys",
+        "queryable-provider": "System supports receipt queries"
+      },
+      "traceNotice": "Authored teaching trace · not real execution",
+      "lanes": { "worker": "Worker process", "local": "Local record", "external": "External service" },
+      "steps": {
+        "start": "Start the operation",
+        "intent": "Record intent (reserved)",
+        "send": "Send the request",
+        "commit": "External side effect commits",
+        "receipt": "Receive the receipt",
+        "record": "Record the receipt locally",
+        "finish": "Return the result"
+      },
+      "crashLabel": "Crash point",
+      "strategyLabel": "Recovery action",
+      "crashOptions": {
+        "before-send": "Before the send",
+        "after-commit-before-receipt": "After external commit, before the receipt lands",
+        "after-recorded-receipt": "After the receipt is recorded"
+      },
+      "strategyOptions": {
+        "retry": "Direct retry",
+        "query-receipt": "Query the receipt",
+        "idempotency-key": "Resend with a stable idempotency key"
+      },
+      "readout": {
+        "actions": "Actual external actions",
+        "knowledge": "Local knowledge",
+        "next": "Next safe action"
+      },
+      "knowledge": {
+        "confirmed-success": "Confirmed success (exactly once)",
+        "confirmed-failure": "Confirmed failure (provably nothing, or provably more than once)",
+        "unknown": "Unknown (exactly-once unprovable)"
+      },
+      "next": {
+        "return-recorded": "Record and return the receipt — do not send again",
+        "retry-safe": "Safe to retry",
+        "protected-retry": "Make the write safely replayable (stable idempotency key) before retrying",
+        "reconcile": "Manual reconciliation or compensation"
+      },
+      "table": {
+        "scenario": "Scenario",
+        "crash": "Crash point",
+        "strategy": "Recovery action",
+        "actions": "Actions",
+        "knowledge": "Knowledge",
+        "next": "Next"
+      },
+      "explanations": {
+        "empty": "No external write happened and the local evidence proves zero — whether a retry is safe depends on replaying the side effect safely.",
+        "clean": "Exactly once and provable: record and return the receipt; do not send again.",
+        "duplicate": "The external write happened more than once: reconcile and compensate the duplicate.",
+        "ambiguous": "The local side cannot prove exactly once: query or reconcile first — never fold unknown into failure."
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://docs.n8n.io/hosting/scaling/queue-mode/",
+      "title": "n8n — Queue mode"
+    },
+    {
+      "url": "https://github.com/n8n-io/n8n/blob/n8n%402.33.6/packages/cli/src/executions/execution-recovery.service.ts",
+      "title": "n8n 2.33.6 — execution-recovery.service.ts"
+    },
+    {
+      "url": "https://github.com/n8n-io/n8n/blob/n8n%402.33.6/packages/cli/src/scaling/job-processor.ts",
+      "title": "n8n 2.33.6 — job-processor.ts"
+    }
+  ]
+}

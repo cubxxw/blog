@@ -1,0 +1,438 @@
+/* gitops-reconcile.css — styles for <blog-gitops-reconcile> only.
+ * Scoped under the custom-element root; design tokens only (dark/light both
+ * come from assets/css/extended/tokens.css). The static (no-JS) state shows
+ * the default scenario's exact result — Git desired vs cluster comparison,
+ * separate Sync/Health readout, before/after delta, explicit deletion — plus
+ * the complete <details> scenario reference; the enhanced state swaps three
+ * native checkboxes and two action buttons into same-sized
+ * visibility:hidden slots, so the upgrade causes no layout shift. Nothing
+ * overflows the page down to 320px. */
+
+blog-gitops-reconcile [hidden] {
+  display: none !important;
+}
+
+blog-gitops-reconcile.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-gitops-reconcile .ib-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── shared figure chrome (same vocabulary as the base kinds) ─────────── */
+
+blog-gitops-reconcile .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-gitops-reconcile .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-gitops-reconcile .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+blog-gitops-reconcile .ib-preset {
+  margin-left: auto;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+}
+
+blog-gitops-reconcile .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+blog-gitops-reconcile .ib-scenarios {
+  margin: 0.4rem 1.1rem;
+}
+blog-gitops-reconcile .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+blog-gitops-reconcile .ib-scn-chip,
+blog-gitops-reconcile .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.2));
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+blog-gitops-reconcile .ib-scn-chip {
+  border-color: transparent;
+}
+blog-gitops-reconcile button.ib-scn {
+  cursor: pointer;
+}
+blog-gitops-reconcile .ib-scn[aria-pressed="true"] {
+  border-color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+}
+blog-gitops-reconcile .ib-scn:hover,
+blog-gitops-reconcile .ib-btn:hover {
+  border-color: var(--color-ink, #1a1c1b);
+}
+blog-gitops-reconcile .ib-scn:focus-visible,
+blog-gitops-reconcile .ib-btn:focus-visible,
+blog-gitops-reconcile .ib-er-opt input:focus-visible + span {
+  outline: 2px solid var(--color-accent, #2b6cb0);
+  outline-offset: 2px;
+}
+
+blog-gitops-reconcile .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.25rem 0.9rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.2));
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: inherit;
+  cursor: pointer;
+}
+blog-gitops-reconcile .ib-btn--reset {
+  margin-left: auto;
+}
+blog-gitops-reconcile .ib-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+blog-gitops-reconcile .ib-slot {
+  visibility: hidden;
+}
+
+/* ── controls: three native checkboxes + two action buttons ───────────── */
+
+blog-gitops-reconcile .ib-gr-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.6rem 1.1rem;
+}
+blog-gitops-reconcile .ib-gr-ctrl-slot {
+  display: contents;
+}
+blog-gitops-reconcile .ib-gr-ctrl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.7rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 10px;
+}
+blog-gitops-reconcile .ib-gr-ctrl--static {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.7rem;
+  min-width: 0;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+blog-gitops-reconcile .ib-er-ctrl-title {
+  flex: 1 0 100%;
+  padding: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-gitops-reconcile .ib-er-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+blog-gitops-reconcile .ib-er-opt input {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+}
+blog-gitops-reconcile .ib-er-faux {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 3px;
+}
+blog-gitops-reconcile .ib-gr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+/* ── stage: state comparison, readout, deltas, explanation ────────────── */
+
+blog-gitops-reconcile .ib-gr-stage {
+  margin: 0.4rem 1.1rem 0.2rem;
+}
+blog-gitops-reconcile .ib-gr-states {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  table-layout: fixed;
+}
+blog-gitops-reconcile .ib-gr-states th,
+blog-gitops-reconcile .ib-gr-states td {
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+blog-gitops-reconcile .ib-gr-states thead th {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-gitops-reconcile .ib-gr-line {
+  display: block;
+  margin: 0.1rem 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+blog-gitops-reconcile .ib-er-readout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0.7rem 0 0.3rem;
+}
+blog-gitops-reconcile .ib-er-metric {
+  min-width: 0;
+}
+blog-gitops-reconcile .ib-er-metric dt {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-gitops-reconcile .ib-er-metric dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+blog-gitops-reconcile .ib-gr-deltas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+blog-gitops-reconcile .ib-gr-delta {
+  min-width: 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem;
+}
+blog-gitops-reconcile .ib-gr-delta-title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-gitops-reconcile .ib-gr-delta-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+blog-gitops-reconcile .ib-gr-delta-none {
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-gitops-reconcile .ib-er-explain {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+blog-gitops-reconcile .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── read-only reference + rest ───────────────────────────────────────── */
+
+blog-gitops-reconcile .ib-reference {
+  margin: 0.6rem 1.1rem;
+}
+blog-gitops-reconcile .ib-reference > summary {
+  cursor: pointer;
+  font-size: 0.8125rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+}
+blog-gitops-reconcile .ib-reference > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2b6cb0);
+  outline-offset: 2px;
+}
+blog-gitops-reconcile .ib-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  table-layout: fixed;
+}
+blog-gitops-reconcile .ib-ref-table th,
+blog-gitops-reconcile .ib-ref-table td {
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  padding: 0.3rem 0.4rem;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+blog-gitops-reconcile .ib-ref-table thead th {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-gitops-reconcile .ib-observe {
+  margin: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+blog-gitops-reconcile .ib-foot {
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-gitops-reconcile .ib-note {
+  margin: 0 0 0.3rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-gitops-reconcile .ib-disclosure {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-gitops-reconcile .ib-sources {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.75rem;
+}
+blog-gitops-reconcile .ib-sources li {
+  margin: 0.15rem 0;
+}
+blog-gitops-reconcile .ib-sources a {
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+/* ── narrow screens (320px) ──────────────────────────────────────────── */
+
+@media (max-width: 34rem) {
+  blog-gitops-reconcile .ib-er-readout {
+    grid-template-columns: 1fr;
+  }
+  blog-gitops-reconcile .ib-gr-deltas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-gitops-reconcile .ib-scn,
+  blog-gitops-reconcile .ib-btn,
+  blog-gitops-reconcile .ib-er-opt {
+    transition: none;
+  }
+}
+
+@media print {
+  blog-gitops-reconcile .ib-scenarios,
+  blog-gitops-reconcile .ib-gr-controls,
+  blog-gitops-reconcile .ib-live,
+  blog-gitops-reconcile button,
+  blog-gitops-reconcile input {
+    display: none !important;
+  }
+  /* Print shows the complete scenario reference even from a closed
+     disclosure (cross-engine closed-details handling). */
+  blog-gitops-reconcile .ib-reference {
+    display: block !important;
+  }
+  blog-gitops-reconcile .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-gitops-reconcile .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

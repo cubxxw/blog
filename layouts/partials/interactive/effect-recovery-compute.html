@@ -1,0 +1,150 @@
+{{- /* effect-recovery-compute — the deterministic educational model, in one
+     place, for both the SSR stage and the <details> reference grid. This is
+     the template twin of computeEffect() + timelineStates() in
+     assets/js/components/effect-recovery-model.mjs (the fixture build asserts
+     the two agree row for row). Pure arithmetic over the crash window and the
+     recovery discipline; no arbitrary event machine.
+
+       input : dict (flow, placement, receiptQuery, idempotencyKey,
+                     crash, strategy)
+       return: dict (actions, lo, hi, knowledge, nextKey, explainKey,
+                     crashKey, recoveryRan, states)
+
+     Semantics (docs/interactive/effects.md):
+       phase writes of the crashed run — before-send: 0 (provable);
+       after-commit-before-receipt: 1, unproven ∈ {0,1};
+       after-recorded-receipt: 1 — or 2 for the before-approval placement,
+       whose completed run already re-executed the pre-approval side effect.
+       recovery — retry / unsupported idempotency-key: a plain re-run adding
+       completionSends (2 for before-approval node replay, else 1) provable
+       writes and NO evidence about the interrupted one; supported key: every
+       send of the operation carries the stable key and the provider collapses
+       the key scope to exactly one provable write; query-receipt: probe only
+       (resolves with provider support, proves nothing without).
+
+       knowledge — the exactly-once proposition judged by the evidence
+       INTERVAL: {1} → confirmed-success; an interval that EXCLUDES 1 →
+       confirmed-failure (even when the exact count is unknown); an interval
+       that still contains 1 → unknown. Unknown is never folded into failure.
+
+       next — return-recorded (exactly once proven); retry-safe (provably
+       zero AND one plain re-run writes exactly once); protected-retry
+       (provably zero BUT a plain re-run would repeat the side effect — retry
+       only under protected replay, e.g. a stable idempotency key); reconcile
+       (unproven or duplicated).
+
+       states — per-step runs on the lane timeline: done (ran once, crashed
+       run) / repeated (ran more than once — recovery re-execution and/or the
+       interrupt replay) / recovered (ran only in the recovery) / skipped;
+       the crash window stays separately identifiable via crashKey. */ -}}
+{{- $flow := .flow -}}
+{{- $placement := .placement -}}
+{{- $crash := .crash -}}
+{{- $strategy := .strategy -}}
+{{- $before := and (eq $flow "node-replay") (eq $placement "before-approval") -}}
+
+{{- $phase := 1 -}}
+{{- if eq $crash "before-send" -}}
+  {{- $phase = 0 -}}
+{{- else if and $before (eq $crash "after-recorded-receipt") -}}
+  {{- $phase = 2 -}}
+{{- end -}}
+{{- $lo := $phase -}}
+{{- $hi := $phase -}}
+{{- if eq $crash "before-send" -}}
+  {{- $lo = 0 -}}{{- $hi = 0 -}}
+{{- else if eq $crash "after-commit-before-receipt" -}}
+  {{- $lo = 0 -}}{{- $hi = $phase -}}
+{{- end -}}
+
+{{- $cs := 1 -}}
+{{- if $before -}}{{- $cs = 2 -}}{{- end -}}
+{{- $actions := $phase -}}
+{{- $keyed := false -}}
+{{- if and (eq $strategy "idempotency-key") .idempotencyKey -}}{{- $keyed = true -}}{{- end -}}
+{{- $probed := false -}}
+{{- if and (eq $strategy "query-receipt") .receiptQuery -}}{{- $probed = true -}}{{- end -}}
+
+{{- if $keyed -}}
+  {{- $actions = 1 -}}{{- $lo = 1 -}}{{- $hi = 1 -}}
+{{- else if eq $strategy "query-receipt" -}}
+  {{- if $probed -}}{{- $lo = $phase -}}{{- $hi = $phase -}}{{- end -}}
+{{- else -}}
+  {{- $actions = add $actions $cs -}}
+  {{- $lo = add $lo $cs -}}
+  {{- $hi = add $hi $cs -}}
+{{- end -}}
+
+{{- /* The verdict is about exactly-once: {1} proven, an interval excluding
+     1 proven failure, only an interval still containing 1 unknown. */ -}}
+{{- $knowledge := "unknown" -}}
+{{- if and (eq $lo 1) (eq $hi 1) -}}
+  {{- $knowledge = "confirmed-success" -}}
+{{- else if or (lt $hi 1) (gt $lo 1) -}}
+  {{- $knowledge = "confirmed-failure" -}}
+{{- end -}}
+{{- /* Proven zero is only retry-safe when one plain re-run writes exactly
+     once; the before-approval replay makes unprotected retries repeat the
+     side effect, so there protected replay is required first. */ -}}
+{{- $nextKey := "reconcile" -}}
+{{- if eq $knowledge "confirmed-success" -}}
+  {{- $nextKey = "return-recorded" -}}
+{{- else if and (eq $lo 0) (eq $hi 0) -}}
+  {{- if eq $cs 1 -}}{{- $nextKey = "retry-safe" -}}{{- else -}}{{- $nextKey = "protected-retry" -}}{{- end -}}
+{{- end -}}
+{{- $explainKey := "ambiguous" -}}
+{{- if eq $actions 0 -}}
+  {{- $explainKey = "empty" -}}
+{{- else if eq $knowledge "confirmed-success" -}}
+  {{- $explainKey = "clean" -}}
+{{- else if gt $actions 1 -}}
+  {{- $explainKey = "duplicate" -}}
+{{- end -}}
+{{- $crashKey := "send" -}}
+{{- if eq $crash "after-commit-before-receipt" -}}{{- $crashKey = "receipt" -}}{{- else if eq $crash "after-recorded-receipt" -}}{{- $crashKey = "finish" -}}{{- end -}}
+{{- $recoveryRan := ne $strategy "query-receipt" -}}
+
+{{- /* Per-step runs (template twin of timelineStates). */ -}}
+{{- $order := slice "start" "intent" -}}
+{{- if eq $flow "queue-retry" -}}
+  {{- $order = $order | append "send" "commit" "receipt" "record" "finish" -}}
+{{- else if $before -}}
+  {{- $order = $order | append "send" "commit" "receipt" "interrupt" "resume" "record" "finish" -}}
+{{- else -}}
+  {{- $order = $order | append "interrupt" "resume" "send" "commit" "receipt" "record" "finish" -}}
+{{- end -}}
+{{- $crashIdx := 0 -}}{{- $sendIdx := 0 -}}{{- $resumeIdx := -1 -}}
+{{- range $i, $key := $order -}}
+  {{- if eq $key $crashKey }}{{ $crashIdx = $i }}{{ end -}}
+  {{- if eq $key "send" }}{{ $sendIdx = $i }}{{ end -}}
+  {{- if eq $key "resume" }}{{ $resumeIdx = $i }}{{ end -}}
+{{- end -}}
+{{- $replayInCrashed := false -}}
+{{- if and $before (gt $resumeIdx -1) (lt $resumeIdx $crashIdx) }}{{ $replayInCrashed = true }}{{ end -}}
+{{- $sends1 := 0 -}}
+{{- if lt $sendIdx $crashIdx }}{{ $sends1 = 1 }}{{ end -}}
+{{- if $replayInCrashed }}{{ $sends1 = add $sends1 1 }}{{ end -}}
+{{- $commits1 := $sends1 -}}
+{{- if $keyed }}{{ $commits1 = 0 }}{{ if gt $sends1 0 }}{{ $commits1 = 1 }}{{ end }}{{ end -}}
+{{- $sends2 := 0 -}}{{- $commits2 := 0 -}}
+{{- if $recoveryRan -}}
+  {{- $sends2 = $cs -}}
+  {{- if $keyed -}}{{- if eq $commits1 0 }}{{ $commits2 = 1 }}{{ end -}}
+  {{- else -}}{{- $commits2 = $cs -}}{{- end -}}
+{{- end -}}
+{{- $sc := newScratch -}}
+{{- range $i, $key := $order -}}
+  {{- $r1 := 0 -}}{{- $r2 := 0 -}}
+  {{- if eq $key "send" -}}{{- $r1 = $sends1 -}}{{- $r2 = $sends2 -}}
+  {{- else if eq $key "commit" -}}{{- $r1 = $commits1 -}}{{- $r2 = $commits2 -}}
+  {{- else -}}
+    {{- if lt $i $crashIdx }}{{ $r1 = 1 }}{{ end -}}
+    {{- if $recoveryRan }}{{ $r2 = 1 }}{{ end -}}
+  {{- end -}}
+  {{- $runs := add $r1 $r2 -}}
+  {{- $state := "skipped" -}}
+  {{- if gt $runs 1 }}{{ $state = "repeated" }}{{ else if eq $r1 1 }}{{ $state = "done" }}{{ else if eq $runs 1 }}{{ $state = "recovered" }}{{ end -}}
+  {{- $sc.Set $key $state -}}
+{{- end -}}
+
+{{- return (dict "actions" $actions "lo" $lo "hi" $hi "knowledge" $knowledge "nextKey" $nextKey "explainKey" $explainKey "crashKey" $crashKey "recoveryRan" $recoveryRan "states" $sc.Values) -}}

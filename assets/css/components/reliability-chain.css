@@ -1,0 +1,397 @@
+/* reliability-chain.css — styles for <blog-reliability-chain> only. Every
+ * selector is scoped under the custom-element root; nothing here styles
+ * global svg/input/p elements. Colours, fonts and easing come from
+ * assets/css/extended/tokens.css (both themes). The p^n curve is a native
+ * SVG paired with the numeric readout and the sampled-values reference.
+ *
+ * Static (no-JS) and enhanced states share one geometry: interactive
+ * controls swap into same-sized static slots. Controls are ≥ 44px tall,
+ * the figure never overflows 320px viewports, and long labels wrap. */
+
+blog-reliability-chain [hidden] {
+  display: none !important;
+}
+
+blog-reliability-chain.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+  max-width: 100%;
+}
+
+blog-reliability-chain .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-reliability-chain .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-reliability-chain .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+blog-reliability-chain .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario strip: static chips swap for identical-height buttons ─── */
+blog-reliability-chain .ib-scenarios {
+  padding: 0.5rem 1.1rem 0.2rem;
+}
+blog-reliability-chain .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+}
+blog-reliability-chain .ib-scn-chip,
+blog-reliability-chain .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  white-space: normal;
+  text-align: center;
+}
+blog-reliability-chain .ib-scn-chip {
+  border-color: transparent;
+}
+blog-reliability-chain button.ib-scn {
+  cursor: pointer;
+}
+blog-reliability-chain .ib-scn[aria-pressed="true"] {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+  border-color: var(--color-accent, #2e352e);
+  background: var(--color-accent-soft, #dde5da);
+}
+blog-reliability-chain .ib-scn:focus-visible,
+blog-reliability-chain button:focus-visible,
+blog-reliability-chain input:focus-visible,
+blog-reliability-chain summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+blog-reliability-chain .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 6px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+blog-reliability-chain .ib-slot {
+  border-color: transparent;
+  visibility: hidden;
+}
+blog-reliability-chain .ib-btn--reset,
+blog-reliability-chain .ib-slot[data-ib-head-slot] {
+  margin-left: auto;
+}
+
+blog-reliability-chain .ib-panel {
+  padding: 0.5rem 1.1rem 0.9rem;
+  min-width: 0;
+}
+blog-reliability-chain .ib-panel + .ib-panel {
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-reliability-chain .ib-panel-title {
+  margin: 0.3rem 0 0.6rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── expression + result ───────────────────────────────────────────── */
+blog-reliability-chain .ib-expr {
+  margin: 0.2rem 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-ink, #1a1c1b);
+  overflow-wrap: anywhere;
+}
+
+/* ── p^n curve (fixed 0…1 y scale, steps on x) ─────────────────────── */
+blog-reliability-chain .ib-viz {
+  min-width: 0;
+}
+blog-reliability-chain svg.ib-curve {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+blog-reliability-chain .ib-curve-axis {
+  stroke: var(--color-rule, rgba(30, 35, 30, 0.35));
+  stroke-width: 1;
+}
+blog-reliability-chain .ib-curve-line {
+  stroke: var(--color-accent, #2e352e);
+  stroke-width: 2;
+  fill: none;
+}
+blog-reliability-chain .ib-curve-dot {
+  fill: var(--color-accent, #2e352e);
+}
+blog-reliability-chain .ib-curve-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 9px;
+  fill: var(--color-ink-muted, #5e5e63);
+}
+
+blog-reliability-chain .ib-readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  column-gap: 1.2rem;
+  row-gap: 0.5rem;
+  margin: 0.7rem 0 0;
+}
+blog-reliability-chain .ib-metric {
+  min-width: 0;
+}
+blog-reliability-chain .ib-metric dt {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-reliability-chain .ib-metric dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 1rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+blog-reliability-chain .ib-explain,
+blog-reliability-chain .ib-note2 {
+  margin: 0.7rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-ink, #1a1c1b);
+}
+blog-reliability-chain .ib-note2 {
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 0.8125rem;
+}
+
+/* ── optional checkpoint disclosure (reader-driven, never auto-toggled) */
+blog-reliability-chain details.ib-checkpoint {
+  margin: 0.9rem 0 0;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.55rem;
+}
+blog-reliability-chain details.ib-reference {
+  margin: 0.9rem 1.1rem 0;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.55rem;
+}
+blog-reliability-chain details > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-reliability-chain .ib-ref-table {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+}
+blog-reliability-chain .ib-ref-table th,
+blog-reliability-chain .ib-ref-table td {
+  padding: 0.35rem 0.45rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+blog-reliability-chain .ib-ref-table td {
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── controls: same-sized slots, native inputs, ≥ 44px targets ─────── */
+blog-reliability-chain .ib-controls {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+blog-reliability-chain .ib-range-label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.8rem;
+  row-gap: 0.25rem;
+  min-height: 44px;
+}
+blog-reliability-chain .ib-range-text {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+blog-reliability-chain .ib-range-out {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+blog-reliability-chain .ib-range-slot,
+blog-reliability-chain input.ib-range {
+  margin: 0;
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+blog-reliability-chain .ib-range-slot {
+  display: flex;
+  align-items: center;
+}
+blog-reliability-chain .ib-range-slot-track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.25));
+}
+blog-reliability-chain .ib-range-slot-thumb {
+  position: absolute;
+  top: -6px;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+}
+blog-reliability-chain input.ib-range {
+  appearance: none;
+  background: none;
+  cursor: pointer;
+}
+blog-reliability-chain input.ib-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.25));
+}
+blog-reliability-chain input.ib-range::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.25));
+}
+blog-reliability-chain input.ib-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+}
+blog-reliability-chain input.ib-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+}
+
+blog-reliability-chain .ib-live {
+  min-height: 1.2em;
+  margin: 0.5rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-reliability-chain .ib-observe {
+  margin: 0.6rem 1.1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-ink, #1a1c1b);
+}
+blog-reliability-chain .ib-foot {
+  padding: 0.55rem 1.1rem 0.8rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-reliability-chain .ib-sources {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-reliability-chain * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  blog-reliability-chain .ib-scenarios,
+  blog-reliability-chain .ib-controls,
+  blog-reliability-chain .ib-live,
+  blog-reliability-chain button,
+  blog-reliability-chain input,
+  blog-reliability-chain output {
+    display: none !important;
+  }
+  /* Print the complete reference and the checkpoint block whether or not
+     the reader opened them. Cross-engine closed-details handling. */
+  blog-reliability-chain details {
+    display: block !important;
+  }
+  blog-reliability-chain details::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-reliability-chain details > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

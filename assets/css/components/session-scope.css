@@ -1,0 +1,385 @@
+/* session-scope.css — styles for <blog-session-scope> only (GROUP state).
+ * Every selector is scoped under the custom-element root. Colours, fonts and
+ * easing come from assets/css/extended/tokens.css (both themes). The grouped
+ * message boards are real HTML (not only a table): session keys are visual
+ * buckets and every message card keeps its channel/account/peer dimensions
+ * legible down to 320px without overflowing the page.
+ *
+ * Static (no-JS) and enhanced states share one geometry: interactive
+ * controls swap into same-sized static slots. */
+
+blog-session-scope [hidden] {
+  display: none !important;
+}
+
+blog-session-scope.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-session-scope.ib-figure code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+blog-session-scope .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-session-scope .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-scope .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+blog-session-scope .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+blog-session-scope .ib-slot {
+  visibility: hidden;
+}
+
+blog-session-scope .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario strip: static chips swap for identical-height buttons ─── */
+blog-session-scope .ib-scenarios {
+  margin: 0.5rem 1.1rem;
+}
+blog-session-scope .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+blog-session-scope .ib-scn-chip,
+blog-session-scope .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 999px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+}
+blog-session-scope .ib-scn {
+  cursor: pointer;
+  transition: background 0.15s var(--ease-out, ease);
+}
+blog-session-scope .ib-scn[aria-pressed="true"] {
+  background: var(--color-accent-soft, #dde5da);
+  border-color: var(--color-accent, #2e352e);
+}
+blog-session-scope .ib-scn:focus-visible,
+blog-session-scope .ib-btn:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── fixed agent + key shape line ───────────────────────────────────── */
+blog-session-scope .ib-scope-agent {
+  margin: 0.5rem 1.1rem 0.2rem;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+blog-session-scope .ib-meta-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-scope code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+/* ── grouped message boards (visual grouping + text keys) ───────────── */
+blog-session-scope .ib-scope-groups {
+  margin: 0.5rem 1.1rem 0;
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  blog-session-scope .ib-scope-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+blog-session-scope .ib-scope-group {
+  min-width: 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.18));
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem 0.6rem;
+}
+blog-session-scope .ib-scope-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
+  margin: 0 0 0.35rem;
+}
+blog-session-scope .ib-scope-group-id {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-scope .ib-scope-key-code {
+  white-space: normal;
+  min-width: 0;
+  flex: 1 1 100%;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+blog-session-scope .ib-scope-count {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-scope .ib-scope-msgs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+blog-session-scope .ib-scope-msg {
+  padding: 0.4rem 0;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.14));
+}
+blog-session-scope .ib-scope-msg:first-child {
+  border-top: 0;
+}
+blog-session-scope .ib-scope-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.55rem;
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+blog-session-scope .ib-scope-person {
+  font-weight: 700;
+  color: var(--color-ink, #1a1c1b);
+}
+blog-session-scope .ib-scope-text {
+  margin: 0.15rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+blog-session-scope .ib-scope-reading {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── identity-link panel (configured mapping only) ──────────────────── */
+blog-session-scope .ib-scope-identity {
+  margin: 0.6rem 1.1rem 0;
+  padding: 0.55rem 0.7rem 0.65rem;
+  border: 1px dashed var(--color-accent, #2e352e);
+  border-radius: 10px;
+}
+blog-session-scope .ib-scope-identity-title {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+blog-session-scope .ib-scope-map {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+blog-session-scope .ib-scope-map-item {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  margin-top: 0.15rem;
+  overflow-wrap: anywhere;
+}
+blog-session-scope .ib-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-session-scope .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── read-only reference (native details; upgrade never touches it) ─── */
+blog-session-scope .ib-reference {
+  margin: 0.6rem 1.1rem 0.8rem;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.5rem;
+}
+blog-session-scope .ib-reference > summary {
+  cursor: pointer;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+blog-session-scope .ib-reference > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+blog-session-scope .ib-scope-ref-case {
+  margin-top: 0.6rem;
+}
+blog-session-scope .ib-ref-title {
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+blog-session-scope .ib-ref-line {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-scope .ib-scope-ref-groups {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+blog-session-scope .ib-scope-ref-group {
+  margin-top: 0.35rem;
+}
+blog-session-scope .ib-scope-ref-members {
+  margin: 0.1rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  overflow-wrap: anywhere;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-session-scope .ib-observe {
+  margin: 0.2rem 1.1rem 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-session-scope .ib-foot {
+  padding: 0.6rem 1.1rem 0.9rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-session-scope .ib-foot .ib-note {
+  margin: 0;
+}
+blog-session-scope .ib-disclosure {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-scope .ib-sources {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+}
+blog-session-scope .ib-sources li {
+  margin-top: 0.2rem;
+}
+blog-session-scope .ib-sources a {
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-session-scope .ib-scn {
+    transition: none;
+  }
+}
+
+@media print {
+  blog-session-scope .ib-scenarios,
+  blog-session-scope button,
+  blog-session-scope input,
+  blog-session-scope select {
+    display: none !important;
+  }
+  blog-session-scope .ib-scope-groups {
+    grid-template-columns: 1fr;
+  }
+  blog-session-scope .ib-reference {
+    display: block !important;
+  }
+  blog-session-scope .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-session-scope .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

@@ -1,0 +1,40 @@
+{{- /* reliability-chain-format — display formatting identical to
+       formatPermille / formatRate / formatFraction / formatNumber in
+       assets/js/components/reliability-chain-model.mjs (round half up on
+       the value's own scale, trailing zeros trimmed). The model tests pin
+       the JS side; static/model parity tests pin this side against it.
+       Modes: pdec (per-mille → "0.95"), permille (→ "95%"),
+       rate (fraction → "35.85%"), frac (→ "0.3585"), num2 (→ "4.52"). */ -}}
+{{- $mode := .mode -}}
+{{- $v := .value -}}
+{{- $s := "" -}}
+{{- if eq $mode "pdec" -}}
+  {{- $s = printf "%.3f" (div (mul $v 1.0) 1000.0) -}}
+  {{- if in $s "." -}}
+    {{- $s = strings.TrimRight "0" $s -}}
+    {{- $s = strings.TrimRight "." $s -}}
+  {{- end -}}
+{{- else if eq $mode "permille" -}}
+  {{- $s = printf "%.1f" (div (mul $v 1.0) 10.0) -}}
+  {{- if in $s "." -}}
+    {{- $s = strings.TrimRight "0" $s -}}
+    {{- $s = strings.TrimRight "." $s -}}
+  {{- end -}}
+  {{- $s = printf "%s%%" $s -}}
+{{- else if eq $mode "rate" -}}
+  {{- $s = printf "%.2f" (div (math.Round (mul $v 10000.0)) 100.0) -}}
+  {{- if in $s "." -}}
+    {{- $s = strings.TrimRight "0" $s -}}
+    {{- $s = strings.TrimRight "." $s -}}
+  {{- end -}}
+  {{- $s = printf "%s%%" $s -}}
+{{- else if eq $mode "frac" -}}
+  {{- $s = printf "%.4f" (div (math.Round (mul $v 10000.0)) 10000.0) -}}
+{{- else if eq $mode "num2" -}}
+  {{- $s = printf "%.2f" (div (math.Round (mul $v 100.0)) 100.0) -}}
+  {{- if in $s "." -}}
+    {{- $s = strings.TrimRight "0" $s -}}
+    {{- $s = strings.TrimRight "." $s -}}
+  {{- end -}}
+{{- end -}}
+{{- return $s -}}

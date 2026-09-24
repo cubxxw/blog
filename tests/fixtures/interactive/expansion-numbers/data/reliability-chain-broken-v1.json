@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "reliability-chain",
+  "id": "reliability-chain-broken-v1",
+  "defaultScenario": "broken",
+  "model": { "stepsMin": 1, "stepsMax": 100, "stepsPerSegment": 5, "probStep": 0 },
+  "scenarios": [
+    { "id": "broken", "stepPermille": 950, "steps": 20, "recallPermille": 1000 }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "损坏配置对照",
+      "question": "probStep 为 0 是非法值：运行时校验必须拒绝它吗？",
+      "assumption": "这个夹具的 model.probStep 是非法值 0，运行时必须拒绝并保持静态视图。",
+      "observe": "观察：这个图应该永远停在静态状态。",
+      "footerNote": "测试夹具",
+      "referenceTitle": "查看预设与曲线样本",
+      "scenarioLabels": { "broken": "非法配置" },
+      "stepLabel": "单步成功率",
+      "stepsLabel": "必需步数",
+      "recallLabel": "检查点召回率 r",
+      "resultLabels": { "plain": "全程无错率 p^n", "checkpoint": "检查点模式合计", "segment": "单段成功率（一次重试后）", "attempts": "期望段尝试次数", "segments": "分段（步数）" },
+      "curveLabels": { "x": "必需步数", "y": "全程无错率", "alt": "曲线占位。" },
+      "table": { "scenario": "场景", "stepRate": "单步成功率", "steps": "步数", "plain": "p^n", "checkpoint": "检查点模式" },
+      "curveTable": { "steps": "步数", "result": "全程无错率" },
+      "checkpoint": { "summary": "检查点模式", "note": "夹具注记。" },
+      "explanations": { "steep": "夹具说明。", "moderate": "夹具说明。", "mild": "夹具说明。" }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Broken-config control",
+      "question": "probStep 0 is illegal: must runtime validation reject it?",
+      "assumption": "This fixture sets model.probStep to the illegal value 0; the runtime must reject it and keep the static view.",
+      "observe": "Observe: this figure must stay static forever.",
+      "footerNote": "Test fixture",
+      "referenceTitle": "View presets and curve samples",
+      "scenarioLabels": { "broken": "Illegal config" },
+      "stepLabel": "Per-step success",
+      "stepsLabel": "Required steps",
+      "recallLabel": "Checkpoint recall r",
+      "resultLabels": { "plain": "Clean-run rate p^n", "checkpoint": "Checkpoint total", "segment": "Segment rate (after one retry)", "attempts": "Expected segment attempts", "segments": "Segments (steps)" },
+      "curveLabels": { "x": "Required steps", "y": "Clean-run rate", "alt": "Curve placeholder." },
+      "table": { "scenario": "Scenario", "stepRate": "Per step", "steps": "Steps", "plain": "p^n", "checkpoint": "Checkpoints" },
+      "curveTable": { "steps": "Steps", "result": "Clean-run rate" },
+      "checkpoint": { "summary": "Checkpoint mode", "note": "Fixture note." },
+      "explanations": { "steep": "Fixture text.", "moderate": "Fixture text.", "mild": "Fixture text." }
+    }
+  },
+  "sourceRefs": [
+    { "url": "https://example.com/fixture", "title": "Fixture source" }
+  ]
+}

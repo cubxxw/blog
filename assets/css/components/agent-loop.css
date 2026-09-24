@@ -23,6 +23,12 @@ blog-agent-loop.ib-figure {
   color: var(--color-ink, #1a1c1b);
 }
 
+blog-agent-loop.ib-figure code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
 blog-agent-loop .ib-head {
   display: flex;
   align-items: baseline;
@@ -175,6 +181,7 @@ blog-agent-loop .ib-node-arrow {
 
 blog-agent-loop .ib-controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
   min-height: 44px;
@@ -184,6 +191,8 @@ blog-agent-loop .ib-controls {
    exactly (same boxes, labels and wrapping → geometry-neutral swap). */
 blog-agent-loop .ib-ctrl-slot {
   display: inline-flex;
+  flex-wrap: wrap;
+  min-width: 0;
   align-items: center;
   gap: 0.4rem;
 }
@@ -273,6 +282,7 @@ blog-agent-loop .ib-step-kind {
 blog-agent-loop .ib-tool,
 blog-agent-loop .ib-status,
 blog-agent-loop .ib-args {
+  white-space: normal;
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.75rem;
   overflow-wrap: anywhere;

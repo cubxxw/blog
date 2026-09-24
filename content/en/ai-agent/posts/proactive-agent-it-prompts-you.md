@@ -200,6 +200,12 @@ With G = 10, C = 15 (assume it interrupts while you're focused):
   p = 0.9  →  E = 9 − 1.5   = +7.5   min
 ```
 
+Both formulas live in one adjustable model — including that break-even row (the "In minutes" preset is this exact example):
+
+{{< interactive kind="notification-threshold" id="interruption-threshold" spec="notification-threshold-v1" >}}
+
+Drag `p` across the threshold and the advice flips between stay quiet and speak up; the number line's threshold is set by `G` and `C` alone, while `p` is the quantity to calibrate after the fact. Set `G` and `C` to zero and the threshold reads undefined: the expected value is flat zero, and any "speak by default" claim loses its footing.
+
 In this illustrative parameter set, a 60% hit rate merely breaks even. Change `G` or `C` and the boundary moves; that is the point. A team should measure the value of a useful prompt and the re-entry cost of a bad one rather than treating model confidence as a universal product threshold.
 
 That leaves the trust discount. It is nonlinear and cumulative: a mistake can lower your willingness to inspect later prompts. In my own use, a short run of pointless interruptions is enough to change my default reaction from "let's see" to "not this again." Once the channel is muted, later accuracy no longer matters.

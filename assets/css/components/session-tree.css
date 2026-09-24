@@ -1,0 +1,416 @@
+/* session-tree.css — styles for <blog-session-tree> only (GROUP state).
+ * Every selector is scoped under the custom-element root; nothing here
+ * styles global svg/button/p elements. Colours, fonts and easing come from
+ * assets/css/extended/tokens.css (both themes). The tree SVG keeps real
+ * pixel geometry (96×44 px branch boxes) inside a contained horizontal
+ * scroll region, so branch click targets stay ≥44 px on 320px screens while
+ * the page itself never overflows.
+ *
+ * Static (no-JS) and enhanced states share one geometry: interactive
+ * controls swap into same-sized static slots. */
+
+blog-session-tree [hidden] {
+  display: none !important;
+}
+
+blog-session-tree.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-session-tree .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-session-tree .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-tree .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+blog-session-tree .ib-preset {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+  border: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.3));
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+}
+
+blog-session-tree .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario strip: static chips swap for identical-height buttons ─── */
+blog-session-tree .ib-scenarios {
+  margin: 0.5rem 1.1rem;
+}
+blog-session-tree .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+blog-session-tree .ib-scn-chip,
+blog-session-tree .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 999px;
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  text-align: center;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+}
+blog-session-tree .ib-scn {
+  cursor: pointer;
+  transition: background 0.15s var(--ease-out, ease);
+}
+blog-session-tree .ib-scn[aria-pressed="true"] {
+  background: var(--color-accent-soft, #dde5da);
+  border-color: var(--color-accent, #2e352e);
+}
+blog-session-tree .ib-scn:focus-visible,
+blog-session-tree .ib-btn:focus-visible,
+blog-session-tree .ib-select:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── layers ─────────────────────────────────────────────────────────── */
+blog-session-tree .ib-tree-layer {
+  margin: 0.6rem 1.1rem;
+  padding: 0.55rem 0.7rem 0.7rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.14));
+  border-radius: 10px;
+}
+blog-session-tree .ib-tree-layer-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* Contained horizontal scroll: fixed-pixel tree geometry, no page overflow. */
+blog-session-tree .ib-tree-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  padding-bottom: 0.2rem;
+}
+blog-session-tree .ib-tree-svg {
+  display: block;
+  max-width: none;
+}
+
+blog-session-tree .ib-tree-edge {
+  fill: none;
+  stroke: var(--color-ink-muted, #5e5e63);
+  stroke-width: 1.5;
+}
+blog-session-tree .ib-tree-box {
+  fill: var(--color-paper, #f9f9f7);
+  stroke: var(--color-ink-muted, #5e5e63);
+  stroke-width: 1.2;
+}
+blog-session-tree .ib-tree-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  fill: var(--color-ink, #1a1c1b);
+}
+blog-session-tree .ib-tree-node.is-path .ib-tree-box {
+  stroke: var(--color-accent, #2e352e);
+  stroke-width: 2;
+}
+blog-session-tree .ib-tree-node.is-active .ib-tree-box {
+  fill: var(--color-accent-soft, #dde5da);
+  stroke: var(--color-accent, #2e352e);
+  stroke-width: 2.5;
+}
+blog-session-tree .ib-tree-node.is-folded .ib-tree-box {
+  stroke-dasharray: 5 3;
+  fill: transparent;
+}
+blog-session-tree .ib-tree-hit {
+  fill: transparent;
+}
+blog-session-tree .ib-tree-node.is-clickable .ib-tree-hit {
+  cursor: pointer;
+}
+blog-session-tree .ib-tree-node.is-clickable:hover .ib-tree-box {
+  fill: var(--color-accent-soft, #dde5da);
+}
+
+blog-session-tree .ib-tree-path {
+  margin: 0.45rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+blog-session-tree .ib-meta-label,
+blog-session-tree .ib-tree-path-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-session-tree .ib-tree-entries {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+blog-session-tree .ib-tree-entry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.6rem;
+  padding: 0.35rem 0;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.14));
+}
+blog-session-tree .ib-tree-entry:first-child {
+  border-top: 0;
+}
+blog-session-tree .ib-tree-entry-kind {
+  flex: 0 0 auto;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+blog-session-tree .ib-tree-entry-text {
+  flex: 1 1 220px;
+  min-width: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+blog-session-tree .ib-tree-entry--compaction .ib-tree-entry-text {
+  border-left: 3px double var(--color-accent, #2e352e);
+  padding-left: 0.5rem;
+}
+
+blog-session-tree .ib-tree-ws {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+blog-session-tree .ib-tree-ws-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.6rem;
+  padding: 0.35rem 0;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.14));
+}
+blog-session-tree .ib-tree-ws-item:first-child {
+  border-top: 0;
+}
+blog-session-tree .ib-tree-ws-path {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+blog-session-tree .ib-tree-note,
+blog-session-tree .ib-note {
+  margin: 0.45rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── controls: identical boxes in static slots and enhanced state ───── */
+blog-session-tree .ib-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
+  margin: 0.7rem 1.1rem 0;
+}
+blog-session-tree .ib-select-wrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+blog-session-tree .ib-select {
+  /* Explicit height: WebKit ignores min-height on native selects. */
+  height: 44px;
+  max-width: 100%;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 8px;
+  background: var(--color-paper, #f9f9f7);
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+}
+blog-session-tree .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+blog-session-tree .ib-btn[aria-pressed="true"] {
+  background: var(--color-accent-soft, #dde5da);
+  border-color: var(--color-accent, #2e352e);
+}
+blog-session-tree .ib-slot {
+  visibility: hidden;
+}
+
+blog-session-tree .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── read-only reference (native details; upgrade never touches it) ─── */
+blog-session-tree .ib-reference {
+  margin: 0.6rem 1.1rem 0.8rem;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.5rem;
+}
+blog-session-tree .ib-reference > summary {
+  cursor: pointer;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+blog-session-tree .ib-reference > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+blog-session-tree .ib-tree-ref-case {
+  margin-top: 0.6rem;
+}
+blog-session-tree .ib-ref-title {
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+blog-session-tree .ib-tree-ref-line,
+blog-session-tree .ib-ref-line {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-session-tree .ib-observe {
+  margin: 0.2rem 1.1rem 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-session-tree .ib-foot {
+  padding: 0.6rem 1.1rem 0.9rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-session-tree .ib-foot .ib-note {
+  margin: 0;
+}
+blog-session-tree .ib-disclosure {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-session-tree .ib-sources {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+}
+blog-session-tree .ib-sources li {
+  margin-top: 0.2rem;
+}
+blog-session-tree .ib-sources a {
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-session-tree .ib-scn,
+  blog-session-tree .ib-btn {
+    transition: none;
+  }
+}
+
+@media print {
+  blog-session-tree .ib-scenarios,
+  blog-session-tree .ib-controls,
+  blog-session-tree button,
+  blog-session-tree input,
+  blog-session-tree select {
+    display: none !important;
+  }
+  blog-session-tree .ib-tree-scroll {
+    overflow: visible;
+  }
+  /* Print the complete reference whether or not the reader opened it. */
+  blog-session-tree .ib-reference {
+    display: block !important;
+  }
+  blog-session-tree .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-session-tree .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

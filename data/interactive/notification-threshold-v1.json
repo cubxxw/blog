@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "notification-threshold",
+  "id": "notification-threshold-v1",
+  "defaultScenario": "deep-work",
+  "model": { "probStep": 5, "gainMax": 100, "costMax": 100 },
+  "scenarios": [
+    { "id": "deep-work", "gain": 20, "cost": 40, "probPermille": 500 },
+    { "id": "minutes", "gain": 10, "cost": 15, "probPermille": 600 },
+    { "id": "favorable", "gain": 30, "cost": 20, "probPermille": 500 },
+    { "id": "no-preference", "gain": 0, "cost": 0, "probPermille": 500 }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "打扰阈值",
+      "question": "一条提示要有正的期望价值，事后有用概率 p 至少要多高？",
+      "assumption": "G 与 C 是主观、示意的数值，不是通用部署策略；p 是事后校准的有用率，不是模型自报的置信度。模型只算期望价值，不模拟信任衰减与渠道被静音的非线性后果。",
+      "observe": "观察：拖动 p 跨过阈值，看建议如何在“提醒”与“保持沉默”之间翻转？",
+      "footerNote": "示意数据 · 模型假设 · 对应来源",
+      "referenceTitle": "查看场景与抽样期望值",
+      "scenarioLabels": {
+        "deep-work": "深度工作中（G=20，C=40）",
+        "minutes": "按分钟计（G=10，C=15）",
+        "favorable": "收益更高（G=30，C=20）",
+        "no-preference": "两者皆零"
+      },
+      "gainLabel": "一次有用提示的收益 G",
+      "costLabel": "一次错误打扰的成本 C",
+      "probLabel": "事后有用概率 p",
+      "resultLabels": {
+        "threshold": "开口阈值 p* = C/(G+C)",
+        "expected": "期望价值 E",
+        "verdict": "建议",
+        "undefined": "未定义（G、C 同为 0）"
+      },
+      "axisLabels": { "threshold": "阈值", "current": "当前 p", "alt": "数轴：标出开口阈值与当前 p 的位置；精确数值见下方读数。" },
+      "table": { "scenario": "场景", "gain": "G", "cost": "C", "threshold": "阈值", "prob": "p", "expected": "E", "verdict": "建议" },
+      "sampleTitle": "抽样期望值（默认场景的 G、C）",
+      "verdicts": {
+        "notify": "值得提醒",
+        "silent": "保持沉默",
+        "equal": "恰好持平",
+        "no-preference": "无偏好（阈值未定义）"
+      },
+      "explanations": {
+        "notify": "期望价值为正：在这组 G、C 下，这条提示有理由开口。",
+        "silent": "期望价值为负：错误打扰的成本盖过收益，保持沉默更好。",
+        "equal": "期望价值恰好为 0：开口与沉默等价，这不是默认开口的许可。",
+        "no-preference": "G 与 C 同为 0：没有偏好可言，阈值也无从定义。"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Interruption threshold",
+      "question": "How high must the calibrated usefulness p be before a prompt has positive expected value?",
+      "assumption": "G and C are subjective illustrative values, not a universal deployment policy; p is a calibrated past-usefulness rate, not the model's self-reported confidence. The model computes expected value only — it does not simulate trust decay or the nonlinear cost of a muted channel.",
+      "observe": "Observe: drag p across the threshold and watch the advice flip between speak up and stay quiet.",
+      "footerNote": "Illustrative data · Model assumptions · Sources",
+      "referenceTitle": "View scenarios and sampled expected values",
+      "scenarioLabels": {
+        "deep-work": "During deep work (G=20, C=40)",
+        "minutes": "In minutes (G=10, C=15)",
+        "favorable": "Higher payoff (G=30, C=20)",
+        "no-preference": "Both zero"
+      },
+      "gainLabel": "Gain of one useful prompt G",
+      "costLabel": "Cost of one bad interruption C",
+      "probLabel": "Calibrated usefulness p",
+      "resultLabels": {
+        "threshold": "Speak-up threshold p* = C/(G+C)",
+        "expected": "Expected value E",
+        "verdict": "Advice",
+        "undefined": "Undefined (G = C = 0)"
+      },
+      "axisLabels": { "threshold": "Threshold", "current": "Current p", "alt": "Number line marking the speak-up threshold and the current p; exact values are in the readout below." },
+      "table": { "scenario": "Scenario", "gain": "G", "cost": "C", "threshold": "Threshold", "prob": "p", "expected": "E", "verdict": "Advice" },
+      "sampleTitle": "Sampled expected values (default G, C)",
+      "verdicts": {
+        "notify": "Speak up",
+        "silent": "Stay quiet",
+        "equal": "Break-even",
+        "no-preference": "No preference (undefined threshold)"
+      },
+      "explanations": {
+        "notify": "Expected value is positive: with these G and C, the prompt has a reason to speak.",
+        "silent": "Expected value is negative: the bad interruption outweighs the gain — silence is better.",
+        "equal": "Expected value is exactly 0: speaking and staying quiet tie — this is not permission to speak by default.",
+        "no-preference": "G and C are both 0: there is no preference to express, and the threshold is undefined."
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+      "title": "OpenAI Help Center — Scheduled tasks in ChatGPT"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "kind": "effect-recovery",
+  "id": "effect-recovery-langgraph-v1",
+  "defaultScenario": "effect-before-approval",
+  "model": { "flow": "node-replay", "maxSteps": 9 },
+  "scenarios": [
+    {
+      "id": "effect-before-approval",
+      "effectPlacement": "before-approval",
+      "provider": { "receiptQuery": false, "idempotencyKey": true },
+      "defaultCrash": "after-commit-before-receipt",
+      "defaultStrategy": "retry"
+    },
+    {
+      "id": "effect-after-approval",
+      "effectPlacement": "after-approval",
+      "provider": { "receiptQuery": false, "idempotencyKey": true },
+      "defaultCrash": "after-commit-before-receipt",
+      "defaultStrategy": "retry"
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "审批、节点重放与外部副作用",
+      "question": "恢复执行时，interrupt() 之前的副作用会发生几次？把副作用放在审批之后，或者用稳定幂等键，各能挡住什么？",
+      "assumption": "推演一次退款写入：恢复会从检查点继续，但包含 interrupt() 的节点从头重放。检查点不会撤销已经发生的外部副作用；幂等键方案假设每一次发送（含首次）都携带稳定键；数字按固定规则计算，不含真实付款。",
+      "observe": "观察：审批恢复增加了哪次执行？稳定幂等键如何合并重复请求？回执查询能补足什么证据？",
+      "footerNote": "示意推演 · 规则假设 · 对应来源",
+      "referenceTitle": "查看全部结果对照表",
+      "scenarioLabels": {
+        "effect-before-approval": "副作用在审批之前",
+        "effect-after-approval": "副作用在审批之后"
+      },
+      "traceNotice": "作者预设的教学推演 · 非真实执行",
+      "lanes": { "worker": "图节点 / worker", "local": "检查点 / 本地记录", "external": "支付服务" },
+      "steps": {
+        "start": "开始节点",
+        "intent": "记录意图 reserved",
+        "send": "调用支付 API",
+        "commit": "外部提交副作用",
+        "receipt": "收到回执",
+        "interrupt": "interrupt()：暂停等待审批",
+        "resume": "恢复执行：节点从头重放",
+        "record": "回执写入本地记录",
+        "finish": "返回结果"
+      },
+      "crashLabel": "崩溃位置",
+      "strategyLabel": "恢复动作",
+      "crashOptions": {
+        "before-send": "发出请求之前",
+        "after-commit-before-receipt": "外部已提交、回执未落地",
+        "after-recorded-receipt": "回执已记录之后"
+      },
+      "strategyOptions": {
+        "retry": "直接重跑",
+        "query-receipt": "查询回执",
+        "idempotency-key": "稳定幂等键重发"
+      },
+      "readout": {
+        "actions": "实际外部动作次数",
+        "knowledge": "本地知识",
+        "next": "下一步安全动作"
+      },
+      "knowledge": {
+        "confirmed-success": "确认成功（恰好一次）",
+        "confirmed-failure": "确认失败（可证明未生效，或可证明不止一次）",
+        "unknown": "未知（无法证明恰好一次）"
+      },
+      "next": {
+        "return-recorded": "记录并返回已有回执，不再发送",
+        "retry-safe": "可以安全重试",
+        "protected-retry": "先让副作用可安全重放（稳定幂等键），再重试",
+        "reconcile": "需要人工对账或补偿"
+      },
+      "table": {
+        "scenario": "场景",
+        "crash": "崩溃位置",
+        "strategy": "恢复动作",
+        "actions": "外部动作",
+        "knowledge": "本地知识",
+        "next": "下一步"
+      },
+      "explanations": {
+        "empty": "没有外部写入发生，本地证据确认为零：下一步动作取决于重跑是否会重放副作用。",
+        "clean": "恰好一次且可证明：记录并返回回执，不要再发送。",
+        "duplicate": "外部写入不止一次：节点重放或重复执行把副作用又写了一次，去对账并补偿。",
+        "ambiguous": "本地无法证明恰好一次：先查询或对账，别把 unknown 当成 failure。"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Approval, node replay and external side effects",
+      "question": "On resume, how often does the side effect before interrupt() run again? What do placement after approval and a stable idempotency key each prevent?",
+      "assumption": "One refund write, traced: recovery continues from the checkpoint, but the node containing interrupt() replays from its top. Checkpointing cannot undo a write that already happened; the key strategy assumes a stable key on EVERY send, including the first. Numbers follow fixed rules; no real payment happens.",
+      "observe": "Observe: which extra execution comes from approval resume, what does a supported stable key deduplicate, and what evidence can a receipt query add?",
+      "footerNote": "Illustrative trace · model assumptions · sources",
+      "referenceTitle": "View the full outcome table",
+      "scenarioLabels": {
+        "effect-before-approval": "Side effect before approval",
+        "effect-after-approval": "Side effect after approval"
+      },
+      "traceNotice": "Authored teaching trace · not real execution",
+      "lanes": { "worker": "Graph node / worker", "local": "Checkpoint / local record", "external": "Payment service" },
+      "steps": {
+        "start": "Start the node",
+        "intent": "Record intent (reserved)",
+        "send": "Call the payment API",
+        "commit": "External side effect commits",
+        "receipt": "Receive the receipt",
+        "interrupt": "interrupt(): pause for approval",
+        "resume": "Resume: the node replays from its top",
+        "record": "Record the receipt locally",
+        "finish": "Return the result"
+      },
+      "crashLabel": "Crash point",
+      "strategyLabel": "Recovery action",
+      "crashOptions": {
+        "before-send": "Before the send",
+        "after-commit-before-receipt": "After external commit, before the receipt lands",
+        "after-recorded-receipt": "After the receipt is recorded"
+      },
+      "strategyOptions": {
+        "retry": "Blind re-run",
+        "query-receipt": "Query the receipt",
+        "idempotency-key": "Resend with a stable idempotency key"
+      },
+      "readout": {
+        "actions": "Actual external actions",
+        "knowledge": "Local knowledge",
+        "next": "Next safe action"
+      },
+      "knowledge": {
+        "confirmed-success": "Confirmed success (exactly once)",
+        "confirmed-failure": "Confirmed failure (provably nothing, or provably more than once)",
+        "unknown": "Unknown (exactly-once unprovable)"
+      },
+      "next": {
+        "return-recorded": "Record and return the receipt — do not send again",
+        "retry-safe": "Safe to retry",
+        "protected-retry": "Make the write safely replayable (stable idempotency key) before retrying",
+        "reconcile": "Manual reconciliation or compensation"
+      },
+      "table": {
+        "scenario": "Scenario",
+        "crash": "Crash point",
+        "strategy": "Recovery action",
+        "actions": "Actions",
+        "knowledge": "Knowledge",
+        "next": "Next"
+      },
+      "explanations": {
+        "empty": "No external write happened and the local evidence proves zero — whether a retry is safe depends on replaying the side effect safely.",
+        "clean": "Exactly once and provable: record and return the receipt; do not send again.",
+        "duplicate": "The external write happened more than once: node replay or a repeated run wrote the side effect again — reconcile and compensate.",
+        "ambiguous": "The local side cannot prove exactly once: query or reconcile first — never fold unknown into failure."
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+      "title": "LangGraph — Human-in-the-loop (interrupt)"
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "title": "LangGraph — Persistence"
+    }
+  ]
+}

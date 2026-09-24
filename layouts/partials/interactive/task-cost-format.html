@@ -1,0 +1,19 @@
+{{- /* task-cost-format — display formatting identical to formatAmount /
+       formatPerAccepted in assets/js/components/task-cost-model.mjs (round
+       half up to 2 decimals on the value's own scale, trailing zeros
+       trimmed). Modes: amount (570 / 12.67), int. All inputs are integer
+       currency units; only derived amounts (review cost, totals, per
+       accepted task) can carry decimals. */ -}}
+{{- $mode := .mode -}}
+{{- $v := .value -}}
+{{- $s := "" -}}
+{{- if eq $mode "amount" -}}
+  {{- $s = printf "%.2f" (div (math.Round (mul $v 100.0)) 100.0) -}}
+  {{- if in $s "." -}}
+    {{- $s = strings.TrimRight "0" $s -}}
+    {{- $s = strings.TrimRight "." $s -}}
+  {{- end -}}
+{{- else if eq $mode "int" -}}
+  {{- $s = printf "%d" $v -}}
+{{- end -}}
+{{- return $s -}}

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "kind": "gitops-reconcile",
+  "id": "gitops-reconcile-v1",
+  "defaultScenario": "initial-deploy",
+  "model": { "replicaMax": 20, "versionMax": 99 },
+  "scenarios": [
+    {
+      "id": "initial-deploy",
+      "origin": "git",
+      "git": { "replicas": 2, "version": 1, "resource": "present" },
+      "cluster": { "replicas": 0, "version": 0, "resource": "absent" },
+      "health": "progressing"
+    },
+    {
+      "id": "manual-drift",
+      "origin": "cluster",
+      "git": { "replicas": 3, "version": 2, "resource": "present" },
+      "cluster": { "replicas": 2, "version": 2, "resource": "present" },
+      "health": "healthy"
+    },
+    {
+      "id": "git-deletion",
+      "origin": "git",
+      "git": { "replicas": 0, "version": 0, "resource": "absent" },
+      "cluster": { "replicas": 3, "version": 2, "resource": "present" },
+      "health": "healthy"
+    },
+    {
+      "id": "history-rollback",
+      "origin": "git",
+      "git": { "replicas": 2, "version": 3, "resource": "present" },
+      "cluster": { "replicas": 2, "version": 3, "resource": "present" },
+      "health": "degraded",
+      "historyVersion": 2
+    },
+    {
+      "id": "git-revert",
+      "origin": "git",
+      "git": { "replicas": 2, "version": 2, "resource": "present" },
+      "cluster": { "replicas": 2, "version": 3, "resource": "present" },
+      "health": "degraded"
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "Git 期望状态 vs 集群状态",
+      "question": "autoSync、selfHeal、prune 各自改变什么？同步状态和健康状态是同一件事吗？",
+      "assumption": "用整数简化副本数与版本号；模型只比较 replicas/version/resource 三个字段。健康状态独立供给，任何开关都不会制造健康恢复。历史回滚只建模存活且仍由 Git 定义的工作负载；示例资源只是应用中多个资源之一，allowEmpty 不在范围内。语义对照官方 auto sync 与 sync options 文档，不是 Argo CD 本体。",
+      "observe": "观察：哪个开关让差异消失？删除真的发生了吗？健康状态动了吗？",
+      "footerNote": "示意模型 · 规则假设 · 对应来源",
+      "referenceTitle": "查看全部场景对照表",
+      "scenarioLabels": {
+        "initial-deploy": "首次部署",
+        "manual-drift": "集群内手工漂移",
+        "git-deletion": "Git 删除资源",
+        "history-rollback": "历史回滚",
+        "git-revert": "Git revert 恢复"
+      },
+      "traceNotice": "教学简化模型 · 非 Argo CD 本体",
+      "states": { "replicas": "副本数", "version": "版本", "resource": "资源" },
+      "resourceState": { "present": "存在", "absent": "不存在" },
+      "statusLabels": { "synced": "Synced", "out-of-sync": "OutOfSync" },
+      "healthLabels": {
+        "healthy": "Healthy",
+        "degraded": "Degraded",
+        "progressing": "Progressing",
+        "unknown": "Unknown"
+      },
+      "toggles": {
+        "auto-sync": "autoSync 自动同步",
+        "self-heal": "selfHeal 自愈",
+        "prune": "prune 删除"
+      },
+      "actions": { "sync": "手动同步", "rollback": "历史回滚" },
+      "guardReasons": {
+        "auto-sync": "自动同步已启用时无法历史回滚",
+        "no-history": "该场景没有可恢复的部署历史",
+        "no-live-workload": "本教学模型只回滚存活且仍由 Git 定义的工作负载"
+      },
+      "readout": {
+        "sync": "同步状态",
+        "health": "健康状态",
+        "deltaBefore": "差异（动作前）",
+        "deltaAfter": "差异（动作后）",
+        "deletion": "删除动作"
+      },
+      "deletionLabels": {
+        "none": "无删除",
+        "deleted": "已删除资源",
+        "kept": "未删除（prune 关闭）"
+      },
+      "noDelta": "无差异",
+      "table": {
+        "scenario": "场景",
+        "desired": "Git 期望",
+        "cluster": "集群实际",
+        "delta": "差异",
+        "health": "健康"
+      },
+      "explanations": {
+        "rollback-blocked": "自动同步已启用：Argo CD 直接拒绝历史回滚，先关掉 autoSync。",
+        "rollback-temporary": "历史回滚动了集群，但 Git 期望没变：下一次调和或手动同步会把版本拉回来，持久恢复要走 Git revert。",
+        "deletion-pruned": "prune 开启：Git 删除的资源被显式删除。",
+        "deletion-kept": "prune 关闭：Git 删除的资源连同它的副本与版本原样留在集群，差异会一直挂着这个待删除项。",
+        "self-healed": "selfHeal 生效：集群内的手工改动被同步回 Git 期望状态。",
+        "auto-synced": "自动同步生效：Git 的新期望状态已经应用。",
+        "drift-kept": "只有 autoSync：集群漂移不会被自动修复——selfHeal 是另一个开关。",
+        "synced-clean": "Git 与集群一致：Synced。",
+        "idle": "没有自动化动作：差异在等待手动同步。"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Git desired state vs cluster state",
+      "question": "What do autoSync, selfHeal and prune each change — and is Sync status the same thing as Health?",
+      "assumption": "Replicas and versions are simplified integers; exactly three fields are compared. Health is supplied independently — no toggle fabricates health recovery. History rollback covers only a live, Git-defined workload, and the illustrated resource is one of several (allowEmpty out of scope). Semantics follow the official auto sync and sync options docs — not Argo CD itself.",
+      "observe": "Observe: which toggle removes the delta? Did the deletion actually happen? Did health move at all?",
+      "footerNote": "Illustrative model · model assumptions · sources",
+      "referenceTitle": "View the full scenario table",
+      "scenarioLabels": {
+        "initial-deploy": "Initial deploy",
+        "manual-drift": "Manual cluster drift",
+        "git-deletion": "Git resource deletion",
+        "history-rollback": "History rollback",
+        "git-revert": "Git revert recovery"
+      },
+      "traceNotice": "Teaching model — not Argo CD itself",
+      "states": { "replicas": "Replicas", "version": "Version", "resource": "Resource" },
+      "resourceState": { "present": "present", "absent": "absent" },
+      "statusLabels": { "synced": "Synced", "out-of-sync": "OutOfSync" },
+      "healthLabels": {
+        "healthy": "Healthy",
+        "degraded": "Degraded",
+        "progressing": "Progressing",
+        "unknown": "Unknown"
+      },
+      "toggles": {
+        "auto-sync": "autoSync (automated sync)",
+        "self-heal": "selfHeal",
+        "prune": "prune"
+      },
+      "actions": { "sync": "Manual sync", "rollback": "History rollback" },
+      "guardReasons": {
+        "auto-sync": "Unavailable while automated sync is enabled",
+        "no-history": "No deployment history entry in this scenario",
+        "no-live-workload": "This limited teaching model only rolls back a live, Git-defined workload"
+      },
+      "readout": {
+        "sync": "Sync status",
+        "health": "Health",
+        "deltaBefore": "Delta (before)",
+        "deltaAfter": "Delta (after)",
+        "deletion": "Deletion"
+      },
+      "deletionLabels": {
+        "none": "No deletion",
+        "deleted": "Resource deleted",
+        "kept": "Kept (prune off)"
+      },
+      "noDelta": "No difference",
+      "table": {
+        "scenario": "Scenario",
+        "desired": "Git desired",
+        "cluster": "Cluster actual",
+        "delta": "Delta",
+        "health": "Health"
+      },
+      "explanations": {
+        "rollback-blocked": "Automated sync is enabled: Argo CD refuses history rollback — turn autoSync off first.",
+        "rollback-temporary": "History rollback moved the cluster, but Git still names the newer version: the next reconcile or a manual sync pulls it back — durable recovery goes through Git revert.",
+        "deletion-pruned": "prune is on: the Git-deleted resource was explicitly deleted.",
+        "deletion-kept": "prune is off: the Git-deleted resource stays in the cluster exactly as it runs (replicas and version untouched) and the delta keeps showing the pending deletion.",
+        "self-healed": "selfHeal applied: the cluster-side change was reverted to Git's desired state.",
+        "auto-synced": "Automated sync applied the new desired state from Git.",
+        "drift-kept": "autoSync alone: cluster drift is not reverted — selfHeal is a separate switch.",
+        "synced-clean": "Git and the cluster agree: Synced.",
+        "idle": "No automation: the delta waits for a manual sync."
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/",
+      "title": "Argo CD — Automated sync"
+    },
+    {
+      "url": "https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/",
+      "title": "Argo CD — Sync options"
+    }
+  ]
+}

@@ -137,6 +137,12 @@ The increase from 36% to 81% is **not free** and it is not a production forecast
 - **Retry independence:** repeating the same prompt against the same bad context is correlated. If the task exceeds the model's capability, retries reproduce the failure. Change the context, strategy, tool, or escalate.
 - **Recoverability:** retrying helps only if the system can restore a known-good checkpoint and external side effects are idempotent, compensatable, or deferred. You cannot retry an already-sent payment as if nothing happened.
 
+Both calculations live in one adjustable model:
+
+{{< interactive kind="reliability-chain" id="compound-error" spec="reliability-chain-v1" >}}
+
+The defaults are the numbers above: at twenty steps and 95% per step the clean-run rate is 35.85%. Open the checkpoint mode — five-step segments, one retry each — and at 100% recall the four segments total about 81%. Lower the recall and that gain shrinks at once: each of the four assumptions above pays its bill in this figure.
+
 Put checkpoints where verdicts are objective — tests pass, a schema validates, totals reconcile, permissions remain bounded — and measure their recall and false-positive rate against real incidents. A model judge can help with subjective quality, but it adds another probabilistic component that needs calibration. Cheap tokens buy attempts; **reliable recovery requires state, evidence, and boundaries.**
 
 ## "Runs at night, reviewed in the morning": the whole pipeline in one diagram

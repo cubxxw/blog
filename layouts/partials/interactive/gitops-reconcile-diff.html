@@ -1,0 +1,22 @@
+{{- /* gitops-reconcile-diff — template twin of diff() in
+     assets/js/components/gitops-reconcile-model.mjs. Absence semantics:
+     replicas/version describe a LIVE workload and are compared only when both
+     sides have one; two absent sides are in sync regardless of placeholders,
+     and a pending deletion is exactly the presence mismatch.
+
+       input : dict (git, cluster)
+       return: slice of dict (field, git, cluster) */ -}}
+{{- $git := .git -}}
+{{- $cluster := .cluster -}}
+{{- $out := slice -}}
+{{- if and (eq $git.resource "present") (eq $cluster.resource "present") -}}
+  {{- range $f := slice "replicas" "version" -}}
+    {{- if ne (index $git $f) (index $cluster $f) -}}
+      {{- $out = $out | append (dict "field" $f "git" (index $git $f) "cluster" (index $cluster $f)) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if ne $git.resource $cluster.resource -}}
+  {{- $out = $out | append (dict "field" "resource" "git" $git.resource "cluster" $cluster.resource) -}}
+{{- end -}}
+{{- return $out -}}

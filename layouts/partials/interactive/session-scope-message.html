@@ -1,0 +1,20 @@
+{{- /* interactive/session-scope-message — one message card. Dimensions are
+     printed exactly as authored (person/channel/account/peer); when an
+     identity link resolves the peer, the canonical id is shown NEXT to the
+     raw one, never replacing it. `hook` adds the runtime handle (stage
+     only — the reference stays selector-free). */ -}}
+{{- $m := .msg -}}
+{{- $c := .copy -}}
+{{- $lang := .lang -}}
+<li class="ib-scope-msg"{{ if .hook }} data-ib-msg="{{ $m.id }}"{{ end }}>
+  <p class="ib-scope-meta">
+    <span class="ib-scope-person">{{ index $c.people $m.person }}</span>
+    <span class="ib-scope-dim">{{ $c.dimensions.channel }}：<code>{{ $m.channel }}</code></span>
+    <span class="ib-scope-dim">{{ $c.dimensions.account }}：<code>{{ $m.accountId }}</code></span>
+    <span class="ib-scope-dim">{{ $c.dimensions.peer }}：<code>{{ $m.peerId }}</code></span>
+    {{- if ne .peer $m.peerId }}
+    <span class="ib-scope-dim">→ <code>{{ .peer }}</code></span>
+    {{- end }}
+  </p>
+  <p class="ib-scope-text">{{ (index $m.copy $lang).text }}</p>
+</li>

@@ -160,6 +160,12 @@ agent:<agentId>:<channel>:<accountId>:direct:<peerId>
 
 默认 `main` 适合真正的单用户 personal assistant：所有 DM 共用一段连续历史。只要第二个人可以给它发私信，默认值就不再只是体验选择，而会成为隐私边界。官方 session 文档明确警告：多用户时若不启用 DM isolation，不同用户会共享 conversation context，并推荐 `per-channel-peer`。[Session management at v2026.7.1-2](https://github.com/openclaw/openclaw/blob/v2026.7.1-2/docs/concepts/session.md)
 
+下面用一组合成消息重现开篇的会话混用：两个人通过两个渠道、多个账户发来消息，其中包含跨账户重复的对端 ID。切换四种 dmScope 模式，观察哪些消息会进入同一个会话。
+
+{{< interactive kind="session-scope" id="session-scope" spec="session-scope-v1" >}}
+
+盯住 `per-channel-peer` 那一档：欧洲与美国 inbox 的 `tg:12345` 落进同一个 key——没有越狱、没有损坏，只是 key 少了 `accountId` 这一维。最后一个案例演示 `identityLinks`：那是已配置的主键合并，不是身份验证。
+
 多账号场景还要再进一步。
 
 回到开篇事故，修复不是清空模型记忆，而是：

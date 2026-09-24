@@ -1,0 +1,112 @@
+{{- /* blog-session-scope — static grouping stage + native <details> reference
+     (GROUP state / OpenClaw "Session key" explainer).
+     The scenario selector is the dmScope mode selector (plus one explicit
+     identity-link case). SSR renders the default mode's EXACT grouping from
+     the same spec the runtime reads: finite synthetic messages, grouped
+     under their computed session keys with every dimension preserved. The
+     <details> reference holds all five cases with their keys and members —
+     no runtime selectors, no ids, works without JS. The identity panel
+     shows only an explicitly configured mapping and is never identity
+     verification. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $model := .spec.model -}}
+{{- $messages := $model.messages -}}
+{{- $formats := dict
+      "main" "agent:<agentId>:<mainKey>"
+      "per-peer" "agent:<agentId>:direct:<peerId>"
+      "per-channel-peer" "agent:<agentId>:<channel>:direct:<peerId>"
+      "per-account-channel-peer" "agent:<agentId>:<channel>:<accountId>:direct:<peerId>" -}}
+{{- $byId := dict -}}
+{{- range $messages }}{{ $byId = merge $byId (dict .id .) }}{{ end -}}
+{{- $def := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $def = . }}{{ end }}{{ end -}}
+{{- $defGroups := partial "interactive/session-scope-groups.html" (dict "model" $model "scenario" $def) -}}
+{{- $defLinks := $def.useIdentityLinks -}}
+
+<blog-session-scope id="{{ .id }}" class="ib-figure ib-scope" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range .spec.scenarios }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range .spec.scenarios }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="{{ if eq .id $.spec.defaultScenario }}true{{ else }}false{{ end }}">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  <p class="ib-scope-agent"><span class="ib-meta-label">{{ $c.agentLabel }}：</span><code data-ib-agent>agent:{{ $model.agentId }}</code>
+    <span class="ib-meta-label">{{ $c.formatLabel }}：</span><code data-ib-format>{{ index $formats $def.mode }}</code></p>
+
+  <section class="ib-scope-groups" data-ib-groups>
+    {{- range $i, $g := $defGroups }}
+    {{- $members := $g.memberIds -}}
+    <section class="ib-scope-group" data-ib-group="{{ $g.id }}" data-ib-group-key="{{ $g.key }}">
+      <p class="ib-scope-key">
+        <span class="ib-scope-group-id">{{ $g.id }}</span>
+        <span class="ib-meta-label">{{ $c.keyLabel }}：</span><code class="ib-scope-key-code">{{ $g.key }}</code>
+        <span class="ib-scope-count">{{ len $members }} {{ $c.messagesLabel }}</span>
+      </p>
+      <ul class="ib-scope-msgs">
+        {{- range $mid := $members }}
+        {{- $m := index $byId $mid -}}
+        {{- $peer := $m.peerId -}}
+        {{- if $defLinks -}}
+          {{- range $model.identityLinks -}}
+            {{- if eq (lower .peerId) (lower $m.peerId) }}{{ $peer = .canonical }}{{ end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- partial "interactive/session-scope-message.html" (dict "msg" $m "peer" $peer "copy" $c "lang" $.lang "hook" true) -}}
+        {{- end }}
+      </ul>
+      <p class="ib-scope-reading" data-ib-reading>{{ if gt (len $members) 1 }}{{ $c.readings.shared }}{{ else }}{{ $c.readings.single }}{{ end }}</p>
+    </section>
+    {{- end }}
+  </section>
+
+  <section class="ib-scope-identity" data-ib-identity{{ if not $defLinks }} hidden{{ end }}>
+    <p class="ib-scope-identity-title">{{ $c.identityTitle }}</p>
+    <p class="ib-meta-label">{{ $c.mapLabel }}</p>
+    <ul class="ib-scope-map">
+      {{- range $model.identityLinks }}
+      <li class="ib-scope-map-item"><code>{{ .peerId }}</code> → <code>{{ .canonical }}</code></li>
+      {{- end }}
+    </ul>
+    <p class="ib-note">{{ $c.identityNotice }}</p>
+  </section>
+
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  {{- /* Complete read-only reference: every case's keys and members from
+       the same computation. No runtime selectors, no ids. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    {{- range $s := .spec.scenarios }}
+    {{- $groups := partial "interactive/session-scope-groups.html" (dict "model" $model "scenario" $s) }}
+    <section class="ib-scope-ref-case">
+      <p class="ib-ref-title">{{ index $c.scenarioLabels $s.id }}</p>
+      <p class="ib-ref-line">{{ $c.formatLabel }}：<code>{{ index $formats $s.mode }}</code></p>
+      {{- if $s.useIdentityLinks }}
+      <p class="ib-ref-line">{{ $c.mapLabel }}：{{ range $i, $l := $model.identityLinks }}{{ if $i }}；{{ end }}{{ $l.peerId }} → {{ $l.canonical }}{{ end }}</p>
+      <p class="ib-note">{{ $c.identityNotice }}</p>
+      {{- end }}
+      <ul class="ib-scope-ref-groups">
+        {{- range $groups }}
+        <li class="ib-scope-ref-group">
+          <p class="ib-scope-key"><span class="ib-scope-group-id">{{ .id }}</span><code class="ib-scope-key-code">{{ .key }}</code></p>
+          <p class="ib-scope-ref-members">{{ $c.messagesLabel }}：{{ delimit .memberIds " · " }}</p>
+        </li>
+        {{- end }}
+      </ul>
+    </section>
+    {{- end }}
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-session-scope>

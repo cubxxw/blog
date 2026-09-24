@@ -31,7 +31,7 @@
 
 import { execFileSync } from 'node:child_process';
 import { gzipSync } from 'node:zlib';
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -47,6 +47,7 @@ const HUGO = process.env.HUGO_BIN && process.env.HUGO_BIN.trim() ? process.env.H
 const FIXTURE_DIR = join(REPO_ROOT, 'tests', 'fixtures', 'interactive');
 const OUT_DIR = join(ARTIFACT_DIR, 'fixture-site');
 const STAGE_DATA = join(ARTIFACT_DIR, 'fixture-data');
+const STAGE_CONTENT = join(ARTIFACT_DIR, 'fixture-content');
 const OVERLAY = join(ARTIFACT_DIR, 'fixture-overlay.toml');
 
 /** Budgets from the acceptance contract. */
@@ -100,7 +101,7 @@ function runHugo({ contentDir, outDir, expectFailure = false }) {
         '-d',
         outDir,
         '--baseURL',
-        'http://127.0.0.1:4173/',
+        `http://127.0.0.1:${Number(process.env.INTERACTIVE_PORT || 4173)}/`,
         '--environment',
         'production',
         '--minify',
@@ -188,15 +189,43 @@ async function main() {
   // Stage data: real specs + fixture-only specs (never in data/interactive/).
   rmSync(STAGE_DATA, { recursive: true, force: true });
   mkdirSync(join(STAGE_DATA, 'interactive'), { recursive: true });
-  for (const dir of [join(REPO_ROOT, 'data', 'interactive'), join(FIXTURE_DIR, 'data')]) {
+  const expansionDirs = readdirSync(FIXTURE_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^expansion-[a-z]+$/.test(entry.name))
+    .map((entry) => join(FIXTURE_DIR, entry.name));
+  for (const dir of [join(REPO_ROOT, 'data', 'interactive'), join(FIXTURE_DIR, 'data'),
+    ...expansionDirs.map((dir) => join(dir, 'data'))]) {
     if (!existsSync(dir)) continue;
-    for (const name of execFileSync('ls', [dir], { encoding: 'utf8' }).trim().split('\n')) {
-      if (name.endsWith('.json')) cpSync(join(dir, name), join(STAGE_DATA, 'interactive', name));
+    for (const name of readdirSync(dir)) {
+      if (!name.endsWith('.json')) continue;
+      const destination = join(STAGE_DATA, 'interactive', name);
+      if (existsSync(destination)) throw new Error(`Duplicate interactive fixture data: ${join(dir, name)}`);
+      cpSync(join(dir, name), destination, { errorOnExist: true, force: false });
+    }
+  }
+
+  // Independent groups own separate fixture trees. Mount a staged union so
+  // their fixtures never enter publishable content/ or collide with writers.
+  rmSync(STAGE_CONTENT, { recursive: true, force: true });
+  cpSync(join(FIXTURE_DIR, 'content'), STAGE_CONTENT, { recursive: true });
+  for (const dir of expansionDirs) {
+    const content = join(dir, 'content');
+    if (existsSync(content)) {
+      cpSync(content, STAGE_CONTENT, { recursive: true, force: false, errorOnExist: true });
+    } else {
+      // Simple group fixtures can place Markdown directly in their folder;
+      // retaining that folder yields /expansion-<group>/<page>/ routes.
+      const group = dir.split('/').at(-1);
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        if (!entry.isFile() || !entry.name.endsWith('.md')) continue;
+        const target = join(STAGE_CONTENT, group, entry.name);
+        mkdirSync(join(STAGE_CONTENT, group), { recursive: true });
+        cpSync(join(dir, entry.name), target, { force: false, errorOnExist: true });
+      }
     }
   }
 
   console.log('build-interactive-fixtures: building fixture site…');
-  runHugo({ contentDir: join(FIXTURE_DIR, 'content'), outDir: OUT_DIR });
+  runHugo({ contentDir: STAGE_CONTENT, outDir: OUT_DIR });
 
   /* ── positive assertions on built HTML ─────────────────────────────── */
 
@@ -439,6 +468,37 @@ async function main() {
 
   /* ── negative builds must fail with the expected error ─────────────── */
 
+  // Expansion suites share this one production fixture build. Corrupt only
+  // the named instance's envelope, leaving its authored SSR and siblings
+  // intact. These output-only pages can never be published as articles.
+  for (const [source, target, id, mutation] of [
+    ['figures', 'figures-corrupt', 'tree', 'json'],
+    ['expansion-numbers', 'expansion-numbers-corrupt', 'chain-a', 'json'],
+    ['geometry', 'geometry-corrupt', 'vc-a', 'json'],
+    ['geometry', 'geometry-lang', 'vc-a', 'lang'],
+  ]) {
+    const file = join(OUT_DIR, source, 'index.html');
+    if (!existsSync(file)) continue;
+    const html = readFileSync(file, 'utf8');
+    const config = extractConfigs(html).find(({ raw }) => JSON.parse(raw).id === id);
+    if (!config) throw new Error(`${source}: missing ${id} for ${target}`);
+    const changed = mutation === 'json'
+      ? `{,corrupt:${config.raw}`
+      : JSON.stringify({ ...JSON.parse(config.raw), lang: 'fr' })
+        .replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+    const targetDir = join(OUT_DIR, target);
+    mkdirSync(targetDir, { recursive: true });
+    writeFileSync(join(targetDir, 'index.html'), html.replace(config.raw, changed));
+    check(`${target}: isolated invalid envelope generated`, true);
+  }
+
+  // These assertions share the same build and preserve exhaustive outcome-grid checks.
+  const effectsChecker = join(FIXTURE_DIR, 'expansion-effects', 'checks.mjs');
+  if (existsSync(effectsChecker)) {
+    const { checkEffectsFixtures } = await import(effectsChecker);
+    checkEffectsFixtures(OUT_DIR);
+  }
+
   const negatives = [
     ['duplicate-id', /duplicate id/i],
     ['id-collision', /collides|duplicate id/i],
@@ -462,6 +522,10 @@ async function main() {
       ok,
       res.ok ? 'build unexpectedly succeeded' : res.output.split('\n').find((l) => /ERROR/.test(l)) || ''
     );
+    // The report retains the expected diagnostic. A rejected build has no
+    // usable site; discard its duplicated static assets, keeping unexpected
+    // results on disk for diagnosis.
+    if (ok) rmSync(outDir, { recursive: true, force: true });
   }
 
   /* ── report ───────────────────────────────────────────────────────── */

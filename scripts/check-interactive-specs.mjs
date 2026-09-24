@@ -3,7 +3,8 @@
  * check-interactive-specs.mjs — build-time gate for data/interactive/*.json.
  *
  * Validates every scenario spec against the executable data contract
- * (assets/js/components/spec-schema.mjs — the same module the runtime uses),
+ * (assets/js/components/spec-schema.mjs — the build registry uses the same
+ * per-kind pure validators as the corresponding browser entries),
  * plus the repository rules that are file-level concerns:
  *
  *   - filename stem matches ^[a-z0-9]+(-[a-z0-9]+)*$ and equals the spec `id`

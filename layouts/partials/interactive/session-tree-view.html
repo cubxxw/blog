@@ -1,0 +1,32 @@
+{{- /* interactive/session-tree-view — pure derived view for one case:
+     { chain, applies, entries } where entries is a list of
+     { type: "node"|"compaction", id } dicts. Used by the stage AND the
+     reference so both render from the same spec-derived computation (no
+     second source of truth). Returns a dict via partial return. */ -}}
+{{- $pathOf := .pathOf -}}
+{{- $compaction := .compaction -}}
+{{- $scenario := .scenario -}}
+{{- $on := .on -}}
+{{- $chain := index $pathOf $scenario.activeLeaf | default slice -}}
+{{- $replaces := $compaction.replaces -}}
+{{- $applies := false -}}
+{{- if $on -}}
+  {{- $applies = le (len $replaces) (len $chain) -}}
+  {{- if $applies -}}
+    {{- range $i, $rid := $replaces -}}
+      {{- if ne (index $chain $i) $rid }}{{ $applies = false }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $entries := slice -}}
+{{- if $applies -}}
+  {{- $entries = $entries | append (dict "type" "compaction" "id" $compaction.id) -}}
+  {{- range $id := after (len $replaces) $chain -}}
+    {{- $entries = $entries | append (dict "type" "node" "id" $id) -}}
+  {{- end -}}
+{{- else -}}
+  {{- range $id := $chain -}}
+    {{- $entries = $entries | append (dict "type" "node" "id" $id) -}}
+  {{- end -}}
+{{- end -}}
+{{- return (dict "chain" $chain "applies" $applies "entries" $entries) -}}

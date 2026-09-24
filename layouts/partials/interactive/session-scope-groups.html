@@ -1,0 +1,44 @@
+{{- /* interactive/session-scope-groups — pure derived grouping for one case:
+     a first-appearance-ordered slice of { key, memberIds } computed from the
+     message dimensions and the mode's EXACT key shape (identical strings to
+     session-scope-model.mjs; parity is asserted in the browser suite).
+     Used by the stage AND the reference — no second source of truth. */ -}}
+{{- $model := .model -}}
+{{- $scenario := .scenario -}}
+{{- $useLinks := $scenario.useIdentityLinks -}}
+{{- $links := dict -}}
+{{- if $useLinks -}}
+  {{- range $model.identityLinks }}{{ $links = merge $links (dict .peerId .canonical) }}{{ end -}}
+{{- end -}}
+{{- $order := slice -}}
+{{- $groups := dict -}}
+{{- range $m := $model.messages -}}
+  {{- $peer := $m.peerId -}}
+  {{- if $useLinks -}}
+    {{- /* Alias matching is case-insensitive (mirrors upstream); the
+         resolved effective peer is lowercased AFTER resolution, exactly as
+         the pinned source's buildAgentPeerSessionKey does. */ -}}
+    {{- range $model.identityLinks -}}
+      {{- if eq (lower .peerId) (lower $m.peerId) }}{{ $peer = .canonical }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $peer = lower $peer -}}
+  {{- $key := "" -}}
+  {{- if eq $scenario.mode "main" -}}
+    {{- $key = printf "agent:%s:%s" $model.agentId $model.mainKey -}}
+  {{- else if eq $scenario.mode "per-peer" -}}
+    {{- $key = printf "agent:%s:direct:%s" $model.agentId $peer -}}
+  {{- else if eq $scenario.mode "per-channel-peer" -}}
+    {{- $key = printf "agent:%s:%s:direct:%s" $model.agentId $m.channel $peer -}}
+  {{- else -}}
+    {{- $key = printf "agent:%s:%s:%s:direct:%s" $model.agentId $m.channel $m.accountId $peer -}}
+  {{- end -}}
+  {{- $g := index $groups $key | default slice -}}
+  {{- if not $g }}{{ $order = $order | append $key }}{{ end -}}
+  {{- $groups = merge $groups (dict $key ($g | append $m.id)) -}}
+{{- end -}}
+{{- $out := slice -}}
+{{- range $i, $key := $order -}}
+  {{- $out = $out | append (dict "id" (printf "grp-%d" (add $i 1)) "key" $key "memberIds" (index $groups $key)) -}}
+{{- end -}}
+{{- return $out -}}

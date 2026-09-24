@@ -1,0 +1,398 @@
+/* notification-threshold.css — styles for <blog-notification-threshold>
+ * only. Every selector is scoped under the custom-element root. Colours,
+ * fonts and easing come from assets/css/extended/tokens.css (both themes).
+ * The threshold axis is a native SVG paired with the numeric readout and
+ * the sampled-values reference (its accessible numeric equivalent).
+ *
+ * Static (no-JS) and enhanced states share one geometry: interactive
+ * controls swap into same-sized static slots. Controls are ≥ 44px tall,
+ * the figure never overflows 320px viewports, and long labels wrap. */
+
+blog-notification-threshold [hidden] {
+  display: none !important;
+}
+
+blog-notification-threshold.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+  max-width: 100%;
+}
+
+blog-notification-threshold .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-notification-threshold .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-notification-threshold .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+blog-notification-threshold .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario strip ────────────────────────────────────────────────── */
+blog-notification-threshold .ib-scenarios {
+  padding: 0.5rem 1.1rem 0.2rem;
+}
+blog-notification-threshold .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+}
+blog-notification-threshold .ib-scn-chip,
+blog-notification-threshold .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  white-space: normal;
+  text-align: center;
+}
+blog-notification-threshold .ib-scn-chip {
+  border-color: transparent;
+}
+blog-notification-threshold button.ib-scn {
+  cursor: pointer;
+}
+blog-notification-threshold .ib-scn[aria-pressed="true"] {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+  border-color: var(--color-accent, #2e352e);
+  background: var(--color-accent-soft, #dde5da);
+}
+blog-notification-threshold .ib-scn:focus-visible,
+blog-notification-threshold button:focus-visible,
+blog-notification-threshold input:focus-visible,
+blog-notification-threshold summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+blog-notification-threshold .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 6px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+blog-notification-threshold .ib-slot {
+  border-color: transparent;
+  visibility: hidden;
+}
+blog-notification-threshold .ib-btn--reset,
+blog-notification-threshold .ib-slot[data-ib-head-slot] {
+  margin-left: auto;
+}
+
+blog-notification-threshold .ib-panel {
+  padding: 0.5rem 1.1rem 0.9rem;
+  min-width: 0;
+}
+blog-notification-threshold .ib-panel + .ib-panel {
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-notification-threshold .ib-panel-title {
+  margin: 0.3rem 0 0.6rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── threshold axis (fixed 0…1 scale) ──────────────────────────────── */
+blog-notification-threshold .ib-viz {
+  min-width: 0;
+}
+blog-notification-threshold svg.ib-axis {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+blog-notification-threshold .ib-axis-line {
+  stroke: var(--color-rule, rgba(30, 35, 30, 0.45));
+  stroke-width: 2;
+}
+blog-notification-threshold .ib-axis-tick {
+  stroke: var(--color-rule, rgba(30, 35, 30, 0.45));
+  stroke-width: 1;
+}
+blog-notification-threshold .ib-axis-scale {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 9px;
+  fill: var(--color-ink-muted, #5e5e63);
+}
+blog-notification-threshold .ib-axis-thr {
+  stroke: var(--color-accent, #2e352e);
+  stroke-width: 2;
+}
+blog-notification-threshold .ib-axis-thr-dot {
+  fill: var(--color-accent, #2e352e);
+}
+blog-notification-threshold .ib-axis-p {
+  stroke: var(--color-ink-muted, #5e5e63);
+  stroke-width: 2;
+}
+blog-notification-threshold .ib-axis-p-dot {
+  fill: var(--color-ink-muted, #5e5e63);
+}
+blog-notification-threshold .ib-axis-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  fill: var(--color-ink, #1a1c1b);
+}
+blog-notification-threshold .ib-axis-label--thr {
+  fill: var(--color-accent, #2e352e);
+}
+
+/* ── numeric readout (the accessible equivalent of the axis) ───────── */
+blog-notification-threshold .ib-readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  column-gap: 1.2rem;
+  row-gap: 0.5rem;
+  margin: 0.7rem 0 0;
+}
+blog-notification-threshold .ib-metric {
+  min-width: 0;
+}
+blog-notification-threshold .ib-metric dt {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+blog-notification-threshold .ib-metric dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 1rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+blog-notification-threshold .ib-explain,
+blog-notification-threshold .ib-note2 {
+  margin: 0.7rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+blog-notification-threshold .ib-note2 {
+  color: var(--color-ink-muted, #5e5e63);
+  font-size: 0.8125rem;
+}
+
+/* ── controls: same-sized slots, native inputs, ≥ 44px targets ─────── */
+blog-notification-threshold .ib-controls {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+blog-notification-threshold .ib-range-label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.8rem;
+  row-gap: 0.25rem;
+  min-height: 44px;
+}
+blog-notification-threshold .ib-range-text {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+blog-notification-threshold .ib-range-out {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+blog-notification-threshold .ib-range-slot,
+blog-notification-threshold input.ib-range {
+  margin: 0;
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+blog-notification-threshold .ib-range-slot {
+  display: flex;
+  align-items: center;
+}
+blog-notification-threshold .ib-range-slot-track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.25));
+}
+blog-notification-threshold .ib-range-slot-thumb {
+  position: absolute;
+  top: -6px;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+}
+blog-notification-threshold input.ib-range {
+  appearance: none;
+  background: none;
+  cursor: pointer;
+}
+blog-notification-threshold input.ib-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.25));
+}
+blog-notification-threshold input.ib-range::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule, rgba(30, 35, 30, 0.25));
+}
+blog-notification-threshold input.ib-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+}
+blog-notification-threshold input.ib-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-accent, #2e352e);
+}
+
+blog-notification-threshold .ib-live {
+  min-height: 1.2em;
+  margin: 0.5rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── read-only reference ───────────────────────────────────────────── */
+blog-notification-threshold details.ib-reference {
+  margin: 0.9rem 1.1rem 0;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.55rem;
+}
+blog-notification-threshold details > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-notification-threshold .ib-ref-table {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+}
+blog-notification-threshold .ib-ref-table th,
+blog-notification-threshold .ib-ref-table td {
+  padding: 0.35rem 0.45rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+blog-notification-threshold .ib-ref-table td {
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-notification-threshold .ib-observe {
+  margin: 0.6rem 1.1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+blog-notification-threshold .ib-foot {
+  padding: 0.55rem 1.1rem 0.8rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-notification-threshold .ib-sources {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-notification-threshold * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  blog-notification-threshold .ib-scenarios,
+  blog-notification-threshold .ib-controls,
+  blog-notification-threshold .ib-live,
+  blog-notification-threshold button,
+  blog-notification-threshold input,
+  blog-notification-threshold output {
+    display: none !important;
+  }
+  blog-notification-threshold details {
+    display: block !important;
+  }
+  blog-notification-threshold details::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-notification-threshold details > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

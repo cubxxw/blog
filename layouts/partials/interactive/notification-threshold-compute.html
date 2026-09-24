@@ -1,0 +1,61 @@
+{{- /* notification-threshold-compute — SSR math identical to computeDecision
+       / formatThresholdExpression / formatE in
+       assets/js/components/notification-threshold-model.mjs. Input: one
+       scenario (gain, cost, probPermille — already schema validated).
+       G and C are subjective illustrative values; p is a calibrated
+       past-usefulness rate (all copy-stated caveats live beside the result).
+
+         E         = p*G - (1-p)*C   (exact integer math in milli-units)
+         threshold = C / (G + C)     (UNDEFINED when G = C = 0 — returned
+                     as thrDefined false, never NaN and never Infinity)
+         verdict   = no-preference (G = C = 0) | notify (E > 0)
+                   | silent (E < 0) | equal (E = 0)
+
+       Axis geometry: the fixed 0…1 viewBox 0 0 320 96 reference (x from
+       24 to 296, labels clamped to 52…268). */ -}}
+{{- $s := .scenario -}}
+{{- $fmt := "interactive/notification-threshold-format.html" -}}
+{{- $gain := $s.gain -}}
+{{- $cost := $s.cost -}}
+{{- $pml := $s.probPermille -}}
+{{- $eMilli := sub (mul $pml $gain) (mul (sub 1000 $pml) $cost) -}}
+{{- $thrDefined := gt (add $gain $cost) 0 -}}
+{{- $thr := 0.0 -}}
+{{- $thrExpr := "" -}}
+{{- $thrPct := "" -}}
+{{- if $thrDefined -}}
+  {{- $thr = div (mul $cost 1.0) (add $gain $cost) -}}
+  {{- $thrPct = partial $fmt (dict "mode" "thrpct" "value" $thr) -}}
+  {{- $thrExpr = printf "%d/%d = %s" (int $cost) (int (add $gain $cost)) $thrPct -}}
+{{- end -}}
+{{- $verdict := "no-preference" -}}
+{{- if $thrDefined -}}
+  {{- $verdict = "equal" -}}
+  {{- if gt $eMilli 0 }}{{ $verdict = "notify" -}}
+  {{- else if lt $eMilli 0 }}{{ $verdict = "silent" }}{{ end -}}
+{{- end -}}
+{{- $pX := add 24.0 (mul (div (mul $pml 1.0) 1000.0) 272.0) -}}
+{{- $tX := add 24.0 (mul $thr 272.0) -}}
+{{- $pLabelX := $pX -}}
+{{- if lt $pLabelX 52.0 }}{{ $pLabelX = 52.0 }}{{ end -}}
+{{- if gt $pLabelX 268.0 }}{{ $pLabelX = 268.0 }}{{ end -}}
+{{- $tLabelX := $tX -}}
+{{- if lt $tLabelX 52.0 }}{{ $tLabelX = 52.0 }}{{ end -}}
+{{- if gt $tLabelX 268.0 }}{{ $tLabelX = 268.0 }}{{ end -}}
+{{- return (dict
+      "gain" (printf "%d" (int $gain))
+      "cost" (printf "%d" (int $cost))
+      "probPct" (partial $fmt (dict "mode" "permille" "value" $pml))
+      "probSlider" (printf "%g" (div (mul $pml 1.0) 10.0))
+      "eMilli" $eMilli
+      "e" (partial $fmt (dict "mode" "e" "value" $eMilli))
+      "thrDefined" $thrDefined
+      "thr" $thr
+      "thrExpr" $thrExpr
+      "thrPct" $thrPct
+      "verdict" $verdict
+      "pX" (printf "%.2f" $pX)
+      "tX" (printf "%.2f" $tX)
+      "pLabelX" (printf "%.2f" $pLabelX)
+      "tLabelX" (printf "%.2f" $tLabelX)
+    ) -}}

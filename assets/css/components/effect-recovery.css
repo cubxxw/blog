@@ -1,0 +1,461 @@
+/* effect-recovery.css — styles for <blog-effect-recovery> only.
+ * Scoped under the custom-element root; design tokens only (dark/light both
+ * come from assets/css/extended/tokens.css). The static (no-JS) state shows
+ * the default scenario's exact result — swimlane timeline, readout, rule
+ * explanation — plus the complete <details> outcome grid; the enhanced state
+ * swaps two native radio groups into same-sized visibility:hidden slots, so
+ * the upgrade causes no layout shift. Nothing overflows the page: the
+ * swimlane is a 3-column grid (worker / local record / external service) that
+ * reflows down to 320px. */
+
+blog-effect-recovery [hidden] {
+  display: none !important;
+}
+
+blog-effect-recovery.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-effect-recovery .ib-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── shared figure chrome (same vocabulary as the base kinds) ─────────── */
+
+blog-effect-recovery .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-effect-recovery .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-effect-recovery .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+blog-effect-recovery .ib-preset {
+  margin-left: auto;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+}
+
+blog-effect-recovery .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+blog-effect-recovery .ib-scenarios {
+  margin: 0.4rem 1.1rem;
+}
+blog-effect-recovery .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+blog-effect-recovery .ib-scn-chip,
+blog-effect-recovery .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.2));
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+blog-effect-recovery .ib-scn-chip {
+  border-color: transparent;
+}
+blog-effect-recovery button.ib-scn {
+  cursor: pointer;
+}
+blog-effect-recovery .ib-scn[aria-pressed="true"] {
+  border-color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+}
+blog-effect-recovery .ib-scn:hover,
+blog-effect-recovery .ib-btn:hover {
+  border-color: var(--color-ink, #1a1c1b);
+}
+blog-effect-recovery .ib-scn:focus-visible,
+blog-effect-recovery .ib-btn:focus-visible,
+blog-effect-recovery .ib-er-opt input:focus-visible + span {
+  outline: 2px solid var(--color-accent, #2b6cb0);
+  outline-offset: 2px;
+}
+
+blog-effect-recovery .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.25rem 0.9rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.2));
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: inherit;
+  cursor: pointer;
+}
+blog-effect-recovery .ib-btn--reset {
+  margin-left: auto;
+}
+blog-effect-recovery .ib-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+blog-effect-recovery .ib-slot {
+  visibility: hidden;
+}
+
+/* ── controls: two native radio groups in same-sized slots ────────────── */
+
+blog-effect-recovery .ib-er-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.6rem 1.1rem;
+}
+blog-effect-recovery .ib-er-ctrl-slot {
+  display: contents;
+}
+blog-effect-recovery .ib-er-ctrl--static {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.7rem;
+  min-width: 0;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+blog-effect-recovery .ib-er-ctrl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.7rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 10px;
+}
+blog-effect-recovery .ib-er-ctrl-title {
+  flex: 1 0 100%;
+  padding: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-effect-recovery .ib-er-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+blog-effect-recovery .ib-er-opt input {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+}
+blog-effect-recovery .ib-er-faux {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* ── stage: swimlane timeline + readout + explanation ─────────────────── */
+
+blog-effect-recovery .ib-er-stage {
+  margin: 0.4rem 1.1rem 0.2rem;
+}
+blog-effect-recovery .ib-er-lanes {
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 10px;
+  padding: 0.55rem;
+}
+blog-effect-recovery .ib-er-lane-heads {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-bottom: 0.45rem;
+}
+blog-effect-recovery .ib-er-lane-head {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+blog-effect-recovery .ib-er-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+blog-effect-recovery .ib-er-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.2));
+  border-radius: 8px;
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+blog-effect-recovery .ib-er-step-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+blog-effect-recovery .ib-er-step.is-done {
+  border-color: var(--color-ink, #1a1c1b);
+}
+blog-effect-recovery .ib-er-step.is-repeated {
+  border-style: double;
+  border-width: 3px;
+  font-weight: 600;
+}
+blog-effect-recovery .ib-er-step.is-recovered {
+  border-style: dashed;
+}
+blog-effect-recovery .ib-er-step.is-skipped {
+  opacity: 0.42;
+}
+blog-effect-recovery .ib-er-crash-tag {
+  display: none;
+  align-items: center;
+  gap: 0.2rem;
+  flex: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-accent, #b3261e);
+}
+blog-effect-recovery .ib-er-step.is-crash {
+  border-color: var(--color-accent, #b3261e);
+}
+blog-effect-recovery .ib-er-step.is-crash .ib-er-crash-tag {
+  display: inline-flex;
+}
+blog-effect-recovery .ib-er-step.is-hazard {
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 6px,
+    var(--color-rule, rgba(30, 35, 30, 0.12)) 6px 7px
+  );
+}
+blog-effect-recovery .ib-er-count {
+  flex: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 999px;
+  padding: 0.05rem 0.4rem;
+}
+
+blog-effect-recovery .ib-er-readout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0.7rem 0 0.3rem;
+}
+blog-effect-recovery .ib-er-metric {
+  min-width: 0;
+}
+blog-effect-recovery .ib-er-metric dt {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-effect-recovery .ib-er-metric dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+blog-effect-recovery .ib-er-explain {
+  margin: 0.4rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+blog-effect-recovery .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── read-only reference + rest ───────────────────────────────────────── */
+
+blog-effect-recovery .ib-reference {
+  margin: 0.6rem 1.1rem;
+}
+blog-effect-recovery .ib-reference > summary {
+  cursor: pointer;
+  font-size: 0.8125rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+}
+blog-effect-recovery .ib-reference > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2b6cb0);
+  outline-offset: 2px;
+}
+blog-effect-recovery .ib-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  table-layout: fixed;
+}
+blog-effect-recovery .ib-ref-table th,
+blog-effect-recovery .ib-ref-table td {
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  padding: 0.3rem 0.4rem;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+blog-effect-recovery .ib-ref-table thead th {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-effect-recovery .ib-observe {
+  margin: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+blog-effect-recovery .ib-foot {
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-effect-recovery .ib-note {
+  margin: 0 0 0.3rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-effect-recovery .ib-disclosure {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-effect-recovery .ib-sources {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.75rem;
+}
+blog-effect-recovery .ib-sources li {
+  margin: 0.15rem 0;
+}
+blog-effect-recovery .ib-sources a {
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+/* ── narrow screens (320px) ──────────────────────────────────────────── */
+
+@media (max-width: 34rem) {
+  blog-effect-recovery .ib-er-readout {
+    grid-template-columns: 1fr;
+  }
+  blog-effect-recovery .ib-er-lane-head,
+  blog-effect-recovery .ib-er-step {
+    font-size: 0.6875rem;
+  }
+  blog-effect-recovery .ib-er-step {
+    padding: 0.2rem 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-effect-recovery .ib-scn,
+  blog-effect-recovery .ib-btn,
+  blog-effect-recovery .ib-er-step {
+    transition: none;
+  }
+}
+
+@media print {
+  blog-effect-recovery .ib-scenarios,
+  blog-effect-recovery .ib-er-controls,
+  blog-effect-recovery .ib-live,
+  blog-effect-recovery button,
+  blog-effect-recovery input {
+    display: none !important;
+  }
+  /* Print shows the complete outcome grid even from a closed disclosure
+     (cross-engine closed-details handling). */
+  blog-effect-recovery .ib-reference {
+    display: block !important;
+  }
+  blog-effect-recovery .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-effect-recovery .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

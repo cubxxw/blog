@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "kind": "agent-loop",
+  "id": "loop-verifier-v1",
+  "defaultScenario": "success",
+  "model": { "maxSteps": 12 },
+  "scenarios": [
+    {
+      "id": "success",
+      "outcome": "success",
+      "events": [
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "这一轮只做一件事：写好开头段。产物先过确定性闸门，闸门不绿不许宣布完成。" },
+            "en": { "text": "One job this round: write the opening. The artifact must pass the deterministic gate first — no completion claim before it is green." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "write_draft",
+          "args": "{\"target\":\"intro.md\"}",
+          "copy": {
+            "zh": { "text": "请求写入初稿（预设示意，不会真实执行）。" },
+            "en": { "text": "Request the draft write (preset trace — nothing is really executed)." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "write_draft",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "intro.md  42 lines" },
+            "en": { "text": "intro.md  42 lines" }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_check",
+          "args": "{\"cmd\":\"node scripts/check-intro.mjs\"}",
+          "copy": {
+            "zh": { "text": "把产物交给确定性闸门。" },
+            "en": { "text": "Hand the artifact to the deterministic gate." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_check",
+          "status": "error",
+          "copy": {
+            "zh": { "text": "check failed: 开头两句不符合句式规则，退出码 1。" },
+            "en": { "text": "check failed: the first two sentences break the style rule. Exit code 1." }
+          }
+        },
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "闸门挡住了完成声明——这正是它的工作。诊断：开头太绕。修掉后重跑同一个闸门，不许绕过。" },
+            "en": { "text": "The gate blocked the completion claim — that is its job. Diagnosis: the opening buries the point. Fix it and rerun the SAME gate; no bypassing." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "fix_draft",
+          "args": "{\"target\":\"intro.md\"}",
+          "copy": {
+            "zh": { "text": "请求修复初稿。" },
+            "en": { "text": "Request the fix." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "fix_draft",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "intro.md 开头两句已改写。" },
+            "en": { "text": "intro.md: the first two sentences were rewritten." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_check",
+          "args": "{\"cmd\":\"node scripts/check-intro.mjs\"}",
+          "copy": {
+            "zh": { "text": "重跑同一个确定性闸门。" },
+            "en": { "text": "Rerun the same deterministic gate." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_check",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "check passed: 退出码 0。" },
+            "en": { "text": "check passed: exit code 0." }
+          }
+        },
+        {
+          "kind": "stop",
+          "reason": "answered",
+          "copy": {
+            "zh": { "text": "停止原因：闸门通过。完成声明指向退出码 0 的证据，而不是模型的自我评价。" },
+            "en": { "text": "Stop reason: the gate passed. The completion claim points at the exit-code-0 evidence, not the model's opinion of itself." }
+          }
+        }
+      ]
+    },
+    {
+      "id": "budget-exhausted",
+      "outcome": "budget-exhausted",
+      "events": [
+        {
+          "kind": "tool_call",
+          "tool": "write_draft",
+          "args": "{\"target\":\"intro.md\"}",
+          "copy": {
+            "zh": { "text": "请求写入初稿（预设示意，不会真实执行）。" },
+            "en": { "text": "Request the draft write (preset trace — nothing is really executed)." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "write_draft",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "intro.md  42 lines" },
+            "en": { "text": "intro.md  42 lines" }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_check",
+          "args": "{\"cmd\":\"node scripts/check-intro.mjs\"}",
+          "copy": {
+            "zh": { "text": "把产物交给确定性闸门。" },
+            "en": { "text": "Hand the artifact to the deterministic gate." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_check",
+          "status": "error",
+          "copy": {
+            "zh": { "text": "check failed: 退出码 1。" },
+            "en": { "text": "check failed: exit code 1." }
+          }
+        },
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "闸门没过。诊断问题，修复后重跑同一个闸门。" },
+            "en": { "text": "The gate did not pass. Diagnose the problem, fix it, rerun the same gate." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "fix_draft",
+          "args": "{\"target\":\"intro.md\"}",
+          "copy": {
+            "zh": { "text": "请求修复初稿。" },
+            "en": { "text": "Request the fix." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "fix_draft",
+          "status": "ok",
+          "copy": {
+            "zh": { "text": "intro.md 开头两句已改写。" },
+            "en": { "text": "intro.md: the first two sentences were rewritten." }
+          }
+        },
+        {
+          "kind": "tool_call",
+          "tool": "run_check",
+          "args": "{\"cmd\":\"node scripts/check-intro.mjs\"}",
+          "copy": {
+            "zh": { "text": "重跑同一个确定性闸门。" },
+            "en": { "text": "Rerun the same deterministic gate." }
+          }
+        },
+        {
+          "kind": "tool_result",
+          "tool": "run_check",
+          "status": "error",
+          "copy": {
+            "zh": { "text": "check failed: 仍然不通过，退出码 1。" },
+            "en": { "text": "check failed: still failing. Exit code 1." }
+          }
+        },
+        {
+          "kind": "decision",
+          "copy": {
+            "zh": { "text": "连续两轮没有可验证的进展，预算即将耗尽：停止比继续撞墙诚实。" },
+            "en": { "text": "Two rounds with no verifiable progress and the budget is nearly gone: stopping is more honest than keep banging into the wall." }
+          }
+        },
+        {
+          "kind": "stop",
+          "reason": "budget-exhausted",
+          "copy": {
+            "zh": { "text": "停止原因：预算耗尽。闸门始终没有变绿——没有证据就不写完成声明。" },
+            "en": { "text": "Stop reason: budget exhausted. The gate never went green — no evidence, no completion claim." }
+          }
+        }
+      ]
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "验证器强制的 loop：闸门、失败与修复",
+      "question": "当 loop 已经能持续行动时，谁来判定“做完了”？失败之后，哪一步把完成声明变成可复核的证据？",
+      "assumption": "这是提议中的验证器强制 loop 的教学示意：决策说明是讲解文本，不是模型的内部思考，命令只是文本、不会真实执行。现有 ralph.sh 还没有这样的 contract gate。",
+      "observe": "观察：确定性闸门在哪一步推翻了模型的判断？预算耗尽时，loop 应该说什么？",
+      "footerNote": "预设轨迹 · 教学示意 · 对应来源",
+      "referenceTitle": "查看全部预设轨迹",
+      "presetNotice": "预设教学轨迹：提议中的验证器强制 loop，ralph.sh 尚无 contract gate",
+      "stepKinds": { "decision": "决策", "tool_call": "工具调用", "tool_result": "工具结果", "stop": "停止" },
+      "nodes": { "decision": "决策", "tool": "工具", "result": "结果", "stop": "停止" },
+      "table": { "step": "步骤", "kind": "类型", "detail": "内容" },
+      "io": { "input": "输入", "output": "输出" },
+      "scenarioLabels": {
+        "success": "闸门通过的一轮",
+        "budget-exhausted": "预算耗尽"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "A verifier-enforced loop: gate, failure, fix",
+      "question": "Once a loop can keep acting, who decides “done” — and after a failure, which step turns a completion claim into checkable evidence?",
+      "assumption": "A teaching sketch of a PROPOSED verifier-enforced loop: decision notes are explanatory text, not a model's inner thoughts, and commands are inert text that is never executed. The current ralph.sh has no such contract gate yet.",
+      "observe": "Observe: where does the deterministic gate overrule the model? What should the loop say when the budget runs out?",
+      "footerNote": "Preset trace · teaching sketch · sources",
+      "referenceTitle": "View all preset traces",
+      "presetNotice": "Preset teaching trace: a proposed verifier-enforced loop — ralph.sh has no contract gate yet",
+      "stepKinds": { "decision": "Decision", "tool_call": "Tool call", "tool_result": "Tool result", "stop": "Stop" },
+      "nodes": { "decision": "Decision", "tool": "Tool", "result": "Result", "stop": "Stop" },
+      "table": { "step": "Step", "kind": "Kind", "detail": "Detail" },
+      "io": { "input": "Input", "output": "Output" },
+      "scenarioLabels": {
+        "success": "The round where the gate passes",
+        "budget-exhausted": "Budget exhausted"
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://ghuntley.com/ralph/",
+      "title": "Geoffrey Huntley — Ralph Wiggum as a software engineer"
+    },
+    {
+      "url": "https://addyosmani.com/blog/loop-engineering/",
+      "title": "Addy Osmani — Loop Engineering"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/goal",
+      "title": "Claude Code — Keep Claude working toward a goal"
+    }
+  ]
+}

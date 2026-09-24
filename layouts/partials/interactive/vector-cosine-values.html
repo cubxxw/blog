@@ -1,0 +1,79 @@
+{{- /* vector-cosine-values — pure SSR geometry for one scenario state.
+     Same formulas as assets/js/components/vector-cosine-model.mjs:
+       dot   = ax*bx + ay*by
+       |A|   = sqrt(ax*ax + ay*ay), |B| likewise
+       cos   = dot / (|A| * |B|) clamped to [-1, 1]
+       angle = degrees(acos(cos))
+     Zero vectors keep cos/angle undefined (never NaN). Display strings are
+     formatted here ONCE (printf "%.2f"/"%.3f"/"%.1f") so the stage and the
+     read-only reference cannot disagree, and they match the runtime's
+     formatNum(). SVG coordinates flip y (math plane → SVG plane).
+
+     Input:  dict "s" (scenario: ax/ay/bx/by) "m" (model: bound)
+     Output: dict of raw numbers + formatted strings + SVG geometry. */ -}}
+{{- $s := .s -}}
+{{- $m := .m -}}
+{{- $ax := mul $s.ax 1.0 -}}
+{{- $ay := mul $s.ay 1.0 -}}
+{{- $bx := mul $s.bx 1.0 -}}
+{{- $by := mul $s.by 1.0 -}}
+{{- $dot := add (mul $ax $bx) (mul $ay $by) -}}
+{{- $magA := math.Sqrt (add (mul $ax $ax) (mul $ay $ay)) -}}
+{{- $magB := math.Sqrt (add (mul $bx $bx) (mul $by $by)) -}}
+{{- $cos := 0.0 -}}
+{{- $angle := 0.0 -}}
+{{- $defined := false -}}
+{{- if and (gt $magA 0.0) (gt $magB 0.0) -}}
+  {{- $cos = div $dot (mul $magA $magB) -}}
+  {{- if gt $cos 1.0 }}{{ $cos = 1.0 }}{{ end -}}
+  {{- if lt $cos -1.0 }}{{ $cos = -1.0 }}{{ end -}}
+  {{- $angle = mul (math.Acos $cos) (div 180.0 (math.Pi)) -}}
+  {{- $defined = true -}}
+{{- end -}}
+
+{{- /* arrowheads: pure vector arithmetic (tip + two base corners) */ -}}
+{{- $headA := "" -}}
+{{- $headB := "" -}}
+{{- if gt $magA 0.0 -}}
+  {{- $ux := div $ax $magA -}}{{- $uy := div $ay $magA -}}
+  {{- $blx := sub $ax (mul $ux 0.45) -}}{{- $bly := sub $ay (mul $uy 0.45) -}}
+  {{- $h1x := sub $blx (mul $uy 0.28) -}}{{- $h1y := add $bly (mul $ux 0.28) -}}
+  {{- $h2x := add $blx (mul $uy 0.28) -}}{{- $h2y := sub $bly (mul $ux 0.28) -}}
+  {{- $headA = printf "%.4f,%.4f %.4f,%.4f %.4f,%.4f" $ax (mul -1.0 $ay) $h1x (mul -1.0 $h1y) $h2x (mul -1.0 $h2y) -}}
+{{- end -}}
+{{- if gt $magB 0.0 -}}
+  {{- $ux := div $bx $magB -}}{{- $uy := div $by $magB -}}
+  {{- $blx := sub $bx (mul $ux 0.45) -}}{{- $bly := sub $by (mul $uy 0.45) -}}
+  {{- $h1x := sub $blx (mul $uy 0.28) -}}{{- $h1y := add $bly (mul $ux 0.28) -}}
+  {{- $h2x := add $blx (mul $uy 0.28) -}}{{- $h2y := sub $bly (mul $ux 0.28) -}}
+  {{- $headB = printf "%.4f,%.4f %.4f,%.4f %.4f,%.4f" $bx (mul -1.0 $by) $h1x (mul -1.0 $h1y) $h2x (mul -1.0 $h2y) -}}
+{{- end -}}
+
+{{- /* angle arc at radius 1.25 (SVG y-flipped; empty string at 0°/zero).
+     The arc is centred on the ORIGIN: the y-flip lives only in the point
+     mapping, so math-CCW (cross > 0) is SVG sweep 0 — sweep 1 would bend
+     the arc around the second circle through the endpoints. */ -}}
+{{- $arc := "" -}}
+{{- if and (gt $magA 0.0) (gt $magB 0.0) -}}
+  {{- $cross := sub (mul $ax $by) (mul $ay $bx) -}}
+  {{- if or (ne $cross 0.0) (lt $dot 0.0) -}}
+    {{- $r := 1.25 -}}
+    {{- $sx := mul (div $ax $magA) $r -}}{{- $sy := mul (div $ay $magA) $r -}}
+    {{- $ex := mul (div $bx $magB) $r -}}{{- $ey := mul (div $by $magB) $r -}}
+    {{- $sweep := 1 -}}{{- if gt $cross 0.0 }}{{ $sweep = 0 }}{{ end -}}
+    {{- $arc = printf "M %.4f %.4f A 1.25 1.25 0 0 %d %.4f %.4f" $sx (mul -1.0 $sy) $sweep $ex (mul -1.0 $ey) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (dict
+  "ax" $ax "ay" $ay "bx" $bx "by" $by
+  "dot" $dot "magA" $magA "magB" $magB "cos" $cos "angle" $angle "defined" $defined
+  "sAx" (printf "%.4f" $ax) "sAy" (printf "%.4f" (mul -1.0 $ay))
+  "sBx" (printf "%.4f" $bx) "sBy" (printf "%.4f" (mul -1.0 $by))
+  "headA" $headA "headB" $headB "arc" $arc
+  "fAx" (printf "%.2f" $ax) "fAy" (printf "%.2f" $ay)
+  "fBx" (printf "%.2f" $bx) "fBy" (printf "%.2f" $by)
+  "fDot" (printf "%.2f" $dot)
+  "fMagA" (printf "%.2f" $magA) "fMagB" (printf "%.2f" $magB)
+  "fCos" (printf "%.3f" $cos) "fAngle" (printf "%.1f" $angle)
+) -}}
