@@ -48,6 +48,12 @@ Imagine a production line with ten stages. If nine become ten times faster and t
 
 This is only the simplest static picture from the theory of constraints. Real systems respond. Demand may rise as price falls. Quality may decline under pressure. Former buffers may disappear. The bottleneck itself can change with the load. To speak of a “moving bottleneck” is to keep watching where the complete outcome stops improving after a local acceleration—not to identify one pipe that will remain the narrowest forever.
 
+A deterministic synchronous run makes “the narrowest point” concrete: three serial stages — generation → review → delivery — where a fixed batch of new demand arrives each tick and the stages then serve once in downstream order.
+
+{{< interactive kind="flow-bottleneck" id="line-figure" spec="flow-bottleneck-v1" >}}
+
+Raise generation capacity from 6 to 10 and the queue in front of generation thins out — yet delivery stays pinned at 3 jobs per tick, review's rate. The extra capacity just becomes work in progress before review. Unblock review as well and the constraint moves on to delivery. This is an illustrative run with fixed inputs: real systems respond — demand, quality and the constraint itself all move — so use the figure to build intuition, not as a replacement for the sustained observation the paragraph above calls for.
+
 When AI lowers the cost of producing content, the quantity of content rises quickly; human attention does not grow with it. Production stops being scarce. Being seen and believed becomes scarce.
 
 When development accelerates, code accumulates faster, while requirements, review, testing, and maintenance become the constraint. One person can ask five agents to write code in parallel, but cannot understand five sets of changes at the same speed. My three overnight tasks produced precisely the waste that appears when execution bandwidth exceeds review bandwidth.

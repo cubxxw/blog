@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "kind": "session-tree",
+  "id": "session-tree-v1",
+  "defaultScenario": "branch",
+  "model": {
+    "nodes": [
+      {
+        "id": "root",
+        "parentId": null,
+        "role": "root",
+        "copy": {
+          "zh": { "text": "用户：帮我理解这个仓库的文档结构。" },
+          "en": { "text": "User: help me understand this repository’s documentation structure." }
+        }
+      },
+      {
+        "id": "user-a",
+        "parentId": "root",
+        "role": "user",
+        "copy": {
+          "zh": { "text": "用户：先读一下 docs/ 目录。" },
+          "en": { "text": "User: read the docs/ directory first." }
+        }
+      },
+      {
+        "id": "assistant-a",
+        "parentId": "user-a",
+        "role": "assistant",
+        "copy": {
+          "zh": { "text": "助手：读完了，共 3 个文件。" },
+          "en": { "text": "Assistant: done — 3 files." }
+        }
+      },
+      {
+        "id": "user-b",
+        "parentId": "assistant-a",
+        "role": "user",
+        "copy": {
+          "zh": { "text": "用户：那继续改 README。" },
+          "en": { "text": "User: then update the README." }
+        }
+      },
+      {
+        "id": "assistant-b",
+        "parentId": "user-b",
+        "role": "assistant",
+        "copy": {
+          "zh": { "text": "助手：README 已更新（这次对话产生了工作区写入）。" },
+          "en": { "text": "Assistant: README updated (this turn wrote to the workspace)." }
+        }
+      },
+      {
+        "id": "user-c",
+        "parentId": "assistant-a",
+        "role": "user",
+        "copy": {
+          "zh": { "text": "用户：先做个别的实验。" },
+          "en": { "text": "User: run a different experiment first." }
+        }
+      },
+      {
+        "id": "assistant-c",
+        "parentId": "user-c",
+        "role": "assistant",
+        "copy": {
+          "zh": { "text": "助手：实验记录写好了（这次对话也产生了工作区写入）。" },
+          "en": { "text": "Assistant: experiment notes written (this turn also wrote to the workspace)." }
+        }
+      }
+    ],
+    "compaction": {
+      "id": "compaction-entry",
+      "replaces": ["root", "user-a", "assistant-a"],
+      "copy": {
+        "zh": { "text": "压缩摘要（示意）：此前 3 条 entry 被折叠为一条 compaction entry；完整历史仍保留在树里，只是不再自动进入模型上下文。" },
+        "en": { "text": "Compacted summary (illustrative): the previous 3 entries fold into one compaction entry; the complete history stays in the tree, it just stops entering the model context automatically." }
+      }
+    },
+    "workspace": [
+      {
+        "id": "workspace-readme",
+        "path": "README.md",
+        "from": "assistant-b",
+        "copy": {
+          "zh": { "text": "README.md：由 assistant-b 那次对话的写入更新到 v2。" },
+          "en": { "text": "README.md: updated to v2 by the assistant-b turn's write." }
+        }
+      },
+      {
+        "id": "workspace-exp",
+        "path": "notes/exp.md",
+        "from": "assistant-c",
+        "copy": {
+          "zh": { "text": "notes/exp.md：由 assistant-c 那次对话的实验创建。" },
+          "en": { "text": "notes/exp.md: created by the assistant-c turn's experiment." }
+        }
+      }
+    ]
+  },
+  "scenarios": [
+    { "id": "root", "activeLeaf": "root", "compaction": false },
+    { "id": "branch", "activeLeaf": "assistant-c", "compaction": false },
+    { "id": "compaction", "activeLeaf": "assistant-b", "compaction": true }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "Session tree：历史、模型视图与工作区",
+      "question": "切换 active leaf 或折叠 compaction 时，什么会变，什么绝不会变？",
+      "assumption": "树、compaction 与工作区快照使用预设示例，规则取自正文的 Pi v0.84.1。图中不会运行 Pi，也不预测真实模型行为。",
+      "observe": "观察：可见 ancestor path 与模型上下文投影随选择变化，完整树和工作区快照保持不变。",
+      "footerNote": "示意数据 · 模型假设 · 对应来源",
+      "referenceTitle": "查看三种确定性案例",
+      "fixtureNotice": "预设示例 · Pi v0.84.1 · 非实时执行",
+      "layers": {
+        "tree": "权威会话历史（append-only tree）",
+        "context": "当前模型上下文投影",
+        "workspace": "工作区快照（独立）"
+      },
+      "nodeRoles": { "root": "根消息（用户）", "user": "用户消息", "assistant": "助手消息" },
+      "activeLabel": "当前 active leaf",
+      "pathLabel": "可见 ancestor path",
+      "compactionLabel": "折叠 compaction 投影",
+      "projectionNotes": {
+        "full": "完整投影：从 root 到当前 entry 的每条消息都在模型上下文里。",
+        "compacted": "压缩投影：compaction entry 替代被折叠的一段旧消息；模型不会自动重读完整历史。"
+      },
+      "projectionSummaryLabel": "compaction entry",
+      "workspaceNote": "工作区快照独立于对话分支：把 active leaf 移回旧分支不会回滚文件系统。",
+      "scenarioLabels": {
+        "root": "根 entry 路径",
+        "branch": "切换到分支 leaf",
+        "compaction": "compaction 投影"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Session tree: history, model view, and workspace",
+      "question": "When you move the active leaf or fold the compaction projection, what changes—and what must never change?",
+      "assumption": "The tree, compaction, and workspace snapshot use authored examples based on the article's Pi v0.84.1. The figure does not run Pi or predict real model behavior.",
+      "observe": "Observe: the visible ancestor path and the model-context projection follow your selection; the complete tree and the workspace snapshot stay unchanged.",
+      "footerNote": "Illustrative data · Model assumptions · Sources",
+      "referenceTitle": "View all three deterministic cases",
+      "fixtureNotice": "Authored example · Pi v0.84.1 · not live execution",
+      "layers": {
+        "tree": "Authoritative session history (append-only tree)",
+        "context": "Current model-context projection",
+        "workspace": "Workspace snapshot (independent)"
+      },
+      "nodeRoles": { "root": "Root message (user)", "user": "User message", "assistant": "Assistant message" },
+      "activeLabel": "Current active leaf",
+      "pathLabel": "Visible ancestor path",
+      "compactionLabel": "Fold the compaction projection",
+      "projectionNotes": {
+        "full": "Full projection: every message from the root to the current entry sits in the model context.",
+        "compacted": "Compacted projection: one compaction entry replaces the folded stretch of old messages; the model never re-reads the full history automatically."
+      },
+      "projectionSummaryLabel": "compaction entry",
+      "workspaceNote": "The workspace snapshot is independent of conversation branches: moving the active leaf back to an old branch never rolls back the filesystem.",
+      "scenarioLabels": {
+        "root": "Root entry path",
+        "branch": "Switch to a branch leaf",
+        "compaction": "Compaction projection"
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://github.com/earendil-works/pi/blob/53fa77ccd8a279eb87e92294ef3687b03ff80112/packages/coding-agent/src/core/session-manager.ts",
+      "title": "Pi SessionManager source at v0.84.1"
+    },
+    {
+      "url": "https://pi.dev/docs/latest/compaction",
+      "title": "Pi compaction documentation"
+    }
+  ]
+}

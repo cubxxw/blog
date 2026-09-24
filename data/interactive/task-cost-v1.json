@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "kind": "task-cost",
+  "id": "task-cost-v1",
+  "defaultScenario": "cheap-raw",
+  "model": { "batchSize": 50 },
+  "scenarios": [
+    {
+      "id": "cheap-raw",
+      "a": { "modelToolCost": 240, "retryCost": 30, "reviewMinutes": 300, "hourlyRate": 60, "accepted": 45 },
+      "b": { "modelToolCost": 40, "retryCost": 120, "reviewMinutes": 900, "hourlyRate": 60, "accepted": 35 }
+    },
+    {
+      "id": "light-review",
+      "a": { "modelToolCost": 240, "retryCost": 30, "reviewMinutes": 0, "hourlyRate": 60, "accepted": 45 },
+      "b": { "modelToolCost": 40, "retryCost": 120, "reviewMinutes": 0, "hourlyRate": 60, "accepted": 35 }
+    },
+    {
+      "id": "nothing-accepted",
+      "a": { "modelToolCost": 240, "retryCost": 30, "reviewMinutes": 300, "hourlyRate": 60, "accepted": 5 },
+      "b": { "modelToolCost": 40, "retryCost": 120, "reviewMinutes": 900, "hourlyRate": 60, "accepted": 0 }
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "每个成功任务的总成本",
+      "question": "调用更便宜的路线，算上重试与人审之后还更便宜吗？",
+      "assumption": "两条路线各是一个固定大小的任务批次；金额是可编辑的示意值，不是任何真实报价，全部以同一种币种计。人审分钟是整批的总时长，验收数是实测结果，不是预测的模型成功率。",
+      "observe": "观察：把人审时间归零，哪条路线更便宜？把人审加回去，结论翻转吗？",
+      "footerNote": "示意数据 · 模型假设 · 对应来源",
+      "referenceTitle": "查看全部预设对照",
+      "scenarioLabels": {
+        "cheap-raw": "便宜调用 + 重人审",
+        "light-review": "几乎不人审",
+        "nothing-accepted": "没有验收结果"
+      },
+      "unitLabel": "$（示意值）",
+      "batchLabel": "每批任务数（固定）",
+      "scaleLabel": "两根条共用刻度，满格 = 较高总成本",
+      "routes": { "a": "路线 A", "b": "路线 B" },
+      "inputLabels": {
+        "modelToolCost": "模型/工具成本",
+        "retryCost": "重试成本（单独计）",
+        "reviewMinutes": "人审总分钟（每批）",
+        "hourlyRate": "人审时薪",
+        "accepted": "验收通过任务数"
+      },
+      "costLabels": {
+        "modelTool": "模型/工具",
+        "retry": "重试",
+        "review": "人审",
+        "total": "总成本",
+        "perAccepted": "每个验收任务"
+      },
+      "table": { "scenario": "场景", "route": "路线", "breakdown": "成本构成", "total": "总成本", "perAccepted": "每个验收任务" },
+      "explanations": {
+        "a-lower": "按当前成本和验收数计算，路线 A 每个验收任务的总成本更低。",
+        "b-lower": "按当前成本和验收数计算，路线 B 每个验收任务的总成本更低。",
+        "equal": "两条路线每个验收任务持平：差别落在别处（延迟、风险、严重错误）。",
+        "undefined": "至少一条路线没有验收结果：这个比值没有经济意义——不是 0，也不是无穷大。"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Cost per successful task",
+      "question": "Does the cheaper-call route stay cheaper once retries and human review are counted?",
+      "assumption": "Each route is one fixed-size task batch; amounts are editable hypotheticals in a single currency, never real vendor prices. Review minutes are the batch total, and accepted counts are measured results — not predicted model success rates.",
+      "observe": "Observe: set review time to zero — which route is cheaper? Add review back — does the verdict flip?",
+      "footerNote": "Illustrative data · Model assumptions · Sources",
+      "referenceTitle": "View all preset comparisons",
+      "scenarioLabels": {
+        "cheap-raw": "Cheap calls + heavy review",
+        "light-review": "Almost no review",
+        "nothing-accepted": "Nothing accepted"
+      },
+      "unitLabel": "$ (illustrative)",
+      "batchLabel": "Tasks per batch (fixed)",
+      "scaleLabel": "Both bars share one scale; full width = the larger total cost",
+      "routes": { "a": "Route A", "b": "Route B" },
+      "inputLabels": {
+        "modelToolCost": "Model/tool cost",
+        "retryCost": "Retry cost (entered separately)",
+        "reviewMinutes": "Review minutes (batch total)",
+        "hourlyRate": "Review hourly cost",
+        "accepted": "Accepted tasks"
+      },
+      "costLabels": {
+        "modelTool": "Model/tool",
+        "retry": "Retry",
+        "review": "Review",
+        "total": "Total",
+        "perAccepted": "Per accepted task"
+      },
+      "table": { "scenario": "Scenario", "route": "Route", "breakdown": "Breakdown", "total": "Total", "perAccepted": "Per accepted" },
+      "explanations": {
+        "a-lower": "At the current costs and accepted counts, route A has the lower total cost per accepted task.",
+        "b-lower": "At the current costs and accepted counts, route B has the lower total cost per accepted task.",
+        "equal": "The routes tie per accepted task: the difference lives elsewhere (latency, risk, severe errors).",
+        "undefined": "At least one route accepted nothing: the ratio is not economically meaningful — not zero, and not infinity."
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "/ai-agent/posts/trusting-unattended-ai-agent/",
+      "title": "Series — Trusting unattended AI agents (review and failure costs)"
+    },
+    {
+      "url": "/ai-agent/posts/proactive-agent-it-prompts-you/",
+      "title": "Series — Proactive agents: interruption and re-entry cost"
+    }
+  ]
+}

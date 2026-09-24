@@ -1,0 +1,85 @@
+{{- /* gitops-reconcile-compute — the deterministic reconcile model, in one
+     place, for the SSR stage and the <details> reference. Template twin of
+     computeReconcile() in assets/js/components/gitops-reconcile-model.mjs
+     (the fixture build asserts the two agree row for row), with the diff and
+     sync semantics factored into gitops-reconcile-diff.html /
+     gitops-reconcile-sync.html. Exact integer state over three fields; sync
+     status and health stay separate and health is never modified here.
+
+       input : dict (git, cluster, hasHistory, historyVersion, origin, health,
+                     autoSync, selfHeal, prune, action)
+       return: dict (sync, health, explainKey, deletion, rolledBack, blocked,
+                     deltaBefore, deltaAfter, after)
+
+     Rules: manual sync ('sync') applies Git's desired state on its own;
+     `autoSync` applies Git-originated changes (cluster drift only with
+     `selfHeal`); a Git-deleted resource is deleted only with `prune` (a
+     retained extraneous workload keeps its ENTIRE live state) and the
+     deletion is always reported explicitly; `rollback` restores the history
+     entry of a live, Git-defined workload only (this limited teaching model)
+     and is refused while `autoSync` is enabled — the rollback guard. */ -}}
+{{- $git := .git -}}
+{{- $autoSync := .autoSync -}}
+{{- $selfHeal := .selfHeal -}}
+{{- $prune := .prune -}}
+{{- $action := .action -}}
+
+{{- $deltaBefore := partial "interactive/gitops-reconcile-diff.html" (dict "git" $git "cluster" .cluster) -}}
+
+{{- $after := dict "replicas" .cluster.replicas "version" .cluster.version "resource" .cluster.resource -}}
+{{- $deletion := "none" -}}
+{{- $rolledBack := false -}}
+{{- $blocked := false -}}
+
+{{- $rollbackAllowed := true -}}
+{{- $rollbackReason := "" -}}
+{{- if $autoSync -}}{{- $rollbackAllowed = false -}}{{- $rollbackReason = "auto-sync" -}}
+{{- else if not .hasHistory -}}{{- $rollbackAllowed = false -}}{{- $rollbackReason = "no-history" -}}
+{{- else if or (ne $git.resource "present") (ne .cluster.resource "present") -}}{{- $rollbackAllowed = false -}}{{- $rollbackReason = "no-live-workload" -}}
+{{- end -}}
+
+{{- if eq $action "rollback" -}}
+  {{- if not $rollbackAllowed -}}
+    {{- if eq $rollbackReason "auto-sync" }}{{ $blocked = true }}{{ end -}}
+  {{- else -}}
+    {{- $after = dict "replicas" $after.replicas "version" .historyVersion "resource" $after.resource -}}
+    {{- $rolledBack = true -}}
+  {{- end -}}
+{{- else if eq $action "sync" -}}
+  {{- $res := partial "interactive/gitops-reconcile-sync.html" (dict "git" $git "cluster" $after "prune" $prune) -}}
+  {{- $after = $res.cluster -}}
+  {{- $deletion = $res.deletion -}}
+{{- end -}}
+
+{{- $autoApplied := false -}}
+{{- $selfHealed := false -}}
+{{- if $autoSync -}}
+  {{- $pending := partial "interactive/gitops-reconcile-diff.html" (dict "git" $git "cluster" $after) -}}
+  {{- if gt (len $pending) 0 -}}
+    {{- $origin := .origin -}}
+    {{- if $rolledBack }}{{ $origin = "cluster" }}{{ end -}}
+    {{- if or (eq $origin "git") $selfHeal -}}
+      {{- $res := partial "interactive/gitops-reconcile-sync.html" (dict "git" $git "cluster" $after "prune" $prune) -}}
+      {{- $after = $res.cluster -}}
+      {{- $deletion = $res.deletion -}}
+      {{- if eq $origin "git" }}{{ $autoApplied = true }}{{ else }}{{ $selfHealed = true }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $deltaAfter := partial "interactive/gitops-reconcile-diff.html" (dict "git" $git "cluster" $after) -}}
+{{- $sync := "out-of-sync" -}}
+{{- if eq (len $deltaAfter) 0 }}{{ $sync = "synced" }}{{ end -}}
+
+{{- $explainKey := "idle" -}}
+{{- if $blocked -}}{{- $explainKey = "rollback-blocked" -}}
+{{- else if $rolledBack -}}{{- $explainKey = "rollback-temporary" -}}
+{{- else if eq $deletion "deleted" -}}{{- $explainKey = "deletion-pruned" -}}
+{{- else if eq $deletion "kept" -}}{{- $explainKey = "deletion-kept" -}}
+{{- else if $selfHealed -}}{{- $explainKey = "self-healed" -}}
+{{- else if $autoApplied -}}{{- $explainKey = "auto-synced" -}}
+{{- else if and (gt (len $deltaAfter) 0) $autoSync (eq .origin "cluster") (not $selfHeal) -}}{{- $explainKey = "drift-kept" -}}
+{{- else if eq (len $deltaAfter) 0 -}}{{- $explainKey = "synced-clean" -}}
+{{- end -}}
+
+{{- return (dict "sync" $sync "health" .health "explainKey" $explainKey "deletion" $deletion "rolledBack" $rolledBack "blocked" $blocked "deltaBefore" $deltaBefore "deltaAfter" $deltaAfter "after" $after) -}}

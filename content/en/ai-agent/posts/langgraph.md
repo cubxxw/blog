@@ -158,6 +158,12 @@ Consider an agent that drafts a refund, asks an operator for approval, then send
 
 There is a subtle trap around interrupts: when resumed, the node restarts from its beginning. Any database write or API call before `interrupt()` can execute again. Put approval before the side effect, or make everything before it idempotent.
 
+Turn that failure path into something you can dial: switch the crash point and the recovery action, then compare "side effect before approval" with "side effect after approval":
+
+{{< interactive kind="effect-recovery" id="langgraph-fault-path" spec="effect-recovery-langgraph-v1" >}}
+
+Moving the side effect after approval avoids the extra write caused by restarting the node on approval resume. A blind retry can still duplicate a write that the external service committed before its receipt was recorded. A receipt query supplies outcome evidence; provider-supported idempotency with the same key on every send collapses repeated requests in this model. A checkpoint records what the system knows and never rolls back an external write.
+
 My own failure test is concrete: if I cannot explain what happens when the process dies immediately after each external call, the graph is not ready. A beautiful diagram is not evidence of recoverability.
 
 ## 6. Engineering Trade-offs

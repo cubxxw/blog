@@ -1,11 +1,11 @@
-{{- /* interactive — the only entry point for the two interactive explainer
-     components (issue #389). A closed registry: `kind` maps to exactly one
+{{- /* interactive — the only entry point for the interactive explainer
+     components. A closed registry: `kind` maps to exactly one
      custom element + static partial. Nothing here concatenates a script path
      or an arbitrary template name from user input.
 
        {{< interactive kind="context-budget" id="context-window" spec="context-window-v1" >}}
 
-     - kind: "context-budget" | "agent-loop" (allowlist; anything else fails build)
+     - kind: see the explicit allowlist below; anything else fails build
      - id:   page-unique ^[a-z0-9]+(-[a-z0-9]+)*$ ; duplicates fail the build
      - spec: ^[a-z0-9]+(-[a-z0-9]+)*$ stem of data/interactive/<spec>.json
              (a local identifier — URLs, absolute paths and ".." fail the build)
@@ -20,8 +20,8 @@
 {{- $pagePath := "" -}}
 {{- with .Page.File }}{{ $pagePath = .Path }}{{ end -}}
 
-{{- if not (in (slice "context-budget" "agent-loop") $kind) -}}
-  {{- errorf "interactive: kind %q is not in the allowlist (context-budget | agent-loop) [page %s]" $kind $pagePath -}}
+{{- if not (in (slice "context-budget" "agent-loop" "session-tree" "session-scope" "memory-lineage" "effect-recovery" "gitops-reconcile" "reliability-chain" "task-cost" "notification-threshold" "vector-cosine" "flow-bottleneck") $kind) -}}
+  {{- errorf "interactive: kind %q is not in the allowlist (context-budget | agent-loop | session-tree | session-scope | memory-lineage | effect-recovery | gitops-reconcile | reliability-chain | task-cost | notification-threshold | vector-cosine | flow-bottleneck) [page %s]" $kind $pagePath -}}
 {{- end -}}
 {{- if not (findRE $slugRE $id) -}}
   {{- errorf "interactive: id %q must match %s and be page-unique [page %s]" $id $slugRE $pagePath -}}
@@ -102,4 +102,24 @@
   {{- partial "interactive/context-budget.html" $ctx -}}
 {{- else if eq $kind "agent-loop" -}}
   {{- partial "interactive/agent-loop.html" $ctx -}}
+{{- else if eq $kind "session-tree" -}}
+  {{- partial "interactive/session-tree.html" $ctx -}}
+{{- else if eq $kind "session-scope" -}}
+  {{- partial "interactive/session-scope.html" $ctx -}}
+{{- else if eq $kind "memory-lineage" -}}
+  {{- partial "interactive/memory-lineage.html" $ctx -}}
+{{- else if eq $kind "effect-recovery" -}}
+  {{- partial "interactive/effect-recovery.html" $ctx -}}
+{{- else if eq $kind "gitops-reconcile" -}}
+  {{- partial "interactive/gitops-reconcile.html" $ctx -}}
+{{- else if eq $kind "reliability-chain" -}}
+  {{- partial "interactive/reliability-chain.html" $ctx -}}
+{{- else if eq $kind "task-cost" -}}
+  {{- partial "interactive/task-cost.html" $ctx -}}
+{{- else if eq $kind "notification-threshold" -}}
+  {{- partial "interactive/notification-threshold.html" $ctx -}}
+{{- else if eq $kind "vector-cosine" -}}
+  {{- partial "interactive/vector-cosine.html" $ctx -}}
+{{- else if eq $kind "flow-bottleneck" -}}
+  {{- partial "interactive/flow-bottleneck.html" $ctx -}}
 {{- end -}}

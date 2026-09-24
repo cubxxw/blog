@@ -227,6 +227,12 @@ Vector databases are a special type of database that use mathematical vectors to
     
      ```
 
+The 2-D figure below turns the formula into something you can verify by hand: drag or type coordinates, scale B without changing its direction, then rotate B and watch the dot product, angle and cosine respond.
+
+{{< interactive kind="vector-cosine" id="cosine-figure" spec="vector-cosine-v1" >}}
+
+Try changing only the length of B first: the cosine stays put, because the cosine reads direction only. Then rotate B: the length is unchanged while the angle and cosine move with it — exactly what “similar in direction, regardless of size” means. Note the zero-vector preset: with no direction, the angle and cosine are undefined rather than 0. Real embedding vectors live in high dimensions; this 2-D figure demonstrates the geometry and predicts nothing about semantic retrieval.
+
 ### Application of cosine similarity
 
 - **Text Analysis**: In natural language processing, cosine similarity is often used to compare the similarity of document or word vectors.

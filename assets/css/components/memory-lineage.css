@@ -1,0 +1,396 @@
+/* memory-lineage.css — styles for <blog-memory-lineage> only (GROUP state).
+ * Every selector is scoped under the custom-element root. Colours, fonts and
+ * easing come from assets/css/extended/tokens.css (both themes). The five
+ * result states are told apart by TEXTURE as well as colour (double, dashed,
+ * dotted, hatched), so the before/after comparison survives colour-vision
+ * differences and greyscale printing. Layout is fluid down to 320px: the
+ * DAG SVG scales inside its box and long labels wrap instead of overflowing.
+ *
+ * Static (no-JS) and enhanced states share one geometry: interactive
+ * controls swap into same-sized static slots. */
+
+blog-memory-lineage [hidden] {
+  display: none !important;
+}
+
+blog-memory-lineage.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-memory-lineage .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-memory-lineage .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-memory-lineage .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+blog-memory-lineage .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+blog-memory-lineage .ib-slot {
+  visibility: hidden;
+}
+
+blog-memory-lineage .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario + source strips: static chips swap for buttons ────────── */
+blog-memory-lineage .ib-scenarios,
+blog-memory-lineage .ib-ml-request {
+  margin: 0.5rem 1.1rem;
+}
+blog-memory-lineage .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+blog-memory-lineage .ib-scn-chip,
+blog-memory-lineage .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
+  border-radius: 999px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+  background: transparent;
+  color: var(--color-ink, #1a1c1b);
+}
+blog-memory-lineage .ib-scn {
+  cursor: pointer;
+  transition: background 0.15s var(--ease-out, ease);
+}
+blog-memory-lineage .ib-scn[aria-pressed="true"],
+blog-memory-lineage .ib-scn-chip.is-on {
+  background: var(--color-accent-soft, #dde5da);
+  border-color: var(--color-accent, #2e352e);
+}
+blog-memory-lineage .ib-scn:focus-visible,
+blog-memory-lineage .ib-btn:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── lineage DAG (scalable SVG paired with the text rows below) ─────── */
+blog-memory-lineage .ib-ml-layer {
+  margin: 0.6rem 1.1rem 0;
+}
+blog-memory-lineage .ib-layer-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-memory-lineage .ib-ml-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 624px;
+}
+blog-memory-lineage .ib-ml-edge {
+  fill: none;
+  stroke: var(--color-ink-muted, #5e5e63);
+  stroke-width: 1.5;
+}
+blog-memory-lineage .ib-ml-arrow {
+  fill: var(--color-ink-muted, #5e5e63);
+}
+blog-memory-lineage .ib-ml-box {
+  fill: var(--color-paper, #f9f9f7);
+  stroke: var(--color-ink-muted, #5e5e63);
+  stroke-width: 1.2;
+}
+blog-memory-lineage .ib-ml-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  fill: var(--color-ink, #1a1c1b);
+}
+/* Five states, told apart by texture as well as tone. */
+blog-memory-lineage .ib-ml-node.is-removed .ib-ml-box {
+  stroke: var(--color-accent, #2e352e);
+  stroke-width: 3;
+  stroke-dasharray: 2 3;
+}
+blog-memory-lineage .ib-ml-node.is-invalidated .ib-ml-box {
+  stroke-dasharray: 7 4;
+}
+blog-memory-lineage .ib-ml-node.is-recompute .ib-ml-box {
+  stroke-dasharray: 1.5 2.5;
+  stroke-width: 2;
+}
+blog-memory-lineage .ib-ml-node.is-unproven .ib-ml-box {
+  fill: transparent;
+  fill-opacity: 0.35;
+  stroke-dasharray: 10 3 2 3;
+}
+
+/* ── before/after result strips (the exact default result) ──────────── */
+blog-memory-lineage .ib-ml-strips {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  margin: 0.6rem 1.1rem 0;
+}
+@media (min-width: 720px) {
+  blog-memory-lineage .ib-ml-strips {
+    grid-template-columns: auto 1fr;
+  }
+}
+blog-memory-lineage .ib-ml-strip {
+  margin: 0;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.18));
+  border-radius: 10px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+blog-memory-lineage .ib-ml-strip-label {
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+blog-memory-lineage .ib-ml-strip-item {
+  margin-right: 0.55rem;
+  white-space: nowrap;
+}
+
+blog-memory-lineage .ib-note {
+  margin: 0.45rem 1.1rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── node rows: text evidence with before → after badges ────────────── */
+blog-memory-lineage .ib-ml-rows {
+  margin: 0.5rem 1.1rem 0;
+  padding: 0;
+  list-style: none;
+}
+blog-memory-lineage .ib-ml-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.6rem;
+  align-items: baseline;
+  padding: 0.4rem 0;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.14));
+}
+blog-memory-lineage .ib-ml-row:first-child {
+  border-top: 0;
+}
+blog-memory-lineage .ib-ml-kind {
+  flex: 0 0 auto;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-memory-lineage .ib-ml-text {
+  flex: 1 1 220px;
+  min-width: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+blog-memory-lineage .ib-ml-status {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+}
+blog-memory-lineage .ib-ml-status.is-removed {
+  border-style: double;
+  border-width: 3px;
+}
+blog-memory-lineage .ib-ml-status.is-invalidated {
+  border-style: dashed;
+}
+blog-memory-lineage .ib-ml-status.is-recompute {
+  border-style: dotted;
+  border-width: 2px;
+}
+blog-memory-lineage .ib-ml-status.is-unproven {
+  border-style: dashed;
+  border-color: var(--color-accent, #2e352e);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    var(--color-rule, rgba(30, 35, 30, 0.18)) 3px,
+    var(--color-rule, rgba(30, 35, 30, 0.18)) 5px
+  );
+}
+blog-memory-lineage .ib-ml-ref-parents {
+  flex: 1 1 100%;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+blog-memory-lineage .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── read-only reference (native details; upgrade never touches it) ─── */
+blog-memory-lineage .ib-reference {
+  margin: 0.6rem 1.1rem 0.8rem;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.12));
+  padding-top: 0.5rem;
+}
+blog-memory-lineage .ib-reference > summary {
+  cursor: pointer;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted, #5e5e63);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+blog-memory-lineage .ib-reference > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+blog-memory-lineage .ib-ml-ref-case {
+  margin-top: 0.6rem;
+}
+blog-memory-lineage .ib-ref-title {
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+blog-memory-lineage .ib-ref-line {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-memory-lineage .ib-observe {
+  margin: 0.2rem 1.1rem 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+blog-memory-lineage .ib-foot {
+  padding: 0.6rem 1.1rem 0.9rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-memory-lineage .ib-foot .ib-note {
+  margin: 0;
+}
+blog-memory-lineage .ib-disclosure {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-memory-lineage .ib-sources {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+}
+blog-memory-lineage .ib-sources li {
+  margin-top: 0.2rem;
+}
+blog-memory-lineage .ib-sources a {
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  blog-memory-lineage .ib-scn {
+    transition: none;
+  }
+}
+
+@media print {
+  blog-memory-lineage .ib-scenarios,
+  blog-memory-lineage .ib-ml-request,
+  blog-memory-lineage button,
+  blog-memory-lineage input,
+  blog-memory-lineage select {
+    display: none !important;
+  }
+  blog-memory-lineage .ib-reference {
+    display: block !important;
+  }
+  blog-memory-lineage .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-memory-lineage .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

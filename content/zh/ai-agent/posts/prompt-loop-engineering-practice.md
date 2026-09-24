@@ -274,6 +274,12 @@ Codex Goals 的边界不同。Goal 是附着在一个 task（thread）上的持�
         但它会犯语言模型的错，是最后手段
 ```
 
+把这三级阶梯放回 loop 里看一遍：一轮写作如何被确定性闸门拦下、诊断修复、再次判定，以及预算耗尽时 loop 应该说什么：
+
+{{< interactive kind="agent-loop" id="verifier-loop" spec="loop-verifier-v1" >}}
+
+注意这条轨迹的性质：它是**提议中的**验证器强制 loop 的教学示意——决策说明是讲解文本，命令只是文本、不会真实执行。前面那个 Ralph 循环目前还没有这样的 contract gate，图里的闸门是下一步要补的东西，不是已存在的事实。
+
 ### 第一级：确定性闸门
 
 `npm test` 的退出码、`tsc` 有没有报错、`hugo build` 是否成功、`git status` 是否干净。这些信号不会靠措辞改变结果，这是它们压倒性的优势。

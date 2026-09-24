@@ -1,0 +1,432 @@
+/* vector-cosine.css — styles for <blog-vector-cosine> only (geometry
+ * expansion). Every selector is scoped under the custom-element root; nothing
+ * here styles global button/svg/p elements. Colours, fonts and easing come
+ * from assets/css/extended/tokens.css (both themes).
+ *
+ * The plane is a square SVG (aspect-ratio 1) scaled fluidly to the column
+ * width: the pointer mapping is a linear map of the client rect, so the
+ * figure stays correct from 320px to 1280px and never overflows the page.
+ *
+ * Static (no-JS) and enhanced states share one geometry: the interactive
+ * control row swaps into a same-sized visibility:hidden slot row. */
+
+/* Author display must never defeat the hidden attribute (UA [hidden] loses
+ * to author display). Scoped to this root, and carefully re-enabled only in
+ * print. */
+blog-vector-cosine [hidden] {
+  display: none !important;
+}
+
+blog-vector-cosine.ib-figure {
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-body, system-ui, sans-serif);
+  color: var(--color-ink, #1a1c1b);
+}
+
+blog-vector-cosine .ib-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.6rem 0.95rem;
+  border-bottom: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+}
+blog-vector-cosine .ib-kicker {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-vector-cosine .ib-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+blog-vector-cosine .ib-preset {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted, #5e5e63);
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+blog-vector-cosine .ib-question {
+  margin: 0.9rem 1.1rem 0.3rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ── scenario strip: static chips swap for identical-height buttons ─── */
+blog-vector-cosine .ib-scenarios {
+  padding: 0.5rem 1.1rem 0.2rem;
+}
+blog-vector-cosine .ib-scn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+}
+blog-vector-cosine .ib-scn-chip,
+blog-vector-cosine .ib-scn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 999px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+blog-vector-cosine .ib-scn-chip {
+  border-color: transparent;
+}
+blog-vector-cosine .ib-scn-chip:first-child {
+  font-weight: 600;
+}
+blog-vector-cosine button.ib-scn {
+  cursor: pointer;
+}
+blog-vector-cosine .ib-scn[aria-pressed="true"] {
+  color: var(--color-ink, #1a1c1b);
+  font-weight: 600;
+  border-color: var(--color-accent, #2e352e);
+  background: var(--color-accent-soft, #dde5da);
+}
+blog-vector-cosine .ib-scn:focus-visible,
+blog-vector-cosine .ib-btn:focus-visible,
+blog-vector-cosine input:focus-visible {
+  outline: 2px solid var(--color-accent, #2e352e);
+  outline-offset: 2px;
+}
+
+/* ── buttons (and their invisible slot boxes share one size) ────────── */
+blog-vector-cosine .ib-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  appearance: none;
+  margin: 0;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.15));
+  border-radius: 6px;
+  background: none;
+  color: var(--color-ink-muted, #5e5e63);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+blog-vector-cosine .ib-slot {
+  border-color: transparent;
+  visibility: hidden;
+}
+blog-vector-cosine .ib-btn--reset,
+blog-vector-cosine .ib-slot[data-ib-head-slot] {
+  margin-left: auto;
+}
+blog-vector-cosine .ib-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ── the 2-D plane ──────────────────────────────────────────────────── */
+blog-vector-cosine .ib-vec-stage {
+  padding: 0.6rem 1.1rem 0.4rem;
+  min-width: 0;
+}
+blog-vector-cosine .ib-vec-svg {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+blog-vector-cosine .ib-vec-grid line {
+  stroke: var(--color-rule, rgba(30, 35, 30, 0.12));
+  stroke-width: 0.03;
+}
+blog-vector-cosine .ib-vec-disk {
+  fill: none;
+  stroke: var(--color-rule, rgba(30, 35, 30, 0.25));
+  stroke-width: 0.05;
+  stroke-dasharray: 0.2 0.16;
+}
+blog-vector-cosine .ib-vec-axis {
+  stroke: var(--color-ink-muted, #5e5e63);
+  stroke-width: 0.05;
+}
+blog-vector-cosine .ib-vec-origin {
+  fill: var(--color-ink, #1a1c1b);
+}
+blog-vector-cosine .ib-vec-arc {
+  fill: none;
+  stroke: var(--color-ink-muted, #5e5e63);
+  stroke-width: 0.06;
+  stroke-dasharray: 0.18 0.12;
+}
+blog-vector-cosine .ib-vec-line {
+  stroke-width: 0.09;
+}
+blog-vector-cosine .ib-vec-head {
+  stroke-width: 0.06;
+  stroke-linejoin: round;
+}
+blog-vector-cosine .ib-vec-a.ib-vec-line,
+blog-vector-cosine .ib-vec-head.ib-vec-a {
+  stroke: var(--color-accent, #2e352e);
+  fill: var(--color-accent, #2e352e);
+}
+blog-vector-cosine .ib-vec-b.ib-vec-line,
+blog-vector-cosine .ib-vec-head.ib-vec-b {
+  stroke: var(--color-link, #3b5aa0);
+  fill: var(--color-link, #3b5aa0);
+}
+blog-vector-cosine .ib-vec-line.ib-vec-b {
+  stroke-dasharray: none;
+}
+blog-vector-cosine .ib-vec-dot {
+  fill: var(--color-card, #fdfdfc);
+  stroke-width: 0.08;
+  pointer-events: none;
+}
+blog-vector-cosine .ib-vec-dot.ib-vec-a {
+  stroke: var(--color-accent, #2e352e);
+}
+blog-vector-cosine .ib-vec-dot.ib-vec-b {
+  stroke: var(--color-link, #3b5aa0);
+}
+/* Transparent drag target, larger than the visible dot. Page scrolling stays
+ * available everywhere else on the plot (and on the whole figure before the
+ * enhancement): only the enhanced drag handles capture touch gestures. */
+blog-vector-cosine .ib-vec-handle {
+  fill: transparent;
+  stroke: none;
+  pointer-events: all;
+  cursor: grab;
+}
+blog-vector-cosine[data-enhanced] .ib-vec-handle {
+  touch-action: none;
+}
+blog-vector-cosine .ib-vec-handle:active {
+  cursor: grabbing;
+}
+blog-vector-cosine .ib-vec-tag {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.65px;
+  fill: var(--color-ink, #1a1c1b);
+}
+blog-vector-cosine .ib-diagram-note {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--color-ink-muted, #5e5e63);
+}
+
+/* ── numeric readout (the accessible equivalent of the SVG) ─────────── */
+blog-vector-cosine .ib-readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.35rem 0.9rem;
+  margin: 0.4rem 0;
+}
+blog-vector-cosine .ib-metric {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 0;
+  border-bottom: 1px dotted var(--color-rule, rgba(30, 35, 30, 0.15));
+  padding-bottom: 0.2rem;
+}
+blog-vector-cosine .ib-metric dt {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+blog-vector-cosine .ib-metric dd {
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+blog-vector-cosine .ib-unit {
+  font-size: 0.6875rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-vector-cosine .ib-explain {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* ── controls: one row, mirrored by an invisible same-sized slot ───── */
+blog-vector-cosine .ib-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.55rem 0.7rem;
+  padding: 0.55rem 1.1rem 0.7rem;
+  min-height: 44px;
+}
+blog-vector-cosine .ib-ctrl-slot {
+  visibility: hidden;
+}
+blog-vector-cosine .ib-num {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+blog-vector-cosine .ib-num-label {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+blog-vector-cosine .ib-num-box {
+  box-sizing: border-box;
+  appearance: none;
+  margin: 0;
+  width: 5.4rem;
+  min-height: 44px;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.2));
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+}
+blog-vector-cosine .ib-range-label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+blog-vector-cosine .ib-range-name {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted, #5e5e63);
+  overflow-wrap: anywhere;
+}
+blog-vector-cosine .ib-range-out {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+}
+blog-vector-cosine .ib-range {
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  min-height: 44px;
+  accent-color: var(--color-accent, #2e352e);
+}
+blog-vector-cosine .ib-range-track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 44px;
+}
+blog-vector-cosine .ib-range-thumb {
+  position: absolute;
+  top: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.2));
+  transform: translate(-50%, -50%);
+}
+
+/* ── read-only reference (native details; upgrade never touches it) ─── */
+blog-vector-cosine .ib-reference {
+  margin: 0.4rem 1.1rem 0.6rem;
+  border-top: 1px dashed var(--color-rule, rgba(30, 35, 30, 0.15));
+  padding-top: 0.5rem;
+  font-size: 0.8125rem;
+}
+blog-vector-cosine .ib-reference summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+blog-vector-cosine .ib-ref-block {
+  margin: 0.5rem 0 0.9rem;
+}
+blog-vector-cosine .ib-ref-title {
+  margin: 0.3rem 0 0.4rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-vector-cosine .ib-observe {
+  margin: 0.4rem 1.1rem 0.2rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+blog-vector-cosine .ib-foot {
+  padding: 0.55rem 1.1rem 0.8rem;
+  border-top: 1px solid var(--color-rule, rgba(30, 35, 30, 0.12));
+  font-size: 0.8125rem;
+  color: var(--color-ink-muted, #5e5e63);
+}
+blog-vector-cosine .ib-foot p {
+  margin: 0.25rem 0;
+}
+blog-vector-cosine .ib-sources {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+blog-vector-cosine .ib-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── reduced motion: nothing decorative animates here anyway ───────── */
+@media (prefers-reduced-motion: reduce) {
+  blog-vector-cosine * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  blog-vector-cosine .ib-scenarios,
+  blog-vector-cosine .ib-controls,
+  blog-vector-cosine button,
+  blog-vector-cosine input {
+    display: none !important;
+  }
+  blog-vector-cosine .ib-reference {
+    display: block !important;
+  }
+  blog-vector-cosine .ib-reference::details-content {
+    display: block !important;
+    content-visibility: visible !important;
+    height: auto !important;
+  }
+  blog-vector-cosine .ib-reference > :not(summary) {
+    display: revert !important;
+    content-visibility: visible !important;
+  }
+}

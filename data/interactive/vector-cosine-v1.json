@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "vector-cosine",
+  "id": "vector-cosine-v1",
+  "defaultScenario": "oblique",
+  "model": { "bound": 6, "gridStep": 0.25, "angleStep": 15 },
+  "scenarios": [
+    { "id": "oblique", "ax": 3, "ay": 1, "bx": 1, "by": 2 },
+    { "id": "parallel", "ax": 2, "ay": 1, "bx": 4, "by": 2 },
+    { "id": "orthogonal", "ax": 2, "ay": 1, "bx": -1, "by": 2 },
+    { "id": "opposite", "ax": 2, "ay": 1, "bx": -2, "by": -1 },
+    { "id": "zero", "ax": 2, "ay": 1, "bx": 0, "by": 0 }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "二维向量与余弦相似度实验",
+      "question": "只改变长度或只改变方向时，点积、角度和余弦分别会怎么变？",
+      "assumption": "二维数学图解：坐标、点积、长度、夹角与余弦都由平面几何公式算出，不是真实向量嵌入的语义预测器，也不度量任何模型质量。",
+      "observe": "观察：先只拖动长度滑块（方向不变），余弦保持不变；再旋转 B，只有角度和余弦改变。",
+      "footerNote": "示意数据 · 平面几何公式 · 对应来源",
+      "referenceTitle": "查看全部预设向量与精确数值",
+      "illustrationNotice": "二维数学图解，不是真实向量嵌入的语义预测器",
+      "unitLabel": "网格单位",
+      "undefinedText": "未定义（零向量没有方向）",
+      "diagramNote": "图：从原点出发的两个向量 A 与 B，弧线标出夹角 θ；下方读数是坐标、点积、长度、夹角与余弦的精确数值。拖动圆点或用坐标输入框都可以改变向量。",
+      "vectorLabels": { "a": "向量 A", "b": "向量 B" },
+      "inputs": { "ax": "A 的 x 坐标", "ay": "A 的 y 坐标", "bx": "B 的 x 坐标", "by": "B 的 y 坐标" },
+      "metrics": { "dot": "点积 A·B", "magA": "A 的长度 |A|", "magB": "B 的长度 |B|", "angle": "夹角 θ", "cosine": "余弦 cos(θ)" },
+      "actions": { "scale": "B 的长度（方向不变）", "rotateLeft": "逆时针旋转 B", "rotateRight": "顺时针旋转 B" },
+      "explanations": {
+        "parallel": "方向几乎相同：余弦接近 1。缩放只改变长度，余弦保持不变。",
+        "similar": "方向大体一致：余弦为正，夹角小于 90°。",
+        "orthogonal": "接近垂直：余弦接近 0，两个方向几乎不相关。",
+        "opposite": "方向相反：余弦为负，夹角大于 90°。",
+        "zero": "零向量没有方向：夹角与余弦在此处未定义，不会显示成 0 或 NaN。"
+      },
+      "scenarioLabels": {
+        "oblique": "一般夹角",
+        "parallel": "同向平行",
+        "orthogonal": "垂直正交",
+        "opposite": "反向相反",
+        "zero": "零向量"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "2-D vectors and cosine similarity experiment",
+      "question": "What changes in the dot product, angle and cosine when only the length or only the direction changes?",
+      "assumption": "A 2-D mathematical illustration: coordinates, dot product, lengths, angle and cosine come from plane geometry formulas. This is not a semantic predictor for real vector embeddings and measures no model quality.",
+      "observe": "Observe: drag the length slider first (direction fixed) and the cosine stays; then rotate B and only the angle and cosine change.",
+      "footerNote": "Illustrative data · Plane geometry formulas · Sources",
+      "referenceTitle": "View all preset vectors with exact values",
+      "illustrationNotice": "A 2-D mathematical illustration, not a semantic predictor for real embeddings",
+      "unitLabel": "grid units",
+      "undefinedText": "undefined (a zero vector has no direction)",
+      "diagramNote": "The figure draws two vectors A and B from the origin, with an arc marking their angle θ. The readout gives exact values for coordinates, dot product, lengths, angle and cosine. Drag the dots or use the coordinate fields to change the vectors.",
+      "vectorLabels": { "a": "Vector A", "b": "Vector B" },
+      "inputs": { "ax": "A x coordinate", "ay": "A y coordinate", "bx": "B x coordinate", "by": "B y coordinate" },
+      "metrics": { "dot": "Dot product A·B", "magA": "Length |A|", "magB": "Length |B|", "angle": "Angle θ", "cosine": "Cosine cos(θ)" },
+      "actions": { "scale": "Length of B (direction fixed)", "rotateLeft": "Rotate B left (counterclockwise)", "rotateRight": "Rotate B right (clockwise)" },
+      "explanations": {
+        "parallel": "Almost the same direction: the cosine is close to 1. Scaling changes only the length; the cosine stays.",
+        "similar": "Broadly aligned: the cosine is positive and the angle is below 90°.",
+        "orthogonal": "Nearly perpendicular: the cosine is close to 0 — the directions barely relate.",
+        "opposite": "Opposite directions: the cosine is negative and the angle is above 90°.",
+        "zero": "A zero vector has no direction: angle and cosine are undefined here — never 0, never NaN."
+      },
+      "scenarioLabels": {
+        "oblique": "Oblique pair",
+        "parallel": "Parallel (same direction)",
+        "orthogonal": "Orthogonal (right angle)",
+        "opposite": "Opposite direction",
+        "zero": "Zero vector"
+      }
+    }
+  },
+  "sourceRefs": [
+    { "url": "https://en.wikipedia.org/wiki/Cosine_similarity", "title": "Cosine similarity — definition and formula (Wikipedia)" }
+  ]
+}

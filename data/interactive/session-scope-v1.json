@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "kind": "session-scope",
+  "id": "session-scope-v1",
+  "defaultScenario": "per-channel-peer",
+  "model": {
+    "agentId": "support",
+    "mainKey": "main",
+    "messages": [
+      {
+        "id": "alice-eu-order",
+        "person": "alice",
+        "channel": "telegram",
+        "accountId": "supporteu",
+        "peerId": "tg:12345",
+        "copy": {
+          "zh": { "text": "（欧洲 inbox）我的订单 #1001 破损了。" },
+          "en": { "text": "(EU inbox) My order #1001 arrived damaged." }
+        }
+      },
+      {
+        "id": "alice-us-order",
+        "person": "alice",
+        "channel": "telegram",
+        "accountId": "supportus",
+        "peerId": "tg:12345",
+        "copy": {
+          "zh": { "text": "（美国 inbox，同一个平台用户 ID）上个月的订单也有问题。" },
+          "en": { "text": "(US inbox, same platform user ID) Last month's order had the same problem." }
+        }
+      },
+      {
+        "id": "bob-eu-address",
+        "person": "bob",
+        "channel": "telegram",
+        "accountId": "supporteu",
+        "peerId": "tg:777",
+        "copy": {
+          "zh": { "text": "（欧洲 inbox）想改一下收货地址。" },
+          "en": { "text": "(EU inbox) I need to change the shipping address." }
+        }
+      },
+      {
+        "id": "bob-us-invoice",
+        "person": "bob",
+        "channel": "telegram",
+        "accountId": "supportus",
+        "peerId": "tg:777",
+        "copy": {
+          "zh": { "text": "（美国 inbox）发票信息开错了。" },
+          "en": { "text": "(US inbox) The invoice details are wrong." }
+        }
+      },
+      {
+        "id": "alice-slack-logistics",
+        "person": "alice",
+        "channel": "slack",
+        "accountId": "acme",
+        "peerId": "U222",
+        "copy": {
+          "zh": { "text": "（Slack 上的 Alice）帮我查一下物流。" },
+          "en": { "text": "(Alice on Slack) Can you check the shipment status?" }
+        }
+      },
+      {
+        "id": "bob-slack-report",
+        "person": "bob",
+        "channel": "slack",
+        "accountId": "acme",
+        "peerId": "U333",
+        "copy": {
+          "zh": { "text": "（Slack 上的 Bob）周报模板在哪里？" },
+          "en": { "text": "(Bob on Slack) Where is the weekly report template?" }
+        }
+      }
+    ],
+    "identityLinks": [
+      { "peerId": "tg:12345", "canonical": "alice" },
+      { "peerId": "U222", "canonical": "alice" }
+    ]
+  },
+  "scenarios": [
+    { "id": "main", "mode": "main", "useIdentityLinks": false },
+    { "id": "per-peer", "mode": "per-peer", "useIdentityLinks": false },
+    { "id": "per-channel-peer", "mode": "per-channel-peer", "useIdentityLinks": false },
+    { "id": "per-account-channel-peer", "mode": "per-account-channel-peer", "useIdentityLinks": false },
+    { "id": "identity-link", "mode": "per-peer", "useIdentityLinks": true }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "Session key：同一份消息，五种分组",
+      "question": "换一种 dmScope 模式，哪些消息会被合并进同一个 session，哪些会被分开？",
+      "assumption": "合成教学消息（非真实用户数据）；key 形状来自正文钉住的 OpenClaw v2026.7.1-2 源码规则，数字与分组都可按维度逐一核对，不代表任何真实系统负载。",
+      "observe": "观察：同一对端 ID 跨账户出现时，哪几种模式会把两个 inbox 的上下文合并？",
+      "footerNote": "合成数据 · 版本规则见来源 · 不做身份验证",
+      "referenceTitle": "查看全部五种分组",
+      "agentLabel": "固定 agent ID",
+      "keyLabel": "生成的 session key",
+      "formatLabel": "该模式的 key 形状",
+      "groupsLabel": "分组结果",
+      "messagesLabel": "消息",
+      "dimensions": { "person": "人", "channel": "渠道", "account": "账户", "peer": "对端 ID" },
+      "readings": {
+        "single": "该 key 下只有一条消息。",
+        "shared": "该 key 合并了多条消息：连续性变强，隐私边界变弱。"
+      },
+      "identityTitle": "identityLinks 映射",
+      "identityNotice": "这里只展示已配置的 peerId → canonical 映射（教学简化格式，不是 OpenClaw 的配置文件格式），不代表任何身份验证或真实身份主张；别名匹配不区分大小写，key 中的对端 ID 在映射后统一转为小写。",
+      "mapLabel": "配置的映射",
+      "people": {
+        "alice": "Alice（同一人，跨账户/渠道）",
+        "bob": "Bob"
+      },
+      "scenarioLabels": {
+        "main": "main",
+        "per-peer": "per-peer",
+        "per-channel-peer": "per-channel-peer",
+        "per-account-channel-peer": "per-account-channel-peer",
+        "identity-link": "identityLinks 合并示例"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Session key: one message set, five groupings",
+      "question": "Switch the dmScope mode—which messages share one session, and which stay separated?",
+      "assumption": "Synthetic teaching messages (no real user data); the key shapes come from the OpenClaw v2026.7.1-2 source rules pinned by the article. Every grouping is checkable dimension by dimension and models no real system load.",
+      "observe": "Observe: when the same platform peer ID appears in two accounts, which modes merge both inboxes into one context?",
+      "footerNote": "Synthetic data · Versioned rules in sources · No identity verification",
+      "referenceTitle": "View all five groupings",
+      "agentLabel": "Fixed agent ID",
+      "keyLabel": "Computed session key",
+      "formatLabel": "Key shape for this mode",
+      "groupsLabel": "Grouping",
+      "messagesLabel": "Messages",
+      "dimensions": { "person": "Person", "channel": "Channel", "account": "Account", "peer": "Peer ID" },
+      "readings": {
+        "single": "Only one message sits under this key.",
+        "shared": "This key merges several messages: continuity grows, the privacy boundary weakens."
+      },
+      "identityTitle": "identityLinks mapping",
+      "identityNotice": "Configured peerId → canonical mapping only (simplified teaching schema, not OpenClaw config): never identity verification. Aliases match case-insensitively; keys lowercase the resolved peer.",
+      "mapLabel": "Configured mapping",
+      "people": {
+        "alice": "Alice (same person, across accounts/channels)",
+        "bob": "Bob"
+      },
+      "scenarioLabels": {
+        "main": "main",
+        "per-peer": "per-peer",
+        "per-channel-peer": "per-channel-peer",
+        "per-account-channel-peer": "per-account-channel-peer",
+        "identity-link": "identityLinks merge example"
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://github.com/openclaw/openclaw/blob/v2026.7.1-2/src/routing/session-key.ts",
+      "title": "OpenClaw session-key.ts at v2026.7.1-2"
+    },
+    {
+      "url": "https://github.com/openclaw/openclaw/blob/v2026.7.1-2/docs/concepts/session.md",
+      "title": "OpenClaw Session management at v2026.7.1-2"
+    }
+  ]
+}

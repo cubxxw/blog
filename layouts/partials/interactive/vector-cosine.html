@@ -1,0 +1,150 @@
+{{- /* blog-vector-cosine — interactive 2-D vector plane + native <details>
+     reference (geometry expansion). The stage renders the default scenario's
+     exact result from the same spec data the runtime uses: coordinates, dot
+     product, magnitudes, angle and cosine (zero vectors show the spec's
+     undefinedText — never 0, never NaN). The <details> reference holds every
+     preset with its exact values — same data, no runtime selectors, no ids,
+     works without JS and its open state is never touched by the upgrade.
+
+     Controls (coordinate fields, length slider, rotate buttons) start hidden
+     behind one same-sized visibility:hidden slot row and swap in only after
+     successful validation + first render (zero layout shift on upgrade).
+     Wrapping <label>s are used throughout: the figure emits no derived ARIA
+     ids at all (only the instance root id). The SVG is decorative
+     (aria-hidden) and paired with the textual diagram note + numeric readout
+     below it. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+{{- $bound := mul $m.bound 1.0 -}}
+{{- $extent := add $bound 1.0 -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- $def := index $ordered 0 -}}
+{{- $v := partial "interactive/vector-cosine-values.html" (dict "s" $def "m" $m) -}}
+{{- $key := "zero" -}}
+{{- if $v.defined -}}
+  {{- if ge $v.cos 0.999 }}{{ $key = "parallel" -}}
+  {{- else if gt $v.cos 0.3 }}{{ $key = "similar" -}}
+  {{- else if ge $v.cos -0.3 }}{{ $key = "orthogonal" -}}
+  {{- else }}{{ $key = "opposite" -}}
+  {{- end -}}
+{{- end -}}
+
+<blog-vector-cosine id="{{ .id }}" class="ib-figure ib-vector" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang "preset" $c.illustrationNotice) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  <div class="ib-vec-stage" data-ib-stage>
+    <svg class="ib-vec-svg" data-ib-svg viewBox="{{ printf "%.2f %.2f %.2f %.2f" (mul -1.0 $extent) (mul -1.0 $extent) (mul 2.0 $extent) (mul 2.0 $extent) }}" aria-hidden="true">
+      <g class="ib-vec-grid">
+        {{- range $i := seq (int (mul -1.0 $bound)) (int $bound) }}
+        <line x1="{{ $i }}" y1="{{ printf "%.2f" (mul -1.0 $extent) }}" x2="{{ $i }}" y2="{{ printf "%.2f" $extent }}" />
+        <line x1="{{ printf "%.2f" (mul -1.0 $extent) }}" y1="{{ $i }}" x2="{{ printf "%.2f" $extent }}" y2="{{ $i }}" />
+        {{- end }}
+      </g>
+      <circle class="ib-vec-disk" cx="0" cy="0" r="{{ printf "%.2f" $bound }}" />
+      <line class="ib-vec-axis" x1="{{ printf "%.2f" (mul -1.0 $extent) }}" y1="0" x2="{{ printf "%.2f" $extent }}" y2="0" />
+      <line class="ib-vec-axis" x1="0" y1="{{ printf "%.2f" (mul -1.0 $extent) }}" x2="0" y2="{{ printf "%.2f" $extent }}" />
+      <path class="ib-vec-arc" data-ib-arc d="{{ $v.arc }}" />
+      <line class="ib-vec-line ib-vec-a" data-ib-line="a" x1="0" y1="0" x2="{{ $v.sAx }}" y2="{{ $v.sAy }}" />
+      <polygon class="ib-vec-head ib-vec-a" data-ib-head="a" points="{{ $v.headA }}" />
+      <line class="ib-vec-line ib-vec-b" data-ib-line="b" x1="0" y1="0" x2="{{ $v.sBx }}" y2="{{ $v.sBy }}" />
+      <polygon class="ib-vec-head ib-vec-b" data-ib-head="b" points="{{ $v.headB }}" />
+      <circle class="ib-vec-origin" cx="0" cy="0" r="0.09" />
+      <text class="ib-vec-tag ib-vec-a" data-ib-tag="a" x="{{ printf "%.4f" (add $v.ax 0.4) }}" y="{{ printf "%.4f" (add (mul -1.0 $v.ay) -0.35) }}">A</text>
+      <text class="ib-vec-tag ib-vec-b" data-ib-tag="b" x="{{ printf "%.4f" (add $v.bx 0.4) }}" y="{{ printf "%.4f" (add (mul -1.0 $v.by) -0.35) }}">B</text>
+      <circle class="ib-vec-dot ib-vec-a" data-ib-dot="a" cx="{{ $v.sAx }}" cy="{{ $v.sAy }}" r="0.32" />
+      <circle class="ib-vec-dot ib-vec-b" data-ib-dot="b" cx="{{ $v.sBx }}" cy="{{ $v.sBy }}" r="0.32" />
+      {{- /* Drag targets: transparent hit circles larger than the visible
+           dots (pointer/touch affordance only — the wrapping coordinate
+           fields remain the full keyboard equivalent). */}}
+      <circle class="ib-vec-handle ib-vec-a" data-ib-handle="a" cx="{{ $v.sAx }}" cy="{{ $v.sAy }}" r="0.55" />
+      <circle class="ib-vec-handle ib-vec-b" data-ib-handle="b" cx="{{ $v.sBx }}" cy="{{ $v.sBy }}" r="0.55" />
+    </svg>
+    <p class="ib-diagram-note">{{ $c.diagramNote }}</p>
+
+    <dl class="ib-readout ib-vec-readout">
+      <div class="ib-metric"><dt>{{ $c.inputs.ax }}</dt><dd><span data-ib-val="ax">{{ $v.fAx }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.inputs.ay }}</dt><dd><span data-ib-val="ay">{{ $v.fAy }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.inputs.bx }}</dt><dd><span data-ib-val="bx">{{ $v.fBx }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.inputs.by }}</dt><dd><span data-ib-val="by">{{ $v.fBy }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.dot }}</dt><dd><span data-ib-val="dot">{{ $v.fDot }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.magA }}</dt><dd><span data-ib-val="magA">{{ $v.fMagA }}</span> <span class="ib-unit">{{ $c.unitLabel }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.magB }}</dt><dd><span data-ib-val="magB">{{ $v.fMagB }}</span> <span class="ib-unit">{{ $c.unitLabel }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.angle }}</dt><dd><span data-ib-val="angle">{{ if $v.defined }}{{ $v.fAngle }}°{{ else }}{{ $c.undefinedText }}{{ end }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.cosine }}</dt><dd><span data-ib-val="cosine">{{ if $v.defined }}{{ $v.fCos }}{{ else }}{{ $c.undefinedText }}{{ end }}</span></dd></div>
+    </dl>
+
+    <p class="ib-explain" data-ib-explain>{{ index $c.explanations $key }}</p>
+  </div>
+
+  {{- /* One same-sized invisible slot row mirrors the exact control row
+       (identical labels and boxes), so the swap is geometry-neutral at
+       320–1280px. Spans only — never focusable, never fake controls. */}}
+  <div class="ib-controls ib-vec-controls ib-ctrl-slot" data-ib-ctrl-slot aria-hidden="true">
+    {{- range $k := slice "ax" "ay" "bx" "by" }}
+    <span class="ib-num"><span class="ib-num-label">{{ index $c.inputs $k }}</span><span class="ib-num-box ib-slot"></span></span>
+    {{- end }}
+    <span class="ib-range-label"><span class="ib-range-name">{{ $c.actions.scale }}</span><span class="ib-range-out ib-slot">{{ $v.fMagB }}</span><span class="ib-range-track"><span class="ib-range-thumb" style="left:{{ printf "%.4f" (div (mul $v.magB 100.0) $bound) }}%"></span></span></span>
+    <span class="ib-btn ib-slot">{{ $c.actions.rotateLeft }}</span>
+    <span class="ib-btn ib-slot">{{ $c.actions.rotateRight }}</span>
+  </div>
+  <div class="ib-controls ib-vec-controls" data-ib-controls hidden>
+    {{- range $k := slice "ax" "ay" "bx" "by" }}
+    {{- /* step="any": rotation/scaling produce exact off-grid coordinates;
+         the fields must stay valid and show the true bounded state. Typing
+         snaps to gridStep in the model; pointer dragging snaps as well. */}}
+    <label class="ib-num"><span class="ib-num-label">{{ index $c.inputs $k }}</span><input class="ib-num-box" type="number" data-ib-coord="{{ $k }}" min="{{ mul -1 $m.bound }}" max="{{ $m.bound }}" step="any" value="{{ index $v $k }}" inputmode="decimal"></label>
+    {{- end }}
+    {{- /* The value readout is a plain <span>: a nested <output> would become
+         the label's labelable target and leave the slider nameless. The
+         wrapping label (single labelable input) keeps click-to-focus and a
+         real accessible name. */}}
+    <label class="ib-range-label"><span class="ib-range-name">{{ $c.actions.scale }}</span><span class="ib-range-out" data-ib-scale-out>{{ $v.fMagB }}</span><input class="ib-range" type="range" data-ib-scale min="0" max="{{ $m.bound }}" step="{{ $m.gridStep }}" value="{{ $v.magB }}"></label>
+    <button type="button" class="ib-btn" data-ib-rot="1">{{ $c.actions.rotateLeft }}</button>
+    <button type="button" class="ib-btn" data-ib-rot="-1">{{ $c.actions.rotateRight }}</button>
+  </div>
+
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  {{- /* Read-only reference: every preset's exact values from the same spec
+       data. No runtime selectors, no ids — the upgrade never touches it. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    {{- range $s := $ordered }}
+    {{- $rv := partial "interactive/vector-cosine-values.html" (dict "s" $s "m" $m) }}
+    <section class="ib-ref-block">
+      <p class="ib-ref-title">{{ index $c.scenarioLabels $s.id }}</p>
+      <dl class="ib-readout ib-vec-readout">
+        <div class="ib-metric"><dt>{{ $c.inputs.ax }}</dt><dd>{{ $rv.fAx }}</dd></div>
+        <div class="ib-metric"><dt>{{ $c.inputs.ay }}</dt><dd>{{ $rv.fAy }}</dd></div>
+        <div class="ib-metric"><dt>{{ $c.inputs.bx }}</dt><dd>{{ $rv.fBx }}</dd></div>
+        <div class="ib-metric"><dt>{{ $c.inputs.by }}</dt><dd>{{ $rv.fBy }}</dd></div>
+        <div class="ib-metric"><dt>{{ $c.metrics.dot }}</dt><dd>{{ $rv.fDot }}</dd></div>
+        <div class="ib-metric"><dt>{{ $c.metrics.magA }}</dt><dd>{{ $rv.fMagA }} <span class="ib-unit">{{ $c.unitLabel }}</span></dd></div>
+        <div class="ib-metric"><dt>{{ $c.metrics.magB }}</dt><dd>{{ $rv.fMagB }} <span class="ib-unit">{{ $c.unitLabel }}</span></dd></div>
+        <div class="ib-metric"><dt>{{ $c.metrics.angle }}</dt><dd>{{ if $rv.defined }}{{ $rv.fAngle }}°{{ else }}{{ $c.undefinedText }}{{ end }}</dd></div>
+        <div class="ib-metric"><dt>{{ $c.metrics.cosine }}</dt><dd>{{ if $rv.defined }}{{ $rv.fCos }}{{ else }}{{ $c.undefinedText }}{{ end }}</dd></div>
+      </dl>
+    </section>
+    {{- end }}
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-vector-cosine>

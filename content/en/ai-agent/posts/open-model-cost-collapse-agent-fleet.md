@@ -113,6 +113,12 @@ cost per successful task
     / number of accepted task results
 ```
 
+Put the two routes into one fixed batch for a side-by-side comparison:
+
+{{< interactive kind="task-cost" id="cost-per-accepted" spec="task-cost-v1" >}}
+
+In the default preset, Route B's raw call cost is a fraction of Route A's — yet once retries and batch-total human review are counted, Route B costs more per accepted task. Set review minutes to zero and the verdict flips. Cheap calls are only genuinely cheap when the denominator (accepted results) and the review bill are both counted honestly.
+
 Quality is not one universal score. A model can be strong at extraction, weak at repository navigation, and unacceptable at a destructive database change. I stratify the eval by task class and risk. The result is a routing table, not a model leaderboard.
 
 That is the philosophical shift: **do not ask which model is smartest. Ask which route earns trust for this particular consequence.**

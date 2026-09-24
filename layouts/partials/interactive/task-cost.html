@@ -1,0 +1,148 @@
+{{- /* blog-task-cost — two-route comparison stage + native <details>
+       reference (numerical explainer group). BOTH routes of the current
+       scenario are visible at once — the comparison is the learning
+       question — while exactly one scenario is current (its preset restores
+       both routes' initial values). The stage renders the default scenario's
+       exact totals and per-accepted-task cost from the same spec data the
+       runtime uses; the stacked bars share one scale (the larger total) so
+       a low raw-call cost visibly loses once human review is added.
+
+       The <details> reference lists every finite scenario × route with a
+       complete breakdown — no runtime selectors and no ids inside. No ARIA
+       ids are derived anywhere in this figure (labels wrap their controls),
+       so the only emitted id is the instance root. Interactive number
+       controls swap into same-sized static slots (zero layout shift). */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+{{- $fmt := "interactive/task-cost-format.html" -}}
+{{- $compute := "interactive/task-cost-compute.html" -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+
+<blog-task-cost id="{{ .id }}" class="ib-figure ib-cost" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- range $i, $s := $ordered }}
+  {{- $ra := partial $compute (dict "route" $s.a) -}}
+  {{- $rb := partial $compute (dict "route" $s.b) -}}
+  {{- $scale := $ra.totalNum -}}
+  {{- if gt $rb.totalNum $scale }}{{ $scale = $rb.totalNum }}{{ end -}}
+  {{- $key := "undefined" -}}
+  {{- if and $ra.perDefined $rb.perDefined -}}
+    {{- $key = "equal" -}}
+    {{- if gt (sub $ra.perNum $rb.perNum) 0.000000001 }}{{ $key = "b-lower" -}}
+    {{- else if gt (sub $rb.perNum $ra.perNum) 0.000000001 }}{{ $key = "a-lower" }}{{ end -}}
+  {{- end -}}
+  <section class="ib-panel" data-ib-panel="{{ $s.id }}" aria-label="{{ index $c.scenarioLabels $s.id }}"{{ if gt $i 0 }} hidden{{ end }}>
+    <p class="ib-panel-title">{{ index $c.scenarioLabels $s.id }}</p>
+
+    <div class="ib-routes">
+      {{- range $routeName := slice "a" "b" }}
+      {{- $r := cond (eq $routeName "a") $ra $rb -}}
+      {{- $route := index $s $routeName -}}
+      {{- $safeScale := 1.0 -}}{{- if gt $scale 0.0 }}{{ $safeScale = $scale }}{{ end -}}
+      <div class="ib-route" data-ib-route="{{ $routeName }}">
+        <p class="ib-route-name">{{ index $c.routes $routeName }}</p>
+        <div class="ib-viz">
+          <div class="ib-bar" aria-hidden="true">
+            <div class="ib-seg ib-seg--model" data-ib-seg="{{ $routeName }}-modelTool" style="width:{{ printf "%.4f" (mul (div $r.modelToolNum $safeScale) 100.0) }}%"></div>
+            <div class="ib-seg ib-seg--retry" data-ib-seg="{{ $routeName }}-retry" style="width:{{ printf "%.4f" (mul (div $r.retryNum $safeScale) 100.0) }}%"></div>
+            <div class="ib-seg ib-seg--review" data-ib-seg="{{ $routeName }}-review" style="width:{{ printf "%.4f" (mul (div $r.reviewNum $safeScale) 100.0) }}%"></div>
+          </div>
+          <ul class="ib-legend">
+            <li class="ib-legend-item"><span class="ib-swatch ib-swatch--model" aria-hidden="true"></span>{{ $c.costLabels.modelTool }} <span class="ib-legend-value" data-ib-seg-val="{{ $routeName }}-modelTool">{{ $r.modelTool }}</span></li>
+            <li class="ib-legend-item"><span class="ib-swatch ib-swatch--retry" aria-hidden="true"></span>{{ $c.costLabels.retry }} <span class="ib-legend-value" data-ib-seg-val="{{ $routeName }}-retry">{{ $r.retry }}</span></li>
+            <li class="ib-legend-item"><span class="ib-swatch ib-swatch--review" aria-hidden="true"></span>{{ $c.costLabels.review }} <span class="ib-legend-value" data-ib-seg-val="{{ $routeName }}-review">{{ $r.review }}</span></li>
+          </ul>
+        </div>
+        <dl class="ib-readout">
+          <div class="ib-metric"><dt>{{ $c.costLabels.total }}</dt><dd><span data-ib-total="{{ $routeName }}">{{ $r.total }}</span> {{ $c.unitLabel }}</dd></div>
+          <div class="ib-metric"><dt>{{ $c.costLabels.perAccepted }}</dt><dd><span data-ib-per="{{ $routeName }}">{{ $r.per }}</span></dd></div>
+        </dl>
+        <div class="ib-inputs" role="group" aria-label="{{ index $c.routes $routeName }}">
+          <label class="ib-num-label">
+            <span class="ib-num-text">{{ $c.inputLabels.modelToolCost }}</span>
+            <span class="ib-num-slot" data-ib-num-slot="{{ $routeName }}-modelToolCost">{{ $route.modelToolCost }}</span>
+            <input class="ib-num" type="number" data-ib-num="{{ $routeName }}-modelToolCost" hidden min="0" max="10000000" step="1" value="{{ $route.modelToolCost }}">
+          </label>
+          <label class="ib-num-label">
+            <span class="ib-num-text">{{ $c.inputLabels.retryCost }}</span>
+            <span class="ib-num-slot" data-ib-num-slot="{{ $routeName }}-retryCost">{{ $route.retryCost }}</span>
+            <input class="ib-num" type="number" data-ib-num="{{ $routeName }}-retryCost" hidden min="0" max="10000000" step="1" value="{{ $route.retryCost }}">
+          </label>
+          <label class="ib-num-label">
+            <span class="ib-num-text">{{ $c.inputLabels.reviewMinutes }}</span>
+            <span class="ib-num-slot" data-ib-num-slot="{{ $routeName }}-reviewMinutes">{{ $route.reviewMinutes }}</span>
+            <input class="ib-num" type="number" data-ib-num="{{ $routeName }}-reviewMinutes" hidden min="0" max="1000000" step="1" value="{{ $route.reviewMinutes }}">
+          </label>
+          <label class="ib-num-label">
+            <span class="ib-num-text">{{ $c.inputLabels.hourlyRate }}</span>
+            <span class="ib-num-slot" data-ib-num-slot="{{ $routeName }}-hourlyRate">{{ $route.hourlyRate }}</span>
+            <input class="ib-num" type="number" data-ib-num="{{ $routeName }}-hourlyRate" hidden min="0" max="1000000" step="1" value="{{ $route.hourlyRate }}">
+          </label>
+          <label class="ib-num-label">
+            <span class="ib-num-text">{{ $c.inputLabels.accepted }}</span>
+            <span class="ib-num-slot" data-ib-num-slot="{{ $routeName }}-accepted">{{ $route.accepted }}</span>
+            <input class="ib-num" type="number" data-ib-num="{{ $routeName }}-accepted" hidden min="0" max="{{ $m.batchSize }}" step="1" value="{{ $route.accepted }}">
+          </label>
+        </div>
+      </div>
+      {{- end }}
+    </div>
+
+    <p class="ib-scale">{{ $c.scaleLabel }} · {{ $c.batchLabel }} {{ $m.batchSize }} · {{ $c.unitLabel }}</p>
+    <p class="ib-explain" data-ib-explain>{{ index $c.explanations $key }}</p>
+    <p class="ib-live" data-ib-live aria-live="polite"></p>
+  </section>
+  {{- end }}
+
+  {{- /* Read-only reference from the same spec data. No runtime selectors,
+       no ids: the upgrade never touches this element or its open state. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    <table class="ib-ref-table">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.table.scenario }}</th>
+          <th scope="col">{{ $c.table.route }}</th>
+          <th scope="col">{{ $c.table.breakdown }}</th>
+          <th scope="col">{{ $c.table.total }}</th>
+          <th scope="col">{{ $c.table.perAccepted }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $s := $ordered }}
+        {{- range $routeName := slice "a" "b" }}
+        {{- $r := partial $compute (dict "route" (index $s $routeName)) -}}
+        <tr>
+          <th scope="row">{{ index $c.scenarioLabels $s.id }}</th>
+          <td>{{ index $c.routes $routeName }}</td>
+          <td>{{ $c.costLabels.modelTool }} {{ $r.modelTool }} · {{ $c.costLabels.retry }} {{ $r.retry }} · {{ $c.costLabels.review }} {{ $r.review }}</td>
+          <td>{{ $r.total }}</td>
+          <td>{{ $r.per }}</td>
+        </tr>
+        {{- end }}
+        {{- end }}
+      </tbody>
+    </table>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-task-cost>

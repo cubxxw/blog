@@ -1,0 +1,26 @@
+{{- /* gitops-reconcile-sync — template twin of applySync() in
+     assets/js/components/gitops-reconcile-model.mjs. One sync pass adopting
+     Git's desired state. Deletion is NEVER silent: a Git-removed resource is
+     deleted only with `prune`, and a retained extraneous workload keeps its
+     ENTIRE live state (no absent placeholders are applied to replicas/version
+     while Git defines nothing). A pruned workload ends on the absent
+     placeholders; creating/updating adopts the desired state exactly.
+
+       input : dict (git, cluster, prune)
+       return: dict (cluster, deletion) */ -}}
+{{- $git := .git -}}
+{{- $next := dict "replicas" .cluster.replicas "version" .cluster.version "resource" .cluster.resource -}}
+{{- $deletion := "none" -}}
+{{- if eq $git.resource "absent" -}}
+  {{- if eq .cluster.resource "present" -}}
+    {{- if .prune -}}
+      {{- $deletion = "deleted" -}}
+      {{- $next = dict "replicas" 0 "version" 0 "resource" "absent" -}}
+    {{- else -}}
+      {{- $deletion = "kept" -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $next = dict "replicas" $git.replicas "version" $git.version "resource" "present" -}}
+{{- end -}}
+{{- return (dict "cluster" $next "deletion" $deletion) -}}

@@ -1,0 +1,34 @@
+{{- /* notification-threshold-format — display formatting identical to
+       formatPermille / formatE / formatThreshold in
+       assets/js/components/notification-threshold-model.mjs. E is formatted
+       EXACTLY from integer milli-units (E = eMilli/1000, three decimals,
+       trailing zeros trimmed) so no rounding discrepancy can exist between
+       runtimes. Modes: permille (500 → "50%"), e (milli int → "-10"),
+       thrpct (threshold fraction → "66.67%"). */ -}}
+{{- $mode := .mode -}}
+{{- $v := .value -}}
+{{- $s := "" -}}
+{{- if eq $mode "permille" -}}
+  {{- $s = printf "%.1f" (div (mul $v 1.0) 10.0) -}}
+  {{- if in $s "." -}}
+    {{- $s = strings.TrimRight "0" $s -}}
+    {{- $s = strings.TrimRight "." $s -}}
+  {{- end -}}
+  {{- $s = printf "%s%%" $s -}}
+{{- else if eq $mode "e" -}}
+  {{- $milli := int $v -}}
+  {{- $sign := "" -}}
+  {{- if lt $milli 0 }}{{ $sign = "-" }}{{ end -}}
+  {{- $a := int (math.Abs (mul $milli 1.0)) -}}
+  {{- $s = printf "%s%d.%03d" $sign (div $a 1000) (mod $a 1000) -}}
+  {{- $s = strings.TrimRight "0" $s -}}
+  {{- $s = strings.TrimRight "." $s -}}
+{{- else if eq $mode "thrpct" -}}
+  {{- $s = printf "%.2f" (div (math.Round (mul $v 10000.0)) 100.0) -}}
+  {{- if in $s "." -}}
+    {{- $s = strings.TrimRight "0" $s -}}
+    {{- $s = strings.TrimRight "." $s -}}
+  {{- end -}}
+  {{- $s = printf "%s%%" $s -}}
+{{- end -}}
+{{- return $s -}}

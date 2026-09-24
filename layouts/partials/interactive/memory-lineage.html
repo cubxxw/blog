@@ -1,0 +1,177 @@
+{{- /* blog-memory-lineage — static before/after stage + native <details>
+     reference (GROUP state / Forgetting article, "一条删除请求会走多远").
+     One authored dependency DAG (source event → summary/profile →
+     index/cache/recommendation, plus outside-boundary nodes) rendered with a
+     deterministic column/row layout from the same spec the runtime reads.
+     SSR shows the default deletion case's EXACT before/after result:
+     directly removed sources, invalidated derived artifacts, mixed-evidence
+     artifacts needing recomputation, and external/untraced nodes that are
+     not provably erased (invalidation is never claimed as verified physical
+     deletion). The reader control is selective source removal over the
+     finite sources. The <details> reference holds all three cases with
+     their complete classifications — no runtime selectors, no ids. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $model := .spec.model -}}
+{{- $nodes := $model.nodes -}}
+{{- $byId := dict -}}
+{{- range $nodes }}{{ $byId = merge $byId (dict .id .) }}{{ end -}}
+
+{{- /* Deterministic layout: column bands (0 source → 1..3 derived by
+       deepest evidence path → 4 outside boundary), row = appearance order. */ -}}
+{{- $col := dict -}}
+{{- $rowIdx := dict -}}
+{{- $rowCount := dict -}}
+{{- $maxR := 0 -}}
+{{- range $nodes -}}
+  {{- $cn := 0 -}}
+  {{- if eq .kind "source" -}}
+    {{- $cn = 0 -}}
+  {{- else if eq .kind "external" -}}
+    {{- $cn = 4 -}}
+  {{- else if eq (len .parents) 0 -}}
+    {{- $cn = 1 -}}
+  {{- else -}}
+    {{- $deepest := 0 -}}
+    {{- range .parents }}{{ $pc := index $col . }}{{ if gt $pc $deepest }}{{ $deepest = $pc }}{{ end }}{{ end -}}
+    {{- $cn = add $deepest 1 -}}
+    {{- if gt $cn 3 }}{{ $cn = 3 }}{{ end -}}
+  {{- end -}}
+  {{- $r := index $rowCount (printf "%d" $cn) | default 0 -}}
+  {{- if gt $r $maxR }}{{ $maxR = $r }}{{ end -}}
+  {{- $col = merge $col (dict .id $cn) -}}
+  {{- $rowIdx = merge $rowIdx (dict .id $r) -}}
+  {{- $rowCount = merge $rowCount (dict (printf "%d" $cn) (add $r 1)) -}}
+{{- end -}}
+
+{{- $def := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $def = . }}{{ end }}{{ end -}}
+{{- $defStatus := partial "interactive/memory-lineage-result.html" (dict "nodes" $nodes "removed" $def.removedSources) -}}
+{{- $counts := dict "kept" 0 "removed" 0 "invalidated" 0 "recompute" 0 "unproven" 0 -}}
+{{- range $defStatus }}{{ $counts = merge $counts (dict . (add (index $counts .) 1)) }}{{ end -}}
+{{- $order := slice "removed" "invalidated" "recompute" "unproven" "kept" -}}
+{{- $sources := slice -}}
+{{- range $nodes }}{{ if eq .kind "source" }}{{ $sources = $sources | append .id }}{{ end }}{{ end -}}
+
+{{- $nodeW := 96 -}}
+{{- $nodeH := 44 -}}
+{{- $dx := 126 -}}
+{{- $dy := 56 -}}
+{{- $vw := add 120 (mul 4 $dx) -}}
+{{- $vh := add 68 (mul $maxR $dy) -}}
+
+<blog-memory-lineage id="{{ .id }}" class="ib-figure ib-ml" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range .spec.scenarios }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range .spec.scenarios }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="{{ if eq .id $.spec.defaultScenario }}true{{ else }}false{{ end }}">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  <section class="ib-ml-layer">
+    <p class="ib-layer-title">{{ $c.graphLabel }}</p>
+    <svg class="ib-ml-svg" viewBox="0 0 {{ $vw }} {{ $vh }}" aria-hidden="true" focusable="false">
+      {{- range $nodes }}
+      {{- $node := . }}
+      {{- range .parents }}
+      {{- $pi := index $col . -}}{{- $pri := index $rowIdx . -}}
+      {{- $x1 := add (add 12 (mul $pi $dx)) $nodeW -}}
+      {{- $y1 := add (add 12 (mul $pri $dy)) 22 -}}
+      {{- $x2 := add 12 (mul (index $col $node.id) $dx) -}}
+      {{- $y2 := add (add 12 (mul (index $rowIdx $node.id) $dy)) 22 -}}
+      {{- $mx := div (add $x1 $x2) 2 -}}
+      <path class="ib-ml-edge" d="M {{ $x1 }} {{ $y1 }} H {{ $mx }} V {{ $y2 }} H {{ sub $x2 7 }}"></path>
+      <polygon class="ib-ml-arrow" points="{{ $x2 }},{{ $y2 }} {{ sub $x2 7 }},{{ sub $y2 4 }} {{ sub $x2 7 }},{{ add $y2 4 }}"></polygon>
+      {{- end }}
+      {{- end }}
+      {{- range $nodes }}
+      {{- $x := add 12 (mul (index $col .id) $dx) -}}
+      {{- $y := add 12 (mul (index $rowIdx .id) $dy) -}}
+      <g class="ib-ml-node is-{{ index $defStatus .id }}" data-ib-node="{{ .id }}">
+        <rect class="ib-ml-box" x="{{ $x }}" y="{{ $y }}" width="{{ $nodeW }}" height="{{ $nodeH }}" rx="8"></rect>
+        <text class="ib-ml-label" x="{{ add $x (div $nodeW 2) }}" y="{{ add $y 27 }}" text-anchor="middle">{{ index $c.nodeKinds .kind }}</text>
+      </g>
+      {{- end }}
+    </svg>
+  </section>
+
+  {{- /* Before/after result strips: the exact default result stays visible
+          even before any interaction (no claim is hidden from no-JS). */}}
+  <div class="ib-ml-strips">
+    <p class="ib-ml-strip">{{ $c.beforeLabel }}: {{ len $nodes }}</p>
+    <p class="ib-ml-strip" data-ib-after>
+      <span class="ib-ml-strip-label">{{ $c.afterLabel }}</span>
+      {{- range $s := $order }}
+      <span class="ib-ml-strip-item">{{ index $c.statuses $s }} <span data-ib-count="{{ $s }}">{{ index $counts $s }}</span></span>
+      {{- end }}
+    </p>
+  </div>
+  <p class="ib-note">{{ $c.invalidationNote }}</p>
+
+  <ol class="ib-ml-rows">
+    {{- range $nodes }}
+    <li class="ib-ml-row" data-ib-row="{{ .id }}">
+      <span class="ib-ml-kind">{{ index $c.nodeKinds .kind }}</span>
+      <span class="ib-ml-text">{{ (index .copy $.lang).text }}</span>
+      <span class="ib-ml-status is-{{ index $defStatus .id }}" data-ib-status="{{ .id }}">{{ index $c.statuses (index $defStatus .id) }}</span>
+    </li>
+    {{- end }}
+  </ol>
+
+  <div class="ib-ml-request">
+    <p class="ib-layer-title">{{ $c.requestLabel }}</p>
+    <div class="ib-scn-row ib-scn-row--static" data-ib-source-static aria-hidden="true">
+      {{- range $sid := $sources }}
+      <span class="ib-scn-chip{{ if in $def.removedSources $sid }} is-on{{ end }}">{{ $sid }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-sources role="group" aria-label="{{ $c.selectLabel }}" hidden>
+      {{- range $sid := $sources }}
+      <button type="button" class="ib-scn" data-ib-source="{{ $sid }}" aria-pressed="{{ if in $def.removedSources $sid }}true{{ else }}false{{ end }}">{{ $sid }}</button>
+      {{- end }}
+    </div>
+  </div>
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  {{- /* Complete read-only reference: every case's full classification from
+       the same computation. No runtime selectors, no ids. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    {{- range $sc := .spec.scenarios }}
+    {{- $st := partial "interactive/memory-lineage-result.html" (dict "nodes" $nodes "removed" $sc.removedSources) }}
+    <section class="ib-ml-ref-case">
+      <p class="ib-ref-title">{{ index $c.scenarioLabels $sc.id }}</p>
+      <p class="ib-ref-line">{{ $c.requestLabel }}：{{ delimit $sc.removedSources " · " }}</p>
+      {{- range $s := $order }}
+      {{- $ids := slice -}}
+      {{- range $nodes }}{{ if eq (index $st .id) $s }}{{ $ids = $ids | append .id }}{{ end }}{{ end }}
+      <p class="ib-ref-line">{{ index $c.statuses $s }}：{{ if $ids }}{{ delimit $ids " · " }}{{ else }}—{{ end }}</p>
+      {{- end }}
+    </section>
+    {{- end }}
+    <section class="ib-ml-ref-case">
+      <p class="ib-ref-title">{{ $c.graphLabel }}</p>
+      <ol class="ib-ml-rows">
+        {{- range $nodes }}
+        <li class="ib-ml-row">
+          <span class="ib-ml-kind">{{ index $c.nodeKinds .kind }}</span>
+          <span class="ib-ml-text">{{ (index .copy $.lang).text }}</span>
+          <span class="ib-ml-ref-parents">{{ delimit .parents " · " }}</span>
+        </li>
+        {{- end }}
+      </ol>
+      <p class="ib-note">{{ $c.invalidationNote }}</p>
+    </section>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-memory-lineage>

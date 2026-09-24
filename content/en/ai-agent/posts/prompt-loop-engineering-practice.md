@@ -262,6 +262,12 @@ TIER 3  Model judge ─────────── a language model reads the
         well written" — but needs a rubric and cited evidence.
 ```
 
+Put the three tiers back inside a loop: watch one writing round get blocked by the deterministic gate, diagnosed and fixed, then judged again — and note what the loop says when the budget runs out:
+
+{{< interactive kind="agent-loop" id="verifier-loop" spec="loop-verifier-v1" >}}
+
+Mind the status of this trace: it is a teaching sketch of a **proposed** verifier-enforced loop — decision notes are explanatory text and commands are inert text. The Ralph loop earlier in this article has no such contract gate yet; the gate in the figure is the next thing to build, not an existing fact.
+
 ### Tier One: Deterministic Gates
 
 The exit code from `npm test`, whether `tsc` reported errors, whether `hugo build` was 0 warnings, whether `git status` is clean. These things **cannot fool themselves**, and that is their single overwhelming advantage.

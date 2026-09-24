@@ -1,0 +1,160 @@
+{{- /* blog-effect-recovery — crash-window / recovery-discipline stage plus a
+     native <details> reference grid (group: effects; docs/interactive/effects.md).
+     The stage renders the default scenario's EXACT default result — the
+     vertical swimlane timeline (worker / local record / external service), the
+     three readouts (actual external action count · local three-state knowledge
+     · next safe action) and the rule-based explanation — computed from the
+     same spec data the runtime uses via effect-recovery-compute.html.
+     The <details> reference lists every finite scenario × crash × strategy
+     outcome from that same computation: no runtime selectors and no ids
+     inside, so the upgrade never touches it and it works without JS.
+     Controls (crash point, recovery discipline) live in same-sized
+     visibility:hidden slots and are swapped in only after the custom element
+     has validated its config and rendered its first frame. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+{{- $id := .id -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- $def := index $ordered 0 -}}
+
+{{- $crashes := slice "before-send" "after-commit-before-receipt" "after-recorded-receipt" -}}
+{{- $strategies := slice "retry" "query-receipt" "idempotency-key" -}}
+
+{{- $res := partial "interactive/effect-recovery-compute.html" (dict "flow" $m.flow "placement" $def.effectPlacement "receiptQuery" $def.provider.receiptQuery "idempotencyKey" $def.provider.idempotencyKey "crash" $def.defaultCrash "strategy" $def.defaultStrategy) -}}
+
+{{- /* The finite step timeline (template twin of timelineSteps in
+     effect-recovery-model.mjs). Lane columns: 1 worker, 2 local record,
+     3 external service. */ -}}
+{{- $steps := slice (dict "key" "start" "lane" 1) (dict "key" "intent" "lane" 2) -}}
+{{- if eq $m.flow "queue-retry" -}}
+  {{- $steps = $steps | append (dict "key" "send" "lane" 1) (dict "key" "commit" "lane" 3) (dict "key" "receipt" "lane" 1) (dict "key" "record" "lane" 2) (dict "key" "finish" "lane" 1) -}}
+{{- else if eq $def.effectPlacement "before-approval" -}}
+  {{- $steps = $steps | append (dict "key" "send" "lane" 1) (dict "key" "commit" "lane" 3) (dict "key" "receipt" "lane" 1) (dict "key" "interrupt" "lane" 1) (dict "key" "resume" "lane" 1) (dict "key" "record" "lane" 2) (dict "key" "finish" "lane" 1) -}}
+{{- else -}}
+  {{- $steps = $steps | append (dict "key" "interrupt" "lane" 1) (dict "key" "resume" "lane" 1) (dict "key" "send" "lane" 1) (dict "key" "commit" "lane" 3) (dict "key" "receipt" "lane" 1) (dict "key" "record" "lane" 2) (dict "key" "finish" "lane" 1) -}}
+{{- end -}}
+<blog-effect-recovery id="{{ $id }}" class="ib-figure ib-effect" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang "preset" $c.traceNotice) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  <div class="ib-er-controls">
+    {{- /* Invisible SSR placeholder mirrors the two control groups exactly
+         (same rows and wrapping), so the swap is geometry-neutral. Spans
+         only — never focusable, never fake controls. */}}
+    <span class="ib-er-ctrl-slot" data-ib-ctrl-slot aria-hidden="true">
+      <span class="ib-er-ctrl ib-er-ctrl--static">
+        <span class="ib-er-ctrl-title">{{ $c.crashLabel }}</span>
+        {{- range $crashes }}
+        <span class="ib-er-opt ib-slot"><span class="ib-er-faux"></span><span>{{ index $c.crashOptions . }}</span></span>
+        {{- end }}
+      </span>
+      <span class="ib-er-ctrl ib-er-ctrl--static">
+        <span class="ib-er-ctrl-title">{{ $c.strategyLabel }}</span>
+        {{- range $strategies }}
+        <span class="ib-er-opt ib-slot"><span class="ib-er-faux"></span><span>{{ index $c.strategyOptions . }}</span></span>
+        {{- end }}
+      </span>
+    </span>
+    <div class="ib-er-ctrl" role="group" aria-label="{{ $c.crashLabel }}" data-ib-crash-group hidden>
+      <span class="ib-er-ctrl-title">{{ $c.crashLabel }}</span>
+      {{- range $crashes }}
+      <label class="ib-er-opt"><input type="radio" name="{{ $id }}-crash" value="{{ . }}" data-ib-crash{{ if eq . $def.defaultCrash }} checked{{ end }}><span>{{ index $c.crashOptions . }}</span></label>
+      {{- end }}
+    </div>
+    <div class="ib-er-ctrl" role="group" aria-label="{{ $c.strategyLabel }}" data-ib-strategy-group hidden>
+      <span class="ib-er-ctrl-title">{{ $c.strategyLabel }}</span>
+      {{- range $strategies }}
+      <label class="ib-er-opt"><input type="radio" name="{{ $id }}-strategy" value="{{ . }}" data-ib-strategy{{ if eq . $def.defaultStrategy }} checked{{ end }}><span>{{ index $c.strategyOptions . }}</span></label>
+      {{- end }}
+    </div>
+  </div>
+
+  <div class="ib-er-stage" data-ib-stage>
+    <p class="ib-er-selection" data-ib-selection>{{ $c.table.scenario }}: {{ index $c.scenarioLabels $def.id }} · {{ $c.crashLabel }}: {{ index $c.crashOptions $def.defaultCrash }} · {{ $c.strategyLabel }}: {{ index $c.strategyOptions $def.defaultStrategy }}</p>
+    <div class="ib-er-lanes">
+      <div class="ib-er-lane-heads" aria-hidden="true">
+        <span class="ib-er-lane-head" style="grid-column:1">{{ $c.lanes.worker }}</span>
+        <span class="ib-er-lane-head" style="grid-column:2">{{ $c.lanes.local }}</span>
+        <span class="ib-er-lane-head" style="grid-column:3">{{ $c.lanes.external }}</span>
+      </div>
+      <ol class="ib-er-track">
+        {{- range $i, $s := $steps }}
+        {{- $state := index $res.states $s.key -}}
+        {{- $hazard := and (eq $m.flow "node-replay") (eq $def.effectPlacement "before-approval") (or (eq $s.key "send") (eq $s.key "commit")) -}}
+        <li class="ib-er-step is-{{ $state }}{{ if eq $s.key $res.crashKey }} is-crash{{ end }}{{ if $hazard }} is-hazard{{ end }}" data-ib-step="{{ $s.key }}" style="grid-column:{{ $s.lane }};grid-row:{{ add $i 1 }}">
+          <span class="ib-er-step-label">{{ index $c.steps $s.key }}<span class="ib-sr">（{{ if eq $s.lane 1 }}{{ $c.lanes.worker }}{{ else if eq $s.lane 2 }}{{ $c.lanes.local }}{{ else }}{{ $c.lanes.external }}{{ end }}）</span></span>
+          {{- if eq $s.key "commit" }}
+          <span class="ib-er-count" data-ib-count>×{{ $res.actions }}</span>
+          {{- end }}
+          <span class="ib-er-crash-tag"><span class="ib-sr">{{ $c.crashLabel }}</span><span aria-hidden="true">✕</span></span>
+        </li>
+        {{- end }}
+      </ol>
+    </div>
+
+    <dl class="ib-er-readout">
+      <div class="ib-er-metric"><dt>{{ $c.readout.actions }}</dt><dd><span data-ib-actions>{{ $res.actions }}</span></dd></div>
+      <div class="ib-er-metric"><dt>{{ $c.readout.knowledge }}</dt><dd><span data-ib-knowledge>{{ index $c.knowledge $res.knowledge }}</span></dd></div>
+      <div class="ib-er-metric"><dt>{{ $c.readout.next }}</dt><dd><span data-ib-next>{{ index $c.next $res.nextKey }}</span></dd></div>
+    </dl>
+
+    <p class="ib-er-explain" data-ib-explain>{{ index $c.explanations $res.explainKey }}</p>
+  </div>
+
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  {{- /* Read-only reference: the complete finite outcome grid from the same
+       computation. No runtime selectors, no ids — the upgrade never touches
+       this element or its open state, and it works without JS. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    <table class="ib-ref-table ib-er-ref">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.table.scenario }}</th>
+          <th scope="col">{{ $c.table.crash }}</th>
+          <th scope="col">{{ $c.table.strategy }}</th>
+          <th scope="col">{{ $c.table.actions }}</th>
+          <th scope="col">{{ $c.table.knowledge }}</th>
+          <th scope="col">{{ $c.table.next }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $s := $ordered }}
+        {{- range $crash := $crashes }}
+        {{- range $strategy := $strategies }}
+        {{- $r := partial "interactive/effect-recovery-compute.html" (dict "flow" $m.flow "placement" $s.effectPlacement "receiptQuery" $s.provider.receiptQuery "idempotencyKey" $s.provider.idempotencyKey "crash" $crash "strategy" $strategy) }}
+        <tr>
+          <th scope="row">{{ index $c.scenarioLabels $s.id }}</th>
+          <td>{{ index $c.crashOptions $crash }}</td>
+          <td>{{ index $c.strategyOptions $strategy }}</td>
+          <td>{{ $r.actions }}</td>
+          <td>{{ index $c.knowledge $r.knowledge }}</td>
+          <td>{{ index $c.next $r.nextKey }}</td>
+        </tr>
+        {{- end }}
+        {{- end }}
+        {{- end }}
+      </tbody>
+    </table>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-effect-recovery>

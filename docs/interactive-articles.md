@@ -1,7 +1,7 @@
 # Interactive Article Components — Author Guide
 
-Reusable interactive explainers for existing articles: `<blog-context-budget>` and
-`<blog-agent-loop>`, entered only through the controlled `interactive` shortcode and
+Reusable interactive explainers for existing articles, entered only through the
+controlled `interactive` shortcode and
 driven by build-time JSON data. After publishing, everything runs in the reader's
 browser on static files: no backend, no model calls, no persistence, no third-party
 runtime.
@@ -26,12 +26,44 @@ Do **not** use one when:
 - you want to predict real model quality, real token counts, production cost or
   production success rates with the component's numbers (the numbers are labelled
   illustrative units);
-- you need a new interaction type — V1 ships exactly two kinds. Filling an existing
-  kind with new data is the supported extension path; a new kind needs a new reviewed
-  custom element.
+- no registered interaction type expresses the teaching model. Filling an existing
+  kind with new data is the supported authoring path; a new kind needs a reviewed
+  custom element, validator, static renderer and tests before an article can use it.
 
 Every experiment answers five questions before it is written (see
 [Fact boundaries](#fact-boundaries)).
+
+## Choose a teaching model
+
+Choose the learning question before the animation. A state change should reveal
+something that was difficult to infer from the prose. Start with one figure beside
+the relevant passage; add another only when it answers a different question.
+
+| Kind | Reader action and visible result | Field reference |
+|---|---|---|
+| `context-budget` | Change tool context; inspect capacity and overflow | Below |
+| `agent-loop` | Step through authored tool events, recovery and a bounded stop | Below |
+| `session-tree` | Select a conversation branch; compare history, active context and independent workspace state | [State models](interactive/state.md) |
+| `session-scope` | Change identity dimensions; inspect message groups and session keys | [State models](interactive/state.md) |
+| `memory-lineage` | Remove a source; distinguish deletion, invalidation, recomputation and unknown downstream state | [State models](interactive/state.md) |
+| `effect-recovery` | Choose a crash/recovery scenario; compare local evidence with external effects | [Recovery models](interactive/effects.md) |
+| `gitops-reconcile` | Change desired/live state and reconciliation policy; inspect sync and health separately | [Recovery models](interactive/effects.md) |
+| `reliability-chain` | Change independent step accuracy/count and checkpoint assumptions; compare probabilities | [Numerical models](interactive/numbers.md) |
+| `task-cost` | Change a batch's measured costs and accepted task count; compare cost per accepted result | [Numerical models](interactive/numbers.md) |
+| `notification-threshold` | Change benefit, interruption cost and calibrated usefulness; inspect the threshold | [Numerical models](interactive/numbers.md) |
+| `vector-cosine` | Move two vectors; compare direction, magnitude, dot product and cosine | [Geometry and flow](interactive/geometry.md) |
+| `flow-bottleneck` | Advance a bounded production line; inspect throughput and accumulated queues | [Geometry and flow](interactive/geometry.md) |
+
+These are mathematical models or authored scenarios, not live product execution.
+Do not present illustrative probabilities as measured Agent reliability, editable
+costs as current vendor prices, a checkpoint as an external rollback, or a deleted
+source as proof that all downstream copies were erased. Undefined results (such as
+a zero vector or zero accepted tasks) must remain visibly undefined.
+
+The build-time registry validates every spec. Browser entries use the same pure
+kind validator through `spec-core.mjs` and load only their own model; they do not
+import the complete build-time registry. Adding a kind must not inflate unrelated
+article bundles.
 
 ## Quick start
 
@@ -52,7 +84,7 @@ Every experiment answers five questions before it is written (see
 
 | Parameter | Allowed | Meaning |
 |---|---|---|
-| `kind` | `context-budget` \| `agent-loop` | Fixed allowlist registry mapping to one custom element and one static partial. Any other value fails the build. |
+| `kind` | A kind in the table above | Fixed allowlist registry mapping to one custom element and one static partial. Any other value fails the build. |
 | `id` | `^[a-z0-9]+(-[a-z0-9]+)*$` | Page-unique semantic id. Duplicate ids on one page fail the build — including collisions between one instance's derived ARIA ids (labels, range inputs) and any other instance's id. |
 | `spec` | `^[a-z0-9]+(-[a-z0-9]+)*$` | Stem of `data/interactive/<spec>.json`. URLs, absolute paths, `..` traversal and unknown stems fail the build. |
 
@@ -67,7 +99,7 @@ CSS exactly once.
 
 ## Data contract (`data/interactive/<spec>.json`)
 
-### Top level (both kinds)
+### Top level (all kinds)
 
 ```json
 {
@@ -88,7 +120,7 @@ CSS exactly once.
 | Field | Rules |
 |---|---|
 | `schemaVersion` | Integer `1` only. Unknown versions fail. |
-| `kind` | `context-budget` or `agent-loop`; must match the shortcode `kind`. |
+| `kind` | A registered teaching kind; must match the shortcode `kind`. |
 | `id` | `^[a-z0-9]+(-[a-z0-9]+)*$`, must equal the filename stem. |
 | `defaultScenario` | Must reference an existing scenario id. |
 | `model` | Kind-specific, exact key set (below). Unknown model fields fail. |
@@ -96,8 +128,10 @@ CSS exactly once.
 | `copy` | Exactly `zh` and `en`, both complete. Missing translations fail — there is no silent fallback to Chinese. |
 | `sourceRefs` | 1–8 entries of `{url, title}`. `url` must be `https://` or a controlled internal path starting with a single `/`; `javascript:`, `data:`, protocol-relative `//` and any `..` segment fail. |
 
-All numeric fields must be finite integers (no `NaN`/`Infinity`/negatives where not
-allowed) and inside their documented ranges. String fields must be non-empty after
+All numeric fields must be finite and inside their documented ranges (no
+`NaN`/`Infinity`/negatives where not allowed). Counts and discrete capacities are
+integers; geometry fields may use the decimal values explicitly allowed by their
+kind's schema. String fields must be non-empty after
 trimming and contain no control characters other than `\n` (newlines round-trip
 safely). Text is rendered with `textContent` only: HTML fragments in data are inert
 text, never markup. Length caps keep payloads small, and the real budgets are
@@ -223,16 +257,17 @@ as the build gate), bound events and rendered its first frame does it set
   Firefox and WebKit) and hides the live controls — the `agent-loop` stage is
   hidden in print so the full traces are never duplicated.
 
-The acceptance test suite compares the server-rendered default numbers against the
-pure model functions (`assets/js/components/model.mjs`) so the two cannot drift.
+The acceptance test suite compares server-rendered defaults against the pure model
+functions (`model.mjs` for the pilots and `<kind>-model.mjs` for the added kinds).
 
 ## Runtime behaviour contract
 
 - Native autonomous custom elements in Light DOM (`HTMLElement` subclasses; no
-  `is="..."`, no Shadow DOM, no framework). Styles are scoped under the two element
+  `is="..."`, no Shadow DOM, no framework). Styles are scoped under their element
   selectors and reuse `assets/css/extended/tokens.css` variables.
 - The runtime re-validates the embedded config with the **same executable
-  schema** used by the build gate (`assets/js/components/spec-schema.mjs`):
+  per-kind validator** used by the build registry (`spec-schema.mjs`), through
+  the shared `spec-core.mjs` contract:
   corrupted embeds — zero step, negative values, unknown versions or kinds,
   missing locales, malformed scenarios — never enhance and always fall back to
   the static view.
@@ -258,8 +293,8 @@ pure model functions (`assets/js/components/model.mjs`) so the two cannot drift.
   does not shift the article. Scenario folding to a single panel happens only
   after the reader's first scenario interaction — a user-initiated reflow, not
   a load-time shift. Static and enhanced states share one geometry.
-- Context arithmetic and sequence stepping are pure functions in `model.mjs`; the
-  elements only translate state to DOM.
+- Computation and state transitions are pure functions in `model.mjs` or the
+  corresponding `<kind>-model.mjs`; the elements translate state to DOM.
 
 ## Fact boundaries
 
@@ -276,9 +311,10 @@ numbers.
 
 | Command | What it proves |
 |---|---|
-| `npm run interactive:check` | Schema validation of `data/interactive/*.json` (with error file+field reporting), pure model/schema unit tests, fixture builds (positive fixtures plus negative builds that must fail: duplicate id, unknown kind, bad spec path, missing translation, unknown schemaVersion), safe-JSON round-trip of `</script>`/quotes/`<`/`&`/Chinese/newlines, static-vs-model number parity, and the size budget (both kinds gzip ≤ 25 KiB JS + 8 KiB CSS; embedded config ≤ 30 KiB/instance, ≤ 100 KiB/page). |
+| `npm run interactive:check` | Schema validation of `data/interactive/*.json` (with error file+field reporting), pure model/schema unit tests, fixture builds (positive fixtures plus negative builds that must fail: duplicate id, unknown kind, bad spec path, missing translation, unknown schemaVersion), safe-JSON round-trip of `</script>`/quotes/`<`/`&`/Chinese/newlines, static-vs-model number parity, and the size budget (the two pilot kinds together gzip ≤ 25 KiB JS + 8 KiB CSS; embedded config ≤ 30 KiB/instance, ≤ 100 KiB/page). |
 | `npm run interactive:test` | Dedicated cross-engine Playwright run (`playwright.interactive.config.ts`) against the **production** Hugo output plus fixtures kept outside `content/`: keyboard access, multi-instance isolation, hidden/offscreen/reduced-motion pause rules, remove/reconnect cleanup, script/data failure fallback, offline zero requests and zero storage writes, malicious text/URL handling, print fallback. |
 | `tests/e2e/interactive-articles.spec.ts` | Focused article-level checks that run inside the repository's normal Playwright config against the two pilot articles in both locales. |
+| `tests/e2e/interactive-expansion.spec.ts` | The 12 additional articles and their 9 existing English counterparts: enhancement, 320px themes, print, no-JS reference, and representative offline/no-persistence interactions. |
 
 CI runs `npm run interactive:check` before Hugo in every build/preview workflow, and
 the cross-engine suite on the E2E workflow. Fixtures live in

@@ -1,0 +1,198 @@
+{{- /* blog-flow-bottleneck — serial pipeline stage + native <details> reference
+     (geometry expansion). The stage renders the default scenario's exact
+     tick-0 state (queues, WIP, admitted, delivered) from the same spec data
+     the runtime uses; the tick semantics are the deterministic synchronous
+     rule implemented identically in flow-bottleneck-sample.html (SSR sample)
+     and assets/js/components/flow-bottleneck-model.mjs (runtime).
+     The <details> reference holds every preset plus a sampled tick table
+     (up to ticks 0–3, bounded by maxTicks) — same data, no runtime selectors, no ids, works without JS
+     and its open state is never touched by the upgrade.
+
+     Controls (per-tick capacity fields, advance-tick and play buttons) start
+     hidden behind one same-sized visibility:hidden slot row and swap in only
+     after successful validation + first render. Wrapping <label>s throughout:
+     the figure emits no derived ARIA ids (only the instance root id). The
+     SVGs are decorative (aria-hidden) and paired with the textual diagram
+     note, numeric readout and the numeric tick log. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- $def := index $ordered 0 -}}
+{{- $qG := $def.initial.generate -}}
+{{- $qR := $def.initial.review -}}
+{{- $qD := $def.initial.delivery -}}
+{{- $wip0 := add $qG (add $qR $qD) -}}
+{{- $yMax := 8 -}}
+{{- if gt $wip0 8 }}{{ $yMax = $wip0 }}{{ end -}}
+{{- $expKey := "balanced" -}}
+{{- $caps := slice $def.capacity.generate $def.capacity.review $def.capacity.delivery -}}
+{{- $minCap := math.Min $def.capacity.generate (math.Min $def.capacity.review $def.capacity.delivery) -}}
+{{- $ties := 0 -}}
+{{- range $caps }}{{ if eq . $minCap }}{{ $ties = add $ties 1 }}{{ end }}{{ end -}}
+{{- /* Rule-based reading (mirrors explainKey in flow-bottleneck-model.mjs):
+     when every stage absorbs the fixed demand there is no sustained queue
+     buildup to describe; the narrowest-stage readings apply only while the
+     demand actually exceeds the narrowest capacity. */ -}}
+{{- if ge $minCap $m.demand }}{{ $expKey = "demand-limited" -}}
+{{- else if eq $ties 1 -}}
+  {{- if eq $def.capacity.generate $minCap }}{{ $expKey = "generate" -}}
+  {{- else if eq $def.capacity.review $minCap }}{{ $expKey = "review" -}}
+  {{- else }}{{ $expKey = "delivery" -}}
+  {{- end -}}
+{{- end -}}
+
+<blog-flow-bottleneck id="{{ .id }}" class="ib-figure ib-flow" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang "preset" $c.illustrationNotice) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  <div class="ib-flow-stage" data-ib-stage>
+    <svg class="ib-flow-svg" data-ib-pipeline viewBox="0 0 320 124" aria-hidden="true">
+      {{- range $i, $stage := slice "generate" "review" "delivery" }}
+      {{- $bx := add 6 (mul $i 107) -}}
+      {{- $q := 0 -}}
+      {{- if eq $stage "generate" }}{{ $q = $qG }}{{ else if eq $stage "review" }}{{ $q = $qR }}{{ else }}{{ $q = $qD }}{{ end -}}
+      <g class="ib-flow-station" data-ib-station="{{ $stage }}">
+        <rect class="ib-flow-box" x="{{ $bx }}" y="24" width="94" height="88" rx="8" />
+        <text class="ib-flow-name" x="{{ add $bx 47 }}" y="17" text-anchor="middle">{{ index $c.stages $stage }}</text>
+        <g class="ib-flow-queue" data-ib-queue="{{ $stage }}">
+          {{- if gt $q 0 }}
+          {{- range $i := seq 1 (int (math.Min 8 $q)) }}
+          {{- $col := sub $i 1 -}}
+          {{- $sx := add (add $bx 11) (mul (mod $col 4) 18) -}}
+          {{- $sy := add 54 (mul (div $col 4) 22) -}}
+          <rect class="ib-flow-job" x="{{ $sx }}" y="{{ $sy }}" width="13" height="13" rx="2.5" />
+          {{- end }}
+          {{- end }}
+        </g>
+        {{- if gt $q 8 }}<text class="ib-flow-more" data-ib-more="{{ $stage }}" x="{{ add $bx 47 }}" y="105" text-anchor="middle">+{{ sub $q 8 }}</text>{{ end }}
+      </g>
+      {{- end }}
+      <path class="ib-flow-arrow" d="M 103 62 L 112 68 L 103 74 Z" />
+      <path class="ib-flow-arrow" d="M 210 62 L 219 68 L 210 74 Z" />
+    </svg>
+    <p class="ib-diagram-note">{{ $c.diagramNote }}</p>
+
+    <dl class="ib-readout ib-flow-readout">
+      <div class="ib-metric"><dt>{{ $c.metrics.tick }}</dt><dd><span data-ib-val="tick">0</span> / {{ $m.maxTicks }}</dd></div>
+      <div class="ib-metric"><dt>{{ $c.demandLabel }}</dt><dd><span data-ib-val="demand">{{ $m.demand }}</span> <span class="ib-unit">{{ $c.unitLabel }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.stages.generate }} · {{ $c.metrics.queue }}</dt><dd><span data-ib-val="queue-generate">{{ $qG }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.stages.review }} · {{ $c.metrics.queue }}</dt><dd><span data-ib-val="queue-review">{{ $qR }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.stages.delivery }} · {{ $c.metrics.queue }}</dt><dd><span data-ib-val="queue-delivery">{{ $qD }}</span></dd></div>
+      {{- range $stage := slice "generate" "review" "delivery" }}
+      <div class="ib-metric"><dt>{{ $c.capacityLabel }} · {{ index $c.stages $stage }}</dt><dd><span data-ib-val="capacity-{{ $stage }}">{{ index $def.capacity $stage }}</span></dd></div>
+      {{- end }}
+      <div class="ib-metric"><dt>{{ $c.metrics.wip }}</dt><dd><span data-ib-val="wip">{{ $wip0 }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.admitted }}</dt><dd><span data-ib-val="admitted">{{ $wip0 }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.delivered }}</dt><dd><span data-ib-val="delivered">0</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.metrics.throughput }}</dt><dd><span data-ib-val="throughput">0</span></dd></div>
+    </dl>
+
+    <svg class="ib-flow-chart" data-ib-chart viewBox="0 0 320 110" aria-hidden="true">
+      <line class="ib-flow-axis" x1="28" y1="8" x2="28" y2="88" />
+      <line class="ib-flow-axis" x1="28" y1="88" x2="314" y2="88" />
+      <text class="ib-flow-axis-label" x="28" y="102">0</text>
+      <text class="ib-flow-axis-label" x="312" y="102" text-anchor="end">{{ $m.maxTicks }}</text>
+      <text class="ib-flow-axis-label" x="24" y="12" text-anchor="end" data-ib-chart-max>{{ $yMax }}</text>
+      <polyline class="ib-flow-series ib-flow-series--wip" data-ib-chart-line="wip" points="30,{{ printf "%.2f" (sub 88.0 (div (mul $wip0 80.0) $yMax)) }}" />
+      <polyline class="ib-flow-series ib-flow-series--throughput" data-ib-chart-line="throughput" points="30,88" />
+      <g data-ib-chart-marks>
+        <circle class="ib-flow-mark ib-flow-series--wip" cx="30" cy="{{ printf "%.2f" (sub 88.0 (div (mul $wip0 80.0) $yMax)) }}" r="2.6" />
+        <circle class="ib-flow-mark ib-flow-series--throughput" cx="30" cy="88" r="2.6" />
+      </g>
+    </svg>
+
+    <table class="ib-flow-log">
+      <caption class="ib-diagram-note">{{ $c.metrics.wip }} / {{ $c.metrics.throughput }} — {{ $c.unitLabel }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.metrics.tick }}</th>
+          <th scope="col">{{ $c.metrics.wip }}</th>
+          <th scope="col">{{ $c.metrics.throughput }}</th>
+        </tr>
+      </thead>
+      <tbody data-ib-log>
+        <tr><td>0</td><td>{{ $wip0 }}</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <p class="ib-explain" data-ib-explain>{{ index $c.explanations $expKey }}</p>
+  </div>
+
+  {{- /* One same-sized invisible slot row mirrors the exact control row
+       (identical labels and boxes), so the swap is geometry-neutral at
+       320–1280px. Spans only — never focusable, never fake controls. */}}
+  <div class="ib-controls ib-flow-controls ib-ctrl-slot" data-ib-ctrl-slot aria-hidden="true">
+    {{- range $stage := slice "generate" "review" "delivery" }}
+    <span class="ib-num"><span class="ib-num-label">{{ $c.capacityLabel }} · {{ index $c.stages $stage }}</span><span class="ib-num-box ib-slot"></span></span>
+    {{- end }}
+    <span class="ib-btn ib-slot">{{ $c.tickLabel }}</span>
+    <span class="ib-btn ib-slot">{{ if eq .lang "zh" }}播放{{ else }}Play{{ end }}</span>
+  </div>
+  <div class="ib-controls ib-flow-controls" data-ib-controls hidden>
+    {{- range $stage := slice "generate" "review" "delivery" }}
+    <label class="ib-num"><span class="ib-num-label">{{ $c.capacityLabel }} · {{ index $c.stages $stage }}</span><input class="ib-num-box" type="number" data-ib-cap="{{ $stage }}" min="0" max="{{ $m.capacityMax }}" step="1" value="{{ index $def.capacity $stage }}" inputmode="numeric"></label>
+    {{- end }}
+    <button type="button" class="ib-btn" data-ib-tick>{{ $c.tickLabel }}</button>
+    <button type="button" class="ib-btn" data-ib-play>{{ if eq .lang "zh" }}播放{{ else }}Play{{ end }}</button>
+  </div>
+
+  <p class="ib-rule">{{ $c.tickRule }}</p>
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  {{- /* Read-only reference: every preset plus its sampled deterministic run
+       (up to ticks 0–3, bounded by maxTicks) from the same spec data. No runtime selectors, no ids —
+       the upgrade never touches this element or its open state. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    {{- range $s := $ordered }}
+    {{- $rows := partial "interactive/flow-bottleneck-sample.html" (dict "s" $s "m" $m "ticks" (int (math.Min 3 $m.maxTicks))) }}
+    <section class="ib-ref-block">
+      <p class="ib-ref-title">{{ index $c.scenarioLabels $s.id }}</p>
+      <dl class="ib-readout ib-flow-readout">
+        <div class="ib-metric"><dt>{{ $c.demandLabel }}</dt><dd>{{ $m.demand }} <span class="ib-unit">{{ $c.unitLabel }}</span></dd></div>
+        {{- range $stage := slice "generate" "review" "delivery" }}
+        <div class="ib-metric"><dt>{{ $c.capacityLabel }} · {{ index $c.stages $stage }}</dt><dd>{{ index $s.capacity $stage }}</dd></div>
+        {{- end }}
+        {{- range $stage := slice "generate" "review" "delivery" }}
+        <div class="ib-metric"><dt>{{ index $c.stages $stage }} · {{ $c.metrics.queue }} (0)</dt><dd>{{ index $s.initial $stage }}</dd></div>
+        {{- end }}
+      </dl>
+      <table class="ib-flow-log">
+        <thead>
+          <tr>
+            <th scope="col">{{ $c.metrics.tick }}</th>
+            <th scope="col">{{ $c.stages.generate }}</th>
+            <th scope="col">{{ $c.stages.review }}</th>
+            <th scope="col">{{ $c.stages.delivery }}</th>
+            <th scope="col">{{ $c.metrics.delivered }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{- range $rows }}
+          <tr><td>{{ .tick }}</td><td>{{ .qG }}</td><td>{{ .qR }}</td><td>{{ .qD }}</td><td>{{ .delivered }}</td></tr>
+          {{- end }}
+        </tbody>
+      </table>
+    </section>
+    {{- end }}
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-flow-bottleneck>

@@ -318,6 +318,12 @@ Redis persistence、replication 或 Bull lease 可以减少 job 丢失，不能�
 - recovery 检测内部失联；
 - 业务作者提供幂等键、回执、查询和补偿。
 
+与其只把上面的 t0–t5 当故事读，不如亲手换一个崩溃点、换一种恢复动作，看看同一次外部写入到底发生几次：
+
+{{< interactive kind="effect-recovery" id="n8n-side-effects" spec="effect-recovery-n8n-v1" >}}
+
+注意读数之间的落差：**实际外部动作次数**是这条教学推演里的事实，**本地知识**才是执行记录真正能证明的东西。在“外部已提交、回执未落地”的窗口里，直接重试把一次写入变成两次，而本地仍然只能给出 unknown——把它折叠成 failure，就是重复副作用的来源。支持的回执查询与服务端幂等键都能把未知收敛成恰好一次；查询不受支持时，安全的下一步只剩人工对账。
+
 ## Operation Ledger 怎样补上业务语义
 
 在外部写操作之前生成稳定业务键：

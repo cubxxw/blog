@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "effect-recovery",
+  "id": "effect-recovery-corrupt-v1",
+  "defaultScenario": "only",
+  "model": { "flow": "queue-retry", "maxSteps": 5.5 },
+  "scenarios": [
+    {
+      "id": "only",
+      "effectPlacement": "before-approval",
+      "provider": { "receiptQuery": false, "idempotencyKey": "yes" },
+      "defaultCrash": "whenever",
+      "defaultStrategy": "retry",
+      "extra": true
+    },
+    {
+      "id": "only",
+      "effectPlacement": "plain",
+      "provider": { "receiptQuery": false, "idempotencyKey": false },
+      "defaultCrash": "before-send",
+      "defaultStrategy": "retry"
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "x",
+      "title": "x",
+      "question": "x",
+      "assumption": "x",
+      "observe": "x",
+      "footerNote": "x",
+      "referenceTitle": "x",
+      "scenarioLabels": { "only": "x" },
+      "traceNotice": "x",
+      "lanes": { "worker": "x", "local": "x", "external": "x" },
+      "steps": {
+        "start": "x",
+        "intent": "x",
+        "send": "x",
+        "commit": "x",
+        "receipt": "x",
+        "record": "x",
+        "finish": "x"
+      },
+      "crashLabel": "x",
+      "strategyLabel": "x",
+      "crashOptions": {
+        "before-send": "x",
+        "after-commit-before-receipt": "x",
+        "after-recorded-receipt": "x"
+      },
+      "strategyOptions": { "retry": "x", "query-receipt": "x", "idempotency-key": "x" },
+      "readout": { "actions": "x", "knowledge": "x", "next": "x" },
+      "knowledge": { "confirmed-success": "x", "confirmed-failure": "x", "unknown": "x" },
+      "next": { "return-recorded": "x", "retry-safe": "x", "reconcile": "x" },
+      "table": { "scenario": "x", "crash": "x", "strategy": "x", "actions": "x", "knowledge": "x", "next": "x" },
+      "explanations": { "empty": "x", "clean": "x", "duplicate": "x", "ambiguous": "x" },
+      "surprise": "x"
+    },
+    "en": {
+      "figureLabel": "x",
+      "title": "x",
+      "question": "x",
+      "assumption": "x",
+      "observe": "x",
+      "footerNote": "x",
+      "referenceTitle": "x",
+      "scenarioLabels": { "only": "x" },
+      "traceNotice": "x"
+    }
+  },
+  "sourceRefs": [{ "url": "https://example.com/a", "title": "x" }]
+}

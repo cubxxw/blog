@@ -1,0 +1,160 @@
+{{- /* blog-notification-threshold — axis stage + native <details> reference
+       (numerical explainer group). The stage renders the default scenario's
+       exact E = pG − (1−p)C and threshold p* = C/(G+C) from the same spec
+       data the runtime uses; the SVG axis (threshold + current p) is always
+       paired with the numeric readout, which is its accessible equivalent.
+       Non-current panels are hidden in SSR (one current scenario). The
+       <details> reference holds every finite scenario plus sampled expected
+       values at meaningful p — no runtime selectors and no ids inside, so
+       the upgrade never touches it or its open state.
+
+       No ARIA ids are derived anywhere in this figure (labels wrap their
+       controls), so the only emitted id is the instance root. Interactive
+       controls swap into same-sized visibility:hidden slots. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+{{- $fmt := "interactive/notification-threshold-format.html" -}}
+{{- $compute := "interactive/notification-threshold-compute.html" -}}
+{{- $probStep := printf "%g" (div (mul $m.probStep 1.0) 10.0) -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- $def := index $ordered 0 -}}
+
+<blog-notification-threshold id="{{ .id }}" class="ib-figure ib-threshold" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- range $i, $s := $ordered }}
+  {{- $r := partial $compute (dict "scenario" $s) -}}
+  <section class="ib-panel" data-ib-panel="{{ $s.id }}" aria-label="{{ index $c.scenarioLabels $s.id }}"{{ if gt $i 0 }} hidden{{ end }}>
+    <p class="ib-panel-title">{{ index $c.scenarioLabels $s.id }}</p>
+
+    <div class="ib-viz">
+      <svg class="ib-axis" data-ib-axis viewBox="0 0 320 96" role="img" aria-label="{{ $c.axisLabels.alt }}">
+        <line class="ib-axis-line" x1="24" y1="48" x2="296" y2="48"></line>
+        <line class="ib-axis-tick" x1="24" y1="42" x2="24" y2="54"></line>
+        <line class="ib-axis-tick" x1="160" y1="43" x2="160" y2="53"></line>
+        <line class="ib-axis-tick" x1="296" y1="42" x2="296" y2="54"></line>
+        <text class="ib-axis-scale" x="24" y="68">0%</text>
+        <text class="ib-axis-scale" x="160" y="68" text-anchor="middle">50%</text>
+        <text class="ib-axis-scale" x="296" y="68" text-anchor="end">100%</text>
+        <g class="ib-axis-mark" data-ib-thr-mark transform="translate({{ $r.tX }} 48)"{{ if not $r.thrDefined }} hidden{{ end }}>
+          <line class="ib-axis-thr" x1="0" y1="-18" x2="0" y2="18"></line>
+          <path class="ib-axis-thr-dot" d="M0,-6 L6,0 L0,6 L-6,0 Z"></path>
+        </g>
+        <text class="ib-axis-label ib-axis-label--thr" data-ib-thr-label x="{{ $r.tLabelX }}" y="18" text-anchor="middle">{{ if $r.thrDefined }}{{ printf "%s %s" $c.axisLabels.threshold $r.thrPct }}{{ else }}{{ $c.resultLabels.undefined }}{{ end }}</text>
+        <g class="ib-axis-mark" data-ib-p-mark transform="translate({{ $r.pX }} 48)">
+          <line class="ib-axis-p" x1="0" y1="-6" x2="0" y2="12"></line>
+          <path class="ib-axis-p-dot" d="M-5,12 L5,12 L0,20 Z"></path>
+        </g>
+        <text class="ib-axis-label ib-axis-label--p" data-ib-p-label x="{{ $r.pLabelX }}" y="90" text-anchor="middle">{{ printf "%s %s" $c.axisLabels.current $r.probPct }}</text>
+      </svg>
+    </div>
+
+    <dl class="ib-readout">
+      <div class="ib-metric"><dt>{{ $c.resultLabels.threshold }}</dt><dd><span data-ib-threshold>{{ if $r.thrDefined }}{{ $r.thrExpr }}{{ else }}{{ $c.resultLabels.undefined }}{{ end }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.resultLabels.expected }}</dt><dd><span data-ib-expected>{{ $r.e }}</span></dd></div>
+      <div class="ib-metric"><dt>{{ $c.resultLabels.verdict }}</dt><dd><span data-ib-verdict>{{ index $c.verdicts $r.verdict }}</span></dd></div>
+    </dl>
+
+    <p class="ib-explain" data-ib-explain>{{ index $c.explanations $r.verdict }}</p>
+
+    <div class="ib-controls">
+      <label class="ib-range-label">
+        <span class="ib-range-text">{{ $c.gainLabel }}</span>
+        {{- /* The readouts are non-labelable spans: inside <label> the first
+             labelable descendant must be the input itself, otherwise the
+             slider would get no accessible name. */}}
+        <span class="ib-range-out" data-ib-gain-out>{{ $r.gain }}</span>
+        <span class="ib-range-slot" data-ib-gain-slot aria-hidden="true"><span class="ib-range-slot-track"><span class="ib-range-slot-thumb" style="left:{{ printf "%.4f" (div (mul $s.gain 100.0) (mul $m.gainMax 1.0)) }}%"></span></span></span>
+        <input class="ib-range" type="range" data-ib-gain-range hidden min="0" max="{{ $m.gainMax }}" step="1" value="{{ $r.gain }}">
+      </label>
+      <label class="ib-range-label">
+        <span class="ib-range-text">{{ $c.costLabel }}</span>
+        <span class="ib-range-out" data-ib-cost-out>{{ $r.cost }}</span>
+        <span class="ib-range-slot" data-ib-cost-slot aria-hidden="true"><span class="ib-range-slot-track"><span class="ib-range-slot-thumb" style="left:{{ printf "%.4f" (div (mul $s.cost 100.0) (mul $m.costMax 1.0)) }}%"></span></span></span>
+        <input class="ib-range" type="range" data-ib-cost-range hidden min="0" max="{{ $m.costMax }}" step="1" value="{{ $r.cost }}">
+      </label>
+      <label class="ib-range-label">
+        <span class="ib-range-text">{{ $c.probLabel }}</span>
+        <span class="ib-range-out" data-ib-prob-out>{{ $r.probPct }}</span>
+        <span class="ib-range-slot" data-ib-prob-slot aria-hidden="true"><span class="ib-range-slot-track"><span class="ib-range-slot-thumb" style="left:{{ $r.probSlider }}%"></span></span></span>
+        <input class="ib-range" type="range" data-ib-prob-range hidden min="0" max="100" step="{{ $probStep }}" value="{{ $r.probSlider }}" aria-valuetext="{{ $r.probPct }}">
+      </label>
+    </div>
+
+    <p class="ib-live" data-ib-live aria-live="polite"></p>
+  </section>
+  {{- end }}
+
+  {{- /* Read-only reference from the same spec data. No runtime selectors,
+       no ids: the upgrade never touches this element or its open state. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    <table class="ib-ref-table">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.table.scenario }}</th>
+          <th scope="col">{{ $c.table.gain }}</th>
+          <th scope="col">{{ $c.table.cost }}</th>
+          <th scope="col">{{ $c.table.threshold }}</th>
+          <th scope="col">{{ $c.table.prob }}</th>
+          <th scope="col">{{ $c.table.expected }}</th>
+          <th scope="col">{{ $c.table.verdict }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $s := $ordered }}
+        {{- $r := partial $compute (dict "scenario" $s) -}}
+        <tr>
+          <th scope="row">{{ index $c.scenarioLabels $s.id }}</th>
+          <td>{{ $r.gain }}</td>
+          <td>{{ $r.cost }}</td>
+          <td>{{ if $r.thrDefined }}{{ $r.thrExpr }}{{ else }}—{{ end }}</td>
+          <td>{{ $r.probPct }}</td>
+          <td>{{ $r.e }}</td>
+          <td>{{ index $c.verdicts $r.verdict }}</td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
+    <p class="ib-note2">{{ $c.sampleTitle }}</p>
+    <table class="ib-ref-table">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.table.prob }}</th>
+          <th scope="col">{{ $c.table.expected }}</th>
+          <th scope="col">{{ $c.table.verdict }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $sp := slice 0 250 500 750 1000 }}
+        {{- $r := partial $compute (dict "scenario" (dict "gain" $def.gain "cost" $def.cost "probPermille" $sp)) -}}
+        <tr>
+          <th scope="row">{{ $r.probPct }}</th>
+          <td>{{ $r.e }}</td>
+          <td>{{ index $c.verdicts $r.verdict }}</td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-notification-threshold>

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "kind": "memory-lineage",
+  "id": "memory-lineage-v1",
+  "defaultScenario": "complete-lineage",
+  "model": {
+    "nodes": [
+      {
+        "id": "source-quote",
+        "kind": "source",
+        "parents": [],
+        "copy": {
+          "zh": { "text": "原话事件：“我讨厌稳定工作。”（合成示例）" },
+          "en": { "text": "Source event: “I hate stable jobs.” (synthetic example)" }
+        }
+      },
+      {
+        "id": "source-travel",
+        "kind": "source",
+        "parents": [],
+        "copy": {
+          "zh": { "text": "原话事件：“想去旅居一段时间。”（合成示例）" },
+          "en": { "text": "Source event: “I want to work remotely while traveling.” (synthetic example)" }
+        }
+      },
+      {
+        "id": "pref-summary",
+        "kind": "derived",
+        "parents": ["source-quote"],
+        "copy": {
+          "zh": { "text": "偏好摘要（夜间任务生成）：偏好高自主性。" },
+          "en": { "text": "Preference summary (nightly job): prefers high autonomy." }
+        }
+      },
+      {
+        "id": "vector-index",
+        "kind": "derived",
+        "parents": ["source-quote", "pref-summary"],
+        "copy": {
+          "zh": { "text": "向量索引：原话与摘要各一条嵌入条目。" },
+          "en": { "text": "Vector index: one embedding entry for the quote, one for the summary." }
+        }
+      },
+      {
+        "id": "profile-nomad",
+        "kind": "derived",
+        "parents": ["pref-summary", "source-travel"],
+        "copy": {
+          "zh": { "text": "画像：长期偏好旅居（混入另一条原话证据）。" },
+          "en": { "text": "Profile: long-term preference for nomad stays (mixed with another source)." }
+        }
+      },
+      {
+        "id": "rec-cache",
+        "kind": "derived",
+        "parents": ["profile-nomad"],
+        "copy": {
+          "zh": { "text": "推荐缓存：下一轮推荐旅居产品。" },
+          "en": { "text": "Recommendation cache: the next round recommends nomad stays." }
+        }
+      },
+      {
+        "id": "chat-summary",
+        "kind": "derived",
+        "parents": [],
+        "copy": {
+          "zh": { "text": "聊天摘要：“用户长期偏好旅居”（未记录来源关系）。" },
+          "en": { "text": "Chat summary: “user prefers nomad stays long-term” (no lineage recorded)." }
+        }
+      },
+      {
+        "id": "provider-cache",
+        "kind": "external",
+        "parents": ["profile-nomad"],
+        "copy": {
+          "zh": { "text": "模型提供商侧缓存（系统边界之外）。" },
+          "en": { "text": "Model-provider cache (outside the system boundary)." }
+        }
+      },
+      {
+        "id": "offline-backup",
+        "kind": "external",
+        "parents": [],
+        "copy": {
+          "zh": { "text": "离线备份快照（系统边界之外）。" },
+          "en": { "text": "Offline backup snapshot (outside the system boundary)." }
+        }
+      }
+    ]
+  },
+  "scenarios": [
+    { "id": "complete-lineage", "removedSources": ["source-quote"] },
+    { "id": "partial-lineage", "removedSources": ["source-quote", "source-travel"] },
+    { "id": "mixed-evidence", "removedSources": ["source-travel"] }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "一条删除请求会走多远",
+      "question": "删掉一条原话事件后，哪些内容被直接移除、被标记失效、需要重算，又有哪些根本无法证明已抹除？",
+      "assumption": "全部为合成教学数据，不含任何真实用户内容；分类只依据数据里显式记录的来源关系，不模拟真实删除协议，也不代表任何产品的实际行为。",
+      "observe": "观察：失效 ≠ 已验证的物理删除。走到系统边界外和没有 lineage 的节点时，删除请求就失去了证据。",
+      "footerNote": "合成数据 · 依赖关系假设 · 对应来源",
+      "referenceTitle": "查看全部三种删除场景",
+      "nodeKinds": { "source": "来源事件", "derived": "派生物", "external": "边界外节点" },
+      "statuses": {
+        "kept": "仍成立",
+        "removed": "直接删除",
+        "invalidated": "已失效",
+        "recompute": "需重算",
+        "unproven": "无法证明已抹除"
+      },
+      "beforeLabel": "删除前的节点总数",
+      "afterLabel": "删除后",
+      "requestLabel": "删除请求",
+      "selectLabel": "请求覆盖的来源事件",
+      "invalidationNote": "失效 ≠ 已验证的物理删除：这里只标记派生结论不可再用，不宣称数据已从所有介质消失。",
+      "graphLabel": "依赖 lineage 图",
+      "scenarioLabels": {
+        "complete-lineage": "完整 lineage",
+        "partial-lineage": "部分 lineage",
+        "mixed-evidence": "混合证据"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "How far does one delete request travel?",
+      "question": "After deleting one source event, what is removed directly, marked invalidated, or recomputed—and what can never be proven erased?",
+      "assumption": "All synthetic teaching data, no real user content; classification follows only the explicitly recorded source relationships, simulates no real deletion protocol, and represents no product's actual behavior.",
+      "observe": "Observe: invalidation is not verified physical deletion. At the system boundary and where lineage is missing, the delete request runs out of evidence.",
+      "footerNote": "Synthetic data · Dependency assumptions · Sources",
+      "referenceTitle": "View all three deletion scenarios",
+      "nodeKinds": { "source": "Source event", "derived": "Derived artifact", "external": "Outside boundary" },
+      "statuses": {
+        "kept": "Still supported",
+        "removed": "Directly removed",
+        "invalidated": "Invalidated",
+        "recompute": "Recompute",
+        "unproven": "Not provably erased"
+      },
+      "beforeLabel": "Total nodes before deletion",
+      "afterLabel": "After deletion",
+      "requestLabel": "Delete request",
+      "selectLabel": "Source events covered by the request",
+      "invalidationNote": "Invalidation is not verified physical deletion: this only marks derived conclusions unusable and never claims the data vanished from every medium.",
+      "graphLabel": "Lineage dependency graph",
+      "scenarioLabels": {
+        "complete-lineage": "Complete lineage",
+        "partial-lineage": "Partial lineage",
+        "mixed-evidence": "Mixed evidence"
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://www.nature.com/articles/s41583-021-00548-3",
+      "title": "Ryan & Frankland — memory traces and forgetting (article source)"
+    },
+    {
+      "url": "https://www.nature.com/articles/s44159-024-00352-7",
+      "title": "Fawcett et al. — active forgetting review (article source)"
+    }
+  ]
+}

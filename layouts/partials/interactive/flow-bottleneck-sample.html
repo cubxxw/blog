@@ -1,0 +1,32 @@
+{{- /* flow-bottleneck-sample — deterministic synchronous tick simulation in
+     SSR (same semantics as assets/js/components/flow-bottleneck-model.mjs):
+     per tick the fixed demand enters the generation queue; then delivery →
+     review → generation each serve once (min(capacity, queue)); served jobs
+     join the next stage's queue but are served no earlier than the next
+     tick; delivery's served jobs leave the system (cumulative delivered).
+     Integer math; admitted jobs (incl. initial in-flight) are conserved.
+
+     Input:  dict "s" (scenario: capacity/initial trios) "m" (model: demand)
+             "ticks" (how many ticks to advance beyond tick 0)
+     Output: slice of row dicts: tick, qG, qR, qD, delivered, wip, throughput */ -}}
+{{- $s := .s -}}
+{{- $m := .m -}}
+{{- $qG := $s.initial.generate -}}
+{{- $qR := $s.initial.review -}}
+{{- $qD := $s.initial.delivery -}}
+{{- $del := 0 -}}
+{{- $rows := slice (dict "tick" 0 "qG" $qG "qR" $qR "qD" $qD "delivered" 0 "wip" (add $qG (add $qR $qD)) "throughput" 0) -}}
+{{- range $t := seq 1 .ticks -}}
+  {{- $qG = add $qG $m.demand -}}
+  {{- $doneD := math.Min $s.capacity.delivery $qD -}}
+  {{- $qD = sub $qD $doneD -}}
+  {{- $del = add $del $doneD -}}
+  {{- $doneR := math.Min $s.capacity.review $qR -}}
+  {{- $qR = sub $qR $doneR -}}
+  {{- $qD = add $qD $doneR -}}
+  {{- $doneG := math.Min $s.capacity.generate $qG -}}
+  {{- $qG = sub $qG $doneG -}}
+  {{- $qR = add $qR $doneG -}}
+  {{- $rows = $rows | append (dict "tick" $t "qG" $qG "qR" $qR "qD" $qD "delivered" $del "wip" (add $qG (add $qR $qD)) "throughput" $doneD) -}}
+{{- end -}}
+{{- return $rows -}}

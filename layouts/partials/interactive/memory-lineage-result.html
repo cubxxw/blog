@@ -1,0 +1,55 @@
+{{- /* interactive/memory-lineage-result — pure derived classification for
+     one deletion case. Returns dict node-id → status over
+     kept | removed | invalidated | recompute | unproven, computed from the
+     recorded evidence edges ONLY (identical rules to classify() in
+     memory-lineage-model.mjs; parity is asserted in the browser suite):
+       source   → removed iff covered by the request, else kept
+       external → unproven (outside the system boundary)
+       derived  → unproven when lineage is missing/untraceable;
+                  invalidated when ALL recorded source evidence is removed;
+                  recompute when some evidence survives (mixed evidence);
+                  kept when the request never reaches it. */ -}}
+{{- $nodes := .nodes -}}
+{{- $removed := .removed -}}
+{{- $traceable := dict -}}
+{{- $closure := dict -}}
+{{- range $nodes -}}
+  {{- $t := true -}}
+  {{- $cl := slice -}}
+  {{- if eq .kind "source" -}}
+    {{- $cl = slice .id -}}
+  {{- else if eq .kind "external" -}}
+    {{- $t = false -}}
+  {{- else -}}
+    {{- if eq (len .parents) 0 }}{{ $t = false }}{{ end -}}
+    {{- range .parents -}}
+      {{- if not (index $traceable .) }}{{ $t = false }}{{ end -}}
+      {{- $cl = union $cl (index $closure .) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $traceable = merge $traceable (dict .id $t) -}}
+  {{- $closure = merge $closure (dict .id $cl) -}}
+{{- end -}}
+{{- $status := dict -}}
+{{- range $nodes -}}
+  {{- $s := "kept" -}}
+  {{- if eq .kind "source" -}}
+    {{- if in $removed .id }}{{ $s = "removed" }}{{ end -}}
+  {{- else if eq .kind "external" -}}
+    {{- $s = "unproven" -}}
+  {{- else -}}
+    {{- $cl := index $closure .id -}}
+    {{- $hits := len (intersect $cl $removed) -}}
+    {{- if or (not (index $traceable .id)) (eq (len $cl) 0) -}}
+      {{- $s = "unproven" -}}
+    {{- else if eq $hits 0 -}}
+      {{- $s = "kept" -}}
+    {{- else if eq $hits (len $cl) -}}
+      {{- $s = "invalidated" -}}
+    {{- else -}}
+      {{- $s = "recompute" -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $status = merge $status (dict .id $s) -}}
+{{- end -}}
+{{- return $status -}}

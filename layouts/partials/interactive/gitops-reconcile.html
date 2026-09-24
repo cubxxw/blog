@@ -1,0 +1,162 @@
+{{- /* blog-gitops-reconcile — Git desired state vs cluster state with an
+     independently supplied workload health (group: effects;
+     docs/interactive/effects.md). The stage renders the default scenario's
+     exact default result — the three-field comparison, the separate Sync and
+     Health readouts, the before/after delta, the explicit deletion outcome
+     and one rule-based explanation — from the same spec data the runtime
+     uses (gitops-reconcile-compute.html). Defaults mirror Argo CD: no
+     automated sync, no self-heal, no prune, action "none". The <details>
+     reference lists every scenario's desired/cluster/health facts: no runtime
+     selectors and no ids inside, so the upgrade never touches it. */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+{{- $id := .id -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- $def := index $ordered 0 -}}
+
+{{- $hasHistory := false -}}
+{{- $historyVersion := 0 -}}
+{{- if isset $def "historyVersion" -}}{{- $hasHistory = true -}}{{- $historyVersion = $def.historyVersion -}}{{- end -}}
+{{- $res := partial "interactive/gitops-reconcile-compute.html" (dict "git" $def.git "cluster" $def.cluster "hasHistory" $hasHistory "historyVersion" $historyVersion "origin" $def.origin "health" $def.health "autoSync" false "selfHeal" false "prune" false "action" "none") -}}
+
+<blog-gitops-reconcile id="{{ $id }}" class="ib-figure ib-gitops" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang "preset" $c.traceNotice) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  <div class="ib-gr-controls">
+    {{- /* Invisible SSR placeholder mirrors the enhanced control bar
+         (three toggle rows + two button boxes), so the swap is
+         geometry-neutral. Spans only — never focusable. */}}
+    <span class="ib-gr-ctrl-slot" data-ib-ctrl-slot aria-hidden="true">
+      <span class="ib-gr-ctrl ib-gr-ctrl--static">
+        <span class="ib-er-ctrl-title ib-slot">{{ $c.title }}</span>
+        <span class="ib-er-opt ib-slot"><span class="ib-er-faux ib-er-faux--box"></span><span>{{ index $c.toggles "auto-sync" }}</span></span>
+        <span class="ib-er-opt ib-slot"><span class="ib-er-faux ib-er-faux--box"></span><span>{{ index $c.toggles "self-heal" }}</span></span>
+        <span class="ib-er-opt ib-slot"><span class="ib-er-faux ib-er-faux--box"></span><span>{{ index $c.toggles "prune" }}</span></span>
+      </span>
+      <span class="ib-btn ib-slot">{{ index $c.actions "sync" }}</span>
+      <span class="ib-btn ib-slot">{{ index $c.actions "rollback" }}</span>
+    </span>
+    <div class="ib-gr-ctrl" role="group" aria-label="{{ $c.title }}" data-ib-toggles hidden>
+      <span class="ib-er-ctrl-title">{{ $c.title }}</span>
+      <label class="ib-er-opt"><input type="checkbox" data-ib-toggle="auto-sync"><span>{{ index $c.toggles "auto-sync" }}</span></label>
+      <label class="ib-er-opt"><input type="checkbox" data-ib-toggle="self-heal"><span>{{ index $c.toggles "self-heal" }}</span></label>
+      <label class="ib-er-opt"><input type="checkbox" data-ib-toggle="prune"><span>{{ index $c.toggles "prune" }}</span></label>
+    </div>
+    <div class="ib-gr-actions" data-ib-actions-group hidden>
+      <button type="button" class="ib-btn" data-ib-sync>{{ index $c.actions "sync" }}</button>
+      <button type="button" class="ib-btn" data-ib-rollback>{{ index $c.actions "rollback" }}</button>
+    </div>
+  </div>
+
+  <div class="ib-gr-stage" data-ib-stage>
+    <table class="ib-gr-states">
+      <thead>
+        <tr>
+          <th scope="col"><span class="ib-sr">{{ $c.states.replicas }} / {{ $c.states.version }} / {{ $c.states.resource }}</span></th>
+          <th scope="col">{{ $c.table.desired }}</th>
+          <th scope="col">{{ $c.table.cluster }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $f := slice "replicas" "version" "resource" }}
+        <tr data-ib-state-row="{{ $f }}">
+          <th scope="row">{{ index $c.states $f }}</th>
+          <td><span data-ib-desired="{{ $f }}">{{ if eq $f "resource" }}{{ index $c.resourceState $def.git.resource }}{{ else if eq $def.git.resource "absent" }}—{{ else }}{{ index $def.git $f }}{{ end }}</span></td>
+          <td><span data-ib-cluster="{{ $f }}">{{ if eq $f "resource" }}{{ index $c.resourceState (index $res.after $f) }}{{ else if eq $res.after.resource "absent" }}—{{ else }}{{ index $res.after $f }}{{ end }}</span></td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
+
+    <dl class="ib-er-readout ib-gr-readout">
+      <div class="ib-er-metric"><dt>{{ $c.readout.sync }}</dt><dd><span data-ib-sync-status>{{ index $c.statusLabels $res.sync }}</span></dd></div>
+      <div class="ib-er-metric"><dt>{{ $c.readout.health }}</dt><dd><span data-ib-health>{{ index $c.healthLabels $res.health }}</span></dd></div>
+      <div class="ib-er-metric"><dt>{{ $c.readout.deletion }}</dt><dd><span data-ib-deletion>{{ index $c.deletionLabels $res.deletion }}</span></dd></div>
+    </dl>
+
+    <div class="ib-gr-deltas">
+      <div class="ib-gr-delta">
+        <p class="ib-gr-delta-title">{{ $c.readout.deltaBefore }}</p>
+        <ul class="ib-gr-delta-list" data-ib-delta="before">
+          {{- if eq (len $res.deltaBefore) 0 }}<li class="ib-gr-delta-none">{{ $c.noDelta }}</li>{{ end }}
+          {{- range $d := $res.deltaBefore }}
+          <li>{{ index $c.states $d.field }}：{{ $c.table.desired }} {{ if eq $d.field "resource" }}{{ index $c.resourceState $d.git }}{{ else }}{{ $d.git }}{{ end }} · {{ $c.table.cluster }} {{ if eq $d.field "resource" }}{{ index $c.resourceState $d.cluster }}{{ else }}{{ $d.cluster }}{{ end }}</li>
+          {{- end }}
+        </ul>
+      </div>
+      <div class="ib-gr-delta">
+        <p class="ib-gr-delta-title">{{ $c.readout.deltaAfter }}</p>
+        <ul class="ib-gr-delta-list" data-ib-delta="after">
+          {{- if eq (len $res.deltaAfter) 0 }}<li class="ib-gr-delta-none">{{ $c.noDelta }}</li>{{ end }}
+          {{- range $d := $res.deltaAfter }}
+          <li>{{ index $c.states $d.field }}：{{ $c.table.desired }} {{ if eq $d.field "resource" }}{{ index $c.resourceState $d.git }}{{ else }}{{ $d.git }}{{ end }} · {{ $c.table.cluster }} {{ if eq $d.field "resource" }}{{ index $c.resourceState $d.cluster }}{{ else }}{{ $d.cluster }}{{ end }}</li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+
+    <p class="ib-er-explain" data-ib-explain>{{ index $c.explanations $res.explainKey }}</p>
+  </div>
+
+  <p class="ib-live" data-ib-live aria-live="polite"></p>
+
+  {{- /* Read-only reference: every scenario's facts from the same spec. No
+       runtime selectors, no ids — untouched by the upgrade. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    <table class="ib-ref-table ib-gr-ref">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.table.scenario }}</th>
+          <th scope="col">{{ $c.table.desired }}</th>
+          <th scope="col">{{ $c.table.cluster }}</th>
+          <th scope="col">{{ $c.table.delta }}</th>
+          <th scope="col">{{ $c.table.health }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $s := $ordered }}
+        {{- $d := partial "interactive/gitops-reconcile-diff.html" (dict "git" $s.git "cluster" $s.cluster) }}
+        <tr>
+          <th scope="row">{{ index $c.scenarioLabels $s.id }}</th>
+          <td>
+            <span class="ib-gr-line">{{ $c.states.replicas }} {{ if eq $s.git.resource "absent" }}—{{ else }}{{ $s.git.replicas }}{{ end }}</span>
+            <span class="ib-gr-line">{{ $c.states.version }} {{ if eq $s.git.resource "absent" }}—{{ else }}{{ $s.git.version }}{{ end }}</span>
+            <span class="ib-gr-line">{{ $c.states.resource }} {{ index $c.resourceState $s.git.resource }}</span>
+          </td>
+          <td>
+            <span class="ib-gr-line">{{ $c.states.replicas }} {{ if eq $s.cluster.resource "absent" }}—{{ else }}{{ $s.cluster.replicas }}{{ end }}</span>
+            <span class="ib-gr-line">{{ $c.states.version }} {{ if eq $s.cluster.resource "absent" }}—{{ else }}{{ $s.cluster.version }}{{ end }}</span>
+            <span class="ib-gr-line">{{ $c.states.resource }} {{ index $c.resourceState $s.cluster.resource }}</span>
+          </td>
+          <td>
+            {{- if eq (len $d) 0 }}{{ $c.noDelta }}{{ end }}
+            {{- range $i, $x := $d }}{{ if gt $i 0 }} · {{ end }}{{ index $c.states $x.field }}{{ end }}
+          </td>
+          <td>{{ index $c.healthLabels $s.health }}</td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-gitops-reconcile>

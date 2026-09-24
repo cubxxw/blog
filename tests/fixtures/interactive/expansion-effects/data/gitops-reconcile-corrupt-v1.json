@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "gitops-reconcile",
+  "id": "gitops-reconcile-corrupt-v1",
+  "defaultScenario": "only",
+  "model": { "replicaMax": 20, "versionMax": 99, "extra": 1 },
+  "scenarios": [
+    {
+      "id": "only",
+      "origin": "elsewhere",
+      "git": { "replicas": -1, "version": 3, "resource": "maybe" },
+      "cluster": { "replicas": 2, "version": 3.5, "resource": "present" },
+      "health": "healthy",
+      "historyVersion": 3
+    }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "x",
+      "title": "x",
+      "question": "x",
+      "assumption": "x",
+      "observe": "x",
+      "footerNote": "x",
+      "referenceTitle": "x",
+      "scenarioLabels": { "only": "x" },
+      "traceNotice": "x",
+      "states": { "replicas": "x", "version": "x", "resource": "x" },
+      "resourceState": { "present": "x", "absent": "x" },
+      "statusLabels": { "synced": "x", "out-of-sync": "x" },
+      "healthLabels": { "healthy": "x", "degraded": "x", "progressing": "x", "unknown": "x" },
+      "toggles": { "auto-sync": "x", "self-heal": "x", "prune": "x" },
+      "actions": { "sync": "x", "rollback": "x" },
+      "readout": { "sync": "x", "health": "x", "deltaBefore": "x", "deltaAfter": "x", "deletion": "x" },
+      "deletionLabels": { "none": "x", "deleted": "x", "kept": "x" },
+      "noDelta": "x",
+      "table": { "scenario": "x", "desired": "x", "cluster": "x", "delta": "x", "health": "x" },
+      "explanations": {
+        "rollback-blocked": "x",
+        "rollback-temporary": "x",
+        "deletion-pruned": "x",
+        "deletion-kept": "x",
+        "self-healed": "x",
+        "auto-synced": "x",
+        "drift-kept": "x",
+        "synced-clean": "x",
+        "idle": "x"
+      }
+    },
+    "en": {
+      "figureLabel": "x",
+      "title": "x",
+      "question": "x",
+      "assumption": "x",
+      "observe": "x",
+      "footerNote": "x",
+      "referenceTitle": "x",
+      "scenarioLabels": { "only": "x" },
+      "traceNotice": "x",
+      "states": { "replicas": "x", "version": "x", "resource": "x" },
+      "resourceState": { "present": "x", "absent": "x" },
+      "statusLabels": { "synced": "x", "out-of-sync": "x" },
+      "healthLabels": { "healthy": "x", "degraded": "x", "progressing": "x", "unknown": "x" },
+      "toggles": { "auto-sync": "x", "self-heal": "x", "prune": "x" },
+      "actions": { "sync": "x", "rollback": "x" },
+      "readout": { "sync": "x", "health": "x", "deltaBefore": "x", "deltaAfter": "x", "deletion": "x" },
+      "deletionLabels": { "none": "x", "deleted": "x", "kept": "x" },
+      "noDelta": "x",
+      "table": { "scenario": "x", "desired": "x", "cluster": "x", "delta": "x", "health": "x" },
+      "explanations": {
+        "rollback-blocked": "x",
+        "rollback-temporary": "x",
+        "deletion-pruned": "x",
+        "deletion-kept": "x",
+        "self-healed": "x",
+        "auto-synced": "x",
+        "drift-kept": "x",
+        "synced-clean": "x",
+        "idle": "x"
+      }
+    }
+  },
+  "sourceRefs": [
+    { "url": "javascript:alert(1)", "title": "x" },
+    { "url": "https://example.com/ok", "title": "x" }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "reliability-chain",
+  "id": "reliability-chain-v1",
+  "defaultScenario": "twenty-steps",
+  "model": { "stepsMin": 1, "stepsMax": 100, "stepsPerSegment": 5, "probStep": 5 },
+  "scenarios": [
+    { "id": "twenty-steps", "stepPermille": 950, "steps": 20, "recallPermille": 1000 },
+    { "id": "ten-steps", "stepPermille": 950, "steps": 10, "recallPermille": 1000 },
+    { "id": "careful-steps", "stepPermille": 990, "steps": 20, "recallPermille": 1000 },
+    { "id": "partial-recall", "stepPermille": 950, "steps": 20, "recallPermille": 500 }
+  ],
+  "copy": {
+    "zh": {
+      "figureLabel": "交互图解",
+      "title": "复合误差与检查点",
+      "question": "每一步都有 95% 做对，二十步的整条链一次无错的概率还剩多少？",
+      "assumption": "只演示独立、必需步骤的概率连乘；检查点模式另假设无误报、精确回滚、每段至多一次独立重试。不是任何系统或模型的实测成功率；期望尝试次数把所有分段都排程计入，不是出错即停的运行成本。",
+      "observe": "观察：把单步成功率或步数调成你的真实链路，端到端结果掉到哪里？检查点召回率要多高才兜得住？",
+      "footerNote": "示意计算 · 模型假设 · 对应来源",
+      "referenceTitle": "查看预设与曲线样本",
+      "scenarioLabels": {
+        "twenty-steps": "二十步链路",
+        "ten-steps": "十步链路",
+        "careful-steps": "99% 单步",
+        "partial-recall": "召回不全"
+      },
+      "stepLabel": "单步成功率",
+      "stepsLabel": "必需步数",
+      "recallLabel": "检查点召回率 r",
+      "resultLabels": {
+        "plain": "全程无错率 p^n",
+        "checkpoint": "检查点模式合计",
+        "segment": "单段成功率（一次重试后）",
+        "attempts": "期望段尝试次数（全部分段都排程）",
+        "segments": "分段（步数）"
+      },
+      "curveLabels": {
+        "x": "必需步数",
+        "y": "全程无错率",
+        "alt": "曲线：单步成功率固定时，全程无错率随必需步数增加而下降；当前点的精确值见读数。"
+      },
+      "table": { "scenario": "场景", "stepRate": "单步成功率", "steps": "步数", "plain": "p^n", "checkpoint": "检查点模式" },
+      "curveTable": { "steps": "步数", "result": "全程无错率" },
+      "checkpoint": {
+        "summary": "检查点模式（可选展开）：分段 + 每段一次重试",
+        "note": "期望段尝试次数是计划口径：假设所有分段都排程执行，不是出错即停的实际运行成本，也不是生产成功率。假设同时成立：步间独立、检查点无误报、回滚精确、每段至多一次独立重试。"
+      },
+      "explanations": {
+        "steep": "结果不足 50%：在上述假设内，这条链路的多数运行不会全程无错。",
+        "moderate": "结果在 50% 到 90% 之间：在上述假设内，全程无错与出错的运行都不少。",
+        "mild": "结果达到 90% 以上：在上述假设内，这条链路的多数运行会全程无错。"
+      }
+    },
+    "en": {
+      "figureLabel": "Interactive figure",
+      "title": "Compounding error and checkpoints",
+      "question": "If every step is 95% likely to be right, how much of a twenty-step chain survives end to end?",
+      "assumption": "Shows probability multiplication for independent, mandatory steps only; the checkpoint mode additionally assumes no false positives, exact rollback and at most one independent retry per segment. Never a measured success rate for any system or model; expected attempts schedule ALL segments — they are not fail-fast runtime cost.",
+      "observe": "Observe: move the per-step rate or the step count to your real chain — where does the end-to-end result land? How high must checkpoint recall be to hold it?",
+      "footerNote": "Illustrative computation · Model assumptions · Sources",
+      "referenceTitle": "View presets and curve samples",
+      "scenarioLabels": {
+        "twenty-steps": "Twenty steps",
+        "ten-steps": "Ten steps",
+        "careful-steps": "99% per step",
+        "partial-recall": "Imperfect recall"
+      },
+      "stepLabel": "Per-step success",
+      "stepsLabel": "Required steps",
+      "recallLabel": "Checkpoint recall r",
+      "resultLabels": {
+        "plain": "Clean-run rate p^n",
+        "checkpoint": "Checkpoint total",
+        "segment": "Segment rate (after one retry)",
+        "attempts": "Expected segment attempts (all segments scheduled)",
+        "segments": "Segments (steps)"
+      },
+      "curveLabels": {
+        "x": "Required steps",
+        "y": "Clean-run rate",
+        "alt": "Curve: with a fixed per-step success rate, the clean-run rate falls as required steps grow; the exact current value is in the readout."
+      },
+      "table": { "scenario": "Scenario", "stepRate": "Per step", "steps": "Steps", "plain": "p^n", "checkpoint": "Checkpoints" },
+      "curveTable": { "steps": "Steps", "result": "Clean-run rate" },
+      "checkpoint": {
+        "summary": "Checkpoint mode (optional): segments + one retry each",
+        "note": "Expected segment attempts are a planning figure: they schedule every segment and are neither fail-fast runtime cost nor a production success rate. Assumptions hold simultaneously: independent steps, no false positives, exact rollback, at most one independent retry per segment."
+      },
+      "explanations": {
+        "steep": "The result is below 50%: under the assumptions above, most runs of this chain would not stay clean.",
+        "moderate": "The result is between 50% and 90%: under the assumptions above, clean and failed runs are both common.",
+        "mild": "The result is at least 90%: under the assumptions above, most runs of this chain stay clean."
+      }
+    }
+  },
+  "sourceRefs": [
+    {
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+      "title": "Anthropic — Demystifying evals for AI agents"
+    },
+    {
+      "url": "/ai-agent/posts/open-model-cost-collapse-agent-fleet/",
+      "title": "Series — Open-model cost collapse: cheap attempts do not buy recovery"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 /**
- * shared.mjs — small helpers shared by both custom element entries.
+ * shared.mjs — small helpers shared by custom element entries.
  * No global state: everything operates on the instance root passed in.
  */
 
-import { formatErrors, validateSpec } from './spec-schema.mjs';
+import { formatErrors, validateSpec } from './spec-core.mjs';
 
 /** Read and parse the server-embedded config payload (validated after). */
 export function readConfig(root) {
@@ -100,13 +100,14 @@ export function show(element, visible) {
 }
 
 /**
- * Validate an embedded config with the ONE executable schema
- * (spec-schema.mjs — the same module the build-time gate uses; no second
- * divergent validator). Throws with the schema's file/field errors on any
+ * Validate an embedded config with its executable per-kind schema (the same
+ * pure validator selected by the build registry; no divergent browser copy).
+ * New entries supply a callback so unrelated models stay out of their bundle.
+ * Throws with the schema's file/field errors on any
  * problem, including corrupt runtime values (zero step, negative events,
  * unknown version, invalid locales, malformed scenarios…).
  */
-export function loadSpec(config, kind) {
+export function loadSpec(config, kind, validator = validateSpec) {
   if (!config || typeof config !== 'object' || !config.spec) {
     throw new Error('interactive: missing embedded config payload');
   }
@@ -119,7 +120,7 @@ export function loadSpec(config, kind) {
   if (typeof config.id !== 'string' || !config.id) {
     throw new Error('interactive: missing instance id in config');
   }
-  const { ok, errors } = validateSpec(config.spec, { file: 'embedded-config' });
+  const { ok, errors } = validator(config.spec, { file: 'embedded-config' });
   if (!ok) {
     throw new Error(`interactive: invalid config (${formatErrors(errors)})`);
   }

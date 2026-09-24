@@ -1,0 +1,37 @@
+{{- /* task-cost-compute — SSR math identical to computeRoute /
+       formatAmount / formatPerAccepted in
+       assets/js/components/task-cost-model.mjs. Input: one route object
+       (modelToolCost, retryCost, reviewMinutes, hourlyRate, accepted —
+       already schema validated). All costs are in ONE currency (copy names
+       it); modelToolCost and retryCost are entered separately and summed
+       exactly once so retry cost can never be double counted.
+
+         reviewCost = reviewMinutes * hourlyRate / 60   (batch total time)
+         total      = modelToolCost + retryCost + reviewCost
+         perAccepted= total / accepted   (UNDEFINED when accepted = 0 —
+                      returned as per "" / perDefined false, never 0 or
+                      Infinity) */ -}}
+{{- $r := .route -}}
+{{- $fmt := "interactive/task-cost-format.html" -}}
+{{- $review := div (mul $r.reviewMinutes $r.hourlyRate) 60.0 -}}
+{{- $total := add (add $r.modelToolCost $r.retryCost) $review -}}
+{{- $per := 0.0 -}}
+{{- $perDefined := false -}}
+{{- if gt $r.accepted 0 -}}
+  {{- $per = div $total (mul $r.accepted 1.0) -}}
+  {{- $perDefined = true -}}
+{{- end -}}
+{{- return (dict
+      "modelTool" (partial $fmt (dict "mode" "amount" "value" $r.modelToolCost))
+      "retry" (partial $fmt (dict "mode" "amount" "value" $r.retryCost))
+      "review" (partial $fmt (dict "mode" "amount" "value" $review))
+      "total" (partial $fmt (dict "mode" "amount" "value" $total))
+      "per" (cond $perDefined (partial $fmt (dict "mode" "amount" "value" $per)) "—")
+      "perDefined" $perDefined
+      "totalNum" $total
+      "modelToolNum" (mul $r.modelToolCost 1.0)
+      "retryNum" (mul $r.retryCost 1.0)
+      "reviewNum" $review
+      "perNum" $per
+      "accepted" $r.accepted
+    ) -}}

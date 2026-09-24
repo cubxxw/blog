@@ -1,0 +1,158 @@
+{{- /* blog-reliability-chain — current-result stage + native <details>
+       reference (numerical explainer group). The stage renders the default
+       scenario's exact result (p^n and the checkpoint product) from the same
+       spec data the runtime uses; non-current panels are hidden in SSR (one
+       current scenario; no comparison toggle). The optional checkpoint mode
+       is a native <details> disclosure the runtime never toggles, and the
+       <details> reference holds every preset plus sampled curve values —
+       no runtime selectors and no ids inside, so the upgrade never touches
+       either disclosure or its open state.
+
+       No ARIA ids are derived anywhere in this figure (labels wrap their
+       controls, sections carry aria-label), so the only emitted id is the
+       instance root. Interactive controls swap into same-sized
+       visibility:hidden slots (zero layout shift on upgrade). */ -}}
+{{- $c := index .spec.copy .lang -}}
+{{- $m := .spec.model -}}
+{{- $fmt := "interactive/reliability-chain-format.html" -}}
+{{- $compute := "interactive/reliability-chain-compute.html" -}}
+{{- $probStep := printf "%g" (div (mul $m.probStep 1.0) 10.0) -}}
+
+{{- $ordered := slice -}}
+{{- range .spec.scenarios }}{{ if eq .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- range .spec.scenarios }}{{ if ne .id $.spec.defaultScenario }}{{ $ordered = $ordered | append . }}{{ end }}{{ end -}}
+{{- $def := index $ordered 0 -}}
+{{- $defR := partial $compute (dict "model" $m "scenario" $def) -}}
+
+<blog-reliability-chain id="{{ .id }}" class="ib-figure ib-chain" data-ib-root>
+  {{- partial "interactive/config.html" (dict "json" .json) -}}
+  {{- partial "interactive/figure-head.html" (dict "spec" .spec "lang" .lang) -}}
+
+  <div class="ib-scenarios">
+    <div class="ib-scn-row ib-scn-row--static" data-ib-scn-static aria-hidden="true">
+      {{- range $ordered }}
+      <span class="ib-scn-chip">{{ index $c.scenarioLabels .id }}</span>
+      {{- end }}
+    </div>
+    <div class="ib-scn-row" data-ib-scenarios role="group" aria-label="{{ $c.title }}" hidden>
+      {{- range $ordered }}
+      <button type="button" class="ib-scn" data-ib-scenario="{{ .id }}" aria-pressed="false">{{ index $c.scenarioLabels .id }}</button>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- range $i, $s := $ordered }}
+  {{- $r := partial $compute (dict "model" $m "scenario" $s) -}}
+  <section class="ib-panel" data-ib-panel="{{ $s.id }}" aria-label="{{ index $c.scenarioLabels $s.id }}"{{ if gt $i 0 }} hidden{{ end }}>
+    <p class="ib-panel-title">{{ index $c.scenarioLabels $s.id }}</p>
+
+    <p class="ib-expr" data-ib-expr>{{ $r.expr }}</p>
+
+    <div class="ib-viz">
+      <svg class="ib-curve" data-ib-curve viewBox="0 0 320 150" role="img" aria-label="{{ $c.curveLabels.alt }}">
+        <line class="ib-curve-axis" x1="36" y1="10" x2="36" y2="124"></line>
+        <line class="ib-curve-axis" x1="36" y1="124" x2="310" y2="124"></line>
+        <polyline class="ib-curve-line" data-ib-curve-line points="{{ $r.curvePoints }}" fill="none"></polyline>
+        <circle class="ib-curve-dot" data-ib-curve-dot cx="{{ $r.dotX }}" cy="{{ $r.dotY }}" r="4"></circle>
+        <text class="ib-curve-label" x="36" y="142">{{ $c.curveLabels.x }}</text>
+        <text class="ib-curve-label" x="32" y="10" text-anchor="end">{{ $c.curveLabels.y }}</text>
+      </svg>
+    </div>
+
+    <dl class="ib-readout">
+      <div class="ib-metric"><dt>{{ $c.resultLabels.plain }}</dt><dd><span data-ib-plain>{{ $r.plainRate }}</span></dd></div>
+    </dl>
+
+    <p class="ib-explain" data-ib-explain>{{ index $c.explanations $r.key }}</p>
+
+    <details class="ib-checkpoint">
+      <summary>{{ $c.checkpoint.summary }}</summary>
+      <dl class="ib-readout">
+        <div class="ib-metric"><dt>{{ $c.resultLabels.checkpoint }}</dt><dd><span data-ib-cp>{{ $r.cpRate }}</span></dd></div>
+        <div class="ib-metric"><dt>{{ $c.resultLabels.segment }}</dt><dd><span data-ib-cseg>{{ $r.segRate }}</span></dd></div>
+        <div class="ib-metric"><dt>{{ $c.resultLabels.attempts }}</dt><dd><span data-ib-att>{{ $r.att }}</span></dd></div>
+        <div class="ib-metric"><dt>{{ $c.resultLabels.segments }}</dt><dd><span data-ib-segs>{{ $r.plan }}</span></dd></div>
+      </dl>
+      <p class="ib-note2">{{ $c.checkpoint.note }}</p>
+      <div class="ib-controls">
+        <label class="ib-range-label">
+          <span class="ib-range-text">{{ $c.recallLabel }}</span>
+          {{- /* The readout is a non-labelable span: inside <label> the first
+               labelable descendant must be the input itself, otherwise the
+               slider would get no accessible name. */}}
+          <span class="ib-range-out" data-ib-recall-out>{{ $r.recallPct }}%</span>
+          <span class="ib-range-slot" data-ib-recall-slot aria-hidden="true"><span class="ib-range-slot-track"><span class="ib-range-slot-thumb" style="left:{{ $r.recallThumb }}%"></span></span></span>
+          <input class="ib-range" type="range" data-ib-recall-range hidden min="0" max="100" step="{{ $probStep }}" value="{{ $r.recallPct }}" aria-valuetext="{{ $r.recallPct }}%">
+        </label>
+      </div>
+    </details>
+
+    <div class="ib-controls">
+      <label class="ib-range-label">
+        <span class="ib-range-text">{{ $c.stepLabel }}</span>
+        <span class="ib-range-out" data-ib-step-out>{{ $r.stepPct }}%</span>
+        <span class="ib-range-slot" data-ib-step-slot aria-hidden="true"><span class="ib-range-slot-track"><span class="ib-range-slot-thumb" style="left:{{ $r.stepThumb }}%"></span></span></span>
+        <input class="ib-range" type="range" data-ib-step-range hidden min="0" max="100" step="{{ $probStep }}" value="{{ $r.stepPct }}" aria-valuetext="{{ $r.stepPct }}%">
+      </label>
+      <label class="ib-range-label">
+        <span class="ib-range-text">{{ $c.stepsLabel }}</span>
+        <span class="ib-range-out" data-ib-steps-out>{{ $r.n }}</span>
+        <span class="ib-range-slot" data-ib-steps-slot aria-hidden="true"><span class="ib-range-slot-track"><span class="ib-range-slot-thumb" style="left:{{ $r.stepsThumb }}%"></span></span></span>
+        <input class="ib-range" type="range" data-ib-steps-range hidden min="{{ $m.stepsMin }}" max="{{ $m.stepsMax }}" step="1" value="{{ $r.n }}">
+      </label>
+    </div>
+
+    <p class="ib-live" data-ib-live aria-live="polite"></p>
+  </section>
+  {{- end }}
+
+  {{- /* Read-only reference from the same spec data. No runtime selectors,
+       no ids: the upgrade never touches this element or its open state. */}}
+  <details class="ib-reference">
+    <summary>{{ $c.referenceTitle }}</summary>
+    <table class="ib-ref-table">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.table.scenario }}</th>
+          <th scope="col">{{ $c.table.stepRate }}</th>
+          <th scope="col">{{ $c.table.steps }}</th>
+          <th scope="col">{{ $c.table.plain }}</th>
+          <th scope="col">{{ $c.table.checkpoint }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $s := $ordered }}
+        {{- $r := partial $compute (dict "model" $m "scenario" $s) -}}
+        <tr>
+          <th scope="row">{{ index $c.scenarioLabels $s.id }}</th>
+          <td>{{ $r.stepPct }}%</td>
+          <td>{{ $r.n }}</td>
+          <td>{{ $r.plainRate }}</td>
+          <td>{{ $r.cpRate }}</td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
+    <p class="ib-expr">{{ $defR.expr }}</p>
+    <table class="ib-ref-table">
+      <thead>
+        <tr>
+          <th scope="col">{{ $c.curveTable.steps }}</th>
+          <th scope="col">{{ $c.curveTable.result }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{- range $n := $defR.sampleNs }}
+        {{- $sr := partial $compute (dict "model" $m "scenario" (dict "stepPermille" $def.stepPermille "steps" $n "recallPermille" $def.recallPermille)) -}}
+        <tr>
+          <th scope="row">{{ $n }}</th>
+          <td>{{ $sr.plainRate }}</td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
+  </details>
+
+  <p class="ib-observe">{{ $c.observe }}</p>
+  {{- partial "interactive/figure-foot.html" (dict "spec" .spec "lang" .lang) -}}
+</blog-reliability-chain>

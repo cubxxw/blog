@@ -235,6 +235,12 @@ spec:
 - ApplicationSet 生成的 Application，应修改 ApplicationSet 模板或按官方方法临时控制自动同步，而不是直接改子对象；
 - **启用自动同步的 Application 不能直接执行 Argo CD rollback。**
 
+把四个决定分开的最好办法，是让它们各自可拨动：切换 autoSync、selfHeal、prune，再对同一份差异按下手动同步或历史回滚：
+
+{{< interactive kind="gitops-reconcile" id="argocd-reconcile" spec="gitops-reconcile-v1" >}}
+
+盯住两个彼此独立的读数：**同步状态**只回答 Git 与集群差不差，**健康状态**由独立的 health assessment 供给，任何开关都不会制造健康恢复。selfHeal 只针对集群内的手工漂移；prune 不开启时，Git 删除的资源会一直留在集群、在差异里挂着；启用自动同步后，历史回滚被直接拒绝——与上面四条约束一一对应。
+
 ### 回滚有两条路，含义不同
 
 `argocd app rollback APP [HISTORY_ID]` 可以回到某次部署历史，但前提是先关闭自动同步。更重要的是，历史回滚如果没有同步修改 Git，下一次调和仍可能把旧状态拉回当前期望状态。

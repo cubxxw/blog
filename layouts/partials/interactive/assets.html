@@ -25,5 +25,55 @@
     {{- $js := resources.Get "js/components/agent-loop.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 <script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "session-tree" -}}
+    {{- $css := resources.Get "css/components/session-tree.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/session-tree.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "session-scope" -}}
+    {{- $css := resources.Get "css/components/session-scope.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/session-scope.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "memory-lineage" -}}
+    {{- $css := resources.Get "css/components/memory-lineage.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/memory-lineage.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "effect-recovery" -}}
+    {{- $css := resources.Get "css/components/effect-recovery.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/effect-recovery.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "gitops-reconcile" -}}
+    {{- $css := resources.Get "css/components/gitops-reconcile.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/gitops-reconcile.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "reliability-chain" -}}
+    {{- $css := resources.Get "css/components/reliability-chain.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/reliability-chain.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "task-cost" -}}
+    {{- $css := resources.Get "css/components/task-cost.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/task-cost.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "notification-threshold" -}}
+    {{- $css := resources.Get "css/components/notification-threshold.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/notification-threshold.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "vector-cosine" -}}
+    {{- $css := resources.Get "css/components/vector-cosine.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/vector-cosine.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+  {{- else if eq . "flow-bottleneck" -}}
+    {{- $css := resources.Get "css/components/flow-bottleneck.css" | minify | fingerprint -}}
+    {{- $js := resources.Get "js/components/flow-bottleneck.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
   {{- end -}}
 {{- end -}}

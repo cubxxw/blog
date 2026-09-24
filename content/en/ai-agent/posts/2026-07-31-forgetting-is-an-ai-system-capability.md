@@ -107,6 +107,12 @@ The real challenge is that many existing memory stacks don’t preserve lineage 
 
 Therefore, deletion capability must be designed at the point of writing. Every derived memory must carry source IDs, generation strategies, and versions; each retrieval and re-summarization preserves minimal dependency graphs; caches have explicit lifespans. Without source relationships, the right to forget is merely a promise at the interface.
 
+The example below uses fictional data to show how a deletion request affects derived memories. Change the sources to remove, then compare what disappears, what needs recomputing, and which copies remain unverified.
+
+{{< interactive kind="memory-lineage" id="memory-lineage" spec="memory-lineage-v1" >}}
+
+Watch the final stop: no matter which sources the request covers, the untraced chat summary, the model-provider cache, and the backups stay "not provably erased." Invalidation is not verified physical deletion—exactly why retraction must be designed at write time.
+
 ## A Five-Layer Decay Mechanism
 
 If designing memory for long-term agents, I would categorize it into five types—not a single vector database:

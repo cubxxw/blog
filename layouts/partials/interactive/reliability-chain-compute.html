@@ -1,0 +1,100 @@
+{{- /* reliability-chain-compute — SSR math identical to computeChain /
+       curvePoints / explainKey / formatExpression / formatPlan in
+       assets/js/components/reliability-chain-model.mjs. Input: model +
+       scenario (stepPermille, steps, recallPermille — already schema
+       validated). Returns display strings and curve geometry so the panel,
+       the readout and the reference never re-derive the math.
+
+         plain      = p^n
+         segment q  = p^k   (k steps of this segment, short final segment)
+         segment s  = q + (1-q)*r*q   (exactly ONE retry, no false
+                      positives, perfect rollback — assumptions documented
+                      in copy, never implied here)
+         checkpoint = product of s over ALL segments
+         attempts   = sum of 1 + (1-q)*r   (planning/cost proxy that
+                      schedules ALL segments — a run plan, not fail-fast
+                      runtime cost) */ -}}
+{{- $m := .model -}}
+{{- $s := .scenario -}}
+{{- $pml := $s.stepPermille -}}
+{{- $n := int $s.steps -}}
+{{- $rml := $s.recallPermille -}}
+{{- /* stepsMin/Max/stepsPerSegment are schema-validated integers, but Hugo
+       decodes JSON numbers as float64: cast BEFORE any index/sample
+       arithmetic so div truncates exactly like JS Math.floor (a float span
+       divided by 4 would emit fractional sample step counts). */ -}}
+{{- $smin := int $m.stepsMin -}}
+{{- $smax := int $m.stepsMax -}}
+{{- $span := sub $smax $smin -}}
+{{- $p := div (mul $pml 1.0) 1000.0 -}}
+{{- $r := div (mul $rml 1.0) 1000.0 -}}
+{{- $plain := math.Pow $p $n -}}
+{{- $k := int $m.stepsPerSegment -}}
+{{- $segCount := div (add $n (sub $k 1)) $k -}}
+{{- $cp := 1.0 -}}
+{{- $att := 0.0 -}}
+{{- $segRate := 1.0 -}}
+{{- $plan := slice -}}
+{{- range $i := seq $segCount -}}
+  {{- $left := sub $n (mul (sub $i 1) $k) -}}
+  {{- $segSteps := $k -}}
+  {{- if lt $left $k }}{{ $segSteps = $left }}{{ end -}}
+  {{- $plan = $plan | append $segSteps -}}
+  {{- $q := math.Pow $p $segSteps -}}
+  {{- $ss := add $q (mul (mul (sub 1.0 $q) $r) $q) -}}
+  {{- if eq $i 1 }}{{ $segRate = $ss }}{{ end -}}
+  {{- $cp = mul $cp $ss -}}
+  {{- $att = add $att (add 1.0 (mul (sub 1.0 $q) $r)) -}}
+{{- end -}}
+
+{{- $key := "steep" -}}
+{{- if ge $plain 0.9 }}{{ $key = "mild" -}}
+{{- else if ge $plain 0.5 }}{{ $key = "moderate" }}{{ end -}}
+
+{{- /* Curve geometry: 48 samples across [stepsMin, stepsMax] on the fixed
+       viewBox 0 0 320 150 reference (x0 36 → x1 310, y0 10 → y1 124).
+       Sample step counts use integer division like curveSamples in the
+       model (min, min+⌊d/4⌋, min+⌊d/2⌋, min+⌊3d/4⌋, max). */ -}}
+{{- $count := 48 -}}
+{{- $pts := slice -}}
+{{- range $i := seq $count -}}
+  {{- $idx := sub $i 1 -}}
+  {{- $xn := add $smin (math.Round (div (mul (mul $idx 1.0) $span) (sub $count 1))) -}}
+  {{- $yv := math.Pow $p $xn -}}
+  {{- $x := add 36.0 (mul (div (sub $xn $smin) (mul $span 1.0)) 274.0) -}}
+  {{- $y := add 10.0 (mul (sub 1.0 $yv) 114.0) -}}
+  {{- $pts = $pts | append (printf "%.2f,%.2f" $x $y) -}}
+{{- end -}}
+{{- $dotX := add 36.0 (mul (div (sub $n $smin) (mul $span 1.0)) 274.0) -}}
+{{- $dotY := add 10.0 (mul (sub 1.0 $plain) 114.0) -}}
+
+{{- $fmt := "interactive/reliability-chain-format.html" -}}
+{{- $pdec := partial $fmt (dict "mode" "pdec" "value" $pml) -}}
+{{- $frac := partial $fmt (dict "mode" "frac" "value" $plain) -}}
+{{- $rate := partial $fmt (dict "mode" "rate" "value" $plain) -}}
+{{- return (dict
+      "expr" (printf "%s^%d = %s (%s)" $pdec (int $n) $frac $rate)
+      "pdec" $pdec
+      "n" (int $n)
+      "rate" $rate
+      "plainRate" $rate
+      "cpRate" (partial $fmt (dict "mode" "rate" "value" $cp))
+      "segRate" (partial $fmt (dict "mode" "rate" "value" $segRate))
+      "att" (partial $fmt (dict "mode" "num2" "value" $att))
+      "plan" (delimit $plan " / ")
+      "key" $key
+      "stepPct" (printf "%g" (div (mul $pml 1.0) 10.0))
+      "stepThumb" (printf "%.4f" (div (mul $pml 1.0) 10.0))
+      "recallPct" (printf "%g" (div (mul $rml 1.0) 10.0))
+      "recallThumb" (printf "%.4f" (div (mul $rml 1.0) 10.0))
+      "stepsThumb" (printf "%.4f" (mul (div (sub $n $smin) (mul $span 1.0)) 100.0))
+      "curvePoints" (delimit $pts " ")
+      "dotX" (printf "%.2f" $dotX)
+      "dotY" (printf "%.2f" $dotY)
+      "sampleNs" (slice
+        $smin
+        (add $smin (div $span 4))
+        (add $smin (div $span 2))
+        (add $smin (div (mul $span 3) 4))
+        $smax)
+    ) -}}
