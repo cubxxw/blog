@@ -1,234 +1,245 @@
 #!/usr/bin/env node
-// PageSpeed Insights daily snapshot.
+// PageSpeed Insights observation collector (schema psi-snapshot/2).
 //
-// Runs PSI v5 against the same 12 key URLs Lighthouse CI checks, once per
-// strategy (mobile + desktop), and writes a slim JSON to
-// data/seo/psi-YYYY-MM-DD.json. The point isn't to duplicate LHCI — LHCI
-// tells us how the artifact renders on a synthetic runner; PSI's field data
-// (loadingExperience) is real-user CrUX from actual visitors, which is what
-// Google Search actually ranks on.
+// Runs PSI v5 against the URLs Lighthouse CI checks (lighthouserc.json), once
+// per strategy (mobile + desktop), and writes an immutable JSON observation to
+// data/seo/psi-YYYY-MM-DD.json (a same-day rerun appends a uniquely named
+// file; nothing is ever overwritten). PSI's field data (loadingExperience) is
+// real-user CrUX from actual visitors; the laboratory scores are synthetic and
+// kept separate from it.
 //
-// PSI free quota is 25,000 requests/day. 12 URLs × 2 strategies = 24
-// requests/day — trivial.
-//
-// URLs come from lighthouserc.json so we have one source of truth.
+// Honesty rules (issue #392):
+//   * metric precision preserved (CLS 0.212 stays 0.212), units explicit,
+//     byte costs separate from millisecond costs, null means unknown;
+//   * planned denominator is the actual configured URL count (URL×strategy,
+//     de-duplicated); every slot reports success/partial/failed explicitly;
+//   * bounded timeout and retry (max 3 attempts) for 429/selected 5xx/network
+//     failures only; non-retryable errors never loop;
+//   * a PSI API HTTP status is never described as the origin's status; CrUX
+//     no-sample stays unknown and independent from laboratory success.
 //
 // Env:
 //   GOOGLE_API_KEY  — API key with PSI API enabled (optional but avoids throttling)
 //
 // Usage:
-//   node scripts/psi-fetch.mjs                # write today's snapshot
+//   node scripts/psi-fetch.mjs                # write today's observation
 //   node scripts/psi-fetch.mjs --dry-run      # log summary, don't write
-//   node scripts/psi-fetch.mjs --out path.json # override output path
+//   node scripts/psi-fetch.mjs --out path.json # explicit output (never overwritten)
+//   node scripts/psi-fetch.mjs --dir data/seo  # output directory
+//   node scripts/psi-fetch.mjs --config lighthouserc.json
+//   node scripts/psi-fetch.mjs --timeout-ms 120000 --max-attempts 3
+//
+// Exit semantics (stable for B2):
+//   0 = run ok        — every planned measurement succeeded with full provenance
+//   2 = run partial   — evidence written, but some slots are partial/failed
+//   1 = run failed    — no usable measurement, or usage/config/IO error
+//                       (a failed run still writes its evidence file when it
+//                       can; exit 1 with no file means config/usage/IO error)
 
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { readFileSync, realpathSync } from 'node:fs';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const OUT_DIR = 'data/seo';
-const ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
-const STRATEGIES = ['mobile', 'desktop'];
-const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
+import { GscError, safeErrorMessage } from './lib/gsc-errors.mjs';
+import {
+  CATEGORIES,
+  MAX_ATTEMPTS,
+  PSI_SNAPSHOT_SCHEMA,
+  STRATEGIES,
+  DEFAULT_TIMEOUT_MS,
+  measureOne,
+  planMeasurements,
+  summarizeEntries,
+} from './lib/psi-measure.mjs';
+import { atomicWriteJson, pickObservationPath } from './lib/psi-persist.mjs';
+
 const RATE_LIMIT_MS = 400;
 
-const args = process.argv.slice(2);
-const hasFlag = (name) => args.includes(name);
-const flagValue = (name, fallback) => {
-  const i = args.indexOf(name);
-  return i !== -1 ? args[i + 1] : fallback;
-};
-
-const DRY_RUN = hasFlag('--dry-run');
-const API_KEY = process.env.GOOGLE_API_KEY || '';
-
-const runDate = new Date().toISOString().slice(0, 10);
-const OUT_PATH = flagValue('--out', `${OUT_DIR}/psi-${runDate}.json`);
-
-const URLS = JSON.parse(readFileSync('lighthouserc.json', 'utf8')).ci.collect.url;
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-function buildUrl(url, strategy) {
-  const params = new URLSearchParams();
-  params.set('url', url);
-  params.set('strategy', strategy);
-  for (const c of CATEGORIES) params.append('category', c);
-  if (API_KEY) params.set('key', API_KEY);
-  return `${ENDPOINT}?${params.toString()}`;
-}
-
-function pickMetric(audits, id) {
-  const a = audits?.[id];
-  if (!a) return null;
-  return {
-    displayValue: a.displayValue ?? null,
-    numericValue: typeof a.numericValue === 'number' ? Math.round(a.numericValue) : null,
-    score: typeof a.score === 'number' ? a.score : null,
+export function parseCliArgs(argv) {
+  const opts = {
+    dryRun: false,
+    out: null,
+    dir: 'data/seo',
+    config: 'lighthouserc.json',
+    timeoutMs: DEFAULT_TIMEOUT_MS,
+    maxAttempts: MAX_ATTEMPTS,
+    help: false,
   };
-}
-
-function pickFieldData(le) {
-  if (!le || !le.metrics) return null;
-  const out = {};
-  for (const [k, v] of Object.entries(le.metrics)) {
-    out[k] = {
-      percentile: v.percentile ?? null,
-      category: v.category ?? null,
-    };
-  }
-  return {
-    overall_category: le.overall_category ?? null,
-    metrics: out,
-  };
-}
-
-// Pull the actual LCP element (selector + short snippet) out of the
-// `largest-contentful-paint-element` audit. Without this, all we get is a
-// number like "16.4 s" with no idea which element is late. Structure varies
-// slightly between Lighthouse versions — we defensively walk both shapes.
-function pickLcpElement(audits) {
-  const a = audits?.['largest-contentful-paint-element'];
-  if (!a) return null;
-  const items = a.details?.items || [];
-  // v11: [{ items: [ { node: { selector, nodeLabel, snippet } } ] }, { phases }]
-  // fall back: direct { node: {...} } items on the top level.
-  let node = null;
-  for (const it of items) {
-    if (it?.node?.selector) { node = it.node; break; }
-    if (Array.isArray(it?.items)) {
-      const sub = it.items.find((x) => x?.node?.selector);
-      if (sub) { node = sub.node; break; }
+  const valueOf = (flag, i) => {
+    const v = argv[i + 1];
+    if (v === undefined || v.startsWith('--')) {
+      throw new GscError(`Missing value for ${flag}.`, { kind: 'cli' });
     }
-  }
-  if (!node) return null;
-  return {
-    selector: node.selector || null,
-    nodeLabel: node.nodeLabel || null,
-    snippet: typeof node.snippet === 'string' ? node.snippet.slice(0, 240) : null,
+    return v;
   };
-}
-
-// Top opportunities by wasted-ms. Lighthouse groups these under
-// `opportunity` details type. We rank by numericValue (ms) so the
-// biggest LCP/FCP wins bubble up first.
-function pickOpportunities(audits, limit = 3) {
-  const ids = [
-    'render-blocking-resources',
-    'unused-css-rules',
-    'unused-javascript',
-    'unminified-css',
-    'unminified-javascript',
-    'uses-text-compression',
-    'uses-optimized-images',
-    'uses-responsive-images',
-    'offscreen-images',
-    'modern-image-formats',
-    'efficient-animated-content',
-    'total-byte-weight',
-    'server-response-time',
-    'redirects',
-  ];
-  const out = [];
-  for (const id of ids) {
-    const a = audits?.[id];
-    if (!a) continue;
-    const wasted = typeof a.numericValue === 'number' ? Math.round(a.numericValue) : null;
-    if (!wasted || wasted <= 0) continue;
-    if (typeof a.score === 'number' && a.score >= 0.9) continue;
-    out.push({
-      id,
-      title: a.title || null,
-      wastedMs: wasted,
-      displayValue: a.displayValue || null,
-    });
-  }
-  return out.sort((x, y) => y.wastedMs - x.wastedMs).slice(0, limit);
-}
-
-async function runOne(url, strategy) {
-  const endpoint = buildUrl(url, strategy);
-  const res = await fetch(endpoint);
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`PSI ${strategy} ${url} → ${res.status}: ${text.slice(0, 200)}`);
-  }
-  const json = await res.json();
-  const lhr = json.lighthouseResult || {};
-  const cats = lhr.categories || {};
-  const audits = lhr.audits || {};
-  return {
-    url,
-    strategy,
-    finalUrl: lhr.finalDisplayedUrl || lhr.finalUrl || url,
-    fetchTime: lhr.fetchTime || null,
-    categories: {
-      performance:      cats.performance?.score ?? null,
-      accessibility:    cats.accessibility?.score ?? null,
-      'best-practices': cats['best-practices']?.score ?? null,
-      seo:              cats.seo?.score ?? null,
-    },
-    metrics: {
-      LCP: pickMetric(audits, 'largest-contentful-paint'),
-      FCP: pickMetric(audits, 'first-contentful-paint'),
-      CLS: pickMetric(audits, 'cumulative-layout-shift'),
-      TBT: pickMetric(audits, 'total-blocking-time'),
-      SI:  pickMetric(audits, 'speed-index'),
-      TTI: pickMetric(audits, 'interactive'),
-    },
-    // loadingExperience = real-user CrUX data; the whole reason to hit PSI
-    // instead of just running Lighthouse in CI.
-    fieldData: pickFieldData(json.loadingExperience),
-    originFieldData: pickFieldData(json.originLoadingExperience),
-    // Which element is the LCP + which audits leak the most wasted-ms.
-    // Cheap to store, saves a manual round of guessing when a page regresses.
-    diagnostics: {
-      lcpElement: pickLcpElement(audits),
-      opportunities: pickOpportunities(audits),
-    },
-  };
-}
-
-async function main() {
-  const results = [];
-  const failures = [];
-  for (const url of URLS) {
-    for (const strategy of STRATEGIES) {
-      try {
-        const row = await runOne(url, strategy);
-        const perf = row.categories.performance;
-        console.log(`  ${strategy.padEnd(7)} ${perf == null ? '  —' : Math.round(perf * 100).toString().padStart(3)}  ${url}`);
-        results.push(row);
-      } catch (err) {
-        console.warn(`  ${strategy.padEnd(7)} FAIL ${url}: ${err.message}`);
-        failures.push({ url, strategy, error: err.message });
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    switch (arg) {
+      case '--dry-run': opts.dryRun = true; break;
+      case '--out': opts.out = valueOf(arg, i); i += 1; break;
+      case '--dir': opts.dir = valueOf(arg, i); i += 1; break;
+      case '--config': opts.config = valueOf(arg, i); i += 1; break;
+      case '--timeout-ms': {
+        const v = Number(valueOf(arg, i));
+        if (!Number.isInteger(v) || v <= 0) throw new GscError(`Invalid --timeout-ms: ${valueOf(arg, i)}`, { kind: 'cli' });
+        opts.timeoutMs = v;
+        i += 1;
+        break;
       }
-      await sleep(RATE_LIMIT_MS);
+      case '--max-attempts': {
+        const v = Number(valueOf(arg, i));
+        if (!Number.isInteger(v) || v < 1 || v > MAX_ATTEMPTS) {
+          throw new GscError(`Invalid --max-attempts: expected integer 1..${MAX_ATTEMPTS}, received ${valueOf(arg, i)}`, { kind: 'cli' });
+        }
+        opts.maxAttempts = v;
+        i += 1;
+        break;
+      }
+      case '--help': case '-h': opts.help = true; break;
+      default:
+        throw new GscError(`Unknown argument: ${arg} (see --help).`, { kind: 'cli' });
     }
   }
-
-  const snapshot = {
-    meta: {
-      fetchedAt: new Date().toISOString(),
-      runDate,
-      strategies: STRATEGIES,
-      categories: CATEGORIES,
-      urls: URLS.length,
-      failures: failures.length,
-    },
-    failures,
-    results,
-  };
-
-  if (DRY_RUN) {
-    console.log(`--dry-run: would write ${OUT_PATH} (${results.length} results, ${failures.length} failures)`);
-    return;
-  }
-
-  mkdirSync(dirname(OUT_PATH), { recursive: true });
-  writeFileSync(OUT_PATH, JSON.stringify(snapshot, null, 2) + '\n');
-  console.log(`Wrote ${OUT_PATH} (${results.length} results, ${failures.length} failures)`);
+  return opts;
 }
 
-main().catch((err) => {
-  console.error(err.stack || err.message);
-  process.exit(1);
-});
+// The configured URL list is read from the LHCI config so there is one source
+// of truth. The planned denominator is the actual configured count after
+// URL×strategy de-duplication — never a hard-coded number.
+export function readConfiguredUrls(configPath, { fs } = {}) {
+  const read = fs?.readFileSync ?? readFileSync;
+  let json;
+  try {
+    json = JSON.parse(read(configPath, 'utf8'));
+  } catch (err) {
+    throw new GscError(`Cannot read URL config ${configPath}: ${safeErrorMessage(err)}`, { kind: 'config' });
+  }
+  const urls = json?.ci?.collect?.url;
+  if (!Array.isArray(urls) || urls.length === 0) {
+    throw new GscError(`URL config ${configPath} has no ci.collect.url list; refusing to guess an empty denominator.`, { kind: 'config' });
+  }
+  return urls;
+}
+
+export function buildSnapshot({ plan, entries, meta }) {
+  const { counts, runStatus } = summarizeEntries({ planned: plan.planned, entries });
+  return {
+    schema: PSI_SNAPSHOT_SCHEMA,
+    meta: {
+      runDate: meta.runDate,
+      startedAt: meta.startedAt,
+      endedAt: meta.endedAt,
+      // Observation timestamp for as-of eligibility (actual fetch completion).
+      fetchedAt: meta.endedAt,
+      endpoint: meta.endpoint,
+      apiKeyProvided: meta.apiKeyProvided,
+      urlConfig: meta.urlConfig,
+      configuredUrlCount: plan.configuredUrlCount,
+      urlCount: plan.urlCount,
+      duplicatesRemoved: plan.duplicatesRemoved,
+      strategies: plan.strategies,
+      categories: meta.categories,
+      timeoutMs: meta.timeoutMs,
+      maxAttempts: meta.maxAttempts,
+      planned: plan.planned,
+      counts,
+      runStatus,
+      error: meta.error ?? null,
+    },
+    measurements: entries,
+  };
+}
+
+export async function main(argv = process.argv.slice(2), deps = {}) {
+  const log = deps.log ?? console.log;
+  const warn = deps.warn ?? console.warn;
+  const errorLog = deps.errorLog ?? console.error;
+  const sleep = deps.sleep ?? ((ms) => new Promise((r) => setTimeout(r, ms)));
+  try {
+    const opts = parseCliArgs(argv);
+    if (opts.help) {
+      log('Usage: node scripts/psi-fetch.mjs [--dry-run] [--out path] [--dir data/seo] [--config lighthouserc.json] [--timeout-ms ms] [--max-attempts 1..3]');
+      log('Exit: 0 = all planned measurements succeeded; 2 = partial (evidence written); 1 = failed run or usage/config/IO error.');
+      return 0;
+    }
+    // One callable clock default (P1-1: `new Date` alone is not callable).
+    const now = deps.now ?? (() => new Date());
+    const startedAt = now().toISOString();
+    const runDate = startedAt.slice(0, 10); // frozen once per run
+    const urls = readConfiguredUrls(opts.config, { fs: deps.fs });
+    const plan = planMeasurements({ urls, strategies: STRATEGIES });
+
+    const entries = [];
+    for (const slot of plan.planned) {
+      const entry = await measureOne(slot, {
+        fetchImpl: deps.fetchImpl,
+        sleep,
+        timeoutMs: opts.timeoutMs,
+        maxAttempts: opts.maxAttempts,
+        apiKey: deps.apiKey ?? process.env.GOOGLE_API_KEY ?? '',
+        categories: CATEGORIES,
+        backoffMs: deps.backoffMs,
+      });
+      const perf = entry.scores?.performance;
+      const label = perf == null ? (entry.finalStatus === 'failed' ? `FAIL(${entry.reasonCategory})` : entry.finalStatus) : Math.round(perf * 100).toString().padStart(3);
+      log(`  ${slot.strategy.padEnd(7)} ${label}  ${slot.url}`);
+      if (entry.error) warn(`    ${entry.error}`); // fixed classification text only
+      entries.push(entry);
+      if (deps.rateLimitMs !== 0) await sleep(deps.rateLimitMs ?? RATE_LIMIT_MS);
+    }
+
+    const endedAt = now().toISOString();
+    const snapshot = buildSnapshot({
+      plan,
+      entries,
+      meta: {
+        runDate,
+        startedAt,
+        endedAt,
+        endpoint: 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed',
+        apiKeyProvided: Boolean(deps.apiKey ?? process.env.GOOGLE_API_KEY ?? ''),
+        urlConfig: opts.config,
+        categories: CATEGORIES,
+        timeoutMs: opts.timeoutMs,
+        maxAttempts: opts.maxAttempts,
+      },
+    });
+
+    const c = snapshot.meta.counts;
+    const summary = `${c.succeeded} succeeded, ${c.partial} partial, ${c.failed} failed of ${c.planned} planned (${snapshot.meta.runStatus})`;
+    if (opts.dryRun) {
+      log(`--dry-run: would write observation (${summary})`);
+      return snapshot.meta.runStatus === 'ok' ? 0 : (snapshot.meta.runStatus === 'partial' ? 2 : 1);
+    }
+
+    const outPath = pickObservationPath({
+      prefix: 'psi',
+      runDate,
+      out: opts.out,
+      dir: opts.dir,
+      now: new Date(startedAt),
+      exists: deps.exists,
+      random: deps.random,
+    });
+    atomicWriteJson(outPath, snapshot, { fs: deps.fs, random: deps.random });
+    log(`Wrote ${outPath} (${summary})`);
+    return snapshot.meta.runStatus === 'ok' ? 0 : (snapshot.meta.runStatus === 'partial' ? 2 : 1);
+  } catch (err) {
+    errorLog(safeErrorMessage(err));
+    return 1;
+  }
+}
+
+function isMainModule() {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1]);
+  } catch {
+    return false;
+  }
+}
+
+if (isMainModule()) {
+  main().then((code) => {
+    process.exitCode = code;
+  });
+}
