@@ -80,6 +80,20 @@ Ruby Psych 对修改前示例重现语法、重复键及旧版本问题；修改
 
 `debd55e2` 推送后，四个中英文页面的稳定线上复查全部通过：均为目标 URL 直接 200，正文包含修正后的示例且不再含对应错误字段或 artifact v3。未取得精确部署 SHA，不以页面行为证明全部 CI 已通过。
 
+### Hugo 摘要与正文范围对齐（#394，待发布）
+
+英文摘要原来只有 `hugo advanced tutorial`，中文摘要则承诺正文没有充分展开的性能优化、部署和 GitHub 持续部署内容。本轮把两种语言的摘要对齐到实际章节：模块挂载、Go 模板、查找顺序、列表与分页、shortcode、i18n 和 data 文件；标题、日期和 URL 保持原样。
+
+另修正英文首个模块 YAML 示例的 `proxy:direct`，使其成为合法的 `proxy: direct`。Ruby Psych 在修改前复现语法错误，修改后确认中英文对应示例均可解析、值一致；这不是 Hugo 模块下载或生产配置的执行证明。front matter、标签、中文风格（0 错误、0 警告）和 diff 检查通过。
+
+这是页面摘要的准确性维护，尚未使用新的 query×page 数据选定搜索实验，也不声称 Google 已采用摘要或点击改善。正文旧版模板查找规则和示例时效仍待后续针对性核验，摘要更新不能替代整篇教程验收。
+
+### 项目文章示例执行核验（#397）
+
+从中英文 LangGraph 文章原样提取唯一 Python 示例，在独立 Python 3.12.14 环境安装固定的 [LangGraph 1.2.12](https://pypi.org/project/langgraph/1.2.12/) 后执行。每种语言 7 项断言通过：初次运行中断并保留草稿、同一线程恢复、audit 追加、结束状态、拒绝结果记录和线程隔离。执行时未传入模型或 LangSmith 凭据，网络审计记录为 0 次连接尝试；输出均为 `['drafted', 'human_approved=True']`。
+
+这只验证原示例的进程内状态与暂停/恢复行为，不证明生产重启恢复、模型质量或 SEO 成效。文章已明确 `InMemorySaver` 的边界，本轮没有改写示例、标题或作者判断。完整依赖版本及源文件/代码块 SHA-256 已保留在本任务证据中，后续内容实验可据此标注测试环境。
+
 ### 最新定时采集的实际状态（#391 / #392）
 
 [Snapshot 35989281749](https://github.com/cubxxw/blog/actions/runs/35989281749) 已完成并提交 `c209ffee`。实际读回 GSC 文件：2026-09-24 11:50:56 UTC 获取 9 月 19–21 日的旧格式数据，包含 179 条 date-query、643 条 date-page，尚无 query×page。既有 CI 认证可用，新采集实现仍需发布后验证。
@@ -92,7 +106,7 @@ Ruby Psych 对修改前示例重现语法、重复键及旧版本问题；修改
 - Search Console UI 已成功读回：当前 Chrome 登录账号没有 `sc-domain:cubxxw.com` 访问权限，且该会话仅有一个已登录账号。已请求作者指出可访问的既有浏览器资料或切换账号，没有申请新权限或修改 GSC 设置。本机没有 GSC/API 环境凭据。2026-09-24 定时 Snapshot 的实际数据已证明既有 CI 账号可读取 GSC，但这不解决交互界面账号权限。新采集器的 query×page/56 天采集、UI 同口径总量、11 类索引导出、URL Inspection 与迁移设置仍待核验。
 - #395 固定条件的前后各三次性能测量、LCP/CLS 原因与改进；尚未宣称分数提升。
 - #394/#396/#397 依赖 page-query 的内容实验、作者内容终审和重新抓取后的 28 天观察；没有新文章发布。
-- 已推送 `origin/main`：`eb9a28d7`（交付合同）、`0d1343a3`（日报文字完整性）、`105905c2`（完整摘要）、`945d153f`（UFO 规范路径）、`debd55e2`（教程示例）、`935cdbe3`（四条 alias 强制跳转）。`105905c2` 的 Blog Build Check、Lighthouse、Sitemap Ping、README 更新已通过；`935cdbe3` 的 README 更新与 Sitemap Ping 已通过，Blog Build Check 与 Pages 整体仍在排队，Lighthouse 被后续提交取消不算通过。已快进保留并行 #389 的 `a47babe0`、`82cdc0e2` 及定时数据提交 `c209ffee`；`82cdc0e2` 的构建、Lighthouse、Pages 与 README 仍在排队或等待，未修改 #389 的工作区。
+- 已推送 `origin/main`：`eb9a28d7`（交付合同）、`0d1343a3`（日报文字完整性）、`105905c2`（完整摘要）、`945d153f`（UFO 规范路径）、`debd55e2`（教程示例）、`935cdbe3`（四条 alias 强制跳转）。`105905c2` 的 Blog Build Check、Lighthouse、Sitemap Ping、README 更新已通过；`935cdbe3` 的 Build、Pages、README 与 Sitemap Ping 已通过，其 Lighthouse 被后续提交取消不算通过。已快进保留并行 #389 的 `a47babe0`、`82cdc0e2` 及定时数据提交 `c209ffee`；截至 2026-09-24 12:28 UTC，`82cdc0e2` 的构建、Lighthouse、GitHub Pages 与 README 全部通过，覆盖既有小修复。未修改 #389 的工作区。A 的本地提交 `c5fa8860` 尚未推送，不在这些 CI 结果的覆盖范围内。
 - 线上英文 GitHub Actions 文章已读回 222 字符完整 description，与修复后的模板行为一致。尚无部署 SHA 证明，因此这只证明该页面的渲染行为，不能代替指定提交的部署验收。没有关闭任何子任务。
 
 ## Pi 运行状态

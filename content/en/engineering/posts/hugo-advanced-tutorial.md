@@ -11,7 +11,7 @@ tags:
   - Blog
   - Hugo
 description: >
-    hugo advanced tutorial
+  A reference for developers maintaining Hugo sites and themes, covering module mounts, Go template scope and pipelines, template lookup, lists and pagination, shortcodes, i18n, and reusable data files.
 tldr:
   - "Hugo templates leverage Go's html/template with automatic HTML escaping and pipeline syntax, where dot notation manages context through hierarchical data access."
   - "Hugo selects templates using specificity rules based on type, layout, output format, language, and section to render home pages, single pages, sections, and taxonomies."
@@ -55,7 +55,7 @@ module:
    noProxy: none
    noVendor: ""
    private: '*.*'
-   proxy:direct
+   proxy: direct
    replacements: ""
    workspace: "off"
 ```
