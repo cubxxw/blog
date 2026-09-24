@@ -263,8 +263,11 @@ blog-session-tree .ib-select {
   height: 44px;
   /* Reserve the native select's box before enhancement. Its longest option
      otherwise makes it wider than the leaf-only slot and wraps the label. */
-  width: 16rem;
+  width: min(16rem, 100%);
   max-width: 100%;
+  /* Keep long English options inside WebKit's native control at 320px. */
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 0.35rem 0.6rem;
   border: 1px solid var(--color-rule, rgba(30, 35, 30, 0.25));
   border-radius: 8px;

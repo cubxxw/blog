@@ -28,10 +28,10 @@ async function expectPrintableReference(reference: Locator) {
 
 // Article-level contract, separate from each component's detailed behavior suite.
 const articles = [
-  ['ai-agent', 'agent-system-design-pi', 'session-tree', false],
-  ['ai-agent', 'agent-system-design-openclaw', 'session-scope', false],
+  ['ai-agent', 'agent-system-design-pi', 'session-tree', true],
+  ['ai-agent', 'agent-system-design-openclaw', 'session-scope', true],
   ['ai-agent', '2026-07-31-forgetting-is-an-ai-system-capability', 'memory-lineage', true],
-  ['ai-agent', 'agent-system-design-n8n', 'effect-recovery', false],
+  ['ai-agent', 'agent-system-design-n8n', 'effect-recovery', true],
   ['ai-agent', 'langgraph', 'effect-recovery', true],
   ['engineering', 'argo-cd', 'gitops-reconcile', true],
   ['ai-agent', 'prompt-loop-engineering-practice', 'agent-loop', true],
