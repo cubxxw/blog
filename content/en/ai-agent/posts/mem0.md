@@ -93,7 +93,9 @@ Search begins with semantic vector retrieval. The returned candidates can then r
 - **BM25 keyword boost** rewards lexical overlap after preprocessing. With Qdrant, the OSS migration guide notes that `fastembed` is needed for sparse keyword search; without it, Mem0 logs a warning and falls back without BM25.
 - **Entity boost** extracts entities from the query, matches them against the parallel entity collection, and raises the rank of memories linked to those entities.
 
-These signals are fused into the public score. BM25 and entity matching are boosts, not independent recall channels: they reorder semantic candidates rather than adding arbitrary keyword-only results. If the entity collection or keyword support is unavailable, semantic search still works.
+These signals are fused into the public score. BM25 and entity matching are boosts, not independent recall channels: they reorder semantic candidates rather than adding arbitrary keyword-only results. If the entity collection or keyword support is unavailable, semantic search still works. [Official migration guide](https://docs.mem0.ai/migration/oss-v2-to-v3)
+
+**2026-09-24 edition check**: The `mem0ai==2.2.0` release rejects non-null `add(timestamp=...)` and `search(reference_date=...)` parameters, marking them as Platform-only. This also corrects the Chinese edition's earlier claim of built-in temporal ranking in OSS. Temporal wording, metadata, and application-side reconciliation of old and new facts do not establish built-in temporal retrieval. [2.2.0 release source](https://github.com/mem0ai/mem0/blob/47a69e1e72dc562b6fdd49a9ef892229afc7508a/mem0/memory/main.py)
 
 Entity linking also creates `linked_memory_ids`, which are useful for understanding which memories share an entity. They should not be mistaken for a queryable knowledge graph. The old `relations` response is no longer populated, and there is no OSS traversal API hiding behind the ranking score.
 
@@ -117,6 +119,8 @@ If the product genuinely needs graph traversal—“find every supplier two hops
 ## A minimal, correctly scoped OSS loop
 
 Install and configure providers according to the official quickstart. The essential Python flow is small:
+
+Version check (2026-09-24): this example passes syntax checks and its call arguments match the released source of [`mem0ai==2.2.0`](https://pypi.org/project/mem0ai/2.2.0/). Here, v3 names the memory algorithm, not the Python package's major version. No model, embedding, or storage calls were executed in this check; it does not validate retrieval quality or the complete runtime.
 
 ```python
 from mem0 import Memory
@@ -267,3 +271,5 @@ Good memory is not maximal retention. It is selective continuity under the user�
 4. [Mem0 Platform v2-to-v3 migration](https://docs.mem0.ai/migration/platform-v2-to-v3)
 5. [Mem0 Platform and OSS comparison](https://docs.mem0.ai/platform/platform-vs-oss)
 6. [Mem0 GitHub repository](https://github.com/mem0ai/mem0)
+7. [Mem0 2.2.0 release source: OSS parameters and temporal boundaries](https://github.com/mem0ai/mem0/blob/47a69e1e72dc562b6fdd49a9ef892229afc7508a/mem0/memory/main.py)
+8. [mem0ai 2.2.0 Python package](https://pypi.org/project/mem0ai/2.2.0/)
