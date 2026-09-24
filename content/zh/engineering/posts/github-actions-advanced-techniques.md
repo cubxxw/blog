@@ -494,36 +494,40 @@ jobs:
 
 如果你的作业生成了你想与同一工作流中的另一个作业共享的文件，或者你想保存这些文件以供以后参考，你可以将它们作为工件存储在GitHub中。工件是在构建和测试代码时创建的文件。例如，工件可能包括二进制文件或包文件、测试结果、屏幕截图或日志文件。工件与创建工件的工作流运行相关联，并可由其他作业使用。在一次运行中调用的所有操作和工作流都对该运行的工件具有写访问权限。
 
-例如，您可以创建一个文件，然后将其作为工件上传。
+下面是一个完整工作流：先上传文件，再由同一次运行中的后续作业下载。GitHub.com 已于 2025 年 1 月 30 日停用 artifact actions v3，此处使用 v4。版本边界见 [GitHub 停用公告](https://github.blog/changelog/2024-04-16-deprecation-notice-v3-of-the-artifact-actions/)，跨作业传递方式见[工件文档](https://docs.github.com/en/actions/tutorials/store-and-share-data)。
 
 ```yaml
+name: Share a file between jobs
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
 jobs:
-  example-job:
+  upload:
     name: Save output
+    runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
           expr 1 + 1 > output.log
       - name: Upload output file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: output-log-file
           path: output.log
-```
-
-要从单独的工作流运行中下载工件，您可以使用`actions/download-artifact`操作。例如，您可以下载名为`output-log-file`的工件。
-
-```yaml
-jobs:
-  example-job:
+  download:
+    needs: upload
+    runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: output-log-file
+      - run: cat output.log
 ```
 
-要从同一工作流运行中下载工件，您的下载作业应指定`needs: upload-job-name`，以便在上载作业完成之前不会启动。
+`needs: upload` 让下载作业等上传成功后再启动。若要读取另一次工作流运行的工件，还需提供对应的运行 ID 和有读取权限的 token；仅修改工件名称不够。
 
 有关工件的详细信息，请参见“[将工作流数据存储为工件](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts)。“
 
@@ -1498,3 +1502,8 @@ jobs:
      1. 使用范围创建个人访问令牌（经典）`repo`。有关详细信息，请参阅“[管理您的个人访问令牌](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)”。
      2. 将此个人访问令牌作为秘密存储在您的存储库中。有关存储机密的更多信息，请参阅“[加密的机密](https://docs.github.com/en/actions/security-guides/encrypted-secrets)”。
      3. 在您的工作流程文件中，替换`PERSONAL_ACCESS_TOKEN`为您的密钥名称。
+
+## 参考资料
+
+- [GitHub：通过工件保存和共享工作流数据](https://docs.github.com/en/actions/tutorials/store-and-share-data)
+- [GitHub：artifact actions v3 停用公告](https://github.blog/changelog/2024-04-16-deprecation-notice-v3-of-the-artifact-actions/)

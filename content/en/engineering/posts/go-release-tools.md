@@ -83,10 +83,10 @@ goreleaser release
 
 GoReleaser is also available in our official GoReleaser Action via GitHub Actions.
 
-You can do this by putting YAML configuration into the `.github/workflows/release.yml` file.
+Put this YAML configuration in `.github/workflows/release.yml`, following the [official GoReleaser Action example](https://goreleaser.com/customization/ci/actions/).
 
-```bash
-bashcodename:goreleaser
+```yaml
+name: goreleaser
 
 on:
    push:
@@ -114,7 +114,7 @@ jobs:
        - uses: goreleaser/goreleaser-action@v7
          with:
            # You can choose 'goreleaser' (default) or 'goreleaser-pro'
-           distribution:goreleaser
+           distribution: goreleaser
            version: "~> v2"
            args: release --clean
          env:
@@ -142,15 +142,10 @@ The `GITHUB_TOKEN` permission [only](https://help.github.com/en/actions/configur
 
 If you need to push Homebrew Tap to another repository, then you must create a personal access token that you have access to and add it as the repository's secret. If you created a secret named `GH_PAT`, the steps would be as follows:
 
-```
-yaml
-```
-
 ```yaml
        - name: Run GoReleaser
          uses: goreleaser/goreleaser-action@v7
          with:
-           version: latest
            version: "~> v2"
            args: release --clean
          env:
@@ -2824,3 +2819,7 @@ announce:
 ## Link
 
 - [https://docs.docker.com/engine/reference/commandline/manifest/](https://docs.docker.com/engine/reference/commandline/manifest/)
+
+## References
+
+- [GoReleaser: GitHub Actions workflow and inputs](https://goreleaser.com/customization/ci/actions/)

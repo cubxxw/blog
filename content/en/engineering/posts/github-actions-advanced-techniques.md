@@ -496,36 +496,40 @@ For more information, see "[Workflow Syntax for GitHub Actions](https://docs.git
 
 If your job generates files that you want to share with another job in the same workflow, or you want to save these files for later reference, you can store them as artifacts in GitHub. Artifacts are files created when code is built and tested. For example, artifacts might include binary or package files, test results, screenshots, or log files. Artifacts are associated with the workflow run that created them and can be used by other jobs. All operations and workflows invoked within a run have write access to the run's artifacts.
 
-For example, you can create a file and then upload it as an artifact.
+This complete workflow uploads a file and downloads it in a dependent job in the same run. GitHub.com retired artifact actions v3 on January 30, 2025; the example uses v4. See [GitHub's retirement notice](https://github.blog/changelog/2024-04-16-deprecation-notice-v3-of-the-artifact-actions/) and [artifact documentation](https://docs.github.com/en/actions/tutorials/store-and-share-data).
 
 ```yaml
+name: Share a file between jobs
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
 jobs:
-   example-job:
+   upload:
      name: Save output
+     runs-on: ubuntu-latest
      steps:
        - shell: bash
          run: |
            expr 1 + 1 > output.log
        - name: Upload output file
-         uses: actions/upload-artifact@v3
+         uses: actions/upload-artifact@v4
          with:
            name: output-log-file
            path: output.log
-```
-
-To download artifacts from a separate workflow run, you can use the `actions/download-artifact` action. For example, you can download an artifact named `output-log-file`.
-
-```yaml
-jobs:
-   example-job:
+   download:
+     needs: upload
+     runs-on: ubuntu-latest
      steps:
        - name: Download a single artifact
-         uses: actions/download-artifact@v3
+         uses: actions/download-artifact@v4
          with:
            name: output-log-file
+       - run: cat output.log
 ```
 
-To download artifacts from the same workflow run, your download job should specify `needs: upload-job-name` so that it does not start until the upload job completes.
+`needs: upload` makes the download job wait for the upload to succeed. Downloading from a different workflow run also requires that run's identifier and a token with access to its artifacts; changing only the artifact name is not enough.
 
 For more information about artifacts, see "[Storing Workflow Data as Artifacts](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts)."
 
@@ -1499,3 +1503,8 @@ jobs:
       1. Create a personal access token (classic) `repo` using scope. For more information, see "[Managing your personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access -token)".
       2. Store this personal access token as a secret in your repository. For more information about storing secrets, see "[Encrypted Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)".
       3. In your workflow file, replace `PERSONAL_ACCESS_TOKEN` with your key name.
+
+## References
+
+- [GitHub: Store and share data with workflow artifacts](https://docs.github.com/en/actions/tutorials/store-and-share-data)
+- [GitHub: Retirement of artifact actions v3](https://github.blog/changelog/2024-04-16-deprecation-notice-v3-of-the-artifact-actions/)

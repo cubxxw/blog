@@ -82,10 +82,10 @@ goreleaser release
 
 GoReleaser 还可以通过 [GitHub Actions](https://github.com/features/actions) 在我们的官方 [GoReleaser Action](https://github.com/goreleaser/goreleaser-action) 中使用。
 
-您可以通过将 YAML 配置放入 `.github/workflows/release.yml` 文件中。
+将以下 YAML 配置放入 `.github/workflows/release.yml`，字段含义可对照 [GoReleaser Action 官方示例](https://goreleaser.com/customization/ci/actions/)。
 
-```bash
-bashcodename: goreleaser
+```yaml
+name: goreleaser
 
 on:
   push:
@@ -141,15 +141,10 @@ GoReleaser 需要以下 [权限](https://docs.github.com/en/actions/reference/au
 
 如果你需要将 Homebrew Tap 推送到另一个存储库，那么你必须创建一个有权访问的个人访问令牌，并将其添加为存储库的秘密。如果你创建了一个名为 `GH_PAT` 的秘密，那么步骤将如下：
 
-```
-yaml
-```
-
 ```yaml
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v7
         with:
-          version: latest
           version: "~> v2"
           args: release --clean
         env:
@@ -2824,3 +2819,7 @@ announce:
 ## 链接
 
 - [https://docs.docker.com/engine/reference/commandline/manifest/](https://docs.docker.com/engine/reference/commandline/manifest/)
+
+## 参考资料
+
+- [GoReleaser：GitHub Actions 工作流与输入参数](https://goreleaser.com/customization/ci/actions/)
