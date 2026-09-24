@@ -181,7 +181,9 @@ export function applySection(body, marker, content) {
   const re = new RegExp(
     `${escapeRe(openTag(marker))}[\\s\\S]*?${escapeRe(closeTag(marker))}`,
   );
-  if (re.test(body)) return body.replace(re, block);
+  // Markdown can contain replacement tokens such as $&, $` and $'. A callback
+  // keeps those literal instead of inserting old report sections into the body.
+  if (re.test(body)) return body.replace(re, () => block);
   return `${body.replace(/\s+$/, '')}\n\n${block}\n`;
 }
 
