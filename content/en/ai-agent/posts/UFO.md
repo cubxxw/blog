@@ -1,5 +1,5 @@
 ---
-url: "/projects/UFO/"
+url: "/projects/ufo/"
 title: 'Microsoft UFO³ Explained: From Windows Desktop AgentOS to a Multi-Device Agent Galaxy'
 ShowRssButtonInSectionTermList: true
 date: 2025-05-09T21:30:15+08:00

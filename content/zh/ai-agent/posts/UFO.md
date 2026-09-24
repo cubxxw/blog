@@ -1,5 +1,5 @@
 ---
-url: "/zh/ai-agent/posts/UFO/"
+url: "/zh/ai-agent/posts/ufo/"
 aliases:
   - /zh/projects/UFO/
 title: 'UFO² 桌面 AgentOS：从 Windows 自动化到 UFO³ Galaxy'

@@ -32,10 +32,44 @@
 
 该修复消除本地模板截断；Google 是否采用摘要、点击是否变化尚未观察。
 
+### 全站线上 URL 核验与 UFO 大小写规范地址（#393）
+
+2026-09-24 从主站 sitemap 的 `url/loc` 读取 417 个 URL，以最多四个并发、单请求 20 秒超时逐个 GET。417 个最终响应均为 200，均有非空 description、语言属性与预期索引指令；在这组页面内的翻译互指检查未发现缺失回链。这是 HTTP/HTML 证据，不能证明 Google 已收录。
+
+发现两个 sitemap 地址经过 301 到达小写路径，但最终页面 canonical/hreflang 仍写大写路径：
+
+| sitemap / 原规范地址 | 实际线上 301 终点 |
+|---|---|
+| `/projects/UFO/` | `/projects/ufo/` |
+| `/zh/ai-agent/posts/UFO/` | `/zh/ai-agent/posts/ufo/` |
+
+将两篇文章的显式 `url` 对齐到既有线上小写终点，并使六条历史迁移规则直接到达该终点；原大写规范地址保留两条精确 `301!`。不新增同目录大小写 alias，不改内容、标题、文件名或图片路径。中文已有 `/zh/projects/UFO/` alias 保留；它仍可能经过 HTML refresh，不能称所有历史入口均为单跳 HTTP 301。
+
+依据：[Hugo 显式 URL 不自动规范化](https://gohugo.io/content-management/urls/)、[Netlify 强制重定向与文件 shadowing](https://docs.netlify.com/manage/routing/redirects/redirect-options/)。独立只读审查确认最小方案，部署后仍需检查实际大小写行为。
+
+本地检查：299 条 redirect 规则无重复来源、循环或链；front matter、tags、diff 检查通过；中文风格检查 0 错误，有 1 条原正文既有密度警告。全新 Hugo 0.145.0 最小双语 fixture 验证实际 SEO/sitemap 模板：两个小写规范地址、OG URL、翻译互指、x-default 和旧中文 alias 目标正确。无关辅助 partial 使用 stub，正文使用占位，因此不是全站构建或正文验收；文章 diff 仅改 `url`。
+
+### 性能历史诊断（#395）
+
+已取回 [2026-09-23 Lighthouse 原始 artifact](https://github.com/cubxxw/blog/actions/runs/35863365843)，13 个 URL 各一个样本。实际版本为 Lighthouse 12.6.1，mobile 412×823、DPR 1.75、模拟网络/CPU 4×、en-US。工作流 SHA 不证明公开站点当时的部署 SHA。
+
+- 年度总结 LCP 节点是 `h1.post-title`；模拟 LCP 为 15,788.61ms，原始 trace 的 observed LCP 为 1,044ms。二者口径不同，不能把观察时间线的 phase 相加去解释模拟总值。
+- 年度总结有 65 次字体请求，font transferSize 合计 2,419,754 bytes，总 transferSize 2,781,758 bytes。成长分类页 18 次字体请求/718,097 bytes，AI Agent 分类页 10 次/358,199 bytes。字体是已测量的成本，是否为当前改善的因果来源仍需固定条件复测。
+- 英文首页 LCP 是 `p.hp-hero-bio`，CLS 0.21231858 的 attribution 指向整个 `#hp-root`；这不等于已确认字体或图片是根因。
+
+下一批性能实现先固定测量条件，再选择一个有证据的改动。保留中文衬线设计、SSR 正文、无 JS 可读性和 reduced-motion；不能用 macOS 自带字体的结果代替缺少这些本地字体的设备表现。
+
 ## 尚未完成
 
 - A/B 的 GSC 采集与报告、PSI 精度/重试、模型诊断、可信发布与 Autofix 预演实现及独立验收。
-- Search Console UI 加载超时；本机没有 GSC/API 环境凭据。GitHub secrets 名称存在，值未读取，不能据名称声称可用。新 query×page/56 天采集、UI 同口径总量、11 类索引导出、URL Inspection 与迁移设置仍待核验。
+- Search Console UI 已成功读回：当前 Chrome 登录账号没有 `sc-domain:cubxxw.com` 访问权限，且该会话仅有一个已登录账号。已请求作者指出可访问的既有浏览器资料或切换账号，没有申请新权限或修改 GSC 设置。本机没有 GSC/API 环境凭据；GitHub secrets 名称存在，值未读取，不能据名称声称可用。新 query×page/56 天采集、UI 同口径总量、11 类索引导出、URL Inspection 与迁移设置仍待核验。
 - #395 固定条件的前后各三次性能测量、LCP/CLS 原因与改进；尚未宣称分数提升。
 - #394/#396/#397 依赖 page-query 的内容实验、作者内容终审和重新抓取后的 28 天观察；没有新文章发布。
-- 当前实现只在隔离分支：尚未推送、未线上发布、未验证交付 SHA 的 CI、未关闭任何子任务。
+- 三个小提交已推送 `origin/main`：`eb9a28d7`（交付合同）、`0d1343a3`（日报文字完整性）、`105905c2`（完整摘要）。该 SHA 的 Blog Build Check、Sitemap Ping、README 更新已通过；Lighthouse 及 Pages 部署仍待最终状态，未认定全部 CI 通过。
+- 线上英文 GitHub Actions 文章已读回 222 字符完整 description，与修复后的模板行为一致。尚无部署 SHA 证明，因此这只证明该页面的渲染行为，不能代替指定提交的部署验收。没有关闭任何子任务。
+
+## Pi 运行状态
+
+A 批次任务 `20260924-182903-0cb4bdfa` 使用冻结基线 `105905c22ddb6288199a1073a5b40d2dbba08e3f` 和 MiMo Pro，在隔离 worktree 实现 #391。已观察真实模型工具调用及独立重算 141/93,015；尚未收到实现完成或本地验收结果。B 的合同已经独立审查，须在 A 通过父代理审查并集成后启动，A/B 必须一起发布。
+
+只读监督任务每 30 分钟检查 Pi 与交付状态，仅在失败、停滞、越界或需要验收时提醒；它不会启动模型、写源码、修改 issue 或使用 Token Plan 凭据。

@@ -60,8 +60,8 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /zh/posts/stage-growth-of-open-source/    /zh/growth/posts/stage-growth-of-open-source/    301
 
 # zh/posts/* → current section routes
-/zh/posts/UFO/    /zh/ai-agent/posts/UFO/    301
-/zh/posts/ufo/    /zh/ai-agent/posts/UFO/    301
+/zh/posts/UFO/    /zh/ai-agent/posts/ufo/    301
+/zh/posts/ufo/    /zh/ai-agent/posts/ufo/    301
 /zh/posts/advanced-githook-design/    /zh/engineering/posts/advanced-githook-design/    301
 /zh/posts/argo-cd/    /zh/engineering/posts/argo-cd/    301
 /zh/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/    /zh/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/    301
@@ -181,8 +181,8 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /posts/troubleshooting-guide-for-openim/    /engineering/posts/troubleshooting-guide-for-openim/    301
 /posts/use-auto-gpt/    /ai-agent/posts/use-auto-gpt/    301
 /posts/vector-database-learning/    /ai-agent/posts/vector-database-learning/    301
-/posts/ufo/    /projects/UFO/    301
-/posts/UFO/    /projects/UFO/    301
+/posts/ufo/    /projects/ufo/    301
+/posts/UFO/    /projects/ufo/    301
 /posts/concurrent-type-checking-and-cross-platform-development-in-go/    /engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/    301
 /posts/concurrent-type-checking-and-cross-platform-development-in-go    /engineering/posts/concurrent-type-checking-and-cross-platform-development-in-go/    301
 /posts/use-go-tools-dlv/    /engineering/posts/use-go-tools-dlv/    301
@@ -259,7 +259,7 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /zh/ai-technology/posts/use-go-tools-dlv/   /zh/engineering/posts/use-go-tools-dlv/   301
 /zh/ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   /zh/growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   301
 /zh/ai-technology/posts/project-management-from-theory-to-practice/   /zh/growth/posts/project-management-from-theory-to-practice/   301
-/zh/ai-technology/posts/ufo/   /zh/ai-agent/posts/UFO/   301
+/zh/ai-technology/posts/ufo/   /zh/ai-agent/posts/ufo/   301
 /zh/ai-technology/posts/mem0/   /zh/projects/mem0/   301
 /zh/ai-technology/*   /zh/ai-agent/   301
 /ai-technology/posts/agent-engineering-the-98-percent-harness/   /ai-agent/posts/agent-engineering-the-98-percent-harness/   301
@@ -315,7 +315,12 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /ai-technology/posts/use-go-tools-dlv/   /engineering/posts/use-go-tools-dlv/   301
 /ai-technology/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   /growth/posts/brain-friendly-english-learning-strategies-tools-and-techniques-explained/   301
 /ai-technology/posts/project-management-from-theory-to-practice/   /growth/posts/project-management-from-theory-to-practice/   301
-/ai-technology/posts/ufo/   /projects/UFO/   301
+/ai-technology/posts/ufo/   /projects/ufo/   301
+
+# Match UFO canonical/hreflang/sitemap to the lowercase URLs served by Netlify.
+# Keep historical uppercase links as HTTP redirects, not same-directory aliases.
+/projects/UFO/                  /projects/ufo/                  301!
+/zh/ai-agent/posts/UFO/          /zh/ai-agent/posts/ufo/          301!
 /ai-technology/posts/mem0/   /projects/mem0/   301
 /ai-technology/*   /ai-agent/   301
 
