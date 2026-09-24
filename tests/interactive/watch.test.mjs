@@ -44,7 +44,13 @@ test('Hugo watch rebuilds replace occurrence claims, retain validation, and disc
       try {
         const response = await fetch(`http://127.0.0.1:${port}/probe/`);
         const html = await response.text();
-        if (predicate(response.status, html)) return html;
+        // The fixture's asset links and byte total follow .Content. An
+        // unfinished response has an empty/different CSS set too; it must
+        // not satisfy an asset-revision predicate. Keep malformed *complete*
+        // pages visible to the strict count/byte assertions below, and let
+        // non-200 responses reach predicates that inspect Hugo error logs.
+        const complete = response.status !== 200 || html.trimEnd().endsWith('</html>');
+        if (complete && predicate(response.status, html)) return html;
       } catch { /* Server boot or rebuild in progress. */ }
       await new Promise(resolve => setTimeout(resolve, 100));
     }

@@ -129,6 +129,9 @@ const representatives = articles.filter((article, index) =>
   articles.findIndex((candidate) => candidate[2] === article[2]) === index);
 for (const [section, slug, kind] of representatives) {
   test(`${kind}: failed script keeps the reference and delayed enhancement preserves layout`, async ({ page }) => {
+    // At this breakpoint the tree's old intrinsic-width placeholder fit on
+    // one line while the native select wrapped. Cover it in every engine.
+    if (kind === 'session-tree') await page.setViewportSize({ width: 375, height: 812 });
     const componentScript = new RegExp(`/js/components/${kind}[^/]*\\.js(?:\\?.*)?$`);
     await page.route(/googletagmanager\.com|google-analytics\.com|utteranc/, (route) => route.abort());
     await page.route(componentScript, (route) => route.abort());
