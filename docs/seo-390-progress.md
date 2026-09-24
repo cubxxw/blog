@@ -49,6 +49,12 @@
 
 本地检查：299 条 redirect 规则无重复来源、循环或链；front matter、tags、diff 检查通过；中文风格检查 0 错误，有 1 条原正文既有密度警告。全新 Hugo 0.145.0 最小双语 fixture 验证实际 SEO/sitemap 模板：两个小写规范地址、OG URL、翻译互指、x-default 和旧中文 alias 目标正确。无关辅助 partial 使用 stub，正文使用占位，因此不是全站构建或正文验收；文章 diff 仅改 `url`。
 
+### 精确旧路径的线上跳转（#393）
+
+对 289 条本地精确 301 规则进行 GET 检查，首轮有 248 条单次 301 到预期的自指 canonical 200 页面。33 次连接超时或断开正在定向复查，不能称源站 404/5xx；另有四条带查询参数的旧规则未按规则重定向，但页面 canonical 正确去掉查询参数，单独保留为规则语义待核验项，不据此修改首页或搜索页索引策略。
+
+发现 LangGraph、NotebookLM 各中英文共四个 `/posts/ai-projects/...` 入口被既有 Hugo alias 文件遮蔽，线上先补尾斜杠，再经 HTML refresh 前往目标。仅将这四条既有映射改为 `301!`，保留源、目标和规则顺序。四个目标及 alias 对应关系已核对；父代理与独立 reviewer 的 299 条静态规则检查通过，尾斜杠归一化未发现循环。Netlify 的 force 与尾斜杠行为见[官方说明](https://docs.netlify.com/manage/routing/redirects/redirect-options/)。发布后仍须验证四条路径的有/无尾斜杠共八种请求。
+
 ### 性能历史诊断（#395）
 
 已取回 [2026-09-23 Lighthouse 原始 artifact](https://github.com/cubxxw/blog/actions/runs/35863365843)，13 个 URL 各一个样本。实际版本为 Lighthouse 12.6.1，mobile 412×823、DPR 1.75、模拟网络/CPU 4×、en-US。工作流 SHA 不证明公开站点当时的部署 SHA。
@@ -69,6 +75,8 @@
 - GitHub Actions：用一个具备触发器、runner、`needs` 和最小权限的完整示例替换已停用的 artifact v3 片段；明确另一次运行的下载还需要运行 ID 与 token。版本边界有相邻官方引用。
 
 Ruby Psych 对修改前示例重现语法、重复键及旧版本问题；修改后 6 个示例解析通过、无重复键，artifact 作业依赖、名称和文件路径一致。独立 reviewer 重复验证并通过。front matter、标签、中文风格（0 错误、0 警告）和 diff 检查通过。没有执行真实 release 或这些示例工作流，整篇旧教程也尚未完成时效审计；标题、description 和 URL 均未改动。这是正确性维护，不作为 CTR 实验结果。
+
+`debd55e2` 推送后，四个中英文页面的稳定线上复查全部通过：均为目标 URL 直接 200，正文包含修正后的示例且不再含对应错误字段或 artifact v3。未取得精确部署 SHA，不以页面行为证明全部 CI 已通过。
 
 ## 尚未完成
 

@@ -23,10 +23,12 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /search?q=%7B%7B.%7D%7D   /   301
 
 # /posts/ai-projects/* → /projects/* (moved to dedicated section)
-/posts/ai-projects/langgraph   /projects/langgraph/   301
-/posts/ai-projects/notebooklm   /projects/notebooklm/   301
-/zh/posts/ai-projects/langgraph   /zh/projects/langgraph/   301
-/zh/posts/ai-projects/notebooklm   /zh/projects/notebooklm/   301
+# These old paths also exist as Hugo alias files; force HTTP redirects over
+# file shadowing so crawlers reach the canonical article without HTML refresh.
+/posts/ai-projects/langgraph   /projects/langgraph/   301!
+/posts/ai-projects/notebooklm   /projects/notebooklm/   301!
+/zh/posts/ai-projects/langgraph   /zh/projects/langgraph/   301!
+/zh/posts/ai-projects/notebooklm   /zh/projects/notebooklm/   301!
 
 # Paginated old list pages
 /posts/page/2   /articles/   301
