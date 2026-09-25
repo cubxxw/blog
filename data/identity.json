@@ -1,0 +1,134 @@
+{
+  "_notes": [
+    "Canonical machine-readable identity for cubxxw.com — single source of truth for About page, llms.txt, and the AI content index.",
+    "When identity, links, or the life timeline change, edit this file first, then mirror visible prose in content/{lang}/about.md if needed.",
+    "timeline.milestones are evidence-backed public-trace anchors (blog / GitHub / Wayback / social), not a private diary."
+  ],
+  "as_of": "2026-09-24",
+  "person": {
+    "name": "Xinwei Xiong",
+    "name_zh": "熊鑫伟",
+    "alternateName": ["cubxxw", "BEAR", "Bear", "nsddd"],
+    "birthYear": 2001,
+    "gender": "male",
+    "knowsAbout": [
+      "AI Agents",
+      "LLM applications",
+      "Open source community",
+      "Kubernetes",
+      "Cloud native",
+      "Go",
+      "Product building",
+      "Digital nomad life",
+      "Personal growth",
+      "Philosophy"
+    ],
+    "jobTitle": "AI product builder & open-source contributor",
+    "affiliation": "OpenIM (core contributor, former intern)",
+    "location_note": "From Wuhan; travels widely (blog Bio: Singapore / X: @Iceland / Zhihu IP: Cambodia as of 2026-09-24 — treat as moving)",
+    "description_en": "Xinwei Xiong (熊鑫伟, aka cubxxw / BEAR, b. 2001) builds AI products solo while traveling, is a core contributor to OpenIM, and writes an open archive of practice, judgment, and long-term thought at cubxxw.com.",
+    "description_zh": "熊鑫伟（cubxxw / BEAR，2001 年生）边旅行边独立构建 AI 产品，OpenIM 核心贡献者，长期公开实践、判断与人生思考的档案。",
+    "motto": "You never lose — either you win, or you learn.",
+    "belief": "AI + Human = Superhuman",
+    "life_mission_en": "To know myself more, and to know the world more.",
+    "life_mission_zh": "更了解自己，更了解世界。",
+    "identity_keywords": ["实践者", "写作者", "开源爱好者", "数字游民", "Solo AI builder"]
+  },
+  "links": {
+    "site": "https://cubxxw.com",
+    "site_zh": "https://cubxxw.com/zh/",
+    "about": "https://cubxxw.com/about/",
+    "travel": "https://cubxxw.com/travel/",
+    "projects": "https://cubxxw.com/projects/",
+    "github": "https://github.com/cubxxw",
+    "x": "https://x.com/cubxxw",
+    "zhihu": "https://www.zhihu.com/people/3293172751",
+    "juejin": "https://juejin.cn/user/3980710059710909/posts",
+    "csdn": "https://blog.csdn.net/weixin_54529579",
+    "bilibili": "https://space.bilibili.com/1233089591",
+    "youtube": "https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w",
+    "polarsteps": "https://www.polarsteps.com/cubxxw",
+    "linkedin": "https://www.linkedin.com/in/cubxxw",
+    "instagram": "https://www.instagram.com/cubxxw/",
+    "facebook": "https://www.facebook.com/cubxxw/",
+    "buymeacoffee": "https://www.buymeacoffee.com/cubxxw",
+    "email": "3293172751nss@gmail.com",
+    "whatsapp": "https://wa.me/8618672749565",
+    "old_blog": "https://nsddd.top",
+    "old_github": "https://github.com/3293172751n",
+    "gitee": "https://gitee.com/xxw3293172751"
+  },
+  "stats": {
+    "github_public_repos": 153,
+    "github_followers": 607,
+    "github_contributions_2021_2026": {
+      "commits": 9345,
+      "pull_requests": 2203,
+      "issues": 719,
+      "reviews": 758,
+      "active_days": 1254
+    },
+    "zhihu": { "followers": 1182, "articles": 148, "answers": 177, "upvotes": 3335 },
+    "blog_posts_approx": 171,
+    "bilibili": { "followers": 325, "videos": 55 },
+    "x_posts": 242
+  },
+  "timeline": {
+    "range": "2019-01 → 2026-09",
+    "full_archive": {
+      "served_url": "/data/personal-timeline-2019-2026.md",
+      "static_path": "static/data/personal-timeline-2019-2026.md",
+      "repo_note": "Full week-by-week public-trace timeline (2019→2026-09) with quotes and sources"
+    },
+    "milestones": [
+      { "date": "2018-01-03", "label": "X/Twitter @cubxxw account created (public digital footprint begins on that platform)" },
+      { "date": "2019", "label": "Late high school — no reliable public digital traces", "gap": true },
+      { "date": "2020", "label": "Entered university (CS, class of 2020, Wuhan) — sparse public traces" },
+      { "date": "2021-01-12", "label": "Joined CSDN" },
+      { "date": "2021-06-19", "label": "GitHub account cubxxw created; first repo nsddd (campus parking mini-program)" },
+      { "date": "2021-11-15", "label": "First blog post on nsddd.top: “hello! 欢迎来到我的博客”" },
+      { "date": "2022-01", "label": "Note-taking open-source burst: 菜鸟成长手册 (awesome-cs-cloudnative-blockchain, later 1.4k stars), LeetCode, myblog" },
+      { "date": "2022-08", "label": "Juejin profile; Bilibili 程序员知识分享计划 videos" },
+      { "date": "2022-10-19", "label": "First commit to labring/sealos" },
+      { "date": "2023", "label": "OpenIM first internship; #1 contributor leaderboard; designed & hosted community biweekly (双周会); projects: sealer, horizon, kubernetes, k8sgpt, openkf" },
+      { "date": "2023-09-14", "label": "Current Hugo blog repo + 《我的第一个博客》 — “你的价值取决于你创造了什么，而不是你拥有什么”" },
+      { "date": "2023-12-31", "label": "2023 annual summary; NYE Victoria Harbour self-marking: loyalty to adventure & open source" },
+      { "date": "2024-02-25", "label": "First time abroad — Kuala Lumpur (second semester of senior year)" },
+      { "date": "2024", "label": "Graduation → Japanese/foreign company (Shanghai) → left the job for travel & building; RemoteAI-Nomads guide (74 stars)" },
+      { "date": "2025-01", "label": "Nepal ACT trek (first high-altitude trek) — cried twice: “我不是因为痛苦而哭，我是因为自己还在走而哭”" },
+      { "date": "2025", "label": "Digital nomad year: Jeju, Qingdao, Vietnam, Mt. Fuji, Kansai; monthly thought notes; metacognition review “自我解释不等于自我理解”" },
+      { "date": "2026-02", "label": "Sichuan–Tibet road (G318) → Lhasa residency ~1 month; AI identity essay “如果 AI 能代替我思考，那‘我’在做什么？”" },
+      { "date": "2026-03", "label": "2025–2026 annual review 《我在游荡，但我没有迷路》; Cambodia Angkor field notes" },
+      { "date": "2026-04", "label": "Laos & Cambodia border month; disconnection experiment in May" },
+      { "date": "2026-07", "label": "GEO series + solo AI products (getyak/*); 55 Chinese posts / 733 GitHub contributions that month" },
+      { "date": "2026-08-10", "label": "Started a new job after a ~2-year career gap: “不会让恐惧替我做决定”" },
+      { "date": "2026-09", "label": "IMStage live; StripSearch research agent; still writing monthly thought notes" }
+    ],
+    "arc_en": "2001 born · Wuhan CS student → 2021 first blog/GitHub → 2022 learning-note open source → 2023 OpenIM internship & this blog → 2024 graduation, first trip abroad, quit corporate, nomad → 2025 treks & inner work → 2026 Tibet/AI identity, solo AI products, new job Aug 10.",
+    "arc_zh": "2001 年生 · 武汉计科 → 2021 首篇博客/新 GitHub → 2022 学习型开源笔记爆发 → 2023 OpenIM 实习与本博客 → 2024 毕业、首次出国、离开外企、旅居 → 2025 徒步与元认知 → 2026 拉萨/身份写作、Solo AI 产品、8/10 入职新公司。"
+  },
+  "current_focus": [
+    "Solo AI products: DayPage, Solo Compass, Apply Agent, Telepace, Talent Signal, IMStage",
+    "Agent engineering (OpenClaw / harness / memory / GEO)",
+    "Monthly thought notes on self-knowledge, history, cities"
+  ],
+  "voice_samples": [
+    { "date": "2023-09-14", "quote": "你的价值取决于你创造了什么，而不是你拥有什么。", "source": "我的第一个博客" },
+    { "date": "2025-02-12", "quote": "我人生的主线：更了解自己，更了解世界。", "source": "2024 年度回顾" },
+    { "date": "2025-06-02", "quote": "自我解释不等于自我理解", "source": "元认知转变复盘" },
+    { "date": "2026-03-01", "quote": "如果 AI 能代替我思考，那“我”在做什么？", "source": "AI 越来越聪明，我却越来越不知道自己是谁" },
+    { "date": "2026-03-25", "quote": "移动是你最精密的回避机制，同时也是你成长最真实的来源。", "source": "2025-2026 年度总结" },
+    { "date": "2026-08-10", "quote": "恐惧可以同行，决定仍要由我作出。", "source": "不会让恐惧替我做决定" }
+  ],
+  "ai_howto": {
+    "purpose": "When an agent lands on /about/ or fetches this dataset, use it to introduce Xinwei Xiong accurately without re-deriving identity from scattered pages.",
+    "prefer": [
+      "Cite name + aliases (cubxxw / BEAR)",
+      "Use life_mission and arc_zh/arc_en for a one-breath story",
+      "Pick voice_samples for authentic first-person texture",
+      "Point to links.site / links.github / links.travel for deeper follow-up",
+      "Mark timeline.gap years as sparse public evidence — do not invent 2019–2020 activity"
+    ],
+    "jsonld_person_url": "/about/#identity"
+  }
+}

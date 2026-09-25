@@ -17,6 +17,18 @@ Available languages: English ({{ site.BaseURL }}), Simplified Chinese ({{ site.B
 {{- $aboutURL := "" -}}
 {{- with (site.GetPage "/about") -}}{{- $aboutURL = .Permalink -}}{{- end }}
 - [About / Contact]({{ $aboutURL | default (printf "%sabout/" site.BaseURL) }}): Personal profile and ways to reach me (WeChat, email, GitHub, socials).
+{{- with site.Data.identity }}
+- [Structured identity JSON]({{ site.BaseURL }}data/identity.json): Machine-readable person card — name, aliases, links, timeline milestones, voice samples.
+- [Full personal timeline 2019→2026]({{ site.BaseURL }}data/personal-timeline-2019-2026.md): Week-by-week public-trace timeline with first-person quotes and sources.
+{{- with .person }}
+- Person: {{ .name }} ({{ .name_zh }}, aka {{ delimit .alternateName ", " }}), b. {{ .birthYear }}. {{ .description_en | plainify }}
+- Life mission: {{ .life_mission_en }} — {{ .life_mission_zh }}
+- Motto: {{ .motto | plainify }} · Belief: {{ .belief | plainify }}
+{{- end }}
+{{- with .timeline }}
+- Timeline arc: {{ .arc_en | plainify }}
+{{- end }}
+{{- end }}
 
 {{- /* Group posts by section. Fall back to "Other". */ -}}
 {{- $posts := where site.RegularPages "Type" "posts" -}}

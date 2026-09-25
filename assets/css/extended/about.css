@@ -1912,6 +1912,44 @@ body.dark .bq-mountain::after {
 }
 .bq-start-skip:hover { color: var(--color-accent); }
 
+/* ── Identity card (AI-readable person block in about content) ── */
+.identity-card {
+  max-width: 720px;
+  margin: 0 0 36px;
+  padding: 22px 24px 18px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--color-bg) 88%, var(--color-accent) 4%);
+}
+.identity-card h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+.identity-card pre {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-ink) 6%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.identity-card p {
+  margin: 0 0 8px;
+  color: var(--color-ink);
+  font-family: var(--font-prose);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+.identity-card p:last-child { margin-bottom: 0; }
+.identity-card a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ── Reading atlas (#start-here 301 target) ── */
 .meet-atlas {
   border-top: 1px solid var(--color-rule);

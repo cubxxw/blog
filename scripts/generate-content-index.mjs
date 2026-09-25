@@ -289,8 +289,24 @@ export function buildIndex() {
     byLanguage,
     tree: buildTree(documents),
     atlas,
+    identity: loadIdentity(),
     documents,
   };
+}
+
+// ─── Identity (data/identity.json) → AI-ready person card ────────────────────
+// Single source of truth for who the author is, public links, life-timeline
+// milestones, and voice samples. About page + llms.txt read the same file.
+
+function loadIdentity() {
+  const identitySource = path.join(repoRoot, "data", "identity.json");
+  if (!fs.existsSync(identitySource)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(identitySource, "utf8"));
+  } catch (error) {
+    console.warn(`content-index: unable to parse identity.json: ${error.message}`);
+    return null;
+  }
 }
 
 // ─── Reading atlas (data/start_here.json) → AI-ready structure ──────────────
@@ -311,6 +327,18 @@ function logicalPathOf(doc) {
 
 function buildAtlas(documents) {
   const atlasSource = path.join(repoRoot, "data", "start_here.json");
+  // Keep the published identity copy in sync with data/identity.json so
+  // agents can GET /data/identity.json without a separate publish step.
+  const identitySource = path.join(repoRoot, "data", "identity.json");
+  const identityPublished = path.join(repoRoot, "static", "data", "identity.json");
+  if (fs.existsSync(identitySource)) {
+    try {
+      fs.mkdirSync(path.dirname(identityPublished), { recursive: true });
+      fs.copyFileSync(identitySource, identityPublished);
+    } catch (error) {
+      console.warn(`content-index: unable to publish identity.json: ${error.message}`);
+    }
+  }
   if (!fs.existsSync(atlasSource)) return null;
 
   let data;
