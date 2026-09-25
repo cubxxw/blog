@@ -21,6 +21,14 @@ screenshot artifacts come from the local prototype pass on 2026-09-25.
 
 Screenshot evidence is local under `_output/`: `bear-before-local.png`, `bear-after-desktop.png`, `bear-after-dark.png`, `bear-after-mobile.png`, `bks-after-desktop.png`, `bks-after-writing.png`, `bks-after-dark.png`, `bks-after-mobile.png`. The repeatable local probe is `_output/qa-bear.cjs` (ignored task evidence, not part of the site).
 
+Portable visual comparison for the PR:
+
+| Before: all nodes compete | After: one readable product atlas |
+| --- | --- |
+| ![First prototype with overlapping nodes and radial shards](evidence/bear-knowledge-before.png) | ![Refined knowledge atlas with seven product anchors](evidence/bear-knowledge-after.png) |
+
+The [refined BEAR OS desktop](evidence/bear-os-after.png) and [mobile static knowledge view](evidence/bear-knowledge-mobile.png) are also captured from the same pass.
+
 The first prototype's WebGPU vertex shader used the raw vertex index as the particle index. This produced the radial shards visible in `bks-desktop-final.png`. The refinement uses `vertex_index / 3` so a particle's three vertices share one position; the new desktop capture shows a quiet field behind readable HTML.
 
 The first product-search shortcut attempted `/` and `⌘K`. Both belong to the site-wide search bootstrap, which intercepts them before BEAR OS. The refined shortcut is `P`; the existing global shortcuts remain available.
