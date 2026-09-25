@@ -104,4 +104,41 @@ test.describe('P1-P2 UX regression', () => {
     await expect(labPanel).toBeHidden();
     await expect(page).not.toHaveURL(/#product-lab$/);
   });
+
+  test('BEAR OS product search keeps the global search shortcut separate', async ({ page }) => {
+    await page.goto('/zh/projects/');
+    await page.keyboard.press('p');
+    const dialog = page.getByRole('dialog', { name: '搜索产品' });
+    await expect(dialog).toBeVisible();
+
+    await page.locator('[data-osx-command-input]').fill('solo');
+    await expect(page.locator('[data-osx-command-item]:visible')).toHaveCount(1);
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await expect(page.locator('[data-osx-window="solo-compass"]')).toBeVisible();
+    await expect(dialog).toBeHidden();
+    await page.keyboard.press('Escape');
+    await expect(page.locator('[data-osx-window="solo-compass"]')).toBeHidden();
+  });
+
+  test('Product Lab can enter BEAR knowledge space and return without leaving lab', async ({ page }) => {
+    await page.goto('/zh/projects/');
+
+    await page.getByRole('button', { name: 'Product Lab' }).click();
+    await page.getByRole('button', { name: '进入知识空间' }).click();
+
+    const host = page.locator('[data-bks-host]');
+    await expect(page).toHaveURL(/#knowledge$/);
+    await expect(host).toBeVisible();
+    await expect(host.locator('.bks__chip').first()).toBeVisible();
+    await expect(host.locator('.bks__title')).toContainText('知识空间');
+    // Ordinary page scroll stays available (no overflow lock).
+    await expect(page.locator('body')).not.toHaveClass(/overflow-hidden|scroll-locked/);
+
+    await page.keyboard.press('Escape');
+    await expect(page).toHaveURL(/#product-lab$/);
+    await expect(host).toBeHidden();
+    await expect(page.locator('[data-product-panel="lab"]')).toBeVisible();
+    await expect(page.getByRole('button', { name: '进入知识空间' })).toBeVisible();
+  });
 });
