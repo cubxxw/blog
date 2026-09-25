@@ -463,6 +463,58 @@
       </div>
     </section>
 
+    {{- /* Identity card — canonical person data from data/identity.json.
+           Visible to readers; the same payload is served at /data/identity.json
+           so agents that land on About can switch to structured form. */ -}}
+    {{- with site.Data.identity }}
+    {{- $idPerson := .person | default dict -}}
+    {{- $idLinks := .links | default dict -}}
+    {{- $idTimeline := .timeline | default dict -}}
+    <section class="studio-identity" id="identity" aria-labelledby="studio-identity-title" data-identity-card>
+      <header>
+        <p>{{ if $isZH }}身份卡 · 可被机器读取{{ else }}IDENTITY · MACHINE-READABLE{{ end }}</p>
+        <h2 id="studio-identity-title">
+          {{ if $isZH }}关于我，一份可核对的档案。{{ else }}A checkable file of who I am.{{ end }}
+        </h2>
+      </header>
+
+      <div class="studio-identity__grid">
+        <div class="studio-identity__facts">
+          <p><b>{{ $idPerson.name | default "Xinwei Xiong" }}</b>
+            {{- with $idPerson.name_zh }} · {{ . }}{{ end -}}
+            {{- with $idPerson.alternateName }} · {{ delimit . " / " }}{{ end -}}
+            {{- with $idPerson.birthYear }} · b. {{ . }}{{ end }}
+          </p>
+          {{- with $idPerson.jobTitle }}<p>{{ . }}</p>{{ end }}
+          {{- with $idPerson.life_mission_zh }}
+          <p class="studio-identity__mission">{{ if $isZH }}{{ . }}{{ else }}{{ $idPerson.life_mission_en }}{{ end }}</p>
+          {{- end }}
+          {{- with $idPerson.motto }}<p class="studio-identity__motto">“{{ . }}”</p>{{ end }}
+          {{- with $idTimeline.arc_zh }}
+          <p class="studio-identity__arc">{{ if $isZH }}{{ . }}{{ else }}{{ $idTimeline.arc_en }}{{ end }}</p>
+          {{- end }}
+          <p class="studio-identity__links">
+            {{- with $idLinks.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a> ·{{ end }}
+            {{- with $idLinks.x }}<a href="{{ . }}" target="_blank" rel="noopener">X</a> ·{{ end }}
+            {{- with $idLinks.zhihu }}<a href="{{ . }}" target="_blank" rel="noopener">知乎</a> ·{{ end }}
+            {{- with $idLinks.polarsteps }}<a href="{{ . }}" target="_blank" rel="noopener">Polarsteps</a> ·{{ end }}
+            <a href="/data/identity.json">identity.json</a>
+            · <a href="/data/personal-timeline-2019-2026.md">{{ if $isZH }}逐周时间线{{ else }}timeline{{ end }}</a>
+          </p>
+        </div>
+
+        <ol class="studio-identity__timeline">
+          {{- range $idTimeline.milestones }}
+          <li{{ if .gap }} class="is-gap"{{ end }}>
+            <b>{{ .date }}</b>
+            <span>{{ .label }}</span>
+          </li>
+          {{- end }}
+        </ol>
+      </div>
+    </section>
+    {{- end }}
+
     <section class="studio-coda" aria-labelledby="studio-coda-title">
       <div>
         <h2 id="studio-coda-title">{{ if $isZH }}也在做 AI 产品、用户研究或开源工具？{{ else }}Building AI products, user research, or open-source tools?{{ end }}</h2>

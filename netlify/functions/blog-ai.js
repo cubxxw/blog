@@ -28,24 +28,62 @@ let cachedIndex = null;
 const MAX_TOOL_ROUNDS = 2;
 const UPSTREAM_TIMEOUT_MS = 22000;
 
-// Authoritative author + contact card. Keep in sync with config.yml
-// (params.socialIcons) — this is what lets Bear AI answer "how do I reach
-// the author / what's his WeChat" instead of falling back to "articles only".
-const AUTHOR_PROFILE = [
-  "Name: 熊鑫伟 (Xinwei Xiong), handle cubxxw. Born 2001 in China.",
-  "Identity: AI founder, open-source contributor, digital nomad and writer. Believes AI + Human = Superhuman. Active in OpenIM, OpenKF, Sealos.",
-  "Products & projects: Telepace (https://telepace.cc) — AI reading assistant for web pages and documents; OpenKF (https://github.com/OpenIMSDK/OpenKF) — open-source AI knowledge-base customer-service system built on OpenIM; full product shelf: https://cubxxw.com/projects/ (Chinese: https://cubxxw.com/zh/projects/).",
-  "Personality: authentic, curious, a connector — happy to talk AI, open source and the nomad life.",
+// Authoritative author + contact card. Prefer data/identity.json (shipped
+// into content-index as `identity`); this static block is the fallback when
+// the index is older than the identity file.
+function authorProfileFromIndex(index) {
+  const id = index && index.identity;
+  if (!id || !id.person) return AUTHOR_PROFILE_FALLBACK;
+  const p = id.person;
+  const links = id.links || {};
+  const t = id.timeline || {};
+  const lines = [
+    `Name: ${p.name_zh || p.name} (${p.name})${p.alternateName && p.alternateName.length ? `, aka ${p.alternateName.join(", ")}` : ""}.${p.birthYear ? ` Born ${p.birthYear} in China.` : ""}`,
+    `Identity: ${p.jobTitle || p.description_en || ""} ${p.description_en || ""}`.trim(),
+    `Life mission: ${p.life_mission_en || ""}${p.life_mission_zh ? ` — ${p.life_mission_zh}` : ""}`,
+    `Motto: ${p.motto || ""} · Belief: ${p.belief || ""}`.trim(),
+  ];
+  if (t.arc_en) lines.push(`Life arc: ${t.arc_en}`);
+  if (Array.isArray(id.current_focus) && id.current_focus.length) {
+    lines.push(`Current focus: ${id.current_focus.join("; ")}.`);
+  }
+  if (Array.isArray(id.voice_samples) && id.voice_samples.length) {
+    lines.push("Voice samples (quote these for texture when asked who he is):");
+    for (const q of id.voice_samples.slice(0, 4)) {
+      lines.push(`  - (${q.date}) “${q.quote}” — ${q.source}`);
+    }
+  }
+  lines.push("Contact channels:");
+  if (links.email) lines.push(`- Email: ${links.email.replace(/^mailto:/, "")}`);
+  if (links.github) lines.push(`- GitHub: ${links.github}`);
+  if (links.x) lines.push(`- X / Twitter: ${links.x}`);
+  if (links.zhihu) lines.push(`- 知乎 / Zhihu: ${links.zhihu}`);
+  if (links.bilibili) lines.push(`- Bilibili: ${links.bilibili}`);
+  if (links.juejin) lines.push(`- 掘金 / Juejin: ${links.juejin}`);
+  if (links.polarsteps) lines.push(`- Polarsteps (travel map): ${links.polarsteps}`);
+  if (links.buymeacoffee) lines.push(`- Buy Me a Coffee: ${links.buymeacoffee}`);
+  if (links.whatsapp) lines.push(`- WhatsApp: ${links.whatsapp}`);
+  lines.push(
+    "Structured identity for machines: https://cubxxw.com/data/identity.json",
+    "Full personal timeline 2019→2026: https://cubxxw.com/data/personal-timeline-2019-2026.md",
+    "Full contact section lives on the About page: https://cubxxw.com/zh/about/ (English: https://cubxxw.com/about/).",
+  );
+  return lines.join("\n");
+}
+
+const AUTHOR_PROFILE_FALLBACK = [
+  "Name: 熊鑫伟 (Xinwei Xiong), handle cubxxw / BEAR. Born 2001 in China.",
+  "Identity: AI product builder, open-source contributor, digital nomad and writer. Believes AI + Human = Superhuman. Core contributor to OpenIM; Sealos contributor.",
+  "Life mission: 更了解自己，更了解世界 (to know myself more, and to know the world more).",
+  "Products & projects: DayPage, Solo Compass, Apply Agent, Telepace, Talent Signal, IMStage — shelf: https://cubxxw.com/projects/",
   "Contact channels:",
-  "- WeChat (微信, the fastest way to reach him) — WeChat ID: cubxxw_com. QR code + one-click copy available via the WeChat card.",
+  "- WeChat (微信, the fastest way to reach him) — WeChat ID: cubxxw_com.",
   "- Email: 3293172751nss@gmail.com",
   "- GitHub: https://github.com/cubxxw",
   "- X / Twitter: https://x.com/cubxxw",
   "- 知乎 / Zhihu: https://www.zhihu.com/people/3293172751",
-  "- 即刻 / Jike: https://web.okjike.com/u/56390e30-3288-4d20-a488-9f80161bbbf4",
   "- Bilibili: https://space.bilibili.com/1233089591",
-  "- 小红书 / Xiaohongshu: https://www.xiaohongshu.com/user/profile/62a33af9000000001b025dd3",
-  "- Buy Me a Coffee: https://www.buymeacoffee.com/cubxxw",
+  "Structured identity: https://cubxxw.com/data/identity.json · Timeline: https://cubxxw.com/data/personal-timeline-2019-2026.md",
   "Full contact section lives on the About page: https://cubxxw.com/zh/about/ (English: https://cubxxw.com/about/).",
 ].join("\n");
 
@@ -483,8 +521,9 @@ async function handler(event) {
     atlasPromptBlock(index, isZh ? "zh" : language || "en"),
     "",
     "AUTHOR PROFILE — you know the blog's author personally and may answer questions about who he is and how to reach him:",
-    AUTHOR_PROFILE,
+    authorProfileFromIndex(index),
     "",
+    "IDENTITY SOURCE — when asked for structured facts (timeline, links, stats), point to /data/identity.json and /data/personal-timeline-2019-2026.md, or restate the AUTHOR PROFILE. Never invent 2019–2020 activity; public traces are sparse then.",
     "CONTACT RULE — when the user asks how to contact the author (WeChat / 微信 / email / GitHub / socials), answer warmly and directly from the AUTHOR PROFILE. Never say you can only answer article questions.",
     "When WeChat / 微信 is asked for specifically, state the WeChat ID (cubxxw_com) and guide the user to the WeChat card (top-right social row, or the About page): [关于我 / About](https://cubxxw.com/zh/about/).",
   ].join("\n");

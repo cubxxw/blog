@@ -158,33 +158,41 @@
 </script>
 
 {{- /* Person/Author Schema — the canonical entity for "cubxxw".
-       alternateName disambiguates the handle from a typo; @id lets other
-       nodes (WebSite publisher, BlogPosting author) reference this one
-       entity instead of scattering unlinked Person/Organization nodes.
-       sameAs profiles are the strongest entity-disambiguation signal. */ -}}
+       Prefer fields from data/identity.json so schema, About, llms.txt and
+       Bear AI stay aligned. alternateName disambiguates the handle; @id lets
+       other nodes reference this one entity. */ -}}
+{{- $idPerson := site.Data.identity.person | default dict -}}
+{{- $idLinks := site.Data.identity.links | default dict -}}
+{{- $idKnows := $idPerson.knowsAbout | default (slice "AI Agents" "Open Source" "Kubernetes" "Cloud Native" "Go" "Digital Nomad Life") -}}
+{{- $idSameAs := slice -}}
+{{- range $k, $v := $idLinks -}}
+  {{- if and $v (in (slice "site" "github" "x" "zhihu" "juejin" "bilibili" "youtube" "polarsteps" "linkedin" "instagram" "facebook" "old_blog" "gitee") $k) -}}
+    {{- $idSameAs = $idSameAs | append $v -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $idSameAs -}}
+  {{- $idSameAs = slice "https://cubxxw.com" "https://github.com/cubxxw" "https://x.com/cubxxw" "https://www.linkedin.com/in/cubxxw" "https://www.zhihu.com/people/3293172751" "https://space.bilibili.com/1233089591" "https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w" -}}
+{{- end -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": "{{ site.BaseURL }}#person",
-  "name": {{ $authorName | default "Xinwei Xiong" }},
-  "alternateName": ["cubxxw", "熊鑫伟", "Xinwei Xiong"],
+  "name": {{ $authorName | default ($idPerson.name | default "Xinwei Xiong") }},
+  "alternateName": {{ $idPerson.alternateName | default (slice "cubxxw" "熊鑫伟" "Xinwei Xiong") | jsonify | safeJS }},
   "url": {{ site.BaseURL }},
-  "email": "mailto:3293172751nss@gmail.com",
-  "sameAs": [
-    "https://cubxxw.com",
-    "https://github.com/cubxxw",
-    "https://x.com/cubxxw",
-    "https://www.linkedin.com/in/cubxxw",
-    "https://www.zhihu.com/people/3293172751",
-    "https://space.bilibili.com/1233089591",
-    "https://www.youtube.com/channel/UCd3qbRbMwYlh5uKneo_2m_w"
-  ],
-  "jobTitle": "Practitioner, Writer, and Open Source Contributor",
+  "email": {{ printf "mailto:%s" ($idLinks.email | default "3293172751nss@gmail.com") }},
+  "description": {{ $idPerson.description_en | default "Xinwei Xiong (熊鑫伟, aka cubxxw / BEAR) builds AI products solo while traveling and writes an open archive of practice and thought." | plainify }},
+  {{- with $idPerson.birthYear }}
+  "birthDate": "{{ . }}",
+  {{- end }}
+  "jobTitle": {{ $idPerson.jobTitle | default "Practitioner, Writer, and Open Source Contributor" }},
+  "knowsAbout": {{ $idKnows | jsonify | safeJS }},
+  "sameAs": {{ $idSameAs | jsonify | safeJS }},
   "worksFor": {
     "@type": "Organization",
     "@id": "{{ site.BaseURL }}#organization",
-    "name": "OpenClaw"
+    "name": {{ $idPerson.affiliation | default "OpenIM" }}
   }
 }
 </script>
