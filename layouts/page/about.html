@@ -258,11 +258,15 @@
           data-card-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else if eq $index (sub (len $products) 1) }}prev{{ else }}hidden{{ end }}"
           aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}">
           <a href="{{ $productUrl }}" target="_blank" rel="noopener">
+            {{- if $shot.exists }}
             <img src="{{ $shot.path }}" width="1440" height="900"
-              {{ if not (or $product.image_zh $product.image_en) }}srcset="/images/products/{{ $product.id }}-720.webp 720w, /images/products/{{ $product.id }}.jpg 1440w"{{ end }}
+              {{ if and (not (or $product.image_zh $product.image_en)) (fileExists (printf "static/images/products/%s-720.webp" $product.id)) }}srcset="/images/products/{{ $product.id }}-720.webp 720w, /images/products/{{ $product.id }}.jpg 1440w"{{ end }}
               sizes="(max-width: 640px) 82vw, 760px"
               alt="{{ $shot.alt }}" loading="lazy" decoding="async"
               draggable="false">
+            {{- else }}
+            <div class="studio-product__mark" aria-hidden="true">{{ $product.mark }}</div>
+            {{- end }}
             <div class="studio-product__body">
               <p><span>{{ printf "%02d" (add $index 1) }}</span>{{ if $isZH }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</p>
               <h3>{{ $product.name }}</h3>

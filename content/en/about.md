@@ -28,26 +28,7 @@ tldr:
   - "It does not chase short-term trends. Articles stay open and evolve with new practice and evidence."
 ---
 
-<!-- ── Identity · machine-readable person card (AI / agents start here). ── -->
-<section class="identity-card" id="identity" data-identity-card>
-  <h2>Identity Card</h2>
-
-```yaml
-person:
-  name: Xinwei Xiong
-  name_zh: 熊鑫伟
-  aliases: [cubxxw, BEAR, nsddd]
-  born: 2001
-  role: AI product builder · open-source contributor · writer
-  life_mission: To know myself more, and to know the world more.
-  motto: You never lose — either you win, or you learn.
-```
-
-  **In one breath**: Xinwei Xiong (cubxxw / BEAR, b. 2001) builds AI products solo while traveling, is a core contributor to OpenIM, and turns lived practice into knowledge that stays useful.
-  **Arc**: Wuhan CS student → 2021 first blog / new GitHub → 2022 learning-note open source → 2023 OpenIM internship & this blog → 2024 graduation, first trip abroad, left corporate → 2025 nomad & metacognition → 2026 Tibet identity writing, solo AI products, new job on Aug 10.
-  **Links**: [GitHub](https://github.com/cubxxw) · [X](https://x.com/cubxxw) · [Zhihu](https://www.zhihu.com/people/3293172751) · [Polarsteps](https://www.polarsteps.com/cubxxw) · [old blog nsddd.top](https://nsddd.top)
-  **For AI**: structured data [`/data/identity.json`](/data/identity.json) · week-by-week timeline [`/data/personal-timeline-2019-2026.md`](/data/personal-timeline-2019-2026.md)
-</section>
+<!-- Identity card is rendered once by layouts/page/about.html from data/identity.json. -->
 
 <!-- ── Coda · Reading atlas (#start-here 301 target).
      The walkable world's markup & engine live in layouts/page/about.html. ── -->
