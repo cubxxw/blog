@@ -17,7 +17,7 @@ description: >
 cover:
   image: /images/posts/ai-english-learning/youtube-evals-english-transcript.png
   alt: '作者观看 Evaluation 访谈的实际界面：视频双语字幕与右侧英文转录'
-  hiddenInSingle: true
+  hidden: true
 ---
 
 我最近在研究 Evaluation，也就是怎样评估一个 AI 应用做得好不好。正在看的一期视频，是 Lenny’s Podcast 对 Hamel Husain 和 Shreya Shankar 的访谈。电脑上，视频下方有中英双语字幕，右边打开着转录面板。

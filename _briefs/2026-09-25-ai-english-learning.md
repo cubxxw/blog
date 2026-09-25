@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-09-25-ai-english-learning
 title: AI 从业者是如何利用 AI 学习英语的
-status: ready-to-publish
+status: published
 priority: normal
 language: zh
 section: growth
@@ -117,10 +117,10 @@ source_refs:
 ## 执行回执
 
 - article: content/zh/growth/posts/ai-english-learning.md
-- public_url: 未发布
+- public_url: https://cubxxw.com/zh/growth/posts/ai-english-learning/
 - editorial_verdict: KEEP
 - checks: AI 味 0 错误/0 警告；frontmatter、tags、定向 brief 校验、引用去重、元数据、图片路径与空白检查通过。全队列旧任务问题及远程同步限制见下。
-- published_at:
+- published_at: 2026-09-25T15:00:17+08:00
 - retro_notes: 仅完成中文原稿。原始两张截图均进入正文，英文转录截图复用为封面并在单篇顶部隐藏，避免与正文重复。不新增生成图、不修改截图。未翻译、未提交、未推送、未合并、未部署。
 
 ### 执行范围与主题谱系
@@ -173,3 +173,11 @@ source_refs:
 - `git diff --check` 通过；另用标准库检查两个未跟踪文件的行尾空白，通过。
 - 辅助检查最初尝试 YAML 包解析，当前工作树缺少该依赖；改用标准库进行确定性文档检查，未安装或改动依赖。
 - 普通 Markdown 和已有 PNG，不运行全量 Hugo 构建、浏览器或 E2E；生产构建与全站检查由后续 CI/CD 承担。
+
+### 协调交付回执
+
+- 本人本轮明确授权写作、截图和远程更新；2026-09-25 已提交并推送 main，正文提交为 `821bfb8f4d3ff7c1f128e55190267061181568e2`，原图提交为 `175f9a7`。
+- 协调者在开工前已从 origin/main 更新，交付前再次 fetch 核对，已解除 executor 沙箱内无法更新 Git 的执行限制。主 checkout 的无关 output 文件保持原状。
+- [Blog Build Check](https://github.com/cubxxw/blog/actions/runs/36104980411) 与 [Pages 部署](https://github.com/cubxxw/blog/actions/runs/36104980424) 均成功。公开文章标题、正文提示与两张原始 PNG 可访问，HTTP 200。
+- 线上模板使用 cover.hidden；将不生效的 hiddenInSingle 改为 hidden，避免封面与正文重复。保留正文两图及社交分享图片，不修改全站模板。
+- 交付和可访问性不是学习效果或传播效果；阅读与使用反馈尚待观察。
