@@ -59,21 +59,29 @@ test.describe('P1-P2 UX regression', () => {
     expect(cardBox?.height).toBeLessThan(400);
   });
 
-  test('mobile product window exposes 44px close and dock targets', async ({ page }, testInfo) => {
+  test('mobile product workspace exposes 44px actions and a close target', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'mobile', 'mobile only');
     await page.addInitScript(() => sessionStorage.setItem('osx-booted', '1'));
     await page.goto('/zh/projects/');
+    await expect(page.locator('body')).toHaveCSS('overflow', 'auto');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
 
-    await page.locator('.osx-widget--proc [data-osx-open]').first().click();
+    const beforeTheme = await page.locator('body').evaluate((body) => body.classList.contains('dark'));
+    await page.locator('[data-osx-theme]').click();
+    await expect.poll(() => page.locator('body').evaluate((body) => body.classList.contains('dark'))).toBe(!beforeTheme);
+
+    await page.locator('.osx-widget--proc [data-osx-select]').first().click();
+    const primary = page.locator('[data-osx-case="talent-signal"] [data-osx-open]');
+    await expect.poll(async () => (await primary.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
+    await primary.click();
     const close = page.locator('.osx-window--open .osx-window__close');
     await expect(close).toBeVisible();
     // Opening scales the window briefly; measure the settled hit targets.
     await expect.poll(async () => (await close.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44);
     await expect.poll(async () => (await close.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
 
-    const dockTarget = page.locator('.osx-dock__app').first();
-    await expect.poll(async () => (await dockTarget.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44);
-    await expect.poll(async () => (await dockTarget.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44);
+    await close.click();
+    await expect(page.locator('[data-osx-case="talent-signal"]')).toBeVisible();
   });
 
   test('products defaults to BEAR OS and switches to Product Lab and back', async ({ page }) => {
@@ -115,10 +123,15 @@ test.describe('P1-P2 UX regression', () => {
     await expect(page.locator('[data-osx-command-item]:visible')).toHaveCount(1);
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-    await expect(page.locator('[data-osx-window="solo-compass"]')).toBeVisible();
+    await expect(page.locator('[data-osx-case="solo-compass"]')).toBeVisible();
+    await expect(page.locator('[data-osx-select="solo-compass"]')).toHaveAttribute('aria-pressed', 'true');
     await expect(dialog).toBeHidden();
+    await expect(page).toHaveURL(/#focus-solo-compass$/);
+    await page.locator('[data-osx-case="solo-compass"] [data-osx-open]').click();
+    await expect(page.locator('[data-osx-window="solo-compass"]')).toBeVisible();
     await page.keyboard.press('Escape');
     await expect(page.locator('[data-osx-window="solo-compass"]')).toBeHidden();
+    await expect(page.locator('[data-osx-case="solo-compass"]')).toBeVisible();
   });
 
   test('Product Lab can enter BEAR knowledge space and return without leaving lab', async ({ page }) => {
@@ -140,5 +153,21 @@ test.describe('P1-P2 UX regression', () => {
     await expect(host).toBeHidden();
     await expect(page.locator('[data-product-panel="lab"]')).toBeVisible();
     await expect(page.getByRole('button', { name: '进入知识空间' })).toBeVisible();
+  });
+
+  test('knowledge space stays closed when the reader exits before its module loads', async ({ page }) => {
+    await page.route('**/bear-knowledge-space*.js', async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await route.continue();
+    });
+    await page.goto('/zh/projects/');
+    await page.getByRole('button', { name: 'Product Lab' }).click();
+    await page.getByRole('button', { name: '进入知识空间' }).click();
+    await page.keyboard.press('Escape');
+    await expect(page).toHaveURL(/#product-lab$/);
+    await page.waitForTimeout(700);
+    await expect(page.locator('[data-bks-host]')).toBeHidden();
+    await page.getByRole('button', { name: '进入知识空间' }).click();
+    await expect(page.locator('[data-bks-host] .bks__chip').first()).toBeVisible();
   });
 });

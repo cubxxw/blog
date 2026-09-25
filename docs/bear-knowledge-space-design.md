@@ -3,6 +3,8 @@
 > Product Lab 中可进入的探索体验。BEAR OS 仍是 `/projects/` 默认入口。
 > 2026-09-26 浏览器迭代后的设计决策。色彩、圆角、动效继续服从 `DESIGN.md`。
 
+BEAR OS 默认首屏后续改为按当前产品响应的工作台；设计分叉、A/B 视觉证据与测试见 [BEAR OS contextual workspace](bear-os-context-workspace.md)。
+
 ## Product decision
 
 - **来访者**：从博客进入的读者，想知道作者做了哪些真实产品，以及写作如何影响它们。
