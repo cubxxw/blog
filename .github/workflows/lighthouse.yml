@@ -99,7 +99,7 @@ jobs:
 
       - name: Download Lighthouse results
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: lighthouse-results-${{ github.run_id }}-${{ github.run_attempt }}
           path: .lighthouseci/
