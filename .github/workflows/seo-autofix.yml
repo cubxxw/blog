@@ -190,7 +190,7 @@ jobs:
 
       - name: Download proposal evidence
         continue-on-error: true
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: seo-autofix-run-${{ github.run_id }}-${{ github.run_attempt }}
           path: run/
