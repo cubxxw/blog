@@ -28,26 +28,9 @@ tldr:
   - "这里不追逐短期热点，文章会随新的实践与证据持续修订，并全部公开。"
 ---
 
-<!-- ── Identity · machine-readable person card (AI / agents start here). ── -->
-<section class="identity-card" id="identity" data-identity-card>
-  <h2>身份卡 · Identity</h2>
-
-```yaml
-person:
-  name: Xinwei Xiong
-  name_zh: 熊鑫伟
-  aliases: [cubxxw, BEAR, nsddd]
-  born: 2001
-  role: AI 产品构建者 · 开源贡献者 · 写作者
-  life_mission: 更了解自己，更了解世界。
-  motto: You never lose — either you win, or you learn.
-```
-
-  **一句话**：熊鑫伟（cubxxw / BEAR，2001）边旅行边独立构建 AI 产品，OpenIM 核心贡献者；把真实实践沉淀成能穿越时间的知识。
-  **生涯弧线**：武汉计科 → 2021 首博客/新 GitHub → 2022 学习型开源 → 2023 OpenIM 实习与本博客 → 2024 毕业、首次出国、离开外企 → 2025 旅居与元认知 → 2026 拉萨身份写作、Solo AI 产品、8/10 入职新公司。
-  **链接**：[GitHub](https://github.com/cubxxw) · [X](https://x.com/cubxxw) · [知乎](https://www.zhihu.com/people/3293172751) · [掘金](https://juejin.cn/user/3980710059710909/posts) · [B站](https://space.bilibili.com/1233089591) · [Polarsteps](https://www.polarsteps.com/cubxxw) · [旧站 nsddd.top](https://nsddd.top)
-  **AI 读取**：结构化数据 [`/data/identity.json`](/data/identity.json) · 逐周时间线 [`/data/personal-timeline-2019-2026.md`](/data/personal-timeline-2019-2026.md)
-</section>
+<!-- ── Identity lives in layouts/page/about.html (#identity) so readers and
+     agents share one card. Machine entry: /data/identity.json ·
+     /data/personal-timeline-2019-2026.md. ── -->
 
 <!-- ── 尾 · 阅读地图（/start-here 301 落点，保留锚点）。
      行走世界的全部标记与引擎在 layouts/page/about.html。 ── -->

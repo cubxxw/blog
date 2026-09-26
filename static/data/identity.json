@@ -122,6 +122,12 @@
   ],
   "ai_howto": {
     "purpose": "When an agent lands on /about/ or fetches this dataset, use it to introduce Xinwei Xiong accurately without re-deriving identity from scattered pages.",
+    "landing": {
+      "about_visible_card": "/about/#identity",
+      "identity_json": "/data/identity.json",
+      "timeline_md": "/data/personal-timeline-2019-2026.md",
+      "note": "About shows one identity card with a compact YAML snapshot; fetch identity.json for structured fields and the timeline for week-by-week evidence."
+    },
     "prefer": [
       "Cite name + aliases (cubxxw / BEAR)",
       "Use life_mission and arc_zh/arc_en for a one-breath story",

@@ -127,6 +127,7 @@
 {{- $travelCSS   := resources.Get "css/extended/zzz-travel-world.css" }}
 {{- $projectsCSS := resources.Get "css/extended/products.css" }}
 {{- $projectsBearCSS := resources.Get "css/extended/products-bear.css" }}
+{{- $bearKnowledgeCSS := resources.Get "css/extended/bear-knowledge-space.css" }}
 {{- $growthCSS   := resources.Get "css/extended/section-growth.css" }}
 {{- $articlesCSS := resources.Get "css/extended/section-articles.css" }}
 {{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $projectsBearCSS $growthCSS $articlesCSS) }}
@@ -218,7 +219,7 @@
 {{- if .IsHome }}{{ $conditionalCSS = $conditionalCSS | append $homepageCSS }}{{ end }}
 {{- if eq .Layout "travel" }}{{ $conditionalCSS = $conditionalCSS | append $travelCSS }}{{ end }}
 {{- if and (eq .Kind "section") (eq .Section "projects") }}
-  {{- $conditionalCSS = $conditionalCSS | append $projectsCSS $projectsBearCSS }}
+  {{- $conditionalCSS = $conditionalCSS | append $projectsCSS $projectsBearCSS $bearKnowledgeCSS }}
 {{- end }}
 {{- if and (eq .Kind "section") (eq .Section "growth") }}{{ $conditionalCSS = $conditionalCSS | append $growthCSS }}{{ end }}
 {{- range $conditionalCSS }}
@@ -267,6 +268,17 @@
 <link rel="mask-icon" href="{{ site.Params.assets.safari_pinned_tab | default "safari-pinned-tab.svg" | absURL }}">
 <meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
 <meta name="msapplication-TileColor" content="{{ site.Params.assets.msapplication_TileColor | default "#2e2e33" }}">
+
+{{- /* Machine-readable identity — same SSOT as About, Person schema, llms.txt.
+       Meta tags survive Hugo minify (HTML comments do not), so agents always
+       see these pointers in <head> when they open any page. */ -}}
+{{- with site.Data.identity }}
+<link rel="alternate" type="application/json" href="{{ "data/identity.json" | relURL }}" title="Machine-readable identity">
+<link rel="alternate" type="text/markdown" href="{{ "data/personal-timeline-2019-2026.md" | relURL }}" title="Personal timeline 2019-2026">
+<meta name="ai-identity" content="{{ "data/identity.json" | relURL }}">
+<meta name="ai-identity-landing" content="{{ "about/#identity" | relLangURL }}">
+<meta name="ai-timeline" content="{{ "data/personal-timeline-2019-2026.md" | relURL }}">
+{{- end }}
 
 {{- /* RSS */}}
 {{ range .AlternativeOutputFormats -}}

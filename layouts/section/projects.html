@@ -11,6 +11,115 @@
   {{- if eq .stage_en "Live" -}}{{- $live = add $live 1 -}}{{- end -}}
 {{- end -}}
 
+{{- /* BEAR knowledge-space graph: real products + linked/curated writing. */ -}}
+{{- $graph := slice -}}
+{{- $articleIds := slice -}}
+{{- range $product := $products -}}
+  {{- $edgeIds := slice -}}
+  {{- range where site.RegularPages "Params.product" $product.id -}}
+    {{- $edgeIds = $edgeIds | append (printf "article:%s" .RelPermalink) -}}
+    {{- $articleIds = $articleIds | append .Path -}}
+  {{- end -}}
+  {{- range $product.related -}}
+    {{- with site.GetPage . -}}
+      {{- $edgeIds = $edgeIds | append (printf "article:%s" .RelPermalink) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $graph = $graph | append (dict
+    "id" $product.id
+    "kind" "product"
+    "title" $product.name
+    "shortTitle" $product.name
+    "url" (partial "products/url.html" (dict "product" $product "lang" $.Lang))
+    "desc" (cond $isZh $product.desc_zh $product.desc_en)
+    "stage" (cond $isZh $product.stage_zh $product.stage_en)
+    "cluster" "projects"
+    "clusterLabel" (cond $isZh "产品" "Product")
+    "mark" $product.mark
+    "color" $product.color
+    "edges" $edgeIds
+  ) -}}
+  {{- range $product.related -}}
+    {{- $articleIds = $articleIds | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $curated := slice
+  "/ai-agent/posts/agent-system-design-synthesis"
+  "/ai-agent/posts/info-to-creation-the-framework"
+  "/ai-agent/posts/super-individual-stack-four-layers"
+  "/ai-agent/posts/context-engineering-the-new-foundation"
+  "/ai-agent/posts/geo-generative-engine-optimization-guide"
+  "/ai-agent/posts/relay-agent-architecture-design"
+  "/growth/posts/flow-state"
+  "/growth/posts/2025-annual-review"
+  "/growth/posts/metacognitive-transformation-review"
+  "/growth/posts/2026-07-14-what-remains-when-taken-apart"
+  "/growth/posts/super-individual-ai-product-and-solo-builder-stack"
+  "/ai-agent/posts/independent-developer"
+-}}
+{{- range $curated -}}{{- $articleIds = $articleIds | append . -}}{{- end -}}
+{{- $articleIds = $articleIds | uniq -}}
+{{- range $path := $articleIds -}}
+  {{- with site.GetPage $path -}}
+    {{- $p := . -}}
+    {{- $nodeId := printf "article:%s" $p.RelPermalink -}}
+    {{- $productEdges := slice -}}
+    {{- range $product := $products -}}
+      {{- if eq $p.Params.product $product.id -}}
+        {{- $productEdges = $productEdges | append $product.id -}}
+      {{- end -}}
+      {{- range $product.related -}}
+        {{- with site.GetPage . -}}
+          {{- if eq (printf "article:%s" .RelPermalink) $nodeId -}}
+            {{- $productEdges = $productEdges | append $product.id -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $seriesEdges := slice -}}
+    {{- with $p.Params.series -}}
+      {{- with .slug -}}
+        {{- $seriesSlug := . -}}
+        {{- range site.RegularPages -}}
+          {{- if and .Params.series (eq .Params.series.slug $seriesSlug) -}}
+            {{- $otherId := printf "article:%s" .RelPermalink -}}
+            {{- if ne $otherId $nodeId -}}
+              {{- $seriesEdges = $seriesEdges | append $otherId -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $kind := "writing" -}}
+    {{- $cluster := "growth" -}}
+    {{- if in (split $p.RelPermalink "/") "ai-agent" }}{{ $cluster = "ai-agent" }}{{ end -}}
+    {{- if in (split $p.RelPermalink "/") "engineering" }}{{ $cluster = "engineering" }}{{ end -}}
+    {{- if in (split $p.RelPermalink "/") "projects" }}{{ $cluster = "projects" }}{{ end -}}
+    {{- if $p.Params.series }}{{ $kind = "series" }}{{ end -}}
+    {{- $summary := $p.Description | default $p.Summary | plainify | truncate 140 -}}
+    {{- $clusterLabel := "Growth" -}}
+    {{- if eq $cluster "ai-agent" }}{{ $clusterLabel = "AI Agent" }}{{ end -}}
+    {{- if eq $cluster "engineering" }}{{ $clusterLabel = (cond $isZh "工程" "Engineering") }}{{ end -}}
+    {{- if eq $cluster "projects" }}{{ $clusterLabel = (cond $isZh "项目" "Projects") }}{{ end -}}
+    {{- if and $isZh (eq $cluster "growth") }}{{ $clusterLabel = "成长" }}{{ end -}}
+    {{- $graph = $graph | append (dict
+      "id" $nodeId
+      "kind" $kind
+      "title" $p.Title
+      "shortTitle" ($p.Title | truncate 22)
+      "url" $p.RelPermalink
+      "desc" $summary
+      "date" ($p.Date.Format "2006.01")
+      "cluster" $cluster
+      "clusterLabel" $clusterLabel
+      "mark" (cond $p.Params.series "※" "·")
+      "color" (cond (eq $cluster "ai-agent") "cobalt" (cond (eq $cluster "engineering") "sage" (cond (eq $cluster "projects") "rust" "amber")))
+      "edges" ($productEdges | append $seriesEdges | uniq)
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $knowledgeJS := resources.Get "js/bear-knowledge-space.js" | fingerprint -}}
+
 <script>document.body.classList.add('products-view-bear');</script>
 <div class="product-space" data-product-space data-product-view="bear">
   <h1 class="product-space__title" id="products-title">{{ if $isZh }}产品{{ else }}Products{{ end }}</h1>
@@ -34,6 +143,9 @@
         <span class="osx-menubar__logo" aria-hidden="true">◆</span>
         <strong>BEAR&nbsp;OS</strong>
         <a class="osx-menubar__home" href="{{ "/" | relLangURL }}">{{ if $isZh }}返回博客{{ else }}Back to blog{{ end }}</a>
+        <button type="button" class="osx-menubar__search" data-osx-command-trigger aria-haspopup="dialog" aria-expanded="false">
+          {{ if $isZh }}搜索产品{{ else }}Find a product{{ end }} <kbd>P</kbd>
+        </button>
       </div>
       <div class="osx-menubar__right">
         <span class="osx-menubar__stat">{{ len $products }} {{ if $isZh }}个产品，{{ $live }} 个已上线{{ else }}products, {{ $live }} live{{ end }}</span>
@@ -55,7 +167,7 @@
           <span class="osx-proc__go" aria-hidden="true">↵</span>
         </button>
         {{- end }}
-        <footer>$ products list --state=current</footer>
+        <footer>{{ if $isZh }}按 1 至 7 快速打开 · P 搜索{{ else }}Press 1 to 7 to open · P to search{{ end }}</footer>
       </section>
 
       <section class="osx-widget osx-widget--focus" style="--w:1" aria-labelledby="osx-focus">
@@ -75,7 +187,7 @@
             <img src="{{ $featuredShot.path }}" width="1440" height="900" alt="" loading="lazy" fetchpriority="low" decoding="async">
           </button>
         </div>
-        <footer>$ inspect {{ $featured.id }} --evidence</footer>
+        <footer>{{ if $isZh }}选择产品，查看真实状态、证据与下一步 ↗{{ else }}Choose a product to inspect its state and evidence ↗{{ end }}</footer>
       </section>
 
       {{- $logs := slice -}}
@@ -99,7 +211,7 @@
           <span class="osx-log__title">{{ .p.Title }}</span>
         </a>
         {{- end }}
-        <footer>$ tail ~/products/build.log</footer>
+        <footer>{{ if $isZh }}来自博客的真实写作{{ else }}Writing from the blog{{ end }}</footer>
       </section>
 
       <section class="osx-widget osx-widget--inbox" style="--w:3" aria-labelledby="osx-inbox">
@@ -113,7 +225,27 @@
         </a>
         {{- end }}
         {{- end }}
-        <footer>$ gh issue list --label=feedback</footer>
+        <footer>{{ if $isZh }}打开公开反馈议题 ↗{{ else }}Open public feedback ↗{{ end }}</footer>
+      </section>
+    </div>
+
+    <div class="osx-command" data-osx-command hidden>
+      <button type="button" class="osx-command__scrim" data-osx-command-close aria-label="{{ if $isZh }}关闭搜索{{ else }}Close search{{ end }}"></button>
+      <section class="osx-command__dialog" role="dialog" aria-modal="true" aria-label="{{ if $isZh }}搜索产品{{ else }}Find a product{{ end }}">
+        <label class="osx-command__label" for="osx-command-input">{{ if $isZh }}打开产品{{ else }}Open a product{{ end }}</label>
+        <input id="osx-command-input" class="osx-command__input" data-osx-command-input type="search" autocomplete="off" spellcheck="false" placeholder="{{ if $isZh }}输入产品名称…{{ else }}Type a product name…{{ end }}">
+        <ul class="osx-command__list">
+          {{- range $products }}
+          <li data-osx-command-item data-search="{{ lower .name }} {{ lower .id }}">
+            <button type="button" data-osx-command-open="{{ .id }}">
+              <span class="osx-command__mark osx-proc--{{ .color }}" aria-hidden="true">{{ .mark }}</span>
+              <span><strong>{{ .name }}</strong><small>{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</small></span>
+              <b aria-hidden="true">↗</b>
+            </button>
+          </li>
+          {{- end }}
+        </ul>
+        <p>{{ if $isZh }}↑↓ 选择 · Enter 打开 · Esc 返回{{ else }}↑↓ select · Enter open · Esc return{{ end }}</p>
       </section>
     </div>
 
@@ -281,6 +413,26 @@
       </aside>
     </div>
   </header>
+
+  <section class="bks-entry builds-shell" data-bks-entry aria-labelledby="bks-entry-title">
+    <div class="bks-entry__copy">
+      <h2 id="bks-entry-title">{{ if $isZh }}BEAR 知识空间{{ else }}BEAR knowledge space{{ end }}</h2>
+      <p>
+        {{ if $isZh }}
+        把产品与写作连成可探索的星图。点击节点看真实文章与项目，不打断阅读节奏。
+        {{ else }}
+        An explorable map of products and writing. Click a node to open real posts and projects without breaking reading flow.
+        {{ end }}
+      </p>
+    </div>
+    <div class="bks-entry__actions">
+      <button type="button" class="bks-entry__enter" data-bks-enter>
+        {{ if $isZh }}进入知识空间{{ else }}Enter the space{{ end }}
+      </button>
+    </div>
+  </section>
+
+  <div class="bks" data-bks-host hidden></div>
 
   <div class="builds-main">
     <section class="builds-feature builds-shell" id="{{ $featured.id }}" aria-labelledby="{{ $featured.id }}-title">
@@ -457,11 +609,28 @@
   var current = null;
   var labScrollY = 0;
   var clockTimer = null;
+  var command = bear.querySelector('[data-osx-command]');
+  var commandTrigger = bear.querySelector('[data-osx-command-trigger]');
+  var commandInput = bear.querySelector('[data-osx-command-input]');
+  var knowledgeOpen = false;
+  var knowledgeMount = null;
+  var knowledgeHost = null;
+  var knowledgeEnterTrigger = null;
+  var knowledgeData = JSON.parse({{ dict "nodes" $graph "isZh" $isZh | jsonify }});
+  var knowledgeModuleUrl = {{ $knowledgeJS.RelPermalink }};
 
   function ensureLab() {
     if (lab) return lab;
     root.appendChild(labTemplate.content.cloneNode(true));
     lab = root.querySelector('[data-product-panel="lab"]');
+    knowledgeHost = lab.querySelector('[data-bks-host]');
+    lab.addEventListener('click', function (event) {
+      var enter = event.target.closest('[data-bks-enter]');
+      if (enter) {
+        knowledgeEnterTrigger = enter;
+        openKnowledge(true);
+      }
+    });
     return lab;
   }
 
@@ -482,14 +651,159 @@
     history.replaceState(null, '', next);
   }
 
+  function closeCommand(restoreFocus) {
+    if (command.hidden) return;
+    command.hidden = true;
+    commandTrigger.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) commandTrigger.focus({ preventScroll: true });
+  }
+
+  function openCommand() {
+    if (root.dataset.productView !== 'bear') return;
+    command.hidden = false;
+    commandTrigger.setAttribute('aria-expanded', 'true');
+    commandInput.value = '';
+    command.querySelectorAll('[data-osx-command-item]').forEach(function (item) { item.hidden = false; });
+    commandInput.focus({ preventScroll: true });
+  }
+
+  commandTrigger.addEventListener('click', function () {
+    if (command.hidden) openCommand();
+    else closeCommand(true);
+  });
+  commandInput.addEventListener('input', function () {
+    var query = commandInput.value.trim().toLowerCase();
+    command.querySelectorAll('[data-osx-command-item]').forEach(function (item) {
+      item.hidden = !item.dataset.search.includes(query);
+    });
+  });
+  command.addEventListener('click', function (event) {
+    var item = event.target.closest('[data-osx-command-open]');
+    if (item) {
+      closeCommand(false);
+      openWindow(item.dataset.osxCommandOpen, true);
+    } else if (event.target.closest('[data-osx-command-close]')) {
+      closeCommand(true);
+    }
+  });
+  command.addEventListener('keydown', function (event) {
+    if (event.key === 'Tab') {
+      var stops = [commandInput].concat(Array.prototype.filter.call(command.querySelectorAll('[data-osx-command-open]'), function (button) {
+        return !button.parentElement.hidden;
+      }));
+      var first = stops[0];
+      var last = stops[stops.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus({ preventScroll: true });
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus({ preventScroll: true });
+      }
+      return;
+    }
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+    var visible = Array.prototype.filter.call(command.querySelectorAll('[data-osx-command-open]'), function (button) {
+      return !button.parentElement.hidden;
+    });
+    if (!visible.length) return;
+    event.preventDefault();
+    var index = visible.indexOf(document.activeElement);
+    var next = event.key === 'ArrowDown' ? (index + 1) % visible.length : (index < 0 ? visible.length - 1 : (index + visible.length - 1) % visible.length);
+    visible[next].focus({ preventScroll: true });
+  });
+
+  function setKnowledgeUi(open) {
+    knowledgeOpen = open;
+    root.dataset.knowledge = open ? 'open' : 'closed';
+    if (!knowledgeHost) return;
+    knowledgeHost.hidden = !open;
+    if (lab) {
+      var main = lab.querySelector('.builds-main');
+      var footer = lab.querySelector('.builds-footer');
+      var hero = lab.querySelector('.builds-hero');
+      if (main) main.hidden = open;
+      if (footer) footer.hidden = open;
+      if (hero) hero.hidden = open;
+      var entry = lab.querySelector('[data-bks-entry]');
+      if (entry) entry.hidden = open;
+    }
+  }
+
+  function mountKnowledge() {
+    if (knowledgeMount) return Promise.resolve(knowledgeMount);
+    ensureLab();
+    if (!knowledgeHost) return Promise.resolve(null);
+    return import(knowledgeModuleUrl).then(function (mod) {
+      return mod.mountKnowledgeSpace(knowledgeHost, {
+        nodes: knowledgeData.nodes || [],
+        isZh: !!knowledgeData.isZh,
+        onExit: function () { closeKnowledge(true); }
+      }).then(function (handle) {
+        knowledgeMount = handle;
+        return handle;
+      });
+    }).catch(function (error) {
+      console.warn('[bear-knowledge] module load failed', error);
+      knowledgeHost.hidden = false;
+      knowledgeHost.innerHTML = '<div class="bks__top"><div class="bks__titles">' +
+        '<p class="bks__kicker">BEAR</p>' +
+        '<h2 class="bks__title">' + (isZh ? '知识空间暂时无法渲染' : 'Knowledge space cannot render') + '</h2>' +
+        '<p class="bks__lede">' + (isZh ? '下面仍是可浏览的真实条目。' : 'The real entries below still work.') + '</p>' +
+        '</div></div><ul class="bks__related" style="padding:16px 22px"></ul>';
+      var list = knowledgeHost.querySelector('ul');
+      (knowledgeData.nodes || []).slice(0, 12).forEach(function (node) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = node.url;
+        a.innerHTML = '<span></span><b>→</b>';
+        a.querySelector('span').textContent = node.title;
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      return null;
+    });
+  }
+
+  function openKnowledge(updateHistory) {
+    ensureLab();
+    setKnowledgeUi(true);
+    setView('lab', false);
+    if (updateHistory) replaceHash('knowledge');
+    requestAnimationFrame(function () {
+      mountKnowledge().then(function () {
+        var host = knowledgeHost;
+        if (host) {
+          var heading = host.querySelector('.bks__back') || host.querySelector('h2');
+          if (heading && heading.focus) heading.focus({ preventScroll: true });
+        }
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    });
+  }
+
+  function closeKnowledge(updateHistory) {
+    setKnowledgeUi(false);
+    if (updateHistory) replaceHash('product-lab');
+    requestAnimationFrame(function () {
+      if (knowledgeEnterTrigger && knowledgeEnterTrigger.focus) {
+        knowledgeEnterTrigger.focus({ preventScroll: true });
+      }
+    });
+  }
+
   function setView(view, updateHistory) {
     var next = view === 'lab' ? 'lab' : 'bear';
     if (next === 'lab') ensureLab();
     if (next === 'bear' && root.dataset.productView === 'lab') {
       labScrollY = window.scrollY;
     }
+    if (next === 'bear' && knowledgeOpen) {
+      setKnowledgeUi(false);
+    }
 
     root.dataset.productView = next;
+    if (next !== 'bear') closeCommand(false);
     document.body.classList.toggle('products-view-bear', next === 'bear');
     document.body.classList.toggle('products-view-lab', next === 'lab');
     bear.hidden = next !== 'bear';
@@ -503,10 +817,12 @@
 
     if (next === 'lab') {
       closeWindow(false);
-      if (updateHistory) replaceHash('product-lab');
-      requestAnimationFrame(function () {
-        window.scrollTo({ top: labScrollY, behavior: reduceMotion ? 'auto' : 'smooth' });
-      });
+      if (updateHistory && !knowledgeOpen) replaceHash('product-lab');
+      if (!knowledgeOpen) {
+        requestAnimationFrame(function () {
+          window.scrollTo({ top: labScrollY, behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+      }
     } else {
       if (updateHistory) replaceHash('');
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -577,7 +893,8 @@
       event.target.closest('[data-product-panel="bear"]') &&
       !event.target.closest('.osx-window') &&
       !event.target.closest('.osx-dock') &&
-      !event.target.closest('.osx-menubar')
+      !event.target.closest('.osx-menubar') &&
+      !event.target.closest('.osx-command')
     ) {
       closeWindow(true);
     }
@@ -591,10 +908,22 @@
 
   document.addEventListener('keydown', function (event) {
     if (root.dataset.productView !== 'bear') return;
+    var targetTag = document.activeElement && document.activeElement.tagName;
+    if (event.key.toLowerCase() === 'p' && !event.metaKey && !event.ctrlKey && !event.altKey &&
+        targetTag !== 'INPUT' && targetTag !== 'TEXTAREA') {
+      event.preventDefault();
+      openCommand();
+      return;
+    }
     if (event.key === 'Escape') {
+      if (!command.hidden) {
+        closeCommand(true);
+        return;
+      }
       closeWindow(true);
       return;
     }
+    if (!command.hidden) return;
     var number = parseInt(event.key, 10);
     if (number >= 1 && number <= ids.length && !event.metaKey && !event.ctrlKey && !event.altKey) {
       var tag = document.activeElement && document.activeElement.tagName;
@@ -622,11 +951,16 @@
 
   function applyLocation() {
     var hash = location.hash.slice(1);
-    if (hash === 'product-lab') {
+    if (hash === 'knowledge') {
+      openKnowledge(false);
+    } else if (hash === 'product-lab') {
+      closeKnowledge(false);
       setView('lab', false);
     } else if (ids.indexOf(hash) !== -1) {
+      setKnowledgeUi(false);
       openWindow(hash, false);
     } else {
+      setKnowledgeUi(false);
       closeWindow(false);
       setView('bear', false);
     }

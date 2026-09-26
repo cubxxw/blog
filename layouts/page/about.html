@@ -34,6 +34,12 @@
   (dict "image" "/images/about/journey/11-danang.webp" "zh" "岘港，越南" "en" "Da Nang, Vietnam")
 -}}
 
+<!-- AI AGENTS — Start here.
+ Canonical person file: /data/identity.json
+ Full public timeline: /data/personal-timeline-2019-2026.md
+ Visible identity card: #identity
+ Person JSON-LD is emitted site-wide from data/identity.json.
+ Prefer those sources over scraping scattered pages. -->
 <div class="about-page about-studio" data-about-studio>
   <article class="about-content about-studio__inner">
     <header class="studio-hero">
@@ -464,13 +470,17 @@
     </section>
 
     {{- /* Identity card — canonical person data from data/identity.json.
-           Visible to readers; the same payload is served at /data/identity.json
-           so agents that land on About can switch to structured form. */ -}}
+           Single visible identity surface for readers and agents. The same
+           payload is served at /data/identity.json; #identity is the stable
+           anchor agents can open after landing on /about/. */ -}}
     {{- with site.Data.identity }}
     {{- $idPerson := .person | default dict -}}
     {{- $idLinks := .links | default dict -}}
     {{- $idTimeline := .timeline | default dict -}}
-    <section class="studio-identity" id="identity" aria-labelledby="studio-identity-title" data-identity-card>
+    {{- $idHowto := .ai_howto | default dict -}}
+    <section class="studio-identity" id="identity" aria-labelledby="studio-identity-title" data-identity-card
+      data-identity-json="/data/identity.json"
+      data-timeline-md="/data/personal-timeline-2019-2026.md">
       <header>
         <p>{{ if $isZH }}身份卡 · 可被机器读取{{ else }}IDENTITY · MACHINE-READABLE{{ end }}</p>
         <h2 id="studio-identity-title">
@@ -512,6 +522,49 @@
           {{- end }}
         </ol>
       </div>
+
+      {{- /* Machine entry — one place for every agent that lands on About.
+             Prefer /data/identity.json for structured facts; the YAML snapshot
+             below is a readable fallback when only visible text is scraped. */ -}}
+      <footer class="studio-identity__machine">
+        <p class="studio-identity__machine-label">
+          {{ if $isZH }}AI 读取入口{{ else }}AI / AGENT ENTRY{{ end }}
+        </p>
+        {{- with $idHowto.purpose }}
+        <p class="studio-identity__machine-purpose">{{ . }}</p>
+        {{- end }}
+        <ol class="studio-identity__machine-links">
+          <li>
+            <a href="/data/identity.json"><code>/data/identity.json</code></a>
+            <span>{{ if $isZH }}规范身份卡（JSON，单一数据源）{{ else }}Canonical identity card (JSON, single source of truth){{ end }}</span>
+          </li>
+          <li>
+            <a href="/data/personal-timeline-2019-2026.md"><code>/data/personal-timeline-2019-2026.md</code></a>
+            <span>{{ if $isZH }}2019→2026 逐周公开时间线{{ else }}Week-by-week public timeline 2019→2026{{ end }}</span>
+          </li>
+          <li>
+            <a href="{{ if $isZH }}/zh/about/#identity{{ else }}/about/#identity{{ end }}"><code>#identity</code></a>
+            <span>{{ if $isZH }}本页可见身份卡锚点{{ else }}This page's visible identity anchor{{ end }}</span>
+          </li>
+        </ol>
+        <details class="studio-identity__snapshot">
+          <summary>{{ if $isZH }}紧凑 YAML 快照（可见文本回退）{{ else }}Compact YAML snapshot (visible-text fallback){{ end }}</summary>
+          <pre class="studio-identity__yaml" data-identity-yaml>person:
+  name: {{ $idPerson.name | default "Xinwei Xiong" }}
+  name_zh: {{ $idPerson.name_zh | default "熊鑫伟" }}
+  aliases: [{{ with $idPerson.alternateName }}{{ delimit . ", " }}{{ end }}]
+  born: {{ $idPerson.birthYear | default 2001 }}
+  role: {{ $idPerson.jobTitle | default "AI product builder · open-source contributor · writer" }}
+  life_mission: {{ if $isZH }}{{ $idPerson.life_mission_zh | default $idPerson.life_mission_en }}{{ else }}{{ $idPerson.life_mission_en | default $idPerson.life_mission_zh }}{{ end }}
+  motto: {{ $idPerson.motto | default "You never lose — either you win, or you learn." }}
+links:
+  site: {{ $idLinks.site | default "https://cubxxw.com" }}
+  github: {{ $idLinks.github | default "https://github.com/cubxxw" }}
+  about: {{ $idLinks.about | default "https://cubxxw.com/about/" }}
+  identity_json: /data/identity.json
+  timeline_md: /data/personal-timeline-2019-2026.md</pre>
+        </details>
+      </footer>
     </section>
     {{- end }}
 
