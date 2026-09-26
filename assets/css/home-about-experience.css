@@ -44,6 +44,9 @@
 .about-studio .studio-hero { min-height: min(760px, calc(100svh - 60px)); }
 .about-studio .studio-hero h1 { text-wrap: balance; }
 .about-studio .studio-hero__controls button { min-width: 44px; min-height: 44px; }
+.about-studio .studio-hero__viewport,
+.about-studio [data-card-track],
+.about-studio .studio-road__viewport { touch-action: pan-y pinch-zoom; }
 
 /* Native, zero-library navigation transitions; unsupported browsers navigate normally. */
 @media (prefers-reduced-motion: no-preference) {
@@ -64,6 +67,21 @@
   .homepage-root .hp-hero-chibi { width: 34px; height: 34px; }
   .homepage-root .hp-hero-socials { flex-wrap: nowrap; gap: 4px; overflow-x: auto; padding: 4px; margin-inline: -4px; }
   .homepage-root .hp-hero-socials .hp-social-icon { flex: 0 0 44px; }
+  /* Keep useful chat on phones without the 420px decorative orbit. The
+     existing avatar button spans the compact card, including its label. */
+  .homepage-root .hp-bear-orbit-wrap { display: block; min-height: 0; max-width: none; }
+  .homepage-root .hp-bear-layer { height: auto; }
+  .homepage-root .hp-bear-orbit { width: 100%; height: 80px; border: 1px solid var(--border-default); border-radius: 12px; background: var(--surface-white); }
+  .homepage-root .hp-bear-avatar-btn { width: 100%; height: 100%; padding: 14px; justify-content: flex-start; border-radius: inherit; }
+  .homepage-root .hp-bear-avatar-core { width: 48px; height: 48px; flex: 0 0 48px; border-width: 1px; box-shadow: none; }
+  .homepage-root .hp-bear-chibi { width: 40px; height: 40px; }
+  .homepage-root .hp-bear-cta-line { top: 50%; bottom: auto; left: 78px; right: 18px; transform: translateY(-50%); white-space: normal; font: 500 13px/1.5 var(--font-body); letter-spacing: 0; text-transform: none; color: var(--fg-muted); pointer-events: none; z-index: 4; }
+  .homepage-root .hp-bear-stage, .homepage-root .hp-orb-avatar,
+  .homepage-root .hp-bear-orbit-rings, .homepage-root .hp-bear-hud,
+  .homepage-root .hp-bear-bubble, .homepage-root .hp-bear-avatar-pulse,
+  .homepage-root .hp-bear-avatar-status { display: none; }
+  .homepage-root .is-chat-open .hp-bear-chat { min-height: 360px; max-height: min(560px, 80dvh); }
+  .homepage-root .hp-bear-chat-input { font-size: 16px; }
   .page-wayfinder { min-height: 56px; gap: 0; }
   .page-wayfinder__label { display: none; }
   .page-wayfinder ol { width: 100%; gap: 8px; justify-content: space-between; }

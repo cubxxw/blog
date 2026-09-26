@@ -21,8 +21,9 @@
 </a>
 {{- end }}
 
-{{- /* Reading Progress Bar (only on single pages) */ -}}
-{{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
+{{- /* About has a section index and CSS progress; avoid a second scroll tracker. */ -}}
+{{- $hasReadingProgress := and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (ne .Layout "about") -}}
+{{- if $hasReadingProgress -}}
 <div class="reading-progress-bar" id="reading-progress-bar" role="progressbar"
      aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 {{- end -}}
@@ -116,7 +117,7 @@
 {{- end }}
 
 {{- /* Reading Progress Bar Script */ -}}
-{{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
+{{- if $hasReadingProgress -}}
 <script>
     (function() {
         const progressBar = document.getElementById('reading-progress-bar');

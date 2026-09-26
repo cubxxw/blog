@@ -37,6 +37,7 @@ provides direct routes to work. Their visual identities are not copied.
 | Long-page navigation | No compact map linking distant sections | Native anchor index with reading-position state, sticky offset, URL history and keyboard destination focus |
 | Mobile About | Chinese heading leaves an isolated final character; carousel controls are small | Responsive Chinese line grouping and 44px controls |
 | Motion | Decorative engine downloads before checking device eligibility; About carousel starts automatically | Pre-import eligibility checks, static fallback, explicit carousel play |
+| Mobile chat | Hiding the decorative orbit also removes the useful chat | Compact full-row entry, in-place chat and 16px input; no mobile 3D download |
 | Page resources | Homepage includes unrelated article/section styles | Explicit homepage shell with shared interaction styles retained |
 | Chat | UTF-8/SSE chunk boundaries, unescaped link attributes, stale stream ownership | Incremental parsing, safe links, request cancellation, stable message ownership and accessible feedback |
 | Card interaction | Pointer capture includes interactive links | Preserve links, constrain drag handling, keyboard navigation and inactive-card focus isolation |
@@ -73,7 +74,8 @@ history, JavaScript-disabled navigation, live carousel links and mocked AI
 responses. AI regression tests must not call a paid provider.
 
 Run `tests/e2e/page-wayfinder.spec.ts` and
-`tests/e2e/home-about-experience.spec.ts` outside the visual-regression exclusion.
+`tests/e2e/home-about-experience.spec.ts`, plus
+`tests/e2e/about-experience.spec.ts`, outside the visual-regression exclusion.
 Run the extracted chat helper tests, typecheck, production Hugo build and the
 applicable full CI suites. Keep screenshots and raw test artifacts outside the
 repository. Compare resource bytes on the same build type; distinguish raw CSS,
@@ -82,3 +84,33 @@ real-user Core Web Vitals improvement.
 
 Preserve unrelated work in the original checkout. Delivery requires independent
 review, current-head CI and a readback of the merged revision and deployed assets.
+
+## Measured output and acceptance
+
+Hugo 0.145.0 production minification, Chinese homepage, unique same-origin CSS
+resources (the noscript font URL is counted once):
+
+| Resource measure | Baseline | Updated | Reduction |
+| --- | ---: | ---: | ---: |
+| Main stylesheet, raw bytes | 466,879 | 191,828 | 58.9% |
+| All linked same-origin CSS, raw bytes | 718,387 | 250,118 | 65.2% |
+| Same resources compressed individually with gzip | 153,436 | 46,615 | 69.6% |
+
+The total includes the unchanged homepage stylesheet and the new 5,533-byte
+experience stylesheet. The baseline includes the 198,751-byte Chinese font CSS
+manifest. This comparison excludes third-party font CSS, font binaries, HTML,
+JavaScript, protocol overhead and CDN compression choices. It measures resource
+size, not real-user LCP/INP or a Lighthouse score.
+
+Local acceptance includes 4 helper tests, 26 desktop/mobile chat and decoration
+tests, 14 About carousel tests, TypeScript checking and a successful production
+build (340 English and 363 Chinese pages). Chat requests are mocked. The 3D
+lifecycle test uses a mock renderer; eligibility tests check actual module
+requests, including wide coarse-pointer devices and missing WebGL.
+
+Independent review caught and closed pinch-zoom suppression, stale disabled
+controls after bfcache restore, lost keyboard focus after sending, and missing
+pre-import device checks. Shared header/search/contact/subscription, knowledge
+space and reading navigation are also exercised; the PR's full CI result is the
+release gate. An existing knowledge-space assertion was updated to match the
+heading already present on the baseline branch, retaining its identity assertion.
