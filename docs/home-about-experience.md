@@ -41,6 +41,7 @@ provides direct routes to work. Their visual identities are not copied.
 | Page resources | Homepage includes unrelated article/section styles | Explicit homepage shell with shared interaction styles retained |
 | Chat | UTF-8/SSE chunk boundaries, unescaped link attributes, stale stream ownership | Incremental parsing, safe links, request cancellation, stable message ownership and accessible feedback |
 | Card interaction | Pointer capture includes interactive links | Preserve links, constrain drag handling, keyboard navigation and inactive-card focus isolation |
+| Mobile navigation | A closed transparent submenu can intercept taps and retain focus | Explicit closed-state visibility overrides hover/focus rules; exercise real submenu navigation |
 | Regression coverage | Home/About functional checks sit in excluded visual suites | Dedicated functional suites for navigation, stream boundaries, safety, lifecycle and carousel behavior |
 
 ## Technology choices
@@ -92,9 +93,9 @@ resources (the noscript font URL is counted once):
 
 | Resource measure | Baseline | Updated | Reduction |
 | --- | ---: | ---: | ---: |
-| Main stylesheet, raw bytes | 466,879 | 191,828 | 58.9% |
-| All linked same-origin CSS, raw bytes | 718,387 | 250,118 | 65.2% |
-| Same resources compressed individually with gzip | 153,436 | 46,615 | 69.6% |
+| Main stylesheet, raw bytes | 466,879 | 191,934 | 58.9% |
+| All linked same-origin CSS, raw bytes | 718,387 | 250,224 | 65.2% |
+| Same resources compressed individually with gzip | 153,436 | 46,639 | 69.6% |
 
 The total includes the unchanged homepage stylesheet and the new 5,533-byte
 experience stylesheet. The baseline includes the 198,751-byte Chinese font CSS
