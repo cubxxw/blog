@@ -55,6 +55,9 @@ provides direct routes to work. Their visual identities are not copied.
   avoids the inaccurate full-section intersection thresholds on very tall pages.
 - Keep 3D as an eligible-device enhancement. No new WebGPU scene, dependency,
   generated biography, fake user metric or third-party service is introduced.
+- Homepage body typography uses its existing sans/mono families. The masthead
+  can use its existing local serif fallbacks rather than loading the article
+  serif families and the large Chinese font manifest for a few navigation labels.
 
 The progressive fallback follows [WebKit's cross-document transition guidance](https://webkit.org/blog/16967/two-lines-of-cross-document-view-transitions-code-you-can-use-on-every-website-today/).
 Rendering containment was considered against [web.dev's content-visibility guidance](https://web.dev/articles/content-visibility),

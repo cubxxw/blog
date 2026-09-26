@@ -8,6 +8,10 @@ test.describe('Home and About reading navigation', () => {
         await page.goto(`${prefix}${suffix}`);
         const nav = page.locator('[data-page-wayfinder]');
         await expect(nav).toBeVisible();
+        if (suffix === '/') {
+          await page.locator('.hp-entry-actions a[href="#hp-posts"]').click();
+          await expect(page.locator('#hp-posts')).toBeFocused();
+        }
         const destination = suffix === '/' ? '#hp-projects' : '#studio-products';
         const link = nav.locator(`a[href="${destination}"]`);
         await link.click();

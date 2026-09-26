@@ -39,9 +39,10 @@ if (nav) {
     requestAnimationFrame(() => { queued = false; update(); });
   }, { passive: true });
 
-  links.forEach((link, index) => link.addEventListener('click', event => {
+  const anchors = [...links, ...document.querySelectorAll('.hp-entry-actions a[href^="#"]')];
+  anchors.forEach(link => link.addEventListener('click', event => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-    const target = sections[index];
+    const target = document.getElementById(link.hash.slice(1));
     if (!target) return;
     // No prevented default: URL hashes, history, and no-script deep links work.
     requestAnimationFrame(() => {
