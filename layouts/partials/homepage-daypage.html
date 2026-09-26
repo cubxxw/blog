@@ -9,7 +9,7 @@
 
 <div class="homepage-root" id="hp-root" data-lang="{{ $lang }}">
 
-  <main class="hp-page">
+  <div class="hp-page">
 
     {{/* ── Hero ─────────────────────────────────────────── */}}
     <section class="hp-hero" id="hp-about">
@@ -53,6 +53,10 @@
           {{ if $isZh }}{{ $d.hero.bioZh | safeHTML }}{{ else }}{{ $d.hero.bioEn | safeHTML }}{{ end }}
         </p>
 
+        <nav class="hp-entry-actions" aria-label="{{ if $isZh }}开始探索{{ else }}Start exploring{{ end }}">
+          <a href="#hp-posts">{{ if $isZh }}开始阅读{{ else }}Start reading{{ end }} <span aria-hidden="true">↓</span></a>
+          <a href="{{ "/projects/" | relLangURL }}">{{ if $isZh }}探索产品{{ else }}Explore products{{ end }} <span aria-hidden="true">↗</span></a>
+        </nav>
         <a class="hp-hero-cta" href="{{ "/about/" | relLangURL }}">
           <span>{{ if $isZh }}了解这个博客{{ else }}About this blog{{ end }}</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -152,10 +156,11 @@
           </svg>
         </div>
         <div id="hp-bear-layer" class="hp-bear-layer"></div>
+        <span id="hp-chat-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"></span>
       </div>
     </section>
 
-    <div class="hp-divider-fade"></div>
+    {{ partial "page-wayfinder.html" . }}
 
     {{/* ── Posts ───────────────────────────────────────── */}}
     <section class="hp-section" id="hp-posts">
@@ -408,7 +413,7 @@
          (footer-subscribe.html → Buttondown) now sits right below,
          above the footer, and carries the by-channel feed chips. */}}
 
-  </main>
+  </div><!-- .hp-page -->
 
   {{/* ── Footer ──────────────────────────────────────── */}}
   {{ partial "footer-subscribe.html" . }}
@@ -489,7 +494,9 @@
 
 </div><!-- .homepage-root -->
 
-<script>
+{{- $homeChatUtils := resources.Get "js/home-chat-utils.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
+<script type="module">
+import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatUtils.RelPermalink }}";
 (function() {
   var root = document.getElementById('hp-bear-ai');
   if (!root) return;
@@ -509,7 +516,11 @@
   // once (and if) it mounts. Guarded everywhere so the widget degrades to
   // the static/no-WebGL case without errors.
   var bearOrb = null;
-  window.__hpBearOrbReady = function(handle) { bearOrb = handle; };
+  window.__hpBearOrbReady = function(handle) {
+    bearOrb = handle;
+    orbSet('setRecessed', chatOpen);
+    orbSet('setThinking', loading);
+  };
   function orb(method) {
     if (bearOrb && typeof bearOrb[method] === 'function') bearOrb[method]();
   }
@@ -529,59 +540,29 @@
     '<circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/><circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>' +
     '<path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>';
 
-  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-  // Render bear AI message with rich formatting
-  function renderMsg(s) {
-    var origin = window.location.origin;
-    // Split into lines for paragraph-aware processing
-    var lines = String(s).split('\n');
-    var out = [];
-    var i = 0;
-    while (i < lines.length) {
-      var line = lines[i];
-      // Markdown link on its own line → article card
-      var cardMatch = line.match(/^\s*\[([^\]]{1,120})\]\(((?:https?:\/\/|\/)[^)]{1,400})\)\s*$/);
-      if (cardMatch) {
-        var cardTitle = esc(cardMatch[1]);
-        var cardUrl   = cardMatch[2].startsWith('/') ? origin + cardMatch[2] : cardMatch[2];
-        var cardPath  = cardMatch[2].replace(/^https?:\/\/[^\/]+/, '').replace(/\/$/, '') || '/';
-        out.push(
-          '<a href="' + cardUrl + '" target="_blank" rel="noopener noreferrer" class="hp-ai-card">' +
-            '<span class="hp-ai-card-icon" aria-hidden="true">' +
-              '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
-            '</span>' +
-            '<span class="hp-ai-card-body">' +
-              '<span class="hp-ai-card-title">' + cardTitle + '</span>' +
-              '<span class="hp-ai-card-path">' + esc(cardPath) + '</span>' +
-            '</span>' +
-            '<span class="hp-ai-card-arrow" aria-hidden="true">↗</span>' +
-          '</a>'
-        );
-        i++; continue;
-      }
-      // Empty line → paragraph break
-      if (line.trim() === '') {
-        if (out.length && out[out.length-1] !== '<p class="hp-ai-para">') out.push('</p><p class="hp-ai-para">');
-        i++; continue;
-      }
-      // Inline Markdown links within text
-      var inlined = esc(line)
-        .replace(/\[([^\]]{1,120})\]\(((?:https?:\/\/|\/)[^)]{1,400})\)/g, function(_, t, u) {
-          var href = u.startsWith('/') ? origin + u : u;
-          return '<a href="' + href + '" target="_blank" rel="noopener noreferrer" class="hp-ai-link">' + t + ' ↗</a>';
-        })
-        .replace(/\*\*([^*]{1,200})\*\*/g, '<strong>$1</strong>');
-      out.push(inlined + ' ');
-      i++;
-    }
-    var body = out.join('');
-    // Wrap plain text in a paragraph
-    if (!body.startsWith('<a') && !body.startsWith('</p>')) body = '<p class="hp-ai-para">' + body.trimEnd() + '</p>';
-    return body;
+  function renderMsg(value) { return renderMessage(value, window.location.origin); }
+  var requestSerial = 0, activeRequest = null, retryText = '', openerMessage = null;
+  function requestIsCurrent(request) {
+    return chatOpen && activeRequest === request && request.id === requestSerial && !request.controller.signal.aborted;
+  }
+  function cancelRequest() {
+    requestSerial++;
+    if (activeRequest) activeRequest.controller.abort();
+    activeRequest = null;
+    loading = false; streaming = false;
+    orbSet('setThinking', false);
+  }
+  function closeChat() {
+    cancelRequest();
+    chatOpen = false;
+    document.getElementById('hp-chat-status').textContent = isZh ? '对话已关闭' : 'Conversation closed';
+    renderOrbit();
+    var opener = openerMessage && Array.from(layer.querySelectorAll('.hp-bear-bubble')).find(function(btn) { return btn.dataset.msg === openerMessage; });
+    (opener || document.getElementById('hp-avatar-btn')).focus({ preventScroll: true });
   }
 
   function renderOrbit() {
+    root.classList.remove('is-chat-open');
     var r = 155;
     var bubbles = suggestions.map(function(s,i) {
       var rad = s.angle * Math.PI / 180;
@@ -643,7 +624,10 @@
     });
   }
 
-  function renderChat() {
+  function renderChat(focusInput) {
+    root.classList.add('is-chat-open');
+    var hadChatFocus = !!document.activeElement.closest('.hp-bear-chat');
+    document.getElementById('hp-chat-status').textContent = loading ? (isZh ? 'Bear 正在回复' : 'Bear is replying') : (retryText ? (isZh ? '连接中断，可重试消息' : 'Connection interrupted. You can retry this message.') : (messages.length ? (isZh ? '回复完成' : 'Reply ready') : (isZh ? '可以开始对话' : 'Ready to chat')));
     var bodyHtml = '';
     if (messages.length === 0) {
       bodyHtml = '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble">'+(isZh?'嗨，我是 Bear 的数字分身。站里每一篇文章我都读过——帮你找文章、聊 Agent 与开源，或者讲讲路上的事，都可以。':"Hey — I'm Bear's digital twin. I've read every post on this site. I can find articles for you, talk agents and open source, or tell you about life on the road.")+'</div><div class="hp-bear-chat-time">'+(isZh?'刚刚':'just now')+'</div></div>';
@@ -658,7 +642,7 @@
         return '<div class="hp-bear-chat-msg '+cls+'"><div class="hp-bear-chat-bubble'+streamCls+'">'+content+'</div><div class="hp-bear-chat-time">'+t+'</div></div>';
       }).join('');
     }
-    if (loading) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
+    if (loading && !streaming) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
 
     // Quick row: empty chat shows the full starter set (wrapped grid, same
     // six lanes as the orbit); once talking, backend followups win, else the
@@ -685,7 +669,7 @@
     orbSet('setRecessed', true);
     orbSet('setThinking', loading);
     layer.innerHTML =
-      '<div class="hp-bear-chat">'+
+      '<section class="hp-bear-chat" tabindex="-1" role="region" aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
         '<div class="hp-bear-chat-head">'+
           '<div class="hp-bear-chat-head-left">'+
             '<span class="hp-bear-chat-avatar">'+CHIBI+'<span class="hp-bear-chat-avatar-dot"></span></span>'+
@@ -695,18 +679,19 @@
             '</div>'+
           '</div>'+
           '<div class="hp-bear-chat-actions">'+
-            (messages.length?'<button class="hp-bear-chat-icon-btn" id="hp-chat-clear" title="Clear"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>':'')+
-            '<button class="hp-bear-chat-icon-btn" id="hp-chat-close" title="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>'+
+            (messages.length?'<button class="hp-bear-chat-icon-btn" id="hp-chat-clear" aria-label="'+(isZh?'清空对话':'Clear conversation')+'" title="'+(isZh?'清空对话':'Clear conversation')+'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>':'')+
+            '<button class="hp-bear-chat-icon-btn" id="hp-chat-close" aria-label="'+(isZh?'关闭对话':'Close conversation')+'" title="'+(isZh?'关闭对话':'Close conversation')+'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>'+
           '</div>'+
         '</div>'+
-        '<div class="hp-bear-chat-body" id="hp-chat-body">'+bodyHtml+'</div>'+
+        '<div class="hp-bear-chat-body" id="hp-chat-body" aria-busy="'+loading+'">'+bodyHtml+'</div>'+
         (quickHtml ? '<div class="hp-bear-chat-quick'+(isStart?' is-start':'')+'">'+(followups.length && !isStart ? '<span class="hp-bear-chat-quick-tag">'+(isZh?'继续聊':'go deeper')+'</span>' : '')+quickHtml+'</div>' : '')+
+        (retryText ? '<button class="hp-bear-chat-quick-btn" id="hp-chat-retry">'+(isZh?'重试这条消息':'Retry this message')+'</button>' : '')+
         '<div class="hp-bear-chat-input-row">'+
-          '<input class="hp-bear-chat-input" id="hp-chat-input" placeholder="'+(isZh?'问我文章、产品或旅行…':'Ask about posts, projects, travel…')+'"'+(loading?' disabled':'')+'>'+
-          '<button class="hp-bear-chat-send" id="hp-chat-send" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'+
+          '<input class="hp-bear-chat-input" id="hp-chat-input" aria-label="'+(isZh?'给 Bear 的消息':'Message Bear')+'" placeholder="'+(isZh?'问我文章、产品或旅行…':'Ask about posts, projects, travel…')+'"'+(loading?' disabled':'')+'>'+
+          '<button class="hp-bear-chat-send" id="hp-chat-send" aria-label="'+(isZh?'发送消息':'Send message')+'" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'+
         '</div>'+
         '<div class="hp-bear-chat-foot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.5 4.5L6 9l4.5 1.5L12 15l1.5-4.5L18 9l-4.5-1.5z"/></svg><span>'+(isZh?"AI 模拟 Bear 的语气 · 不是本人":"AI mimicking Bear's voice · not the human")+'</span></div>'+
-      '</div>';
+      '</section>';
 
     var body = document.getElementById('hp-chat-body');
     if (body) body.scrollTop = body.scrollHeight;
@@ -718,13 +703,20 @@
       inp.addEventListener('keydown', function(e) {
         if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); if (!loading && this.value.trim()) sendMsg(this.value); }
       });
-      if (!loading) setTimeout(function(){ inp && inp.focus(); }, 100);
+      // Focus only on open/send completion, never for individual tokens.
+      if (!loading && chatOpen && (focusInput || hadChatFocus)) inp.focus({ preventScroll: true });
+      else if (loading && hadChatFocus) layer.querySelector('.hp-bear-chat').focus({ preventScroll: true });
     }
     if (send) send.addEventListener('click', function() { var v=inp&&inp.value; if(v) sendMsg(v); });
     var clr = document.getElementById('hp-chat-clear');
-    if (clr) clr.addEventListener('click', function() { messages=[]; renderChat(); });
+    if (clr) clr.addEventListener('click', function() { cancelRequest(); messages=[]; asked={}; followups=[]; retryText=''; renderChat(); });
     var cls = document.getElementById('hp-chat-close');
-    if (cls) cls.addEventListener('click', function() { chatOpen=false; renderOrbit(); });
+    if (cls) cls.addEventListener('click', closeChat);
+    var retry = document.getElementById('hp-chat-retry');
+    if (retry) retry.addEventListener('click', function() { sendMsg(retryText); });
+    layer.querySelector('.hp-bear-chat').addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') { event.preventDefault(); closeChat(); }
+    });
     layer.querySelectorAll('.hp-bear-chat-quick-btn').forEach(function(btn) {
       btn.addEventListener('click', function() { if(!loading) { orb('pulse'); sendMsg(this.dataset.msg); } });
     });
@@ -737,124 +729,111 @@
   // bubble's HTML only: no node churn, no re-animation, smooth typewriter.
   function updateStreamingBubble(contentHtml) {
     var body = document.getElementById('hp-chat-body');
-    if (!body) { renderChat(); return; }
+    if (!body || !chatOpen) return;
     var bubbles = body.querySelectorAll('.hp-bear-chat-msg-bear .hp-bear-chat-bubble');
     var last = bubbles[bubbles.length - 1];
-    if (!last) { renderChat(); return; }
+    if (!last) return;
+    // Measure before insertion, so a larger chunk still follows the end.
+    var nearBottom = body.scrollHeight - body.scrollTop - body.clientHeight < 80;
     last.classList.add('is-streaming');
     last.innerHTML = contentHtml;
-    // Keep the newest text in view without yanking if the user scrolled up.
-    var nearBottom = body.scrollHeight - body.scrollTop - body.clientHeight < 80;
     if (nearBottom) body.scrollTop = body.scrollHeight;
   }
 
   function openChat(initMsg) {
-    chatOpen = true; renderChat();
+    openerMessage = initMsg;
+    chatOpen = true; renderChat(true);
     if (initMsg) sendMsg(initMsg);
   }
 
-  function sendMsg(text) {
-    text = String(text||'').trim();
-    if (!text || loading) return;
-    chatOpen = true;
-    asked[text] = true;      // rotate this chip out of the quick row
-    followups = [];          // stale — the new answer will bring its own
-    messages.push({ role:'user', content:text });
-    loading = true;
-    orbSet('setThinking', true);   // orb visibly "computes" while we wait
-    renderChat();
-    var sys = isZh ? root.dataset.sysZh : root.dataset.sysEn;
-    var history = messages.slice(0,-1).map(function(m){ return { role: m.role==='user'?'user':'assistant', content: m.content }; });
-    fetch('/.netlify/functions/blog-ai', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        question: text,
-        language: isZh ? 'zh' : 'en',
-        context: history,
-        persona: sys
-      })
-    })
-    .then(function(res) {
-      if (!res.ok) throw new Error('api error');
-      var ct = res.headers.get('content-type') || '';
-      if (ct.includes('text/event-stream')) {
-        var reader = res.body.getReader();
-        var decoder = new TextDecoder();
-        var reply = '';
-        // Agent trace (search/read tool activity) shown as quiet step lines
-        // inside the growing bubble until the real answer takes over.
-        var agentSteps = {}, agentOrder = [];
-        function agentStepsHtml() {
-          if (!agentOrder.length) return '';
-          var out = '';
-          for (var si = 0; si < agentOrder.length; si++) {
-            var st = agentSteps[agentOrder[si]];
-            out += '<span class="ai-step ai-step--' + (st.state === 'done' ? 'done' : 'run') + '">'
-                 + String(st.label).replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>';
-          }
-          return '<div class="ai-steps"' + (reply ? ' data-settled="true"' : '') + '>' + out + '</div>';
-        }
-        messages.push({ role:'bear', content:'' });
-        loading = false;
-        streaming = true;          // caret on the growing bubble; orb keeps thinking
-        // Build the chat skeleton ONCE (this lays down the empty bear bubble);
-        // every subsequent token patches that bubble in place — no re-render,
-        // no flicker.
-        renderChat();
-        function pump() {
-          return reader.read().then(function(chunk) {
-            if (chunk.done) {
-              streaming = false;
-              orbSet('setThinking', false);
-              renderChat();         // final pass: drops the caret, settles state
-              return;
-            }
-            var lines = decoder.decode(chunk.value).split('\n');
-            lines.forEach(function(line) {
-              if (line.startsWith('data: ')) {
-                var d = line.slice(6).trim();
-                if (d && d !== '[DONE]') {
-                  try {
-                    var j = JSON.parse(d);
-                    if (j.delta) {
-                      reply += j.delta;
-                      messages[messages.length-1].content = reply;
-                      updateStreamingBubble(agentStepsHtml() + renderMsg(reply));  // in-place, no flicker
-                    } else if (j.status && j.status.label) {
-                      var sid = j.status.id || j.status.label;
-                      if (!agentSteps[sid]) agentOrder.push(sid);
-                      agentSteps[sid] = { state: j.status.state || 'run', label: j.status.label };
-                      updateStreamingBubble(agentStepsHtml() + renderMsg(reply));
-                    } else if (Array.isArray(j.followups)) {
-                      // Related-article questions derived from what the
-                      // answer cited — shown as quick chips on the final
-                      // render after the stream settles.
-                      followups = j.followups.filter(function(f){ return f && f.label && f.msg; }).slice(0,3);
-                    } else if (j.error) {
-                      reply = reply || (isZh ? '出了点问题：' : 'Something went wrong: ') + j.error;
-                      messages[messages.length-1].content = reply;
-                      updateStreamingBubble(renderMsg(reply));
-                    }
-                  } catch(e) {}
-                }
-              }
-            });
-            return pump();
-          });
-        }
-        return pump();
-      }
-      return res.json().then(function(d) {
-        messages.push({ role:'bear', content: d.answer || d.content || (isZh?'嗯，走神了，再问一次？':"Lost my train of thought. Try again?") });
-        loading = false; streaming = false; orbSet('setThinking', false); renderChat();
-      });
-    })
-    .catch(function() {
-      messages.push({ role:'bear', content: isZh?'网络有点问题，再试一次？':"Connection hiccup. Try again?" });
-      loading = false; streaming = false; orbSet('setThinking', false); renderChat();
+  async function sendMsg(text) {
+    text = String(text || '').trim();
+    if (!text || loading || !chatOpen) return;
+    asked[text] = true;
+    followups = []; retryText = '';
+    // Snapshot context before this turn; each request owns its reply object.
+    var history = messages.filter(function(m) { return !m.failed && m.content; }).map(function(m) {
+      return { role: m.role === 'user' ? 'user' : 'assistant', content: m.content };
     });
+    var replyMessage = { role: 'bear', content: '' };
+    var request = { id: ++requestSerial, controller: new AbortController(), reply: replyMessage };
+    activeRequest = request;
+    messages.push({ role: 'user', content: text });
+    loading = true;
+    renderChat();
+    try {
+      var res = await fetch('/.netlify/functions/blog-ai', {
+        method: 'POST', signal: request.controller.signal,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: text, language: isZh ? 'zh' : 'en', context: history, persona: isZh ? root.dataset.sysZh : root.dataset.sysEn })
+      });
+      if (!requestIsCurrent(request)) return;
+      if (!res.ok) throw new Error('api error');
+      messages.push(replyMessage);
+      if ((res.headers.get('content-type') || '').includes('text/event-stream')) {
+        if (!res.body) throw new Error('empty response');
+        streaming = true;
+        renderChat();
+        var agentSteps = new Map();
+        function patch() {
+          if (!requestIsCurrent(request)) return;
+          var steps = Array.from(agentSteps.values()).map(function(st) {
+            return '<span class="ai-step ai-step--' + (st.state === 'done' ? 'done' : 'run') + '">' + esc(st.label) + '</span>';
+          }).join('');
+          updateStreamingBubble((steps ? '<div class="ai-steps"' + (replyMessage.content ? ' data-settled="true"' : '') + '>' + steps + '</div>' : '') + renderMsg(replyMessage.content));
+        }
+        var parser = createSSEParser(function(data) {
+          if (!requestIsCurrent(request) || !data || data === '[DONE]') return;
+          var event;
+          try { event = JSON.parse(data); } catch (_) { return; }
+          if (typeof event.delta === 'string') { replyMessage.content += event.delta; patch(); }
+          if (event.status && event.status.label) {
+            agentSteps.set(event.status.id || event.status.label, event.status); patch();
+          }
+          if (Array.isArray(event.followups)) followups = event.followups.filter(function(f) {
+            return f && typeof f.label === 'string' && typeof f.msg === 'string';
+          }).slice(0, 3);
+          if (event.error) throw new Error('stream error');
+        });
+        var reader = res.body.getReader();
+        try {
+          while (requestIsCurrent(request)) {
+            var chunk = await reader.read();
+            if (!requestIsCurrent(request)) break;
+            if (chunk.done) { parser.finish(); break; }
+            parser.push(chunk.value);
+          }
+        } finally {
+          // Cancellation also covers synthetic/non-fetch streams in tests.
+          await reader.cancel().catch(function() {});
+          reader.releaseLock();
+        }
+      } else {
+        var data = await res.json();
+        if (!requestIsCurrent(request)) return;
+        replyMessage.content = data.answer || data.content || '';
+      }
+      if (requestIsCurrent(request) && !replyMessage.content) throw new Error('empty answer');
+    } catch (error) {
+      if (!requestIsCurrent(request)) return;
+      if (!messages.includes(replyMessage)) messages.push(replyMessage);
+      replyMessage.failed = true;
+      replyMessage.content += (replyMessage.content ? '\n\n' : '') + (isZh ? '连接中断了，可以重试这条消息。' : 'The connection was interrupted. You can retry this message.');
+      retryText = text;
+    } finally {
+      if (requestIsCurrent(request)) {
+        activeRequest = null; loading = false; streaming = false;
+        orbSet('setThinking', false);
+        renderChat();
+      }
+    }
   }
+
+  window.addEventListener('pagehide', cancelRequest);
+  window.addEventListener('pageshow', function(event) {
+    // A bfcache restore keeps the old DOM but pagehide canceled its request.
+    if (event.persisted && chatOpen) renderChat();
+  });
 
   renderOrbit();
 
@@ -1157,9 +1136,8 @@
 
 {{/* ── Hero ambient 3D field ─────────────────────────────────────
      three.js + the hero-field shader, both fingerprinted and locally
-     hosted (same pattern as knowledge-galaxy). The module self-gates:
-     on phones / reduced-motion / no-WebGL it mounts nothing, so this
-     block adds zero runtime cost there beyond a tiny deferred import. */}}
+     hosted. The lightweight loader gates before importing either Three module:
+     phones, reduced motion and constrained connections retain the static art. */}}
 {{- $three := resources.Get "js/vendor/three.module.min.js" | resources.Fingerprint "sha384" -}}
 {{- /* Bundle hero-field + its ./webgl-guard import into one file via esbuild,
        keeping the bare `three` import external so it resolves via the importmap
@@ -1182,47 +1160,17 @@
   }
 }
 </script>
+{{- $homeAmbient := resources.Get "js/home-ambient.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
 <script type="module">
-  // Three.js is progressive decoration, not content. Importing it immediately
-  // made the browser parse the large engine while the homepage was becoming
-  // interactive (the daily Lighthouse report showed 460 ms TBT). Let the
-  // useful DOM settle first; the CSS artwork remains visible in the meantime.
-  function mountAmbient3D() {
-    Promise.all([
+  import { mountHomeAmbient } from "{{ $homeAmbient.RelPermalink }}";
+  mountHomeAmbient(function() {
+    return Promise.all([
       import("{{ $heroField.RelPermalink }}"),
       import("{{ $bearOrb.RelPermalink }}")
-    ]).then(function(modules) {
-      const host = document.getElementById('hp-hero-field');
-      if (host) {
-        // --accent lives on .homepage-root and inherits down to the host.
-        modules[0].mountHeroField(host, host);
-      }
-
-      // Bear AI orb — mount onto the persistent stage layer. Self-gates (no
-      // WebGL / reduced-motion / phones → returns null and CSS stays visible).
-      const stage = document.getElementById('hp-bear-stage');
-      const wrap  = document.getElementById('hp-bear-ai');
-      if (stage && wrap) {
-        const handle = modules[1].mountBearOrb(stage, wrap);
-        if (handle) {
-          wrap.classList.add('has-orb');
-          if (typeof window.__hpBearOrbReady === 'function') window.__hpBearOrbReady(handle);
-        }
-      }
-    }).catch(function () {
-      // The static/CSS fallback is the intended failure mode.
-    });
-  }
-
-  function scheduleAmbient3D() {
-    window.setTimeout(mountAmbient3D, 2500);
-  }
-
-  if (document.readyState === 'complete') {
-    scheduleAmbient3D();
-  } else {
-    window.addEventListener('load', scheduleAmbient3D, { once: true });
-  }
+    ]);
+  }, function(handle) {
+    if (typeof window.__hpBearOrbReady === 'function') window.__hpBearOrbReady(handle);
+  });
 </script>
 
 <script>

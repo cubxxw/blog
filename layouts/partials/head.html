@@ -73,7 +73,7 @@
 {{- $media := (resources.Get "css/core/zmedia.css") }}
 {{- $license_css := (resources.Get "css/core/license.css") }}
 {{- $commonFiles := resources.Match "css/common/*.css" }}
-{{- if or $isArticlesLibrary $isProjectsLanding }}
+{{- if or .IsHome $isArticlesLibrary $isProjectsLanding }}
   {{- /* The archive owns its feed styles. Keep only the PaperMod shell
        primitives that the lean section shells actually use. */ -}}
   {{- $commonFiles = slice
@@ -86,17 +86,19 @@
       "assets/css/articles-common.css"
       (cond $isProjectsLanding "assets/css/projects-common.css" "assets/css/common.css")
 -}}
+{{- if .IsHome }}{{ $commonTarget = "assets/css/home-common.css" }}{{ end }}
 {{- $common := $commonFiles | resources.Concat $commonTarget }}
 
 {{- /* include `an-old-hope` if hljs is on */}}
 {{- $isHLJSdisabled := (site.Params.assets.disableHLJS | default false) }}
-{{- $hljs := (cond (or $isHLJSdisabled $isArticlesLibrary $isProjectsLanding) (".chroma { background-color: unset !important;}" | resources.FromString "assets/css/hljs-blank.css") (resources.Get "css/hljs/an-old-hope.min.css")) }}
+{{- $hljs := (cond (or .IsHome $isHLJSdisabled $isArticlesLibrary $isProjectsLanding) (".chroma { background-color: unset !important;}" | resources.FromString "assets/css/hljs-blank.css") (resources.Get "css/hljs/an-old-hope.min.css")) }}
 
 {{- /* order is important */}}
 {{- $coreTarget := cond $isArticlesLibrary
       "assets/css/articles-core.css"
       (cond $isProjectsLanding "assets/css/projects-core.css" "assets/css/core.css")
 -}}
+{{- if .IsHome }}{{ $coreTarget = "assets/css/home-core.css" }}{{ end }}
 {{- $core := (slice $theme_vars $reset $common $hljs $includes_all $media) | resources.Concat $coreTarget | resources.Minify }}
 {{- /* Page-scoped extended CSS: files whose (uniquely namespaced) selectors
        render on exactly one page or section are pulled OUT of the site-wide
@@ -130,11 +132,48 @@
 {{- $bearKnowledgeCSS := resources.Get "css/extended/bear-knowledge-space.css" }}
 {{- $growthCSS   := resources.Get "css/extended/section-growth.css" }}
 {{- $articlesCSS := resources.Get "css/extended/section-articles.css" }}
-{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $projectsBearCSS $growthCSS $articlesCSS) }}
+{{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $projectsBearCSS $bearKnowledgeCSS $growthCSS $articlesCSS) }}
 {{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
 {{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
 {{- $isNarrativeAbout := eq .Layout "about" -}}
-{{- if $isNarrativeAbout }}
+{{- if .IsHome }}
+  {{- /* An explicit homepage shell. Preserve the existing alphabetical
+       cascade, including hover reset before press feedback. custom.css still
+       supplies shared search, mobile navigation and body-mounted controls;
+       removing it wholesale would break states absent from initial HTML. */ -}}
+  {{- $homeShellNames := slice
+    "custom.css"
+    "interaction-polish.css"
+    "micro-interactions.css"
+    "nav-elegant.css"
+    "site-footer-subscribe.css"
+    "tokens.css"
+    "zz-interaction-detail.css"
+    "zz-scroll-detail.css"
+    "zz-theme-toggle-fx.css"
+    "zzz-ai-agent-steps.css"
+    "zzz-bear-orb.css"
+    "zzz-card-title-draw.css"
+    "zzz-hero-field.css"
+    "zzz-hero-scroll-cue.css"
+    "zzz-homepage-reveal.css"
+    "zzz-hover-touch-reset.css"
+    "zzz-interaction-detail-v3.css"
+    "zzz-interaction-detail-v4.css"
+    "zzz-mobile-back-to-top.css"
+    "zzz-nav-menu-motion.css"
+    "zzz-nav-tap-feedback.css"
+    "zzz-press-feedback.css"
+    "zzz-theme-toggle-reveal.css"
+    "zzz-utility-editorial.css"
+    "zzz-wechat-contact.css"
+  -}}
+  {{- $homeShellFiles := slice -}}
+  {{- range $homeShellNames -}}
+    {{- $homeShellFiles = $homeShellFiles | append (resources.Get (printf "css/extended/%s" .)) -}}
+  {{- end -}}
+  {{- $extended = $homeShellFiles | resources.Concat "assets/css/home-shell.css" | resources.Minify -}}
+{{- else if $isNarrativeAbout }}
   {{- $aboutShellFiles := slice
     (resources.Get "css/extended/tokens.css")
     (resources.Get "css/extended/nav-elegant.css")
@@ -201,6 +240,7 @@
         "assets/css/articles-stylesheet.css"
         (cond $isProjectsLanding "assets/css/projects-stylesheet.css" "assets/css/stylesheet.css"))
 -}}
+{{- if .IsHome }}{{ $stylesheetTarget = "assets/css/home-stylesheet.css" }}{{ end }}
 {{- $stylesheet := (slice $license_css $core $extended) | resources.Concat $stylesheetTarget | resources.Minify }}
 
 {{- if $isNarrativeAbout }}

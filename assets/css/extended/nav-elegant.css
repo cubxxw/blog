@@ -744,6 +744,12 @@ body.dark .lang-switch__item--active > span {
         transform: none;
     }
 
+    /* A visible descendant can still intercept taps inside a hidden parent. */
+    #menu:not(.is-open):not(.mobile-open) li.nav-item--has-sub > .nav-sub {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
     .nav-sub::before {
         display: none;
     }

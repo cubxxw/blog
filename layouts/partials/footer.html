@@ -21,8 +21,9 @@
 </a>
 {{- end }}
 
-{{- /* Reading Progress Bar (only on single pages) */ -}}
-{{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
+{{- /* About has a section index and CSS progress; avoid a second scroll tracker. */ -}}
+{{- $hasReadingProgress := and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (ne .Layout "about") -}}
+{{- if $hasReadingProgress -}}
 <div class="reading-progress-bar" id="reading-progress-bar" role="progressbar"
      aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 {{- end -}}
@@ -41,6 +42,9 @@
     {{- end }}
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // The reading index uses native anchors, including modifier clicks,
+        // history restoration and its own destination focus enhancement.
+        if (anchor.closest('[data-page-wayfinder], .hp-entry-actions')) return;
         anchor.addEventListener("click", function (e) {
             var id = decodeURIComponent(this.getAttribute("href").substr(1));
             // getElementById tolerates ids with special characters (quotes,
@@ -113,7 +117,7 @@
 {{- end }}
 
 {{- /* Reading Progress Bar Script */ -}}
-{{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
+{{- if $hasReadingProgress -}}
 <script>
     (function() {
         const progressBar = document.getElementById('reading-progress-bar');

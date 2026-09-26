@@ -28,6 +28,9 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
+      - name: Validate homepage stream and link safety
+        run: node --test scripts/home-chat-utils.test.mjs
+
       - name: Validate interactive specs (dependency-free gate, issue #389)
         run: node scripts/check-interactive-specs.mjs
 

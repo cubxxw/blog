@@ -144,7 +144,8 @@ test.describe('P1-P2 UX regression', () => {
     await expect(page).toHaveURL(/#knowledge$/);
     await expect(host).toBeVisible();
     await expect(host.locator('.bks__chip').first()).toBeVisible();
-    await expect(host.locator('.bks__title')).toContainText('知识空间');
+    await expect(host.locator('.bks__title')).toHaveText('产品与写作如何连成一条线');
+    await expect(host.getByText('BEAR 知识空间', { exact: true })).toBeVisible();
     // Ordinary page scroll stays available (no overflow lock).
     await expect(page.locator('body')).not.toHaveClass(/overflow-hidden|scroll-locked/);
 

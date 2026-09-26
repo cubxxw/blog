@@ -42,6 +42,11 @@
        from a render-blocking @import that used to live in
        homepage-daypage.css — one consolidated async request. */ -}}
 {{- $baseFonts := "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" -}}
+{{- if .IsHome -}}
+{{- /* The homepage uses these three families; article serif families and
+     their large Chinese unicode-range manifest are not needed here. */ -}}
+{{- $baseFonts = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" -}}
+{{- end -}}
 {{- /* Google Fonts — async with JavaScript; a direct stylesheet without it.
        The noscript fallback must not rely on an onload handler to apply
        screen styles when scripting is disabled. */ -}}
@@ -57,7 +62,7 @@
        so browsers still download only the slices a page actually uses.
        The version is baked into the path (immutable cache) — upgrading the
        font means bumping the directory name in static/fonts/. */ -}}
-{{- if and (eq .Lang "zh") (not (or $isLeanAbout $isArticlesLibrary $isProjectsLanding)) }}
+{{- if and (eq .Lang "zh") (not (or .IsHome $isLeanAbout $isArticlesLibrary $isProjectsLanding)) }}
 {{- $zhFonts := "/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" | relURL -}}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
 <noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>
@@ -90,3 +95,7 @@
 <script defer src="{{ $searchBootstrapJS.RelPermalink }}" integrity="{{ $searchBootstrapJS.Data.Integrity }}"></script>
 
 {{- /* Head custom content area end */ -}}
+{{- if or .IsHome (eq .Layout "about") -}}
+{{- $experienceCSS := resources.Get "css/home-about-experience.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $experienceCSS.RelPermalink }}" integrity="{{ $experienceCSS.Data.Integrity }}">
+{{- end -}}
