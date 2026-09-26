@@ -1,0 +1,25 @@
+{{- $zh := eq .Lang "zh" -}}
+{{- $items := slice
+  (dict "id" "hp-posts" "zh" "文章" "en" "Writing")
+  (dict "id" "hp-books" "zh" "旅行书" "en" "Books")
+  (dict "id" "hp-projects" "zh" "产品" "en" "Products")
+  (dict "id" "hp-travel" "zh" "发布记录" "en" "Activity")
+-}}
+{{- if not .IsHome -}}
+  {{- $items = slice
+    (dict "id" "blog-definition" "zh" "写作地图" "en" "Writing")
+    (dict "id" "studio-products" "zh" "产品" "en" "Products")
+    (dict "id" "studio-road" "zh" "在路上" "en" "On the road")
+    (dict "id" "identity" "zh" "个人档案" "en" "Profile")
+  -}}
+{{- end -}}
+<nav class="page-wayfinder" data-page-wayfinder aria-label="{{ if $zh }}本页目录{{ else }}On this page{{ end }}">
+  <span class="page-wayfinder__label">{{ if $zh }}探索这份档案{{ else }}Explore the archive{{ end }}</span>
+  <ol>
+    {{- range $i, $item := $items }}
+    <li><a href="#{{ $item.id }}"><span aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>{{ cond $zh $item.zh $item.en }}</a></li>
+    {{- end }}
+  </ol>
+</nav>
+{{- $script := resources.Get "js/page-wayfinder.js" | js.Build (dict "minify" hugo.IsProduction) | fingerprint -}}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>

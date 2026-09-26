@@ -1,0 +1,82 @@
+/* A shared reading index: quiet, persistent, and usable with native anchors. */
+.page-wayfinder {
+  --wayfinder-paper: var(--bg-warm, var(--color-paper));
+  --wayfinder-ink: var(--fg-primary, var(--color-ink));
+  --wayfinder-muted: var(--fg-muted, var(--color-ink-muted, currentColor));
+  --wayfinder-rule: var(--border-default, var(--color-rule));
+  position: sticky;
+  top: var(--wayfinder-header, 60px);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 62px;
+  margin: 0;
+  border-block: 1px solid var(--wayfinder-rule);
+  background: var(--wayfinder-paper);
+  color: var(--wayfinder-ink);
+  font: 500 14px/1.4 system-ui, sans-serif;
+}
+.page-wayfinder__label { margin-right: auto; color: var(--wayfinder-muted); font-size: 12px; }
+.page-wayfinder ol { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; }
+.page-wayfinder a { display: flex; align-items: center; gap: 8px; min-height: 48px; border-bottom: 2px solid transparent; color: inherit; text-decoration: none; white-space: nowrap; }
+.page-wayfinder a span { color: var(--wayfinder-muted); font: 11px ui-monospace, monospace; }
+.page-wayfinder a:hover, .page-wayfinder a[aria-current] { border-color: currentColor; }
+.page-wayfinder a[aria-current] { font-weight: 700; }
+.page-wayfinder a:focus-visible, .hp-entry-actions a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.hp-section[id], .about-studio section[id] { scroll-margin-top: var(--wayfinder-offset, 144px); }
+.hp-section[id]:focus-visible, .about-studio section[id]:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+
+/* Give the visitor an immediate route into the work; keep Bear's identity. */
+.homepage-root .hp-hero { padding: 48px 0 44px; gap: 40px; }
+.homepage-root .hp-hero h1 { font-size: clamp(42px, 4.4vw, 64px); line-height: 1.06; }
+.homepage-root .hp-hero-name-row { gap: 6px; }
+.homepage-root .hp-hero-chibi { width: 42px; height: 42px; }
+.homepage-root .hp-hero-name-zh { font-size: 18px; margin-top: 14px; }
+.homepage-root .hp-hero-motto { max-width: 19em; font-size: 28px; text-wrap: balance; }
+.homepage-root .hp-hero-socials { margin-top: 20px; }
+.hp-entry-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.hp-entry-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 0 22px; border: 1px solid var(--border-default); border-radius: 6px; font-size: 14px; font-weight: 600; transition: background-color 160ms ease, border-color 160ms ease; }
+.hp-entry-actions a:first-child { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.hp-entry-actions a:first-child:hover { background: var(--accent-hover); }
+.hp-entry-actions a + a:hover { background: var(--accent-soft); border-color: var(--accent); }
+.homepage-root .hp-section { padding-top: 38px; }
+.about-studio .studio-hero { min-height: min(760px, calc(100svh - 60px)); }
+.about-studio .studio-hero h1 { text-wrap: balance; }
+.about-studio .studio-hero__controls button { min-width: 44px; min-height: 44px; }
+
+/* Native, zero-library navigation transitions; unsupported browsers navigate normally. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 160ms; }
+  @supports (animation-timeline: scroll()) {
+    .page-wayfinder::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: currentColor; transform-origin: left; animation: wayfinder-progress linear both; animation-timeline: scroll(root block); }
+    @keyframes wayfinder-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hp-entry-actions a { transition: none; }
+}
+@media (max-width: 768px) {
+  .homepage-root .hp-hero { min-height: 0; padding: 38px 0 32px; gap: 28px; }
+  .homepage-root .hp-hero h1 { font-size: clamp(32px, 8.5vw, 48px); }
+  .homepage-root .hp-hero-motto { font-size: 23px; }
+  .homepage-root .hp-hero-chibi { width: 34px; height: 34px; }
+  .homepage-root .hp-hero-socials { flex-wrap: nowrap; gap: 4px; overflow-x: auto; padding: 4px; margin-inline: -4px; }
+  .homepage-root .hp-hero-socials .hp-social-icon { flex: 0 0 44px; }
+  .page-wayfinder { min-height: 56px; gap: 0; }
+  .page-wayfinder__label { display: none; }
+  .page-wayfinder ol { width: 100%; gap: 8px; justify-content: space-between; }
+  .page-wayfinder a { gap: 5px; font-size: 13px; }
+  .page-wayfinder a span { font-size: 10px; }
+  .about-studio .studio-hero { min-height: 0; }
+}
+@media (max-width: 640px) {
+  html[lang="zh"] .about-studio .studio-hero h1 { font-size: clamp(30px, 8vw, 40px); line-height: 1.18; }
+  html[lang="zh"] .about-studio .studio-hero h1 span { display: inline-block; }
+}
+@media (max-width: 380px) {
+  .page-wayfinder a span { display: none; }
+  .page-wayfinder a { padding-inline: 4px; }
+}
+@media print { .page-wayfinder, .hp-entry-actions { display: none; } }

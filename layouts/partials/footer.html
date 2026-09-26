@@ -41,6 +41,9 @@
     {{- end }}
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // The reading index uses native anchors, including modifier clicks,
+        // history restoration and its own destination focus enhancement.
+        if (anchor.closest('[data-page-wayfinder], .hp-entry-actions')) return;
         anchor.addEventListener("click", function (e) {
             var id = decodeURIComponent(this.getAttribute("href").substr(1));
             // getElementById tolerates ids with special characters (quotes,

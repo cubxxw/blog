@@ -117,6 +117,7 @@
       </div>
     </header>
 
+    {{ partial "page-wayfinder.html" . }}
     <section class="studio-archive" id="blog-definition" aria-labelledby="studio-archive-title">
       <header class="studio-archive__intro">
         <h2 id="studio-archive-title">
@@ -235,7 +236,7 @@
       </div>
     </section>
 
-    <section class="studio-products" aria-labelledby="studio-products-title"
+    <section class="studio-products" id="studio-products" aria-labelledby="studio-products-title"
       role="region" aria-roledescription="carousel" data-card-carousel>
       <div class="studio-products__intro">
         <h2 id="studio-products-title">{{ if $isZH }}正在构建的产品，不是作品集摆设。{{ else }}Products in motion, not portfolio decoration.{{ end }}</h2>
@@ -279,7 +280,7 @@
       </div>
     </section>
 
-    <section class="studio-road" aria-labelledby="studio-road-title"
+    <section class="studio-road" id="studio-road" aria-labelledby="studio-road-title"
       role="region" aria-roledescription="carousel" data-road-carousel>
       <div class="studio-road__copy">
         <p class="studio-road__counter" role="status" aria-live="polite" aria-atomic="true"><span data-road-current>01</span> / {{ printf "%02d" (len $journey) }}</p>

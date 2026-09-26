@@ -53,6 +53,10 @@
           {{ if $isZh }}{{ $d.hero.bioZh | safeHTML }}{{ else }}{{ $d.hero.bioEn | safeHTML }}{{ end }}
         </p>
 
+        <nav class="hp-entry-actions" aria-label="{{ if $isZh }}开始探索{{ else }}Start exploring{{ end }}">
+          <a href="#hp-posts">{{ if $isZh }}开始阅读{{ else }}Start reading{{ end }} <span aria-hidden="true">↓</span></a>
+          <a href="{{ "/projects/" | relLangURL }}">{{ if $isZh }}探索产品{{ else }}Explore products{{ end }} <span aria-hidden="true">↗</span></a>
+        </nav>
         <a class="hp-hero-cta" href="{{ "/about/" | relLangURL }}">
           <span>{{ if $isZh }}了解这个博客{{ else }}About this blog{{ end }}</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -155,7 +159,7 @@
       </div>
     </section>
 
-    <div class="hp-divider-fade"></div>
+    {{ partial "page-wayfinder.html" . }}
 
     {{/* ── Posts ───────────────────────────────────────── */}}
     <section class="hp-section" id="hp-posts">
