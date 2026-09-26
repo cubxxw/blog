@@ -206,8 +206,14 @@
 }
 
 html[lang="zh"] .studio-hero h1 {
-  max-width: 650px;
-  font-size: clamp(3rem, 4vw, 4.5rem);
+  max-width: 700px;
+  font-size: clamp(2.85rem, 4vw, 4.25rem);
+}
+
+/* Keep the Chinese highlight phrase intact so the hero never orphans a final glyph. */
+html[lang="zh"] .studio-hero h1 span {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .studio-archive {

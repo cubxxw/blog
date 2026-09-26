@@ -91,7 +91,6 @@
 }
 @media (max-width: 640px) {
   html[lang="zh"] .about-studio .studio-hero h1 { font-size: clamp(30px, 8vw, 40px); line-height: 1.18; }
-  html[lang="zh"] .about-studio .studio-hero h1 span { display: inline-block; }
 }
 @media (max-width: 380px) {
   .page-wayfinder a span { display: none; }
