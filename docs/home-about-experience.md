@@ -104,8 +104,9 @@ JavaScript, protocol overhead and CDN compression choices. It measures resource
 size, not real-user LCP/INP or a Lighthouse score.
 
 Local acceptance includes 4 helper tests, 26 desktop/mobile chat and decoration
-tests, 14 About carousel tests, TypeScript checking and a successful production
-build (340 English and 363 Chinese pages). Chat requests are mocked. The 3D
+tests, 16 About carousel/menu tests (plus 2 desktop-only skips), TypeScript
+checking and a successful production build (340 English and 363 Chinese pages).
+Chat requests are mocked. The 3D
 lifecycle test uses a mock renderer; eligibility tests check actual module
 requests, including wide coarse-pointer devices and missing WebGL.
 
@@ -115,3 +116,12 @@ pre-import device checks. Shared header/search/contact/subscription, knowledge
 space and reading navigation are also exercised; the PR's full CI result is the
 release gate. An existing knowledge-space assertion was updated to match the
 heading already present on the baseline branch, retaining its identity assertion.
+
+Full CI also exposed an existing Linux WebKit issue in the English Pi article at
+320px: its session-tree select's native appearance increased the component's
+scroll width from 258px to 275px. A Linux probe isolated the cause: removing the
+native appearance restored 258px, and removing that override restored 275px.
+The repair keeps the HTML select and its keyboard behavior, supplies a themed
+arrow, and retains the original one-pixel overflow tolerance. The mobile menu
+regression is exercised with CI's actual Pixel 5 settings (375×812), including
+closing while a submenu link holds focus.

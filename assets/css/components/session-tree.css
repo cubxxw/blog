@@ -276,6 +276,29 @@ blog-session-tree .ib-select {
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.8125rem;
 }
+blog-session-tree select.ib-select {
+  /* Linux WebKit's native menu appearance forces visible overflow even
+     when the select's border box fits. Keep the native control and give its
+     arrow explicit geometry that stays within the reserved static slot. */
+  -webkit-appearance: none;
+  appearance: none;
+  padding-inline-end: 1.75rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-ink-muted, #5e5e63) 50%),
+    linear-gradient(135deg, var(--color-ink-muted, #5e5e63) 50%, transparent 50%);
+  background-position: right 0.85rem center, right 0.6rem center;
+  background-size: 0.25rem 0.25rem;
+  background-repeat: no-repeat;
+}
+@media (forced-colors: active) {
+  blog-session-tree select.ib-select {
+    /* Forced colors remove gradients; use the system's visible select arrow. */
+    -webkit-appearance: auto;
+    appearance: auto;
+    padding-inline-end: 0.6rem;
+    background-image: none;
+  }
+}
 blog-session-tree .ib-btn {
   display: inline-flex;
   align-items: center;

@@ -84,7 +84,21 @@ for (const [section, slug, kind, english] of articles) {
         }, theme);
         await page.setViewportSize({ width: 320, height: 800 });
         await root.scrollIntoViewIfNeeded();
-        expect(await root.evaluate((el) => el.scrollWidth <= el.clientWidth + 1), `${kind} overflow (${theme})`).toBe(true);
+        const geometry = await root.evaluate((el) => {
+          const select = el.querySelector('select');
+          return {
+            clientWidth: el.clientWidth,
+            scrollWidth: el.scrollWidth,
+            select: select ? {
+              width: select.getBoundingClientRect().width,
+              clientWidth: select.clientWidth,
+              scrollWidth: select.scrollWidth,
+              appearance: getComputedStyle(select).appearance,
+            } : null,
+          };
+        });
+        expect(geometry.scrollWidth, `${kind} overflow (${theme}): ${JSON.stringify(geometry)}`)
+          .toBeLessThanOrEqual(geometry.clientWidth + 1);
         const undersized = await root.locator('button, input, select, summary').evaluateAll((controls) => controls.filter((el) => {
           const actual = el.getBoundingClientRect();
           if (!actual.width || !actual.height || getComputedStyle(el).visibility === 'hidden') return false;

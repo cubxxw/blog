@@ -4,20 +4,9 @@ on:
   pull_request:
     branches: ["main"]
   workflow_dispatch:
-    inputs:
-      mode:
-        description: "Temporary focused diagnostic or the full E2E suites"
-        type: choice
-        options: [full, session-tree-diagnostic]
-        default: full
-      diagnostic_url:
-        description: "Verified deploy preview base URL for the focused diagnostic"
-        type: string
-        default: "https://deploy-preview-403--cubxxw.netlify.app"
 
 jobs:
   e2e:
-    if: github.event_name != 'workflow_dispatch' || inputs.mode != 'session-tree-diagnostic'
     runs-on: ubuntu-latest
     env:
       # Match the production renderer pinned in netlify.toml.
@@ -92,7 +81,6 @@ jobs:
           retention-days: 7
 
   interactive:
-    if: github.event_name != 'workflow_dispatch' || inputs.mode != 'session-tree-diagnostic'
     name: Interactive components (Chromium/Firefox/WebKit)
     runs-on: ubuntu-latest
     env:
@@ -145,30 +133,4 @@ jobs:
         with:
           name: interactive-test-results
           path: test-results/
-          retention-days: 7
-
-  session-tree-diagnostic:
-    name: Temporary Linux WebKit session-tree diagnostic
-    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'session-tree-diagnostic'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: "22"
-          cache: "npm"
-      - run: npm ci
-      - run: npx playwright install --with-deps webkit
-      - name: Measure the deployed English Pi component
-        env:
-          SESSION_TREE_DIAGNOSTIC_URL: ${{ inputs.diagnostic_url }}
-          SESSION_TREE_DIAGNOSTIC_DIR: test-results/session-tree-diagnostic
-        run: node scripts/diagnose-session-tree.mjs
-      - name: Upload exact geometry and screenshots
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: session-tree-linux-webkit-diagnostic
-          path: test-results/session-tree-diagnostic/
           retention-days: 7
