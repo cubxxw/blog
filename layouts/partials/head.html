@@ -309,6 +309,17 @@
 <meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
 <meta name="msapplication-TileColor" content="{{ site.Params.assets.msapplication_TileColor | default "#2e2e33" }}">
 
+{{- /* Machine-readable identity — same SSOT as About, Person schema, llms.txt.
+       Meta tags survive Hugo minify (HTML comments do not), so agents always
+       see these pointers in <head> when they open any page. */ -}}
+{{- with site.Data.identity }}
+<link rel="alternate" type="application/json" href="{{ "data/identity.json" | relURL }}" title="Machine-readable identity">
+<link rel="alternate" type="text/markdown" href="{{ "data/personal-timeline-2019-2026.md" | relURL }}" title="Personal timeline 2019-2026">
+<meta name="ai-identity" content="{{ "data/identity.json" | relURL }}">
+<meta name="ai-identity-landing" content="{{ "about/#identity" | relLangURL }}">
+<meta name="ai-timeline" content="{{ "data/personal-timeline-2019-2026.md" | relURL }}">
+{{- end }}
+
 {{- /* RSS */}}
 {{ range .AlternativeOutputFormats -}}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}">

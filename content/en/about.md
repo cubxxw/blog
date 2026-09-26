@@ -28,7 +28,9 @@ tldr:
   - "It does not chase short-term trends. Articles stay open and evolve with new practice and evidence."
 ---
 
-<!-- Identity card is rendered once by layouts/page/about.html from data/identity.json. -->
+<!-- ── Identity lives in layouts/page/about.html (#identity) so readers and
+     agents share one card. Machine entry: /data/identity.json ·
+     /data/personal-timeline-2019-2026.md. ── -->
 
 <!-- ── Coda · Reading atlas (#start-here 301 target).
      The walkable world's markup & engine live in layouts/page/about.html. ── -->

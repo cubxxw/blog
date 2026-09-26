@@ -28,7 +28,9 @@ tldr:
   - "这里不追逐短期热点，文章会随新的实践与证据持续修订，并全部公开。"
 ---
 
-<!-- Identity card is rendered once by layouts/page/about.html from data/identity.json. -->
+<!-- ── Identity lives in layouts/page/about.html (#identity) so readers and
+     agents share one card. Machine entry: /data/identity.json ·
+     /data/personal-timeline-2019-2026.md. ── -->
 
 <!-- ── 尾 · 阅读地图（/start-here 301 落点，保留锚点）。
      行走世界的全部标记与引擎在 layouts/page/about.html。 ── -->

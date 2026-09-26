@@ -16,9 +16,9 @@ Available languages: English ({{ site.BaseURL }}), Simplified Chinese ({{ site.B
 
 {{- $aboutURL := "" -}}
 {{- with (site.GetPage "/about") -}}{{- $aboutURL = .Permalink -}}{{- end }}
-- [About / Contact]({{ $aboutURL | default (printf "%sabout/" site.BaseURL) }}): Personal profile and ways to reach me (WeChat, email, GitHub, socials).
+- [About / Contact]({{ $aboutURL | default (printf "%sabout/" site.BaseURL) }}): Personal profile and ways to reach me (WeChat, email, GitHub, socials). Visible identity card: {{ $aboutURL | default (printf "%sabout/" site.BaseURL) }}#identity
 {{- with site.Data.identity }}
-- [Structured identity JSON]({{ site.BaseURL }}data/identity.json): Machine-readable person card — name, aliases, links, timeline milestones, voice samples.
+- [Structured identity JSON]({{ site.BaseURL }}data/identity.json): Machine-readable person card — name, aliases, links, timeline milestones, voice samples. Start here for agent-friendly facts.
 - [Full personal timeline 2019→2026]({{ site.BaseURL }}data/personal-timeline-2019-2026.md): Week-by-week public-trace timeline with first-person quotes and sources.
 {{- with .person }}
 - Person: {{ .name }} ({{ .name_zh }}, aka {{ delimit .alternateName ", " }}), b. {{ .birthYear }}. {{ .description_en | plainify }}
