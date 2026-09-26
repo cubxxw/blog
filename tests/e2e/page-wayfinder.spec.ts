@@ -41,6 +41,24 @@ test.describe('Home and About reading navigation', () => {
     }
   }
 
+  test('About deep links and Enter navigation work with ordinary motion', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.goto('/about/#studio-products');
+    const nav = page.locator('[data-page-wayfinder]');
+    await expect(nav.locator('a[href="#studio-products"]')).toHaveAttribute('aria-current', 'location');
+    const road = nav.locator('a[href="#studio-road"]');
+    await road.focus();
+    await road.press('Enter');
+    await expect(page).toHaveURL(/#studio-road$/);
+    await expect(page.locator('#studio-road')).toBeFocused();
+    await expect(road).toHaveAttribute('aria-current', 'location');
+    await expect.poll(() => page.evaluate(() => {
+      const top = document.querySelector('#studio-road')!.getBoundingClientRect().top;
+      const bottom = document.querySelector('[data-page-wayfinder]')!.getBoundingClientRect().bottom;
+      return top >= bottom - 2 && top < bottom + 100;
+    })).toBe(true);
+  });
+
   test('homepage primary routes and navigation remain usable without JavaScript', async ({ browser }, testInfo) => {
     const context = await browser.newContext({ javaScriptEnabled: false, viewport: testInfo.project.use.viewport });
     const page = await context.newPage();

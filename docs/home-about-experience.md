@@ -61,8 +61,9 @@ provides direct routes to work. Their visual identities are not copied.
 
 The progressive fallback follows [WebKit's cross-document transition guidance](https://webkit.org/blog/16967/two-lines-of-cross-document-view-transitions-code-you-can-use-on-every-website-today/).
 Rendering containment was considered against [web.dev's content-visibility guidance](https://web.dev/articles/content-visibility),
-but was not applied to the sticky, animated About decks: reliable anchors and
-layout take priority over an unmeasured rendering optimization.
+but this change adds no further containment to the sticky, animated About decks.
+The existing About calibration remains; reliable anchors and layout take priority
+over an unmeasured rendering optimization.
 
 ## Validation contract
 
