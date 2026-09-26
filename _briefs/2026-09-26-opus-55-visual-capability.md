@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-09-26-opus-55-visual-capability
 title: 研究Opus5.5视觉作品效果跃迁的真实机制
-status: ready-to-publish
+status: published
 priority: normal
 language: zh
 section: ai-agent
@@ -78,11 +78,11 @@ source_refs:
 ## 执行回执
 
 - article: content/zh/ai-agent/posts/opus-55-visual-capability.md
-- public_url: 未发布
+- public_url: https://cubxxw.com/zh/ai-agent/posts/opus-55-visual-capability/
 - editorial_verdict: KEEP
 - checks: 文章 AI flavor 检查通过（0 错误、0 警告）；frontmatter:check 通过；tags:check 通过（0 文件需修改）；git diff --check 通过；description 155 字符；上海时间已到达；仅标准 Markdown，无特殊渲染或新资源，按仓库规则未运行全站构建或 E2E。
-- published_at: 未发布
-- retro_notes: 作者已明确批准发布；中英文成稿、共用封面和Hugo构建已完成，即将提交并推送。
+- published_at: 2026-09-26T18:08:11+08:00
+- retro_notes: 作者批准后已发布中英文与共用封面；内容提交f24f6a2已推送main。正式域名两版HTTP200，关键数值与图片已核验；线上封面SHA256与仓库资源一致。暂无阅读或传播效果数据，不将发布等同于内容有效。
 
 ## 已批准公开证据附录
 
@@ -176,3 +176,5 @@ IPO官方 https://www.anthropic.com/news/confidential-draft-s1-sec 2026-06-01保
 发布前核查：中英文含义与不确定性对照，引用URL顺序及数量相同；元数据与标签通过；中文行文检查0错误/0警告。英文description159字符。新媒体资源按规范增加Hugo构建检查。
 
 Hugo构建成功：EN339页、ZH362页；中英文目标页面、canonical和og:image已核对。brief校验器在ready-to-publish状态只豁免单个article路径，因此将新增英文配对误报为同slug重复；这是既有校验器的双语限制，英文版与中文同源并非第二篇选题，未为此改动共享脚本。
+
+正式英文地址：https://cubxxw.com/ai-agent/posts/opus-55-visual-capability/ 。发布构建检查成功；本次发布结果经过正式域名实测。
