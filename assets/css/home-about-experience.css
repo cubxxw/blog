@@ -1,31 +1,37 @@
-/* A shared reading index: quiet, persistent, and usable with native anchors. */
+/* Keep the index in flow until the page has enough margin for a side rail. */
 .page-wayfinder {
-  --wayfinder-paper: var(--bg-warm, var(--color-paper));
   --wayfinder-ink: var(--fg-primary, var(--color-ink));
   --wayfinder-muted: var(--fg-muted, var(--color-ink-muted, currentColor));
   --wayfinder-rule: var(--border-default, var(--color-rule));
-  position: sticky;
-  top: var(--wayfinder-header, 60px);
-  z-index: 25;
+  --wayfinder-accent: var(--accent, var(--color-accent));
   display: flex;
   align-items: center;
-  gap: 24px;
-  min-height: 62px;
+  gap: 32px;
   margin: 0;
-  border-block: 1px solid var(--wayfinder-rule);
-  background: var(--wayfinder-paper);
-  color: var(--wayfinder-ink);
-  font: 500 14px/1.4 system-ui, sans-serif;
+  padding-block: 8px;
+  border-bottom: 1px solid var(--wayfinder-rule);
+  color: var(--wayfinder-muted);
+  font: 400 14px/1.4 system-ui, sans-serif;
 }
-.page-wayfinder__label { margin-right: auto; color: var(--wayfinder-muted); font-size: 12px; }
-.page-wayfinder ol { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; }
-.page-wayfinder a { display: flex; align-items: center; gap: 8px; min-height: 48px; border-bottom: 2px solid transparent; color: inherit; text-decoration: none; white-space: nowrap; }
-.page-wayfinder a span { color: var(--wayfinder-muted); font: 11px ui-monospace, monospace; }
-.page-wayfinder a:hover, .page-wayfinder a[aria-current] { border-color: currentColor; }
-.page-wayfinder a[aria-current] { font-weight: 700; }
+.page-wayfinder__label { font-size: 12px; }
+.page-wayfinder ol { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; }
+.page-wayfinder a { display: flex; align-items: center; min-height: 44px; color: inherit; text-decoration: none; white-space: nowrap; }
+.page-wayfinder a:hover, .page-wayfinder a:focus-visible { color: var(--wayfinder-ink); }
+.page-wayfinder a[aria-current] { color: var(--wayfinder-accent); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
 .page-wayfinder a:focus-visible, .hp-entry-actions a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
-.hp-section[id], .about-studio section[id] { scroll-margin-top: var(--wayfinder-offset, 144px); }
+.hp-section[id], .about-studio section[id] { scroll-margin-top: var(--wayfinder-offset, 80px); }
 .hp-section[id]:focus-visible, .about-studio section[id]:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+
+/* The zero-height slot reserves no content width. Its index sits entirely
+   inside the outer margin, with room for keyboard focus at the viewport edge. */
+@media (min-width: 1600px) {
+  .page-wayfinder-slot { position: sticky; top: calc(var(--wayfinder-header, 60px) + 36px); height: 0; z-index: 5; }
+  .page-wayfinder { display: block; width: 144px; padding: 0; border: 0; transform: translateX(calc(-100% - 40px)); }
+  .page-wayfinder__label { display: block; padding-left: 16px; margin-bottom: 12px; }
+  .page-wayfinder ol { display: block; border-left: 1px solid var(--wayfinder-rule); }
+  .page-wayfinder a { margin-left: -1px; padding-left: 15px; border-left: 2px solid transparent; }
+  .page-wayfinder a[aria-current] { border-left-color: currentColor; text-decoration: none; }
+}
 
 /* Give the visitor an immediate route into the work; keep Bear's identity. */
 .homepage-root .hp-hero { padding: 48px 0 44px; gap: 40px; }
@@ -52,10 +58,6 @@
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
   ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 160ms; }
-  @supports (animation-timeline: scroll()) {
-    .page-wayfinder::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: currentColor; transform-origin: left; animation: wayfinder-progress linear both; animation-timeline: scroll(root block); }
-    @keyframes wayfinder-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hp-entry-actions a { transition: none; }
@@ -82,18 +84,13 @@
   .homepage-root .hp-bear-avatar-status { display: none; }
   .homepage-root .is-chat-open .hp-bear-chat { min-height: 360px; max-height: min(560px, 80dvh); }
   .homepage-root .hp-bear-chat-input { font-size: 16px; }
-  .page-wayfinder { min-height: 56px; gap: 0; }
+  .page-wayfinder { gap: 0; }
   .page-wayfinder__label { display: none; }
   .page-wayfinder ol { width: 100%; gap: 8px; justify-content: space-between; }
-  .page-wayfinder a { gap: 5px; font-size: 13px; }
-  .page-wayfinder a span { font-size: 10px; }
+  .page-wayfinder a { font-size: 13px; padding-inline: 4px; }
   .about-studio .studio-hero { min-height: 0; }
 }
 @media (max-width: 640px) {
   html[lang="zh"] .about-studio .studio-hero h1 { font-size: clamp(30px, 8vw, 40px); line-height: 1.18; }
 }
-@media (max-width: 380px) {
-  .page-wayfinder a span { display: none; }
-  .page-wayfinder a { padding-inline: 4px; }
-}
-@media print { .page-wayfinder, .hp-entry-actions { display: none; } }
+@media print { .page-wayfinder-slot, .hp-entry-actions { display: none; } }

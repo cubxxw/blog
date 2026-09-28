@@ -13,13 +13,15 @@
     (dict "id" "identity" "zh" "个人档案" "en" "Profile")
   -}}
 {{- end -}}
+<div class="page-wayfinder-slot">
 <nav class="page-wayfinder" data-page-wayfinder aria-label="{{ if $zh }}本页目录{{ else }}On this page{{ end }}">
-  <span class="page-wayfinder__label">{{ if $zh }}探索这份档案{{ else }}Explore the archive{{ end }}</span>
+  <span class="page-wayfinder__label" aria-hidden="true">{{ if $zh }}本页目录{{ else }}On this page{{ end }}</span>
   <ol>
-    {{- range $i, $item := $items }}
-    <li><a href="#{{ $item.id }}"><span aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>{{ cond $zh $item.zh $item.en }}</a></li>
+    {{- range $items }}
+    <li><a href="#{{ .id }}">{{ cond $zh .zh .en }}</a></li>
     {{- end }}
   </ol>
 </nav>
+</div>
 {{- $script := resources.Get "js/page-wayfinder.js" | js.Build (dict "minify" hugo.IsProduction) | fingerprint -}}
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>

@@ -7,7 +7,7 @@ if (nav) {
   const header = document.querySelector('.header-wrapper');
   let offset = 0;
   let activeIndex = -2;
-  let queued = false;
+  let observer;
 
   function update() {
     let current = -1;
@@ -24,20 +24,22 @@ if (nav) {
 
   function observe() {
     const headerHeight = header?.getBoundingClientRect().height || 0;
-    nav.style.setProperty('--wayfinder-header', `${headerHeight}px`);
-    offset = headerHeight + nav.getBoundingClientRect().height;
+    nav.parentElement.style.setProperty('--wayfinder-header', `${headerHeight}px`);
+    offset = headerHeight;
     const scrollPadding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
     document.documentElement.style.setProperty('--wayfinder-offset', `${Math.max(20, offset + 20 - scrollPadding)}px`);
+    // Watch the reading line, not a percentage of each (potentially very tall)
+    // section. The side index never contributes to the anchor's top clearance.
+    observer?.disconnect();
+    if ('IntersectionObserver' in window) {
+      const readingLine = Math.min(offset + 48, innerHeight - 1);
+      observer = new IntersectionObserver(update, {
+        rootMargin: `-${readingLine}px 0px -${Math.max(0, innerHeight - readingLine - 1)}px 0px`,
+      });
+      sections.filter(Boolean).forEach(section => observer.observe(section));
+    }
     update();
   }
-
-  // Four geometry reads only while scrolling; a tall section need not fully
-  // intersect the viewport for its heading to cross the reading position.
-  window.addEventListener('scroll', () => {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(() => { queued = false; update(); });
-  }, { passive: true });
 
   const anchors = [...links, ...document.querySelectorAll('.hp-entry-actions a[href^="#"]')];
   anchors.forEach(link => link.addEventListener('click', event => {
@@ -53,10 +55,13 @@ if (nav) {
   }));
   window.addEventListener('hashchange', update);
   window.addEventListener('pageshow', update);
+  // History restoration and an immediate jump can happen between observer
+  // deliveries. Reconcile once at rest, without a per-frame scroll handler.
+  window.addEventListener('scrollend', update);
   if ('ResizeObserver' in window) {
     const resize = new ResizeObserver(observe);
-    resize.observe(nav);
     if (header) resize.observe(header);
-  } else window.addEventListener('resize', observe, { passive: true });
+  }
+  window.addEventListener('resize', observe, { passive: true });
   observe();
 }

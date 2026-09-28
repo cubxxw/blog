@@ -20,7 +20,7 @@ Two directions were rendered at desktop and mobile widths before implementation:
   if editorial discovery becomes the sole purpose of the homepage.
 
 A was selected for clearer entry actions with less repeated content. The index
-replaces the decorative divider and persists during reading. About keeps the
+provides native links to the page sections. About keeps the
 photographic introduction and provides direct access to writing, products, travel
 and the public identity card. This is a design judgment, not a user-study result.
 
@@ -34,7 +34,7 @@ provides direct routes to work. Their visual identities are not copied.
 | Area | Baseline problem | Chosen change |
 | --- | --- | --- |
 | First viewport | A very large name and secondary About link dominate the reading entrance | Tighter type scale; primary reading and product links; preserve biography and Bear |
-| Long-page navigation | No compact map linking distant sections | Native anchor index with reading-position state, sticky offset, URL history and keyboard destination focus |
+| Long-page navigation | A full-width sticky index covers cards while reading | Margin index at 1600px and wider; in-flow links on smaller screens; native history, reading-position state and keyboard destination focus |
 | Mobile About | Chinese heading leaves an isolated final character; carousel controls are small | Responsive Chinese line grouping and 44px controls |
 | Motion | Decorative engine downloads before checking device eligibility; About carousel starts automatically | Pre-import eligibility checks, static fallback, explicit carousel play |
 | Mobile chat | Hiding the decorative orbit also removes the useful chat | Compact full-row entry, in-place chat and 16px input; no mobile 3D download |
@@ -49,12 +49,16 @@ provides direct routes to work. Their visual identities are not copied.
 - Cross-document View Transitions add a short fade between Home and About when
   motion is allowed. Both documents opt in; unsupported browsers keep ordinary
   navigation. No client router or transition library is required.
-- CSS scroll-driven animation draws the reading progress line only where
-  `animation-timeline` is supported and motion is allowed. The directory remains
-  complete without it.
-- Four section positions are read in a single requested frame only during scroll;
-  the current-link attributes change only when the active section changes. This
-  avoids the inaccurate full-section intersection thresholds on very tall pages.
+- The index uses the outer left margin only when there is space beyond the
+  unchanged content column (1600px and wider). A zero-height sticky slot keeps
+  it beside the sections without occupying their width. At smaller widths it
+  stays in normal flow and scrolls away; there is no floating horizontal bar,
+  duplicate section numbering or decorative progress line.
+- IntersectionObserver watches a narrow reading line below the site header.
+  It handles tall sections without per-frame scroll reads; `scrollend` reconciles
+  native history restoration after consecutive jumps. Anchor clearance
+  includes only the site header, never the side index height. Native links work
+  without JavaScript; `aria-current` and destination focus are enhancements.
 - Keep 3D as an eligible-device enhancement. No new WebGPU scene, dependency,
   generated biography, fake user metric or third-party service is introduced.
 - Homepage body typography uses its existing sans/mono families. The masthead
@@ -85,6 +89,17 @@ real-user Core Web Vitals improvement.
 
 Preserve unrelated work in the original checkout. Delivery requires independent
 review, current-head CI and a readback of the merged revision and deployed assets.
+
+### Navigation refinement, 28 September 2026
+
+The full-width sticky bar obscured article cards while scrolling. It now uses
+the outer margin on wide screens and stays in document flow on smaller screens.
+Local validation: 58 functional checks passed, with two existing mobile-only
+cases skipped in the desktop project. The layout check covered Home and About in
+both languages and themes at 375, 768, 1024, 1440, 1600 and 1720px (48 combinations),
+with no index overlap, horizontal overflow or page script errors. TypeScript
+checks and the production Hugo build passed. These are local results, not
+confirmation of a production deployment or field performance.
 
 ## Measured output and acceptance
 
