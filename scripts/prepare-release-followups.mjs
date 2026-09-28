@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-import { mkdirSync, mkdtempSync, writeFileSync, rmSync, appendFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { loadVerifiedReceipt, loadHistoricalReceipt } from './lib/site-release.mjs';
 import { authenticatedFetch, requestJson, GITHUB_API } from './lib/netlify-release-client.mjs';
+import { readPublishedPageMap } from './lib/release-artifacts.mjs';
 import { prepareReleaseContext } from './lib/release-followups.mjs';
+import { validateSearchState } from './lib/search-delivery.mjs';
 
 export async function runPrepareReleaseFollowups({ args = [], env = process.env, fetchImpl = fetch, exec = execFileSync } = {}) {
   const flags = {};
@@ -35,30 +36,22 @@ export async function runPrepareReleaseFollowups({ args = [], env = process.env,
     },
     loadVerifiedReceipt: (identity) => loadVerifiedReceipt({ ...options, ...identity }),
     loadHistoricalReceipt: (identity) => loadHistoricalReceipt({ ...options, ...identity }),
-    readArtifactPageMap: async ({ artifactId }) => {
-      if (!/^\d+$/.test(String(artifactId))) throw new Error('Invalid source artifact ID.');
-      const metadata = await requestJson(apiFetch, `${base}/actions/artifacts/${artifactId}`);
-      if (metadata.expired || metadata.size_in_bytes > 512 * 1024 * 1024) throw new Error('Source artifact expired or exceeds the bounded download; recover its verified page map.');
-      const dir = mkdtempSync(join(tmpdir(), 'blog-followup-evidence-'));
-      try {
-        const archive = join(dir, 'artifact.zip');
-        // gh handles GitHub's signed download redirect without exposing tokens.
-        const bytes = exec('gh', ['api', `repos/${repo}/actions/artifacts/${artifactId}/zip`], { env: { ...env, GH_TOKEN: token }, maxBuffer: 512 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
-        writeFileSync(archive, bytes);
-        // Read exactly one expected file, never extract an untrusted archive.
-        const contents = exec('unzip', ['-p', archive, 'page-map.json'], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
-        return JSON.parse(contents);
-      } finally { rmSync(dir, { recursive: true, force: true }); }
+    loadSearchState: async () => {
+      const file=await requestJson(apiFetch,`${base}/contents/config/search-delivery-state.json?ref=main`);
+      if(file.encoding!=='base64'||typeof file.content!=='string')throw new Error('Search progress state is unavailable');
+      return validateSearchState(JSON.parse(Buffer.from(file.content,'base64').toString('utf8')));
     },
+    readArtifactPageMap: (sourceProof) => readPublishedPageMap({sourceProof,fetch:apiFetch,token,exec,env}),
   });
   const out = resolve(flags['--out-dir'] || 'followups');
   mkdirSync(out, { recursive: true });
   const writeJson = (name, value) => writeFileSync(join(out, name), JSON.stringify(value, null, 2) + '\n');
   const { receipt, currentDeploy, sourceProof, deploymentId } = result;
   writeJson('release-context.json', { receipt, currentDeploy, sourceProof, deploymentId });
-  writeJson('followups.json', { ...result, currentPageMap: undefined, previousPageMap: undefined });
+  writeJson('followups.json', { ...result, currentPageMap: undefined, previousPageMap: undefined,initialPageMap:undefined });
   writeJson('current-page-map.json', result.currentPageMap);
   if (result.previousPageMap) writeJson('previous-page-map.json', result.previousPageMap);
+  if (result.initialPageMap) writeJson('initial-page-map.json',result.initialPageMap);
   writeFileSync(join(out, 'urls.txt'), result.urls.length ? result.urls.join('\n') + '\n' : '');
   if (env.GITHUB_OUTPUT) appendFileSync(env.GITHUB_OUTPUT, `status=${result.status}\ndeployment_id=${deploymentId}\nfeed_base_url=${result.feedBaseUrl}\n`);
   return result;

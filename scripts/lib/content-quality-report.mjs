@@ -73,7 +73,8 @@ export async function runSourceQuality({repoRoot,changeSet,all=false,baseline=[]
     for(const segment of file.split('/')) {current=path.join(current,segment);if((await fs.lstat(current)).isSymbolicLink()) throw new Error(`Source symlink rejected: ${file}`);}
     diagnostics.push(...await checkSource({file,text:await fs.readFile(full,'utf8'),tags}));
   }
-  const flavorScope=changeSet ? changeSet.files.filter(f=>f.status!=='D' && scope.includes(f.path)).map(f=>f.path) : scope;
+  const flavorScope=changeSet ? changeSet.files.filter(f=>['A','M','R','C'].includes(f.status) && scope.includes(f.path)).map(f=>f.path) : scope;
+  if(changeSet?.baseSha===null) diagnostics.push(diagnostic({ruleId:'flavor-scope-unknown',file:'scripts/ci-changes.mjs',line:1,severity:'warning',message:'Full structural inventory checked. No authored-text diff is available; historical prose analysis remains a separate full audit.',evidence:'Unknown comparison baseline',waivable:false}));
   diagnostics.push(...legacyGates({repoRoot:root,scope,flavorScope}));
   return applyBaseline({scope,diagnostics,baseline,mode});
 }

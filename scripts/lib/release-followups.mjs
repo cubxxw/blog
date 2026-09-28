@@ -86,23 +86,25 @@ export async function assertPublicRelease({ receipt, fetch = globalThis.fetch })
 
 export async function prepareReleaseContext({
   deploymentId, artifactId, siteId, listDeployments, loadVerifiedReceipt,
-  loadHistoricalReceipt, readArtifactPageMap,
+  loadHistoricalReceipt, readArtifactPageMap, loadSearchState=async()=>null,
 }) {
   const records = await listDeployments();
   if (!Array.isArray(records)) throw new Error('Deployment history is unavailable; recover verified evidence.');
-  const candidates = records.filter((record) => record.payload?.receipt?.status === 'verified' && record.payload.receipt.siteId === siteId)
+  const candidates = records.filter((record) => ['verified','rollback-verified'].includes(record.payload?.receipt?.status) && record.payload.receipt.siteId === siteId)
     .sort((a, b) => Date.parse(b.payload.receipt.verifiedAt) - Date.parse(a.payload.receipt.verifiedAt));
   const selected = deploymentId ? records.find((record) => String(record.id) === String(deploymentId)) : candidates[0];
   if (!selected) throw new Error('No trusted deployment receipt found; verify the current production deployment first.');
   const context = await loadVerifiedReceipt({ deploymentId: String(selected.id) });
-  validateContext(context);
+  if(context.receipt.status==='rollback-verified')assertCurrentProduction(context);else validateContext(context);
   if (!context.sourceProof?.artifactId || (artifactId && String(context.sourceProof.artifactId) !== String(artifactId))) throw new Error('Current artifact does not match the authenticated receipt.');
   const currentPageMap = await readArtifactPageMap(context.sourceProof);
   indexPages(currentPageMap);
   if (currentPageMap.sourceSha !== context.receipt.sourceSha || hashJson(currentPageMap) !== context.receipt.pageMapDigest) throw new Error('Current page map digest/source mismatch.');
-  const previousRecord = candidates.find((record) => String(record.id) !== String(selected.id) && Date.parse(record.payload.receipt.verifiedAt) < Date.parse(context.receipt.verifiedAt));
   const base = { schema: 'blog-followups/1', deploymentId: String(selected.id), ...context, currentPageMap };
+  if(context.receipt.status==='rollback-verified')return {...base,status:'rollback',urls:[],previousDeploymentId:null,previousPageMap:null,feedBaseUrl:null};
+  const previousRecord = candidates.find((record) => String(record.id) !== String(selected.id) && Date.parse(record.payload.receipt.verifiedAt) < Date.parse(context.receipt.verifiedAt) && (!context.receipt.previousDeployId || record.payload.receipt.deployId===context.receipt.previousDeployId));
   if (!previousRecord) {
+    if(candidates.some(record=>String(record.id)!==String(selected.id)))throw new Error('Actual previous Netlify publication has no verified history; reconcile it before followups.');
     return { ...base, status: 'bootstrap', urls: [], previousDeploymentId: null, previousPageMap: null, feedBaseUrl: context.receipt.deployUrl };
   }
   let previous, previousPageMap;
@@ -114,5 +116,16 @@ export async function prepareReleaseContext({
   } catch (cause) {
     throw new Error('Historical release evidence is unavailable or expired. Recover and verify the previous page map before retrying; never send all pages.', { cause });
   }
-  return { ...base, ...prepareFollowups({ ...context, previousPageMap, currentPageMap }), previousPageMap, previousDeploymentId: String(previousRecord.id) };
+  const searchState=await loadSearchState();
+  let initialPageMap;
+  if(!searchState?.providers?.indexnow||!searchState?.providers?.baidu) {
+    const first=candidates.at(-1);
+    if(String(first.id)===String(previousRecord.id))initialPageMap=previousPageMap;
+    else {
+      const initial=await loadHistoricalReceipt({deploymentId:String(first.id)});
+      initialPageMap=await readArtifactPageMap(initial.sourceProof);
+      if(hashJson(initialPageMap)!==initial.receipt.pageMapDigest)throw new Error('Initial search baseline does not match its verified publication');
+    }
+  }
+  return { ...base, ...prepareFollowups({ ...context, previousPageMap, currentPageMap }), previousPageMap, initialPageMap, previousDeploymentId: String(previousRecord.id) };
 }

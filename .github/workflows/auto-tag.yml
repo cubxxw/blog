@@ -23,31 +23,37 @@ on:
 jobs:
   create_tag:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: startsWith(github.event.comment.body, '/create tag')
     steps:
+      - name: Authorize repository maintainer
+        id: authorize
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          permission=$(gh api "repos/$GITHUB_REPOSITORY/collaborators/$GITHUB_ACTOR/permission" --jq '.permission')
+          case "$permission" in admin|maintain|write) ;; *) echo 'Maintainer permission required'; exit 1 ;; esac
       - name: Checkout code
         uses: actions/checkout@v7
 
       - name: Validate version number and get comment
         id: validate
+        env:
+          TAG_COMMAND: ${{ github.event.comment.body }}
         run: |
-          COMMENT="${{ github.event.comment.body }}"
-          VERSION=$(echo $COMMENT | cut -d ' ' -f 3)
-          TAG_COMMENT=$(echo $COMMENT | cut -d '"' -f 2)
-          if [[ $VERSION =~ ^v([0-9]+\.){2}[0-9]+$ ]]; then
-            echo "version=$VERSION" >> $GITHUB_OUTPUT
-            echo "tag_comment=$TAG_COMMENT" >> $GITHUB_OUTPUT
-          else
-            echo "Invalid version number."
-            exit 1
-          fi
+          node <<'JS'
+          const fs = require('node:fs');
+          const match = (process.env.TAG_COMMAND || '').match(/^\/create tag[ \t]+(v\d+\.\d+\.\d+)(?:[ \t]+"([^"\r\n]*)")?[ \t]*$/);
+          if (!match) throw new Error('Expected /create tag v1.2.3 optionally followed by a quoted one-line annotation');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${match[1]}\ntag_comment=${match[2] || `Release ${match[1]}`}\n`);
+          JS
 
       - name: Create a new tag
         env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+          VERSION: ${{ steps.validate.outputs.version }}
+          TAG_COMMENT: ${{ steps.validate.outputs.tag_comment }}
         run: |
-          VERSION="${{ steps.validate.outputs.version }}"
-          TAG_COMMENT="${{ steps.validate.outputs.tag_comment }}"
-          git tag -a $VERSION -m "$TAG_COMMENT"
-          git push origin $VERSION
-          echo "tag_created=$VERSION" >> $GITHUB_OUTPUT
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' tag -a "$VERSION" -m "$TAG_COMMENT"
+          git push origin "$VERSION"
+          echo "tag_created=$VERSION" >> "$GITHUB_OUTPUT"

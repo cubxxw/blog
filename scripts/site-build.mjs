@@ -407,6 +407,21 @@ export async function buildSite({
       cwd: root,
       env,
     });
+    if (target !== "preview") {
+      await exec({
+        stage: "seo-output-check",
+        command: process.execPath,
+        args: [path.join(root,"scripts/check-generated-seo.mjs"),"--public-dir",publicDir,"--target",target],
+        cwd: root,
+        env,
+      });
+      if (exec === executeBuild) {
+        const reportPath=path.join(output,"output-report.json");
+        const report=JSON.parse(fs.readFileSync(reportPath,"utf8"));
+        report.generatedSeo={target,status:"success"};
+        fs.writeFileSync(reportPath,JSON.stringify(report,null,2)+"\n");
+      }
+    }
     if (exec === executeBuild && target !== "preview")
       assertProductionSource({ repoRoot: root, sourceSha });
     return { publicDir, pageMapPath, functionBundleDir, deployConfigPath };

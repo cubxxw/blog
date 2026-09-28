@@ -1,0 +1,40 @@
+name: Inspect or control native Netlify builds
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        type: choice
+        options: [inspect, pause, resume]
+        default: inspect
+        description: Pause only after draft qualification; resume only after pausing Actions
+permissions:
+  contents: read
+jobs:
+  control:
+    if: github.ref == 'refs/heads/main' && github.repository == 'cubxxw/blog'
+    environment: production
+    runs-on: ubuntu-latest
+    concurrency:
+      group: blog-production-release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.23.1'
+      - name: Inspect and record the platform state
+        env:
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          BLOG_RELEASE_MODE: ${{ vars.BLOG_RELEASE_MODE || 'shadow' }}
+          OPERATION: ${{ inputs.operation }}
+        run: node scripts/netlify-build-control.mjs --operation "$OPERATION" --out evidence/native-builds.json
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: native-builds-${{ github.run_id }}
+          path: evidence/native-builds.json
+          if-no-files-found: warn
+          retention-days: 30

@@ -9,7 +9,7 @@ import { validateContract, releaseMode, requiredJobsPassed } from './lib/ci-cont
 
 const change = (path, status = 'M', oldPath = null) => ({path,status,oldPath});
 test('maintenance and observation changes skip publishing, policy changes do not', () => {
-  for (const name of ['README.md','docs/example.md','config/newsletter-state.json','data/seo/psi-2026-09-28.json']) {
+  for (const name of ['README.md','docs/example.md','config/newsletter-state.json','config/search-delivery-state.json','data/seo/psi-2026-09-28.json']) {
     assert.equal(classifyChanges({files:[change(name)],historyComplete:true}).publish,false,name);
   }
   assert.equal(classifyChanges({files:[change('data/seo/indexable_tags.yml')],historyComplete:true}).publish,true);
@@ -56,6 +56,7 @@ test('first push and missing or non-ancestor before fail toward a full scan', as
   for(const before of ['0'.repeat(40),'f'.repeat(40)]) {
     const result=await resolveChangeSet({repoRoot:r.root,eventPath:r.event({before}),headSha:head});
     assert.equal(result.fullScan,true);assert.equal(result.baseSha,null);assert.equal(result.sourceFiles.length,1);
+    assert.ok(result.files.every(file=>file.status==='U'), 'unknown history must not claim all historical files were newly authored');
   }
   r.git('checkout','--orphan','other');r.write('README.md','diverged');const other=r.commit();
   const result=await resolveChangeSet({repoRoot:r.root,eventPath:r.event({before:other}),headSha:head});

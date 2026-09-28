@@ -1,7 +1,4 @@
-import { execFileSync } from 'node:child_process';
-import { mkdtempSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { createGitJsonStore } from './git-json-state.mjs';
 
 export const NEWSLETTER_STATE_SCHEMA = 'newsletter-state/2';
 const plainObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -103,65 +100,6 @@ export async function sendWithIntent({ item, state, persistIntent, createEmail, 
 // index. It never stashes, rebases, commits, or stages the author's checkout.
 // Concurrent changes to the newsletter ledger fail closed; unrelated commits
 // are preserved by rebuilding the state-only commit on the fresh remote tree.
-export function createGitStateStore({ cwd = process.cwd(), exec = execFileSync } = {}) {
-  const statePath = 'config/newsletter-state.json';
-  let expected;
-  let loaded = false;
-  const run = (args, options = {}) => exec('git', args, {
-    cwd, encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'], ...options,
-  }).trim();
-  const readRemote = () => {
-    run(['fetch', '--no-tags', 'origin', '+refs/heads/main:refs/remotes/origin/main']);
-    const parent = run(['rev-parse', 'refs/remotes/origin/main']);
-    const present = run(['ls-tree', '--name-only', parent, '--', statePath]);
-    const state = present ? JSON.parse(run(['show', `${parent}:${statePath}`])) : null;
-    if (state !== null) migrateNewsletterState(state);
-    return { parent, state };
-  };
-  const fingerprint = (state) => JSON.stringify(state);
-  return {
-    async load() {
-      const { state } = readRemote();
-      expected = state;
-      loaded = true;
-      return structuredClone(state);
-    },
-    async persist(state) {
-      if (!loaded) throw new Error('Load the remote newsletter state before persisting.');
-      const nextState = migrateNewsletterState(state);
-      const temp = mkdtempSync(join(tmpdir(), 'blog-newsletter-index-'));
-      try {
-        for (let attempt = 0; attempt < 3; attempt++) {
-          const { parent, state: remote } = readRemote();
-          if (fingerprint(remote) === fingerprint(nextState)) { expected = remote; return; }
-          if (fingerprint(remote) !== fingerprint(expected)) throw new Error('Concurrent newsletter state changed; reconcile before retrying.');
-          const env = {
-            ...process.env, GIT_INDEX_FILE: join(temp, 'index'),
-            GIT_AUTHOR_NAME: 'github-actions[bot]', GIT_AUTHOR_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com',
-            GIT_COMMITTER_NAME: 'github-actions[bot]', GIT_COMMITTER_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com',
-          };
-          run(['read-tree', parent], { env });
-          const blob = run(['hash-object', '-w', '--stdin'], { input: JSON.stringify(nextState, null, 2) + '\n' });
-          run(['update-index', '--add', '--cacheinfo', `100644,${blob},${statePath}`], { env });
-          const tree = run(['write-tree'], { env });
-          const commit = run(['commit-tree', tree, '-p', parent, '-m', 'chore(newsletter): persist delivery state [skip ci]'], { env });
-          try {
-            run(['push', 'origin', `${commit}:refs/heads/main`]);
-            expected = structuredClone(nextState);
-            return;
-          } catch (cause) {
-            // A lost push response may still have applied. The next fetch
-            // proves the state before any provider operation is allowed.
-            if (attempt === 2) {
-              const { state: observed } = readRemote();
-              if (fingerprint(observed) === fingerprint(nextState)) { expected = observed; return; }
-              throw new Error('Newsletter state push failed; no blind retry is safe.', { cause });
-            }
-          }
-        }
-      } finally {
-        rmSync(temp, { recursive: true, force: true });
-      }
-    },
-  };
+export function createGitStateStore(options = {}) {
+  return createGitJsonStore({ ...options, statePath: 'config/newsletter-state.json', validateState: migrateNewsletterState, message: 'chore(newsletter): persist delivery state [skip ci]' });
 }

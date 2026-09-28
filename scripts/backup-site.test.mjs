@@ -151,6 +151,14 @@ test('backup travel keeps the bookshelf while omitting unavailable book AI actio
     assert.ok(primary.some((node) => attr(node, 'src')?.includes('travel-book-ai.js')));
   }
 });
+test('travel hero never links to a world map that was not rendered',()=>{
+  for(const target of ['production','backup'])for(const prefix of ['', 'zh/']) {
+    const parsed=htmlNodes(target,`${prefix}travel/index.html`);
+    const hero=parsed.find(node=>node.tagName==='a'&&attr(node,'class')?.split(' ').includes('tw-btn--primary'));
+    const hash=new URL(attr(hero,'href'),backupBase).hash.slice(1);
+    assert.ok(parsed.some(node=>attr(node,'id')===hash),`${target}/${prefix}: ${hash}`);
+  }
+});
 
 test('backup navigation and local script/style URLs retain the Pages subpath', () => {
   for (const prefix of ['', 'zh/']) {

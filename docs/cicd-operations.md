@@ -27,6 +27,8 @@ npm run quality:test
 
 普通文章优先检查变更文章及已有双语对应页。共享模板、脚本、样式和路由扩大验证范围。`quality:output` 使用实际 Hugo 页面映射，检查最终 HTML 的表格、本地资源、链接和锚点。
 
+手动运行没有 Git 比较基线时，结构检查仍覆盖全文，但库存文件标为未知变更，不伪装成新写文章。已改动中文正文继续执行原有文风硬门禁；全量历史文风报告另行展示。报告会明确提示未知文风范围。
+
 生产构建使用冻结提交、工具链和时刻，生成一次 `public/`，经过 Critical CSS 和函数打包后验收。部署必须上传同一份冻结产物。`--buildFuture` 不属于生产入口。
 
 ```bash
@@ -48,15 +50,19 @@ CLI 参数中的提交和时间必须填入本次实际值；不要将示例占�
 
 `blog-release/1` 回执包含提交、构建输入摘要、产物摘要、发布标识、站点与 deployment ID、GitHub run/attempt、页面映射摘要、必要检查及验证状态。HTTP 200 和 main 最新提交均不能证明指定版本已上线。
 
+主分支验证使用独立 run 并发标识，同一 PR 的旧验证可以被新提交取消；发布与回退仍串行。发布前同时检查当前源码输入与现有部署的冻结时刻，旧重跑不能覆盖同源码的较新产物。线上检查从经认证的页面映射和变更范围选页面，核对 canonical/robots、关联资源 MIME 与路由；有意返回 404 的错误页不算故障。
+
 新入口为 **Verified release followups**：
 
 - 正常发布由主流水线传入 GitHub Deployment ID 和源 artifact ID。
 - 手动重试选择具体 Deployment ID，可选择 `newsletter`、`search`、`readme`、`lighthouse` 或全部任务。
 - 手动默认 dry-run；它不会创建邮件、修改 README 或发布日报 issue。
 - 未填写 Deployment ID 时，准备器查找并重新验证当前生产回执，不假设最新工作流就是线上版本。
-- active 模式的补偿时刻沿用原政策：Lighthouse 07:30 UTC、README 08:15 UTC、Newsletter 13:00 UTC。旧定时入口在 active 下不执行，因此不会双发。
+- active 模式的补偿时刻：Lighthouse 07:30 UTC、README 08:15 UTC、Newsletter 13:00 UTC；搜索队列另在 13:10 UTC 重试未完成 URL。旧定时入口在 active 下不执行，因此不会双发。
 
 实际通知范围来自上一次已验证生产页面映射与本次映射的差异，覆盖多提交发布、被取代的中间版本及日期到达后首次公开的文章。删除 URL 不进入新文章通知列表。
+
+搜索服务分别在 `config/search-delivery-state.json` 保存初始迁移基线和逐 URL 已接受的内容摘要。当前版本会继续处理之前失败或被替代版本留下的未提交变更，已删除 URL 从本次队列移除。Baidu 用单 URL 请求识别准确的接受结果，每十次成功及退出前持久化进度，配额不足使任务明确失败并等待后续补偿；IndexNow 只在 200/202 后记录该批进度。两者独立执行、共用串行状态写入，状态提交不触发站点发布。
 
 首次迁移没有更早的可信回执时，准备器明确返回 `bootstrap`，记录当前基线，不发送整个历史站点。已存在的历史证据过期、缺失或不匹配时必须失败；不得将其当作空页面映射。
 
@@ -128,3 +134,16 @@ artifact 名称为 `content-audit-RUN_ID`，保留 30 天。先判断故障属�
 先完成离线资格检查、影子 CI、draft deploy、函数与路由证明，再关闭旧下游自动入口并保持新下游开关关闭。核实没有在途旧发布后停用 Netlify Git builds；设置 active 发布固定版本，完成主域名和 deploy ID/marker 证明后才启用新下游。
 
 回退网站通过显式 rollback 操作恢复已有部署，不重新构建。回退与生产发布使用同一串行组，回退不发送新文章通知。遇到凭据、平台配置、旧产物证据或插件兼容性缺口时保持 shadow 或 paused，并在迁移证据中记录真实状态。
+
+正式发布和回退从受保护的 GitHub Actions 入口运行。回退写入新的生产历史记录，并保留原始构建来源；后续发布用真实的前一个 Netlify deploy 作比较基线，不误用已被回退的版本。
+
+```bash
+gh workflow run main.yaml -f draft_deploy=true
+gh workflow run netlify-build-control.yml -f operation=inspect
+gh workflow run netlify-build-control.yml -f operation=pause
+gh workflow run rollback-netlify.yml -f deployment_id=VERIFIED_GITHUB_DEPLOYMENT_ID
+```
+
+draft 必须返回 `draft-verified`，验证的是独立部署 URL 的版本、页面、资源与函数，不能拿“上传成功”代替，也不会生成生产回执。平台控制默认只读 inspect；pause 先保存当前部署检查点，再停止 Git builds，并检查仍在运行的原生构建。只有 `ready=true` 才具备切换条件。resume 要求 Actions 已不处于 active，防止双重发布。
+
+首次迁移以前的原生 Netlify 部署没有本协议回执。切换前保留其平台 deploy ID 作为人工恢复点；不能给旧版本伪造 GitHub 验证记录。以后由新链路生成的已验证版本才适用上述自动验证回退入口。

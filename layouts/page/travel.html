@@ -81,9 +81,9 @@
         {{- end -}}
       </p>
       <div class="tw-hero__actions tw-reveal">
-        <a href="#tw-worldmap" class="tw-btn tw-btn--primary">
+        <a href="{{ if gt (len $regionGroups) 0 }}#tw-worldmap{{ else }}#tw-map{{ end }}" class="tw-btn tw-btn--primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/></svg>
-          {{ if $isZh }}打开世界地图{{ else }}Open World Map{{ end }}
+          {{ if gt (len $regionGroups) 0 }}{{ if $isZh }}打开世界地图{{ else }}Open World Map{{ end }}{{ else }}{{ if $isZh }}阅读旅行笔记{{ else }}Read travel notes{{ end }}{{ end }}
         </a>
         <a href="{{ $polarsteps }}" target="_blank" rel="noopener noreferrer" class="tw-btn tw-btn--ghost">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>

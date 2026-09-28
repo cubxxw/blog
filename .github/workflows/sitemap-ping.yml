@@ -27,6 +27,9 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
+    concurrency:
+      group: blog-search-delivery
+      cancel-in-progress: false
     steps:
       - name: Checkout (need history for content diff)
         uses: actions/checkout@v7
@@ -46,17 +49,26 @@ jobs:
         id: release
         if: inputs.release_context_artifact_id != ''
         run: node scripts/release-followups.mjs assert-current --context followups/release-context.json --out followups/public-check-before.json
-      - name: Push verified publication difference
+      - name: Submit outstanding IndexNow changes
         if: inputs.release_context_artifact_id != ''
         env:
-          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           FOLLOWUP_DRY_RUN: ${{ inputs.dry_run }}
         run: |
-          args=(--file followups/urls.txt)
+          args=(--provider indexnow --context-dir followups)
           if [ "$FOLLOWUP_DRY_RUN" = "true" ]; then args+=(--dry-run); fi
-          if [ -n "$INDEXNOW_KEY" ]; then node scripts/indexnow-push.mjs "${args[@]}"; fi
-          if [ -n "$BAIDU_PUSH_TOKEN" ]; then node scripts/baidu-push.mjs "${args[@]}"; fi
+          if [ -n "$INDEXNOW_KEY" ]; then node scripts/push-release-search.mjs "${args[@]}"; fi
+      - name: Submit outstanding Baidu changes independently
+        if: always() && inputs.release_context_artifact_id != '' && steps.release.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+          FOLLOWUP_DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=(--provider baidu --context-dir followups)
+          if [ "$FOLLOWUP_DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          if [ -n "$BAIDU_PUSH_TOKEN" ]; then node scripts/push-release-search.mjs "${args[@]}"; fi
       - name: Wait for site to be updated
         run: |
           echo "Waiting for site deployment to propagate..."
@@ -175,4 +187,4 @@ jobs:
         if: inputs.release_context_artifact_id == ''
     if: github.repository == 'cubxxw/blog' && (((vars.BLOG_RELEASE_MODE == '' || vars.BLOG_RELEASE_MODE == 'shadow') && (inputs.release_context_artifact_id == '' || inputs.dry_run == true)) || (vars.BLOG_RELEASE_MODE == 'active' && vars.BLOG_FOLLOWUPS_ENABLED == 'true' && inputs.release_context_artifact_id != ''))
 permissions:
-  contents: read
+  contents: write

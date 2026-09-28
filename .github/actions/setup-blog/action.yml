@@ -11,7 +11,7 @@ runs:
       id: versions
       shell: bash
       run: |
-        node -e 'const c=require("./config/ci-toolchain.json"); console.log(`node=${c.node}\nhugo=${c.hugo}`)' >> "$GITHUB_OUTPUT"
+        node -e 'const c=require("./config/ci-toolchain.json"); for(const k of ["node","hugo","actionlint"]){if(!/^\d+\.\d+\.\d+$/.test(c[k]))throw new Error(`Invalid ${k} version`);console.log(`${k}=${c[k]}`)}' >> "$GITHUB_OUTPUT"
     - uses: actions/setup-node@v7
       with:
         node-version: ${{ steps.versions.outputs.node }}
@@ -20,6 +20,19 @@ runs:
       with:
         hugo-version: ${{ steps.versions.outputs.hugo }}
         extended: true
+    - name: Install the pinned workflow validator
+      shell: bash
+      env:
+        BLOG_ACTIONLINT_VERSION: ${{ steps.versions.outputs.actionlint }}
+      run: |
+        tool_dir="$RUNNER_TEMP/blog-actionlint-$BLOG_ACTIONLINT_VERSION"
+        mkdir -p "$tool_dir"
+        cd "$tool_dir"
+        curl -fsSLO "https://github.com/rhysd/actionlint/releases/download/v$BLOG_ACTIONLINT_VERSION/actionlint_${BLOG_ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+        curl -fsSLO "https://github.com/rhysd/actionlint/releases/download/v$BLOG_ACTIONLINT_VERSION/actionlint_${BLOG_ACTIONLINT_VERSION}_checksums.txt"
+        sha256sum --check --ignore-missing "actionlint_${BLOG_ACTIONLINT_VERSION}_checksums.txt"
+        tar -xzf "actionlint_${BLOG_ACTIONLINT_VERSION}_linux_amd64.tar.gz" actionlint
+        echo "$tool_dir" >> "$GITHUB_PATH"
     - name: Install locked dependencies
       shell: bash
       env:

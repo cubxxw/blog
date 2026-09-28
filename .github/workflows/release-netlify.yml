@@ -69,6 +69,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: release-receipt-${{ github.run_id }}-${{ github.run_attempt }}
-          path: tests/.artifacts/release-receipt.json
+          path: tests/.artifacts/release-receipt*.json
           if-no-files-found: warn
           retention-days: 30

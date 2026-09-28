@@ -83,6 +83,10 @@ test("isolated build completes plugin and function lifecycle before output check
     assert.ok(fs.existsSync(path.join(result.functionBundleDir, "a.zip")));
     assert.equal(fs.existsSync(path.join(root, ".netlify")), false);
     assert.equal(calls.filter((x) => x.stage === "netlify-build").length, 1);
+    const seo=calls.find(call=>call.stage==='seo-output-check');
+    assert.ok(seo, 'generated SEO is a required output gate');
+    assert.ok(seo.args.includes(result.publicDir));
+    assert.ok(calls.indexOf(seo)>calls.findIndex(call=>call.stage==='output-check'));
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

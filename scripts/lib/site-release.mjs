@@ -19,9 +19,20 @@ export function assertCurrentProduction({receipt,currentDeploy}) {
 }
 const hashJson=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
+export async function verifyDraftRelease({manifest,deployId,siteId,fetch,verifyPages}) {
+  const deploy=await requestJson(fetch,`${NETLIFY_API}/deploys/${encodeURIComponent(deployId)}`);
+  if(deploy.id!==deployId||deploy.site_id!==siteId||deploy.state!=='ready')throw new Error('Draft deployment is not ready for this site');
+  const deployUrl=deploymentUrl(deploy.deploy_ssl_url??deploy.deploy_url,deployId);
+  const draftFetch=(input,options={})=>{const url=new URL(input);const target=url.origin==='https://cubxxw.com'?new URL(url.pathname+url.search,deployUrl).href:url.href;return fetch(target,options);};
+  const marker=await requestJson(draftFetch,'https://cubxxw.com/__release.json');
+  if(marker.sourceSha!==manifest.sourceSha||marker.releaseId!==manifest.releaseId)throw new Error('Draft marker differs from verified artifact');
+  const ok=typeof verifyPages==='function'&&await verifyPages({fetch:draftFetch,deadline:Date.now()+280000});
+  return {schema:'blog-draft/1',status:ok?'draft-verified':'draft-failed',sourceSha:manifest.sourceSha,artifactDigest:manifest.fileSetDigest,siteId,deployId,deployUrl};
+}
+
 export async function verifyRelease({manifest,deployId,siteId,runId,runAttempt,fetch,previousDeployId,now=()=>new Date(),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms)),timeoutMs=300000,pollMs=5000,verifyPages}) {
   const started=now().getTime();
-  const result={schema:'blog-release/1',releaseId:manifest.releaseId,sourceSha:manifest.sourceSha,inputDigest:manifest.inputDigest,artifactDigest:manifest.fileSetDigest,pageMapDigest:manifest.pageMapDigest,runId:String(runId),runAttempt:String(runAttempt),siteId,deployId,deployUrl:'',verifiedAt:null,checks:manifest.checks,status:'verification-failed'};
+  const result={schema:'blog-release/1',releaseId:manifest.releaseId,previousDeployId:previousDeployId??null,sourceSha:manifest.sourceSha,inputDigest:manifest.inputDigest,artifactDigest:manifest.fileSetDigest,pageMapDigest:manifest.pageMapDigest,runId:String(runId),runAttempt:String(runAttempt),siteId,deployId,deployUrl:'',verifiedAt:null,checks:manifest.checks,status:'verification-failed'};
   let lastReason='Production verification did not complete';
   do {
     try {
@@ -37,7 +48,7 @@ export async function verifyRelease({manifest,deployId,siteId,runId,runAttempt,f
       }
       const marker=await requestJson(fetch,'https://cubxxw.com/__release.json',{headers:{'Cache-Control':'no-cache'}});
       if(marker.sourceSha!==manifest.sourceSha||marker.releaseId!==manifest.releaseId)throw new Error('Primary domain still serves a different release');
-      if(typeof verifyPages!=='function'||!await verifyPages({deployUrl:result.deployUrl,sourceSha:manifest.sourceSha,fetch}))throw new Error('Required page or function verification failed');
+      if(typeof verifyPages!=='function'||!await verifyPages({deployUrl:result.deployUrl,sourceSha:manifest.sourceSha,fetch,deadline:started+timeoutMs}))throw new Error('Required page or function verification failed');
       // Recheck after probes so a concurrent external deploy cannot certify mixed evidence.
       const finalSite=await requestJson(fetch,`${NETLIFY_API}/sites/${encodeURIComponent(siteId)}`);
       if(finalSite.published_deploy?.id!==deployId){result.status='superseded';result.reason='Deployment changed during probes';return result;}
@@ -78,6 +89,18 @@ export async function publishRelease({manifest,bundleRoot,sourceProof,siteId,dep
   const site=await requestJson(fetch,`${NETLIFY_API}/sites/${encodeURIComponent(siteId)}`);
   if(site.id!==siteId||!(site.custom_domain==='cubxxw.com'||site.ssl_url==='https://cubxxw.com'))throw new Error('Configured Netlify site does not own the production domain');
   if(deployKind==='production'&&site.build_settings?.stop_builds!==true)throw new Error('Stop Netlify Git builds before enabling Actions production publishing');
+  if(deployKind==='production'&&site.published_deploy?.id) {
+    const current=site.published_deploy.deploy_ssl_url?site.published_deploy:await requestJson(fetch,`${NETLIFY_API}/deploys/${encodeURIComponent(site.published_deploy.id)}`);
+    const markerResponse=await fetch(`${deploymentUrl(current.deploy_ssl_url??current.deploy_url,current.id)}/__release.json`,{redirect:'error',signal:AbortSignal.timeout(10000)});
+    // A legacy deploy has no marker at first cutover. Other failures are not
+    // evidence that it is safe to overwrite an already newer publication.
+    if(markerResponse.status!==404) {
+      if(!markerResponse.ok)throw new Error('Current immutable deployment marker is unavailable');
+      const marker=await markerResponse.json();
+      if(!Number.isFinite(Date.parse(marker.clock)))throw new Error('Current deployment clock is unprovable');
+      if(Date.parse(marker.clock)>Date.parse(manifest.clock))return {status:'superseded',deployId:null,deployUrl:null};
+    }
+  }
   const staging=mkdtempSync(path.join(os.tmpdir(),'blog-release-'));
   try {
     // Isolate configuration lookup from the repo and local CLI auth/cache state.
@@ -111,7 +134,7 @@ async function loadReceiptRecord({deploymentId,fetch:fetchImpl=globalThis.fetch,
   if(deployment.environment!=='production'||deployment.creator?.login!=='github-actions[bot]')throw new Error('Untrusted deployment record');
   const receipt=deployment.payload?.receipt;
   validateReceipt(receipt);
-  if(receipt.status!=='verified'||deployment.sha!==receipt.sourceSha||receipt.siteId!==siteId)throw new Error('Deployment receipt provenance mismatch');
+  if(!['verified','rollback-verified'].includes(receipt.status)||deployment.sha!==receipt.sourceSha||receipt.siteId!==siteId)throw new Error('Deployment receipt provenance mismatch');
   const run=await requestJson(fetch,`${GITHUB_API}/repos/${repo}/actions/runs/${receipt.runId}/attempts/${receipt.runAttempt}`);
   if(run.head_sha!==receipt.sourceSha||run.head_branch!=='main'||run.run_attempt!==Number(receipt.runAttempt)||run.repository?.full_name!==repo||run.path!=='.github/workflows/main.yaml'||!['push','workflow_dispatch'].includes(run.event))throw new Error('Receipt run identity mismatch');
   const proof=deployment.payload?.sourceProof;
@@ -130,3 +153,13 @@ async function loadReceiptRecord({deploymentId,fetch:fetchImpl=globalThis.fetch,
 }
 export const loadVerifiedReceipt=options=>loadReceiptRecord({...options,requireCurrent:true});
 export const loadHistoricalReceipt=options=>loadReceiptRecord({...options,requireCurrent:false});
+
+export async function recordPublication({receipt,sourceProof,fetch,operationRunId,operationAttempt}) {
+  validateReceipt(receipt);
+  if(!/^\d+$/.test(String(operationRunId))||!/^\d+$/.test(String(operationAttempt))||Number(operationAttempt)<1)throw new Error('Invalid publication operation identity');
+  await proveRun({sourceProof,fetch,expectedSha:receipt.sourceSha});
+  const deployment=await requestJson(fetch,`${GITHUB_API}/repos/cubxxw/blog/deployments`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:receipt.sourceSha,environment:'production',auto_merge:false,required_contexts:[],production_environment:true,payload:{receipt,sourceProof,operation:{kind:receipt.status==='rollback-verified'?'rollback':'publish',runId:String(operationRunId),runAttempt:String(operationAttempt)}}})});
+  if(!/^\d+$/.test(String(deployment.id))||deployment.sha!==receipt.sourceSha||deployment.creator?.login!=='github-actions[bot]')throw new Error('GitHub publication record identity is unproven');
+  await requestJson(fetch,`${GITHUB_API}/repos/cubxxw/blog/deployments/${deployment.id}/statuses`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({state:'success',environment_url:'https://cubxxw.com',log_url:`https://github.com/cubxxw/blog/actions/runs/${operationRunId}`})});
+  return String(deployment.id);
+}

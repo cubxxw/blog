@@ -7,7 +7,7 @@ const suites = ['source','output','browser','interactive','functions','seo','wor
 const SHA = /^[0-9a-f]{40}$/;
 const article = file => /^content\/(en|zh)\/.+\.md$/.test(file) && !/\/(AGENTS|CLAUDE)\.md$/.test(file);
 const observation = file => /^data\/seo\/(?:gsc|psi|crux)-\d{4}-\d{2}-\d{2}(?:-[A-Za-z0-9-]+)?\.json$/.test(file);
-export const isBookkeeping = file => /^(?:docs\/|README\.md$|CLAUDE\.md$|AGENTS\.md$|config\/newsletter-state\.json$)/.test(file) || observation(file);
+export const isBookkeeping = file => /^(?:docs\/|README\.md$|CLAUDE\.md$|AGENTS\.md$|config\/(?:newsletter-state|search-delivery-state)\.json$)/.test(file) || observation(file);
 const validationOnly = file => /^(?:tests\/|scripts\/.+\.test\.mjs$)/.test(file);
 
 export function classifyChanges({files,historyComplete}) {
@@ -44,7 +44,9 @@ export async function resolveChangeSet({repoRoot,eventPath,headSha}) {
   } else if(SHA.test(event.before ?? '') && !/^0+$/.test(event.before) && ancestor(repoRoot,event.before,headSha)) baseSha=event.before;
   const inventory=tracked(repoRoot,headSha);
   const names=new Set(inventory.map(f=>f.path));
-  const files=baseSha?diffFiles(repoRoot,baseSha,headSha):inventory.map(f=>({status:'A',path:f.path,oldPath:null}));
+  // U is an unproven inventory entry, not an assertion that an old article
+  // was just written. Structural checks remain full; prose policy needs a diff.
+  const files=baseSha?diffFiles(repoRoot,baseSha,headSha):inventory.map(f=>({status:'U',path:f.path,oldPath:null}));
   const classification=classifyChanges({files,historyComplete:baseSha!==null});
   const selected=new Set(classification.fullScan?inventory.filter(f=>article(f.path)).map(f=>f.path):files.filter(f=>f.status!=='D' && article(f.path)).map(f=>f.path));
   for(const file of [...selected]){

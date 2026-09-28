@@ -44,6 +44,7 @@ jobs:
           PAGES_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           node scripts/ci-changes.mjs --head "$SOURCE_SHA" --out tests/.artifacts/backup-changes.json
+          node scripts/check-content-quality.mjs source --change-set tests/.artifacts/backup-changes.json --out tests/.artifacts/backup-source-report.json
           node scripts/site-build.mjs --target backup --sha "$SOURCE_SHA" --clock "$(date -u +%FT%TZ)" --base-url "$PAGES_URL/" --out tests/.artifacts/pages
           node scripts/site-verify.mjs --public-dir tests/.artifacts/pages/public --page-map tests/.artifacts/pages/page-map.json --change-set tests/.artifacts/backup-changes.json --report-dir tests/.artifacts/pages-report
           node scripts/check-generated-seo.mjs --public-dir tests/.artifacts/pages/public --target backup

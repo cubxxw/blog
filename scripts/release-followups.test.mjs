@@ -86,6 +86,22 @@ test('first trusted migration is explicitly bootstrap and cannot notify the arch
   assert.deepEqual(result.urls, []);
   assert.equal(result.previousDeploymentId, null);
 });
+test('rollback is current publication history but never triggers notifications',async()=>{
+  const {options,current,records}=preparationFixture();
+  const rollback={...current,receipt:{...current.receipt,status:'rollback-verified'}};
+  records[0].payload.receipt=rollback.receipt;
+  const result=await prepareReleaseContext({...options,loadVerifiedReceipt:async()=>({...rollback,sourceProof:{artifactId:'22'}})});
+  assert.equal(result.status,'rollback');assert.deepEqual(result.urls,[]);
+});
+test('a release after rollback uses the actual previous Netlify deploy, not the newer rejected baseline',async()=>{
+  const {options,current,previous,records}=preparationFixture();
+  previous.receipt.deployId='restored-a';previous.receipt.deployUrl='https://restored-a--cubxxw.netlify.app';
+  previous.receipt.status='rollback-verified';previous.receipt.verifiedAt='2026-09-27T23:00:00.000Z';
+  current.receipt.previousDeployId='restored-a';
+  records.push({id:9,payload:{receipt:{...previous.receipt,status:'verified',deployId:'failed-b',verifiedAt:'2026-09-27T22:00:00.000Z'},sourceProof:{artifactId:'99'}}});
+  const result=await prepareReleaseContext(options);
+  assert.equal(result.previousDeploymentId,'1');
+});
 
 test('expired previous evidence or mismatched current artifact refuses send-all fallback', async () => {
   const { options } = preparationFixture();
@@ -115,6 +131,7 @@ test('preparation CLI verifies real loader contracts and reads exact page maps f
     env: { GITHUB_REPOSITORY: 'cubxxw/blog', GH_TOKEN: 'fake-github', NETLIFY_SITE_ID: 'site-1', NETLIFY_AUTH_TOKEN: 'fake-netlify' },
     fetchImpl: async (value, options) => {
       const url = new URL(value); fetched.push(url.href);
+      if(url.pathname.endsWith('/contents/config/search-delivery-state.json'))return new Response(JSON.stringify({encoding:'base64',content:Buffer.from(JSON.stringify({schema:'blog-search-state/1',providers:{}})).toString('base64')}));
       let body;
       if (url.pathname === '/repos/cubxxw/blog/deployments') body = records;
       else if (/\/deployments\/[12]$/.test(url.pathname)) body = records.find((record) => url.pathname.endsWith(`/${record.id}`));

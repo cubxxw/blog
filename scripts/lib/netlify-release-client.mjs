@@ -14,7 +14,7 @@ export function authenticatedFetch({githubToken,netlifyToken,fetchImpl=globalThi
 export async function requestJson(fetch,url,options={}) {
   const response=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(10000),...options});
   if(!response.ok)throw new Error(`Release API request failed (${response.status}) at ${new URL(url).origin}`);
-  return response.json();
+  try{return await response.json();}catch{throw new Error(`Release API returned unreadable JSON at ${new URL(url).origin}`);}
 }
 export function deploymentUrl(value,deployId) {
   const url=new URL(value);

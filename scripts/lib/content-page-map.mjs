@@ -38,6 +38,22 @@ export function htmlElements(node) {
 export const attribute=(node,name)=>node.attrs?.find(a=>a.name===name)?.value;
 export const textContent=node=>node.nodeName==='#text'?node.value:(node.childNodes??[]).map(textContent).join('');
 
+export function renderedPageData(html,url) {
+  const nodes=htmlElements(typeof html==='string'?parse(html):html),resources=new Map();
+  for(const node of nodes) {
+    const values=[];let kind;
+    if(node.tagName==='script'){values.push(attribute(node,'src'));kind='script';}
+    if(node.tagName==='img'){values.push(attribute(node,'src'));for(const part of (attribute(node,'srcset')??'').split(','))values.push(part.trim().split(/\s+/)[0]);kind='image';}
+    if(node.tagName==='link'&&attribute(node,'rel')?.toLowerCase().split(/\s+/).includes('stylesheet')){values.push(attribute(node,'href'));kind='style';}
+    for(const value of values.filter(Boolean)){try{const resource=new URL(value,url);resource.hash='';if(['https:','http:'].includes(resource.protocol))resources.set(resource.href,kind);}catch{/* Source/output validation reports malformed references separately. */}}
+  }
+  return {
+    canonical:attribute(nodes.find(n=>n.tagName==='link'&&attribute(n,'rel')?.toLowerCase()==='canonical')??{},'href')??'',
+    robots:(attribute(nodes.find(n=>n.tagName==='meta'&&attribute(n,'name')?.toLowerCase()==='robots')??{},'content')??'').toLowerCase().split(/[\s,]+/).filter(Boolean).sort().join(','),
+    resources:[...resources].map(([url,kind])=>({url,kind})),
+  };
+}
+
 export function decodedPath(value) {
   let decoded;
   try {decoded=decodeURIComponent(value);} catch {throw new Error(`Invalid URL encoding: ${value}`);}
@@ -77,7 +93,7 @@ export async function readPageMap({repoRoot,publicDir,hugoCsv,sourceSha,clock,ta
     const relative=outputPath==='index.html'?'':outputPath.replace(/index\.html$/,'');
     const url=new URL(relative,result.baseUrl.endsWith('/')?result.baseUrl:result.baseUrl+'/').href;
     const alias=htmlElements(parse(html)).some(node=>node.tagName==='meta' && attribute(node,'http-equiv')?.toLowerCase()==='refresh');
-    result.pages.push({source:row?.source ?? null,url:row?.url ?? url,outputPath,lang:row?.lang ?? (relative.startsWith('zh/')?'zh':'en'),kind:row?.kind ?? (alias?'alias':'output'),contentHash:createHash('sha256').update(html).digest('hex')});
+    result.pages.push({source:row?.source ?? null,url:row?.url ?? url,outputPath,lang:row?.lang ?? (relative.startsWith('zh/')?'zh':'en'),kind:row?.kind ?? (alias?'alias':'output'),contentHash:createHash('sha256').update(html).digest('hex'),rendered:renderedPageData(html,row?.url??url)});
   }
   if(htmls.length===0) result.complete=false;
   validateContract(result.schema,result); return result;

@@ -25,4 +25,11 @@ test('production reusable workflow is isolated and gated behind verified main ar
   assert.equal(release.on.pull_request,undefined);
   assert.equal(main.permissions.contents,'read');
   assert.equal(main.jobs.verify.environment,undefined);
+  assert.match(main.jobs.verify.concurrency.group,/github\.run_id/, 'main verification cannot share a one-pending queue with bookkeeping runs');
+});
+test('manual backup applies the source gate before building',()=>{
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/hugo.yml','utf8'));
+  const commands=workflow.jobs.build.steps.map(step=>step.run??'').join('\n');
+  const source=commands.indexOf('check-content-quality.mjs source');
+  assert.ok(source>=0 && source<commands.indexOf('site-build.mjs --target backup'));
 });

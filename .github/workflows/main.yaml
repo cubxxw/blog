@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     concurrency:
-      group: blog-verify-${{ github.event.pull_request.number || github.ref }}
+      group: blog-verify-${{ github.event.pull_request.number || github.run_id }}
       cancel-in-progress: ${{ github.event_name == 'pull_request' }}
     outputs:
       publish: ${{ steps.plan.outputs.publish }}

@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
   actions: read
-  deployments: read
+  deployments: write
 jobs:
   rollback:
     runs-on: ubuntu-latest
@@ -37,5 +37,5 @@ jobs:
         if: always()
         with:
           name: rollback-${{ github.run_id }}
-          path: tests/.artifacts/rollback.json
+          path: tests/.artifacts/rollback*.json
           retention-days: 30
