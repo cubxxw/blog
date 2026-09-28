@@ -163,8 +163,8 @@ GoReleaser 可以通过调整`.goreleaser.yaml`文件来定制。
 
 ### 名称模板
 
-| 钥匙                   | 描述                                                         |
-| ---------------------- | ------------------------------------------------------------ |
+| 模板变量 / 函数 | 描述 |
+| --- | --- |
 | `.ProjectName`         | 项目名称                                                     |
 | `.Version`             | 正在发布的版本 ([详情](https://goreleaser.com/customization/templates/#fn:version-prefix)) |
 | `.Branch`              | 当前的 git 分支                                              |

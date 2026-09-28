@@ -85,6 +85,9 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      - name: Validate rendered content contracts
+        run: node scripts/check-content-rendering.mjs public
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:

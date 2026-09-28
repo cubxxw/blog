@@ -164,8 +164,8 @@ You can also check that your configuration is valid by running [goreleaser check
 
 ### Name template
 
-| key | description |
-| --------------------------- | --------------------------- ---------------------------------- |
+| Key | Description |
+| --- | --- |
 | `.ProjectName` | Project name |
 | `.Version` | The version being released ([Details](https://goreleaser.com/customization/templates/#fn:version-prefix)) |
 | `.Branch` | The current git branch |

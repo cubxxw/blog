@@ -51,6 +51,9 @@ jobs:
           HUGO_ENVIRONMENT: production
         run: hugo --gc --minify --baseURL "http://localhost:1313/"
 
+      - name: Validate rendered content contracts
+        run: node scripts/check-content-rendering.mjs public
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
