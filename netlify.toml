@@ -1,10 +1,9 @@
 # netlify.toml
 [build]
-  # Use the real production target so deploys run tag, robots and sitemap
-  # guards. `envbuild` explicitly selects Hugo's development environment.
-  # make production-build validates interactive scenario specs before Hugo
-  # (interactive-check gate, issue #389).
-  command = "npm install --prefix netlify/functions && make production-build && node scripts/check-content-rendering.mjs public"
+  # Native Git builds remain the publisher during shadow migration. The same
+  # Hugo phase is used by the isolated Actions Netlify lifecycle. Cloud builds
+  # are stopped only after draft qualification and an explicit cutover.
+  command = "npm ci --prefix netlify/functions && node scripts/site-build.mjs --hugo-phase && node scripts/check-content-rendering.mjs public && node scripts/check-generated-seo.mjs --public-dir public"
   publish = "public"
 
 [functions]
@@ -113,6 +112,12 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/__release.json"
+  [headers.values]
+    Cache-Control = "no-store, max-age=0"
+    Netlify-CDN-Cache-Control = "no-store"
 
 # Non-fingerprinted static JS (/js/*.js) — 1 hour, revalidate after 24 h.
 [[headers]]

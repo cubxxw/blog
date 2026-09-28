@@ -213,8 +213,8 @@ module-update: tools.verify.hugo
 
 ## production-build: Build the production site and ensure that noindex headers aren't added
 .PHONY: production-build
-production-build: tools.verify.hugo module-check content-check interactive-check content-index
-	GOMAXPROCS=1 $(HUGO) --cleanDestinationDir --minify --environment production
+production-build: tools.verify.hugo module-check
+	@node scripts/site-build.mjs --hugo-phase
 	@$(MAKE) check-production-output
 
 ## check-production-output: Guard production indexing and sitemap invariants.

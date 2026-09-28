@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '../helpers/frozen-site';
 import { instrumentation } from '../interactive/test-support';
 
 /**

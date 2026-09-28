@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 test.describe('About Page Visual Regression', () => {
   test('about keeps one clear narrative in both languages', async ({ page }) => {

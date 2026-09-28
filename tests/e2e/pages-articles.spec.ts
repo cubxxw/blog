@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 test.describe('Articles Page Visual Regression', () => {
   test('desktop - articles list full page', async ({ page }, testInfo) => {

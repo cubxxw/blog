@@ -1,7 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Local artifact readiness must bypass a developer's system HTTP proxy.
+process.env.NO_PROXY = [process.env.NO_PROXY, 'localhost', '127.0.0.1', '::1'].filter(Boolean).join(',');
+process.env.no_proxy = process.env.NO_PROXY;
+
 export default defineConfig({
   testDir: './tests/e2e',
+  // Quality has its own light/dark matrix; interactive specs run in three engines.
+  testIgnore: ['**/content-quality.spec.ts', '**/interactive-articles.spec.ts', '**/interactive-expansion.spec.ts'],
+  outputDir: process.env.SITE_TEST_RESULTS || 'test-results',
   timeout: 30_000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -10,7 +17,8 @@ export default defineConfig({
   reporter: process.env.CI ? [['list'], ['html']] : 'html',
 
   use: {
-    baseURL: 'http://localhost:1313',
+    baseURL: `http://127.0.0.1:${process.env.SITE_PORT || 1313}`,
+    serviceWorkers: 'block',
     trace: 'on-first-retry',
   },
 
@@ -19,6 +27,13 @@ export default defineConfig({
     toHaveScreenshot: {
       maxDiffPixelRatio: 0.01,
     },
+  },
+
+  webServer: {
+    command: 'node scripts/serve-site-output.mjs',
+    url: `http://127.0.0.1:${process.env.SITE_PORT || 1313}/__site_ready`,
+    reuseExistingServer: false,
+    timeout: 30_000,
   },
 
   projects: [

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 test.describe('Header Language Switch', () => {
   test('desktop - switch from EN to ZH changes URL to /zh/', async ({ page }, testInfo) => {

@@ -1,9 +1,9 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '../helpers/frozen-site';
 import * as path from 'path';
 import * as fs from 'fs';
 
-const EN_URL = 'http://localhost:1313/engineering/posts/use-go-tools-dlv/';
-const ZH_URL = 'http://localhost:1313/zh/engineering/posts/use-go-tools-dlv/';
+const EN_URL = '/engineering/posts/use-go-tools-dlv/';
+const ZH_URL = '/zh/engineering/posts/use-go-tools-dlv/';
 
 const SNAPSHOTS_DIR = path.join(__dirname, '__screenshots__', 'us031');
 

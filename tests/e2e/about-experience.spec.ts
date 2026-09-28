@@ -1,4 +1,4 @@
-import { test, expect, type Locator, type Page } from '@playwright/test';
+import { test, expect, type Locator, type Page } from '../helpers/frozen-site';
 
 async function swipeLeft(page: Page, surface: Locator) {
   await surface.scrollIntoViewIfNeeded();

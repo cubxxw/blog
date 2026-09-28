@@ -1,113 +1,47 @@
 #!/usr/bin/env node
-/**
- * serve-interactive-fixtures.mjs — production-static test server (issue #389).
- *
- * Builds the REAL production Hugo output and the fixture site (kept outside
- * content/), then serves both from one static origin:
- *
- *   - requests that exist in the fixture site are served from it
- *     (/multi/, /multi-corrupt/, /safety/, /bare/ …);
- *   - everything else is served from the production output (the real
- *     articles under test).
- *
- * Used as the Playwright `webServer` of playwright.interactive.config.ts so
- * cross-engine tests always run against PRODUCTION build artifacts, never a
- * dev server. Artifact root: INTERACTIVE_ARTIFACT_DIR (CI-portable default).
- * Port: INTERACTIVE_PORT (default 4173). Hugo: HUGO_BIN (default `hugo`).
+/** Serve existing production bytes beside isolated interactive fixtures.
+ * --build-fixtures runs only the fixture builder, never the production build.
  */
-
-import { execFileSync, spawnSync } from 'node:child_process';
-import { createServer } from 'node:http';
-import { existsSync, mkdirSync, readFileSync, rmSync, statSync } from 'node:fs';
-import { extname, join, normalize, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const REPO_ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
-const ARTIFACT_DIR =
-  process.env.INTERACTIVE_ARTIFACT_DIR && process.env.INTERACTIVE_ARTIFACT_DIR.trim()
-    ? resolve(process.env.INTERACTIVE_ARTIFACT_DIR)
-    : join(REPO_ROOT, 'tests', '.artifacts');
-const HUGO = process.env.HUGO_BIN && process.env.HUGO_BIN.trim() ? process.env.HUGO_BIN.trim() : 'hugo';
-const PORT = Number(process.env.INTERACTIVE_PORT || 4173);
-
-const PROD_DIR = join(ARTIFACT_DIR, 'production-site');
-const FIXTURE_DIR = join(ARTIFACT_DIR, 'fixture-site');
-
-const MIME = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.mjs': 'text/javascript; charset=utf-8',
-  '.json': 'application/json; charset=utf-8',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.webp': 'image/webp',
-  '.gif': 'image/gif',
-  '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
-  '.woff2': 'font/woff2',
-  '.txt': 'text/plain; charset=utf-8',
-  '.xml': 'application/xml; charset=utf-8',
-};
-
-function runHugo(args) {
-  const res = spawnSync(HUGO, args, { cwd: REPO_ROOT, encoding: 'utf8' });
-  if (res.status !== 0) {
-    throw new Error(`hugo failed (${args.join(' ')}):\n${res.stdout || ''}${res.stderr || ''}`);
-  }
+import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { createOutputServer } from "./serve-site-output.mjs";
+const repoRoot = resolve(fileURLToPath(new URL("..", import.meta.url)));
+const artifactDir = resolve(
+  process.env.INTERACTIVE_ARTIFACT_DIR || join(repoRoot, "tests/.artifacts"),
+);
+const publicDir = resolve(
+  process.env.SITE_OUTPUT_DIR || join(artifactDir, "site/public"),
+);
+const fixtureDir = join(artifactDir, "fixture-site");
+const port = Number(process.env.INTERACTIVE_PORT || 4173);
+try {
+  if (!existsSync(join(publicDir, "index.html")))
+    throw new Error(
+      "Set SITE_OUTPUT_DIR to an existing production artifact; this server does not rebuild production",
+    );
+  if (process.argv.includes("--build-fixtures"))
+    execFileSync(
+      process.execPath,
+      [join(repoRoot, "scripts/build-interactive-fixtures.mjs")],
+      { cwd: repoRoot, stdio: "inherit", env: process.env },
+    );
+  if (
+    !existsSync(join(fixtureDir, "bare/index.html")) &&
+    !existsSync(fixtureDir)
+  )
+    throw new Error("Missing fixtures; pass --build-fixtures");
+  createOutputServer({
+    publicDir,
+    fixtureDir,
+    basePath: process.env.SITE_BASE_PATH || "/",
+  }).listen(port, "127.0.0.1", () =>
+    console.log(
+      `Interactive fixtures and frozen site at http://127.0.0.1:${port}`,
+    ),
+  );
+} catch (error) {
+  console.error(error.message);
+  process.exitCode = 2;
 }
-
-function build() {
-  mkdirSync(ARTIFACT_DIR, { recursive: true });
-
-  console.log('serve-interactive-fixtures: building fixture site + checks…');
-  execFileSync(process.execPath, [join(REPO_ROOT, 'scripts', 'build-interactive-fixtures.mjs')], {
-    cwd: REPO_ROOT,
-    stdio: 'inherit',
-    env: process.env,
-  });
-
-  console.log('serve-interactive-fixtures: building production site…');
-  rmSync(PROD_DIR, { recursive: true, force: true });
-  runHugo(['--gc', '--minify', '--environment', 'production', '-d', PROD_DIR, '--baseURL', `http://127.0.0.1:${PORT}/`]);
-}
-
-function resolveFile(urlPath) {
-  const clean = normalize(decodeURIComponent(urlPath.split('?')[0].split('#')[0]));
-  if (clean.includes('..')) return null;
-  for (const root of [FIXTURE_DIR, PROD_DIR]) {
-    const direct = join(root, clean);
-    if (existsSync(direct) && statSync(direct).isFile()) return direct;
-    const index = join(root, clean, 'index.html');
-    if (existsSync(index)) return index;
-  }
-  return null;
-}
-
-function serve() {
-  const server = createServer((req, res) => {
-    if (req.url === '/__interactive_ready') {
-      res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8' });
-      res.end('ok');
-      return;
-    }
-    const file = resolveFile(req.url || '/');
-    if (!file) {
-      res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
-      res.end('not found');
-      return;
-    }
-    res.writeHead(200, {
-      'content-type': MIME[extname(file).toLowerCase()] || 'application/octet-stream',
-      'cache-control': 'no-store',
-    });
-    res.end(readFileSync(file));
-  });
-  server.listen(PORT, '127.0.0.1', () => {
-    console.log(`serve-interactive-fixtures: http://127.0.0.1:${PORT}/ (fixtures + production)`);
-  });
-}
-
-build();
-serve();

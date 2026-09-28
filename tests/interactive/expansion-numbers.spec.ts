@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '../helpers/frozen-site';
 
 // Shared production fixture pipeline: scripts/build-interactive-fixtures.mjs.
 const PAGE_EN = '/expansion-numbers/';
@@ -62,7 +62,7 @@ test.describe('numerical explainers (expansion-numbers)', () => {
   test('SSR agreement: exact default results, hidden controls, complete reference (en + zh)', async ({ page }) => {
     // Script-free state (same DOM a 404'd or blocked module leaves behind).
     await page.route('**/*', (route) =>
-      route.request().resourceType() === 'script' ? route.abort() : route.continue()
+      route.request().resourceType() === 'script' ? route.abort() : route.fallback()
     );
     for (const [url, lang] of [
       [PAGE_EN, 'en'],
@@ -260,7 +260,7 @@ test.describe('numerical explainers (expansion-numbers)', () => {
       route.request().resourceType() === 'script' &&
       /components\/(reliability-chain|task-cost|notification-threshold)/.test(route.request().url())
         ? route.fulfill({ status: 404, body: 'not found' })
-        : route.continue()
+        : route.fallback()
     );
     await page.reload();
     await page.waitForTimeout(400);
@@ -535,7 +535,7 @@ test.describe('numerical explainers (expansion-numbers)', () => {
 
     // The same holds without JavaScript (static state, closed disclosure).
     await page.route('**/*', (route) =>
-      route.request().resourceType() === 'script' ? route.abort() : route.continue()
+      route.request().resourceType() === 'script' ? route.abort() : route.fallback()
     );
     await page.reload();
     await page.emulateMedia({ media: 'print' });

@@ -6,7 +6,7 @@
  * served by the shared production fixture server; heavy output stays under
  * INTERACTIVE_ARTIFACT_DIR. Runs on Chromium, Firefox and WebKit.
  */
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page } from '../helpers/frozen-site';
 
 // All suites share the production fixture server from the Playwright config.
 const figures = (base = '') => `${base}/figures/`;

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 test.describe('Header Theme Toggle', () => {
   test('desktop - toggle dark mode applies dark class to body', async ({ page }, testInfo) => {

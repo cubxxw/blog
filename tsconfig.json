@@ -10,6 +10,6 @@
     "noEmit": true,
     "types": ["node", "@playwright/test"]
   },
-  "include": ["playwright.config.ts", "tests/**/*.ts"],
+  "include": ["playwright.config.ts", "playwright.quality.config.ts", "tests/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

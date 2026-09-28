@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 // US-026: Verify font loading strategy
 // Requires dev server running at localhost:1313

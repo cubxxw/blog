@@ -219,8 +219,17 @@ function normalizeTree(node) {
   };
 }
 
-export function buildIndex() {
-  const files = walkMarkdownFiles(contentRoot);
+export function buildIndex({ root = repoRoot, clock = new Date().toISOString(), publishedPages = null } = {}) {
+  if (!Number.isFinite(Date.parse(clock))) throw new Error("Invalid index clock");
+  const contentRoot = path.join(root, "content");
+  const published = publishedPages && new Map(publishedPages.map((page) => [path.resolve(root, page.source), page.url]));
+  const files = walkMarkdownFiles(contentRoot).filter((file) => {
+    if (published) return published.has(file);
+    const { data } = parseFrontmatter(fs.readFileSync(file, "utf8"));
+    const date = Date.parse(data.publishDate || data.publishdate || data.date || "");
+    const expiry = Date.parse(data.expiryDate || data.expirydate || "");
+    return data.draft !== "true" && !(date > Date.parse(clock)) && !(expiry <= Date.parse(clock));
+  });
   const documents = files
     .map((filePath) => {
       const relativeFile = path.relative(contentRoot, filePath);
@@ -245,7 +254,7 @@ export function buildIndex() {
         relativePath: relativePath.replace(/\\/g, "/"),
         // Preserve deliberately stable public URLs when content is moved to a
         // more accurate editorial section (for example projects -> ai-agent).
-        permalink:
+        permalink: published?.has(filePath) ? new URL(published.get(filePath), "https://cubxxw.com").pathname :
           typeof data.url === "string" && data.url
             ? data.url.endsWith("/")
               ? data.url
@@ -281,15 +290,15 @@ export function buildIndex() {
     byLanguage[doc.language] += 1;
   }
 
-  const atlas = buildAtlas(documents);
+  const atlas = buildAtlas(documents, root);
 
   return {
-    generatedAt: new Date().toISOString(),
+    generatedAt: clock,
     totalDocuments: documents.length,
     byLanguage,
     tree: buildTree(documents),
     atlas,
-    identity: loadIdentity(),
+    identity: loadIdentity(root),
     documents,
   };
 }
@@ -298,8 +307,8 @@ export function buildIndex() {
 // Single source of truth for who the author is, public links, life-timeline
 // milestones, and voice samples. About page + llms.txt read the same file.
 
-function loadIdentity() {
-  const identitySource = path.join(repoRoot, "data", "identity.json");
+function loadIdentity(root) {
+  const identitySource = path.join(root, "data", "identity.json");
   if (!fs.existsSync(identitySource)) return null;
   try {
     return JSON.parse(fs.readFileSync(identitySource, "utf8"));
@@ -325,12 +334,12 @@ function logicalPathOf(doc) {
   );
 }
 
-function buildAtlas(documents) {
-  const atlasSource = path.join(repoRoot, "data", "start_here.json");
+function buildAtlas(documents, root) {
+  const atlasSource = path.join(root, "data", "start_here.json");
   // Keep the published identity copy in sync with data/identity.json so
   // agents can GET /data/identity.json without a separate publish step.
-  const identitySource = path.join(repoRoot, "data", "identity.json");
-  const identityPublished = path.join(repoRoot, "static", "data", "identity.json");
+  const identitySource = path.join(root, "data", "identity.json");
+  const identityPublished = path.join(root, "static", "data", "identity.json");
   if (fs.existsSync(identitySource)) {
     try {
       fs.mkdirSync(path.dirname(identityPublished), { recursive: true });

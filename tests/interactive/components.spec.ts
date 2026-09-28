@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '../helpers/frozen-site';
 import { instrumentation, shotPath as artifactShot } from './test-support';
 
 function shotPath(name: string) {
@@ -59,7 +59,7 @@ test.describe('upgrade stability', () => {
         held.push(url);
         await gate;
       }
-      await route.continue();
+      await route.fallback();
     });
     await page.goto(MULTI, { waitUntil: 'commit' });
     const root = page.locator('#ctx-a');
@@ -101,7 +101,7 @@ test.describe('upgrade stability', () => {
       if (route.request().resourceType() === 'script' && /components\//.test(route.request().url())) {
         await gate;
       }
-      await route.continue();
+      await route.fallback();
     });
     await page.goto(MULTI, { waitUntil: 'commit' });
     const details = page.locator('#ctx-a details.ib-reference');
@@ -356,7 +356,7 @@ test.describe('failure fallback', () => {
         await route.abort();
         return;
       }
-      await route.continue();
+      await route.fallback();
     });
     await page.goto(MULTI);
     await page.waitForTimeout(500);
@@ -406,7 +406,7 @@ test.describe('failure fallback', () => {
         await route.fulfill({ status: 404, body: 'not found' });
         return;
       }
-      await route.continue();
+      await route.fallback();
     });
     await page.goto(MULTI);
     await page.waitForTimeout(500);

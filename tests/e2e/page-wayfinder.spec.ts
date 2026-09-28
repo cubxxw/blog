@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { newFrozenContext } from '../helpers/frozen-site';
+import { test, expect } from '../helpers/frozen-site';
 
 test.describe('Home and About reading navigation', () => {
   for (const route of ['/', '/zh/', '/about/', '/zh/about/']) {
@@ -34,8 +35,8 @@ test.describe('Home and About reading navigation', () => {
     });
   }
 
-  test('side index remains accessible without scripts and with reduced motion', async ({ browser }) => {
-    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1720, height: 900 } });
+  test('side index remains accessible without scripts and with reduced motion', async ({ browser, baseURL }) => {
+    const context = await newFrozenContext(browser, { baseURL, javaScriptEnabled: false, viewport: { width: 1720, height: 900 } });
     const page = await context.newPage();
     await page.goto('/');
     await expect(page.locator('[data-page-wayfinder]')).toHaveCSS('opacity', '1');
@@ -43,7 +44,7 @@ test.describe('Home and About reading navigation', () => {
     await expect(page).toHaveURL(/#hp-books$/);
     await context.close();
 
-    const reduced = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1720, height: 900 } });
+    const reduced = await newFrozenContext(browser, { baseURL, reducedMotion: 'reduce', viewport: { width: 1720, height: 900 } });
     const quietPage = await reduced.newPage();
     await quietPage.goto('/');
     const nav = quietPage.locator('[data-page-wayfinder]');
@@ -150,8 +151,8 @@ test.describe('Home and About reading navigation', () => {
     })).toBe(true);
   });
 
-  test('homepage primary routes and navigation remain usable without JavaScript', async ({ browser }, testInfo) => {
-    const context = await browser.newContext({ javaScriptEnabled: false, viewport: testInfo.project.use.viewport });
+  test('homepage primary routes and navigation remain usable without JavaScript', async ({ browser, baseURL }, testInfo) => {
+    const context = await newFrozenContext(browser, { baseURL, javaScriptEnabled: false, viewport: testInfo.project.use.viewport });
     const page = await context.newPage();
     await page.goto('/zh/');
     await expect(page.locator('.hp-entry-actions a').first()).toHaveAttribute('href', '#hp-posts');

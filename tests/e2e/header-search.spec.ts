@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 test.describe('Header Search Interaction', () => {
   test('desktop - search panel opens, accepts input, closes with Esc', async ({ page }, testInfo) => {

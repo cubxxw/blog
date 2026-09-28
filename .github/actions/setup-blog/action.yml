@@ -1,0 +1,36 @@
+name: Setup blog toolchain
+description: Install the versioned Node, Hugo and locked build dependencies.
+inputs:
+  browsers:
+    description: Space-separated Playwright browsers to install; empty skips browser installation.
+    default: chromium
+runs:
+  using: composite
+  steps:
+    - name: Read pinned toolchain
+      id: versions
+      shell: bash
+      run: |
+        node -e 'const c=require("./config/ci-toolchain.json"); console.log(`node=${c.node}\nhugo=${c.hugo}`)' >> "$GITHUB_OUTPUT"
+    - uses: actions/setup-node@v7
+      with:
+        node-version: ${{ steps.versions.outputs.node }}
+        cache: npm
+    - uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: ${{ steps.versions.outputs.hugo }}
+        extended: true
+    - name: Install locked dependencies
+      shell: bash
+      env:
+        # Critical CSS uses the pinned Playwright Chromium installed below.
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+      run: npm ci && npm ci --prefix netlify/functions
+    - name: Install browsers
+      if: inputs.browsers != ''
+      shell: bash
+      env:
+        BLOG_BROWSERS: ${{ inputs.browsers }}
+      run: |
+        read -r -a browsers <<< "$BLOG_BROWSERS"
+        npx --no-install playwright install --with-deps "${browsers[@]}"

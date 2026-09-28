@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 test.describe('P1-P2 UX regression', () => {
   test('newsletter validation exposes and clears an accessible error', async ({ page }) => {
@@ -159,7 +159,7 @@ test.describe('P1-P2 UX regression', () => {
   test('knowledge space stays closed when the reader exits before its module loads', async ({ page }) => {
     await page.route('**/bear-knowledge-space*.js', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 500));
-      await route.continue();
+      await route.fallback();
     });
     await page.goto('/zh/projects/');
     await page.getByRole('button', { name: 'Product Lab' }).click();

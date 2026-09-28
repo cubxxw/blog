@@ -1,11 +1,11 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '../helpers/frozen-site';
 import * as path from 'path';
 import * as fs from 'fs';
 
-const EN_URL = 'http://localhost:1313/engineering/posts/use-go-tools-dlv/';
-const ZH_URL = 'http://localhost:1313/zh/engineering/posts/use-go-tools-dlv/';
-const EN_DROPCAP_URL = 'http://localhost:1313/growth/posts/friction-is-growth/';
-const ZH_DROPCAP_URL = 'http://localhost:1313/zh/growth/posts/friction-is-growth/';
+const EN_URL = '/engineering/posts/use-go-tools-dlv/';
+const ZH_URL = '/zh/engineering/posts/use-go-tools-dlv/';
+const EN_DROPCAP_URL = '/growth/posts/friction-is-growth/';
+const ZH_DROPCAP_URL = '/zh/growth/posts/friction-is-growth/';
 
 const SNAPSHOTS_DIR = path.join(__dirname, '__screenshots__', 'us029');
 

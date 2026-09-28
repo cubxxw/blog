@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../helpers/frozen-site';
 
 const ARTICLE_URL = '/ai-agent/posts/agent-identity-from-locke-to-openclaw/';
 

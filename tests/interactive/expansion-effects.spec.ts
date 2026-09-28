@@ -1,3 +1,4 @@
+import { newFrozenContext } from '../helpers/frozen-site';
 /**
  * expansion-effects.spec.ts — cross-engine behaviour suite for the "effects"
  * group (effect-recovery, gitops-reconcile, the reused agent-loop verifier
@@ -12,7 +13,7 @@
  * multi-instance isolation, the untouched details reference, 320px mobile
  * behaviour and the no-JS static view.
  */
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '../helpers/frozen-site';
 import { readFileSync } from 'node:fs';
 
 const REPO_ROOT = `${process.cwd()}/`;
@@ -62,7 +63,7 @@ test.describe('upgrade and static fallback', () => {
       if (route.request().resourceType() === 'script' && /components\/(effect-recovery|gitops-reconcile)/.test(url)) {
         await gate;
       }
-      await route.continue();
+      await route.fallback();
     });
     await page.goto(`${fixtureBase}/effects-multi/`, { waitUntil: 'commit' });
     const root = page.locator('#fx-n8n');
@@ -345,7 +346,7 @@ test.describe('mobile, locale and no-JS', () => {
   });
 
   test('without JS the static result stays readable and controls stay invisible', async ({ browser }) => {
-    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 720 } });
+    const context = await newFrozenContext(browser, { javaScriptEnabled: false, viewport: { width: 320, height: 720 } });
     const page = await context.newPage();
     await page.goto(`${fixtureBase}/effects-multi/`);
     await expect(page.locator('#fx-n8n [data-ib-actions]')).toHaveText('2');

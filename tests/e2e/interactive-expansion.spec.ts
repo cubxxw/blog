@@ -1,4 +1,5 @@
-import { test, expect, type Locator } from '@playwright/test';
+import { newFrozenContext } from '../helpers/frozen-site';
+import { test, expect, type Locator } from '../helpers/frozen-site';
 import { instrumentation } from '../interactive/test-support';
 
 async function expectPrintableReference(reference: Locator) {
@@ -119,7 +120,7 @@ for (const [section, slug, kind, english] of articles) {
     });
 
     test(`${slug} (${lang}): article remains meaningful with JavaScript disabled`, async ({ browser, baseURL }) => {
-      const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
+      const context = await newFrozenContext(browser, { javaScriptEnabled: false, baseURL });
       const page = await context.newPage();
       await page.goto(url);
       const root = page.locator(`blog-${kind}`);

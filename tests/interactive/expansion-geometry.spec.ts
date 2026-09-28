@@ -1,5 +1,6 @@
+import { newFrozenContext, newFrozenPage } from '../helpers/frozen-site';
 // Both locales use the shared production fixture pipeline.
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '../helpers/frozen-site';
 import { instrumentation } from './test-support';
 
 // Contract copy of data/interactive/vector-cosine-v1.json (stable fields the
@@ -472,7 +473,7 @@ test('script 404 keeps the complete static view with no dead controls', async ({
       await route.abort();
       return;
     }
-    await route.continue();
+    await route.fallback();
   });
   await page.goto(`${base}/geometry/`);
   await page.waitForLoadState('load');
@@ -523,7 +524,7 @@ test('an unsupported envelope lang is rejected before enhancement', async ({ pag
 });
 
 test('no JS: controls stay invisible and the native reference opens', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
+  const context = await newFrozenContext(browser, { javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto(`${base}/geometry/`);
   await expect(page.locator('#vc-a [data-ib-controls]')).toBeHidden();
@@ -717,7 +718,7 @@ test('a controlled reconnect render fault restores SSR and hides dead controls',
 
 test('touch-action is locked only on enhanced drag handles; plot scrolling survives', async ({ browser }) => {
   // static fallback (component scripts 404): no touch-action lock anywhere
-  const staticContext = await browser.newContext();
+  const staticContext = await newFrozenContext(browser);
   const staticPage = await staticContext.newPage();
   await staticPage.route('**/*', async (route) => {
     const url = route.request().url();
@@ -725,7 +726,7 @@ test('touch-action is locked only on enhanced drag handles; plot scrolling survi
       await route.abort();
       return;
     }
-    await route.continue();
+    await route.fallback();
   });
   await staticPage.goto(`${base}/geometry/`);
   await waitForStableLayout(staticPage);
@@ -738,7 +739,7 @@ test('touch-action is locked only on enhanced drag handles; plot scrolling survi
   await staticContext.close();
 
   // enhanced: only the two drag handles capture touch gestures
-  const page = await browser.newPage();
+  const page = await newFrozenPage(browser);
   await page.goto(`${base}/geometry/`);
   await waitForEnhanced(page, '#vc-a');
   expect(await page.locator('#vc-a [data-ib-svg]').evaluate((el) => getComputedStyle(el).touchAction)).not.toBe('none');
@@ -796,7 +797,7 @@ test('flow chart axis follows its actual scale and visible capacities track pres
 });
 
 test('two-tick spec bounds genuine SSR reference and the runtime; capacities are readable without JS', async ({ browser, baseURL, page }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
+  const context = await newFrozenContext(browser, { javaScriptEnabled: false, baseURL });
   const fallback = await context.newPage();
   await fallback.goto('/geometry-short/');
   const root = fallback.locator('#flow-short');
