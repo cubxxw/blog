@@ -2,7 +2,7 @@
   "node": "22.23.1",
   "hugo": "0.145.0",
   "hugoExtended": true,
-  "netlify": "24.9.0",
+  "netlify": "27.10.1",
   "playwright": "1.59.1",
   "criticalCss": "1.0.4",
   "yaml": "2.9.1",

@@ -7,6 +7,7 @@ import { execFileSync } from 'node:child_process';
 import { checkOutput, checkTableContracts } from './lib/content-output.mjs';
 import { readPageMap } from './lib/content-page-map.mjs';
 import { analyzeMarkdown } from './lib/content-markdown.mjs';
+import { assertHugoToolchain } from './site-build.mjs';
 const sha='a'.repeat(40), clock='2026-09-28T00:00:00Z';
 async function fixture(t, html) {
   const root=await fs.mkdtemp(path.join(os.tmpdir(),'blog-quality-')); t.after(()=>fs.rm(root,{recursive:true,force:true}));
@@ -76,7 +77,7 @@ test('historical table contract accepts minified HTML and detects final-row trun
   assert.ok(checkTableContracts({html:html.replace('.Artifacts','.Wrong'),file:'test',contracts}).some(d=>d.ruleId==='table-regression'&&!d.waivable));
 });
 test('pinned Hugo really renders the valid fixture and loses the malformed table',async t=>{
-  assert.match(execFileSync('hugo',['version'],{encoding:'utf8'}),/v0\.145\.0\+extended/);
+  assertHugoToolchain(execFileSync('hugo',['version'],{encoding:'utf8'}),'0.145.0');
   const ctx=await fixture(t,'');
   await fs.mkdir(path.join(ctx.root,'content'),{recursive:true}); await fs.mkdir(path.join(ctx.root,'layouts/_default'),{recursive:true});
   await fs.writeFile(path.join(ctx.root,'hugo.toml'),'baseURL = "https://cubxxw.com/"\ndisableKinds = ["taxonomy", "term", "RSS", "sitemap"]\n');

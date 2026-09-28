@@ -45,6 +45,11 @@ export function assertProductionSource({ repoRoot, sourceSha }) {
     );
 }
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+export function assertHugoToolchain(output, expectedVersion) {
+  const match = /^hugo v(\d+\.\d+\.\d+)(?:-[a-f0-9]{7,40})?\+extended(?:\+withdeploy)?(?:\s|$)/.exec(output.trim());
+  if (match?.[1] !== expectedVersion)
+    throw new Error(`Production build requires Hugo ${expectedVersion} extended`);
+}
 export function sanitizedBuildEnv(env = process.env) {
   const allowed =
     /^(PATH|HOME|TMPDIR|TMP|TEMP|SystemRoot|LANG|LC_ALL|CI|TZ|HUGO_BIN|HUGO_ENABLEGITINFO|PUPPETEER_EXECUTABLE_PATH|PUPPETEER_CACHE_DIR|FONTCONFIG_PATH|BLOG_BUILD_(CLOCK|TARGET|BASE_URL|SHA))$/;
@@ -254,10 +259,7 @@ export async function buildSite({
     const hugo = execFileSync(process.env.HUGO_BIN || "hugo", ["version"], {
       encoding: "utf8",
     });
-    if (!hugo.includes(`v${toolchain.hugo}+extended`))
-      throw new Error(
-        `Production build requires Hugo ${toolchain.hugo} extended`,
-      );
+    assertHugoToolchain(hugo, toolchain.hugo);
     for (const [pkg, key] of [
       ["netlify-cli", "netlify"],
       ["netlify-plugin-critical-css", "criticalCss"],

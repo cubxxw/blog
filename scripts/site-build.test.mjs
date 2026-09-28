@@ -8,7 +8,16 @@ import {
   buildHugoPhase,
   sanitizedBuildEnv,
   deploymentConfig,
+  assertHugoToolchain,
 } from "./site-build.mjs";
+
+test('pinned Hugo accepts official commit suffixes but rejects wrong versions and non-extended builds', () => {
+  assertHugoToolchain('hugo v0.145.0+extended darwin/arm64', '0.145.0');
+  assertHugoToolchain('hugo v0.145.0+extended+withdeploy darwin/arm64 BuildDate=2025-02-26T15:41:25Z VendorInfo=brew', '0.145.0');
+  assertHugoToolchain('hugo v0.145.0-666444f0a52132f9fec9f71cf25b441cc6a4f355+extended linux/amd64 BuildDate=2025-02-26T15:41:25Z VendorInfo=gohugoio', '0.145.0');
+  for (const output of ['hugo v0.145.1+extended linux/amd64', 'hugo v0.145.0 linux/amd64', 'hugo v0.145.0-rc1+extended linux/amd64', 'unrecognized output'])
+    assert.throws(() => assertHugoToolchain(output, '0.145.0'), /requires Hugo/);
+});
 
 test("isolated build completes plugin and function lifecycle before output checks", async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "blog-build-test-"));

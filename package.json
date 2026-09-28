@@ -58,17 +58,17 @@
     "site:verify": "node scripts/site-verify.mjs"
   },
   "devDependencies": {
-    "@netlify/functions": "^5.3.0",
-    "@playwright/test": "1.59.1",
-    "@types/node": "^25.6.0",
+    "@netlify/functions": "^6.0.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^26.6.2",
     "markdown-it": "15.0.2",
     "markdownlint": "0.41.1",
-    "mermaid": "^11.16.1",
-    "netlify-cli": "24.9.0",
+    "mermaid": "^12.0.0",
+    "netlify-cli": "27.10.1",
     "netlify-plugin-critical-css": "1.0.4",
     "parse5": "8.0.1",
     "smol-toml": "1.9.0",
-    "typescript": "^5.4.5",
+    "typescript": "^7.0.2",
     "yaml": "2.9.1"
   }
 }
