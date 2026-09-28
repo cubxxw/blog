@@ -3,7 +3,7 @@
   "hugo": "0.145.0",
   "hugoExtended": true,
   "netlify": "27.10.1",
-  "playwright": "1.59.1",
+  "playwright": "1.63.0",
   "criticalCss": "1.0.4",
   "yaml": "2.9.1",
   "lychee": "0.24.2",
