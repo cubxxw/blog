@@ -1,6 +1,65 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Home and About reading navigation', () => {
+  for (const route of ['/', '/zh/', '/about/', '/zh/about/']) {
+    test(`${route} side index waits for reading, recedes at rest, and returns on intent`, async ({ page }) => {
+      await page.setViewportSize({ width: 1720, height: 900 });
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
+      await page.goto(route);
+      const nav = page.locator('[data-page-wayfinder]');
+      const inactive = nav.locator('a').nth(1);
+      await expect(nav).toHaveCSS('opacity', '0');
+      await page.mouse.wheel(0, 32);
+      await expect(nav).toHaveCSS('opacity', '0');
+
+      const distance = await page.evaluate(() => {
+        const link = document.querySelector<HTMLAnchorElement>('[data-page-wayfinder] a')!;
+        return document.querySelector(link.hash)!.getBoundingClientRect().top + 100;
+      });
+      await page.mouse.wheel(0, distance);
+      await expect(nav).toHaveCSS('opacity', '1');
+      await expect.poll(() => inactive.evaluate(el => Number(getComputedStyle(el).opacity))).toBeLessThan(0.8);
+      await expect(nav.locator('a').first()).toHaveCSS('opacity', '1');
+      await inactive.hover();
+      await expect(inactive).toHaveCSS('opacity', '1');
+      await inactive.focus();
+      await page.mouse.move(1600, 500);
+      await expect(inactive).toHaveCSS('opacity', '1');
+      await inactive.press('Enter');
+      await expect(page.locator((await inactive.getAttribute('href'))!)).toBeFocused();
+      await expect(inactive).toHaveAttribute('aria-current', 'location');
+      await page.keyboard.press('ControlOrMeta+Home');
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      await expect(nav).toHaveCSS('opacity', '0');
+    });
+  }
+
+  test('side index remains accessible without scripts and with reduced motion', async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1720, height: 900 } });
+    const page = await context.newPage();
+    await page.goto('/');
+    await expect(page.locator('[data-page-wayfinder]')).toHaveCSS('opacity', '1');
+    await page.locator('[data-page-wayfinder] a[href="#hp-books"]').click();
+    await expect(page).toHaveURL(/#hp-books$/);
+    await context.close();
+
+    const reduced = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1720, height: 900 } });
+    const quietPage = await reduced.newPage();
+    await quietPage.goto('/');
+    const nav = quietPage.locator('[data-page-wayfinder]');
+    await expect(nav).toHaveCSS('opacity', '0');
+    // Keyboard intent reveals the links even before scrolling begins.
+    await nav.locator('a').first().focus();
+    await expect(nav).toHaveCSS('opacity', '1');
+    await expect(nav).toHaveCSS('translate', 'none');
+    await nav.locator('a').first().press('Enter');
+    await expect(quietPage.locator('#hp-posts')).toBeFocused();
+    await expect(nav).toHaveCSS('opacity', '1');
+    await expect(nav).toHaveAttribute('data-wayfinder-state', 'quiet');
+    await expect(nav.locator('a').nth(1)).toHaveCSS('opacity', '1');
+    await reduced.close();
+  });
+
   for (const route of ['/', '/about/']) {
     test(`${route} reading index leaves content unobstructed at every width`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });

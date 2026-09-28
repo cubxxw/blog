@@ -1,5 +1,5 @@
-// Native anchors remain useful without JavaScript. Enhancement only tracks
-// the reading position and keeps keyboard focus with the chosen destination.
+// Native anchors remain useful without JavaScript. The side index joins the
+// reader only after the introduction, and recedes when reading settles.
 const nav = document.querySelector('[data-page-wayfinder]');
 if (nav) {
   const links = [...nav.querySelectorAll('a[href^="#"]')];
@@ -8,6 +8,19 @@ if (nav) {
   let offset = 0;
   let activeIndex = -2;
   let observer;
+  let settleTimer;
+  let settledY = window.scrollY;
+
+  function setPresence(state) {
+    if (nav.dataset.wayfinderState !== state) nav.dataset.wayfinderState = state;
+  }
+
+  function emphasize() {
+    if (activeIndex < 0) return;
+    clearTimeout(settleTimer);
+    setPresence('reading');
+    settleTimer = setTimeout(() => setPresence('quiet'), 1400);
+  }
 
   function update() {
     let current = -1;
@@ -20,6 +33,10 @@ if (nav) {
       if (index === current) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
+    if (current < 0) {
+      clearTimeout(settleTimer);
+      setPresence('hidden');
+    } else emphasize();
   }
 
   function observe() {
@@ -57,7 +74,22 @@ if (nav) {
   window.addEventListener('pageshow', update);
   // History restoration and an immediate jump can happen between observer
   // deliveries. Reconcile once at rest, without a per-frame scroll handler.
-  window.addEventListener('scrollend', update);
+  window.addEventListener('scrollend', () => {
+    update();
+    if (Math.abs(window.scrollY - settledY) > 8) emphasize();
+    settledY = window.scrollY;
+  });
+  // Intent refreshes contrast, not geometry. IntersectionObserver determines
+  // whether reading has actually begun; a wheel gesture on the hero can't
+  // reveal the index. No animation loop or per-frame scroll reads are needed.
+  window.addEventListener('wheel', event => {
+    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) emphasize();
+  }, { passive: true });
+  window.addEventListener('touchmove', emphasize, { passive: true });
+  window.addEventListener('keydown', event => {
+    if (event.defaultPrevented || event.target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+    if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) emphasize();
+  });
   if ('ResizeObserver' in window) {
     const resize = new ResizeObserver(observe);
     if (header) resize.observe(header);

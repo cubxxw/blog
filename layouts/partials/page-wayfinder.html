@@ -23,5 +23,6 @@
   </ol>
 </nav>
 </div>
+<noscript><style>@media (min-width: 1600px) { .page-wayfinder { opacity: 1; translate: none; pointer-events: auto; } }</style></noscript>
 {{- $script := resources.Get "js/page-wayfinder.js" | js.Build (dict "minify" hugo.IsProduction) | fingerprint -}}
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>

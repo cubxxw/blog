@@ -54,6 +54,17 @@ provides direct routes to work. Their visual identities are not copied.
   it beside the sections without occupying their width. At smaller widths it
   stays in normal flow and scrolls away; there is no floating horizontal bar,
   duplicate section numbering or decorative progress line.
+- The side index starts hidden, including before the deferred script loads.
+  Once the first section reaches the reading line, it fades in over 280ms with
+  a 6px vertical offset. After 1.4 seconds at rest, the label and inactive links
+  soften to 68% opacity over 500ms; the current section retains full contrast.
+  Continued reading, hover and keyboard focus restore clarity. Returning to the
+  introduction hides it again. The effect is driven by reading and interaction,
+  never a looping animation. Small-screen inline links remain fully available.
+- Reduced motion removes movement and idle dimming; increased contrast also
+  disables idle dimming. Keyboard focus reveals the index even before reading,
+  and a no-script fallback preserves visible native links. The quiet links use
+  the primary ink token so dimming still preserves readable contrast.
 - IntersectionObserver watches a narrow reading line below the site header.
   It handles tall sections without per-frame scroll reads; `scrollend` reconciles
   native history restoration after consecutive jumps. Anchor clearance
@@ -100,6 +111,12 @@ both languages and themes at 375, 768, 1024, 1440, 1600 and 1720px (48 combinati
 with no index overlap, horizontal overflow or page script errors. TypeScript
 checks and the production Hugo build passed. These are local results, not
 confirmation of a production deployment or field performance.
+
+The follow-up motion pass adds initial concealment, reading-triggered entry and
+idle softening. All 26 targeted navigation checks passed, including keyboard,
+no-script and reduced-motion paths. Eight route/theme combinations kept the
+index hidden on entry and retained at least 4.5:1 contrast for quiet links.
+TypeScript checks and a fresh production build also passed.
 
 ## Measured output and acceptance
 

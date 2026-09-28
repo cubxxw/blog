@@ -31,6 +31,25 @@
   .page-wayfinder ol { display: block; border-left: 1px solid var(--wayfinder-rule); }
   .page-wayfinder a { margin-left: -1px; padding-left: 15px; border-left: 2px solid transparent; }
   .page-wayfinder a[aria-current] { border-left-color: currentColor; text-decoration: none; }
+
+  /* Start absent even before the deferred enhancement loads. Reveal only
+     when the first section reaches the reading line, without moving layout. */
+  .page-wayfinder { --wayfinder-rest-opacity: .68; color: var(--wayfinder-ink); opacity: 0; translate: 0 6px; pointer-events: none; transition: opacity 280ms ease, translate 280ms cubic-bezier(.2, .7, .2, 1); }
+  .page-wayfinder:is([data-wayfinder-state="reading"], [data-wayfinder-state="quiet"], :focus-within) { opacity: 1; translate: 0 0; pointer-events: auto; }
+  .page-wayfinder :is(a, .page-wayfinder__label) { transition: opacity 220ms ease; }
+  /* Leave the current chapter legible. The quieter links still clear AA
+     against the page in both themes; attention returns on hover or focus. */
+  .page-wayfinder[data-wayfinder-state="quiet"]:not(:hover):not(:focus-within) :is(a:not([aria-current]), .page-wayfinder__label) { opacity: var(--wayfinder-rest-opacity); transition-duration: 500ms; }
+  .page-wayfinder:focus-within { transition: none; }
+}
+
+@media (min-width: 1600px) and (prefers-reduced-motion: reduce) {
+  .page-wayfinder { --wayfinder-rest-opacity: 1; }
+  .page-wayfinder, .page-wayfinder:is([data-wayfinder-state], :focus-within) { translate: none; transition: none; }
+  .page-wayfinder :is(a, .page-wayfinder__label) { transition: none; }
+}
+@media (min-width: 1600px) and (prefers-contrast: more) {
+  .page-wayfinder { --wayfinder-rest-opacity: 1; }
 }
 
 /* Give the visitor an immediate route into the work; keep Bear's identity. */
