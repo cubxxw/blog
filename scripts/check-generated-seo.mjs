@@ -4,6 +4,12 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { parse } from 'parse5';
+import { parseDocument } from 'yaml';
+import { parse as parseToml } from 'smol-toml';
+import { attribute, htmlElements, safeFile } from './lib/content-page-map.mjs';
+import { frontmatterRange } from './lib/content-markdown.mjs';
+import { validateContract } from './lib/ci-contracts.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "..");
@@ -14,6 +20,10 @@ function argumentValue(name, fallback) {
 }
 
 const publicArg = argumentValue("--public-dir", "public");
+const target = argumentValue('--target', 'production');
+if (!['production', 'backup', 'preview'].includes(target)) {
+  console.error(`Unknown SEO target: ${target}`); process.exit(2);
+}
 const publicDir = path.resolve(repoRoot, publicArg);
 const sitemapPath = path.join(publicDir, "sitemap.xml");
 const robotsPath = path.join(publicDir, "robots.txt");
@@ -49,39 +59,28 @@ function outputURL(file) {
   return `/${relative}`;
 }
 
-function capturedValue(html, pattern) {
-  const match = html.match(pattern);
-  return match?.[1] ?? match?.[2] ?? match?.[3] ?? "";
+function metaContent(nodes, name) {
+  return attribute(nodes.find(node=>node.tagName==='meta' && attribute(node,'name')?.toLowerCase()===name) ?? {},'content') ?? '';
 }
 
-function metaContent(html, name) {
-  return capturedValue(
-    html,
-    new RegExp(
-      `<meta[^>]*name=${name}[^>]*content=(?:\"([^\"]*)\"|'([^']*)'|([^\\s>]+))`,
-      "i",
-    ),
-  );
-}
-
-function canonicalURL(html) {
-  return capturedValue(
-    html,
-    /<link[^>]*rel=canonical[^>]*href=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i,
-  );
+function canonicalURL(nodes) {
+  return attribute(nodes.find(node=>node.tagName==='link' && (attribute(node,'rel')??'').split(/\s+/).includes('canonical')) ?? {},'href') ?? '';
 }
 
 const htmlPages = walkFiles(publicDir)
   .filter((file) => file.endsWith(".html"))
   .map((file) => {
     const html = fs.readFileSync(file, "utf8");
+    const nodes = htmlElements(parse(html));
     return {
-      alias: /http-equiv=refresh/i.test(html),
-      canonical: canonicalURL(html),
-      description: metaContent(html, "description").trim(),
+      alias: nodes.some(node=>node.tagName==='meta' && attribute(node,'http-equiv')?.toLowerCase()==='refresh'),
+      canonical: canonicalURL(nodes),
+      description: metaContent(nodes, "description").trim(),
       file,
       html,
-      robots: metaContent(html, "robots"),
+      robots: metaContent(nodes, "robots"),
+      xDefault: nodes.some(node=>node.tagName==='link' && attribute(node,'hreflang')==='x-default'),
+      postDescription: nodes.some(node=>(attribute(node,'class')??'').split(/\s+/).includes('post-description')),
       url: outputURL(file),
     };
   });
@@ -94,6 +93,40 @@ const errors = [];
 function addErrors(label, entries) {
   if (entries.length === 0) return;
   errors.push({ label, entries: entries.slice(0, 20), count: entries.length });
+}
+
+if (target === 'backup') {
+  const failures=[];
+  const overrides=new Map();
+  const mapPath=argumentValue('--page-map',null);
+  if(mapPath) {
+    const pageMap=JSON.parse(fs.readFileSync(path.resolve(repoRoot,mapPath),'utf8'));
+    validateContract('blog-page-map/1',pageMap);
+    if(pageMap.target!=='backup' || !pageMap.complete) {console.error('Backup SEO requires a complete backup page map');process.exit(2);}
+    for(const entry of pageMap.pages) if(entry.source) {
+      const text=fs.readFileSync(await safeFile(repoRoot,entry.source),'utf8');
+      const fm=frontmatterRange(text);
+      if(!fm) continue;
+      const data=fm.format==='+++'?parseToml(fm.raw):parseDocument(fm.raw).toJS();
+      const explicit=data?.canonicalURL;
+      if(typeof explicit==='string' && /^https?:\/\//i.test(explicit)) overrides.set(outputURL(path.join(publicDir,entry.outputPath)),explicit);
+    }
+  }
+  const pages=htmlPages.filter(page=>page.canonical || page.url==='/' || page.url==='/zh/');
+  for(const page of pages) {
+    if(!/^noindex,\s*follow$/i.test(page.robots)) failures.push(`${page.url}: backup requires noindex, follow`);
+    let canonical;
+    try {canonical=new URL(page.canonical);} catch {failures.push(`${page.url}: missing/invalid canonical`);continue;}
+    const override=overrides.get(page.url);
+    if(override) {if(page.canonical!==override) failures.push(`${page.url}: explicit source canonical was not preserved`);}
+    else {
+      if(canonical.origin!=='https://cubxxw.com') failures.push(`${page.url}: backup canonical must use https://cubxxw.com`);
+      if(!page.alias && canonical.pathname!==page.url) failures.push(`${page.url}: backup canonical route mismatch (${canonical.pathname})`);
+    }
+  }
+  if(!pages.length) failures.push('No backup HTML pages available');
+  if(failures.length) {console.error(`Backup SEO audit failed:\n${failures.join('\n')}`);process.exit(1);}
+  console.log(`Backup SEO audit passed: ${pages.length} HTML pages`);process.exit(0);
 }
 
 const sitemapXML = fs.readFileSync(sitemapPath, "utf8");
@@ -126,7 +159,7 @@ for (const url of sitemapURLs) {
   if (!page.description) {
     invalidSitemapPages.push(`${url}: missing meta description`);
   }
-  if (!/hreflang=x-default/i.test(page.html)) {
+  if (!page.xDefault) {
     invalidSitemapPages.push(`${url}: missing x-default hreflang`);
   }
 }
@@ -209,7 +242,7 @@ for (const page of tagPages) {
     if (
       !/^index,\s*follow/i.test(page.robots) ||
       !sitemapURLSet.has(page.url) ||
-      !/class=post-description/i.test(page.html)
+      !page.postDescription
     ) {
       tagPolicyErrors.push(
         `${page.url}: curated, robots=${page.robots}, sitemap=${sitemapURLSet.has(page.url)}`,

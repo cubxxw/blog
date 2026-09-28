@@ -50,14 +50,24 @@
     "interactive:serve": "node scripts/serve-interactive-fixtures.mjs",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "quality:source": "node scripts/check-content-quality.mjs source",
+    "quality:output": "node scripts/check-content-quality.mjs output",
+    "quality:test": "node --test scripts/ci-changes.test.mjs scripts/ci-workflows.test.mjs scripts/content-source.test.mjs scripts/content-quality-report.test.mjs scripts/content-output.test.mjs scripts/site-build.test.mjs scripts/site-artifact.test.mjs scripts/site-verify.test.mjs scripts/site-release.test.mjs scripts/newsletter-state.test.mjs scripts/release-followups.test.mjs scripts/backup-site.test.mjs scripts/generate-content-index.test.mjs",
+    "site:build": "node scripts/site-build.mjs",
+    "site:verify": "node scripts/site-verify.mjs"
   },
   "devDependencies": {
     "@netlify/functions": "^5.3.0",
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "1.59.1",
     "@types/node": "^25.6.0",
+    "markdown-it": "15.0.2",
+    "markdownlint": "0.41.1",
     "mermaid": "^11.16.1",
-    "netlify-plugin-critical-css": "^1.0.4",
+    "netlify-cli": "24.9.0",
+    "netlify-plugin-critical-css": "1.0.4",
+    "parse5": "8.0.1",
+    "smol-toml": "1.9.0",
     "typescript": "^5.4.5",
     "yaml": "2.9.1"
   }

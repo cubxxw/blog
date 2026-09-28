@@ -1,0 +1,14 @@
+{
+  "schema": "blog-quality-config/1",
+  "markdownlint": ["MD055", "MD056", "MD058"],
+  "baseline": "config/content-quality-baseline.json",
+  "tableContracts": [
+    { "outputPath": "engineering/posts/go-release-tools/index.html", "contains": ".ProjectName", "rows": 40, "columns": 2, "lastContains": ".Artifacts" },
+    { "outputPath": "zh/engineering/posts/go-release-tools/index.html", "contains": ".ProjectName", "rows": 40, "columns": 2, "lastContains": ".Artifacts" }
+  ],
+  "dynamicAnchors": [
+    { "outputPath": "projects/index.html", "attribute": "data-osx-window", "prefixes": ["", "focus-"] },
+    { "outputPath": "zh/projects/index.html", "attribute": "data-osx-window", "prefixes": ["", "focus-"] }
+  ],
+  "functionRoutes": ["/.netlify/functions/blog-ai", "/.netlify/functions/article-ai", "/.netlify/functions/subscribe-email"]
+}
