@@ -6,6 +6,29 @@
 
 GitHub 已创建 `production` environment 并限制为 `main` 分支。Netlify Git builds 未修改，Actions 发布模式缺省仍是 shadow。正式演练和切换需要该 environment 的 `NETLIFY_AUTH_TOKEN` secret 与 `NETLIFY_SITE_ID` variable。
 
+## 已通过的最终影子验收
+
+[GitHub run 36442703081](https://github.com/cubxxw/blog/actions/runs/36442703081) 对固定提交 `a4ce8f2c53a20985df65bee520396682f4303760` 返回 success。完整检查耗时 32 分 10 秒；release 和 followups 因 shadow 政策跳过，没有用跳过状态冒充生产成功。
+
+| 检查 | 实际结果 |
+| --- | --- |
+| 源文件 | 394 个文件，0 错误、269 建议、0 例外 |
+| 内容/工作流/函数/SEO 单元测试 | 28、74、54、273 通过；工作流组 1 项可选浏览器 fixture 跳过 |
+| 固定工具链的 Netlify 生命周期 | 2 分 50.8 秒；一次 Hugo 站点构建、30 页 Critical CSS、三份函数 ZIP |
+| 最终 HTML | 633 个文件，0 错误、0 警告、0 例外 |
+| 生成 SEO | 50 aliases、583 canonical HTML、32 curated tag URL、289 重定向、47 分页、427 sitemap URL，通过 |
+| 双语内容四视图 | 48/48 通过 |
+| 原有浏览器套件 | 243 首次通过、2 重试后通过、15 条既有条件跳过，最终无失败 |
+| 交互规格/单元测试 | 178/178 通过 |
+| 三引擎交互浏览器套件 | 572 首次通过、1 重试后通过，最终无失败 |
+| 冻结部署文件 | 2,808 个文件通过验证并上传 |
+
+产物 ID 为 `10980912957`，名称 `blog-site-a4ce8f2c53a20985df65bee520396682f4303760-1`，GitHub archive SHA-256 为 `697cb17506a73dbb12239ad4c3e3389a4e9f13a2c7f8963729dade0e8836616e`。该摘要是 GitHub 归档摘要，不冒充发布器使用的 manifest 摘要。报告产物 ID 为 `10981002812`。
+
+三项重试没有隐去：两项是浏览器结束时仍有请求转发回调在途，一项为 WebKit tracing/browser 会话退出错误；重试后断言均通过。它们作为测试稳定性维护项保留，不能描述为全部首次通过。构建约占 3 分钟，完整浏览器套件占主要时间；暂无同范围的迁移前耗时基线，不声称整个全量 CI 已提速。
+
+同日直接获取主站中英文 GoReleaser 页面，两页均有 2 列、40 条数据的真实 HTML 表格，`.ProjectName` 和 `.ReleaseNotes` 完整。线上内容修复与新发布链切换是独立验收。
+
 ## 已有证据
 
 - 作者拒绝历史豁免；70 处结构问题修复，394 个内容文件结构扫描零错误，例外基线为空。269 项摘要长度/标签数量等建议保留；未改动文章的历史文风报告单列。
@@ -49,7 +72,6 @@ GitHub 已创建 `production` environment 并限制为 `main` 分支。Netlify G
 
 ## 尚需补齐的实际验收
 
-- 最终固定提交的完整构建、产物检查及对应远程 CI。
 - 配置凭据后的 `draft-verified` 回执、函数及路由证明。
 - Netlify 原生构建已停止且无在途构建的记录。
 - Actions 正式发布的提交 SHA、artifact 摘要、deploy ID 和主域名版本读回。
