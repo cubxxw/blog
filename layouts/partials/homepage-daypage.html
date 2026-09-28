@@ -6,6 +6,7 @@
 {{- $isZh := eq .Lang "zh" -}}
 {{- $lang  := .Lang -}}
 {{- $d     := site.Data.homepage -}}
+{{- $capabilities := partial "site-capabilities.html" . -}}
 
 <div class="homepage-root" id="hp-root" data-lang="{{ $lang }}">
 
@@ -101,6 +102,7 @@
         {{- end }}
       </div>
 
+      {{- if $capabilities.ai -}}
       {{- $bubblesENData := slice -}}
       {{- $angles := slice -90 -30 30 90 150 210 -}}
       {{- $dists  := slice 1.0 1.05 0.95 1.0 1.05 0.95 -}}
@@ -158,6 +160,7 @@
         <div id="hp-bear-layer" class="hp-bear-layer"></div>
         <span id="hp-chat-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"></span>
       </div>
+      {{- end }}
     </section>
 
     {{ partial "page-wayfinder.html" . }}
@@ -498,12 +501,14 @@
 <script type="module">
 import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatUtils.RelPermalink }}";
 (function() {
+  var isZh = document.documentElement.lang === 'zh';
+  {{- if $capabilities.ai }}
   var root = document.getElementById('hp-bear-ai');
   if (!root) return;
   // orbit/chat DOM render into #hp-bear-layer; the Three.js canvas in
   // #hp-bear-stage underneath is left untouched across swaps.
   var layer = document.getElementById('hp-bear-layer') || root;
-  var isZh = root.dataset.lang === 'zh';
+  isZh = root.dataset.lang === 'zh';
   var suggestions = JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn);
   var chatOpen = false, messages = [], loading = false, streaming = false;
   // Guided-question rotation: chips the visitor already tapped/typed drop out
@@ -836,6 +841,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
   });
 
   renderOrbit();
+  {{- end }}
 
   /* ── Build-time post dates → heatmap; RSS → status pill only ── */
   (function() {

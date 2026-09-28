@@ -36,5 +36,7 @@
     {{- end }}
   </div>
 </section>
+{{- if (partial "site-capabilities.html" $).ai -}}
 <script src="{{ "/js/article-faq.js" | relURL }}" defer></script>
+{{- end -}}
 {{- end -}}

@@ -1,0 +1,3 @@
+{{- /* Keep availability decisions identical across desktop, mobile and search. */ -}}
+{{- $dynamic := ne site.Params.deploymentTarget "backup" -}}
+{{- return (dict "ai" $dynamic "subscribe" $dynamic) -}}

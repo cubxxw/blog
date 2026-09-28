@@ -1,10 +1,12 @@
 {{- $isZh := eq .Lang "zh" -}}
+{{- $capabilities := partial "site-capabilities.html" . -}}
 {{- $dialogLabel := cond $isZh "站内搜索" "Site search" -}}
 {{- $closeLabel := cond $isZh "关闭搜索" "Close search" -}}
 {{- $inputLabel := cond $isZh "搜索文章" "Search articles" -}}
 {{- $inputPlaceholder := cond $isZh "搜索文章、主题或关键词…" "Search articles, topics, or keywords…" -}}
 {{- $aiLabel := cond $isZh "问小熊 AI" "Ask Bear AI" -}}
 <div class="search-palette" id="search-command-palette" role="dialog"
+     data-ai-enabled="{{ $capabilities.ai }}"
      aria-modal="true" aria-labelledby="search-palette-title"
      aria-label="{{ $dialogLabel }}" hidden>
   <div class="search-palette__backdrop" aria-hidden="true"></div>
@@ -33,6 +35,7 @@
              aria-expanded="false" aria-activedescendant=""
              aria-describedby="search-palette-keyboard-help"
              aria-busy="false" />
+      {{- if $capabilities.ai }}
       <div class="search-palette__input-actions">
         <button type="button" class="search-palette__ai-trigger" id="search-ai-btn"
                 title="{{ $aiLabel }}" aria-label="{{ $aiLabel }}"
@@ -46,11 +49,13 @@
           <kbd>⌘</kbd><kbd>↩</kbd>
         </div>
       </div>
+      {{- end }}
     </div>
     <p class="search-palette__sr-only" id="search-palette-keyboard-help">
-      {{ if $isZh }}使用上下方向键选择结果，按回车打开；按 Command 或 Control 加回车询问 AI。{{ else }}Use the arrow keys to select a result and Enter to open it. Press Command or Control plus Enter to ask AI.{{ end }}
+      {{ if $isZh }}使用上下方向键选择结果，按回车打开。{{ if $capabilities.ai }}按 Command 或 Control 加回车询问 AI。{{ end }}{{ else }}Use the arrow keys to select a result and Enter to open it.{{ if $capabilities.ai }} Press Command or Control plus Enter to ask AI.{{ end }}{{ end }}
     </p>
 
+    {{- if $capabilities.ai }}
     <div class="search-palette__ai-box" id="search-ai-box" aria-live="polite" hidden>
       <div class="search-palette__ai-header">
         <div class="search-palette__ai-title">
@@ -81,6 +86,7 @@
         {{ if $isZh }}基于博客内容 &middot; Qwen 提供支持{{ else }}Based on blog content &middot; Powered by Qwen{{ end }}
       </div>
     </div>
+    {{- end }}
 
     <div class="search-palette__meta">
       <span id="search-result-summary" aria-live="polite" aria-atomic="true">

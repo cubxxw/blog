@@ -5,6 +5,7 @@
 */}}
 
 {{- $page := . }}
+{{- $capabilities := partial "site-capabilities.html" . }}
 {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
 {{- $has_headers := ge (len $headers) 1 }}
 {{/* ── Series detection for sidebar Tab ── */}}
@@ -43,6 +44,7 @@
       <span>{{ if eq $page.Lang "zh" }}系列{{ else }}Series{{ end }}</span>
     </button>
     {{- end }}
+    {{- if $capabilities.ai }}
     <button class="rc-tab" role="tab"
             aria-selected="false" aria-controls="rc-panel-ai"
             id="rc-tab-ai" data-tab="ai">
@@ -53,6 +55,7 @@
       </svg>
       <span>{{ i18n "tools.ai" | default "AI" | safeHTML }}</span>
     </button>
+    {{- end }}
   </div>
 
   {{/* ── Panel 1: Table of Contents ── */}}
@@ -124,6 +127,7 @@
   {{- end }}
 
   {{/* ── Panel 2: AI Companion ── */}}
+  {{- if $capabilities.ai }}
   <div class="rc-panel" id="rc-panel-ai" role="tabpanel" aria-labelledby="rc-tab-ai" hidden>
     <div class="rc-ai-panel">
       {{- $isZh := eq $page.Lang "zh" -}}
@@ -185,6 +189,6 @@
       </div>
     </div>
   </div>
-
+  {{- end }}
 
 </aside>

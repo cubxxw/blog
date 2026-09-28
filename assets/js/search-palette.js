@@ -14,6 +14,7 @@
   const fullLink = document.getElementById('search-full-link');
 
   if (!palette) return;
+  const aiEnabled = palette.dataset.aiEnabled !== 'false';
   window.__searchPaletteReady = true;
 
   const isZh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
@@ -126,6 +127,7 @@
   }
 
   function hideAiBox() {
+    if (!aiEnabled || !aiBox || !aiContent) return;
     aiBox.hidden = true;
     aiContent.innerHTML = '';
     aiContent.removeAttribute('aria-busy');
@@ -276,7 +278,7 @@
 
   // AI Integration
   async function askAI(query, isFollowUp = false) {
-    if (isAiThinking || !query.trim()) return;
+    if (!aiEnabled || isAiThinking || !query.trim()) return;
 
     isAiThinking = true;
     aiBox.hidden = false;

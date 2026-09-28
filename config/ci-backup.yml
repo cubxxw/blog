@@ -1,0 +1,5 @@
+# A static reading copy. The caller supplies the actual GitHub Pages base URL.
+params:
+  deploymentTarget: backup
+# Include the Pages subpath for existing root-relative links and local assets.
+canonifyURLs: true

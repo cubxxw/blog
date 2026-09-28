@@ -1,0 +1,21 @@
+{{- /* Hugo 0.145 alias behavior, with primary canonicals for the static backup. */ -}}
+{{- $canonical := .Permalink -}}
+{{- $backup := eq site.Params.deploymentTarget "backup" -}}
+{{- if $backup -}}
+  {{- $basePath := strings.TrimSuffix "/" (urls.Parse site.BaseURL).Path -}}
+  {{- $pagePath := (urls.Parse .Permalink).Path -}}
+  {{- $canonical = printf "https://cubxxw.com/%s" (strings.TrimPrefix "/" (strings.TrimPrefix $basePath $pagePath)) -}}
+  {{- with .Page -}}
+    {{- with .Params.canonicalURL -}}{{- $canonical = trim . " " -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}">
+  <head>
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ $canonical }}">
+    <meta name="robots" content="{{ if $backup }}noindex, follow{{ else }}noindex{{ end }}">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+  </head>
+</html>

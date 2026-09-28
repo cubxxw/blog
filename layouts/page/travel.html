@@ -1,5 +1,6 @@
 {{- define "main" }}
 {{- $isZh := eq .Lang "zh" }}
+{{- $capabilities := partial "site-capabilities.html" . }}
 {{- $polarsteps := .Params.polarsteps_url | default "https://www.polarsteps.com/cubxxw" }}
 {{- $data := .Site.Data.travel }}
 {{- $regions := $data.regions | default slice }}
@@ -217,7 +218,7 @@
           <span class="tw-tome__author">{{ $author }}</span>
           <p class="tw-tome__note">{{ if $isZh }}{{ $b.note_zh }}{{ else }}{{ $b.note_en }}{{ end }}</p>
           {{- $prompts := cond $isZh $b.ai_prompts_zh $b.ai_prompts_en }}
-          {{- if $prompts }}
+          {{- if and $prompts $capabilities.ai }}
           <button type="button" class="tw-tome__ask"
                   data-book-title="{{ $title }}"
                   data-book-author="{{ $author }}"
@@ -232,13 +233,14 @@
       {{- end }}
     </div>
     <p class="tw-shelf__coda tw-reveal">
-      {{- if $isZh }}钤朱印「著」的四卷都是我自己写的——越南、吴哥窟、西藏三本旅行记，和一部写五代郭威的历史长篇《乱世为龙》。点任意一本书上的「问 AI」，可以就这本书追问下去。
-      {{- else }}The four spines bearing the vermilion seal are all mine — travelogues of Vietnam, Angkor and Tibet, plus Dragon in a Broken Age, a historical novel of Guo Wei in the Five Dynasties. Hit "Ask AI" on any book to keep digging into it.
+      {{- if $isZh }}钤朱印「著」的四卷都是我自己写的——越南、吴哥窟、西藏三本旅行记，和一部写五代郭威的历史长篇《乱世为龙》。{{ if $capabilities.ai }}点任意一本书上的「问 AI」，可以就这本书追问下去。{{ end }}
+      {{- else }}The four spines bearing the vermilion seal are all mine — travelogues of Vietnam, Angkor and Tibet, plus Dragon in a Broken Age, a historical novel of Guo Wei in the Five Dynasties.{{ if $capabilities.ai }} Hit "Ask AI" on any book to keep digging into it.{{ end }}
       {{- end }}
     </p>
 
     {{/* Single reused "Ask AI about this book" modal — mirrors the QR popover pattern.
          Filled per-book by /js/travel-book-ai.js when a .tw-tome__ask button is clicked. */}}
+    {{- if $capabilities.ai }}
     <div class="tw-book-ai" id="tw-book-ai" role="dialog" aria-modal="true"
          aria-label="{{ if $isZh }}问 AI 关于这本书{{ else }}Ask AI about this book{{ end }}"
          data-lang="{{ cond $isZh "zh" "en" }}" hidden>
@@ -263,6 +265,7 @@
         </div>
       </div>
     </div>
+    {{- end }}
   </section>
   {{- end }}
 
@@ -425,5 +428,7 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 </script>
+{{- if $capabilities.ai }}
 <script src="{{ "/js/travel-book-ai.js" | relURL }}" defer></script>
+{{- end }}
 {{- end }}

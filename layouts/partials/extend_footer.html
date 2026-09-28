@@ -6,7 +6,9 @@
 {{- if not (or $isLeanAbout $isProjectsLanding) }}
 {{- if not $isArticlesLibrary }}
 <script src="{{ "/js/micro-interactions.js" | relURL }}" defer></script>
+{{- if (partial "site-capabilities.html" .).ai }}
 <script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>
+{{- end }}
 {{- /* newsletter.js removed: it only served [data-newsletter-form] inside
      rss-subscribe.html, whose callers (index_profile / home-info /
      sidebar-ai-projects) are dead partials never rendered by any layout.

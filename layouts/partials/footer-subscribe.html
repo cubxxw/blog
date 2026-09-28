@@ -16,6 +16,7 @@
        • focusing the input makes the bear lean in and watch you type
        • success / already-subscribed → bounce + happy-arc eyes
      ─────────────────────────────────────────────────────────────── */ -}}
+{{- if (partial "site-capabilities.html" .).subscribe -}}
 {{- $isZH := eq site.Language.Lang "zh" -}}
 {{- $statusID := printf "fsub-status-%s" site.Language.Lang -}}
 <section class="fsub" data-fsub aria-label="{{ if $isZH }}邮件订阅{{ else }}Email newsletter{{ end }}">
@@ -250,3 +251,4 @@
   });
 })();
 </script>
+{{- end -}}

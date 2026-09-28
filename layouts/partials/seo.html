@@ -38,6 +38,11 @@
      needs a self-canonical instead of consolidating every page into page 1. */ -}}
 {{- $canonicalURL := .Permalink -}}
 {{- if $isPaginated -}}{{- $canonicalURL = $paginator.URL | absURL -}}{{- end -}}
+{{- if eq site.Params.deploymentTarget "backup" -}}
+  {{- $basePath := strings.TrimSuffix "/" (urls.Parse site.BaseURL).Path -}}
+  {{- $pagePath := (urls.Parse $canonicalURL).Path -}}
+  {{- $canonicalURL = printf "https://cubxxw.com/%s" (strings.TrimPrefix "/" (strings.TrimPrefix $basePath $pagePath)) -}}
+{{- end -}}
 {{- with .Params.canonicalURL -}}{{- $canonicalURL = trim . " " -}}{{- end -}}
 <link rel="canonical" href="{{ $canonicalURL }}" />
 

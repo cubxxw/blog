@@ -12,7 +12,7 @@
 .skip-link{position:fixed;top:8px;left:16px;z-index:10000;padding:8px 16px;border:2px solid var(--primary,#111);border-radius:4px;background:var(--theme,#fff);color:var(--primary,#111);font:600 14px/1.4 system-ui,sans-serif;text-decoration:none;opacity:0;pointer-events:none;transform:translateY(calc(-100% - 16px))}
 .skip-link:focus,.skip-link:focus-visible{opacity:1;pointer-events:auto;transform:translateY(0)}
 </style>
-{{- if or (partial "seo/should-noindex.html" .) $isPaginated }}
+{{- if or (eq site.Params.deploymentTarget "backup") (partial "seo/should-noindex.html" .) $isPaginated }}
 <meta name="robots" content="noindex, follow">
 {{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
