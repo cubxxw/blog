@@ -17,6 +17,9 @@ GitHub 已创建 `production` environment 并限制为 `main` 分支。Netlify G
 - 原有 273 项 SEO 契约测试通过。工作流语法及类型检查通过。
 - 最终整合后的离线质量套件 144 项：143 通过、1 项可选浏览器检查跳过、0 失败；该浏览器检查另有显式运行证据。同步远端 SEO 日报后，`cf89a68` 的真实 push 范围再次通过 394 文件结构检查。
 - `cf89a68` 的最终离线 Netlify 构建被新增门禁拦截：插件返回成功但中文首页未改写。单独处理该页耗时 43.686 秒，超过旧 30 秒任务超时；上游插件忽略任务池超时结果且不取消浏览器任务。配置降低并发至 2、预算增加至 120 秒，所有配置的落地页均须证明已完成优化。该失败运行不算构建通过。
+- 首轮[影子 CI](https://github.com/cubxxw/blog/actions/runs/36439980677)正确阻止发布，但暴露 Hugo Linux 官方版本带提交标识的兼容问题；统一版本识别器现同时接受官方 Linux 和 Homebrew extended 格式，仍拒绝错误版本、预发布和普通版，26 项相关测试通过。后续本地 `c490818` 构建为避免校验已过期源码而主动停止，不计成功。
+- Netlify CLI 从原计划 24.9.0 更新至官方 27.10.1，消除引入的 Critical 依赖告警。实际 `build --offline`、`deploy --no-build` 参数及 ZIP 库 16.2.1 的三份函数字节复用均已验证；升级后质量测试 147 通过、1 可选浏览器项跳过、0 失败，类型检查通过。新版仍需完整生命周期及真实 draft 验收，不能继承旧 CLI 的云端证明。
+- npm 官方审计当前为 0 Critical、13 High、2 Moderate、1 Low（包及聚合条目数，不是独立漏洞数）。剩余 High 包括既有 Critical CSS → Penthouse → Puppeteer → extract-zip，以及 CLI 开发/图片路径的 sharp、http-proxy-middleware、multiparty 和 brace-expansion。没有将这些未解决告警写成“零漏洞”，也没有盲目降级 CLI 或跨主版本覆盖依赖；后续工具链维护继续跟踪。生产 HTTP 可达性没有被本次审计证明。
 
 ## 独立审查与修复
 
