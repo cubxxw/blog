@@ -243,3 +243,76 @@ test("backup retains the shared lifecycle but omits remote-reading Critical CSS 
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+
+function criticalFixture(t) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'critical-targets-'));
+  t.after(() => fs.rmSync(root, {recursive:true, force:true}));
+  fs.mkdirSync(path.join(root, 'content/en'), {recursive:true});
+  fs.writeFileSync(path.join(root, 'netlify.toml'), `[build]
+command = "old"
+publish = "public"
+[[plugins]]
+package = "netlify-plugin-critical-css"
+[plugins.inputs]
+base = "public"
+globs = ["index.html", "zh/index.html", "columns/**/*"]
+ignore = ["columns/ignored/**", "columns/skipped/index.html"]
+`);
+  return root;
+}
+
+async function fixtureHugoPhase(root) {
+  await buildHugoPhase({repoRoot:root,clock:'2026-09-28T00:00:00Z',target:'production',baseUrl:'https://cubxxw.com',exec:async call=>{
+    if(call.stage==='hugo-site-build') {
+      for(const file of ['index.html','zh/index.html','columns/example/index.html','columns/ignored/index.html','columns/skipped/index.html','columns/readme.txt']) {
+        const output=path.join(root,'public',file);
+        fs.mkdirSync(path.dirname(output),{recursive:true});
+        fs.writeFileSync(output,'<html>before Critical CSS</html>');
+      }
+      fs.mkdirSync(path.join(root,'public/columns/directory.html'),{recursive:true});
+    }
+    return {stdout:call.stage==='published-list'?'path,permalink\n':''};
+  }});
+}
+
+function criticalLifecycle(root, calls, transformColumn) {
+  return async call=>{
+    calls.push(call.stage);
+    if(call.stage==='netlify-build') {
+      // Exercise the real pre-plugin target collection; only the expensive
+      // Hugo and renderer processes are replaced by deterministic writes.
+      await fixtureHugoPhase(call.cwd);
+      const transformed=['index.html','zh/index.html',...(transformColumn?['columns/example/index.html']:[])];
+      for(const file of transformed) fs.appendFileSync(path.join(call.cwd,'public',file),'<style>body{color:black}</style>');
+      fs.mkdirSync(path.join(call.cwd,'.netlify/functions'),{recursive:true});
+      fs.writeFileSync(path.join(call.cwd,'.netlify/functions/a.zip'),'compiled');
+      fs.writeFileSync(path.join(call.cwd,'.netlify/netlify.toml'),'[build]\npublish="public"\n');
+    }
+    if(call.stage==='page-map') fs.writeFileSync(call.outputPath,'{}');
+    return {stdout:'Finished Critical CSS rendering'};
+  };
+}
+
+test('pre-critical hashes cover configured HTML glob targets and honor ignored files/directories', async t=>{
+  const root=criticalFixture(t);
+  await fixtureHugoPhase(root);
+  const hashes=JSON.parse(fs.readFileSync(path.join(root,'.build/pre-critical.json')));
+  assert.deepEqual(hashes.map(entry=>entry.path),['columns/example/index.html','index.html','zh/index.html']);
+  assert.ok(hashes.every(entry=>/^[a-f0-9]{64}$/.test(entry.hash)));
+});
+
+test('reported plugin success cannot hide an unchanged configured column page', async t=>{
+  const root=criticalFixture(t), calls=[], outDir=path.join(root,'out');
+  await assert.rejects(()=>buildSite({repoRoot:root,sourceSha:'a'.repeat(40),clock:'2026-09-28T00:00:00Z',target:'production',outDir,exec:criticalLifecycle(root,calls,false)}),/Critical CSS did not update columns\/example\/index\.html/);
+  assert.equal(calls.includes('output-check'),false);
+  assert.equal(calls.includes('page-map'),false);
+  assert.equal(fs.existsSync(outDir),false,'incomplete plugin output must not be copied into a deployment artifact');
+});
+
+test('all configured targets transformed allows output checks while ignored HTML stays untouched', async t=>{
+  const root=criticalFixture(t),calls=[];
+  const result=await buildSite({repoRoot:root,sourceSha:'a'.repeat(40),clock:'2026-09-28T00:00:00Z',target:'production',outDir:path.join(root,'out'),exec:criticalLifecycle(root,calls,true)});
+  assert.ok(calls.includes('output-check'));
+  assert.match(fs.readFileSync(path.join(result.publicDir,'columns/example/index.html'),'utf8'),/<style>/);
+  assert.doesNotMatch(fs.readFileSync(path.join(result.publicDir,'columns/ignored/index.html'),'utf8'),/<style>/);
+});

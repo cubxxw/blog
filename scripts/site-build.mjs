@@ -190,19 +190,43 @@ export async function buildHugoPhase({
   // The static backup uses canonical subpath CSS URLs. Critical CSS would
   // fetch those from the old remote site instead of this frozen build.
   if (target === "backup") return;
-  // Critical CSS currently catches renderer exceptions. Record inputs so the
-  // outer lifecycle can detect a silently skipped landing-page optimization.
-  const landing = ["index.html", "zh/index.html"];
+  // The pinned plugin discards PromisePool timeout errors. Record every
+  // configured HTML target before it runs, including column landing pages.
+  const configPath = path.join(repoRoot, "netlify.toml");
+  const config = fs.existsSync(configPath)
+    ? parse(fs.readFileSync(configPath, "utf8"))
+    : {};
+  const plugin = config.plugins?.find(
+    (entry) => entry.package === "netlify-plugin-critical-css",
+  );
+  const publicDir = path.resolve(repoRoot, "public");
+  let landing = [];
+  if (plugin) {
+    const inputs = plugin.inputs || {};
+    const base = path.resolve(repoRoot, inputs.base || "public");
+    const relativeBase = path.relative(publicDir, base);
+    if (relativeBase.startsWith("..") || path.isAbsolute(relativeBase))
+      throw new Error("Critical CSS base must stay inside public output");
+    landing = [...new Set(fs.globSync(inputs.globs || ["**/*.html"], {
+      cwd: base,
+      exclude: inputs.ignore || ["node_modules", "_app", "_next"],
+    }))]
+      .filter((file) => file.endsWith(".html"))
+      .filter((file) => fs.lstatSync(path.resolve(base, file)).isFile())
+      .map((file) => {
+        const relative = path.relative(publicDir, path.resolve(base, file));
+        if (relative.startsWith("..") || path.isAbsolute(relative))
+          throw new Error("Critical CSS target must stay inside public output");
+        return relative.split(path.sep).join("/");
+      })
+      .sort();
+  }
   fs.writeFileSync(
     path.join(repoRoot, ".build/pre-critical.json"),
-    JSON.stringify(
-      landing
-        .filter((p) => fs.existsSync(path.join(repoRoot, "public", p)))
-        .map((p) => ({
-          path: p,
-          hash: sha256(fs.readFileSync(path.join(repoRoot, "public", p))),
-        })),
-    ),
+    JSON.stringify(landing.map((file) => ({
+      path: file,
+      hash: sha256(fs.readFileSync(path.join(publicDir, file))),
+    }))),
   );
 }
 export async function buildSite({

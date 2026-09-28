@@ -185,8 +185,10 @@
   package = "netlify-plugin-critical-css"
   [plugins.inputs]
     base = "public"
-    concurrency = 4
-    taskTimeout = 30000
+    # A bilingual landing page can take >40s across three viewports. Pool
+    # timeouts do not cancel Chromium, so keep concurrency and budget bounded.
+    concurrency = 2
+    taskTimeout = 120000
     showProgressBar = true
     globs = [
       "index.html",
