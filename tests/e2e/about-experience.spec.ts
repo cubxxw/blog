@@ -122,62 +122,73 @@ test.describe('About carousel interaction', () => {
       await expect(input).toBeFocused();
     });
 
-    test(`${route} starts paused and only explicit play enables automatic rotation`, async ({ page }) => {
+    test(`${route} starts the hero automatically and keeps cycling after manual navigation`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'no-preference' });
       await page.clock.install();
       await page.goto(route, { waitUntil: 'domcontentloaded' });
       const carousel = page.locator('[data-hero-carousel]');
       const counter = carousel.locator('[data-hero-current]');
       const toggle = carousel.locator('[data-hero-toggle]');
-      await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-      await page.clock.fastForward(8000);
-      await expect(counter).toHaveText('01');
-      await toggle.click();
       await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+      await expect(carousel).toHaveAttribute('data-autoplay', 'running');
       await page.clock.fastForward(4000);
       await expect(counter).toHaveText('02');
       await carousel.locator('[data-hero-next]').click();
       await expect(counter).toHaveText('03');
-      await expect(toggle).toHaveAttribute('aria-pressed', 'false');
       await page.mouse.move(0, 0);
       await page.locator('h1').click();
-      await page.clock.fastForward(8000);
-      await expect(counter).toHaveText('03');
-      await toggle.click();
-      await swipeLeft(page, carousel.locator('[data-hero-position="active"] img'));
+      await expect(carousel).toHaveAttribute('data-autoplay', 'running');
+      await page.clock.fastForward(4000);
       await expect(counter).toHaveText('01');
+      await toggle.click();
       await expect(toggle).toHaveAttribute('aria-pressed', 'false');
       await page.clock.fastForward(8000);
       await expect(counter).toHaveText('01');
     });
   }
 
-  test('reduced motion disables autoplay and changing the preference never resumes it', async ({ page }) => {
+  test('all visible decks advance without clicks and can be paused', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.clock.install();
+    await page.goto('/about/', { waitUntil: 'domcontentloaded' });
+    const decks = [
+      { region: '[data-hero-carousel]', counter: '[data-hero-current]' },
+      { region: '#workbench', counter: '[data-card-current]' },
+      { region: '#studio-products', counter: '[data-card-current]' },
+      { region: '#studio-road', counter: '[data-road-current]' },
+    ];
+    await expect(page.locator('#studio-road [data-road-position="next"] img')).toHaveAttribute('loading', 'lazy');
+    for (const deck of decks) {
+      const region = page.locator(deck.region);
+      await region.scrollIntoViewIfNeeded();
+      await page.mouse.move(0, 0);
+      await expect(region).toHaveAttribute('data-autoplay', 'running');
+      if (deck.region === '#studio-road') {
+        await expect(region.locator('[data-road-position="next"] img')).toHaveAttribute('loading', 'eager');
+      }
+      const before = await region.locator(deck.counter).textContent();
+      await page.clock.fastForward(6200);
+      await expect(region.locator(deck.counter)).not.toHaveText(before || '');
+      const toggle = region.locator('[data-autoplay-toggle]');
+      await toggle.click();
+      await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+      const pausedAt = await region.locator(deck.counter).textContent();
+      await page.clock.fastForward(12000);
+      await expect(region.locator(deck.counter)).toHaveText(pausedAt || '');
+    }
+  });
+
+  test('reduced motion disables autoplay on every deck', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.clock.install();
     await page.goto('/about/', { waitUntil: 'domcontentloaded' });
-    const carousel = page.locator('[data-hero-carousel]');
-    const toggle = carousel.locator('[data-hero-toggle]');
-    const counter = carousel.locator('[data-hero-current]');
-    await expect(toggle).toBeDisabled();
-    await page.clock.fastForward(8000);
-    await expect(counter).toHaveText('01');
-    await carousel.locator('[data-hero-next]').click();
-    await expect(counter).toHaveText('02');
-    await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await expect(toggle).toBeEnabled();
-    await page.clock.fastForward(8000);
-    await expect(counter).toHaveText('02');
-    await toggle.click();
-    await page.clock.fastForward(4000);
-    await expect(counter).toHaveText('03');
-    await page.emulateMedia({ reducedMotion: 'reduce' });
-    await expect(toggle).toBeDisabled();
-    await page.clock.fastForward(8000);
-    await expect(counter).toHaveText('03');
-    await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-    await page.clock.fastForward(8000);
-    await expect(counter).toHaveText('03');
+    for (const selector of ['[data-hero-carousel]', '#workbench', '#studio-products', '#studio-road']) {
+      const region = page.locator(selector);
+      await region.scrollIntoViewIfNeeded();
+      await expect(region.locator('[data-autoplay-toggle]')).toBeDisabled();
+      await expect(region).toHaveAttribute('data-autoplay', 'paused');
+    }
+    await page.clock.fastForward(16000);
+    await expect(page.locator('[data-road-current]')).toHaveText('01');
   });
 });

@@ -114,9 +114,9 @@
         <div class="studio-hero__controls">
           <span role="status" aria-live="polite" aria-atomic="true"><b data-hero-current>01</b> / 03</span>
           <button type="button" data-hero-prev aria-label="{{ if $isZH }}上一张个人故事{{ else }}Previous personal story{{ end }}">←</button>
-          <button type="button" data-hero-toggle aria-pressed="false"
-            aria-label="{{ if $isZH }}播放自动轮播{{ else }}Play automatic carousel{{ end }}">
-            <span aria-hidden="true">▶</span>
+          <button type="button" data-hero-toggle data-autoplay-toggle aria-pressed="true"
+            aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}">
+            <span aria-hidden="true">Ⅱ</span>
           </button>
           <button type="button" data-hero-next aria-label="{{ if $isZH }}下一张个人故事{{ else }}Next personal story{{ end }}">→</button>
         </div>
@@ -200,6 +200,7 @@
         <div class="studio-deck-controls">
           <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / 03</span>
           <button type="button" data-card-prev aria-label="{{ if $isZH }}上一个工作区{{ else }}Previous workspace{{ end }}">←</button>
+          <button type="button" data-autoplay-toggle aria-pressed="true" aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}"><span aria-hidden="true">Ⅱ</span></button>
           <button type="button" data-card-next aria-label="{{ if $isZH }}下一个工作区{{ else }}Next workspace{{ end }}">→</button>
         </div>
       </header>
@@ -252,6 +253,7 @@
           <div class="studio-deck-controls">
               <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / {{ printf "%02d" (len $products) }}</span>
             <button type="button" data-card-prev aria-label="{{ if $isZH }}上一个产品{{ else }}Previous product{{ end }}">←</button>
+            <button type="button" data-autoplay-toggle aria-pressed="true" aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}"><span aria-hidden="true">Ⅱ</span></button>
             <button type="button" data-card-next aria-label="{{ if $isZH }}下一个产品{{ else }}Next product{{ end }}">→</button>
           </div>
         </div>
@@ -289,11 +291,15 @@
     <section class="studio-road" id="studio-road" aria-labelledby="studio-road-title"
       role="region" aria-roledescription="carousel" tabindex="0" data-road-carousel>
       <div class="studio-road__copy">
-        <p class="studio-road__counter" role="status" aria-live="polite" aria-atomic="true"><span data-road-current>01</span> / {{ printf "%02d" (len $journey) }}</p>
+        <div class="studio-road__folio">
+          <span>{{ if $isZH }}旅行手记 · 2025{{ else }}FIELD NOTES · 2025{{ end }}</span>
+          <p class="studio-road__counter" role="status" aria-live="off" aria-atomic="true"><span data-road-current>01</span> / {{ printf "%02d" (len $journey) }}</p>
+        </div>
         <h2 id="studio-road-title">{{ if $isZH }}路不是生活的间隙。<br>路就是生活本身。{{ else }}The road is not a break from life.<br>It is life itself.{{ end }}</h2>
         <p>{{ if $isZH }}12 个月，9 个国家，35 多座城市，徒步 400 多公里。旅行让我持续拆掉那些未经检验的答案。{{ else }}Twelve months, nine countries, more than 35 cities, and over 400 km on foot. Travel keeps undoing my untested answers.{{ end }}</p>
         <div class="studio-road__controls">
           <button type="button" data-road-prev aria-label="{{ if $isZH }}上一张旅行照片{{ else }}Previous travel photo{{ end }}">←</button>
+          <button type="button" data-autoplay-toggle aria-pressed="true" aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}"><span aria-hidden="true">Ⅱ</span></button>
           <button type="button" data-road-next aria-label="{{ if $isZH }}下一张旅行照片{{ else }}Next travel photo{{ end }}">→</button>
           <a href="{{ "travel/" | relLangURL }}">{{ if $isZH }}进入旅行地图{{ else }}Explore the travel map{{ end }}</a>
         </div>
@@ -303,7 +309,7 @@
         <div class="studio-road__track" data-road-track>
           {{- range $index, $item := $journey }}
           {{- $journeySmall := printf "%s-480.webp" (strings.TrimSuffix ".webp" $item.image) }}
-          <figure class="studio-road__slide" data-road-slide
+          <figure class="studio-road__slide" data-road-slide data-frame-label="{{ if $isZH }}画面{{ else }}FRAME{{ end }} {{ printf "%02d" (add $index 1) }}"
             data-road-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else if eq $index (sub (len $journey) 1) }}prev{{ else }}hidden{{ end }}"
             aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}"{{ if ne $index 0 }} inert{{ end }}>
             <img src="{{ $item.image }}" width="900" height="900"
@@ -667,6 +673,71 @@ links:
       }, true);
     }
 
+    var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Keep timers scoped to what a reader can see and control.
+    function bindAutoplay(region, status, advance, delay) {
+      var toggle = region.querySelector('[data-autoplay-toggle]');
+      var timer = null;
+      var visible = false;
+      var hovered = false;
+      var userPaused = reduceMotionQuery.matches;
+
+      function stop() {
+        if (timer !== null) window.clearTimeout(timer);
+        timer = null;
+      }
+
+      function sync() {
+        stop();
+        var keyboardFocus = region.matches(':focus-visible') || !!region.querySelector(':focus-visible');
+        var running = !reduceMotionQuery.matches && !userPaused && visible &&
+          !document.hidden && !hovered && !keyboardFocus;
+        region.dataset.autoplay = running ? 'running' : 'paused';
+        toggle.disabled = reduceMotionQuery.matches;
+        toggle.setAttribute('aria-pressed', userPaused || reduceMotionQuery.matches ? 'false' : 'true');
+        toggle.setAttribute('aria-label', reduceMotionQuery.matches
+          ? '{{ if $isZH }}减少动态效果时关闭自动轮播{{ else }}Automatic carousel disabled for reduced motion{{ end }}'
+          : userPaused
+            ? '{{ if $isZH }}播放自动轮播{{ else }}Play automatic carousel{{ end }}'
+            : '{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}');
+        toggle.querySelector('span').textContent = userPaused || reduceMotionQuery.matches ? '▶' : 'Ⅱ';
+        status.setAttribute('aria-live', running ? 'off' : 'polite');
+        if (running) {
+          var upcoming = region.querySelector('[data-hero-position="next"] img, [data-card-position="next"] img, [data-road-position="next"] img');
+          if (upcoming) upcoming.loading = 'eager';
+          timer = window.setTimeout(function () {
+            advance();
+            sync();
+          }, delay);
+        }
+      }
+
+      toggle.addEventListener('click', function () { userPaused = !userPaused; sync(); });
+      region.addEventListener('mouseenter', function () { hovered = true; sync(); });
+      region.addEventListener('mouseleave', function () { hovered = false; sync(); });
+      region.addEventListener('focusin', sync);
+      region.addEventListener('focusout', function () { window.setTimeout(sync, 0); });
+      document.addEventListener('visibilitychange', sync);
+      window.addEventListener('pagehide', stop);
+      window.addEventListener('pageshow', sync);
+      reduceMotionQuery.addEventListener('change', function (event) {
+        if (event.matches) userPaused = true;
+        sync();
+      });
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          sync();
+        }, { threshold: 0.12 });
+        observer.observe(region);
+      } else {
+        visible = true;
+      }
+      sync();
+      return sync;
+    }
+
     var carousel = root.querySelector('[data-road-carousel]');
     var slides = Array.prototype.slice.call(root.querySelectorAll('[data-road-slide]'));
     var current = root.querySelector('[data-road-current]');
@@ -690,10 +761,12 @@ links:
       current.textContent = String(index + 1).padStart(2, '0');
     }
 
-    root.querySelector('[data-road-prev]').addEventListener('click', function () { show(index - 1); });
-    root.querySelector('[data-road-next]').addEventListener('click', function () { show(index + 1); });
-    bindDeckKeyboard(carousel, slides.length, function () { return index; }, show);
-    bindDeckSwipe(carousel.querySelector('.studio-road__viewport'), function (direction) { show(index + direction); });
+    var syncRoad = bindAutoplay(carousel, carousel.querySelector('.studio-road__counter'), function () { show(index + 1); }, 4800);
+    function selectRoad(next) { show(next); syncRoad(); }
+    root.querySelector('[data-road-prev]').addEventListener('click', function () { selectRoad(index - 1); });
+    root.querySelector('[data-road-next]').addEventListener('click', function () { selectRoad(index + 1); });
+    bindDeckKeyboard(carousel, slides.length, function () { return index; }, selectRoad);
+    bindDeckSwipe(carousel.querySelector('.studio-road__viewport'), function (direction) { selectRoad(index + direction); });
     show(0);
 
     root.querySelectorAll('[data-card-carousel]').forEach(function (carousel) {
@@ -719,10 +792,12 @@ links:
         counter.textContent = String(deckIndex + 1).padStart(2, '0');
       }
 
-      carousel.querySelector('[data-card-prev]').addEventListener('click', function () { renderDeck(deckIndex - 1); });
-      carousel.querySelector('[data-card-next]').addEventListener('click', function () { renderDeck(deckIndex + 1); });
-      bindDeckKeyboard(carousel, cards.length, function () { return deckIndex; }, renderDeck);
-      bindDeckSwipe(carousel.querySelector('[data-card-track]'), function (direction) { renderDeck(deckIndex + direction); });
+      var syncDeck = bindAutoplay(carousel, counter.parentElement, function () { renderDeck(deckIndex + 1); }, 5200);
+      function selectDeck(next) { renderDeck(next); syncDeck(); }
+      carousel.querySelector('[data-card-prev]').addEventListener('click', function () { selectDeck(deckIndex - 1); });
+      carousel.querySelector('[data-card-next]').addEventListener('click', function () { selectDeck(deckIndex + 1); });
+      bindDeckKeyboard(carousel, cards.length, function () { return deckIndex; }, selectDeck);
+      bindDeckSwipe(carousel.querySelector('[data-card-track]'), function (direction) { selectDeck(deckIndex + direction); });
       renderDeck(0);
     });
 
@@ -730,13 +805,8 @@ links:
     if (heroCarousel) {
       var heroSlides = Array.prototype.slice.call(heroCarousel.querySelectorAll('[data-hero-slide]'));
       var heroCurrent = heroCarousel.querySelector('[data-hero-current]');
-      var heroToggle = heroCarousel.querySelector('[data-hero-toggle]');
       var heroStatus = heroCurrent.parentElement;
       var heroIndex = 0;
-      var heroTimer = null;
-      var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      var reduceMotion = reduceMotionQuery.matches;
-      var userPaused = true;
 
       function renderHero(next) {
         heroIndex = (next + heroSlides.length) % heroSlides.length;
@@ -750,67 +820,14 @@ links:
         heroCurrent.textContent = String(heroIndex + 1).padStart(2, '0');
       }
 
-      function stopHeroAutoplay() {
-        if (heroTimer !== null) window.clearInterval(heroTimer);
-        heroTimer = null;
-      }
-
-      function syncHeroToggle() {
-        heroToggle.disabled = reduceMotion;
-        heroToggle.setAttribute('aria-pressed', userPaused ? 'false' : 'true');
-        heroToggle.setAttribute('aria-label', reduceMotion
-          ? '{{ if $isZH }}减少动态效果时关闭自动轮播{{ else }}Automatic carousel disabled for reduced motion{{ end }}'
-          : userPaused
-            ? '{{ if $isZH }}播放自动轮播{{ else }}Play automatic carousel{{ end }}'
-            : '{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}');
-        heroToggle.querySelector('span').textContent = userPaused ? '▶' : 'Ⅱ';
-        heroStatus.setAttribute('aria-live', userPaused ? 'polite' : 'off');
-      }
-
-      function startHeroAutoplay(force) {
-        if (reduceMotion || userPaused || document.hidden || heroTimer !== null) return;
-        if (!force && (heroCarousel.matches(':hover') || heroCarousel.contains(document.activeElement))) return;
-        heroTimer = window.setInterval(function () { renderHero(heroIndex + 1); }, 3600);
-      }
-
-      function selectHero(next) {
-        userPaused = true;
-        stopHeroAutoplay();
-        syncHeroToggle();
-        renderHero(next);
-      }
+      var syncHero = bindAutoplay(heroCarousel, heroStatus, function () { renderHero(heroIndex + 1); }, 4000);
+      function selectHero(next) { renderHero(next); syncHero(); }
 
       heroCarousel.querySelector('[data-hero-prev]').addEventListener('click', function () { selectHero(heroIndex - 1); });
       heroCarousel.querySelector('[data-hero-next]').addEventListener('click', function () { selectHero(heroIndex + 1); });
-      heroToggle.addEventListener('click', function () {
-        if (reduceMotion) return;
-        userPaused = !userPaused;
-        syncHeroToggle();
-        if (userPaused) stopHeroAutoplay();
-        else startHeroAutoplay(true);
-      });
       bindDeckKeyboard(heroCarousel, heroSlides.length, function () { return heroIndex; }, selectHero);
       bindDeckSwipe(heroCarousel.querySelector('.studio-hero__viewport'), function (direction) { selectHero(heroIndex + direction); });
-      heroCarousel.addEventListener('pointerenter', stopHeroAutoplay);
-      heroCarousel.addEventListener('pointerleave', function () { startHeroAutoplay(); });
-      heroCarousel.addEventListener('focusin', stopHeroAutoplay);
-      heroCarousel.addEventListener('focusout', function () { window.setTimeout(function () { startHeroAutoplay(); }, 0); });
-      document.addEventListener('visibilitychange', function () {
-        if (document.hidden) stopHeroAutoplay();
-        else startHeroAutoplay();
-      });
-      window.addEventListener('pagehide', stopHeroAutoplay);
-      window.addEventListener('pageshow', function () { startHeroAutoplay(); });
-      reduceMotionQuery.addEventListener('change', function (event) {
-        reduceMotion = event.matches;
-        if (reduceMotion) {
-          userPaused = true;
-          stopHeroAutoplay();
-        }
-        syncHeroToggle();
-      });
       renderHero(0);
-      syncHeroToggle();
     }
 
     var revealSections = Array.prototype.slice.call(root.querySelectorAll(
