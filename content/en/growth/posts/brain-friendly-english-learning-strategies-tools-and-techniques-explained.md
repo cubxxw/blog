@@ -6,6 +6,7 @@ showtoc: true
 tocopen: false
 type: posts
 author: ["Xinwei Xiong", "Me"]
+keywords: []
 tags:
   - Learning
   - Inner Work

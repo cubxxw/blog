@@ -2,6 +2,7 @@
 title: "About My Blog"
 date: 2023-09-14T08:00:00+08:00
 author: ["Xinwei Xiong", "Me"]
+keywords: []
 description: "This is my first blog, about my introduction"
 tags:
   - Blog
@@ -12,6 +13,7 @@ tldr:
   - "Xinwei Xiong is a passionate open source contributor and tech enthusiast guided by the OpenIM community in his digital journey."
   - "True value emerges from what you create, not what you possess, as emphasized by open source philosophy and personal mantra."
   - "The author balances tech pursuits with outdoor exploration, viewing life as both a digital and physical adventure worth experiencing fully."
+type: posts
 ---
 
 

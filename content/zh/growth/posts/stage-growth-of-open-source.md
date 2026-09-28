@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-05-16T16:36:15+08:00
 showtoc: true
 tocopen: false
+type: posts
 aliases:
   - /zh/growth/posts/open-source-stage-growth/
 author: ["Xinwei Xiong", "Me"]

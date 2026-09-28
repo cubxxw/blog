@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:40:53+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
@@ -167,7 +168,7 @@ Make any changes to the code and then build and test it. `new-branch`
 
 > Recommended naming convention:
 >
-> ``asciiarmor
+> ```asciiarmor
 > Branch: Name: Description:
 >
 > Master branch master master branch, all official versions provided to users are released on this master branch
@@ -271,7 +272,7 @@ Then test it locally.
 >
 > ## Install golang
 >
-> ````bash
+> ```bash
 > wget -o https://go.dev/dl/go1.19.3.linux-amd64.tar.gz && tar -C /usr/local -zxvf go1.19.3.linux-amd64.tar.gz
 > cat >> /etc/profile <<EOF
 > # set go path
@@ -282,7 +283,7 @@ Then test it locally.
 >
 > ## Build the project
 >
-> ````bash
+> ```bash
 > git clone https://github.com/labring/sealos && cd sealos
 > go env -w GOPROXY=https://goproxy.cn,direct && make build
 > ```

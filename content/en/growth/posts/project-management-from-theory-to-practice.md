@@ -773,7 +773,7 @@ Review is a continuous process that continuously summarizes the progress of the 
 > **Directory:**
 >
 > | Document name | Document link |
-> |---------------- | ---------------------------------- - |
+> |---------------- | ----------------------------------- |
 > | Project basic information table | Project basic information table |
 > | Core Member List | Core Member List |
 > | Milestone Chart | Milestone Chart |

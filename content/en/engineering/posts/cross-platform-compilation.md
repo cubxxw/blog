@@ -4,6 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-09-16T16:21:52+08:00'
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ['Cross Platform Compilation', 'Go Programming Language', 'Build Process', 'Compatibility', 'Distribution']
 tags: ["Blog", "Go"]
@@ -480,7 +481,7 @@ docker run --privileged --rm tonistiigi/binfmt --install all
 We need to make a solution for OpenIM offline deployment. First of all, we need to be familiar with what components are required for OpenIM deployment. Check out
 
 | Service Name | Image | Supported Architectures | Ports |
-| ------------------ | ---------------------------------- --------- | ----------------------- | ---------------- ------- |
+| ------------------ | ------------------------------------------- | ----------------------- | ----------------------- |
 | mysql | mysql:5.7 | amd64, arm64v8, arm32v7 | 13306:3306, 23306:33060 |
 | mongodb | mongo:4.0 | amd64, arm64v8, arm32v7 | 37017:27017 |
 | redis | redis | amd64, arm64v8, arm32v7 | 16379:6379 |

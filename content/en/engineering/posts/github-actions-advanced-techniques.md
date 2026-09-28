@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:17:02+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
@@ -77,7 +78,7 @@ We recommend using tags for operational release management. Using this method, y
 Query parameters are optional parts of the URL that you can customize to share specific web views, such as search filter results, issue templates, or publish form pages on GitHub. To create your own query parameters, you must match key-value pairs.
 
 | Query Parameters | Examples |
-| :----------- | :----------------------------------- -------------------------- |
+| :----------- | :------------------------------------------------------------- |
 | `tag` | `https://github.com/octo-org/octo-repo/releases/new?tag=v1.0.1` Creates a version based on a tag named "v1.0.1". |
 | `target` | `https://github.com/octo-org/octo-repo/releases/new?target=release-1.0.1` Create a release based on the latest commit to the "release-1.0.1" branch . |
 | `title` | `https://github.com/octo-org/octo-repo/releases/new?tag=v1.0.1&title=octo-1.0.1` Created based on the tag named "v1.0.1" Version named "octo-1.0.1". |
@@ -574,7 +575,7 @@ Different contexts can be used throughout a workflow run. For example, the `secr
 Additionally, some features may only be available in certain locations. For example, the `hashFiles` function is not available everywhere.
 
 | Workflow key workflow key | Context context | Special functions Special functions |
-| :------------------------------------------------ - | :-------------------------------------------------- ---------- | :---------------------------------------- ---------- |
+| :------------------------------------------------- | :------------------------------------------------------------ | :-------------------------------------------------- |
 | `run-name` | `github, inputs, vars` | None None |
 | `concurrency` | `github, inputs, vars` | None None |
 | `env` | `github, secrets, inputs, vars` | None None |
@@ -665,7 +666,7 @@ Additionally, some features may only be available in certain locations. For exam
 ### Some functional cases
 
 | **Features** | **Execution** |
-| :----------------------------------- | :----------- ------------------------------------------------ |
+| :----------------------------------- | :----------------------------------------------------------- |
 | Trigger the workflow to run automatically | [`push`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push) |
 | Trigger the workflow to run automatically | [`pull_request`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request) |
 | Run a workflow manually from the UI | [`workflow_dispatch`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) |

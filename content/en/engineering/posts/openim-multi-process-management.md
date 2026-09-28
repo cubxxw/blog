@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-16T15:55:38+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
@@ -558,7 +559,7 @@ $ sudo systemctl daemon-reload
 Some identifiers can be used in template unit files. When instantiated as an instance unit file and run, systemd will pass the actual value of the identifier to the corresponding identifier. For example, `%i` is used in the template unit file. When the instance unit file is actually run, the instance name is passed to the `%i` identifier. (Chinese means the characters after `@` and the characters before `.service`)
 
 | placeholder | description |
-| ------ | ------------------------------------------ ------------------ |
+| ------ | ------------------------------------------------------------ |
 | %n | Inserts the full unit name when it appears in the template file. |
 | %N | Same as above, but reverses any escapes such as those present in file path patterns. |
 | %p | This refers to the unit name prefix. This is the part of the unit name before the @ symbol. |

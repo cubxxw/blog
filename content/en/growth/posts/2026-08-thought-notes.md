@@ -5738,7 +5738,7 @@ Monthly prices are ranges, not a fixed subscription fee.  Exa depends on the num
 
 Set the formal budget after the trial run.  Count provider + route + environment + billed requests + cost, without recording the raw query, contact information or Provider payload
 
-The full version has been updated to [Paid and unified management plan (line 80)](/Users/cubxxw/date/Ailoha-ai/ailoha-brain/reports/social-search-fetch-eval-operating-model/README.md:80), verified
+The full version has been updated to Paid and unified management plan (internal document, line 80), verified
 
 The configuration needed (different keys for different environments)
 

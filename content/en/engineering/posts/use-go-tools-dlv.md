@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-02-24T16:38:39+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
@@ -407,7 +408,7 @@ dlv is an abbreviation. In fact, [delve](https://github.com/go-delve/delve) is t
 ### Common commands
 
 | Commands | Usage | Practice |
-| ------- | ------------------------------------------ ------------------ | ----- |
+| ------- | ------------------------------------------------------------ | ----- |
 | attach | This command will cause Delve to take control of an already running process and start a new debugging session. When exiting a debugging session, you can choose to keep the process running or kill it. | case1 |
 | exec | This command will cause Delve to execute the binary and immediately attach to it, starting a new debugging session. Note that if a binary is compiled without optimizations turned off, it may be difficult to debug it correctly. Please consider compiling debug binaries with -gcflags="all=-N -l " on Go 1.10 or later, and -gcflags="-N -l" on earlier versions of Go. | case2 |
 | help | manual | case3 |
@@ -447,7 +448,7 @@ dlv is an abbreviation. In fact, [delve](https://github.com/go-delve/delve) is t
 ### Debugging instructions during program execution
 
 | Commands | Abbreviations | Usage | Examples |
-| ---------------- | ---- | -------------------------- ----- | ------ |
+| ---------------- | ---- | ------------------------------- | ------ |
 | continue | c | Continue execution to a breakpoint or the end of the program | case12 |
 | next | n | execute the next line of code | case13 |
 | restart | r | Re-execute the program | case14 |
@@ -460,7 +461,7 @@ dlv is an abbreviation. In fact, [delve](https://github.com/go-delve/delve) is t
 ### Parameter management
 
 | Commands | Abbreviations | Usage | Examples |
-| ------- | ---- | ---------------------------------- -------------------------- | ------ |
+| ------- | ---- | ------------------------------------------------------------ | ------ |
 | args | / | Print function input | case18 |
 | display | / | Print the value of the variable added to display, each time the next line of code or the next breakpoint is executed | case19 |
 | locals | / | print local variables | case20 |
@@ -474,7 +475,7 @@ dlv is an abbreviation. In fact, [delve](https://github.com/go-delve/delve) is t
 ### other
 
 | Commands | Abbreviations | Usage | Examples |
-| ----------- | -------- | -------------------------- | - ----- |
+| ----------- | -------- | -------------------------- | ------ |
 | disassemble | disass | View decompiled code, machine code | case25 |
 | exit | quit / q | exit | case26 |
 | funcs | / | Print all functions used by the program | case27 |
@@ -897,7 +898,7 @@ Comprehensive comparison of the two Golang program debuggers gdb and dlv, I thin
  
 
 | Debugger | Advantages | Disadvantages |
-| :----: | :---------------------------------------: | :------------------------------------------------- ---: |
+| :----: | :---------------------------------------: | :----------------------------------------------------: |
 | dlv | Comprehensive support for goroutine and go type debugging | Only supports go, but does not support debugging of some Go internal bottom data |
 | gdb | In line with existing debugging habits, similar to C/C++ debugging instructions | Insufficient support for goroutine scenarios and cannot handle goroutine debugging well |
 

@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-05-19T15:20:58+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:

@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-16T16:13:36+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags:
@@ -119,7 +120,7 @@ Many people have heard of **Scrum Master**,oh, I am curious what is Scrum Master
 Scrum is a term used in rugby. The normal translation is to mean scrambling for the ball. It is now quoted in agile practices and represents an agile framework. Scrum is not a specific product development process or technology, but a framework that accommodates other processes and technologies. It is an iterative and incremental product development framework! Generally speaking, Scrum is a full-process framework composed of 3355 principles. The so-called 5533 values are the 3 artifacts, 3 roles, 5 meetings and 5 values in Scrum.
 
 | Scrum Principles | Description |
-| ---------- | --------------------------------------- -------------------------- |
+| ---------- | ----------------------------------------------------------------- |
 | 3 types of artifacts | - Product Backlog: Contains all features, requirements, optimization and repair tasks to be developed. |
 | | - Sprint Backlog: A subset of the product backlog selected in the sprint, representing the team's work. |
 | | - Increment: The sum of all product backlog items completed in a sprint, which is a complete product version. |
@@ -155,14 +156,14 @@ We talked about Agile and DevOps, so what kind of sparks will be produced if TM 
 Therefore, Agile and DevOps should complement each other and jointly create high-quality teams.
 
 | Four Core Values of the Agile Manifesto | Explanation |
-| ---------------------------------- | --------------- -------------------------------------------------- |
+| ---------------------------------- | ----------------------------------------------------------------- |
 | Individuals and interactions trump processes and tools | Emphasis on communication and cooperation among team members, believing that effective interaction between people is more important than cumbersome processes and tools. |
 | Working software is better than comprehensive documentation | Pay attention to the actual running effect of the software, emphasizing that executable code and actually usable products are more valuable than excessive documents and specifications. |
 | Customer cooperation trumps contract negotiation | Emphasis on active cooperative relationships with customers, believing that interaction with customers and understanding customer needs are more conducive to project success than strict contract negotiations. |
 | Responding to changes rather than following a plan | Accept that changes in needs and circumstances are inevitable, and it is more valuable to respond quickly and flexibly to changes than to strictly follow a plan. |
 
 | Three approaches to DevOps | Explanation |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Collaboration and communication | DevOps emphasizes close collaboration and effective communication between software development and operation and maintenance teams. By eliminating information silos and facilitating communication, team members are better able to understand each other's work and needs, thereby increasing overall effectiveness. |
 | Automation | Automation is one of the core principles of DevOps. Automation through tools and scripts can reduce manual operations and potential errors, thereby improving delivery speed and quality. Automated testing, deployment, monitoring and other aspects are all important components of DevOps automation. |
 | Continuous Delivery | Continuous delivery is one of the goals of DevOps, which means continuously delivering software to the production environment to achieve rapid and stable releases. With practices such as continuous integration, continuous deployment, and automated testing, teams can respond more quickly to requirements changes and problem fixes. |
@@ -207,7 +208,7 @@ DevOps Core Principles: Deliver working software quickly to achieve expected val
 ## Project management tools
 
 | Product name | Product introduction | Official website address | Open source address | Advantages and disadvantages |
-| ------- | ------------------------------------------ ------------------ | ---------------------------------- --------- | ---------------------------------- | ----- -------------------------------------------------- ----- |
+| ------- | ------------------------------------------------------------ | ------------------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
 | Trello | Trello is a simple and intuitive project management tool that organizes tasks and projects in the form of a Kanban board. Supports adding cards, lists and members, suitable for individuals and small teams. | https://trello.com/ | No open source | Advantages: easy to use, intuitive and concise. Disadvantages: The function is relatively simple and suitable for small projects. |
 | Jira | Jira is a powerful project management and issue tracking tool, especially suitable for large software development teams. Supports agile development, defect management, task allocation and other functions. | https://www.atlassian.com/software/jira | No open source | Advantages: Comprehensive functions, suitable for complex projects. Disadvantages: The learning curve is steep and the interface is relatively complex. |
 | Asana | Asana is a team collaboration tool that combines task management, calendaring, and project tracking. Suitable for coordinating team members and tracking project progress. | https://asana.com/ | No open source | Advantages: Simple and intuitive, suitable for small and medium-sized teams. Cons: Premium features require a paid subscription. |

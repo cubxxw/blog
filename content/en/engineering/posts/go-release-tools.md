@@ -125,7 +125,7 @@ jobs:
 
 GoReleaser requires the following [permissions](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token):
 
-- ````
+- ```
    contents: write
    ```
 
@@ -1775,7 +1775,7 @@ The `annotate` subcommand can add additional information to a local image `manif
 The optional parameter list is as follows:
 
 | Options | Description |
-| ------------- | ---------------------------------- ---------------------------------- |
+| --- | --- |
 | --arch | Set CPU architecture information. |
 | --os | Set operating system information. |
 | --os-features | Set operating system feature information. |

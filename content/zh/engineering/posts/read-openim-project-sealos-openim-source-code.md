@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-11T16:33:09+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: 
   - 熊鑫伟
   - 我

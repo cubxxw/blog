@@ -198,7 +198,7 @@ cloud-controller-manager allows us to connect a local Kubernetes cluster to a cl
 Master is the gateway and central hub of the cluster. Its main functions are to expose API interfaces, track the health status of other servers, schedule loads in an optimal way, and orchestrate communication between other components. A single Master node can complete all functions, but considering the pain point of single point of failure, multiple Master nodes are usually deployed in a production environment to form a Cluster.
 
 | master | overview |
-| --------------------------- | --------------------------- ---------------------------------- |
+| --------------------------- | ------------------------------------------------------------- |
 | **APIServer** | Kubernetes API, the unified entrance of the cluster and the coordinator of each component, provides interface services with RESTful API. The addition, deletion, modification, checking and monitoring operations of all object resources are handed over to APIServer for processing and then submitted to Etcd storage. |
 | **Scheduler** | Select a Node node for the newly created Pod according to the scheduling algorithm. It can be deployed arbitrarily, on the same node, or on different nodes. |
 | **Controller-Manager** | Processes regular background tasks in the cluster. One resource corresponds to a controller, and ControllerManager is responsible for managing these controllers. |
@@ -208,7 +208,7 @@ Master is the gateway and central hub of the cluster. Its main functions are to 
 It is the working node of Kubernetes, responsible for receiving work instructions from the Master, creating and destroying Pod objects accordingly according to the instructions, and adjusting network rules for reasonable routing and traffic forwarding. In a production environment, there can be N nodes.
 
 | Node | Overview |
-| -------------------------- | -------------------------- --------------------------------------- |
+| -------------------------- | ----------------------------------------------------------------- |
 | **kubelet** | Kubelet is the Master's Agent on the Node node. It manages the life cycle of the locally running container, such as creating containers, Pod mounting data volumes, downloading secrets, obtaining container and node status, etc. The kubelet converts each Pod into a set of containers. |
 | **Pod (Docker or rocket)** | Container engine, running containers. |
 | **kube-proxy** | Implement the Pod network proxy on the Node node to maintain network rules and four-layer load balancing. |
@@ -222,7 +222,7 @@ Distributed key-value storage system. Used to save cluster status data, such as 
 K8S clusters also rely on a set of add-on components, typically application-specific ones provided by third parties
 
 | Core Plugins | Overview |
-| ------------------ | ---------------------------------- ---------------------------------- |
+| ------------------ | -------------------------------------------------------------------- |
 | KubeDNS | Schedule and run Pods that provide DNS services in the K8S cluster. Other Pods in the same cluster can use this DNS service to resolve host names. K8S uses the CoreDNS project by default since version 1.11 to provide dynamic name resolution services for service registration and service discovery for the cluster. |
 | Dashboard | All functions of the K8S cluster must be based on the Web UI to manage the applications in the cluster and the cluster itself. |
 | Heapster | A performance monitoring and analysis system for containers and nodes. It collects and parses a variety of indicator data, such as resource utilization and life cycle time. In the latest version, its main functions are gradually replaced by Prometheus combined with other components. Starting from v1.8, resource usage monitoring can be obtained through the Metrics API. The specific component is Metrics Server, which is used to replace the previous heapster. This component began to be gradually abandoned in 1.11. |
@@ -232,7 +232,7 @@ K8S clusters also rely on a set of add-on components, typically application-spec
 ### Network plug-in
 
 | Online file checking | Overview |
-| -------------------------------------------------- ---------- | ------------------------------------- |
+| ------------------------------------------------------------ | ------------------------------------- |
 | Container Network Interface (CNI) | Container Network Interface |
 | flunnal | Implement network configuration, overlay network overlay network |
 | calico | Network configuration, network policy; BGp protocol, tunnel protocol |
@@ -242,7 +242,7 @@ K8S clusters also rely on a set of add-on components, typically application-spec
 ## Kubernetes basic concepts
 
 | Basic concepts | |
-| -------------------------- | -------------------------- --------------------------------------- |
+| -------------------------- | ----------------------------------------------------------------- |
 | **Label resource label** | Label (key/value), attached to a resource, used to associate objects, query and filter; |
 | **Labe Selector Label Selector** | A mechanism to filter qualified resource objects based on Label |
 | **Pod Resource Object** | A Pod Resource Object is a logical component that combines one or more application containers, storage resources, dedicated IP, and other options to support operation |
@@ -297,7 +297,7 @@ When introducing Pod, we mentioned that Pod is the smallest scheduling unit of K
 Common Pod controllers:
 
 | Pod Controller | |
-| -------------------------- | -------------------------- ----------------------------------------------- |
+| -------------------------- | ------------------------------------------------------------------------- |
 | **Replication Controller** | Use the replica controller. Only this Pod controller is supported in early risers; it can complete operations such as Pod increase and decrease, total number control, rolling update, rollback, etc., and has been discontinued |
 | **ReplicaSet Controller** | Use the replica set controller after the version is updated, and declare the usage method; it is an upgraded version of Replication Controller |
 | **Deployment** | Used for stateless application deployment, such as nginx, etc.; we will mention HPA Controller (Horizontal Pod Autosaler) later: used for horizontal Pod automatic scaling controller to control rs&deployment |
@@ -335,7 +335,7 @@ Each node in the K8S cluster runs `cAdvisor`, which is used to collect live data
 ### Service service resources
 
 | Main role or function | |
-| ---------------------------------- | ------------------ ------------------------------------------------ |
+| ---------------------------------- | ------------------------------------------------------------------ |
 | Prevent Pod from losing contact | Service is a resource object built on a group of Pod objects. As mentioned earlier, it selects a group of Pod objects through the Labe Selector and defines a unified fixed access entrance for this group of Pod objects ( Usually an IP address), if K8S has a DNS attachment (such as coredns), it will automatically configure a DNS name for the service when it is created for the client to discover the service. |
 | Define a set of Pod access policies, proxy Pod | Usually we directly request the Service IP, and the request will be load balanced to the back-end endpoint, that is, each Pod object, that is, the load balancer; therefore, the Service is essentially a 4-layer Proxy service, in addition, Service can also introduce traffic from outside the cluster to the cluster, which requires nodes to map the Service port. |
 

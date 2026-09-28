@@ -15,6 +15,9 @@ tldr:
   - "Author rebuilt his blog as static site using Hugo after losing his Docker-hosted dynamic blog, prioritizing long-term durability over dynamic features."
   - "Hugo combined with PaperMod theme provides comprehensive customization options including multilingual support, dark/light mode, breadcrumb navigation, and comment integration."
   - "Deployment automated via GitHub Actions and Makefile enables reliable content publishing without ongoing server management overhead."
+type: posts
+author: ["Xinwei Xiong", "Me"]
+keywords: []
 ---
 
 > **📌 Update (July 2026)**: This post, written in 2023, covers how the third generation of this blog was built from scratch on Hugo — the setup tutorial still holds up. Three years later I reassembled the entire blog again, and this time it wasn't the theme that changed but the whole production line: an AI writing pipeline, a two-stage cover factory, an AI duty officer living in GitHub Actions, and GEO infrastructure. The full retrospective is in [this new article (in Chinese)](/zh/ai-agent/posts/ai-native-blog-rebuild/) — read the two together: this one is the foundation, that one is how the house grew into a system.
@@ -75,7 +78,7 @@ Choose the theme we use:
 
 **Update theme using method 2**:
 
-> ````bash
+> ```bash
 > ❯ git submodule update --remote --merge
 > ```
 

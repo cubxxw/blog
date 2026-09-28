@@ -4,6 +4,7 @@ ShowRssButtonInSectionTermList: true
 date: '2023-06-16T16:24:59+08:00'
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: []
 tags: ["Blog", "Git", "OpenIM"]
@@ -46,13 +47,13 @@ I wrote a very comprehensive note when I was learning git, and shared it on GitH
 >
 > Unified format:
 >
-> ````bash
+> ```bash
 > Unified format: git commit -m 'type(scope): description(#issue)'
 > ```
 >
 > We bring the email address `-s` when submitting the visa. This is a good habit.
 >
-> ````bash
+> ```bash
 > git commit -s -m "..."
 > ```
 >

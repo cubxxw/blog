@@ -5855,7 +5855,7 @@ TikHub
 
 试跑后再定正式预算。 统计 provider + route + environment + billed requests + cost，不记录原始查询、联系人信息或 Provider payload
 
-完整版本已更新到 [付费与统一管理方案 (line 80)](/Users/cubxxw/date/Ailoha-ai/ailoha-brain/reports/social-search-fetch-eval-operating-model/README.md:80)，校验通过
+完整版本已更新到 付费与统一管理方案（内部文档，第 80 行），校验通过
 
 需要的配置（不同的 key 用于不同的环境）
 

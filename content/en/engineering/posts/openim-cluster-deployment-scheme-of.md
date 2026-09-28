@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-17T09:51:54+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["OpenIM", "Kubernetes", "Clustering", "Design", "Deployment", "Scheme"]
 tags:
@@ -192,7 +193,7 @@ For `openim-server` and `openim-chat`, consider the following strategies:
 ### Prepare each helm chart
 
 | **Category** | **Includes** | **Description** | **Remarks** |
-| ----------------------- | ----------------------- ---------------------------------- | --------------- -------------------------------------------------- | --- -------------------------------------------------- |
+| ----------------------- | --------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------- |
 | ingress-controller | nginx-ingress | There are currently three mainstream ingress-controllers: istio, traefik, and nginx. It is recommended to transition to traefik in the later stage. | Configure http and ws to use the same port. |
 | Business service module | openim-api, openimmsg-gateway, openim-push, openim-msgtransfer, openim-rpc-*, front-end module | It is recommended to merge the lightweight rpc service responsible for database storage into openim-api. | Dividing services too finely will increase maintainability. |
 | Infrastructure module | mysql, redis, mongodb, kafka, loki, Prometheus, grafana, zookeeper | Maintain a stable open source helm chart and default value. | Pushed to our own helm repo for easy management and user installation. |

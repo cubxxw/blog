@@ -136,7 +136,7 @@ base: kustomization + resources
 
 File structure: File structure:
 
-> ````bash
+> ```bash
 > ~/someApp
 > ├── deployment.yaml
 > ├── kustomization.yaml
@@ -383,7 +383,7 @@ base: kustomization + resources
 
 File structure: File structure:
 
-> ````bash
+> ```bash
 > ~/someApp
 > ├── deployment.yaml
 > ├── kustomization.yaml
@@ -630,7 +630,7 @@ base: kustomization + resources
 
 File structure: File structure:
 
-> ````bash
+> ```bash
 > ~/someApp
 > ├── deployment.yaml
 > ├── kustomization.yaml

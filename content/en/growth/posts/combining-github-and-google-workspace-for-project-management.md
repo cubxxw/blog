@@ -4,8 +4,8 @@ ShowRssButtonInSectionTermList: true
 date: 2024-02-22T14:22:21+08:00
 showToc: true
 tocopen: false
-type: post
-authors: ['Xinwei Xiong', 'Me'] 
+type: posts
+author: ['Xinwei Xiong', 'Me']
 keywords: ['GitHub', 'Google Workspace', 'Project Management', 'Development Strategies', 'Collaboration Tools']
 tags:
   - AI Search

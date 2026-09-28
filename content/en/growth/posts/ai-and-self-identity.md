@@ -80,7 +80,7 @@ This is certainly a good thing, but for many people, that boundary was once part
 
 Learning a language, mastering a skill, putting in ten thousand hours in a certain field — these were once the only paths to knowledge. Now AI compresses the accumulation cycle, and knowledge is being democratized. Anyone can access in five minutes information that used to take five years to reach.
 
-![Loss and Gain](/assets/loss-and-gain.jpg)
+![Loss and Gain](/images/posts/ai-and-self-identity/loss-and-gain.en.svg)
 *What we lose is the means, not the end*
 
 But the more I think about it, these losses are not the most fundamental.
@@ -125,7 +125,7 @@ This illusion is in the process of breaking.
 
 AI writes poetry, composes music, paints, writes novels. It doesn't just imitate styles, but can produce many things that humans simply cannot distinguish as "machine works." If you mix an AI-written poem with a human-written poem and have people blindly choose which is better, the result is often fifty-fifty, or even slightly in favor of AI.
 
-![Three Illusions](/assets/three-illusions.jpg)
+![Three Illusions](/images/posts/ai-and-self-identity/three-illusions.en.svg)
 *Three illusions shatter consecutively, what remains for humanity?*
 
 The consecutive shattering of three illusions has plunged many people into a kind of nihilism:
@@ -204,7 +204,6 @@ AI is very good at the latter part — generating explanations, constructing nar
 
 It doesn't know that moment of chest tightening, because it has no chest.
 
-![Feeling vs Thinking](/assets/feeling-vs-thinking.jpg)
 *Feelings are the language of the body, thoughts are the brain's translation*
 
 This thing seems small, but I think it points to the hardest core of human agency — **embodiment**.
@@ -230,7 +229,6 @@ But careful observation reveals that no one's life operates this way.
 - You don't decide to have children because you think "being a parent is meaningful," but you have children, and then one morning watching their sleeping face, something indescribable hits you — that's meaning, sudden, unexpected
 - You don't love a certain job because you calculate it's "valuable," but in the middle of the night when a project is halfway through, you suddenly realize you've forgotten time — that state is meaning
 
-![Emergent Meaning](/assets/emergent-meaning.jpg)
 *Meaning emerges unexpectedly, not as a result of calculation*
 
 AI is very good at calculating:
@@ -279,7 +277,6 @@ Moreover, inspiration is always accompanied by an emotional surge.
 
 This feeling is not just cognitive confirmation; it's also a physical reaction — heart beats a little faster, some excitement. That's a feeling, not just a judgment.
 
-![Inspiration Moment](/assets/inspiration-moment.jpg)
 *Inspiration is the moment of being surprised by oneself*
 
 AI-generated "creativity" doesn't have this process.
@@ -322,7 +319,6 @@ This is why I believe that **the most important ability in the AI era is not tec
 
 The deeper you understand yourself, the more accurately you use AI, and the more irreplaceable what you create becomes — because behind it is a real, unreplicable person.
 
-![Human-AI Collaboration](/assets/human-ai-collaboration.jpg)
 *Humans are direction definers, AI is a powerful engine*
 
 ---
@@ -366,7 +362,6 @@ The test for this state is simple:
 - If your answer is "the sky is falling," you're probably in anxiety mode
 - If your answer is "a bit of a pity, but continue tomorrow," you're probably in relaxation mode
 
-![Relaxed State](/assets/relaxed-state.jpg)
 *Relaxation is not laziness, but not being driven by fear*
 
 ---

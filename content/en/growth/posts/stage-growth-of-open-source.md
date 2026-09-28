@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-04-15T16:36:14+08:00
 showtoc: true
 tocopen: false
+type: posts
 aliases:
   - /growth/posts/open-source-stage-growth/
 author: ["Xinwei Xiong", "Me"]
@@ -55,7 +56,7 @@ I think all the stages mentioned below are like the trajectory of life. It does 
 **Case:** Read the source code of sealer, sealos, Kubernetes, k3s, horizoncd, and test
 
 | Stage | The first stage: simply look at the source code stage |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Method | Simply look at the source code |
 | Description | Simply look at the source code, documentation, and run the sample code |
 | Learning effect | 1 ~ 2 |
@@ -84,7 +85,7 @@ The first stage suggestion is to simply look at the source code, documentation, 
 - **Case:** Organize the project structure and process of Kubernetes, organize and output the sealos project.
 
 | Phase | Phase 2: Organizing source code |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Method | Organize source code |
 | Description | Read the source code carefully, sort out the project structure and process, organize all or part of the source code, including changing all package names, compile/test/run and pass |
 | Learning effect | 2 ~ 3 |
@@ -110,7 +111,7 @@ The suggestion for the second stage is to organize the source code, read the sou
 - **Case:** Summarize Envoy's system architecture diagram and design plan, and share it on your personal blog and community. Draw the system design and architecture plans of sealers and sealos, and push them to personal blogs and communities. There are also many people sharing content on Youtube, and the process is particularly worthy of reference and learning.
 
 | Stage | Stage 3: Organizing + Output Sharing |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Method | Organizing + Output Sharing |
 | Description | Summarize source code analysis, architectural design documents/PPT or architecture diagrams, and share them on personal blogs and communities |
 | Learning effect | 3 ~ 5 |
@@ -140,7 +141,7 @@ The suggestion for the third stage is to summarize source code analysis, archite
 - **Case:** Develop your own clone, such as sealos split from sealer. Open source and share it with the community (GitHub). Another example is k3s, which is also a refinement of the Kubernetes distribution.
 
 | Phases | Phase 4: Developing clones |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Method | Developing a Clone |
 | Description | Develop your own clone, such as sealos split from sealer. Open source and share it with the community (GitHub). Use Go language to reconstruct Java projects or PHP projects, or project imitation development~ |
 | Learning effect | 5 ~ 10 |
@@ -171,7 +172,7 @@ It is recommended to learn through actual projects, such as participating in com
 Finally, pay attention to following specifications and standards in actual projects, such as code specifications, security specifications, architecture specifications, etc. At the same time, we must also pay attention to teamwork and communication, communicate and share with colleagues, and continuously improve our skills and abilities.
 
 | Stage | The fifth stage: production implementation |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Method | Actual Project Practice |
 | Description | Apply the knowledge learned to actual production and consolidate and improve your skills through practical experience in enterprise-level projects |
 | Learning effect | 10+ |
@@ -198,7 +199,7 @@ The goal of this stage is to transform the knowledge you have learned into actua
 In the process of actually making products, you can constantly summarize and review to deepen your understanding and mastery of knowledge. At the same time, you should also pay attention to communication and cooperation with other open source community members, constantly improve your skills and abilities, and make yourself a backbone of the open source community.
 
 | Stages | Stage Six: Developing Knowledge Products |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Method | Develop a clone project or open source application demo project and make it into a paid product (video/book/documentation) |
 | Description | Transform what you have learned into actual products and share it to help others |
 | Learning effect | 10+ |
@@ -227,7 +228,7 @@ In the process of actually making products, you can constantly summarize and rev
 - **Case:** Develop your own open source project, such as the awesome [sealos](https://github.com/labring/sealos) Project initiator Fang Haitao is very well-known in the Cloud Native field.
 
 | Stage | Stage 7: Develop your own open source project |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | How to | Develop your own open source project |
 | Description | On the basis of absorbing open source projects + enterprise implementation practices, we have developed our own open source projects and continue to promote the construction of open source communities. |
 | Learning effect | 10+ |
@@ -252,7 +253,7 @@ It is recommended to summarize and review the experience of open source projects
 </aside>
 
 | Stages | Stage 8: Commercializing your own open source projects |
-|---------------- |-------------------------------- ---------------------------- |
+|---------------- |------------------------------------------------------------ |
 | Method | Based on its own open source project products, continue to promote community ecological construction and gradually move towards commercial service |
 | Description | Use open source projects as the core to create commercial products and services and provide users with high-quality, reliable solutions |
 | Learning effect | 100+ |

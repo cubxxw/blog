@@ -5,6 +5,7 @@ ShowRssButtonInSectionTermList: true
 date: 2023-09-17T03:35:17+08:00
 showtoc: true
 tocopen: false
+type: posts
 author: ["Xinwei Xiong", "Me"]
 keywords: ["openim", "open source", "community", "question"]
 tags:

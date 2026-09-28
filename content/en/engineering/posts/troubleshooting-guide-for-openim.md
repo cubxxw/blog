@@ -431,9 +431,7 @@ First, you need to use the **`pprof`** tool from the Go language's standard libr
 - **Start CPU Profiling:** Import the **`net/http/pprof`** module in your service and ensure your program can access these profiling endpoints via HTTP while running. Then, use the following command to start collecting CPU profiling data:
     
     ```bash
-    go tool p
-
-prof http://<your-service-address>:<port>/debug/pprof/profile?seconds=30
+    go tool pprof http://<your-service-address>:<port>/debug/pprof/profile?seconds=30
     ```
     
     This command triggers 30 seconds of CPU profiling on the server, collecting CPU usage data during this period. The **`seconds`** parameter can be adjusted as needed to collect longer or shorter data.
