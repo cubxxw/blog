@@ -1,31 +1,59 @@
 name: 更新 README 最新文章
-
 on:
   schedule:
-    - cron: "15 8 * * *"
-  workflow_dispatch:
+    - cron: 15 8 * * *
+  workflow_dispatch: null
   push:
-    branches: ["main"]
-
+    branches:
+      - main
+  workflow_call:
+    inputs:
+      release_context_artifact_id:
+        type: string
+        required: false
+        default: ""
+      dry_run:
+        type: boolean
+        required: false
+        default: false
+    secrets:
+      BOT_GITHUB_TOKEN:
+        required: false
 permissions:
   contents: write
-
 jobs:
   update-readme:
     name: 从中文 RSS 更新最近文章
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      - name: Download verified same-run release context
+        if: inputs.release_context_artifact_id != ''
+        uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ inputs.release_context_artifact_id }}
+          path: followups
+          merge-multiple: true
+      - name: Confirm the public release before side effects
+        id: release
+        if: inputs.release_context_artifact_id != ''
+        run: node scripts/release-followups.mjs assert-current --context followups/release-context.json --out followups/public-check-before.json
       - name: 更新最近 8 篇中文文章
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
           comment_tag_name: BLOG-POST-LIST
-          feed_list: "https://cubxxw.com/zh/index.xml"
-          gh_token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          feed_list: ${{ inputs.release_context_artifact_id != '' && format('{0}/zh/index.xml', steps.release.outputs.feed_base_url) || 'https://cubxxw.com/zh/index.xml' }}
+          gh_token: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
           max_post_count: 8
           commit_message: "docs: update latest Chinese blog posts"
-          committer_username: "kubbot"
+          committer_username: kubbot
           disable_html_encoding: true
+        if: inputs.dry_run != true
+    if: github.repository == 'cubxxw/blog' && (((vars.BLOG_RELEASE_MODE == '' || vars.BLOG_RELEASE_MODE == 'shadow') && (inputs.release_context_artifact_id == '' || inputs.dry_run == true)) || (vars.BLOG_RELEASE_MODE == 'active' && vars.BLOG_FOLLOWUPS_ENABLED == 'true' && inputs.release_context_artifact_id != ''))
+concurrency:
+  group: blog-readme-update
+  cancel-in-progress: false

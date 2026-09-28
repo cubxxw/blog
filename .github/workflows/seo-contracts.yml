@@ -7,25 +7,9 @@ name: SEO Contracts
 # declared dev dependencies only. Later batches append their relevant tests to
 # this same job.
 
+# Automatic runs are part of main.yaml's required quality gate. Keep a
+# standalone manual entry for debugging without a duplicate push/PR run.
 on:
-  push:
-    paths:
-      - "scripts/**"
-      - ".github/workflows/seo-*.yml"
-      - ".github/workflows/lighthouse.yml"
-      - "package.json"
-      - "package-lock.json"
-      - "docs/seo-observation-pipeline.md"
-      - "docs/seo-model-boundary-proof.json"
-  pull_request:
-    paths:
-      - "scripts/**"
-      - ".github/workflows/seo-*.yml"
-      - ".github/workflows/lighthouse.yml"
-      - "package.json"
-      - "package-lock.json"
-      - "docs/seo-observation-pipeline.md"
-      - "docs/seo-model-boundary-proof.json"
   workflow_dispatch:
 
 permissions:

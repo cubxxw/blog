@@ -1,0 +1,74 @@
+name: Publish verified Netlify artifact
+on:
+  workflow_call:
+    inputs:
+      source_sha:
+        required: true
+        type: string
+      artifact_id:
+        required: true
+        type: string
+      manifest_digest:
+        required: true
+        type: string
+      draft:
+        type: boolean
+        default: false
+    secrets:
+      NETLIFY_AUTH_TOKEN:
+        required: false
+    outputs:
+      deployment_id:
+        value: ${{ jobs.release.outputs.deployment_id }}
+permissions:
+  contents: read
+  actions: read
+  deployments: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    concurrency:
+      group: blog-production-release
+      cancel-in-progress: false
+    outputs:
+      deployment_id: ${{ steps.publish.outputs.deployment_id }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.source_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.23.1'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ inputs.artifact_id }}
+          path: tests/.artifacts/release
+          merge-multiple: true
+      - name: Validate provenance and publish the verified bytes
+        id: publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+          BLOG_RELEASE_MODE: ${{ vars.BLOG_RELEASE_MODE || 'shadow' }}
+          BLOG_ARTIFACT_ID: ${{ inputs.artifact_id }}
+          BLOG_MANIFEST_DIGEST: ${{ inputs.manifest_digest }}
+          DRAFT_DEPLOY: ${{ inputs.draft }}
+        run: |
+          args=()
+          if [ "$DRAFT_DEPLOY" = true ]; then args+=(--draft); fi
+          node scripts/site-release.mjs publish --bundle tests/.artifacts/release --out tests/.artifacts/release-receipt.json "${args[@]}"
+      - name: Save exact release evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: tests/.artifacts/release-receipt.json
+          if-no-files-found: warn
+          retention-days: 30

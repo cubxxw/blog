@@ -1,100 +1,110 @@
-name: Blog Build Check
+name: Blog Quality and Release
 
 on:
-  workflow_dispatch:
-  pull_request:
   push:
-    branches: ["main"]
-
-env:
-  # Match the production renderer pinned in netlify.toml.
-  HUGO_VERSION: 0.145.0
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      draft_deploy:
+        description: Upload verified main artifact as a Netlify draft (never production)
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
+env:
+  BLOG_RELEASE_MODE: ${{ vars.BLOG_RELEASE_MODE || 'shadow' }}
+
 jobs:
-  autofix:
-    name: Auto-fix content formatting
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  verify:
+    name: Required blog quality
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    timeout-minutes: 60
+    concurrency:
+      group: blog-verify-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    outputs:
+      publish: ${{ steps.plan.outputs.publish }}
+      source_sha: ${{ steps.plan.outputs.source_sha }}
+      artifact_id: ${{ steps.artifact.outputs.artifact-id }}
+      manifest_digest: ${{ steps.verify.outputs.manifest_digest }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "22"
-
-      - name: Fix empty blockquote markers
-        run: node scripts/clean-empty-blockquotes.mjs --write
-
-      - name: Commit content formatting fixes
-        run: |
-          if git diff --quiet -- 'content/*/growth/posts/*-thought-notes.md'; then
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- 'content/*/growth/posts/*-thought-notes.md'
-          git commit -m "style(content): clean empty blockquotes"
-          git push
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
           fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
+          persist-credentials: false
+      - uses: actions/setup-node@v7
         with:
-          node-version: "22"
-          cache: "npm"
+          node-version: '22.23.1'
+      - name: Freeze scope and build clock
+        id: plan
+        run: node scripts/ci-run.mjs plan
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: ${{ steps.plan.outputs.browser_engines }}
+      - name: Enforce checks and verify one production artifact
+        id: verify
+        run: node scripts/ci-run.mjs verify
+      - name: Upload the verified deployment bundle
+        id: artifact
+        if: steps.plan.outputs.run_site == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-site-${{ github.sha }}-${{ github.run_attempt }}
+          path: tests/.artifacts/ci/site/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: blog-quality-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tests/.artifacts/ci/*-report.json
+            tests/.artifacts/ci/changes.json
+            tests/.artifacts/ci/plan.json
+            tests/.artifacts/ci/browser/
+          if-no-files-found: warn
+          retention-days: 30
 
-      - name: Install Node.js dependencies
-        run: npm ci
+  release:
+    needs: [verify]
+    if: >-
+      github.ref == 'refs/heads/main' && github.event_name != 'pull_request' &&
+      needs.verify.outputs.publish == 'true' &&
+      (vars.BLOG_RELEASE_MODE == 'active' || (github.event_name == 'workflow_dispatch' && inputs.draft_deploy))
+    permissions:
+      contents: read
+      actions: read
+      deployments: write
+    uses: ./.github/workflows/release-netlify.yml
+    with:
+      source_sha: ${{ needs.verify.outputs.source_sha }}
+      artifact_id: ${{ needs.verify.outputs.artifact_id }}
+      manifest_digest: ${{ needs.verify.outputs.manifest_digest }}
+      draft: ${{ github.event_name == 'workflow_dispatch' && inputs.draft_deploy || false }}
+    secrets:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
-      - name: Validate interactive specs (dependency-free gate, issue #389)
-        run: node scripts/check-interactive-specs.mjs
-
-      - name: Auto-fix empty blockquote markers
-        run: npm run blockquotes:fix
-
-      - name: Validate redirect graph
-        run: npm run redirects:check
-
-      - name: Verify content formatting is committed
-        if: github.event_name != 'push'
-        run: |
-          if ! git diff --exit-code -- 'content/*/growth/posts/*-thought-notes.md'; then
-            echo "::error::Empty blockquote markers were auto-fixed. Run 'npm run blockquotes:fix' and commit the result."
-            exit 1
-          fi
-
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb \
-            https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-
-      - name: Install Dart Sass
-        run: sudo snap install dart-sass
-
-      - name: Validate interactive specs and fixtures (needs Hugo, issue #389)
-        run: npm run interactive:check
-
-      - name: Build with Hugo
-        env:
-          HUGO_ENVIRONMENT: production
-        run: hugo --gc --minify --baseURL "http://localhost/"
-
-      - name: Validate generated SEO signals
-        run: npm run seo:output:check
+  followups:
+    needs: [verify, release]
+    if: needs.release.outputs.deployment_id != '' && vars.BLOG_FOLLOWUPS_ENABLED == 'true'
+    permissions:
+      contents: write
+      actions: read
+      deployments: read
+      issues: write
+    uses: ./.github/workflows/release-followups.yml
+    with:
+      deployment_id: ${{ needs.release.outputs.deployment_id }}
+      artifact_id: ${{ needs.verify.outputs.artifact_id }}
+    secrets:
+      BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+      BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

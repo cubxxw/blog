@@ -1,27 +1,62 @@
 name: Sitemap Ping
-
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
     paths:
-      - "content/**"
-      - "layouts/**"
-      - "static/**"
-      - "config.yml"
-  workflow_dispatch:
-
+      - content/**
+      - layouts/**
+      - static/**
+      - config.yml
+  workflow_dispatch: null
+  workflow_call:
+    inputs:
+      release_context_artifact_id:
+        type: string
+        required: false
+        default: ""
+      dry_run:
+        type: boolean
+        required: false
+        default: false
+    secrets:
+      BAIDU_PUSH_TOKEN:
+        required: false
+      INDEXNOW_KEY:
+        required: false
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      # fetch-depth: 2 so `git diff HEAD~1..HEAD` works for --changed mode.
-      # For workflow_dispatch or a first-commit-in-branch, HEAD~1 may not
-      # exist — --changed step handles that gracefully by falling back.
       - name: Checkout (need history for content diff)
         uses: actions/checkout@v7
         with:
           fetch-depth: 2
-
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      - name: Download verified same-run release context
+        if: inputs.release_context_artifact_id != ''
+        uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ inputs.release_context_artifact_id }}
+          path: followups
+          merge-multiple: true
+      - name: Confirm the public release before side effects
+        id: release
+        if: inputs.release_context_artifact_id != ''
+        run: node scripts/release-followups.mjs assert-current --context followups/release-context.json --out followups/public-check-before.json
+      - name: Push verified publication difference
+        if: inputs.release_context_artifact_id != ''
+        env:
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          FOLLOWUP_DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=(--file followups/urls.txt)
+          if [ "$FOLLOWUP_DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          if [ -n "$INDEXNOW_KEY" ]; then node scripts/indexnow-push.mjs "${args[@]}"; fi
+          if [ -n "$BAIDU_PUSH_TOKEN" ]; then node scripts/baidu-push.mjs "${args[@]}"; fi
       - name: Wait for site to be updated
         run: |
           echo "Waiting for site deployment to propagate..."
@@ -34,7 +69,7 @@ jobs:
             echo "Attempt $i: status=$STATUS, retrying in 10s..."
             sleep 10
           done
-
+        if: inputs.release_context_artifact_id == ''
       - name: Ping Google
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
@@ -43,26 +78,23 @@ jobs:
           if [ "$STATUS" != "200" ] && [ "$STATUS" != "204" ]; then
             echo "Warning: Google ping returned $STATUS"
           fi
-
-      # Bing's legacy /ping was deprecated in 2023 — IndexNow (below) replaces it
-      # and additionally notifies Yandex. Legacy ping kept as a harmless fallback.
+        if: inputs.release_context_artifact_id == ''
       - name: Ping Bing (legacy fallback)
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
             "https://www.bing.com/ping?sitemap=https%3A%2F%2Fcubxxw.com%2Fsitemap.xml")
           echo "Bing legacy ping status: $STATUS (endpoint is deprecated; IndexNow is primary)"
-
+        if: inputs.release_context_artifact_id == ''
       - name: Setup Node.js for push scripts
-        if: env.BAIDU_PUSH_TOKEN != '' || env.INDEXNOW_KEY != ''
+        if: (env.BAIDU_PUSH_TOKEN != '' || env.INDEXNOW_KEY != '') && inputs.release_context_artifact_id == ''
         uses: actions/setup-node@v7
         with:
           node-version: "20"
         env:
           BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-
       - name: Verify IndexNow key file is reachable
-        if: env.INDEXNOW_KEY != ''
+        if: (env.INDEXNOW_KEY != '') && inputs.release_context_artifact_id == ''
         run: |
           KEY_URL="https://cubxxw.com/${{ secrets.INDEXNOW_KEY }}.txt"
           STATUS=$(curl -s -o /tmp/key.txt -w "%{http_code}" "$KEY_URL")
@@ -72,37 +104,26 @@ jobs:
           if [ "$BODY" != "${{ secrets.INDEXNOW_KEY }}" ]; then echo "::error::Key file body mismatch — IndexNow will 403"; exit 1; fi
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-
-      # Two-layer push strategy:
-      #   1. Exact: push URLs derived from this commit's content diff
-      #      (fast, precise, no waste when only 1 file changed)
-      #   2. Safety net: push everything modified in the last 7 days
-      #      (catches renames/reverts/manual triggers where the diff misses)
-      # IndexNow is idempotent — duplicate pushes don't hurt.
       - name: Push changed URLs to IndexNow (exact)
-        if: env.INDEXNOW_KEY != '' && github.event_name == 'push'
+        if: (env.INDEXNOW_KEY != '' && github.event_name == 'push') && inputs.release_context_artifact_id == ''
         run: node scripts/indexnow-push.mjs --changed HEAD~1..HEAD
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-
       - name: Push recent URLs to IndexNow (safety net)
-        if: env.INDEXNOW_KEY != ''
+        if: (env.INDEXNOW_KEY != '') && inputs.release_context_artifact_id == ''
         run: node scripts/indexnow-push.mjs --recent 7
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-
       - name: Push changed URLs to Baidu (exact)
-        if: env.BAIDU_PUSH_TOKEN != '' && github.event_name == 'push'
+        if: (env.BAIDU_PUSH_TOKEN != '' && github.event_name == 'push') && inputs.release_context_artifact_id == ''
         run: node scripts/baidu-push.mjs --changed HEAD~1..HEAD
         env:
           BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
-
       - name: Push recent URLs to Baidu (safety net, quota-aware)
-        if: env.BAIDU_PUSH_TOKEN != ''
+        if: (env.BAIDU_PUSH_TOKEN != '') && inputs.release_context_artifact_id == ''
         run: node scripts/baidu-push.mjs --recent 7
         env:
           BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
-
       - name: Verify sitemap is reachable
         run: |
           for url in \
@@ -116,7 +137,7 @@ jobs:
               exit 1
             fi
           done
-
+        if: inputs.release_context_artifact_id == ''
       - name: Check sitemap quality
         run: |
           # 验证主 sitemap 是 sitemapindex 格式
@@ -151,3 +172,7 @@ jobs:
           ZH_COUNT=$(curl -s "https://cubxxw.com/zh/sitemap.xml" | grep -c "<loc>")
           echo "📊 en sitemap URLs: $EN_COUNT"
           echo "📊 zh sitemap URLs: $ZH_COUNT"
+        if: inputs.release_context_artifact_id == ''
+    if: github.repository == 'cubxxw/blog' && (((vars.BLOG_RELEASE_MODE == '' || vars.BLOG_RELEASE_MODE == 'shadow') && (inputs.release_context_artifact_id == '' || inputs.dry_run == true)) || (vars.BLOG_RELEASE_MODE == 'active' && vars.BLOG_FOLLOWUPS_ENABLED == 'true' && inputs.release_context_artifact_id != ''))
+permissions:
+  contents: read

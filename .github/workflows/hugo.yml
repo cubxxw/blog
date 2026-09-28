@@ -1,105 +1,61 @@
-name: Deploy Hugo site to Pages
-
+name: Publish static Pages backup (manual)
 on:
-  push:
-    branches: ["main"]
-    paths-ignore:
-      - "README.md"
   workflow_dispatch:
-
+    inputs:
+      source_sha:
+        description: Optional full SHA of a main revision containing backup tooling
+        type: string
+        default: ''
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
-
-defaults:
-  run:
-    shell: bash
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # Match the production renderer pinned in netlify.toml.
-      HUGO_VERSION: 0.145.0
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
+          ref: main
           submodules: recursive
           fetch-depth: 0
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v6
-
-      - name: Cache Hugo resources
-        uses: actions/cache@v6
-        with:
-          path: /tmp/hugo_cache
-          key: ${{ runner.os }}-hugo-${{ env.HUGO_VERSION }}-${{ hashFiles('**/hugo.toml', '**/config.yml', '**/config.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-hugo-${{ env.HUGO_VERSION }}-
-            ${{ runner.os }}-hugo-
-
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb \
-            https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-
-      - name: Install Dart Sass
-        run: sudo snap install dart-sass
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "22"
-          cache: "npm"
-          cache-dependency-path: "netlify/functions/package-lock.json"
-
-      - name: Install Node.js dependencies
-        run: "[[ -f netlify/functions/package-lock.json ]] && npm ci --prefix netlify/functions || true"
-
-      - name: Auto-fix empty blockquote markers
-        run: node scripts/clean-empty-blockquotes.mjs --write
-
-      - name: Validate interactive specs (before Hugo, issue #389)
-        run: node scripts/check-interactive-specs.mjs
-
-      - name: Validate front matter
-        run: npm run frontmatter:check
-
-      - name: Build with Hugo
+          persist-credentials: false
+      - name: Select a supported main revision
+        id: revision
         env:
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
-          HUGO_CACHEDIR: /tmp/hugo_cache
+          BACKUP_SHA: ${{ inputs.source_sha }}
         run: |
-          hugo \
-            --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
-
-      - name: Validate rendered content contracts
-        run: node scripts/check-content-rendering.mjs public
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+          sha="${BACKUP_SHA:-$(git rev-parse HEAD)}"
+          [[ "$sha" =~ ^[a-f0-9]{40}$ ]] || { echo 'Full commit SHA required'; exit 1; }
+          git merge-base --is-ancestor "$sha" origin/main
+          git cat-file -e "$sha:config/ci-toolchain.json"
+          git checkout --detach "$sha"
+          git submodule update --init --recursive
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+      - uses: actions/configure-pages@v6
+        id: pages
+      - uses: ./.github/actions/setup-blog
+      - name: Validate and build the separate backup target
+        env:
+          SOURCE_SHA: ${{ steps.revision.outputs.sha }}
+          PAGES_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          node scripts/ci-changes.mjs --head "$SOURCE_SHA" --out tests/.artifacts/backup-changes.json
+          node scripts/site-build.mjs --target backup --sha "$SOURCE_SHA" --clock "$(date -u +%FT%TZ)" --base-url "$PAGES_URL/" --out tests/.artifacts/pages
+          node scripts/site-verify.mjs --public-dir tests/.artifacts/pages/public --page-map tests/.artifacts/pages/page-map.json --change-set tests/.artifacts/backup-changes.json --report-dir tests/.artifacts/pages-report
+          node scripts/check-generated-seo.mjs --public-dir tests/.artifacts/pages/public --target backup
+      - uses: actions/upload-pages-artifact@v5
         with:
-          path: ./public
-
+          path: tests/.artifacts/pages/public
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy to GitHub Pages
+      - uses: actions/deploy-pages@v5
         id: deployment
-        uses: actions/deploy-pages@v5

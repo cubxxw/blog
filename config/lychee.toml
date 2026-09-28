@@ -1,0 +1,17 @@
+# External-link observations are reports, not a production release gate.
+cache = true
+max_cache_age = "1d"
+cache_exclude_status = "429,500.."
+timeout = 20
+max_retries = 2
+retry_wait_time = 2
+max_concurrency = 4
+host_concurrency = 2
+host_request_interval = "250ms"
+max_redirects = 5
+scheme = ["https", "http"]
+exclude_all_private = true
+include_verbatim = false
+include_mail = false
+accept_timeouts = false
+exclude = ['^https?://(www\.)?cubxxw\.com(?:/|$)']

@@ -1,0 +1,63 @@
+name: Weekly content audit
+on:
+  schedule:
+    - cron: '0 1 * * 0'
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: content-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-blog
+        with:
+          browsers: chromium
+      - name: Report current source quality without changing policy
+        id: source
+        run: npm run quality:source -- --all --report-only --out reports/source-quality.json
+      - name: Observe public pages without API side effects
+        if: always() && steps.source.outcome != 'skipped'
+        run: node scripts/audit-public-site.mjs --out-dir reports/public
+      - name: Restore bounded external-link cache
+        if: always()
+        uses: actions/cache@v5
+        with:
+          path: .lycheecache
+          key: lychee-0.24.2-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: lychee-0.24.2-${{ runner.os }}-
+      - name: Report external links
+        if: always()
+        uses: lycheeverse/lychee-action@v2
+        with:
+          lycheeVersion: v0.24.2
+          args: --config config/lychee.toml --no-progress 'content/**/*.md' 'reports/public/*.html'
+          format: json
+          output: reports/external-links.json
+          fail: false
+          failIfEmpty: false
+      - name: Upload independent audit reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: content-audit-${{ github.run_id }}
+          path: reports/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Surface deterministic source violations
+        if: always()
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync('reports/source-quality.json', 'utf8'));
+          if (report.mode !== 'report-only' || !Array.isArray(report.diagnostics)) throw new Error('Source audit report is missing or invalid');
+          const errors = report.diagnostics.filter(item => item.severity === 'error');
+          console.log(`${errors.length} deterministic source problems; see the audit artifact.`);
+          if (errors.length) process.exitCode = 1;
+          JS

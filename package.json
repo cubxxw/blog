@@ -30,7 +30,7 @@
     "covers": "node --env-file-if-exists=.env scripts/generate-covers.mjs",
     "covers:write": "node --env-file-if-exists=.env scripts/generate-covers.mjs --write",
     "covers:test": "node --test scripts/generate-covers.test.mjs",
-    "newsletter:test": "node --test scripts/buttondown-tags.test.mjs",
+    "newsletter:test": "node --test scripts/buttondown-tags.test.mjs scripts/newsletter-state.test.mjs",
     "mcp:server": "node scripts/mcp-server.mjs",
     "baidu:push": "node scripts/baidu-push.mjs",
     "baidu:push:all": "node scripts/baidu-push.mjs --all",
@@ -53,7 +53,7 @@
     "test:report": "playwright show-report",
     "quality:source": "node scripts/check-content-quality.mjs source",
     "quality:output": "node scripts/check-content-quality.mjs output",
-    "quality:test": "node --test scripts/ci-changes.test.mjs scripts/ci-workflows.test.mjs scripts/content-source.test.mjs scripts/content-quality-report.test.mjs scripts/content-output.test.mjs scripts/site-build.test.mjs scripts/site-artifact.test.mjs scripts/site-verify.test.mjs scripts/site-release.test.mjs scripts/newsletter-state.test.mjs scripts/release-followups.test.mjs scripts/backup-site.test.mjs scripts/generate-content-index.test.mjs",
+    "quality:test": "node --test scripts/ci-changes.test.mjs scripts/ci-workflows.test.mjs scripts/content-source.test.mjs scripts/content-quality-report.test.mjs scripts/content-output.test.mjs scripts/site-build.test.mjs scripts/site-artifact.test.mjs scripts/site-verify.test.mjs scripts/site-release.test.mjs scripts/newsletter-state.test.mjs scripts/release-followups.test.mjs scripts/backup-site.test.mjs scripts/generate-content-index.test.mjs scripts/audit-public-site.test.mjs",
     "site:build": "node scripts/site-build.mjs",
     "site:verify": "node scripts/site-verify.mjs"
   },

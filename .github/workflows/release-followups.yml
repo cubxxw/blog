@@ -1,0 +1,169 @@
+name: Verified release followups
+
+on:
+  workflow_call:
+    inputs:
+      deployment_id:
+        type: string
+        required: true
+      artifact_id:
+        type: string
+        required: true
+      task:
+        type: string
+        default: all
+      dry_run:
+        type: boolean
+        default: false
+    secrets:
+      NETLIFY_AUTH_TOKEN:
+        # The production environment may provide this directly to prepare.
+        required: false
+      BUTTONDOWN_API_KEY:
+        required: false
+      BAIDU_PUSH_TOKEN:
+        required: false
+      INDEXNOW_KEY:
+        required: false
+      BOT_GITHUB_TOKEN:
+        required: false
+      LHCI_GITHUB_APP_TOKEN:
+        required: false
+  workflow_dispatch:
+    inputs:
+      deployment_id:
+        description: GitHub Deployment ID; empty revalidates the current production receipt
+        type: string
+      artifact_id:
+        description: Optional expected source artifact ID
+        type: string
+      task:
+        type: choice
+        options: [all, newsletter, search, readme, lighthouse]
+        default: all
+      dry_run:
+        description: Verify and preview without sending email, changing README or publishing an issue
+        type: boolean
+        default: true
+  schedule:
+    - cron: '30 7 * * *'
+    - cron: '15 8 * * *'
+    - cron: '0 13 * * *'
+
+permissions:
+  contents: read
+  actions: read
+  deployments: read
+
+jobs:
+  prepare:
+    if: >-
+      github.repository == 'cubxxw/blog' &&
+      ((vars.BLOG_RELEASE_MODE == 'active' && vars.BLOG_FOLLOWUPS_ENABLED == 'true') ||
+       ((vars.BLOG_RELEASE_MODE == '' || vars.BLOG_RELEASE_MODE == 'shadow') &&
+        github.event_name == 'workflow_dispatch' && inputs.dry_run == true))
+    runs-on: ubuntu-latest
+    environment: production
+    outputs:
+      status: ${{ steps.prepare.outputs.status }}
+      context_artifact_id: ${{ steps.context.outputs.artifact-id }}
+      task: ${{ steps.select.outputs.task }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Select requested compensation task
+        id: select
+        env:
+          REQUESTED_TASK: ${{ inputs.task }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          task="${REQUESTED_TASK:-all}"
+          case "$SCHEDULE" in
+            '30 7 * * *') task=lighthouse ;;
+            '15 8 * * *') task=readme ;;
+            '0 13 * * *') task=newsletter ;;
+          esac
+          case "$task" in all|newsletter|search|readme|lighthouse) ;; *) exit 2 ;; esac
+          echo "task=$task" >> "$GITHUB_OUTPUT"
+      - name: Authenticate release and publication history
+        id: prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          DEPLOYMENT_ID: ${{ inputs.deployment_id }}
+          SOURCE_ARTIFACT_ID: ${{ inputs.artifact_id }}
+        run: |
+          args=(--out-dir followups)
+          if [ -n "$DEPLOYMENT_ID" ]; then args+=(--deployment-id "$DEPLOYMENT_ID"); fi
+          if [ -n "$SOURCE_ARTIFACT_ID" ]; then args+=(--artifact-id "$SOURCE_ARTIFACT_ID"); fi
+          node scripts/prepare-release-followups.mjs "${args[@]}"
+      - name: Seal verified business inputs for this run
+        id: context
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-followups-${{ github.run_id }}-${{ github.run_attempt }}
+          path: followups/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Record first migration without notifications
+        if: steps.prepare.outputs.status == 'bootstrap'
+        run: echo 'First verified production baseline recorded. No historical archive notifications will run.' >> "$GITHUB_STEP_SUMMARY"
+
+  newsletter:
+    needs: prepare
+    if: needs.prepare.outputs.status == 'ready' && (needs.prepare.outputs.task == 'all' || needs.prepare.outputs.task == 'newsletter')
+    permissions:
+      contents: write
+      actions: read
+    uses: ./.github/workflows/newsletter.yml
+    with:
+      release_context_artifact_id: ${{ needs.prepare.outputs.context_artifact_id }}
+      dry_run: ${{ inputs.dry_run || false }}
+    secrets:
+      BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+
+  search:
+    needs: prepare
+    if: needs.prepare.outputs.status == 'ready' && (needs.prepare.outputs.task == 'all' || needs.prepare.outputs.task == 'search')
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/sitemap-ping.yml
+    with:
+      release_context_artifact_id: ${{ needs.prepare.outputs.context_artifact_id }}
+      dry_run: ${{ inputs.dry_run || false }}
+    secrets:
+      BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+  readme:
+    needs: prepare
+    if: needs.prepare.outputs.status == 'ready' && (needs.prepare.outputs.task == 'all' || needs.prepare.outputs.task == 'readme')
+    permissions:
+      contents: write
+      actions: read
+    uses: ./.github/workflows/blog-post-workflow.yml
+    with:
+      release_context_artifact_id: ${{ needs.prepare.outputs.context_artifact_id }}
+      dry_run: ${{ inputs.dry_run || false }}
+    secrets:
+      BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+
+  lighthouse:
+    needs: prepare
+    if: needs.prepare.outputs.status == 'ready' && (needs.prepare.outputs.task == 'all' || needs.prepare.outputs.task == 'lighthouse')
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+    uses: ./.github/workflows/lighthouse.yml
+    with:
+      release_context_artifact_id: ${{ needs.prepare.outputs.context_artifact_id }}
+      dry_run: ${{ inputs.dry_run || false }}
+    secrets:
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

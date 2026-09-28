@@ -1,0 +1,41 @@
+name: Restore a verified Netlify deployment
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_id:
+        description: Previous GitHub production deployment record ID
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+  deployments: read
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: blog-production-release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.23.1'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Restore the explicitly selected prior deployment
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+          DEPLOYMENT_ID: ${{ inputs.deployment_id }}
+        run: node scripts/site-release.mjs rollback --deployment-id "$DEPLOYMENT_ID" --out tests/.artifacts/rollback.json
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: rollback-${{ github.run_id }}
+          path: tests/.artifacts/rollback.json
+          retention-days: 30
