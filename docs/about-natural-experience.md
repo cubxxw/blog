@@ -45,6 +45,9 @@ screenshots remain part of the existing site. No new animation runtime is added.
 - Reduced-motion CSS immediately disables these animations and in-flight View
   Transition decoration. Without JavaScript, or when the deck module is blocked,
   photos and cards become a readable static list with native details and links.
+  Static sections use their real layout height rather than the enhanced deck's
+  one-screen `content-visibility` estimate, so native scrolling and clicking do
+  not shift targets as longer offscreen lists are revealed.
 
 Decorative arrows, including the About-only floating back-to-top arrow and header
 chevron, are hidden. Labels, focus outlines, selected states, underline, and press
