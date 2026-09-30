@@ -418,4 +418,28 @@ test.describe('About natural experience', () => {
       }
     }
   });
+
+  test('native touch can start and pause every deck without a sticky compatibility hover', async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'Requires the mobile project with a touch pointer');
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.clock.install();
+    await page.goto('/about/');
+    for (const [selector, counter, delay] of [
+      ['[data-hero-carousel]', '[data-hero-current]', 4000],
+      ['#workbench', '[data-card-current]', 5200],
+      ['#studio-products', '[data-card-current]', 5200],
+      ['#studio-road', '[data-road-current]', 4800],
+    ] as const) {
+      const region = page.locator(selector);
+      const toggle = region.locator('[data-autoplay-toggle]');
+      await toggle.tap();
+      await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+      await expect(region).toHaveAttribute('data-autoplay', 'running');
+      await page.clock.fastForward(delay + 100);
+      await expect(region.locator(counter)).toHaveText('02');
+      await toggle.tap();
+      await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+      await expect(region).toHaveAttribute('data-autoplay', 'paused');
+    }
+  });
 });

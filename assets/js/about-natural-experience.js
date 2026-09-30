@@ -139,8 +139,18 @@ function initAboutDecks() {
     }
 
     if (toggle) toggle.addEventListener('click', function () { userPaused = !userPaused; sync(); });
-    region.addEventListener('mouseenter', function () { hovered = true; sync(); });
-    region.addEventListener('mouseleave', function () { hovered = false; sync(); });
+    // Touch creates compatibility mouseenter events that can stay "hovered"
+    // until the next tap. Pointer events identify the actual input instead.
+    region.addEventListener('pointerenter', function (event) {
+      if (event.pointerType === 'touch') return;
+      hovered = true;
+      sync();
+    });
+    region.addEventListener('pointerleave', function (event) {
+      if (event.pointerType === 'touch') return;
+      hovered = false;
+      sync();
+    });
     region.addEventListener('focusin', sync);
     region.addEventListener('focusout', function () { window.setTimeout(sync, 0); });
     document.addEventListener('visibilitychange', sync);

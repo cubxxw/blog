@@ -193,6 +193,14 @@ test.describe('About deck interaction', () => {
         await expect(region.locator('[data-road-position="next"] img')).toHaveAttribute('loading', 'eager');
       }
       const before = await region.locator(deck.counter).textContent();
+      // A real mouse pointer still pauses reading after touch compatibility
+      // mouse events have been excluded by the controller.
+      await region.hover();
+      await expect(region).toHaveAttribute('data-autoplay', 'paused');
+      await page.clock.fastForward(6200);
+      await expect(region.locator(deck.counter)).toHaveText(before || '');
+      await page.mouse.move(0, 0);
+      await expect(region).toHaveAttribute('data-autoplay', 'running');
       await page.clock.fastForward(6200);
       await expect(region.locator(deck.counter)).not.toHaveText(before || '');
       await toggle.click();

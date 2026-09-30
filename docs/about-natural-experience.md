@@ -29,6 +29,9 @@ screenshots remain part of the existing site. No new animation runtime is added.
 - Every deck starts paused. Play is explicit; rotation pauses on hover, keyboard
   focus, offscreen, hidden tabs, pagehide, and an expanded product. Reduced motion
   disables rotation; reverting that preference never silently restarts it.
+  Hover uses pointer events to distinguish mouse/pen from touch, so a phone's
+  compatibility mouse events cannot leave playback permanently paused. Native
+  touch start/pause and actual mouse hover are both covered by regression tests.
 - Products expand in place with native `details`. The content uses the existing
   description, audience, boundary, and question fields, with a separate real
   external visit link. Supported browsers animate the active card using View
