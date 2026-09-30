@@ -38,6 +38,13 @@ npm run site:verify -- --public-dir tests/.artifacts/site/public --page-map test
 
 CLI 参数中的提交和时间必须填入本次实际值；不要将示例占位值写入回执。纯质量检查不会发布，也不会修正文案或回推 `main`。
 
+原生 Netlify Git 构建与隔离构建共用 `--hugo-phase` 入口。该入口的目标默认是 `production`，可由 `BLOG_BUILD_TARGET` 指定；时刻优先读取 `BLOG_BUILD_CLOCK`，缺省使用当前 UTC 时间。base URL 按以下顺序取第一个非空值：
+
+- `production`：`BLOG_BUILD_BASE_URL` → `HUGO_BASEURL` → `https://cubxxw.com`，忽略 `DEPLOY_PRIME_URL`，避免 Netlify 的 `main--cubxxw.netlify.app` 分支别名覆盖生产域名。
+- `backup` / `preview`：`BLOG_BUILD_BASE_URL` → `DEPLOY_PRIME_URL` → `HUGO_BASEURL` → `https://cubxxw.com`，保留显式备用站或预览地址的优先级。
+
+生产域名检查仍然严格执行：选中的 URL 必须为 `https://cubxxw.com`（允许尾部 `/`）。若按上述优先级选中错误的 `BLOG_BUILD_BASE_URL` 或 `HUGO_BASEURL`，构建会失败，不会静默回退到主域名。
+
 ## 权限与凭据
 
 生产 environment 的发布及准备 job 使用 `NETLIFY_SITE_ID` 变量和专用 `NETLIFY_AUTH_TOKEN`。构建、文章检查和普通浏览器检查不需要它们。Netlify 上的模型、订阅等运行时密钥继续留在 Netlify。
