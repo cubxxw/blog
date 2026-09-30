@@ -351,6 +351,18 @@ test.describe('About natural experience', () => {
     const context = await newFrozenContext(browser, { baseURL, javaScriptEnabled: false, viewport: { width: 1280, height: 900 } });
     const page = await context.newPage();
     await page.goto('/about/');
+    // A static seven-card list must reserve its real height while offscreen.
+    // A one-screen content-visibility placeholder jumps when navigation reveals it.
+    for (const selector of ['#workbench', '#studio-products']) {
+      const section = page.locator(selector);
+      const beforeReveal = await section.boundingBox();
+      if (!beforeReveal) throw new Error('Static section has no layout box');
+      const cardHeights = await section.locator('[data-card]').evaluateAll((cards) =>
+        cards.map((card) => card.getBoundingClientRect().height));
+      // Normal-flow cards must already fit inside the offscreen section;
+      // measuring a descendant must not reveal a much taller hidden subtree.
+      expect(beforeReveal.height).toBeGreaterThanOrEqual(cardHeights.reduce((sum, height) => sum + height, 0));
+    }
     // Every photo, panel and product card is in normal flow and readable.
     await expect(page.locator('[data-hero-slide]')).toHaveCount(3);
     for (const figure of await page.locator('[data-hero-slide]').all()) await expect(figure).toBeVisible();

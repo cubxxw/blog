@@ -669,6 +669,13 @@ html[lang="zh"] .studio-story__intro h2 {
    Without JavaScript the page shows every slide, card and photo in normal
    flow, with native details expansion and real links — nothing waits for an
    observer and nothing is trapped behind inert states. */
+/* Static lists are much taller than the enhanced decks. A one-screen skipped
+   placeholder would move native scroll/click targets when it is revealed. */
+html:not(.js) .about-studio__inner > section {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+
 html:not(.js) .studio-hero__visual,
 html:not(.js) .studio-workbench__grid .workspace-panel,
 html:not(.js) .studio-products__track .studio-product,
