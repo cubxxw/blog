@@ -51,13 +51,16 @@
 .studio-hero__visual {
   position: absolute;
   inset: 0 0 0 auto;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 12px;
   width: 92%;
   height: 100%;
   margin: 0;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, white 38%, transparent);
-  border-radius: 24px;
-  background: var(--color-paper);
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   opacity: 0;
   visibility: hidden;
   transform-origin: center;
@@ -102,7 +105,8 @@
   max-height: none;
   aspect-ratio: auto;
   object-position: 32% center;
-  border-radius: 0;
+  border: 1px solid color-mix(in srgb, white 38%, transparent);
+  border-radius: 24px;
   filter: none;
 }
 
@@ -114,86 +118,27 @@
   object-position: 50% center;
 }
 
+/* Captions stay outside the photograph: quiet ink text under the frame,
+   never an overlay competing with the image. */
 .studio-hero__visual figcaption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: grid;
-  gap: 4px;
-  box-sizing: border-box;
-  min-height: 108px;
+  gap: 3px;
+  min-height: 0;
   margin: 0;
-  padding: 48px 24px 20px;
-  color: rgba(255, 255, 255, .86);
-  background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, .72));
+  padding: 0 4px;
+  color: var(--color-ink-muted);
+  font-family: var(--font-meta);
   font-size: .74rem;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, .4);
-  transition: opacity 180ms ease;
+  line-height: 1.55;
 }
 
 .studio-hero__visual figcaption span {
-  color: #fff;
-  font-size: .68rem;
-  letter-spacing: .06em;
-}
-
-.studio-hero__visual:not([data-hero-position="active"]) figcaption {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.studio-hero__controls {
-  position: absolute;
-  right: 14px;
-  top: 14px;
-  bottom: auto;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 5px;
-  border: 1px solid rgba(255, 255, 255, .45);
-  border-radius: 999px;
-  background: rgba(248, 248, 246, .76);
-  box-shadow: 0 10px 28px -20px rgba(0, 0, 0, .7);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
-}
-
-.studio-hero__controls > span {
-  min-width: 52px;
-  margin: 0 2px 0 8px;
-  color: #252525;
-  text-shadow: none;
+  color: var(--studio-accent);
   font-family: var(--font-mono);
-  font-size: .62rem;
+  font-size: .64rem;
   font-weight: 700;
-  letter-spacing: .1em;
-}
-
-.studio-hero__controls button {
-  display: inline-grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  color: #171717;
-  background: transparent;
-  cursor: pointer;
-  transition: transform 180ms ease, background 180ms ease;
-}
-
-.studio-hero__controls button:hover {
-  background: rgba(255, 255, 255, .82);
-  transform: scale(1.04);
-}
-
-.studio-hero__controls button:focus-visible {
-  outline: 2px solid var(--studio-accent);
-  outline-offset: 3px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
 .studio-hero h1 {
@@ -716,20 +661,6 @@ html[lang="zh"] .studio-archive__axis h3 {
   border-radius: 18px;
 }
 
-.studio-road__slide[data-road-position="active"]::after {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 8px 10px;
-  border-radius: 2px;
-  background: color-mix(in srgb, var(--color-paper) 92%, transparent);
-  color: var(--color-ink);
-  font: 700 .63rem/1 var(--font-mono);
-  letter-spacing: .1em;
-  content: attr(data-frame-label);
-  pointer-events: none;
-}
-
 .studio-road__slide figcaption {
   font-size: .72rem;
   letter-spacing: .025em;
@@ -769,11 +700,6 @@ html[lang="zh"] .studio-archive__axis h3 {
     margin-bottom: 24px;
   }
 
-  .studio-road__slide[data-road-position="active"]::after {
-    top: 10px;
-    left: 10px;
-  }
-
   .about-studio__inner {
     padding-top: 0;
   }
@@ -786,7 +712,7 @@ html[lang="zh"] .studio-archive__axis h3 {
   }
 
   .studio-hero__viewport {
-    height: 286px;
+    height: 330px;
   }
 
   .studio-hero__visual {
@@ -804,26 +730,13 @@ html[lang="zh"] .studio-archive__axis h3 {
     height: 100%;
     max-height: none;
     aspect-ratio: auto;
+    border-radius: 20px;
   }
 
   .studio-hero__visual figcaption {
-    min-height: 92px;
-    padding: 38px 18px 16px;
-  }
-
-  .studio-hero__controls {
-    right: 14px;
-    top: 12px;
-  }
-
-  .studio-hero__controls > span {
-    min-width: 44px;
-    margin-left: 6px;
-  }
-
-  .studio-hero__controls button {
-    width: 36px;
-    height: 36px;
+    min-height: 0;
+    padding: 0 2px;
+    font-size: .72rem;
   }
 
   .studio-signature {
@@ -1098,7 +1011,7 @@ html[lang="zh"] .studio-interview__intro h2 {
   align-items: center;
   width: 100%;
   min-height: 68px;
-  padding: 12px 52px 12px 0;
+  padding: 12px 16px 12px 0;
   border: 0;
   border-bottom: 1px solid var(--color-rule);
   border-radius: 0;
@@ -1114,24 +1027,12 @@ html[lang="zh"] .studio-interview__intro h2 {
   transition: color 160ms ease, padding-left 180ms cubic-bezier(.2, .76, .2, 1);
 }
 
-.studio-interview__topics button::after {
-  position: absolute;
-  right: 4px;
-  color: var(--studio-accent);
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  content: "→";
-  transition: transform 180ms cubic-bezier(.2, .76, .2, 1);
-}
+/* No decorative arrows on About: the topic rows are plain labelled actions. */
 
 .studio-interview__topics button:hover,
 .studio-interview__topics button[aria-pressed="true"] {
   padding-left: 8px;
   color: var(--studio-accent);
-}
-
-.studio-interview__topics button:hover::after {
-  transform: translate3d(4px, 0, 0);
 }
 
 .studio-interview__topics button:focus-visible,
@@ -1636,7 +1537,6 @@ html[lang="zh"] .studio-interview__intro h2 {
   .studio-interview__native,
   .studio-interview__stage,
   .studio-interview__topics button,
-  .studio-interview__topics button::after,
   .studio-interview__primary,
   .studio-interview__secondary {
     animation: none;
@@ -1647,4 +1547,15 @@ html[lang="zh"] .studio-interview__intro h2 {
   .studio-interview__skeleton span {
     animation: none;
   }
+}
+
+/* ============================================================
+   About scope: no decorative arrows anywhere on this page.
+   The global floating back-to-top control is an arrow glyph, so it
+   is hidden here only — this stylesheet loads on the About layout
+   alone and never touches other pages.
+   ============================================================ */
+.top-link,
+.top-link.is-visible-mobile {
+  display: none !important;
 }

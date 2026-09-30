@@ -51,52 +51,43 @@
             loading="eager" decoding="async">
           <p>
             <span>{{ if $isZH }}熊鑫伟 · 实践者与写作者{{ else }}Xinwei Xiong · Practitioner and writer{{ end }}</span>
-            {{ if $isZH }}构建系统，也理解人{{ else }}Building systems and understanding people{{ end }}
+            cubxxw / BEAR
           </p>
         </div>
 
         <h1>
           {{ if $isZH }}
-          把真实实践，沉淀成<br><span>长期有用的知识。</span>
+          构建系统，<br><span>也理解自己。</span>
           {{ else }}
-          Turning lived practice<br>into <span>knowledge that stays useful.</span>
+          Building systems.<br><span>Staying curious.</span>
           {{ end }}
         </h1>
         <p class="studio-hero__lead">
           {{ if $isZH }}
-          我构建 AI 系统和真实产品，公开其中的工作流、工程方法与判断，也写个人成长、哲学与人生。
+          我是熊鑫伟：构建 AI 产品，参与开源，持续写作，也一直在路上。
           {{ else }}
-          I build AI systems and real products, document the workflows and engineering judgment behind them, and write about growth, philosophy, and life.
+          I’m Xinwei. I build AI products, contribute to open source, write, and travel.
           {{ end }}
         </p>
         <nav class="studio-hero__actions" aria-label="{{ if $isZH }}开始阅读{{ else }}Start reading{{ end }}">
-          <a class="studio-hero__action studio-hero__action--primary" href="#blog-definition">
-            <span class="studio-hero__action-copy">
-              <strong>{{ if $isZH }}按主题开始{{ else }}Choose a topic{{ end }}</strong>
-              <small>{{ if $isZH }}AI、工程、产品与成长{{ else }}AI, engineering, products, and life{{ end }}</small>
-            </span>
-            <span class="studio-hero__action-arrow" aria-hidden="true">↓</span>
+          <a class="studio-hero__action studio-hero__action--primary" href="#story">
+            {{ if $isZH }}读我的故事{{ else }}Read my story{{ end }}
           </a>
           <a class="studio-hero__action studio-hero__action--secondary" href="{{ "articles/" | relLangURL }}">
-            <span class="studio-hero__action-copy">
-              <strong>{{ if $isZH }}浏览全部文章{{ else }}Browse all articles{{ end }}</strong>
-              <small>{{ if $isZH }}{{ $writingCount }} 篇，按时间浏览{{ else }}{{ $writingCount }} articles, newest first{{ end }}</small>
-            </span>
-            <span class="studio-hero__action-arrow" aria-hidden="true">→</span>
+            {{ if $isZH }}浏览全部文章{{ else }}Browse all writing{{ end }}
           </a>
         </nav>
       </div>
 
       <div class="studio-hero__carousel" data-hero-carousel
         role="region" aria-roledescription="carousel"
-        aria-label="{{ if $isZH }}关于我的个人故事轮播{{ else }}Personal story carousel{{ end }}" tabindex="0">
-        <div class="studio-hero__viewport">
+        aria-label="{{ if $isZH }}关于我的个人照片轮播{{ else }}Personal photo carousel{{ end }}" tabindex="0">
+        <div class="studio-hero__viewport" data-hero-viewport>
           {{- range $index, $slide := $heroSlides }}
           {{- $heroImage := printf "%s-hero.webp" (strings.TrimSuffix ".webp" $slide.image) }}
           {{- $heroSmall := printf "%s-hero-400.webp" (strings.TrimSuffix ".webp" $slide.image) }}
           <figure class="studio-hero__visual" data-hero-slide
-            data-hero-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else }}prev{{ end }}"
-            aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}"{{ if ne $index 0 }} inert{{ end }}>
+            data-hero-position="{{ if eq $index 0 }}active{{ else }}hidden{{ end }}">
             <img src="{{ $heroImage }}" width="640" height="853"
               srcset="{{ $heroSmall }} 400w, {{ $heroImage }} 640w"
               sizes="(max-width: 640px) calc(100vw - 48px), min(39vw, 460px)"
@@ -111,19 +102,73 @@
           </figure>
           {{- end }}
         </div>
-        <div class="studio-hero__controls">
-          <span role="status" aria-live="polite" aria-atomic="true"><b data-hero-current>01</b> / 03</span>
-          <button type="button" data-hero-prev aria-label="{{ if $isZH }}上一张个人故事{{ else }}Previous personal story{{ end }}">←</button>
-          <button type="button" data-hero-toggle data-autoplay-toggle aria-pressed="true"
-            aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}">
-            <span aria-hidden="true">Ⅱ</span>
-          </button>
-          <button type="button" data-hero-next aria-label="{{ if $isZH }}下一张个人故事{{ else }}Next personal story{{ end }}">→</button>
+        <div class="studio-hero__deckbar">
+          <div class="studio-choice-strip" role="group"
+            aria-label="{{ if $isZH }}选择照片{{ else }}Choose a photo{{ end }}">
+            {{- range $index, $slide := $heroSlides }}
+            <button type="button" class="studio-choice" data-deck-choice data-choice-index="{{ $index }}"
+              aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+              {{ if $isZH }}{{ $slide.zhLabel }}{{ else }}{{ $slide.enLabel }}{{ end }}
+            </button>
+            {{- end }}
+          </div>
+          <div class="studio-deck-controls">
+            <span role="status" aria-live="polite" aria-atomic="true"><b data-hero-current>01</b> / 03</span>
+            <button type="button" class="studio-deck-play" data-hero-toggle data-autoplay-toggle aria-pressed="false"
+              data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
+              data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
+              data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
+          </div>
         </div>
       </div>
     </header>
 
     {{ partial "page-wayfinder.html" . }}
+
+    {{- /* Human story — 4-5 bilingual chapters grounded in data/identity.json and
+           static/data/personal-timeline-2019-2026.md. Editorial display data
+           lives in data/about-story.yml; facts stay canonical in identity.json. */ -}}
+    {{- $story := index site.Data "about-story" -}}
+    {{- $storyChapters := $story.chapters | default slice -}}
+    <section class="studio-story" id="story" aria-labelledby="studio-story-title"
+      data-story-section>
+      <header class="studio-story__intro">
+        <p class="studio-story__eyebrow">{{ if $isZH }}个人故事 · 2021-2026{{ else }}PERSONAL STORY · 2021-2026{{ end }}</p>
+        <h2 id="studio-story-title">{{ if $isZH }}我怎样一路走到这里。{{ else }}How I got here.{{ end }}</h2>
+        <p>
+          {{ if $isZH }}
+          第一篇博客、开源社区、毕业与离职、高原徒步，到现在的产品与工作。每一段都可以展开看细节。
+          {{ else }}
+          The first blog post, the open-source community, graduation and a resignation, a high-altitude trek, and the products and work of today. Every chapter opens in place.
+          {{ end }}
+        </p>
+      </header>
+      <ol class="studio-story__chapters">
+        {{- range $storyChapters }}
+        {{- $chapter := index . (cond $isZH "zh" "en") -}}
+        <li class="story-chapter" data-story-chapter>
+          <p class="story-chapter__year">{{ .year }}</p>
+          <h3 class="story-chapter__title">{{ $chapter.title }}</h3>
+          <p class="story-chapter__summary">{{ $chapter.summary }}</p>
+          {{- with $chapter.details }}
+          <details class="story-chapter__more">
+            <summary>
+              <span class="story-chapter__more-open">{{ if $isZH }}展开细节{{ else }}Read the details{{ end }}</span>
+              <span class="story-chapter__more-close">{{ if $isZH }}收起细节{{ else }}Hide the details{{ end }}</span>
+            </summary>
+            <div class="story-chapter__detail">
+              {{- range . }}<p>{{ . }}</p>{{- end }}
+            </div>
+          </details>
+          {{- end }}
+          {{- with $chapter.link }}
+          <a class="story-chapter__link" href="{{ .href }}">{{ .label }}</a>
+          {{- end }}
+        </li>
+        {{- end }}
+      </ol>
+    </section>
+
     <section class="studio-archive" id="blog-definition" aria-labelledby="studio-archive-title">
       <header class="studio-archive__intro">
         <h2 id="studio-archive-title">
@@ -153,7 +198,7 @@
           <p><span>{{ if $isZH }}思想与成长{{ else }}Thought and growth{{ end }}</span><b>{{ len $thoughtPages }}</b></p>
           <h3>{{ if $isZH }}关于成长、关系、选择，以及怎样理解自己。{{ else }}Growth, relationships, choices, and ways of understanding oneself.{{ end }}</h3>
           <a class="studio-archive__axis-link" href="{{ "growth/" | relLangURL }}">
-            {{ if $isZH }}阅读思想与成长{{ else }}Read thought and growth{{ end }} <span aria-hidden="true">→</span>
+            {{ if $isZH }}阅读思想与成长{{ else }}Read thought and growth{{ end }}
           </a>
         </article>
 
@@ -163,9 +208,9 @@
             <span>{{ if $isZH }}每一年，重新检查生活的方向。{{ else }}A yearly check on the direction of life.{{ end }}</span>
           </div>
           <nav class="studio-archive__annual-links" aria-label="{{ if $isZH }}年度总结列表{{ else }}Annual review list{{ end }}">
-            <a href="{{ "growth/posts/2025-annual-review/" | relLangURL }}">2025 <span>↗</span></a>
-            <a href="{{ "growth/posts/2024-annual-review/" | relLangURL }}">2024 <span>↗</span></a>
-            <a href="{{ "growth/posts/2023-annual-summary-reflections-and-aspirations/" | relLangURL }}">2023 <span>↗</span></a>
+            <a href="{{ "growth/posts/2025-annual-review/" | relLangURL }}">2025</a>
+            <a href="{{ "growth/posts/2024-annual-review/" | relLangURL }}">2024</a>
+            <a href="{{ "growth/posts/2023-annual-summary-reflections-and-aspirations/" | relLangURL }}">2023</a>
           </nav>
 
           <div class="studio-archive__monthly">
@@ -182,7 +227,7 @@
               {{- end }}
             </nav>
             <a class="studio-archive__monthly-all" href="{{ "tags/monthly-notes/" | relLangURL }}">
-              {{ if $isZH }}全部月记{{ else }}All monthly notes{{ end }} <span aria-hidden="true">→</span>
+              {{ if $isZH }}全部月记{{ else }}All monthly notes{{ end }}
             </a>
           </div>
         </section>
@@ -199,14 +244,28 @@
         </div>
         <div class="studio-deck-controls">
           <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / 03</span>
-          <button type="button" data-card-prev aria-label="{{ if $isZH }}上一个工作区{{ else }}Previous workspace{{ end }}">←</button>
-          <button type="button" data-autoplay-toggle aria-pressed="true" aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}"><span aria-hidden="true">Ⅱ</span></button>
-          <button type="button" data-card-next aria-label="{{ if $isZH }}下一个工作区{{ else }}Next workspace{{ end }}">→</button>
+          <button type="button" class="studio-deck-play" data-autoplay-toggle aria-pressed="false"
+            data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
+            data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
+            data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
         </div>
       </header>
 
+      <div class="studio-choice-strip studio-choice-strip--workbench" role="group"
+        aria-label="{{ if $isZH }}选择长期写作主线{{ else }}Choose a long-term thread{{ end }}">
+        <button type="button" class="studio-choice" data-deck-choice data-choice-index="0" aria-pressed="true">
+          {{ if $isZH }}AI 与项目{{ else }}AI and projects{{ end }}
+        </button>
+        <button type="button" class="studio-choice" data-deck-choice data-choice-index="1" aria-pressed="false">
+          {{ if $isZH }}工程与方法{{ else }}Engineering and methods{{ end }}
+        </button>
+        <button type="button" class="studio-choice" data-deck-choice data-choice-index="2" aria-pressed="false">
+          {{ if $isZH }}人与世界{{ else }}People and the world{{ end }}
+        </button>
+      </div>
+
       <div class="studio-workbench__grid" data-card-track>
-        <article class="workspace-panel workspace-panel--build" data-card data-card-position="active" aria-hidden="false">
+        <article class="workspace-panel workspace-panel--build" data-card data-card-position="active">
           <img src="/images/products/telepace.jpg" width="1440" height="900"
             srcset="/images/products/telepace-720.webp 720w, /images/products/telepace.jpg 1440w"
             sizes="(max-width: 640px) 82vw, 720px"
@@ -219,7 +278,7 @@
           </div>
         </article>
 
-        <article class="workspace-panel workspace-panel--write" data-card data-card-position="next" aria-hidden="true" inert>
+        <article class="workspace-panel workspace-panel--write" data-card data-card-position="hidden">
           <img src="/images/blog/rebuild-2026/article-three-column.jpeg" width="1389" height="868"
             srcset="/images/blog/rebuild-2026/article-three-column-720.webp 720w, /images/blog/rebuild-2026/article-three-column.jpeg 1389w"
             sizes="(max-width: 640px) 82vw, 720px"
@@ -231,7 +290,7 @@
           </div>
         </article>
 
-        <article class="workspace-panel workspace-panel--move" data-card data-card-position="prev" aria-hidden="true" inert>
+        <article class="workspace-panel workspace-panel--move" data-card data-card-position="hidden">
           <img src="/images/about/journey/06-kumano-hero.webp" width="640" height="853"
             alt="{{ if $isZH }}熊野古道上的森林与行者{{ else }}Forest and walker on the Kumano Kodo{{ end }}" loading="lazy" decoding="async"
             draggable="false">
@@ -246,27 +305,42 @@
     <section class="studio-products" id="studio-products" aria-labelledby="studio-products-title"
       role="region" aria-roledescription="carousel" tabindex="0" data-card-carousel>
       <div class="studio-products__intro">
-        <h2 id="studio-products-title">{{ if $isZH }}正在构建的产品，不是作品集摆设。{{ else }}Products in motion, not portfolio decoration.{{ end }}</h2>
+        <h2 id="studio-products-title">{{ if $isZH }}从真实问题开始的产品。{{ else }}Products that began with real problems.{{ end }}</h2>
         <p>{{ if $isZH }}它们都从我自己遇到的问题开始，也都在真实用户手里继续变化。{{ else }}Each began with a problem I faced and keeps changing in the hands of real users.{{ end }}</p>
         <div class="studio-products__actions">
-          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}打开完整产品工作区{{ else }}Open the full product workspace{{ end }} →</a>
+          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}打开完整产品工作区{{ else }}Open the full product workspace{{ end }}</a>
           <div class="studio-deck-controls">
-              <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / {{ printf "%02d" (len $products) }}</span>
-            <button type="button" data-card-prev aria-label="{{ if $isZH }}上一个产品{{ else }}Previous product{{ end }}">←</button>
-            <button type="button" data-autoplay-toggle aria-pressed="true" aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}"><span aria-hidden="true">Ⅱ</span></button>
-            <button type="button" data-card-next aria-label="{{ if $isZH }}下一个产品{{ else }}Next product{{ end }}">→</button>
+            <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / {{ printf "%02d" (len $products) }}</span>
+            <button type="button" class="studio-deck-play" data-autoplay-toggle aria-pressed="false"
+              data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
+              data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
+              data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
           </div>
         </div>
+      </div>
+
+      <div class="studio-choice-strip studio-choice-strip--products" role="group"
+        aria-label="{{ if $isZH }}选择产品{{ else }}Choose a product{{ end }}">
+        {{- range $index, $product := $products }}
+        <button type="button" class="studio-choice" data-deck-choice data-choice-index="{{ $index }}"
+          aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+          <span class="studio-choice__mark" aria-hidden="true">{{ $product.mark }}</span>
+          {{ $product.name }}
+        </button>
+        {{- end }}
       </div>
 
       <div class="studio-products__track" role="list" data-card-track>
         {{- range $index, $product := $products }}
         {{- $shot := partial "products/shot.html" (dict "product" $product "lang" $.Lang) -}}
         {{- $productUrl := partial "products/url.html" (dict "product" $product "lang" $.Lang) -}}
+        {{- $productDesc := cond $isZH $product.desc_zh $product.desc_en -}}
+        {{- $productAudience := cond $isZH $product.audience_zh $product.audience_en -}}
+        {{- $productBoundary := cond $isZH $product.boundary_zh $product.boundary_en -}}
+        {{- $productQuestion := cond $isZH $product.question_zh $product.question_en -}}
         <article class="studio-product" role="listitem" data-card
-          data-card-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else if eq $index (sub (len $products) 1) }}prev{{ else }}hidden{{ end }}"
-          aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}"{{ if ne $index 0 }} inert{{ end }}>
-          <a href="{{ $productUrl }}" target="_blank" rel="noopener">
+          data-card-position="{{ if eq $index 0 }}active{{ else }}hidden{{ end }}">
+          <div class="studio-product__frame">
             {{- if $shot.exists }}
             <img src="{{ $shot.path }}" width="1440" height="900"
               {{ if and (not (or $product.image_zh $product.image_en)) (fileExists (printf "static/images/products/%s-720.webp" $product.id)) }}srcset="/images/products/{{ $product.id }}-720.webp 720w, /images/products/{{ $product.id }}.jpg 1440w"{{ end }}
@@ -282,7 +356,33 @@
               <p>{{ if $isZH }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
               <span>{{ $product.stack }}</span>
             </div>
-          </a>
+          </div>
+          <details class="studio-product__expand" data-product-expand>
+            <summary>
+              <span class="studio-product__expand-open">{{ if $isZH }}展开产品细节{{ else }}Explore this product{{ end }}</span>
+              <span class="studio-product__expand-close">{{ if $isZH }}收起产品细节{{ else }}Collapse this product{{ end }}</span>
+            </summary>
+            <div class="studio-product__detail">
+              {{- with $productDesc }}<p class="studio-product__desc">{{ . }}</p>{{- end }}
+              <dl>
+                {{- with $productAudience }}
+                <dt>{{ if $isZH }}适合谁{{ else }}Who it serves{{ end }}</dt>
+                <dd>{{ . }}</dd>
+                {{- end }}
+                {{- with $productBoundary }}
+                <dt>{{ if $isZH }}当前边界{{ else }}Current boundary{{ end }}</dt>
+                <dd>{{ . }}</dd>
+                {{- end }}
+                {{- with $productQuestion }}
+                <dt>{{ if $isZH }}在验证的问题{{ else }}Question being tested{{ end }}</dt>
+                <dd>{{ . }}</dd>
+                {{- end }}
+              </dl>
+              <a class="studio-product__visit" href="{{ $productUrl }}" target="_blank" rel="noopener">
+                {{ if $isZH }}访问产品{{ else }}Visit product{{ end }} · {{ $shot.domain }}
+              </a>
+            </div>
+          </details>
         </article>
         {{- end }}
       </div>
@@ -298,27 +398,40 @@
         <h2 id="studio-road-title">{{ if $isZH }}路不是生活的间隙。<br>路就是生活本身。{{ else }}The road is not a break from life.<br>It is life itself.{{ end }}</h2>
         <p>{{ if $isZH }}12 个月，9 个国家，35 多座城市，徒步 400 多公里。旅行让我持续拆掉那些未经检验的答案。{{ else }}Twelve months, nine countries, more than 35 cities, and over 400 km on foot. Travel keeps undoing my untested answers.{{ end }}</p>
         <div class="studio-road__controls">
-          <button type="button" data-road-prev aria-label="{{ if $isZH }}上一张旅行照片{{ else }}Previous travel photo{{ end }}">←</button>
-          <button type="button" data-autoplay-toggle aria-pressed="true" aria-label="{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}"><span aria-hidden="true">Ⅱ</span></button>
-          <button type="button" data-road-next aria-label="{{ if $isZH }}下一张旅行照片{{ else }}Next travel photo{{ end }}">→</button>
+          <button type="button" class="studio-deck-play" data-autoplay-toggle aria-pressed="false"
+            data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
+            data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
+            data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
           <a href="{{ "travel/" | relLangURL }}">{{ if $isZH }}进入旅行地图{{ else }}Explore the travel map{{ end }}</a>
         </div>
       </div>
 
-      <div class="studio-road__viewport">
-        <div class="studio-road__track" data-road-track>
+      <div class="studio-road__media">
+        <div class="studio-road__viewport" data-road-viewport>
+          <div class="studio-road__track" data-road-track>
+            {{- range $index, $item := $journey }}
+            {{- $journeySmall := printf "%s-480.webp" (strings.TrimSuffix ".webp" $item.image) }}
+            <figure class="studio-road__slide" data-road-slide
+              data-road-position="{{ if eq $index 0 }}active{{ else }}hidden{{ end }}">
+              <img src="{{ $item.image }}" width="900" height="900"
+                srcset="{{ $journeySmall }} 480w, {{ $item.image }} 675w"
+                sizes="(max-width: 640px) 68vw, 340px"
+                alt="{{ if $isZH }}{{ $item.zh }}的旅行照片{{ else }}Travel photograph from {{ $item.en }}{{ end }}"
+                loading="lazy" fetchpriority="low" decoding="async" draggable="false">
+              <figcaption>{{ if $isZH }}{{ $item.zh }}{{ else }}{{ $item.en }}{{ end }}</figcaption>
+            </figure>
+            {{- end }}
+          </div>
+        </div>
+        <div class="studio-road__picker" role="group"
+          aria-label="{{ if $isZH }}选择旅行照片{{ else }}Choose a travel photo{{ end }}">
           {{- range $index, $item := $journey }}
           {{- $journeySmall := printf "%s-480.webp" (strings.TrimSuffix ".webp" $item.image) }}
-          <figure class="studio-road__slide" data-road-slide data-frame-label="{{ if $isZH }}画面{{ else }}FRAME{{ end }} {{ printf "%02d" (add $index 1) }}"
-            data-road-position="{{ if eq $index 0 }}active{{ else if eq $index 1 }}next{{ else if eq $index (sub (len $journey) 1) }}prev{{ else }}hidden{{ end }}"
-            aria-hidden="{{ if eq $index 0 }}false{{ else }}true{{ end }}"{{ if ne $index 0 }} inert{{ end }}>
-            <img src="{{ $item.image }}" width="900" height="900"
-              srcset="{{ $journeySmall }} 480w, {{ $item.image }} 675w"
-              sizes="(max-width: 640px) 68vw, 340px"
-              alt="{{ if $isZH }}{{ $item.zh }}的旅行照片{{ else }}Travel photograph from {{ $item.en }}{{ end }}"
-              loading="lazy" fetchpriority="low" decoding="async" draggable="false">
-            <figcaption>{{ if $isZH }}{{ $item.zh }}{{ else }}{{ $item.en }}{{ end }}</figcaption>
-          </figure>
+          <button type="button" class="studio-road__thumb" data-deck-choice data-choice-index="{{ $index }}"
+            aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
+            <img src="{{ $journeySmall }}" width="480" height="480" alt="" loading="lazy" decoding="async" draggable="false">
+            <span>{{ if $isZH }}{{ $item.zh }}{{ else }}{{ $item.en }}{{ end }}</span>
+          </button>
           {{- end }}
         </div>
       </div>
@@ -512,7 +625,9 @@
           {{- end }}
           {{- with $idPerson.motto }}<p class="studio-identity__motto">“{{ . }}”</p>{{ end }}
           {{- with $idTimeline.arc_zh }}
-          <p class="studio-identity__arc">{{ if $isZH }}{{ . }}{{ else }}{{ $idTimeline.arc_en }}{{ end }}</p>
+          {{- /* Data stays canonical in identity.json; the visible card swaps
+                 decorative arrow separators for quiet dots. */ -}}
+          <p class="studio-identity__arc">{{ replaceRE "→" "·" (cond $isZH . $idTimeline.arc_en) }}</p>
           {{- end }}
           <p class="studio-identity__links">
             {{- with $idLinks.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a> ·{{ end }}
@@ -524,14 +639,20 @@
           </p>
         </div>
 
-        <ol class="studio-identity__timeline">
-          {{- range $idTimeline.milestones }}
-          <li{{ if .gap }} class="is-gap"{{ end }}>
-            <b>{{ .date }}</b>
-            <span>{{ .label }}</span>
-          </li>
-          {{- end }}
-        </ol>
+        <details class="studio-identity__archive" data-identity-timeline>
+          <summary>
+            <span class="studio-identity__archive-open">{{ if $isZH }}展开完整公开时间线{{ else }}Open the full public timeline{{ end }}</span>
+            <span class="studio-identity__archive-close">{{ if $isZH }}收起完整公开时间线{{ else }}Close the full public timeline{{ end }}</span>
+          </summary>
+          <ol class="studio-identity__timeline">
+            {{- range $idTimeline.milestones }}
+            <li{{ if .gap }} class="is-gap"{{ end }}>
+              <b>{{ .date }}</b>
+              <span>{{ replaceRE "→" "·" .label }}</span>
+            </li>
+            {{- end }}
+          </ol>
+        </details>
       </div>
 
       {{- /* Machine entry — one place for every agent that lands on About.
@@ -551,7 +672,7 @@
           </li>
           <li>
             <a href="/data/personal-timeline-2019-2026.md"><code>/data/personal-timeline-2019-2026.md</code></a>
-            <span>{{ if $isZH }}2019→2026 逐周公开时间线{{ else }}Week-by-week public timeline 2019→2026{{ end }}</span>
+            <span>{{ if $isZH }}2019-2026 逐周公开时间线{{ else }}Week-by-week public timeline 2019-2026{{ end }}</span>
           </li>
           <li>
             <a href="{{ if $isZH }}/zh/about/#identity{{ else }}/about/#identity{{ end }}"><code>#identity</code></a>
@@ -585,11 +706,11 @@ links:
         <p>{{ if $isZH }}带着一个具体问题来找我。{{ else }}Bring one concrete problem.{{ end }}</p>
       </div>
       <nav aria-label="{{ if $isZH }}联系方式{{ else }}Contact links{{ end }}">
-        <a href="mailto:3293172751nss@gmail.com">{{ if $isZH }}聊一个问题{{ else }}Talk through a problem{{ end }} ↗</a>
-        <a href="{{ site.Params.whatsappURL | safeURL }}" target="_blank" rel="noopener">{{ if $isZH }}WhatsApp 联系我{{ else }}WhatsApp{{ end }} ↗</a>
-        <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X ↗</a>
-        <a href="{{ "about/quest/" | relLangURL }}">{{ if $isZH }}Bear Quest{{ else }}Bear Quest{{ end }} →</a>
+        <a href="mailto:3293172751nss@gmail.com">{{ if $isZH }}聊一个问题{{ else }}Talk through a problem{{ end }}</a>
+        <a href="{{ site.Params.whatsappURL | safeURL }}" target="_blank" rel="noopener">{{ if $isZH }}WhatsApp 联系我{{ else }}WhatsApp{{ end }}</a>
+        <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X</a>
+        <a href="{{ "about/quest/" | relLangURL }}">Bear Quest</a>
       </nav>
     </section>
 
@@ -599,258 +720,9 @@ links:
   </article>
 </div>
 
-<script>
-  (function () {
-    var root = document.querySelector('[data-about-studio]');
-    if (!root) return;
-
-    // Keyboard navigation is scoped to each deck, and never intercepts editing.
-    function bindDeckKeyboard(carousel, count, getIndex, render) {
-      carousel.addEventListener('keydown', function (event) {
-        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
-          event.target.closest('input, textarea, select, [contenteditable]')) return;
-        var next;
-        if (event.key === 'ArrowLeft') next = getIndex() - 1;
-        else if (event.key === 'ArrowRight') next = getIndex() + 1;
-        else if (event.key === 'Home') next = 0;
-        else if (event.key === 'End') next = count - 1;
-        else return;
-        event.preventDefault();
-        render(next);
-      });
-    }
-
-    function setSlideActive(slide, active, carousel) {
-      if (!active && slide.contains(document.activeElement)) carousel.focus({ preventScroll: true });
-      slide.inert = !active;
-      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
-    }
-
-    // Do not capture on pointerdown: a stationary press must remain a real link click.
-    // Claim only a horizontal drag, then suppress just that drag's generated click.
-    function bindDeckSwipe(surface, change) {
-      var pointer = null;
-      var suppressClick = false;
-      surface.addEventListener('pointerdown', function (event) {
-        if (!event.isPrimary || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey ||
-          event.target.closest('button, input, textarea, select, [contenteditable], [role="button"]')) return;
-        pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, dragging: false };
-        suppressClick = false;
-      });
-      surface.addEventListener('pointermove', function (event) {
-        if (!pointer || pointer.id !== event.pointerId) return;
-        var distance = event.clientX - pointer.x;
-        var vertical = event.clientY - pointer.y;
-        if (!pointer.dragging && Math.abs(vertical) > 12 && Math.abs(vertical) > Math.abs(distance)) {
-          pointer = null;
-          return;
-        }
-        if (!pointer.dragging && Math.abs(distance) > 12 && Math.abs(distance) > Math.abs(vertical) * 1.2) {
-          pointer.dragging = true;
-          suppressClick = true;
-          surface.setPointerCapture(event.pointerId);
-        }
-        if (pointer.dragging) event.preventDefault();
-      });
-      surface.addEventListener('pointerup', function (event) {
-        if (!pointer || pointer.id !== event.pointerId) return;
-        var distance = event.clientX - pointer.x;
-        var vertical = event.clientY - pointer.y;
-        if (pointer.dragging && Math.abs(distance) > 48 && Math.abs(distance) > Math.abs(vertical) * 1.2) {
-          change(distance < 0 ? 1 : -1);
-        }
-        pointer = null;
-        if (surface.hasPointerCapture(event.pointerId)) surface.releasePointerCapture(event.pointerId);
-        window.setTimeout(function () { suppressClick = false; }, 0);
-      });
-      surface.addEventListener('pointercancel', function () { pointer = null; suppressClick = false; });
-      surface.addEventListener('lostpointercapture', function () { pointer = null; });
-      surface.addEventListener('dragstart', function (event) { event.preventDefault(); });
-      surface.addEventListener('click', function (event) {
-        if (!suppressClick || event.detail === 0) return;
-        event.preventDefault();
-        event.stopPropagation();
-      }, true);
-    }
-
-    var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    // Keep timers scoped to what a reader can see and control.
-    function bindAutoplay(region, status, advance, delay) {
-      var toggle = region.querySelector('[data-autoplay-toggle]');
-      var timer = null;
-      var visible = false;
-      var hovered = false;
-      var userPaused = reduceMotionQuery.matches;
-
-      function stop() {
-        if (timer !== null) window.clearTimeout(timer);
-        timer = null;
-      }
-
-      function sync() {
-        stop();
-        var keyboardFocus = region.matches(':focus-visible') || !!region.querySelector(':focus-visible');
-        var running = !reduceMotionQuery.matches && !userPaused && visible &&
-          !document.hidden && !hovered && !keyboardFocus;
-        region.dataset.autoplay = running ? 'running' : 'paused';
-        toggle.disabled = reduceMotionQuery.matches;
-        toggle.setAttribute('aria-pressed', userPaused || reduceMotionQuery.matches ? 'false' : 'true');
-        toggle.setAttribute('aria-label', reduceMotionQuery.matches
-          ? '{{ if $isZH }}减少动态效果时关闭自动轮播{{ else }}Automatic carousel disabled for reduced motion{{ end }}'
-          : userPaused
-            ? '{{ if $isZH }}播放自动轮播{{ else }}Play automatic carousel{{ end }}'
-            : '{{ if $isZH }}暂停自动轮播{{ else }}Pause automatic carousel{{ end }}');
-        toggle.querySelector('span').textContent = userPaused || reduceMotionQuery.matches ? '▶' : 'Ⅱ';
-        status.setAttribute('aria-live', running ? 'off' : 'polite');
-        if (running) {
-          var upcoming = region.querySelector('[data-hero-position="next"] img, [data-card-position="next"] img, [data-road-position="next"] img');
-          if (upcoming) upcoming.loading = 'eager';
-          timer = window.setTimeout(function () {
-            advance();
-            sync();
-          }, delay);
-        }
-      }
-
-      toggle.addEventListener('click', function () { userPaused = !userPaused; sync(); });
-      region.addEventListener('mouseenter', function () { hovered = true; sync(); });
-      region.addEventListener('mouseleave', function () { hovered = false; sync(); });
-      region.addEventListener('focusin', sync);
-      region.addEventListener('focusout', function () { window.setTimeout(sync, 0); });
-      document.addEventListener('visibilitychange', sync);
-      window.addEventListener('pagehide', stop);
-      window.addEventListener('pageshow', sync);
-      reduceMotionQuery.addEventListener('change', function (event) {
-        if (event.matches) userPaused = true;
-        sync();
-      });
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-          visible = entries[0].isIntersecting;
-          sync();
-        }, { threshold: 0.12 });
-        observer.observe(region);
-      } else {
-        visible = true;
-      }
-      sync();
-      return sync;
-    }
-
-    var carousel = root.querySelector('[data-road-carousel]');
-    var slides = Array.prototype.slice.call(root.querySelectorAll('[data-road-slide]'));
-    var current = root.querySelector('[data-road-current]');
-    var index = 0;
-
-    function show(next) {
-      index = (next + slides.length) % slides.length;
-      slides.forEach(function (slide, slideIndex) {
-        var delta = slideIndex - index;
-        if (delta > slides.length / 2) delta -= slides.length;
-        if (delta < -slides.length / 2) delta += slides.length;
-        var position = 'hidden';
-        if (delta === 0) position = 'active';
-        if (delta === -1) position = 'prev';
-        if (delta === 1) position = 'next';
-        if (delta === -2) position = 'far-prev';
-        if (delta === 2) position = 'far-next';
-        slide.dataset.roadPosition = position;
-        setSlideActive(slide, delta === 0, carousel);
-      });
-      current.textContent = String(index + 1).padStart(2, '0');
-    }
-
-    var syncRoad = bindAutoplay(carousel, carousel.querySelector('.studio-road__counter'), function () { show(index + 1); }, 4800);
-    function selectRoad(next) { show(next); syncRoad(); }
-    root.querySelector('[data-road-prev]').addEventListener('click', function () { selectRoad(index - 1); });
-    root.querySelector('[data-road-next]').addEventListener('click', function () { selectRoad(index + 1); });
-    bindDeckKeyboard(carousel, slides.length, function () { return index; }, selectRoad);
-    bindDeckSwipe(carousel.querySelector('.studio-road__viewport'), function (direction) { selectRoad(index + direction); });
-    show(0);
-
-    root.querySelectorAll('[data-card-carousel]').forEach(function (carousel) {
-      var cards = Array.prototype.slice.call(carousel.querySelectorAll('[data-card]'));
-      var counter = carousel.querySelector('[data-card-current]');
-      var deckIndex = 0;
-
-      function renderDeck(next) {
-        deckIndex = (next + cards.length) % cards.length;
-        cards.forEach(function (card, cardIndex) {
-          var delta = cardIndex - deckIndex;
-          if (delta > cards.length / 2) delta -= cards.length;
-          if (delta < -cards.length / 2) delta += cards.length;
-          var position = 'hidden';
-          if (delta === 0) position = 'active';
-          if (delta === -1) position = 'prev';
-          if (delta === 1) position = 'next';
-          if (delta <= -2) position = 'far-prev';
-          if (delta >= 2) position = 'far-next';
-          card.dataset.cardPosition = position;
-          setSlideActive(card, delta === 0, carousel);
-        });
-        counter.textContent = String(deckIndex + 1).padStart(2, '0');
-      }
-
-      var syncDeck = bindAutoplay(carousel, counter.parentElement, function () { renderDeck(deckIndex + 1); }, 5200);
-      function selectDeck(next) { renderDeck(next); syncDeck(); }
-      carousel.querySelector('[data-card-prev]').addEventListener('click', function () { selectDeck(deckIndex - 1); });
-      carousel.querySelector('[data-card-next]').addEventListener('click', function () { selectDeck(deckIndex + 1); });
-      bindDeckKeyboard(carousel, cards.length, function () { return deckIndex; }, selectDeck);
-      bindDeckSwipe(carousel.querySelector('[data-card-track]'), function (direction) { selectDeck(deckIndex + direction); });
-      renderDeck(0);
-    });
-
-    var heroCarousel = root.querySelector('[data-hero-carousel]');
-    if (heroCarousel) {
-      var heroSlides = Array.prototype.slice.call(heroCarousel.querySelectorAll('[data-hero-slide]'));
-      var heroCurrent = heroCarousel.querySelector('[data-hero-current]');
-      var heroStatus = heroCurrent.parentElement;
-      var heroIndex = 0;
-
-      function renderHero(next) {
-        heroIndex = (next + heroSlides.length) % heroSlides.length;
-        heroSlides.forEach(function (slide, slideIndex) {
-          var delta = slideIndex - heroIndex;
-          if (delta > 1) delta -= heroSlides.length;
-          if (delta < -1) delta += heroSlides.length;
-          slide.dataset.heroPosition = delta === 0 ? 'active' : (delta === 1 ? 'next' : 'prev');
-          setSlideActive(slide, delta === 0, heroCarousel);
-        });
-        heroCurrent.textContent = String(heroIndex + 1).padStart(2, '0');
-      }
-
-      var syncHero = bindAutoplay(heroCarousel, heroStatus, function () { renderHero(heroIndex + 1); }, 4000);
-      function selectHero(next) { renderHero(next); syncHero(); }
-
-      heroCarousel.querySelector('[data-hero-prev]').addEventListener('click', function () { selectHero(heroIndex - 1); });
-      heroCarousel.querySelector('[data-hero-next]').addEventListener('click', function () { selectHero(heroIndex + 1); });
-      bindDeckKeyboard(heroCarousel, heroSlides.length, function () { return heroIndex; }, selectHero);
-      bindDeckSwipe(heroCarousel.querySelector('.studio-hero__viewport'), function (direction) { selectHero(heroIndex + direction); });
-      renderHero(0);
-    }
-
-    var revealSections = Array.prototype.slice.call(root.querySelectorAll(
-      '.studio-archive, .studio-workbench, .studio-products, .studio-road, .studio-interview, .studio-coda'
-    ));
-    revealSections.forEach(function (section) { section.setAttribute('data-about-section', ''); });
-
-    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      var sectionObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            sectionObserver.unobserve(entry.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
-      revealSections.forEach(function (section) { sectionObserver.observe(section); });
-    } else {
-      revealSections.forEach(function (section) { section.classList.add('is-visible'); });
-    }
-
-  })();
-</script>
+{{- $aboutExperience := resources.Get "js/about-natural-experience.js" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) -}}
+{{- if hugo.IsProduction }}{{- $aboutExperience = $aboutExperience | fingerprint -}}{{- end }}
+<script type="module" src="{{ $aboutExperience.RelPermalink }}"{{ with $aboutExperience.Data.Integrity }} integrity="{{ . }}" crossorigin="anonymous"{{ end }}></script>
 {{- $aboutInterview := resources.Get "js/about-native-interview.js" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) -}}
 {{- if hugo.IsProduction }}{{- $aboutInterview = $aboutInterview | fingerprint -}}{{- end }}
 <script type="module" src="{{ $aboutInterview.RelPermalink }}"{{ with $aboutInterview.Data.Integrity }} integrity="{{ . }}" crossorigin="anonymous"{{ end }}></script>

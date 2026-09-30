@@ -215,6 +215,19 @@
        and reduced-motion devices exactly as before the split. */}}
 {{- if or (eq .Layout "about") (eq .Layout "about-quest") }}
 {{- if eq .Layout "about" }}
+<script>
+  (function () {
+    // Progressive-enhancement flag: the deck stylesheet keys its enhanced
+    // layout on this class. The module sets [data-deck-ready] when every deck
+    // initializes; if the module never runs (blocked or failed), the flag is
+    // removed again and the page keeps its static editorial layout.
+    var root = document.documentElement;
+    root.classList.add('js');
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!document.querySelector('[data-deck-ready]')) root.classList.remove('js');
+    });
+  })();
+</script>
 {{- $aboutParts := split $aboutCSS.Content "/* ============================================================\n   About Studio" -}}
 {{- $aboutStudioSource := printf "/* About Studio%s" (index $aboutParts 1) -}}
 {{- $aboutPageCSS := $aboutStudioSource | resources.FromString "css/extended/about-studio.css" | resources.Minify -}}
@@ -245,6 +258,10 @@
 
 {{- if $isNarrativeAbout }}
 <style>{{ $stylesheet.Content | safeCSS }}</style>
+{{- /* The natural-experience layer is About-only and loads last so its
+       deliberate overrides win the cascade without touching other pages. */}}
+{{- $aboutExperienceCSS := resources.Get "css/about-natural-experience.css" | resources.Minify }}
+<style>{{ $aboutExperienceCSS.Content | safeCSS }}</style>
 {{- else if not site.Params.assets.disableFingerprinting }}
 {{- $stylesheet := $stylesheet | fingerprint }}
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">

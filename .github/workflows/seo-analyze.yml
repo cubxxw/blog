@@ -128,7 +128,9 @@ jobs:
       - name: Optional bounded explanation (model, no tools)
         id: model
         continue-on-error: true
-        uses: anthropics/claude-code-action@v1.0.235
+        # This Action/SDK/CLI combination is bound to the independently verified
+        # docs/seo-model-boundary-proof.json. Re-verify that proof before upgrades.
+        uses: anthropics/claude-code-action@v1.0.231
         env:
           # ACTIONS_STEP_DEBUG=true would override show_full_output=false in
           # the current parser; force false AT action execution.

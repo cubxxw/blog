@@ -3,15 +3,17 @@ import { test, expect } from '../helpers/frozen-site';
 test.describe('About Page Visual Regression', () => {
   test('about keeps one clear narrative in both languages', async ({ page }) => {
     await page.goto('/zh/about/');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('把走过的路');
-    await expect(page.getByRole('link', { name: '进入我的工作台' })).toHaveAttribute('href', '#workbench');
-    await expect(page.getByRole('link', { name: '查看全部产品' })).toHaveAttribute('href', '/zh/projects/');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('构建系统');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('也理解自己');
+    await expect(page.getByRole('link', { name: '读我的故事' })).toHaveAttribute('href', '#story');
+    await expect(page.getByRole('link', { name: '浏览全部文章' })).toHaveAttribute('href', '/zh/articles/');
     await expect(page.getByText('AI 创业者', { exact: true })).toHaveCount(0);
 
     await page.goto('/about/');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Turning the road I travel');
-    await expect(page.getByRole('link', { name: 'Enter my workbench' })).toHaveAttribute('href', '#workbench');
-    await expect(page.getByRole('link', { name: 'View all products' })).toHaveAttribute('href', '/projects/');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Building systems');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Staying curious');
+    await expect(page.getByRole('link', { name: 'Read my story' })).toHaveAttribute('href', '#story');
+    await expect(page.getByRole('link', { name: 'Browse all writing' })).toHaveAttribute('href', '/articles/');
   });
 
   test('about interview stays native when a live campaign is not configured', async ({ page }) => {

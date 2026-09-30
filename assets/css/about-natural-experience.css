@@ -1,0 +1,826 @@
+/* ============================================================
+   about-natural-experience.css — the natural-experience layer for /about/.
+   Loaded only on the About layout, after about-calibration.css.
+
+   Contents:
+     1. Natural text/button CTAs (no arrow glyphs)
+     2. Named choice strips + play/pause text control
+     3. Human story chapters (#story) with in-place details
+     4. Product exploration (native details, visit link, stable expansion)
+     5. Travel thumbnail/location picker
+     6. Bounded scroll-driven hero photo/title treatment + chapter reveal
+     7. Focus-visible / hover / press polish
+     8. No-JS fallback (static editorial list) and reduced-motion kills
+
+   Motion budget: transform/opacity only, one or two moving focal objects per
+   viewport, everything inside @supports + @media (prefers-reduced-motion).
+   ============================================================ */
+
+/* ---------- 1. Hero CTAs: natural text/button affordances ---------- */
+.studio-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 26px;
+  max-width: none;
+  margin-top: 30px;
+}
+
+.about-studio .studio-hero__actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 8px 2px;
+  border: 0;
+  border-radius: 0;
+  color: var(--color-ink);
+  background: transparent;
+  font-family: var(--font-meta);
+  font-size: .95rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: color-mix(in srgb, var(--color-ink) 34%, transparent);
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease, opacity 120ms ease, transform 120ms ease;
+}
+
+.about-studio .studio-hero__actions a.studio-hero__action--primary {
+  padding: 10px 22px;
+  border: 1px solid var(--studio-accent);
+  border-radius: 999px;
+  color: var(--color-paper);
+  background: var(--studio-accent);
+  text-decoration: none;
+}
+
+.about-studio .studio-hero__actions a:hover {
+  color: var(--studio-accent);
+  background: transparent;
+  border-color: transparent;
+  transform: none;
+  text-decoration-color: currentColor;
+}
+
+.about-studio .studio-hero__actions a.studio-hero__action--primary:hover {
+  color: #fff;
+  border-color: var(--studio-accent);
+  background: var(--studio-accent);
+  filter: brightness(1.08);
+}
+
+.about-studio .studio-hero__actions a:active {
+  transform: translateY(1px);
+  opacity: .88;
+}
+
+.about-studio .studio-hero__actions a:focus-visible {
+  outline: 2px solid var(--studio-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- 2. Choice strips and the text play/pause control ---------- */
+.studio-hero__deckbar {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.studio-choice-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  max-width: 100%;
+}
+
+.studio-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-paper) 86%, transparent);
+  font-family: var(--font-meta);
+  font-size: .82rem;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+
+.studio-choice__mark {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .08em;
+}
+
+.studio-choice:hover {
+  color: var(--studio-accent);
+  border-color: color-mix(in srgb, var(--studio-accent) 55%, var(--color-rule));
+}
+
+.studio-choice:active {
+  transform: translateY(1px);
+}
+
+.studio-choice:focus-visible,
+.studio-road__thumb:focus-visible,
+.studio-deck-play:focus-visible {
+  outline: 2px solid var(--studio-accent);
+  outline-offset: 3px;
+}
+
+.studio-choice[aria-pressed="true"] {
+  color: var(--color-paper);
+  border-color: var(--studio-accent);
+  background: var(--studio-accent);
+}
+
+.studio-choice[aria-pressed="true"] .studio-choice__mark {
+  color: color-mix(in srgb, var(--color-paper) 82%, transparent);
+}
+
+.studio-choice-strip--products {
+  margin-top: 30px;
+}
+
+.studio-choice-strip--workbench {
+  margin: 0 0 26px;
+}
+
+.studio-deck-controls [role="status"] {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+
+.studio-deck-controls .studio-deck-play,
+.studio-road__controls .studio-deck-play {
+  width: auto;
+  min-width: 92px;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  font-family: var(--font-meta);
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+
+.studio-deck-controls .studio-deck-play:hover,
+.studio-road__controls .studio-deck-play:hover {
+  color: var(--studio-accent);
+  border-color: color-mix(in srgb, var(--studio-accent) 55%, var(--color-rule));
+  transform: translateY(-1px);
+}
+
+.studio-deck-controls .studio-deck-play:active,
+.studio-road__controls .studio-deck-play:active {
+  transform: translateY(1px);
+}
+
+.about-studio [data-autoplay="running"] .studio-deck-play {
+  color: var(--color-paper);
+  border-color: var(--studio-accent);
+  background: var(--studio-accent);
+}
+
+/* ---------- 3. Human story chapters ---------- */
+.studio-story {
+  padding: clamp(64px, 8vw, 96px) 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+.studio-story__eyebrow {
+  margin: 0 0 18px;
+  color: var(--studio-accent);
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.studio-story__intro h2 {
+  max-width: 20ch;
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 3.6vw, 3.55rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+html[lang="zh"] .studio-story__intro h2 {
+  line-height: 1.2;
+}
+
+.studio-story__intro > p:last-child {
+  max-width: 52ch;
+  margin: 22px 0 0;
+  color: var(--color-ink-muted);
+  font-family: var(--font-prose);
+  font-size: 1rem;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.studio-story__chapters {
+  display: grid;
+  gap: 0;
+  margin: clamp(34px, 5vw, 54px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.story-chapter {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 10px clamp(20px, 3vw, 42px);
+  padding: clamp(24px, 3.4vw, 38px) 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+.story-chapter__year {
+  grid-row: 1 / span 4;
+  margin: 4px 0 0;
+  color: var(--studio-accent);
+  font-family: var(--font-mono);
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.story-chapter__title {
+  max-width: 26ch;
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.3vw, 2.1rem);
+  font-weight: 620;
+  line-height: 1.22;
+  letter-spacing: -.03em;
+  text-wrap: balance;
+}
+
+.story-chapter__summary {
+  max-width: 64ch;
+  margin: 10px 0 0;
+  color: var(--color-ink);
+  font-family: var(--font-prose);
+  font-size: 1.02rem;
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+.story-chapter__more {
+  margin-top: 14px;
+}
+
+.story-chapter__more > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  font-family: var(--font-meta);
+  font-size: .78rem;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+
+.story-chapter__more > summary::-webkit-details-marker,
+.studio-product__expand > summary::-webkit-details-marker,
+.studio-identity__archive > summary::-webkit-details-marker {
+  display: none;
+}
+
+.story-chapter__more > summary:hover,
+.studio-product__expand > summary:hover,
+.studio-identity__archive > summary:hover {
+  color: var(--studio-accent);
+  border-color: color-mix(in srgb, var(--studio-accent) 55%, var(--color-rule));
+}
+
+.story-chapter__more > summary:active,
+.studio-product__expand > summary:active {
+  transform: translateY(1px);
+}
+
+.story-chapter__more > summary:focus-visible,
+.studio-product__expand > summary:focus-visible,
+.studio-identity__archive > summary:focus-visible,
+.story-chapter__link:focus-visible,
+.studio-product__visit:focus-visible {
+  outline: 2px solid var(--studio-accent);
+  outline-offset: 3px;
+}
+
+/* Labels describe the action: one visible at a time, no chevrons or symbols.
+   Every disclosure inside About loses its native triangle marker as well; the
+   explicit open/close labels carry the affordance. */
+.about-studio details > summary {
+  list-style: none;
+}
+
+.about-studio details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.story-chapter__more-close,
+.studio-product__expand-close,
+.studio-identity__archive-close {
+  display: none;
+}
+
+.story-chapter__more[open] .story-chapter__more-open,
+.studio-product__expand[open] .studio-product__expand-open,
+.studio-identity__archive[open] .studio-identity__archive-open {
+  display: none;
+}
+
+.story-chapter__more[open] .story-chapter__more-close,
+.studio-product__expand[open] .studio-product__expand-close,
+.studio-identity__archive[open] .studio-identity__archive-close {
+  display: inline;
+}
+
+.story-chapter__detail {
+  display: grid;
+  gap: 12px;
+  max-width: 62ch;
+  margin-top: 16px;
+  padding: 2px 0 2px 18px;
+  border-left: 2px solid color-mix(in srgb, var(--studio-accent) 32%, var(--color-rule));
+}
+
+.story-chapter__detail p {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-family: var(--font-prose);
+  font-size: .96rem;
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+.story-chapter__link {
+  align-self: start;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 10px;
+  color: var(--studio-accent);
+  font-family: var(--font-meta);
+  font-size: .82rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
+.story-chapter__link:hover {
+  color: var(--color-ink);
+}
+
+.story-chapter__link:active {
+  transform: translateY(1px);
+  opacity: .88;
+}
+
+/* ---------- 4. Product exploration ---------- */
+.studio-product__frame {
+  min-width: 0;
+}
+
+/* The whole active card carries the transition name so the expansion stays
+   visibly continuous, including its height change. */
+.studio-product[data-card-position="active"] {
+  view-transition-name: about-product-stage;
+}
+
+.studio-product__expand {
+  margin: 16px 4px 0;
+}
+
+.studio-product__expand > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  font-family: var(--font-meta);
+  font-size: .78rem;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+
+.studio-product__detail {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+  padding: clamp(18px, 2.4vw, 26px);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--studio-radius);
+  background: color-mix(in srgb, var(--color-paper) 96%, var(--color-ink));
+}
+
+.studio-product__desc {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-prose);
+  font-size: .98rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.studio-product__detail dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 10px 22px;
+  margin: 0;
+}
+
+.studio-product__detail dt {
+  color: var(--studio-accent);
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.studio-product__detail dd {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-family: var(--font-prose);
+  font-size: .92rem;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.about-studio .studio-product__visit {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 1px solid var(--studio-accent);
+  border-radius: 999px;
+  color: var(--color-paper);
+  background: var(--studio-accent);
+  font-family: var(--font-meta);
+  font-size: .8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: filter 160ms ease, transform 120ms ease;
+}
+
+.studio-product__visit:hover {
+  filter: brightness(1.08);
+}
+
+.studio-product__visit:active {
+  transform: translateY(1px);
+}
+
+/* ---------- 5. Travel thumbnail / location picker ---------- */
+.studio-road__media {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.studio-road__picker {
+  display: flex;
+  gap: 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-top: 10px;
+  padding: 4px 2px 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.studio-road__thumb {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 6px;
+  width: 92px;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 120ms ease;
+}
+
+.studio-road__thumb img {
+  width: 82px;
+  height: 58px;
+  object-fit: cover;
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+}
+
+.studio-road__thumb span {
+  color: var(--color-ink-muted);
+  font-family: var(--font-meta);
+  font-size: .62rem;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.studio-road__thumb:hover {
+  border-color: color-mix(in srgb, var(--studio-accent) 45%, var(--color-rule));
+  transform: translateY(-1px);
+}
+
+.studio-road__thumb:active {
+  transform: translateY(1px);
+}
+
+.studio-road__thumb[aria-pressed="true"] {
+  border-color: var(--studio-accent);
+  background: color-mix(in srgb, var(--studio-accent) 9%, transparent);
+}
+
+.studio-road__thumb[aria-pressed="true"] span {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+/* ---------- 6. Bounded scroll-driven hero photo/title treatment + chapter reveal ----------
+   Delivered motion: the hero photograph scales and the hero title recedes while
+   the hero leaves the viewport, and each story chapter reveals on entry. Native
+   scroll only — no scroll handlers, no RAF loops, no sticky stacking (that was
+   the alternative branch and is intentionally not claimed here).
+   Everything is guarded by feature support and the reduced-motion preference,
+   which takes effect immediately, including live preference changes. */
+@keyframes ane-hero-photo-exit {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(.94);
+    opacity: .82;
+  }
+}
+
+@keyframes ane-hero-title-exit {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0, -18px, 0);
+    opacity: .28;
+  }
+}
+
+@keyframes ane-chapter-reveal {
+  from {
+    transform: translate3d(0, 22px, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .studio-hero__carousel {
+      animation: ane-hero-photo-exit linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+
+    .studio-hero__copy {
+      animation: ane-hero-title-exit linear both;
+      animation-timeline: view();
+      animation-range: exit 8% exit 100%;
+    }
+
+    [data-story-chapter] {
+      animation: ane-chapter-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 8% entry 72%;
+    }
+  }
+}
+
+/* ---------- 7. Focus-visible and press polish on the new surfaces ---------- */
+.about-studio :is(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--studio-accent);
+  outline-offset: 3px;
+}
+
+/* No decorative arrows on this page: the shared reading-map shortcode draws
+   aria-hidden arrow glyphs after its link labels; About hides them here, in a
+   page-scoped stylesheet, without touching the shortcode or other pages. */
+.about-studio .sh-arrow {
+  display: none !important;
+}
+
+/* This stylesheet is only included by the About layout. The header's labelled
+   writing menu still opens on hover/focus, without its decorative chevron. */
+.header .nav-sub-chevron {
+  display: none;
+}
+
+/* ---------- 8. No-JS fallback: static editorial list ----------
+   Without JavaScript the page shows every slide, card and photo in normal
+   flow, with native details expansion and real links — nothing waits for an
+   observer and nothing is trapped behind inert states. */
+html:not(.js) .studio-hero__visual,
+html:not(.js) .studio-workbench__grid .workspace-panel,
+html:not(.js) .studio-products__track .studio-product,
+html:not(.js) .studio-road__slide {
+  position: relative;
+  inset: auto;
+  top: auto;
+  left: auto;
+  display: block;
+  width: 100%;
+  margin: 0 0 22px;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  filter: none;
+}
+
+html:not(.js) .studio-hero__viewport,
+html:not(.js) .studio-workbench__grid,
+html:not(.js) .studio-products__track,
+html:not(.js) .studio-road__viewport,
+html:not(.js) .studio-road__track {
+  height: auto;
+}
+
+html:not(.js) .studio-hero__visual img,
+html:not(.js) .studio-workbench__grid .workspace-panel img,
+html:not(.js) .studio-products__track .studio-product img,
+html:not(.js) .studio-road__slide img {
+  height: auto;
+  aspect-ratio: 16 / 10;
+}
+
+html:not(.js) .studio-workbench__grid .workspace-panel > div,
+html:not(.js) .studio-products__track .studio-product .studio-product__body {
+  display: grid;
+  opacity: 1;
+}
+
+html:not(.js) .studio-choice-strip,
+html:not(.js) .studio-road__picker,
+html:not(.js) .studio-deck-play {
+  display: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .story-chapter {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 8px 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .studio-hero__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    margin-top: 22px;
+  }
+
+  .about-studio .studio-hero__actions a,
+  .about-studio .studio-hero__actions a.studio-hero__action--primary {
+    justify-content: flex-start;
+    min-height: 48px;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 0;
+    color: var(--color-ink);
+    background: transparent;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: color-mix(in srgb, var(--color-ink) 34%, transparent);
+  }
+
+  .about-studio .studio-hero__actions a:hover,
+  .about-studio .studio-hero__actions a.studio-hero__action--primary:hover {
+    color: var(--studio-accent);
+    background: transparent;
+    filter: none;
+  }
+
+  .studio-choice-strip {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+  }
+
+  .story-chapter {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .story-chapter__year {
+    grid-row: auto;
+  }
+
+  .studio-product__detail dl {
+    grid-template-columns: 1fr;
+    gap: 4px 0;
+  }
+
+  .studio-product__detail dt {
+    margin-top: 8px;
+  }
+
+  .studio-products__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .studio-road__picker {
+    margin-top: 2px;
+  }
+}
+
+/* ---------- Reduced motion: everything stops, immediately ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .studio-choice,
+  .studio-road__thumb,
+  .studio-deck-play,
+  .story-chapter__more > summary,
+  .studio-product__expand > summary,
+  .studio-identity__archive > summary,
+  .studio-product__visit,
+  .about-studio .studio-hero__actions a {
+    transition: none;
+  }
+
+  .studio-choice:active,
+  .studio-road__thumb:active,
+  .studio-deck-play:active,
+  .studio-product__visit:active,
+  .about-studio .studio-hero__actions a:active {
+    transform: none;
+  }
+
+  .studio-hero__carousel,
+  .studio-hero__copy,
+  [data-story-chapter] {
+    animation: none !important;
+  }
+
+  /* A live preference change to reduced motion also stops any View Transition
+     decoration in flight. */
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

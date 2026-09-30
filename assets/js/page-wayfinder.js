@@ -58,7 +58,7 @@ if (nav) {
     update();
   }
 
-  const anchors = [...links, ...document.querySelectorAll('.hp-entry-actions a[href^="#"]')];
+  const anchors = [...links, ...document.querySelectorAll('.hp-entry-actions a[href^="#"], .studio-hero__actions a[href^="#"]')];
   anchors.forEach(link => link.addEventListener('click', event => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
     const target = document.getElementById(link.hash.slice(1));

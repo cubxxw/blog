@@ -12,7 +12,10 @@ async function swipeLeft(page: Page, surface: Locator) {
   await page.mouse.up();
 }
 
-test.describe('About carousel interaction', () => {
+const playPattern = /Play|播放/;
+const pausePattern = /Pause|暂停/;
+
+test.describe('About deck interaction', () => {
   for (const route of ['/about/', '/zh/about/']) {
     test(`${route} closed mobile navigation cannot intercept page content or focus`, async ({ page, isMobile }) => {
       test.skip(!isMobile, 'The mobile menu has an inline submenu');
@@ -48,10 +51,16 @@ test.describe('About carousel interaction', () => {
     test(`${route} keeps real product links and distinguishes clicks from drags`, async ({ page, context }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto(route, { waitUntil: 'domcontentloaded' });
-      const products = page.locator('[data-card-carousel].studio-products');
-      const active = products.locator('[data-card-position="active"]');
-      const link = active.locator('a');
+      const products = page.locator('#studio-products');
+      const firstCard = products.locator('[data-card]').first();
+      // Exploration expands in place; the visit link is the one real exit.
+      await firstCard.locator('[data-product-expand] summary').click();
+      const link = firstCard.locator('a.studio-product__visit');
+      await expect(link).toBeVisible();
       const destination = await link.evaluate((element: HTMLAnchorElement) => element.href);
+      expect(destination).toMatch(/^https:\/\//);
+      await expect(link).toHaveAttribute('target', '_blank');
+      await expect(link).toHaveAttribute('rel', /noopener/);
       // A real popup is required; its destination is mocked to avoid external services.
       await context.route(`${destination}**`, (request) => request.fulfill({ contentType: 'text/html', body: '<title>Product destination</title>' }));
       const popupReady = page.waitForEvent('popup');
@@ -63,9 +72,11 @@ test.describe('About carousel interaction', () => {
 
       let unexpectedPopup = false;
       page.on('popup', () => { unexpectedPopup = true; });
-      await swipeLeft(page, active.locator('img').first());
+      await swipeLeft(page, firstCard.locator('img').first());
       await expect(products.locator('[data-card-current]')).toHaveText('02');
       expect(unexpectedPopup).toBe(false);
+      // Changing selection closes the previous expansion instead of stranding it.
+      await expect(products.locator('[data-product-expand][open]')).toHaveCount(0);
       await expect(products.locator('[data-card-position="active"]')).not.toHaveAttribute('inert');
       const inactive = products.locator('[data-card]:not([data-card-position="active"])');
       for (const card of await inactive.all()) await expect(card).toHaveAttribute('inert', '');
@@ -96,16 +107,16 @@ test.describe('About carousel interaction', () => {
       }
       const products = page.locator('#studio-products');
       await products.press('Home');
-      const firstLink = products.locator('[data-card-position="active"] a');
-      await firstLink.focus();
-      await expect(firstLink).toBeFocused();
-      await firstLink.press('ArrowRight');
+      const activeSummary = products.locator('[data-card-position="active"] [data-product-expand] summary');
+      await activeSummary.focus();
+      await expect(activeSummary).toBeFocused();
+      await activeSummary.press('ArrowRight');
       await expect(products).toBeFocused();
       await expect(products.locator('[data-card-current]')).toHaveText('02');
-      await products.locator('[data-card][inert] a').first().evaluate((element: HTMLAnchorElement) => element.focus());
+      await products.locator('[data-card][inert] summary').first().evaluate((element: HTMLElement) => element.focus());
       await expect(products).toBeFocused();
       await products.press('Tab');
-      // Controls remain reachable and inactive product links do not enter the tab order.
+      // Controls remain reachable and inactive product cards do not enter the tab order.
       expect(await page.evaluate(() => !!document.activeElement?.closest('[inert]'))).toBe(false);
 
       // Guard editing semantics even when a future card contains an input or editable text.
@@ -122,18 +133,28 @@ test.describe('About carousel interaction', () => {
       await expect(input).toBeFocused();
     });
 
-    test(`${route} starts the hero automatically and keeps cycling after manual navigation`, async ({ page }) => {
+    test(`${route} autoplay is opt-in and follows the reader's explicit preference`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'no-preference' });
       await page.clock.install();
       await page.goto(route, { waitUntil: 'domcontentloaded' });
       const carousel = page.locator('[data-hero-carousel]');
       const counter = carousel.locator('[data-hero-current]');
       const toggle = carousel.locator('[data-hero-toggle]');
+      // Paused at load: rotation only starts when a reader asks for it.
+      await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+      await expect(toggle).toHaveText(playPattern);
+      await expect(carousel).toHaveAttribute('data-autoplay', 'paused');
+      await page.clock.fastForward(9000);
+      await expect(counter).toHaveText('01');
+      await toggle.click();
       await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+      await expect(toggle).toHaveText(pausePattern);
+      await page.mouse.move(0, 0);
+      await page.locator('h1').click();
       await expect(carousel).toHaveAttribute('data-autoplay', 'running');
       await page.clock.fastForward(4000);
       await expect(counter).toHaveText('02');
-      await carousel.locator('[data-hero-next]').click();
+      await carousel.locator('[data-deck-choice]').nth(2).click();
       await expect(counter).toHaveText('03');
       await page.mouse.move(0, 0);
       await page.locator('h1').click();
@@ -147,7 +168,7 @@ test.describe('About carousel interaction', () => {
     });
   }
 
-  test('all visible decks advance without clicks and can be paused', async ({ page }) => {
+  test('each visible deck rotates only after opt-in and pauses on demand', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.clock.install();
     await page.goto('/about/', { waitUntil: 'domcontentloaded' });
@@ -162,14 +183,26 @@ test.describe('About carousel interaction', () => {
       const region = page.locator(deck.region);
       await region.scrollIntoViewIfNeeded();
       await page.mouse.move(0, 0);
+      await expect(region).toHaveAttribute('data-autoplay', 'paused');
+      const toggle = region.locator('[data-autoplay-toggle]');
+      await toggle.click();
+      await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
+      await page.mouse.move(0, 0);
       await expect(region).toHaveAttribute('data-autoplay', 'running');
       if (deck.region === '#studio-road') {
         await expect(region.locator('[data-road-position="next"] img')).toHaveAttribute('loading', 'eager');
       }
       const before = await region.locator(deck.counter).textContent();
+      // A real mouse pointer still pauses reading after touch compatibility
+      // mouse events have been excluded by the controller.
+      await region.hover();
+      await expect(region).toHaveAttribute('data-autoplay', 'paused');
+      await page.clock.fastForward(6200);
+      await expect(region.locator(deck.counter)).toHaveText(before || '');
+      await page.mouse.move(0, 0);
+      await expect(region).toHaveAttribute('data-autoplay', 'running');
       await page.clock.fastForward(6200);
       await expect(region.locator(deck.counter)).not.toHaveText(before || '');
-      const toggle = region.locator('[data-autoplay-toggle]');
       await toggle.click();
       await expect(toggle).toHaveAttribute('aria-pressed', 'false');
       const pausedAt = await region.locator(deck.counter).textContent();
@@ -178,17 +211,36 @@ test.describe('About carousel interaction', () => {
     }
   });
 
-  test('reduced motion disables autoplay on every deck', async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: 'reduce' });
+  test('reduced motion disables every deck and preference changes never restart rotation', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.clock.install();
     await page.goto('/about/', { waitUntil: 'domcontentloaded' });
+    const hero = page.locator('[data-hero-carousel]');
+    const toggle = hero.locator('[data-hero-toggle]');
+    await toggle.click();
+    await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
+    await page.mouse.move(0, 0);
+    await expect(hero).toHaveAttribute('data-autoplay', 'running');
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await expect(toggle).toBeDisabled();
+    await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+    // Visible label stays short; the reason lives in the accessible name.
+    await expect(toggle).toHaveText(playPattern);
+    await expect(toggle).toHaveAttribute('aria-label', /Reduced motion|减少动态效果/);
+    await expect(hero).toHaveAttribute('data-autoplay', 'paused');
     for (const selector of ['[data-hero-carousel]', '#workbench', '#studio-products', '#studio-road']) {
-      const region = page.locator(selector);
-      await region.scrollIntoViewIfNeeded();
-      await expect(region.locator('[data-autoplay-toggle]')).toBeDisabled();
-      await expect(region).toHaveAttribute('data-autoplay', 'paused');
+      await expect(page.locator(selector).locator('[data-autoplay-toggle]')).toBeDisabled();
+      await expect(page.locator(selector)).toHaveAttribute('data-autoplay', 'paused');
     }
     await page.clock.fastForward(16000);
     await expect(page.locator('[data-road-current]')).toHaveText('01');
+    await expect(hero.locator('[data-hero-current]')).toHaveText('01');
+    // Restoring the preference must not surprise the reader with new motion.
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await expect(toggle).toBeEnabled();
+    await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+    await expect(hero).toHaveAttribute('data-autoplay', 'paused');
+    await page.clock.fastForward(12000);
+    await expect(hero.locator('[data-hero-current]')).toHaveText('01');
   });
 });

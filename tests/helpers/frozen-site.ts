@@ -91,6 +91,10 @@ export const test = base.extend({
   context: async ({ context, baseURL }, use, testInfo) => {
     const warnings = await routeFrozenSite(context, baseURL);
     await use(context);
+    // Canonical asset requests are fetched through this context. Drain their
+    // handlers before Playwright disposes its request client at teardown;
+    // otherwise a completed test can fail with "Fetch response has been disposed".
+    await context.unrouteAll({ behavior: "wait" });
     if (warnings.size)
       await testInfo.attach("external-resource-warnings", {
         contentType: "application/json",
