@@ -6,10 +6,81 @@ import path from "node:path";
 import {
   buildSite,
   buildHugoPhase,
+  hugoPhaseOptions,
   sanitizedBuildEnv,
   deploymentConfig,
   assertHugoToolchain,
 } from "./site-build.mjs";
+
+test("production Hugo phase uses HUGO_BASEURL and ignores the Netlify branch alias", () => {
+  assert.deepEqual(hugoPhaseOptions({
+    BLOG_BUILD_CLOCK: "2026-09-30T00:00:00Z",
+    HUGO_BASEURL: "https://cubxxw.com/",
+    DEPLOY_PRIME_URL: "https://main--cubxxw.netlify.app",
+  }), {
+    clock: "2026-09-30T00:00:00Z",
+    target: "production",
+    baseUrl: "https://cubxxw.com/",
+  });
+});
+
+test("production Hugo phase falls back to the canonical URL without HUGO_BASEURL", () => {
+  const before = Date.now();
+  const options = hugoPhaseOptions({
+    BLOG_BUILD_TARGET: "production",
+    DEPLOY_PRIME_URL: "https://main--cubxxw.netlify.app",
+  });
+  assert.equal(options.target, "production");
+  assert.equal(options.baseUrl, "https://cubxxw.com");
+  assert.ok(Date.parse(options.clock) >= before);
+  assert.ok(Date.parse(options.clock) <= Date.now());
+});
+
+test("backup Hugo phase preserves the explicit Pages URL over platform URLs", () => {
+  const options = hugoPhaseOptions({
+    BLOG_BUILD_TARGET: "backup",
+    BLOG_BUILD_BASE_URL: "https://cubxxw.github.io/blog/",
+    DEPLOY_PRIME_URL: "https://main--cubxxw.netlify.app",
+    HUGO_BASEURL: "https://cubxxw.com",
+  });
+  assert.equal(options.target, "backup");
+  assert.equal(options.baseUrl, "https://cubxxw.github.io/blog/");
+});
+
+test("preview Hugo phase prefers explicit then deploy then Hugo then canonical URLs", () => {
+  const env = {
+    BLOG_BUILD_TARGET: "preview",
+    BLOG_BUILD_BASE_URL: "https://custom-preview.example.com",
+    DEPLOY_PRIME_URL: "https://deploy-preview-420--cubxxw.netlify.app",
+    HUGO_BASEURL: "https://hugo-preview.example.com",
+  };
+  assert.equal(hugoPhaseOptions(env).target, "preview");
+  assert.equal(hugoPhaseOptions(env).baseUrl, env.BLOG_BUILD_BASE_URL);
+  delete env.BLOG_BUILD_BASE_URL;
+  assert.equal(hugoPhaseOptions(env).baseUrl, env.DEPLOY_PRIME_URL);
+  delete env.DEPLOY_PRIME_URL;
+  assert.equal(hugoPhaseOptions(env).baseUrl, env.HUGO_BASEURL);
+  delete env.HUGO_BASEURL;
+  assert.equal(hugoPhaseOptions(env).baseUrl, "https://cubxxw.com");
+});
+
+test("production Hugo phase still rejects incorrect explicit or Hugo base URLs", async () => {
+  for (const overrides of [
+    { BLOG_BUILD_BASE_URL: "https://wrong.example.com", HUGO_BASEURL: "https://cubxxw.com" },
+    { HUGO_BASEURL: "https://wrong.example.com" },
+  ]) {
+    let called = false;
+    await assert.rejects(() => buildHugoPhase({
+      ...hugoPhaseOptions({
+        BLOG_BUILD_CLOCK: "2026-09-30T00:00:00Z",
+        DEPLOY_PRIME_URL: "https://main--cubxxw.netlify.app",
+        ...overrides,
+      }),
+      exec: async () => { called = true; return { stdout: "" }; },
+    }), /Production base URL is fixed/);
+    assert.equal(called, false, "invalid production URLs must fail before any build command");
+  }
+});
 
 test('pinned Hugo accepts official commit suffixes but rejects wrong versions and non-extended builds', () => {
   assertHugoToolchain('hugo v0.145.0+extended darwin/arm64', '0.145.0');

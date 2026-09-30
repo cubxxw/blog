@@ -114,6 +114,18 @@ function parameters({ sourceSha, clock, target, baseUrl }) {
   )
     throw new Error("Production base URL is fixed");
 }
+export function hugoPhaseOptions(env = process.env) {
+  const target = env.BLOG_BUILD_TARGET || "production";
+  return {
+    clock: env.BLOG_BUILD_CLOCK || new Date().toISOString(),
+    target,
+    baseUrl:
+      env.BLOG_BUILD_BASE_URL ||
+      (target !== "production" && env.DEPLOY_PRIME_URL) ||
+      env.HUGO_BASEURL ||
+      "https://cubxxw.com",
+  };
+}
 export async function buildHugoPhase({
   repoRoot = process.cwd(),
   clock,
@@ -466,14 +478,7 @@ if (
   };
   try {
     if (argv.includes("--hugo-phase"))
-      await buildHugoPhase({
-        clock: process.env.BLOG_BUILD_CLOCK || new Date().toISOString(),
-        target: process.env.BLOG_BUILD_TARGET || "production",
-        baseUrl:
-          process.env.BLOG_BUILD_BASE_URL ||
-          process.env.DEPLOY_PRIME_URL ||
-          "https://cubxxw.com",
-      });
+      await buildHugoPhase(hugoPhaseOptions());
     else
       console.log(
         JSON.stringify(
