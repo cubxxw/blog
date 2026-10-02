@@ -130,7 +130,7 @@ jobs:
         continue-on-error: true
         # This Action/SDK/CLI combination is bound to the independently verified
         # docs/seo-model-boundary-proof.json. Re-verify that proof before upgrades.
-        uses: anthropics/claude-code-action@v1.0.231
+        uses: anthropics/claude-code-action@v1.0.237
         env:
           # ACTIONS_STEP_DEBUG=true would override show_full_output=false in
           # the current parser; force false AT action execution.
