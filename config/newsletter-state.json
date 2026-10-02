@@ -1488,6 +1488,11 @@
       "at": "2026-10-02T17:23:01.344Z",
       "id": "em_5qw1415td09yvs07hcegzynaj8",
       "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/personal-agent-product-delegation/": {
+      "at": "2026-10-02T18:06:24.249Z",
+      "id": "em_7s1y6kdcjh94db18v9jgpqn3mn",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4749,10 +4754,12 @@
     "[\"en\",\"https://cubxxw.com/ai-agent/posts/personal-agent-product-delegation/\"]": {
       "language": "en",
       "url": "https://cubxxw.com/ai-agent/posts/personal-agent-product-delegation/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "9bfacfbd-381d-40d7-a070-5fe5aaadb6ec",
       "at": "2026-10-02T18:06:24.249Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_7s1y6kdcjh94db18v9jgpqn3mn",
+      "completedAt": "2026-10-02T18:06:24.249Z"
     }
   }
 }
