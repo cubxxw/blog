@@ -4715,6 +4715,14 @@
       "mode": "draft",
       "providerId": "em_40fd2stc7g9w6bmmf8w1h6t6wy",
       "completedAt": "2026-10-02T17:23:01.344Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/personal-agent-product-delegation/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/ai-agent/posts/personal-agent-product-delegation/",
+      "status": "pending",
+      "attemptId": "4201b121-8c87-4cb6-8a37-25418e06a4b4",
+      "at": "2026-10-02T17:23:01.344Z",
+      "mode": "draft"
     }
   }
 }
