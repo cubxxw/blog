@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-10-03-personal-agent-product-delegation
 title: Personal Agent 产品研究：什么让用户持续委托
-status: ready-to-publish
+status: published
 priority: high
 language: zh
 section: ai-agent
@@ -80,10 +80,10 @@ source_refs:
 
 - article: `content/zh/ai-agent/posts/personal-agent-product-delegation.md`
 - translated_article: `content/en/ai-agent/posts/personal-agent-product-delegation.md`。由实际 Pi Agent CLI 0.87.1 分节英译并完整合并，随后由协调方逐段对照原文；未用另一模型的译文替代 Pi 结果。
-- public_url: 待协调方发布；文章路由为 `/zh/ai-agent/posts/personal-agent-product-delegation/`，当前尚未发布。
+- public_url: `https://cubxxw.com/zh/ai-agent/posts/personal-agent-product-delegation/`；英文：`https://cubxxw.com/ai-agent/posts/personal-agent-product-delegation/`。四个页面及两张封面均已于 2026-10-03 01:32 +08:00 核验上线。
 - editorial_verdict: KEEP。研究轨道，标题为「Personal Agent 产品研究：Instinct 怎样让人愿意再次委托」。正文 8640 个汉字，不含 frontmatter 与参考资料；去掉链接地址后的正文约 10674 个可见字符。以第二次委托与用户总投入为中心，六组 Instinct 使用/访谈材料，加 Town、Muse 与 Poke 的不同形态；比较服务于具体决策，不做产品排名。协调方完整复读最终中文稿后通过编辑复核。
 - checks: 文章级 flavor 为 0 错误、0 警告；tags 检查为 0 文件待修改；diff 空白检查通过。`npm run frontmatter:check` 初次因工作树缺少 `markdown-it`，在加载检查器依赖阶段失败；协调方随后安装依赖并实际重新运行，exit 0，通过全站 frontmatter 检查。另行解析本篇 YAML 并定向验证：无 draft/categories，时间带 +08:00 且已到，6 个 canonical tags，description 为 160 字符纯文本，series 为 personal-agent-studies/order 1/total 2；封面路径存在，内部文章链接存在，正文与参考资料的 16 个外链来源集合一致。另运行全仓库 briefs 检查，发现 3 个历史任务卡与已有英文文章重复的既有告警（Pi、n8n、OpenClaw），本任务卡没有被报告为错误；未改动历史任务卡。
-- published_at: 未发布。
+- published_at: 2026-10-03T01:32:03+08:00（首次成功生产核验时间）。
 - retro_notes: 最初稿沿九组公开使用/访谈案例展开；发展编辑保留「首个结果—任务记录—主动工作—逐项授权—多人关系—漏项与接管—四周实验」的论证推进。本文的增量是把监督、追问和善后的注意力纳入委托收益，把按任务与后果分配授权、能关闭的持续工作、带凭证的完成和可接管的失败放回具体事务。四周实验、第二次有效委托与用户总投入均明确标为设计建议，没有产品实测数值。反证包含独立应用入口偏好、现有聊天工具即可满足的用户反馈，以及可靠且边界清楚的事务仍可能没有重复需求。
 
 ### 英译与双语复核
@@ -168,3 +168,9 @@ source_refs:
 ### 研究写作的边界
 
 访谈是线索而非新采访；未联系 Noah 或用户。没有试用所有产品，不做胜负排名。现有样本偏早期使用者和主动发帖者，许多评论含邀请推荐，因此不能估算普遍满意度。可提出“连续四周同类任务”的验证方案和“第二次有效委托”的候选指标，必须标为本文设计建议。说清完成凭证、用户接管和补救会带来成本，不靠概念自证。
+
+### 生产发布回执
+
+四篇文章与两张封面以 `2152d93164ccb64e99975a3a72e849265015d35e` 提交并推送远程 main，生产站点已更新。四个页面返回 200，标题、参考资料、系列与封面正确；产品和技术各自的全部外部引用都出现在生产正文，四个页面的双语切换链接均正确。两张线上 WebP 的 SHA-256 与提交文件逐字节一致。原博客工作区的其他修改未带入本次提交。
+
+远程源码质量检查通过，工作流与 SEO 测试通过，273 项测试全部成功，Hugo 与 Netlify 完整构建完成。最后的整站输出检查报告 12 个链接错误，当前 CI 运行 `37040008089` 因此为 failure；该步骤未保留 output-report，当前未将这些错误归因到具体文章，也未声称整个 CI 已通过。生产发布由原有 Git 构建完成；本次文章的线上正文、引用、双语链接与封面已独立核验。全仓库 source 扫描另发现历史中文文章的 flavor 硬门槛，四篇新稿的变更范围源码检查通过。

@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-10-03-personal-agent-harness-openclaw
 title: Personal Agent 技术研究：OpenClaw、Agent Harness 与可靠 Computer Use
-status: ready-to-publish
+status: published
 priority: high
 language: zh
 section: ai-agent
@@ -82,10 +82,10 @@ source_refs:
 
 - article: `content/zh/ai-agent/posts/personal-agent-harness-openclaw.md`
 - translated_article: `content/en/ai-agent/posts/personal-agent-harness-openclaw.md`
-- public_url: 待协调方发布；文章路由为 `/zh/ai-agent/posts/personal-agent-harness-openclaw/`，当前尚未发布。
+- public_url: `https://cubxxw.com/zh/ai-agent/posts/personal-agent-harness-openclaw/`；英文：`https://cubxxw.com/ai-agent/posts/personal-agent-harness-openclaw/`。四个页面及两张封面均已于 2026-10-03 01:32 +08:00 核验上线。
 - editorial_verdict: KEEP。标题为「Personal Agent 技术研究：OpenClaw 怎样把一次运行接到长期事务上」。正文 9741 个汉字，不含 frontmatter 与参考资料。以取消订阅为明确标注的设计示例，把授权、运行、暂停、恢复、验证与用户回执接完整；当前 OpenClaw 内置 loop、Harness 契约与 Gateway 责任分别解释。协调方独立复读全文，并复核工具终态、终态后回执补写及 τ-bench 指标段，通过编辑复核。
 - checks: 文章级 flavor 为 0 错误、0 警告；frontmatter 检查 exit 0；tags 检查为 0 文件待修改；git diff 空白检查通过，另对新增文件执行 no-index 空白检查，无空白诊断。独立解析本篇 YAML，验证无 draft/categories、7 个 canonical tags、159 字符纯文本 description、已到达的 +08:00 时间，series 为 personal-agent-studies/order 2/total 2。14 个保留的 OpenClaw 文件链接均固定指定 SHA，公开副本中的目标文件存在；正文引用与末尾来源集合一致，内链与资源路径存在。封面为 1672×941 无损 WebP，转换前后 RGBA 像素一致。全仓库 briefs 校验仍有同篇新英文产品稿及三个历史英文文章的重复提示，已告知协调方；本卡补入中文 article 回执后不再有当前成稿重复问题，未改队列实现或历史任务。
-- published_at: 未发布。
+- published_at: 2026-10-03T01:32:03+08:00（首次成功生产核验时间）。
 - retro_notes: 本次增量是从较早的 Gateway 路由研究推进到当前自有运行时、prepared attempt 的政策边界、工具终态与外部业务状态的区别。三类架构是本文设计归纳，Mandate/Task/Run、控制租约和动作账本都是参考设计，不冒充 OpenClaw 原生对象。三组失败过程具体覆盖动作成功但回执丢失、用户接管或撤销、重复与迟到事件；未知结果优先对账，没有可靠查询渠道时交还用户。Computer Use 解释接口、页面可访问结构与桌面像素的选择，观察与动作交替，分别处理过期 ref、焦点、页面变化、等待、验证码及接管。未读取 brain 私有材料、凭证或公司内部实现；没有生产压力测试、真实账单或现实产品成功率。中文执行侧完成正文与封面挂载，英文翻译、提交与发布由协调方继续。
 
 ### 三遍复读与作者声音
@@ -154,3 +154,9 @@ source_refs:
 ### 原创设计应如何落地到读者的决策
 
 委托/任务/运行三个对象、动作账本与独立授权字段是本文可提出的设计，不声称任何公司使用同名对象。用“取消订阅成功但响应丢了”的示例解释：先查权威订阅状态或稳定交易标识，不能因超时就重新执行；没有可靠查询渠道时把未知状态交给用户处理。另一条示例是用户撤销后旧 worker 恢复，必须检查当下 authority，而不是只检查创建任务时的同意。接管时 Agent 与人不能同时对同一浏览器写入；恢复后重新观察当前环境。若展示结构体或流程，注明示意而非可直接投产代码，并解释外部业务系统不支持幂等时的局限。成本可拆模型、浏览器/虚机、重试和人工检查；本文没有真实单用户账单，不填市场估算数字。
+
+### 生产发布回执
+
+四篇文章与两张封面以 `2152d93164ccb64e99975a3a72e849265015d35e` 提交并推送远程 main，生产站点已更新。四个页面返回 200，标题、参考资料、系列与封面正确；产品和技术各自的全部外部引用都出现在生产正文，四个页面的双语切换链接均正确。两张线上 WebP 的 SHA-256 与提交文件逐字节一致。原博客工作区的其他修改未带入本次提交。
+
+远程源码质量检查通过，工作流与 SEO 测试通过，273 项测试全部成功，Hugo 与 Netlify 完整构建完成。最后的整站输出检查报告 12 个链接错误，当前 CI 运行 `37040008089` 因此为 failure；该步骤未保留 output-report，当前未将这些错误归因到具体文章，也未声称整个 CI 已通过。生产发布由原有 Git 构建完成；本次文章的线上正文、引用、双语链接与封面已独立核验。全仓库 source 扫描另发现历史中文文章的 flavor 硬门槛，四篇新稿的变更范围源码检查通过。
