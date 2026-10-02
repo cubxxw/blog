@@ -1473,6 +1473,11 @@
       "at": "2026-09-26T15:38:11.127Z",
       "id": "em_4ch6g7gmdg8keawbhh2k3mz2z7",
       "mode": "draft"
+    },
+    "https://cubxxw.com/zh/ai-agent/posts/personal-agent-harness-openclaw/": {
+      "at": "2026-10-02T17:23:01.344Z",
+      "id": "em_40fd2stc7g9w6bmmf8w1h6t6wy",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4704,10 +4709,12 @@
     "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/personal-agent-harness-openclaw/\"]": {
       "language": "zh",
       "url": "https://cubxxw.com/zh/ai-agent/posts/personal-agent-harness-openclaw/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "8906d02a-92b0-4805-b1c8-43e858794873",
       "at": "2026-10-02T17:23:01.344Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_40fd2stc7g9w6bmmf8w1h6t6wy",
+      "completedAt": "2026-10-02T17:23:01.344Z"
     }
   }
 }
