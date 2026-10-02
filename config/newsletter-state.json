@@ -4730,6 +4730,14 @@
       "mode": "draft",
       "providerId": "em_3sjwcqsxb685tv3bwspy8r7617",
       "completedAt": "2026-10-02T17:23:01.344Z"
+    },
+    "[\"en\",\"https://cubxxw.com/ai-agent/posts/personal-agent-harness-openclaw/\"]": {
+      "language": "en",
+      "url": "https://cubxxw.com/ai-agent/posts/personal-agent-harness-openclaw/",
+      "status": "pending",
+      "attemptId": "b24d85cb-72af-418e-ab92-0291a6b45b79",
+      "at": "2026-10-02T17:23:01.344Z",
+      "mode": "draft"
     }
   }
 }
