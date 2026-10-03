@@ -2,7 +2,7 @@
 schema: blog-brief/v1
 id: 2026-10-03-nango-user-defined-mcp-integration
 title: 用户在聊天里添加自己的 MCP：Nango 接入、实战与生产维护
-status: ready-to-publish
+status: published
 priority: high
 language: zh
 section: ai-agent
@@ -84,11 +84,12 @@ Nango 官方 MCP Auth、Connect Sessions、Frontend SDK、Proxy、Agent Sessions
 
 - article: content/zh/ai-agent/posts/nango-user-defined-mcp-integration.md
 - english_article: content/en/ai-agent/posts/nango-user-defined-mcp-integration.md
-- public_url:
+- public_url: https://cubxxw.com/zh/ai-agent/posts/nango-user-defined-mcp-integration/
+- english_public_url: https://cubxxw.com/ai-agent/posts/nango-user-defined-mcp-integration/
 - editorial_verdict: REBUILD → KEEP（2026-10-04 按作者新要求重写）
 - source_trail: source_refs 为空；没有读取 brain。站内已有 MCP Apps 文章讲界面协议，本篇新增用户连接和运行时参数链路。
 - checks: frontmatter:check、tags:check、定向与 changed flavor 检查通过；定向 briefs:check 为 0 错误；代码块语法与 JSON 通过；图源与 PNG 验收通过，原尺寸 PNG 已查看。引用去重为 47 个来源；资源路径正确。description 为 159 字符，六个 canonical tags，日期已到达且带 +08:00。Markdown 空白、引用完整性与示例代码一致性检查通过。
-- published_at:
+- published_at: 2026-10-04T02:18:28+08:00
 - retro_notes: 核心增量是完整参数往返、目录与会话工具搜索分离、Generic 兼容条件和生产恢复责任。约 9600 汉字，包含本地可运行案例。中文尚待作者确认；没有英文版，没有提交或发布。普通 Markdown 与已有图片约定，没有修改模板、脚本或 shortcode，不跑全站构建及 E2E。
 
 ### 系列研究回执
@@ -166,3 +167,13 @@ Nango 官方 MCP Auth、Connect Sessions、Frontend SDK、Proxy、Agent Sessions
 英文图源为 assets/diagrams/agent-system-series/12-nango-user-mcp/nango-user-mcp-roundtrip.en.excalidraw，另存同名 .en.svg 与 .en.png；结构与箭头沿用中文图，原尺寸 PNG 已查看。独立只读英文审读未发现技术含义或限定词偏差。英文最小 demo 重新运行，工具发现、英文数据返回和不存在项目验证通过；云端步骤仍按正文开头的范围说明处理。
 
 发布前已通过 frontmatter、tags、changed flavor、代码语法、双语结构与引用核对、图源验收、Hugo 生产构建、渲染检查及生成 SEO 检查。实际输出中，两篇页面都含四个 details/summary，canonical 与语言切换正确，英文使用独立英文图路径。按仓库约定直接发布到 main，不创建 PR，不修改软件版本、共享模板或作者的无关本地改动。线上发布结果在完成后补入回执。
+
+### 已核验的双语发布回执
+
+- 内容提交：`636bde068ceb697337d153b257fb77e6709bc8ec`，已推送到 origin/main。
+- [全站质量检查](https://github.com/cubxxw/blog/actions/runs/37141719038)：success，Required blog quality 通过。
+- [性能流程](https://github.com/cubxxw/blog/actions/runs/37141718642)：success。
+- 当前发布模式为 shadow，GitHub 的新 release/followups 分支按条件跳过；实际页面由既有 Netlify Git 发布路径上线。
+- 中英文地址均返回 HTTP 200，标题与成稿一致，四个折叠块完整，canonical 正确，可以互相切换语言。
+- 两个 SVG 资源均返回 HTTP 200；英文图包含英语标题，中文图包含中文标题，页面各自引用正确。
+- 此次仅补录发布状态、地址和验证证据，沿用仓库已有 publication receipt 的 `[skip ci]` 提交惯例；不改变文章、图解或运行时代码。
