@@ -3,17 +3,15 @@ import { test, expect } from '../helpers/frozen-site';
 test.describe('About Page Visual Regression', () => {
   test('about keeps one clear narrative in both languages', async ({ page }) => {
     await page.goto('/zh/about/');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('构建系统');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('也理解自己');
-    await expect(page.getByRole('link', { name: '读我的故事' })).toHaveAttribute('href', '#story');
-    await expect(page.getByRole('link', { name: '浏览全部文章' })).toHaveAttribute('href', '/zh/articles/');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('熊鑫伟');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: '经历', exact: true })).toHaveAttribute('href', '#story');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: '文章', exact: true })).toHaveAttribute('href', '/zh/articles/');
     await expect(page.getByText('AI 创业者', { exact: true })).toHaveCount(0);
 
     await page.goto('/about/');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Building systems');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Staying curious');
-    await expect(page.getByRole('link', { name: 'Read my story' })).toHaveAttribute('href', '#story');
-    await expect(page.getByRole('link', { name: 'Browse all writing' })).toHaveAttribute('href', '/articles/');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Xinwei Xiong');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: 'My story', exact: true })).toHaveAttribute('href', '#story');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: 'Writing', exact: true })).toHaveAttribute('href', '/articles/');
   });
 
   test('about interview stays native when a live campaign is not configured', async ({ page }) => {
@@ -21,6 +19,7 @@ test.describe('About Page Visual Regression', () => {
 
     const interview = page.locator('#tell-me');
     const originalURL = page.url();
+    await interview.locator('.studio-interview-disclosure > summary').click();
 
     await expect(interview.locator('iframe')).toHaveCount(0);
     await expect(interview.getByRole('button', { name: '哪里让我不相信' })).toBeVisible();

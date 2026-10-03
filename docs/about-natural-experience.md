@@ -1,95 +1,72 @@
-# About: personal editorial archive
+# About: a personal album
 
-Applies to `/about/` and `/zh/about/`. This page helps a new reader meet Xinwei,
-follow his public history, and inspect an actual product or piece of writing.
+Applies to `/about/` and `/zh/about/`. The first screen names Xinwei, shows an
+actual portrait, and offers two routes: his history and writing. Short public
+milestones, real product screenshots and travel photographs carry the page.
+The existing paper/ink/rust palette and assets are retained.
 
 ## Design decision
 
-We rendered two directions at desktop and phone sizes:
+Two local directions were rendered at desktop and phone sizes. A short
+introduction beside a portrait was selected. A panorama before the introduction
+made identity appear too late on a phone and cropped the person on desktop.
+Evidence is recorded in `output/playwright/about-quiet/` (local delivery evidence,
+not shipped assets). No new framework or animation dependency is added.
 
-- **A, selected:** a short introduction beside a real portrait in the field,
-  followed by life chapters, the writing map, workbench, products, travel,
-  interview, canonical archive, and contact.
-- **B, alternative:** a full-width photograph with the introduction over it.
-  This foregrounded travel, but obscured the person and made text contrast
-  dependent on the photograph. Revisit only for a travel-first brief.
+## Browsing
 
-A makes identity easier to read and keeps the subject of the photograph visible.
-The paper, ink, rust accent, typefaces, Bear avatar, photographs, and product
-screenshots remain part of the existing site. No new animation runtime is added.
+- Hero photos, writing subjects, products and travel use native horizontal
+  overflow with CSS scroll snapping. The adjacent image suggests more content.
+  Touch and trackpad scrolling belong to the browser; vertical scrolling stays
+  native. There are no playback controls, automatic rotation or duplicate travel
+  thumbnail grid.
+- Desktop mouse dragging follows the pointer only after horizontal intent is
+  clear. Stationary clicks still open native details or real links. A drag cannot
+  activate its incidental click. Named text choices remain available for direct
+  navigation, with 44px targets and a selected underline.
+- ArrowLeft/Right and Home/End navigate a focused rail. Text inputs retain editing
+  keys. All cards remain accessible; focusing an offscreen card reveals it.
+  Choice/key navigation scrolls the local track without moving the document.
+- Native product `details` preserve an opened description while browsing by
+  scrolling or focus. Explicitly choosing a different product closes the old
+  detail; its external visit link remains a separate real action. No asynchronous
+  View Transition callback intercepts native expansion.
+- Selection counters are available to assistive technology. Reduced motion makes
+  direct navigation immediate and disables the small photograph scale effect.
+  It never starts timed movement.
+- With JavaScript disabled or the module blocked, every image/card is a readable
+  list in normal flow. Native details and links keep working. Sections
+  reserve their actual height in every mode, avoiding content-visibility estimates
+  that shift the document during touch browsing. Old stacked-deck state styles are explicitly reset on this page.
 
-## Interaction
+## Content and stable entry points
 
-- Named choices replace previous/next arrows for photos, workbench threads, and
-  products. Travel uses location-labelled thumbnails. Targets are at least 44px
-  tall; phone choice strips scroll horizontally inside the page.
-- ArrowLeft/ArrowRight, Home/End, and horizontal swipes still select cards.
-  Vertical scrolling remains native. Inactive cards are inert, and selection
-  moves focus out of a card before hiding it. Real clicks and drags are distinct.
-- Every deck starts paused. Play is explicit; rotation pauses on hover, keyboard
-  focus, offscreen, hidden tabs, pagehide, and an expanded product. Reduced motion
-  disables rotation; reverting that preference never silently restarts it.
-  Hover uses pointer events to distinguish mouse/pen from touch, so a phone's
-  compatibility mouse events cannot leave playback permanently paused. Native
-  touch start/pause and actual mouse hover are both covered by regression tests.
-- Products expand in place with native `details`. The content uses the existing
-  description, audience, boundary, and question fields, with a separate real
-  external visit link. Supported browsers animate the active card using View
-  Transitions. A generation check prevents a delayed callback from reopening an
-  old card after fast selection. The collapse control stays reachable.
-- Where CSS view timelines are supported, the hero photograph gently scales as
-  it exits, the introduction recedes, and story chapters reveal on entry.
-  Unsupported browsers show the same content without that motion. There is no
-  vertical scroll interception, animation loop, sticky stack, particle scene,
-  or 3D runtime.
-- Reduced-motion CSS immediately disables these animations and in-flight View
-  Transition decoration. Without JavaScript, or when the deck module is blocked,
-  photos and cards become a readable static list with native details and links.
-  Static sections use their real layout height rather than the enhanced deck's
-  one-screen `content-visibility` estimate, so native scrolling and clicking do
-  not shift targets as longer offscreen lists are revealed.
+`data/about-story.yml` has five concise bilingual summaries, optional full detail
+and links to existing posts. Facts remain grounded in `data/identity.json` and
+`static/data/personal-timeline-2019-2026.md`; no employers, metrics or current
+locations are inferred.
 
-Decorative arrows, including the About-only floating back-to-top arrow and header
-chevron, are hidden. Labels, focus outlines, selected states, underline, and press
-feedback communicate actions. Other page layouts retain their existing controls.
+`#identity` retains names, birth year and real public links. The long biography,
+timeline and machine-readable snapshot are under native disclosure.
+`/data/identity.json`, the public timeline endpoint and Person JSON-LD are retained.
+Feedback is optional disclosure; opening it explains that Telepace uses an AI
+interviewer. Consent, privacy and campaign configuration remain intact.
 
-## Facts and stable entry points
+## Validation and delivery
 
-`data/about-story.yml` contains bilingual editorial chapters. Its facts are
-grounded in `data/identity.json` and
-`static/data/personal-timeline-2019-2026.md`: first blog/GitHub in 2021, OpenIM in
-2023, graduation and leaving corporate work in 2024, Nepal and monthly reflections
-in 2025, and AI products plus the new job in August 2026. Each chapter links to an
-existing post in its language. Do not add employers, current locations, or metrics
-without a canonical source.
+`about-natural-experience.spec.ts` covers both languages, scoped keys, focus,
+editing, named choices, actual phone touch gestures, vertical scrolling, elapsed
+time, preference changes, public story links and static fallbacks.
+`about-experience.spec.ts` retains mobile menu and real popup/link-versus-drag
+regressions. `pages-about.spec.ts` covers narrative, interview fallback and the
+intentional desktop/phone screenshot baselines. Page-wayfinder checks retain
+stable section destinations.
 
-`#identity`, `/data/identity.json`, and
-`/data/personal-timeline-2019-2026.md` remain available. The long timeline and YAML
-snapshot use disclosure, so they do not overwhelm the human introduction.
-Interview configuration, consent, and campaign behavior are unchanged.
+Run the affected tests against frozen Hugo production output, plus TypeScript,
+JavaScript syntax and diff checks. Inspect light/dark views and expanded products
+at phone, tablet and desktop sizes. Record actual results in the PR; screenshot
+updates alone are not visual acceptance.
 
-## Validation
-
-The behavioral tests in `about-experience.spec.ts` and
-`about-natural-experience.spec.ts` cover language routes, selected states,
-keyboard/swipe, inert/focus, drag versus real links, opt-in autoplay, preference
-changes, native expansion, delayed View Transition callbacks, story links,
-canonical endpoints, small-screen overflow, no JavaScript, and a blocked module.
-
-Local validation uses the installed Google Chrome channel against a Hugo build;
-CI keeps its pinned browser installation and frozen production output. Manual
-visual inspection covers 390px, 768px, and 1440px, both languages, light/dark,
-collapsed/expanded products, and normal/reduced motion. Screenshot baselines are
-updated only after inspection of the intended redesign.
-
-Recorded local results on 2026-10-01 (Shanghai): 76 behavioral/navigation checks
-passed, with two desktop-only mobile-menu skips; the four theme/language contrast
-cases passed in both browser projects; eight narrative/interview/visual checks
-passed, with four opposite-project visual skips. Production Hugo build,
-TypeScript checking, and `git diff --check` passed. The frozen-site test fixture
-now drains active canonical-resource handlers before disposing its request
-client, fixing the observed teardown race without suppressing request errors.
-
-Before merging, require the current PR head's applicable CI and Netlify preview
-checks. After merging, verify the public HTML, fingerprinted script, and actual
-interaction on both language routes. A local build is not deployment evidence.
+Before merge, require the current PR head's applicable CI and Netlify preview
+checks. After merge, verify the public HTML, fingerprinted module and real
+browsing on both language routes. A local build is not deployment evidence.

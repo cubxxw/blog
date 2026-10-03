@@ -16,9 +16,9 @@
 {{- $monthlyPages := where $thoughtPages "File.BaseFileName" "like" `^[0-9]{4}-[0-9]{2}-thought-notes$` -}}
 {{- $practiceCount := add (len $practicePages) (len $projectPages) -}}
 {{- $heroSlides := slice
-  (dict "image" "/images/about/journey/10-taprohm.webp" "zhLabel" "深入现场" "enLabel" "GET CLOSE" "zh" "离真实问题更近，判断才有根。" "en" "Judgment needs contact with reality.")
-  (dict "image" "/images/about/journey/06-kumano.webp" "zhLabel" "持续实践" "enLabel" "KEEP TESTING" "zh" "让每个结论接受现实与时间的检验。" "en" "Let reality and time test every conclusion.")
-  (dict "image" "/images/about/journey/09-vangvieng.webp" "zhLabel" "公开沉淀" "enLabel" "MAKE IT OPEN" "zh" "把个人经验整理成他人可以复用的路径。" "en" "Turn personal experience into reusable paths.")
+  (dict "image" "/images/about/journey/10-taprohm.webp" "zhLabel" "塔普伦寺" "enLabel" "Ta Prohm" "zh" "塔普伦寺，柬埔寨" "en" "Ta Prohm, Cambodia")
+  (dict "image" "/images/about/journey/06-kumano.webp" "zhLabel" "熊野古道" "enLabel" "Kumano Kodo" "zh" "熊野古道，日本" "en" "Kumano Kodo, Japan")
+  (dict "image" "/images/about/journey/09-vangvieng.webp" "zhLabel" "万荣" "enLabel" "Vang Vieng" "zh" "万荣，老挝" "en" "Vang Vieng, Laos")
 -}}
 {{- $journey := slice
   (dict "image" "/images/about/journey/01-nantaihang.webp" "zh" "南太行，中国" "en" "South Taihang, China")
@@ -49,32 +49,29 @@
             width="96" height="96"
             alt="{{ if $isZH }}熊鑫伟的头像插画{{ else }}Illustrated portrait of Xinwei Xiong{{ end }}"
             loading="eager" decoding="async">
-          <p>
-            <span>{{ if $isZH }}熊鑫伟 · 实践者与写作者{{ else }}Xinwei Xiong · Practitioner and writer{{ end }}</span>
-            cubxxw / BEAR
-          </p>
+          <p>cubxxw / BEAR</p>
         </div>
 
         <h1>
           {{ if $isZH }}
-          构建系统，<br><span>也理解自己。</span>
+          熊鑫伟
           {{ else }}
-          Building systems.<br><span>Staying curious.</span>
+          Xinwei Xiong
           {{ end }}
         </h1>
         <p class="studio-hero__lead">
           {{ if $isZH }}
-          我是熊鑫伟：构建 AI 产品，参与开源，持续写作，也一直在路上。
+          写代码，做产品，也去山里走走。
           {{ else }}
-          I’m Xinwei. I build AI products, contribute to open source, write, and travel.
+          I write code, build products, and go walking in the mountains.
           {{ end }}
         </p>
         <nav class="studio-hero__actions" aria-label="{{ if $isZH }}开始阅读{{ else }}Start reading{{ end }}">
           <a class="studio-hero__action studio-hero__action--primary" href="#story">
-            {{ if $isZH }}读我的故事{{ else }}Read my story{{ end }}
+            {{ if $isZH }}经历{{ else }}My story{{ end }}
           </a>
           <a class="studio-hero__action studio-hero__action--secondary" href="{{ "articles/" | relLangURL }}">
-            {{ if $isZH }}浏览全部文章{{ else }}Browse all writing{{ end }}
+            {{ if $isZH }}文章{{ else }}Writing{{ end }}
           </a>
         </nav>
       </div>
@@ -91,12 +88,11 @@
             <img src="{{ $heroImage }}" width="640" height="853"
               srcset="{{ $heroSmall }} 400w, {{ $heroImage }} 640w"
               sizes="(max-width: 640px) calc(100vw - 48px), min(39vw, 460px)"
-              alt="{{ if $isZH }}熊鑫伟的旅行与创造现场{{ else }}Xinwei travelling and building in the field{{ end }}"
+              alt="{{ if $isZH }}熊鑫伟在{{ $slide.zh }}{{ else }}Xinwei in {{ $slide.en }}{{ end }}"
               loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}"
               fetchpriority="{{ if eq $index 0 }}high{{ else }}low{{ end }}"
               decoding="{{ if eq $index 0 }}sync{{ else }}async{{ end }}" draggable="false">
             <figcaption>
-              <span>{{ if $isZH }}{{ $slide.zhLabel }}{{ else }}{{ $slide.enLabel }}{{ end }}</span>
               {{ if $isZH }}{{ $slide.zh }}{{ else }}{{ $slide.en }}{{ end }}
             </figcaption>
           </figure>
@@ -112,12 +108,8 @@
             </button>
             {{- end }}
           </div>
-          <div class="studio-deck-controls">
+          <div class="studio-deck-controls studio-rail-status">
             <span role="status" aria-live="polite" aria-atomic="true"><b data-hero-current>01</b> / 03</span>
-            <button type="button" class="studio-deck-play" data-hero-toggle data-autoplay-toggle aria-pressed="false"
-              data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
-              data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
-              data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
           </div>
         </div>
       </div>
@@ -133,15 +125,8 @@
     <section class="studio-story" id="story" aria-labelledby="studio-story-title"
       data-story-section>
       <header class="studio-story__intro">
-        <p class="studio-story__eyebrow">{{ if $isZH }}个人故事 · 2021-2026{{ else }}PERSONAL STORY · 2021-2026{{ end }}</p>
-        <h2 id="studio-story-title">{{ if $isZH }}我怎样一路走到这里。{{ else }}How I got here.{{ end }}</h2>
-        <p>
-          {{ if $isZH }}
-          第一篇博客、开源社区、毕业与离职、高原徒步，到现在的产品与工作。每一段都可以展开看细节。
-          {{ else }}
-          The first blog post, the open-source community, graduation and a resignation, a high-altitude trek, and the products and work of today. Every chapter opens in place.
-          {{ end }}
-        </p>
+
+        <h2 id="studio-story-title">{{ if $isZH }}这些年{{ else }}Along the way{{ end }}</h2>
       </header>
       <ol class="studio-story__chapters">
         {{- range $storyChapters }}
@@ -153,8 +138,8 @@
           {{- with $chapter.details }}
           <details class="story-chapter__more">
             <summary>
-              <span class="story-chapter__more-open">{{ if $isZH }}展开细节{{ else }}Read the details{{ end }}</span>
-              <span class="story-chapter__more-close">{{ if $isZH }}收起细节{{ else }}Hide the details{{ end }}</span>
+              <span class="story-chapter__more-open">{{ if $isZH }}多一点细节{{ else }}More{{ end }}</span>
+              <span class="story-chapter__more-close">{{ if $isZH }}收起{{ else }}Less{{ end }}</span>
             </summary>
             <div class="story-chapter__detail">
               {{- range . }}<p>{{ . }}</p>{{- end }}
@@ -172,40 +157,30 @@
     <section class="studio-archive" id="blog-definition" aria-labelledby="studio-archive-title">
       <header class="studio-archive__intro">
         <h2 id="studio-archive-title">
-          {{ if $isZH }}从这里，看见我公开过的实践与思想。{{ else }}A map of everything I have made public.{{ end }}
+          {{ if $isZH }}写作{{ else }}Writing{{ end }}
         </h2>
-        <p>
-          {{ if $isZH }}
-          项目、工作方法、成长记录和年度总结，都按主题与时间整理在这里。
-          {{ else }}
-          Projects, working methods, personal reflections, and annual reviews, organized by subject and time.
-          {{ end }}
-        </p>
       </header>
 
       <div class="studio-archive__map">
         <article class="studio-archive__axis studio-archive__axis--practice">
-          <p><span>{{ if $isZH }}实践与项目{{ else }}Practice and projects{{ end }}</span><b>{{ $practiceCount }}</b></p>
-          <h3>{{ if $isZH }}从真实问题出发，留下系统、代码与取舍。{{ else }}Systems, code, and tradeoffs that began with real problems.{{ end }}</h3>
+          <p><span>{{ if $isZH }}工程与产品{{ else }}Engineering and products{{ end }}</span><b>{{ $practiceCount }}</b></p>
           <nav aria-label="{{ if $isZH }}实践主题{{ else }}Practice topics{{ end }}">
-            <a href="{{ "ai-agent/" | relLangURL }}">AI Agent</a>
+            <a href="{{ "ai-agent/" | relLangURL }}">智能体</a>
             <a href="{{ "engineering/" | relLangURL }}">{{ if $isZH }}工程方法{{ else }}Engineering{{ end }}</a>
             <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}开源项目{{ else }}Open projects{{ end }}</a>
           </nav>
         </article>
 
         <article class="studio-archive__axis studio-archive__axis--thought">
-          <p><span>{{ if $isZH }}思想与成长{{ else }}Thought and growth{{ end }}</span><b>{{ len $thoughtPages }}</b></p>
-          <h3>{{ if $isZH }}关于成长、关系、选择，以及怎样理解自己。{{ else }}Growth, relationships, choices, and ways of understanding oneself.{{ end }}</h3>
+          <p><span>{{ if $isZH }}生活与成长{{ else }}Life and reflection{{ end }}</span><b>{{ len $thoughtPages }}</b></p>
           <a class="studio-archive__axis-link" href="{{ "growth/" | relLangURL }}">
-            {{ if $isZH }}阅读思想与成长{{ else }}Read thought and growth{{ end }}
+            {{ if $isZH }}成长文章{{ else }}Reflections{{ end }}
           </a>
         </article>
 
         <section class="studio-archive__reviews" aria-labelledby="studio-archive-reviews">
           <div>
             <p id="studio-archive-reviews">{{ if $isZH }}年度总结{{ else }}Annual reviews{{ end }}</p>
-            <span>{{ if $isZH }}每一年，重新检查生活的方向。{{ else }}A yearly check on the direction of life.{{ end }}</span>
           </div>
           <nav class="studio-archive__annual-links" aria-label="{{ if $isZH }}年度总结列表{{ else }}Annual review list{{ end }}">
             <a href="{{ "growth/posts/2025-annual-review/" | relLangURL }}">2025</a>
@@ -216,7 +191,6 @@
           <div class="studio-archive__monthly">
             <div>
               <p>{{ if $isZH }}最近月记{{ else }}Recent monthly notes{{ end }}</p>
-              <span>{{ if $isZH }}六个月，六个思考现场。{{ else }}Six months, six fields of thought.{{ end }}</span>
             </div>
             <nav aria-label="{{ if $isZH }}最近六篇月度总结{{ else }}Six latest monthly notes{{ end }}">
               {{- range first 6 $monthlyPages.ByDate.Reverse }}
@@ -239,28 +213,24 @@
       role="region" aria-roledescription="carousel" tabindex="0" data-card-carousel>
       <header>
         <div>
-          <p>{{ if $isZH }}长期写作主线{{ else }}LONG-TERM THREADS{{ end }}</p>
-          <h2 id="studio-workbench-title">{{ if $isZH }}三个彼此相连的世界。{{ else }}Three connected worlds.{{ end }}</h2>
+
+          <h2 id="studio-workbench-title">{{ if $isZH }}文章与项目{{ else }}Writing and projects{{ end }}</h2>
         </div>
-        <div class="studio-deck-controls">
+        <div class="studio-deck-controls studio-rail-status">
           <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / 03</span>
-          <button type="button" class="studio-deck-play" data-autoplay-toggle aria-pressed="false"
-            data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
-            data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
-            data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
         </div>
       </header>
 
       <div class="studio-choice-strip studio-choice-strip--workbench" role="group"
         aria-label="{{ if $isZH }}选择长期写作主线{{ else }}Choose a long-term thread{{ end }}">
         <button type="button" class="studio-choice" data-deck-choice data-choice-index="0" aria-pressed="true">
-          {{ if $isZH }}AI 与项目{{ else }}AI and projects{{ end }}
+          {{ if $isZH }}产品{{ else }}Products{{ end }}
         </button>
         <button type="button" class="studio-choice" data-deck-choice data-choice-index="1" aria-pressed="false">
-          {{ if $isZH }}工程与方法{{ else }}Engineering and methods{{ end }}
+          {{ if $isZH }}工程{{ else }}Engineering{{ end }}
         </button>
         <button type="button" class="studio-choice" data-deck-choice data-choice-index="2" aria-pressed="false">
-          {{ if $isZH }}人与世界{{ else }}People and the world{{ end }}
+          {{ if $isZH }}旅行与生活{{ else }}Travel and life{{ end }}
         </button>
       </div>
 
@@ -272,9 +242,8 @@
             alt="{{ if $isZH }}Telepace 产品界面{{ else }}Telepace product interface{{ end }}" loading="lazy" decoding="async"
             draggable="false">
           <div>
-            <span>{{ if $isZH }}AI 与项目{{ else }}AI and projects{{ end }}</span>
-            <h3>{{ if $isZH }}把深度工作流做成真实、可验证的系统{{ else }}Turn deep workflows into real, testable systems{{ end }}</h3>
-            <p>{{ if $isZH }}公开项目过程、AI 协作方式、代码与关键取舍。{{ else }}Openly documenting project process, AI collaboration, code, and key tradeoffs.{{ end }}</p>
+            <span>{{ if $isZH }}产品{{ else }}Products{{ end }}</span>
+            <h3><a href="{{ "ai-agent/" | relLangURL }}">{{ if $isZH }}产品开发记录{{ else }}Building products{{ end }}</a></h3>
           </div>
         </article>
 
@@ -285,8 +254,8 @@
             alt="{{ if $isZH }}cubxxw 博客文章阅读界面{{ else }}Article reading interface on cubxxw.com{{ end }}" loading="lazy" decoding="async"
             draggable="false">
           <div>
-            <span>{{ if $isZH }}工程与方法{{ else }}Engineering and methods{{ end }}</span>
-            <h3>{{ if $isZH }}把隐性的判断整理成可复用的方法{{ else }}Turn tacit judgment into reusable methods{{ end }}</h3>
+            <span>{{ if $isZH }}工程{{ else }}Engineering{{ end }}</span>
+            <h3><a href="{{ "engineering/" | relLangURL }}">{{ if $isZH }}工程笔记{{ else }}Engineering notes{{ end }}</a></h3>
           </div>
         </article>
 
@@ -295,8 +264,8 @@
             alt="{{ if $isZH }}熊野古道上的森林与行者{{ else }}Forest and walker on the Kumano Kodo{{ end }}" loading="lazy" decoding="async"
             draggable="false">
           <div>
-            <span>{{ if $isZH }}人与世界{{ else }}People and the world{{ end }}</span>
-            <h3>{{ if $isZH }}在成长、哲学与人生中理解系统背后的人{{ else }}Understand the person behind the systems through growth, philosophy, and life{{ end }}</h3>
+            <span>{{ if $isZH }}旅行与生活{{ else }}Travel and life{{ end }}</span>
+            <h3><a href="{{ "growth/" | relLangURL }}">{{ if $isZH }}月记与旅行{{ else }}Monthly notes and travels{{ end }}</a></h3>
           </div>
         </article>
       </div>
@@ -305,16 +274,11 @@
     <section class="studio-products" id="studio-products" aria-labelledby="studio-products-title"
       role="region" aria-roledescription="carousel" tabindex="0" data-card-carousel>
       <div class="studio-products__intro">
-        <h2 id="studio-products-title">{{ if $isZH }}从真实问题开始的产品。{{ else }}Products that began with real problems.{{ end }}</h2>
-        <p>{{ if $isZH }}它们都从我自己遇到的问题开始，也都在真实用户手里继续变化。{{ else }}Each began with a problem I faced and keeps changing in the hands of real users.{{ end }}</p>
+        <h2 id="studio-products-title">{{ if $isZH }}做过的产品{{ else }}Products{{ end }}</h2>
         <div class="studio-products__actions">
-          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}打开完整产品工作区{{ else }}Open the full product workspace{{ end }}</a>
-          <div class="studio-deck-controls">
+          <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}全部产品{{ else }}All products{{ end }}</a>
+          <div class="studio-deck-controls studio-rail-status">
             <span role="status" aria-live="polite" aria-atomic="true"><b data-card-current>01</b> / {{ printf "%02d" (len $products) }}</span>
-            <button type="button" class="studio-deck-play" data-autoplay-toggle aria-pressed="false"
-              data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
-              data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
-              data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
           </div>
         </div>
       </div>
@@ -351,10 +315,9 @@
             <div class="studio-product__mark" aria-hidden="true">{{ $product.mark }}</div>
             {{- end }}
             <div class="studio-product__body">
-              <p><span>{{ printf "%02d" (add $index 1) }}</span>{{ if $isZH }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</p>
+              <p>{{ if $isZH }}{{ $product.stage_zh }}{{ else }}{{ $product.stage_en }}{{ end }}</p>
               <h3>{{ $product.name }}</h3>
               <p>{{ if $isZH }}{{ $product.headline_zh }}{{ else }}{{ $product.headline_en }}{{ end }}</p>
-              <span>{{ $product.stack }}</span>
             </div>
           </div>
           <details class="studio-product__expand" data-product-expand>
@@ -392,17 +355,13 @@
       role="region" aria-roledescription="carousel" tabindex="0" data-road-carousel>
       <div class="studio-road__copy">
         <div class="studio-road__folio">
-          <span>{{ if $isZH }}旅行手记 · 2025{{ else }}FIELD NOTES · 2025{{ end }}</span>
-          <p class="studio-road__counter" role="status" aria-live="off" aria-atomic="true"><span data-road-current>01</span> / {{ printf "%02d" (len $journey) }}</p>
+
+          <p class="studio-road__counter studio-rail-status" role="status" aria-live="off" aria-atomic="true"><span data-road-current>01</span> / {{ printf "%02d" (len $journey) }}</p>
         </div>
-        <h2 id="studio-road-title">{{ if $isZH }}路不是生活的间隙。<br>路就是生活本身。{{ else }}The road is not a break from life.<br>It is life itself.{{ end }}</h2>
-        <p>{{ if $isZH }}12 个月，9 个国家，35 多座城市，徒步 400 多公里。旅行让我持续拆掉那些未经检验的答案。{{ else }}Twelve months, nine countries, more than 35 cities, and over 400 km on foot. Travel keeps undoing my untested answers.{{ end }}</p>
+        <h2 id="studio-road-title">{{ if $isZH }}在路上{{ else }}On the road{{ end }}</h2>
+        <p>{{ if $isZH }}2025 年，走过 9 个国家，徒步 400 多公里。{{ else }}In 2025: nine countries, more than 400 km on foot.{{ end }}</p>
         <div class="studio-road__controls">
-          <button type="button" class="studio-deck-play" data-autoplay-toggle aria-pressed="false"
-            data-label-play="{{ if $isZH }}播放{{ else }}Play{{ end }}"
-            data-label-pause="{{ if $isZH }}暂停{{ else }}Pause{{ end }}"
-            data-label-reduced="{{ if $isZH }}减少动态效果，已关闭自动轮播{{ else }}Reduced motion: automatic rotation is off{{ end }}">{{ if $isZH }}播放{{ else }}Play{{ end }}</button>
-          <a href="{{ "travel/" | relLangURL }}">{{ if $isZH }}进入旅行地图{{ else }}Explore the travel map{{ end }}</a>
+          <a href="{{ "travel/" | relLangURL }}">{{ if $isZH }}旅行地图{{ else }}Travel map{{ end }}</a>
         </div>
       </div>
 
@@ -423,37 +382,17 @@
             {{- end }}
           </div>
         </div>
-        <div class="studio-road__picker" role="group"
-          aria-label="{{ if $isZH }}选择旅行照片{{ else }}Choose a travel photo{{ end }}">
-          {{- range $index, $item := $journey }}
-          {{- $journeySmall := printf "%s-480.webp" (strings.TrimSuffix ".webp" $item.image) }}
-          <button type="button" class="studio-road__thumb" data-deck-choice data-choice-index="{{ $index }}"
-            aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
-            <img src="{{ $journeySmall }}" width="480" height="480" alt="" loading="lazy" decoding="async" draggable="false">
-            <span>{{ if $isZH }}{{ $item.zh }}{{ else }}{{ $item.en }}{{ end }}</span>
-          </button>
-          {{- end }}
-        </div>
+
       </div>
     </section>
 
     <section class="studio-interview" id="tell-me"
       aria-labelledby="studio-interview-title" data-telepace-section>
-      <div class="studio-interview__intro">
-        <p class="studio-interview__eyebrow">
-          {{ if $isZH }}开放访谈 / 约 4 分钟{{ else }}OPEN INTERVIEW / ABOUT 4 MIN{{ end }}
-        </p>
-        <h2 id="studio-interview-title">
-          {{ if $isZH }}告诉我，我还没看见的东西。{{ else }}Show me what I have not seen.{{ end }}
-        </h2>
-        <p>
-          {{ if $isZH }}
-          和我的 AI 访谈 4 分钟。你的回答会进入 Telepace，成为下一次改进的依据。
-          {{ else }}
-          Talk with my AI interviewer for four minutes. Your answers become evidence for the next iteration.
-          {{ end }}
-        </p>
-      </div>
+      <details class="studio-interview-disclosure">
+        <summary><h2 id="studio-interview-title">{{ if $isZH }}留个反馈{{ else }}Leave a note{{ end }}</h2></summary>
+        <div class="studio-interview__intro">
+          <p>{{ if $isZH }}通过 Telepace 的 AI 访谈，分享一个具体感受或建议。{{ else }}Share one specific reaction or suggestion with the Telepace AI interviewer.{{ end }}</p>
+        </div>
 
       <div class="studio-interview__native"
         data-telepace-native
@@ -591,6 +530,7 @@
           {{ end }}
         </p>
       </div>
+      </details>
     </section>
 
     {{- /* Identity card — canonical person data from data/identity.json.
@@ -606,9 +546,9 @@
       data-identity-json="/data/identity.json"
       data-timeline-md="/data/personal-timeline-2019-2026.md">
       <header>
-        <p>{{ if $isZH }}身份卡 · 可被机器读取{{ else }}IDENTITY · MACHINE-READABLE{{ end }}</p>
+
         <h2 id="studio-identity-title">
-          {{ if $isZH }}关于我，一份可核对的档案。{{ else }}A checkable file of who I am.{{ end }}
+          {{ if $isZH }}个人档案{{ else }}Profile{{ end }}
         </h2>
       </header>
 
@@ -619,16 +559,6 @@
             {{- with $idPerson.alternateName }} · {{ delimit . " / " }}{{ end -}}
             {{- with $idPerson.birthYear }} · b. {{ . }}{{ end }}
           </p>
-          {{- with $idPerson.jobTitle }}<p>{{ . }}</p>{{ end }}
-          {{- with $idPerson.life_mission_zh }}
-          <p class="studio-identity__mission">{{ if $isZH }}{{ . }}{{ else }}{{ $idPerson.life_mission_en }}{{ end }}</p>
-          {{- end }}
-          {{- with $idPerson.motto }}<p class="studio-identity__motto">“{{ . }}”</p>{{ end }}
-          {{- with $idTimeline.arc_zh }}
-          {{- /* Data stays canonical in identity.json; the visible card swaps
-                 decorative arrow separators for quiet dots. */ -}}
-          <p class="studio-identity__arc">{{ replaceRE "→" "·" (cond $isZH . $idTimeline.arc_en) }}</p>
-          {{- end }}
           <p class="studio-identity__links">
             {{- with $idLinks.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a> ·{{ end }}
             {{- with $idLinks.x }}<a href="{{ . }}" target="_blank" rel="noopener">X</a> ·{{ end }}
@@ -641,9 +571,19 @@
 
         <details class="studio-identity__archive" data-identity-timeline>
           <summary>
-            <span class="studio-identity__archive-open">{{ if $isZH }}展开完整公开时间线{{ else }}Open the full public timeline{{ end }}</span>
-            <span class="studio-identity__archive-close">{{ if $isZH }}收起完整公开时间线{{ else }}Close the full public timeline{{ end }}</span>
+            <span class="studio-identity__archive-open">{{ if $isZH }}完整经历与资料{{ else }}Full biography and data{{ end }}</span>
+            <span class="studio-identity__archive-close">{{ if $isZH }}收起资料{{ else }}Close biography and data{{ end }}</span>
           </summary>
+          {{- with $idPerson.jobTitle }}<p>{{ . }}</p>{{ end }}
+          {{- with $idPerson.life_mission_zh }}
+          <p class="studio-identity__mission">{{ if $isZH }}{{ . }}{{ else }}{{ $idPerson.life_mission_en }}{{ end }}</p>
+          {{- end }}
+          {{- with $idPerson.motto }}<p class="studio-identity__motto">“{{ . }}”</p>{{ end }}
+          {{- with $idTimeline.arc_zh }}
+          {{- /* Data stays canonical in identity.json; the visible card swaps
+                 decorative arrow separators for quiet dots. */ -}}
+          <p class="studio-identity__arc">{{ replaceRE "→" "·" (cond $isZH . $idTimeline.arc_en) }}</p>
+          {{- end }}
           <ol class="studio-identity__timeline">
             {{- range $idTimeline.milestones }}
             <li{{ if .gap }} class="is-gap"{{ end }}>
@@ -652,12 +592,6 @@
             </li>
             {{- end }}
           </ol>
-        </details>
-      </div>
-
-      {{- /* Machine entry — one place for every agent that lands on About.
-             Prefer /data/identity.json for structured facts; the YAML snapshot
-             below is a readable fallback when only visible text is scraped. */ -}}
       <footer class="studio-identity__machine">
         <p class="studio-identity__machine-label">
           {{ if $isZH }}AI 读取入口{{ else }}AI / AGENT ENTRY{{ end }}
@@ -697,16 +631,22 @@ links:
   timeline_md: /data/personal-timeline-2019-2026.md</pre>
         </details>
       </footer>
+        </details>
+      </div>
+
+      {{- /* Machine entry — one place for every agent that lands on About.
+             Prefer /data/identity.json for structured facts; the YAML snapshot
+             below is a readable fallback when only visible text is scraped. */ -}}
+
     </section>
     {{- end }}
 
     <section class="studio-coda" aria-labelledby="studio-coda-title">
       <div>
-        <h2 id="studio-coda-title">{{ if $isZH }}也在做 AI 产品、用户研究或开源工具？{{ else }}Building AI products, user research, or open-source tools?{{ end }}</h2>
-        <p>{{ if $isZH }}带着一个具体问题来找我。{{ else }}Bring one concrete problem.{{ end }}</p>
+        <h2 id="studio-coda-title">{{ if $isZH }}联系我{{ else }}Get in touch{{ end }}</h2>
       </div>
       <nav aria-label="{{ if $isZH }}联系方式{{ else }}Contact links{{ end }}">
-        <a href="mailto:3293172751nss@gmail.com">{{ if $isZH }}聊一个问题{{ else }}Talk through a problem{{ end }}</a>
+        <a href="mailto:3293172751nss@gmail.com">{{ if $isZH }}邮件{{ else }}Email{{ end }}</a>
         <a href="{{ site.Params.whatsappURL | safeURL }}" target="_blank" rel="noopener">{{ if $isZH }}WhatsApp 联系我{{ else }}WhatsApp{{ end }}</a>
         <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>
         <a href="https://x.com/cubxxw" target="_blank" rel="noopener">X</a>

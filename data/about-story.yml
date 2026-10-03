@@ -9,122 +9,118 @@ chapters:
   - id: first-blog
     year: "2021"
     zh:
-      title: 第一篇博客，第一个仓库
-      summary: >-
-        2021 年 6 月我注册了 GitHub 账号 cubxxw，第一个仓库是校园停车小程序 nsddd；11 月 15 日，
-        我在 nsddd.top 发出第一篇博客「hello!」，开始把学到的东西公开写下来。
+      title: 第一篇博客
+      summary: 注册了 GitHub，写下第一篇博客，开始公开自己的笔记。
       details:
+        - 2021 年 6 月我注册了 GitHub 账号 cubxxw，第一个仓库是校园停车小程序 nsddd；11 月 15 日， 我在 nsddd.top
+          发出第一篇博客「hello!」，开始把学到的东西公开写下来。
         - 同年 1 月我注册了 CSDN，11 月开始在上面发文章。写作和开源从一开始就是同一件事：把个人笔记变成别人可以打开、可以复用的东西。
       link:
         href: /zh/growth/posts/my-first-blog/
         label: 阅读《我的第一个博客》
     en:
-      title: The first blog post, the first repository
-      summary: >-
-        In June 2021 I created my GitHub account cubxxw, with a campus parking
-        mini-program (nsddd) as its first repository. On November 15 I published
-        the first post on nsddd.top, “hello!”, and started writing in public.
+      title: A first blog post
+      summary: I created my GitHub account and began publishing my notes.
       details:
+        - In June 2021 I created my GitHub account cubxxw, with a campus parking mini-program (nsddd) as its
+          first repository. On November 15 I published the first post on nsddd.top, “hello!”, and started
+          writing in public.
         - I registered on CSDN that January and began posting there in November. Writing and open source were the same act from the start: turning my own notes into something other people could open and reuse.
       link:
         href: /growth/posts/my-first-blog/
         label: Read “My First Blog”
-
   - id: openim
     year: "2023"
     zh:
-      title: 走进开源社区
-      summary: >-
-        2023 年我进入 OpenIM 实习，做到贡献榜第一，并设计、主持社区双周会；9 月 14 日，
-        现在这个博客开张，我写下：「你的价值取决于你创造了什么，而不是你拥有什么」。
+      title: OpenIM 与开源社区
+      summary: 进入 OpenIM 实习，贡献代码，设计并主持社区双周会。
       details:
+        - 2023 年我进入 OpenIM 实习，做到贡献榜第一，并设计、主持社区双周会；9 月 14 日， 现在这个博客开张，我写下：「你的价值取决于你创造了什么，而不是你拥有什么」。
         - 那一年我还参与了 sealer、horizon、kubernetes、k8sgpt、openkf 等项目。12 月 31 日我在香港维多利亚港跨年，给自己留下对冒险和开源的忠诚。
       link:
         href: /zh/growth/posts/2023-annual-summary-reflections-and-aspirations/
         label: 阅读 2023 年度总结
     en:
-      title: Joining the OpenIM community
-      summary: >-
-        In 2023 I joined OpenIM as an intern, reached the top of its contributor
-        leaderboard, and designed and hosted the community biweekly. On
-        September 14 this blog opened, and I wrote: “Your value is what you
-        create, not what you own.”
+      title: OpenIM and open source
+      summary: I joined OpenIM as an intern, contributed code, and hosted community meetings.
       details:
-        - That year I also contributed to sealer, horizon, kubernetes, k8sgpt, and openkf. On December 31 I spent New Year's Eve at Victoria Harbour in Hong Kong, marking my loyalty to adventure and open source.
+        - "In 2023 I joined OpenIM as an intern, reached the top of its contributor leaderboard, and designed
+          and hosted the community biweekly. On September 14 this blog opened, and I wrote: “Your value is
+          what you create, not what you own.”"
+        - That year I also contributed to sealer, horizon, kubernetes, k8sgpt, and openkf. On December 31 I
+          spent New Year's Eve at Victoria Harbour in Hong Kong, marking my loyalty to adventure and open
+          source.
       link:
         href: /growth/posts/2023-annual-summary-reflections-and-aspirations/
         label: Read the 2023 annual review
-
   - id: leaving
     year: "2024"
     zh:
-      title: 毕业、第一次出国、离开外企
-      summary: >-
-        2024 年 2 月 25 日，大四下学期，我第一次出国，飞到吉隆坡；毕业后我进入日企 / 外企工作，
-        又在那一年离职，把时间交给旅行和构建。
+      title: 毕业，出发
+      summary: 第一次出国、毕业、工作，再离职，开始一边旅行一边构建。
       details:
+        - 2024 年 2 月 25 日，大四下学期，我第一次出国，飞到吉隆坡；毕业后我进入日企 / 外企工作， 又在那一年离职，把时间交给旅行和构建。
         - 离开公司之后，我整理出 RemoteAI-Nomads 远程工作指南，开始一边旅行一边构建的生活。毕业、出发、离职，都是这一年里我自己做的决定。
       link:
         href: /zh/growth/posts/2024-annual-review/
         label: 阅读 2024 年度回顾
     en:
-      title: Graduation, a first flight abroad, leaving the corporate job
-      summary: >-
-        On February 25, 2024, in my final university semester, I flew to Kuala
-        Lumpur, my first trip abroad. After graduation I joined a Japanese
-        foreign company, then left that job the same year to travel and build.
+      title: Graduation and departure
+      summary: My first trip abroad, graduation, a job, then leaving to travel and build.
       details:
-        - After leaving the company I compiled the RemoteAI-Nomads guide and began a life of travelling while building. Graduation, the first flight, and the resignation were all decisions I made myself that year.
+        - On February 25, 2024, in my final university semester, I flew to Kuala Lumpur, my first trip abroad.
+          After graduation I joined a Japanese foreign company, then left that job the same year to travel and
+          build.
+        - After leaving the company I compiled the RemoteAI-Nomads guide and began a life of travelling while
+          building. Graduation, the first flight, and the resignation were all decisions I made myself that
+          year.
       link:
         href: /growth/posts/2024-annual-review/
         label: Read the 2024 annual review
-
   - id: nepal
     year: "2025"
     zh:
-      title: 高原徒步与每月复盘
-      summary: >-
-        2025 年 1 月，我在尼泊尔 ACT 走完人生第一次高原徒步，路上哭过两次：「我不是因为痛苦而哭，
-        我是因为自己还在走而哭」。从 2 月起我开始写每月思考笔记，持续检查自己的判断。
+      title: 尼泊尔 ACT
+      summary: 走完第一次高原徒步。从 2 月起，开始每月写思考笔记。
       details:
+        - 2025 年 1 月，我在尼泊尔 ACT 走完人生第一次高原徒步，路上哭过两次：「我不是因为痛苦而哭， 我是因为自己还在走而哭」。从 2 月起我开始写每月思考笔记，持续检查自己的判断。
         - 那一年我在济州、青岛、越南、富士山、关西之间移动，把月记和元认知复盘变成固定动作。「自我解释不等于自我理解」是我给自己留下的结论。
       link:
         href: /zh/growth/posts/2025-annual-review/
         label: 阅读 2025-2026 年度总结
     en:
-      title: A high-altitude trek and monthly reflection
-      summary: >-
-        In January 2025 I finished my first high-altitude trek, the Annapurna
-        Circuit in Nepal, and cried twice: “I didn't cry from the pain; I cried
-        because I was still walking.” From February I began monthly thought
-        notes, a standing review of my own judgment.
+      title: The Annapurna Circuit
+      summary: My first high-altitude trek. From February, I began writing monthly notes.
       details:
-        - That year I moved between Jeju, Qingdao, Vietnam, Mount Fuji, and Kansai, keeping the monthly notes and metacognition reviews as fixed practice. “Self-explanation is not self-understanding” was the conclusion I kept.
+        - "In January 2025 I finished my first high-altitude trek, the Annapurna Circuit in Nepal, and cried
+          twice: “I didn't cry from the pain; I cried because I was still walking.” From February I began
+          monthly thought notes, a standing review of my own judgment."
+        - That year I moved between Jeju, Qingdao, Vietnam, Mount Fuji, and Kansai, keeping the monthly notes
+          and metacognition reviews as fixed practice. “Self-explanation is not self-understanding” was the
+          conclusion I kept.
       link:
         href: /growth/posts/2025-annual-review/
         label: Read the 2025–2026 annual review
-
   - id: ai-products
     year: "2026"
     zh:
-      title: AI 产品与新的工作
-      summary: >-
-        2026 年我一个人构建 AI 产品（getyak 系列），也写 AI 时代的身份思考；8 月 10 日，
-        在大约两年的空窗之后，我入职新公司，写下：「不会让恐惧替我做决定」。
+      title: 产品和新的工作
+      summary: 继续做产品、写作。8 月 10 日，结束约两年的空窗，开始新的工作。
       details:
+        - 2026 年我一个人构建 AI 产品（getyak 系列），也写 AI 时代的身份思考；8 月 10 日， 在大约两年的空窗之后，我入职新公司，写下：「不会让恐惧替我做决定」。
         - 2 月我走川藏线到拉萨，住了大约一个月；3 月写完年度总结《我在游荡，但我没有迷路》。产品、写作和新的工作都还在继续。
       link:
         href: /zh/growth/posts/2026-08-10-fear-does-not-decide-for-me/
         label: 阅读《不会让恐惧替我做决定》
     en:
-      title: AI products and a new job
-      summary: >-
-        Through 2026 I built AI products solo (the getyak series) and wrote about
-        identity in the AI age. On August 10, after roughly a two-year career
-        gap, I started a new job. My August thought notes follow the ongoing
-        work on agent harnesses, products, and self-knowledge.
+      title: Products and a new job
+      summary: I kept building and writing. On August 10, after roughly two years away, I started a new job.
       details:
-        - In February I took the Sichuan–Tibet road to Lhasa and stayed about a month; in March I finished the annual review “Wandering & Growing”. Products, writing, and the new job all continue.
+        - Through 2026 I built AI products solo (the getyak series) and wrote about identity in the AI age. On
+          August 10, after roughly a two-year career gap, I started a new job. My August thought notes follow
+          the ongoing work on agent harnesses, products, and self-knowledge.
+        - In February I took the Sichuan–Tibet road to Lhasa and stayed about a month; in March I finished the
+          annual review “Wandering & Growing”. Products, writing, and the new job all continue.
       link:
         href: /growth/posts/2026-08-thought-notes/
         label: Read the August 2026 thought notes
