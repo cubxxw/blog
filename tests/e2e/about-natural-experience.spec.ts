@@ -40,6 +40,8 @@ test.describe('About natural albums', () => {
       await expect(page.locator('.studio-road__picker')).toHaveCount(0);
       await expect(page.locator('.studio-identity__archive')).not.toHaveAttribute('open');
       await expect(page.locator('.studio-interview-disclosure')).not.toHaveAttribute('open');
+      expect((await page.locator('#tell-me').boundingBox())!.height).toBeLessThan(160);
+      expect((await page.locator('.studio-coda').boundingBox())!.height).toBeLessThan(300);
       await expect(page.locator('#tell-me .studio-interview__native')).toBeHidden();
       const caption = page.locator('[data-hero-slide]').first().locator('figcaption');
       const image = page.locator('[data-hero-slide]').first().locator('img');

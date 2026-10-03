@@ -85,7 +85,12 @@ test.describe('Home and About reading navigation', () => {
           await expect(lastLink).toHaveAttribute('aria-current', 'location');
           const target = page.locator((await lastLink.getAttribute('href'))!);
           await expect(target).toBeFocused();
-          expect(await target.evaluate(section => section.getBoundingClientRect().top)).toBeLessThan(160);
+          const position = await target.evaluate(section => ({
+            top: section.getBoundingClientRect().top,
+            atEnd: Math.abs(document.documentElement.scrollHeight - scrollY - innerHeight) < 2,
+          }));
+          expect(position.top < 160 || position.atEnd).toBe(true);
+          expect(position.top).toBeLessThan(900 - 100);
         }
       }
     });
@@ -163,3 +168,19 @@ test.describe('Home and About reading navigation', () => {
     await context.close();
   });
 });
+
+for (const route of ['/about/', '/zh/about/']) {
+  test(`${route} a short final destination stays current at the native document boundary`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.setViewportSize({ width: 1720, height: 1100 });
+    await page.goto(route);
+    await page.locator('#studio-road').scrollIntoViewIfNeeded();
+    const link = page.locator('[data-page-wayfinder] a[href="#identity"]');
+    await link.click();
+    await expect(link).toHaveAttribute('aria-current', 'location');
+    await expect(page.locator('#identity')).toBeFocused();
+    await expect.poll(() => page.evaluate(() => Math.abs(document.documentElement.scrollHeight - scrollY - innerHeight))).toBeLessThan(2);
+    await page.evaluate(() => scrollBy({ top: -400, behavior: 'instant' }));
+    await expect(link).not.toHaveAttribute('aria-current', 'location');
+  });
+}

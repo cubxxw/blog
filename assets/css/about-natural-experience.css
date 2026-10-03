@@ -2,7 +2,7 @@
    Page-scoped layer after the shared About calibration. */
 .about-studio { --album-gap: 24px; }
 .about-studio__inner { max-width: 1180px; }
-.about-studio__inner > section { content-visibility: visible; contain-intrinsic-size: none; }
+.about-studio__inner > section { min-height: 0; content-visibility: visible; contain-intrinsic-size: none; }
 .about-studio[data-about-studio] .studio-hero { min-height: auto; padding: 64px 0 88px; gap: clamp(48px,7vw,104px); grid-template-columns: minmax(0,1fr) minmax(0,.88fr); }
 .studio-hero__copy { padding: 0; }
 .studio-signature { margin-bottom: 40px; }
@@ -81,7 +81,7 @@ html[lang="en"] .about-studio[data-about-studio] .studio-hero h1 { max-width: 8c
 /* Writing is a route into the archive, followed by three real visual subjects. */
 .studio-archive { padding: 72px 0 48px; border: 0; }
 .studio-archive__map { margin-top: 40px; grid-template-columns: 1fr 1fr; gap: 40px 72px; }
-.studio-archive__axis { padding: 0; border: 0; background: transparent; }
+.studio-archive__axis { min-height: 0; padding: 0; border: 0; background: transparent; }
 .studio-archive__axis > p { font-size: .95rem; }
 .studio-archive__axis > p b { font-size: .8rem; }
 .studio-archive__axis nav { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 18px; }

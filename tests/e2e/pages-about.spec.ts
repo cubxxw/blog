@@ -1,4 +1,17 @@
-import { test, expect } from '../helpers/frozen-site';
+import { test, expect, type Page } from '../helpers/frozen-site';
+
+async function prepareFullPage(page: Page) {
+  // Real reading reveals lazy images; a full-page capture must not accept empty
+  // offscreen placeholders as the visual baseline.
+  for (const selector of ['#workbench', '#studio-products', '#studio-road']) {
+    const section = page.locator(selector);
+    await section.scrollIntoViewIfNeeded();
+    await expect(section.locator('img').first()).toHaveJSProperty('complete', true);
+    await expect.poll(() => section.locator('img').first().evaluate((el: HTMLImageElement) => el.naturalWidth)).toBeGreaterThan(0);
+  }
+  await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
+  await page.waitForTimeout(100);
+}
 
 test.describe('About Page Visual Regression', () => {
   test('about keeps one clear narrative in both languages', async ({ page }) => {
@@ -38,6 +51,7 @@ test.describe('About Page Visual Regression', () => {
     await page.goto('/about/');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(500);
+    await prepareFullPage(page);
     await expect(page).toHaveScreenshot('about-desktop-full.png', {
       fullPage: true,
     });
@@ -56,6 +70,7 @@ test.describe('About Page Visual Regression', () => {
     await page.goto('/about/');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(500);
+    await prepareFullPage(page);
     await expect(page).toHaveScreenshot('about-mobile-full.png', {
       fullPage: true,
     });
