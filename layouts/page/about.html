@@ -165,7 +165,7 @@
         <article class="studio-archive__axis studio-archive__axis--practice">
           <p><span>{{ if $isZH }}工程与产品{{ else }}Engineering and products{{ end }}</span><b>{{ $practiceCount }}</b></p>
           <nav aria-label="{{ if $isZH }}实践主题{{ else }}Practice topics{{ end }}">
-            <a href="{{ "ai-agent/" | relLangURL }}">智能体</a>
+            <a href="{{ "ai-agent/" | relLangURL }}">{{ if $isZH }}智能体{{ else }}AI agents{{ end }}</a>
             <a href="{{ "engineering/" | relLangURL }}">{{ if $isZH }}工程方法{{ else }}Engineering{{ end }}</a>
             <a href="{{ "projects/" | relLangURL }}">{{ if $isZH }}开源项目{{ else }}Open projects{{ end }}</a>
           </nav>

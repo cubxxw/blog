@@ -17,6 +17,7 @@ function initRail(region, viewport, itemSelector, positionName, counterSelector)
   let frame = 0;
   let pointer = null;
   let suppressClick = false;
+  let pointerFocus = false;
 
   function offset(item) {
     const max = viewport.scrollWidth - viewport.clientWidth;
@@ -84,6 +85,10 @@ function initRail(region, viewport, itemSelector, positionName, counterSelector)
   }
 
   choices.forEach((choice, i) => on(choice, 'click', () => move(i, true)));
+  on(region, 'pointerdown', () => { pointerFocus = true; }, { capture: true });
+  on(region, 'click', () => { pointerFocus = false; }, { capture: true });
+  on(window, 'pointercancel', () => { pointerFocus = false; });
+  on(window, 'keydown', () => { pointerFocus = false; }, { capture: true });
   on(region, 'keydown', event => {
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
       event.target.closest('input,textarea,select,[contenteditable]')) return;
@@ -94,7 +99,10 @@ function initRail(region, viewport, itemSelector, positionName, counterSelector)
   });
   on(region, 'focusin', event => {
     const focused = items.findIndex(item => item.contains(event.target));
-    if (focused >= 0) move(focused);
+    if (focused >= 0) {
+      if (pointerFocus) mark(focused);
+      else move(focused);
+    }
   });
   on(viewport, 'scroll', queueSync, { passive: true });
   on(viewport, 'scrollend', () => { destination = null; queueSync(); });

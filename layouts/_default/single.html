@@ -305,12 +305,15 @@
       {{- $absIsZh := eq .Lang "zh" }}
       {{- $absOrder := $absSeries.order | default 0 }}
       {{- $absTotal := $absSeries.total | default (len $absOrdered) }}
-      {{- $absColumnURL := printf "/columns/%s/" $absSeries.slug }}
-      {{- if eq .Lang "zh" }}{{ $absColumnURL = printf "/zh/columns/%s/" $absSeries.slug }}{{ end }}
+      {{- $absColumn := .Site.GetPage (printf "/columns/%s" $absSeries.slug) }}
       <div class="abs-series">
         <div class="abs-series-head">
           <span class="abs-series-eyebrow">{{ if $absIsZh }}系列{{ else }}Series{{ end }}</span>
-          <a class="abs-series-name abs-series-name--link" href="{{ $absColumnURL | relURL }}">{{ $absSeries.name }}</a>
+          {{- with $absColumn }}
+          <a class="abs-series-name abs-series-name--link" href="{{ .RelPermalink }}">{{ $absSeries.name }}</a>
+          {{- else }}
+          <span class="abs-series-name">{{ $absSeries.name }}</span>
+          {{- end }}
           <span class="abs-series-badge">{{ if $absIsZh }}{{ $absOrder }} / {{ $absTotal }}{{ else }}{{ $absOrder }} of {{ $absTotal }}{{ end }}</span>
         </div>
         <ol class="abs-series-list">

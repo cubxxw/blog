@@ -37,6 +37,7 @@ test.describe('About natural albums', () => {
       await expect(actions.last()).toHaveAttribute('href', route.startsWith('/zh') ? '/zh/articles/' : '/articles/');
       await expect(page.locator('[data-hero-slide]')).toHaveCount(3);
       await expect(page.locator('[data-road-slide]')).toHaveCount(11);
+      await expect(page.locator('#blog-definition a[href$="/ai-agent/"]')).toHaveText(route.startsWith('/zh') ? '智能体' : 'AI agents');
       await expect(page.locator('.studio-road__picker')).toHaveCount(0);
       await expect(page.locator('.studio-identity__archive')).not.toHaveAttribute('open');
       await expect(page.locator('.studio-interview-disclosure')).not.toHaveAttribute('open');
@@ -94,6 +95,28 @@ test.describe('About natural albums', () => {
       await editor.press('ArrowRight');
       await expect(editor).toBeFocused();
       await expect(products.locator('[data-card-current]')).toHaveText('04');
+    });
+
+    test(`${route} a pointer click on a partly visible product does not move it before toggling`, async ({ page }) => {
+      await page.goto(route);
+      const region = page.locator('#studio-products');
+      const track = region.locator('[data-card-track]');
+      await track.scrollIntoViewIfNeeded();
+      await track.evaluate(el => {
+        el.style.scrollSnapType = 'none';
+        el.style.scrollBehavior = 'auto';
+        el.scrollLeft = el.querySelector<HTMLElement>('[data-card]')!.offsetWidth * .65;
+      });
+      const summary = region.locator('[data-card]').nth(1).locator('summary');
+      // A tall desktop card can put its disclosure below the screen. Move only
+      // the document, preserving the deliberate partial horizontal position.
+      await page.evaluate(y => scrollBy({ top: y - innerHeight / 2, behavior: 'instant' }), (await summary.boundingBox())!.y);
+      const bounds = (await summary.boundingBox())!;
+      const viewport = (await track.boundingBox())!;
+      const before = await track.evaluate(el => el.scrollLeft);
+      await page.mouse.click(Math.min(bounds.x + 12, viewport.x + viewport.width - 12), bounds.y + 22);
+      await expect(region.locator('[data-card]').nth(1).locator('details')).toHaveAttribute('open', '');
+      expect(Math.abs((await track.evaluate(el => el.scrollLeft)) - before)).toBeLessThan(2);
     });
 
     test(`${route} real phone gestures browse every rail and retain vertical scrolling`, async ({ page, isMobile }) => {

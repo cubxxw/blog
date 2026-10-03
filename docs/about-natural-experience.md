@@ -24,6 +24,8 @@ not shipped assets). No new framework or animation dependency is added.
   clear. Stationary clicks still open native details or real links. A drag cannot
   activate its incidental click. Named text choices remain available for direct
   navigation, with 44px targets and a selected underline.
+  Pointer focus on a partly visible link or disclosure does not reposition it
+  before the click completes; keyboard focus still reveals offscreen content.
 - ArrowLeft/Right and Home/End navigate a focused rail. Text inputs retain editing
   keys. All cards remain accessible; focusing an offscreen card reveals it.
   Choice/key navigation scrolls the local track without moving the document.
@@ -60,7 +62,10 @@ time, preference changes, public story links and static fallbacks.
 `about-experience.spec.ts` retains mobile menu and real popup/link-versus-drag
 regressions. `pages-about.spec.ts` covers narrative, interview fallback and the
 intentional desktop/phone screenshot baselines. Page-wayfinder checks retain
-stable section destinations.
+stable section destinations, including a short final section and a long footer.
+`series-hub-routes.spec.ts` checks the shared article sidebar correction found by
+the deployment gate: series names link to an existing Hugo column page, while an
+unpublished column retains its name and real sibling article links.
 
 Run the affected tests against frozen Hugo production output, plus TypeScript,
 JavaScript syntax and diff checks. Inspect light/dark views and expanded products

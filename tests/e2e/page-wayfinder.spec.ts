@@ -182,5 +182,10 @@ for (const route of ['/about/', '/zh/about/']) {
     await expect.poll(() => page.evaluate(() => Math.abs(document.documentElement.scrollHeight - scrollY - innerHeight))).toBeLessThan(2);
     await page.evaluate(() => scrollBy({ top: -400, behavior: 'instant' }));
     await expect(link).not.toHaveAttribute('aria-current', 'location');
+    await page.evaluate(() => {
+      document.querySelector<HTMLElement>('footer')!.style.minHeight = '1600px';
+      scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
+    });
+    await expect(link).not.toHaveAttribute('aria-current', 'location');
   });
 }

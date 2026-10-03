@@ -25,7 +25,9 @@ if (nav) {
   function update() {
     let current = -1;
     sections.forEach((section, index) => {
-      if (section && section.getBoundingClientRect().top <= offset + 48) current = index;
+      if (!section) return;
+      const bounds = section.getBoundingClientRect();
+      if (bounds.top <= offset + 48 && bounds.bottom > 0) current = index;
     });
     // A short final section cannot always reach the reading line: native
     // anchor scrolling stops at the document boundary. Keep that visible
@@ -33,7 +35,7 @@ if (nav) {
     const last = sections[sections.length - 1];
     const maxScroll = document.documentElement.scrollHeight - innerHeight;
     if (maxScroll > 1 && window.scrollY >= maxScroll - 2 && last &&
-        last.getBoundingClientRect().top < innerHeight) current = sections.length - 1;
+        last.getBoundingClientRect().top < innerHeight && last.getBoundingClientRect().bottom > 0) current = sections.length - 1;
     if (current === activeIndex) return;
     activeIndex = current;
     links.forEach((link, index) => {
