@@ -182,10 +182,17 @@ for (const route of ['/about/', '/zh/about/']) {
     await expect.poll(() => page.evaluate(() => Math.abs(document.documentElement.scrollHeight - scrollY - innerHeight))).toBeLessThan(2);
     await page.evaluate(() => scrollBy({ top: -400, behavior: 'instant' }));
     await expect(link).not.toHaveAttribute('aria-current', 'location');
+    await link.click();
+    await expect(link).toHaveAttribute('aria-current', 'location');
     await page.evaluate(() => {
-      document.querySelector<HTMLElement>('footer')!.style.minHeight = '1600px';
+      // The page's first footer belongs to the collapsed biography. Add a
+      // visible tail so the final section actually leaves the viewport.
+      const footer = document.createElement('footer');
+      footer.style.minHeight = '1600px';
+      document.body.append(footer);
       scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
     });
+    await expect.poll(() => page.locator('#identity').evaluate(el => el.getBoundingClientRect().bottom)).toBeLessThan(0);
     await expect(link).not.toHaveAttribute('aria-current', 'location');
   });
 }
