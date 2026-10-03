@@ -120,13 +120,16 @@
     {{- $sOrdered := sort $sSibs "Params.series.order" "asc" }}
     {{- $sOrder := $seriesP.order | default 0 }}
     {{- $sTotal := $seriesP.total | default (len $sOrdered) }}
-    {{- $sColumnURL := printf "/columns/%s/" $sSlug }}
-    {{- if eq $page.Lang "zh" }}{{ $sColumnURL = printf "/zh/columns/%s/" $sSlug }}{{ end }}
+    {{- $sColumn := $page.Site.GetPage (printf "/columns/%s" $sSlug) }}
   <div class="marginalia-group marginalia-group--series">
     <span class="marginalia-label">{{ i18n "marginalia.series" | default "Series" }}</span>
     <span class="marginalia-series-summary-row">
-      <a class="marginalia-series-name marginalia-series-name--link" href="{{ $sColumnURL | relURL }}"
+      {{- with $sColumn }}
+      <a class="marginalia-series-name marginalia-series-name--link" href="{{ .RelPermalink }}"
          title="{{ if $sIsZh }}进入专栏{{ else }}Open column{{ end }}">{{ $seriesP.name }}</a>
+      {{- else }}
+      <span class="marginalia-series-name">{{ $seriesP.name }}</span>
+      {{- end }}
       <span class="marginalia-series-badge" aria-label="{{ if $sIsZh }}第 {{ $sOrder }} 篇，共 {{ $sTotal }} 篇{{ else }}Part {{ $sOrder }} of {{ $sTotal }}{{ end }}">
         {{ $sOrder }}<span class="marginalia-series-badge-sep">/</span>{{ $sTotal }}
       </span>

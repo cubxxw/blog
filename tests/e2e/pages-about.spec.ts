@@ -1,19 +1,30 @@
-import { test, expect } from '../helpers/frozen-site';
+import { test, expect, type Page } from '../helpers/frozen-site';
+
+async function prepareFullPage(page: Page) {
+  // Real reading reveals lazy images; a full-page capture must not accept empty
+  // offscreen placeholders as the visual baseline.
+  for (const selector of ['#workbench', '#studio-products', '#studio-road']) {
+    const section = page.locator(selector);
+    await section.scrollIntoViewIfNeeded();
+    await expect(section.locator('img').first()).toHaveJSProperty('complete', true);
+    await expect.poll(() => section.locator('img').first().evaluate((el: HTMLImageElement) => el.naturalWidth)).toBeGreaterThan(0);
+  }
+  await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
+  await page.waitForTimeout(100);
+}
 
 test.describe('About Page Visual Regression', () => {
   test('about keeps one clear narrative in both languages', async ({ page }) => {
     await page.goto('/zh/about/');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('构建系统');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('也理解自己');
-    await expect(page.getByRole('link', { name: '读我的故事' })).toHaveAttribute('href', '#story');
-    await expect(page.getByRole('link', { name: '浏览全部文章' })).toHaveAttribute('href', '/zh/articles/');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('熊鑫伟');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: '经历', exact: true })).toHaveAttribute('href', '#story');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: '文章', exact: true })).toHaveAttribute('href', '/zh/articles/');
     await expect(page.getByText('AI 创业者', { exact: true })).toHaveCount(0);
 
     await page.goto('/about/');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Building systems');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Staying curious');
-    await expect(page.getByRole('link', { name: 'Read my story' })).toHaveAttribute('href', '#story');
-    await expect(page.getByRole('link', { name: 'Browse all writing' })).toHaveAttribute('href', '/articles/');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Xinwei Xiong');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: 'My story', exact: true })).toHaveAttribute('href', '#story');
+    await expect(page.locator('.studio-hero__actions').getByRole('link', { name: 'Writing', exact: true })).toHaveAttribute('href', '/articles/');
   });
 
   test('about interview stays native when a live campaign is not configured', async ({ page }) => {
@@ -21,6 +32,7 @@ test.describe('About Page Visual Regression', () => {
 
     const interview = page.locator('#tell-me');
     const originalURL = page.url();
+    await interview.locator('.studio-interview-disclosure > summary').click();
 
     await expect(interview.locator('iframe')).toHaveCount(0);
     await expect(interview.getByRole('button', { name: '哪里让我不相信' })).toBeVisible();
@@ -39,6 +51,7 @@ test.describe('About Page Visual Regression', () => {
     await page.goto('/about/');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(500);
+    await prepareFullPage(page);
     await expect(page).toHaveScreenshot('about-desktop-full.png', {
       fullPage: true,
     });
@@ -57,6 +70,7 @@ test.describe('About Page Visual Regression', () => {
     await page.goto('/about/');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(500);
+    await prepareFullPage(page);
     await expect(page).toHaveScreenshot('about-mobile-full.png', {
       fullPage: true,
     });
