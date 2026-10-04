@@ -1,0 +1,4986 @@
+{
+  "schema": "psi-snapshot/2",
+  "meta": {
+    "runDate": "2026-10-04",
+    "startedAt": "2026-10-04T11:33:42.624Z",
+    "endedAt": "2026-10-04T11:42:47.894Z",
+    "fetchedAt": "2026-10-04T11:42:47.894Z",
+    "endpoint": "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
+    "apiKeyProvided": true,
+    "urlConfig": "lighthouserc.json",
+    "configuredUrlCount": 13,
+    "urlCount": 13,
+    "duplicatesRemoved": 0,
+    "strategies": [
+      "mobile",
+      "desktop"
+    ],
+    "categories": [
+      "performance",
+      "accessibility",
+      "best-practices",
+      "seo"
+    ],
+    "timeoutMs": 120000,
+    "maxAttempts": 3,
+    "planned": [
+      {
+        "url": "https://cubxxw.com/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/zh/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/zh/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/about/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/about/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/zh/about/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/zh/about/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/ai-agent/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/ai-agent/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/engineering/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/engineering/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/zh/ai-agent/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/zh/ai-agent/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/growth/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/growth/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/zh/growth/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/zh/growth/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/projects/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/projects/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/archives/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/archives/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "strategy": "desktop"
+      },
+      {
+        "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "strategy": "mobile"
+      },
+      {
+        "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "strategy": "desktop"
+      }
+    ],
+    "counts": {
+      "planned": 26,
+      "succeeded": 0,
+      "partial": 24,
+      "failed": 2,
+      "missing": 0,
+      "usable": 24,
+      "duplicate": 0,
+      "unplanned": 0,
+      "byStrategy": {
+        "mobile": {
+          "planned": 13,
+          "succeeded": 0,
+          "partial": 12,
+          "failed": 1,
+          "missing": 0,
+          "usable": 12
+        },
+        "desktop": {
+          "planned": 13,
+          "succeeded": 0,
+          "partial": 12,
+          "failed": 1,
+          "missing": 0,
+          "usable": 12
+        }
+      }
+    },
+    "runStatus": "partial",
+    "error": null
+  },
+  "measurements": [
+    {
+      "url": "https://cubxxw.com/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:33:44.644Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/",
+        "finalUrl": "https://cubxxw.com/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.81,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 3378.3520590667054,
+          "displayValue": "3.4 s",
+          "score": 0.67,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 3005.699191363047,
+          "displayValue": "3.0 s",
+          "score": 0.49,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 24.5,
+          "displayValue": "20 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 6309.335644537047,
+          "displayValue": "6.3 s",
+          "score": 0.42,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 4304.101071037036,
+          "displayValue": "4.3 s",
+          "score": 0.84,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 74 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 75419,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 29 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 29469,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3703,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 537 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 549993,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:35:04.418Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/",
+        "finalUrl": "https://cubxxw.com/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.87,
+        "accessibility": 0.92,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 839.6998537195095,
+          "displayValue": "0.8 s",
+          "score": 0.97,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 799.6998537195095,
+          "displayValue": "0.8 s",
+          "score": 0.95,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.0006888117540868221,
+          "displayValue": "0.001",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 260.30408549261335,
+          "displayValue": "260 ms",
+          "score": 0.67,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 1461.5623429177283,
+          "displayValue": "1.5 s",
+          "score": 0.84,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 1112.9041080354996,
+          "displayValue": "1.1 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 89 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 90937,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 29 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 29391,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3672,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 956 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 979416,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:35:29.495Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/",
+        "finalUrl": "https://cubxxw.com/zh/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.84,
+        "accessibility": 0.92,
+        "best-practices": 0.96,
+        "seo": 0.92
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 3005.7000845740376,
+          "displayValue": "3.0 s",
+          "score": 0.78,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 1804.7000845740376,
+          "displayValue": "1.8 s",
+          "score": 0.89,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.02687426412659423,
+          "displayValue": "0.027",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 18,
+          "displayValue": "20 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 11900.130854994844,
+          "displayValue": "11.9 s",
+          "score": 0.04,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 4297.152851324894,
+          "displayValue": "4.3 s",
+          "score": 0.84,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 74 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 75898,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 29 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 29813,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 524 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 536816,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/",
+      "strategy": "desktop",
+      "finalStatus": "failed",
+      "usable": false,
+      "reasonCategory": "psi-api-failure",
+      "reasonBasis": "PSI API returned HTTP 400; this is the PSI endpoint's status, never the origin's status",
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "final",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 400
+        }
+      ],
+      "psiHttpStatus": 400,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": "psi-api-failure: PSI API HTTP 400",
+      "errorKind": "http",
+      "errorMeta": {
+        "status": 400,
+        "networkCode": "unknown",
+        "timeoutMs": null,
+        "runtimeErrorCode": "unknown",
+        "payloadDetail": "unusable payload"
+      },
+      "provenance": null,
+      "caveats": [],
+      "scores": null,
+      "metrics": null,
+      "fieldData": null,
+      "originFieldData": null,
+      "seoAudits": null,
+      "diagnostics": null
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:36:19.201Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/about/",
+        "finalUrl": "https://cubxxw.com/about/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 1501,
+          "displayValue": "1.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 1091,
+          "displayValue": "1.1 s",
+          "score": 0.99,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.001708132066851911,
+          "displayValue": "0.002",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 25,
+          "displayValue": "30 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 1693.2292659147379,
+          "displayValue": "1.7 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 1501,
+          "displayValue": "1.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 12 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 11814,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 285 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 292125,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/about/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:36:30.803Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/about/",
+        "finalUrl": "https://cubxxw.com/about/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 423,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 305,
+          "displayValue": "0.3 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 24,
+          "displayValue": "20 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 367.4927320931645,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 436,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 12 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 12072,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 285 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 292103,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:36:41.316Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/about/",
+        "finalUrl": "https://cubxxw.com/zh/about/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.98,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 1517.0167672562966,
+          "displayValue": "1.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 1126.0104795351854,
+          "displayValue": "1.1 s",
+          "score": 0.99,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 49.5,
+          "displayValue": "50 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 3913.440312029817,
+          "displayValue": "3.9 s",
+          "score": 0.82,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 3403.6104795351857,
+          "displayValue": "3.4 s",
+          "score": 0.93,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 74 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 76045,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 12 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 11995,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 462 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 473251,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/about/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:36:56.901Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/about/",
+        "finalUrl": "https://cubxxw.com/zh/about/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 429.5,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 329.5,
+          "displayValue": "0.3 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 43,
+          "displayValue": "40 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 637.4859901672578,
+          "displayValue": "0.6 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 441.95000000000005,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 12 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 12256,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 286 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 293134,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:37:11.379Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/ai-agent/",
+        "finalUrl": "https://cubxxw.com/ai-agent/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.84,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 3155.7197460266443,
+          "displayValue": "3.2 s",
+          "score": 0.74,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 3155.719746026644,
+          "displayValue": "3.2 s",
+          "score": 0.44,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 94,
+          "displayValue": "90 ms",
+          "score": 0.98,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 4680.185038361291,
+          "displayValue": "4.7 s",
+          "score": 0.69,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 3784.1254632159043,
+          "displayValue": "3.8 s",
+          "score": 0.9,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 73 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 74780,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 66 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 67306,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3666,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 437 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 447559,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:37:29.051Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/ai-agent/",
+        "finalUrl": "https://cubxxw.com/ai-agent/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.96,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 0.92
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 807.2197827407686,
+          "displayValue": "0.8 s",
+          "score": 0.98,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 446.21967226140225,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.10366418810253668,
+          "displayValue": "0.104",
+          "score": 0.89,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 70.99999999999994,
+          "displayValue": "70 ms",
+          "score": 0.99,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 476.5606236202228,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 942.6216470419142,
+          "displayValue": "0.9 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 74 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 76009,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 66 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 67214,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3676,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 436 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 446513,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:37:48.493Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/engineering/",
+        "finalUrl": "https://cubxxw.com/engineering/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.87,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 3157.5147218158786,
+          "displayValue": "3.2 s",
+          "score": 0.74,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 3157.5147218158786,
+          "displayValue": "3.2 s",
+          "score": 0.44,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 73,
+          "displayValue": "70 ms",
+          "score": 0.99,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 3173.7212547384474,
+          "displayValue": "3.2 s",
+          "score": 0.92,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 3924.148506967622,
+          "displayValue": "3.9 s",
+          "score": 0.88,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 74 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 75549,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 67 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 68111,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3701,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 432 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 442108,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/engineering/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:38:06.412Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/engineering/",
+        "finalUrl": "https://cubxxw.com/engineering/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 1,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 805.73789045442,
+          "displayValue": "0.8 s",
+          "score": 0.98,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 444.7378904544201,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.0002920618159993933,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 483.62762616187354,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 805.73789045442,
+          "displayValue": "0.8 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 66 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 67765,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3692,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 258 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 263703,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:38:19.006Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/ai-agent/",
+        "finalUrl": "https://cubxxw.com/zh/ai-agent/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.89,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 3451.6750980381403,
+          "displayValue": "3.5 s",
+          "score": 0.65,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 2101.600056021794,
+          "displayValue": "2.1 s",
+          "score": 0.81,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 2878.9691447985033,
+          "displayValue": "2.9 s",
+          "score": 0.95,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 3451.6750980381403,
+          "displayValue": "3.5 s",
+          "score": 0.92,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 121 KiB",
+              "wastedMs": 600,
+              "wastedBytes": 123518,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 121 KiB",
+              "wastedMs": 600,
+              "wastedBytes": 123518,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 73 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 74828,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-css",
+              "title": "Minify CSS",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3797,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-css.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-css.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 527 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 539856,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/ai-agent/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:38:41.027Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/ai-agent/",
+        "finalUrl": "https://cubxxw.com/zh/ai-agent/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 881.073529885687,
+          "displayValue": "0.9 s",
+          "score": 0.97,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 481.03676494284343,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.0002544584457041563,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 546.4061505805281,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 881.0735298856871,
+          "displayValue": "0.9 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 121 KiB",
+              "wastedMs": 120,
+              "wastedBytes": 123722,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 121 KiB",
+              "wastedMs": 120,
+              "wastedBytes": 123722,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-css",
+              "title": "Minify CSS",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3795,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-css.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-css.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3684,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 534 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 546316,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/growth/",
+      "strategy": "mobile",
+      "finalStatus": "failed",
+      "usable": false,
+      "reasonCategory": "psi-api-failure",
+      "reasonBasis": "PSI API returned HTTP 400; this is the PSI endpoint's status, never the origin's status",
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "final",
+          "reasonCategory": "psi-api-failure",
+          "psiHttpStatus": 400
+        }
+      ],
+      "psiHttpStatus": 400,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": "psi-api-failure: PSI API HTTP 400",
+      "errorKind": "http",
+      "errorMeta": {
+        "status": 400,
+        "networkCode": "unknown",
+        "timeoutMs": null,
+        "runtimeErrorCode": "unknown",
+        "payloadDetail": "unusable payload"
+      },
+      "provenance": null,
+      "caveats": [],
+      "scores": null,
+      "metrics": null,
+      "fieldData": null,
+      "originFieldData": null,
+      "seoAudits": null,
+      "diagnostics": null
+    },
+    {
+      "url": "https://cubxxw.com/growth/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:39:14.049Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/growth/",
+        "finalUrl": "https://cubxxw.com/growth/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.93,
+        "accessibility": 0.96,
+        "best-practices": 0.96,
+        "seo": 0.92
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 845.716276086365,
+          "displayValue": "0.8 s",
+          "score": 0.97,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 444.71627608636504,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.0004681823446675799,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 89.99999999999989,
+          "displayValue": "90 ms",
+          "score": 0.98,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 2587.314011587435,
+          "displayValue": "2.6 s",
+          "score": 0.39,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 1045.1239980045207,
+          "displayValue": "1.0 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 74 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 76010,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 66 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 67641,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3666,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 521 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 533847,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:39:43.111Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/growth/",
+        "finalUrl": "https://cubxxw.com/zh/growth/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.91,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 3156.712646020494,
+          "displayValue": "3.2 s",
+          "score": 0.74,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 2102.0472063839657,
+          "displayValue": "2.1 s",
+          "score": 0.81,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.000004572612760055069,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 2461.3596489430174,
+          "displayValue": "2.5 s",
+          "score": 0.98,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 3156.7126460204945,
+          "displayValue": "3.2 s",
+          "score": 0.95,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 121 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 124120,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-css",
+              "title": "Minify CSS",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3798,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-css.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-css.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3672,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 795 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 814491,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:39:58.876Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/growth/",
+        "finalUrl": "https://cubxxw.com/zh/growth/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.98,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 1164.1432426020845,
+          "displayValue": "1.2 s",
+          "score": 0.9,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 524.0583580971454,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.0002248952392639454,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 663.3835958055298,
+          "displayValue": "0.7 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 1164.1432426020847,
+          "displayValue": "1.2 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 121 KiB",
+              "wastedMs": 120,
+              "wastedBytes": 124392,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 121 KiB",
+              "wastedMs": 120,
+              "wastedBytes": 124392,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-css",
+              "title": "Minify CSS",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3793,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-css.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-css.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3674,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 796 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 815309,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:40:15.730Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/projects/",
+        "finalUrl": "https://cubxxw.com/projects/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.92,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 1501.5,
+          "displayValue": "1.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 1161.5,
+          "displayValue": "1.2 s",
+          "score": 0.99,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 301,
+          "displayValue": "300 ms",
+          "score": 0.78,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 3404.144397500031,
+          "displayValue": "3.4 s",
+          "score": 0.89,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 1666.85,
+          "displayValue": "1.7 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 125 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 127545,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/projects/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:40:36.860Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/projects/",
+        "finalUrl": "https://cubxxw.com/projects/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.91,
+        "accessibility": 0.96,
+        "best-practices": 0.92,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 321,
+          "displayValue": "0.3 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 271,
+          "displayValue": "0.3 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 3829.681608267111,
+          "displayValue": "3.8 s",
+          "score": 0.12,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 321,
+          "displayValue": "0.3 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 117 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 119450,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/archives/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:40:58.590Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/archives/",
+        "finalUrl": "https://cubxxw.com/archives/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.89,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 3606.3804123458413,
+          "displayValue": "3.6 s",
+          "score": 0.61,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 1801.0465681913975,
+          "displayValue": "1.8 s",
+          "score": 0.89,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.00523704453663775,
+          "displayValue": "0.005",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 1942.5661552995632,
+          "displayValue": "1.9 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 3606.3804123458413,
+          "displayValue": "3.6 s",
+          "score": 0.91,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 66 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 67865,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 8 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 7707,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 394 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 403183,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/archives/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:41:16.866Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/archives/",
+        "finalUrl": "https://cubxxw.com/archives/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 914.7206269271596,
+          "displayValue": "0.9 s",
+          "score": 0.96,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 473.72062692715974,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.0005484757380482076,
+          "displayValue": "0.001",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 527.8045425696522,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 914.7206269271597,
+          "displayValue": "0.9 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 66 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 67942,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 8 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 7682,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 399 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 408645,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:41:33.057Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "finalUrl": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.93,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 1802,
+          "displayValue": "1.8 s",
+          "score": 0.98,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 1802,
+          "displayValue": "1.8 s",
+          "score": 0.89,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 6081.276076574982,
+          "displayValue": "6.1 s",
+          "score": 0.45,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 1802,
+          "displayValue": "1.8 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 62 KiB",
+              "wastedMs": 120,
+              "wastedBytes": 63414,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 62 KiB",
+              "wastedMs": 120,
+              "wastedBytes": 63414,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 10 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 10644,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 587 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 601328,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:41:49.293Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+        "finalUrl": "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 945.7179640368436,
+          "displayValue": "0.9 s",
+          "score": 0.96,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 444.69016293179715,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.030505968749555645,
+          "displayValue": "0.031",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 0,
+          "displayValue": "0 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 491.89307351069584,
+          "displayValue": "0.5 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 947.7180964230582,
+          "displayValue": "0.9 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 62 KiB",
+              "wastedMs": 40,
+              "wastedBytes": 63170,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 62 KiB",
+              "wastedMs": 40,
+              "wastedBytes": 63170,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 10 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 10651,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 560 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 573242,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "strategy": "mobile",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:42:05.741Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "mobile",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.67,
+        "accessibility": 0.94,
+        "best-practices": 0.96,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 12474.115199822281,
+          "displayValue": "12.5 s",
+          "score": 0,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 1968.0157415906215,
+          "displayValue": "2.0 s",
+          "score": 0.85,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 53.00000000000091,
+          "displayValue": "50 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 6591.450431743905,
+          "displayValue": "6.6 s",
+          "score": 0.38,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 12481.615271374967,
+          "displayValue": "12.5 s",
+          "score": 0.14,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 119 KiB",
+              "wastedMs": 890,
+              "wastedBytes": 121395,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-css",
+              "title": "Minify CSS",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 150,
+              "wastedBytes": 3790,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-css.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-css.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 8 KiB",
+              "wastedMs": 150,
+              "wastedBytes": 7722,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 119 KiB",
+              "wastedMs": 890,
+              "wastedBytes": 121395,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "displayValue": "Est savings of 74 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 75761,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 8 KiB",
+              "wastedMs": 150,
+              "wastedBytes": 7722,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoids enormous network payloads",
+              "displayValue": "Total size was 2,544 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 2604890,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+      "strategy": "desktop",
+      "finalStatus": "partial",
+      "usable": true,
+      "reasonCategory": null,
+      "reasonBasis": null,
+      "attempts": 1,
+      "attemptLog": [
+        {
+          "attempt": 1,
+          "outcome": "success",
+          "reasonCategory": null,
+          "psiHttpStatus": 200
+        }
+      ],
+      "psiHttpStatus": 200,
+      "originHttpStatus": null,
+      "lighthouseRuntimeError": null,
+      "error": null,
+      "provenance": {
+        "fetchTime": "2026-10-04T11:42:30.145Z",
+        "lighthouseVersion": "13.5.0",
+        "configSettings": {
+          "formFactor": "desktop",
+          "throttlingMethod": null,
+          "throttling": {
+            "rttMs": null,
+            "throughputKbps": null,
+            "requestLatencyMs": null,
+            "downloadThroughputKbps": null,
+            "uploadThroughputKbps": null,
+            "cpuSlowdownMultiplier": null
+          },
+          "screenEmulation": {
+            "mobile": null,
+            "width": null,
+            "height": null,
+            "deviceScaleFactor": null,
+            "disabled": null
+          },
+          "locale": "en-US",
+          "emulatedUserAgent": null
+        },
+        "requestedUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/",
+        "finalUrl": "https://cubxxw.com/zh/growth/posts/2025-annual-review/"
+      },
+      "caveats": [
+        "measurement provenance incomplete: configSettings.throttlingMethod missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.emulatedUserAgent missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.rttMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.throughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.requestLatencyMs missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.downloadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.uploadThroughputKbps missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.throttling.cpuSlowdownMultiplier missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.mobile missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.width missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.height missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.deviceScaleFactor missing or invalid (comparisons against versioned samples are withheld)",
+        "measurement provenance incomplete: configSettings.screenEmulation.disabled missing or invalid (comparisons against versioned samples are withheld)"
+      ],
+      "scores": {
+        "performance": 0.85,
+        "accessibility": 0.94,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "LCP": {
+          "unit": "ms",
+          "numericValue": 2682.135911738676,
+          "displayValue": "2.7 s",
+          "score": 0.41,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:largest-contentful-paint.numericValue"
+        },
+        "FCP": {
+          "unit": "ms",
+          "numericValue": 446.70527438094126,
+          "displayValue": "0.4 s",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:first-contentful-paint.numericValue"
+        },
+        "CLS": {
+          "unit": "unitless",
+          "numericValue": 0.0002544584457041563,
+          "displayValue": "0",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:cumulative-layout-shift.numericValue"
+        },
+        "TBT": {
+          "unit": "ms",
+          "numericValue": 38.30308941836216,
+          "displayValue": "40 ms",
+          "score": 1,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:total-blocking-time.numericValue"
+        },
+        "SI": {
+          "unit": "ms",
+          "numericValue": 852.9455419445821,
+          "displayValue": "0.9 s",
+          "score": 0.99,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:speed-index.numericValue"
+        },
+        "TTI": {
+          "unit": "ms",
+          "numericValue": 2686.1361208336584,
+          "displayValue": "2.7 s",
+          "score": 0.86,
+          "precision": "raw",
+          "provenance": "lighthouse-audit:interactive.numericValue"
+        }
+      },
+      "fieldData": {
+        "status": "no-sample",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "originFieldData": {
+        "status": "unknown",
+        "overallCategory": null,
+        "metrics": null
+      },
+      "seoAudits": {
+        "meta-description": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a meta description"
+        },
+        "document-title": {
+          "score": 1,
+          "displayValue": null,
+          "title": "Document has a `<title>` element"
+        }
+      },
+      "diagnostics": {
+        "lcpElement": null,
+        "costs": {
+          "savingsMs": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 118 KiB",
+              "wastedMs": 40,
+              "wastedBytes": 121271,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "savingsBytes": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "displayValue": "Est savings of 118 KiB",
+              "wastedMs": 40,
+              "wastedBytes": 121271,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unused-css-rules.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unused-css-rules.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-javascript",
+              "title": "Minify JavaScript",
+              "displayValue": "Est savings of 10 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 10667,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-javascript.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-javascript.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            },
+            {
+              "id": "unminified-css",
+              "title": "Minify CSS",
+              "displayValue": "Est savings of 4 KiB",
+              "wastedMs": 0,
+              "wastedBytes": 3792,
+              "totalBytes": null,
+              "provenance": {
+                "wastedMs": "lighthouse-audit:unminified-css.details.overallSavingsMs",
+                "wastedBytes": "lighthouse-audit:unminified-css.details.overallSavingsBytes",
+                "totalBytes": null
+              }
+            }
+          ],
+          "transferBytes": [
+            {
+              "id": "total-byte-weight",
+              "title": "Avoid enormous network payloads",
+              "displayValue": "Total size was 2,733 KiB",
+              "wastedMs": null,
+              "wastedBytes": null,
+              "totalBytes": 2798308,
+              "provenance": {
+                "wastedMs": null,
+                "wastedBytes": null,
+                "totalBytes": "lighthouse-audit:total-byte-weight.numericValue (numericUnit=byte; total transfer, not removable waste)"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
