@@ -1498,6 +1498,11 @@
       "at": "2026-10-04T17:10:23.406Z",
       "id": "em_08y5tpc33593z8051h8mr2evq7",
       "mode": "draft"
+    },
+    "https://cubxxw.com/ai-agent/posts/nango-user-defined-mcp-integration/": {
+      "at": "2026-10-04T17:10:23.406Z",
+      "id": "em_6hh3zf4m2d9bkaxnrwcvsv3fch",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4779,10 +4784,12 @@
     "[\"en\",\"https://cubxxw.com/ai-agent/posts/nango-user-defined-mcp-integration/\"]": {
       "language": "en",
       "url": "https://cubxxw.com/ai-agent/posts/nango-user-defined-mcp-integration/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "5a655004-7ccd-42b7-89b4-36b23474b9a2",
       "at": "2026-10-04T17:10:23.406Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_6hh3zf4m2d9bkaxnrwcvsv3fch",
+      "completedAt": "2026-10-04T17:10:23.406Z"
     }
   }
 }
