@@ -4760,6 +4760,14 @@
       "mode": "draft",
       "providerId": "em_7s1y6kdcjh94db18v9jgpqn3mn",
       "completedAt": "2026-10-02T18:06:24.249Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/ai-agent/posts/nango-user-defined-mcp-integration/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/ai-agent/posts/nango-user-defined-mcp-integration/",
+      "status": "pending",
+      "attemptId": "9359cac2-8c34-4034-8d2c-68633d23e6d4",
+      "at": "2026-10-04T17:10:23.406Z",
+      "mode": "draft"
     }
   }
 }
