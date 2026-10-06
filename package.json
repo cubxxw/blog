@@ -57,6 +57,11 @@
     "site:build": "node scripts/site-build.mjs",
     "site:verify": "node scripts/site-verify.mjs"
   },
+  "overrides": {
+    "ts-api-utils": {
+      "typescript": "5.9.3"
+    }
+  },
   "devDependencies": {
     "@netlify/functions": "^6.0.0",
     "@playwright/test": "1.63.0",
