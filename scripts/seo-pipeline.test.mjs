@@ -1123,6 +1123,11 @@ test('analyze workflow binds the verified action pin, boundary argv and prepared
   assert.equal(model.env.ACTIONS_STEP_DEBUG, 'false', 'debug logging is forced false AT action execution');
   assert.equal(model.with.use_commit_signing, undefined, 'no commit signing');
   const args = model.with.claude_args;
+  assert.equal(
+    args.trim(),
+    `${PROOF.boundary.flags} --json-schema '${JSON.stringify(PROOF.boundary.jsonSchema)}' --max-turns ${PROOF.boundary.maxTurns}`,
+    'the exact verified argv is required; appended or duplicate options need a new proof',
+  );
   assert.ok(args.includes(PROOF.boundary.flags), 'verified boundary flags verbatim');
   assert.ok(!args.includes('--tools ""'), 'the quoted empty tools form is forbidden');
   assert.ok(!args.includes('--bare'), '--bare skips OAuth and is forbidden');

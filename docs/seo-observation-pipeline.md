@@ -436,7 +436,12 @@ The interpretation job is optional, read-only and tool-free. Verified boundary
 boundary argument FAILS the semantic workflow tests until explicitly
 re-verified):
 
-- `anthropics/claude-code-action@v1.0.231` → SDK 0.3.278 → CLI 2.1.278.
+- `anthropics/claude-code-action@v1.0.240` → SDK 0.3.288 → CLI 2.1.288.
+  The [reproducible offline Linux replay](seo-model-boundary-verification.md)
+  checks the actual Action parser, SDK-generated argv and native CLI initial
+  tool inventory against hash-checked official artifacts. Without a schema
+  the tool list is empty; with the workflow's schema it contains only
+  `StructuredOutput`. No operational tools or MCP servers are available.
 - argv: `--tools= --disallowedTools "mcp__*" --strict-mcp-config
   --mcp-config '{"mcpServers":{}}' --safe-mode --disable-slash-commands` plus
   `--json-schema` (one bounded `explanation` string, `additionalProperties:false`)
@@ -520,9 +525,10 @@ Current release and run receipts are recorded in [#390](https://github.com/cubxx
 2. Scheduled runs with complete status records (Snapshot/Analyze/Autofix).
 3. One manual 56-day backfill (`--lookback 55`) and GSC UI same-filter
    verification.
-4. Real Linux action initialization/tool inventory/OAuth success and a live
-   structured-output readback for the model job (the offline proof used the
-   fixed Darwin package; no Linux/model test is claimed).
+4. Real GitHub Actions initialization/OAuth success and a live structured-output
+   readback for the model job. The offline Linux replay verifies CLI startup
+   and tool inventory with no credentials or network; it does not establish
+   live authentication or model success.
 5. The A+B1+B2 integrated release. Apply mode remains unavailable.
 
 ## Verification performed for B1 (offline)
