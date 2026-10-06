@@ -2,6 +2,15 @@
 
 Baseline: `56dc2879ecc1d7451990a44df94b569c7b5c7639` (26 September 2026).
 
+The central homepage chat entry and its chat header use the author's supplied
+forest hiking photograph, cropped to a 400px square WebP at
+`static/images/xinwei-hiking-avatar.webp`. Both languages share this asset and
+retain the existing circular frame, online badge and chat interaction.
+The portrait remains visible when the 3D orb mounts. Local validation passed
+the production Hugo build and eight language/theme/viewport combinations
+(1440px and 375px), including chat open/close, reduced motion, image loading,
+visibility with the orb mounted, no horizontal overflow and no page errors.
+
 ## Visitor and design decision
 
 A first-time reader needs to understand whose work this is, find a useful article

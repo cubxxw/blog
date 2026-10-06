@@ -114,6 +114,7 @@
         {{- $bubblesZHData = $bubblesZHData | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
       {{- end -}}
       <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
+        data-avatar-src="{{ "images/xinwei-hiking-avatar.webp" | relURL }}"
         data-bubbles-en='{{ $bubblesENData | jsonify }}'
         data-bubbles-zh='{{ $bubblesZHData | jsonify }}'
         data-sys-en="{{ $d.ai.sysPromptEn }}"
@@ -533,17 +534,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
     if (bearOrb && typeof bearOrb[method] === 'function') bearOrb[method](val);
   }
 
-  var CHIBI = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-    '<path d="M22 95 Q22 70 50 70 Q78 70 78 95 Z" fill="#FAF8F6"/>' +
-    '<ellipse cx="50" cy="68" rx="9" ry="3" fill="#E8DCCA" opacity="0.6"/>' +
-    '<circle cx="50" cy="44" r="22" fill="#FFE4C4"/>' +
-    '<path d="M28 42 Q28 22 50 20 Q72 22 72 42 Q72 36 64 32 Q56 28 50 30 Q44 28 36 32 Q28 36 28 42 Z" fill="#2B1810"/>' +
-    '<circle cx="32" cy="26" r="5" fill="#2B1810"/><circle cx="68" cy="26" r="5" fill="#2B1810"/>' +
-    '<circle cx="32" cy="26" r="2.5" fill="#8B5A3C"/><circle cx="68" cy="26" r="2.5" fill="#8B5A3C"/>' +
-    '<circle cx="42" cy="46" r="2.4" fill="#2B1810"/><circle cx="58" cy="46" r="2.4" fill="#2B1810"/>' +
-    '<circle cx="42.7" cy="45.4" r="0.8" fill="#FFFFFF"/><circle cx="58.7" cy="45.4" r="0.8" fill="#FFFFFF"/>' +
-    '<circle cx="38" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/><circle cx="62" cy="52" r="2.2" fill="#FFB3A1" opacity="0.6"/>' +
-    '<path d="M46 54 Q50 58 54 54" stroke="#2B1810" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>';
+  var PORTRAIT = '<img class="hp-bear-portrait" src="'+esc(root.dataset.avatarSrc)+'" alt="Xinwei Xiong" width="400" height="400" decoding="async">';
 
   function renderMsg(value) { return renderMessage(value, window.location.origin); }
   var requestSerial = 0, activeRequest = null, retryText = '', openerMessage = null;
@@ -603,7 +594,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
         '<button class="hp-bear-avatar-btn" id="hp-avatar-btn" aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
           '<span class="hp-bear-avatar-pulse"></span>'+
           '<span class="hp-bear-avatar-pulse hp-bear-avatar-pulse-2"></span>'+
-          '<span class="hp-bear-avatar-core"><span class="hp-bear-chibi">'+CHIBI+'</span></span>'+
+          '<span class="hp-bear-avatar-core">'+PORTRAIT+'</span>'+
           '<span class="hp-bear-avatar-status"><span class="hp-bear-avatar-status-dot"></span>'+(isZh?'在线':'ONLINE')+'</span>'+
         '</button>'+
         '<div class="hp-bear-hud hp-bear-hud-tl"><div class="hp-bear-hud-label">DIGITAL TWIN</div><div class="hp-bear-hud-val">{{ $d.ai.hudTwinVal }}</div></div>'+
@@ -677,7 +668,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
       '<section class="hp-bear-chat" tabindex="-1" role="region" aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
         '<div class="hp-bear-chat-head">'+
           '<div class="hp-bear-chat-head-left">'+
-            '<span class="hp-bear-chat-avatar">'+CHIBI+'<span class="hp-bear-chat-avatar-dot"></span></span>'+
+            '<span class="hp-bear-chat-avatar">'+PORTRAIT+'<span class="hp-bear-chat-avatar-dot"></span></span>'+
             '<div>'+
               '<div class="hp-bear-chat-name">Bear <span class="hp-bear-chat-name-zh">· 熊</span></div>'+
               '<div class="hp-bear-chat-meta"><span class="hp-bear-chat-pulse-dot"></span>'+(loading?(isZh?'正在输入…':'typing…'):(isZh?'在线 · 通常几秒回复':'online · usually replies in seconds'))+'</div>'+

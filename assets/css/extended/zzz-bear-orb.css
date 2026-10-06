@@ -7,9 +7,8 @@
    The stage is NEVER torn down on orbit↔chat swaps, so the same orb flows
    between states: forward in orbit, recessed behind the chat glass.
 
-   When the orb actually mounts (.has-orb), the old CSS avatar puck is
-   hidden so the live shader sphere shows through; without WebGL / with
-   reduced-motion the puck stays as the graceful fallback.
+   The author's portrait remains visible in front of the live shader sphere.
+   Without WebGL or with reduced motion, the same portrait is the fallback.
 
    zzz- prefix keeps this late in the cascade, after homepage-daypage.css.
    ============================================================ */
@@ -70,22 +69,10 @@
   .hp-bear-orbit-wrap { display: none; }
 }
 
-/* When the live orb is mounted, dissolve the fallback avatar puck so the
-   shader sphere is what the eye sees. The button stays in the DOM as a
-   transparent hit-area (and keyboard target) centred on the orb. */
-.hp-bear-orbit-wrap.has-orb .hp-bear-avatar-core,
+/* The sphere supplies ambient motion; keep the portrait, button and online
+   badge unchanged, and suppress only the redundant CSS pulse rings. */
 .hp-bear-orbit-wrap.has-orb .hp-bear-avatar-pulse {
   opacity: 0;
-}
-.hp-bear-orbit-wrap.has-orb .hp-bear-avatar-btn {
-  background: transparent;
-  /* enlarge the hit-area to roughly match the visible orb */
-  width: 150px;
-  height: 150px;
-}
-/* Keep the ONLINE status chip — it anchors the orb as "Bear, online". */
-.hp-bear-orbit-wrap.has-orb .hp-bear-avatar-status {
-  bottom: -2px;
 }
 
 /* ---- Chat: glassmorphism so the orb glow seeps through --------------- */

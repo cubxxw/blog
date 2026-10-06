@@ -559,7 +559,13 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   box-shadow: 0 12px 32px rgba(93, 48, 0, 0.22), 0 0 0 6px var(--accent-soft);
 }
 
-.hp-bear-chibi { width: 80px; height: 80px; }
+.hp-bear-portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
 .hp-bear-avatar-status {
   position: absolute;
@@ -666,8 +672,6 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   background: var(--surface-white);
   flex-shrink: 0;
 }
-
-.hp-bear-chat-avatar svg { width: 100%; height: 100%; }
 
 .hp-bear-chat-avatar-dot {
   position: absolute;
