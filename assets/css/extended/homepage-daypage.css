@@ -523,7 +523,13 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   align-items: center;
   justify-content: center;
   z-index: 3;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
+
+/* Keep the hit area stationary while pressing; the mirror has its own motion. */
+.hp-bear-avatar-btn:active { transform: none; }
 
 .hp-bear-avatar-pulse {
   position: absolute;

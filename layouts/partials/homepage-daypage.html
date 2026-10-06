@@ -534,7 +534,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
     if (bearOrb && typeof bearOrb[method] === 'function') bearOrb[method](val);
   }
 
-  var PORTRAIT = '<img class="hp-bear-portrait" src="'+esc(root.dataset.avatarSrc)+'" alt="Xinwei Xiong" width="400" height="400" decoding="async">';
+  var PORTRAIT = '<img class="hp-bear-portrait" src="'+esc(root.dataset.avatarSrc)+'" alt="Xinwei Xiong" width="400" height="400" decoding="async" draggable="false">';
 
   function renderMsg(value) { return renderMessage(value, window.location.origin); }
   var requestSerial = 0, activeRequest = null, retryText = '', openerMessage = null;
@@ -591,7 +591,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
           '<circle class="orb-dot orb-dot-3" cx="40" cy="160" r="1.5" fill="var(--fg-muted)"/>'+
         '</svg>'+
         bubbles+
-        '<button class="hp-bear-avatar-btn" id="hp-avatar-btn" aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
+        '<button class="hp-bear-avatar-btn" id="hp-avatar-btn" data-no-ripple aria-label="'+(isZh?'与 Bear 对话':'Talk to Bear')+'">'+
           '<span class="hp-bear-avatar-pulse"></span>'+
           '<span class="hp-bear-avatar-pulse hp-bear-avatar-pulse-2"></span>'+
           '<span class="hp-bear-avatar-core">'+PORTRAIT+'</span>'+

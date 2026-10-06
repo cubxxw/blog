@@ -424,6 +424,8 @@
         if (e.button != null && e.button !== 0) return;
         var host = e.target.closest && e.target.closest(RIPPLE_SELECTOR);
         if (!host) return;
+        // Controls with their own layered feedback must retain their layout.
+        if (host.hasAttribute('data-no-ripple')) return;
         // Skip disabled controls.
         if (host.disabled || host.getAttribute('aria-disabled') === 'true') return;
         spawnRipple(host, e.clientX, e.clientY);

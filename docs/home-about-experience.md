@@ -16,6 +16,16 @@ pointer and motion enabled, the photo moves by up to 4px inside the circular
 crop, the frame tilts by up to 3 degrees and a soft glass highlight follows
 the pointer. Leaving or blurring the button recenters the photo. Clicking
 still opens chat; touch and reduced-motion views keep a static portrait.
+The avatar opts out of the delegated click ripple through `data-no-ripple`:
+that ripple makes direct children relatively positioned, which moved the
+online badge into the flex row and squeezed the photo during a held press.
+The avatar's hit area stays stationary when pressed, and its photo disables
+native image dragging. Other buttons retain their existing ripple feedback.
+The shared feedback script URL includes its content hash so returning visitors
+receive the corrected handler. Validation covered 1.1-second held mouse/touch
+presses and repeated chat clicks in eight language/theme/viewport combinations;
+the photo stayed round, the badge stayed anchored, ordinary ripples remained
+available, and the production build and script syntax check passed.
 
 ## Visitor and design decision
 

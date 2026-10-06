@@ -5,7 +5,7 @@
 {{- $isProjectsLanding := and (eq .Kind "section") (eq .Section "projects") -}}
 {{- if not (or $isLeanAbout $isProjectsLanding) }}
 {{- if not $isArticlesLibrary }}
-<script src="{{ "/js/micro-interactions.js" | relURL }}" defer></script>
+<script src="{{ "/js/micro-interactions.js" | relURL }}?v={{ readFile "static/js/micro-interactions.js" | sha256 }}" defer></script>
 {{- if (partial "site-capabilities.html" .).ai }}
 <script src="{{ "/js/blog-ai-inline.js" | relURL }}" defer></script>
 {{- end }}
