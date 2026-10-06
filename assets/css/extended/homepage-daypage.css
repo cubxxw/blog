@@ -479,28 +479,39 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-bear-bubble {
   position: absolute;
-  /* The bubble is positioned by left/top (set inline as calc(50% ± Npx)) and
-     centred with this translate. It is intentionally STATIC — no float
-     animation. A previous translateY bob shared this same `transform`, so it
-     moved the button every frame and a real mouse press landed mousedown and
-     mouseup on different spots → the browser never fired `click` and the tap
-     was silently swallowed. A still target clicks reliably every time; the
-     orbiting rings + the breathing 3D orb already supply the motion. */
+  left: var(--question-x);
+  top: var(--question-y);
+  /* Stable targets: animation belongs to the ambient orb, never the buttons. */
   transform: translate(-50%, -50%);
-  padding: 6px 12px;
-  background: var(--surface-white);
+  width: min(154px, 37%);
+  min-height: 44px;
+  padding: 9px 12px;
+  background: color-mix(in srgb, var(--surface-white) 92%, transparent);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
+  border-radius: 16px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 12.5px;
+  line-height: 1.55;
   color: var(--fg-primary);
+  text-align: center;
   cursor: pointer;
   transition: background 180ms ease-out, border-color 180ms ease-out,
-              color 180ms ease-out, box-shadow 180ms ease-out, transform 120ms ease-out;
-  white-space: nowrap;
-  box-shadow: var(--shadow-card);
+              color 180ms ease-out, box-shadow 180ms ease-out;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+  box-shadow: 0 3px 12px rgba(45, 35, 25, 0.045);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   z-index: 2;
 }
+
+.hp-bear-bubble[data-slot="0"] { --question-x: 50%; --question-y: 11%; width: min(180px, 46%); }
+.hp-bear-bubble[data-slot="1"] { --question-x: 81%; --question-y: 33.5%; }
+.hp-bear-bubble[data-slot="2"] { --question-x: 81%; --question-y: 66.5%; }
+.hp-bear-bubble[data-slot="3"] { --question-x: 50%; --question-y: 89%; width: min(180px, 46%); }
+.hp-bear-bubble[data-slot="4"] { --question-x: 19%; --question-y: 66.5%; }
+.hp-bear-bubble[data-slot="5"] { --question-x: 19%; --question-y: 33.5%; }
 
 .hp-bear-bubble:hover,
 .hp-bear-bubble:focus-visible,
@@ -508,8 +519,8 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   background: var(--accent-soft);
   border-color: var(--accent-border);
   color: var(--accent);
-  box-shadow: 0 4px 12px rgba(93, 48, 0, 0.12);
-  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 5px 16px rgba(93, 48, 0, 0.09);
+  transform: translate(-50%, -50%);
 }
 
 .hp-bear-avatar-btn {
@@ -593,6 +604,15 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+}
+
+/* The two-column hero narrows just above the mobile breakpoint. Preserve a
+   gap between the longest question cards and the circular portrait there. */
+@media (min-width: 769px) and (max-width: 900px) {
+  .hp-bear-orbit-wrap { min-height: 560px; }
+  .hp-bear-orbit { height: 560px; }
+  .hp-bear-avatar-btn { width: 84px; height: 84px; }
+  .hp-bear-avatar-core { width: 72px; height: 72px; }
 }
 
 .hp-bear-avatar-status {
@@ -938,10 +958,10 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-bear-chat-quick-btn:hover:not(:disabled) { background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent); }
 
-/* Empty-chat starter state: the full six-lane guided set, wrapped into a
-   quiet two-row grid instead of a cropped horizontal scroller. */
+/* Show all six selected questions in full, including on the compact mobile chat. */
 .hp-bear-chat-quick.is-start {
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   overflow-x: visible;
 }
 
@@ -951,6 +971,18 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.hp-bear-chat-quick.is-start .hp-bear-chat-quick-btn {
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  text-align: left;
+  line-height: 1.5;
 }
 
 /* Tiny mono label in front of backend-derived followup chips. */

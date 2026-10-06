@@ -27,6 +27,19 @@ presses and repeated chat clicks in eight language/theme/viewport combinations;
 the photo stayed round, the badge stayed anchored, ordinary ripples remained
 available, and the production build and script syntax check passed.
 
+The homepage draws six unique questions from the author's 36-question pool on
+each page load. Chinese wording is preserved verbatim and the English pool
+follows the same order. Reopening chat retains that page's selection, including
+the mobile chat starters. Six fixed percentage-based slots accommodate wrapped
+questions around the portrait, with translucent surfaces, thin borders and
+soft shadows. Buttons remain stationary on hover and press, and opt out of
+the generic ripple so feedback cannot displace the question or its hit area.
+At 769–900px the orbit gets extra vertical space and a 72px portrait to keep
+long English questions clear of neighboring cards. The empty-chat starters
+use two columns and wrap their full text. Validation passed six helper tests,
+12 language/theme/viewport combinations, and all 36 questions in every slot
+at 769, 900 and 901px in both languages. Chat API responses were mocked.
+
 ## Visitor and design decision
 
 A first-time reader needs to understand whose work this is, find a useful article

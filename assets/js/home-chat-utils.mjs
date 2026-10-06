@@ -1,5 +1,15 @@
-// Small shared primitives: no DOM dependency, so transport and link handling
+// Small shared primitives: no DOM dependency, so question selection, transport and link handling
 // can be tested against the exact code shipped by Hugo.
+export function sampleQuestions(pool, count, random = Math.random) {
+  const questions = pool.slice();
+  const size = Math.min(count, questions.length);
+  for (let i = 0; i < size; i++) {
+    const index = i + Math.floor(random() * (questions.length - i));
+    [questions[i], questions[index]] = [questions[index], questions[i]];
+  }
+  return questions.slice(0, size);
+}
+
 export function escapeHTML(value) {
   return String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 }

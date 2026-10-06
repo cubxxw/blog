@@ -103,20 +103,10 @@
       </div>
 
       {{- if $capabilities.ai -}}
-      {{- $bubblesENData := slice -}}
-      {{- $angles := slice -90 -30 30 90 150 210 -}}
-      {{- $dists  := slice 1.0 1.05 0.95 1.0 1.05 0.95 -}}
-      {{- range $i, $text := $d.ai.bubblesEn -}}
-        {{- $bubblesENData = $bubblesENData | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
-      {{- end -}}
-      {{- $bubblesZHData := slice -}}
-      {{- range $i, $text := $d.ai.bubblesZh -}}
-        {{- $bubblesZHData = $bubblesZHData | append (dict "text" $text "angle" (index $angles $i) "dist" (index $dists $i)) -}}
-      {{- end -}}
       <div id="hp-bear-ai" class="hp-bear-orbit-wrap" data-lang="{{ $lang }}"
         data-avatar-src="{{ "images/xinwei-hiking-avatar.webp" | relURL }}"
-        data-bubbles-en='{{ $bubblesENData | jsonify }}'
-        data-bubbles-zh='{{ $bubblesZHData | jsonify }}'
+        data-bubbles-en='{{ $d.ai.bubblesEn | jsonify }}'
+        data-bubbles-zh='{{ $d.ai.bubblesZh | jsonify }}'
         data-sys-en="{{ $d.ai.sysPromptEn }}"
         data-sys-zh="{{ $d.ai.sysPromptZh }}">
         {{/* Persistent 3D stage: the Three.js canvas lives here and is NEVER
@@ -500,7 +490,7 @@
 
 {{- $homeChatUtils := resources.Get "js/home-chat-utils.mjs" | js.Build (dict "format" "esm" "minify" hugo.IsProduction) | fingerprint -}}
 <script type="module">
-import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatUtils.RelPermalink }}";
+import { escapeHTML as esc, renderMessage, createSSEParser, sampleQuestions } from "{{ $homeChatUtils.RelPermalink }}";
 (function() {
   var isZh = document.documentElement.lang === 'zh';
   {{- if $capabilities.ai }}
@@ -510,7 +500,9 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
   // #hp-bear-stage underneath is left untouched across swaps.
   var layer = document.getElementById('hp-bear-layer') || root;
   isZh = root.dataset.lang === 'zh';
-  var suggestions = JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn);
+  // Choose once per document load; reopening chat keeps the same six prompts.
+  var suggestions = sampleQuestions(JSON.parse(isZh ? root.dataset.bubblesZh : root.dataset.bubblesEn), 6)
+    .map(function(text) { return { text: text }; });
   var chatOpen = false, messages = [], loading = false, streaming = false;
   // Guided-question rotation: chips the visitor already tapped/typed drop out
   // of the quick row, so it always offers something new. `followups` are
@@ -559,12 +551,8 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
 
   function renderOrbit() {
     root.classList.remove('is-chat-open');
-    var r = 155;
     var bubbles = suggestions.map(function(s,i) {
-      var rad = s.angle * Math.PI / 180;
-      var x = (Math.cos(rad) * r * s.dist).toFixed(1);
-      var y = (Math.sin(rad) * r * s.dist).toFixed(1);
-      return '<button class="hp-bear-bubble" style="left:calc(50% + '+x+'px);top:calc(50% + '+y+'px);animation-delay:'+(i*0.12)+'s" data-msg="'+esc(s.text)+'">'+s.text+'</button>';
+      return '<button class="hp-bear-bubble" data-slot="'+i+'" data-no-ripple data-msg="'+esc(s.text)+'">'+esc(s.text)+'</button>';
     }).join('');
 
     // Orbit state: bring the orb forward (un-recess) — it's the hero again.
@@ -666,7 +654,7 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
     if (loading && !streaming) bodyHtml += '<div class="hp-bear-chat-msg hp-bear-chat-msg-bear"><div class="hp-bear-chat-bubble hp-bear-chat-bubble-typing"><span><i></i><i></i><i></i></span></div></div>';
 
     // Quick row: empty chat shows the full starter set (wrapped grid, same
-    // six lanes as the orbit); once talking, backend followups win, else the
+    // six selected questions as the orbit); once talking, backend followups win, else the
     // starter questions not yet asked keep rotating in.
     var isStart = messages.length === 0;
     var chips;

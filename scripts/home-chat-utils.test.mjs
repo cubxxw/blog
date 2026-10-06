@@ -1,6 +1,32 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createSSEParser, renderMessage, safeLink } from '../assets/js/home-chat-utils.mjs';
+import * as chatUtils from '../assets/js/home-chat-utils.mjs';
+
+test('question sampling returns six distinct eligible questions without changing the pool', () => {
+  assert.equal(typeof chatUtils.sampleQuestions, 'function');
+  const pool = Array.from({ length: 36 }, (_, i) => `question-${i}`);
+  const original = pool.slice();
+  for (const random of [() => 0, () => 0.999999, () => 0.5]) {
+    const selected = chatUtils.sampleQuestions(pool, 6, random);
+    assert.equal(selected.length, 6);
+    assert.equal(new Set(selected).size, 6);
+    assert.ok(selected.every(question => pool.includes(question)));
+    assert.deepEqual(pool, original);
+  }
+  assert.deepEqual(chatUtils.sampleQuestions(['one', 'two'], 6, () => 0), ['one', 'two']);
+});
+
+test('all 36 questions can be selected and new draws can change the set', () => {
+  assert.equal(typeof chatUtils.sampleQuestions, 'function');
+  const pool = Array.from({ length: 36 }, (_, i) => `question-${i}`);
+  const firstPicks = new Set();
+  for (let i = 0; i < pool.length; i++) {
+    firstPicks.add(chatUtils.sampleQuestions(pool, 6, () => (i + 0.5) / pool.length)[0]);
+  }
+  assert.equal(firstPicks.size, 36);
+  assert.notDeepEqual(chatUtils.sampleQuestions(pool, 6, () => 0), chatUtils.sampleQuestions(pool, 6, () => 0.999999));
+});
 
 test('SSE preserves every UTF-8 byte boundary, CRLF and unterminated final event', () => {
   const expected = ['{"delta":"你好，熊 🐻"}', '[DONE]', '{"followups":[]}'];
