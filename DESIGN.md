@@ -118,8 +118,26 @@
 - 小于 1024px 回归单栏；辅助工具进入 Bottom Sheet
 - Bottom Sheet 不得遮挡正文关键内容，必须支持键盘、焦点管理和关闭操作
 - 代码块、表格、引用、图片和脚注需要统一的阅读语法
+- 正文原生 `<details>/<summary>` 折叠遵循下文 Article Disclosure 规则
 - 图片只有在提供信息、证据、解释或叙事价值时使用
 - 普通长文不强制配置装饰性配图
+
+### Article Disclosure
+
+- 正文中的原生 `<details>/<summary>`（含 PaperMod collapse shortcode）采用扁平
+  编辑式折叠条：整宽 summary 条带、上下发丝分隔线、由现有 token 派生的暖中性
+  背景；不使用圆角卡片、投影或多余装饰
+- summary 继承正文衬线字体，标题层级略强于正文；右侧动作明确显示
+  展开/收起（Expand/Collapse），配一枚细 chevron，收起时朝下、展开时朝上
+- 整条 summary 都是点击区域，Enter/Space 键盘切换与展开语义保持原生
+  `<details>` 行为，禁用 JavaScript 时依然完整可用；焦点轮廓必须清晰可见
+- 展开内容保持舒适缩进和一条发丝级左导引线；普通 `>` 引用仍是引用，
+  不做全局 blockquote 改动
+- 样式只作用于正文无 class 的 details 与 `article-disclosure`；FAQ、目录、侧栏、
+  About 与 `.ib-*` 等专用 details 继续使用各自组件样式
+- JavaScript 只做渐进增强：为长内容块在底部追加 收起 ↑（Collapse ↑）按钮，
+  收起后把焦点归还 summary，summary 已在屏内时不产生滚动跳动
+- 动效服从 reduced motion；打印时隐藏动作与底部按钮标签；触控目标不小于 44px
 
 ### Projects and About
 

@@ -444,6 +444,11 @@
 </script>
 {{- end }}
 
+{{- /* Keep page-dependent loading outside the cached footer. */ -}}
+{{- if in $content "<details" }}
+<script src="{{ "/js/article-disclosure.js" | relURL }}" defer></script>
+{{- end }}
+
 {{- partial "related-posts.html" . -}}
 
 {{- end }}{{/* end main */}}
