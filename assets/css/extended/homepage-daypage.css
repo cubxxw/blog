@@ -514,8 +514,8 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-bear-avatar-btn {
   position: relative;
-  width: 110px;
-  height: 110px;
+  width: 96px;
+  height: 96px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -541,22 +541,44 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 }
 
 .hp-bear-avatar-core {
-  width: 100px;
-  height: 100px;
+  position: relative;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   background: var(--surface-white);
   border: 2px solid var(--accent-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(93, 48, 0, 0.15), 0 0 0 4px var(--accent-soft);
+  box-shadow: 0 6px 18px rgba(93, 48, 0, 0.15), 0 0 0 3px var(--accent-soft);
+  transform: perspective(450px) rotateX(var(--mirror-tilt-x, 0deg)) rotateY(var(--mirror-tilt-y, 0deg));
   transition: box-shadow 200ms, transform 200ms;
   overflow: hidden;
 }
 
 .hp-bear-avatar-btn:hover .hp-bear-avatar-core {
-  transform: scale(1.06);
-  box-shadow: 0 12px 32px rgba(93, 48, 0, 0.22), 0 0 0 6px var(--accent-soft);
+  box-shadow: 0 8px 24px rgba(93, 48, 0, 0.2), 0 0 0 3px var(--accent-soft);
+}
+
+/* A clipped photograph under a thin glass reflection, like a small mirror. */
+.hp-bear-avatar-core::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(ellipse at var(--mirror-light-x, 30%) var(--mirror-light-y, 25%), rgba(255, 255, 255, 0.24), transparent 62%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55), inset 0 2px 5px rgba(255, 255, 255, 0.18);
+}
+
+.hp-bear-avatar-core .hp-bear-portrait {
+  transform: translate(var(--portrait-x, 0px), var(--portrait-y, 0px)) scale(1.14);
+  transition: transform 160ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-bear-avatar-core { transform: none; transition: none; }
+  .hp-bear-avatar-core .hp-bear-portrait { transform: none; transition: none; }
 }
 
 .hp-bear-portrait {

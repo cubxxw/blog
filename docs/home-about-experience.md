@@ -11,6 +11,12 @@ the production Hugo build and eight language/theme/viewport combinations
 (1440px and 375px), including chat open/close, reduced motion, image loading,
 visibility with the orb mounted, no horizontal overflow and no page errors.
 
+The desktop portrait frame is now 84px (previously 100px). With a fine mouse
+pointer and motion enabled, the photo moves by up to 4px inside the circular
+crop, the frame tilts by up to 3 degrees and a soft glass highlight follows
+the pointer. Leaving or blurring the button recenters the photo. Clicking
+still opens chat; touch and reduced-motion views keep a static portrait.
+
 ## Visitor and design decision
 
 A first-time reader needs to understand whose work this is, find a useful article

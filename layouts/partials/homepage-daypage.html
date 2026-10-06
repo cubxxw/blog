@@ -604,7 +604,32 @@ import { escapeHTML as esc, renderMessage, createSSEParser } from "{{ $homeChatU
         '<div class="hp-bear-cta-line">'+(isZh?'点击头像 · 与 Bear 的数字分身对话':"Tap the orb · Talk to Bear's digital twin")+'</div>'+
       '</div>';
 
-    document.getElementById('hp-avatar-btn').addEventListener('click', function() { orb('pulse'); openChat(null); });
+    var avatarButton = document.getElementById('hp-avatar-btn');
+    avatarButton.addEventListener('click', function() { orb('pulse'); openChat(null); });
+    var mirror = avatarButton.querySelector('.hp-bear-avatar-core');
+    var mirrorMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+    function resetMirror() {
+      ['--portrait-x', '--portrait-y', '--mirror-tilt-x', '--mirror-tilt-y', '--mirror-light-x', '--mirror-light-y'].forEach(function(property) {
+        mirror.style.removeProperty(property);
+      });
+    }
+    avatarButton.addEventListener('pointermove', function(event) {
+      if (event.pointerType !== 'mouse' || !mirrorMotion.matches) { resetMirror(); return; }
+      // Measure the stationary button, so tilting the mirror cannot feed back
+      // into the pointer coordinates. The crop stays safely inside the frame.
+      var bounds = avatarButton.getBoundingClientRect();
+      var x = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / bounds.width * 2 - 1));
+      var y = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / bounds.height * 2 - 1));
+      mirror.style.setProperty('--portrait-x', (x * 4).toFixed(2) + 'px');
+      mirror.style.setProperty('--portrait-y', (y * 4).toFixed(2) + 'px');
+      mirror.style.setProperty('--mirror-tilt-x', (-y * 3).toFixed(2) + 'deg');
+      mirror.style.setProperty('--mirror-tilt-y', (x * 3).toFixed(2) + 'deg');
+      mirror.style.setProperty('--mirror-light-x', (50 + x * 35).toFixed(1) + '%');
+      mirror.style.setProperty('--mirror-light-y', (50 + y * 35).toFixed(1) + '%');
+    });
+    ['pointerleave', 'pointercancel', 'blur'].forEach(function(type) {
+      avatarButton.addEventListener(type, resetMirror);
+    });
     var orbit = document.getElementById('hp-orbit');
     orbit.addEventListener('mouseenter', function() { this.classList.add('is-hover'); });
     orbit.addEventListener('mouseleave', function() { this.classList.remove('is-hover'); });
