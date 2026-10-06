@@ -1,83 +1,331 @@
 /* ============================================================
-   zzz-details-disclosure.css — animated <details> disclosure
+   zzz-details-disclosure.css — flat editorial <details> disclosure
    ------------------------------------------------------------
-   In DARK mode (zz-dark-reading.css) an inline <details>/<summary>
-   gets a quiet accent chevron that rotates open and a hairline rule
-   under the summary once expanded. In LIGHT mode that treatment was
-   missing — the toggle fell back to the browser's default static
-   triangle with no open/close motion, so the click gave no sense of
-   the panel "opening". This layer:
+   Replaces the earlier generic animated-toggle layer with the flat
+   editorial disclosure defined in DESIGN.md → Article Disclosure.
 
-     1. Gives LIGHT mode the same custom chevron that rotates 90°
-        when the panel opens (mirrors the dark rule, scoped to
-        body:not(.dark) so the two never both paint a marker).
-     2. Adds a clear press/hover affordance on the summary row for
-        both touch and fine pointers — the toggle reads as tappable.
-     3. Eases the revealed body in (gentle fade + slide-down) on
-        open, in BOTH modes, so expanding a disclosure feels like a
-        deliberate reveal rather than an instant jump.
+   SCOPE: raw CLASSLESS <details> inside .post-content — native
+   markdown HTML and the PaperMod collapse shortcode — plus details
+   tagged .article-disclosure by static/js/article-disclosure.js.
+   Specialised disclosures (.article-faq__*, .series-nav__details,
+   .marginalia-series-disclose, .meet-atlas-details, .ib-*) keep their
+   own component styling and are deliberately untouched.
 
-   Everything is purely additive feedback — the panel is fully
-   usable (open/close, content readable) with none of it. The
-   reveal is gated behind html.motion-reveal (added in <head> only
-   when the visitor has NOT requested reduced motion) and the whole
-   file is hard-neutralised under prefers-reduced-motion below.
-   Loads last in the extended bundle (zzz- prefix) so its light-mode
-   rules win cleanly over the base styles.
+   Design summary:
+     1. Full-width summary strip: subtle warm/neutral token tint,
+        hairline rules top and bottom, flat — no rounded card, no
+        shadow. Generous padding (20-24px desktop, 16px mobile).
+     2. Summary inherits the article prose font with a slightly
+        stronger title weight; the right action explicitly reads
+        展开/收起 (Expand/Collapse) next to a fine chevron that
+        rotates down/up as the panel toggles.
+     3. The whole strip is the native <summary> target — click,
+        keyboard Enter/Space and open semantics come from the native
+        element, so the disclosure is polished and fully usable with
+        JavaScript disabled.
+     4. Expanded content sits in a comfortable inset behind a
+        hairline left guide (::details-content where supported,
+        inset-only fallback elsewhere). A plain > blockquote inside
+        stays an ordinary quotation — no global blockquote changes.
+
+   Dark mode: zz-dark-reading.css §8 paints ALL .post-content
+   details as rounded recessed cards. Section 3 carefully cancels
+   that treatment ONLY for this scope (it wins by specificity), so
+   classed component details are unchanged in both themes. The file
+   loads late in the extended bundle (zzz- prefix), so equal-
+   specificity light rules also win by order. Print suppresses the
+   action/footer labels; reduced motion keeps the state cue but
+   removes every ease and reveal.
    ============================================================ */
 
-/* ---------- 1. Light-mode chevron marker (mirrors dark) ----------
-   Suppress the native triangle and draw our own accent chevron that
-   rotates from ▸ to ▾ as the panel opens. Scoped to body:not(.dark)
-   so it composes with — never fights — the dark rule. */
-body:not(.dark) .post-content details > summary {
-  list-style: none;            /* Firefox / spec marker */
+/* ============================================================
+   1. Disclosure block + summary strip (both themes)
+   ============================================================ */
+
+.post-content :is(details:not([class]), details.article-disclosure) {
+  /* A trace of reading ink on paper keeps both theme surfaces quiet. */
+  --ad-rule: var(--color-rule, rgba(30, 35, 30, 0.12));
+  --ad-strip: var(--color-paper, #f9f9f7);
+  --ad-strip: color-mix(in srgb, var(--color-ink, #1a1c1b) 3%, var(--color-paper, #f9f9f7));
+  margin: 1.75rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.post-content :is(details:not([class]), details.article-disclosure) > summary {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  gap: 0 14px;
+  margin: 0;
+  padding: 20px 24px;
+  min-height: 44px;
+  border-top: 1px solid var(--ad-rule);
+  border-bottom: 1px solid var(--ad-rule);
+  background: var(--ad-strip);
+  color: var(--color-ink, #1a1c1b);
+  font-family: var(--font-prose, 'Noto Serif', Georgia, serif);
+  font-size: 1.1em;
+  /* custom.css globally forces `details summary { font-weight: normal
+     !important }`; the editorial title needs the stronger hierarchy, so
+     this scoped rule re-asserts weight with !important and wins on
+     specificity in both themes. */
+  font-weight: 600 !important;
+  line-height: 1.6;
+  letter-spacing: var(--tracking-prose, normal);
+  /* Long titles wrap inside the flex line; the action/chevron flex items
+     below are `flex: 0 0 auto`, so their column is reserved and the title
+     can never run under them. `anywhere` bounds even unbroken tokens. */
+  overflow-wrap: anywhere;
   cursor: pointer;
+  list-style: none;
   -webkit-tap-highlight-color: transparent;
-  transition: color 160ms ease;
+  scroll-margin-block-start: 16px;
 }
-body:not(.dark) .post-content details > summary::-webkit-details-marker {
-  display: none;               /* WebKit / Blink marker */
+.post-content :is(details:not([class]), details.article-disclosure) > summary::-webkit-details-marker {
+  display: none;
 }
-body:not(.dark) .post-content details > summary::before {
-  content: "\25B8";            /* ▸ */
+
+/* Open block closes with its own hairline rule (the summary strip already
+   carries the top rule and the strip/content separator). */
+.post-content :is(details:not([class]), details.article-disclosure)[open] {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ad-rule);
+}
+
+/* ---------- Right action label (decorative CSS text) ----------
+   展开/收起 (Expand/Collapse) via html:lang so the fallback label is
+   correct with JS disabled. Empty alternative text keeps the visual action out of the accessible
+   name in supporting browsers; the first declaration is a legacy fallback.
+   Native details provides the expanded state independently. order keeps it after the title text node and before the
+   chevron pseudo (::before defaults to first, so it is ordered last). */
+.post-content :is(details:not([class]), details.article-disclosure) > summary::after {
+  order: 1;
+  margin-left: auto;
+  content: "Expand";
+  content: "Expand" / "";
+  flex: 0 0 auto;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--color-accent, #2e352e);
+}
+html:lang(zh) .post-content :is(details:not([class]), details.article-disclosure) > summary::after {
+  content: "展开";
+  content: "展开" / "";
+}
+.post-content :is(details:not([class]), details.article-disclosure)[open] > summary::after {
+  content: "Collapse";
+  content: "Collapse" / "";
+}
+html:lang(zh) .post-content :is(details:not([class]), details.article-disclosure)[open] > summary::after {
+  content: "收起";
+  content: "收起" / "";
+}
+
+/* ---------- Fine chevron (down closed ⇄ up open) ----------
+   A hairline corner box rotated to a V: 45deg points down (expand),
+   225deg points up (collapse). It replaces the legacy ▸ marker and the
+   dark §8 marker alike (see section 3). */
+.post-content :is(details:not([class]), details.article-disclosure) > summary::before {
+  order: 2;
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  margin: 0 0 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: var(--color-accent, #2e352e);
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+.post-content :is(details:not([class]), details.article-disclosure)[open] > summary::before {
+  transform: rotate(225deg);
+}
+
+/* ---------- Interaction states ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html body .post-content :is(details:not([class]), details.article-disclosure):hover > summary {
+    background: color-mix(in srgb, var(--color-ink, #1a1c1b) 6%, var(--color-paper, #f9f9f7));
+  }
+}
+.post-content :is(details:not([class]), details.article-disclosure) > summary:focus-visible {
+  outline: 2px solid var(--color-accent, #862122);
+  outline-offset: 2px;
+}
+
+html body .post-content :is(details:not([class]), details.article-disclosure) > summary:active {
+  background: color-mix(in srgb, var(--color-ink, #1a1c1b) 8%, var(--color-paper, #f9f9f7));
+}
+
+/* ============================================================
+   2. Expanded content — inset + hairline left guide
+   ============================================================ */
+
+/* Preferred: one ::details-content box carries the guide, so it runs
+   unbroken beside code blocks and lists regardless of their margins. */
+@supports selector(::details-content) {
+  .post-content :is(details:not([class]), details.article-disclosure)[open]::details-content {
+    margin-left: 24px;
+    padding: 20px 24px 0;
+    border-left: 1px solid var(--ad-rule);
+  }
+}
+/* Fallback: comfortable inset on the children themselves; the guide is
+   dropped rather than faked with per-child borders. */
+@supports not selector(::details-content) {
+  .post-content :is(details:not([class]), details.article-disclosure) > *:not(summary):not(.article-disclosure__collapse) {
+    margin-left: 24px;
+    padding-left: 20px;
+    padding-right: 4px;
+  }
+}
+.post-content :is(details:not([class]), details.article-disclosure) > *:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Bottom collapse footer (JS-enhanced long blocks) ----------
+   Appended by article-disclosure.js inside the content region, right
+   aligned like the summary action. 44px target, quiet text button. */
+.post-content :is(details:not([class]), details.article-disclosure) > .article-disclosure__collapse {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 44px;
+  margin: 12px 0 0 auto;
+  padding: 12px 0 8px;
+  border: 0;
+  background: none;
+  font-family: var(--font-meta, 'Inter', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted, #5e5e63);
+  cursor: pointer;
+}
+@supports not selector(::details-content) {
+  .post-content :is(details:not([class]), details.article-disclosure) > .article-disclosure__collapse {
+    margin-right: 24px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .post-content :is(details:not([class]), details.article-disclosure) > .article-disclosure__collapse:hover {
+    color: var(--color-accent, #2e352e);
+  }
+}
+.post-content :is(details:not([class]), details.article-disclosure) > .article-disclosure__collapse:focus-visible {
+  outline: 2px solid var(--color-accent, #862122);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   3. Dark overrides — cancel zz-dark-reading.css §8 for this scope
+   ------------------------------------------------------------
+   §8 (`body.dark .post-content details` + `[data-theme="dark"]` twin)
+   paints every disclosure as a rounded, padded, bordered recessed card
+   with a ▸ summary marker, an accent-tinted summary, and a soft rule
+   under the open summary. Those selectors out-specify the base rules
+   above, so each colliding property is re-asserted here, gated on the
+   dark themes and scoped to the same classless / .article-disclosure
+   details. Classed component details keep §8 exactly as before.
+   ============================================================ */
+body.dark .post-content :is(details:not([class]), details.article-disclosure),
+[data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 1.75rem 0;
+}
+body.dark .post-content :is(details:not([class]), details.article-disclosure)[open],
+[data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure)[open] {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--ad-rule);
+  padding-bottom: 16px;
+}
+body.dark .post-content :is(details:not([class]), details.article-disclosure) > summary,
+[data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure) > summary {
+  background: var(--ad-strip);
+  border-top: 1px solid var(--ad-rule);
+  border-bottom: 1px solid var(--ad-rule);
+  color: var(--color-ink, #e2e3e1);
+  font-family: var(--font-prose, 'Noto Serif', Georgia, serif);
+  padding: 20px 24px;
+  margin: 0;
+}
+/* §8 turns the summary accent-coloured on hover/open — the editorial
+   strip keeps the title at reading ink in both states. */
+body.dark .post-content :is(details:not([class]), details.article-disclosure):hover > summary,
+body.dark .post-content :is(details:not([class]), details.article-disclosure)[open] > summary,
+[data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure):hover > summary,
+[data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure)[open] > summary {
+  color: var(--color-ink, #e2e3e1);
+}
+/* Replace §8's rotating ▸ glyph with the fine editorial chevron. */
+body.dark .post-content :is(details:not([class]), details.article-disclosure) > summary::before,
+[data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure) > summary::before {
+  content: "";
   display: inline-block;
-  margin-right: 0.55em;
-  color: var(--color-accent, var(--primary));
-  transition: transform 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  width: 7px;
+  height: 7px;
+  margin: 0 0 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: var(--color-accent, #7dd3fc);
 }
-body:not(.dark) .post-content details[open] > summary::before {
-  transform: rotate(90deg);
-}
-
-/* Summary feedback: warm to the accent on hover, and a quiet rule
-   appears under it once the panel is open (matches dark mode). */
-body:not(.dark) .post-content details > summary:hover,
-body:not(.dark) .post-content details[open] > summary {
-  color: var(--color-accent, var(--primary));
-}
-body:not(.dark) .post-content details[open] > summary {
-  border-bottom: 1px solid var(--color-rule, rgba(0, 0, 0, 0.08));
-  margin-bottom: 0.6rem;
+body.dark .post-content :is(details:not([class]), details.article-disclosure)[open] > summary::before,
+[data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure)[open] > summary::before {
+  transform: rotate(225deg);
 }
 
-/* ---------- 2. Tactile press cue (both modes, touch + mouse) ------
-   On press the chevron gives a small nudge so the tap is felt before
-   the panel toggles. Layout-safe (only the ::before transforms). */
-html.motion-reveal .post-content details > summary:active::before {
-  transform: translateX(1px) scale(0.9);
-}
-html.motion-reveal .post-content details[open] > summary:active::before {
-  transform: rotate(90deg) scale(0.9);
+/* ============================================================
+   4. Mobile padding + gentle reveal + print + reduced motion
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .post-content :is(details:not([class]), details.article-disclosure) > summary {
+    padding: 16px;
+    gap: 0 10px;
+    font-size: 1em;
+  }
+  .post-content :is(details:not([class]), details.article-disclosure)[open] {
+    padding-bottom: 12px;
+  }
+  body.dark .post-content :is(details:not([class]), details.article-disclosure) > summary,
+  [data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure) > summary {
+    padding: 16px;
+  }
+  body.dark .post-content :is(details:not([class]), details.article-disclosure)[open],
+  [data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure)[open] {
+    padding-bottom: 12px;
+  }
+  @supports selector(::details-content) {
+    .post-content :is(details:not([class]), details.article-disclosure)[open]::details-content {
+      margin-left: 16px;
+      padding: 16px 16px 0;
+    }
+  }
+  @supports not selector(::details-content) {
+    .post-content :is(details:not([class]), details.article-disclosure) > *:not(summary):not(.article-disclosure__collapse) {
+      margin-left: 16px;
+      padding-left: 14px;
+    }
+    .post-content :is(details:not([class]), details.article-disclosure) > .article-disclosure__collapse {
+      margin-right: 16px;
+    }
+  }
 }
 
-/* ---------- 3. Reveal the body on open (both modes) ---------------
-   <details> can't transition its own height, so animate the revealed
-   children: a brief fade + slide-down when the panel opens. Targets
-   the direct children that are NOT the summary, so nested content is
-   carried along by its parent. One-shot, settles to the resting
-   state. Gated behind .motion-reveal. */
-@keyframes details-reveal {
+/* Reveal: the content region settles in as one block (direct children
+   carry their parents' nested content along), never line by line. */
+@keyframes article-disclosure-reveal {
   from {
     opacity: 0;
     transform: translateY(-4px);
@@ -87,26 +335,28 @@ html.motion-reveal .post-content details[open] > summary:active::before {
     transform: translateY(0);
   }
 }
-html.motion-reveal .post-content details[open] > summary ~ * {
-  animation: details-reveal 260ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+html.motion-reveal .post-content :is(details:not([class]), details.article-disclosure)[open] > *:not(summary) {
+  animation: article-disclosure-reveal 240ms var(--ease-out, ease) both;
 }
 
-/* ---------- Reduced-motion: strip every transition + animation ----
-   Honour the preference — the marker still rotates instantly so the
-   open/closed state stays legible, but nothing eases or slides. */
+/* Print: the action and footer labels are chrome, not content. */
+@media print {
+  .post-content :is(details:not([class]), details.article-disclosure) > summary::after,
+  .post-content :is(details:not([class]), details.article-disclosure) > summary::before,
+  .post-content :is(details:not([class]), details.article-disclosure) > .article-disclosure__collapse {
+    display: none !important;
+  }
+}
+
+/* Reduced motion: the chevron still shows open/closed state — instantly —
+   and nothing eases, slides or reveals. */
 @media (prefers-reduced-motion: reduce) {
-  body:not(.dark) .post-content details > summary,
-  body:not(.dark) .post-content details > summary::before {
+  .post-content :is(details:not([class]), details.article-disclosure) > summary::before,
+  body.dark .post-content :is(details:not([class]), details.article-disclosure) > summary::before,
+  [data-theme="dark"] .post-content :is(details:not([class]), details.article-disclosure) > summary::before {
     transition: none;
   }
-  html.motion-reveal .post-content details > summary:active::before,
-  html.motion-reveal .post-content details[open] > summary:active::before {
-    transform: none;
-  }
-  body:not(.dark) .post-content details[open] > summary::before {
-    transform: rotate(90deg); /* keep the state cue, no motion */
-  }
-  html.motion-reveal .post-content details[open] > summary ~ * {
+  html.motion-reveal .post-content :is(details:not([class]), details.article-disclosure)[open] > *:not(summary) {
     animation: none;
   }
 }
