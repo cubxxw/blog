@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { createRequire } from "node:module";
 import {
   buildSite,
   buildHugoPhase,
@@ -11,6 +12,16 @@ import {
   deploymentConfig,
   assertHugoToolchain,
 } from "./site-build.mjs";
+
+test("Netlify's TypeScript dependency tracer works alongside the root compiler", () => {
+  const require = createRequire(import.meta.url);
+  const netlifyRequire = createRequire(require.resolve("@netlify/zip-it-and-ship-it"));
+  const precinct = netlifyRequire("precinct");
+  assert.deepEqual(
+    precinct("import { existsSync } from 'node:fs';", { type: "ts" }),
+    ["node:fs"],
+  );
+});
 
 test("production Hugo phase uses HUGO_BASEURL and ignores the Netlify branch alias", () => {
   assert.deepEqual(hugoPhaseOptions({
