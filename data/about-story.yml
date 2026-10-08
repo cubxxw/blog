@@ -107,7 +107,7 @@ chapters:
       title: 产品和新的工作
       summary: 继续做产品、写作。8 月 10 日，结束约两年的空窗，开始新的工作。
       details:
-        - 2026 年我一个人构建 AI 产品（getyak 系列），也写 AI 时代的身份思考；8 月 10 日， 在大约两年的空窗之后，我入职新公司，写下：「不会让恐惧替我做决定」。
+        - 2026 年我一个人构建 DayPage、Solo Compass 等 AI 产品，也写 AI 时代的身份思考；8 月 10 日， 在大约两年的空窗之后，我入职新公司，写下：「不会让恐惧替我做决定」。
         - 2 月我走川藏线到拉萨，住了大约一个月；3 月写完年度总结《我在游荡，但我没有迷路》。产品、写作和新的工作都还在继续。
         - 9 月到 10 月，我把注意力放到 Agent 效果上。用户想完成什么，怎样才算做成，失败后怎么查原因，这些问题逐渐连到了评测和回归样本上。
         - 我也继续做 DayPage、StripSearch 和 agent-kit，研究个人助手怎样保留任务进度、处理权限与恢复执行。公开记录里，我把已实现的代码和待验证的方案分开写。
@@ -118,7 +118,7 @@ chapters:
       title: Products and a new job
       summary: I kept building and writing. On August 10, after roughly two years away, I started a new job.
       details:
-        - Through 2026 I built AI products solo (the getyak series) and wrote about identity in the AI age. On
+        - Through 2026 I independently built AI products including DayPage and Solo Compass, and wrote about identity in the AI age. On
           August 10, after roughly a two-year career gap, I started a new job. My August thought notes follow
           the ongoing work on agent harnesses, products, and self-knowledge.
         - In February I took the Sichuan–Tibet road to Lhasa and stayed about a month; in March I finished the
