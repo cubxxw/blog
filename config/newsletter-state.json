@@ -4790,6 +4790,14 @@
       "mode": "draft",
       "providerId": "em_6hh3zf4m2d9bkaxnrwcvsv3fch",
       "completedAt": "2026-10-04T17:10:23.406Z"
+    },
+    "[\"zh\",\"https://cubxxw.com/zh/growth/posts/2026-10-thought-notes/\"]": {
+      "language": "zh",
+      "url": "https://cubxxw.com/zh/growth/posts/2026-10-thought-notes/",
+      "status": "pending",
+      "attemptId": "dba417ee-aa0c-4c5f-a351-dedef8aaf33c",
+      "at": "2026-10-08T19:03:41.490Z",
+      "mode": "draft"
     }
   }
 }
