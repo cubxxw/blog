@@ -139,13 +139,13 @@
         <p class="rc-ai-intro-copy">{{ if $isZh }}从文章出发，提炼、解释或挑战一个观点。{{ else }}Extract, explain, or challenge an idea from this article.{{ end }}</p>
       </div>
       <div class="rc-ai-quick" id="rc-quick-actions">
-        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}用 3-5 句话精炼地概括这篇文章的核心观点。{{ else }}Summarize the key points of this article in 3-5 sentences.{{ end }}">
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}用几句话聊聊这篇文章最值得记住的想法。{{ else }}In a few sentences, talk me through the ideas in this article worth remembering.{{ end }}">
           {{ if $isZh }}核心摘要{{ else }}Summary{{ end }}
         </button>
-        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。{{ else }}List the 3 most memorable sentences from this article, and briefly explain why they stand out.{{ end }}">
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}从文中挑几句值得重读的原话，聊聊它们为什么值得再想一想。{{ else }}Pick a few exact lines worth rereading and tell me what makes them worth another thought.{{ end }}">
           {{ if $isZh }}精彩金句{{ else }}Highlights{{ end }}
         </button>
-        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}这篇文章里有哪些容易被忽略但重要的概念？请列出并解释。{{ else }}What are the overlooked but important concepts in this article? List and explain.{{ end }}">
+        <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}这篇文章里有哪些容易被忽略的想法？帮我说清楚它们之间的联系。{{ else }}Which ideas in this article are easy to miss? Help me understand how they connect.{{ end }}">
           {{ if $isZh }}关键概念{{ else }}Key concepts{{ end }}
         </button>
         <button type="button" class="rc-ai-chip" data-prompt="{{ if $isZh }}帮我挑出这篇文章里最值得质疑或反驳的观点，并给出反方视角。{{ else }}Which claims in this article are most worth challenging? Give me a counter-argument.{{ end }}">

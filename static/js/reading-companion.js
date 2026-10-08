@@ -236,103 +236,28 @@
     return el ? el.innerText.trim() : document.title;
   }
 
-  // ─── 4. Minimal Markdown → HTML ───────────────────────────────────────────
+  // ─── 4. Plain conversational paragraphs, escaped before rendering ─────────
   function parseMarkdown(text) {
     function escapeHtml(s) {
-      return s
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
-    function safeHref(url) {
-      // Only http(s) and site-relative targets become real links; anything
-      // else (javascript:, data:, …) is rendered as plain text.
-      if (/^https?:\/\//i.test(url) || /^\//.test(url)) return url;
-      return null;
-    }
-    function inline(s) {
-      return escapeHtml(s)
-        .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
-          var href = safeHref(url);
-          if (!href) return label;
-          var ext = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0;
-          return '<a href="' + href + '" class="rc-ai-link"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
-        })
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')
-        .replace(/`(.+?)`/g, '<code>$1</code>');
-    }
-    var lines = text.split('\n');
-    var html = '', i = 0;
-    while (i < lines.length) {
-      var line = lines[i];
-      var fence = /^\s*```(?:\w+)?\s*$/.test(line);
-      if (fence) {
-        var code = [];
-        i++;
-        while (i < lines.length && !/^\s*```\s*$/.test(lines[i])) {
-          code.push(lines[i]);
-          i++;
-        }
-        if (i < lines.length) i++;
-        html += '<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>';
-        continue;
-      }
-      var quoteMatch = /^\s*>\s?(.*)$/.exec(line);
-      if (quoteMatch) {
-        var quote = [];
-        while (i < lines.length) {
-          var qm = /^\s*>\s?(.*)$/.exec(lines[i]);
-          if (!qm) break;
-          quote.push(qm[1]);
-          i++;
-        }
-        html += '<blockquote><p>' + inline(quote.join(' ')) + '</p></blockquote>';
-        continue;
-      }
-      var ulMatch = /^\s*[-*]\s+(.+)$/.exec(line);
-      var olMatch = /^\s*\d+[.)]\s+(.+)$/.exec(line);
-      if (ulMatch || olMatch) {
-        var ordered = !!olMatch;
-        var tag = ordered ? 'ol' : 'ul';
-        html += '<' + tag + ' class="rc-ai-list">';
-        while (i < lines.length) {
-          var m = ordered ? /^\s*\d+[.)]\s+(.+)$/.exec(lines[i]) : /^\s*[-*]\s+(.+)$/.exec(lines[i]);
-          if (!m) break;
-          html += '<li>' + inline(m[1]) + '</li>';
-          i++;
-        }
-        html += '</' + tag + '>';
-        continue;
-      }
-      var h = /^#{1,3}\s+(.+)$/.exec(line);
-      if (h) {
-        var headingTag = h[0].indexOf('### ') === 0 ? 'h4' : 'h3';
-        html += '<' + headingTag + '>' + inline(h[1]) + '</' + headingTag + '>';
-        i++;
-        continue;
-      }
-      if (/^\s*(?:---+|\*\*\*+)\s*$/.test(line)) {
-        html += '<hr>';
-        i++;
-        continue;
-      }
-      if (line.trim() === '') { i++; continue; }
-      // Soft-wrap plain lines into one readable paragraph. Hard <br> tags made
-      // streamed Markdown look like a transcript instead of editorial prose.
-      var para = [];
-      while (i < lines.length && lines[i].trim() !== ''
-             && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+[.)]\s+/.test(lines[i])
-             && !/^#{1,3}\s+/.test(lines[i]) && !/^\s*>\s?/.test(lines[i])
-             && !/^\s*```/.test(lines[i]) && !/^\s*(?:---+|\*\*\*+)\s*$/.test(lines[i])) {
-        para.push(inline(lines[i]));
-        i++;
-      }
-      html += '<p>' + para.join(' ') + '</p>';
-    }
-    return html;
+    var inCode = false;
+    var plain = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(function (line) {
+      if (/^\s*(?:```|~~~)/.test(line)) { inCode = !inCode; return ''; }
+      if (inCode) return line;
+      return line
+        .replace(/^\s{0,3}#{1,6}\s+/, '')
+        .replace(/^\s{0,3}>\s?/, '')
+        .replace(/^\s{0,3}(?:[-*+]\s+|\d{1,3}[.)]\s+)/, '')
+        .replace(/(^|[^A-Za-z0-9_*])\*\*([^*\n]+)\*\*(?![A-Za-z0-9_*])/g, '$1$2')
+        .replace(/(^|[^A-Za-z0-9_])__([^_\n]+)__(?![A-Za-z0-9_])/g, '$1$2')
+        .replace(/(^|[^A-Za-z0-9_*])\*(\S(?:[^*\n]*?\S)?)\*(?![A-Za-z0-9_*])/g, '$1$2')
+        .replace(/`([^`\n]+)`/g, '$1')
+        .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]*)\)/g, '$1 ($2)');
+    }).join('\n');
+    return plain.split(/\n\s*\n/).filter(function (paragraph) { return paragraph.trim(); }).map(function (paragraph) {
+      return '<p>' + escapeHtml(paragraph.trim()).replace(/\n/g, '<br>') + '</p>';
+    }).join('');
   }
 
   // ─── 5. AI Panel ──────────────────────────────────────────────────────────

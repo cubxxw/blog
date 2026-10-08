@@ -93,7 +93,7 @@
       '.conv-share-close:active{transform:scale(.96);}',
       'body.dark .conv-share-close{color:var(--color-ink-muted,#b4bcb2);}',
       'body.dark .conv-share-close:hover{background:rgba(226,227,225,.07);color:var(--color-ink,#e2e3e1);}',
-      '.conv-share-workspace{display:grid;grid-template-columns:190px minmax(0,1fr);min-height:0;overflow:hidden;}',
+      '.conv-share-workspace{display:grid;grid-template-columns:172px minmax(0,1fr);min-height:0;overflow:hidden;}',
       '.conv-share-rail{display:flex;flex-direction:column;gap:24px;padding:22px 18px;border-right:1px solid var(--color-rule,rgba(30,35,30,.1));}',
       '.conv-share-control-group{display:grid;gap:9px;}',
       '.conv-share-control-label{color:var(--color-ink-muted,#5e5e63);font-family:var(--font-body,system-ui,sans-serif);font-size:.66rem;font-weight:650;letter-spacing:.07em;text-transform:uppercase;}',
@@ -110,9 +110,9 @@
       '.conv-share-output-meta{display:grid;gap:4px;margin-top:auto;color:var(--color-ink-muted,#5e5e63);font-family:var(--font-meta,var(--font-body,system-ui,sans-serif));font-size:.64rem;line-height:1.4;}',
       '.conv-share-output-meta strong{color:var(--color-ink,#1a1c1b);font-weight:600;}',
       'body.dark .conv-share-output-meta strong{color:var(--color-ink,#e2e3e1);}',
-      '.conv-share-stage{display:flex;min-width:0;min-height:0;padding:22px;background:rgba(30,35,30,.03);background:color-mix(in srgb,var(--color-ink,#1a1c1b) 3%,var(--color-paper,#f9f9f7));}',
-      '.conv-share-preview{display:flex;align-items:center;justify-content:center;width:100%;min-height:300px;overflow:hidden;}',
-      '.conv-share-preview canvas{display:block;width:auto;max-width:100%;height:auto;max-height:min(60dvh,570px);border-radius:12px;box-shadow:0 18px 52px rgba(35,39,36,.16);}',
+      '.conv-share-stage{display:flex;min-width:0;min-height:0;height:min(60dvh,650px);padding:22px;background:rgba(30,35,30,.03);background:color-mix(in srgb,var(--color-ink,#1a1c1b) 3%,var(--color-paper,#f9f9f7));}',
+      '.conv-share-preview{display:block;width:100%;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-bottom:4px;scrollbar-width:thin;}',
+      '.conv-share-preview canvas{display:block;width:100%;max-width:620px;height:auto;margin-inline:auto;border-radius:2px;box-shadow:0 10px 30px rgba(35,39,36,.10);}',
       'body.dark .conv-share-preview canvas{box-shadow:0 20px 56px rgba(0,0,0,.42);}',
       '.conv-share-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex:none;padding:14px 18px;border-top:1px solid var(--color-rule,rgba(30,35,30,.1));}',
       '.conv-share-format{flex:none;color:var(--color-ink-muted,#5e5e63);font-family:var(--font-meta,var(--font-body,system-ui,sans-serif));font-size:.66rem;}',
@@ -133,7 +133,7 @@
       '.conv-share-close:focus-visible,.conv-share-swatch:focus-visible,.conv-share-mode:focus-visible,.conv-share-btn:focus-visible{outline:2px solid var(--color-accent,#862122);outline-offset:2px;}',
       '@media (hover:hover) and (pointer:fine){.conv-share-btn:hover,.conv-share-close:hover,.conv-share-swatch:hover,.conv-share-mode:hover{will-change:transform}}',
       '@media (min-width:700px){.conv-share-overlay{align-items:center;padding:24px}.conv-share-sheet{border-radius:20px}.conv-share-handle{display:none}}',
-      '@media (max-width:699px){.conv-share-sheet{max-height:96dvh}.conv-share-header{padding:14px 16px 13px}.conv-share-workspace{display:block;overflow-y:auto}.conv-share-rail{gap:14px;padding:14px 16px;border-right:0;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.1))}.conv-share-control-group{grid-template-columns:82px minmax(0,1fr);align-items:center;gap:10px}.conv-share-themes,.conv-share-modes{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.conv-share-themes::-webkit-scrollbar,.conv-share-modes::-webkit-scrollbar{display:none}.conv-share-swatch,.conv-share-mode{flex:0 0 auto;width:auto;padding-inline:9px}.conv-share-output-meta{display:none}.conv-share-stage{padding:14px 16px}.conv-share-preview{min-height:220px}.conv-share-preview canvas{max-height:48dvh}.conv-share-footer{align-items:stretch;flex-direction:column;padding:12px 16px max(14px,env(safe-area-inset-bottom))}.conv-share-format{display:none}.conv-share-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.conv-share-actions--four{grid-template-columns:repeat(3,minmax(0,1fr))}.conv-share-btn{width:100%}.conv-share-btn--primary{grid-column:1 / -1;grid-row:1;min-width:0}}',
+      '@media (max-width:699px){.conv-share-sheet{max-height:96dvh}.conv-share-header{padding:14px 16px 13px}.conv-share-workspace{display:block;overflow-y:auto}.conv-share-rail{gap:14px;padding:14px 16px;border-right:0;border-bottom:1px solid var(--color-rule,rgba(30,35,30,.1))}.conv-share-control-group{grid-template-columns:82px minmax(0,1fr);align-items:center;gap:10px}.conv-share-themes,.conv-share-modes{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.conv-share-themes::-webkit-scrollbar,.conv-share-modes::-webkit-scrollbar{display:none}.conv-share-swatch,.conv-share-mode{flex:0 0 auto;width:auto;padding-inline:9px}.conv-share-output-meta{display:none}.conv-share-stage{height:min(48dvh,460px);padding:14px 16px}.conv-share-preview{min-height:0}.conv-share-footer{align-items:stretch;flex-direction:column;padding:12px 16px max(14px,env(safe-area-inset-bottom))}.conv-share-format{display:none}.conv-share-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.conv-share-actions--four{grid-template-columns:repeat(3,minmax(0,1fr))}.conv-share-btn{width:100%}.conv-share-btn--primary{grid-column:1 / -1;grid-row:1;min-width:0}}',
       '@media (max-width:420px){.conv-share-subtitle{max-width:32ch}.conv-share-swatch-label{display:none}.conv-share-swatch{padding-inline:7px}.conv-share-swatch-chip{width:28px;height:28px}.conv-share-stage{padding-inline:10px}}',
       '@media (prefers-reduced-motion:reduce){.conv-share-overlay,.conv-share-sheet,.conv-share-close,.conv-share-swatch,.conv-share-mode,.conv-share-btn{transition:none!important}}',
       '@media (prefers-reduced-transparency:reduce){.conv-share-overlay{backdrop-filter:none;-webkit-backdrop-filter:none}.conv-share-sheet{background:var(--color-paper,#f9f9f7)}body.dark .conv-share-sheet{background:#1d201d}}',
@@ -173,22 +173,23 @@
     ctx.closePath();
   }
 
-  // Paint a QR onto ctx at (x,y) with a rounded background plate and quiet zone.
+  // Paint an integer module grid with a four-cell white quiet zone.
   function drawQR(ctx, text, x, y, size, fg, bg) {
     var qr = encodeQR(text);
     if (!qr) { return false; }
     var quiet = 4;
     var dim = qr.size + quiet * 2;
-    var cell = size / dim;
-    roundRect(ctx, x, y, size, size, Math.max(6, size * 0.06));
-    ctx.fillStyle = bg; ctx.fill();
+    if (dim > size) return false;
+    var cell = Math.floor(size / dim);
+    var inset = Math.floor((size - dim * cell) / 2);
+    ctx.fillStyle = bg; ctx.fillRect(x, y, size, size);
     ctx.fillStyle = fg;
     for (var r = 0; r < qr.size; r++) for (var c = 0; c < qr.size; c++) {
       if (qr.modules[r][c]) {
         ctx.fillRect(
-          Math.floor(x + (c + quiet) * cell),
-          Math.floor(y + (r + quiet) * cell),
-          Math.ceil(cell), Math.ceil(cell)
+          x + inset + (c + quiet) * cell,
+          y + inset + (r + quiet) * cell,
+          cell, cell
         );
       }
     }
@@ -226,79 +227,127 @@
     return rounds;
   }
 
-  // ── Canvas card generator (latest editorial insight) ────────────────────────
+  // A fixed export width keeps body text readable. Height follows the content;
+  // the limit bounds browser memory without quietly discarding normal replies.
+  var CARD_WIDTH = 1080, CARD_MAX_HEIGHT = 14000, CARD_PAD = 86;
+  var MAX_INPUT_CHARS = 120000;
+
   function generateCard(messages, options) {
+    var rounds = conversationPairs(messages);
+    return generateNoteCard(rounds.slice(-1), options);
+  }
+
+  function generateThreadCard(messages, options) {
+    return generateNoteCard(conversationPairs(messages), options);
+  }
+
+  function generateNoteCard(rounds, options) {
     options = options || {};
     var theme = THEMES[options.theme] || THEMES[defaultTheme()];
+    var isZh = isZhLang(options), font = cardFont(isZh);
+    var W = CARD_WIDTH, PAD = CARD_PAD, contentWidth = W - PAD * 2;
+    var measure = document.createElement('canvas').getContext('2d');
+    var y = 174, layouts = [], clipped = false, inputLeft = MAX_INPUT_CHARS;
+    // Footer, excerpt notice and a short question always remain inside the image.
+    var bodyBottom = CARD_MAX_HEIGHT - 520;
+    for (var i = 0; i < rounds.length; i++) {
+      var round = rounds[i];
+      if (y > bodyBottom - 180 || inputLeft <= 0) { clipped = true; break; }
+      var answer = String(round.answer || '');
+      var inputClipped = answer.length > inputLeft;
+      if (inputClipped) answer = answer.slice(0, inputLeft);
+      inputLeft -= answer.length;
+      var question = String(round.question || '');
+      var questionBudget = Math.min(question.length, 12000, Math.max(0, inputLeft));
+      var questionClipped = questionBudget < question.length;
+      question = question.slice(0, questionBudget);
+      inputLeft -= question.length;
+      var questionReserve = question ? 170 : 0;
+      var answerLayout = layoutRichAnswer(measure, answer, {
+        x: PAD, y: y, maxWidth: contentWidth,
+        baseFont: '400 38px ' + font, boldFont: '600 38px ' + font,
+        listFont: '400 38px ' + font, listBoldFont: '600 38px ' + font,
+        markerFont: '500 28px ' + font,
+        headingFont: '600 40px ' + font, quoteFont: '400 38px ' + font,
+        codeFont: '400 34px ui-monospace,SFMono-Regular,Consolas,monospace',
+        lineH: 60, listLineH: 60, headingLineH: 62, quoteLineH: 60,
+        paraGap: 28, listGap: 18, listBodyIndent: 48,
+        color: theme.ink, muted: theme.muted, accent: theme.muted,
+        maxY: bodyBottom - questionReserve,
+      });
+      layouts.push({ type: 'answer', layout: answerLayout });
+      y = answerLayout.endY;
+      if (question.trim()) {
+        var questionTop = y + 40;
+        var questionLayout = layoutRichAnswer(measure, question, {
+          x: PAD + 28, y: questionTop + 66, maxWidth: contentWidth - 28,
+          baseFont: '400 28px ' + font, boldFont: '550 28px ' + font,
+          listFont: '400 28px ' + font, listBoldFont: '550 28px ' + font,
+          markerFont: '400 23px ' + font, headingFont: '550 28px ' + font,
+          quoteFont: '400 28px ' + font,
+          codeFont: '400 26px ui-monospace,SFMono-Regular,Consolas,monospace',
+          lineH: 43, listLineH: 43, headingLineH: 43, quoteLineH: 43,
+          paraGap: 15, listGap: 12, listBodyIndent: 34,
+          color: theme.muted, accent: theme.muted, maxY: bodyBottom,
+        });
+        layouts.push({ type: 'question', top: questionTop, layout: questionLayout });
+        y = questionLayout.endY;
+        questionClipped = questionClipped || questionLayout.clipped;
+      }
+      if (answerLayout.clipped || inputClipped || questionClipped) { clipped = true; break; }
+      if (i < rounds.length - 1) {
+        layouts.push({ type: 'separator', y: y + 46 });
+        y += 118;
+      }
+    }
+    if (!rounds.length) y = 190;
+    if (clipped) y += 72;
+    var footerTop = y + 62;
     var title = options.title || document.title || '';
     var url = qrTarget(options);
-    var siteName = shareSiteName(options);
-    var isZh = isZhLang(options);
-    var font = cardFont(isZh);
-    var rounds = conversationPairs(messages);
-    var latest = rounds[rounds.length - 1] || { question: '', answer: '' };
-    var W = 1080, H = 1350, PAD = 96;
-    var DPR = Math.min(window.devicePixelRatio || 1, 2);
-    var measure = document.createElement('canvas').getContext('2d');
-    var answerStartY = 358;
-    var hasQuestion = !!mdToPlainText(latest.question);
-    var answerOpts = {
-      x: PAD, y: answerStartY, maxWidth: W - PAD * 2,
-      baseFont: '400 27px ' + font, boldFont: '650 27px ' + font,
-      listFont: '650 30px ' + font, listBoldFont: '680 30px ' + font,
-      markerFont: '620 20px ' + font,
-      headingFont: '680 31px ' + font, quoteFont: '520 29px ' + font,
-      lineH: 43, listLineH: 46, headingLineH: 47, quoteLineH: 45,
-      paraGap: 23, listGap: 13, listBodyIndent: 48,
-      color: theme.answer, muted: theme.muted, accent: theme.accent,
-      maxLines: hasQuestion ? 15 : 17,
-      maxY: hasQuestion ? 930 : 1070,
-    };
-    var layout = layoutRichAnswer(measure, latest.answer, answerOpts);
-
+    measure.font = '500 27px ' + font;
+    var sourceLines = wrapText(measure, title, contentWidth - 196).slice(0, 3);
+    var date = sourceDate(options);
+    var footerHeight = Math.max(196, sourceLines.length * 38 + 124 + (date ? 30 : 0));
+    var H = Math.min(CARD_MAX_HEIGHT, Math.max(710, footerTop + footerHeight + PAD));
+    // Short notes keep the same breathing room above the footer as long notes.
+    footerTop = H - PAD - footerHeight;
     var canvas = document.createElement('canvas');
-    canvas.width = W * DPR; canvas.height = H * DPR;
+    canvas.width = W; canvas.height = H;
     var ctx = canvas.getContext('2d');
-    ctx.scale(DPR, DPR);
     ctx.textBaseline = 'alphabetic';
-
     paintBackground(ctx, theme, W, H);
-    paintHeader(ctx, theme, {
-      W: W, PAD: PAD, title: title, siteName: siteName, isZh: isZh,
-      label: isZh ? '阅读札记' : 'Reading note', font: font,
+    ctx.font = '500 25px ' + font; ctx.fillStyle = theme.muted;
+    ctx.fillText(isZh ? 'AI 阅读札记' : 'AI reading note', PAD, 96);
+    layouts.forEach(function (item) {
+      if (item.type === 'separator') {
+        ctx.fillStyle = theme.subtle; ctx.fillRect(PAD, item.y, contentWidth, 1);
+      } else if (item.type === 'question') {
+        ctx.font = '500 23px ' + font; ctx.fillStyle = theme.muted;
+        ctx.fillText(isZh ? '提问' : 'Question', PAD + 28, item.top + 24);
+        ctx.fillStyle = theme.border;
+        ctx.fillRect(PAD, item.top + 6, 2, Math.max(70, item.layout.endY - item.top - 4));
+        paintRichAnswer(ctx, item.layout);
+      } else paintRichAnswer(ctx, item.layout);
     });
-
-    ctx.font = '700 42px ' + font;
-    ctx.fillStyle = theme.ink;
-    ctx.fillText(isZh ? '阅读洞察' : 'Reading insight', PAD, 276);
-    ctx.font = '450 17px ' + font;
-    ctx.fillStyle = theme.muted;
-    ctx.fillText(
-      isZh ? '从文章与对话中留下值得重读的部分' : 'Ideas from the article worth returning to',
-      PAD, 310
-    );
-
-    paintRichAnswer(ctx, layout);
-    var contextTop = Math.min(Math.max(layout.endY + 26, 972), 1032);
-    if (layout.clipped) {
-      ctx.font = '500 13px ' + font;
-      ctx.fillStyle = theme.muted;
-      ctx.fillText(
-        isZh ? '内容已节选，扫码阅读全文' : 'Excerpted for the card. Scan to read the article.',
-        PAD, hasQuestion ? contextTop - 14 : 1092
-      );
-    }
-
-    if (hasQuestion) {
-      paintContext(ctx, theme, {
-        W: W, PAD: PAD, top: contextTop, question: mdToPlainText(latest.question),
-        isZh: isZh, font: font,
-      });
+    if (clipped) {
+      ctx.font = '400 23px ' + font; ctx.fillStyle = theme.muted;
+      ctx.fillText(isZh ? 'AI 对话节选' : 'AI conversation excerpt', PAD, y - 18);
     }
     paintFooter(ctx, theme, {
-      W: W, H: H, PAD: PAD, url: url, isZh: isZh, qrSize: 104, font: font,
+      W: W, H: H, PAD: PAD, top: footerTop, url: url, title: title,
+      sourceLines: sourceLines, siteName: shareSiteName(options), date: date,
+      isZh: isZh, qrSize: 140, font: font,
     });
     return canvas;
+  }
+
+  function sourceDate(options) {
+    var node = document.querySelector('article time[datetime],.post-meta time[datetime]');
+    var value = options.date || (node && node.getAttribute('datetime')) || '';
+    // Do not invent a creation date for a saved AI reply.
+    var match = /^(\d{4}-\d{2}-\d{2})(?:T|$)/.exec(String(value));
+    return match ? match[1] : '';
   }
 
   // Lay out semantic Markdown blocks into positioned text and rule operations.
@@ -310,18 +359,19 @@
       var isLi = block.type === 'li';
       var isHeading = block.type === 'heading';
       var isQuote = block.type === 'quote';
+      var isCode = block.type === 'code';
       var followsList = block.type === 'p' && bi > 0 && blocks[bi - 1].type === 'li';
       var indent = isLi || followsList ? o.listBodyIndent : (isQuote ? 24 : 0);
       var textX = o.x + indent;
-      var baseFont = isHeading ? o.headingFont : (isQuote ? o.quoteFont : (isLi ? o.listFont : o.baseFont));
-      var boldFont = isHeading ? o.headingFont : (isLi ? o.listBoldFont : o.boldFont);
+      var baseFont = isCode ? o.codeFont : (isHeading ? o.headingFont : (isQuote ? o.quoteFont : (isLi ? o.listFont : o.baseFont)));
+      var boldFont = isCode ? o.codeFont : (isHeading ? o.headingFont : (isLi ? o.listBoldFont : o.boldFont));
       var lineH = isHeading ? o.headingLineH : (isQuote ? o.quoteLineH : (isLi ? o.listLineH : o.lineH));
       var lines = wrapRuns(ctx, block.runs, o.maxWidth - indent, baseFont, boldFont);
       var quoteStartY = y;
       if (isQuote) {
         ops.push({
           type: 'rule', x: o.x, y: quoteStartY - 24, width: 3,
-          height: Math.max(30, lines.length * lineH + 12), color: o.accent || o.color,
+          height: Math.max(30, Math.min(lines.length * lineH + 12, o.maxY - quoteStartY)), color: o.accent || o.color,
         });
       }
       for (var li = 0; li < lines.length; li++) {
@@ -348,7 +398,7 @@
       }
       if (!clipped && bi < blocks.length - 1) {
         var next = blocks[bi + 1];
-        y += isLi && next.type === 'p' ? o.listGap : o.paraGap;
+        y += isCode && next.type === 'code' ? 0 : (isLi && next.type === 'p' ? o.listGap : o.paraGap);
       }
     }
     return { ops: ops, endY: y, clipped: clipped };
@@ -375,157 +425,33 @@
     });
   }
 
-  // ── Multi-turn insight collection ──────────────────────────────────────────
-  function generateThreadCard(messages, options) {
-    options = options || {};
-    var theme = THEMES[options.theme] || THEMES[defaultTheme()];
-    var title = options.title || document.title || '';
-    var url = qrTarget(options);
-    var siteName = shareSiteName(options);
-    var isZh = isZhLang(options);
-    var font = cardFont(isZh);
-    var W = 1080, H = 1350, PAD = 96;
-    var DPR = Math.min(window.devicePixelRatio || 1, 2);
-    var allRounds = conversationPairs(messages);
-    var clipped = allRounds.length > 3;
-    var rounds = allRounds.slice(-3);
-    if (rounds.length <= 1) return generateCard(messages, options);
-    var canvas = document.createElement('canvas');
-    canvas.width = W * DPR; canvas.height = H * DPR;
-    var ctx = canvas.getContext('2d');
-    ctx.scale(DPR, DPR);
-    ctx.textBaseline = 'alphabetic';
-
-    paintBackground(ctx, theme, W, H);
-    paintHeader(ctx, theme, {
-      W: W, PAD: PAD, title: title, siteName: siteName, isZh: isZh,
-      label: isZh ? '阅读札记' : 'Reading note', font: font,
-    });
-
-    ctx.font = '700 40px ' + font;
-    ctx.fillStyle = theme.ink;
-    ctx.fillText(isZh ? '观点合集' : 'Insight collection', PAD, 276);
-    ctx.font = '450 16px ' + font;
-    ctx.fillStyle = theme.muted;
-    ctx.fillText(
-      isZh ? '最近 ' + rounds.length + ' 个阅读切面' : 'The latest ' + rounds.length + ' reading lenses',
-      PAD, 310
-    );
-
-    var y = 372;
-    var blockHeight = 244;
-    rounds.forEach(function (round, index) {
-      ctx.font = '620 14px ' + font;
-      ctx.fillStyle = theme.accent;
-      ctx.fillText(String(index + 1).padStart(2, '0'), PAD, y);
-      ctx.font = '620 27px ' + font;
-      ctx.fillStyle = theme.ink;
-      var answer = mdToPlainText(round.answer);
-      var answerX = PAD + 52;
-      var allAnswerLines = wrapText(ctx, answer, W - PAD * 2 - 52);
-      var answerLines = allAnswerLines.slice(0, 3);
-      answerLines.forEach(function (line, lineIndex) {
-        var suffix = lineIndex === answerLines.length - 1 && allAnswerLines.length > answerLines.length ? '…' : '';
-        ctx.fillText(line + suffix, answerX, y + lineIndex * 42);
-      });
-      var question = mdToPlainText(round.question);
-      if (question) {
-        ctx.font = '450 16px ' + font;
-        ctx.fillStyle = theme.muted;
-        var context = (isZh ? '阅读切口  ' : 'Reading lens  ') + question;
-        var contextLine = wrapText(ctx, context, W - PAD * 2 - 52)[0] || '';
-        if (ctx.measureText(context).width > W - PAD * 2 - 52) contextLine += '…';
-        ctx.fillText(contextLine, answerX, y + 154);
-      }
-      if (index < rounds.length - 1) {
-        ctx.fillStyle = theme.subtle;
-        ctx.fillRect(answerX, y + 194, W - PAD - answerX, 1);
-      }
-      y += blockHeight;
-    });
-
-    if (clipped) {
-      ctx.font = '500 13px ' + font;
-      ctx.fillStyle = theme.muted;
-      ctx.fillText(isZh ? '卡片保留最近 3 个观点' : 'The card keeps the latest 3 insights.', PAD, 1104);
-    }
-
-    paintFooter(ctx, theme, {
-      W: W, H: H, PAD: PAD, url: url, isZh: isZh, qrSize: 104, font: font,
-    });
-    return canvas;
-  }
-
-  // Shared background: a quiet field framing one editorial paper surface.
   function paintBackground(ctx, theme, W, H) {
-    var bg = ctx.createLinearGradient(0, 0, W, H);
-    bg.addColorStop(0, theme.bgFrom); bg.addColorStop(1, theme.bgTo);
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-    ctx.save();
-    ctx.shadowColor = 'rgba(25,29,26,0.08)';
-    ctx.shadowBlur = 28;
-    ctx.shadowOffsetY = 12;
-    roundRect(ctx, 42, 42, W - 84, H - 84, 18);
     ctx.fillStyle = theme.card;
-    ctx.fill();
-    ctx.restore();
-    roundRect(ctx, 42, 42, W - 84, H - 84, 18);
-    ctx.strokeStyle = theme.border;
-    ctx.lineWidth = 1;
-    ctx.stroke();
+    ctx.fillRect(0, 0, W, H);
   }
 
-  function paintHeader(ctx, theme, o) {
-    ctx.font = '620 14px ' + o.font;
-    ctx.fillStyle = theme.accent;
-    ctx.fillText(o.label, o.PAD, 88);
-    ctx.font = '500 13px ' + o.font;
-    ctx.fillStyle = theme.muted;
-    ctx.textAlign = 'right';
-    ctx.fillText(o.siteName, o.W - o.PAD, 88);
-    ctx.textAlign = 'left';
-    ctx.font = '600 20px ' + o.font;
-    ctx.fillStyle = theme.ink;
-    paintTextLines(ctx, o.title, o.PAD, 134, o.W - o.PAD * 2, 2, 28);
-    ctx.fillStyle = theme.subtle;
-    ctx.fillRect(o.PAD, 210, o.W - o.PAD * 2, 1);
-  }
-
-  function paintContext(ctx, theme, o) {
+  // Article attribution stays in the source footer, away from the AI answer.
+  function paintFooter(ctx, theme, o) {
+    var qrX = o.W - o.PAD - o.qrSize, qrY = o.top + 28;
     ctx.fillStyle = theme.subtle;
     ctx.fillRect(o.PAD, o.top, o.W - o.PAD * 2, 1);
-    ctx.font = '620 13px ' + o.font;
-    ctx.fillStyle = theme.accent;
-    ctx.fillText(o.isZh ? '阅读切口' : 'Reading lens', o.PAD, o.top + 38);
-    ctx.font = '450 16px ' + o.font;
-    ctx.fillStyle = theme.muted;
-    var questionX = o.PAD + 112;
-    var lines = wrapText(ctx, o.question, o.W - o.PAD - questionX).slice(0, 2);
-    lines.forEach(function (line, index) {
-      ctx.fillText(line, questionX, o.top + 38 + index * 23);
+    ctx.font = '400 22px ' + o.font; ctx.fillStyle = theme.muted;
+    ctx.fillText(o.isZh ? '阅读原文' : 'Source article', o.PAD, o.top + 47);
+    ctx.font = '500 27px ' + o.font; ctx.fillStyle = theme.ink;
+    o.sourceLines.forEach(function (line, index) {
+      ctx.fillText(line, o.PAD, o.top + 91 + index * 38);
     });
-  }
-
-  // Shared footer: the source is present but visually subordinate to the note.
-  function paintFooter(ctx, theme, o) {
-    var W = o.W, H = o.H, PAD = o.PAD, qrSize = o.qrSize || 140;
-    var qrX = W - PAD - qrSize;
-    var qrY = H - PAD - qrSize;
-    var footLineY = qrY - 26;
-
-    ctx.fillStyle = theme.subtle; ctx.fillRect(PAD, footLineY, W - PAD * 2, 1);
-
-    var textY = footLineY + 44;
-    ctx.font = '620 14px ' + o.font; ctx.fillStyle = theme.accent;
-    ctx.fillText(o.isZh ? '阅读全文' : 'Read the article', PAD, textY);
-    ctx.font = '450 13px ' + o.font; ctx.fillStyle = theme.muted;
-    var shortUrl = compactUrl(o.url, 58);
-    ctx.fillText(shortUrl, PAD, textY + 29);
-
-    var hasQR = drawQR(ctx, o.url, qrX, qrY, qrSize, theme.qrFg, theme.qrBg);
+    var metaY = o.top + 91 + o.sourceLines.length * 38;
+    ctx.font = '400 21px ' + o.font; ctx.fillStyle = theme.muted;
+    ctx.fillText(o.siteName + (o.date ? ' · ' + o.date : ''), o.PAD, metaY);
+    ctx.font = '400 19px ' + o.font;
+    paintTextLines(ctx, compactUrl(o.url, 100), o.PAD, metaY + 32,
+      o.W - o.PAD * 2 - 196, 1, 28);
+    var hasQR = drawQR(ctx, o.url, qrX, qrY, o.qrSize, '#111111', '#ffffff');
     if (hasQR) {
-      ctx.font = '500 11px ' + o.font; ctx.fillStyle = theme.muted; ctx.textAlign = 'right';
-      ctx.fillText(o.isZh ? '扫码打开' : 'Scan to open', W - PAD, qrY - 9);
+      ctx.font = '400 19px ' + o.font; ctx.fillStyle = theme.muted;
+      ctx.textAlign = 'center';
+      ctx.fillText(o.isZh ? '扫码读原文' : 'Read article', qrX + o.qrSize / 2, qrY + o.qrSize + 29);
       ctx.textAlign = 'left';
     }
   }
@@ -568,7 +494,9 @@
     // Drop emphasis/code/link syntax we don't style, keep the visible text.
     return s
       .replace(/`([^`]+)`/g, '$1')
-      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1');
+      .replace(/\[([^\]]+)\]\(([^)]*)\)/g, function (_, label, target) {
+        return label === target ? label : label + ' (' + target + ')';
+      });
   }
   function parseRuns(line) {
     // Split a line into bold / non-bold runs on **...** (and __...__).
@@ -580,17 +508,27 @@
     }
     if (last < line.length) runs.push({ text: stripInlineMd(line.slice(last)), bold: false });
     // Drop *single-star* emphasis markers inside the remaining plain runs.
-    runs.forEach(function (r) { if (!r.bold) r.text = r.text.replace(/\*(.+?)\*/g, '$1'); });
+    runs.forEach(function (r) { if (!r.bold) r.text = r.text.replace(/(^|[\s(])\*([^*\n]+)\*(?=$|[\s.,!?:;)])/g, '$1$2'); });
     return runs.filter(function (r) { return r.text.length; });
   }
   function parseMarkdownBlocks(md) {
-    var text = (md || '').replace(/<[^>]+>/g, '');
+    var text = String(md || '');
     var lines = text.split(/\r?\n/);
     var blocks = [], i = 0;
     while (i < lines.length) {
       var raw = lines[i];
       var line = raw.replace(/\s+$/, '');
       if (line.trim() === '') { i++; continue; }
+      var fence = /^\s*(```+|~~~+)(.*)$/.exec(line);
+      if (fence) {
+        i++;
+        while (i < lines.length && !lines[i].trim().startsWith(fence[1])) {
+          blocks.push({ type: 'code', runs: [{ text: lines[i] || ' ', bold: false }] });
+          i++;
+        }
+        if (i < lines.length) i++;
+        continue;
+      }
       var ul = /^\s*[-*]\s+(.+)$/.exec(line);
       var ol = /^\s*(\d+)[.)]\s+(.+)$/.exec(line);
       var hd = /^#{1,6}\s+(.+)$/.exec(line);
@@ -621,7 +559,8 @@
         i++;
         while (i < lines.length && lines[i].trim() !== ''
                && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+[.)]\s+/.test(lines[i])
-               && !/^#{1,6}\s+/.test(lines[i]) && !/^\s*>\s?/.test(lines[i])) {
+               && !/^#{1,6}\s+/.test(lines[i]) && !/^\s*>\s?/.test(lines[i])
+               && !/^\s*(```+|~~~+)/.test(lines[i])) {
           runs.push({ text: ' ', bold: false });
           runs = runs.concat(parseRuns(lines[i].replace(/\s+$/, '')));
           i++;
@@ -636,68 +575,73 @@
 
   // Wrap a block's runs into lines that fit maxWidth, tracking bold per segment.
   // Returns [[{text,bold}, …], …] — one inner array per visual line.
+  var graphemeSegmenter = typeof Intl !== 'undefined' && Intl.Segmenter
+    ? new Intl.Segmenter(undefined, { granularity: 'grapheme' }) : null;
+  function graphemes(text) {
+    return graphemeSegmenter
+      ? Array.from(graphemeSegmenter.segment(text), function (part) { return part.segment; })
+      : Array.from(text);
+  }
+
+  // Keep Latin words together when possible, but split URLs and long code tokens.
+  // Graphemes prevent splitting emoji families or combining marks at line ends.
   function wrapRuns(ctx, runs, maxWidth, baseFont, boldFont) {
     var lines = [], cur = [], curW = 0;
     function pushLine() { if (cur.length) { lines.push(cur); cur = []; curW = 0; } }
+    function append(value, bold, width) {
+      var last = cur[cur.length - 1];
+      if (last && last.bold === bold) last.text += value;
+      else cur.push({ text: value, bold: bold });
+      curW += width;
+    }
     runs.forEach(function (run) {
-      ctx.font = run.bold ? boldFont : baseFont;
-      // Tokenise: keep CJK per-char, latin per-word, so wrapping stays natural.
-      var hasCJK = /[一-鿿぀-ヿ]/.test(run.text);
-      var tokens = hasCJK ? run.text.split('') : run.text.match(/\s+|\S+/g) || [];
-      tokens.forEach(function (tok) {
-        var w = ctx.measureText(tok).width;
-        if (curW + w > maxWidth && curW > 0 && tok.trim() !== '') { pushLine(); ctx.font = run.bold ? boldFont : baseFont; }
-        cur.push({ text: tok, bold: run.bold });
-        curW += w;
+      var font = run.bold ? boldFont : baseFont;
+      ctx.font = font;
+      var tokens = run.text.match(/[\u3400-\u9fff\u3040-\u30ff]|[^\u3400-\u9fff\u3040-\u30ff\s]+|\s+/gu) || [];
+      tokens.forEach(function (token) {
+        ctx.font = font;
+        var width = ctx.measureText(token).width;
+        if (width <= maxWidth) {
+          if (curW + width > maxWidth && curW > 0) pushLine();
+          append(token, run.bold, width);
+        } else {
+          graphemes(token).forEach(function (character) {
+            ctx.font = font;
+            var charWidth = ctx.measureText(character).width;
+            if (curW + charWidth > maxWidth && curW > 0) pushLine();
+            append(character, run.bold, charWidth);
+          });
+        }
       });
     });
     pushLine();
     return lines;
   }
 
-  // Flatten Markdown to readable plain text for compact contexts (thread card,
-  // copy-as-text): strip ** / * / ` / links, keep ordered "1." and turn bullets
-  // into "• ", and collapse runs of whitespace — never leaving raw emphasis
-  // markers visible.
+  // Copied text keeps the card's paragraphs, list markers and literal code.
   function mdToPlainText(md) {
-    return (md || '')
-      .replace(/<[^>]+>/g, '')
-      .replace(/`([^`]+)`/g, '$1')
-      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-      .replace(/(\*\*|__)(.+?)\1/g, '$2')
-      .replace(/\*(.+?)\*/g, '$1')
-      .replace(/^\s*#{1,6}\s+/gm, '')
-      .replace(/^\s*>\s?/gm, '')
-      .replace(/^\s*```[a-z0-9_-]*\s*$/gim, '')
-      .replace(/^\s*[-*]\s+/gm, '• ')
-      .replace(/\s+/g, ' ')
-      .trim();
+    // The same blocks back the image and copied text, so code and paragraphs
+    // retain their meaning instead of collapsing into one line.
+    var blocks = parseMarkdownBlocks(String(md || ''));
+    var out = [];
+    blocks.forEach(function (block, index) {
+      var value = block.runs.map(function (run) { return run.text; }).join('');
+      if (block.type === 'li') value = block.marker + ' ' + value;
+      if (block.type === 'quote') value = '> ' + value;
+      if (index) out.push(block.type === 'code' && blocks[index - 1].type === 'code' ? '\n' : '\n\n');
+      out.push(value);
+    });
+    return out.join('').trim();
   }
 
   // ── Text helpers ────────────────────────────────────────────────────────────
   function isZhLang(options) {
-    return options.lang === 'zh' ||
-      (document.documentElement.getAttribute('lang') || '').toLowerCase().indexOf('zh') === 0;
+    var lang = options.lang || document.documentElement.getAttribute('lang') || '';
+    return lang.toLowerCase().indexOf('zh') === 0;
   }
   function wrapText(ctx, text, maxWidth) {
-    var lines = [], line = '';
-    var hasCJK = /[一-鿿぀-ヿ]/.test(text);
-    if (hasCJK) {
-      for (var i = 0; i < text.length; i++) {
-        var test = line + text[i];
-        if (ctx.measureText(test).width > maxWidth && line) { lines.push(line); line = text[i]; }
-        else line = test;
-      }
-    } else {
-      var words = text.split(' ');
-      for (var w = 0; w < words.length; w++) {
-        var test2 = line ? line + ' ' + words[w] : words[w];
-        if (ctx.measureText(test2).width > maxWidth && line) { lines.push(line); line = words[w]; }
-        else line = test2;
-      }
-    }
-    if (line) lines.push(line);
-    return lines;
+    return wrapRuns(ctx, [{ text: String(text || ''), bold: false }], maxWidth, ctx.font, ctx.font)
+      .map(function (line) { return line.map(function (run) { return run.text; }).join(''); });
   }
   function formatAsText(messages, options, mode) {
     options = options || {};
@@ -707,13 +651,13 @@
     var rounds = conversationPairs(messages);
     var out = [];
     if (title) { out.push(title); out.push(''); }
-    out.push(isZh ? '文章洞察' : 'Article insights');
+    out.push(isZh ? 'AI 阅读札记' : 'AI reading note');
     out.push('');
     if (mode === 'collection') {
-      rounds.slice(-3).forEach(function (round, index) {
-        out.push((isZh ? '观点 ' : 'Insight ') + (index + 1));
+      rounds.forEach(function (round, index) {
+        out.push((isZh ? '对话 ' : 'Conversation ') + (index + 1));
         out.push(mdToPlainText(round.answer));
-        if (round.question) out.push((isZh ? '阅读切口：' : 'Reading lens: ') + mdToPlainText(round.question));
+        if (round.question) out.push((isZh ? '提问：' : 'Question: ') + mdToPlainText(round.question));
         out.push('');
       });
     } else {
@@ -721,7 +665,7 @@
       out.push(mdToPlainText(latest.answer));
       out.push('');
       if (latest.question) {
-        out.push((isZh ? '阅读切口：' : 'Reading lens: ') + mdToPlainText(latest.question));
+        out.push((isZh ? '提问：' : 'Question: ') + mdToPlainText(latest.question));
         out.push('');
       }
     }
@@ -746,7 +690,7 @@
     overlay.className = 'conv-share-overlay';
 
     var roundCount = messages.filter(function (m) { return m.role === 'assistant'; }).length;
-    var collectionCount = Math.min(roundCount, 3);
+    var collectionCount = roundCount;
     var supportsCopyImg = !!(navigator.clipboard && window.ClipboardItem);
     var supportsWebShare = !!navigator.share;
     var copyImgBtn = supportsCopyImg
@@ -783,8 +727,8 @@
       ? '<div class="conv-share-control-group">' +
           '<span class="conv-share-control-label">' + (isZh ? '内容' : 'Content') + '</span>' +
           '<div class="conv-share-modes" id="csp-modes">' +
-            '<button class="conv-share-mode conv-share-mode--on" data-mode="latest" aria-pressed="true">' + (isZh ? '当前洞察' : 'Current insight') + '</button>' +
-            '<button class="conv-share-mode" data-mode="collection" aria-pressed="false">' + (isZh ? '最近 ' + collectionCount + ' 条' : 'Latest ' + collectionCount) + '</button>' +
+            '<button class="conv-share-mode conv-share-mode--on" data-mode="latest" aria-pressed="true">' + (isZh ? '当前回答' : 'Current answer') + '</button>' +
+            '<button class="conv-share-mode" data-mode="collection" aria-pressed="false">' + (isZh ? '全部 ' + collectionCount + ' 条' : 'All ' + collectionCount) + '</button>' +
           '</div>' +
         '</div>'
       : '';
@@ -793,7 +737,7 @@
       '<div class="conv-share-sheet" role="dialog" aria-modal="true" aria-labelledby="conv-share-heading" aria-describedby="conv-share-description">' +
         '<div class="conv-share-handle"></div>' +
         '<div class="conv-share-header">' +
-          '<span class="conv-share-title" id="conv-share-heading">' + (isZh ? '分享洞察' : 'Share insight') + '</span>' +
+          '<span class="conv-share-title" id="conv-share-heading">' + (isZh ? '分享阅读札记' : 'Share reading note') + '</span>' +
           '<span class="conv-share-subtitle" id="conv-share-description">' +
             (isZh ? '选择内容与样式，然后导出卡片。' : 'Choose what to include, then export the card.') +
           '</span>' +
@@ -809,8 +753,8 @@
               '<div class="conv-share-themes" id="csp-themes">' + swatches + '</div>' +
             '</div>' +
             '<div class="conv-share-output-meta" aria-hidden="true">' +
-              '<strong>' + (isZh ? '社交图片' : 'Social image') + '</strong>' +
-              '<span>PNG / 1080 × 1350</span>' +
+              '<strong>' + (isZh ? '阅读札记' : 'Reading note') + '</strong>' +
+              '<span id="csp-size">PNG</span>' +
             '</div>' +
           '</aside>' +
           '<div class="conv-share-stage">' +
@@ -818,7 +762,7 @@
           '</div>' +
         '</div>' +
         '<div class="conv-share-footer">' +
-          '<span class="conv-share-format" aria-hidden="true">4:5 / 1080 × 1350</span>' +
+          '<span class="conv-share-format" aria-hidden="true">PNG</span>' +
           '<div class="conv-share-actions' + (supportsWebShare && supportsCopyImg ? ' conv-share-actions--four' : '') + '">' +
             '<button class="conv-share-btn" id="csb-copy-text" aria-label="' + (isZh ? '复制文本' : 'Copy text') + '">' +
               '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
@@ -838,6 +782,14 @@
     var mode = 'latest';
     var canvas = render();
     previewArea.appendChild(canvas);
+    updateDimensions();
+
+    function updateDimensions() {
+      var label = document.getElementById('csp-size');
+      if (label) label.textContent = canvas.width + ' × ' + canvas.height + ' px';
+      canvas.setAttribute('role', 'img');
+      canvas.setAttribute('aria-label', isZh ? '阅读札记图片，下方可复制文本' : 'Reading note image. Copy text below for an accessible version.');
+    }
 
     function render() {
       return mode === 'collection' ? generateThreadCard(messages, options) : generateCard(messages, options);
@@ -846,6 +798,8 @@
       var next = render();
       previewArea.replaceChild(next, canvas);
       canvas = next;
+      previewArea.scrollTop = 0;
+      updateDimensions();
     }
 
     document.getElementById('csp-themes').addEventListener('click', function (e) {
@@ -958,7 +912,7 @@
         canvas.toBlob(function (blob) {
           if (!blob) return;
           var file = new File([blob], 'article-insight.png', { type: 'image/png' });
-          var shareTitle = (isZh ? '文章洞察｜' : 'Article insight | ') + (options.title || document.title || '');
+          var shareTitle = (isZh ? '阅读札记｜' : 'Reading note | ') + (options.title || document.title || '');
           var shareData = {
             title: shareTitle,
             text: formatAsText(messages, options, mode).slice(0, 300),

@@ -16,7 +16,7 @@ const write=(file,value)=>{fs.mkdirSync(path.dirname(file),{recursive:true});fs.
 function run(command,args,options={}) {const r=spawnSync(command,args,{stdio:'inherit',...options});if(r.error||r.status!==0)throw new Error(`${command} ${args[0]} failed (${r.status??r.error?.code})`);}
 const tests={
   workflow:['scripts/ci-changes.test.mjs','scripts/ci-workflows.test.mjs','scripts/site-release.test.mjs','scripts/site-artifact.test.mjs','scripts/site-build.test.mjs','scripts/site-verify.test.mjs','scripts/live-site-probes.test.mjs','scripts/tag-workflow.test.mjs','scripts/backup-site.test.mjs','scripts/netlify-build-control.test.mjs'],
-  functions:['scripts/home-chat-utils.test.mjs','scripts/buttondown-tags.test.mjs','scripts/newsletter-state.test.mjs','scripts/generate-content-index.test.mjs','scripts/release-followups.test.mjs','scripts/search-delivery.test.mjs','scripts/audit-public-site.test.mjs'],
+  functions:['scripts/home-chat-utils.test.mjs','scripts/article-ai.test.mjs','scripts/share-conversation.test.mjs','scripts/reading-reply.test.mjs','scripts/buttondown-tags.test.mjs','scripts/newsletter-state.test.mjs','scripts/generate-content-index.test.mjs','scripts/release-followups.test.mjs','scripts/search-delivery.test.mjs','scripts/audit-public-site.test.mjs'],
   seo:['scripts/psi-fetch.test.mjs','scripts/seo-report.test.mjs','scripts/seo-pipeline.test.mjs','scripts/seo-autofix-gate.test.mjs','scripts/daily-report-issue.test.mjs','scripts/lighthouse-report-to-issue.test.mjs','scripts/gsc-fetch.test.mjs','scripts/gsc-report.test.mjs'],
 };
 async function main() {

@@ -257,15 +257,15 @@
     surface.insertBefore(intro, messagesEl);
 
     var QUICK = language === 'zh'
-      ? [['核心摘要', '用 3-5 句话精炼地概括这篇文章的核心观点。'],
-         ['精彩金句', '从这篇文章中挑出 3 句最有穿透力的话，并简要说明它们为什么值得记住。'],
-         ['关键概念', '这篇文章里有哪些容易被忽略但重要的概念？请列出并解释。'],
+      ? [['核心摘要', '用几句话聊聊这篇文章最值得记住的想法。'],
+         ['精彩金句', '从文中挑几句值得重读的原话，聊聊它们为什么值得再想一想。'],
+         ['关键概念', '这篇文章里有哪些容易被忽略的想法？帮我说清楚它们之间的联系。'],
          ['反方视角', '帮我挑出这篇文章里最值得质疑或反驳的观点，并给出反方视角。'],
          ['小白讲解', '如果我是第一次接触这个主题的读者，请用最简单的比喻帮我理解这篇文章。'],
          ['延伸阅读', '基于这篇文章的主题和内容，推荐 3 个延伸阅读方向或相关话题。']]
-      : [['Summary', 'Summarize the key points of this article in 3-5 sentences.'],
-         ['Highlights', 'List the 3 most memorable sentences from this article, and briefly explain why they stand out.'],
-         ['Key concepts', 'What are the overlooked but important concepts in this article? List and explain.'],
+      : [['Summary', 'In a few sentences, talk me through the ideas in this article worth remembering.'],
+         ['Highlights', 'Pick a few exact lines worth rereading and tell me what makes them worth another thought.'],
+         ['Key concepts', 'Which ideas in this article are easy to miss? Help me understand how they connect.'],
          ['Counter-argument', 'Which claims in this article are most worth challenging? Give me a counter-argument.'],
          ['ELI5', 'Explain this article to a complete beginner using the simplest analogy possible.'],
          ['Further reading', 'Based on this article, suggest 3 directions for further reading or related topics.']];
@@ -314,82 +314,27 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
     }
-    // Escaped text → HTML with Markdown [label](url) links rendered as safe
-    // anchors (http(s)/site-relative only) so AI-recommended articles are
-    // tappable on mobile too.
+    // Match the desktop prose-only replies; related article links have their
+    // own controls, while literal reply text is escaped before insertion.
     function renderAiText(text) {
-      function inline(value) {
-        return escapeHtml(value)
-          .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
-          if (!/^https?:\/\//i.test(url) && !/^\//.test(url)) return label;
-          var ext = /^https?:\/\//i.test(url) && url.indexOf(window.location.origin) !== 0;
-            return '<a href="' + url + '" class="abs-ai-link"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
-          })
-          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.+?)\*/g, '<em>$1</em>')
-          .replace(/`(.+?)`/g, '<code>$1</code>');
-      }
-      var lines = text.split('\n');
-      var html = '', i = 0;
-      while (i < lines.length) {
-        var line = lines[i];
-        var fence = /^\s*```(?:\w+)?\s*$/.exec(line);
-        if (fence) {
-          var codeLines = [];
-          i++;
-          while (i < lines.length && !/^\s*```\s*$/.test(lines[i])) {
-            codeLines.push(lines[i]);
-            i++;
-          }
-          if (i < lines.length) i++;
-          html += '<pre><code>' + escapeHtml(codeLines.join('\n')) + '</code></pre>';
-          continue;
-        }
-        var quote = /^\s*>\s?(.*)$/.exec(line);
-        if (quote) {
-          var quoteLines = [];
-          while (i < lines.length) {
-            var qm = /^\s*>\s?(.*)$/.exec(lines[i]);
-            if (!qm) break;
-            quoteLines.push(qm[1]);
-            i++;
-          }
-          html += '<blockquote><p>' + inline(quoteLines.join(' ')) + '</p></blockquote>';
-          continue;
-        }
-        var ul = /^\s*[-*]\s+(.+)$/.exec(line);
-        var ol = /^\s*\d+[.)]\s+(.+)$/.exec(line);
-        if (ul || ol) {
-          var ordered = !!ol;
-          var tag = ordered ? 'ol' : 'ul';
-          html += '<' + tag + ' class="abs-ai-list">';
-          while (i < lines.length) {
-            var match = ordered ? /^\s*\d+[.)]\s+(.+)$/.exec(lines[i]) : /^\s*[-*]\s+(.+)$/.exec(lines[i]);
-            if (!match) break;
-            html += '<li>' + inline(match[1]) + '</li>';
-            i++;
-          }
-          html += '</' + tag + '>';
-          continue;
-        }
-        var heading = /^#{1,3}\s+(.+)$/.exec(line);
-        if (heading) {
-          html += '<h3>' + inline(heading[1]) + '</h3>';
-          i++;
-          continue;
-        }
-        if (!line.trim()) { i++; continue; }
-        var paragraph = [];
-        while (i < lines.length && lines[i].trim()
-               && !/^\s*```(?:\w+)?\s*$/.test(lines[i])
-               && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*\d+[.)]\s+/.test(lines[i])
-               && !/^#{1,3}\s+/.test(lines[i]) && !/^\s*>\s?/.test(lines[i])) {
-          paragraph.push(inline(lines[i]));
-          i++;
-        }
-        html += '<p>' + paragraph.join(' ') + '</p>';
-      }
-      return html;
+
+      var inCode = false;
+      var plain = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(function (line) {
+        if (/^\s*(?:```|~~~)/.test(line)) { inCode = !inCode; return ''; }
+        if (inCode) return line;
+        return line
+          .replace(/^\s{0,3}#{1,6}\s+/, '')
+          .replace(/^\s{0,3}>\s?/, '')
+          .replace(/^\s{0,3}(?:[-*+]\s+|\d{1,3}[.)]\s+)/, '')
+          .replace(/(^|[^A-Za-z0-9_*])\*\*([^*\n]+)\*\*(?![A-Za-z0-9_*])/g, '$1$2')
+          .replace(/(^|[^A-Za-z0-9_])__([^_\n]+)__(?![A-Za-z0-9_])/g, '$1$2')
+          .replace(/(^|[^A-Za-z0-9_*])\*(\S(?:[^*\n]*?\S)?)\*(?![A-Za-z0-9_*])/g, '$1$2')
+          .replace(/`([^`\n]+)`/g, '$1')
+          .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]*)\)/g, '$1 ($2)');
+      }).join('\n');
+      return plain.split(/\n\s*\n/).filter(function (paragraph) { return paragraph.trim(); }).map(function (paragraph) {
+        return '<p>' + escapeHtml(paragraph.trim()).replace(/\n/g, '<br>') + '</p>';
+      }).join('');
     }
     function addMsg(text, role) {
       var g = messagesEl.querySelector('.abs-ai-greeting');
