@@ -189,9 +189,8 @@
   "jobTitle": {{ $idPerson.jobTitle | default "Practitioner, Writer, and Open Source Contributor" }},
   "knowsAbout": {{ $idKnows | jsonify | safeJS }},
   "sameAs": {{ $idSameAs | jsonify | safeJS }},
-  "worksFor": {
+  "affiliation": {
     "@type": "Organization",
-    "@id": "{{ site.BaseURL }}#organization",
     "name": {{ $idPerson.affiliation | default "OpenIM" }}
   }
 }

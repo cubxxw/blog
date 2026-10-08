@@ -2,9 +2,11 @@
   "_notes": [
     "Canonical machine-readable identity for cubxxw.com — single source of truth for About page, llms.txt, and the AI content index.",
     "When identity, links, or the life timeline change, edit this file first, then mirror visible prose in content/{lang}/about.md if needed.",
-    "timeline.milestones are evidence-backed public-trace anchors (blog / GitHub / Wayback / social), not a private diary."
+    "timeline.milestones are evidence-backed public-trace anchors (blog / GitHub / Wayback / social), not a private diary.",
+    "Identity and current_focus were reviewed on 2026-10-08; stats remain the historical 2026-09-24 snapshot and are not current totals.",
+    "OpenIM affiliation denotes historical open-source contribution and internship, not a current employer declaration."
   ],
-  "as_of": "2026-09-24",
+  "as_of": "2026-10-08",
   "person": {
     "name": "Xinwei Xiong",
     "name_zh": "熊鑫伟",
@@ -13,6 +15,8 @@
     "gender": "male",
     "knowsAbout": [
       "AI Agents",
+      "Agent evaluation",
+      "Context engineering",
       "LLM applications",
       "Open source community",
       "Kubernetes",
@@ -23,11 +27,11 @@
       "Personal growth",
       "Philosophy"
     ],
-    "jobTitle": "AI product builder & open-source contributor",
-    "affiliation": "OpenIM (core contributor, former intern)",
+    "jobTitle": "AI Product Systems Engineer",
+    "affiliation": "OpenIM",
     "location_note": "From Wuhan; travels widely (blog Bio: Singapore / X: @Iceland / Zhihu IP: Cambodia as of 2026-09-24 — treat as moving)",
-    "description_en": "Xinwei Xiong (熊鑫伟, aka cubxxw / BEAR, b. 2001) builds AI products solo while traveling, is a core contributor to OpenIM, and writes an open archive of practice, judgment, and long-term thought at cubxxw.com.",
-    "description_zh": "熊鑫伟（cubxxw / BEAR，2001 年生）边旅行边独立构建 AI 产品，OpenIM 核心贡献者，长期公开实践、判断与人生思考的档案。",
+    "description_en": "Xinwei Xiong (熊鑫伟, aka cubxxw / BEAR, b. 2001) builds AI products with a focus on agent evaluation and reliable execution. He contributed to OpenIM's engineering and community workflows, and writes about projects and monthly reflections at cubxxw.com. Travel remains part of his life.",
+    "description_zh": "熊鑫伟（cubxxw / BEAR，2001 年生）构建 AI 产品，关注 Agent 评估与可靠执行。曾参与 OpenIM 的工程和社区协作，在 cubxxw.com 公开项目实践与每月思考，旅行仍是生活的一部分。",
     "motto": "You never lose — either you win, or you learn.",
     "belief": "AI + Human = Superhuman",
     "life_mission_en": "To know myself more, and to know the world more.",
@@ -41,6 +45,7 @@
     "travel": "https://cubxxw.com/travel/",
     "projects": "https://cubxxw.com/projects/",
     "github": "https://github.com/cubxxw",
+    "resume": "https://resume.cubxxw.com",
     "x": "https://x.com/cubxxw",
     "zhihu": "https://www.zhihu.com/people/3293172751",
     "juejin": "https://juejin.cn/user/3980710059710909/posts",
@@ -74,7 +79,7 @@
     "x_posts": 242
   },
   "timeline": {
-    "range": "2019-01 → 2026-09",
+    "range": "2019-01 → 2026-10",
     "full_archive": {
       "served_url": "/data/personal-timeline-2019-2026.md",
       "static_path": "static/data/personal-timeline-2019-2026.md",
@@ -102,15 +107,18 @@
       { "date": "2026-04", "label": "Laos & Cambodia border month; disconnection experiment in May" },
       { "date": "2026-07", "label": "GEO series + solo AI products (getyak/*); 55 Chinese posts / 733 GitHub contributions that month" },
       { "date": "2026-08-10", "label": "Started a new job after a ~2-year career gap: “不会让恐惧替我做决定”" },
-      { "date": "2026-09", "label": "IMStage live; StripSearch research agent; still writing monthly thought notes" }
+      { "date": "2026-09", "label": "IMStage live; StripSearch research agent; still writing monthly thought notes" },
+      { "date": "2026-10-03", "label": "Published paired Personal Agent product and technical studies, separating source-code observations from proposed task and authorization models" },
+      { "date": "2026-10-08", "label": "Public monthly notes connect user stories to evaluation cases, failure analysis and regression; research methods remain distinct from measured production outcomes" }
     ],
     "arc_en": "2001 born · Wuhan CS student → 2021 first blog/GitHub → 2022 learning-note open source → 2023 OpenIM internship & this blog → 2024 graduation, first trip abroad, quit corporate, nomad → 2025 treks & inner work → 2026 Tibet/AI identity, solo AI products, new job Aug 10.",
     "arc_zh": "2001 年生 · 武汉计科 → 2021 首篇博客/新 GitHub → 2022 学习型开源笔记爆发 → 2023 OpenIM 实习与本博客 → 2024 毕业、首次出国、离开外企、旅居 → 2025 徒步与元认知 → 2026 拉萨/身份写作、Solo AI 产品、8/10 入职新公司。"
   },
   "current_focus": [
-    "Solo AI products: DayPage, Solo Compass, Apply Agent, Telepace, Talent Signal, IMStage",
-    "Agent engineering (OpenClaw / harness / memory / GEO)",
-    "Monthly thought notes on self-knowledge, history, cities"
+    "AI product engineering: DayPage, StripSearch and agent-kit; distinguish released artifacts, working prototypes and research proposals",
+    "Agent evaluation: connect user stories, success criteria, failure analysis and regression cases",
+    "Personal Agent research: task lifecycle, authorization, recovery, result verification and memory correction",
+    "Monthly thought notes on product practice, self-knowledge, history and cities"
   ],
   "voice_samples": [
     { "date": "2023-09-14", "quote": "你的价值取决于你创造了什么，而不是你拥有什么。", "source": "我的第一个博客" },

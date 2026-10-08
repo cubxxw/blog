@@ -561,6 +561,7 @@
           </p>
           <p class="studio-identity__links">
             {{- with $idLinks.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a> ·{{ end }}
+            {{- with $idLinks.resume }}<a href="{{ if $isZH }}{{ . }}{{ else }}{{ printf "%s/en/" (strings.TrimRight "/" .) }}{{ end }}" target="_blank" rel="noopener">{{ if $isZH }}简历与项目证据{{ else }}Resume and project evidence{{ end }}</a> ·{{ end }}
             {{- with $idLinks.x }}<a href="{{ . }}" target="_blank" rel="noopener">X</a> ·{{ end }}
             {{- with $idLinks.zhihu }}<a href="{{ . }}" target="_blank" rel="noopener">知乎</a> ·{{ end }}
             {{- with $idLinks.polarsteps }}<a href="{{ . }}" target="_blank" rel="noopener">Polarsteps</a> ·{{ end }}
@@ -646,6 +647,9 @@ links:
         <h2 id="studio-coda-title">{{ if $isZH }}联系我{{ else }}Get in touch{{ end }}</h2>
       </div>
       <nav aria-label="{{ if $isZH }}联系方式{{ else }}Contact links{{ end }}">
+        {{- with site.Data.identity.links.resume }}
+        <a href="{{ if $isZH }}{{ . }}{{ else }}{{ printf "%s/en/" (strings.TrimRight "/" .) }}{{ end }}" target="_blank" rel="noopener">{{ if $isZH }}简历{{ else }}Resume{{ end }}</a>
+        {{- end }}
         <a href="mailto:3293172751nss@gmail.com">{{ if $isZH }}邮件{{ else }}Email{{ end }}</a>
         <a href="{{ site.Params.whatsappURL | safeURL }}" target="_blank" rel="noopener">{{ if $isZH }}WhatsApp 联系我{{ else }}WhatsApp{{ end }}</a>
         <a href="https://github.com/cubxxw" target="_blank" rel="noopener">GitHub</a>

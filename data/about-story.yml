@@ -109,6 +109,8 @@ chapters:
       details:
         - 2026 年我一个人构建 AI 产品（getyak 系列），也写 AI 时代的身份思考；8 月 10 日， 在大约两年的空窗之后，我入职新公司，写下：「不会让恐惧替我做决定」。
         - 2 月我走川藏线到拉萨，住了大约一个月；3 月写完年度总结《我在游荡，但我没有迷路》。产品、写作和新的工作都还在继续。
+        - 9 月到 10 月，我把注意力放到 Agent 效果上。用户想完成什么，怎样才算做成，失败后怎么查原因，这些问题逐渐连到了评测和回归样本上。
+        - 我也继续做 DayPage、StripSearch 和 agent-kit，研究个人助手怎样保留任务进度、处理权限与恢复执行。公开记录里，我把已实现的代码和待验证的方案分开写。
       link:
         href: /zh/growth/posts/2026-08-10-fear-does-not-decide-for-me/
         label: 阅读《不会让恐惧替我做决定》
@@ -121,6 +123,12 @@ chapters:
           the ongoing work on agent harnesses, products, and self-knowledge.
         - In February I took the Sichuan–Tibet road to Lhasa and stayed about a month; in March I finished the
           annual review “Wandering & Growing”. Products, writing, and the new job all continue.
+        - In September and October I focused on agent outcomes. What does the user want to accomplish,
+          what counts as success, and how do we diagnose a failure? Those questions began connecting
+          to evaluation and regression cases.
+        - I also continued working on DayPage, StripSearch and agent-kit, and studying how personal
+          assistants preserve task progress, handle authorization and recover execution. In public
+          records I distinguish implemented code from proposals that still need validation.
       link:
         href: /growth/posts/2026-08-thought-notes/
         label: Read the August 2026 thought notes
