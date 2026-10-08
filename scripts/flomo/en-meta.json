@@ -144,12 +144,21 @@
     ]
   },
   "2026-09": {
-    "title": "September 2026 Thought Notes: Architecture, Temples and First Principles",
-    "description": "A complete record of September 2026: 220 notes across 9 themes, covering agent architecture and tool permissions, the timber architecture of Yingxian and the Hanging Temple, first principles, and the everyday notes of a month that is still running. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.",
+    "title": "September 2026 Thought Notes: AI and Agent Systems, Daily Notes, Engineering and Open Source",
+    "description": "September 2026: 326 notes across nine themes, from AI agents and product engineering to reading, films and self-observation, with original timestamps preserved.",
     "tldr": [
-      "Claude's message protocol makes a suspended tool call impossible inside one turn, so optimistic execution needs an explicit rollback path.",
-      "The Hanging Temple is not fighting gravity, it is understanding it: the mountain is the real foundation, and most visible columns carry nothing.",
-      "Timber architecture is fragile and therefore clever; it trades material permanence for cultural continuity."
+      "The public September 2026 archive contains 326 records, mainly on AI and Agent systems, alongside daily notes and reflections on products and engineering.",
+      "The longest entry in AI and Agent Systems is ‘IM is a very suitable container for interaction between Agents and people.’",
+      "The longest entry in Daily Notes and Everything Else is ‘Suddenly I thought again of: mind is principle, extending innate knowledge, unity of knowledge and action.’"
+    ]
+  },
+  "2026-10": {
+    "title": "October 2026 Thought Notes: Daily Life, AI and Agent Systems, Engineering and Open Source",
+    "description": "October 2026 thought notes: 68 public entries across 8 themes as of October 8, on AI agents, product design, personal work, reading, films and everyday life.",
+    "tldr": [
+      "As of October 8, 2026, the public archive contains 68 records, mostly everyday reflections, alongside notes on AI and agent systems and product engineering practice.",
+      "The longest entry in Daily Notes and Everything Else is ‘I keep wondering whether the world we live in is real.’",
+      "The longest entry in AI and Agent Systems is ‘The holiday is almost over; I went to a café today, but I feel busy every day.’"
     ]
   }
 }
