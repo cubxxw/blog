@@ -94,14 +94,14 @@
 下面只保留最近发布的 8 篇中文文章，由 GitHub Actions 从博客 RSS 自动更新。这个列表会变化，仓库也会继续生长。
 
 <!-- BLOG-POST-LIST:START -->
+- [2026年10月思考笔记：日常与其他、AI 与 Agent 系统、工程与开源](https://cubxxw.com/zh/growth/posts/2026-10-thought-notes/)
 - [Nango 接入实战：让用户在聊天中添加自己的 MCP](https://cubxxw.com/zh/ai-agent/posts/nango-user-defined-mcp-integration/)
 - [Personal Agent 技术研究：OpenClaw 怎样把一次运行接到长期事务上](https://cubxxw.com/zh/ai-agent/posts/personal-agent-harness-openclaw/)
 - [Personal Agent 产品研究：Instinct 怎样让人愿意再次委托](https://cubxxw.com/zh/ai-agent/posts/personal-agent-product-delegation/)
+- [2026年9月思考笔记：AI 与 Agent 系统、日常与其他、工程与开源](https://cubxxw.com/zh/growth/posts/2026-09-thought-notes/)
 - [Opus 5.5 为什么更会做动画：从真实工程拆解视觉能力跃迁](https://cubxxw.com/zh/ai-agent/posts/opus-55-visual-capability/)
 - [一个人如何维护自己的界面：用 Figma、Figwright 与 AI 搭建设计系统](https://cubxxw.com/zh/engineering/posts/2026-09-26-figma-figwright-personal-design-system/)
 - [AI 从业者是如何利用 AI 学习英语的](https://cubxxw.com/zh/growth/posts/ai-english-learning/)
-- [用 AI 把文章做成可操作的解释：从 Web Components 到 MCP Apps](https://cubxxw.com/zh/ai-agent/posts/writing-explorable-articles-with-ai/)
-- [IMStage：可编辑的聊天场景](https://cubxxw.com/zh/projects/imstage/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 一套公开运行的内容系统
