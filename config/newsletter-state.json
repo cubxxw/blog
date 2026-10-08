@@ -1503,6 +1503,11 @@
       "at": "2026-10-04T17:10:23.406Z",
       "id": "em_6hh3zf4m2d9bkaxnrwcvsv3fch",
       "mode": "draft"
+    },
+    "https://cubxxw.com/zh/growth/posts/2026-10-thought-notes/": {
+      "at": "2026-10-08T19:03:41.490Z",
+      "id": "em_4x6xr70vfj97psspdkqsyx7jg8",
+      "mode": "draft"
     }
   },
   "schema": "newsletter-state/2",
@@ -4794,10 +4799,12 @@
     "[\"zh\",\"https://cubxxw.com/zh/growth/posts/2026-10-thought-notes/\"]": {
       "language": "zh",
       "url": "https://cubxxw.com/zh/growth/posts/2026-10-thought-notes/",
-      "status": "pending",
+      "status": "completed",
       "attemptId": "dba417ee-aa0c-4c5f-a351-dedef8aaf33c",
       "at": "2026-10-08T19:03:41.490Z",
-      "mode": "draft"
+      "mode": "draft",
+      "providerId": "em_4x6xr70vfj97psspdkqsyx7jg8",
+      "completedAt": "2026-10-08T19:03:41.490Z"
     }
   }
 }
