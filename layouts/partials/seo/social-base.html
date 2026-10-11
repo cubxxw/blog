@@ -1,7 +1,11 @@
 {{- $font := partialCached "seo/social-font.html" . -}}
 {{- $image := resources.Get "social/paper.png" -}}
+{{- $signature := (resources.Get "social/identity/signature.png").Resize "278x" -}}
+{{- $mark := (resources.Get "social/identity/author-mark.png").Resize "92x92" -}}
 {{- $image = $image.Filter
-  (images.Text .label (dict "font" $font "size" 28 "color" "#b74426" "x" 104 "y" 65))
+  (images.Overlay $signature 68 38)
+  (images.Overlay $mark 1040 32)
+  (images.Text .label (dict "font" $font "size" 22 "color" "#b74426" "x" 380 "y" 76))
   (images.Text .footer (dict "font" $font "size" 24 "color" "#56564e" "x" 72 "y" 551))
   (images.Text "cubxxw.com" (dict "font" $font "size" 24 "color" "#56564e" "alignx" "right" "x" 1128 "y" 551))
 -}}

@@ -17,7 +17,7 @@ function run(command,args,options={}) {const r=spawnSync(command,args,{stdio:'in
 const tests={
   workflow:['scripts/ci-changes.test.mjs','scripts/ci-workflows.test.mjs','scripts/site-release.test.mjs','scripts/site-artifact.test.mjs','scripts/site-build.test.mjs','scripts/site-verify.test.mjs','scripts/live-site-probes.test.mjs','scripts/tag-workflow.test.mjs','scripts/backup-site.test.mjs','scripts/netlify-build-control.test.mjs'],
   functions:['scripts/home-chat-utils.test.mjs','scripts/article-ai.test.mjs','scripts/share-conversation.test.mjs','scripts/reading-reply.test.mjs','scripts/buttondown-tags.test.mjs','scripts/newsletter-state.test.mjs','scripts/generate-content-index.test.mjs','scripts/release-followups.test.mjs','scripts/search-delivery.test.mjs','scripts/audit-public-site.test.mjs'],
-  seo:['scripts/psi-fetch.test.mjs','scripts/seo-report.test.mjs','scripts/seo-pipeline.test.mjs','scripts/seo-autofix-gate.test.mjs','scripts/daily-report-issue.test.mjs','scripts/lighthouse-report-to-issue.test.mjs','scripts/gsc-fetch.test.mjs','scripts/gsc-report.test.mjs','scripts/social-card-contracts.test.mjs'],
+  seo:['scripts/psi-fetch.test.mjs','scripts/seo-report.test.mjs','scripts/seo-pipeline.test.mjs','scripts/seo-autofix-gate.test.mjs','scripts/daily-report-issue.test.mjs','scripts/lighthouse-report-to-issue.test.mjs','scripts/gsc-fetch.test.mjs','scripts/gsc-report.test.mjs','scripts/social-card-contracts.test.mjs','scripts/social-identity.test.mjs'],
 };
 async function main() {
   const args=process.argv.slice(2),stage=args.shift();

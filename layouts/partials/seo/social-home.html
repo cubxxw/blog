@@ -1,0 +1,8 @@
+{{- $lang := cond (eq .Language.Lang "zh") "zh" "en" -}}
+{{- $card := (resources.Get (printf "social/identity/home-%s.png" $lang)).Fill "1200x630 center png" -}}
+{{- /* Preserve the actual documentary photograph, rather than publishing
+     generated facial details. Geometry matches the approved H composition. */ -}}
+{{- $portrait := (resources.Get "social/identity/portrait.webp").Crop "280x300 TopRight" -}}
+{{- $portrait = $portrait.Fill "494x478 center png" -}}
+{{- $portrait = $portrait.Filter images.Grayscale -}}
+{{- return ($card.Filter (images.Overlay $portrait 706 38)) -}}

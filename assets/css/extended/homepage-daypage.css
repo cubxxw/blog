@@ -1008,6 +1008,7 @@ body.dark .hp-topbar { background: rgba(28, 25, 22, 0.85); }
 
 .hp-bear-chat-input {
   flex: 1;
+  min-width: 0;
   padding: 9px 14px;
   background: var(--surface-sunken);
   border: 1px solid var(--border-subtle);
@@ -2346,7 +2347,9 @@ body.dark .hp-heatmap-year-tab.active { color: #1C1916; }
   .hp-topbar-inner { padding: 0 20px; gap: 16px; }
   .hp-nav { display: none; }
   .hp-hero {
-    grid-template-columns: 1fr;
+    /* Followup chips must scroll within the chat, without their intrinsic
+       width widening the hero track and pushing controls offscreen. */
+    grid-template-columns: minmax(0, 1fr);
     min-height: 33.5rem;
     padding: 48px 0 56px;
     gap: 40px;

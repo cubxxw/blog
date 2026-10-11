@@ -28,7 +28,7 @@
   "description": {{ cond (ne .Description "") .Description .Summary | plainify | truncate 200 }},
   {{- /* schema.org Article images must be a crawlable raster (JPG/PNG/WebP);
          SVG is unsupported. Fall back to the default PNG when the cover is SVG. */ -}}
-  {{- $schemaImage := index site.Params.images 0 | default "/assets/og-image.png" -}}
+  {{- $schemaImage := (partialCached "seo/social-image.html" . .RelPermalink .Language.Lang).url -}}
   {{- with .Params.cover.image }}{{ if not (strings.HasSuffix (lower .) ".svg") }}{{ $schemaImage = . }}{{ end }}{{ end -}}
   "image": {{ $schemaImage | absURL }},
   "url": {{ .Permalink }},

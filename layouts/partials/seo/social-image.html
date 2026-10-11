@@ -4,17 +4,16 @@
 {{- $font := partialCached "seo/social-font.html" . -}}
 {{- $zh := eq .Language.Lang "zh" -}}
 {{- $title := .Title | plainify -}}
-{{- $label := "cubxxw / NOTES" -}}
+{{- $label := "NOTES" -}}
 {{- $footer := cond $zh "熊鑫伟 · 实践与思想" "Xinwei Xiong / Practice & thought" -}}
 {{- $size := 64 -}}
 {{- $lines := "" -}}
-{{- if .IsHome -}}
-  {{- $label = "cubxxw / OPEN ARCHIVE" -}}
-  {{- $lines = cond $zh "公开的实践\n与思想档案" "An open archive\nof practice & thought" -}}
-  {{- $size = cond $zh 88 76 -}}
+{{- $isIdentity := or .IsHome (in (slice "about" "about-quest") .Layout) -}}
+{{- if $isIdentity -}}
+  {{- $image = partialCached "seo/social-home.html" . .Language.Lang -}}
 {{- else -}}
   {{- $labels := dict "ai-agent" "AI AGENT" "engineering" "ENGINEERING" "growth" "LIFE & THOUGHT" "projects" "PROJECTS" "articles" "ARTICLES" -}}
-  {{- with index $labels .Section -}}{{- $label = printf "cubxxw / %s" . -}}{{- end -}}
+  {{- with index $labels .Section -}}{{- $label = . -}}{{- end -}}
   {{- if gt (strings.RuneCount $title) (cond $zh 48 85) -}}{{- $size = 56 -}}{{- end -}}
   {{- $lines = partial "seo/social-lines.html" (dict "text" $title "limit" (div 1040.0 $size)) -}}
   {{- /* A small size adjustment keeps a lone final character/word from
@@ -26,13 +25,16 @@
       {{- $lines = partial "seo/social-lines.html" (dict "text" $title "limit" (div 1040.0 $size)) -}}
     {{- end -}}
   {{- end -}}
+  {{- $image = partialCached "seo/social-base.html" (dict "label" $label "footer" $footer) $label $footer -}}
+  {{- $image = $image.Filter (images.Text $lines (dict "font" $font "size" $size "color" "#20201e" "x" 72 "y" 198 "linespacing" 24)) -}}
 {{- end -}}
-{{- $image = partialCached "seo/social-base.html" (dict "label" $label "footer" $footer) $label $footer -}}
-{{- $image = $image.Filter (images.Text $lines (dict "font" $font "size" $size "color" "#20201e" "x" 72 "y" 198 "linespacing" 24)) -}}
 {{- /* A dedicated local raster override is optional. Article covers stay
      independent: portrait photos and diagrams are not automatically cards. */ -}}
 {{- with .Params.social.image -}}
   {{- $path := strings.TrimPrefix "/" . -}}
+  {{- if or (strings.Contains $path "\\") (gt (len (findRE `(^|/)\.\.(/|$)|^[a-zA-Z][a-zA-Z0-9+.-]*:` $path)) 0) -}}
+    {{- errorf "social.image must stay within local image directories: %s" . -}}
+  {{- end -}}
   {{- $custom := $.Resources.GetMatch $path -}}
   {{- if not $custom -}}{{- $custom = resources.Get $path -}}{{- end -}}
   {{- if not $custom -}}
@@ -45,4 +47,4 @@
     {{- $image = (resources.Get "social/paper.png").Filter (images.Overlay ($custom.Fill "1200x630 center png") 0 0) -}}
   {{- end -}}
 {{- end -}}
-{{- return (dict "url" $image.Permalink "width" $image.Width "height" $image.Height "type" $image.MediaType.Type "alt" $title) -}}
+{{- return (dict "url" $image.Permalink "width" $image.Width "height" $image.Height "type" $image.MediaType.Type "alt" $title "resource" $image) -}}

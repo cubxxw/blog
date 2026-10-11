@@ -69,7 +69,7 @@
 <meta property="og:url" content="{{ $canonicalURL }}" />
 <meta property="og:title" content="{{ $title | plainify }}" />
 <meta property="og:description" content="{{ $description | plainify }}" />
-{{- $socialImage := partial "seo/social-image.html" . -}}
+{{- $socialImage := partialCached "seo/social-image.html" . .RelPermalink .Language.Lang -}}
 <meta property="og:image" content="{{ $socialImage.url }}" />
 <meta property="og:image:secure_url" content="{{ $socialImage.url }}" />
 <meta property="og:image:type" content="{{ $socialImage.type }}" />

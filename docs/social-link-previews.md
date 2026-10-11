@@ -5,8 +5,10 @@ Social platforms fetch the HTML and then the image URL; they do not render the
 blog's CSS, interactive components, or dark-mode theme to create this card.
 
 `seo/social-image.html` renders an opaque 1200×630 PNG during every Hugo build,
-using the bundled Noto Sans SC font. The home page has a bilingual archive
-card. Every article and section has its own title card, with a section label,
+using the bundled Noto Sans SC font and the author's approved identity assets.
+Home/about previews use a localized personal calling card with the original
+documentary photograph. Article and section cards use the same `cubxxw`
+signature and bear-shaped surname stamp, plus their own title, section label,
 author and current domain. The light editorial layout keeps text inside a
 72-pixel horizontal margin. Long titles wrap to three lines, then truncate on
 the image only; the page title and metadata remain unchanged.
@@ -21,6 +23,11 @@ image. Hugo's transformed-image path changes when its inputs change, avoiding
 the old static PNG cache. Platforms can still cache **page metadata** by URL;
 deploying does not guarantee that an existing post's preview will refresh.
 
+The passive body thumbnail uses a 640px version of this same card. Article
+structured data also uses the branded card when there is no usable raster
+cover, so neither fallback points to the retired blank default PNG. This does
+not add WeChat JS-SDK support or claim control over a platform's crop.
+
 The production and backup SEO output checks verify unique metadata, consistent
 platform image URLs, HTTPS, accessible build files, PNG bytes, actual 1200×630
 dimensions, alt text, size below 5 MB and absence of retired static OG images.
@@ -29,7 +36,7 @@ The targeted contract tests run in the SEO suite of `scripts/ci-run.mjs`.
 Verification:
 
 ```sh
-node --test scripts/social-card-contracts.test.mjs
+node --test scripts/social-card-contracts.test.mjs scripts/social-identity.test.mjs
 hugo --minify
 node scripts/check-generated-seo.mjs --public-dir public
 git diff --check
