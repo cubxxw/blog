@@ -1,0 +1,4 @@
+{{- /* Hugo 0.145's Text filter hashes the font resource path, not its bytes.
+     Give the font a content-addressed key so a font update changes card URLs. */ -}}
+{{- $font := resources.Get "social/NotoSansSC-SemiBold.ttf" -}}
+{{- return (resources.Copy (printf "social/font-%s.ttf" (sha256 $font.Content)) $font) -}}

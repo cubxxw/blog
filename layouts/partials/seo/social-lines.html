@@ -1,0 +1,40 @@
+{{- /* Keep Latin words intact and wrap CJK by character. Width is measured in
+     ems conservatively; images.Text does not offer a wrapping width. */ -}}
+{{- $text := .text | plainify | replaceRE `\s+` " " | strings.TrimSpace -}}
+{{- $limit := .limit -}}
+{{- $lines := slice -}}
+{{- $line := "" -}}
+{{- $width := 0.0 -}}
+{{- $widths := site.Data.social.font_widths -}}
+{{- range findRE `[\p{Latin}0-9][\p{Latin}0-9+./-]*|.` $text -}}
+  {{- $token := . -}}
+  {{- $units := 0.0 -}}
+  {{- range findRE `.` $token -}}
+    {{- $units = add $units (index $widths . | default 1.0) -}}
+  {{- end -}}
+  {{- if and (ne $line "") (gt (add $width $units) $limit) -}}
+    {{- $lines = $lines | append (strings.TrimSpace $line) -}}
+    {{- $line = "" -}}
+    {{- $width = 0.0 -}}
+  {{- end -}}
+  {{- /* Very long URLs/words must also fit inside the card. */ -}}
+  {{- range findRE `.` $token -}}
+    {{- $unit := index $widths . | default 1.0 -}}
+    {{- if gt (add $width $unit) $limit -}}
+      {{- $lines = $lines | append (strings.TrimSpace $line) -}}
+      {{- $line = "" -}}
+      {{- $width = 0.0 -}}
+    {{- end -}}
+    {{- if or (ne $line "") (ne . " ") -}}
+      {{- $line = printf "%s%s" $line . -}}
+      {{- $width = add $width $unit -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with strings.TrimSpace $line -}}{{- $lines = $lines | append . -}}{{- end -}}
+{{- if gt (len $lines) 3 -}}
+  {{- $last := index $lines 2 -}}
+  {{- $last = printf "%s…" (substr $last 0 (sub (strings.RuneCount $last) 2)) -}}
+  {{- $lines = slice (index $lines 0) (index $lines 1) $last -}}
+{{- end -}}
+{{- return (delimit $lines "\n") -}}

@@ -10,6 +10,7 @@ import { parse as parseToml } from 'smol-toml';
 import { attribute, htmlElements, safeFile } from './lib/content-page-map.mjs';
 import { frontmatterRange } from './lib/content-markdown.mjs';
 import { validateContract } from './lib/ci-contracts.mjs';
+import { checkSocialCard } from './lib/social-card-contracts.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "..");
@@ -93,6 +94,17 @@ const errors = [];
 function addErrors(label, entries) {
   if (entries.length === 0) return;
   errors.push({ label, entries: entries.slice(0, 20), count: entries.length });
+}
+
+// Raw ownership-verification HTML is copied from static and has no page head.
+const socialErrors = canonicalPages.filter(page => page.canonical).flatMap(page =>
+  checkSocialCard(page.html, publicDir, {
+    baseURL: argumentValue('--base-url', process.env.BLOG_BUILD_BASE_URL || process.env.HUGO_BASEURL || 'https://cubxxw.com'),
+  }).map(error => `${page.url}: ${error}`));
+addErrors('Social preview contract violations', socialErrors);
+if (target === 'backup' && socialErrors.length) {
+  console.error(`Backup social preview audit failed:\n${socialErrors.slice(0, 20).join('\n')}`);
+  process.exit(1);
 }
 
 if (target === 'backup') {

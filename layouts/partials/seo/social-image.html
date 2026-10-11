@@ -1,0 +1,48 @@
+{{- /* Render at build time with a bundled font. No browser, remote image API,
+     or host-installed CJK font is needed on Netlify/Linux. */ -}}
+{{- $image := resources.Get "social/paper.png" -}}
+{{- $font := partialCached "seo/social-font.html" . -}}
+{{- $zh := eq .Language.Lang "zh" -}}
+{{- $title := .Title | plainify -}}
+{{- $label := "cubxxw / NOTES" -}}
+{{- $footer := cond $zh "熊鑫伟 · 实践与思想" "Xinwei Xiong / Practice & thought" -}}
+{{- $size := 64 -}}
+{{- $lines := "" -}}
+{{- if .IsHome -}}
+  {{- $label = "cubxxw / OPEN ARCHIVE" -}}
+  {{- $lines = cond $zh "公开的实践\n与思想档案" "An open archive\nof practice & thought" -}}
+  {{- $size = cond $zh 88 76 -}}
+{{- else -}}
+  {{- $labels := dict "ai-agent" "AI AGENT" "engineering" "ENGINEERING" "growth" "LIFE & THOUGHT" "projects" "PROJECTS" "articles" "ARTICLES" -}}
+  {{- with index $labels .Section -}}{{- $label = printf "cubxxw / %s" . -}}{{- end -}}
+  {{- if gt (strings.RuneCount $title) (cond $zh 48 85) -}}{{- $size = 56 -}}{{- end -}}
+  {{- $lines = partial "seo/social-lines.html" (dict "text" $title "limit" (div 1040.0 $size)) -}}
+  {{- /* A small size adjustment keeps a lone final character/word from
+       becoming a third-line orphan, without changing the title text. */ -}}
+  {{- range seq 2 -}}
+    {{- $parts := split $lines "\n" -}}
+    {{- if and (gt (len $parts) 1) (lt (strings.RuneCount (index $parts (sub (len $parts) 1))) 4) -}}
+      {{- $size = sub $size 4 -}}
+      {{- $lines = partial "seo/social-lines.html" (dict "text" $title "limit" (div 1040.0 $size)) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $image = partialCached "seo/social-base.html" (dict "label" $label "footer" $footer) $label $footer -}}
+{{- $image = $image.Filter (images.Text $lines (dict "font" $font "size" $size "color" "#20201e" "x" 72 "y" 198 "linespacing" 24)) -}}
+{{- /* A dedicated local raster override is optional. Article covers stay
+     independent: portrait photos and diagrams are not automatically cards. */ -}}
+{{- with .Params.social.image -}}
+  {{- $path := strings.TrimPrefix "/" . -}}
+  {{- $custom := $.Resources.GetMatch $path -}}
+  {{- if not $custom -}}{{- $custom = resources.Get $path -}}{{- end -}}
+  {{- if not $custom -}}
+    {{- $disk := printf "static/%s" $path -}}
+    {{- if fileExists $disk -}}{{- $custom = resources.FromString (printf "social/custom/%s" $path) (readFile $disk) -}}{{- end -}}
+  {{- end -}}
+  {{- if or (not $custom) (not (in (slice "image/png" "image/jpeg" "image/webp") $custom.MediaType.Type)) -}}
+    {{- errorf "social.image must reference an existing local PNG/JPEG/WebP: %s (%s)" . $.RelPermalink -}}
+  {{- else -}}
+    {{- $image = (resources.Get "social/paper.png").Filter (images.Overlay ($custom.Fill "1200x630 center png") 0 0) -}}
+  {{- end -}}
+{{- end -}}
+{{- return (dict "url" $image.Permalink "width" $image.Width "height" $image.Height "type" $image.MediaType.Type "alt" $title) -}}
