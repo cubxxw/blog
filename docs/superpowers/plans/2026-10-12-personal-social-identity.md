@@ -32,7 +32,7 @@
 - [x] Bundle H artwork, English localization, transparent cubxxw signature and G mark; record source and composition geometry.
 - [x] Update social partials and Open Graph/Twitter/WeChat/schema fallbacks; add an isolated real-Hugo identity regression test and inspect home/long-title outputs.
 - [x] Reproduce and fix the mobile chat viewport failure in the existing CSS/runtime module; run the failing mobile tests unchanged.
-- [ ] Independently review, run targeted checks and production build, commit/push, await required CI, verify live page/image URLs with social crawler requests.
+- [x] Independently review, run targeted checks and production build, commit/push, await required CI, verify live page/image URLs with social crawler requests.
 
 No additional design approval is needed: the user explicitly selected the proposed direction and requested implementation and deployment.
 
@@ -40,3 +40,11 @@ Local evidence: real-Hugo identity/contract suite 5 passed; generated SEO audit
 593 pages passed; unchanged mobile homepage suite 13 passed against fresh source
 output. Independent review also verified backup prefixes, override traversal,
 overlay cache invalidation, cover fallback preservation and 640px thumbnails.
+
+Release evidence: implementation commit `90edd5275dc191c0d23ab5fbea6f06a02a3d7fa6`;
+required quality run https://github.com/cubxxw/blog/actions/runs/38169170505
+completed successfully. Existing native Netlify Git publisher delivered the
+new home-zh/home-en identity images. Twitterbot, facebookexternalhit and
+redditbot requests confirmed anonymous access; image responses are PNG,
+1200×630 and below 5 MB. Actions release/followups remain intentionally skipped
+in shadow mode; no publisher cutover or credential change was performed.
