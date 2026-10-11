@@ -92,13 +92,25 @@ test('pinned Hugo really renders the valid fixture and loses the malformed table
   assert.doesNotMatch(await fs.readFile(path.join(ctx.publicDir,'broken/index.html'),'utf8'),/<table>/);
 });
 test('backup SEO accepts main-site canonical and requires noindex',async t=>{
-  const ctx=await fixture(t,'<!doctype html><html><head><link href="https://cubxxw.com/" rel="canonical"><meta content="noindex, follow" name="robots"></head><body>Backup</body></html>');
+  const image='https://backup.example/blog/social/fixture.png';
+  const social={
+    'og:image':image,'og:image:secure_url':image,'twitter:image':image,
+    'twitter:card':'summary_large_image','og:image:type':'image/png',
+    'og:image:width':'1200','og:image:height':'630',
+    'og:image:alt':'Archive','twitter:image:alt':'Archive',
+    'og:title':'Archive','og:description':'An open archive.',
+  };
+  const tags=Object.entries(social).map(([name,value])=>`<meta property="${name}" content="${value}">`).join('');
+  const html=`<!doctype html><html><head><link href="https://cubxxw.com/" rel="canonical"><meta content="noindex, follow" name="robots">${tags}</head><body>Backup</body></html>`;
+  const ctx=await fixture(t,html);
+  await fs.mkdir(path.join(ctx.publicDir,'social'));
+  await fs.copyFile(new URL('../assets/social/paper.png',import.meta.url),path.join(ctx.publicDir,'social/fixture.png'));
   await fs.writeFile(path.join(ctx.publicDir,'sitemap.xml'),'<urlset></urlset>');
   await fs.writeFile(path.join(ctx.publicDir,'robots.txt'),'User-agent: *\nDisallow: /\n');
-  const command=['scripts/check-generated-seo.mjs','--public-dir',ctx.publicDir,'--target','backup'];
+  const command=['scripts/check-generated-seo.mjs','--public-dir',ctx.publicDir,'--target','backup','--base-url','https://backup.example/blog/'];
   assert.match(execFileSync(process.execPath,command,{encoding:'utf8'}),/passed/i);
-  await fs.writeFile(path.join(ctx.publicDir,'index.html'),'<link rel="canonical" href="https://cubxxw.com/"><meta name="robots" content="index, follow">');
-  assert.throws(()=>execFileSync(process.execPath,command,{encoding:'utf8',stdio:'pipe'}),error=>error.status===1);
+  await fs.writeFile(path.join(ctx.publicDir,'index.html'),html.replace('noindex, follow','index, follow'));
+  assert.throws(()=>execFileSync(process.execPath,command,{encoding:'utf8',stdio:'pipe'}),error=>error.status===1 && /backup requires noindex/.test(error.stderr));
 });
 test('page map comes from Hugo CSV with quoted paths and enumerates aliases and aggregates',async t=>{
   const ctx=await fixture(t,'<h1>Article</h1>');
