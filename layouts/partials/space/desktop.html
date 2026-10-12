@@ -1,0 +1,84 @@
+{{- $zh := eq .Lang "zh" -}}
+{{- $labels := dict "welcome" (cond $zh "关于我" "About me") "products" (cond $zh "产品实验室" "Products") "reader" (cond $zh "文章与思考" "Writing") "photos" (cond $zh "旅途相册" "Photos") "map" (cond $zh "去过的地方" "Places") "books" (cond $zh "我的书架" "Books") "notes" (cond $zh "你的笔记" "Your notes") "contact" (cond $zh "联系与留言" "Contact") "terminal" (cond $zh "终端" "Terminal") "agent" (cond $zh "和 BEAR 聊聊" "Ask BEAR") "settings" (cond $zh "工作区设置" "Settings") -}}
+{{- $articles := slice -}}
+{{- range (where site.RegularPages "Type" "posts").ByDate.Reverse -}}
+  {{- $articles = $articles | append (dict "id" .RelPermalink "title" .Title "url" .RelPermalink "description" (.Description | default (.Summary | plainify | truncate 180)) "date" (.Date.Format "2006.01.02") "section" .Section "tags" .Params.tags) -}}
+{{- end -}}
+{{- $products := slice -}}
+{{- range site.Data.products.products -}}
+  {{- $shot := partial "products/shot.html" (dict "product" . "lang" $.Lang) -}}
+  {{- $related := slice -}}
+  {{- range .related }}{{ with site.GetPage . }}{{ $related = $related | append .RelPermalink }}{{ end }}{{ end -}}
+  {{- range where site.RegularPages "Params.product" .id }}{{ $related = $related | append .RelPermalink }}{{ end -}}
+  {{- $products = $products | append (dict "id" .id "name" .name "description" (cond $zh .desc_zh .desc_en) "headline" (cond $zh .headline_zh .headline_en) "stage" (cond $zh .stage_zh .stage_en) "url" (partial "products/url.html" (dict "product" . "lang" $.Lang)) "github" .github "demo" (.demo | default "") "image" (cond $shot.exists $shot.path "") "alt" $shot.alt "mark" .mark "color" .color "related" ($related | uniq) "boundary" (cond $zh (.boundary_zh | default "") (.boundary_en | default ""))) -}}
+{{- end -}}
+{{- $photos := slice
+ (dict "id" "kumano" "image" "/images/about/journey/06-kumano.webp" "thumb" "/images/about/journey/06-kumano-480.webp" "title" (cond $zh "熊野古道" "Kumano Kodo") "place" (cond $zh "日本 · 熊野古道" "Kumano Kodo, Japan") "region" "japan")
+ (dict "id" "vangvieng" "image" "/images/about/journey/09-vangvieng.webp" "thumb" "/images/about/journey/09-vangvieng-480.webp" "title" (cond $zh "万荣的慢" "Slow days in Vang Vieng") "place" (cond $zh "老挝 · 万荣" "Vang Vieng, Laos") "region" "southeast-asia")
+ (dict "id" "taprohm" "image" "/images/about/journey/10-taprohm.webp" "thumb" "/images/about/journey/10-taprohm-480.webp" "title" (cond $zh "石头与树根" "Stone and roots") "place" (cond $zh "柬埔寨 · 塔普伦寺" "Ta Prohm, Cambodia") "region" "southeast-asia")
+ (dict "id" "g318" "image" "/images/about/journey/02-g318.webp" "thumb" "/images/about/journey/02-g318-480.webp" "title" (cond $zh "沿着 318" "Along the G318") "place" (cond $zh "中国 · 川藏公路" "G318, China") "region" "tibet")
+ (dict "id" "fuji" "image" "/images/about/journey/05-fuji.webp" "thumb" "/images/about/journey/05-fuji-480.webp" "title" (cond $zh "富士山" "Mount Fuji") "place" (cond $zh "日本 · 富士山" "Mount Fuji, Japan") "region" "japan")
+ (dict "id" "flags" "image" "/images/about/journey/03-prayer-flags.webp" "thumb" "/images/about/journey/03-prayer-flags-480.webp" "title" (cond $zh "风里的经幡" "Flags in the wind") "place" (cond $zh "中国 · 川西" "Western Sichuan, China") "region" "tibet")
+ (dict "id" "vientiane" "image" "/images/about/journey/08-vientiane.webp" "thumb" "/images/about/journey/08-vientiane-480.webp" "title" (cond $zh "万象的日常" "Everyday Vientiane") "place" (cond $zh "老挝 · 万象" "Vientiane, Laos") "region" "southeast-asia")
+ (dict "id" "danang" "image" "/images/about/journey/11-danang.webp" "thumb" "/images/about/journey/11-danang-480.webp" "title" (cond $zh "岘港" "Da Nang") "place" (cond $zh "越南 · 岘港" "Da Nang, Vietnam") "region" "southeast-asia")
+-}}
+{{- $books := slice -}}
+{{- range where site.Data.travel.books "own" true -}}
+ {{- $books = $books | append (dict "title" (cond $zh .title_zh .title_en) "description" (cond $zh .note_zh .note_en) "url" .url "author" (cond $zh .author_zh .author_en)) -}}
+{{- end -}}
+{{- $places := slice -}}
+{{- range site.Data.travel.regions -}}
+ {{- $places = $places | append (dict "id" .slug "name" (cond $zh .name_zh .name_en) "description" (cond $zh .tagline_zh .tagline_en) "lat" .lat "lon" .lon "match" .match) -}}
+{{- end -}}
+{{- $css := resources.Get "css/space.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<section class="space" data-product-panel="bear" data-bear-workspace data-theme="light" data-wallpaper="dawn" aria-label="{{ if $zh }}BEAR OS 个人工作区{{ else }}BEAR OS personal workspace{{ end }}">
+  <div class="space-landscape" aria-hidden="true"></div>
+  <header class="space-menubar">
+    <div class="space-menubar__left">
+      <button class="space-brand" data-space-menu-trigger aria-expanded="false" aria-controls="space-menu"><span aria-hidden="true">✳</span><strong>BEAR OS</strong></button>
+      <span class="space-menubar__app" data-active-label>{{ if $zh }}工作区{{ else }}Workspace{{ end }}</span>
+      <button data-space-overview-trigger>{{ if $zh }}窗口{{ else }}Windows{{ end }}</button>
+      <button data-space-arrange>{{ if $zh }}并排{{ else }}Arrange{{ end }}</button>
+    </div>
+    <div class="space-menubar__right">
+      <span class="space-local" title="{{ if $zh }}布局和笔记保存在当前浏览器{{ else }}Layout and notes are stored in this browser{{ end }}"><i></i>{{ if $zh }}你的访客空间{{ else }}Your guest space{{ end }}</span>
+      {{ range .Translations }}<a href="{{ .RelPermalink }}" hreflang="{{ .Lang }}">{{ if $zh }}EN{{ else }}中文{{ end }}</a>{{ end }}
+      <time data-space-clock></time>
+      <button data-space-search-trigger aria-label="{{ if $zh }}搜索应用与文章{{ else }}Search apps and writing{{ end }}">⌕</button>
+    </div>
+  </header>
+  <nav class="space-menu" id="space-menu" aria-label="{{ if $zh }}工作区菜单{{ else }}Workspace menu{{ end }}" hidden>
+    <button data-space-home>{{ if $zh }}回到欢迎桌面{{ else }}Welcome desktop{{ end }}</button>
+    <button data-space-arrange>{{ if $zh }}窗口并排{{ else }}Arrange windows{{ end }}</button>
+    <button data-space-show-desktop>{{ if $zh }}显示桌面{{ else }}Show desktop{{ end }}</button>
+    <button data-space-export>{{ if $zh }}导出你的工作区{{ else }}Export your workspace{{ end }}</button>
+    <button data-open="settings">{{ index $labels "settings" }}</button>
+    <a href="{{ "/" | relLangURL }}">{{ if $zh }}返回博客首页{{ else }}Back to the blog{{ end }} ↗</a>
+  </nav>
+  <nav class="space-desktop-icons" aria-label="{{ if $zh }}桌面应用{{ else }}Desktop apps{{ end }}">
+    {{ range slice "products" "reader" "photos" "map" "books" "contact" }}
+    <button data-open="{{ . }}">{{ partial "space/icon.html" . }}<span>{{ index $labels . }}</span></button>
+    {{ end }}
+  </nav>
+  <div class="space-signature" aria-hidden="true"><p>Xinwei's space</p><strong>{{ if $zh }}一边构建，<br>一边走走。{{ else }}Build things.<br>Go places.{{ end }}</strong><span>{{ if $zh }}文章、产品，还有路上的生活{{ else }}Writing, experiments & life along the way{{ end }}</span></div>
+  <div class="space-window-layer" data-space-windows></div>
+  <div class="space-snap-preview" data-space-snap hidden aria-hidden="true"></div>
+  <footer class="space-bottom">
+    <p class="space-wallpaper-credit">BEAR / {{ if $zh }}公开工作间{{ else }}Open workspace{{ end }}<span>{{ if $zh }}随意逛，也可以留下点什么。{{ else }}Explore. Make yourself at home.{{ end }}</span></p>
+    <nav class="space-dock" data-space-dock aria-label="{{ if $zh }}应用 Dock{{ else }}Application Dock{{ end }}">
+      {{ range slice "welcome" "products" "reader" "photos" "map" "books" "notes" "contact" "terminal" "agent" }}
+      <button data-open="{{ . }}" aria-label="{{ index $labels . }}" title="{{ index $labels . }}">{{ partial "space/icon.html" . }}<span class="space-dock__label">{{ index $labels . }}</span><i class="space-dock__dot"></i></button>
+      {{ end }}
+    </nav>
+    <button class="space-agent-launch" data-open="agent"><span>✳</span>{{ if $zh }}和 BEAR 聊聊{{ else }}Ask BEAR{{ end }} <kbd>⌘ K</kbd></button>
+  </footer>
+  <dialog class="space-search" data-space-search aria-label="{{ if $zh }}搜索工作区{{ else }}Search workspace{{ end }}">
+    <header><span>⌕</span><input type="search" data-space-search-input placeholder="{{ if $zh }}打开应用，或者找一篇文章…{{ else }}Open an app, or find something to read…{{ end }}" aria-label="{{ if $zh }}搜索词{{ else }}Search query{{ end }}"><button data-space-search-close aria-label="{{ if $zh }}关闭搜索{{ else }}Close search{{ end }}">Esc</button></header>
+    <div data-space-search-results></div><footer>↑ ↓ {{ if $zh }}选择{{ else }}select{{ end }} &nbsp; ↵ {{ if $zh }}打开{{ else }}open{{ end }}<span>BEAR / SPOTLIGHT</span></footer>
+  </dialog>
+  <dialog class="space-overview" data-space-overview aria-label="{{ if $zh }}窗口概览{{ else }}Window overview{{ end }}"><header><h2>{{ if $zh }}你的工作区{{ else }}Your workspace{{ end }}</h2><button data-space-overview-close>{{ if $zh }}返回{{ else }}Back{{ end }} <kbd>Esc</kbd></button></header><div data-space-overview-list></div></dialog>
+  <p class="space-toast" data-space-toast role="status" aria-live="polite" hidden></p>
+  <noscript><div class="space-nojs"><h2>{{ if $zh }}欢迎来到我的空间{{ else }}Welcome to my space{{ end }}</h2><p>{{ if $zh }}交互桌面需要 JavaScript。下面的内容仍然可以直接阅读。{{ else }}The desktop needs JavaScript. You can still read the content directly.{{ end }}</p><a href="{{ "/articles/" | relLangURL }}">{{ index $labels "reader" }}</a> · <a href="{{ "/about/" | relLangURL }}">{{ index $labels "welcome" }}</a> · <a href="{{ "/travel/" | relLangURL }}">{{ index $labels "map" }}</a></div></noscript>
+  <script type="application/json" data-space-catalog>{{ dict "language" .Lang "labels" $labels "person" site.Data.identity.person "links" site.Data.identity.links "articles" $articles "products" $products "photos" $photos "books" $books "places" $places | jsonify | safeJS }}</script>
+</section>

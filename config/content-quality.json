@@ -7,8 +7,8 @@
     { "outputPath": "zh/engineering/posts/go-release-tools/index.html", "contains": ".ProjectName", "rows": 40, "columns": 2, "lastContains": ".Artifacts" }
   ],
   "dynamicAnchors": [
-    { "outputPath": "projects/index.html", "attribute": "data-osx-window", "prefixes": ["", "focus-"] },
-    { "outputPath": "zh/projects/index.html", "attribute": "data-osx-window", "prefixes": ["", "focus-"] }
+    { "outputPath": "projects/index.html", "attribute": "data-space-product", "prefixes": ["", "focus-"] },
+    { "outputPath": "zh/projects/index.html", "attribute": "data-space-product", "prefixes": ["", "focus-"] }
   ],
-  "functionRoutes": ["/.netlify/functions/blog-ai", "/.netlify/functions/article-ai", "/.netlify/functions/subscribe-email"]
+  "functionRoutes": ["/.netlify/functions/blog-ai", "/.netlify/functions/article-ai", "/.netlify/functions/subscribe-email", "/.netlify/functions/bear-runtime"]
 }

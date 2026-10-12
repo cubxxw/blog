@@ -1,0 +1,14 @@
+{{- $paths := dict
+  "welcome" `<path d="M10 12a7 7 0 0 1 12 0v9H10z"/><circle cx="12" cy="8" r="3"/><circle cx="21" cy="8" r="3"/><path d="M13 17h7M16.5 17v3"/>`
+  "products" `<rect x="5" y="6" width="22" height="21" rx="4"/><path d="M5 12h22M12 12v15"/><path d="m17 17 5 3-5 3z"/>`
+  "reader" `<path d="M5 7h8c2 0 3 1 3 3v18c0-2-1-3-3-3H5zM27 7h-8c-2 0-3 1-3 3v18c0-2 1-3 3-3h8z"/><path d="M9 12h3M20 12h3M9 16h3M20 16h3"/>`
+  "photos" `<rect x="4" y="5" width="24" height="22" rx="4"/><circle cx="12" cy="12" r="3"/><path d="m5 23 8-7 5 4 5-9 5 12"/>`
+  "map" `<path d="m4 8 8-3 8 3 8-3v20l-8 3-8-3-8 3zM12 5v20M20 8v20"/><path d="M21 8a4 4 0 1 0-8 0c0 3 4 7 4 7s4-4 4-7z"/>`
+  "books" `<path d="M5 6h6v21H5zM13 6h6v21h-6zM22 7l5-1 4 20-5 1z"/><path d="M5 11h6M13 11h6M24 12l5-1"/>`
+  "notes" `<path d="M7 4h15l4 4v20H7zM22 4v5h4"/><path d="M11 13h11M11 18h11M11 23h7"/>`
+  "contact" `<path d="M4 7h24v18H4zM4 8l12 10L28 8"/>`
+  "terminal" `<rect x="3" y="5" width="26" height="23" rx="4"/><path d="m8 12 5 5-5 5M17 23h7"/>`
+  "agent" `<path d="m16 3 3 9 10 4-10 3-3 10-4-10-9-3 9-4z"/><path d="m26 3 1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/>`
+  "settings" `<circle cx="16" cy="16" r="5"/><path d="m13 4 6 0 1 4 4 2 4-1 3 5-3 3v4l-3 4-4-1-3 3-6-1-1-4-4-2-4 1-3-5 3-3v-4l3-4 4 1z"/>`
+-}}
+<span class="space-icon" data-icon="{{ . }}" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{{ index $paths . | safeHTML }}</svg></span>

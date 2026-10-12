@@ -129,8 +129,15 @@ for (const lang of ["en", "zh"]) {
   for (const route of ["index.html", "about/index.html"]) {
     const file = path.join(outputRoot, prefix, route);
     const html = await readFile(file, "utf8");
-    for (const value of [`imstage-${lang}.jpg`, `https://imstage.org/?lang=${lang}`]) {
-      if (!html.includes(value)) failures.push(`${prefix}${route} is missing: ${value}`);
+    const productURL = `https://imstage.org/?lang=${lang}`;
+    if (!html.includes(productURL)) failures.push(`${prefix}${route} is missing: ${productURL}`);
+    // Hugo's existing homepage image pipeline emits responsive WebP variants.
+    // Verify a real built image rather than requiring the unprocessed JPG name.
+    const image = html.match(new RegExp(`/images/products/imstage-${lang}(?:_hu_[a-z0-9]+)?\\.(?:jpg|webp)`))?.[0];
+    if (!image) failures.push(`${prefix}${route} is missing a localized IMStage image`);
+    else {
+      try { await stat(path.join(outputRoot, image.slice(1))); }
+      catch { failures.push(`${prefix}${route} refers to a missing IMStage image: ${image}`); }
     }
   }
 }
