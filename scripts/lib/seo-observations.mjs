@@ -36,7 +36,9 @@ import {
   LEGACY_COST_AUDIT_UNITS,
   METRIC_UNITS,
   PSI_SNAPSHOT_SCHEMA,
+  STRATEGIES,
   extractFailure,
+  hasValidCollectedMeasurement,
   provenanceSignature,
   summarizeEntries,
 } from './psi-measure.mjs';
@@ -865,6 +867,34 @@ export function selectPsiObservations({ dir, fs = nodeFs, asOf = null } = {}) {
     }
   }
   const latestObs = eligible.at(-1) ?? null;
+  // Scope comes from the latest attempt's explicit v2 plan, never the latest
+  // GOOD plan. An unreadable/undated file makes ordering unprovable; keep the
+  // older samples visible but do not use them to certify current scope.
+  const knownFiles = new Set([...eligible, ...excluded].map((o) => o.file));
+  const unresolvedFiles = [...new Set([...unprovable.map((o) => o.file), ...problems.filter((p) => !knownFiles.has(p.file)).map((p) => p.file)])];
+  const planned = latestObs?.planned ?? [];
+  const keys = planned.map((p) => `${p.url}\u0000${p.strategy}`);
+  const validPlan = latestObs?.schema === PSI_SNAPSHOT_SCHEMA && latestObs.planCertified === true
+    && planned.length > 0 && new Set(keys).size === planned.length && planned.every((p) => {
+      if (!STRATEGIES.includes(p.strategy) || typeof p.url !== 'string' || p.unrecorded) return false;
+      try { return ['http:', 'https:'].includes(new URL(p.url).protocol); } catch { return false; }
+    });
+  const certified = validPlan && unresolvedFiles.length === 0;
+  const c = latestObs?.counts;
+  const collectionComplete = certified && c?.missing === 0 && c.failed === 0 && c.duplicate === 0 && c.unplanned === 0
+    && latestObs.slots.every((s) => hasValidCollectedMeasurement(s.entry)
+      && (s.entry.finalStatus !== 'partial' || !provenanceSignature(s.entry.provenance).complete));
+  const activePlan = {
+    file: latestObs?.file ?? null,
+    observedAt: latestObs?.observedAt ?? null,
+    certified,
+    collectionComplete: Boolean(collectionComplete),
+    targets: certified ? planned.map((p) => ({ url: p.url, strategy: p.strategy })) : [],
+    unresolvedFiles,
+    reason: !certified ? 'latest PSI attempt has no provable explicit v2 plan; current scope unknown, older plans never substitute'
+      : !collectionComplete ? 'latest PSI plan has missing, failed, duplicate, unplanned or invalid collection slots' : null,
+  };
+  const activeKeys = new Set(activePlan.targets.map((p) => `${p.url}\u0000${p.strategy}`));
   const byTarget = [...pairs.entries()].map(([key, samples]) => {
     const [url, strategy] = key.split('\u0000');
     const current = samples[samples.length - 1];
@@ -872,24 +902,24 @@ export function selectPsiObservations({ dir, fs = nodeFs, asOf = null } = {}) {
     // A target the latest stage never specified cannot be silently presented
     // as proof of that run: it stays dated historical evidence under the
     // uncertified/incomplete latest stage.
-    const underUncertifiedStage = Boolean(latestObs) && latestObs.planCertified === false && current.observation.file !== latestObs.file;
+    const active = certified ? activeKeys.has(key) : null;
     return {
       url,
       strategy,
+      active,
       current,
-      currentOutcome: current.entry.finalStatus,
-      currentCertified: current.observation.planCertified !== false && !underUncertifiedStage,
-      currentLabel: underUncertifiedStage
-        ? 'historical-supplement (latest observation has no recorded plan; its denominator is uncertified)'
-        : null,
+      currentOutcome: active === false ? 'retired' : current.entry.finalStatus,
+      currentCertified: active === true && current.observation.file === latestObs.file && current.observation.planCertified !== false,
+      currentLabel: active === false ? 'historical-retired (target absent from the latest recorded PSI plan; retained history never certifies current collection)'
+        : active === null ? 'historical-supplement (latest observation has no provable v2 plan; current scope is unknown)' : null,
       lastGood: lastGood === current
-        ? { ...lastGood, label: 'current' }
+        ? { ...lastGood, label: active === true ? 'current' : active === false ? 'historical-retired (latest known usable sample outside the active plan)' : 'historical-supplement (current scope unknown)' }
         : (lastGood ? { ...lastGood, label: 'labelled-last-good (older than current; never substitutes for the current outcome)' } : null),
       sampleCount: samples.length,
       samples,
     };
   }).sort((a, b) => (a.url === b.url ? a.strategy.localeCompare(b.strategy) : a.url.localeCompare(b.url)));
-  return { observations: eligible, excluded, unprovable, problems, byTarget };
+  return { observations: eligible, excluded, unprovable, problems, byTarget, activePlan };
 }
 
 // CrUX selection: grouped by ORIGIN × form factor so observations of

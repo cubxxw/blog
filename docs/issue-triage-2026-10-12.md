@@ -64,3 +64,11 @@
 本轮使用定向 Node 测试和文档检查，不启动 iOS、第二套浏览器或本地全站构建。最终 310/310 定向检查通过（SEO 全套、PSI 新契约、比较门禁与工作流检测）；front matter、标准标签、中文文风和 diff 检查通过。最初两项社交卡片微型 fixture 因 PATH 缺 Hugo 无法执行，补上固定 Hugo 0.145.0 后重跑及最终联合运行通过；未把初次失败隐去。
 
 独立 reviewer：第一轮 GSC/报告/pipeline 115/115、冻结后的 PSI/stage/pipeline/SEO 149/149；真实 26 槽的 10 类故障注入 × exit 0/2 继续拒绝；历史 GSC 基线逐字节 SHA256 `7a72dc9d80bfd677e79d1b5c766cf2191cb5ca5a6324800a4b1f29d35c981941` 保持。最终无 P0/P1/P2，PSI 实现 hash 前后不变。提交 SHA、当前 CI 与真实 Actions 读回记在 issue #390 的本轮交付回执；不把 pending 或缺失验收标为通过。
+
+### 真实 Snapshot 读回与当前计划后续修正
+
+[手动 Snapshot 38201965206](https://github.com/cubxxw/blog/actions/runs/38201965206) 已成功；GSC/PSI/CrUX/持久化四个 required stages 全部 succeeded，最终 status.ok=true。GSC 六个切片各有 56 个 complete 日期（2026-08-14—10-08），包括独立的 page-device/page-country；本次观察 `fetchedAt=2026-10-12T04:00:28.547Z`，不回填进入较早的 as-of 报告。快照已由工作流提交为 `ec863b0a9bc5d3d7a970f6e29921dfbbd6ba3cc9`。
+
+PSI outcome=degraded，明确缺比较配置；CrUX outcome=no-sample，明确实地指标未知。这两项没有被伪装为完整比较或用户 p75。
+
+实际报告同时发现旧 7 月 `/ai-technology/` 观测影响当前 PSI 新鲜度。后续修正只用最新可证明的 schema2 计划确定当前分母：26 个当前槽位、6 个退役目标，32 个历史目标全部保留。最新缺失/失败/坏计划/无法排序的文件保持 partial/unknown，不退回旧成功计划；比较器未变。最终联合 314/314 检查及独立 184/184 审查通过，无 P0/P1/P2。

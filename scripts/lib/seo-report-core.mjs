@@ -174,12 +174,21 @@ export function classifyPsiFreshness({ psi, asOfMs, thresholds = FRESHNESS_THRES
   let anyStale = false;
   let anyUnknown = false;
   let anyGap = false;
+  const activePlan = psi?.activePlan ?? null;
+  if (activePlan && (!activePlan.certified || !activePlan.collectionComplete)) {
+    reasons.push(`psi-current-plan-unproven: ${activePlan.reason}`);
+    anyGap = true;
+  }
   for (const t of targets) {
     const key = `${t.url}\u0000${t.strategy}`;
     const tReasons = [];
     let status = 'fresh';
     let measuredAt = null;
     const cur = t.current?.entry ?? null;
+    if (t.active === false) {
+      byTarget[key] = { url: t.url, strategy: t.strategy, active: false, status: 'retired', measuredAt: cur?.provenance?.fetchTime ?? null, reasons: [t.currentLabel] };
+      continue; // retained history is outside the latest collection denominator
+    }
     if (!cur || !cur.usable) {
       tReasons.push(`psi-target-no-usable-current: ${t.url} [${t.strategy}] current outcome is ${t.currentOutcome ?? 'unknown'} (older samples never substitute)`);
       status = 'no-usable-current';
@@ -209,11 +218,11 @@ export function classifyPsiFreshness({ psi, asOfMs, thresholds = FRESHNESS_THRES
       anyGap = true;
     }
     reasons.push(...tReasons);
-    byTarget[key] = { url: t.url, strategy: t.strategy, status, measuredAt, reasons: tReasons };
+    byTarget[key] = { url: t.url, strategy: t.strategy, ...(activePlan ? { active: t.active } : {}), status, measuredAt, reasons: tReasons };
   }
   const fresh = reasons.length === 0;
-  const status = fresh ? 'fresh' : (anyStale ? 'stale' : anyGap ? 'partial' : anyUnknown ? 'unknown' : 'stale');
-  return { status, fresh, reasons, thresholds, latestMeasurementAt: latestMs === null ? null : new Date(latestMs).toISOString(), byTarget };
+  const status = activePlan?.certified === false ? 'unknown' : fresh ? 'fresh' : (anyStale ? 'stale' : anyGap ? 'partial' : anyUnknown ? 'unknown' : 'stale');
+  return { status, fresh, reasons, thresholds, latestMeasurementAt: latestMs === null ? null : new Date(latestMs).toISOString(), byTarget, ...(activePlan ? { activePlan } : {}) };
 }
 
 // Per origin×form-factor freshness. A sampled factor never hides a failed or
@@ -475,6 +484,7 @@ export function buildPsiSection({ psi }) {
     targets.push({
       url: t.url,
       strategy: t.strategy,
+      ...(psi?.activePlan ? { active: t.active } : {}),
       currentOutcome: t.currentOutcome,
       currentCertified: t.currentCertified !== false,
       currentLabel: t.currentLabel ?? null,
@@ -520,6 +530,7 @@ export function buildPsiSection({ psi }) {
       counts: latest.counts,
     } : null,
     denominators, // planned / succeeded / partial / failed / missing BY STRATEGY
+    ...(psi?.activePlan ? { activePlan: psi.activePlan } : {}),
     targets,
     comparisons, // compatible-sample comparisons only (current or historical)
     missingSet, // preserved set of targets without a valid comparison
@@ -722,7 +733,11 @@ export function buildMarkdown(report) {
   const den = src.psi.denominators;
   const denText = Object.entries(den).map(([s, c]) => `${s} ${c.succeeded}成功/${c.partial}部分/${c.failed}失败/${c.missing}缺失（计划 ${c.planned}）`).join('；');
   lines.push(`- PSI 分母: ${denText || '无观测'}`);
-  for (const target of src.psi.targets.filter((x) => x.currentOutcome !== 'success').slice(0, 8)) {
+  if (src.psi.activePlan) {
+    const retiredCount = src.psi.targets.filter((x) => x.active === false).length;
+    lines.push(`- PSI 当前计划: ${src.psi.activePlan.certified ? `${src.psi.activePlan.targets.length} 个槽位` : '未知（旧计划不替代）'}；${retiredCount} 个退役目标保留为历史证据`);
+  }
+  for (const target of src.psi.targets.filter((x) => x.active !== false && x.active !== null && x.currentOutcome !== 'success').slice(0, 8)) {
     lines.push(`- PSI 当前状态: ${target.url} [${target.strategy}] → ${target.currentOutcome}${target.lastGoodLabel ? '（last-good 已标注，不替代当前状态）' : ''}`);
   }
   lines.push('');

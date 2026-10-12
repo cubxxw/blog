@@ -21,9 +21,112 @@ import {
   classifyPsiFreshness,
 } from './lib/seo-report-core.mjs';
 import { main, parseCliArgs, writeMarkdown } from './seo-report.mjs';
+import { selectPsiObservations } from './lib/seo-observations.mjs';
+import { deriveCandidates } from './lib/seo-candidates.mjs';
 
 const SCRIPT = fileURLToPath(new URL('./seo-report.mjs', import.meta.url));
 const REAL_DATA_DIR = fileURLToPath(new URL('../data/seo/', import.meta.url));
+
+function selectPsiFiles(files, asOf = '2026-10-12T00:30:00Z') {
+  const fs = {
+    readdirSync: () => Object.keys(files),
+    readFileSync: (path) => {
+      const value = files[path.split('/').at(-1)];
+      return typeof value === 'string' ? value : JSON.stringify(value);
+    },
+  };
+  return selectPsiObservations({ dir: '/psi-fixture', fs, asOf });
+}
+
+test('current PSI freshness uses the latest plan while retired real routes remain historical evidence', () => {
+  const psi = selectPsiObservations({ dir: REAL_DATA_DIR, asOf: '2026-10-12T00:00:00Z' });
+  const freshness = classifyPsiFreshness({ psi, asOfMs: Date.parse('2026-10-12T00:00:00Z') });
+  assert.equal(freshness.status, 'fresh');
+  assert.equal(freshness.fresh, true);
+  assert.equal(psi.activePlan.targets.length, 26);
+  assert.equal(psi.byTarget.length, 32); // historical groups were not dropped
+  const retired = psi.byTarget.filter((t) => t.url.includes('/ai-technology/'));
+  assert.equal(retired.length, 6);
+  assert.ok(retired.every((t) => t.active === false && t.currentCertified === false && t.samples.length > 0));
+  assert.ok(retired.every((t) => t.currentOutcome === 'retired' && /historical-retired/.test(t.lastGood?.label)));
+  assert.ok(retired.every((t) => freshness.byTarget[`${t.url}\u0000${t.strategy}`].status === 'retired'));
+  const section = buildPsiSection({ psi });
+  assert.equal(section.targets.filter((t) => t.active).length, 26);
+  assert.ok(section.targets.filter((t) => !t.active).every((t) => /historical-retired/.test(t.currentLabel)));
+  assert.ok(section.comparisons.filter((c) => c.url.includes('/ai-technology/')).every((c) => c.historical && !c.current));
+  assert.ok(section.comparisons.filter((c) => !c.url.includes('/ai-technology/')).every((c) => !c.compared)); // API settings still unknown
+  const observations = buildObservations({ gsc: makeGscReport(), psiSection: section, cruxSection: {} });
+  assert.ok(!observations.some((o) => o.actionable && (o.kind === 'metric-regression' || o.targetUrl?.includes('/ai-technology/'))));
+  const report = buildSeoReport({ gsc: makeGscReport(), psi, crux: {}, params: { asOf: '2026-10-12T00:00:00Z' } });
+  const markdown = buildMarkdown(report);
+  assert.ok(!deriveCandidates({ report }).candidates.some((c) => c.kind === 'performance-regression' || c.targetUrl.includes('/ai-technology/')));
+  assert.ok(!markdown.split('\n').some((line) => line.includes('PSI 当前状态:') && line.includes('/ai-technology/')));
+  assert.match(markdown, /6 个退役目标/);
+});
+
+test('a recently measured retired target with complete comparable provenance stays non-actionable', () => {
+  const recorded = JSON.parse(readFileSync(join(REAL_DATA_DIR, 'psi-2026-10-11.json'), 'utf8'));
+  function snapshot(url, fetchedAt, lcp, metaScore) {
+    const row = structuredClone(recorded.measurements[0]);
+    Object.assign(row, { url, finalStatus: 'success' });
+    Object.assign(row.provenance, { requestedUrl: url, finalUrl: url, fetchTime: fetchedAt, configSettings: makeSettings() });
+    row.metrics.LCP.numericValue = lcp;
+    row.seoAudits['meta-description'].score = metaScore;
+    return { schema: 'psi-snapshot/2', meta: { fetchedAt, planned: [{ url, strategy: 'mobile' }] }, measurements: [row] };
+  }
+  const retiredUrl = 'https://cubxxw.com/ai-technology/';
+  const psi = selectPsiFiles({
+    'psi-2026-10-10.json': snapshot(retiredUrl, '2026-10-10T00:05:00Z', 1000, 1),
+    'psi-2026-10-11.json': snapshot(retiredUrl, '2026-10-11T00:05:00Z', 5000, 0),
+    'psi-2026-10-12.json': snapshot('https://cubxxw.com/ai-agent/', '2026-10-12T00:05:00Z', 1000, 1),
+  });
+  const report = buildSeoReport({ gsc: makeGscReport(), psi, crux: {}, params: { asOf: '2026-10-12T00:30:00Z' } });
+  assert.equal(report.sources.psi.freshness.fresh, true);
+  const compared = report.sources.psi.comparisons.find((c) => c.url === retiredUrl);
+  assert.equal(compared.compared, true); // exact historical metrics remain usable
+  assert.equal(compared.historical, true);
+  assert.equal(compared.current, false);
+  assert.ok(report.observations.some((o) => o.kind === 'metric-regression-historical' && o.targetUrl === retiredUrl && !o.actionable));
+  assert.ok(!deriveCandidates({ report }).candidates.some((c) => c.targetUrl === retiredUrl));
+});
+
+test('latest missing, failed or invalid active PSI slots cannot borrow older successful freshness', () => {
+  const old = JSON.parse(readFileSync(join(REAL_DATA_DIR, 'psi-2026-10-11.json'), 'utf8'));
+  for (const change of [
+    (j) => { j.measurements.pop(); },
+    (j) => { j.measurements[0].finalStatus = 'failed'; j.measurements[0].usable = false; },
+    (j) => { j.measurements[0].metrics.LCP.numericValue = null; },
+    (j) => { j.measurements.push(structuredClone(j.measurements[0])); },
+  ]) {
+    const latest = structuredClone(old);
+    latest.meta.fetchedAt = '2026-10-12T00:05:00Z';
+    change(latest);
+    const psi = selectPsiFiles({ 'psi-2026-10-11.json': old, 'psi-2026-10-12.json': latest });
+    const freshness = classifyPsiFreshness({ psi, asOfMs: Date.parse('2026-10-12T00:30:00Z') });
+    assert.equal(freshness.fresh, false, change.toString());
+    assert.equal(psi.activePlan.file, 'psi-2026-10-12.json');
+    assert.equal(psi.activePlan.collectionComplete, false);
+    assert.equal(psi.byTarget.filter((t) => t.active).length, 26);
+  }
+});
+
+test('latest unrecorded, malformed or undated PSI plan never falls back to the latest good plan', () => {
+  const old = JSON.parse(readFileSync(join(REAL_DATA_DIR, 'psi-2026-10-11.json'), 'utf8'));
+  const noPlan = structuredClone(old);
+  noPlan.meta.fetchedAt = '2026-10-12T00:05:00Z';
+  delete noPlan.meta.planned;
+  const undated = structuredClone(old); undated.meta.fetchedAt = 'not-a-date';
+  const malformedPlan = structuredClone(old); malformedPlan.meta.fetchedAt = '2026-10-12T00:05:00Z'; malformedPlan.meta.planned = [{ strategy: 'mobile' }];
+  const legacy = { meta: { fetchedAt: '2026-10-12T00:05:00Z', urls: ['https://cubxxw.com/'], strategies: ['mobile'] }, results: [{ url: 'https://cubxxw.com/', strategy: 'mobile', metrics: { LCP: { numericValue: 2000 }, CLS: { numericValue: 0 } } }], failures: [] };
+  for (const latest of [noPlan, '{broken-json', undated, malformedPlan, legacy]) {
+    const psi = selectPsiFiles({ 'psi-2026-10-11.json': old, 'psi-2026-10-12.json': latest });
+    const freshness = classifyPsiFreshness({ psi, asOfMs: Date.parse('2026-10-12T00:30:00Z') });
+    assert.equal(freshness.fresh, false);
+    assert.equal(psi.activePlan.certified, false);
+    assert.ok(psi.byTarget.every((t) => t.currentCertified === false));
+    assert.ok(psi.byTarget.every((t) => t.active === null));
+  }
+});
 
 // ---------------------------------------------------------------------------
 // Fixtures (contract shapes; no clock, no network)

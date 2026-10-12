@@ -84,6 +84,27 @@ refused (never silently overwritten).
   separately labelled older sample that never substitutes for the current
   outcome. A target an uncertified/truncated latest stage never specified is
   marked `currentCertified: false` + `currentLabel: 'historical-supplement…'`.
+- PSI `activePlan` records the latest eligible attempt's explicit v2 target
+  set, file/date, `certified`, independently validated `collectionComplete`
+  and any unresolved files. A valid recorded plan defines scope even when a
+  planned slot fails or goes missing; every such slot remains current and
+  prevents fresh collection. Selection never chooses the latest good plan
+  to mask a newer failed or uncertified attempt.
+  Targets absent from that latest plan remain in `byTarget`/report targets
+  with all samples and source dates, `active: false`, `currentOutcome:
+  'retired'`, `currentCertified: false` and `historical-retired` labels.
+  Freshness retains their historical dates with status `retired` while its
+  aggregate evaluates only active planned slots; current Markdown statuses
+  and actionable observations use the same boundary. Historical comparisons
+  may remain visible but cannot create current candidates.
+  A latest legacy/malformed/missing plan, or an unreadable/undated observation
+  whose ordering cannot be proved, yields `active: null` and unknown scope,
+  never fresh. Unresolved observation files are handled conservatively even
+  when their name appears older: filenames cannot prove collection ordering.
+  The real 2026-10-11 plan has 26 active slots and six retained retired
+  `/ai-technology/` groups; their July measurements do not age the current
+  26-slot collection. API comparison configuration remains unknown and
+  performance regression proposals remain withheld.
 - `runStatus: 'uncertified'` + `planCertified: false` (PSI) or
   `identityCertified: false` (CrUX) mark observations that cannot certify a
   complete denominator/identity: rows stay usable, completeness is withheld
