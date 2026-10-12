@@ -47,15 +47,22 @@ test('mobile primary links remain readable within stable columns', async ({ page
   }
 });
 
-test('Chinese long prose fonts activate when readable prose enters the viewport', async ({ page }) => {
+test('Chinese first-screen text has a loaded webfont fallback before any reading scroll', async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 823 });
   await page.goto('/zh/growth/posts/2025-annual-review/');
-  const fonts = page.locator('#zh-prose-fonts');
-  await expect(fonts).toHaveAttribute('rel', 'preload');
-  await expect(page.locator('.post-content')).toContainText('在悬崖边');
-  await page.locator('.post-content').scrollIntoViewIfNeeded();
-  await expect(fonts).toHaveAttribute('rel', 'stylesheet');
-  await expect(page.locator('.post-content')).toBeInViewport();
+  await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'stylesheet');
+  const title = page.locator('.post-title');
+  const summary = page.locator('.article-tldr');
+  await expect(title).toBeVisible();
+  const text = [(await title.textContent())!, (await summary.textContent())!];
+  const coverage = await page.evaluate(async ([titleText, summaryText]) => {
+    const bold = await document.fonts.load('700 16px "Noto Serif SC"', titleText);
+    const regular = await document.fonts.load('400 16px "Noto Serif SC"', summaryText);
+    return [bold, regular].map(faces => ({ count: faces.length, loaded: faces.every(face => face.status === 'loaded') }));
+  }, text);
+  for (const result of coverage) { expect(result.count).toBeGreaterThan(0); expect(result.loaded).toBe(true); }
+  expect(await title.evaluate(el => getComputedStyle(el).fontFamily)).toContain('Noto Serif SC');
+  expect(await summary.evaluate(el => getComputedStyle(el).fontFamily)).toContain('Noto Serif SC');
 });
 
 test('cold navigation does not synchronously write an absent menu scroll position', async ({ page }) => {

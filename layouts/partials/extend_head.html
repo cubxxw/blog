@@ -66,35 +66,9 @@
        font means bumping the directory name in static/fonts/. */ -}}
 {{- if and (eq .Lang "zh") (not (or .IsHome $isLeanAbout $isArticlesLibrary $isProjectsLanding)) }}
 {{- $zhFonts := "/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" | relURL -}}
-{{- if .IsPage }}
-{{- /* Long prose can request dozens of font slices even while it is below
-     the fold. Warm the manifest, then enable its faces when prose becomes
-     visible. The title/précis use stable local serifs; all text remains SSR. */ -}}
-<link id="zh-prose-fonts" rel="preload" as="style" href="{{ $zhFonts }}">
-<script>
-  (function () {
-    var link = document.getElementById('zh-prose-fonts');
-    function watchProse() {
-      var prose = document.querySelector('.post-content');
-      if (!prose || !('IntersectionObserver' in window)) {
-        link.rel = 'stylesheet';
-        return;
-      }
-      var observer = new IntersectionObserver(function (entries) {
-        if (entries.some(function (entry) { return entry.isIntersecting; })) {
-          link.rel = 'stylesheet';
-          observer.disconnect();
-        }
-      });
-      observer.observe(prose);
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watchProse, { once: true });
-    else watchProse();
-  })();
-</script>
-{{- else }}
-<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
-{{- end }}
+{{- /* Register CJK faces as soon as the manifest arrives. Local fonts may
+     be absent; first-screen titles and précis need the webfont fallback. */ -}}
+<link id="zh-prose-fonts" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
 <noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>
 {{- end }}
 

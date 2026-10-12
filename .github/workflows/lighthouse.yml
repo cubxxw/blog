@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       report_date: ${{ steps.date.outputs.report_date }}
+      lighthouse_artifact_id: ${{ steps.upload.outputs.artifact-id }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -96,6 +97,7 @@ jobs:
           if [ -f .lighthouseci/manifest.json ]; then mv .lighthouseci/manifest.json .lighthouseci/manifest.inconsistent.json; fi
           exit 1
       - name: Upload Lighthouse results
+        id: upload
         if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -107,7 +109,7 @@ jobs:
     if: github.repository == 'cubxxw/blog' && (((vars.BLOG_RELEASE_MODE == '' || vars.BLOG_RELEASE_MODE == 'shadow') && (inputs.release_context_artifact_id == '' || inputs.dry_run == true)) || (vars.BLOG_RELEASE_MODE == 'active' && vars.BLOG_FOLLOWUPS_ENABLED == 'true' && inputs.release_context_artifact_id != ''))
   publish:
     needs: lighthouse
-    if: always() && github.event_name != 'push' && needs.lighthouse.result != 'skipped' && inputs.dry_run != true
+    if: always() && github.event_name != 'push' && needs.lighthouse.result != 'skipped' && inputs.dry_run != true && needs.lighthouse.outputs.lighthouse_artifact_id != ''
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -122,10 +124,9 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
       - name: Download Lighthouse results
-        continue-on-error: true
         uses: actions/download-artifact@v8
         with:
-          name: lighthouse-results-${{ github.run_id }}-${{ github.run_attempt }}
+          artifact-ids: ${{ needs.lighthouse.outputs.lighthouse_artifact_id }}
           path: .lighthouseci/
       - name: Sync report to daily issue (frozen UTC date)
         env:

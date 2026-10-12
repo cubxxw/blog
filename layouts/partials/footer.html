@@ -84,9 +84,11 @@
     var ringProgress = mybutton ? mybutton.querySelector('.top-link-ring-progress') : null;
     // Circumference of the r=20 progress ring (2 * PI * 20).
     var RING_CIRC = 125.66;
+    var topLinkDesktop = window.matchMedia('(min-width: 1024px)');
     function updateTopLink() {
         if (!mybutton) return;
-        if (window.innerWidth < 1024) return;
+        // innerWidth can flush full-page layout while the parser is active.
+        if (!topLinkDesktop.matches) return;
         var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
         if (scrolled > 800) {
             mybutton.style.visibility = "visible";
@@ -116,7 +118,7 @@
             topLinkTicking = true;
         }
     }, { passive: true });
-    window.matchMedia('(min-width: 1024px)').addEventListener('change', function(e) {
+    topLinkDesktop.addEventListener('change', function(e) {
         if (e.matches) updateTopLink();
     });
     updateTopLink();
