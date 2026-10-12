@@ -155,7 +155,19 @@ for (const [section, slug, kind] of representatives) {
     await expect(root).toBeVisible();
     await expect(root).not.toHaveAttribute('data-enhanced', /.*/);
     await expect(root.locator('button:visible, input:visible, select:visible')).toHaveCount(0);
+    // Stabilize the viewport-activated prose font before clicking disclosure
+    // geometry; fonts.ready before scrolling can resolve before activation.
+    await root.scrollIntoViewIfNeeded();
+    await expect(page.locator('#zh-prose-fonts')).toHaveAttribute('rel', 'stylesheet');
+    await expect.poll(() => page.evaluate(() => {
+      let registered = false;
+      document.fonts.forEach(face => {
+        if (face.family.replace(/["']/g, '') === 'Noto Serif SC') registered = true;
+      });
+      return registered;
+    })).toBe(true);
     await page.evaluate(() => document.fonts.ready);
+    await page.waitForLoadState('networkidle');
     const reference = root.locator('details.ib-reference');
     await reference.locator('summary').click();
     await expect(reference).toHaveAttribute('open', '');
