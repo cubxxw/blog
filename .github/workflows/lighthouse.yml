@@ -79,7 +79,7 @@ jobs:
           mkdir -p .lighthouseci/diagnostics
           LH_DIAG_CLI="$(node -e 'const path=require("node:path"); console.log(path.join(require.resolve("lighthouse",{paths:[path.join(process.argv[1],"@lhci/cli")]}),"../../cli/index.js"))' "$(npm root -g)")"
           node "$LH_DIAG_CLI" --help > .lighthouseci/diagnostics/help.txt
-          rg -- '--save-assets' .lighthouseci/diagnostics/help.txt
+          node -e 'if (!require("node:fs").readFileSync(".lighthouseci/diagnostics/help.txt","utf8").includes("--save-assets")) process.exit(1)'
           for section in growth ai-agent; do
             node "$LH_DIAG_CLI" "https://cubxxw.com/zh/$section/" \
               --save-assets --output=json --output-path=".lighthouseci/diagnostics/zh-$section.json" \

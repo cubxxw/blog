@@ -18,14 +18,17 @@ test.describe('US-026 Font loading', () => {
     expect(consoleErrors).toHaveLength(0);
   });
 
-  test('ZH article page: post-title uses Noto Serif SC as first font', async ({ page }) => {
+  test('ZH article title uses a stable local serif while prose retains Noto Serif SC', async ({ page }) => {
     await page.goto('/zh/ai-agent/posts/agent-identity-from-locke-to-openclaw/');
     const fontFamily = await page.evaluate(() => {
       const el = document.querySelector('.post-title');
       if (!el) return '';
       return window.getComputedStyle(el).fontFamily;
     });
-    expect(fontFamily).toContain('Noto Serif SC');
+    expect(fontFamily.toLowerCase()).toMatch(/source han serif sc.*songti sc.*simsun.*serif/);
+    expect(fontFamily.toLowerCase()).not.toContain('noto serif sc');
+    const proseFont = await page.locator('.post-content > p').first().evaluate(el => getComputedStyle(el).fontFamily);
+    expect(proseFont.toLowerCase()).toContain('noto serif sc');
     const consoleErrors: string[] = [];
     page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
     expect(consoleErrors).toHaveLength(0);
