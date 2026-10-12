@@ -102,3 +102,37 @@ Future upgrades must acquire their own official artifacts, independently
 review relevant Action/SDK/CLI changes, rerun equivalent boundary checks,
 and update the workflow, hashes, versions and documentation together.
 Live OAuth and structured-output readback remain separate acceptance work.
+
+## Live error diagnostics (2026-10-12)
+
+[Analyze run 38204743082](https://github.com/cubxxw/blog/actions/runs/38204743082)
+completed its required deterministic report/publication stages, while the optional
+interpretation was withheld. Its sanitized SDK result records `subtype: success`,
+**`is_error: true`**, one turn and model `claude-sonnet-5-5`. The subtype alone
+never establishes successful model execution.
+
+The pinned Action's [run-claude-sdk.ts](https://github.com/anthropics/claude-code-action/blob/v1.0.240/base-action/src/run-claude-sdk.ts)
+requires both success subtype and `is_error: false` before exporting structured
+output. This run matched the fixed missing-structured-output error path; there
+was no structured-output export to lose. Workflow `structured_output` and
+`execution_file` names match the [official output contract](https://github.com/anthropics/claude-code-action/blob/v1.0.240/docs/usage.md#structured-outputs).
+Its absent conclusion reflects the upstream throw before conclusion export,
+not proof of a local output naming error.
+
+Trusted diagnostics now retain `action-result-is-error` as the primary reason,
+with `structured-output-missing` as secondary when both facts occur. A known,
+allowlisted auth/quota/etc. classification remains preferred; without such
+evidence, the provider cause is `unknown`. A failed action with valid payload
+still withholds text. No raw result text is recovered as explanation or logged.
+This diagnostic change does not change action version, tools, OAuth scope,
+turn/retry limits or invoke another model request. The underlying provider cause
+of this historical run remains unverified.
+
+
+Offline regression verification: the two new diagnostic regressions first failed
+on the prior missing-output priority, then passed after the bounded change.
+`node --test scripts/seo-pipeline.test.mjs scripts/seo-report.test.mjs
+scripts/seo-autofix-gate.test.mjs` passed **120/120**. The real execution-file CLI
+shape is included, with known auth/quota priority and failed valid payload
+withholding checked. A replay of the already-sanitized historical record confirms
+the new primary/secondary reasons; it is not a new live model invocation.

@@ -645,7 +645,7 @@ test('recognized auth cause survives the ordinary failed-action branch', () => {
   });
   assert.equal(record.status, 'failed');
   assert.equal(record.diagnostics.errorClass, 'auth');
-  assert.deepEqual(record.interpretation.reasons, [PROBLEMS.missing]);
+  assert.deepEqual(record.interpretation.reasons, [PROBLEMS.actionIsError, PROBLEMS.missing]);
 });
 
 test('explicit unsuccessful result subtype cannot be called success even with valid output', () => {
@@ -1615,7 +1615,23 @@ test('actual CLI interpretation classifies result.errors from the real execution
     '--execution-file', join(dir, 'exec-plain.json'), '--structured-output-env', 'STRUCTURED_OUTPUT',
     '--repository', 'cubxxw/blog', '--out', join(dir, 'missing.json')], { env: { STRUCTURED_OUTPUT: '' } });
   assert.equal(missing.status, 0);
-  assert.equal(JSON.parse(readFileSync(join(dir, 'missing.json'), 'utf8')).diagnostics.errorClass, 'missing-output');
+  assert.equal(JSON.parse(readFileSync(join(dir, 'missing.json'), 'utf8')).diagnostics.errorClass, 'unknown');
+
+  // Actual 2026-10-12 shape: success subtype plus is_error:true, failed
+  // action and no structured output. The primary fact cannot become missing-output.
+  writeFileSync(join(dir, 'exec-live.json'), JSON.stringify([
+    { type: 'system', subtype: 'init', model: 'claude-sonnet-5-5' },
+    { type: 'result', subtype: 'success', is_error: true, num_turns: 1, result: marker },
+  ]));
+  const live = invokeCli(['interpretation', '--action-outcome', 'failure',
+    '--execution-file', join(dir, 'exec-live.json'), '--structured-output-env', 'STRUCTURED_OUTPUT',
+    '--repository', 'cubxxw/blog', '--out', join(dir, 'live.json')], { env: { STRUCTURED_OUTPUT: '' } });
+  assert.equal(live.status, 0);
+  const liveRecord = JSON.parse(readFileSync(join(dir, 'live.json'), 'utf8'));
+  assert.equal(liveRecord.diagnostics.errorClass, 'unknown');
+  assert.deepEqual(liveRecord.interpretation.reasons, [PROBLEMS.actionIsError, PROBLEMS.missing]);
+  assert.equal(liveRecord.interpretation.withheld, true);
+  assert.ok(!JSON.stringify(liveRecord).includes(marker));
 
   // unknown cause with otherwise valid output -> 'unknown', never invented
   writeFileSync(join(dir, 'exec-unknown.json'), JSON.stringify([{ type: 'result', subtype: 'error_during_execution', is_error: true, errors: [`weird unrecognized ${marker}`] }]));
@@ -1716,4 +1732,35 @@ test('actual CLI compose: an existing-but-rejected report publishes the minimal 
     '--run-date', '2026-09-24', '--as-of', reportExpected.asOf, '--out', join(dir, 'section2.md')]);
   assert.equal(broken.status, 0, broken.stderr);
   assert.ok(readFileSync(join(dir, 'section2.md'), 'utf8').includes('生成失败'));
+});
+
+test('live success-subtype error flag remains primary when action fails and structured output is absent', () => {
+  for (const actionOutcome of ['failure', 'success']) {
+    const record = buildInterpretationRecord({
+      actionOutcome,
+      structuredOutputRaw: null,
+      resultFields: { subtype: 'success', isError: true, turns: 1, model: 'claude-sonnet-5-5', errorClass: 'none' },
+      observedAt: '2026-10-12T04:41:33.917Z',
+    });
+    assert.equal(record.status, 'failed');
+    assert.equal(record.diagnostics.errorClass, 'unknown', 'runtime failure has no proven provider cause');
+    assert.equal(record.diagnostics.isError, true);
+    assert.deepEqual(record.interpretation.reasons, [PROBLEMS.actionIsError, PROBLEMS.missing]);
+    assert.equal(record.interpretation.text, null);
+    assert.equal(record.interpretation.withheld, true);
+  }
+});
+
+test('runtime error flag keeps recognized auth/quota classification and never accepts valid failed output', () => {
+  for (const [errorText, expected] of [['OAuth token expired', 'auth'], ['Quota exceeded', 'quota']]) {
+    const record = buildInterpretationRecord({ actionOutcome: 'failure', structuredOutputRaw: null, resultFields: { subtype: 'success', isError: true }, errorText, observedAt: '2026-10-12T04:41:33.917Z' });
+    assert.equal(record.diagnostics.errorClass, expected);
+    assert.deepEqual(record.interpretation.reasons, [PROBLEMS.actionIsError, PROBLEMS.missing]);
+    assert.ok(!JSON.stringify(record).includes(errorText));
+  }
+  const record = buildInterpretationRecord({ actionOutcome: 'failure', structuredOutputRaw: '{"explanation":"valid but failed"}', resultFields: { subtype: 'success', isError: false }, observedAt: '2026-10-12T04:41:33.917Z' });
+  assert.equal(record.diagnostics.errorClass, 'action-failed');
+  assert.deepEqual(record.interpretation.reasons, [PROBLEMS.actionFailed]);
+  assert.equal(record.interpretation.text, null);
+  assert.equal(record.interpretation.withheld, true);
 });

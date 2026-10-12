@@ -19,8 +19,8 @@ https://www.nsddd.top/*    https://cubxxw.com/:splat    301!
 # www subdomain → apex domain
 https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 
-# Broken template URL (Google crawled a Hugo template rendering bug)
-/search?q=%7B%7B.%7D%7D   /   301
+# Search query variants remain on the noindex search page. Query parameters
+# cannot be embedded in a Netlify source path; do not redirect them to home.
 
 # /posts/ai-projects/* → /projects/* (moved to dedicated section)
 # These old paths also exist as Hugo alias files; force HTTP redirects over
@@ -190,10 +190,9 @@ https://www.cubxxw.com/*   https://cubxxw.com/:splat    301!
 /posts/use-go-tools-dlv/    /engineering/posts/use-go-tools-dlv/    301
 /posts/use-go-tools-dlv    /engineering/posts/use-go-tools-dlv/    301
 
-# Legacy WordPress-style URL and external referral spam
-/?p=341   /   301
-/?from=blog114com   /   301
-/zh/?from=blog114com   /zh/   301
+# Referral query variants use the existing query-free page canonical.
+# The original WordPress p=341 article is unconfirmed (issue #393); do not
+# publish a homepage redirect or a 410 without identifying its content.
 
 # Trailing-slash-less variants from crawl logs
 /zh/posts/openim-multi-process-management    /zh/engineering/posts/openim-multi-process-management/    301

@@ -252,14 +252,18 @@ export function buildInterpretationRecord({
   const errorSubtype = fields.subtype !== null && ERROR_RESULT_SUBTYPES.includes(fields.subtype);
 
   let status = 'ok';
-  if (outcome !== 'success') {
+  if (fields.isError === true) {
+    // SDK subtype "success" can still carry is_error:true. Keep this observed
+    // runtime failure primary even when the action also failed and output is
+    // missing; neither subtype nor missing output proves the provider cause.
+    status = 'failed';
+    problems.unshift(PROBLEMS.actionIsError);
+    if (!validated.ok) problems.push(...validated.problems);
+  } else if (outcome !== 'success') {
     // A failed action is a failed interpretation even when output exists.
     status = 'failed';
     if (!validated.ok) problems.push(...validated.problems);
     else problems.push(PROBLEMS.actionFailed);
-  } else if (fields.isError === true) {
-    status = 'failed';
-    problems.push(PROBLEMS.actionIsError);
   } else if (errorSubtype) {
     // An explicit unsuccessful result subtype cannot be called success even
     // when is_error=false and the structured output parses.
@@ -275,6 +279,7 @@ export function buildInterpretationRecord({
   let errorClass = 'none';
   if (status === 'failed') {
     if (classified !== 'unknown') errorClass = classified;
+    else if (fields.isError === true) errorClass = 'unknown';
     else if (!validated.ok) errorClass = validated.errorClass;
     else if (outcome !== 'success') errorClass = 'action-failed';
     else errorClass = 'unknown';

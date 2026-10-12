@@ -18,9 +18,9 @@
 | [#393](https://github.com/cubxxw/blog/issues/393) | 旧路径迁移大部分有效；4 条查询规则无效，Google 侧分诊未验收 | 留存真实 HTTP 证据；`?p=341` 原内容未确认，不盲跳首页。仍需索引分类导出、P1 Inspection、迁移设置和观察 |
 | [#394](https://github.com/cubxxw/blog/issues/394) | 既有摘要/示例修复已上线；英文 archives YAML 仍不可解析 | 主代理修完整 YAML 缩进/空格，独立验证中英解析一致；未声称 GoReleaser release 执行或 CTR 实验完成 |
 | [#395](https://github.com/cubxxw/blog/issues/395) | 性能仍有测量和修复空间 | 聊天“优化博客性能与 SEO”已有唯一 Pi writer；本轮不重复占用/覆盖其模板与性能改动；仍需固定条件前后各三次证据 |
-| [#396](https://github.com/cubxxw/blog/issues/396) | 原计划的月档案主题导航已存在；英文摘要条数/日期不准；新文试点缺作者选择 | 主代理修准确性，不按不相关搜索词拼装新文；作者内容选择和重抓后观察仍未验收 |
+| [#396](https://github.com/cubxxw/blog/issues/396) | 原计划的月档案主题导航已存在；英文摘要条数/日期不准；新文试点缺相关查询与作者 brief | 已修准确性；取消尚未启动的新文/搜索试点，按 `not_planned` 关闭，维护后续观察归 #390；不声称原试点完成 |
 | [#397](https://github.com/cubxxw/blog/issues/397) | Mem0 确有 OSS 查询；现有正文已覆盖核心边界，相关文字未链接 | 给上下文工程文章已有 Mem0 提及补中英规范内链；保留 Products 默认 BEAR OS；搜索实验仍需重抓和完整窗口 |
-| [#450](https://github.com/cubxxw/blog/issues/450) | 最新站点日报，记录真实降级 | 保留运维证据，由下一日报自动关闭；不能提前关以免重复建当天日报 |
+| [#450](https://github.com/cubxxw/blog/issues/450) | 10/11 日报，已被有完整结果的 10/12 日报 #451 替代 | 按严格日期生命周期关闭旧日报；今日 #451 保持开放，历史诊断保留 |
 
 任务分配：只读 SEO/数据审计、只读内容/意图审计、GSC 修复 worker、PSI 修复 worker；主代理负责 workflow、局部内容、独立验收和 GitHub 交付。SEO 审计代理随后独立 review，未参与本轮实现。Pi 已被另一个正在进行的聊天占用；遵守同仓库一个活动 Pi writer，未新建第二个 Pi 编码任务。
 
@@ -77,6 +77,14 @@ PSI outcome=degraded，明确缺比较配置；CrUX outcome=no-sample，明确�
 
 新增 `scripts/gsc-inspect.mjs` 与仅手动触发的 `seo-index-inspection.yml`。复用现有只读 OAuth/secret，固定 `sc-domain:cubxxw.com` 和 HTTPS 主站；每次最多 25 URL，第一条为 canary，认证/权限/配额或首条无有效 IndexStatus 时停止并将余项标 blocked。只记录 Google 索引版本与 allowlist 字段，缺失 canonical 保持 null，不将 HTTP 200 推断为已收录。只上传本次 run/attempt 的 report/process 两个 artifact，不提交快照或更改 Google 设置。
 
-独立 review 复现并修复了一个 P1：同一路径重复执行时旧成功回执可掩盖新失败。最终门禁绑定本次 `steps.inspect.outcome`（不是 continue-on-error 的 conclusion），真实 shell 碰撞探针确认失败门禁为 1。相关 80/80、父代理含工作流检查 94/94 通过，剩余 P0/P1/P2=0。现场 Inspection 权限仍待单 URL canary 读回。
+独立 review 复现并修复了一个 P1：同一路径重复执行时旧成功回执可掩盖新失败。最终门禁绑定本次 `steps.inspect.outcome`（不是 continue-on-error 的 conclusion），真实 shell 碰撞探针确认失败门禁为 1。相关 80/80、父代理含工作流检查 94/94 通过，剩余 P0/P1/P2=0。现场单 URL canary 和 24 URL 批次均成功读回。
 
-本轮另在当前已登录 Search Console 页面直接确认 `not-verified` / “无权访问 cubxxw.com”；未更换账号、验证所有权或修改权限。这是 UI 分类导出与同口径人工图表核验的真实剩余条件，API canary 独立判断现有 CI 身份能否读取索引版本。
+本轮另在当前已登录 Search Console 页面直接确认 `not-verified` / “无权访问 cubxxw.com”；未更换账号、验证所有权或修改权限。这是 UI 分类导出与同口径人工图表核验的真实剩余条件；API 身份的读取权限不能替代 UI 身份。
+
+### 现场结果与关闭决定
+
+完整现场证据见 [SEO 现场读回](seo-live-readback-2026-10-12.md)。`f71bec61` 的 [主质量门禁 38204913673](https://github.com/cubxxw/blog/actions/runs/38204913673) 与 [Lighthouse 38204913700](https://github.com/cubxxw/blog/actions/runs/38204913700) 均成功；后续修改仍需绑定其最新提交核验。
+
+本轮已读回确认关闭 #203（无开发待办的评论）、#450（被今日完整日报取代）；#396 明确取消缺证据的新文试点，按 `not_planned` 关闭，不冒充原搜索实验完成。其他有真实验收缺项的开发 issue 保持开放；#235–238 保留有业务价值的公开反馈通道。
+
+现场解读失败的后续诊断修正已通过独立 review：实际 SDK `subtype=success` 同时 `is_error=true`，上游未导出 structured output。本地记录现在把 runtime 失败作为首要事实、missing output 作为次要事实；未识别 provider 原因仍为 unknown，已知 auth/quota 分类保留优先级，不恢复原始文本、不增加模型调用或权限。最终定向离线验证共 339/339（SEO/采集 320、渲染/工作流契约 9、CI 范围 10），无 skip/failure；模型诊断独立 120/120、静态跳转与现场文档 review 无 P0/P1/P2，front matter、tags、diff 检查通过。
