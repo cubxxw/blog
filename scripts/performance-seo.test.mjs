@@ -140,3 +140,29 @@ test('preview homes and every crawler group fail closed', { skip: !process.env.S
     assert.equal(meta(nodes, 'robots'), 'noindex, nofollow');
   }
 });
+
+test('Chinese first viewport keeps a timely webfont fallback when local CJK fonts are absent',()=>{
+  const nodes=page('/zh/growth/posts/2025-annual-review/');
+  const fonts=nodes.find(n=>n.tagName==='link'&&attribute(n,'id')==='zh-prose-fonts');
+  assert.ok(fonts);
+  assert.match(attribute(fonts,'onload')||'',/rel=["']stylesheet["']/,'face registration must not depend on scrolling');
+  const linked=css('/zh/growth/posts/2025-annual-review/',false);
+  assert.doesNotMatch(linked,/html:lang\(zh\) \.article-tldr,html:lang\(zh\) \.article-main \.post-title\{font-family:[^}]*SimSun,serif\}/,'first-screen fallback cannot be local-only');
+  assert.match(linked,/--font-display:[^}]*Noto Serif SC/);
+});
+
+test('mobile top-link breakpoint guard avoids layout width reads and desktop behavior survives',async()=>{
+  const {runInNewContext}=await import('node:vm');
+  const nodes=page('/zh/growth/posts/2025-annual-review/');
+  const code=nodes.find(n=>n.tagName==='script'&&n.childNodes.some(c=>(c.value||'').includes('function updateTopLink')))?.childNodes.map(c=>c.value||'').join('');
+  assert.ok(code,'execute the actual compiled top-link script');
+  for(const desktop of [false,true]){
+    const button={querySelector:()=>null,style:{},classList:{toggle:(_key,value)=>{button.visible=value;}}};
+    const window={matchMedia:query=>{assert.equal(query,'(min-width: 1024px)');return {matches:desktop,addEventListener(){}};},addEventListener(){},requestAnimationFrame:fn=>fn()};
+    Object.defineProperty(window,'innerWidth',{get(){throw new Error('breakpoint guard forced layout');}});
+    const document={getElementById:()=>button,body:{scrollTop:900},documentElement:{scrollTop:0,scrollHeight:4000,clientHeight:1000}};
+    runInNewContext(code,{window,document},{timeout:1000});
+    if(desktop){assert.equal(button.style.visibility,'visible');assert.equal(button.visible,true);}
+    else assert.deepEqual(button.style,{});
+  }
+});

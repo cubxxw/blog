@@ -1,3 +1,5 @@
+> 2026-10-12 可读性验收纠正：4905/DCC 年度文章候选在无系统 CJK 字体的 Linux 中丢失标题、描述、提要中文；原始截图及末帧已确认 P1。以下117份历史LHR保留为原始实验，不能把该年度候选的字形缺失、Font0或LCP差值认作成功优化。已恢复及时注册的中文 webfont fallback，并修复另一个 parser 期 innerWidth 强制布局触发点；新候选 CI、原始中文帧与三次指标待验。首页 optional 字体、预留高度、封面 sizes 修复继续保留。
+
 # Lighthouse 云端补验与定向修复（2026-10-12）
 
 #395 保持 OPEN；旧本机实验不能替代不同视口、DPR 和运行方式的云端验收。云端基线来自源码 `9669587745849b7349e960d508b2cf48525cfca7`，三个独立运行分别为 [38213873700](https://github.com/cubxxw/blog/actions/runs/38213873700)、[38232589096](https://github.com/cubxxw/blog/actions/runs/38232589096)、[38232596830](https://github.com/cubxxw/blog/actions/runs/38232596830)。13 个 URL 各三次、39 次独立测量；重复 LHR JSON 副本不算重复测量。
@@ -54,3 +56,11 @@ Pi完成冻结路由tracker，独立6个受控Promise测试和14个CI接线测�
 manual38245959170的测量任务已成功、artifact11745387438有13个有效报告；日报发布首次遇到GitHub GraphQL504。只重跑failed publisher后，其github.run_attempt变2，原producer仍attempt1，按consumer attempt猜名称查不到附件并误写日报缺证。已修measurement job输出实际upload artifact-id、publisher按该ID下载；空ID跳过publisher，下载/摘要校验失败停止sync。无跨run/旧attempt搜索fallback。真实YAML producer1→consumer2与全量rerun3回归先RED，修正后27个workflow/日报测试通过并fresh独立review；新提交CI及真实consumer重跑仍需读回。这个发布合同不改变生产页面渲染，footer后的三次测量单独记录。
 
 长笔记预算实验已补，详见[预算实验](long-note-budget-2026-10-12.md)；不宣称压缩候选就是线上收益或DOM已经减少。
+
+## P1 修复候选与残余成本
+
+年度966真基线末帧中文完整；4905/DCC的原始末帧只留下Latin/数字。两个中文分类真基线也缺少系统CJK回退，不能把这个Linux字体环境冒充真实Android。年度新增回归必须在相同缺本地字体环境中修复，不通过安装runner字体遮盖。
+
+已取消 single 正文视口触发的Noto注册和标题/提要local-only覆写，恢复原同源400/700切片及即时manifest onload，noJS原stylesheet保留。实际编译产物字体契约与mobile top-link VM回归先2RED再2GREEN；E2E用实际title/tldr文本调用400/700 fonts.load，要求非空且loaded。源码审查没有未关闭P0/P1，运行验收仍待。首访字体成本会回来，旧Font0不再当收益。
+
+旧menu.scrollLeft强制布局堆栈已消失，但后续updateTopLink的window.innerWidth读取又触发AI73.4ms/growth66.4ms全页布局。新候选改为与原监听器相同的1024px MediaQueryList.matches；desktop800px阈值/环进度/RAF不变。是否完全避免renderer flush须新trace验证，不把API更换等同总LCP提速。

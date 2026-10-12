@@ -8480,5 +8480,15 @@
     "sourceSha": "4905cf2fee5edca149165b24a62587e78caec574",
     "equivalentProductionSourceSha": "edefd4e0233684958b8164b6a9049595ab087402"
   },
-  "latestCodeAcceptance": "dcc73145 quality38243423196 success; siteartifact11746107254 read back. New observer artifact-ID fix latest CI and footer3after pending"
+  "latestCodeAcceptance": "dcc73145 quality38243423196 success; siteartifact11746107254 read back. New observer artifact-ID fix latest CI and footer3after pending",
+  "readabilityCorrection": {
+    "rejectedCandidateSources": [
+      "4905cf2fee5edca149165b24a62587e78caec574",
+      "dcc73145d035f1d8e5b946ef6f23bdc82c578728"
+    ],
+    "annualP1": "Chinese title/description/TLDR absent in original Linux frames vs readable966baseline; Font0/annual LCP reductions not valid accepted improvement",
+    "repair": "restore timely same-origin Noto fallback; new CI/visual/three samples pending",
+    "priorMetrics": "preserved raw experiment, not deleted or silently repurposed",
+    "categoryLimit": "baseline minimal Linux CJK fallback already absent, not real Android font rendering"
+  }
 }
