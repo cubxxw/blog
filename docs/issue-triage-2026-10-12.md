@@ -1,6 +1,6 @@
 # 开放 issue 分诊与修复（2026-10-12）
 
-当前更新：#203、#396、#450 已关闭；#395 因云端性能残余重新 OPEN，正在补验。英文 GoReleaser 可见中文已全部翻译，代码/旧锚点保持；GSC 主 sitemap 的 435 个规范 URL 已完成 Inspection，29 个非 PASS URL 的当前 HTTP/robots/canonical 无确定实现错误。同口径 GSC UI、实际 VoiceOver、三次正常计划和搜索观察窗口仍未验收。
+当前更新：#203、#396、#450 已关闭；#395 完成可读性纠正和同配置78份有效性能验收，具备技术关闭条件，LCP残余完整记录。最新8f质量CI、三次云端复测通过；真实计划Snapshot38259402733成功，不能替代三次完整计划验收。英文Go可见中文已翻译，435URL索引分诊已完成；GSC UI权限、实际VoiceOver、搜索观察窗口仍待。
 
 审计起点：`17abebbd24e0002393fdda0151e31ed0081f7011`，远端 `cubxxw/blog` 共 15 条开放 issue。逐项读取正文、评论、当前实现、真实 GSC 快照和相关 Actions；本轮不把已有代码、工作流绿灯或局部维护修正当成完整搜索实验验收。
 
@@ -19,7 +19,7 @@
 | [#392](https://github.com/cubxxw/blog/issues/392) | Snapshot plan 缺失仍采集/提交；PSI 把 API 缺少比较参数误当采集失败 | 主代理修 plan 守卫与工作流接线，PSI worker 分开采集与比较状态；还需真实运行/三次计划验收。可选模型缺 structured_output 保持 withheld，不猜鉴权/配额原因 |
 | [#393](https://github.com/cubxxw/blog/issues/393) | 旧路径迁移大部分有效；4 条查询规则无效，Google 侧分诊未验收 | 留存真实 HTTP 证据；`?p=341` 原内容未确认，不盲跳首页。仍需索引分类导出、P1 Inspection、迁移设置和观察 |
 | [#394](https://github.com/cubxxw/blog/issues/394) | 六篇教程存在配置语法、版本字段和动作元数据错误，英文核心解释残留中文 | Pi 修六篇双语技术事实与示例；父代理及独立 reviewer 复验。原搜索实验的 Google 重抓与完整 28 天观察仍待完成 |
-| [#395](https://github.com/cubxxw/blog/issues/395) | 云端CLS/加载长尾真实，旧本机条件不能替代验收 | 已有同口径39before+39after、CLS及图片成本改善；LCP未全达标，footer残余修复与最新CI待验，保持OPEN |
+| [#395](https://github.com/cubxxw/blog/issues/395) | 云端CLS/加载长尾真实，旧本机条件不能替代验收 | 有效before39＋可读after39、独立字形/trace与最新CI通过；CLS全≤0.1、封面更轻，LCP残余明确，满足技术关闭条件 |
 | [#396](https://github.com/cubxxw/blog/issues/396) | 原计划的月档案主题导航已存在；英文摘要条数/日期不准；新文试点缺相关查询与作者 brief | 已修准确性；取消尚未启动的新文/搜索试点，按 `not_planned` 关闭，维护后续观察归 #390；不声称原试点完成 |
 | [#397](https://github.com/cubxxw/blog/issues/397) | Mem0 OSS 查询有效；LangGraph 崩溃恢复与 HTTP 重试说明需校正 | 补 Mem0 相关内链；按固定官方源码校正双语 LangGraph pending checkpoint 恢复与 retry_on 边界，保留开篇/代码/交互；搜索实验仍需重抓和完整窗口 |
 | [#450](https://github.com/cubxxw/blog/issues/450) | 10/11 日报，已被有完整结果的 10/12 日报 #451 替代 | 按严格日期生命周期关闭旧日报；今日 #451 保持开放，历史诊断保留 |
@@ -98,3 +98,10 @@ Pi `20261012-133716-cef66cc7` 在冻结 `32c6e40d` 基线上完成六篇工程�
 双语 LangGraph 文按固定官方源码解释 pending checkpoint 恢复：同一 thread 的 `graph.invoke(None, config=config)` 与重传新输入不同；人工 interrupt 用 `Command(resume=...)`，跨进程恢复须 durable checkpointer。HTTP 默认重试与 `retry_on` 的 provider 异常范围分开说明；没有新增付费模型调用或改现有交互代码。独立 review 无 P0/P1/P2，原 #397 搜索观察门禁仍保留。
 
 [固定条件性能验收](performance-acceptance-2026-10-12.md) 留存 30 个真实 CI 快照样本与 3 个可追溯编译 CSS 派生候选样本。移动年度页原透明动画使 PerformanceObserver 有时只记录导航，filmstrip 显示标题仍不可读。本轮标题/封面初始 opacity 改为 1，保留位移、悬停和 reduced-motion；候选三次均为 H1，1.748/1.804/2.088s、CLS 0，桌面真实封面及悬停通过。五页面 SSR 正文一致，长文 8,267 DOM 节点的成本明确保留，CrUX 无样本仍为未知。关闭 #395 还须实际最新 CI 编译/线上 CSS 字节绑定，不能把候选当成已部署。
+
+
+### 最终可读性、计划与交付补验
+
+[最终性能报告](performance-cloud-2026-10-12.md)纠正旧年度Font0/3秒结果：失败候选78份保留历史，有效966before39＋8f可读after39。年度中文原图及400/700请求全部通过，LCP median仍15.308s、growth6.106s；39次CLS全≤0.1，不声称全面提速。两处原页脚Layout堆栈消失，自然布局等残余保留。最新8f质量38253996824及三次云端38255501026/38257591174/38259103732均SUCCESS，48/320/573测试通过；预算实验和两个独立review通过，#395具备技术关闭条件。
+
+真实计划[Snapshot38259402733](https://github.com/cubxxw/blog/actions/runs/38259402733) event=schedule，四required stages成功、aggregate ok=true，PSI26/26采集但比较degraded、CrUX no-sample，自动快照5d245bf保留。只算一次真实Snapshot记录，不把手动运行/一次Snapshot当三次完整Analyze/Autofix计划验收。日报重跑真实consumer2复用producer1附件成功；下载失败停止写日报，未把缺附件降级为有效报告。其余价值明确且验收未完成的issue保持开放。

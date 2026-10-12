@@ -1,66 +1,49 @@
-> 2026-10-12 可读性验收纠正：4905/DCC 年度文章候选在无系统 CJK 字体的 Linux 中丢失标题、描述、提要中文；原始截图及末帧已确认 P1。以下117份历史LHR保留为原始实验，不能把该年度候选的字形缺失、Font0或LCP差值认作成功优化。已恢复及时注册的中文 webfont fallback，并修复另一个 parser 期 innerWidth 强制布局触发点；新候选 CI、原始中文帧与三次指标待验。首页 optional 字体、预留高度、封面 sizes 修复继续保留。
+# 移动端性能验收与残余（2026-10-12）
 
-# Lighthouse 云端补验与定向修复（2026-10-12）
+#395 的技术验收通过：修复了首页 CLS、年度封面选图、两个页脚同步布局触发点及冻结网络测试的路由生命周期问题。字体优化候选曾造成 Linux 缺本地 CJK 环境下的年度中文标题/提要消失，已撤回并用原始云端截图确认恢复。**39 次有效 after 的 CLS 均 ≤0.1；LCP 未全面达到 2.5 秒。** 不声称全面提速、搜索流量改善或真实用户 p75 达标。
 
-#395 保持 OPEN；旧本机实验不能替代不同视口、DPR 和运行方式的云端验收。云端基线来自源码 `9669587745849b7349e960d508b2cf48525cfca7`，三个独立运行分别为 [38213873700](https://github.com/cubxxw/blog/actions/runs/38213873700)、[38232589096](https://github.com/cubxxw/blog/actions/runs/38232589096)、[38232596830](https://github.com/cubxxw/blog/actions/runs/38232596830)。13 个 URL 各三次、39 次独立测量；重复 LHR JSON 副本不算重复测量。
+## 有效比较与失败候选
 
-固定条件：Lighthouse 12.6.1、Chrome 154 Linux、mobile 412×823 / DPR1.75、simulate、CPU4；三个报告中的完整配置逐字段相同。网络资源响应、宿主 CPU 和外部字体到达时间仍存在波动，不声称统计显著。完整分布与中位数见 [JSON](performance-cloud-2026-10-12.json)。CrUX 无足够样本，实地 p75 保持未知。
+有效 before 为源码 `9669587745849b7349e960d508b2cf48525cfca7` 的 [38213873700](https://github.com/cubxxw/blog/actions/runs/38213873700)、[38232589096](https://github.com/cubxxw/blog/actions/runs/38232589096)、[38232596830](https://github.com/cubxxw/blog/actions/runs/38232596830)。有效可读 after 为源码 `8f23540b23c3779a89475c2025bd2efe767ecacf` 的 [38255501026](https://github.com/cubxxw/blog/actions/runs/38255501026)、[38257591174](https://github.com/cubxxw/blog/actions/runs/38257591174)、[38259103732](https://github.com/cubxxw/blog/actions/runs/38259103732)，三个工作流全部成功。每阶段 13 URL 各三次，共 78 份独立 LHR；重复 JSON 与额外诊断不计。
 
-| URL | LCP 三次（秒） | LCP median（秒） | CLS 三次 |
-| --- | --- | ---: | --- |
-| `/` | 3.046 / 3.379 / 3.011 | 3.046 | 0.196421 / 0 / 0.196421 |
-| `/zh/ai-agent/` | 4.639 / 4.603 / 2.354 | 4.603 | 0 / 0 / 0.000007 |
-| `/zh/growth/` | 6.168 / 2.344 / 2.278 | 2.344 | 0 / 0.000250 / 0.000250 |
-| 年度文章 | 3.654 / 15.644 / 15.552 | 15.552 | 0.083887 / 0 / 0 |
+完整 configSettings 对 78 份逐字段相同：Lighthouse12.6.1、Chrome154 Linux、mobile412×823 / DPR1.75、simulate、CPU4、冷存储策略。所有有效 after fetchTime 晚于 `2026-10-12T13:24:37.962446Z` 的公网资源契约读回。四优先 URL 的 CSS 指纹和 SSR 契约匹配真实编译；source-sha 只表示 checkout，不能冒充生产全字节身份。[完整分布、配置、资源与检查](performance-cloud-2026-10-12.json)。
 
-## 诊断事实与修复边界
+旧4905/edef的39份和DCC的39份候选 after 共78份保留失败历史。年度文字消失让 LCP 元素/几何发生变化，不能拿原3秒结果、Font0或60→35KB封面之外的误读当成功；没有用安装 runner 字体遮盖回归。旧本机 CDP 与云端策略不同，也不混入有效78份。
 
-- 英文首页的 layout-shift 审计明确关联 Space Grotesk / JetBrains Mono；截图中 motto 三行变两行、按钮两行变一行。首页 font-display 改为 optional，避免冷字体迟到后重新排版；快速/缓存字体仍可使用。[Chrome 字体说明](https://developer.chrome.com/docs/lighthouse/performance/font-display)。移动按钮固定列结构，320px 一列、375/412px 两列，不截断文字。
-- 移动 AI layer 原为 SSR 空容器，模块初始化后注入 80px 卡片。现预留相同高度，原控制器、入口和聊天交互保留。本次 LHR 没有量化插卡在 CLS 中的份额，不能将所有位移归给它。
-- 年度封面的 mobile sizes 原为 100vw；412×1.75=721，使浏览器选 1080 候选。实际正文列宽352px，需要616px，720候选足够。single 调用传正文 mobile gutter 公式；desktop 900px 是候选尺寸近似，不改变布局。[响应式图片说明](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images)。真实 CI 1080 WebP 恢复后像素为1080×608，源JPEG为1280×720，均16:9；LHR的1080×464不能当作已证实的文件像素异常。
-- 年度长文初始请求64个本地 Noto 字体文件、约2.39MB。中文 single 先 preload CSS manifest，正文进入视口时才激活字体；正文始终由服务端完整输出。无 IntersectionObserver 或无正文时立即激活，无JavaScript使用noscript stylesheet。首屏标题和提要正文使用本地 serif，正文原 `--font-prose` 保留。正文进入视口后仍可能 font swap，不声称全页零位移；原2.39MB成本不会凭空消失，只退出未阅读正文的首屏路径。
-- 两个中文分类页的首次基线实采FCP/LCP均约1.39s；模拟值4.6/6.2s不是实采延迟。lede不直接使用Noto正文栈，没有证据证明其被CJK400字体直接阻塞。三个只在single使用的系列、FAQ、分享样式从landing bundle省略；约42,192B为原CSS源码量，不是网络传输节省。保留原位过滤和后续reset/press顺序。
-- Lighthouse CI固定当前LHCI0.15.1（依赖Lighthouse12.6.1）；新增默认关闭的手动diagnostics参数，使用同一安装的CLI保存两个ZH landing的JSON、trace、DevToolsLog。额外报告置独立子目录，不进入日报manifest、不会重复计数。source-sha只表示checkout，公网版本仍需实际HTML/CSS指纹校验。[官方CLI](https://github.com/GoogleChrome/lighthouse/blob/v12.6.1/readme.md)。
+## 三次结果
 
-## 三次线上 after：有改善，也有未达标项
+| 优先页面 | Before LCP median〔范围〕秒 | 可读 After LCP 三次秒 | After median 秒 | After CLS 三次 |
+| --- | ---: | --- | ---: | --- |
+| 英文首页 | 3.046〔3.011–3.379〕 | 3.491 / 3.388 / 3.254 | 3.388 | 0 / 0.051210 / 0 |
+| 中文首页 | 1.960〔1.884–3.673〕 | 1.955 / 2.123 / 1.922 | 1.955 | 0 / 0 / 0.048990 |
+| 中文 ai-agent | 4.603〔2.354–4.639〕 | 2.345 / 4.717 / 4.604 | 4.604 | 0.000007 / 0 / 0 |
+| 中文 growth | 2.344〔2.278–6.168〕 | 2.202 / 6.162 / 6.106 | 6.106 | 0.000290 / 0 / 0 |
+| 年度文章 | 15.552〔3.654–15.644〕 | 2.817 / 15.308 / 15.390 | 15.308 | 0 / 0 / 0 |
 
-三个独立 after 运行是 [38236276441](https://github.com/cubxxw/blog/actions/runs/38236276441)、[38236287673](https://github.com/cubxxw/blog/actions/runs/38236287673)、[38238364289](https://github.com/cubxxw/blog/actions/runs/38238364289)，13 URL 各三次，共39；与before合计78。第一运行的13项测量成功，但可选diagnostic缺少rg使整个workflow失败，不能写成绿灯。另一个排队后取消的运行无样本，排除；额外trace诊断报告也不混入计数。全部LHR配置逐字段一致。公网四优先URL的CSS指纹及新SSR契约已与实际Hugo微型编译匹配；4905→edef仅workflow/tests变化。该渲染提交的质量运行38243423196已成功，正式artifact11746107254及四优先HTML已范围恢复并校验CRC/manifest来源。
+全部39次 after 的最大CLS=0.051210；13 URL 中4个 LCP median≤2.5s，39次中15次达到。英文首页、growth和archives等数值未改善，年度长尾仍在。宿主 benchmark、网络和字体到达时间波动且未随机化，仅三次，不做显著性或单一因果结论。模拟 LCP 与实际绘制/布局耗时分别保存，不将布局毫秒换算为用户收益。CrUX 缺样本仍为未知，PSI API 配置不完整的测量保持“采集成功、比较 withheld”。
 
-| URL | Before LCP median〔范围〕秒 | After LCP median〔范围〕秒 | After最大CLS |
-| --- | ---: | ---: | ---: |
-| 英文首页 | 3.046〔3.011–3.379〕 | 3.521〔3.407–3.613〕 | 0.000000 |
-| 中文首页 | 1.960〔1.884–3.673〕 | 1.984〔1.901–2.033〕 | 0.000000 |
-| 中文growth | 2.344〔2.278–6.168〕 | 3.388〔2.770–5.973〕 | 0.001391 |
-| 中文ai-agent | 4.603〔2.354–4.639〕 | 2.939〔2.298–2.963〕 | 0.000007 |
-| 年度文章 | 15.552〔3.654–15.644〕 | 3.469〔3.222–3.598〕 | 0.000000 |
+## 保留的修复与资源成本
 
-英文首页和中文growth的LCP中位数数值变慢，不能声称全面提速。宿主benchmarkIndex波动明显，未随机化，仅每阶段三次，不作统计显著或单一因果推断。英文首页三次CLS均0；年度三次CLS均0。年度before LCP元素为IMG/H1/H1，after均IMG，Linux本地字体度量使封面top约809→681px，更早进入首屏，不能把中位数差值写成同元素无条件提速百分比。封面资源三次均从60,574→34,964B，初始本地Noto字体64→0，198,751B manifest仍预加载；真实线上滚动后字体stylesheet激活且完整正文可读，字体没有删除。
+首页 layout-shift 关联外部 Space Grotesk / JetBrains Mono、motto 行数和按钮行数变化。font-display:optional、320px一列/375与412px两列的按钮布局，以及SSR预留80px AI卡片高度保留；没有量化 AI 卡片占全部 CLS 的份额。最终首页不再宣称三次CLS都为0。
 
-## 轨迹确证的残余与安全边界
+年度封面 mobile sizes 改用正文 gutter 公式，让412×1.75下实际352px内容列选择720候选。before资源60,574B，after34,964B；两阶段实际LCP元素均为IMG/H1/H1，IMG top809px、H1 top196px。封面更轻不等于两个 H1 长尾样本已经解决。真实1080 WebP文件为1080×608、源JPEG1280×720；旧LHR的1080×464不当文件尺寸证据。
 
-最新两个中文landing额外trace显示footer无条件menu.scrollLeft写触发首屏前同步布局：AI约49.8ms，growth约36.4ms；style重算另计。后续只在真实非零、可见、存在水平overflow时恢复位置。自然布局仍存在，不将这些毫秒直接换算成模拟LCP收益。
+标题/封面初始opacity恢复为1，位移/悬停/reduced-motion保留。取消标题/提要local-only覆写与正文IO延期注册，恢复即时同源Noto manifest和无JS stylesheet；原始final图完整显示中文标题、描述和三条提要。每轮64条woff2（400字重39条、700字重25条），全部成功，资源总量2,379,736B，与有效before相同。不能继续沿用Font0或首访节省2.39MB结论。中文分类真基线也缺系统CJK回退，Linux emulation不等于真实Android字体环境；本轮新增年度回归已修。
 
-组合rel值使inline-critical漏掉主CSS异步转换，trace支持CSS→同步head脚本→后续解析依赖，但不能把单次慢growth的5.973s全部归给它；该慢样本没有对应trace。实际trace的lede绘制早于首个Noto字体完成，不支持“正文CJK字体直接阻塞lede”的说法。
+三个article-only样式从landing bundle省略，约42,192B只是原CSS源码量，不是实际传输节省。footer菜单只在保存非零、可见且水平overflow时恢复scrollLeft；top-link复用1024px MediaQueryList.matches，避免parser阶段innerWidth读造成强制布局。两份新trace均无原scrollLeft/updateTopLink Layout堆栈，相关脚本约0.2–0.3ms；自然布局、header测量、growth既有initMobileBackToTop仍存在。
 
-已撤回未提交的普通stylesheet/新增文章critical候选：真实critical的inline:true采用media策略，保留原link顺序及SRI/crossorigin；然而inline-critical向body插noscript依赖行首闭合标签，Hugo压缩HTML不能匹配，且当前critical提取缺暗色/菜单展开状态。贸然异步化会引入无JS及冷暗色回归。下一步应修完整critical管线的显式fallback、状态规则与冷暗色/菜单首帧验收，然后再比较LCP；不以跑分换回归。
+Pi完成冻结路由tracker，跟踪整个fetch/fulfill回调、纳入drain期间新回调，空状态检查到unroute无await，保留原异常。离线测试先在线滚动并验证stylesheet/FontFaceSet、等待真实fonts.ready/networkidle，再冻结网络建立零请求/零写入baseline；不过滤字体、不吞错、不加重试降门禁。
 
-## 最新交付门禁
+## 残余与下一步
 
-旧source的质量CI失败已定位：前两项标题字体断言完成更新；后续三引擎pilot离线测试在正文字体尚未进入视口时就冻结网络。修复在线滚动、验证stylesheet/FontFaceSet注册、真实等待fonts.ready和networkidle，再建立离线零请求/零写入baseline，保留全部断言。WebKit disclosure的单次重试失败只具有字体位移假说，未声称完全证明根因。
+年度完整文章的64个字体切片成本与H1长尾仍在。两中文landing trace支持globalCSS→同步head脚本→解析依赖，lede绘制早于Noto字体完成，不能将其长尾全部归给正文字体；单次慢样本没有匹配trace时不做归因。
 
-Pi完成冻结路由tracker，独立6个受控Promise测试和14个CI接线测试通过。保持handler注册到所有fetch/fulfill完成，纳入等待期间新callback，空状态检查到unrouteAll无await，原异常继续传递。未过滤错误、增加重试或降门禁；dcc73145完整CI成功，48质量用例、320 E2E、573三引擎交互用例通过，无flaky或Route is already handled。footer微型真实Hugo编译与TypeScript验证通过，三月长笔记未隐藏/截断，CrUX仍未知。
+普通stylesheet/新增critical候选已撤回：组合rel使inline-critical漏转换，真实工具的noscript插入又无法匹配Hugo压缩HTML，提取还缺冷暗色/菜单展开状态。下一步需先修完整critical管线的无JS回退、状态规则与首帧验收，再复测；字形安全的字体方案也要保留真实中文阅读。没有把会回归的候选交付。
 
+[长笔记预算实验](long-note-budget-2026-10-12.md) 已完成：完整HTML937,173B，静态8,263节点，正文5,546、两套TOC2,016；gzip6=321,727B、Brotli6=247,374B，全部无损。线上CDN编码未知，压缩不减少DOM。后续可实验一套SSR目录供移动/桌面入口共用；章节拆分需作者brief/canonical/旧锚点验收。正文、509标题与锚点未隐藏或截断。
 
-## 附件重跑合同修复
+## 独立验收与交付门禁
 
-manual38245959170的测量任务已成功、artifact11745387438有13个有效报告；日报发布首次遇到GitHub GraphQL504。只重跑failed publisher后，其github.run_attempt变2，原producer仍attempt1，按consumer attempt猜名称查不到附件并误写日报缺证。已修measurement job输出实际upload artifact-id、publisher按该ID下载；空ID跳过publisher，下载/摘要校验失败停止sync。无跨run/旧attempt搜索fallback。真实YAML producer1→consumer2与全量rerun3回归先RED，修正后27个workflow/日报测试通过并fresh独立review；新提交CI及真实consumer重跑仍需读回。这个发布合同不改变生产页面渲染，footer后的三次测量单独记录。
+`8f23540b` 的[质量运行38253996824](https://github.com/cubxxw/blog/actions/runs/38253996824)成功：48质量、320E2E、573三引擎交互通过，无flaky或Route is already handled；字形契约、无JS/目录/SSR原有验收保留。实际site artifact11751150590的manifest和五HTML范围恢复923,938B，通过CRC及manifest SHA256校验，未声称重算整个372MB附件摘要。新中文原始截图、400/700网络及两份trace由独立代理复核，无未关闭P0/P1；另一独立代理重算78份有效统计及技术关闭资格，无P0/P1/P2。
 
-长笔记预算实验已补，详见[预算实验](long-note-budget-2026-10-12.md)；不宣称压缩候选就是线上收益或DOM已经减少。
-
-## P1 修复候选与残余成本
-
-年度966真基线末帧中文完整；4905/DCC的原始末帧只留下Latin/数字。两个中文分类真基线也缺少系统CJK回退，不能把这个Linux字体环境冒充真实Android。年度新增回归必须在相同缺本地字体环境中修复，不通过安装runner字体遮盖。
-
-已取消 single 正文视口触发的Noto注册和标题/提要local-only覆写，恢复原同源400/700切片及即时manifest onload，noJS原stylesheet保留。实际编译产物字体契约与mobile top-link VM回归先2RED再2GREEN；E2E用实际title/tldr文本调用400/700 fonts.load，要求非空且loaded。源码审查没有未关闭P0/P1，运行验收仍待。首访字体成本会回来，旧Font0不再当收益。
-
-旧menu.scrollLeft强制布局堆栈已消失，但后续updateTopLink的window.innerWidth读取又触发AI73.4ms/growth66.4ms全页布局。新候选改为与原监听器相同的1024px MediaQueryList.matches；desktop800px阈值/环进度/RAF不变。是否完全避免renderer flush须新trace验证，不把API更换等同总LCP提速。
+日报publisher重跑合同也已修：producer输出实际artifact-id，consumer按ID下载，空ID跳过，下载/摘要失败停止sync，不猜consumer attempt。真实[38249703242](https://github.com/cubxxw/blog/actions/runs/38249703242)首次publisher遇GitHub504，仅重跑failed job后consumer attempt2成功复用producer attempt1 artifact11746978224、恢复有效#451；未重新测量13URL，不把GitHub故障称源站故障。长笔记预算和性能残余均明确，满足#395允许未达目标时记录原因与下一步的技术验收；不提前关闭SEO观察或实际VoiceOver任务。
