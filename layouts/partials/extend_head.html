@@ -45,7 +45,9 @@
 {{- if .IsHome -}}
 {{- /* The homepage uses these three families; article serif families and
      their large Chinese unicode-range manifest are not needed here. */ -}}
-{{- $baseFonts = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" -}}
+{{- /* Preserve a cached/fast font, but do not reflow the hero when a cold
+     font arrives after its fallback has painted. */ -}}
+{{- $baseFonts = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=optional" -}}
 {{- end -}}
 {{- /* Google Fonts — async with JavaScript; a direct stylesheet without it.
        The noscript fallback must not rely on an onload handler to apply
@@ -64,7 +66,35 @@
        font means bumping the directory name in static/fonts/. */ -}}
 {{- if and (eq .Lang "zh") (not (or .IsHome $isLeanAbout $isArticlesLibrary $isProjectsLanding)) }}
 {{- $zhFonts := "/fonts/noto-serif-sc/v5.2.8/noto-serif-sc.css" | relURL -}}
+{{- if .IsPage }}
+{{- /* Long prose can request dozens of font slices even while it is below
+     the fold. Warm the manifest, then enable its faces when prose becomes
+     visible. The title/précis use stable local serifs; all text remains SSR. */ -}}
+<link id="zh-prose-fonts" rel="preload" as="style" href="{{ $zhFonts }}">
+<script>
+  (function () {
+    var link = document.getElementById('zh-prose-fonts');
+    function watchProse() {
+      var prose = document.querySelector('.post-content');
+      if (!prose || !('IntersectionObserver' in window)) {
+        link.rel = 'stylesheet';
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        if (entries.some(function (entry) { return entry.isIntersecting; })) {
+          link.rel = 'stylesheet';
+          observer.disconnect();
+        }
+      });
+      observer.observe(prose);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watchProse, { once: true });
+    else watchProse();
+  })();
+</script>
+{{- else }}
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ $zhFonts }}">
+{{- end }}
 <noscript><link rel="stylesheet" href="{{ $zhFonts }}"></noscript>
 {{- end }}
 

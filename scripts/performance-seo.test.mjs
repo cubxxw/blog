@@ -57,6 +57,34 @@ test('ordinary articles omit unrelated channel/decorative CSS and column article
   assert.match(css('/'), /\.hp-hero-field\{position:absolute/);
 });
 
+test('first-screen font and cover contracts avoid late swaps and oversized mobile requests', () => {
+  for (const route of ['/', '/zh/']) {
+    const fontLink = page(route).find(n => n.tagName === 'link' &&
+      (attribute(n, 'href') || '').startsWith('https://fonts.googleapis.com/css2'));
+    assert.equal(new URL(attribute(fontLink, 'href')).searchParams.get('display'), 'optional');
+  }
+  const nodes = page('/zh/growth/posts/2025-annual-review/');
+  const cover = nodes.find(n => n.tagName === 'img' && attribute(n, 'fetchpriority') === 'high');
+  assert.equal(attribute(cover, 'loading'), 'eager');
+  const sizes = attribute(cover, 'sizes');
+  assert.ok(sizes.startsWith('(max-width: 640px) calc(100vw - 60px),'));
+  // At the CI's 412px / 1.75 DPR the reading column needs 616 image pixels,
+  // below 720; using 100vw would ask for 721 and promote the 1080 candidate.
+  const widths = attribute(cover, 'srcset').split(',').map(s => Number(s.trim().split(/\s+/).at(-1).slice(0, -1)));
+  assert.equal(widths.filter(w => w >= (412 - 60) * 1.75).sort((a, b) => a - b)[0], 720);
+});
+
+test('landing pages omit article-only series, sharing, and FAQ styles', () => {
+  for (const route of ['/zh/growth/', '/zh/ai-agent/']) {
+    const rules = css(route, false);
+    assert.equal(/\.article-faq\s*\{|\.rc-series-head\s*\{|\.share-sheet\s*\{/.test(rules), false, `${route}: no article-only controls`);
+  }
+  const article = css('/zh/growth/posts/2025-annual-review/', false);
+  assert.ok(/\.article-faq\s*\{/.test(article), 'article keeps FAQ styles');
+  assert.ok(/\.rc-series-head\s*\{/.test(article), 'article keeps series styles');
+  assert.ok(/\.share-sheet\s*\{/.test(article), 'article keeps sharing styles');
+});
+
 test('all production crawler groups preserve private path exclusions', () => {
   const policies = groups(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8'));
   assert.equal(policies.size, 29);

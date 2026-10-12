@@ -85,13 +85,17 @@
   .homepage-root .hp-hero { min-height: 0; padding: 38px 0 32px; gap: 28px; }
   .homepage-root .hp-hero h1 { font-size: clamp(32px, 8.5vw, 48px); }
   .homepage-root .hp-hero-motto { font-size: 23px; }
+  /* Content determines button height, never which row a late font uses. */
+  .hp-entry-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hp-entry-actions a { padding-inline: 10px; gap: 8px; }
   .homepage-root .hp-hero-chibi { width: 34px; height: 34px; }
   .homepage-root .hp-hero-socials { flex-wrap: nowrap; gap: 4px; overflow-x: auto; padding: 4px; margin-inline: -4px; }
   .homepage-root .hp-hero-socials .hp-social-icon { flex: 0 0 44px; }
   /* Keep useful chat on phones without the 420px decorative orbit. The
      existing avatar button spans the compact card, including its label. */
   .homepage-root .hp-bear-orbit-wrap { display: block; min-height: 0; max-width: none; }
-  .homepage-root .hp-bear-layer { height: auto; }
+  /* Reserve the compact orbit before the deferred controller inserts it. */
+  .homepage-root .hp-bear-layer { height: auto; min-height: 80px; }
   .homepage-root .hp-bear-orbit { width: 100%; height: 80px; border: 1px solid var(--border-default); border-radius: 12px; background: var(--surface-white); }
   .homepage-root .hp-bear-avatar-btn { width: 100%; height: 100%; padding: 14px; justify-content: flex-start; border-radius: inherit; }
   .homepage-root .hp-bear-avatar-core { width: 48px; height: 48px; flex: 0 0 48px; border-width: 1px; box-shadow: none; }
@@ -108,6 +112,9 @@
   .page-wayfinder ol { width: 100%; gap: 8px; justify-content: space-between; }
   .page-wayfinder a { font-size: 13px; padding-inline: 4px; }
   .about-studio .studio-hero { min-height: 0; }
+}
+@media (max-width: 360px) {
+  .hp-entry-actions { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {
   html[lang="zh"] .about-studio .studio-hero h1 { font-size: clamp(30px, 8vw, 40px); line-height: 1.18; }

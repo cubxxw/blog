@@ -14,6 +14,14 @@
   font-family: var(--font-prose, var(--font-body));
 }
 
+/* The Chinese précis sits before the cover in the first viewport. Keep a
+   local serif here so asynchronous prose font slices cannot move both it
+   and the cover. Article body typography still uses --font-prose. */
+html:lang(zh) .article-tldr,
+html:lang(zh) .article-main .post-title {
+  font-family: 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+}
+
 /* ── eyebrow: 「提要」/ In Brief + hairline rule ── */
 .tldr-eyebrow {
   display: flex;

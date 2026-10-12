@@ -119,11 +119,9 @@ html:lang(zh) {
   --font-display: 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun',
                   'Noto Serif SC', 'PingFang SC', 'Hiragino Sans GB',
                   'Microsoft YaHei', serif;
-  /* ZH prose serif — same local-first strategy as --font-display, but the
-     Noto Serif SC webfont sits BEFORE SimSun: body text is never the LCP
-     element, so Windows readers can safely swap up to the webfont instead
-     of being pinned to SimSun forever. macOS still resolves instantly to
-     Source Han / Songti. */
+  /* ZH prose serif keeps the webfont before SimSun for Windows readers.
+     First-viewport components must choose their own stable local stack;
+     prose can itself become an LCP candidate, so this is no LCP guarantee. */
   --font-prose:   'Source Han Serif SC', 'Songti SC', 'STSong',
                   'Noto Serif SC', 'SimSun', 'PingFang SC', serif;
   --font-body:    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',

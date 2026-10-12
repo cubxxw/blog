@@ -1,5 +1,7 @@
 # 开放 issue 分诊与修复（2026-10-12）
 
+当前更新：#203、#396、#450 已关闭；#395 因云端性能残余重新 OPEN，正在补验。英文 GoReleaser 可见中文已全部翻译，代码/旧锚点保持；GSC 主 sitemap 的 435 个规范 URL 已完成 Inspection，29 个非 PASS URL 的当前 HTTP/robots/canonical 无确定实现错误。同口径 GSC UI、实际 VoiceOver、三次正常计划和搜索观察窗口仍未验收。
+
 审计起点：`17abebbd24e0002393fdda0151e31ed0081f7011`，远端 `cubxxw/blog` 共 15 条开放 issue。逐项读取正文、评论、当前实现、真实 GSC 快照和相关 Actions；本轮不把已有代码、工作流绿灯或局部维护修正当成完整搜索实验验收。
 
 ## 判断与任务分配

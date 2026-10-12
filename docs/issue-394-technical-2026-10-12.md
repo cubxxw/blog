@@ -66,3 +66,16 @@
 ## 父代理独立验收补充
 
 独立审查发现并由父代理纠正两项 P2：英文 Hugo 翻译标题以显式 ID 保留 `命令command`、`使用在-actions-中`；Action 输入属性补 `deprecationMessage`，环境映射限定 composite 的 `runs.steps[].env`，调用方使用 `with`。真实 Hugo/Goldmark 渲染六文前后，全部旧 heading ID 保留，仅补原合并行缺失的 `multiple-pipelines`；Go 11/11 与 Actions 38/38 双语 YAML 树一致、archives 字段与 OSS2.18.0 一致，父最终 helper 116 块/0 错误、Hugo/Go 通过。剩余 P0/P1/P2=0；这不认证六篇文章全部历史代码或全文英文化。
+
+## 追加记录：go-release-tools EN 可见中文残留收尾（2026-10-12 followup）
+
+本 followup 只完成 `content/en/engineering/posts/go-release-tools.md` 的**可见中文残留 61 行**翻译收尾，逐行对应冻结 manifest `blog-issue-triage-20261012/evidence/go-english-remaining-text.json`（sourceSha `96695877`，outsideCodeLines 61 行，insideCodeHanCount 0）。中文 twin（`content/zh/engineering/posts/go-release-tools.md`）保持稳定发布源，仅作翻译依据，未改动。此前记录“范围外观察”中的 go-release-tools EN 历史中文残留（约 1,204 汉字）由本次收尾完成，不再是遗留项。
+
+- **翻译原则**：61 行按当前 EN+ZH 忠实翻译，无新论断、无新增作者经历、无全文重写；title/date/url/frontmatter/开篇、链接、资源路径、shortcode 未动；fenced code 字节零改动（diff 仅 61 行非代码可见文本，逐行核对全部来自冻结 manifest）。未修正无关旧 release 片段，未添加 SEO 关键词。
+- **标题锚点**：11 个被改写的中文标题全部以显式 `{#...}` 保留原 Goldmark ID（固定 Hugo 0.145.0+extended micro 渲染器计算基线）：`linux-软件包`、`checksums校验`、`通用映像名称`、`保持当前主要内容的-docker-映像更新`、`发布到多个-docker-注册表`、`应用-docker-构建标志`、`可用的变量名称`、`对-docker-映像和清单进行签名`、`gpg-认证`、`检查现有-gpg-密钥`、`生成新的-gpg-密钥`。改写后复渲染对比：基线 48 个 heading ID 多重集全部保留（含重复项 `docker-images`/`docker-images-1`），无旧 ID 丢失、无意外新 ID。显式 legacy anchor ID 允许含汉字；英文可见正文汉字残留 0。
+- **损坏混合句处理（按 ZH 实际周边文本恢复，不发明事实）**：
+  - `snapd` 段（原 EN 1303 为中英混合残句）按 ZH twin 完整原句恢复语义：“snapd 是管理和维护快照的后台服务。它本身可以作为 snap 包或传统的 Linux 软件包（例如 *deb* 或 RPM）提供。”
+  - “发布到 和 ：”两处空槽与“可以使用 应用生成标志”一处空槽，唯一候选取自相邻代码块实际内容（`docker.io`/`gcr.io`、`build_flag_templates`），已在本记录标明为邻接代码重建。
+  - 仍存歧义（忠实翻译保留结构、未补事实）：docker 标记段首句（原 EN 1629，inline code 在源翻译中已丢失，无法确定具体 tag 与“构建”宾语，译文以省略号保留缺口）；小节标题“保持当前主要内容的 docker 映像更新”（“当前主要内容”含义不明，与下方 tag 示例不完全一致）；“通过 git 的参数校验。配置：”（原 EN 2443，语义残缺）；GPG“以便使用 `-gpg-sign` 默认格式”（原 EN 2493，`openpgp` 孤立 code span 按 ZH 词序回填“在使用 `openpgp` 进行签名时”空槽，`-gpg-sign` 含义存疑）。
+- **精确本地验证（followup）**：`git diff --check` 干净；`node scripts/check-frontmatter-fields.mjs` 通过；`node scripts/normalize-tags.mjs --check` 0 更新；Hugo 0.145.0+extended micro 站点基线/改后均 exit 0，heading ID 多重集对比零缺失；可见文本 Han 检测 0 残留（显式 legacy ID 除外）；diff 审计 61 增/61 删且全部来自冻结 manifest。产物限于 `/private/tmp/ai-test-blog-issues-20261012.lPn7JA/go-english-followup`。
+- **边界保持不变**：goreleaser CLI 运行时、Go 实际构建、签名、Docker 构建/推送、GitHub Release、全站构建、`npm test`、浏览器/E2E 均未运行（代码运行时边界原样保持）；Hugo 结论仅覆盖 0.145.0 extended，不外推 0.146+。原 CTR 因果实验（query→intent 变更表、device/country、Google 重抓后 **28 天窗口**）验收门禁**保持 OPEN**，本次未观测、不伪称已观测。独立 review、CI 与最终交付由父代理负责，本次不构成交付完成。

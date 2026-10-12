@@ -801,9 +801,9 @@ archives:
           env:
             - "RELEASE_DONE=something-{{ .ProjectName }}" # specify hook level environment variables
 ```
-## linux 软件包
+## Linux packages {#linux-软件包}
 
-GoReleaser 可以连接到[nfpm](https://github.com/goreleaser/nfpm)以生成和发布 `.deb`、`.rpm`、`.apk` 和 `Archlinux` 软件包。
+GoReleaser can connect to [nfpm](https://github.com/goreleaser/nfpm) to generate and publish `.deb`, `.rpm`, `.apk`, and `Archlinux` packages.
 
 ```bash
 # .goreleaser.yaml
@@ -1232,11 +1232,11 @@ Learn more about the [name template engine](https://goreleaser.com/customizatio
 
 
 
-## Checksums 校验
+## Checksums verification {#checksums校验}
 
-GoReleaser 会生成一个文件并将其与版本一起上传，以便你的用户可以验证下载的文件是否正确。
+GoReleaser generates a file and uploads it along with the release, so that your users can verify that the downloaded files are correct.
 
-该部分允许自定义文件名：
+This section allows customizing the file name:
 
 ```jsx
 # .goreleaser.yaml
@@ -1290,17 +1290,17 @@ checksum:
 
 ## Snapcraft Packages (snaps) Snapcraft Packages
 
-GoReleaser也可以生成软件包。Snaps 是一种新的打包格式，可让你将项目直接发布到 Ubuntu 商店。从那里，它可以安装在所有受支持的Linux发行版中，并进行自动和事务性更新。
+GoReleaser can also generate packages. Snaps are a new packaging format that lets you publish your project directly to the Ubuntu store. From there, it can be installed on all supported Linux distributions, with automatic and transactional updates.
 
-你可以在 snapcraft 文档中阅读更多相关信息。
+You can read more about this in the snapcraft documentation.
 
-**Snaps是适用于桌面**、**云**和**物联网**的 Linux 应用程序包，易于安装、安全、跨平台且无依赖性。
+**Snaps are Linux application packages for the desktop**, **the cloud** and **IoT**, easy to install, secure, cross-platform, and dependency-free.
 
-它们会**自动更新，并且通常在有限的**基于**事务的**环境中运行。**安全性和稳健性**是其主要特点，此外还**易于安装**、**易于维护**和**易于升级**。
+They **update automatically, and usually run in confined** **transaction-based** environments. **Security and robustness** are their main features; in addition, they are **easy to install**, **easy to maintain**, and **easy to upgrade**.
 
-**Snapd 发布流程**
+**Snapd release process**
 
-snapd 是管理和维护快照的后台服务。它本身可以作为Available as snaps or traditional Linux packages such as *deb* or RPM.
+snapd is the background service that manages and maintains snaps. It is itself available as snap packages or traditional Linux packages (such as *deb* or RPM).
 
 There are two types of releases; major and minor releases, represented by the numeric status of their version number, with a minor period and a number reserved for minor releases:
 
@@ -1602,15 +1602,15 @@ dockers:
         mode: 0644
 ```
 
-请注意，你必须手动登录到要推送到的Docker注册表 - GoReleaser不会自行登录。
+Please note that you must manually log in to the Docker registry you want to push to - GoReleaser will not log in for you.
 
-> 请注意，你必须手动登录到要推送到的Docker注册表 - GoReleaser不会自行登录。
+> Please note that you must manually log in to the Docker registry you want to push to - GoReleaser will not log in for you.
 
-这些设置应该允许你生成多个 Docker 映像，例如，使用多个语句，以及为项目中的每个二进制文件生成一个映像或一个具有多个二进制文件的映像，以及安装生成的包而不是手动复制二进制文件和配置。
+These settings should allow you to generate multiple Docker images, e.g. using multiple statements, generating one image for each binary in your project or one image with multiple binaries, as well as installing the generated packages instead of manually copying binaries and configuration.
 
-### 通用映像名称
+### Generic image names {#通用映像名称}
 
-某些用户可能希望使其映像名称尽可能通用。这可以通过在定义中添加模板语言来实现：
+Some users may want to make their image names as generic as possible. This can be achieved by adding template expressions in the definition:
 
 ```jsx
 # .goreleaser.yaml
@@ -1620,13 +1620,13 @@ dockers:
       - "myuser/{{.ProjectName}}"
 ```
 
-这将生成并发布以下映像：
+This will generate and publish the following images:
 
 - `myuser/foo`
 
-### 保持当前主要内容的 docker 映像更新
+### Keeping the docker image up to date with the current main content {#保持当前主要内容的-docker-映像更新}
 
-一些用户可能想要推送 docker 标记 、 以及何时（例如）构建。这可以通过使用多个：
+Some users may want to push the docker tags … and … as well as when (for example) building. This can be done by using multiple:
 
 ```jsx
 # .goreleaser.yaml
@@ -1638,18 +1638,18 @@ dockers:
       - "myuser/myimage:latest"
 ```
 
-这将生成并发布以下映像：
+This will generate and publish the following images:
 
 - `myuser/myimage:v1.6.4`
 - `myuser/myimage:v1`
 - `myuser/myimage:v1.6`
 - `myuser/myimage:latest`
 
-通过这些设置，你可以希望推送多个具有多个标签的 Docker 映像。
+With these settings, you can push multiple Docker images with multiple tags.
 
-### 发布到多个 docker 注册表
+### Publishing to multiple docker registries {#发布到多个-docker-注册表}
 
-某些用户可能希望将映像推送到多个 docker 注册表。这可以通过使用多个：
+Some users may want to push their images to multiple docker registries. This can be done by using multiple:
 
 ```jsx
 # .goreleaser.yaml
@@ -1661,16 +1661,16 @@ dockers:
       - "gcr.io/myuser/myimage:latest"
 ```
 
-这会生成以下映像并将其发布到 和 ：
+This generates the following images and publishes them to `docker.io` and `gcr.io`:
 
 - `myuser/myimage:v1.6.4`
 - `myuser/myimage:latest`
 - `gcr.io/myuser/myimage:v1.6.4`
 - `gcr.io/myuser/myimage:latest`
 
-### 应用 Docker 构建标志
+### Applying Docker build flags {#应用-docker-构建标志}
 
-可以使用 应用生成标志。这些标志必须是有效的 Docker 构建标志。
+You can use `build_flag_templates` to apply build flags. These flags must be valid Docker build flags.
 
 ```jsx
 # .goreleaser.yaml
@@ -2170,16 +2170,16 @@ signs:
     output: true
 ```
 
-### 可用的变量名称
+### Available variable names {#可用的变量名称}
 
-这些环境变量可能在接受模板的字段中可用：
+These environment variables may be available in fields that accept templates:
 
-- `${artifact}`：将被签名的工件的路径
-- `${artifactID}`：将被签名的工件的ID
-- `${certificate}`：证书文件名（如果提供）
-- `${signature}`: 签名文件名
+- `${artifact}`: the path of the artifact to be signed
+- `${artifactID}`: the ID of the artifact to be signed
+- `${certificate}`: the certificate file name (if provided)
+- `${signature}`: the signature file name
 
-假设你有一个`cosign.key`在存储库根目录和`COSIGN_PWD`环境变量设置，一个简单的使用示例如下：
+Assuming you have a `cosign.key` in the repository root and the `COSIGN_PWD` environment variable set, a simple usage example follows:
 
 ```jsx
 # .goreleaser.yaml
@@ -2195,13 +2195,13 @@ signs:
   artifacts: all
 ```
 
-然后，你的用户可以通过以下方式验证签名：
+Then, your users can verify the signature as follows:
 
 `cosign verify-blob -key cosign.pub -signature file.tar.gz.sig file.tar.gz`
 
-## 对 Docker 映像和清单进行签名
+## Signing Docker images and manifests {#对-docker-映像和清单进行签名}
 
-使用 GoReleaser 也可以对 Docker 映像和清单进行签名。该管道是根据通用标志管道设计的，并考虑了共签名。
+GoReleaser can also sign Docker images and manifests. This pipeline is designed after the generic signs pipeline, with co-signing in mind.
 
 ```jsx
 # .goreleaser.yml
@@ -2264,18 +2264,18 @@ docker_signs:
     output: true
 ```
 
-这些环境变量可能在可模板化的字段中可用：
+These environment variables may be available in fields that support templates:
 
-- `${artifact}`: 将要签名的项目的路径
-- `${digest}`: 将签名的映像/清单的摘要
-- `${artifactID}`: 将要签名的项目的 ID
-- `${certificate}`: 证书文件名（如果提供）
+- `${artifact}`: the path of the item to be signed
+- `${digest}`: the digest of the image/manifest to be signed
+- `${artifactID}`: the ID of the item to be signed
+- `${certificate}`: the certificate file name (if provided)
 
 ## Release
 
-GoReleaser 可以使用当前标签创建 GitHub/GitLab/Gitea 版本，上传所有工件，并根据自上一个标签以来的新提交生成更改日志。
+GoReleaser can create GitHub/GitLab/Gitea releases with the current tag, upload all artifacts, and generate a changelog from the new commits since the previous tag.
 
-让我们看看 GitHub 部分可以自定义的内容：
+Let's take a look at what can be customized in the GitHub section:
 
 ```jsx
 # .goreleaser.yaml
@@ -2426,41 +2426,41 @@ release:
       dst: LICENSE.txt
 ```
 
-## GPG 认证
+## GPG authentication {#gpg-认证}
 
-GitHub 支持多种 GPG 关键算法。如果你尝试添加使用不受支持的算法生成的密钥，则可能会遇到错误。
+GitHub supports several GPG key algorithms. If you try to add a key generated with an unsupported algorithm, you may encounter errors.
 
-### 检查现有 GPG 密钥
+### Checking existing GPG keys {#检查现有-gpg-密钥}
 
-使用该`gpg --list-secret-keys --keyid-format=long`命令列出你拥有公钥和私钥的 GPG 密钥的长格式。签署提交或标签需要私钥。
+Use the `gpg --list-secret-keys --keyid-format=long` command to list the long form of the GPG keys for which you have both a public and private key. Signing commits or tags requires the private key.
 
 ```jsx
 gpg --list-secret-keys --keyid-format=long
 ```
 
-### 生成新的 GPG 密钥
+### Generating a new GPG key {#生成新的-gpg-密钥}
 
-通过 git 的参数校验。配置：
+Validated via git parameters. Configuration:
 
 ```jsx
 git config --global gpg.program gpg2
 ```
 
-**生成密钥对：**
+**Generate the key pair:**
 
 ```jsx
 gpg --full-generate-key
 ```
 
-**检查密钥对：**
+**Check the key pair:**
 
 ```jsx
 gpg --list-secret-keys --keyid-format=long
 ```
 
-从 GPG 密钥列表中，复制你要使用的 GPG 密钥 ID 的完整形式。
+From the GPG key list, copy the full form of the GPG key ID you want to use.
 
-1. 在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
+1. In this example, the GPG key ID is `3AA5C34371567BD2`:
 
    ```
    $ gpg --list-secret-keys --keyid-format=long
@@ -2471,38 +2471,38 @@ gpg --list-secret-keys --keyid-format=long
    ssb   4096R/4BB6D45482678BE3 2016-03-10
    ```
 
-2. 粘贴下面的文本，并将其替换为你要使用的 GPG 密钥 ID。在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
+2. Paste the text below, replacing it with the GPG key ID you want to use. In this example, the GPG key ID is `3AA5C34371567BD2`:
 
    ```
    gpg --armor --export 3AA5C34371567BD2
    # Prints the GPG key ID, in ASCII armor format
    ```
 
-3. 复制你的 GPG 密钥，以 开头`----BEGIN PGP PUBLIC KEY BLOCK-----`和结尾`----END PGP PUBLIC KEY BLOCK-----`。
+3. Copy your GPG key, beginning with `----BEGIN PGP PUBLIC KEY BLOCK-----` and ending with `----END PGP PUBLIC KEY BLOCK-----`.
 
 ```jsx
 cat /root/.gnupg/openpgp-revocs.d/4DDA37AE0F3AEA3044B33F1B1BAD6F395338EFDE.rev
 ```
 
-然后就是将这个密钥链接到你的 GitHub 账户了。这个操作很简单，不介绍了
+Then just link this key to your GitHub account. This step is very simple and will not be covered here
 
-**告诉 Git 你的签名密钥：**
+**Tell Git your signing key:**
 
-你还需要告诉 Git 关于你的 签名 密钥，因为 如果你有多个 GPG 密钥，则需要告诉 Git 使用哪一个。
+You also need to tell Git about your signing key, because if you have multiple GPG keys, you need to tell Git which one to use.
 
-1. 如果你之前已将 Git 配置为在使用 进行签名时使用不同的密钥格式，请取消设置此配置，以便使用`-gpg-sign`默认格式。`openpgp`
+1. If you previously configured Git to use a different key format when signing with `openpgp`, unset this configuration so that the `-gpg-sign` default format is used.
 
    ```
    git config --global --unset gpg.format
    ```
 
-使用该`gpg --list-secret-keys --keyid-format=long`命令列出你拥有公钥和私钥的 GPG 密钥的长格式。签署提交或标签需要私钥。
+Use the `gpg --list-secret-keys --keyid-format=long` command to list the long form of the GPG keys for which you have both a public and private key. Signing commits or tags requires the private key.
 
 ```jsx
 gpg --list-secret-keys --keyid-format=long
 ```
 
-从 GPG 密钥列表中，复制你要使用的 GPG 密钥 ID 的完整形式。在此示例中，GPG 密钥 ID 为`3AA5C34371567BD2`：
+From the GPG key list, copy the full form of the GPG key ID you want to use. In this example, the GPG key ID is `3AA5C34371567BD2`:
 
 ```jsx
 $ gpg --list-secret-keys --keyid-format=long

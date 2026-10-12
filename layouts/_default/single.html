@@ -111,7 +111,10 @@
     {{- partial "article/series-nav.html" . }}
 
     {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
-    {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
+    {{- /* Mobile main gutters (14px) plus article gutters (16px below
+         640px, then 2.5vw) determine the cover's actual CSS width. */ -}}
+    {{- $coverSizes := "(max-width: 640px) calc(100vw - 60px), (max-width: 768px) calc(95vw - 28px), 900px" -}}
+    {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden "sizesAttr" $coverSizes) }}
 
     {{- if (.Param "ShowToc") }}
     {{- partial "toc.html" . }}

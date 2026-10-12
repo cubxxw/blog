@@ -1,0 +1,228 @@
+{
+  "sourceSha": "9669587745849b7349e960d508b2cf48525cfca7",
+  "independentRuns": 3,
+  "uniqueUrlMeasurements": 39,
+  "fieldCrux": "unknown/no sample",
+  "runs": [
+    {
+      "runId": 38213873700,
+      "artifactId": 11730667725,
+      "sourceSha": "9669587745849b7349e960d508b2cf48525cfca7"
+    },
+    {
+      "runId": 38232589096,
+      "artifactId": 11738859623,
+      "sourceSha": "9669587745849b7349e960d508b2cf48525cfca7"
+    },
+    {
+      "runId": 38232596830,
+      "artifactId": 11739975487,
+      "sourceSha": "9669587745849b7349e960d508b2cf48525cfca7"
+    }
+  ],
+  "summary": {
+    "https://cubxxw.com/": {
+      "lcpMs": [
+        3046.1580000000004,
+        3378.8935,
+        3010.8770000000004
+      ],
+      "medianLcpMs": 3046.1580000000004,
+      "cls": [
+        0.1964208863048829,
+        0,
+        0.1964208863048829
+      ],
+      "medianCls": 0.1964208863048829,
+      "maxCls": 0.1964208863048829
+    },
+    "https://cubxxw.com/about/": {
+      "lcpMs": [
+        1585.6889999999999,
+        1568.742,
+        1748.7168000000001
+      ],
+      "medianLcpMs": 1585.6889999999999,
+      "cls": [
+        0.001613846411017623,
+        0.001613846411017623,
+        0
+      ],
+      "medianCls": 0.001613846411017623,
+      "maxCls": 0.001613846411017623
+    },
+    "https://cubxxw.com/ai-agent/": {
+      "lcpMs": [
+        3502.486,
+        3354.7090000000003,
+        1836.776
+      ],
+      "medianLcpMs": 3354.7090000000003,
+      "cls": [
+        0,
+        0,
+        0.04951814990845611
+      ],
+      "medianCls": 0,
+      "maxCls": 0.04951814990845611
+    },
+    "https://cubxxw.com/ai-agent/posts/agent-identity-from-locke-to-openclaw/": {
+      "lcpMs": [
+        5092.547000000001,
+        5117.796000000001,
+        5023.0650000000005
+      ],
+      "medianLcpMs": 5092.547000000001,
+      "cls": [
+        0,
+        0,
+        0
+      ],
+      "medianCls": 0,
+      "maxCls": 0
+    },
+    "https://cubxxw.com/archives/": {
+      "lcpMs": [
+        4117.489,
+        2003.8624999999997,
+        1986.1354999999996
+      ],
+      "medianLcpMs": 2003.8624999999997,
+      "cls": [
+        0,
+        0.002465975805816184,
+        0.002465975805816184
+      ],
+      "medianCls": 0.002465975805816184,
+      "maxCls": 0.002465975805816184
+    },
+    "https://cubxxw.com/engineering/": {
+      "lcpMs": [
+        3415.728,
+        3365.701,
+        3328.7335000000003
+      ],
+      "medianLcpMs": 3365.701,
+      "cls": [
+        0,
+        0,
+        0
+      ],
+      "medianCls": 0,
+      "maxCls": 0
+    },
+    "https://cubxxw.com/growth/": {
+      "lcpMs": [
+        3853.01,
+        3964.2425,
+        3917.3599999999997
+      ],
+      "medianLcpMs": 3917.3599999999997,
+      "cls": [
+        0,
+        0,
+        0
+      ],
+      "medianCls": 0,
+      "maxCls": 0
+    },
+    "https://cubxxw.com/projects/": {
+      "lcpMs": [
+        1126.3600000000001,
+        1187.9189999999999,
+        1215.911
+      ],
+      "medianLcpMs": 1187.9189999999999,
+      "cls": [
+        0,
+        0,
+        0
+      ],
+      "medianCls": 0,
+      "maxCls": 0
+    },
+    "https://cubxxw.com/zh/": {
+      "lcpMs": [
+        1883.732,
+        3673.4004999999997,
+        1959.8214999999996
+      ],
+      "medianLcpMs": 1959.8214999999996,
+      "cls": [
+        0.031912142278679535,
+        0,
+        0.032288305720326045
+      ],
+      "medianCls": 0.031912142278679535,
+      "maxCls": 0.032288305720326045
+    },
+    "https://cubxxw.com/zh/about/": {
+      "lcpMs": [
+        1671.467,
+        1551.174,
+        1648.4004000000002
+      ],
+      "medianLcpMs": 1648.4004000000002,
+      "cls": [
+        0.001290228653993233,
+        0.001290228653993233,
+        0
+      ],
+      "medianCls": 0.001290228653993233,
+      "maxCls": 0.001290228653993233
+    },
+    "https://cubxxw.com/zh/ai-agent/": {
+      "lcpMs": [
+        4638.9439999999995,
+        4603.0250000000015,
+        2353.7954999999997
+      ],
+      "medianLcpMs": 4603.0250000000015,
+      "cls": [
+        0,
+        0,
+        6.783946342520414e-06
+      ],
+      "medianCls": 0,
+      "maxCls": 6.783946342520414e-06
+    },
+    "https://cubxxw.com/zh/growth/": {
+      "lcpMs": [
+        6168.330500000003,
+        2343.911,
+        2278.014
+      ],
+      "medianLcpMs": 2343.911,
+      "cls": [
+        0,
+        0.0002497109281851198,
+        0.0002497109281851198
+      ],
+      "medianCls": 0.0002497109281851198,
+      "maxCls": 0.0002497109281851198
+    },
+    "https://cubxxw.com/zh/growth/posts/2025-annual-review/": {
+      "lcpMs": [
+        3654.0789999999997,
+        15643.894500000019,
+        15551.734999999995
+      ],
+      "medianLcpMs": 15551.734999999995,
+      "cls": [
+        0.08388653216767913,
+        0,
+        0
+      ],
+      "medianCls": 0,
+      "maxCls": 0.08388653216767913
+    }
+  },
+  "conditions": {
+    "lighthouse": "12.6.1",
+    "viewport": "412x823",
+    "deviceScaleFactor": 1.75,
+    "throttlingMethod": "simulate",
+    "cpuSlowdownMultiplier": 4
+  },
+  "after": "pending latest commit CI/deployment and three matching runs"
+}

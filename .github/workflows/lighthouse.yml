@@ -5,7 +5,13 @@ on:
       - main
   schedule:
     - cron: 30 7 * * *
-  workflow_dispatch: null
+  workflow_dispatch:
+    inputs:
+      diagnostics:
+        description: Save additional traces for the two Chinese landing pages
+        type: boolean
+        required: false
+        default: false
   workflow_call:
     inputs:
       release_context_artifact_id:
@@ -45,7 +51,7 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
       - name: Install @lhci/cli
-        run: npm install -g @lhci/cli
+        run: npm install -g @lhci/cli@0.15.1
       - name: Wait for Netlify to publish this commit
         if: github.event_name == 'push' && inputs.release_context_artifact_id == ''
         run: |
@@ -63,9 +69,24 @@ jobs:
         if: inputs.release_context_artifact_id != ''
         run: node scripts/release-followups.mjs assert-current --context followups/release-context.json --out .lighthouseci/release-check-before.json
       - name: Run Lighthouse CI
+        id: measure
         run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Capture opt-in first-paint diagnostic traces
+        if: github.event_name == 'workflow_dispatch' && inputs.diagnostics == true && steps.measure.outcome == 'success'
+        run: |
+          mkdir -p .lighthouseci/diagnostics
+          LH_DIAG_CLI="$(node -e 'const path=require("node:path"); console.log(path.join(require.resolve("lighthouse",{paths:[path.join(process.argv[1],"@lhci/cli")]}),"../../cli/index.js"))' "$(npm root -g)")"
+          node "$LH_DIAG_CLI" --help > .lighthouseci/diagnostics/help.txt
+          rg -- '--save-assets' .lighthouseci/diagnostics/help.txt
+          for section in growth ai-agent; do
+            node "$LH_DIAG_CLI" "https://cubxxw.com/zh/$section/" \
+              --save-assets --output=json --output-path=".lighthouseci/diagnostics/zh-$section.json" \
+              --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage" \
+              --no-enable-error-reporting
+          done
+          printf '%s\n' "$GITHUB_SHA" > .lighthouseci/diagnostics/source-sha.txt
       - name: Check release consistency after measurement
         if: always() && inputs.release_context_artifact_id != ''
         run: |
