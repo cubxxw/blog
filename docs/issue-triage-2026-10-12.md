@@ -72,3 +72,11 @@
 PSI outcome=degraded，明确缺比较配置；CrUX outcome=no-sample，明确实地指标未知。这两项没有被伪装为完整比较或用户 p75。
 
 实际报告同时发现旧 7 月 `/ai-technology/` 观测影响当前 PSI 新鲜度。后续修正只用最新可证明的 schema2 计划确定当前分母：26 个当前槽位、6 个退役目标，32 个历史目标全部保留。最新缺失/失败/坏计划/无法排序的文件保持 partial/unknown，不退回旧成功计划；比较器未变。最终联合 314/314 检查及独立 184/184 审查通过，无 P0/P1/P2。
+
+### 索引版本读取：新的可执行 C 批次
+
+新增 `scripts/gsc-inspect.mjs` 与仅手动触发的 `seo-index-inspection.yml`。复用现有只读 OAuth/secret，固定 `sc-domain:cubxxw.com` 和 HTTPS 主站；每次最多 25 URL，第一条为 canary，认证/权限/配额或首条无有效 IndexStatus 时停止并将余项标 blocked。只记录 Google 索引版本与 allowlist 字段，缺失 canonical 保持 null，不将 HTTP 200 推断为已收录。只上传本次 run/attempt 的 report/process 两个 artifact，不提交快照或更改 Google 设置。
+
+独立 review 复现并修复了一个 P1：同一路径重复执行时旧成功回执可掩盖新失败。最终门禁绑定本次 `steps.inspect.outcome`（不是 continue-on-error 的 conclusion），真实 shell 碰撞探针确认失败门禁为 1。相关 80/80、父代理含工作流检查 94/94 通过，剩余 P0/P1/P2=0。现场 Inspection 权限仍待单 URL canary 读回。
+
+本轮另在当前已登录 Search Console 页面直接确认 `not-verified` / “无权访问 cubxxw.com”；未更换账号、验证所有权或修改权限。这是 UI 分类导出与同口径人工图表核验的真实剩余条件，API canary 独立判断现有 CI 身份能否读取索引版本。

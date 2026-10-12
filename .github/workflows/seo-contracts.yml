@@ -45,4 +45,5 @@ jobs:
             scripts/daily-report-issue.test.mjs \
             scripts/lighthouse-report-to-issue.test.mjs \
             scripts/gsc-fetch.test.mjs \
+            scripts/gsc-inspect.test.mjs \
             scripts/gsc-report.test.mjs

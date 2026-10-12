@@ -1,0 +1,100 @@
+name: SEO Index Inspection
+
+on:
+  workflow_dispatch:
+    inputs:
+      inspection_urls:
+        description: "HTTPS cubxxw.com URLs, one per line, maximum 25. First URL is the canary. Run the default single URL before a batch."
+        required: true
+        type: string
+        default: "https://cubxxw.com/engineering/posts/go-release-tools/"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seo-index-inspection
+  cancel-in-progress: false
+
+jobs:
+  inspection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      SOURCE_SHA: ${{ github.sha }}
+      REPORT_PATH: run/inspection-${{ github.run_id }}-${{ github.run_attempt }}.json
+      PROCESS_PATH: run/inspection-process-${{ github.run_id }}-${{ github.run_attempt }}.json
+    steps:
+      - name: Checkout inspected implementation
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Read Google indexed versions (first URL canary, bounded batch)
+        id: inspect
+        continue-on-error: true
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          INPUT_URLS: ${{ inputs.inspection_urls }}
+        run: |
+          node --input-type=module -e 'import { mkdirSync } from "node:fs"; import { dirname } from "node:path"; mkdirSync(dirname(process.env.REPORT_PATH), { recursive: true });'
+          set +e
+          node scripts/gsc-inspect.mjs --urls-env INPUT_URLS \
+            --source-sha "$SOURCE_SHA" --out "$REPORT_PATH"
+          code=$?
+          set -e
+          INSPECTION_EXIT_CODE="$code" node --input-type=module - <<'JS'
+          import { writeFileSync } from 'node:fs';
+          const value = {
+            schema: 'gsc-inspection-process/1',
+            sourceSha: process.env.SOURCE_SHA,
+            observedAt: new Date().toISOString(),
+            reportPath: process.env.REPORT_PATH,
+            exitCode: Number(process.env.INSPECTION_EXIT_CODE),
+          };
+          writeFileSync(process.env.PROCESS_PATH, JSON.stringify(value, null, 2) + '\n', { flag: 'wx' });
+          JS
+          exit "$code"
+
+      - name: Preserve exact run evidence, including failures
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: seo-index-inspection-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.REPORT_PATH }}
+            ${{ env.PROCESS_PATH }}
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Validate process and exact observation artifact
+        if: always()
+        env:
+          INSPECTION_STEP_OUTCOME: ${{ steps.inspect.outcome }}
+        run: |
+          node --input-type=module - <<'JS'
+          import { readFileSync } from 'node:fs';
+          try {
+            const processResult = JSON.parse(readFileSync(process.env.PROCESS_PATH, 'utf8'));
+            const report = JSON.parse(readFileSync(process.env.REPORT_PATH, 'utf8'));
+            const ok = process.env.INSPECTION_STEP_OUTCOME === 'success' &&
+              processResult.schema === 'gsc-inspection-process/1' &&
+              processResult.exitCode === 0 && processResult.sourceSha === process.env.SOURCE_SHA &&
+              processResult.reportPath === process.env.REPORT_PATH &&
+              report.schema === 'gsc-inspection/1' && report.meta.sourceSha === process.env.SOURCE_SHA &&
+              report.meta.property === 'sc-domain:cubxxw.com' &&
+              report.counts.inspected === report.counts.planned && report.counts.unknown === 0 && report.counts.blocked === 0 &&
+              report.meta.runStatus === 'complete' && report.counts.planned >= 1 && report.counts.planned <= 25 &&
+              report.results.length === report.counts.planned &&
+              report.results.every(result => result.status === 'inspected' && result.httpStatus === 200 &&
+                ['PASS', 'PARTIAL', 'FAIL', 'NEUTRAL'].includes(result.indexStatus?.verdict));
+            if (!ok) throw new Error('Inspection evidence unavailable or incomplete.');
+            console.log('Bounded indexed-version observation complete; index verdicts remain independent of collection success.');
+          } catch {
+            console.error('Inspection failed or evidence is unavailable/incomplete; saved artifacts remain diagnostic, not a successful Google-read claim.');
+            process.exitCode = 1;
+          }
+          JS
