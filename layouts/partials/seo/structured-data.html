@@ -28,12 +28,12 @@
   "description": {{ cond (ne .Description "") .Description .Summary | plainify | truncate 200 }},
   {{- /* schema.org Article images must be a crawlable raster (JPG/PNG/WebP);
          SVG is unsupported. Fall back to the default PNG when the cover is SVG. */ -}}
-  {{- $schemaImage := (partialCached "seo/social-image.html" . .RelPermalink .Language.Lang).url -}}
-  {{- with .Params.cover.image }}{{ if not (strings.HasSuffix (lower .) ".svg") }}{{ $schemaImage = . }}{{ end }}{{ end -}}
-  "image": {{ $schemaImage | absURL }},
+  "image": {{ partial "seo/article-image.html" . }},
   "url": {{ .Permalink }},
   "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }},
+  {{- if not $dateModified.IsZero }}
   "dateModified": {{ $dateModified.Format "2006-01-02T15:04:05Z07:00" }},
+  {{- end }}
   {{- $postAuthor := "Xinwei Xiong" -}}
   {{- with .Params.author -}}
     {{- if reflect.IsSlice . -}}{{- $postAuthor = index . 0 | string -}}
@@ -145,15 +145,7 @@
   "url": {{ site.BaseURL }},
   "description": {{ site.Params.description }},
   "inLanguage": "{{ if eq .Language.Lang "zh" }}zh-CN{{ else }}en-US{{ end }}",
-  "publisher": { "@id": "{{ site.BaseURL }}#person" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "{{ site.BaseURL }}search/?s={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
+  "publisher": { "@id": "{{ site.BaseURL }}#person" }
 }
 </script>
 

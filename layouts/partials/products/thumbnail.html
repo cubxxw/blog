@@ -1,0 +1,29 @@
+{{- /* Small homepage cards use resized local screenshots. Keep the full
+     screenshot available to product windows through products/shot.html. */ -}}
+{{- $shot := .shot -}}
+{{- $sizes := "(max-width: 760px) calc(100vw - 48px), (max-width: 1200px) calc((100vw - 80px) / 2), 562px" -}}
+{{- if .featured -}}
+  {{- $sizes = "(max-width: 760px) calc(100vw - 48px), (max-width: 1200px) calc((100vw - 64px) * 0.64), 728px" -}}
+{{- end -}}
+{{- $image := resources.Get (strings.TrimPrefix "/" $shot.path) -}}
+{{- if and $image (eq $image.ResourceType "image") (ne $image.MediaType.SubType "svg") -}}
+  {{- $widths := slice 480 960 -}}
+  {{- $webpSet := slice -}}
+  {{- $fallback := $image -}}
+  {{- if gt $image.Width 960 -}}{{- $fallback = $image.Resize "960x" -}}{{- end -}}
+  {{- range $widths -}}
+    {{- if lt . $image.Width -}}
+      {{- $variant := $image.Resize (printf "%dx webp" .) -}}
+      {{- $webpSet = $webpSet | append (printf "%s %dw" $variant.RelPermalink .) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $largestWidth := math.Min $image.Width 1440 | int -}}
+  {{- $largest := $image.Resize (printf "%dx webp" $largestWidth) -}}
+  {{- $webpSet = $webpSet | append (printf "%s %dw" $largest.RelPermalink $largestWidth) -}}
+  <picture>
+    <source type="image/webp" srcset="{{ delimit $webpSet ", " }}" sizes="{{ $sizes }}">
+    <img src="{{ $fallback.RelPermalink }}" alt="{{ $shot.alt }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy" decoding="async">
+  </picture>
+{{- else -}}
+  <img src="{{ $shot.path }}" alt="{{ $shot.alt }}" loading="lazy" decoding="async">
+{{- end -}}

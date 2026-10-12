@@ -50,6 +50,7 @@ async function main() {
   const {buildSite}=await import('./site-build.mjs');
   const bundle=path.join(dir,'site');
   const built=await buildSite({repoRoot:root,sourceSha:plan.sourceSha,clock:plan.clock,target:'production',outDir:bundle});
+  run(process.execPath,['--test','scripts/performance-seo.test.mjs'],{env:{...process.env,SITE_OUTPUT_DIR:built.publicDir}});
   const artifact=await import('./lib/site-artifact.mjs');
   const releaseId=`${process.env.GITHUB_RUN_ID??'local'}-${process.env.GITHUB_RUN_ATTEMPT??'1'}`;
   artifact.writeReleaseMarker({bundleRoot:bundle,sourceSha:plan.sourceSha,releaseId,clock:plan.clock});

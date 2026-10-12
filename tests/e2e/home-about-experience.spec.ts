@@ -157,7 +157,7 @@ test.describe('Homepage runtime and progressive decoration', () => {
     await expect(page.locator('#hp-chat-input')).toBeEnabled();
   });
 
-  test('desktop decoration disposes and remounts once when motion preference changes', async ({ page }) => {
+  test('desktop decoration waits for intent, then disposes and remounts when motion preference changes', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.addInitScript(() => {
@@ -181,6 +181,10 @@ test.describe('Homepage runtime and progressive decoration', () => {
       body: `function mount(host) { window.homeTestMounts = (window.homeTestMounts || 0) + 1; const canvas = document.createElement('canvas'); host.append(canvas); return {dispose() {canvas.remove();}}; } export {mount as mountHeroField, mount as mountBearOrb};`,
     }));
     await page.goto('/zh/', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(3000);
+    await expect(page.locator('#hp-about canvas')).toHaveCount(0);
+    expect(await page.evaluate(() => (window as any).homeTestMounts || 0)).toBe(0);
+    await page.keyboard.press('Tab');
     await expect(page.locator('#hp-about canvas')).toHaveCount(2);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await expect(page.locator('#hp-about canvas')).toHaveCount(0);

@@ -14,7 +14,7 @@
 </style>
 {{- if or (eq site.Params.deploymentTarget "backup") (partial "seo/should-noindex.html" .) $isPaginated }}
 <meta name="robots" content="noindex, follow">
-{{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
+{{- else if hugo.IsProduction }}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 {{- else }}
 <meta name="robots" content="noindex, nofollow">
@@ -134,7 +134,35 @@
 {{- $articlesCSS := resources.Get "css/extended/section-articles.css" }}
 {{- $pageScoped  := (slice $homepageCSS $aboutCSS $travelCSS $projectsCSS $projectsBearCSS $bearKnowledgeCSS $growthCSS $articlesCSS) }}
 {{- $extendedFiles := collections.Complement $pageScoped (resources.Match "css/extended/*.css") }}
-{{- $extended := $extendedFiles | resources.Concat "assets/css/extended.css" | resources.Minify }}
+{{- /* Filter in place: section styles must still precede hover reset and
+     press feedback. A composition key shares identical page bundles while
+     preventing resources.Concat from caching another section's CSS. */ -}}
+{{- $owners := dict
+  "columns.css" (or (eq .Section "columns") .Params.columns)
+  "section-ai-agent.css" (and (eq .Kind "section") (eq .Section "ai-agent"))
+  "section-engineering.css" (and (eq .Kind "section") (eq .Section "engineering"))
+  "opensource-grid.css" (.HasShortcode "opensource")
+  "zzz-bear-orb.css" .IsHome
+  "zzz-hero-field.css" .IsHome
+  "zzz-homepage-reveal.css" .IsHome
+-}}
+{{- $singlePage := .IsPage -}}
+{{- /* These controls belong to single-page article chrome. Keep them on all
+     page kinds (including custom layouts), but omit them from list routes. */ -}}
+{{- range slice "article-layout.css" "article-bottom-sheet.css" "article-maturity.css" "article-series-nav.css" "article-tldr.css" "editorial-tools.css" "marginalia.css" "post-footer.css" "toc-highlight.css" "zz-reading-progress-complete.css" "zzz-article-header-entrance.css" -}}
+  {{- $owners = merge $owners (dict . $singlePage) -}}
+{{- end -}}
+{{- $filteredFiles := slice -}}
+{{- $styleNames := slice -}}
+{{- range $extendedFiles -}}
+  {{- $name := path.Base .Name -}}
+  {{- if or (not (isset $owners $name)) (index $owners $name) -}}
+    {{- $filteredFiles = $filteredFiles | append . -}}
+    {{- $styleNames = $styleNames | append .Name -}}
+  {{- end -}}
+{{- end -}}
+{{- $extendedTarget := printf "assets/css/extended-%s.css" (substr (sha256 (delimit $styleNames "|")) 0 12) -}}
+{{- $extended := $filteredFiles | resources.Concat $extendedTarget | resources.Minify }}
 {{- $isNarrativeAbout := eq .Layout "about" -}}
 {{- if .IsHome }}
   {{- /* An explicit homepage shell. Preserve the existing alphabetical
@@ -253,6 +281,10 @@
         "assets/css/articles-stylesheet.css"
         (cond $isProjectsLanding "assets/css/projects-stylesheet.css" "assets/css/stylesheet.css"))
 -}}
+{{- /* The final concat also needs the composition key for non-lean pages. */ -}}
+{{- if not (or .IsHome $isNarrativeAbout $isArticlesLibrary $isProjectsLanding) -}}
+  {{- $stylesheetTarget = printf "assets/css/stylesheet-%s.css" (substr (sha256 (delimit $styleNames "|")) 0 12) -}}
+{{- end -}}
 {{- if .IsHome }}{{ $stylesheetTarget = "assets/css/home-stylesheet.css" }}{{ end }}
 {{- $stylesheet := (slice $license_css $core $extended) | resources.Concat $stylesheetTarget | resources.Minify }}
 

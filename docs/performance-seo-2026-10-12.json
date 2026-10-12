@@ -1,0 +1,370 @@
+{
+  "mode": "local-artifact-comparison",
+  "date": "2026-10-12",
+  "baselineSha": "17abebbd24e0002393fdda0151e31ed0081f7011",
+  "build": {
+    "hugo": "0.145.0+extended",
+    "environment": "production",
+    "clock": "2026-10-12T12:00:00+08:00",
+    "minify": true
+  },
+  "cssBefore": [
+    {
+      "route": "/",
+      "htmlBytes": 170282,
+      "cssBytes": 252841,
+      "cssGzipBytes": 47222,
+      "css": [
+        {
+          "url": "/assets/css/home-stylesheet.min.c876f2cf129679f1069472fb456068e8efc38bfee7f8c6116de0902b54b03af3.css",
+          "bytes": 191734,
+          "gzipBytes": 35320
+        },
+        {
+          "url": "/css/extended/homepage-daypage.min.bc7f0d56517639420f2598dfc5fef21f72eb023f89cd72706c741569bdd9a417.css",
+          "bytes": 54729,
+          "gzipBytes": 10008
+        },
+        {
+          "url": "/css/home-about-experience.min.5e3bd150d179fea2e24464d9bd505f37239e0d535afe0b393a28cc2c86346e04.css",
+          "bytes": 6378,
+          "gzipBytes": 1894
+        }
+      ]
+    },
+    {
+      "route": "/zh/",
+      "htmlBytes": 176273,
+      "cssBytes": 252841,
+      "cssGzipBytes": 47222,
+      "css": [
+        {
+          "url": "/assets/css/home-stylesheet.min.c876f2cf129679f1069472fb456068e8efc38bfee7f8c6116de0902b54b03af3.css",
+          "bytes": 191734,
+          "gzipBytes": 35320
+        },
+        {
+          "url": "/css/extended/homepage-daypage.min.bc7f0d56517639420f2598dfc5fef21f72eb023f89cd72706c741569bdd9a417.css",
+          "bytes": 54729,
+          "gzipBytes": 10008
+        },
+        {
+          "url": "/css/home-about-experience.min.5e3bd150d179fea2e24464d9bd505f37239e0d535afe0b393a28cc2c86346e04.css",
+          "bytes": 6378,
+          "gzipBytes": 1894
+        }
+      ]
+    },
+    {
+      "route": "/ai-agent/",
+      "htmlBytes": 100306,
+      "cssBytes": 454969,
+      "cssGzipBytes": 77623,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet.min.9a1054256a612ec5575951b23d21a32c539d0c3a50300217ee3c3c0e4e7d7606.css",
+          "bytes": 454969,
+          "gzipBytes": 77623
+        }
+      ]
+    },
+    {
+      "route": "/engineering/",
+      "htmlBytes": 75894,
+      "cssBytes": 454969,
+      "cssGzipBytes": 77623,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet.min.9a1054256a612ec5575951b23d21a32c539d0c3a50300217ee3c3c0e4e7d7606.css",
+          "bytes": 454969,
+          "gzipBytes": 77623
+        }
+      ]
+    },
+    {
+      "route": "/zh/growth/posts/2025-annual-review/",
+      "htmlBytes": 146801,
+      "cssBytes": 454969,
+      "cssGzipBytes": 77623,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet.min.9a1054256a612ec5575951b23d21a32c539d0c3a50300217ee3c3c0e4e7d7606.css",
+          "bytes": 454969,
+          "gzipBytes": 77623
+        }
+      ]
+    },
+    {
+      "route": "/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "htmlBytes": 143801,
+      "cssBytes": 454969,
+      "cssGzipBytes": 77623,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet.min.9a1054256a612ec5575951b23d21a32c539d0c3a50300217ee3c3c0e4e7d7606.css",
+          "bytes": 454969,
+          "gzipBytes": 77623
+        }
+      ]
+    },
+    {
+      "route": "/zh/columns/agent-engineering/",
+      "htmlBytes": 55817,
+      "cssBytes": 454969,
+      "cssGzipBytes": 77623,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet.min.9a1054256a612ec5575951b23d21a32c539d0c3a50300217ee3c3c0e4e7d7606.css",
+          "bytes": 454969,
+          "gzipBytes": 77623
+        }
+      ]
+    }
+  ],
+  "cssAfter": [
+    {
+      "route": "/",
+      "htmlBytes": 172180,
+      "cssBytes": 252841,
+      "cssGzipBytes": 47222,
+      "css": [
+        {
+          "url": "/assets/css/home-stylesheet.min.c876f2cf129679f1069472fb456068e8efc38bfee7f8c6116de0902b54b03af3.css",
+          "bytes": 191734,
+          "gzipBytes": 35320
+        },
+        {
+          "url": "/css/extended/homepage-daypage.min.bc7f0d56517639420f2598dfc5fef21f72eb023f89cd72706c741569bdd9a417.css",
+          "bytes": 54729,
+          "gzipBytes": 10008
+        },
+        {
+          "url": "/css/home-about-experience.min.5e3bd150d179fea2e24464d9bd505f37239e0d535afe0b393a28cc2c86346e04.css",
+          "bytes": 6378,
+          "gzipBytes": 1894
+        }
+      ]
+    },
+    {
+      "route": "/zh/",
+      "htmlBytes": 178171,
+      "cssBytes": 252841,
+      "cssGzipBytes": 47222,
+      "css": [
+        {
+          "url": "/assets/css/home-stylesheet.min.c876f2cf129679f1069472fb456068e8efc38bfee7f8c6116de0902b54b03af3.css",
+          "bytes": 191734,
+          "gzipBytes": 35320
+        },
+        {
+          "url": "/css/extended/homepage-daypage.min.bc7f0d56517639420f2598dfc5fef21f72eb023f89cd72706c741569bdd9a417.css",
+          "bytes": 54729,
+          "gzipBytes": 10008
+        },
+        {
+          "url": "/css/home-about-experience.min.5e3bd150d179fea2e24464d9bd505f37239e0d535afe0b393a28cc2c86346e04.css",
+          "bytes": 6378,
+          "gzipBytes": 1894
+        }
+      ]
+    },
+    {
+      "route": "/ai-agent/",
+      "htmlBytes": 100129,
+      "cssBytes": 356179,
+      "cssGzipBytes": 61534,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet-805ffbffba92.min.bcaf9f0bbda31bdfc584748cdd60b27eb863063337b77a046663e79d766d7df3.css",
+          "bytes": 356179,
+          "gzipBytes": 61534
+        }
+      ]
+    },
+    {
+      "route": "/engineering/",
+      "htmlBytes": 75717,
+      "cssBytes": 349139,
+      "cssGzipBytes": 60446,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet-6fa52caa16db.min.58898a23001f4ff1d3466a413c316a03b5f57b9eb46e25c9436fffeb5454fc79.css",
+          "bytes": 349139,
+          "gzipBytes": 60446
+        }
+      ]
+    },
+    {
+      "route": "/zh/growth/posts/2025-annual-review/",
+      "htmlBytes": 146621,
+      "cssBytes": 408042,
+      "cssGzipBytes": 69960,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet-da5d1589ca2b.min.51b45f8f4d975e5bc2d48a03c85de916246b10e118ce1791ddd2dd793876cae8.css",
+          "bytes": 408042,
+          "gzipBytes": 69960
+        }
+      ]
+    },
+    {
+      "route": "/ai-agent/posts/agent-identity-from-locke-to-openclaw/",
+      "htmlBytes": 143618,
+      "cssBytes": 423993,
+      "cssGzipBytes": 72282,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet-e66345cc4589.min.9a6efc59d2f97461251bf8d507eb230343776ce3dd8dc4c85777a547e5bde18e.css",
+          "bytes": 423993,
+          "gzipBytes": 72282
+        }
+      ]
+    },
+    {
+      "route": "/zh/columns/agent-engineering/",
+      "htmlBytes": 55637,
+      "cssBytes": 356566,
+      "cssGzipBytes": 61249,
+      "css": [
+        {
+          "url": "/assets/css/stylesheet-f21d3c234ea4.min.c61ea700a8a67f0532ff55906a96977ce79a215dda0c153920c5d9623b76aea0.css",
+          "bytes": 356566,
+          "gzipBytes": 61249
+        }
+      ]
+    }
+  ],
+  "productImages": [
+    {
+      "route": "/",
+      "originalBytes": 519864,
+      "webpBytesByWidth": {
+        "480": 52294,
+        "960": 136738,
+        "1440": 244466
+      }
+    },
+    {
+      "route": "/zh/",
+      "originalBytes": 509201,
+      "webpBytesByWidth": {
+        "480": 51364,
+        "960": 133500,
+        "1440": 239312
+      }
+    }
+  ],
+  "searchSnapshot": "data/seo/gsc-2026-10-12.json",
+  "searchTopPages": [
+    {
+      "url": "https://cubxxw.com/engineering/posts/go-release-tools/",
+      "clicks": 0,
+      "impressions": 4186,
+      "ctr": "0.00%",
+      "position": "6.88"
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-03-thought-notes/",
+      "clicks": 6,
+      "impressions": 3328,
+      "ctr": "0.18%",
+      "position": "8.86"
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-02-thought-notes/",
+      "clicks": 2,
+      "impressions": 2604,
+      "ctr": "0.08%",
+      "position": "7.98"
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2025-12-thought-notes/",
+      "clicks": 1,
+      "impressions": 1936,
+      "ctr": "0.05%",
+      "position": "8.21"
+    },
+    {
+      "url": "https://cubxxw.com/growth/posts/2026-03-thought-notes/",
+      "clicks": 1,
+      "impressions": 1770,
+      "ctr": "0.06%",
+      "position": "7.82"
+    },
+    {
+      "url": "https://cubxxw.com/zh/growth/posts/2026-01-thought-notes/",
+      "clicks": 2,
+      "impressions": 1553,
+      "ctr": "0.13%",
+      "position": "8.54"
+    },
+    {
+      "url": "https://cubxxw.com/engineering/posts/github-actions-advanced-techniques/",
+      "clicks": 0,
+      "impressions": 1215,
+      "ctr": "0.00%",
+      "position": "7.11"
+    },
+    {
+      "url": "https://cubxxw.com/growth/posts/2025-11-thought-notes/",
+      "clicks": 0,
+      "impressions": 1147,
+      "ctr": "0.00%",
+      "position": "7.86"
+    },
+    {
+      "url": "https://cubxxw.com/growth/posts/2025-12-thought-notes/",
+      "clicks": 2,
+      "impressions": 1117,
+      "ctr": "0.18%",
+      "position": "8.23"
+    },
+    {
+      "url": "https://cubxxw.com/growth/posts/2026-01-thought-notes/",
+      "clicks": 0,
+      "impressions": 860,
+      "ctr": "0.00%",
+      "position": "7.13"
+    }
+  ],
+  "validation": {
+    "generatedOutput": {
+      "passed": 6
+    },
+    "socialCards": {
+      "passed": 5
+    },
+    "browsers": {
+      "passed": 53,
+      "viewportSkips": 11
+    },
+    "typecheck": "TypeScript7.0.2; both commands passed",
+    "independentReview": "no open confirmed issues",
+    "seoOutput": {
+      "canonicalHTML": 593,
+      "sitemapURLs": 435,
+      "aliases": 50,
+      "exactInternalRedirects": 289
+    }
+  },
+  "limits": [
+    "CSS gzip is locally computed, not claimed CDN transfer size",
+    "File savings do not establish LCP or ranking improvements",
+    "Historical PSI provenance is incomplete; CrUX lacks sufficient real-user samples"
+  ],
+  "integratedUpstreamSha": "ec863b0a9bc5d3d7a970f6e29921dfbbd6ba3cc9",
+  "searchWindows": [
+    {
+      "start": "2026-08-14",
+      "end": "2026-09-10",
+      "clicks": 150,
+      "impressions": 94022
+    },
+    {
+      "start": "2026-09-11",
+      "end": "2026-10-08",
+      "clicks": 137,
+      "impressions": 48110
+    }
+  ]
+}

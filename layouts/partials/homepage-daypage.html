@@ -298,7 +298,7 @@
           <a class="hp-product__main" href="{{ printf "/projects/#%s" .id | relLangURL }}" target="_blank" rel="noopener">
             {{- if $shot.exists }}
             <span class="hp-product__shot">
-              <img src="{{ $shot.path }}" alt="{{ $shot.alt }}" width="1440" height="900" loading="lazy" decoding="async">
+              {{ partial "products/thumbnail.html" (dict "shot" $shot "featured" .featured) }}
             </span>
             {{- else }}
             <div class="hp-product__top"><span class="hp-product__mark">{{ .mark }}</span><span class="hp-product__status">{{ if $isZh }}{{ .stage_zh }}{{ else }}{{ .stage_en }}{{ end }}</span></div>

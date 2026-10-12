@@ -1,0 +1,25 @@
+{{- /* Keep social preview cards independent from article photography, while
+     resolving bundle covers to their actual public URL for BlogPosting. */ -}}
+{{- $url := (partialCached "seo/social-image.html" . .RelPermalink .Language.Lang).url -}}
+{{- with .Params.cover.image -}}
+  {{- $cover := trim . " " -}}
+  {{- $parsed := urls.Parse $cover -}}
+  {{- if not (strings.HasSuffix (lower $parsed.Path) ".svg") -}}
+    {{- if or (hasPrefix $cover "https://") (hasPrefix $cover "http://") -}}
+      {{- $url = $cover -}}
+    {{- else if hasPrefix $cover "/" -}}
+      {{- $url = $cover | absURL -}}
+    {{- else -}}
+      {{- with $.Resources.Get $parsed.Path -}}
+        {{- $url = .Permalink -}}
+      {{- else -}}
+        {{- with resources.Get $parsed.Path -}}
+          {{- $url = .Permalink -}}
+        {{- else -}}
+          {{- if fileExists (printf "static/%s" $parsed.Path) -}}{{- $url = $cover | absURL -}}{{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

@@ -10,10 +10,11 @@ export function mountHomeAmbient(loadModules, onOrb) {
   const width = matchMedia('(max-width: 768px)');
   const coarse = matchMedia('(pointer: coarse)');
   const connection = navigator.connection;
+  let interacted = false;
   let visible = false, scheduled = null, pending = false, attempted = false;
   let field = null, orb = null, pageHidden = false;
   function eligible() {
-    return !pageHidden && !document.hidden && visible && !motion.matches && !width.matches && !coarse.matches
+    return interacted && !pageHidden && !document.hidden && visible && !motion.matches && !width.matches && !coarse.matches
       && !(connection && (connection.saveData || /^(slow-2g|2g|3g)$/.test(connection.effectiveType)));
   }
   function cancelScheduled() {
@@ -62,11 +63,24 @@ export function mountHomeAmbient(loadModules, onOrb) {
     if (pending || attempted || scheduled !== null) return;
     scheduled = 'requestIdleCallback' in window ? requestIdleCallback(mount, { timeout: 2500 }) : setTimeout(mount, 2500);
   }
-  const observer = new IntersectionObserver(entries => {
-    visible = entries[0].isIntersecting;
+  // First paint and first input keep the static artwork. A real interaction
+  // permits the existing idle/device gate to load decorative modules.
+  function onIntent(event) {
+    if (!event.isTrusted) return;
+    interacted = true;
+    window.removeEventListener('pointerdown', onIntent);
+    window.removeEventListener('keydown', onIntent);
     reconcile();
-  }, { threshold: 0.01 });
-  observer.observe(hero);
+  }
+  window.addEventListener('pointerdown', onIntent, { passive: true });
+  window.addEventListener('keydown', onIntent);
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      reconcile();
+    }, { threshold: 0.01 });
+    observer.observe(hero);
+  }
   motion.addEventListener('change', reconcile);
   width.addEventListener('change', reconcile);
   coarse.addEventListener('change', reconcile);

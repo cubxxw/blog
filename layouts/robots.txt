@@ -1,115 +1,19 @@
-User-agent: *
-{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-Allow: /
-{{- else }}
-Disallow: /
-{{- end }}
+{{- /* Specific crawler groups do not inherit wildcard restrictions.
+     Use the actual build environment; params.env stays production in previews. */ -}}
+{{- $agents := slice "*" "AdsBot-Google" "Twitterbot" "facebookexternalhit" "LinkedInBot"
+  "GPTBot" "OAI-SearchBot" "ChatGPT-User" "ClaudeBot" "Claude-Web" "anthropic-ai"
+  "PerplexityBot" "Perplexity-User" "Google-Extended" "Applebot-Extended" "cohere-ai"
+  "DuckAssistBot" "MistralAI-User" "YouBot" "Amazonbot" "Meta-ExternalAgent"
+  "Meta-ExternalFetcher" "DataForSeoBot" "Baiduspider" "Baiduspider-render"
+  "Sogou web spider" "YisouSpider" "Bytespider" "DoubaoSpider" -}}
+{{ range $agents }}User-agent: {{ . }}
+{{ if hugo.IsProduction }}Allow: /
 Disallow: /admin/
 Disallow: /private/
-
-# Paginated lists are crawlable so bots can read their self-canonical and
-# noindex,follow directives. They remain excluded from sitemap.xml.
-
-# NOTE: there is deliberately no `User-agent: Googlebot` or `User-agent: Bingbot`
-# group below. A crawler obeys exactly ONE group — the most specific match — so a
-# bare `Googlebot / Allow: /` group would shadow the `*` group above and silently
-# void every Disallow in it. Google and Bing read the `*` group. Only
-# AdsBot-Google needs its own group (it ignores `*` by spec).
-User-agent: AdsBot-Google
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-# AI / answer-engine crawlers — explicitly welcome (GEO):
-# being citable by AI assistants is a distribution channel for this blog.
-User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: DuckAssistBot
-Allow: /
-
-User-agent: MistralAI-User
-Allow: /
-
-User-agent: YouBot
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-User-agent: Meta-ExternalFetcher
-Allow: /
-
-User-agent: DataForSeoBot
-Allow: /
-
-# China AI / search crawlers — Baidu (Wenxin), Sogou (WeChat search),
-# Shenma (UC/Alibaba), ByteDance (Doubao / Toutiao / Douyin search).
-# Same rationale: being cited by domestic AI answer engines is a
-# distribution channel worth encouraging.
-User-agent: Baiduspider
-Allow: /
-
-User-agent: Baiduspider-render
-Allow: /
-
-User-agent: Sogou web spider
-Allow: /
-
-User-agent: YisouSpider
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: DoubaoSpider
-Allow: /
-
-# /sitemap.xml is a single combined urlset covering BOTH languages with hreflang
-# (see layouts/sitemapindex.xml for why it isn't a sitemapindex). The per-language
-# /en/sitemap.xml and /zh/sitemap.xml still exist on disk but are deliberately NOT
-# advertised: EN URLs live at the site root, so a sitemap served from /en/ contains
-# out-of-scope URLs and Google rejects it. They were listed here by mistake, which
-# is why GSC reported sitemap.xml URLs as "discovered – currently not indexed".
+{{ else }}Disallow: /
+{{ end }}
+{{ end }}
+# Pagination stays crawlable so bots can read self-canonical and noindex.
+# The combined root sitemap covers both languages; /en/ is not advertised.
 Sitemap: {{ "sitemap.xml" | absURL }}
 Sitemap: {{ "news-sitemap.xml" | absURL }}
