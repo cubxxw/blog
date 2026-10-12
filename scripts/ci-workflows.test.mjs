@@ -33,3 +33,31 @@ test('manual backup applies the source gate before building',()=>{
   const source=commands.indexOf('check-content-quality.mjs source');
   assert.ok(source>=0 && source<commands.indexOf('site-build.mjs --target backup'));
 });
+
+test('Lighthouse publish reruns bind to the producer artifact and fail closed before issue writes',()=>{
+  const workflow=YAML.parse(fs.readFileSync('.github/workflows/lighthouse.yml','utf8'));
+  const producer=workflow.jobs.lighthouse,publish=workflow.jobs.publish;
+  const upload=producer.steps.find(s=>s.uses?.startsWith('actions/upload-artifact@'));
+  const download=publish.steps.find(s=>s.uses?.startsWith('actions/download-artifact@'));
+  assert.ok(upload.id,'producer must expose the actual immutable upload');
+  assert.equal(upload.with.name,'lighthouse-results-${{ github.run_id }}-${{ github.run_attempt }}');
+  assert.equal(upload.with['artifact-ids'],undefined,'artifact IDs belong to the downloader, never upload inputs');
+  assert.equal(producer.outputs.lighthouse_artifact_id,`${'${{'} steps.${upload.id}.outputs.artifact-id }}`);
+  assert.equal(download.with.name,undefined,'consumer attempt must not guess producer name');
+  assert.equal(download.with['artifact-ids'],'${{ needs.lighthouse.outputs.lighthouse_artifact_id }}');
+  assert.match(publish.if,/needs\.lighthouse\.outputs\.lighthouse_artifact_id\s*!=\s*''/,'empty ID must skip the whole publisher, not download all or sync missing');
+  assert.notEqual(download['continue-on-error'],true,'a download/digest failure must stop publication');
+  const sync=publish.steps.find(s=>s.run?.includes('lighthouse-report-to-issue.mjs'));
+  assert.ok(sync);assert.equal(sync.if,undefined,'implicit success gate must remain before issue writes');
+  // Resolve the configured dependency reference for a failed-job-only rerun:
+  // producer attempt1/upload123 survives consumer attempt2; a complete rerun
+  // receives upload456 instead. Neither consumer run_attempt controls it.
+  const expression=download.with['artifact-ids'];
+  const reference=expression.match(/^\$\{\{\s*needs\.([\w-]+)\.outputs\.([\w-]+)\s*\}\}$/);
+  assert.ok(reference);
+  const resolve=ctx=>ctx.needs[reference[1]].outputs[reference[2]];
+  for(const [consumerAttempt,artifactId] of [[2,'123'],[3,'456']]) {
+    const ctx={github:{run_attempt:consumerAttempt},needs:{lighthouse:{outputs:{lighthouse_artifact_id:artifactId}}}};
+    assert.equal(resolve(ctx),artifactId);
+  }
+});

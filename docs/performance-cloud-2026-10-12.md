@@ -22,7 +22,7 @@
 
 ## 三次线上 after：有改善，也有未达标项
 
-三个独立 after 运行是 [38236276441](https://github.com/cubxxw/blog/actions/runs/38236276441)、[38236287673](https://github.com/cubxxw/blog/actions/runs/38236287673)、[38238364289](https://github.com/cubxxw/blog/actions/runs/38238364289)，13 URL 各三次，共39；与before合计78。第一运行的13项测量成功，但可选diagnostic缺少rg使整个workflow失败，不能写成绿灯。另一个排队后取消的运行无样本，排除；额外trace诊断报告也不混入计数。全部LHR配置逐字段一致。公网四优先URL的CSS指纹及新SSR契约已与实际Hugo微型编译匹配；4905→edef仅workflow/tests变化。完整最新CI产物仍需读回。
+三个独立 after 运行是 [38236276441](https://github.com/cubxxw/blog/actions/runs/38236276441)、[38236287673](https://github.com/cubxxw/blog/actions/runs/38236287673)、[38238364289](https://github.com/cubxxw/blog/actions/runs/38238364289)，13 URL 各三次，共39；与before合计78。第一运行的13项测量成功，但可选diagnostic缺少rg使整个workflow失败，不能写成绿灯。另一个排队后取消的运行无样本，排除；额外trace诊断报告也不混入计数。全部LHR配置逐字段一致。公网四优先URL的CSS指纹及新SSR契约已与实际Hugo微型编译匹配；4905→edef仅workflow/tests变化。该渲染提交的质量运行38243423196已成功，正式artifact11746107254及四优先HTML已范围恢复并校验CRC/manifest来源。
 
 | URL | Before LCP median〔范围〕秒 | After LCP median〔范围〕秒 | After最大CLS |
 | --- | ---: | ---: | ---: |
@@ -46,4 +46,11 @@
 
 旧source的质量CI失败已定位：前两项标题字体断言完成更新；后续三引擎pilot离线测试在正文字体尚未进入视口时就冻结网络。修复在线滚动、验证stylesheet/FontFaceSet注册、真实等待fonts.ready和networkidle，再建立离线零请求/零写入baseline，保留全部断言。WebKit disclosure的单次重试失败只具有字体位移假说，未声称完全证明根因。
 
-Pi完成冻结路由tracker，独立6个受控Promise测试和14个CI接线测试通过。保持handler注册到所有fetch/fulfill完成，纳入等待期间新callback，空状态检查到unrouteAll无await，原异常继续传递。未过滤错误、增加重试或降门禁；真实浏览器与最新提交完整CI仍待验收。footer微型真实Hugo编译与TypeScript验证通过，三月长笔记未隐藏/截断，CrUX仍未知。
+Pi完成冻结路由tracker，独立6个受控Promise测试和14个CI接线测试通过。保持handler注册到所有fetch/fulfill完成，纳入等待期间新callback，空状态检查到unrouteAll无await，原异常继续传递。未过滤错误、增加重试或降门禁；dcc73145完整CI成功，48质量用例、320 E2E、573三引擎交互用例通过，无flaky或Route is already handled。footer微型真实Hugo编译与TypeScript验证通过，三月长笔记未隐藏/截断，CrUX仍未知。
+
+
+## 附件重跑合同修复
+
+manual38245959170的测量任务已成功、artifact11745387438有13个有效报告；日报发布首次遇到GitHub GraphQL504。只重跑failed publisher后，其github.run_attempt变2，原producer仍attempt1，按consumer attempt猜名称查不到附件并误写日报缺证。已修measurement job输出实际upload artifact-id、publisher按该ID下载；空ID跳过publisher，下载/摘要校验失败停止sync。无跨run/旧attempt搜索fallback。真实YAML producer1→consumer2与全量rerun3回归先RED，修正后27个workflow/日报测试通过并fresh独立review；新提交CI及真实consumer重跑仍需读回。这个发布合同不改变生产页面渲染，footer后的三次测量单独记录。
+
+长笔记预算实验已补，详见[预算实验](long-note-budget-2026-10-12.md)；不宣称压缩候选就是线上收益或DOM已经减少。
