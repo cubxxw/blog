@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -112,10 +112,18 @@ function psiEntry(url, strategy, finalStatus = 'success', usable = true) {
     provenance: {
       fetchTime: '2026-09-24T06:08:00.000Z',
       lighthouseVersion: '12.8.0',
-      configSettings: null,
+      configSettings: {
+        formFactor: strategy, throttlingMethod: 'simulate', locale: 'en-US',
+        emulatedUserAgent: 'fixture-browser',
+        throttling: { rttMs: 150, throughputKbps: 1638.4, requestLatencyMs: 150,
+          downloadThroughputKbps: 1474.56, uploadThroughputKbps: 675, cpuSlowdownMultiplier: 4 },
+        screenEmulation: { mobile: strategy === 'mobile', width: 412, height: 823,
+          deviceScaleFactor: 1.75, disabled: false },
+      },
       requestedUrl: url,
       finalUrl: url,
     },
+    scores: { performance: 0.9 },
     metrics: { LCP: { unit: 'ms', numericValue: 1900, precision: 'raw' }, CLS: { unit: 'unitless', numericValue: 0.05, precision: 'raw' } },
     seoAudits: { 'meta-description': { score: 1 } },
   };
@@ -1072,7 +1080,8 @@ test('snapshot workflow plans exact artifacts, validates each stage and aggregat
   // CrUX only ever gets the unique planned --out binding (collector unchanged)
   assert.equal(steps[cruxIdx].run.includes('--out "$CRUX_OUT"'), true);
   // frozen report date flows into the commit message
-  assert.ok(steps[commitIdx].run.includes('steps.plan.outputs.report_date'));
+  assert.equal(steps[commitIdx].env.REPORT_DATE, '${{ steps.plan.outputs.report_date }}');
+  assert.ok(steps[commitIdx].run.includes('DATE="$REPORT_DATE"'));
   // persistence is a REQUIRED stage (captured exit) and part of the aggregate
   assert.equal(steps[commitIdx].id, 'persist');
   assert.ok(steps.find((s) => s.name.includes('Validate persistence stage')).run.includes('--kind publish --target snapshot-persist'));
@@ -1086,6 +1095,29 @@ test('snapshot workflow plans exact artifacts, validates each stage and aggregat
   assert.ok(upload.with.path.includes('run/**'));
   for (const out of ['gsc_out', 'psi_out', 'crux_out']) assert.ok(upload.with.path.includes(`steps.plan.outputs.${out}`));
   assert.ok(!upload.with.path.includes('data/seo/'), 'the historical directory is never uploaded wholesale');
+});
+
+
+// A failed plan must never contact a collector or persist fallback daily paths.
+test('actual Snapshot shell refuses collection and persistence without a successful exact-path plan', () => {
+  const steps = loadWorkflow('seo-snapshot.yml').jobs.snapshot.steps;
+  for (const step of steps.filter(s => ['gsc', 'psi', 'crux', 'persist'].includes(s.id))) {
+    for (const [ready, withPlan, out] of [['false', false, ''], ['false', true, 'planned.json'], ['true', false, 'planned.json'], ['true', true, ''], ['true', true, 'planned.json']]) {
+      const dir = mkdtempSync(join(process.env.SEO_TEST_ARTIFACT_DIR ?? tmpdir(), 'snapshot-guard-'));
+      mkdirSync(join(dir, 'run'));
+      if (withPlan) writeFileSync(join(dir, 'run/plan.json'), '{}');
+      const output = join(dir, 'outputs');
+      const calls = join(dir, 'calls');
+      const shell = `node() { echo node >> "$CALLS"; return 0; }
+git() { echo git >> "$CALLS"; return 0; }
+` + step.run.replace(/\$\{\{[^}]+\}\}/g, '2026-10-12');
+      const r = spawnSync('/bin/bash', ['-e', '-o', 'pipefail', '-c', shell], { cwd: dir, encoding: 'utf8', env: { ...process.env, PLAN_READY: ready, GSC_OUT: out, PSI_OUT: out, CRUX_OUT: out, REPORT_DATE: out, LOOKBACK: '2', WITH_DEVICE: 'false', WITH_COUNTRY: 'false', GITHUB_OUTPUT: output, CALLS: calls } });
+      assert.equal(r.status, 0, `${step.id}: ${r.stderr}`);
+      const expectedReady = ready === 'true' && withPlan && out !== '';
+      assert.equal(readFileSync(output, 'utf8').trim(), `code=${expectedReady ? 0 : 1}`, `${step.id}: collection/persistence requires the exact-path plan`);
+      assert.equal(existsSync(calls), expectedReady, `${step.id}: side effects only for a valid plan`);
+    }
+  }
 });
 
 // ---------------------------------------------------------------------------

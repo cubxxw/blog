@@ -21,7 +21,7 @@ tags:
   - AI
   - Agent
 description: >
-  February 2026 deep thought notes with 365 entries covering travel experiences (Chiang Mai, Pokhara), ecological protection, urban governance observation, AI product thinking, Buddhist philosophy, and self-discovery.
+  February 2026 deep thought notes with 363 entries covering travel experiences (Chiang Mai, Pokhara), ecological protection, urban governance observation, AI product thinking, Buddhist philosophy, and self-discovery.
 tldr:
   - "Wildlife protection requires controlling human desire rather than expanding resources through internal education or external systemic incentives."
   - "Well-managed cities with clear standards and unified design create superior user experiences compared to chaotic growth-phase urban environments."
@@ -31,7 +31,7 @@ maturity: budding
 
 # 2026 February Thought Notes
 
-> **363 notes this month** | recorded from 2026-02-04 to 2026-02-28
+> **363 notes this month** | recorded from 2026-02-01 to 2026-02-28
 >
 > **Themes**: Reading, Ideas and History 85 · Daily Notes and Everything Else 63 · AI and Agent Systems 63 · Self-Knowledge and Psychology 61 · Travel, Places and Cities 41 · Business, Investing and Career 19 · Content, Craft and Recording 14 · Product, Engineering and Open Source 13 · Body, Health and Daily Life 4
 >

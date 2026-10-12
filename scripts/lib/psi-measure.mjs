@@ -288,10 +288,11 @@ export function validateLighthouseResult(json) {
   }
   const audits = lhr.audits ?? {};
   const missing = [];
-  if (typeof lhr.categories?.performance?.score !== 'number') missing.push('categories.performance.score');
+  const performance = finiteOrNull(lhr.categories?.performance?.score);
+  if (performance === null || performance < 0 || performance > 1) missing.push('categories.performance.score');
   for (const [metric, auditId] of [['LCP', METRIC_AUDITS.LCP], ['CLS', METRIC_AUDITS.CLS]]) {
     const v = audits?.[auditId]?.numericValue;
-    if (typeof v !== 'number' || !Number.isFinite(v)) missing.push(`audits.${auditId}.numericValue (${metric})`);
+    if (typeof v !== 'number' || !Number.isFinite(v) || v < 0) missing.push(`audits.${auditId}.numericValue (${metric})`);
   }
   if (missing.length > 0) {
     const fields = missing.filter((f) => KNOWN_REQUIRED_FIELDS.has(f));
@@ -568,6 +569,43 @@ function provenanceCaveats(provenance) {
   return missing.map((field) => `measurement provenance incomplete: ${field} missing or invalid (comparisons against versioned samples are withheld)`);
 }
 
+// Collection needs actual core measurements and dated page/tool identity.
+// PSI's public ConfigSettings schema does not expose the full Lighthouse CLI
+// emulation/throttling config. Those unknowns affect comparison certification,
+// independently of whether the API returned a valid current measurement.
+function isMeasurementUrl(value) {
+  if (typeof value !== 'string') return false;
+  try {
+    const parsed = new URL(value);
+    return ['https:', 'http:'].includes(parsed.protocol) && Boolean(parsed.hostname);
+  } catch {
+    return false;
+  }
+}
+
+function collectionProvenanceMissing(provenance) {
+  const p = provenance ?? {};
+  return [
+    ...(!isValidUtcTimestamp(p.fetchTime ?? null) ? ['fetchTime'] : []),
+    ...(typeof p.lighthouseVersion !== 'string' || p.lighthouseVersion.trim() === '' ? ['lighthouseVersion'] : []),
+    ...['requestedUrl', 'finalUrl'].filter((key) => !isMeasurementUrl(p[key])),
+  ];
+}
+
+export function hasValidCollectedMeasurement(entry) {
+  if (!['success', 'partial'].includes(entry?.finalStatus) || entry.usable !== true) return false;
+  if (entry.lighthouseRuntimeError != null || entry.error != null || entry.reasonCategory != null || entry.psiHttpStatus !== 200) return false;
+  if (collectionProvenanceMissing(entry.provenance).length > 0 || entry.provenance.requestedUrl !== entry.url) return false;
+  const performance = finiteOrNull(entry.scores?.performance);
+  if (performance === null || performance < 0 || performance > 1) return false;
+  for (const id of ['LCP', 'CLS']) {
+    const metric = entry.metrics?.[id];
+    const value = finiteOrNull(metric?.numericValue);
+    if (value === null || value < 0 || metric.unit !== METRIC_UNITS[id] || metric.precision !== 'raw') return false;
+  }
+  return true;
+}
+
 export function pickSeoAudits(audits) {
   const out = {};
   for (const id of ['meta-description', 'document-title']) {
@@ -589,6 +627,11 @@ export function extractMeasurement({ url, strategy, json, attemptLog = [], attem
   const cats = lhr.categories ?? {};
   const provenance = pickProvenance(lhr);
   const caveats = provenanceCaveats(provenance);
+  const collectionMissing = collectionProvenanceMissing(provenance);
+  for (const field of collectionMissing.filter((field) => ['requestedUrl', 'finalUrl'].includes(field))) {
+    caveats.push(`measurement page identity incomplete: ${field} missing or invalid`);
+  }
+  const { complete, missing } = provenanceSignature(provenance);
   const metrics = {};
   for (const [name, unit] of Object.entries(METRIC_UNITS)) {
     metrics[name] = extractMetric(audits, METRIC_AUDITS[name], unit);
@@ -596,7 +639,7 @@ export function extractMeasurement({ url, strategy, json, attemptLog = [], attem
   return {
     url,
     strategy,
-    finalStatus: caveats.length === 0 ? 'success' : 'partial',
+    finalStatus: collectionMissing.length === 0 ? 'success' : 'partial',
     usable: true,
     reasonCategory: null,
     reasonBasis: null,
@@ -609,6 +652,7 @@ export function extractMeasurement({ url, strategy, json, attemptLog = [], attem
     lighthouseRuntimeError: null,
     error: null,
     provenance,
+    comparisonProvenance: { complete: complete && collectionMissing.length === 0, missing: [...new Set([...missing, ...collectionMissing])] },
     caveats,
     scores: {
       performance: typeof cats.performance?.score === 'number' ? cats.performance.score : null,

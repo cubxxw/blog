@@ -65,7 +65,7 @@ jobs:
         id: report
         run: |
           set +e
-          node scripts/seo-report.mjs --dir data/seo \
+          node scripts/seo-report.mjs --dir data/seo --gsc-response-aggregation byPage \
             --start "$WIN_START" --end "$WIN_END" \
             --as-of "$AS_OF" --run-date "$RUN_DATE" \
             --out run/report.json --markdown-out run/section.md
@@ -210,7 +210,7 @@ jobs:
         id: report
         run: |
           set +e
-          node scripts/seo-report.mjs --dir data/seo \
+          node scripts/seo-report.mjs --dir data/seo --gsc-response-aggregation byPage \
             --start "$WIN_START" --end "$WIN_END" \
             --as-of "$AS_OF" --run-date "$RUN_DATE" \
             --out run/report.json --markdown-out run/section.md

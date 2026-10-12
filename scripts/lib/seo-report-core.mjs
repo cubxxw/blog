@@ -36,7 +36,7 @@
 //     the trusted publisher (B2), never a source of any number here.
 
 import { GSC_DATA_TIMEZONE, isValidUtcTimestamp, timestampMs, todayInTimezone } from './gsc-dates.mjs';
-import { scopeOfContext } from './gsc-report-core.mjs';
+import { scopeOfContext, selectDomainPageGroup } from './gsc-report-core.mjs';
 import { compareCompatibleSamples } from './seo-observations.mjs';
 
 export const SEO_REPORT_SCHEMA = 'seo-report/1';
@@ -85,22 +85,18 @@ export function classifyGscFreshness({ gsc, asOfMs, thresholds = FRESHNESS_THRES
   const files = gsc?.inputs?.files ?? [];
   // Fetch recency comes from the SELECTED counted evidence behind the report
   // numbers — read ONLY the unique actual selected compatible domain-wide
-  // variant/response group (A's own summary selection semantics via
-  // scopeOfContext). A newer successful fetch in ANOTHER filter/property/
+  // variant/response group (shared with A's summary selector). A newer successful fetch in ANOTHER filter/property/
   // aggregation context never refreshes the selected summary, and an
   // ambiguous selection stays unknown instead of borrowing dates.
   const host = gsc?.params?.host ?? null;
-  const domainVariants = (gsc?.sections?.domainPageRows?.variants ?? [])
-    .filter((v) => scopeOfContext(v.context ?? {}, host).kind === 'domain-wide');
-  let selectedGroup = null;
-  let selectionNote = null;
-  if (domainVariants.length === 1 && domainVariants[0].groups.length === 1) {
-    selectedGroup = domainVariants[0].groups[0];
-  } else if (domainVariants.length === 0) {
-    selectionNote = 'gsc-counted-evidence-unknown: no domain-wide date_page context backs the selected summary (input files alone prove nothing)';
-  } else {
-    selectionNote = 'gsc-counted-evidence-ambiguous: multiple domain-wide variants/groups; dates are never borrowed from another filter/aggregation context';
-  }
+  const { group: selectedGroup, selection } = selectDomainPageGroup({
+    section: gsc?.sections?.domainPageRows,
+    host,
+    responseAggregation: gsc?.params?.summaryResponseAggregation ?? null,
+  });
+  const selectionNote = selection.status === 'ambiguous'
+    ? 'gsc-counted-evidence-ambiguous: multiple domain-wide variants/groups; dates are never borrowed from another filter/aggregation context'
+    : 'gsc-counted-evidence-unknown: no eligible domain-wide date_page group backs the selected summary (input files alone prove nothing)';
   const dayEvidence = [];
   if (selectedGroup) {
     for (const [day, rec] of Object.entries(selectedGroup.days ?? {})) {
@@ -115,7 +111,7 @@ export function classifyGscFreshness({ gsc, asOfMs, thresholds = FRESHNESS_THRES
     ...(gsc?.summary?.mainHostPages?.current?.coverage?.countedDates ?? []),
     ...(gsc?.summary?.mainHostPages?.previous?.coverage?.countedDates ?? []),
   ];
-  const latestDataDate = counted.length > 0 ? [...counted].sort().at(-1) : null;
+  const latestDataDate = selectedGroup && counted.length > 0 ? [...counted].sort().at(-1) : null;
   const asOfDay = todayInTimezone(new Date(asOfMs), GSC_DATA_TIMEZONE); // GSC calendar (Pacific)
 
   if (files.length === 0) {
@@ -158,6 +154,7 @@ export function classifyGscFreshness({ gsc, asOfMs, thresholds = FRESHNESS_THRES
     fresh: reasons.length === 0,
     reasons,
     thresholds,
+    ...(gsc?.params?.summaryResponseAggregation == null ? {} : { selection }),
     latestFetchedAt: latestFetchedAtMs === null ? null : new Date(latestFetchedAtMs).toISOString(),
     latestDataDate,
   };
@@ -705,6 +702,10 @@ export function buildMarkdown(report) {
   lines.push('');
   const src = report.sources;
   lines.push(`- GSC: ${src.gsc.freshness.status}（${src.gsc.scope.property}; ${src.gsc.scope.host} 页面行; 数据截至 ${src.gsc.freshness.latestDataDate ?? 'unknown'}）`);
+  if (src.gsc.freshness.selection) {
+    const selection = src.gsc.freshness.selection;
+    lines.push(`- GSC 选择: ${selection.status} · response aggregation ${selection.requestedResponseAggregation}（${selection.basis}）`);
+  }
   lines.push(`- PSI: ${src.psi.freshness.status}（测量日期 ${src.psi.freshness.latestMeasurementAt ?? 'unknown'}）`);
   lines.push(`- CrUX: ${src.crux.freshness.status}（最近采集期止于 ${src.crux.freshness.latestCollectionDate ?? 'unknown'}，无样本=未知非零）`);
   for (const [name, f] of [['GSC', src.gsc.freshness], ['PSI', src.psi.freshness], ['CrUX', src.crux.freshness]]) {
@@ -790,6 +791,7 @@ export function buildSeoReport({ gsc, psi, crux, params }) {
       runDate: params.runDate ?? params.asOf.slice(0, 10),
       runDateBasis: params.runDateBasis ?? (params.runDate ? 'explicit' : 'as-of-date'),
       includeQueryRows: Boolean(params.includeQueryRows),
+      ...(gsc.params.summaryResponseAggregation == null ? {} : { gscResponseAggregation: gsc.params.summaryResponseAggregation }),
     },
     inputs: {
       // complete input provenance: exactly which evidence entered this report

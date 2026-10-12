@@ -33,7 +33,7 @@ import { GscError, safeErrorMessage } from './lib/gsc-errors.mjs';
 import { parseDateArg, parseUtcTimestamp, validateRequestRange } from './lib/gsc-dates.mjs';
 import { atomicWriteJson, pickSnapshotPath } from './lib/gsc-persist.mjs';
 import { GSC_HOST_DEFAULT } from './lib/gsc-snapshot.mjs';
-import { buildReport } from './lib/gsc-report-core.mjs';
+import { buildReport, parseSummaryResponseAggregation } from './lib/gsc-report-core.mjs';
 
 export function parseCliArgs(argv) {
   const opts = {
@@ -44,6 +44,7 @@ export function parseCliArgs(argv) {
     out: null,
     includeQueryRows: false,
     asOf: null,
+    summaryResponseAggregation: null,
     help: false,
   };
   const valueOf = (flag, i) => {
@@ -62,6 +63,7 @@ export function parseCliArgs(argv) {
       case '--host': opts.host = valueOf(arg, i); i += 1; break;
       case '--out': opts.out = valueOf(arg, i); i += 1; break;
       case '--as-of': opts.asOf = parseUtcTimestamp(valueOf(arg, i), '--as-of'); i += 1; break;
+      case '--summary-response-aggregation': opts.summaryResponseAggregation = parseSummaryResponseAggregation(valueOf(arg, i)); i += 1; break;
       case '--include-query-rows': opts.includeQueryRows = true; break;
       case '--help': case '-h': opts.help = true; break;
       default:
@@ -106,11 +108,11 @@ export async function main(argv = process.argv.slice(2), deps = {}) {
   try {
     const opts = parseCliArgs(argv);
     if (opts.help) {
-      log('Usage: node scripts/gsc-report.mjs --dir DIR --start YYYY-MM-DD --end YYYY-MM-DD [--host host] [--out path] [--include-query-rows] [--as-of YYYY-MM-DDTHH:MM:SSZ]');
+      log('Usage: node scripts/gsc-report.mjs --dir DIR --start YYYY-MM-DD --end YYYY-MM-DD [--host host] [--out path] [--include-query-rows] [--as-of YYYY-MM-DDTHH:MM:SSZ] [--summary-response-aggregation byPage|byProperty|auto]');
       return 0;
     }
     const range = validateRequestRange({ start: opts.start, end: opts.end, now: deps.now ?? new Date() });
-    const report = buildReport({ dir: opts.dir, start: range.start, end: range.end, host: opts.host, includeQueryRows: opts.includeQueryRows, asOf: opts.asOf });
+    const report = buildReport({ dir: opts.dir, start: range.start, end: range.end, host: opts.host, includeQueryRows: opts.includeQueryRows, asOf: opts.asOf, summaryResponseAggregation: opts.summaryResponseAggregation });
     const data = `${JSON.stringify(report, null, 2)}\n`;
     if (!opts.out) {
       log(data);

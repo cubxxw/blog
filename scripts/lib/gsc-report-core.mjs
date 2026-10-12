@@ -894,6 +894,7 @@ export function buildReport({
   asOf = null,
   fs = nodeFs,
   evidence = undefined,
+  summaryResponseAggregation = null,
 } = {}) {
   if (evidence !== undefined) {
     // Fail closed: preloaded evidence cannot prove as-of eligibility or
@@ -903,6 +904,7 @@ export function buildReport({
       { kind: 'config' },
     );
   }
+  const responseAggregation = parseSummaryResponseAggregation(summaryResponseAggregation);
   const asOfValue = parseAsOfValue(asOf); // non-null asOf must be strict UTC
   const range = validateCalendarRange({ start, end }); // strict dates, ordered, nonempty; no clock
   const allDays = enumerateDates(range.start, range.end);
@@ -988,7 +990,17 @@ export function buildReport({
     slices: undatedSlices,
   };
 
-  const summary = buildSummary({ sections, windows, host, uniqueIdentities, incompatibilities });
+  const summary = buildSummary({ sections, windows, host, uniqueIdentities, incompatibilities, summaryResponseAggregation: responseAggregation });
+  // Opt-in reports reflect observed collection coverage, while the default
+  // preserves frozen historical pending gates. Returned queries remain incomplete.
+  const hostQueryVariants = compatibleVariants(sections.blogQueryPage, host, 'host');
+  const queryVariant = hostQueryVariants.length === 1 ? hostQueryVariants[0] : null;
+  const queryGroup = queryVariant?.groups?.length === 1 ? queryVariant.groups[0] : null;
+  const queryCollectionProven = queryVariant?.context?.slice === 'blog_date_query_page' &&
+    JSON.stringify(queryVariant.context.dimensions) === JSON.stringify(['date', 'query', 'page']) &&
+    queryGroup?.responseAggregationType === 'byPage' &&
+    Object.values(queryGroup.days ?? {}).every((d) => d?.provenance?.schema === SNAPSHOT_SCHEMA) &&
+    ['previous', 'current'].every((name) => summary.queryCoverage[name].comparable);
 
   return {
     schema: REPORT_SCHEMA,
@@ -999,6 +1011,7 @@ export function buildReport({
       host,
       includeQueryRows,
       asOf: asOfValue,
+      ...(responseAggregation === null ? {} : { summaryResponseAggregation: responseAggregation }),
       windows: {
         previous: windows.previous,
         current: windows.current,
@@ -1026,7 +1039,10 @@ export function buildReport({
     incompatibilities,
     pending: [
       'GSC UI verification on the same filter/date basis is pending (parent-owned live gate)',
-      'fresh query×page collection is pending (parent-owned live run of this collector)',
+      ...(responseAggregation === null
+        ? ['fresh query×page collection is pending (parent-owned live run of this collector)']
+        : queryCollectionProven ? []
+          : ['query×page collection coverage is not proven for both requested windows in the matching host context; collect or reconcile missing/ambiguous evidence (anonymous queries and internal row limits still apply)']),
     ],
   };
 }
@@ -1049,10 +1065,51 @@ function compatibleVariants(section, host, wantedScope) {
   });
 }
 
-function buildSummary({ sections, windows, host, uniqueIdentities, incompatibilities }) {
-  const domainCandidates = compatibleVariants(sections.domainPageRows, host, 'domain-wide');
-  const domainVariant = domainCandidates.length === 1 ? domainCandidates[0] : null;
-  const domainGroup = domainVariant && domainVariant.groups.length === 1 ? domainVariant.groups[0] : null;
+// Explicit selection never changes the retained sections or chooses by recency,
+// coverage or metrics. Default selection preserves historical single-group behavior.
+export function parseSummaryResponseAggregation(value = null) {
+  if (value === null || value === undefined) return null;
+  if (!['byPage', 'byProperty', 'auto'].includes(value)) {
+    throw new GscError('Invalid response aggregation selector: expected byPage, byProperty or auto.', { kind: 'config' });
+  }
+  return value;
+}
+
+export function selectDomainPageGroup({ section, host, responseAggregation = null } = {}) {
+  const requested = parseSummaryResponseAggregation(responseAggregation);
+  const candidates = compatibleVariants(section, host, 'domain-wide');
+  const variant = candidates.length === 1 ? candidates[0] : null;
+  const groups = variant?.groups ?? [];
+  const matches = requested === null ? groups : groups.filter((g) => g.responseAggregationType === requested);
+  let status = candidates.length === 0 ? 'missing' : candidates.length !== 1 || matches.length > 1 ? 'ambiguous' : matches.length === 0 ? 'unmatched' : 'selected';
+  let group = status === 'selected' ? matches[0] : null;
+  // A label alone cannot prove collector-recorded response semantics. Keep
+  // schema provenance separate from legacy assumptions, including empty days.
+  if (group && requested !== null && (
+    variant.context.slice !== 'date_page' ||
+    JSON.stringify(variant.context.dimensions) !== JSON.stringify(['date', 'page']) ||
+    Object.keys(group.days ?? {}).length === 0 ||
+    Object.values(group.days).some((d) => d?.provenance?.schema !== SNAPSHOT_SCHEMA)
+  )) {
+    status = 'unproven';
+    group = null;
+  }
+  const selection = {
+    status,
+    requestedResponseAggregation: requested,
+    context: variant?.context ?? null,
+    responseAggregationType: group?.responseAggregationType ?? null,
+    candidateContexts: candidates.map((v) => v.context),
+    availableResponseAggregations: groups.map((g) => g.responseAggregationType),
+    basis: requested === null
+      ? 'unique domain-wide request context and unique response aggregation group (historical default)'
+      : 'explicit exact response aggregation in the unique domain-wide date_page request context; gsc-snapshot/2 provenance required; other groups retained separately, never merged',
+  };
+  return { variant, group, selection };
+}
+
+function buildSummary({ sections, windows, host, uniqueIdentities, incompatibilities, summaryResponseAggregation }) {
+  const { variant: domainVariant, group: domainGroup, selection } = selectDomainPageGroup({ section: sections.domainPageRows, host, responseAggregation: summaryResponseAggregation });
   const pageIdentity = domainVariant ? identityOf(domainVariant.context) : (uniqueIdentities.length === 1 ? uniqueIdentities[0] : null);
 
   const notSummarized = (reason) => ({ status: 'not-summarized', reason });
@@ -1230,6 +1287,7 @@ function buildSummary({ sections, windows, host, uniqueIdentities, incompatibili
     identity: uniqueIdentities.length === 1
       ? { ...uniqueIdentities[0], host }
       : { ambiguous: true, identities: uniqueIdentities, host },
+    ...(summaryResponseAggregation === null ? {} : { domainPageSelection: selection }),
     mainHostPages: { previous: mainHostByWindow('previous'), current: mainHostByWindow('current'), host },
     otherHosts: { previous: otherHostsByWindow('previous'), current: otherHostsByWindow('current') },
     propertyTotals: totalsFor(sections.propertyTotals, 'domain-wide', SECTION_BASIS.propertyTotals),

@@ -38,6 +38,7 @@ jobs:
         run: |
           node --test \
             scripts/psi-fetch.test.mjs \
+            scripts/psi-stage-contract.test.mjs \
             scripts/seo-report.test.mjs \
             scripts/seo-pipeline.test.mjs \
             scripts/seo-autofix-gate.test.mjs \

@@ -64,12 +64,18 @@ jobs:
         if: always()
         continue-on-error: true
         env:
+          PLAN_READY: ${{ steps.plan.outcome == 'success' }}
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
           LOOKBACK: ${{ inputs.lookback || '2' }}
           GSC_OUT: ${{ steps.plan.outputs.gsc_out }}
           WITH_DEVICE: ${{ inputs.with_device || 'false' }}
           WITH_COUNTRY: ${{ inputs.with_country || 'false' }}
         run: |
+          if [ "$PLAN_READY" != true ] || [ ! -s run/plan.json ] || [ -z "$GSC_OUT" ]; then
+            echo 'Snapshot plan unavailable; collector skipped without fallback writes.'
+            echo 'code=1' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           EXTRA=""
           case "$WITH_DEVICE" in true) EXTRA="$EXTRA --with-device" ;; esac
           case "$WITH_COUNTRY" in true) EXTRA="$EXTRA --with-country" ;; esac
@@ -91,9 +97,15 @@ jobs:
         if: always()
         continue-on-error: true
         env:
+          PLAN_READY: ${{ steps.plan.outcome == 'success' }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           PSI_OUT: ${{ steps.plan.outputs.psi_out }}
         run: |
+          if [ "$PLAN_READY" != true ] || [ ! -s run/plan.json ] || [ -z "$PSI_OUT" ]; then
+            echo 'Snapshot plan unavailable; collector skipped without fallback writes.'
+            echo 'code=1' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           set +e
           node scripts/psi-fetch.mjs --out "$PSI_OUT"
           code=$?
@@ -114,9 +126,15 @@ jobs:
         if: always()
         continue-on-error: true
         env:
+          PLAN_READY: ${{ steps.plan.outcome == 'success' }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           CRUX_OUT: ${{ steps.plan.outputs.crux_out }}
         run: |
+          if [ "$PLAN_READY" != true ] || [ ! -s run/plan.json ] || [ -z "$CRUX_OUT" ]; then
+            echo 'Snapshot plan unavailable; collector skipped without fallback writes.'
+            echo 'code=1' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           set +e
           node scripts/crux-fetch.mjs --out "$CRUX_OUT"
           code=$?
@@ -136,7 +154,15 @@ jobs:
       - name: Commit snapshot if changed
         id: persist
         if: always()
+        env:
+          PLAN_READY: ${{ steps.plan.outcome == 'success' }}
+          REPORT_DATE: ${{ steps.plan.outputs.report_date }}
         run: |
+          if [ "$PLAN_READY" != true ] || [ ! -s run/plan.json ] || [ -z "$REPORT_DATE" ]; then
+            echo 'Snapshot plan unavailable; no snapshot will be committed.'
+            echo 'code=1' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           set +e
           code=0
           git config user.name  "github-actions[bot]"
@@ -145,7 +171,7 @@ jobs:
           if [ "$code" -eq 0 ] && git diff --cached --quiet; then
             echo "No new snapshot to commit."
           elif [ "$code" -eq 0 ]; then
-            DATE="${{ steps.plan.outputs.report_date }}"
+            DATE="$REPORT_DATE"
             git commit -m "chore(seo): daily SEO snapshot ${DATE}" || code=$?
             # Retry once if main advanced during the run.
             if [ "$code" -eq 0 ]; then git pull --rebase origin main || code=$?; fi

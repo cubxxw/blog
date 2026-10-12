@@ -30,7 +30,7 @@ import { fileURLToPath } from 'node:url';
 import { GscError, safeErrorMessage } from './lib/gsc-errors.mjs';
 import { parseDateArg, parseUtcTimestamp, todayInTimezone, validateRequestRange } from './lib/gsc-dates.mjs';
 import { GSC_HOST_DEFAULT } from './lib/gsc-snapshot.mjs';
-import { buildReport } from './lib/gsc-report-core.mjs';
+import { buildReport, parseSummaryResponseAggregation } from './lib/gsc-report-core.mjs';
 import { selectCruxObservations, selectPsiObservations } from './lib/seo-observations.mjs';
 import { SEO_REPORT_SCHEMA, buildSeoReport } from './lib/seo-report-core.mjs';
 import { writeReport } from './gsc-report.mjs';
@@ -42,6 +42,7 @@ export function parseCliArgs(argv) {
     end: null,
     host: GSC_HOST_DEFAULT,
     asOf: null,
+    gscResponseAggregation: null,
     runDate: null,
     includeQueryRows: false,
     out: null,
@@ -64,6 +65,7 @@ export function parseCliArgs(argv) {
       case '--host': opts.host = valueOf(arg, i); i += 1; break;
       case '--as-of': opts.asOf = parseUtcTimestamp(valueOf(arg, i), '--as-of'); i += 1; break;
       case '--run-date': opts.runDate = parseDateArg(valueOf(arg, i), '--run-date'); i += 1; break;
+      case '--gsc-response-aggregation': opts.gscResponseAggregation = parseSummaryResponseAggregation(valueOf(arg, i)); i += 1; break;
       case '--include-query-rows': opts.includeQueryRows = true; break;
       case '--out': opts.out = valueOf(arg, i); i += 1; break;
       case '--markdown-out': opts.markdownOut = valueOf(arg, i); i += 1; break;
@@ -102,7 +104,7 @@ export async function main(argv = process.argv.slice(2), deps = {}) {
   try {
     const opts = parseCliArgs(argv);
     if (opts.help) {
-      log('Usage: node scripts/seo-report.mjs --dir DIR --start YYYY-MM-DD --end YYYY-MM-DD [--as-of TS] [--run-date YYYY-MM-DD] [--host host] [--include-query-rows] [--out path] [--markdown-out path]');
+      log('Usage: node scripts/seo-report.mjs --dir DIR --start YYYY-MM-DD --end YYYY-MM-DD [--as-of TS] [--gsc-response-aggregation byPage|byProperty|auto] [--run-date YYYY-MM-DD] [--host host] [--include-query-rows] [--out path] [--markdown-out path]');
       log('Exit: 0 = report generated, sources fresh; 2 = report generated with stale/missing evidence (in-band); 1 = generation failed.');
       return 0;
     }
@@ -122,6 +124,7 @@ export async function main(argv = process.argv.slice(2), deps = {}) {
       host: opts.host,
       includeQueryRows: opts.includeQueryRows,
       asOf,
+      summaryResponseAggregation: opts.gscResponseAggregation,
       fs: deps.fs,
     });
     const psi = selectPsiObservations({ dir: opts.dir, asOf, fs: deps.fs });

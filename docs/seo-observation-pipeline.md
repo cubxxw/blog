@@ -46,7 +46,7 @@ node scripts/seo-autofix-gate.mjs --report report.json --review-state review.jso
   [--intents intents.json] [--repository cubxxw/blog] [--budget 2] [--out gate.json]
 
 # Targeted offline tests (Node 22 built-ins only)
-node --test scripts/psi-fetch.test.mjs scripts/seo-report.test.mjs \
+node --test scripts/psi-fetch.test.mjs scripts/psi-stage-contract.test.mjs scripts/seo-report.test.mjs \
   scripts/seo-autofix-gate.test.mjs scripts/gsc-fetch.test.mjs scripts/gsc-report.test.mjs
 ```
 
@@ -54,7 +54,7 @@ node --test scripts/psi-fetch.test.mjs scripts/seo-report.test.mjs \
 
 | CLI | 0 | 2 | 1 |
 |---|---|---|---|
-| `psi-fetch.mjs` | every planned slot succeeded with full provenance | evidence written; some slot partial/failed/missing (never green) | run failed (no usable measurement) or usage/config/IO error |
+| `psi-fetch.mjs` | every planned slot collected valid core metrics with dated page/tool identity; comparison config may remain unknown | evidence written; some slot lacks collection identity or failed/missing (stage fails except the validated older provenance-only partial contract below) | run failed (no usable measurement) or usage/config/IO error |
 | `seo-report.mjs` | report generated; GSC+PSI+CrUX all fresh at the as-of cutoff | report generated with stale/missing/partial evidence (gaps in-band) | generation failed (usage/config/IO) |
 | `seo-autofix-gate.mjs` | decision produced — zero candidates is a SAFE outcome | — | invalid inputs (bad usage/JSON/schema; missing `--page-map`/`--expected-source-commit`/`--decision-at`) |
 
@@ -112,9 +112,15 @@ refused (never silently overwritten).
 
 Measurement entry essentials (all fields allowlisted; nothing else persists):
 
-- `finalStatus`: `success` (valid core + complete provenance) | `partial`
-  (usable core, provenance visibly incomplete) | `failed` | `missing`
+- `finalStatus`: `success` (valid core + dated page/tool identity) | `partial`
+  (usable core, collection identity incomplete; older v2 rows also used this
+  status for missing comparison config) | `failed` | `missing`
   (planned slot with no recorded row — unknown outcome, never zero).
+- `comparisonProvenance`: `{complete, missing}` explicitly records whether
+  comparison settings are known, independently of `finalStatus`. Missing
+  emulation/throttling settings remain null with visible caveats. No defaults
+  are filled and comparison compatibility is recomputed from provenance,
+  never inferred from collection success or this summary field.
 - `metrics`: `{LCP,FCP,TBT,SI,TTI: unit 'ms', CLS: unit 'unitless'}` with raw
   unrounded `numericValue`, `precision: 'raw'` and per-field `provenance`.
   Legacy files are normalized with `precision: 'unknown-rounded'` (CLS) and
@@ -133,6 +139,13 @@ Measurement entry essentials (all fields allowlisted; nothing else persists):
   `provenanceSignature()` fails closed: unknown/invalid fields make
   compatibility unprovable and comparisons are withheld (URL/strategy/finalUrl
   must also match). CPU/RTT/DPR/locale differences remain distinguishable.
+  The [official PSI v5 ConfigSettings schema](https://developers.google.com/speed/docs/insights/rest/v5/pagespeedapi/runpagespeed#ConfigSettings)
+  exposes categories, form factor, locale and channel (plus deprecated
+  `emulatedFormFactor`); it does not expose the CLI's full throttling, screen
+  emulation or emulated UA. The repository's real Lighthouse 13.5.0 API rows
+  therefore collect useful current metrics while remaining uncomparable.
+  `comparisonProvenance.complete: false` and the preserved comparison missing
+  set prevent matched performance regression observations/candidates.
 - `diagnostics.lcpElement`: legacy `largest-contentful-paint-element`
   (flat/nested) then `lcp-phases-insight` direct node entries, deterministic
   precedence, exact source audit in `provenance`, absent → null (never
@@ -414,6 +427,7 @@ exact new artifact must agree):
 | Case | Collector / artifact | Report | Interpretation | Publication | Aggregate |
 |---|---|---|---|---|---|
 | all fresh | exit 0 + exact new artifact | exit 0: generated/fresh | ok or explicitly skipped | deterministic report | required ok → 0 |
+| PSI all planned slots valid, comparison config absent | **succeeded/degraded**; exit 0 for new rows, or validated older v2 provenance-only partial rows at exit 2 | comparison gaps remain visible; historical partial rows retain their recorded status | optional | current measurements published, matched performance comparisons withheld | 0 if other required stages succeed |
 | CrUX two certified `notEligible` | success/**no-sample** (unknown, never zero) | exit 2: generated/degraded | optional | no-sample status published | 0; never called API failure or fresh field data |
 | CrUX `results[].error` rows (even raw exit 0) | **failed/partial** | generation may still succeed | optional | facts preserved | **nonzero** |
 | CrUX HTTP-200 `record:null`/invalid | **invalid** | generated/degraded never fixes it | optional | invalid/gap published | **nonzero** |
@@ -424,7 +438,17 @@ exact new artifact must agree):
 
 Additional adapter rules (tested): PSI completeness comes from B1's
 planned-slot normalizer (summary counts over deleted rows are rejected as
-inconsistent); GSC `runStatus: degraded` (required slices complete, optional
+inconsistent). Every PSI slot must also have finite, nonnegative raw LCP/CLS
+with correct units, a finite performance score in [0,1], validated UTC
+fetchTime, tool version, HTTP(S) requested/final URLs and no failure evidence;
+requestedUrl must match its planned target. Missing/duplicate/unplanned rows,
+runtime/network failures, invalid metrics or missing collection identity keep
+the stage failed. Legacy snapshots cannot certify collection success.
+Exit 2 is accepted only when every recorded v2 slot passes those checks and
+each partial row lacks comparison provenance; a plain complete result with
+exit 2, or any exit 1/unknown, remains failed. Historical artifacts are not
+rewritten and missing comparison config never authorizes performance work.
+GSC `runStatus: degraded` (required slices complete, optional
 cut failures) is collection SUCCESS with a distinct `degraded` outcome; the
 report adapter requires the real minimum evidence shape, the expected
 window/identity, JSON↔Markdown correspondence and exit↔freshness consistency.

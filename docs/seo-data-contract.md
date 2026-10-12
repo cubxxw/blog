@@ -30,6 +30,9 @@ node scripts/gsc-report.mjs --dir data/seo --start 2026-07-27 --end 2026-09-20 \
   --out docs/seo-390-baseline.json
 node scripts/gsc-report.mjs ... --host cubxxw.com --include-query-rows
 node scripts/gsc-report.mjs ... --as-of 2026-09-23T00:00:00Z   # observation cutoff
+# Opt into a collector-recorded response group in a mixed legacy/new corpus:
+node scripts/gsc-report.mjs ... --summary-response-aggregation byPage
+node scripts/seo-report.mjs ... --gsc-response-aggregation byPage
 
 node --test scripts/gsc-fetch.test.mjs scripts/gsc-report.test.mjs
 ```
@@ -144,6 +147,42 @@ identity: same-day evidence with different `responseAggregationType`
 (including legacy `unrecorded-legacy` vs new-schema values) stays in separate
 groups and surfaces under `incompatibilities` — never silently overwritten or
 blended.
+
+**Explicit summary response selection** (`--summary-response-aggregation` for
+GSC, `--gsc-response-aggregation` for SEO; exact whitelist `byPage`,
+`byProperty`, `auto`). The default remains the historical rule: one unfiltered
+request context and one response group, otherwise no summary. No new selector
+fields are emitted by default, so pure legacy reports retain their output
+shape and metrics. Mixed `unrecorded-legacy`/`byPage` corpora can opt into
+`byPage` explicitly; no recency, completeness or traffic ranking chooses it.
+
+The shared `selectDomainPageGroup` backs both GSC summary and SEO freshness.
+Selection still requires a **unique domain-wide semantic request variant**:
+property, search type, dataState, ordered dimensions, filters and request
+aggregation cannot be resolved by a response selector. Within that variant,
+exactly one response group must match; its dimensions must be `date,page`,
+slice `date_page`, and every selected day must retain `gsc-snapshot/2` schema
+provenance. A response label alone never promotes legacy evidence. Missing,
+unmatched, ambiguous or schema-unproven selections remain unsummarized/unknown.
+
+Opt-in JSON records `params.summaryResponseAggregation` and
+`summary.domainPageSelection` in GSC; SEO records
+`params.gscResponseAggregation`, the GSC summary and
+`sources.gsc.freshness.selection`. Selection evidence includes status, exact
+request context, requested/selected response aggregation, candidate contexts,
+available response aggregations and the basis. SEO Markdown states the
+selection too. **All sections and incompatibilities remain visible**; ignored
+legacy groups are never merged, and their counted dates, completeness or newer
+fetch times cannot fill or refresh the selected group. Another property's or
+filter's fresher evidence cannot refresh it either. Unknown selection has no
+selected fetch/data date. Independent property totals and query groups retain
+their existing selection and comparability rules. Opt-in `pending` removes the
+query×page collection gate only for the unique exact host-scoped
+`blog_date_query_page` context with recorded `byPage` semantics and proven,
+identity-compatible coverage in **both** windows. Missing dates, ambiguity,
+other properties or date×query rows retain an explicit collection/reconciliation
+gate. This proves the collector's returned-row window coverage, never exhaustive
+query coverage; the GSC UI reconciliation gate remains pending.
 
 **Day states** in the report: `complete`, `empty`, `legacy-unknown` (rows
 observed, completeness unproven), `legacy-empty-unknown` (legacy window day
@@ -273,6 +312,24 @@ would see different inputs and correctly **refuse to overwrite** this frozen
 artifact; a fresh baseline must use a **new output path** (or an explicit
 `--as-of` for a fixed observation basis). Regeneration over the identical input
 set is byte-identical (`--out` no-ops on identical content).
+
+## Mixed-corpus regression verification (2026-10-12)
+
+Offline deterministic CLI verification with the committed snapshots and explicit
+`--as-of 2026-10-12T00:00:00Z`, traffic range `2026-08-14..2026-10-08`, and
+response selector `byPage` restores two proven 28-day windows: previous
+**150 clicks / 94,022 impressions**, current **137 / 48,110**. GSC is `fresh`
+and trend is `comparable`; SEO still exits **2** because PSI/CrUX remain
+independently degraded. This is an observation of existing evidence, not a new
+Google collection, UI reconciliation or growth claim.
+
+Repeated historical/current GSC and SEO CLI runs are byte-identical. Without
+the selector, both historical and mixed-corpus GSC JSON are byte-identical to
+source revision `17abebbd` for the same inputs. Historical cutoff
+`2026-09-24T00:00:00Z` retains **141 / 93,015** and **119 / 61,892**, unproven
+legacy completeness and a non-comparable trend. Regression suites cover mixed
+groups, missing selected dates, genuine multi-context/group ambiguity, strict
+CLI values, schema provenance and newer unrelated filter evidence.
 
 ## Source facts (official references)
 

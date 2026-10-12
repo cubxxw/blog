@@ -20,7 +20,7 @@ tags:
   - Travel
   - Exploration
 description: >
-  December 2025 deep thought notes with 380 entries documenting pilgrimage experiences, Zen philosophy, and self-discovery journeys.
+  December 2025 deep thought notes with 374 entries documenting pilgrimage experiences, Zen philosophy, and self-discovery journeys.
 tldr:
   - "History accumulates through everyday action rather than grand design, visible in ancient stone paths worn smooth by centuries of pilgrims."
   - "Japanese culture exemplifies translating abstract ideals into meticulous practices, from public order to craftsmanship becoming second nature through systems."
@@ -30,7 +30,7 @@ maturity: budding
 
 # 2025 December Thought Notes
 
-> **374 notes this month** | recorded from 2025-12-02 to 2025-12-30
+> **374 notes this month** | recorded from 2025-12-01 to 2025-12-31
 >
 > **Themes**: Reading, Ideas and History 93 · Travel, Places and Cities 55 · Product, Engineering and Open Source 51 · AI and Agent Systems 48 · Daily Notes and Everything Else 47 · Self-Knowledge and Psychology 31 · Business, Investing and Career 25 · Body, Health and Daily Life 17 · Content, Craft and Recording 7
 >

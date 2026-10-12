@@ -648,3 +648,66 @@ test('R3: uncertified historical-supplement targets stay historical; certified c
   const obs2 = buildObservations({ gsc: makeGscReport(), psiSection: section2, cruxSection: {} });
   assert.ok(obs2.some((o) => o.kind === 'metric-regression' && o.actionable && o.strategy === 'mobile'));
 });
+
+
+test('explicit aggregation freshness uses only selected recorded provenance and fails closed on ambiguity', () => {
+  const gsc = makeGscReport({ fetchedAt: '2026-09-21T00:00:00Z' });
+  gsc.params.summaryResponseAggregation = 'byPage';
+  const variant = gsc.sections.domainPageRows.variants[0];
+  const selected = variant.groups[0];
+  selected.responseAggregationType = 'byPage';
+  selected.days['2026-09-20'].provenance.schema = 'gsc-snapshot/2';
+  selected.days['2026-09-20'].state = 'complete';
+  const legacy = structuredClone(selected);
+  legacy.responseAggregationType = 'unrecorded-legacy';
+  legacy.days['2026-09-20'].provenance = { schema: 'legacy-v1', fetchedAt: '2026-09-24T11:00:00Z' };
+  variant.groups.push(legacy);
+  const unrelated = structuredClone(variant);
+  unrelated.context.filters = [{ groupType: 'and', filters: [{ dimension: 'country', operator: 'equals', expression: 'usa' }] }];
+  unrelated.groups[0].days['2026-09-20'].provenance.fetchedAt = '2026-09-24T11:00:00Z';
+  gsc.sections.domainPageRows.variants.push(unrelated);
+  let freshness = classifyGscFreshness({ gsc, asOfMs: Date.parse(AS_OF) });
+  assert.equal(freshness.status, 'stale');
+  assert.equal(freshness.latestFetchedAt, '2026-09-21T00:00:00.000Z', 'fresh legacy/filter evidence cannot refresh selected rows');
+  selected.days['2026-09-20'].provenance.fetchedAt = '2026-09-24T11:00:00Z';
+  freshness = classifyGscFreshness({ gsc, asOfMs: Date.parse(AS_OF) });
+  assert.equal(freshness.status, 'fresh');
+  const report = buildFixture({ gsc });
+  assert.equal(report.params.gscResponseAggregation, 'byPage');
+  assert.equal(report.sources.gsc.freshness.selection.responseAggregationType, 'byPage');
+  assert.match(report.markdown, /byPage/);
+  // A second matching group is genuinely ambiguous; freshness cannot use the summary's stale date fields.
+  variant.groups.push(structuredClone(selected));
+  freshness = classifyGscFreshness({ gsc, asOfMs: Date.parse(AS_OF) });
+  assert.equal(freshness.status, 'unknown');
+  assert.equal(freshness.latestFetchedAt, null);
+  assert.equal(freshness.latestDataDate, null);
+});
+
+test('explicit aggregation cannot treat schema-unproven provenance as collector-recorded', () => {
+  for (const schema of [undefined, 'legacy-v1']) {
+    const gsc = makeGscReport();
+    gsc.params.summaryResponseAggregation = 'byPage';
+    const group = gsc.sections.domainPageRows.variants[0].groups[0];
+    group.responseAggregationType = 'byPage';
+    group.days['2026-09-20'].provenance.schema = schema;
+    const f = classifyGscFreshness({ gsc, asOfMs: Date.parse(AS_OF) });
+    assert.equal(f.fresh, false);
+    assert.equal(f.latestFetchedAt, null);
+    assert.equal(f.latestDataDate, null);
+  }
+});
+
+test('SEO CLI records and validates explicit GSC response aggregation selection', async () => {
+  const args = ['--dir', REAL_DATA_DIR, '--start', '2026-08-14', '--end', '2026-10-08', '--as-of', '2026-10-12T00:00:00Z'];
+  assert.equal(parseCliArgs([...args, '--gsc-response-aggregation', 'byPage']).gscResponseAggregation, 'byPage');
+  assert.throws(() => parseCliArgs([...args, '--gsc-response-aggregation', 'unrecorded']), /response aggregation/i);
+  const logs = [];
+  const code = await main([...args, '--gsc-response-aggregation', 'byPage'], { log: (s) => logs.push(s), errorLog: (s) => logs.push(s), now: () => new Date('2026-10-12T00:00:00Z') });
+  assert.ok([0, 2].includes(code));
+  const r = JSON.parse(logs[0]);
+  assert.equal(r.params.gscResponseAggregation, 'byPage');
+  assert.equal(r.sources.gsc.summary.mainHostPages.current.coverage.metricsComplete, true);
+  assert.equal(r.sources.gsc.freshness.status, 'fresh');
+  assert.equal(r.trend.status, 'comparable');
+});

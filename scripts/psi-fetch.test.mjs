@@ -189,11 +189,12 @@ test('null stays unknown: absent audits, empty field data and missing settings a
   assert.equal(entry.originFieldData.status, 'unknown');
   assert.equal(entry.provenance.configSettings, null);
   assert.equal(entry.originHttpStatus, null); // origin status is never observed via PSI
-  assert.equal(entry.finalStatus, 'partial');
+  assert.equal(entry.finalStatus, 'success'); // missing comparison config does not invalidate collection
+  assert.equal(entry.comparisonProvenance.complete, false);
   assert.ok(entry.caveats.some((c) => /configSettings/.test(c)));
 });
 
-test('field data with samples records percentiles; success requires full provenance', () => {
+test('field data with samples records percentiles independently of lab collection', () => {
   const json = {
     lighthouseResult: makeLhr(),
     loadingExperience: {
@@ -208,6 +209,40 @@ test('field data with samples records percentiles; success requires full provena
   assert.equal(entry.fieldData.metrics.largest_contentful_paint.percentile, 2400);
   assert.equal(entry.provenance.lighthouseVersion, '12.8.0');
   assert.equal(entry.provenance.configSettings.throttlingMethod, 'simulate');
+});
+
+test('official PSI 13.5.0 config shape collects successfully but cannot compare samples', async () => {
+  const lhr = makeLhr({
+    version: '13.5.0',
+    settings: { onlyCategories: CATEGORIES, formFactor: 'mobile', locale: 'en-US', channel: 'lr' },
+    audits: { interactive: undefined },
+  });
+  const entry = await measureOne({ url: 'https://cubxxw.com/', strategy: 'mobile' }, {
+    fetchImpl: async () => jsonResponse({ lighthouseResult: lhr }),
+  });
+  assert.equal(entry.finalStatus, 'success');
+  assert.equal(entry.usable, true);
+  assert.equal(entry.metrics.TTI, null); // optional audit absence is unknown
+  assert.equal(entry.comparisonProvenance.complete, false);
+  assert.ok(entry.comparisonProvenance.missing.includes('configSettings.throttlingMethod'));
+  assert.equal(provenanceSignature(entry.provenance).complete, false);
+  assert.equal(entry.provenance.configSettings.throttlingMethod, null);
+  assert.equal(entry.provenance.configSettings.throttling.rttMs, null);
+  assert.ok(entry.caveats.some((c) => /comparisons.*withheld/.test(c)));
+  const plan = planMeasurements({ urls: ['https://cubxxw.com/'], strategies: ['mobile'] });
+  assert.equal(summarizeEntries({ planned: plan.planned, entries: [entry] }).runStatus, 'ok');
+});
+
+test('invalid performance and negative core metrics cannot become successful measurements', async () => {
+  for (const options of [{ performance: NaN }, { performance: Infinity }, { performance: -0.1 }, { performance: 1.1 }, { lcpMs: -1 }, { cls: -0.01 }]) {
+    const lhr = makeLhr(options);
+    assert.equal(validateLighthouseResult({ lighthouseResult: lhr }).ok, false, JSON.stringify(options));
+    const entry = await measureOne({ url: 'https://cubxxw.com/', strategy: 'mobile' }, {
+      fetchImpl: async () => jsonResponse({ lighthouseResult: lhr }),
+    });
+    assert.equal(entry.finalStatus, 'failed');
+    assert.equal(entry.reasonCategory, 'malformed-measurement');
+  }
 });
 
 // ---------------------------------------------------------------------------
@@ -312,6 +347,16 @@ test('missing/invalid fetchTime is partial, not retained, and blocks compatibili
   assert.equal(bad.provenance.fetchTime, null); // invalid timestamp never retained
   const good = extractMeasurement({ url: 'u', strategy: 'mobile', json: { lighthouseResult: makeLhr() } });
   assert.equal(provenanceSignature(bad.provenance).complete, false);
+});
+
+test('invalid or missing measured-page URLs stay partial with comparison provenance incomplete', () => {
+  for (const changes of [{ requestedUrl: null }, { finalDisplayedUrl: null }, { finalDisplayedUrl: 'not-a-url' }]) {
+    const lhr = { ...makeLhr(), ...changes };
+    const entry = extractMeasurement({ url: 'https://cubxxw.com/', strategy: 'mobile', json: { lighthouseResult: lhr } });
+    assert.equal(entry.finalStatus, 'partial');
+    assert.equal(entry.comparisonProvenance.complete, false);
+    assert.ok(entry.caveats.some((c) => /page identity incomplete/.test(c)));
+  }
 });
 
 // ---------------------------------------------------------------------------

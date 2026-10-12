@@ -21,7 +21,7 @@ tags:
   - Travel
   - Exploration
 description: >
-  A complete record of March 2026: 467 notes across 9 themes, led by Cambodia and Southeast Asia, money and the museum of the Khmer Rouge period, AI and agent systems, and product work. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.
+  A complete record of March 2026: 464 notes across 9 themes, led by Cambodia and Southeast Asia, money and the museum of the Khmer Rouge period, AI and agent systems, and product work. Entries keep their original timestamps; only notes that could hurt a specific person or myself were left out.
 tldr:
   - "Money in Cambodia is a lens for reading the state itself: dollarisation bought stability at the price of policy sovereignty."
   - "S-21 shows how a regime turns ideology into an archive of names and a list of people it is allowed to kill."

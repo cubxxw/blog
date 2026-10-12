@@ -113,7 +113,7 @@ jobs:
           WIN_END: ${{ steps.ctx.outputs.window_end }}
         run: |
           set +e
-          node scripts/seo-report.mjs --dir data/seo \
+          node scripts/seo-report.mjs --dir data/seo --gsc-response-aggregation byPage \
             --start "$WIN_START" --end "$WIN_END" \
             --as-of "$DECISION_AT" --run-date "$RUN_DATE" --include-query-rows \
             --out run/report.json --markdown-out run/report.md

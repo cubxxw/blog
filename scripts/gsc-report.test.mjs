@@ -89,7 +89,7 @@ function sliceSpec(name, { dimensions, filterGroups = [], requestAggregationType
   };
 }
 
-function reportFrom(files, { start = '2026-03-02', end = '2026-03-05', host = 'cubxxw.com', includeQueryRows = false, order = null, asOf = null, pairsLimit = 500 } = {}) {
+function reportFrom(files, { start = '2026-03-02', end = '2026-03-05', host = 'cubxxw.com', includeQueryRows = false, order = null, asOf = null, pairsLimit = 500, summaryResponseAggregation = null } = {}) {
   mkdirSync(TMP_ROOT, { recursive: true });
   const dir = mkdtempSync(join(TMP_ROOT, 'report-'));
   try {
@@ -98,7 +98,7 @@ function reportFrom(files, { start = '2026-03-02', end = '2026-03-05', host = 'c
     for (const name of writeOrder) {
       writeFileSync(join(dir, name), `${JSON.stringify(files[name], null, 2)}\n`);
     }
-    return buildReport({ dir, start, end, host, includeQueryRows, asOf, pairsLimit });
+    return buildReport({ dir, start, end, host, includeQueryRows, asOf, pairsLimit, summaryResponseAggregation });
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
@@ -1322,4 +1322,107 @@ test('F3: comparison eligibility is conservative (exact filters, identity, windo
   const r7 = reportFrom({ 'gsc-main.json': pagesFull, 'gsc-q.json': emptyQuery });
   assert.equal(r7.summary.queryCoverage.current.comparable, true);
   assert.deepEqual(r7.summary.queryCoverage.current.querySource.metrics, { clicks: 0, impressions: 0, ctr: null, position: null });
+});
+
+
+function mixedAggregationFiles() {
+  const dates = ['2026-03-02', '2026-03-03', '2026-03-04', '2026-03-05'];
+  return {
+    'gsc-legacy.json': legacySnapshot({ window: { start: dates[0], end: dates[3] }, fetchedAt: '2026-03-09T00:00:00Z', runDate: '2026-03-09', date_page: dates.map((d) => row(d, ['https://cubxxw.com/a'], 90, 9000, 1)) }),
+    'gsc-recorded.json': newSnapshot({ fetchedAt: '2026-03-06T00:00:00Z', runDate: '2026-03-06', requestWindow: { start: dates[0], end: dates[3] }, slices: [datePageSlice(Object.fromEntries(dates.map((d) => [d, daySlice({ rows: [row(d, ['https://cubxxw.com/a'], 2, 100, 8)] })])))] }),
+  };
+}
+
+test('explicit byPage selects recorded rows without merging legacy and retains both groups', () => {
+  const files = mixedAggregationFiles();
+  const defaultReport = reportFrom(files);
+  assert.equal(defaultReport.summary.mainHostPages.current.status, 'not-summarized');
+  assert.equal(defaultReport.params.summaryResponseAggregation, undefined, 'default JSON shape is unchanged');
+  const report = reportFrom(files, { summaryResponseAggregation: 'byPage' });
+  assert.equal(report.summary.mainHostPages.current.metrics.clicks, 4);
+  assert.equal(report.summary.mainHostPages.current.metrics.impressions, 200);
+  assert.equal(report.summary.mainHostPages.current.coverage.metricsComplete, true);
+  assert.equal(report.params.summaryResponseAggregation, 'byPage');
+  assert.equal(report.summary.domainPageSelection.responseAggregationType, 'byPage');
+  assert.equal(report.summary.domainPageSelection.context.requestAggregationType, 'auto');
+  assert.equal(report.sections.domainPageRows.variants[0].groups.length, 2);
+  assert.ok(report.incompatibilities.some((r) => /response aggregation semantics/.test(r)));
+});
+
+test('explicit aggregation cannot resolve multiple unfiltered request contexts or unmatched aggregation', () => {
+  const files = mixedAggregationFiles();
+  for (const change of [
+    (s) => { s.meta.property = 'sc-domain:other.example'; },
+    (s) => { s.meta.searchType = 'image'; },
+    (s) => { s.meta.dataState = 'all'; },
+    (s) => { s.slices[0].requestAggregationType = 'byPage'; },
+    (s) => { s.slices[0].dimensions = ['date', 'page', 'device']; },
+  ]) {
+    const other = structuredClone(files['gsc-recorded.json']);
+    change(other);
+    const r = reportFrom({ ...files, 'gsc-other.json': other }, { summaryResponseAggregation: 'byPage' });
+    assert.equal(r.summary.mainHostPages.current.status, 'not-summarized');
+    assert.equal(r.summary.domainPageSelection.status, 'ambiguous');
+  }
+  const noMatch = reportFrom(files, { summaryResponseAggregation: 'byProperty' });
+  assert.equal(noMatch.summary.mainHostPages.current.status, 'not-summarized');
+  assert.equal(noMatch.summary.domainPageSelection.status, 'unmatched');
+  assert.throws(() => reportFrom(files, { summaryResponseAggregation: 'unrecorded-legacy' }), /response aggregation/i);
+});
+
+test('CLI opt-in aggregation is strict and produces the selected report', async () => {
+  const args = ['--dir', 'unused', '--start', '2026-03-02', '--end', '2026-03-05'];
+  assert.equal(parseCliArgs([...args, '--summary-response-aggregation', 'byPage']).summaryResponseAggregation, 'byPage');
+  for (const value of ['byPage ', 'bypage', 'unrecorded-legacy', '']) {
+    assert.throws(() => parseCliArgs([...args, '--summary-response-aggregation', value]), /response aggregation/i);
+  }
+  mkdirSync(TMP_ROOT, { recursive: true });
+  const dir = mkdtempSync(join(TMP_ROOT, 'selector-cli-'));
+  try {
+    for (const [file, snap] of Object.entries(mixedAggregationFiles())) writeFileSync(join(dir, file), JSON.stringify(snap));
+    const logs = [];
+    const code = await main(['--dir', dir, '--start', '2026-03-02', '--end', '2026-03-05', '--summary-response-aggregation', 'byPage'], { log: (s) => logs.push(s), errorLog: (s) => logs.push(s), now: new Date('2026-03-10T00:00:00Z') });
+    assert.equal(code, 0);
+    assert.equal(JSON.parse(logs[0]).summary.mainHostPages.current.metrics.clicks, 4);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+
+test('explicit byPage gaps remain gaps even when newer legacy rows cover the missing day', () => {
+  const files = mixedAggregationFiles();
+  delete files['gsc-recorded.json'].slices[0].days['2026-03-05'];
+  const r = reportFrom(files, { summaryResponseAggregation: 'byPage' });
+  const current = r.summary.mainHostPages.current;
+  assert.equal(current.metrics.clicks, 2);
+  assert.equal(current.coverage.daysCounted, 1);
+  assert.equal(current.coverage.metricsComplete, false);
+  assert.deepEqual(current.coverage.countedDates, ['2026-03-04']);
+  assert.deepEqual(r.sections.domainPageRows.variants[0].groups.find((g) => g.responseAggregationType === 'byPage').windows.current.gapDates, ['2026-03-05']);
+  const pureLegacy = reportFrom({ 'gsc-legacy.json': files['gsc-legacy.json'] }, { summaryResponseAggregation: 'byPage' });
+  assert.equal(pureLegacy.summary.mainHostPages.current.status, 'not-summarized');
+  assert.equal(pureLegacy.summary.domainPageSelection.status, 'unmatched');
+});
+
+test('opt-in pending collection reflects proven host query×page windows, while default retains historical gates', () => {
+  const files = mixedAggregationFiles();
+  const query = newSnapshot({ fetchedAt: '2026-03-06T00:00:00Z', runDate: '2026-03-06', requestWindow: { start: '2026-03-02', end: '2026-03-05' }, slices: [sliceSpec('blog_date_query_page', {
+    dimensions: ['date', 'query', 'page'], requestAggregationType: 'byPage',
+    filterGroups: [{ groupType: 'and', filters: [{ dimension: 'page', operator: 'includingRegex', expression: '^https?://cubxxw\\.com/' }] }],
+    days: Object.fromEntries(['2026-03-02', '2026-03-03', '2026-03-04', '2026-03-05'].map((d) => [d, daySlice({ rows: [row(d, ['query', 'https://cubxxw.com/a'], 1, 10, 5)] })])),
+  })] });
+  const fullFiles = { ...files, 'gsc-queries.json': query };
+  const report = reportFrom(fullFiles, { summaryResponseAggregation: 'byPage' });
+  assert.equal(report.summary.queryCoverage.current.comparable, true);
+  assert.ok(report.pending.every((p) => !/query.*collection/i.test(p)), 'completed collection must not be pending');
+  assert.ok(report.pending.some((p) => /GSC UI verification/.test(p)), 'UI gate stays pending');
+  assert.ok(reportFrom(fullFiles).pending.some((p) => /fresh query.*collection is pending/.test(p)), 'default baseline unchanged');
+  for (const mutate of [
+    (s) => { delete s.slices[0].days['2026-03-05']; },
+    (s) => { s.meta.property = 'sc-domain:other.example'; },
+    (s) => { s.slices[0].name = 'date_query'; s.slices[0].dimensions = ['date', 'query']; },
+  ]) {
+    const incomplete = structuredClone(query); mutate(incomplete);
+    const r = reportFrom({ ...files, 'gsc-queries.json': incomplete }, { summaryResponseAggregation: 'byPage' });
+    assert.ok(r.pending.some((p) => /query.*collection/i.test(p)), 'gaps, unrelated properties and non-page rows cannot close collection');
+  }
 });

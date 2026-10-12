@@ -18,7 +18,7 @@ tags:
   - Philosophy
   - Buddhism
 description: >
-  January 2026 deep thought notes with 388 entries covering AI product design, finance, biology, Buddhism, social observation, and self-discovery.
+  January 2026 deep thought notes with 386 entries covering AI product design, finance, biology, Buddhism, social observation, and self-discovery.
 tldr:
   - "AI's true profitability comes from deterministic, ROI-measurable work delivered to businesses, not flashier consumer content generation."
   - "Autonomy's measure is accountability for consequences and controlled uncertainty reduction, not capability—systems must reduce action intensity when uncertain."

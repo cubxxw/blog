@@ -28,6 +28,7 @@ import {
   normalizePsiSnapshot,
   validateCruxSnapshot,
 } from './seo-observations.mjs';
+import { hasValidCollectedMeasurement, provenanceSignature, PSI_SNAPSHOT_SCHEMA } from './psi-measure.mjs';
 
 export const STAGE_SCHEMA = 'seo-stage/1';
 export const PIPELINE_STATUS_SCHEMA = 'seo-pipeline-status/1';
@@ -126,9 +127,30 @@ export function classifyPsiContent(json) {
   if (recomputed.partial > 0) reasons.push(`psi-slot-partial-usable: ${recomputed.partial} slot(s) usable with incomplete provenance`);
   if (recomputed.duplicate > 0) reasons.push(`psi-slot-duplicate: ${recomputed.duplicate} duplicate row(s) excluded`);
   if (recomputed.unplanned > 0) reasons.push(`psi-slot-unplanned: ${recomputed.unplanned} unplanned row(s) excluded`);
-  if (normalized.runStatus === 'ok') {
-    return { ok: true, outcome: 'ok', reasons };
+  const rows = normalized.slots.map((slot) => slot.entry);
+  const valid = rows.filter(hasValidCollectedMeasurement);
+  const incompleteComparison = valid.filter((entry) => !provenanceSignature(entry.provenance).complete);
+  // Recompute both contracts from actual rows; usable/status/count claims are
+  // insufficient. Legacy rows cannot certify the current collection. A v2
+  // partial with COMPLETE comparison provenance is an unexplained partial,
+  // not the specific old API provenance-only degradation accepted here.
+  const unexplainedPartial = valid.some((entry) => entry.finalStatus === 'partial' && provenanceSignature(entry.provenance).complete);
+  const completeCollection = normalized.schema === PSI_SNAPSHOT_SCHEMA
+    && recomputed.planned > 0 && valid.length === recomputed.planned
+    && recomputed.failed === 0 && recomputed.missing === 0
+    && recomputed.duplicate === 0 && recomputed.unplanned === 0 && !unexplainedPartial;
+  if (completeCollection) {
+    if (incompleteComparison.length > 0) {
+      reasons.push(`psi-comparison-provenance-incomplete: ${incompleteComparison.length} collected slot(s); comparison compatibility unprovable, comparisons withheld`);
+    }
+    return { ok: true, outcome: incompleteComparison.length > 0 ? 'degraded' : 'ok', reasons,
+      // Exit 2 is the old collector's provenance-only partial result. New
+      // successful rows must still agree with a successful process exit 0.
+      acceptsPartialExit: recomputed.partial > 0,
+    };
   }
+  if (valid.length < recomputed.planned) reasons.push(`psi-collection-invalid: ${recomputed.planned - valid.length} slot(s) lack valid current measurements/page identity/tool/timestamp or record failure evidence`);
+  if (unexplainedPartial) reasons.push('psi-partial-unexplained: a partial row has complete comparison provenance; collection success unproven');
   return { ok: false, outcome: recomputed.usable > 0 ? 'partial' : 'failed', reasons };
 }
 
@@ -206,10 +228,11 @@ export function collectorStage({ kind, planned, artifactInfo, runId, attempt, re
 
   const verdict = classify(artifactInfo.json);
   const reasons = [...verdict.reasons];
-  if (exitCode !== 0) {
+  const acceptedExit = exitCode === 0 || (kind === 'psi' && exitCode === 2 && verdict.ok && verdict.outcome === 'degraded' && verdict.acceptsPartialExit === true);
+  if (!acceptedExit) {
     reasons.unshift(`collector-exit-nonzero: process exit ${exitCode} (stage success needs outcome AND artifact to agree)`);
   }
-  const ok = verdict.ok && exitCode === 0;
+  const ok = verdict.ok && acceptedExit;
   return finish(record, ok ? { status: 'succeeded', outcome: verdict.outcome } : { status: 'failed', outcome: verdict.ok ? 'partial' : verdict.outcome }, artifact, reasons);
 }
 

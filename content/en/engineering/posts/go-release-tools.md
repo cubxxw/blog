@@ -619,55 +619,55 @@ Binaries built by `README` will be archived together with `LICENSE` files into a
 ```yaml
 # .goreleaser.yaml
 archives:
-   - #
-     # ID of this archive.
-     #
-     # Default: 'default'
-     id:my-archive
+  - #
+    # ID of this archive.
+    #
+    # Default: 'default'
+    id: my-archive
 
-     # Builds reference which build instances should be archived in this archive.
-     builds:
-       -default
+    # Builds reference which build instances should be archived in this archive.
+    builds:
+      - default
 
-     # Archive format. Valid options are `tar.gz`, `tgz`, `tar.xz`, `txz`, tar`, `gz`, `zip` and `binary`.
-     # If format is `binary`, no archives are created and the binaries are instead
-     # uploaded directly.
-     #
-     # Default: 'tar.gz'
-     format:zip
+    # Archive format. Valid options are `tar.gz`, `tgz`, `tar.xz`, `txz`, tar`, `gz`, `zip` and `binary`.
+    # If format is `binary`, no archives are created and the binaries are instead
+    # uploaded directly.
+    #
+    # Default: 'tar.gz'
+    format: zip
 
-     # This will create an archive without any binaries, only the files are there.
-     # The name template must not contain any references to `Os`, `Arch` and etc, since the archive will be meta.
-     #
-     # Since: v1.9
-     # Templates: allowed
-     meta: true
+    # This will create an archive without any binaries, only the files are there.
+    # The name template must not contain any references to `Os`, `Arch` and etc, since the archive will be meta.
+    #
+    # Since: v1.9
+    # Templates: allowed
+    meta: true
 
-     # Archive name.
-     #
-     #Default:
-     # - if format is `binary`:
-     # - `{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}_{{ . }}{{ end }}{{ if not (eq .Amd64 "v1") }}{{ .Amd64 }}{{ end }}`
-     # - if format is anything else:
-     # - `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}_{{ . }}{{ end }}{{ if not (eq .Amd64 "v1") }}{{ .Amd64 }}{{ end }}`
-     # Templates: allowed
-     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    # Archive name.
+    #
+    #Default:
+    # - if format is `binary`:
+    # - `{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}_{{ . }}{{ end }}{{ if not (eq .Amd64 "v1") }}{{ .Amd64 }}{{ end }}`
+    # - if format is anything else:
+    # - `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}_{{ . }}{{ end }}{{ if not (eq .Amd64 "v1") }}{{ .Amd64 }}{{ end }}`
+    # Templates: allowed
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
 
-     # Sets the given file info to all the binaries included from the `builds`.
-     #
-     # Default: copied from the source binary.
-     # Since: v1.14
-     builds_info:
-       group: root
-       owner: root
-       mode: 0644
-       # format is `time.RFC3339Nano`
-       mtime: 2008-01-02T15:04:05Z
+    # Sets the given file info to all the binaries included from the `builds`.
+    #
+    # Default: copied from the source binary.
+    # Since: v1.14
+    builds_info:
+      group: root
+      owner: root
+      mode: 0644
+      # format is `time.RFC3339Nano`
+      mtime: 2008-01-02T15:04:05Z
 
-     # Set this to true if you want all files in the archive to be in a single directory.
-     # If set to true and you extract the archive 'goreleaser_Linux_arm64.tar.gz',
-     # you'll get a folder 'goreleaser_Linux_arm64'.
-     # If set to falsee, all files are extracted separately.
+    # Set this to true if you want all files in the archive to be in a single directory.
+    # If set to true and you extract the archive 'goreleaser_Linux_arm64.tar.gz',
+    # you'll get a folder 'goreleaser_Linux_arm64'.
+    # If set to falsee, all files are extracted separately.
     # You can also set it to a custom folder name (templating is supported).
     wrap_in_directory: true
 
