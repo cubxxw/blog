@@ -63,9 +63,11 @@ test('a native pointer drag produces actions only after release; ordinary readin
   await paragraph.evaluate(el => el.scrollIntoView({ block: 'center' }));
   await paragraph.click();
   await expect(page.getByRole('toolbar')).not.toBeVisible();
-  const bounds = await paragraph.boundingBox();
-  expect(bounds).toBeTruthy();
-  const start = { x: bounds!.x + 2, y: bounds!.y + bounds!.height / 2 };
+  const glyph = await paragraph.evaluate(el => {
+    const r = document.createRange(); r.setStart(el.firstChild!, 0); r.setEnd(el.firstChild!, 1);
+    return r.getBoundingClientRect().toJSON();
+  });
+  const start = { x: glyph.x + 2, y: glyph.y + glyph.height / 2 };
   await page.mouse.move(start.x, start.y);
   await page.mouse.down();
   await page.mouse.move(start.x + 170, start.y, { steps: 8 });

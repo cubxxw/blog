@@ -151,7 +151,12 @@ test('drag uses actual range and Escape preserves native text', async ({ page })
     getSelection()!.removeAllRanges(); getSelection()!.addRange(r);
   });
   const selected = await page.evaluate(() => ({ text: getSelection()!.toString(), rect: getSelection()!.getRangeAt(0).getBoundingClientRect().toJSON() }));
-  await expect.poll(async () => { const r = (await page.getByRole('toolbar').boundingBox())!; return Math.abs(r.y + r.height + 10 - selected.rect.top); }).toBeLessThan(2);
+  const touch = await page.evaluate(() => matchMedia('(hover: none)').matches);
+  if (touch) {
+    await expect.poll(async () => (await page.getByRole('toolbar').boundingBox())!.y - selected.rect.bottom).toBeGreaterThanOrEqual(55);
+  } else {
+    await expect.poll(async () => { const r = (await page.getByRole('toolbar').boundingBox())!; return Math.abs(r.y + r.height + 10 - selected.rect.top); }).toBeLessThan(2);
+  }
   await page.keyboard.press('Escape'); await expect(page.getByRole('toolbar')).not.toBeVisible();
   expect(await page.evaluate(() => getSelection()!.toString())).toBe(passage.slice(4, 12));
 });
@@ -197,12 +202,14 @@ test('failed AI retry avoids duplicate question and poisoned history', async ({ 
   });
   await page.goto(article); await select(page);
   await page.getByRole('toolbar').getByRole('button', { name: 'AI 分析', exact: true }).click();
-  const panel = page.locator('.rc-ai-panel'); await panel.getByRole('button', { name: '重试', exact: true }).click();
-  await expect(panel.locator('.rc-ai-answer-body')).toHaveText('回复完整。'); await expect(panel.locator('.rc-ai-msg--user')).toHaveCount(1);
+  const prefix = await page.evaluate(() => innerWidth < 1200 ? 'abs' : 'rc');
+  const panel = page.locator('.' + prefix + '-ai-panel'); await panel.getByRole('button', { name: '重试', exact: true }).click();
+  await expect(panel.locator('.' + prefix + '-ai-answer-body')).toHaveText('回复完整。'); await expect(panel.locator('.' + prefix + '-ai-msg--user')).toHaveCount(1);
   expect(requests[1].context).toEqual([]);
 });
 
 test('a brief curve connects the passage to desktop chat and then clears', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.route('**/.netlify/functions/article-ai', async route => {
     await route.fulfill({ contentType: 'application/json', body: JSON.stringify({ answer: '这段解释进入右侧聊天。' }) });
