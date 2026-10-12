@@ -178,11 +178,11 @@ ENTRYPOINT ["/entrypoint.sh"]
 All operations require a metadata file. The metadata file name must be `action.yml` or `action.yaml`. The data in the metadata file defines the input, output, and run configuration for your action.
 
 + name: **required**. The name of your operation. The `name` GitHub displays in the **Operations** tab to help visually identify the operations within each job.
-+ description: optional. Provide a brief description of your action. GitHub will display this description on the action's details page.
++ description: **required**. Provide a brief description of your action. GitHub will display this description on the action's details page.
 + author: *optional*. The author or organization name of the action.
 + inputs: *optional*. Define input parameters for the operation. Each input is a key-value pair, where the key is the parameter name and the value is the attribute describing the parameter. Attributes include `description`, `required` and `default`.
 + outputs: *optional*. Define the output parameters of the operation. Each output is a key-value pair, where the key is the parameter name and the value is the attribute describing the parameter. Attributes include `description` and `value`.
-+ runs: **required**. Define the operation's run configuration. A run configuration specifies the operating system and environment in which the operation should run. Run configuration includes `using`, `image` and `args`.
++ runs: **required**. Define the operation's run configuration. A run configuration specifies the operating system and environment in which the operation should run. The fields depend on the action type: a Docker action uses `using: docker` with `image` and `args`, a JavaScript action uses a Node runtime (for example `using: node20`) with `main`, and a composite action uses `using: composite` with `steps` (each `run` step must set `shell`). See the official [metadata syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#runs).
 + branding: **OPTIONAL** You can create badges using colors and [Feathericons.com/] icons to personalize and differentiate your operations. The badge appears next to your action name in [GitHub Marketplace](https://github.com/marketplace?type=actions).
 
 
@@ -218,10 +218,10 @@ For example, if the workflow defines `num-octocats` and input, the action code c
 
 + `inputs.<input_id>.description` : **Required** `string` description of the input parameter.
 
-- `inputs.<input_id>.required`: Indicates whether the input parameter is required. If true, the value of the input parameter must be provided when running the workflow, otherwise the workflow will fail.
+- `inputs.<input_id>.required`: Declares whether the input parameter is required. Setting `required: true` only records the requirement in the metadata file; the action's own code must actively validate the input, and a missing value does not make the workflow fail automatically ([metadata syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs)).
 - `inputs.<input_id>.default`: Represents the default value of the input parameter, which is used if the value of the input parameter is not provided when running the workflow.
-- `inputs.<input_id>.env`: Indicates that the value of the input parameter is passed to the step in the workflow as an environment variable. For example, you can use `${{ env.INPUT_NAME }}` to reference the value of the input parameter in the step.
-- `inputs.<input_id>.group`: Indicates grouping the input parameters. Multiple input parameters can be grouped into the same group to better organize and display them.
+
+There is no `env` or `group` attribute for an input. These examples use `description`, `required` and `default`; the metadata also supports `deprecationMessage` ([metadata syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputsinput_iddeprecationmessage)). Inside a composite action, map an action input explicitly in `runs.steps[].env` with the `inputs` context (for example `MY_INPUT: ${{ inputs.my_input }}`). In the calling workflow, pass action inputs through the `uses` step's `with`; workflow-level `inputs` describes workflow inputs rather than automatically exposing that action's inputs.
 
 
 
@@ -310,7 +310,7 @@ jobs:
      name: A job to say hello
      steps:
        - name: Hello world action step
-         ID: hello
+         id: hello
          uses: actions/hello-world-docker-action@v2
          with:
            who-to-greet: 'Mona the Octocat'
@@ -605,40 +605,40 @@ Additionally, some features may only be available in certain locations. For exam
 | `jobs.<job_id>.steps.timeout-minutes` | `github, needs, strategy, matrix, job, runner, env, vars, secrets, steps, inputs` | `hashFiles`                                      |
 | `jobs.<job_id>.steps.with`                         | `github, needs, strategy, matrix, job, runner, env, vars, secrets, steps, inputs` | `hashFiles`                                      |
 | `jobs.<job_id>.steps.working-directory`            | `github, needs, strategy, matrix, job, runner, env, vars, secrets, steps, inputs` | `hashFiles`                                      |
-| `jobs.<job_id>.strategy`                           | `github, needs, vars, inputs`                                | None 无                                          |
-| `jobs.<job_id>.timeout-minutes`                    | `github, needs, strategy, matrix, vars, inputs`              | None 无                                          |
-| `jobs.<job_id>.with.<with_id>`                     | `github, needs, strategy, matrix, inputs, vars`              | None 无                                          |
-| `on.workflow_call.inputs.<inputs_id>.default`      | `github, inputs, vars`                                       | None 无                                          |
-| `on.workflow_call.outputs.<output_id>.value`       | `github, jobs, vars, inputs`                                 | None 无                                          |
+| `jobs.<job_id>.strategy`                           | `github, needs, vars, inputs`                                | None                                             |
+| `jobs.<job_id>.timeout-minutes`                    | `github, needs, strategy, matrix, vars, inputs`              | None                                             |
+| `jobs.<job_id>.with.<with_id>`                     | `github, needs, strategy, matrix, inputs, vars`              | None                                             |
+| `on.workflow_call.inputs.<inputs_id>.default`      | `github, inputs, vars`                                       | None                                             |
+| `on.workflow_call.outputs.<output_id>.value`       | `github, jobs, vars, inputs`                                 | None                                             |
 
 
 
 ### GitHub context
 
-`github` 上下文包含有关工作流运行和触发运行的事件的信息。你还可以在环境变量中读取大部分 `github` 上下文数据。有关环境变量的详细信息，请参阅“变量。“
+`github` context contains information about the workflow run and the event that triggered the run. You can also read most of the `github` context data in environment variables. For more information about environment variables, see "Variables."
 
-| 物业名称                     | 类型      | 描述                                                         |
+| Property name              | Type      | Description                                                  |
 | :--------------------------- | :-------- | :----------------------------------------------------------- |
-| `github`                     | `object`  | 工作流中任何作业或步骤期间可用的顶级上下文。该对象包含下面列出的所有属性。 |
-| `github.action`              | `string`  | 当前正在运行的操作的名称或[`id`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsid)步骤的名称。GitHub 会删除特殊字符，并`__run`在当前步骤运行不带`id`. 如果你在同一个作业中多次使用相同的操作，则名称将包含一个后缀，其序列号前面带有下划线。例如，你运行的第一个脚本的名称为`__run`，第二个脚本的名称为`__run_2`。同样，第二次调用`actions/checkout`will 是`actionscheckout2`。 |
-| `github.action_path`         | `string`  | 动作所在的路径。此属性仅在复合操作中受支持。你可以使用此路径访问与操作位于同一存储库中的文件，例如通过将目录更改为路径： `cd ${{ github.action_path }}`。 |
-| `github.action_ref`          | `string`  | 对于执行操作的步骤，这是正在执行的操作的引用。例如，`v2`.    |
-| `github.action_repository`   | `string`  | 对于执行操作的步骤，这是操作的所有者和存储库名称。例如，`actions/checkout`. |
-| `github.action_status`       | `string`  | 对于复合操作，复合操作的当前结果。                           |
-| `github.actor`               | `string`  | 触发初始工作流运行的用户的用户名。如果工作流运行是重新运行，则该值可能与 不同`github.triggering_actor`。任何工作流重新运行都将使用 的权限`github.actor`，即使发起重新运行的参与者 ( `github.triggering_actor`) 具有不同的权限。 |
-| `github.actor_id`            | `string`  | 触发初始工作流程运行的人员或应用程序的帐户 ID。例如，`1234567`. 请注意，这与演员用户名不同。 |
-| `github.api_url`             | `string`  | GitHub REST API 的 URL。                                     |
-| `github.base_ref`            | `string`  | `base_ref`工作流运行中拉取请求的或目标分支。仅当触发工作流运行的事件为 或 时，此属性才可`pull_request`用。`pull_request_target` |
-| `github.env`                 | `string`  | 运行器上从工作流命令设置环境变量的文件的路径。该文件对于当前步骤是唯一的，并且是作业中每个步骤的不同文件。有关更多信息，请参阅“ [GitHub Actions 的工作流程命令](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)”。 |
-| `github.event`               | `object`  | 完整的事件 Webhook 负载。你可以使用此上下文访问事件的各个属性。该对象与触发工作流运行的事件的 Webhook 负载相同，并且对于每个事件都不同。 每个 GitHub Actions 事件的 Webhook 都链接在“[触发工作流的事件](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)”中。例如，对于由事件触发的工作流运行[`push`，该对象包含](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push)[推送 webhook 负载](https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads#push)的内容。 |
-| `github.event_name`          | `string`  | 触发工作流运行的事件的名称。                                 |
-| `github.event_path`          | `string`  | 运行器上包含完整事件 Webhook 负载的文件的路径。              |
-| `github.graphql_url`         | `string`  | GitHub GraphQL API 的 URL。                                  |
-| `github.head_ref`            | `string`  | `head_ref`工作流运行中拉取请求的或源分支。仅当触发工作流运行的事件为 或 时，此属性才可`pull_request`用。`pull_request_target` |
-| `github.job`                 | `string`  | [`job_id`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_id)当前工作的。 注意：此上下文属性由操作运行器设置，并且仅在`steps`作业执行期间可用。否则，该属性的值为`null`。 |
-| `github.job_workflow_sha`    | `string`  | 对于使用可重用工作流程的作业，可重用工作流程文件的提交 SHA。 |
-| `github.path`                | `string`  | 运行器上从工作流命令设置系统变量的文件的路径`PATH`。该文件对于当前步骤是唯一的，并且是作业中每个步骤的不同文件。有关更多信息，请参阅“ [GitHub Actions 的工作流程命令](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path)”。 |
-| `github.ref`                 | `string`  | 触发工作流运行的分支或标签的完整引用。对于 触发的工作流程`push`，这是推送的分支或标签引用。对于 触发的工作流程`pull_request`，这是拉取请求合并分支。对于由 触发的工作流程`release`，这是创建的发布标签。对于其他触发器，这是触发工作流运行的分支或标记引用。仅当分支或标签可用于事件类型时才设置此值。给出的 ref 是完全形成的，这意味着对于分支，格式是，对于拉取请求，格式是，对于标签，格式是。例如，.`refs/heads/<branch_name>``refs/pull/<pr_number>/merge``refs/tags/<tag_name>``refs/heads/feature-branch-1` |
+| `github`                     | `object`  | The top-level context available during any job or step in a workflow. The object contains all properties listed below. |
+| `github.action`              | `string`  | The name of the action currently running, or the [`id`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsid) of a step. GitHub removes special characters and uses `__run` when the current step runs without an `id`. If you use the same action multiple times in the same job, the name will include a suffix whose sequence number is preceded by an underscore. For example, the first script you run will have the name `__run`, and the second script will be `__run_2`. Similarly, the second call to `actions/checkout` will be `actionscheckout2`. |
+| `github.action_path`         | `string`  | The path where your action is located. This property is only supported in composite actions. You can use this path to access files located in the same repository as your action, for example by changing directories to the path: `cd ${{ github.action_path }}`. |
+| `github.action_ref`          | `string`  | For a step executing an action, this is the reference of the action being executed. For example, `v2`. |
+| `github.action_repository`   | `string`  | For a step executing an action, this is the owner and repository name of the action. For example, `actions/checkout`. |
+| `github.action_status`       | `string`  | For a composite action, the current result of the composite action. |
+| `github.actor`               | `string`  | The username of the user that triggered the initial workflow run. If the workflow run is a rerun, this value may differ from `github.triggering_actor`. Any workflow rerun will use the permissions of `github.actor`, even if the actor initiating the rerun (`github.triggering_actor`) has different permissions. |
+| `github.actor_id`            | `string`  | The account ID of the person or app that triggered the initial workflow run. For example, `1234567`. Note that this is different from the actor's username. |
+| `github.api_url`             | `string`  | The URL of the GitHub REST API.                              |
+| `github.base_ref`            | `string`  | The `base_ref` or target branch of the pull request in a workflow run. This property is only available when the event that triggers the workflow run is `pull_request` or `pull_request_target`. |
+| `github.env`                 | `string`  | The path on the runner to the file that sets environment variables from workflow commands. This file is unique to the current step and is a different file for each step in a job. For more information, see "[Workflow commands for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)". |
+| `github.event`               | `object`  | The full event Webhook payload. You can use this context to access individual properties of the event. This object is identical to the Webhook payload of the event that triggered the workflow run, and is different for each event. The Webhook for each GitHub Actions event is linked in "[Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)". For example, for a workflow run triggered by a [`push` event](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push), this object contains the contents of the [push Webhook payload](https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads#push). |
+| `github.event_name`          | `string`  | The name of the event that triggered the workflow run.       |
+| `github.event_path`          | `string`  | The path on the runner to the file that contains the full event Webhook payload. |
+| `github.graphql_url`         | `string`  | The URL of the GitHub GraphQL API.                           |
+| `github.head_ref`            | `string`  | The `head_ref` or source branch of the pull request in a workflow run. This property is only available when the event that triggers the workflow run is `pull_request` or `pull_request_target`. |
+| `github.job`                 | `string`  | The [`job_id`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_id) of the current job. Note: this context property is set by the action runner and is only available during `steps` job execution. Otherwise, the value of this property is `null`. |
+| `github.job_workflow_sha`    | `string`  | For jobs using a reusable workflow, the commit SHA of the reusable workflow file. |
+| `github.path`                | `string`  | The path on the runner to the file that sets system `PATH` variables from workflow commands. This file is unique to the current step and is a different file for each step in a job. For more information, see "[Workflow commands for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path)". |
+| `github.ref`                 | `string`  | The full reference of the branch or tag that triggered the workflow run. For workflows triggered by `push`, this is the pushed branch or tag reference. For workflows triggered by `pull_request`, this is the pull request merge branch. For workflows triggered by `release`, this is the created release tag. For other triggers, this is the branch or tag reference that triggered the workflow run. This value is only set when a branch or tag is available for the event type. The reference given is fully formed: for branches the format is `refs/heads/<branch_name>`, for pull requests it is `refs/pull/<pr_number>/merge`, and for tags it is `refs/tags/<tag_name>`. For example, `refs/heads/feature-branch-1`. |
 | `github.ref_name` | `string` | The short reference name of the branch or tag that triggered the workflow to run. This value matches the branch or tag name displayed on GitHub. For example, `feature-branch-1`. |
 | `github.ref_protected` | `boolean` | `true` Whether branch protection is configured for the reference that triggers the workflow run. |
 | `github.ref_type` | `string` | The reference type that triggers the workflow to run. Valid values are `branch` or `tag`. |
@@ -845,8 +845,15 @@ When a concurrent job or workflow is queued, if another job or workflow using th
 
 ### Example: Using concurrency and default behavior
 
+The two `concurrency` values below are standalone alternatives - use only one `concurrency` key in a real workflow:
+
 ```yaml
 concurrency: staging_environment
+```
+
+Or with an expression:
+
+```yaml
 concurrency: ci-${{ github.ref }}
 ```
 
@@ -934,7 +941,7 @@ is the volume name or absolute path on the host and <destinationPath> is the abs
 ```yaml
 volumes:
    - my_docker_volume:/volume_mount
-   -/data/my_data
+   - /data/my_data
    - /source/directory:/destination/directory
 ```
 
@@ -1128,7 +1135,8 @@ on:
    push:
      branches:
        - main
-   pull_request:branches:
+   pull_request:
+     branches:
        - main
    workflow_dispatch:
 ```
@@ -1259,7 +1267,7 @@ jobs:
            password: ${{ secrets.DOCKER_PASSWORD }}
       
        - name: Extract metadata (tags, labels) for Docker
-         id:meta
+         id: meta
          uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
          with:
            images: my-docker-hub-namespace/my-docker-hub-repository
@@ -1334,7 +1342,7 @@ jobs:
            password: ${{ secrets.GITHUB_TOKEN }}
 
        - name: Extract metadata (tags, labels) for Docker
-         id:meta
+         id: meta
          uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
          with:
            images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
@@ -1397,7 +1405,7 @@ jobs:
            password: ${{ secrets.GITHUB_TOKEN }}
       
        - name: Extract metadata (tags, labels) for Docker
-         id:meta
+         id: meta
          uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
          with:
            images: |
@@ -1438,7 +1446,7 @@ on:
    issues:
      types:
        - reopened
-       -opened
+       - opened
 jobs:
    label_issues:
      runs-on: ubuntu-latest
@@ -1485,7 +1493,7 @@ name: Move assigned card
 on:
    issues:
      types:
-       -assigned
+       - assigned
 jobs:
    move-assigned-card:
      runs-on: ubuntu-latest
@@ -1493,7 +1501,7 @@ jobs:
        - uses: alex-page/github-project-automation-plus@7ffb872c64bd809d23563a130a0a97d01dfa8f43
          with:
            project: Docs Work
-           Column: In Progress
+           column: In Progress
            repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```
 
@@ -1509,3 +1517,4 @@ jobs:
 
 - [GitHub: Store and share data with workflow artifacts](https://docs.github.com/en/actions/tutorials/store-and-share-data)
 - [GitHub: Retirement of artifact actions v3](https://github.blog/changelog/2024-04-16-deprecation-notice-v3-of-the-artifact-actions/)
+- [GitHub: Metadata syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax)

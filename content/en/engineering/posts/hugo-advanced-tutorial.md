@@ -56,7 +56,6 @@ module:
    noVendor: ""
    private: '*.*'
    proxy: direct
-   replacements: ""
    workspace: "off"
 ```
 
@@ -363,29 +362,29 @@ If the value ofthe pipeline is empty, no output is generated;
 	and T1 is executed.
 ```
 
-上面的逻辑稍微有些复杂，意义解释：
+The logic above is a bit complex; here is what each form means:
 
-1. **注释**:
+1. **Comments**:
 
    ```
    {{/* a comment */}}
    {{- /* a comment with white space trimmed */ -}}
    ```
 
-   这两种方式都用于在模板中添加注释。第二种方式使用`-`来修剪与注释相邻的空白字符。
+   Both forms add comments inside templates. The second form uses `-` to trim the whitespace adjacent to the comment.
 
-   + `{{-` 会修剪掉它左边的所有空白字符和换行符。
-   + `-}}` 会修剪掉它右边的所有空白字符和换行符。
+   + `{{-` trims all whitespace and newlines to its left.
+   + `-}}` trims all whitespace and newlines to its right.
 
-2. **管道表达式**:
+2. **Pipeline expression**:
 
    ```
    {{pipeline}}
    ```
 
-   这里的`pipeline`是一个表达式，它的值将被转换为字符串并插入到输出中。待会再详细解释。
+   Here `pipeline` is an expression; its value is converted to a string and inserted into the output. It is explained in detail later.
 
-3. **条件语句**:
+3. **Conditional statements**:
 
    ```
    {{if pipeline}} T1 {{end}}
@@ -393,51 +392,51 @@ If the value ofthe pipeline is empty, no output is generated;
    {{if pipeline}} T1 {{else if pipeline}} T0 {{end}}
    ```
 
-   `if`语句用于条件渲染。`pipeline`是一个表达式，如果它的值为非空，则执行`T1`，否则执行`T0`（如果提供了`else`部分的话）。
+   The `if` statement is used for conditional rendering. `pipeline` is an expression; if its value is non-empty, `T1` is executed, otherwise `T0` is executed (if the `else` part is provided).
 
-4. **循环语句**:
+4. **Loop statements**:
 
    ```
    {{range pipeline}} T1 {{end}}
    {{range pipeline}} T1 {{else}} T0 {{end}}
    ```
 
-   `range`用于迭代数组、切片、映射或通道，并对每个元素执行`T1`。如果集合为空，并且提供了`else`部分，则执行`T0`。
+   `range` iterates over arrays, slices, maps or channels and executes `T1` for each element. If the collection is empty and an `else` part is provided, `T0` is executed.
 
-5. **中断语句**:
+5. **Break statements**:
 
    ```
    {{break}}
    {{continue}}
    ```
 
-   `break`和`continue`用于控制`range`循环的流程。
+   `break` and `continue` control the flow of `range` loops.
 
-6. **模板引用**:
+6. **Template invocation**:
 
    ```
    {{template "name"}}
    {{template "name" pipeline}}
    ```
 
-   `template`动作用于执行另一个命名模板，`pipeline`表达式的值将用作新模板的上下文。
+   The `template` action executes another named template, and the value of the `pipeline` expression is used as the context of the new template.
 
-7. **块模板**:
+7. **Block templates**:
 
    ```
    {{block "name" pipeline}} T1 {{end}}
    ```
 
-   `block`是定义并执行模板的简写。它等同于定义一个模板并立即执行它。
+   `block` is shorthand for defining and executing a template. It is equivalent to defining a template and immediately executing it.
 
-8. **With语句**:
+8. **With statements**:
 
    ```
    {{with pipeline}} T1 {{end}}
    {{with pipeline}} T1 {{else}} T0 {{end}}
    ```
 
-   `with`语句用于设置dot（当前上下文）的值。如果`pipeline`非空，`T1`将在新的上下文中执行；否则，执行`T0`（如果提供了`else`部分的话）。
+   The `with` statement sets the value of dot (the current context). If `pipeline` is non-empty, `T1` is executed in the new context; otherwise `T0` is executed (if the `else` part is provided).
 
 
 
@@ -445,48 +444,48 @@ If the value ofthe pipeline is empty, no output is generated;
 
 #### pipeline
 
-在 Go 模板中，`pipeline` 是一个非常核心的概念。它代表一个或多个命令的链式序列，其中每个命令都会生成一个值。这些值可以被传递给其他命令或模板动作（例如 `if`、`range`、`with` 等）以进一步处理或渲染输出。
+In Go templates, `pipeline` is a core concept. It represents a chained sequence of one or more commands, where each command produces a value. These values can be passed to other commands or template actions (such as `if`, `range`, `with`, and so on) for further processing or output rendering.
 
-**基本结构：**
+**Basic structure:**
 
 ```bash
 {{command1 | command2 | command3}}
 ```
 
-这里，`command1` 的输出会被传递给 `command2` 作为输入，`command2` 的输出又会被传递给 `command3`，依此类推。
+Here the output of `command1` is passed to `command2` as input, the output of `command2` is passed to `command3`, and so on.
 
-在 Template 中，一切能产生数据的表达式都是管道 (Pipeline)，比如 `{{ . }}` 是一个管道，`{{ print 12 }}` 也是一个管道。
+In templates, every expression that produces data is a pipeline (Pipeline); for example, `{{ . }}` is a pipeline, and `{{ print 12 }}` is also a pipeline.
 
-类似 Linux 管道操作一样，Template 的管道与管道之间可以通过 `|` 操作符进行数据传递，可以将前者的数据传递给后者，作为后者的参数进行使用。
+Similar to Linux pipes, templates pass data between pipelines with the `|` operator: the data of the former is passed to the latter and used as its argument.
 
 ```go
-{{ 12 | printf "%03d" }}        {{/* 等价于 {{ printf "%03d" 12 }} */}}
-{{ 3 | printf "%d+%d=%d" 1 2 }} {{/* 等价于 {{ printf "%d+%d=%d" 1 2 3 }} */}}
+{{ 12 | printf "%03d" }}        {{/* equivalent to {{ printf "%03d" 12 }} */}}
+{{ 3 | printf "%d+%d=%d" 1 2 }} {{/* equivalent to {{ printf "%d+%d=%d" 1 2 3 }} */}}
 ```
 
 
 
-##### 命令（Command）
+##### Commands {#命令command}
 
-每个命令通常由一个函数调用或字段访问组成，并且可以接受前一个命令的输出作为输入。例如：
+Each command usually consists of a function call or a field access, and can take the output of the previous command as input. For example:
 
 ```bash
 {{.FieldName | toUpper | printf "%s is uppercased"}}
 ```
 
-在这个例子中：
+In this example:
 
-+ `.FieldName` 访问当前上下文对象的 `FieldName` 字段。
-+ `toUpper` 是一个假设存在的函数，它将输入字符串转换为大写。
-+ `printf "%s is uppercased"` 使用 `printf` 函数格式化字符串。
++ `.FieldName` accesses the `FieldName` field of the current context object.
++ `toUpper` is a hypothetical function that converts the input string to uppercase.
++ `printf "%s is uppercased"` formats the string with the `printf` function.
 
 
 
-##### 使用在 actions 中
+##### Use in actions {#使用在-actions-中}
 
-`pipeline` 常用在模板动作中，例如 `if`、`range`、`with` 等。
+`pipeline` is often used in template actions such as `if`, `range`, and `with`.
 
-**在 if 中使用：**
+**Use in if:**
 
 ```go
 {{if .IsTrue}}
@@ -494,7 +493,7 @@ If the value ofthe pipeline is empty, no output is generated;
 {{end}}
 ```
 
-**在 `range` 中使用**
+**Use in `range`**
 
 ```bash
 {{range .Items}}
@@ -504,7 +503,7 @@ If the value ofthe pipeline is empty, no output is generated;
 
 
 
-**在 `with` 中使用**
+**Use in `with`**
 
 ```bash
 {{with .User}}
@@ -512,7 +511,11 @@ If the value ofthe pipeline is empty, no output is generated;
 {{end}}
 ```
 
-在这些例子中，`.` 表示当前的上下文对象。在 `range` 或 `with` 动作中，`.` 会被重新赋值为当前迭代的元素或新的上下文对象。##### Multiple pipelines
+In these examples, `.` is the current context object. In `range` or `with` actions, `.` is reassigned to the element currently being iterated over or to the new context object.
+
+
+
+##### Multiple pipelines
 
 You can also use multiple `pipelines` in a template action. For example, in an `if-else` structure:
 
@@ -1476,7 +1479,7 @@ In this example, we define two languages: English (`en`) and Spanish (`es`). `ti
 
 ### Create i18n file
 
-You need to create an i18n file for each language that contains all the translation strings for that language. These files are usually placed in the project's `i18n` directory and named after the language code (e.g. `en.toml`, `es.toml`, etc.)
+You need to create an i18n file for each language that contains all the translation strings for that language. These files are usually placed in the project's `i18n` directory and named after the language code together with the file's own format: the YAML example below is saved as `en.yaml`, and the TOML example below as `es.toml`.
 
 ```yaml
 hello:
@@ -1485,9 +1488,9 @@ world:
    other: World
 ```
 
-Another example is es:
+Another example in TOML, saved as `es.toml`:
 
-```yaml
+```toml
 [hello]
 other = "Hola"
 
@@ -1597,7 +1600,7 @@ You can use the `.Site.Data` variable in the template file to access the data in
 
 **Access a single data file**
 
-```yaml
+```go-html-template
 {{ $john := .Site.Data.authors.john }}
 <p>{{ $john.name }} - {{ $john.email }}</p>
 ```

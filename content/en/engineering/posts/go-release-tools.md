@@ -11,7 +11,7 @@ keywords: ['GoReleaser', 'goreleaser.yaml', 'GoReleaser configuration', 'name_te
 tags: ["Go", "DevOps", "GitHub", "Automation", "Deployment"]
 categories: ["Development"]
 description: >
-    Learn GoReleaser v2 with a production-ready .goreleaser.yaml and GitHub Actions workflow that builds, signs, packages, and publishes Go releases automatically.
+    Learn GoReleaser v2 through local snapshot builds, a field-by-field .goreleaser.yaml reference, and a GitHub Actions entry point for multi-platform releases.
 tldr:
   - "GoReleaser automates software release workflows for Go projects through four stages: defaulting, building, releasing, and announcing, with sensible defaults and extensive customization options."
   - "The tool builds multi-platform binaries, creates archives and packages, generates Docker images, and produces checksums while supporting GPG/Cosign signing for security verification."
@@ -35,7 +35,7 @@ The operation of GoReleaser is mainly divided into the following four steps:
 3. **releasing**: Release the version to the configured SCM, Docker registry, blob storage, etc.
 4. **announcing**: Announce your release to the configured channel
 
-Some steps may be skipped using the `-like` flag, like `--skip-foo`
+Some steps may be skipped with the [`--skip`](https://goreleaser.com/resources/deprecations/#skip) flag, for example `--skip=publish`.
 
 ## Quick Start
 
@@ -67,9 +67,10 @@ export GITHUB_TOKEN="YOUR_GH_TOKEN"
 
 GoReleaser will use the latest [Git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for your repository.
 
-Create a tag and push it to GitHub:
+Create a tag and push it to GitHub (replace `v0.1.0` with your version):
 
 ```
+git tag v0.1.0
 git push origin v0.1.0
 ```
 
@@ -78,6 +79,8 @@ Now you can run GoReleaser in the root directory of your project:
 ```
 goreleaser release
 ```
+
+**Version boundary (October 2026):** the build and archives examples in this article, and the GitHub Actions snippets, target GoReleaser OSS `2.18.0` ([config schema](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/config.go), [strict loader](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/load.go)). Later releases may rename or remove fields; upgrade only after re-validating your configuration with [`goreleaser check`](https://goreleaser.com/cmd/goreleaser_check/).
 
 ## Using GoReleaser in GitHub Actions
 
@@ -115,7 +118,7 @@ jobs:
          with:
            # You can choose 'goreleaser' (default) or 'goreleaser-pro'
            distribution: goreleaser
-           version: "~> v2"
+           version: v2.18.0
            args: release --clean
          env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -146,7 +149,7 @@ If you need to push Homebrew Tap to another repository, then you must create a p
        - name: Run GoReleaser
          uses: goreleaser/goreleaser-action@v7
          with:
-           version: "~> v2"
+           version: v2.18.0
            args: release --clean
          env:
            GITHUB_TOKEN: ${{ secrets.GH_PAT }}
@@ -237,74 +240,76 @@ The build can be customized in a variety of ways. You can specify which GOOS, GO
 
 **builds is the most important option in the configuration file:**
 
+The long field listing below is a combined reference excerpt of build options ([Go build options](https://goreleaser.com/customization/builds/go/)); do not copy it wholesale as a production configuration.
+
 ```yaml
 # .goreleaser.yaml
 builds:
-   # You can have multiple builds defined as a yaml list
-   - #
-     # ID of the build.
-     #
-     # Default: Binary name
-     id: "my-build"
+  # You can have multiple builds defined as a yaml list
+  - #
+    # ID of the build.
+    #
+    # Default: Binary name
+    id: "my-build"
 
-     # Path to main.go file or main package.
-     # Notice: when used with `gomod.proxy`, this must be a package.
-     #
-     # Default is `.`.
-     main: ./cmd/my-app
+    # Path to main.go file or main package.
+    # Notice: when used with `gomod.proxy`, this must be a package.
+    #
+    # Default is `.`.
+    main: ./cmd/my-app
 
-     # Binary name.
-     # Can be a path (e.g. `bin/app`) to wrap the binary in a directory.
-     #
-     # Default: Project directory name
-     binary: program
+    # Binary name.
+    # Can be a path (e.g. `bin/app`) to wrap the binary in a directory.
+    #
+    # Default: Project directory name
+    binary: program
 
-     # Custom flags.
-     #
-     # Templates: allowed
-     flags:
-       - -tags=dev
-       - -v
+    # Custom flags.
+    #
+    # Templates: allowed
+    flags:
+      - -tags=dev
+      - -v
 
-     # Custom asmflags.
-     #
-     # Templates: allowed
-     asmflags:
-       - -D mysymbol
-       - all=-trimpath={{.Env.GOPATH}}
+    # Custom asmflags.
+    #
+    # Templates: allowed
+    asmflags:
+      - -D mysymbol
+      - all=-trimpath={{.Env.GOPATH}}
 
-     # Custom gcflags.
-     #
-     # Templates: allowed
-     gcflags:
-       - all=-trimpath={{.Env.GOPATH}}
-       - ./dontoptimizeme=-N
+    # Custom gcflags.
+    #
+    # Templates: allowed
+    gcflags:
+      - all=-trimpath={{.Env.GOPATH}}
+      - ./dontoptimizeme=-N
 
-     # Custom ldflags.
-     #
-     # Default: '-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy= goreleaser'
-     # Templates: allowed
-     ldflags:
-       - -s -w -X main.build={{.Version}}
-       - ./usemsan=-msan
+    # Custom ldflags.
+    #
+    # Default: '-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser'
+    # Templates: allowed
+    ldflags:
+      - -s -w -X main.build={{.Version}}
+      - ./usemsan=-msan
 
-     # Custom Go build mode.
-     #
-     # Valid options:
-     # - `c-shared`
-     # - `c-archive`
-     #
-     # Since: v1.13
-     buildmode: c-shared
+    # Custom Go build mode.
+    #
+    # Valid options:
+    # - `c-shared`
+    # - `c-archive`
+    #
+    # Since: v1.13
+    buildmode: c-shared
 
-     # Custom build tags templates.
-     tags:
-       -osusergo
-       - netgo
-       -static_build
-       -feature
+    # Custom build tags templates.
+    tags:
+      - osusergo
+      - netgo
+      - static_build
+      - feature
 
-     # Custom environment variables to be set during the builds.
+    # Custom environment variables to be set during the builds.
     # Invalid environment variables will be ignored.
     #
     # Default: os.Environ() ++ env config section
@@ -469,21 +474,22 @@ builds:
     # Note: it'll only match if the full target matches.
     #
     # Since: v1.5
-    overrides:- goos: darwin
-         goarch: arm64
-         goamd64: v1
-         goarm: ""
-         gomips: ""
-         ldflags:
-           - foo
-         tags:
-           - bar
-         asmflags:
-           -foobar
-         gcflags:
-           - foobaz
-         env:
-           - CGO_ENABLED=1
+    overrides:
+      - goos: darwin
+        goarch: arm64
+        goamd64: v1
+        goarm: ""
+        gomips: ""
+        ldflags:
+          - foo
+        tags:
+          - bar
+        asmflags:
+          - foobar
+        gcflags:
+          - foobaz
+        env:
+          - CGO_ENABLED=1
 ```
 
 **Builds containing multiple binaries:**
@@ -497,15 +503,15 @@ builds:
      goos:
        - linux
        - darwin
-       -windows
+       - windows
 
    - main: ./cmd/worker
-     ID: "worker"
-     binary:worker
+     id: "worker"
+     binary: worker
      goos:
        - linux
        - darwin
-       -windows
+       - windows
 
    - main: ./cmd/tracker
      id: "tracker"
@@ -513,7 +519,7 @@ builds:
      goos:
        - linux
        - darwin
-       -windows
+       - windows
 ```
 
 Binary name fields support [templating](https://goreleaser.com/customization/templates/). The following build details are exposed:
@@ -532,7 +538,7 @@ You can do this by using `{{ .Env.VARIABLE_NAME }}` in the template, for example
 # .goreleaser.yaml
 builds:
    - ldflags:
-    - -s -w -X "main.goversion={{.Env.GOVERSION}}"
+      - -s -w -X "main.goversion={{.Env.GOVERSION}}"
 ```
 
 Then you can run:
@@ -543,7 +549,7 @@ Then you can run:
 
 Both pre and post hooks run against every build target, whether those targets are generated via the operating system and architecture matrix or defined explicitly.
 
-In addition to the simple declaration shown above, multiple hooks can be declared to help keep the configuration reusable between different build environments.
+In addition to the simple declaration shown above, multiple hooks can be declared (see the official [build hooks reference](https://goreleaser.com/customization/builds/hooks/)) to help keep the configuration reusable between different build environments.
 
 ```yaml
 # .goreleaser.yaml
@@ -554,8 +560,8 @@ builds:
        - "windows_amd64"
      hooks:
        pre:
-         -first-script.sh
-         -second-script.sh
+         - first-script.sh
+         - second-script.sh
        post:
          - upx "{{ .Path }}"
          - codesign -project="{{ .ProjectName }}" "{{ .Path }}"
@@ -580,7 +586,7 @@ builds:
            output: true
            env:
              - HOOK_SPECIFIC_VAR={{ .Env.GLOBAL_VAR }}
-         -second-script.sh
+         - second-script.sh
 ```
 
 All properties of hooks (`cmd`, `dir` and `env`) support using hooks with binary artifacts available for templating (https://goreleaser.com/customization/templates/) (as they are built *run later). *In addition, the following build details are also exposed to and hooks: `postprepost`
@@ -625,23 +631,31 @@ archives:
     # Default: 'default'
     id: my-archive
 
-    # Builds reference which build instances should be archived in this archive.
-    builds:
+    # `ids` reference which build instances should be archived in this archive.
+    #
+    # Replaces the deprecated `builds` key, which 2.18.0 still accepts as an alias.
+    ids:
       - default
 
-    # Archive format. Valid options are `tar.gz`, `tgz`, `tar.xz`, `txz`, tar`, `gz`, `zip` and `binary`.
-    # If format is `binary`, no archives are created and the binaries are instead
+    # Archive formats. Valid options are `tar.gz`, `tgz`, `tar.xz`, `txz`, `tar`, `gz`, `zip` and `binary`.
+    # If a format is `binary`, no archives are created and the binaries are instead
     # uploaded directly.
     #
-    # Default: 'tar.gz'
-    format: zip
+    # Replaces the deprecated `format` key, which 2.18.0 still accepts as an alias.
+    #
+    # Default: ['tar.gz']
+    formats:
+      - zip
 
-    # This will create an archive without any binaries, only the files are there.
-    # The name template must not contain any references to `Os`, `Arch` and etc, since the archive will be meta.
+    # Setting this to `true` creates a files-only meta archive: it contains none of
+    # the built binaries, only the configured files. That is a separate mode from the
+    # binary archive shown here, so this example keeps it off. When enabled, the name
+    # template must not contain any references to `Os`, `Arch` and etc, since the
+    # archive will be meta.
     #
     # Since: v1.9
     # Templates: allowed
-    meta: true
+    meta: false
 
     # Archive name.
     #
@@ -675,22 +689,16 @@ archives:
     #
     # This might be useful if you have your binary be built with a subdir for some reason, but do no want that subdir inside the archive.
     #
-    # Since: v1.11
-    strip_parent_binary_folder: true
-
-    # This will make the destination paths be relative to the longest common
-    # path prefix between all the files matched and the source glob.
-    # Enabling this essentially mimic the behavior of nfpm's contents section.
-    # It will be the default by June 2023.
-    #
-    # Since: v1.14
-    rlcp: true
+    # `strip_binary_directory` replaces `strip_parent_binary_folder`, which is no
+    # longer in the 2.18.0 schema and is rejected by the strict loader.
+    strip_binary_directory: true
 
     # Can be used to change the archive formats for specific GOOSs.
     # Most common use case is to archive as zip on Windows.
     format_overrides:
       - goos: windows
-        format: zip
+        formats:
+          - zip
 
     # Additional files/globs you want to add to the archive.
     #
@@ -729,6 +737,18 @@ archives:
           # File mode.
           mode: 0644
 
+    # Disables the binary count check.
+    allow_different_binary_count: true
+```
+
+Field names in the block above follow the GoReleaser OSS `2.18.0` [archives schema](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/config.go) and its [strict loader](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/load.go). `ids` and `formats` (including `format_overrides.formats`) replace the deprecated `builds` and `format` keys, which `2.18.0` still accepts as deprecated aliases - a deprecated field is not by itself a runtime failure ([deprecations](https://goreleaser.com/resources/deprecations/)). By contrast, `rlcp` and `strip_parent_binary_folder` are no longer in the schema and are rejected outright; `strip_binary_directory` replaces the latter. Because `meta: true` builds a files-only archive without any binaries, this binary archive example keeps `meta: false`.
+
+The archive fields below are GoReleaser Pro only. Keep them out of an OSS `.goreleaser.yaml`; see the [archives documentation](https://goreleaser.com/customization/package/archives/) for the Pro reference.
+
+```yaml
+# GoReleaser Pro only: reference snippet, not part of the OSS configuration above.
+archives:
+  - #
     # Additional templated files to add to the archive.
     # Those files will have their contents pass through the template engine,
     # and its results will be added to the archive.
@@ -780,11 +800,7 @@ archives:
         - cmd: touch {{ .Env.RELEASE_DONE }}
           env:
             - "RELEASE_DONE=something-{{ .ProjectName }}" # specify hook level environment variables
-
-    # Disables the binary count check.
-    allow_different_binary_count: true
 ```
-
 ## linux 软件包
 
 GoReleaser 可以连接到[nfpm](https://github.com/goreleaser/nfpm)以生成和发布 `.deb`、`.rpm`、`.apk` 和 `Archlinux` 软件包。
@@ -2823,3 +2839,9 @@ announce:
 ## References
 
 - [GoReleaser: GitHub Actions workflow and inputs](https://goreleaser.com/customization/ci/actions/)
+- [GoReleaser: Go build options](https://goreleaser.com/customization/builds/go/)
+- [GoReleaser: Build hooks](https://goreleaser.com/customization/builds/hooks/)
+- [GoReleaser: Package archives](https://goreleaser.com/customization/package/archives/)
+- [GoReleaser: Deprecations and `--skip`](https://goreleaser.com/resources/deprecations/)
+- [GoReleaser v2.18.0 configuration schema](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/config.go)
+- [GoReleaser v2.18.0 strict configuration loader](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/load.go)

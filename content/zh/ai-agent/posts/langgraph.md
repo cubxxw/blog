@@ -157,9 +157,9 @@ print(finished["audit"])
 
 设想一个 Agent：先起草退款方案，交给运营人员审批，再调用支付 API。
 
-1. 模型供应商返回 `429`。应在模型节点配置有上限的 `RetryPolicy`，包含退避与最大次数；无效业务输入不能无限重试。
+1. 模型供应商返回 `429`。应按供应商实际抛出的限流异常或 HTTP 状态配置 `RetryPolicy.retry_on`，并限制退避与最大尝试次数。例如，默认策略对 `httpx.HTTPStatusError` 只重试 `5xx`，其 `429` 需要明确纳入；其他供应商异常类型的默认行为可能不同。无效业务输入不能无限重试。[默认重试判断源码](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/_internal/_retry.py)
 2. 退款超过策略阈值。审核节点调用 `interrupt()`；检查点与 `thread_id` 让另一个进程稍后用 `Command(resume=...)` 恢复。
-3. 审批后 worker 崩溃。再次调用同一线程，LangGraph 从持久状态继续，而不是从整笔请求的起点重跑。
+3. 审批后 worker 崩溃。恢复未完成的持久检查点时，复用包含同一 `thread_id` 的 `config`，调用 `graph.invoke(None, config=config)` 继续待执行步骤。重传原始输入属于新输入执行，不能只凭相同 `thread_id` 当成故障恢复；如果仍停在人工 `interrupt()`，则使用上一条的 `Command(resume=...)` 提供审批结果。进程重启后的恢复需要持久化 checkpointer。[输入与恢复分支源码](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/pregel/_loop.py#L911)
 4. 支付成功，但确认响应丢失。此时必须发送稳定的幂等键，例如 `refund:{thread_id}:{refund_id}`，并保存供应商交易 ID；单靠检查点无法阻止重复付款。
 
 `interrupt()` 还有一个容易被忽略的陷阱：恢复时，包含 interrupt 的节点会从头执行。写在 `interrupt()` 之前的数据库操作或 API 调用可能再次发生。因此应把审批放在副作用之前，或者保证审批前的所有操作都可安全重放。
@@ -200,6 +200,8 @@ LangGraph 仍然重要，不是因为“图”听起来比“链”高级，而�
 2. [LangGraph 持久化](https://docs.langchain.com/oss/python/langgraph/persistence)
 3. [LangGraph interrupt](https://docs.langchain.com/oss/python/langgraph/interrupts)
 4. [LangSmith Deployment](https://docs.langchain.com/langsmith/deployment)
+5. [LangGraph 默认重试判断源码（固定提交）](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/_internal/_retry.py)
+6. [LangGraph 输入与恢复分支源码（固定提交）](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/pregel/_loop.py#L911)
 
 ## 相关文章
 

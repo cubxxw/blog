@@ -16,13 +16,13 @@
 | [#391](https://github.com/cubxxw/blog/issues/391) | 真实 56 天/query×page 回填已完成；新旧响应组并存使摘要误报未知 | GSC worker 修显式 `byPage` 选择、共享 freshness selector、真实采集待办状态；仍待同口径 GSC UI 核验 |
 | [#392](https://github.com/cubxxw/blog/issues/392) | Snapshot plan 缺失仍采集/提交；PSI 把 API 缺少比较参数误当采集失败 | 主代理修 plan 守卫与工作流接线，PSI worker 分开采集与比较状态；还需真实运行/三次计划验收。可选模型缺 structured_output 保持 withheld，不猜鉴权/配额原因 |
 | [#393](https://github.com/cubxxw/blog/issues/393) | 旧路径迁移大部分有效；4 条查询规则无效，Google 侧分诊未验收 | 留存真实 HTTP 证据；`?p=341` 原内容未确认，不盲跳首页。仍需索引分类导出、P1 Inspection、迁移设置和观察 |
-| [#394](https://github.com/cubxxw/blog/issues/394) | 既有摘要/示例修复已上线；英文 archives YAML 仍不可解析 | 主代理修完整 YAML 缩进/空格，独立验证中英解析一致；未声称 GoReleaser release 执行或 CTR 实验完成 |
-| [#395](https://github.com/cubxxw/blog/issues/395) | 性能仍有测量和修复空间 | 聊天“优化博客性能与 SEO”已有唯一 Pi writer；本轮不重复占用/覆盖其模板与性能改动；仍需固定条件前后各三次证据 |
+| [#394](https://github.com/cubxxw/blog/issues/394) | 六篇教程存在配置语法、版本字段和动作元数据错误，英文核心解释残留中文 | Pi 修六篇双语技术事实与示例；父代理及独立 reviewer 复验。原搜索实验的 Google 重抓与完整 28 天观察仍待完成 |
+| [#395](https://github.com/cubxxw/blog/issues/395) | 首屏透明动画使 LCP 可能错记导航，掩盖标题可见时间 | 保留并行性能改动，完成 33 个同条件样本；修标题/封面初始透明度，年度候选三次均为 H1、median 1.804s/CLS 0。最终关闭须绑定新 CI 编译与部署字节 |
 | [#396](https://github.com/cubxxw/blog/issues/396) | 原计划的月档案主题导航已存在；英文摘要条数/日期不准；新文试点缺相关查询与作者 brief | 已修准确性；取消尚未启动的新文/搜索试点，按 `not_planned` 关闭，维护后续观察归 #390；不声称原试点完成 |
-| [#397](https://github.com/cubxxw/blog/issues/397) | Mem0 确有 OSS 查询；现有正文已覆盖核心边界，相关文字未链接 | 给上下文工程文章已有 Mem0 提及补中英规范内链；保留 Products 默认 BEAR OS；搜索实验仍需重抓和完整窗口 |
+| [#397](https://github.com/cubxxw/blog/issues/397) | Mem0 OSS 查询有效；LangGraph 崩溃恢复与 HTTP 重试说明需校正 | 补 Mem0 相关内链；按固定官方源码校正双语 LangGraph pending checkpoint 恢复与 retry_on 边界，保留开篇/代码/交互；搜索实验仍需重抓和完整窗口 |
 | [#450](https://github.com/cubxxw/blog/issues/450) | 10/11 日报，已被有完整结果的 10/12 日报 #451 替代 | 按严格日期生命周期关闭旧日报；今日 #451 保持开放，历史诊断保留 |
 
-任务分配：只读 SEO/数据审计、只读内容/意图审计、GSC 修复 worker、PSI 修复 worker；主代理负责 workflow、局部内容、独立验收和 GitHub 交付。SEO 审计代理随后独立 review，未参与本轮实现。Pi 已被另一个正在进行的聊天占用；遵守同仓库一个活动 Pi writer，未新建第二个 Pi 编码任务。
+任务分配：只读 SEO/数据审计、只读内容/意图审计、GSC 修复 worker、PSI 修复 worker；主代理负责 workflow、局部内容、独立验收和 GitHub 交付。SEO 审计代理随后独立 review，未参与本轮实现。初期 Pi 被并行性能聊天占用，待其退出后再启动唯一教程 writer `20261012-133716-cef66cc7`（MiMo v2.6 Pro，冻结基线 `32c6e40d`）。Pi 只负责六篇工程文章和技术记录；主代理处理 LangGraph/CSS，独立内容审计代理检查 Pi 差异。没有并行第二个博客 Pi writer。
 
 ## 可复核的新数据
 
@@ -88,3 +88,11 @@ PSI outcome=degraded，明确缺比较配置；CrUX outcome=no-sample，明确�
 本轮已读回确认关闭 #203（无开发待办的评论）、#450（被今日完整日报取代）；#396 明确取消缺证据的新文试点，按 `not_planned` 关闭，不冒充原搜索实验完成。其他有真实验收缺项的开发 issue 保持开放；#235–238 保留有业务价值的公开反馈通道。
 
 现场解读失败的后续诊断修正已通过独立 review：实际 SDK `subtype=success` 同时 `is_error=true`，上游未导出 structured output。本地记录现在把 runtime 失败作为首要事实、missing output 作为次要事实；未识别 provider 原因仍为 unknown，已知 auth/quota 分类保留优先级，不恢复原始文本、不增加模型调用或权限。最终定向离线验证共 339/339（SEO/采集 320、渲染/工作流契约 9、CI 范围 10），无 skip/failure；模型诊断独立 120/120、静态跳转与现场文档 review 无 P0/P1/P2，front matter、tags、diff 检查通过。
+
+### 六篇教程、LangGraph 与性能候选的后续交付
+
+Pi `20261012-133716-cef66cc7` 在冻结 `32c6e40d` 基线上完成六篇工程教程的有界维护，83 turns 后进入 `ready_for_review`；没有替换 provider、第二个博客 writer 或外部发布。父代理引入其六文与技术记录后纠正独立审查发现的两个旧锚点与输入元数据边界。详见 [教程技术记录](issue-394-technical-2026-10-12.md)：116 个 YAML 片段由 16 个错误变为 0，Hugo 0.145 微站点与 Go 模板通过；不宣称真实 GoReleaser release、签名或 Docker 运行。原 #394 搜索实验的重抓后 28 天观察仍待完成。
+
+双语 LangGraph 文按固定官方源码解释 pending checkpoint 恢复：同一 thread 的 `graph.invoke(None, config=config)` 与重传新输入不同；人工 interrupt 用 `Command(resume=...)`，跨进程恢复须 durable checkpointer。HTTP 默认重试与 `retry_on` 的 provider 异常范围分开说明；没有新增付费模型调用或改现有交互代码。独立 review 无 P0/P1/P2，原 #397 搜索观察门禁仍保留。
+
+[固定条件性能验收](performance-acceptance-2026-10-12.md) 留存 30 个真实 CI 快照样本与 3 个可追溯编译 CSS 派生候选样本。移动年度页原透明动画使 PerformanceObserver 有时只记录导航，filmstrip 显示标题仍不可读。本轮标题/封面初始 opacity 改为 1，保留位移、悬停和 reduced-motion；候选三次均为 H1，1.748/1.804/2.088s、CLS 0，桌面真实封面及悬停通过。五页面 SSR 正文一致，长文 8,267 DOM 节点的成本明确保留，CrUX 无样本仍为未知。关闭 #395 还须实际最新 CI 编译/线上 CSS 字节绑定，不能把候选当成已部署。

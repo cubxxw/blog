@@ -34,7 +34,7 @@ GoReleaser 的运行主要分为以下四个步骤：
 3. **releasing**：将版本发布到配置的 SCM、Docker 注册表、blob 存储等
 4. **announcing**：向配置的频道宣布您的发布
 
-使用 `-like` 标志可能会跳过某些步骤，如 `--skip-foo`
+可以使用 [`--skip`](https://goreleaser.com/resources/deprecations/#skip) 标志跳过某些步骤，例如 `--skip=publish`。
 
 ## 快速开始
 
@@ -66,9 +66,10 @@ export GITHUB_TOKEN="YOUR_GH_TOKEN"
 
 GoReleaser 将使用您存储库的最新 [Git 标签](https://git-scm.com/book/en/v2/Git-Basics-Tagging)。
 
-创建一个标签并将其推送到 GitHub：
+创建一个标签并将其推送到 GitHub（把 `v0.1.0` 换成你的版本号）：
 
 ```
+git tag v0.1.0
 git push origin v0.1.0
 ```
 
@@ -77,6 +78,8 @@ git push origin v0.1.0
 ```
 goreleaser release
 ```
+
+**版本边界（2026 年 10 月）：** 本文的构建与 archives 示例以及 GitHub Actions 片段以 GoReleaser OSS `2.18.0` 为目标版本（[配置结构](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/config.go)、[严格加载器](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/load.go)）。后续版本可能重命名或移除字段；升级前请先用 [`goreleaser check`](https://goreleaser.com/cmd/goreleaser_check/) 重新校验配置。
 
 ## 在 GitHub Actions 中使用 GoReleaser
 
@@ -114,7 +117,7 @@ jobs:
         with:
           # 可以选择 'goreleaser'（默认）或 'goreleaser-pro'
           distribution: goreleaser
-          version: "~> v2"
+          version: v2.18.0
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -145,7 +148,7 @@ GoReleaser 需要以下 [权限](https://docs.github.com/en/actions/reference/au
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v7
         with:
-          version: "~> v2"
+          version: v2.18.0
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
@@ -235,6 +238,8 @@ git:
 可以通过多种方式定制构建。您可以指定构建哪些`GOOS`,`GOARCH`和`GOARM`二进制文件（GoReleaser 将生成所有组合的矩阵），并且您可以更改二进制文件的名称、标志、环境变量、挂钩等。
 
 **builds 是配置文件中最重要的一个选项：**
+
+下面的长字段清单是构建选项的组合参考片段（参见 [Go 构建选项](https://goreleaser.com/customization/builds/go/)），不能整体当作生产配置复制。
 
 ```yaml
 # .goreleaser.yaml
@@ -532,7 +537,7 @@ builds:
 # .goreleaser.yaml
 builds:
   - ldflags:
-   - -s -w -X "main.goversion={{.Env.GOVERSION}}"
+      - -s -w -X "main.goversion={{.Env.GOVERSION}}"
 ```
 
 然后你可以运行：
@@ -543,7 +548,7 @@ builds:
 
 pre 和 post 挂钩都 **针对每个构建目标** 运行，无论这些目标是通过操作系统和架构矩阵生成还是显式定义。
 
-除了上面所示的简单声明之外，还可以声明多个挂钩，以帮助保持不同构建环境之间配置的可重用性。
+除了上面所示的简单声明之外，还可以声明多个挂钩（参见官方[构建钩子文档](https://goreleaser.com/customization/builds/hooks/)），以帮助保持不同构建环境之间配置的可重用性。
 
 ```yaml
 # .goreleaser.yaml
@@ -625,23 +630,31 @@ archives:
     # Default: 'default'
     id: my-archive
 
-    # Builds reference which build instances should be archived in this archive.
-    builds:
+    # `ids` reference which build instances should be archived in this archive.
+    #
+    # Replaces the deprecated `builds` key, which 2.18.0 still accepts as an alias.
+    ids:
       - default
 
-    # Archive format. Valid options are `tar.gz`, `tgz`, `tar.xz`, `txz`, tar`, `gz`, `zip` and `binary`.
-    # If format is `binary`, no archives are created and the binaries are instead
+    # Archive formats. Valid options are `tar.gz`, `tgz`, `tar.xz`, `txz`, `tar`, `gz`, `zip` and `binary`.
+    # If a format is `binary`, no archives are created and the binaries are instead
     # uploaded directly.
     #
-    # Default: 'tar.gz'
-    format: zip
+    # Replaces the deprecated `format` key, which 2.18.0 still accepts as an alias.
+    #
+    # Default: ['tar.gz']
+    formats:
+      - zip
 
-    # This will create an archive without any binaries, only the files are there.
-    # The name template must not contain any references to `Os`, `Arch` and etc, since the archive will be meta.
+    # Setting this to `true` creates a files-only meta archive: it contains none of
+    # the built binaries, only the configured files. That is a separate mode from the
+    # binary archive shown here, so this example keeps it off. When enabled, the name
+    # template must not contain any references to `Os`, `Arch` and etc, since the
+    # archive will be meta.
     #
     # Since: v1.9
     # Templates: allowed
-    meta: true
+    meta: false
 
     # Archive name.
     #
@@ -675,22 +688,16 @@ archives:
     #
     # This might be useful if you have your binary be built with a subdir for some reason, but do no want that subdir inside the archive.
     #
-    # Since: v1.11
-    strip_parent_binary_folder: true
-
-    # This will make the destination paths be relative to the longest common
-    # path prefix between all the files matched and the source glob.
-    # Enabling this essentially mimic the behavior of nfpm's contents section.
-    # It will be the default by June 2023.
-    #
-    # Since: v1.14
-    rlcp: true
+    # `strip_binary_directory` replaces `strip_parent_binary_folder`, which is no
+    # longer in the 2.18.0 schema and is rejected by the strict loader.
+    strip_binary_directory: true
 
     # Can be used to change the archive formats for specific GOOSs.
     # Most common use case is to archive as zip on Windows.
     format_overrides:
       - goos: windows
-        format: zip
+        formats:
+          - zip
 
     # Additional files/globs you want to add to the archive.
     #
@@ -729,6 +736,18 @@ archives:
           # File mode.
           mode: 0644
 
+    # Disables the binary count check.
+    allow_different_binary_count: true
+```
+
+上面的字段名遵循 GoReleaser OSS `2.18.0` 的 [archives 配置结构](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/config.go)及其[严格加载器](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/load.go)。`ids` 和 `formats`（包括 `format_overrides.formats`）替代了 deprecated 的 `builds` 和 `format`，`2.18.0` 仍把后者作为弃用别名接受——弃用字段本身并不是运行时失败（[弃用说明](https://goreleaser.com/resources/deprecations/)）。相反，`rlcp` 和 `strip_parent_binary_folder` 已不在结构内，会被直接拒绝；后者由 `strip_binary_directory` 取代。由于 `meta: true` 会生成不含任何二进制的仅文件归档，本二进制归档示例保持 `meta: false`。
+
+以下归档字段仅属于 GoReleaser Pro，请不要写进 OSS 的 `.goreleaser.yaml`；Pro 参考见 [archives 文档](https://goreleaser.com/customization/package/archives/)。
+
+```yaml
+# GoReleaser Pro only：参考片段，不属于上面的 OSS 配置。
+archives:
+  - #
     # Additional templated files to add to the archive.
     # Those files will have their contents pass through the template engine,
     # and its results will be added to the archive.
@@ -780,11 +799,7 @@ archives:
         - cmd: touch {{ .Env.RELEASE_DONE }}
           env:
             - "RELEASE_DONE=something-{{ .ProjectName }}" # specify hook level environment variables
-
-    # Disables the binary count check.
-    allow_different_binary_count: true
 ```
-
 ## linux 软件包
 
 GoReleaser 可以连接到[nfpm](https://github.com/goreleaser/nfpm)以生成和发布 `.deb`、`.rpm`、`.apk` 和 `Archlinux` 软件包。
@@ -2823,3 +2838,9 @@ announce:
 ## 参考资料
 
 - [GoReleaser：GitHub Actions 工作流与输入参数](https://goreleaser.com/customization/ci/actions/)
+- [GoReleaser：Go 构建选项](https://goreleaser.com/customization/builds/go/)
+- [GoReleaser：构建钩子](https://goreleaser.com/customization/builds/hooks/)
+- [GoReleaser：打包归档](https://goreleaser.com/customization/package/archives/)
+- [GoReleaser：弃用字段与 `--skip`](https://goreleaser.com/resources/deprecations/)
+- [GoReleaser v2.18.0 配置结构](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/config.go)
+- [GoReleaser v2.18.0 严格配置加载器](https://github.com/goreleaser/goreleaser/blob/v2.18.0/pkg/config/load.go)

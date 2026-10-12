@@ -51,7 +51,6 @@ module:
   noVendor: ""
   private: '*.*'
   proxy: direct
-  replacements: ""
   workspace: "off"
 ```
 
@@ -1472,7 +1471,7 @@ languages:
 
 ### 创建 i18n 文件
 
-你需要为每种语言创建一个 i18n 文件，其中包含该语言的所有翻译字符串。这些文件通常放在项目的 `i18n` 目录中，并以语言代码命名（例如 `en.toml`、`es.toml` 等）
+你需要为每种语言创建一个 i18n 文件，其中包含该语言的所有翻译字符串。这些文件通常放在项目的 `i18n` 目录中，并以语言代码加文件自身格式命名：下面的 YAML 示例保存为 `en.yaml`，下面的 TOML 示例保存为 `es.toml`。
 
 ```yaml
 hello:
@@ -1481,9 +1480,9 @@ world:
   other: World
 ```
 
-再比如说 es:
+再比如 TOML 的写法，保存为 `es.toml`：
 
-```yaml
+```toml
 [hello]
 other = "Hola"
 
@@ -1593,7 +1592,7 @@ name = "Hugo Website"
 
 **访问单个数据文件**
 
-```yaml
+```go-html-template
 {{ $john := .Site.Data.authors.john }}
 <p>{{ $john.name }} - {{ $john.email }}</p>
 ```

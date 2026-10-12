@@ -1,0 +1,700 @@
+{
+  "schema": "blog-performance-acceptance/1",
+  "type": "PerformanceObserver/CDP direct lab evidence, not Lighthouse score or CrUX",
+  "sourceBefore": "6514545c514d4c61c659939a3c00e12cc618c09c",
+  "sourceAfter": "2846837121c8630394ef5c7d1b7994af7f32844a",
+  "CIArtifactIds": {
+    "before": 11726694258,
+    "after": 11727530946
+  },
+  "conditions": {
+    "browser": "Google Chrome155.0.8059.39 headless",
+    "CLI": "@playwright/cli0.1.22 cached installation",
+    "origin": "http://127.0.0.1:4495",
+    "server": "same Node staticserver for selected frozenvariant;gzip textual resources;no-store;HTTP/1.1",
+    "mobile": {
+      "viewport": [
+        375,
+        812
+      ],
+      "DPR": 1,
+      "mobile": true,
+      "touch": true,
+      "UA": "Chrome155 Android11 Pixel5"
+    },
+    "desktop": {
+      "viewport": [
+        1280,
+        800
+      ],
+      "DPR": 1,
+      "mobile": false,
+      "touch": false
+    },
+    "network": {
+      "latencyMs": 150,
+      "downloadBytesPerSecond": 200000,
+      "uploadBytesPerSecond": 93750,
+      "offline": false
+    },
+    "CPUThrottlingRate": 4,
+    "cache": "new context each navigation;Network.clearBrowserCache;Network.setCacheDisabled;serviceWorkers block",
+    "motion": "no-preference;reduce diagnostics separated",
+    "observation": "minimum15s afterDOMContentLoaded then FontFaceSet loaded and stable5s;max60s afterDOMContentLoaded;timeout unknown",
+    "analytics": "GTag/GoogleAnalytics204 mock applied equally; no scripts/beacons executed in accepted samples",
+    "language": "en-US",
+    "timezone": "Asia/Shanghai",
+    "colorScheme": "light",
+    "buildClocks": {
+      "before": "2026-10-12T04:21:53.170Z",
+      "after": "2026-10-12T04:29:14.890Z"
+    },
+    "hostResourceWarning": "Initial107Node/npm processes and11.82GiBswap; no quiet-host claim"
+  },
+  "normalMotionComparison": [
+    {
+      "profile": "mobile",
+      "label": "home",
+      "route": "/",
+      "before": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1132,
+          1056,
+          1036
+        ],
+        "lcpMedianMs": 1056,
+        "cls": [
+          0.024314302486006294,
+          0.024314302486006294,
+          0.024314302486006294
+        ],
+        "clsMedian": 0.024314302486006294,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      },
+      "after": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1136,
+          1140,
+          1072
+        ],
+        "lcpMedianMs": 1136,
+        "cls": [
+          0.024322589889850116,
+          0.024314302486006294,
+          0.024314302486006294
+        ],
+        "clsMedian": 0.024314302486006294,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      }
+    },
+    {
+      "profile": "mobile",
+      "label": "annual",
+      "route": "/zh/growth/posts/2025-annual-review/",
+      "before": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1548,
+          1472,
+          2440
+        ],
+        "lcpMedianMs": 1548,
+        "cls": [
+          0,
+          0,
+          0
+        ],
+        "clsMedian": 0,
+        "elements": [
+          {
+            "tag": "A",
+            "id": "",
+            "classes": "",
+            "text": "cubxxw",
+            "html": "<a href=\"https://cubxxw.com/zh/\" accesskey=\"h\" title=\"cubxxw (Alt + H)\">cubxxw</a>"
+          },
+          {
+            "tag": "A",
+            "id": "",
+            "classes": "",
+            "text": "cubxxw",
+            "html": "<a href=\"https://cubxxw.com/zh/\" accesskey=\"h\" title=\"cubxxw (Alt + H)\">cubxxw</a>"
+          },
+          {
+            "tag": "H1",
+            "id": "",
+            "classes": "post-title post-title--long",
+            "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+            "html": "<h1 class=\"post-title post-title--long\">我在游荡，但我没有迷路 — 2025-2026 年度总结</h1>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      },
+      "after": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1428,
+          3072,
+          2556
+        ],
+        "lcpMedianMs": 2556,
+        "cls": [
+          0,
+          0,
+          0
+        ],
+        "clsMedian": 0,
+        "elements": [
+          {
+            "tag": "A",
+            "id": "",
+            "classes": "",
+            "text": "cubxxw",
+            "html": "<a href=\"https://cubxxw.com/zh/\" accesskey=\"h\" title=\"cubxxw (Alt + H)\">cubxxw</a>"
+          },
+          {
+            "tag": "H1",
+            "id": "",
+            "classes": "post-title post-title--long",
+            "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+            "html": "<h1 class=\"post-title post-title--long\">我在游荡，但我没有迷路 — 2025-2026 年度总结</h1>"
+          },
+          {
+            "tag": "H1",
+            "id": "",
+            "classes": "post-title post-title--long",
+            "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+            "html": "<h1 class=\"post-title post-title--long\">我在游荡，但我没有迷路 — 2025-2026 年度总结</h1>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      }
+    },
+    {
+      "profile": "mobile",
+      "label": "growth",
+      "route": "/zh/growth/",
+      "before": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1400,
+          1376,
+          1412
+        ],
+        "lcpMedianMs": 1400,
+        "cls": [
+          0.0006265985585673032,
+          0.0006280221957986525,
+          0.0006280221957986525
+        ],
+        "clsMedian": 0.0006280221957986525,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的成长与生活记录：年度深度复盘、心智与效率系统、亲密关系与旅行见闻。技术之外，记录一个人如何思考、感受与生活。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的成长与生活记录：<strong>年度深度复盘</strong>、<strong>心智与效率系统</strong>、<strong>亲密关系</strong>与<strong>旅行见闻</strong>。技术之外，记录一个人如何思考、感受与生活。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的成长与生活记录：年度深度复盘、心智与效率系统、亲密关系与旅行见闻。技术之外，记录一个人如何思考、感受与生活。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的成长与生活记录：<strong>年度深度复盘</strong>、<strong>心智与效率系统</strong>、<strong>亲密关系</strong>与<strong>旅行见闻</strong>。技术之外，记录一个人如何思考、感受与生活。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的成长与生活记录：年度深度复盘、心智与效率系统、亲密关系与旅行见闻。技术之外，记录一个人如何思考、感受与生活。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的成长与生活记录：<strong>年度深度复盘</strong>、<strong>心智与效率系统</strong>、<strong>亲密关系</strong>与<strong>旅行见闻</strong>。技术之外，记录一个人如何思考、感受与生活。</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      },
+      "after": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1212,
+          1236,
+          1240
+        ],
+        "lcpMedianMs": 1236,
+        "cls": [
+          0.0006280221957986525,
+          0.0006280221957986525,
+          0.0006280221957986525
+        ],
+        "clsMedian": 0.0006280221957986525,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的成长与生活记录：年度深度复盘、心智与效率系统、亲密关系与旅行见闻。技术之外，记录一个人如何思考、感受与生活。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的成长与生活记录：<strong>年度深度复盘</strong>、<strong>心智与效率系统</strong>、<strong>亲密关系</strong>与<strong>旅行见闻</strong>。技术之外，记录一个人如何思考、感受与生活。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的成长与生活记录：年度深度复盘、心智与效率系统、亲密关系与旅行见闻。技术之外，记录一个人如何思考、感受与生活。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的成长与生活记录：<strong>年度深度复盘</strong>、<strong>心智与效率系统</strong>、<strong>亲密关系</strong>与<strong>旅行见闻</strong>。技术之外，记录一个人如何思考、感受与生活。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的成长与生活记录：年度深度复盘、心智与效率系统、亲密关系与旅行见闻。技术之外，记录一个人如何思考、感受与生活。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的成长与生活记录：<strong>年度深度复盘</strong>、<strong>心智与效率系统</strong>、<strong>亲密关系</strong>与<strong>旅行见闻</strong>。技术之外，记录一个人如何思考、感受与生活。</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      }
+    },
+    {
+      "profile": "mobile",
+      "label": "ai-agent",
+      "route": "/zh/ai-agent/",
+      "before": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1316,
+          1472,
+          1308
+        ],
+        "lcpMedianMs": 1316,
+        "cls": [
+          0,
+          0,
+          0
+        ],
+        "clsMedian": 0,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——Agent 工程、上下文工程与生成式引擎优化（GEO），全部来自真实项目的构建、踩坑与复盘。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——<strong>Agent 工程</strong>、<strong>上下文工程</strong>与<strong>生成式引擎优化（GEO）</strong>，全部来自真实项目的构建、踩坑与复盘。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——Agent 工程、上下文工程与生成式引擎优化（GEO），全部来自真实项目的构建、踩坑与复盘。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——<strong>Agent 工程</strong>、<strong>上下文工程</strong>与<strong>生成式引擎优化（GEO）</strong>，全部来自真实项目的构建、踩坑与复盘。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——Agent 工程、上下文工程与生成式引擎优化（GEO），全部来自真实项目的构建、踩坑与复盘。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——<strong>Agent 工程</strong>、<strong>上下文工程</strong>与<strong>生成式引擎优化（GEO）</strong>，全部来自真实项目的构建、踩坑与复盘。</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      },
+      "after": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1216,
+          1204,
+          1292
+        ],
+        "lcpMedianMs": 1216,
+        "cls": [
+          0,
+          0,
+          0
+        ],
+        "clsMedian": 0,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——Agent 工程、上下文工程与生成式引擎优化（GEO），全部来自真实项目的构建、踩坑与复盘。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——<strong>Agent 工程</strong>、<strong>上下文工程</strong>与<strong>生成式引擎优化（GEO）</strong>，全部来自真实项目的构建、踩坑与复盘。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——Agent 工程、上下文工程与生成式引擎优化（GEO），全部来自真实项目的构建、踩坑与复盘。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——<strong>Agent 工程</strong>、<strong>上下文工程</strong>与<strong>生成式引擎优化（GEO）</strong>，全部来自真实项目的构建、踩坑与复盘。</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "",
+            "text": "这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——Agent 工程、上下文工程与生成式引擎优化（GEO），全部来自真实项目的构建、踩坑与复盘。",
+            "html": "<p>这里是熊鑫伟（cubxxw）的 AI Agent 一线构建笔记：记录如何把大模型从聊天框带进生产系统。内容围绕三个方向展开——<strong>Agent 工程</strong>、<strong>上下文工程</strong>与<strong>生成式引擎优化（GEO）</strong>，全部来自真实项目的构建、踩坑与复盘。</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      }
+    },
+    {
+      "profile": "desktop",
+      "label": "home",
+      "route": "/",
+      "before": {
+        "trials": [
+          4,
+          5,
+          6
+        ],
+        "lcpMs": [
+          1248,
+          1080,
+          1088
+        ],
+        "lcpMedianMs": 1088,
+        "cls": [
+          0.0023611889600753783,
+          0.0023611889600753783,
+          0.0026989900588989257
+        ],
+        "clsMedian": 0.0023611889600753783,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      },
+      "after": {
+        "trials": [
+          1,
+          2,
+          3
+        ],
+        "lcpMs": [
+          1068,
+          1104,
+          1080
+        ],
+        "lcpMedianMs": 1080,
+        "cls": [
+          0.0023593743801116943,
+          0.002345541644096374,
+          0.002985536694526672
+        ],
+        "clsMedian": 0.0023593743801116943,
+        "elements": [
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          },
+          {
+            "tag": "P",
+            "id": "",
+            "classes": "hp-hero-bio",
+            "text": "I openly document AI workflows, real projects, and engineering judgment, alongside long-term writing on growth, philosophy, and life.",
+            "html": "<p class=\"hp-hero-bio\">I openly document <strong>AI workflows</strong>, real projects, and engineering judgment, alongside long-term writing on <strong>growth, philosophy, and life</strong>.</p>"
+          }
+        ],
+        "allFontsSettled": true,
+        "localHTTP4xx": []
+      }
+    }
+  ],
+  "derivedAnnualCandidate": {
+    "isNewCIArtifact": false,
+    "cssSha256": "0d83ba1578b2ecec241a794b75139b8eac513e42a435365e0a0dd7c9c5ba7c1c",
+    "lcpMs": [
+      2088,
+      1748,
+      1804
+    ],
+    "lcpMedianMs": 1804,
+    "cls": [
+      0,
+      0,
+      0
+    ],
+    "lcpElements": [
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "post-title post-title--long",
+        "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+        "html": "<h1 class=\"post-title post-title--long\">我在游荡，但我没有迷路 — 2025-2026 年度总结</h1>"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "post-title post-title--long",
+        "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+        "html": "<h1 class=\"post-title post-title--long\">我在游荡，但我没有迷路 — 2025-2026 年度总结</h1>"
+      },
+      {
+        "tag": "H1",
+        "id": "",
+        "classes": "post-title post-title--long",
+        "text": "我在游荡，但我没有迷路 — 2025-2026 年度总结",
+        "html": "<h1 class=\"post-title post-title--long\">我在游荡，但我没有迷路 — 2025-2026 年度总结</h1>"
+      }
+    ],
+    "allFontsSettled": true,
+    "CSSSegmentsMatchActualHugoCompilation": true,
+    "correctFingerprintSRI": true,
+    "visibleSSRTextUnchanged": true,
+    "desktopRealCoverAndHoverReducedProbePassed": true
+  },
+  "candidateReceipt": {
+    "mode": "derived-CSS-candidate-not-CI-build",
+    "baseArtifact": 11727530946,
+    "baseSourceSha": "2846837121c8630394ef5c7d1b7994af7f32844a",
+    "originalCSS": {
+      "url": "/assets/css/stylesheet-da5d1589ca2b.min.51b45f8f4d975e5bc2d48a03c85de916246b10e118ce1791ddd2dd793876cae8.css",
+      "sha256": "51b45f8f4d975e5bc2d48a03c85de916246b10e118ce1791ddd2dd793876cae8",
+      "bytes": 408042,
+      "SRI": "sha256-UbRfj02XXlvC1IoDyF3pFiRrEOEYzheR3dLdeTh2yug="
+    },
+    "candidateCSS": {
+      "url": "/assets/css/stylesheet-da5d1589ca2b.min.0d83ba1578b2ecec241a794b75139b8eac513e42a435365e0a0dd7c9c5ba7c1c.css",
+      "sha256": "0d83ba1578b2ecec241a794b75139b8eac513e42a435365e0a0dd7c9c5ba7c1c",
+      "bytes": 408034,
+      "SRI": "sha256-DYO6FXiy7OwkGnlLdRObjqxRPkKkNTZeCg3XycW6fBw="
+    },
+    "exactReplacements": [
+      {
+        "before": "@keyframes article-header-rise{from{opacity:0;transform:translateY(12px)}",
+        "after": "@keyframes article-header-rise{from{opacity:1;transform:translateY(12px)}",
+        "matches": 1
+      },
+      {
+        "before": "@keyframes cover-open{from{opacity:0;transform:scale(1.06)}",
+        "after": "@keyframes cover-open{from{opacity:1;transform:scale(1.06)}",
+        "matches": 1
+      },
+      {
+        "before": "animation:article-header-rise .6s cubic-bezier(.22,.61,.36,1)both;will-change:opacity,transform}",
+        "after": "animation:article-header-rise .6s cubic-bezier(.22,.61,.36,1)both;will-change:transform}",
+        "matches": 1
+      }
+    ],
+    "everythingElseUnchanged": true,
+    "htmlOnlyChanges": "CSSURL fingerprint and SRI for annual-review",
+    "workingTreeSourceCSS": [
+      {
+        "path": "/Users/cubxxw/.codex/worktrees/blog-issues-20261012/assets/css/extended/zzz-article-header-entrance.css",
+        "sha256": "7b4b2e170c5d1183c1a97f5836d9316aa20049d1d9353dcc01bbedf7017f4284"
+      },
+      {
+        "path": "/Users/cubxxw/.codex/worktrees/blog-issues-20261012/assets/css/extended/zzz-cover-motion.css",
+        "sha256": "6b68c1a9525bb9d27dfa98fd83874f174a019565ac8bf53667c0f5103da916da"
+      }
+    ],
+    "actualHugoCompiledFragment": {
+      "path": "/private/tmp/ai-test-blog-issues-20261012.lPn7JA/motion-compile/public/motion.min.693a76a0ac22c858ba039b20007c6eeb8161f4ea7e398cdd1696681d7889a44b.css",
+      "threeReplacementSegmentsMatchExactlyOnce": true,
+      "sourceReceipt": "/private/tmp/ai-test-blog-issues-20261012.lPn7JA/motion-compile/receipt.json"
+    },
+    "inverseReplacementRestoresOriginalCSSBytes": true,
+    "inverseHrefSRIRestoresOriginalHTMLBytes": true,
+    "visibleSSRTextSha256": "83ae6334e00d15ddf117e91018399a9a5605a3a2abe43ef9494f7e9eca4cac02",
+    "originalHTMLSha256": "812d3b3eeef98afeb2319bc14b1cc1a37887e1bd35675616b51317060bd0ae2d",
+    "candidateHTMLSha256": "78c6705b2cff457ff3c46a7c2917ed9d6bef13d1914228a8d85683fefff87351",
+    "candidateHTMLBytes": 146623,
+    "originalHTMLBytes": 146623,
+    "commentOnlySourceRefresh": {
+      "initialSourceCSS": [
+        {
+          "path": "/Users/cubxxw/.codex/worktrees/blog-issues-20261012/assets/css/extended/zzz-article-header-entrance.css",
+          "sha256": "7b4b2e170c5d1183c1a97f5836d9316aa20049d1d9353dcc01bbedf7017f4284"
+        },
+        {
+          "path": "/Users/cubxxw/.codex/worktrees/blog-issues-20261012/assets/css/extended/zzz-cover-motion.css",
+          "sha256": "6b68c1a9525bb9d27dfa98fd83874f174a019565ac8bf53667c0f5103da916da"
+        }
+      ],
+      "currentSourceCSS": [
+        {
+          "path": "/Users/cubxxw/.codex/worktrees/blog-issues-20261012/assets/css/extended/zzz-article-header-entrance.css",
+          "sha256": "7b4b2e170c5d1183c1a97f5836d9316aa20049d1d9353dcc01bbedf7017f4284"
+        },
+        {
+          "path": "/Users/cubxxw/.codex/worktrees/blog-issues-20261012/assets/css/extended/zzz-cover-motion.css",
+          "sha256": "6b68c1a9525bb9d27dfa98fd83874f174a019565ac8bf53667c0f5103da916da"
+        }
+      ],
+      "actualCompiledFragmentSha256Unchanged": "693a76a0ac22c858ba039b20007c6eeb8161f4ea7e398cdd1696681d7889a44b",
+      "noNewMeasurementNeededBecauseCompiledBytesIdentical": true
+    }
+  },
+  "sampleHashes": {
+    "mobile-home-before-1.json": "c867acb59d712a5850261dea63668325233e4e6104a3bcf06e2e7770863afcb4",
+    "mobile-home-before-2.json": "3e0fcef3322dbcd8388f0d9d2a7e54a9669bde27cd0a840842656dad4c299cb5",
+    "mobile-home-before-3.json": "409f3d6e20e7b2eca4e19f4750af87080e0e00ff75fc9c57102bb7c203abd309",
+    "mobile-home-after-1.json": "58a141a87582a72150918d6d6246da53a7880dfd230bf740d88f21adf6572444",
+    "mobile-home-after-2.json": "e67449ebaff44e3dd9231e030ebfa283ebb3bc90cd947a0cd178fb5ece9d50c7",
+    "mobile-home-after-3.json": "3d84f60eb17ec718d12fdfd39d0acce92694a6f95aa2c87c817704cb10842a2d",
+    "mobile-annual-before-1.json": "651ccda8d7a39689a37cd70e17ab487890a2b79510304a06dc247a8b03a62e6a",
+    "mobile-annual-before-2.json": "d757e4542685866976faaa247c76f7fcd1fe6dcd8ebdf8a08e4df1816c485e8a",
+    "mobile-annual-before-3.json": "8699fcf8198302f2f62abafe3feb7a78695a79e264e2c451a3d45f1ca8379df6",
+    "mobile-annual-after-1.json": "efc231945c7abbb755f4ba58cec7a99015a46c6b130ed2a8380e01db74e760ed",
+    "mobile-annual-after-2.json": "426708cc2e81126a21b5d27c3a273dc05c4dbe7e15a8b7cfe0d6ad9c13929187",
+    "mobile-annual-after-3.json": "3cc1500a9f0a158a4b17a1c3e677d0869132c317e5ea22debb94b4667354ec40",
+    "mobile-growth-before-1.json": "1088caf4240b4c3f1068f34bb69b52b4273c6745f94be6edcd0d39dbd5ee24c8",
+    "mobile-growth-before-2.json": "cefd614163b4459b648d7bea5b87398ee5141da084241ee3a6ba95241855e044",
+    "mobile-growth-before-3.json": "d7535765649acffb1718f17eca24f75da895eeaa3a7f7bf2e9c55935099288bd",
+    "mobile-growth-after-1.json": "3e04427f167edddbb60534d4eb7802c1d3d79b390f3e04c722cfed09725c6ec5",
+    "mobile-growth-after-2.json": "1d6e5f95ba74f7816ce10d62650bdc4f6748d4e89cd481a684f7d3ef59824557",
+    "mobile-growth-after-3.json": "5f091a84af1c424d2a69f5264a1703893d5166b03851b0e4f969b87c8e95b5b6",
+    "mobile-ai-agent-before-1.json": "958509912557240965468072248ba67eee1c6a2d831bb819dca445639310b53a",
+    "mobile-ai-agent-before-2.json": "fb9b1faa35ab7612531ca8a105821b9632f1c7e429d18e1e622861a368827ed8",
+    "mobile-ai-agent-before-3.json": "f4a3b326afd390918e6b351fedd8b00806b68e597eba6271e6c9f2a6600939fb",
+    "mobile-ai-agent-after-1.json": "f8d1c2379c62a47f3746e1ce4ed0fead580277f70f40abb206a8f889cd19bdbd",
+    "mobile-ai-agent-after-2.json": "771963fa00abb08168fc99eddb77aa63ea3302e62b59702c6a535f7b82997794",
+    "mobile-ai-agent-after-3.json": "cfddf39b27e4a0c0735a8db3cf39123a86550ae496a7f6671b0d7564093b1cb8",
+    "desktop-home-before-4.json": "39cf885d404859bb649fb66eec1e7122d1f1d30a737c13e9cd33c7f09df736a0",
+    "desktop-home-before-5.json": "2a8c4a1d94c358faddc7f9cfe4d8927067fb0d9a0345910a51cd99d101af79c0",
+    "desktop-home-before-6.json": "35f4eeee5729290d1611ca2a953f9f04e67e429e7136265220174400bcc43809",
+    "desktop-home-after-1.json": "b6375582f6e999a869956ddc094fc7f1430956c70e89ec408cb705a1d75b1f8f",
+    "desktop-home-after-2.json": "97102bc196be080eacd2e9746c6e33d610e453f3bdbebe429bbd04363451dd16",
+    "desktop-home-after-3.json": "89a69c1e91f4c13eacb431b0f754d153b08a0b5ed39629e2418b962508bf6520",
+    "mobile-annual-fixed-1.json": "e1f6927abd4c2b6fd805b769ff0a48aa1d950e389f9e5d1bf86511a9250b2689",
+    "mobile-annual-fixed-2.json": "5aae5120c3bc045921f760f281b46765d136d3ae111224a3ee3837b875910bd3",
+    "mobile-annual-fixed-3.json": "01b75db9bd1db4c4995163f5668214135fa350159e9569f8ceb093c4837dd1e1"
+  },
+  "limits": [
+    "LocalHTTP1.1gzip/CDPconditions do not reproduce production CDN/H2",
+    "ExternalGooglefonts retained live;WAN/proxy variation remains",
+    "Frozen buildclocks differ7m21.72s; visibleSSR hash equal on all5 checkedpages",
+    "Annual normalmotion A/H1 candidate qualification varies with opacity0 keyframes; never treat navbar value as cover success",
+    "Cover sits below viewport at375x812, so no claim it is thatprofile LCP",
+    "External oldsnapshot absolute social previewPNG occasionally ORBblocked on live host; outside firstviewport, isolated from candidate header/cover validation",
+    "Historical15.8sLCP and .212CLS not reproduced on modernbaseline; no causally attributed historical reduction",
+    "Marchnote remains8267DOMelements and318KBgzip; budget not materially resolved",
+    "CrUX lacks realuser samples; fieldp75 remainsunknown",
+    "DerivedCSS candidate awaits parent latestCI fullartifact/readback verification before delivery completion"
+  ],
+  "invalidation": [
+    "Initial404samples from another task deleting own artifact discarded",
+    "15sfont-unsettled preliminary protocol superseded, never mixed into accepted3runs",
+    "Desktopbefore1-3 missing nonvisiblelazy originalproductJPG discarded/replayed4-6 afterrestore",
+    "Desktopfirstcandidateprobe broken responsivecover naturalWidth0 discarded; restored actual36KBZIPcover and reran successfully"
+  ],
+  "deliveryBasis": "These remain derived-candidate measurements. Final issue closure additionally requires latest CI/production CSS byte comparison, recorded in issue #395."
+}

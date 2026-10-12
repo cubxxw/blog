@@ -12,10 +12,11 @@
    Progressive enhancement only:
    - Gated behind html.motion-reveal, which is added to <html> in
      <head> BEFORE first paint, and ONLY when the visitor has not
-     requested reduced motion (see partials/extend_head.html). So
-     no-JS / reduced-motion visitors never get the hidden start
-     state — there is no flash and no layout shift.
-   - animation-fill-mode: both means the "from" (hidden) state is
+     requested reduced motion (see partials/extend_head.html).
+   - Text is fully visible from the first frame. Opacity-zero load
+     animations can exclude the title from Chromium's LCP candidates
+     even while the reader is waiting for it to appear.
+   - animation-fill-mode: both means the translated "from" state is
      applied pre-paint and the "to" (natural) state sticks after,
      so if the motion-reveal failsafe ever drops the class the
      header is already at its normal, fully-visible resting state.
@@ -30,7 +31,7 @@
 
 @keyframes article-header-rise {
   from {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(12px);
   }
   to {
@@ -46,14 +47,13 @@ html.motion-reveal .post-single .post-header .post-description,
 html.motion-reveal .post-single .post-header .post-meta,
 html.motion-reveal .post-single .post-header .post-header-rule {
   animation: article-header-rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-  /* will-change is dropped automatically once the one-shot finishes;
-     these are few elements so the brief hint is cheap. */
-  will-change: opacity, transform;
+  /* Keep the transform hint limited to this small header group.
+     The reduced-motion rule resets it below. */
+  will-change: transform;
 }
 
-/* Staggered cascade — each line follows the one above so the header
-   unfolds top-to-bottom. Delays are short so the whole sequence is
-   well under half a second and never feels like a wait. */
+/* Staggered movement — all text remains readable during the delays.
+   The last line settles after its 0.32s delay plus the 0.6s duration. */
 html.motion-reveal .post-single .article-marginalia-mobile {
   animation-delay: 0s;
 }

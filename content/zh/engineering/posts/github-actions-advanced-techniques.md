@@ -175,11 +175,11 @@ ENTRYPOINT ["/entrypoint.sh"]
 所有操作都需要一个元数据文件。元数据文件名必须是`action.yml`或`action.yaml`. 元数据文件中的数据为您的操作定义输入、输出和运行配置。
 
 + name：**必填**。您的操作的名称。`name`GitHub在**操作**选项卡中显示，以帮助直观地识别每个作业中的操作。
-+ description：*可选*。对您的操作进行简短的描述。GitHub将在操作的详细信息页面上显示此描述。
++ description：**必填**。对您的操作进行简短的描述。GitHub将在操作的详细信息页面上显示此描述。
 + author：*可选*。操作的作者或组织名称。
 + inputs：*可选*。定义操作的输入参数。每个输入都是一个键值对，其中键是参数名称，值是描述该参数的属性。属性包括`description`、`required`和`default`。
 + outputs：*可选*。定义操作的输出参数。每个输出都是一个键值对，其中键是参数名称，值是描述该参数的属性。属性包括`description`和`value`。
-+ runs：**必填**。定义操作的运行配置。运行配置指定操作应该运行在哪个操作系统和环境中。运行配置包括`using`、`image`和`args`。
++ runs：**必填**。定义操作的运行配置。运行配置指定操作应该运行在哪个操作系统和环境中。具体字段取决于操作类型：Docker 操作使用 `using: docker` 配合 `image` 和 `args`，JavaScript 操作使用 Node 运行时（例如 `using: node20`）配合 `main`，composite 操作使用 `using: composite` 配合 `steps`（其中每个 `run` 步骤必须指定 `shell`）。参见官方 [metadata 语法](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#runs)。
 + branding： **可选**您可以使用颜色和[羽毛](https://feathericons.com/)图标创建徽章来个性化和区分您的操作。徽章显示在[GitHub Marketplace](https://github.com/marketplace?type=actions)中您的操作名称旁边。
 
 
@@ -215,10 +215,10 @@ inputs:
 
 + `inputs.<input_id>.description` : **必需**`string`对输入参数的描述。
 
-- `inputs.<input_id>.required`: 表示该输入参数是否是必需的，如果为 true，则在运行工作流程时必须提供该输入参数的值，否则工作流程将失败。
+- `inputs.<input_id>.required`: 声明该输入参数是否是必需的。`required: true` 只是元数据文件里的声明；输入值必须由操作代码主动校验，缺少输入不会让工作流自动失败（[metadata 语法](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs)）。
 - `inputs.<input_id>.default`: 表示该输入参数的默认值，如果在运行工作流程时未提供该输入参数的值，则使用该默认值。
-- `inputs.<input_id>.env`: 表示将该输入参数的值作为环境变量传递给工作流程中的步骤。例如，可以使用 `${{ env.INPUT_NAME }}` 的方式在步骤中引用该输入参数的值。
-- `inputs.<input_id>.group`: 表示将该输入参数分组，可以将多个输入参数分组到同一个组中，以便更好地组织和显示它们。
+
+输入元数据没有 `env` 或 `group` 属性。本例使用 `description`、`required` 和 `default`；官方还支持 `deprecationMessage`（[元数据语法](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputsinput_iddeprecationmessage)）。在 composite action 内，用 `runs.steps[].env` 和 `inputs` context 显式映射 action 输入，例如 `MY_INPUT: ${{ inputs.my_input }}`。调用方 workflow 则通过 `uses` 步骤的 `with` 传入 action 输入；workflow 的 `inputs` context 表示工作流输入，不会自动暴露被调用 action 的输入。
 
 
 
@@ -842,8 +842,15 @@ jobs:
 
 ### 示例：使用并发和默认行为
 
+下面两个 `concurrency` 取值是互相替代的独立示例——实际工作流中只使用一个 `concurrency` 键：
+
 ```yaml
 concurrency: staging_environment
+```
+
+或者使用表达式：
+
+```yaml
 concurrency: ci-${{ github.ref }}
 ```
 
@@ -1507,3 +1514,4 @@ jobs:
 
 - [GitHub：通过工件保存和共享工作流数据](https://docs.github.com/en/actions/tutorials/store-and-share-data)
 - [GitHub：artifact actions v3 停用公告](https://github.blog/changelog/2024-04-16-deprecation-notice-v3-of-the-artifact-actions/)
+- [GitHub：GitHub Actions 的 metadata 语法](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax)

@@ -151,9 +151,9 @@ Durable execution does not mean every line continues from the exact instruction 
 
 Consider an agent that drafts a refund, asks an operator for approval, then sends money through a payment API:
 
-1. The model provider returns `429`. Attach a bounded `RetryPolicy` to the model node, with backoff and a maximum attempt count. Do not retry invalid business input forever.
+1. The model provider returns `429`. Configure `RetryPolicy.retry_on` for the provider's actual rate-limit exception or HTTP status, with bounded backoff and attempts. For example, the default predicate retries `httpx.HTTPStatusError` only for `5xx`, so its `429` needs an explicit rule; other provider exception types can behave differently. Do not retry invalid business input forever. [Default retry predicate source](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/_internal/_retry.py)
 2. The refund exceeds a policy threshold. Call `interrupt()` in a review node. The checkpoint and `thread_id` let another process resume later with `Command(resume=...)`.
-3. The worker dies after approval. Invoke the same thread again; LangGraph resumes from persisted state rather than starting the whole request from scratch.
+3. The worker dies after approval. To recover a pending persisted checkpoint, reuse the same `config` containing its `thread_id` and call `graph.invoke(None, config=config)` to continue pending work. Resending the original input starts a new input execution; the same `thread_id` alone does not make it failure recovery. If execution is still waiting at a human `interrupt()`, supply the approval value with `Command(resume=...)` as above. Recovery after a process restart requires a durable checkpointer. [Input and resume branch source](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/pregel/_loop.py#L911)
 4. The payment call succeeds but its acknowledgement is lost. Send a stable idempotency key, such as `refund:{thread_id}:{refund_id}`, and store the provider transaction ID. Checkpointing cannot undo a duplicate bank transfer.
 
 There is a subtle trap around interrupts: when resumed, the node restarts from its beginning. Any database write or API call before `interrupt()` can execute again. Put approval before the side effect, or make everything before it idempotent.
@@ -192,6 +192,8 @@ Start one layer higher than you think. Use a direct API, `create_agent`, or Deep
 2. [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence)
 3. [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts)
 4. [LangSmith Deployment](https://docs.langchain.com/langsmith/deployment)
+5. [LangGraph default retry predicate, fixed source commit](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/_internal/_retry.py)
+6. [LangGraph input and resume branches, fixed source commit](https://github.com/langchain-ai/langgraph/blob/799c2f04fd3a56186e24e9fb8bbf3568e543cfbe/libs/langgraph/langgraph/pregel/_loop.py#L911)
 
 
 
